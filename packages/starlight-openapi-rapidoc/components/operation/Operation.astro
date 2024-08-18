@@ -1,0 +1,185 @@
+---
+import type { PathItemOperation } from '../../libs/operation'
+import type { Schema } from '../../libs/schema'
+import Deprecated from '../Deprecated.astro'
+import ExternalDocs from '../ExternalDocs.astro'
+import Md from '../Md.astro'
+import Parameters from '../parameter/Parameters.astro'
+import RequestBody from '../RequestBody.astro'
+import Responses from '../response/Responses.astro'
+import Security from '../security/Security.astro'
+
+import OperationDescription from './OperationDescription.astro'
+
+interface Props {
+  operation: PathItemOperation
+  schema: Schema
+}
+
+const { operation: pathItemOperation, schema } = Astro.props
+
+const { rapidocAttrs } = schema.config || {}
+const { servers } = schema.document || {}
+
+const schemaFiltred = {
+  ...schema.document,
+  paths: {
+    [`${pathItemOperation.path}`]: {
+      [`${pathItemOperation.method}`]: pathItemOperation.operation,
+    },
+  },
+}
+
+const rapidocProps: Record<string, any> = {
+  'api-key-name': 'Authorization',
+  'api-key-location': 'header',
+  'allow-server-selection': 'true',
+  'persist-auth': 'true',
+  class: 'component-api-doc',
+  layout: 'column',
+  // 'render-style': 'focused',
+  'show-header': 'false',
+  'show-side-nav': 'false',
+  'default-schema-tab': 'schema',
+  'fill-request-fields-with-example': 'true',
+  theme: 'dark',
+  'show-info': 'false',
+  'schema-style': 'table',
+  'schema-description-expanded': 'true',
+  'use-path-in-nav-bar': 'false',
+  'allow-spec-file-download': 'false',
+  ...rapidocAttrs,
+}
+
+const { operation } = pathItemOperation
+const slotName = `${pathItemOperation.method}-${
+  pathItemOperation?.path?.replaceAll('{', '-')?.replaceAll('}', '-') ?? ''
+}`
+---
+
+<script is:inline define:vars={{ schemaFiltred }}>
+  document.addEventListener('DOMContentLoaded', async () => {
+    const docEl = document.querySelector('#starlight-openapi-rapidoc')
+    if (!docEl) {
+      console.error('RapiDoc element not found')
+      return
+    }
+
+    const serversSelector = document.querySelector('#starlight-openapi-rapidoc-servers-select')
+    if (serversSelector) {
+      serversSelector.addEventListener('change', (e) => {
+        const serverUrl = e.target.value
+        window.localStorage.setItem('starlight-openapi-rapidoc-servers-select', serverUrl)
+        docEl.setApiServer(serverUrl)
+      })
+
+      docEl.addEventListener('spec-loaded', () => {
+        const storage = window.localStorage.getItem('starlight-openapi-rapidoc-servers-select')
+        if (storage) {
+          serversSelector.value = storage
+        }
+
+        if (docEl.selectedServer?.url !== serversSelector.value) {
+          docEl.setApiServer(serversSelector.value)
+        }
+      })
+
+      /**
+       * Reload the spec with possible modifications
+       *
+       * @param {Function} fnModifier
+       */
+      docEl.reloadSpec = async (fnModifier) => {
+        if (typeof fnModifier !== 'function') {
+          return docEl.loadSpec(fnModifier(schemaFiltred))
+        }
+
+        // prevent to change the order of the servers, causing loop after event spec-loaded
+        schemaFiltred.servers = schemaFiltred.servers.sort((a) => {
+          if (a.url === serversSelector.value) {
+            return -1
+          }
+          return 1
+        })
+
+        return docEl.loadSpec(schemaFiltred)
+      }
+    }
+
+    await docEl?.loadSpec(schemaFiltred)
+    window.console.debug('schema loaded', { schemaFiltred })
+  })
+</script>
+
+<rapi-doc id="starlight-openapi-rapidoc" {...rapidocProps}>
+  <div slot={slotName} id="starlight-openapi-rapidoc-servers">
+    <label for="starlight-openapi-rapidoc-servers-select">Server</label>
+    <select id="starlight-openapi-rapidoc-servers-select">
+      {
+        servers?.map(({ url, description }: any) => (
+          <option value={url}>
+            {description} - {url}
+          </option>
+        ))
+      }
+    </select>
+  </div>
+</rapi-doc>
+
+<div style={process.env['NODE_ENV'] === 'development' ? '' : 'display: none;'} id="starlight-openapi-operation-content">
+  {
+    process.env['NODE_ENV'] === 'development' ? (
+      <span style="border: 1px solid red; padding: 10px; text-align: center; display: block;">
+        All content bellow only show in DEV MODE
+      </span>
+    ) : (
+      ''
+    )
+  }
+  <!-- Only to use in search -->
+  <Deprecated deprecated={operation.deprecated} />
+  <OperationDescription operation={pathItemOperation} {schema} />
+  <div class="operation-description">
+    <Md text={operation.description} />
+  </div>
+  <ExternalDocs docs={operation.externalDocs} />
+  <Security {operation} {schema} />
+  <Parameters operation={pathItemOperation} />
+  <RequestBody {operation} {schema} />
+  <Responses {operation} responses={operation.responses} {schema} />
+</div>
+
+<script is:inline src="https://unpkg.com/rapidoc/dist/rapidoc-min.js"></script>
+<style is:inline define:vars={{ slotName: `'${slotName}'` }}>
+  #starlight-openapi-rapidoc {
+    background-color: transparent !important;
+  }
+  #starlight-openapi-rapidoc-servers {
+    border: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 10px;
+    order: -4;
+  }
+  #starlight-openapi-rapidoc::part(section-operation) {
+    display: flex;
+    flex-direction: column;
+  }
+  #starlight-openapi-rapidoc::part(section-operation-summary) {
+    margin-top: 0;
+    order: -2;
+  }
+  #starlight-openapi-rapidoc::part(section-operation-webhook-method) {
+    order: -3;
+  }
+  #starlight-openapi-rapidoc::part(var(--slotName)) {
+    order: 3;
+  }
+
+  #starlight-openapi-rapidoc::part(section-operation-tag) {
+    display: none;
+  }
+</style>
