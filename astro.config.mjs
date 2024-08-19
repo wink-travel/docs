@@ -1,12 +1,8 @@
 import starlight from '@astrojs/starlight';
 import starlightDocSearch from '@astrojs/starlight-docsearch';
 import { defineConfig } from 'astro/config';
-import starlightOpenAPI, { generateSidebarGroupIdentifier, openAPISidebarGroups } from 'starlight-openapi-rapidoc';
+import starlightOpenAPI, { openAPISidebarGroups } from 'starlight-openapi'
 // import sentry from "@sentry/astro";
-
-const pingGroup = generateSidebarGroupIdentifier('Ping API');
-const notificationGroup = generateSidebarGroupIdentifier('Notifications API');
-
 
 // https://astro.build/config
 export default defineConfig({
@@ -39,8 +35,6 @@ export default defineConfig({
           base: 'api',
           label: 'Ping API',
           schema: './schemas/ping/openapi-spec.json',
-          showMethodBadgeSidebar: true,
-          group: 'ping'
         }
           // {
           //   base: 'api',
@@ -116,25 +110,23 @@ export default defineConfig({
         autogenerate: {
           directory: 'reference'
         }
-      }, {
-        label: 'API',
-        items: [{
-          label: 'Ping API',
-          collapsed: true,
-          group: 'ping',
-          items: [...pingGroup.items.map(item => Object.assign({}, item, {
-            group: 'ping'
-          }))]
-        }
-          // {
-          //   label: 'Notification API',
-          //   collapsed: true,
-          //   items: [
-          //     ...notificationGroup.items,
-          //   ],
-          // },
-        ]
-      }]
+      },
+      ...openAPISidebarGroups
+      // {
+      //   label: 'API',
+      //   items: [{
+      //     label: 'Ping API',
+      //     collapsed: true,
+      //     items: pingGroup.items
+      //   },
+      //   {
+      //     label: 'Notification API',
+      //     collapsed: true,
+      //     items: notificationGroup.items,
+      //   },
+      //   ]
+      // }
+      ]
     })
   ]
 });
