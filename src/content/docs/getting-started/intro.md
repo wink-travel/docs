@@ -1,6 +1,6 @@
 ---
-title: Intro to Wink
-description: All of Wink's APIs accessible in one place.
+title: Overview
+description: Introduction to Wink and its services.
 sidebar:
   order: 0
 ---
