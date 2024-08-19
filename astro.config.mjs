@@ -1,7 +1,6 @@
 import starlight from '@astrojs/starlight';
 import starlightDocSearch from '@astrojs/starlight-docsearch';
 import { defineConfig } from 'astro/config';
-import starlightOpenAPI, { openAPISidebarGroups } from 'starlight-openapi'
 // import sentry from "@sentry/astro";
 
 // https://astro.build/config
@@ -21,9 +20,9 @@ export default defineConfig({
         src: './src/assets/logo.png',
         alt: 'Wink Logo'
       },
-      title: 'Docs',
+      title: 'Academy',
       editLink: {
-        baseUrl: 'https://github.com/wink-travel/docs/edit/master/docs/'
+        baseUrl: 'https://github.com/wink-travel/docs/edit/master/'
       },
       plugins: [
         starlightDocSearch({
@@ -31,19 +30,6 @@ export default defineConfig({
           apiKey: 'YOUR_SEARCH_API_KEY',
           indexName: 'YOUR_INDEX_NAME'
         }),
-        starlightOpenAPI([{
-          base: 'api',
-          label: 'Ping API',
-          schema: './schemas/ping/openapi-spec.json',
-        }
-          // {
-          //   base: 'api',
-          //   label: 'Notifications API',
-          //   schema: './schemas/notification/openapi-spec.json',
-          //   showMethodBadgeSidebar: true,
-          //   group: notificationGroup.id,
-          // },
-        ])
       ],
       social: {
         github: 'https://github.com/wink-travel',
@@ -106,26 +92,11 @@ export default defineConfig({
           directory: 'guides'
         }
       }, {
-        label: 'Reference',
+        label: 'Developers',
         autogenerate: {
           directory: 'reference'
         }
       },
-      ...openAPISidebarGroups
-      // {
-      //   label: 'API',
-      //   items: [{
-      //     label: 'Ping API',
-      //     collapsed: true,
-      //     items: pingGroup.items
-      //   },
-      //   {
-      //     label: 'Notification API',
-      //     collapsed: true,
-      //     items: notificationGroup.items,
-      //   },
-      //   ]
-      // }
       ]
     })
   ]
