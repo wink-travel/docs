@@ -26,9 +26,9 @@ export default defineConfig({
       },
       plugins: [
         starlightDocSearch({
-          appId: 'YOUR_APP_ID',
-          apiKey: 'YOUR_SEARCH_API_KEY',
-          indexName: 'YOUR_INDEX_NAME'
+          appId: 'PHYEPKXSV0',
+          apiKey: '5b2c99f3b00c17e8dbd525b85117eac4',
+          indexName: 'wink'
         }),
       ],
       social: {
@@ -47,6 +47,16 @@ export default defineConfig({
           directory: 'getting-started'
         }
       }, {
+        label: 'User Settings',
+        autogenerate: {
+          directory: 'user-settings'
+        }
+      }, {
+        label: 'Affiliate Portal',
+        autogenerate: {
+          directory: 'studio'
+        }
+      }, {
         label: 'Booking Engine',
         autogenerate: {
           directory: 'booking-engine'
@@ -62,14 +72,9 @@ export default defineConfig({
           directory: 'extranet'
         }
       }, {
-        label: 'Payment Portal',
+        label: 'Link Manager',
         autogenerate: {
-          directory: 'payment'
-        }
-      }, {
-        label: 'Affiliate Portal',
-        autogenerate: {
-          directory: 'studio'
+          directory: 'winklinks'
         }
       }, {
         label: 'Travel Agent Portal',
@@ -77,14 +82,9 @@ export default defineConfig({
           directory: 'travel-agent'
         }
       }, {
-        label: 'User Settings',
+        label: 'Payment Portal',
         autogenerate: {
-          directory: 'user-settings'
-        }
-      }, {
-        label: 'Link Manager',
-        autogenerate: {
-          directory: 'winklinks'
+          directory: 'payment'
         }
       }, {
         label: 'Guides',
