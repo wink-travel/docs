@@ -1,6 +1,6 @@
 ---
-title: Intro
-description: What is Wink Booking Engine and what you need to know.
+title: What is Group?
+description: What is Wink Corporate Portal and what you need to know.
 ---
 
 Reference pages are ideal for outlining how things work in terse and clear terms.

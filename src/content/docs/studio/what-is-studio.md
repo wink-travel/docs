@@ -1,6 +1,8 @@
 ---
 title: What is Studio?
 description: This page explains the difficulties of accessing travel inventory and how Wink's affiliate portal makes that much easier.
+sidebar:
+  order: 0
 ---
 
 Historically, getting access to, and selling, anything travel-related involved NDAs and complex integrations between two [or more] licensed travel agent companies that had enough technical expertise, access to a payment gateway and were both PCI DSS compliant. It was a costly and time consuming effort and the barrier to entry was impossibly high for normal people.

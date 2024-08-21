@@ -1,6 +1,6 @@
 ---
-title: What is Extranet?
-description: All you need to know about how to add your inentory to Wink.
+title: What is Agent?
+description: Learn how Wink supports registered travel agents.
 ---
 
 Reference pages are ideal for outlining how things work in terse and clear terms.

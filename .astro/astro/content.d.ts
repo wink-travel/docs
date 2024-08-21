@@ -151,37 +151,51 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"docs": {
-"booking-engine/intro.md": {
-	id: "booking-engine/intro.md";
-  slug: "booking-engine/intro";
+"booking-engine/how-it-works.md": {
+	id: "booking-engine/how-it-works.md";
+  slug: "booking-engine/how-it-works";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"corporate/intro.md": {
-	id: "corporate/intro.md";
-  slug: "corporate/intro";
+"corporate/what-is-group.md": {
+	id: "corporate/what-is-group.md";
+  slug: "corporate/what-is-group";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"extranet/intro.md": {
-	id: "extranet/intro.md";
-  slug: "extranet/intro";
+"extranet/payment-terms.md": {
+	id: "extranet/payment-terms.md";
+  slug: "extranet/payment-terms";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"getting-started/intro.mdx": {
-	id: "getting-started/intro.mdx";
-  slug: "getting-started/intro";
+"extranet/terms-of-service.md": {
+	id: "extranet/terms-of-service.md";
+  slug: "extranet/terms-of-service";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"extranet/what-is-extranet.md": {
+	id: "extranet/what-is-extranet.md";
+  slug: "extranet/what-is-extranet";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"getting-started/register-user-account.mdx": {
+	id: "getting-started/register-user-account.mdx";
+  slug: "getting-started/register-user-account";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"getting-started/register-user-account.mdx": {
-	id: "getting-started/register-user-account.mdx";
-  slug: "getting-started/register-user-account";
+"getting-started/what-is-wink.mdx": {
+	id: "getting-started/what-is-wink.mdx";
+  slug: "getting-started/what-is-wink";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
@@ -242,16 +256,37 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"studio/intro.md": {
-	id: "studio/intro.md";
-  slug: "studio/intro";
+"studio/create-affiliate-account.md": {
+	id: "studio/create-affiliate-account.md";
+  slug: "studio/create-affiliate-account";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"travel-agent/intro.md": {
-	id: "travel-agent/intro.md";
-  slug: "travel-agent/intro";
+"studio/payment-terms.md": {
+	id: "studio/payment-terms.md";
+  slug: "studio/payment-terms";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"studio/terms-of-service.md": {
+	id: "studio/terms-of-service.md";
+  slug: "studio/terms-of-service";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"studio/what-is-studio.md": {
+	id: "studio/what-is-studio.md";
+  slug: "studio/what-is-studio";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"travel-agent/what-is-agent.md": {
+	id: "travel-agent/what-is-agent.md";
+  slug: "travel-agent/what-is-agent";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
@@ -263,9 +298,9 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"winklinks/intro.md": {
-	id: "winklinks/intro.md";
-  slug: "winklinks/intro";
+"winklinks/what-is-winklinks.md": {
+	id: "winklinks/what-is-winklinks.md";
+  slug: "winklinks/what-is-winklinks";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">

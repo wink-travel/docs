@@ -1,6 +1,8 @@
 ---
-title: Intro
-description: What is Travel Agent and what you need to know.
+title: What is Extranet?
+description: All you need to know about how to add your inentory to Wink.
+sidebar:
+  order: 0
 ---
 
 Reference pages are ideal for outlining how things work in terse and clear terms.
