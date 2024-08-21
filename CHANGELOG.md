@@ -2,6 +2,16 @@
 
 Changelog of docs.
 
+## v0.0.2 (2024-08-21)
+
+### Other changes
+
+**0.0.2**
+
+
+[cede1](https://github.com/wink-travel/docs/commit/cede163e72144fb) Bjorn Harvold *2024-08-21 04:07:49*
+
+
 ## v0.0.1 (2024-08-21)
 
 ### Other changes
