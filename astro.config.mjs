@@ -5,7 +5,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://docs.wink.travel',
+  site: 'https://academy.wink.travel',
   integrations: [
     // sentry({
     //   dsn: "https://4a8bd03adcb23a216910ee50a0d94407@o237992.ingest.us.sentry.io/1406681",
@@ -15,6 +15,15 @@ export default defineConfig({
     //   },
     // }),
     starlight({
+      head: [
+        {
+          tag: 'meta',
+          attrs: {
+            property: 'og:image',
+            content: 'https://res.cloudinary.com/traveliko/image/upload/v1653294291/wink/wink-social-card.png',
+          },
+        }
+      ],
       favicon: 'favicon.ico',
       logo: {
         src: './src/assets/logo.png',
