@@ -94,7 +94,7 @@ export default defineConfig({
       }, {
         label: 'Developers',
         autogenerate: {
-          directory: 'reference'
+          directory: 'developer'
         }
       },
       ]

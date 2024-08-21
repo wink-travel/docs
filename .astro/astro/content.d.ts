@@ -165,6 +165,41 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
+"developer/apis.mdx": {
+	id: "developer/apis.mdx";
+  slug: "developer/apis";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"developer/concepts.mdx": {
+	id: "developer/concepts.mdx";
+  slug: "developer/concepts";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"developer/sdks.mdx": {
+	id: "developer/sdks.mdx";
+  slug: "developer/sdks";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"developer/web-components.md": {
+	id: "developer/web-components.md";
+  slug: "developer/web-components";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".md"] };
+"developer/webhooks.mdx": {
+	id: "developer/webhooks.mdx";
+  slug: "developer/webhooks";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
 "extranet/payment-terms.md": {
 	id: "extranet/payment-terms.md";
   slug: "extranet/payment-terms";
@@ -221,41 +256,6 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".md"] };
-"reference/apis.mdx": {
-	id: "reference/apis.mdx";
-  slug: "reference/apis";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
-"reference/getting-started.mdx": {
-	id: "reference/getting-started.mdx";
-  slug: "reference/getting-started";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
-"reference/sdks.mdx": {
-	id: "reference/sdks.mdx";
-  slug: "reference/sdks";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
-"reference/web-components.md": {
-	id: "reference/web-components.md";
-  slug: "reference/web-components";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
-"reference/webhooks.mdx": {
-	id: "reference/webhooks.mdx";
-  slug: "reference/webhooks";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".mdx"] };
 "studio/create-affiliate-account.md": {
 	id: "studio/create-affiliate-account.md";
   slug: "studio/create-affiliate-account";
