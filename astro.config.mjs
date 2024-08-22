@@ -30,6 +30,9 @@ export default defineConfig({
         alt: 'Wink Logo'
       },
       title: 'Academy',
+      description: 'Everything you need to learn the ins and outs of the Wink Travel Platform and become a master at creating and selling travel inventory.',
+      lastUpdated: true,
+      titleDelimiter: '|',
       editLink: {
         baseUrl: 'https://github.com/wink-travel/docs/edit/master/'
       },
@@ -56,9 +59,9 @@ export default defineConfig({
           directory: 'getting-started'
         }
       }, {
-        label: 'User Settings',
+        label: 'User Features',
         autogenerate: {
-          directory: 'user-settings'
+          directory: 'user'
         }
       }, {
         label: 'Affiliate Portal',
@@ -99,6 +102,11 @@ export default defineConfig({
         label: 'Guides',
         autogenerate: {
           directory: 'guides'
+        }
+      }, {
+        label: 'Webinars',
+        autogenerate: {
+          directory: 'webinars'
         }
       }, {
         label: 'Developers',
