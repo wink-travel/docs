@@ -270,13 +270,6 @@ declare module 'astro:content' {
   collection: "docs";
   data: InferEntrySchema<"docs">
 } & { render(): Render[".mdx"] };
-"studio/create-affiliate-account.md": {
-	id: "studio/create-affiliate-account.md";
-  slug: "studio/create-affiliate-account";
-  body: string;
-  collection: "docs";
-  data: InferEntrySchema<"docs">
-} & { render(): Render[".md"] };
 "studio/curated-lists.mdx": {
 	id: "studio/curated-lists.mdx";
   slug: "studio/curated-lists";
@@ -301,6 +294,13 @@ declare module 'astro:content' {
 "studio/grids.mdx": {
 	id: "studio/grids.mdx";
   slug: "studio/grids";
+  body: string;
+  collection: "docs";
+  data: InferEntrySchema<"docs">
+} & { render(): Render[".mdx"] };
+"studio/manage-accounts.mdx": {
+	id: "studio/manage-accounts.mdx";
+  slug: "studio/manage-accounts";
   body: string;
   collection: "docs";
   data: InferEntrySchema<"docs">
