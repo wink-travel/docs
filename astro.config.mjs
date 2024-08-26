@@ -79,7 +79,7 @@ export default defineConfig({
           directory: 'corporate'
         }
       }, {
-        label: 'Hotel Portal',
+        label: 'Property Portal',
         autogenerate: {
           directory: 'extranet'
         }
