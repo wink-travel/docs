@@ -1,6 +1,8 @@
 ---
 title: What is Agent?
 description: Learn how Wink supports registered travel agents.
+sidebar:
+  order: 0
 ---
 
 Reference pages are ideal for outlining how things work in terse and clear terms.
