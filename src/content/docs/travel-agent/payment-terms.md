@@ -13,7 +13,7 @@ Last updated 2024-08-28
 The payment terms below apply to travel agents that wish to acquire and disburse funds on their own.
 This can only be done through our API and only by travel agents that have indicated that they want to do this during the sign-up process.
 
-All travel agents are still able to book through our travel agent portal using Wink's payment gateway and the credit card of either the traveler or the travel agent. Therefore, all travel agents also need to agree to the payment terms where Wink's payment gateway is the merchant of record.
+All travel agents are still able to book through our travel agent portal using Wink's payment gateway with their own or the traveler's credit card. Therefore, all travel agents also need to agree to the payment terms where Wink's payment gateway is the merchant of record.
 
 Those terms are available under [Affiliate Portal > Payment Terms](/studio/payment-terms).
 :::
