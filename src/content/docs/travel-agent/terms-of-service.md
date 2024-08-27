@@ -9,6 +9,15 @@ sidebar:
 Last updated 2024-08-28
 :::
 
+:::caution[Notice]
+The terms of service below apply to travel agents that wish to acquire and disburse funds on their own.
+This can only be done through our API and only by travel agents that have indicated that they want to do this during the sign-up process.
+
+All travel agents are still able to book through our travel agent portal using Wink's payment gateway with their own or the traveler's credit card. Therefore, all travel agents also need to agree to the terms of service where Wink's payment gateway is the merchant of record.
+
+Those terms are available under [Affiliate Portal > Terms of Service](/studio/terms-of-service).
+:::
+
 **WINK GENERAL TERMS AND CONDITIONS**  
 **FOR TRAVEL AGENTS (Merchant of Record)**
 
