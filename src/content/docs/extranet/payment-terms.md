@@ -2,7 +2,7 @@
 title: Payment Terms
 description: This document covers fund availability and how Wink pays out its affiliates.
 sidebar:
-  order: 2
+  order: 19
 ---
 
 :::note

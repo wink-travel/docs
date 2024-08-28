@@ -5,11 +5,20 @@ sidebar:
   order: 4
 ---
 
-All of Wink's services are free for everyone to use. Wink charges `5.5% per booking` to maintain the platform. 
+All of Wink's services are free for everyone to use. When there is a booking, Wink charges a small fee to maintain the platform.
+
+Wink supports both the merchant and agent models.
+
+## Model 1
+
+Wink is the merchant of record at the time the booking occurs. Wink is responsible for the funds and carries, any and all, licenses to operate a travel agency.
+This model applies to 95% of all bookings
+
+Wink charges `5.5% per booking` to maintain the platform. 
 Most of that goes to the payment gateway (Visa, MasterCard etc). An average booking costs us `2.95%` to acquire; sometimes as high as `3.6%`. Partial refunds set us back further as the payment gateway sees this as new charge. 
 We want to be completely transparent about pricing now to save everyone some time before trying to negotiate further discounts before having used Wink. Our pricing model is more than fair and we need to make a living too.
 
-## Breakdown
+### Breakdown
 
 :::note[Processing fee]
 Wink charges a 1.5% processing fee / booking. This enables us to offer all our services for free and covers platform maintainance.
@@ -28,12 +37,17 @@ There are fees associated with sending funds to your account. This depends on th
 If you want us to support another pay-out method, send us an e-mail.
 :::
 
-## Wink vs IBE
+## Model 2
 
-Some hotels try to compare us to their internet booking engine that came bundled with their channel manager and ask us to give them a fixed, monthly, price based on the number of keys to their property.
+This model is only available to travel agencies who hold a travel agency license in their region and who desire to be the merchant of record. Some of our registered travel agents want to be responsible for handling the payment and disbursing of funds to hotels. Under this model, they are responsible for the funds and carry the necessary licenses to operate in their country.
 
-We are not an IBE and hopefully [Wink Academy](/) clarifies that. There are pros and cons to any service. If your IBE works for your property, stick with that. 
-Wink exists to fill several voids in the travel industry and bring it all together in one place. You don't have to replace your IBE but you could give one of our alterantives a try on one of your social media accounts to see how they convert. You don't pay anything if there aren't any bookings - What do you have to lose? 😉
+### Breakdown
+
+:::note[Processing fee]
+Wink charges a 1.5% processing fee / booking. This enables us to offer all our services for free and covers platform maintainance.
+:::
+
+Using this model, travel agents only pay Wink's processing fee and Wink will invoice the travel agent on a monthly basis.
 
 ## Future services
 

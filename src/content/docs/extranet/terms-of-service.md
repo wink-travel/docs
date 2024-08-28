@@ -2,7 +2,7 @@
 title: Terms of Service
 description: Easily accessible and up-to-date terms for all our affiliate users.
 sidebar:
-  order: 1
+  order: 18
 ---
 
 :::note

@@ -31,8 +31,6 @@ Influencers use Wink to better monetize their audience. They do so by partnering
 
 Travel agents get access to travel inventory worldwide at great prices through our dedicated [travel agent portal](https://agent.wink.travel). They can make bookings through our portal, via our API or by letting their users book themselves on the travel agent website that's using our technologies. 
 
-*We support both merchant and agent models.*
-
 ## Corporations
 
 Corporations require more of a travel platform:
