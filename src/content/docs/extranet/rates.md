@@ -2,6 +2,6 @@
 title: Rates
 description: This article shows you how to manage master rates on Wink.
 sidebar:
-  order: 15
+  order: 16
 ---
 

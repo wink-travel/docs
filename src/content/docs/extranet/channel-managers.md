@@ -2,7 +2,7 @@
 title: Channel Managers
 description: All you need to know about how onboarding your properties on to Wink.
 sidebar:
-  order: 17
+  order: 18
 ---
 
 Reference pages are ideal for outlining how things work in terse and clear terms.

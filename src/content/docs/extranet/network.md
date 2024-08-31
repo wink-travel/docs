@@ -2,7 +2,7 @@
 title: Network
 description: This article shows you how to explore and manage your network of sales channels on Wink.
 sidebar:
-  order: 16
+  order: 17
 ---
 
 ## Inventory
