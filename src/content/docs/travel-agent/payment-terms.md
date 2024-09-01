@@ -31,7 +31,7 @@ These Payment Terms of Service (“Payment Terms”) are a binding legal agreeme
 
 The definitions and terms established in the Main Agreement apply to these Payment Terms unless otherwise defined herein.
 
-**1\. Definitions**
+**1. Definitions**
 
 As defined in the main agreement "TERMS & CONDITIONS TRAVEL AGENTS" ("Main Agreement"), the following terms shall have the same meanings in these Payment Terms:
 
@@ -44,7 +44,7 @@ As defined in the main agreement "TERMS & CONDITIONS TRAVEL AGENTS" ("Main Agree
 * "Separate Agreement"
 
 
-**2\. Payment Collection and Distribution**
+**2. Payment Collection and Distribution**
 
 2.1 **Payment Collection:** The Travel Agent is responsible for collecting payment from the Guest at the time of booking. This ensures immediate processing and financial clarity.
 
@@ -69,7 +69,7 @@ Net Payment to Hotel \= 985 \- 98.5 \= 886.5
 
 3.3 **Late Payments:** In the event of late payment, Wink reserves the right to charge interest on the overdue amount at a rate of 5% per month or the maximum rate permitted by law, whichever is lower. Additionally, if the Travel Agent is late in paying the Accommodation Provider as per the terms of the Separate Agreement, Wink reserves the right to suspend access to the Service until all outstanding payments to both Wink and the Accommodation Provider are resolved.
 
-**4\. Roles and Responsibilities**
+**4. Roles and Responsibilities**
 
 4.1 **Travel Agent Responsibilities:**
 
@@ -84,18 +84,18 @@ Net Payment to Hotel \= 985 \- 98.5 \= 886.5
 * Provide the Travel Agent with continuous  access to the Wink platform for processing bookings and managing payments.  
 * Assist the Travel Agent in resolving disputes related to payments by providing necessary transaction data and support as needed.
 
-**5\. Currency Conversion**
+**5. Currency Conversion**
 
 If any currency conversion is required, it will be processed at the rate provided by the payment processing service. The Travel Agent is responsible for any costs associated with currency conversion.
 
-**6\. Dispute Resolution**
+**6. Dispute Resolution**
 
 Any disputes arising out of or related to these Payment Terms shall be handled as stipulated under the dispute resolution procedures in the Main Agreement, ensuring a consistent and unified approach to resolving conflicts between Wink and the Travel Agent.
 
-**7\. Modification of Terms**  
+**7. Modification of Terms**  
 Wink reserves the right to modify these Payment Terms at any time. Any changes will be communicated to the Travel Agent at least 30 days before they take effect. Continued use of the Wink platform after the effective date constitutes acceptance of the modified terms.
 
-**8\. Governing Law and Jurisdiction**  
+**8. Governing Law and Jurisdiction**  
 These Payment Terms are governed by the laws of Singapore. Any disputes arising out of or relating to these terms shall be resolved in the courts of Singapore.
 
 These Payment Terms are integral to and expand upon the payment provisions set forth in the Main Agreement, "TERMS & CONDITIONS TRAVEL AGENTS\_220924," between Wink and the Travel Agent.

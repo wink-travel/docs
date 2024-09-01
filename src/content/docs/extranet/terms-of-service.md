@@ -32,7 +32,7 @@ In case of a discrepancy between these Terms and Conditions (hereinafter known a
 
 Now, therefore the Parties have agreed as follows:
 
-**1\. Definitions**
+**1. Definitions**
 
 In addition to terms defined elsewhere in this Agreement, the following definitions apply throughout this Agreement, unless the contrary intention appears:
 
@@ -98,27 +98,27 @@ In addition to terms defined elsewhere in this Agreement, the following definiti
 
 1.1.2 Unless agreed otherwise in writing by Wink or save as set out otherwise in this Agreement, the Accommodation Provider shall not publish anywhere on the Accommodation Provider Website(s) any statement, either express or implied, that the website is part of, endorsed by, or an official website of Wink.
 
-**2\. Contracting with guests**
+**2. Contracting with guests**
 
 When you receive a booking confirmation through the Wink platform, you are entering into a contract directly with the guest, and are responsible for delivering your services under the terms and at the price specified on the booking confirmation. You are also agreeing to pay related fees if and when applicable as defined in the Payment Terms.
 
-**3\. Independence of Accommodation Providers**
+**3. Independence of Accommodation Providers**
 
 Your relationship with Wink is that of an independent legal entity except that TripPay acts as a payment facilitator as described in the Payment Terms. Wink does not direct or control the services you provide, and you agree that you have complete discretion whether and when to provide those services, and at what price and on what terms to offer them.
 
-**4\. Managing your listing**
+**4. Managing your listing**
 
 As an Accommodation Provider, Wink offers you the tools you need to sell your inventory online through our proprietary Sales Channels.
 
 Accommodation Providers are responsible for keeping their listing information and content up to date and accurate at all times. Accommodation Providers shall respect the availability, prices, and any other commitments agreed herein. Accommodation Providers are exclusively responsible for updating and keeping updated at all times the availability, rates, and applicable local taxes, if any, through the Wink extranet. Accommodation Providers hereby allow Wink to promote the Rooms in all markets. Wink highly recommends Accommodation Providers to offer the most competitive Rates, promotions, and offers at all times.
 
-**5\. Legal Obligations**
+**5. Legal Obligations**
 
 5.1 Accommodation Providers are responsible for understanding and complying with any laws, rules, regulations, and contracts with third parties that apply to your listing.
 
 5.2 Accommodation Providers are responsible for handling and using personal data of guests and others in compliance with applicable privacy laws and these Terms.
 
-**6\. Booking Fees & Commissions**
+**6. Booking Fees & Commissions**
 
 Wink provides Accommodation Providers with the digital tools they need to distribute and sell their inventory online through 5 proprietary channels. By activating your property via the self-activation feature on your dashboard, your property will become automatically bookable on Traveliko.com and through the Network. You can indeed deactivate those channels manually in the extranet under the \- Distribution \- Sales channels menu section.
 
@@ -157,7 +157,7 @@ Payable to hotel (“Net Rate”) \=\> USD 85.1
 
 ---
 
-**7\. Taxes**
+**7. Taxes**
 
 7.1 The Accommodation Provider is responsible to ensure that the Rate includes all applicable Taxes. It is the responsibility of the Accommodation Provider to ensure that the Taxes included in the Rates are accurate and up-to-date. When the Accommodation Provider does not indicate the existence of city taxes, tourism fees, or other local fees to be paid, it shall be understood that they are included in the Rate.
 
@@ -169,13 +169,13 @@ Payable to hotel (“Net Rate”) \=\> USD 85.1
 
 7.5 Any claim by the relevant authority for penalties or interest arising out of the late payment, or any invoiced VAT, should be for the account of the Accommodation Provider. Further, if any amount of VAT is assessed and levied by any relevant authority responsible for VAT in the country in which the services are received under a self-accounting mechanism, then Wink shall account for this VAT on its VAT return in accordance with VAT legislation in the country. Any claim by the relevant authority for penalties or interest arising out of the late payment of any self-accounted VAT shall be for the account of Wink.
 
-**8\. Bank Details and Accommodation Provider's Designated Representative**
+**8. Bank Details and Accommodation Provider's Designated Representative**
 
 Accommodation Provider shall ensure that its bank account details provided to Wink are accurate at all times, and it shall notify without delay of any changes to such.
 
 Only the person signing this agreement shall be the sole designated representative of Accommodation Provider who shall have the authority to request changes to Accommodation Provider's bank account and/or payee information. No other person shall have such authority on behalf of the Accommodation Provider. Any change of such designated person shall be requested to Wink in writing, and any such change shall be implemented only via a written amendment to this Agreement executed by both Parties.
 
-**9\. Booking Modifications**
+**9. Booking Modifications**
 
 9.1 Accommodation Providers are liable for any booking modification outside of the cancellation policy stated on the booking confirmation accepted via direct communication with the Guest.
 
@@ -183,7 +183,7 @@ Only the person signing this agreement shall be the sole designated representati
 
 9.3 Wink shall have no liability to Accommodation Provider for any Rate errors committed by the Accommodation Provider.
 
-**10\. Booking Identification / Anti-Fraud Cooperation**
+**10. Booking Identification / Anti-Fraud Cooperation**
 
 10.1 The Accommodation Provider shall ensure that the full and correct company details of Wink clients are accurately populated in their systems so that each Booking is clearly identifiable as a Booking made under and in accordance with this Agreement.
 
@@ -191,7 +191,7 @@ Only the person signing this agreement shall be the sole designated representati
 
 10.3 The Parties agree that should an Accommodation Provider fail to comply with this clause, and the Booking is subsequently found to be a Potentially Fraudulent Booking, then Wink shall not be liable.
 
-**11\. Unavailability / Non-Fulfilment**
+**11. Unavailability / Non-Fulfilment**
 
 11.1 In the event of any situation of unavailability (whether due to overbooking or otherwise) that requires an Accommodation Provider to relocate any Guest to alternate accommodation, Accommodation Provider agrees to exercise their best efforts to keep/maintain Guests and Bookings in order to allow Guests to remain at such accommodation to the greatest extent possible. In the event that Accommodation Provider must ultimately relocate a Guest to alternate accommodations, then the Accommodation Provider agrees to the following:
 
@@ -202,11 +202,11 @@ Only the person signing this agreement shall be the sole designated representati
 
 11.2 In the event of the non-fulfilment by Accommodation Provider of any of the conditions of this Agreement, including unacceptable conditions of the premises and/or the Facilities & Services being deficient, Wink shall be entitled to stop payments and to demand the correct fulfilment of the agreed Booking terms. Accommodation Provider shall, in any case, bear the full cost of any compensation payable to the affected Guest, keeping Wink harmless of any liability arising from Accommodation Provider's defective fulfilment of its obligations under this Agreement.
 
-**12\. Participating Hotel Property Conditions**
+**12. Participating Hotel Property Conditions**
 
 At the earliest possible, Accommodation Provider shall notify via the Wink Extranet “Announcement section” of any construction, renovations, refurbishments, updates, or other work that will or may alter the ability of an Accommodation Provider to provide Rooms, Facilities & Services and/or might adversely affect a Guest's stay. For the avoidance of doubt, whenever an unavailability or non-fulfilment results from such circumstances, Section 11 of these Wink General Terms & Conditions ("Unavailability / Non-Fulfilment") shall apply and Accommodation Provider shall bear the full cost of any compensation payable to the affected Guest, holding Wink harmless of any liability.
 
-**13\. Modification, Term, and Termination**
+**13. Modification, Term, and Termination**
 
 13.1 Modification. Except as otherwise required by applicable law, Wink may modify these Terms at any time. If we make material changes to these Terms, we will post the revised Terms on the Wink Platform and update the “Last Updated” date at the top of these Terms. If you are affected by the modification, we will also provide you with notice of the modifications at least thirty (30) days before the date they become effective. If you do not terminate your agreement before the date the revised Terms become effective, your continued use of the Services will constitute acceptance of any changes to the revised Terms.
 
@@ -232,7 +232,7 @@ At the earliest possible, Accommodation Provider shall notify via the Wink Extra
 * Honour all Bookings made prior to the effective termination or expiration date, at the originally-reserved Rates, including those Bookings with check-in dates that occur subsequent to the termination or expiration of any applicable notice period, or otherwise provide suitable alternative services and  
 * Settle the account accordingly.
 
-**14\. Representations and Warranties**
+**14. Representations and Warranties**
 
 Accommodation Provider warrants and represents that it shall fully comply with the following:
 
@@ -252,7 +252,7 @@ Accommodation Provider warrants and represents that it shall fully comply with t
 
 14.8 To complete at its own cost any work which is necessary to eliminate any deficiencies and/or defects notified to it by the authorities with immediate effect. Accommodation Provider shall notify Wink of the same without delay. Accommodation Provider shall take into consideration any reasonable recommendation for improvement made by Wink.
 
-**15\. Guest Incidents & Complaints**
+**15. Guest Incidents & Complaints**
 
 15.1 Should any incident befall a Guest, Accommodation Provider must inform Wink of it, and the details thereof, as soon as possible, and shall fully cooperate with Wink with respect to appropriately handling any such incident.
 
@@ -262,17 +262,17 @@ Accommodation Provider warrants and represents that it shall fully comply with t
 
 15.4 The Accommodation Provider agrees to allow Wink to deduct all costs, expenses, and compensations incurred as a result of Guest incidents and complaints by Wink from the Accommodation Provider balance(s).
 
-**16\. Audit Rights**
+**16. Audit Rights**
 
 16.1 During the Term, Wink may audit any of Accommodation Provider's and/or Participating Hotels' relevant records as may be reasonably required in order to undertake verifications relating to (i) the performance of the Bookings; (ii) any and all payments received by Wink and/or Guests; and (iii) any and all payments paid or payable by Wink and/or Guests.
 
 16.2 Each Party shall bear its own costs in respect of any audit, except in the following circumstance: If the audit demonstrates that Accommodation Provider is failing to comply with any of its obligations under this Agreement, then, without prejudice to Wink's other rights and remedies, Accommodation Provider shall pay for the audit entirely, and shall take the necessary steps to bring its contractual obligations into compliance.
 
-**17\. Insurance**
+**17. Insurance**
 
 The Accommodation Provider shall maintain adequate insurance cover with reputable insurers, licensed to do business in the applicable state/country, in respect of all third-Party risks arising or which may arise in relation to or connected with the provision of accommodation (or any facilities and services) and/or this Agreement, including, Wink's liability arising directly or indirectly from or in conjunction with any claims in respect of (i) loss of or damage to any real or personal property; (ii) personal injury or death of any person; (iii) third-Party property loss or damage; or (iv) its liability to third parties to whom it provides the accommodation services.
 
-**18\. Anti-bribery, trade restrictions, and business ethics**
+**18. Anti-bribery, trade restrictions, and business ethics**
 
 Wink takes a zero-tolerance approach to breaches of international trade norms, bribery and corruption prevention legislation, and applicable restrictions on trade, funds flow, and terrorism financing.
 
@@ -282,7 +282,7 @@ The Accommodation Provider represents, warrants, and undertakes that they do and
 
 The Accommodation Provider warrants that to the best of its knowledge, neither they nor their Associated Parties have been convicted of an offense involving bribery or corruption or are the subject of any investigation by any governmental, administrative, or regulatory bodies.
 
-**19\. Confidentiality**
+**19. Confidentiality**
 
 19.1 Confidential Information. Parties understand and agree that in the performance of this Agreement, each Party may have access to or may be exposed to, directly or indirectly, confidential and sensitive information of the other Party (the "Confidential Information"). Confidential Information includes Customer Data, transaction volume, marketing and business plans, business, financial, technical, and operational information, usage statistics, ranking data, information in respect of rate, product, and availability parity, pricing policies, conversion data, and volume of click-throughs, and other related statistics, personal data of Guests, any software or information regarding software provided or used by Wink in connection with this Agreement, the terms of this Agreement, and such other non-public information that either a disclosing Party designates as being private or confidential or of which a receiving Party should reasonably know that it should be treated as private and confidential.
 
@@ -296,7 +296,7 @@ The Accommodation Provider warrants that to the best of its knowledge, neither t
 
 19.6 Each Party may contact the other Party's Data Protection Officer (DPO) through the following e-mail and/or postal addresses: dataprotectionofficer@Wink.
 
-**20\. Intellectual Property Rights**
+**20. Intellectual Property Rights**
 
 20.1 The Accommodation Provider acknowledges that Wink and/or its licensors shall retain ownership of all rights, title, and interest in and to all Intellectual Property Rights of Wink or embodied in the Wink Website, including (but not limited to) the Wink logo, the Content, and the Wink Data. Nothing contained in this Agreement shall be deemed to transfer any such right, title, or interest to the Accommodation Provider in any way.
 
@@ -306,13 +306,13 @@ The Accommodation Provider warrants that to the best of its knowledge, neither t
 
 20.4 By entering into this Agreement, Wink does not (explicitly or tacitly) waive or forfeit any of its rights to which it is entitled by any law, contract, or otherwise (now or in the future) in respect of the Wink Intellectual Property Rights vis-à-vis the Accommodation Provider or other third parties.
 
-**21\. Change of Ownership**
+**21. Change of Ownership**
 
 21.1 Accommodation Provider (and where the context requires each Participating Hotel) will not sell, lease, or otherwise dispose of their interest in any hotel property, without giving at least three (3) months' prior written notice. In the event of such sale, lease, or other disposition, Accommodation Provider (and/or Participating Hotel) will expressly provide in the contract of sale, lease, or other disposition that this Agreement (including all Bookings made under it) shall be assigned or novated to the new entity after the change of control subject to Sub-Sections (b) of this clause.
 
 21.2 Should Wink not wish to pursue Agreement with the new entity for whatever reason, the Parties may agree to terminate this Agreement immediately and without prejudice to any existing Bookings and any other rights either Party may have accrued prior to such termination
 
-**22\. Listing Content**
+**22. Listing Content**
 
 22.1 Wink will provide Accommodation Provider with access to the Wink extranet. The Accommodation Provider undertakes to upload all the information and contents relating to the product including but not limited to photographs, images, designs, text, audio, video, descriptions, and facilities (hereinafter "Content") to ensure optimum distribution of the product and shall maintain the Content up to date. In the event the Accommodation Provider does not provide the Content, it expressly authorizes Wink to do so by downloading it directly from the website of the Accommodation Provider and accepts the entire responsibility for any issues, including Claims that may arise from such uploading. Additionally, the Accommodation Provider grants Wink the right to modify and/or adjust the size and resolution of the Content for marketing and distribution purposes.
 
@@ -324,13 +324,13 @@ The Accommodation Provider warrants that to the best of its knowledge, neither t
 
 22.5 The Accommodation Provider shall: (i) provide Wink with updates in the way requested by Wink on the progress of the IPR claim including evidence that the IPRs claim has been settled or dismissed by the claimant as soon as reasonably practicable; (ii) In the event that the Accommodation Provider fails to comply with this clause or if Wink is not fully satisfied with the progress of the IPR claim or in order to prevent further damages, Wink shall assume immediate control of the IPR claim at the Accommodation Provider´s cost. Wink will be entitled to set off any cost and compensation paid as a consequence of the IPR claim against any present, contingent and/or future amount(s) due or owing from the Accommodation Provider.
 
-**23\. Publicity / External Communications**
+**23. Publicity / External Communications**
 
 23.1 Accommodation Provider shall not release any communication or materials whatsoever related to Wink or this Agreement, whether to the media or any other external Party without Wink's prior written consent, and the Accommodation Provider shall be solely and directly liable for any damage or loss incurred by Wink in violation of this provision.
 
 23.2 Accommodation Provider shall consult with Wink with respect to the contents of any such communication or material that it proposes to release, and Accommodation Provider must provide Wink with a copy of any such communication or material ultimately released.
 
-**24\. Precedence**
+**24. Precedence**
 
 24.1 This Agreement is created in order to allow individual commercial agreements that will be subsequently held by Wink with each of the Accommodation Providers. In case of discrepancy, the terms and conditions stipulated in this Agreement will apply to Accommodation Providers subject to the following:
 
@@ -338,39 +338,39 @@ The Accommodation Provider warrants that to the best of its knowledge, neither t
 
 24.3 In relation to rates, minimum occupations, discounts for third persons and children, and applicable markets, the conditions agreed in the applicable individual commercial agreement shall prevail.
 
-**25\. Authority to Sign – Accommodation Provider Representation & Signature**
+**25. Authority to Sign – Accommodation Provider Representation & Signature**
 
 25.1 The Accommodation Provider warrants that it, the person signing this Agreement, and/or any other person providing information (including, for the avoidance of doubt, any Payments Terms) to Wink in connection with or pursuant to this Agreement has the authority, capacity, and requisite power to sign this Agreement for and on behalf of each and every Participating Hotel, and that such person has the authority, capacity, and requisite power to bind Accommodation Provider and each and every Participating Hotel to this Agreement and shall, throughout the Term, comply with, perform, and ensure that each Participating Hotel complies with and performs, its obligations under this Agreement.
 
 25.2 The Accommodation Provider explicitly agrees that electronic acceptance of this Agreement and its Terms and Conditions, including those related to modifications, is valid, binding, and enforceable.
 
-**26\. Language**
+**26. Language**
 
 The English language version of this Agreement shall be controlling in all respects and shall prevail in case of any inconsistencies with translated versions, if any.
 
-**27\. Waivers**
+**27. Waivers**
 
 No waiver of any breach or condition of this Agreement shall be deemed to be a waiver of any other or subsequent breach or condition, whether of like or different nature.
 
-**28\. Severability**
+**28. Severability**
 
 If any provision of this Agreement is determined by a government enforcement agency, court, or tribunal of competent jurisdiction to be illegal, invalid, or otherwise unenforceable under national laws, then such provision will be construed, modified, or deleted to the extent necessary to make such provision and/or this Agreement legal, valid, or otherwise enforceable, and the remaining portion of such provision and the remaining other provisions hereof will survive, remain in full force and effect, and continue to be binding, and will be interpreted to give effect to the intention of the Parties to the fullest extent possible.
 
-**29\. Relationship of the Parties**
+**29. Relationship of the Parties**
 
 The Parties are, and shall act as, independent contractors in the performance of this Agreement. Neither Party shall act as, or be deemed to be, an agent for or partner of the other Party for any purpose whatsoever nor shall either Party have the authority to bind the other in any respect.
 
-**30\. Assignment**
+**30. Assignment**
 
 30.1 Neither Party shall be entitled to assign, transfer, or encumber any of its rights and/or obligations under this Agreement without the prior written consent of the other Party, provided that Wink may assign, transfer, or encumber any of its rights and/or obligations under this Agreement (in whole or in part or from time to time) to an affiliated company without the prior written consent of the Accommodation Provider.
 
 30.2 This Agreement is concluded for the benefit of the Parties and their respective successors and permitted assigns, and nothing herein is intended to or shall implicitly confer upon any other person any legal or equitable right, benefit, or remedy of any nature whatsoever, under or by reason of this Agreement, except to the extent explicitly stated otherwise in this Agreement.
 
-**31\. Force Majeure**
+**31. Force Majeure**
 
 Wink shall not be liable for any delay or failure to fulfil any obligation under these Terms resulting from causes outside the reasonable control of Wink or Wink Payments, including, but not limited to, acts of God, natural disasters, war, terrorism, riots, embargoes, acts of civil or military authorities, fire, floods, accidents, pandemics, epidemics or disease, strikes, or shortages of transportation facilities, fuel, energy, labour, or materials (“Force Majeure Event”).
 
-**32\. Limitation of Liabilities**
+**32. Limitation of Liabilities**
 
 32.1 To the maximum extent permitted by law, neither Party shall be liable for any indirect, incidental, consequential, special, or punitive damages whatsoever arising out of this Agreement or breach thereof, even if advised of the possibility of such damages. This limitation shall not apply to any breach of this Agreement relating to confidentiality and/or intellectual property rights.
 
@@ -378,33 +378,33 @@ Wink shall not be liable for any delay or failure to fulfil any obligation under
 
 32.3 The Parties acknowledge and agree that the exclusions of, and limitations on, liability set out in this Agreement are fair and reasonable.
 
-**33\. Indemnification**
+**33. Indemnification**
 
 To the maximum extent permitted by applicable law, you agree to release, defend (at Wink’s option), indemnify, and hold Wink and all its Accommodation Providers and subsidiaries, and their officers, directors, employees, and agents, harmless from and against any claims, liabilities, damages, losses, and expenses, including, without limitation, reasonable legal and accounting fees, arising out of or in any way connected with (i) your breach of these Terms; (ii) your improper use of the Services; (iii) your failure, or our failure at your direction, to accurately report, collect, or remit taxes; or (iv) your breach of any laws, regulations, or third-Party rights.
 
-**34\. Governing Law and Jurisdiction**
+**34. Governing Law and Jurisdiction**
 
 34.1 This Agreement shall be exclusively governed by and construed in accordance with the laws of Singapore. The Contracts (Rights of Third Parties) Act 2001 (Cap 53B) shall not apply to this Agreement. The Parties will in any event attempt to settle their disputes in an amicable manner out of court by first conducting good faith discussions and negotiations.
 
 34.2 Any disputes arising out or in connection with this agreement shall exclusively be submitted to and dealt with by the competent court in Singapore, without regard to the conflict of laws rules.
 
-**35\. Counterparts**
+**35. Counterparts**
 
 This Agreement may be executed of counter-parts, each of which (once executed) shall be deemed to be an original, and which taken together shall constitute one and the same instrument. Furthermore, any scanned/electronic copy of Wink's written signature shall have the same and equal effect as an original handwritten signature from Wink and shall not affect the validity of this Agreement.
 
-**36\. Entire Agreement**
+**36. Entire Agreement**
 
 36.1 This Agreement (including the Accommodation Provider Partner Registration Form, schedules, annexes, and appendixes, which form an integral part of this Agreement) constitutes the entire agreement and understanding of the Parties with respect to its subject matter and replaces and supersedes all prior agreements, arrangements, ((non) binding) offers, undertakings, or statements regarding such subject matter.
 
 36.2 If any provision of this Agreement is or becomes invalid or non-binding, the Parties shall remain bound by all other provisions hereof. In that event, the Parties shall replace the invalid or non-binding provision with provisions that are valid and binding and that have, to the greatest extent possible, a similar effect as the invalid or non-binding provision, given the contents and purpose of this Agreement.
 
-**37\. Execution**
+**37. Execution**
 
 The Agreement only enters into force and effect upon written confirmation of acceptance and approval of the Accommodation Provider by Wink. By registering and signing up to the Wink partner program as Accommodation Provider, the Accommodation Provider agrees, acknowledges, and accepts the terms and conditions of this Agreement, including the provisions related to modifications to this Agreement.
 
 The agreement has been read and all the terms and conditions have been agreed to by the accommodation provider. The affiliate explicitly agrees that electronic acceptance of this agreement and its terms and conditions, including those related to modifications, is valid, binding, and enforceable.
 
-**38\. Notices**
+**38. Notices**
 
 All notices by a Party under this Agreement shall be in English, in writing, and shall be delivered in person, by prepaid and registered post, or by an internationally recognized express courier (e.g., FedEx, UPS, DHL) to the registered office or by e-mail to the contact person.
 

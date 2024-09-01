@@ -14,8 +14,8 @@ Last updated 2024-06-12
 By registering and signing up to the Wink partner program as an affiliate partner, the affiliate hereby has reviewed and understands, acknowledges and accepts the terms and conditions of this affiliate agreement (the "agreement").   
 BETWEEN: 
 
-1\. **TRAVELIKO SINGAPORE PTE. LTD**., a company incorporated under the laws of Singapore and having its registered office at, \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 with VAT register number 201437335D (hereinafter known as "Wink"), and   
-2\. **THE AFFILIATE**, whose details are set out in the Affiliate Partner Registration Form or have been submitted online (the "Affiliate"). 
+1. **TRAVELIKO SINGAPORE PTE. LTD**., a company incorporated under the laws of Singapore and having its registered office at, \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 with VAT register number 201437335D (hereinafter known as "Wink"), and   
+2. **THE AFFILIATE**, whose details are set out in the Affiliate Partner Registration Form or have been submitted online (the "Affiliate"). 
 
 Wink and the Affiliate are a “Party” to this Agreement and are collectively referred to as the “Parties”. 
 
@@ -28,7 +28,7 @@ Wink and the Affiliate are a “Party” to this Agreement and are collectively 
 
 **Now, therefore the Parties have agreed as follows:**
 
-**1\. Definitions** 
+**1. Definitions** 
 
 1.1 In addition to terms defined elsewhere in this Agreement, the following definitions apply throughout this Agreement, unless the contrary intention appears: 
 
@@ -86,7 +86,7 @@ Wink and the Affiliate are a “Party” to this Agreement and are collectively 
 
 1.2.3 The Affiliate may engage directly with the Accommodation Providers to determine exclusive or preferred rates, terms, promotions, packages add-ons and such. 
 
-**2\. Scope of this Agreement** 
+**2. Scope of this Agreement** 
 
 **2.1 Non-exclusivity**   
 Subject to the terms and conditions of this Agreement, the Affiliate shall operate as a non-exclusive distributor (affiliate) of Wink. 
@@ -105,7 +105,7 @@ Subject to the terms and conditions of this Agreement, the Affiliate shall opera
 
 2.3.2 In the event that the Service is made available through the Micro Site, the Affiliate shall at its own costs integrate and make the Connections and/or the Micro Site available at such prominent place(s), web-pages and in such place, size and form on the Affiliate Website(s) as instructed by Wink or as mutually agreed upon by Parties. 
 
-**3\. License** 
+**3. License** 
 
 **3.1 Mutual license** 
 
@@ -125,7 +125,7 @@ Subject to the terms and conditions of this Agreement, the Affiliate shall opera
 
 3.2.2 Unless agreed otherwise by Wink in writing or as set out otherwise in this Agreement, the Affiliate shall not directly or indirectly be entitled to sell, use, transfer, (sub)license, communicate, disclose, make available, allow access to, divulge or otherwise disseminate the Wink Data or the Content (i) to any third party, (ii) for price/availability comparison purposes, sites, reviews or investigations, (iii) for any other purpose other than (generating Accommodation Provider reservations through) the Service, or (iv) otherwise. 
 
-**4\. Covenants and undertakings** 
+**4. Covenants and undertakings** 
 
 **4.1 General covenants, undertakings and obligations** 
 
@@ -148,7 +148,7 @@ Reselling is considered a material breach of this Agreement. The Affiliate ackno
 
 4.1.9 Any booking or reservation with any Accommodation Provider made by the Affiliate on the Wink Website or the Affiliate Website are subject to Wink Terms of Use which may be updated from time to time. For the avoidance of doubt, the Affiliate shall not use the Wink Website or its contents for any commercial purpose except for the purpose of receiving Commission subject to the terms of conditions of this Agreement. 
 
-4.1.10 The Affiliate agrees and acknowledges that the restrictive covenants, undertakings, commitments, obligations and restrictions set out in this Clause 4 are reasonable and of material importance to Wink, in particular for (i) its willingness to enter into this Agreement with the Affiliate and make the Service, the Content and the Wink Intellectual Property Rights (directly or indirectly) available to the Affiliate, and (ii) the protection of goodwill, product, service and (market) reputation of Wink. Furthermore, the Affiliate agrees and acknowledges that all covenants, undertakings, commitments, warranties, obligations and restrictions set out in this Clause 4 shall (a) be promptly, duly and diligently complied with by the Affiliate, and (b) also apply in respect of any person with access to the Seller Portal through the user ID of the Affiliate, any person reasonably believed to be representing the Affiliate, and the companies within the Affiliate Group. The Affiliate shall procure, warrant and undertake that any person who has access to the Seller Portal through the user ID of the Affiliate, any person reasonably believed to be representing the Affiliate, and the companies within the Affiliate Group shall observe, adhere to, comply with and act in accordance with the terms and conditions set out in this Clause 4\. 
+4.1.10 The Affiliate agrees and acknowledges that the restrictive covenants, undertakings, commitments, obligations and restrictions set out in this Clause 4 are reasonable and of material importance to Wink, in particular for (i) its willingness to enter into this Agreement with the Affiliate and make the Service, the Content and the Wink Intellectual Property Rights (directly or indirectly) available to the Affiliate, and (ii) the protection of goodwill, product, service and (market) reputation of Wink. Furthermore, the Affiliate agrees and acknowledges that all covenants, undertakings, commitments, warranties, obligations and restrictions set out in this Clause 4 shall (a) be promptly, duly and diligently complied with by the Affiliate, and (b) also apply in respect of any person with access to the Seller Portal through the user ID of the Affiliate, any person reasonably believed to be representing the Affiliate, and the companies within the Affiliate Group. The Affiliate shall procure, warrant and undertake that any person who has access to the Seller Portal through the user ID of the Affiliate, any person reasonably believed to be representing the Affiliate, and the companies within the Affiliate Group shall observe, adhere to, comply with and act in accordance with the terms and conditions set out in this Clause 4. 
 
 **4.2 Goodwill, brand protection and traffic** 
 
@@ -238,7 +238,7 @@ The Affiliate agrees not to contact, solicit or accept any Accommodation Provide
 (c) Wink reserves the right to demand the Affiliate to return the Commission paid by Wink under this Agreement; and   
 (d) in the event of the use of a Similar Domain Name (or ownership or registration by the Affiliate of a website with a (confusingly) similar domain name as owned or used by Wink) and a repeated and/or material breach of Clause 4, the Affiliate shall transfer, assign and register the Similar Domain Name (including the website(s) with a (confusingly) similar domain name) to and in the name of Wink through a domain name registrar company of Wink's choice to be completed within 20 business days after the occurrence of a breach. In the event the Affiliate does not (cooperate with and effectuate the) set over, assignment and transfer (of) the relevant domain names, the Affiliate hereby irrevocably and unconditionally authorizes, empowers and gives a power of attorney to and in favour of Wink to sign and/or execute all documents that are necessary or useful in relation to or required for the assignment, registration, set over and transfer of the domain names to and in the name of Wink. 
 
-**5\. Commission** 
+**5. Commission** 
 
 5.1 Wink will pay the Affiliate a Commission, being the percentage set by the Accommodation Provider of the booking value generated by Materialized Transaction. Wink uses the services of a Third-Party Payment Facilitator for Pay-in and Pay-out transactions. Payment Terms are set out in a separate agreement.
 
@@ -260,7 +260,7 @@ Net Commission Paid (Pay-out) \= Commission \- PSF \- BF
 
 5.6 Wink will make commercially reasonable efforts to keep an audit of all transactions subject to this Agreement. Wink will provide the Affiliate with access to analytics and a dashboard summarizing all upcoming and expired bookings. The Affiliate will also have access to payment reports, which will display projected earnings and payment history. Should Wink fail to keep accurate records or audit, the Affiliate's sole recourse shall be to terminate this Agreement and end its participation in the program. 
 
-**6\. Representations and Warranties.**
+**6. Representations and Warranties.**
 
 **6.1 Affiliate warranties** 
 
@@ -290,7 +290,7 @@ The Affiliate hereby represents and warrants to Wink that for the term of this A
 
 6.3.2 Each Party acknowledges the difficulties inherent to the use of the Internet, in particular, varying speeds and congestion in the network can cause interruptions and difficulties in accessing a website. Each Party excludes any and all liability in respect of the other Party which is related to any (temporary (scheduled or unscheduled) and/or partial or wholly) breakdown or downtime (for maintenance, updates or otherwise) of the Websites, the Seller Portal, the System and/or the Service. 
 
-**7\. Indemnifications and liability** 
+**7. Indemnifications and liability** 
 
 **7.1 Indemnification** 
 
@@ -337,7 +337,7 @@ Unless agreed otherwise, this Agreement shall commence on the date hereof for an
 
 8.3.6 Immediately upon the termination taking effect, Affiliate will remove any and all links to the Wink Websites, all Wink-related content, links, banners, logos, and other references to Wink. 
 
-**9\. Books, Records and Audit Right** 
+**9. Books, Records and Audit Right** 
 
 **9.1 The systems**
 
@@ -359,7 +359,7 @@ The Affiliate warrants that they do and shall comply with, and its Associated Pa
 The Affiliate represents, warrants and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the UK Bribery Act 2010 and the Singapore Prevention of Corruption Act.  
 The Affiliate warrants that to the best of its knowledge, neither they nor its Associated Parties have been convicted of an offence involving bribery or corruption or are subject of any investigation by any governmental, administrative or regulatory bodies.
 
-**11\. Confidentiality**
+**11. Confidentiality**
 
 **11.1 Confidential Information** 
 
@@ -396,15 +396,15 @@ The English language version of this Agreement shall be controlling in all respe
 
 No waiver of any breach or condition of this Agreement shall be deemed to be a waiver of any other or subsequent breach or condition, whether of like or different nature.
 
-**15\. Severability**
+**15. Severability**
 
 If any provision of this Agreement is determined by a government enforcement agency, court, or tribunal of competent jurisdiction to be illegal, invalid, or otherwise unenforceable under national laws, then such provision will be construed, modified or deleted to the extent necessary to make such provision and/or this Agreement legal, valid, or otherwise enforceable, and the remaining portion of such provision and the remaining other provisions hereof will survive, remain in full force and effect, and continue to be binding, and will be interpreted to give effect to the intention of the Parties to the fullest extent possible.
 
-**16\. Relationship of the Parties**
+**16. Relationship of the Parties**
 
 The Parties are, and shall act as, independent contractors in the performance of this Agreement. Neither Party shall act as, or be deemed to be, an agent for or partner of the other Party for any purpose whatsoever nor shall either Party has the authority to bind the other in any respect.
 
-**17\. Assignment** 
+**17. Assignment** 
 
 Neither Party shall be entitled to assign, transfer, encumber any of its rights and/or the obligations under this Agreement without the prior written consent of the other Party, provided that Wink may assign, transfer, encumber any of its rights and/or the obligations under this Agreement (in whole or in part or from time to time) to an affiliated company without the prior written consent of the Affiliate.   
 This Agreement is concluded for the benefit of the Parties and their respective successors and permitted assigns, and nothing herein is intended to or shall implicitly confer upon any other person any legal or equitable right, benefit or remedy of any nature whatsoever, under or by reason of this Agreement, except to the extent explicitly stated otherwise in this Agreement. 

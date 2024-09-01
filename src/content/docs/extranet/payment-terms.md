@@ -26,10 +26,10 @@ The Agreement has been read, and all the Terms and Conditions have been agreed u
 
 The Payment Services will be provided by the contracting entity depending on the country in which the Accommodation is located as follows:
 
-* United States: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801\.  
+* United States: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
 * Rest of the world: TripPay Slovakia
 
-**1\. Your Use of the Payment Services**
+**1. Your Use of the Payment Services**
 
 1.1 **Payment Facilitator Services**. By using the Payment Services, you agree to comply with these Payment Terms. Payment Facilitator may temporarily limit or suspend your access to or use of the Payment Services or its features to carry out maintenance measures that ensure the proper functioning of the Payment Services. Payment Facilitator may improve, enhance, and modify the Payment Services and introduce new Payment Services from time to time. Payment Facilitator will provide notice to Accommodation Providers of any changes to the Payment Services unless such changes do not materially increase the Accommodation Provider's contractual obligations or decrease the Accommodation Provider's rights under these Payment Terms.
 
@@ -41,7 +41,7 @@ The Payment Services will be provided by the contracting entity depending on the
 
 Only the person signing this agreement shall be the sole designated representative of the Accommodation Provider who shall have the authority to request changes to the Accommodation Provider's bank account and/or payee information. No other person shall have such authority on behalf of the Accommodation Provider. Any change of such designated person shall be requested to Wink in writing, and any such change shall be implemented only via a written amendment to this Agreement executed by both Parties.
 
-**2\. Collecting and Disbursing Payments**
+**2. Collecting and Disbursing Payments**
 
 2.1 **Collecting and Disbursing Payment**. Payment Facilitator collects the payment from guests on the Accommodation Provider’s behalf (Pay-in). Pay-in fees occur based on the guest's payment method (e.g., Visa, PayPal) and currency conversion (the “Pay-in Fees”), if and when applicable. When funds become available for Pay-out, Pay-out fees occur, including bank charges and currency conversion (the “Pay-out Fees”), if and when applicable.
 
@@ -76,7 +76,7 @@ Only the person signing this agreement shall be the sole designated representati
 
 2.14 **Third Party Integrators**. Please note that certain affiliates, hereinafter referred to as "Third Party Integrators," will be responsible for handling payment transactions. As a result, these Third Party Integrators will assume the role of the merchant of record. Consequently, Wink's payment terms will no longer apply to these transactions. Instead, new payment terms specific to the Third Party Integrators must be accepted by the hotel.
 
-**3\. Payment Processing Errors & Refunds**
+**3. Payment Processing Errors & Refunds**
 
 3.1 **Errors**. Payment Facilitator will take the necessary steps to rectify any payment processing errors that we become aware of. These steps may include crediting or debiting (as appropriate) your Payment Facilitator account, so that you end up receiving or paying the correct amount. This may be performed by Payment Facilitator or a third party such as your financial institution. We may also take steps to recover funds sent to you in error (including but not limited to an event of duplicate payments made to you due to a processing error), by reducing, setting off and/or debiting the amount of such funds from any future Pay-outs owed to you. To the extent you receive any funds in error, you agree to immediately return such funds to Payment Facilitator.
 
@@ -84,7 +84,7 @@ Only the person signing this agreement shall be the sole designated representati
 
 3.3 Subject to this Section 3.2, Payment Facilitator will process refunds immediately. However, the timing to receive any refund will depend on the Payment Method and any applicable payment system (e.g., Visa, Mastercard) rules. In the event of a Force Majeure Event that may affect the processing and settlement of refunds, Payment Facilitator will initiate and process the refund as soon as is practicable.
 
-**4\. Appointment of Payment Facilitator as Limited Payment Collection Agent**
+**4. Appointment of Payment Facilitator as Limited Payment Collection Agent**
 
 4.1 Each Accommodation Provider, including each Accommodation Provider Team member, hereby appoints Payment Facilitator as the Accommodation Provider’s payment collection agent solely for the limited purpose of accepting and processing funds from Guests purchasing Accommodation Provider Services on the Accommodation Provider’s behalf.
 
@@ -92,7 +92,7 @@ Only the person signing this agreement shall be the sole designated representati
 
 4.3 Each Guest acknowledges and agrees that, notwithstanding the fact that Payment Facilitator is not a party to the agreement between you and the Accommodation Provider(s), including each Accommodation Provider Team member, Payment Facilitator acts as each Accommodation Provider’s payment collection agent for the limited purpose of accepting payments on behalf of the Accommodation Provider(s). Upon a Guest’s payment of the funds to Payment Facilitator, the Guest’s payment obligation to the Accommodation Provider(s) for the agreed-upon amount is extinguished, and Payment Facilitator is responsible for remitting the funds successfully received by Payment Facilitator to the Accommodation Provider(s) in the manner described in these Payment Terms. In the event that Payment Facilitator does not remit any such amounts, the Accommodation Provider(s) will have recourse only against Payment Facilitator and not the Guest directly.
 
-**5\. Prohibited Activities**
+**5. Prohibited Activities**
 
 5.1 The Accommodation Provider is solely responsible for compliance with any and all laws, rules, regulations, and tax obligations that may apply to your use of the Payment Services. In connection with your use of the Payment Services, you may not and you agree that you will not and will not assist or enable others to:
 
@@ -112,11 +112,11 @@ The Accommodation Provider represents, warrants, and undertakes that they do and
 
 The Accommodation Provider warrants that to the best of its knowledge, neither they nor its Associated Parties have been convicted of an offence involving bribery or corruption or are subject to any investigation by any governmental, administrative, or regulatory bodies.
 
-**6\. Force Majeure**
+**6. Force Majeure**
 
 Payment Facilitator shall not be liable for any delay or failure to fulfil any obligation under these Payment Terms resulting from causes outside the reasonable control of Wink or Payment Facilitator, including, but not limited to, acts of God, natural disasters, war, terrorism, riots, embargoes, acts of civil or military authorities, fire, floods, accidents, pandemics, epidemics, or disease, strikes, or shortages of transportation facilities, fuel, energy, labour, or materials (“Force Majeure Event”).
 
-**7\. Disclaimers**
+**7. Disclaimers**
 
 7.1 If you choose to use the Payment Services, you do so voluntarily and at your sole risk. To the maximum extent permitted by law, the Payment Services are provided “as is”, without warranty of any kind, either express or implied.
 
@@ -126,7 +126,7 @@ Payment Facilitator shall not be liable for any delay or failure to fulfil any o
 
 7.4 The foregoing disclaimers apply to the maximum extent permitted by law. You may have other statutory rights or warranties which cannot lawfully be excluded. However, the duration of any statutorily required warranties shall be limited to the maximum extent (if any) permitted by law.
 
-**8\. Limitation of Liabilities**
+**8. Limitation of Liabilities**
 
 8.1 To the maximum extent permitted by law, neither Party shall be liable for any indirect, incidental, consequential, special, or punitive damages whatsoever arising out of this Agreement or breach thereof, even if advised of the possibility of such damages. This limitation shall not apply to any breach of this Agreement relating to confidentiality and/or intellectual property rights.
 
@@ -134,11 +134,11 @@ Payment Facilitator shall not be liable for any delay or failure to fulfil any o
 
 8.3 The Parties acknowledge and agree that the exclusions of, and limitations on, liability set out in this Agreement are fair and reasonable.
 
-**9\. Indemnification**
+**9. Indemnification**
 
 To the maximum extent permitted by applicable law, you agree to release, defend (at Payment Facilitator’s option), indemnify, and hold Payment Facilitator and all its affiliates and subsidiaries, and their officers, directors, employees, and agents, harmless from and against any claims, liabilities, damages, losses, and expenses, including, without limitation, reasonable legal and accounting fees, arising out of or in any way connected with (i) your breach of these Payment Terms; (ii) your improper use of the Payment Services; (iii) your failure, or our failure at your direction, to accurately report, collect or remit taxes; or (iv) your breach of any laws, regulations, or third-party rights.
 
-**10\. Modification, Term, Termination, and Other Measures**
+**10. Modification, Term, Termination, and Other Measures**
 
 10.1 **Modification**. Except as otherwise required by applicable law, Payment Facilitator may modify these Payment Terms at any time. If we make material changes to these Payment Terms, we will post the revised Payment Terms on the Wink Platform and update the “Last Updated” date at the top of these Payment Terms. If you are affected by the modification, we will also provide you with notice of the modifications at least thirty (30) days before the date they become effective. If you do not terminate your agreement before the date the revised Payment Terms become effective, your continued use of the Payment Services will constitute acceptance of any changes to the revised Payment Terms.
 
@@ -154,7 +154,7 @@ To the maximum extent permitted by applicable law, you agree to release, defend 
 
 10.7 **Survival**. Sections 5 through 11 of these Payment Terms shall survive any termination or expiration of this agreement.
 
-**11\. Governing Law and Dispute Resolution**
+**11. Governing Law and Dispute Resolution**
 
 11.1 If you are contracting with Payment Facilitator US, these Payment Terms will be interpreted in accordance with the laws of the State of Wyoming and the United States of America, without regard to conflict-of-law provisions. Legal proceedings (other than small claims actions) must be brought in state or federal court in Wyoming unless we both agree to some other location. You and we both consent to venue and personal jurisdiction in Wyoming.
 

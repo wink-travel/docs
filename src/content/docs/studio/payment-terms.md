@@ -28,7 +28,7 @@ The Payment Services will be provided by the contracting entity depending on the
 
 United States: TripPay Corporation Address: 30 N. Gould St, Suite 22578, Sheridan, WY  82801
 
-**1\. Your use of the Payment Services**
+**1. Your use of the Payment Services**
 
 **1.1 Payment Facilitator Services**. By using the Payments Services, you agree to comply with these Payment Terms. Payment Facilitator may temporarily limit or suspend your access to or use of the Payment Services, or its features, to carry out maintenance measures that ensure the proper functioning of the Payment Services. Payment Facilitator may improve, enhance and modify the Payment Services and introduce new Payment Services from time to time. Payment Facilitator will provide notice to Affiliates of any changes to the Payment Services, unless such changes do not materially increase the Affiliates’ contractual obligations or decrease the Affiliates’ rights under these Payment Terms.
 
@@ -39,7 +39,7 @@ United States: TripPay Corporation Address: 30 N. Gould St, Suite 22578, Sherida
 **1.4 Bank account information.** Accommodation Provider shall ensure that its bank account details provided to Payment Facilitator are accurate at all times, and it shall be notified without delay of any changes to such.  
 Only the person signing this agreement shall be the sole designated representative of Accommodation Provider who shall have the authority to request changes to Accommodation Provider's bank account and/or payee information. No other person shall have such authority on behalf of Accommodation Provider. Any change of such designated person shall be requested to Wink in writing, and any such change shall be implemented only via a written amendment to this Agreement executed by both Parties.
 
-**2\. Payment Terms**
+**2. Payment Terms**
 
 **2.1 Collecting and disbursing Payment**. Payment Facilitator collects the payment from guest on Affiliate behalf (Pay-in), Pay-in fees occur based on the guest payment method i.e Visa, PayPal, etc... and currency conversion (the “Pay-in Fees”) if and when applicable. When funds are transferred from your Payment Facilitator account to your local bank account (Pay-out), Pay-out fees occur, bank charges & currency conversion (the “Pay-out Fees”) if and when applicable.
 
@@ -66,13 +66,13 @@ Only the person signing this agreement shall be the sole designated representati
 * Any amount due to Wink or Payment Facilitator.   
 * Taxes, where applicable and as set out in the Terms.  
 * Any service fees pursuant to the Terms.  
-* Any amounts already paid to you as an Affiliate despite a Guest cancelling a confirmed booking or Wink deciding that it is necessary to cancel a booking in accordance with the Terms[,](https://www.airbnb.com/terms) Guest Refunds Policy, or other applicable cancellation policy. You agree that in the event you have already been paid, Payment Facilitator will be entitled to recover the amount of any such guest refund from you, including by subtracting such refund amount out from any future Pay-outs due to you.
+* Any amounts already paid to you as an Affiliate despite a Guest cancelling a confirmed booking or Wink deciding that it is necessary to cancel a booking in accordance with the [Terms](/studio/terms-of-service) Guest Refunds Policy, or other applicable cancellation policy. You agree that in the event you have already been paid, Payment Facilitator will be entitled to recover the amount of any such guest refund from you, including by subtracting such refund amount out from any future Pay-outs due to you.
 
 **2.12 Collections.** If Payment Facilitator is unable to collect any amounts you owe under these Payment Terms, Payment Facilitator may engage in collection efforts to recover such amounts from you.
 
 **2.13 Notifications.** Payment Facilitator will on request send a notification of any outstanding balance due to the Affiliate. Payment Facilitator will send these notices to the contact details that are held on file or communicated. It is the responsibility of the Affiliate to ensure these details are correct and up to date. 
 
-**3\. Payment Processing Errors & Refunds**
+**3. Payment Processing Errors & Refunds**
 
 **3.1** **Errors.** Payment Facilitator will take the necessary steps to rectify any payment processing errors that we become aware of. These steps may include crediting or debiting (as appropriate) your Payment Facilitator account, so that you end up receiving or paying the correct amount. This may be performed by Payment Facilitator or a third party such as your financial institution. We may also take steps to recover funds sent to you in error (including but not limited to an event of duplicate payments made to you due to a processing error), by reducing, setting off and/or debiting the amount of such funds from any future Pay-outs owed to you. To the extent you receive any funds in error, you agree to immediately return such funds to Payment Facilitator.
 
@@ -80,18 +80,18 @@ Only the person signing this agreement shall be the sole designated representati
 
 **3.3** Subject to this Section 3.2, Payment Facilitator will process refunds immediately, however, the timing to receive any refund will depend on the Payment Method and any applicable payment system (e.g., Visa, Mastercard, etc.) rules. In the event of a Force Majeure Event that may affect the processing and settlement of refunds, Payment Facilitator will initiate and process the refund as soon as is practicable.
 
-**4\. Appointment of Payment Facilitator as Limited Payment Collection Agent**
+**4. Appointment of Payment Facilitator as Limited Payment Collection Agent**
 
 4.1 Each Affiliate, including each Affiliate Team member, hereby appoints Payment Facilitator as the Affiliate’s payment collection agent solely for the limited purpose of accepting and processing funds from Guests purchasing Accommodation Provider Services on Affiliate’s Websites and App(s) on the Accommodation Provider’s behalf.
 
 4.2 Each Affiliate, including each Affiliate Team member, agrees that payment made by a Guest through Payment Facilitator on Affiliate’s Website and App(s), shall be considered the same as a payment made directly to the Accommodation Provider, and the Accommodation Provider will provide the Accommodation Provider Service booked by the Guest in the agreed-upon manner as if the Accommodation Provider has received the payment directly from the Guest. Each Affiliate agrees that Payment Facilitator may refund the Guest in accordance with the Terms. Each Affiliate understands that Payment Facilitator’ obligation to pay the Affiliate is subject to and conditional upon successful receipt of the associated payments from Guest. Payment Facilitator guarantees payments to Affiliate only for such amounts that have been successfully received by Payment Facilitator from Guests in accordance with these Payment Terms. In accepting appointment as the limited payment collection agent of the Affiliate, Payment Facilitator assumes no liability for any acts or omissions of the Affiliate.
 
-**5\. Prohibited Activities**
+**5. Prohibited Activities**
 
 5.1 You are solely responsible for compliance with any and all laws, rules, regulations, and tax obligations that may apply to your use of the Payment Services. In connection with your use of the Payment Services, you may not and you agree that you will not and will not assist or enable others to:
 
 * breach or circumvent any applicable laws or regulations;  
-* breach or circumvent any agreements with third parties, third-party rights, or the [Terms](https://www.airbnb.com/terms), [Policies](https://www.airbnb.com/help/topic/250/terms-and-policies), or [Standards](https://www.airbnb.com/trust/standards);  
+* breach or circumvent any agreements with third parties, third-party rights, or the [Terms](/studio/terms-of-service);  
 * use the Payment Services for any commercial or other purposes that are not expressly permitted by these Payment Terms;  
 * avoid, bypass, remove, deactivate, impair, descramble, or otherwise circumvent any technological measure implemented by Payment Facilitator to protect the Payment Services;  
 * take any action that damages or adversely affects, or could damage or adversely affect, the performance or proper functioning of the Payment Services;  
@@ -104,11 +104,11 @@ The Affiliate warrants that they do and shall comply with, and its Associated Pa
 The Affiliate represents, warrants and undertakes that they do and will comply in all respects with all international trade norms, applicable restrictions on trade, funds flow and terrorism financing and bribery and corruption prevention legislation, including, but not limited to the UK Bribery Act 2010 and the Singapore Prevention of Corruption Act.  
 The Affiliate warrants that to the best of its knowledge, neither they nor its Associated Parties have been convicted of an offence involving bribery or corruption or are subject of any investigation by any governmental, administrative or regulatory bodies.
 
-**6\. Force Majeure**
+**6. Force Majeure**
 
 Payment Facilitator shall not be liable for any delay or failure to fulfil any obligation under these Payment Terms resulting from causes outside the reasonable control of Wink or Payment Facilitator, including, but not limited to, acts of God, natural disasters, war, terrorism, riots, embargoes, acts of civil or military authorities, fire, floods, accidents, pandemics, epidemics or disease, strikes or shortages of transportation facilities, fuel, energy, labour or materials (“**Force Majeure Event**”).
 
-**7\. Disclaimers**
+**7. Disclaimers**
 
 7.1 If you choose to use the Payment Services, you do so voluntarily and at your sole risk. To the maximum extent permitted by law, the Payment Services are provided “as is”, without warranty of any kind, either express or implied.
 
@@ -118,7 +118,7 @@ Payment Facilitator shall not be liable for any delay or failure to fulfil any o
 
 7.4 The foregoing disclaimers apply to the maximum extent permitted by law. You may have other statutory rights or warranties which cannot lawfully be excluded. However, the duration of any statutorily required warranties shall be limited to the maximum extent (if any) permitted by law.
 
-**8\. Limitation of Liabilities**
+**8. Limitation of Liabilities**
 
 **8.1** To the maximum extent permitted by law, neither Party shall be liable for any indirect, incidental, consequential, special or punitive damages whatsoever arising out of this Agreement or breach thereof, even if advised of the possibility of such damages. This limitation shall not apply to any breach of this Agreement relating to confidentiality and/or intellectual property rights.
 
@@ -126,27 +126,27 @@ Payment Facilitator shall not be liable for any delay or failure to fulfil any o
 
 **8.3** The Parties acknowledge and agree that the exclusions of, and limitations on, liability set out in this Agreement are fair and reasonable.
 
-**9\. Indemnification**
+**9. Indemnification**
 
 To the maximum extent permitted by applicable law, you agree to release, defend (at Payment Facilitator’ option), indemnify, and hold Payment Facilitator and all its affiliates and subsidiaries, and their officers, directors, employees, and agents, harmless from and against any claims, liabilities, damages, losses, and expenses, including, without limitation, reasonable legal and accounting fees, arising out of or in any way connected with (i) your breach of these Payment Terms; (ii) your improper use of the Payment Services; (iii) your failure, or our failure at your direction, to accurately report, collect or remit taxes; or (iv) your breach of any laws, regulations, or third-party rights.
 
-**10\. Modification, Term, Termination, and other Measures**
+**10. Modification, Term, Termination, and other Measures**
 
 **10.1 Modification**. Except as otherwise required by applicable law, Payment Facilitator may modify these Payment Terms at any time. If we make material changes to these Payment Terms, we will post the revised Payment Terms on the Wink Platform and update the “Last Updated” date at the top of these Payment Terms. If you are affected by the modification, we will also provide you with notice of the modifications at least thirty (30) days before the date they become effective. If you do not terminate your agreement before the date the revised Payment Terms become effective, your continued use of the Payment Services will constitute acceptance of any changes to the revised Payment Terms.
 
 **10.2 Term**. This agreement between you and Payment Facilitator reflected by these Payment Terms is effective when you create an Wink account or use the Payment Services and remains in effect until either you or we terminate this agreement in accordance with Section 10.3.
 
-**10.3 Termination**. You may terminate this agreement at any time by sending us an email or by deleting your Wink account. Terminating this agreement will also serve as notice to cancel your Wink account pursuant to the [Terms](https://www.airbnb.com/terms). Without limiting our rights specified below, Payment Facilitator may terminate this agreement for convenience at any time by giving you thirty (30) days' notice via email to your registered email address. Payment Facilitator may also terminate this agreement immediately without notice if (i) you have materially breached your obligations under this agreement; (ii) you have provided inaccurate, fraudulent, outdated, or incomplete information; (iii) you have violated applicable laws, regulations, or third-party rights; or (iv) Payment Facilitator believes in good faith that such action is reasonably necessary to protect other Affiliate, Wink, Payment Facilitator, or third parties.
+**10.3 Termination**. You may terminate this agreement at any time by sending us an email or by deleting your Wink account. Terminating this agreement will also serve as notice to cancel your Wink account pursuant to the [Terms](/studio/terms-of-service). Without limiting our rights specified below, Payment Facilitator may terminate this agreement for convenience at any time by giving you thirty (30) days' notice via email to your registered email address. Payment Facilitator may also terminate this agreement immediately without notice if (i) you have materially breached your obligations under this agreement; (ii) you have provided inaccurate, fraudulent, outdated, or incomplete information; (iii) you have violated applicable laws, regulations, or third-party rights; or (iv) Payment Facilitator believes in good faith that such action is reasonably necessary to protect other Affiliate, Wink, Payment Facilitator, or third parties.
 
-**10.4 Suspension and Other Measures**. Payment Facilitator may limit or temporarily or permanently suspend your use of or access to the Payment Services (i) to comply with applicable law, or the order or request of a court, law enforcement, or other administrative agency or governmental body, (ii) if you have breached these Payment Terms, the [Terms](https://www.airbnb.com/terms), applicable laws, regulations or third-party rights, (iii) if you have provided inaccurate, fraudulent, outdated, or incomplete information regarding the required Pay-out data, (iv) for any amounts you owe under these Payments Term that are overdue or in default, or (v) if Payment Facilitator believes in good faith that such action is reasonably necessary to protect the personal safety or property of Wink, its Accommodation Provider, Payment Facilitator, or third parties, or to prevent fraud or other illegal activity. 
+**10.4 Suspension and Other Measures**. Payment Facilitator may limit or temporarily or permanently suspend your use of or access to the Payment Services (i) to comply with applicable law, or the order or request of a court, law enforcement, or other administrative agency or governmental body, (ii) if you have breached these Payment Terms, the [Terms](/studio/terms-of-service), applicable laws, regulations or third-party rights, (iii) if you have provided inaccurate, fraudulent, outdated, or incomplete information regarding the required Pay-out data, (iv) for any amounts you owe under these Payments Term that are overdue or in default, or (v) if Payment Facilitator believes in good faith that such action is reasonably necessary to protect the personal safety or property of Wink, its Accommodation Provider, Payment Facilitator, or third parties, or to prevent fraud or other illegal activity. 
 
-**10.5 Appeal**. If Payment Facilitator takes any of the measures described in Section 10.3 and 10.4 you may appeal such a decision by contacting [customer service](https://www.airbnb.com/help/contact\_us).
+**10.5 Appeal**. If Payment Facilitator takes any of the measures described in Section 10.3 and 10.4 you may appeal such a decision by contacting [customer service](mailto:support@wink.travel).
 
 **10.6 Effect of Termination**. If you cancel your Wink account as an Affiliate or Payment Facilitator takes any of the measures described above, Payment Facilitator may provide a full refund to any Guests with confirmed booking(s), and you will not be entitled to any compensation for pending or confirmed bookings that were cancelled. 
 
 **10.7 Survival**. Sections 5 through 11 of these Payment Terms shall survive any termination or expiration of this agreement.
 
-**11\. Governing Law and Dispute Resolution**
+**11. Governing Law and Dispute Resolution**
 
 **11.1** If you are contracting with Payment Facilitator in the United States, these Payment Terms will be interpreted in accordance with the laws of the State of Wyoming and the United States of America, without regard to conflict-of-law provisions. Legal proceedings (other than small claims actions) must be brought in state or federal court in Wyoming, unless we both agree to some other location. You and we both consent to venue and personal jurisdiction in Wyoming.
 
