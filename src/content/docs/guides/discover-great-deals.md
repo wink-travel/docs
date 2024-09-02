@@ -1,6 +1,8 @@
 ---
 title: Discover Great Deals
 description: This guide steps your through how to browse travel inventory in order to find what you want to sell.
+sidebar:
+  order: 1
 ---
 
 The affiliate portal exposes available travel inventory from suppliers anywhere in the world. Your task is to find the inventory that’s right for you. We offer a way for you to browse through hotels, the hotels’ individual facilities and experiences. Filter on the things that are matter to you, such as price, commission paid, location and a whole lot more.
