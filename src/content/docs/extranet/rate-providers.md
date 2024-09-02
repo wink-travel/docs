@@ -5,6 +5,14 @@ sidebar:
   order: 18
 ---
 
+## Set rate provider
+
+To set your rate provider, click on `Distribution > Channel manager` from the top navigation bar.
+
+Select your rate provider from the dropdown list and click the `Save` button. This will allow the rate provider to send us rates and we will notify them when there's a booking that occurred on Wink for one of your properties.
+
+## Vendors
+
 Below is a list of vendors we support:
 
 Available types:
