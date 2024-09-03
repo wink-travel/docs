@@ -3,7 +3,7 @@ title: What is TripPay?
 description: All you need to know about how Wink handles pay-ins/outs.
 ---
 
-TripPay was created to solve the problem of managing pay-ins and pay-outs, for any travel company... anywhere... once.
+TripPay was created to solve the problem of managing pay-ins and pay-outs for a travel company.
 
 ## API
 
