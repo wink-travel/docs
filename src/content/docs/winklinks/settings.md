@@ -19,6 +19,10 @@ Here are the ways you can configure your WinkLinks behavior with `Settings`:
     - `Rectangle` We recommend using a rectangular stype if your company logo is your profile picture as most company logos are rectangular in nature. 
 - ***Customization*** Choose which customization you want to use for your WinkLinks page. This affects your theme colors as well as your itinerary when displaying Wink inventory cards, maps or grids.
 
+## API
+
+Developers who want manage `WinkLinks` can head over to [Developers > API > WinkLinks](/developers/apis/#winklinks-api).
+
 ## Further reading
 
 - Read more about [Customizations](/studio/customization).

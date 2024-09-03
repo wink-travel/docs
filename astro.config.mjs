@@ -111,7 +111,7 @@ export default defineConfig({
       }, {
         label: 'Developers',
         autogenerate: {
-          directory: 'developer'
+          directory: 'developers'
         }
       },
       ]

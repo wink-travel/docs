@@ -17,7 +17,7 @@ Brands and chains have slightly different needs than a single property. On Wink,
 
 - Manage multiple properties under a single account.
 - Assign managers to properties
-- Use [WinkLinks](/winklinks/what-is-a-link-manager), [WordPress](/developer/wordpress) and our [Web Components](/developer/web-components) to market and sell multiple properties in the one place.
+- Use [WinkLinks](/winklinks/what-is-a-link-manager), [WordPress](/developers/wordpress) and our [Web Components](/developers/web-components) to market and sell multiple properties in the one place.
 
 ## Management companies
 
@@ -46,7 +46,7 @@ Corporate travelers can manage their own accounts on our [corporate portal](/cor
 
 ## Developers
 
-While we built this platform by and for hoteliers... Every line of code was built for the specific purpose of re-usability. Our team of developers built Wink in the hopes that the next 🦄 travel app gets built on top of our code base. Navigate to the [Developer](/developer/build-on-wink) page to see how Wink can support you in your next venture.
+While we built this platform by and for hoteliers... Every line of code was built for the specific purpose of re-usability. Our team of developers built Wink in the hopes that the next 🦄 travel app gets built on top of our code base. Navigate to the [Developer](/developers/build-on-wink) page to see how Wink can support you in your next venture.
 
 ## Other
 
