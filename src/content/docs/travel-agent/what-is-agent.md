@@ -13,15 +13,9 @@ Travel agents have a subset of the same portal features as [Wink Studio](/studio
 
 ## Search
 
-Go to [Search](/studio/search) to learn how to search for hotels to book.
+Go to [Search](/studio/search) to learn how to search for and book hotels.
 
-## Direct relationships
-
-Establish direct connections with properties to enjoy special deals for you and your customers. Go to [Network](/studio/network) to see how direct relationships work.
-
-## Bookings
-
-You can interact with your past and future bookings the same way as a property does. Go to [Bookings](/extranet/bookings) to learn how to manage bookings.
+Otherwise, continue on to the next section.
 
 ## API
 

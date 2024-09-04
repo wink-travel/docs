@@ -2,7 +2,7 @@
 title: Payment Terms
 description: This document covers fund availability and how Wink supports the agent model for travel agents.
 sidebar:
-  order: 4
+  order: 5
 ---
 
 :::note

@@ -2,7 +2,7 @@
 title: Terms of Service
 description: This article contains our terms of service for travel agents on the Wink Platform.
 sidebar:
-  order: 3
+  order: 4
 ---
 
 :::note
