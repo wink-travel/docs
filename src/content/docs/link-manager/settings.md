@@ -21,7 +21,7 @@ Here are the ways you can configure your WinkLinks behavior with `Settings`:
 
 ## API
 
-Developers who want manage `WinkLinks` can head over to [Developers > API > WinkLinks](/developers/apis/#winklinks-api).
+Developers who want to manage `WinkLinks` can head over to [Developers > API > WinkLinks](/developers/apis/#winklinks-api).
 
 ## Further reading
 

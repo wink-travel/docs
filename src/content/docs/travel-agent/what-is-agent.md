@@ -25,4 +25,4 @@ You can interact with your past and future bookings the same way as a property d
 
 ## API
 
-Developers who want manage `Travel Agent` can head over to [Developers > API > Travel Agent](/developers/apis/#travel-agent-api).
+Developers who want to manage `Travel Agent` can head over to [Developers > API > Travel Agent](/developers/apis/#travel-agent-api).

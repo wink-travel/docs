@@ -86,7 +86,7 @@ export default defineConfig({
       }, {
         label: 'Link Manager',
         autogenerate: {
-          directory: 'winklinks'
+          directory: 'link-manager'
         }
       }, {
         label: 'Travel Agent Portal',
