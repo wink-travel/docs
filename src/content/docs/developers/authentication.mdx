@@ -1,0 +1,72 @@
+---
+title: Authentication
+description: Learn how to authenticate using Wink's OAuth2 authorization server.
+sidebar:
+  order: 5
+---
+
+import { Tabs, TabItem } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+
+:::tip
+The Wink IAM authentication server supports the common OAuth2 endpoints:
+
+- /oauth2/authorize
+- /oauth2/token
+- /oauth2/introspect
+- /oauth2/revoke
+- /oauth2/userinfo
+:::
+
+An application provides your with a `Client ID` and `Secret Key` that you need to create an authenticated OAuth2 session you can use to communicate with Wink and TripPay APIs.
+
+Here are the steps to create an authenticated session.
+
+***Step 1***. Retrieve an access token on staging or in our production environment:
+
+You will, most likely, be working with a robust OAuth2 library for your language, which will do all the heavy lifting for you. 
+Our examples will show the most basic usage from the command line using `curl`.
+
+<Tabs>
+  <TabItem label="Staging">
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=client-1" \
+  -d "client_secret=secret-1" 
+
+```
+  </TabItem>
+  <TabItem label="Production">
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=client-1" \
+  -d "client_secret=secret-1" 
+
+```
+  </TabItem>
+</Tabs>
+
+This will return an access token, along with other OAuth2 response data:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+When you make a call to any of our endpoints, include the following in the header:
+
+- `Wink-Version` = `2.0` Latest - *See our API docs for other available versions.*
+- `Authentication` = `Bearer: ${access_token}` *Insert your access token.*
+
+:::tip
+You can test all our APIs without writing a single line of code before getting started.
+
+Grab a 'Client ID' and 'Secret Key' from one of your apps and navigate to any of our [APIs](/developers/apis).
+:::
