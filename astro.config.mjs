@@ -1,19 +1,11 @@
 import starlight from '@astrojs/starlight';
 import starlightDocSearch from '@astrojs/starlight-docsearch';
 import { defineConfig } from 'astro/config';
-// import sentry from "@sentry/astro";
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://academy.wink.travel',
   integrations: [
-    // sentry({
-    //   dsn: "https://4a8bd03adcb23a216910ee50a0d94407@o237992.ingest.us.sentry.io/1406681",
-    //   sourceMapsUploadOptions: {
-    //     project: "administration",
-    //     authToken: process.env.SENTRY_AUTH_TOKEN,
-    //   },
-    // }),
     starlight({
       head: [
         {

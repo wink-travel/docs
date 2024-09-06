@@ -5,19 +5,97 @@ sidebar:
   order: 6
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
 
-Speed up the time-to-market by using one of our officially supported language Software Development Kits.
-If we currently don't support your favorite language, go to the API you want to use and download the OpenAPI spec we make available for each API at the top of the page. You can generate your own SDK by either forking one of our public SDK repositories or by using one of OpenAPI's generators.
+Webhooks are a way for you to receive, and react to, realtime events from Wink and TripPay concerning your account.
 
-## Java
+## Example
 
-This library was compiled for Java 22. It is configured to uses the reactive WebClient and is optimized for use with the Spring Framework. However, Spring is not a requirement but it does give you OAuth2 support out of the box.
+<Steps>
+1. A booking occurs on Wink.
+1. The Wink event `booking.created` is dispatched.
+2. Your system is actively listening to this event.
+3. Your system tracks your own set of analytics and uses this event to update its time-series database.
+</Steps>
 
-<LinkButton href="https://github.com/wink-travel/wink-sdk-java" variant="secondary" icon="external">
-  Learn more
-</LinkButton>
+<figure>
+<CloudinaryImage 
+      width="350"
+      height="215"
+      resize="scale"
+      quality="best"
+      alt="Sample webhook"
+      src="academy/webhook" 
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Sample webhook entry*</figcaption>
+</figure>
 
-## Further reading
+:::note
+A Wink webhook is different from a TripPay webhook.
 
-- OpenAPI's generators [https://openapi-generator.tech/](https://openapi-generator.tech/)
+- If you want to listen to Wink events, you can create a webhook from [Extranet](https://extranet.wink.travel) or [Studio](https://studio.wink.travel).
+- If you want to listen to TripPay events, you can create a webhook from [Payment](https://pay.wink.travel).
+:::
+
+*For this example, we will authenticate via [Studio](https://studio.wink.travel).*
+
+<Steps>
+1. Once authenticated, click your profile icon, in the top-right corner, and a menu will appear.
+2. Click the `Webhooks` link.
+3. You will be redirected to your webhooks page.
+</Steps>
+
+## Create webhook
+
+:::caution
+You need to create an affiliate account on Wink or an account on TripPay before you create a webhook as you will be binding your webhook to a specific account.
+:::
+
+Here are the steps to creating an webhook:
+
+<Steps>
+1. From the webhooks page, click the `Create new webhook` button.
+2. ****Name**** Give your webhook a name. *e.g. Wink Stalker*
+3. ****Enable**** Leave as-is to be enabled.
+4. ***Entity name*** Link your webhook with one of your existing accounts. *e.g. Cool Account*
+5. ***Events*** Listen to the events that interest you. *e.g. `booking.created`*
+6. ***Webhook URL*** Enter the URL where you will be listening to events from us. *e.g. `https://my.system.com/webhook/wink`*
+7. Click the `Save` button to continue.
+</Steps>
+
+You are redirected back to your list of webhooks and your new webhook is ready to go.
+
+## Update webhook
+
+You will need to update your app if you want to:
+
+- Disable your webhook.
+- Listen to more / less events.
+- Change your listening webhook URL.
+
+To update an existing webhook, do the following:
+
+<Steps>
+1. Click the `Actions` link for the webhook you want to update.
+2. Click the `Update` button under Actions.
+3. Make your changes to the webhook.
+4. Click the `Save` button to continue.
+</Steps>
+
+You are redirected back to your list of webhooks.
+
+## Remove webhook
+
+If you have no further use for the webhook, you can go ahead and remove it.
+
+To remove an webhook, do the following:
+
+<Steps>
+1. Click the `Actions` link for the webhook you want to update.
+2. Click the `Remove` button under Actions.
+3. Click `OK` button to confirm deletion.
+</Steps>
+
+You are redirected back to your list of webhooks.
