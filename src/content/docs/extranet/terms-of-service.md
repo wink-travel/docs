@@ -9,7 +9,7 @@ sidebar:
 Last updated 2024-06-12
 :::
   
-***GENERAL TERMS AND CONDITIONS FOR ACCOMMODATION PROVIDERS***
+**GENERAL TERMS AND CONDITIONS FOR ACCOMMODATION PROVIDERS**
 
 By registering and signing up to the Wink program as an accommodation provider, the accommodation provider hereby has reviewed and understands, acknowledges, and accepts the terms and conditions of this accommodation provider agreement (the "Agreement").
 

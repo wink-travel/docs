@@ -16,6 +16,6 @@ A user account lets you:
 - Grab your WinkLinks vanity url (*e.g. https://i.trvl.as/bob*) and use it in your IG bio URL.
 - Book your next vacation and save.
 - Do all the above as a developer by integrating with Wink.
-- All our features are available to you for ***F-R-E-E***.
+- All our features are available to you for **F-R-E-E**.
 
 Continue to the next section to learn how to register and start earning with Wink.

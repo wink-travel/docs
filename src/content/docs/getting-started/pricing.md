@@ -31,8 +31,8 @@ TripPay charges a 4.0% payment fee / booking. This covers acquiring the payment 
 :::note[Funds disbursement]
 There are fees associated with sending funds to your account. This depends on the disbursement method you choose. We currently support:
 
-- ***Virtual credit card*** (hotels only) ~2.0%
-- ***Bank transfer*** Cost depends on the country you are located in and where the funds are sent from. We include a quote calculator you can use when you have available funds in your account.
+- **Virtual credit card** (hotels only) ~2.0%
+- **Bank transfer** Cost depends on the country you are located in and where the funds are sent from. We include a quote calculator you can use when you have available funds in your account.
 
 If you want us to support another pay-out method, send us an e-mail.
 :::
