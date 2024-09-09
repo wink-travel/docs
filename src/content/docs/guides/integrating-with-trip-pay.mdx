@@ -7,76 +7,216 @@ sidebar:
 
 import { Steps } from '@astrojs/starlight/components';
 
-:::tip
-Wink acquired TripPay in 2019 after being the first company to fully integrate with TripPay's features.
-:::
+This article contains an end-to-end example of how to integrate with TripPay.
 
-[TripPay](https://pay.wink.travel) is a technology company that was created to solve the issues and requirements related to managing the pay-ins and pay-outs of multiple parties in the travel industry. 
+It's recommended that you've already read:
 
-## Features
+- [Payment > Mapping](/payment/mapping).
+- [Payment > Integration](/payment/integration).
+- [Payment Web Component](/developers/web-components/#payment).
+- [Payment API](/developers/apis/#payment-api). *Read the section on `Create payable contracts`*
 
-Most of TripPay's main features occur `under the hood`. Those include:
-
-- Managing companies and offices, with travel agent licenses, in multiple regions.
-- Offer multiple [and local] cheap, payment options for travelers.
-- Offer multiple, fast, cost-effective, disbursement options for payees: 
-    - Suppliers
-    - Affiliates
-    - Facilitiators
-- Automating the disbursement of funds.
-- Managing KYC (Know Your Customer) for all payor & payees. 
-- Supports 8500 variations of cancellation policy rules.
-- Supports manual refund requests.
-
-Features our customers can directly interact with:
-
-- Embeddable payment widget you can include in your site to capture payment.
-- Manage accounts.
-- Manage mappings (link your internal payees with TripPay accounts).
-
-## Payees
-
-Unless you are an integrator, you don't have to worry about creating an account on TripPay. The integrator will do that for you at the time you create an account with them. 
-
-*Because Wink and TripPay is the same company, you can use your account on Wink to log into TripPay as well.*
-
-Payees log into TripPay to track how much money they made on each booking, how much is in their account and what can be withdrawn. 
-A normal payee usually interacts with TripPay in this fashion:
+Here are the steps to successfully use TripPay to pay for a booking:
 
 <Steps>
-1. You receive an e-mail from TripPay telling you that you have funds in your account with a link to manage your account.
-2. Your log into [TripPay](https://pay.wink.travel).
-3. You browse your bookings and view account analytics.
-4. Find out the amount that is currently available to withdraw.
-5. Select to withdraw funds.
-6. Choose `Pay-out` method.
-7. Follow the steps required to pay out your funds.
-8. Click `OK`.
+1. Make sure the beneficiaries you mention in the booking contract have been mapped.
+2. Let the traveler choose the inventory they want to book and have them get ready to pay.
+3. Create a `payable contract` with TripPay that contains the items to be booked.
+4. Let the traveler pay using the TripPay Web Component.
 </Steps>
 
-*Funds are typically available in 24 hours.*
+We assume you have already completed `Step 1` and `Step 2` and are ready to let TripPay know about the booking.
+
+## Create payable contract
 
 :::note
-Once you reach a certain volume and amount, we may reach out to you for more documentation that verifies your identity and / or that of your company.
+Go to the Payment API to learn more about the requirements to create a payable contract.
 :::
 
-## Integrate
+### Request
+Here is a JSON sample request that includes everything you need to create for your first payable contract.
 
-If you are a travel company that wishes to outsource the payment and disbursement part of your business to TripPay, here are 3 steps to follow:
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
 
-<Steps>
-1. Create a [user account](/user/register) on Wink.
-2. Create an account with [TripPay](https://pay.wink.travel).
-3. Create an [Application](/developers/applications) on TripPay that lets you talk to our API.
-4. Create and map your beneficiaries with TripPay. *e.g. For most, that means creating accounts for the properties on your platform that you want TripPay to pay.*
-5. Integrate the [payment web component](/developers/web-components#payment) into your site.
-6. Learn how to prepare travel inventory and make it available for purchase using the [TripPay API](/developers/apis/payment-api).
-</Steps>
+Explanation:
 
-## API
+We won't be explaining every data point here as they are already covered in the API docs. 
 
-Developers who want to manage `Payments` can head over to [Developers > API > Payments](/developers/apis/#payment-api).
+- Lines: **2 - 7** is the user responsible for booking. There are two types of bookers:
+    - Traveler.
+    - Travel agent.
+- Lines: **8 - 9** is the TripPay account facilitating the booking. It can be:
+    - Your TripPay integrator account.
+    - If you run an affiliate network, it can be your affiliate.
+- Use a `traceId` to group multiple bookings across multiple suppliers. This way you can cancel a group booking.
+- `redirectUrl` lets TripPay know which page to redirect to after the payment is complete.
+- `sourceUrl` is the site / app the booking occurred on.
 
-## Further reading
+The `contractList` array contains the item(s) the traveler wants to purchase from multiple suppliers. Each item contain:
 
-- To learn how to prepare and finalize a payment, check out our [example](/payment/example) in the next section.
+- The `identifier` is a valid UUID you generate.
+- The supplier you want to book inventory from.
+- The inventory you want to book from that supplier. These are all specified in the nested array `contractItemList`.
+- Every entry under `contractItemList` contains:
+    - **Guest user** This is the user that will be arriving on the premises.
+    - **Name in English** The name of the inventory in the English language.
+    - **Description in English** A longer description of the inventory in the English language.
+    - **Price** The price of the item.
+    - **Itinerary** When this item should be booked.
+    - **Pricing type** How the price was calculated.
+    - **Inventory type** What type of inventory this is.
+    - **Payable** When the traveler should be charged. *We currently only support immediate payment options.*
+    - **Policy** Include cancellation policy rules.
+    - **Daily rate list** If the item being booked is a room, you can choose to include how much that room cost for each night the guest stays.
+    - **Beneficiaries** Include which TripPay account(s) should be allocated what amount(s) of the price of the item. *Fixed / Percent amounts are supported.*
+
+:::note
+In the above JSON example, we have 3 beneficiaries:
+
+- 1.5% was allocated to the platform that facilitated the booking. *e.g. Wink*
+- 9.85% was allocated the affiliate as commission. *e.g. Kim Kardashian*
+- 88.65% was allocated the supplier for the booking of the room. *e.g. Hilton*
+
+When TripPay responds with a payable contract, you will notice that it injected its own beneficiary at 4.0%.
+:::
+
+### Response
+
+When TripPay responds to your request, it will look something like this:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+Save the `id` on line 3. You will use this to inject into the TripPay web component.
+
+## Embed TripPay
+
+:::note
+Make sure you've loaded our styles and Javascript beforehand.
+:::
+
+At this point, you are ready to embed the `Payment Web Component` into your site and show it to the user.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+As far as integration goes, that's all you need to do. All the heavy work is done by TripPay.
