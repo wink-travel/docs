@@ -19,4 +19,4 @@ The affiliate portal exposes available travel inventory from suppliers anywhere 
 
 ## Further reading
 
-- Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis framework
+- Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis framework 
