@@ -5,18 +5,32 @@ sidebar:
   order: 1
 ---
 
-The affiliate portal exposes available travel inventory from suppliers anywhere in the world. Your task is to find the inventory that’s right for you. We offer a way for you to browse through hotels, the hotels’ individual facilities and experiences. Filter on the things that are matter to you, such as price, commission paid, location and a whole lot more.
+The affiliate portal exposes travel inventory from suppliers all over the world. Your task is to find the inventory that’s right for you. We offer a way for you to browse through hotels, facilities and experiences. This article talks about ways to choose what to sell that is based on data and not just pretty pictures.
 
-## Searching for inventory
+We recommend that you read how to [Search](/studio/search) and [Insight For Dummies](/guides/insight-for-dummies) beforehand.
 
-1. From the top navigation bar, click → Inventory → Search
-2. Choose the category of inventory from the thumbnail categories shown to you.
-3. You’ll be taken to the search results page where you can scroll through available inventory and apply more filters to further narrow down your search results.
-4. Each search result card contains an “Actions” link with the following options:
-    - Supplier details…
-    - Create…
-    - Add to…
+## Strategies
 
-## Further reading
+There are many things to consider when first determining what your monetizing niche is going to be. We will cover a few here that we think can be good passive strategies for you as you get started.
 
-- Read [about how-to guides](https://diataxis.fr/how-to-guides/) in the Diátaxis framework 
+First, here are a few things for you to think about before starting to sell any kind of travel inventory:
+
+- Just because the inventory says it's available while you search doesn't mean it's available for a specific itinerary.
+- As an affiliate, you see only the base rate while searching; not the computed / final rate. That's because...
+- Travel inventory pricing is complex and can come with with many rules.
+
+### FOMO / YOLO
+
+In a nutshell: Costly, high-end, luxury inventory that provides a good margin even if the commission is lower.
+
+### The Squeeze
+
+In a nutshell: Hotels with 1000+ keys that are either visited by corporate travelers or families on vacation.
+
+### By the Numbers
+
+In a nutshell: Leverage analytics to determine what sells where, when and by whom.
+
+This strategy is the most versatile. Here are some easy steps to accomplish this:
+
+- 
