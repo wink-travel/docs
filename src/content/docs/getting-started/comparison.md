@@ -15,7 +15,7 @@ Learn how Wink compares to other online travel segments in the market. Below is 
 | Link-in-bio storefront | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | B2B affiliate network | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Travel agent support | 🟢 | 🟢 | ⚫️ | 🟢 | 
-| AI for distribution and marketing | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| AI-assisted distribution & marketing | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Social-friendly tools | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Commission-free B2C channel | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Free Google Hotel listing | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
