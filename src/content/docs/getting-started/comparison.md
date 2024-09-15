@@ -34,5 +34,5 @@ Learn how Wink compares to other online travel segments in the market. Below is 
 
 Some hotels try to compare us to their internet booking engine that came bundled with their channel manager and ask us to give them a fixed, monthly, price based on the number of keys to their property.
 
-We are not an IBE and hopefully [Wink Academy](/) help to clarify this. There are pros and cons to any service. If your IBE works for your property, stick with that. 
+We are not an IBE and hopefully [Wink Academy](/) helps to clarify this. There are pros and cons to any service. If your IBE works for your property, stick with that. 
 Wink exists to fill several voids in the travel industry and bring it all together in one place. You don't have to replace your IBE but you could give one of our alterantives a try on one of your social media accounts to see how they convert. You don't pay anything if there aren't any bookings - What do you have to lose? 😉
