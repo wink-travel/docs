@@ -23,7 +23,7 @@ Learn how Wink compares to other online travel segments in the market. Below is 
 | Direct relationships | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Negotiable commissions per sales channel | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Channel manager & PMS connectivity | 🟢 | 🟢 | 🟢 | 🟢 | 
-| Customer ownership | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| Supplier owns the Customer | 🟢 | ⚫️ | 🟢 | 🟢 | 
 | Track ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Pay-per-Performance | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Integrated payment gateway | 🟢 | 🟢 | 🟢 | ⚫️ | 
