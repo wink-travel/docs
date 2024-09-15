@@ -38,5 +38,5 @@ We are not an IBE and hopefully [Wink Academy](/) helps to clarify this. There a
 Wink exists to fill several voids in the travel industry and bring it all together in one place. 
 
 :::tip
-You don't have to replace your existing IBE. But, consider giving our social-friendly booking engine, or link manager, a go on one of your social media accounts to see how it converts. You don't pay anything if there aren't any bookings - What do you have to lose? 😉
+You don't have to replace your existing IBE. However, we recommend giving our social-friendly booking engine, or link manager, a go on one of your social media accounts to see how they convert. You don't pay anything if there aren't any bookings - What do you have to lose? 😉
 :::
