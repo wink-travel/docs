@@ -47,7 +47,7 @@ Only the person signing this agreement shall be the sole designated representati
 
 2.2 **Payment Services Fees**. Payment Facilitator charges 4% of the total booking for Payment Services.
 
-2.3 **Availability of Funds**. Subject to and conditional upon successful receipt of the payments from the Guest, Payment Facilitator will make the funds associated with a booking available to the Accommodation Provider no later than 15 days after the Guest’s scheduled check-out date.
+2.3 **Availability of Funds**. Subject to and conditional upon successful receipt of the payments from the Guest, Payment Facilitator will make the funds associated with a booking available to the Accommodation Provider within 24 hours of guest check-in.
 
 2.4 **Pay-out**. The Pay-out to your local bank account or by virtual credit card for a booking will be the total booking value minus Payment Services Fees (4%), Wink Booking Fee (1.5%), and partner commission if and when applicable as defined in the Accommodation Providers Terms & Conditions. In the event of cancellation of a confirmed booking, Payment Facilitator will remit the amount you are due (if any) as provided in the terms and applicable cancellation policy.
 
