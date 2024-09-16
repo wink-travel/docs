@@ -26,7 +26,8 @@ The Agreement has been read and all the Terms and Conditions have been agreed by
 
 The Payment Services will be provided by the contracting entity depending on the country in which the Affiliate is located as per below:
 
-United States: TripPay Corporation Address: 30 N. Gould St, Suite 22578, Sheridan, WY  82801
+* United States: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
+* Rest of the world: TripPay Slovakia
 
 **1. Your use of the Payment Services**
 
