@@ -55,9 +55,7 @@ As defined in the main agreement "TERMS & CONDITIONS TRAVEL AGENTS" ("Main Agree
 
 Booking Value USD 1,000  
 Wink Fee (1.5%) \= USD 15  
-Subtotal \= 1,000 \- 15 \= 985  
-Travel Agent commission (i.e 10%) \= 985\*10% \= USD 98.5  
-Net Payment to Hotel \= 985 \- 98.5 \= 886.5 
+Subtotal \= 1,000 \- 15 \= 985
 
 2.3 **Net Payment to Accommodation Providers:** The Travel Agent is responsible for disbursing the Net Payment to the Accommodation Provider according to the terms of the Separate Agreement between the Travel Agent and the Accommodation Provider. Wink is not liable for making any payments to the Accommodation Provider.
 
