@@ -50,7 +50,7 @@ WinkLinks is also a great way to expose the travel inventory you found, through 
 Use WinkLinks to sell your:
 
 - [Shareable links](/studio/shareable-links) - Choose to display as:
-    - [Ad banner](/developer/web-components/#content-loader).
+    - [Ad banner](/developers/web-components/#content-loader).
     - Normal link with realtime pricing updates.
 - [Cards](/studio/cards) - Bookable cards with realtime pricing & availability.
 - [Grids](/studio/grids) - Grid with bookable cards.

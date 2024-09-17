@@ -36,12 +36,12 @@ Its responsibilities include:
 
 The booking engine is a collection of re-usable functionality that we expose through https://ota.wink.travel; a highly customizable website for hotels and affiliates to sell their wares to travelers.
 
-Integrators, that want even more freedom, have access to all the same features via our [WordPress plugin](/developers/wordpress/), [Web Components](/developer/web-components) and [APIs](/developers/apis).
+Integrators, that want even more freedom, have access to all the same features via our [WordPress plugin](/developers/wordpress/), [Web Components](/developers/web-components) and [APIs](/developers/apis).
 
 Continue on to the next sections to read more about what the booking engine has to offer.
 
 ## Further reading
 
 - Read about our [WordPress plugin](/developers/wordpress/).
-- Read about our [Web Components](/developer/web-components).
+- Read about our [Web Components](/developers/web-components).
 - Read about our [APIs](/developers/apis).
