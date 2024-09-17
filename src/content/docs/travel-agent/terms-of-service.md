@@ -55,7 +55,7 @@ Those terms are available under [Affiliate Portal > Terms of Service](/studio/te
 
 * **"Booking Value"** means the total amount collected by the Travel Agent from the Guest for a Booking.
 
-* **"Commission"** means the amount owed to the Travel Agent by the Accommodation Provider, calculated at the agreed percentage from the “Separate Agreement” from the Booking Value after the deduction of Wink's 1.5% Booking Fee.  
+* **"Commission"** means the amount owed to the Travel Agent by the Accommodation Provider, calculated at the agreed percentage from the “Separate Agreement” from the Booking Value.  
     
 * **“Force Majeure”** shall mean any event beyond the reasonable control of a party, including but not limited to natural disasters, acts of war, terrorism, civil unrest, pandemics, and governmental actions, which prevent a party from fulfilling its obligations under this Agreement.  
     
