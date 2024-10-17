@@ -1,0 +1,87 @@
+---
+title: Setup
+description: This article shows you how to quickly get set up as a developer and start testing our APIs on Wink.
+sidebar:
+  order: 1
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+This article shows you how to quickly get set up as a developer and start testing our APIs on Wink.
+
+:::note
+Testing should always occur in our [staging environment](/getting-started/environments). There is a lot less data there but you are free to test as much as you want without imposing on the production environment.
+
+Once you are ready to go live, we will certify your account and your application and you can launch in our production environment.
+:::
+
+Follow these steps:
+
+<Steps>
+1. [Register](/user/register) your user account on Wink
+2. Create a [travel agent account](/travel-agent/what-is-agent) or an [affiliate account](/studio/what-is-studio).
+3. [Create an Application](/developer/applications) where you associate it with the account you created in Step 2.
+4. Once you've created your `Application`, save the client-id and client secret in a safe place.
+</Steps>
+
+## Testing
+
+Head on over to our [APIs](/developer/apis) section and choose the API you want to work with. 
+
+### API docs
+
+Our documentation site is set up in such a way that you can run API commands from within the site.
+
+In this example, you want to use the `Search Lookups (OAuth2)` API call.
+
+:::tip[Pro Tip]
+For ease of use, we recommend that integrators use the endpoints we designate as `OAuth2`. Those endpoints know to expect API callers and already knows which account you're on so you don't have to speciy the `companyIdentifier` in your URLs.
+:::
+
+<Steps>
+1. Use the [Lookup API](https://docs.wink.travel/lookup) to retrieve destinations or hotels.
+2. In the left navbar, click on `Authentication`.
+3. Enter your client-id and client secret and click the `Get TOKEN` button.
+4. If your credentials are valid, you will see that your API key has been applied.
+5. You can now test the lookup endpoint.
+</Steps>
+
+<figure>
+<CloudinaryImage 
+      width="700"
+      height="265"
+      resize="scale"
+      quality="best"
+      alt="Lookup API endpoint"
+      src="academy/lookup-api-call" 
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Sample Search Lookups (OAuth2)*</figcaption>
+</figure>
+
+### Postman
+You can do the same thing with Postman.
+
+<Steps>
+1. Download [Postman](https://www.postman.com/downloads).
+2. Click on `Download OpenAPI spec` from the top of the [Lookup API](https://docs.wink.travel/lookup) page.
+3. Import it into Postman.
+4. If you imported it as a new collection called `Wink API`, click on the horizontal elipsis (3 dots) next to the collection name and click `Edit`.
+5. In the `Authorization tab`, set the `Auth type` to OAuth2.
+6. Set the field `Add auth data to` to `Request headers`.
+7. Set the field `Header prefix` to `Bearer`.
+8. Set the field `Token Name` to whatever you want to name your saved token in Postman. E.g. Wink Staging.
+9. Set the field `Grant type` to `Client Credentials`.
+10. Set the field `Access token URL` to https://staging-iam.wink.travel/oauth2/token. 
+11. Set the field `Client ID` to the Client ID your app helped generate.
+12. Set the field `Client Secret` to the Client Secret your app helped generate.
+13. Set the field `Scope` to `inventory.read inventory.write inventory.remove`. Those are all the scopes you will need for Wink.
+14. Set the field `Client Authentication` to `Send as Basic Auth header`.
+15. Click the `Get New Access Token` button to retrieve your token and save it.
+16. For all API calls under the Wink API collection, make sure the authentication tab says `Inherit auth from parent` so it includes your token with every call.
+</Steps>
+
+:::tip[Pro Tip]
+It is recommended to make the server domain, client ID and client secret into environment variables. That way you can easily switch between staging and production environments and re-use all the operations you've created.
+:::
