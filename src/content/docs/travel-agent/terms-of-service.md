@@ -6,7 +6,7 @@ sidebar:
 ---
 
 :::note
-Last updated 2024-08-28
+Last updated 2024-10-30
 :::
 
 :::caution[Notice]
@@ -41,7 +41,7 @@ Those terms are available under [Affiliate Portal > Terms of Service](/studio/te
 
 **NOW THEREFORE, THE PARTIES AGREE AS FOLLOWS:**
 
-**1. Definitions**
+**1\. Definitions**
 
 1. In addition to terms defined elsewhere in this Agreement, the following definitions apply throughout this Agreement unless the contrary intention appears:
 
@@ -79,13 +79,13 @@ Those terms are available under [Affiliate Portal > Terms of Service](/studio/te
     
 * **“Travel Agent”** shall mean the entity entering into this Agreement with the Service Provider to promote and sell travel bookings through the Service Provider’s Platform.
 
-**2. Non-Exclusivity**
+**2\. Non-Exclusivity**
 
 2.1 The Travel Agent shall operate as a non-exclusive distributor of Wink.
 
 2.2 The Service shall be made available by Wink to the Travel Agent as set out in the Travel Agent Registration Form and on the website(s) set out in the Travel Agent Registration Form.
 
-**3. Payment Collection and Distribution**
+**3\. Payment Collection and Distribution**
 
 3.1 **Collection of Payments:** The Travel Agent shall collect payment from the Guest at the time of booking.
 
@@ -100,7 +100,7 @@ Those terms are available under [Affiliate Portal > Terms of Service](/studio/te
 
 3.5 **Wink’s Invoicing:** Wink will issue a monthly invoice to the Travel Agent for the 1.5% Booking Fee accumulated over the month. The Travel Agent is responsible for settling this invoice within the specified payment terms.
 
-**4. Roles and Responsibilities**
+**4\. Roles and Responsibilities**
 
 4.1 **Travel Agent's Responsibilities:**
 
@@ -114,23 +114,23 @@ Those terms are available under [Affiliate Portal > Terms of Service](/studio/te
 * Wink shall not be liable for payments to Accommodation Providers. The Travel Agent holds sole responsibility for all financial transactions with the Accommodation Providers.  
 * Wink will provide access to the System and ensure that the Service is available to the Travel Agent.
 
-**5. Intellectual Property Rights**
+**5\. Intellectual Property Rights**
 
 5.1 **Licenses:** Each Party grants the other a limited, non-exclusive, royalty-free, worldwide license to use its intellectual property solely for the purpose of fulfilling the obligations under this Agreement.
 
 5.2 **Restrictions:** The Travel Agent shall not sublicense, transfer, or disclose any intellectual property or content provided by Wink.
 
-**6. Payment to Wink**
+**6\. Payment to Wink**
 
 6.1 **Payment Schedule:**
 
-* All payments due to Wink by the Travel Agent under this Agreement shall be made within 15 days of receiving an invoice from Wink, unless otherwise agreed in writing. Payments shall be made in USD, free of any deductions or withholdings except as required by law.  
+* All payments due to Wink by the Travel Agent under this Agreement shall be made within 15 days of receiving the correct and accurate invoice from Wink, unless otherwise agreed in writing. Payments shall be made in USD, free of any deductions or withholdings except as required by law.  
   
 
 
 6.2 **Late Payments:**
 
-* If any payment due under this Agreement is not received by the due date, Wink reserves the right to charge interest at a rate of 5% on the outstanding amount, calculated from the due date until the date of payment. Additionally, Wink may suspend services until payment is received.
+* If any payment due under this Agreement is not received by the due date, Wink reserves the right to charge interest at a rate of 5% per month or the maximum rate permitted by law, whichever is lower on the outstanding amount, calculated from the due date until the date of payment. Additionally, Wink may suspend services until payment is received. However, if there are any mistakes or errors in the invoice submitted by Wink, Travel Agent shall only be required to make payment of the correct and accurate part of the invoice and shall not be subject to any interest charge or penalty for failing to pay the incorrect part of the invoice.
 
 
 6.3 **Refunds and Credits:**
@@ -152,7 +152,7 @@ Those terms are available under [Affiliate Portal > Terms of Service](/studio/te
 
 * In the event of a dispute over any invoice, the Travel Agent shall notify Wink within 10 days of the invoice date, providing detailed reasons for the dispute. Both parties shall negotiate in good faith to resolve the dispute promptly. The undisputed portion of the invoice shall be paid by the due date.
 
-**7. Travel Agent’s Responsibilities**
+**7\. Travel Agent’s Responsibilities**
 
 7.1 **Compliance with Laws and Regulations:**
 
@@ -204,15 +204,13 @@ Those terms are available under [Affiliate Portal > Terms of Service](/studio/te
 
 * The Travel Agent shall indemnify and hold the Service Provider harmless from any and all claims, damages, liabilities, and expenses arising out of or related to the Travel Agent’s breach of this Agreement, including but not limited to any failure to comply with applicable laws, misrepresentation of services, or failure to fulfill its obligations to Guests or Accommodation Providers.
 
-**8. Commissions and Fees**
+**8\. Commissions and Fees**
 
 8.1 **Calculation of Commission:** The Commission payable to the Travel Agent shall be a percentage (set in the agreement between the Travel Agent and the Accommodation Provider) of the Booking Value after deducting the Wink Booking Fee.
 
 8.2 **Wink's Booking Fee:** Wink will issue a monthly invoice for the 1.5% Booking Fee. The Travel Agent is responsible for settling this invoice within the payment terms specified by Wink.
 
-8.3 **Audit:** Wink reserves the right to audit the Travel Agent's records to ensure compliance with this Agreement.
-
-**9. Legal Provisions**
+**9\. Legal Provisions**
 
 9.1 **Limitation of Liability:** Neither Party shall be liable for any indirect, incidental, consequential, special, or punitive damages arising out of this Agreement.
 
@@ -220,7 +218,7 @@ Those terms are available under [Affiliate Portal > Terms of Service](/studio/te
 
 9.3 **Force Majeure:** Neither Party shall be liable for delays or failures to perform due to causes beyond their reasonable control, including acts of God, natural disasters, war, terrorism, strikes, etc.
 
-**10. Term and Termination**
+**10\. Term and Termination**
 
 10.1 **Term:** This Agreement shall commence on the date of execution and continue until terminated by either Party.
 
@@ -228,7 +226,7 @@ Those terms are available under [Affiliate Portal > Terms of Service](/studio/te
 
 10.3 **Post-Termination:** Upon termination, the Travel Agent shall settle all outstanding payments and cease using any intellectual property or content related to Wink.
 
-**11. Governing Law and Dispute Resolution**
+**11\. Governing Law and Dispute Resolution**
 
 11.1 **Governing Law:** This Agreement shall be governed by and construed in accordance with the laws of Singapore, without regard to its conflict of law principles.
 
@@ -240,7 +238,7 @@ Those terms are available under [Affiliate Portal > Terms of Service](/studio/te
 
 11.2.3 **Jurisdiction:** Notwithstanding the above, either party retains the right to seek interim or injunctive relief in the courts of Singapore to protect its rights or property while awaiting the appointment of an arbitrator, and any such court shall have the exclusive jurisdiction to grant such relief.
 
-**12. Force Majeure**
+**12\. Force Majeure**
 
 12.1 **Definition**: Neither party shall be liable for any failure or delay in performing its obligations under this Agreement if such failure or delay is due to a Force Majeure Event. A "Force Majeure Event" means any event beyond the reasonable control of a party, including but not limited to natural disasters (such as earthquakes, floods, or hurricanes), war, terrorism, civil unrest, pandemics, governmental actions, or any other event that could not have been reasonably anticipated or avoided.
 
@@ -256,14 +254,15 @@ Those terms are available under [Affiliate Portal > Terms of Service](/studio/te
 
 12.5 **Resumption of Obligations**: Once the Force Majeure Event has ceased, both parties shall promptly resume their obligations under this Agreement to the extent reasonably practicable.
 
-**13. Confidentiality**
+**13\. Confidentiality**
 
 13.1 Both Parties shall maintain the confidentiality of all proprietary information and shall not disclose it to any third party without prior written consent.
 
-**14. Miscellaneous**
+**14\. Miscellaneous**
 
 14.1 **Entire Agreement:** This Agreement constitutes the entire agreement between the Parties and supersedes all prior agreements or understandings.
 
 14.2 **Amendments:** Any amendments to this Agreement must be made in writing and signed by both Parties.
 
-14.3 **Severability:** If any provision of this Agreement is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.  
+14.3 **Severability:** If any provision of this Agreement is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.
+
