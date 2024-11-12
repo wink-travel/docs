@@ -14,7 +14,22 @@ export default defineConfig({
             property: 'og:image',
             content: 'https://res.cloudinary.com/traveliko/image/upload/v1653294291/wink/wink-social-card.png',
           },
-        }
+        },
+        {
+          tag: 'script',
+          attrs: {
+            src: 'https://www.googletagmanager.com/gtag/js?id=G-3PPY571GZT',
+            async: true,
+          },
+        },
+        {
+          tag: 'script',
+          content: `
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-3PPY571GZT');`
+        },
       ],
       favicon: 'favicon.ico',
       logo: {
