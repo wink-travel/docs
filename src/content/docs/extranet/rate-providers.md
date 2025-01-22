@@ -17,7 +17,7 @@ A word on RateGain integration. RateGain is the only channel manager we have tha
 
 ### SynXis
 
-If your property uses the SynXis channel manager, there is on more step required before you are ready to integrate with Wink.
+If your property uses the SynXis channel manager, there is on more step required before you are ready to connect with Wink.
 
 - Please get in touch with your SynXis account representative or customer care (SHSCustomerCare@sabre.com).
 - Let them know you want to connect to Wink via Channel Connect Express (***CCX***).
