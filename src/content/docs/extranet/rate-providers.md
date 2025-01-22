@@ -11,6 +11,21 @@ To set your rate provider, click on `Distribution > Channel manager` from the to
 
 Select your rate provider from the dropdown list and click the `Save` button. This will allow the rate provider to send us rates and we will notify them when there's a booking that occurred on Wink for one of your properties.
 
+### RateGain
+
+A word on RateGain integration. RateGain is the only channel manager we have that authenticates at the user-level as opposed to at the API-level. This means that when you add Wink as a new channel to RateGain, they will ask you for your Wink user credentials. You can add the user credentials (email / password) of the property owner or a property manager. RateGain will then send that information to us to query for which properties that user has access to.
+
+### SynXis
+
+If your property uses the SynXis channel manager, there is on more step required before you are ready to integrate with Wink.
+
+- Please get in touch with your SynXis account representative or customer care (SHSCustomerCare@sabre.com).
+- Let them know you want to connect to Wink via Channel Connect Express (***CCX***).
+- They will have you complete form ***PRS***.
+  - You will be asked to fill in your Wink user credentials.
+  - ...and your desired currency.
+- Complete the form and submit it back to SynXis.
+
 ## Vendors
 
 Below is a list of vendors we support:
