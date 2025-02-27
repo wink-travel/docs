@@ -30,7 +30,7 @@ Learn how Wink compares to other online travel segments in the market. Below is 
 | Payouts with Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
-## Wink vs IBE
+## Wink vs Internet Booking Engine (IBE)
 
 Some hotels try to compare us to their internet booking engine that came bundled with their channel manager and ask us to give them a fixed, monthly, price based on the number of keys to their property.
 
