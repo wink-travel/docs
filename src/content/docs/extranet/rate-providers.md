@@ -11,9 +11,6 @@ To set your rate provider, click on `Distribution > Channel manager` from the to
 
 Select your rate provider from the dropdown list and click the `Save` button. This will allow the rate provider to send us rates and we will notify them when there's a booking that occurred on Wink for one of your properties.
 
-### RateGain
-
-A word on RateGain integration. RateGain is the only channel manager we have that authenticates at the user-level as opposed to at the API-level. This means that when you add Wink as a new channel to RateGain, they will ask you for your Wink user credentials. You can add the user credentials (email / password) of the property owner or a property manager. RateGain will then send that information to us to query for which properties that user has access to.
 
 ### SynXis
 
