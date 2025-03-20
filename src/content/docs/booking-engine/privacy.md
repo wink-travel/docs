@@ -4,14 +4,6 @@ description: Easily accessible and up-to-date privacy policy for all our travele
 sidebar:
   order: 5
 ---
-  
-<!-- <iframe 
-      src="https://policies.google.com/privacy/embedded"
-      style="width: 100%; height: calc(100vh - 4rem); border: none;" 
-      title="Privacy"
-    >
-      Your browser does not support iframes.
-    </iframe> -->
 
 TRAVELIKO SINGAPORE PTE. LTD., operating under the name Wink (the “Company”),  would like to inform you who contacts the Company that it is necessary to collect, compile and use your personal data for the Company’s service in accordance with this Privacy Policy. By contacting and disclosing your personal data to the Company for the purposes of communication, coordination, and/or provision of the Company’s services to you, it deems that you agree and accept to be bound by and comply with this Privacy Policy.
 
