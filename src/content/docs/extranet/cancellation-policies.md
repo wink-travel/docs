@@ -5,7 +5,7 @@ sidebar:
   order: 12
 ---
 
-To manage your Cancellation policies, click on `Monetize > Cancellation policies` from the top navigation bar.
+To manage your Cancellation policies, click on `Monetize > Cancellation policies` from the main nav bar.
 
 Cancellation policies determine how booker funds are handled in case the guest cannot make it. Cancellation policies come in two distinct flavors:
 

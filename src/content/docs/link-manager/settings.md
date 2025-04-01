@@ -5,7 +5,7 @@ sidebar:
   order: 4
 ---
 
-To manage your WinkLinks settings, navigate to `WinkLinks` in the top navigation bar and click on the `Settings` tab.
+To manage your WinkLinks settings, navigate to `WinkLinks` in the main nav bar and click on the `Settings` tab.
 
 Here are the ways you can configure your WinkLinks behavior with `Settings`:
 
