@@ -50,16 +50,16 @@ export default defineConfig({
           indexName: 'wink'
         }),
       ],
-      social: {
-        github: 'https://github.com/wink-travel',
-        "x.com": 'https://x.com/wink2travel',
-        discord: 'https://discord.gg/t3YETu8k5n',
-        facebook: 'https://facebook.com/wink2travel',
-        linkedin: 'https://linkedin.com/company/wink2travel',
-        instagram: 'https://instagram.com/wink2travel',
-        youtube: 'https://www.youtube.com/@wink2travel',
-        email: 'mailto:hi@wink.travel'
-      },
+      social: [
+        { icon: 'github', label: 'Github', href: 'https://github.com/wink-travel' },
+        { icon: 'x.com', label: 'X', href: 'https://x.com/wink2travel' },
+        { icon: 'discord', label: 'Discord', label: 'Discord', href: 'https://discord.gg/t3YETu8k5n' },
+        { icon: 'facebook', label: 'Facebook', href: 'https://facebook.com/wink2travel' },
+        { icon: 'linkedin', label: 'LinkedIn', href: 'https://linkedin.com/company/wink2travel' },
+        { icon: 'instagram', label: 'Instagram', href: 'https://instagram.com/wink2travel' },
+        { icon: 'youtube', label: 'YouTube', href: 'https://www.youtube.com/@wink2travel' },
+        { icon: 'email', label: 'Email', href: 'mailto:hi@wink.travel' }
+      ],
       sidebar: [{
         label: 'Getting Started',
         autogenerate: {
@@ -69,6 +69,16 @@ export default defineConfig({
         label: 'User Features',
         autogenerate: {
           directory: 'user'
+        }
+      }, {
+        label: 'Managed Social',
+        autogenerate: {
+          directory: 'managed-social'
+        }
+      }, {
+        label: 'Agency',
+        autogenerate: {
+          directory: 'agency'
         }
       }, {
         label: 'Affiliate Portal',
