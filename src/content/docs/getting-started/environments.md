@@ -2,7 +2,7 @@
 title: Environments
 description: This article contains information for testers and developers about how to get access to our different server environments.
 sidebar:
-  order: 7
+  order: 8
 ---
 
 At Wink, we run 2 environments for everything we do at all times:
