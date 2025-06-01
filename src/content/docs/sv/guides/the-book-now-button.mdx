@@ -1,0 +1,141 @@
+---
+title: Boka nu-knappen
+description: >-
+  Den här guiden visar hotell hur man gör den enklaste integrationen med Wink
+  med en "Boka nu"-knapp.
+sidebar:
+  order: 2
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+Den**BOKA NU**Knappen är en allestädes närvarande term inom hotellbranschen som hänvisar till hotellets egen integration med en leverantör som känner till hotellets tillgänglighet och priser och kan låta resenärer boka ett rum. Knappen är det enklaste sättet för hotell att kunna sälja rum på sin egen webbplats och på sina egna villkor.
+
+*Många hotell använder den medföljande bokningsmotorn som erbjuds av deras kanalhanterare. Vi rekommenderar att hotell gör lite research och jämför inbyggda bokningsmotorer innan de bestämmer sig för att välja en specifik.*
+
+## Publik
+
+Den här artikeln är främst för hotell som vill installera vår kostnadsfria bokningsmotor med hög konverteringsgrad på sin webbplats.
+
+Men... den är också värdefull läsning för alla som vill använda våra tekniker på sina webbplatser.
+
+## via länk
+
+För enklast möjliga integration rekommenderar vi att du använder en[Delbar länk](/studio/shareable-links).
+
+Här är stegen för att göra detta:
+
+<Steps>
+  1. Gå till https://extranet.wink.travel
+  2. Klick `Sign-In / Register` i det övre högra hörnet och logga in med ditt användarkonto.
+  3. Välj den egenskap du vill arbeta med från den övre vänstra rullgardinsmenyn.
+  4. Klicka på `Booking engine` i navigeringsfältet.
+  5. Sidan visar din länk.
+  6. Ge den här länken till din webbansvariga och använd den för din **BOKA NU** knapp.
+  7. Du är ✅.
+</Steps>
+
+
+### Avancerad
+
+Länken har redan en inbyggd resplan i URL:en, som kommer från din valda destination.`customization`.
+Du kan anpassa din länk ytterligare genom att:
+
+* Ändra den valda anpassningen ELLER
+* Åsidosätt resplanen
+
+I den här artikeln kommer vi att fokusera på det senare eftersom det ger dig större frihet att låta resenärer välja en resplan på din webbplats och vidarebefordra den till Winks bokningsmotor.
+
+Så här skickar du din egen resplan tillsammans med URL:en.
+
+Giltiga begäranparametrar:
+
+* **sd**Så här lägger du till ett startdatum:*sd=2024-08-24*
+* **n**För att lägga till antal nätter:*n=1*ELLER
+* **utg.**&#x41;nvänd slutdatum:*ed=2024-08-25*
+* **rc**Gäster:*rc=a2*(Vuxna: 2)
+* **jag**Begär ett visningsspråk:*l=es*
+* **c**Begär en visningsvaluta:*c=EUR*
+* **p**Lägg till en kampanj:*p=ABC123*
+
+URL:en skulle se ut så här:
+
+https://trvl.as/abc123?sd=2024-08-24\&n=1\&rc=a2\&l=es\&c=EUR
+
+För mer avancerade användningsfall kan du också begära flera rumskonfigurationer med hjälp av`+`tecken:
+
+Exempel:
+
+https://trvl.as/abc123?sd=2024-08-24\&n=1\&rc=a2-ca16q1-ca8q1+a2\&l=es\&c=EUR
+
+* Rumstyp 1 = Vuxna: 2, Barn: 2 = 16 år + 8 år.
+* Rumstyp 2 = Vuxna: 2.
+
+### Exempel
+
+Exempel**BOKA NU**knapp-HTML:
+
+*Det här exemplet förutsätter att du använder[Bootstrap](https://getbootstrap.com)som ditt primära CSS-bibliotek.*
+
+```html
+<a 
+  href="https://trvl.as/abc123" 
+  target="_blank" 
+  class="btn btn-lg btn-primary" 
+  title="Book a room"
+>
+BOOK NOW
+</a>
+```
+
+### Andra fördelar
+
+Det finns andra fördelar med att använda en av våra länkar som din`book now`knappen.
+
+* **Socialvänlig**Länken kan enkelt delas på sociala medier och visas`dynamic pricing`ovanpå bilden du valt.
+* **Kort**URL:en är mycket delbar och du kan använda den på platser som din Instagram Bio-URL.
+
+## via Bädda in
+
+Vissa hotell vill ha lite mer funktionalitet och en djupare integration för sin webbplats. Det här exemplet handlar om att bädda in en[Kort](/studio/cards)in på deras webbplats.
+
+Här är stegen för att göra detta:
+
+<Steps>
+  1. Gå till https://studio.wink.travel
+  2. Klick `Sign-In / Register` i det övre högra hörnet och logga in med ditt användarkonto.
+  3. Välj den egenskap du vill arbeta med i det övre vänstra hörnet.
+  4. Klicka på `Search` från huvudnavigeringsfältet.
+  5. Skriv in namnet på din fastighet och klicka på sökknappen.
+  6. Klicka på `Actions` länken på ditt sökresultatskort och välj `Create > Make a Card`.
+  7. Detta kommer att skapa en `Card`.
+  8. Ett meddelande visas i det övre högra hörnet som talar om att ditt kort är klart och om du vill anpassa det ytterligare.
+  9. Klicka på `Tools > Cards` från huvudnavigeringsfältet så ser du ditt nya kort.
+  10. Klicka på `Actions` länken på ditt länkkort och klicka på `Embed`.
+  11. Detta öppnar ett nytt fönster med exempel på HTML-kod som du kan kopiera.
+  12. För att hämta din `Client-ID`, gå till [Applikationer](/developers/applications).
+  13. För att hämta din `Configuration-ID`, gå till [Anpassning](/studio/customization)
+  14. Du är ✅.
+</Steps>
+
+
+Exempel på inbäddad kort-HTML:
+
+```html
+<wink-content-loader
+  layout="GUEST_ROOM"
+  id="09d7cca4-6ff6-11ef-949b-42004e494300"
+></wink-content-loader>
+```
+
+*HTML-exemplet ovan inkluderar inte den nödvändiga Wink CSS och Javascript; bara kortet.*
+
+<figure>
+  <CloudinaryImage width="350" height="829" resize="scale" quality="best" alt="Förhandsgranskning av kort" src="academy/card-example" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Rumstypskort för framsidan med tillgänglighet*</figcaption>
+</figure>
+
+
+En bokare ser nu dynamiska priser, kan ändra resplan och klicka för att boka direkt på din webbplats. Bokknappen tar dig till din Wink-boendes landningssida för att slutföra betalningen.
+

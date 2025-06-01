@@ -1,0 +1,224 @@
+---
+title: Integrácia s TripPay
+description: >-
+  Tento článok obsahuje kompletný príklad toho, ako sa integrovať s TripPay a
+  nechať ho spracovať platbu za vás.
+sidebar:
+  order: 4
+---
+import { Steps } from '@astrojs/starlight/components';
+
+Tento článok obsahuje komplexný príklad integrácie s TripPay.
+
+Odporúča sa, aby ste si už prečítali:
+
+* [Platba > Mapovanie](/payment/mapping).
+* [Platba > Integrácia](/payment/integration).
+* [Webový komponent platby](/developers/web-components/#payment).
+* [Platobné rozhranie API](/developers/apis/#payment-api).*Prečítajte si časť o`Create payable contracts`*
+
+Tu sú kroky na úspešné použitie TripPay na úhradu rezervácie:
+
+<Steps>
+  1. Uistite sa, že príjemcovia, ktorých uvediete v zmluve o rezervácii, boli zmapovaní.
+  2. Nechajte cestujúceho vybrať si inventár, ktorý si chce rezervovať, a nech sa pripraví na platbu.
+  3. Vytvoriť `payable contract` s TripPay, ktorý obsahuje položky, ktoré sa majú rezervovať.
+  4. Nechajte cestujúceho platiť pomocou webového komponentu TripPay.
+</Steps>
+
+
+Predpokladáme, že ste už dokončili`Step 1`a`Step 2`a sú pripravení informovať TripPay o rezervácii.
+
+## Vytvoriť platobnú zmluvu
+
+:::note
+Viac informácií o požiadavkách na vytvorenie platobnej zmluvy nájdete v rozhraní API. :::
+
+### Žiadosť
+
+Tu je vzorová požiadavka JSON, ktorá obsahuje všetko, čo potrebujete na vytvorenie vašej prvej splatnej zmluvy.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Vysvetlenie:
+
+Nebudeme tu vysvetľovať každý dátový bod, pretože sú už uvedené v dokumentácii k API.
+
+* Riadky:**2 – 7**je používateľ zodpovedný za rezerváciu. Existujú dva typy rezervujúcich:
+  * Cestovateľ.
+  * Cestovný agent.
+* Riadky:**8 - 9**je účet TripPay, ktorý umožňuje rezerváciu. Môže to byť:
+  * Váš integračný účet TripPay.
+  * Ak prevádzkujete partnerskú sieť, môže to byť váš partner.
+* Použite`traceId`zoskupiť viacero rezervácií od viacerých dodávateľov. Týmto spôsobom môžete zrušiť skupinovú rezerváciu.
+* `redirectUrl`umožňuje TripPay vedieť, na ktorú stránku má po dokončení platby presmerovať.
+* `sourceUrl`je stránka/aplikácia, na ktorej sa rezervácia uskutočnila.
+
+Ten/Tá/To`contractList`Pole obsahuje položku (položky), ktoré chce cestovateľ kúpiť od viacerých dodávateľov. Každá položka obsahuje:
+
+* Ten/Tá/To`identifier`je platný UUID, ktorý vygenerujete.
+* Dodávateľ, od ktorého chcete rezervovať zásoby.
+* Zásoby, ktoré chcete rezervovať od daného dodávateľa. Všetky sú uvedené vo vnorenom poli.`contractItemList`.
+* Každý záznam pod`contractItemList`obsahuje:
+  * **Hosťovský používateľ**Toto je používateľ, ktorý príde na miesto konania.
+  * **Názov v angličtine**Názov inventára v anglickom jazyku.
+  * **Popis v angličtine**Dlhší popis inventára v anglickom jazyku.
+  * **Cena**Cena položky.
+  * **Itinerár**Kedy by sa mala táto položka rezervovať.
+  * **Typ ceny**Ako bola cena vypočítaná.
+  * **Typ inventára**Aký typ inventára je toto.
+  * **Splatné**Kedy by mal byť cestujúci poplatok účtovaný.*Momentálne podporujeme iba možnosti okamžitej platby.*
+  * **Pravidlá**Zahrňte pravidlá storna.
+  * **Denný cenník**Ak je rezervovanou položkou izba, môžete si vybrať, či chcete zahrnúť cenu izby za každú noc pobytu hosťa.
+  * **Príjemcovia**Uveďte, ktorému účtu (účtom) TripPay má byť pridelená aká suma (sumy) z ceny položky.*Podporované sú fixné/percentuálne sumy.*
+
+:::note
+Vo vyššie uvedenom príklade JSON máme 3 príjemcov:
+
+* 1,5 % bolo pridelených platforme, ktorá uľahčila rezerváciu.*napr. žmurknutie*
+* Partnerovi bolo pridelených 9,85 % ako provízia.*napr. Kim Kardashian*
+* Dodávateľovi bolo pridelených 88,65 % na rezerváciu izby.*napr. Hilton*
+
+Keď TripPay odpovie s platenou zmluvou, všimnete si, že vložil vlastného beneficienta vo výške 4,0 %. :::
+
+### Odpoveď
+
+Keď TripPay odpovie na vašu žiadosť, bude to vyzerať asi takto:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+Uložiť`id`na riadku 3. Toto použijete na vloženie do webového komponentu TripPay.
+
+## Vložiť TripPay
+
+:::note
+Uistite sa, že ste si vopred načítali naše štýly a Javascript.
+:::
+
+V tomto bode ste pripravení vložiť`Payment Web Component`na vašu webovú stránku a ukážte ju používateľovi.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+Čo sa týka integrácie, to je všetko, čo musíte urobiť. Všetku ťažkú ​​prácu odteraz vykoná TripPay.
+

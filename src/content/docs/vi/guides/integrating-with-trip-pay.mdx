@@ -1,0 +1,226 @@
+---
+title: Tích hợp với TripPay
+description: >-
+  Bài viết này có ví dụ đầy đủ về cách tích hợp và để TripPay xử lý thanh toán
+  thay bạn.
+sidebar:
+  order: 4
+---
+import { Steps } from '@astrojs/starlight/components';
+
+Bài viết này có ví dụ chi tiết về cách tích hợp với TripPay.
+
+Chúng tôi khuyên bạn nên đọc:
+
+* [Thanh toán > Bản đồ](/payment/mapping).
+* [Thanh toán > Tích hợp](/payment/integration).
+* [Thành phần thanh toán web](/developers/web-components/#payment).
+* [API thanh toán](/developers/apis/#payment-api).*Đọc phần trên`Create payable contracts`*
+
+Sau đây là các bước sử dụng TripPay thành công để thanh toán cho một lần đặt phòng:
+
+<Steps>
+  1. Hãy đảm bảo rằng những người thụ hưởng mà bạn đề cập trong hợp đồng đặt chỗ đã được lập bản đồ.
+  2. Hãy để du khách chọn loại phòng họ muốn đặt và chuẩn bị thanh toán.
+  3. Tạo một `payable contract` với TripPay có chứa các mục cần đặt.
+  4. Cho phép du khách thanh toán bằng Thành phần web TripPay.
+</Steps>
+
+
+Chúng tôi cho rằng bạn đã hoàn thành`Step 1` Và `Step 2`và sẵn sàng thông báo cho TripPay về việc đặt chỗ.
+
+## Tạo hợp đồng phải trả
+
+:::lưu ý
+Truy cập API thanh toán để tìm hiểu thêm về các yêu cầu để tạo hợp đồng phải trả.
+:::
+
+### Lời yêu cầu
+
+Sau đây là yêu cầu mẫu JSON bao gồm mọi thứ bạn cần tạo cho hợp đồng phải trả đầu tiên của mình.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Giải thích:
+
+Chúng tôi sẽ không giải thích mọi điểm dữ liệu ở đây vì chúng đã được đề cập trong tài liệu API.
+
+* Dòng:**2-7**là người dùng chịu trách nhiệm đặt chỗ. Có hai loại người đặt chỗ:
+  * Người du lịch.
+  * Đại lý du lịch.
+* Dòng:**8-9**là tài khoản TripPay tạo điều kiện cho việc đặt chỗ. Nó có thể là:
+  * Tài khoản tích hợp TripPay của bạn.
+  * Nếu bạn điều hành một mạng lưới liên kết, thì đó có thể là chi nhánh của bạn.
+* Sử dụng một`traceId`để nhóm nhiều đặt chỗ từ nhiều nhà cung cấp. Bằng cách này, bạn có thể hủy đặt chỗ theo nhóm.
+* `redirectUrl`cho TripPay biết trang nào sẽ được chuyển hướng đến sau khi thanh toán hoàn tất.
+* `sourceUrl`là trang web/ứng dụng mà bạn đã đặt chỗ.
+
+Các`contractList`mảng chứa các mặt hàng mà du khách muốn mua từ nhiều nhà cung cấp. Mỗi mặt hàng chứa:
+
+* Các`identifier`là UUID hợp lệ do bạn tạo ra.
+* Nhà cung cấp mà bạn muốn đặt hàng tồn kho.
+* Hàng tồn kho bạn muốn đặt từ nhà cung cấp đó. Tất cả đều được chỉ định trong mảng lồng nhau`contractItemList`.
+* Mỗi mục nhập dưới`contractItemList` chứa:
+  * **Người dùng khách**Đây là người dùng sẽ đến cơ sở.
+  * **Tên bằng tiếng Anh**Tên hàng tồn kho bằng tiếng Anh.
+  * **Mô tả bằng tiếng Anh**Mô tả chi tiết hơn về hàng tồn kho bằng tiếng Anh.
+  * **Giá**Giá của sản phẩm.
+  * **Hành trình**Khi nào nên đặt mặt hàng này.
+  * **Loại giá**Giá được tính như thế nào.
+  * **Loại hàng tồn kho**Đây là loại hàng tồn kho nào?
+  * **Phải trả**Khi nào du khách phải trả tiền.*Hiện tại chúng tôi chỉ hỗ trợ các tùy chọn thanh toán ngay lập tức.*
+  * **Chính sách**Bao gồm các quy tắc về chính sách hủy bỏ.
+  * **Bảng giá hằng ngày**Nếu mục được đặt là phòng, bạn có thể chọn bao gồm chi phí cho mỗi đêm khách lưu trú tại phòng đó.
+  * **Người thụ hưởng**Bao gồm tài khoản TripPay nào sẽ được phân bổ số tiền nào trong giá của mặt hàng.*Hỗ trợ số tiền cố định/phần trăm.*
+
+:::lưu ý
+Trong ví dụ JSON ở trên, chúng ta có 3 người thụ hưởng:
+
+* 1,5% được phân bổ cho nền tảng tạo điều kiện thuận lợi cho việc đặt chỗ.*ví dụ: Nháy mắt*
+* 9,85% được phân bổ cho bên liên kết dưới dạng hoa hồng.*ví dụ Kim Kardashian*
+* 88,65% được phân bổ cho nhà cung cấp để đặt phòng.*ví dụ Hilton*
+
+Khi TripPay phản hồi bằng một hợp đồng phải trả, bạn sẽ thấy rằng họ đã tiêm cho người thụ hưởng của mình ở mức 4,0%.
+:::
+
+### Phản ứng
+
+Khi TripPay phản hồi yêu cầu của bạn, nội dung sẽ trông giống như thế này:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+Lưu lại`id`ở dòng 3. Bạn sẽ sử dụng điều này để đưa vào thành phần web TripPay.
+
+## Nhúng TripPay
+
+:::lưu ý
+Hãy đảm bảo bạn đã tải các kiểu và Javascript của chúng tôi trước.
+:::
+
+Tại thời điểm này, bạn đã sẵn sàng để nhúng`Payment Web Component`vào trang web của bạn và hiển thị cho người dùng.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+Về mặt tích hợp, đó là tất cả những gì bạn cần làm. Mọi công việc nặng nhọc đều do TripPay thực hiện từ đây trở đi.
+

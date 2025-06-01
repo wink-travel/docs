@@ -1,0 +1,129 @@
+---
+title: Setup
+description: 本文向您展示如何快速成为开发人员并开始在 Wink 上测试我们的 API。
+sidebar:
+  order: 1
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+本文向您展示如何快速成为开发人员并开始在 Wink 上测试我们的 API。
+
+:::注意
+测试应始终在我们的[暂存环境](/getting-started/environments)。那里的数据少得多，但您可以自由地进行尽可能多的测试，而不会对生产环境造成影响。
+
+一旦您准备好上线，我们将认证您的帐户和应用程序，然后您就可以在我们的生产环境中启动。
+:::
+
+请按照以下步骤操作：
+
+<Steps>
+  1. [登记](/user/register) 您在 Wink 上的用户帐户
+  2. 创建一个 [旅行社账户](/travel-agent/what-is-agent) 或 [联盟账户](/studio/what-is-studio)。
+  3. [创建应用程序](/developer/applications) 将其与您在步骤 2 中创建的帐户关联起来。
+  4. 一旦你创建了你的 `Application`，将client-id和client secret保存在安全的地方。
+</Steps>
+
+
+## CDN
+
+在 Wink，我们使用 Cloudinary 来存储所有图片和视频资源。访问我们的旅行资源库，您将能够完全访问 Cloudinary 的所有高级功能。
+
+我们的 `cloud_name` 是  `traveliko`。
+
+### Cloudinary
+
+* [入门](https://cloudinary.com/documentation/dev_kickstart)
+* [SDK](https://cloudinary.com/documentation/cloudinary_sdks)
+* [GitHub 上的 Cloudinary](https://github.com/cloudinary)
+* [视频教程](https://cloudinary.com/documentation/cloudinary_sdks_tutorials)
+
+### 例子
+
+对于我们支持的每种旅行库存类型，都会有一个名为的嵌套 JSON 数组`multimedias`。多媒体条目的 JSON 如下所示：
+
+```json {3}
+{
+  "multimediaIdentifier": "multimedia-1",
+  "identifier": "partners/radisson_blu_logo",
+  "type": "IMAGE",
+  "width": "1024",
+  "height": "768",
+  "category": "1",
+  "descriptions": [
+    {
+      "name": "Lobby",
+      "description": "Picture of the lobby",
+      "language": "en"
+    }
+  ],
+  "lifestyleType": "LIFESTYLE_BUSINESS",
+  "attribution": [
+    {
+      "url": "https://www.hilton.com",
+      "name": "Hilton"
+    }
+  ]
+}
+```
+
+上面突出显示的行显示了 Cloudinary 的唯一 ID`partners/radisson_blu_logo`。这就是您以所需的任何格式、质量和大小检索图像所需的全部内容。
+
+## 测试
+
+前往我们的[蜜蜂](/developer/apis)部分并选择您想要使用的 API。
+
+### API 文档
+
+我们的文档站点设置方式使得您可以从站点内部运行 API 命令。
+
+在这个例子中，你想使用`Search Lookups (OAuth2)`API 调用。
+
+:::tip\[专业提示]
+为了方便使用，我们建议集成商使用我们指定的端点`OAuth2`。这些端点知道预期 API 调用者，并且已经知道您使用的帐户，因此您无需指定`companyIdentifier`在您的网址中。
+:::
+
+<Steps>
+  1. 使用 [查找 API](https://docs.wink.travel/lookup) 检索目的地或酒店。
+  2. 在左侧导航栏中，点击 `Authentication`。
+  3. 输入您的客户端 ID 和客户端密钥，然后单击 `Get TOKEN` 按钮。
+  4. 如果您的凭证有效，您将看到您的 API 密钥已被应用。
+  5. 您现在可以测试查找端点。
+</Steps>
+
+
+<figure>
+  <CloudinaryImage width="700" height="265" resize="scale" quality="best" alt="查找 API 端点" src="academy/lookup-api-call" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*示例搜索查找（OAuth2）*</figcaption>
+</figure>
+
+
+### 邮差
+
+您可以使用 Postman 做同样的事情。
+
+<Steps>
+  1. 下载 [邮差](https://www.postman.com/downloads)。
+  2. 点击 `Download OpenAPI spec` 从顶部 [查找 API](https://docs.wink.travel/lookup) 页。
+  3. 将其导入 Postman。
+  4. 如果您将其导入为名为 `Wink API`，单击集合名称旁边的水平省略号（3 个点），然后单击 `Edit`。
+  5. 在 `Authorization tab`，设置 `Auth type` 到 OAuth2。
+  6. 设置字段 `Add auth data to` 到 `Request headers`。
+  7. 设置字段 `Header prefix` 到 `Bearer`。
+  8. 设置字段 `Token Name` 您可以在 Postman 中随意命名已保存的令牌。例如 Wink Staging。
+  9. 设置字段 `Grant type` 到 `Client Credentials`。
+  10. 设置字段 `Access token URL` 到 https://staging-iam.wink.travel/oauth2/token。
+  11. 设置字段 `Client ID` 您的应用帮助生成的客户端 ID。
+  12. 设置字段 `Client Secret` 您的应用帮助生成的客户端密钥。
+  13. 设置字段 `Scope` 到 `inventory.read inventory.write inventory.remove`。这些就是 Wink 所需的所有范围。
+  14. 设置字段 `Client Authentication` 到 `Send as Basic Auth header`。
+  15. 点击 `Get New Access Token` 按钮来检索您的令牌并保存它。
+  16. 对于 Wink API 集合下的所有 API 调用，请确保身份验证选项卡显示 `Inherit auth from parent` 因此每次调用时都会包含您的令牌。
+</Steps>
+
+
+:::tip\[专业提示]
+建议将服务器域名、客户端 ID 和客户端密钥设置为环境变量。这样，您就可以轻松地在预发布环境和生产环境之间切换，并重复使用您创建的所有操作。
+:::
+

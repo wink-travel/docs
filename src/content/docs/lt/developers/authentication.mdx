@@ -1,0 +1,70 @@
+---
+title: Authentication
+description: >-
+  Sužinokite, kaip autentifikuotis naudojant „Wink“ „OAuth2“ autorizacijos
+  serverį.
+sidebar:
+  order: 2
+---
+:::tip
+„Wink“ IAM autentifikavimo serveris palaiko įprastus „OAuth2“ galinius taškus:
+
+* /oauth2/authorize
+* /oauth2/token
+* /oauth2/introspektas
+* /oauth2/atšaukti
+* /oauth2/userinfo
+  :::
+
+Programa suteikia jums`Client ID`ir`Secret Key`kad jums reikia sukurti autentifikuotą „OAuth2“ sesiją, kurią galėsite naudoti bendraudami su „Wink“ ir „TripPay“ API.
+
+Štai kaip sukurti autentifikuotą sesiją.
+
+**1 žingsnis**Gaukite prieigos raktą testavimo arba gamybinėje aplinkoje:
+
+Greičiausiai dirbsite su patikima savo kalbai skirta „OAuth2“ biblioteka, kuri atliks visą sunkų darbą už jus.
+Mūsų pavyzdžiuose bus parodytas pats pagrindinis naudojimas iš komandinės eilutės, naudojant`curl`.
+
+### Pastatymas
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Gamyba
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Tai grąžins prieigos raktą kartu su kitais OAuth2 atsakymo duomenimis:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Kai skambinate į bet kurį iš mūsų galinių taškų, antraštėje įtraukite šią informaciją:
+
+* `Wink-Version`=`2.0`Naujausi -*Kitų galimų versijų ieškokite mūsų API dokumentuose.*
+* `Authentication`=`Bearer: ${access_token}` *Įveskite savo prieigos raktą.*
+
+:::tip
+Prieš pradėdami galite išbandyti visas mūsų API neparašydami nė vienos kodo eilutės.
+
+Iš vienos iš savo programėlių atsisiųskite „Kliento ID“ ir „Slaptąjį raktą“ ir eikite į bet kurį mūsų[API](/developers/apis).
+:::
+

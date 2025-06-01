@@ -1,0 +1,131 @@
+---
+title: Setup
+description: >-
+  Ez a cikk bemutatja, hogyan lehet gyorsan fejlesztőként beállítani és
+  elkezdeni tesztelni API-jainkat a Winken.
+sidebar:
+  order: 1
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+Ez a cikk bemutatja, hogyan lehet gyorsan fejlesztőként beállítani és elkezdeni tesztelni API-jainkat a Winken.
+
+:::megjegyzés
+A tesztelésnek mindig a miénkben kell történnie[színpadi környezet](/getting-started/environments)Sokkal kevesebb adat van ott, de annyit tesztelhetsz, amennyit csak akarsz anélkül, hogy túlterhelnéd az éles környezetet.
+
+Amint készen állsz az éles üzembe helyezésre, hitelesítjük a fiókodat és az alkalmazásodat, és elindíthatod az éles környezetünkben.
+:::
+
+Kövesse az alábbi lépéseket:
+
+<Steps>
+  1. [Nyilvántartás](/user/register) felhasználói fiókod a Wink-en
+  2. Hozz létre egy [utazási irodai számla](/travel-agent/what-is-agent) vagy egy [partnerfiók](/studio/what-is-studio).
+  3. [Alkalmazás létrehozása](/developer/applications) ahol a 2. lépésben létrehozott fiókhoz társítja.
+  4. Miután létrehoztad a `Application`, mentse el az ügyfél-azonosítót és az ügyfél titkos kódját biztonságos helyre.
+</Steps>
+
+
+## CDN
+
+A Winknél a Cloudinary-t használjuk minden kép- és videóanyagunkhoz. Amikor hozzáférsz az utazási készletünkhöz, teljes hozzáférést kapsz a Cloudinary összes fejlett funkciójához.
+
+A miénk`cloud_name`van`traveliko`.
+
+### Felhőszerű
+
+* [Első lépések](https://cloudinary.com/documentation/dev_kickstart)
+* [SDK-k](https://cloudinary.com/documentation/cloudinary_sdks)
+* [Cloudinary a GitHubon](https://github.com/cloudinary)
+* [Videós oktatóanyagok](https://cloudinary.com/documentation/cloudinary_sdks_tutorials)
+
+### Példa
+
+Minden általunk támogatott utazási készlettípushoz tartozik egy beágyazott JSON tömb, amelynek neve`multimedias`Egy multimédiás bejegyzés JSON-ja így néz ki:
+
+```json {3}
+{
+  "multimediaIdentifier": "multimedia-1",
+  "identifier": "partners/radisson_blu_logo",
+  "type": "IMAGE",
+  "width": "1024",
+  "height": "768",
+  "category": "1",
+  "descriptions": [
+    {
+      "name": "Lobby",
+      "description": "Picture of the lobby",
+      "language": "en"
+    }
+  ],
+  "lifestyleType": "LIFESTYLE_BUSINESS",
+  "attribution": [
+    {
+      "url": "https://www.hilton.com",
+      "name": "Hilton"
+    }
+  ]
+}
+```
+
+A fenti kiemelt sor a Cloudinary egyedi azonosítóját mutatja.`partners/radisson_blu_logo`Ez minden, amire szükséged van a kép bármilyen formátumban, minőségben és méretben történő letöltéséhez.
+
+## Tesztelés
+
+Menj át a miénkhez[API-k](/developer/apis)szakaszt, és válassza ki a használni kívánt API-t.
+
+### API dokumentációk
+
+Dokumentációs oldalunk úgy van beállítva, hogy API parancsokat futtathasson az oldalon belül.
+
+Ebben a példában a következőt szeretnéd használni:`Search Lookups (OAuth2)`API-hívás.
+
+:::tip\[Profi tipp]
+A könnyű használat érdekében azt javasoljuk, hogy az integrátorok az általunk kijelölt végpontokat használják.`OAuth2`Ezek a végpontok tudják, hogy API-hívókra kell számítaniuk, és már tudják, melyik fiókkal vagy kapcsolatban, így nem kell megadnod a`companyIdentifier`az URL-címeidben.
+:::
+
+<Steps>
+  1. Használd a [Keresési API](https://docs.wink.travel/lookup) úti célok vagy szállodák lekéréséhez.
+  2. A bal oldali navigációs sávon kattintson a `Authentication`.
+  3. Adja meg az ügyfél-azonosítóját és az ügyfél titkát, majd kattintson a `Get TOKEN` gomb.
+  4. Ha a hitelesítő adatai érvényesek, látni fogja, hogy az API-kulcsát alkalmazták.
+  5. Most tesztelheti a keresési végpontot.
+</Steps>
+
+
+<figure>
+  <CloudinaryImage width="700" height="265" resize="scale" quality="best" alt="Keresési API végpont" src="academy/lookup-api-call" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Mintakeresések (OAuth2)*</figcaption>
+</figure>
+
+
+### Postás
+
+Ugyanezt megteheted a Postman-nel is.
+
+<Steps>
+  1. Letöltés [Postás](https://www.postman.com/downloads).
+  2. Kattintson ide `Download OpenAPI spec` a tetejéről [Keresési API](https://docs.wink.travel/lookup) oldal.
+  3. Importáld a Postmanbe.
+  4. Ha új gyűjteményként importáltad, amelynek neve `Wink API`, kattintson a gyűjtemény neve melletti vízszintes három pontra (3 pont), majd a `Edit`.
+  5. A `Authorization tab`, állítsa be a `Auth type` az OAuth2-höz.
+  6. Állítsa be a mezőt `Add auth data to` hogy `Request headers`.
+  7. Állítsa be a mezőt `Header prefix` hogy `Bearer`.
+  8. Állítsa be a mezőt `Token Name` arra a névre, amit a Postmanben el szeretnél nevezni a mentett tokenednek. Pl. Wink Staging.
+  9. Állítsa be a mezőt `Grant type` hogy `Client Credentials`.
+  10. Állítsa be a mezőt `Access token URL` a https://staging-iam.wink.travel/oauth2/token címre.
+  11. Állítsa be a mezőt `Client ID` az alkalmazás által generált ügyfél-azonosítóhoz.
+  12. Állítsa be a mezőt `Client Secret` az alkalmazásod által generált ügyféltitokhoz.
+  13. Állítsa be a mezőt `Scope` hogy `inventory.read inventory.write inventory.remove`Ezek az összes hatókörök, amire szükséged lesz a Winkhez.
+  14. Állítsa be a mezőt `Client Authentication` hogy `Send as Basic Auth header`.
+  15. Kattintson a `Get New Access Token` gombra a token lekéréséhez és mentéséhez.
+  16. A Wink API gyűjtemény alatti összes API-hívásnál győződjön meg arról, hogy a hitelesítési lapon ez áll: `Inherit auth from parent` így minden hívásba belefoglalja a tokenedet.
+</Steps>
+
+
+:::tip\[Profi tipp]
+Ajánlott a kiszolgáló domainjét, az ügyfél-azonosítót és az ügyfél titkos kulcsát környezeti változókba tenni. Így könnyen válthat a tesztelési és az éles környezetek között, és újra felhasználhatja az összes létrehozott műveletet.
+:::
+

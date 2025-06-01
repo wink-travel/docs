@@ -1,0 +1,131 @@
+---
+title: Setup
+description: >-
+  In dit artikel leest u hoe u snel aan de slag kunt als ontwikkelaar en hoe u
+  onze API's op Wink kunt testen.
+sidebar:
+  order: 1
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+In dit artikel leest u hoe u snel aan de slag kunt als ontwikkelaar en hoe u onze API's op Wink kunt testen.
+
+:::note
+Testen moet altijd plaatsvinden in onze[staging-omgeving](/getting-started/environments)Er zijn weliswaar veel minder gegevens beschikbaar, maar u kunt zoveel testen als u wilt, zonder dat dit ten koste gaat van de productieomgeving.
+
+Zodra u klaar bent om live te gaan, certificeren we uw account en uw applicatie en kunt u deze in onze productieomgeving lanceren.
+:::
+
+Volg deze stappen:
+
+<Steps>
+  1. [Register](/user/register) uw gebruikersaccount op Wink
+  2. Maak een [reisagentenaccount](/travel-agent/what-is-agent) of een [affiliate-account](/studio/what-is-studio).
+  3. [Een applicatie maken](/developer/applications) waar u het koppelt aan het account dat u in stap 2 hebt aangemaakt.
+  4. Zodra u uw `Application`, bewaar de client-id en het clientgeheim op een veilige plaats.
+</Steps>
+
+
+## CDN
+
+Bij Wink gebruiken we Cloudinary voor al onze beeld- en videomateriaal. Wanneer u onze reisinventaris opent, heeft u volledige toegang tot alle geavanceerde functies van Cloudinary.
+
+Ons `cloud_name` is  `traveliko`.
+
+### Cloudinary
+
+* [Aan de slag](https://cloudinary.com/documentation/dev_kickstart)
+* [SDK's](https://cloudinary.com/documentation/cloudinary_sdks)
+* [Cloudinary op GitHub](https://github.com/cloudinary)
+* [Video-tutorials](https://cloudinary.com/documentation/cloudinary_sdks_tutorials)
+
+### Voorbeeld
+
+Voor elk type reisinventaris dat we ondersteunen, zal er een geneste JSON-array zijn met de naam`multimedias`De JSON voor een multimedia-item ziet er als volgt uit:
+
+```json {3}
+{
+  "multimediaIdentifier": "multimedia-1",
+  "identifier": "partners/radisson_blu_logo",
+  "type": "IMAGE",
+  "width": "1024",
+  "height": "768",
+  "category": "1",
+  "descriptions": [
+    {
+      "name": "Lobby",
+      "description": "Picture of the lobby",
+      "language": "en"
+    }
+  ],
+  "lifestyleType": "LIFESTYLE_BUSINESS",
+  "attribution": [
+    {
+      "url": "https://www.hilton.com",
+      "name": "Hilton"
+    }
+  ]
+}
+```
+
+De gemarkeerde regel hierboven toont de unieke ID van Cloudinary`partners/radisson_blu_logo`Dat is alles wat u nodig hebt om de afbeelding in het gewenste formaat, kwaliteit en grootte op te halen.
+
+## Testen
+
+Ga naar onze[API's](/developer/apis)en kies de API waarmee u wilt werken.
+
+### API-documentatie
+
+Onze documentatiesite is zo opgezet dat u API-opdrachten vanuit de site kunt uitvoeren.
+
+In dit voorbeeld wilt u de`Search Lookups (OAuth2)`API-oproep.
+
+:::tip\[Pro Tip]
+Voor gebruiksgemak raden we integrators aan de eindpunten te gebruiken die we als`OAuth2`Deze eindpunten weten dat ze API-aanroepers kunnen verwachten en weten al op welk account u zich bevindt, zodat u de API-aanroeper niet hoeft op te geven.`companyIdentifier`in je URL's.
+::
+
+<Steps>
+  1. Gebruik de [Opzoek-API](https://docs.wink.travel/lookup) om bestemmingen of hotels op te halen.
+  2. Klik in de linker navigatiebalk op `Authentication`.
+  3. Voer uw client-id en clientgeheim in en klik op de `Get TOKEN` knop.
+  4. Als uw inloggegevens geldig zijn, ziet u dat uw API-sleutel is toegepast.
+  5. U kunt nu het opzoekeindpunt testen.
+</Steps>
+
+
+<figure>
+  <CloudinaryImage width="700" height="265" resize="scale" quality="best" alt="Lookup API-eindpunt" src="academy/lookup-api-call" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Voorbeeldzoekopdrachten (OAuth2)*</figcaption>
+</figure>
+
+
+### Postbode
+
+Je kunt hetzelfde doen met Postman.
+
+<Steps>
+  1. Download [Postbode](https://www.postman.com/downloads).
+  2. Klik op `Download OpenAPI spec` vanaf de top van de [Opzoek-API](https://docs.wink.travel/lookup) pagina.
+  3. Importeer het in Postman.
+  4. Als u het importeert als een nieuwe collectie met de naam `Wink API`, klik op de horizontale ellips (3 puntjes) naast de naam van de collectie en klik `Edit`.
+  5. In de `Authorization tab`, stel de `Auth type` naar OAuth2.
+  6. Stel het veld in `Add auth data to` naar `Request headers`.
+  7. Stel het veld in `Header prefix` naar `Bearer`.
+  8. Stel het veld in `Token Name` naar de naam die u aan uw opgeslagen token in Postman wilt geven. Bijvoorbeeld Wink Staging.
+  9. Stel het veld in `Grant type` naar `Client Credentials`.
+  10. Stel het veld in `Access token URL` naar https://staging-iam.wink.travel/oauth2/token.
+  11. Stel het veld in `Client ID` naar de client-ID die uw app heeft helpen genereren.
+  12. Stel het veld in `Client Secret` naar het clientgeheim dat uw app heeft helpen genereren.
+  13. Stel het veld in `Scope` naar `inventory.read inventory.write inventory.remove`Dit zijn alle scopes die je nodig hebt voor Wink.
+  14. Stel het veld in `Client Authentication` naar `Send as Basic Auth header`.
+  15. Klik op de `Get New Access Token` knop om uw token op te halen en op te slaan.
+  16. Zorg ervoor dat voor alle API-aanroepen onder de Wink API-verzameling het tabblad Authenticatie het volgende aangeeft: `Inherit auth from parent` zodat bij elk gesprek uw token wordt meegestuurd.
+</Steps>
+
+
+:::tip\[Pro Tip]
+Het is aan te raden om het serverdomein, de client-ID en het clientgeheim als omgevingsvariabelen te definiëren. Zo kunt u eenvoudig schakelen tussen staging- en productieomgevingen en alle bewerkingen die u hebt gemaakt, hergebruiken.
+:::
+

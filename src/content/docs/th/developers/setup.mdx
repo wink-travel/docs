@@ -1,0 +1,131 @@
+---
+title: Setup
+description: >-
+  บทความนี้จะแสดงวิธีการตั้งค่าอย่างรวดเร็วในฐานะนักพัฒนาและเริ่มทดสอบ API
+  ของเราบน Wink
+sidebar:
+  order: 1
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+บทความนี้จะแสดงวิธีการตั้งค่าอย่างรวดเร็วในฐานะนักพัฒนาและเริ่มทดสอบ API ของเราบน Wink
+
+:::หมายเหตุ
+การทดสอบควรเกิดขึ้นเสมอใน[สภาพแวดล้อมการจัดฉาก](/getting-started/environments)มีข้อมูลน้อยกว่ามาก แต่คุณสามารถทดสอบได้มากเท่าที่คุณต้องการ โดยไม่กระทบต่อสภาพแวดล้อมการผลิต
+
+เมื่อคุณพร้อมที่จะเริ่มใช้งาน เราจะรับรองบัญชีและแอปพลิเคชันของคุณ และคุณสามารถเปิดตัวในสภาพแวดล้อมการผลิตของเราได้
+:::
+
+ปฏิบัติตามขั้นตอนเหล่านี้:
+
+<Steps>
+  1. [ลงทะเบียน](/user/register) บัญชีผู้ใช้ของคุณบน Wink
+  2. สร้าง [บัญชีตัวแทนท่องเที่ยว](/travel-agent/what-is-agent) หรือ [บัญชีพันธมิตร](/studio/what-is-studio)-
+  3. [สร้างแอปพลิเคชัน](/developer/applications) ซึ่งคุณเชื่อมโยงกับบัญชีที่คุณสร้างในขั้นตอนที่ 2
+  4. เมื่อคุณสร้างของคุณแล้ว `Application`บันทึกรหัสไคลเอนต์และความลับไคลเอนต์ไว้ในสถานที่ที่ปลอดภัย
+</Steps>
+
+
+## ซีดีเอ็น
+
+ที่ Wink เราใช้ Cloudinary สำหรับรูปภาพและวิดีโอทั้งหมดของเรา เมื่อคุณเข้าถึงสินค้าคงคลังการเดินทางของเรา คุณจะมีสิทธิ์เข้าถึงฟีเจอร์ขั้นสูงทั้งหมดของ Cloudinary
+
+ของเรา `cloud_name` เป็น  `traveliko`-
+
+### คลาวด์นารี
+
+* [การเริ่มต้น](https://cloudinary.com/documentation/dev_kickstart)
+* [SDK ของ](https://cloudinary.com/documentation/cloudinary_sdks)
+* [Cloudinary บน GitHub](https://github.com/cloudinary)
+* [วิดีโอการสอน](https://cloudinary.com/documentation/cloudinary_sdks_tutorials)
+
+### ตัวอย่าง
+
+สำหรับประเภทสินค้าคงคลังการเดินทางทุกประเภทที่เรารองรับ จะมีอาร์เรย์ JSON ที่ซ้อนกันเรียกว่า`multimedias`JSON สำหรับรายการมัลติมีเดียมีลักษณะดังนี้:
+
+```json {3}
+{
+  "multimediaIdentifier": "multimedia-1",
+  "identifier": "partners/radisson_blu_logo",
+  "type": "IMAGE",
+  "width": "1024",
+  "height": "768",
+  "category": "1",
+  "descriptions": [
+    {
+      "name": "Lobby",
+      "description": "Picture of the lobby",
+      "language": "en"
+    }
+  ],
+  "lifestyleType": "LIFESTYLE_BUSINESS",
+  "attribution": [
+    {
+      "url": "https://www.hilton.com",
+      "name": "Hilton"
+    }
+  ]
+}
+```
+
+บรรทัดที่เน้นด้านบนแสดง ID เฉพาะของ Cloudinary`partners/radisson_blu_logo`นั่นคือทั้งหมดที่คุณต้องทำเพื่อรับรูปภาพในรูปแบบ คุณภาพ และขนาดที่คุณต้องการ
+
+## การทดสอบ
+
+มุ่งหน้าไปที่เรา[APIs](/developer/apis)ส่วนและเลือก API ที่คุณต้องการใช้งาน
+
+### เอกสาร API
+
+ไซต์เอกสารของเราได้รับการตั้งค่าเพื่อให้คุณสามารถรันคำสั่ง API จากภายในไซต์ได้
+
+ในตัวอย่างนี้ คุณต้องการใช้`Search Lookups (OAuth2)`การเรียก API
+
+:::tip\[เคล็ดลับสำหรับมืออาชีพ]
+เพื่อความสะดวกในการใช้งาน เราขอแนะนำให้ผู้บูรณาการใช้จุดสิ้นสุดที่เรากำหนดเป็น`OAuth2`จุดสิ้นสุดเหล่านั้นรู้ว่าจะต้องคาดหวังการเรียก API และรู้แล้วว่าคุณอยู่ในบัญชีใด ดังนั้นคุณจึงไม่จำเป็นต้องระบุ`companyIdentifier`ใน URL ของคุณ
+:::
+
+<Steps>
+  1. ใช้ [ค้นหา API](https://docs.wink.travel/lookup) เพื่อดึงข้อมูลจุดหมายปลายทางหรือโรงแรม
+  2. ในแถบนำทางด้านซ้าย คลิกที่ `Authentication`-
+  3. ป้อนรหัสลูกค้าและรหัสลับลูกค้าของคุณแล้วคลิก `Get TOKEN` ปุ่ม.
+  4. หากข้อมูลประจำตัวของคุณถูกต้อง คุณจะเห็นว่าคีย์ API ของคุณถูกนำไปใช้แล้ว
+  5. ตอนนี้คุณสามารถทดสอบจุดสิ้นสุดการค้นหาได้แล้ว
+</Steps>
+
+
+<figure>
+  <CloudinaryImage width="700" height="265" resize="scale" quality="best" alt="ค้นหาจุดสิ้นสุด API" src="academy/lookup-api-call" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*ตัวอย่างการค้นหาการค้นหา (OAuth2)*</figcaption>
+</figure>
+
+
+### พนักงานส่งจดหมาย
+
+คุณสามารถทำสิ่งเดียวกันกับ Postman ได้
+
+<Steps>
+  1. ดาวน์โหลด [พนักงานส่งจดหมาย](https://www.postman.com/downloads)-
+  2. คลิ๊กที่นี่ `Download OpenAPI spec` จากด้านบนของ [ค้นหา API](https://docs.wink.travel/lookup) หน้าหนังสือ.
+  3. นำเข้าไปใน Postman
+  4. หากคุณนำเข้ามาเป็นคอลเลกชั่นใหม่ที่เรียกว่า `Wink API`คลิกที่จุดไข่ปลาแนวนอน (จุด 3 จุด) ถัดจากชื่อคอลเลกชัน แล้วคลิก `Edit`-
+  5. ใน `Authorization tab`, ตั้งค่า `Auth type` เป็น OAuth2
+  6. ตั้งค่าฟิลด์ `Add auth data to` ถึง `Request headers`-
+  7. ตั้งค่าฟิลด์ `Header prefix` ถึง `Bearer`-
+  8. ตั้งค่าฟิลด์ `Token Name` เป็นชื่ออะไรก็ได้ที่คุณต้องการตั้งชื่อโทเค็นที่บันทึกไว้ใน Postman เช่น Wink Staging
+  9. ตั้งค่าฟิลด์ `Grant type` ถึง `Client Credentials`-
+  10. ตั้งค่าฟิลด์ `Access token URL` ไปที่ https://staging-iam.wink.travel/oauth2/token
+  11. ตั้งค่าฟิลด์ `Client ID` ไปยังรหัสไคลเอนต์ที่แอปของคุณช่วยสร้างขึ้น
+  12. ตั้งค่าฟิลด์ `Client Secret` ไปยังความลับของไคลเอนต์ที่แอปของคุณช่วยสร้างขึ้น
+  13. ตั้งค่าฟิลด์ `Scope` ถึง `inventory.read inventory.write inventory.remove`เหล่านี้คือขอบเขตทั้งหมดที่คุณจะต้องการสำหรับ Wink
+  14. ตั้งค่าฟิลด์ `Client Authentication` ถึง `Send as Basic Auth header`-
+  15. คลิกที่ `Get New Access Token` ปุ่มเพื่อรับโทเค็นของคุณและบันทึก
+  16. สำหรับการเรียก API ทั้งหมดภายใต้คอลเลกชัน API ของ Wink โปรดตรวจสอบให้แน่ใจว่าแท็บการตรวจสอบสิทธิ์ระบุว่า `Inherit auth from parent` ดังนั้นจึงรวมโทเค็นของคุณเข้ากับทุกการโทร
+</Steps>
+
+
+:::tip\[เคล็ดลับสำหรับมืออาชีพ]
+ขอแนะนำให้สร้างโดเมนเซิร์ฟเวอร์ รหัสไคลเอนต์ และความลับของไคลเอนต์ลงในตัวแปรสภาพแวดล้อม วิธีนี้จะช่วยให้คุณสลับไปมาระหว่างสภาพแวดล้อมสเตจจิ้งและสภาพแวดล้อมการผลิตได้อย่างง่ายดาย และนำการดำเนินการทั้งหมดที่คุณสร้างขึ้นกลับมาใช้ใหม่ได้
+:::
+

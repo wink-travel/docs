@@ -1,0 +1,68 @@
+---
+title: Authentication
+description: Lærðu hvernig á að auðkenna þig með OAuth2 heimildarþjóni Wink.
+sidebar:
+  order: 2
+---
+:::ábending
+Wink IAM auðkenningarþjónninn styður algengustu OAuth2 endapunktana:
+
+* /oauth2/heimila
+* /oauth2/tákn
+* /oauth2/innsýn
+* /oauth2/afturkalla
+* /oauth2/notandaupplýsingar
+  :::
+
+Forrit veitir þér`Client ID`og`Secret Key`að þú þarft að búa til staðfesta OAuth2 lotu sem þú getur notað til að eiga samskipti við Wink og TripPay API.
+
+Hér eru skrefin til að búa til staðfesta lotu.
+
+**Skref 1**Sækja aðgangslykil á uppsetningu eða í framleiðsluumhverfi okkar:
+
+Þú munt líklega vinna með öflugt OAuth2 bókasafn fyrir þitt tungumál, sem mun sjá um allt þunga verkið fyrir þig.
+Dæmin okkar sýna grunnnotkunina úr skipanalínunni með því að nota`curl`.
+
+### Sviðsetning
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Framleiðsla
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Þetta mun skila aðgangslykil ásamt öðrum OAuth2 svargögnum:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Þegar þú hringir í einhvern af endapunktum okkar skaltu hafa eftirfarandi með í hausnum:
+
+* `Wink-Version`=`2.0`Nýjasta -*Sjá API skjöl okkar fyrir aðrar tiltækar útgáfur.*
+* `Authentication`=`Bearer: ${access_token}` *Settu inn aðgangslykilinn þinn.*
+
+:::ábending
+Þú getur prófað öll forritaskilin okkar án þess að skrifa eina línu af kóða áður en þú byrjar.
+
+Náðu í „Viðskiptavinakenni“ og „leynilykil“ úr einu af forritunum þínum og farðu á hvaða sem er af okkar[API-viðmót](/developers/apis).&#x20;
+:::
+

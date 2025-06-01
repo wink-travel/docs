@@ -1,0 +1,68 @@
+---
+title: Authentication
+description: Ketahui cara untuk mengesahkan menggunakan pelayan kebenaran OAuth2 Wink.
+sidebar:
+  order: 2
+---
+:::petua
+Pelayan pengesahan IAM Wink menyokong titik akhir OAuth2 biasa:
+
+* /oauth2/beri kuasa
+* /oauth2/token
+* /oauth2/introspeksi
+* /oauth2/revoke
+* /oauth2/infopengguna
+  :::
+
+Aplikasi menyediakan anda dengan a `Client ID` dan `Secret Key` yang anda perlukan untuk membuat sesi OAuth2 yang disahkan yang anda boleh gunakan untuk berkomunikasi dengan API Wink dan TripPay.
+
+Berikut ialah langkah-langkah untuk membuat sesi yang disahkan.
+
+**Langkah 1**. Dapatkan semula token akses pada pementasan atau dalam persekitaran pengeluaran kami:
+
+Anda, kemungkinan besar, akan bekerja dengan pustaka OAuth2 yang mantap untuk bahasa anda, yang akan melakukan semua beban berat untuk anda.
+Contoh kami akan menunjukkan penggunaan paling asas daripada baris arahan menggunakan `curl`.
+
+### Pementasan
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Pengeluaran
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Ini akan mengembalikan token akses, bersama-sama dengan data respons OAuth2 yang lain:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Apabila anda membuat panggilan ke mana-mana titik akhir kami, masukkan perkara berikut dalam pengepala:
+
+* `Wink-Version` = `2.0` Terkini - *Lihat dokumen API kami untuk versi lain yang tersedia.*
+* `Authentication` = `Bearer: ${access_token}` *Masukkan token akses anda.*
+
+:::petua
+Anda boleh menguji semua API kami tanpa menulis satu baris kod sebelum bermula.
+
+Dapatkan 'ID Pelanggan' dan 'Kunci Rahsia' daripada salah satu apl anda dan navigasi ke mana-mana apl kami [API](/developers/apis).
+:::
+

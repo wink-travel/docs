@@ -1,0 +1,70 @@
+---
+title: Authentication
+description: >-
+  Naučite kako se autentificirati pomoću Winkovog OAuth2 autorizacijskog
+  poslužitelja.
+sidebar:
+  order: 2
+---
+:::tip
+Wink IAM autentifikacijski poslužitelj podržava uobičajene OAuth2 krajnje točke:
+
+* /oauth2/autoriziraj
+* /oauth2/token
+* /oauth2/introspect
+* /oauth2/revoke
+* /oauth2/userinfo
+  :::
+
+Aplikacija vam pruža`Client ID`i`Secret Key`da vam je potrebno stvoriti autentificiranu OAuth2 sesiju koju možete koristiti za komunikaciju s Wink i TripPay API-jima.
+
+Evo koraka za stvaranje autentificirane sesije.
+
+**Korak 1**Dohvatite token za pristup u fazi testiranja ili u našem produkcijskom okruženju:
+
+Najvjerojatnije ćete raditi s robusnom OAuth2 bibliotekom za svoj jezik, koja će obaviti sav teški posao za vas.
+Naši primjeri će pokazati najosnovniju upotrebu iz naredbenog retka pomoću`curl`.
+
+### Priprema
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Proizvodnja
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Ovo će vratiti pristupni token, zajedno s ostalim podacima OAuth2 odgovora:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Kada uputite poziv bilo kojoj od naših krajnjih točaka, u zaglavlje uključite sljedeće:
+
+* `Wink-Version`=`2.0`Najnovije -*Za ostale dostupne verzije pogledajte našu API dokumentaciju.*
+* `Authentication`=`Bearer: ${access_token}` *Umetnite svoj pristupni token.*
+
+:::tip
+Možete testirati sve naše API-je bez pisanja ijedne linije koda prije početka.
+
+Preuzmite 'ID klijenta' i 'Tajni ključ' iz jedne od svojih aplikacija i idite na bilo koju od naših[Apis](/developers/apis).
+:::
+

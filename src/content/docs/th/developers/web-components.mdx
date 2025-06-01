@@ -1,0 +1,327 @@
+---
+title: ส่วนประกอบของเว็บไซต์
+description: >-
+  Wink บำรุงรักษาไลบรารีของส่วนประกอบเว็บ JavaScript
+  ที่คุณสามารถฝังลงในไซต์ของคุณได้
+sidebar:
+  order: 6
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+[ส่วนประกอบของเว็บไซต์](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)เป็นมาตรฐานที่ช่วยให้คุณรวมฟีเจอร์ Javascript ทั้งหมดลงในเว็บไซต์ของคุณได้โดยไม่ต้องรู้วิธีเขียนโค้ด
+ด้วยเทคโนโลยีสุดเจ๋งนี้ ทำให้คุณสามารถฝังสินค้าคงคลังการเดินทางของ Wink ได้อย่างไม่ยุ่งยาก บทความนี้จะแนะนำคุณเกี่ยวกับคอลเล็กชั่นส่วนประกอบเว็บของเราและแสดงให้คุณเห็นถึงวิธีใช้
+
+## ฝัง Wink
+
+มีสามสิ่งที่คุณต้องรวมไว้ในหน้าใดก็ตามที่คุณต้องการให้แสดงส่วนประกอบเว็บของเรา
+
+1. รวมสไตล์ชีทของเรา
+2. รวมถึง Javascript ของเรา
+3. รวมตัวโหลดแอปพลิเคชันของเรา
+
+### สไตล์ชีท
+
+รวมสไตล์ CSS ของเราไว้ในส่วนหัวของเอกสารของคุณ
+
+```html {3}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+</html>
+```
+
+### จาวาสคริปต์
+
+รวม Javascript ของเราไว้ที่ด้านล่างของเอกสารของคุณ (*เราขอแนะนำให้วางไว้เหนือแท็กท้ายเนื้อหาทันที*-
+
+```html {3}
+<html>
+  <body>
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+  </body>
+</html>
+```
+
+ตอนนี้เว็บไซต์ของคุณพร้อมและสามารถแสดงส่วนประกอบบนเว็บของเราได้แล้ว
+
+## ส่วนประกอบ
+
+อ่านเกี่ยวกับไลบรารีส่วนประกอบของเราด้านล่าง
+
+### ตัวโหลดแอพพลิเคชั่น
+
+โหลดเดอร์มีหน้าที่รับผิดชอบในการรักษาสถานะและจัดการการโต้ตอบระหว่างส่วนประกอบต่างๆ ของเรา*รวมไว้ด้านล่าง Javascript ของเรา*-
+
+```html {3-6}
+<html>
+  <body>
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+### ตัวโหลดเนื้อหา
+
+ตัวโหลดเนื้อหาเป็นหัวใจสำคัญของไลบรารีส่วนประกอบเว็บของเรา โดยทำหน้าที่แสดงสินค้าคงคลังของคุณ (การ์ด ตาราง แผนที่)
+
+คุณสมบัติที่มี:
+
+* เค้าโครง
+* รหัส
+* เรียงลำดับ
+
+*คุณสมบัติ`sort`จะใช้ได้เฉพาะเมื่อเค้าโครงเป็นแบบ`RANKED`และคุณไม่ต้องการใช้กริดอันดับที่มีอยู่แล้ว สำหรับกรณีเหล่านี้ ให้ปล่อยทิ้งไว้`id` ว่างเปล่า.*
+
+ประเภทเค้าโครงที่มีให้เลือก:
+
+* `AD_BANNER`
+* `MAP`
+* `HOTEL`
+* `GUEST_ROOM`
+* `MEETING_ROOM`
+* `SPA`
+* `RESTAURANT`
+* `ACTIVITY`
+* `ATTRACTION`
+* `PLACE`
+* `ADD_ON`
+* `LIST`
+* `SEARCH`
+* `RANKED`
+
+ประเภทการเรียงลำดับที่มีให้เลือก:
+
+* `MEMBER`
+* `PRICE_LOW_TO_HIGH`
+* `PRICE_HIGH_TO_LOW`
+* `PRICE`
+* `POPULARITY`
+* `ECO`
+* `EXPERIENCE`
+* `PERK`
+* `LOYALTY`
+* `PACKAGE`
+
+```html {3-6}
+<html>
+  <body>
+    <wink-content-loader
+       layout="GUEST_ROOM"
+       id="2de7ee9c-61c9-11ef-9722-42004e494300"
+    ></wink-content-loader>
+  </body>
+</html>
+```
+
+สามารถพบตัวอย่างได้ที่[การ์ด](/studio/cards)-[กริด](/studio/grids) และ [แผนที่](/studio/maps)-
+
+### ค้นหา
+
+การค้นหาทำงานได้ดีกับกริดอันดับใดกริดหนึ่งของคุณ ช่วยให้ผู้ใช้ค้นหาโรงแรมและจุดหมายปลายทาง และกริดจะอัปเดตตามผลการค้นหาของพวกเขา
+
+```html {3}
+<html>
+  <body>
+    <wink-lookup></wink-lookup>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="350" height="57" resize="scale" quality="best" alt="ค้นหาส่วนประกอบเว็บไซต์" src="academy/lookup" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*ค้นหาส่วนประกอบเว็บไซต์*</figcaption>
+</figure>
+
+
+เมื่อคลิกที่ส่วนประกอบด้านบน จะเปิดโหมดที่ให้คุณพิมพ์จุดหมายปลายทางหรือโรงแรมที่คุณกำลังค้นหา
+
+<figure>
+  <CloudinaryImage width="700" height="186" resize="scale" quality="best" alt="ค้นหาโมดอล" src="academy/lookup-results" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*โหมดค้นหาพร้อมผลลัพธ์*</figcaption>
+</figure>
+
+
+### แผนการเดินทาง
+
+ปุ่มแผนการเดินทางจะแสดงแผนการเดินทางปัจจุบันบนปุ่ม เมื่อคุณคลิกปุ่มนี้ ตัวเลือกแผนการเดินทางทั้งหมดจะแสดงเป็นโหมด
+
+```html {3}
+<html>
+  <body>
+    <wink-itinerary></wink-itinerary>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="350" height="60" resize="scale" quality="best" alt="ส่วนประกอบเว็บแผนการเดินทาง" src="academy/itinerary-button" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*ส่วนประกอบเว็บแผนการเดินทาง*</figcaption>
+</figure>
+
+
+การคลิกที่ปุ่มด้านบนจะเปิดหน้าต่างที่ให้คุณอัพเดตแผนการเดินทางของคุณ
+
+<figure>
+  <CloudinaryImage width="700" height="459" resize="scale" quality="best" alt="ค้นหาโหมด" src="academy/search-modal" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*ตัวเลือกการเดินทางในรูปแบบโมดอล*</figcaption>
+</figure>
+
+
+### ค้นหา
+
+ปุ่มค้นหาเป็นปุ่มไอคอนของตัวเลือกแผนการเดินทาง เมื่อคุณคลิกปุ่มนี้ ตัวเลือกแผนการเดินทางทั้งหมดจะแสดงเป็นโหมด
+
+```html {3}
+<html>
+  <body>
+    <wink-search></wink-search>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="138" height="116" resize="scale" quality="best" alt="ค้นหาส่วนประกอบเว็บไซต์" src="academy/search-button" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*ค้นหาส่วนประกอบเว็บไซต์*</figcaption>
+</figure>
+
+
+การคลิกที่ปุ่มด้านบนจะเปิดหน้าต่างที่ให้คุณอัพเดตแผนการเดินทางของคุณ
+
+<figure>
+  <CloudinaryImage width="700" height="459" resize="scale" quality="best" alt="ค้นหาโหมด" src="academy/search-modal" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*ตัวเลือกการเดินทางในรูปแบบโมดอล*</figcaption>
+</figure>
+
+
+### แบบฟอร์มแผนการเดินทาง
+
+ส่วนประกอบแผนการเดินทางจะแสดงแบบฟอร์มแผนการเดินทางที่ผู้ใช้สามารถโต้ตอบได้
+
+```html {3}
+<html>
+  <body>
+    <wink-itinerary-form></wink-itinerary-form>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="700" height="90" resize="scale" quality="best" alt="ส่วนประกอบแบบฟอร์มแผนการเดินทาง" src="academy/itinerary-form" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*แบบฟอร์มการเดินทางส่วนประกอบเว็บ*</figcaption>
+</figure>
+
+
+การเปลี่ยนแปลงแผนการเดินทางในส่วนประกอบแผนการเดินทางใดๆ ของเราจะทำให้มีเหตุการณ์อัปเดตแผนการเดินทางไปยังสินค้าคงคลังใดๆ ที่คุณมีซึ่งแสดงอยู่บนเพจในขณะนั้น
+
+### บัญชี
+
+ปุ่มบัญชีช่วยให้คุณสามารถเพิ่มการตรวจสอบสิทธิ์ Wink ลงในเว็บไซต์ของคุณได้
+
+```html {3}
+<html>
+  <body>
+    <wink-account></wink-account>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="92" height="104" resize="scale" quality="best" alt="ส่วนประกอบเว็บบัญชี" src="academy/account-button" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*ส่วนประกอบเว็บปุ่มบัญชี*</figcaption>
+</figure>
+
+
+เมื่อผู้ใช้ยังไม่ผ่านการตรวจสอบความถูกต้อง ให้คลิกปุ่มเพื่อส่งผู้ใช้ไปตรวจสอบความถูกต้อง
+เมื่อผู้ใช้ผ่านการตรวจสอบความถูกต้องแล้ว จะแสดงไอคอนโปรไฟล์ของผู้ใช้
+
+<figure>
+  <CloudinaryImage width="92" height="104" resize="scale" quality="best" alt="ปุ่มบัญชีเมื่อผ่านการตรวจสอบแล้ว" src="academy/account-button-auth" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*ปุ่มบัญชี (ผ่านการตรวจสอบ) ส่วนประกอบเว็บ*</figcaption>
+</figure>
+
+
+เมื่อคุณคลิกที่ปุ่ม รายการแบบดรอปดาวน์เฉพาะผู้ใช้จะเปิดขึ้นมา
+
+<figure>
+  <CloudinaryImage width="350" height="404" resize="scale" quality="best" alt="ปุ่มบัญชีเมื่อผ่านการตรวจสอบแล้ว" src="academy/account-button-auth-open" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*ปุ่มบัญชี (เปิด) ส่วนประกอบเว็บ*</figcaption>
+</figure>
+
+
+## ฝัง TripPay
+
+มีสองสิ่งที่คุณจะต้องรวมไว้ในหน้าใดก็ตามที่คุณต้องการใช้เว็บส่วนประกอบการชำระเงิน TripPay
+
+1. รวมสไตล์ชีทของเรา
+2. รวมถึง Javascript ของเรา
+
+### สไตล์ชีท
+
+รวมสไตล์ CSS ของเราไว้ในส่วนหัวของเอกสารของคุณ
+
+```html {3}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.trippay.io/styles.css"></link>
+  </head>
+</html>
+```
+
+### จาวาสคริปต์
+
+รวม Javascript ของเราไว้ที่ด้านล่างของเอกสารของคุณ (*เราขอแนะนำให้วางไว้เหนือแท็กท้ายเนื้อหาทันที*-
+
+```html {3}
+<html>
+  <body>
+    <script src="https://elements.trippay.io/elements.js" type="module" defer></script>
+  </body>
+</html>
+```
+
+ตอนนี้เว็บไซต์ของคุณพร้อมและสามารถแสดงส่วนประกอบบนเว็บของเราได้แล้ว
+
+## ส่วนประกอบ
+
+### การชำระเงิน
+
+ส่วนประกอบการชำระเงินช่วยให้คุณแจ้ง TripPay ว่านักเดินทางต้องการซื้อสินค้าบางอย่าง รวมทั้งกฎเกณฑ์และราคาของสินค้าเหล่านั้น
+
+วิดเจ็ตมีแอตทริบิวต์หนึ่งที่จำเป็น:
+
+* `id`ตัวระบุของสัญญาการจองที่คุณต้องการให้ดำเนินการ
+
+```html {3}
+<html>
+  <body>
+    <trip-pay id="<INSERT_BOOKING_CONTRACT_ID>"></trip-pay>
+  </body>
+</html>
+```
+
+:::หมายเหตุ
+เพื่อเรียนรู้วิธีการสร้างสัญญาการจอง`id`อ่านคำแนะนำ:[การบูรณาการกับ TripPay](/guides/integrating-with-trip-pay)-
+
+วิดเจ็ตเตรียมสัญญาสำหรับการดำเนินการและแสดงรายละเอียดการชำระเงิ&#xE19;*(รูปที่ 1)*&#xE40;พื่อให้ผู้ใช้ดำเนินการจองให้เสร็จสิ้น
+
+<figure>
+  <CloudinaryImage width="700" height="1141" resize="scale" quality="best" alt="รายละเอียดการชำระเงิน" src="academy/payment-modal" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*รูปที่ 1. ตัวอย่างแบบฟอร์มการชำระเงิน*</figcaption>
+</figure>
+

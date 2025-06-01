@@ -1,0 +1,226 @@
+---
+title: التكامل مع TripPay
+description: >-
+  تحتوي هذه المقالة على مثال كامل حول كيفية التكامل مع TripPay والسماح له بإدارة
+  عملية الدفع نيابةً عنك.
+sidebar:
+  order: 4
+---
+import { Steps } from '@astrojs/starlight/components';
+
+تحتوي هذه المقالة على مثال شامل حول كيفية التكامل مع TripPay.
+
+من المستحسن أن تكون قد قرأت بالفعل:
+
+* [الدفع > رسم الخرائط](/payment/mapping).
+* [الدفع > التكامل](/payment/integration).
+* [مكون ويب الدفع](/developers/web-components/#payment).
+* [واجهة برمجة تطبيقات الدفع](/developers/apis/#payment-api).*اقرأ القسم الخاص بـ`Create payable contracts`*
+
+فيما يلي الخطوات اللازمة لاستخدام TripPay بنجاح لدفع ثمن الحجز:
+
+<Steps>
+  1. تأكد من أن المستفيدين الذين ذكرتهم في عقد الحجز قد تم تعيينهم.
+  2. دع المسافر يختار المخزون الذي يريد حجزه واجعله مستعدًا للدفع.
+  3. إنشاء `payable contract` مع TripPay الذي يحتوي على العناصر التي سيتم حجزها.
+  4. دع المسافر يقوم بالدفع باستخدام مكون الويب TripPay.
+</Steps>
+
+
+نحن نفترض أنك قد أكملت بالفعل`Step 1` و `Step 2`وهم على استعداد لإبلاغ TripPay بالحجز.
+
+## إنشاء عقد قابل للدفع
+
+ملاحظة:
+
+انتقل إلى واجهة برمجة تطبيقات الدفع لمعرفة المزيد حول متطلبات إنشاء عقد قابل للدفع.
+
+
+ملاحظة:
+
+### طلب
+
+فيما يلي نموذج طلب JSON يتضمن كل ما تحتاج إلى إنشائه لعقد الدفع الأول الخاص بك.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+توضيح:
+
+لن نقوم بشرح كل نقطة بيانات هنا لأنها مذكورة بالفعل في مستندات واجهة برمجة التطبيقات.
+
+* الخطوط:**2 - 7**المستخدم هو المسؤول عن الحجز. هناك نوعان من القائمين بالحجز:
+  * مسافر.
+  * وكيل السفر.
+* الخطوط:**8 - 9**هل حساب TripPay هو الذي يُسهّل الحجز؟ يُمكن أن يكون:
+  * حساب تكامل TripPay الخاص بك.
+  * إذا كنت تدير شبكة تابعة، فيمكن أن تكون هي الشبكة التابعة لك.
+* استخدم`traceId`لتجميع حجوزات متعددة لدى عدة موردين. بهذه الطريقة، يمكنك إلغاء حجز جماعي.
+* `redirectUrl`يتيح لـ TripPay معرفة الصفحة التي سيتم إعادة التوجيه إليها بعد اكتمال الدفع.
+* `sourceUrl`هو الموقع/التطبيق الذي تم الحجز عليه.
+
+ال `contractList`تحتوي المصفوفة على العناصر التي يرغب المسافر في شرائها من موردين متعددين. يحتوي كل عنصر على:
+
+* ال `identifier`هو UUID صالح تقوم بإنشائه.
+* المورد الذي تريد حجز المخزون منه.
+* المخزون الذي ترغب في حجزه من هذا المورد. جميع هذه العناصر مُحددة في المصفوفة المتداخلة.`contractItemList`.
+* كل مدخل تحت`contractItemList` يتضمن:
+  * **مستخدم ضيف**هذا هو المستخدم الذي سيصل إلى المبنى.
+  * **الاسم باللغة الإنجليزية**اسم المخزون باللغة الإنجليزية.
+  * **الوصف باللغة الإنجليزية**وصف أطول للمخزون باللغة الإنجليزية.
+  * **سعر**سعر السلعة.
+  * **مسار الرحلة**متى يجب حجز هذا العنصر؟
+  * **نوع التسعير**كيف تم حساب السعر؟
+  * **نوع المخزون**ما هو نوع المخزون هذا؟
+  * **مستحق الدفع**متى يجب أن يتم فرض الرسوم على المسافر؟*نحن ندعم حاليًا خيارات الدفع الفوري فقط.*
+  * **سياسة**تضمين قواعد سياسة الإلغاء.
+  * **قائمة الأسعار اليومية**إذا كان العنصر الذي يتم حجزه عبارة عن غرفة، فيمكنك اختيار تضمين تكلفة تلك الغرفة لكل ليلة يقيم فيها الضيف.
+  * **المستفيدون**قم بتضمين حسابات TripPay التي يجب تخصيص المبلغ (المبالغ) الخاصة بسعر العنصر لها.*يتم دعم المبالغ الثابتة / المئوية.*
+
+:::ملاحظة
+في مثال JSON أعلاه، لدينا ثلاثة مستفيدين:
+
+* تم تخصيص 1.5% للمنصة التي سهلت عملية الحجز.*على سبيل المثال، غمزة*
+* تم تخصيص 9.85% من العمولة للشريك.*على سبيل المثال كيم كارداشيان*
+* تم تخصيص 88.65% للمورد لحجز الغرفة.*على سبيل المثال هيلتون*
+
+عندما يستجيب TripPay بعقد قابل للدفع، ستلاحظ أنه قام بحقن المستفيد الخاص به بنسبة 4.0%.
+
+### إجابة
+
+عندما يستجيب TripPay لطلبك، سيبدو الأمر كالتالي:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+احفظ`id`على السطر 3. سوف تستخدم هذا لحقن مكون الويب TripPay.
+
+## تضمين TripPay
+
+ملاحظة: تأكد من تحميل أنماطنا وجافا سكريبت مسبقًا.
+
+في هذه المرحلة، أنت جاهز لتضمين`Payment Web Component`إلى موقع الويب الخاص بك وعرضه للمستخدم.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+فيما يتعلق بالتكامل، هذا كل ما عليك فعله. ستتولى TripPay جميع المهام الشاقة من الآن فصاعدًا.
+

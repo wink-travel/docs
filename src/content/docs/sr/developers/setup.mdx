@@ -1,0 +1,131 @@
+---
+title: Setup
+description: >-
+  Овај чланак вам показује како да се брзо подесите као програмер и почнете да
+  тестирате наше API-је на Wink-у.
+sidebar:
+  order: 1
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+Овај чланак вам показује како да се брзо подесите као програмер и почнете да тестирате наше API-је на Wink-у.
+
+:::напомена
+Тестирање би увек требало да се одвија у нашем[припремно окружење](/getting-started/environments)Тамо има много мање података, али можете слободно тестирати колико год желите без наметања производном окружењу.
+
+Када будете спремни за објављивање, сертификоваћемо ваш налог и вашу апликацију и моћи ћете да је покренете у нашем продукцијском окружењу.
+:::
+
+Пратите ове кораке:
+
+<Steps>
+  1. [Региструј се](/user/register) ваш кориснички налог на Wink-у
+  2. Направите [рачун туристичког агента](/travel-agent/what-is-agent) или [партнерски налог](/studio/what-is-studio).
+  3. [Направите апликацију](/developer/applications) где га повезујете са налогом који сте креирали у кораку 2.
+  4. Када креирате свој `Application`, сачувајте ИД клијента и тајну клијента на безбедном месту.
+</Steps>
+
+
+## CDN
+
+У компанији Wink користимо Cloudinary за све наше слике и видео записе. Када приступите нашем инвентару путовања, имаћете потпун приступ свим напредним функцијама Cloudinary-ја.
+
+Наш`cloud_name`је`traveliko`.
+
+### Облачно
+
+* [Почетак рада](https://cloudinary.com/documentation/dev_kickstart)
+* [SDK-ови](https://cloudinary.com/documentation/cloudinary_sdks)
+* [Cloudinary на GitHub-у](https://github.com/cloudinary)
+* [Видео туторијали](https://cloudinary.com/documentation/cloudinary_sdks_tutorials)
+
+### Пример
+
+За сваки тип инвентара путовања који подржавамо постојаће угнежђени JSON низ под називом`multimedias`JSON за мултимедијални унос изгледа овако:
+
+```json {3}
+{
+  "multimediaIdentifier": "multimedia-1",
+  "identifier": "partners/radisson_blu_logo",
+  "type": "IMAGE",
+  "width": "1024",
+  "height": "768",
+  "category": "1",
+  "descriptions": [
+    {
+      "name": "Lobby",
+      "description": "Picture of the lobby",
+      "language": "en"
+    }
+  ],
+  "lifestyleType": "LIFESTYLE_BUSINESS",
+  "attribution": [
+    {
+      "url": "https://www.hilton.com",
+      "name": "Hilton"
+    }
+  ]
+}
+```
+
+Истакнута линија изнад приказује јединствени Cloudinary ID`partners/radisson_blu_logo`То је све што вам је потребно да преузмете слику у било ком формату, квалитету и величини коју желите.
+
+## Тестирање
+
+Упутите се ка нашем[API-ји](/developer/apis)одељак и изаберите API са којим желите да радите.
+
+### API документација
+
+Наша документациона страница је подешена тако да можете покренути API команде унутар странице.
+
+У овом примеру, желите да користите`Search Lookups (OAuth2)`API позив.
+
+:::tip\[Професионални савет]
+Ради лакшег коришћења, препоручујемо интеграторима да користе крајње тачке које означимо као`OAuth2`Те крајње тачке знају да очекују API позиваоце и већ знају на ком сте налогу, тако да не морате да наводите`companyIdentifier`у вашим URL-овима.
+:::
+
+<Steps>
+  1. Користите [API за претрагу](https://docs.wink.travel/lookup) да бисте преузели дестинације или хотеле.
+  2. У левој навигационој траци кликните на `Authentication`.
+  3. Унесите свој ИД клијента и тајни мени клијента и кликните на `Get TOKEN` дугме.
+  4. Ако су ваши акредитиви важећи, видећете да је ваш API кључ примењен.
+  5. Сада можете тестирати крајњу тачку претраге.
+</Steps>
+
+
+<figure>
+  <CloudinaryImage width="700" height="265" resize="scale" quality="best" alt="Крајња тачка API-ја за претрагу" src="academy/lookup-api-call" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Примери претрага (OAuth2)*</figcaption>
+</figure>
+
+
+### Поштар
+
+Исто можете урадити и са Поштаном.
+
+<Steps>
+  1. Преузми [Поштар](https://www.postman.com/downloads).
+  2. Кликните на `Download OpenAPI spec` са врха [API за претрагу](https://docs.wink.travel/lookup) страница.
+  3. Увезите га у Постман.
+  4. Ако сте га увезли као нову колекцију под називом `Wink API`, кликните на хоризонталну елипсу (3 тачке) поред имена колекције и кликните `Edit`.
+  5. У `Authorization tab`, подесите `Auth type` на OAuth2.
+  6. Поставите поље `Add auth data to` до `Request headers`.
+  7. Поставите поље `Header prefix` до `Bearer`.
+  8. Поставите поље `Token Name` како год желите да назовете свој сачувани токен у Постману. Нпр. Wink Staging.
+  9. Поставите поље `Grant type` до `Client Credentials`.
+  10. Поставите поље `Access token URL` на https://staging-iam.wink.travel/oauth2/token.
+  11. Постави поље `Client ID` на ИД клијента који је ваша апликација помогла да се генерише.
+  12. Поставите поље `Client Secret` до тајне клијентске лозинке коју је ваша апликација помогла да се генерише.
+  13. Постави поље `Scope` до `inventory.read inventory.write inventory.remove`То су сви оптички нишани који ће вам бити потребни за Винк.
+  14. Поставите поље `Client Authentication` до `Send as Basic Auth header`.
+  15. Кликните на `Get New Access Token` дугме да бисте преузели свој токен и сачували га.
+  16. За све API позиве у оквиру Wink API колекције, уверите се да картица за аутентификацију каже `Inherit auth from parent` тако да укључује ваш токен уз сваки позив.
+</Steps>
+
+
+:::tip\[Професионални савет]
+Препоручује се да домен сервера, ИД клијента и тајни идентификатор клијента претворите у променљиве окружења. На тај начин можете лако прелазити између припремног и производног окружења и поново користити све операције које сте креирали.
+:::
+

@@ -1,0 +1,70 @@
+---
+title: Authentication
+description: >-
+  Découvrez comment vous authentifier à l’aide du serveur d’autorisation OAuth2
+  de Wink.
+sidebar:
+  order: 2
+---
+:::astuce
+Le serveur d'authentification Wink IAM prend en charge les points de terminaison OAuth2 courants :
+
+* /oauth2/autoriser
+* /oauth2/jeton
+* /oauth2/introspect
+* /oauth2/révoquer
+* /oauth2/userinfo
+  :::
+
+Une application vous fournit un`Client ID` et `Secret Key`que vous devez créer une session OAuth2 authentifiée que vous pouvez utiliser pour communiquer avec les API Wink et TripPay.
+
+Voici les étapes pour créer une session authentifiée.
+
+**Étape 1**. Récupérer un jeton d'accès en phase de test ou dans notre environnement de production :
+
+Vous utiliserez probablement une bibliothèque OAuth2 robuste pour votre langage, qui se chargera de tout le travail à votre place.
+Nos exemples illustrent l'utilisation la plus basique en ligne de commande.`curl`.
+
+### Mise en scène
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Production
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Cela renverra un jeton d'accès, ainsi que d'autres données de réponse OAuth2 :
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Lorsque vous effectuez un appel vers l’un de nos points de terminaison, incluez les éléments suivants dans l’en-tête :
+
+* `Wink-Version`=`2.0` Dernier - *Consultez notre documentation API pour les autres versions disponibles.*
+* `Authentication`=`Bearer: ${access_token}` *Insérez votre jeton d'accès.*
+
+:::tip
+Vous pouvez tester toutes nos API sans écrire une seule ligne de code avant de commencer.
+
+Récupérez un « ID client » et une « clé secrète » à partir de l'une de vos applications et accédez à l'une de nos[Apis](/developers/apis).
+:::
+

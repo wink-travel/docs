@@ -1,0 +1,226 @@
+---
+title: Intégration avec TripPay
+description: >-
+  Cet article contient un exemple complet de la manière d'intégrer TripPay et de
+  le laisser gérer le paiement pour vous.
+sidebar:
+  order: 4
+---
+import { Steps } from '@astrojs/starlight/components';
+
+Cet article contient un exemple de bout en bout de la manière d'intégrer TripPay.
+
+Il est recommandé que vous ayez déjà lu :
+
+* [Paiement > Cartographie](/payment/mapping).
+* [Paiement > Intégration](/payment/integration).
+* [Composant Web de paiement](/developers/web-components/#payment).
+* [API de paiement](/developers/apis/#payment-api).*Lire la section sur`Create payable contracts`*
+
+Voici les étapes à suivre pour utiliser avec succès TripPay pour payer une réservation :
+
+<Steps>
+  1. Assurez-vous que les bénéficiaires que vous mentionnez dans le contrat de réservation ont été cartographiés.
+  2. Laissez le voyageur choisir l'inventaire qu'il souhaite réserver et préparez-le à payer.
+  3. Créer un `payable contract` avec TripPay qui contient les articles à réserver.
+  4. Laissez le voyageur payer en utilisant le composant Web TripPay.
+</Steps>
+
+
+Nous supposons que vous avez déjà terminé`Step 1` et `Step 2`et sont prêts à informer TripPay de la réservation.
+
+## Créer un contrat payable
+
+:::note
+Accédez à l'API de paiement pour en savoir plus sur les conditions requises pour créer un contrat payable.
+:::
+
+### Demande
+
+Voici un exemple de requête JSON qui inclut tout ce dont vous avez besoin pour créer votre premier contrat payable.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Explication:
+
+Nous n'expliquerons pas ici tous les points de données car ils sont déjà couverts dans la documentation de l'API.
+
+* Lignes:**2 - 7**est l'utilisateur responsable de la réservation. Il existe deux types de réservations :
+  * Voyageur.
+  * Agent de voyage.
+* Lignes:**8 - 9**Le compte TripPay qui facilite la réservation. Il peut s'agir :
+  * Votre compte intégrateur TripPay.
+  * Si vous gérez un réseau d’affiliation, cela peut être votre affilié.
+* Utiliser un`traceId`Pour regrouper plusieurs réservations auprès de plusieurs fournisseurs. Vous pouvez ainsi annuler une réservation groupée.
+* `redirectUrl`permet à TripPay de savoir vers quelle page rediriger une fois le paiement terminé.
+* `sourceUrl`est le site / l'application sur lequel la réservation a eu lieu.
+
+Le `contractList`Le tableau contient le ou les articles que le voyageur souhaite acheter auprès de plusieurs fournisseurs. Chaque article contient :
+
+* Le `identifier`est un UUID valide que vous générez.
+* Le fournisseur auprès duquel vous souhaitez réserver l'inventaire.
+* L'inventaire que vous souhaitez réserver auprès de ce fournisseur. Ces informations sont spécifiées dans le tableau imbriqué.`contractItemList`.
+* Chaque entrée sous`contractItemList` contient:
+  * **Utilisateur invité**Il s’agit de l’utilisateur qui arrivera sur les lieux.
+  * **Nom en anglais**Le nom de l'inventaire en anglais.
+  * **Description en anglais**Une description plus longue de l'inventaire en anglais.
+  * **Prix**Le prix de l'article.
+  * **Itinéraire**Quand cet article doit être réservé.
+  * **Type de tarification**Comment le prix a été calculé.
+  * **Type d'inventaire**De quel type d'inventaire s'agit-il ?
+  * **Payable**Quand le voyageur doit être facturé.*Nous ne prenons actuellement en charge que les options de paiement immédiat.*
+  * **Politique**Inclure les règles de politique d’annulation.
+  * **Liste des tarifs journaliers**Si l'élément réservé est une chambre, vous pouvez choisir d'inclure le coût de cette chambre pour chaque nuit passée par le client.
+  * **Bénéficiaires**Indiquez à quel(s) compte(s) TripPay doivent être attribués quel(s) montant(s) du prix de l'article.*Les montants fixes/en pourcentage sont pris en charge.*
+
+:::note
+Dans l'exemple JSON ci-dessus, nous avons trois bénéficiaires :
+
+* 1,5% a été alloué à la plateforme qui a facilité la réservation.*par exemple Wink*
+* 9,85 % ont été alloués à l'affilié à titre de commission.*par exemple Kim Kardashian*
+* 88,65% ont été alloués au fournisseur pour la réservation de la chambre.*par exemple Hilton*
+
+Lorsque TripPay répond avec un contrat payable, vous remarquerez qu'il a injecté son propre bénéficiaire à hauteur de 4,0 %.
+:::
+
+### Réponse
+
+Lorsque TripPay répond à votre demande, cela ressemblera à ceci :
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+Sauver le`id`sur la ligne 3. Vous l'utiliserez pour injecter dans le composant Web TripPay.
+
+## Intégrer TripPay
+
+:::note
+Assurez-vous d'avoir préalablement chargé nos styles et notre code Javascript.
+:::
+
+À ce stade, vous êtes prêt à intégrer le`Payment Web Component`dans votre site Web et montrez-le à l'utilisateur.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+En ce qui concerne l'intégration, c'est tout ce que vous avez à faire. À partir de maintenant, TripPay se charge du reste.
+

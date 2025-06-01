@@ -1,0 +1,226 @@
+---
+title: Integráció a TripPay-jel
+description: >-
+  Ez a cikk egy teljes példát mutat be arról, hogyan integrálható a TripPay, és
+  hogyan bízhatja rá a fizetés lebonyolítását.
+sidebar:
+  order: 4
+---
+import { Steps } from '@astrojs/starlight/components';
+
+Ez a cikk egy teljes körű példát tartalmaz a TripPay-jel való integrációra.
+
+Ajánlott, hogy már elolvasd:
+
+* [Fizetés > Leképezés](/payment/mapping).
+* [Fizetés > Integráció](/payment/integration).
+* [Fizetési webkomponens](/developers/web-components/#payment).
+* [Fizetési API](/developers/apis/#payment-api).*Olvasd el a részt, ami arról szól`Create payable contracts`*
+
+Íme a lépések a TripPay sikeres használatához a foglalás kifizetéséhez:
+
+<Steps>
+  1. Győződjön meg róla, hogy a foglalási szerződésben említett kedvezményezettek fel vannak térképezve.
+  2. Hagyd, hogy az utazó válassza ki a lefoglalni kívánt felszerelést, és készüljön fel a fizetésre.
+  3. Hozz létre egy `payable contract` a TripPay-jel, amely tartalmazza a lefoglalandó tételeket.
+  4. Fizessen az utazó a TripPay webes komponens használatával.
+</Steps>
+
+
+Feltételezzük, hogy már elvégezted`Step 1`és`Step 2`és készen állnak arra, hogy értesítsék a TripPay-t a foglalásról.
+
+## Fizetendő szerződés létrehozása
+
+:::megjegyzés
+A fizetendő szerződés létrehozásának követelményeiről a Fizetési API-ban tudhat meg többet.
+:::
+
+### Kér
+
+Itt egy JSON minta kérés, amely mindent tartalmaz, amire szükséged van az első fizetendő szerződésed létrehozásához.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Magyarázat:
+
+Nem fogunk itt minden adatpontot elmagyarázni, mivel azok már szerepelnek az API dokumentációban.
+
+* Sorok:**2 - 7**a foglalásért felelős felhasználó. Kétféle foglaló létezik:
+  * Utazó.
+  * Utazási ügynök.
+* Sorok:**8-9**a foglalást lehetővé tevő TripPay-fiók. Ez lehet:
+  * Az Ön TripPay integrátori fiókja.
+  * Ha partnerhálózatot üzemeltetsz, az lehet a te partnered.
+* Használjon egy`traceId`több foglalás csoportosítása több szolgáltatónál. Így lemondhatja a csoportos foglalást.
+* `redirectUrl`tudatja a TripPay-jel, hogy melyik oldalra kell átirányítani a fizetés befejezése után.
+* `sourceUrl`az a weboldal/alkalmazás, amelyen a foglalás történt.
+
+A`contractList`A tömb tartalmazza azokat a tételeket, amelyeket az utazó több szállítótól szeretne megvásárolni. Minden tétel a következőket tartalmazza:
+
+* A`identifier`egy érvényes, általad létrehozott UUID.
+* A beszállító, akitől készletet szeretne foglalni.
+* A beszállítótól lefoglalni kívánt készlet. Ezek mind beágyazott tömbben vannak megadva.`contractItemList`.
+* Minden bejegyzés a következő alatt:`contractItemList`tartalmaz:
+  * **Vendégfelhasználó**Ez a felhasználó fog megérkezni a helyszínre.
+  * **Név angolul**A leltár neve angol nyelven.
+  * **Leírás angolul**A leltár hosszabb leírása angol nyelven.
+  * **Ár**A tétel ára.
+  * **Útiterv**Mikor kell ezt a tételt lefoglalni?
+  * **Árazási típus**Hogyan számolták ki az árat.
+  * **Készlettípus**Milyen típusú leltár ez?
+  * **Kifizetendő**Mikor kell az utazót megterhelni?*Jelenleg csak az azonnali fizetési lehetőségeket támogatjuk.*
+  * **Politika**Tartalmazza a lemondási szabályzatot.
+  * **Napi árlista**Ha a lefoglalt tétel egy szoba, akkor megadhatja, hogy mennyibe kerül a szoba a vendég által eltöltött éjszakákért.
+  * **Kedvezményezettek**Tüntesse fel, hogy a tétel árának melyik TripPay-számlához/számlákhoz milyen összeget/összegeket kell hozzárendelni.*Fix/százalékos összegek támogatottak.*
+
+:::note
+A fenti JSON példában 3 kedvezményezettünk van:
+
+* 1,5%-ot különítettek el arra a platformra, amely a foglalást lehetővé tette.*pl. Kacsintás*
+* 9,85%-ot jutalékként osztottak ki a partnernek.*pl. Kim Kardashian*
+* A szobafoglalás 88,65%-át a szolgáltatónak ítélték oda.*pl. Hilton*
+
+Amikor a TripPay egy fizetendő szerződéssel válaszol, észre fogja venni, hogy a saját kedvezményezettjét 4,0%-ban befizette.
+:::
+
+### Válasz
+
+Amikor a TripPay válaszol a kérésére, nagyjából így fog kinézni:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+Mentse el a`id`a 3. sorban. Ezt fogod használni a TripPay webes komponensbe való befecskendezéshez.
+
+## TripPay beágyazása
+
+:::megjegyzés
+Előzőleg győződjön meg róla, hogy betöltötte a stílusainkat és a Javascriptet.
+:::
+
+Ezen a ponton készen állsz a beágyazásra`Payment Web Component`be a weboldaladra, és mutasd meg a felhasználónak.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+Ami az integrációt illeti, ennyi az egész. Innentől kezdve az összes nehéz munkát a TripPay végzi el.
+

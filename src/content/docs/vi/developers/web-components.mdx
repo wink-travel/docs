@@ -1,0 +1,328 @@
+---
+title: Thành phần Web
+description: >-
+  Wink duy trì một thư viện các thành phần web JavaScript mà bạn có thể nhúng
+  vào trang web của mình.
+sidebar:
+  order: 6
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+[Thành phần Web](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)là một tiêu chuẩn cho phép bạn tích hợp toàn bộ các tính năng Javascript vào trang web của mình mà không cần biết cách viết mã.
+Nhờ công nghệ tuyệt vời này, bạn có thể nhúng Wink travel inventory mà không cần phải lo lắng nhiều. Bài viết này hướng dẫn bạn qua bộ sưu tập các thành phần web của chúng tôi và chỉ cho bạn cách sử dụng chúng.
+
+## Nhúng Wink
+
+Có ba thứ bạn phải đưa vào bất kỳ trang nào mà bạn muốn hiển thị một trong các thành phần web của chúng tôi.
+
+1. Bao gồm bảng định dạng của chúng tôi.
+2. Bao gồm Javascript của chúng tôi.
+3. Bao gồm trình tải ứng dụng của chúng tôi.
+
+### Bảng định dạng
+
+Thêm các kiểu CSS của chúng tôi vào phần đầu tài liệu của bạn.
+
+```html {3}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+</html>
+```
+
+### Javascript
+
+Thêm Javascript của chúng tôi vào cuối tài liệu của bạn. (*Chúng tôi khuyên bạn nên đặt ngay phía trên thẻ body cuối*).
+
+```html {3}
+<html>
+  <body>
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+  </body>
+</html>
+```
+
+Trang web của bạn hiện đã sẵn sàng và có thể hiển thị các thành phần web của chúng tôi.
+
+## Thành phần
+
+Đọc về thư viện thành phần của chúng tôi bên dưới.
+
+### Trình tải ứng dụng
+
+Bộ tải có trách nhiệm duy trì trạng thái và quản lý tương tác giữa các thành phần của chúng ta. (*Bao gồm nó bên dưới Javascript của chúng tôi*).
+
+```html {3-6}
+<html>
+  <body>
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+### Trình tải nội dung
+
+Trình tải nội dung là trung tâm của thư viện thành phần web của chúng tôi. Nó chịu trách nhiệm hiển thị kho của bạn (thẻ, lưới, bản đồ).
+
+Các thuộc tính có sẵn:
+
+* cách trình bày
+* nhận dạng
+* loại
+
+*Thuộc tính`sort`chỉ có sẵn khi bố trí`RANKED`và bạn không muốn sử dụng lưới xếp hạng hiện có. Đối với những trường hợp này, hãy để`id` trống.*
+
+Các kiểu bố cục có sẵn:
+
+* `AD_BANNER`
+* `MAP`
+* `HOTEL`
+* `GUEST_ROOM`
+* `MEETING_ROOM`
+* `SPA`
+* `RESTAURANT`
+* `ACTIVITY`
+* `ATTRACTION`
+* `PLACE`
+* `ADD_ON`
+* `LIST`
+* `SEARCH`
+* `RANKED`
+
+Các loại sắp xếp có sẵn:
+
+* `MEMBER`
+* `PRICE_LOW_TO_HIGH`
+* `PRICE_HIGH_TO_LOW`
+* `PRICE`
+* `POPULARITY`
+* `ECO`
+* `EXPERIENCE`
+* `PERK`
+* `LOYALTY`
+* `PACKAGE`
+
+```html {3-6}
+<html>
+  <body>
+    <wink-content-loader
+       layout="GUEST_ROOM"
+       id="2de7ee9c-61c9-11ef-9722-42004e494300"
+    ></wink-content-loader>
+  </body>
+</html>
+```
+
+Các mẫu có thể được tìm thấy cho[thẻ](/studio/cards),[lưới](/studio/grids) Và [bản đồ](/studio/maps).
+
+### Tra cứu
+
+Lookup hoạt động tốt cùng với một trong các lưới được xếp hạng của bạn. Nó cho phép người dùng của bạn tìm kiếm khách sạn và điểm đến và lưới cập nhật theo kết quả tìm kiếm của họ.
+
+```html {3}
+<html>
+  <body>
+    <wink-lookup></wink-lookup>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="350" height="57" resize="scale" quality="best" alt="Tra cứu thành phần web" src="academy/lookup" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Tra cứu thành phần web*</figcaption>
+</figure>
+
+
+Nhấp vào thành phần ở trên sẽ mở ra hộp thoại cho phép bạn nhập điểm đến hoặc khách sạn mà bạn đang tìm kiếm.
+
+<figure>
+  <CloudinaryImage width="700" height="186" resize="scale" quality="best" alt="Tra cứu mô hình" src="academy/lookup-results" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Tra cứu modal với kết quả*</figcaption>
+</figure>
+
+
+### Hành trình
+
+Nút hành trình hiển thị hành trình hiện tại trên nút. Khi bạn nhấp vào nút đó, trình chọn hành trình đầy đủ sẽ hiển thị dưới dạng hộp thoại.
+
+```html {3}
+<html>
+  <body>
+    <wink-itinerary></wink-itinerary>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="350" height="60" resize="scale" quality="best" alt="Thành phần web hành trình" src="academy/itinerary-button" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Thành phần web hành trình*</figcaption>
+</figure>
+
+
+Nhấp vào nút bên trên sẽ mở ra hộp thoại cho phép bạn cập nhật hành trình của mình.
+
+<figure>
+  <CloudinaryImage width="700" height="459" resize="scale" quality="best" alt="Tìm kiếm theo phương thức" src="academy/search-modal" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Bộ chọn hành trình như modal*</figcaption>
+</figure>
+
+
+### Tìm kiếm
+
+Tìm kiếm là nút chỉ có biểu tượng của trình chọn hành trình. Khi bạn nhấp vào nút này, trình chọn hành trình đầy đủ sẽ hiển thị dưới dạng hộp thoại.
+
+```html {3}
+<html>
+  <body>
+    <wink-search></wink-search>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="138" height="116" resize="scale" quality="best" alt="Tìm kiếm thành phần web" src="academy/search-button" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Tìm kiếm thành phần web*</figcaption>
+</figure>
+
+
+Nhấp vào nút bên trên sẽ mở ra hộp thoại cho phép bạn cập nhật hành trình của mình.
+
+<figure>
+  <CloudinaryImage width="700" height="459" resize="scale" quality="best" alt="Tìm kiếm theo phương thức" src="academy/search-modal" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Bộ chọn hành trình như modal*</figcaption>
+</figure>
+
+
+### Biểu mẫu hành trình
+
+Thành phần hành trình hiển thị biểu mẫu hành trình mà người dùng có thể tương tác.
+
+```html {3}
+<html>
+  <body>
+    <wink-itinerary-form></wink-itinerary-form>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="700" height="90" resize="scale" quality="best" alt="Thành phần formweb hành trình" src="academy/itinerary-form" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Thành phần web biểu mẫu hành trình*</figcaption>
+</figure>
+
+
+Bằng cách thay đổi hành trình trong bất kỳ thành phần hành trình nào, sự kiện cập nhật hành trình sẽ được kích hoạt cho bất kỳ hàng tồn kho nào hiện đang hiển thị trên trang.
+
+### Tài khoản
+
+Nút tài khoản cho phép bạn thêm xác thực Wink vào trang web của mình.
+
+```html {3}
+<html>
+  <body>
+    <wink-account></wink-account>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="92" height="104" resize="scale" quality="best" alt="Thành phần web tài khoản" src="academy/account-button" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Thành phần web nút tài khoản*</figcaption>
+</figure>
+
+
+Nhấp vào nút, khi người dùng chưa được xác thực, sẽ chuyển tiếp người dùng để được xác thực.
+Khi người dùng được xác thực, nó sẽ hiển thị biểu tượng hồ sơ của người dùng.
+
+<figure>
+  <CloudinaryImage width="92" height="104" resize="scale" quality="best" alt="Nút tài khoản khi đã xác thực" src="academy/account-button-auth" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Nút tài khoản (đã xác thực) thành phần web*</figcaption>
+</figure>
+
+
+Khi bạn nhấp vào nút, nó sẽ mở ra danh sách thả xuống dành riêng cho người dùng.
+
+<figure>
+  <CloudinaryImage width="350" height="404" resize="scale" quality="best" alt="Nút tài khoản khi đã xác thực" src="academy/account-button-auth-open" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Nút tài khoản (mở) thành phần web*</figcaption>
+</figure>
+
+
+## Nhúng TripPay
+
+Có hai điều bạn phải đưa vào bất kỳ trang nào mà bạn muốn sử dụng thành phần thanh toán TripPay.
+
+1. Bao gồm bảng định dạng của chúng tôi.
+2. Bao gồm Javascript của chúng tôi.
+
+### Bảng định dạng
+
+Thêm các kiểu CSS của chúng tôi vào phần đầu tài liệu của bạn.
+
+```html {3}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.trippay.io/styles.css"></link>
+  </head>
+</html>
+```
+
+### Javascript
+
+Thêm Javascript của chúng tôi vào cuối tài liệu của bạn. (*Chúng tôi khuyên bạn nên đặt ngay phía trên thẻ body cuối*).
+
+```html {3}
+<html>
+  <body>
+    <script src="https://elements.trippay.io/elements.js" type="module" defer></script>
+  </body>
+</html>
+```
+
+Trang web của bạn hiện đã sẵn sàng và có thể hiển thị các thành phần web của chúng tôi.
+
+## Thành phần
+
+### Sự chi trả
+
+Thành phần thanh toán cho phép bạn thông báo cho TripPay rằng du khách muốn mua thứ gì đó cũng như các quy tắc và giá cả cho những mặt hàng đó.
+
+Có một thuộc tính bắt buộc đối với tiện ích:
+
+* `id`Mã định danh của hợp đồng đặt phòng mà bạn muốn thực hiện.
+
+```html {3}
+<html>
+  <body>
+    <trip-pay id="<INSERT_BOOKING_CONTRACT_ID>"></trip-pay>
+  </body>
+</html>
+```
+
+:::lưu ý
+Để tìm hiểu cách tạo hợp đồng đặt phòng`id`, đọc hướng dẫn:[Tích hợp với TripPay](/guides/integrating-with-trip-pay).
+:::
+
+Tiện ích chuẩn bị hợp đồng để thực hiện và hiển thị thông tin chi tiết về thanh toá&#x6E;*(Hình 1)*&#x63;ho người dùng để hoàn tất việc đặt chỗ.
+
+<figure>
+  <CloudinaryImage width="700" height="1141" resize="scale" quality="best" alt="Chi tiết thanh toán" src="academy/payment-modal" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Hình 1. Mẫu biểu thanh toán*</figcaption>
+</figure>
+

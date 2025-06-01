@@ -1,0 +1,224 @@
+---
+title: TripPay와 통합
+description: 이 문서에서는 TripPay와 통합하고 TripPay에서 결제를 처리하는 방법에 대한 전체 예를 소개합니다.
+sidebar:
+  order: 4
+---
+import { Steps } from '@astrojs/starlight/components';
+
+이 문서에서는 TripPay와 통합하는 방법에 대한 종단 간 예를 소개합니다.
+
+이미 읽어 보셨기를 권장합니다.
+
+* [결제 > 매핑](/payment/mapping).
+* [결제 > 통합](/payment/integration).
+* [결제 웹 구성 요소](/developers/web-components/#payment).
+* [결제 API](/developers/apis/#payment-api).*섹션을 읽어보세요`Create payable contracts`*
+
+TripPay를 사용하여 예약 비용을 성공적으로 결제하는 단계는 다음과 같습니다.
+
+<Steps>
+  1. 예약 계약서에 언급된 수혜자가 매핑되었는지 확인하세요.
+  2. 여행자가 예약하고자 하는 상품을 선택하고 결제 준비를 하도록 하세요.
+  3. 생성하다 `payable contract` TripPay를 사용하면 예약할 항목이 포함됩니다.
+  4. 여행자가 TripPay 웹 구성 요소를 사용하여 결제하도록 합니다.
+</Steps>
+
+
+귀하가 이미 완료했다고 가정합니다.`Step 1` 그리고 `Step 2`TripPay에 예약 사실을 알릴 준비가 되었습니다.
+
+## 지급 계약서 작성
+
+:::참고
+지급 계약 생성 요건에 대한 자세한 내용은 결제 API를 참조하세요.
+:::
+
+### 요구
+
+다음은 첫 번째 지급 계약을 작성하는 데 필요한 모든 것을 포함하는 JSON 샘플 요청입니다.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+설명:
+
+모든 데이터 포인트에 대한 설명은 API 문서에서 이미 다루고 있으므로 여기서는 설명하지 않겠습니다.
+
+* 라인:**2 - 7**예약 담당자는 사용자입니다. 예약자에는 두 가지 유형이 있습니다.
+  * 여행자.
+  * 여행사 직원.
+* 라인:**8 - 9**예약을 처리하는 TripPay 계정입니다. 다음과 같은 계정이 있을 수 있습니다.
+  * TripPay 통합 계정입니다.
+  * 제휴 네트워크를 운영한다면 제휴사가 될 수 있습니다.
+* 사용하다`traceId`여러 공급업체의 여러 예약을 그룹화합니다. 이렇게 하면 그룹 예약을 취소할 수 있습니다.
+* `redirectUrl`결제가 완료된 후 TripPay에 어떤 페이지로 이동할지 알려줍니다.
+* `sourceUrl`예약이 이루어진 사이트/앱입니다.
+
+그`contractList`배열에는 여행자가 여러 공급업체로부터 구매하려는 품목이 포함됩니다. 각 품목에는 다음이 포함됩니다.
+
+* 그`identifier`는 사용자가 생성한 유효한 UUID입니다.
+* 재고를 예약하려는 공급업체입니다.
+* 해당 공급업체로부터 예약하려는 재고입니다. 이러한 모든 항목은 중첩된 배열에 지정됩니다.`contractItemList`.
+* 아래의 모든 항목`contractItemList`포함 내용:
+  * **게스트 사용자**이는 현장에 도착할 사용자입니다.
+  * **영어 이름**재고의 영어 이름입니다.
+  * **영어 설명**재고에 대한 자세한 설명은 영어로 되어 있습니다.
+  * **가격**품목의 가격.
+  * **여정**이 항목을 언제 예약해야 합니까?
+  * **가격 유형**가격이 계산된 방법.
+  * **재고 유형**이것은 어떤 종류의 재고입니까?
+  * **지불 가능**여행자에게 요금을 청구해야 하는 경우.*현재는 즉시 결제 옵션만 지원합니다.*
+  * **정책**취소 정책 규칙을 포함하세요.
+  * **일일 요금표**예약하는 항목이 객실인 경우, 투숙객이 숙박하는 각 밤에 객실 비용을 포함할지 선택할 수 있습니다.
+  * **수혜자**각 TripPay 계정에 해당 품목 가격의 얼마를 할당해야 하는지 포함하세요.*고정/백분율 금액이 지원됩니다.*
+
+:::note
+위의 JSON 예시에는 수혜자가 3명 있습니다.
+
+* 예약을 진행한 플랫폼에 1.5%가 할당되었습니다.*예를 들어 윙크*
+* 9.85%는 제휴사에게 수수료로 할당되었습니다.*예를 들어, 킴 카다시안*
+* 객실 예약을 위해 공급업체에 88.65%가 할당되었습니다.*예를 들어 힐튼*
+
+TripPay가 지급 가능 계약으로 응답할 때, TripPay가 자체 수혜자에게 4.0%의 이자를 지급했음을 알 수 있습니다.
+:::
+
+### 응답
+
+TripPay가 귀하의 요청에 응답하면 다음과 같이 표시됩니다.
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+저장하다`id`3번째 줄에 이것을 사용하여 TripPay 웹 구성 요소에 주입합니다.
+
+## TripPay 삽입
+
+:::참고
+스타일과 자바스크립트를 미리 로드했는지 확인하세요.
+:::
+
+이 시점에서 다음을 삽입할 준비가 되었습니다.`Payment Web Component`귀하의 웹사이트에 삽입하여 사용자에게 보여주세요.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+통합만 하면 됩니다. 이후 모든 복잡한 작업은 TripPay에서 처리해 드립니다.
+

@@ -1,0 +1,68 @@
+---
+title: Authentication
+description: 'Lær, hvordan du godkender ved hjælp af Winks OAuth2-godkendelsesserver.'
+sidebar:
+  order: 2
+---
+:::tip
+Wink IAM-godkendelsesserveren understøtter de almindelige OAuth2-slutpunkter:
+
+* /oauth2/autoriser
+* /oauth2/token
+* /oauth2/introspekt
+* /oauth2/tilbagekald
+* /oauth2/brugerinfo
+  :::
+
+En applikation giver dig en`Client ID`og`Secret Key`at du skal oprette en godkendt OAuth2-session, som du kan bruge til at kommunikere med Wink- og TripPay-API'er.
+
+Her er trinnene til at oprette en godkendt session.
+
+**Trin 1**Hent en adgangstoken på staging eller i vores produktionsmiljø:
+
+Du vil højst sandsynligt arbejde med et robust OAuth2-bibliotek til dit sprog, som vil klare alt det hårde arbejde for dig.
+Vores eksempler viser den mest grundlæggende brug fra kommandolinjen ved hjælp af`curl`.
+
+### Iscenesættelse
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Produktion
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Dette returnerer et adgangstoken sammen med andre OAuth2-svardata:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Når du foretager et opkald til et af vores slutpunkter, skal du inkludere følgende i overskriften:
+
+* `Wink-Version`=`2.0`Seneste -*Se vores API-dokumentation for andre tilgængelige versioner.*
+* `Authentication`=`Bearer: ${access_token}` *Indsæt din adgangstoken.*
+
+:::tip
+Du kan teste alle vores API'er uden at skrive en eneste linje kode, før du går i gang.
+
+Hent et 'Klient-ID' og en 'Hemmelig nøgle' ​​fra en af ​​dine apps, og naviger til en af ​​vores[API'er](/developers/apis).&#x20;
+:::
+

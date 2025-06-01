@@ -1,0 +1,287 @@
+---
+title: Grids
+description: >-
+  Bu makale, düzenlenmiş listelerden ve kaydedilmiş aramalardan ızgaralar
+  oluşturmayı ve bunları sitenizde nasıl tanıtacağınızı adım adım anlatıyor.
+sidebar:
+  order: 8
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+Bir ızgara, tedarikçilerin ve envanterin bir listesini temsil eder ve etkileşimli, rezerve edilebilir bir ızgara kullanıcı arayüzü aracılığıyla ayrıntıları ortaya çıkarır.
+Izgara, düzenlenmiş listenizden veya kaydedilmiş aramanızdan herhangi bir envanteri görüntülemeyi destekler.
+Bir kullanıcı, bir ızgarayla, bir bireyle etkileşime girdiği şekilde etkileşime girer[kart](/studio/cards)bir ek özellik ile:
+
+1. Tıklayarak ızgarada sayfalar arasında gezinin`Show more` düğme (*daha fazla ürün mevcut olduğunda*).
+
+<figure>
+  <CloudinaryImage width="700" height="319" resize="scale" quality="best" alt="Izgara önizlemesi" src="academy/grid-example" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Birden fazla oda tipini gösteren ızgara*</figcaption>
+</figure>
+
+
+Yukarıda oda tipi kartlarının listesini gösteren bir ızgara örneği bulunmaktadır.
+
+Bu makalenin geri kalanında, ızgaranın nasıl oluşturulacağı, özelleştirileceği ve kullanıcılarınıza nasıl sunulacağı anlatılmaktadır.
+
+## Izgara türleri
+
+Üç tip ızgara vardır:
+
+1. Bir ızgaraya dayalı[küratörlü liste](/studio/curated-lists#list-actions).
+2. Bir ızgaraya dayalı[kaydedilmiş arama](/studio/saved-searches#list-actions).
+3. Konum ve sıralama ölçütlerine göre grid grid (*yani Sıralanmış ızgara*).
+
+## Düzenlenmiş liste ızgarası
+
+Bu, düzenlediğiniz listelerden birinde topladığınız envanteri kullanan ve listeyi kullanıcılarınıza gösterebileceğiniz rezervasyon yapılabilir seyahat envanterine dönüştüren bir ızgaradır.
+
+### Yaratmak
+
+Şuraya git:`Inventory > Curated Lists`ana gezinme çubuğundan. Bu örnek için, sizinkini kullanacağız`Favorites`liste.
+Eğer henüz bir şey eklemediyseniz`Favorites`, git[Aramak](/studio/search)nasıl olduğunu öğrenmek için.
+
+<figure>
+  <CloudinaryImage width="350" height="394" resize="scale" quality="best" alt="Küratörlük listesi ızgarası oluştur" src="academy/create-curated-list-grid" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Düzenlenmiş liste ızgara formu oluştur*</figcaption>
+</figure>
+
+
+<Steps>
+  1. Tıkla `Actions` düğme üzerinde `Favorites` liste.
+  2. Tıkla `Create a grid` düğme.
+  3. Yeni bir pencere açılacak ve bu pencerede gridinize isim verebilirsiniz. *Aşağıya bakın*.
+  4. Tıklamak `OK` Devam etmek için düğmeye basın.
+</Steps>
+
+
+Izgaranız oluşturuldu. Şuraya gidin:`Tools > Grids`ana gezinme çubuğundan ve tıklayın`Curated Grids`Yeni ızgaranızı görmek için sekmeye tıklayın.
+
+### Özelleştirmek
+
+Form, ızgaranızı aşağıdaki şekillerde özelleştirmenize olanak tanır:
+
+<Steps>
+  1. Hatırlayacağınız bir isim verin ki, ızgaranın ne hakkında olduğunu anlayasınız.
+  2. Seçin [Özelleştirme](/studio/customization) bu şebekeye başvurmak istiyorsunuz.
+  3. Kullanıcıların ilk önce görmesini istediğiniz ilk kart yüzünü seçin. Varsayılan olarak, bu envanterin yerel yüzüdür.
+  4. Kartta kullanmak istediğiniz rozeti seçin. Bir rozet, kullanıcıların envanteri toplu bir metrikte karşılaştırmasına olanak tanır, örneğin: `eco-friendly`.
+  5. Kullanılacak anahtar kelimeleri virgülle ayırarak ekleyin [Web Tarayıcıları](https://developer.mozilla.org/en-US/docs/Glossary/Crawler).
+  6. Kullanıcının görmesini istediğiniz dillerde başlık ve açıklamalar ekleyin.
+  7. Tıkla `Save` Devam etmek için düğmeye basın.
+</Steps>
+
+
+### Paylaşmak
+
+<figure>
+  <CloudinaryImage width="350" height="618" resize="scale" quality="best" alt="Düzenlenmiş liste ızgarası" src="academy/curated-list-grid" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Daraltılmış eylem menüsüyle düzenlenmiş liste ızgara girişi*</figcaption>
+</figure>
+
+
+Yukarıda, ızgaranız için tüm kullanılabilir eylemleri içeren bir görüntü gösterilmektedir:
+
+* **Güncelleme**Grid yapılandırmanızı günceller.
+* **WinkLinks'e ekle**Izgarayı WinkLinks hesabınıza ekler.
+* **Gömmek**Bu ızgarayı bir tablo olarak nasıl yerleştireceğinizi gösterir[Izgara](/developers/web-components/#content-loader)web sitenize.
+* **WordPress ile kullanın**Size nasıl kullanılacağını gösterir[WordPress eklentisi](/developers/wordpress)Bu ızgarayı web sitenize yerleştirmek için.
+
+Bu seçeneklerden bazılarını aşağıda daha detaylı olarak ele alacağız.
+
+### Gömmek
+
+```html {3, 6-9, 11, 13-16}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+  <body>
+    <wink-content-loader
+       layout="LIST"
+       id="9a212b5e-62a7-11ef-ac3f-42004e494300"
+    ></wink-content-loader>
+
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+Izgaranızı sitenize nasıl yerleştireceğiniz aşağıda açıklanmıştır:
+
+* 3\. satırda Wink stillerini sitenize nasıl yerleştireceğiniz gösterilmektedir.
+* 6'dan 9'a kadar olan satırlar, nasıl kullanılacağını gösterir[göz kırpma-içerik-yükleyici](/developers/web-components/#content-loader)Web Bileşenine gidin ve kodunuz için bir ızgara getirmesini söyleyin.
+* 11\. satırda Javascript'imizi sitenize nasıl yerleştireceğiniz gösteriliyor.
+* 13\. satır, şunun nasıl yerleştirileceğini gösterir:[göz kırpma-uygulaması-yükleyici](/developers/web-components/#application-loader)Web Bileşeni'ne gidin ve sayfa düzeyindeki yapılandırma tercihlerinizi getirmesini söyleyin.
+
+## Kaydedilen arama ızgarası
+
+Bu, kaydedilmiş arama sorgunuzdaki envanteri kullanan ve arama sonuçlarını kullanıcılarınıza gösterebileceğiniz rezervasyon yapılabilir seyahat envanterine dönüştüren bir ızgaradır.
+
+### Yaratmak
+
+Şuraya git:`Inventory > Saved searches`ana gezinme çubuğundan.
+Henüz kaydedilmiş bir arama oluşturmadıysanız, şuraya gidin:[Aramak](/studio/search)nasıl olduğunu öğrenmek için.
+
+<figure>
+  <CloudinaryImage width="350" height="394" resize="scale" quality="best" alt="Kaydedilmiş arama ızgarası oluştur" src="academy/create-saved-search-grid" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Kaydedilmiş arama ızgarası formunu oluştur*</figcaption>
+</figure>
+
+
+<Steps>
+  1. Tıkla `Actions` Kaydedilmiş aramanızdaki düğmesine tıklayın.
+  2. Tıkla `Create a grid` düğme.
+  3. Yeni bir pencere açılacak ve bu pencerede gridinize isim verebilirsiniz. *Aşağıya bakın*.
+</Steps>
+
+
+4. Tıklamak `OK`Devam etmek için düğmeye basın.
+
+Izgaranız oluşturuldu. Şuraya gidin:`Tools > Grids`ana gezinme çubuğundan ve tıklayın`Saved Search Grids`Yeni ızgaranızı görmek için sekmeye tıklayın.
+
+### Özelleştirmek
+
+Form, ızgaranızı aşağıdaki şekillerde özelleştirmenize olanak tanır:
+
+<Steps>
+  1. Hatırlayacağınız bir isim verin ki, ızgaranın ne hakkında olduğunu anlayasınız.
+  2. Seçin [Özelleştirme](/studio/customization) bu şebekeye başvurmak istiyorsunuz.
+  3. Kullanıcıların ilk önce görmesini istediğiniz ilk kart yüzünü seçin. Varsayılan olarak, bu envanterin yerel yüzüdür.
+  4. Kartta kullanmak istediğiniz rozeti seçin. Bir rozet, kullanıcıların envanteri toplu bir metrikte karşılaştırmasına olanak tanır, örneğin: `eco-friendly`.
+  5. Kullanılacak anahtar kelimeleri virgülle ayırarak ekleyin [Web Tarayıcıları](https://developer.mozilla.org/en-US/docs/Glossary/Crawler).
+  6. Kullanıcının görmesini istediğiniz dillerde başlık ve açıklamalar ekleyin.
+  7. Tıkla `Save` Devam etmek için düğmeye basın.
+</Steps>
+
+
+### Paylaşmak
+
+<figure>
+  <CloudinaryImage width="350" height="617" resize="scale" quality="best" alt="Kaydedilen arama ızgarası" src="academy/saved-search-grid" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Daraltılmış eylem menüsüyle kaydedilmiş arama ızgarası girişi*</figcaption>
+</figure>
+
+
+### Gömmek
+
+```html {3, 6-9, 11, 13-16}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+  <body>
+    <wink-content-loader
+       layout="LIST"
+       id="be3130d5-62a7-11ef-ac3f-42004e494300"
+    ></wink-content-loader>
+
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+Izgaranızı sitenize nasıl yerleştireceğiniz aşağıda açıklanmıştır:
+
+* 3\. satırda Wink stillerini sitenize nasıl yerleştireceğiniz gösterilmektedir.
+* 6'dan 9'a kadar olan satırlar, nasıl kullanılacağını gösterir[göz kırpma-içerik-yükleyici](/developers/web-components/#content-loader)Web Bileşenine gidin ve kodunuz için bir ızgara getirmesini söyleyin.
+* 11\. satırda Javascript'imizi sitenize nasıl yerleştireceğiniz gösteriliyor.
+* 13\. satır, şunun nasıl yerleştirileceğini gösterir:[göz kırpma-uygulaması-yükleyici](/developers/web-components/#application-loader)Web Bileşeni'ne gidin ve sayfa düzeyindeki yapılandırma tercihlerinizi getirmesini söyleyin.
+
+## Sıralama ızgarası
+
+### Yaratmak
+
+Sıralanmış bir ızgara oluşturmak için şuraya gidin:`Tools > Grids`ve üzerine tıklayın`Ranked Grid`sekmesi. Üzerine tıklayın`Create ranked grid` düğme.
+
+### Özelleştirmek
+
+Form, sıralamalı ızgaranızı aşağıdaki şekillerde özelleştirmenize olanak tanır:
+
+<Steps>
+  1. Bir hedef seçin. *Örn. Tokyo*.
+  2. Hatırlayacağınız bir isim verin ki, ızgaranın ne hakkında olduğunu anlayasınız. *Örn. Tokyo'daki çevre dostu oteller*
+  3. Seçin [Özelleştirme](/studio/customization) bu şebekeye başvurmak istiyorsunuz.
+  4. Kullanıcıların ilk önce görmesini istediğiniz ilk kart yüzünü seçin. Varsayılan olarak, bu envanterin yerel yüzüdür.
+  5. Özelliklerin hangi özelliğe göre sıralanacağını seçin. *Örn. Çevre dostu olma*.
+  6. Kullanılacak anahtar kelimeleri virgülle ayırarak ekleyin [Web Tarayıcıları](https://developer.mozilla.org/en-US/docs/Glossary/Crawler).
+  7. Kullanıcının görmesini istediğiniz dillerde başlık ve açıklamalar ekleyin.
+  8. Tıkla `Save` Devam etmek için düğmeye basın.
+</Steps>
+
+
+Sıralamalı ızgaranızı kaydettikten sonra sıralanmış ızgaralar sayfanıza yönlendirileceksiniz ve ızgaranız artık dünyayla paylaşılmaya hazır.
+
+### Paylaşmak
+
+<figure>
+  <CloudinaryImage width="350" height="658" resize="scale" quality="best" alt="Sıralama ızgarası" src="academy/ranked-grid" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Daraltılmış eylem menüsüne sahip sıralı bir ızgara*</figcaption>
+</figure>
+
+
+Yukarıda rankd gridiniz için tüm kullanılabilir eylemleri gösteren bir resim gösterilmektedir:
+
+* **Güncelleme**Grid yapılandırmanızı günceller.
+* **WinkLinks'e ekle**Sıralamalı tabloyu WinkLinks hesabınıza ekler.
+* **Gömmek**Bu ızgarayı bir tablo olarak nasıl yerleştireceğinizi gösterir[Izgara](/developers/web-components/#content-loader)web sitenize.
+* **WordPress ile kullanın**Size nasıl kullanılacağını gösterir[WordPress eklentisi](/developers/wordpress)Bu kartı web sitenize yerleştirmek için.
+
+Bu seçeneklerden bazılarını aşağıda daha detaylı olarak ele alacağız.
+
+### Gömmek
+
+```html {3, 6-9, 11, 13-16}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+  <body>
+    <wink-content-loader
+       layout="RANKED"
+       id="2483d55e-62a5-11ef-ac3f-42004e494300"
+    ></wink-content-loader>
+
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+Izgaranızı sitenize nasıl yerleştireceğiniz aşağıda açıklanmıştır:
+
+* 3\. satırda Wink stillerini sitenize nasıl yerleştireceğiniz gösterilmektedir.
+* 6'dan 9'a kadar olan satırlar, nasıl kullanılacağını gösterir[göz kırpma-içerik-yükleyici](/developers/web-components/#content-loader)Web Bileşenine gidin ve kodunuz için sıralanmış bir ızgara getirmesini söyleyin.
+* 11\. satırda Javascript'imizi sitenize nasıl yerleştireceğiniz gösteriliyor.
+* 13\. satır, şunun nasıl yerleştirileceğini gösterir:[göz kırpma-uygulaması-yükleyici](/developers/web-components/#application-loader)Web Bileşeni'ne gidin ve sayfa düzeyindeki yapılandırma tercihlerinizi getirmesini söyleyin.
+
+## API
+
+Izgaraları yönetmek isteyen geliştiriciler şuraya gidebilir:[Geliştiriciler > API > Envanter](/developers/apis/#inventory-api).
+
+## Daha fazla okuma
+
+* Koleksiyonumuz hakkında daha fazla bilgi edinin[Web Bileşenleri](/developers/web-components).
+* Daha fazla bilgi edinin[Wink WordPress eklentisi](/developers/wordpress).
+

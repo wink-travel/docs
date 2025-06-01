@@ -1,0 +1,131 @@
+---
+title: Setup
+description: >-
+  See artikkel näitab teile, kuidas kiiresti arendajana end seadistada ja meie
+  API-sid Winkis testima hakata.
+sidebar:
+  order: 1
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+See artikkel näitab teile, kuidas kiiresti arendajana end seadistada ja meie API-sid Winkis testima hakata.
+
+:::märkus
+Testimine peaks alati toimuma meie[lavastuskeskkond](/getting-started/environments)Seal on palju vähem andmeid, aga sa võid vabalt testida nii palju kui soovid, ilma et see tootmiskeskkonda koormaks.
+
+Kui olete valmis avaldama, sertifitseerime teie konto ja rakenduse ning saate selle meie tootmiskeskkonnas käivitada.
+:::
+
+Järgige neid samme:
+
+<Steps>
+  1. [Registreeru](/user/register) teie kasutajakonto Winkis
+  2. Loo [reisibüroo konto](/travel-agent/what-is-agent) või [partnerkonto](/studio/what-is-studio).
+  3. [Loo rakendus](/developer/applications) kus te selle 2. sammus loodud kontoga seostate.
+  4. Kui olete loonud oma `Application`, salvesta kliendi ID ja kliendi saladus kindlasse kohta.
+</Steps>
+
+
+## CDN
+
+Winkis kasutame kõigi oma pildi- ja videomaterjalide jaoks Cloudinaryt. Meie reisimaterjalide inventarile ligipääsemisel on teil täielik juurdepääs kõigile Cloudinary täiustatud funktsioonidele.
+
+Meie`cloud_name`on`traveliko`.
+
+### Pilvepõhine
+
+* [Alustamine](https://cloudinary.com/documentation/dev_kickstart)
+* [SDK-d](https://cloudinary.com/documentation/cloudinary_sdks)
+* [Cloudinary GitHubis](https://github.com/cloudinary)
+* [Videoõpetused](https://cloudinary.com/documentation/cloudinary_sdks_tutorials)
+
+### Näide
+
+Iga meie toetatava reisivarustuse tüübi kohta on olemas pesastatud JSON-massiiv nimega`multimedias`Multimeediakirje JSON näeb välja selline:
+
+```json {3}
+{
+  "multimediaIdentifier": "multimedia-1",
+  "identifier": "partners/radisson_blu_logo",
+  "type": "IMAGE",
+  "width": "1024",
+  "height": "768",
+  "category": "1",
+  "descriptions": [
+    {
+      "name": "Lobby",
+      "description": "Picture of the lobby",
+      "language": "en"
+    }
+  ],
+  "lifestyleType": "LIFESTYLE_BUSINESS",
+  "attribution": [
+    {
+      "url": "https://www.hilton.com",
+      "name": "Hilton"
+    }
+  ]
+}
+```
+
+Ülaltoodud esiletõstetud rida näitab Cloudinary unikaalset ID-d.`partners/radisson_blu_logo`See on kõik, mida vajate pildi hankimiseks mis tahes vormingus, kvaliteedis ja suuruses.
+
+## Testimine
+
+Mine meie juurde[API-d](/developer/apis)ja valige API, millega soovite töötada.
+
+### API dokumendid
+
+Meie dokumentatsioonisait on üles ehitatud nii, et saate saidi seest käivitada API-käske.
+
+Selles näites soovite kasutada`Search Lookups (OAuth2)`API-kõne.
+
+:::tip\[Proffi nipp]
+Lihtsuse huvides soovitame integraatoritel kasutada meie määratud lõpp-punkte`OAuth2`Need lõpp-punktid teavad, et oodata API-kõnesid ja teavad juba, millisel kontol te olete, seega ei pea te seda täpsustama.`companyIdentifier`teie URL-ides.
+:::
+
+<Steps>
+  1. Kasutage [Otsingu API](https://docs.wink.travel/lookup) sihtkohtade või hotellide leidmiseks.
+  2. Vasakpoolsel navigeerimisribal klõpsake nuppu `Authentication`.
+  3. Sisestage oma kliendi ID ja kliendi salakood ning klõpsake nuppu `Get TOKEN` nupp.
+  4. Kui teie volitused on kehtivad, näete, et teie API-võti on rakendatud.
+  5. Nüüd saate otsingu lõpp-punkti testida.
+</Steps>
+
+
+<figure>
+  <CloudinaryImage width="700" height="265" resize="scale" quality="best" alt="Otsingu API lõpp-punkt" src="academy/lookup-api-call" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Näidisotsingu päringud (OAuth2)*</figcaption>
+</figure>
+
+
+### Postiljon
+
+Sama saab teha ka Postmaniga.
+
+<Steps>
+  1. Laadi alla [Postiljon](https://www.postman.com/downloads).
+  2. Klõpsake `Download OpenAPI spec` ülaosast [Otsingu API](https://docs.wink.travel/lookup) leht.
+  3. Impordi see Postmani.
+  4. Kui importisite selle uue kollektsioonina nimega `Wink API`, klõpsake kollektsiooni nime kõrval asuval horisontaalsel kolmikpunktil (3 punkti) ja seejärel klõpsake `Edit`.
+  5. Sisse `Authorization tab`, määrake `Auth type` OAuth2-le.
+  6. Määrake väli `Add auth data to` kuni `Request headers`.
+  7. Määrake väli `Header prefix` kuni `Bearer`.
+  8. Määrake väli `Token Name` ükskõik milliseks nimeks sa oma salvestatud tokenile Postmanis anda soovid. Näiteks Wink Staging.
+  9. Määrake väli `Grant type` kuni `Client Credentials`.
+  10. Määrake väli `Access token URL` aadressile https://staging-iam.wink.travel/oauth2/token.
+  11. Määrake väli `Client ID` kliendi ID-le, mille genereerimisel teie rakendus osales.
+  12. Määrake väli `Client Secret` kliendi saladusele, mille loomisel teie rakendus osales.
+  13. Määrake väli `Scope` kuni `inventory.read inventory.write inventory.remove`Need on kõik ulatused, mida Winki jaoks vaja läheb.
+  14. Määrake väli `Client Authentication` kuni `Send as Basic Auth header`.
+  15. Klõpsake nuppu `Get New Access Token` nupp oma tokeni hankimiseks ja salvestamiseks.
+  16. Kõikide Wink API kollektsiooni all olevate API-kõnede puhul veenduge, et autentimise vahekaardil oleks kirjas `Inherit auth from parent` seega lisab see teie tokeni iga kõnega.
+</Steps>
+
+
+:::tip\[Proffi nipp]
+Soovitatav on muuta serveri domeen, kliendi ID ja kliendi salakood keskkonnamuutujateks. Nii saate hõlpsalt vahetada testimis- ja tootmiskeskkondade vahel ning taaskasutada kõiki loodud toiminguid.
+:::
+

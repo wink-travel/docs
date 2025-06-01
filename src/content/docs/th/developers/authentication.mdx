@@ -1,0 +1,67 @@
+---
+title: Authentication
+description: เรียนรู้วิธีการตรวจสอบสิทธิ์โดยใช้เซิร์ฟเวอร์การอนุญาต OAuth2 ของ Wink
+sidebar:
+  order: 2
+---
+:::เคล็ดลับ
+เซิร์ฟเวอร์การตรวจสอบสิทธิ์ Wink IAM รองรับจุดสิ้นสุด OAuth2 ทั่วไป:
+
+* /oauth2/อนุญาต
+* /oauth2/โทเค็น
+* /oauth2/การตรวจสอบภายใน
+* /oauth2/เพิกถอน
+* /oauth2/ข้อมูลผู้ใช้
+  :::
+
+แอปพลิเคชันนี้จะให้บริการคุณด้วย`Client ID` และ `Secret Key`ที่คุณต้องสร้างเซสชัน OAuth2 ที่ผ่านการตรวจสอบสิทธิ์ ซึ่งคุณสามารถใช้เพื่อสื่อสารกับ Wink และ TripPay API ได้
+
+ต่อไปนี้เป็นขั้นตอนในการสร้างเซสชันที่ผ่านการตรวจสอบสิทธิ์
+
+**ขั้นตอนที่ 1**ดึงโทเค็นการเข้าถึงบนการจัดเตรียมหรือในสภาพแวดล้อมการผลิตของเรา:
+
+เป็นไปได้มากว่าคุณจะต้องทำงานกับไลบรารี OAuth2 ที่แข็งแกร่งสำหรับภาษาของคุณ ซึ่งจะทำหน้าที่ทั้งหมดแทนคุณ
+ตัวอย่างของเราจะแสดงการใช้งานพื้นฐานที่สุดจากบรรทัดคำสั่งโดยใช้`curl`-
+
+### การจัดฉาก
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### การผลิต
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+การดำเนินการนี้จะส่งคืนโทเค็นการเข้าถึงพร้อมกับข้อมูลการตอบสนอง OAuth2 อื่นๆ:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+เมื่อคุณโทรไปยังจุดปลายทางใดๆ ของเรา โปรดใส่ข้อมูลต่อไปนี้ในส่วนหัว:
+
+* `Wink-Version`-`2.0` ล่าสุด - *ดูเอกสาร API ของเราสำหรับเวอร์ชันอื่น ๆ ที่มีให้บริการ*
+* `Authentication`-`Bearer: ${access_token}` *ใส่โทเค็นการเข้าถึงของคุณ*
+
+:::เคล็ดลับ
+คุณสามารถทดสอบ API ทั้งหมดของเราได้โดยไม่ต้องเขียนโค้ดแม้แต่บรรทัดเดียวก่อนเริ่มต้นใช้งาน
+
+หยิบ 'Client ID' และ 'Secret Key' จากแอปใดแอปหนึ่งของคุณแล้วไปที่แอปใดก็ได้ของเรา[APIs](/developers/apis)-
+

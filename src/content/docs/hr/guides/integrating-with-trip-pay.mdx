@@ -1,0 +1,225 @@
+---
+title: Integracija s TripPayom
+description: >-
+  Ovaj članak sadrži potpuni primjer kako se integrirati s TripPayom i kako
+  dopustiti da on umjesto vas obradi plaćanje.
+sidebar:
+  order: 4
+---
+import { Steps } from '@astrojs/starlight/components';
+
+Ovaj članak sadrži primjer kako se integrirati s TripPayom.
+
+Preporučuje se da ste već pročitali:
+
+* [Plaćanje > Mapiranje](/payment/mapping).
+* [Plaćanje > Integracija](/payment/integration).
+* [Web komponenta za plaćanje](/developers/web-components/#payment).
+* [API za plaćanje](/developers/apis/#payment-api).*Pročitajte odjeljak o`Create payable contracts`*
+
+Evo koraka za uspješno korištenje TripPaya za plaćanje rezervacije:
+
+<Steps>
+  1. Provjerite jesu li korisnici koje spomenete u ugovoru o rezervaciji mapirani.
+  2. Neka putnik odabere inventar koji želi rezervirati i neka se pripremi za plaćanje.
+  3. Stvori `payable contract` s TripPayom koji sadrži stavke koje treba rezervirati.
+  4. Neka putnik plati putem TripPay web komponente.
+</Steps>
+
+
+Pretpostavljamo da ste već završili`Step 1`i`Step 2`i spremni su obavijestiti TripPay o rezervaciji.
+
+## Stvori ugovor o plaćanju
+
+:::napomena
+Idite na API za plaćanje kako biste saznali više o zahtjevima za izradu ugovora s mogućnošću plaćanja.
+:::
+
+### Zahtjev
+
+Evo primjera JSON zahtjeva koji uključuje sve što vam je potrebno za izradu vašeg prvog ugovornog ugovora.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Obrazloženje:
+
+Ovdje nećemo objašnjavati svaku podatkovnu točku jer su već obrađene u API dokumentaciji.
+
+* Linije:**2 - 7**je korisnik odgovoran za rezervaciju. Postoje dvije vrste korisnika koji rezerviraju:
+  * Putnik.
+  * Turistički agent.
+* Linije:**8 - 9**je TripPay račun koji omogućuje rezervaciju. Može biti:
+  * Vaš TripPay integracijski račun.
+  * Ako vodite partnersku mrežu, ona može biti vaš partner.
+* Koristite`traceId`grupirati više rezervacija kod više dobavljača. Na taj način možete otkazati grupnu rezervaciju.
+* `redirectUrl`obavještava TripPay na koju stranicu ga preusmjeriti nakon što je plaćanje dovršeno.
+* `sourceUrl`je stranica/aplikacija na kojoj je rezervacija izvršena.
+
+The`contractList`Niz sadrži artikl(e) koje putnik želi kupiti od više dobavljača. Svaki artikl sadrži:
+
+* The`identifier`je valjani UUID koji generirate.
+* Dobavljač od kojeg želite rezervirati zalihe.
+* Zalihe koje želite rezervirati od tog dobavljača. Sve su navedene u ugniježđenom nizu`contractItemList`.
+* Svaki unos ispod`contractItemList`sadrži:
+  * **Gostujući korisnik**Ovo je korisnik koji će stići na lokaciju.
+  * **Ime na engleskom**Naziv inventara na engleskom jeziku.
+  * **Opis na engleskom**Duži opis inventara na engleskom jeziku.
+  * **Cijena**Cijena artikla.
+  * **Plan putovanja**Kada ovu stavku treba rezervirati.
+  * **Vrsta cijene**Kako je cijena izračunata.
+  * **Vrsta inventara**Koja je ovo vrsta inventara.
+  * **Plativo**Kada putniku treba naplatiti naknadu.*Trenutno podržavamo samo opcije trenutnog plaćanja.*
+  * **Politika**Uključite pravila o otkazivanju.
+  * **Dnevni cjenik**Ako se rezervira soba, možete odabrati da uključite cijenu te sobe za svaku noć boravka gosta.
+  * **Korisnici**Navedite kojem TripPay računu treba dodijeliti koji iznos cijene artikla.*Podržani su fiksni / postotni iznosi.*
+
+:::napomena
+U gornjem JSON primjeru imamo 3 korisnika:
+
+* 1,5% je dodijeljeno platformi koja je omogućila rezervaciju.*npr. Namig*
+* Partneru je dodijeljeno 9,85% kao provizija.*npr. Kim Kardashian*
+* Dobavljaču je dodijeljeno 88,65% za rezervaciju sobe.*npr. Hilton*
+
+Kada TripPay odgovori ugovorom o plaćanju, primijetit ćete da je uplatio vlastitog korisnika s 4,0%. :::
+
+### Odgovor
+
+Kada TripPay odgovori na vaš zahtjev, to će izgledati otprilike ovako:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+Spremi`id`u retku 3. Ovo ćete koristiti za ubrizgavanje u web komponentu TripPay.
+
+## Ugradi TripPay
+
+:::napomena
+Provjerite jeste li prethodno učitali naše stilove i Javascript.
+:::
+
+U ovom trenutku spremni ste za ugradnju`Payment Web Component`na vašu web stranicu i prikažite je korisniku.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+Što se tiče integracije, to je sve što trebate učiniti. Od sada nadalje, sav teški posao obavlja TripPay.
+

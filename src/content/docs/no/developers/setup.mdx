@@ -1,0 +1,131 @@
+---
+title: Setup
+description: >-
+  Denne artikkelen viser deg hvordan du raskt kan komme i gang som utvikler og
+  begynne å teste API-ene våre på Wink.
+sidebar:
+  order: 1
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+Denne artikkelen viser deg hvordan du raskt kan komme i gang som utvikler og begynne å teste API-ene våre på Wink.
+
+:::merknad
+Testing bør alltid foregå i vår[oppsetningsmiljø](/getting-started/environments)Det er mye mindre data der, men du står fritt til å teste så mye du vil uten å belaste produksjonsmiljøet.
+
+Når du er klar til å gå live, sertifiserer vi kontoen og applikasjonen din, og du kan lansere i produksjonsmiljøet vårt.
+:::
+
+Følg disse trinnene:
+
+<Steps>
+  1. [Register](/user/register) brukerkontoen din på Wink
+  2. Opprett en [reisebyråkonto](/travel-agent/what-is-agent) eller en [tilknyttet konto](/studio/what-is-studio).
+  3. [Opprett en applikasjon](/developer/applications) der du knytter den til kontoen du opprettet i trinn 2.
+  4. Når du har opprettet din `Application`, lagre klient-ID-en og klienthemmeligheten på et trygt sted.
+</Steps>
+
+
+## CDN
+
+Hos Wink bruker vi Cloudinary for alle våre bilde- og videoressurser. Når du får tilgang til reisekatalogen vår, har du full tilgang til alle Cloudinarys avanserte funksjoner.
+
+Vår`cloud_name`er`traveliko`.
+
+### Cloudinary
+
+* [Komme i gang](https://cloudinary.com/documentation/dev_kickstart)
+* [SDK-er](https://cloudinary.com/documentation/cloudinary_sdks)
+* [Cloudinary på GitHub](https://github.com/cloudinary)
+* [Videoopplæringer](https://cloudinary.com/documentation/cloudinary_sdks_tutorials)
+
+### Eksempel
+
+For hver reisebeholdningstype vi støtter, vil det være en nestet JSON-matrise kalt`multimedias`JSON-filen for en multimedieoppføring ser slik ut:
+
+```json {3}
+{
+  "multimediaIdentifier": "multimedia-1",
+  "identifier": "partners/radisson_blu_logo",
+  "type": "IMAGE",
+  "width": "1024",
+  "height": "768",
+  "category": "1",
+  "descriptions": [
+    {
+      "name": "Lobby",
+      "description": "Picture of the lobby",
+      "language": "en"
+    }
+  ],
+  "lifestyleType": "LIFESTYLE_BUSINESS",
+  "attribution": [
+    {
+      "url": "https://www.hilton.com",
+      "name": "Hilton"
+    }
+  ]
+}
+```
+
+Den uthevede linjen ovenfor viser den unike ID-en til Cloudinary`partners/radisson_blu_logo`Det er alt du trenger for å hente bildet i hvilket som helst format, kvalitet og størrelse du ønsker.
+
+## Testing
+
+Gå innom vår[API-er](/developer/apis)seksjonen og velg API-et du vil jobbe med.
+
+### API-dokumentasjon
+
+Dokumentasjonssiden vår er satt opp slik at du kan kjøre API-kommandoer fra nettstedet.
+
+I dette eksemplet ønsker du å bruke`Search Lookups (OAuth2)`API-kall.
+
+:::tips\[Profftips]
+For enkelhets skyld anbefaler vi at integratorer bruker endepunktene vi angir som`OAuth2`Disse endepunktene vet at de kan forvente API-anropere og vet allerede hvilken konto du er på, slik at du ikke trenger å spesifisere`companyIdentifier`i nettadressene dine.
+:::
+
+<Steps>
+  1. Bruk [Oppslags-API](https://docs.wink.travel/lookup) for å hente destinasjoner eller hoteller.
+  2. I venstre navigasjonsfelt klikker du på `Authentication`.
+  3. Skriv inn klient-ID-en og klienthemmeligheten din, og klikk på `Get TOKEN` knapp.
+  4. Hvis påloggingsinformasjonen din er gyldig, vil du se at API-nøkkelen din er brukt.
+  5. Du kan nå teste oppslagsendepunktet.
+</Steps>
+
+
+<figure>
+  <CloudinaryImage width="700" height="265" resize="scale" quality="best" alt="Oppslags-API-endepunkt" src="academy/lookup-api-call" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Eksempel på søkeoppslag (OAuth2)*</figcaption>
+</figure>
+
+
+### Postbud
+
+Du kan gjøre det samme med Postmannen.
+
+<Steps>
+  1. Last ned [Postbud](https://www.postman.com/downloads).
+  2. Klikk på `Download OpenAPI spec` fra toppen av [Oppslags-API](https://docs.wink.travel/lookup) side.
+  3. Importer den til Postman.
+  4. Hvis du importerte den som en ny samling kalt `Wink API`, klikk på den horisontale ellipsen (3 prikker) ved siden av samlingsnavnet og klikk på `Edit`.
+  5. I `Authorization tab`, sett inn `Auth type` til OAuth2.
+  6. Angi feltet `Add auth data to` til `Request headers`.
+  7. Angi feltet `Header prefix` til `Bearer`.
+  8. Angi feltet `Token Name` til hva du enn vil kalle den lagrede tokenen din i Postman. F.eks. Wink Staging.
+  9. Angi feltet `Grant type` til `Client Credentials`.
+  10. Angi feltet `Access token URL` til https://staging-iam.wink.travel/oauth2/token.
+  11. Angi feltet `Client ID` til klient-ID-en appen din bidro til å generere.
+  12. Angi feltet `Client Secret` til klienthemmeligheten appen din bidro til å generere.
+  13. Angi feltet `Scope` til `inventory.read inventory.write inventory.remove`Det er alle omfangene du trenger for Wink.
+  14. Angi feltet `Client Authentication` til `Send as Basic Auth header`.
+  15. Klikk på `Get New Access Token` knappen for å hente tokenet ditt og lagre det.
+  16. For alle API-kall under Wink API-samlingen, sørg for at autentiseringsfanen sier `Inherit auth from parent` så den inkluderer tokenet ditt med hvert anrop.
+</Steps>
+
+
+:::tips\[Profftips]
+Det anbefales å gjøre serverdomenet, klient-ID-en og klienthemmeligheten om til miljøvariabler. På den måten kan du enkelt bytte mellom oppstarts- og produksjonsmiljøer og bruke alle operasjonene du har opprettet på nytt.
+:::
+

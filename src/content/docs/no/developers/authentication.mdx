@@ -1,0 +1,68 @@
+---
+title: Authentication
+description: Lær hvordan du autentiserer ved hjelp av Winks OAuth2-autorisasjonsserver.
+sidebar:
+  order: 2
+---
+:::tip
+Wink IAM-autentiseringsserveren støtter de vanlige OAuth2-endepunktene:
+
+* /oauth2/autoriser
+* /oauth2/token
+* /oauth2/introspekt
+* /oauth2/tilbakekalling
+* /oauth2/brukerinfo
+  :::
+
+En applikasjon gir deg en`Client ID`og`Secret Key`at du må opprette en autentisert OAuth2-økt du kan bruke til å kommunisere med Wink- og TripPay-API-er.
+
+Her er trinnene for å opprette en autentisert økt.
+
+**Trinn 1**Hent en tilgangstoken på oppsett eller i produksjonsmiljøet vårt:
+
+Du vil mest sannsynlig jobbe med et robust OAuth2-bibliotek for språket ditt, som vil gjøre alt det tunge arbeidet for deg.
+Eksemplene våre viser den mest grunnleggende bruken fra kommandolinjen ved hjelp av`curl`.
+
+### Iscenesettelse
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Produksjon
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Dette vil returnere et tilgangstoken, sammen med andre OAuth2-svardata:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Når du ringer til et av endepunktene våre, må du inkludere følgende i overskriften:
+
+* `Wink-Version`=`2.0`Siste -*Se API-dokumentasjonen vår for andre tilgjengelige versjoner.*
+* `Authentication`=`Bearer: ${access_token}` *Sett inn tilgangstokenet ditt.*
+
+:::tips
+Du kan teste alle API-ene våre uten å skrive en eneste kodelinje før du begynner.
+
+Hent en «klient-ID» og en «hemmelig nøkkel» fra en av appene dine og naviger til hvilken som helst av våre[API-er](/developers/apis).&#x20;
+:::
+

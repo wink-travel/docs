@@ -1,0 +1,70 @@
+---
+title: Authentication
+description: >-
+  Matutunan kung paano mag-authenticate gamit ang OAuth2 authorization server ng
+  Wink.
+sidebar:
+  order: 2
+---
+:::tip
+Sinusuportahan ng Wink IAM authentication server ang karaniwang mga endpoint ng OAuth2:
+
+* /oauth2/pahintulutan
+* /oauth2/token
+* /oauth2/introspect
+* /oauth2/revoke
+* /oauth2/userinfo
+  :::
+
+Ang isang application ay nagbibigay sa iyo ng isang `Client ID` at `Secret Key` na kailangan mong gumawa ng napatotohanan na session ng OAuth2 na magagamit mo para makipag-ugnayan sa mga Wink at TripPay API.
+
+Narito ang mga hakbang upang lumikha ng napatotohanang session.
+
+**Hakbang 1**. Kumuha ng access token sa pagtatanghal o sa aming production environment:
+
+Malamang, gagawa ka ng isang mahusay na library ng OAuth2 para sa iyong wika, na gagawa ng lahat ng mabibigat na bagay para sa iyo.
+Ipapakita ng aming mga halimbawa ang pinakapangunahing paggamit mula sa command line gamit `curl`.
+
+### pagtatanghal ng dula
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Produksyon
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Magbabalik ito ng access token, kasama ng iba pang data ng pagtugon sa OAuth2:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Kapag tumawag ka sa alinman sa aming mga endpoint, isama ang sumusunod sa header:
+
+* `Wink-Version` = `2.0` Pinakabago - *Tingnan ang aming API docs para sa iba pang available na bersyon.*
+* `Authentication` = `Bearer: ${access_token}` *Ilagay ang iyong access token.*
+
+:::tip
+Maaari mong subukan ang lahat ng aming mga API nang hindi sumusulat ng isang linya ng code bago magsimula.
+
+Kumuha ng 'Client ID' at 'Secret Key' mula sa isa sa iyong mga app at mag-navigate sa alinman sa aming [Mga API](/developers/apis).
+:::
+

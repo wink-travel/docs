@@ -1,0 +1,330 @@
+---
+title: Webkomponensek
+description: >-
+  A Wink egy JavaScript webkomponensekből álló könyvtárat tart fenn, amelyeket
+  beágyazhat webhelyébe.
+sidebar:
+  order: 6
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+[Webkomponensek](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)egy olyan szabvány, amely lehetővé teszi teljes JavaScript funkciók integrálását a webhelyedbe anélkül, hogy tudnál programozni.
+
+Ennek a klassz technológiának köszönhetően nagyon egyszerűen beágyazhatod a Wink utazási leltárt. Ez a cikk végigvezet a webes komponenseink gyűjteményén, és bemutatja, hogyan kell használni őket.
+
+## Beágyazott kacsintás
+
+Három dolgot kell belefoglalnod minden olyan oldalba, ahol meg szeretnéd jeleníteni az egyik webkomponensünket.
+
+1. Mellékeld a stíluslapunkat.
+2. Tartalmazza a Javascriptünket.
+3. Vegye fel az alkalmazásbetöltőnket.
+
+### Stíluslap
+
+Illeszd be a CSS stílusainkat a dokumentumod fejlécébe.
+
+```html {3}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+</html>
+```
+
+### Javascript
+
+Illeszd be a Javascriptünket a dokumentumod aljára. (*Közvetlenül a törzscímke fölé javasoljuk*).
+
+```html {3}
+<html>
+  <body>
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+  </body>
+</html>
+```
+
+A webhelyed most már készen áll, és képes megjeleníteni a webes komponenseinket.
+
+## Alkatrészek
+
+Olvasson többet az összetevőkönyvtárunkról alább.
+
+### Alkalmazásbetöltő
+
+A betöltő felelős az állapot fenntartásáért és az összetevőink közötti interakció kezeléséért.*Illeszd be a JavaScriptünk alá*).
+
+```html {3-6}
+<html>
+  <body>
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+### Tartalombetöltő
+
+A tartalombetöltő a webes komponenskönyvtárunk lelke. Ez felelős a készleted (kártyák, rácsok, térképek) megjelenítéséért.
+
+Elérhető attribútumok:
+
+* elrendezés
+* azonosító
+* fajta
+
+*Az attribútum`sort`csak akkor érhető el, ha az elrendezés`RANKED`és nem szeretne egy meglévő rangsorolt ​​rácsot használni. Ezekben az esetekben hagyja`id`üres.*
+
+Elérhető elrendezési típusok:
+
+* `AD_BANNER`
+* `MAP`
+* `HOTEL`
+* `GUEST_ROOM`
+* `MEETING_ROOM`
+* `SPA`
+* `RESTAURANT`
+* `ACTIVITY`
+* `ATTRACTION`
+* `PLACE`
+* `ADD_ON`
+* `LIST`
+* `SEARCH`
+* `RANKED`
+
+Elérhető rendezési típusok:
+
+* `MEMBER`
+* `PRICE_LOW_TO_HIGH`
+* `PRICE_HIGH_TO_LOW`
+* `PRICE`
+* `POPULARITY`
+* `ECO`
+* `EXPERIENCE`
+* `PERK`
+* `LOYALTY`
+* `PACKAGE`
+
+```html {3-6}
+<html>
+  <body>
+    <wink-content-loader
+       layout="GUEST_ROOM"
+       id="2de7ee9c-61c9-11ef-9722-42004e494300"
+    ></wink-content-loader>
+  </body>
+</html>
+```
+
+Minták találhatók a következőhöz:[kártyák](/studio/cards),[rácsok](/studio/grids)és[térképek](/studio/maps).
+
+### Keresés
+
+A Lookup remekül működik együtt az egyik rangsorolt ​​rácsoddal. Lehetővé teszi a felhasználók számára, hogy szállodákat és úti célokat keressenek, és a rács frissül a keresési eredményüknek megfelelően.
+
+```html {3}
+<html>
+  <body>
+    <wink-lookup></wink-lookup>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="350" height="57" resize="scale" quality="best" alt="Keresés webes komponens" src="academy/lookup" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Keresés webes komponens*</figcaption>
+</figure>
+
+
+A fenti összetevőre kattintva megnyílik egy modális ablak, amelyben beírhatja a keresett úti célt vagy szállodát.
+
+<figure>
+  <CloudinaryImage width="700" height="186" resize="scale" quality="best" alt="Modális keresés" src="academy/lookup-results" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Eredményekkel rendelkező keresőmodális ablak*</figcaption>
+</figure>
+
+
+### Útiterv
+
+Az útiterv gomb az aktuális útitervet mutatja. Ha rákattintasz, a teljes útiterv-választó modális ablakban jelenik meg.
+
+```html {3}
+<html>
+  <body>
+    <wink-itinerary></wink-itinerary>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="350" height="60" resize="scale" quality="best" alt="Útiterv webes komponens" src="academy/itinerary-button" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Útiterv webes komponens*</figcaption>
+</figure>
+
+
+A fenti gombra kattintva megnyílik egy modális ablak, amely lehetővé teszi az útiterv frissítését.
+
+<figure>
+  <CloudinaryImage width="700" height="459" resize="scale" quality="best" alt="Modális keresés" src="academy/search-modal" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Útvonalválasztó modálisként*</figcaption>
+</figure>
+
+
+### Keresés
+
+A Keresés az útiterv-választó ikonos gombja. Ha rákattint, a teljes útiterv-választó modális ablakban jelenik meg.
+
+```html {3}
+<html>
+  <body>
+    <wink-search></wink-search>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="138" height="116" resize="scale" quality="best" alt="Keresés webes összetevője" src="academy/search-button" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Keresés webes összetevője*</figcaption>
+</figure>
+
+
+A fenti gombra kattintva megnyílik egy modális ablak, amely lehetővé teszi az útiterv frissítését.
+
+<figure>
+  <CloudinaryImage width="700" height="459" resize="scale" quality="best" alt="Modális keresés" src="academy/search-modal" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Útvonalválasztó modálisként*</figcaption>
+</figure>
+
+
+### Útvonalterv űrlap
+
+Az útiterv-összetevő egy útiterv-űrlapot jelenít meg, amellyel a felhasználók interakcióba léphetnek.
+
+```html {3}
+<html>
+  <body>
+    <wink-itinerary-form></wink-itinerary-form>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="700" height="90" resize="scale" quality="best" alt="Útiterv űrlapwebes komponens" src="academy/itinerary-form" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Útiterv űrlap webes komponens*</figcaption>
+</figure>
+
+
+Az útiterv bármelyik útiterv-összetevőnkben történő módosításával az útiterv-frissítési esemény aktiválódik az oldalon jelenleg megjelenített készletben.
+
+### Fiók
+
+A fiók gombbal Wink hitelesítést adhatsz hozzá a webhelyedhez.
+
+```html {3}
+<html>
+  <body>
+    <wink-account></wink-account>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="92" height="104" resize="scale" quality="best" alt="Fiók webes összetevője" src="academy/account-button" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Fiók gomb webes komponens*</figcaption>
+</figure>
+
+
+A gombra kattintva, amikor a felhasználó nincs hitelesítve, a rendszer átirányítja a felhasználót a hitelesítéshez.
+
+A felhasználó hitelesítése után megjelenik a felhasználói profil ikonja.
+
+<figure>
+  <CloudinaryImage width="92" height="104" resize="scale" quality="best" alt="Fiók gomb hitelesítés után" src="academy/account-button-auth" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Fiók gomb (hitelesített) webes komponens*</figcaption>
+</figure>
+
+
+Amikor a gombra kattint, megnyílik a felhasználóra jellemző legördülő menü.
+
+<figure>
+  <CloudinaryImage width="350" height="404" resize="scale" quality="best" alt="Fiók gomb hitelesítés után" src="academy/account-button-auth-open" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Fiók gomb (megnyitás) webes komponens*</figcaption>
+</figure>
+
+
+## TripPay beágyazása
+
+Két dolgot kell belefoglalnod minden olyan oldalba, ahol használni szeretnéd a TripPay fizetési webes komponenst.
+
+1. Mellékeld a stíluslapunkat.
+2. Tartalmazza a Javascriptünket.
+
+### Stíluslap
+
+Illeszd be a CSS stílusainkat a dokumentumod fejlécébe.
+
+```html {3}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.trippay.io/styles.css"></link>
+  </head>
+</html>
+```
+
+### Javascript
+
+Illeszd be a Javascriptünket a dokumentumod aljára. (*Közvetlenül a törzscímke fölé javasoljuk*).
+
+```html {3}
+<html>
+  <body>
+    <script src="https://elements.trippay.io/elements.js" type="module" defer></script>
+  </body>
+</html>
+```
+
+A webhelyed most már készen áll, és képes megjeleníteni a webes komponenseinket.
+
+## Alkatrészek
+
+### Fizetés
+
+A fizetési komponens lehetővé teszi, hogy tájékoztasd a TripPay-t arról, hogy az utazó vásárolni szeretne valamit, valamint az adott tételek szabályairól és árairól.
+
+A widgetnek egy kötelező attribútuma van:
+
+* `id`A végrehajtani kívánt foglalási szerződés azonosítója.
+
+```html {3}
+<html>
+  <body>
+    <trip-pay id="<INSERT_BOOKING_CONTRACT_ID>"></trip-pay>
+  </body>
+</html>
+```
+
+:::note
+A foglalási szerződés létrehozásának megismerése`id`, olvasd el az útmutatót:[Integráció a TripPay-jel](/guides/integrating-with-trip-pay).
+:::
+
+A widget előkészíti a szerződést a végrehajtásra és megjeleníti a fizetési adatoka&#x74;*(1. ábra)*&#x61; felhasználónak a foglalás véglegesítéséhez.
+
+<figure>
+  <CloudinaryImage width="700" height="1141" resize="scale" quality="best" alt="Fizetési adatok" src="academy/payment-modal" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*1. ábra. Minta fizetési űrlap*</figcaption>
+</figure>
+

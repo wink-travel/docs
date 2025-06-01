@@ -1,0 +1,68 @@
+---
+title: Authentication
+description: Leer hoe u zich kunt verifiëren via de OAuth2-autorisatieserver van Wink.
+sidebar:
+  order: 2
+---
+:::tip
+De Wink IAM-authenticatieserver ondersteunt de gangbare OAuth2-eindpunten:
+
+* /oauth2/authoriseren
+* /oauth2/token
+* /oauth2/introspect
+* /oauth2/intrekken
+* /oauth2/gebruikersinfo
+  :::
+
+Een applicatie biedt u een`Client ID` En `Secret Key`dat u een geverifieerde OAuth2-sessie moet maken die u kunt gebruiken om te communiceren met Wink- en TripPay-API's.
+
+Hieronder vindt u de stappen om een geverifieerde sessie te maken.
+
+**Stap 1**Haal een toegangstoken op in de staging-omgeving of in onze productieomgeving:
+
+U zult waarschijnlijk werken met een robuuste OAuth2-bibliotheek voor uw taal, die al het zware werk voor u doet.
+Onze voorbeelden laten het meest basale gebruik vanaf de opdrachtregel zien met behulp van`curl`.
+
+### Enscenering
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Productie
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Dit retourneert een toegangstoken, samen met andere OAuth2-responsgegevens:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Wanneer u een aanroep doet naar een van onze eindpunten, neem dan het volgende op in de header:
+
+* `Wink-Version`=`2.0`Laatste -*Zie onze API-documentatie voor andere beschikbare versies.*
+* `Authentication`=`Bearer: ${access_token}` *Voer uw toegangstoken in.*
+
+:::tip
+Je kunt al onze API's testen zonder ook maar één regel code te schrijven voordat je aan de slag gaat.
+
+Haal een 'Client ID' en 'Secret Key' op uit een van uw apps en navigeer naar een van onze[API's](/developers/apis).
+::
+

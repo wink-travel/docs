@@ -1,0 +1,68 @@
+---
+title: Authentication
+description: Wink の OAuth2 認証サーバーを使用して認証する方法を学びます。
+sidebar:
+  order: 2
+---
+:::ヒント
+Wink IAM 認証サーバーは、一般的な OAuth2 エンドポイントをサポートしています。
+
+* /oauth2/承認
+* /oauth2/トークン
+* /oauth2/イントロスペクト
+* /oauth2/取り消し
+* /oauth2/userinfo
+  :::
+
+アプリケーションは、`Client ID` そして `Secret Key`Wink および TripPay API との通信に使用できる認証済みの OAuth2 セッションを作成する必要があること。
+
+認証されたセッションを作成する手順は次のとおりです。
+
+**ステップ1**ステージング環境または本番環境でアクセス トークンを取得します。
+
+おそらく、お使いの言語に対応した堅牢なOAuth2ライブラリを使用することになるでしょう。このライブラリが面倒な作業をすべて処理してくれます。
+以下の例では、コマンドラインから最も基本的な使い方を示します。`curl`。
+
+### ステージング
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### 生産
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+これにより、アクセス トークンとその他の OAuth2 応答データが返されます。
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+いずれかのエンドポイントに電話をかける場合は、ヘッダーに次の内容を含めます。
+
+* `Wink-Version`＝`2.0` 最新 - *利用可能な他のバージョンについては、API ドキュメントを参照してください。*
+* `Authentication`＝`Bearer: ${access_token}` *アクセス トークンを挿入します。*
+
+:::ヒント
+始める前に、コードを1行も書かずにすべてのAPIをテストできます。
+
+アプリから「クライアントID」と「シークレットキー」を取得し、[API](/developers/apis)。
+:::
+

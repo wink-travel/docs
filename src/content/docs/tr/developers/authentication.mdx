@@ -1,0 +1,70 @@
+---
+title: Authentication
+description: >-
+  Wink'in OAuth2 yetkilendirme sunucusunu kullanarak kimlik doğrulamanın nasıl
+  yapılacağını öğrenin.
+sidebar:
+  order: 2
+---
+:::ipucu
+Wink IAM kimlik doğrulama sunucusu, yaygın OAuth2 uç noktalarını destekler:
+
+* /oauth2/yetkilendirme
+* /oauth2/jeton
+* /oauth2/içebakış
+* /oauth2/iptal
+* /oauth2/kullanıcıbilgisi
+  :::
+
+Bir uygulama size şunu sağlar:`Client ID` Ve `Secret Key`Wink ve TripPay API'leriyle iletişim kurmak için kullanabileceğiniz kimliği doğrulanmış bir OAuth2 oturumu oluşturmanız gerekir.
+
+Kimliği doğrulanmış bir oturum oluşturmanın adımları şunlardır.
+
+**Adım 1**. Sahneleme ortamında veya üretim ortamımızda bir erişim belirteci alın:
+
+Büyük olasılıkla diliniz için sağlam bir OAuth2 kütüphanesiyle çalışıyor olacaksınız, bu da sizin için tüm ağır işleri yapacaktır.
+Örneklerimiz komut satırından en temel kullanımı gösterecektir`curl`.
+
+### Sahneleme
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Üretme
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Bu, diğer OAuth2 yanıt verileriyle birlikte bir erişim belirteci döndürecektir:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Uç noktalarımızdan herhangi birine çağrı yaptığınızda, başlığa aşağıdakileri ekleyin:
+
+* `Wink-Version`=`2.0` En sonuncu - *Diğer mevcut sürümler için API belgelerimize bakın.*
+* `Authentication`=`Bearer: ${access_token}` *Erişim belirtecinizi girin.*
+
+:::ipucu
+Başlamadan önce tek bir satır kod yazmadan tüm API'lerimizi test edebilirsiniz.
+
+Uygulamalarınızdan birinden bir 'İstemci Kimliği' ve 'Gizli Anahtar' alın ve herhangi birimize gidin[API'ler](/developers/apis).
+:::
+

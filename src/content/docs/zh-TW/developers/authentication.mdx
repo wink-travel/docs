@@ -1,0 +1,68 @@
+---
+title: Authentication
+description: 了解如何使用 Wink 的 OAuth2 授權伺服器進行身份驗證。
+sidebar:
+  order: 2
+---
+：：：提示
+Wink IAM 驗證伺服器支援常見的 OAuth2 端點：
+
+* /oauth2/授權
+* /oauth2/令牌
+* /oauth2/內省
+* /oauth2/撤銷
+* /oauth2/使用者訊息
+  :::
+
+應用程式為您提供`Client ID` 和`Secret Key` 您需要建立一個經過驗證的 OAuth2 會話，以便與 Wink 和 TripPay API 進行通訊。
+
+以下是建立經過身份驗證的會話的步驟。
+
+**步驟 1**。在暫存區或生產環境中檢索存取權杖：
+
+您很可能會使用適合您語言的強大的 OAuth2 庫，它將為您完成所有繁重的工作。
+我們的範例將展示命令列中最基本的用法`curl`。
+
+### 分期
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### 生產
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+這將傳回一個存取權杖以及其他 OAuth2 回應資料：
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+當您呼叫我們的任何端點時，請在標頭中包含以下內容：
+
+* `Wink-Version` =`2.0` 最新的 -*請參閱我們的 API 文件以了解其他可用版本。*
+* `Authentication` =`Bearer: ${access_token}` *插入您的訪問令牌。*
+
+：：：提示
+您可以在開始之前測試我們所有的 API，而無需編寫任何程式碼。
+
+從您的某個應用程式中獲取“客戶端 ID”和“密鑰”，然後導航到我們的任何[蜜蜂](/developers/apis)。
+:::
+

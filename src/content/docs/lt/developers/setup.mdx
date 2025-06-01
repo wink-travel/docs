@@ -1,0 +1,131 @@
+---
+title: Setup
+description: >-
+  Šiame straipsnyje parodyta, kaip greitai tapti kūrėju ir pradėti testuoti mūsų
+  API „Wink“.
+sidebar:
+  order: 1
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+Šiame straipsnyje parodyta, kaip greitai tapti kūrėju ir pradėti testuoti mūsų API „Wink“.
+
+:::pastaba
+Testavimas visada turėtų būti atliekamas mūsų[scenos aplinka](/getting-started/environments)Ten yra daug mažiau duomenų, bet galite testuoti tiek, kiek norite, neapkraudami gamybinės aplinkos.
+
+Kai būsite pasiruošę paleisti programą, mes sertifikuosime jūsų paskyrą ir paraišką, ir galėsite ją paleisti mūsų gamybinėje aplinkoje.
+:::
+
+Atlikite šiuos veiksmus:
+
+<Steps>
+  1. [Registruotis](/user/register) jūsų vartotojo paskyra „Wink“
+  2. Sukurti [kelionių agento sąskaita](/travel-agent/what-is-agent) arba [partnerio paskyra](/studio/what-is-studio).
+  3. [Sukurti paraišką](/developer/applications) kur susiejate jį su paskyra, kurią sukūrėte atlikdami 2 veiksmą.
+  4. Kai sukursite savo `Application`, išsaugokite kliento ID ir kliento slaptąjį raktą saugioje vietoje.
+</Steps>
+
+
+## CDN
+
+„Wink“ naudojame „Cloudinary“ visiems savo vaizdams ir vaizdo įrašams. Prisijungę prie mūsų kelionių inventoriaus, turėsite visišką prieigą prie visų išplėstinių „Cloudinary“ funkcijų.
+
+Mūsų`cloud_name`yra`traveliko`.
+
+### Debesuota
+
+* [Pradžia](https://cloudinary.com/documentation/dev_kickstart)
+* [SDK](https://cloudinary.com/documentation/cloudinary_sdks)
+* [„Cloudinary“ platformoje „GitHub“](https://github.com/cloudinary)
+* [Vaizdo pamokos](https://cloudinary.com/documentation/cloudinary_sdks_tutorials)
+
+### Pavyzdys
+
+Kiekvienam mūsų palaikomam kelionių inventoriaus tipui bus įdėtas JSON masyvas, vadinamas`multimedias`Multimedijos įrašo JSON formatas atrodo taip:
+
+```json {3}
+{
+  "multimediaIdentifier": "multimedia-1",
+  "identifier": "partners/radisson_blu_logo",
+  "type": "IMAGE",
+  "width": "1024",
+  "height": "768",
+  "category": "1",
+  "descriptions": [
+    {
+      "name": "Lobby",
+      "description": "Picture of the lobby",
+      "language": "en"
+    }
+  ],
+  "lifestyleType": "LIFESTYLE_BUSINESS",
+  "attribution": [
+    {
+      "url": "https://www.hilton.com",
+      "name": "Hilton"
+    }
+  ]
+}
+```
+
+Paryškinta eilutė aukščiau rodo unikalų „Cloudinary“ ID`partners/radisson_blu_logo`Tai viskas, ko jums reikia norint gauti vaizdą bet kokiu norimu formatu, kokybe ir dydžiu.
+
+## Testavimas
+
+Užeikite į mūsų[API](/developer/apis)skyrių ir pasirinkite API, su kuria norite dirbti.
+
+### API dokumentai
+
+Mūsų dokumentacijos svetainė sukurta taip, kad joje būtų galima vykdyti API komandas.
+
+Šiame pavyzdyje norite naudoti`Search Lookups (OAuth2)`API iškvietimas.
+
+:::tip\[Profesionalo patarimas]
+Kad būtų lengviau naudoti, integratoriams rekomenduojame naudoti galinius taškus, kuriuos mes nurodome kaip`OAuth2`Tie galiniai punktai žino, kad reikia tikėtis API iškvietimų, ir jau žino, kurioje paskyroje esate, todėl jums nereikia nurodyti.`companyIdentifier`jūsų URL adresuose.
+:::
+
+<Steps>
+  1. Naudokite [Paieškos API](https://docs.wink.travel/lookup) norint gauti kelionių kryptis arba viešbučius.
+  2. Kairiojoje naršymo juostoje spustelėkite `Authentication`.
+  3. Įveskite savo kliento ID ir kliento paslaptį ir spustelėkite `Get TOKEN` mygtukas.
+  4. Jei jūsų prisijungimo duomenys galioja, matysite, kad jūsų API raktas buvo pritaikytas.
+  5. Dabar galite išbandyti paieškos galinį tašką.
+</Steps>
+
+
+<figure>
+  <CloudinaryImage width="700" height="265" resize="scale" quality="best" alt="Paieškos API galinis taškas" src="academy/lookup-api-call" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Paieškos užklausų pavyzdžiai (OAuth2)*</figcaption>
+</figure>
+
+
+### Paštininkas
+
+Tą patį galite padaryti ir su „Postman“.
+
+<Steps>
+  1. Atsisiųsti [Paštininkas](https://www.postman.com/downloads).
+  2. Spustelėkite `Download OpenAPI spec` nuo viršaus [Paieškos API](https://docs.wink.travel/lookup) puslapis.
+  3. Importuokite jį į „Postman“.
+  4. Jei importavote kaip naują rinkinį, vadinamą `Wink API`, spustelėkite horizontalų daugtaškį (3 taškus) šalia kolekcijos pavadinimo ir spustelėkite `Edit`.
+  5. Į `Authorization tab`, nustatykite `Auth type` į OAuth2.
+  6. Nustatykite lauką `Add auth data to` į `Request headers`.
+  7. Nustatykite lauką `Header prefix` į `Bearer`.
+  8. Nustatykite lauką `Token Name` kaip norite pavadinti išsaugotą prieigos raktą „Postman“ programoje. Pvz., „Wink Staging“.
+  9. Nustatykite lauką `Grant type` į `Client Credentials`.
+  10. Nustatykite lauką `Access token URL` į https://staging-iam.wink.travel/oauth2/token.
+  11. Nustatykite lauką `Client ID` kliento ID, kurį padėjo sukurti jūsų programėlė.
+  12. Nustatykite lauką `Client Secret` kliento paslapčiai, kurią padėjo sukurti jūsų programėlė.
+  13. Nustatykite lauką `Scope` į `inventory.read inventory.write inventory.remove`Tai visos taikymo sritys, kurių jums reikės „Wink“.
+  14. Nustatykite lauką `Client Authentication` į `Send as Basic Auth header`.
+  15. Spustelėkite `Get New Access Token` mygtuką, kad gautumėte savo prieigos raktą ir jį išsaugotumėte.
+  16. Visiems API iškvietimams iš „Wink“ API kolekcijos įsitikinkite, kad autentifikavimo skirtuke nurodyta `Inherit auth from parent` taigi jūsų prieigos raktas įtraukiamas į kiekvieną skambutį.
+</Steps>
+
+
+:::tip\[Profesionalo patarimas]
+Rekomenduojama serverio domeną, kliento ID ir kliento slaptąjį raktą paversti aplinkos kintamaisiais. Tokiu būdu galėsite lengvai perjungti tarp testavimo ir gamybos aplinkų ir pakartotinai naudoti visas sukurtas operacijas.
+:::
+

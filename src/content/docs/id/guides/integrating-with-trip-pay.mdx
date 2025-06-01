@@ -1,0 +1,226 @@
+---
+title: Integrasi dengan TripPay
+description: >-
+  Artikel ini berisi contoh lengkap tentang cara berintegrasi dan membiarkan
+  TripPay menangani pembayaran untuk Anda.
+sidebar:
+  order: 4
+---
+import { Steps } from '@astrojs/starlight/components';
+
+Artikel ini berisi contoh menyeluruh tentang cara berintegrasi dengan TripPay.
+
+Disarankan agar Anda sudah membaca:
+
+* [Pembayaran > Pemetaan](/payment/mapping).
+* [Pembayaran > Integrasi](/payment/integration).
+* [Komponen Web Pembayaran](/developers/web-components/#payment).
+* [API Pembayaran](/developers/apis/#payment-api).*Baca bagian tentang`Create payable contracts`*
+
+Berikut langkah-langkah untuk berhasil menggunakan TripPay untuk membayar pemesanan:
+
+<Steps>
+  1. Pastikan penerima manfaat yang Anda sebutkan dalam kontrak pemesanan telah dipetakan.
+  2. Biarkan wisatawan memilih inventaris yang ingin mereka pesan dan biarkan mereka bersiap membayar.
+  3. Membuat sebuah `payable contract` dengan TripPay yang berisi item yang akan dipesan.
+  4. Biarkan wisatawan membayar menggunakan Komponen Web TripPay.
+</Steps>
+
+
+Kami berasumsi Anda sudah menyelesaikannya`Step 1` Dan `Step 2`dan siap memberi tahu TripPay tentang pemesanan.
+
+## Buat kontrak yang harus dibayar
+
+:::catatan
+Buka API Pembayaran untuk mempelajari lebih lanjut tentang persyaratan untuk membuat kontrak yang dapat dibayarkan.
+:::
+
+### Meminta
+
+Berikut adalah contoh permintaan JSON yang mencakup semua yang Anda butuhkan untuk membuat kontrak pembayaran pertama Anda.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Penjelasan:
+
+Kami tidak akan menjelaskan setiap titik data di sini karena sudah tercakup dalam dokumen API.
+
+* Garis:**2 - 7**adalah pengguna yang bertanggung jawab atas pemesanan. Ada dua jenis pemesan:
+  * Wisatawan.
+  * Agen perjalanan.
+* Garis:**8 - 9**adalah akun TripPay yang memfasilitasi pemesanan. Bisa berupa:
+  * Akun integrator TripPay Anda.
+  * Jika Anda menjalankan jaringan afiliasi, itu bisa menjadi afiliasi Anda.
+* Gunakan`traceId`untuk mengelompokkan beberapa pemesanan di beberapa pemasok. Dengan cara ini Anda dapat membatalkan pemesanan grup.
+* `redirectUrl`memungkinkan TripPay mengetahui halaman mana yang akan diarahkan setelah pembayaran selesai.
+* `sourceUrl`adalah situs/aplikasi tempat pemesanan terjadi.
+
+Itu`contractList`array berisi item yang ingin dibeli oleh wisatawan dari beberapa pemasok. Setiap item berisi:
+
+* Itu`identifier`adalah UUID valid yang Anda buat.
+* Pemasok tempat Anda ingin memesan inventaris.
+* Inventaris yang ingin Anda pesan dari pemasok tersebut. Semua ini ditentukan dalam array bersarang`contractItemList`.
+* Setiap entri di bawah`contractItemList`berisi:
+  * **Pengguna tamu**Ini adalah pengguna yang akan tiba di lokasi.
+  * **Nama dalam bahasa Inggris**Nama inventaris dalam bahasa Inggris.
+  * **Deskripsi dalam bahasa Inggris**Deskripsi inventaris yang lebih panjang dalam bahasa Inggris.
+  * **Harga**Harga barang.
+  * **Rencana perjalanan**Kapan barang ini harus dipesan.
+  * **Jenis harga**Bagaimana harga dihitung.
+  * **Jenis inventaris**Jenis inventaris apa ini?
+  * **Dapat dibayar**Kapan wisatawan harus dikenakan biaya.*Saat ini kami hanya mendukung opsi pembayaran langsung.*
+  * **Kebijakan**Sertakan aturan kebijakan pembatalan.
+  * **Daftar tarif harian**Jika item yang dipesan adalah kamar, Anda dapat memilih untuk menyertakan berapa biaya kamar tersebut untuk setiap malam tamu menginap.
+  * **Penerima Manfaat**Sertakan akun TripPay mana yang harus dialokasikan berapa jumlah harga barang.*Jumlah tetap/persen didukung.*
+
+:::catatan
+Dalam contoh JSON di atas, kita memiliki 3 penerima manfaat:
+
+* 1,5% dialokasikan ke platform yang memfasilitasi pemesanan.*misalnya Wink*
+* 9,85% dialokasikan kepada afiliasi sebagai komisi.*misalnya Kim Kardashian*
+* 88,65% dialokasikan kepada pemasok untuk pemesanan kamar.*misalnya Hilton*
+
+Ketika TripPay merespons dengan kontrak yang harus dibayar, Anda akan melihat bahwa TripPay menyuntikkan penerima manfaatnya sendiri sebesar 4,0%.
+:::
+
+### Tanggapan
+
+Ketika TripPay menanggapi permintaan Anda, tampilannya akan seperti ini:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+Simpan`id`pada baris 3. Anda akan menggunakan ini untuk menyuntikkan ke komponen web TripPay.
+
+## Sematkan TripPay
+
+:::catatan
+Pastikan Anda telah memuat gaya dan Javascript kami sebelumnya.
+:::
+
+Pada titik ini, Anda siap untuk menanamkan`Payment Web Component`ke situs web Anda dan menunjukkannya kepada pengguna.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+Sejauh menyangkut integrasi, itu saja yang perlu Anda lakukan. Semua pekerjaan berat dilakukan oleh TripPay mulai sekarang.
+

@@ -1,0 +1,67 @@
+---
+title: Authentication
+description: تعرف على كيفية المصادقة باستخدام خادم تفويض OAuth2 الخاص بـ Wink.
+sidebar:
+  order: 2
+---
+:::نصيحة
+يدعم خادم مصادقة Wink IAM نقاط نهاية OAuth2 الشائعة:
+
+* /oauth2/التفويض
+* /oauth2/الرمز
+* /oauth2/التأمل
+* /oauth2/إلغاء
+* /oauth2/معلومات المستخدم
+  :::
+
+يوفر لك التطبيق`Client ID` و `Secret Key`أنك بحاجة إلى إنشاء جلسة OAuth2 موثقة يمكنك استخدامها للتواصل مع واجهات برمجة التطبيقات Wink وTripPay.
+
+فيما يلي الخطوات اللازمة لإنشاء جلسة مصادقة.
+
+**الخطوة 1**. استرداد رمز الوصول في مرحلة الإعداد أو في بيئة الإنتاج الخاصة بنا:
+
+على الأرجح، ستستخدم مكتبة OAuth2 قوية للغتك، والتي ستتولى كل العمل نيابةً عنك. ستوضح أمثلتنا أبسط استخدام من سطر الأوامر باستخدام`curl`.
+
+### التدريج
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### إنتاج
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+سيؤدي هذا إلى إرجاع رمز الوصول، إلى جانب بيانات استجابة OAuth2 الأخرى:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+عند إجراء مكالمة إلى أي من نقاط النهاية لدينا، قم بتضمين ما يلي في العنوان:
+
+* `Wink-Version`=`2.0` أحدث - *راجع مستندات واجهة برمجة التطبيقات الخاصة بنا للتعرف على الإصدارات الأخرى المتوفرة.*
+* `Authentication`=`Bearer: ${access_token}` *أدخل رمز الوصول الخاص بك.*
+
+:::نصيحة
+يمكنك اختبار جميع واجهات برمجة التطبيقات لدينا دون كتابة سطر واحد من التعليمات البرمجية قبل البدء.
+
+احصل على "معرف العميل" و"المفتاح السري" من أحد تطبيقاتك وانتقل إلى أي من تطبيقاتنا[واجهات برمجة التطبيقات](/developers/apis).
+:::
+

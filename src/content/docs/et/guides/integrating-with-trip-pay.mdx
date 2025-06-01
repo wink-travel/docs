@@ -1,0 +1,226 @@
+---
+title: TripPayga integreerimine
+description: >-
+  See artikkel sisaldab täielikku näidet selle kohta, kuidas TripPayga
+  integreeruda ja lasta tal makse teie eest hallata.
+sidebar:
+  order: 4
+---
+import { Steps } from '@astrojs/starlight/components';
+
+See artikkel sisaldab terviklikku näidet TripPayga integreerimise kohta.
+
+Soovitatav on, et oleksite juba lugenud:
+
+* [Makse > Kaardistamine](/payment/mapping).
+* [Makse > Integratsioon](/payment/integration).
+* [Makseveebikomponent](/developers/web-components/#payment).
+* [Makse API](/developers/apis/#payment-api).*Loe peatükki, mis käsitleb`Create payable contracts`*
+
+Siin on sammud TripPay edukaks kasutamiseks broneeringu eest tasumiseks:
+
+<Steps>
+  1. Veenduge, et broneerimislepingus mainitud soodustatud isikud on kaardistatud.
+  2. Laske reisijal valida, milliseid varusid ta broneerida soovib, ja laske tal maksmiseks valmistuda.
+  3. Loo `payable contract` koos TripPayga, mis sisaldab broneeritavaid esemeid.
+  4. Laske reisijal maksta TripPay veebikomponendi abil.
+</Steps>
+
+
+Eeldame, et olete juba lõpetanud`Step 1`ja`Step 2`ja on valmis TripPayd broneeringust teavitama.
+
+## Looge makstav leping
+
+:::note
+Makstava lepingu loomise nõuete kohta lisateabe saamiseks minge maksete API-sse.
+:::
+
+### Taotlus
+
+Siin on JSON-näidistaotlus, mis sisaldab kõike, mida vajate oma esimese makstava lepingu loomiseks.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Selgitus:
+
+Me ei hakka siin iga andmepunkti selgitama, kuna need on juba API dokumentatsioonis käsitletud.
+
+* Read:**2–7**on broneeringu eest vastutav kasutaja. Broneerijaid on kahte tüüpi:
+  * Rändur.
+  * Reisibüroo.
+* Read:**8–9**on TripPay konto, mis teeb broneeringu. See võib olla:
+  * Teie TripPay integraatori konto.
+  * Kui haldate partnerlusvõrgustikku, võib see olla teie partner.
+* Kasutage`traceId`mitme broneeringu koondamiseks mitme tarnija alla. Nii saate grupibroneeringu tühistada.
+* `redirectUrl`annab TripPayle teada, millisele lehele pärast makse sooritamist suunata.
+* `sourceUrl`on sait/rakendus, kus broneering tehti.
+
+See`contractList`Massiiv sisaldab kaupa/kaupu, mida reisija soovib mitmelt tarnijalt osta. Iga kaup sisaldab:
+
+* See`identifier`on teie loodud kehtiv UUID.
+* Tarnija, kellelt soovite laoseisu broneerida.
+* Laoseisud, mida soovite sellelt tarnijalt broneerida. Need kõik on määratud pesastatud massiivis.`contractItemList`.
+* Iga kirje all`contractItemList`sisaldab:
+  * **Külaliskasutaja**See on kasutaja, kes saabub ruumidesse.
+  * **Nimi inglise keeles**Inventuuri nimi inglise keeles.
+  * **Kirjeldus inglise keeles**Pikem kirjeldus inventuurist inglise keeles.
+  * **Hind**Eseme hind.
+  * **Reisiplaan**Millal see üksus broneerida.
+  * **Hinnakujunduse tüüp**Kuidas hinda arvutati.
+  * **Varude tüüp**Mis tüüpi inventar see on?
+  * **Makstav**Millal tuleks reisijalt tasu võtta.*Praegu toetame ainult kohese maksmise võimalusi.*
+  * **Poliitika**Lisage tühistamispoliitika reeglid.
+  * **Päevahinnakiri**Kui broneeritav objekt on tuba, saate valida, kui palju see tuba iga külalise ööbimise eest maksma läheb.
+  * **Toetusesaajad**Lisage, millisele TripPay kontole/kontodele tuleks toote hinnast milline/milliseid summasid eraldada.*Fikseeritud/protsentuaalsed summad on toetatud.*
+
+:::note
+Ülaltoodud JSON-näites on meil 3 kasusaajat:
+
+* 1,5% eraldati broneeringut vahendavale platvormile.*nt. Silmapilgutus*
+* 9,85% eraldati partnerile komisjonitasuks.*nt Kim Kardashian*
+* Tarnijale eraldati toa broneerimiseks 88,65%.*nt Hilton*
+
+Kui TripPay vastab makselepinguga, märkate, et ta on oma soodustatud isiku 4,0% ulatuses sisse maksnud.
+:::
+
+### Vastus
+
+Kui TripPay teie päringule vastab, näeb see välja umbes selline:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+Salvesta`id`3. real. Seda kasutatakse TripPay veebikomponenti sisestamiseks.
+
+## TripPay manustamine
+
+:::note
+Veenduge, et olete eelnevalt meie stiilid ja Javascripti laadinud.
+:::
+
+Sel hetkel olete valmis manustama`Payment Web Component`oma veebisaidile ja kuva seda kasutajale.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+Mis puutub integratsiooni, siis see on kõik, mida peate tegema. Kogu raske töö teeb edaspidi ära TripPay.
+

@@ -1,0 +1,224 @@
+---
+title: 與 TripPay 集成
+description: 本文包含如何與 TripPay 整合並讓其為您處理付款的完整範例。
+sidebar:
+  order: 4
+---
+import { Steps } from '@astrojs/starlight/components';
+
+本文包含如何與 TripPay 整合的端到端範例。
+
+建議您已經閱讀過：
+
+* [付款 > 映射](/payment/mapping)。
+* [支付 > 集成](/payment/integration)。
+* [支付 Web 元件](/developers/web-components/#payment)。
+* [支付API](/developers/apis/#payment-api)。 *閱讀`Create payable contracts`*
+
+以下是成功使用 TripPay 支付預訂費用的步驟：
+
+<Steps>
+  1. 確保您在預訂合約中提到的受益人已被映射。
+  2. 讓旅行者選擇他們想要預訂的庫存並準備付款。
+  3. 創建一個 `payable contract` 使用包含預訂的商品的 TripPay。
+  4. 讓旅行者使用 TripPay Web 元件付款。
+</Steps>
+
+
+我們假設你已經完成`Step 1` 和`Step 2` 並準備讓 TripPay 知道預約情況。
+
+## 創建應付合約
+
+：：：筆記
+前往付款 API 以了解有關建立應付合約的要求的更多資訊。
+:::
+
+### 要求
+
+這是一個 JSON 範例請求，其中包含您為第一個應付合約所需建立的所有內容。
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+解釋：
+
+我們不會在這裡解釋每個數據點，因為它們已經在 API 文件中介紹過了。
+
+* 行：**2 - 7** 是用戶負責預訂。預訂者有兩種類型：
+  * 遊客。
+  * 旅行社。
+* 行：**8 - 9** 是用於預訂的 TripPay 帳戶。它可以是：
+  * 您的 TripPay 整合商帳戶。
+  * 如果您經營聯盟，它可以成為您的聯盟。
+* 使用`traceId` 將多個供應商的多個預訂分組。這樣您就可以取消團體預約。
+* `redirectUrl` 讓 TripPay 知道付款完成後要重新導向到哪個頁面。
+* `sourceUrl` 是進行預訂的網站/應用程式。
+
+這`contractList` 陣列包含旅行者想要從多個供應商購買的商品。每件商品包含：
+
+* 這`identifier` 是您產生的有效 UUID。
+* 您想要從其預訂庫存的供應商。
+* 您想要從該供應商預訂的庫存。這些都在嵌套數組中指定`contractItemList`。
+* 下的每個條目`contractItemList` 包含：
+  * **來賓用戶** 這是即將到達現場的用戶。
+  * **英文名** 庫存的英文名稱。
+  * **英文描述** 用英語對庫存進行更詳細的描述。
+  * **價格** 商品的價格。
+  * **行程** 何時應該預訂此項。
+  * **定價類型** 價格是如何計算的。
+  * **庫存類型** 這是什麼類型的庫存。
+  * **應付** 旅行者應在何時被收費。 *我們目前僅支援即時付款選項。*
+  * **政策** 包括取消政策規則。
+  * **每日費率表** 如果預訂的是房間，您可以選擇包含客人每晚入住該房間的費用。
+  * **受益人** 包括應向哪個 TripPay 帳戶分配該項目價格的多少金額。 *支持固定/百分比金額。*
+
+：：：筆記
+在上面的 JSON 範例中，我們有 3 個受益人：
+
+* 1.5%分配給促成預訂的平台。 *例如眨眼*
+* 9.85% 分配給關聯公司作為佣金。 *例如金卡戴珊*
+* 88.65%分配給了房間預訂的供應商。 *例如希爾頓*
+
+當 TripPay 透過應付合約做出回應時，您會注意到它以 4.0% 的比例注入了自己的受益人。
+:::
+
+### 回覆
+
+當 TripPay 回應您的請求時，它將看起來像這樣：
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+儲存`id` 在第 3 行。您將使用它來注入 TripPay Web 元件。
+
+## 嵌入 TripPay
+
+：：：筆記
+請確保您已預先載入我們的樣式和 Javascript。
+:::
+
+此時，您已準備好嵌入`Payment Web Component` 到您的網站並向使用者展示。
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+就集成而言，這就是您需要做的全部。從現在開始，所有繁重的工作都由 TripPay 完成。
+

@@ -1,0 +1,69 @@
+---
+title: Authentication
+description: >-
+  Aprenda cómo autenticarse utilizando el servidor de autorización OAuth2 de
+  Wink.
+sidebar:
+  order: 2
+---
+:::tip
+El servidor de autenticación IAM de Wink admite los puntos finales comunes de OAuth2:
+
+* /oauth2/autorizar
+* /oauth2/token
+* /oauth2/introspección
+* /oauth2/revocar
+* /oauth2/informacióndelusuario
+  :::
+
+Una aplicación le proporciona una`Client ID` y `Secret Key`que necesita crear una sesión OAuth2 autenticada que pueda usar para comunicarse con las API de Wink y TripPay.
+
+Estos son los pasos para crear una sesión autenticada.
+
+**Paso 1**Recuperar un token de acceso en el entorno de prueba o en nuestro entorno de producción:
+
+Lo más probable es que trabajes con una biblioteca OAuth2 robusta para tu lenguaje, que se encargará de todo el trabajo pesado. Nuestros ejemplos mostrarán el uso más básico desde la línea de comandos usando`curl`.
+
+### Puesta en escena
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Producción
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Esto devolverá un token de acceso, junto con otros datos de respuesta de OAuth2:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Cuando realice una llamada a cualquiera de nuestros puntos finales, incluya lo siguiente en el encabezado:
+
+* `Wink-Version`=`2.0` El último - *Consulte nuestra documentación de API para conocer otras versiones disponibles.*
+* `Authentication`=`Bearer: ${access_token}` *Inserte su token de acceso.*
+
+:::tip
+Puedes probar todas nuestras API sin escribir ni una sola línea de código antes de empezar.
+
+Obtén un 'ID de cliente' y una 'Clave secreta' de una de tus aplicaciones y navega a cualquiera de nuestras[API](/developers/apis).
+::
+

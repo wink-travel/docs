@@ -1,0 +1,69 @@
+---
+title: Authentication
+description: Opi todentamaan henkilöllisyytesi Winkin OAuth2-valtuutuspalvelimen avulla.
+sidebar:
+  order: 2
+---
+:::tip
+Wink IAM -todennuspalvelin tukee yleisiä OAuth2-päätepisteitä:
+
+* /oauth2/authorize
+* /oauth2/token
+* /oauth2/introspect
+* /oauth2/peruuta
+* /oauth2/käyttäjäinfo
+  :::
+
+Sovellus tarjoaa sinulle`Client ID`ja`Secret Key`että sinun on luotava todennettu OAuth2-istunto, jota voit käyttää kommunikointiin Wink- ja TripPay-APIen kanssa.
+
+Tässä ovat vaiheet todennetun istunnon luomiseksi.
+
+**Vaihe 1**Hae käyttöoikeustunnus testiympäristössä tai tuotantoympäristössämme:
+
+Todennäköisesti käytät omalle kielellesi suunniteltua vankkaa OAuth2-kirjastoa, joka tekee kaiken raskaan työn puolestasi.
+
+Esimerkeissämme näytetään komentoriviltä tehtävän peruskäyttö.`curl`.
+
+### Lavastus
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Tuotanto
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Tämä palauttaa käyttöoikeustunnuksen sekä muita OAuth2-vastaustietoja:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Kun soitat mihin tahansa päätepisteeseemme, sisällytä otsikkoon seuraavat tiedot:
+
+* `Wink-Version`=`2.0`Uusin -*Katso muut saatavilla olevat versiot API-dokumentaatiostamme.*
+* `Authentication`=`Bearer: ${access_token}` *Syötä käyttöoikeustunnuksesi.*
+
+:::tip
+Voit testata kaikkia API-rajapintojamme kirjoittamatta riviäkään koodia ennen aloittamista.
+
+Hae 'Asiakastunnus' ja 'Salainen avain' jostakin sovelluksistasi ja siirry mihin tahansa palveluistamme.[API-rajapinnat](/developers/apis).
+:::
+

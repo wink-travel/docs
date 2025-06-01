@@ -1,0 +1,326 @@
+---
+title: רכיבי אינטרנט
+description: Wink מתחזקת ספרייה של רכיבי אינטרנט ב-JavaScript שניתן להטמיע באתר שלך.
+sidebar:
+  order: 6
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+[רכיבי אינטרנט](https://developer.mozilla.org/en-US/docs/Web/API/Web_components)הוא תקן המאפשר לך לשלב תכונות Javascript שלמות באתר שלך מבלי לדעת איך לכתוב קוד.
+הודות לטכנולוגיה מגניבה זו, היא מאפשרת לך להטמיע את מלאי הנסיעות של Wink בקלות רבה. מאמר זה ידריך אותך דרך אוסף רכיבי האינטרנט שלנו ויראה לך כיצד להשתמש בהם.
+
+## הטמעת קריצה
+
+ישנם שלושה דברים שעליכם לכלול בכל דף שבו תרצו להציג אחד מרכיבי האינטרנט שלנו.
+
+1. כלול את גיליון הסגנונות שלנו.
+2. כלול את ה-Javascript שלנו.
+3. כלול את טוען האפליקציות שלנו.
+
+### גיליון סגנונות
+
+כלול את סגנונות ה-CSS שלנו בראש המסמך שלך.
+
+```html {3}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+</html>
+```
+
+### ג'אווהסקריפט
+
+כלול את קוד ה-Javascript שלנו בתחתית המסמך שלך. (*אנו ממליצים על תגית גוף הסיום, מיד מעל*).
+
+```html {3}
+<html>
+  <body>
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+  </body>
+</html>
+```
+
+האתר שלך מוכן כעת ויכול להציג את רכיבי האינטרנט שלנו.
+
+## רכיבים
+
+קראו על ספריית הרכיבים שלנו למטה.
+
+### טוען יישומים
+
+המטען אחראי על שמירת המצב וניהול האינטראקציה בין הרכיבים שלנו. (*כלול אותו מתחת ל-Javascript שלנו*).
+
+```html {3-6}
+<html>
+  <body>
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+### טוען תוכן
+
+טוען התוכן נמצא בלב ספריית רכיבי האינטרנט שלנו. הוא אחראי על הצגת המלאי שלך (כרטיסים, רשתות, מפות).
+
+מאפיינים זמינים:
+
+* מַעֲרָך
+* תְעוּדַת זֶהוּת
+* סוּג
+
+*התכונה`sort`זמין רק כאשר הפריסה היא`RANKED`ואתם לא רוצים להשתמש ברשת מדורגת קיימת. במקרים אלה, השאר`id`ריק.*
+
+סוגי פריסה זמינים:
+
+* `AD_BANNER`
+* `MAP`
+* `HOTEL`
+* `GUEST_ROOM`
+* `MEETING_ROOM`
+* `SPA`
+* `RESTAURANT`
+* `ACTIVITY`
+* `ATTRACTION`
+* `PLACE`
+* `ADD_ON`
+* `LIST`
+* `SEARCH`
+* `RANKED`
+
+סוגי מיון זמינים:
+
+* `MEMBER`
+* `PRICE_LOW_TO_HIGH`
+* `PRICE_HIGH_TO_LOW`
+* `PRICE`
+* `POPULARITY`
+* `ECO`
+* `EXPERIENCE`
+* `PERK`
+* `LOYALTY`
+* `PACKAGE`
+
+```html {3-6}
+<html>
+  <body>
+    <wink-content-loader
+       layout="GUEST_ROOM"
+       id="2de7ee9c-61c9-11ef-9722-42004e494300"
+    ></wink-content-loader>
+  </body>
+</html>
+```
+
+ניתן למצוא דוגמאות עבור[כרטיסים](/studio/cards),[רשתות](/studio/grids)ו[מפות](/studio/maps).
+
+### חיפוש
+
+חיפוש עובד מצוין יחד עם אחת מרשתות החיפוש המדורגות שלכם. זה מאפשר למשתמשים שלכם לחפש מלון ויעד והרשת מתעדכנת בתגובה לתוצאות החיפוש שלהם.
+
+```html {3}
+<html>
+  <body>
+    <wink-lookup></wink-lookup>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="350" height="57" resize="scale" quality="best" alt="רכיב אינטרנט לחיפוש" src="academy/lookup" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*רכיב אינטרנט לחיפוש*</figcaption>
+</figure>
+
+
+לחיצה על הרכיב למעלה פותחת חלון המאפשר לך להקליד את היעד או המלון שאתה מחפש.
+
+<figure>
+  <CloudinaryImage width="700" height="186" resize="scale" quality="best" alt="חיפוש מודאלי" src="academy/lookup-results" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*מודאל חיפוש עם תוצאות*</figcaption>
+</figure>
+
+
+### מַסלוּל
+
+כפתור המסלול מציג את מסלול הטיול הנוכחי על הכפתור. כשלוחצים עליו, בורר המסלולים המלא מוצג כחלון מודאלי.
+
+```html {3}
+<html>
+  <body>
+    <wink-itinerary></wink-itinerary>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="350" height="60" resize="scale" quality="best" alt="רכיב אינטרנט של מסלול הטיול" src="academy/itinerary-button" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*רכיב אינטרנט של מסלול הטיול*</figcaption>
+</figure>
+
+
+לחיצה על הכפתור למעלה פותחת חלון המאפשר לך לעדכן את מסלול הטיול שלך.
+
+<figure>
+  <CloudinaryImage width="700" height="459" resize="scale" quality="best" alt="חיפוש מודאלי" src="academy/search-modal" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*בורר מסלולי טיול כאופן מודאלי*</figcaption>
+</figure>
+
+
+### לְחַפֵּשׂ
+
+חיפוש הוא כפתור המכיל סמל בלבד בבוחר המסלולים. כשלוחצים עליו, בוחר המסלולים המלא מוצג כחלון מודאלי.
+
+```html {3}
+<html>
+  <body>
+    <wink-search></wink-search>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="138" height="116" resize="scale" quality="best" alt="רכיב אינטרנט לחיפוש" src="academy/search-button" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*רכיב אינטרנט לחיפוש*</figcaption>
+</figure>
+
+
+לחיצה על הכפתור למעלה פותחת חלון המאפשר לך לעדכן את מסלול הטיול שלך.
+
+<figure>
+  <CloudinaryImage width="700" height="459" resize="scale" quality="best" alt="חיפוש מודאלי" src="academy/search-modal" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*בורר מסלולי טיול כאופן מודאלי*</figcaption>
+</figure>
+
+
+### טופס מסלול טיול
+
+רכיב מסלול הטיול מציג טופס מסלול טיול שבו משתמשים יכולים לקיים אינטראקציה.
+
+```html {3}
+<html>
+  <body>
+    <wink-itinerary-form></wink-itinerary-form>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="700" height="90" resize="scale" quality="best" alt="רכיב אינטרנט של טופס מסלול טיול" src="academy/itinerary-form" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*רכיב אינטרנט של טופס מסלול טיול*</figcaption>
+</figure>
+
+
+שינוי מסלול הטיול, בכל אחד מרכיבי המסלול שלנו, יפעיל את אירוע עדכון המסלול לכל מלאי המוצג כעת בדף.
+
+### חֶשְׁבּוֹן
+
+כפתור החשבון מאפשר לך להוסיף אימות Wink לאתר שלך.
+
+```html {3}
+<html>
+  <body>
+    <wink-account></wink-account>
+  </body>
+</html>
+```
+
+<figure>
+  <CloudinaryImage width="92" height="104" resize="scale" quality="best" alt="רכיב אינטרנט של חשבון" src="academy/account-button" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*רכיב אינטרנט של כפתור חשבון*</figcaption>
+</figure>
+
+
+לחיצה על הכפתור, כאשר המשתמש אינו מאומת, תעביר אותו לאימות.
+לאחר אומת המשתמש, יוצג סמל הפרופיל שלו.
+
+<figure>
+  <CloudinaryImage width="92" height="104" resize="scale" quality="best" alt="כפתור חשבון לאחר אימות" src="academy/account-button-auth" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*רכיב אינטרנט של כפתור חשבון (מאומת)*</figcaption>
+</figure>
+
+
+כאשר לוחצים על הכפתור, נפתחת התפריט הנפתח הספציפי למשתמש.
+
+<figure>
+  <CloudinaryImage width="350" height="404" resize="scale" quality="best" alt="כפתור חשבון לאחר אימות" src="academy/account-button-auth-open" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*רכיב אינטרנט של כפתור חשבון (פתיחה)*</figcaption>
+</figure>
+
+
+## הטמעת TripPay
+
+ישנם שני דברים שעליכם לכלול בכל דף שבו תרצו להשתמש ברכיב האינטרנט של התשלום TripPay.
+
+1. כלול את גיליון הסגנונות שלנו.
+2. כלול את ה-Javascript שלנו.
+
+### גיליון סגנונות
+
+כלול את סגנונות ה-CSS שלנו בראש המסמך שלך.
+
+```html {3}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.trippay.io/styles.css"></link>
+  </head>
+</html>
+```
+
+### ג'אווהסקריפט
+
+כלול את קוד ה-Javascript שלנו בתחתית המסמך שלך. (*אנו ממליצים על תגית גוף הסיום, מיד מעל*).
+
+```html {3}
+<html>
+  <body>
+    <script src="https://elements.trippay.io/elements.js" type="module" defer></script>
+  </body>
+</html>
+```
+
+האתר שלך מוכן כעת ויכול להציג את רכיבי האינטרנט שלנו.
+
+## רכיבים
+
+### תַשְׁלוּם
+
+רכיב התשלום מאפשר לך להודיע ​​ל-TripPay שמטייל רוצה לרכוש משהו ואת הכללים והמחירים עבור פריטים אלה.
+
+יש מאפיין נדרש אחד לווידג'ט:
+
+* `id`המזהה של חוזה ההזמנה שברצונך לחתום עליו.
+
+```html {3}
+<html>
+  <body>
+    <trip-pay id="<INSERT_BOOKING_CONTRACT_ID>"></trip-pay>
+  </body>
+</html>
+```
+
+:::הערה
+כדי ללמוד כיצד ליצור את חוזה ההזמנה`id`, קרא את המדריך:[אינטגרציה עם TripPay](/guides/integrating-with-trip-pay).&#x20;
+:::
+
+הווידג'ט מכין את החוזה לביצוע ומציג פרטי תשלו&#x5DD;*(איור 1)*&#x5DC;משתמש כדי לסיים את ההזמנה.
+
+<figure>
+  <CloudinaryImage width="700" height="1141" resize="scale" quality="best" alt="פרטי תשלום" src="academy/payment-modal" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*איור 1. טופס תשלום לדוגמה*</figcaption>
+</figure>
+

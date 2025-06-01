@@ -1,0 +1,68 @@
+---
+title: Authentication
+description: 'Naučte se, jak se ověřovat pomocí autorizačního serveru OAuth2 od Winku.'
+sidebar:
+  order: 2
+---
+:::tip
+Autentizační server Wink IAM podporuje běžné koncové body OAuth2:
+
+* /oauth2/autorizovat
+* /oauth2/token
+* /oauth2/introspect
+* /oauth2/revoke
+* /oauth2/userinfo
+  :::
+
+Aplikace vám poskytuje`Client ID`a`Secret Key`že potřebujete vytvořit ověřenou relaci OAuth2, kterou můžete použít ke komunikaci s API Wink a TripPay.
+
+Zde jsou kroky k vytvoření ověřené relace.
+
+**Krok 1**Získejte přístupový token na testovacím serveru nebo v našem produkčním prostředí:
+
+S největší pravděpodobností budete pro váš jazyk pracovat s robustní knihovnou OAuth2, která za vás udělá veškerou těžkou práci.
+Naše příklady ukážou nejzákladnější použití z příkazového řádku pomocí`curl`.
+
+### Příprava
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Výroba
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Toto vrátí přístupový token spolu s dalšími daty odpovědi OAuth2:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Když voláte na kterýkoli z našich koncových bodů, uveďte v záhlaví následující:
+
+* `Wink-Version`=`2.0`Nejnovější -*Další dostupné verze naleznete v naší dokumentaci k API.*
+* `Authentication`=`Bearer: ${access_token}` *Vložte svůj přístupový token.*
+
+:::tip
+Všechna naše API si můžete otestovat, aniž byste museli před zahájením napsat jediný řádek kódu.
+
+Získejte „ID klienta“ a „tajný klíč“ z jedné ze svých aplikací a přejděte do kterékoli z našich[API](/developers/apis).
+:::
+

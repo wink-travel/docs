@@ -1,0 +1,152 @@
+---
+title: Bookings
+description: 이 문서에서는 Wink를 통해 받은 예약과 판매 채널을 관리하는 방법을 보여줍니다.
+sidebar:
+  order: 2
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+Wink에서 예약을 하면 다음과 같은 일이 일어납니다.
+
+<Steps>
+  1. 귀하의 채널 관리자, CRS 또는 PMS에 알림이 전달됩니다.
+  2. 확인 이메일을 받습니다 *(예약 데스크 연락처)* 새로운 예약을 관리할 수 있는 링크가 포함되어 있습니다.
+  3. 여행자는 예약 데스크에 연락하는 방법 등이 포함된 확인 이메일을 받습니다.
+  4. 개발자는 다음을 들을 수 있습니다. `booking.created` 웹훅 이벤트를 통해 실시간으로 자세한 예약 정보를 받아보세요.
+</Steps>
+
+
+이메일의 링크를 따르거나 다음으로 이동하세요.`Account > Bookings`시작하려면 기본 탐색 표시줄에서 시작하세요.
+
+## 예약 그리드
+
+예약 그리드는 과거 및 미래의 모든 예약을 오름차순으로 예약 날짜별로 정렬하여 보여줍니다.
+
+### 필터
+
+원하는 예약을 찾으려면 필터를 적용하세요.
+
+* 예약 날짜 \[범위]
+* 도착일 \[범위]
+* 출발 날짜 \[범위]
+* 예약 코드
+* 여행자의 성
+* 여행자의 이름
+* 마스터 요금 이름
+* 판매 채널 / 출처
+
+### 내보내다
+
+현재 필터 기준에 맞는 예약을 CSV로 내보낼 수 있습니다.
+
+예약을 내보내려면:
+
+<Steps>
+  1. 원하는 필터가 활성화되어 있는지 확인하세요.
+  2. 예약 그리드가 새로 고쳐질 때까지 기다리세요.
+  3. 🗂️를 클릭하세요 (*파일 내보내기*그리드의 오른쪽 하단에 있는 ) 아이콘 버튼을 클릭하세요.
+</Steps>
+
+
+## 예약
+
+예약 그리드에서 작업하려는 예약을 선택하면 다음으로 리디렉션됩니다.`Booking`페이지.
+이 페이지에는 도착 당일 손님을 제대로 맞이하는 데 필요한 모든 정보가 포함되어 있습니다.
+
+이 페이지에는 고객에게 제대로 서비스를 제공하는 데 필요한 몇 가지 중요한 조치도 포함되어 있습니다. 사용 가능한 모든 조치는 다음에서 확인할 수 있습니다.`Actions`페이지 상단의 드롭다운.
+
+### 이메일 재전송
+
+여행자에게 확인 이메일을 다시 보내려면 클릭하세요.`Actions > Resend confirmation email`.
+
+### 예약 취소
+
+숙박 시설의 예약을 취소하려면 클릭하세요.`Actions > Cancel booking`.
+
+팝업 창이 나타나서 다음 작업을 수행할 수 있습니다.
+
+<Steps>
+  1. 취소 유형을 선택하세요. *예: 잘못된 날짜*
+  2. 취소 사유를 입력하세요.
+</Steps>
+
+
+*이 버튼은 취소 정책 규칙을 따르므로 항상 사용할 수 있는 것은 아닙니다.*
+
+### 환불 요청
+
+어떤 이유로든 환불을 요청하려면 클릭하세요.`Actions > Request refund`.
+
+팝업 창이 나타나서 다음 작업을 수행할 수 있습니다.
+
+<Steps>
+  1. 전액 또는 일부 환불을 요청하세요.
+     * 부분을 선택한 경우 금액을 입력하라는 메시지가 표시됩니다.
+  2. 이유를 선택하세요.
+  3. 요청에 대한 설명적 이유를 입력하세요.
+  4. 요청이 승인되었는지 여부와 관계없이 예약을 취소하고 싶은지 알려주세요.
+</Steps>
+
+
+*이 작업은 해당 예약에 대한 자금이 처리될 때까지 가능합니다.*.
+
+## 캘린더 동기화
+
+Wink 예약을 선호하는 캘린더 소프트웨어와 동기화하려면 다음으로 이동하세요.`Distribution > Sync bookings to your calendar`시작하려면 기본 탐색 표시줄에서 시작하세요.
+
+처음에는 캘린더 소프트웨어에서 연결을 인증하는 데 사용할 수 있는 패스코드를 생성하라는 메시지가 표시됩니다.
+
+<figure>
+  <CloudinaryImage width="350" height="188" resize="scale" quality="best" alt="패스코드 생성" src="academy/caldav-pass-code" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*CalDAV 패스 코드를 생성할지 묻습니다.*</figcaption>
+</figure>
+
+
+클릭`Yes`계속하려면 '계속' 버튼을 클릭하고, 마음이 바뀌었다면 '아니요'를 클릭하세요.
+
+Wink를 캘린더 소프트웨어에 연결하는 데 필요한 3개의 필드가 표시됩니다.
+
+1. 예약을 구독하는 데 사용할 URL입니다.
+2. 인증에 사용할 사용자 이름입니다.
+3. 인증에 사용되는 패스 키입니다.
+
+이 단계를 완료하고 캘린더 소프트웨어에 CalDAV URL을 추가하면 캘린더에 Wink의 예약이 표시되기 시작합니다.
+
+## 리뷰
+
+<figure>
+  <CloudinaryImage width="700" height="151" resize="scale" quality="best" alt="검토 그리드" src="academy/reviews" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*리뷰 그리드*</figcaption>
+</figure>
+
+
+체크아웃 후 3일 이내에 게스트에게 숙소 리뷰를 요청하는 이메일이 발송됩니다.
+리뷰는 1점부터 5점까지의 간단한 객관식 질문으로 구성되어 있으며, 숙소, 서비스, 편의 시설로 구분됩니다.
+
+게스트는 귀하가 답할 수 있는 메시지를 남기고 다른 게스트가 볼 수 있도록 공개하도록 선택할 수도 있습니다.
+
+<figure>
+  <CloudinaryImage width="700" height="421" resize="scale" quality="best" alt="검토 승인" src="academy/review-details" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*리뷰 세부 정보 양식*</figcaption>
+</figure>
+
+
+리뷰가 작성되면 이메일이 전송되며, Wink에 로그인하여 리뷰를 보고 답변할 수 있습니다.
+
+<figure>
+  <CloudinaryImage width="350" height="355" resize="scale" quality="best" alt="공개 검토" src="academy/public-review" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*다른 여행자가 볼 수 있는 공개 리뷰*</figcaption>
+</figure>
+
+
+승인된 리뷰는 랜딩 페이지의 평가 섹션에 표시됩니다.
+
+## API
+
+관리하고 싶은 개발자`Booking`로 향할 수 있습니다[개발자 > API > 부동산 예약](/developers/apis/#property-booking-api).
+

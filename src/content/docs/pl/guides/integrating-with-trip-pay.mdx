@@ -1,0 +1,226 @@
+---
+title: Integracja z TripPay
+description: >-
+  W tym artykule znajdziesz szczegółowy przykład integracji z TripPay i
+  umożliwienia mu obsługi płatności.
+sidebar:
+  order: 4
+---
+import { Steps } from '@astrojs/starlight/components';
+
+W tym artykule znajdziesz kompleksowy przykład integracji z TripPay.
+
+Zalecamy, abyś przeczytał już:
+
+* [Płatność > Mapowanie](/payment/mapping).
+* [Płatność > Integracja](/payment/integration).
+* [Komponent sieciowy płatności](/developers/web-components/#payment).
+* [API płatności](/developers/apis/#payment-api).*Przeczytaj sekcję na temat`Create payable contracts`*
+
+Oto kroki pozwalające pomyślnie opłacić rezerwację za pomocą TripPay:
+
+<Steps>
+  1. Upewnij się, że beneficjenci wymienieni w umowie rezerwacyjnej zostali wskazani.
+  2. Pozwól podróżnemu wybrać ofertę, którą chce zarezerwować, i przygotować się do zapłaty.
+  3. Utwórz `payable contract` z TripPay zawierającym pozycje do zarezerwowania.
+  4. Umożliw podróżnemu płacenie za pomocą komponentu internetowego TripPay.
+</Steps>
+
+
+Zakładamy, że już ukończyłeś`Step 1` I `Step 2`i jesteś gotowy powiadomić TripPay o rezerwacji.
+
+## Utwórz umowę płatniczą
+
+:::uwaga
+Przejdź do API płatności, aby dowiedzieć się więcej o wymaganiach dotyczących tworzenia kontraktu płatniczego.
+:::
+
+### Wniosek
+
+Poniżej znajduje się przykładowy wniosek JSON zawierający wszystko, czego potrzebujesz, aby utworzyć swój pierwszy kontrakt płatniczy.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Wyjaśnienie:
+
+Nie będziemy tutaj wyjaśniać każdego punktu danych, ponieważ są one już omówione w dokumentacji API.
+
+* Linie:**2 - 7**jest użytkownikiem odpowiedzialnym za rezerwację. Istnieją dwa rodzaje rezerwujących:
+  * Podróżny.
+  * Agent podróży.
+* Linie:**8 - 9**jest kontem TripPay ułatwiającym rezerwację. Może to być:
+  * Twoje konto integratora TripPay.
+  * Jeśli prowadzisz sieć afiliacyjną, może ona być Twoim afiliatem.
+* Użyj`traceId`grupować wiele rezerwacji u wielu dostawców. W ten sposób możesz anulować rezerwację grupową.
+* `redirectUrl`informuje TripPay, na którą stronę ma zostać przekierowany po zakończeniu płatności.
+* `sourceUrl`jest stroną/aplikacją, za pośrednictwem której dokonano rezerwacji.
+
+Ten`contractList`tablica zawiera elementy, które podróżny chce kupić od wielu dostawców. Każdy element zawiera:
+
+* Ten`identifier`jest prawidłowym UUID, który generujesz.
+* Dostawca, od którego chcesz zarezerwować zapasy.
+* Zapasy, które chcesz zarezerwować od tego dostawcy. Wszystkie są określone w zagnieżdżonej tablicy`contractItemList`.
+* Każdy wpis pod`contractItemList` zawiera:
+  * **Użytkownik gość**To jest użytkownik, który przybędzie na teren obiektu.
+  * **Nazwa po angielsku**Nazwa inwentarza w języku angielskim.
+  * **Opis w języku angielskim**Dłuższy opis inwentarza w języku angielskim.
+  * **Cena**Cena przedmiotu.
+  * **Trasa**Kiedy należy zarezerwować tę pozycję.
+  * **Typ cennika**Jak obliczono cenę.
+  * **Typ zapasów**Jaki to rodzaj inwentarza?
+  * **Płatny**Kiedy należy pobrać opłatę od podróżnego.*Obecnie obsługujemy jedynie płatności natychmiastowe.*
+  * **Polityka**Uwzględnij zasady anulowania.
+  * **Lista stawek dziennych**Jeśli rezerwowany jest pokój, możesz podać cenę pokoju za każdą noc pobytu gościa.
+  * **Odbiorcy**Podaj, na które konto(a) TripPay ma zostać przelana określona kwota ceny przedmiotu.*Obsługiwane są kwoty stałe/procentowe.*
+
+:::uwaga
+W powyższym przykładzie JSON mamy 3 beneficjentów:
+
+* 1,5% przeznaczono na platformę umożliwiającą dokonanie rezerwacji.*np. Mrugnięcie*
+* 9,85% zostało przyznane partnerowi jako prowizja.*np. Kim Kardashian*
+* 88,65% przypadło dostawcy za rezerwację pokoju.*np. Hilton*
+
+Gdy TripPay odpowie kontraktem płatnym, zauważysz, że wstrzyknął własnego beneficjenta na poziomie 4,0%.
+:::
+
+### Odpowiedź
+
+Gdy TripPay odpowie na Twoje zapytanie, jego treść będzie wyglądać mniej więcej tak:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+Zapisz`id`w wierszu 3. Użyjesz tego do wstrzyknięcia do komponentu internetowego TripPay.
+
+## Osadź TripPay
+
+:::uwaga
+Upewnij się, że załadowałeś nasze style i Javascript wcześniej.
+:::
+
+W tym momencie jesteś gotowy do osadzenia`Payment Web Component`do swojej witryny i pokaż ją użytkownikowi.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+Jeśli chodzi o integrację, to wszystko, co musisz zrobić. Od tej pory całą ciężką pracę wykonuje TripPay.
+

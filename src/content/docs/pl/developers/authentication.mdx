@@ -1,0 +1,70 @@
+---
+title: Authentication
+description: >-
+  Dowiedz się, jak uwierzytelniać się za pomocą serwera autoryzacji OAuth2 firmy
+  Wink.
+sidebar:
+  order: 2
+---
+:::tip
+Serwer uwierzytelniania Wink IAM obsługuje typowe punkty końcowe OAuth2:
+
+* /oauth2/autoryzuj
+* /oauth2/token
+* /oauth2/introspekcja
+* /oauth2/odwołaj
+* /oauth2/informacje o użytkowniku
+  :::
+
+Aplikacja zapewnia Ci:`Client ID` I `Secret Key`że musisz utworzyć uwierzytelnioną sesję OAuth2, której możesz użyć do komunikacji z interfejsami API Wink i TripPay.
+
+Poniżej przedstawiono kroki umożliwiające utworzenie sesji uwierzytelnianej.
+
+**Krok 1**. Pobierz token dostępu na etapie przygotowawczym lub w naszym środowisku produkcyjnym:
+
+Najprawdopodobniej będziesz pracować z solidną biblioteką OAuth2 dla swojego języka, która wykona za Ciebie całą ciężką pracę.
+Nasze przykłady pokażą najbardziej podstawowe użycie z wiersza poleceń przy użyciu`curl`.
+
+### Inscenizacja
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Produkcja
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Spowoduje to zwrócenie tokena dostępu wraz z innymi danymi odpowiedzi OAuth2:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Gdy wykonujesz połączenie z którymś z naszych punktów końcowych, uwzględnij w nagłówku następujące informacje:
+
+* `Wink-Version`=`2.0` Najnowszy - *Informacje na temat innych dostępnych wersji można znaleźć w naszej dokumentacji API.*
+* `Authentication`=`Bearer: ${access_token}` *Wprowadź swój token dostępu.*
+
+:::tip
+Możesz przetestować wszystkie nasze API bez konieczności pisania ani jednej linijki kodu przed rozpoczęciem.
+
+Pobierz „Identyfikator klienta” i „Klucz tajny” z jednej ze swoich aplikacji i przejdź do dowolnej z naszych[Pszczoła](/developers/apis).
+:::
+

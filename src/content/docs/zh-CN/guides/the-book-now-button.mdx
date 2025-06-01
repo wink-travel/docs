@@ -1,0 +1,138 @@
+---
+title: 立即预订按钮
+description: 本指南将指导酒店如何使用“立即预订”按钮与 Wink 进行最简单的集成。
+sidebar:
+  order: 2
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+这 **立即预订**“按钮”是酒店业中一个常见的术语，指的是酒店与供应商的整合，供应商了解酒店的空房情况和价格，并允许旅客预订房间。“按钮”是酒店在自己的网站上按照自己的条件销售客房的最简单方式。
+
+*许多酒店使用其渠道经理提供的捆绑预订引擎。我们建议酒店在决定使用哪个预订引擎之前，先进行一些研究，并比较不同的原生预订引擎。*
+
+## 观众
+
+本文主要面向希望在其网站上安装我们免费、高转化率预订引擎的酒店。
+但……对于任何希望在其网站上使用我们技术的人来说，这篇文章也大有裨益。
+
+## 通过链接
+
+为了最简单的集成，我们建议使用[可共享链接](/studio/shareable-links)。
+
+以下是执行此操作的步骤：
+
+<Steps>
+  1. 前往 https://extranet.wink.travel
+  2. 点击 `Sign-In / Register` 在右上角并使用您的用户帐户登录。
+  3. 从左上角的下拉菜单中选择您想要使用的属性。
+  4. 点击 `Booking engine` 在导航栏中。
+  5. 该页面将显示您的链接。
+  6. 将此链接提供给您的网站管理员，并将其用于您的 **立即预订** 按钮。
+  7. 你是✅。
+</Steps>
+
+
+### 先进的
+
+该链接已包含嵌入 URL 的行程，源自您选择的`customization`。
+您可以通过以下方式进一步自定义您的链接：
+
+* 更改选定的自定义或
+* 覆盖行程
+
+在本文中，我们将重点介绍后者，因为它可以让您更自由地让旅行者在您的网站上选择行程并将其转发到 Wink 的预订引擎。
+
+以下是如何将您自己的行程与 URL 一起传递。
+
+有效的请求参数：
+
+* **标准差**要添加开始日期：*sd=2024-08-24*
+* **n**添加住宿晚数：*n=1* 或者
+* **编辑**使用结束日期：*编辑=2024-08-25*
+* **rc**嘉宾：*rc=a2*（成人：2）
+* **升**请求显示语言：*l=es*
+* **c**请求显示货币：*c=欧元*
+* **页**添加促销：*p=ABC123*
+
+URL 看起来如下：
+
+https://trvl.as/abc123?sd=2024-08-24\&n=1\&rc=a2\&l=es\&c=EUR
+
+对于更高级的用例，您还可以使用以下方式请求多个房间配置`+` 符号：
+
+例子：
+
+https://trvl.as/abc123?sd=2024-08-24\&n=1\&rc=a2-ca16q1-ca8q1+a2\&l=es\&c=EUR
+
+* 房间类型 1 = 成人：2 名，儿童：2 名 = 16 岁 + 8 岁。
+* 房间类型 2 = 成人：2 人。
+
+### 例子
+
+样本 **立即预订**按钮HTML：
+
+*本示例假设您使用[引导程序](https://getbootstrap.com)作为您的主要 CSS 库。*
+
+```html
+<a 
+  href="https://trvl.as/abc123" 
+  target="_blank" 
+  class="btn btn-lg btn-primary" 
+  title="Book a room"
+>
+BOOK NOW
+</a>
+```
+
+### 其他福利
+
+使用我们的链接作为您的`book now` 按钮。
+
+* **社交友好**该链接可以轻松在社交媒体上分享，并显示`dynamic pricing`在您选择的图像之上。
+* **短的**该 URL 非常易于共享，您可以在 Instagram Bio URL 等地方使用它。
+
+## 通过嵌入
+
+有些酒店希望其网站能够提供更多功能和更深入的集成。本示例将介绍如何嵌入[卡片](/studio/cards)进入他们的网站。
+
+以下是执行此操作的步骤：
+
+<Steps>
+  1. 前往 https://studio.wink.travel
+  2. 点击 `Sign-In / Register` 在右上角并使用您的用户帐户登录。
+  3. 从左上角选择您想要使用的属性。
+  4. 点击 `Search` 从主导航栏。
+  5. 输入您的房产名称并单击搜索按钮。
+  6. 点击 `Actions` 搜索结果卡上的链接并选择 `Create > Make a Card`。
+  7. 这将创建一个 `Card`。
+  8. 右上角会出现一条消息，告诉您卡已准备就绪，并询问您是否要进一步自定义它。
+  9. 点击 `Tools > Cards` 从主导航栏，您将看到您的新卡。
+  10. 点击 `Actions` 链接卡上的链接，然后点击 `Embed`。
+  11. 这将打开一个新窗口，其中包含您可以复制的示例 HTML 代码。
+  12. 要检索您的 `Client-ID`，前往 [应用](/developers/applications)。
+  13. 要检索您的 `Configuration-ID`，前往 [定制](/studio/customization)
+  14. 你是✅。
+</Steps>
+
+
+嵌入式卡片 HTML 示例：
+
+```html
+<wink-content-loader
+  layout="GUEST_ROOM"
+  id="09d7cca4-6ff6-11ef-949b-42004e494300"
+></wink-content-loader>
+```
+
+*上面的 HTML 示例不包含所需的 Wink CSS 和 Javascript；仅包含卡片。*
+
+<figure>
+  <CloudinaryImage width="350" height="829" resize="scale" quality="best" alt="卡片预览" src="academy/card-example" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*正面显示房型卡，显示房源情况*</figcaption>
+</figure>
+
+
+预订者现在可以查看动态价格，更改行程，并直接在您的网站上点击预订。点击预订按钮即可跳转至 Wink 房源登录页面完成付款。
+

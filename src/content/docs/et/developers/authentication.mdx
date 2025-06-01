@@ -1,0 +1,69 @@
+---
+title: Authentication
+description: 'Siit saate teada, kuidas autentida Winki OAuth2 autoriseerimisserveri abil.'
+sidebar:
+  order: 2
+---
+:::tip
+Winki IAM-i autentimisserver toetab tavalisi OAuth2 lõpp-punkte:
+
+* /oauth2/authorize
+* /oauth2/token
+* /oauth2/introspekt
+* /oauth2/tühista
+* /oauth2/kasutajainfo
+  :::
+
+Rakendus pakub teile`Client ID`ja`Secret Key`et peate looma autentitud OAuth2 seansi, mida saate kasutada Winki ja TripPay API-dega suhtlemiseks.
+
+Siin on sammud autentitud seansi loomiseks.
+
+**1. samm**Hankige juurdepääsutoken testimiskeskkonnas või meie tootmiskeskkonnas:
+
+Tõenäoliselt töötate oma keele jaoks mõeldud võimsa OAuth2 teegiga, mis teeb kogu raske töö teie eest ära.
+
+Meie näited demonstreerivad käsurealt kõige põhilisemat kasutamist, kasutades`curl`.
+
+### Lavastus
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Tootmine
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+See tagastab juurdepääsutokeni koos muude OAuth2 vastuseandmetega:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Kui helistate mõnele meie lõpp-punktile, lisage päisesse järgmine teave:
+
+* `Wink-Version`=`2.0`Viimased -*Teiste saadaolevate versioonide kohta vaadake meie API dokumente.*
+* `Authentication`=`Bearer: ${access_token}` *Sisestage oma juurdepääsutoken.*
+
+:::tip
+Saate kõiki meie API-sid testida enne alustamist ilma ühtegi koodirida kirjutamata.
+
+Haarake ühest oma rakendusest kliendi ID ja salajane võti ning navigeerige ükskõik millisesse meie[API-d](/developers/apis).
+:::
+

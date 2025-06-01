@@ -1,0 +1,226 @@
+---
+title: Integració amb TripPay
+description: >-
+  Aquest article conté un exemple complet de com integrar-se amb TripPay i
+  deixar que gestioni el pagament per vosaltres.
+sidebar:
+  order: 4
+---
+import { Steps } from '@astrojs/starlight/components';
+
+Aquest article conté un exemple complet de com integrar-se amb TripPay.
+
+Es recomana que ja hagis llegit:
+
+* [Pagament > Mapatge](/payment/mapping).
+* [Pagament > Integració](/payment/integration).
+* [Component web de pagament](/developers/web-components/#payment).
+* [API de pagament](/developers/apis/#payment-api).*Llegiu la secció sobre`Create payable contracts`*
+
+Aquests són els passos per utilitzar TripPay correctament per pagar una reserva:
+
+<Steps>
+  1. Assegureu-vos que els beneficiaris que esmenteu al contracte de reserva hagin estat mapejats.
+  2. Deixa que el viatger esculli l'inventari que vol reservar i que es prepari per pagar.
+  3. Crea un `payable contract` amb TripPay que conté els articles que s'han de reservar.
+  4. Deixa que el viatger pagui amb el component web de TripPay.
+</Steps>
+
+
+Suposem que ja has completat`Step 1`i`Step 2`i esteu preparats per informar a TripPay sobre la reserva.
+
+## Crear un contracte a pagar
+
+:::nota
+Aneu a l'API de pagament per obtenir més informació sobre els requisits per crear un contracte de pagament.
+:::
+
+### Sol·licitud
+
+Aquí teniu una sol·licitud de mostra JSON que inclou tot el que necessiteu per crear el vostre primer contracte de pagament.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Explicació:
+
+No explicarem tots els punts de dades aquí, ja que ja estan tractats a la documentació de l'API.
+
+* Línies:**2 - 7**és l'usuari responsable de la reserva. Hi ha dos tipus de persones que fan reserves:
+  * Viatger.
+  * Agent de viatges.
+* Línies:**8 - 9**és el compte de TripPay que facilita la reserva. Pot ser:
+  * El vostre compte integrador de TripPay.
+  * Si gestioneu una xarxa d'afiliats, pot ser el vostre afiliat.
+* Utilitza un`traceId`per agrupar diverses reserves entre diversos proveïdors. D'aquesta manera podeu cancel·lar una reserva de grup.
+* `redirectUrl`indica a TripPay a quina pàgina redirigir un cop finalitzat el pagament.
+* `sourceUrl`és el lloc web/aplicació on s'ha realitzat la reserva.
+
+El`contractList`La matriu conté els articles que el viatger vol comprar a diversos proveïdors. Cada article conté:
+
+* El`identifier`és un UUID vàlid que genereu.
+* El proveïdor del qual voleu reservar l'inventari.
+* L'inventari que voleu reservar d'aquest proveïdor. Tots aquests elements s'especifiquen a la matriu imbricada.`contractItemList`.
+* Cada entrada sota`contractItemList`conté:
+  * **Usuari convidat**Aquest és l'usuari que arribarà a les instal·lacions.
+  * **Nom en anglès**El nom de l'inventari en anglès.
+  * **Descripció en anglès**Una descripció més extensa de l'inventari en anglès.
+  * **Preu**El preu de l'article.
+  * **Itinerari**Quan s'ha de reservar aquest element.
+  * **Tipus de preu**Com es va calcular el preu.
+  * **Tipus d'inventari**Quin tipus d'inventari és aquest.
+  * **Pagable**Quan s'ha de cobrar al viatger.*Actualment només admetem opcions de pagament immediat.*
+  * **Política**Inclou les normes de política de cancel·lació.
+  * **Llista de tarifes diàries**Si l'element que es reserva és una habitació, podeu triar incloure quant costa aquesta habitació per cada nit que s'hi allotja el client.
+  * **Beneficiaris**Inclou a quin(s) compte(s) de TripPay se'ls ha d'assignar quina quantitat del preu de l'article.*S'admeten imports fixos/percentuals.*
+
+:::nota
+A l'exemple JSON anterior, tenim 3 beneficiaris:
+
+* L'1,5% es va destinar a la plataforma que va facilitar la reserva.*p. ex. Wink*
+* El 9,85% es va assignar a l'afiliat com a comissió.*p. ex. Kim Kardashian*
+* El 88,65% es va assignar al proveïdor per a la reserva de l'habitació.*p. ex. Hilton*
+
+Quan TripPay respongui amb un contracte de pagament, notareu que ha injectat el seu propi beneficiari al 4,0%.
+:::
+
+### Resposta
+
+Quan TripPay respongui a la teva sol·licitud, tindrà un aspecte semblant a aquest:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+Desa el`id`a la línia 3. Faràs servir això per injectar-ho al component web de TripPay.
+
+## Incrusta TripPay
+
+:::nota
+Assegureu-vos que heu carregat els nostres estils i Javascript prèviament.
+:::
+
+En aquest punt, esteu a punt per integrar el`Payment Web Component`al vostre lloc web i mostrar-lo a l'usuari.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+Pel que fa a la integració, això és tot el que has de fer. Tota la feina pesada la fa TripPay a partir d'ara.
+

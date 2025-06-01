@@ -1,0 +1,68 @@
+---
+title: Authentication
+description: Tìm hiểu cách xác thực bằng máy chủ ủy quyền OAuth2 của Wink.
+sidebar:
+  order: 2
+---
+:::tip
+Máy chủ xác thực Wink IAM hỗ trợ các điểm cuối OAuth2 phổ biến:
+
+* /oauth2/ủy quyền
+* /oauth2/mã thông báo
+* /oauth2/tự vấn
+* /oauth2/thu hồi
+* /oauth2/thông tin người dùng
+  :::
+
+Một ứng dụng cung cấp cho bạn một`Client ID` Và `Secret Key`bạn cần tạo phiên OAuth2 đã xác thực mà bạn có thể sử dụng để giao tiếp với Wink và TripPay API.
+
+Sau đây là các bước để tạo phiên xác thực.
+
+**Bước 1**. Truy xuất mã thông báo truy cập trên môi trường dàn dựng hoặc sản xuất của chúng tôi:
+
+Rất có thể bạn sẽ làm việc với một thư viện OAuth2 mạnh mẽ cho ngôn ngữ của mình, thư viện này sẽ thực hiện mọi công việc nặng nhọc cho bạn.
+Các ví dụ của chúng tôi sẽ chỉ ra cách sử dụng cơ bản nhất từ dòng lệnh bằng cách sử dụng`curl`.
+
+### dàn dựng
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Sản xuất
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Thao tác này sẽ trả về mã thông báo truy cập cùng với dữ liệu phản hồi OAuth2 khác:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Khi bạn thực hiện cuộc gọi đến bất kỳ điểm cuối nào của chúng tôi, hãy bao gồm thông tin sau vào tiêu đề:
+
+* `Wink-Version`=`2.0`Mới nhất -*Xem tài liệu API của chúng tôi để biết các phiên bản khả dụng khác.*
+* `Authentication`=`Bearer: ${access_token}` *Nhập mã thông báo truy cập của bạn.*
+
+:::tip
+Bạn có thể kiểm tra tất cả các API của chúng tôi mà không cần viết một dòng mã nào trước khi bắt đầu.
+
+Lấy 'ID khách hàng' và 'Khóa bí mật' từ một trong các ứng dụng của bạn và điều hướng đến bất kỳ ứng dụng nào của chúng tôi[API](/developers/apis).
+:::
+

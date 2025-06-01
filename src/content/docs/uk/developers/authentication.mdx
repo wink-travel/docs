@@ -1,0 +1,70 @@
+---
+title: Authentication
+description: >-
+  Дізнайтеся, як пройти автентифікацію за допомогою сервера авторизації OAuth2
+  від Wink.
+sidebar:
+  order: 2
+---
+:::tip
+Сервер автентифікації Wink IAM підтримує поширені кінцеві точки OAuth2:
+
+* /oauth2/авторизувати
+* /oauth2/токен
+* /oauth2/introspect
+* /oauth2/revoke
+* /oauth2/userinfo
+  :::
+
+Додаток надає вам`Client ID`і`Secret Key`що вам потрібно створити автентифікований сеанс OAuth2, який можна використовувати для зв'язку з API Wink та TripPay.
+
+Ось кроки для створення автентифікованого сеансу.
+
+**Крок 1**Отримати токен доступу на етапі підготовки або в нашому робочому середовищі:
+
+Найімовірніше, ви працюватимете з потужною бібліотекою OAuth2 для вашої мови, яка виконає всю важку роботу за вас.
+Наші приклади продемонструють найпростіше використання з командного рядка за допомогою`curl`.
+
+### Постановка
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Виробництво
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Це поверне токен доступу разом з іншими даними відповіді OAuth2:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Коли ви здійснюєте виклик до будь-якої з наших кінцевих точок, додайте до заголовка наступне:
+
+* `Wink-Version`=`2.0`Найновіші -*Дивіться нашу документацію API для інших доступних версій.*
+* `Authentication`=`Bearer: ${access_token}` *Вставте свій токен доступу.*
+
+:::tip
+Ви можете протестувати всі наші API, не написавши жодного рядка коду перед початком роботи.
+
+Отримайте «Ідентифікатор клієнта» та «Секретний ключ» з одного з ваших додатків і перейдіть до будь-якого з наших[API](/developers/apis).
+:::
+

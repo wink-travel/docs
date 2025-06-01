@@ -1,0 +1,131 @@
+---
+title: Setup
+description: >-
+  Artikel ini menunjukkan kepada anda cara untuk menyediakan dengan cepat
+  sebagai pembangun dan mula menguji API kami pada Wink.
+sidebar:
+  order: 1
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+Artikel ini menunjukkan kepada anda cara untuk menyediakan dengan cepat sebagai pembangun dan mula menguji API kami pada Wink.
+
+:::nota
+Ujian hendaklah sentiasa berlaku dalam diri kita [persekitaran pementasan](/getting-started/environments). Terdapat lebih sedikit data di sana tetapi anda bebas untuk menguji seberapa banyak yang anda mahu tanpa mengenakan persekitaran pengeluaran.
+
+Setelah anda bersedia untuk disiarkan secara langsung, kami akan memperakui akaun anda dan aplikasi anda dan anda boleh melancarkan dalam persekitaran pengeluaran kami.
+:::
+
+Ikuti langkah ini:
+
+<Steps>
+  1. [Daftar](/user/register) akaun pengguna anda di Wink
+  2. Buat a [akaun ejen pelancongan](/travel-agent/what-is-agent) atau an [akaun gabungan](/studio/what-is-studio).
+  3. [Buat Aplikasi](/developer/applications) di mana anda mengaitkannya dengan akaun yang anda buat dalam Langkah 2.
+  4. Sebaik sahaja anda telah mencipta anda `Application`, simpan klien-id dan rahsia pelanggan di tempat yang selamat.
+</Steps>
+
+
+## CDN
+
+Di Wink, kami menggunakan Cloudinary untuk semua aset imej dan video kami. Apabila anda mengakses inventori perjalanan kami, anda akan mempunyai akses penuh kepada semua ciri lanjutan Cloudinary.
+
+kami `cloud_name` ialah  `traveliko`.
+
+### Berawan
+
+* [Bermula](https://cloudinary.com/documentation/dev_kickstart)
+* [SDK](https://cloudinary.com/documentation/cloudinary_sdks)
+* [Berawan pada GitHub](https://github.com/cloudinary)
+* [Tutorial Video](https://cloudinary.com/documentation/cloudinary_sdks_tutorials)
+
+### Contoh
+
+Untuk setiap jenis inventori perjalanan yang kami sokong, akan terdapat tatasusunan JSON bersarang dipanggil `multimedias`. JSON untuk entri multimedia kelihatan seperti ini:
+
+```json {3}
+{
+  "multimediaIdentifier": "multimedia-1",
+  "identifier": "partners/radisson_blu_logo",
+  "type": "IMAGE",
+  "width": "1024",
+  "height": "768",
+  "category": "1",
+  "descriptions": [
+    {
+      "name": "Lobby",
+      "description": "Picture of the lobby",
+      "language": "en"
+    }
+  ],
+  "lifestyleType": "LIFESTYLE_BUSINESS",
+  "attribution": [
+    {
+      "url": "https://www.hilton.com",
+      "name": "Hilton"
+    }
+  ]
+}
+```
+
+Baris yang diserlahkan di atas menunjukkan ID unik Cloudinary `partners/radisson_blu_logo`. Itu sahaja yang anda perlukan untuk mendapatkan semula imej dalam sebarang format, kualiti dan saiz yang anda mahukan.
+
+## Menguji
+
+Pergi ke kami [API](/developer/apis) bahagian dan pilih API yang anda mahu gunakan.
+
+### dokumen API
+
+Tapak dokumentasi kami disediakan dengan cara yang anda boleh menjalankan arahan API dari dalam tapak.
+
+Dalam contoh ini, anda mahu menggunakan `Search Lookups (OAuth2)` Panggilan API.
+
+:::tip\[Petua Pro]
+Untuk kemudahan penggunaan, kami mengesyorkan agar penyepadu menggunakan titik akhir yang kami tetapkan sebagai `OAuth2`. Titik akhir tersebut tahu menjangkakan pemanggil API dan sudah mengetahui akaun yang anda gunakan supaya anda tidak perlu menentukan `companyIdentifier` dalam URL anda.
+:::
+
+<Steps>
+  1. Gunakan [API Carian](https://docs.wink.travel/lookup) untuk mendapatkan semula destinasi atau hotel.
+  2. Dalam bar navigasi kiri, klik pada `Authentication`.
+  3. Masukkan id pelanggan dan rahsia pelanggan anda dan klik butang `Get TOKEN` butang.
+  4. Jika bukti kelayakan anda sah, anda akan melihat bahawa kunci API anda telah digunakan.
+  5. Anda kini boleh menguji titik akhir carian.
+</Steps>
+
+
+<figure>
+  <CloudinaryImage width="700" height="265" resize="scale" quality="best" alt="Carian titik akhir API" src="academy/lookup-api-call" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Contoh Carian Carian (OAuth2)*</figcaption>
+</figure>
+
+
+### Posmen
+
+Anda boleh melakukan perkara yang sama dengan Posmen.
+
+<Steps>
+  1. Muat turun [Posmen](https://www.postman.com/downloads).
+  2. klik pada `Download OpenAPI spec` dari atas [API Carian](https://docs.wink.travel/lookup) muka surat.
+  3. Import ia ke dalam Posmen.
+  4. Jika anda mengimportnya sebagai koleksi baharu dipanggil `Wink API`, klik pada elipsis mendatar (3 titik) di sebelah nama koleksi dan klik `Edit`.
+  5. Dalam `Authorization tab`, tetapkan `Auth type` kepada OAuth2.
+  6. Tetapkan medan `Add auth data to` kepada `Request headers`.
+  7. Tetapkan medan `Header prefix` kepada `Bearer`.
+  8. Tetapkan medan `Token Name` kepada apa sahaja yang anda mahu namakan token anda yang disimpan dalam Posmen. Cth. Pementasan Kejap.
+  9. Tetapkan medan `Grant type` kepada `Client Credentials`.
+  10. Tetapkan medan `Access token URL` ke https://staging-iam.wink.travel/oauth2/token.
+  11. Tetapkan medan `Client ID` kepada ID Pelanggan yang dijana oleh apl anda.
+  12. Tetapkan medan `Client Secret` kepada Rahsia Pelanggan yang dijana oleh apl anda.
+  13. Tetapkan medan `Scope` kepada `inventory.read inventory.write inventory.remove`. Itu semua skop yang anda perlukan untuk Wink.
+  14. Tetapkan medan `Client Authentication` kepada `Send as Basic Auth header`.
+  15. Klik pada `Get New Access Token` butang untuk mendapatkan semula token anda dan menyimpannya.
+  16. Untuk semua panggilan API di bawah koleksi Wink API, pastikan tab pengesahan tertera `Inherit auth from parent` jadi ia termasuk token anda dengan setiap panggilan.
+</Steps>
+
+
+:::tip\[Petua Pro]
+Adalah disyorkan untuk menjadikan domain pelayan, ID pelanggan dan pelanggan rahsia menjadi pembolehubah persekitaran. Dengan cara itu anda boleh menukar antara persekitaran pementasan dan pengeluaran dengan mudah dan menggunakan semula semua operasi yang telah anda buat.
+:::
+

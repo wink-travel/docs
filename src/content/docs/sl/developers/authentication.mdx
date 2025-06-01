@@ -1,0 +1,68 @@
+---
+title: Authentication
+description: Naučite se overiti z uporabo Winkovega strežnika za avtorizacijo OAuth2.
+sidebar:
+  order: 2
+---
+:::nasvet
+Strežnik za preverjanje pristnosti Wink IAM podpira običajne končne točke OAuth2:
+
+* /oauth2/avtoriziraj
+* /oauth2/žeton
+* /oauth2/introspect
+* /oauth2/preklic
+* /oauth2/userinfo
+  :::
+
+Aplikacija vam ponuja`Client ID`in`Secret Key`da morate ustvariti overjeno sejo OAuth2, ki jo lahko uporabite za komunikacijo z API-ji Wink in TripPay.
+
+Tukaj so koraki za ustvarjanje overjene seje.
+
+**1. korak**Pridobite žeton za dostop na uprizoritvi ali v našem produkcijskem okolju:
+
+Najverjetneje boste za svoj jezik delali z robustno knjižnico OAuth2, ki bo namesto vas opravila vse težko delo.
+Naši primeri bodo prikazali najosnovnejšo uporabo iz ukazne vrstice z uporabo`curl`.
+
+### Priprava
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Produkcija
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+To bo vrnilo žeton za dostop skupaj z drugimi podatki odgovora OAuth2:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Ko pokličete katero koli od naših končnih točk, v glavo vključite naslednje:
+
+* `Wink-Version`=`2.0`Najnovejše -*Za druge razpoložljive različice glejte našo dokumentacijo API-ja.*
+* `Authentication`=`Bearer: ${access_token}` *Vstavite svoj dostopni žeton.*
+
+:::nasvet
+Vse naše API-je lahko preizkusite, ne da bi pred začetkom napisali eno samo vrstico kode.
+
+V eni od svojih aplikacij pridobite »ID stranke« in »tajni ključ« ter se pomaknite do katere koli od naših[API-ji](/developers/apis).
+:::
+

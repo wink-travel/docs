@@ -1,0 +1,70 @@
+---
+title: Authentication
+description: >-
+  Узнайте, как выполнить аутентификацию с помощью сервера авторизации Wink
+  OAuth2.
+sidebar:
+  order: 2
+---
+:::tip
+Сервер аутентификации Wink IAM поддерживает общие конечные точки OAuth2:
+
+* /oauth2/авторизация
+* /oauth2/токен
+* /oauth2/интроспект
+* /oauth2/отозвать
+* /oauth2/userinfo
+  :::
+
+Приложение предоставляет вам`Client ID` и `Secret Key`вам необходимо создать аутентифицированный сеанс OAuth2, который вы можете использовать для взаимодействия с API Wink и TripPay.
+
+Вот шаги для создания аутентифицированного сеанса.
+
+**Шаг 1**. Получите токен доступа на этапе подготовки или в нашей производственной среде:
+
+Скорее всего, вы будете работать с надежной библиотекой OAuth2 для вашего языка, которая выполнит всю тяжелую работу за вас.
+Наши примеры покажут самое простое использование из командной строки с использованием`curl`.
+
+### Постановка
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Производство
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Это вернет токен доступа вместе с другими данными ответа OAuth2:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Когда вы звоните на любую из наших конечных точек, включите в заголовок следующее:
+
+* `Wink-Version`=`2.0` Последний - *Информацию о других доступных версиях см. в нашей документации по API.*
+* `Authentication`=`Bearer: ${access_token}` *Вставьте свой токен доступа.*
+
+:::tip
+Вы можете протестировать все наши API, не написав ни единой строчки кода перед началом работы.
+
+Возьмите «Идентификатор клиента» и «Секретный ключ» из одного из ваших приложений и перейдите к любому из наших[API-интерфейсы](/developers/apis).
+:::
+

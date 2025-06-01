@@ -1,0 +1,69 @@
+---
+title: Authentication
+description: Aflați cum să vă autentificați folosind serverul de autorizare OAuth2 al Wink.
+sidebar:
+  order: 2
+---
+:::tip
+Serverul de autentificare Wink IAM acceptă endpoint-urile OAuth2 comune:
+
+* /oauth2/autorizează
+* /oauth2/jeton
+* /oauth2/introspect
+* /oauth2/revocare
+* /oauth2/informații utilizator
+  :::
+
+O aplicație vă oferă o`Client ID`și`Secret Key`că trebuie să creați o sesiune OAuth2 autentificată pe care o puteți utiliza pentru a comunica cu API-urile Wink și TripPay.
+
+Iată pașii pentru a crea o sesiune autentificată.
+
+**Pasul 1**. Recuperați un token de acces în timpul staging-ului sau în mediul nostru de producție:
+
+Cel mai probabil, veți lucra cu o bibliotecă OAuth2 robustă pentru limba dvs., care va face toată munca grea pentru dvs.
+
+Exemplele noastre vor arăta cea mai elementară utilizare din linia de comandă folosind`curl`.
+
+### Punerea în scenă
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Producție
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Aceasta va returna un token de acces, împreună cu alte date de răspuns OAuth2:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Când efectuați un apel către oricare dintre punctele noastre finale, includeți următoarele în antet:
+
+* `Wink-Version`=`2.0`Cel mai recent -*Consultați documentația noastră API pentru alte versiuni disponibile.*
+* `Authentication`=`Bearer: ${access_token}` *Introduceți token-ul de acces.*
+
+:::sfat
+Puteți testa toate API-urile noastre fără a scrie o singură linie de cod înainte de a începe.
+
+Obțineți un „ID de client” și o „Cheie secretă” dintr-una dintre aplicațiile dvs. și navigați la oricare dintre aplicațiile noastre[API-uri](/developers/apis).
+:::
+

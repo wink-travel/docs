@@ -1,0 +1,131 @@
+---
+title: Setup
+description: >-
+  Tässä artikkelissa näytetään, kuinka pääset nopeasti kehittäjäksi ja voit
+  aloittaa API-rajapintojemme testaamisen Winkissä.
+sidebar:
+  order: 1
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+Tässä artikkelissa näytetään, kuinka pääset nopeasti kehittäjäksi ja aloitat API-rajapintojemme testaamisen Winkissä.
+
+:::huomautus
+Testauksen tulisi aina tapahtua meidän[lavastusympäristö](/getting-started/environments)Siellä on paljon vähemmän dataa, mutta voit testata niin paljon kuin haluat rajoittamatta tuotantoympäristöä.
+
+Kun olet valmis julkaisemaan sovelluksesi, sertifioimme tilisi ja sovelluksesi, ja voit julkaista sen tuotantoympäristössämme.
+:::
+
+Noudata näitä ohjeita:
+
+<Steps>
+  1. [Rekisteröidy](/user/register) käyttäjätilisi Winkissä
+  2. Luo [matkatoimiston tili](/travel-agent/what-is-agent) tai [kumppanitili](/studio/what-is-studio).
+  3. [Luo sovellus](/developer/applications) jossa liität sen vaiheessa 2 luomaasi tiliin.
+  4. Kun olet luonut oman `Application`, tallenna asiakastunnus ja asiakkaan salaisuus turvalliseen paikkaan.
+</Steps>
+
+
+## CDN
+
+Winkillä käytämme Cloudinarya kaikissa kuva- ja videoresursseissamme. Kun käytät matkakuvastoamme, saat täyden käyttöoikeuden kaikkiin Cloudinaryn edistyneisiin ominaisuuksiin.
+
+Meidän`cloud_name`on`traveliko`.
+
+### Pilviympäristö
+
+* [Aloittaminen](https://cloudinary.com/documentation/dev_kickstart)
+* [SDK:t](https://cloudinary.com/documentation/cloudinary_sdks)
+* [Cloudinary GitHubissa](https://github.com/cloudinary)
+* [Video-oppaat](https://cloudinary.com/documentation/cloudinary_sdks_tutorials)
+
+### Esimerkki
+
+Jokaiselle tukemallemme matkailuvarastotyypille on sisäkkäinen JSON-taulukko nimeltä`multimedias`Multimediamerkinnän JSON-tiedosto näyttää tältä:
+
+```json {3}
+{
+  "multimediaIdentifier": "multimedia-1",
+  "identifier": "partners/radisson_blu_logo",
+  "type": "IMAGE",
+  "width": "1024",
+  "height": "768",
+  "category": "1",
+  "descriptions": [
+    {
+      "name": "Lobby",
+      "description": "Picture of the lobby",
+      "language": "en"
+    }
+  ],
+  "lifestyleType": "LIFESTYLE_BUSINESS",
+  "attribution": [
+    {
+      "url": "https://www.hilton.com",
+      "name": "Hilton"
+    }
+  ]
+}
+```
+
+Yllä oleva korostettu rivi näyttää Cloudinaryn yksilöllisen tunnuksen`partners/radisson_blu_logo`Se on kaikki mitä tarvitset kuvan hakemiseen missä tahansa muodossa, laadussa ja koossa.
+
+## Testaus
+
+Suuntaa meidän[API-rajapinnat](/developer/apis)osiossa ja valitse API, jonka kanssa haluat työskennellä.
+
+### API-dokumentaatio
+
+Dokumentaatiosivustomme on rakennettu siten, että voit suorittaa API-komentoja sivuston sisältä.
+
+Tässä esimerkissä haluat käyttää`Search Lookups (OAuth2)`API-kutsu.
+
+:::tip\[Pro-vinkki]
+Käytön helpottamiseksi suosittelemme, että integraattorit käyttävät päätepisteitä, jotka olemme määrittäneet`OAuth2`Nuo päätepisteet osaavat odottaa API-kutsujia ja tietävät jo, millä tilillä olet, joten sinun ei tarvitse määrittää`companyIdentifier`URL-osoitteissasi.
+:::
+
+<Steps>
+  1. Käytä [Haku-API](https://docs.wink.travel/lookup) hakeaksesi kohteita tai hotelleja.
+  2. Napsauta vasemmassa navigointipalkissa `Authentication`.
+  3. Syötä asiakastunnuksesi ja asiakkaan salaisuus ja napsauta `Get TOKEN` painiketta.
+  4. Jos tunnistetietosi ovat kelvolliset, näet, että API-avaimesi on otettu käyttöön.
+  5. Voit nyt testata hakupäätepistettä.
+</Steps>
+
+
+<figure>
+  <CloudinaryImage width="700" height="265" resize="scale" quality="best" alt="Haku-API-päätepiste" src="academy/lookup-api-call" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Esimerkkihakuja (OAuth2)*</figcaption>
+</figure>
+
+
+### Postinkantaja
+
+Voit tehdä saman asian Postmanin kanssa.
+
+<Steps>
+  1. Lataa [Postinkantaja](https://www.postman.com/downloads).
+  2. Klikkaa `Download OpenAPI spec` ylhäältä [Haku-API](https://docs.wink.travel/lookup) sivu.
+  3. Tuo se Postmaniin.
+  4. Jos tuot sen uutena kokoelmana nimeltä `Wink API`, napsauta kokoelman nimen vieressä olevaa vaakasuoraa kolmea pistettä (kolme pistettä) ja napsauta `Edit`.
+  5. Sisään `Authorization tab`, aseta `Auth type` OAuth2:een.
+  6. Aseta kenttä `Add auth data to` että `Request headers`.
+  7. Aseta kenttä `Header prefix` että `Bearer`.
+  8. Aseta kenttä `Token Name` mihin tahansa haluat nimetä tallennetun tokenisi Postmanissa. Esim. Wink Staging.
+  9. Aseta kenttä `Grant type` että `Client Credentials`.
+  10. Aseta kenttä `Access token URL` osoitteeseen https://staging-iam.wink.travel/oauth2/token.
+  11. Aseta kenttä `Client ID` asiakastunnukseen, jonka luomisessa sovelluksesi oli mukana.
+  12. Aseta kenttä `Client Secret` asiakassalaisuuteen, jonka luomisessa sovelluksesi oli mukana.
+  13. Aseta kenttä `Scope` että `inventory.read inventory.write inventory.remove`Nuo ovat kaikki Winkille tarvittavat laajuusalueet.
+  14. Aseta kenttä `Client Authentication` että `Send as Basic Auth header`.
+  15. Klikkaa `Get New Access Token` -painiketta noutaaksesi tunnuksesi ja tallentaaksesi sen.
+  16. Varmista, että kaikkien Wink API -kokoelman API-kutsujen kohdalla todennusvälilehdellä lukee `Inherit auth from parent` joten se sisällyttää tokenisi jokaisen kutsun mukana.
+</Steps>
+
+
+:::tip\[Ammattilaisvinkki]
+On suositeltavaa tehdä palvelimen toimialue, asiakastunnus ja asiakkaan salaisuus ympäristömuuttujiksi. Tällä tavoin voit helposti vaihtaa testiympäristön ja tuotantoympäristön välillä ja käyttää uudelleen kaikkia luomiasi toimintoja.
+:::
+

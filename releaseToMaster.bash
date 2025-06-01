@@ -19,6 +19,9 @@ CURRENT_VERSION=$(npx git-changelog-command-line --print-next-version --major-ve
 
 npm version $CURRENT_VERSION
 
+# Translate content
+npm run i18n:all
+
 # Update changelog
 npx git-changelog-command-line -of CHANGELOG.md
 git commit -a -m "docs: :memo: generated changelog"

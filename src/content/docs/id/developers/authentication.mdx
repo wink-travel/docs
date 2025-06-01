@@ -1,0 +1,67 @@
+---
+title: Authentication
+description: Pelajari cara mengautentikasi menggunakan server otorisasi OAuth2 Wink.
+sidebar:
+  order: 2
+---
+:::tip
+Server autentikasi IAM Wink mendukung titik akhir OAuth2 umum:
+
+* /oauth2/otorisasi
+* /oauth2/token
+* /oauth2/introspeksi
+* /oauth2/cabut
+* /oauth2/infopengguna
+  :::
+
+Aplikasi memberi Anda`Client ID` Dan `Secret Key`bahwa Anda perlu membuat sesi OAuth2 terautentikasi yang dapat Anda gunakan untuk berkomunikasi dengan API Wink dan TripPay.
+
+Berikut ini langkah-langkah untuk membuat sesi yang diautentikasi.
+
+**Langkah 1**. Ambil token akses di lingkungan pementasan atau produksi kami:
+
+Kemungkinan besar, Anda akan bekerja dengan pustaka OAuth2 yang tangguh untuk bahasa Anda, yang akan melakukan semua pekerjaan berat untuk Anda.
+Contoh kami akan menunjukkan penggunaan paling dasar dari baris perintah menggunakan`curl`.
+
+### Memanggungkan
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Produksi
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Ini akan mengembalikan token akses, bersama dengan data respons OAuth2 lainnya:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Saat Anda melakukan panggilan ke salah satu titik akhir kami, sertakan hal berikut di header:
+
+* `Wink-Version`=`2.0` Terbaru - *Lihat dokumen API kami untuk versi lain yang tersedia.*
+* `Authentication`=`Bearer: ${access_token}` *Masukkan token akses Anda.*
+
+:::tip
+Anda dapat menguji semua API kami tanpa menulis satu baris kode pun sebelum memulai.
+
+Ambil 'ID Klien' dan 'Kunci Rahasia' dari salah satu aplikasi Anda dan navigasikan ke salah satu[Lebah](/developers/apis):::
+

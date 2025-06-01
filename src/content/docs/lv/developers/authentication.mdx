@@ -1,0 +1,68 @@
+---
+title: Authentication
+description: 'Uzziniet, kā autentificēties, izmantojot Wink OAuth2 autorizācijas serveri.'
+sidebar:
+  order: 2
+---
+:::tip
+Wink IAM autentifikācijas serveris atbalsta izplatītākos OAuth2 galapunktus:
+
+* /oauth2/authorize
+* /oauth2/token
+* /oauth2/introspekcija
+* /oauth2/atsaukt
+* /oauth2/lietotājainfo
+  :::
+
+Lietojumprogramma nodrošina jūsu`Client ID`un`Secret Key`ka jums ir jāizveido autentificēta OAuth2 sesija, ko varat izmantot saziņai ar Wink un TripPay API.
+
+Šeit ir norādītas autentificētas sesijas izveides darbības.
+
+**1. darbība**Iegūt piekļuves pilnvaru izstrādes vidē vai mūsu ražošanas vidē:
+
+Visticamāk, jūs strādāsiet ar spēcīgu OAuth2 bibliotēku savai valodai, kas visu smago darbu paveiks jūsu vietā.
+Mūsu piemēros būs parādīta visvienkāršākā lietošana no komandrindas, izmantojot`curl`.
+
+### Iestudējums
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### Ražošana
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+Tas atgriezīs piekļuves pilnvaru kopā ar citiem OAuth2 atbildes datiem:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+Veicot zvanu uz jebkuru no mūsu galapunktiem, galvenē iekļaujiet sekojošo:
+
+* `Wink-Version`=`2.0`Jaunākais -*Citas pieejamās versijas skatiet mūsu API dokumentācijā.*
+* `Authentication`=`Bearer: ${access_token}` *Ievietojiet piekļuves pilnvaru.*
+
+:::tip
+Varat pārbaudīt visus mūsu API, neuzrakstot nevienu koda rindiņu, pirms sākat darbu.
+
+Paņemiet “Klienta ID” un “Slepeno atslēgu” no vienas no savām lietotnēm un dodieties uz jebkuru no mūsu[API](/developers/apis).
+:::
+

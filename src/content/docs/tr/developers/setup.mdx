@@ -1,0 +1,131 @@
+---
+title: Setup
+description: >-
+  Bu makale, bir geliştirici olarak nasıl hızlı bir şekilde kurulum yapacağınızı
+  ve Wink'te API'lerimizi test etmeye nasıl başlayacağınızı göstermektedir.
+sidebar:
+  order: 1
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+Bu makale, bir geliştirici olarak nasıl hızlı bir şekilde kurulum yapacağınızı ve Wink'te API'lerimizi test etmeye nasıl başlayacağınızı göstermektedir.
+
+:::not
+Test her zaman bizim tarafımızdan yapılmalıdır[sahneleme ortamı](/getting-started/environments)Orada çok daha az veri var ama üretim ortamına yük olmadan istediğiniz kadar test yapma özgürlüğüne sahipsiniz.
+
+Canlı yayına geçmeye hazır olduğunuzda, hesabınızı ve uygulamanızı onaylayacağız ve üretim ortamımızda başlatabileceksiniz.
+:::
+
+Aşağıdaki adımları izleyin:
+
+<Steps>
+  1. [Kayıt olmak](/user/register) Wink'teki kullanıcı hesabınız
+  2. Bir tane oluştur [seyahat acentesi hesabı](/travel-agent/what-is-agent) veya bir [Ortaklık hesabı](/studio/what-is-studio).
+  3. [Bir Uygulama Oluşturun](/developer/applications) Bunu 2. Adımda oluşturduğunuz hesapla ilişkilendirirsiniz.
+  4. Oluşturduğunuzda `Application`, istemci kimliğini ve istemci sırrını güvenli bir yerde saklayın.
+</Steps>
+
+
+## Kanada
+
+Wink'te tüm görüntü ve video varlıklarımız için Cloudinary'yi kullanıyoruz. Seyahat envanterimize eriştiğinizde, Cloudinary'nin tüm gelişmiş özelliklerine tam erişiminiz olacak.
+
+Bizim `cloud_name`dır`traveliko`.
+
+### Bulutlu
+
+* [Başlarken](https://cloudinary.com/documentation/dev_kickstart)
+* [SDK'lar](https://cloudinary.com/documentation/cloudinary_sdks)
+* [GitHub'da Cloudinary](https://github.com/cloudinary)
+* [Video Eğitimleri](https://cloudinary.com/documentation/cloudinary_sdks_tutorials)
+
+### Örnek
+
+Desteklediğimiz her seyahat envanteri türü için, şu şekilde adlandırılan iç içe geçmiş bir JSON dizisi olacak:`multimedias`Multimedya girişinin JSON'u şu şekilde görünür:
+
+```json {3}
+{
+  "multimediaIdentifier": "multimedia-1",
+  "identifier": "partners/radisson_blu_logo",
+  "type": "IMAGE",
+  "width": "1024",
+  "height": "768",
+  "category": "1",
+  "descriptions": [
+    {
+      "name": "Lobby",
+      "description": "Picture of the lobby",
+      "language": "en"
+    }
+  ],
+  "lifestyleType": "LIFESTYLE_BUSINESS",
+  "attribution": [
+    {
+      "url": "https://www.hilton.com",
+      "name": "Hilton"
+    }
+  ]
+}
+```
+
+Yukarıda vurgulanan satır Cloudinary'nin benzersiz kimliğini gösterir`partners/radisson_blu_logo`İstediğiniz formatta, kalitede ve boyutta görüntüyü almak için ihtiyacınız olan tek şey bu.
+
+## Test
+
+Hadi gelin, bizimkine gidelim[API'ler](/developer/apis)bölümüne gidin ve çalışmak istediğiniz API'yi seçin.
+
+### API belgeleri
+
+Dokümantasyon sitemiz API komutlarını site içerisinden çalıştırabileceğiniz şekilde düzenlenmiştir.
+
+Bu örnekte, şunu kullanmak istersiniz:`Search Lookups (OAuth2)`API çağrısı.
+
+:::tip\[Pro İpucu]
+Kullanım kolaylığı için, entegratörlerin bizim belirlediğimiz uç noktaları kullanmasını öneriyoruz`OAuth2`Bu uç noktalar API çağrıcılarını beklediklerini bilir ve hangi hesapta olduğunuzu zaten bilir, böylece sizin belirtmenize gerek kalmaz`companyIdentifier`URL'lerinizde.
+:::
+
+<Steps>
+  1. Kullanın [Arama API'si](https://docs.wink.travel/lookup) Hedefleri veya otelleri almak için.
+  2. Sol gezinme çubuğunda, üzerine tıklayın `Authentication`.
+  3. İstemci kimliğinizi ve istemci sırrınızı girin ve tıklayın `Get TOKEN` düğme.
+  4. Eğer kimlik bilgileriniz geçerliyse API anahtarınızın uygulandığını göreceksiniz.
+  5. Artık arama uç noktasını test edebilirsiniz.
+</Steps>
+
+
+<figure>
+  <CloudinaryImage width="700" height="265" resize="scale" quality="best" alt="Arama API uç noktası" src="academy/lookup-api-call" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Örnek Arama Aramaları (OAuth2)*</figcaption>
+</figure>
+
+
+### Postacı
+
+Aynı şeyi Postman ile de yapabilirsiniz.
+
+<Steps>
+  1. İndirmek [Postacı](https://www.postman.com/downloads).
+  2. Tıkla `Download OpenAPI spec` en üstten [Arama API'si](https://docs.wink.travel/lookup) sayfa.
+  3. Bunu Postman'e aktarın.
+  4. Bunu yeni bir koleksiyon olarak içe aktardıysanız `Wink API`, koleksiyon adının yanındaki yatay üç noktaya (3 nokta) tıklayın ve tıklayın `Edit`.
+  5. İçinde `Authorization tab`, ayarlayın `Auth type` OAuth2'ye.
+  6. Alanı ayarlayın `Add auth data to` ile `Request headers`.
+  7. Alanı ayarlayın `Header prefix` ile `Bearer`.
+  8. Alanı ayarlayın `Token Name` Postman'de kaydettiğiniz token'ınıza istediğiniz ismi verebilirsiniz. Örn. Wink Staging.
+  9. Alanı ayarlayın `Grant type` ile `Client Credentials`.
+  10. Alanı ayarlayın `Access token URL` https://staging-iam.wink.travel/oauth2/token adresine gidin.
+  11. Alanı ayarlayın `Client ID` Uygulamanızın oluşturulmasına yardımcı olduğu İstemci Kimliğine.
+  12. Alanı ayarlayın `Client Secret` Uygulamanızın oluşturulmasına yardımcı olduğu İstemci Sırrı'na.
+  13. Alanı ayarlayın `Scope` ile `inventory.read inventory.write inventory.remove`Wink için ihtiyacınız olacak tüm dürbünler bunlar.
+  14. Alanı ayarlayın `Client Authentication` ile `Send as Basic Auth header`.
+  15. Tıkla `Get New Access Token` Token'ınızı almak ve kaydetmek için düğmeye basın.
+  16. Wink API koleksiyonu altındaki tüm API çağrıları için kimlik doğrulama sekmesinin şunu söylediğinden emin olun: `Inherit auth from parent` yani her çağrıda token'ınız ekleniyor.
+</Steps>
+
+
+:::tip\[Pro İpucu]
+Sunucu etki alanını, istemci kimliğini ve istemci sırrını ortam değişkenlerine dönüştürmeniz önerilir. Bu şekilde, hazırlama ve üretim ortamları arasında kolayca geçiş yapabilir ve oluşturduğunuz tüm işlemleri yeniden kullanabilirsiniz.
+:::
+

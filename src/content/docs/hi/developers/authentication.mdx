@@ -1,0 +1,66 @@
+---
+title: Authentication
+description: विंक के OAuth2 प्राधिकरण सर्वर का उपयोग करके प्रमाणीकरण करना सीखें।
+sidebar:
+  order: 2
+---
+:::टिप
+विंक IAM प्रमाणीकरण सर्वर सामान्य OAuth2 एंडपॉइंट का समर्थन करता है:
+
+* /oauth2/अधिकृत करें
+* /oauth2/टोकन
+* /oauth2/आत्मनिरीक्षण
+* /oauth2/निरस्त करें
+* /oauth2/userinfo
+  :::
+
+एक एप्लीकेशन आपको एक`Client ID` और `Secret Key`आपको एक प्रमाणीकृत OAuth2 सत्र बनाने की आवश्यकता है जिसका उपयोग आप विंक और ट्रिपपे एपीआई के साथ संचार करने के लिए कर सकते हैं।
+
+प्रमाणीकृत सत्र बनाने के लिए चरण यहां दिए गए हैं।
+
+**स्टेप 1**स्टेजिंग पर या हमारे उत्पादन वातावरण में एक एक्सेस टोकन प्राप्त करें:
+
+आप, सबसे अधिक संभावना है, अपनी भाषा के लिए एक मजबूत OAuth2 लाइब्रेरी के साथ काम कर रहे होंगे, जो आपके लिए सभी भारी काम करेगा। हमारे उदाहरण कमांड लाइन का उपयोग करके सबसे बुनियादी उपयोग दिखाएंगे`curl`.
+
+### मचान
+
+```bash
+
+curl -X POST https://staging-iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+### उत्पादन
+
+```bash
+
+curl -X POST https://iam.wink.travel/oauth2/token \
+  -H "Content-Type: application/x-www-form-urlencoded" \
+  -d "grant_type=client_credentials" \
+  -d "client_id=<YOUR_CLIENT_ID>" \
+  -d "client_secret=<YOUR_SECRET_KEY>"
+
+```
+
+यह अन्य OAuth2 प्रतिक्रिया डेटा के साथ एक एक्सेस टोकन लौटाएगा:
+
+```json
+{
+  "access_token": "abc123"
+}
+```
+
+जब आप हमारे किसी भी एंडपॉइंट पर कॉल करें, तो हेडर में निम्नलिखित शामिल करें:
+
+* `Wink-Version`=`2.0` नवीनतम - *अन्य उपलब्ध संस्करणों के लिए हमारे API दस्तावेज़ देखें.*
+* `Authentication`=`Bearer: ${access_token}` *अपना एक्सेस टोकन डालें.*
+
+:::टिप
+आप आरंभ करने से पहले एक भी लाइन कोड लिखे बिना हमारे सभी API का परीक्षण कर सकते हैं।
+
+अपने किसी ऐप से 'क्लाइंट आईडी' और 'सीक्रेट की' लें और हमारे किसी भी ऐप पर जाएँ[शहद की मक्खी](/developers/apis). :::
+

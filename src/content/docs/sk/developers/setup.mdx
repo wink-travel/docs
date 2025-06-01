@@ -1,0 +1,131 @@
+---
+title: Setup
+description: >-
+  Tento článok vám ukáže, ako sa rýchlo nastaviť ako vývojár a začať testovať
+  naše API na Winku.
+sidebar:
+  order: 1
+---
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '../../../components/cloudinary-image.astro';
+
+Tento článok vám ukáže, ako sa rýchlo nastaviť ako vývojár a začať testovať naše API na Winku.
+
+:::note
+Testovanie by malo vždy prebiehať v našich[prostredie pre testovanie](/getting-started/environments)Je tam oveľa menej údajov, ale môžete testovať toľko, koľko chcete, bez toho, aby ste zaťažovali produkčné prostredie.
+
+Keď budete pripravení na spustenie, certifikujeme váš účet a vašu aplikáciu a môžete ich spustiť v našom produkčnom prostredí.
+:::
+
+Postupujte podľa týchto krokov:
+
+<Steps>
+  1. [Registrovať](/user/register) váš používateľský účet na Wink
+  2. Vytvoriť [účet cestovnej kancelárie](/travel-agent/what-is-agent) alebo [partnerský účet](/studio/what-is-studio).
+  3. [Vytvoriť aplikáciu](/developer/applications) kde ho prepojíte s účtom, ktorý ste vytvorili v kroku 2.
+  4. Keď si vytvoríte svoj `Application`, uložte si ID klienta a tajný kód klienta na bezpečnom mieste.
+</Steps>
+
+
+## CDN
+
+Vo Wink používame Cloudinary pre všetky naše obrazové a video materiály. Keď získate prístup k nášmu inventáru cestovných materiálov, budete mať plný prístup ku všetkým pokročilým funkciám Cloudinary.
+
+Naše`cloud_name`je`traveliko`.
+
+### Oblačnosť
+
+* [Začíname](https://cloudinary.com/documentation/dev_kickstart)
+* [SDK](https://cloudinary.com/documentation/cloudinary_sdks)
+* [Cloudinary na GitHube](https://github.com/cloudinary)
+* [Videonávody](https://cloudinary.com/documentation/cloudinary_sdks_tutorials)
+
+### Príklad
+
+Pre každý typ cestovného inventára, ktorý podporujeme, bude existovať vnorené pole JSON s názvom`multimedias`JSON pre multimediálny záznam vyzerá takto:
+
+```json {3}
+{
+  "multimediaIdentifier": "multimedia-1",
+  "identifier": "partners/radisson_blu_logo",
+  "type": "IMAGE",
+  "width": "1024",
+  "height": "768",
+  "category": "1",
+  "descriptions": [
+    {
+      "name": "Lobby",
+      "description": "Picture of the lobby",
+      "language": "en"
+    }
+  ],
+  "lifestyleType": "LIFESTYLE_BUSINESS",
+  "attribution": [
+    {
+      "url": "https://www.hilton.com",
+      "name": "Hilton"
+    }
+  ]
+}
+```
+
+Zvýraznený riadok vyššie zobrazuje jedinečné ID služby Cloudinary.`partners/radisson_blu_logo`To je všetko, čo potrebujete na načítanie obrázka v akomkoľvek formáte, kvalite a veľkosti, ktorú chcete.
+
+## Testovanie
+
+Zamierte k našim[API](/developer/apis)a vyberte si API, s ktorým chcete pracovať.
+
+### Dokumentácia k API
+
+Naša stránka s dokumentáciou je nastavená tak, aby ste mohli spúšťať príkazy API priamo z nej.
+
+V tomto príklade chcete použiť`Search Lookups (OAuth2)`Volanie API.
+
+:::tip\[Tip od profesionála]
+Pre jednoduchšie použitie odporúčame integrátorom používať koncové body, ktoré označujeme ako`OAuth2`Tieto koncové body vedia, že majú očakávať volajúce rozhrania API a už vedia, na ktorom účte sa nachádzate, takže nemusíte špecifikovať`companyIdentifier`vo vašich URL adresách.
+:::
+
+<Steps>
+  1. Použite [Vyhľadávacie rozhranie API](https://docs.wink.travel/lookup) na vyhľadanie destinácií alebo hotelov.
+  2. V ľavom navigačnom paneli kliknite na `Authentication`.
+  3. Zadajte svoje ID klienta a tajný kľúč klienta a kliknite na `Get TOKEN` tlačidlo.
+  4. Ak sú vaše prihlasovacie údaje platné, uvidíte, že váš kľúč API bol použitý.
+  5. Teraz môžete otestovať koncový bod vyhľadávania.
+</Steps>
+
+
+<figure>
+  <CloudinaryImage width="700" height="265" resize="scale" quality="best" alt="Koncový bod vyhľadávacieho rozhrania API" src="academy/lookup-api-call" errorImage="noimage_opaque_nyrtl0.png" />
+
+  <figcaption>*Ukážky vyhľadávaní (OAuth2)*</figcaption>
+</figure>
+
+
+### Poštár
+
+To isté môžete urobiť s Postmanom.
+
+<Steps>
+  1. Stiahnuť [Poštár](https://www.postman.com/downloads).
+  2. Kliknite na `Download OpenAPI spec` z vrcholu [Vyhľadávacie rozhranie API](https://docs.wink.travel/lookup) stránka.
+  3. Importujte to do Postmana.
+  4. Ak ste ho importovali ako novú kolekciu s názvom `Wink API`, kliknite na vodorovnú elipsu (3 bodky) vedľa názvu kolekcie a kliknite na `Edit`.
+  5. V `Authorization tab`, nastavte `Auth type` do OAuth2.
+  6. Nastavte pole `Add auth data to` k `Request headers`.
+  7. Nastavte pole `Header prefix` k `Bearer`.
+  8. Nastavte pole `Token Name` na akékoľvek meno uloženého tokenu v Postmane. Napr. Wink Staging.
+  9. Nastavte pole `Grant type` k `Client Credentials`.
+  10. Nastavte pole `Access token URL` na https://staging-iam.wink.travel/oauth2/token.
+  11. Nastavte pole `Client ID` k ID klienta, ktoré vaša aplikácia pomohla vygenerovať.
+  12. Nastavte pole `Client Secret` k tajnému kľúču klienta, ktorý vaša aplikácia pomohla vygenerovať.
+  13. Nastavte pole `Scope` k `inventory.read inventory.write inventory.remove`To sú všetky puškohľady, ktoré budete potrebovať pre Wink.
+  14. Nastavte pole `Client Authentication` k `Send as Basic Auth header`.
+  15. Kliknite na `Get New Access Token` tlačidlo na načítanie a uloženie tokenu.
+  16. Pre všetky volania API v rámci kolekcie Wink API sa uistite, že na karte overenia je uvedené `Inherit auth from parent` takže pri každom hovore obsahuje váš token.
+</Steps>
+
+
+:::tip\[Tip pre profesionálov]
+Odporúča sa uviesť doménu servera, ID klienta a tajný kľúč klienta do premenných prostredia. Takto môžete jednoducho prepínať medzi testovacím a produkčným prostredím a znovu použiť všetky vytvorené operácie.
+:::
+

@@ -1,0 +1,226 @@
+---
+title: Pagsasama sa TripPay
+description: >-
+  Ang artikulong ito ay naglalaman ng isang buong halimbawa kung paano isama at
+  hayaan ang TripPay na pangasiwaan ang pagbabayad para sa iyo.
+sidebar:
+  order: 4
+---
+import { Steps } from '@astrojs/starlight/components';
+
+Ang artikulong ito ay naglalaman ng isang end-to-end na halimbawa ng kung paano isama sa TripPay.
+
+Inirerekomenda na nabasa mo na ang:
+
+* [Pagbabayad > Pagma-map](/payment/mapping).
+* [Pagbabayad > Pagsasama](/payment/integration).
+* [Web Component ng Pagbabayad](/developers/web-components/#payment).
+* [API ng Pagbabayad](/developers/apis/#payment-api). *Basahin ang seksyon sa `Create payable contracts`*
+
+Narito ang mga hakbang upang matagumpay na magamit ang TripPay upang magbayad para sa isang booking:
+
+<Steps>
+  1. Siguraduhin na ang mga benepisyaryo na iyong binanggit sa kontrata sa pagpapareserba ay na-map.
+  2. Hayaang piliin ng manlalakbay ang imbentaryo na gusto niyang i-book at ihanda silang magbayad.
+  3. Lumikha ng a `payable contract` gamit ang TripPay na naglalaman ng mga item na i-book.
+  4. Hayaang magbayad ang manlalakbay gamit ang TripPay Web Component.
+</Steps>
+
+
+Ipinapalagay namin na nakumpleto mo na `Step 1` at `Step 2` at handang ipaalam sa TripPay ang tungkol sa booking.
+
+## Lumikha ng kontrata na maaaring bayaran
+
+:::tandaan
+Pumunta sa Payment API upang matuto nang higit pa tungkol sa mga kinakailangan para gumawa ng kontratang babayaran.
+:::
+
+### Kahilingan
+
+Narito ang isang sample na kahilingan ng JSON na kasama ang lahat ng kailangan mong gawin para sa iyong unang babayarang kontrata.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Paliwanag:
+
+Hindi namin ipapaliwanag ang bawat punto ng data dito dahil sakop na ang mga ito sa mga doc ng API.
+
+* Mga linya: **2 - 7** ay ang user na responsable para sa booking. Mayroong dalawang uri ng booker:
+  * Manlalakbay.
+  * Ahente sa paglalakbay.
+* Mga linya: **8 - 9** ay ang TripPay account na nagpapadali sa booking. Maaari itong maging:
+  * Ang iyong TripPay integrator account.
+  * Kung nagpapatakbo ka ng isang kaakibat na network, maaari itong maging kaakibat mo.
+* Gumamit ng a `traceId` upang igrupo ang maraming booking sa maraming supplier. Sa ganitong paraan maaari mong kanselahin ang isang group booking.
+* `redirectUrl` nagpapaalam sa TripPay kung aling pahina ang ire-redirect pagkatapos makumpleto ang pagbabayad.
+* `sourceUrl` ay ang site / app kung saan naganap ang booking.
+
+Ang `contractList` Ang array ay naglalaman ng (mga) item na gustong bilhin ng manlalakbay mula sa maraming supplier. Ang bawat item ay naglalaman ng:
+
+* Ang `identifier` ay isang wastong UUID na iyong nabuo.
+* Ang supplier kung saan mo gustong mag-book ng imbentaryo.
+* Ang imbentaryo na gusto mong i-book mula sa supplier na iyon. Ang lahat ng ito ay tinukoy sa nested array `contractItemList`.
+* Bawat entry sa ilalim `contractItemList` naglalaman ng:
+  * **Guest user** Ito ang user na darating sa lugar.
+  * **Pangalan sa Ingles** Ang pangalan ng imbentaryo sa wikang Ingles.
+  * **Paglalarawan sa Ingles** Isang mas mahabang paglalarawan ng imbentaryo sa wikang Ingles.
+  * **Presyo** Ang presyo ng item.
+  * **Itinerary** Kailan dapat i-book ang item na ito.
+  * **Uri ng pagpepresyo** Paano kinakalkula ang presyo.
+  * **Uri ng imbentaryo** Anong uri ng imbentaryo ito.
+  * **Mababayaran** Kailan dapat singilin ang manlalakbay. *Kasalukuyan lang naming sinusuportahan ang mga agarang opsyon sa pagbabayad.*
+  * **Patakaran** Isama ang mga patakaran sa pagkansela.
+  * **Listahan ng pang-araw-araw na rate** Kung ang item na ini-book ay isang kuwarto, maaari mong piliing isama kung magkano ang halaga ng kuwartong iyon para sa bawat gabing pananatili ng bisita.
+  * **Mga benepisyaryo** Isama kung aling (mga) TripPay account ang dapat ilaan kung anong halaga ng (mga) presyo ng item. *Ang mga naayos / Porsiyento ay sinusuportahan.*
+
+:::tandaan
+Sa halimbawa ng JSON sa itaas, mayroon kaming 3 benepisyaryo:
+
+* 1.5% ang inilaan sa platform na nagpadali sa booking. *hal. Kumindat*
+* 9.85% ang inilaan sa kaanib bilang komisyon. *hal. Kim Kardashian*
+* 88.65% ang inilaan sa supplier para sa booking ng kuwarto. *hal. Hilton*
+
+Kapag tumugon ang TripPay na may bayad na kontrata, mapapansin mong nag-inject ito ng sarili nitong benepisyaryo sa 4.0%.
+:::
+
+### Tugon
+
+Kapag tumugon ang TripPay sa iyong kahilingan, magiging ganito ang hitsura:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+I-save ang `id` sa linya 3. Gagamitin mo ito upang mag-inject sa bahagi ng web ng TripPay.
+
+## I-embed ang TripPay
+
+:::tandaan
+Tiyaking na-load mo muna ang aming mga istilo at Javascript.
+:::
+
+Sa puntong ito, handa ka nang i-embed ang `Payment Web Component` sa iyong website at ipakita ito sa gumagamit.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+Hanggang sa pagsasama, iyon lang ang kailangan mong gawin. Ang lahat ng mabibigat na trabaho ay ginagawa ng TripPay mula dito.
+
