@@ -61,26 +61,26 @@ Suma częściowa = 1000 - 15 = 985
 
 **3**.**Fakturowanie i płatność**
 
-3.1**Fakturowanie miesięczne:**&#x57;ink wystawi poprawną i dokładną miesięczną fakturę dla agenta podróży za opłaty rezerwacyjne naliczone w poprzednim miesiącu. Agent podróży jest zobowiązany do rozliczenia tej faktury w ramach warunków płatności określonych na fakturze.
+3.1**Fakturowanie miesięczne:**&#x57;ink wystawi Agentowi Podróży prawidłową i dokładną miesięczną fakturę za Opłaty Rezerwacyjne naliczone w poprzednim miesiącu. Agent Podróży jest zobowiązany do rozliczenia tej faktury w ramach warunków płatności określonych na fakturze.
 
-3.2**Metoda płatności:**&#x50;łatności na rzecz Wink należy dokonywać za pomocą metody płatności określonej na fakturze. Wszelkie koszty związane z przelewem płatności są odpowiedzialnością Agenta Podróży.
+3.2**Metoda płatności:**&#x50;łatności na rzecz Wink należy dokonywać za pomocą metody płatności określonej na fakturze. Wszelkie koszty związane z przelewem płatności są odpowiedzialnością agenta podróży.
 
-3.3**Opóźnienia w płatnościach:**&#x57; przypadku opóźnienia płatności, Wink zastrzega sobie prawo do naliczenia odsetek od zaległej kwoty w wysokości 5% miesięcznie lub maksymalnej stawki dozwolonej przez prawo, w zależności od tego, która jest niższa. Ponadto, jeśli Agent Podróży spóźnia się z zapłatą Dostawcy Zakwaterowania zgodnie z warunkami Oddzielnej Umowy, Wink zastrzega sobie prawo do zawieszenia dostępu do Usługi do czasu uregulowania wszystkich zaległych płatności zarówno na rzecz Wink, jak i Dostawcy Zakwaterowania. Jednakże, jeśli w fakturze przesłanej przez Wink znajdują się jakiekolwiek błędy lub pomyłki, Agent Podróży będzie zobowiązany jedynie do zapłaty prawidłowej i dokładnej części faktury i nie będzie podlegał żadnym odsetkom ani karom za niezapłacenie nieprawidłowej części faktury.
+3.3**Opóźnienia w płatnościach:**&#x57; przypadku opóźnienia płatności Wink zastrzega sobie prawo do naliczenia odsetek od zaległej kwoty w wysokości 5% miesięcznie lub maksymalnej stawki dozwolonej przez prawo, w zależności od tego, która jest niższa. Ponadto, jeśli Agent Podróży spóźnia się z zapłatą Dostawcy Zakwaterowania zgodnie z warunkami Oddzielnej Umowy, Wink zastrzega sobie prawo do zawieszenia dostępu do Usługi do czasu uregulowania wszystkich zaległych płatności zarówno na rzecz Wink, jak i Dostawcy Zakwaterowania. Jednakże, jeśli w fakturze przesłanej przez Wink znajdują się jakiekolwiek błędy lub pomyłki, Agent Podróży będzie zobowiązany jedynie do zapłaty prawidłowej i dokładnej części faktury i nie będzie podlegał żadnym odsetkom ani karom za niezapłacenie nieprawidłowej części faktury.
 
 **4. Role i obowiązki**
 
 4.1**Obowiązki agenta podróży:**
 
-* Zapewnić terminowy pobór płatności od Gości, przestrzegając warunków określonych w punkcie 2.1.
+* Zapewnić terminowe pobieranie płatności od Gości, przestrzegając warunków określonych w punkcie 2.1.
 * Przed przekazaniem Dostawcom Zakwaterowania kwoty netto należy odliczyć odpowiednią Opłatę Rezerwacyjną i Prowizję zgodnie z Odrębną Umową.
 * Faktury Wink za Opłaty Rezerwacyjne należy regulować niezwłocznie, zgodnie z warunkami określonymi w Sekcji 3.1.
-* Aktywne zarządzanie i rozwiązywanie wszelkich sporów związanych z rezerwacjami lub płatnościami, zapewnienie komunikacji z firmą Wink w celu skutecznego rozwiązywania problemów.
+* Aktywnie zarządzaj i rozwiązuj wszelkie spory związane z rezerwacjami lub płatnościami, zapewniając stałą komunikację z firmą Wink w celu skutecznego rozwiązywania problemów.
 
 4.2**Obowiązki Wink:**
 
 * Wystawiać dokładne i terminowe faktury miesięczne za Opłaty Rezerwacyjne zgodnie ze szczegółowymi informacjami podanymi w Sekcji 3.1.
 * Zapewnij agentowi turystycznemu ciągły dostęp do platformy Wink w celu przetwarzania rezerwacji i zarządzania płatnościami.
-* Pomagaj agentowi podróży w rozwiązywaniu sporów związanych z płatnościami, dostarczając niezbędnych danych dotyczących transakcji i udzielając w razie potrzeby wsparcia.
+* Pomagaj agentowi podróży w rozwiązywaniu sporów związanych z płatnościami, dostarczając mu niezbędnych danych dotyczących transakcji i udzielając w razie potrzeby wsparcia.
 
 **5. Konwersja walut**
 

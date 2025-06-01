@@ -16,7 +16,7 @@ Tvarkant asmens duomenis, Bendrovė gali gauti jūsų asmens duomenis iš įvair
 
 Pagal šią Privatumo politiką Bendrovė privalo rinkti, kaupti, naudoti ir tvarkyti šiuos asmens duomenis:
 
-(1) Jūsų vardas ir pavardė, įskaitant susijusią informaciją arba jūsų atstovo informaciją (jei susisiekiate su mumis juridinio asmens vardu), kuri gali apimti jūsų tapatybės dokumentą.
+(1) Jūsų vardas ir pavardė, įskaitant su jumis susijusią informaciją arba jūsų atstovo informaciją (jei su mumis susisiekiate juridinio asmens vardu), kuri gali apimti jūsų tapatybės dokumentą.
 
 (2) Kontaktinė informacija, pvz., telefono numeris, el. pašto adresas arba socialinių tinklų paskyros informacija.
 

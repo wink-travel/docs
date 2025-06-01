@@ -31,7 +31,7 @@ Vam construir[WinkLinks](https://i.trvl.as/); un gestor d'enllaços completament
 Defineix`Intelligent`a 🟢 al teu[Configuració](/link-manager/settings)per utilitzar aquesta funció.
 :::
 
-Si compartiu un enllaç des d'un lloc web que admet`rich`/`oEmbed`contingut, el vostre enllaç cobra vida a WinkLinks.
+Si compartiu un enllaç d'un lloc web que admet`rich`/`oEmbed`contingut, el vostre enllaç cobra vida a WinkLinks.
 
 Llocs web compatibles:
 

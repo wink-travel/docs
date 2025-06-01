@@ -47,7 +47,7 @@ Călătorii corporativi își pot gestiona propriile conturi pe site-ul nostru[p
 
 ## Dezvoltatori
 
-În timp ce am construit această platformă de către și pentru hotelieri... Fiecare linie de cod a fost construită cu scopul specific de a fi reutilizabilă. Echipa noastră de dezvoltatori a construit Wink în speranța că următoarea aplicație de călătorie 🦄 va fi construită pe baza noastră de cod. Navigați la[Dezvoltator](/developers/build-on-wink)pentru a vedea cum te poate sprijini Wink în următoarea ta aventură.
+Deși am construit această platformă de către și pentru hotelieri... Fiecare linie de cod a fost construită cu scopul specific de a fi reutilizabilă. Echipa noastră de dezvoltatori a construit Wink în speranța că următoarea aplicație de călătorie 🦄 va fi construită pe baza noastră de cod. Navigați la[Dezvoltator](/developers/build-on-wink)pentru a vedea cum te poate sprijini Wink în următoarea ta aventură.
 
 ## Alte
 

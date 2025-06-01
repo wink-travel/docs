@@ -14,7 +14,7 @@ Viimeksi päivitetty 30.10.2024
 Alla olevat käyttöehdot koskevat matkatoimistoja, jotka haluavat hankkia ja maksaa varoja itse.
 Tämä on mahdollista vain API:mme kautta ja vain matkatoimistojen toimesta, jotka ovat ilmoittaneet haluavansa tehdä tämän rekisteröitymisprosessin aikana.
 
-Kaikki matkatoimistot voivat edelleen tehdä varauksia matkatoimistoportaalimme kautta omalla tai matkustajan luottokortilla Winkin maksupalvelun kautta. Siksi kaikkien matkatoimistojen on myös hyväksyttävä palveluehdot, joissa Winkin maksupalvelu on rekisteröity kauppias.
+Kaikki matkatoimistot voivat edelleen tehdä varauksia matkatoimistoportaalimme kautta käyttämällä Winkin maksuyhdyskäytävää omalla tai matkustajan luottokortilla. Siksi kaikkien matkatoimistojen on myös hyväksyttävä palveluehdot, joissa Winkin maksuyhdyskäytävä on rekisteröity kauppias.
 
 Nuo ehdot ovat saatavilla alla[Kumppanuusportaali > Palveluehdot](/studio/terms-of-service). :::
 
@@ -94,7 +94,7 @@ Nuo ehdot ovat saatavilla alla[Kumppanuusportaali > Palveluehdot](/studio/terms-
 * 1,5 % varausmaksu Winkistä.
 * Matkatoimistokomissio.
 
-3.3**Nettomaksu:**&#x4D;atkatoimisto maksaa jäljellä olevan nettomaksun kyseiselle majoituspalveluntarjoajalle matkatoimiston ja majoituspalveluntarjoajan välisen erillisen sopimuksen ehtojen mukaisesti. Wink ei ole vastuussa maksujen suorittamisesta majoituspalveluntarjoajalle.
+3.3**Nettomaksu:**&#x4D;atkatoimisto maksaa jäljellä olevan nettomaksun kyseiselle majoituspalveluntarjoajalle matkatoimiston ja majoituspalveluntarjoajan välisen erillisen sopimuksen ehtojen mukaisesti. Wink ei ole vastuussa mistään maksuista majoituspalveluntarjoajalle.
 
 3.4**Erillinen sopimus:**&#x4D;atkatoimistolla on oltava kunkin majoituspalveluntarjoajan kanssa erillinen sopimus, jossa on yksityiskohtaiset maksuehdot. Tämä Winkin ja matkatoimiston välinen sopimus ei sääntele matkatoimiston ja majoituspalveluntarjoajien välistä suhdetta.
 
@@ -112,7 +112,7 @@ Nuo ehdot ovat saatavilla alla[Kumppanuusportaali > Palveluehdot](/studio/terms-
 4.2**Winkin vastuut:**
 
 * Wink ei ole vastuussa majoituspalvelujen tarjoajille suoritettavista maksuista. Matkatoimisto on yksin vastuussa kaikista majoituspalvelujen tarjoajien kanssa suoritettavista taloudellisista tapahtumista.
-* Wink tarjoaa pääsyn Järjestelmään ja varmistaa, että Palvelu on Matkatoimiston saatavilla.
+* Wink tarjoaa pääsyn Järjestelmään ja varmistaa, että Palvelu on Matkatoimiston käytettävissä.
 
 **5. Immateriaalioikeudet**
 
@@ -231,7 +231,7 @@ Nuo ehdot ovat saatavilla alla[Kumppanuusportaali > Palveluehdot](/studio/terms-
 12.3**Vaikutus palveluihin**:
 
 * Palveluiden keskeyttäminen: Jos ylivoimainen este vaikuttaa yrityksesi kykyyn tarjota palveluita matkatoimistolle, kyseiset palvelut keskeytetään tapahtuman ajaksi ilman seuraamuksia. Myös matkatoimiston maksuvelvoitteet, jotka liittyvät kyseisiin palveluihin, keskeytetään tänä aikana.
-* Matkatoimiston velvollisuudet: Matkatoimisto ei ole vastuussa mistään yrityksellesi kuuluvista velvoitteista, joita ei voida täyttää ylivoimaisen esteen vuoksi. Matkatoimiston on kuitenkin jatkettava kaikkien muiden velvoitteidensa täyttämistä, joihin tapahtuma ei suoraan vaikuta.
+* Matkatoimiston velvollisuudet: Matkatoimisto ei ole vastuussa mistään yrityksellesi kuuluvista velvoitteista, joita ei voida täyttää ylivoimaisen esteen vuoksi. Matkatoimiston on kuitenkin jatkettava kaikkien muiden velvoitteidensa täyttämistä, joihin tapahtuma ei ole suoranaisesti vaikuttanut.
 
 12.4**Kesto ja päättyminen**Jos ylivoimainen este jatkuu yli kuusikymmentä (60) päivää, kumpi tahansa osapuoli voi irtisanoa tämän sopimuksen ilmoittamalla siitä kirjallisesti toiselle osapuolelle. Tällaisen irtisanomisen sattuessa kummallakaan osapuolella ei ole toista osapuolta kohtaan mitään vastuuta lukuun ottamatta velvoitteita, jotka ovat syntyneet ennen ylivoimaista estettä.
 

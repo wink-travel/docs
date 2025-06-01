@@ -14,13 +14,13 @@ Huling na-update noong 2024-10-30
 Ang mga tuntunin ng serbisyo sa ibaba ay nalalapat sa mga ahente sa paglalakbay na gustong kumuha at mag-disburse ng mga pondo nang mag-isa.
 Magagawa lang ito sa pamamagitan ng aming API at ng mga travel agent lang na nagsasaad na gusto nilang gawin ito sa panahon ng proseso ng pag-sign up.
 
-Lahat ng travel agent ay makakapag-book pa rin sa pamamagitan ng aming travel agent portal gamit ang payment gateway ng Wink gamit ang sarili nilang credit card o ang credit card ng manlalakbay. Samakatuwid, kailangan ding sumang-ayon ang lahat ng travel agent sa mga tuntunin ng serbisyo kung saan ang gateway ng pagbabayad ni Wink ay ang merchant of record.
+Ang lahat ng mga travel agent ay makakapag-book pa rin sa pamamagitan ng aming portal ng travel agent gamit ang gateway ng pagbabayad ng Wink gamit ang kanilang sarili o ang credit card ng manlalakbay. Samakatuwid, kailangan ding sumang-ayon ang lahat ng travel agent sa mga tuntunin ng serbisyo kung saan ang gateway ng pagbabayad ni Wink ay ang merchant of record.
 
 Ang mga tuntuning iyon ay magagamit sa ilalim [Affiliate Portal > Mga Tuntunin ng Serbisyo](/studio/terms-of-service).
 :::
 
 **WINK PANGKALAHATANG TUNTUNIN AT KONDISYON**\
-**PARA SA MGA TRAVEL AGENT (Merchant of Record)**
+**PARA SA MGA TRAVEL AGENTS (Merchant of Record)**
 
 **PAGITAN:**
 
@@ -107,12 +107,12 @@ Ang mga tuntuning iyon ay magagamit sa ilalim [Affiliate Portal > Mga Tuntunin n
 
 * Ang Travel Agent ang responsable para sa pangongolekta ng mga bayad mula sa mga Bisita.
 * Dapat tiyakin ng Travel Agent ang napapanahon at tumpak na pagbabayad ng Net Payment sa Accommodation Provider alinsunod sa kanilang mga hiwalay na kasunduan.
-* Ang Travel Agent ay may pananagutan para sa anumang mga pagkakamali o pagkakaiba sa pagpoproseso ng pagbabayad at dapat itong ituwid kaagad.
+* Ang Travel Agent ay may pananagutan para sa anumang mga error o pagkakaiba sa pagpoproseso ng pagbabayad at dapat itong ituwid kaagad.
 * Ang Travel Agent ang may pananagutan sa pagbabayad ng buwanang invoice ni Wink para sa Mga Bayad sa Pag-book.
 
 4.2 **Mga Responsibilidad ni Wink:**
 
-* Hindi mananagot ang Wink para sa mga pagbabayad sa Mga Provider ng Accommodation. Ang Travel Agent ay may tanging pananagutan para sa lahat ng mga transaksyong pinansyal sa Mga Provider ng Akomodasyon.
+* Hindi mananagot ang Wink para sa mga pagbabayad sa Mga Provider ng Akomodasyon. Ang Travel Agent ay may tanging responsibilidad para sa lahat ng mga transaksyong pinansyal sa Mga Provider ng Akomodasyon.
 * Magbibigay ang Wink ng access sa System at titiyakin na ang Serbisyo ay available sa Travel Agent.
 
 **5. Mga Karapatan sa Intelektwal na Ari-arian**
@@ -175,7 +175,7 @@ Ang mga tuntuning iyon ay magagamit sa ilalim [Affiliate Portal > Mga Tuntunin n
 
 7.7 **Pag-uulat at Pananagutan:**
 
-* Ang Travel Agent ay dapat magbigay sa Service Provider ng mga regular na ulat na nagdedetalye sa pagganap ng mga obligasyon nito sa ilalim ng Kasunduang ito, kabilang ngunit hindi limitado sa data ng mga benta, mga istatistika sa Pag-book, at feedback ng customer. Pananagutan ng Travel Agent ang katumpakan ng mga ulat na ito at makikipagtulungan sa Service Provider sa anumang pag-audit o pagsusuri ng mga operasyon nito.
+* Ang Travel Agent ay dapat magbigay sa Service Provider ng mga regular na ulat na nagdedetalye sa pagganap ng mga obligasyon nito sa ilalim ng Kasunduang ito, kabilang ngunit hindi limitado sa data ng mga benta, mga istatistika sa Pag-book, at feedback ng customer. Pananagutan ng Travel Agent ang katumpakan ng mga ulat na ito at makikipagtulungan sa Service Provider sa anumang pag-audit o pagsusuri sa mga operasyon nito.
 
 7.8 **Pagkakumpidensyal:**
 
@@ -191,21 +191,21 @@ Ang mga tuntuning iyon ay magagamit sa ilalim [Affiliate Portal > Mga Tuntunin n
 
 **8. Mga Komisyon at Bayarin**
 
-8.1 **Pagkalkula ng Komisyon:** Ang Komisyon na babayaran sa Travel Agent ay dapat na isang porsyento (nakatakda sa kasunduan sa pagitan ng Travel Agent at ng Accommodation Provider) ng Booking Value pagkatapos ibabawas ang Wink Booking Fee.
+8.1 **Pagkalkula ng Komisyon:** Ang Commission na babayaran sa Travel Agent ay dapat na isang porsyento (nakatakda sa kasunduan sa pagitan ng Travel Agent at ng Accommodation Provider) ng Booking Value pagkatapos ibabawas ang Wink Booking Fee.
 
 8.2 **Bayad sa Booking ni Wink:** Magbibigay ang Wink ng buwanang invoice para sa 1.5% na Bayad sa Pag-book. Ang Travel Agent ay responsable para sa pag-aayos ng invoice na ito sa loob ng mga tuntunin sa pagbabayad na tinukoy ng Wink.
 
 **9. Mga Legal na Probisyon**
 
-9.1 **Limitasyon ng Pananagutan:** Wala sa alinmang Partido ang mananagot para sa anumang hindi direkta, nagkataon, kinahinatnan, espesyal, o mga pinsalang parusa na nagmumula sa Kasunduang ito.
+9.1 **Limitasyon ng Pananagutan:** Wala sa alinmang Partido ang mananagot para sa anumang hindi direkta, hindi sinasadya, kinahinatnan, espesyal, o mga pinsalang parusa na nagmumula sa Kasunduang ito.
 
-9.2 **Indemnification:** Ang bawat Partido ay sumasang-ayon na magbayad ng danyos at panatilihing hindi nakakapinsala ang iba mula sa anumang paghahabol na nagmumula sa paglabag sa Kasunduang ito o sa kapabayaan ng Partido na nagbabayad ng danyos.
+9.2 **Indemnification:** Ang bawat Partido ay sumasang-ayon na magbayad ng danyos at panatilihing hindi nakakapinsala ang iba mula sa anumang mga paghahabol na nagmumula sa paglabag sa Kasunduang ito o ang kapabayaan ng Partido na nagbabayad ng danyos.
 
 9.3 **Force Majeure:** Wala sa alinmang Partido ang mananagot para sa mga pagkaantala o pagkabigo na gumanap dahil sa mga dahilan na lampas sa kanilang makatwirang kontrol, kabilang ang mga gawa ng Diyos, mga natural na sakuna, digmaan, terorismo, welga, atbp.
 
 **10. Termino at Pagwawakas**
 
-10.1 **Termino:** Ang Kasunduang ito ay dapat magsimula sa petsa ng pagpapatupad at magpapatuloy hanggang sa wakasan ng alinmang Partido.
+10.1 **Termino:** Ang Kasunduang ito ay magsisimula sa petsa ng pagpapatupad at magpapatuloy hanggang sa wakasan ng alinmang Partido.
 
 10.2 **Pagwawakas:** Maaaring wakasan ng alinmang Partido ang Kasunduang ito sa kanilang pagpapasya.
 
@@ -213,11 +213,11 @@ Ang mga tuntuning iyon ay magagamit sa ilalim [Affiliate Portal > Mga Tuntunin n
 
 **11. Batas na Namamahala at Resolusyon sa Di-pagkakasundo**
 
-11.1 **Namamahala sa Batas:** Ang Kasunduang ito ay pamamahalaan at bigyang-kahulugan alinsunod sa mga batas ng Singapore, nang walang pagsasaalang-alang sa salungat nito sa mga prinsipyo ng batas.
+11.1 **Namamahala sa Batas:** Ang Kasunduang ito ay pamamahalaan at bigyang-kahulugan alinsunod sa mga batas ng Singapore, nang walang pagsasaalang-alang sa salungat sa mga prinsipyo ng batas nito.
 
 11.2 **Resolusyon sa Di-pagkakasundo:**
 
-11.2.1 **Negosasyon:** Kung sakaling magkaroon ng anumang hindi pagkakaunawaan, pag-aangkin, tanong, o hindi pagkakasundo na magmumula sa o nauugnay sa Kasunduang ito, dapat munang subukan ng mga partido na ayusin ang hindi pagkakaunawaan sa pamamagitan ng mga negosasyong may mabuting loob. Ang ganitong mga negosasyon ay dapat magsimula sa nakasulat na paunawa ng isang partido sa isa pa.
+11.2.1 **Negosasyon:** Kung sakaling magkaroon ng anumang hindi pagkakaunawaan, paghahabol, tanong, o hindi pagkakasundo na magmumula sa o nauugnay sa Kasunduang ito, dapat munang subukan ng mga partido na ayusin ang hindi pagkakaunawaan sa pamamagitan ng mga negosasyong may mabuting loob. Ang ganitong mga negosasyon ay dapat magsimula sa nakasulat na paunawa ng isang partido sa isa pa.
 
 11.2.2 **Arbitrasyon:** Kung ang hindi pagkakaunawaan ay hindi malulutas sa pamamagitan ng mga negosasyon sa loob ng tatlumpung (30) araw, ang hindi pagkakaunawaan ay dapat i-refer sa at sa wakas ay malulutas sa pamamagitan ng arbitrasyon sa ilalim ng Singapore International Arbitration Center (SIAC) Rules, na itinuring na isinama sa pamamagitan ng pagtukoy sa sugnay na ito. Ang bilang ng mga arbitrator ay dapat isa, at ang upuan, o legal na lugar, ng arbitrasyon ay ang Singapore. Ang wikang gagamitin sa mga paglilitis sa arbitrasyon ay Ingles.
 
@@ -227,7 +227,7 @@ Ang mga tuntuning iyon ay magagamit sa ilalim [Affiliate Portal > Mga Tuntunin n
 
 12.1 **Kahulugan**: Wala sa alinmang partido ang mananagot para sa anumang pagkabigo o pagkaantala sa pagganap ng mga obligasyon nito sa ilalim ng Kasunduang ito kung ang nasabing pagkabigo o pagkaantala ay dahil sa isang Force Majeure Event. Ang isang "Force Majeure Event" ay nangangahulugang anumang kaganapan na lampas sa makatwirang kontrol ng isang partido, kabilang ang ngunit hindi limitado sa mga natural na sakuna (tulad ng mga lindol, baha, o bagyo), digmaan, terorismo, kaguluhang sibil, pandemya, aksyon ng pamahalaan, o anumang iba pang kaganapan na hindi maaaring makatwirang inaasahan o naiwasan.
 
-12.2 **Abiso**: Ang apektadong partido ay dapat na ipaalam sa kabilang partido sa pamamagitan ng sulat sa lalong madaling panahon pagkatapos ng paglitaw ng isang Force Majeure Event. Ang nasabing paunawa ay dapat magsama ng paglalarawan ng Kaganapang Force Majeure, ang inaasahang tagal nito, at ang mga obligasyong apektado.
+12.2 **Abiso**: Ang apektadong partido ay dapat na ipaalam sa kabilang partido sa pamamagitan ng sulat sa lalong madaling panahon pagkatapos ng paglitaw ng isang Force Majeure Event. Ang nasabing paunawa ay dapat magsama ng isang paglalarawan ng Kaganapang Force Majeure, ang inaasahang tagal nito, at ang mga obligasyong apektado.
 
 12.3 **Epekto sa Mga Serbisyo**:
 
@@ -236,7 +236,7 @@ Ang mga tuntuning iyon ay magagamit sa ilalim [Affiliate Portal > Mga Tuntunin n
 
 12.4 **Tagal at Pagwawakas**: Kung magpapatuloy ang Force Majeure Event nang higit sa animnapung (60) araw, maaaring wakasan ng alinmang partido ang Kasunduang ito sa nakasulat na paunawa sa kabilang partido. Kung sakaling mangyari ang naturang pagwawakas, walang sinumang partido ang magkakaroon ng anumang pananagutan sa isa maliban sa mga obligasyon na naipon bago ang Kaganapang Force Majeure.
 
-12.5 **Pagpapatuloy ng mga Obligasyon**: Kapag ang Force Majeure Event ay tumigil na, ang parehong partido ay dapat na ipagpatuloy kaagad ang kanilang mga obligasyon sa ilalim ng Kasunduang ito hanggang sa makatwirang magagawa.
+12.5 **Pagpapatuloy ng mga Obligasyon**: Kapag ang Force Majeure Event ay tumigil na, ang parehong partido ay dapat na agad na ipagpatuloy ang kanilang mga obligasyon sa ilalim ng Kasunduang ito hanggang sa makatwirang magagawa.
 
 **13. Pagiging kompidensyal**
 
@@ -244,7 +244,7 @@ Ang mga tuntuning iyon ay magagamit sa ilalim [Affiliate Portal > Mga Tuntunin n
 
 **14. Miscellaneous**
 
-14.1 **Buong Kasunduan:** Ang Kasunduang ito ay bumubuo sa buong kasunduan sa pagitan ng Mga Partido at pumapalit sa lahat ng naunang kasunduan o pagkakaunawaan.
+14.1 **Buong Kasunduan:** Binubuo ng Kasunduang ito ang buong kasunduan sa pagitan ng Mga Partido at pumapalit sa lahat ng naunang kasunduan o pagkakaunawaan.
 
 14.2 **Mga Pagbabago:** Ang anumang mga pagbabago sa Kasunduang ito ay dapat gawin sa pamamagitan ng pagsulat at pirmahan ng parehong Mga Partido.
 

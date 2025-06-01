@@ -117,7 +117,7 @@ Sujeto a los términos y condiciones de este Acuerdo, el Afiliado operará como 
 
 3.1.2 El Afiliado otorga a Wink un derecho y licencia libres de regalías y de alcance mundial:
 
-1. incorporar, integrar, incluir y mostrar el Enlace, el Micrositio y/o la Conexión (según corresponda) en el/los Sitio(s) Web del Afiliado, y
+1. incorporar, integrar, incluir y mostrar el Enlace, el Micrositio y/o la Conexión (según corresponda) en el(los) Sitio(s) Web del Afiliado, y
 2. para hacer que el Servicio esté disponible en los sitios web afiliados.
 
 **3.2 Sin derecho de sublicencia y no divulgación**
@@ -256,7 +256,7 @@ Comisión neta pagada (pago) = Comisión - PSF - BF
 
 5.4 Wink rastrea todas las transacciones y hará todos los esfuerzos comercialmente razonables para garantizar que todas las Transacciones Materializadas sean rastreadas, reportadas y pagadas. Sin embargo, los registros de Wink serán definitivos y el Afiliado no tendrá derecho a compensación por pérdidas de ingresos ni daños en caso de que Wink no registre o reporte con precisión las Salidas de Afiliados, excepto en caso de mala conducta grave o comportamiento fraudulento por parte de Wink. Salvo en estos últimos casos, el único recurso del Afiliado será rescindir este Acuerdo y finalizar su participación en el programa.
 
-5.5 La Comisión Neta especificada será la única compensación que el Afiliado tendrá derecho a recibir en virtud de este Acuerdo. El Afiliado no tendrá derecho a ningún otro beneficio. Es responsabilidad de Wink verificar la exactitud de los pagos de la Comisión Neta antes de realizarlos, y es responsabilidad del Afiliado verificar todos los pagos de la Comisión Neta al recibirlos y notificar de inmediato cualquier presunto error. Ninguna de las partes podrá presentar reclamaciones por sobrepago o pago insuficiente noventa (90) días naturales después de la fecha de vencimiento del pago. Todos los pedidos están sujetos a la aceptación de Wink de acuerdo con sus políticas vigentes en el momento de la solicitud de reserva. Las políticas de Wink están sujetas a cambios sin previo aviso.
+5.5 La Comisión Neta especificada será la única compensación que el Afiliado tendrá derecho a recibir en virtud de este Acuerdo. El Afiliado no tendrá derecho a ningún otro beneficio. Es responsabilidad de Wink verificar la exactitud de los pagos de la Comisión Neta antes de realizar el pago, y es responsabilidad del Afiliado verificar todos los pagos de la Comisión Neta al recibirlos y notificar de inmediato cualquier presunto error. Ninguna de las partes podrá presentar reclamaciones por sobrepago o pago insuficiente noventa (90) días naturales después de la fecha de vencimiento del pago. Todos los pedidos están sujetos a la aceptación de Wink de acuerdo con sus políticas vigentes en el momento de la solicitud de reserva. Las políticas de Wink están sujetas a cambios sin previo aviso.
 
 5.6 Wink hará todos los esfuerzos comercialmente razonables para auditar todas las transacciones sujetas a este Acuerdo. Wink proporcionará al Afiliado acceso a análisis y a un panel que resume todas las reservas pendientes y vencidas. El Afiliado también tendrá acceso a informes de pago, que mostrarán las ganancias proyectadas y el historial de pagos. Si Wink no mantiene registros precisos o no realiza la auditoría, el único recurso del Afiliado será rescindir este Acuerdo y finalizar su participación en el programa.
 
@@ -415,7 +415,7 @@ Wink.travel no será responsable de ninguna demora o incumplimiento de cualquier
 
 19. **Ley aplicable y jurisdicción**
 
-El presente Acuerdo se regirá e interpretará exclusivamente de conformidad con las leyes de Singapur. La Ley de Contratos (Derechos de Terceros) de 2001 (Cap. 53B) no será de aplicación al presente Acuerdo. En cualquier caso, las partes intentarán resolver sus controversias de forma amistosa y extrajudicial, manteniendo previamente conversaciones y negociaciones de buena fe.\
+El presente Acuerdo se regirá e interpretará exclusivamente de conformidad con las leyes de Singapur. La Ley de Contratos (Derechos de Terceros) de 2001 (Cap. 53B) no será de aplicación al presente Acuerdo. En cualquier caso, las partes intentarán resolver sus controversias de forma amistosa extrajudicial, manteniendo previamente conversaciones y negociaciones de buena fe.\
 Cualquier disputa que surja de este acuerdo o en conexión con él se someterá y resolverá exclusivamente en el tribunal competente de Singapur, sin tener en cuenta las normas sobre conflicto de leyes.\
 renunciar irrevocablemente a cualquier derecho que pueda tener de oponerse a que se presente una acción en dichos tribunales, de reclamar que la acción se ha presentado en un foro inconveniente o de reclamar que dichos tribunales no tienen jurisdicción.
 

@@ -1,8 +1,8 @@
 ---
 title: Security
 description: >-
-  Tämä artikkeli sisältää tietoa turvatoimenpiteistä, joita toteutamme ja jotka
-  kolmannen osapuolen tietoturvayrityksemme julkaisee vuosittain.
+  Tämä artikkeli sisältää tietoa turvatoimistamme, joita kolmannen osapuolen
+  tietoturvayrityksemme julkaisee vuosittain.
 sidebar:
   order: 6
 ---
@@ -72,7 +72,7 @@ Olemme sitoutuneet ylläpitämään turvallisen sovellusympäristön käyttäjil
 
 ## Raporttien käyttöoikeudet ja päivitykset
 
-Tätä asiakirjaa päivitetään jatkuvasti uusien penetraatiotestausraporttien julkaisemisen myötä. Saadaksesi koko raportin, ota meihin yhteyttä alla olevan sähköpostin kautta. Tulevat päivitykset sisältävät uusia tunnistettuja haavoittuvuuksia, korjaustoimenpiteitä ja testausmenetelmiemme muutoksia.
+Tätä asiakirjaa päivitetään jatkuvasti sitä mukaa, kun uusia penetraatiotestausraportteja julkaistaan. Saadaksesi koko raportin, ota meihin yhteyttä alla olevan sähköpostin kautta. Tulevat päivitykset sisältävät uusia tunnistettuja haavoittuvuuksia, korjaustoimenpiteitä ja testausmenetelmiemme muutoksia.
 
 Lisätietoja varten ota yhteyttä osoitteeseen security@wink.travel.
 

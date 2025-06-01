@@ -31,7 +31,7 @@ Ujian penembusan kami dijalankan setiap tahun, dengan ujian tambahan dijadualkan
 
 Ujian penembusan kami adalah menyeluruh dan merangkumi pelbagai aspek keselamatan, termasuk tetapi tidak terhad kepada:
 
-* **10 Teratas OWASP:** Ujian kami menyasarkan secara khusus risiko keselamatan yang paling kritikal, seperti Suntikan, Pengesahan Patah dan Skrip Silang Tapak (XSS).
+* **10 Teratas OWASP:** Ujian kami secara khusus menyasarkan risiko keselamatan yang paling kritikal, seperti Suntikan, Pengesahan Patah dan Skrip Silang Tapak (XSS).
 * **Ujian Kotak Hitam dan Kotak Kelabu:** Bergantung pada skop, pasukan kami menggunakan metodologi ini untuk mensimulasikan kedua-dua senario serangan luaran dan dalaman.
 * **Ujian Automatik dan Manual:** Kami menggunakan Burp Suite Pro, set alat ujian keselamatan terkemuka, untuk menjalankan imbasan keselamatan automatik dan untuk membantu teknik ujian manual untuk mengenal pasti kelemahan yang kompleks dan mendapatkan liputan terbaik yang kami mampu. Untuk pengenalpastian kelemahan yang lebih khusus, beberapa alat khusus digunakan cth. SQLmap.
 

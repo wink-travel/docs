@@ -10,7 +10,7 @@ Historisk set har adgang til og salg af alt rejserelateret involveret fortroligh
 
 [Wink Studio](https://studio.wink.travel)er vores affiliateportal. Den gør salg af rejseinventar tilgængeligt for alle og lige så nemt som at dele et link eller lige så avanceret som at drive et online rejsebureau.
 
-Affiliateportalen eksponerer tilgængeligt rejseudbud fra leverandører (dvs. hoteller, hostels, udlejningssteder, oplevelsesudbydere) overalt i verden. Dit mål er at finde det udvalg, der passer til dig, og derefter bruge den bedste måde at eksponere og sælge det udvalg til dit publikum.
+Affiliateportalen eksponerer tilgængeligt rejseudbud fra leverandører (f.eks. hoteller, hostels, udlejningssteder, oplevelsesudbydere) overalt i verden. Dit mål er at finde det udvalg, der passer til dig, og derefter bruge den bedste måde at eksponere og sælge det udvalg til din målgruppe.
 
 Studio tilbyder dig en måde at gennemse leverandører og deres lagerbeholdning. Når du har fundet noget, du kan lide, har vi mange måder, hvorpå du kan sælge det lager online og især via sociale medier.
 

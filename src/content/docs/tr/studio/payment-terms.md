@@ -17,7 +17,7 @@ Bu Ödeme Hizmet Şartları (“**Ödeme Koşulları**”) sizinle TripPay (bund
 Ödeme Kolaylaştırıcısı, Wink aracılığıyla Konaklama Sağlayıcılarının envanterini satan Bağlı Kuruluşlara ödeme hizmetleri sağlar. Bu ödeme hizmetleri (mevcutsa) aşağıdakileri içerebilir (toplu olarak, "**Ödeme Hizmetleri**”):
 
 * Misafirlerden ödeme toplama (“**Ödeme**”), kredi kartı, banka kartı, banka havalesi, kripto para birimleri veya PayPal gibi satın alımlarıyla ilişkili ödeme yöntemi üzerinden ücret tahsil ederek (“**Ödeme yöntemi**”);
-* Ortaklara ödeme yapılması (“**Ödeme**”) yerel banka hesaplarına yatırın.
+* Bağlı Şirketlere ödeme yapılması (“**Ödeme**”) yerel banka hesaplarına yatırın.
 * Ödeme tahsilat hizmetleri; ve
 * Ortaklık Hizmetleri ile bağlantılı diğer ödemeyle ilgili hizmetler.
 
@@ -84,13 +84,13 @@ Bu sözleşmeyi imzalayan kişi, Konaklama Sağlayıcısının banka hesabında 
 
 **4. Ödeme Kolaylaştırıcısının Sınırlı Ödeme Tahsilat Temsilcisi Olarak Atanması**
 
-4.1 Her Bağlı Kuruluş, her Bağlı Kuruluş Ekibi üyesi de dahil olmak üzere, Ödeme Kolaylaştırıcısını, yalnızca Bağlı Kuruluşun Web Siteleri ve Uygulamaları üzerinden Konaklama Sağlayıcısı adına Konaklama Sağlayıcısı Hizmetleri satın alan Misafirlerden gelen fonları kabul etme ve işleme amacıyla Bağlı Kuruluşun ödeme tahsilat temsilcisi olarak atar.
+4.1 Her Bağlı Kuruluş, her Bağlı Kuruluş Ekibi üyesi de dahil olmak üzere, Ödeme Kolaylaştırıcısını, yalnızca Konaklama Sağlayıcısı adına Bağlı Kuruluşun Web Siteleri ve Uygulamaları üzerinden Konaklama Sağlayıcısı Hizmetleri satın alan Misafirlerden gelen fonları kabul etme ve işleme amacıyla Bağlı Kuruluşun ödeme tahsilat temsilcisi olarak atar.
 
 4.2 Her Bağlı Kuruluş, her Bağlı Kuruluş Ekibi üyesi de dahil olmak üzere, bir Misafir tarafından Bağlı Kuruluşun Web Sitesi ve Uygulaması(ları) üzerinden Ödeme Kolaylaştırıcısı aracılığıyla yapılan ödemenin, doğrudan Konaklama Sağlayıcısına yapılan bir ödeme olarak kabul edileceğini ve Konaklama Sağlayıcısının, Misafir tarafından rezerve edilen Konaklama Sağlayıcısı Hizmetini, Konaklama Sağlayıcısı ödemeyi doğrudan Misafirden almış gibi, kararlaştırılan şekilde sağlayacağını kabul eder. Her Bağlı Kuruluş, Ödeme Kolaylaştırıcısının Misafire Şartlar uyarınca geri ödeme yapabileceğini kabul eder. Her Bağlı Kuruluş, Ödeme Kolaylaştırıcısının Bağlı Kuruluşa ödeme yapma yükümlülüğünün, Misafirden ilgili ödemelerin başarılı bir şekilde alınmasına tabi ve koşullu olduğunu anlar. Ödeme Kolaylaştırıcısı, Bağlı Kuruluşa yalnızca bu Ödeme Şartları uyarınca Misafirlerden Ödeme Kolaylaştırıcısı tarafından başarıyla alınan tutarlar için ödeme yapmayı garanti eder. Ortak'ın sınırlı ödeme tahsilat temsilcisi olarak atanmayı kabul eden Ödeme Kolaylaştırıcısı, Ortak'ın herhangi bir eylem veya ihmalinden dolayı hiçbir sorumluluk kabul etmez.
 
 **5. Yasaklanmış Faaliyetler**
 
-5.1 Ödeme Hizmetlerini kullanımınıza uygulanabilecek tüm yasalara, kurallara, düzenlemelere ve vergi yükümlülüklerine uymaktan yalnızca siz sorumlusunuz. Ödeme Hizmetlerini kullanımınızla bağlantılı olarak, şunları yapamazsınız ve yapmayacağınızı ve başkalarının şunları yapmasına yardımcı olmayacağınızı veya bunları sağlamayacağınızı kabul edersiniz:
+5.1 Ödeme Hizmetlerini kullanımınıza uygulanabilecek tüm yasalara, kurallara, düzenlemelere ve vergi yükümlülüklerine uymaktan yalnızca siz sorumlusunuz. Ödeme Hizmetlerini kullanımınızla bağlantılı olarak, şunları yapamazsınız ve başkalarının şunları yapmasına yardımcı olmayacağınızı ve bunu sağlamayacağınızı kabul edersiniz:
 
 * yürürlükteki herhangi bir yasayı veya yönetmeliği ihlal etmek veya bunları geçersiz kılmak;
 * üçüncü taraflarla herhangi bir anlaşmayı, üçüncü taraf haklarını veya[Şartlar](/studio/terms-of-service);
@@ -102,7 +102,7 @@ Bu sözleşmeyi imzalayan kişi, Konaklama Sağlayıcısının banka hesabında 
 
 5.2 Ödeme Kolaylaştırıcısı, uluslararası ticaret normlarının, rüşvet ve yolsuzluğun önlenmesine ilişkin mevzuatın ve ticaret, fon akışı ve terörizmin finansmanına ilişkin geçerli kısıtlamaların ihlallerine karşı sıfır tolerans yaklaşımını benimser.\
 Ortak, kendisinin ve Bağlı Taraflarının Ödeme Kolaylaştırıcı Tedarikçi Davranış Kurallarına uyduğunu ve uyacağını garanti eder.\
-Ortak, tüm uluslararası ticaret normlarına, ticaret, fon akışı ve terörizmin finansmanı ile rüşvet ve yolsuzluk önleme mevzuatına, ancak bunlarla sınırlı olmamak üzere Birleşik Krallık Rüşvet Yasası 2010 ve Singapur Yolsuzluğun Önlenmesi Yasası'na her bakımdan uyduğunu ve uyacağını beyan, garanti ve taahhüt eder.\
+Ortak, tüm uluslararası ticaret normlarına, ticaret, fon akışı ve terörizmin finansmanı üzerindeki geçerli kısıtlamalara ve rüşvet ve yolsuzluk önleme mevzuatına, özellikle Birleşik Krallık Rüşvet Yasası 2010 ve Singapur Yolsuzluğun Önlenmesi Yasası dahil ancak bunlarla sınırlı olmamak üzere, her bakımdan uyduğunu ve uyacağını beyan, garanti ve taahhüt eder.\
 Bağlı Kuruluş, bilgisi dahilinde kendisinin veya Bağlı Taraflarının rüşvet veya yolsuzluk içeren bir suçtan hüküm giymediğini veya herhangi bir hükümet, idari veya düzenleyici kurum tarafından herhangi bir soruşturmaya tabi olmadığını garanti eder.
 
 **6. Mücbir Sebep**
@@ -113,7 +113,7 @@ Bağlı Kuruluş, bilgisi dahilinde kendisinin veya Bağlı Taraflarının rüş
 
 7.1 Ödeme Hizmetlerini kullanmayı seçerseniz, bunu gönüllü olarak ve kendi riskinizle yaparsınız. Yasanın izin verdiği azami ölçüde, Ödeme Hizmetleri, açık veya zımni hiçbir tür garanti olmaksızın "olduğu gibi" sağlanır.
 
-7.2 Ödeme Kolaylaştırıcısının, 6. Bölüm uyarınca Bağlı Kuruluşların sınırlı ödeme tahsilat temsilcisi olarak atanmasına rağmen, Ödeme Kolaylaştırıcısı, herhangi bir Bağlı Kuruluşun veya diğer üçüncü tarafın herhangi bir eylemi veya ihmali için tüm sorumluluğu açıkça reddeder. Ödeme Kolaylaştırıcısının, bu Ödeme Şartlarında açıkça belirtilenler dışında her bir Bağlı Kuruluş için temsilci olarak herhangi bir görevi veya yükümlülüğü yoktur ve yasa tarafından ima edilebilecek herhangi bir ek görev veya yükümlülük, geçerli yasa tarafından izin verilen azami ölçüde açıkça hariç tutulmuştur.
+7.2 Ödeme Kolaylaştırıcısının, 6. Bölüm uyarınca Bağlı Şirketlerin sınırlı ödeme tahsilat temsilcisi olarak atanmasına rağmen, Ödeme Kolaylaştırıcısı, herhangi bir Bağlı Şirketin veya diğer üçüncü tarafın herhangi bir eylemi veya ihmali için tüm sorumluluğu açıkça reddeder. Ödeme Kolaylaştırıcısının, bu Ödeme Şartlarında açıkça belirtilenler dışında her bir Bağlı Şirket için temsilci olarak herhangi bir görevi veya yükümlülüğü yoktur ve yasa tarafından ima edilebilecek herhangi bir ek görev veya yükümlülük, geçerli yasa tarafından izin verilen azami ölçüde açıkça hariç tutulmuştur.
 
 7.3 Herhangi bir Bağlı Kuruluşta kimlik doğrulaması yapmayı seçersek, yürürlükteki yasaların izin verdiği ölçüde, bu tür kontrollerin Bağlı Kuruluş tarafından daha önce gerçekleştirilen uygunsuz davranışları tespit edeceği veya Bağlı Kuruluşun gelecekte uygunsuz davranışlarda bulunmayacağını garanti edeceği yönündeki açık veya örtük her türlü garantiyi reddederiz.
 
@@ -135,7 +135,7 @@ Uygulanabilir yasanın izin verdiği azami ölçüde, Ödeme Kolaylaştırıcıs
 
 **10.1 Değişiklik**. Yürürlükteki yasa tarafından aksi belirtilmediği sürece, Ödeme Kolaylaştırıcısı bu Ödeme Koşullarını istediği zaman değiştirebilir. Bu Ödeme Koşullarında önemli değişiklikler yaparsak, revize edilmiş Ödeme Koşullarını Wink Platformunda yayınlayacağız ve bu Ödeme Koşullarının en üstündeki "Son Güncelleme" tarihini güncelleyeceğiz. Değişiklikten etkilenirseniz, değişikliklerin yürürlüğe girmesinden en az otuz (30) gün önce size bildirimde bulunacağız. Revize edilmiş Ödeme Koşullarının yürürlüğe girdiği tarihten önce sözleşmenizi feshetmezseniz, Ödeme Hizmetlerini kullanmaya devam etmeniz, revize edilmiş Ödeme Koşullarında yapılan değişiklikleri kabul ettiğiniz anlamına gelecektir.
 
-**10.2 Süre**Siz ve Ödeme Kolaylaştırıcısı arasındaki bu Ödeme Şartları'nda yansıtılan bu sözleşme, bir Wink hesabı oluşturduğunuzda veya Ödeme Hizmetleri'ni kullandığınızda yürürlüğe girer ve siz veya biz bu sözleşmeyi Bölüm 10.3 uyarınca feshedene kadar yürürlükte kalır.
+**10.2 Süre**Siz ve Ödeme Kolaylaştırıcısı arasındaki bu sözleşme, bu Ödeme Koşullarında yansıtıldığı üzere, bir Wink hesabı oluşturduğunuzda veya Ödeme Hizmetlerini kullandığınızda yürürlüğe girer ve siz veya biz bu sözleşmeyi Bölüm 10.3 uyarınca feshedene kadar yürürlükte kalır.
 
 **10.3 Fesih**. Bu sözleşmeyi bize bir e-posta göndererek veya Wink hesabınızı silerek istediğiniz zaman feshedebilirsiniz. Bu sözleşmeyi feshetmek aynı zamanda Wink hesabınızın iptali için bir bildirim olarak da işlev görecektir.[Şartlar](/studio/terms-of-service). Aşağıda belirtilen haklarımızı sınırlamadan, Ödeme Kolaylaştırıcısı, kayıtlı e-posta adresinize otuz (30) günlük bir bildirimde bulunarak bu sözleşmeyi istediği zaman feshedebilir. Ödeme Kolaylaştırıcısı ayrıca, (i) bu sözleşme kapsamındaki yükümlülüklerinizi önemli ölçüde ihlal ettiyseniz; (ii) yanlış, hileli, güncel olmayan veya eksik bilgi verdiyseniz; (iii) yürürlükteki yasaları, düzenlemeleri veya üçüncü taraf haklarını ihlal ettiyseniz; veya (iv) Ödeme Kolaylaştırıcısı, bu tür bir eylemin diğer Bağlı Kuruluşu, Wink'i, Ödeme Kolaylaştırıcısını veya üçüncü tarafları korumak için makul ölçüde gerekli olduğuna iyi niyetle inanıyorsa, bu sözleşmeyi bildirimde bulunmaksızın derhal feshedebilir.
 
@@ -149,9 +149,9 @@ Uygulanabilir yasanın izin verdiği azami ölçüde, Ödeme Kolaylaştırıcıs
 
 **11. Yürürlükteki Hukuk ve Uyuşmazlıkların Çözümü**
 
-**11.1**Amerika Birleşik Devletleri'nde Payment Facilitator ile sözleşme yapıyorsanız, bu Ödeme Koşulları, ihtilaf hukuku hükümleri dikkate alınmaksızın Wyoming Eyaleti ve Amerika Birleşik Devletleri yasalarına uygun olarak yorumlanacaktır. Hukuki işlemler (küçük davalar hariç) Wyoming'deki eyalet veya federal mahkemede başlatılmalıdır, aksi takdirde ikimiz de başka bir yer konusunda anlaşabiliriz. Siz ve biz Wyoming'deki yer ve kişisel yargı yetkisini kabul ediyoruz.
+**11.1**Amerika Birleşik Devletleri'nde Ödeme Kolaylaştırıcısı ile sözleşme yapıyorsanız, bu Ödeme Koşulları, hukuk ihtilafı hükümleri dikkate alınmaksızın Wyoming Eyaleti ve Amerika Birleşik Devletleri yasalarına uygun olarak yorumlanacaktır. Hukuki işlemler (küçük davalar dışındaki) Wyoming'deki eyalet veya federal mahkemede başlatılmalıdır, aksi takdirde ikimiz de başka bir yer konusunda anlaşabiliriz. Siz ve biz Wyoming'deki yer ve kişisel yargı yetkisini kabul ediyoruz.
 
-**11.2**Birleşik Krallık'ta Payment Facilitator ile sözleşme yapıyorsanız, bu Ödeme Koşulları İngiliz yasalarına uygun olarak yorumlanacaktır. Tüketici olarak hareket ediyorsanız ve ikamet ettiğiniz ülkedeki zorunlu yasal tüketici koruma düzenlemeleri sizin için daha faydalı hükümler içeriyorsa, bu hükümler İngiliz yasalarının seçiminden bağımsız olarak uygulanacaktır. Tüketici olarak, bu Ödeme Koşulları ile ilgili herhangi bir adli işlemi ikamet ettiğiniz yerin yetkili mahkemesinde veya İngiltere'deki bir mahkemede başlatabilirsiniz. Payment Facilitator, tüketici olarak size karşı haklarından herhangi birini uygulamak isterse, bunu yalnızca ikamet ettiğiniz yargı bölgesinin mahkemelerinde yapabiliriz. Bir işletme olarak hareket ediyorsanız, İngiliz mahkemelerinin münhasır yargı yetkisine tabi olmayı kabul edersiniz.
+**11.2**Birleşik Krallık'ta Payment Facilitator ile sözleşme yapıyorsanız, bu Ödeme Koşulları İngiliz yasalarına uygun olarak yorumlanacaktır. Tüketici olarak hareket ediyorsanız ve ikamet ettiğiniz ülkedeki zorunlu yasal tüketici koruma düzenlemeleri sizin için daha faydalı hükümler içeriyorsa, bu hükümler İngiliz yasalarının seçiminden bağımsız olarak uygulanacaktır. Tüketici olarak, bu Ödeme Koşulları ile ilgili herhangi bir adli işlemi ikamet ettiğiniz yerin yetkili mahkemesine veya İngiltere'deki bir mahkemeye getirebilirsiniz. Payment Facilitator, tüketici olarak size karşı haklarından herhangi birini uygulamak isterse, bunu yalnızca ikamet ettiğiniz yargı bölgesinin mahkemelerinde yapabiliriz. Bir işletme olarak hareket ediyorsanız, İngiliz mahkemelerinin münhasır yargı yetkisine tabi olmayı kabul edersiniz.
 
 **11.3**Slovakya'da Ödeme Kolaylaştırıcısı ile sözleşme yapıyorsanız, bu Ödeme Koşulları AB yasalarına uygun olarak yorumlanacaktır. Tüketici olarak hareket ediyorsanız, bu Ödeme Koşulları'ndan kaynaklanan veya bunlarla bağlantılı olarak bize karşı başlatabileceğiniz adli işlemler yalnızca Bratislava şehrinde bulunan bir mahkemede veya ikamet ettiğiniz yerdeki yargı yetkisine sahip bir mahkemede başlatılabilir. Bir işletme olarak hareket ediyorsanız, Slovakya'nın Bratislava şehrinde bulunan bir mahkemenin münhasır yargı yetkisine tabi olmayı kabul edersiniz.
 

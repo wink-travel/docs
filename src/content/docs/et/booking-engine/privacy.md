@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 5
 ---
-TRAVELIKO SINGAPORE PTE. LTD., mis tegutseb nime Wink all („Ettevõte“), soovib teid, kes Ettevõttega ühendust võtate, teavitada, et Ettevõtte teenuste osutamiseks on vaja koguda, koostada ja kasutada teie isikuandmeid vastavalt käesolevale Privaatsuspoliitikale. Ettevõttega ühendust võttes ja oma isikuandmete avaldamisel teile teenuste osutamise, koordineerimise ja/või osutamise eesmärgil loetakse, et nõustute käesoleva Privaatsuspoliitikaga ja kinnitate, et olete selle tingimustega seotud ja seda järgite.
+TRAVELIKO SINGAPORE PTE. LTD., mis tegutseb nime Wink all („Ettevõte“), soovib teid, kes Ettevõttega ühendust võtate, teavitada, et Ettevõtte teenuste osutamiseks on vaja koguda, koostada ja kasutada teie isikuandmeid vastavalt käesolevale Privaatsuspoliitikale. Ettevõttega ühendust võttes ja oma isikuandmete avaldamisel teile teenuste osutamise, koordineerimise ja/või osutamise eesmärgil loetakse, et nõustute käesoleva Privaatsuspoliitikaga ja nõustute seda järgima.
 
 Isikuandmete töötlemisel võib Ettevõte teie isikuandmeid saada järgmistest kanalitest:
 
@@ -40,7 +40,7 @@ Isikuandmete töötlemise ja kasutamise eesmärk. Ettevõttel on vaja koguda, ko
 
 Isikuandmete säilitamise periood. Eespool kirjeldatud eesmärkide täitmiseks on Ettevõttel vaja koguda, koostada ja töödelda teie isikuandmeid järgmise perioodi jooksul:
 
-(1) Teenuste osutamise, lepingu täitmise ja/või lepingujärgsete õiguste ja kohustuste täitmise eesmärgil toimuva isikuandmete töötlemise eesmärgil on Ettevõttel vaja teie isikuandmeid töödelda seni, kuni Ettevõttel on kohustus teile teenuseid osutada;
+(1) Teenuste osutamise, lepingu täitmise ja/või lepingujärgsete õiguste ja kohustuste täitmise eesmärgil toimuva isikuandmete töötlemise eesmärgil on Ettevõttel vaja Teie isikuandmeid töödelda seni, kuni Ettevõttel on kohustus Teile teenuseid osutada;
 
 (2) Isikuandmete töötlemiseks kohaldatavate seaduste kohase kohustuse täitmiseks on Ettevõttel vaja teie isikuandmeid töödelda kohaldatavate seadustega ettenähtud aja jooksul;
 
@@ -54,11 +54,11 @@ Isikuandmete avalikustamine, üldjuhul teie isikuandmeid ei avalikustata, välja
 
 (1) Ettevõtte välised teenusepakkujad, kes on kaasatud Ettevõtte tugiteenuste osutamisse teile teenuste osutamisel, sealhulgas Ettevõtte konsultandid. Isikuandmete avalikustamine neile kolmandatele isikutele toimub vastavalt eesmärkidele ja ainult teadmisvajaduse alusel; või
 
-(2) Valitsusasutused, reguleerivad asutused või kohtud, kelle suhtes võib kehtida isikuandmete avalikustamiseks nõutav korraldus, seadus või kohtuotsus.
+(2) Valitsusasutused, reguleerivad asutused või kohtud, kelle suhtes võib kehtida isikuandmete avalikustamiseks korraldus, seadus või kohtuotsus.
 
 Ettevõte kohustub rakendama asjakohaseid isikuandmete turvameetmeid, et vältida igasugust volitamata ja ebaseaduslikku juurdepääsu, muutmist, parandamist või avalikustamist. Ettevõte kohustub neid meetmeid regulaarselt läbi vaatama, et tagada nende vastavus standarditele ja kohaldatavatele seadustele.
 
-Andmesubjekti õigused, Ettevõte austab Teie kui andmesubjekti õigusi vastavalt kehtivatele seadustele. Teil on õigus Ettevõttega ühendust võtta, et teostada järgmisi õigusi: (1) õigus nõusolek tagasi võtta, (2) õigus juurdepääsule andmetele, (3) õigus nõuda isikuandmete koopiat, (4) õigus isikuandmeid parandada, (5) õigus esitada vastuväiteid isikuandmete töötlemisele, (6) õigus taotleda andmete ülekandmist juhul, kui Ettevõte säilitab isikuandmeid loetavas või automatiseeritud tööriistade või seadmete poolt tavaliselt kasutatavas vormingus, sealhulgas õigus edastada sellised isikuandmed teistele andmetöötlejatele, (7) õigus taotleda isikuandmete kustutamist või anonümiseerimist, kui töötlemiseks pole enam vajadust, (8) õigus taotleda isikuandmete kasutamise peatamist ja (9) õigus esitada kaebus.
+Andmesubjekti õigused, Ettevõte austab Teie kui andmesubjekti õigusi vastavalt kehtivatele seadustele. Teil on õigus Ettevõttega ühendust võtta, et teostada järgmisi õigusi: (1) õigus nõusolek tagasi võtta, (2) õigus juurdepääsule, (3) õigus nõuda isikuandmete koopiat, (4) õigus isikuandmeid parandada, (5) õigus esitada vastuväiteid isikuandmete töötlemisele, (6) õigus taotleda andmete ülekandmist juhul, kui Ettevõte säilitab isikuandmeid loetavas või automatiseeritud tööriistade või seadmete poolt tavaliselt kasutatavas vormingus, sealhulgas õigus edastada sellised isikuandmed teistele andmetöötlejatele, (7) õigus taotleda isikuandmete kustutamist või anonümiseerimist, kui töötlemiseks pole enam vajadust, (8) õigus taotleda isikuandmete kasutamise peatamist ja (9) õigus esitada kaebus.
 
 Ettevõtte kontaktandmed
 

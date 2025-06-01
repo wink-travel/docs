@@ -10,7 +10,7 @@ sidebar:
 Paskutinį kartą atnaujinta 2024-06-12
 :::
 
-**MOKĖJIMO SĄLYGOS APGYVENDINIMO TEIKĖJAMS**
+**MOKĖJIMO SĄLYGOS APGYVENDINIMO TIEKĖJAMS**
 
 Šios mokėjimo paslaugų teikimo sąlygos („**Mokėjimo sąlygos**„“) yra privalomas teisinis susitarimas tarp Apgyvendinimo teikėjo ir „TripPay“ (toliau –**„Mokėjimų tarpininkas“**), visiškai priklausanti „Traveliko Singapore Pte. Ltd.“ dukterinė įmonė, kuri valdo mokėjimo paslaugas (apibrėžtas toliau), teikiamas per „Wink“ platformą (toliau – „Wink Platform“) arba su ja susijusia&#x73;**„Mirksėjimas“**). Kai šiose Mokėjimo sąlygose minima „**Mokėjimų tarpininkas**„, „**mes**„, „**mus**“ arba “**mūsų**„“, tai reiškia „TripPay“ įmonę, su kuria sudarote sutartį dėl mokėjimo paslaugų.
 
@@ -131,13 +131,13 @@ Mokėjimų tarpininkas neatsako už jokį vėlavimą ar nevykdymą pagal šias M
 
 8.1 Kiek tai leidžia įstatymai, nė viena Šalis nebus atsakinga už jokius netiesioginius, atsitiktinius, pasekminius, specialius ar baudžiamuosius nuostolius, kylančius iš šios Sutarties ar jos pažeidimo, net jei buvo įspėta apie tokių nuostolių galimybę. Šis apribojimas netaikomas jokiems šios Sutarties pažeidimams, susijusiems su konfidencialumu ir (arba) intelektinės nuosavybės teisėmis.
 
-8.2 Nei viena Šalis negali atsisakyti atsakomybės dėl (i) mirties ar kūno sužalojimo, kurį sukėlė jos arba jos darbuotojų, atstovų ar subrangovų aplaidumas, (ii) jos pačios ar jos darbuotojų įvykdyto sukčiavimo arba (iii) bet kokio pažeidimo, veiksmo, neveikimo ar atsakomybės, kurie negali būti apriboti pagal jokius taikomus įstatymus.
+8.2 Nei viena Šalis negali atsisakyti atsakomybės dėl (i) mirties ar kūno sužalojimo, kurį sukėlė jos arba jos darbuotojų, atstovų ar subrangovų aplaidumas, (ii) jos pačios ar jos darbuotojų įvykdyto sukčiavimo arba (iii) bet kokio pažeidimo, veiksmo, neveikimo ar atsakomybės, kurie negali būti ribojami pagal jokius taikomus įstatymus.
 
 8.3 Šalys pripažįsta ir sutinka, kad šioje Sutartyje nustatytos atsakomybės išimtys ir apribojimai yra sąžiningi ir pagrįsti.
 
 **9. Žalos atlyginimas**
 
-Kiek tai leidžia galiojantys įstatymai, jūs sutinkate atleisti, ginti (Mokėjimų tarpininko nuožiūra), atlyginti žalą ir apsaugoti Mokėjimų tarpininką ir visus jo filialus bei patronuojamąsias įmones ir jų pareigūnus, direktorius, darbuotojus ir agentus nuo bet kokių pretenzijų, atsakomybės, žalos, nuostolių ir išlaidų, įskaitant, bet neapsiribojant, pagrįstas teisines ir apskaitos išlaidas, kylančias dėl arba kaip nors susijusias su (i) jūsų šių Mokėjimo sąlygų pažeidimu; (ii) jūsų netinkamu Mokėjimo paslaugų naudojimu; (iii) jūsų nesugebėjimu arba mūsų nesugebėjimu jūsų nurodymu tiksliai deklaruoti, surinkti ar sumokėti mokesčius; arba (iv) jūsų bet kokių įstatymų, kitų teisės aktų ar trečiųjų šalių teisių pažeidimu.
+Kiek tai leidžia galiojantys įstatymai, jūs sutinkate atleisti, ginti (Mokėjimų tarpininko nuožiūra), atlyginti žalą ir apsaugoti Mokėjimų tarpininką ir visus jo filialus bei patronuojamąsias įmones ir jų pareigūnus, direktorius, darbuotojus ir agentus nuo bet kokių pretenzijų, atsakomybės, žalos, nuostolių ir išlaidų, įskaitant, bet neapsiribojant, pagrįstas teisines ir apskaitos išlaidas, kylančias dėl arba kaip nors susijusias su (i) jūsų šių Mokėjimo sąlygų pažeidimu; (ii) jūsų netinkamu Mokėjimo paslaugų naudojimu; (iii) jūsų nesugebėjimu arba mūsų nesugebėjimu jūsų nurodymu tiksliai deklaruoti, surinkti ar pervesti mokesčius; arba (iv) jūsų bet kokių įstatymų, kitų teisės aktų ar trečiųjų šalių teisių pažeidimu.
 
 **10. Pakeitimas, galiojimo laikas, nutraukimas ir kitos priemonės**
 

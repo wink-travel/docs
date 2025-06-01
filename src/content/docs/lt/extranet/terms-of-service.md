@@ -158,7 +158,7 @@ Mokėtina viešbučiui („grynoji kaina“) => 85,1 USD
 
 **7. Mokesčiai**
 
-7.1 Apgyvendinimo paslaugų teikėjas yra atsakingas už tai, kad į kainą būtų įtraukti visi taikomi mokesčiai. Apgyvendinimo paslaugų teikėjas yra atsakingas už tai, kad į kainas įtraukti mokesčiai būtų tikslūs ir atnaujinti. Kai apgyvendinimo paslaugų teikėjas nenurodo miesto mokesčių, turizmo mokesčių ar kitų vietinių mokesčių, kuriuos reikia mokėti, laikoma, kad jie yra įtraukti į kainą.
+7.1 Apgyvendinimo paslaugų teikėjas yra atsakingas už tai, kad į kainą būtų įtraukti visi taikomi mokesčiai. Apgyvendinimo paslaugų teikėjo pareiga yra užtikrinti, kad į kainas įtraukti mokesčiai būtų tikslūs ir atnaujinti. Kai apgyvendinimo paslaugų teikėjas nenurodo miesto mokesčių, turizmo mokesčių ar kitų vietinių mokesčių, kuriuos reikia mokėti, laikoma, kad jie yra įtraukti į kainą.
 
 7.2 Kiekvienas Apgyvendinimo paslaugų teikėjas yra atsakingas už visų mokesčių pervedimą atitinkamoms vyriausybinėms agentūroms ir (arba) įstaigoms.
 
@@ -192,7 +192,7 @@ Tik šią sutartį pasirašantis asmuo bus vienintelis paskirtas Apgyvendinimo T
 
 **11. Neprieinamumas / Neįvykdymas**
 
-11.1 Jei Apgyvendinimo paslaugų teikėjas negalėtų apsistoti (dėl per didelio užsakymų skaičiaus ar kitų priežasčių), dėl kurių svečias būtų perkeltas į kitą apgyvendinimo vietą, Apgyvendinimo paslaugų teikėjas sutinka dėti visas pastangas, kad išlaikytų svečius ir užsakymus, kad svečiai galėtų kuo ilgiau likti tokioje apgyvendinimo vietoje. Tuo atveju, jei Apgyvendinimo paslaugų teikėjas galiausiai turi perkelti svečią į kitą apgyvendinimo vietą, Apgyvendinimo paslaugų teikėjas sutinka su šiais punktais:
+11.1 Jei Apgyvendinimo paslaugų teikėjas negalėtų apsistoti (dėl per didelio užsakymų skaičiaus ar kitų priežasčių), dėl ko Svečius būtų priverstas perkelti į kitą apgyvendinimo vietą, Apgyvendinimo paslaugų teikėjas sutinka dėti visas pastangas, kad išlaikytų Svečius ir Užsakymus, jog Svečiai galėtų kuo ilgiau likti tokioje apgyvendinimo vietoje. Tuo atveju, jei Apgyvendinimo paslaugų teikėjas galiausiai turi perkelti Svečius į kitą apgyvendinimo vietą, Apgyvendinimo paslaugų teikėjas sutinka su šiais punktais:
 
 * Nedelsiant pranešti „Wink“ prieš perkeliant svečią;
 * Perkelti svečią į kitą, lygiavertės arba aukštesnės kategorijos / įvertinimo, būstą toje pačioje vietovėje, tomis pačiomis užsakytomis sąlygomis, ir tokį perkėlimą apmoka Apgyvendinimo paslaugų teikėjas be jokio papildomo mokesčio atitinkamam svečiui, ir apima, be apribojimų.
@@ -239,7 +239,7 @@ Apgyvendinimo paslaugų teikėjas garantuoja ir pareiškia, kad visapusiškai la
 
 14.2 Kad visi Dalyvaujančio viešbučio darbuotojai bus tinkamai kvalifikuoti ir apmokyti vykdyti savo įsipareigojimus pagal šią Sutartį;
 
-14.3 Apgyvendinimo paslaugų teikėjas privalo laikytis visų taikomų įstatymų, standartų ir kitų atitinkamų institucijų reikalavimų, susijusių su Kambarių ir visų kitų kiekvieno Dalyvaujančio viešbučio dalių ar bet kokių susijusių paslaugų ir (arba) įrenginių teikimu ir (arba) savo įsipareigojimais pagal šią Sutartį;
+14.3 Tas Apgyvendinimo paslaugų teikėjas privalo laikytis visų taikomų įstatymų, standartų ir kitų atitinkamų institucijų reikalavimų, susijusių su Kambarių ir visų kitų kiekvieno Dalyvaujančio viešbučio dalių ar bet kokių susijusių paslaugų ir (arba) įrenginių teikimu ir (arba) savo įsipareigojimais pagal šią Sutartį;
 
 14.4 Kad kiekvienas Dalyvaujantis viešbutis perskaitė ir sutiko su šios Sutarties sąlygomis;
 
@@ -357,7 +357,7 @@ Jei vyriausybinė teisėsaugos institucija, teismas ar kompetentingos jurisdikci
 
 **29. Šalių santykiai**
 
-Šalys, vykdydamos šią Sutartį, yra ir veiks kaip nepriklausomi rangovai. Nė viena Šalis jokiu tikslu neveiks ir nebus laikoma kitos Šalies atstove ar partnere ir nė viena Šalis neturės teisės jokiu būdu įpareigoti kitos Šalies.
+Šalys, vykdydamos šią Sutartį, yra ir veiks kaip nepriklausomi rangovai. Nė viena Šalis neveiks ir nebus laikoma kitos Šalies atstove ar partnere jokiu tikslu ir nė viena Šalis neturės teisės jokiu būdu įpareigoti kitos Šalies.
 
 **30. Užduotis**
 

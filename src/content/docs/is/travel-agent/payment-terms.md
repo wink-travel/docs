@@ -94,7 +94,7 @@ Ef þörf er á gjaldmiðilsbreytingu verður hún unnin á gengi greiðsluþjó
 Wink áskilur sér rétt til að breyta þessum greiðsluskilmálum hvenær sem er. Allar breytingar verða tilkynntar ferðaskrifstofunni með minnst 30 daga fyrirvara fyrir gildistöku. Áframhaldandi notkun Wink-kerfisins eftir gildistöku jafngildir samþykki á breyttum skilmálum.
 
 **8. Gildandi lög og lögsaga**\
-Þessir greiðsluskilmálar eru háðir lögum Singapúr. Öllum deilum sem kunna að rísa vegna þessara skilmála skal leyst fyrir dómstólum Singapúr.
+Þessir greiðsluskilmálar eru háðir lögum Singapúr. Öllum deilum sem rísa upp vegna eða tengjast þessum skilmálum skal leyst fyrir dómstólum Singapúr.
 
 Þessir greiðsluskilmálar eru óaðskiljanlegur hluti af og bæta við greiðsluákvæðin sem fram koma í aðalsamningnum, „SKILMÁLAR FERÐASKRIFSTOFU\_220924,“ milli Wink og ferðaskrifstofunnar.
 

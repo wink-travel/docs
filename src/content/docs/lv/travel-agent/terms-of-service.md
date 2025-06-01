@@ -95,7 +95,7 @@ Visi ceļojumu aģenti joprojām var veikt rezervācijas, izmantojot mūsu ceļo
 * 1,5 % rezervācijas maksa par Wink.
 * Ceļojumu aģentu komisija.
 
-3.3**Neto maksājums:**&#x41;tlikušo neto maksājumu Ceļojumu aģents izmaksā attiecīgajam Izmitināšanas pakalpojumu sniedzējam saskaņā ar atsevišķas vienošanās noteikumiem starp Ceļojumu aģentu un Izmitināšanas pakalpojumu sniedzēju. Wink nav atbildīgs par jebkādu maksājumu veikšanu Izmitināšanas pakalpojumu sniedzējam.
+3.3**Neto maksājums:**&#x41;tlikušo neto maksājumu ceļojumu aģents izmaksā attiecīgajam izmitināšanas pakalpojumu sniedzējam saskaņā ar atsevišķas vienošanās noteikumiem starp ceļojumu aģentu un izmitināšanas pakalpojumu sniedzēju. Wink nav atbildīgs par jebkādu maksājumu veikšanu izmitināšanas pakalpojumu sniedzējam.
 
 3.4**Atsevišķs līgums:**&#x43;eļojumu aģentam ir jānoslēdz atsevišķs līgums ar katru Izmitināšanas pakalpojumu sniedzēju, kurā sīki izklāstīti maksāšanas noteikumi un nosacījumi. Šis līgums starp Wink un Ceļojumu aģentu neregulē attiecības starp Ceļojumu aģentu un Izmitināšanas pakalpojumu sniedzējiem.
 
@@ -187,7 +187,7 @@ Visi ceļojumu aģenti joprojām var veikt rezervācijas, izmantojot mūsu ceļo
 
 7.10**Atlīdzība:**
 
-* Ceļojumu aģents atlīdzina Pakalpojumu sniedzējam visus zaudējumus, zaudējumus, saistības un izdevumus, kas izriet no Ceļojumu aģenta šī Līguma pārkāpuma vai ir saistīti ar to, tostarp, bet ne tikai, jebkādu piemērojamo likumu neievērošanu, pakalpojumu sagrozīšanu vai saistību nepildīšanu pret viesiem vai izmitināšanas pakalpojumu sniedzējiem.
+* Ceļojumu aģents atlīdzina Pakalpojumu sniedzējam visus zaudējumus un pasargā Pakalpojumu sniedzēju no jebkādām prasībām, zaudējumiem, saistībām un izdevumiem, kas izriet no Ceļojumu aģenta šī Līguma pārkāpuma vai ir saistīti ar to, tostarp, bet ne tikai, jebkādu piemērojamo likumu neievērošanu, pakalpojumu sagrozīšanu vai saistību nepildīšanu pret viesiem vai izmitināšanas pakalpojumu sniedzējiem.
 
 **8. Komisijas maksas un nodevas**
 
@@ -217,7 +217,7 @@ Visi ceļojumu aģenti joprojām var veikt rezervācijas, izmantojot mūsu ceļo
 
 11.2**Strīdu risināšana:**
 
-11.2.1**Sarunas:**&#x4A;ebkāda strīda, prasības, jautājuma vai domstarpības gadījumā, kas izriet no šī Līguma vai ir saistītas ar to, puses vispirms cenšas atrisināt strīdu labticīgu sarunu ceļā. Šādas sarunas sākas pēc tam, kad viena puse iesniedz rakstisku paziņojumu otrai pusei.
+11.2.1**Sarunas:**&#x4A;ebkāda strīda, prasības, jautājuma vai domstarpības gadījumā, kas izriet no šī Līguma vai ir saistībā ar to, puses vispirms cenšas atrisināt strīdu labticīgu sarunu ceļā. Šādas sarunas sākas pēc tam, kad viena puse iesniedz rakstisku paziņojumu otrai pusei.
 
 11.2.2**Arbitrāža:**&#x4A;a strīdu nevar atrisināt sarunu ceļā trīsdesmit (30) dienu laikā, strīds tiek nodots izskatīšanai šķīrējtiesā un galīgi atrisināts saskaņā ar Singapūras Starptautiskā šķīrējtiesas centra (SIAC) noteikumiem, kas tiek uzskatīti par iekļautiem šajā punktā ar atsauci. Šķīrējtiesnešu skaits ir viens, un šķīrējtiesas mītne vai juridiskā vieta ir Singapūra. Šķīrējtiesas procesā izmantojamā valoda ir angļu valoda.
 
@@ -225,7 +225,7 @@ Visi ceļojumu aģenti joprojām var veikt rezervācijas, izmantojot mūsu ceļo
 
 **12. Nepārvarama vara**
 
-12.1**Definīcija**Neviena no pusēm nav atbildīga par jebkādu saistību neizpildi vai kavēšanos saskaņā ar šo Līgumu, ja šāda neizpildīšana vai kavēšanās ir radusies nepārvaramas varas apstākļa dēļ. "Nepārvaramas varas apstāklis" nozīmē jebkuru notikumu, kas ir ārpus puses saprātīgas kontroles, tostarp, bet ne tikai, dabas katastrofas (piemēram, zemestrīces, plūdi vai viesuļvētras), karš, terorisms, pilsoņu nemieri, pandēmijas, valdības darbības vai jebkurš cits notikums, ko nevarēja saprātīgi paredzēt vai novērst.
+12.1**Definīcija**Neviena no pusēm nav atbildīga par jebkādu saistību neizpildi vai kavēšanos saskaņā ar šo Līgumu, ja šāda neizpildīšana vai kavēšanās ir radusies nepārvaramas varas apstākļa dēļ. "Nepārvaramas varas apstāklis" nozīmē jebkuru notikumu, kas ir ārpus puses saprātīgas kontroles, tostarp, bet ne tikai, dabas katastrofas (piemēram, zemestrīces, plūdi vai viesuļvētras), karš, terorisms, pilsoņu nemieri, pandēmijas, valdības darbības vai jebkurš cits notikums, ko nevarēja pamatoti paredzēt vai novērst.
 
 12.2**Paziņojums**Skartajai pusei pēc iespējas ātrāk rakstiski jāpaziņo otrai pusei pēc nepārvaramas varas apstākļa iestāšanās. Šādā paziņojumā jāiekļauj nepārvaramas varas apstākļa apraksts, tā paredzamais ilgums un skartās saistības.
 

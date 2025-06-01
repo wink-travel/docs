@@ -68,7 +68,7 @@ Ces conditions sont disponibles sous[Portail d'affiliation > Conditions d'utilis
 
 * **« Paiements »**&#x64;ésigne les obligations financières découlant du présent Accord, y compris les commissions, les honoraires ou autres frais, payables par une partie à l'autre.
 
-* **« Facilitateur de paiement »**&#x65;st une filiale à 100 % de Traveliko Singapore Pte. Ltd. qui régit les services de paiement, collectant les paiements des clients en facturant le mode de paiement associé à leur achat, tel que carte de crédit, carte de débit, virement bancaire, crypto-monnaies ou PayPal, etc.
+* **« Facilitateur de paiement »**&#x65;st une filiale à 100 % de Traveliko Singapore Pte. Ltd. qui régit les services de paiement, collectant les paiements des clients en facturant le mode de paiement associé à leur achat tel que carte de crédit, carte de débit, virement bancaire, crypto-monnaies ou PayPal, etc.
 
 * **"Plate-forme"**&#x64;ésigne le système en ligne exploité par le prestataire de services par l'intermédiaire duquel l'agent de voyages peut effectuer ou gérer les réservations pour les clients.
 
@@ -95,7 +95,7 @@ Ces conditions sont disponibles sous[Portail d'affiliation > Conditions d'utilis
 * 1,5% de frais de réservation pour Wink.
 * Commission d'agent de voyages.
 
-3.3**Paiement net :**&#x4C;e solde net sera versé par l'agent de voyages à l'hébergeur concerné conformément aux termes d'un accord séparé entre l'agent de voyages et l'hébergeur. Wink ne sera tenu d'effectuer aucun paiement à l'hébergeur.
+3.3**Paiement net :**&#x4C;e solde net sera versé par l'agent de voyages à l'hébergeur concerné conformément aux termes d'un accord séparé entre l'agent de voyages et l'hébergeur. Wink ne sera pas tenu d'effectuer de paiements à l'hébergeur.
 
 3.4**Accord séparé :**&#x4C;'agent de voyages est tenu de conclure un accord distinct avec chaque hébergeur détaillant les conditions de paiement. Cet accord entre Wink et l'agent de voyages ne régit pas la relation entre l'agent de voyages et les hébergeurs.
 
@@ -125,11 +125,11 @@ Ces conditions sont disponibles sous[Portail d'affiliation > Conditions d'utilis
 
 6.1**Calendrier de paiement :**
 
-* Tous les paiements dus à Wink par l'agent de voyages en vertu du présent Contrat doivent être effectués dans les 15 jours suivant la réception de la facture exacte de Wink, sauf accord écrit contraire. Les paiements doivent être effectués en USD, sans aucune déduction ni retenue, sauf si la loi l'exige.
+* Tous les paiements dus à Wink par l'agent de voyages en vertu du présent Contrat doivent être effectués dans les 15 jours suivant la réception de la facture exacte de Wink, sauf accord contraire écrit. Les paiements doivent être effectués en USD, sans aucune déduction ni retenue, sauf si la loi l'exige.
 
 6.2**Retards de paiement :**
 
-* En cas de non-paiement d'un paiement dû au titre du présent Contrat à la date d'échéance, Wink se réserve le droit de facturer des intérêts au taux le plus bas de 5 % par mois ou au taux maximum autorisé par la loi, calculés à compter de la date d'échéance jusqu'à la date de paiement. De plus, Wink peut suspendre ses services jusqu'à réception du paiement. Toutefois, en cas d'erreur dans la facture soumise par Wink, l'agent de voyages ne sera tenu de régler que la partie correcte et exacte de la facture et ne sera soumis à aucun intérêt ni pénalité pour non-paiement de la partie incorrecte.
+* En cas de non-paiement d'un paiement dû au titre du présent Contrat à la date d'échéance, Wink se réserve le droit de facturer des intérêts au taux le plus bas de 5 % par mois ou du taux maximum autorisé par la loi, calculés à compter de la date d'échéance jusqu'à la date de paiement. Wink peut également suspendre ses services jusqu'à réception du paiement. Toutefois, en cas d'erreur dans la facture soumise par Wink, l'agent de voyages ne sera tenu de régler que la partie correcte et exacte de la facture et ne sera soumis à aucun intérêt ni pénalité pour non-paiement de la partie incorrecte.
 
 6.3**Remboursements et crédits :**
 
@@ -159,7 +159,7 @@ Ces conditions sont disponibles sous[Portail d'affiliation > Conditions d'utilis
 
 7.3**Promotion des services :**
 
-* L'agent de voyages s'engage à promouvoir activement les services proposés via la Plateforme, conformément aux directives du Prestataire de services. Cela comprend, sans s'y limiter, des activités marketing, la mise à jour des supports promotionnels et la garantie de l'exactitude et de la conformité du contenu promotionnel aux normes publicitaires en vigueur.
+* L'agent de voyages s'engage à promouvoir activement les services proposés sur la plateforme, conformément aux directives du prestataire de services. Cela comprend, sans s'y limiter, des activités marketing, la mise à jour des supports promotionnels et la garantie de l'exactitude et de la conformité du contenu promotionnel aux normes publicitaires en vigueur.
 
 7.4**Gestion des réservations :**
 

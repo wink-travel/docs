@@ -65,7 +65,7 @@ Subtotal = 1.000 - 15 = 985
 
 3.2 **Método de pagamento:** Os pagamentos à Wink serão efetuados através do método de pagamento especificado na fatura. Quaisquer custos associados à transferência do pagamento são da responsabilidade do Agente de Viagens.
 
-3.3 **Pagamentos atrasados:** Em caso de atraso no pagamento, a Wink reserva-se o direito de cobrar juros sobre o valor em atraso à taxa de 5% ao mês ou à taxa máxima permitida por lei, consoante o que for mais baixo. Além disso, se o Agente de Viagens atrasar o pagamento ao Fornecedor de Alojamento, de acordo com os termos do Contrato Separado, a Wink reserva-se o direito de suspender o acesso ao Serviço até que todos os pagamentos pendentes à Wink e ao Fornecedor de Alojamento sejam resolvidos. No entanto, caso exista algum erro ou incorreção na fatura enviada pela Wink, o Agente de Viagens apenas será obrigado a efetuar o pagamento da parte correta e precisa da fatura e não estará sujeito a qualquer cobrança de juros ou penalização por não pagamento da parte incorreta da fatura.
+3.3 **Pagamentos atrasados:** Em caso de atraso no pagamento, a Wink reserva-se o direito de cobrar juros sobre o valor em atraso à taxa de 5% ao mês ou à taxa máxima permitida por lei, consoante o que for mais baixo. Além disso, se o Agente de Viagens atrasar o pagamento ao Fornecedor de Alojamento, de acordo com os termos do Contrato Separado, a Wink reserva-se o direito de suspender o acesso ao Serviço até que todos os pagamentos pendentes à Wink e ao Fornecedor de Alojamento sejam resolvidos. No entanto, caso exista algum erro ou imprecisão na fatura enviada pela Wink, o Agente de Viagens apenas será obrigado a efetuar o pagamento da parte correta e precisa da fatura e não estará sujeito a qualquer cobrança de juros ou penalização por não pagamento da parte incorreta da fatura.
 
 **4. Funções e responsabilidades**
 
@@ -91,7 +91,7 @@ Se for necessária alguma conversão de moeda, esta será processada à taxa for
 Quaisquer litígios decorrentes ou relacionados com estes Termos de Pagamento serão tratados conforme estipulado nos procedimentos de resolução de litígios no Contrato Principal, garantindo uma abordagem consistente e unificada para resolver conflitos entre a Wink e o Agente de Viagens.
 
 **7. Modificação dos Termos**\
-A Wink reserva-se o direito de modificar estes Termos de Pagamento a qualquer momento. Quaisquer alterações serão comunicadas ao Agente de Viagens pelo menos 30 dias antes de entrarem em vigor. A utilização continuada da plataforma Wink após a data de entrada em vigor constitui aceitação dos termos modificados.
+A Wink reserva-se o direito de modificar estes Termos de Pagamento a qualquer momento. Quaisquer alterações serão comunicadas ao Agente de Viagens pelo menos 30 dias antes de entrarem em vigor. A utilização continuada da plataforma Wink após a data efetiva constitui a aceitação dos termos modificados.
 
 **8.º Lei aplicável e jurisdição**\
 Estes Termos de Pagamento são regidos pelas leis de Singapura. Quaisquer litígios decorrentes ou relacionados com estes termos serão resolvidos nos tribunais de Singapura.

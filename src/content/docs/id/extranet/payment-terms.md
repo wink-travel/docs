@@ -107,7 +107,7 @@ Hanya orang yang menandatangani perjanjian ini yang akan menjadi satu-satunya pe
 
 5.2 Fasilitator Pembayaran mengambil pendekatan tanpa toleransi terhadap pelanggaran norma perdagangan internasional, undang-undang pencegahan penyuapan dan korupsi, dan pembatasan yang berlaku pada perdagangan, aliran dana, dan pendanaan terorisme.
 
-Penyedia Akomodasi menjamin bahwa mereka melakukan dan akan mematuhi, dan Pihak Terkait melakukan dan akan mematuhi Kode Etik Pemasok Fasilitator Pembayaran.
+Penyedia Akomodasi menjamin bahwa mereka melakukan dan akan mematuhi, dan Pihak Terkaitnya melakukan dan akan mematuhi Kode Etik Pemasok Fasilitator Pembayaran.
 
 Penyedia Akomodasi menyatakan, menjamin, dan berjanji bahwa mereka mematuhi dan akan mematuhi dalam semua hal semua norma perdagangan internasional, pembatasan yang berlaku pada perdagangan, arus dana, dan pendanaan terorisme serta undang-undang pencegahan penyuapan dan korupsi, termasuk, namun tidak terbatas pada Undang-Undang Anti-Korupsi Amerika Serikat, Undang-Undang Suap Inggris tahun 2010, dan Undang-Undang Pencegahan Korupsi Singapura.
 

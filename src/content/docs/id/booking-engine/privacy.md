@@ -22,7 +22,7 @@ Data pribadi yang perlu dikumpulkan, disusun, digunakan, dan diproses oleh Perus
 
 (2) Informasi kontak seperti nomor telepon, email atau informasi akun media sosial.
 
-(3) Data pribadi lainnya yang mungkin Anda berikan kepada Perusahaan selama komunikasi seperti informasi mengenai hal-hal yang ingin ditanyakan, informasi yang menarik, atau informasi identitas pribadi lainnya yang Anda berikan kepada Perusahaan secara langsung melalui berbagai saluran komunikasi.
+(3) Data pribadi lainnya yang mungkin Anda berikan kepada Perusahaan selama komunikasi seperti informasi mengenai hal-hal yang ingin ditanyakan, informasi yang menarik atau informasi identitas pribadi lainnya yang Anda berikan kepada Perusahaan secara langsung melalui berbagai saluran komunikasi.
 
 (4) Dalam hal komunikasi melalui situs web, dapat menyertakan informasi teknis Anda seperti Alamat IP, Cookie, termasuk informasi tentang perilaku penelusuran Anda.
 

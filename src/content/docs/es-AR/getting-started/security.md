@@ -19,7 +19,7 @@ Como parte de nuestro compromiso continuo con la seguridad y la protección de l
 
 Este documento se actualizará a medida que se produzcan nuevos informes o cuando se produzcan cambios significativos.
 
-Dominios en el ámbito:\
+Dominios en el alcance:\
 \*.guiño.viaje\
 \*.trippay.io
 
@@ -33,7 +33,7 @@ Nuestras pruebas de penetración son integrales y cubren una amplia gama de aspe
 
 * **Los 10 mejores de OWASP:**&#x4E;uestras pruebas se centran específicamente en los riesgos de seguridad más críticos, como inyección, autenticación rota y secuencias de comandos entre sitios (XSS).
 * **Pruebas de caja negra y caja gris:**&#x44;ependiendo del alcance, nuestro equipo utiliza estas metodologías para simular escenarios de ataques tanto externos como internos.
-* **Pruebas automatizadas y manuales:**&#x55;tilizamos Burp Suite Pro, un conjunto de herramientas líder en pruebas de seguridad, para realizar análisis de seguridad automatizados y complementar las técnicas de prueba manuales para identificar vulnerabilidades complejas y obtener la mejor cobertura posible. Para una identificación más específica de vulnerabilidades, utilizamos herramientas especializadas, como SQLmap.
+* **Pruebas automatizadas y manuales:**&#x55;tilizamos Burp Suite Pro, un conjunto de herramientas líder en pruebas de seguridad, para realizar análisis de seguridad automatizados y complementar las técnicas de pruebas manuales para identificar vulnerabilidades complejas y obtener la mejor cobertura posible. Para una identificación más específica de vulnerabilidades, utilizamos herramientas especializadas, como SQLmap.
 
 ## Resumen de los hallazgos
 
@@ -56,8 +56,8 @@ Ambas vulnerabilidades se consideran críticas, ya que podrían haber tenido gra
 
 Hemos tomado las siguientes medidas para abordar las vulnerabilidades identificadas:
 
-* **Parches inmediatos:**&#x4C;as vulnerabilidades críticas fueron corregidas dentro de las 48 horas siguientes a su descubrimiento.
-* **Revisión y endurecimiento del código:**&#x45;l equipo de desarrollo ha implementado controles de seguridad adicionales según nuestras recomendaciones.
+* **Parches inmediatos:**&#x4C;as vulnerabilidades críticas fueron solucionadas dentro de las 48 horas siguientes a su descubrimiento.
+* **Revisión y fortalecimiento del código:**&#x45;l equipo de desarrollo ha implementado controles de seguridad adicionales según nuestras recomendaciones.
 
 ## Mejora continua
 
@@ -75,5 +75,5 @@ Nos dedicamos a mantener un entorno de aplicaciones seguro para nuestros usuario
 
 Este documento se actualizará continuamente a medida que se publiquen nuevos informes de pruebas de penetración. Para acceder al informe completo, contáctenos a través del correo electrónico que aparece a continuación. Las futuras actualizaciones incluirán las vulnerabilidades recientemente identificadas, las medidas de remediación y los ajustes a nuestras metodologías de prueba.
 
-Para más consultas, póngase en contacto con security@wink.travel.
+Para más consultas, contacte con security@wink.travel.
 

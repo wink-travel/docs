@@ -17,7 +17,7 @@ Tento model sa vzťahuje na 95 % všetkých rezervácií.
 
 Poplatky za žmurknutie`5.5% per booking`na údržbu platformy.
 Väčšina z toho ide na platobnú bránu (Visa, MasterCard atď.). Priemerná rezervácia nás stojí`2.95%`získať; niekedy až tak vysoko ako`3.6%`Čiastočné vrátenie peňazí nás ešte viac spomaľuje, pretože platobná brána to vníma ako nový poplatok.
-Chceme byť teraz úplne transparentní, pokiaľ ide o ceny, aby sme všetkým ušetrili čas predtým, ako sa pokúsia vyjednať ďalšie zľavy pred použitím služby Wink. Náš cenový model je viac než férový a my si tiež musíme zarobiť na živobytie.
+Chceme byť teraz úplne transparentní, pokiaľ ide o ceny, aby sme všetkým ušetrili čas predtým, ako sa pokúsia vyjednať ďalšie zľavy pred použitím služby Wink. Náš cenový model je viac než férový a my si tiež musíme z niečoho zarobiť.
 
 ### Rozdelenie
 

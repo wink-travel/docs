@@ -10,7 +10,7 @@ Ang aming solusyon para sa mga rehistradong ahente sa paglalakbay ay [Ahente ng 
 
 Maaaring piliin ng mas advanced na mga ahente sa paglalakbay na magsama sa antas ng API para sa mga layunin ng paghawak ng mga pagbabayad at mga payout sa labas ng platform ng Wink.
 
-Ang mga ahente sa paglalakbay ay may subset ng parehong mga feature ng portal tulad ng [Wink Studio](/studio/what-is-studio) kaya hindi na natin sila tatakpan ulit dito.
+Ang mga ahente sa paglalakbay ay may subset ng parehong mga feature ng portal tulad ng [Wink Studio](/studio/what-is-studio) kaya hindi na natin sila sasakupin dito.
 
 ## Maghanap
 

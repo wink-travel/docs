@@ -16,7 +16,7 @@ Tai galima padaryti tik per mūsų API ir tik tiems kelionių agentams, kurie nu
 
 Visi kelionių agentai vis dar gali užsisakyti per mūsų kelionių agentų portalą, naudodamiesi „Wink“ mokėjimo vartais, savo arba keliautojo kreditine kortele. Todėl visi kelionių agentai taip pat turi sutikti su mokėjimo sąlygomis, kai „Wink“ mokėjimo vartai yra registruotas prekybininkas.
 
-Tos sąlygos pateikiamos pagal[Partnerių portalas > Mokėjimo sąlygos](/studio/payment-terms).
+Šios sąlygos yra prieinamos pagal[Partnerių portalas > Mokėjimo sąlygos](/studio/payment-terms).
 :::
 
 **„WINK“ MOKĖJIMO SĄLYGOS**\

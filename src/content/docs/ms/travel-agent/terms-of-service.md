@@ -145,7 +145,7 @@ Terma tersebut tersedia di bawah [Portal Gabungan > Syarat Perkhidmatan](/studio
 
 6.6 **Pertikaian Pembayaran:**
 
-* Sekiranya berlaku pertikaian mengenai sebarang invois, Ejen Pelancongan hendaklah memberitahu Wink dalam tempoh 10 hari dari tarikh invois, memberikan sebab terperinci untuk pertikaian itu. Kedua-dua pihak hendaklah berunding dengan suci hati untuk menyelesaikan pertikaian dengan segera. Bahagian invois yang tidak dipertikaikan hendaklah dibayar pada tarikh tamat tempoh.
+* Sekiranya berlaku pertikaian mengenai sebarang invois, Ejen Pelancongan hendaklah memberitahu Wink dalam masa 10 hari dari tarikh invois, memberikan sebab terperinci untuk pertikaian itu. Kedua-dua pihak hendaklah berunding dengan suci hati untuk menyelesaikan pertikaian dengan segera. Bahagian invois yang tidak dipertikaikan hendaklah dibayar pada tarikh tamat tempoh.
 
 **7. Tanggungjawab Ejen Pelancongan**
 
@@ -155,7 +155,7 @@ Terma tersebut tersedia di bawah [Portal Gabungan > Syarat Perkhidmatan](/studio
 
 7.2 **Perwakilan Perkhidmatan yang Tepat:**
 
-* Ejen Pelancongan hendaklah mewakili perkhidmatan dan penginapan yang ditawarkan dengan tepat melalui Platform. Ejen Pelancongan bertanggungjawab untuk memastikan bahawa semua maklumat yang diberikan kepada Tetamu, termasuk tetapi tidak terhad kepada penerangan, harga dan ketersediaan, adalah tepat dan terkini.
+* Ejen Pelancongan hendaklah mewakili dengan tepat perkhidmatan dan penginapan yang ditawarkan melalui Platform. Ejen Pelancongan bertanggungjawab untuk memastikan bahawa semua maklumat yang diberikan kepada Tetamu, termasuk tetapi tidak terhad kepada penerangan, harga dan ketersediaan, adalah tepat dan terkini.
 
 7.3 **Promosi Perkhidmatan:**
 
@@ -183,11 +183,11 @@ Terma tersebut tersedia di bawah [Portal Gabungan > Syarat Perkhidmatan](/studio
 
 7.9 **Pematuhan Terma Platform:**
 
-* Ejen Pelancongan hendaklah mematuhi semua terma dan syarat yang berkaitan dengan penggunaan Platform Pembekal Perkhidmatan, termasuk sebarang kemas kini atau perubahan kepada terma tersebut. Ejen Pelancongan bertanggungjawab untuk memastikan bahawa pekerja dan ejennya menyedari dan mematuhi syarat-syarat ini.
+* Ejen Pelancongan hendaklah mematuhi semua terma dan syarat yang berkaitan dengan penggunaan Platform Pembekal Perkhidmatan, termasuk sebarang kemas kini atau perubahan kepada terma tersebut. Ejen Pelancongan bertanggungjawab untuk memastikan pekerja dan ejennya mengetahui dan mematuhi syarat-syarat ini.
 
 7.10 **Ganti rugi:**
 
-* Ejen Pelancongan hendaklah menanggung rugi dan memastikan Pembekal Perkhidmatan tidak berbahaya daripada sebarang dan semua tuntutan, kerosakan, liabiliti, dan perbelanjaan yang timbul daripada atau berkaitan dengan pelanggaran Ejen Pelancongan Perjanjian ini, termasuk tetapi tidak terhad kepada sebarang kegagalan untuk mematuhi undang-undang yang terpakai, salah nyata perkhidmatan, atau kegagalan untuk memenuhi kewajipannya kepada Tetamu atau Penyedia Penginapan.
+* Ejen Pelancongan hendaklah menanggung rugi dan memastikan Pembekal Perkhidmatan tidak berbahaya daripada sebarang dan semua tuntutan, kerosakan, liabiliti, dan perbelanjaan yang timbul daripada atau berkaitan dengan pelanggaran Ejen Pelancongan terhadap Perjanjian ini, termasuk tetapi tidak terhad kepada sebarang kegagalan untuk mematuhi undang-undang yang terpakai, salah nyata perkhidmatan, atau kegagalan untuk memenuhi kewajipannya kepada Tetamu atau Penyedia Penginapan.
 
 **8. Komisen dan Yuran**
 
@@ -201,11 +201,11 @@ Terma tersebut tersedia di bawah [Portal Gabungan > Syarat Perkhidmatan](/studio
 
 9.2 **Ganti rugi:** Setiap Pihak bersetuju untuk menanggung rugi dan memastikan pihak yang lain tidak berbahaya daripada sebarang tuntutan yang timbul daripada pelanggaran Perjanjian ini atau kecuaian Pihak yang menanggung rugi.
 
-9.3 **Force Majeure:** Mana-mana Pihak tidak akan bertanggungjawab atas kelewatan atau kegagalan untuk melaksanakan kerana sebab di luar kawalan munasabah mereka, termasuk perbuatan Tuhan, bencana alam, peperangan, keganasan, mogok, dsb.
+9.3 **Force Majeure:** Mana-mana Pihak tidak akan bertanggungjawab atas kelewatan atau kegagalan untuk melaksanakan disebabkan oleh sebab di luar kawalan munasabah mereka, termasuk perbuatan Tuhan, bencana alam, peperangan, keganasan, mogok, dsb.
 
 **10. Tempoh dan Penamatan**
 
-10.1 **Istilah:** Perjanjian ini hendaklah bermula pada tarikh pelaksanaan dan berterusan sehingga ditamatkan oleh mana-mana Pihak.
+10.1 **Istilah:** Perjanjian ini akan bermula pada tarikh pelaksanaan dan berterusan sehingga ditamatkan oleh mana-mana Pihak.
 
 10.2 **Penamatan:** Mana-mana Pihak boleh menamatkan Perjanjian ini mengikut budi bicara mereka.
 
@@ -217,7 +217,7 @@ Terma tersebut tersedia di bawah [Portal Gabungan > Syarat Perkhidmatan](/studio
 
 11.2 **Penyelesaian Pertikaian:**
 
-11.2.1 **Rundingan:** Sekiranya berlaku sebarang pertikaian, tuntutan, persoalan, atau perselisihan faham yang timbul daripada atau berkaitan dengan Perjanjian ini, pihak-pihak hendaklah terlebih dahulu cuba menyelesaikan pertikaian itu melalui rundingan suci hati. Rundingan sedemikian hendaklah bermula dengan notis bertulis oleh satu pihak kepada pihak yang lain.
+11.2.1 **Rundingan:** Sekiranya berlaku sebarang pertikaian, tuntutan, persoalan atau perselisihan faham yang timbul daripada atau berkaitan dengan Perjanjian ini, pihak-pihak hendaklah terlebih dahulu cuba menyelesaikan pertikaian itu melalui rundingan suci hati. Rundingan sedemikian hendaklah bermula dengan notis bertulis oleh satu pihak kepada pihak yang lain.
 
 11.2.2 **Timbangtara:** Jika pertikaian itu tidak dapat diselesaikan melalui rundingan dalam masa tiga puluh (30) hari, pertikaian itu hendaklah dirujuk dan akhirnya diselesaikan melalui timbang tara di bawah Peraturan Pusat Timbang Tara Antarabangsa Singapura (SIAC), yang dianggap sebagai digabungkan melalui rujukan ke dalam klausa ini. Bilangan penimbang tara hendaklah seorang, dan kerusi, atau tempat sah, timbang tara ialah Singapura. Bahasa yang akan digunakan dalam prosiding timbang tara hendaklah bahasa Inggeris.
 

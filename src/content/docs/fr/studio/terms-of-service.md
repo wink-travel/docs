@@ -38,7 +38,7 @@ Wink et l'Affilié sont une « Partie » au présent Contrat et sont collectivem
 **« Marques de fournisseurs d'hébergement »**&#x64;ésigne tout terme ou mot-clé identique ou similaire au point de prêter à confusion (y compris les variations, traductions, fautes d'orthographe et formes singulières/plurielles) à toute marque commerciale ou nom commercial (enregistré ou non) appartenant à ou détenu par un fournisseur d'hébergement\
 **"Filiale"**&#x64;ésigne la Partie dont les coordonnées (de contact) pertinentes sont indiquées dans le Formulaire d'inscription du Partenaire affilié.\
 **« Départs d'affiliés »**&#x61; le sens défini à l’article 5.4.\
-**« Groupe d'affiliation »**&#x64;ésigne la Société affiliée et la société holding ultime de la Société affiliée (y compris le groupe de sociétés ou d'entités qui sont sous le contrôle (direct ou indirect) de (la société holding ultime ou l'actionnaire(s) de) la Société affiliée).\
+**« Groupe d'affiliation »**&#x64;ésigne la Société affiliée et la société holding ultime de la Société affiliée (y compris le groupe de sociétés ou d'entités qui sont sous le contrôle (direct ou indirect) de (la société holding ultime ou l'actionnaire(s) de) la Société affiliée).\
 **« Formulaire d'inscription des partenaires affiliés »**&#x64;ésigne le formulaire d'inscription et d'enregistrement en ligne à remplir par l'Affilié.\
 **« Site(s) Web affilié(s) »**&#x64;ésigne le(s) site(s) Web et l'(les) application(s) détenus, contrôlés, hébergés et exploités par l'Affilié sur lesquels le Service sera mis à disposition.\
 **« Application(s) »**&#x64;ésigne une application native pour les appareils mobiles.\
@@ -208,7 +208,7 @@ L'Affilié s'engage à ne pas contacter, solliciter ou accepter un quelconque Fo
 4.7.1 Si l'Affilié possède ou utilise un nom de domaine (portant confusion) similaire aux marques Wink (le « Nom de domaine similaire ») pour son ou ses sites web (à la discrétion de Wink), ou s'il souhaite enregistrer, acquérir, utiliser, acheter ou obtenir un nom de domaine similaire (sous réserve de l'approbation écrite préalable de Wink), les dispositions suivantes s'appliquent. L'Affilié s'engage (et s'engage à ce que les sociétés qu'il contrôle s'engagent à ne pas) directement ou indirectement :
 
 1. enchérir ou acheter des droits de placement sur Internet pour le nom de domaine similaire ou toute partie ou similitude de celui-ci de quelque manière que ce soit dans l'une de ses publicités, y compris, mais sans s'y limiter, la publicité sur Internet et sur le Web.\
-   2\. inclure le nom de domaine similaire, en tout ou en partie, ou des variantes, traductions ou fautes d'orthographe similaires, dans les balises méta du code de tout site web. Cela inclut le méta-titre, les méta-mots-clés ou la méta-description.\
+   2\. inclure le nom de domaine similaire, en totalité ou en partie, ou toute variante, traduction ou faute d'orthographe similaire, dans les balises méta du code de tout site web. Cela inclut le méta-titre, les méta-mots-clés ou la méta-description.\
    3\. acheter, obtenir ou utiliser, directement ou indirectement, des mots-clés provenant de plateformes tierces afin de rediriger le trafic vers le nom de domaine similaire, et\
    4\. acheter le nom de domaine similaire ou toute partie de celui-ci, ou toute variante, traduction ou faute d'orthographe de celui-ci, pour l'utiliser dans des liens texte, des bannières publicitaires, des publicités pop-up ou tout autre type de publicité pouvant être associé à une campagne de mots clés.
 
@@ -398,7 +398,7 @@ Aucune renonciation à une violation ou à une condition du présent Contrat ne 
 
 **15. Divisibilité**
 
-Si une disposition du présent Contrat est jugée illégale, invalide ou autrement inapplicable en vertu des lois nationales par un organisme gouvernemental chargé de l'application de la loi, un tribunal ou une juridiction compétente, cette disposition sera alors interprétée, modifiée ou supprimée dans la mesure nécessaire pour rendre cette disposition et/ou le présent Contrat légaux, valides ou autrement applicables, et la partie restante de cette disposition et les autres dispositions restantes des présentes survivront, resteront pleinement en vigueur et continueront d'être contraignantes, et seront interprétées de manière à donner effet à l'intention des Parties dans toute la mesure du possible.
+Si une disposition du présent Accord est jugée illégale, invalide ou autrement inapplicable en vertu des lois nationales par un organisme gouvernemental chargé de l'application de la loi, un tribunal ou une cour compétente, cette disposition sera alors interprétée, modifiée ou supprimée dans la mesure nécessaire pour rendre cette disposition et/ou le présent Accord légaux, valides ou autrement applicables, et la partie restante de cette disposition et les autres dispositions restantes des présentes survivront, resteront pleinement en vigueur et continueront d'être contraignantes, et seront interprétées de manière à donner effet à l'intention des Parties dans toute la mesure du possible.
 
 **16. Relation entre les parties**
 

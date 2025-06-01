@@ -51,5 +51,5 @@ Habang binuo namin ang platform na ito ng at para sa mga hotelier... Ang bawat l
 
 ## Iba pa
 
-Maaaring makinabang sa paggamit ng Wink ang sinumang gustong maghanap at magbenta ng imbentaryo ng paglalakbay. Gawing aksyon ang iyong hilig sa hospitality sa pamamagitan ng pagkakaroon ng malaking komisyon sa bawat booking.
+Maaaring makinabang sa paggamit ng Wink ang sinumang gustong maghanap at magbenta ng imbentaryo ng paglalakbay. Gawing aksyon ang iyong hilig sa hospitality sa pamamagitan ng pagkakaroon ng magandang komisyon sa bawat booking.
 

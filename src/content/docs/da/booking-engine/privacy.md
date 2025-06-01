@@ -32,7 +32,7 @@ Formålet med behandling og brug af personoplysninger er, at virksomheden er nø
 
 (3) Med det formål at opbygge og forbedre forretningsrelationer, herunder at forbedre den service, som Virksomheden leverer til din fordel, hvor Virksomheden kan indsamle og/eller bruge dine personoplysninger med henblik på kontrol, servicesikring, ledelsesanalyse og løsning af forretningsrelaterede problemer, herunder, men ikke begrænset til, medarbejderuddannelse og planlægning af fremtidig serviceforbedring;
 
-(4) Med det formål at beskytte og forsvare Virksomhedens juridiske rettigheder i tilfælde af, at du og Virksomheden har en tvist; og
+(4) Med det formål at beskytte og forsvare virksomhedens juridiske rettigheder i tilfælde af, at du og virksomheden har en tvist; og
 
 (5) Med forbehold af et udtrykkeligt samtykke givet til Virksomheden, såsom markedsføring og nyhedsbrevskommunikation, kan Virksomheden behandle Personoplysningerne til de formål, der er defineret i samtykket.
 
@@ -56,7 +56,7 @@ Videregivelse af personoplysninger. Generelt vil dine personoplysninger ikke bli
 
 Virksomheden forpligter sig til at implementere passende sikkerhedsforanstaltninger for personoplysninger for at forhindre uautoriseret og ulovlig adgang, ændring, rettelse eller videregivelse. Virksomheden forpligter sig til at gennemgå disse foranstaltninger regelmæssigt for at sikre deres forenelighed med standarderne og gældende love.
 
-Den registreredes rettigheder, Virksomheden respekterer dine rettigheder som registreret i henhold til gældende lov. Du kan kontakte Virksomheden for at udøve dine rettigheder, som er (1) retten til at trække samtykke tilbage, (2) retten til indsigt, (3) retten til at anmode om en kopi af dine personoplysninger, (4) retten til at rette dine personoplysninger, (5) retten til at gøre indsigelse mod enhver behandling af personoplysningerne, (6) retten til at anmode om dataportabilitet, hvis Virksomheden opbevarer personoplysningerne i et format, der er læsbart eller almindeligt anvendt af automatiserede værktøjer eller udstyr, herunder retten til at overføre sådanne personoplysninger til andre dataansvarlige, (7) retten til at anmode om sletning eller afidentifikation af personoplysningerne, når behandlingen ikke er nødvendig, (8) retten til at anmode om suspendering af brugen af ​​personoplysningerne, og (9) retten til at indgive en klage.
+Den registreredes rettigheder, Virksomheden respekterer dine rettigheder som registreret i henhold til gældende lov. Du kan kontakte Virksomheden for at udøve dine rettigheder, som er (1) retten til at trække samtykke tilbage, (2) retten til indsigt, (3) retten til at anmode om en kopi af dine personoplysninger, (4) retten til at rette dine personoplysninger, (5) retten til at gøre indsigelse mod enhver behandling af dine personoplysninger, (6) retten til at anmode om dataportabilitet, hvis Virksomheden opbevarer personoplysningerne i et format, der er læsbart eller almindeligt anvendt af automatiserede værktøjer eller udstyr, herunder retten til at overføre sådanne personoplysninger til andre dataansvarlige, (7) retten til at anmode om sletning eller afidentifikation af personoplysningerne, når behandlingen ikke er nødvendig, (8) retten til at anmode om suspendering af brugen af ​​personoplysningerne, og (9) retten til at indgive en klage.
 
 Virksomhedens kontaktoplysninger
 

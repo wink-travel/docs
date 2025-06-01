@@ -19,7 +19,7 @@ Mūsu ekstranets ir pārdomāti izstrādāts, lai tas būtu pēc iespējas vienk
 Wink ir uzlabota satura pārvaldības sistēma īpašumu un pieredzes nodrošinātājiem. Visu, ko varat darīt kādā no mūsu lietotnēm, varat darīt, izmantojot API. Tas ļauj jums veikt dziļu integrāciju ar Wink tik lielā mērā, ka varat pārdot, izmantojot Wink, pat nepiesakoties nevienā no mūsu lietotnēm.
 
 :::tip\[Profesionāls padoms]
-Vai maksājat par dārgu multivides resursu mitināšanu, izmantojot Leonardo International? Jūs varat darīt tieši to pašu, izmantojot Wink, UN jūs iegūstat daudz vairāk iespēju attēlu un video manipulēšanai un precizēšanai.
+Vai maksājat par dārgu multivides resursu mitināšanu, izmantojot Leonardo International? Jūs varat darīt tieši to pašu, izmantojot Wink, UN jums ir daudz vairāk iespēju manipulēt un precīzi pielāgot savus attēlus un videoklipus.
 :::
 
 Visas šīs funkcijas jums ir bez maksas. Tikai veicot rezervāciju, mēs iekasējam nelielu maksu. Nekas nav ko zaudēt - viss ir jāiegūst.

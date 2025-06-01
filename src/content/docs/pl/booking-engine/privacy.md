@@ -30,7 +30,7 @@ Cel przetwarzania i wykorzystywania danych osobowych. Spółka jest zobowiązana
 
 (1) W celu zarządzania komunikacją, za pośrednictwem której komunikowałeś się ze Spółką, na przykład w celu udzielania odpowiedzi na pytania, dostarczania stosownych informacji zgodnie z żądaniem i wymaganiami, zarządzania skargami lub odpowiadania na komentarze kierowane bezpośrednio do Spółki za pośrednictwem różnych kanałów komunikacji, w tym ciągłej koordynacji, realizacji umowy o świadczenie usług i/lub wykonywania praw i obowiązków, na które Spółka i Ty możecie się zgodzić;
 
-(2) W celu wykonania zobowiązań prawnych, którym Spółka może podlegać pod pewnymi warunkami. Może to obejmować, ale nie wyłącznie, wykonywanie obowiązków związanych z przygotowywaniem dokumentów księgowych i podatków w związku z wszelkimi usługami świadczonymi przez Spółkę na Twoją rzecz;
+(2) W celu wykonania zobowiązań prawnych, którym Spółka może podlegać pod pewnymi warunkami. Może to obejmować, ale nie ogranicza się do, wykonywania obowiązków związanych z przygotowywaniem dokumentów księgowych i podatków w związku z wszelkimi usługami świadczonymi przez Spółkę na Twoją rzecz;
 
 (3) W celu budowania i ulepszania relacji biznesowych, w tym ulepszania usług świadczonych na Państwa korzyść przez Spółkę, które Spółka może gromadzić i/lub wykorzystywać Państwa dane osobowe w celu kontroli, zapewnienia usług, analizy zarządczej i rozwiązywania problemów związanych z działalnością, w tym, ale nie wyłącznie, szkolenia pracowników i planowania przyszłych ulepszeń usług;
 

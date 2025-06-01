@@ -71,7 +71,7 @@ Tässä sopimuksessa muualla määriteltyjen termien lisäksi seuraavat määrit
 
 **"Kumppani"**&#x74;arkoittaa mitä tahansa yritystä tai yksityishenkilöä, joka yhdistää Wink-alustan tai käyttää sitä mainostaakseen ja myydäkseen majoituspalvelujen tarjoajien tarjontaa yleisölleen ja/tai asiakkailleen palkkiota vastaan.
 
-**"Maksunvälittäjä"**&#x54;raveliko Singapore Pte. Ltd:n (”TripPay”) kokonaan omistama tytäryhtiö, joka hallinnoi maksupalveluita ja kerää maksuja vierailta (”maksu”) veloittamalla ostokseen liittyvää maksutapaa, kuten luottokorttia, pankkikorttia, tilisiirtoa, kryptovaluuttoja tai PayPalia jne., ja maksaa velan (”nettohinta”) majoituspaikan tarjoajalle.
+**"Maksunvälittäjä"**&#x54;raveliko Singapore Pte. Ltd:n (”TripPay”) kokonaan omistama tytäryhtiö, joka hallinnoi maksupalveluita ja kerää maksuja vierailta (”Taksa”) veloittamalla ostokseen liittyvää maksutapaa, kuten luottokorttia, pankkikorttia, tilisiirtoa, kryptovaluuttoja tai PayPalia jne., ja maksaa velan (”Nettohinta”) majoituspaikan tarjoajalle.
 
 **"Maksu sisään"**&#x74;arkoittaa vieraan suorittaman maksun vastaanottamista maksuvälittäjän toimesta.
 
@@ -199,11 +199,11 @@ Vain tämän sopimuksen allekirjoittaja on Majoituspalveluntarjoajan ainoa nimet
 * Ilmoittaakseen Winkille välittömästi ennen Vieraan uudelleensijoittamista;
 * Vieraan siirtäminen vastaavan tai korkeamman luokan/luokituksen omaavaan toiseen majoituspaikkaan samalla alueella ja samoilla varatuilla ehdoilla, ja majoituspalveluntarjoaja maksaa tällaisen siirron ilman lisäkustannuksia kyseiselle vieraalle, ja se sisältää rajoituksetta seuraavat:
 * Kaikki asianomaisen vieraan puolesta aiheutuneet kuljetus- ja muut muuttoon liittyvät kulut.
-* Jotta Wink voi vähentää kaikki saatavuuden keskeytyksestä ja/tai uudelleensijoittumisesta aiheutuvat suorat kustannukset Majoitusliikkeen saatavista siinä tapauksessa, että Winkille aiheutuu taloudellisia seuraamuksia, korvauksia tai kustannuksia tällaiseen saatavuuden keskeytykseen ja/tai uudelleensijoittumiseen liittyen.
+* Jotta Wink voi vähentää kaikki saatavillaolon keskeytyksestä ja/tai uudelleensijoittumisesta aiheutuvat suorat kustannukset Majoitusliikkeen saatavista siinä tapauksessa, että Winkille aiheutuu taloudellisia seuraamuksia, korvauksia tai kustannuksia tällaiseen saatavillaoloon ja/tai uudelleensijoittumiseen liittyen.
 
-11.2 Mikäli majoituspalveluntarjoaja ei täytä jotakin tämän sopimuksen ehtoa, mukaan lukien tilojen kohtuuttomat olosuhteet ja/tai puutteelliset tilat ja palvelut, Winkillä on oikeus lopettaa maksut ja vaatia sovittujen varausehtojen asianmukaista täyttämistä. Majoituspalveluntarjoaja vastaa joka tapauksessa kaikista vahinkoa kärsineelle vieraalle maksettavista korvauksista, eikä Wink ole vastuussa majoituspalveluntarjoajan tämän sopimuksen mukaisten velvoitteiden puutteellisesta täyttämisestä.
+11.2 Mikäli majoituspalveluntarjoaja ei täytä jotakin tämän sopimuksen ehtoa, mukaan lukien tilojen ja/tai tilojen ja palveluiden puutteellinen kunto, Winkillä on oikeus lopettaa maksut ja vaatia sovittujen varausehtojen asianmukaista täyttämistä. Majoituspalveluntarjoaja vastaa joka tapauksessa kaikista vahinkoa kärsineelle vieraalle maksettavista korvauksista, eikä Wink ole vastuussa majoituspalveluntarjoajan tämän sopimuksen mukaisten velvoitteiden puutteellisesta täyttämisestä.
 
-**12. Osallistuvien hotellien kiinteistöehdot**
+**12. Osallistuvien hotellien ehdot**
 
 Majoituspalveluntarjoajan on mahdollisimman pian ilmoitettava Wink Extranetin ”Ilmoitusosion” kautta kaikista rakennus-, peruskorjaus-, kunnostus-, päivitys- tai muista töistä, jotka muuttavat tai voivat muuttaa majoituspalveluntarjoajan kykyä tarjota huoneita, tiloja ja palveluita ja/tai jotka voivat vaikuttaa haitallisesti vieraan oleskeluun. Selvyyden vuoksi, aina kun tällaisista olosuhteista johtuu saatavuus tai palvelun laiminlyönti, sovelletaan näiden Winkin yleisten ehtojen 11. kohtaa (”Saatavuus / palvelun laiminlyönti”), ja majoituspalveluntarjoaja vastaa kaikista asianomaiselle vieraalle maksettavista korvauksista, pitäen Winkin kaikesta vastuusta vapaana.
 
@@ -267,7 +267,7 @@ Majoituspalveluntarjoaja takaa ja vakuuttaa noudattavansa täysimääräisesti s
 
 16.1 Voimassaoloaikana Wink voi tarkastaa Majoituspalveluntarjoajan ja/tai Osallistuvien Hotellien asiaankuuluvia tietoja siinä määrin kuin se kohtuudella on tarpeen voidakseen suorittaa tarkistuksia, jotka liittyvät (i) Varausten suorittamiseen; (ii) kaikkiin Winkin ja/tai Vieraiden vastaanottamiin maksuihin; ja (iii) kaikkiin Winkin ja/tai Vieraiden maksamiin tai maksettaviksi tuleviin maksuihin.
 
-16.2 Kumpikin osapuoli vastaa omista kustannuksistaan ​​​​missä tahansa tarkastuksessa, lukuun ottamatta seuraavaa tilannetta: Jos tarkastus osoittaa, että majoituspalveluntarjoaja ei täytä jotakin tämän sopimuksen mukaisista velvoitteistaan, majoituspalveluntarjoajan on maksettava tarkastus kokonaisuudessaan ja ryhdyttävä tarvittaviin toimenpiteisiin sopimusvelvoitteidensa täyttämiseksi, sanotun kuitenkaan rajoittamatta Winkin muita oikeuksia ja oikeussuojakeinoja.
+16.2 Kumpikin osapuoli vastaa omista kustannuksistaan ​​​​mahdollisen tarkastuksen osalta, lukuun ottamatta seuraavaa tilannetta: Jos tarkastus osoittaa, että majoituspalveluntarjoaja ei täytä jotakin tämän sopimuksen mukaisista velvoitteistaan, majoituspalveluntarjoajan on maksettava tarkastus kokonaisuudessaan ja ryhdyttävä tarvittaviin toimenpiteisiin sopimusvelvoitteidensa täyttämiseksi, sanotun kuitenkaan rajoittamatta Winkin muita oikeuksia ja oikeussuojakeinoja.
 
 **17. Vakuutus**
 
@@ -329,7 +329,7 @@ Majoituspalveluntarjoaja takaa, että sen parhaan tietämyksen mukaan sitä tai 
 
 23.1 Majoituspalveluntarjoaja ei saa luovuttaa mitään Winkiin tai tähän sopimukseen liittyvää viestintää tai materiaalia medialle tai millekään muulle ulkopuoliselle osapuolelle ilman Winkin etukäteen antamaa kirjallista suostumusta, ja majoituspalveluntarjoaja on yksin ja suoraan vastuussa Winkille tämän ehdon rikkomisesta aiheutuneista vahingoista tai menetyksistä.
 
-23.2 Majoituspalveluntarjoajan on neuvoteltava Winkin kanssa kaikkien sellaisten tiedotteiden tai materiaalien sisällöstä, joita se aikoo julkaista, ja Majoituspalveluntarjoajan on toimitettava Winkille kopio kaikista lopulta julkaistuista tiedotteista tai materiaalista.
+23.2 Majoituspalveluntarjoajan on neuvoteltava Winkin kanssa kaikkien julkaistaviksi aikomiensa viestien tai materiaalien sisällöstä, ja Majoituspalveluntarjoajan on toimitettava Winkille kopio lopulta julkaistuista tällaisista viesteistä tai materiaalista.
 
 **24. Ensisijaisuus**
 
@@ -341,7 +341,7 @@ Majoituspalveluntarjoaja takaa, että sen parhaan tietämyksen mukaan sitä tai 
 
 **25. Allekirjoitusoikeus – majoituspalveluntarjoajan edustus ja allekirjoitus**
 
-25.1 Majoituspalveluntarjoaja takaa, että sillä, tämän sopimuksen allekirjoittajalla ja/tai kenellä tahansa muulla henkilöllä, joka toimittaa Winkille tietoja (mukaan lukien epäselvyyksien välttämiseksi kaikki maksuehdot) tämän sopimuksen yhteydessä tai sen nojalla, on valtuudet, kelpoisuus ja tarvittavat valtuudet allekirjoittaa tämä sopimus jokaisen osallistuvan hotellin puolesta ja että tällaisella henkilöllä on valtuudet, kelpoisuus ja tarvittavat valtuudet sitoa majoituspalveluntarjoaja ja jokainen osallistuva hotelli tähän sopimukseen ja että hän noudattaa ja suorittaa tämän sopimuksen mukaisia ​​velvoitteitaan koko sopimuskauden ajan ja varmistaa, että jokainen osallistuva hotelli noudattaa ja suorittaa tämän sopimuksen mukaisia ​​velvoitteitaan.
+25.1 Majoituspalveluntarjoaja takaa, että sillä, tämän sopimuksen allekirjoittavalla henkilöllä ja/tai kenellä tahansa muulla henkilöllä, joka toimittaa Winkille tietoja (mukaan lukien epäselvyyksien välttämiseksi kaikki maksuehdot) tämän sopimuksen yhteydessä tai sen nojalla, on valtuudet, kelpoisuus ja tarvittavat valtuudet allekirjoittaa tämä sopimus jokaisen osallistuvan hotellin puolesta ja että tällaisella henkilöllä on valtuudet, kelpoisuus ja tarvittavat valtuudet sitoa majoituspalveluntarjoaja ja jokainen osallistuva hotelli tähän sopimukseen ja että hän noudattaa ja suorittaa tämän sopimuksen mukaisia ​​velvoitteitaan koko sopimuskauden ajan ja varmistaa, että jokainen osallistuva hotelli noudattaa ja suorittaa tämän sopimuksen mukaisia ​​velvoitteitaan.
 
 25.2 Majoituspalveluntarjoaja nimenomaisesti hyväksyy, että tämän sopimuksen ja sen ehtojen, mukaan lukien muutosten, sähköinen hyväksyminen on pätevä, sitova ja täytäntöönpanokelpoinen.
 

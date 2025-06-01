@@ -20,7 +20,7 @@ Disse vilkår er tilgængelige under[Partnerportal > Servicevilkår](/studio/ter
 :::
 
 **WINK GENERELLE VILKÅR OG BETINGELSER**\
-**FOR REJSEAGENTENE (registreret handelsmand)**
+**FOR REJSEAGENTENE (registreret forhandler)**
 
 **MELLEM:**
 
@@ -32,7 +32,7 @@ Disse vilkår er tilgængelige under[Partnerportal > Servicevilkår](/studio/ter
 
 (i) Wink driver et online system ("Systemet"), hvorigennem deltagende overnatningssteder (samlet kaldet "Udbydere af overnatningssteder") kan stille deres inventar til rådighed for reservation, og hvorigennem rejsebureauet kan foretage reservationer hos sådanne udbydere af overnatningssteder på vegne af deres gæster ("Tjenesten");
 
-(ii) Wink hverken ejer, kontrollerer, tilbyder eller administrerer nogen annoncer. Wink er ikke part i kontrakter, der indgås direkte mellem indkvarteringsudbyderne og gæsterne. Wink fungerer ikke som agent i nogen egenskab for indkvarteringsudbyderne;
+(ii) Wink hverken ejer, kontrollerer, tilbyder eller administrerer nogen annoncer. Wink er ikke part i kontrakter indgået direkte mellem indkvarteringsudbyderne og gæsterne. Wink fungerer ikke som agent i nogen egenskab for indkvarteringsudbyderne;
 
 (iii) Wink vedligeholder og udnytter sine egne websteder ("Wink-webstederne") og leverer også Tjenesten og links til Tjenesten på tredjeparters websteder;
 
@@ -125,7 +125,7 @@ Disse vilkår er tilgængelige under[Partnerportal > Servicevilkår](/studio/ter
 
 6.1**Betalingsplan:**
 
-* Alle betalinger, der skyldes Wink fra rejsebureauet i henhold til denne aftale, skal ske inden for 15 dage efter modtagelse af den korrekte og nøjagtige faktura fra Wink, medmindre andet er skriftligt aftalt. Betalinger skal ske i USD, uden fradrag eller tilbageholdelse, medmindre andet er påkrævet ved lov.
+* Alle betalinger, der skal betales til Wink af rejsebureauet i henhold til denne aftale, skal ske inden for 15 dage efter modtagelse af den korrekte og nøjagtige faktura fra Wink, medmindre andet er skriftligt aftalt. Betalinger skal ske i USD, uden fradrag eller tilbageholdelse, medmindre andet er påkrævet ved lov.
 
 6.2**Forsinkede betalinger:**
 
@@ -145,7 +145,7 @@ Disse vilkår er tilgængelige under[Partnerportal > Servicevilkår](/studio/ter
 
 6.6**Betalingstvister:**
 
-* I tilfælde af en tvist vedrørende en faktura skal rejsebureauet underrette Wink inden for 10 dage efter fakturadatoen med en detaljeret begrundelse for tvisten. Begge parter skal forhandle i god tro for at løse tvisten hurtigt. Den ubestridte del af fakturaen skal betales senest på forfaldsdatoen.
+* I tilfælde af en tvist vedrørende en faktura skal rejsebureauet underrette Wink inden for 10 dage efter fakturadatoen og give en detaljeret begrundelse for tvisten. Begge parter skal forhandle i god tro for at løse tvisten hurtigt. Den ubestridte del af fakturaen skal betales senest på forfaldsdatoen.
 
 **7. Rejsebureauets ansvar**
 
@@ -155,7 +155,7 @@ Disse vilkår er tilgængelige under[Partnerportal > Servicevilkår](/studio/ter
 
 7.2**Præcis repræsentation af tjenester:**
 
-* Rejsebureauet skal nøjagtigt repræsentere de tjenester og indkvarteringer, der tilbydes via Platformen. Rejsebureauet er ansvarlig for at sikre, at alle oplysninger, der gives til gæster, herunder, men ikke begrænset til, beskrivelser, priser og tilgængelighed, er nøjagtige og opdaterede.
+* Rejsebureauet skal nøjagtigt repræsentere de tjenester og indkvarteringsmuligheder, der tilbydes via Platformen. Rejsebureauet er ansvarlig for at sikre, at alle oplysninger, der gives til gæster, herunder, men ikke begrænset til, beskrivelser, priser og tilgængelighed, er nøjagtige og opdaterede.
 
 7.3**Fremme af tjenester:**
 
@@ -167,7 +167,7 @@ Disse vilkår er tilgængelige under[Partnerportal > Servicevilkår](/studio/ter
 
 7,5**Opkrævning og betaling af betalinger:**
 
-* Rejsebureauet er ansvarligt for at opkræve betalinger fra gæster for bookinger foretaget via platformen og for at overføre de aftalte betalinger til indkvarteringsudbyderne og tjenesteudbyderen, som angivet i betalingsbetingelserne. Rejsebureauet skal sikre, at alle betalinger behandles sikkert og i overensstemmelse med gældende økonomiske regler.
+* Rejsebureauet er ansvarlig for at opkræve betalinger fra gæster for bookinger foretaget via platformen og for at overføre de aftalte betalinger til indkvarteringsudbyderne og tjenesteudbyderen, som angivet i betalingsbetingelserne. Rejsebureauet skal sikre, at alle betalinger behandles sikkert og i overensstemmelse med gældende økonomiske regler.
 
 7.6**Håndtering af gæsteklager og tvister:**
 
@@ -225,7 +225,7 @@ Disse vilkår er tilgængelige under[Partnerportal > Servicevilkår](/studio/ter
 
 **12. Force Majeure**
 
-12.1**Definition**Ingen af ​​parterne er ansvarlige for manglende eller forsinkelse i opfyldelsen af ​​deres forpligtelser i henhold til denne aftale, hvis en sådan manglende eller forsinkelse skyldes en force majeure-begivenhed. En "force majeure-begivenhed" betyder enhver begivenhed uden for en parts rimelige kontrol, herunder, men ikke begrænset til, naturkatastrofer (såsom jordskælv, oversvømmelser eller orkaner), krig, terrorisme, borgerlige uroligheder, pandemier, regeringshandlinger eller enhver anden begivenhed, der ikke med rimelighed kunne have været forudset eller undgået.
+12.1**Definition**Ingen af ​​parterne er ansvarlige for manglende eller forsinkelse i opfyldelsen af ​​deres forpligtelser i henhold til denne aftale, hvis en sådan manglende eller forsinkelse skyldes en force majeure-begivenhed. En "force majeure-begivenhed" betyder enhver begivenhed uden for en parts rimelige kontrol, herunder, men ikke begrænset til, naturkatastrofer (såsom jordskælv, oversvømmelser eller orkaner), krig, terrorisme, civile uroligheder, pandemier, regeringshandlinger eller enhver anden begivenhed, der ikke med rimelighed kunne have været forudset eller undgået.
 
 12.2**Notifikation**Den berørte part skal underrette den anden part skriftligt så hurtigt som rimeligt muligt efter en Force Majeure-begivenhed. En sådan meddelelse skal indeholde en beskrivelse af Force Majeure-begivenheden, dens forventede varighed og de berørte forpligtelser.
 

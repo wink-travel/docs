@@ -108,7 +108,7 @@ Estos términos están disponibles en[Portal de afiliados > Condiciones del serv
 * El Agente de Viajes es responsable del cobro de los pagos de los Huéspedes.
 * El Agente de Viajes debe garantizar el desembolso oportuno y preciso del Pago Neto a los Proveedores de Alojamiento de conformidad con sus acuerdos separados.
 * El Agente de Viajes es responsable de cualquier error o discrepancia en el procesamiento del pago y debe rectificarlos rápidamente.
-* El agente de viajes es responsable de pagar la factura mensual de Wink por las tarifas de reserva.
+* El Agente de Viajes es responsable de pagar la factura mensual de Wink por las Tarifas de Reserva.
 
 4.2**Responsabilidades de Wink:**
 
@@ -145,7 +145,7 @@ Estos términos están disponibles en[Portal de afiliados > Condiciones del serv
 
 6.6**Disputas de pago:**
 
-* En caso de disputa sobre una factura, el Agente de Viajes deberá notificar a Wink dentro de los 10 días siguientes a la fecha de la factura, explicando detalladamente los motivos de la disputa. Ambas partes negociarán de buena fe para resolver la disputa con prontitud. La parte no disputada de la factura deberá abonarse en la fecha de vencimiento.
+* En caso de disputa sobre una factura, el Agente de Viajes deberá notificar a Wink dentro de los 10 días siguientes a la fecha de la factura, explicando detalladamente los motivos de la disputa. Ambas partes negociarán de buena fe para resolver la disputa con prontitud. La parte no disputada de la factura deberá pagarse en la fecha de vencimiento.
 
 **7. Responsabilidades del agente de viajes**
 
@@ -221,7 +221,7 @@ Estos términos están disponibles en[Portal de afiliados > Condiciones del serv
 
 11.2.2**Arbitraje:**&#x53;i la controversia no puede resolverse mediante negociaciones en un plazo de treinta (30) días, se someterá a arbitraje y se resolverá definitivamente según el Reglamento del Centro de Arbitraje Internacional de Singapur (SIAC), que se incorpora por referencia a esta cláusula. El número de árbitros será uno y la sede del arbitraje será Singapur. El idioma del arbitraje será el inglés.
 
-11.2.3**Jurisdicción:**&#x4E;o obstante lo anterior, cualquiera de las partes conserva el derecho de buscar medidas cautelares o provisionales en los tribunales de Singapur para proteger sus derechos o propiedad mientras espera el nombramiento de un árbitro, y dicho tribunal tendrá jurisdicción exclusiva para otorgar dichas medidas.
+11.2.3**Jurisdicción:**&#x4E;o obstante lo anterior, cualquiera de las partes conserva el derecho de buscar medidas cautelares o provisionales en los tribunales de Singapur para proteger sus derechos o propiedad mientras espera el nombramiento de un árbitro, y cualquiera de dichos tribunales tendrá jurisdicción exclusiva para otorgar dichas medidas.
 
 **12. Fuerza mayor**
 

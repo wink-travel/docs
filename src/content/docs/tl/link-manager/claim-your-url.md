@@ -15,5 +15,5 @@ Kung ang pangalan ng iyong account ay Queen Bee, ang iyong WinkLinks vanity url 
 <h4 align="center">https://i.trvl.as/queen-bee</h4>
 
 
-Available ang mga pangalan ng account sa a `first come - first serve` batayan - Kunin ang iyong natatanging URL habang kaya mo pa!
+Available ang mga pangalan ng account sa a `first come - first serve` batayan - Kunin ang iyong natatanging URL habang kaya mo!
 

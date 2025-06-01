@@ -23,7 +23,7 @@ Der Zahlungsvermittler bietet Zahlungsdienste für Unterkunftsanbieter an, die �
 
 Um die Zahlungsdienste nutzen zu können, müssen Sie mindestens 18 Jahre alt sein, über ein Wink-Konto mit gutem Ruf gemäß den Bedingungen des Zahlungsvermittlers verfügen und dafür sorgen, dass Ihre Zahlungs- und persönlichen Daten korrekt und vollständig sind.
 
-Der Unterkunftsanbieter hat die Vereinbarung gelesen und alle Allgemeinen Geschäftsbedingungen akzeptiert. Der Unterkunftsanbieter erklärt sich ausdrücklich damit einverstanden, dass die elektronische Annahme dieser Vereinbarung und ihrer Allgemeinen Geschäftsbedingungen, einschließlich der Änderungen, gültig, verbindlich und durchsetzbar ist.
+Der Unterkunftsanbieter hat den Vertrag gelesen und alle Allgemeinen Geschäftsbedingungen akzeptiert. Der Unterkunftsanbieter erklärt sich ausdrücklich damit einverstanden, dass die elektronische Annahme dieses Vertrags und seiner Allgemeinen Geschäftsbedingungen, einschließlich der Änderungen, gültig, verbindlich und durchsetzbar ist.
 
 Die Zahlungsdienste werden vom Auftraggeber je nach Land, in dem sich die Unterkunft befindet, wie folgt bereitgestellt:
 
@@ -58,7 +58,7 @@ Nur die Person, die diese Vereinbarung unterzeichnet, ist der alleinige Vertrete
 
 2.7**Auszahlungslimits**Aus Compliance- oder betrieblichen Gründen kann der Zahlungsdienstleister die Höhe einer Auszahlung begrenzen. Liegt der Betrag über diesem Limit, kann der Zahlungsdienstleister mehrere Auszahlungen (ggf. über mehrere Tage) vornehmen, um Ihnen den vollen Auszahlungsbetrag zukommen zu lassen.
 
-2.8**Währungsumrechnung**Der Zahlungsdienstleister überweist Ihre Auszahlungen in der von Ihnen über den Zahlungsdienstleister gewählten Währung. Die verfügbaren Währungen können je nach Ihrem Wohnsitzland und/oder Ihren Vertragspartnern aus regulatorischen oder betrieblichen Gründen eingeschränkt sein. Solche Einschränkungen werden Ihnen über den Zahlungsdienstleister mitgeteilt, und Sie werden aufgefordert, eine andere Währung auszuwählen. Der Zahlungsdienstleister verwendet USD, EUR und GBP als Standardwährungen für den Empfang und die Auszahlung von Geldern. Für Transaktionen in anderen Währungen fallen Währungsumrechnungskosten an.
+2.8**Währungsumrechnung**Der Zahlungsdienstleister überweist Ihre Auszahlungen in der von Ihnen über den Zahlungsdienstleister gewählten Währung. Die verfügbaren Währungen können je nach Ihrem Wohnsitzland und/oder Ihrem/Ihren Vertragspartner(n) des Zahlungsdienstleisters aus regulatorischen oder betrieblichen Gründen eingeschränkt sein. Solche Einschränkungen werden Ihnen über den Zahlungsdienstleister mitgeteilt, und Sie werden aufgefordert, eine andere Währung auszuwählen. Der Zahlungsdienstleister verwendet USD, EUR und GBP als Standardwährungen für den Empfang und die Auszahlung von Geldern. Für Transaktionen in anderen Währungen fallen Währungsumrechnungskosten an.
 
 2.9**Umgang mit Geldern**Der Zahlungsvermittler kann die von Gästen eingezogenen Beträge zusammenfassen und gemäß den geltenden Gesetzen investieren. Der Zahlungsvermittler behält alle Zinsen, die er aus diesen Investitionen erzielt.
 
@@ -95,7 +95,7 @@ Nur die Person, die diese Vereinbarung unterzeichnet, ist der alleinige Vertrete
 
 **5. Verbotene Aktivitäten**
 
-5.1 Der Unterkunftsanbieter ist allein verantwortlich für die Einhaltung aller Gesetze, Regeln, Vorschriften und Steuerpflichten, die für Ihre Nutzung der Zahlungsdienste gelten. Im Zusammenhang mit Ihrer Nutzung der Zahlungsdienste ist es Ihnen untersagt und Sie erklären sich damit einverstanden, dass Sie andere nicht dabei unterstützen oder ihnen die Möglichkeit dazu geben:
+5.1 Der Beherbergungsbetrieb ist allein verantwortlich für die Einhaltung aller Gesetze, Vorschriften, Regelungen und Steuerpflichten, die für Ihre Nutzung der Zahlungsdienste gelten. Im Zusammenhang mit Ihrer Nutzung der Zahlungsdienste ist Ihnen Folgendes untersagt und Sie verpflichten sich, anderen weder dabei zu helfen noch sie dabei zu unterstützen:
 
 * Gegen geltende Gesetze oder Vorschriften verstoßen oder diese umgehen;
 * Vereinbarungen mit Dritten, Rechte Dritter oder die Bedingungen, Richtlinien oder Standards verletzen oder umgehen;
@@ -143,7 +143,7 @@ Soweit nach geltendem Recht zulässig, erklären Sie sich damit einverstanden, d
 
 10.1**Änderung**Sofern gesetzlich nichts anderes vorgeschrieben ist, kann der Zahlungsdienstleister diese Zahlungsbedingungen jederzeit ändern. Sollten wir wesentliche Änderungen an diesen Zahlungsbedingungen vornehmen, veröffentlichen wir die überarbeiteten Zahlungsbedingungen auf der Wink-Plattform und aktualisieren das Datum der letzten Aktualisierung oben in diesen Zahlungsbedingungen. Sollten Sie von der Änderung betroffen sein, werden wir Sie mindestens dreißig (30) Tage vor deren Inkrafttreten darüber informieren. Kündigen Sie Ihren Vertrag nicht vor dem Inkrafttreten der überarbeiteten Zahlungsbedingungen, gilt Ihre fortgesetzte Nutzung der Zahlungsdienste als Zustimmung zu den Änderungen der überarbeiteten Zahlungsbedingungen.
 
-10.2**Begriff**. Diese Vereinbarung zwischen Ihnen und dem Zahlungsvermittler, die in diesen Zahlungsbedingungen zum Ausdruck kommt, tritt in Kraft, wenn Sie ein Wink-Konto erstellen oder die Zahlungsdienste nutzen, und bleibt in Kraft, bis entweder Sie oder wir diese Vereinbarung gemäß Abschnitt 10.3 kündigen.
+10.2**Begriff**. Diese Vereinbarung zwischen Ihnen und dem Zahlungsvermittler, die in diesen Zahlungsbedingungen wiedergegeben ist, tritt in Kraft, wenn Sie ein Wink-Konto erstellen oder die Zahlungsdienste nutzen, und bleibt in Kraft, bis entweder Sie oder wir diese Vereinbarung gemäß Abschnitt 10.3 kündigen.
 
 10.3**Beendigung**Sie können diese Vereinbarung jederzeit kündigen, indem Sie uns eine E-Mail senden oder Ihr Wink-Konto löschen. Die Kündigung dieser Vereinbarung gilt gleichzeitig als Kündigung Ihres Wink-Kontos gemäß den Bedingungen. Unbeschadet unserer unten genannten Rechte kann der Zahlungsvermittler diese Vereinbarung jederzeit ordentlich kündigen, indem er Ihnen eine Kündigungsfrist von dreißig (30) Tagen per E-Mail an Ihre registrierte E-Mail-Adresse einräumt. Der Zahlungsvermittler kann diese Vereinbarung auch sofort und ohne Benachrichtigung kündigen, wenn (i) Sie Ihre Verpflichtungen aus dieser Vereinbarung erheblich verletzt haben; (ii) Sie unrichtige, betrügerische, veraltete oder unvollständige Informationen angegeben haben; (iii) Sie geltende Gesetze, Vorschriften oder Rechte Dritter verletzt haben; oder (iv) der Zahlungsvermittler in gutem Glauben davon ausgeht, dass eine solche Maßnahme zum Schutz anderer Unterkunftsanbieter, Wink, des Zahlungsvermittlers oder Dritter angemessen und notwendig ist.
 

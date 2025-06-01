@@ -143,5 +143,5 @@ Dostępne typy:
 | rezStream | PMS | Channex | 2023 | 2023 | |
 | Roomsy | PMS | Channex | 2023 | 2023 | |
 | Roverpass | PMS | Channex | 2023 | 2023 | |
-| Servo | PMS | Channex | 2023 | 2023 |
+| Servo | PMS | Channex | 2023 | 2023 | |
 

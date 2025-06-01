@@ -249,7 +249,7 @@ Nhà cung cấp chỗ ở bảo đảm và cam kết sẽ tuân thủ đầy đ�
 
 14.6 Tất cả thông tin được cung cấp trực tiếp hoặc gián tiếp cho Wink by Accommodation Provider theo hoặc liên quan đến Thỏa thuận này đều phải được cập nhật và chính xác.
 
-14.7 Nhà cung cấp chỗ ở không được thành lập tại hoặc là cư dân của một quốc gia chịu lệnh trừng phạt kinh tế hoặc thương mại; và
+14.7 Nhà cung cấp chỗ ở không được thành lập tại hoặc là cư dân của một quốc gia đang chịu lệnh trừng phạt kinh tế hoặc thương mại; và
 
 14.8 Hoàn thành bằng chi phí của mình bất kỳ công việc nào cần thiết để loại bỏ bất kỳ thiếu sót và/hoặc khuyết tật nào được các cơ quan chức năng thông báo có hiệu lực ngay lập tức. Nhà cung cấp chỗ ở sẽ thông báo cho Wink về điều đó mà không chậm trễ. Nhà cung cấp chỗ ở sẽ xem xét bất kỳ khuyến nghị hợp lý nào về cải tiến do Wink đưa ra.
 

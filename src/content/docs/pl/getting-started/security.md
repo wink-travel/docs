@@ -31,7 +31,7 @@ Nasze testy penetracyjne są przeprowadzane corocznie, a dodatkowe testy są pla
 
 Nasze testy penetracyjne są kompleksowe i obejmują szeroki zakres aspektów bezpieczeństwa, w tym między innymi:
 
-* **OWASP Top 10:**&#x4E;asze testy są ukierunkowane na najpoważniejsze zagrożenia bezpieczeństwa, takie jak wstrzyknięcie, zerwanie uwierzytelniania i atak typu cross-site scripting (XSS).
+* **OWASP Top 10:**&#x4E;asze testy są ukierunkowane na najpoważniejsze zagrożenia bezpieczeństwa, takie jak wstrzyknięcie kodu, zerwanie uwierzytelniania i atak typu cross-site scripting (XSS).
 * **Testowanie metodą czarnej skrzynki i szarej skrzynki:**&#x57; zależności od zakresu nasz zespół wykorzystuje te metodologie do symulacji scenariuszy ataków zewnętrznych i wewnętrznych.
 * **Testowanie automatyczne i ręczne:**&#x55;żywamy Burp Suite Pro, wiodącego zestawu narzędzi do testowania bezpieczeństwa, aby przeprowadzać automatyczne skanowanie bezpieczeństwa i wspomagać ręczne techniki testowania w celu identyfikowania złożonych luk w zabezpieczeniach i uzyskania najlepszego możliwego pokrycia. Do bardziej szczegółowej identyfikacji luk w zabezpieczeniach używane są niektóre specjalistyczne narzędzia, np. SQLmap.
 

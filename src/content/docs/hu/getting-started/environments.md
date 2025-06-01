@@ -14,7 +14,7 @@ A Winknél két környezetet üzemeltetünk mindenhez, amit mindenkor csinálunk
 Ha Ön integrátor, szálloda vagy utazási iroda, és szeretne felkészülni a tanúsításra, vagy tesztelni a Wink platformot, hozzon létre egy fiókot a tesztelési környezetünkben a kezdéshez.
 
 :::note
-A tesztelési környezet kérésre érhető el. Ez azt jelenti, hogy alvó üzemmódba lép, ha nincs használat, és újra bekapcsol, ha van használat. Kérjük, legyen türelmes, ha felébreszti. Körülbelül egy percet vesz igénybe, amíg az összes szerver elindul, miután először csatlakozott valamelyik szerverünkhöz vagy alkalmazásunkhoz.
+A tesztelési környezet kérésre érhető el. Ez azt jelenti, hogy alvó üzemmódba lép, ha nincs használat, és újra bekapcsol, ha van használat. Kérjük, legyen türelmes, ha felébreszti. Körülbelül egy percig tart, amíg az összes szerver elindul, miután először csatlakozott valamelyik szerverünkhöz vagy alkalmazásunkhoz.
 :::
 
 ## Szerverek

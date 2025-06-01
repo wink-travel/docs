@@ -60,7 +60,7 @@ Iba osoba podpisujúca túto zmluvu je výhradným určeným zástupcom ubytovat
 
 2,8**Konverzia mien**Platobný sprostredkovateľ vám vyplatí platby v mene, ktorú ste si vybrali prostredníctvom platobného sprostredkovateľa. Dostupné meny môžu byť obmedzené z regulačných alebo prevádzkových dôvodov na základe vašej krajiny bydliska a/alebo vášho zmluvného subjektu (subjektov) platobného sprostredkovateľa. Akékoľvek takéto obmedzenia budú oznámené prostredníctvom platobného sprostredkovateľa a budete vyzvaní na výber inej meny. Platobný sprostredkovateľ používa USD, EUR a GBP ako štandardné meny na prijímanie a vyplácanie finančných prostriedkov. Akékoľvek transakcie zahŕňajúce iné meny budú spojené s poplatkami za konverziu meny.
 
-2,9**Manipulácia s finančnými prostriedkami**Sprostredkovateľ platieb môže kombinovať sumy, ktoré vyzbiera od hostí, a investovať ich v súlade s platnými zákonmi. Sprostredkovateľ platieb si ponechá akýkoľvek úrok, ktorý z týchto investícií získa.
+2,9**Manipulácia s finančnými prostriedkami**Sprostredkovateľ platieb môže kombinovať sumy, ktoré vyzbiera od Hostí, a investovať ich v súlade s platnými zákonmi. Sprostredkovateľ platieb si ponechá akýkoľvek úrok, ktorý z týchto investícií získa.
 
 2.10**Presnosť partnerského programu**Poskytovateľ ubytovania je zodpovedný za zabezpečenie presnosti bankových informácií uvedených v profile Sprostredkovateľa platieb. Ak je číslo bankového účtu uvedené nesprávne, banka si účtuje dodatočný poplatok za spracovanie. Sprostredkovateľ platieb odpočíta tento poplatok za spracovanie z ďalšej platby Provízie. V prípade, že bankový účet poskytnutý Partnerom je uzavretý alebo zmrazený alebo nie je schopný prijímať/zobrazovať platby z dôvodov, ktoré nie sú pripísateľné Sprostredkovateľovi platieb, platobná povinnosť Sprostredkovateľa platieb podľa tejto Zmluvy zaniká, pokiaľ záznamy Sprostredkovateľa platieb preukazujú, že platba bola vykonaná.
 
@@ -109,9 +109,9 @@ Iba osoba podpisujúca túto zmluvu je výhradným určeným zástupcom ubytovat
 
 Poskytovateľ ubytovania zaručuje, že dodržiava a bude dodržiavať a jeho pridružené strany dodržiavajú a budú dodržiavať Kódex správania dodávateľa sprostredkovateľa platieb.
 
-Poskytovateľ ubytovania vyhlasuje, zaručuje a zaväzuje sa, že bude vo všetkých ohľadoch dodržiavať všetky medzinárodné obchodné normy, platné obmedzenia týkajúce sa obchodu, toku finančných prostriedkov a právne predpisy týkajúce sa financovania terorizmu a predchádzania úplatkárstvu a korupcii, vrátane, ale nie výlučne, amerického protikorupčného zákona, britského zákona o úplatkárstve z roku 2010 a singapurského zákona o predchádzaní korupcii.
+Poskytovateľ ubytovania vyhlasuje, zaručuje a zaväzuje sa, že bude vo všetkých ohľadoch dodržiavať všetky medzinárodné obchodné normy, platné obmedzenia týkajúce sa obchodu, toku finančných prostriedkov a právne predpisy týkajúce sa financovania terorizmu a predchádzania úplatkárstva a korupcie, vrátane, ale nie výlučne, amerického protikorupčného zákona, britského zákona o úplatkárstve z roku 2010 a singapurského zákona o predchádzaní korupcii.
 
-Poskytovateľ ubytovania zaručuje, že podľa jeho najlepších vedomostí ani on, ani jeho pridružené strany neboli odsúdení za trestný čin súvisiaci s úplatkárstvom alebo korupciou, ani nie sú predmetom žiadneho vyšetrovania zo strany vládnych, správnych alebo regulačných orgánov.
+Poskytovateľ ubytovania zaručuje, že podľa jeho najlepších vedomostí ani on, ani jeho Pridružené strany neboli odsúdení za trestný čin súvisiaci s úplatkárstvom alebo korupciou, ani nie sú predmetom žiadneho vyšetrovania zo strany vládnych, správnych alebo regulačných orgánov.
 
 **6. Vyššia moc**
 
@@ -129,7 +129,7 @@ Platobný sprostredkovateľ nezodpovedá za žiadne omeškanie alebo nesplnenie 
 
 **8. Obmedzenie zodpovednosti**
 
-8.1 V maximálnom rozsahu povolenom zákonom žiadna zo zmluvných strán nenesie zodpovednosť za žiadne nepriame, náhodné, následné, mimoriadne alebo represívne škody akéhokoľvek druhu vyplývajúce z tejto zmluvy alebo jej porušenia, a to ani v prípade, že bola na možnosť vzniku takýchto škôd upozornená. Toto obmedzenie sa nevzťahuje na žiadne porušenie tejto zmluvy týkajúce sa dôvernosti a/alebo práv duševného vlastníctva.
+8.1 V maximálnom rozsahu povolenom zákonom žiadna zo zmluvných strán nenesie zodpovednosť za žiadne nepriame, náhodné, následné, mimoriadne alebo represívne škody akéhokoľvek druhu vyplývajúce z tejto zmluvy alebo jej porušenia, a to ani v prípade, že bola o možnosti takýchto škôd informovaná. Toto obmedzenie sa nevzťahuje na žiadne porušenie tejto zmluvy týkajúce sa dôvernosti a/alebo práv duševného vlastníctva.
 
 8.2 Žiadna zo zmluvných strán nemôže vylúčiť zodpovednosť v súvislosti s (i) smrťou alebo zranením osôb spôsobeným jej nedbanlivosťou alebo nedbanlivosťou jej zamestnancov, zástupcov alebo subdodávateľov, (ii) podvodom spáchaným ňou alebo jej zamestnancami, alebo (iii) akýmkoľvek porušením, konaním, opomenutím alebo zodpovednosťou, ktorá nemôže byť obmedzená podľa žiadneho platného zákona.
 

@@ -11,7 +11,7 @@ Di Wink, kami menjalankan 2 persekitaran untuk semua yang kami lakukan pada seti
 * Pengeluaran adalah persekitaran kami yang stabil.
 * Pementasan ialah persekitaran pensijilan dan ujian kami.
 
-Jika anda seorang penyepadu, hotel atau ejen pelancongan yang ingin bersedia untuk pensijilan atau menguji platform Wink, buat akaun dalam persekitaran pementasan kami untuk bermula.
+Jika anda seorang penyepadu, hotel atau ejen pelancongan yang ingin membuat persediaan untuk pensijilan atau menguji platform Wink, buat akaun dalam persekitaran pementasan kami untuk bermula.
 
 :::nota
 Persekitaran pementasan tersedia atas dasar permintaan. Ini bermakna ia akan tidur jika tiada penggunaan dan menghidupkan semula apabila ada. Harap bersabar jika anda sedang membangunkannya. Ia mengambil masa kira-kira seminit untuk memulakan semua pelayan selepas anda mula-mula menyambung dengan salah satu pelayan atau apl kami.

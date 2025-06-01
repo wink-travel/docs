@@ -53,7 +53,7 @@ Naudodami šį modelį, kelionių agentai moka tik „Wink“ apdorojimo mokest�
 
 ## Būsimos paslaugos
 
-Ateityje siūlysime pasirenkamas prenumeratos pagrindu teikiamas paslaugas, kurios dar labiau palengvins pardavimą visiems, arba siūlysime valdomas partnerių paskyras, kurios atliks pardavimą už jus. Jei tai jus domina, išsakykite savo nuomonę parašydami mums el. paštu adresu[labas@wink.travel](mailto:hi@wink.travel).
+Ateityje siūlysime pasirenkamas prenumeratos pagrindu teikiamas paslaugas, kurios dar labiau palengvins pardavimą visiems, arba siūlysime valdomas partnerių paskyras, kurios atliks pardavimą už jus. Jei jus tai domina, išsakykite savo nuomonę parašydami mums el. paštu adresu[labas@wink.travel](mailto:hi@wink.travel).
 
 Sekite naujienas.
 

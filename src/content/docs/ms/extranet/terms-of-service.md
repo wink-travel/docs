@@ -5,7 +5,7 @@ sidebar:
   order: 20
 ---
 :::nota
-Kemas kini terakhir pada 2024-06-12
+Terakhir dikemas kini 2024-06-12
 :::
 
 **TERMA DAN SYARAT AM UNTUK PENYEDIA PENGINAPAN**
@@ -25,11 +25,11 @@ Dokumen ini menetapkan Terma dan Syarat untuk:
 1. Penyediaan perkhidmatan pengedaran penginapan melalui Wink atau apa-apa cara lain yang digunakan oleh Penyedia Penginapan untuk mengedarkan produknya (selepas ini dikenali sebagai “Penyedia Penginapan”), yang butirannya dinyatakan dalam Terma Pembayaran dan harga, syarat dan ketersediaan telah dipersetujui; dan
 2. Penyediaan perkhidmatan penginapan oleh Penyedia Penginapan kepada pengguna/tetamu akhir, yang telah ditempah melalui Wink.
 
-Wink tidak memiliki, mengawal, menawarkan atau mengurus sebarang penyenaraian. Wink bukan Pihak kepada kontrak yang dibuat secara langsung antara Penyedia Penginapan dan tetamu. Wink tidak bertindak sebagai ejen dalam sebarang kapasiti untuk Penyedia Penginapan, kecuali seperti yang dinyatakan dalam syarat pembayaran perkhidmatan (“Syarat Pembayaran”).
+Wink tidak memiliki, mengawal, menawarkan atau mengurus sebarang penyenaraian. Wink bukanlah Pihak kepada kontrak yang dibuat secara langsung antara Penyedia Penginapan dan tetamu. Wink tidak bertindak sebagai ejen dalam sebarang kapasiti untuk Penyedia Penginapan, kecuali seperti yang dinyatakan dalam syarat pembayaran perkhidmatan (“Syarat Pembayaran”).
 
 Sekiranya terdapat percanggahan antara Terma dan Syarat ini (selepas ini dikenali sebagai "Syarat") dan Terma Pembayaran, yang terakhir akan digunakan.
 
-Sekarang, oleh itu Para Pihak telah bersetuju seperti berikut:
+Kini, oleh itu Para Pihak telah bersetuju seperti berikut:
 
 **1. Definisi**
 
@@ -69,7 +69,7 @@ Sebagai tambahan kepada terma yang ditakrifkan di bahagian lain dalam Perjanjian
 
 **“Rakan Kongsi”** bermaksud mana-mana perniagaan atau individu yang menyambung atau menggunakan platform Wink untuk mempromosikan dan menjual inventori Penyedia Penginapan kepada penonton dan/atau pelanggannya untuk komisen.
 
-**“Pemudah cara pembayaran”** anak syarikat milik penuh Traveliko Singapore Pte. Ltd. (“TripPay”), yang mentadbir Perkhidmatan Pembayaran, mengutip bayaran daripada tetamu (“Bayar Masuk”), dengan mengecaj kaedah pembayaran yang dikaitkan dengan pembelian mereka, seperti kad kredit, kad debit, pindahan bank, mata wang kripto atau PayPal dll… dan mengeluarkan dana yang terhutang (“Kadar Bersih”) kepada pembekal Penginapan.
+**“Pemudah cara pembayaran”** anak syarikat milik penuh Traveliko Singapore Pte. Ltd. (“TripPay”), yang mentadbir Perkhidmatan Pembayaran, mengutip bayaran daripada tetamu (“Bayar Masuk”), dengan mengecaj kaedah pembayaran yang dikaitkan dengan pembelian mereka, seperti kad kredit, kad debit, pindahan bank, mata wang kripto atau PayPal dll… dan mengeluarkan dana yang terhutang (“Kadar Bersih”) kepada penyedia Penginapan.
 
 **“Bayar masuk”** bermaksud pemerolehan bayaran yang dibuat oleh tetamu oleh Fasilitator Pembayaran.
 
@@ -79,7 +79,7 @@ Sebagai tambahan kepada terma yang ditakrifkan di bahagian lain dalam Perjanjian
 
 **"Syarat Pembayaran"** bermaksud Kadar, ketersediaan, tawaran, promosi, terma pembayaran, dan sebarang peraturan atau syarat lain yang berkaitan dengan pengagihan Bilik yang dipersetujui bersama antara Pihak.
 
-**"Tempahan Berpotensi Penipuan"** bermaksud (i) Tempahan yang terhasil daripada maklumat tidak sah atau tidak betul yang dibekalkan kepada Wink pada masa Tempahan tersebut, atau akibat pertikaian kad kredit, atau akibat daripada laporan caj yang tidak dibenarkan; atau (ii) Sebarang Tempahan yang mungkin dikaitkan dengan transaksi berisiko tinggi atau penipuan sebelumnya.
+**"Tempahan Berpotensi Penipuan"** bermaksud (i) Tempahan yang terhasil daripada maklumat yang tidak sah atau tidak betul yang dibekalkan kepada Wink pada masa Tempahan tersebut, atau akibat pertikaian kad kredit, atau akibat daripada laporan caj yang tidak dibenarkan; atau (ii) Sebarang Tempahan yang mungkin dikaitkan dengan transaksi berisiko tinggi atau penipuan sebelumnya.
 
 **"Kadar"** bermaksud kadar bilik hotel yang disediakan untuk Wink oleh Penyedia Penginapan berkenaan dengan mana-mana jenis bilik atau jenis kadar yang berkenaan di bawah Perjanjian untuk diedarkan pada semua Saluran Wink.
 
@@ -117,7 +117,7 @@ Penyedia Penginapan bertanggungjawab untuk memastikan maklumat dan kandungan pen
 
 5.2 Penyedia Penginapan bertanggungjawab untuk mengendalikan dan menggunakan data peribadi tetamu dan orang lain dengan mematuhi undang-undang privasi yang terpakai dan Terma ini.
 
-**6. Yuran & Komisen Tempahan**
+**6. Yuran Tempahan & Komisen**
 
 Wink menyediakan Penyedia Penginapan dengan alatan digital yang mereka perlukan untuk mengedar dan menjual inventori mereka dalam talian melalui 5 saluran proprietari. Dengan mengaktifkan harta anda melalui ciri pengaktifan diri pada papan pemuka anda, harta anda akan boleh ditempah secara automatik di Traveliko.com dan melalui Rangkaian. Anda sememangnya boleh menyahaktifkan saluran tersebut secara manual dalam extranet di bawah bahagian menu - Pengedaran - Saluran jualan.
 
@@ -170,7 +170,7 @@ Dibayar kepada hotel (“Kadar Bersih”) => USD 85.1
 
 **8. Butiran Bank dan Wakil Ditetapkan Penyedia Penginapan**
 
-Pembekal Penginapan hendaklah memastikan bahawa butiran akaun banknya yang diberikan kepada Wink adalah tepat pada setiap masa, dan ia akan memaklumkan tanpa berlengah-lengah tentang sebarang perubahan padanya.
+Pembekal Penginapan hendaklah memastikan bahawa butiran akaun banknya yang diberikan kepada Wink adalah tepat pada setiap masa, dan ia akan memberitahu tanpa berlengah-lengah tentang sebarang perubahan padanya.
 
 Hanya orang yang menandatangani perjanjian ini akan menjadi wakil tunggal Penyedia Penginapan yang akan mempunyai kuasa untuk meminta perubahan pada akaun bank Penyedia Penginapan dan/atau maklumat penerima. Tiada orang lain boleh mempunyai kuasa sedemikian bagi pihak Penyedia Penginapan. Sebarang pertukaran orang yang ditetapkan itu hendaklah diminta untuk Wink secara bertulis, dan sebarang perubahan sedemikian hendaklah dilaksanakan hanya melalui pindaan bertulis kepada Perjanjian ini yang dilaksanakan oleh kedua-dua Pihak.
 
@@ -201,13 +201,13 @@ Hanya orang yang menandatangani perjanjian ini akan menjadi wakil tunggal Penyed
 
 11.2 Sekiranya Pembekal Penginapan tidak memenuhi mana-mana syarat Perjanjian ini, termasuk syarat premis yang tidak boleh diterima dan/atau Kekurangan Kemudahan & Perkhidmatan, Wink berhak untuk menghentikan pembayaran dan menuntut pemenuhan betul syarat Tempahan yang dipersetujui. Penyedia Penginapan hendaklah, dalam apa jua keadaan, menanggung kos penuh apa-apa pampasan yang perlu dibayar kepada Tetamu yang terjejas, memastikan Wink tidak berbahaya daripada sebarang liabiliti yang timbul daripada pemenuhan kecacatan Penyedia Penginapan terhadap kewajipannya di bawah Perjanjian ini.
 
-**12. Syarat Harta Hotel Menyertai**
+**12. Syarat Harta Hotel Sertaan**
 
 Secepat mungkin, Penyedia Penginapan hendaklah memberitahu melalui Wink Extranet “Bahagian Pengumuman” tentang sebarang pembinaan, pengubahsuaian, pengubahsuaian, kemas kini atau kerja lain yang akan atau mungkin mengubah keupayaan Penyedia Penginapan untuk menyediakan Bilik, Kemudahan & Perkhidmatan dan/atau mungkin menjejaskan penginapan Tetamu. Untuk mengelakkan keraguan, apabila ketidaktersediaan atau ketidaksempurnaan berpunca daripada keadaan sedemikian, Seksyen 11 Terma & Syarat Am Wink ini ("Ketidaksediaan / Ketidakpentuhan") akan terpakai dan Penyedia Penginapan hendaklah menanggung kos penuh bagi sebarang pampasan yang perlu dibayar kepada Tetamu yang terjejas, dengan mengekalkan Wink tanpa sebarang liabiliti.
 
 **13. Pengubahsuaian, Tempoh dan Penamatan**
 
-13.1 Pengubahsuaian. Kecuali sebagaimana yang dikehendaki oleh undang-undang yang terpakai, Wink boleh mengubah suai Syarat ini pada bila-bila masa. Jika kami membuat perubahan penting pada Syarat ini, kami akan menyiarkan Syarat yang disemak pada Platform Wink dan mengemas kini tarikh "Terakhir Dikemas Kini" di bahagian atas Syarat ini. Jika anda terjejas oleh pengubahsuaian, kami juga akan memberikan anda notis pengubahsuaian sekurang-kurangnya tiga puluh (30) hari sebelum tarikh pengubahsuaian itu berkuat kuasa. Jika anda tidak menamatkan perjanjian anda sebelum tarikh Terma yang disemak berkuat kuasa, penggunaan berterusan Perkhidmatan oleh anda akan membentuk penerimaan sebarang perubahan kepada Terma yang disemak.
+13.1 Pengubahsuaian. Kecuali seperti yang dikehendaki oleh undang-undang yang terpakai, Wink boleh mengubah suai Terma ini pada bila-bila masa. Jika kami membuat perubahan penting pada Syarat ini, kami akan menyiarkan Syarat yang disemak pada Platform Wink dan mengemas kini tarikh "Terakhir Dikemas Kini" di bahagian atas Syarat ini. Jika anda terjejas oleh pengubahsuaian, kami juga akan memberikan anda notis pengubahsuaian sekurang-kurangnya tiga puluh (30) hari sebelum tarikh pengubahsuaian itu berkuat kuasa. Jika anda tidak menamatkan perjanjian anda sebelum tarikh Terma yang disemak berkuat kuasa, penggunaan berterusan Perkhidmatan oleh anda akan membentuk penerimaan sebarang perubahan kepada Terma yang disemak.
 
 13.2 Penggal. Melainkan dipersetujui sebaliknya, Perjanjian ini akan bermula pada tarikh ini untuk tempoh masa yang tidak ditentukan.
 
@@ -215,7 +215,7 @@ Secepat mungkin, Penyedia Penginapan hendaklah memberitahu melalui Wink Extranet
 
 * Dengan Wink, pada bila-bila masa dan tanpa sebab, atas notis bertulis awal tiga puluh (30) hari kalendar kepada Pihak yang satu lagi;
 * Oleh Penyedia Penginapan, tanpa sebab pada bila-bila masa tanpa notis dengan menyahaktifkan hartanah pada papan pemuka harta extranet Wink.
-* Dengan cara lain yang dinyatakan dengan jelas di tempat lain dalam Perjanjian ini.
+* Dalam apa-apa cara lain yang dinyatakan dengan jelas di tempat lain dalam Perjanjian ini.
 
 13.4 Selain itu, Wink berhak mengikut budi bicara mutlaknya untuk menamatkan Perjanjian ini serta-merta melalui notis bertulis kepada Penyedia Penginapan jika:
 
@@ -297,7 +297,7 @@ Pembekal Penginapan menjamin bahawa sepanjang pengetahuannya, mereka mahupun Pih
 
 **20. Hak Harta Intelek**
 
-20.1 Penyedia Penginapan mengakui bahawa Wink dan/atau pemberi lesennya akan mengekalkan pemilikan semua hak, hak milik dan kepentingan dalam dan kepada semua Hak Harta Intelek Wink atau terkandung dalam Laman Web Wink, termasuk (tetapi tidak terhad kepada) logo Wink, Kandungan dan Data Wink. Tiada apa-apa yang terkandung dalam Perjanjian ini boleh dianggap memindahkan mana-mana hak, hak milik atau kepentingan sedemikian kepada Pembekal Penginapan dalam apa jua cara.
+20.1 Penyedia Penginapan mengakui bahawa Wink dan/atau pemberi lesennya akan mengekalkan pemilikan semua hak, hak milik dan kepentingan dalam dan kepada semua Hak Harta Intelek Wink atau terkandung dalam Laman Web Wink, termasuk (tetapi tidak terhad kepada) logo Wink, Kandungan dan Data Wink. Tiada apa-apa yang terkandung dalam Perjanjian ini boleh dianggap memindahkan mana-mana hak, hak milik atau kepentingan sedemikian kepada Penyedia Penginapan dalam apa jua cara.
 
 20.2 Penyedia Penginapan tidak boleh mendedahkan, menyepadukan, memasukkan, menggunakan, menggabungkan, mengeksploitasi, menggabungkan, atau sebaliknya menjadikan Kandungan dan Data Wink (atau mana-mana bahagian daripadanya) tersedia (a) dengan kandungannya sendiri dan/atau kandungan mana-mana Pesaing Wink (termasuk Hotel), atau (b) kepada atau untuk faedah (menyelamatkan) Sistem ini selaras dengan Perjanjian ini (dan untuk kepentingan) atau (ii) mana-mana Pesaing Wink (termasuk Hotel) (sama ada untuk promosi, pemasaran, rujukan kepada, promosi, pengiklanan, atau sebaliknya demi kepentingan atau kepada pihak tersebut), atau (c) untuk sebarang tujuan lain atau dalam apa-apa cara lain dan/atau pada atau melalui Platform Pihak Ketiga kecuali sebagaimana yang diperuntukkan secara nyata dalam Perjanjian ini. Ahli Gabungan tidak boleh meminda, mengubah, mengubah suai, memesongkan, mencipta terbitan dan/atau karya baharu berdasarkan dan/atau diperoleh daripada Kandungan dan Kandungan tersebut tidak akan termasuk pautan (langsung atau tidak langsung), rujukan, klik lalu atau rujukan kepada (laman web) Pesaing Wink (termasuk Hotel).
 
@@ -317,7 +317,7 @@ Pembekal Penginapan menjamin bahawa sepanjang pengetahuannya, mereka mahupun Pih
 
 22.2 Sekiranya Penyedia Penginapan tidak dapat mengakses extranet untuk sebab di luar kawalannya, Penyedia Penginapan akan segera memberitahu Wink.
 
-22.3 Penyedia Penginapan mewakili dan menjamin bahawa ia mempunyai semua hak, lesen, persetujuan dan kebenaran yang diperlukan untuk: (i) menyediakan Kandungan untuk Wink; (ii) Pembekal Penginapan dengan ini memberikan Wink hak bukan eksklusif, bebas royalti, tidak boleh ditarik balik, di seluruh dunia, dan boleh disublesenkan kepada rakan kongsi pemasaran dan/atau pengedaran pihak ketiga untuk menggunakan, mengubah suai, memaparkan, menerbitkan dan melaraskan Kandungan, nama, logo, tanda dagangan, dan mana-mana harta intelek dan harta perindustrian yang lain bagi tujuan Pembekal Penginapan ("PRI) Penyedia. Perjanjian; (iii) Pembekal Penginapan memberi jaminan kepada Wink dan pelanggannya bahawa IPR tersebut tidak melanggar mana-mana hak pihak ketiga; dan (iv) Pembekal Penginapan hendaklah bertanggungjawab ke atas sebarang maklumat yang memfitnah atau tidak bermoral, kebenaran dan ketepatan IPR yang diberikan kepada Wink dengan apa jua cara.
+22.3 Penyedia Penginapan mewakili dan menjamin bahawa ia mempunyai semua hak, lesen, persetujuan dan kebenaran yang diperlukan untuk: (i) menyediakan Kandungan untuk Wink; (ii) Pembekal Penginapan dengan ini memberikan Wink hak bukan eksklusif, bebas royalti, tidak boleh ditarik balik, di seluruh dunia, dan boleh disublesenkan kepada rakan kongsi pemasaran dan/atau pengedaran pihak ketiga untuk menggunakan, mengubah suai, memaparkan, menerbitkan dan melaraskan Kandungan, nama, logo, tanda dagangan, dan sebarang harta intelek dan harta perindustrian yang lain bagi Pembekal ("Pembentangan") untuk tujuan Pembekal Penginapan. Perjanjian; (iii) Pembekal Penginapan memberi jaminan kepada Wink dan pelanggannya bahawa IPR tersebut tidak melanggar mana-mana hak pihak ketiga; dan (iv) Pembekal Penginapan hendaklah bertanggungjawab ke atas sebarang maklumat yang memfitnah atau tidak bermoral, kebenaran dan ketepatan IPR yang diberikan kepada Wink dengan apa jua cara.
 
 22.4 Penyedia Penginapan hendaklah, pada setiap masa semasa dan selepas tamat tempoh Perjanjian ini, menanggung rugi dan mengekalkan Wink, Penyedia Penginapannya, dan/atau rakan kongsinya sepenuhnya dan memastikan mereka tidak berbahaya atas permintaan daripada dan terhadap mana-mana dan semua kerugian yang ditanggung oleh, diberikan terhadap, atau dipersetujui untuk dibayar oleh Wink dan rakan kongsinya, Wink/arising. tuntutan.
 
@@ -327,7 +327,7 @@ Pembekal Penginapan menjamin bahawa sepanjang pengetahuannya, mereka mahupun Pih
 
 23.1 Penyedia Penginapan tidak akan melepaskan apa-apa komunikasi atau bahan yang berkaitan dengan Wink atau Perjanjian ini, sama ada kepada media atau mana-mana Pihak luar lain tanpa kebenaran bertulis Wink terlebih dahulu, dan Penyedia Penginapan akan bertanggungjawab sepenuhnya dan terus untuk sebarang kerosakan atau kerugian yang ditanggung oleh Wink yang melanggar peruntukan ini.
 
-23.2 Penyedia Penginapan hendaklah berunding dengan Wink berkenaan dengan kandungan mana-mana komunikasi atau bahan sedemikian yang dicadangkannya untuk dikeluarkan, dan Penyedia Penginapan mesti memberikan Wink salinan mana-mana komunikasi atau bahan sedemikian yang akhirnya dikeluarkan.
+23.2 Penyedia Penginapan hendaklah berunding dengan Wink berkenaan dengan kandungan mana-mana komunikasi atau bahan sedemikian yang dicadangkan untuk dikeluarkan, dan Penyedia Penginapan mesti memberikan Wink salinan mana-mana komunikasi atau bahan sedemikian yang akhirnya dikeluarkan.
 
 **24. Keutamaan**
 
@@ -361,7 +361,7 @@ Para Pihak adalah, dan hendaklah bertindak sebagai, kontraktor bebas dalam melak
 
 **30. Tugasan**
 
-30.1 Mana-mana Pihak tidak berhak untuk menyerahkan, memindahkan, atau membebankan mana-mana hak dan/atau kewajipannya di bawah Perjanjian ini tanpa kebenaran bertulis terlebih dahulu daripada Pihak yang satu lagi, dengan syarat Wink boleh menyerahkan, memindahkan, atau membebankan mana-mana hak dan/atau kewajipannya di bawah Perjanjian ini (secara keseluruhan atau sebahagian atau dari semasa ke semasa daripada syarikat persetujuan bertulis sebelumnya tanpa persetujuan bertulis daripada Syarikat.
+30.1 Mana-mana Pihak tidak berhak untuk menyerahkan, memindahkan, atau membebankan mana-mana hak dan/atau kewajipannya di bawah Perjanjian ini tanpa kebenaran bertulis terlebih dahulu daripada Pihak yang satu lagi, dengan syarat Wink boleh menyerahkan, memindahkan, atau membebankan mana-mana hak dan/atau kewajipannya di bawah Perjanjian ini (secara keseluruhan atau sebahagian atau dari semasa ke semasa daripada syarikat yang mempunyai persetujuan bertulis terlebih dahulu tanpa persetujuan bertulis daripada Provider.
 
 30.2 Perjanjian ini dimeterai untuk faedah Pihak-Pihak dan pengganti masing-masing dan penerima serah hak yang dibenarkan, dan tiada apa pun di sini bertujuan atau secara tersirat akan memberikan kepada mana-mana orang lain apa-apa hak undang-undang atau saksama, manfaat, atau remedi dalam apa jua bentuk sekalipun, di bawah atau oleh sebab Perjanjian ini, kecuali setakat yang dinyatakan sebaliknya secara jelas dalam Perjanjian ini.
 
@@ -383,7 +383,7 @@ Setakat maksimum yang dibenarkan oleh undang-undang yang terpakai, anda bersetuj
 
 **34. Undang-undang dan Bidang Kuasa yang Mentadbir**
 
-34.1 Perjanjian ini hendaklah ditadbir secara eksklusif oleh dan ditafsirkan mengikut undang-undang Singapura. Akta Kontrak (Hak Pihak Ketiga) 2001 (Bab 53B) tidak akan digunakan untuk Perjanjian ini. Para Pihak akan dalam apa jua keadaan cuba menyelesaikan pertikaian mereka dengan cara yang baik di luar mahkamah dengan terlebih dahulu menjalankan perbincangan dan rundingan dengan niat baik.
+34.1 Perjanjian ini hendaklah dikawal secara eksklusif oleh dan ditafsirkan mengikut undang-undang Singapura. Akta Kontrak (Hak Pihak Ketiga) 2001 (Cap 53B) tidak akan digunakan untuk Perjanjian ini. Pihak-pihak akan dalam apa jua keadaan cuba menyelesaikan pertikaian mereka dengan cara yang baik di luar mahkamah dengan terlebih dahulu menjalankan perbincangan dan rundingan dengan niat baik.
 
 34.2 Sebarang pertikaian yang timbul atau berkaitan dengan perjanjian ini hendaklah secara eksklusif diserahkan kepada dan diuruskan oleh mahkamah yang berwibawa di Singapura, tanpa mengambil kira peraturan percanggahan undang-undang.
 

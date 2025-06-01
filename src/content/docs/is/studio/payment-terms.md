@@ -45,7 +45,7 @@ Aðeins sá sem undirritar þennan samning skal vera eini tilnefndi fulltrúi gi
 
 **2.1 Innheimta og útborgun greiðslu**Greiðslumiðlun innheimtir greiðslu frá gesti fyrir hönd samstarfsaðila (innborgun). Innborgunargjöld eru innheimt eftir greiðslumáta gestsins, þ.e. Visa, PayPal o.s.frv. ... og gjaldmiðilsbreytingu (hér eftir nefnd „innborgunargjöld“) ef og þegar við á. Þegar fjármunir eru millifærðir af reikningi þínum hjá greiðslumiðlun yfir á bankareikning þinn (útborgun) eru innheimt útborgunargjöld, bankagjöld og gjaldmiðilsbreyting (hér eftir nefnd „útborgunargjöld“) ef og þegar við á.
 
-**2.2 Gjöld fyrir greiðsluþjónustu.**&#x47;reiðslumiðlun innheimtir 4% þóknun fyrir greiðsluþjónustu – Innborgunargjöld
+**2.2 Gjöld fyrir greiðsluþjónustu.**&#x47;reiðslumiðlun innheimtir 4% af þóknun fyrir greiðsluþjónustu – Innborgunargjöld
 
 **2.3 Tiltækileiki fjármagns.**&#x4D;eð fyrirvara um og að því gefnu að greiðslur frá gesti berist, mun greiðslumiðlunin gera féð sem tengist bókuninni aðgengilegt samstarfsaðilum innan sólarhrings frá innritun gests.
 
@@ -63,7 +63,7 @@ Aðeins sá sem undirritar þennan samning skal vera eini tilnefndi fulltrúi gi
 
 **2.10 Nákvæmni tengds aðila.**&#x54;engdi aðilanum ber ábyrgð á að tryggja nákvæmni bankaupplýsinga sem geymdar eru í prófíl Wink. Ef rangt bankareikningsnúmer er gefið upp, mun bankinn innheimta viðbótar vinnslugjald. Greiðslumiðlari mun draga þetta vinnslugjald frá næstu þóknunargreiðslu. Ef bankareikningurinn sem tengiaðili gefur upp er lokaður eða frystur eða ekki er hægt að taka við/endurspegla greiðslur af ástæðum sem ekki er hægt að rekja til greiðslumiðlarans, skal greiðsluskylda greiðslumiðlarans samkvæmt þessum samningi falla niður svo framarlega sem skrár greiðslumiðlarans sýna að greiðslan hefur verið innt af hendi.
 
-**2.11** **Greiðsluheimildir.**&#xDE;ú heimilar greiðslumiðlara að innheimta frá þér upphæðir sem þú átt rétt á samkvæmt þessum greiðsluskilmálum og/eða skilmálunum með því annað hvort (i) að skuldfæra greiðslumáta sem tengist viðkomandi bókun, eða (ii) með því að halda upphæðinni eftir af framtíðarútborgun þinni. Nánar tiltekið heimilar þú greiðslumiðlara að innheimta frá þér:
+**2.11** **Greiðsluheimildir.**&#xDE;ú heimilar greiðslumiðlun að innheimta frá þér upphæðir sem þú átt rétt á samkvæmt þessum greiðsluskilmálum og/eða skilmálunum með því annað hvort (i) að skuldfæra greiðslumáta sem tengist viðkomandi bókun, eða (ii) með því að halda upphæðinni eftir af framtíðarútborgun þinni. Nánar tiltekið heimilar þú greiðslumiðlun að innheimta frá þér:
 
 * Öll upphæð sem greiða þarf Wink eða greiðslumiðlara.
 * Skattar, þar sem við á og eins og fram kemur í skilmálunum.
@@ -151,7 +151,7 @@ Að því marki sem gildandi lög leyfa samþykkir þú að verja (að vali Grei
 
 **11.1**Ef þú ert að gera samning við Payment Facilitator í Bandaríkjunum, verða þessir greiðsluskilmálar túlkaðir í samræmi við lög Wyoming-ríkis og Bandaríkjanna, án tillits til ákvæða um lagaárekstra. Málshöfðun (önnur en smákröfumál) verður að höfða fyrir ríkis- eða alríkisdómstóli í Wyoming, nema við komumst að samkomulagi um annan stað. Þú og við samþykkjum bæði varnarþing og lögsögu í Wyoming.
 
-**11.2**Ef þú ert að gera samning við Payment Facilitator í Bretlandi verða þessir greiðsluskilmálar túlkaðir í samræmi við ensk lög. Ef þú starfar sem neytandi og ef bindandi lagaákvæði um neytendavernd í búsetulandi þínu innihalda ákvæði sem eru hagstæðari fyrir þig, skulu slík ákvæði gilda óháð vali á enskum lögum. Sem neytandi getur þú höfðað hvaða mál sem er varðandi þessa greiðsluskilmála fyrir lögbærum dómstóli á búsetustað þínum eða dómstóli í Englandi. Ef Payment Facilitator óskar eftir að framfylgja einhverjum réttindum sínum gegn þér sem neytanda, getum við aðeins gert það fyrir dómstólum í því lögsagnarumdæmi þar sem þú ert búsettur. Ef þú starfar sem fyrirtæki samþykkir þú að lúta einkarétt enskra dómstóla.
+**11.2**Ef þú ert að gera samning við Payment Facilitator í Bretlandi verða þessir greiðsluskilmálar túlkaðir í samræmi við ensk lög. Ef þú starfar sem neytandi og ef bindandi lagaákvæði um neytendavernd í búsetulandi þínu innihalda ákvæði sem eru hagstæðari fyrir þig, skulu slík ákvæði gilda óháð því hvort ensk lög eru valin. Sem neytandi getur þú höfðað hvaða mál sem er varðandi þessa greiðsluskilmála fyrir lögbærum dómstóli á búsetustað þínum eða dómstóli á Englandi. Ef Payment Facilitator óskar eftir að framfylgja einhverjum réttindum sínum gegn þér sem neytanda, getum við aðeins gert það fyrir dómstólum í því lögsagnarumdæmi þar sem þú ert búsettur. Ef þú starfar sem fyrirtæki samþykkir þú að lúta einkarétt enskra dómstóla.
 
 **11.3**Ef þú ert að gera samning við Payment Facilitator í Slóvakíu verða þessir greiðsluskilmálar túlkaðir í samræmi við lög ESB. Ef þú starfar sem neytandi má aðeins höfða mál gegn okkur vegna eða í tengslum við þessa greiðsluskilmála fyrir dómstóli í borginni Bratislava eða fyrir dómstóli með lögsögu á búsetustað þínum. Ef þú starfar sem fyrirtæki samþykkir þú að lúta einkarétt lögsögu dómstóls í borginni Bratislava í Slóvakíu.
 

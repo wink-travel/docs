@@ -16,7 +16,7 @@ Data peribadi sedang diproses, Syarikat boleh mendapatkan data peribadi anda dar
 
 (3) Dikumpul secara automatik melalui sistem apabila anda mengakses laman web Syarikat dan/atau menggunakan perkhidmatan tersebut.
 
-Data peribadi yang diperlukan oleh Syarikat untuk mengumpul, menyusun, menggunakan dan memproses di bawah Polisi Privasi ini adalah seperti berikut:
+Data peribadi yang diperlukan oleh Syarikat untuk mengumpul, menyusun, menggunakan dan memproses di bawah Dasar Privasi ini adalah seperti berikut:
 
 (1) Nama penuh anda, termasuk maklumat berkaitan anda atau maklumat wakil anda (sekiranya anda menghubungi kami atas nama badan perundangan) yang mungkin termasuk dokumen maklumat identiti anda.
 
@@ -58,7 +58,7 @@ Pendedahan data peribadi, secara amnya, data peribadi anda tidak akan didedahkan
 
 Syarikat berjanji untuk melaksanakan langkah keselamatan data peribadi yang sesuai untuk menghalang sebarang akses, pengubahsuaian, pindaan atau pendedahan yang tidak dibenarkan dan menyalahi undang-undang. Syarikat komited untuk mengkaji semula langkah-langkah ini secara tetap untuk memastikan keserasiannya dengan piawaian dan undang-undang yang terpakai.
 
-Hak subjek data, Syarikat menghormati hak anda sebagai subjek data di bawah undang-undang yang berkenaan. Anda boleh menghubungi Syarikat untuk melaksanakan hak-hak iaitu (1) hak untuk menarik balik persetujuan, (2) hak untuk mengakses, (3) hak meminta salinan data peribadi, (4) hak untuk membetulkan data peribadi, (5) hak untuk membantah sebarang pemprosesan data peribadi, (6) hak untuk meminta kemudahalihan data sekiranya Syarikat menyimpan data peribadi tersebut dalam format yang boleh dibaca atau pemindahan hak yang digunakan secara automatik atau digunakan untuk pemindahan data peribadi atau pemindahan secara automatik. data peribadi tersebut kepada pengawal data lain, (7) hak untuk meminta pemadaman atau nyahpengenalpastian data peribadi sekiranya tiada keperluan untuk diproses, (8) hak untuk meminta penggantungan penggunaan data peribadi, dan (9) hak untuk memfailkan aduan.
+Hak subjek data, Syarikat menghormati hak anda sebagai subjek data di bawah undang-undang yang terpakai. Anda boleh menghubungi Syarikat untuk melaksanakan hak-hak iaitu (1) hak untuk menarik balik persetujuan, (2) hak untuk mengakses, (3) hak meminta salinan data peribadi, (4) hak untuk membetulkan data peribadi, (5) hak untuk membantah sebarang pemprosesan data peribadi, (6) hak untuk meminta kemudahalihan data sekiranya Syarikat menyimpan data peribadi tersebut dalam format yang boleh dibaca atau pemindahan hak yang digunakan secara automatik atau digunakan untuk pemindahan data peribadi atau pemindahan secara automatik. data peribadi tersebut kepada pengawal data lain, (7) hak untuk meminta pemadaman atau nyahpengenalpastian data peribadi sekiranya tiada keperluan untuk diproses, (8) hak untuk meminta penggantungan penggunaan data peribadi, dan (9) hak untuk memfailkan aduan.
 
 Maklumat hubungan syarikat
 

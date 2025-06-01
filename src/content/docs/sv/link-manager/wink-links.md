@@ -17,7 +17,7 @@ Vi byggde[WinkLinks](https://i.trvl.as/)en helt gratis länkhanterare, fokuserad
 ## Drag
 
 * Med WinkLinks kan du lägga till alla dina befintliga affiliate-länkar, som Commission Junction och Amazon, gratis.
-* Du får en cool fåfäng URL, till exempel<https://i.trvl.as/bob>, för de tillfällen då du bara kan dela en enda URL.
+* Du får en cool fåfäng URL, som till exempel<https://i.trvl.as/bob>, för de tillfällen då du bara kan dela en enda URL.
 * Du kan organisera och dela länkar och ladda upp filer.
 * Hotell, kedjor och varumärken kan använda WinkLinks som en avancerad bokningsmotor:
   * Stöder flera egenskaper.

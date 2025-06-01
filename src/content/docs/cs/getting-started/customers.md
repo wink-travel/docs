@@ -26,7 +26,7 @@ Společnosti zabývající se správou pohostinství a destinací mohou spravova
 
 ## Influenceři
 
-Influenceři používají Wink k lepší monetizaci svého publika. Dělají to tak, že spolupracují s hotely, vytvářejí individuální nabídky a využívají Winkovy nástroje pro sociální sítě a výkonnou analytiku ke sledování toho, které produkty se prodávají nejlépe.
+Influenceři používají Wink k lepší monetizaci svého publika. Dělají to tak, že spolupracují s hotely, vytvářejí individuální nabídky a využívají nástroje Winku pro sociální sítě a výkonnou analytiku ke sledování toho, které produkty se prodávají nejlépe.
 
 ## Cestovní kanceláře
 

@@ -199,7 +199,7 @@ Nur die Person, die diese Vereinbarung unterzeichnet, ist der alleinige Vertrete
 * Wink vor der Umsiedlung des Gastes unverzüglich zu benachrichtigen;
 * Die Umsiedlung des Gastes in eine alternative Unterkunft gleicher oder höherer Kategorie/Bewertung in der gleichen Gegend und zu den gleichen gebuchten Bedingungen erfolgt durch den Unterkunftsanbieter ohne zusätzliche Kosten für den betroffenen Gast und umfasst ohne Einschränkung Folgendes:
 * Alle Kosten im Zusammenhang mit dem Transport und anderen umzugsbezogenen Ausgaben im Namen des betroffenen Gastes.
-* Damit ist Wink berechtigt, sämtliche durch die Nichtverfügbarkeit und/oder den Umzug verursachten direkten Kosten von den offenen Salden des Unterkunftsanbieters abzuziehen, falls Wink im Zusammenhang mit der Nichtverfügbarkeit und/oder dem Umzug finanzielle Strafen, Entschädigungen oder Kosten zu zahlen hat.
+* Damit soll Wink die Möglichkeit gegeben werden, sämtliche durch die Nichtverfügbarkeit und/oder den Umzug verursachten direkten Kosten von den offenen Salden des Unterkunftsanbieters abzuziehen, falls Wink im Zusammenhang mit der Nichtverfügbarkeit und/oder dem Umzug finanzielle Strafen, Entschädigungen oder Kosten zu zahlen hat.
 
 11.2 Im Falle der Nichterfüllung einer der Bedingungen dieses Vertrags durch den Beherberger, einschließlich eines unzumutbaren Zustands der Räumlichkeiten und/oder mangelhafter Einrichtungen und Dienstleistungen, ist Wink berechtigt, Zahlungen einzustellen und die ordnungsgemäße Erfüllung der vereinbarten Buchungsbedingungen zu verlangen. Der Beherberger trägt in jedem Fall die vollen Kosten einer etwaigen Entschädigung an den betroffenen Gast und stellt Wink von jeglicher Haftung frei, die sich aus der mangelhaften Erfüllung seiner Verpflichtungen aus diesem Vertrag durch den Beherberger ergibt.
 
@@ -259,7 +259,7 @@ Der Unterkunftsanbieter gewährleistet und erklärt, dass er die folgenden Punkt
 
 15.2 Der Beherbergungsbetrieb verpflichtet sich, bei der Bearbeitung aller Ansprüche oder Beschwerden des Gastes uneingeschränkt mit Wink zusammenzuarbeiten und auf alle Anfragen von Wink zu diesen Angelegenheiten spätestens sieben (7) Kalendertage nach Erhalt der Anfrage von Wink oder innerhalb der im Service Level Agreement vereinbarten Frist eine detaillierte Antwort zu geben.
 
-15.3 Für den Fall, dass Wink aufgrund eines Vorfalls, Anspruchs oder einer Beschwerde eines Gastes aufgrund einer Handlung oder Unterlassung des Unterkunftsanbieters einem Gast eine Entschädigung zahlen muss, erklärt sich der Unterkunftsanbieter damit einverstanden, Wink unverzüglich und vollständig gemäß Abschnitt 33 der Allgemeinen Geschäftsbedingungen („Freistellung“), soweit anwendbar, für derartige Kosten schadlos zu halten und zu entschädigen.
+15.3 Für den Fall, dass Wink aufgrund eines Vorfalls, Anspruchs oder einer Beschwerde eines Gastes aufgrund einer Handlung oder Unterlassung des Unterkunftsanbieters einem Gast eine Entschädigung zahlen muss, erklärt sich der Unterkunftsanbieter damit einverstanden, Wink unverzüglich und vollständig gemäß Abschnitt 33 der Allgemeinen Geschäftsbedingungen („Freistellung“), soweit anwendbar, von diesen Kosten freizustellen und zu erstatten.
 
 15.4 Der Unterkunftsanbieter erklärt sich damit einverstanden, dass Wink sämtliche Kosten, Ausgaben und Entschädigungen, die aufgrund von Vorfällen und Beschwerden von Gästen durch Wink entstehen, von seinem/seinen Saldo(s) abzieht.
 
@@ -293,7 +293,7 @@ Der Unterkunftsanbieter garantiert, dass weder er noch seine verbundenen Parteie
 
 19.4 Kundendaten. Die Parteien unternehmen wirtschaftlich angemessene Anstrengungen, um die Vertraulichkeit und Privatsphäre der Kundendaten zu wahren und sie vor unbefugter Nutzung oder Weitergabe zu schützen. Die Parteien verpflichten sich, die geltenden Gesetze zur Verarbeitung personenbezogener Daten und zum Schutz der Privatsphäre einzuhalten. Die Parteien ergreifen stets angemessene und geeignete Sicherheitsmaßnahmen, um die Beschädigung und den unbefugten Zugriff auf Kundendaten zu verhindern. Zu diesen Maßnahmen gehören unter anderem Daten- und Kanalverschlüsselung. Gegebenenfalls muss der Beherbergungsbetrieb Wink über Sicherheitsverletzungen so schnell wie möglich (spätestens einen Tag nach Entdeckung der Verletzung) informieren. Jede Partei verfügt über eine für Kunden zugängliche Datenschutzrichtlinie, die beschreibt, wie sie Kundendaten schützt und verwendet. Die Parteien können ihr Recht auf Zugang zu ihren personenbezogenen Daten, deren Berichtigung oder Löschung sowie ihr Widerspruchsrecht, ihr Recht auf Datenübertragbarkeit und ihre Einschränkung der Verarbeitung durch eine schriftliche Anfrage an die andere Partei unter den in der Überschrift dieser Vereinbarung angegebenen Adressen ausüben. Darüber hinaus können sie eine Beschwerde bei der lokalen Datenschutzbehörde einreichen.
 
-19.5 Bekanntmachungen. Keine der Parteien darf schriftliche Materialien, die auf die andere Partei verweisen, erstellen, veröffentlichen, verteilen oder zulassen, ohne diese zuvor der anderen Partei vorzulegen und die vorherige schriftliche Zustimmung der nicht vorlegenden Partei einzuholen. Diese Zustimmung darf nicht unangemessen verweigert oder verzögert werden.
+19.5 Bekanntmachungen. Keine der Parteien darf schriftliche Materialien, die auf die andere Partei verweisen, erstellen, veröffentlichen, verbreiten oder zulassen, ohne diese zuvor der anderen Partei vorzulegen und die vorherige schriftliche Zustimmung der nicht vorlegenden Partei einzuholen. Diese Zustimmung darf nicht unangemessen verweigert oder verzögert werden.
 
 19.6 Jede Partei kann den Datenschutzbeauftragten (DPO) der anderen Partei über die folgende E-Mail- und/oder Postadresse kontaktieren: dataprotectionofficer@Wink.
 
@@ -323,17 +323,17 @@ Der Unterkunftsanbieter garantiert, dass weder er noch seine verbundenen Parteie
 
 22.4 Der Unterkunftsanbieter verpflichtet sich, Wink, seine Unterkunftsanbieter und/oder seine Partner während und nach Ablauf dieser Vereinbarung vollständig schadlos zu halten und sie auf Verlangen von allen Verlusten freizustellen, die Wink, seinen Unterkunftsanbietern und/oder seinen Partnern aus Ansprüchen im Zusammenhang mit geistigen Eigentumsrechten entstehen, ihnen zugesprochen werden oder deren Zahlung vereinbart wurde.
 
-22.5 Der Beherbergungsbetrieb verpflichtet sich: (i) Wink so schnell wie möglich über den Fortgang des IPR-Anspruchs zu informieren, einschließlich des Nachweises, dass der IPR-Anspruch vom Kläger beigelegt oder abgewiesen wurde; (ii) Sollte der Beherbergungsbetrieb diese Klausel nicht einhalten oder Wink mit dem Fortgang des IPR-Anspruchs nicht zufrieden sein oder um weitere Schäden zu verhindern, übernimmt Wink die sofortige Bearbeitung des IPR-Anspruchs auf Kosten des Beherbergungsbetriebs. Wink ist berechtigt, alle aufgrund des IPR-Anspruchs gezahlten Kosten und Entschädigungen mit allen gegenwärtigen, bedingten und/oder zukünftigen vom Beherbergungsbetrieb geschuldeten Beträgen zu verrechnen.
+22.5 Der Beherberger verpflichtet sich: (i) Wink so schnell wie möglich über den Fortgang des IPR-Anspruchs zu informieren, einschließlich des Nachweises, dass der IPR-Anspruch vom Kläger beigelegt oder abgewiesen wurde; (ii) Sollte der Beherberger diese Klausel nicht einhalten oder Wink mit dem Fortgang des IPR-Anspruchs nicht zufrieden sein oder um weitere Schäden zu verhindern, übernimmt Wink die sofortige Bearbeitung des IPR-Anspruchs auf Kosten des Beherbergers. Wink ist berechtigt, alle aufgrund des IPR-Anspruchs gezahlten Kosten und Entschädigungen mit allen gegenwärtigen, bedingten und/oder zukünftigen vom Beherberger geschuldeten Beträgen zu verrechnen.
 
 **23. Öffentlichkeitsarbeit / Externe Kommunikation**
 
 23.1 Der Unterkunftsanbieter darf ohne die vorherige schriftliche Zustimmung von Wink keinerlei Mitteilungen oder Materialien im Zusammenhang mit Wink oder dieser Vereinbarung an die Medien oder andere externe Parteien weitergeben und der Unterkunftsanbieter haftet allein und direkt für sämtliche Schäden oder Verluste, die Wink durch die Verletzung dieser Bestimmung entstehen.
 
-23.2 Der Unterkunftsanbieter berät sich mit Wink hinsichtlich des Inhalts jeglicher Kommunikation oder Materialien, die er zu veröffentlichen beabsichtigt, und der Unterkunftsanbieter muss Wink eine Kopie jeglicher letztendlich veröffentlichter Kommunikation oder Materialien zur Verfügung stellen.
+23.2 Der Unterkunftsanbieter berät sich mit Wink hinsichtlich des Inhalts jeglicher Kommunikation oder Materialien, die er zu veröffentlichen beabsichtigt, und muss Wink eine Kopie jeglicher letztendlich veröffentlichter Kommunikation oder Materialien zur Verfügung stellen.
 
 **24. Vorrang**
 
-24.1 Diese Vereinbarung dient dem Abschluss individueller Geschäftsvereinbarungen, die Wink anschließend mit den einzelnen Unterkunftsanbietern abschließt. Im Falle von Abweichungen gelten die in dieser Vereinbarung festgelegten Bedingungen für die Unterkunftsanbieter unter folgender Maßgabe:
+24.1 Diese Vereinbarung dient dem Abschluss individueller Geschäftsvereinbarungen, die Wink anschließend mit jedem der Beherbergungsbetriebe abschließt. Im Falle von Abweichungen gelten die in dieser Vereinbarung festgelegten Bedingungen für die Beherbergungsbetriebe unter folgender Maßgabe:
 
 24.2 In Bezug auf die Zahlungsbedingungen hinsichtlich vereinbarter Stornierungen und Nichterscheinen, Zahlungsrichtlinien, Freigaben und Verfügbarkeit von Zimmern (Standardtyp) gelten die Bedingungen dieser Vereinbarung.
 

@@ -145,7 +145,7 @@ Estos términos están disponibles en[Portal de afiliados > Condiciones del serv
 
 6.6**Disputas de pago:**
 
-* En caso de disputa sobre una factura, el Agente de Viajes deberá notificar a Wink dentro de los 10 días siguientes a la fecha de la factura, explicando detalladamente los motivos de la disputa. Ambas partes negociarán de buena fe para resolver la disputa con prontitud. La parte no disputada de la factura deberá abonarse en la fecha de vencimiento.
+* En caso de disputa sobre una factura, el Agente de Viajes deberá notificar a Wink dentro de los 10 días siguientes a la fecha de la factura, explicando detalladamente los motivos de la disputa. Ambas partes negociarán de buena fe para resolver la disputa con prontitud. La parte no disputada de la factura deberá pagarse en la fecha de vencimiento.
 
 **7. Responsabilidades del agente de viajes**
 

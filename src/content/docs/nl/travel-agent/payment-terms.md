@@ -61,7 +61,7 @@ Subtotaal = 1.000 - 15 = 985
 
 **3**.**Facturatie en betaling**
 
-3.1**Maandelijkse facturering:**&#x57;ink stuurt maandelijks een correcte en correcte factuur aan de reisagent voor de boekingskosten die in de voorgaande maand zijn gemaakt. De reisagent is verplicht deze factuur te voldoen binnen de op de factuur vermelde betalingstermijn.
+3.1**Maandelijkse facturering:**&#x57;ink stuurt maandelijks een correcte en correcte factuur naar de reisagent voor de boekingskosten die in de voorgaande maand zijn gemaakt. De reisagent is verplicht deze factuur te voldoen binnen de op de factuur vermelde betalingstermijn.
 
 3.2**Betaalmethode:**&#x42;etalingen aan Wink dienen te geschieden via de op de factuur vermelde betaalmethode. Eventuele kosten verbonden aan de overschrijving zijn voor rekening van de reisagent.
 

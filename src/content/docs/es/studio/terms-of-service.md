@@ -81,9 +81,9 @@ Wink y el Afiliado son una “Parte” de este Acuerdo y se denominan colectivam
 
 **1.2 Sin asociación**
 
-1.2.1 Este Acuerdo no pretende, ni nada de lo aquí contenido o de los acuerdos aquí contemplados debe interpretarse como, la creación de una empresa conjunta o una relación de socios, sociedad o principal y agente entre las Partes.
+1.2.1 El presente Acuerdo no pretende, ni nada de lo aquí contenido o de los acuerdos aquí contemplados debe interpretarse como, la creación de una empresa conjunta o una relación de socios, sociedad o principal y agente entre las Partes.
 
-1.2.2 A menos que Wink acuerde lo contrario por escrito o se establezca de otro modo en este Acuerdo, el Afiliado no publicará en ningún lugar del (de los) Sitio(s) Web del Afiliado ninguna declaración, ya sea expresa o implícita, de que el sitio web es parte de, está respaldado por, o es un sitio web oficial de Wink.
+1.2.2 A menos que Wink acuerde lo contrario por escrito o se establezca de otro modo en este Acuerdo, el Afiliado no publicará en ningún lugar de los Sitios web del Afiliado ninguna declaración, ya sea expresa o implícita, de que el sitio web es parte de, está respaldado por, o es un sitio web oficial de Wink.
 
 1.2.3 El Afiliado podrá interactuar directamente con los Proveedores de Alojamiento para determinar tarifas exclusivas o preferenciales, términos, promociones, paquetes complementarios y demás.
 
@@ -258,7 +258,7 @@ Comisión neta pagada (pago) = Comisión - PSF - BF
 
 5.5 La Comisión Neta especificada será la única compensación que el Afiliado tendrá derecho a recibir en virtud de este Acuerdo. El Afiliado no tendrá derecho a ningún otro beneficio. Es responsabilidad de Wink verificar la exactitud de los pagos de la Comisión Neta antes de realizarlos, y es responsabilidad del Afiliado verificar todos los pagos de la Comisión Neta al recibirlos y notificar de inmediato cualquier presunto error. Ninguna de las partes podrá presentar reclamaciones por sobrepago o pago insuficiente noventa (90) días naturales después de la fecha de vencimiento del pago. Todos los pedidos están sujetos a la aceptación de Wink de acuerdo con sus políticas vigentes en el momento de la solicitud de reserva. Las políticas de Wink están sujetas a cambios sin previo aviso.
 
-5.6 Wink hará todos los esfuerzos comercialmente razonables para auditar todas las transacciones sujetas a este Acuerdo. Wink proporcionará al Afiliado acceso a análisis y a un panel que resume todas las reservas pendientes y vencidas. El Afiliado también tendrá acceso a informes de pago, que mostrarán las ganancias proyectadas y el historial de pagos. Si Wink no mantiene registros precisos o no realiza la auditoría, el único recurso del Afiliado será rescindir este Acuerdo y finalizar su participación en el programa.
+5.6 Wink hará todos los esfuerzos comercialmente razonables para auditar todas las transacciones sujetas a este Acuerdo. Wink proporcionará al Afiliado acceso a análisis y a un panel que resume todas las reservas pendientes y vencidas. El Afiliado también tendrá acceso a informes de pago, que mostrarán las ganancias proyectadas y el historial de pagos. Si Wink no mantiene registros precisos o no realiza la auditoría, el único recurso del Afiliado será rescindir este Acuerdo y dar por terminada su participación en el programa.
 
 **6. Declaraciones y garantías.**
 
@@ -316,7 +316,7 @@ Sin perjuicio de lo establecido en otras secciones de este Acuerdo, tanto el Afi
 
 **8.1 Modificación.**
 
-Salvo que la legislación aplicable disponga lo contrario, Wink podrá modificar estos Términos en cualquier momento. Si realizamos cambios sustanciales en estos Términos, publicaremos los Términos revisados en la Plataforma Wink y actualizaremos la fecha de "Última actualización" en la parte superior de estos Términos. Si la modificación le afecta, le notificaremos las modificaciones al menos treinta (30) días antes de su fecha de entrada en vigor. Si no rescinde su contrato antes de la fecha de entrada en vigor de los Términos revisados, su uso continuado de los Servicios constituirá la aceptación de cualquier cambio en los Términos revisados.
+Salvo que la legislación aplicable disponga lo contrario, Wink podrá modificar estos Términos en cualquier momento. Si realizamos cambios sustanciales en estos Términos, publicaremos los Términos revisados en la Plataforma Wink y actualizaremos la fecha de "Última actualización" en la parte superior de estos Términos. Si la modificación le afecta, le notificaremos las modificaciones al menos treinta (30) días antes de su entrada en vigor. Si no rescinde su contrato antes de la fecha de entrada en vigor de los Términos revisados, su uso continuado de los Servicios constituirá la aceptación de cualquier cambio en los Términos revisados.
 
 **8.2 Plazo.**
 
@@ -331,9 +331,9 @@ A menos que se acuerde lo contrario, el presente Acuerdo comenzará a regir en l
 
 8.3.3 Wink se reserva el derecho de terminar este Acuerdo sin previo aviso en el caso de que no se hayan producido Transacciones Materializadas en un período de 6 meses consecutivos.
 
-8.3.4 Tras la rescisión de este Acuerdo, Wink continuará pagando al Afiliado cualquier Comisión pendiente durante un período de 3 meses a partir de la fecha de rescisión, siempre que Wink disponga de los datos de contacto y bancarios correctos del Afiliado durante dicho período. Si el Afiliado no reclama la Comisión pendiente dentro de dicho período de 3 meses, dicha falta constituirá una renuncia efectiva a su derecho a reclamarla. Sin perjuicio de lo establecido en otras disposiciones de este Acuerdo en relación con la reducción, suspensión o pérdida de la Comisión, cualquier Comisión pendiente se perderá en caso de que el Afiliado haya incurrido en dolo, negligencia grave, fraude o incumplimiento grave de este Acuerdo.
+8.3.4 Tras la rescisión de este Acuerdo, Wink continuará pagando al Afiliado cualquier Comisión pendiente durante un período de 3 meses a partir de la fecha de rescisión, siempre que Wink disponga de los datos de contacto y bancarios correctos del Afiliado durante dicho período. Si el Afiliado no reclama la Comisión pendiente dentro de dicho período de 3 meses, dicha falta constituirá una renuncia efectiva a su derecho a reclamarla. Sin perjuicio de lo establecido en otras disposiciones de este Acuerdo en relación con la reducción, suspensión o pérdida de Comisiones, cualquier Comisión pendiente se perderá en caso de que el Afiliado haya incurrido en dolo, negligencia grave, fraude o incumplimiento grave de este Acuerdo.
 
-8.3.5 Tras la rescisión, y salvo disposición en contrario, el presente Acuerdo quedará rescindido total y definitivamente, sin perjuicio de los derechos y recursos de una Parte en relación con una indemnización o un incumplimiento del presente Acuerdo por la otra Parte. Las cláusulas 4.1.2, 4.1.5, 4.1.6, 4.1.7, 4.2, 4.3, 4.4.1, 4.9.4(c), 9 y 10 seguirán vigentes tras la rescisión del presente Acuerdo.
+8.3.5 Tras la rescisión, y salvo disposición en contrario, el presente Acuerdo quedará rescindido total y definitivamente, sin perjuicio de los derechos y recursos de una Parte en relación con una indemnización o un incumplimiento del presente Acuerdo por parte de la otra Parte. Las cláusulas 4.1.2, 4.1.5, 4.1.6, 4.1.7, 4.2, 4.3, 4.4.1, 4.9.4(c), 9 y 10 seguirán vigentes tras la rescisión del presente Acuerdo.
 
 8.3.6 Inmediatamente después de que la terminación entre en vigencia, el Afiliado eliminará todos los enlaces a los Sitios web de Wink, todo el contenido relacionado con Wink, enlaces, banners, logotipos y otras referencias a Wink.
 

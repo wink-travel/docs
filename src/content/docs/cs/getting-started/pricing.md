@@ -39,7 +39,7 @@ Pokud chcete, abychom podporovali jinou metodu výplaty, pošlete nám e-mail. :
 
 ## Model 2
 
-Tento model je k dispozici pouze cestovním kancelářím, které mají licenci cestovní kanceláře ve svém regionu a které si přejí být oficiálním obchodníkem. Některé z našich registrovaných cestovních kanceláří chtějí být zodpovědné za zpracování plateb a vyplácení finančních prostředků hotelům. V rámci tohoto modelu jsou zodpovědné za finanční prostředky a mají potřebné licence pro provozování činnosti ve své zemi.
+Tento model je k dispozici pouze cestovním kancelářím, které mají licenci cestovní kanceláře ve svém regionu a které si přejí být oficiálním obchodníkem. Některé z našich registrovaných cestovních kanceláří chtějí být zodpovědné za zpracování plateb a vyplácení finančních prostředků hotelům. V rámci tohoto modelu jsou zodpovědné za finanční prostředky a mají potřebné licence k provozování činnosti ve své zemi.
 
 ### Zhroucení
 
@@ -51,13 +51,13 @@ Při použití tohoto modelu cestovní kanceláře platí pouze poplatek za zpra
 
 ## Budoucí služby
 
-V budoucnu nabídneme volitelné služby založené na předplatném, které ještě více usnadní prodej pro všechny, nebo nabídneme spravované partnerské účty, které prodávají za vás. Pokud vás to zajímá, dejte nám vědět, co si myslíte, a napište nám na adresu[ahoj@wink.travel](mailto:hi@wink.travel).
+V budoucnu nabídneme volitelné služby založené na předplatném, které ještě více usnadní prodej pro všechny, nebo nabídneme spravované partnerské účty, které prodej udělají za vás. Pokud vás to zajímá, dejte nám vědět, co si myslíte, napište nám na adresu[ahoj@wink.travel](mailto:hi@wink.travel).
 
 Zůstaňte naladěni.
 
 ## Efekt platformy
 
-A konečně, s tím, jak neustále rosteme, a to jak co se týče velikosti, tak i počtu rezervací, bychom se s vámi rádi podělili o některé z efektů platformy. Více rezervací nám přináší příležitosti k získání množstevních slev prostřednictvím naší platební brány, což by nám umožnilo snížit poplatky za zpracování pro všechny.
+A konečně, vzhledem k tomu, že neustále rosteme, a to jak co se týče velikosti, tak i počtu rezervací, chceme se s vámi podělit o některé z efektů platformy. Více rezervací přináší příležitosti k množstevním slevám prostřednictvím naší platební brány, což by nám umožnilo snížit poplatky za zpracování pro všechny.
 
 Přidejte se k Wink ještě dnes a objevte nový a lukrativní způsob podnikání v pohostinství!
 

@@ -1,6 +1,6 @@
 ---
 title: Af hverju að gerast meðlimur
-description: Þessi grein fer yfir alla kosti þess að ganga í Wink.
+description: Þessi grein fer með þér í gegnum alla kosti þess að ganga í Wink.
 sidebar:
   order: 0
 ---

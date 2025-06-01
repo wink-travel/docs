@@ -12,7 +12,7 @@ Uma conta de usuário permite que você:
 * Crie e gerencie propriedades e venda onde quer que potenciais viajantes estejam.
 * Crie e gerencie contas de afiliados e ganhe uma comissão sobre as reservas que você facilitar.
 * Crie e gerencie contas de agentes de viagens e reserve em nome dos seus clientes.
-* Pegue sua URL personalizada do WinkLinks (*por exemplo https://i.trvl.as/bob*) e use-o na URL da sua biografia do IG.
+* Pegue seu url personalizado do WinkLinks (*por exemplo https://i.trvl.as/bob*) e use-o na URL da sua biografia do IG.
 * Reserve suas próximas férias e economize.
 * Faça tudo isso como desenvolvedor integrando-se com o Wink.
 * Todos os nossos recursos estão disponíveis para você**LIVRE**.

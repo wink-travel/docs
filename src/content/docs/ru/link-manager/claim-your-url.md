@@ -15,5 +15,5 @@ sidebar:
 <h4 align="center">https://i.trvl.as/queen-bee</h4>
 
 
-Имена счетов доступны на`first come - first serve`базис - Получите свой уникальный URL, пока можете!
+Имена счетов доступны на`first come - first serve`basis - Получите свой уникальный URL, пока можете!
 

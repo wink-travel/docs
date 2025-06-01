@@ -129,7 +129,7 @@ Tyto podmínky jsou k dispozici za[Partnerský portál > Podmínky služby](/stu
 
 6.2**Pozdní platby:**
 
-* Pokud nebude jakákoli platba splatná dle této Smlouvy uhrazena do data splatnosti, společnost Wink si vyhrazuje právo účtovat úrok ve výši 5 % měsíčně nebo maximální zákonem povolené sazby, podle toho, která je nižší z dlužné částky, vypočítané od data splatnosti do data platby. Společnost Wink si dále může pozastavit služby až do obdržení platby. Pokud se však na faktuře předložené společností Wink vyskytnou chyby nebo omyly, cestovní kancelář je povinna uhradit pouze správnou a přesnou část faktury a nebude podléhat žádnému úroku ani pokutě za neuhrazení nesprávné části faktury.
+* Pokud jakákoli platba splatná dle této Smlouvy nebude uhrazena do data splatnosti, společnost Wink si vyhrazuje právo účtovat úrok ve výši 5 % měsíčně nebo maximální zákonem povolené sazby, podle toho, která je nižší z dlužné částky, vypočítané od data splatnosti do data platby. Společnost Wink si dále vyhrazuje právo pozastavit služby do doby obdržení platby. Pokud se však na faktuře předložené společností Wink vyskytnou chyby nebo omyly, cestovní kancelář je povinna uhradit pouze správnou a přesnou část faktury a nebude podléhat žádnému úroku ani pokutě za neuhrazení nesprávné části faktury.
 
 6.3**Vrácení peněz a kredity:**
 
@@ -183,7 +183,7 @@ Tyto podmínky jsou k dispozici za[Partnerský portál > Podmínky služby](/stu
 
 7,9**Dodržování podmínek platformy:**
 
-* Cestovní kancelář se zavazuje dodržovat všechny podmínky spojené s používáním platformy poskytovatele služeb, včetně veškerých aktualizací nebo změn těchto podmínek. Cestovní kancelář je zodpovědná za zajištění toho, aby její zaměstnanci a agenti byli s těmito podmínkami obeznámeni a dodržovali je.
+* Cestovní kancelář se zavazuje dodržovat všechny podmínky spojené s používáním platformy poskytovatele služeb, včetně veškerých aktualizací nebo změn těchto podmínek. Cestovní kancelář je zodpovědná za to, aby její zaměstnanci a agenti byli s těmito podmínkami obeznámeni a dodržovali je.
 
 7.10**Odškodnění:**
 

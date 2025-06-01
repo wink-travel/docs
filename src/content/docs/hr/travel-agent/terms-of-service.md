@@ -19,7 +19,7 @@ Svi putnički agenti i dalje mogu rezervirati putem našeg portala za putničke 
 Ti uvjeti su dostupni pod[Partnerski portal > Uvjeti korištenja](/studio/terms-of-service).
 :::
 
-**OPĆI UVJETI I ODREDBE WINK-a**\
+**OPĆI UVJETI POSLOVANJA WINK-a**\
 **ZA PUTNIČKE AGENTE (Registrirani trgovac)**
 
 **IZMEĐU:**
@@ -125,7 +125,7 @@ Ti uvjeti su dostupni pod[Partnerski portal > Uvjeti korištenja](/studio/terms-
 
 6.1**Raspored plaćanja:**
 
-* Sva plaćanja koja Putnička agencija duguje Winku prema ovom Ugovoru bit će izvršena u roku od 15 dana od primitka ispravnog i točnog računa od Winka, osim ako nije drugačije pismeno dogovoreno. Plaćanja će se vršiti u američkim dolarima, bez ikakvih odbitaka ili zadržavanja osim ako to nije propisano zakonom.
+* Sva plaćanja koja Putnička agencija duguje Winku prema ovom Ugovoru bit će izvršena u roku od 15 dana od primitka ispravnog i točnog računa od Winka, osim ako nije drugačije pismeno dogovoreno. Plaćanja će se izvršiti u USD, bez ikakvih odbitaka ili zadržavanja osim ako to nije propisano zakonom.
 
 6.2**Zakašnjela plaćanja:**
 
@@ -141,7 +141,7 @@ Ti uvjeti su dostupni pod[Partnerski portal > Uvjeti korištenja](/studio/terms-
 
 6,5**Načini plaćanja:**
 
-* Putnički agent će plaćati putem bankovnog transfera, kreditne kartice ili PayPala, a sve naknade povezane s načinom plaćanja koji odabere putnički agent snosi putnički agent.
+* Putnički agent će izvršiti plaćanja putem bankovnog transfera, kreditne kartice ili PayPala, a sve naknade povezane s načinom plaćanja koji odabere putnički agent snosi putnički agent.
 
 6.6**Sporovi oko plaćanja:**
 
@@ -171,7 +171,7 @@ Ti uvjeti su dostupni pod[Partnerski portal > Uvjeti korištenja](/studio/terms-
 
 7.6**Rješavanje pritužbi i sporova gostiju:**
 
-* Putnički agent bit će glavna kontaktna osoba za Goste u vezi sa svim pritužbama, sporovima ili problemima vezanim uz usluge pružene putem Platforme. Putnički agent će uložiti razumne napore da takve pritužbe i sporove riješi brzo i na način koji održava pozitivan odnos s Gostima i Pružateljima smještaja.
+* Putnički agent bit će glavna kontaktna osoba za Goste u vezi sa svim pritužbama, sporovima ili problemima vezanim uz usluge pružene putem Platforme. Putnički agent uložit će razumne napore da takve pritužbe i sporove riješi brzo i na način koji održava pozitivan odnos s Gostima i Pružateljima smještaja.
 
 7,7**Izvještavanje i odgovornost:**
 

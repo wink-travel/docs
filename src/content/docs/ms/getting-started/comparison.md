@@ -32,9 +32,9 @@ Ketahui cara Wink dibandingkan dengan segmen pelancongan dalam talian lain dalam
 
 ## Wink lwn Enjin Tempahan Internet (IBE)
 
-Sesetengah hotel cuba membandingkan kami dengan enjin tempahan internet mereka yang disertakan bersama pengurus saluran mereka dan meminta kami memberikan harga tetap, bulanan, berdasarkan bilangan kunci harta mereka.
+Sesetengah hotel cuba membandingkan kami dengan enjin tempahan internet mereka yang disertakan dengan pengurus saluran mereka dan meminta kami memberi mereka harga tetap, bulanan, berdasarkan bilangan kunci harta mereka.
 
-Kami bukan IBE dan mudah-mudahan [Akademi Wink](/) membantu untuk menjelaskan perkara ini. Terdapat kebaikan dan keburukan untuk mana-mana perkhidmatan. Jika IBE anda berfungsi untuk harta anda, kekalkan itu.
+Kami bukan IBE dan mudah-mudahan [Akademi Wink](/) membantu untuk menjelaskan perkara ini. Terdapat kebaikan dan keburukan untuk mana-mana perkhidmatan. Jika IBE anda bekerja untuk harta anda, kekalkan itu.
 Wink wujud untuk mengisi beberapa kekosongan dalam industri pelancongan dan menyatukan semuanya di satu tempat.
 
 :::petua

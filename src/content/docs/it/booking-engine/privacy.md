@@ -18,7 +18,7 @@ Trattandosi di dati personali trattati, la Società potrà acquisire i Suoi dati
 
 I dati personali che la Società è tenuta a raccogliere, compilare, utilizzare ed elaborare ai sensi della presente Informativa sulla privacy sono i seguenti:
 
-(1) Il tuo nome completo, comprese le informazioni correlate o le informazioni sul tuo rappresentante (nel caso in cui ci contatti a nome di una persona giuridica) che possono includere il tuo documento di identità.
+(1) Il tuo nome completo, incluse le informazioni correlate o le informazioni sul tuo rappresentante (nel caso in cui ci contatti a nome di una persona giuridica) che possono includere il tuo documento di identità.
 
 (2) Informazioni di contatto quali numero di telefono, e-mail o informazioni sull'account dei social media.
 

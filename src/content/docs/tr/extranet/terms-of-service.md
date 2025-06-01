@@ -113,7 +113,7 @@ Konaklama Sağlayıcıları, listeleme bilgilerini ve içeriklerini her zaman g�
 
 **5. Yasal Yükümlülükler**
 
-5.1 Konaklama Sağlayıcıları, listelemenize uygulanan tüm kanunları, kuralları, yönetmelikleri ve üçüncü taraflarla yapılan sözleşmeleri anlamak ve bunlara uymaktan sorumludur.
+5.1 Konaklama Sağlayıcıları, listelemenize uygulanan tüm kanunları, kuralları, düzenlemeleri ve üçüncü taraflarla yapılan sözleşmeleri anlamak ve bunlara uymaktan sorumludur.
 
 5.2 Konaklama Sağlayıcıları, misafirlerin ve diğer kişilerin kişisel verilerini yürürlükteki gizlilik yasalarına ve bu Şartlara uygun şekilde işleme ve kullanmaktan sorumludur.
 
@@ -228,7 +228,7 @@ Konaklama Sağlayıcısı, mümkün olan en erken zamanda Wink Extranet “Duyur
 
 13.5 Sözleşmenin herhangi bir nedenle erken feshedilmesi veya sona ermesi halinde Konaklama Sağlayıcısı:
 
-* Geçerli fesih veya sona erme tarihinden önce yapılan tüm Rezervasyonları, geçerli bildirim süresinin feshi veya sona ermesinden sonra gerçekleşen giriş tarihlerine sahip Rezervasyonlar dahil olmak üzere, başlangıçta rezerve edilen Oranlar üzerinden kabul edin veya başka şekilde uygun alternatif hizmetler sağlayın ve
+* Geçerli fesih veya sona erme tarihinden önce yapılan tüm Rezervasyonları, geçerli bildirim süresinin feshi veya sona ermesinden sonra gerçekleşen giriş tarihlerine sahip Rezervasyonlar dahil olmak üzere, orijinal olarak rezerve edilen Oranlar üzerinden kabul edin veya başka şekilde uygun alternatif hizmetler sağlayın ve
 * Hesabı buna göre kapatın.
 
 **14. Beyanlar ve Garantiler**
@@ -269,7 +269,7 @@ Konaklama Sağlayıcısı, aşağıdakilere tam olarak uyacağını garanti ve b
 
 **17. Sigorta**
 
-Konaklama Sağlayıcısı, konaklama (veya herhangi bir tesis ve hizmet) ve/veya bu Sözleşme ile bağlantılı veya bağlantılı olarak ortaya çıkan veya ortaya çıkabilecek tüm üçüncü taraf riskleri için geçerli eyalet/ülkede iş yapma lisansına sahip saygın sigortacılarla yeterli sigorta kapsamını sürdürecektir. Buna, (i) herhangi bir gerçek veya kişisel mülkün kaybı veya hasarı; (ii) herhangi bir kişinin kişisel yaralanması veya ölümü; (iii) üçüncü taraf mülkünün kaybı veya hasarı; veya (iv) konaklama hizmetlerini sağladığı üçüncü taraflara karşı sorumluluğu dahil olmak üzere, Wink'in doğrudan veya dolaylı olarak veya bunlarla bağlantılı olarak ortaya çıkan sorumluluğu da dahildir.
+Konaklama Sağlayıcısı, konaklama (veya herhangi bir tesis ve hizmet) ve/veya bu Sözleşme ile bağlantılı veya bağlantılı olarak ortaya çıkan veya ortaya çıkabilecek tüm üçüncü taraf riskleri için geçerli eyalet/ülkede iş yapma lisansına sahip saygın sigortacılarla yeterli sigorta kapsamını sürdürecektir. Buna, Wink'in (i) herhangi bir gerçek veya kişisel mülkün kaybı veya hasarı; (ii) herhangi bir kişinin kişisel yaralanması veya ölümü; (iii) üçüncü taraf mülkünün kaybı veya hasarı; veya (iv) konaklama hizmetlerini sağladığı üçüncü taraflara karşı sorumluluğu dahil olmak üzere doğrudan veya dolaylı olarak ortaya çıkan yükümlülükleri de dahildir.
 
 **18. Rüşvetle mücadele, ticaret kısıtlamaları ve iş etiği**
 
@@ -313,7 +313,7 @@ Konaklama Sağlayıcısı, bilgisi dahilinde kendisinin veya İlişkili Taraflar
 
 **22. İçerik Listeleme**
 
-22.1 Wink, Konaklama Sağlayıcısına Wink extranet'ine erişim sağlayacaktır. Konaklama Sağlayıcısı, ürünün en iyi şekilde dağıtılmasını sağlamak için fotoğraflar, resimler, tasarımlar, metin, ses, video, açıklamalar ve olanaklar (bundan böyle "İçerik") dahil ancak bunlarla sınırlı olmamak üzere ürünle ilgili tüm bilgileri ve içerikleri yüklemeyi taahhüt eder ve İçeriği güncel tutar. Konaklama Sağlayıcısı İçeriği sağlamadığı takdirde, Wink'in bunu doğrudan Konaklama Sağlayıcısının web sitesinden indirerek yapmasına açıkça yetki verir ve bu yüklemeden kaynaklanabilecek Talepler dahil olmak üzere tüm sorunların sorumluluğunu kabul eder. Ayrıca, Konaklama Sağlayıcısı Wink'e pazarlama ve dağıtım amaçları için İçeriğin boyutunu ve çözünürlüğünü değiştirme ve/veya ayarlama hakkını verir.
+22.1 Wink, Konaklama Sağlayıcısına Wink extranet'ine erişim sağlayacaktır. Konaklama Sağlayıcısı, ürünün optimum dağıtımını sağlamak için fotoğraflar, resimler, tasarımlar, metin, ses, video, açıklamalar ve olanaklar (bundan böyle "İçerik") dahil ancak bunlarla sınırlı olmamak üzere ürünle ilgili tüm bilgileri ve içerikleri yüklemeyi taahhüt eder ve İçeriği güncel tutar. Konaklama Sağlayıcısı İçeriği sağlamadığı takdirde, Wink'in bunu doğrudan Konaklama Sağlayıcısının web sitesinden indirerek yapmasına açıkça yetki verir ve bu yüklemeden kaynaklanabilecek Talepler dahil olmak üzere tüm sorunların sorumluluğunu kabul eder. Ayrıca, Konaklama Sağlayıcısı Wink'e pazarlama ve dağıtım amaçları için İçeriğin boyutunu ve çözünürlüğünü değiştirme ve/veya ayarlama hakkını verir.
 
 22.2 Konaklama Sağlayıcısı, kontrolü dışındaki sebeplerden dolayı extranete erişim sağlayamıyorsa, Konaklama Sağlayıcısı derhal Wink'i bilgilendirecektir.
 

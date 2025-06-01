@@ -31,7 +31,7 @@ Spoločnosť Wink nevlastní, nekontroluje, neponúka ani nespravuje žiadne pon
 
 V prípade rozporu medzi týmito Obchodnými podmienkami (ďalej len „Podmienky“) a Platobnými podmienkami sa uplatňujú Platobné podmienky.
 
-Zmluvné strany sa preto teraz dohodli takto:
+Zmluvné strany sa preto dohodli takto:
 
 **1. Definície**
 
@@ -45,7 +45,7 @@ Okrem pojmov definovaných inde v tejto Zmluve sa v celej tejto Zmluve uplatňuj
 
 **„Rezervácia(e)“**&#x7A;namená žiadosť o rezerváciu izby podanú prostredníctvom spoločnosti Wink alebo klienta spoločnosti Wink, ktorá je oznámená Poskytovateľovi ubytovania a ním prijatá.
 
-**„Poplatok za rezerváciu“**&#x6A;e 1,5 %, ktoré si spoločnosť Wink odpočíta z hodnoty rezervácie ako poplatok za spracovanie.
+**„Poplatok za rezerváciu“**&#x6A;e 1,5 %, ktoré spoločnosť Wink odpočíta z hodnoty rezervácie ako poplatok za spracovanie.
 
 **„Hodnota rezervácie“**&#x6A;e celková suma, ktorú sprostredkovateľ platieb vyberie od hosťa za rezerváciu.
 
@@ -75,7 +75,7 @@ Okrem pojmov definovaných inde v tejto Zmluve sa v celej tejto Zmluve uplatňuj
 
 **„Vplata“**&#x7A;namená prijatie platby vykonanej hosťom prostredníctvom platobného sprostredkovateľa.
 
-**„Výplata“**&#x7A;namená vyplatenie Čistej provízie Partnerovi Sprostredkovateľom platieb.
+**„Výplata“**&#x7A;namená vyplatenie Čistej provízie Partnerovi platobným sprostredkovateľom.
 
 **„Poplatok za platobnú službu“**&#x73;ú 4 %, ktoré si z provízie pre partnerov odpočíta platobný sprostredkovateľ ako poplatok za získanie platby.
 
@@ -168,7 +168,7 @@ Platba hotelu („Čistá sadzba“) => 85,1 USD
 
 7.4 Spoločnosť Wink pri ponúkaní Izieb svojim Partnerom zahrnie všetky príslušné Dane (v súlade s Pododsekom (a) tohto Oddielu). Všetky sumy splatné podľa tejto Zmluvy, pokiaľ nie je uvedené inak, zahŕňajú DPH alebo iné príslušné dane alebo clá (okrem dane z príjmov právnických osôb alebo iných daní zo zisku). Ak príslušný orgán zodpovedný za DPH v krajine, v ktorej sú tieto služby poskytované, vymeria a vyberie akúkoľvek sumu DPH, spoločnosť Wink po prijatí platného daňového dokladu od Poskytovateľa ubytovania zaplatí Poskytovateľovi ubytovania sumu DPH zahrnutú v sumách splatných podľa tejto Zmluvy vrátane DPH.
 
-7.5 Akýkoľvek nárok príslušného orgánu na pokuty alebo úroky vyplývajúce z oneskorenej platby alebo akákoľvek fakturovaná DPH by mala byť uhradená Poskytovateľovi ubytovania. Okrem toho, ak je akákoľvek suma DPH vymeraná a vyrubená akýmkoľvek príslušným orgánom zodpovedným za DPH v krajine, v ktorej sú služby prijaté v rámci mechanizmu samoúčtovania, potom spoločnosť Wink túto DPH zaúčtuje vo svojom daňovom priznaní k DPH v súlade s legislatívou o DPH v danej krajine. Akýkoľvek nárok príslušného orgánu na pokuty alebo úroky vyplývajúce z oneskorenej platby akejkoľvek samoúčtovanej DPH by mal byť uhradený Poskytovateľovi ubytovania.
+7.5 Akýkoľvek nárok príslušného orgánu na pokuty alebo úroky vyplývajúce z oneskorenej platby alebo akákoľvek fakturovaná DPH by mala byť uhradená Poskytovateľovi ubytovania. Okrem toho, ak je akákoľvek suma DPH vymeraná a vyrubená akýmkoľvek príslušným orgánom zodpovedným za DPH v krajine, v ktorej sú služby prijaté v rámci mechanizmu samoúčtovania, potom spoločnosť Wink túto DPH zaúčtuje vo svojom daňovom priznaní k DPH v súlade s legislatívou o DPH v danej krajine. Akýkoľvek nárok príslušného orgánu na pokuty alebo úroky vyplývajúce z oneskorenej platby akejkoľvek samoúčtovanej DPH bude uhradený spoločnosťou Wink.
 
 **8. Bankové údaje a určený zástupca poskytovateľa ubytovania**
 
@@ -309,7 +309,7 @@ Poskytovateľ ubytovania zaručuje, že podľa jeho najlepších vedomostí ani 
 
 **21. Zmena vlastníctva**
 
-21.1 Poskytovateľ ubytovania (a ak to kontext vyžaduje, každý zúčastnený hotel) nepredá, neprenajme ani inak nezbaví svoj podiel v žiadnom hotelovom majetku bez toho, aby o tom písomne ​​informoval najmenej tri (3) mesiace vopred. V prípade takéhoto predaja, nájmu alebo iného nakladania Poskytovateľ ubytovania (a/alebo zúčastnený hotel) v kúpnej zmluve, zmluve o nájme alebo inom nakladaní výslovne uvedie, že táto Zmluva (vrátane všetkých Rezervácií uskutočnených na jej základe) bude po zmene kontroly postúpená alebo prevedená na nový subjekt v súlade s odsekmi (b) tohto článku.
+21.1 Poskytovateľ ubytovania (a ak to kontext vyžaduje, každý zúčastnený hotel) nepredá, neprenajme ani inak nezbaví svoj podiel v žiadnom hotelovom majetku bez toho, aby o tom písomne ​​informoval najmenej tri (3) mesiace vopred. V prípade takéhoto predaja, nájmu alebo iného nakladania Poskytovateľ ubytovania (a/alebo zúčastnený hotel) v kúpnej zmluve, zmluve o nájme alebo inom nakladaní výslovne uvedie, že táto Zmluva (vrátane všetkých Rezervácií uskutočnených na jej základe) bude po zmene kontroly postúpená alebo prevedená na nový subjekt v súlade s pododsekmi (b) tohto článku.
 
 21.2 Ak by spoločnosť Wink z akéhokoľvek dôvodu nechcela pokračovať v zmluve s novým subjektom, zmluvné strany sa môžu dohodnúť na okamžitom ukončení tejto zmluvy bez toho, aby boli dotknuté akékoľvek existujúce rezervácie a akékoľvek iné práva, ktoré ktorákoľvek zo zmluvných strán mohla nadobudnúť pred takýmto ukončením.
 
@@ -409,5 +409,5 @@ Poskytovateľ ubytovania si prečítal zmluvu a všetky zmluvné podmienky odsú
 
 Všetky oznámenia zmluvnej strany podľa tejto zmluvy musia byť v anglickom jazyku, písomne ​​a doručené osobne, predplatenou doporučenou poštou alebo medzinárodne uznávanou expresnou kuriérskou službou (napr. FedEx, UPS, DHL) do sídla spoločnosti alebo e-mailom kontaktnej osobe.
 
-Akékoľvek oznámenie podľa tejto Zmluvy sa považuje za doručené (i) ak bolo doručené osobne, po podpise potvrdenia o doručení alebo (ii) ak bolo doručené predplatenou doporučenou poštou, po potvrdení o doručení; alebo (iii) ak bolo doručené expresnou kuriérskou službou, po dátume doručenia zaznamenanom kuriérom (iv) ak bolo doručené e-mailom za predpokladu, že bolo predložené potvrdenie o doručení.
+Akékoľvek oznámenie podľa tejto Zmluvy sa považuje za doručené (i) ak je doručené osobne, po podpise potvrdenia o doručení alebo (ii) ak je doručené predplatenou doporučenou poštou, po potvrdení o doručení; alebo (iii) ak je doručené expresnou kuriérskou službou, po dátume doručenia zaznamenanom kuriérom (iv) ak je doručené e-mailom za predpokladu, že je predložené potvrdenie o doručení.
 

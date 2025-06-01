@@ -8,7 +8,7 @@ Ratkaisumme rekisteröityneille matkatoimistoille on[Wink-agentti](https://agent
 
 Edistyneemmät matkatoimistot voivat integroitua API-tasolla maksujen ja voitonmaksujen käsittelyä varten Wink-alustan ulkopuolella.
 
-Matkatoimistoilla on osa samoista portaalin ominaisuuksista kuin[Wink-studio](/studio/what-is-studio)joten emme käsittele niitä tässä uudelleen.
+Matkatoimistoilla on osa samoista portaaliominaisuuksista kuin[Wink-studio](/studio/what-is-studio)joten emme käsittele niitä tässä uudelleen.
 
 ## Haku
 

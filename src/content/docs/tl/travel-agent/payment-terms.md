@@ -14,13 +14,13 @@ Huling na-update noong 2024-10-30
 Ang mga tuntunin sa pagbabayad sa ibaba ay nalalapat sa mga ahente sa paglalakbay na gustong kumuha at mag-disburse ng mga pondo nang mag-isa.
 Magagawa lang ito sa pamamagitan ng aming API at ng mga travel agent lang na nagsasaad na gusto nilang gawin ito sa panahon ng proseso ng pag-sign up.
 
-Ang lahat ng mga travel agent ay makakapag-book pa rin sa pamamagitan ng aming portal ng travel agent gamit ang gateway ng pagbabayad ng Wink gamit ang kanilang sarili o ang credit card ng manlalakbay. Samakatuwid, kailangan ding sumang-ayon ang lahat ng travel agent sa mga tuntunin sa pagbabayad kung saan ang gateway ng pagbabayad ni Wink ay ang merchant of record.
+Lahat ng travel agent ay makakapag-book pa rin sa pamamagitan ng aming travel agent portal gamit ang payment gateway ng Wink gamit ang sarili nilang credit card o ang credit card ng manlalakbay. Samakatuwid, kailangan ding sumang-ayon ang lahat ng travel agent sa mga tuntunin sa pagbabayad kung saan ang gateway ng pagbabayad ni Wink ay ang merchant of record.
 
 Ang mga tuntuning iyon ay magagamit sa ilalim [Affiliate Portal > Mga Tuntunin sa Pagbabayad](/studio/payment-terms).
 :::
 
 **MGA TUNTUNIN SA PAGBAYAD NG WINK**\
-**PARA SA MGA TRAVEL AGENTS (Merchant of Record)**
+**PARA SA MGA TRAVEL AGENT (Merchant of Record)**
 
 Ang Mga Tuntunin ng Serbisyo sa Pagbabayad (“Mga Tuntunin sa Pagbabayad”) ay isang may-bisang legal na kasunduan na bumubuo sa bahagi ng relasyong kontraktwal na itinatag sa ilalim ng "TERMS & CONDITIONS TRAVEL AGENTS" (“Pangunahing Kasunduan”)
 
@@ -48,7 +48,7 @@ Gaya ng tinukoy sa pangunahing kasunduan na "TERMS & CONDITIONS TRAVEL AGENTS" (
 
 2.1 **Koleksyon ng Pagbabayad:** Ang Travel Agent ang may pananagutan sa pagkolekta ng bayad mula sa Bisita sa oras ng booking. Tinitiyak nito ang agarang pagproseso at kalinawan sa pananalapi.
 
-2.2 **Pagbawas ng Bayad:** Ibabawas muna ng Travel Agent ang bayad ng Service Provider pagkatapos ay ibawas ang kanyang komisyon para sa subtitle gaya ng bawat halimbawa sa ibaba:
+2.2 **Pagbawas ng Bayad:** Dapat ibawas muna ng Travel Agent ang bayad ng Service Provider pagkatapos ay ibawas ang kanyang komisyon para sa subtitle gaya ng bawat halimbawa sa ibaba:
 
 * 1.5% Booking Fee para sa Wink.
 * Ang Komisyon ng Travel Agent gaya ng tinukoy sa Hiwalay na Kasunduan (gamitin namin ang 10% para sa halimbawang ito)
@@ -57,7 +57,7 @@ Halaga ng Booking na USD 1,000\
 Bayarin sa Wink (1.5%) = USD 15\
 Subtotal = 1,000 - 15 = 985
 
-2.3 **Netong Pagbabayad sa Mga Provider ng Akomodasyon:** Ang Travel Agent ay responsable para sa pagbabayad ng Net Payment sa Accommodation Provider ayon sa mga tuntunin ng Separate Agreement sa pagitan ng Travel Agent at Accommodation Provider. Walang pananagutan ang Wink para sa anumang pagbabayad sa Provider ng Accommodation.
+2.3 **Netong Pagbabayad sa Mga Provider ng Akomodasyon:** Ang Travel Agent ay responsable para sa pagbabayad ng Net Payment sa Accommodation Provider ayon sa mga tuntunin ng Separate Agreement sa pagitan ng Travel Agent at Accommodation Provider. Walang pananagutan si Wink para sa anumang pagbabayad sa Provider ng Accommodation.
 
 **3**. **Pag-invoice at Pagbabayad**
 

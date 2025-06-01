@@ -81,7 +81,7 @@ A Wink és a Partner a jelen Megállapodás „Félei”, és együttesen „Fel
 
 **1.2 Nincs partnerség**
 
-1.2.1 A jelen Megállapodás nem célja, és a benne foglalt rendelkezések semmilyen módon nem értelmezhetők úgy, hogy közös vállalkozást vagy partnerségi, partnerségi vagy megbízó-ügynök kapcsolatot hoznának létre a Felek között.
+1.2.1 A jelen Megállapodás nem célja, és a benne foglalt rendelkezések semmilyen pontja sem értelmezhető úgy, hogy közös vállalkozást vagy partnerségi, partnerségi vagy megbízó-ügynök kapcsolatot hozzon létre a Felek között.
 
 1.2.2 A Wink írásbeli eltérő megállapodása vagy a jelen Szerződésben foglaltak hiányában a Partner a Partner weboldalán/weboldalain semmilyen kifejezett vagy hallgatólagos kijelentést nem tehet közzé arról, hogy a weboldal a Wink része, a Wink által támogatott vagy a Wink hivatalos weboldala.
 
@@ -102,7 +102,7 @@ A jelen Megállapodás feltételeinek megfelelően a Partner a Wink nem kizáró
 
 **2.3 Link vagy mikrowebhely**
 
-2.3.1 Amennyiben a Szolgáltatás a Linken keresztül válik elérhetővé, a Partner saját költségén integrálja és elérhetővé teszi a Linket olyan kiemelt helyen, weboldalakon, olyan helyen, méretben és formában a Partner Weboldalán(aion), a Wink utasításai szerint, vagy a Felek kölcsönösen megállapodnak abban.
+2.3.1 Amennyiben a Szolgáltatás a Linken keresztül válik elérhetővé, a Partner saját költségére integrálja és elérhetővé teszi a Linket olyan kiemelt helyen, weboldalakon, olyan helyen, méretben és formában a Partner Weboldalán(aion), a Wink utasításai szerint, vagy a Felek kölcsönösen megállapodnak abban.
 
 2.3.2 Amennyiben a Szolgáltatás a Mikro Oldalon keresztül érhető el, a Partner saját költségén integrálja és elérhetővé teszi a Kapcsolatokat és/vagy a Mikro Oldalt olyan kiemelt helyen, weboldalakon és olyan helyen, méretben és formában a Partner Weboldalán(aion), a Wink utasításai szerint, vagy a Felek kölcsönösen megállapodnak abban.
 
@@ -120,9 +120,9 @@ A jelen Megállapodás feltételeinek megfelelően a Partner a Wink nem kizáró
 1. a Link, a Mikrowebhely és/vagy a Kapcsolat (adott esetben) beépítése, integrálása, megjelenítése a Partnerwebhely(ek)en, és
 2. a Szolgáltatás elérhetővé tétele a Partner weboldalán/webhelyein.
 
-**3.2 Allicencbe adásának tilalma és titoktartás**
+**3.2 Allicencjog kizárása és titoktartás**
 
-3.2.1 A Wink eltérő írásbeli megállapodása hiányában a Partner nem jogosult (i) a 3.1.1. záradék alapján ráruházott jogok allicencbe adására, vagy (ii) a Link vagy a Kapcsolat harmadik félnek történő allicencbe adására, illetve (iii) a Wink Weboldalára mutató hiperhivatkozás létrehozására a Partnercsoporton belüli vállalatok (weboldalain) és/vagy harmadik feleken keresztül vagy azokkal együttműködve.
+3.2.1 A Wink eltérő írásbeli megállapodása hiányában a Partner nem jogosult (i) a 3.1.1. záradék alapján neki biztosított jogok allicencbe adására, vagy (ii) a Link vagy a Kapcsolat harmadik félnek való allicencbe adására, illetve (iii) a Wink Weboldalára mutató hiperhivatkozás létrehozására a Partnercsoporton belüli vállalatokon és/vagy harmadik feleken keresztül vagy azokkal együttműködve.
 
 3.2.2 A Wink írásbeli eltérő megállapodása vagy a jelen Megállapodásban foglaltak hiányában a Partner sem közvetlenül, sem közvetve nem jogosult a Wink Adatok vagy a Tartalom eladására, felhasználására, átruházására, (al)licencelésére, közlésére, nyilvánosságra hozatalára, elérhetővé tételére, hozzáférés biztosítására, nyilvánosságra hozatalára vagy egyéb módon történő terjesztésére (i) harmadik félnek, (ii) ár/elérhetőség összehasonlítási célokra, oldalakon, értékelések vagy vizsgálatok céljából, (iii) a Szolgáltatáson (Szálláshely-szolgáltatói foglalások generálásán keresztül) kívüli bármely más célra, vagy (iv) egyéb módon.
 
@@ -130,7 +130,7 @@ A jelen Megállapodás feltételeinek megfelelően a Partner a Wink nem kizáró
 
 **4.1 Általános szerződési feltételek, vállalások és kötelezettségek**
 
-4.1.1 A jelen Megállapodás feltételeinek megfelelően a Partner vállalja, hogy kereskedelmileg ésszerű erőfeszítéseket tesz (i) a Partnerweboldal(ak) testreszabására és a Link, a Kapcsolatok és/vagy a Mikroweboldal integrálására oly módon, hogy a lehető legtöbb forgalmat generálja a Wink weboldalra vagy a Partnerweboldal(ak)ra, és (ii) a Szálláshely-szolgáltatók és a Partnerweboldal(ak)on található Szálláshely-szolgáltatók foglalási lehetőségének népszerűsítésére és marketingjére kereskedelmi és belső hálózatán belül, és ebből a célból elérhetővé teszi terjesztési hálózatát és csatornáit (pl. internetes és intranetes).
+4.1.1 A jelen Megállapodás feltételeinek megfelelően a Partner vállalja, hogy kereskedelmileg ésszerű erőfeszítéseket tesz (i) a Partnerweboldal(ak) testreszabására és a Link, a Kapcsolatok és/vagy a Mikrowebhely integrálására oly módon, hogy a lehető legtöbb forgalmat generálja a Wink weboldalra vagy a Partnerweboldal(ak)ra, és (ii) a Szálláshely-szolgáltatók és a Partnerweboldal(ak)on található Szálláshely-szolgáltatók foglalási lehetőségének népszerűsítésére és marketingjére kereskedelmi és belső hálózatán belül, és ebből a célból elérhetővé teszi terjesztési hálózatát és csatornáit (pl. internetes és intranetes).
 
 4.1.2 A Partner vállalja, hogy nem tesz, illetve nem mulaszt el olyan intézkedést, amely befolyásolhatja a Wink és a Wink weboldalain elérhető Szálláshely-szolgáltatók közötti kapcsolatot. A Partner vállalja, hogy nem okoz, és nem enged meg semmi olyat, ami a Wink kizárását eredményezheti bármely Szálláshely-szolgáltatónál történő foglalási folyamatból.
 
@@ -298,7 +298,7 @@ A vonatkozó jogszabályok által megengedett legteljesebb mértékben Ön belee
 
 **7.2 Maximális felelősség**
 
-Hacsak a jelen Megállapodás másként nem rendelkezik, a Fél maximális felelőssége a másik Fél által a jelen Megállapodás alapján vagy azzal összefüggésben egy évben az adott Féllel szemben támasztott összes követelésért nem haladhatja meg az adott Fél által az előző 6 hónapban kapott vagy kifizetett összes jutalékot, vagy a 10 000 USD-t (amelyik a magasabb), kivéve a Kártalanító Fél csalása vagy szándékos kötelességszegése esetén, amely esetben a felelősség korlátozása nem alkalmazandó az adott felelős Félre.
+Hacsak a jelen Megállapodás másként nem rendelkezik, a Fél maximális felelőssége a másik Fél által a jelen Megállapodás alapján vagy azzal összefüggésben egy évben az adott Féllel szemben támasztott összes követelésért nem haladhatja meg az adott Fél által az előző 6 hónapban kapott vagy kifizetett összes jutalékot vagy 10 000 USD-t (amelyik magasabb), kivéve a Kártalanító Fél csalása vagy szándékos kötelességszegése esetén, amely esetben a felelősség korlátozása nem alkalmazandó az adott felelős Félre.
 
 **7.3 Harmadik fél követelése**
 
@@ -347,7 +347,7 @@ A Wink könyvei és nyilvántartásai (beleértve az Extranetet és/vagy az e-ma
 
 Amennyiben a Wink jóhiszeműen okkal feltételezi, hogy a Partner megszegte a 4. záradék szerinti kötelezettségeit, a Wink ellenőrizheti a Partner ilyen nyilvántartásait és könyveit (számviteli könyveit) a Partner 4. záradék szerinti kötelezettségeinek ellenőrzése, felülvizsgálata és (adott esetben) kivizsgálása céljából, az alábbiak szerint:\
 (a) A Felek haladéktalanul kijelölnek egy független, mindkét Fél számára elfogadható, okleveles könyvvizsgálót (a továbbiakban: „Könyvvizsgáló”), akinek engedélyt kell adni az Alvállalkozás(ok)nak fizetendő jutalék (módszerének és kiszámításának) ellenőrzésére.\
-(b) A Felek kötelesek a Könyvvizsgáló rendelkezésére bocsátani minden olyan információt, adatot, együttműködést, segítséget és hozzáférést biztosítani a könyvekhez és számviteli nyilvántartásokhoz, dokumentumokhoz, iratokhoz és papírokhoz, valamint az elektronikusan tárolt információkhoz, amelyeket a Könyvvizsgáló ésszerűen kérhet a megbízásának időben történő elvégzése érdekében.\
+(b) A Felek kötelesek a Könyvvizsgáló rendelkezésére bocsátani minden olyan információt, adatot, együttműködést, segítséget és hozzáférést biztosítani a könyvekhez és számviteli nyilvántartásokhoz, dokumentumokhoz, aktákhoz és papírokhoz, valamint elektronikusan tárolt információkhoz, amelyeket a Könyvvizsgáló ésszerűen kérhet a megbízásának időben történő elvégzése céljából.\
 (c) A Könyvvizsgáló mindkét Félnek átadja jelentésének (a továbbiakban: „Jelentés”) egy példányát, amely jelentés tartalmazza az ellenőrzés eredményeit és megállapításait.\
 (d) Az auditokat munkanapokon, a szokásos munkaidőben végzik.\
 (e) A Wink viseli a könyvvizsgáló költségeit és kiadásait, kivéve, ha a könyvvizsgáló az ésszerűség és a méltányosság alapján másként határoz.
@@ -367,7 +367,7 @@ A Felek tudomásul veszik és megállapodnak abban, hogy a jelen Megállapodás 
 
 **11.2 Bizalmas információk védelme és megőrzése**
 
-Mindkét Fél egyetért abban, hogy: (a) minden Bizalmas Információ a közzétévő Fél kizárólagos tulajdonát képezi, és a fogadó Fél a Bizalmas Információt semmilyen célra nem használhatja fel, kivéve a jelen Megállapodás előmozdítását, (b) köteles megőrizni a Bizalmas Információk titkosságát és titokban tartását, és körültekintő módszereket alkalmaz annak biztosítására, hogy alkalmazottai, tisztviselői, képviselői, szerződő felei és ügynökei (a továbbiakban: „Engedélyezett Személyek”) fenntartsák ezt, (c) Bizalmas Információkat csak az Engedélyezett Személyeknek és azoknak a Személyeknek ad ki, akiknek ismerniük kell ezeket az információkat a jelen Megállapodás előmozdítása érdekében, (d) nem jogosult arra, hogy a Engedélyezett Személyek (i) másolja, ne tegye közzé, ne továbbítsa, ne reprodukálja, ne hozza nyilvánosságra, ne hozza nyilvánosságra és ne tegye elérhetővé a Bizalmas Információkat harmadik fél számára, vagy (ii) ne használja fel vagy ne tárolja azokat védelem nélküli visszakereső rendszerben vagy adatbázisban (a jelen Megállapodás feltételeitől eltérően), és (e) a másik Fél írásbeli kérésére visszaszolgáltatja vagy megsemmisíti az összes ((papír és elektronikus)) Bizalmas Információt. Abban az esetben, ha bármelyik Fél a jelen Megállapodás szerinti szolgáltatások nyújtása részeként a másik nevében személyes adatokat kezel, a Felek az ilyen adatkezelést Adatfeldolgozási Megállapodás (DPA) útján szabályozzák, és az a jelen Megállapodás feltételeinek részét képezi.
+Mindkét Fél egyetért abban, hogy: (a) minden Bizalmas Információ a közzétévő Fél kizárólagos tulajdonát képezi, és a fogadó Fél a Bizalmas Információt semmilyen célra nem használhatja fel, kivéve a jelen Megállapodás előmozdítását, (b) köteles megőrizni a Bizalmas Információk titkosságát és titokban tartását, és körültekintő módszereket alkalmaz annak biztosítására, hogy alkalmazottai, tisztviselői, képviselői, szerződő felei és ügynökei (a továbbiakban: „Engedélyezett Személyek”) fenntartsák ezt, (c) Bizalmas Információkat csak az Engedélyezett Személyeknek és azoknak a Személyeknek ad ki, akiknek ismerniük kell ezeket az információkat a jelen Megállapodás előmozdítása érdekében, (d) nem jogosult arra, hogy a Engedélyezett Személyek (i) másolja, ne tegye közzé, ne továbbítsa, ne reprodukálja, ne hozza nyilvánosságra, ne hozza nyilvánosságra és ne tegye elérhetővé a Bizalmas Információkat harmadik fél számára, vagy (ii) ne használja fel vagy ne tárolja azokat védelem nélküli visszakereső rendszerben vagy adatbázisban (a jelen Megállapodás feltételeitől eltérően), és (e) a másik Fél írásbeli kérésére visszaszolgáltatja vagy megsemmisíti az összes ((papír és elektronikus)) Bizalmas Információt. Abban az esetben, ha bármelyik Fél a jelen Megállapodás szerinti szolgáltatások nyújtása részeként személyes adatokat kezel a másik nevében, a Felek ezt az adatkezelést Adatfeldolgozási Megállapodás (DPA) útján szabályozzák, és az a jelen Megállapodás feltételeinek részét képezi.
 
 **11.3 Engedélyezett közzététel**
 
@@ -379,7 +379,7 @@ A Felek kereskedelmileg ésszerű erőfeszítéseket tesznek az Ügyféladatok b
 
 **11.5 Közlemények**
 
-Egyik Fél sem hozhat létre, tehet közzé, terjeszthet vagy engedélyezhet olyan írásos anyagot, amely a másik Félre hivatkozik, anélkül, hogy először be ne nyújtaná az ilyen anyagot a másik Félnek, és a be nem nyújtó Féltől előzetes írásbeli hozzájárulást nem kapna. Ez a hozzájárulás nem tagadható meg vagy késleltethető indokolatlanul.
+Egyik Fél sem hozhat létre, tehet közzé, terjeszthet vagy engedélyezhet olyan írásos anyagokat, amelyek a másik Félre hivatkoznak, anélkül, hogy először be ne nyújtaná az ilyen anyagokat a másik Félnek, és előzetesen írásbeli hozzájárulást nem kapna a be nem nyújtó Féltől. Ez a hozzájárulás nem tagadható meg vagy késleltethető indokolatlanul.
 
 11.6 Bármelyik Fél a következő e-mail és/vagy postai címeken keresztül veheti fel a kapcsolatot a másik Fél adatvédelmi tisztviselőjével (DPO): dataprotectionofficer@Wink.travel
 
@@ -398,7 +398,7 @@ A jelen Megállapodás bármely megszegéséről vagy feltételéről való lemo
 
 **15. Elválaszthatóság**
 
-Amennyiben a jelen Megállapodás bármely rendelkezését egy illetékes joghatóságú kormányzati végrehajtó szerv, bíróság vagy törvényszék jogellenesnek, érvénytelennek vagy a nemzeti törvények értelmében egyébként végrehajthatatlannak ítéli, akkor az ilyen rendelkezést olyan mértékben kell értelmezni, módosítani vagy törölni, amennyire az szükséges ahhoz, hogy az adott rendelkezés és/vagy a jelen Megállapodás jogszerűvé, érvényessé vagy egyébként végrehajthatóvá váljon, és az ilyen rendelkezés fennmaradó része, valamint a fennmaradó egyéb rendelkezések továbbra is hatályban maradnak, teljes hatályban maradnak, és továbbra is kötelező érvényűek, és úgy kell értelmezni, hogy a Felek szándékát a lehető legteljesebb mértékben érvényesítsék.
+Amennyiben a jelen Megállapodás bármely rendelkezését egy illetékes joghatóságú kormányzati végrehajtó szerv, bíróság vagy törvényszék jogellenesnek, érvénytelennek vagy a nemzeti törvények értelmében egyébként végrehajthatatlannak ítéli, akkor az ilyen rendelkezést olyan mértékben kell értelmezni, módosítani vagy törölni, amennyire az szükséges ahhoz, hogy az adott rendelkezés és/vagy a jelen Megállapodás jogszerűvé, érvényessé vagy egyébként végrehajthatóvá váljon, és az ilyen rendelkezés fennmaradó része, valamint a fennmaradó egyéb rendelkezések továbbra is hatályban maradnak, teljes hatályban és hatályon kívül helyezkednek, és továbbra is kötelező érvényűek, és úgy kell értelmezni, hogy a Felek szándékát a lehető legteljesebb mértékben érvényesítsék.
 
 **16. A felek kapcsolata**
 

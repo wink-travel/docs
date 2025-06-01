@@ -172,7 +172,7 @@ Plaća se hotelu („Neto cijena“) => 85,1 USD
 
 Pružatelj smještaja dužan je osigurati da su podaci o bankovnom računu koje je dostavio Winku u svakom trenutku točni te će ga bez odgode obavijestiti o svim promjenama istih.
 
-Samo osoba koja potpisuje ovaj ugovor bit će jedini imenovani predstavnik Pružatelja smještaja koji će imati ovlaštenje zahtijevati promjene bankovnog računa i/ili podataka o primatelju plaćanja Pružatelja smještaja. Nijedna druga osoba neće imati takvo ovlaštenje u ime Pružatelja smještaja. Svaka promjena takve imenovane osobe mora se pismeno zatražiti od Winka, a svaka takva promjena bit će provedena samo putem pisanog dodatka ovom Ugovoru koji su potpisale obje Stranke.
+Samo osoba koja potpisuje ovaj ugovor bit će jedini imenovani predstavnik Pružatelja smještaja koji će imati ovlaštenje zatražiti promjene bankovnog računa i/ili podataka o primatelju plaćanja Pružatelja smještaja. Nijedna druga osoba neće imati takvo ovlaštenje u ime Pružatelja smještaja. Svaka promjena takve imenovane osobe mora se pismeno zatražiti od Winka, a svaka takva promjena bit će provedena samo putem pisanog dodatka ovom Ugovoru koji su potpisale obje Stranke.
 
 **9. Izmjene rezervacije**
 
@@ -201,7 +201,7 @@ Samo osoba koja potpisuje ovaj ugovor bit će jedini imenovani predstavnik Pruž
 
 11.2 U slučaju neispunjavanja bilo kojeg od uvjeta ovog Ugovora od strane Pružatelja smještaja, uključujući neprihvatljive uvjete prostora i/ili nedostatke u Sadržajima i uslugama, Wink ima pravo zaustaviti plaćanja i zahtijevati ispravno ispunjenje dogovorenih uvjeta Rezervacije. Pružatelj smještaja u svakom slučaju snosi puni trošak bilo kakve naknade koja se plaća pogođenom Gostu, oslobađajući Wink od bilo kakve odgovornosti koja proizlazi iz neispunjavanja obveza Pružatelja smještaja prema ovom Ugovoru.
 
-**12. Uvjeti za hotelske objekte koji sudjeluju u programu**
+**12. Uvjeti za hotele koji sudjeluju u programu**
 
 Davatelj smještaja dužan je u najkraćem mogućem roku obavijestiti putem odjeljka "Obavještenja" na Wink Extranetu o svim građevinskim radovima, obnovama, preuređenjima, ažuriranjima ili drugim radovima koji će ili mogu promijeniti sposobnost Davatelja smještaja da pruži Sobe, Sadržaje i Usluge i/ili bi mogli negativno utjecati na boravak Gosta. Radi izbjegavanja sumnje, kad god nedostupnost ili neispunjenje proizlazi iz takvih okolnosti, primjenjuje se članak 11. ovih Općih uvjeta i odredbi Winka ("Nedostupnost / Neispunjenje"), a Davatelj smještaja snosi puni trošak bilo kakve naknade koja se plaća pogođenom Gostu, oslobađajući Wink od bilo kakve odgovornosti.
 
@@ -325,7 +325,7 @@ Pružatelj smještaja jamči da, koliko je njemu poznato, ni on ni njegove povez
 
 **23. Publicitet / Vanjska komunikacija**
 
-23.1 Pružatelj smještaja ne smije objaviti nikakvu komunikaciju ili materijale vezane uz Wink ili ovaj Ugovor, bilo medijima ili bilo kojoj drugoj vanjskoj strani bez prethodnog pisanog pristanka Winka, a Pružatelj smještaja bit će isključivo i izravno odgovoran za bilo kakvu štetu ili gubitak koji Wink pretrpi kršenjem ove odredbe.
+23.1 Pružatelj smještaja neće objaviti nikakvu komunikaciju ili materijale vezane uz Wink ili ovaj Ugovor, bilo medijima ili bilo kojoj drugoj vanjskoj strani bez prethodne pisane suglasnosti Winka, a Pružatelj smještaja bit će isključivo i izravno odgovoran za bilo kakvu štetu ili gubitak koji Wink pretrpi kršenjem ove odredbe.
 
 23.2 Pružatelj smještaja savjetovat će se s Winkom u vezi sa sadržajem bilo koje takve komunikacije ili materijala koji namjerava objaviti, a Pružatelj smještaja mora Winku dostaviti kopiju bilo koje takve komunikacije ili materijala koji bude konačno objavljen.
 
@@ -357,7 +357,7 @@ Ako državna agencija za provedbu zakona, sud ili tribunal nadležne jurisdikcij
 
 **29. Odnos stranaka**
 
-Stranke su i djelovat će kao neovisni izvođači radova u izvršavanju ovog Ugovora. Nijedna Stranka neće djelovati kao agent ili partner druge Stranke, niti će se smatrati tako, u bilo koju svrhu, niti će bilo koja Stranka imati ovlasti obvezivati ​​drugu u bilo kojem pogledu.
+Stranke su i djelovat će kao neovisni izvođači radova u izvršavanju ovog Ugovora. Niti jedna Stranka neće djelovati kao agent ili partner druge Stranke, niti će se smatrati tako, u bilo koju svrhu, niti će bilo koja Stranka imati ovlasti obvezivati ​​drugu u bilo kojem pogledu.
 
 **30. Zadatak**
 

@@ -8,7 +8,7 @@ sidebar:
 ---
 Um Ihre Stornierungsbedingungen zu verwalten, klicken Sie auf`Monetize > Cancellation policies`aus der Hauptnavigationsleiste.
 
-Stornierungsbedingungen bestimmen, wie mit den Kosten des Buchers umgegangen wird, falls der Gast nicht an der Buchung teilnehmen kann. Es gibt zwei verschiedene Arten von Stornierungsbedingungen:
+Stornierungsbedingungen bestimmen, wie mit den Kosten des Buchers umgegangen wird, falls der Gast nicht an der Buchung teilnehmen kann. Stornierungsbedingungen gibt es in zwei Varianten:
 
 1. Rückerstattungsfähig
 2. Nicht erstattungsfähig

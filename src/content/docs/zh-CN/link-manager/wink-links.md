@@ -50,7 +50,7 @@ WinkLinks 也是一个很好的方式来展示你找到的旅行清单，通过[
 
 * [可共享链接](/studio/shareable-links)- 选择显示为：
   * [广告横幅](/developers/web-components/#content-loader)。
-  * 正常链接，实时更新价格。
+  * 具有实时价格更新的正常链接。
 * [牌](/studio/cards)- 可预订的卡，包含实时价格和可用性。
 * [网格](/studio/grids)- 带有可预订卡片的网格。
 * [地图](/studio/maps)- 带有标记的地图，可打开为可预订的卡片。

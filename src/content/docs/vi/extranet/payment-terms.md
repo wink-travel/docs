@@ -151,7 +151,7 @@ Bên hỗ trợ thanh toán sẽ không chịu trách nhiệm cho bất kỳ s�
 
 10,5**Bắt mắt**. Nếu Nhà cung cấp dịch vụ thanh toán thực hiện bất kỳ biện pháp nào được mô tả trong Mục 10.3 và 10.4, bạn có thể khiếu nại quyết định đó bằng cách liên hệ với bộ phận dịch vụ khách hàng.
 
-10.6**Hiệu ứng của việc chấm dứt**. Nếu bạn hủy tài khoản Wink của mình với tư cách là Nhà cung cấp chỗ nghỉ hoặc Nhà cung cấp dịch vụ thanh toán thực hiện bất kỳ biện pháp nào được mô tả ở trên, Nhà cung cấp dịch vụ thanh toán có thể hoàn lại toàn bộ tiền cho bất kỳ Khách nào có xác nhận đặt phòng và bạn sẽ không được hưởng bất kỳ khoản bồi thường nào đối với các đặt phòng đang chờ xử lý hoặc đã xác nhận bị hủy.
+10,6**Hiệu ứng của việc chấm dứt**. Nếu bạn hủy tài khoản Wink của mình với tư cách là Nhà cung cấp chỗ nghỉ hoặc Nhà cung cấp dịch vụ thanh toán thực hiện bất kỳ biện pháp nào được mô tả ở trên, Nhà cung cấp dịch vụ thanh toán có thể hoàn lại toàn bộ tiền cho bất kỳ Khách nào có xác nhận đặt phòng và bạn sẽ không được hưởng bất kỳ khoản bồi thường nào đối với các đặt phòng đang chờ xử lý hoặc đã xác nhận bị hủy.
 
 10.7**Sống sót**. Các Mục từ 5 đến 11 của Điều khoản thanh toán này vẫn có hiệu lực sau khi thỏa thuận này chấm dứt hoặc hết hạn.
 

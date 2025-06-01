@@ -21,7 +21,7 @@ Betalingstjenesten tilbyr betalingstjenester til overnattingsleverandører som s
 * Betalingsinnkrevingstjenester; og
 * Andre betalingsrelaterte tjenester i forbindelse med overnattingstjenester.
 
-For å bruke betalingstjenestene må du være minst 18 år gammel, ha en Wink-konto med god anseelse i samsvar med betalingstilretteleggerens vilkår, og sørge for at betalings- og personopplysningene dine er nøyaktige og fullstendige.
+For å bruke betalingstjenestene må du være minst 18 år gammel, ha en Wink-konto med god anseelse i samsvar med betalingstilretteleggervilkårene, og sørge for at betalings- og personopplysningene dine er nøyaktige og fullstendige.
 
 Avtalen er lest, og alle vilkår og betingelser er godkjent av overnattingsleverandøren. Overnattingsleverandøren samtykker uttrykkelig i at elektronisk aksept av denne avtalen og dens vilkår og betingelser, inkludert de som er knyttet til endringer, er gyldig, bindende og kan håndheves.
 

@@ -1,7 +1,7 @@
 ---
 title: Syarat Pembayaran
 description: >-
-  Dokumen ini merangkumi ketersediaan dana dan cara Wink membayar ahli
+  Dokumen ini meliputi ketersediaan dana dan cara Wink membayar ahli
   gabungannya.
 sidebar:
   order: 21
@@ -32,7 +32,7 @@ Perkhidmatan Pembayaran akan disediakan oleh entiti yang berkontrak bergantung p
 
 **1. Penggunaan Perkhidmatan Pembayaran Anda**
 
-1.1 **Perkhidmatan Fasilitator Pembayaran**. Dengan menggunakan Perkhidmatan Pembayaran, anda bersetuju untuk mematuhi Syarat Pembayaran ini. Fasilitator Pembayaran boleh mengehadkan atau menggantung akses anda kepada atau penggunaan Perkhidmatan Pembayaran atau ciri-cirinya buat sementara waktu untuk menjalankan langkah penyelenggaraan yang memastikan Perkhidmatan Pembayaran berfungsi dengan baik. Fasilitator Pembayaran boleh menambah baik, menambah baik dan mengubah suai Perkhidmatan Pembayaran dan memperkenalkan Perkhidmatan Pembayaran baharu dari semasa ke semasa. Fasilitator Pembayaran akan memberikan notis kepada Penyedia Penginapan tentang sebarang perubahan pada Perkhidmatan Pembayaran melainkan perubahan tersebut tidak meningkatkan kewajipan kontrak Penyedia Penginapan dengan ketara atau mengurangkan hak Penyedia Penginapan di bawah Terma Pembayaran ini.
+1.1 **Perkhidmatan Fasilitator Pembayaran**. Dengan menggunakan Perkhidmatan Pembayaran, anda bersetuju untuk mematuhi Syarat Pembayaran ini. Fasilitator Pembayaran boleh mengehadkan atau menggantung akses anda kepada atau penggunaan Perkhidmatan Pembayaran atau ciri-cirinya buat sementara waktu untuk menjalankan langkah penyelenggaraan yang memastikan Perkhidmatan Pembayaran berfungsi dengan baik. Fasilitator Pembayaran boleh menambah baik, menambah baik, dan mengubah suai Perkhidmatan Pembayaran dan memperkenalkan Perkhidmatan Pembayaran baharu dari semasa ke semasa. Fasilitator Pembayaran akan memberikan notis kepada Penyedia Penginapan tentang sebarang perubahan pada Perkhidmatan Pembayaran melainkan perubahan tersebut tidak meningkatkan kewajipan kontrak Penyedia Penginapan dengan ketara atau mengurangkan hak Penyedia Penginapan di bawah Terma Pembayaran ini.
 
 1.2 **Pengesahan**. Anda membenarkan Fasilitator Pembayaran, secara langsung atau melalui pihak ketiga, untuk membuat sebarang pertanyaan yang kami anggap perlu untuk mengesahkan identiti anda. Ini mungkin termasuk (i) menapis anda terhadap pangkalan data pihak ketiga atau sumber lain, (ii) meminta laporan daripada penyedia perkhidmatan, (iii) meminta anda memberikan satu bentuk pengenalan kerajaan (cth., lesen memandu atau pasport), tarikh lahir anda, alamat anda dan maklumat lain; atau (iv) menghendaki anda mengambil langkah untuk mengesahkan pemilikan alamat e-mel anda, Kaedah Pembayaran atau Kaedah Pembayaran. Fasilitator Pembayaran berhak untuk menamatkan, menggantung, atau mengehadkan akses kepada Perkhidmatan Pembayaran sekiranya kami tidak dapat memperoleh atau mengesahkan mana-mana maklumat ini.
 
@@ -56,7 +56,7 @@ Hanya orang yang menandatangani perjanjian ini akan menjadi wakil tunggal yang d
 
 2.6 **Sekatan Pembayaran**. Fasilitator Pembayaran boleh menahan sementara, menggantung, atau membatalkan sebarang Pembayaran untuk mengelakkan aktiviti atau penipuan yang menyalahi undang-undang, untuk penilaian risiko, keselamatan, atau melengkapkan penyiasatan; atau jika kami tidak dapat mengesahkan identiti anda. Tambahan pula, Fasilitator Pembayaran boleh menahan sementara, menggantung atau melengahkan memulakan atau memproses sebarang Pembayaran yang perlu dibayar kepada anda di bawah Syarat akibat pembatalan atau pengubahsuaian Tempahan volum tinggi yang timbul daripada Peristiwa Force Majeure (seperti yang ditakrifkan di bawah).
 
-2.7 **Had pada Pembayaran**. Atas sebab pematuhan atau operasi, Fasilitator Pembayaran boleh mengehadkan amaun Bayaran Keluar. Jika anda perlu membayar amaun melebihi had tersebut, Fasilitator Pembayaran boleh membuat satu siri Pembayaran (berpotensi dalam beberapa hari) untuk memberikan jumlah Pembayaran penuh anda.
+2.7 **Had pada Pembayaran**. Atas sebab pematuhan atau operasi, Fasilitator Pembayaran boleh mengehadkan jumlah Pembayaran. Jika anda perlu membayar amaun melebihi had tersebut, Fasilitator Pembayaran boleh membuat satu siri Pembayaran (berpotensi dalam beberapa hari) untuk memberikan jumlah Pembayaran penuh anda.
 
 2.8 **Penukaran Mata Wang**. Fasilitator Pembayaran akan menghantar Pembayaran anda dalam mata wang yang telah anda pilih melalui Fasilitator Pembayaran. Mata wang yang tersedia mungkin terhad atas sebab kawal selia atau operasi berdasarkan negara tempat tinggal anda dan/atau entiti berkontrak Fasilitator Pembayaran anda. Sebarang batasan sedemikian akan dimaklumkan melalui Fasilitator Pembayaran, dan anda akan digesa untuk memilih mata wang yang berbeza. Fasilitator Pembayaran menggunakan USD, EUR dan GBP sebagai mata wang standard untuk menerima dan membayar dana. Sebarang transaksi yang melibatkan mata wang lain akan dikenakan kos penukaran mata wang.
 
@@ -95,7 +95,7 @@ Hanya orang yang menandatangani perjanjian ini akan menjadi wakil tunggal yang d
 
 **5. Aktiviti Terlarang**
 
-5.1 Pembekal Penginapan bertanggungjawab sepenuhnya untuk pematuhan mana-mana dan semua undang-undang, peraturan, peraturan dan kewajipan cukai yang mungkin dikenakan ke atas penggunaan Perkhidmatan Pembayaran oleh anda. Sehubungan dengan penggunaan Perkhidmatan Pembayaran oleh anda, anda mungkin tidak dan anda bersetuju bahawa anda tidak akan dan tidak akan membantu atau membolehkan orang lain untuk:
+5.1 Pembekal Penginapan bertanggungjawab sepenuhnya untuk pematuhan mana-mana dan semua undang-undang, peraturan, peraturan dan kewajipan cukai yang mungkin dikenakan ke atas penggunaan Perkhidmatan Pembayaran oleh anda. Sehubungan dengan penggunaan Perkhidmatan Pembayaran anda, anda mungkin tidak dan anda bersetuju bahawa anda tidak akan dan tidak akan membantu atau membolehkan orang lain untuk:
 
 * Melanggar atau memintas mana-mana undang-undang atau peraturan yang berkenaan;
 * Melanggar atau memintas sebarang perjanjian dengan pihak ketiga, hak pihak ketiga, atau Terma, Dasar atau Piawaian;
@@ -115,7 +115,7 @@ Penyedia Penginapan menjamin bahawa sepanjang pengetahuannya, mereka mahupun Pih
 
 **6. Force Majeure**
 
-Fasilitator Pembayaran tidak akan bertanggungjawab ke atas sebarang kelewatan atau kegagalan untuk memenuhi apa-apa kewajipan di bawah Syarat Pembayaran ini akibat daripada sebab di luar kawalan munasabah Wink atau Fasilitator Pembayaran, termasuk, tetapi tidak terhad kepada, tindakan Tuhan, bencana alam, perang, keganasan, rusuhan, sekatan, tindakan pihak berkuasa awam atau tentera, kebakaran, banjir, wabak, wabak, wabak atau wabak, pengangkutan, wabak atau wabak. kemudahan, bahan api, tenaga, buruh, atau bahan (“Peristiwa Force Majeure”).
+Fasilitator Pembayaran tidak akan bertanggungjawab ke atas sebarang kelewatan atau kegagalan untuk memenuhi apa-apa kewajipan di bawah Syarat Pembayaran ini akibat daripada sebab-sebab di luar kawalan munasabah Wink atau Fasilitator Pembayaran, termasuk, tetapi tidak terhad kepada, perbuatan Tuhan, bencana alam, perang, keganasan, rusuhan, sekatan, tindakan pihak berkuasa awam atau tentera, kebakaran, banjir, wabak, wabak atau wabak, pengangkutan, wabak atau wabak. kemudahan, bahan api, tenaga, buruh atau bahan (“Peristiwa Force Majeure”).
 
 **7. Penafian**
 
@@ -125,11 +125,11 @@ Fasilitator Pembayaran tidak akan bertanggungjawab ke atas sebarang kelewatan at
 
 7.3 Jika kami memilih untuk menjalankan pengesahan identiti pada mana-mana Penyedia Penginapan, setakat yang dibenarkan oleh undang-undang yang terpakai, kami menafikan sebarang jenis waranti, sama ada nyata atau tersirat, bahawa semakan sedemikian akan mengenal pasti salah laku terdahulu oleh Penyedia Penginapan atau menjamin bahawa Penyedia Penginapan tidak akan terlibat dalam salah laku pada masa hadapan.
 
-7.4 Penafian di atas terpakai pada tahap maksimum yang dibenarkan oleh undang-undang. Anda mungkin mempunyai hak berkanun atau waranti lain yang tidak boleh dikecualikan secara sah. Walau bagaimanapun, tempoh mana-mana waranti yang dikehendaki mengikut undang-undang hendaklah dihadkan pada tahap maksimum (jika ada) yang dibenarkan oleh undang-undang.
+7.4 Penafian di atas terpakai pada tahap maksimum yang dibenarkan oleh undang-undang. Anda mungkin mempunyai hak berkanun atau waranti lain yang tidak boleh dikecualikan secara sah. Walau bagaimanapun, tempoh mana-mana waranti yang dikehendaki mengikut undang-undang hendaklah dihadkan kepada tahap maksimum (jika ada) yang dibenarkan oleh undang-undang.
 
 **8. Had Liabiliti**
 
-8.1 Setakat maksimum yang dibenarkan oleh undang-undang, mana-mana Pihak tidak akan bertanggungjawab ke atas sebarang kerosakan tidak langsung, sampingan, berbangkit, khas atau punitif yang timbul daripada Perjanjian ini atau pelanggarannya, walaupun dinasihatkan tentang kemungkinan kerosakan tersebut. Had ini tidak akan digunakan untuk sebarang pelanggaran Perjanjian ini yang berkaitan dengan kerahsiaan dan/atau hak harta intelek.
+8.1 Setakat maksimum yang dibenarkan oleh undang-undang, mana-mana Pihak tidak akan bertanggungjawab ke atas sebarang kerosakan tidak langsung, sampingan, berbangkit, khas, atau punitif yang timbul daripada Perjanjian ini atau pelanggarannya, walaupun dinasihatkan tentang kemungkinan kerosakan tersebut. Had ini tidak akan digunakan untuk sebarang pelanggaran Perjanjian ini yang berkaitan dengan kerahsiaan dan/atau hak harta intelek.
 
 8.2 Mana-mana Pihak tidak boleh mengecualikan liabiliti berkenaan dengan (i) kematian atau kecederaan peribadi yang disebabkan oleh kecuaiannya atau pekerja, ejen, atau subkontraktornya, (ii) penipuan yang dilakukan oleh dirinya sendiri atau pekerjanya, atau (iii) sebarang pelanggaran, perbuatan, peninggalan, atau liabiliti yang mungkin tidak terhad di bawah mana-mana undang-undang yang terpakai.
 
@@ -161,5 +161,5 @@ Setakat maksimum yang dibenarkan oleh undang-undang yang terpakai, anda bersetuj
 
 11.2 Jika anda membuat kontrak dengan Fasilitator Pembayaran UK, Syarat Pembayaran ini akan ditafsirkan mengikut undang-undang Inggeris. Jika anda bertindak sebagai pengguna dan jika peraturan perlindungan pengguna berkanun mandatori di negara kediaman anda mengandungi peruntukan yang lebih bermanfaat untuk anda, peruntukan tersebut hendaklah terpakai tanpa mengira pilihan undang-undang Inggeris. Sebagai pengguna, anda boleh membawa sebarang prosiding kehakiman yang berkaitan dengan Syarat Pembayaran ini di hadapan mahkamah yang berwibawa di tempat kediaman anda atau mahkamah di England. Jika Fasilitator Pembayaran ingin menguatkuasakan mana-mana haknya terhadap anda sebagai pengguna, kami boleh berbuat demikian hanya di mahkamah bidang kuasa di mana anda adalah pemastautin. Jika anda bertindak sebagai perniagaan, anda bersetuju untuk menyerahkan kepada bidang kuasa eksklusif mahkamah Inggeris.
 
-11.3 Jika anda membuat kontrak dengan Fasilitator Pembayaran Slovakia, Syarat Pembayaran ini akan ditafsirkan mengikut undang-undang EU. Jika anda bertindak sebagai pengguna, prosiding kehakiman yang anda boleh bawa terhadap kami yang timbul daripada atau berkaitan dengan Syarat Pembayaran ini hanya boleh dibawa di mahkamah yang terletak di bandar Bratislava atau di mahkamah yang mempunyai bidang kuasa di tempat kediaman anda. Jika anda bertindak sebagai perniagaan, anda bersetuju untuk menyerahkan kepada bidang kuasa eksklusif mahkamah yang terletak di bandar Bratislava, Slovakia.
+11.3 Jika anda membuat kontrak dengan Fasilitator Pembayaran Slovakia, Terma Pembayaran ini akan ditafsirkan mengikut undang-undang EU. Jika anda bertindak sebagai pengguna, prosiding kehakiman yang anda boleh bawa terhadap kami yang timbul daripada atau berkaitan dengan Syarat Pembayaran ini hanya boleh dibawa di mahkamah yang terletak di bandar Bratislava atau di mahkamah yang mempunyai bidang kuasa di tempat kediaman anda. Jika anda bertindak sebagai perniagaan, anda bersetuju untuk menyerahkan kepada bidang kuasa eksklusif mahkamah yang terletak di bandar Bratislava, Slovakia.
 

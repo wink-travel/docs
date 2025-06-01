@@ -154,13 +154,13 @@ Pagable a l'hotel (“Preu net”) => 85,1 USD
 
 **Avís sobre la gestió de pagaments per part d'integradors externs**
 
-**Tingueu en compte que certs afiliats, d'ara endavant denominats "Integradors externs", seran responsables de gestionar les transaccions de pagament. Com a resultat, aquests integradors externs assumiran el paper del comerciant registrat. En conseqüència, les condicions de pagament de Wink ja no s'aplicaran a aquestes transaccions. En comptes d'això, l'hotel haurà d'acceptar les noves condicions de pagament específiques dels integradors externs.**
+**Tingueu en compte que certs afiliats, d'ara endavant denominats "Integradors externs", seran responsables de gestionar les transaccions de pagament. Com a resultat, aquests integradors externs assumiran el paper del comerciant registrat. En conseqüència, les condicions de pagament de Wink ja no s'aplicaran a aquestes transaccions. En lloc d'això, l'hotel haurà d'acceptar les noves condicions de pagament específiques dels integradors externs.**
 
 ***
 
 **7. Impostos**
 
-7.1 El Proveïdor d'Allotjament és responsable d'assegurar-se que la Tarifa inclogui tots els impostos aplicables. És responsabilitat del Proveïdor d'Allotjament assegurar-se que els impostos inclosos a les Tarifes siguin exactes i estiguin actualitzats. Quan el Proveïdor d'Allotjament no indiqui l'existència d'impostos municipals, taxes turístiques o altres taxes locals que s'hagin de pagar, s'entendrà que estan inclosos a la Tarifa.
+7.1 El Proveïdor d'Allotjament és responsable d'assegurar-se que la Tarifa inclogui tots els impostos aplicables. És responsabilitat del Proveïdor d'Allotjament assegurar-se que els impostos inclosos a les Tarifes siguin exactes i estiguin actualitzats. Quan el Proveïdor d'Allotjament no indiqui l'existència de taxes municipals, taxes turístiques o altres taxes locals que s'hagin de pagar, s'entendrà que estan incloses a la Tarifa.
 
 7.2 Cada Proveïdor d'Allotjament és responsable de remetre els Impostos a les agències i/o institucions governamentals pertinents.
 
@@ -180,7 +180,7 @@ Només la persona que signi aquest acord serà l'únic representant designat del
 
 9.1 Els proveïdors d'allotjament són responsables de qualsevol modificació de la reserva fora de la política de cancel·lació indicada a la confirmació de la reserva acceptada mitjançant comunicació directa amb el client.
 
-9.2 Quan hi hagi hagut un error per part del Proveïdor d'Allotjament que provoqui la càrrega d'una Tarifa incorrecta i, en conseqüència, es faci una Reserva amb la Tarifa incorrecta, el Proveïdor d'Allotjament haurà d'atendre la reserva amb la Tarifa incorrecta.
+9.2 Quan hi hagi hagut un error per part del Proveïdor d'Allotjament que hagi provocat la càrrega d'una Tarifa incorrecta i, en conseqüència, es faci una Reserva amb la Tarifa incorrecta, el Proveïdor d'Allotjament haurà d'atendre la reserva amb la Tarifa incorrecta.
 
 9.3 Wink no tindrà cap responsabilitat envers el Proveïdor d'Allotjament per cap error de tarifa comès pel Proveïdor d'Allotjament.
 
@@ -190,7 +190,7 @@ Només la persona que signi aquest acord serà l'únic representant designat del
 
 10.2 Cada Proveïdor d'Allotjament Participant ha de fer tots els esforços comercialment raonables per garantir que, en el moment del registre d'entrada, la identificació presentada per un Hoste coincideixi amb la informació de la reserva. Si una reserva és una Reserva Potencialment Fraudulenta, o Wink no pot verificar certes dades proporcionades per un Hoste, el Proveïdor d'Allotjament i Wink treballaran conjuntament per abordar la Reserva Potencialment Fraudulenta, cosa que pot incloure la cancel·lació d'aquesta reserva en qualsevol moment. El Proveïdor d'Allotjament accepta cooperar plenament amb Wink i proporcionarà a Wink qualsevol informació que pugui sol·licitar en relació amb la Reserva Potencialment Fraudulenta.
 
-10.3 Les parts acorden que, si un proveïdor d'allotjament incompleix aquesta clàusula i posteriorment es descobreix que la reserva és potencialment fraudulenta, Wink no serà responsable.
+10.3 Les parts acorden que, si un proveïdor d'allotjament incompleix aquesta clàusula i posteriorment es descobreix que la reserva és potencialment fraudulenta, Wink no en serà responsable.
 
 **11. Indisponibilitat / Incompliment**
 
@@ -285,7 +285,7 @@ El Proveïdor d'Allotjament garanteix que, segons el seu coneixement, ni ells ni
 
 **19. Confidencialitat**
 
-19.1 Informació confidencial. Les parts entenen i acorden que, en l'execució d'aquest Acord, cada part pot tenir accés o pot estar exposada, directament o indirectament, a informació confidencial i sensible de l'altra part (la "Informació confidencial"). La informació confidencial inclou les dades del client, el volum de transaccions, els plans de màrqueting i de negoci, la informació empresarial, financera, tècnica i operativa, les estadístiques d'ús, les dades de classificació, la informació relativa a la paritat de tarifes, productes i disponibilitat, les polítiques de preus, les dades de conversió i el volum de clics, i altres estadístiques relacionades, les dades personals dels convidats, qualsevol programari o informació relativa al programari proporcionat o utilitzat per Wink en relació amb aquest Acord, els termes d'aquest Acord i qualsevol altra informació no pública que una part divulgadora designi com a privada o confidencial o de la qual una part receptora hauria de saber raonablement que s'hauria de tractar com a privada i confidencial.
+19.1 Informació confidencial. Les parts entenen i acorden que, en l'execució d'aquest Acord, cada part pot tenir accés o pot estar exposada, directament o indirectament, a informació confidencial i sensible de l'altra part (la "Informació confidencial"). La informació confidencial inclou dades del client, volum de transaccions, plans de màrqueting i de negoci, informació empresarial, financera, tècnica i operativa, estadístiques d'ús, dades de classificació, informació respecte a la paritat de tarifes, productes i disponibilitat, polítiques de preus, dades de conversió i volum de clics, i altres estadístiques relacionades, dades personals dels convidats, qualsevol programari o informació relativa al programari proporcionat o utilitzat per Wink en relació amb aquest Acord, els termes d'aquest Acord i qualsevol altra informació no pública que una part divulgadora designi com a privada o confidencial o de la qual una part receptora hauria de saber raonablement que s'hauria de tractar com a privada i confidencial.
 
 19.2 Protegir i salvaguardar la informació confidencial. Cada part acorda que: (a) tota la informació confidencial seguirà sent propietat exclusiva de la part divulgadora i la part receptora no utilitzarà cap informació confidencial per a cap finalitat excepte per al compliment d'aquest Acord, (b) mantindrà i utilitzarà mètodes prudents per aconseguir que els seus empleats, funcionaris, representants, parts contractants i agents (les "Persones Autoritzades") mantinguin la confidencialitat i el secret de la informació confidencial, (c) només divulgarà informació confidencial a les persones autoritzades que necessitin conèixer aquesta informació per al compliment d'aquest Acord, (d) no utilitzarà mètodes prudents per garantir que les persones autoritzades no (i) copiïn, publiquin, transmetin, reprodueixin, divulguin, divulguin o posin la informació confidencial a disposició de tercers, o (ii) l'utilitzin o emmagatzemin en un sistema o base de dades de recuperació no protegit (excepte d'acord amb els termes del present document), i (e) retornarà o destruirà totes les (còpies (impreses i digitals) de la informació confidencial a petició escrita de l'altra part. En cas que alguna de les Parts processi dades personals en nom de l'altra com a part de la prestació dels serveis en virtut d'aquest Acord, les Parts regularan aquest processament mitjançant un Acord de Processament de Dades (APD) i el conformaran part dels termes i condicions d'aquest Acord.
 
@@ -305,7 +305,7 @@ El Proveïdor d'Allotjament garanteix que, segons el seu coneixement, ni ells ni
 
 20.3 El Proveïdor d'Allotjament s'assegurarà (i s'assegurarà que les empreses del Grup de Proveïdors d'Allotjament no registrin, adquireixin, utilitzin, comprin o obtinguin (directa o indirectament) noms de domini d'Internet que incorporin cap paraula o paraules idèntiques, confusivament o substancialment similars a "Wink" o qualsevol variació, traducció o errors ortogràfics d'aquest, incloses com a part de l'adreça).
 
-20.4 En subscriure aquest Acord, Wink no renuncia ni perd (explícitament o tàcitament) cap dels drets que li corresponen per qualsevol llei, contracte o d'altra manera (ara o en el futur) respecte als Drets de Propietat Intel·lectual de Wink respecte al Proveïdor d'Allotjament o altres tercers.
+20.4 En subscriure aquest Acord, Wink no renuncia ni perd (explícitament o tàcitament) cap dels seus drets que li corresponen per qualsevol llei, contracte o d'altra manera (ara o en el futur) respecte als Drets de Propietat Intel·lectual de Wink respecte al Proveïdor d'Allotjament o altres tercers.
 
 **21. Canvi de titularitat**
 
@@ -365,7 +365,7 @@ Les Parts són, i actuaran com a, contractistes independents en l'execució d'aq
 
 30.1 Cap de les Parts tindrà dret a cedir, transferir o gravar cap dels seus drets i/o obligacions en virtut d'aquest Acord sense el consentiment previ per escrit de l'altra Part, sempre que Wink pugui cedir, transferir o gravar qualsevol dels seus drets i/o obligacions en virtut d'aquest Acord (en la seva totalitat o en part o de tant en tant) a una empresa afiliada sense el consentiment previ per escrit del Proveïdor d'Allotjament.
 
-30.2 Aquest Acord es conclou en benefici de les Parts i dels seus respectius successors i cessionaris autoritzats, i res del que s'estableix aquí pretén conferir ni conferirà implícitament a cap altra persona cap dret, benefici o recurs legal o equitatiu de cap naturalesa, en virtut d'aquest Acord o per raó d'aquest, excepte en la mesura que s'indiqui explícitament el contrari en aquest Acord.
+30.2 Aquest Acord es conclou en benefici de les Parts i dels seus respectius successors i cessionaris autoritzats, i res del que s'estableix en aquest Acord pretén conferir ni conferirà implícitament a cap altra persona cap dret, benefici o recurs legal o equitatiu de cap naturalesa, en virtut d'aquest Acord o per raó d'aquest, excepte en la mesura que s'indiqui explícitament el contrari en aquest Acord.
 
 **31. Força major**
 
@@ -375,7 +375,7 @@ Wink no serà responsable de cap retard o incompliment de qualsevol obligació e
 
 32.1 En la màxima mesura permesa per la llei, cap de les Parts serà responsable de cap dany indirecte, incidental, conseqüent, especial o punitiu que sorgeixi d'aquest Acord o del seu incompliment, fins i tot si s'ha informat de la possibilitat d'aquests danys. Aquesta limitació no s'aplicarà a cap incompliment d'aquest Acord relacionat amb la confidencialitat i/o els drets de propietat intel·lectual.
 
-32.2 Cap de les Parts pot excloure la responsabilitat respecte a (i) una mort o lesions personals causades per la seva negligència o la dels seus empleats, agents o subcontractistes, (ii) frau comès per ella mateixa o pels seus empleats, o (iii) qualsevol incompliment, acte, omissió o responsabilitat que no pugui estar limitada per cap llei aplicable.
+32.2 Cap de les Parts pot excloure la responsabilitat respecte a (i) una mort o lesions personals causades per la seva negligència o la dels seus empleats, agents o subcontractistes, (ii) frau comès per ella mateixa o pels seus empleats, o (iii) qualsevol incompliment, acte, omissió o responsabilitat que no pugui ser limitada per cap llei aplicable.
 
 32.3 Les parts reconeixen i acorden que les exclusions i limitacions de responsabilitat establertes en aquest Acord són justes i raonables.
 

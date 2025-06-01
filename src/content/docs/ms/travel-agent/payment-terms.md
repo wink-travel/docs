@@ -71,7 +71,7 @@ Jumlah kecil = 1,000 - 15 = 985
 
 4.1 **Tanggungjawab Ejen Pelancongan:**
 
-* Memastikan kutipan bayaran tepat pada masanya daripada Tetamu, mematuhi terma yang digariskan dalam Bahagian 2.1.
+* Pastikan kutipan pembayaran tepat pada masanya daripada Tetamu, mematuhi syarat-syarat yang digariskan dalam Bahagian 2.1.
 * Tolak Yuran Tempahan dan Komisen sebelum menghantar Bayaran Bersih kepada Penyedia Penginapan mengikut Perjanjian Berasingan.
 * Selesaikan invois Wink untuk Yuran Tempahan dengan segera dalam terma yang dinyatakan dalam Bahagian 3.1.
 * Mengurus dan menyelesaikan sebarang pertikaian yang berkaitan dengan tempahan atau pembayaran secara aktif, memastikan komunikasi dengan Wink dikekalkan untuk menyelesaikan isu dengan cekap.
@@ -80,7 +80,7 @@ Jumlah kecil = 1,000 - 15 = 985
 
 * Mengeluarkan invois bulanan yang tepat dan tepat pada masanya untuk Yuran Tempahan seperti yang diperincikan dalam Bahagian 3.1.
 * Menyediakan Ejen Pelancongan akses berterusan ke platform Wink untuk memproses tempahan dan menguruskan pembayaran.
-* Membantu Ejen Pelancongan dalam menyelesaikan pertikaian yang berkaitan dengan pembayaran dengan menyediakan data transaksi yang diperlukan dan sokongan seperti yang diperlukan.
+* Membantu Ejen Pelancongan dalam menyelesaikan pertikaian yang berkaitan dengan pembayaran dengan menyediakan data transaksi dan sokongan yang diperlukan seperti yang diperlukan.
 
 **5. Penukaran Mata Wang**
 

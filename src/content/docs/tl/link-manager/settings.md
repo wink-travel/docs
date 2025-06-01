@@ -9,7 +9,7 @@ sidebar:
 ---
 Upang pamahalaan ang iyong mga setting ng WinkLinks, mag-navigate sa `WinkLinks` sa pangunahing nav bar at mag-click sa `Settings` tab.
 
-Narito ang mga paraan na maaari mong i-configure ang iyong gawi sa WinkLinks `Settings`:
+Narito ang mga paraan kung saan mo mako-configure ang iyong gawi sa WinkLinks `Settings`:
 
 * **Matalino** Sa pamamagitan ng pagpapagana ng katalinuhan, sinusubukan naming makuha ang `rich` content na makukuha mula sa mga site tulad ng, `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (formerly Twitter)` at iba pa. *hal. Kung nagbabahagi ka ng post sa IG sa WinkLinks, ipapakita ang post habang nakikita mo ito sa IG, na may mga gusto, komento at isang paraan upang makipag-ugnayan sa post.*
 * **Paunang pagpapakita** Kontrolin kung paano unang nakikipag-ugnayan ang iyong audience sa iyong site at nakikita ang iyong content. May tatlong opsyon na magagamit mo:
@@ -19,7 +19,7 @@ Narito ang mga paraan na maaari mong i-configure ang iyong gawi sa WinkLinks `Se
 * **Larawan sa profile** Sa tuktok ng bawat pahina ng WinkLinks ay ang iyong larawan sa profile ng account kasama ang paglalarawan ng iyong account. Maaari mong ipakita ang iyong larawan sa profile sa dalawang paraan:
   * `Circle` Inirerekomenda namin ang paggamit ng isang pabilog na istilo kung ang iyong larawan ay para sa iyong sarili o anumang bagay na kasya sa loob ng isang bilog na lalagyan.
   * `Rectangle` Inirerekomenda namin ang paggamit ng isang hugis-parihaba na stype kung ang logo ng iyong kumpanya ay ang iyong larawan sa profile dahil karamihan sa mga logo ng kumpanya ay hugis-parihaba.
-* **Pagpapasadya** Piliin kung aling pag-customize ang gusto mong gamitin para sa iyong pahina ng WinkLinks. Naaapektuhan nito ang iyong mga kulay ng tema pati na rin ang iyong itinerary kapag nagpapakita ng Wink inventory card, mapa o grids.
+* **Pagpapasadya** Piliin kung aling pagpapasadya ang gusto mong gamitin para sa iyong pahina ng WinkLinks. Naaapektuhan nito ang iyong mga kulay ng tema pati na rin ang iyong itinerary kapag nagpapakita ng Wink inventory card, mapa o grids.
 
 ## API
 

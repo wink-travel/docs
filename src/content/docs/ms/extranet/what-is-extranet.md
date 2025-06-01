@@ -6,9 +6,9 @@ description: >-
 sidebar:
   order: 0
 ---
-[Kejap Ekstranet](https://extranet.wink.travel) ialah portal hartanah kami. Ia bertujuan untuk hotel, rangkaian, jenama dan syarikat pengurusan hotel membuat dan mengurus profil digital hartanah mereka pada platform Wink.
+[Kejap Extranet](https://extranet.wink.travel) ialah portal hartanah kami. Ia bertujuan untuk hotel, rangkaian, jenama dan syarikat pengurusan hotel membuat dan mengurus profil digital hartanah mereka pada platform Wink.
 
-Extranet kami telah direka bentuk dengan teliti agar semudah mungkin, tetapi untuk tetap menyokong semua ciri yang telah dijangkakan oleh pengguna kuasa daripada portal hartanah termaju. Untuk memberi anda beberapa contoh:
+Extranet kami telah direka bentuk dengan teliti agar semudah mungkin, tetapi untuk tetap menyokong semua ciri yang telah dijangkakan oleh pengguna berkuasa daripada portal hartanah termaju. Untuk memberi anda beberapa contoh:
 
 1. Kesederhanaan: Gunakan aliran kerja onboarding pintar kami untuk meneruskan harta anda dan LANGSUNG dalam masa kurang daripada sejam.
 2. Lanjutan: Wink menyokong 8500 variasi dasar pembatalan yang berbeza

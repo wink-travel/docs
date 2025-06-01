@@ -20,7 +20,7 @@ Disse vilkår er tilgængelige under[Partnerportal > Betalingsbetingelser](/stud
 :::
 
 **BETALINGSVILKÅR FOR WINK**\
-**FOR REJSEAGENTENE (registreret forhandler)**
+**FOR REJSEAGENTENE (registreret handelsmand)**
 
 Disse Betalingsbetingelser ("Betalingsbetingelser") er en bindende juridisk aftale, der udgør en del af det kontraktforhold, der er etableret i henhold til "VILKÅR OG BETINGELSER FOR REJSEBUREAUER" ("Hovedaftalen")
 
@@ -48,7 +48,7 @@ Som defineret i hovedaftalen "VILKÅR OG BETINGELSER FOR REJSEBUREAUER" ("Hoveda
 
 2.1**Betalingsopkrævning:**&#x52;ejsebureauet er ansvarlig for at opkræve betaling fra gæsten på bookingtidspunktet. Dette sikrer øjeblikkelig behandling og økonomisk klarhed.
 
-2.2**Gebyrfradrag:**&#x52;ejsebureauet skal først fratrække tjenesteudbyderens honorar og derefter sin provision for undertitlen som vist nedenfor:
+2.2**Gebyrfradrag:**&#x52;ejsebureauet skal først fratrække tjenesteudbyderens honorar og derefter sin provision for underteksten som vist nedenfor:
 
 * 1,5% bookinggebyr for Wink.
 * Rejsebureauets provision som angivet i den separate aftale (vi bruger 10% i dette eksempel)

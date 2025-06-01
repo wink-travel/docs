@@ -26,7 +26,7 @@ De personuppgifter som företaget behöver samla in, sammanställa, använda och
 
 Syfte med behandlingen och användningen av personuppgifter Företaget är nödvändigt för att samla in, sammanställa och använda arbetssökandes personuppgifter för följande ändamål:
 
-(1) För hantering av kommunikation som du har kommunicerat med företaget genom, såsom att svara på frågor, tillhandahålla relevant information på begäran och i enlighet med kraven, hantera klagomål eller svara på kommentarer som du lämnar direkt till företaget via olika kommunikationskanaler, inklusive kontinuerlig samordning, ingående av serviceavtal och/eller fullgörande av rättigheter och skyldigheter som företaget och du kan komma överens om;
+(1) För hantering av kommunikation som du har haft med företaget, såsom att svara på frågor, tillhandahålla relevant information på begäran och i enlighet med kraven, hantera klagomål eller svara på kommentarer som du lämnar direkt till företaget via olika kommunikationskanaler, inklusive kontinuerlig samordning, ingående av serviceavtal och/eller fullgörande av rättigheter och skyldigheter som företaget och du kan komma överens om;
 
 (2) För att fullgöra rättsliga skyldigheter som Bolaget kan vara underkastat under vissa omständigheter. Detta kan inkludera, men är inte begränsat till, att utföra arbetsuppgifter i samband med upprättande av redovisningsdokument och skatter i samband med tjänster som Bolaget tillhandahåller dig;
 

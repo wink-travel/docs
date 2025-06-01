@@ -15,7 +15,7 @@ Používateľský účet vám umožňuje:
 * Získajte svoju virtuálnu URL adresu WinkLinks (*napr. https://i.trvl.as/bob*) a použite ho v URL adrese vášho profilu na Instagrame.
 * Zarezervujte si svoju ďalšiu dovolenku a ušetrite.
 * Urobte všetko vyššie uvedené ako vývojár integráciou s Wink.
-* Všetky naše funkcie sú vám k dispozícii**Z-A-R-A-D-E**.
+* Všetky naše funkcie sú vám k dispozícii**Z-R-A-D-E**.
 
 Pokračujte v ďalšej časti a dozviete sa, ako sa zaregistrovať a začať zarábať s Wink.
 

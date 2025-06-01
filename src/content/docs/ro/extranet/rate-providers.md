@@ -1,8 +1,8 @@
 ---
 title: Furnizori de tarife
 description: >-
-  Iată lista actualizată a furnizorilor de tarife pe care îi oferim direct pe
-  Wink.
+  Iată lista actualizată a furnizorilor de tarife pe care îi oferim suport
+  direct pe Wink.
 sidebar:
   order: 18
 ---

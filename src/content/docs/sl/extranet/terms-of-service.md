@@ -29,7 +29,7 @@ Wink ne poseduje, ne nadzoruje, ne ponuja in ne upravlja nobenih oglasov. Wink n
 
 V primeru neskladja med temi Splošnimi pogoji (v nadaljevanju »Pogoji«) in Plačilnimi pogoji veljajo slednji.
 
-Zato sta se pogodbenici dogovorili o naslednjem:
+Zato so se pogodbenice sedaj dogovorile o naslednjem:
 
 **1. Definicije**
 
@@ -53,7 +53,7 @@ Poleg izrazov, opredeljenih drugje v tej pogodbi, se v tej pogodbi uporabljajo n
 
 **"Objekti in storitve"**&#x70;omeni vse objekte, obroke, ugodnosti in/ali druge storitve, ki jih zagotavlja sodelujoči hotel.
 
-**"Gost(i)"**&#x70;omeni končnega uporabnika, ki je uporabljal, uporablja ali je rezerviran za končno uporabo Sobe (in drugih prostorov in storitev, kjer je to primerno) kot rezultat neposredne ali posredne rezervacije pri Wink.
+**"Gost(i)"**&#x70;omeni končnega uporabnika, ki je uporabljal, uporablja ali je rezerviran za končno uporabo sobe (in drugih prostorov in storitev, kjer je to primerno) kot rezultat neposredne ali posredne rezervacije pri Wink.
 
 **»Hotel(i)«**&#x70;omeni katero koli namestitev, ki je na voljo na spletnih mestih Wink ali prek njih.
 
@@ -327,7 +327,7 @@ Ponudnik nastanitve jamči, da po njegovem najboljšem vedenju niti on niti njeg
 
 23.1 Ponudnik nastanitve ne sme posredovati nobene komunikacije ali gradiva v zvezi z družbo Wink ali to pogodbo, bodisi medijem bodisi kateri koli drugi zunanji stranki, brez predhodnega pisnega soglasja družbe Wink, in ponudnik nastanitve je izključno in neposredno odgovoren za kakršno koli škodo ali izgubo, ki jo družba Wink utrpi zaradi kršitve te določbe.
 
-23.2 Ponudnik nastanitve se bo z družbo Wink posvetoval glede vsebine kakršnega koli takega sporočila ali gradiva, ki ga namerava objaviti, in mora družbi Wink zagotoviti kopijo vsakega takega sporočila ali gradiva, ki bo na koncu objavljeno.
+23.2 Ponudnik nastanitve se bo posvetoval z družbo Wink glede vsebine kakršnega koli takega sporočila ali gradiva, ki ga namerava objaviti, in mora družbi Wink zagotoviti kopijo vsakega takega sporočila ali gradiva, ki bo na koncu objavljeno.
 
 **24. Prednost**
 

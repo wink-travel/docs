@@ -22,7 +22,7 @@ Aquí se muestran las formas en las que puede configurar el comportamiento de Wi
 
 ## API
 
-Desarrolladores que quieran gestionar`WinkLinks`Puede dirigirse a[Desarrolladores > API > WinkLinks](/developers/apis/#winklinks-api).
+Desarrolladores que quieran gestionar`WinkLinks`puede dirigirse a[Desarrolladores > API > WinkLinks](/developers/apis/#winklinks-api).
 
 ## Lectura adicional
 

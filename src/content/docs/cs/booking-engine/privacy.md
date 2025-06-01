@@ -40,7 +40,7 @@ Osobní údaje, které je Společnost v souladu s těmito Zásadami ochrany osob
 
 Doba uchovávání osobních údajů: Aby Společnost mohla plnit výše uvedené účely, musí shromažďovat, sestavovat a zpracovávat Vaše osobní údaje po následující dobu:
 
-(1) Pro účely zpracování osobních údajů za účelem poskytování služeb, plnění smlouvy a/nebo výkonu práv a povinností vyplývajících ze smlouvy je Společnost nezbytná ke zpracování Vašich osobních údajů, a to po dobu, kdy má Společnost povinnost Vám poskytovat služby;
+(1) Pro zpracování osobních údajů za účelem poskytování služeb, plnění smlouvy a/nebo výkonu práv a povinností vyplývajících ze smlouvy je Společnost nezbytná ke zpracování Vašich osobních údajů, a to po dobu, kdy má Společnost povinnost Vám poskytovat služby;
 
 (2) Pro zpracování osobních údajů za účelem plnění povinností podle platných právních předpisů je Společnost nezbytná ke zpracování vašich osobních údajů po dobu stanovenou platnými právními předpisy;
 

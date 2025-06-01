@@ -30,7 +30,7 @@ Os nossos testes de intrusão são realizados anualmente, com testes adicionais 
 
 Os nossos testes de intrusão são abrangentes e cobrem uma vasta gama de aspetos de segurança, incluindo, mas não se limitando a:
 
-* **OWASP Top 10:** Os nossos testes têm como alvo específico os riscos de segurança mais críticos, como injeção, autenticação quebrada e script entre sites (XSS).
+* **Top 10 da OWASP:** Os nossos testes têm como alvo específico os riscos de segurança mais críticos, como injeção, autenticação quebrada e script entre sites (XSS).
 * **Testes de caixa negra e caixa cinzenta:** Dependendo do âmbito, a nossa equipa utiliza estas metodologias para simular cenários de ataques externos e internos.
 * **Testes automatizados e manuais:** Utilizamos o Burp Suite Pro, um conjunto de ferramentas de teste de segurança líder, para conduzir scans de segurança automatizados e auxiliar as técnicas de teste manual para identificar vulnerabilidades complexas e obter a melhor cobertura possível. Para a identificação de vulnerabilidades mais específicas, são utilizadas algumas ferramentas especializadas, p. Mapa SQL.
 

@@ -14,7 +14,7 @@ Síðast uppfært 2024-06-12
 
 Þessir greiðsluskilmálar þjónustunnar (“**Greiðsluskilmálar**„) eru bindandi lagalegur samningur milli gistiþjónustuaðila og TripPay (hér eftir nefn&#x74;**„Greiðslumiðlari“**), dótturfélag í fullri eigu Traveliko Singapore Pte. Ltd., sem stjórnar greiðsluþjónustu (skilgreint hér að neðan) sem framkvæmd er í gegnum eða í tengslum við Wink Platform (hér eftir nefn&#x74;**„Blikk“**&#xDE;egar þessir greiðsluskilmálar minnast á „**Greiðslumiðlari**„“**við**„“**okkur**„“ eða „**okkar**„,“ vísar það til TripPay fyrirtækisins sem þú ert í samningi við um greiðsluþjónustu.
 
-Greiðsluþjónustan veitir greiðsluþjónustu til gistiþjónustuaðila sem selja birgðir í gegnum Wink-kerfið. Þessar greiðsluþjónustur geta falið í sér (ef þær eru í boði) eftirfarandi (sameiginlega kallaðar „**Greiðsluþjónusta**„)):
+Greiðsluþjónustan veitir greiðsluþjónustu til gistiþjónustuaðila sem selja birgðir í gegnum Wink-kerfið. Þessar greiðsluþjónustur geta falið í sér (ef þær eru í boði) eftirfarandi (sameiginlega „**Greiðsluþjónusta**„)):
 
 * Að innheimta greiðslur frá gestum („Innborgun“) með því að skuldfæra greiðslumáta sem tengist kaupunum þeirra, svo sem kreditkort, debetkort, bankamillifærslu, dulritunargjaldmiðla eða PayPal („Greiðslumáti“);
 * Að framkvæma greiðslur til gistiþjónustuaðila („Útborgun“);
@@ -109,13 +109,13 @@ Aðeins sá sem undirritar þennan samning skal vera eini tilnefndi fulltrúi gi
 
 Gististaðurinn ábyrgist að hann/hún fylgir og muni fylgja, og tengdir aðilar hans fylgja og skulu fylgja siðareglum greiðslumiðlunarbirgja.
 
-Gististaðurinn lýsir því yfir, ábyrgist og skuldbindur sig til að fara að og muni í hvívetna fylgja öllum alþjóðlegum viðskiptareglum, gildandi takmörkunum á viðskiptum, fjármagnsflæði og löggjöf um fjármögnun hryðjuverka og varnir gegn mútugreiðslum og spillingu, þar á meðal, en ekki takmarkað við, lög gegn spillingu í Bandaríkjunum, lög gegn mútugreiðslum í Bretlandi frá 2010 og lög gegn spillingu í Singapúr.
+Gististaðurinn lýsir því yfir, ábyrgist og skuldbindur sig til að fara að og muni í hvívetna fylgja öllum alþjóðlegum viðskiptareglum, gildandi takmörkunum á viðskiptum, fjármagnsflæði og löggjöf um fjármögnun hryðjuverka og varnir gegn mútugreiðslum og spillingu, þar á meðal, en ekki takmarkað við, bandarísku lögin gegn spillingu, bresku lögin gegn mútugreiðslum frá 2010 og lögin gegn spillingu í Singapúr.
 
 Gististaðurinn ábyrgist að eftir bestu vitund hafi hvorki hann né tengdir aðilar hans verið sakfelldir fyrir brot sem felur í sér mútur eða spillingu né séu þeir undir rannsókn af hálfu neinna ríkisstofnana, stjórnsýslustofnana eða eftirlitsaðila.
 
 **6. Óviðráðanleg atvik**
 
-Greiðslumiðlari ber ekki ábyrgð á töfum eða vanrækslu á að uppfylla skyldur samkvæmt þessum greiðsluskilmálum sem stafa af orsökum sem Wink eða greiðslumiðlari hefur ekki sanngjarna stjórn á, þar á meðal en ekki takmarkað við óviðráðanlegar aðstæður, náttúruhamfarir, stríð, hryðjuverk, óeirðir, viðskiptabönn, aðgerðir borgaralegra eða hernaðarlegra yfirvalda, eldsvoða, flóð, slys, heimsfaraldra, farsóttir eða sjúkdóma, verkföll eða skort á samgöngum, eldsneyti, orku, vinnuafli eða efni („Óviðráðanleg atvik“).
+Greiðslumiðlari ber ekki ábyrgð á töfum eða vanrækslu á að uppfylla skyldur samkvæmt þessum greiðsluskilmálum sem stafa af orsökum sem Wink eða greiðslumiðlari hefur ekki sanngjarna stjórn á, þar á meðal en ekki takmarkað við óviðráðanlegar aðstæður, náttúruhamfarir, stríð, hryðjuverk, óeirðir, viðskiptabönn, aðgerðir borgaralegra eða hernaðarlegra yfirvalda, eldsvoða, flóð, slys, heimsfaraldra, farsóttir eða sjúkdóma, verkföll eða skortur á samgöngum, eldsneyti, orku, vinnuafli eða efni („Óviðráðanleg atvik“).
 
 **7. Fyrirvarar**
 

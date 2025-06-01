@@ -18,7 +18,7 @@ Si su propiedad utiliza el administrador de canales SynXis, se requieren más pa
 
 * Comuníquese con su representante de cuenta de SynXis o con atención al cliente (SHSCustomerCare@sabre.com).
 * Hazles saber que deseas conectarte a Wink a través de Channel Connect Express (***CCX***).
-* Te harán completar el formulario.***PRS***.
+* Te pedirán que completes el formulario.***PRS***.
   * Se le pedirá que complete sus credenciales de usuario de Wink.
   * ...y la moneda deseada.
 * Complete el formulario y envíelo a SynXis.

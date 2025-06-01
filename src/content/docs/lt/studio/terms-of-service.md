@@ -191,7 +191,7 @@ Perpardavimas laikomas esminiu šios Sutarties pažeidimu. Partneris pripažįst
 
 4.5.1 Partnerių svetainės negali būti (tiesiogiai ar netiesiogiai) susietos su „Wink“ svetainėmis dėl dvigubo pateikimo ar bet kokio panašaus metodo ar kitų apribojimų, nustatytų bet kokiuose šlamšto platinimo reglamentuose.
 
-4.5.2 Tuo atveju, jei Paslauga teikiama per Nuorodą arba Mikro Svetainę, Partneris negali (tiesiogiai ar netiesiogiai) teikti Paslaugos per kelionių paieškos svetaines ar kainų palyginimo svetaines ir nenaudoti jų šiam tikslui, nebent „Wink“ raštu susitartų kitaip.
+4.5.2 Tuo atveju, jei Paslauga teikiama per Nuorodą arba Mikro Svetainę, Partneris negali (tiesiogiai ar netiesiogiai) teikti Paslaugos per kelionių paieškos svetaines ar kainų palyginimo svetaines ir nenaudoti tokių svetainių šiam tikslui, nebent „Wink“ raštu susitartų kitaip.
 
 4.5.3 Partneris neturi (tiesiogiai ar netiesiogiai) leisti Partnerio svetainei (-ėms), Turiniui ar Paslaugai būti prieinamai arba pateikti Turinį Trečiųjų šalių platformoms, siekiant suklaidinti, apgauti, apgauti ar apgauti žmonių redaktorius, kompiuterių paieškos sistemų robotus, žiniatinklio nuskaitymo robotus ar (meta) paieškos sistemas (įskaitant bet kokius panašius įrankius ar variklius) Trečiųjų šalių platformose, siekiant suteikti Partnerio svetainei (-ėms) aukštesnį reitingą ar rodymą, kai ji (-os) nebūtų rodoma ar užimtų aukštesnį reitingą, jei nebūtų naudojamas maskavimas ar bet koks panašus metodas ar technika.
 
@@ -230,7 +230,7 @@ Partneris sutinka nesikreipti į jokius Apgyvendinimo paslaugų teikėjus, jų n
 
 4.9.3 Partneris sutinka ir pripažįsta, kad kol nebus įvykdyti pagrįsti „Wink“ prašymai arba jei Partneris nedelsdamas neįvykdys visų tokių „Wink“ prašymų pagal šį 4 punktą, „Wink“ turi teisę atidėti arba sustabdyti savo įsipareigojimus pagal šią Sutartį (įskaitant Paslaugos, Sistemos ir „Wink“ duomenų siūlymą) arba nedelsdama nutraukti šią Sutartį, nepažeidžiant „Wink“ teisių pagal šią Sutartį ar kitaip.
 
-4.9.4 Jei Partneris pažeidžia šiame 4 punkte nustatytas sąlygas, įsipareigojimus, apribojimus, prievoles ir (arba) garantijas arba jei tai yra priskirtina Partneriui, „Wink“ turi teisę pasinaudoti šiais veiksmais ir teisėmis, nepaisant įstatymų ar sutarties numatytų teisių gynimo priemonių ir ieškinių dėl konkretaus įvykdymo, žalos atlyginimo ar teismo įsakymo ar teisingumo užtikrinimo:\
+4.9.4 Jei Partneris pažeidžia šiame 4 punkte nustatytas sąlygas, įsipareigojimus, apribojimus, prievoles ir (arba) garantijas arba jei tai yra priskirtina Partneriui, „Wink“ turi teisę pasinaudoti šiais veiksmais ir teisėmis, nepaisant įstatymų ar sutarties numatytų teisių gynimo priemonių ir ieškinių dėl konkretaus įvykdymo, žalos atlyginimo ar teismo įsakymo ar teisingumo gynimo priemonių:\
 (a) sustabdyti savo (mokėjimo) įsipareigojimus pagal šią Sutartį arba nutraukti Sutartį nedelsiant be išankstinio įspėjimo Partneriui ir nepažeidžiant „Wink“ teisių pagal šią Sutartį ar kitaip;\
 (b) „Wink“ turi teisę sumažinti Komisinius iki 0 % už visus atliktus užsakymus ir (arba) kiekvieną įvykusį sandorį tuo laikotarpiu, kai Partneris pažeidžia atitinkamus 4 punkte nurodytus įsipareigojimus arba iki galo neištaisė atitinkamų 4 punkte nurodytų įsipareigojimų pažeidimo;\
 (c) „Wink“ pasilieka teisę reikalauti, kad Partneris grąžintų „Wink“ pagal šią Sutartį sumokėtą Komisinį mokestį; ir\
@@ -280,7 +280,7 @@ Partneris pareiškia ir garantuoja „Wink“, kad šios Sutarties galiojimo lai
 
 6.2.3 Partneris pareiškia ir garantuoja, kad neatliks ir nesiūlys atlikti jokių mokėjimų, dovanų ar perleisti jokios vertės: (i) jokiam vyriausybės pareigūnui ar darbuotojui (įskaitant vyriausybinių subjektų ar korporacijų darbuotojus) arba jų naudojimui ar naudai; arba (ii) jokiai politinei partijai (įskaitant jos pareigūnus ar kandidatus); (iii) jokiai komercinei šaliai, asmeniui ar subjektui; arba (iv) tarpininkui, kad šis sumokėtų bet kuriam iš aukščiau išvardytų asmenų, siekdamas paskatinti gavėją atlikti arba neatlikti veiksmo, pažeidžiančio tokio gavėjo teisėtą pareigą, gauti ar išlaikyti verslą arba užsitikrinti bet kokią netinkamą pranašumą; arba paskatinti netinkamai atlikti atitinkamą funkciją ar veiklą, susijusią su bet kokia veikla „Wink“ vardu ar „Wink“ interesais, kaip numatyta šioje Sutartyje. Partneriui pažeidus šią nuostatą, „Wink“ turi teisę nedelsiant nutraukti šią Sutartį.
 
-6.2.4 Siekdama nustatyti, kaip laikomasi pirmiau nurodyto 6.2.3 punkto, „Wink“ turi teisę savo lėšomis atlikti visų atitinkamų Partnerio apskaitos ir pardavimo knygų, įrašų, sutarčių, patalpų, kompiuterinių sistemų, sutarčių ir dokumentų patikrinimą ir auditą įprastomis darbo valandomis Partnerio biuruose ir taip, kad nepagrįstai netrukdytų įprastai Partnerio verslo veiklai. Tokie auditai pagal šią Sutartį negali būti atliekami dažniau nei du kartus per dvylika (12) mėnesių.
+6.2.4 Siekdama nustatyti, kaip laikomasi pirmiau nurodyto 6.2.3 punkto, „Wink“ turi teisę savo lėšomis atlikti visų atitinkamų Partnerio apskaitos ir pardavimo knygų, įrašų, sutarčių, įrenginių, kompiuterinių sistemų, sutarčių ir dokumentų patikrinimą ir auditą įprastomis darbo valandomis Partnerio biuruose ir taip, kad nepagrįstai netrukdytų įprastai Partnerio verslo veiklai. Tokie auditai pagal šią Sutartį negali būti atliekami dažniau nei du kartus per dvylika (12) mėnesių.
 
 **6.3 Atsakomybės apribojimas**
 
@@ -344,8 +344,8 @@ Jei nesusitarta kitaip, ši sutartis įsigalioja jos pasirašymo dieną ir galio
 **9.2 Audito teisės**
 
 Jei „Wink“ sąžiningai turi pagrindo manyti, kad Partneris pažeidė savo įsipareigojimus pagal 4 punktą, „Wink“ gali patikrinti tokius Partnerio įrašus ir knygas (apskaitą), siekdama patikrinti, peržiūrėti ir ištirti (jei taikoma) Partnerio įsipareigojimus pagal 4 punktą, laikydamasi šių nuostatų:\
-(a) Šalys nedelsdamos paskiria nepriklausomą sertifikuotą auditorių („Auditorius“), pagrįstai priimtiną abiem Šalims, kuriam bus leidžiama atlikti Subfilialui (-ams) mokėtino (-ų) komisinio (metodo ir apskaičiavimo) auditą.\
-(b) Šalys privalo suteikti auditoriui visą tokią informaciją, duomenis, bendradarbiavimą, pagalbą ir prieigą prie apskaitos knygų ir įrašų, dokumentų, bylų, dokumentų ir elektroniniu būdu saugomos informacijos, kurios auditorius gali pagrįstai paprašyti, kad laiku atliktų savo užduotį.\
+(a) Šalys nedelsdamos paskiria nepriklausomą sertifikuotą auditorių („Auditorius“), pagrįstai priimtiną abiem Šalims, kuriam bus leidžiama atlikti Subpartneriui (-ėms) mokėtino (-ų) komisinio (metodo ir apskaičiavimo) auditą.\
+(b) Šalys privalo suteikti Auditoriui visą tokią informaciją, duomenis, bendradarbiavimą, pagalbą ir prieigą prie apskaitos knygų ir įrašų, dokumentų, bylų, dokumentų ir elektroniniu būdu saugomos informacijos, kurios Auditorius gali pagrįstai paprašyti, kad laiku atliktų savo užduotį.\
 (c) Auditorius pateiks abiem Šalims savo ataskaitos („Ataskaita“) kopiją, kurioje bus pateikti audito rezultatai ir išvados.\
 (d) Auditai bus atliekami darbo dienomis įprastomis darbo valandomis.\
 (e) „Wink“ padengia auditoriaus išlaidas ir sąnaudas, nebent auditorius, remdamasis pagrįstumo ir sąžiningumo sumetimais, nuspręstų kitaip.
@@ -361,9 +361,9 @@ Partneris garantuoja, kad, kiek jam žinoma, nei jis, nei jo Susijusios šalys n
 
 **11.1 Konfidenciali informacija**
 
-Šalys supranta ir sutinka, kad vykdydamos šią Sutartį, kiekviena Šalis gali turėti prieigą prie kitos Šalies konfidencialios ir neskelbtinos informacijos („Konfidenciali informacija“) arba gali būti su ja tiesiogiai ar netiesiogiai susidūrusi. Konfidenciali informacija apima Kliento duomenis, sandorių apimtį, rinkodaros ir verslo planus, verslo, finansinę, techninę ir operacinę informaciją, naudojimo statistiką, reitingavimo duomenis, informaciją apie tarifų, produktų ir prieinamumo paritetą, kainodaros politiką, konversijos duomenis ir paspaudimų skaičių bei kitą susijusią statistiką, Svečių asmens duomenis, bet kokią programinę įrangą ar informaciją apie „Wink“ pateiktą ar naudojamą programinę įrangą, susijusią su šia Sutartimi, šios Sutarties sąlygas ir kitą viešai neskelbiamą informaciją, kurią atskleidžianti Šalis nurodo kaip privačią ar konfidencialią arba apie kurią gaunanti Šalis turėtų pagrįstai žinoti, kad su ja turėtų būti elgiamasi kaip su privačia ir konfidencialia.
+Šalys supranta ir sutinka, kad vykdydamos šią Sutartį, kiekviena Šalis gali turėti prieigą prie kitos Šalies konfidencialios ir neskelbtinos informacijos („Konfidenciali informacija“) arba gali būti su ja tiesiogiai ar netiesiogiai susidurta. Konfidenciali informacija apima Kliento duomenis, sandorių apimtį, rinkodaros ir verslo planus, verslo, finansinę, techninę ir operacinę informaciją, naudojimo statistiką, reitingavimo duomenis, informaciją apie tarifų, produktų ir prieinamumo paritetą, kainodaros politiką, konversijos duomenis ir paspaudimų skaičių bei kitą susijusią statistiką, Svečių asmens duomenis, bet kokią programinę įrangą ar informaciją apie „Wink“ pateiktą ar naudojamą programinę įrangą, susijusią su šia Sutartimi, šios Sutarties sąlygas ir kitą viešai neskelbiamą informaciją, kurią atskleidžianti Šalis nurodo kaip privačią ar konfidencialią arba apie kurią gaunanti Šalis turėtų pagrįstai žinoti, kad su ja turėtų būti elgiamasi kaip su privačia ir konfidencialia.
 
-**11.2 Konfidencialios informacijos apsauga**
+**11.2 Konfidencialios informacijos apsauga ir saugojimas**
 
 Kiekviena Šalis sutinka, kad: (a) visa Konfidenciali informacija lieka išimtine atskleidžiančios Šalies nuosavybe, o gaunanti Šalis nenaudos jokios Konfidencialios informacijos jokiais kitais tikslais, išskyrus šios Sutarties vykdymą, (b) ji saugo Konfidencialios informacijos konfidencialumą ir slaptumą bei taikys apdairius metodus, kad priverstų savo darbuotojus, pareigūnus, atstovus, sutarties šalis ir agentus („Leidžiami asmenys“) saugoti Konfidencialios informacijos konfidencialumą ir slaptumą, (c) ji atskleidžia Konfidencialią informaciją tik tiems Leidžiamiems asmenims ir tiems, kuriems reikia žinoti tokią informaciją šios Sutarties vykdymui, (d) ji nekopijuoja, neskelbia, neperduoda, neatkuria, neatskleidžia, neatskleidžia ir nepadaro Konfidencialios informacijos prieinamos jokiai trečiajai šaliai arba nenaudoja ir nelaiko jos neapsaugotoje paieškos sistemoje ar duomenų bazėje (išskyrus pagal šios Sutarties sąlygas), ir (e) gavusi kitos Šalies rašytinį prašymą, ji grąžina arba sunaikina visas ((spausdintas ir elektronines) Konfidencialios informacijos kopijas). Tuo atveju, jei kuri nors Šalis tvarko asmens duomenis kitos Šalies vardu, teikdama paslaugas pagal šią Sutartį, Šalys tokį tvarkymą reglamentuoja Duomenų tvarkymo sutartimi (DTS) ir yra šios Sutarties sąlygų dalis.
 
@@ -400,7 +400,7 @@ Jei vyriausybinė teisėsaugos institucija, teismas ar kompetentingos jurisdikci
 
 **16. Šalių santykiai**
 
-Šalys, vykdydamos šią Sutartį, yra ir veiks kaip nepriklausomi rangovai. Nė viena Šalis neveiks ir nebus laikoma kitos Šalies atstove ar partnere jokiu tikslu, ir nė viena Šalis neturi teisės jokiu būdu įpareigoti kitos Šalies.
+Vykdydamos šią Sutartį, Šalys yra ir veiks kaip nepriklausomi rangovai. Nė viena Šalis neveiks ir nebus laikoma kitos Šalies atstove ar partnere jokiu tikslu, ir nė viena Šalis neturi teisės jokiu būdu įpareigoti kitos Šalies.
 
 **17. Užduotis**
 
@@ -429,7 +429,7 @@ Jei kuri nors šios Sutarties nuostata yra arba tampa negaliojančia arba neįpa
 22. **Vykdymas**
 
 Sutartis įsigalioja tik gavusi raštišką „Wink“ patvirtinimą apie Partnerio sutikimą. Registruodamasis ir prisijungdamas prie „Wink“ partnerių programos kaip partneris, Partneris sutinka, pripažįsta ir priima šios Sutarties sąlygas, įskaitant nuostatas, susijusias su šios Sutarties pakeitimais.\
-Partneris perskaitė šią sutartį ir sutiko su visomis sąlygomis. Partneris supranta, kad „Wink“ bet kuriuo metu (tiesiogiai ar netiesiogiai) gali prašyti klientų rekomendacijų sąlygomis, kurios gali skirtis nuo šioje sutartyje nurodytų, arba valdyti svetaines, kurios yra panašios į partnerio svetainę arba konkuruoja su ja. Partneris savarankiškai įvertino dalyvavimo programoje pageidautinumą ir nesiremia jokiais kitais pareiškimais, garantijomis ar pareiškimais, išskyrus tuos, kurie nurodyti šioje sutartyje. Partneris aiškiai sutinka, kad elektroninis šios sutarties ir jos sąlygų, įskaitant su pakeitimais susijusias sąlygas, priėmimas yra galiojantis, privalomas ir vykdytinas.
+Partneris perskaitė šią sutartį ir sutiko su visomis sąlygomis. Partneris supranta, kad „Wink“ bet kuriuo metu (tiesiogiai ar netiesiogiai) gali prašyti klientų rekomendacijų sąlygomis, kurios gali skirtis nuo šioje sutartyje nurodytų, arba valdyti svetaines, kurios yra panašios į partnerio svetainę arba konkuruoja su ja. Partneris savarankiškai įvertino dalyvavimo programoje pageidautinumą ir nesiremia jokiais kitais pareiškimais, garantijomis ar pareiškimais, išskyrus tuos, kurie nurodyti šioje sutartyje. Partneris aiškiai sutinka, kad elektroninis šios sutarties ir jos sąlygų, įskaitant tas, kurios susijusios su pakeitimais, priėmimas yra galiojantis, privalomas ir vykdytinas.
 
 23. **Pranešimai**
 

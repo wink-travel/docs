@@ -164,7 +164,7 @@ Hotellile makstav („netohind“) => 85,1 USD
 
 7.2 Iga majutusteenuse pakkuja vastutab maksude ülekandmise eest asjaomastele valitsusasutustele ja/või institutsioonidele.
 
-7.3 Majutusteenuse pakkuja vastutab Winkile kõigi kahjude, kulude, trahvide ja/või kahjustuste eest, mis tekivad täpsete ja ajakohaste maksude lisamata jätmise tagajärjel oma hindadesse ja/või Winki teavitamata jätmise või ebatäpse teavitamise tagajärjel kohaldatavatest maksudest, ning nõustub need hüvitama.
+7.3 Majutusteenuse pakkuja vastutab Winkile kõigi kahjude, kulude, trahvide ja/või kahjustuste eest ning nõustub need hüvitama, mis tulenevad täpsete ja ajakohaste maksude lisamata jätmisest oma hindadesse ja/või Winki teavitamata jätmisest või ebatäpsest teavitamisest kohaldatavate maksude kohta.
 
 7.4 Wink lisab oma partneritele tubade pakkumisel kõik kohaldatavad maksud (vastavalt käesoleva jaotise alapunktile a). Kõik käesoleva lepingu alusel tasumisele kuuluvad summad sisaldavad käibemaksu või muid kohaldatavaid makse või tollimakse (välja arvatud ettevõtte tulumaks või muud kasumilt makstavad maksud), kui ei ole teisiti märgitud. Kui mõni asjaomane käibemaksu eest vastutav asutus riigis, kus neid teenuseid osutatakse, määrab ja nõuab sisse käibemaksu, maksab Wink majutusteenuse pakkujalt kehtiva maksuarve saamisel majutusteenuse pakkujale käesoleva lepingu alusel tasumisele kuuluvates käibemaksu sisaldavates summades sisalduva käibemaksu summa.
 
@@ -190,7 +190,7 @@ Ainult käesoleva lepingu allkirjastaja on majutusteenuse pakkuja ainus volitatu
 
 10.2 Iga osalev majutusteenuse pakkuja peab tegema kaubanduslikult mõistlikke pingutusi, et tagada sisseregistreerimisel külalise esitatud isikut tõendava dokumendi vastavus broneeringuteabele. Kui broneering on potentsiaalselt petturlik broneering või kui Wink ei suuda külalise esitatud teatud andmeid kontrollida, teevad majutusteenuse pakkuja ja Wink koostööd potentsiaalselt petturliku broneeringu lahendamiseks, mis võib hõlmata sellise broneeringu tühistamist igal ajal. Majutusteenuse pakkuja kohustub Winkiga täielikult koostööd tegema ja esitama Winkile kogu teabe, mida ta võib potentsiaalselt petturliku broneeringuga seoses küsida.
 
-10.3 Pooled lepivad kokku, et kui Majutusteenuse Pakkuja ei täida käesolevat klauslit ja broneering osutub hiljem potentsiaalselt petturlikuks broneeringuks, ei vastuta Wink.
+10.3 Pooled lepivad kokku, et kui Majutusteenuse pakkuja ei täida käesolevat klauslit ja broneering osutub hiljem potentsiaalselt petturlikuks broneeringuks, ei vastuta Wink.
 
 **11. Kättesaamatus / Mittetäitmine**
 
@@ -198,7 +198,7 @@ Ainult käesoleva lepingu allkirjastaja on majutusteenuse pakkuja ainus volitatu
 
 * Enne külalise ümberpaigutamist viivitamatult Winki teavitama;
 * Külalise kolimine samaväärsesse või kõrgema kategooria/reitinguga teise majutuskohta samas piirkonnas samadel tingimustel, millega ta broneeris, ning sellise ümberpaigutamise kulud tasub majutusteenuse pakkuja ilma külalisele lisatasuta ja see hõlmab muu hulgas järgmist.
-* Kõik transpordi- ja muud ümberasumisega seotud kulud, mis tuleb asjaomase külalise eest tasuda.
+* Kõik transpordi- ja muud ümberasumisega seotud kulud asjaomase külalise nimel.
 * Lubamaks Winkil maha arvata kõik kättesaamatuse ja/või ümberpaigutamisega seotud otsesed kulud majutusteenuse pakkuja võlgnevustest juhul, kui Winkil tekib sellise kättesaamatuse ja/või ümberpaigutamisega seotud rahaline karistus, hüvitis või kulu.
 
 11.2 Juhul kui Majutusteenuse pakkuja ei täida käesoleva lepingu mis tahes tingimust, sealhulgas ruumide vastuvõetamatu seisukorra ja/või puudulike rajatiste ja teenuste korral, on Winkil õigus maksed peatada ja nõuda kokkulepitud broneerimistingimuste nõuetekohast täitmist. Majutusteenuse pakkuja kannab igal juhul kõik mõjutatud külalisele makstavad hüvitised, vabastades Winki vastutusest, mis tuleneb Majutusteenuse pakkuja käesoleva lepingu kohaste kohustuste puudulikust täitmisest.
@@ -209,7 +209,7 @@ Majutusteenuse pakkuja teavitab Wink Extraneti „Teadaannete rubriigi” kaudu 
 
 **13. Muutmine, kehtivusaeg ja lõpetamine**
 
-13.1 Muudatused. Välja arvatud juhul, kui kohaldatava õigusega on ette nähtud teisiti, võib Wink neid tingimusi igal ajal muuta. Kui me teeme käesolevates tingimustes olulisi muudatusi, avaldame muudetud tingimused Winki platvormil ja värskendame nende tingimuste ülaosas olevat kuupäeva „Viimati uuendatud“. Kui muudatus teid mõjutab, teavitame teid muudatustest ka vähemalt kolmkümmend (30) päeva enne nende jõustumise kuupäeva. Kui te ei lõpeta oma lepingut enne muudetud tingimuste jõustumise kuupäeva, loetakse teenuste edasine kasutamine muudetud tingimuste muudatustega nõustumiseks.
+13.1 Muudatused. Välja arvatud juhul, kui kohaldatava õigusega on ette nähtud teisiti, võib Wink neid tingimusi igal ajal muuta. Kui me teeme käesolevates tingimustes olulisi muudatusi, avaldame muudetud tingimused Winki platvormil ja värskendame nende tingimuste ülaosas kuupäeva „Viimati uuendatud“. Kui muudatus teid mõjutab, teavitame teid muudatustest vähemalt kolmkümmend (30) päeva enne nende jõustumise kuupäeva. Kui te ei lõpeta oma lepingut enne muudetud tingimuste jõustumise kuupäeva, loetakse teenuste edasine kasutamine muudetud tingimuste muudatustega nõustumiseks.
 
 13.2 Kehtivusaeg. Kui ei ole kokku lepitud teisiti, jõustub käesolev leping selle sõlmimise kuupäeval määramata ajaks.
 
@@ -267,7 +267,7 @@ Majutusteenuse pakkuja garanteerib ja kinnitab, et järgib täielikult järgmist
 
 16.1 Winkil on õigus lepingu kehtivusaja jooksul auditeerida majutusteenuse pakkuja ja/või osalevate hotellide asjakohaseid dokumente, kui see on mõistlikult vajalik, et teha kontrolle seoses (i) broneeringute täitmisega; (ii) kõigi Winki ja/või külaliste poolt laekunud maksetega; ja (iii) kõigi Winki ja/või külaliste poolt tasutud või maksmisele kuuluvate maksetega.
 
-16.2 Kumbki Pool kannab oma auditikulud, välja arvatud järgmistel juhtudel: kui audit näitab, et Majutusteenuse pakkuja ei täida mõnda oma käesolevast Lepingust tulenevat kohustust, siis tasub Majutusteenuse pakkuja auditi eest täielikult ja võtab vajalikud meetmed oma lepinguliste kohustuste täitmiseks, ilma et see piiraks Winki muid õigusi ja õiguskaitsevahendeid.
+16.2 Kumbki Pool kannab oma auditikulud, välja arvatud järgmistel juhtudel: kui audit näitab, et Majutusteenuse pakkuja ei täida mõnda oma käesolevast Lepingust tulenevat kohustust, siis tasub Majutusteenuse pakkuja auditi eest täies ulatuses ja võtab vajalikud meetmed oma lepinguliste kohustuste täitmiseks, ilma et see piiraks Winki muid õigusi ja õiguskaitsevahendeid.
 
 **17. Kindlustus**
 
@@ -289,7 +289,7 @@ Majutusteenuse pakkuja garanteerib, et tema parimate teadmiste kohaselt ei ole e
 
 19.2 Konfidentsiaalse teabe kaitsmine ja turvamine. Mõlemad pooled nõustuvad järgmisega: (a) kogu konfidentsiaalne teave jääb avaldava poole ainuomandiks ja vastuvõttev pool ei kasuta konfidentsiaalset teavet muul otstarbel kui käesoleva lepingu edendamiseks; (b) ta säilitab konfidentsiaalse teabe konfidentsiaalsuse ja salastatuse ning kasutab selleks ettevaatusabinõusid, et panna oma töötajad, ametnikud, esindajad, lepingupooled ja agendid („Lubatud Isikud“) seda säilitama; (c) ta avaldab konfidentsiaalset teavet ainult neile lubatud isikutele, kes peavad seda teavet käesoleva lepingu edendamiseks teadma; (d) ta ei (i) kopeeri, avalda, edasta, reprodutseeri, avalikusta, avalikusta ega tee konfidentsiaalset teavet kättesaadavaks ühelegi kolmandale isikule või (ii) kasuta ega säilita seda kaitsmata otsingusüsteemis või andmebaasis (muul viisil kui käesoleva lepingu tingimustel) ja (e) ta tagastab või hävitab kõik konfidentsiaalse teabe (nii kõva- kui ka pehmed koopiad) teise poole kirjalikul taotlusel. Juhul kui üks Pool töötleb isikuandmeid teise Poole nimel käesoleva Lepingu alusel teenuste osutamise raames, reguleerivad Pooled sellist töötlemist andmetöötluslepinguga (Andmetöötlusleping) ja see moodustab osa käesoleva Lepingu tingimustest.
 
-19.3 Lubatud avalikustamine. Eelnevast hoolimata ei hõlma konfidentsiaalne teave teavet ulatuses, mis (i) on või saab avalikuks omandiks vastuvõtva poole teo või tegevusetuse tõttu, (ii) oli vastuvõtva poole valduses enne käesoleva lepingu kuupäeva, (iii) avaldatakse vastuvõtvale poolele kolmanda isiku poolt, kellel puudub selle teabe suhtes konfidentsiaalsuskohustus, või (iv) on avalikustamine nõutav seaduse, kohtumääruse, kohtukutse või valitsusasutuse volituste kohaselt. Winkil on õigus avaldada käesolev leping konfidentsiaalselt oma majutusteenuse pakkujatele.
+19.3 Lubatud avalikustamine. Eelnevast hoolimata ei hõlma konfidentsiaalne teave teavet ulatuses, mis (i) on või saab avalikuks omandiks vastuvõtva poole teo või tegevusetuse tõttu, (ii) oli vastuvõtva poole valduses enne käesoleva lepingu kuupäeva, (iii) avaldatakse vastuvõtvale poolele kolmanda isiku poolt, kellel puudub selle suhtes konfidentsiaalsuskohustus, või (iv) on avalikustamine nõutav seaduse, kohtumääruse, kohtukutse või valitsusasutuse volituste kohaselt. Winkil on õigus avaldada käesolev leping konfidentsiaalselt oma majutusteenuse pakkujatele.
 
 19.4 Kliendiandmed. Pooled peavad tegema äriliselt mõistlikke pingutusi, et kaitsta Kliendiandmete konfidentsiaalsust ja privaatsust ning kaitsta neid volitamata kasutamise või avalikustamise eest. Pooled nõustuvad järgima isikuandmete töötlemist ja privaatsuse kaitset käsitlevaid kehtivaid seadusi. Pooled peavad alati kasutama mõistlikke ja sobivaid turvameetmeid, et vältida Kliendiandmete rikkumist ja volitamata juurdepääsu neile. Selliste meetmete hulka kuuluvad muu hulgas andmete krüpteerimine ja kanalite krüpteerimine. Vajaduse korral peab Majutusteenuse pakkuja Winki teavitama igast turvarikkumisest nii kiiresti kui võimalik (mitte hiljem kui 1 päev pärast rikkumise avastamist). Mõlemal Poolel peab olema klientidele kättesaadav privaatsuspoliitika, milles kirjeldatakse, kuidas ta Kliendiandmeid kaitseb ja kasutab. Pooled võivad kasutada oma õigust taotleda juurdepääsu oma isikuandmetele, nende andmete parandamist või kustutamist ning oma õigust esitada vastuväiteid, andmete ülekandmise õigust ja nende töötlemise piiramist, esitades teisele Poolele kirjaliku taotluse käesoleva lepingu pealkirjas näidatud aadressidele, lisaks nõude esitamisele kohalikule andmekaitseasutusele.
 
@@ -321,7 +321,7 @@ Majutusteenuse pakkuja garanteerib, et tema parimate teadmiste kohaselt ei ole e
 
 22.3 Majutuspakkuja kinnitab ja garanteerib, et tal on kõik vajalikud õigused, litsentsid, nõusolekud ja volitused, mis on vajalikud: (i) Winkile Sisu pakkumiseks; (ii) Majutuspakkuja annab Winkile käesolevaga mitte-eksklusiivse, litsentsivaba, tagasivõtmatu, ülemaailmse ja kolmandate osapoolte turundus- ja/või levituspartneritele edasilitsentseeritava õiguse kasutada, muuta, kuvada, avaldada ja kohandada Majutuspakkuja Sisu, nime, logosid, kaubamärke ja mis tahes muud Majutuspakkuja intellektuaalomandit ja tööstusomandit („IPÕHID“) käesoleva Lepingu täitmise eesmärgil; (iii) Majutuspakkuja garanteerib Winkile ja tema klientidele, et sellised IPÕHID ei riku kolmandate isikute õigusi; ja (iv) Majutuspakkuja vastutab Winkile mis tahes viisil edastatud laimava või ebamoraalse teabe, oma IPÕHIDE õigsuse ja täpsuse eest.
 
-22.4 Majutusteenuse pakkuja on kohustatud käesoleva lepingu lõppemise ajal ja pärast seda hüvitama Winkile, tema majutusteenuse pakkujatele ja/või partneritele kõik kahjud ja hoidma neid täielikult hüvitatuna ning kaitsma neid nõudmisel kõigi kahjude eest, mis on tekkinud Winkile, tema majutusteenuse pakkujatele ja/või partneritele, mis on neile mõistetud või mille hüvitamiseks on kokku lepitud, ja mis tulenevad mis tahes intellektuaalomandi õiguste nõuetest.
+22.4 Majutusteenuse pakkuja on kohustatud käesoleva lepingu lõppemise ajal ja pärast seda hüvitama Winkile, tema majutusteenuse pakkujatele ja/või partneritele kõik kahjud ja hoidma neid täielikult hüvitatuna ning kaitsma neid nõudmisel kõigi kahjude eest, mis on tekkinud Winkile, tema majutusteenuse pakkujatele ja/või partneritele, mille nad on neile välja mõistenud või mille hüvitamiseks on kokku lepitud ja mis tulenevad mis tahes intellektuaalomandi õiguste nõuetest.
 
 22.5 Majutusteenuse pakkuja on kohustatud: (i) esitama Winkile Winki nõutud viisil värskendusi intellektuaalomandi nõude edenemise kohta, sealhulgas tõendeid selle kohta, et nõude esitaja on intellektuaalomandi nõude lahendanud või tagasi lükanud, niipea kui mõistlikult võimalik; (ii) Juhul, kui majutusteenuse pakkuja ei täida käesolevat klauslit või kui Wink ei ole intellektuaalomandi nõude edenemisega täielikult rahul või edasiste kahjude vältimiseks võtab Wink intellektuaalomandi nõude viivitamatu kontrolli alla majutusteenuse pakkuja kulul. Winkil on õigus tasaarvestada kõik intellektuaalomandi nõude tagajärjel makstud kulud ja hüvitised majutusteenuse pakkuja poolt võlgnetavate või tasumisele kuuluvate praeguste, tingimuslike ja/või tulevaste summadega.
 
@@ -343,7 +343,7 @@ Majutusteenuse pakkuja garanteerib, et tema parimate teadmiste kohaselt ei ole e
 
 25.1 Majutusteenuse pakkuja garanteerib, et temal, käesolevale lepingule allakirjutanul ja/või mis tahes muul isikul, kes esitab Winkile teavet (sealhulgas kahtluse vältimiseks kõik maksetingimused) seoses käesoleva lepinguga või selle alusel, on õigus, teovõime ja vajalik volitus allkirjastada käesolev leping iga osaleva hotelli nimel ning et sellisel isikul on õigus, teovõime ja vajalik volitus siduda majutusteenuse pakkujat ja iga osalevat hotelli käesoleva lepinguga ning et ta järgib ja täidab kogu lepingu kehtivusaja jooksul käesoleva lepingu kohaseid kohustusi ning tagab, et iga osalev hotell järgib ja täidab neid.
 
-25.2 Majutusteenuse pakkuja nõustub selgesõnaliselt, et käesoleva lepingu ja selle tingimuste, sealhulgas muudatustega seotud tingimuste elektrooniline aktsepteerimine on kehtiv, siduv ja jõustatav.
+25.2 Majutusteenuse pakkuja nõustub selgesõnaliselt, et käesoleva lepingu ja selle tingimuste, sealhulgas muudatustega seotud tingimuste elektrooniline aktsepteerimine on kehtiv, siduv ja täitmisele pööratav.
 
 **26. Keel**
 
@@ -359,7 +359,7 @@ Kui valitsuse õiguskaitseasutus, kohus või pädeva jurisdiktsiooniga tribunal 
 
 **29. Poolte suhted**
 
-Pooled on käesoleva lepingu täitmisel sõltumatud töövõtjad ja tegutsevad ka iseseisvate töövõtjatena. Kumbki pool ei tegutse ega loeta teise poole esindajaks ega partneriks mingil eesmärgil ega ole kummalgi poolel õigust teist poolt mingil moel siduda.
+Pooled on käesoleva lepingu täitmisel sõltumatud töövõtjad ja tegutsevad nendena. Kumbki pool ei tegutse ega loeta teise poole esindajaks ega partneriks mingil eesmärgil ega ole kummalgi poolel õigust teist poolt mingil moel siduda.
 
 **30. Ülesanne**
 

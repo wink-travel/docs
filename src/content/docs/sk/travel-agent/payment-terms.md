@@ -48,7 +48,7 @@ V zmysle hlavnej zmluvy „OBCHODNÉ PODMIENKY CESTOVNÝCH AGENTÚR“ („Hlavn
 
 2.1**Inkaso platieb:**&#x43;estovná kancelária je zodpovedná za inkaso platby od hosťa v čase rezervácie. Tým sa zabezpečí okamžité spracovanie a finančná prehľadnosť.
 
-2.2**Zrážka poplatku:**&#x43;estovná kancelária najprv odpočíta poplatok poskytovateľa služieb a potom jeho províziu za titulky podľa nižšie uvedeného príkladu:
+2.2**Zrážka poplatku:**&#x43;estovná kancelária najprv odpočíta poplatok poskytovateľa služieb a potom svoju províziu za titulky podľa nižšie uvedeného príkladu:
 
 * 1,5% rezervačný poplatok pre Wink.
 * Provízia cestovnej kancelárie uvedená v samostatnej zmluve (v tomto príklade použijeme 10 %)

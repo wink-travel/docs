@@ -96,5 +96,5 @@ Wink es reserva el dret de modificar aquestes Condicions de pagament en qualsevo
 **8. Llei aplicable i jurisdicció**\
 Aquestes Condicions de pagament es regeixen per les lleis de Singapur. Qualsevol controvèrsia que sorgeixi d'aquestes condicions o que hi estigui relacionada es resoldrà als tribunals de Singapur.
 
-Aquestes Condicions de pagament formen part integrant i amplien les disposicions de pagament establertes a l'Acord principal, "TERMES I CONDICIONS AGENTS DE VIATGES\_220924", entre Wink i l'Agent de viatges.
+Aquestes Condicions de pagament formen part de les disposicions de pagament establertes a l'Acord principal "TERMES I CONDICIONS AGENTS DE VIATGES\_220924" entre Wink i l'Agent de viatges i les amplien.
 

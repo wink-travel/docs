@@ -12,7 +12,7 @@ Zadnje ažuriranje 12.06.2024.
 
 **UVJETI PLAĆANJA ZA PARTNERSE**
 
-Ovi Uvjeti plaćanja usluge („**Uvjeti plaćanja**„“) su obvezujući pravni ugovor između vas i TripPaya (u daljnjem tekst&#x75;**"Posrednik za plaćanje"**), podružnica u potpunom vlasništvu Traveliko Singapore Pte. Ltd., koja uređuje Platne usluge (definirane u nastavku) provedene putem ili u vezi s Wink platformom (u daljnjem tekstu:**"Mig"**). Kada se u ovim Uvjetima plaćanja spominje „**Posrednik plaćanja**," "**mi**," "**nas**" ili "**naše**„“, odnosi se na tvrtku TripPay s kojom ugovarate usluge plaćanja.
+Ovi Uvjeti plaćanja usluge („**Uvjeti plaćanja**„“) su obvezujući pravni ugovor između vas i TripPaya (u daljnjem tekst&#x75;**"Posrednik za plaćanje"**), podružnica u potpunom vlasništvu Traveliko Singapore Pte. Ltd., koja uređuje Usluge plaćanja (definirane u nastavku) provedene putem ili u vezi s Wink platformom (u daljnjem tekstu:**"Mig"**). Kada se u ovim Uvjetima plaćanja spominje „**Posrednik plaćanja**," "**mi**," "**nas**" ili "**naše**„“, odnosi se na tvrtku TripPay s kojom ugovarate usluge plaćanja.
 
 Posrednik plaćanja pruža usluge plaćanja partnerima koji prodaju inventar pružatelja smještaja putem Winka. Ove usluge plaćanja mogu uključivati ​​(ako su dostupne) sljedeće (zajednički nazvane „**Platne usluge**"):
 
@@ -23,7 +23,7 @@ Posrednik plaćanja pruža usluge plaćanja partnerima koji prodaju inventar pru
 
 Da biste koristili Usluge plaćanja, morate imati najmanje 18 godina, morate imati Wink račun u dobrom stanju u skladu s Uvjetima za posrednike plaćanja te morate svoje podatke o plaćanju i osobne podatke održavati točnima i potpunima.
 
-Ugovor je pročitao i Partner je prihvatio sve Uvjete i odredbe. Partner izričito pristaje da je elektroničko prihvaćanje ovog Ugovora i njegovih Uvjeta i odredbi, uključujući one koji se odnose na izmjene, važeće, obvezujuće i provedivo.
+Ugovor je pročitao i Partner je prihvatio sve Uvjete i odredbe. Partner izričito pristaje da je elektroničko prihvaćanje ovog Ugovora i njegovih Uvjeta i odredbi, uključujući one koji se odnose na izmjene, valjano, obvezujuće i provedivo.
 
 Ugovorni subjekt pružat će usluge plaćanja ovisno o zemlji u kojoj se nalazi Povezani subjekt, kako je navedeno u nastavku:
 
@@ -107,7 +107,7 @@ Povezano društvo jamči da, koliko je njemu poznato, ni ono ni njegove Povezane
 
 **6. Viša sila**
 
-Posrednik plaćanja neće biti odgovoran za bilo kakvo kašnjenje ili neispunjavanje bilo koje obveze prema ovim Uvjetima plaćanja koji proizlaze iz uzroka izvan razumne kontrole Winka ili Posrednika plaćanja, uključujući, ali ne ograničavajući se na, višu silu, prirodne katastrofe, rat, terorizam, nerede, embargo, djela civilnih ili vojnih vlasti, požar, poplave, nesreće, pandemije, epidemije ili bolesti, štrajkove ili nestašice prijevoznih sredstava, goriva, energije, radne snage ili materijala („**Događaj više sile**").
+Posrednik plaćanja neće biti odgovoran za bilo kakvo kašnjenje ili neispunjavanje bilo koje obveze prema ovim Uvjetima plaćanja koji proizlaze iz uzroka izvan razumne kontrole Winka ili Posrednika plaćanja, uključujući, ali ne ograničavajući se na, višu silu, prirodne katastrofe, rat, terorizam, nerede, embargo, djelovanje civilnih ili vojnih vlasti, požar, poplave, nesreće, pandemije, epidemije ili bolesti, štrajkove ili nestašice prijevoznih sredstava, goriva, energije, radne snage ili materijala („**Događaj više sile**").
 
 **7. Odricanje od odgovornosti**
 
@@ -133,7 +133,7 @@ U najvećoj mjeri dopuštenoj važećim zakonom, slažete se osloboditi, braniti
 
 **10. Izmjena, rok, raskid i druge mjere**
 
-**10.1 Izmjena**Osim ako nije drugačije propisano važećim zakonom, Posrednik plaćanja može u bilo kojem trenutku izmijeniti ove Uvjete plaćanja. Ako napravimo značajne promjene u ovim Uvjetima plaćanja, objavit ćemo revidirane Uvjete plaćanja na Wink platformi i ažurirati datum „Zadnje ažuriranje“ na vrhu ovih Uvjeta plaćanja. Ako vas izmjena utječe, također ćemo vas obavijestiti o izmjenama najmanje trideset (30) dana prije datuma stupanja na snagu. Ako ne raskinete svoj ugovor prije datuma stupanja na snagu revidiranih Uvjeta plaćanja, vaše daljnje korištenje Usluga plaćanja smatrat će se prihvaćanjem svih promjena revidiranih Uvjeta plaćanja.
+**10.1 Izmjena**Osim ako nije drugačije propisano važećim zakonom, Posrednik plaćanja može izmijeniti ove Uvjete plaćanja u bilo kojem trenutku. Ako napravimo značajne promjene u ovim Uvjetima plaćanja, objavit ćemo revidirane Uvjete plaćanja na Wink platformi i ažurirati datum „Zadnje ažuriranje“ na vrhu ovih Uvjeta plaćanja. Ako vas izmjena utječe, također ćemo vas obavijestiti o izmjenama najmanje trideset (30) dana prije datuma stupanja na snagu. Ako ne raskinete svoj ugovor prije datuma stupanja na snagu revidiranih Uvjeta plaćanja, vaše daljnje korištenje Usluga plaćanja smatrat će se prihvaćanjem svih promjena revidiranih Uvjeta plaćanja.
 
 **10.2 Pojam**Ovaj ugovor između vas i Posrednika plaćanja, koji je odražen u ovim Uvjetima plaćanja, stupa na snagu kada kreirate Wink račun ili koristite Usluge plaćanja i ostaje na snazi ​​sve dok vi ili mi ne raskinemo ovaj ugovor u skladu s Odjeljkom 10.3.
 
@@ -141,7 +141,7 @@ U najvećoj mjeri dopuštenoj važećim zakonom, slažete se osloboditi, braniti
 
 **10.4 Suspenzija i druge mjere**Posrednik plaćanja može ograničiti ili privremeno ili trajno obustaviti vaše korištenje ili pristup Uslugama plaćanja (i) radi usklađivanja s važećim zakonom ili nalogom ili zahtjevom suda, tijela za provedbu zakona ili druge upravne agencije ili vladinog tijela, (ii) ako ste prekršili ove Uvjete plaćanja,[Uvjeti](/studio/terms-of-service), važećih zakona, propisa ili prava trećih strana, (iii) ako ste dali netočne, lažne, zastarjele ili nepotpune podatke u vezi s potrebnim podacima o isplati, (iv) za bilo koje iznose koje dugujete prema ovim Uvjetima plaćanja koji su dospjeli ili u neizvršenju, ili (v) ako Posrednik plaćanja u dobroj vjeri smatra da je takva radnja razumno potrebna za zaštitu osobne sigurnosti ili imovine Winka, njegovog Pružatelja smještaja, Posrednika plaćanja ili trećih strana ili za sprječavanje prijevare ili drugih nezakonitih aktivnosti.
 
-**10.5 Žalba**Ako Posrednik plaćanja poduzme bilo koju od mjera opisanih u odjeljcima 10.3 i 10.4, možete se žaliti na takvu odluku kontaktiranjem [korisnička služba](mailto:support@wink.travel).
+**10.5 Žalba**Ako Posrednik plaćanja poduzme bilo koju od mjera opisanih u Odjeljcima 10.3 i 10.4, možete se žaliti na takvu odluku kontaktiranjem [korisnička služba](mailto:support@wink.travel).
 
 **10.6 Učinak raskida**Ako otkažete svoj Wink račun kao pridruženi član ili ako Posrednik plaćanja poduzme bilo koju od gore opisanih mjera, Posrednik plaćanja može isplatiti puni povrat novca svim gostima s potvrđenom rezervacijom/ama, a vi nećete imati pravo na nikakvu naknadu za rezervacije na čekanju ili potvrđene rezervacije koje su otkazane.
 

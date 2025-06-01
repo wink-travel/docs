@@ -225,7 +225,7 @@ Bu şartlar aşağıdakiler altında mevcuttur:[Ortak Portalı > Hizmet Şartlar
 
 **12. Mücbir Sebep**
 
-12.1**Tanım**: Taraflardan hiçbiri, bu Sözleşme kapsamındaki yükümlülüklerini yerine getirmede herhangi bir başarısızlık veya gecikme olması durumunda, bu başarısızlık veya gecikme bir Mücbir Sebep Olayı nedeniyle meydana gelirse, sorumlu tutulamaz. "Mücbir Sebep Olayı", doğal afetler (deprem, sel veya kasırga gibi), savaş, terörizm, iç karışıklık, pandemi, hükümet eylemleri veya makul bir şekilde öngörülemeyecek veya önlenemeyecek herhangi bir olay dahil ancak bunlarla sınırlı olmamak üzere, bir tarafın makul kontrolü dışındaki herhangi bir olay anlamına gelir.
+12.1**Tanım**: Taraflardan hiçbiri, bu Sözleşme kapsamındaki yükümlülüklerini yerine getirmede herhangi bir başarısızlık veya gecikmeden, söz konusu başarısızlık veya gecikme bir Mücbir Sebep Olayı nedeniyle meydana gelirse sorumlu tutulamaz. "Mücbir Sebep Olayı", doğal afetler (deprem, sel veya kasırga gibi), savaş, terörizm, iç karışıklık, pandemi, hükümet eylemleri veya makul bir şekilde öngörülemeyecek veya önlenemeyecek herhangi bir olay dahil ancak bunlarla sınırlı olmamak üzere, bir tarafın makul kontrolü dışındaki herhangi bir olay anlamına gelir.
 
 12.2**Bildiri**: Etkilenen taraf, bir Mücbir Sebep Olayının meydana gelmesinden sonra makul ölçüde mümkün olan en kısa sürede diğer tarafa yazılı bildirimde bulunmalıdır. Bu bildirim, Mücbir Sebep Olayının bir açıklamasını, beklenen süresini ve etkilenen yükümlülükleri içermelidir.
 

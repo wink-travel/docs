@@ -9,10 +9,10 @@ Há muitos bons motivos para se juntar ao Wink.
 
 Uma conta de utilizador permite-lhe:
 
-* Crie e gerencie propriedades e venda onde quer que estejam potenciais viajantes.
+* Crie e gerencie propriedades e venda onde quer que os potenciais viajantes estejam.
 * Crie e gerencie contas de afiliados e ganhe uma comissão sobre as reservas que facilitar.
 * Crie e gerencie contas de agentes de viagens e reserve em nome dos seus clientes.
-* Obtenha o seu url personalizado do WinkLinks (*por exemplo https://i.trvl.as/bob*) e utilize-o no URL da sua biografia do IG.
+* Obtenha o seu URL personalizado do WinkLinks (*por exemplo https://i.trvl.as/bob*) e utilize-o no URL da sua biografia do IG.
 * Reserve as suas próximas férias e poupe.
 * Faça tudo isto como developer integrando-se com o Wink.
 * Todos os nossos recursos estão disponíveis para si **LIVRE**.

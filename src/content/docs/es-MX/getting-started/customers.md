@@ -26,7 +26,7 @@ Las empresas de gestión hotelera y de destinos pueden gestionar sus carteras de
 
 ## Influencers
 
-Los influencers usan Wink para monetizar mejor a su audiencia. Lo hacen asociándose con hoteles, creando ofertas personalizadas y aprovechando las herramientas de Wink, optimizadas para redes sociales, y su potente análisis para rastrear qué productos se venden mejor.
+Los influencers usan Wink para monetizar mejor a su audiencia. Lo hacen asociándose con hoteles, creando ofertas personalizadas y aprovechando las herramientas de Wink, optimizadas para redes sociales, y su potente análisis para identificar los productos con mayor venta.
 
 ## agentes de viajes
 

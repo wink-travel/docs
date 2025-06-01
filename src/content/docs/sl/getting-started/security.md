@@ -24,7 +24,7 @@ Domene v obsegu:\
 
 ## Pogostost in urnik testiranja
 
-Naši testi penetracije se izvajajo letno, dodatni testi pa se načrtujejo po potrebi po večjih posodobitvah aplikacije ali infrastrukture. Ta redna kadenca testiranja zagotavlja, da smo korak pred razvijajočimi se grožnjami in ohranjamo varno okolje.
+Naši testi penetracije se izvajajo letno, dodatni testi pa so načrtovani po potrebi po večjih posodobitvah aplikacije ali infrastrukture. Ta redna kadenca testiranja zagotavlja, da smo korak pred razvijajočimi se grožnjami in ohranjamo varno okolje.
 
 ## Metodologije testiranja
 

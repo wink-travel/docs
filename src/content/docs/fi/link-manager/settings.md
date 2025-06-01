@@ -10,7 +10,7 @@ Voit hallita WinkLinks-asetuksiasi siirtymällä osoitteeseen`WinkLinks`päänav
 
 Näin voit määrittää WinkLinks-toimintasi`Settings`:
 
-* **Älykäs**Ottamalla käyttöön älykkyyden yritämme hakea`rich`sisältöä saatavilla sivustoilta, kuten`Wink`,`Spotify`,`Instagram`,`Facebook`,`YouTube`,`X (formerly Twitter)`ja muut.*esim. jos jaat IG-julkaisun WinkLinksissä, julkaisu näytetään sellaisena kuin se näkyy IG:ssä, tykkäyksineen, kommentteineen ja tapana olla vuorovaikutuksessa julkaisun kanssa.*
+* **Älykäs**Ottamalla käyttöön älykkyyden, yritämme hakea`rich`sisältöä saatavilla sivustoilta, kuten`Wink`,`Spotify`,`Instagram`,`Facebook`,`YouTube`,`X (formerly Twitter)`ja muut.*esim. jos jaat IG-julkaisun WinkLinksissä, julkaisu näytetään sellaisena kuin se näkyy IG:ssä, tykkäyksineen, kommentteineen ja tapana olla vuorovaikutuksessa julkaisun kanssa.*
 * **Alkunäyttö**Hallitse, miten yleisösi on ensimmäisen kerran vuorovaikutuksessa sivustosi kanssa ja näkee sisältösi. Käytettävissäsi on kolme vaihtoehtoa:
   * `Column-based`ulkoasu. Tämä on ensisijainen ulkoasumme, ja jos et näytä liikaa sisältöä, se näyttää hyvältä sivullasi. Se voi kuitenkin muuttua`heavy`jos jaat paljon monipuolista sisältöä.
   * `Row-based`suunnittelu. Tämä on yksi tapa tehdä sisällöstäsi hieman kevyempää selainten luettavaksi, mutta suosittelemme, että sisällössäsi on suunnilleen sama määrä tekstiä, jotta kortit tasaantuvat paremmin.

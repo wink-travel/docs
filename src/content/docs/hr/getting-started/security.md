@@ -24,7 +24,7 @@ Domene u opsegu:\
 
 ## Učestalost i raspored testiranja
 
-Naši testovi penetracije provode se jednom godišnje, a dodatni testovi se zakazuju po potrebi nakon značajnih ažuriranja aplikacije ili infrastrukture. Ova redovita ritam testiranja osigurava da budemo korak ispred prijetnji koje se razvijaju i da održavamo sigurno okruženje.
+Naši testovi penetracije provode se svake godine, a dodatni testovi se zakazuju po potrebi nakon značajnih ažuriranja aplikacije ili infrastrukture. Ova redovita ritam testiranja osigurava da budemo korak ispred prijetnji koje se razvijaju i da održavamo sigurno okruženje.
 
 ## Metodologije testiranja
 

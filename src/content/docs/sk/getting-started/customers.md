@@ -22,7 +22,7 @@ Značky a reťazce majú mierne odlišné potreby ako jednotlivé nehnuteľnosti
 
 ## Správcovské spoločnosti
 
-Spoločnosti spravujúce pohostinstvo a destinácie môžu spravovať svoje portfóliá nehnuteľností v mene majiteľov. Existuje jednoznačná výhoda v tom, že predaj online segmentu prenecháte agentúram zameraným na online marketing a digitálne uvedomelým firmám, zatiaľ čo hotely sa môžu sústrediť na riadenie spokojnosti zákazníkov po príchode do priestorov.
+Spoločnosti spravujúce pohostinstvo a destinácie môžu spravovať svoje portfóliá nehnuteľností v mene majiteľov. Existuje jednoznačná výhoda v tom, že prenecháte predaj online segmentu agentúram zameraným na online marketing a digitálne uvedomelým firmám, zatiaľ čo hotely sa môžu sústrediť na riadenie spokojnosti zákazníkov po príchode do priestorov.
 
 ## Influenceri
 

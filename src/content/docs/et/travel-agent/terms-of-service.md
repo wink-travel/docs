@@ -12,7 +12,7 @@ Viimati uuendatud 30.10.2024
 Allolevad teenusetingimused kehtivad reisibüroodele, kes soovivad ise raha hankida ja välja maksta.
 Seda saab teha ainult meie API kaudu ja ainult reisibüroode poolt, kes on registreerumisprotsessi käigus sellest soovist teatanud.
 
-Kõik reisibürood saavad endiselt broneerida meie reisibüroo portaali kaudu, kasutades Winki makseväravat oma või reisija krediitkaardiga. Seega peavad kõik reisibürood nõustuma ka teenuse osutamise tingimustega, mille kohaselt Winki maksevärav on registreeritud kaupmees.
+Kõik reisibürood saavad endiselt broneerida meie reisibüroo portaali kaudu, kasutades Winki makseväravat oma või reisija krediitkaardiga. Seetõttu peavad kõik reisibürood nõustuma ka teenuse osutamise tingimustega, mille kohaselt Winki maksevärav on registreeritud kaupmees.
 
 Need tingimused on saadaval all[Partnerlusportaal > Kasutustingimused](/studio/terms-of-service).
 :::
@@ -72,7 +72,7 @@ Need tingimused on saadaval all[Partnerlusportaal > Kasutustingimused](/studio/t
 
 * **"Eraldi kokkulepe"**&#x74;ähendab reisibüroo ja majutusteenuse pakkuja vahelist sõltumatut lepingut, milles on täpsustatud konkreetsed maksetingimused, sealhulgas vahendustasu ja maksegraafik.
 
-* **"Teenused"**&#x74;ähendab teenusepakkuja poolt reisibüroole käesoleva lepingu alusel osutatavaid teenuseid, sealhulgas, kuid mitte ainult, juurdepääsu platvormile, broneerimise hõlbustamist ja kliendituge.
+* **"Teenused"**&#x74;ähendab teenuseid, mida teenusepakkuja osutab reisibüroole käesoleva lepingu alusel, sealhulgas, kuid mitte ainult, juurdepääsu platvormile, broneerimise vahendamist ja kliendituge.
 
 * **„Teenusepakkuja”**&#x74;ähendab Winki,**TRAVELIKO SINGAPORE PTE. LTD**registreeritud Singapuris.
 
@@ -131,7 +131,7 @@ Need tingimused on saadaval all[Partnerlusportaal > Kasutustingimused](/studio/t
 
 6.3**Tagasimaksed ja krediidid:**
 
-* Juhul kui teenust ei osutata või see tühistatakse reisibüroost mitteolenevatel asjaoludel, tagastab Wink reisibüroole raha või kannab selle kontole krediteeringu 30 päeva jooksul alates tühistamisteate kättesaamisest, eeldusel, et teenustasu on juba tasutud.
+* Juhul kui teenust ei osutata või see tühistatakse reisibüroost mitteolenevatel asjaoludel, tagastab Wink reisibüroole raha või kannab selle krediteerimata 30 päeva jooksul alates tühistamisteate kättesaamisest, eeldusel, et teenustasu on juba tasutud.
 
 6.4**Valuuta ja maksud:**
 
@@ -149,7 +149,7 @@ Need tingimused on saadaval all[Partnerlusportaal > Kasutustingimused](/studio/t
 
 7.1**Seaduste ja määruste järgimine:**
 
-* Reisibüroo peab oma äritegevuses järgima kõiki kohaldatavaid kohalikke, riiklikke ja rahvusvahelisi seadusi, määrusi ja valdkonna standardeid, sealhulgas, kuid mitte ainult, tarbijakaitse, andmekaitse ja rahapesu tõkestamise alaseid seadusi, määrusi ja valdkonna standardeid.
+* Reisibüroo peab oma äritegevuses järgima kõiki kohaldatavaid kohalikke, riiklikke ja rahvusvahelisi seadusi, määrusi ja valdkonna standardeid, sealhulgas, kuid mitte ainult, tarbijakaitse, andmekaitse ja rahapesu tõkestamisega seotud seadusi, määrusi ja valdkonna standardeid.
 
 7.2**Teenuste täpne esitus:**
 
@@ -185,7 +185,7 @@ Need tingimused on saadaval all[Partnerlusportaal > Kasutustingimused](/studio/t
 
 7.10**Hüvitis:**
 
-* Reisibüroo hüvitab teenusepakkujale kõik nõuded, kahjud, kohustused ja kulud, mis tulenevad reisibüroo poolt käesoleva lepingu rikkumisest või on sellega seotud, sealhulgas, kuid mitte ainult, kohaldatavate seaduste eiramine, teenuste valeandmete esitamine või külaliste või majutusteenuse pakkujate ees olevate kohustuste mittetäitmine.
+* Reisibüroo hüvitab teenusepakkujale kõik nõuded, kahjud, kohustused ja kulud, mis tulenevad reisibüroo poolt käesoleva lepingu rikkumisest või on sellega seotud, sealhulgas, kuid mitte ainult, kohaldatavate seaduste eiramine, teenuste vale esitamine või külaliste või majutusteenuse pakkujate ees oma kohustuste mittetäitmine.
 
 **8. Komisjonitasud ja lõivud**
 
@@ -229,8 +229,8 @@ Need tingimused on saadaval all[Partnerlusportaal > Kasutustingimused](/studio/t
 
 12.3**Mõju teenustele**:
 
-* Teenuste peatamine: Kui vääramatu jõu sündmus mõjutab teie ettevõtte võimet osutada reisibüroole teenuseid, peatatakse need teenused sündmuse ajaks ilma trahvita. Samuti peatatakse selleks ajaks reisibüroo maksekohustused, mis on seotud mõjutatud teenustega.
-* Reisibüroo kohustused: Reisibüroo ei vastuta teie ettevõtte ees võetud kohustuste eest, mida vääramatu jõu tõttu ei ole võimalik täita. Reisibüroo peab aga jätkama kõigi muude kohustuste täitmist, mida see sündmus otseselt ei mõjuta.
+* Teenuste peatamine: Kui vääramatu jõu sündmus mõjutab teie ettevõtte võimet reisibüroole teenuseid osutada, peatatakse need teenused sündmuse ajaks ilma trahvita. Samuti peatatakse selleks ajaks reisibüroo maksekohustused, mis on seotud mõjutatud teenustega.
+* Reisibüroo kohustused: Reisibüroo ei vastuta teie ettevõtte ees võetud kohustuste eest, mida vääramatu jõu asjaolude tõttu ei ole võimalik täita. Reisibüroo peab aga jätkama kõigi muude kohustuste täitmist, mida see sündmus otseselt ei mõjuta.
 
 12.4**Kestus ja lõpetamine**Kui vääramatu jõu sündmus kestab kauem kui kuuskümmend (60) päeva, võib kumbki pool käesoleva lepingu lõpetada, teatades sellest teisele poolele kirjalikult. Sellise lõpetamise korral ei ole kummalgi poolel teise poole ees mingit vastutust, välja arvatud kohustuste eest, mis tekkisid enne vääramatu jõu sündmust.
 

@@ -8,7 +8,7 @@ sidebar:
 ---
 [Extranet Wink](https://extranet.wink.travel)è il nostro portale immobiliare. È pensato per hotel, catene, marchi e società di gestione alberghiera che desiderano creare e gestire il profilo digitale delle loro strutture sulla piattaforma Wink.
 
-La nostra Extranet è stata progettata con cura per essere il più semplice possibile, ma al contempo supportare tutte le funzionalità che gli utenti più esperti si aspettano da un portale immobiliare avanzato. Per farvi un paio di esempi:
+La nostra Extranet è stata progettata con cura per essere il più semplice possibile, ma al contempo supportare tutte le funzionalità che gli utenti esperti si aspettano da un portale immobiliare avanzato. Per farvi un paio di esempi:
 
 1. Semplicità: utilizza il nostro flusso di lavoro di onboarding intelligente per integrare la tua proprietà e renderla LIVE in meno di un'ora.
 2. Avanzato: Wink supporta 8500 diverse varianti di politiche di cancellazione

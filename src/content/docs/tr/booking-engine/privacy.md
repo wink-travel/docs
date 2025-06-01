@@ -18,7 +18,7 @@ Kişisel verilerinizin işlenmesi kapsamında Şirket, kişisel verilerinizi aş
 
 Şirketin bu Gizlilik Politikası uyarınca toplaması, derlemesi, kullanması ve işlemesi gereken kişisel veriler şunlardır:
 
-(1) İlgili bilgileriniz veya tüzel kişi adına bizimle iletişime geçiyorsanız temsil yetkisine sahip olduğunuz bilgiler (kimlik bilgilerinizi içeren belge de dahil olmak üzere) dâhil olmak üzere tam adınız.
+(1) Tam adınız, ilgili bilgileriniz veya tüzel kişi adına bizimle iletişime geçmeniz durumunda sizi temsil eden bilgileriniz (kimlik bilgilerinizi içeren belge de dahil).
 
 (2) Telefon numarası, e-posta veya sosyal medya hesap bilgileri gibi iletişim bilgileri.
 

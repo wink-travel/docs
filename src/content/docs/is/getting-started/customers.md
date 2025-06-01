@@ -22,7 +22,7 @@ Vörumerki og keðjur hafa aðeins aðrar þarfir en stakar eignir. Á Wink geta
 
 ## Stjórnunarfélög
 
-Fyrirtæki sem sérhæfa sig í ferðaþjónustu og áfangastaðastjórnun geta stjórnað fasteignaeignum sínum fyrir hönd eigenda. Það er klár kostur að láta stofnanir sem einbeita sér að netverslun og eru með stafræna þekkingu sjá um sölu til netgeirans á meðan hótel geta einbeitt sér að ánægju viðskiptavina þegar þeir koma á staðinn.
+Fyrirtæki sem sérhæfa sig í ferðaþjónustu og áfangastaðastjórnun geta stjórnað fasteignaeignum sínum fyrir hönd eigenda. Það er klár kostur að láta stofnanir sem einbeita sér að netverslun og eru með stafræna þekkingu sjá um sölu til netmarkaðarins á meðan hótel geta einbeitt sér að ánægju viðskiptavina sinna þegar þeir koma á staðinn.
 
 ## Áhrifavaldar
 

@@ -383,7 +383,7 @@ Niti jedna Stranka ne smije stvarati, objavljivati, distribuirati ili dopustiti 
 
 12. **Ovlaštenje za potpisivanje – Zastupanje i potpis pridruženog subjekta.**
 
-Partner jamči da on, osoba koja potpisuje ovaj Ugovor i/ili bilo koja druga osoba koja daje informacije (uključujući, radi izbjegavanja sumnje, bilo koje Uvjete plaćanja) tvrtki Wink u vezi s ovim Ugovorom ili u skladu s njim ima ovlasti, kapacitet i potrebnu moć za potpisivanje ovog Ugovora te da ta osoba ima ovlasti, kapacitet i potrebnu moć obvezati Partnera na ovaj Ugovor te da će se tijekom cijelog Trajanja pridržavati, izvršavati i osigurati da Partner poštuje i izvršava svoje obveze prema ovom Ugovoru.\
+Partner jamči da on, osoba koja potpisuje ovaj Ugovor i/ili bilo koja druga osoba koja daje informacije (uključujući, radi izbjegavanja sumnje, bilo koje Uvjete plaćanja) tvrtki Wink u vezi s ovim Ugovorom ili u skladu s njim ima ovlast, kapacitet i potrebnu moć za potpisivanje ovog Ugovora te da ta osoba ima ovlast, kapacitet i potrebnu moć obvezati Partnera na ovaj Ugovor te da će se tijekom cijelog Trajanja pridržavati, izvršavati i osigurati da Partner poštuje i izvršava svoje obveze prema ovom Ugovoru.\
 Partner se izričito slaže da je elektroničko prihvaćanje ovog Ugovora i njegovih Uvjeta i odredbi, uključujući one koji se odnose na izmjene, valjano, obvezujuće i provedivo.
 
 13. **Jezik**
@@ -400,7 +400,7 @@ Ako državna agencija za provedbu zakona, sud ili tribunal nadležne jurisdikcij
 
 **16. Odnos stranaka**
 
-Stranke su i djelovat će kao neovisni izvođači radova u izvršavanju ovog Ugovora. Niti jedna Stranka neće djelovati kao agent ili partner druge Stranke, niti će se smatrati tako, u bilo koju svrhu, niti će bilo koja Stranka imati ovlasti obvezivati ​​drugu u bilo kojem pogledu.
+Stranke su i djelovat će kao neovisni izvođači radova u izvršavanju ovog Ugovora. Nijedna Stranka neće djelovati kao, niti se smatrati, agentom ili partnerom druge Stranke u bilo koju svrhu, niti će bilo koja Stranka imati ovlasti obvezivati ​​drugu u bilo kojem pogledu.
 
 **17. Zadatak**
 

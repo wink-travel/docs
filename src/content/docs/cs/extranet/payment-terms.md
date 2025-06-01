@@ -21,7 +21,7 @@ Platební zprostředkovatel poskytuje platební služby ubytovatelům, kteří p
 * Služby inkasa plateb; a
 * Další platební služby v souvislosti se službami ubytovacích zařízení.
 
-Abyste mohli používat Platební služby, musíte mít alespoň 18 let, mít účet Wink v dobrém stavu v souladu s Podmínkami platebního zprostředkovatele a udržovat své platební a osobní údaje přesné a úplné.
+Abyste mohli používat Platební služby, musíte být starší 18 let, mít účet Wink v dobrém stavu v souladu s Podmínkami platebního zprostředkovatele a udržovat své platební a osobní údaje přesné a úplné.
 
 Smlouva byla přečtena a všechny Obchodní podmínky byly ubytovatelem odsouhlaseny. Ubytovatel výslovně souhlasí s tím, že elektronické přijetí této Smlouvy a jejích Obchodních podmínek, včetně těch, které se týkají změn, je platné, závazné a vymahatelné.
 
@@ -48,7 +48,7 @@ Pouze osoba podepisující tuto smlouvu je výhradním určeným zástupcem ubyt
 
 2.2**Poplatky za platební služby**Zprostředkovatel plateb si za platební služby účtuje 4 % z celkové ceny rezervace.
 
-2.3**Dostupnost finančních prostředků**Za předpokladu úspěšného přijetí platby od Hosta zpřístupní Zprostředkovatel plateb Ubytovateli finanční prostředky spojené s rezervací do 24 hodin od příjezdu hosta.
+2.3**Dostupnost finančních prostředků**Za předpokladu úspěšného přijetí platby od Hosta zprostředkovatel plateb zpřístupní Ubytovateli finanční prostředky spojené s rezervací do 24 hodin od příjezdu hosta.
 
 2.4**Výplata**Výplata na váš místní bankovní účet nebo virtuální kreditní kartou za rezervaci bude ve výši celkové ceny rezervace mínus poplatky za platební služby (4 %), rezervační poplatek Wink (1,5 %) a případná partnerská provize, jak je definováno ve Všeobecných obchodních podmínkách poskytovatelů ubytování. V případě zrušení potvrzené rezervace vám zprostředkovatel plateb vrátí dlužnou částku (pokud existuje), jak je uvedeno v podmínkách a platných storno podmínkách.
 
@@ -137,11 +137,11 @@ Zprostředkovatel plateb nenese odpovědnost za žádné zpoždění nebo nepln�
 
 **9. Odškodnění**
 
-V maximálním rozsahu povoleném platnými právními předpisy souhlasíte s tím, že Zprostředkovatele plateb a všechny jeho přidružené společnosti a dceřiné společnosti a jejich vedoucí pracovníky, ředitele, zaměstnance a zástupce zbavíte odpovědnosti, budete je bránit, odškodníte a ochráníte před jakýmikoli nároky, závazky, škodami, ztrátami a výdaji, včetně, bez omezení, přiměřených právních a účetních poplatků, které vyplývají z nebo jakýmkoli způsobem souvisejí s (i) vaším porušením těchto Platebních podmínek; (ii) vaším nesprávným používáním Platebních služeb; (iii) vaším neprovedením přesného hlášení, výběru nebo odvedení daní nebo (iv) vaším porušením jakýchkoli zákonů, předpisů nebo práv třetích stran.
+V maximálním rozsahu povoleném platnými právními předpisy souhlasíte s tím, že zbavíte odpovědnosti, budete bránit (dle uvážení Zprostředkovatele plateb), odškodníte a ochráníte Zprostředkovatele plateb a všechny jeho přidružené společnosti a dceřiné společnosti a jejich vedoucí pracovníky, ředitele, zaměstnance a zástupce před jakýmikoli nároky, závazky, škodami, ztrátami a výdaji, včetně, bez omezení, přiměřených právních a účetních poplatků, které vyplývají z nebo jsou jakkoli spojeny s (i) vaším porušením těchto Platebních podmínek; (ii) vaším nesprávným používáním Platebních služeb; (iii) vaším neprovedením přesného hlášení, výběru nebo odvedení daní nebo (iv) vaším porušením jakýchkoli zákonů, předpisů nebo práv třetích stran.
 
 **10. Změna, doba trvání, ukončení a další opatření**
 
-10.1**Modifikace**S výjimkou případů, kdy platné právní předpisy vyžadují jinak, může Zprostředkovatel plateb tyto Platební podmínky kdykoli změnit. Pokud provedeme podstatné změny těchto Platebních podmínek, zveřejníme revidované Platební podmínky na Platformě Wink a aktualizujeme datum „Poslední aktualizace“ v horní části těchto Platebních podmínek. Pokud se vás změna týká, budeme vás o změnách informovat také nejméně třicet (30) dní před datem jejich účinnosti. Pokud svou smlouvu neukončíte před datem, kdy revidované Platební podmínky nabudou účinnosti, vaše další používání Platebních služeb bude představovat souhlas s veškerými změnami revidovaných Platebních podmínek.
+10.1**Modifikace**S výjimkou případů, kdy platné právní předpisy vyžadují jinak, může Zprostředkovatel plateb tyto Platební podmínky kdykoli změnit. Pokud provedeme podstatné změny těchto Platebních podmínek, zveřejníme revidované Platební podmínky na Platformě Wink a aktualizujeme datum „Poslední aktualizace“ v horní části těchto Platebních podmínek. Pokud se vás změna týká, budeme vás o změnách informovat také nejméně třicet (30) dní před datem jejich účinnosti. Pokud svou smlouvu neukončíte před datem účinnosti revidovaných Platebních podmínek, vaše další používání Platebních služeb bude představovat souhlas s veškerými změnami revidovaných Platebních podmínek.
 
 10.2**Období**Tato dohoda mezi vámi a Platebním zprostředkovatelem, která je uvedena v těchto Platebních podmínkách, nabývá účinnosti okamžikem vytvoření účtu Wink nebo používání Platebních služeb a zůstává v platnosti, dokud ji vy nebo my neukončíme v souladu s oddílem 10.3.
 
@@ -151,7 +151,7 @@ V maximálním rozsahu povoleném platnými právními předpisy souhlasíte s t
 
 10,5**Odvolání**Pokud Zprostředkovatel plateb přijme kterékoli z opatření popsaných v oddílech 10.3 a 10.4, můžete se proti takovému rozhodnutí odvolat kontaktováním zákaznického servisu.
 
-10.6**Důsledek ukončení**Pokud zrušíte svůj účet Wink, protože Poskytovatel ubytování nebo Zprostředkovatel plateb podnikne jakékoli z výše popsaných opatření, Zprostředkovatel plateb může poskytnout plnou náhradu všem Hostům s potvrzenou rezervací (rezervacemi) a nebudete mít nárok na žádnou kompenzaci za čekající nebo potvrzené rezervace, které byly zrušeny.
+10.6**Důsledek ukončení**Pokud zrušíte svůj účet Wink, protože Poskytovatel ubytování nebo Zprostředkovatel plateb podnikne jakékoli z výše popsaných opatření, Zprostředkovatel plateb může poskytnout plnou náhradu všem Hostům s potvrzenou rezervací (rezervacemi) a vy nebudete mít nárok na žádnou kompenzaci za čekající nebo potvrzené rezervace, které byly zrušeny.
 
 10,7**Přežití**Oddíly 5 až 11 těchto Platebních podmínek zůstanou v platnosti i po ukončení nebo vypršení platnosti této smlouvy.
 

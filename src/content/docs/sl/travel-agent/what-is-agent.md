@@ -4,7 +4,7 @@ description: 'Preberite, kako Wink podpira registrirane potovalne agente.'
 sidebar:
   order: 0
 ---
-Naša rešitev za registrirane potovalne agente je[Agent Wink](https://agent.wink.travel)Gre za samopostrežni portal, ki ga lahko agenti uporabljajo za iskanje in rezervacijo v imenu svojih strank ter si pri vsaki rezervaciji zaslužijo provizijo.
+Naša rešitev za registrirane potovalne agente je[Agent Wink](https://agent.wink.travel)Gre za samopostrežni portal, ki ga lahko agenti uporabljajo za iskanje in rezervacije v imenu svojih strank ter si pri vsaki rezervaciji zaslužijo provizijo.
 
 Naprednejši potovalni agenti se lahko odločijo za integracijo na ravni API-ja za namene obdelave plačil in izplačil zunaj platforme Wink.
 

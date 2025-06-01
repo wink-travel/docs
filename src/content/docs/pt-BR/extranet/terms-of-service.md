@@ -121,7 +121,7 @@ Os Fornecedores de Acomodações são responsáveis por manter as informações 
 
 **6. Taxas e comissões de reserva**
 
-A Wink oferece aos provedores de acomodação as ferramentas digitais necessárias para distribuir e vender seu inventário online por meio de 5 canais exclusivos. Ao ativar sua propriedade por meio do recurso de autoativação em seu painel, ela se tornará automaticamente reservável no Traveliko.com e na Rede. Você pode desativar esses canais manualmente na extranet, na seção de menu "Distribuição - Canais de Venda".
+A Wink oferece aos provedores de acomodação as ferramentas digitais necessárias para distribuir e vender seu inventário online por meio de 5 canais exclusivos. Ao ativar sua propriedade por meio do recurso de autoativação em seu painel, ela se tornará automaticamente reservável no Traveliko.com e na Rede. Você pode desativar esses canais manualmente na extranet, na seção do menu "Distribuição - Canais de Venda".
 
 * Traveliko.com – 0% de comissão OTA
 * Winklinks - Recurso de link na bio para canais de mídia social como o Instagram.
@@ -174,13 +174,13 @@ A pagar ao hotel (“Tarifa Líquida”) => USD 85,1
 
 O Provedor de Acomodação deverá garantir que os detalhes de sua conta bancária fornecidos à Wink sejam precisos o tempo todo e deverá notificá-lo sem demora sobre quaisquer alterações.
 
-Somente a pessoa que assina este contrato será o único representante designado do Provedor de Acomodações, que terá autoridade para solicitar alterações nas informações da conta bancária e/ou do beneficiário do Provedor de Acomodações. Nenhuma outra pessoa terá tal autoridade em nome do Provedor de Acomodações. Qualquer alteração da pessoa designada deverá ser solicitada à Wink por escrito, e tal alteração deverá ser implementada somente por meio de um aditamento por escrito a este Contrato, assinado por ambas as Partes.
+Somente a pessoa que assina este contrato será o único representante designado do Provedor de Acomodações, que terá autoridade para solicitar alterações nas informações da conta bancária e/ou do beneficiário do Provedor de Acomodações. Nenhuma outra pessoa terá tal autoridade em nome do Provedor de Acomodações. Qualquer alteração da pessoa designada deverá ser solicitada à Wink por escrito, e tal alteração deverá ser implementada somente por meio de um aditivo por escrito a este Contrato, assinado por ambas as Partes.
 
 **9. Modificações de reserva**
 
 9.1 Os Provedores de Acomodação são responsáveis por qualquer modificação de reserva fora da política de cancelamento declarada na confirmação da reserva aceita por meio de comunicação direta com o Hóspede.
 
-9.2 Caso haja um erro por parte do Provedor de Acomodação resultando no upload de uma Tarifa incorreta e, consequentemente, uma Reserva seja feita com a Tarifa incorreta, a reserva deverá ser honrada pelo Provedor de Acomodação com a Tarifa incorreta.
+9.2 Caso ocorra um erro por parte do Provedor de Acomodação resultando no upload de uma Tarifa incorreta e, consequentemente, uma Reserva seja feita com a Tarifa incorreta, a reserva deverá ser honrada pelo Provedor de Acomodação com a Tarifa incorreta.
 
 9.3 A Wink não terá nenhuma responsabilidade perante o Provedor de Acomodação por quaisquer erros de Tarifa cometidos pelo Provedor de Acomodação.
 
@@ -188,7 +188,7 @@ Somente a pessoa que assina este contrato será o único representante designado
 
 10.1 O Provedor de Acomodação deverá garantir que os detalhes completos e corretos da empresa dos clientes Wink sejam preenchidos com precisão em seus sistemas para que cada Reserva seja claramente identificável como uma Reserva feita sob e de acordo com este Contrato.
 
-10.2 Cada Provedor de Acomodação Participante deverá envidar esforços comercialmente razoáveis para garantir que, no momento do check-in, a identificação apresentada por um Hóspede corresponda às informações da reserva. Caso uma reserva seja uma Reserva Potencialmente Fraudulenta, ou se determinados dados fornecidos por um Hóspede não puderem ser verificados pela Wink, o Provedor de Acomodação e a Wink trabalharão em conjunto para solucionar a Reserva Potencialmente Fraudulenta, o que poderá incluir o cancelamento da reserva a qualquer momento. O Provedor de Acomodação concorda em cooperar integralmente com a Wink e fornecerá à Wink quaisquer informações que esta possa solicitar em relação à Reserva Potencialmente Fraudulenta.
+10.2 Cada Provedor de Acomodação Participante deverá envidar esforços comercialmente razoáveis para garantir que, no momento do check-in, a identificação apresentada por um Hóspede corresponda às informações da reserva. Se uma reserva for uma Reserva Potencialmente Fraudulenta, ou se determinados dados fornecidos por um Hóspede não puderem ser verificados pela Wink, o Provedor de Acomodação e a Wink trabalharão em conjunto para solucionar a Reserva Potencialmente Fraudulenta, o que poderá incluir o cancelamento da reserva a qualquer momento. O Provedor de Acomodação concorda em cooperar integralmente com a Wink e fornecerá à Wink quaisquer informações que esta possa solicitar em relação à Reserva Potencialmente Fraudulenta.
 
 10.3 As Partes concordam que, caso um Provedor de Acomodação não cumpra esta cláusula e a Reserva seja posteriormente considerada uma Reserva Potencialmente Fraudulenta, a Wink não será responsável.
 
@@ -205,7 +205,7 @@ Somente a pessoa que assina este contrato será o único representante designado
 
 **12. Condições de propriedade do hotel participante**
 
-O Provedor de Acomodações deverá notificar, o mais breve possível, através da "Seção de Anúncios" da Extranet Wink, sobre quaisquer obras, reformas, atualizações ou outros trabalhos que alterem ou possam alterar a capacidade do Provedor de Acomodações de fornecer Quartos, Instalações e Serviços e/ou que possam afetar negativamente a estadia do Hóspede. Para evitar dúvidas, sempre que uma indisponibilidade ou não cumprimento resultar de tais circunstâncias, aplicar-se-á a Seção 11 destes Termos e Condições Gerais da Wink ("Indisponibilidade / Não Cumprimento"), e o Provedor de Acomodações arcará com o custo integral de qualquer indenização devida ao Hóspede afetado, isentando a Wink de qualquer responsabilidade.
+O Provedor de Acomodações deverá notificar, o mais breve possível, através da "Seção de Anúncios" da Extranet Wink, sobre qualquer construção, reforma, modernização ou outro trabalho que altere ou possa alterar a capacidade do Provedor de Acomodações de fornecer Quartos, Instalações e Serviços e/ou possa afetar negativamente a estadia do Hóspede. Para evitar dúvidas, sempre que uma indisponibilidade ou não cumprimento resultar de tais circunstâncias, a Seção 11 destes Termos e Condições Gerais da Wink ("Indisponibilidade / Não Cumprimento") será aplicável, e o Provedor de Acomodações arcará com o custo integral de qualquer indenização devida ao Hóspede afetado, isentando a Wink de qualquer responsabilidade.
 
 **13. Modificação, Prazo e Rescisão**
 
@@ -401,7 +401,7 @@ Este Contrato poderá ser executado por meio de vias, cada uma das quais (uma ve
 
 **37. Execução**
 
-O Contrato somente entra em vigor mediante confirmação por escrito da aceitação e aprovação do Provedor de Acomodações pela Wink. Ao se registrar e aderir ao programa de parceiros da Wink como Provedor de Acomodações, o Provedor de Acomodações concorda, reconhece e aceita os termos e condições deste Contrato, incluindo as disposições relacionadas a modificações neste Contrato.
+O Contrato somente entra em vigor mediante confirmação por escrito da aceitação e aprovação do Provedor de Acomodações pela Wink. Ao se registrar e aderir ao programa de parceiros da Wink como Provedor de Acomodações, o Provedor de Acomodações concorda, reconhece e aceita os termos e condições deste Contrato, incluindo as disposições relacionadas a modificações a este Contrato.
 
 O contrato foi lido e todos os termos e condições foram aceitos pelo provedor de hospedagem. O afiliado concorda explicitamente que a aceitação eletrônica deste contrato e seus termos e condições, incluindo aqueles relacionados a modificações, é válida, vinculativa e exequível.
 

@@ -87,7 +87,7 @@ Naast de begrippen die elders in deze Overeenkomst zijn gedefinieerd, zijn de vo
 
 **"Kamer(s)"**&#x62;etekent de accommodatie(s) gelegen in een deelnemend hotel of logement.
 
-**"Belastingen"**&#x62;etekent alle lokale, staats-, federale en nationale belastingen en/of servicekosten, met inbegrip van, ter voorkoming van twijfel, alle toegevoegde waarde (BTW), verkoop-, gebruiks-, accijnzen-, logies-, toeristen-, huur-, stads-, vakantie- en andere soortgelijke soorten belastingen, overheidsheffingen of -kosten.
+**"Belastingen"**&#x62;etekent alle lokale, provinciale, federale en nationale belastingen en/of servicekosten, met inbegrip van, ter voorkoming van twijfel, alle toegevoegde waarde (BTW), verkoop-, gebruiks-, accijnzen-, logies-, toeristen-, huur-, stads-, vakantie- en andere soortgelijke soorten belastingen, overheidsheffingen of -kosten.
 
 **“TripPay”**&#x62;etekent de volledige dochteronderneming die betalingen (Pay-in) en uitbetalingen (Pay-out) voor Wink int, hierna te noemen Payment Facilitator.
 
@@ -194,9 +194,9 @@ Alleen de ondertekenaar van deze overeenkomst is de enige aangewezen vertegenwoo
 
 **11. Onbeschikbaarheid / Niet-nakoming**
 
-11.1 In geval van onbeschikbaarheid (door overboeking of anderszins) waardoor een accommodatieverstrekker een gast naar een alternatieve accommodatie moet verplaatsen, stemt de accommodatieverstrekker ermee in zich in te spannen om gasten en boekingen te behouden en te behouden, zodat gasten zo lang mogelijk in de accommodatie kunnen verblijven. Indien de accommodatieverstrekker uiteindelijk een gast naar een alternatieve accommodatie moet verplaatsen, stemt de accommodatieverstrekker in met het volgende:
+11.1 In geval van onbeschikbaarheid (door overboeking of anderszins) waardoor een accommodatieverstrekker een gast naar een alternatieve accommodatie moet verplaatsen, stemt de accommodatieverstrekker ermee in zich in te spannen om gasten en boekingen te behouden en te behouden, zodat gasten zoveel mogelijk in de accommodatie kunnen verblijven. Indien de accommodatieverstrekker uiteindelijk een gast naar een alternatieve accommodatie moet verplaatsen, stemt de accommodatieverstrekker in met het volgende:
 
-* Wink onmiddellijk op de hoogte stellen voordat de Gast wordt verplaatst;
+* Wink onmiddellijk op de hoogte te stellen voordat de Gast wordt verplaatst;
 * Voor het verplaatsen van de gast naar een alternatieve accommodatie van een gelijke of hogere categorie/classificatie in dezelfde omgeving, onder dezelfde geboekte voorwaarden, geldt dat deze verplaatsing door de accommodatieverstrekker wordt betaald zonder extra kosten voor de getroffen gast, inclusief, maar niet beperkt tot:
 * Alle kosten met betrekking tot transport en andere verhuisgerelateerde uitgaven namens de getroffen gast.
 * Om Wink de mogelijkheid te geven alle directe kosten die voortvloeien uit de onbeschikbaarheid en/of de verhuizing af te trekken van het openstaande saldo van de Accommodatieverstrekker in het geval dat Wink een financiële boete, compensatie of kosten oploopt die verband houden met de onbeschikbaarheid en/of verhuizing.
@@ -221,7 +221,7 @@ De Accommodatieverstrekker dient zo spoedig mogelijk via de "Aankondigingen"-sec
 
 13.4 Daarnaast behoudt Wink zich het recht voor om naar eigen goeddunken deze Overeenkomst onmiddellijk te beëindigen door middel van een schriftelijke kennisgeving aan de Accommodatieverstrekker indien:
 
-* De accommodatieverstrekker begint met een insolventieprocedure, faillissementsprocedure, curatele of liquidatieprocedure, gerechtelijke bewindvoering, administratie of andere soortgelijke procedures (ongeacht of deze door de accommodatieverstrekker of door een van de schuldeiser(s) van de accommodatieverstrekker worden gestart), die niet binnen zestig (60) dagen daarna worden afgewezen of in het voordeel van de accommodatieverstrekker worden opgelost.
+* De accommodatieverstrekker begint met een insolventieprocedure, faillissementsprocedure, curateleprocedure of liquidatieprocedure, gerechtelijke bewindvoering, administratie of andere soortgelijke procedures (ongeacht of deze door de accommodatieverstrekker of door een van de schuldeiser(s) van de accommodatieverstrekker worden gestart), die niet binnen zestig (60) dagen daarna worden afgewezen of in het voordeel van de accommodatieverstrekker worden opgelost.
 * Een schuldeiser vestigt of tracht een hypotheek te vestigen op het Deelnemende Hotel.
 * Accommodatieverstrekker staakt haar normale bedrijfsvoering.
 * De Accommodatieverstrekker verliest haar huurcontract of rechten om het Deelnemende Hotel onder de huidige merknaam te exploiteren.
@@ -267,7 +267,7 @@ De accommodatieverstrekker garandeert en verklaart dat hij volledig aan het volg
 
 16.1 Gedurende de looptijd mag Wink alle relevante gegevens van de Accommodatieverstrekker en/of Deelnemende Hotels controleren, voor zover dit redelijkerwijs nodig is om verificaties uit te voeren met betrekking tot (i) de uitvoering van de Boekingen; (ii) alle betalingen die door Wink en/of Gasten zijn ontvangen; en (iii) alle betalingen die door Wink en/of Gasten zijn betaald of betaalbaar zijn.
 
-16.2 Elke Partij draagt haar eigen kosten met betrekking tot een audit, behalve in de volgende omstandigheden: Indien uit de audit blijkt dat de Accommodatieverstrekker een van zijn verplichtingen onder deze Overeenkomst niet nakomt, dan betaalt de Accommodatieverstrekker, onverminderd de overige rechten en rechtsmiddelen van Wink, de audit volledig en neemt de noodzakelijke stappen om aan zijn contractuele verplichtingen te voldoen.
+16.2 Iedere Partij draagt haar eigen kosten met betrekking tot een audit, behalve in de volgende omstandigheden: Indien uit de audit blijkt dat de Accommodatieverstrekker een van zijn verplichtingen onder deze Overeenkomst niet nakomt, dan betaalt de Accommodatieverstrekker, onverminderd de overige rechten en rechtsmiddelen van Wink, de audit volledig en treft de noodzakelijke stappen om aan zijn contractuele verplichtingen te voldoen.
 
 **17. Verzekering**
 
@@ -341,7 +341,7 @@ De Accommodatieverstrekker garandeert dat, voor zover hem bekend, noch hij noch 
 
 **25. Bevoegdheid tot ondertekening – Vertegenwoordiging en handtekening van de accommodatieverstrekker**
 
-25.1 De Accommodatieverstrekker garandeert dat hij, de persoon die deze Overeenkomst ondertekent en/of een andere persoon die informatie (inclusief, ter voorkoming van twijfel, betalingsvoorwaarden) aan Wink verstrekt in verband met of krachtens deze Overeenkomst, de bevoegdheid, de capaciteit en de vereiste macht heeft om deze Overeenkomst voor en namens elk Deelnemend Hotel te ondertekenen en dat deze persoon de bevoegdheid, de capaciteit en de vereiste macht heeft om de Accommodatieverstrekker en elk Deelnemend Hotel aan deze Overeenkomst te binden en dat hij gedurende de Looptijd zijn verplichtingen onder deze Overeenkomst zal nakomen, uitvoeren en ervoor zal zorgen dat elk Deelnemend Hotel zijn verplichtingen onder deze Overeenkomst nakomt en uitvoert.
+25.1 De Accommodatieverstrekker garandeert dat hij, de persoon die deze Overeenkomst ondertekent en/of een andere persoon die informatie (inclusief, ter voorkoming van twijfel, betalingsvoorwaarden) aan Wink verstrekt in verband met of krachtens deze Overeenkomst, de bevoegdheid, de capaciteit en de vereiste macht heeft om deze Overeenkomst voor en namens elk Deelnemend Hotel te ondertekenen en dat deze persoon de bevoegdheid, de capaciteit en de vereiste macht heeft om de Accommodatieverstrekker en elk Deelnemend Hotel aan deze Overeenkomst te binden en dat hij gedurende de Looptijd zijn verplichtingen uit deze Overeenkomst zal nakomen, uitvoeren en ervoor zal zorgen dat elk Deelnemend Hotel zijn verplichtingen uit deze Overeenkomst nakomt en uitvoert.
 
 25.2 De Accommodatieverstrekker stemt er uitdrukkelijk mee in dat elektronische aanvaarding van deze Overeenkomst en de bijbehorende Algemene Voorwaarden, met inbegrip van de voorwaarden met betrekking tot wijzigingen, geldig, bindend en afdwingbaar is.
 
@@ -355,7 +355,7 @@ Afstand doen van enige inbreuk of voorwaarde van deze Overeenkomst zal niet word
 
 **28. Scheidbaarheid**
 
-Indien een bepaling van deze Overeenkomst door een handhavingsinstantie van de overheid, een rechtbank of een tribunaal met bevoegde jurisdictie onwettig, ongeldig of op andere wijze niet-afdwingbaar wordt verklaard op grond van de nationale wetgeving, dan zal een dergelijke bepaling worden uitgelegd, gewijzigd of verwijderd in de mate die nodig is om de bepaling en/of deze Overeenkomst wettig, geldig of op andere wijze afdwingbaar te maken. Het resterende deel van een dergelijke bepaling en de overige bepalingen hiervan blijven van kracht, blijven bindend en worden zodanig geïnterpreteerd dat zij zoveel mogelijk uitvoering geven aan de bedoeling van de Partijen.
+Indien een bepaling van deze Overeenkomst door een handhavingsinstantie van de overheid, een rechtbank of een tribunaal met bevoegde jurisdictie onwettig, ongeldig of op andere wijze niet-afdwingbaar wordt verklaard op grond van de nationale wetgeving, dan zal een dergelijke bepaling worden uitgelegd, gewijzigd of verwijderd in de mate die nodig is om de bepaling en/of deze Overeenkomst wettig, geldig of op andere wijze afdwingbaar te maken. Het resterende deel van een dergelijke bepaling en de overige bepalingen hiervan zullen blijven voortbestaan, volledig van kracht blijven en bindend blijven. Zij zullen worden geïnterpreteerd om zoveel mogelijk uitvoering te geven aan de bedoeling van de Partijen.
 
 **29. Relatie tussen de partijen**
 

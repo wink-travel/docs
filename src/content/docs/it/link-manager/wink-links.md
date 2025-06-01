@@ -49,7 +49,7 @@ WinkLinks è anche un ottimo modo per esporre l'inventario di viaggio che hai tr
 Utilizza WinkLinks per vendere:
 
 * [Link condivisibili](/studio/shareable-links)- Scegli di visualizzare come:
-  * [Banner pubblicitario](/developers/web-components/#content-loader).
+  * [banner pubblicitario](/developers/web-components/#content-loader).
   * Collegamento normale con aggiornamenti dei prezzi in tempo reale.
 * [Carte](/studio/cards)- Carte prenotabili con prezzi e disponibilità in tempo reale.
 * [Griglie](/studio/grids)- Griglia con schede prenotabili.

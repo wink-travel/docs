@@ -25,7 +25,7 @@ Queremos ser totalmente transparentes sobre os preços agora para economizar tem
 A Wink cobra uma taxa de processamento/reserva de 1,5%. Isso nos permite oferecer todos os nossos serviços gratuitamente e cobre a manutenção da plataforma.
 :::
 
-:::Observação\[Taxa de pagamento]
+:::Nota\[Taxa de pagamento]
 O TripPay cobra uma taxa de pagamento de 4,0% por reserva. Isso inclui a aquisição do pagamento do viajante.
 :::
 

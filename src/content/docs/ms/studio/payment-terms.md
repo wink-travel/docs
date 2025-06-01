@@ -90,14 +90,14 @@ Hanya orang yang menandatangani perjanjian ini akan menjadi wakil tunggal Penyed
 
 **5. Aktiviti Terlarang**
 
-5.1 Anda bertanggungjawab sepenuhnya untuk pematuhan mana-mana dan semua undang-undang, peraturan, peraturan dan kewajipan cukai yang mungkin dikenakan ke atas penggunaan Perkhidmatan Pembayaran oleh anda. Sehubungan dengan penggunaan Perkhidmatan Pembayaran anda, anda mungkin tidak dan anda bersetuju bahawa anda tidak akan dan tidak akan membantu atau membolehkan orang lain untuk:
+5.1 Anda bertanggungjawab sepenuhnya untuk pematuhan mana-mana dan semua undang-undang, peraturan, peraturan dan kewajipan cukai yang mungkin dikenakan ke atas penggunaan Perkhidmatan Pembayaran oleh anda. Sehubungan dengan penggunaan Perkhidmatan Pembayaran oleh anda, anda mungkin tidak dan anda bersetuju bahawa anda tidak akan dan tidak akan membantu atau membolehkan orang lain untuk:
 
 * melanggar atau memintas mana-mana undang-undang atau peraturan yang berkenaan;
 * melanggar atau memintas sebarang perjanjian dengan pihak ketiga, hak pihak ketiga, atau [Syarat](/studio/terms-of-service);
 * menggunakan Perkhidmatan Pembayaran untuk sebarang tujuan komersial atau tujuan lain yang tidak dibenarkan secara nyata oleh Syarat Pembayaran ini;
 * mengelak, memintas, mengalih keluar, menyahaktifkan, merosakkan, merungkai atau sebaliknya memintas sebarang langkah teknologi yang dilaksanakan oleh Fasilitator Pembayaran untuk melindungi Perkhidmatan Pembayaran;
 * mengambil sebarang tindakan yang merosakkan atau menjejaskan, atau boleh merosakkan atau menjejaskan, prestasi atau fungsi Perkhidmatan Pembayaran yang sepatutnya;
-* cuba mentafsir, menyahkompilasi, menyahhimpun atau merekayasa balik mana-mana perisian yang digunakan untuk menyediakan Perkhidmatan Pembayaran; atau
+* cuba untuk mentafsir, menyahkompilasi, menyahhimpun atau merekayasa balik mana-mana perisian yang digunakan untuk menyediakan Perkhidmatan Pembayaran; atau
 * melanggar atau melanggar hak orang lain atau sebaliknya menyebabkan kemudaratan kepada sesiapa.
 
 5.2 Fasilitator Pembayaran mengambil pendekatan toleransi sifar terhadap pelanggaran norma perdagangan antarabangsa, rasuah dan undang-undang pencegahan rasuah serta sekatan yang dikenakan ke atas perdagangan, aliran dana dan pembiayaan keganasan.\
@@ -117,19 +117,19 @@ Fasilitator Pembayaran tidak akan bertanggungjawab ke atas sebarang kelewatan at
 
 7.3 Jika kami memilih untuk menjalankan pengesahan identiti pada mana-mana Ahli Gabungan, setakat yang dibenarkan oleh undang-undang yang terpakai, kami menafikan sebarang jenis waranti, sama ada nyata atau tersirat, bahawa semakan sedemikian akan mengenal pasti salah laku terdahulu oleh Ahli Gabungan atau menjamin bahawa Ahli Gabungan tidak akan terlibat dalam salah laku pada masa hadapan.
 
-7.4 Penafian di atas terpakai pada tahap maksimum yang dibenarkan oleh undang-undang. Anda mungkin mempunyai hak berkanun atau waranti lain yang tidak boleh dikecualikan secara sah. Walau bagaimanapun, tempoh mana-mana waranti yang dikehendaki mengikut undang-undang hendaklah dihadkan kepada tahap maksimum (jika ada) yang dibenarkan oleh undang-undang.
+7.4 Penafian di atas terpakai pada tahap maksimum yang dibenarkan oleh undang-undang. Anda mungkin mempunyai hak berkanun atau waranti lain yang tidak boleh dikecualikan secara sah. Walau bagaimanapun, tempoh mana-mana waranti yang dikehendaki mengikut undang-undang hendaklah dihadkan pada tahap maksimum (jika ada) yang dibenarkan oleh undang-undang.
 
 **8. Had Liabiliti**
 
 **8.1** Setakat maksimum yang dibenarkan oleh undang-undang, mana-mana Pihak tidak akan bertanggungjawab ke atas sebarang ganti rugi tidak langsung, sampingan, berbangkit, khas atau punitif yang timbul daripada Perjanjian ini atau pelanggarannya, walaupun dinasihatkan tentang kemungkinan kerosakan tersebut. Had ini tidak akan digunakan untuk sebarang pelanggaran Perjanjian ini yang berkaitan dengan kerahsiaan dan/atau hak harta intelek.
 
-**8.2** Mana-mana Pihak tidak boleh mengecualikan liabiliti berkenaan dengan (i) kematian atau kecederaan peribadi yang disebabkan oleh kecuaiannya atau pekerja, ejen atau sub-kontraktornya, (ii) penipuan yang dilakukan sendiri atau pekerjanya, atau (iii) sebarang pelanggaran, perbuatan, peninggalan atau liabiliti yang mungkin tidak terhad di bawah mana-mana undang-undang yang terpakai.
+**8.2** Mana-mana Pihak tidak boleh mengecualikan liabiliti berkenaan dengan (i) kematian atau kecederaan peribadi yang disebabkan oleh kecuaiannya atau pekerja, ejen atau sub-kontraktornya, (ii) penipuan yang dilakukan oleh dirinya sendiri atau pekerjanya, atau (iii) sebarang pelanggaran, perbuatan, peninggalan atau liabiliti yang mungkin tidak terhad di bawah mana-mana undang-undang yang terpakai.
 
 **8.3** Para Pihak mengakui dan bersetuju bahawa pengecualian, dan had ke atas, liabiliti yang ditetapkan dalam Perjanjian ini adalah adil dan munasabah.
 
 **9. Ganti rugi**
 
-Setakat maksimum yang dibenarkan oleh undang-undang yang terpakai, anda bersetuju untuk melepaskan, mempertahankan (dengan pilihan Fasilitator Pembayaran), menanggung rugi, dan menahan Fasilitator Pembayaran dan semua sekutu dan anak syarikatnya, dan pegawai, pengarah, pekerja dan ejen mereka, tidak berbahaya daripada dan terhadap sebarang tuntutan, liabiliti, ganti rugi, kerugian, dan perbelanjaan, termasuk, tanpa mengehadkan, yang berkaitan dengan bayaran atau yang munasabah pelanggaran anda terhadap Syarat Pembayaran ini; (ii) penggunaan Perkhidmatan Pembayaran anda secara tidak wajar; (iii) kegagalan anda, atau kegagalan kami atas arahan anda, untuk melaporkan, mengutip atau menghantar cukai dengan tepat; atau (iv) pelanggaran mana-mana undang-undang, peraturan atau hak pihak ketiga anda.
+Setakat maksimum yang dibenarkan oleh undang-undang yang terpakai, anda bersetuju untuk melepaskan, mempertahankan (mengikut pilihan Fasilitator Pembayaran), menanggung rugi, dan menahan Fasilitator Pembayaran dan semua sekutu dan anak syarikatnya, dan pegawai, pengarah, pekerja dan ejen mereka, tidak berbahaya daripada dan terhadap sebarang tuntutan, liabiliti, ganti rugi, kerugian, dan perbelanjaan, termasuk, tanpa mengehadkan, yang berkaitan dengan bayaran atau yang munasabah pelanggaran anda terhadap Syarat Pembayaran ini; (ii) penggunaan Perkhidmatan Pembayaran anda secara tidak wajar; (iii) kegagalan anda, atau kegagalan kami atas arahan anda, untuk melaporkan, mengutip atau menghantar cukai dengan tepat; atau (iv) pelanggaran mana-mana undang-undang, peraturan atau hak pihak ketiga anda.
 
 **10. Pengubahsuaian, Tempoh, Penamatan, dan Langkah-langkah lain**
 
@@ -143,7 +143,7 @@ Setakat maksimum yang dibenarkan oleh undang-undang yang terpakai, anda bersetuj
 
 **10.5 Rayuan**. Jika Fasilitator Pembayaran mengambil mana-mana langkah yang diterangkan dalam Seksyen 10.3 dan 10.4, anda boleh merayu keputusan sedemikian dengan menghubungi [perkhidmatan pelanggan](mailto:support@wink.travel).
 
-**10.6 Kesan Penamatan**. Jika anda membatalkan akaun Wink anda sebagai Ahli Gabungan atau Fasilitator Pembayaran mengambil mana-mana langkah yang diterangkan di atas, Fasilitator Pembayaran boleh memberikan bayaran balik penuh kepada mana-mana Tetamu dengan tempahan yang disahkan, dan anda tidak akan berhak mendapat sebarang pampasan untuk tempahan yang belum selesai atau disahkan yang telah dibatalkan.
+**10.6 Kesan Penamatan**. Jika anda membatalkan akaun Wink anda sebagai Ahli Gabungan atau Fasilitator Pembayaran mengambil mana-mana langkah yang diterangkan di atas, Fasilitator Pembayaran boleh memberikan bayaran balik penuh kepada mana-mana Tetamu dengan tempahan yang disahkan, dan anda tidak akan berhak mendapat sebarang pampasan untuk tempahan yang belum selesai atau disahkan yang dibatalkan.
 
 **10.7 Kemandirian**. Bahagian 5 hingga 11 Syarat Pembayaran ini akan kekal dalam sebarang penamatan atau tamat tempoh perjanjian ini.
 

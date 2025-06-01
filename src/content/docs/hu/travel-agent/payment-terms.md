@@ -12,7 +12,7 @@ Utolsó frissítés: 2024-10-30
 
 :::caution\[Értesítés]
 Az alábbi fizetési feltételek azokra az utazási irodákra vonatkoznak, amelyek saját maguk kívánnak pénzt beszerezni és kifizetni.
-Ez csak az API-nkon keresztül, és csak azoknak az utazási irodáknak lehetséges, akik a regisztráció során jelezték, hogy ezt szeretnék.
+Ez csak az API-nkon keresztül, és csak azok az utazási irodák tehetik meg, akik a regisztráció során jelezték, hogy ezt szeretnék.
 
 Minden utazási iroda továbbra is foglalhat utazási irodánk portálján keresztül a Wink fizetési átjáróján keresztül, saját vagy az utas hitelkártyájával. Ezért minden utazási irodának el kell fogadnia a fizetési feltételeket is, ahol a Wink fizetési átjárója a kereskedő.
 
@@ -20,7 +20,7 @@ Ezek a feltételek elérhetők a következő címen:[Partnerportál > Fizetési 
 :::
 
 **WINK FIZETÉSI FELTÉTELEK**\
-**UTAZÁSI IRODASZTÁLYOK RÉSZÉRE (Bejegyzett kereskedő)**
+**UTAZÁSI IRODASZTÁLYOKNAK (Bejegyzett kereskedő)**
 
 Jelen Fizetési Feltételek („Fizetési Feltételek”) egy kötelező érvényű jogi megállapodás, amely az „UTAZÁSI IRODÁK FELTÉTELEI” („Fő Megállapodás”) alapján létrejött szerződéses jogviszony részét képezi.
 

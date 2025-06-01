@@ -10,7 +10,7 @@ sidebar:
 
 För att ställa in din prisleverantör, klicka på`Distribution > Channel manager`från huvudnavigeringsfältet.
 
-Välj din prisleverantör från rullgardinsmenyn och klicka på`Save`knappen. Detta gör det möjligt för prisleverantören att skicka priser till oss och vi meddelar dem när det finns en bokning som gjorts på Wink för en av dina boenden.
+Välj din prisleverantör från rullgardinsmenyn och klicka på`Save`knappen. Detta gör att prisleverantören kan skicka priser till oss och vi meddelar dem när det finns en bokning som gjorts på Wink för en av dina boenden.
 
 ### SynXis
 
@@ -29,7 +29,7 @@ Nedan följer en lista över leverantörer vi stödjer:
 
 Tillgängliga typer:
 
-* Kanalansvarig (CM)
+* Kanalchef (CM)
 * Fastighetsförvaltningssystem (PMS)
 * Centralt bokningssystem (CRS)
 

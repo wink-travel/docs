@@ -111,7 +111,7 @@ Furnizorul de Cazare garantează că respectă și va respecta, precum și Păr�
 
 Furnizorul de Cazare declară, garantează și se angajează că respectă și va respecta în toate aspectele toate normele comerciale internaționale, restricțiile aplicabile privind comerțul, fluxul de fonduri și finanțarea terorismului, precum și legislația privind prevenirea mitei și a corupției, inclusiv, dar fără a se limita la Legea americană anticorupție, Legea britanică privind luarea de mită din 2010 și Legea din Singapore privind prevenirea corupției.
 
-Furnizorul de Cazare garantează că, din câte știe, nici acesta, nici Părțile sale Asociate nu au fost condamnați pentru o infracțiune care implică luare de mită sau corupție și nici nu fac obiectul vreunei anchete din partea vreunui organism guvernamental, administrativ sau de reglementare.
+Furnizorul de Cazare garantează că, din câte știe, nici el, nici Părțile sale Asociate nu au fost condamnați pentru o infracțiune care implică luare de mită sau corupție și nici nu fac obiectul vreunei anchete din partea vreunui organism guvernamental, administrativ sau de reglementare.
 
 **6. Forță majoră**
 

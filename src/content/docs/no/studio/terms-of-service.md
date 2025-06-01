@@ -52,7 +52,7 @@ Wink og tilknyttede selskaper er en «part» i denne avtalen og omtales samlet s
 **"Kundedata"**&#x62;etyr gjestens personlig identifiserbare informasjon («PII»), inkludert, men ikke begrenset til, gjestens navn, adresse (inkludert e-postadresse), kredittkortopplysninger og annen konfidensiell og privat informasjon om en gjest.\
 **"Dobbel servering"**&#x62;etyr flere annonser på samme resultatside i en søkemotor med det formål å lede trafikk til lignende nettsteder eller sider med lignende innhold.\
 **"Gjest"**&#x62;etyr en besøkende på nettstedene eller appene som fullførte en reservasjon fra en overnattingsleverandør via tjenesten.\
-**"Immateriell rett"**&#x62;etyr ethvert patent, opphavsrett, oppfinnelse, databaserettigheter, designrett, registrert design, varemerke, handelsnavn, merke, logoer, servicemerke, knowhow, bruksmodell, uregistrert design eller, der det er relevant, enhver søknad om en slik rettighet, knowhow, handels- eller forretningsnavn, domenenavn (med et hvilket som helst (landskode) toppdomene, f.eks. .com, .net., co.th, .de, .fr, eu, co.uk. osv.) eller annen lignende rettighet eller forpliktelse, enten registrert eller uregistrert, eller annen industriell eller immateriell rettighet som eksisterer i et hvilket som helst territorium eller jurisdiksjon i verden.\
+**"Immateriell rett"**&#x62;etyr ethvert patent, opphavsrett, oppfinnelse, databaserettigheter, designrett, registrert design, varemerke, handelsnavn, merke, logoer, servicemerke, knowhow, bruksmodell, uregistrert design eller, der det er relevant, enhver søknad om en slik rettighet, knowhow, handels- eller forretningsnavn, domenenavn (med hvilket som helst (landskode) toppdomene, f.eks. .com, .net., co.th, .de, .fr, eu, co.uk. osv.) eller annen lignende rettighet eller forpliktelse, enten registrert eller uregistrert, eller annen industriell eller immateriell rettighet som eksisterer i et hvilket som helst territorium eller jurisdiksjon i verden.\
 **«JSON»**&#x62;etyr en JSON-forbindelse mellom Wink-databasen og tilknyttede selskapers database, som kan leveres av Wink på vilkår som skal avtales.\
 **"Lenke"**&#x62;etyr et innebygd ikon, objekt, grafikk eller tekst på en nettside eller i en e-post som består av en hypertekstpeker til URL-adressen til Wink på tilknyttede nettsteder.\
 **«Selgertransaksjon»**&#x62;etyr en materialisert transaksjon der betalingsformidleren er den registrerte selgeren, hvor betalingsformidleren samler inn penger direkte fra gjesten for reservasjonen.\
@@ -79,7 +79,7 @@ Wink og tilknyttede selskaper er en «part» i denne avtalen og omtales samlet s
 
 **1.2 Intet partnerskap**
 
-1.2.1 Denne avtalen er ikke ment å opprette et fellesforetak eller et forhold mellom partnere, partnerskap eller oppdragsgiver og agent mellom eller blant partene, og skal heller ikke noe heri eller i noen av ordningene som er omtalt heri, tolkes som en slik avtale.
+1.2.1 Denne avtalen er ikke ment å opprette et fellesforetak eller et partnerskapsforhold eller et partnerskap mellom eller blant partene, og skal heller ikke noe heri eller i noen av ordningene som er omtalt heri, tolkes som en slik avtale.
 
 1.2.2 Med mindre annet er skriftlig avtalt med Wink eller som ellers angitt i denne avtalen, skal ikke tilknyttede selskaper publisere noen uttalelse, verken uttrykt eller underforstått, noe sted på tilknyttede selskapers nettsted(er), om at nettstedet er en del av, godkjent av eller et offisielt nettsted for Wink.
 
@@ -128,7 +128,7 @@ I henhold til vilkårene og betingelsene i denne avtalen skal tilknyttede selska
 
 **4.1 Generelle betingelser, forpliktelser og forpliktelser**
 
-4.1.1 I henhold til vilkårene i denne avtalen samtykker tilknyttede selskaper i å gjøre kommersielt rimelige anstrengelser for å (i) tilpasse tilknyttede nettsteder og integrere lenken, tilkoblingene og/eller mikronettstedet på en slik måte at det genereres så mye trafikk som mulig til Wink-nettstedet eller tilknyttede nettsteder, og (ii) markedsføre overnattingsleverandørene og muligheten til å bestille overnattingsleverandører på tilknyttede nettsteder innenfor sitt kommersielle og interne nettverk, og skal for dette formålet gjøre sitt distribusjonsnettverk og sine kanaler (f.eks. internett og intranett) tilgjengelig.
+4.1.1 I henhold til vilkårene i denne avtalen samtykker tilknyttede selskaper i å bruke kommersielt rimelige tiltak for å (i) tilpasse tilknyttede nettsteder og integrere lenken, tilkoblingene og/eller mikronettstedet på en slik måte at det genereres så mye trafikk som mulig til Wink-nettstedet eller tilknyttede nettsteder, og (ii) markedsføre overnattingsleverandørene og muligheten til å bestille overnattingsleverandører på tilknyttede nettsteder innenfor sitt kommersielle og interne nettverk, og skal for dette formålet gjøre sitt distribusjonsnettverk og sine kanaler (f.eks. internett og intranett) tilgjengelig.
 
 4.1.2 Partneren samtykker i å ikke foreta seg eller unnlate å foreta seg noen handlinger som kan påvirke Winks forhold til overnattingsleverandørene som er tilgjengelige på Winks nettsteder. Partneren samtykker i å ikke forårsake eller tillate at noe gjøres som kan føre til at Wink blir ekskludert fra bestillingsprosessen hos noen overnattingsleverandør.
 
@@ -206,7 +206,7 @@ Partneren samtykker i å ikke kontakte, be om eller akseptere noen overnattingsl
 4.7.1 Dersom den tilknyttede organisasjonen har eller bruker et domenenavn som (forvirrende nok) ligner på Wink-merkene (det «lignende domenenavnet») for den/de tilknyttede organisasjonens nettsted(er) (som skal bestemmes etter Winks skjønn), eller dersom den tilknyttede organisasjonen ønsker å registrere, erverve, bruke, kjøpe eller skaffe et lignende domenenavn (med forbehold om skriftlig godkjenning fra Wink på forhånd), gjelder følgende. Den tilknyttede organisasjonen skal (og skal sørge for at selskapene den kontrollerer skal) ikke, direkte eller indirekte:
 
 1. by på eller kjøpe rettigheter til internettplassering for det lignende domenenavnet eller deler av eller likheter derav på noen måte i noen av sine annonser, inkludert, men ikke begrenset til, internett- og nettannonsering.\
-   2\. inkludere det lignende domenenavnet eller deler av det, eller lignende variasjoner, oversettelser eller feilstavinger, i metataggene til nettstedskode. Dette inkluderer metatittel, meta-nøkkelord eller metabeskrivelse.\
+   2\. inkludere det lignende domenenavnet eller deler av det, eller lignende variasjoner, oversettelser eller feilstavinger, i metataggene til nettstedskode. Dette inkluderer metatittel, metanøkkelord eller metabeskrivelse.\
    3\. kjøpe, skaffe eller bruke, direkte eller indirekte, nøkkelord fra tredjepartsplattformer for å omdirigere trafikk til det lignende domenenavnet, og\
    4\. kjøpe det lignende domenenavnet eller deler av det, eller variasjoner, oversettelser eller feilstavinger av det, for bruk i tekstlenker, bannerannonser, popup-annonser eller andre typer annonser som kan knyttes til en søkeordkampanje.
 
@@ -230,7 +230,7 @@ Partneren samtykker i å ikke kontakte, be om eller akseptere noen overnattingsl
 
 4.9.3 Partneren samtykker i og erkjenner at i påvente av at rimelige forespørsler fra Wink blir etterkommet eller implementert, eller i tilfelle Partneren ikke raskt etterkommer eller etterkommer alle slike forespørsler fra Wink i henhold til denne klausul 4, har Wink rett til å utsette eller suspendere sine forpliktelser i henhold til denne avtalen (inkludert tilbudet om tjenesten, systemet og Wink-dataene) eller umiddelbart si opp denne avtalen, uten at det berører Winks rettigheter i henhold til denne avtalen eller på annen måte.
 
-4.9.4 Ved brudd på betingelser, forpliktelser, restriksjoner og/eller garantier angitt i denne klausul 4 av eller som kan tilskrives den tilknyttede bedriften, skal Wink ha rett til å utøve følgende handlinger og rettigheter, uavhengig av rettsmidler og handlinger for spesifikk ytelse, skadeerstatning eller forføyning eller billighetsrettslig avhjelp som er tilgjengelig i henhold til lov eller kontrakt:\
+4.9.4 Ved brudd på betingelser, forpliktelser, restriksjoner og/eller garantier angitt i denne klausul 4 av eller som kan tilskrives den tilknyttede bedriften, skal Wink ha rett til å utøve følgende handlinger og rettigheter, uavhengig av rettsmidler og handlinger for spesifikk ytelse, skadeerstatning eller forføyning eller rimelig rettsmiddel som er tilgjengelig i henhold til lov eller kontrakt:\
 (a) suspensjon av sine (betalings)forpliktelser i henhold til eller oppsigelse av denne avtalen med umiddelbar virkning uten forvarsel til tilknyttede selskaper og uten at det berører Winks rettigheter i henhold til denne avtalen eller på annen måte;\
 (b) Wink har rett til å redusere provisjonen til 0 % for alle bestillinger som gjøres og/eller hver materialisert transaksjon i løpet av perioden hvor tilknyttede selskaper bryter de relevante forpliktelsene som er angitt i klausul 4, eller ikke har rettet opp sitt brudd på de relevante forpliktelsene som er angitt i klausul 4 i sin helhet;\
 (c) Wink forbeholder seg retten til å kreve at tilknyttede selskaper tilbakebetaler provisjonen som Wink har betalt i henhold til denne avtalen; og\
@@ -365,7 +365,7 @@ Partene forstår og samtykker i at hver part i forbindelse med oppfyllelsen av d
 
 **11.2 Beskytt og trygg konfidensiell informasjon**
 
-Hver part samtykker i at: (a) all konfidensiell informasjon skal forbli den utleverende partens eksklusive eiendom, og mottakerparten skal ikke bruke konfidensiell informasjon til noe annet formål enn for å fremme denne avtalen, (b) den skal opprettholde, og skal bruke forsiktige metoder for å sørge for at sine ansatte, ledere, representanter, kontraktsparter og agenter («Tillatelsespersoner») opprettholder, konfidensialiteten og hemmeligholdet til den konfidensielle informasjonen, (c) den skal kun utlevere konfidensiell informasjon til de tillatelsespersoner som trenger å vite slik informasjon for å fremme denne avtalen, (d) den skal ikke, og skal bruke forsiktige metoder for å sikre at tillatelsespersoner ikke (i) kopierer, publiserer, overfører, reproduserer, avslører, utleverer eller gjør den konfidensielle informasjonen tilgjengelig for noen tredjepart, eller (ii) bruker eller lagrer den i et ubeskyttet gjenfinningssystem eller en ubeskyttet database (annet enn i henhold til vilkårene heri), og (e) den skal returnere eller ødelegge all ((papir- og digital) kopi av) konfidensiell informasjon på skriftlig anmodning fra den andre parten. Dersom en av partene behandler personopplysninger på vegne av den andre parten som en del av levering av tjenester i henhold til denne avtalen, skal partene regulere slik behandling gjennom en databehandleravtale (DPA) og skal utgjøre en del av vilkårene i denne avtalen.
+Hver part samtykker i at: (a) all konfidensiell informasjon skal forbli den utleverende partens eksklusive eiendom, og mottakerparten skal ikke bruke konfidensiell informasjon til noe annet formål enn for å fremme denne avtalen, (b) den skal opprettholde, og skal bruke forsiktige metoder for å få sine ansatte, ledere, representanter, kontraktsparter og agenter («Tillatelsespersoner») til å opprettholde, konfidensialiteten og hemmeligholdet til den konfidensielle informasjonen, (c) den skal kun utlevere konfidensiell informasjon til de tillatelsespersoner som trenger å vite slik informasjon for å fremme denne avtalen, (d) den skal ikke, og skal bruke forsiktige metoder for å sikre at tillatelsespersoner ikke (i) kopierer, publiserer, overfører, reproduserer, avslører, utleverer eller gjør den konfidensielle informasjonen tilgjengelig for noen tredjepart, eller (ii) bruker eller lagrer den i et ubeskyttet gjenfinningssystem eller en ubeskyttet database (annet enn i henhold til vilkårene heri), og (e) den skal returnere eller ødelegge all ((papir- og digital) kopi av) konfidensiell informasjon på skriftlig anmodning fra den andre parten. Dersom en av partene behandler personopplysninger på vegne av den andre parten som en del av levering av tjenester i henhold til denne avtalen, skal partene regulere slik behandling gjennom en databehandleravtale (DPA) og skal utgjøre en del av vilkårene i denne avtalen.
 
 **11.3 Tillatt utlevering**
 
@@ -377,7 +377,7 @@ Partene skal bruke kommersielt rimelige tiltak for å beskytte konfidensialitete
 
 **11.5 Kunngjøringer**
 
-Ingen av partene skal opprette, publisere, distribuere eller tillate skriftlig materiale som refererer til den andre parten uten først å sende inn slikt materiale til den andre parten og innhente skriftlig samtykke fra den parten som ikke sender inn materialet på forhånd. Dette samtykket skal ikke nektes eller forsinkes uten rimelig grunn.
+Ingen av partene skal opprette, publisere, distribuere eller tillate skriftlig materiale som refererer til den andre parten uten først å sende inn slikt materiale til den andre parten og innhente skriftlig samtykke fra den parten som ikke sender inn materialet. Dette samtykket skal ikke urimelig nektes eller forsinkes.
 
 11.6 Hver part kan kontakte den andre partens personvernombud (DPO) via følgende e-postadresser og/eller postadresser: dataprotectionofficer@Wink.travel
 
@@ -392,15 +392,15 @@ Den engelskspråklige versjonen av denne avtalen skal være forrangsmessig i all
 
 14. **Dispensasjoner**
 
-Ingen fraskrivelse av brudd eller betingelser i denne avtalen skal anses som en fraskrivelse av andre eller senere brudd eller betingelser, enten av lignende eller annen art.
+Ingen fraskrivelse av brudd på eller betingelser i denne avtalen skal anses som en fraskrivelse av andre eller senere brudd eller betingelser, enten av lignende eller annen art.
 
 **15. Adskillelighet**
 
-Dersom noen bestemmelse i denne avtalen av et offentlig håndhevingsorgan, en domstol eller en tribunal med kompetent jurisdiksjon bestemmes som ulovlig, ugyldig eller på annen måte ikke kan håndheves i henhold til nasjonal lov, skal en slik bestemmelse tolkes, endres eller slettes i den grad det er nødvendig for å gjøre en slik bestemmelse og/eller denne avtalen lovlig, gyldig eller på annen måte kan håndheves, og den gjenværende delen av en slik bestemmelse og de gjenværende andre bestemmelsene heri skal gjelde, forbli i full kraft og virkning, og fortsette å være bindende, og skal tolkes for å gi virkning til partenes intensjon i størst mulig grad.
+Dersom noen bestemmelse i denne avtalen av et myndighetshåndhevelsesorgan, en domstol eller en tribunal med kompetent jurisdiksjon bestemmes som ulovlig, ugyldig eller på annen måte ikke kan håndheves i henhold til nasjonal lov, skal en slik bestemmelse tolkes, endres eller slettes i den grad det er nødvendig for å gjøre en slik bestemmelse og/eller denne avtalen lovlig, gyldig eller på annen måte kan håndheves, og den gjenværende delen av en slik bestemmelse og de gjenværende andre bestemmelsene heri skal gjelde, forbli i full kraft og virkning, og fortsette å være bindende, og skal tolkes for å gi virkning til partenes intensjon i størst mulig grad.
 
 **16. Partenes forhold**
 
-Partene er, og skal opptre som, uavhengige kontraktører i utførelsen av denne avtalen. Ingen av partene skal opptre som, eller anses å være, en agent for eller partner for den andre parten for noe formål, og ingen av partene skal ha myndighet til å binde den andre parten på noen måte.
+Partene er, og skal opptre som, uavhengige kontraktører i utførelsen av denne avtalen. Ingen av partene skal opptre som, eller anses å være, en agent for eller partner for den andre parten for noe formål overhodet, og ingen av partene skal ha myndighet til å binde den andre parten på noen måte.
 
 **17. Oppgave**
 

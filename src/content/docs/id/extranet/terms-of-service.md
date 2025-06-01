@@ -37,7 +37,7 @@ Oleh karena itu, Para Pihak telah sepakat sebagai berikut:
 
 Selain istilah-istilah yang didefinisikan di tempat lain dalam Perjanjian ini, definisi berikut berlaku di seluruh Perjanjian ini, kecuali jika terdapat maksud yang bertentangan:
 
-**“Penyedia Akomodasi”**&#x62;erarti Pihak mana pun yang membuat akun di Wink dengan tujuan menjual kamar miliknya sendiri dan inventaris layanan tambahan melalui platform Wink.
+**“Penyedia Akomodasi”**&#x62;erarti Pihak mana pun yang membuat akun di Wink dengan tujuan menjual kamarnya sendiri dan inventaris layanan tambahan melalui platform Wink.
 
 **"Perjanjian"**&#x62;erarti perjanjian ini.
 
@@ -71,7 +71,7 @@ Selain istilah-istilah yang didefinisikan di tempat lain dalam Perjanjian ini, d
 
 **"Mitra"**&#x62;erarti setiap bisnis atau individu yang menghubungkan atau menggunakan platform Wink untuk mempromosikan dan menjual inventaris Penyedia Akomodasi kepada audiens dan/atau pelanggannya untuk mendapatkan komisi.
 
-**“Fasilitator Pembayaran”**&#x61;nak perusahaan yang sepenuhnya dimiliki oleh Traveliko Singapore Pte. Ltd. (“TripPay”), yang mengatur Layanan Pembayaran, mengumpulkan pembayaran dari tamu (“Pembayaran di Muka”), dengan menagih metode pembayaran yang terkait dengan pembelian mereka, seperti kartu kredit, kartu debit, transfer bank, mata uang kripto atau PayPal, dll… dan mencairkan dana yang terutang (“Nilai Bersih”) kepada penyedia Akomodasi.
+**“Fasilitator Pembayaran”**&#x61;nak perusahaan yang sepenuhnya dimiliki oleh Traveliko Singapore Pte. Ltd. (“TripPay”), yang mengatur Layanan Pembayaran, mengumpulkan pembayaran dari tamu (“Pembayaran di Muka”), dengan menagih metode pembayaran yang terkait dengan pembelian mereka, seperti kartu kredit, kartu debit, transfer bank, mata uang kripto atau PayPal, dll… dan mencairkan dana yang terutang (“Tarif Bersih”) kepada penyedia Akomodasi.
 
 **“Pembayaran”**&#x62;erarti perolehan pembayaran yang dilakukan oleh tamu oleh Fasilitator Pembayaran.
 
@@ -198,7 +198,7 @@ Hanya orang yang menandatangani perjanjian ini yang akan menjadi satu-satunya pe
 
 * Untuk segera memberitahukan Wink sebelum memindahkan Tamu;
 * Untuk memindahkan Tamu ke properti alternatif dengan kategori/peringkat yang sama atau lebih tinggi di area yang sama, dengan ketentuan yang sama seperti yang dipesan dan pemindahan tersebut harus dibayar oleh Penyedia Akomodasi tanpa biaya tambahan kepada Tamu yang terdampak, dan harus mencakup, tanpa batasan.
-* Segala biaya yang berkaitan dengan transportasi dan pengeluaran terkait relokasi lainnya atas nama Tamu yang terkena dampak.
+* Segala biaya yang berkaitan dengan transportasi dan pengeluaran terkait relokasi atas nama Tamu yang terkena dampak.
 * Untuk memungkinkan Wink memotong semua biaya langsung yang disebabkan oleh ketidaktersediaan dan/atau relokasi dari saldo piutang Penyedia Akomodasi jika Wink dikenakan denda keuangan, kompensasi, atau biaya yang terkait dengan ketidaktersediaan dan/atau relokasi tersebut.
 
 11.2 Jika Penyedia Akomodasi tidak memenuhi salah satu ketentuan Perjanjian ini, termasuk kondisi tempat dan/atau Fasilitas & Layanan yang tidak dapat diterima, Wink berhak menghentikan pembayaran dan menuntut pemenuhan yang benar atas ketentuan Pemesanan yang disepakati. Dalam hal apa pun, Penyedia Akomodasi harus menanggung penuh biaya kompensasi yang dibayarkan kepada Tamu yang terdampak, dan membebaskan Wink dari segala tanggung jawab yang timbul dari pemenuhan kewajiban Penyedia Akomodasi yang tidak memadai berdasarkan Perjanjian ini.
@@ -385,7 +385,7 @@ Bahasa Indonesia: Untuk batas maksimum yang diizinkan oleh hukum yang berlaku, A
 
 **34. Hukum dan Yurisdiksi yang Mengatur**
 
-34.1 Perjanjian ini akan diatur secara eksklusif oleh dan ditafsirkan sesuai dengan hukum Singapura. Undang-Undang Kontrak (Hak Pihak Ketiga) 2001 (Cap 53B) tidak berlaku untuk Perjanjian ini. Para Pihak akan berusaha menyelesaikan perselisihan mereka secara damai di luar pengadilan dengan terlebih dahulu melakukan diskusi dan negosiasi dengan itikad baik.
+34.1 Perjanjian ini secara eksklusif diatur oleh dan ditafsirkan sesuai dengan hukum Singapura. Undang-Undang Kontrak (Hak Pihak Ketiga) 2001 (Cap 53B) tidak berlaku untuk Perjanjian ini. Para Pihak akan berusaha menyelesaikan perselisihan mereka secara damai di luar pengadilan dengan terlebih dahulu melakukan diskusi dan negosiasi dengan itikad baik.
 
 34.2 Sengketa apa pun yang timbul dari atau terkait dengan perjanjian ini akan secara eksklusif diserahkan dan ditangani oleh pengadilan yang berwenang di Singapura, tanpa memperhatikan aturan konflik hukum.
 

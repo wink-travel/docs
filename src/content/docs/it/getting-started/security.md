@@ -69,7 +69,7 @@ I nostri penetration test sono condotti da un professionista interno con una vas
 
 ## Impegno per la sicurezza
 
-Ci impegniamo a mantenere un ambiente applicativo sicuro per i nostri utenti e stakeholder. I nostri continui sforzi nei test e nel miglioramento della sicurezza dimostrano il nostro impegno nel proteggere dalle minacce in continua evoluzione.
+Ci impegniamo a mantenere un ambiente applicativo sicuro per i nostri utenti e stakeholder. Il nostro impegno costante nei test e nel miglioramento della sicurezza dimostra il nostro impegno a proteggere dalle minacce in continua evoluzione.
 
 ## Segnala accesso e aggiornamenti
 

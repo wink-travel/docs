@@ -1,6 +1,6 @@
 ---
 title: Politiques d'annulation
-description: Cet article vous montre comment gérer les politiques d’annulation sur Wink.
+description: Cet article vous montre comment gérer les politiques d'annulation sur Wink.
 sidebar:
   order: 12
 ---

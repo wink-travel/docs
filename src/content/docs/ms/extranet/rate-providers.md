@@ -16,7 +16,7 @@ Jika harta anda menggunakan pengurus saluran SynXis, terdapat lebih banyak langk
 
 * Sila hubungi wakil akaun SynXis anda atau penjagaan pelanggan (SHSCustomerCare@sabre.com).
 * Beritahu mereka bahawa anda ingin menyambung ke Wink melalui Channel Connect Express (***CCX***).
-* Mereka akan meminta anda mengisi borang ***PRS***.
+* Mereka akan memberikan anda borang yang lengkap ***PRS***.
   * Anda akan diminta untuk mengisi kelayakan pengguna Wink anda.
   * ... dan mata wang yang anda inginkan.
 * Lengkapkan borang dan serahkan kembali kepada SynXis.

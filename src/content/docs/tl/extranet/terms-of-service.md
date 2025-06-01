@@ -18,14 +18,14 @@ Sa pamamagitan ng pagpaparehistro at pag-sign up sa programang Wink bilang isang
 
 **TRAVELIKO SINGAPORE PTE. LTD.**, isang kumpanyang inkorporada sa ilalim ng mga batas ng Singapore at mayroong rehistradong opisina nito sa #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 na may VAT register number 201437335D ("Wink"), at
 
-**ANG NAGBIBIGAY NG ACCOMMODATION**, na ang mga detalye ay nakalagay sa Accommodation Provider Registration Form o naisumite online (ang "Accommodation Provider").
+**ANG TAGAPAGKALOOB NG ACCOMMODATION**, na ang mga detalye ay nakalagay sa Accommodation Provider Registration Form o naisumite online (ang "Accommodation Provider").
 
 Ang Wink at ang Provider ng Akomodasyon ay bawat isa ay isang "Partido" sa Kasunduang ito at sama-samang tinutukoy bilang "Mga Partido."
 
 Itinatag ng dokumentong ito ang Mga Tuntunin at Kundisyon para sa:
 
 1. Ang pagbibigay ng mga serbisyo sa pamamahagi ng tirahan sa pamamagitan ng Wink o anumang iba pang paraan na ginagamit ng Provider ng Accommodation upang ipamahagi ang mga produkto nito (mula rito ay kilala bilang "Accommodation Provider"), kung saan ang mga detalye ay tinukoy sa Mga Tuntunin sa Mga Pagbabayad at ang presyo, kundisyon, at availability ay napagkasunduan; at
-2. Ang pagbibigay ng mga serbisyo sa tirahan ng Tagapagbigay ng Akomodasyon sa panghuling mamimili/panauhin, na na-book sa pamamagitan ng Wink.
+2. Ang pagbibigay ng mga serbisyo sa tirahan ng Tagabigay ng Tulungan sa panghuling mamimili/panauhin, na na-book sa pamamagitan ng Wink.
 
 Ang Wink ay hindi nagmamay-ari, kumokontrol, nag-aalok, o namamahala ng anumang mga listahan. Ang Wink ay hindi Partido sa mga kontratang direktang natapos sa pagitan ng Mga Provider ng Accommodation at mga bisita. Hindi kumikilos si Wink bilang isang ahente sa anumang kapasidad para sa Mga Provider ng Akomodasyon, maliban sa tinukoy sa mga tuntunin sa pagbabayad ng mga serbisyo (“Mga Tuntunin sa Pagbabayad”).
 
@@ -77,7 +77,7 @@ Bilang karagdagan sa mga terminong tinukoy sa ibang lugar sa Kasunduang ito, ang
 
 **“Pay-out”** ay nangangahulugan ng pagbabayad ng Net Commission sa Affiliate sa pamamagitan ng Payment Facilitator.
 
-**“Bayad sa Serbisyo sa Pagbabayad”** ay ang 4% na ibinawas mula sa komisyon ng Kaakibat bilang bayad sa pagkuha ng bayad ng Payment Facilitator.
+**"Bayad sa Serbisyo sa Pagbabayad"** ay ang 4% na ibinawas mula sa Affiliate na komisyon bilang bayad sa pagkuha ng pagbabayad ng Payment Facilitator.
 
 **"Mga Tuntunin sa Pagbabayad"** nangangahulugang ang Mga Rate, availability, mga alok, promosyon, mga tuntunin sa pagbabayad, at anumang iba pang mga tuntunin o kundisyon na may kaugnayan sa pamamahagi ng mga Kwarto na pinagkasunduan ng magkabilang panig sa pagitan ng Mga Partido.
 
@@ -91,11 +91,11 @@ Bilang karagdagan sa mga terminong tinukoy sa ibang lugar sa Kasunduang ito, ang
 
 **“TripPay”** nangangahulugang ang ganap na pag-aari na subsidiary na kumpanya na nangongolekta ng mga pagbabayad (Pay-in) at mga disbursement (Pay-out) para sa Wink, na tinutukoy bilang Payment Facilitator.
 
-**"Mga Sales Channel"** ay nangangahulugang (i) mga website na pinamamahalaan, pinamamahalaan, o pagmamay-ari ng Wink para sa iba pang mga negosyo na gamitin upang gumawa ng mga Booking at kung saan ay maa-access lamang gamit ang mga password na ibinigay ng Wink; (ii) Mga koneksyon sa API sa pagitan ng Wink at mga website ng paglalakbay ng mga kliyente nito; o (iii) anumang iba pang paraan ng pamamahagi kung saan nagsusuplay ang Wink ng Mga Kwarto sa mga kliyente nito para sa kanilang pagpapatuloy na pamamahagi o pagbebenta, maging ito man ay sa mga website o kung hindi man.
+**"Mga Sales Channel"** ay nangangahulugang (i) mga website na pinamamahalaan, pinamamahalaan, o pagmamay-ari ng Wink para sa iba pang mga negosyo na gamitin upang gumawa ng mga Booking at kung saan ay maa-access lamang gamit ang mga password na ibinigay ng Wink; (ii) Mga koneksyon sa API sa pagitan ng Wink at mga website ng paglalakbay ng mga kliyente nito; o (iii) anumang iba pang paraan ng pamamahagi kung saan ang Wink ay nagsusuplay ng Mga Kwarto sa mga kliyente nito para sa kanilang pagpapatuloy na pamamahagi o pagbebenta, maging ito man ay sa mga website o kung hindi man.
 
 **1.1 Walang Pakikipagsosyo**
 
-1.1.1 Ang Kasunduang ito ay hindi nilayon, o anumang bagay dito o sa alinman sa mga pagsasaayos na pinag-isipan dito, ay hindi dapat ipakahulugan, upang lumikha ng isang joint venture o ang relasyon ng mga kasosyo, partnership, o punong-guro at ahente sa pagitan o sa pagitan ng mga Partido. Maliban kung ang mga Partido ay sumang-ayon sa ibang paraan sa pamamagitan ng pagsulat, wala sa kanila ang dapat (i) pumasok sa anumang kontrata o pangako sa mga ikatlong partido bilang ahente para sa o sa ngalan ng kabilang Partido, (ii) ilarawan o ipakilala ang sarili bilang ganoong ahente o sa anumang paraan ay ipahayag ang sarili bilang isang ahente, o (iii) kumilos sa ngalan o kumakatawan sa kabilang Partido sa anumang paraan, o para sa anumang layunin.
+1.1.1 Ang Kasunduang ito ay hindi nilayon, ni ang anumang bagay dito o sa alinman sa mga pagsasaayos na pinag-isipan dito, ay hindi dapat ipakahulugan, upang lumikha ng isang joint venture o ang relasyon ng mga kasosyo, partnership, o punong-guro at ahente sa pagitan o sa mga Partido. Maliban kung ang mga Partido ay sumang-ayon sa ibang paraan sa pamamagitan ng pagsulat, wala sa kanila ang dapat (i) pumasok sa anumang kontrata o pangako sa mga ikatlong partido bilang ahente para sa o sa ngalan ng kabilang Partido, (ii) ilarawan o ipakilala ang sarili bilang ganoong ahente o sa anumang paraan ay ipahayag ang sarili bilang isang ahente, o (iii) kumilos sa ngalan o kumakatawan sa kabilang Partido sa anumang paraan, o para sa anumang layunin.
 
 .
 
@@ -117,7 +117,7 @@ Responsibilidad ng mga Provider ng Akomodasyon na panatilihing napapanahon at tu
 
 5.1 Responsable ang mga Provider ng Akomodasyon sa pag-unawa at pagsunod sa anumang mga batas, tuntunin, regulasyon, at kontrata sa mga ikatlong partido na nalalapat sa iyong listahan.
 
-5.2 Responsable ang mga Provider ng Akomodasyon sa pangangasiwa at paggamit ng personal na data ng mga bisita at iba pa bilang pagsunod sa mga naaangkop na batas sa privacy at sa Mga Tuntuning ito.
+5.2 Ang mga Provider ng Akomodasyon ay responsable para sa pangangasiwa at paggamit ng personal na data ng mga bisita at iba pa bilang pagsunod sa mga naaangkop na batas sa privacy at sa Mga Tuntuning ito.
 
 **6. Mga Bayarin at Komisyon sa Pag-book**
 
@@ -154,19 +154,19 @@ Mababayaran sa hotel (“Net Rate”) => USD 85.1
 
 **Paunawa Tungkol sa Pamamahala sa Pagbabayad ng Mga Third Party Integrator**
 
-**Pakitandaan na ang ilang partikular na kaanib, pagkatapos nito ay tinutukoy bilang "Mga Third Party Integrator," ay magiging responsable para sa paghawak ng mga transaksyon sa pagbabayad. Bilang resulta, ang mga Third Party Integrator na ito ang gaganap sa papel ng merchant of record. Dahil dito, hindi na malalapat ang mga tuntunin sa pagbabayad ng Wink sa mga transaksyong ito. Sa halip, ang mga bagong tuntunin sa pagbabayad na partikular sa Third Party Integrator ay dapat tanggapin ng hotel.**
+**Pakitandaan na ang ilang partikular na kaanib, pagkatapos nito ay tinutukoy bilang "Mga Third Party Integrator," ay magiging responsable para sa paghawak ng mga transaksyon sa pagbabayad. Bilang resulta, ang mga Third Party Integrator na ito ang gaganap sa tungkulin ng merchant of record. Dahil dito, hindi na malalapat ang mga tuntunin sa pagbabayad ng Wink sa mga transaksyong ito. Sa halip, ang mga bagong tuntunin sa pagbabayad na partikular sa Third Party Integrator ay dapat tanggapin ng hotel.**
 
 ***
 
 **7. Buwis**
 
-7.1 Ang Provider ng Akomodasyon ay may pananagutan na tiyakin na kasama sa Rate ang lahat ng naaangkop na Buwis. Responsibilidad ng Provider ng Akomodasyon na tiyakin na ang mga Buwis na kasama sa Mga Rate ay tumpak at napapanahon. Kapag ang Tagapagbigay ng Akomodasyon ay hindi nagpahiwatig ng pagkakaroon ng mga buwis sa lungsod, mga bayarin sa turismo, o iba pang lokal na bayarin na babayaran, dapat itong maunawaan na ang mga ito ay kasama sa Rate.
+7.1 Ang Provider ng Akomodasyon ay may pananagutan na tiyakin na kasama sa Rate ang lahat ng naaangkop na Buwis. Responsibilidad ng Provider ng Akomodasyon na tiyakin na ang mga Buwis na kasama sa Mga Rate ay tumpak at napapanahon. Kapag hindi ipinahiwatig ng Tagapagbigay ng Akomodasyon ang pagkakaroon ng mga buwis sa lungsod, mga bayarin sa turismo, o iba pang lokal na bayarin na babayaran, dapat itong maunawaan na kasama ang mga ito sa Rate.
 
 7.2 Ang bawat Provider ng Akomodasyon ay may pananagutan sa pagpapadala ng anumang mga Buwis sa naaangkop na mga ahensya ng pamahalaan at/o mga institusyon.
 
 7.3 Pananagutan ang Provider ng Akomodasyon, at sumasang-ayon na magbayad ng danyos, Wink para sa anumang pagkalugi, gastos, parusa, at/o pinsalang natamo bilang resulta ng anumang pagkabigo na isama ang tumpak at napapanahon na Mga Buwis sa kanilang Mga Rate at/o bilang resulta ng anumang pagkabigo na ipaalam o tumpak na ipaalam sa Wink ang mga naaangkop na Buwis.
 
-7.4 Wink, kapag nag-aalok ng Mga Kwarto sa mga Kasosyo nito, ay dapat isama ang lahat ng naaangkop na Buwis (napapailalim sa Sub-Section (a) ng Seksyon na ito). Ang lahat ng halagang babayaran sa ilalim ng Kasunduang ito, maliban kung iba ang ipinahiwatig, ay dapat kasama ng VAT o iba pang naaangkop na mga buwis o tungkulin (maliban sa buwis ng korporasyon o iba pang mga buwis sa kita). Kung ang anumang halaga ng VAT ay tinasa at ipinapataw ng sinumang may-katuturang awtoridad na responsable para sa VAT sa bansa kung saan ibinibigay ang mga serbisyong iyon, ang Wink ay dapat, sa pagtanggap ng wastong invoice ng buwis mula sa Accommodation Provider, magbayad sa Accommodation Provider ng halaga ng VAT na kasama sa mga halaga ng VAT na kasama sa ilalim ng Kasunduang ito.
+7.4 Wink, kapag nag-aalok ng Mga Kwarto sa Mga Kasosyo nito, ay dapat isama ang lahat ng naaangkop na Buwis (napapailalim sa Sub-Section (a) ng Seksyon na ito). Ang lahat ng halagang babayaran sa ilalim ng Kasunduang ito, maliban kung iba ang ipinahiwatig, ay dapat kasama ng VAT o iba pang naaangkop na mga buwis o tungkulin (maliban sa buwis ng korporasyon o iba pang mga buwis sa kita). Kung ang anumang halaga ng VAT ay tinasa at ipinapataw ng sinumang may-katuturang awtoridad na responsable para sa VAT sa bansa kung saan ibinigay ang mga serbisyong iyon, ang Wink ay, sa pagtanggap ng wastong invoice ng buwis mula sa Accommodation Provider, magbayad sa Accommodation Provider ng halaga ng VAT na kasama sa VAT inclusive sums na babayaran sa ilalim ng Kasunduang ito.
 
 7.5 Ang anumang paghahabol ng may-katuturang awtoridad para sa mga multa o interes na nagmula sa huli na pagbabayad, o anumang na-invoice na VAT, ay dapat na para sa account ng Accommodation Provider. Dagdag pa, kung ang anumang halaga ng VAT ay tinasa at ipinapataw ng sinumang may-katuturang awtoridad na responsable para sa VAT sa bansa kung saan natanggap ang mga serbisyo sa ilalim ng mekanismo ng self-accounting, isasaalang-alang ng Wink ang VAT na ito sa pagbabalik ng VAT nito alinsunod sa batas ng VAT sa bansa. Ang anumang paghahabol ng may-katuturang awtoridad para sa mga multa o interes na nagmumula sa huli na pagbabayad ng anumang self-accounted na VAT ay para sa account ng Wink.
 
@@ -219,18 +219,18 @@ Sa pinakamaagang posible, aabisuhan ng Accommodation Provider sa pamamagitan ng 
 * Sa pamamagitan ng Accommodation Provider, nang walang dahilan anumang oras nang walang abiso sa pamamagitan ng pag-deactivate ng property sa Wink extranet property dashboard.
 * Sa anumang ibang paraan na hayagang ibinigay sa ibang lugar sa loob ng Kasunduang ito.
 
-13.4 Bukod pa rito, inilalaan ng Wink ang karapatan sa sarili nitong paghuhusga na wakasan kaagad ang Kasunduang ito sa pamamagitan ng sulat na paunawa sa Provider ng Accommodation kung:
+13.4 Bukod pa rito, inilalaan ng Wink ang karapatan sa sarili nitong paghuhusga na wakasan kaagad ang Kasunduang ito sa pamamagitan ng nakasulat na paunawa sa Provider ng Accommodation kung:
 
 * Nagsisimula ang Provider ng Akomodasyon ng kawalan ng utang, pagkalugi, pagtanggap o, pagpuksa, pamamahala ng hudikatura, pangangasiwa o iba pang katulad na mga paglilitis (nagsimula man ng Tagapagbigay ng Akomodasyon o ng alinman sa (mga) pinagkakautangan ng Tagapagbigay ng Akomodasyon), na hindi na-dismiss o naresolba sa pabor ng Tagapagbigay ng Akomodasyon) sa loob ng animnapung araw (60 araw).
 * Ang isang pinagkakautangan ay nagpapatupad o nagtatangkang magsagawa ng isang mortgage sa Kalahok na Hotel.
 * Ang Accommodation Provider ay huminto sa pagsasagawa ng negosyo sa ordinaryong kurso.
-* Nawala ng Accommodation Provider ang pag-upa o mga karapatan nito na patakbuhin ang Kalahok na Hotel sa ilalim ng kasalukuyang brand name nito.
-* May pagbabago sa mga katangian ng tirahan, kabilang ngunit hindi limitado sa, konstruksyon, mga gawa at pagsasaayos.
+* Nawawala ng Accommodation Provider ang pag-upa o mga karapatan nito na patakbuhin ang Kalahok na Hotel sa ilalim ng kasalukuyang brand name nito.
+* Mayroong pagbabago sa mga katangian ng tirahan, kabilang ngunit hindi limitado sa, konstruksyon, mga gawa at pagsasaayos.
 * O dahil sa isang Force Majeure Event.
 
-13.5 Sa maagang pagwawakas o pag-expire ng Kasunduan para sa anumang kadahilanan, ang Tagabigay ng Akomodasyon ay dapat:
+13.5 Sa maagang pagwawakas o pag-expire ng Kasunduan para sa anumang dahilan, ang Tagabigay ng Akomodasyon ay dapat:
 
-* Igalang ang lahat ng Booking na ginawa bago ang epektibong pagwawakas o petsa ng pag-expire, sa orihinal na nakalaan na Mga Rate, kabilang ang mga Booking na may mga petsa ng check-in na nangyari kasunod ng pagwawakas o pag-expire ng anumang naaangkop na panahon ng paunawa, o kung hindi man ay nagbibigay ng angkop na alternatibong mga serbisyo at
+* Igalang ang lahat ng Booking na ginawa bago ang epektibong pagwawakas o petsa ng pag-expire, sa orihinal na nakalaan na Mga Rate, kabilang ang mga Booking na may mga petsa ng pag-check-in na nangyari kasunod ng pagwawakas o pag-expire ng anumang naaangkop na panahon ng paunawa, o kung hindi man ay nagbibigay ng angkop na mga alternatibong serbisyo at
 * Ayusin ang account nang naaayon.
 
 **14. Mga Representasyon at Warranty**
@@ -249,9 +249,9 @@ Ang Provider ng Akomodasyon ay ginagarantiyahan at kinakatawan na dapat itong ga
 
 14.6 Na ang lahat ng impormasyong ibinigay nang direkta o hindi direkta sa Wink ng Accommodation Provider alinsunod sa o may kaugnayan sa Kasunduang ito ay dapat na napapanahon at tumpak.
 
-14.7 Ang Tagapagbigay ng Akomodasyon na iyon ay hindi kasama sa, o isang residente ng, isang bansang napapailalim sa mga parusa sa ekonomiya o kalakalan; at
+14.7 Ang Provider ng Akomodasyon na iyon ay hindi kasama sa, o residente ng, isang bansang napapailalim sa mga parusa sa ekonomiya o kalakalan; at
 
-14.8 Upang tapusin sa sarili nitong gastos ang anumang gawaing kinakailangan upang maalis ang anumang mga kakulangan at/o mga depekto na ipinaalam dito ng mga awtoridad na may agarang epekto. Aabisuhan ng Accommodation Provider ang Wink ng pareho nang walang pagkaantala. Ang Provider ng Akomodasyon ay dapat isaalang-alang ang anumang makatwirang rekomendasyon para sa pagpapabuti na ginawa ng Wink.
+14.8 Upang tapusin sa sarili nitong gastos ang anumang gawaing kinakailangan upang maalis ang anumang mga kakulangan at/o mga depekto na ipinaalam dito ng mga awtoridad na may agarang epekto. Aabisuhan ng Accommodation Provider si Wink tungkol dito nang walang pagkaantala. Ang Provider ng Akomodasyon ay dapat isaalang-alang ang anumang makatwirang rekomendasyon para sa pagpapabuti na ginawa ng Wink.
 
 **15. Mga Insidente at Reklamo ng Panauhin**
 
@@ -265,13 +265,13 @@ Ang Provider ng Akomodasyon ay ginagarantiyahan at kinakatawan na dapat itong ga
 
 **16. Mga Karapatan sa Pag-audit**
 
-16.1 Sa panahon ng Termino, maaaring i-audit ng Wink ang alinman sa mga kaugnay na talaan ng Provider ng Akomodasyon at/o Kalahok na Mga Hotel na maaaring makatwirang kinakailangan upang magsagawa ng mga pag-verify na may kaugnayan sa (i) pagganap ng Mga Booking; (ii) anuman at lahat ng mga pagbabayad na natanggap ng Wink at/o Mga Panauhin; at (iii) anuman at lahat ng bayad na binayaran o babayaran ng Wink at/o Mga Panauhin.
+16.1 Sa panahon ng Termino, maaaring i-audit ng Wink ang alinman sa mga nauugnay na talaan ng Provider ng Akomodasyon at/o Mga Kalahok na Hotel na maaaring makatwirang kinakailangan upang maisagawa ang mga pag-verify na may kaugnayan sa (i) pagganap ng Mga Booking; (ii) anuman at lahat ng mga pagbabayad na natanggap ng Wink at/o Mga Panauhin; at (iii) anuman at lahat ng bayad na binayaran o babayaran ng Wink at/o Mga Panauhin.
 
 16.2 Ang bawat Partido ay sasagutin ang sarili nitong mga gastos kaugnay ng anumang pag-audit, maliban sa sumusunod na sitwasyon: Kung ang pag-audit ay nagpapakita na ang Tagapagbigay ng Akomodasyon ay hindi nakasunod sa alinman sa mga obligasyon nito sa ilalim ng Kasunduang ito, kung gayon, nang walang pagkiling sa iba pang mga karapatan at remedyo ng Wink, ang Tagapagbigay ng Akomodasyon ay magbabayad para sa pag-audit nang buo, at gagawin ang mga kinakailangang hakbang sa kontrata upang isagawa ang mga kinakailangang hakbang sa kontrata.
 
 **17. Seguro**
 
-Ang Accommodation Provider ay dapat magpanatili ng sapat na insurance cover sa mga mapagkakatiwalaang insurer, na lisensyado na magnegosyo sa naaangkop na estado/bansa, kaugnay ng lahat ng mga third-Party na panganib na nagmumula o maaaring lumitaw kaugnay o konektado sa probisyon ng akomodasyon (o anumang mga pasilidad at serbisyo) at/o ang Kasunduang ito, kabilang ang, pananagutan ni Wink na nagmumula o direkta o kasabay ng pagkawala ng anumang (direkta o hindi direktang pag-angkin) sa anumang tunay o personal na ari-arian; (ii) personal na pinsala o pagkamatay ng sinumang tao; (iii) pagkawala o pinsala ng ari-arian ng third-party; o (iv) ang pananagutan nito sa mga ikatlong partido kung kanino ito nagbibigay ng mga serbisyo sa tirahan.
+Ang Accommodation Provider ay dapat magpanatili ng sapat na insurance cover sa mga mapagkakatiwalaang insurer, lisensyado na magnegosyo sa naaangkop na estado/bansa, kaugnay ng lahat ng panganib ng third-Party na nagmumula o maaaring lumitaw kaugnay sa o konektado sa probisyon ng akomodasyon (o anumang mga pasilidad at serbisyo) at/o ang Kasunduang ito, kabilang ang, pananagutan ni Wink mula sa anumang tuwiran o hindi direktang pag-aangkin ng pinsala na nagmumula o direkta o kasabay ng pagkalugi sa anumang (direkta o hindi direktang pag-aangkin). sa anumang tunay o personal na ari-arian; (ii) personal na pinsala o pagkamatay ng sinumang tao; (iii) pagkawala o pinsala ng ari-arian ng third-party; o (iv) ang pananagutan nito sa mga ikatlong partido kung kanino ito nagbibigay ng mga serbisyo sa tirahan.
 
 **18. Laban sa panunuhol, mga paghihigpit sa kalakalan, at etika sa negosyo**
 
@@ -301,7 +301,7 @@ Ang Accommodation Provider ay ginagarantiyahan na sa abot ng kanyang kaalaman, s
 
 20.1 Kinikilala ng Provider ng Accommodation na ang Wink at/o ang mga tagapaglisensya nito ay mananatili sa pagmamay-ari ng lahat ng karapatan, titulo, at interes sa at sa lahat ng Mga Karapatan sa Intelektwal na Ari-arian ng Wink o nakapaloob sa Wink Website, kabilang ang (ngunit hindi limitado sa) logo ng Wink, ang Nilalaman, at ang Wink Data. Walang anumang nilalaman sa Kasunduang ito ang dapat ituring na maglilipat ng anumang ganoong karapatan, titulo, o interes sa Provider ng Akomodasyon sa anumang paraan.
 
-20.2 Ang Accommodation Provider ay hindi dapat ibunyag, isama, isama, gamitin, pagsamahin, pagsamantalahan, isama, o kung hindi man ay gagawing available ang Nilalaman at Wink Data (o anumang bahagi nito) (a) kasama ang sarili nitong nilalaman at/o ang nilalaman ng sinumang Wink Competitor (kabilang ang mga Hotel), o (b) sa o para sa pakinabang ng (ibling) mismo ng Serbisyo alinsunod sa Serbisyo, o (ii) sinumang Wink Competitor (kabilang ang Mga Hotel) (para sa pag-promote man ng, marketing ng, pagtukoy sa, pag-promote ng, pag-advertise ng, o kung hindi man sa interes ng o sa naturang partido), o (c) para sa anumang iba pang layunin o sa anumang iba pang paraan at/o sa o sa pamamagitan ng mga Third Party Platform maliban kung hayagang itinakda sa Kasunduang ito. Ang Affiliate ay hindi dapat susugan, baguhin, baguhin, papangitin, likhain ang hinango at/o mga bagong gawa batay sa at/o hinango mula sa Nilalaman at ang Nilalaman ay hindi dapat magsama ng (direkta o hindi direktang) link, reference, click-through, o reference sa (website ng) isang Wink Competitor (kabilang ang mga Hotel).
+20.2 Ang Accommodation Provider ay hindi dapat ibunyag, isama, isama, gamitin, pagsamahin, pagsamantalahan, isama, o kung hindi man ay gawing available ang Nilalaman at Wink Data (o anumang bahagi nito) (a) kasama ang sarili nitong nilalaman at/o ang nilalaman ng sinumang Wink Competitor (kabilang ang mga Hotel), o (b) sa o para sa kapakinabangan ng (ibling) ng Serbisyo alinsunod sa mismong Serbisyo, o (ii) sinumang Wink Competitor (kabilang ang mga Hotel) (para sa pag-promote man ng, marketing ng, pagtukoy sa, pag-promote ng, pag-advertise ng, o kung hindi man para sa interes ng o sa naturang partido), o (c) para sa anumang iba pang layunin o sa anumang iba pang paraan at/o sa o sa pamamagitan ng mga Third Party Platform maliban kung hayagang itinakda sa Kasunduang ito. Ang Affiliate ay hindi dapat susugan, baguhin, baguhin, papangitin, likhain ang hinango at/o mga bagong gawa batay sa at/o hinango mula sa Nilalaman at ang Nilalaman ay hindi dapat magsama ng (direkta o hindi direktang) link, reference, click-through, o reference sa (website ng) isang Wink Competitor (kabilang ang mga Hotel).
 
 20.3 Ang Accommodation Provider ay dapat (at dapat kumuha na ang mga kumpanya sa loob ng Accommodation Provider Group ay hindi dapat (direkta o hindi direktang) magparehistro, kumuha, gumamit, bumili o kumuha ng Internet domain name na nagsasama ng anumang salita o mga salita na magkapareho, o nakakalito o halos kapareho ng "Wink" o anumang mga variation, pagsasalin ng address, o maling spelling doon.
 
@@ -319,11 +319,11 @@ Ang Accommodation Provider ay ginagarantiyahan na sa abot ng kanyang kaalaman, s
 
 22.2 Kung sakaling hindi ma-access ng Accommodation Provider ang extranet para sa mga dahilan na wala sa kontrol nito, agad na aabisuhan ng Accommodation Provider ang Wink.
 
-22.3 Kinakatawan at ginagarantiyahan ng Provider ng Akomodasyon na mayroon itong lahat ng kinakailangang karapatan, lisensya, pahintulot, at pahintulot na kinakailangan upang: (i) ibigay ang Nilalaman sa Wink; (ii) ang Accommodation Provider sa pamamagitan nito ay nagbibigay sa Wink ng isang di-eksklusibo, walang royalty, hindi mababawi, sa buong mundo, at sublicensable sa mga third-party na marketing at/o mga kasosyo sa pamamahagi ng karapatang gamitin, baguhin, ipakita, i-publish, at isaayos ang Nilalaman, pangalan, logo, trademark, at anumang iba pang intelektwal na ari-arian at pang-industriya na pag-aari ng Provider ("PRI na layunin ng Provider") para sa pagganap ng Accommodation. Kasunduan; (iii) ang Accommodation Provider ay ginagarantiyahan sa Wink at sa mga kliyente nito na ang mga naturang IPR ay hindi lumalabag sa anumang mga karapatan ng third-party; at (iv) mananagot ang Provider ng Akomodasyon para sa anumang mapanirang-puri o imoral na impormasyon, ang katotohanan at katumpakan ng mga IPR nito na ibinigay sa Wink sa anumang paraan.
+22.3 Kinakatawan at ginagarantiyahan ng Provider ng Akomodasyon na mayroon itong lahat ng kinakailangang karapatan, lisensya, pahintulot, at pahintulot na kinakailangan upang: (i) ibigay ang Nilalaman sa Wink; (ii) ang Accommodation Provider sa pamamagitan nito ay nagbibigay sa Wink ng isang di-eksklusibo, walang royalty, hindi mababawi, sa buong mundo, at sublicensable sa mga third-party na marketing at/o mga kasosyo sa pamamahagi ng karapatang gamitin, baguhin, ipakita, i-publish, at isaayos ang Nilalaman, pangalan, logo, trademark, at anumang iba pang intelektwal na ari-arian at pang-industriya na pag-aari ng Provider ("PRI na layunin ng Provider") para sa pagganap ng Accommodation. Kasunduan; (iii) ginagarantiyahan ng Provider ng Akomodasyon sa Wink at sa mga kliyente nito na ang mga naturang IPR ay hindi lumalabag sa anumang mga karapatan ng third-party; at (iv) mananagot ang Provider ng Akomodasyon para sa anumang mapanirang-puri o imoral na impormasyon, ang katotohanan at katumpakan ng mga IPR nito na ibinigay sa Wink sa anumang paraan.
 
 22.4 Ang Accommodation Provider ay dapat, sa lahat ng oras sa panahon at pagkatapos ng pag-expire ng pagwawakas ng Kasunduang ito, magbayad ng danyos at panatilihin ang indemnified Wink, ang Accommodation Provider nito, at/o ang mga kasosyo nito nang buo at panatilihin silang hindi nakakapinsala kapag hinihingi mula sa at laban sa anuman at lahat ng pagkalugi na natamo ng, iginawad laban sa, o sumang-ayon na bayaran ng Accommodation Provider nito, at/o ang mga kasosyo nito, paghahabol.
 
-22.5 Ang Accommodation Provider ay dapat: (i) magbigay sa Wink ng mga update sa paraang hiniling ni Wink sa pag-usad ng IPR claim kasama ang ebidensya na ang claim ng IPRs ay naayos o na-dismiss ng claimant sa lalong madaling panahon na makatwirang magagawa; (ii) Kung sakaling mabigo ang Provider ng Akomodasyon na sumunod sa sugnay na ito o kung hindi ganap na nasiyahan si Wink sa pag-usad ng paghahabol sa IPR o upang maiwasan ang karagdagang pinsala, ang Wink ay magkakaroon ng agarang kontrol sa paghahabol sa IPR sa halaga ng Tagabigay ng Akomodasyon. May karapatan si Wink na i-set off ang anumang gastos at kabayarang ibinayad bilang resulta ng paghahabol sa IPR laban sa anumang kasalukuyan, contingent at/o hinaharap na (mga) halaga na dapat bayaran o utang mula sa Accommodation Provider.
+22.5 Ang Accommodation Provider ay dapat: (i) magbigay ng mga update sa Wink sa paraang hiniling ni Wink sa pag-usad ng IPR claim kasama ang ebidensya na ang claim ng IPRs ay naayos o na-dismiss ng claimant sa lalong madaling panahon na makatwirang magagawa; (ii) Kung sakaling mabigo ang Provider ng Akomodasyon na sumunod sa sugnay na ito o kung hindi ganap na nasiyahan si Wink sa pag-usad ng paghahabol sa IPR o upang maiwasan ang karagdagang pinsala, ang Wink ay magkakaroon ng agarang kontrol sa paghahabol sa IPR sa halaga ng Tagabigay ng Akomodasyon. May karapatan si Wink na i-set off ang anumang gastos at kabayarang ibinayad bilang resulta ng paghahabol sa IPR laban sa anumang kasalukuyan, contingent at/o hinaharap na (mga) halaga na dapat bayaran o utang mula sa Accommodation Provider.
 
 **23. Publisidad / Panlabas na Komunikasyon**
 
@@ -363,7 +363,7 @@ Ang Mga Partido ay, at dapat kumilos bilang, mga independiyenteng kontratista sa
 
 **30. Takdang-aralin**
 
-30.1 Wala sa alinmang Partido ang may karapatan na italaga, ilipat, o sakupin ang alinman sa mga karapatan at/o obligasyon nito sa ilalim ng Kasunduang ito nang walang paunang nakasulat na pahintulot ng kabilang Partido, sa kondisyon na maaaring italaga, ilipat, o sakupin ng Wink ang alinman sa mga karapatan at/o obligasyon nito sa ilalim ng Kasunduang ito (sa kabuuan o bahagi o pana-panahon ng kumpanyang may pahintulot) sa isang nakasulat na kaakibat na kumpanya nang walang oras.
+30.1 Wala sa alinmang Partido ang may karapatan na italaga, ilipat, o sakupin ang anuman sa mga karapatan at/o obligasyon nito sa ilalim ng Kasunduang ito nang walang paunang nakasulat na pahintulot ng kabilang Partido, sa kondisyon na maaaring italaga, ilipat, o sakupin ng Wink ang alinman sa mga karapatan at/o obligasyon nito sa ilalim ng Kasunduang ito (sa kabuuan o bahagi o pana-panahon ng kumpanyang may pahintulot) sa isang nakasulat na kaakibat na kumpanya nang walang oras.
 
 30.2 Ang Kasunduang ito ay tinapos para sa kapakinabangan ng Mga Partido at ng kani-kanilang mga kahalili at pinahihintulutang italaga, at wala dito ang nilayon o tuwirang magbibigay sa sinumang ibang tao ng anumang legal o patas na karapatan, benepisyo, o remedyo sa anumang kalikasan, sa ilalim o sa dahilan ng Kasunduang ito, maliban sa lawak na tahasang nakasaad sa Kasunduang ito.
 
@@ -381,7 +381,7 @@ Walang pananagutan ang Wink para sa anumang pagkaantala o pagkabigo na tuparin a
 
 **33. Pagbabayad-danyos**
 
-Sa maximum na saklaw na pinahihintulutan ng naaangkop na batas, sumasang-ayon kang palayain, ipagtanggol (sa opsyon ni Wink), bayaran ang danyos, at hawakan ang Wink at lahat ng Accommodation Provider at subsidiary nito, at ang kanilang mga opisyal, direktor, empleyado, at ahente, na hindi nakakapinsala mula at laban sa anumang mga paghahabol, pananagutan, pinsala, pagkalugi, at gastos, kasama ang, nang walang limitasyon, sa anumang paglabag sa batas, at pagkakaugnay sa iyong bayad ng mga Tuntuning ito; (ii) ang iyong hindi wastong paggamit ng Mga Serbisyo; (iii) ang iyong pagkabigo, o ang aming kabiguan sa iyong direksyon, upang tumpak na mag-ulat, mangolekta, o magpadala ng mga buwis; o (iv) ang iyong paglabag sa anumang mga batas, regulasyon, o mga karapatan ng third-party.
+Sa maximum na lawak na pinahihintulutan ng naaangkop na batas, sumasang-ayon kang palayain, ipagtanggol (sa opsyon ni Wink), bayaran, at hawakan ang Wink at lahat ng Accommodation Provider at subsidiary nito, at ang kanilang mga opisyal, direktor, empleyado, at ahente, na hindi nakakapinsala mula sa at laban sa anumang mga paghahabol, pananagutan, pinsala, pagkalugi, at gastos, kasama ang, nang walang limitasyon, anumang paglabag sa batas at pagkakaugnay sa iyong bayad ng mga Tuntuning ito; (ii) ang iyong hindi wastong paggamit ng Mga Serbisyo; (iii) ang iyong pagkabigo, o ang aming kabiguan sa iyong direksyon, na tumpak na mag-ulat, mangolekta, o magpadala ng mga buwis; o (iv) ang iyong paglabag sa anumang mga batas, regulasyon, o mga karapatan ng third-party.
 
 **34. Namamahala sa Batas at Jurisdiction**
 

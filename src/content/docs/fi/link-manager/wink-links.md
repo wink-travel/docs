@@ -58,7 +58,7 @@ Käytä WinkLinksiä myydäksesi:
 * [Kartat](/studio/maps)- Kartta, jonka merkit avautuvat varattavissa oleviin kortteihin.
 
 :::huomautus
-Hallitse WinkLinks-tiliäsi kirjautumalla kumppanitilillesi osoitteessa[Wink-studio](https://studio.wink.travel).
+WinkLinks-tilisi hallinnoimiseksi kirjaudu sisään kumppanitilillesi osoitteessa[Wink-studio](https://studio.wink.travel).
 :::
 
 :::vihje

@@ -21,7 +21,7 @@ Usługodawca Płatności świadczy usługi płatnicze podmiotom stowarzyszonym, 
 * Usługi związane z pobieraniem płatności; i
 * Inne usługi związane z płatnościami w ramach Usług Afiliacyjnych.
 
-Aby móc korzystać z Usług Płatniczych, musisz mieć ukończone 18 lat, posiadać ważne konto Wink zgodnie z Warunkami Dostawcy Usług Płatniczych oraz dbać o to, aby Twoje dane płatnicze i dane osobowe były dokładne i kompletne.
+Aby móc korzystać z Usług Płatniczych, musisz mieć ukończone 18 lat, posiadać ważne konto Wink zgodnie z Warunkami Dostawcy Usług Płatniczych oraz dbać o to, aby Twoje dane dotyczące płatności i dane osobowe były dokładne i kompletne.
 
 Umowa została przeczytana, a wszystkie Warunki i Postanowienia zostały zaakceptowane przez Podmiot stowarzyszony. Podmiot stowarzyszony wyraźnie zgadza się, że elektroniczna akceptacja niniejszej Umowy i jej Warunków i Postanowień, w tym tych związanych ze zmianami, jest ważna, wiążąca i wykonalna.
 

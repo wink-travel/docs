@@ -14,7 +14,7 @@ sidebar:
 
 ## Amaç ve Kapsam
 
-Güvenliğe ve kullanıcı verilerini korumaya yönelik devam eden bağlılığımızın bir parçası olarak, web uygulamamızda düzenli olarak penetrasyon testleri gerçekleştiriyoruz. Bu belge, test metodolojilerimizi ana hatlarıyla açıklıyor, bulguların bir özetini sunuyor ve sürekli güvenlik iyileştirme yaklaşımımızı vurguluyor.
+Güvenlik ve kullanıcı verilerini korumaya yönelik devam eden bağlılığımızın bir parçası olarak, web uygulamamızda düzenli olarak penetrasyon testleri gerçekleştiriyoruz. Bu belge, test metodolojilerimizi ana hatlarıyla açıklıyor, bulguların bir özetini sunuyor ve sürekli güvenlik iyileştirme yaklaşımımızı vurguluyor.
 
 Yeni raporlar hazırlandığında veya önemli değişiklikler meydana geldiğinde bu belge güncellenecektir.
 

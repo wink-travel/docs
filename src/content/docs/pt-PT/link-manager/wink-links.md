@@ -17,7 +17,7 @@ Nós construímos [WinkLinks](https://i.trvl.as/); um gestor de links totalmente
 * O WinkLinks permite-lhe adicionar todos os seus links de afiliados existentes, como Commission Junction e Amazon, gratuitamente.
 * Obtém um URL de vaidade legal, como <https://i.trvl.as/bob>, para aqueles momentos em que só pode partilhar um único URL.
 * Pode organizar e partilhar links e enviar ficheiros.
-* Os hotéis, cadeias e marcas podem utilizar o WinkLinks como um motor de reserva avançado:
+* Os hotéis, as cadeias e as marcas podem utilizar o WinkLinks como um mecanismo de reserva avançado:
   * Suporta múltiplas propriedades.
   * Suporta múltiplos destinos.
   * Suporta diversas moedas.

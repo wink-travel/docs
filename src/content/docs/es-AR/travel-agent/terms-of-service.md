@@ -97,7 +97,7 @@ Estos términos están disponibles en[Portal de afiliados > Condiciones del serv
 
 3.3**Pago neto:**&#x45;l Agente de Viajes abonará el Pago Neto restante al Proveedor de Alojamiento correspondiente, según los términos de un acuerdo independiente entre el Agente de Viajes y el Proveedor de Alojamiento. Wink no será responsable de realizar ningún pago al Proveedor de Alojamiento.
 
-3.4**Acuerdo separado:**&#x45;l Agente de Viajes debe tener un acuerdo independiente con cada Proveedor de Alojamiento que detalle los términos y condiciones de pago. Este Acuerdo entre Wink y el Agente de Viajes no rige la relación entre el Agente de Viajes y los Proveedores de Alojamiento.
+3.4**Acuerdo separado:**&#x45;l Agente de Viajes debe tener un acuerdo independiente con cada Proveedor de Alojamiento que detalle las condiciones de pago. Este Acuerdo entre Wink y el Agente de Viajes no rige la relación entre el Agente de Viajes y los Proveedores de Alojamiento.
 
 3.5**Facturación de Wink:**&#x57;ink emitirá una factura mensual al Agente de Viajes por el 1,5% de la Tarifa de Reserva acumulada durante el mes. El Agente de Viajes es responsable de pagar esta factura dentro de los plazos de pago especificados.
 
@@ -221,7 +221,7 @@ Estos términos están disponibles en[Portal de afiliados > Condiciones del serv
 
 11.2.2**Arbitraje:**&#x53;i la controversia no puede resolverse mediante negociaciones en un plazo de treinta (30) días, se someterá a arbitraje y se resolverá definitivamente según el Reglamento del Centro de Arbitraje Internacional de Singapur (SIAC), que se incorpora por referencia a esta cláusula. El número de árbitros será uno y la sede del arbitraje será Singapur. El idioma del arbitraje será el inglés.
 
-11.2.3**Jurisdicción:**&#x4E;o obstante lo anterior, cualquiera de las partes conserva el derecho de buscar medidas cautelares o provisionales en los tribunales de Singapur para proteger sus derechos o propiedad mientras espera el nombramiento de un árbitro, y dicho tribunal tendrá jurisdicción exclusiva para otorgar dichas medidas.
+11.2.3**Jurisdicción:**&#x4E;o obstante lo anterior, cualquiera de las partes conserva el derecho de buscar medidas cautelares o provisionales en los tribunales de Singapur para proteger sus derechos o propiedad mientras espera el nombramiento de un árbitro, y cualquiera de dichos tribunales tendrá jurisdicción exclusiva para otorgar dichas medidas.
 
 **12. Fuerza mayor**
 

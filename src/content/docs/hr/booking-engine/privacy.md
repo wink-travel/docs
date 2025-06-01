@@ -44,7 +44,7 @@ Razdoblje čuvanja osobnih podataka, kako bi se ispunile gore opisane svrhe, Dru
 
 (3) Za obradu osobnih podataka u svrhu izgradnje i poboljšanja poslovnih odnosa i/ili poboljšanja usluge, Društvo zadržava pravo zadržati te osobne podatke u mjeri u kojoj Društvo može imati poslovnu potrebu. Društvo jamči da zadržavanje osobnih podataka neće nerazumno utjecati na prava ispitanika;
 
-(4) Za obradu osobnih podataka radi zaštite i borbe za legitimna prava Društva, Društvo ima potrebu čuvati takve osobne podatke u skladu s propisima određenim važećim zakonima; i
+(4) Za obradu osobnih podataka radi zaštite i borbe za legitimna prava Društva, Društvo ima potrebu čuvati takve osobne podatke u skladu s propisima definiranim važećim zakonima; i
 
 (5) U slučaju da date Društvu privolu za obradu vaših osobnih podataka u određene svrhe, Društvo će obrađivati ​​vaše osobne podatke sve dok ne povučete takvu privolu.
 
@@ -56,7 +56,7 @@ Otkrivanje osobnih podataka, općenito, vaši osobni podaci neće biti otkriveni
 
 Društvo se obvezuje provesti odgovarajuće mjere sigurnosti osobnih podataka kako bi spriječilo svaki neovlašteni i nezakoniti pristup, izmjenu, dopunu ili otkrivanje. Društvo se obvezuje redovito preispitivati ​​te mjere kako bi se osigurala njihova usklađenost sa standardima i važećim zakonima.
 
-Prava ispitanika, Društvo poštuje vaša prava kao ispitanika u skladu s važećim zakonima. Možete se obratiti Društvu kako biste ostvarili prava koja su (1) pravo na povlačenje privole, (2) pravo na pristup, (3) pravo na zahtjev kopije osobnih podataka, (4) pravo na ispravak osobnih podataka, (5) pravo na prigovor na bilo kakvu obradu osobnih podataka, (6) pravo na zahtjev za prenosivost podataka u slučaju da Društvo pohranjuje osobne podatke u formatu koji je čitljiv ili se uobičajeno koristi automatiziranim alatima ili opremom, uključujući pravo na prijenos takvih osobnih podataka drugim voditeljima obrade, (7) pravo na zahtjev za brisanje ili anonimizaciju osobnih podataka kada više nema potrebe za obradom, (8) pravo na zahtjev za obustavu korištenja osobnih podataka i (9) pravo na podnošenje pritužbe.
+Prava ispitanika, Društvo poštuje vaša prava kao ispitanika u skladu s važećim zakonima. Možete se obratiti Društvu kako biste ostvarili prava koja su (1) pravo na povlačenje privole, (2) pravo na pristup, (3) pravo na zahtjev kopije osobnih podataka, (4) pravo na ispravak osobnih podataka, (5) pravo na prigovor na bilo kakvu obradu osobnih podataka, (6) pravo na zahtjev za prenosivost podataka u slučaju da Društvo pohranjuje osobne podatke u formatu koji je čitljiv ili se uobičajeno koristi automatiziranim alatima ili opremom, uključujući pravo na prijenos takvih osobnih podataka drugim voditeljima obrade podataka, (7) pravo na zahtjev za brisanje ili anonimizaciju osobnih podataka kada više nema potrebe za obradom, (8) pravo na zahtjev za obustavu korištenja osobnih podataka i (9) pravo na podnošenje pritužbe.
 
 Kontakt informacije tvrtke
 

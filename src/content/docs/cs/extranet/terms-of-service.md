@@ -89,7 +89,7 @@ Kromě pojmů definovaných jinde v této Smlouvě se v celé této Smlouvě upl
 
 **„TripPay“**&#x7A;namená plně vlastněnou dceřinou společnost, která pro Wink inkasuje platby (příjem) a výdaje (výplata), dále označovanou jako Platební zprostředkovatel.
 
-**„Prodejní kanály“**&#x7A;namená (i) webové stránky provozované, spravované nebo vlastněné společností Wink pro jiné firmy k provádění rezervací a které jsou přístupné pouze s hesly vydanými společností Wink; (ii) API připojení mezi společností Wink a cestovními webovými stránkami jejích klientů; nebo (iii) jakoukoli jinou distribuční metodu, kterou společnost Wink poskytuje pokoje svým klientům pro jejich další distribuci nebo prodej, ať už na webových stránkách nebo jinak.
+**„Prodejní kanály“**&#x7A;namená (i) webové stránky provozované, spravované nebo vlastněné společností Wink pro účely rezervací jiných podniků a přístupné pouze s hesly vydanými společností Wink; (ii) API připojení mezi společností Wink a cestovními webovými stránkami jejích klientů; nebo (iii) jakoukoli jinou distribuční metodu, kterou společnost Wink poskytuje pokoje svým klientům pro jejich další distribuci nebo prodej, ať už na webových stránkách nebo jinak.
 
 **1.1 Žádné partnerství**
 
@@ -141,7 +141,7 @@ Příklad výpočtu pro rezervaci v hodnotě 100 USD provedenou přes Trvaveliko
 96-1,5 % = 94,56\
 Splatné hotelu („Čistá sazba“) => 94,96 USD
 
-Příklad výpočtu pro rezervaci v hodnotě 100 USD provedenou prostřednictvím affiliate partnera s 10% provizí
+Příklad výpočtu pro rezervaci v hodnotě 100 USD provedenou prostřednictvím affiliate partnera s provizí 10 %
 
 100-4 % = 96\
 96-1,5 % = 94,56\
@@ -162,11 +162,11 @@ Splatné hotelu („Čistá sazba“) => 85,1 USD
 
 7.2 Každý poskytovatel ubytování je zodpovědný za odvedení veškerých daní příslušným vládním orgánům a/nebo institucím.
 
-7.3 Poskytovatel ubytování odpovídá za jakékoli ztráty, náklady, pokuty a/nebo škody vzniklé v důsledku nezahrnutí přesných a aktuálních daní do sazeb a/nebo v důsledku neinformování nebo nepřesného informování společnosti Wink o příslušných daních a souhlasí s jejich odškodněním.
+7.3 Poskytovatel ubytování nese odpovědnost za jakékoli ztráty, náklady, pokuty a/nebo škody vzniklé v důsledku nezahrnutí přesných a aktuálních daní do sazeb a/nebo v důsledku neinformování nebo nepřesného informování společnosti Wink o příslušných daních a souhlasí s jejich odškodněním.
 
 7.4 Společnost Wink při nabídce Pokojů svým Partnerům uvede všechny příslušné Daně (s výhradou pododstavce (a) tohoto oddílu). Veškeré částky splatné podle této Smlouvy, pokud není uvedeno jinak, zahrnují DPH nebo jiné příslušné daně či cla (s výjimkou daně z příjmu právnických osob nebo jiných daní ze zisku). Pokud je jakýkoli příslušný orgán odpovědný za DPH v zemi, ve které jsou tyto služby poskytovány, vyměřen a vybrán jakýkoli podíl DPH, pak společnost Wink po obdržení platného daňového dokladu od Poskytovatele ubytování uhradí Poskytovateli ubytování částku DPH zahrnutou v částkách splatných podle této Smlouvy včetně DPH.
 
-7.5 Jakýkoli nárok příslušného úřadu na pokuty nebo úroky vyplývající z pozdní platby nebo fakturované DPH by měl být na účet ubytovatele. Dále, pokud je jakýkoli příslušný úřad odpovědný za DPH v zemi, ve které jsou služby poskytovány, vyměřen a vybrán v rámci mechanismu samoúčtování, pak společnost Wink tuto DPH vyúčtuje ve svém přiznání k DPH v souladu s legislativou o DPH v dané zemi. Jakýkoli nárok příslušného úřadu na pokuty nebo úroky vyplývající z pozdní platby jakékoli samoúčtované DPH bude na účet společnosti Wink.
+7.5 Jakýkoli nárok příslušného úřadu na pokuty nebo úroky vyplývající z pozdní platby nebo fakturované DPH by měl být na účet ubytovatele. Dále, pokud je jakýkoli příslušný úřad odpovědný za DPH v zemi, ve které jsou služby poskytovány, vyměřen a vybrán v rámci mechanismu samoúčtování, pak společnost Wink tuto DPH vyúčtuje ve svém přiznání k DPH v souladu s právními předpisy o DPH v dané zemi. Jakýkoli nárok příslušného úřadu na pokuty nebo úroky vyplývající z pozdní platby jakékoli samoúčtované DPH bude na účet společnosti Wink.
 
 **8. Bankovní údaje a určený zástupce poskytovatele ubytování**
 
@@ -192,7 +192,7 @@ Pouze osoba podepisující tuto smlouvu bude jediným určeným zástupcem ubyto
 
 **11. Nedostupnost / Neplnění**
 
-11.1 V případě jakékoli situace nedostupnosti (ať už z důvodu nadměrné dostupnosti nebo z jiného důvodu), která vyžaduje, aby ubytovatel přemístil hosta do alternativního ubytování, se ubytovatel zavazuje vynaložit veškeré úsilí k udržení hostů a rezervací, aby hosté mohli v takovém ubytování co nejvíce zůstat. V případě, že ubytovatel musí hosta nakonec přemístit do alternativního ubytování, souhlasí s následujícím:
+11.1 V případě jakékoli situace nedostupnosti (ať už z důvodu nadměrné dostupnosti nebo z jiného důvodu), která vyžaduje, aby ubytovatel přemístil hosta do alternativního ubytování, souhlasí ubytovatel s tím, že vynaloží veškeré úsilí k udržení hostů a rezervací, aby hosté mohli v takovém ubytování co nejvíce zůstat. V případě, že ubytovatel nakonec musí hosta přemístit do alternativního ubytování, souhlasí s následujícím:
 
 * Bezodkladně informovat společnost Wink před přemístěním hosta;
 * Přestěhovat Hosta do alternativního ubytování stejné nebo vyšší kategorie/hodnocení ve stejné oblasti, za stejných rezervovaných podmínek, a takové přemístění uhradí Ubytovatel bez dalších poplatků pro dotčeného Hosta a bude zahrnovat mimo jiné...
@@ -207,7 +207,7 @@ Ubytovatel co nejdříve oznámí prostřednictvím sekce Oznámení na Wink Ext
 
 **13. Změna, doba trvání a ukončení**
 
-13.1 Úprava. S výjimkou případů, kdy platné právní předpisy vyžadují jinak, může společnost Wink tyto Podmínky kdykoli upravit. Pokud provedeme podstatné změny těchto Podmínek, zveřejníme revidované Podmínky na Platformě Wink a aktualizujeme datum „Poslední aktualizace“ v horní části těchto Podmínek. Pokud se vás úprava týká, budeme vás o úpravách informovat nejméně třicet (30) dní před datem jejich účinnosti. Pokud svou smlouvu neukončíte před datem účinnosti revidovaných Podmínek, vaše další používání Služeb bude představovat souhlas s veškerými změnami revidovaných Podmínek.
+13.1 Úprava. S výjimkou případů, kdy platné právní předpisy vyžadují jinak, může společnost Wink tyto Podmínky kdykoli upravit. Pokud provedeme podstatné změny těchto Podmínek, zveřejníme revidované Podmínky na Platformě Wink a aktualizujeme datum „Poslední aktualizace“ v horní části těchto Podmínek. Pokud se vás úprava týká, budeme vás o úpravách informovat také nejméně třicet (30) dní před datem jejich účinnosti. Pokud svou smlouvu neukončíte před datem účinnosti revidovaných Podmínek, vaše další používání Služeb bude představovat souhlas s veškerými změnami revidovaných Podmínek.
 
 13.2 Doba trvání. Není-li dohodnuto jinak, tato Smlouva nabývá účinnosti dnem jejího uzavření na dobu neurčitou.
 
@@ -309,7 +309,7 @@ Poskytovatel ubytování zaručuje, že dle jeho nejlepšího vědomí a svědom
 
 21.1 Poskytovatel ubytování (a tam, kde to kontext vyžaduje, každý zúčastněný hotel) neprodá, nepronajme ani jinak nezbaví se svého podílu v žádném hotelovém majetku bez písemného oznámení alespoň tři (3) měsíce předem. V případě takového prodeje, pronájmu nebo jiného nakládání Poskytovatel ubytování (a/nebo zúčastněný hotel) ve smlouvě o prodeji, pronájmu nebo jiném nakládání výslovně stanoví, že tato Smlouva (včetně všech Rezervací provedených na jejím základě) bude po změně kontroly postoupena nebo převedena na nový subjekt v souladu s pododstavci (b) tohoto článku.
 
-21.2 Pokud by společnost Wink z jakéhokoli důvodu nechtěla pokračovat v uzavření Smlouvy s novým subjektem, mohou se Smluvní strany dohodnout na okamžitém ukončení této Smlouvy, a to bez újmy na jakýchkoli stávajících Rezervacích a jakýchkoli dalších právech, která kterákoli ze Smluvních stran mohla před takovým ukončením vzniknout.
+21.2 Pokud by společnost Wink z jakéhokoli důvodu nechtěla pokračovat v uzavření Smlouvy s novým subjektem, mohou se Smluvní strany dohodnout na okamžitém ukončení této Smlouvy, a to bez újmy na stávajících Rezervacích a dalších právech, která kterákoli ze Smluvních stran mohla před takovým ukončením vzniknout.
 
 **22. Obsah výpisu**
 
@@ -321,7 +321,7 @@ Poskytovatel ubytování zaručuje, že dle jeho nejlepšího vědomí a svědom
 
 22.4 Ubytovatel se zavazuje, že po celou dobu trvání této Smlouvy a po jejím uplynutí odškodní a plně odškodní Wink, jeho ubytovatele a/nebo jeho partnery a na požádání je ochrání před veškerými ztrátami, které Wink, jeho ubytovatelům a/nebo jeho partnerům vzniknou, které jsou jim přiznány nebo které jsou jimi odsouhlaseny k úhradě v souvislosti s jakýmkoli nárokem na práva duševního vlastnictví.
 
-22.5 Ubytovatel se zavazuje: (i) poskytovat společnosti Wink aktualizace způsobem požadovaným společností Wink o průběhu vyřizování nároku na práva duševního vlastnictví, včetně důkazů o tom, že nárok na práva duševního vlastnictví byl žalobcem vyřešen nebo zamítnut, jakmile je to přiměřeně proveditelné; (ii) V případě, že ubytovatel nedodrží toto ustanovení nebo pokud společnost Wink není plně spokojena s průběhem vyřizování nároku na práva duševního vlastnictví, nebo za účelem předcházení dalším škodám, převezme společnost Wink okamžitou kontrolu nad nárokem na práva duševního vlastnictví na náklady ubytovatele. Společnost Wink bude oprávněna započíst veškeré náklady a kompenzace vyplacené v důsledku nároku na práva duševního vlastnictví proti jakékoli současné, podmíněné a/nebo budoucí částce (částkám) splatné nebo dlužné vůči ubytovateli.
+22.5 Ubytovatel se zavazuje: (i) poskytnout společnosti Wink aktualizace způsobem požadovaným společností Wink o průběhu vyřizování nároku na práva duševního vlastnictví, včetně důkazů o tom, že nárok na práva duševního vlastnictví byl žalobcem vyřešen nebo zamítnut, jakmile je to přiměřeně proveditelné; (ii) V případě, že ubytovatel nedodrží toto ustanovení nebo pokud společnost Wink není plně spokojena s průběhem vyřizování nároku na práva duševního vlastnictví, nebo za účelem předcházení dalším škodám, převezme společnost Wink okamžitou kontrolu nad nárokem na práva duševního vlastnictví na náklady ubytovatele. Společnost Wink bude oprávněna započíst veškeré náklady a kompenzace vyplacené v důsledku nároku na práva duševního vlastnictví proti jakékoli současné, podmíněné a/nebo budoucí částce (částkám) splatné nebo dlužné vůči ubytovateli.
 
 **23. Publicita / Externí komunikace**
 
@@ -331,7 +331,7 @@ Poskytovatel ubytování zaručuje, že dle jeho nejlepšího vědomí a svědom
 
 **24. Přednost**
 
-24.1 Tato Smlouva je vytvořena za účelem umožnění individuálních obchodních smluv, které bude následně uzavřena společností Wink s každým z Ubytovatelů. V případě rozporu se na Ubytovatele vztahují podmínky uvedené v této Smlouvě, a to s výhradou následujícího:
+24.1 Tato Smlouva je vytvořena za účelem umožnění individuálních obchodních smluv, které bude následně společnost Wink uzavřela s každým z Ubytovatelů. V případě rozporu se na Ubytovatele vztahují podmínky stanovené v této Smlouvě, a to s výhradou následujícího:
 
 24.2 Ve vztahu k Platebním podmínkám týkajícím se dohodnutých zrušení a nedostavení se, platebním zásadám, uvolnění rezervací a dostupnosti pokojů (standardní typ) mají přednost podmínky této Smlouvy;
 

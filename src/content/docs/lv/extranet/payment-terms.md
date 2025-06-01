@@ -48,7 +48,7 @@ Tikai šī līguma parakstītāja ir vienīgā Izmitināšanas Pakalpojuma snied
 
 2.2**Maksājumu pakalpojumu maksas**Maksājumu starpnieks iekasē 4% no kopējās rezervācijas summas par maksājumu pakalpojumiem.
 
-2.3**Līdzekļu pieejamība**Atkarībā no viesa maksājumu veiksmīgas saņemšanas, Maksājumu starpnieks 24 stundu laikā pēc viesa reģistrēšanās padarīs ar rezervāciju saistītos līdzekļus pieejamus Naktsmītnes pakalpojumu sniedzējam.
+2.3**Līdzekļu pieejamība**Atkarībā no viesa maksājumu veiksmīgas saņemšanas, Maksājumu starpnieks 24 stundu laikā pēc viesa reģistrēšanās padarīs ar rezervāciju saistītos līdzekļus pieejamus Izmitināšanas pakalpojumu sniedzējam.
 
 2.4**Izmaksa**Izmaksa jūsu vietējā bankas kontā vai ar virtuālo kredītkarti par rezervāciju būs kopējā rezervācijas vērtība, no kuras atskaitītas maksājumu pakalpojumu maksas (4%), Wink rezervācijas maksa (1,5%) un partnera komisija, ja un kad tā piemērojama, kā noteikts Izmitināšanas pakalpojumu sniedzēju noteikumos un nosacījumos. Apstiprinātas rezervācijas atcelšanas gadījumā Maksājumu starpnieks pārskaitīs jums pienākošos summu (ja tāda ir), kā noteikts noteikumos un piemērojamajā atcelšanas politikā.
 
@@ -141,7 +141,7 @@ Ciktāl to atļauj piemērojamie tiesību akti, jūs piekrītat atbrīvot, aizst
 
 **10. Grozījumi, termiņš, izbeigšana un citi pasākumi**
 
-10.1**Modifikācija**Izņemot gadījumus, kad piemērojamie tiesību akti pieprasa citādi, Maksājumu starpnieks var jebkurā laikā grozīt šos Maksājumu noteikumus. Ja mēs veiksim būtiskas izmaiņas šajos Maksājumu noteikumos, mēs publicēsim pārskatītos Maksājumu noteikumus Wink platformā un atjaunināsim datumu “Pēdējoreiz atjaunināts” šo Maksājumu noteikumu augšpusē. Ja grozījumi jūs ietekmēs, mēs jūs par tiem informēsim vismaz trīsdesmit (30) dienas pirms to spēkā stāšanās datuma. Ja jūs nepārtraucat savu līgumu pirms pārskatīto Maksājumu noteikumu spēkā stāšanās datuma, jūsu turpmākā Maksājumu pakalpojumu lietošana nozīmēs visu pārskatīto Maksājumu noteikumu izmaiņu pieņemšanu.
+10.1**Modifikācija**Izņemot gadījumus, kad piemērojamie tiesību akti pieprasa citādi, Maksājumu starpnieks var jebkurā laikā grozīt šos Maksājumu noteikumus. Ja mēs veiksim būtiskas izmaiņas šajos Maksājumu noteikumos, mēs publicēsim pārskatītos Maksājumu noteikumus Wink platformā un atjaunināsim datumu “Pēdējoreiz atjaunināts” šo Maksājumu noteikumu augšpusē. Ja grozījumi jūs ietekmēs, mēs jūs par tiem informēsim vismaz trīsdesmit (30) dienas pirms to spēkā stāšanās datuma. Ja jūs nepārtraucat savu līgumu pirms pārskatīto Maksājumu noteikumu spēkā stāšanās datuma, jūsu turpmāka Maksājumu pakalpojumu lietošana nozīmēs, ka jūs piekrītat visām pārskatīto Maksājumu noteikumu izmaiņām.
 
 10.2**Termiņš**Šī vienošanās starp jums un Maksājumu veicinātāju, kas atspoguļota šajos Maksājumu noteikumos, stājas spēkā, kad izveidojat Wink kontu vai izmantojat Maksājumu pakalpojumus, un paliek spēkā, līdz jūs vai mēs izbeidzam šo līgumu saskaņā ar 10.3. punktu.
 

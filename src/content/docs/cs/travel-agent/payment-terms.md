@@ -16,7 +16,7 @@ To lze provést pouze prostřednictvím našeho API a pouze cestovními kancelá
 
 Všechny cestovní kanceláře si i nadále mohou rezervovat prostřednictvím našeho portálu cestovních kanceláří pomocí platební brány Wink se svou vlastní nebo kreditní kartou cestovatele. Všechny cestovní kanceláře proto musí také souhlasit s platebními podmínkami, pokud je platební brána Wink registrovaným obchodníkem.
 
-Tyto podmínky jsou k dispozici pod[Partnerský portál > Platební podmínky](/studio/payment-terms).
+Tyto podmínky jsou k dispozici za[Partnerský portál > Platební podmínky](/studio/payment-terms).
 :::
 
 **PLATEBNÍ PODMÍNKY WINK**\

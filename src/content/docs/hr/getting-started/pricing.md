@@ -52,7 +52,7 @@ Koristeći ovaj model, putničke agencije plaćaju samo Winkovu naknadu za obrad
 
 ## Buduće usluge
 
-U budućnosti ćemo ponuditi opcionalne usluge temeljene na pretplati koje će svima još više olakšati prodaju ili ponuditi upravljane partnerske račune koji će prodaju obavljati umjesto vas. Ako vas to zanima, izrazite svoje mišljenje slanjem e-pošte na<hi@wink.travel>.
+U budućnosti ćemo ponuditi opcionalne usluge temeljene na pretplati koje će svima još više olakšati prodaju ili ponuditi upravljane partnerske račune koji će obavljati prodaju umjesto vas. Ako vas to zanima, izrazite svoje mišljenje slanjem e-pošte na<hi@wink.travel>.
 
 Ostanite s nama.
 

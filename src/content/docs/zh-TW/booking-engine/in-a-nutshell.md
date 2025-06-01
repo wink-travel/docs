@@ -33,7 +33,7 @@ sidebar:
   * 管理他們的[願望清單](/booking-engine/bucket-list) 未來要預訂的事。
   * 管理他們的[旅行概況](/booking-engine/travel-preferences)。 *例如過敏、緊急聯絡人等*
 
-預訂引擎是我們透過 https://ota.wink.travel 公開的可重複使用功能的集合；一個高度可自訂的網站，飯店和附屬機構可以透過網站向旅客銷售商品。
+預訂引擎是我們透過 https://ota.wink.travel 公開的可重複使用功能的集合；一個高度可自訂的網站，飯店和附屬機構可以透過網站向旅客銷售產品。
 
 想要更多自由的整合商可以透過我們的[WordPress 外掛](/developers/wordpress/)，[Web 元件](/developers/web-components) 和[蜜蜂](/developers/apis)。
 

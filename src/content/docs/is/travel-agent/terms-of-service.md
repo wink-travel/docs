@@ -62,7 +62,7 @@ Allir ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofugátt okkar m
 
 * **„Gestur“**&#x73;kal merkja einstakling eða hóp sem bókar gistingu í gegnum ferðaskrifstofuna.
 
-* **"Skráningarkaupmaður"**&#x76;ísar til þess aðila sem hefur löglegt leyfi og ber ábyrgð á að vinna úr greiðslum frá gestum, þar á meðal meðhöndlun greiðsluviðskipta, endurgreiðslum, bakfærslum og að tryggja að farið sé að greiðslureglum. Skráður söluaðili er sá aðili sem nafn hans birtist á kreditkortayfirliti gestsins vegna kostnaðar sem tengist bókuninni.
+* **"Skráningarkaupmaður"**&#x76;ísar til þess aðila sem hefur löglegt leyfi og ber ábyrgð á að vinna úr greiðslum frá gestum, þar á meðal meðhöndlun greiðsluviðskipta, endurgreiðslum, bakfærslum og að tryggja að farið sé að greiðslureglum. Skráður söluaðili er sá aðili sem nafnið birtist á kreditkortayfirliti gestsins vegna kostnaðar sem tengist bókuninni.
 
 * **„Nettógreiðsla“**&#xFE;ýðir sú upphæð sem greiða skal gistiþjónustunni eftir að bókunargjald Wink og þóknun ferðaskrifstofunnar hafa verið dregin frá bókunarverðmætinu.
 
@@ -133,7 +133,7 @@ Allir ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofugátt okkar m
 
 6.3**Endurgreiðslur og inneignir:**
 
-* Ef þjónusta er ekki veitt eða henni er aflýst vegna aðstæðna sem ferðaskrifstofan getur ekki rekið til, mun Wink endurgreiða eða inneigna ferðaskrifstofunni innan 30 daga frá því að tilkynning um aflýsinguna barst, að því tilskildu að þjónustugjaldið hafi þegar verið greitt.
+* Ef þjónusta er ekki veitt eða henni er aflýst vegna aðstæðna sem ekki má rekja til ferðaskrifstofunnar, mun Wink endurgreiða eða inneigna ferðaskrifstofunni innan 30 daga frá því að tilkynning um aflýsinguna barst, að því tilskildu að þjónustugjaldið hafi þegar verið greitt.
 
 6.4**Gjaldmiðill og skattar:**
 
@@ -145,13 +145,13 @@ Allir ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofugátt okkar m
 
 6.6**Greiðsludeilur:**
 
-* Ef upp kemur ágreiningur um reikning skal ferðaskrifstofan tilkynna Wink það innan 10 daga frá reikningsdegi og tilgreina ítarlegar ástæður fyrir ágreiningnum. Báðir aðilar skulu semja í góðri trú um að leysa ágreininginn tafarlaust. Óumdeildur hluti reikningsins skal greiddur á gjalddaga.
+* Ef upp kemur ágreiningur um reikning skal ferðaskrifstofan tilkynna Wink það innan 10 daga frá reikningsdegi og veita ítarlegar ástæður fyrir ágreiningnum. Báðir aðilar skulu semja í góðri trú um að leysa ágreininginn tafarlaust. Óumdeildur hluti reikningsins skal greiddur á gjalddaga.
 
 **7. Ábyrgð ferðaskrifstofu**
 
 7.1**Fylgni við lög og reglugerðir:**
 
-* Ferðaskrifstofan skal fylgja öllum gildandi lögum, reglugerðum og stöðlum í greininni, á staðnum, á landsvísu og á alþjóðavettvangi, í starfsemi sinni, þar á meðal en ekki takmarkað við þau sem varða neytendavernd, gagnavernd og aðgerðir gegn peningaþvætti.
+* Ferðaskrifstofan skal fylgja öllum gildandi lögum, reglugerðum og stöðlum í greininni, á staðnum, á landsvísu og á alþjóðavettvangi, í rekstri sínum, þar á meðal en ekki takmarkað við þau sem varða neytendavernd, gagnavernd og aðgerðir gegn peningaþvætti.
 
 7.2**Nákvæm framsetning þjónustu:**
 
@@ -179,7 +179,7 @@ Allir ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofugátt okkar m
 
 7,8**Trúnaður:**
 
-* Ferðaskrifstofan skal gæta trúnaðar um allar trúnaðarupplýsingar og viðskiptaleyndarmál þjónustuveitunnar, þar á meðal en ekki takmarkað við viðskiptavinagögn, verðupplýsingar og viðskiptaáætlanir. Ferðaskrifstofan skal ekki afhenda slíkar upplýsingar neinum þriðja aðila án skriflegs samþykkis þjónustuveitunnar.
+* Ferðaskrifstofan skal gæta trúnaðar um allar trúnaðarupplýsingar og viðskiptaleyndarmál þjónustuveitunnar, þar á meðal en ekki takmarkað við viðskiptavinagögn, verðupplýsingar og viðskiptaáætlanir. Ferðaskrifstofan skal ekki afhenda slíkar upplýsingar til þriðja aðila án skriflegs samþykkis þjónustuveitunnar.
 
 7,9**Fylgni við skilmála kerfisins:**
 
@@ -225,7 +225,7 @@ Allir ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofugátt okkar m
 
 **12. Óviðráðanleg atvik**
 
-12.1**Skilgreining**Hvorugur aðili ber ábyrgð á vanrækslu eða töfum á að uppfylla skyldur sínar samkvæmt þessum samningi ef slík vanræksla eða töf stafar af óviðráðanlegum atburði. „Óviðráðanlegt atvik“ þýðir atburður sem aðili hefur ekki sanngjarna stjórn á, þar á meðal en ekki takmarkað við náttúruhamfarir (svo sem jarðskjálfta, flóð eða fellibylji), stríð, hryðjuverk, óeirðir, heimsfaraldra, stjórnvaldsaðgerðir eða aðra atburði sem ekki hefði verið hægt að sjá fyrir eða forðast með sanngjörnum hætti.
+12.1**Skilgreining**Hvorugur aðili ber ábyrgð á vanrækslu eða töfum á að uppfylla skyldur sínar samkvæmt þessum samningi ef slík vanræksla eða töf stafar af óviðráðanlegum atburði. „Óviðráðanlegt atvik“ þýðir atburður sem aðili hefur ekki sanngjarna stjórn á, þar á meðal en ekki takmarkað við náttúruhamfarir (svo sem jarðskjálfta, flóð eða fellibylji), stríð, hryðjuverk, óeirðir, heimsfaraldra, aðgerðir stjórnvalda eða aðra atburði sem ekki hefði verið hægt að sjá fyrir eða forðast með sanngjörnum hætti.
 
 12.2**Tilkynning**Aðilinn sem verður fyrir áhrifum skal tilkynna hinum aðilanum skriflega eins fljótt og auðið er eftir að óviðráðanleg atvik eiga sér stað. Slík tilkynning skal innihalda lýsingu á óviðráðanlegu atvikinu, áætlaðri lengd þess og þeim skyldum sem það hefur áhrif á.
 

@@ -10,7 +10,7 @@ Sa kasaysayan, ang pagkuha ng access sa, at pagbebenta, ng anumang bagay na nauu
 
 [Wink Studio](https://studio.wink.travel) ay ang aming kaakibat na portal. Ginagawa nitong accessible sa lahat ang pagbebenta ng imbentaryo ng paglalakbay at kasingdali ng pagbabahagi ng link o kasing-advanced ng pagpapatakbo ng online na ahensya sa paglalakbay.
 
-Inilalantad ng affiliate portal ang available na imbentaryo ng paglalakbay mula sa mga supplier (ibig sabihin, mga hotel, hostel, rental, mga provider ng karanasan) saanman sa mundo. Ang iyong layunin ay mahanap ang imbentaryo na tama para sa iyo at pagkatapos ay gamitin ang pinakamahusay na paraan upang ilantad at ibenta ang imbentaryo na iyon sa iyong audience.
+Inilalantad ng affiliate portal ang available na imbentaryo ng paglalakbay mula sa mga supplier (ibig sabihin, mga hotel, hostel, rental, provider ng karanasan) saanman sa mundo. Ang iyong layunin ay mahanap ang imbentaryo na tama para sa iyo at pagkatapos ay gamitin ang pinakamahusay na paraan upang ilantad at ibenta ang imbentaryo na iyon sa iyong audience.
 
 Nag-aalok ang studio ng paraan para makapag-browse ka sa mga supplier at sa kanilang imbentaryo. Kapag nakahanap ka na ng gusto mo, marami kaming paraan para maibenta mo ang imbentaryo na iyon online at lalo na sa pamamagitan ng social media.
 

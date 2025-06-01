@@ -11,7 +11,7 @@ Senast uppdaterad 2024-10-30
 :::
 
 :::varning\[Meddelande]
-Användarvillkoren nedan gäller för resebyråer som vill förvärva och betala ut pengar på egen hand.
+Användarvillkoren nedan gäller för resebyråer som vill skaffa och betala ut pengar på egen hand.
 Detta kan endast göras via vårt API och endast av resebyråer som har angett att de vill göra detta under registreringsprocessen.
 
 Alla resebyråer kan fortfarande boka via vår resebyråportal med Winks betalningssystem med sitt eget eller resenärens kreditkort. Därför måste alla resebyråer också godkänna användarvillkoren där Winks betalningssystem är registrerad handlare.
@@ -19,7 +19,7 @@ Alla resebyråer kan fortfarande boka via vår resebyråportal med Winks betalni
 Dessa villkor finns tillgängliga under[Partnerportal > Användarvillkor](/studio/terms-of-service).&#x20;
 :::
 
-**WINKS ALLMÄNNA VILLKOR**\
+**WINK ALLMÄNNA VILLKOR**\
 **FÖR RESEBYRÅER (registrerad handlare)**
 
 **MELLAN:**

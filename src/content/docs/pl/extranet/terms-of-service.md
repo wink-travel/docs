@@ -18,7 +18,7 @@ Rejestrując się i zapisując się do programu Wink jako dostawca zakwaterowani
 
 **TRAVELIKO SINGAPORE PTE. LTD.**, spółka zarejestrowana zgodnie z prawem Singapuru i mająca siedzibę pod adresem #03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095, numer rejestracyjny VAT 201437335D („Wink”), oraz
 
-**DOSTAWCA ZAKWATEROWANIA**, którego dane podano w Formularzu Rejestracyjnym Dostawcy Zakwaterowania lub zostały przesłane online („Dostawca Zakwaterowania”).
+**DOSTAWCA ZAKWATEROWANIA**, którego dane podano w Formularzu rejestracyjnym dostawcy usług noclegowych lub zostały przesłane online („Dostawca usług noclegowych”).
 
 Wink i Dostawca Zakwaterowania są pojedynczo „Stroną” niniejszej Umowy i łącznie zwani są „Stronami”.
 
@@ -45,7 +45,7 @@ Oprócz terminów zdefiniowanych w innych miejscach niniejszej Umowy, w całej U
 
 **„Rezerwacja(e)”**&#x6F;znacza prośbę o rezerwację Pokoju złożoną za pośrednictwem serwisu Wink lub klienta serwisu Wink, która została przekazana Dostawcy Zakwaterowania i przez niego zaakceptowana.
 
-**„Opłata rezerwacyjna”**&#x73;tanowi 1,5% opłaty manipulacyjnej pobieranej przez Wink od wartości rezerwacji.
+**„Opłata rezerwacyjna”**&#x73;tanowi opłatę manipulacyjną w wysokości 1,5% pobieraną przez Wink od wartości rezerwacji.
 
 **„Wartość rezerwacji”**&#x6A;est to całkowita kwota pobrana od gościa przez Podmiot ułatwiający płatność za Rezerwację.
 
@@ -77,7 +77,7 @@ Oprócz terminów zdefiniowanych w innych miejscach niniejszej Umowy, w całej U
 
 **„Wypłata”**&#x6F;znacza wypłatę Prowizji Czystej na rzecz Partnera przez Podmiot Ułatwiający Płatność.
 
-**„Opłata za usługę płatniczą”**&#x6A;est to 4% prowizji pobieranej od Partnera w formie opłaty za pozyskanie płatności przez Podmiot ułatwiający płatności.
+**„Opłata za usługę płatniczą”**&#x6A;est to 4% prowizji Partnera pobieranej przez Podmiot Ułatwiający Płatności jako opłata za pozyskanie płatności.
 
 **„Warunki płatności”**&#x6F;znacza stawki, dostępność, oferty, promocje, warunki płatności i wszelkie inne zasady lub warunki dotyczące dystrybucji Pokoi, które są wzajemnie uzgodnione przez Strony.
 
@@ -186,7 +186,7 @@ Tylko osoba podpisująca tę umowę będzie jedynym wyznaczonym przedstawicielem
 
 **10. Identyfikacja rezerwacji / Współpraca w zakresie przeciwdziałania oszustwom**
 
-10.1 Dostawca zakwaterowania zapewni, że pełne i prawidłowe dane firmy klientów Wink zostaną dokładnie wprowadzone do jego systemów, tak aby każda Rezerwacja mogła być jednoznacznie zidentyfikowana jako Rezerwacja dokonana na podstawie i zgodnie z niniejszą Umową.
+10.1 Dostawca zakwaterowania zapewni, że pełne i prawidłowe dane firmy klientów Wink zostaną dokładnie wprowadzone do jego systemów, tak aby każda Rezerwacja mogła być jednoznacznie zidentyfikowana jako Rezerwacja dokonana na podstawie niniejszej Umowy i zgodnie z jej postanowieniami.
 
 10.2 Każdy uczestniczący dostawca zakwaterowania musi dołożyć uzasadnionych komercyjnie starań, aby zapewnić, że podczas zameldowania identyfikator przedstawiony przez Gościa będzie zgodny z informacjami dotyczącymi rezerwacji. Jeśli rezerwacja jest Potencjalnie Oszukańczą Rezerwacją lub pewne dane dostarczone przez Gościa nie mogą zostać zweryfikowane przez Wink, wówczas Dostawca zakwaterowania i Wink podejmą współpracę w celu rozwiązania Potencjalnie Oszukańczej Rezerwacji, co może obejmować anulowanie takiej rezerwacji w dowolnym momencie. Dostawca zakwaterowania zgadza się w pełni współpracować z Wink i przekaże Wink wszelkie informacje, o które może poprosić w związku z Potencjalnie Oszukańczą Rezerwacją.
 
@@ -197,7 +197,7 @@ Tylko osoba podpisująca tę umowę będzie jedynym wyznaczonym przedstawicielem
 11.1 W przypadku jakiejkolwiek sytuacji niedostępności (czy to z powodu przepełnienia, czy z innego powodu), która wymaga od Dostawcy Zakwaterowania przeniesienia Gościa do innego zakwaterowania, Dostawca Zakwaterowania zgadza się dołożyć wszelkich starań, aby zatrzymać/utrzymać Gości i Rezerwacje, aby umożliwić Gościom pozostanie w takim zakwaterowaniu w jak największym możliwym zakresie. W przypadku, gdy Dostawca Zakwaterowania musi ostatecznie przenieść Gościa do innego zakwaterowania, Dostawca Zakwaterowania zgadza się na następujące:
 
 * Niezwłocznie powiadomić firmę Wink przed przeprowadzką Gościa;
-* Przeniesienie Gościa do innego obiektu o tej samej lub wyższej kategorii/klasyfikacji w tej samej okolicy i na tych samych zarezerwowanych warunkach. Taka przeprowadzka zostanie opłacona przez Dostawcę Obiektu Zakwaterowania bez dodatkowych opłat dla poszkodowanego Gościa i będzie obejmować, bez ograniczeń.
+* Przeniesienie Gościa do innego obiektu o tej samej lub wyższej kategorii/klasyfikacji w tej samej okolicy, na tych samych zarezerwowanych warunkach; taka przeprowadzka zostanie opłacona przez Dostawcę Obiektu Zakwaterowania bez dodatkowych opłat dla poszkodowanego Gościa i będzie obejmować, bez ograniczeń.
 * Wszelkie koszty związane z transportem i inne wydatki związane z przeprowadzką poniesione przez Gościa.
 * Aby umożliwić firmie Wink odliczenie wszystkich bezpośrednich kosztów spowodowanych niedostępnością i/lub relokacją z należności Dostawcy zakwaterowania w przypadku, gdy Wink poniesie jakąkolwiek karę finansową, odszkodowanie lub koszt związany z taką niedostępnością i/lub relokacją.
 
@@ -409,5 +409,5 @@ Umowa została przeczytana, a wszystkie warunki zostały zaakceptowane przez dos
 
 Wszystkie powiadomienia Stron w ramach niniejszej Umowy będą sporządzane w języku angielskim, w formie pisemnej i dostarczane osobiście, za pośrednictwem opłaconego z góry i poleconego listu lub za pośrednictwem uznanej międzynarodowej firmy kurierskiej (np. FedEx, UPS, DHL) do siedziby spółki lub pocztą elektroniczną do osoby kontaktowej.
 
-Uważa się, że wszelkie powiadomienia przekazywane w ramach niniejszej Umowy zostały otrzymane (i) w przypadku dostarczenia ich osobiście – po podpisaniu potwierdzenia odbioru lub (ii) w przypadku dostarczenia przesyłką poleconą opłaconą z góry – po okazaniu dowodu doręczenia; lub (iii) w przypadku dostarczenia za pośrednictwem firmy kurierskiej – w dniu nadania przez nią potwierdzenia doręczenia; (iv) w przypadku dostarczenia pocztą elektroniczną, pod warunkiem potwierdzenia odbioru.
+Uważa się, że wszelkie powiadomienia przekazywane w ramach niniejszej Umowy zostały otrzymane (i) w przypadku dostarczenia ich osobiście – po podpisaniu potwierdzenia odbioru lub (ii) w przypadku dostarczenia przesyłką poleconą opłaconą z góry – po okazaniu dowodu doręczenia; lub (iii) w przypadku dostarczenia za pośrednictwem firmy kurierskiej – w dniu nadania przez nią potwierdzenia doręczenia; (iv) w przypadku dostarczenia pocztą elektroniczną, pod warunkiem dostarczenia potwierdzenia odbioru.
 

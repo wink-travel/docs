@@ -23,7 +23,7 @@ Facilitatorul de plăți oferă servicii de plată Afiliaților care vând inven
 
 Pentru a utiliza Serviciile de plată, trebuie să aveți cel puțin 18 ani, trebuie să dețineți un cont Wink în regulă, în conformitate cu Termenii și condițiile Facilitatorului de plăți și trebuie să păstrați informațiile dumneavoastră personale și de plată corecte și complete.
 
-Acordul a fost citit și toți Termenii și Condițiile au fost acceptate de către Afiliat. Afiliatul este de acord în mod explicit că acceptarea electronică a prezentului Acord și a Termenilor și Condițiilor sale, inclusiv a celor referitoare la modificări, este valabilă, obligatorie și executorie.
+Acordul a fost citit și toți Termenii și Condițiile au fost acceptate de Afiliat. Afiliatul este de acord în mod explicit că acceptarea electronică a prezentului Acord și a Termenilor și Condițiilor sale, inclusiv a celor referitoare la modificări, este valabilă, obligatorie și executorie.
 
 Serviciile de plată vor fi furnizate de entitatea contractantă în funcție de țara în care se află Afiliatul, după cum urmează:
 

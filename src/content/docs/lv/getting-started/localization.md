@@ -55,7 +55,7 @@ Wink atbalsta šādas valodas:
 * 简体中文
 * 繁體中文
 
-## Platformas līmenī
+## Platformas līmeņa
 
 Visas mūsu lietotnes ir lokalizētas, lai atbalstītu visas iepriekš minētās valodas. Katrai lietotnei lapas apakšdaļā ir valodas atlasītājs, no kura lietotājs var izvēlēties vēlamo valodu. Rezervēšanas sistēma atbalsta arī vēlamās valodas nodošanu, izmantojot URL.
 

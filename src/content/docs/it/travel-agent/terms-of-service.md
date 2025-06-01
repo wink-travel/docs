@@ -68,7 +68,7 @@ Tali termini sono disponibili sotto[Portale affiliati > Termini di servizio](/st
 
 * **“Pagamenti”**&#x73;i intendono gli obblighi finanziari derivanti dal presente Contratto, comprese commissioni, tariffe o altri oneri, pagabili da una parte all'altra.
 
-* **"Facilitatore di pagamento"**&#xE8; una consociata interamente controllata da Traveliko Singapore Pte. Ltd. che gestisce i Servizi di Pagamento, riscuotendo i pagamenti dagli ospiti addebitandoli sul metodo di pagamento associato al loro acquisto, come carta di credito, carta di debito, bonifico bancario, criptovalute o PayPal, ecc.
+* **"Facilitatore di pagamento"**&#xE8; una società controllata al 100% da Traveliko Singapore Pte. Ltd. che gestisce i Servizi di Pagamento, riscuotendo i pagamenti dagli ospiti addebitandoli sul metodo di pagamento associato al loro acquisto, come carta di credito, carta di debito, bonifico bancario, criptovalute o PayPal, ecc.
 
 * **"Piattaforma"**&#x73;i intende il sistema online gestito dal Fornitore del servizio attraverso il quale l'Agente di viaggio può effettuare o gestire le Prenotazioni per gli Ospiti.
 
@@ -145,7 +145,7 @@ Tali termini sono disponibili sotto[Portale affiliati > Termini di servizio](/st
 
 6.6**Controversie sui pagamenti:**
 
-* In caso di controversia su una fattura, l'agente di viaggio dovrà darne comunicazione a Wink entro 10 giorni dalla data di emissione, fornendo motivazioni dettagliate. Entrambe le parti negozieranno in buona fede per risolvere tempestivamente la controversia. La parte non contestata della fattura dovrà essere pagata entro la data di scadenza.
+* In caso di controversia su una fattura, l'agente di viaggio dovrà darne comunicazione a Wink entro 10 giorni dalla data della fattura, fornendo motivazioni dettagliate. Entrambe le parti negozieranno in buona fede per risolvere tempestivamente la controversia. La parte non contestata della fattura dovrà essere pagata entro la data di scadenza.
 
 **7. Responsabilità dell'agente di viaggio**
 
@@ -217,7 +217,7 @@ Tali termini sono disponibili sotto[Portale affiliati > Termini di servizio](/st
 
 11.2**Risoluzione delle controversie:**
 
-11.2.1**Negoziazione:**&#x49;n caso di controversia, reclamo, questione o disaccordo derivante da o relativo al presente Contratto, le parti cercheranno innanzitutto di risolvere la controversia attraverso trattative in buona fede. Tali trattative avranno inizio con la comunicazione scritta di una parte all'altra.
+11.2.1**Negoziazione:**&#x49;n caso di controversia, reclamo, domanda o disaccordo derivante da o relativo al presente Contratto, le parti cercheranno innanzitutto di risolvere la controversia attraverso trattative in buona fede. Tali trattative avranno inizio con la notifica scritta di una parte all'altra.
 
 11.2.2**Arbitrato:**&#x51;ualora la controversia non possa essere risolta tramite negoziati entro trenta (30) giorni, la controversia sarà deferita e risolta definitivamente mediante arbitrato ai sensi del Regolamento del Singapore International Arbitration Centre (SIAC), che si intende incorporato per riferimento nella presente clausola. Il numero di arbitri sarà uno e la sede, o foro competente, dell'arbitrato sarà Singapore. La lingua da utilizzare nel procedimento arbitrale sarà l'inglese.
 

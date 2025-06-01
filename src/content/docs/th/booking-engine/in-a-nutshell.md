@@ -42,6 +42,6 @@ sidebar:
 ## อ่านเพิ่มเติม
 
 * อ่านเกี่ยวกับเรา[ปลั๊กอิน WordPress](/developers/wordpress/)-
-* อ่านเกี่ยวกับของเรา[ส่วนประกอบของเว็บไซต์](/developers/web-components)-
-* อ่านเกี่ยวกับของเรา[APIs](/developers/apis)-
+* อ่านเกี่ยวกับเรา[ส่วนประกอบของเว็บไซต์](/developers/web-components)-
+* อ่านเกี่ยวกับเรา[APIs](/developers/apis)-
 

@@ -2,7 +2,7 @@
 title: Settings
 description: >-
   En aquest article, us expliquem com podeu personalitzar la vostra pàgina de
-  WinkLinks utilitzant les funcions disponibles a la configuració.
+  WinkLinks mitjançant les funcions disponibles a la configuració.
 sidebar:
   order: 4
 ---

@@ -137,7 +137,7 @@ Esses termos estão disponíveis em[Portal de Afiliados > Termos de Serviço](/s
 
 6.4**Moeda e impostos:**
 
-* Os pagamentos serão efetuados em dólares americanos (USD). O Agente de Viagens será responsável por quaisquer impostos, taxas ou outros encargos que possam ser aplicáveis às transações sob este Contrato, incluindo custos de conversão de moeda se os pagamentos forem efetuados em moeda diferente de USD.
+* Os pagamentos serão efetuados em dólares americanos (USD). O Agente de Viagens será responsável por quaisquer impostos, taxas ou outros encargos que possam ser aplicáveis às transações sob este Contrato, incluindo custos de conversão de moeda, caso os pagamentos sejam efetuados em moeda diferente do USD.
 
 6,5**Métodos de pagamento:**
 
@@ -219,7 +219,7 @@ Esses termos estão disponíveis em[Portal de Afiliados > Termos de Serviço](/s
 
 11.2.1**Negociação:**&#x45;m caso de qualquer disputa, reclamação, dúvida ou desacordo decorrente ou relacionado a este Contrato, as partes tentarão primeiramente resolver a disputa por meio de negociações de boa-fé. Tais negociações terão início mediante notificação por escrito de uma parte à outra.
 
-11.2.2**Arbitragem:**&#x43;aso a disputa não possa ser resolvida por meio de negociações no prazo de trinta (30) dias, a disputa será encaminhada e definitivamente resolvida por arbitragem, de acordo com as Regras do Centro Internacional de Arbitragem de Singapura (SIAC), as quais se consideram incorporadas por referência a esta cláusula. O número de árbitros será de um, e a sede, ou foro, da arbitragem será Singapura. O idioma a ser utilizado no processo de arbitragem será o inglês.
+11.2.2**Arbitragem:**&#x43;aso a disputa não possa ser resolvida por meio de negociações no prazo de trinta (30) dias, a disputa será encaminhada e definitivamente resolvida por arbitragem, de acordo com as Regras do Centro Internacional de Arbitragem de Singapura (SIAC), que se consideram incorporadas por referência a esta cláusula. O número de árbitros será de um, e a sede, ou foro, da arbitragem será Singapura. O idioma a ser utilizado no processo de arbitragem será o inglês.
 
 11.2.3**Jurisdição:**&#x4E;ão obstante o acima exposto, qualquer das partes retém o direito de buscar medidas cautelares ou cautelares nos tribunais de Cingapura para proteger seus direitos ou propriedade enquanto aguarda a nomeação de um árbitro, e qualquer tribunal terá jurisdição exclusiva para conceder tal medida.
 

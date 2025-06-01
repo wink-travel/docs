@@ -16,7 +16,7 @@ Estos Términos de Pago del Servicio (“**Condiciones de pago**”) son un acue
 
 El Facilitador de Pagos proporciona servicios de pago a los proveedores de alojamiento que venden inventario a través de la plataforma Wink. Estos servicios de pago pueden incluir (si están disponibles) los siguientes (en conjunto, "**Servicios de pago**”):
 
-* Recopilar pagos de los Huéspedes (“Pago”), mediante el cargo al método de pago asociado a su compra, como tarjeta de crédito, tarjeta de débito, transferencia bancaria, criptomonedas o PayPal (“Método de Pago”);
+* Recopilar pagos de los Huéspedes (“Pago”), mediante el cargo al método de pago asociado con su compra, como tarjeta de crédito, tarjeta de débito, transferencia bancaria, criptomonedas o PayPal (“Método de Pago”);
 * Realizar pagos a proveedores de alojamiento (“Pago”);
 * Servicios de cobro de pagos; y
 * Otros servicios relacionados con el pago en conexión con los Servicios del Proveedor de Alojamiento.

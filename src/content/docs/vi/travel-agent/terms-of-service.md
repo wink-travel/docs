@@ -84,7 +84,7 @@ Những điều khoản đó có sẵn theo[Cổng thông tin liên kết > Đi�
 
 2.1 Đại lý du lịch sẽ hoạt động như một nhà phân phối không độc quyền của Wink.
 
-2.2 Wink sẽ cung cấp Dịch vụ cho Đại lý du lịch theo quy định trong Biểu mẫu đăng ký đại lý du lịch và trên các trang web được nêu trong Biểu mẫu đăng ký đại lý du lịch.
+2.2 Wink sẽ cung cấp Dịch vụ cho Đại lý du lịch theo quy định trong Biểu mẫu đăng ký đại lý du lịch và trên trang web (các trang web) được nêu trong Biểu mẫu đăng ký đại lý du lịch.
 
 **3. Thu tiền và phân phối**
 
@@ -193,7 +193,7 @@ Những điều khoản đó có sẵn theo[Cổng thông tin liên kết > Đi�
 
 8.1**Tính toán hoa hồng:**&#x48;oa hồng phải trả cho Đại lý du lịch là một tỷ lệ phần trăm (được quy định trong thỏa thuận giữa Đại lý du lịch và Nhà cung cấp chỗ nghỉ) của Giá trị đặt phòng sau khi trừ Phí đặt phòng Wink.
 
-8.2**Phí đặt chỗ của Wink:**&#x57;ink sẽ xuất hóa đơn hàng tháng cho Phí đặt phòng 1,5%. Đại lý du lịch có trách nhiệm thanh toán hóa đơn này trong thời hạn thanh toán do Wink chỉ định.
+8.2**Phí đặt chỗ của Wink:**&#x57;ink sẽ xuất hóa đơn hàng tháng cho Phí đặt chỗ 1,5%. Đại lý du lịch có trách nhiệm thanh toán hóa đơn này trong thời hạn thanh toán do Wink chỉ định.
 
 **9. Quy định pháp lý**
 

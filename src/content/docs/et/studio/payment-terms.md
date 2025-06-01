@@ -72,7 +72,7 @@ Ainult käesoleva lepingu allkirjastanud isik on majutusteenuse pakkuja ainus vo
 
 **2.12 Kollektsioonid.**&#x4B;ui Maksevahendajal ei õnnestu teilt käesolevate Maksetingimuste alusel võlgnetavaid summasid sisse nõuda, võib Maksevahendaja teilt nende summade sissenõudmiseks algatada sissenõudmistoiminguid.
 
-**2.13 Teated.**&#x4D;aksekorraldaja saadab soovi korral teate mis tahes partnerile võlgnetava saldo kohta. Maksekorraldaja saadab need teated registreeritud või edastatud kontaktandmetele. Partneri kohustus on tagada, et need andmed on õiged ja ajakohased.
+**2.13 Teated.**&#x4D;aksekorraldaja saadab soovi korral teate mis tahes partnerile võlgnetava saldo kohta. Maksekorraldaja saadab need teated registreeritud või edastatud kontaktandmetele. Partneri kohustus on tagada, et need andmed oleksid õiged ja ajakohased.
 
 **3. Makse töötlemise vead ja tagasimaksed**
 
@@ -90,7 +90,7 @@ Ainult käesoleva lepingu allkirjastanud isik on majutusteenuse pakkuja ainus vo
 
 **5. Keelatud tegevused**
 
-5.1 Teie vastutate ainuisikuliselt kõigi seaduste, eeskirjade, määruste ja maksukohustuste järgimise eest, mis võivad kehtida teiepoolse Makseteenuste kasutamise suhtes. Seoses Makseteenuste kasutamisega ei tohi te ja te nõustute, et te ei tee ega aita ega võimalda teistel teha järgmist:
+5.1 Teie vastutate ainuisikuliselt kõigi seaduste, eeskirjade, määruste ja maksukohustuste järgimise eest, mis võivad kehtida teiepoolse Makseteenuste kasutamise suhtes. Seoses Makseteenuste kasutamisega ei tohi te ja te nõustute, et te ei tee ega aita ega võimalda teistel:
 
 * rikkuda või vältida mis tahes kohaldatavaid seadusi või määrusi;
 * rikkuda või vältida mis tahes lepinguid kolmandate isikutega, kolmandate isikute õigusi või[Tingimused](/studio/terms-of-service);
@@ -101,7 +101,7 @@ Ainult käesoleva lepingu allkirjastanud isik on majutusteenuse pakkuja ainus vo
 * rikkuda või kahjustada kellegi teise õigusi või muul viisil kellelegi kahju tekitada.
 
 5.2 Maksevahendaja rakendab rahvusvaheliste kaubandusnormide, altkäemaksu ja korruptsiooni ennetamise õigusaktide ning kaubanduse, rahavoogude ja terrorismi rahastamise suhtes kohaldatavate piirangute rikkumiste suhtes nulltolerantsi.\
-Sidusettevõte kinnitab, et ta järgib ja järgib ning tema Seotud Pooled järgivad ja järgivad ka edaspidi Maksevahendaja Tarnija Käitumisjuhendit.\
+Sidusettevõte kinnitab, et ta järgib ja järgib ning tema Seotud Pooled järgivad ja järgivad maksevahendajate tarnija käitumisjuhendit.\
 Partner kinnitab, garanteerib ja kohustub, et ta järgib ja järgib igas mõttes kõiki rahvusvahelisi kaubandusnorme, kohaldatavaid kaubanduspiiranguid, rahavoogude ja terrorismi rahastamise ning altkäemaksu ja korruptsiooni ennetamise õigusakte, sealhulgas, kuid mitte ainult, Ühendkuningriigi 2010. aasta altkäemaksuvastast seadust ja Singapuri korruptsiooni ennetamise seadust.\
 Partner kinnitab, et tema parimate teadmiste kohaselt ei ole ei teda ega tema Seotud Pooli süüdi mõistetud altkäemaksu või korruptsiooniga seotud süüteos ega ole ühegi valitsus-, haldus- või regulatiivorgani uurimise all.
 

@@ -28,7 +28,7 @@ Ti pogoji so na voljo pod[Partnerski portal > Pogoji storitve](/studio/terms-of-
 
 **KER:**
 
-(i) Wink upravlja spletni sistem (»sistem«), prek katerega lahko sodelujoče namestitve (skupaj »ponudniki nastanitev«) dajo na voljo svojo ponudbo za rezervacijo in prek katerega lahko potovalni agent opravi rezervacije pri teh ponudnikih nastanitev v imenu svojih gostov (»storitev«);
+(i) Wink upravlja spletni sistem (»sistem«), prek katerega lahko sodelujoče namestitve (skupaj »ponudniki nastanitev«) dajo na voljo svojo ponudbo za rezervacijo in prek katerega lahko potovalni agent rezervira pri teh ponudnikih nastanitev v imenu svojih gostov (»storitev«);
 
 (ii) Wink ne poseduje, ne nadzoruje, ne ponuja in ne upravlja nobenih oglasov. Wink ni stranka v pogodbah, sklenjenih neposredno med ponudniki nastanitev in gosti. Wink ne deluje kot zastopnik v nobeni vlogi za ponudnike nastanitev;
 
@@ -121,7 +121,7 @@ Ti pogoji so na voljo pod[Partnerski portal > Pogoji storitve](/studio/terms-of-
 
 **6. Plačilo podjetju Wink**
 
-6.1**Plačilni urnik:**
+6.1**Plačilni načrt:**
 
 * Vsa plačila, ki jih potovalni agent dolguje podjetju Wink v skladu s to pogodbo, morajo biti izvedena v 15 dneh od prejema pravilnega in točnega računa s strani podjetja Wink, razen če ni pisno dogovorjeno drugače. Plačila se izvedejo v ameriških dolarjih, brez kakršnih koli odbitkov ali zadržanj, razen če to zahteva zakon.
 
@@ -181,7 +181,7 @@ Ti pogoji so na voljo pod[Partnerski portal > Pogoji storitve](/studio/terms-of-
 
 7,9**Skladnost s pogoji platforme:**
 
-* Potovalni agent se mora držati vseh pogojev in določil, povezanih z uporabo platforme ponudnika storitev, vključno z vsemi posodobitvami ali spremembami teh pogojev. Potovalni agent je odgovoren za to, da so njegovi zaposleni in agenti seznanjeni s temi pogoji in jih upoštevajo.
+* Potovalni agent se mora držati vseh pogojev in določil, povezanih z uporabo platforme ponudnika storitev, vključno z vsemi posodobitvami ali spremembami teh pogojev. Potovalni agent je odgovoren za to, da so njegovi zaposleni in agenti seznanjeni s temi pogoji in da jih upoštevajo.
 
 7.10**Odškodnina:**
 
@@ -242,7 +242,7 @@ Ti pogoji so na voljo pod[Partnerski portal > Pogoji storitve](/studio/terms-of-
 
 **14. Razno**
 
-14.1**Celoten sporazum:**&#x54;a sporazum predstavlja celoten sporazum med strankama in nadomešča vse predhodne sporazume ali dogovore.
+14.1**Celoten sporazum:**&#x54;a pogodba predstavlja celoten sporazum med strankama in nadomešča vse predhodne sporazume ali dogovore.
 
 14.2**Spremembe:**&#x56;se spremembe te pogodbe morajo biti pisne in podpisane s strani obeh strank.
 

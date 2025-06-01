@@ -45,9 +45,9 @@ Además de los términos definidos en otras partes de este Acuerdo, las siguient
 
 **"Reserva(s)"**&#x73;ignifica una solicitud de reserva de una habitación realizada a través de Wink o un cliente de Wink que es comunicada y aceptada por el Proveedor de Alojamiento.
 
-**“Tarifa de reserva”**&#x65;s el 1,5% que Wink deduce del valor de la reserva como tarifa de procesamiento.
+**“Tarifa de reserva”**&#x65;s el 1,5% deducido del valor de la reserva como tarifa de procesamiento por parte de Wink.
 
-**“Valor de reserva”**&#x65;s el importe total cobrado por el Facilitador de Pagos al huésped por una Reserva.
+**“Valor de reserva”**&#x65;s el monto total cobrado por el Facilitador de Pagos al huésped por una Reserva.
 
 **"Libro fuera"**&#x73;ignifica la falta de un Proveedor de Alojamiento de alojar a cualquier Huésped debido, entre otras cosas, a la falta de disponibilidad de Habitaciones por parte del Hotel Participante o, en su nombre, por parte del Proveedor de Alojamiento o cualquier distribuidor externo.
 
@@ -61,7 +61,7 @@ Además de los términos definidos en otras partes de este Acuerdo, las siguient
 
 **Plataforma Wink**significa la red privada o solución técnica utilizada por las Partes para compartir información de forma segura de conformidad con el Acuerdo.
 
-**"Propiedad intelectual"**&#x73;ignifica todos y cada uno de los derechos de propiedad intelectual de cualquier naturaleza (ya sea registrados o no en forma documental o almacenados en cualquier disco magnético u óptico o memoria) en cualquier parte del mundo, ya sean registrados, registrables o de otro modo, incluyendo patentes, modelos de utilidad, marcas comerciales, diseños registrados y nombres de dominio, solicitudes para cualquiera de los anteriores, nombres comerciales o empresariales, fondo de comercio, derechos de autor y derechos de la naturaleza de los derechos de autor, derechos de diseño, derechos en bases de datos, derechos morales, conocimientos técnicos y cualquier otro derecho de propiedad intelectual que subsista en software de computadora, programas de computadora, sitios web, documentos, información, técnicas, métodos comerciales, dibujos, logotipos, manuales de instrucciones, listas y procedimientos y detalles de clientes, métodos y procedimientos de marketing y literatura publicitaria, incluido el "aspecto y estilo" de cualquier sitio web.
+**"Propiedad intelectual"**&#x73;ignifica todos y cada uno de los derechos de propiedad intelectual de cualquier naturaleza (ya sea registrados o no en forma documental o almacenados en cualquier disco o memoria magnética u óptica) en cualquier parte del mundo, ya sean registrados, registrables o de otro modo, incluyendo patentes, modelos de utilidad, marcas comerciales, diseños registrados y nombres de dominio, solicitudes para cualquiera de los anteriores, nombres comerciales o empresariales, fondo de comercio, derechos de autor y derechos de la naturaleza de los derechos de autor, derechos de diseño, derechos en bases de datos, derechos morales, conocimientos técnicos y cualquier otro derecho de propiedad intelectual que subsista en software de computadora, programas de computadora, sitios web, documentos, información, técnicas, métodos comerciales, dibujos, logotipos, manuales de instrucciones, listas y procedimientos y detalles de clientes, métodos y procedimientos de marketing y literatura publicitaria, incluido el "aspecto y estilo" de cualquier sitio web.
 
 **“Transacción(es) materializada(s)”**&#x53;e refiere a la reserva realizada por un huésped con un proveedor de alojamiento, la cual ha dado lugar a la provisión efectiva de alojamiento, según lo confirmado a Wink por el proveedor. Las Transacciones Materializadas siempre se ajustarán por modificaciones (por ejemplo, estancias acortadas), devoluciones de cargos, fraude con tarjetas de crédito, morosidad u otros motivos. Para evitar cualquier duda, las cancelaciones, incomparecencias, etc., nunca se considerarán Transacciones Materializadas.
 
@@ -180,7 +180,7 @@ Solo la persona que firma este acuerdo será el único representante designado d
 
 9.1 Los proveedores de alojamiento son responsables de cualquier modificación de la reserva fuera de la política de cancelación establecida en la confirmación de la reserva aceptada mediante comunicación directa con el huésped.
 
-9.2 Cuando se haya producido un error por parte del Proveedor de Alojamiento que dé lugar a que se cargue una Tarifa incorrecta y, en consecuencia, se realice una Reserva con la Tarifa incorrecta, el Proveedor de Alojamiento deberá respetar la reserva con la Tarifa incorrecta.
+9.2 Cuando se haya producido un error por parte del Proveedor de Alojamiento que dé lugar a que se cargue una Tarifa incorrecta y, en consecuencia, se realice una Reserva a la Tarifa incorrecta, el Proveedor de Alojamiento deberá respetar la reserva a la Tarifa incorrecta.
 
 9.3 Wink no tendrá ninguna responsabilidad ante el Proveedor de Alojamiento por ningún error de Tarifa cometido por el Proveedor de Alojamiento.
 
@@ -197,7 +197,7 @@ Solo la persona que firma este acuerdo será el único representante designado d
 11.1 En caso de indisponibilidad (ya sea por sobreventa o por cualquier otra causa) que requiera que un Proveedor de Alojamiento reubique a un Huésped a un alojamiento alternativo, el Proveedor de Alojamiento se compromete a hacer todo lo posible para retener a los Huéspedes y las Reservas, a fin de que estos puedan permanecer en dicho alojamiento en la mayor medida posible. En caso de que el Proveedor de Alojamiento deba reubicar a un Huésped a un alojamiento alternativo, se compromete a lo siguiente:
 
 * Notificar inmediatamente a Wink antes de reubicar al Huésped;
-* Trasladar al Huésped a una propiedad alternativa de categoría/clasificación igual o superior en la misma zona, bajo las mismas condiciones reservadas y dicha reubicación será pagada por el Proveedor de Alojamiento sin cargo adicional para el Huésped afectado, e incluirá, sin limitación.
+* Trasladar al Huésped a una propiedad alternativa de igual o mayor categoría/clasificación en la misma zona, bajo las mismas condiciones reservadas y dicha reubicación será pagada por el Proveedor de Alojamiento sin cargo adicional para el Huésped afectado, e incluirá, sin limitación.
 * Cualquier costo relacionado con el transporte y otros gastos relacionados con la reubicación por parte del Huésped afectado.
 * Permitir que Wink deduzca todos los costos directos causados por la falta de disponibilidad y/o reubicación de los saldos por cobrar del Proveedor de Alojamiento en caso de que Wink incurra en alguna penalidad financiera, compensación o costo asociado con dicha falta de disponibilidad y/o reubicación.
 
@@ -341,7 +341,7 @@ El Proveedor de Alojamiento garantiza que, según su leal saber y entender, ni e
 
 **25. Autoridad para firmar: Representación y firma del proveedor de alojamiento**
 
-25.1 El Proveedor de Alojamiento garantiza que él, la persona que firma este Acuerdo, y/o cualquier otra persona que proporcione información (incluyendo, para evitar dudas, cualquier Término de Pago) a Wink en relación con o de conformidad con este Acuerdo tiene la autoridad, capacidad y poder necesario para firmar este Acuerdo para y en nombre de todos y cada uno de los Hoteles Participantes, y que dicha persona tiene la autoridad, capacidad y poder necesario para vincular al Proveedor de Alojamiento y a todos y cada uno de los Hoteles Participantes con este Acuerdo y, durante todo el Plazo, cumplirá, realizará y garantizará que cada Hotel Participante cumpla y desempeñe sus obligaciones en virtud de este Acuerdo.
+25.1 El Proveedor de Alojamiento garantiza que él, la persona que firma este Acuerdo, y/o cualquier otra persona que proporcione información (incluyendo, para evitar dudas, cualquier Término de Pago) a Wink en relación con o de conformidad con este Acuerdo tiene la autoridad, capacidad y poder necesarios para firmar este Acuerdo para y en nombre de todos y cada uno de los Hoteles Participantes, y que dicha persona tiene la autoridad, capacidad y poder necesarios para vincular al Proveedor de Alojamiento y a todos y cada uno de los Hoteles Participantes a este Acuerdo y, durante todo el Plazo, cumplirá, realizará y garantizará que cada Hotel Participante cumpla y realice sus obligaciones en virtud de este Acuerdo.
 
 25.2 El Proveedor de Alojamiento acepta explícitamente que la aceptación electrónica de este Acuerdo y sus Términos y Condiciones, incluidos aquellos relacionados con las modificaciones, es válida, vinculante y exigible.
 

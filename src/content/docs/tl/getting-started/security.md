@@ -15,7 +15,7 @@ sidebar:
 
 ## Layunin at Saklaw
 
-Bilang bahagi ng aming patuloy na pangako sa seguridad at pagprotekta sa data ng user, nagsasagawa kami ng regular na pagsubok sa pagtagos sa aming web application. Binabalangkas ng dokumentong ito ang aming mga pamamaraan ng pagsubok, nagbibigay ng buod ng mga natuklasan, at itinatampok ang aming diskarte sa patuloy na pagpapabuti ng seguridad.
+Bilang bahagi ng aming patuloy na pangako sa seguridad at pagprotekta sa data ng user, nagsasagawa kami ng regular na pagsubok sa pagtagos sa aming web application. Binabalangkas ng dokumentong ito ang aming mga pamamaraan sa pagsubok, nagbibigay ng buod ng mga natuklasan, at itinatampok ang aming diskarte sa patuloy na pagpapabuti ng seguridad.
 
 Ang dokumentong ito ay ia-update habang gumagawa ng mga bagong ulat o kapag may mga makabuluhang pagbabago na nangyari.
 
@@ -25,7 +25,7 @@ Mga domain sa saklaw:\
 
 ## Dalas at Iskedyul ng Pagsubok
 
-Ang aming mga penetration test ay isinasagawa taun-taon, na may mga karagdagang pagsubok na naka-iskedyul kung kinakailangan kasunod ng mga makabuluhang update sa application o imprastraktura. Tinitiyak ng regular na pagsubok na ito na mananatili tayong nangunguna sa mga umuusbong na banta at nagpapanatili ng isang ligtas na kapaligiran.
+Ang aming mga pagsubok sa pagtagos ay isinasagawa taun-taon, na may mga karagdagang pagsubok na naka-iskedyul kung kinakailangan kasunod ng mga makabuluhang update sa aplikasyon o imprastraktura. Tinitiyak ng regular na pagsubok na ito na mananatili kaming nangunguna sa mga umuusbong na banta at nagpapanatili ng isang ligtas na kapaligiran.
 
 ## Mga Pamamaraan sa Pagsubok
 
@@ -42,7 +42,7 @@ Ang sumusunod ay isang mataas na antas na buod ng aming pinakabagong ulat sa pag
 * **Kabuuang Mga Natukoy na Kahinaan:** 2
 * **Pamamahagi ng Kalubhaan:**
   * Kritikal: 2
-* **Mga Uri ng Natukoy na Mga Kahinaan:**
+* **Mga Uri ng Kahinaan na Natukoy:**
   * Sirang Access Control
   * Insecure na Disenyo
 
@@ -50,9 +50,9 @@ Para sa mga detalyadong natuklasan, mangyaring sumangguni sa buong ulat.
 
 ### Mga Rating ng Panganib at Epekto
 
-Pareho sa mga nahanap na kahinaan ay na-rate bilang kritikal dahil pareho sa kanila ay maaaring magkaroon ng malubhang epekto sa pananalapi. Ang una ay nagbigay-daan sa isang malisyosong na-authenticate na user na kontrolin ang Trippay payment account ng isa pang kumpanya. Ang pangalawang kahinaan ay nagbigay-daan sa isang malisyosong user na baguhin ang halaga ng pagbabayad na kinakailangan para sa isang booking.
+Pareho sa mga nahanap na kahinaan ay na-rate bilang kritikal dahil pareho sa kanila ay maaaring magkaroon ng malubhang epekto sa pananalapi. Ang una ay nagbigay-daan sa isang malisyosong na-authenticate na user na kontrolin ang Trippay na account sa pagbabayad ng isa pang kumpanya. Ang pangalawang kahinaan ay nagbigay-daan sa isang nakakahamak na user na baguhin ang halaga ng pagbabayad na kinakailangan para sa isang booking.
 
-### Mga Pagsisikap sa Remediation at Mitigation
+### Mga Pagsusumikap sa Remediation at Mitigation
 
 Ginawa namin ang mga sumusunod na hakbang upang matugunan ang mga natukoy na kahinaan:
 

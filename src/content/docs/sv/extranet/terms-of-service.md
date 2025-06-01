@@ -16,7 +16,7 @@ Genom att registrera sig och anmäla sig till Wink-programmet som boendeleverant
 
 **TRAVELIKO SINGAPORE PTE. LTD.**, ett företag bildat enligt Singapores lagar och med registrerat kontor på #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 med momsregistreringsnummer 201437335D ("Wink"), och
 
-**BOENDELEVERANTÖREN**, vars uppgifter anges i registreringsblanketten för boendeleverantör eller har skickats in online ("Boendeleverantören").
+**BOENDELEVERANTÖREN**, vars uppgifter anges i registreringsformuläret för boendeleverantör eller har skickats in online ("Boendeleverantören").
 
 Wink och boendeleverantören är båda en "part" i detta avtal och kallas gemensamt för "parterna".
 
@@ -39,7 +39,7 @@ Utöver termer som definieras på andra ställen i detta avtal gäller följande
 
 **"Avtal"**&#x62;etyder detta avtal.
 
-**"Bästa tillgängliga pris" eller "BAR"**&#x61;vser det lägsta förrabatterade, provisionsberättigade priset för rum, inklusive moms, som erbjuds allmänheten av det deltagande hotellet, boendeleverantören eller å dess vägnar av någon tredjepartsdistributör. För att undvika missförstånd ska kampanjpriser, semesterpriser och andra offentliga obegränsade priser inkluderas som bästa tillgängliga priser.
+**"Bästa tillgängliga pris" eller "BAR"**&#x61;vser det lägsta förrabatterade, provisionsberättigade priset för rum, inklusive moms, som erbjuds allmänheten av det deltagande hotellet, boendeleverantören eller på dess vägnar av någon tredjepartsdistributör. För att undvika missförstånd ska kampanjpriser, semesterpriser och andra offentliga obegränsade priser inkluderas som bästa tillgängliga priser.
 
 **"Bokning(ar)"**&#x61;vser en bokningsförfrågan för ett rum som görs via Wink eller en Wink-kund och som kommuniceras till och accepteras av boendeleverantören.
 
@@ -228,14 +228,14 @@ Så snart som möjligt ska boendeleverantören via Winks extranäts "Meddelandea
 
 13.5 Vid förtida uppsägning eller utgång av avtalet oavsett anledning ska boendeleverantören:
 
-* Hedra alla bokningar som gjorts före det ikraftträdande uppsägnings- eller utgångsdatumet, till de ursprungligen reserverade priserna, inklusive bokningar med incheckningsdatum som inträffar efter uppsägningen eller utgången av tillämplig uppsägningstid, eller på annat sätt tillhandahålla lämpliga alternativa tjänster och
+* Godkänna alla bokningar som gjorts före det ikraftträdande uppsägnings- eller utgångsdatumet, till de ursprungligen reserverade priserna, inklusive bokningar med incheckningsdatum som inträffar efter uppsägningen eller utgången av tillämplig uppsägningstid, eller på annat sätt tillhandahålla lämpliga alternativa tjänster och
 * Reglera kontot därefter.
 
 **14. Utfästelser och garantier**
 
 Boendeleverantören garanterar och försäkrar att den till fullo ska följa följande:
 
-14.1 Att tillhandahållandet av alla rum, samt alla faciliteter och tjänster, alltid ska ske i enlighet med god branschpraxis och tillhandahållas med all vederbörlig skicklighet, omsorg, uppmärksamhet och noggrannhet;
+14.1 Att tillhandahållandet av alla rum och alla faciliteter och tjänster alltid ska ske i enlighet med god branschpraxis och tillhandahållas med all vederbörlig skicklighet, omsorg, uppmärksamhet och noggrannhet;
 
 14.2 Att all personal på det deltagande hotellet ska vara lämpligt kvalificerad och utbildad för att fullgöra sina skyldigheter enligt detta avtal;
 
@@ -283,15 +283,15 @@ Boendeleverantören garanterar att varken de eller deras anslutna parter, såvit
 
 **19. Sekretess**
 
-19.1 Konfidentiell information. Parterna förstår och samtycker till att varje part vid fullgörandet av detta avtal kan ha tillgång till eller exponeras för, direkt eller indirekt, konfidentiell och känslig information från den andra parten ("Konfidentiell information"). Konfidentiell information inkluderar kunddata, transaktionsvolym, marknadsförings- och affärsplaner, affärs-, finansiell, teknisk och operativ information, användningsstatistik, rankningsdata, information om pris-, produkt- och tillgänglighetsparitet, prispolicyer, konverteringsdata och klickvolym samt annan relaterad statistik, personuppgifter för gäster, all programvara eller information om programvara som tillhandahålls eller används av Wink i samband med detta avtal, villkoren i detta avtal och sådan annan icke-offentlig information som antingen en avslöjande part betecknar som privat eller konfidentiell eller som en mottagande part rimligen borde veta att den bör behandlas som privat och konfidentiell.
+19.1 Konfidentiell information. Parterna förstår och samtycker till att vardera parten vid fullgörandet av detta avtal kan ha tillgång till eller exponeras för, direkt eller indirekt, konfidentiell och känslig information från den andra parten ("Konfidentiell information"). Konfidentiell information inkluderar kunddata, transaktionsvolym, marknadsförings- och affärsplaner, affärs-, finansiell, teknisk och operativ information, användningsstatistik, rankningsdata, information om pris-, produkt- och tillgänglighetsparitet, prispolicyer, konverteringsdata och klickvolym samt annan relaterad statistik, personuppgifter för gäster, all programvara eller information om programvara som tillhandahålls eller används av Wink i samband med detta avtal, villkoren i detta avtal och sådan annan icke-offentlig information som antingen en avslöjande part betecknar som privat eller konfidentiell eller som en mottagande part rimligen borde veta att den bör behandlas som privat och konfidentiell.
 
 19.2 Skydda och skydda konfidentiell information. Vardera parten samtycker till att: (a) all konfidentiell information ska förbli den utlämnande partens exklusiva egendom och den mottagande parten ska inte använda någon konfidentiell information för något annat ändamål än för att främja detta avtal, (b) den ska upprätthålla, och ska använda försiktiga metoder för att få sina anställda, tjänstemän, representanter, avtalsslutande parter och ombud ("Tillståndspersonerna") att upprätthålla, sekretessen och sekretessen för den konfidentiella informationen, (c) den ska endast lämna ut konfidentiell information till de tillåtna personer som behöver känna till sådan information för att främja detta avtal, (d) den inte ska, och ska använda försiktiga metoder för att säkerställa att tillåtna personer inte (i) kopierar, publicerar, överför, reproducerar, avslöjar, avslöjar eller gör den konfidentiella informationen tillgänglig för någon tredje part, eller (ii) använder eller lagrar den i ett oskyddat hämtningssystem eller databas (förutom i enlighet med villkoren häri), och (e) den ska returnera eller förstöra alla ((hård- och mjukvaru)kopior av) konfidentiell information på skriftlig begäran från den andra parten. I händelse av att endera parten behandlar personuppgifter för den andra partens räkning som en del av tillhandahållandet av tjänsterna enligt detta avtal, ska parterna reglera sådan behandling genom ett databehandlingsavtal och utgöra en del av villkoren i detta avtal.
 
 19.3 Tillåtet utlämnande. Oaktat föregående ska konfidentiell information inte omfatta någon information i den utsträckning den (i) är eller blir en del av det allmänna genom ingen handling eller underlåtenhet från den mottagande partens sida, (ii) innehades av den mottagande parten före datumet för detta avtal, (iii) lämnas ut till den mottagande parten av en tredje part som inte har någon skyldighet till tystnadsplikt avseende detta, eller (iv) måste lämnas ut enligt lag, domstolsbeslut, stämning eller myndighet. Wink har rätt att lämna ut detta avtal konfidentiellt till sina boendeleverantörer.
 
-19.4 Kunddata. Parterna ska vidta kommersiellt rimliga åtgärder för att skydda sekretessen och integriteten för kunddata och för att skydda dem från obehörig användning eller utlämnande. Parterna samtycker till att följa tillämpliga lagar om behandling av personuppgifter och skydd av integritet. Parterna ska alltid vidta rimliga och lämpliga säkerhetsåtgärder för att förhindra korruption av och obehörig åtkomst till kunddata. Sådana åtgärder ska bland annat omfatta datakryptering och kanalkryptering. I förekommande fall måste boendeleverantören meddela Wink om eventuella säkerhetsintrång så snart som möjligt (senast 1 dag efter att intrånget upptäckts). Varje part ska ha en integritetspolicy tillgänglig för kunder som beskriver hur den skyddar och använder kunddata. Parterna kan utöva sin rätt att begära åtkomst till sina personuppgifter, rättelse eller radering av sådana uppgifter, samt sin rätt att invända, dataportabilitet och begränsning av sin behandling, genom en skriftlig begäran till den andra parten, till de adresser som anges i rubriken till detta avtal, utöver att lämna in ett klagomål till den lokala dataskyddsmyndigheten.
+19.4 Kunddata. Parterna ska vidta kommersiellt rimliga åtgärder för att skydda sekretessen och integriteten för Kunddata och för att skydda dem från obehörig användning eller utlämnande. Parterna samtycker till att följa tillämpliga lagar om behandling av personuppgifter och skydd av integritet. Parterna ska alltid vidta rimliga och lämpliga säkerhetsåtgärder för att förhindra korruption av och obehörig åtkomst till Kunddata. Sådana åtgärder ska bland annat omfatta datakryptering och kanalkryptering. I förekommande fall måste Logileverantören meddela Wink om eventuella säkerhetsintrång så snart som möjligt (senast 1 dag efter att intrånget upptäckts). Varje part ska ha en integritetspolicy tillgänglig för kunder som beskriver hur den skyddar och använder Kunddata. Parterna kan utöva sin rätt att begära åtkomst till sina personuppgifter, rättelse eller radering av sådana uppgifter, samt sin rätt att invända, dataportabilitet och begränsning av sin behandling, genom en skriftlig begäran till den andra parten, till de adresser som anges i rubriken till detta avtal, utöver att lämna in ett klagomål till den lokala dataskyddsmyndigheten.
 
-19.5 Meddelanden. Ingen av parterna får skapa, publicera, distribuera eller tillåta något skriftligt material som hänvisar till den andra parten utan att först lämna in sådant material till den andra parten och erhålla skriftligt samtycke i förväg från den part som inte lämnat in det. Detta samtycke får inte oskäligt undanhållas eller försenas.
+19.5 Meddelanden. Ingen av parterna får skapa, publicera, distribuera eller tillåta något skriftligt material som hänvisar till den andra parten utan att först lämna in sådant material till den andra parten och erhålla skriftligt samtycke i förväg från den part som inte lämnat in det. Detta samtycke får inte oskäligt vägras eller försenas.
 
 19.6 Vardera parten kan kontakta den andra partens dataskyddsombud (DPO) via följande e-postadresser och/eller postadresser: dataprotectionofficer@Wink.
 
@@ -335,7 +335,7 @@ Boendeleverantören garanterar att varken de eller deras anslutna parter, såvit
 
 24.2 Beträffande betalningsvillkor gällande avtalade avbokningar och utebliven ankomst, betalningsregler, avbokningar och tillgänglighet av rum (standardtyp), ska villkoren i detta avtal ha företräde.
 
-24.3 Beträffande priser, minimibeläggning, rabatter för tredje person och barn samt tillämpliga marknader ska de villkor som överenskommits i det tillämpliga individuella kommersiella avtalet gälla.
+24.3 Beträffande priser, minimibeläggning, rabatter för tredje person och barn samt tillämpliga marknader ska de villkor som överenskommits i det tillämpliga individuella kommersiella avtalet ha företräde.
 
 **25. Fullmakt att underteckna – Boendeleverantörens utfästelse och underskrift**
 
@@ -353,7 +353,7 @@ Inget avstående från något brott eller villkor i detta avtal ska anses vara e
 
 **28. Avskiljbarhet**
 
-Om någon bestämmelse i detta avtal av en statlig verkställande myndighet, domstol eller tribunal med behörig jurisdiktion bedöms vara olaglig, ogiltig eller på annat sätt ogenomförbar enligt nationell lag, ska sådan bestämmelse tolkas, ändras eller tas bort i den utsträckning det är nödvändigt för att göra sådan bestämmelse och/eller detta avtal laglig, giltig eller på annat sätt verkställbar, och den återstående delen av sådan bestämmelse och de återstående andra bestämmelserna häri ska fortsätta att gälla, förbli i full kraft och verkan och fortsätta att vara bindande, och ska tolkas för att i största möjliga utsträckning ge verkan åt parternas avsikt.
+Om någon bestämmelse i detta avtal av en statlig verkställande myndighet, domstol eller tribunal med behörig jurisdiktion bedöms vara olaglig, ogiltig eller på annat sätt ogenomförbar enligt nationell lag, ska sådan bestämmelse tolkas, ändras eller tas bort i den utsträckning som är nödvändig för att göra sådan bestämmelse och/eller detta avtal laglig, giltig eller på annat sätt verkställbar, och den återstående delen av sådan bestämmelse och de återstående andra bestämmelserna häri ska fortsätta att gälla, förbli i full kraft och verkan och fortsätta att vara bindande, och ska tolkas för att i största möjliga utsträckning ge verkan åt parternas avsikt.
 
 **29. Parternas förhållande**
 
@@ -373,7 +373,7 @@ Wink ansvarar inte för förseningar eller underlåtenhet att uppfylla någon sk
 
 32.1 I den utsträckning lagen tillåter ska ingen av parterna vara ansvarig för några indirekta, tillfälliga, följdskador, särskilda eller straffskador som uppstår på grund av detta avtal eller brott mot det, även om parterna har informerats om möjligheten till sådana skador. Denna begränsning ska inte gälla för brott mot detta avtal avseende sekretess och/eller immateriella rättigheter.
 
-32.2 Ingen av Parterna får frånskriva sig ansvar avseende (i) dödsfall eller personskada orsakad av Partens eller dess anställdas, ombuds eller underleverantörers försummelse, (ii) bedrägeri begått av Parten själv eller dess anställda, eller (iii) brott mot avtalet, handlingen, underlåtenheten eller ansvaret som inte kan begränsas enligt tillämplig lag.
+32.2 Ingen av Parterna får frånskriva sig ansvar avseende (i) dödsfall eller personskada orsakad av Partens eller dess anställdas, ombuds eller underleverantörers försummelse, (ii) bedrägeri begått av Parten själv eller dess anställda, eller (iii) brott, handlingar, underlåtenheter eller ansvar som inte kan begränsas enligt tillämplig lag.
 
 32.3 Parterna bekräftar och samtycker till att de undantag från och begränsningar av ansvar som anges i detta avtal är rättvisa och rimliga.
 

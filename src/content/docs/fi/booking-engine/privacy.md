@@ -30,19 +30,19 @@ Henkilötietojen käsittelyn ja käytön tarkoitus Yhtiön on kerättävä, koot
 
 (1) Yhtiön kanssa käymäsi viestinnän hallinnoimiseksi, kuten kysymyksiin vastaaminen, pyydettyjen ja vaadittujen tietojen toimittaminen, valitusten käsittely tai suoraan Yhtiölle eri viestintäkanavien kautta antamiisi kommentteihin vastaaminen, mukaan lukien jatkuva koordinointi, palvelusopimuksen täytäntöönpano ja/tai Yhtiön ja sinun välilläsi mahdollisesti sopimien oikeuksien ja velvollisuuksien suorittaminen;
 
-(2) Yhtiön tiettyjen ehtojen alaisten lakisääteisten velvoitteiden suorittamiseksi. Tähän voi sisältyä muun muassa kirjanpito- ja veroasiakirjojen laatimiseen liittyvien tehtävien suorittaminen Yhtiön sinulle tarjoamien palveluiden yhteydessä;
+(2) Yhtiön tiettyjen ehtojen alaisten lakisääteisten velvoitteiden suorittamiseksi. Tähän voivat sisältyä muun muassa kirjanpito- ja veroasiakirjojen laatimiseen liittyvien tehtävien suorittaminen Yhtiön sinulle tarjoamien palveluiden yhteydessä;
 
 (3) Liikesuhteiden rakentamiseksi ja parantamiseksi, mukaan lukien Yhtiön tarjoaman palvelun parantaminen sinulle, jolloin Yhtiö voi kerätä ja/tai käyttää henkilötietojasi valvontaa, palvelun varmistamista, johdon analysointia ja liiketoimintaan liittyvien ongelmien ratkaisemista varten, mukaan lukien, mutta ei rajoittuen, työntekijöiden koulutus ja tuleva palvelun parantamisen suunnittelu;
 
 (4) Yhtiön laillisten oikeuksien suojaamiseksi ja puolustamiseksi, jos sinulla ja Yhtiöllä on riita; ja
 
-(5) Yhtiö voi käsitellä henkilötietoja suostumuksessa määriteltyihin tarkoituksiin, edellyttäen, että Yhtiö on antanut nimenomaisen suostumuksensa esimerkiksi markkinointi- ja uutiskirjeviestintää varten.
+(5) Yhtiö voi käsitellä henkilötietoja suostumuksessa määriteltyihin tarkoituksiin, edellyttäen, että Yhtiölle on annettu nimenomainen suostumus, kuten markkinointi- ja uutiskirjeviestintää varten.
 
 Henkilötietojen säilytysaika. Jotta yhtiö voi suorittaa edellä kuvattuja tarkoituksia, sen on kerättävä, koottava ja käsiteltävä henkilötietojasi seuraavan ajanjakson mukaisesti:
 
 (1) Yhtiön on tarpeen käsitellä henkilötietojasi palveluiden tarjoamiseksi, sopimuksen täytäntöönpanemiseksi ja/tai sopimuksen mukaisten oikeuksien ja velvollisuuksien suorittamiseksi niin kauan kuin yhtiöllä on velvollisuus tarjota sinulle palveluita;
 
-(2) Sovellettavan lainsäädännön mukaisten tehtävien suorittamiseksi Yhtiön on käsiteltävä henkilötietojasi sovellettavissa laeissa määritellyn ajan, jotta henkilötietoja voidaan käsitellä sovellettavan lainsäädännön mukaisesti;
+(2) Jotta Yhtiö voi käsitellä henkilötietoja sovellettavien lakien mukaisten tehtävien suorittamiseksi, sen on käsiteltävä henkilötietojasi sovellettavien lakien määrittelemän ajan;
 
 (3) Yhtiö pidättää oikeuden säilyttää henkilötietoja liikesuhteiden rakentamista ja parantamista ja/tai palvelun parantamista varten siltä osin kuin yhtiöllä on siihen liiketoiminnallisia tarpeita. Yhtiö takaa, että henkilötietojen säilyttäminen ei kohtuuttomasti vaikuta rekisteröidyn oikeuksiin;
 
@@ -52,7 +52,7 @@ Henkilötietojen säilytysaika. Jotta yhtiö voi suorittaa edellä kuvattuja tar
 
 Henkilötietojen luovuttaminen, pääsääntöisesti henkilötietojasi ei luovuteta, paitsi niissä tilanteissa, joissa Yhtiön olisi luovutettava ne seuraavalle henkilölle:
 
-(1) Yhtiön ulkoiset palveluntarjoajat, jotka on palkattu tarjoamaan Yhtiölle tukipalveluita palveluiden tarjoamiseksi sinulle, mukaan lukien Yhtiön konsultit. Henkilötietojen luovuttaminen näille kolmansille osapuolille tapahtuu tarkoitusten mukaisesti ja ainoastaan ​​​​tarpeen perusteella; tai
+(1) Yhtiön ulkoiset palveluntarjoajat, jotka on palkattu tarjoamaan Yhtiölle tukipalveluita palveluiden tarjoamiseksi sinulle, mukaan lukien Yhtiön konsultit. Henkilötietojen luovuttaminen näille kolmansille osapuolille tapahtuu tarkoitusten mukaisesti ja ainoastaan ​​​​tarpeen mukaan; tai
 
 (2) Hallitus, sääntelyviranomaiset tai tuomioistuimet, joiden mukaan Yhtiöön voi kohdistua määräys, laki tai tuomio, joka edellyttää henkilötietojen luovuttamista.
 

@@ -43,7 +43,7 @@ sidebar:
 * Portugalų (PT)
 * Romėnų
 * Rusų k.
-* Slovėnų k.
+* Slovėnijos
 * Slovėnų k.
 * Serbų
 * Švedų

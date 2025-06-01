@@ -50,7 +50,7 @@ Utilizzando questo modello, gli agenti di viaggio pagano a Wink solo la commissi
 
 ## Servizi futuri
 
-In futuro offriremo servizi opzionali in abbonamento che renderanno ancora più facile vendere per tutti, oppure offriremo account di affiliazione gestiti che si occuperanno della vendita per te. Se questo ti interessa, fatti sentire scrivendoci un'email a[ciao@wink.travel](mailto:hi@wink.travel).
+In futuro offriremo servizi opzionali in abbonamento che renderanno ancora più facile vendere per tutti, oppure offriremo account di affiliazione gestiti che si occuperanno della vendita per te. Se questo ti interessa, fatti sentire scrivendoci a[ciao@wink.travel](mailto:hi@wink.travel).
 
 Rimani sintonizzato.
 

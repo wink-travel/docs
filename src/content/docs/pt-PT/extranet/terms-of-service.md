@@ -41,7 +41,7 @@ Além dos termos definidos noutras partes deste Contrato, as seguintes definiç�
 
 **"Acordo"** significa este acordo.
 
-**"Melhor Tarifa Disponível" ou "BAR"** significa a tarifa comissionável pré-descontada para Quartos mais baixa, incluindo IVA, oferecida ao público em geral pelo Hotel Participante, pelo Fornecedor de Alojamento ou em seu nome por qualquer distribuidor terceiro. Para evitar dúvidas, as tarifas promocionais, as tarifas de férias e quaisquer outras tarifas públicas irrestritas serão incluídas como Melhores Tarifas Disponíveis.
+**"Melhor Tarifa Disponível" ou "BAR"** significa a tarifa comissionável pré-descontada para Quartos mais baixa, incluindo IVA, oferecida ao público em geral pelo Hotel Participante, pelo Fornecedor de Alojamento ou em seu nome por qualquer distribuidor terceiro. Para evitar dúvidas, as tarifas promocionais, as tarifas de férias e quaisquer outras tarifas públicas não restritas serão incluídas como Melhores Tarifas Disponíveis.
 
 **"Reserva(s)"** significa um pedido de reserva de um Quarto feito através do Wink ou de um cliente Wink que é comunicado e aceite pelo Fornecedor de Alojamento.
 
@@ -71,7 +71,7 @@ Além dos termos definidos noutras partes deste Contrato, as seguintes definiç�
 
 **"Parceiro"** significa qualquer empresa ou indivíduo que esteja a ligar ou a utilizar a plataforma Wink para promover e vender o inventário dos Fornecedores de Alojamento ao seu público e/ou clientes mediante comissão.
 
-**“Facilitador de Pagamentos”** uma subsidiária integral da Traveliko Singapore Pte. Ltd. (“TripPay”), que rege os Serviços de Pagamento, recolhendo os pagamentos dos hóspedes (“Pagamento”), cobrando o método de pagamento associado à sua compra, como cartão de crédito, cartão de débito, transferência bancária, criptomoedas ou PayPal, etc. e desembolsando o fundo devido (“Taxa Líquida”) ao fornecedor de Alojamento.
+**“Facilitador de Pagamentos”** uma subsidiária integral da Traveliko Singapore Pte. Lda. (“TripPay”), que rege os Serviços de Pagamento, recolhendo os pagamentos dos hóspedes (“Pagamento”), cobrando o método de pagamento associado à sua compra, como cartão de crédito, cartão de débito, transferência bancária, criptomoedas ou PayPal, etc. e desembolsando o fundo devido (“Taxa Líquida”) ao fornecedor de Alojamento.
 
 **“Pagamento”** significa a aquisição de um pagamento efetuado por um hóspede pelo Facilitador de Pagamentos.
 
@@ -273,7 +273,7 @@ O Fornecedor de Alojamento garante e declara que cumprirá integralmente o segui
 
 O Fornecedor de Alojamento deverá manter uma cobertura de seguro adequada junto de seguradoras respeitáveis, licenciadas para operar no estado/país aplicável, em relação a todos os riscos de terceiros decorrentes ou que possam surgir em relação ou ligados ao fornecimento de alojamento (ou quaisquer instalações e serviços) e/ou ao presente Contrato, incluindo a responsabilidade da Wink decorrente direta ou indiretamente de ou em conjunto com quaisquer reclamações relativas a (i) perda ou dano de qualquer propriedade real ou pessoal; (ii) danos pessoais ou morte de qualquer pessoa; (iii) perdas ou danos em bens de terceiros; ou (iv) a sua responsabilidade perante terceiros a quem presta serviços de alojamento.
 
-**18.º Anti-suborno, restrições comerciais e ética empresarial**
+**18. Anti-suborno, restrições comerciais e ética empresarial**
 
 A Wink adota uma abordagem de tolerância zero a violações de normas de comércio internacional, legislação de prevenção de suborno e corrupção e restrições aplicáveis ao comércio, fluxo de fundos e financiamento do terrorismo.
 
@@ -361,7 +361,7 @@ Se qualquer disposição deste Contrato for determinada por uma agência governa
 
 As Partes são e atuarão como contratantes independentes na execução do presente Contrato. Nenhuma das Partes atuará ou será considerada agente ou parceira da outra Parte para qualquer fim, nem terá autoridade para vincular a outra em qualquer aspeto.
 
-**30.º Atribuição**
+**30. Atribuição**
 
 30.1 Nenhuma das Partes terá o direito de ceder, transferir ou onerar quaisquer dos seus direitos e/ou obrigações ao abrigo do presente Contrato sem o consentimento prévio por escrito da outra Parte, desde que a Wink possa ceder, transferir ou onerar quaisquer dos seus direitos e/ou obrigações ao abrigo do presente Contrato (no todo ou em parte ou de tempos a tempos) a uma empresa afiliada sem o consentimento prévio por escrito do Fornecedor de Alojamento.
 

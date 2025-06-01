@@ -12,12 +12,12 @@ Sinusuportahan ng Wink ang parehong mga modelo ng merchant at ahente.
 
 ## Modelo 1
 
-Ang wink ay ang merchant of record sa oras na maganap ang booking. Responsable ang Wink para sa mga pondo at nagdadala, anuman at lahat, ng mga lisensya para magpatakbo ng isang ahensya sa paglalakbay.
+Ang wink ay ang merchant of record sa oras na maganap ang booking. Responsable si Wink para sa mga pondo at nagdadala, anuman at lahat, ng mga lisensya para magpatakbo ng isang ahensya sa paglalakbay.
 Nalalapat ang modelong ito sa 95% ng lahat ng booking
 
 Wink charges `5.5% per booking` upang mapanatili ang platform.
-Karamihan sa mga iyon ay napupunta sa gateway ng pagbabayad (Visa, MasterCard atbp). Ang isang average na booking ay nagkakahalaga sa amin `2.95%` upang makakuha; minsan kasing taas `3.6%`. Ang mga bahagyang refund ay nagpabalik sa amin nang higit pa dahil nakikita ito ng gateway ng pagbabayad bilang bagong pagsingil.
-Gusto naming maging ganap na transparent tungkol sa pagpepresyo ngayon upang makatipid sa lahat ng oras bago subukang makipag-ayos ng karagdagang mga diskwento bago gamitin ang Wink. Ang aming modelo sa pagpepresyo ay higit pa sa patas at kailangan din naming maghanap-buhay.
+Karamihan sa mga iyon ay napupunta sa gateway ng pagbabayad (Visa, MasterCard atbp). Ang isang average na booking ay nagkakahalaga sa amin `2.95%` upang makakuha; minsan kasing taas `3.6%`. Ibinalik pa kami ng mga bahagyang refund dahil nakikita ito ng gateway ng pagbabayad bilang bagong pagsingil.
+Gusto naming maging ganap na transparent tungkol sa pagpepresyo ngayon upang makatipid sa lahat ng oras bago subukang makipag-ayos ng karagdagang mga diskwento bago gamitin ang Wink. Ang aming modelo ng pagpepresyo ay higit pa sa patas at kailangan din naming maghanap-buhay.
 
 ### Pagkasira
 

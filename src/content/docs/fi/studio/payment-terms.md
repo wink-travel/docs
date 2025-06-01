@@ -21,7 +21,7 @@ Maksuvälittäjä tarjoaa maksupalveluita yhteistyökumppaneille, jotka myyvät 
 * Maksunkeräyspalvelut; ja
 * Muut maksuihin liittyvät palvelut kumppanuuspalveluiden yhteydessä.
 
-Maksupalveluiden käyttämiseksi sinun on oltava vähintään 18-vuotias, sinulla on oltava maksupalveluntarjoajan ehtojen mukaisesti hyvämaineinen Wink-tili ja sinun on pidettävä maksu- ja henkilötietosi oikeina ja täydellisinä.
+Maksupalveluiden käyttämiseksi sinun on oltava vähintään 18-vuotias, sinulla on oltava maksupalveluntarjoajan ehtojen mukainen hyvämaineinen Wink-tili ja sinun on pidettävä maksu- ja henkilötietosi oikeina ja täydellisinä.
 
 Kumppani on lukenut sopimuksen ja hyväksynyt kaikki ehdot. Kumppani nimenomaisesti hyväksyy, että tämän sopimuksen ja sen ehtojen, mukaan lukien muutosten, sähköinen hyväksyntä on pätevä, sitova ja täytäntöönpanokelpoinen.
 

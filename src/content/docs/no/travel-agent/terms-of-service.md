@@ -145,7 +145,7 @@ Disse vilkårene er tilgjengelige under[Partnerportal > Vilkår for bruk](/studi
 
 6.6**Betalingstvister:**
 
-* Ved tvist om en faktura skal reisebyrået varsle Wink innen 10 dager etter fakturadatoen og oppgi en detaljert begrunnelse for tvisten. Begge parter skal forhandle i god tro for å løse tvisten raskt. Den ubestridte delen av fakturaen skal betales innen forfallsdatoen.
+* Ved tvist om en faktura skal reisebyrået varsle Wink innen 10 dager etter fakturadatoen og oppgi en detaljert begrunnelse for tvisten. Begge parter skal forhandle i god tro for å løse tvisten raskt. Den ubestridte delen av fakturaen skal betales innen forfallsdato.
 
 **7. Reisebyråets ansvar**
 

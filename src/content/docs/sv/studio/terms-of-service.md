@@ -79,7 +79,7 @@ Wink och det anslutna bolaget är en "part" i detta avtal och kallas gemensamt f
 
 **1.2 Inget partnerskap**
 
-1.2.1 Detta avtal är inte avsett, och bör inte heller tolkas som, att det skapar ett joint venture eller förhållandet mellan partners, partnerskap eller huvudman och ombud mellan eller bland parterna.
+1.2.1 Detta avtal är inte avsett, och ska inte heller tolkas som, att det skapar ett joint venture eller förhållandet mellan partners, partnerskap eller huvudman och ombud mellan eller bland parterna.
 
 1.2.2 Om inte annat skriftligen avtalats med Wink eller enligt vad som anges i detta avtal, ska Affiliaten inte publicera någonstans på Affiliatens webbplats(er) något uttalande, vare sig uttryckligt eller underförstått, om att webbplatsen är en del av, godkänd av eller en officiell webbplats för Wink.
 
@@ -240,7 +240,7 @@ Affiliaten samtycker till att inte kontakta, värva eller acceptera någon boend
 
 5.1 Wink betalar Affiliaten en Provision, som är den procentandel som fastställs av Boendeleverantören av bokningsvärdet som genereras av den Materialiserade Transaktionen. Wink använder sig av en tredjepartsbetalningsförmedlare för in- och utbetalningstransaktioner. Betalningsvillkoren anges i ett separat avtal.
 
-5.2 Procentsatsen för affiliate-provision eller ACP fastställs av boendeleverantören. En standard-ACP på 10 % används, men parterna kan komma överens om en annan procentsats enligt klausul 1.2.3.
+5.2 Affiliateprovisionsprocenten eller ACP fastställs av boendeleverantören. En standard-ACP på 10 % används, men parterna kan komma överens om en annan procentsats enligt klausul 1.2.3.
 
 5.3 Provisionen kommer att betalas ut enligt följande formel:
 
@@ -361,7 +361,7 @@ Den anslutna parten garanterar att varken de eller dess anslutna parter, såvitt
 
 **11.1 Konfidentiell information**
 
-Parterna förstår och samtycker till att varje part vid fullgörandet av detta avtal kan ha tillgång till eller exponeras för, direkt eller indirekt, konfidentiell och känslig information från den andra parten ("Konfidentiell information"). Konfidentiell information inkluderar kunddata, transaktionsvolym, marknadsförings- och affärsplaner, affärs-, finansiell, teknisk och operativ information, användningsstatistik, rankningsdata, information om pris-, produkt- och tillgänglighetsparitet, prispolicyer, konverteringsdata och klickvolym samt annan relaterad statistik, personuppgifter för gäster, all programvara eller information om programvara som tillhandahålls eller används av Wink i samband med detta avtal, villkoren i detta avtal och sådan annan icke-offentlig information som antingen en avslöjande part betecknar som privat eller konfidentiell eller som en mottagande part rimligen borde veta att bör behandlas som privat och konfidentiell.
+Parterna förstår och samtycker till att vid fullgörandet av detta avtal kan vardera parten ha tillgång till eller exponeras för, direkt eller indirekt, konfidentiell och känslig information från den andra parten ("Konfidentiell information"). Konfidentiell information inkluderar kunddata, transaktionsvolym, marknadsförings- och affärsplaner, affärs-, finansiell, teknisk och operativ information, användningsstatistik, rankningsdata, information om pris-, produkt- och tillgänglighetsparitet, prispolicyer, konverteringsdata och antal klick samt annan relaterad statistik, personuppgifter för gäster, all programvara eller information om programvara som tillhandahålls eller används av Wink i samband med detta avtal, villkoren i detta avtal och sådan annan icke-offentlig information som antingen en avslöjande part betecknar som privat eller konfidentiell eller som en mottagande part rimligen borde veta att den bör behandlas som privat och konfidentiell.
 
 **11.2 Skydda och skydda konfidentiell information**
 
@@ -373,7 +373,7 @@ Oaktat föregående ska Konfidentiell Information inte omfatta någon informatio
 
 **11.4 Kunddata**
 
-Parterna ska vidta kommersiellt rimliga åtgärder för att skydda sekretessen och integriteten för kunddata och för att skydda dem från obehörig användning eller utlämnande. Parterna samtycker till att följa tillämpliga lagar om behandling av personuppgifter och skydd av integritet. Parterna ska alltid vidta rimliga och lämpliga säkerhetsåtgärder för att förhindra korruption av och obehörig åtkomst till kunddata. Sådana åtgärder ska bland annat omfatta datakryptering och kanalkryptering. I förekommande fall måste Affiliaten meddela Wink om eventuella säkerhetsintrång så snart som möjligt (senast 1 dag efter att intrånget upptäckts). Varje part ska ha en integritetspolicy tillgänglig för kunder som beskriver hur den skyddar och använder kunddata.
+Parterna ska vidta kommersiellt rimliga åtgärder för att skydda sekretessen och integriteten för Kunddata och för att skydda den från obehörig användning eller utlämnande. Parterna samtycker till att följa tillämpliga lagar om behandling av personuppgifter och skydd av integritet. Parterna ska alltid vidta rimliga och lämpliga säkerhetsåtgärder för att förhindra korruption av och obehörig åtkomst till Kunddata. Sådana åtgärder ska bland annat omfatta datakryptering och kanalkryptering. I förekommande fall måste Affiliaten meddela Wink om eventuella säkerhetsintrång så snart som möjligt (senast 1 dag efter att intrånget upptäckts). Varje part ska ha en integritetspolicy tillgänglig för kunder som beskriver hur den skyddar och använder Kunddata.
 
 **11.5 Meddelanden**
 
@@ -413,7 +413,7 @@ Wink.travel ansvarar inte för förseningar eller underlåtenhet att uppfylla n�
 
 19. **Tillämplig lag och jurisdiktion**
 
-Detta avtal ska uteslutande regleras av och tolkas i enlighet med Singapores lagar. Contracts (Rights of Third Parties) Act 2001 (Cap 53B) ska inte tillämpas på detta avtal. Parterna ska under alla omständigheter försöka lösa sina tvister i godo utanför domstol genom att först föra diskussioner och förhandlingar i god tro.\
+Detta avtal ska uteslutande regleras av och tolkas i enlighet med Singapores lagar. Kontraktslagen (Tredjepartslagens rättigheter) från 2001 (kap. 53B) ska inte tillämpas på detta avtal. Parterna ska under alla omständigheter försöka lösa sina tvister i godo utanför domstol genom att först föra diskussioner och förhandlingar i god tro.\
 Eventuella tvister som uppstår på grund av eller i samband med detta avtal ska exklusivt hänskjutas till och hanteras av behörig domstol i Singapore, utan hänsyn till lagvalsregler.\
 oåterkalleligen avstå från varje rätt som den kan ha att invända mot att en talan väcks vid sådana domstolar, att hävda att talan har väckts i ett olämpligt forum eller att hävda att sådana domstolar saknar behörighet.
 

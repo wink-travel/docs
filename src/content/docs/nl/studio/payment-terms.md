@@ -14,7 +14,7 @@ Laatst bijgewerkt op 2024-06-12
 
 Deze betalingsvoorwaarden (“**Betalingsvoorwaarden**”) zijn een bindende juridische overeenkomst tussen u en TripPay (hierna te noeme&#x6E;**“Betalingsfacilitator”**), een volledige dochteronderneming van Traveliko Singapore Pte. Ltd., die de betalingsdiensten (hieronder gedefinieerd) beheert die worden uitgevoerd via of in verband met het Wink-platform (hierna te noeme&#x6E;**“Knipoog”**). Wanneer in deze betalingsvoorwaarden sprake is van “**Betalingsfacilitator**,” “**Wij**,” “**ons**," of "**ons&#x20;**, verwijst naar het TripPay-bedrijf waarmee u een contract afsluit voor betalingsdiensten.
 
-Payment Facilitator biedt betalingsdiensten aan gelieerde ondernemingen die inventaris van accommodatieaanbieders verkopen via Wink. Deze betalingsdiensten kunnen (indien beschikbaar) het volgende omvatten (gezamenlijk: "**Betaaldiensten**”):
+Payment Facilitator biedt betalingsdiensten aan Affiliates die inventaris van Accommodatieverstrekkers verkopen via Wink. Deze betalingsdiensten kunnen (indien beschikbaar) het volgende omvatten (gezamenlijk: "**Betaaldiensten**”):
 
 * Betalingen van gasten innen (“**Inbetaling**”), door de betaalmethode te belasten die aan hun aankoop is gekoppeld, zoals creditcard, betaalpas, bankoverschrijving, cryptovaluta of PayPal (“**Betaalmethode**”);
 * Het verrichten van betalingen aan gelieerde ondernemingen (“**Uitbetaling**”) naar hun lokale bankrekening.

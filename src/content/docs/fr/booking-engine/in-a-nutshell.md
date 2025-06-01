@@ -27,7 +27,7 @@ Ses responsabilités comprennent :
   * Une page de destination d'hôtel sur https://ota.wink.travel avec l'inventaire de cet hôtel.
   * UN [carte](/studio/cards)contenant l'inventaire des affiliés.
   * UN [carte](/studio/maps)sur votre[Liens Wink](/link-manager/wink-links) compte.
-  * Un [appel d'API](/developers/apis)à partir d'un système d'agent de voyages à distance.
+  * Un [appel API](/developers/apis)à partir d'un système d'agent de voyages à distance.
 * Offrir aux voyageurs un moyen de :
   * Rechercher un inventaire de voyage.
   * Réserver l'inventaire disponible.
@@ -37,13 +37,13 @@ Ses responsabilités comprennent :
 
 Le moteur de réservation est un ensemble de fonctionnalités réutilisables que nous exposons via https://ota.wink.travel ; un site Web hautement personnalisable permettant aux hôtels et aux affiliés de vendre leurs produits aux voyageurs.
 
-Les intégrateurs qui souhaitent encore plus de liberté ont accès à toutes les mêmes fonctionnalités via notre[Plugin WordPress](/developers/wordpress/),[Composants Web](/developers/web-components) et [Apis](/developers/apis).
+Les intégrateurs qui souhaitent encore plus de liberté ont accès à toutes les mêmes fonctionnalités via notre[plugin WordPress](/developers/wordpress/),[Composants Web](/developers/web-components) et [Apis](/developers/apis).
 
 Passez aux sections suivantes pour en savoir plus sur ce que le moteur de réservation a à offrir.
 
 ## Lectures complémentaires
 
-* En savoir plus sur notre[Plugin WordPress](/developers/wordpress/).
+* En savoir plus sur notre[plugin WordPress](/developers/wordpress/).
 * En savoir plus sur notre[Composants Web](/developers/web-components).
 * En savoir plus sur notre[Apis](/developers/apis).
 

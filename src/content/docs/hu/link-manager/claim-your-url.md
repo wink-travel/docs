@@ -1,5 +1,5 @@
 ---
-title: Igényeld az URL-címedet
+title: Igényelje URL-jét
 description: 'Ebben a cikkben elmondjuk, hogyan igényelheted a WinkLinks Vanity URL-címedet.'
 sidebar:
   order: 1

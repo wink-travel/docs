@@ -12,7 +12,7 @@ Dernière mise à jour : 12/06/2024
 
 **CONDITIONS DE PAIEMENT POUR LES AFFILIÉS**
 
-Ces conditions de paiement du service («**Conditions de paiement**« » constituent un accord juridique contraignant entre vous et TripPay (ci-après dénomm&#xE9;**« Facilitateur de paiement »**), une filiale à 100 % de Traveliko Singapore Pte. Ltd., qui régit les services de paiement (définis ci-dessous) effectués via ou en relation avec la plateforme Wink (ci-après dénommé&#x65;**"Clin d'œil"**). Lorsque les présentes Conditions de paiement mentionnent «**Facilitateur de paiement**, " "**nous**, " "**nous**," ou "**notre**”, cela fait référence à la société TripPay avec laquelle vous concluez un contrat pour les services de paiement.
+Ces conditions de paiement de service («**Conditions de paiement**« » constituent un accord juridique contraignant entre vous et TripPay (ci-après dénomm&#xE9;**« Facilitateur de paiement »**), une filiale à 100 % de Traveliko Singapore Pte. Ltd., qui régit les services de paiement (définis ci-dessous) effectués via ou en relation avec la plateforme Wink (ci-après dénommé&#x65;**"Clin d'œil"**). Lorsque les présentes Conditions de paiement mentionnent «**Facilitateur de paiement**, " "**nous**, " "**nous**," ou "**notre**”, cela fait référence à la société TripPay avec laquelle vous concluez un contrat pour les services de paiement.
 
 Le Facilitateur de Paiement fournit des services de paiement aux Affiliés qui vendent les stocks des Fournisseurs d'Hébergement via Wink. Ces services de paiement peuvent inclure (le cas échéant) les services suivants (collectivement, « Clin d'œil »).**Services de paiement**"):
 
@@ -28,7 +28,7 @@ L'Affilié a lu et accepté l'intégralité des Conditions Générales. Il recon
 Les services de paiement seront fournis par l'entité contractante en fonction du pays dans lequel l'affilié est situé comme indiqué ci-dessous :
 
 * États-Unis : TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.
-* Reste du monde : TripPay Slovaquie
+* Reste du monde : TripPay Slovaquie
 
 **1. Votre utilisation des services de paiement**
 
@@ -133,7 +133,7 @@ Dans la mesure maximale permise par la loi applicable, vous acceptez de libérer
 
 **10. Modification, durée, résiliation et autres mesures**
 
-**10.1 Modification**Sauf disposition contraire de la loi applicable, le Facilitateur de paiement peut modifier les présentes Conditions de paiement à tout moment. Si nous apportons des modifications substantielles aux présentes Conditions de paiement, nous publierons les Conditions de paiement révisées sur la Plateforme Wink et mettrons à jour la date de « Dernière mise à jour » en haut des présentes Conditions de paiement. Si vous êtes concerné par la modification, nous vous en informerons également au moins trente (30) jours avant sa date d'entrée en vigueur. Si vous ne résiliez pas votre contrat avant la date d'entrée en vigueur des Conditions de paiement révisées, votre utilisation continue des Services de paiement constituera votre acceptation de toute modification des Conditions de paiement révisées.
+**10.1 Modification**Sauf disposition contraire de la loi applicable, le Facilitateur de paiement peut modifier les présentes Conditions de paiement à tout moment. Si nous apportons des modifications substantielles aux présentes Conditions de paiement, nous publierons les Conditions de paiement révisées sur la Plateforme Wink et mettrons à jour la date de « Dernière mise à jour » en haut des présentes Conditions de paiement. Si vous êtes concerné par la modification, nous vous en informerons également au moins trente (30) jours avant sa date d'entrée en vigueur. Si vous ne résiliez pas votre contrat avant la date d'entrée en vigueur des Conditions de paiement révisées, votre utilisation continue des Services de paiement constituera une acceptation de toute modification des Conditions de paiement révisées.
 
 **10.2 Durée**. Cet accord entre vous et le facilitateur de paiement reflété par les présentes conditions de paiement entre en vigueur lorsque vous créez un compte Wink ou utilisez les services de paiement et reste en vigueur jusqu'à ce que vous ou nous résilions cet accord conformément à la section 10.3.
 

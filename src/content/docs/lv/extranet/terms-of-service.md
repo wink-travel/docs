@@ -389,7 +389,7 @@ Ciktāl to atļauj piemērojamie tiesību akti, jūs piekrītat atbrīvot, aizst
 
 **35. Līdzinieki**
 
-Šo Līgumu var parakstīt, izmantojot divus eksemplārus, no kuriem katrs (pēc parakstīšanas) tiek uzskatīts par oriģinālu, un visi kopā veido vienu un to pašu dokumentu. Turklāt jebkurai skenētai/elektroniskai Wink rakstiskā paraksta kopijai ir tāds pats spēks kā Wink oriģinālam ar roku rakstītam parakstam, un tā neietekmē šī Līguma spēkā esamību.
+Šo Līgumu var parakstīt, izmantojot divus eksemplārus, no kuriem katrs (pēc parakstīšanas) tiek uzskatīts par oriģinālu un kopā veido vienu un to pašu dokumentu. Turklāt jebkurai Wink rakstiskā paraksta skenētai/elektroniskai kopijai ir tāds pats spēks kā Wink oriģinālam ar roku rakstītam parakstam, un tā neietekmē šī Līguma spēkā esamību.
 
 **36. Pilnīgs līgums**
 
@@ -399,7 +399,7 @@ Ciktāl to atļauj piemērojamie tiesību akti, jūs piekrītat atbrīvot, aizst
 
 **37. Izpilde**
 
-Līgums stājas spēkā tikai pēc tam, kad Wink rakstiski apstiprinājis Izmitināšanas Pakalpojumu sniedzēja pieņemšanu un piekrišanu. Reģistrējoties un reģistrējoties Wink partneru programmā kā Izmitināšanas Pakalpojumu sniedzējs, Izmitināšanas Pakalpojumu sniedzējs piekrīt, atzīst un pieņem šī Līguma noteikumus un nosacījumus, tostarp noteikumus, kas attiecas uz šī Līguma grozījumiem.
+Līgums stājas spēkā tikai pēc tam, kad Wink rakstiski apstiprina Izmitināšanas Pakalpojumu sniedzēja pieņemšanu un piekrišanu. Reģistrējoties un reģistrējoties Wink partneru programmā kā Izmitināšanas Pakalpojumu sniedzējs, Izmitināšanas Pakalpojumu sniedzējs piekrīt, atzīst un pieņem šī Līguma noteikumus un nosacījumus, tostarp noteikumus, kas attiecas uz šī Līguma grozījumiem.
 
 Izmitināšanas pakalpojumu sniedzējs ir izlasījis līgumu un piekritis visiem noteikumiem un nosacījumiem. Partneris nepārprotami piekrīt, ka šī līguma un tā noteikumu un nosacījumu, tostarp to, kas attiecas uz grozījumiem, elektroniska pieņemšana ir derīga, saistoša un izpildāma.
 

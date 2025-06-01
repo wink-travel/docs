@@ -25,7 +25,7 @@ Para criar uma política de cancelamento não reembolsável, desative a opção 
 
 ### Opções
 
-Pode opcionalmente configurar o seu `non-refundable` política adicional para um maior controlo.
+Pode opcionalmente configurar o seu `non-refundable` política para um maior controlo.
 
 * **Quanto é cobrado ao hóspede em caso de cancelamento?** Por predefinição, uma apólice não reembolsável é uma apólice 100% não reembolsável. Pode ajustar o valor aqui. *por exemplo 50% do preço total*
 * **A cobrança tem um prazo?** Se tiver ajustado o valor, pode ajustá-lo ainda mais, definindo durante quanto tempo esse valor permanecerá em vigor. *por exemplo Até 3 dias antes da chegada*

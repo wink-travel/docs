@@ -27,7 +27,7 @@ Para crear una política de cancelación no reembolsable, coloque el interruptor
 
 ### Opciones
 
-Opcionalmente, puede configurar su`non-refundable`política para un mayor control.
+Opcionalmente, puede configurar su`non-refundable`Política adicional para un mayor control.
 
 * **¿Cuánto se le cobra al huésped por una cancelación?**&#x50;or defecto, una póliza no reembolsable es 100 % no reembolsable. Puedes ajustar el importe aquí.*p. ej. 50% del precio total*
 * **¿El cobro tiene fecha límite?**&#x53;i ajustó la cantidad, puede ajustarla aún más estableciendo durante cuánto tiempo permanecerá vigente esa cantidad.*p.ej. Hasta 3 días antes de la llegada*

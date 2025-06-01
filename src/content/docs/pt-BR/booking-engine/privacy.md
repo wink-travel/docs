@@ -36,7 +36,7 @@ Finalidade do Tratamento e Utilização de Dados Pessoais, a Empresa é necessá
 
 (4) Para proteger e defender os direitos legais da Empresa no caso de você e a Empresa terem uma disputa; e
 
-(5) Sujeito a um consentimento explícito concedido à Empresa, como comunicações de marketing e newsletter, a Empresa pode processar os Dados Pessoais para os fins definidos no consentimento.
+(5) Sujeito a um consentimento explícito concedido à Empresa, como comunicações de marketing e newsletters, a Empresa pode processar os Dados Pessoais para os fins definidos no consentimento.
 
 Período de Retenção de Dados Pessoais, para atuar de acordo com as finalidades descritas acima, a Empresa precisa coletar, compilar e processar seus dados pessoais de acordo com o seguinte período:
 
@@ -58,7 +58,7 @@ Divulgação de dados pessoais, geralmente, seus dados pessoais não serão divu
 
 A Empresa se compromete a implementar medidas de segurança de dados pessoais adequadas para impedir qualquer acesso, modificação, alteração ou divulgação não autorizados e ilegais. A Empresa se compromete a revisar essas medidas regularmente para garantir sua compatibilidade com os padrões e a legislação aplicável.
 
-Direitos do titular dos dados, a Empresa respeita seus direitos como titular dos dados sob as leis aplicáveis. Você pode entrar em contato com a Empresa para exercer os direitos que são (1) os direitos de revogar o consentimento, (2) o direito de acesso, (3) o direito de solicitar uma cópia dos dados pessoais, (4) o direito de corrigir os dados pessoais, (5) o direito de se opor a qualquer processamento dos dados pessoais, (6) o direito de solicitar a portabilidade dos dados no caso de a Empresa armazenar os dados pessoais no formato que seja legível ou comumente usado por ferramentas ou equipamentos automatizados, incluindo o direito de transferir esses dados pessoais para outros controladores de dados, (7) o direito de solicitar a exclusão ou desidentificação dos dados pessoais quando não houver necessidade de processamento, (8) o direito de solicitar a suspensão do uso dos dados pessoais e (9) o direito de registrar uma reclamação.
+Direitos do titular dos dados, a Empresa respeita seus direitos como titular dos dados sob as leis aplicáveis. Você pode entrar em contato com a Empresa para exercer os direitos que são (1) os direitos de revogar o consentimento, (2) o direito de acesso, (3) o direito de solicitar uma cópia dos dados pessoais, (4) o direito de corrigir os dados pessoais, (5) o direito de se opor a qualquer processamento dos dados pessoais, (6) o direito de solicitar a portabilidade dos dados no caso de a Empresa armazenar os dados pessoais no formato que seja legível ou comumente usado por ferramentas ou equipamentos automatizados, incluindo o direito de transferir esses dados pessoais para outros controladores de dados, (7) o direito de solicitar a exclusão ou a desidentificação dos dados pessoais quando não houver necessidade de processamento, (8) o direito de solicitar a suspensão do uso dos dados pessoais e (9) o direito de registrar uma reclamação.
 
 Informações de contato da empresa
 

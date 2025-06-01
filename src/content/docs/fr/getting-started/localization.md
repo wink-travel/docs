@@ -45,7 +45,7 @@ Wink prend en charge les langues suivantes :
 * Russe
 * Slovène
 * Slovène
-* Serbe
+* Serbes
 * suédois
 * ภาษาไทย
 * turc

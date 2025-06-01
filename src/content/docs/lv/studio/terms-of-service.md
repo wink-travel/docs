@@ -54,7 +54,7 @@ Wink un Filiāle ir šī Līguma “Puse”, un abi kopā tiek saukti par “Pus
 **"Viesis"**&#x6E;ozīmē tīmekļa vietņu vai lietotņu apmeklētāju, kurš, izmantojot pakalpojumu, ir veicis Izmitināšanas pakalpojumu sniedzēja rezervāciju.\
 **"Intelektuālā īpašuma tiesības"**&#x6E;ozīmē jebkuru patentu, autortiesības, izgudrojumus, datubāzes tiesības, dizaina tiesības, reģistrētu dizainu, preču zīmi, tirdzniecības nosaukumu, zīmolu, logotipus, pakalpojumu zīmi, zinātību, lietderīgo modeli, nereģistrētu dizainu vai, attiecīgā gadījumā, jebkuru šādu tiesību, zinātības, tirdzniecības vai uzņēmuma nosaukuma, domēna vārda (ar jebkuru (valsts kodu) augstākā līmeņa domēnu, piemēram, .com, .net., co.th, .de, .fr, eu, co.uk. utt.) vai citu līdzīgu tiesību vai pienākumu, neatkarīgi no tā, vai tas ir reģistrēts vai nereģistrēts, vai citas rūpnieciskā vai intelektuālā īpašuma tiesības, kas pastāv jebkurā pasaules teritorijā vai jurisdikcijā.\
 **"JSON"**&#x6E;ozīmē JSON savienojumu starp Wink datubāzi un Filiāles datubāzi, ko Wink var nodrošināt saskaņā ar nosacījumiem, par kuriem jāvienojas.\
-**"Saite"**&#x6E;ozīmē tīmekļa lapā vai e-pastā iegultu ikonu, objektu, grafiku vai tekstu, kas sastāv no hiperteksta rādītāja uz Wink URL adresi saistītajā(-ajās) tīmekļa vietnē(-ēs).\
+**"Saite"**&#x6E;ozīmē tīmekļa lapā vai e-pastā iegultu ikonu, objektu, grafiku vai tekstu, kas sastāv no hiperteksta rādītāja uz Wink URL adresi saistītā(-ajās) tīmekļa vietnē(-ēs).\
 **"Tirgotāja darījums"**&#x6E;ozīmē materializētu darījumu, kurā Maksājumu starpnieks ir reģistrētais tirgotājs un kurā Maksājumu starpnieks iekasē līdzekļus par rezervāciju tieši no viesa.\
 **“Materializēts(-i) darījums(-i)”**&#x6E;ozīmē rezervāciju, ko veic Saistītās(-o) vietnes(-ņu) un/vai lietotnes(-ņu) apmeklētājs, kurš, izmantojot Savienojumu, ir veicis rezervāciju pie Izmitināšanas pakalpojumu sniedzēja, un šī rezervācija ir novedusi pie faktiskas izmitināšanas nodrošināšanas, ko Izmitināšanas pakalpojumu sniedzējs ir apstiprinājis Wink. Materializētās transakcijas vienmēr tiks koriģētas atbilstoši grozījumiem (piemēram, saīsinātai uzturēšanās laikam), atmaksas pieprasījumiem, kredītkaršu krāpšanai, sliktiem parādiem vai citiem iemesliem. Lai izvairītos no šaubām, atcelšana, neierašanās utt. nekad nevar tikt uzskatīta par Materializētām transakcijām.\
 **"Mikro vietne"**&#x6E;ozīmē visas Wink galvenās tīmekļa vietnes baltās etiķetes versijas, kuru īpašnieks, izveidotājs, mitinātājs un uzturētājs ir Wink. Mikrovietne var būt apzīmēta ar logotipu “darbojas ar Wink” vai līdzvērtīgu.\
@@ -100,7 +100,7 @@ Saskaņā ar šī Līguma noteikumiem un nosacījumiem Filiāle darbojas kā Win
 
 **2.3 Saite vai mikrovietne**
 
-2.3.1 Gadījumā, ja Pakalpojums tiek darīts pieejams, izmantojot Saiti, Partnerim par saviem līdzekļiem jāintegrē un jādara pieejama Saite tādā(-s) redzamā(-s) vietā(-s), tīmekļa lapās un tādā vietā, izmērā un formā Partnera tīmekļa vietnē(-s), kā norādījis Wink vai kā par to savstarpēji vienojušās Puses.
+2.3.1 Gadījumā, ja Pakalpojums tiek darīts pieejams, izmantojot Saiti, Partnerim par saviem līdzekļiem jāintegrē un jādara pieejama Saite tādā(-s) redzamā(-s) vietā(-s), tīmekļa lapās un tādā vietā, izmērā un formā Partnera tīmekļa vietnē(-s), kā norādījis Wink vai par ko savstarpēji vienojušās Puses.
 
 2.3.2 Gadījumā, ja Pakalpojums tiek darīts pieejams, izmantojot Mikrovietni, Partnerim par saviem līdzekļiem jāintegrē un jānodrošina Savienojumu un/vai Mikrovietnes pieejamība tādā(-s) redzamā(-s) vietā(-s), tīmekļa lapās un tādā vietā, izmērā un formā Partnera(-u) tīmekļa vietnē(-s), kā norādījis Wink vai kā par to savstarpēji vienojušās Puses.
 
@@ -343,7 +343,7 @@ Wink grāmatvedības un ieraksti (tostarp Extranet un/vai e-pasti) tiek uzskatī
 
 **9.2 Revīzijas tiesības**
 
-Ja Wink labticīgi ir pamats uzskatīt, ka Partneris ir pārkāpis savas saistības saskaņā ar 4. punktu, Wink var veikt šādu Partnera ierakstu un grāmatvedības uzskaites auditu, lai pārbaudītu, pārskatītu un izmeklētu (attiecīgā gadījumā) Partnera saistības saskaņā ar 4. punktu, saskaņā ar sekojošo:\
+Ja Wink labticīgi ir pamats uzskatīt, ka Partneris ir pārkāpis savas saistības saskaņā ar 4. punktu, Wink var veikt šādu Partnera ierakstu un grāmatvedības uzskaites dokumentu revīziju, lai pārbaudītu, pārskatītu un izmeklētu (attiecīgā gadījumā) Partnera saistības saskaņā ar 4. punktu, saskaņā ar sekojošo:\
 (a) Puses nekavējoties ieceļ neatkarīgu sertificētu auditoru (“Auditors”), kas ir pamatoti pieņemams abām Pusēm un kuram ir atļauts veikt auditu attiecībā uz Apakšfiliālei(-ēm) izmaksājamās komisijas maksas (metodi un aprēķinu).\
 (b) Puses sniedz Auditoram visu tādu informāciju, datus, sadarbību, palīdzību un piekļuvi grāmatvedības uzskaites grāmatām un grāmatvedības ierakstiem, dokumentiem, failiem un dokumentiem, kā arī elektroniski glabātai informācijai, ko Auditors var pamatoti pieprasīt, lai savlaicīgi izpildītu sava uzdevuma apjomu.\
 (c) Auditors abām Pusēm iesniegs sava ziņojuma (“Ziņojums”) kopiju, kurā būs sniegti audita rezultāti un konstatējumi.\
@@ -377,7 +377,7 @@ Puses veiks komerciāli pamatotus pasākumus, lai aizsargātu Klienta datu konfi
 
 **11.5 Paziņojumi**
 
-Neviena no Pusēm nedrīkst veidot, publicēt, izplatīt vai atļaut jebkādus rakstiskus materiālus, kas atsaucas uz otru Pusi, iepriekš neiesniedzot šādu materiālu otrai Pusei un nesaņemot iepriekšēju rakstisku piekrišanu no neiesniedzošās puses. Šo piekrišanu nedrīkst nepamatoti liegt vai aizkavēt.
+Neviena no Pusēm nedrīkst veidot, publicēt, izplatīt vai atļaut jebkādus rakstiskus materiālus, kuros ir atsauce uz otru Pusi, iepriekš neiesniedzot šādu materiālu otrai Pusei un nesaņemot iepriekšēju rakstisku piekrišanu no puses, kas neiesniedz materiālus. Šo piekrišanu nedrīkst nepamatoti liegt vai aizkavēt.
 
 11.6 Katra Puse var sazināties ar otras Puses datu aizsardzības speciālistu (DPO), izmantojot šādas e-pasta un/vai pasta adreses: dataprotectionofficer@Wink.travel
 
@@ -392,7 +392,7 @@ Filiāle nepārprotami piekrīt, ka šī Līguma un tā Noteikumu un nosacījumu
 
 14. **Atbrīvojumi**
 
-Nekāda atteikšanās no jebkura šī Līguma pārkāpuma vai nosacījuma netiek uzskatīta par atteikšanos no jebkura cita vai turpmāka pārkāpuma vai nosacījuma, neatkarīgi no tā, vai tas ir līdzīgs vai atšķirīgs.
+Neviena atteikšanās no šī Līguma pārkāpuma vai nosacījuma netiek uzskatīta par atteikšanos no jebkura cita vai turpmāka pārkāpuma vai nosacījuma, neatkarīgi no tā, vai tas ir līdzīgs vai atšķirīgs.
 
 **15. Atdalāmība**
 
@@ -419,7 +419,7 @@ neatsaucami atsakās no jebkādām tiesībām iebilst pret prasības celšanu š
 
 20. **Līdzinieki.**
 
-Šo Līgumu var parakstīt, izmantojot divus eksemplārus, no kuriem katrs (pēc parakstīšanas) tiek uzskatīts par oriģinālu un kopā veido vienu un to pašu dokumentu. Turklāt jebkurai Wink rakstiskā paraksta skenētai/elektroniskai kopijai ir tāds pats spēks kā Wink oriģinālam ar roku rakstītam parakstam, un tā neietekmē šī Līguma spēkā esamību.
+Šo Līgumu var parakstīt, izmantojot divus eksemplārus, no kuriem katrs (pēc parakstīšanas) tiek uzskatīts par oriģinālu, un visi kopā veido vienu un to pašu dokumentu. Turklāt jebkurai skenētai/elektroniskai Wink rakstiskā paraksta kopijai ir tāds pats spēks kā Wink oriģinālam ar roku rakstītam parakstam, un tā neietekmē šī Līguma spēkā esamību.
 
 21. **Pilnīgs līgums**
 

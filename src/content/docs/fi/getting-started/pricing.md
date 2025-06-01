@@ -17,7 +17,7 @@ Wink on rekisteröity kauppias varauksen tekohetkellä. Wink on vastuussa varois
 Tämä malli koskee 95 %:a kaikista varauksista.
 
 Wink-maksut`5.5% per booking`ylläpitääkseen alustaa.
-Suurin osa siitä menee maksuyhdyskäytävään (Visa, MasterCard jne.). Keskimääräinen varaus maksaa meille`2.95%`hankkia; joskus jopa niin korkealle kuin`3.6%`Osittaiset hyvitykset aiheuttavat meille lisää vaikeuksia, koska maksuyhdyskäytävä näkee tämän uutena veloituksena.
+Suurin osa siitä menee maksuyhdyskäytävään (Visa, MasterCard jne.). Keskimääräinen varaus maksaa meille`2.95%`hankkia; joskus jopa niin korkealle kuin`3.6%`Osittaiset hyvitykset aiheuttavat meille lisää kustannuksia, koska maksuyhdyskäytävä näkee tämän uutena veloituksena.
 Haluamme olla täysin läpinäkyviä hinnoittelun suhteen nyt säästääksemme kaikkien aikaa ennen kuin yritämme neuvotella lisäalennuksista ennen Winkin käyttöä. Hinnoittelumallimme on enemmän kuin reilu ja meidän on myös ansaittava elantomme.
 
 ### Erittely

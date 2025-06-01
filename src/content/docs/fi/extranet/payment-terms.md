@@ -12,7 +12,7 @@ Viimeksi päivitetty 12.6.2024
 
 **MAKSUEHDOT MAJOITUSPALVELUNTARJOAJILLE**
 
-Nämä maksuehdot (”**Maksuehdot**”) ovat sitova oikeudellinen sopimus majoituspaikan tarjoajan ja TripPayn (jäljempän&#xE4;**"Maksunvälittäjä"**), Traveliko Singapore Pte. Ltd:n kokonaan omistama tytäryhtiö, joka hallinnoi Wink-alustan (jäljempänä "maksupalveluita") kautta tai siihen liittyen.**"Silmänisku"**). Kun näissä maksuehdoissa mainitaan ”**Maksuvälittäjä**, “**me**, “**meille**” tai ”**meidän**”, se viittaa TripPay-yritykseen, jonka kanssa olet tehnyt sopimuksen maksupalveluista.
+Nämä maksuehdot (”**Maksuehdot**”) ovat sitova oikeudellinen sopimus majoituspaikan tarjoajan ja TripPayn (jäljempän&#xE4;**"Maksunvälittäjä"**), Traveliko Singapore Pte. Ltd:n kokonaan omistama tytäryhtiö, joka hallinnoi Wink-alustan (jäljempänä "maksupalveluita") kautta tai siihen liittyen suoritettavia maksupalveluita (määritelty jäljempänä)**"Silmänisku"**). Kun näissä maksuehdoissa mainitaan ”**Maksuvälittäjä**, “**me**, “**meille**” tai ”**meidän**”, se viittaa TripPay-yritykseen, jonka kanssa olet tehnyt sopimuksen maksupalveluista.
 
 Maksuvälittäjä tarjoaa maksupalveluita majoituspalvelujen tarjoajille, jotka myyvät majoitusta Wink-alustan kautta. Näihin maksupalveluihin voivat sisältyä (jos saatavilla) seuraavat (yhdessä "**Maksupalvelut**"):
 
@@ -87,7 +87,7 @@ Vain tämän sopimuksen allekirjoittaja on Majoituspalveluntarjoajan ainoa nimet
 
 **4. Maksuvälittäjän nimittäminen rajoitetuksi maksunperintäasiamieheksi**
 
-4.1 Jokainen majoituspalveluntarjoaja, mukaan lukien jokainen majoituspalveluntarjoajan tiimin jäsen, nimittää täten maksuvälittäjän majoituspalveluntarjoajan maksujen kerääjäksi ainoastaan ​​rajoitetusti vastaanottamaan ja käsittelemään varoja majoituspalveluntarjoajan puolesta majoituspalveluntarjoajan palveluita ostavilta vierailta.
+4.1 Jokainen majoituspalveluntarjoaja, mukaan lukien jokainen majoituspalveluntarjoajan tiimin jäsen, nimittää täten maksuvälittäjän majoituspalveluntarjoajan maksujen kerääjäksi ainoastaan ​​rajoitettuun tarkoitukseen vastaanottaa ja käsitellä varoja majoituspalveluntarjoajan puolesta majoituspalveluntarjoajan palveluita ostavilta vierailta.
 
 4.2 Jokainen majoituspalveluntarjoaja, mukaan lukien jokainen majoituspalveluntarjoajan tiimin jäsen, hyväksyy, että vieraan maksupalveluntarjoajan kautta suorittama maksu katsotaan samaksi kuin suoraan majoituspalveluntarjoajalle suoritettu maksu, ja majoituspalveluntarjoaja tarjoaa vieraan varaaman majoituspalvelun sovitulla tavalla ikään kuin majoituspalveluntarjoaja olisi vastaanottanut maksun suoraan vieraalta. Jokainen majoituspalveluntarjoaja hyväksyy, että maksupalveluntarjoaja voi hyvittää vieraalle maksun Ehtojen mukaisesti. Jokainen majoituspalveluntarjoaja ymmärtää, että maksupalveluntarjoajan velvollisuus maksaa majoituspalveluntarjoajalle edellyttää vieraalta saatujen asiaankuuluvien maksujen vastaanottamista. Maksunvälittäjä takaa maksut majoituspalveluntarjoajalle/palveluntarjoajille vain niistä summista, jotka maksupalveluntarjoaja on onnistuneesti vastaanottanut vierailta näiden maksuehtojen mukaisesti. Hyväksyessään nimityksen majoituspalveluntarjoajan rajoitetuksi maksujen perintäasiamieheksi maksupalveluntarjoaja ei ota vastuuta majoituspalveluntarjoajan toimista tai laiminlyönneistä.
 
@@ -109,7 +109,7 @@ Vain tämän sopimuksen allekirjoittaja on Majoituspalveluntarjoajan ainoa nimet
 
 Majoituspalveluntarjoaja takaa, että se noudattaa ja tulee noudattamaan, ja sen Lähipiirit noudattavat ja tulevat noudattamaan maksupalveluntarjoajien käytännesääntöjä.
 
-Majoituspalveluntarjoaja vakuuttaa, takaa ja sitoutuu noudattamaan kaikilta osin kaikkia kansainvälisiä kauppanormeja ja sovellettavia kauppaa, varojen kulkua, terrorismin rahoitusta sekä lahjontaa ja korruptiota koskevia rajoituksia, mukaan lukien, mutta ei rajoittuen, Yhdysvaltain korruptionvastainen laki, Yhdistyneen kuningaskunnan lahjontalaki 2010 ja Singaporen korruptionvastainen laki.
+Majoituspalveluntarjoaja vakuuttaa ja sitoutuu noudattamaan kaikilta osin kaikkia kansainvälisiä kauppanormeja ja sovellettavia kauppaa, varojen kulkua, terrorismin rahoitusta sekä lahjontaa ja korruptiota koskevia rajoituksia, mukaan lukien, mutta ei rajoittuen, Yhdysvaltain korruptionvastainen laki, Yhdistyneen kuningaskunnan lahjontalaki 2010 ja Singaporen korruptionvastainen laki.
 
 Majoituspalveluntarjoaja takaa, että sen parhaan tietämyksen mukaan sitä tai sen Lähipiiriä ei ole tuomittu lahjontaan tai korruptioon liittyvästä rikoksesta, eikä niitä tutkita mikään valtion, hallinnon tai sääntelyelin.
 
@@ -141,9 +141,9 @@ Sovellettavan lain sallimissa rajoissa sitoudut vapauttamaan Maksuvälittäjän 
 
 **10. Muutokset, voimassaoloaika, irtisanominen ja muut toimenpiteet**
 
-10.1**Muokkaus**. Ellei sovellettava laki toisin määrää, Maksuvälittäjä voi muuttaa näitä Maksuehtoja milloin tahansa. Jos teemme olennaisia ​​muutoksia näihin Maksuehtoihin, julkaisemme tarkistetut Maksuehdot Wink-alustalla ja päivitämme "Viimeksi päivitetty" -päivämäärän näiden Maksuehtojen yläreunassa. Jos muutos vaikuttaa sinuun, ilmoitamme sinulle muutoksista myös vähintään kolmekymmentä (30) päivää ennen niiden voimaantulopäivää. Jos et irtisano sopimustasi ennen tarkistettujen Maksuehtojen voimaantulopäivää, Maksupalveluiden käytön jatkaminen katsotaan tarkistettujen Maksuehtojen muutosten hyväksymiseksi.
+10.1**Muokkaus**. Ellei sovellettava laki toisin vaadi, Maksuvälittäjä voi muuttaa näitä Maksuehtoja milloin tahansa. Jos teemme olennaisia ​​muutoksia näihin Maksuehtoihin, julkaisemme tarkistetut Maksuehdot Wink-alustalla ja päivitämme "Viimeksi päivitetty" -päivämäärän näiden Maksuehtojen yläreunassa. Jos muutos vaikuttaa sinuun, ilmoitamme sinulle muutoksista myös vähintään kolmekymmentä (30) päivää ennen niiden voimaantulopäivää. Jos et irtisano sopimustasi ennen tarkistettujen Maksuehtojen voimaantulopäivää, Maksupalveluiden käytön jatkaminen katsotaan tarkistettujen Maksuehtojen muutosten hyväksymiseksi.
 
-10.2**Termi**Tämä sinun ja Maksuvälittäjän välinen sopimus, jota nämä Maksuehdot heijastavat, tulee voimaan, kun luot Wink-tilin tai käytät Maksupalveluita, ja on voimassa, kunnes joko sinä tai me irtisanomme tämän sopimuksen kohdan 10.3 mukaisesti.
+10.2**Termi**Tämä sinun ja Maksuvälittäjän välinen sopimus, jota nämä Maksuehdot heijastavat, tulee voimaan, kun luot Wink-tilin tai käytät Maksupalveluita, ja se on voimassa, kunnes joko sinä tai me irtisanomme tämän sopimuksen kohdan 10.3 mukaisesti.
 
 10.3**Irtisanominen**Voit irtisanoa tämän sopimuksen milloin tahansa lähettämällä meille sähköpostia tai poistamalla Wink-tilisi. Tämän sopimuksen irtisanominen toimii myös ilmoituksena Wink-tilisi peruuttamisesta Ehtojen mukaisesti. Rajoittamatta alla määriteltyjä oikeuksiamme, Maksuvälittäjä voi irtisanoa tämän sopimuksen milloin tahansa antamalla sinulle kolmenkymmenen (30) päivän irtisanomisajan sähköpostitse rekisteröityyn sähköpostiosoitteeseesi. Maksuvälittäjä voi myös irtisanoa tämän sopimuksen välittömästi ilman irtisanomisaikaa, jos (i) olet olennaisesti rikkonut tämän sopimuksen mukaisia ​​velvoitteitasi; (ii) olet antanut virheellisiä, vilpillisiä, vanhentuneita tai puutteellisia tietoja; (iii) olet rikkonut sovellettavia lakeja, määräyksiä tai kolmansien osapuolten oikeuksia; tai (iv) Maksuvälittäjä uskoo vilpittömästi, että tällainen toimenpide on kohtuudella tarpeen muiden majoituspalvelujen tarjoajien, Winkin, Maksuvälittäjän tai kolmansien osapuolten suojelemiseksi.
 

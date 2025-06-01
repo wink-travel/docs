@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 5
 ---
-Kynntu þér hvernig Wink ber sig saman við aðra ferðaþjónustuaðila á markaðnum. Hér að neðan er stutt yfirlit yfir eiginleika sem við töldum mikilvæga til samanburðar.
+Kynntu þér hvernig Wink ber sig saman við aðra markaðshluta netferða. Hér að neðan er stutt yfirlit yfir eiginleika sem við töldum mikilvæga til samanburðar.
 
 ## Eiginleikafylki
 

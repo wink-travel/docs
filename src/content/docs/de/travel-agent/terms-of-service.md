@@ -183,7 +183,7 @@ Diese Bedingungen sind verfügbar unter[Partnerportal > Servicebedingungen](/stu
 
 7.9**Einhaltung der Plattformbedingungen:**
 
-* Das Reisebüro ist verpflichtet, alle mit der Nutzung der Plattform des Dienstleisters verbundenen Bedingungen, einschließlich aller Aktualisierungen und Änderungen, einzuhalten. Das Reisebüro ist dafür verantwortlich, dass seine Mitarbeiter und Vertreter diese Bedingungen kennen und einhalten.
+* Das Reisebüro ist verpflichtet, alle mit der Nutzung der Plattform des Dienstleisters verbundenen Bedingungen einzuhalten, einschließlich aller Aktualisierungen und Änderungen dieser Bedingungen. Das Reisebüro ist dafür verantwortlich, dass seine Mitarbeiter und Vertreter diese Bedingungen kennen und einhalten.
 
 7.10**Schadloshaltung:**
 
@@ -231,16 +231,16 @@ Diese Bedingungen sind verfügbar unter[Partnerportal > Servicebedingungen](/stu
 
 12.3**Auswirkungen auf Dienste**:
 
-* Aussetzung von Dienstleistungen: Beeinträchtigt ein Ereignis höherer Gewalt die Fähigkeit Ihres Unternehmens, Dienstleistungen für das Reisebüro zu erbringen, werden diese Dienstleistungen für die Dauer des Ereignisses ohne Vertragsstrafe ausgesetzt. Die Zahlungsverpflichtungen des Reisebüros für die betroffenen Dienstleistungen werden während dieses Zeitraums ebenfalls ausgesetzt.
+* Aussetzung von Dienstleistungen: Beeinträchtigt ein Ereignis höherer Gewalt die Fähigkeit Ihres Unternehmens, Dienstleistungen für das Reisebüro zu erbringen, werden diese Dienstleistungen für die Dauer des Ereignisses ohne Vertragsstrafe ausgesetzt. Die Zahlungsverpflichtungen des Reisebüros für die betroffenen Dienstleistungen werden während dieser Zeit ebenfalls ausgesetzt.
 * Pflichten des Reisebüros: Das Reisebüro haftet nicht für Verpflichtungen gegenüber Ihrem Unternehmen, die aufgrund des Ereignisses höherer Gewalt nicht erfüllt werden können. Das Reisebüro muss jedoch weiterhin alle anderen Verpflichtungen erfüllen, die nicht direkt von dem Ereignis betroffen sind.
 
-12.4**Dauer und Kündigung**Dauert das Ereignis höherer Gewalt länger als sechzig (60) Tage an, kann jede Partei diesen Vertrag durch schriftliche Mitteilung an die andere Partei kündigen. Im Falle einer solchen Kündigung haftet keine Partei gegenüber der anderen Partei, mit Ausnahme der Verpflichtungen, die vor dem Ereignis höherer Gewalt entstanden sind.
+12.4**Dauer und Kündigung**: Dauert das Ereignis höherer Gewalt länger als sechzig (60) Tage an, kann jede Partei diesen Vertrag durch schriftliche Mitteilung an die andere Partei kündigen. Im Falle einer solchen Kündigung haftet keine Partei gegenüber der anderen Partei, mit Ausnahme der Verpflichtungen, die vor dem Ereignis höherer Gewalt entstanden sind.
 
 12,5**Wiederaufnahme der Verpflichtungen**: Sobald das Ereignis höherer Gewalt vorüber ist, werden beide Parteien ihre Verpflichtungen aus dieser Vereinbarung unverzüglich wieder aufnehmen, soweit dies vernünftigerweise praktikabel ist.
 
 **13. Vertraulichkeit**
 
-13.1 Beide Parteien verpflichten sich, alle geschützten Informationen vertraulich zu behandeln und sie ohne vorherige schriftliche Zustimmung nicht an Dritte weiterzugeben.
+13.1 Beide Parteien verpflichten sich, sämtliche geschützten Informationen vertraulich zu behandeln und sie ohne vorherige schriftliche Zustimmung nicht an Dritte weiterzugeben.
 
 **14. Sonstiges**
 

@@ -32,7 +32,7 @@ Aquests termes estan disponibles a[Portal d'afiliats > Condicions del servei](/s
 
 (i) Wink opera un sistema en línia (el "Sistema") a través del qual els Allotjaments participants (col·lectivament, els "Proveïdors d'Allotjament") poden posar el seu inventari a disposició per a la reserva i a través del qual l'Agent de Viatges pot fer reserves en aquests Proveïdors d'Allotjament en nom dels seus Hostes (el "Servei");
 
-(ii) Wink no posseeix, controla, ofereix ni gestiona cap anunci. Wink no és part en els contractes celebrats directament entre els Proveïdors d'Allotjament i els Hostes. Wink no actua com a agent en cap qualitat per als Proveïdors d'Allotjament;
+(ii) Wink no posseeix, controla, ofereix ni gestiona cap anunci. Wink no és part dels contractes celebrats directament entre els Proveïdors d'Allotjament i els Hostes. Wink no actua com a agent en cap qualitat per als Proveïdors d'Allotjament;
 
 (iii) Wink manté i explota els seus propis llocs web (els "Llocs web de Wink") i també proporciona el Servei i enllaços al Servei als llocs web de tercers;
 
@@ -44,9 +44,9 @@ Aquests termes estan disponibles a[Portal d'afiliats > Condicions del servei](/s
 
 **1. Definicions**
 
-1. A més dels termes definits en altres parts d'aquest Acord, les definicions següents s'apliquen a tot el present Acord, llevat que es mostri la intenció contrària:
+1. A més dels termes definits en altres parts d'aquest Acord, les definicions següents s'apliquen a tot aquest Acord, llevat que es mostri la intenció contrària:
 
-* **"Allotjament"**&#x73;ignifica qualsevol forma d'allotjament, incloent-hi, entre d'altres, hotels, motels, pensions, bed & breakfast, albergs, vil·les, apartaments, allotjaments rurals, fondes, complexos turístics i qualsevol altre (tipus de) allotjament o proveïdor d'allotjament (tant si està disponible com si no als llocs web de Wink).
+* **"Allotjament"**&#x73;ignifica qualsevol forma d'allotjament, incloent-hi, entre d'altres, hotels, motels, pensions, bed & breakfast, albergs, vil·les, apartaments, allotjaments rurals, fondes, complexos turístics i qualsevol altre (tipus d') allotjament o proveïdor d'allotjament (tant si està disponible com si no als llocs web de Wink).
 
 * **"Proveïdor(s) d'allotjament"**&#x73;ignifica qualsevol Part que crea un compte al Proveïdor de Serveis amb la intenció de vendre el seu propi inventari d'habitacions i serveis auxiliars a través de la plataforma Wink.
 
@@ -125,7 +125,7 @@ Aquests termes estan disponibles a[Portal d'afiliats > Condicions del servei](/s
 
 6.1**Calendari de pagaments:**
 
-* Tots els pagaments deguts a Wink per part de l'Agent de Viatges en virtut d'aquest Acord s'han de fer en un termini de 15 dies a partir de la recepció de la factura correcta i precisa de Wink, llevat que s'acordi el contrari per escrit. Els pagaments s'han de fer en USD, sense cap deducció o retenció, excepte en els casos que exigeixi la llei.
+* Tots els pagaments deguts a Wink per part de l'Agent de Viatges en virtut d'aquest Acord s'han de fer en un termini de 15 dies a partir de la recepció de la factura correcta i precisa de Wink, llevat que s'acordi el contrari per escrit. Els pagaments s'han de fer en USD, sense cap deducció o retenció, excepte en els casos que ho exigeixi la llei.
 
 6.2**Pagaments endarrerits:**
 
@@ -225,7 +225,7 @@ Aquests termes estan disponibles a[Portal d'afiliats > Condicions del servei](/s
 
 **12. Força major**
 
-12.1**Definició**Cap de les parts serà responsable de cap incompliment o retard en el compliment de les seves obligacions en virtut d'aquest Acord si aquest incompliment o retard es deu a un Esdeveniment de Força Major. Un "Esdeveniment de Força Major" significa qualsevol esdeveniment fora del control raonable d'una part, incloent-hi, entre d'altres, desastres naturals (com ara terratrèmols, inundacions o huracans), guerra, terrorisme, disturbis civils, pandèmies, accions governamentals o qualsevol altre esdeveniment que no s'hagués pogut preveure o evitar raonablement.
+12.1**Definició**Cap de les parts serà responsable de cap incompliment o retard en el compliment de les seves obligacions en virtut d'aquest Acord si aquest incompliment o retard es deu a un esdeveniment de força major. Un "esdeveniment de força major" significa qualsevol esdeveniment fora del control raonable d'una part, incloent-hi, entre d'altres, desastres naturals (com ara terratrèmols, inundacions o huracans), guerra, terrorisme, disturbis civils, pandèmies, accions governamentals o qualsevol altre esdeveniment que no s'hagués pogut preveure o evitar raonablement.
 
 12.2**Notificació**La part afectada ha de notificar per escrit a l'altra part tan aviat com sigui raonablement possible després que es produeixi un esdeveniment de força major. Aquesta notificació ha d'incloure una descripció de l'esdeveniment de força major, la seva durada prevista i les obligacions afectades.
 

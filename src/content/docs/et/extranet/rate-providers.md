@@ -10,7 +10,7 @@ sidebar:
 
 Hinnapakkuja määramiseks klõpsake nuppu`Distribution > Channel manager`peamise navigeerimisriba kaudu.
 
-Valige rippmenüüst oma hinnakirja pakkuja ja klõpsake nuppu`Save`nupp. See võimaldab hinnapakkujal meile hindu saata ja me teavitame neid, kui Winkis on teie majutuskohtadele tehtud broneering.
+Valige rippmenüüst oma hinnapakkuja ja klõpsake nuppu`Save`nupp. See võimaldab hinnapakkujal meile hindu saata ja me teavitame neid, kui Winkis on teie majutuskohtadele tehtud broneering.
 
 ### SynXis
 

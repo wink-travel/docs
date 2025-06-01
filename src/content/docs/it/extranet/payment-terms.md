@@ -1,8 +1,8 @@
 ---
 title: Termini di pagamento
 description: >-
-  Questo documento riguarda la disponibilità dei fondi e le modalità con cui
-  Wink paga i suoi affiliati.
+  Questo documento riguarda la disponibilità dei fondi e il modo in cui Wink
+  paga i suoi affiliati.
 sidebar:
   order: 21
 ---

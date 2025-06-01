@@ -1,8 +1,8 @@
 ---
 title: Termini di pagamento
 description: >-
-  Questo documento riguarda la disponibilità dei fondi e il modo in cui Wink
-  paga i suoi affiliati.
+  Questo documento riguarda la disponibilità dei fondi e le modalità con cui
+  Wink paga i suoi affiliati.
 sidebar:
   order: 13
 ---
@@ -21,7 +21,7 @@ Il Facilitatore di Pagamento fornisce servizi di pagamento agli Affiliati che ve
 * Servizi di riscossione dei pagamenti; e
 * Altri servizi correlati ai pagamenti in relazione ai Servizi di affiliazione.
 
-Per poter utilizzare i Servizi di pagamento, devi avere almeno 18 anni, avere un account Wink in regola secondo i Termini del facilitatore di pagamento e mantenere le tue informazioni di pagamento e personali accurate e complete.
+Per poter utilizzare i Servizi di pagamento, è necessario avere almeno 18 anni, disporre di un account Wink in regola secondo i Termini del facilitatore di pagamento e mantenere le informazioni di pagamento e personali accurate e complete.
 
 L'Affiliato ha letto il Contratto e ha accettato tutti i Termini e Condizioni. L'Affiliato accetta espressamente che l'accettazione elettronica del presente Contratto e dei relativi Termini e Condizioni, inclusi quelli relativi alle modifiche, sia valida, vincolante e applicabile.
 

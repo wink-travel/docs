@@ -61,7 +61,7 @@ Vmesni seštevek = 1.000 - 15 = 985
 
 **3**.**Izdajanje računov in plačilo**
 
-3.1**Mesečno izdajanje računov:**&#x57;ink bo potovalnemu agentu izdal pravilen in točen mesečni račun za stroške rezervacije, ki so se nabrali v preteklem mesecu. Potovalni agent je dolžan ta račun poravnati v plačilnih pogojih, navedenih na računu.
+3.1**Mesečno izstavljanje računov:**&#x57;ink bo potovalnemu agentu izdal pravilen in točen mesečni račun za stroške rezervacije, ki so se nabrali v preteklem mesecu. Potovalni agent je dolžan ta račun poravnati v plačilnih pogojih, navedenih na računu.
 
 3.2**Način plačila:**&#x50;lačila podjetju Wink se izvedejo z načinom plačila, navedenim na računu. Vse stroške, povezane s prenosom plačila, krije potovalni agent.
 

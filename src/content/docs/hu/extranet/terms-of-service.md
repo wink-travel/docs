@@ -180,7 +180,7 @@ Kizárólag a jelen megállapodást aláíró személy a Szálláshely-szolgált
 
 9.1 A Szálláshely-szolgáltatók felelősek minden olyan foglalásmódosításért, amely a Vendéggel közvetlen kommunikáció útján elfogadott foglalási visszaigazoláson feltüntetett lemondási feltételeken kívül esik.
 
-9.2 Amennyiben a Szálláshely-szolgáltató hibájából helytelen ár került feltöltésre, és ennek következtében a Foglalás helytelen áron történik, akkor a foglalást a Szálláshely-szolgáltatónak a helytelen áron kell teljesítenie.
+9.2 Amennyiben a Szálláshely-szolgáltató hibájából helytelen ár került feltöltésre, és ennek következtében a Foglalás helytelen áron történik, akkor a Szálláshely-szolgáltatónak a foglalást a helytelen áron kell teljesítenie.
 
 9.3 A Wink nem vállal felelősséget a Szálláshely-szolgáltatóval szemben a Szálláshely-szolgáltató által elkövetett árképzési hibákért.
 
@@ -251,13 +251,13 @@ A Szálláshely-szolgáltató szavatolja és kijelenti, hogy teljes mértékben 
 
 14.7 A Szálláshely-szolgáltató nem gazdasági vagy kereskedelmi szankciók hatálya alá tartozó országban van bejegyezve, és nem is lakik ilyen országban; és
 
-14.8 Saját költségén elvégezni minden olyan munkát, amely a hatóságok által bejelentett hiányosságok és/vagy hibák azonnali hatállyal történő megszüntetéséhez szükséges. A Szálláshely-szolgáltató köteles erről haladéktalanul értesíteni a Winket. A Szálláshely-szolgáltató köteles figyelembe venni a Wink által tett ésszerű fejlesztési javaslatokat.
+14.8 Saját költségén elvégezni minden olyan munkát, amely a hatóságok által bejelentett hiányosságok és/vagy hibák azonnali hatállyal történő megszüntetéséhez szükséges. A Szálláshely-szolgáltató haladéktalanul értesíti erről a Winket. A Szálláshely-szolgáltató figyelembe veszi a Wink által tett ésszerű fejlesztési javaslatokat.
 
 **15. Vendégek incidensei és panaszai**
 
 15.1 Amennyiben a Vendéggel bármilyen incidens történik, a Szálláshely-szolgáltató köteles a lehető leghamarabb tájékoztatni a Winket arról és annak részleteiről, és teljes mértékben együttműködni a Winkkel az ilyen incidensek megfelelő kezelése érdekében.
 
-15.2 A Szálláshely-szolgáltató vállalja, hogy teljes mértékben együttműködik a Winkkel a Vendégek minden igényének vagy panaszának kezelésében, és részletes választ ad a Winkkel kapcsolatos, az ilyen ügyekkel kapcsolatos megkeresésekre legkésőbb hét (7) naptári napon belül attól számítva, hogy azokat a Winktől megkapta, vagy a szolgáltatási szintre vonatkozó megállapodásban foglalt határidőn belül.
+15.2 A Szálláshely-szolgáltató vállalja, hogy teljes mértékben együttműködik a Winkkel a Vendégek minden igényének vagy panaszának kezelésében, és részletes választ ad a Winkhez intézett, az ilyen ügyekkel kapcsolatos megkeresésekre legkésőbb hét (7) naptári napon belül attól számítva, hogy azokat a Winktől megkapta, vagy a szolgáltatási szintre vonatkozó megállapodásban foglalt határidőn belül.
 
 15.3 Abban az esetben, ha a Wink köteles kártérítést fizetni a Vendégnek a Szálláshely-szolgáltató cselekedetéből vagy mulasztásából eredő bármely Vendég-incidens, követelés vagy panasz következtében, a Szálláshely-szolgáltató vállalja, hogy haladéktalanul kártalanítja és teljes mértékben megtéríti a Wink ilyen költségeit, az Általános Szerződési Feltételek 33. szakaszának („Kártalanítás”) megfelelően.
 
@@ -271,7 +271,7 @@ A Szálláshely-szolgáltató szavatolja és kijelenti, hogy teljes mértékben 
 
 **17. Biztosítás**
 
-A Szálláshely-szolgáltató köteles megfelelő biztosítási fedezettel rendelkezni jó hírű, az adott államban/országban üzleti tevékenységre engedéllyel rendelkező biztosítóknál minden olyan harmadik félre vonatkozó kockázatra vonatkozóan, amely a szállás (vagy bármely létesítmény és szolgáltatás) nyújtásával és/vagy a jelen Megállapodással kapcsolatban felmerül vagy felmerülhet, beleértve a Wink felelősségét, amely közvetlenül vagy közvetve az alábbiakra vonatkozó követelésekből vagy azokkal összefüggésben származik: (i) ingatlan vagy ingóságok elvesztése vagy károsodása; (ii) bármely személy sérülése vagy halála; (iii) harmadik fél tulajdonának elvesztése vagy károsodása; vagy (iv) a szállásszolgáltatást nyújtó harmadik felekkel szembeni felelőssége.
+A Szálláshely-szolgáltató köteles megfelelő biztosítási fedezettel rendelkezni jó hírű, az adott államban/országban üzleti tevékenységre engedéllyel rendelkező biztosítóknál minden olyan harmadik félre vonatkozó kockázatra vonatkozóan, amely a szállás (vagy bármely létesítmény és szolgáltatás) nyújtásával és/vagy a jelen Megállapodással kapcsolatban felmerül vagy felmerülhet, beleértve a Wink felelősségét, amely közvetlenül vagy közvetve az alábbiakra vonatkozó követelésekből vagy azokkal összefüggésben ered: (i) ingatlan vagy ingóságok elvesztése vagy károsodása; (ii) bármely személy sérülése vagy halála; (iii) harmadik fél tulajdonának elvesztése vagy károsodása; vagy (iv) a szállásszolgáltatást nyújtó harmadik felekkel szembeni felelőssége.
 
 **18. Vesztegetés elleni küzdelem, kereskedelmi korlátozások és üzleti etika**
 
@@ -329,7 +329,7 @@ A Szálláshely-szolgáltató szavatolja, hogy legjobb tudomása szerint sem őt
 
 23.1 A Szálláshely-szolgáltató a Wink előzetes írásbeli hozzájárulása nélkül nem hozhat nyilvánosságra semmilyen, a Winkkel vagy a jelen Megállapodással kapcsolatos kommunikációt vagy anyagot, sem a médiának, sem bármely más külső félnek, és a Szálláshely-szolgáltató kizárólagosan és közvetlenül felelős a Wink által a jelen rendelkezés megsértéséből eredő károkért vagy veszteségekért.
 
-23.2 A Szálláshely-szolgáltató köteles konzultálni a Winkkel az ilyen jellegű, nyilvánosságra hozni kívánt közlemények vagy anyagok tartalmával kapcsolatban, és a Szálláshely-szolgáltató köteles a Winknek átadni a végül nyilvánosságra hozott közlemények vagy anyagok másolatát.
+23.2 A Szálláshely-szolgáltató köteles konzultálni a Winkkel az ilyen jellegű, nyilvánosságra hozni kívánt közlemények vagy anyagok tartalmával kapcsolatban, és a Szálláshely-szolgáltató köteles a Winknek átadni az ilyen, végül nyilvánosságra hozott közlemények vagy anyagok másolatát.
 
 **24. Elsőbbség**
 
@@ -377,7 +377,7 @@ A Wink nem vállal felelősséget a jelen Feltételek szerinti kötelezettségek
 
 32.2 Egyik Fél sem zárhatja ki a felelősségét (i) a saját, alkalmazottai, ügynökei vagy alvállalkozói gondatlansága által okozott haláleset vagy személyi sérülés, (ii) a saját maga vagy alkalmazottai által elkövetett csalás, vagy (iii) bármely olyan jogsértés, cselekmény, mulasztás vagy felelősség tekintetében, amelyet az alkalmazandó jogszabályok nem korlátoznak.
 
-32.3 A Felek tudomásul veszik és egyetértenek abban, hogy a jelen Megállapodásban foglalt felelősségkizárások és -korlátozások tisztességesek és ésszerűek.
+32.3 A Felek elismerik és egyetértenek abban, hogy a jelen Megállapodásban foglalt felelősségkizárások és -korlátozások tisztességesek és ésszerűek.
 
 **33. Kártalanítás**
 
@@ -387,7 +387,7 @@ A vonatkozó jogszabályok által megengedett legteljesebb mértékben Ön belee
 
 34.1 Jelen Megállapodásra kizárólag Szingapúr törvényei az irányadók, és azokat a jogszabályoknak megfelelően kell értelmezni. A 2001. évi szerződésekről (harmadik felek jogai) szóló törvény (53B. fejezet) nem alkalmazandó jelen Megállapodásra. A Felek minden esetben megkísérlik vitáikat békés úton, peren kívül rendezni, először jóhiszemű megbeszéléseket és tárgyalásokat folytatva.
 
-34.2 A jelen megállapodásból eredő vagy azzal kapcsolatos bármely jogvita kizárólag Szingapúr illetékes bíróságához kerül benyújtásra és az illetékes bíróság elé kerül, tekintet nélkül a kollíziós szabályokra.
+34.2 A jelen megállapodásból eredő vagy azzal kapcsolatos bármely jogvita kizárólag Szingapúr illetékes bíróságához nyújtható be és az bírálható el, tekintet nélkül a kollíziós szabályokra.
 
 **35. Társak**
 

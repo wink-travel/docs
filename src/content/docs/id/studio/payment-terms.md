@@ -103,7 +103,7 @@ Bahasa Indonesia: 4.2 Setiap Afiliasi, termasuk setiap anggota Tim Afiliasi, set
 5.2 Fasilitator Pembayaran mengambil pendekatan tanpa toleransi terhadap pelanggaran norma perdagangan internasional, undang-undang pencegahan penyuapan dan korupsi, serta pembatasan yang berlaku pada perdagangan, arus dana, dan pendanaan terorisme.\
 Afiliasi menjamin bahwa mereka melakukan dan akan mematuhi, dan Pihak Terkaitnya melakukan dan akan mematuhi Kode Etik Pemasok Fasilitator Pembayaran.\
 Afiliasi menyatakan, menjamin dan berjanji bahwa mereka mematuhi dan akan mematuhi dalam semua hal semua norma perdagangan internasional, pembatasan yang berlaku pada perdagangan, arus dana dan pendanaan terorisme serta undang-undang pencegahan penyuapan dan korupsi, termasuk, namun tidak terbatas pada Undang-Undang Suap Inggris tahun 2010 dan Undang-Undang Pencegahan Korupsi Singapura.\
-Afiliasi menjamin bahwa sepanjang pengetahuan Afiliasi, baik Afiliasi maupun Pihak Terkaitnya tidak pernah dihukum karena tindak pidana penyuapan atau korupsi atau sedang menjalani investigasi oleh badan pemerintah, administratif, atau regulatoris mana pun.
+Afiliasi menjamin bahwa sepanjang pengetahuan Afiliasi, baik Afiliasi maupun Pihak Terkaitnya tidak pernah dihukum karena suatu tindak pidana yang melibatkan penyuapan atau korupsi atau sedang menjalani investigasi oleh badan pemerintah, administratif, atau regulasi mana pun.
 
 **6. Keadaan Kahar**
 

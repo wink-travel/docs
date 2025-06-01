@@ -97,7 +97,7 @@ Acești termeni sunt disponibili în cadrul[Portal de afiliere > Termeni și con
 
 3.3**Plată netă:**&#x50;lata netă rămasă va fi plătită de către Agentul de Turism către Furnizorul de Cazare respectiv, în conformitate cu termenii unui acord separat între Agentul de Turism și Furnizorul de Cazare. Wink nu va fi răspunzător pentru efectuarea niciunei plăți către Furnizorul de Cazare.
 
-3.4**Acord separat:**&#x41;gentul de turism este obligat să încheie un acord separat cu fiecare Furnizor de Cazare care să detalieze termenii și condițiile de plată. Prezentul Acord între Wink și Agentul de Turism nu guvernează relația dintre Agentul de Turism și Furnizorii de Cazare.
+3.4**Acord separat:**&#x41;gentul de turism este obligat să încheie un acord separat cu fiecare Furnizor de Cazare care să detalieze termenii și condițiile de plată. Prezentul Acord între Wink și Agentul de turism nu guvernează relația dintre Agentul de turism și Furnizorii de Cazare.
 
 3.5**Facturarea Wink:**&#x57;ink va emite o factură lunară către Agentul de Turism pentru comisionul de rezervare de 1,5% acumulat pe parcursul lunii. Agentul de Turism este responsabil pentru achitarea acestei facturi în termenele de plată specificate.
 

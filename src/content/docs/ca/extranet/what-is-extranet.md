@@ -1,8 +1,8 @@
 ---
 title: Què és l'extranet?
 description: >-
-  Aquest article t'explica el que has de saber per començar a utilitzar Wink com
-  a hotel.
+  Aquest article t'explica el que necessites saber per començar a utilitzar Wink
+  com a hotel.
 sidebar:
   order: 0
 ---

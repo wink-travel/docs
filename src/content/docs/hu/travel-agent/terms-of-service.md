@@ -129,7 +129,7 @@ Ezek a feltételek elérhetők a következő címen:[Partnerportál > Szolgálta
 
 6.2**Késedelmes fizetések:**
 
-* Amennyiben a jelen Megállapodás értelmében esedékes bármely fizetés nem érkezik meg a fizetési határidőig, a Wink fenntartja a jogot, hogy a fennálló összegre havi 5%-os vagy a törvény által megengedett maximális kamatot számítson fel – attól függően, hogy melyik az alacsonyabb –, az esedékesség napjától a fizetési napjáig. Ezenkívül a Wink felfüggesztheti a szolgáltatásokat a fizetés beérkezéséig. Ha azonban a Wink által benyújtott számlán bármilyen hiba vagy tévedés van, az Utazási Iroda csak a számla helyes és pontos részét köteles kifizetni, és a számla helytelen részének kifizetése elmulasztása miatt nem számít fel kamatot vagy büntetést.
+* Amennyiben a jelen Megállapodás értelmében esedékes bármely fizetés nem érkezik meg a fizetési határidőig, a Wink fenntartja a jogot, hogy a fennálló összegre havi 5%-os vagy a törvény által megengedett maximális kamatot számítson fel – attól függően, hogy melyik az alacsonyabb –, az esedékesség napjától a fizetési napjáig számított fennmaradó összegre. Ezenkívül a Wink felfüggesztheti a szolgáltatásokat a fizetés beérkezéséig. Ha azonban a Wink által benyújtott számlán bármilyen hiba vagy tévedés van, az Utazási Iroda csak a számla helyes és pontos részét köteles kifizetni, és a számla helytelen részének kifizetése elmulasztása miatt nem számít fel kamatot vagy büntetést.
 
 6.3**Visszatérítések és jóváírások:**
 
@@ -137,7 +137,7 @@ Ezek a feltételek elérhetők a következő címen:[Partnerportál > Szolgálta
 
 6.4**Valuta és adók:**
 
-* A fizetéseket USD-ben kell teljesíteni. Az Utazási Iroda felelős minden olyan adóért, illetékért vagy egyéb díjért, amely a jelen Megállapodás szerinti tranzakciókra alkalmazandó, beleértve a valutaváltási költségeket is, ha a fizetések USD-től eltérő pénznemben történnek.
+* A fizetéseket USD-ben kell teljesíteni. Az Utazási Iroda felelős minden olyan adóért, illetékért vagy egyéb díjért, amely a jelen Megállapodás szerinti tranzakciókra alkalmazandó, beleértve a devizaátváltási költségeket is, ha a fizetések USD-től eltérő pénznemben történnek.
 
 6.5**Fizetési módok:**
 
@@ -231,7 +231,7 @@ Ezek a feltételek elérhetők a következő címen:[Partnerportál > Szolgálta
 
 12.3**A szolgáltatásokra gyakorolt ​​hatás**:
 
-* Szolgáltatások felfüggesztése: Amennyiben vis maior esemény miatt az Ön vállalkozása nem tud szolgáltatásokat nyújtani az Utazási Irodának, a szolgáltatások az esemény időtartamára büntetés nélkül felfüggesztésre kerülnek. Az Utazási Iroda érintett szolgáltatásokkal kapcsolatos fizetési kötelezettségei is felfüggesztésre kerülnek erre az időszakra.
+* Szolgáltatások felfüggesztése: Amennyiben vis maior esemény befolyásolja vállalkozása azon képességét, hogy szolgáltatásokat nyújtson az Utazási Irodának, a szolgáltatások az esemény időtartamára büntetés nélkül felfüggesztésre kerülnek. Az Utazási Iroda érintett szolgáltatásokkal kapcsolatos fizetési kötelezettségei is felfüggesztésre kerülnek erre az időszakra.
 * Az Utazási Iroda kötelezettségei: Az Utazási Iroda nem vállal felelősséget az Ön vállalkozásával szemben fennálló, vis maior esemény miatt nem teljesíthető kötelezettségekért. Az Utazási Irodának azonban továbbra is teljesítenie kell minden olyan egyéb kötelezettségét, amelyet az esemény közvetlenül nem érint.
 
 12.4**Időtartam és megszűnés**: Amennyiben a Vis Maior esemény több mint hatvan (60) napig fennáll, bármelyik fél jogosult a jelen Megállapodást a másik félnek küldött írásbeli értesítéssel felmondani. Ilyen felmondás esetén egyik fél sem tartozik felelősséggel a másik féllel szemben, kivéve a Vis Maior esemény előtt keletkezett kötelezettségeket.

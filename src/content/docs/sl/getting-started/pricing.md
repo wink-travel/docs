@@ -2,7 +2,7 @@
 title: Pricing
 description: >-
   Uporabljajte vse Winkove storitve brezplačno, kolikor vam srce poželi. Plačate
-  le majhno pristojbino na rezervacijo.
+  le majhno provizijo na rezervacijo.
 sidebar:
   order: 4
 ---

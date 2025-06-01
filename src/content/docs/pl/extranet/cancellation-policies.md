@@ -37,7 +37,7 @@ Aby utworzyć politykę anulowania z możliwością zwrotu pieniędzy, ustaw prz
 
 ### Opcje
 
-Opcjonalnie możesz skonfigurować swoje`refundable`politykę, która zapewni większą kontrolę.
+Opcjonalnie możesz skonfigurować swoje`refundable`politykę mającą na celu zapewnienie większej kontroli.
 
 * **Jak długo przed przyjazdem gość może bezpłatnie anulować rezerwację?**&#x44;omyślnie polityka zwrotna jest zawsze w 100% zwrotna. Możesz tutaj dostroić termin.*np. 3 dni przed przyjazdem*
 * **Jaką opłatę powinien ponieść gość, jeśli anulowanie rezerwacji nastąpi po terminie podanym powyżej?**&#x4A;eśli doprecyzujesz termin, możesz ustawić kwotę, jaką gość zapłaci po upływie terminu.*np. 50% całkowitej ceny*

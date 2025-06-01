@@ -53,7 +53,7 @@ Wink unterstützt die folgenden Sprachen:
 * Türkisch
 * Ukrainska
 * Tiếng Việt
-* Algerien
+* Arabisch
 * 简体中文
 * 繁體中文
 

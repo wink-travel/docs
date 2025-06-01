@@ -1,6 +1,8 @@
 ---
 title: Kāpēc pievienoties
-description: 'Šajā rakstā ir aprakstītas visas priekšrocības, ko sniedz pievienošanās Wink.'
+description: >-
+  Šajā rakstā ir sniegta informācija par visām priekšrocībām, ko sniedz
+  pievienošanās Wink.
 sidebar:
   order: 0
 ---

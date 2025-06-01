@@ -181,7 +181,7 @@ Bán lại được coi là vi phạm nghiêm trọng Thỏa thuận này. Bên 
 6. Thương hiệu Nhà cung cấp chỗ ở (trừ khi chủ sở hữu của Thương hiệu Nhà cung cấp chỗ ở đó đã đưa ra sự đồng ý trước bằng văn bản cho Chi nhánh để sử dụng Thương hiệu Nhà cung cấp chỗ ở cụ thể đó), hoặc
 7. Trang web liên kết trong phạm vi Tìm kiếm trả phí, SEM, SEO hoặc các hoạt động quảng cáo trực tuyến có mục tiêu khác có liên quan đến (a) việc cung cấp, đặt phòng hoặc giữ chỗ ở (thông qua Dịch vụ hoặc cách khác), hoặc (b) thông tin liên quan đến Chỗ ở.
 
-Điều khoản 4.4.1 liên quan đến khoản (i) đến và bao gồm (v) sẽ vẫn có hiệu lực sau khi Thỏa thuận này chấm dứt.
+Điều khoản 4.4.1 liên quan đến đoạn (i) cho đến và bao gồm (v) sẽ vẫn có hiệu lực sau khi Thỏa thuận này chấm dứt.
 
 4.4.2 Bên liên kết không được sử dụng, khai thác hoặc sử dụng theo cách khác, trực tiếp hoặc gián tiếp, bất kỳ Nền tảng T nào, để tìm cách tránh hoặc lách các giao ước, nghĩa vụ hoặc hạn chế của mình theo Thỏa thuận này hoặc những hạn chế hoặc giao ước mà Bên liên kết có thể mong đợi một cách hợp lý rằng bất kỳ hành động nào như vậy đều nằm trong phạm vi của Thỏa thuận này.
 
@@ -337,7 +337,7 @@ Trừ khi có thỏa thuận khác, Thỏa thuận này sẽ có hiệu lực v�
 
 8.3.6 Ngay sau khi việc chấm dứt có hiệu lực, Chi nhánh sẽ xóa mọi liên kết đến các Trang web Wink, mọi nội dung liên quan đến Wink, liên kết, biểu ngữ, logo và các tham chiếu khác đến Wink.
 
-**9. Quyền sách, hồ sơ và kiểm toán**
+**9. Quyền về sách, hồ sơ và kiểm toán**
 
 **9.1 Các hệ thống**
 

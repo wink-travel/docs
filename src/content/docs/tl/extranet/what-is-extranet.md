@@ -8,9 +8,9 @@ sidebar:
 ---
 [Wink Extranet](https://extranet.wink.travel) ay ang aming portal ng ari-arian. Ito ay para sa mga hotel, chain, brand at kumpanya ng pamamahala ng hotel na gumawa at pamahalaan ang digital profile ng kanilang mga property sa Wink platform.
 
-Ang aming Extranet ay pinag-isipang idinisenyo upang maging kasing simple hangga't maaari, ngunit upang masuportahan pa rin ang lahat ng mga tampok na inaasahan ng mga power user mula sa isang advanced na portal ng property. Para bigyan ka ng ilang halimbawa:
+Ang aming Extranet ay pinag-isipang idinisenyo upang maging kasing simple hangga't maaari, ngunit para suportahan pa rin ang lahat ng mga feature na inaasahan ng mga power user mula sa isang advanced na portal ng property. Para bigyan ka ng ilang halimbawa:
 
-1. Ang pagiging simple: Gamitin ang aming matalinong onboarding workflow para i-onboard ang iyong property at maging LIVE nang wala pang isang oras.
+1. Ang pagiging simple: Gamitin ang aming matalinong onboarding workflow para i-onboard ang iyong property at maging LIVE sa loob ng wala pang isang oras.
 2. Advanced: Sinusuportahan ng Wink ang 8500 iba't ibang variation ng mga patakaran sa pagkansela
 3. Cool: Bigyan ang isang tao sa planeta earth ng 10% diskwento nang hindi kinakailangang mag-log in o mag-type ng promo code ang user.
 

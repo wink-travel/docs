@@ -8,11 +8,11 @@ sidebar:
 ---
 [Mạng lưới mở rộng Wink](https://extranet.wink.travel)là cổng thông tin bất động sản của chúng tôi. Cổng thông tin này dành cho các khách sạn, chuỗi, thương hiệu và công ty quản lý khách sạn để tạo và quản lý hồ sơ kỹ thuật số của các bất động sản của họ trên nền tảng Wink.
 
-Extranet của chúng tôi được thiết kế chu đáo để đơn giản nhất có thể, nhưng vẫn hỗ trợ tất cả các tính năng mà người dùng có quyền mong đợi từ một cổng thông tin bất động sản tiên tiến. Để cung cấp cho bạn một vài ví dụ:
+Extranet của chúng tôi được thiết kế chu đáo để đơn giản nhất có thể, nhưng vẫn hỗ trợ tất cả các tính năng mà người dùng có thể mong đợi từ một cổng thông tin bất động sản tiên tiến. Để cung cấp cho bạn một vài ví dụ:
 
 1. Đơn giản: Sử dụng quy trình làm việc thông minh của chúng tôi để đưa bất động sản của bạn vào hoạt động và TRỰC TIẾP chỉ trong vòng chưa đầy một giờ.
 2. Nâng cao: Wink hỗ trợ 8500 biến thể khác nhau của chính sách hủy bỏ
-3. Tuyệt vời: Giảm giá 10% cho một người duy nhất trên trái đất mà không cần người dùng phải đăng nhập hoặc nhập mã khuyến mại.
+3. Tuyệt vời: Tặng một người duy nhất trên trái đất mức giảm giá 10% mà không cần người dùng phải đăng nhập hoặc nhập mã khuyến mại.
 
 Hãy để các phù thủy của chúng tôi hướng dẫn bạn trong suốt quá trình. Khi bạn cảm thấy đủ thoải mái... hãy tự mình thực hiện.
 

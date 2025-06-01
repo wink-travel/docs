@@ -21,7 +21,7 @@ Usługodawca Płatności świadczy usługi płatnicze Dostawcom Zakwaterowania, 
 * Usługi związane z pobieraniem płatności; i
 * Inne usługi płatnicze związane z Usługami Dostawców Zakwaterowania.
 
-Aby korzystać z Usług Płatniczych, musisz mieć ukończone 18 lat, posiadać ważne konto Wink zgodnie z Warunkami dla Podmiotu Ułatwiającego Płatności oraz dbać o to, aby Twoje dane płatnicze i osobowe były dokładne i kompletne.
+Aby korzystać z Usług Płatniczych, musisz mieć ukończone 18 lat, posiadać ważne konto Wink zgodnie z Warunkami dla Podmiotu Ułatwiającego Płatności oraz dbać o to, aby Twoje dane dotyczące płatności i dane osobowe były dokładne i kompletne.
 
 Umowa została przeczytana, a wszystkie Warunki zostały zaakceptowane przez Dostawcę Zakwaterowania. Dostawca Zakwaterowania wyraźnie zgadza się, że elektroniczna akceptacja niniejszej Umowy i jej Warunków, w tym tych związanych ze zmianami, jest ważna, wiążąca i wykonalna.
 

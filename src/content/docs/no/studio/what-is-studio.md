@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-Historisk sett har det å få tilgang til og selge alt som var reiserelatert involvert taushetserklæringer og komplekse integrasjoner mellom to \[eller flere] lisensierte reisebyråselskaper som hadde nok teknisk ekspertise, tilgang til en betalingsgateway og begge var PCI DSS-kompatible. Det var en kostbar og tidkrevende innsats, og inngangsbarrieren var utrolig høy for vanlige folk.
+Historisk sett har det å få tilgang til og selge alt som har med reiserelatert virksomhet involvert taushetserklæringer og komplekse integrasjoner mellom to \[eller flere] lisensierte reisebyråselskaper som hadde nok teknisk ekspertise, tilgang til en betalingsgateway og begge var PCI DSS-kompatible. Det var en kostbar og tidkrevende innsats, og inngangsbarrieren var utrolig høy for vanlige folk.
 
 [Wink Studio](https://studio.wink.travel)er vår partnerportal. Den gjør salg av reisemateriell tilgjengelig for alle, og det er like enkelt som å dele en lenke eller like avansert som å drive et nettbasert reisebyrå.
 

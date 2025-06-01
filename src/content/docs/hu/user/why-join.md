@@ -4,7 +4,7 @@ description: Ez a cikk bemutatja a Winkhez való csatlakozás összes előnyét.
 sidebar:
   order: 0
 ---
-A Winket azért hoztuk létre, hogy az utazási cikkek értékesítése ismét izgalmas legyen, és több felhasználó számára elérhetővé váljon.
+A Winket azért hozták létre, hogy az utazási cikkek értékesítése ismét izgalmas legyen, és több felhasználó számára elérhető legyen.
 
 Sok jó ok van arra, hogy miért érdemes csatlakozni a Winkhez.
 

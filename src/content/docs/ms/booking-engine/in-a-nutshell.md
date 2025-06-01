@@ -21,7 +21,7 @@ Tanggungjawabnya termasuk:
 * Memberi pembekal kadar cara untuk menghantar data kadar kepada kami.
 * Mengurus data carian. *cth. wilayah, negara, destinasi, hartanah dsb.*
 * Menguruskan bahasa.
-* Menjana analisis berdasarkan interaksi pengguna, acara dan panggilan API.
+* Menjana analitis berdasarkan interaksi pengguna, acara dan panggilan API.
 * Menyediakan inventori yang boleh ditempah dalam format, bahasa dan mata wang yang diingini, seperti:
   * A [pautan yang boleh dikongsi](/studio/shareable-links) di Facebook.
   * Halaman pendaratan hotel di https://ota.wink.travel dengan inventori untuk hotel tersebut.

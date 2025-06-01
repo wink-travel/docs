@@ -14,7 +14,7 @@ Winkis haldame alati kahte keskkonda kõige jaoks, mida teeme:
 Kui olete integraator, hotell või reisibüroo, kes soovib valmistuda sertifitseerimiseks või Winki platvormi testida, looge alustamiseks konto meie testimiskeskkonnas.
 
 :::note
-Lavastuskeskkond on saadaval päringu alusel. See tähendab, et see läheb magama, kui seda ei kasutata, ja lülitub uuesti sisse, kui seda kasutatakse. Palun olge kannatlik, kui te seda üles äratate. Pärast esimest ühenduse loomist ühe meie serveri või rakendusega võtab kõigi serverite käivitamine umbes minuti.
+Lavastuskeskkond on saadaval päringu alusel. See tähendab, et see läheb magama, kui seda ei kasutata, ja lülitub uuesti sisse, kui seda kasutatakse. Palun olge kannatlik, kui te seda äratate. Pärast esimest ühenduse loomist ühe meie serveri või rakendusega võtab kõigi serverite käivitamine umbes minuti.
 :::
 
 ## Serverid

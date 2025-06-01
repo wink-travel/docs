@@ -14,7 +14,7 @@ sidebar:
 Jei esate integratorius, viešbutis ar kelionių agentas, norintis pasiruošti sertifikavimui arba išbandyti „Wink“ platformą, susikurkite paskyrą mūsų testavimo aplinkoje, kad pradėtumėte.
 
 :::note
-Statymo aplinka prieinama pagal užklausą. Tai reiškia, kad ji užmigs, jei nebus naudojama, ir vėl įsijungs, kai bus naudojama. Būkite kantrūs, jei ją žadinate. Visų serverių paleidimas trunka apie minutę, kai pirmą kartą prisijungiate prie vieno iš mūsų serverių ar programėlių.
+Parengiamoji aplinka prieinama pagal užklausą. Tai reiškia, kad ji užmigs, jei nebus naudojama, ir vėl įsijungs, kai bus naudojama. Būkite kantrūs, jei ją žadinate. Visų serverių paleidimas trunka apie minutę, kai pirmą kartą prisijungiate prie vieno iš mūsų serverių ar programėlių.
 :::
 
 ## Serveriai

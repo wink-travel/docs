@@ -52,7 +52,7 @@ Doba uchovávania osobných údajov, aby spoločnosť mohla plniť vyššie uved
 
 Zverejnenie osobných údajov, vo všeobecnosti vaše osobné údaje nebudú zverejnené, s výnimkou okolností, kedy by ich spoločnosť musela zverejniť nasledujúcej osobe:
 
-(1) Externí poskytovatelia služieb Spoločnosti, ktorých spoločnosť poverila poskytovaním podporných služieb pre spoločnosť pri poskytovaní služieb vám, vrátane konzultantov Spoločnosti. Takéto zverejnenie osobných údajov týmto tretím stranám sa uskutoční v súlade s účelmi a iba na základe potreby vedieť; alebo
+(1) Externí poskytovatelia služieb Spoločnosti, ktorých spoločnosť poverila poskytovaním podporných služieb pre spoločnosť pri poskytovaní služieb vám, vrátane konzultantov Spoločnosti. Takéto zverejnenie osobných údajov týmto tretím stranám sa uskutoční v súlade s účelom a iba na základe potreby vedieť; alebo
 
 (2) Vláda, regulačné orgány alebo súdy, že Spoločnosť môže byť predmetom príkazu, zákona alebo rozsudku na zverejnenie osobných údajov.
 

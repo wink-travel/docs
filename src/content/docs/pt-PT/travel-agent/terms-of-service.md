@@ -11,7 +11,7 @@ sidebar:
 :::
 
 :::cuidado\[Aviso]
-Os termos de serviço abaixo aplicam-se aos agentes de viagens que pretendam adquirir e desembolsar fundos por conta própria.
+Os termos de serviço abaixo aplicam-se aos agentes de viagens que desejam adquirir e desembolsar fundos por conta própria.
 Isto só pode ser feito através da nossa API e apenas por agentes de viagens que indicaram que desejam fazê-lo durante o processo de inscrição.
 
 Todos os agentes de viagens podem ainda fazer reservas através do nosso portal de agentes de viagens utilizando a porta de pagamento da Wink com o seu próprio cartão de crédito ou o cartão de crédito do viajante. Portanto, todos os agentes de viagens também precisam de concordar com os termos de serviço em que o gateway de pagamento da Wink é o comerciante registado.
@@ -32,7 +32,7 @@ Estes termos estão disponíveis em [Portal de Afiliados > Termos de Serviço](/
 
 (i) A Wink opera um sistema em linha (o "Sistema") através do qual os Alojamentos participantes (coletivamente os "Fornecedores de Alojamento") podem disponibilizar o seu inventário para reserva e através do qual o Agente de Viagens pode efetuar reservas em tais Fornecedores de Alojamento em nome dos seus Hóspedes (o "Serviço");
 
-(ii) A Wink não possui, controla, oferece ou gere qualquer listagem. A Wink não é parte nos contratos celebrados diretamente entre os Fornecedores de Alojamento e os Hóspedes. Wink não está a agir como agente em nenhuma qualidade para os Fornecedores de Alojamento;
+(ii) A Wink não detém, controla, oferece ou gere qualquer listagem. A Wink não é parte nos contratos celebrados diretamente entre os Fornecedores de Alojamento e os Hóspedes. Wink não está a agir como agente em nenhuma qualidade para os Fornecedores de Alojamento;
 
 (iii) A Wink mantém e explora os seus próprios sites (os "Sites Wink") e também fornece o Serviço e ligações para o Serviço nos sites de terceiros;
 
@@ -68,7 +68,7 @@ Estes termos estão disponíveis em [Portal de Afiliados > Termos de Serviço](/
 
 * **“Pagamentos”** significará as obrigações financeiras decorrentes do presente Contrato, incluindo comissões, taxas ou outros encargos, pagáveis por uma parte à outra.
 
-* **"Facilitador de Pagamentos"** é uma subsidiária integral da Traveliko Singapore Pte. Lda. que rege os Serviços de Pagamento, cobrando os pagamentos aos hóspedes através da cobrança no método de pagamento associado à compra, como cartão de crédito, cartão de débito, transferência bancária, criptomoedas ou PayPal, etc.
+* **"Facilitador de Pagamentos"** é uma subsidiária integral da Traveliko Singapore Pte. Lda. que rege os Serviços de Pagamento, cobrando os pagamentos aos hóspedes através de cobrança no método de pagamento associado à compra, como cartão de crédito, cartão de débito, transferência bancária, criptomoedas ou PayPal, etc.
 
 * **"Plataforma"** significa o sistema online operado pelo Prestador de Serviços através do qual o Agente de Viagens pode fazer ou gerir Reservas para Hóspedes.
 
@@ -231,7 +231,7 @@ Estes termos estão disponíveis em [Portal de Afiliados > Termos de Serviço](/
 
 12.3 **Impacto nos Serviços**:
 
-* Suspensão de Serviços: Se um Evento de Força Maior afetar a capacidade da sua empresa de prestar serviços ao Agente de Viagens, esses serviços serão suspensos durante o período do evento, sem penalização. As obrigações de pagamento do Agente de Viagens relacionadas com os serviços afetados serão também suspensas durante este período.
+* Suspensão de Serviços: Se um Evento de Força Maior afetar a capacidade da sua empresa de prestar serviços ao Agente de Viagens, esses serviços serão suspensos durante o evento, sem penalização. As obrigações de pagamento do Agente de Viagens relacionadas com os serviços afetados serão também suspensas durante este período.
 * Obrigações do Agente de Viagens: O Agente de Viagens não será responsabilizado por quaisquer obrigações para com o seu negócio que sejam impossíveis de cumprir devido ao Evento de Força Maior. Entretanto, o Agente de Viagens deverá continuar a cumprir todas as outras obrigações não diretamente afetadas pelo evento.
 
 12.4 **Duração e Término**:Se o Evento de Força Maior persistir por mais de sessenta (60) dias, qualquer das partes poderá rescindir o presente Contrato mediante notificação por escrito à outra parte. No caso de tal rescisão, nenhuma das partes terá qualquer responsabilidade perante a outra, exceto pelas obrigações acumuladas antes do Evento de Força Maior.

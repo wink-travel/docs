@@ -18,5 +18,5 @@ De lo contrario, continúe con la siguiente sección.
 
 ## API
 
-Desarrolladores que quieran gestionar`Travel Agent`puede dirigirse a[Desarrolladores > API > Agente de viajes](/developers/apis/#travel-agent-api).
+Desarrolladores que quieran gestionar`Travel Agent`Puede dirigirse a[Desarrolladores > API > Agente de viajes](/developers/apis/#travel-agent-api).
 

@@ -9,7 +9,7 @@ sidebar:
 Näin segmentoimme vastuun Winkissä:
 
 * [Ekstranet](/extranet/what-is-extranet)huolestuu toimittajien varastonhallinnasta.
-* [Studio](/studio/what-is-studio)huolestuu sisällön hallinnoinnista tytäryhtiöiden kanssa.
+* [Studio](/studio/what-is-studio)huolestuu sisällön hallinnoinnista vastaavien tytäryhtiöiden kanssa.
 * `Booking Engine`keskittyy sisällön tuottamiseen, joka on luotu`Studio`, joka perustui vuonna luotuun inventaarioon`Extranet`ja tekemällä siitä varattavissa olevan.
 * [Maksu](/payment/what-is-trip-pay)huoleutuu \[Winkin kaltaisten alustojen kautta] varaavien matkustajien veloittamisesta/hyvityksistä ja toimittajien maksamisesta.
 

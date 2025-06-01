@@ -32,7 +32,7 @@ Mūsų skverbties testavimas yra išsamus ir apima platų saugumo aspektų spekt
 
 * **OWASP 10 geriausiųjų:**&#x4D;ūsų testai yra specialiai skirti svarbiausioms saugumo rizikoms, tokioms kaip injekcija, sugadinta autentifikacija ir kelių svetainių scenarijų apdorojimas (XSS).
 * **Juodosios ir pilkosios dėžės testavimas:**&#x50;riklausomai nuo apimties, mūsų komanda naudoja šias metodikas išorinių ir vidinių atakų scenarijams imituoti.
-* **Automatinis ir rankinis testavimas:**&#x4D;es naudojame „Burp Suite Pro“ – pirmaujantį saugumo testavimo įrankių rinkinį, skirtą automatizuotiems saugumo nuskaitymams atlikti ir rankinio testavimo metodams palengvinti, siekiant nustatyti sudėtingus pažeidžiamumus ir gauti geriausią įmanomą aprėptį. Tikslesniam pažeidžiamumų identifikavimui naudojami specializuoti įrankiai, pvz., „SQLmap“.
+* **Automatinis ir rankinis testavimas:**&#x4D;es naudojame „Burp Suite Pro“ – pirmaujantį saugumo testavimo įrankių rinkinį, kad atliktume automatinius saugumo nuskaitymus ir padėtume rankinio testavimo metodams nustatyti sudėtingus pažeidžiamumus ir gauti geriausią įmanomą aprėptį. Tikslesniam pažeidžiamumų identifikavimui naudojami specializuoti įrankiai, pvz., „SQLmap“.
 
 ## Išvadų santrauka
 

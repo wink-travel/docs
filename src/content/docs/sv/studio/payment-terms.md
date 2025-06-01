@@ -100,7 +100,7 @@ Endast den person som undertecknar detta avtal ska vara den enda utsedda represe
 * försöka dechiffrera, dekompilera, disassemblera eller bakåtkompilera någon av de programvaror som används för att tillhandahålla Betaltjänsterna; eller
 * kränka eller intrånga i någon annans rättigheter eller på annat sätt orsaka någon skada.
 
-5.2 Betalningsförmedlaren tillämpar nolltolerans mot brott mot internationella handelsnormer, lagstiftning om förebyggande av mutor och korruption samt tillämpliga restriktioner för handel, penningflöden och finansiering av terrorism.\
+5.2 Betalningsförmedlaren tillämpar nolltolerans mot brott mot internationella handelsnormer, lagstiftning för förebyggande av mutor och korruption samt tillämpliga restriktioner för handel, penningflöden och finansiering av terrorism.\
 Det anslutna företaget garanterar att de gör och ska följa, och dess Anslutna parter gör och ska följa, Betalningsförmedlares Leverantörers Uppförandekod.\
 Det anslutna bolaget försäkrar, garanterar och åtar sig att de i alla avseenden kommer att följa alla internationella handelsnormer, tillämpliga restriktioner för handel, medelflöden och lagstiftning om finansiering av terrorism samt förebyggande av mutor och korruption, inklusive, men inte begränsat till, UK Bribery Act 2010 och Singapore Prevention of Corruption Act.\
 Den anslutna parten garanterar att varken de eller dess anslutna parter, såvitt de vet, har dömts för ett brott som innefattar muta eller korruption eller är föremål för någon utredning av några statliga, administrativa eller tillsynsmyndigheter.
@@ -143,7 +143,7 @@ I den utsträckning som tillämplig lag tillåter samtycker du till att friskriv
 
 **10.5 Överklagande**Om betalningsförmedlaren vidtar någon av de åtgärder som beskrivs i avsnitt 10.3 och 10.4 kan du överklaga ett sådant beslut genom att kontakta [kundservice](mailto:support@wink.travel).
 
-**10.6 Effekt av uppsägning**Om du avslutar ditt Wink-konto som affiliate eller om betalningsansvarig vidtar någon av de åtgärder som beskrivs ovan, kan betalningsansvarig ge full återbetalning till alla gäster med bekräftad(a) bokning(ar), och du har inte rätt till någon ersättning för väntande eller bekräftade bokningar som avbokats.
+**10.6 Effekt av uppsägning**Om du avslutar ditt Wink-konto som affiliate eller om betalningsmedarbetaren vidtar någon av de åtgärder som beskrivs ovan, kan betalningsmedarbetaren ge full återbetalning till alla gäster med bekräftad(a) bokning(ar), och du har inte rätt till någon ersättning för väntande eller bekräftade bokningar som avbokats.
 
 **10.7 Överlevnad**Avsnitt 5 till och med 11 i dessa betalningsvillkor ska fortsätta att gälla även efter uppsägning eller utgång av detta avtal.
 

@@ -19,7 +19,7 @@ Leiskite mūsų burtininkams jus lydėti per visą procesą. Kai pasijusite paka
 „Wink“ yra pažangi turinio valdymo sistema nekilnojamojo turto ir patirties teikėjams. Viską, ką galite daryti vienoje iš mūsų programėlių, galite atlikti per API. Tai leidžia jums atlikti gilią integraciją su „Wink“ tokiu mastu, kad galite parduoti per „Wink“ net neprisijungdami prie jokios mūsų programėlės.
 
 :::tip\[Profesionalo patarimas]
-Ar mokate už brangų medijos išteklių talpinimą per „Leonardo International“? Lygiai tą patį galite padaryti per „Wink“ IR gausite daug daugiau parinkčių, kaip manipuliuoti ir tiksliai derinti savo vaizdus ir vaizdo įrašus.
+Ar mokate už brangų medijos išteklių talpinimą per „Leonardo International“? Tą patį galite padaryti per „Wink“ IR gausite daug daugiau parinkčių, kaip manipuliuoti ir tiksliai derinti savo vaizdus ir vaizdo įrašus.
 :::
 
 Visos šios funkcijos jums nieko nekainuoja. Tik užsakydami imame nedidelį mokestį. Nėra ko prarasti – viskas, ką galima gauti.

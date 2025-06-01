@@ -46,7 +46,7 @@ Tos sąlygos pateikiamos pagal[Partnerių portalas > Paslaugų teikimo sąlygos]
 
 1. Be šioje Sutartyje kitur apibrėžtų sąvokų, visoje šioje Sutartyje taikomos šios apibrėžtys, nebent būtų nurodyta kitaip:
 
-* **"Apgyvendinimas"**&#x72;eiškia bet kokią apgyvendinimo formą, įskaitant, bet neapsiribojant, viešbučius, motelius, svečių namus, nakvynės namus su pusryčiais, nakvynės namus, vilas, apartamentus, namelius, užeigų viešbučius, kurortus ir bet kokį kitą (tipo) apgyvendinimo ar apgyvendinimo paslaugų teikėją (nesvarbu, ar jis pasiekiamas „Wink“ svetainėse).
+* **„Apgyvendinimas“**&#x72;eiškia bet kokią apgyvendinimo formą, įskaitant, bet neapsiribojant, viešbučius, motelius, svečių namus, nakvynės namus su pusryčiais, nakvynės namus, vilas, apartamentus, namelius, užeigų viešbučius, kurortus ir bet kokį kitą (tipo) apgyvendinimo ar apgyvendinimo paslaugų teikėją (nesvarbu, ar jis pasiekiamas „Wink“ svetainėse).
 
 * **"Apgyvendinimo paslaugų teikėjas(-ai)"**&#x72;eiškia bet kurią Šalį, kuri sukuria paskyrą Paslaugų teikėjo svetainėje, siekdama parduoti savo kambarius ir pagalbines paslaugas per „Wink“ platformą.
 
@@ -74,7 +74,7 @@ Tos sąlygos pateikiamos pagal[Partnerių portalas > Paslaugų teikimo sąlygos]
 
 * **„Atskiras susitarimas“**&#x72;eiškia nepriklausomą sutartį tarp Kelionių agento ir Apgyvendinimo teikėjo, kurioje išsamiai aprašomos konkrečios mokėjimo sąlygos, įskaitant Komisinį mokestį ir mokėjimo grafiką.
 
-* **„Paslaugos“**&#x72;eiškia Paslaugų teikėjo kelionių agentui pagal šią Sutartį teikiamas paslaugas, įskaitant, bet neapsiribojant, prieigą prie Platformos, užsakymo palengvinimą ir klientų aptarnavimą.
+* **„Paslaugos“**&#x72;eiškia Paslaugų teikėjo Kelionių agentui pagal šią Sutartį teikiamas paslaugas, įskaitant, bet neapsiribojant, prieigą prie Platformos, užsakymo palengvinimą ir klientų aptarnavimą.
 
 * **„Paslaugų teikėjas“**&#x72;eiškia „Wink“,**TRAVELIKO SINGAPORE PTE. LTD**registruota Singapūre.
 
@@ -133,7 +133,7 @@ Tos sąlygos pateikiamos pagal[Partnerių portalas > Paslaugų teikimo sąlygos]
 
 6.3**Grąžinimai ir kreditai:**
 
-* Jei paslauga nesuteikiama arba atšaukiama dėl aplinkybių, kurios nepriklauso nuo kelionių agento, „Wink“ grąžins pinigus arba įskaitys kelionių agentui pinigus per 30 dienų nuo pranešimo apie atšaukimą gavimo dienos, jei paslaugos mokestis jau sumokėtas.
+* Jei paslauga nesuteikiama arba atšaukiama dėl aplinkybių, kurios nepriklauso nuo kelionių agento, „Wink“ grąžins pinigus arba įskaitys juos kelionių agentui per 30 dienų nuo pranešimo apie atšaukimą gavimo dienos, jei paslaugos mokestis jau sumokėtas.
 
 6.4**Valiuta ir mokesčiai:**
 
@@ -159,7 +159,7 @@ Tos sąlygos pateikiamos pagal[Partnerių portalas > Paslaugų teikimo sąlygos]
 
 7.3**Paslaugų reklama:**
 
-* Kelionių agentas privalo aktyviai reklamuoti per Platformą siūlomas paslaugas laikydamasis Paslaugų teikėjo pateiktų gairių. Tai apima, bet neapsiriboja, rinkodaros veikla, atnaujintos reklaminės medžiagos palaikymu ir užtikrinimu, kad visas reklaminis turinys būtų tikslus ir atitiktų taikomus reklamos standartus.
+* Kelionių agentas privalo aktyviai reklamuoti per Platformą siūlomas paslaugas laikydamasis Paslaugų teikėjo pateiktų gairių. Tai apima, bet neapsiriboja, rinkodaros veikla, reklaminės medžiagos atnaujinimu ir užtikrinimu, kad visas reklaminis turinys būtų tikslus ir atitiktų taikomus reklamos standartus.
 
 7.4**Rezervacijų valdymas:**
 

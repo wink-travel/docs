@@ -16,9 +16,9 @@ Með því að skrá sig í Wink-áætlunina sem gistiaðili hefur gistiaðilinn
 
 **TRAVELIKO SINGAPORE PTE. LTD.**, fyrirtæki stofnað samkvæmt lögum Singapúr og með skráð skrifstofu að #03-01 Wilkie Edge, 8 Wilkie Road, Singapúr 228095 með virðisaukaskattsnúmerinu 201437335D („Wink“), og
 
-**GISTINGAVEITANDI**, sem upplýsingar um eru tilgreindar á skráningarformi gistiþjónustu eða hafa verið sendar inn á netinu („gistiþjónustan“).
+**GISTINGAVEITANDINN**, sem upplýsingar um eru tilgreindar á skráningarformi gistiþjónustu eða hafa verið sendar inn á netinu („gistiþjónustan“).
 
-Wink og gistiaðilinn eru hvor um sig „aðilar“ að þessum samningi og eru sameiginlega nefnd „aðilar“.
+Wink og gistiaðilinn eru hvor um sig „aðilar“ að þessum samningi og eru sameiginlega nefnd „aðilarnir“.
 
 Þetta skjal setur skilmála fyrir:
 
@@ -59,7 +59,7 @@ Auk hugtaka sem skilgreindir eru annars staðar í þessum samningi gilda eftirf
 
 **"Wink pallur"**&#xFE;ýðir einkanetið eða tæknilega lausnin sem aðilar nota til að miðla upplýsingum á öruggan hátt samkvæmt samningnum.
 
-**"Hugverkaréttur"**&#xFE;ýðir öll hugverkaréttindi af hvaða tagi sem er (hvort sem þau eru skráð í skjalaformi eða geymd á segul-, ljós- eða minnisdiski) hvar sem er í heiminum, hvort sem þau eru skráð, skráningarhæf eða á annan hátt, þar á meðal einkaleyfi, nytjamódel, vörumerki, skráð hönnun og lénsheiti, umsóknir um eitthvað af framangreindu, viðskipta- eða viðskiptaheiti, viðskiptavild, höfundarréttur og réttindi í formi höfundarréttar, hönnunarréttindi, réttindi í gagnagrunnum, siðferðileg réttindi, verkkunnáttu og önnur hugverkaréttindi sem eru til staðar í hugbúnaði, tölvuforritum, vefsíðum, skjölum, upplýsingum, tækni, viðskiptaháttum, teikningum, lógóum, leiðbeiningabókum, listum og verklagsreglum og upplýsingum um viðskiptavini, markaðssetningaraðferðum og verklagsreglum og auglýsingaefni, þar á meðal „útlit og áferð“ vefsíðna.
+**"Hugverkaréttur"**&#xFE;ýðir öll hugverkaréttindi af hvaða tagi sem er (hvort sem þau eru skráð í skjalaformi eða geymd á segul-, ljós- eða minnisdiski) hvar sem er í heiminum, hvort sem þau eru skráð, skráningarhæf eða á annan hátt, þar á meðal einkaleyfi, nytjamódel, vörumerki, skráð hönnun og lénsheiti, umsóknir um eitthvað af framangreindu, viðskipta- eða viðskiptaheiti, viðskiptavild, höfundarréttur og réttindi í formi höfundarréttar, hönnunarréttindi, réttindi í gagnagrunnum, siðferðisleg réttindi, verkkunnáttu og önnur hugverkaréttindi sem eru til staðar í hugbúnaði, tölvuforritum, vefsíðum, skjölum, upplýsingum, tækni, viðskiptaháttum, teikningum, lógóum, leiðbeiningabókum, listum og verklagsreglum og upplýsingum um viðskiptavini, markaðssetningaraðferðum og verklagsreglum og auglýsingaefni, þar á meðal „útlit og áferð“ vefsíðna.
 
 **„Verkleg viðskipti“**&#xFE;ýðir bókun gests hjá gistiþjónustuaðila og þar sem bókunin hefur leitt til raunverulegrar gistingar, eins og staðfest er af gistiþjónustuaðilanum til Wink. Framkvæmdar færslur verða alltaf leiðréttar vegna breytinga (t.d. styttri dvöl), bakfærslna, svik með kreditkorti, vanskila eða annars. Til að koma í veg fyrir allan vafa geta afbókanir, vanræksla o.s.frv. aldrei talist framkvæmdar færslur.
 
@@ -203,7 +203,7 @@ Aðeins sá sem undirritar þennan samning skal vera eini tilnefndi fulltrúi gi
 
 **12. Skilmálar þátttökuhótela**
 
-Gististaðurinn skal eins fljótt og auðið er tilkynna í gegnum „Tilkynningarhluta“ Wink Extranet um allar framkvæmdir, endurbætur, endurbætur, uppfærslur eða aðrar framkvæmdir sem munu eða kunna að breyta getu gististaðarins til að bjóða upp á herbergi, aðstöðu og þjónustu og/eða gætu haft neikvæð áhrif á dvöl gesta. Til að koma í veg fyrir allan vafa, þegar slíkar aðstæður valda óframboði eða vanefndum þjónustu, skal 11. gr. þessara almennu skilmála Wink („Óframboð / Vanefndum þjónustu“) gilda og gististaðurinn skal bera allan kostnað af öllum bótum sem greiða má viðkomandi gesti, og halda Wink skaðlausum af allri ábyrgð.
+Gististaðurinn skal eins fljótt og auðið er tilkynna í gegnum „Tilkynningarhluta“ Wink Extranet um allar framkvæmdir, endurbætur, endurbætur, uppfærslur eða aðrar framkvæmdir sem munu eða kunna að breyta getu gististaðarins til að bjóða upp á herbergi, aðstöðu og þjónustu og/eða gætu haft neikvæð áhrif á dvöl gesta. Til að koma í veg fyrir allan vafa, þegar slíkar aðstæður valda óframboði eða vanefndum þjónustu, skal 11. gr. þessara almennu skilmála Wink („Óframboð / Vanefndum þjónustu“) gilda og gististaðurinn skal bera allan kostnað af öllum bótum sem greiða skal viðkomandi gesti, og halda Wink skaðlausum af allri ábyrgð.
 
 **13. Breyting, gildistími og uppsögn**
 
@@ -309,7 +309,7 @@ Gististaðurinn ábyrgist að eftir bestu vitund hafi hvorki hann né tengdir a�
 
 21.1 Gististaðurinn (og þar sem samhengið krefst þess, hvert þátttakandi hótel) mun ekki selja, leigja út eða á annan hátt ráðstafa eignarhlut sínum í neinum hóteleignum án þess að tilkynna það skriflega með að minnsta kosti þriggja (3) mánaða fyrirvara. Ef um slíka sölu, leigu eða aðra ráðstöfun er að ræða, mun gististaðurinn (og/eða þátttakandi hótel) sérstaklega kveða á um í samningi um sölu, leigu eða aðra ráðstöfun að þessi samningur (þar með taldar allar bókanir sem gerðar eru samkvæmt honum) skuli framseldur eða endurnýjaður til nýja aðilans eftir breytingar á stjórn, með fyrirvara um undirliði (b) þessarar greinar.
 
-21.2 Ef Wink óskar ekki eftir samningi við nýja aðilann af einhverjum ástæðum, geta aðilar samþykkt að segja þessum samningi upp tafarlaust og án þess að það hafi áhrif á núverandi bókanir og önnur réttindi sem hvor aðili kann að hafa áunnið sér fyrir slíka uppsögn.
+21.2 Ef Wink óskar ekki eftir samningi við nýja aðilann af einhverjum ástæðum, geta aðilar samþykkt að segja upp þessum samningi tafarlaust og án þess að það hafi áhrif á núverandi bókanir og önnur réttindi sem hvor aðili kann að hafa áunnið sér fyrir slíka uppsögn.
 
 **22. Efni skráningar**
 
@@ -321,7 +321,7 @@ Gististaðurinn ábyrgist að eftir bestu vitund hafi hvorki hann né tengdir a�
 
 22.4 Gististaðurinn skal, ávallt á meðan og eftir að samningur rennur út, bæta Wink, gistiþjónustuaðilum sínum og/eða samstarfsaðilum skaðlausa og halda þeim skaðlausum að fullu og halda þeim skaðlausum að kröfu vegna alls tjóns sem Wink, gistiþjónustuaðilar þess og/eða samstarfsaðilar verða fyrir, hafa verið dæmdir gegn eða samþykkt að greiða af þeim vegna hugverkaréttarkröfu.
 
-22.5 Gististaðurinn skal: (i) veita Wink uppfærslur á þann hátt sem Wink óskar eftir um framgang hugverkaréttarkröfunnar, þar á meðal sönnun þess að hugverkaréttarkröfunni hafi verið lokið eða hún hafnað af kröfuhafa eins fljótt og auðið er; (ii) Ef gististaðurinn fer ekki eftir þessari ákvæði eða ef Wink er ekki fullkomlega ánægður með framgang hugverkaréttarkröfunnar eða til að koma í veg fyrir frekari tjón, skal Wink tafarlaust taka við stjórn hugverkaréttarkröfunnar á kostnað gististaðursins. Wink á rétt á að skuldajafna öllum kostnaði og bótum sem greiddar eru vegna hugverkaréttarkröfunnar á móti núverandi, skilyrtum og/eða framtíðarupphæðum sem gististaðurinn á rétt á eða skuldar.
+22.5 Gististaðurinn skal: (i) veita Wink uppfærslur á þann hátt sem Wink óskar eftir um framgang hugverkaréttarkröfunnar, þar á meðal sönnun þess að hugverkaréttarkröfunni hafi verið lokið eða hún hafnað af kröfuhafa eins fljótt og kostur er; (ii) Ef gististaðurinn fer ekki eftir þessari ákvæði eða ef Wink er ekki fullkomlega ánægður með framgang hugverkaréttarkröfunnar eða til að koma í veg fyrir frekari tjón, skal Wink taka tafarlaust yfir kröfuna um hugverkaréttindi á kostnað gististaðursins. Wink á rétt á að skuldajafna öllum kostnaði og bótum sem greiddar eru vegna hugverkaréttarkröfunnar á móti núverandi, skilyrtum og/eða framtíðarupphæðum sem gististaðurinn á rétt á eða skuldar.
 
 **23. Kynning / Utanaðkomandi samskipti**
 
@@ -357,7 +357,7 @@ Ef lögbær dómstóll, ríkisstofnun eða annar réttur ákveður að einhver �
 
 **29. Samband aðila**
 
-Aðilar eru og skulu starfa sem sjálfstæðir verktakar við framkvæmd þessa samnings. Hvorugur aðilinn skal starfa sem, eða teljast, umboðsmaður eða samstarfsaðili hins aðilans í neinum tilgangi né skal hvorugur aðilinn hafa heimild til að binda hinn að neinu leyti.
+Aðilar eru og skulu starfa sem sjálfstæðir verktakar við framkvæmd þessa samnings. Hvorugur aðili skal starfa sem, eða teljast, umboðsmaður eða samstarfsaðili hins aðilans í neinum tilgangi né skal hvorugur aðilinn hafa heimild til að binda hinn að neinu leyti.
 
 **30. Verkefni**
 

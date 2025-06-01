@@ -356,7 +356,7 @@ Wenn Wink in gutem Glauben Grund zu der Annahme hat, dass der Partner gegen sein
 
 Wink verfolgt einen Null-Toleranz-Ansatz gegenüber Verstößen gegen internationale Handelsnormen, Gesetze zur Korruptionsprävention und Bestechung sowie geltende Beschränkungen für Handel, Kapitalfluss und Terrorismusfinanzierung.\
 Der Partner garantiert, dass er den Wink-Verhaltenskodex für Lieferanten einhält und einhalten wird, und dass auch seine verbundenen Parteien diesen einhalten und einhalten werden.\
-Das verbundene Unternehmen erklärt, gewährleistet und verpflichtet sich, dass es alle internationalen Handelsnormen, geltenden Handelsbeschränkungen, Kapitalflussbeschränkungen und Gesetze zur Terrorismusfinanzierung sowie zur Verhinderung von Bestechung und Korruption, einschließlich, jedoch nicht beschränkt auf den britischen Bribery Act 2010 und den Singapore Prevention of Corruption Act, in jeder Hinsicht einhält und einhalten wird.\
+Das verbundene Unternehmen erklärt, gewährleistet und verpflichtet sich, alle internationalen Handelsnormen, geltenden Handelsbeschränkungen, Geldflussbeschränkungen und Gesetze zur Terrorismusfinanzierung sowie zur Verhinderung von Bestechung und Korruption, einschließlich, jedoch nicht beschränkt auf den britischen Bribery Act 2010 und den Singapore Prevention of Corruption Act, in jeder Hinsicht einzuhalten und einhalten zu werden.\
 Der Partner garantiert, dass weder er noch seine verbundenen Parteien nach bestem Wissen und Gewissen wegen einer Straftat im Zusammenhang mit Bestechung oder Korruption verurteilt wurden oder Gegenstand von Ermittlungen durch Regierungs-, Verwaltungs- oder Aufsichtsbehörden sind.
 
 **11. Vertraulichkeit**
@@ -385,7 +385,7 @@ Keine der Parteien darf schriftliche Materialien erstellen, veröffentlichen, ve
 
 12. **Zeichnungsberechtigung – Vertretung und Unterschrift des Partners.**
 
-Der Partner garantiert, dass er selbst, die Person, die diesen Vertrag unterzeichnet, und/oder jede andere Person, die Wink im Zusammenhang mit oder gemäß diesem Vertrag Informationen (einschließlich, zur Vermeidung von Zweifeln, etwaiger Zahlungsbedingungen) bereitstellt, die Befugnis, Fähigkeit und erforderliche Vollmacht besitzt, diesen Vertrag zu unterzeichnen, und dass diese Person die Befugnis, Fähigkeit und erforderliche Vollmacht besitzt, den Partner an diesen Vertrag zu binden, und dass sie während der gesamten Laufzeit ihre Verpflichtungen aus diesem Vertrag einhält, erfüllt und sicherstellt, dass der Partner seine Verpflichtungen aus diesem Vertrag einhält und erfüllt.\
+Der Partner garantiert, dass er selbst, die Person, die diesen Vertrag unterzeichnet, und/oder jede andere Person, die Wink im Zusammenhang mit oder gemäß diesem Vertrag Informationen (einschließlich, zur Vermeidung von Zweifeln, etwaiger Zahlungsbedingungen) bereitstellt, die Befugnis, die Fähigkeit und die erforderliche Vollmacht hat, diesen Vertrag zu unterzeichnen, und dass diese Person die Befugnis, die Fähigkeit und die erforderliche Vollmacht hat, den Partner an diesen Vertrag zu binden, und dass sie während der gesamten Laufzeit ihre Verpflichtungen aus diesem Vertrag einhalten und erfüllen wird und sicherstellen wird, dass der Partner seine Verpflichtungen aus diesem Vertrag einhält und erfüllt.\
 Der Partner stimmt ausdrücklich zu, dass die elektronische Annahme dieser Vereinbarung und ihrer Geschäftsbedingungen, einschließlich derjenigen in Bezug auf Änderungen, gültig, bindend und durchsetzbar ist.
 
 13. **Sprache**

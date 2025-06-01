@@ -8,7 +8,7 @@ sidebar:
 ---
 [Wink extranet](https://extranet.wink.travel)a mi ingatlanportálunk. Szállodák, szállodaláncok, márkák és szállodaüzemeltető cégek számára készült, hogy létrehozzák és kezeljék ingatlanjaik digitális profilját a Wink platformon.
 
-Extranetünket gondosan úgy terveztük, hogy a lehető legegyszerűbb legyen, mégis támogassa az összes olyan funkciót, amelyet a haladó felhasználók egy fejlett ingatlanportáltól elvárnak. Íme néhány példa:
+Extranetünket gondosan úgy terveztük, hogy a lehető legegyszerűbb legyen, mégis támogassa az összes olyan funkciót, amelyet a haladó felhasználók elvárnak egy fejlett ingatlanportáltól. Íme néhány példa:
 
 1. Egyszerűség: Használja intelligens bevezetési folyamatunkat ingatlana regisztrációjához és egy órán belüli ÉLŐ üzembe helyezéséhez.
 2. Speciális: A Wink 8500 különböző lemondási szabályzatot támogat

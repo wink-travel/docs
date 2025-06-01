@@ -44,7 +44,7 @@ Wink ve Bağlı Şirket, bu Sözleşmenin bir “Tarafı”dır ve birlikte “T
 **"Rezervasyon"**&#x57;ink tarafından bir Misafirin bir Konaklama Sağlayıcısının rezervasyonu için kaydedilen başarılı bir işlem anlamına gelir.\
 **“Rezervasyon Ücreti”**&#x57;ink tarafından Ortaklık komisyonundan işlem ücreti olarak kesilen %1,5'tir.\
 **“Rezervasyon Değeri”**&#xD6;deme Kolaylaştırıcısı tarafından bir Rezervasyon için misafirden tahsil edilen toplam tutardır.\
-**“Madde”**&#x42;u Sözleşmenin bir maddesi anlamına gelir.\
+**"Madde"**&#x42;u Sözleşmenin bir maddesi anlamına gelir.\
 **"Komisyon"**&#x42;u Sözleşme uyarınca her Gerçekleştirilmiş İşlem için Ödeme Hizmet Bedeli ve Rezervasyon Bedeli düşüldükten sonra Ortak'a borçlu olunan tutar anlamına gelir.\
 **"Bağlantılar"**&#x57;ink tarafından oluşturulan, barındırılan ve bakımı yapılan tüm web bileşenleri, bağlantılar, açılış sayfaları ve/veya JSON beslemeleri ve/veya derin bağlantılar ve/veya köprü metinleri anlamına gelir.\
 **"İçerik"**&#x57;ink Web Sitesi'nde bulunan Konaklama Sağlayıcılarına ilişkin tüm (tanımlayıcı) bilgiler anlamına gelir; Konaklama Sağlayıcısı bilgileri ve açıklamaları, misafir yorumları, meta veriler, tesislerin ayrıntıları ve (iptal/gelmeme) politikaları ve Konaklama Sağlayıcılarının genel şartları (bunların tüm çevirileri dahil) ve fotoğraflar, videolar, resimler, ancak fiyatlar ve müsaitlik hariç (güncellemeler, değişiklikler, yenilemeler, eklemeler veya düzeltmeler dahil).\
@@ -63,7 +63,7 @@ Wink ve Bağlı Şirket, bu Sözleşmenin bir “Tarafı”dır ve birlikte “T
 **“Ödeme Kolaylaştırıcısı”**&#x54;raveliko Singapore Pte. Ltd.'nin tam mülkiyetinde bir yan kuruluş olup, Ödeme Hizmetlerini yönetir, misafirlerden ödemeleri toplar ("Ödeme"), kredi kartı, banka kartı, banka havalesi, kripto para birimleri veya PayPal vb. gibi satın alımlarıyla ilişkili ödeme yöntemini kullanarak tahsil eder ve borçlu olunan fonu ("Net Komisyon") Ortak yerel banka hesabına öder.\
 **"Ödeme"**&#x42;ir misafir tarafından yapılan ödemenin Ödeme Kolaylaştırıcısı tarafından edinilmesi anlamına gelir.\
 **"Ödeme"**&#xD6;deme Kolaylaştırıcısı tarafından Ortak'a Net Komisyonun ödenmesi anlamına gelir.\
-**“Ödeme Hizmet Bedeli”**&#xD6;deme Kolaylaştırıcısı tarafından Ortaklık komisyonundan ödeme edinme ücreti olarak kesilen %4'tür.\
+**“Ödeme Hizmet Ücreti”**&#xD6;deme Kolaylaştırıcısı tarafından Ortaklık komisyonundan ödeme edinme ücreti olarak kesilen %4'tür.\
 **"Fiyat Karşılaştırması"**&#x69;ki veya daha fazla çevrimiçi Konaklama Sağlayıcı rezervasyon platformu aracılığıyla sunulan Konaklama Sağlayıcı fiyatlarının ve/veya müsaitliğinin karşılaştırılması anlamına gelir.\
 **"Tekrar Satış"**&#x4D;adde 4.1.7'de belirtilen anlamı taşımaktadır.\
 **“Satıcı Portalı”**&#x4D;adde 4.1.8'de belirtilen anlamı taşımaktadır.\
@@ -120,7 +120,7 @@ Wink ve Bağlı Şirket, bu Sözleşmenin bir “Tarafı”dır ve birlikte “T
 
 **3.2 Alt lisans hakkı yok ve ifşa edilmeme**
 
-3.2.1 Wink tarafından yazılı olarak aksi kararlaştırılmadığı sürece, Ortak (i) Madde 3.1.1 uyarınca kendisine verilen hakları alt lisanslama hakkına sahip olmayacak veya (ii) Bağlantıyı veya Bağlantıyı herhangi bir üçüncü tarafa alt lisanslayamayacaktır veya (iii) Ortak Grubu içindeki şirketlerin ve/veya üçüncü tarafların web siteleri aracılığıyla veya bunlarla işbirliği içinde Wink Web Sitesine köprü bağlantısı veremez.
+3.2.1 Wink tarafından yazılı olarak aksi kararlaştırılmadığı takdirde, Ortak (i) Madde 3.1.1 uyarınca kendisine verilen hakları alt lisanslama hakkına sahip olmayacak veya (ii) Bağlantıyı veya Bağlantıyı herhangi bir üçüncü tarafa alt lisanslayamayacaktır veya (iii) Ortak Grubu içindeki şirketlerin ve/veya üçüncü tarafların web siteleri aracılığıyla veya bunlarla işbirliği içinde Wink Web Sitesine köprü bağlantısı veremez.
 
 3.2.2 Wink tarafından yazılı olarak aksi kararlaştırılmadığı veya bu Sözleşmede aksi belirtilmediği sürece, Bağlı Kuruluş, Wink Verilerini veya İçeriği (i) herhangi bir üçüncü tarafa, (ii) fiyat/mevcutluk karşılaştırma amaçları, siteler, incelemeler veya araştırmalar için, (iii) Hizmet (aracılığıyla Konaklama Sağlayıcı rezervasyonları oluşturmak) dışındaki herhangi bir amaç için veya (iv) aksi şekilde satma, kullanma, devretme, (alt) lisanslama, iletme, ifşa etme, kullanıma sunma, erişime izin verme, ifşa etme veya başka şekilde yayma hakkına doğrudan veya dolaylı olarak sahip olmayacaktır.
 
@@ -210,7 +210,7 @@ Ortak, (i) Ortak Web Sitesi(leri) üzerinden veya bunlar aracılığıyla doğru
    3\. Benzer Alan Adına trafiği yönlendirmek amacıyla Üçüncü Taraf Platformlarından doğrudan veya dolaylı olarak herhangi bir anahtar kelime satın almak, elde etmek veya kullanmak ve\
    4\. Benzer Alan Adını veya herhangi bir kısmını ya da herhangi bir varyasyonunu, çevirisini veya yanlış yazılmış halini, metin bağlantılarında, banner reklamlarında, açılır reklamlarda veya bir anahtar kelime kampanyasıyla ilişkilendirilebilecek herhangi bir diğer reklam türünde kullanmak üzere satın alın.
 
-4.7.2 Bağlı Kuruluş Web Sitesi dışındaki Benzer Alan Adları açısından, Taraflar (i) bu Benzer Alan Adlarının tümünün doğrudan bir yönlendirme yoluyla veya aracılığıyla Bağlı Kuruluş Web Sitesine doğrudan bağlantılı olacağı ve herhangi bir amaçla aktif olarak kullanılabilir veya çevrimiçi olmayacağı ve (ii) Bağlı Kuruluşun (veya Bağlı Gruptan herhangi birinin) Benzer Alan Adlarını hiçbir şekilde (çevrimiçi veya çevrimdışı) pazarlamayacağı, tanıtmayacağı, elden çıkarmayacağı, satmayacağı, teklif etmeyeceği, reklamını yapmayacağı, (alt) lisanslamayacağı, kullanılabilir hale getirmeyeceği, erişime izin vermeyeceği, atıfta bulunmayacağı, yayınlamayacağı veya dağıtmayacağı konusunda anlaşmışlardır.
+4.7.2 Bağlı Kuruluş Web Sitesi dışındaki Benzer Alan Adları açısından, Taraflar (i) bu Benzer Alan Adlarının tümünün doğrudan bir yeniden yönlendirme yoluyla veya aracılığıyla Bağlı Kuruluş Web Sitesine doğrudan bağlantılı olacağı ve herhangi bir amaçla aktif olarak kullanılabilir veya çevrimiçi olmayacağı ve (ii) Bağlı Kuruluşun (veya Bağlı Gruptan herhangi birinin) Benzer Alan Adlarını hiçbir şekilde (çevrimiçi veya çevrimdışı) pazarlamayacağı, tanıtmayacağı, elden çıkarmayacağı, satmayacağı, teklif etmeyeceği, reklamını yapmayacağı, (alt) lisanslamayacağı, kullanılabilir hale getirmeyeceği, erişime izin vermeyeceği, atıfta bulunmayacağı, yayınlamayacağı veya dağıtmayacağı konusunda anlaşmışlardır.
 
 **4.8 Fiyat Karşılaştırması**
 
@@ -296,7 +296,7 @@ Uygulanabilir yasanın izin verdiği azami ölçüde, Wink'i ve tüm Konaklama S
 
 **7.2 Azami sorumluluk**
 
-Bu Sözleşmede aksi belirtilmediği takdirde, bir Tarafın, bu Sözleşme kapsamında veya bu Sözleşmeyle bağlantılı olarak diğer Tarafça kendisine karşı yapılan tüm talepler için bir yıl içinde azami sorumluluğu, söz konusu Tarafça önceki 6 ayda alınan veya ödenen toplam komisyonu veya 10.000 ABD Dolarını (hangisi daha yüksekse) aşmayacaktır; ancak Tazmin Eden Tarafın dolandırıcılığı veya kasıtlı suistimali durumunda, söz konusu sorumlu Taraf için sorumluluk sınırlaması uygulanmayacaktır.
+Bu Sözleşmede aksi belirtilmediği takdirde, bir Tarafın bu Sözleşme kapsamında veya bu Sözleşmeyle bağlantılı olarak diğer Tarafça kendisine karşı yapılan tüm talepler için bir yıl içinde azami sorumluluğu, Tazmin Eden Tarafın önceki 6 ayda aldığı veya ödediği toplam komisyonu veya 10.000 ABD Dolarını (hangisi daha yüksekse) aşmayacaktır; ancak Tazmin Eden Tarafın dolandırıcılığı veya kasıtlı suistimali durumunda, bu durumda sorumluluk sınırlaması söz konusu sorumlu Taraf için geçerli olmayacaktır.
 
 **7.3 Üçüncü Taraf Talebi**
 
@@ -329,9 +329,9 @@ Aksi kararlaştırılmadığı takdirde, bu Sözleşme, bu tarihten itibaren bel
 
 8.3.3 Wink, 6 aylık bir süre içerisinde herhangi bir Maddi İşlem gerçekleşmemesi halinde bu Sözleşmeyi bildirimde bulunmaksızın feshetme hakkını saklı tutar.
 
-8.3.4 Bu Sözleşmenin feshedilmesi üzerine Wink, fesih tarihinden sonraki 3 aylık süre boyunca, Wink'in o süre boyunca İştirak için doğru iletişim ve banka bilgilerine sahip olması koşuluyla, İştirak'e ödenmemiş herhangi bir Komisyonu ödemeye devam edecektir. İştirak, bu 3 aylık süre içinde ödenmemiş herhangi bir Komisyonu talep edemezse, bu başarısızlık İştirak'in söz konusu Komisyonu talep etme hakkından etkili bir şekilde feragat ettiği anlamına gelecektir. Komisyon indirimi, askıya alınması veya kaybedilmesi ile ilgili olarak bu Sözleşmede başka bir yerde belirtilenlere halel gelmeksizin, İştirak'in kasıtlı suistimal, ağır ihmal, dolandırıcılık veya bu Sözleşmenin önemli bir ihlalini işlemesi durumunda ödenmemiş herhangi bir Komisyon kaybedilecektir.
+8.3.4 Bu Sözleşmenin feshedilmesi üzerine Wink, fesih tarihinden sonraki 3 aylık süre boyunca, Wink'in o süre boyunca İştirak için doğru iletişim ve banka bilgilerine sahip olması koşuluyla, İştirake ödenmemiş herhangi bir Komisyonu ödemeye devam edecektir. İştirak, bu 3 aylık süre içinde ödenmemiş herhangi bir Komisyonu talep edemezse, bu başarısızlık İştirakin söz konusu Komisyonu talep etme hakkından etkili bir şekilde feragat ettiği anlamına gelecektir. Komisyon indirimi, askıya alınması veya kaybedilmesi ile ilgili olarak bu Sözleşmede başka bir yerde belirtilenlere halel gelmeksizin, İştirakin kasıtlı suistimal, ağır ihmal, dolandırıcılık veya bu Sözleşmenin önemli bir ihlalini işlemesi durumunda ödenmemiş herhangi bir Komisyon kaybedilecektir.
 
-8.3.5 Fesih halinde ve aksi belirtilmediği takdirde, bu Sözleşme, bir Tarafın tazminat veya bu Sözleşmenin diğer Tarafça ihlali ile ilgili hakları ve çözüm yolları saklı kalmak üzere kesin ve tamamen feshedilecek ve yürürlükten kalkacaktır. Madde 4.1.2, 4.1.5, 4.1.6, 4.1.7, 4.2, 4.3, 4.4.1, 4.9.4(c), 9 ve 10, bu Sözleşmenin feshedilmesinden sonra da geçerliliğini koruyacaktır.
+8.3.5 Fesih halinde ve aksi belirtilmediği takdirde, bu Sözleşme, bir Tarafın tazminat veya diğer Tarafın bu Sözleşmeyi ihlaliyle ilgili hakları ve çözüm yolları saklı kalmak üzere kesin ve tamamen feshedilecek ve yürürlükten kalkacaktır. Madde 4.1.2, 4.1.5, 4.1.6, 4.1.7, 4.2, 4.3, 4.4.1, 4.9.4(c), 9 ve 10, bu Sözleşmenin feshedilmesinden sonra da geçerliliğini koruyacaktır.
 
 8.3.6 Fesih yürürlüğe girdiği anda, Ortak, Wink Web Sitelerine olan tüm bağlantıları, Wink ile ilgili tüm içeriği, bağlantıları, afişleri, logoları ve Wink'e yönelik diğer referansları kaldıracaktır.
 
@@ -377,7 +377,7 @@ Taraflar, Müşteri Verilerinin gizliliğini ve mahremiyetini korumak ve yetkisi
 
 **11.5 Duyurular**
 
-Taraflardan hiçbiri, diğer Tarafa atıfta bulunan herhangi bir yazılı materyali, önce diğer Tarafa sunmadan ve sunmayan taraftan önceden yazılı onay almadan oluşturamaz, yayınlayamaz, dağıtamaz veya izin veremez. Bu onay makul olmayan bir şekilde geri çevrilemez veya geciktirilemez.
+Tarafların hiçbiri, diğer Tarafa atıfta bulunan herhangi bir yazılı materyali, önce diğer Tarafa sunmadan ve sunmayan taraftan önceden yazılı onay almadan oluşturamaz, yayınlayamaz, dağıtamaz veya izin veremez. Bu onay makul olmayan bir şekilde geri çevrilemez veya geciktirilemez.
 
 11.6 Her Taraf, diğer Tarafın Veri Koruma Görevlisi (DPO) ile aşağıdaki e-posta ve/veya posta adresleri aracılığıyla iletişime geçebilir: dataprotectionofficer@Wink.travel
 

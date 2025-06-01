@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-Narito kung paano namin i-segment ang responsibilidad sa Wink:
+Narito kung paano namin hatiin ang responsibilidad sa Wink:
 
 * [Extranet](/extranet/what-is-extranet) nag-aalala mismo sa mga supplier na namamahala ng imbentaryo.
 * [Studio](/studio/what-is-studio) nag-aalala mismo sa mga kaakibat na namamahala ng nilalaman.
@@ -22,7 +22,7 @@ Kasama sa mga responsibilidad nito ang:
 * Pamamahala ng data ng paghahanap. *hal. rehiyon, bansa, destinasyon, ari-arian atbp.*
 * Pamamahala ng mga wika.
 * Bumubuo ng analytics batay sa mga pakikipag-ugnayan ng user, mga kaganapan at mga tawag sa API.
-* Naghahatid ng mai-book na imbentaryo sa gustong format, wika at pera, gaya ng:
+* Naghahatid ng mai-book na imbentaryo sa nais na format, wika at pera, gaya ng:
   * A [maibabahaging link](/studio/shareable-links) sa Facebook.
   * Isang landing page ng hotel sa https://ota.wink.travel na may imbentaryo para sa hotel na iyon.
   * A [card](/studio/cards) naglalaman ng imbentaryo ng kaakibat.
@@ -35,11 +35,11 @@ Kasama sa mga responsibilidad nito ang:
   * Pamahalaan ang kanilang [listahan ng bucket](/booking-engine/bucket-list) ng mga bagay na i-book sa hinaharap.
   * Pamahalaan ang kanilang [profile sa paglalakbay](/booking-engine/travel-preferences). *hal. Allergy, emergency contact atbp.*
 
-Ang booking engine ay isang koleksyon ng magagamit muli na functionality na inilalantad namin sa pamamagitan ng https://ota.wink.travel; isang lubos na nako-customize na website para sa mga hotel at mga kaakibat upang ibenta ang kanilang mga paninda sa mga manlalakbay.
+Ang booking engine ay isang koleksyon ng muling magagamit na functionality na inilalantad namin sa pamamagitan ng https://ota.wink.travel; isang lubos na nako-customize na website para sa mga hotel at kaakibat upang ibenta ang kanilang mga paninda sa mga manlalakbay.
 
 Ang mga integrator, na gusto ng higit pang kalayaan, ay may access sa lahat ng parehong mga tampok sa pamamagitan ng aming [WordPress plugin](/developers/wordpress/), [Mga Bahagi ng Web](/developers/web-components) at [Mga API](/developers/apis).
 
-Magpatuloy sa susunod na mga seksyon upang magbasa nang higit pa tungkol sa kung ano ang inaalok ng booking engine.
+Magpatuloy sa susunod na mga seksyon para magbasa pa tungkol sa kung ano ang inaalok ng booking engine.
 
 ## Karagdagang pagbabasa
 

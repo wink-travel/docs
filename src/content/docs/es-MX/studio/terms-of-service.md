@@ -45,7 +45,7 @@ Wink y el Afiliado son una “Parte” de este Acuerdo y se denominan colectivam
 **"Acuerdo"**&#x73;ignifica este acuerdo.\
 **"Reserva"**&#x73;ignifica una transacción exitosa registrada por Wink de un Huésped para la reserva de un Proveedor de Alojamiento.\
 **“Tarifa de reserva”**&#x65;s el 1,5% deducido de la comisión de afiliado como tarifa de procesamiento por Wink.\
-**“Valor de reserva”**&#x65;s el importe total cobrado por el Facilitador de Pagos al huésped por una Reserva.\
+**“Valor de reserva”**&#x65;s el monto total cobrado por el Facilitador de Pagos al huésped por una Reserva.\
 **"Cláusula"**&#x73;ignifica una cláusula de este Acuerdo.\
 **"Comisión"**&#x73;ignifica el monto adeudado al Afiliado antes de la deducción de la Tarifa de Servicio de Pago y la Tarifa de Reserva por cada Transacción Materializada de conformidad con este Acuerdo.\
 **"Conexiones"**&#x73;ignifica todos los componentes web, enlaces, páginas de destino y/o feeds JSON y/o enlaces profundos y/o hipervínculos, creados, alojados y mantenidos por Wink.\
@@ -77,13 +77,13 @@ Wink y el Afiliado son una “Parte” de este Acuerdo y se denominan colectivam
 **"Sitios web"**&#x73;ignifica el/los sitio(s) web de Wink y sus compañías afiliadas y socios afiliados (incluidos el/los sitio(s) web afiliado(s)) en los que el producto y servicio de Wink está disponible.\
 **"Competidor de guiños"**&#x73;ignifica cualquier competidor directo o indirecto de Wink (excluyendo, para evitar dudas, las empresas del grupo de empresas Wink).\
 **"Datos de guiño"**&#x73;ignifica los Derechos de Propiedad Intelectual de Wink y el Contenido proporcionado al Afiliado bajo este Acuerdo y cualquier otra información que Wink posea o utilice ocasionalmente o que esté incorporada o incluida en los Sitios web de Wink o que Wink ponga a disposición del Afiliado (por ejemplo, tarifas y disponibilidad).\
-**Sitios web de guiños**significa el(los) sitio(s) web de Wink, incluyendo pero no limitado a Wink, traveliko.com y todas las versiones locales o alternativas de los mismos (con cualquier dominio de nivel superior), así como cualquier variación de los mismos, incluyendo pero no necesariamente limitado a, el sitio web móvil, aplicaciones móviles, etc.
+**Sitios web de guiños**significa el(los) sitio(s) web de Wink, incluidos, entre otros, Wink, traveliko.com y todas las versiones locales o alternativas de los mismos (con cualquier dominio de nivel superior), así como cualquier variación de los mismos, incluidos, entre otros, el sitio web móvil, aplicaciones móviles, etc.
 
 **1.2 Sin asociación**
 
 1.2.1 El presente Acuerdo no pretende, ni nada de lo aquí contenido o de los acuerdos aquí contemplados debe interpretarse como, la creación de una empresa conjunta o una relación de socios, sociedad o principal y agente entre las Partes.
 
-1.2.2 A menos que Wink acuerde lo contrario por escrito o se establezca de otro modo en este Acuerdo, el Afiliado no publicará en ningún lugar del (de los) Sitio(s) Web del Afiliado ninguna declaración, ya sea expresa o implícita, de que el sitio web es parte de, está respaldado por, o es un sitio web oficial de Wink.
+1.2.2 A menos que Wink acuerde lo contrario por escrito o se establezca de otro modo en este Acuerdo, el Afiliado no publicará en ningún lugar de los Sitios web del Afiliado ninguna declaración, ya sea expresa o implícita, de que el sitio web es parte de, está respaldado por, o es un sitio web oficial de Wink.
 
 1.2.3 El Afiliado podrá interactuar directamente con los Proveedores de Alojamiento para determinar tarifas exclusivas o preferenciales, términos, promociones, paquetes complementarios y demás.
 
@@ -124,7 +124,7 @@ Sujeto a los términos y condiciones de este Acuerdo, el Afiliado operará como 
 
 3.2.1 A menos que Wink acuerde lo contrario por escrito, el Afiliado no (i) tendrá derecho a sublicenciar los derechos que se le otorgan en virtud de la Cláusula 3.1.1, ni (ii) sublicenciar el Enlace o la Conexión a ningún tercero, ni (iii) crear hipervínculos al Sitio web de Wink a través de o en colaboración con (los sitios web de) empresas dentro del Grupo de Afiliados y/o terceros.
 
-3.2.2 A menos que Wink acuerde lo contrario por escrito o se establezca de otro modo en este Acuerdo, el Afiliado no tendrá derecho, directa o indirectamente, a vender, usar, transferir, (sub)licenciar, comunicar, revelar, poner a disposición, permitir el acceso, divulgar o de otra manera difundir los Datos de Wink o el Contenido (i) a ningún tercero, (ii) para fines de comparación de precios/disponibilidad, sitios, revisiones o investigaciones, (iii) para cualquier otro propósito que no sea (generar reservas del Proveedor de Alojamiento a través de) el Servicio, o (iv) de otra manera.
+3.2.2 A menos que Wink acuerde lo contrario por escrito o se establezca de otro modo en este Acuerdo, el Afiliado no tendrá derecho, directa o indirectamente, a vender, usar, transferir, (sub)licenciar, comunicar, revelar, poner a disposición, permitir el acceso, divulgar o de otra manera diseminar los Datos de Wink o el Contenido (i) a ningún tercero, (ii) para fines de comparación de precios/disponibilidad, sitios, revisiones o investigaciones, (iii) para cualquier otro propósito que no sea (generar reservas del Proveedor de Alojamiento a través de) el Servicio, o (iv) de otra manera.
 
 **4. Pactos y compromisos**
 
@@ -258,7 +258,7 @@ Comisión neta pagada (pago) = Comisión - PSF - BF
 
 5.5 La Comisión Neta especificada será la única compensación que el Afiliado tendrá derecho a recibir en virtud de este Acuerdo. El Afiliado no tendrá derecho a ningún otro beneficio. Es responsabilidad de Wink verificar la exactitud de los pagos de la Comisión Neta antes de realizarlos, y es responsabilidad del Afiliado verificar todos los pagos de la Comisión Neta al recibirlos y notificar de inmediato cualquier presunto error. Ninguna de las partes podrá presentar reclamaciones por sobrepago o pago insuficiente noventa (90) días naturales después de la fecha de vencimiento del pago. Todos los pedidos están sujetos a la aceptación de Wink de acuerdo con sus políticas vigentes en el momento de la solicitud de reserva. Las políticas de Wink están sujetas a cambios sin previo aviso.
 
-5.6 Wink hará todos los esfuerzos comercialmente razonables para auditar todas las transacciones sujetas a este Acuerdo. Wink proporcionará al Afiliado acceso a análisis y a un panel que resume todas las reservas pendientes y vencidas. El Afiliado también tendrá acceso a informes de pago, que mostrarán las ganancias proyectadas y el historial de pagos. Si Wink no mantiene registros precisos o no realiza la auditoría, el único recurso del Afiliado será rescindir este Acuerdo y finalizar su participación en el programa.
+5.6 Wink hará todos los esfuerzos comercialmente razonables para auditar todas las transacciones sujetas a este Acuerdo. Wink proporcionará al Afiliado acceso a análisis y a un panel que resume todas las reservas pendientes y vencidas. El Afiliado también tendrá acceso a informes de pago, que mostrarán las ganancias proyectadas y el historial de pagos. Si Wink no mantiene registros precisos o no realiza la auditoría, el único recurso del Afiliado será rescindir este Acuerdo y dar por terminada su participación en el programa.
 
 **6. Declaraciones y garantías.**
 
@@ -298,7 +298,7 @@ En la medida máxima permitida por la ley aplicable, usted acepta liberar, defen
 
 **7.2 Responsabilidad máxima**
 
-Salvo que se disponga lo contrario en este Acuerdo, la responsabilidad máxima de una Parte por todas las reclamaciones realizadas contra dicha Parte por la otra Parte en virtud o en conexión con este Acuerdo en un año no excederá la comisión agregada recibida o pagada por dicha Parte en los 6 meses anteriores o USD 10 000 (lo que sea mayor), a menos que se trate de fraude o mala conducta intencional de la Parte indemnizante, en cuyo caso la limitación de responsabilidad no es aplicable para dicha Parte responsable.
+Salvo que se disponga lo contrario en este Acuerdo, la responsabilidad máxima de una Parte por todas las reclamaciones realizadas contra dicha Parte por la otra Parte en virtud o en conexión con este Acuerdo en un año no excederá la comisión agregada recibida o pagada por dicha Parte en los 6 meses anteriores o USD 10 000 (el que sea mayor), a menos que se trate de fraude o mala conducta intencional de la Parte indemnizante, en cuyo caso la limitación de responsabilidad no es aplicable para dicha Parte responsable.
 
 **7.3 Reclamación de terceros**
 
@@ -316,7 +316,7 @@ Sin perjuicio de lo establecido en otras secciones de este Acuerdo, tanto el Afi
 
 **8.1 Modificación.**
 
-Salvo que la legislación aplicable disponga lo contrario, Wink podrá modificar estos Términos en cualquier momento. Si realizamos cambios sustanciales en estos Términos, publicaremos los Términos revisados en la Plataforma Wink y actualizaremos la fecha de "Última actualización" en la parte superior de estos Términos. Si la modificación le afecta, le notificaremos las modificaciones al menos treinta (30) días antes de su fecha de entrada en vigor. Si no rescinde su contrato antes de la fecha de entrada en vigor de los Términos revisados, su uso continuado de los Servicios constituirá la aceptación de cualquier cambio en los Términos revisados.
+Salvo que la legislación aplicable disponga lo contrario, Wink podrá modificar estos Términos en cualquier momento. Si realizamos cambios sustanciales en estos Términos, publicaremos los Términos revisados en la Plataforma Wink y actualizaremos la fecha de "Última actualización" en la parte superior de estos Términos. Si la modificación le afecta, le notificaremos las modificaciones al menos treinta (30) días antes de su entrada en vigor. Si no rescinde su contrato antes de la fecha de entrada en vigor de los Términos revisados, su uso continuado de los Servicios constituirá la aceptación de cualquier cambio en los Términos revisados.
 
 **8.2 Plazo.**
 
@@ -331,7 +331,7 @@ A menos que se acuerde lo contrario, el presente Acuerdo comenzará a regir en l
 
 8.3.3 Wink se reserva el derecho de terminar este Acuerdo sin previo aviso en el caso de que no se hayan producido Transacciones Materializadas en un período de 6 meses consecutivos.
 
-8.3.4 Tras la rescisión de este Acuerdo, Wink continuará pagando al Afiliado cualquier Comisión pendiente durante un período de 3 meses a partir de la fecha de rescisión, siempre que Wink disponga de los datos de contacto y bancarios correctos del Afiliado durante dicho período. Si el Afiliado no reclama la Comisión pendiente dentro de dicho período de 3 meses, dicha falta constituirá una renuncia efectiva a su derecho a reclamarla. Sin perjuicio de lo establecido en otras disposiciones de este Acuerdo en relación con la reducción, suspensión o pérdida de la Comisión, cualquier Comisión pendiente se perderá en caso de que el Afiliado haya incurrido en dolo, negligencia grave, fraude o incumplimiento grave de este Acuerdo.
+8.3.4 Tras la rescisión de este Acuerdo, Wink continuará pagando al Afiliado cualquier Comisión pendiente durante un período de 3 meses a partir de la fecha de rescisión, siempre que Wink disponga de los datos de contacto y bancarios correctos del Afiliado durante dicho período. Si el Afiliado no reclama la Comisión pendiente dentro de dicho período de 3 meses, dicha falta constituirá una renuncia efectiva a su derecho a reclamarla. Sin perjuicio de lo establecido en otras disposiciones de este Acuerdo en relación con la reducción, suspensión o pérdida de Comisiones, cualquier Comisión pendiente se perderá en caso de que el Afiliado haya incurrido en dolo, negligencia grave, fraude o incumplimiento grave de este Acuerdo.
 
 8.3.5 Tras la rescisión, y salvo disposición en contrario, el presente Acuerdo quedará rescindido total y definitivamente, sin perjuicio de los derechos y recursos de una Parte en relación con una indemnización o un incumplimiento del presente Acuerdo por la otra Parte. Las cláusulas 4.1.2, 4.1.5, 4.1.6, 4.1.7, 4.2, 4.3, 4.4.1, 4.9.4(c), 9 y 10 seguirán vigentes tras la rescisión del presente Acuerdo.
 
@@ -415,7 +415,7 @@ Wink.travel no será responsable de ninguna demora o incumplimiento de cualquier
 
 19. **Ley aplicable y jurisdicción**
 
-El presente Acuerdo se regirá e interpretará exclusivamente de conformidad con las leyes de Singapur. La Ley de Contratos (Derechos de Terceros) de 2001 (Cap. 53B) no será de aplicación al presente Acuerdo. En cualquier caso, las partes intentarán resolver sus controversias de forma amistosa y extrajudicial, manteniendo previamente conversaciones y negociaciones de buena fe.\
+El presente Acuerdo se regirá e interpretará exclusivamente de conformidad con las leyes de Singapur. La Ley de Contratos (Derechos de Terceros) de 2001 (Cap. 53B) no será de aplicación al presente Acuerdo. En cualquier caso, las partes intentarán resolver sus controversias de forma amistosa extrajudicial, manteniendo previamente conversaciones y negociaciones de buena fe.\
 Cualquier disputa que surja de este acuerdo o en conexión con él se someterá y resolverá exclusivamente en el tribunal competente de Singapur, sin tener en cuenta las normas sobre conflicto de leyes.\
 renunciar irrevocablemente a cualquier derecho que pueda tener de oponerse a que se presente una acción en dichos tribunales, de reclamar que la acción se ha presentado en un foro inconveniente o de reclamar que dichos tribunales no tienen jurisdicción.
 

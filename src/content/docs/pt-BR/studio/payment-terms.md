@@ -12,7 +12,7 @@ sidebar:
 
 **CONDIÇÕES DE PAGAMENTO PARA AFILIADOS**
 
-Estes Termos de Serviço de Pagamento (“**Condições de pagamento**”) são um acordo legal vinculativo entre você e a TripPay (doravante denominad&#x61;**“Facilitador de Pagamento”**), uma subsidiária integral da Traveliko Singapore Pte. Ltd., que rege os Serviços de Pagamento (definidos abaixo) conduzidos por meio ou em conexão com a Plataforma Wink (doravante denominad&#x61;**"Piscar"**). Quando estes Termos de Pagamento mencionam “**Facilitador de Pagamento**,” “**nós**,” “**nós**," ou "**nosso**”, refere-se à empresa TripPay com a qual você está contratando para Serviços de Pagamento.
+Estes Termos de Serviço de Pagamento (“**Condições de pagamento**”) são um acordo legal vinculativo entre você e a TripPay (doravante denominad&#x61;**“Facilitador de Pagamentos”**), uma subsidiária integral da Traveliko Singapore Pte. Ltd., que rege os Serviços de Pagamento (definidos abaixo) conduzidos por meio ou em conexão com a Plataforma Wink (doravante denominad&#x61;**"Piscar"**). Quando estes Termos de Pagamento mencionam “**Facilitador de Pagamento**,” “**nós**,” “**nós**," ou "**nosso**”, refere-se à empresa TripPay com a qual você está contratando para Serviços de Pagamento.
 
 O Facilitador de Pagamentos fornece serviços de pagamento a Afiliados que vendem o inventário de Provedores de Acomodação por meio do Wink. Esses serviços de pagamento podem incluir (se disponíveis) os seguintes (coletivamente, “**Serviços de pagamento**”):
 

@@ -32,7 +32,7 @@ Naše penetrační testování je komplexní a zahrnuje širokou škálu bezpeč
 
 * **Top 10 OWASP:**&#x4E;aše testy se konkrétně zaměřují na nejkritičtější bezpečnostní rizika, jako je injection, přerušené ověřování a cross-site scripting (XSS).
 * **Testování černé a šedé skříňky:**&#x56; závislosti na rozsahu náš tým využívá tyto metodologie k simulaci scénářů útoků jak zvenčí, tak zvenčí.
-* **Automatizované a manuální testování:**&#x50;oužíváme Burp Suite Pro, přední sadu nástrojů pro bezpečnostní testování, k provádění automatizovaných bezpečnostních skenů a k podpoře manuálních testovacích technik k identifikaci komplexních zranitelností a získání co nejlepšího pokrytí. Pro přesnější identifikaci zranitelností používáme některé specializované nástroje, např. SQLmap.
+* **Automatizované a manuální testování:**&#x50;oužíváme Burp Suite Pro, přední sadu nástrojů pro bezpečnostní testování, k provádění automatizovaných bezpečnostních skenů a na podporu manuálních testovacích technik k identifikaci složitých zranitelností a získání co nejlepšího pokrytí. Pro přesnější identifikaci zranitelností používáme některé specializované nástroje, např. SQLmap.
 
 ## Shrnutí zjištění
 

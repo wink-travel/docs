@@ -4,7 +4,7 @@ description: Bu yazımızda WinkLinks vanity URL'nizi nasıl talep edeceğinizi 
 sidebar:
   order: 1
 ---
-Bir tane oluşturarak[Ortaklık hesabı](/studio/what-is-studio), zaten bir WinkLinks vanity url'niz var. WinkLinks yayıncı özellikleri, diğer ortaklık özelliklerimizin yanı sıra Studio uygulamamızda mevcuttur.
+Bir oluşturarak[Ortaklık hesabı](/studio/what-is-studio), zaten bir WinkLinks vanity url'niz var. WinkLinks yayıncı özellikleri, diğer ortaklık özelliklerimizin yanı sıra Studio uygulamamızda mevcuttur.
 
 ### Örnek
 

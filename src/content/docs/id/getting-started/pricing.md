@@ -52,7 +52,7 @@ Dengan menggunakan model ini, agen perjalanan hanya membayar biaya pemrosesan Wi
 
 ## Layanan masa depan
 
-Kami akan menawarkan layanan berbasis langganan opsional di masa mendatang yang akan semakin memudahkan penjualan untuk semua orang atau menawarkan akun afiliasi terkelola yang akan melakukan penjualan untuk Anda. Jika Anda tertarik, sampaikan pendapat Anda dengan mengirimkan email kepada kami di[halo@wink.travel](mailto:hi@wink.travel).
+Kami akan menawarkan layanan berbasis langganan opsional di masa mendatang yang akan semakin memudahkan penjualan untuk semua orang atau menawarkan akun afiliasi terkelola yang akan melakukan penjualan untuk Anda. Jika Anda tertarik, sampaikan pendapat Anda dengan mengirimkan email kepada kami di[hai@wink.travel](mailto:hi@wink.travel).
 
 Pantau terus.
 

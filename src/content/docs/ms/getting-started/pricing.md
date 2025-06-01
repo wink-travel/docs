@@ -16,7 +16,7 @@ Wink ialah rekod pedagang pada masa tempahan berlaku. Wink bertanggungjawab untu
 Model ini digunakan untuk 95% daripada semua tempahan
 
 Kejap caj `5.5% per booking` untuk mengekalkan platform.
-Kebanyakannya pergi ke gerbang pembayaran (Visa, MasterCard dll). Tempahan purata kos kami `2.95%` untuk memperoleh; kadang-kadang setinggi `3.6%`. Bayaran balik separa membuat kami kembali lebih jauh kerana gerbang pembayaran melihat ini sebagai caj baharu.
+Kebanyakannya pergi ke gerbang pembayaran (Visa, MasterCard dll). Tempahan purata kos kami `2.95%` untuk memperoleh; kadang-kadang setinggi `3.6%`. Bayaran balik separa membuatkan kami kembali lebih jauh kerana gerbang pembayaran melihat ini sebagai caj baharu.
 Kami ingin benar-benar telus tentang penetapan harga sekarang untuk menjimatkan masa semua orang sebelum cuba merundingkan diskaun selanjutnya sebelum menggunakan Wink. Model harga kami lebih adil dan kami juga perlu mencari rezeki.
 
 ### Pecahan

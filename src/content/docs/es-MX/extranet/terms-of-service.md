@@ -341,7 +341,7 @@ El Proveedor de Alojamiento garantiza que, según su leal saber y entender, ni e
 
 **25. Autoridad para firmar: Representación y firma del proveedor de alojamiento**
 
-25.1 El Proveedor de Alojamiento garantiza que él, la persona que firma este Acuerdo, y/o cualquier otra persona que proporcione información (incluyendo, para evitar dudas, cualquier Término de Pago) a Wink en relación con o de conformidad con este Acuerdo tiene la autoridad, capacidad y poder necesario para firmar este Acuerdo para y en nombre de todos y cada uno de los Hoteles Participantes, y que dicha persona tiene la autoridad, capacidad y poder necesario para vincular al Proveedor de Alojamiento y a todos y cada uno de los Hoteles Participantes con este Acuerdo y, durante todo el Plazo, cumplirá, realizará y garantizará que cada Hotel Participante cumpla y desempeñe sus obligaciones en virtud de este Acuerdo.
+25.1 El Proveedor de Alojamiento garantiza que él, la persona que firma este Acuerdo, y/o cualquier otra persona que proporcione información (incluyendo, para evitar dudas, cualquier Término de Pago) a Wink en relación con o de conformidad con este Acuerdo tiene la autoridad, capacidad y poder necesarios para firmar este Acuerdo para y en nombre de todos y cada uno de los Hoteles Participantes, y que dicha persona tiene la autoridad, capacidad y poder necesarios para vincular al Proveedor de Alojamiento y a todos y cada uno de los Hoteles Participantes a este Acuerdo y, durante todo el Plazo, cumplirá, realizará y garantizará que cada Hotel Participante cumpla y realice sus obligaciones en virtud de este Acuerdo.
 
 25.2 El Proveedor de Alojamiento acepta explícitamente que la aceptación electrónica de este Acuerdo y sus Términos y Condiciones, incluidos aquellos relacionados con las modificaciones, es válida, vinculante y exigible.
 
@@ -409,5 +409,5 @@ El proveedor de alojamiento ha leído el acuerdo y ha aceptado todos los términ
 
 Todas las notificaciones de una Parte en virtud del presente Acuerdo deberán realizarse en inglés, por escrito y entregarse en persona, por correo prepago y certificado o por un servicio de mensajería exprés reconocido internacionalmente (por ejemplo, FedEx, UPS, DHL) a la oficina registrada o por correo electrónico a la persona de contacto.
 
-Cualquier notificación en virtud del presente Acuerdo se considerará recibida (i) si se entrega a mano, tras la firma de un acuse de recibo o (ii) si se entrega por correo certificado prepago, tras el comprobante de entrega; o (iii) si se entrega por mensajería urgente, tras la fecha de entrega registrada por dicho servicio (iv) si se entrega por correo electrónico, siempre que se presente un acuse de recibo.
+Cualquier notificación en virtud del presente Acuerdo se considerará recibida (i) si se entrega a mano, tras la firma de un acuse de recibo o (ii) si se entrega por correo certificado prepago, tras el acuse de recibo; o (iii) si se entrega por mensajería urgente, tras la fecha de entrega registrada por dicho servicio (iv) si se entrega por correo electrónico, siempre que se presente un acuse de recibo.
 

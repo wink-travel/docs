@@ -18,7 +18,7 @@ Persoonsgegevens die door het Bedrijf worden verwerkt, kunnen via verschillende 
 
 De persoonsgegevens die het Bedrijf volgens dit Privacybeleid moet verzamelen, samenstellen, gebruiken en verwerken, zijn als volgt:
 
-(1) Uw volledige naam, inclusief uw gerelateerde gegevens of de gegevens van uw vertegenwoordiger (in het geval dat u contact met ons opneemt namens een rechtspersoon), waartoe ook uw identiteitsbewijs kan behoren.
+(1) Uw volledige naam, inclusief uw gerelateerde gegevens of de gegevens van uw vertegenwoordiger (in het geval dat u namens een rechtspersoon contact met ons opneemt), waartoe ook uw identiteitsbewijs kan behoren.
 
 (2) Contactgegevens zoals telefoonnummer, e-mailadres of gegevens van uw sociale media-account.
 
@@ -42,7 +42,7 @@ Bewaartermijn van Persoonsgegevens: Om te kunnen functioneren in overeenstemming
 
 (1) Voor de verwerking van persoonsgegevens ten behoeve van het verlenen van diensten, de uitvoering van een overeenkomst en/of de uitoefening van rechten en plichten onder de overeenkomst, is het noodzakelijk dat het Bedrijf uw persoonsgegevens verwerkt, zolang het Bedrijf een dienstverplichting aan u heeft;
 
-(2) Voor de verwerking van persoonsgegevens ten behoeve van de uitvoering van de taken overeenkomstig de toepasselijke wetgeving, is het noodzakelijk dat het Bedrijf uw persoonsgegevens verwerkt gedurende een door de toepasselijke wetgeving gespecificeerde periode;
+(2) Voor de verwerking van persoonsgegevens ten behoeve van de vervulling van de taken overeenkomstig de toepasselijke wetgeving, is het noodzakelijk dat het Bedrijf uw persoonsgegevens verwerkt gedurende een door de toepasselijke wetgeving gespecificeerde periode;
 
 (3) Voor de verwerking van persoonsgegevens met het oog op het opbouwen en verbeteren van zakelijke relaties en/of het verbeteren van de dienstverlening, behoudt het Bedrijf zich het recht voor die persoonsgegevens te bewaren voor zover het Bedrijf daartoe een zakelijke noodzaak heeft. Het Bedrijf garandeert dat de bewaring van de persoonsgegevens geen onredelijke gevolgen zal hebben voor de rechten van de betrokkene;
 

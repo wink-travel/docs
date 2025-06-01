@@ -93,7 +93,7 @@ Warunki te są dostępne pod adresem[Portal partnerski > Warunki korzystania z u
 3.2**Potrącenie opłat:**&#x41;gent turystyczny odliczy od wartości rezerwacji następujące kwoty:
 
 * Opłata rezerwacyjna za Wink wynosi 1,5%.
-* Komisja dla agentów turystycznych.
+* Prowizja dla agentów turystycznych.
 
 3.3**Płatność netto:**&#x50;ozostała płatność netto zostanie wypłacona przez Agenta podróży odpowiedniemu Dostawcy zakwaterowania zgodnie z warunkami odrębnej umowy pomiędzy Agentem podróży a Dostawcą zakwaterowania. Wink nie ponosi odpowiedzialności za dokonywanie jakichkolwiek płatności na rzecz Dostawcy zakwaterowania.
 
@@ -139,7 +139,7 @@ Warunki te są dostępne pod adresem[Portal partnerski > Warunki korzystania z u
 
 * Płatności będą dokonywane w USD. Agent podróży ponosi odpowiedzialność za wszelkie podatki, cła lub inne opłaty, które mogą mieć zastosowanie do transakcji w ramach niniejszej Umowy, w tym koszty przewalutowania, jeśli płatności są dokonywane w walucie innej niż USD.
 
-6.5**Metody płatności:**
+6,5**Metody płatności:**
 
 * Agent podróży dokonuje płatności przelewem bankowym, kartą kredytową lub za pośrednictwem systemu PayPal, a wszelkie opłaty związane z wybraną przez agenta podróży metodą płatności pokrywa agent podróży.
 
@@ -227,11 +227,11 @@ Warunki te są dostępne pod adresem[Portal partnerski > Warunki korzystania z u
 
 12.1**Definicja**: Żadna ze stron nie ponosi odpowiedzialności za jakiekolwiek niewykonanie lub opóźnienie w wykonaniu swoich zobowiązań wynikających z niniejszej Umowy, jeśli takie niewykonanie lub opóźnienie wynika z Wydarzenia Siły Wyższej. „Wydarzenie Siły Wyższej” oznacza jakiekolwiek zdarzenie pozostające poza uzasadnioną kontrolą strony, w tym, ale nie wyłącznie, klęski żywiołowe (takie jak trzęsienia ziemi, powodzie lub huragany), wojnę, terroryzm, niepokoje społeczne, pandemie, działania rządowe lub jakiekolwiek inne zdarzenie, którego nie można było rozsądnie przewidzieć lub uniknąć.
 
-12.2**Powiadomienie**: Strona dotknięta musi powiadomić drugą stronę na piśmie tak szybko, jak to jest rozsądnie możliwe po wystąpieniu zdarzenia siły wyższej. Takie powiadomienie powinno zawierać opis zdarzenia siły wyższej, jego przewidywanego czasu trwania oraz zobowiązań, których ono dotyczy.
+12.2**Powiadomienie**: Strona poszkodowana musi powiadomić drugą stronę na piśmie tak szybko, jak to jest rozsądnie możliwe po wystąpieniu zdarzenia siły wyższej. Takie powiadomienie powinno zawierać opis zdarzenia siły wyższej, jego przewidywanego czasu trwania oraz zobowiązań, których ono dotyczy.
 
 12.3**Wpływ na usługi**:
 
-* Zawieszenie Usług: Jeśli Siła Wyższa wpłynie na zdolność Twojej firmy do świadczenia usług Agentowi Podróży, usługi te zostaną zawieszone na czas trwania zdarzenia bez kary. Zobowiązania płatnicze Agenta Podróży związane z dotkniętymi usługami zostaną również zawieszone w tym okresie.
+* Zawieszenie usług: Jeśli zdarzenie siły wyższej wpłynie na zdolność Twojej firmy do świadczenia usług na rzecz agenta podróży, usługi te zostaną zawieszone na czas trwania zdarzenia bez kary. Zobowiązania płatnicze agenta podróży związane z dotkniętymi usługami zostaną również zawieszone w tym okresie.
 * Obowiązki Agenta Podróży: Agent Podróży nie ponosi odpowiedzialności za żadne zobowiązania wobec Twojej firmy, których nie można wykonać z powodu Siły Wyższej. Jednakże Agent Podróży musi nadal wypełniać wszystkie inne zobowiązania, na które zdarzenie to nie ma bezpośredniego wpływu.
 
 12.4**Czas trwania i zakończenie**: Jeżeli Siła Wyższa trwa dłużej niż sześćdziesiąt (60) dni, każda ze stron może rozwiązać niniejszą Umowę za pisemnym powiadomieniem drugiej strony. W przypadku takiego rozwiązania żadna ze stron nie będzie ponosić odpowiedzialności wobec drugiej strony, z wyjątkiem zobowiązań, które powstały przed Siłą Wyższą.

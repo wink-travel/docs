@@ -49,7 +49,7 @@ Wink ja Sidusettevõte on käesoleva Lepingu „Pool“ ja neid nimetatakse ühi
 **"Klausul"**&#x74;ähendab käesoleva lepingu klauslit.\
 **"Komisjon"**&#x74;ähendab sidusettevõttele võlgnetavat summat enne iga materialiseeritud tehingu eest makseteenuse tasu ja broneerimistasu mahaarvamist vastavalt käesolevale lepingule.\
 **"Ühendused"**&#x74;ähendab kõiki Winki loodud, majutatud ja hallatavaid veebikomponente, linke, maandumislehti ja/või JSON-vooge ja/või süvalinke ja/või hüperlinke.\
-**"Sisu"**&#x74;ähendab kogu majutusteenuse pakkujate (kirjeldavat) teavet, mis on saadaval Winki veebisaidil, sealhulgas, kuid mitte ainult, majutusteenuse pakkuja teave ja kirjeldused, külaliste arvustused, metaandmed, üksikasjad mugavuste kohta ja (tühistamise/mitteilmumise) eeskirjad ning majutusteenuse pakkujate üldtingimused (sh nende tõlked) ning fotod, videod, pildid, kuid mitte hinnad ja saadavus (sh kõik värskendused, muudatused, asendused, lisandused või parandused).\
+**"Sisu"**&#x74;ähendab kogu majutusteenuse pakkujate (kirjeldavat) teavet, mis on saadaval Winki veebisaidil, sealhulgas, kuid mitte ainult, majutusteenuse pakkujate teavet ja kirjeldusi, külaliste arvustusi, metaandmeid, mugavuste üksikasju ja (tühistamise/mitteilmumise) reegleid ning majutusteenuse pakkujate üldtingimusi (sh nende tõlkeid) ning fotosid, videoid, pilte, kuid mitte hindu ja saadavust (sh kõiki värskendusi, muudatusi, asendusi, lisandusi või parandusi).\
 **"Kontroll"**&#x74;ähendab võimu või võime omamist (otseselt või kaudselt, üksi või teistega kooskõlastatult, olgu siis hääleõigusega väärtpaberite või muude omandiosaluste omamise, partnerluse või muul viisil) (i) teostada või lasta teostada rohkem kui poolt äriühingu aktsionäride koosolekul hääleõigustest, (ii) määrata ametisse rohkem kui pooled äriühingu ((mitte)tegevjuhtide) või nõukogu liikmetest või (iii) suunata või lasta teostada äriühinguga seotud juhtimist.\
 **"Kliendiandmed"**&#x74;ähendab külalise isikut tuvastavat teavet („PII“), sealhulgas, kuid mitte ainult, külalise nime, aadressi (sh e-posti aadressi), krediitkaardi andmeid ja muud külalise konfidentsiaalset ja privaatset teavet.\
 **"Topeltportsjon"**&#x74;ähendab mitut reklaami otsingumootori samal tulemuste lehel eesmärgiga suunata liiklust sarnastele veebisaitidele või sarnase sisuga lehtedele.\
@@ -73,7 +73,7 @@ Wink ja Sidusettevõte on käesoleva Lepingu „Pool“ ja neid nimetatakse ühi
 **"SEO"**&#x74;ähendab otsingumootorite optimeerimist ja hõlmab protsessi, mille käigus (i) parandatakse otsingumootoritest veebisaidile või -lehele suunatud liikluse mahtu või kvaliteeti „loomulike” või tasuta („orgaaniliste” või „algoritmiliste”) otsingutulemuste kaudu või (ii) saavutatakse või luuakse otsingumootori tulemustes parem või parem positsioon konkreetse märksõna või märksõnade puhul.\
 **„Sarnane domeeninimi”**&#x6F;mab punktis 4.7.1 sätestatud tähendust.\
 **"Rämpsposti eeskirjad"**&#x74;ähendab mis tahes poliitikaid, eeskirju, piiranguid või kohustusi, mis on aeg-ajalt ette nähtud, kohaldatavaks kuulutatud või teatavaks tehtud Kolmandate Osapoolte Platvormide poolt ja mis (i) keelavad või takistavad topeltesitamist, varjamist või muud sarnast tehnikat või meetodit või (ii) sisaldavad selliseid täiendavaid piiranguid või eeskirju rämpsposti või ainulaadse kasutajakogemuse säilitamise kohta.\
-**"Kolmandate osapoolte platvormid"**&#x74;ähendab mis tahes (kolmanda osapoole) otsingumootorit (turundusteenuse pakkujat), metaotsingumootorit, otsinguroboteid, reisiotsingu saite, hinnavõrdlussaite, sotsiaalvõrgustike kogukondi, brausereid, sisu jagamise ja majutamise teenuseid ning multimeedia ajaveebiteenuseid või muid (sarnaseid) kanaleid või muid (liikluse majutamise) meedia vorme, olgu need siis võrgus või võrguühenduseta.\
+**"Kolmandate osapoolte platvormid"**&#x74;ähendab mis tahes (kolmanda osapoole) otsingumootorit (turundusteenuse pakkujat), metaotsingumootorit, otsingumootorite roboteid, reisiotsingu saite, hinnavõrdlussaite, sotsiaalvõrgustike kogukondi, brausereid, sisu jagamise ja majutamise teenuseid ning multimeedia ajaveebiteenuseid või muid (sarnaseid) kanaleid või muid (liikluse majutamise) meedia vorme, olgu need siis võrgus või võrguühenduseta.\
 **"Veebisaidid"**&#x74;ähendab Winki ja selle sidusettevõtete ja siduspartnerite veebisaiti(-e) (sealhulgas sidusettevõtte veebisaiti(-e)), kus Winki tooted ja teenused on saadaval.\
 **"Silmapilgutuse võistleja"**&#x74;ähendab Winki mis tahes otsest või kaudset konkurenti (välja arvatud kahtluse vältimiseks Winki kontserni ettevõtted).\
 **"Wink Data"**&#x74;ähendab Winki intellektuaalomandi õigusi ja sisu, mis on käesoleva lepingu alusel partnerile edastatud, ning muud sellist teavet, mis aeg-ajalt kuulub Winkile või mida ta kasutab või mis on Winki veebisaitidel kehastatud või neisse lisatud või mille Wink partnerile kättesaadavaks teeb (nt hinnad ja saadavus).\
@@ -83,14 +83,14 @@ Wink ja Sidusettevõte on käesoleva Lepingu „Pool“ ja neid nimetatakse ühi
 
 1.2.1 Käesolev Leping ei ole mõeldud ega tohiks tõlgendada ühisettevõtte või partnerite, partnerluse või esindatava ja esindaja suhte loomisena Poolte vahel ega nende vahel.
 
-1.2.2 Välja arvatud juhul, kui Wink on kirjalikult teisiti kokku leppinud või kui käesolevas Lepingus on sätestatud teisiti, ei tohi Partner avaldada Partneri veebisaidil(-idel) ühtegi avaldust, olgu see siis otsene või kaudselt väljendatud, et veebisait on osa Winkist, Winki poolt heaks kiidetud või Winki ametlik veebisait.
+1.2.2 Välja arvatud juhul, kui Wink on kirjalikult kokku leppinud teisiti või kui käesolevas Lepingus on sätestatud teisiti, ei tohi Partner avaldada Partneri veebisaidil(-idel) ühtegi avaldust, olgu see siis otsene või kaudselt väljendatud, et veebisait on osa Winkist, Winki poolt heaks kiidetud või Winki ametlik veebisait.
 
 1.2.3 Partner võib majutusteenuse pakkujatega otse suhelda, et määrata kindlaks eksklusiivsed või eelistatud hinnad, tingimused, kampaaniad, pakettide lisad ja muu selline.
 
 **2. Käesoleva lepingu ulatus**
 
 **2.1 Mitte-eksklusiivsus**\
-Käesoleva lepingu tingimuste kohaselt tegutseb Partner Winki mitte-eksklusiivse turustajana (sidusettevõttena).
+Käesoleva lepingu tingimuste kohaselt tegutseb partner Winki mitte-eksklusiivse turustajana (partnerina).
 
 **2.2 Teenindus**
 
@@ -122,7 +122,7 @@ Käesoleva lepingu tingimuste kohaselt tegutseb Partner Winki mitte-eksklusiivse
 
 **3.2 Alllitsentsiõiguse puudumine ja avalikustamata jätmine**
 
-3.2.1 Kui Wink ei ole kirjalikult teisiti kokku leppinud, ei ole Partneril (i) õigust punkti 3.1.1 alusel talle antud õigusi all-litsentsida ega (ii) lingi või ühenduse all-litsentsi anda ühelegi kolmandale isikule ega (iii) linki Winki veebisaidile Partnerlusgruppi kuuluvate ettevõtete ja/või kolmandate isikute kaudu või koostöös nendega luua.
+3.2.1 Kui Wink ei ole kirjalikult teisiti kokku leppinud, ei ole Partneril (i) õigust punkti 3.1.1 alusel talle antud õigusi all-litsentsida ega (ii) lingi või ühenduse all-litsentsi anda ühelegi kolmandale isikule ega (iii) linki Winki veebisaidile Partnerlusgruppi kuuluvate ettevõtete ja/või kolmandate isikute veebisaitide kaudu või nendega koostöös luua.
 
 3.2.2 Kui Wink ei ole kirjalikult teisiti kokku leppinud või käesolevas Lepingus ei ole sätestatud teisiti, ei ole Partneril otseselt ega kaudselt õigust Winki andmeid või sisu müüa, kasutada, üle anda, (all)litsentsida, edastada, avalikustada, kättesaadavaks teha, juurdepääsu lubada, avaldada ega muul viisil levitada (i) ühelegi kolmandale isikule, (ii) hinna/saadavuse võrdlemise eesmärgil, saitidel, arvustustes või uurimistes, (iii) mis tahes muul eesmärgil peale (majutusteenuse pakkuja broneeringute genereerimise teenuse kaudu) või (iv) muul viisil.
 
@@ -130,7 +130,7 @@ Käesoleva lepingu tingimuste kohaselt tegutseb Partner Winki mitte-eksklusiivse
 
 **4.1 Üldised lepingud, ettevõtmised ja kohustused**
 
-4.1.1 Käesoleva lepingu tingimuste kohaselt kohustub partner tegema kaubanduslikult mõistlikke jõupingutusi, et (i) kohandada partneri veebisaiti(-e) ja integreerida link, ühendused ja/või mikrosait selliselt, et genereerida Winki veebisaidile või partneri veebisaidile(-idele) võimalikult palju liiklust, ning (ii) reklaamida ja turustada majutusteenuse pakkujaid ja võimalust broneerida majutusteenuse pakkujaid partneri veebisaidil(-idel) oma äri- ja sisevõrgus ning sel eesmärgil teeb ta kättesaadavaks oma turustusvõrgu ja -kanalid (nt internet ja intranet).
+4.1.1 Käesoleva lepingu tingimuste kohaselt kohustub partner tegema äriliselt mõistlikke jõupingutusi, et (i) kohandada partneri veebisaiti(-e) ja integreerida link, ühendused ja/või mikrosait selliselt, et genereerida Winki veebisaidile või partneri veebisaidile(-idele) võimalikult palju liiklust, ja (ii) reklaamida ja turustada majutusteenuse pakkujaid ja võimalust broneerida majutusteenuse pakkujaid partneri veebisaidil(-idel) oma äri- ja sisevõrgus ning sel eesmärgil teeb ta kättesaadavaks oma turustusvõrgu ja -kanalid (nt internet ja intranet).
 
 4.1.2 Partner kohustub mitte võtma ega jätma võtmata meetmeid, mis võivad mõjutada Winki suhteid Winki veebisaitidel saadaolevate majutusteenuse pakkujatega. Partner kohustub mitte põhjustama ega lubama teha midagi, mis võiks kaasa tuua Winki kõrvalejätmise mis tahes majutusteenuse pakkuja broneerimisprotsessist.
 
@@ -149,13 +149,13 @@ Edasimüüki peetakse käesoleva lepingu oluliseks rikkumiseks. Partner tunnista
 
 4.1.9 Kõik broneeringud või reserveeringud, mille Partner teeb Winki veebisaidil või Partneri veebisaidil mis tahes majutusteenuse pakkuja juures, kuuluvad Winki kasutustingimuste alla, mida võidakse aeg-ajalt ajakohastada. Kahtluste vältimiseks ei tohi Partner kasutada Winki veebisaiti ega selle sisu ühelgi ärilisel eesmärgil, välja arvatud komisjonitasu saamiseks vastavalt käesoleva lepingu tingimustele.
 
-4.1.10 Partner nõustub ja tunnistab, et käesolevas punktis 4 sätestatud piiravad klauslid, kohustused, lubadused, meetmed ja piirangud on mõistlikud ja Winki jaoks olulise tähtsusega, eelkõige (i) tema valmisoleku tõttu sõlmida Partneriga käesolev Leping ning teha Teenus, Sisu ja Winki intellektuaalomandi õigused (otseselt või kaudselt) Partnerile kättesaadavaks ning (ii) Winki firmaväärtuse, toote, teenuse ja (turu) maine kaitsmiseks. Lisaks nõustub ja tunnistab Partner, et kõiki käesolevas punktis 4 sätestatud klausleid, lubadusi, garantiisid, meetmeid ja piiranguid (a) peab Partner viivitamata, nõuetekohaselt ja hoolsalt täitma ning (b) need kehtivad ka iga isiku kohta, kellel on juurdepääs Müüjaportaalile Partneri kasutajatunnuse kaudu, iga isiku kohta, keda mõistlikult peetakse Partnerit esindavaks, ja Partnerigruppi kuuluvate ettevõtete kohta. Partner tagab, garanteerib ja kohustub, et iga isik, kellel on juurdepääs Müüjaportaalile Partneri kasutajatunnuse kaudu, iga isik, keda mõistlikult peetakse Partnerit esindavaks, ja Partnerigruppi kuuluvad ettevõtted järgivad, järgivad ja tegutsevad vastavalt käesolevas punktis 4 sätestatud tingimustele.
+4.1.10 Partner nõustub ja tunnistab, et käesolevas punktis 4 sätestatud piiravad klauslid, kohustused, lubadused, meetmed ja piirangud on mõistlikud ja Winki jaoks olulise tähtsusega, eelkõige (i) tema valmisoleku tõttu sõlmida Partneriga käesolev Leping ning teha Teenus, Sisu ja Winki intellektuaalomandi õigused (otseselt või kaudselt) Partnerile kättesaadavaks ning (ii) Winki firmaväärtuse, toote, teenuse ja (turu) maine kaitsmiseks. Lisaks nõustub ja tunnistab Partner, et kõiki käesolevas punktis 4 sätestatud klausleid, lubadusi, garantiisid, meetmeid ja piiranguid (a) peab Partner viivitamata, nõuetekohaselt ja hoolsalt täitma ning (b) need kehtivad ka iga isiku kohta, kellel on juurdepääs Müüjaportaalile Partneri kasutajatunnuse kaudu, iga isiku kohta, keda mõistlikult peetakse Partnerit esindavaks, ja Partnerigruppi kuuluvate ettevõtete kohta. Partner kohustub tagama, garanteerima ja tagama, et iga isik, kellel on juurdepääs Müüjaportaalile Partneri kasutajatunnuse kaudu, iga isik, keda mõistlikult peetakse Partnerit esindavaks, ja Partnerigruppi kuuluvad ettevõtted järgivad, järgivad ja tegutsevad vastavalt käesolevas punktis 4 sätestatud tingimustele.
 
 **4.2 Hea maine, kaubamärgi kaitse ja liiklus**
 
 4.2.1 Winki toote, teenuse, kaubamärgi ja firmaväärtuse kaitsmiseks kohustub ja garanteerib Partner käesolevaga, et Partneri veebisait(id) (sealhulgas kõik muud veebisaidid (otseselt või kaudselt), mis kuuluvad Partnerile või Partneri Grupi ettevõtetele, mida nad kontrollivad või majutavad (otseselt või kaudselt), välja arvatud Mikroveebisait, on (ja jääb) Winki veebisaidist piisavalt ja oluliselt eraldiseisvaks ja erinevaks (määratakse Winki äranägemisel). Partner nõustub ja kinnitab käesolevaga, et käesoleva lepingu kehtivusajal ja pärast seda:\
 (a) Partneri veebisaidi(de) (sealhulgas kõigi teiste (otseselt või kaudselt) Partneri omanduses olevate, kontrollitavate või majutatavate veebisaitide) välimus ja kasutuskogemus peavad eristuma selgelt ja märkimisväärselt Winki veebisaidist, sealhulgas värvilahenduse, kompositsiooni, kirjatüüpide, kujunduse ja paigutuse (sealhulgas brändi), (klõpsamis)nuppude, kastide ja ribareklaamide ning saadaolevate funktsioonide osas (välja arvatud need funktsioonid, mis on mõistlikult vajalikud Partneri käesoleva lepingu kohaste kohustuste täitmiseks);\
-(b) kõik partnerveebisaidil (veebisaitidel) kasutatavad logod (sh kõik muud partnerettevõttele kuuluvad, tema kontrolli all olevad või majutatud veebisaidid) peavad olema Winki logost selgelt erinevad (välja arvatud logod, mille Wink võib partnerettevõttele käesoleva lepingu alusel kasutamiseks pakkuda);\
+(b) kõik partnerveebisaidil (veebisaitidel) kasutatavad logod (sh kõik muud partnerettevõttele kuuluvad, tema kontrolli all olevad või majutatud veebisaidid) peavad Winki logost selgelt eristuma (välja arvatud logod, mille Wink võib partnerettevõttele käesoleva lepingu alusel kasutamiseks pakkuda);\
 (c) Partner ei tohi mingil viisil Winki veebisaite jäljendada ega kopeerida (üldiselt ega teatud (uute) funktsioonide, lehtede, vormi, koostise või aspektide osas) ja\
 (d) Partner peab viivitamata ja omal kulul täitma kõik Winki mõistlikud taotlused teha selliseid (edasi) muudatusi, parandusi või täiendusi Partneri veebisaidi(de) mis tahes aspektis, mis on või mida võib pidada eksitavalt või märkimisväärselt sarnaseks Winki veebisaidi mis tahes elemendiga.
 
@@ -193,7 +193,7 @@ Punkt 4.4.1 punktide (i) kuni (v) osas jääb kehtima ka pärast käesoleva lepi
 
 4.5.1 Partnerveebisaite ei tohi (otseselt ega kaudselt) Winki veebisaitidega lingida topeltserveerimise või mis tahes sarnase tehnika või meetodi või muude rämpsposti eeskirjades sätestatud piirangute tõttu.
 
-4.5.2 Juhul kui Teenus tehakse kättesaadavaks Lingi või Mikroveebisaidi kaudu, ei tohi Partner Teenust (otseselt ega kaudselt) kättesaadavaks teha reisiotsingu saitide või hinnavõrdlus saitide kaudu ega neid sel eesmärgil kasutada, välja arvatud juhul, kui Wink on kirjalikult teisiti kokku leppinud.
+4.5.2 Juhul kui Teenus tehakse kättesaadavaks Lingi või Mikroveebisaidi kaudu, ei tohi Partner Teenust (otseselt ega kaudselt) kättesaadavaks teha reisiotsingu saitide või hinnavõrdlussaitide kaudu ega neid selleks otstarbeks kasutada, välja arvatud juhul, kui Wink on kirjalikult teisiti kokku leppinud.
 
 4.5.3 Partner ei tohi (otseselt ega kaudselt) teha Partnerveebisaiti(de), Sisu ega Teenust Kolmandate Osapoolte Platvormidele kättesaadavaks ega esitleda Sisu kavatsusega või eesmärgil eksitada, petta, trikitada või lollitada Kolmandate Osapoolte Platvormide inimtoimetajaid, otsingumootorite roboteid, veebiroboteid või (meta)otsingumootoreid (sh mis tahes sarnaseid tööriistu või mootoreid), et anda Partnerveebisaidile(-dele) kõrgem asetus või kuvamine, kui seda muidu ei kuvataks või see ei oleks kõrgema asetusega, kui see ei oleks kasutanud varjamist või muud sarnast tehnikat või meetodit.
 
@@ -341,7 +341,7 @@ Kui ei ole kokku lepitud teisiti, jõustub käesolev leping selle sõlmimise kuu
 
 **9.1 Süsteemid**
 
-Winki raamatupidamisdokumente ja dokumente (sh ekstranet ja/või e-kirju) loetakse käesoleva lepingu alusel partnerile kuuluva komisjonitasu summa kohta lõplikuks tõendiks.
+Winki raamatupidamisdokumente ja dokumente (sh Extranet ja/või e-kirju) loetakse käesoleva lepingu alusel partnerile kuuluva komisjonitasu summa kohta lõplikuks tõendiks.
 
 **9.2 Auditeerimisõigused**
 
@@ -367,7 +367,7 @@ Pooled mõistavad ja lepivad kokku, et käesoleva lepingu täitmisel võib kumma
 
 **11.2 Konfidentsiaalse teabe kaitsmine ja turvamine**
 
-Mõlemad Pooled nõustuvad, et: (a) kogu konfidentsiaalne teave jääb avaldava Poole ainuomandiks ja vastuvõttev Pool ei kasuta konfidentsiaalset teavet muul otstarbel kui käesoleva Lepingu edendamiseks, (b) ta säilitab konfidentsiaalse teabe konfidentsiaalsuse ja salastatuse ning kasutab selleks ettevaatusabinõusid, et tagada oma töötajate, ametnike, esindajate, lepingupoolte ja agentide („Lubatud Isikud“) konfidentsiaalse teabe konfidentsiaalsuse ja salastatuse säilitamine, (c) ta avaldab konfidentsiaalset teavet ainult neile Lubatud Isikutele ja neile, kes peavad seda teavet teadma käesoleva Lepingu edendamiseks, (d) ta ei (i) kopeeri, avalda, edasta, reprodutseeri, avalikusta, avalikusta ega tee konfidentsiaalset teavet kättesaadavaks ühelegi kolmandale isikule või (ii) kasuta ega säilita seda kaitsmata otsingusüsteemis või andmebaasis (muul viisil kui käesoleva Lepingu tingimustel) ja (e) ta tagastab või hävitab kõik konfidentsiaalse teabe ((kõv- ja pehmed) koopiad) teise Poole kirjalikul taotlusel. Juhul kui üks Pool töötleb isikuandmeid teise Poole nimel käesoleva Lepingu alusel teenuste osutamise raames, reguleerivad Pooled sellist töötlemist andmetöötluslepinguga (DPA) ja see moodustab osa käesoleva Lepingu tingimustest.
+Mõlemad Pooled nõustuvad järgmisega: (a) kogu konfidentsiaalne teave jääb avaldava Poole ainuomandiks ja vastuvõttev Pool ei kasuta konfidentsiaalset teavet muul otstarbel kui käesoleva Lepingu edendamiseks, (b) ta säilitab konfidentsiaalse teabe konfidentsiaalsuse ja salastatuse ning kasutab selleks ettevaatusabinõusid, et tagada oma töötajate, ametnike, esindajate, lepingupoolte ja agentide („Lubatud Isikud“) konfidentsiaalse teabe konfidentsiaalsuse ja salastatuse säilitamine, (c) ta avaldab konfidentsiaalset teavet ainult neile Lubatud Isikutele ja neile, kes peavad seda teavet teadma käesoleva Lepingu edendamiseks, (d) ta ei (i) kopeeri, avalda, edasta, reprodutseeri, avalikusta, avalikusta ega tee konfidentsiaalset teavet kättesaadavaks ühelegi kolmandale isikule või (ii) kasuta ega säilita seda kaitsmata otsingusüsteemis või andmebaasis (muul viisil kui käesoleva Lepingu tingimustel) ja (e) ta tagastab või hävitab kõik konfidentsiaalse teabe ((kõv- ja pehmed) koopiad) teise Poole kirjalikul taotlusel. Juhul kui üks Pool töötleb isikuandmeid teise Poole nimel käesoleva Lepingu alusel teenuste osutamise raames, reguleerivad Pooled sellist töötlemist andmetöötluslepinguga (Andmetöötlusleping) ja see moodustab osa käesoleva Lepingu tingimustest.
 
 **11.3 Lubatud avalikustamine**
 
@@ -402,7 +402,7 @@ Kui valitsuse õiguskaitseasutus, kohus või pädeva jurisdiktsiooniga tribunal 
 
 **16. Poolte suhted**
 
-Pooled on käesoleva lepingu täitmisel sõltumatud töövõtjad ja tegutsevad ka iseseisvate töövõtjatena. Kumbki pool ei tegutse ega loeta teise poole esindajaks ega partneriks mingil eesmärgil ega ole kummalgi poolel õigust teist poolt mingil moel siduda.
+Pooled on käesoleva lepingu täitmisel sõltumatud töövõtjad ja tegutsevad ka iseseisvate töövõtjatena. Kumbki pool ei tegutse ega loeta teise poole esindajaks ega partneriks mingil eesmärgil ning kummalgi poolel ei ole õigust teist poolt mingil moel siduda.
 
 **17. Ülesanne**
 
@@ -421,7 +421,7 @@ loobub pöördumatult õigusest vaidlustada hagi esitamist nimetatud kohtutele, 
 
 20. **Vastaspooled.**
 
-Käesolev Leping võib koosneda kahest eksemplarist, millest igaüks (pärast allkirjastamist) loetakse originaaliks ja mis kokkuvõttes moodustavad ühe ja sama dokumendi. Lisaks on igal Winki kirjaliku allkirja skaneeritud/elektroonilise koopia koopial sama ja võrdne jõud kui Winki originaalsel käsitsi kirjutatud allkirjal ning see ei mõjuta käesoleva Lepingu kehtivust.
+Käesolev Leping võib koosneda kahest eksemplarist, millest igaüks (pärast allkirjastamist) loetakse originaaliks ja mis kokkuvõttes moodustavad ühe ja sama dokumendi. Lisaks on igal Winki kirjaliku allkirja skaneeritud/elektroonilisel koopial sama ja võrdne jõud kui Winki originaalsel käsitsi kirjutatud allkirjal ning see ei mõjuta käesoleva Lepingu kehtivust.
 
 21. **Täielik leping**
 

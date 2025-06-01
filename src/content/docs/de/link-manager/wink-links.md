@@ -30,7 +30,7 @@ Wir bauten[WinkLinks](https://i.trvl.as/); ein völlig kostenloser Link-Manager,
 ## Umfangreicher Inhalt
 
 :::Hinweis
-Satz`Intelligent`zu 🟢 in Ihrem[Einstellungen](/link-manager/settings)um diese Funktion zu nutzen.
+Set`Intelligent`zu 🟢 in Ihrem[Einstellungen](/link-manager/settings)um diese Funktion zu nutzen.
 ::
 
 Wenn Sie einen Link von einer Site teilen, die`rich`/`oEmbed`Inhalt, Ihr Link wird auf WinkLinks lebendig.

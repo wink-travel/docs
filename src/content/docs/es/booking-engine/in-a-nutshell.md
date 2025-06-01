@@ -28,7 +28,7 @@ Sus responsabilidades incluyen:
   * Un [Llamada API](/developers/apis)desde un sistema de agencia de viajes remoto.
 * Ofrecer a los viajeros una forma de:
   * Búsqueda de inventario de viajes.
-  * Reserva inventario disponible.
+  * Reserva el inventario disponible.
   * Gestionar sus[reservas y reseñas](/booking-engine/bookings).
   * Gestionar sus[lista de deseos](/booking-engine/bucket-list)de cosas para reservar en el futuro.
   * Gestionar sus[perfil de viaje](/booking-engine/travel-preferences).*p.ej. alergias, contacto de emergencia, etc.*

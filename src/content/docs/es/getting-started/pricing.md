@@ -51,7 +51,7 @@ Al utilizar este modelo, los agentes de viajes solo pagan la tarifa de procesami
 
 ## Servicios futuros
 
-En el futuro, ofreceremos servicios opcionales basados en suscripción que facilitarán aún más la venta para todos, o bien, cuentas de afiliados gestionadas que se encargarán de las ventas por usted. Si le interesa, háganos saber su opinión escribiéndonos a[hola@wink.travel](mailto:hi@wink.travel).
+En el futuro, ofreceremos servicios opcionales basados en suscripción que facilitarán aún más la venta para todos, o bien, cuentas de afiliados gestionadas que se encargarán de las ventas por ti. Si te interesa, haz oír tu voz escribiéndonos a[hola@wink.travel](mailto:hi@wink.travel).
 
 Manténganse al tanto.
 
