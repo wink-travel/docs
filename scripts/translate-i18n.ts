@@ -201,27 +201,27 @@ async function translateText(
   return result;
 }
 
-const walk = (
-  tasks: Promise<void>[],
-  node: any,
-  targetLanguageCode: string
-) => {
-  console.log("walk node", node);
+// const walk = (
+//   tasks: Promise<void>[],
+//   node: any,
+//   targetLanguageCode: string
+// ) => {
+//   console.log("walk node", node);
 
-  if (node.type === "text") {
-    const value = node.value.trim();
-    if (value) {
-      const p = translateText(value, targetLanguageCode).then((translated) => {
-        node.value = translated;
-      });
-      tasks.push(p);
-    }
-  } else if (node.children && Array.isArray(node.children)) {
-    node.children.forEach((child: any) =>
-      walk(tasks, child, targetLanguageCode)
-    );
-  }
-};
+//   if (node.type === "text") {
+//     const value = node.value.trim();
+//     if (value) {
+//       const p = translateText(value, targetLanguageCode).then((translated) => {
+//         node.value = translated;
+//       });
+//       tasks.push(p);
+//     }
+//   } else if (node.children && Array.isArray(node.children)) {
+//     node.children.forEach((child: any) =>
+//       walk(tasks, child, targetLanguageCode)
+//     );
+//   }
+// };
 
 async function translateHtmlContent(
   html: string,
