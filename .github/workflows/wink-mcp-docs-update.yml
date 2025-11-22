@@ -1,0 +1,77 @@
+name: Sync docs → wink-mcp
+
+on:
+  push:
+    paths:
+      - 'src/content/docs/**'
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: sync-wink-docs-to-mcp
+      cancel-in-progress: false
+
+    steps:
+      - name: Checkout docs repo (source)
+        uses: actions/checkout@v4
+
+      - name: Checkout wink-mcp repo (target)
+        uses: actions/checkout@v4
+        with:
+          repository: wink-travel/wink-mcp
+          token: ${{ secrets.MCP_REPO_TOKEN }}
+          path: mcp
+
+      - name: Mirror src/content/docs → wink-mcp/wink_docs
+        run: |
+          rsync -a --delete src/content/docs/ mcp/wink_docs/
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: mcp/package-lock.json
+
+      - name: Install deps & generate index
+        working-directory: mcp
+        run: |
+          npm ci
+          node scripts/generate-docs-index.mjs wink_docs
+
+      - name: Create/Update PR in wink-mcp
+        id: cpr
+        uses: peter-evans/create-pull-request@v6
+        with:
+          token: ${{ secrets.MCP_REPO_TOKEN }}
+          path: mcp
+          commit-message: "docs: sync src/content/docs → wink_docs"
+          title: "docs: sync src/content/docs → wink_docs"
+          body: |
+            Automated sync from **wink-travel/docs**.
+            - Copied `src/content/docs/**` → `wink_docs/**`
+            - Regenerated `wink_docs/_index.json`
+          branch: chore/sync-wink-docs
+          base: master
+          labels: docs,mcp
+          signoff: true
+          draft: false
+
+      - name: Enable Auto-Merge (squash)
+        if: steps.cpr.outputs.pull-request-number != ''
+        uses: peter-evans/enable-pull-request-automerge@v3
+        with:
+          token: ${{ secrets.MCP_REPO_TOKEN }}
+          pull-request-number: ${{ steps.cpr.outputs.pull-request-number }}
+          merge-method: squash
+
+      - name: Show PR link
+        if: steps.cpr.outputs.pull-request-url != ''
+        run: |
+          echo "Opened/updated PR: ${{ steps.cpr.outputs.pull-request-url }}"
