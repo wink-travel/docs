@@ -11,17 +11,9 @@ import {
   mkdirSync,
 } from "fs";
 import { resolve, join, dirname } from "path";
+import { fileURLToPath } from "url";
 import cliProgress from "cli-progress";
-import { TranslationServiceClient } from "@google-cloud/translate"; // Google Translate API
-import matter from "gray-matter";
-import { unified } from "unified";
-import remarkParse from "remark-parse";
-import remarkStringify from "remark-stringify";
-import rehypeParse from "rehype-parse";
-import remarkMdx from "remark-mdx";
-import { visit } from "unist-util-visit";
-import type { Node } from "unist";
-// import { JSDOM } from 'jsdom'; // Optional, if you want more DOM-like behavior
+import OpenAI from "openai";
 
 import { createHash } from "crypto";
 
@@ -29,28 +21,31 @@ const HASH_ALGO = "sha256";
 const HASH_FILE_NAME = ".file.hashes.json";
 
 type HashMap = Record<string, string>;
-type Frontmatter = Record<string, any>;
 
-// this is out Google Project ID
-const projectId = "staging-iko-travel";
-const parent = `projects/${projectId}/locations/global`;
-
-/**
- *  Optional. The `model` type requested for this translation.
- *  The format depends on model type:
- *  - AutoML Translation models:
- *    `projects/{project-number-or-id}/locations/{location-id}/models/{model-id}`
- *  - General (built-in) models:
- *    `projects/{project-number-or-id}/locations/{location-id}/models/general/nmt`,
- *  - Translation LLM models:
- *    `projects/{project-number-or-id}/locations/{location-id}/models/general/translation-llm`,
- *  For global (non-regionalized) requests, use `location-id` `global`.
- *  For example,
- *  `projects/{project-number-or-id}/locations/global/models/general/nmt`.
- *  If not provided, the default Google model (NMT) will be used
- */
-const model = `${parent}/models/general/nmt`;
-const mimeType = "text/plain";
+// Helper filesystem utilities
+const createDirectory = (filePath: string): void => mkdirSync(filePath);
+const readFiles = (filePath: string): Array<string> => readdirSync(filePath);
+const readFile = (filePath: string): any =>
+  existsSync(filePath)
+    ? readFileSync(filePath, "utf8")
+    : new Error(`Unable to find file ${filePath}`);
+const writeFile = (filePath: string, content: string): void => {
+  mkdirSync(dirname(filePath), { recursive: true });
+  writeFileSync(filePath, content + "\n", { encoding: "utf8" });
+};
+const calculateFileHash = (content: string): string => {
+  return createHash(HASH_ALGO).update(content).digest("hex");
+};
+const getLangHashFilePath = (langDirectory: string): string => {
+  return join(langDirectory, HASH_FILE_NAME);
+};
+const loadHashMap = (langDirectory: string): HashMap => {
+  const hashPath = getLangHashFilePath(langDirectory);
+  if (existsSync(hashPath)) {
+    return JSON.parse(readFile(hashPath));
+  }
+  return {};
+};
 
 // here are all our apps that need translation and use JSON i18n resource bundles
 const directories = [
@@ -71,11 +66,24 @@ const directories = [
 ];
 
 // some environment variables
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 const rootDir = resolve(__dirname, "..");
 const docsBaseDir = join(rootDir, "src", "content", "docs");
 
-// here is where to find the source file path (English base translation)
-const sourceLanguageCode = "en";
+
+const OPENAI_TRANSLATION_MODEL =
+  process.env.OPENAI_TRANSLATION_MODEL ?? "gpt-5-mini";
+const DOMAIN_CONTEXT =
+  "Online travel platform: booking flows, inventory management, agency/extranet tools. Keep product names and key travel terms consistent.";
+
+if (!process.env.OPENAI_API_KEY) {
+  throw new Error("OPENAI_API_KEY is required for translations");
+}
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
+});
 
 // List of target languages to translate into
 const targetLanguages = [
@@ -124,205 +132,90 @@ const targetLanguages = [
   { id: "zh-TW", label: "繁體中文" },
 ];
 
-// Initialize Google Translate client
-const translationClient = new TranslationServiceClient();
+// Optional narrowing via environment variables for quicker tests
+const ONLY_LANG = process.env.ONLY_LANG?.trim();
+const ONLY_DIR = process.env.ONLY_DIR?.trim();
 
-// Load a file if it exists; otherwise return an empty object
-const createDirectory = (filePath: string): void => mkdirSync(filePath);
+// Whole-file translation: send entire MDX including frontmatter and body
+async function translateWholeFile(
+  rawMdx: string,
+  targetLanguageCode: string
+): Promise<string | null> {
+  const text = rawMdx?.trim();
+  if (!text) return null;
 
-// Load a file if it exists; otherwise return an empty object
-const readFiles = (filePath: string): Array<string> => readdirSync(filePath);
+  const langLabel =
+    targetLanguages.find((l) => l.id === targetLanguageCode)?.label ??
+    targetLanguageCode;
 
-// Load a file if it exists; otherwise return an empty object
-const readFile = (filePath: string): any =>
-  existsSync(filePath)
-    ? readFileSync(filePath, "utf8")
-    : new Error(`Unable to find file ${filePath}`);
+  const systemPrompt =
+    "You are a professional localization engine for an online travel platform (booking, inventory, agency/extranet tools). " +
+    "Translate from English to the target locale while preserving MDX/Markdown/HTML/JSX exactly. " +
+    "Do not translate or modify code fences, inline code, import/export lines, tag names, or attribute names. " +
+    "Do not alter URLs, slugs, filenames, or file paths. Only translate human-visible prose.";
 
-// Write a file back to disk
-const writeFile = (filePath: string, content: string): void => {
-  // Optionally create missing directories
-  mkdirSync(dirname(filePath), { recursive: true });
+  const userPrompt = [
+    `Target language: ${langLabel} (${targetLanguageCode})`,
+    "",
+    "Rules (concise):",
+    "- Preserve MDX/JSX/Markdown structure exactly.",
+    "- Do NOT touch code blocks (```), inline code (`...`), {expressions}, tag names, attribute KEYS, IDs.",
+    "- Do NOT alter href/src/id/data-* or class/className; never change URLs, slugs, filenames, or paths.",
+    "- Headings: translate text but keep markers (#, ##, ###).",
+    "- Emphasis titles: translate '**...**' or '*...*'; keep emphasis.",
+    "- Lists: translate item text; keep bullets/numbering/indentation.",
+    "- Frontmatter: translate 'title' and 'description' values only; keep YAML keys/shape.",
+    "- Banners: translate multiline 'banner.content' prose fully.",
+    "- Links: translate anchor text inside [ ]; NEVER change href inside ( ).",
+    "- Components: translate human-visible props such as title, text, tagline, alt, aria-label; keep prop keys/names intact.",
+    "  Examples: <Card title=\"...\" />, hero: { tagline: \"...\", actions: [{ text: \"...\" }] }.",
+    "- Alt/captions: translate visible text; keep URLs/identifiers untouched.",
+    "- Output ONLY the translated file; no commentary.",
+    "",
+    `Domain context: ${DOMAIN_CONTEXT}`,
+    "",
+    "File to translate:",
+    "-------------------",
+    text,
+  ].join("\n");
 
-  // Write file
-  writeFileSync(filePath, content + "\n", {
-    encoding: "utf8",
-  });
-};
-
-const calculateFileHash = (content: string): string => {
-  return createHash(HASH_ALGO).update(content).digest("hex");
-};
-
-const getLangHashFilePath = (langDirectory: string): string => {
-  return join(langDirectory, HASH_FILE_NAME);
-};
-
-const loadHashMap = (langDirectory: string): HashMap => {
-  const hashPath = getLangHashFilePath(langDirectory);
-  if (existsSync(hashPath)) {
-    return JSON.parse(readFile(hashPath));
+  const maxRetries = 4;
+  let attempt = 0;
+  while (attempt <= maxRetries) {
+    try {
+      const resp = await openai.responses.create({
+        model: OPENAI_TRANSLATION_MODEL,
+        input: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userPrompt },
+        ],
+        reasoning:{"effort":"minimal"},
+      });
+      const translated = resp.output_text?.trim();
+      if (translated && translated.length > 0) return translated;
+      console.warn(`[${targetLanguageCode}] Empty translation content returned`);
+      return null;
+    } catch (err: any) {
+      const status = err?.status ?? err?.response?.status;
+      const msg = err?.message ?? err?.response?.data ?? String(err);
+      console.warn(`[${targetLanguageCode}] OpenAI error (status=${status}): ${msg}`);
+      if (status === 429 || (status && status >= 500)) {
+        const delayMs = Math.min(16000, 1000 * Math.pow(2, attempt));
+        await new Promise((res) => setTimeout(res, delayMs));
+        attempt++;
+        continue;
+      }
+      break;
+    }
   }
-  return {};
-};
+  console.warn(`[${targetLanguageCode}] Translation failed after retries, skipping file.`);
+  return null;
+}
 
 const saveHashMap = (langDirectory: string, map: HashMap): void => {
   const hashPath = getLangHashFilePath(langDirectory);
   writeFile(hashPath, JSON.stringify(map, null, 2));
 };
-
-async function translateText(
-  sourceText: string,
-  targetLanguageCode: string
-): Promise<string> {
-  // console.log(`Translating: "${sourceText}" => Language: ${targetLanguageCode}`);
-
-  // This is Google's ITranslateTextRequest object
-  const request = {
-    parent,
-    model,
-    mimeType,
-    contents: [sourceText],
-    sourceLanguageCode,
-    targetLanguageCode,
-  };
-
-  // console.log('Translation request: ', request);
-
-  // Translate only if new or changed
-  const [response] = await translationClient.translateText(request);
-
-  // console.log('Translation response', response);
-
-  const result = response.translations?.[0]?.translatedText || "";
-
-  // console.log('Translation result:', result);
-
-  return result;
-}
-
-// const walk = (
-//   tasks: Promise<void>[],
-//   node: any,
-//   targetLanguageCode: string
-// ) => {
-//   console.log("walk node", node);
-
-//   if (node.type === "text") {
-//     const value = node.value.trim();
-//     if (value) {
-//       const p = translateText(value, targetLanguageCode).then((translated) => {
-//         node.value = translated;
-//       });
-//       tasks.push(p);
-//     }
-//   } else if (node.children && Array.isArray(node.children)) {
-//     node.children.forEach((child: any) =>
-//       walk(tasks, child, targetLanguageCode)
-//     );
-//   }
-// };
-
-async function translateHtmlContent(
-  html: string,
-  targetLanguageCode: string
-): Promise<string> {
-  const processor = unified()
-    .use(rehypeParse, { fragment: true })
-    .use(remarkMdx)
-    .use(remarkParse)
-    .use(() => async (tree: Node) => {
-      // Visit all text nodes
-      const promises: Promise<void>[] = [];
-
-      visit(tree, ["text", "mdxTextExpression"], (node: any) => {
-        const text = node.value?.trim();
-        if (text) {
-          const p = translateText(text, targetLanguageCode).then(
-            (translated) => {
-              node.value = node.value.replace(text, translated);
-            }
-          );
-          promises.push(p);
-        }
-      });
-
-      visit(tree, ["mdxJsxFlowElement", "mdxJsxTextElement"], (node: any) => {
-        if (Array.isArray(node.attributes)) {
-          for (const attr of node.attributes) {
-            if (
-              attr.type === "mdxJsxAttribute" &&
-              (attr.name === "alt" || attr.name === "title") &&
-              typeof attr.value === "string" &&
-              attr.value.trim() !== ""
-            ) {
-              const original = attr.value;
-              const p = translateText(original, targetLanguageCode).then(
-                (translated) => {
-                  attr.value = translated;
-                }
-              );
-              promises.push(p);
-            }
-          }
-        }
-      });
-
-      await Promise.all(promises);
-    })
-    .use(remarkStringify);
-
-  const file = await processor.process(html);
-  return String(file);
-}
-
-// 🧠 Translate all text nodes in Markdown AST
-async function translateMarkdownContent(
-  markdown: string,
-  targetLanguageCode: string
-) {
-  const processor = unified().use(remarkParse).use(remarkStringify);
-  const ast = processor.parse(markdown);
-
-  const promises: Promise<void>[] = [];
-
-  visit(ast, (node: any) => {
-    // console.log("Node type", node.type);
-    // console.log("Node value", node.value);
-
-    // Skip import/export statements
-    if (/^\s*(import|export)\s/.test(node.value)) return;
-
-    // Translate normal markdown text
-    if (node.type === "text") {
-      const original = node.value;
-      const promise = translateText(original, targetLanguageCode).then(
-        (translated) => {
-          node.value = translated;
-        }
-      );
-      promises.push(promise);
-    }
-
-    // Translate HTML nodes (e.g. <Card>text</Card>)
-    if (node.type === "html") {
-      const htmlContent = node.value;
-
-      const promise = translateHtmlContent(
-        htmlContent,
-        targetLanguageCode
-      ).then((translated) => {
-        // console.log('translated html', translated);
-        node.value = translated;
-      });
-      promises.push(promise);
-    }
-  });
-
-  await Promise.all(promises);
-
-  return processor.stringify(ast);
-}
 
 async function translateFile(
   fullPath: string,
@@ -353,74 +246,26 @@ async function translateFile(
     return;
   }
 
-  // Split MDX into frontmatter and body
-  const { data: frontmatter, content: markdownContent } = matter(rawContent);
+  // Send whole file for translation
+  const translatedFile = await translateWholeFile(rawContent, targetLang);
+  if (translatedFile === null) {
+    console.warn(`⚠️ Skipped ${targetLang}/${relativePath} due to translation failure.`);
+    return;
+  }
 
-  const translatedFrontmatter = await translateFrontmatter(
-    frontmatter,
-    targetLang
-  );
-  const translatedContent = await translateMarkdownContent(
-    markdownContent,
-    targetLang
-  );
-
-  // Recombine
-  const finalContent = matter.stringify(
-    translatedContent,
-    translatedFrontmatter
-  );
-
-  // save translated content to file
-  console.log(`✍️ Writing translated text to target file: ${fileName}`);
-  writeFile(fileName, finalContent);
+  console.log(`✍️ Writing translated file: ${fileName}`);
+  writeFile(fileName, translatedFile);
 
   // ✅ Save hash in map
   langHashMap[relativePath] = currentHash;
 }
 
-async function translateFrontmatter(
-  obj: Frontmatter,
-  targetLang: string
-): Promise<Frontmatter> {
-  const clone = structuredClone(obj); // or use JSON.parse(JSON.stringify(obj)) if needed
-
-  const walk = async (value: any): Promise<any> => {
-    if (typeof value === "string") {
-      // Heuristic: avoid translating links or filenames
-      if (
-        value.startsWith("/") ||
-        value.includes(".webp") ||
-        value.includes(".mdx") ||
-        value.match(/^[a-z0-9._-]+$/i) // plain slug
-      ) {
-        return value;
-      }
-
-      return await translateText(value, targetLang); // or real translation
-    }
-
-    if (Array.isArray(value)) {
-      return Promise.all(value.map(walk));
-    }
-
-    if (typeof value === "object" && value !== null) {
-      const entries = await Promise.all(
-        Object.entries(value).map(async ([key, val]) => [key, await walk(val)])
-      );
-      return Object.fromEntries(entries);
-    }
-
-    return value; // leave other types alone
-  };
-
-  return await walk(clone);
-}
 
 async function translateFilesInDirectory(
   directory: string,
   targetLang: string,
-  langHashMap: HashMap
+  langHashMap: HashMap,
+  bar?: cliProgress.SingleBar
 ) {
   // console.log(`Translating source file to: ${targetLang}`);
 
@@ -440,6 +285,7 @@ async function translateFilesInDirectory(
       relativePath,
       langHashMap
     );
+    bar?.increment();
   }
 }
 
@@ -449,10 +295,25 @@ async function translateFilesInDirectory(
  */
 async function translateDocs() {
   const bar = new cliProgress.SingleBar({}, cliProgress.Presets.shades_classic);
-  bar.start(directories.length * targetLanguages.length, 0);
+  const dirList = ONLY_DIR ? [ONLY_DIR] : directories;
+  const langList = ONLY_LANG
+    ? targetLanguages.filter((l) => l.id === ONLY_LANG)
+    : targetLanguages;
+
+  // Pre-compute total files to process for accurate progress
+  let totalFiles = 0;
+  // index.mdx per language
+  totalFiles += langList.length;
+  // files in selected directories per language
+  for (const directory of dirList) {
+    const sourceDirectory = join(docsBaseDir, directory);
+    const files = readFiles(sourceDirectory);
+    totalFiles += files.length * langList.length;
+  }
+  bar.start(totalFiles, 0);
 
   // Loop over each target language
-  for (const lang of targetLanguages) {
+  for (const lang of langList) {
     // check if language folder already exists. If not -> create it
     const languageDirectory = join(docsBaseDir, lang.id);
     const langDirectoryExists = existsSync(languageDirectory);
@@ -477,13 +338,13 @@ async function translateDocs() {
       "index.mdx",
       langHashMap
     );
+    bar.increment();
 
-    for (const directory of directories) {
+    for (const directory of dirList) {
       console.log(`🔄 Translating files in directory: ${directory}...`);
 
       // Now we translate all the files in this directory for the specified language
-      await translateFilesInDirectory(directory, lang.id, langHashMap);
-      bar.increment();
+      await translateFilesInDirectory(directory, lang.id, langHashMap, bar);
       console.log(
         `✅ Translation of directory ${directory} to "${lang.id}" complete.`
       );
