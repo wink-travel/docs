@@ -73,7 +73,7 @@ const docsBaseDir = join(rootDir, "src", "content", "docs");
 
 
 const OPENAI_TRANSLATION_MODEL =
-  process.env.OPENAI_TRANSLATION_MODEL ?? "gpt-5-mini";
+  process.env.OPENAI_TRANSLATION_MODEL ?? "gpt-4.1-mini-2025-04-14";
 const DOMAIN_CONTEXT =
   "Online travel platform: booking flows, inventory management, agency/extranet tools. Keep product names and key travel terms consistent.";
 
@@ -189,7 +189,7 @@ async function translateWholeFile(
           { role: "system", content: systemPrompt },
           { role: "user", content: userPrompt },
         ],
-        reasoning:{"effort":"minimal"},
+        temperature: 0,
       });
       const translated = resp.output_text?.trim();
       if (translated && translated.length > 0) return translated;
