@@ -1,0 +1,105 @@
+---
+title: MCP szerver
+description: Gyorsan csatlakoztassa az AI ügynököket a Wink dokumentációhoz és SDK-khoz a hosztolt MCP szerveren keresztül.
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## Áttekintés
+A hosztolt Wink MCP szerver elérhető itt:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Irányítsa a kompatibilis AI klienseket (VS Code, Cursor, mások, amelyek MCP HTTP transportot valósítanak meg) erre a végpontra, hogy:
+- Böngészhessék a termék- és platformdokumentációkat (`wink://docs/...`)
+- Felfedezhessék az SDK-kat és mélyebben megismerhessék az API osztályokat / modelleket (`wink://sdk/...` és `wink://sdk/.../docs`)
+- Könnyű szemantikus / kulcsszavas keresést végezzenek a dokumentációk és SDK összefoglalók között
+
+## Transport
+Használja az elsődleges streamelhető HTTP végpontot:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Ha az Ön kliense csak SSE-t támogat, használja:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Cursor MCP dokumentáció: https://cursor.com/docs/context/mcp
+Beállítás: Távoli szerver hozzáadása az MCP beállításoknál.
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+Hivatalos dokumentáció: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Minimális távoli konfiguráció (felhasználói vagy munkaterületi `mcp.json`):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+Tippek:
+- Használja a Parancspalettát: „MCP: List Servers” a kapcsolat megerősítéséhez és az eszközök böngészéséhez.
+- Az eszközválasztóval engedélyezheti/tilthatja a `sdk_search` és `docs_search` funkciókat.
+- Kontextus hozzáadása: Chat nézet → Kontextus hozzáadása → MCP erőforrások a dokumentációs oldalak csatolásához.
+
+## Alapvető erőforrás URI-k
+
+| URI | Leírás |
+|-----|-------------|
+| `wink://docs` | Dokumentáció index (kategóriák szerint csoportosítva) |
+| `wink://docs/{path}` | Egy adott dokumentációs cikk (Markdown / MDX) |
+| `wink://sdk` | SDK áttekintés (minden SDK + dokumentáció számolva) |
+| `wink://sdk/{sdkPath}` | SDK README / modul dokumentációs mappa / adott modul dokumentáció |
+
+### Modul dokumentációk
+Egy SDK dokumentációs mappa megnyitása (pl. `wink://sdk/python/wink-sdk-booking/docs`) csoportosítva adja vissza:
+- **API osztályok** (metódusok száma + mintametódus nevek)
+- **Modellek és típusok** (az API-k által használt adatstruktúrák)
+
+## Keresőeszközök (gyors referencia)
+| Eszköz | Cél | Tipikus lekérdezési példák |
+|------|---------|-----------------------|
+| `sdk_search` | Megtalálni, melyik SDK / API osztály használható | `foglalás törlése`, `ingatlanok listázása`, `partnerkészlet` |
+| `docs_search` | Megtalálni koncepcionális dokumentációkat / útmutatókat | `hitelesítés`, `webhookok`, `wordPress` |
+
+Hagyja üresen a `query` mezőt, hogy javaslatokat kapjon. Minden eredmény tartalmazza az MCP URI-t, amit megnyithat.
+
+## Tipikus használati minta
+1. Futtassa a `sdk_search`-t a szándékával (pl. *"ingatlanok listázása"*).
+2. Nyissa meg a visszakapott SDK README-t vagy annak `docs_uri`-ját az API-k / modellek megtekintéséhez.
+3. Használja a `docs_search`-t a támogató fogalmakhoz (hitelesítés, webhookok).
+
+## Megjegyzések
+- Minden visszakapott URI-t megnyithat az ügynök a teljes tartalomért.
+- A javaslatok automatikusan megjelennek, ha a lekérdezés üres.
+
+## Jelenleg támogatott SDK-k
+- Wink Python SDK-k
+
+## Fejlesztési terv (magas szinten)
+- További nyelvi SDK-k (Java, JS/TS)
+- TripPay SDK-k hozzáadása
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink a GitHubon</LinkButton>

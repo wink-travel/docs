@@ -1,0 +1,105 @@
+---
+title: Pelayan MCP
+description: Sambungkan ejen AI dengan pantas ke dokumentasi & SDK Wink melalui pelayan MCP yang dihoskan.
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## Gambaran Keseluruhan
+Pelayan MCP Wink yang dihoskan boleh diakses di:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Arahkan klien AI yang serasi (VS Code, Cursor, lain-lain yang melaksanakan pengangkutan HTTP MCP) ke titik akhir ini untuk membolehkan mereka:
+- Melayari dokumen produk & platform (`wink://docs/...`)
+- Meneroka SDK & menyelami kelas API / model (`wink://sdk/...` & `wink://sdk/.../docs`)
+- Melakukan carian semantik / kata kunci ringan ke atas dokumen & ringkasan SDK
+
+## Pengangkutan
+Gunakan titik akhir HTTP aliran utama:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Jika klien anda hanya menyokong SSE, gunakan:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Dokumen MCP Cursor: https://cursor.com/docs/context/mcp
+Persediaan: Tambah pelayan jauh melalui tetapan MCP.
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+Dokumen rasmi: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Konfigurasi jauh minimum (pengguna atau ruang kerja `mcp.json`):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+Petua:
+- Gunakan Command Palette: “MCP: Senaraikan Pelayan” untuk mengesahkan sambungan & melayari alat.
+- Pemilih alat membolehkan anda mengaktifkan/mematikan `sdk_search` dan `docs_search`.
+- Tambah konteks: Paparan Sembang → Tambah Konteks → Sumber MCP untuk melampirkan halaman dokumen.
+
+## URI Sumber Teras
+
+| URI | Penerangan |
+|-----|------------|
+| `wink://docs` | Indeks dokumentasi (dikelompokkan mengikut kategori) |
+| `wink://docs/{path}` | Artikel dokumentasi khusus (Markdown / MDX) |
+| `wink://sdk` | Gambaran keseluruhan SDK (setiap SDK + kiraan dokumen) |
+| `wink://sdk/{sdkPath}` | README SDK / folder dokumen modul / dokumen modul khusus |
+
+### Dokumen Modul
+Membuka folder dokumen SDK (contoh `wink://sdk/python/wink-sdk-booking/docs`) memaparkan berkumpulan:
+- **Kelas API** (kiraan kaedah + nama contoh kaedah)
+- **Model & Jenis** (struktur data yang digunakan oleh API tersebut)
+
+## Alat Carian (Rujukan Pantas)
+| Alat | Tujuan | Contoh Pertanyaan Biasa |
+|------|--------|-------------------------|
+| `sdk_search` | Cari SDK / kelas API yang perlu digunakan | `batalkan tempahan`, `senaraikan hartanah`, `inventori afiliasi` |
+| `docs_search` | Cari dokumen konseptual / panduan | `pengesahan`, `webhooks`, `wordPress` |
+
+Biarkan `query` kosong untuk menerima cadangan. Setiap hasil termasuk URI MCP yang boleh anda buka.
+
+## Corak Penggunaan Biasa
+1. Jalankan `sdk_search` dengan niat anda (contoh *"senaraikan hartanah"*).
+2. Buka README SDK yang dikembalikan atau `docs_uri` untuk memeriksa API / model.
+3. Gunakan `docs_search` untuk konsep sokongan (pengesahan, webhooks).
+
+## Nota
+- Setiap URI yang dikembalikan boleh dibuka oleh ejen untuk kandungan penuh.
+- Cadangan muncul secara automatik apabila pertanyaan kosong.
+
+## SDK yang Disokong Kini
+- SDK Python Wink
+
+## Peta Jalan (Tahap Tinggi)
+- SDK bahasa tambahan (Java, JS/TS)
+- Tambah SDK TripPay
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink di GitHub</LinkButton>

@@ -1,0 +1,105 @@
+---
+title: MCP Sunucusu
+description: AI ajanlarını barındırılan MCP sunucusu aracılığıyla hızlıca Wink dokümantasyonu ve SDK'larına bağlayın.
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## Genel Bakış
+Barındırılan Wink MCP sunucusu şu adreste mevcuttur:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Uyumlu AI istemcilerini (VS Code, Cursor, MCP HTTP taşıma uygulayan diğerleri) bu uç noktaya yönlendirerek şunları yapmalarını sağlayın:
+- Ürün ve platform dokümanlarında gezinme (`wink://docs/...`)
+- SDK'ları keşfetme ve API sınıfları / modeller üzerinde derinlemesine inceleme (`wink://sdk/...` & `wink://sdk/.../docs`)
+- Dokümanlar ve SDK özetleri üzerinde hafif semantik / anahtar kelime araması yapma
+
+## Taşıma
+Birincil akış destekli HTTP uç noktasını kullanın:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+İstemciniz yalnızca SSE destekliyorsa, şu adresi kullanın:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Cursor MCP dokümanları: https://cursor.com/docs/context/mcp
+Kurulum: MCP ayarları üzerinden uzak sunucu ekleyin.
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+Resmi dokümanlar: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Minimal uzak yapılandırma (kullanıcı veya çalışma alanı `mcp.json`):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+İpuçları:
+- Bağlantıyı doğrulamak ve araçlarda gezinmek için Komut Paletini kullanın: “MCP: List Servers”.
+- Araç seçici ile `sdk_search` ve `docs_search` özelliklerini etkinleştirebilir/devre dışı bırakabilirsiniz.
+- Bağlam ekleyin: Sohbet görünümü → Bağlam Ekle → MCP Kaynakları ile doküman sayfalarını iliştirin.
+
+## Temel Kaynak URI'leri
+
+| URI | Açıklama |
+|-----|-------------|
+| `wink://docs` | Dokümantasyon dizini (kategoriye göre gruplanmış) |
+| `wink://docs/{path}` | Belirli dokümantasyon makalesi (Markdown / MDX) |
+| `wink://sdk` | SDK genel bakışı (her SDK + doküman sayısı) |
+| `wink://sdk/{sdkPath}` | SDK README / modül doküman klasörü / belirli modül dokümanı |
+
+### Modül Dokümanları
+Bir SDK doküman klasörü açmak (örneğin `wink://sdk/python/wink-sdk-booking/docs`) şu grupları döner:
+- **API Sınıfları** (metot sayısı + örnek metot isimleri)
+- **Modeller & Türler** (bu API'ler tarafından kullanılan veri yapıları)
+
+## Arama Araçları (Hızlı Referans)
+| Araç | Amaç | Tipik Sorgu Örnekleri |
+|------|---------|-----------------------|
+| `sdk_search` | Hangi SDK / API sınıfının kullanılacağını bulma | `rezervasyon iptali`, `mülkleri listele`, `bayi envanteri` |
+| `docs_search` | Kavramsal dokümanlar / rehberler bulma | `kimlik doğrulama`, `webhooklar`, `wordPress` |
+
+Öneri almak için `query` alanını boş bırakın. Her sonuç açabileceğiniz MCP URI'si içerir.
+
+## Tipik Kullanım Deseni
+1. Amacınızla `sdk_search` çalıştırın (örneğin *"mülkleri listele"*).
+2. Dönen SDK README dosyasını veya `docs_uri`'sini açarak API'leri / modelleri inceleyin.
+3. Destekleyici kavramlar için `docs_search` kullanın (kimlik doğrulama, webhooklar).
+
+## Notlar
+- Dönen her URI, ajan tarafından tam içerik için açılabilir.
+- Sorgular boş olduğunda öneriler otomatik olarak görünür.
+
+## Şu Anda Desteklenen SDK'lar
+- Wink Python SDK'ları
+
+## Yol Haritası (Yüksek Seviyede)
+- Ek dil SDK'ları (Java, JS/TS)
+- TripPay SDK'larının eklenmesi
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">GitHub'da Wink</LinkButton>

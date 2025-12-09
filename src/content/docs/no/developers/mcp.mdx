@@ -1,0 +1,105 @@
+---
+title: MCP-server
+description: Koble raskt AI-agenter til Wink-dokumentasjon og SDK-er via den hostede MCP-serveren.
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## Oversikt
+Den hostede Wink MCP-serveren er tilgjengelig på:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Pek kompatible AI-klienter (VS Code, Cursor, andre som implementerer MCP HTTP-transport) mot dette endepunktet for å la dem:
+- Bla i produkt- og plattformsdokumentasjon (`wink://docs/...`)
+- Oppdage SDK-er og utforske API-klasser / modeller (`wink://sdk/...` & `wink://sdk/.../docs`)
+- Utføre lettvekts semantisk / nøkkelordssøk i dokumentasjon og SDK-sammendrag
+
+## Transport
+Bruk det primære strømmende HTTP-endepunktet:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Hvis klienten din kun støtter SSE, bruk:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Cursor MCP-dokumentasjon: https://cursor.com/docs/context/mcp
+Oppsett: Legg til ekstern server via MCP-innstillinger.
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+Offisiell dokumentasjon: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Minimal ekstern konfigurasjon (bruker- eller arbeidsområde `mcp.json`):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+Tips:
+- Bruk Kommandopaletten: “MCP: List Servers” for å bekrefte tilkobling og bla i verktøy.
+- Verktøysvelger lar deg aktivere/deaktivere `sdk_search` og `docs_search`.
+- Legg til kontekst: Chat-visning → Legg til kontekst → MCP-ressurser for å knytte dokumentasjonssider.
+
+## Kjerne-ressurs-URIer
+
+| URI | Beskrivelse |
+|-----|-------------|
+| `wink://docs` | Dokumentasjonsindeks (gruppert etter kategori) |
+| `wink://docs/{path}` | Spesifikk dokumentasjonsartikkel (Markdown / MDX) |
+| `wink://sdk` | SDK-oversikt (hver SDK + dokumentasjon teller) |
+| `wink://sdk/{sdkPath}` | SDK README / modul-dokumentasjonsmappe / spesifikk modul-dokumentasjon |
+
+### Modul-dokumentasjon
+Åpning av en SDK-dokumentasjonsmappe (f.eks. `wink://sdk/python/wink-sdk-booking/docs`) returnerer gruppert:
+- **API-klasser** (antall metoder + eksempler på metodenavn)
+- **Modeller og typer** (datastrukturer brukt av disse API-ene)
+
+## Søkeverktøy (Rask referanse)
+| Verktøy | Formål | Typiske søkeksempler |
+|---------|--------|----------------------|
+| `sdk_search` | Finn hvilken SDK / API-klasse som skal brukes | `cancel booking`, `list properties`, `affiliate inventory` |
+| `docs_search` | Finn konseptuelle dokumenter / guider | `authentication`, `webhooks`, `wordPress` |
+
+La `query` være tom for å motta forslag. Hvert resultat inkluderer MCP-URI som kan åpnes.
+
+## Typisk bruksflyt
+1. Kjør `sdk_search` med din intensjon (f.eks. *"list properties"*).
+2. Åpne den returnerte SDK README eller dens `docs_uri` for å undersøke API-er / modeller.
+3. Bruk `docs_search` for støttende konsepter (autentisering, webhooks).
+
+## Notater
+- Hver returnert URI kan åpnes av agenten for fullstendig innhold.
+- Forslag vises automatisk når søk er tomme.
+
+## Støttede SDK-er per i dag
+- Wink Python SDK-er
+
+## Veikart (høynivå)
+- Flere språk-SDK-er (Java, JS/TS)
+- Legge til TripPay SDK-er
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink på GitHub</LinkButton>

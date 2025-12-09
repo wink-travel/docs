@@ -1,413 +1,411 @@
 ---
-title: Warunki korzystania z usługi
-description: >-
-  Łatwo dostępne i aktualne warunki dla wszystkich naszych użytkowników
-  partnerskich.
+title: Warunki świadczenia usług
+description: Łatwo dostępne i aktualne warunki dla wszystkich naszych użytkowników afiliacyjnych.
 sidebar:
-  order: 20
+  order: 21
 ---
-:::uwaga
+
+:::note
 Ostatnia aktualizacja 2024-06-12
 :::
+  
+**OGÓLNE WARUNKI ŚWIADCZENIA USŁUG DLA DOSTAWCÓW NOCLEGÓW**
 
-**OGÓLNE WARUNKI HANDLOWE DLA DOSTAWCÓW NOCLEGÓW**
+Rejestrując się i przystępując do programu Wink jako dostawca noclegów, dostawca noclegów oświadcza, że zapoznał się, rozumie, potwierdza i akceptuje warunki niniejszej umowy dostawcy noclegów („Umowa”).
 
-Rejestrując się i zapisując się do programu Wink jako dostawca zakwaterowania, dostawca zakwaterowania niniejszym zapoznał się, rozumie, uznaje i akceptuje warunki niniejszej umowy z dostawcą zakwaterowania („Umowa”).
+**POMIĘDZY:**
 
-**MIĘDZY:**
+**TRAVELIKO SINGAPORE PTE. LTD.**, spółką zarejestrowaną zgodnie z prawem Singapuru, z siedzibą pod adresem \#03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095, z numerem VAT 201437335D („Wink”), oraz
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, spółka zarejestrowana zgodnie z prawem Singapuru i mająca siedzibę pod adresem #03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095, numer rejestracyjny VAT 201437335D („Wink”), oraz
+**DOSTAWCĄ NOCLEGÓW**, którego dane zostały podane w formularzu rejestracyjnym dostawcy noclegów lub przesłane online („Dostawca Noclegów”).
 
-**DOSTAWCA ZAKWATEROWANIA**, którego dane podano w Formularzu rejestracyjnym dostawcy usług noclegowych lub zostały przesłane online („Dostawca usług noclegowych”).
+Wink i Dostawca Noclegów są każdorazowo „Stroną” niniejszej Umowy i łącznie zwani „Stronami”.
 
-Wink i Dostawca Zakwaterowania są pojedynczo „Stroną” niniejszej Umowy i łącznie zwani są „Stronami”.
+Niniejszy dokument określa Warunki świadczenia usług dotyczące:
 
-Niniejszy dokument określa Warunki i Postanowienia dla:
+1. Świadczenia usług dystrybucji noclegów za pośrednictwem Wink lub innych środków wykorzystywanych przez Dostawcę Noclegów do dystrybucji swoich produktów (zwanych dalej „Dostawcą Noclegów”), których szczegóły określone są w Warunkach Płatności oraz dla których uzgodniono cenę, warunki i dostępność; oraz  
+2. Świadczenia usług noclegowych przez Dostawcę Noclegów dla ostatecznego konsumenta/gościa, które zostały zarezerwowane za pośrednictwem Wink.
 
-1. Świadczenie usług dystrybucji zakwaterowania za pośrednictwem Wink lub za pomocą innych środków, których Dostawca zakwaterowania używa do dystrybucji swoich produktów (zwany dalej „Dostawcą zakwaterowania”), dla których szczegóły są określone w Warunkach płatności, a cena, warunki i dostępność zostały uzgodnione; i
-2. Świadczenie usług zakwaterowania przez Dostawcę Zakwaterowania na rzecz końcowego konsumenta/gościa, których rezerwacja została dokonana za pośrednictwem Wink.
+Wink nie jest właścicielem, nie kontroluje, nie oferuje ani nie zarządza żadnymi ofertami. Wink nie jest stroną umów zawieranych bezpośrednio pomiędzy Dostawcami Noclegów a gośćmi. Wink nie działa jako agent Dostawców Noclegów, z wyjątkiem sytuacji określonych w warunkach płatności za usługi („Warunki Płatności”).
 
-Wink nie jest właścicielem, nie kontroluje, nie oferuje ani nie zarządza żadnymi ofertami. Wink nie jest stroną umów zawartych bezpośrednio między Dostawcami Zakwaterowania a gośćmi. Wink nie działa jako agent w żadnej roli dla Dostawców Zakwaterowania, z wyjątkiem przypadków określonych w warunkach płatności za usługi („Warunki Płatności”).
+W przypadku rozbieżności pomiędzy niniejszymi Warunkami (zwanymi dalej „Warunkami”) a Warunkami Płatności, zastosowanie mają Warunki Płatności.
 
-W przypadku rozbieżności pomiędzy niniejszym Regulaminem (zwanym dalej „Regulaminem”) a Warunkami Płatności, stosuje się te ostatnie.
-
-W związku z powyższym Strony uzgodniły, co następuje:
+W związku z powyższym Strony postanawiają, co następuje:
 
 **1. Definicje**
 
-Oprócz terminów zdefiniowanych w innych miejscach niniejszej Umowy, w całej Umowie stosuje się następujące definicje, chyba że wyraźnie wskazano inaczej:
+Oprócz terminów zdefiniowanych w innych miejscach niniejszej Umowy, następujące definicje mają zastosowanie w całej Umowie, chyba że z kontekstu wynika inaczej:
 
-**„Dostawca(cy) zakwaterowania”**&#x6F;znacza każdą Stronę, która tworzy konto na platformie Wink z zamiarem sprzedaży własnych pokoi i usług dodatkowych za pośrednictwem platformy Wink.
+**„Dostawca Noclegów”** oznacza każdą Stronę, która tworzy konto na Wink z zamiarem sprzedaży własnych pokoi i usług dodatkowych za pośrednictwem platformy Wink.
 
-**"Porozumienie"**&#x6F;znacza niniejszą umowę.
+**„Umowa”** oznacza niniejszą umowę.
 
-**„Najlepsza dostępna stawka” lub „BAR”**&#x6F;znacza najniższą stawkę z rabatem, prowizyjną za Pokoje, wliczając VAT, oferowaną ogółowi społeczeństwa przez Hotel Uczestniczący, Dostawcę Zakwaterowania lub w jego imieniu przez dowolnego dystrybutora będącego Stroną Trzecią. W celu uniknięcia wątpliwości, stawki promocyjne, stawki wakacyjne i wszelkie inne publiczne stawki nieograniczone będą uwzględniane jako Najlepsze Dostępne Stawki.
+**„Najlepsza Dostępna Cena” lub „BAR”** oznacza najniższą stawkę za pokój przed rabatem, podlegającą prowizji, włącznie z VAT, oferowaną ogółowi publiczności przez Hotel Uczestniczący, Dostawcę Noclegów lub w jego imieniu przez dowolnego zewnętrznego dystrybutora. Dla jasności, stawki promocyjne, świąteczne oraz inne publiczne, nieograniczone stawki wliczają się do Najlepszych Dostępnych Cen.
 
-**„Rezerwacja(e)”**&#x6F;znacza prośbę o rezerwację Pokoju złożoną za pośrednictwem serwisu Wink lub klienta serwisu Wink, która została przekazana Dostawcy Zakwaterowania i przez niego zaakceptowana.
+**„Rezerwacja”** oznacza żądanie rezerwacji pokoju dokonane za pośrednictwem Wink lub klienta Wink, które zostało przekazane i zaakceptowane przez Dostawcę Noclegów.
 
-**„Opłata rezerwacyjna”**&#x73;tanowi opłatę manipulacyjną w wysokości 1,5% pobieraną przez Wink od wartości rezerwacji.
+**„Opłata za Rezerwację”** to 1,5% potrącane od wartości rezerwacji jako opłata przetwarzająca przez Wink.
 
-**„Wartość rezerwacji”**&#x6A;est to całkowita kwota pobrana od gościa przez Podmiot ułatwiający płatność za Rezerwację.
+**„Wartość Rezerwacji”** to całkowita kwota pobrana przez Pośrednika Płatności od gościa za rezerwację.
 
-**„Wydanie książki”**&#x6F;znacza niemożność zapewnienia zakwaterowania Gościowi przez Dostawcę Zakwaterowania z powodu, między innymi, braku dostępności Pokoju przez Hotel Uczestniczący lub w jego imieniu przez Dostawcę Zakwaterowania lub dystrybutora zewnętrznego.
+**„Brak Dostępności”** oznacza sytuację, w której Dostawca Noclegów nie jest w stanie zakwaterować gościa z powodu braku dostępności pokoju przez Hotel Uczestniczący lub w jego imieniu przez Dostawcę Noclegów lub dowolnego zewnętrznego dystrybutora.
 
-**"Zamawiać"**&#x6F;znacza kwotę należną Podmiotowi Stowarzyszonemu za każdą Zmaterializowaną Transakcję zgodnie z niniejszą Umową.
+**„Prowizja”** oznacza kwotę należną Afiliantowi za każdą Zrealizowaną Transakcję zgodnie z niniejszą Umową.
 
-**„Obiekty i usługi”**&#x6F;znacza wszelkie udogodnienia, posiłki, udogodnienia i/lub inne usługi świadczone przez Hotel uczestniczący.
+**„Udogodnienia i Usługi”** oznaczają wszelkie udogodnienia, posiłki, wyposażenie i/lub inne usługi świadczone przez Hotel Uczestniczący.
 
-**„Gość(e)”**&#x6F;znacza użytkownika końcowego, który korzystał, korzysta lub dokonał rezerwacji w celu ostatecznego korzystania z Pokoju (oraz innych Obiektów i Usług, w stosownych przypadkach) w wyniku bezpośredniej lub pośredniej rezerwacji dokonanej w firmie Wink.
+**„Gość”** oznacza ostatecznego użytkownika, który skorzystał, korzysta lub ma zarezerwowany pokój (oraz inne Udogodnienia i Usługi, jeśli dotyczy) w wyniku bezpośredniej lub pośredniej rezerwacji za pośrednictwem Wink.
 
-**„Hotel(e)”**&#x6F;znacza każde Zakwaterowanie dostępne na Stronach Internetowych Wink lub za ich pośrednictwem.
+**„Hotel”** oznacza dowolny nocleg dostępny na lub za pośrednictwem stron Wink.
 
-**„Platforma Wink”**&#x6F;znacza prywatną sieć lub rozwiązanie techniczne wykorzystywane przez Strony w celu bezpiecznego udostępniania informacji zgodnie z Umową.
+**„Platforma Wink”** oznacza prywatną sieć lub rozwiązanie techniczne używane przez Strony do bezpiecznego udostępniania informacji zgodnie z Umową.
 
-**„Własność intelektualna”**&#x6F;znacza wszelkie prawa własności intelektualnej dowolnego rodzaju (niezależnie od tego, czy zostały zapisane w formie dokumentu, czy też nie, czy też są przechowywane na jakimkolwiek dysku magnetycznym lub optycznym bądź pamięci) w dowolnym miejscu na świecie, niezależnie od tego, czy są zarejestrowane, podlegające rejestracji lub nie, w tym patenty, wzory użytkowe, znaki towarowe, zarejestrowane wzory i nazwy domen, wnioski o korzystanie z powyższych, nazwy handlowe lub nazwy firm, wartość firmy, prawa autorskie i prawa w charakterze praw autorskich, prawa do wzorów, prawa do baz danych, prawa moralne, know-how i wszelkie inne prawa własności intelektualnej, które dotyczą oprogramowania komputerowego, programów komputerowych, stron internetowych, dokumentów, informacji, technik, metod biznesowych, rysunków, logo, instrukcji obsługi, list i procedur oraz danych klientów, metod i procedur marketingowych oraz materiałów reklamowych, w tym „wyglądu i działania” wszelkich stron internetowych.
+**„Własność Intelektualna”** oznacza wszelkie prawa własności intelektualnej dowolnego rodzaju (niezależnie od formy dokumentacyjnej lub nośnika), zarejestrowane lub niezarejestrowane, w tym patenty, wzory użytkowe, znaki towarowe, wzory przemysłowe, nazwy domen, aplikacje, prawa autorskie, prawa do baz danych, prawa moralne, know-how i inne prawa własności intelektualnej związane z oprogramowaniem, stronami internetowymi, dokumentami, informacjami, technikami, metodami biznesowymi, rysunkami, logo, instrukcjami, listami i procedurami oraz danymi klientów, metodami marketingowymi i literaturą reklamową, w tym „wyglądem i stylem” stron internetowych.
 
-**„Zmaterializowana(e) transakcja(i)”**&#x6F;znacza Rezerwację dokonaną przez Gościa u Dostawcy Zakwaterowania, która to rezerwacja skutkowała faktycznym zapewnieniem zakwaterowania, co zostało potwierdzone Wink przez Dostawcę Zakwaterowania. Zmaterializowane Transakcje będą zawsze korygowane w przypadku zmian (np. skróconych pobytów), obciążeń zwrotnych, oszustw związanych z kartami kredytowymi, złych długów lub innych. W celu uniknięcia wątpliwości, anulowania, niestawienia się itp. nigdy nie mogą być uważane za Zmaterializowane Transakcje.
+**„Zrealizowana Transakcja”** oznacza rezerwację dokonana przez Gościa u Dostawcy Noclegów, która skutkowała faktycznym świadczeniem usługi noclegowej, potwierdzoną Wink przez Dostawcę Noclegów. Zrealizowane Transakcje będą korygowane o zmiany (np. skrócenie pobytu), chargebacki, oszustwa kart kredytowych, złe długi itp. Dla jasności, anulacje, niepojawienia się itp. nigdy nie są uznawane za Zrealizowane Transakcje.
 
-**„Stawka netto”**&#x6F;znacza konkretną stawkę, którą Wink zapłaci każdemu Hotelowi Uczestniczącemu za Pokoje, na którą Strony wzajemnie się zgodziły na piśmie.
+**„Stawka Netto”** oznacza stawkę, którą Wink zapłaci każdemu Hotelowi Uczestniczącemu za pokoje, na które Strony pisemnie się zgodziły.
 
-**„Nieobecni”**&#x6F;znacza każdą sytuację, w której Gość nie przybył punktualnie do Hotelu uczestniczącego zgodnie z Rezerwacją.
+**„Niepojawienie się”** oznacza każdą sytuację, gdy Gość nie pojawia się na czas w Hotelu Uczestniczącym zgodnie z rezerwacją.
 
-**"Partner"**&#x6F;znacza jakąkolwiek firmę lub osobę łączącą się z platformą Wink lub korzystającą z niej w celu promowania i sprzedaży oferty Dostawców Zakwaterowania swoim odbiorcom i/lub klientom za prowizję.
+**„Partner”** oznacza dowolny podmiot lub osobę korzystającą z platformy Wink do promowania i sprzedaży zasobów Dostawców Noclegów swojej publiczności i/lub klientom za prowizję.
 
-**„Ułatwiający płatności”**&#x73;półka zależna w całości należąca do Traveliko Singapore Pte. Ltd. („TripPay”), która reguluje Usługi Płatnicze, pobiera płatności od gości („Pay-in”), obciążając metodę płatności związaną z ich zakupem, taką jak karta kredytowa, karta debetowa, przelew bankowy, kryptowaluty lub PayPal itp. i wypłaca należne środki („Stawka netto”) dostawcy zakwaterowania.
+**„Pośrednik Płatności”** to w pełni zależna spółka Traveliko Singapore Pte. Ltd. („TripPay”), która zarządza usługami płatniczymi, pobierając płatności od gości („Wpłata”), obciążając metodę płatności związaną z zakupem, taką jak karta kredytowa, debetowa, przelew bankowy, kryptowaluty lub PayPal itp., oraz wypłacając należne środki („Stawka Netto”) Dostawcy Noclegów.
 
-**„Wpłata”**&#x6F;znacza przejęcie płatności dokonanej przez Gościa przez Podmiot ułatwiający Płatność.
+**„Wpłata”** oznacza pozyskanie płatności dokonanej przez gościa przez Pośrednika Płatności.
 
-**„Wypłata”**&#x6F;znacza wypłatę Prowizji Czystej na rzecz Partnera przez Podmiot Ułatwiający Płatność.
+**„Wypłata”** oznacza przekazanie netto prowizji Afiliantowi przez Pośrednika Płatności.
 
-**„Opłata za usługę płatniczą”**&#x6A;est to 4% prowizji Partnera pobieranej przez Podmiot Ułatwiający Płatności jako opłata za pozyskanie płatności.
+**„Opłata za Usługę Płatniczą”** to 4% potrącane z prowizji Afilianta jako opłata za pozyskanie płatności przez Pośrednika Płatności.
 
-**„Warunki płatności”**&#x6F;znacza stawki, dostępność, oferty, promocje, warunki płatności i wszelkie inne zasady lub warunki dotyczące dystrybucji Pokoi, które są wzajemnie uzgodnione przez Strony.
+**„Warunki Płatności”** oznaczają stawki, dostępność, oferty, promocje, warunki płatności oraz inne zasady lub warunki dotyczące dystrybucji pokoi, które zostały wzajemnie uzgodnione przez Strony.
 
-**„Potencjalnie oszukańcza rezerwacja”**&#x6F;znacza (i) Rezerwację, która jest wynikiem podania nieprawidłowych lub niepoprawnych informacji firmie Wink w momencie dokonywania Rezerwacji, lub w wyniku sporu dotyczącego karty kredytowej, lub w wyniku zgłoszenia nieautoryzowanych opłat; lub (ii) Jakąkolwiek Rezerwację, która może być powiązana z poprzednimi transakcjami wysokiego ryzyka lub oszukańczymi.
+**„Potencjalnie Oszukańcza Rezerwacja”** oznacza (i) rezerwację wynikającą z nieprawidłowych lub błędnych informacji podanych Wink w momencie rezerwacji, lub w wyniku sporu dotyczącego karty kredytowej, lub zgłoszenia nieautoryzowanych opłat; lub (ii) rezerwację powiązaną z wcześniejszymi transakcjami wysokiego ryzyka lub oszustwami.
 
-**„Stawka(i)”**&#x6F;znacza stawkę(i) za pokój hotelowy(e) udostępnioną(e) firmie Wink przez Dostawcę Zakwaterowania w odniesieniu do dowolnego obowiązującego typu pokoju lub typu stawki na mocy Umowy, która ma być rozpowszechniana na wszystkich Kanałach Wink.
+**„Stawka”** oznacza stawkę za pokój hotelowy udostępnioną Wink przez Dostawcę Noclegów dla danego typu pokoju lub typu stawki w ramach Umowy do dystrybucji na wszystkich kanałach Wink.
 
-**"Pokoje"**&#x6F;znacza zakwaterowanie(a) znajdujące się w dowolnym Uczestniczącym Hotelu lub obiekcie noclegowym.
+**„Pokój”** oznacza nocleg znajdujący się w Hotelu Uczestniczącym lub innym obiekcie noclegowym.
 
-**"Podatki"**&#x6F;znacza wszelkie podatki lokalne, stanowe, federalne i krajowe i/lub opłaty za usługi, w tym, dla uniknięcia wątpliwości, wszelkie podatki od wartości dodanej (VAT), podatki od sprzedaży, użytkowania, akcyzy, podatki od zakwaterowania, podatki przejściowe, podatki od wynajmu, podatki miejskie, podatki od ośrodków wczasowych i inne podobne rodzaje podatków, opłat rządowych lub należności.
+**„Podatki”** oznaczają wszystkie lokalne, stanowe, federalne i krajowe podatki i/lub opłaty serwisowe, w tym, dla jasności, podatek VAT, podatek od sprzedaży, użytkowania, akcyzę, podatek od noclegów, podatek od wynajmu, podatek miejski, resortowy i inne podobne podatki, opłaty rządowe lub inne opłaty.
 
-**„TripPay”**&#x6F;znacza spółkę zależną będącą w całości własnością spółki, pobierającą płatności (Wpłaty) i wypłaty (Wypłaty) na rzecz Wink, zwaną dalej „Podmiotem ułatwiającym płatności”.
+**„TripPay”** oznacza w pełni zależną spółkę zbierającą wpłaty (Wpłata) i dokonującą wypłat (Wypłata) dla Wink, zwaną Pośrednikiem Płatności.
 
-**„Kanały sprzedaży”**&#x6F;znacza (i) strony internetowe obsługiwane, zarządzane lub będące własnością Wink, służące innym przedsiębiorstwom do dokonywania Rezerwacji, a do których dostęp jest możliwy wyłącznie za pomocą haseł wydanych przez Wink; (ii) połączenia API między Wink a stronami internetowymi podróży jego klientów; lub (iii) jakąkolwiek inną metodę dystrybucji, za pomocą której Wink dostarcza Pokoje swoim klientom w celu dalszej dystrybucji lub sprzedaży, niezależnie od tego, czy odbywa się to za pośrednictwem stron internetowych, czy w inny sposób.
+**„Kanały Sprzedaży”** oznaczają (i) strony internetowe zarządzane lub posiadane przez Wink, które są dostępne dla innych firm do dokonywania rezerwacji i dostępne tylko po podaniu hasła wydanego przez Wink; (ii) połączenia API między Wink a stronami internetowymi klientów; lub (iii) inne metody dystrybucji, w których Wink dostarcza pokoje swoim klientom do dalszej dystrybucji lub sprzedaży, czy to na stronach internetowych, czy w inny sposób.
 
-**1.1 Brak partnerstwa**
+**1.1 Brak Partnerstwa**
 
-1.1.1 Niniejsza Umowa nie ma na celu, ani nic w niej zawartego ani w żadnych z rozważanych w niej ustaleń nie powinno być interpretowane w celu utworzenia joint venture ani relacji partnerów, partnerstwa lub zleceniodawcy i agenta między Stronami. O ile Strony nie uzgodnią inaczej na piśmie, żadna z nich nie może (i) zawierać żadnej umowy ani zobowiązania z osobami trzecimi jako agent dla lub w imieniu drugiej Strony, (ii) opisywać lub przedstawiać się jako taki agent lub w żaden sposób podawać się za takiego agenta, ani (iii) działać w imieniu lub reprezentować drugiej Strony w jakikolwiek sposób lub w jakimkolwiek celu.
+1.1.1 Niniejsza Umowa nie ma na celu, ani nic w niej zawarte ani w żadnych przewidzianych tu ustaleniach nie powinno być interpretowane jako tworzące wspólne przedsięwzięcie lub relację partnerstwa, spółki lub stosunku zlecenia i pełnomocnictwa między Stronami. O ile Strony nie postanowią inaczej na piśmie, żadna ze Stron nie będzie (i) zawierać umów lub zobowiązań z osobami trzecimi jako agent lub w imieniu drugiej Strony, (ii) przedstawiać się jako taki agent lub w jakikolwiek sposób się za takiego podawać, ani (iii) działać lub reprezentować drugą Stronę w jakikolwiek sposób lub w jakimkolwiek celu.
 
-1.1.2 O ile Wink nie uzgodnił inaczej na piśmie lub z zastrzeżeniem odmiennych postanowień niniejszej Umowy, Dostawca Zakwaterowania nie opublikuje nigdzie na swojej Stronie(ach) internetowej(ych) żadnego oświadczenia, wyraźnego ani dorozumianego, że strona internetowa jest częścią, jest popierana przez lub jest oficjalną stroną internetową Wink.
+1.1.2 O ile nie uzgodniono inaczej na piśmie przez Wink lub nie postanowiono inaczej w niniejszej Umowie, Dostawca Noclegów nie będzie publikować na swoich stronach internetowych żadnych oświadczeń, wyraźnych lub dorozumianych, że strona jest częścią, jest popierana przez lub jest oficjalną stroną Wink.
 
 **2. Zawieranie umów z gośćmi**
 
-Gdy otrzymasz potwierdzenie rezerwacji za pośrednictwem platformy Wink, zawierasz umowę bezpośrednio z gościem i jesteś odpowiedzialny za dostarczenie swoich usług zgodnie z warunkami i ceną określoną w potwierdzeniu rezerwacji. Zgadzasz się również zapłacić powiązane opłaty, jeśli i kiedy mają zastosowanie, zgodnie z definicją w Warunkach płatności.
+Po otrzymaniu potwierdzenia rezerwacji za pośrednictwem platformy Wink zawierasz umowę bezpośrednio z gościem i jesteś odpowiedzialny za świadczenie usług zgodnie z warunkami i ceną określoną w potwierdzeniu rezerwacji. Zgadzasz się również na opłacenie związanych opłat, jeśli i kiedy będą miały zastosowanie, zgodnie z Warunkami Płatności.
 
-**3. Niezależność dostawców zakwaterowania**
+**3. Niezależność Dostawców Noclegów**
 
-Twoja relacja z Wink jest relacją niezależnego podmiotu prawnego, z wyjątkiem tego, że TripPay działa jako pośrednik płatności, zgodnie z opisem w Warunkach płatności. Wink nie kieruje ani nie kontroluje usług, które świadczysz, a Ty zgadzasz się, że masz pełną swobodę w zakresie tego, czy i kiedy świadczyć te usługi, a także za jaką cenę i na jakich warunkach je oferować.
+Twoja relacja z Wink ma charakter niezależnej jednostki prawnej, z wyjątkiem sytuacji, gdy TripPay działa jako pośrednik płatności, jak opisano w Warunkach Płatności. Wink nie kieruje ani nie kontroluje usług, które świadczysz, i zgadzasz się, że masz pełną swobodę decydowania, czy i kiedy świadczyć te usługi, oraz na jakich warunkach i za jaką cenę je oferować.
 
-**4. Zarządzanie Twoją ofertą**
+**4. Zarządzanie ofertą**
 
-Jako dostawca usług zakwaterowania, Wink oferuje Ci narzędzia niezbędne do sprzedaży Twojej oferty online za pośrednictwem naszych autorskich kanałów sprzedaży.
+Jako Dostawca Noclegów, Wink oferuje narzędzia potrzebne do sprzedaży Twojego zasobu online za pośrednictwem naszych własnych Kanałów Sprzedaży.
 
-Dostawcy zakwaterowania są odpowiedzialni za aktualizowanie i utrzymywanie dokładnych informacji i treści w swoich ofertach w każdym czasie. Dostawcy zakwaterowania muszą przestrzegać dostępności, cen i wszelkich innych zobowiązań uzgodnionych w niniejszym dokumencie. Dostawcy zakwaterowania są wyłącznie odpowiedzialni za aktualizowanie i utrzymywanie w każdym czasie aktualnych informacji o dostępności, stawkach i obowiązujących podatkach lokalnych, jeśli takie istnieją, za pośrednictwem ekstranetu Wink. Dostawcy zakwaterowania niniejszym zezwalają Wink na promowanie pokoi na wszystkich rynkach. Wink gorąco zaleca Dostawcom zakwaterowania oferowanie najbardziej konkurencyjnych stawek, promocji i ofert w każdym czasie.
+Dostawcy Noclegów są odpowiedzialni za utrzymanie aktualnych i dokładnych informacji oraz treści swojej oferty. Dostawcy Noclegów powinni respektować dostępność, ceny i inne zobowiązania określone w niniejszej Umowie. Dostawcy Noclegów są wyłącznie odpowiedzialni za aktualizację i utrzymanie aktualności dostępności, stawek i obowiązujących podatków lokalnych, jeśli występują, za pośrednictwem extranet Wink. Dostawcy Noclegów zezwalają Wink na promowanie pokoi na wszystkich rynkach. Wink zdecydowanie zaleca Dostawcom Noclegów oferowanie najbardziej konkurencyjnych stawek, promocji i ofert w każdym czasie.
 
 **5. Obowiązki prawne**
 
-5.1 Dostawcy usług zakwaterowania odpowiadają za zrozumienie i przestrzeganie wszelkich przepisów, zasad, regulacji i umów z osobami trzecimi, które mają zastosowanie do Twojej oferty.
+5.1 Dostawcy Noclegów są odpowiedzialni za zrozumienie i przestrzeganie wszelkich przepisów, regulacji i umów z osobami trzecimi mających zastosowanie do ich oferty.
 
-5.2 Dostawcy usług noclegowych odpowiadają za przetwarzanie i wykorzystywanie danych osobowych gości i innych osób zgodnie z obowiązującymi przepisami o ochronie prywatności oraz niniejszymi Warunkami.
+5.2 Dostawcy Noclegów są odpowiedzialni za przetwarzanie i wykorzystywanie danych osobowych gości i innych osób zgodnie z obowiązującymi przepisami o ochronie prywatności oraz niniejszymi Warunkami.
 
-**6. Opłaty i prowizje rezerwacyjne**
+**6. Opłaty za rezerwacje i prowizje**
 
-Wink zapewnia dostawcom zakwaterowania narzędzia cyfrowe, których potrzebują do dystrybucji i sprzedaży swojego inwentarza online za pośrednictwem 5 zastrzeżonych kanałów. Aktywując swoją nieruchomość za pomocą funkcji samoaktywacji na pulpicie, Twoja nieruchomość stanie się automatycznie dostępna do rezerwacji na Traveliko.com i za pośrednictwem Sieci. Możesz rzeczywiście dezaktywować te kanały ręcznie w ekstranecie w sekcji menu - Dystrybucja - Kanały sprzedaży.
+Wink udostępnia Dostawcom Noclegów narzędzia cyfrowe potrzebne do dystrybucji i sprzedaży zasobów online przez 5 własnych kanałów. Aktywując swoją nieruchomość za pomocą funkcji samodzielnej aktywacji na pulpicie, Twoja nieruchomość stanie się automatycznie rezerwowalna na Traveliko.com oraz w Sieci. Możesz ręcznie dezaktywować te kanały w extranet pod sekcją \- Dystrybucja \- Kanały sprzedaży.
 
-* Traveliko.com – 0% prowizji OTA
-* Winklinks – funkcja linku w bio dla kanałów mediów społecznościowych, np. Instagram.
-* Udostępnianie społecznościowe — szybkie linki, którymi można się dzielić w dowolnym miejscu online
-* System rezerwacyjny - internetowy system rezerwacji dla stron internetowych hoteli i nie tylko.
-* Wink Network – Sieć partnerska łącząca hotele bezpośrednio z naszymi partnerami partnerskimi
+* Traveliko.com – 0% prowizji OTA  
+* Winklinks \- funkcja link-in-bio dla kanałów social media, takich jak Instagram.  
+* Social Share \- szybkie linki, które można udostępniać w dowolnym miejscu online  
+* Booking Engine \- silnik rezerwacji internetowych dla stron hotelowych i innych.  
+* Wink Network – sieć afiliacyjna łącząca hotele bezpośrednio z naszymi partnerami afiliacyjnymi
 
-Opłaty rezerwacyjne, prowizje i opłaty za płatności obowiązują w przypadku każdej potwierdzonej rezerwacji:
+Opłaty za rezerwacje, prowizje i opłaty płatnicze obowiązują dla każdej potwierdzonej rezerwacji:
 
-* Traveliko.com: Opłata za ułatwienie płatności zgodnie z opisem w Warunkach płatności (4%) + Opłata za rezerwację Wink (1,5%)
-* WinkLinks: Opłata za ułatwienie płatności zgodnie z opisem w Warunkach płatności (4%) + Opłata rezerwacyjna Wink (1,5%)
-* Udostępnianie w mediach społecznościowych: Opłata za pośrednictwo w płatnościach zgodnie z opisem w Warunkach płatności (4%) + Opłata za rezerwację Wink (1,5%)
-* System rezerwacji: Opłata za pośrednictwo w płatnościach zgodnie z opisem w Warunkach płatności (4%) + Opłata za rezerwację Wink (1,5%)
-* Sieć Wink: Opłata za pośrednictwo w płatnościach zgodnie z opisem w Warunkach płatności (4%) + Opłata rezerwacyjna Wink (1,5%) + Prowizja partnerska (prowizja negocjowana według uznania hotelu)
+* Traveliko.com: Opłata Pośrednika Płatności zgodnie z Warunkami Płatności (4%) \+ Opłata za Rezerwację Wink (1,5%)  
+* WinkLinks: Opłata Pośrednika Płatności zgodnie z Warunkami Płatności (4%) \+ Opłata za Rezerwację Wink (1,5%)  
+* Social Share: Opłata Pośrednika Płatności zgodnie z Warunkami Płatności (4%) \+ Opłata za Rezerwację Wink (1,5%)  
+* Booking Engine: Opłata Pośrednika Płatności zgodnie z Warunkami Płatności (4%) \+ Opłata za Rezerwację Wink (1,5%)  
+* Wink Network: Opłata Pośrednika Płatności zgodnie z Warunkami Płatności (4%) \+ Opłata za Rezerwację Wink (1,5%) \+ Prowizja Afilianta (uzgodniona prowizja według uznania hotelu)
 
-Przykład obliczenia dla rezerwacji o wartości 100 USD dokonanej za pośrednictwem Trvaveliko, Social Share, Booking Engine lub WinkLinks
+Przykład kalkulacji dla rezerwacji o wartości 100 USD dokonanej przez Traveliko, Social Share, Booking Engine lub WinkLinks
 
-100-4% = 96\
-96-1,5%=94,56\
-Płatne na rzecz hotelu („Stawka netto”) => 94,96 USD
+100-4% = 96  
+96-1,5% = 94,56  
+Do wypłaty dla hotelu („Stawka Netto”) \=\> 94,56 USD
 
-Przykład obliczenia dla rezerwacji o wartości 100 USD dokonanej za pośrednictwem Partnera z prowizją 10%
+Przykład kalkulacji dla rezerwacji o wartości 100 USD dokonanej przez Afilianta z prowizją 10%
 
-100-4% = 96\
-96-1,5%=94,56\
-94,56-10% = 85,1\
-Płatne na rzecz hotelu („Stawka netto”) => 85,1 USD
+100-4% = 96  
+96-1,5% = 94,56  
+94,56-10% = 85,1  
+Do wypłaty dla hotelu („Stawka Netto”) \=\> 85,1 USD
 
-***
+---
 
-**Powiadomienie dotyczące obsługi płatności przez zewnętrznych integratorów**
+**Informacja dotycząca obsługi płatności przez integratorów zewnętrznych**
 
-**Należy pamiętać, że niektórzy partnerzy, zwani dalej „Integratorami Zewnętrznymi”, będą odpowiedzialni za obsługę transakcji płatniczych. W rezultacie ci Integratorzy Zewnętrzni przejmą rolę sprzedawcy w dokumentacji. W związku z tym warunki płatności Wink nie będą już miały zastosowania do tych transakcji. Zamiast tego nowe warunki płatności specyficzne dla Integratorów Zewnętrznych muszą zostać zaakceptowane przez hotel.**
+**Prosimy zauważyć, że niektórzy afilianci, zwani dalej „Integratorami Zewnętrznymi”, będą odpowiedzialni za obsługę transakcji płatniczych. W związku z tym Integratorzy Zewnętrzni będą pełnić rolę sprzedawcy rejestrującego. W konsekwencji warunki płatności Wink nie będą miały zastosowania do tych transakcji. Zamiast tego hotel musi zaakceptować nowe warunki płatności specyficzne dla Integratorów Zewnętrznych.**
 
-***
+---
 
 **7. Podatki**
 
-7.1 Dostawca zakwaterowania jest odpowiedzialny za zapewnienie, że stawka obejmuje wszystkie obowiązujące podatki. Dostawca zakwaterowania jest odpowiedzialny za zapewnienie, że podatki zawarte w stawkach są dokładne i aktualne. Jeśli Dostawca zakwaterowania nie wskaże istnienia podatków miejskich, opłat turystycznych lub innych lokalnych opłat do zapłaty, należy rozumieć, że są one uwzględnione w stawce.
+7.1 Dostawca Noclegów jest odpowiedzialny za zapewnienie, że Stawka zawiera wszystkie obowiązujące Podatki. To Dostawca Noclegów odpowiada za to, aby Podatki zawarte w Stawkach były dokładne i aktualne. Jeśli Dostawca Noclegów nie wskaże istnienia podatków miejskich, opłat turystycznych lub innych lokalnych opłat do zapłaty, uznaje się, że są one wliczone w Stawkę.
 
-7.2 Każdy Dostawca Zakwaterowania jest odpowiedzialny za przekazywanie wszelkich Podatków właściwym agencjom rządowym i/lub instytucjom.
+7.2 Każdy Dostawca Noclegów jest odpowiedzialny za odprowadzanie Podatków do odpowiednich organów rządowych i/lub instytucji.
 
-7.3 Dostawca zakwaterowania ponosi odpowiedzialność i zgadza się zrekompensować firmie Wink wszelkie straty, koszty, kary i/lub szkody poniesione w wyniku nieuwzględnienia dokładnych i aktualnych podatków w swoich stawkach i/lub w wyniku niepoinformowania firmy Wink o obowiązujących podatkach lub niedokładnego poinformowania jej o nich.
+7.3 Dostawca Noclegów ponosi odpowiedzialność i zobowiązuje się zabezpieczyć Wink przed wszelkimi stratami, kosztami, karami i/lub odszkodowaniami wynikającymi z braku uwzględnienia dokładnych i aktualnych Podatków w swoich Stawkach i/lub z braku lub nieprawidłowego poinformowania Wink o obowiązujących Podatkach.
 
-7.4 Wink, oferując Pokoje swoim Partnerom, uwzględni wszystkie obowiązujące Podatki (zgodnie z Podsekcją (a) niniejszej Sekcji). Wszystkie kwoty płatne na mocy niniejszej Umowy, o ile nie wskazano inaczej, będą zawierać VAT lub inne obowiązujące podatki lub cła (z wyjątkiem podatku od osób prawnych lub innych podatków od zysku). Jeśli jakakolwiek kwota VAT zostanie oszacowana i pobrana przez jakikolwiek właściwy organ odpowiedzialny za VAT w kraju, w którym świadczone są te usługi, wówczas Wink, po otrzymaniu ważnej faktury podatkowej od Dostawcy Zakwaterowania, zapłaci Dostawcy Zakwaterowania kwotę VAT uwzględnioną w kwotach obejmujących VAT płatnych na mocy niniejszej Umowy.
+7.4 Wink, oferując Pokoje swoim Partnerom, uwzględnia wszystkie obowiązujące Podatki (z zastrzeżeniem podpunktu (a) niniejszego paragrafu). Wszystkie kwoty płatne na podstawie niniejszej Umowy, o ile nie wskazano inaczej, zawierają VAT lub inne obowiązujące podatki lub opłaty (z wyjątkiem podatku dochodowego od osób prawnych lub innych podatków od zysków). Jeśli jakakolwiek kwota VAT zostanie nałożona przez właściwy organ podatkowy w kraju, w którym świadczone są usługi, Wink po otrzymaniu ważnej faktury VAT od Dostawcy Noclegów wypłaci Dostawcy Noclegów kwotę VAT zawartą w sumach brutto płatnych na podstawie niniejszej Umowy.
 
-7.5 Wszelkie roszczenia właściwych organów dotyczące kar lub odsetek wynikających z opóźnienia w płatności lub jakiegokolwiek zafakturowanego podatku VAT powinny być rozpatrywane na rachunek Dostawcy zakwaterowania. Ponadto, jeśli jakakolwiek kwota podatku VAT zostanie oszacowana i nałożona przez jakikolwiek właściwy organ odpowiedzialny za podatek VAT w kraju, w którym usługi są odbierane w ramach mechanizmu samodzielnego rozliczania, wówczas Wink rozliczy ten podatek VAT w swoim zeznaniu VAT zgodnie z przepisami dotyczącymi podatku VAT w danym kraju. Wszelkie roszczenia właściwych organów dotyczące kar lub odsetek wynikających z opóźnienia w płatności jakiegokolwiek samodzielnie rozliczanego podatku VAT powinny być rozpatrywane na rachunek Wink.
+7.5 Wszelkie roszczenia organów podatkowych dotyczące kar lub odsetek z tytułu opóźnionej płatności lub fakturowanego VAT obciążają Dostawcę Noclegów. Ponadto, jeśli jakakolwiek kwota VAT zostanie nałożona przez właściwy organ podatkowy w kraju, w którym usługi są otrzymywane w ramach mechanizmu samonaliczania, Wink uwzględni ten VAT w swoim zeznaniu VAT zgodnie z obowiązującym prawem. Wszelkie roszczenia dotyczące kar lub odsetek z tytułu opóźnionej płatności VAT samonaliczonego obciążają Wink.
 
-**8. Dane bankowe i wyznaczony przedstawiciel dostawcy zakwaterowania**
+**8. Dane bankowe i wyznaczony przedstawiciel Dostawcy Noclegów**
 
-Dostawca usług zakwaterowania zapewni, że dane jego rachunku bankowego przekazane firmie Wink będą zawsze poprawne i niezwłocznie powiadomi o wszelkich zmianach w tym zakresie.
+Dostawca Noclegów zapewni, że dane konta bankowego przekazane Wink są zawsze dokładne i niezwłocznie powiadomi o wszelkich zmianach.
 
-Tylko osoba podpisująca tę umowę będzie jedynym wyznaczonym przedstawicielem Dostawcy Zakwaterowania, który będzie miał prawo żądać zmian w rachunku bankowym Dostawcy Zakwaterowania i/lub danych odbiorcy płatności. Żadna inna osoba nie będzie miała takiego prawa w imieniu Dostawcy Zakwaterowania. Wszelkie zmiany takiej wyznaczonej osoby należy zgłaszać Wink na piśmie, a wszelkie takie zmiany będą wdrażane wyłącznie za pośrednictwem pisemnej poprawki do niniejszej Umowy podpisanej przez obie Strony.
+Tylko osoba podpisująca niniejszą umowę jest wyłącznym wyznaczonym przedstawicielem Dostawcy Noclegów, uprawnionym do żądania zmian danych konta bankowego i/lub informacji o odbiorcy płatności. Żadna inna osoba nie ma takiego uprawnienia w imieniu Dostawcy Noclegów. Każda zmiana wyznaczonej osoby musi być zgłoszona Wink na piśmie i będzie realizowana wyłącznie poprzez pisemną zmianę niniejszej Umowy podpisaną przez obie Strony.
 
 **9. Modyfikacje rezerwacji**
 
-9.1 Dostawcy usług noclegowych odpowiadają za wszelkie zmiany rezerwacji wykraczające poza zasady anulowania rezerwacji określone w potwierdzeniu rezerwacji przyjętym w drodze bezpośredniej komunikacji z Gościem.
+9.1 Dostawcy Noclegów ponoszą odpowiedzialność za wszelkie zmiany rezerwacji poza polityką anulacji określoną w potwierdzeniu rezerwacji, zaakceptowanym w bezpośredniej komunikacji z Gościem.
 
-9.2 W przypadku gdy doszło do błędu ze strony Dostawcy Zakwaterowania skutkującego przesłaniem nieprawidłowej Stawki, w wyniku czego Rezerwacja została dokonana po nieprawidłowej Stawce, wówczas Rezerwacja powinna zostać zrealizowana przez Dostawcę Zakwaterowania po nieprawidłowej Stawce.
+9.2 W przypadku błędu Dostawcy Noclegów skutkującego nieprawidłową stawką, a w konsekwencji dokonaniem rezerwacji po tej stawce, Dostawca Noclegów powinien zrealizować rezerwację po tej nieprawidłowej stawce.
 
-9.3 Wink nie ponosi żadnej odpowiedzialności wobec Dostawcy Zakwaterowania za jakiekolwiek błędy w Cenniku popełnione przez Dostawcę Zakwaterowania.
+9.3 Wink nie ponosi odpowiedzialności wobec Dostawcy Noclegów za błędy w stawkach popełnione przez Dostawcę Noclegów.
 
-**10. Identyfikacja rezerwacji / Współpraca w zakresie przeciwdziałania oszustwom**
+**10. Identyfikacja rezerwacji / współpraca antyfraudowa**
 
-10.1 Dostawca zakwaterowania zapewni, że pełne i prawidłowe dane firmy klientów Wink zostaną dokładnie wprowadzone do jego systemów, tak aby każda Rezerwacja mogła być jednoznacznie zidentyfikowana jako Rezerwacja dokonana na podstawie niniejszej Umowy i zgodnie z jej postanowieniami.
+10.1 Dostawca Noclegów zapewni, że pełne i poprawne dane firmy klientów Wink są dokładnie wprowadzane do ich systemów, tak aby każda rezerwacja była wyraźnie identyfikowalna jako rezerwacja dokonana zgodnie z niniejszą Umową.
 
-10.2 Każdy uczestniczący dostawca zakwaterowania musi dołożyć uzasadnionych komercyjnie starań, aby zapewnić, że podczas zameldowania identyfikator przedstawiony przez Gościa będzie zgodny z informacjami dotyczącymi rezerwacji. Jeśli rezerwacja jest Potencjalnie Oszukańczą Rezerwacją lub pewne dane dostarczone przez Gościa nie mogą zostać zweryfikowane przez Wink, wówczas Dostawca zakwaterowania i Wink podejmą współpracę w celu rozwiązania Potencjalnie Oszukańczej Rezerwacji, co może obejmować anulowanie takiej rezerwacji w dowolnym momencie. Dostawca zakwaterowania zgadza się w pełni współpracować z Wink i przekaże Wink wszelkie informacje, o które może poprosić w związku z Potencjalnie Oszukańczą Rezerwacją.
+10.2 Każdy uczestniczący Dostawca Noclegów musi dołożyć komercyjnie uzasadnionych starań, aby podczas zameldowania identyfikacja przedstawiona przez Gościa odpowiadała informacjom rezerwacji. Jeśli rezerwacja jest Potencjalnie Oszukańcza lub dane Gościa nie mogą zostać zweryfikowane przez Wink, Dostawca Noclegów i Wink będą współpracować w celu rozwiązania sytuacji, co może obejmować anulowanie rezerwacji w dowolnym momencie. Dostawca Noclegów zobowiązuje się do pełnej współpracy z Wink i dostarczenia wszelkich informacji wymaganych w związku z Potencjalnie Oszukańczą Rezerwacją.
 
-10.3 Strony zgadzają się, że jeżeli Dostawca Zakwaterowania nie zastosuje się do niniejszego punktu, a Rezerwacja zostanie uznana za Potencjalnie Oszukańczą Rezerwację, Wink nie będzie ponosić odpowiedzialności.
+10.3 Strony zgadzają się, że w przypadku nieprzestrzegania tego punktu przez Dostawcę Noclegów i stwierdzenia, że rezerwacja jest Potencjalnie Oszukańcza, Wink nie ponosi odpowiedzialności.
 
-**11. Niedostępność / Niewykonanie**
+**11. Brak dostępności / niewykonanie**
 
-11.1 W przypadku jakiejkolwiek sytuacji niedostępności (czy to z powodu przepełnienia, czy z innego powodu), która wymaga od Dostawcy Zakwaterowania przeniesienia Gościa do innego zakwaterowania, Dostawca Zakwaterowania zgadza się dołożyć wszelkich starań, aby zatrzymać/utrzymać Gości i Rezerwacje, aby umożliwić Gościom pozostanie w takim zakwaterowaniu w jak największym możliwym zakresie. W przypadku, gdy Dostawca Zakwaterowania musi ostatecznie przenieść Gościa do innego zakwaterowania, Dostawca Zakwaterowania zgadza się na następujące:
+11.1 W przypadku braku dostępności (np. z powodu overbookingu lub innych przyczyn) wymagającego przeniesienia Gościa do innego obiektu, Dostawca Noclegów zobowiązuje się dołożyć wszelkich starań, aby utrzymać Gości i rezerwacje, umożliwiając Gościom pozostanie w obiekcie w jak największym zakresie. Jeśli ostatecznie konieczne jest przeniesienie Gościa, Dostawca Noclegów zobowiązuje się do:
 
-* Niezwłocznie powiadomić firmę Wink przed przeprowadzką Gościa;
-* Przeniesienie Gościa do innego obiektu o tej samej lub wyższej kategorii/klasyfikacji w tej samej okolicy, na tych samych zarezerwowanych warunkach; taka przeprowadzka zostanie opłacona przez Dostawcę Obiektu Zakwaterowania bez dodatkowych opłat dla poszkodowanego Gościa i będzie obejmować, bez ograniczeń.
-* Wszelkie koszty związane z transportem i inne wydatki związane z przeprowadzką poniesione przez Gościa.
-* Aby umożliwić firmie Wink odliczenie wszystkich bezpośrednich kosztów spowodowanych niedostępnością i/lub relokacją z należności Dostawcy zakwaterowania w przypadku, gdy Wink poniesie jakąkolwiek karę finansową, odszkodowanie lub koszt związany z taką niedostępnością i/lub relokacją.
+* Niezwłocznego powiadomienia Wink przed przeniesieniem Gościa;  
+* Przeniesienia Gościa do innego obiektu o równej lub wyższej kategorii/standardzie w tej samej okolicy, na tych samych warunkach rezerwacji, bez dodatkowych kosztów dla Gościa, w tym między innymi:  
+* Kosztów transportu i innych wydatków związanych z przeniesieniem na rzecz Gościa;  
+* Pozwolenia Wink na potrącenie wszelkich bezpośrednich kosztów wynikających z braku dostępności i/lub przeniesienia z należności Dostawcy Noclegów, jeśli Wink poniesie jakiekolwiek kary finansowe, odszkodowania lub koszty związane z tymi zdarzeniami.
 
-11.2 W przypadku niespełnienia przez Dostawcę zakwaterowania któregokolwiek z warunków niniejszej Umowy, w tym niedopuszczalnych warunków lokalu i/lub wadliwych Obiektów i Usług, Wink będzie uprawniony do wstrzymania płatności i żądania prawidłowego wypełnienia uzgodnionych warunków Rezerwacji. Dostawca zakwaterowania pokryje w każdym przypadku pełny koszt odszkodowania należnego poszkodowanemu Gościowi, zwalniając Wink z wszelkiej odpowiedzialności wynikającej z wadliwego wypełnienia przez Dostawcę zakwaterowania jego zobowiązań wynikających z niniejszej Umowy.
+11.2 W przypadku niewykonania warunków Umowy przez Dostawcę Noclegów, w tym niedopuszczalnych warunków obiektu i/lub braków w Udogodnieniach i Usługach, Wink ma prawo wstrzymać płatności i żądać prawidłowego wykonania warunków rezerwacji. Dostawca Noclegów ponosi pełne koszty wszelkich odszkodowań należnych poszkodowanemu Gościowi, zwalniając Wink z odpowiedzialności wynikającej z niewłaściwego wykonania zobowiązań.
 
-**12. Warunki korzystania z nieruchomości hotelowej uczestniczącej**
+**12. Warunki obiektu hotelowego**
 
-Tak szybko, jak to możliwe, Dostawca Zakwaterowania powiadomi za pośrednictwem sekcji „Ogłoszenia” Extranetu Wink o wszelkich pracach budowlanych, remontowych, modernizacyjnych, aktualizacyjnych lub innych pracach, które zmienią lub mogą zmienić zdolność Dostawcy Zakwaterowania do zapewnienia Pokoi, Obiektów i Usług i/lub mogą niekorzystnie wpłynąć na pobyt Gościa. W celu uniknięcia wątpliwości, gdy niedostępność lub niewykonanie wynika z takich okoliczności, stosuje się Sekcję 11 niniejszych Ogólnych Warunków Wink („Niedostępność / Niewykonanie”), a Dostawca Zakwaterowania pokryje pełny koszt odszkodowania należnego poszkodowanemu Gościowi, zwalniając Wink z wszelkiej odpowiedzialności.
+Dostawca Noclegów niezwłocznie powiadomi za pośrednictwem sekcji „Ogłoszenia” w extranet Wink o wszelkich pracach budowlanych, remontach, modernizacjach lub innych działaniach, które mogą wpłynąć na możliwość świadczenia usług noclegowych, Udogodnień i Usług lub mogą negatywnie wpłynąć na pobyt Gościa. W przypadku braku dostępności lub niewykonania wynikającego z takich okoliczności zastosowanie ma Sekcja 11 niniejszych Ogólnych Warunków Wink („Brak dostępności / niewykonanie”), a Dostawca Noclegów ponosi pełne koszty odszkodowań dla poszkodowanych Gości, zwalniając Wink z odpowiedzialności.
 
-**13. Modyfikacja, okres obowiązywania i rozwiązanie**
+**13. Zmiany, czas trwania i rozwiązanie**
 
-13.1 Modyfikacja. Z wyjątkiem przypadków wymaganych przez obowiązujące prawo, Wink może modyfikować niniejsze Warunki w dowolnym momencie. Jeśli wprowadzimy istotne zmiany do niniejszych Warunków, opublikujemy zmienione Warunki na Platformie Wink i zaktualizujemy datę „Ostatniej aktualizacji” na górze niniejszych Warunków. Jeśli modyfikacja będzie miała na Ciebie wpływ, powiadomimy Cię o zmianach co najmniej trzydzieści (30) dni przed datą ich wejścia w życie. Jeśli nie rozwiążesz umowy przed datą wejścia w życie zmienionych Warunków, Twoje dalsze korzystanie z Usług będzie stanowić akceptację wszelkich zmian zmienionych Warunków.
+13.1 Zmiany. O ile prawo nie stanowi inaczej, Wink może w dowolnym czasie zmienić niniejsze Warunki. W przypadku istotnych zmian opublikujemy zaktualizowane Warunki na platformie Wink i zaktualizujemy datę „Ostatniej aktualizacji” na górze dokumentu. Jeśli zmiany Cię dotyczą, poinformujemy Cię o nich co najmniej na 30 dni przed ich wejściem w życie. Jeśli nie wypowiesz umowy przed datą wejścia zmian w życie, dalsze korzystanie z usług będzie oznaczać akceptację zmienionych Warunków.
 
-13.2 Okres obowiązywania. O ile nie uzgodniono inaczej, niniejsza Umowa rozpoczyna się w dniu jej zawarcia na czas nieokreślony.
+13.2 Czas trwania. O ile nie uzgodniono inaczej, Umowa obowiązuje od daty jej zawarcia na czas nieokreślony.
 
-13.3 Niniejsza Umowa obowiązuje do momentu jej rozwiązania przez Strony w następujący sposób:
+13.3 Umowa trwa do momentu jej rozwiązania przez Strony w następujący sposób:
 
-* Przez Winka, w każdej chwili i bez podania przyczyny, po uprzednim pisemnym powiadomieniu drugiej Strony na trzydzieści (30) dni kalendarzowych;
-* Przez Dostawcę Obiektu Zakwaterowania, bez podania przyczyny, w dowolnym momencie i bez uprzedzenia, poprzez dezaktywację obiektu na pulpicie obiektu w sieci Wink extranet.
-* W każdy inny sposób wyraźnie przewidziany w innym miejscu niniejszej Umowy.
+* Przez Wink, w dowolnym czasie i bez podania przyczyny, z 30-dniowym pisemnym wypowiedzeniem;  
+* Przez Dostawcę Noclegów, bez podania przyczyny, w dowolnym czasie, bez wypowiedzenia, poprzez dezaktywację nieruchomości w extranet Wink;  
+* W inny sposób wyraźnie przewidziany w Umowie.
 
-13.4 Ponadto Wink zastrzega sobie prawo, według własnego uznania, do natychmiastowego rozwiązania niniejszej Umowy poprzez pisemne powiadomienie Dostawcy Zakwaterowania, jeżeli:
+13.4 Ponadto Wink zastrzega sobie prawo do natychmiastowego rozwiązania Umowy na piśmie, jeśli:
 
-* Dostawca zakwaterowania rozpoczyna postępowanie upadłościowe, likwidacyjne, zarząd komisaryczny, administrację sądową lub inne podobne postępowanie (niezależnie od tego, czy zostało wszczęte przez Dostawcę zakwaterowania, czy przez któregokolwiek z wierzycieli Dostawcy zakwaterowania), które nie zostanie oddalone lub rozstrzygnięte na korzyść Dostawcy zakwaterowania w ciągu sześćdziesięciu (60) dni od tego momentu
-* Wierzyciel dokonuje lub próbuje dokonać hipoteki na Hotelu Uczestniczącym.
-* Dostawca usług zakwaterowania zaprzestaje prowadzenia działalności w zwykłym toku.
-* Dostawca usług zakwaterowania traci umowę najmu lub prawo do prowadzenia Hotelu Uczestniczącego pod obecną nazwą marki.
-* Nastąpiła zmiana w charakterystyce obiektu noclegowego, obejmująca m.in. prace budowlane, remontowe i modernizacyjne.
-* Lub z powodu wystąpienia siły wyższej.
+* Dostawca Noclegów wszczął postępowanie upadłościowe, likwidacyjne, zarządcze lub podobne, które nie zostanie oddalone lub rozwiązane na jego korzyść w ciągu 60 dni;  
+* Wierzyciel wszczął lub próbuje wszcząć hipotekę na Hotelu Uczestniczącym;  
+* Dostawca Noclegów zaprzestał prowadzenia działalności gospodarczej;  
+* Dostawca Noclegów utracił prawo do prowadzenia Hotelu Uczestniczącego pod obecną marką;  
+* Zmieniły się warunki obiektu, w tym prace budowlane lub remonty;  
+* Lub z powodu zdarzenia siły wyższej.
 
-13.5 W przypadku wcześniejszego rozwiązania lub wygaśnięcia Umowy z jakiegokolwiek powodu, Dostawca Zakwaterowania zobowiązany jest:
+13.5 Po wcześniejszym rozwiązaniu lub wygaśnięciu Umowy Dostawca Noclegów zobowiązuje się:
 
-* Honorować wszystkie Rezerwacje dokonane przed datą skutecznego rozwiązania lub wygaśnięcia, po pierwotnie zarezerwowanych Stawkach, w tym Rezerwacje z datami zameldowania przypadającymi po rozwiązaniu lub wygaśnięciu jakiegokolwiek obowiązującego okresu wypowiedzenia, lub w inny sposób zapewnić odpowiednie alternatywne usługi i
-* Rozlicz rachunek odpowiednio.
+* Zrealizować wszystkie rezerwacje dokonane przed datą rozwiązania lub wygaśnięcia, po pierwotnie zarezerwowanych stawkach, w tym rezerwacje z datą zameldowania po dacie rozwiązania lub wygaśnięcia okresu wypowiedzenia, lub zapewnić odpowiednie usługi zastępcze;  
+* Uregulować należności zgodnie z powyższym.
 
 **14. Oświadczenia i gwarancje**
 
-Dostawca zakwaterowania gwarantuje i oświadcza, że będzie w pełni przestrzegać następujących postanowień:
+Dostawca Noclegów oświadcza i gwarantuje, że będzie w pełni przestrzegać następujących warunków:
 
-14.1 Udostępnianie wszystkich Pokoi, a także wszystkich Obiektów i Usług będzie zawsze zgodne z dobrymi praktykami branżowymi i będzie realizowane z należytą starannością, dbałością, uwagą i starannością;
+14.1 Świadczenie wszystkich pokoi oraz Udogodnień i Usług będzie zawsze zgodne z dobrymi praktykami branżowymi i będzie świadczone z należytą starannością, uwagą i dbałością;
 
-14.2. Cały personel Hotelu Uczestniczącego będzie odpowiednio wykwalifikowany i przeszkolony, aby móc wypełniać swoje obowiązki wynikające z niniejszej Umowy;
+14.2 Cały personel Hotelu Uczestniczącego będzie odpowiednio wykwalifikowany i przeszkolony do wykonywania swoich obowiązków;
 
-14.3 Dostawca Zakwaterowania będzie przestrzegał wszystkich obowiązujących przepisów prawa, norm i innych wymagań wszystkich właściwych organów w związku z udostępnianiem Pokojów i wszystkich innych części każdego Hotelu Uczestniczącego lub wszelkich powiązanych usług i/lub udogodnień i/lub swoich zobowiązań wynikających z niniejszej Umowy;
+14.3 Dostawca Noclegów będzie przestrzegać wszystkich obowiązujących przepisów, norm i wymagań władz dotyczących świadczenia usług noclegowych oraz innych części Hotelu Uczestniczącego i powiązanych usług;
 
-14.4 Każdy Hotel Uczestniczący zapoznał się z warunkami niniejszej Umowy i je akceptuje;
+14.4 Każdy Hotel Uczestniczący zapoznał się i zaakceptował warunki niniejszej Umowy;
 
-14.5 Wszystkie Pokoje i/lub wszelkie Obiekty i Usługi świadczone zgodnie z niniejszą Umową lub w związku z nią są bezpieczne i w pełni zgodne ze wszystkimi lokalnymi, stanowymi, federalnymi i/lub krajowymi prawami, zasadami i regulacjami. Dostawca zakwaterowania gwarantuje ponadto, że żaden z Pokoi (ani żadna inna część żadnego z Uczestniczących Hoteli) nie ma zainstalowanych indywidualnych podgrzewaczy wody gazowej;
+14.5 Wszystkie pokoje i/lub Udogodnienia i Usługi świadczone na podstawie Umowy są bezpieczne i w pełni zgodne z lokalnymi, stanowymi, federalnymi i krajowymi przepisami. Dostawca Noclegów gwarantuje również, że żaden z pokoi (ani inne części Hotelu Uczestniczącego) nie posiada indywidualnych podgrzewaczy gazowych;
 
-14.6 Wszystkie informacje dostarczone firmie Wink bezpośrednio lub pośrednio przez Dostawcę Zakwaterowania zgodnie z niniejszą Umową lub w związku z nią będą aktualne i dokładne.
+14.6 Wszystkie informacje przekazywane Wink bezpośrednio lub pośrednio przez Dostawcę Noclegów są aktualne i dokładne;
 
-14.7 Dostawca usług zakwaterowania nie jest zarejestrowany ani nie jest rezydentem kraju objętego sankcjami gospodarczymi lub handlowymi; oraz
+14.7 Dostawca Noclegów nie jest zarejestrowany ani rezydentem kraju objętego sankcjami gospodarczymi lub handlowymi;
 
-14.8 Dokonać na własny koszt wszelkich prac, które są niezbędne do usunięcia wszelkich braków i/lub wad zgłoszonych mu przez władze ze skutkiem natychmiastowym. Dostawca zakwaterowania powiadomi o tym Wink bezzwłocznie. Dostawca zakwaterowania weźmie pod uwagę wszelkie uzasadnione zalecenia dotyczące ulepszeń przedstawione przez Wink.
+14.8 Na własny koszt wykona wszelkie prace niezbędne do usunięcia wad i usterek zgłoszonych przez władze niezwłocznie. Dostawca Noclegów niezwłocznie powiadomi o tym Wink i uwzględni wszelkie uzasadnione zalecenia Wink.
 
 **15. Incydenty i skargi gości**
 
-15.1 Jeżeli Gościowi zdarzy się jakikolwiek incydent, Dostawca Zakwaterowania musi jak najszybciej powiadomić o tym firmę Wink, podając jej szczegóły, i w pełni współpracować z firmą Wink w celu właściwego poradzenia sobie z każdym takim incydentem.
+15.1 W przypadku incydentu dotyczącego Gościa Dostawca Noclegów musi niezwłocznie poinformować o tym Wink i współpracować w celu odpowiedniego rozwiązania sytuacji.
 
-15.2 Dostawca usług zakwaterowania zgadza się w pełni współpracować z firmą Wink przy rozpatrywaniu wszystkich roszczeń lub skarg Gości i udzieli szczegółowej odpowiedzi na wszelkie zapytania firmy Wink dotyczące takich kwestii nie później niż w ciągu siedmiu (7) dni kalendarzowych od ich otrzymania od firmy Wink lub w terminie uzgodnionym w umowie o poziomie usług.
+15.2 Dostawca Noclegów zobowiązuje się do pełnej współpracy z Wink w rozpatrywaniu roszczeń i skarg Gości oraz do udzielenia szczegółowej odpowiedzi na zapytania Wink w terminie nie dłuższym niż 7 dni kalendarzowych lub zgodnie z umową o poziomie usług.
 
-15.3 W przypadku gdy Wink jest zobowiązany do wypłaty odszkodowania Gościowi w wyniku jakiegokolwiek incydentu, roszczenia lub skargi Gościa wynikającego z działania lub zaniechania Dostawcy zakwaterowania, wówczas Dostawca zakwaterowania zgadza się niezwłocznie zrekompensować i zwrócić Wink takie wydatki w całości, zgodnie z Sekcją 33 Ogólnych warunków („Odszkodowanie”), w stosownych przypadkach.
+15.3 Jeśli Wink będzie zobowiązany do wypłaty odszkodowania Gościowi z powodu incydentu, roszczenia lub skargi wynikającej z działania lub zaniechania Dostawcy Noclegów, Dostawca Noclegów zobowiązuje się do niezwłocznego zwrotu Wink poniesionych kosztów, zgodnie z Sekcją 33 Ogólnych Warunków („Odszkodowanie”).
 
-15.4 Dostawca zakwaterowania zgadza się, że Wink może potrącić z salda(ów) Dostawcy zakwaterowania wszystkie koszty, wydatki i odszkodowania poniesione w wyniku incydentów i skarg Gości zgłoszonych przez Wink.
+15.4 Dostawca Noclegów zgadza się, aby Wink potrącał wszelkie koszty, wydatki i odszkodowania związane z incydentami i skargami Gości z salda Dostawcy Noclegów.
 
-**16. Prawa audytorskie**
+**16. Prawo do audytu**
 
-16.1 W trakcie trwania Umowy Wink może przeprowadzać audyty wszelkich stosownych rejestrów Dostawcy Zakwaterowania i/lub Uczestniczących Hoteli w zakresie, w jakim uzna to za zasadnie konieczne, w celu przeprowadzenia weryfikacji dotyczących (i) realizacji Rezerwacji; (ii) wszelkich płatności otrzymanych przez Wink i/lub Gości; oraz (iii) wszelkich płatności zapłaconych lub należnych od Wink i/lub Gości.
+16.1 W trakcie obowiązywania Umowy Wink może przeprowadzać audyty dokumentacji Dostawcy Noclegów i/lub Hoteli Uczestniczących w celu weryfikacji (i) realizacji rezerwacji; (ii) wszelkich płatności otrzymanych przez Wink i/lub Gości; oraz (iii) wszelkich płatności dokonanych lub należnych Wink i/lub Gościom.
 
-16.2 Każda ze Stron ponosi własne koszty związane z audytem, z wyjątkiem następujących okoliczności: Jeżeli audyt wykaże, że Dostawca Zakwaterowania nie wywiązuje się z któregokolwiek ze swoich zobowiązań wynikających z niniejszej Umowy, wówczas Dostawca Zakwaterowania pokryje koszty audytu w całości, bez uszczerbku dla innych praw i środków zaradczych przysługujących Wink, i podejmie niezbędne kroki w celu dostosowania swoich zobowiązań umownych.
+16.2 Każda Strona ponosi własne koszty audytu, z wyjątkiem sytuacji, gdy audyt wykaże nieprzestrzeganie zobowiązań przez Dostawcę Noclegów. W takim przypadku Dostawca Noclegów pokryje pełne koszty audytu i podejmie działania naprawcze.
 
 **17. Ubezpieczenie**
 
-Dostawca zakwaterowania powinien posiadać odpowiednie ubezpieczenie u renomowanego ubezpieczyciela, posiadającego licencję na prowadzenie działalności w danym stanie/kraju, na wypadek wszystkich ryzyk wobec osób trzecich, które powstają lub mogą powstać w związku ze świadczeniem zakwaterowania (lub wszelkimi udogodnieniami i usługami) i/lub niniejszą Umową, w tym odpowiedzialności Wink wynikającej bezpośrednio lub pośrednio z lub w związku z wszelkimi roszczeniami w związku z (i) utratą lub uszkodzeniem jakiejkolwiek nieruchomości lub mienia ruchomego; (ii) obrażeniami ciała lub śmiercią jakiejkolwiek osoby; (iii) utratą lub uszkodzeniem mienia osób trzecich; lub (iv) swoją odpowiedzialności wobec osób trzecich, na rzecz których świadczy usługi zakwaterowania.
+Dostawca Noclegów utrzyma odpowiednie ubezpieczenie u renomowanych ubezpieczycieli, uprawnionych do działalności w danym kraju, obejmujące ryzyka osób trzecich związane z świadczeniem usług noclegowych (lub innych usług i udogodnień) oraz niniejszą Umową, w tym odpowiedzialność Wink wynikającą bezpośrednio lub pośrednio z roszczeń dotyczących (i) utraty lub uszkodzenia mienia; (ii) obrażeń ciała lub śmierci; (iii) szkód na mieniu osób trzecich; lub (iv) odpowiedzialności wobec osób trzecich.
 
-**18. Przeciwdziałanie przekupstwu, ograniczenia handlowe i etyka biznesu**
+**18. Przeciwdziałanie korupcji, ograniczenia handlowe i etyka biznesu**
 
-Wink stosuje zasadę zerowej tolerancji wobec naruszeń norm handlu międzynarodowego, przepisów dotyczących przeciwdziałania przekupstwu i korupcji oraz obowiązujących ograniczeń w handlu, przepływie środków pieniężnych i finansowaniu terroryzmu.
+Wink stosuje politykę zerowej tolerancji wobec naruszeń norm handlu międzynarodowego, przepisów antykorupcyjnych oraz obowiązujących ograniczeń handlowych, przepływu funduszy i finansowania terroryzmu.
 
-Dostawca usług zakwaterowania gwarantuje, że przestrzega i będzie przestrzegać Kodeksu postępowania dostawców Wink, a jego podmioty stowarzyszone gwarantują i będą przestrzegać Kodeksu postępowania dostawców Wink.
+Dostawca Noclegów gwarantuje, że on i jego podmioty powiązane przestrzegają Kodeksu Postępowania Dostawcy Wink.
 
-Dostawca zakwaterowania oświadcza, gwarantuje i zobowiązuje się, że przestrzega i będzie przestrzegać pod każdym względem wszystkich norm handlu międzynarodowego, obowiązujących ograniczeń w handlu, przepływie środków pieniężnych i finansowaniu terroryzmu oraz przepisów dotyczących zapobiegania przekupstwu i korupcji, w tym między innymi brytyjskiej ustawy o przeciwdziałaniu przekupstwu z 2010 r. oraz singapurskiej ustawy o zapobieganiu korupcji.
+Dostawca Noclegów oświadcza, gwarantuje i zobowiązuje się do pełnej zgodności z normami handlu międzynarodowego, obowiązującymi ograniczeniami handlowymi, finansowaniem terroryzmu oraz przepisami antykorupcyjnymi, w tym m.in. z brytyjską ustawą o łapówkarstwie z 2010 roku oraz singapurską ustawą o zapobieganiu korupcji.
 
-Dostawca usług zakwaterowania gwarantuje, że według jego najlepszej wiedzy ani on ani jego Podmioty Powiązane nie zostali skazani za przestępstwo obejmujące przekupstwo lub korupcję i nie są przedmiotem żadnego dochodzenia prowadzonego przez organy rządowe, administracyjne lub regulacyjne.
+Dostawca Noclegów oświadcza, że według jego najlepszej wiedzy ani on, ani jego podmioty powiązane nie byli skazani za przestępstwa korupcyjne ani nie są przedmiotem dochodzeń organów rządowych, administracyjnych lub regulacyjnych.
 
 **19. Poufność**
 
-19.1 Informacje poufne. Strony rozumieją i zgadzają się, że w ramach realizacji niniejszej Umowy każda ze Stron może mieć dostęp lub może zostać narażona, bezpośrednio lub pośrednio, na poufne i wrażliwe informacje drugiej Strony („Informacje poufne”). Informacje poufne obejmują Dane Klienta, wolumen transakcji, plany marketingowe i biznesowe, informacje biznesowe, finansowe, techniczne i operacyjne, statystyki użytkowania, dane rankingowe, informacje dotyczące parytetu stawek, produktów i dostępności, polityki cenowe, dane konwersji i wolumen kliknięć oraz inne powiązane statystyki, dane osobowe Gości, wszelkie oprogramowanie lub informacje dotyczące oprogramowania dostarczonego lub używanego przez Wink w związku z niniejszą Umową, warunkami niniejszej Umowy oraz takie inne niepubliczne informacje, które Strona ujawniająca określi jako prywatne lub poufne lub o których Strona otrzymująca powinna rozsądnie wiedzieć, że powinny być traktowane jako prywatne i poufne.
+19.1 Informacje poufne. Strony rozumieją i zgadzają się, że podczas realizacji Umowy każda ze Stron może mieć dostęp do poufnych i wrażliwych informacji drugiej Strony („Informacje Poufne”). Informacje Poufne obejmują dane klientów, wolumen transakcji, plany marketingowe i biznesowe, informacje finansowe, techniczne i operacyjne, statystyki użycia, dane dotyczące stawek, produktów i dostępności, polityki cenowe, dane konwersji i kliknięć, dane osobowe Gości, oprogramowanie i informacje oprogramowania używane przez Wink, warunki Umowy oraz inne informacje niepubliczne oznaczone jako poufne.
 
-19.2 Chroń i zabezpieczaj Informacje Poufne. Każda ze Stron zgadza się, że: (a) wszelkie Informacje Poufne pozostaną wyłączną własnością Strony ujawniającej, a Strona otrzymująca nie będzie używać żadnych Informacji Poufnych w żadnym celu, z wyjątkiem realizacji niniejszej Umowy, (b) będzie utrzymywać i stosować ostrożne metody, aby zapewnić poufność i tajemnicę Informacji Poufnych swoim pracownikom, urzędnikom, przedstawicielom, stronom umowy i agentom („Osoby Upoważnione”), (c) będzie ujawniać Informacje Poufne wyłącznie tym Osobom Upoważnionym, które muszą znać takie informacje w celu realizacji niniejszej Umowy, (d) nie będzie, a także stosować ostrożne metody, aby zapewnić, że Osoby Upoważnione nie (i) kopiują, publikują, przekazują, reprodukują, ujawniają ani udostępniają Informacji Poufnych żadnej stronie trzeciej, ani (ii) nie używają lub nie przechowują ich w niezabezpieczonym systemie wyszukiwania lub bazie danych (inaczej niż zgodnie z warunkami niniejszej Umowy), oraz (e) zwróci lub zniszczy wszystkie ((twarde i miękkie) kopie) Informacji Poufnych na pisemny wniosek drugiej Strony. W przypadku gdy jedna ze Stron przetwarza dane osobowe w imieniu drugiej Strony w ramach świadczenia usług na mocy niniejszej Umowy, Strony regulują takie przetwarzanie za pomocą Umowy o przetwarzaniu danych (DPA) i stanowią część warunków niniejszej Umowy.
+19.2 Ochrona Informacji Poufnych. Każda Strona zobowiązuje się, że: (a) Informacje Poufne pozostaną własnością ujawniającej Strony i nie będą wykorzystywane poza celami Umowy; (b) będzie stosować środki ostrożności, aby zapewnić poufność Informacji Poufnych; (c) ujawni Informacje Poufne tylko osobom upoważnionym; (d) nie będzie kopiować, publikować, ujawniać ani udostępniać Informacji Poufnych osobom trzecim; (e) zwróci lub zniszczy wszystkie kopie Informacji Poufnych na żądanie drugiej Strony. W przypadku przetwarzania danych osobowych na rzecz drugiej Strony, Strony zawrą odrębną umowę o przetwarzaniu danych (DPA).
 
-19.3 Dozwolone ujawnienie. Niezależnie od powyższego, Informacje Poufne nie obejmują żadnych informacji w zakresie, w jakim (i) są lub staną się częścią domeny publicznej bez żadnego działania lub zaniechania ze strony Strony Odbierającej, (ii) były w posiadaniu Strony Odbierającej przed datą niniejszej Umowy, (iii) są ujawniane Stronie Odbierającej przez osobę trzecią niemającą obowiązku zachowania poufności w odniesieniu do nich lub (iv) muszą zostać ujawnione zgodnie z prawem, nakazem sądowym, wezwaniem lub organem rządowym. Wink ma prawo ujawnić niniejszą Umowę w zaufaniu swoim spółkom Dostawcy Zakwaterowania.
+19.3 Dozwolone ujawnienie. Informacje Poufne nie obejmują informacji, które (i) stały się publicznie dostępne bez winy Strony otrzymującej; (ii) były w posiadaniu Strony otrzymującej przed Umową; (iii) zostały ujawnione przez osobę trzecią bez obowiązku poufności; (iv) muszą zostać ujawnione na mocy prawa lub nakazu sądowego. Wink może ujawnić Umowę w zaufaniu swoim firmom partnerskim.
 
-19.4 Dane Klienta. Strony podejmą uzasadnione komercyjnie wysiłki w celu ochrony poufności i prywatności Danych Klienta oraz ich ochrony przed nieautoryzowanym użyciem lub ujawnieniem. Strony zgadzają się przestrzegać obowiązujących przepisów dotyczących przetwarzania danych osobowych i ochrony prywatności. Strony będą zawsze stosować rozsądne i odpowiednie środki bezpieczeństwa w celu zapobiegania uszkodzeniu i nieautoryzowanemu dostępowi do Danych Klienta. Takie środki będą obejmować między innymi szyfrowanie danych i szyfrowanie kanałów. W stosownych przypadkach Dostawca Zakwaterowania musi powiadomić Wink o każdym naruszeniu bezpieczeństwa tak szybko, jak to możliwe (nie później niż 1 dzień po wykryciu naruszenia). Każda ze Stron będzie mieć politykę prywatności dostępną dla klientów, która opisuje sposób, w jaki chroni i wykorzystuje Dane Klienta. Strony mogą skorzystać ze swoich praw do żądania dostępu do swoich danych osobowych, sprostowania lub usunięcia takich danych oraz swojego prawa do sprzeciwu, przenoszenia danych i ograniczenia ich przetwarzania, za pomocą pisemnego żądania skierowanego do drugiej Strony na adresy wskazane w nagłówku niniejszej Umowy, oprócz złożenia roszczenia do lokalnej Agencji Ochrony Danych.
+19.4 Dane klientów. Strony dołożą wszelkich starań, aby chronić poufność i prywatność danych klientów oraz zapobiegać nieautoryzowanemu dostępowi. Strony będą stosować odpowiednie środki bezpieczeństwa, w tym szyfrowanie danych i kanałów. Dostawca Noclegów musi niezwłocznie powiadomić Wink o naruszeniu bezpieczeństwa (nie później niż 1 dzień od wykrycia). Każda Strona powinna mieć politykę prywatności dostępną dla klientów. Strony mogą realizować prawa dostępu, sprostowania, usunięcia, sprzeciwu, przenoszenia danych i ograniczenia przetwarzania poprzez pisemne żądanie.
 
-19.5 Ogłoszenia. Żadna ze Stron nie będzie tworzyć, publikować, rozpowszechniać ani zezwalać na żadne materiały pisemne, które odnoszą się do drugiej Strony bez uprzedniego przekazania drugiej Stronie takiego materiału i uzyskania uprzedniej pisemnej zgody od strony nieprzekazującej. Zgoda ta nie będzie bezpodstawnie wstrzymywana ani opóźniana.
+19.5 Ogłoszenia. Żadna ze Stron nie może publikować materiałów odnoszących się do drugiej Strony bez uprzedniej pisemnej zgody. Zgoda nie może być bezzasadnie wstrzymywana lub opóźniana.
 
-19.6 Każda ze Stron może skontaktować się z Inspektorem Ochrony Danych (IOD) drugiej Strony za pośrednictwem następujących adresów e-mail i/lub pocztowych: dataprotectionofficer@Wink.
+19.6 Każda Strona może kontaktować się z Inspektorem Ochrony Danych (DPO) drugiej Strony pod adresem e-mail: dataprotectionofficer@Wink.
 
 **20. Prawa własności intelektualnej**
 
-20.1 Dostawca zakwaterowania potwierdza, że Wink i/lub jego licencjodawcy zachowują prawo własności do wszystkich praw, tytułów i udziałów we wszystkich prawach własności intelektualnej Wink lub zawartych w witrynie Wink, w tym (ale nie wyłącznie) logo Wink, Treści i Danych Wink. Żadne z postanowień niniejszej Umowy nie będzie uznawane za przeniesienie takiego prawa, tytułu lub udziału na Dostawcę zakwaterowania w jakikolwiek sposób.
+20.1 Dostawca Noclegów przyjmuje do wiadomości, że Wink i/lub jego licencjodawcy zachowują wszelkie prawa własności intelektualnej do Wink, w tym logo Wink, treści i dane Wink. Nic w Umowie nie przenosi tych praw na Dostawcę Noclegów.
 
-20.2 Dostawca usług zakwaterowania nie będzie ujawniał, integrował, uwzględniał, używał, łączył, eksploatował, włączał ani w żaden inny sposób udostępniał Treści i Danych Wink (ani żadnej ich części) (a) ze swoją własną treścią i/lub treścią żadnego Konkurenta Wink (w tym Hoteli) lub (b) na rzecz lub dla własnej korzyści (i) (z wyjątkiem umożliwienia Usługi i Systemu zgodnie z warunkami niniejszej Umowy) lub (ii) żadnego Konkurenta Wink (w tym Hoteli) (czy to w celu promocji, marketingu, odniesienia się do, promowania, reklamy lub w inny sposób w interesie takiej strony), lub (c) w jakimkolwiek innym celu lub w jakikolwiek inny sposób i/lub na lub za pośrednictwem Platform Stron Trzecich, z wyjątkiem przypadków wyraźnie przewidzianych w niniejszej Umowie. Partner nie może zmieniać, modyfikować, zniekształcać, tworzyć dzieł pochodnych i/lub nowych dzieł opartych na Treści lub z niej wywodzących się, a Treść nie może zawierać (bezpośredniego lub pośredniego) linku, odniesienia, kliknięcia ani odniesienia do (strony internetowej) Konkurenta Wink (w tym Hoteli).
+20.2 Dostawca Noclegów nie będzie ujawniać, integrować, wykorzystywać ani udostępniać treści i danych Wink (lub ich części) z własnymi treściami lub treściami konkurentów Wink, ani dla własnej korzyści lub korzyści konkurentów, ani na platformach osób trzecich, chyba że wyraźnie przewidziano inaczej. Afiliant nie będzie modyfikować ani tworzyć dzieł pochodnych na podstawie treści Wink i nie będzie zawierać linków do konkurentów Wink.
 
-20.3 Dostawca zakwaterowania zobowiązuje się (i zapewnia, że spółki wchodzące w skład Grupy Dostawcy Zakwaterowania nie będą (bezpośrednio lub pośrednio) rejestrować, nabywać, używać, kupować ani uzyskiwać nazwy domeny internetowej zawierającej jakiekolwiek słowo lub słowa, które są identyczne, myląco lub zasadniczo podobne do „Wink” lub jakiekolwiek ich odmiany, tłumaczenia lub błędne zapisy, zawarte jako część adresu.
+20.3 Dostawca Noclegów nie będzie rejestrować ani używać nazw domen internetowych zawierających słowo „Wink” lub jego warianty.
 
-20.4 Zawierając niniejszą Umowę, Wink nie zrzeka się (wyraźnie ani dorozumianie) żadnych ze swoich praw, do których jest uprawniony na mocy jakiegokolwiek prawa, umowy lub w inny sposób (obecnie lub w przyszłości) w odniesieniu do Praw Własności Intelektualnej Wink względem Dostawcy Zakwaterowania lub innych osób trzecich.
+20.4 Zawarcie Umowy nie oznacza zrzeczenia się przez Wink jakichkolwiek praw do własności intelektualnej Wink wobec Dostawcy Noclegów lub osób trzecich.
 
 **21. Zmiana właściciela**
 
-21.1 Dostawca zakwaterowania (oraz w przypadkach, gdy kontekst tego wymaga, każdy uczestniczący hotel) nie sprzeda, nie wydzierżawi ani w inny sposób nie zbędzie swojego udziału w żadnej nieruchomości hotelowej bez uprzedniego pisemnego powiadomienia z co najmniej trzymiesięcznym (3) wyprzedzeniem. W przypadku takiej sprzedaży, dzierżawy lub innego rozporządzenia Dostawca zakwaterowania (i/lub uczestniczący hotel) wyraźnie postanowi w umowie sprzedaży, dzierżawy lub innego rozporządzenia, że niniejsza Umowa (w tym wszystkie Rezerwacje dokonane na jej podstawie) zostaną przeniesione lub odnowione na nowy podmiot po zmianie kontroli zgodnie z podsekcjami (b) niniejszej klauzuli.
+21.1 Dostawca Noclegów (i w razie potrzeby każdy Hotel Uczestniczący) nie sprzeda, nie wydzierżawi ani nie zbyje udziałów w nieruchomości hotelowej bez co najmniej 3-miesięcznego pisemnego powiadomienia. W przypadku takiej transakcji Dostawca Noclegów zapewni, że Umowa (w tym wszystkie rezerwacje) zostanie przeniesiona lub zastąpiona przez nowy podmiot.
 
-21.2 Jeżeli Wink z jakiegokolwiek powodu nie będzie chciał zawrzeć Umowy z nowym podmiotem, Strony mogą uzgodnić natychmiastowe rozwiązanie niniejszej Umowy bez uszczerbku dla wszelkich istniejących Rezerwacji i innych praw, jakie każda ze Stron mogła nabyć przed takim rozwiązaniem.
+21.2 Jeśli Wink nie będzie chciał kontynuować Umowy z nowym podmiotem, Strony mogą uzgodnić natychmiastowe rozwiązanie Umowy bez uszczerbku dla istniejących rezerwacji i praw.
 
-**22. Zawartość listy**
+**22. Treść oferty**
 
-22.1 Wink zapewni Dostawcy Zakwaterowania dostęp do ekstranetu Wink. Dostawca Zakwaterowania zobowiązuje się do przesłania wszystkich informacji i treści dotyczących produktu, w tym, ale nie wyłącznie, fotografii, obrazów, projektów, tekstu, dźwięku, wideo, opisów i udogodnień (zwanych dalej „Treścią”), aby zapewnić optymalną dystrybucję produktu i będzie aktualizować Treść. W przypadku, gdy Dostawca Zakwaterowania nie dostarczy Treści, wyraźnie upoważnia Wink do zrobienia tego poprzez pobranie jej bezpośrednio ze strony internetowej Dostawcy Zakwaterowania i przyjmuje całkowitą odpowiedzialność za wszelkie problemy, w tym Roszczenia, które mogą wyniknąć z takiego przesłania. Ponadto Dostawca Zakwaterowania przyznaje Wink prawo do modyfikowania i/lub dostosowywania rozmiaru i rozdzielczości Treści w celach marketingowych i dystrybucyjnych.
+22.1 Wink udostępni Dostawcy Noclegów dostęp do extranet Wink. Dostawca zobowiązuje się przesłać wszystkie informacje i treści dotyczące produktu, w tym zdjęcia, opisy, udogodnienia („Treść”), aby zapewnić optymalną dystrybucję i utrzymywać je aktualne. Jeśli Dostawca nie dostarczy Treści, upoważnia Wink do pobrania ich bezpośrednio ze swojej strony i bierze pełną odpowiedzialność za wszelkie problemy, w tym roszczenia wynikające z takiego działania. Dostawca udziela Wink prawa do modyfikacji i dostosowania rozmiaru i rozdzielczości Treści do celów marketingowych i dystrybucyjnych.
 
-22.2 W przypadku gdy Dostawca Zakwaterowania nie może uzyskać dostępu do extranetu z przyczyn od niego niezależnych, Dostawca Zakwaterowania niezwłocznie powiadomi o tym firmę Wink.
+22.2 Jeśli Dostawca nie ma dostępu do extranet z przyczyn niezależnych, niezwłocznie powiadomi o tym Wink.
 
-22.3 Dostawca zakwaterowania oświadcza i gwarantuje, że posiada wszelkie niezbędne prawa, licencje, zgody i upoważnienia wymagane do: (i) dostarczania Treści do Wink; (ii) Dostawca zakwaterowania niniejszym udziela Wink niewyłącznego, wolnego od opłat licencyjnych, nieodwołalnego, ogólnoświatowego i podlegającego sublicencjonowaniu zewnętrznym partnerom marketingowym i/lub dystrybucyjnym prawa do używania, modyfikowania, wyświetlania, publikowania i dostosowywania Treści, nazwy, logo, znaków towarowych oraz wszelkiej innej własności intelektualnej i przemysłowej Dostawcy zakwaterowania („PWI”) w celu realizacji niniejszej Umowy; (iii) Dostawca zakwaterowania gwarantuje Wink i jego klientom, że takie PWI nie naruszają praw osób trzecich; oraz (iv) Dostawca zakwaterowania ponosi odpowiedzialność za wszelkie zniesławiające lub niemoralne informacje, prawdziwość i dokładność swoich PWI przekazanych Wink w jakikolwiek sposób.
+22.3 Dostawca oświadcza, że posiada wszelkie prawa, licencje i zgody do: (i) dostarczenia Treści Wink; (ii) udziela Wink niewyłącznej, bezpłatnej, nieodwołalnej, światowej i sublicencjonowalnej licencji na używanie, modyfikowanie, wyświetlanie, publikowanie i dostosowywanie Treści, nazw, logo i znaków towarowych Dostawcy („IPR”) w celu realizacji Umowy; (iii) gwarantuje, że IPR nie naruszają praw osób trzecich; (iv) ponosi odpowiedzialność za wszelkie zniesławiające lub niemoralne informacje oraz prawdziwość i dokładność IPR przekazanych Wink.
 
-22.4 Dostawca zakwaterowania zobowiązuje się, w każdym czasie w trakcie obowiązywania niniejszej Umowy oraz po jej wygaśnięciu, do pełnego odszkodowania i zwolnienia z odpowiedzialności Wink, jego Dostawców zakwaterowania i/lub jego partnerów oraz zwolnienia ich na żądanie z odpowiedzialności za wszelkie straty poniesione, zasądzone lub uzgodnione do zapłaty przez Wink, jego Dostawców zakwaterowania i/lub jego partnerów w związku z jakimkolwiek roszczeniem dotyczącym praw własności intelektualnej.
+22.4 Dostawca zobowiązuje się zabezpieczyć Wink, jego Dostawców i partnerów przed wszelkimi roszczeniami związanymi z IPR.
 
-22.5 Dostawca zakwaterowania: (i) przekaże Wink aktualizacje w sposób żądany przez Wink na temat postępów w rozpatrywaniu roszczenia IPR, w tym dowody, że roszczenie IPR zostało rozstrzygnięte lub oddalone przez wnioskodawcę tak szybko, jak to będzie praktycznie możliwe; (ii) W przypadku, gdy Dostawca zakwaterowania nie zastosuje się do niniejszej klauzuli lub jeśli Wink nie będzie w pełni usatysfakcjonowany postępem w rozpatrywaniu roszczenia IPR lub w celu zapobieżenia dalszym szkodom, Wink przejmie natychmiastową kontrolę nad roszczeniem IPR na koszt Dostawcy zakwaterowania. Wink będzie uprawniony do rozliczenia wszelkich kosztów i odszkodowań zapłaconych w wyniku roszczenia IPR z wszelkich obecnych, warunkowych i/lub przyszłych kwot należnych lub wymagalnych od Dostawcy zakwaterowania.
+22.5 Dostawca będzie informować Wink o postępach w roszczeniach IPR i w razie potrzeby Wink przejmie kontrolę nad roszczeniem na koszt Dostawcy. Wink ma prawo potrącić koszty i odszkodowania z należności Dostawcy.
 
-**23. Reklama / Komunikacja zewnętrzna**
+**23. Publiczność / komunikacja zewnętrzna**
 
-23.1 Dostawca zakwaterowania nie ujawni żadnych informacji ani materiałów związanych z firmą Wink lub niniejszą Umową, ani mediom, ani żadnej innej stronie zewnętrznej, bez uprzedniej pisemnej zgody firmy Wink, a Dostawca zakwaterowania ponosi wyłączną i bezpośrednią odpowiedzialność za wszelkie szkody lub straty poniesione przez firmę Wink z naruszeniem niniejszego postanowienia.
+23.1 Dostawca nie może publikować żadnych materiałów dotyczących Wink lub Umowy bez uprzedniej pisemnej zgody Wink i ponosi pełną odpowiedzialność za szkody wynikłe z naruszenia tego zakazu.
 
-23.2 Dostawca zakwaterowania konsultuje się z firmą Wink w sprawie treści wszelkich komunikatów lub materiałów, które zamierza udostępnić, a także musi dostarczyć firmie Wink kopię wszelkich ostatecznie udostępnionych komunikatów lub materiałów.
+23.2 Dostawca skonsultuje się z Wink w sprawie treści takich materiałów i dostarczy Wink kopię ostatecznie opublikowanych materiałów.
 
 **24. Pierwszeństwo**
 
-24.1 Niniejsza Umowa została stworzona w celu umożliwienia indywidualnych umów handlowych, które będą następnie zawierane przez Wink z każdym z Dostawców Zakwaterowania. W przypadku rozbieżności, warunki określone w niniejszej Umowie będą miały zastosowanie do Dostawców Zakwaterowania z zastrzeżeniem następujących warunków:
+24.1 Niniejsza Umowa umożliwia zawieranie indywidualnych umów handlowych przez Wink z Dostawcami Noclegów. W przypadku rozbieżności stosuje się następujące zasady:
 
-24.2 W odniesieniu do Warunków Płatności dotyczących uzgodnionych anulowań i niepojawień się gości, zasad płatności, zwolnień i dostępności pokoi (standardowy typ), pierwszeństwo mają postanowienia niniejszej Umowy;
+24.2 W kwestiach Warunków Płatności dotyczących anulacji, niepojawień się, polityk płatności, zwolnień i dostępności pokoi (standardowych) pierwszeństwo mają postanowienia niniejszej Umowy;
 
-24.3 W odniesieniu do stawek, minimalnej liczby zatrudnionych, zniżek dla osób trzecich i dzieci oraz obowiązujących rynków, pierwszeństwo mają warunki uzgodnione w odpowiedniej indywidualnej umowie handlowej.
+24.3 W kwestiach stawek, minimalnej liczby osób, zniżek dla osób trzecich i dzieci oraz rynków obowiązują warunki indywidualnych umów handlowych.
 
-**25. Uprawnienia do podpisania – Reprezentacja i podpis dostawcy zakwaterowania**
+**25. Uprawnienia do podpisu – reprezentacja i podpis Dostawcy Noclegów**
 
-25.1 Dostawca zakwaterowania gwarantuje, że on, osoba podpisująca niniejszą Umowę i/lub jakakolwiek inna osoba dostarczająca informacje (w tym, dla uniknięcia wątpliwości, wszelkie Warunki płatności) firmie Wink w związku z niniejszą Umową lub zgodnie z nią ma uprawnienia, zdolność i wymagane uprawnienia do podpisania niniejszej Umowy w imieniu każdego z Uczestniczących Hoteli, a także że taka osoba ma uprawnienia, zdolność i wymagane uprawnienia do związania Dostawcy zakwaterowania i każdego z Uczestniczących Hoteli niniejszą Umową i będzie przez cały Okres obowiązywania Umowy przestrzegać, wykonywać i zapewnić, że każdy Uczestniczący Hotel przestrzega i wykonuje swoje obowiązki wynikające z niniejszej Umowy.
+25.1 Dostawca Noclegów gwarantuje, że osoba podpisująca Umowę i/lub przekazująca informacje (w tym Warunki Płatności) ma pełne uprawnienia do zawarcia Umowy w imieniu każdego Hotelu Uczestniczącego i zobowiązuje się do przestrzegania jej warunków.
 
-25.2 Dostawca usług noclegowych wyraźnie zgadza się, że elektroniczna akceptacja niniejszej Umowy i jej Warunków, łącznie z tymi dotyczącymi zmian, jest ważna, wiążąca i wykonalna.
+25.2 Dostawca wyraźnie zgadza się, że elektroniczna akceptacja Umowy i jej Warunków, w tym zmian, jest ważna, wiążąca i wykonalna.
 
 **26. Język**
 
-Wersja niniejszej Umowy w języku angielskim jest wersją nadrzędną we wszystkich aspektach i ma pierwszeństwo w przypadku jakichkolwiek rozbieżności z wersjami przetłumaczonymi.
+Wersja angielska Umowy jest wiążąca i ma pierwszeństwo w przypadku rozbieżności z tłumaczeniami.
 
-**27. Zrzekania się**
+**27. Zrzeczenia**
 
-Żadne zrzeczenie się dochodzenia jakiegokolwiek naruszenia lub warunku niniejszej Umowy nie będzie uważane za zrzeczenie się dochodzenia jakiegokolwiek innego lub późniejszego naruszenia lub warunku, niezależnie od tego, czy mają one podobny, czy różny charakter.
+Brak zrzeczenia się naruszenia lub warunku Umowy nie oznacza zrzeczenia się innych lub kolejnych naruszeń.
 
-**28. Podzielność**
+**28. Rozdzielność postanowień**
 
-Jeżeli którekolwiek z postanowień niniejszej Umowy zostanie uznane przez organ wykonawczy rządu, sąd lub trybunał właściwej jurysdykcji za niezgodne z prawem, nieważne lub w inny sposób niewykonalne na mocy prawa krajowego, wówczas takie postanowienie zostanie zinterpretowane, zmienione lub usunięte w zakresie niezbędnym do uczynienia takiego postanowienia i/lub niniejszej Umowy zgodnymi z prawem, ważnymi lub w inny sposób wykonalnymi, a pozostała część takiego postanowienia i pozostałe inne postanowienia niniejszego dokumentu pozostaną w mocy, zachowają pełną moc i skuteczność oraz będą nadal wiążące i będą interpretowane w sposób oddający intencję Stron w najszerszym możliwym zakresie.
+Jeśli jakiekolwiek postanowienie Umowy zostanie uznane za nieważne lub niewykonalne, zostanie zmodyfikowane lub usunięte w zakresie koniecznym, a pozostałe postanowienia pozostaną w mocy.
 
-**29. Stosunek Stron**
+**29. Relacje Stron**
 
-Strony są i będą działać jako niezależni kontrahenci w wykonywaniu niniejszej Umowy. Żadna ze Stron nie będzie działać ani być uważana za agenta lub partnera drugiej Strony w jakimkolwiek celu, ani żadna ze Stron nie będzie miała prawa wiązać drugiej Strony w jakimkolwiek zakresie.
+Strony są niezależnymi wykonawcami i żadna ze Stron nie działa jako agent lub partner drugiej.
 
-**30. Zadanie**
+**30. Cesja**
 
-30.1 Żadna ze Stron nie jest uprawniona do cesji, przeniesienia lub obciążenia jakichkolwiek swoich praw i/lub obowiązków wynikających z niniejszej Umowy bez uprzedniej pisemnej zgody drugiej Strony, z zastrzeżeniem, że Wink może cesjonować, przenieść lub obciążyć jakiekolwiek swoje prawa i/lub obowiązki wynikające z niniejszej Umowy (w całości lub w części lub od czasu do czasu) na spółkę powiązaną bez uprzedniej pisemnej zgody Dostawcy Zakwaterowania.
+30.1 Żadna ze Stron nie może przenieść praw lub obowiązków bez pisemnej zgody drugiej Strony, z wyjątkiem Wink, który może przenieść prawa do spółki powiązanej bez zgody Dostawcy.
 
-30.2 Niniejsza Umowa zostaje zawarta na korzyść Stron oraz ich odpowiednich następców prawnych i dozwolonych cesjonariuszy, a żadne z postanowień niniejszej Umowy nie ma na celu ani nie przyznaje w sposób dorozumiany żadnej innej osobie jakichkolwiek praw, korzyści lub środków prawnych lub słusznościowych jakiegokolwiek rodzaju na mocy lub z powodu niniejszej Umowy, z wyjątkiem przypadków wyraźnie określonych inaczej w niniejszej Umowie.
+30.2 Umowa jest zawarta na korzyść Stron i ich następców prawnych i nie przyznaje praw osobom trzecim, chyba że wyraźnie wskazano inaczej.
 
 **31. Siła wyższa**
 
-Wink nie ponosi odpowiedzialności za jakiekolwiek opóźnienia lub niewykonanie jakichkolwiek zobowiązań wynikających z niniejszych Warunków wynikające z przyczyn pozostających poza uzasadnioną kontrolą Wink lub Wink Payments, w tym, ale nie wyłącznie, klęsk żywiołowych, klęsk żywiołowych, wojny, terroryzmu, zamieszek, embarg, działań władz cywilnych lub wojskowych, pożarów, powodzi, wypadków, pandemii, epidemii lub chorób, strajków lub niedoborów środków transportu, paliwa, energii, siły roboczej lub materiałów („Siła Wyższa”).
+Wink nie ponosi odpowiedzialności za opóźnienia lub niewykonanie zobowiązań z powodu siły wyższej, w tym zdarzeń losowych, wojen, terroryzmu, strajków, pandemii itp.
 
 **32. Ograniczenie odpowiedzialności**
 
-32.1 W maksymalnym zakresie dozwolonym przez prawo żadna ze Stron nie ponosi odpowiedzialności za jakiekolwiek szkody pośrednie, przypadkowe, wynikowe, szczególne lub karne wynikające z niniejszej Umowy lub jej naruszenia, nawet jeśli została poinformowana o możliwości wystąpienia takich szkód. Ograniczenie to nie ma zastosowania do żadnego naruszenia niniejszej Umowy dotyczącego poufności i/lub praw własności intelektualnej.
+32.1 W maksymalnym zakresie dozwolonym przez prawo żadna ze Stron nie ponosi odpowiedzialności za szkody pośrednie, przypadkowe, następcze, specjalne lub karne, nawet jeśli poinformowano o ich możliwości. Wyjątkiem są naruszenia poufności i praw własności intelektualnej.
 
-32.2 Żadna ze Stron nie może wyłączyć odpowiedzialności za (i) śmierć lub obrażenia ciała spowodowane zaniedbaniem Strony lub jej pracowników, agentów lub podwykonawców, (ii) oszustwo popełnione przez nią samą lub jej pracowników lub (iii) jakiekolwiek naruszenie, działanie, zaniechanie lub odpowiedzialność, która nie może być ograniczona na mocy obowiązującego prawa.
+32.2 Nie można wyłączyć odpowiedzialności za (i) śmierć lub obrażenia ciała spowodowane zaniedbaniem; (ii) oszustwo; (iii) inne odpowiedzialności, których nie można ograniczyć prawem.
 
-32.3 Strony uznają i zgadzają się, że wyłączenia i ograniczenia odpowiedzialności określone w niniejszej Umowie są uczciwe i rozsądne.
+32.3 Strony uznają, że wyłączenia i ograniczenia odpowiedzialności są uczciwe i rozsądne.
 
 **33. Odszkodowanie**
 
-W maksymalnym zakresie dozwolonym przez obowiązujące prawo, zgadzasz się zwolnić, bronić (według uznania Wink), zabezpieczyć i chronić Wink oraz wszystkich jego Dostawców Zakwaterowania i spółki zależne, a także ich urzędników, dyrektorów, pracowników i agentów przed wszelkimi roszczeniami, zobowiązaniami, szkodami, stratami i wydatkami, w tym, bez ograniczeń, uzasadnionymi honorariami prawnymi i księgowymi, wynikającymi z lub w jakikolwiek sposób związanymi z (i) Twoim naruszeniem niniejszych Warunków; (ii) Twoim niewłaściwym korzystaniem z Usług; (iii) Twoim zaniedbaniem lub naszym zaniedbaniem na Twoje polecenie, w zakresie dokładnego raportowania, pobierania lub przekazywania podatków; lub (iv) Twoim naruszeniem jakichkolwiek praw, przepisów lub praw osób trzecich.
+W maksymalnym zakresie dozwolonym przez prawo zgadzasz się zwolnić, bronić (według wyboru Wink), zabezpieczyć Wink, jego Dostawców i podmioty zależne oraz ich pracowników przed wszelkimi roszczeniami, stratami, kosztami, w tym kosztami prawnymi, wynikającymi z (i) naruszenia Warunków; (ii) niewłaściwego korzystania z usług; (iii) nieprawidłowego rozliczania podatków; (iv) naruszenia prawa lub praw osób trzecich.
 
 **34. Prawo właściwe i jurysdykcja**
 
-34.1 Niniejsza Umowa podlega wyłącznie prawu Singapuru i jest zgodnie z nim interpretowana. Ustawa o umowach (prawa osób trzecich) z 2001 r. (rozdz. 53B) nie ma zastosowania do niniejszej Umowy. Strony w każdym przypadku podejmą próbę polubownego rozwiązania sporów poza sądem, najpierw prowadząc rozmowy i negocjacje w dobrej wierze.
+34.1 Umowa podlega wyłącznie prawu Singapuru. Ustawa o prawach osób trzecich z 2001 r. (Cap 53B) nie ma zastosowania. Strony będą dążyć do polubownego rozwiązania sporów.
 
-34.2 Wszelkie spory wynikające z niniejszej umowy lub z nią związane będą rozstrzygane wyłącznie przez właściwy sąd w Singapurze, bez względu na przepisy kolizyjne.
+34.2 Wszelkie spory będą rozstrzygane wyłącznie przez właściwy sąd w Singapurze, bez względu na kolizję przepisów.
 
-**35. Odpowiedniki**
+**35. Egzemplarze**
 
-Niniejsza Umowa może zostać zawarta w częściach, z których każda (po zawarciu) będzie uważana za oryginał, a które razem będą stanowić jeden i ten sam instrument. Ponadto, każda zeskanowana/elektroniczna kopia pisemnego podpisu Wink będzie miała taki sam i równy skutek jak oryginalny odręczny podpis Wink i nie będzie miała wpływu na ważność niniejszej Umowy.
+Umowa może być podpisana w kilku egzemplarzach, z których każdy jest oryginałem. Kopie elektroniczne podpisu Wink mają moc równą oryginałowi.
 
-**36. Całość umowy**
+**36. Całość Umowy**
 
-36.1 Niniejsza Umowa (w tym Formularz rejestracyjny partnera będącego dostawcą zakwaterowania, harmonogramy, załączniki i dodatki, które stanowią integralną część niniejszej Umowy) stanowi całość umowy i porozumienia Stron w odniesieniu do jej przedmiotu oraz zastępuje i unieważnia wszystkie wcześniejsze umowy, ustalenia, ((nie)wiążące) oferty, zobowiązania lub oświadczenia dotyczące takiego przedmiotu.
+36.1 Umowa (wraz z formularzem rejestracji, załącznikami i aneksami) stanowi całość porozumienia i zastępuje wszelkie wcześniejsze ustalenia.
 
-36.2 Jeżeli jakiekolwiek postanowienie niniejszej Umowy jest lub stanie się nieważne lub niewiążące, Strony pozostaną związane wszystkimi pozostałymi postanowieniami niniejszej Umowy. W takim przypadku Strony zastąpią nieważne lub niewiążące postanowienie postanowieniami, które są ważne i wiążące i które, w możliwie najszerszym zakresie, mają podobny skutek jak nieważne lub niewiążące postanowienie, biorąc pod uwagę treść i cel niniejszej Umowy.
+36.2 Jeśli jakiekolwiek postanowienie jest nieważne, pozostałe pozostają w mocy, a Strony zastąpią nieważne postanowienie ważnym o podobnym celu.
 
-**37. Wykonanie**
+**37. Wejście w życie**
 
-Umowa wchodzi w życie i obowiązuje wyłącznie po pisemnym potwierdzeniu akceptacji i zatwierdzenia Dostawcy Zakwaterowania przez Wink. Rejestrując się i zapisując się do programu partnerskiego Wink jako Dostawca Zakwaterowania, Dostawca Zakwaterowania zgadza się, uznaje i akceptuje warunki niniejszej Umowy, w tym postanowienia dotyczące modyfikacji niniejszej Umowy.
+Umowa wchodzi w życie po pisemnym potwierdzeniu akceptacji Dostawcy przez Wink. Rejestrując się i przystępując do programu Wink jako Dostawca Noclegów, akceptujesz warunki Umowy, w tym zmiany.
 
-Umowa została przeczytana, a wszystkie warunki zostały zaakceptowane przez dostawcę zakwaterowania. Podmiot stowarzyszony wyraźnie zgadza się, że elektroniczna akceptacja niniejszej umowy i jej warunków, w tym tych związanych ze zmianami, jest ważna, wiążąca i wykonalna.
+Umowa została przeczytana i zaakceptowana przez Dostawcę Noclegów. Afiliant wyraźnie zgadza się, że elektroniczna akceptacja Umowy i jej warunków, w tym zmian, jest ważna i wiążąca.
 
 **38. Powiadomienia**
 
-Wszystkie powiadomienia Stron w ramach niniejszej Umowy będą sporządzane w języku angielskim, w formie pisemnej i dostarczane osobiście, za pośrednictwem opłaconego z góry i poleconego listu lub za pośrednictwem uznanej międzynarodowej firmy kurierskiej (np. FedEx, UPS, DHL) do siedziby spółki lub pocztą elektroniczną do osoby kontaktowej.
+Wszystkie powiadomienia muszą być w języku angielskim, pisemne i dostarczone osobiście, listem poleconym lub międzynarodową przesyłką kurierską (np. FedEx, UPS, DHL) na adres siedziby lub e-mailem do osoby kontaktowej.
 
-Uważa się, że wszelkie powiadomienia przekazywane w ramach niniejszej Umowy zostały otrzymane (i) w przypadku dostarczenia ich osobiście – po podpisaniu potwierdzenia odbioru lub (ii) w przypadku dostarczenia przesyłką poleconą opłaconą z góry – po okazaniu dowodu doręczenia; lub (iii) w przypadku dostarczenia za pośrednictwem firmy kurierskiej – w dniu nadania przez nią potwierdzenia doręczenia; (iv) w przypadku dostarczenia pocztą elektroniczną, pod warunkiem dostarczenia potwierdzenia odbioru.
-
+Powiadomienie uważa się za doręczone: (i) przy odbiorze osobistym po podpisaniu potwierdzenia odbioru; (ii) przy odbiorze listu poleconego; (iii) w dniu rejestrowanej dostawy przez kuriera; (iv) w dniu potwierdzenia odbioru e-maila.

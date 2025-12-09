@@ -1,0 +1,105 @@
+---
+title: Serwer MCP
+description: Szybko połącz agentów AI z dokumentacją Wink i SDK za pomocą hostowanego serwera MCP.
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## Przegląd
+Hostowany serwer MCP Wink jest dostępny pod adresem:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Wskaż kompatybilnych klientów AI (VS Code, Cursor, inne implementujące transport MCP HTTP) na ten punkt końcowy, aby mogli:
+- Przeglądać dokumentację produktów i platformy (`wink://docs/...`)
+- Odkrywać SDK i zagłębiać się w klasy API / modele (`wink://sdk/...` i `wink://sdk/.../docs`)
+- Wykonywać lekkie wyszukiwanie semantyczne / słów kluczowych w dokumentacji i podsumowaniach SDK
+
+## Transport
+Użyj głównego strumieniowego punktu końcowego HTTP:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Jeśli Twój klient obsługuje tylko SSE, użyj:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Dokumentacja MCP Cursor: https://cursor.com/docs/context/mcp
+Konfiguracja: Dodaj zdalny serwer przez ustawienia MCP.
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+Oficjalna dokumentacja: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Minimalna konfiguracja zdalna (użytkownika lub workspace `mcp.json`):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+Wskazówki:
+- Użyj Palety Poleceń: „MCP: List Servers”, aby potwierdzić połączenie i przeglądać narzędzia.
+- Wybieracz narzędzi pozwala włączać/wyłączać `sdk_search` i `docs_search`.
+- Dodaj kontekst: Widok czatu → Dodaj kontekst → Zasoby MCP, aby dołączyć strony dokumentacji.
+
+## Podstawowe URI zasobów
+
+| URI | Opis |
+|-----|------|
+| `wink://docs` | Indeks dokumentacji (pogroupowany według kategorii) |
+| `wink://docs/{path}` | Konkretna artykuł dokumentacji (Markdown / MDX) |
+| `wink://sdk` | Przegląd SDK (każde SDK + liczba dokumentów) |
+| `wink://sdk/{sdkPath}` | README SDK / folder dokumentacji modułu / konkretny dokument modułu |
+
+### Dokumentacja modułów
+Otwarcie folderu dokumentacji SDK (np. `wink://sdk/python/wink-sdk-booking/docs`) zwraca pogrupowane:
+- **Klasy API** (liczba metod + przykładowe nazwy metod)
+- **Modele i typy** (struktury danych używane przez te API)
+
+## Narzędzia wyszukiwania (Szybkie odniesienie)
+| Narzędzie | Cel | Typowe przykłady zapytań |
+|-----------|-----|--------------------------|
+| `sdk_search` | Znajdź, którego SDK / klasy API użyć | `cancel booking`, `list properties`, `affiliate inventory` |
+| `docs_search` | Znajdź dokumentację koncepcyjną / przewodniki | `authentication`, `webhooks`, `wordPress` |
+
+Pozostaw `query` puste, aby otrzymać sugestie. Każdy wynik zawiera URI MCP, które możesz otworzyć.
+
+## Typowy wzorzec użycia
+1. Uruchom `sdk_search` z Twoim zamiarem (np. *"list properties"*).
+2. Otwórz zwrócone README SDK lub jego `docs_uri`, aby przejrzeć API / modele.
+3. Użyj `docs_search` dla wspierających koncepcji (uwierzytelnianie, webhooki).
+
+## Uwagi
+- Każde zwrócone URI może być otwarte przez agenta, aby uzyskać pełną zawartość.
+- Sugestie pojawiają się automatycznie, gdy zapytania są puste.
+
+## Obecnie obsługiwane SDK
+- Wink Python SDK
+
+## Plan rozwoju (wysoki poziom)
+- Dodatkowe SDK dla języków (Java, JS/TS)
+- Dodanie SDK TripPay
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink na GitHub</LinkButton>

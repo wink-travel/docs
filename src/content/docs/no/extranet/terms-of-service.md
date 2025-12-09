@@ -1,411 +1,411 @@
 ---
 title: Vilkår for bruk
-description: Lett tilgjengelige og oppdaterte vilkår for alle våre tilknyttede brukere.
+description: Enkelt tilgjengelige og oppdaterte vilkår for alle våre tilknyttede brukere.
 sidebar:
-  order: 20
+  order: 21
 ---
-:::merknad
-Sist oppdatert 12.06.2024
-:::
 
+:::note
+Sist oppdatert 2024-06-12
+:::
+  
 **GENERELLE VILKÅR OG BETINGELSER FOR OVERNATTINGSLEVERANDØRER**
 
-Ved å registrere seg og melde seg på Wink-programmet som overnattingsleverandør, har overnattingsleverandøren herved gjennomgått og forstår, erkjenner og aksepterer vilkårene i denne avtalen for overnattingsleverandører («Avtalen»).
+Ved å registrere seg og melde seg på Wink-programmet som overnattingsleverandør, har overnattingsleverandøren gjennomgått, forstått, anerkjent og akseptert vilkårene i denne avtalen for overnattingsleverandører (heretter "Avtalen").
 
 **MELLOM:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, et selskap stiftet i henhold til Singapores lover og med registrert kontoradresse #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 med MVA-nummer 201437335D («Wink»), og
+**TRAVELIKO SINGAPORE PTE. LTD.**, et selskap registrert under lovene i Singapore med registrert kontor på \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 med MVA-registreringsnummer 201437335D ("Wink"), og
 
-**OVERNATTINGSLEVERANDØREN**, hvis opplysninger er angitt i registreringsskjemaet for overnattingsleverandør eller har blitt sendt inn på nett («Overnattingsleverandøren»).
+**OVERNATTINGSLEVERANDØREN**, hvis opplysninger er angitt i registreringsskjemaet for overnattingsleverandør eller er sendt inn online (heretter "Overnattingsleverandøren").
 
-Wink og overnattingsleverandøren er begge en «part» i denne avtalen og omtales samlet som «partene».
+Wink og Overnattingsleverandøren er hver en "Part" i denne Avtalen og omtales samlet som "Partene."
 
-Dette dokumentet fastsetter vilkårene og betingelsene for:
+Dette dokumentet fastsetter vilkårene for:
 
-1. Tilbyde av overnattingstjenester gjennom Wink eller andre metoder som overnattingsleverandøren bruker for å distribuere sine produkter (heretter kjent som «overnattingsleverandør»), der detaljene er spesifisert i betalingsbetingelsene og pris, betingelser og tilgjengelighet er avtalt; og
-2. Levering av overnattingstjenester fra overnattingsleverandøren til den endelige forbrukeren/gjesten, som er bestilt gjennom Wink.
+1. Levering av distribusjonstjenester for overnatting gjennom Wink eller andre metoder som Overnattingsleverandøren bruker for å distribuere sine produkter (heretter kalt "Overnattingsleverandør"), hvor detaljene er spesifisert i betalingsvilkårene, og pris, betingelser og tilgjengelighet er avtalt; og  
+2. Levering av overnattingsytelser av Overnattingsleverandøren til sluttbruker/gjest, som er bestilt gjennom Wink.
 
-Wink verken eier, kontrollerer, tilbyr eller administrerer noen oppføringer. Wink er ikke part i kontrakter som inngås direkte mellom overnattingsleverandører og gjester. Wink opptrer ikke som agent i noen egenskap for overnattingsleverandører, med unntak av det som er spesifisert i betalingsbetingelsene for tjenestene («Betalingsbetingelser»).
+Wink eier, kontrollerer, tilbyr eller administrerer ikke noen oppføringer. Wink er ikke part i kontrakter inngått direkte mellom Overnattingsleverandører og gjester. Wink fungerer ikke som agent for Overnattingsleverandører, unntatt som spesifisert i betalingsvilkårene for tjenester ("Betalingsvilkår").
 
-Ved avvik mellom disse vilkårene og betingelsene (heretter kalt «vilkårene») og betalingsbetingelsene, skal sistnevnte gjelde.
+Ved uoverensstemmelse mellom disse vilkårene (heretter kalt "Vilkårene") og Betalingsvilkårene, gjelder sistnevnte.
 
 Partene har derfor blitt enige om følgende:
 
 **1. Definisjoner**
 
-I tillegg til begreper som er definert andre steder i denne avtalen, gjelder følgende definisjoner i hele denne avtalen, med mindre den motsatte hensikten fremgår:
+I tillegg til vilkår definert andre steder i denne Avtalen, gjelder følgende definisjoner gjennom hele Avtalen, med mindre annet fremgår:
 
-**«Leverandør(er) av overnatting»**&#x62;etyr enhver part som oppretter en konto på Wink med den hensikt å selge sine egne rom og tilleggstjenester gjennom Wink-plattformen.
+**“Overnattingsleverandør(er)”** betyr enhver part som oppretter en konto på Wink med hensikt å selge egne rom og tilhørende tjenester via Wink-plattformen.
 
-**"Avtale"**&#x62;etyr denne avtalen.
+**“Avtale”** betyr denne avtalen.
 
-**«Beste tilgjengelige pris» eller «BAR»**&#x62;etyr den laveste forhåndsrabatterte, provisjonsberettigede prisen for rom, inkludert mva., som tilbys allmennheten av det deltakende hotellet, overnattingsleverandøren eller på dets vegne av en tredjepartsdistributør. For å unngå tvil skal kampanjepriser, feriepriser og andre offentlige ubegrensede priser inkluderes som beste tilgjengelige priser.
+**"Best Available Rate" eller "BAR"** betyr den laveste forhåndsrabatterte, kommisjonsberettigede prisen for rom, inkludert MVA, som tilbys allmennheten av det deltakende hotellet, Overnattingsleverandøren eller på deres vegne av en tredjepartsdistributør. For å unngå tvil, inkluderes kampanjepriser, feriesatser og andre offentlige ubegrensede priser som Best Available Rates.
 
-**"Bestilling(er)"**&#x62;etyr en reservasjonsforespørsel for et rom gjort via Wink eller en Wink-klient som kommuniseres til og aksepteres av overnattingsstedet.
+**"Booking(er)"** betyr en reservasjon for et rom gjort via Wink eller en Wink-klient som kommuniseres til og aksepteres av Overnattingsleverandøren.
 
-**«Bestillingsgebyr»**&#x65;r de 1,5 % som Wink trekker fra bestillingsverdien som et behandlingsgebyr.
+**“Bookinggebyr”** er 1,5 % trukket fra bookingverdien som et behandlingsgebyr av Wink.
 
-**«Bestillingsverdi»**&#x65;r det totale beløpet som betalingsformidleren har samlet inn fra gjesten for en bestilling.
+**“Bookingverdi”** er totalbeløpet innkrevd av Betalingsformidler fra gjest for en booking.
 
-**"Bestill ut"**&#x62;etyr en overnattingsleverandørs manglende evne til å innkvartere en gjest på grunn av, blant annet, manglende romtilgjengelighet hos det deltakende hotellet eller på dets vegne av overnattingsleverandøren eller en tredjepartsdistributør.
+**"Book-Out"** betyr at Overnattingsleverandøren ikke kan innkvartere en gjest på grunn av blant annet manglende romtilgjengelighet hos det deltakende hotellet eller på vegne av Overnattingsleverandøren eller tredjepartsdistributør.
 
-**"Kommisjon"**&#x62;etyr beløpet som skyldes en Tilknyttet selskap for hver materialisert transaksjon i samsvar med denne avtalen.
+**“Kommisjon"** betyr beløpet som skyldes en tilknyttet part for hver realisert transaksjon i henhold til denne Avtalen.
 
-**"Fasiliteter og tjenester"**&#x62;etyr alle fasiliteter, måltider, bekvemmeligheter og/eller andre tjenester som tilbys av et deltakende hotell.
+**"Fasiliteter og tjenester"** betyr alle fasiliteter, måltider, bekvemmeligheter og/eller andre tjenester levert av et deltakende hotell.
 
-**"Gjest(er)"**&#x62;etyr sluttbrukeren som har brukt, bruker eller er booket til å bruke rommet (og andre fasiliteter og tjenester der det er aktuelt) som følge av en direkte eller indirekte bestilling med Wink.
+**"Gjest(er)"** betyr sluttbrukeren som har brukt, bruker eller er booket til å bruke rommet (og eventuelle andre fasiliteter og tjenester) som følge av en direkte eller indirekte booking med Wink.
 
-**«Hotell(er)»**&#x62;etyr all overnatting som er tilgjengelig på eller gjennom Winks nettsteder.
+**“Hotell(er)”** betyr enhver overnatting tilgjengelig på eller gjennom Wink-nettstedene.
 
-**"Wink-plattformen"**&#x62;etyr det private nettverket eller den tekniske løsningen som brukes av partene for å dele informasjon på en sikker måte i henhold til avtalen.
+**"Wink-plattform"** betyr det private nettverket eller tekniske løsningen som Partene bruker for å dele informasjon sikkert i henhold til Avtalen.
 
-**"Intellektuell eiendom"**&#x62;etyr alle immaterielle rettigheter av enhver art (enten de er registrert i dokumentarform eller lagret på magnetisk eller optisk disk eller minne) hvor som helst i verden, enten de er registrerte, registrerbare eller på annen måte, inkludert patenter, bruksmodeller, varemerker, registrerte design og domenenavn, søknader om noen av de foregående, handels- eller forretningsnavn, goodwill, opphavsrett og rettigheter i form av opphavsrett, designrettigheter, rettigheter i databaser, ideelle rettigheter, knowhow og alle andre immaterielle rettigheter som finnes i programvare, dataprogrammer, nettsteder, dokumenter, informasjon, teknikker, forretningsmetoder, tegninger, logoer, instruksjonsmanualer, lister og prosedyrer og opplysninger om kunder, markedsføringsmetoder og -prosedyrer og reklamemateriell, inkludert "utseendet og følelsen" til nettsteder.
+**"Immaterielle rettigheter"** betyr alle immaterielle rettigheter av enhver art (uavhengig av om de er dokumentert eller lagret på magnetisk eller optisk medium) over hele verden, enten registrert, registrerbar eller ikke, inkludert patenter, bruksmodeller, varemerker, registrerte design og domenenavn, søknader om disse, handelsnavn, goodwill, opphavsrett og lignende rettigheter, designrettigheter, databaserettigheter, moralske rettigheter, know-how og andre immaterielle rettigheter som finnes i programvare, nettsteder, dokumenter, informasjon, teknikker, forretningsmetoder, tegninger, logoer, bruksanvisninger, kundelister, markedsføringsmetoder og reklamelitteratur, inkludert "utseendet og følelsen" av nettsteder.
 
-**"Materialiserte transaksjoner"**&#x62;etyr bestillingen av en gjest hos en overnattingsleverandør, og hvis reservasjon har resultert i faktisk levering av overnatting, som bekreftet til Wink av overnattingsleverandøren. Realiserte transaksjoner vil alltid bli justert for endringer (f.eks. forkortede opphold), tilbakeføringer, kredittkortsvindel, tap på fordringer eller annet. For å unngå tvil kan avbestillinger, manglende oppmøte osv. aldri anses som materialiserte transaksjoner.
+**“Realiserte transaksjoner"** betyr booking gjort av en gjest hos en Overnattingsleverandør, som har resultert i faktisk levering av overnatting, bekreftet til Wink av Overnattingsleverandøren. Realiserte transaksjoner justeres alltid for endringer (f.eks. forkortede opphold), chargebacks, kredittkortsvindel, tap eller lignende. For å unngå tvil, kan kanselleringer, no-shows osv. aldri regnes som realiserte transaksjoner.
 
-**"Nettosats"**&#x62;etyr den spesifikke prisen Wink skal betale til hvert deltakende hotell for rom som partene har avtalt skriftlig.
+**"Netto pris"** betyr den spesifikke prisen Wink skal betale til hvert deltakende hotell for rom som Partene skriftlig har avtalt.
 
-**"Utebliven oppmøte"**&#x62;etyr enhver anledning der en gjest ikke ankommer i tide til et deltakende hotell i henhold til en bestilling.
+**"No-Show(s)"** betyr enhver anledning hvor en gjest ikke møter opp til avtalt tid på et deltakende hotell i henhold til en booking.
 
-**"Partner"**&#x62;etyr enhver bedrift eller enkeltperson som kobler seg til eller bruker Wink-plattformen for å markedsføre og selge overnattingssteders inventar til publikum og/eller kunder mot en provisjon.
+**“Partner”** betyr enhver virksomhet eller person som kobler seg til eller bruker Wink-plattformen for å promotere og selge Overnattingsleverandørers inventar til sitt publikum og/eller kunder mot kommisjon.
 
-**«Betalingsformidler»**&#x65;t heleid datterselskap av Traveliko Singapore Pte. Ltd. («TripPay»), som styrer betalingstjenestene, samler inn betalinger fra gjester («innbetaling»), ved å belaste betalingsmetoden knyttet til kjøpet deres, for eksempel kredittkort, debetkort, bankoverføring, kryptovalutaer eller PayPal osv. ... og utbetaler det utestående beløpet («nettopris») til overnattingsstedet.
+**“Betalingsformidler”** er et heleid datterselskap av Traveliko Singapore Pte. Ltd. (“TripPay”), som håndterer betalingstjenester, innkrever betalinger fra gjester (“Pay-in”) ved å belaste betalingsmetoden knyttet til kjøpet, som kredittkort, debetkort, bankoverføring, kryptovaluta eller PayPal osv., og utbetaler det skyldige beløpet (“Netto pris”) til Overnattingsleverandøren.
 
-**«Innbetaling»**&#x62;etyr innhenting av en betaling foretatt av en gjest av Betalingsformidleren.
+**“Pay-in”** betyr mottak av betaling gjort av en gjest via Betalingsformidler.
 
-**«Utbetaling»**&#x62;etyr utbetaling av nettoprovisjon til tilknyttede selskaper av betalingsformidleren.
+**“Pay-out”** betyr utbetaling av netto kommisjon til den tilknyttede parten av Betalingsformidler.
 
-**"Gebyr for betalingstjeneste"**&#x65;r de 4 % som trekkes fra affiliate-provisjonen som betalingsinnhentingsgebyr av betalingstilretteleggeren.
+**“Betalingsgebyr”** er 4 % trukket fra tilknyttet parts kommisjon som betalingsinnhentingsgebyr av Betalingsformidler.
 
-**"Betalingsvilkår"**&#x62;etyr priser, tilgjengelighet, tilbud, kampanjer, betalingsbetingelser og eventuelle andre regler eller betingelser knyttet til fordeling av rom som er gjensidig avtalt mellom partene.
+**"Betalingsvilkår"** betyr priser, tilgjengelighet, tilbud, kampanjer, betalingsbetingelser og andre regler eller betingelser knyttet til distribusjon av rom som er gjensidig avtalt mellom Partene.
 
-**"Potensielt uredelig bestilling"**&#x62;etyr (i) En bestilling som følge av ugyldig eller feil informasjon gitt til Wink på tidspunktet for en slik bestilling, eller som følge av en kredittkorttvist, eller som følge av en rapport om uautoriserte belastninger; eller (ii) Enhver bestilling som kan være knyttet til tidligere høyrisiko- eller uredelige transaksjoner.
+**"Potensielt svindelbooking"** betyr (i) en booking som skyldes ugyldig eller feilaktig informasjon gitt til Wink ved bookingtidspunktet, eller som følge av kredittkorttvist, eller rapport om uautoriserte belastninger; eller (ii) enhver booking som kan være knyttet til tidligere høyrisiko- eller svindeltransaksjoner.
 
-**"Rate(r)"**&#x62;etyr hotellromprisen(e) som er gjort tilgjengelig for Wink av overnattingsleverandøren med hensyn til enhver gjeldende romtype eller pristype i henhold til avtalen som skal distribueres på alle Wink-kanaler.
+**"Pris(er)"** betyr hotellromprisen(e) gjort tilgjengelig for Wink av Overnattingsleverandøren for gjeldende romtype eller priskategori under Avtalen for distribusjon på alle Wink-kanaler.
 
-**"Rom"**&#x62;etyr overnattingsstedet(e) som ligger på et deltakende hotell eller overnattingssted.
+**"Rom"** betyr overnattingsenheten(e) ved et deltakende hotell eller overnattingssted.
 
-**"Skatter"**&#x62;etyr alle lokale, statlige, føderale og nasjonale skatter og/eller serviceavgifter, inkludert, for å unngå tvil, all merverdiavgift (mva.), salgs-, bruks-, forbruks-, losji-, midlertidige-, utleie-, by-, feriested- og andre lignende typer skatter, offentlige avgifter eller gebyrer.
+**"Skatter"** betyr alle lokale, statlige, føderale og nasjonale skatter og/eller avgifter, inkludert, for å unngå tvil, merverdiavgift (MVA), salgsskatt, bruksavgift, særavgift, overnattingsavgift, transittavgift, leieavgift, byskatt, resortavgift og lignende skatter, offentlige avgifter eller gebyrer.
 
-**«TripPay»**&#x62;etyr det heleide datterselskapet som samler inn betalinger (innbetaling) og utbetalinger (utbetaling) for Wink, referert til som betalingstilrettelegger.
+**“TripPay”** betyr det heleide datterselskapet som håndterer betalinger (Pay-in) og utbetalinger (Pay-out) for Wink, omtalt som Betalingsformidler.
 
-**"Salgskanaler"**&#x62;etyr (i) nettsteder som drives, administreres eller eies av Wink for andre bedrifter å bruke til å gjøre bestillinger, og som kun er tilgjengelige med passord utstedt av Wink; (ii) API-tilkoblinger mellom Wink og kundenes reisenettsteder; eller (iii) enhver annen distribusjonsmetode der Wink leverer rom til sine kunder for videre distribusjon eller salg, enten det er på nettsteder eller på annen måte.
+**"Salgskanaler"** betyr (i) nettsteder drevet, administrert eller eid av Wink for andre virksomheter å bruke for å foreta bookinger, kun tilgjengelig med passord utstedt av Wink; (ii) API-tilkoblinger mellom Wink og kunders reisesider; eller (iii) andre distribusjonsmetoder hvor Wink leverer rom til sine kunder for videre distribusjon eller salg, enten via nettsteder eller annet.
 
-**1.1 Intet partnerskap**
+**1.1 Ingen partnerskap**
 
-1.1.1 Denne avtalen er ikke ment å opprette et joint venture eller et partnerskapsforhold eller et oppdragsgiver-agentforhold mellom eller blant partene, og skal heller ikke tolkes slik at noe i denne avtalen eller i noen av ordningene som er omtalt heri, opprettes. Med mindre partene skriftlig avtaler noe annet, skal ingen av dem (i) inngå noen kontrakt eller forpliktelse med tredjeparter som agent for eller på vegne av den andre parten, (ii) beskrive eller presentere seg som en slik agent eller på noen måte fremstille seg som en slik agent, eller (iii) handle på vegne av eller representere den andre parten på noen måte eller for noe formål.
+1.1.1 Denne Avtalen er ikke ment, og skal ikke tolkes som, å skape et joint venture eller partnerskapsforhold, eller forhold som hovedmann og agent mellom Partene. Med mindre Partene skriftlig avtaler noe annet, skal ingen av dem (i) inngå kontrakter eller forpliktelser med tredjepart som agent for den andre Part, (ii) beskrive eller fremstille seg som slik agent, eller (iii) opptre på vegne av eller representere den andre Part på noen måte eller til noe formål.
 
-1.1.2 Med mindre annet er skriftlig avtalt med Wink eller annet er angitt i denne avtalen, skal ikke overnattingsleverandøren publisere noen uttalelse, verken uttrykt eller underforstått, noe sted på overnattingsleverandørens nettsted(er), om at nettstedet er en del av, godkjent av eller et offisielt nettsted for Wink.
+1.1.2 Med mindre annet er skriftlig avtalt med Wink, eller som angitt i denne Avtalen, skal Overnattingsleverandøren ikke publisere noen uttalelse på sine nettsider som uttrykkelig eller underforstått sier at nettstedet er en del av, støttet av, eller en offisiell nettside for Wink.
 
-**2. Avtaleinngåelse med gjester**
+**2. Kontrakter med gjester**
 
-Når du mottar en bestillingsbekreftelse via Wink-plattformen, inngår du en kontrakt direkte med gjesten, og er ansvarlig for å levere tjenestene dine i henhold til vilkårene og til prisen som er spesifisert i bestillingsbekreftelsen. Du samtykker også i å betale relaterte avgifter hvis og når det er aktuelt, som definert i betalingsvilkårene.
+Når du mottar en bookingbekreftelse via Wink-plattformen, inngår du en kontrakt direkte med gjesten og er ansvarlig for å levere tjenestene i henhold til vilkårene og prisen angitt i bookingbekreftelsen. Du godtar også å betale tilhørende gebyrer når dette er aktuelt, som definert i betalingsvilkårene.
 
-**3. Uavhengighet av overnattingsleverandører**
+**3. Uavhengighet for overnattingsleverandører**
 
-Ditt forhold til Wink er som et uavhengig juridisk selskap, bortsett fra at TripPay fungerer som en betalingsformidler som beskrevet i betalingsvilkårene. Wink verken styrer eller kontrollerer tjenestene du tilbyr, og du samtykker i at du har full rett til å bestemme om og når du vil tilby disse tjenestene, og til hvilken pris og på hvilke vilkår du vil tilby dem.
+Ditt forhold til Wink er som en uavhengig juridisk enhet, bortsett fra at TripPay fungerer som betalingsformidler som beskrevet i betalingsvilkårene. Wink styrer ikke tjenestene du leverer, og du har full frihet til å bestemme om, når og til hvilken pris og på hvilke vilkår du tilbyr disse tjenestene.
 
-**4. Administrering av oppføringen din**
+**4. Administrasjon av din oppføring**
 
-Som overnattingsleverandør tilbyr Wink deg verktøyene du trenger for å selge beholdningen din på nett gjennom våre egne salgskanaler.
+Som Overnattingsleverandør tilbyr Wink verktøyene du trenger for å selge ditt inventar online gjennom våre proprietære salgskanaler.
 
-Overnattingsleverandører er ansvarlige for å holde annonseinformasjonen og innholdet oppdatert og nøyaktig til enhver tid. Overnattingsleverandører skal respektere tilgjengelighet, priser og andre forpliktelser som er avtalt heri. Overnattingsleverandører er eneansvarlige for å oppdatere og holde oppdatert til enhver tid tilgjengelighet, priser og gjeldende lokale avgifter, hvis noen, gjennom Winks ekstranett. Overnattingsleverandører tillater herved Wink å markedsføre rommene i alle markeder. Wink anbefaler på det sterkeste at overnattingsleverandører tilbyr de mest konkurransedyktige prisene, kampanjene og tilbudene til enhver tid.
+Overnattingsleverandører er ansvarlige for å holde oppføringsinformasjon og innhold oppdatert og korrekt til enhver tid. De skal respektere tilgjengelighet, priser og andre forpliktelser som er avtalt her. Overnattingsleverandører er eneansvarlige for å oppdatere og holde oppdatert tilgjengelighet, priser og gjeldende lokale skatter, om noen, via Wink-ekstranettet. Overnattingsleverandører gir Wink tillatelse til å promotere rommene i alle markeder. Wink anbefaler sterkt at Overnattingsleverandører alltid tilbyr de mest konkurransedyktige prisene, kampanjene og tilbudene.
 
 **5. Juridiske forpliktelser**
 
-5.1 Overnattingsleverandører er ansvarlige for å forstå og overholde alle lover, regler, forskrifter og kontrakter med tredjeparter som gjelder for annonsen din.
+5.1 Overnattingsleverandører er ansvarlige for å forstå og overholde lover, regler, forskrifter og kontrakter med tredjepart som gjelder for deres oppføring.
 
-5.2 Overnattingsleverandører er ansvarlige for å håndtere og bruke personopplysninger tilhørende gjester og andre i samsvar med gjeldende personvernlover og disse vilkårene.
+5.2 Overnattingsleverandører er ansvarlige for håndtering og bruk av personopplysninger om gjester og andre i samsvar med gjeldende personvernlovgivning og disse vilkårene.
 
-**6. Bestillingsgebyrer og provisjoner**
+**6. Bookinggebyrer og kommisjoner**
 
-Wink gir overnattingssteder de digitale verktøyene de trenger for å distribuere og selge beholdningen sin på nett gjennom fem proprietære kanaler. Ved å aktivere eiendommen din via selvaktiveringsfunksjonen på dashbordet ditt, blir eiendommen din automatisk bookbar på Traveliko.com og gjennom nettverket. Du kan faktisk deaktivere disse kanalene manuelt i ekstranettet under menydelen - Distribusjon - Salgskanaler.
+Wink tilbyr Overnattingsleverandører digitale verktøy for å distribuere og selge inventaret sitt online gjennom 5 proprietære kanaler. Ved å aktivere eiendommen via selvaktiveringsfunksjonen på dashbordet, blir eiendommen automatisk bookbar på Traveliko.com og gjennom nettverket. Du kan deaktivere disse kanalene manuelt i ekstranettet under \- Distribusjon \- Salgskanaler.
 
-* Traveliko.com – 0 % provisjon OTA
-* Winklinks – Link-in-bio-funksjon for sosiale mediekanaler som Instagram.
-* Sosial deling – Hurtiglenker som kan deles hvor som helst på nettet
-* Bookingmotor – Internett-bookingmotor for hotellnettsteder og mer.
-* Wink Network – et tilknyttet nettverk som kobler hoteller direkte til våre tilknyttede partnere
+* Traveliko.com – 0 % kommisjon OTA  
+* Winklinks \- Link-in-bio-funksjon for sosiale medier som Instagram.  
+* Social Share \- Hurtiglenker som kan deles hvor som helst på nettet  
+* Booking Engine \- Internett bookingmotor for hotellsider og mer.  
+* Wink Network – Affiliate-nettverk som kobler hoteller direkte med våre tilknyttede partnere
 
-Bestillingsgebyrer, provisjoner og betalingsgebyrer gjelder som følger for enhver bekreftet bestilling:
+Bookinggebyrer, kommisjoner og betalingsgebyrer gjelder som følger for enhver bekreftet booking:
 
-* Traveliko.com: Gebyr for betalingstilrettelegger som beskrevet i betalingsvilkårene (4 %) + Wink-bestillingsgebyr (1,5 %)
-* WinkLinks: Betalingsformidlergebyr som beskrevet i betalingsvilkårene (4 %) + Wink-bestillingsgebyr (1,5 %)
-* Sosial deling: Betalingsformidlergebyr som beskrevet i betalingsvilkårene (4 %) + Wink-bestillingsgebyr (1,5 %)
-* Bestillingsmotor: Betalingsformidlergebyr som beskrevet i betalingsvilkårene (4 %) + Wink-bestillingsgebyr (1,5 %)
-* Wink Network: Betalingsformidlergebyr som beskrevet i betalingsvilkårene (4 %) + Wink-bestillingsgebyr (1,5 %) + tilknyttet provisjon (forhandlet provisjon etter hotellets skjønn)
+* Traveliko.com: Betalingsformidlergebyr som beskrevet i betalingsvilkårene (4 %) + Wink bookinggebyr (1,5 %)  
+* WinkLinks: Betalingsformidlergebyr som beskrevet i betalingsvilkårene (4 %) + Wink bookinggebyr (1,5 %)  
+* Social Share: Betalingsformidlergebyr som beskrevet i betalingsvilkårene (4 %) + Wink bookinggebyr (1,5 %)  
+* Booking Engine: Betalingsformidlergebyr som beskrevet i betalingsvilkårene (4 %) + Wink bookinggebyr (1,5 %)  
+* Wink Network: Betalingsformidlergebyr som beskrevet i betalingsvilkårene (4 %) + Wink bookinggebyr (1,5 %) + Affiliate-kommisjon (forhandlet kommisjon etter hotellens skjønn)
 
-Beregningseksempel for en bestilling på 100 USD gjort via Trvaveliko, Social Share, Booking Engine eller WinkLinks
+Eksempel på beregning for en USD 100 booking via Traveliko, Social Share, Booking Engine eller WinkLinks
 
-100–4 % = 96\
-96–1,5 % = 94,56\
-Betales til hotellet («Nettopris») => 94,96 USD
+100-4 % = 96  
+96-1,5 % = 94,56  
+Utbetalbart til hotell ("Netto pris") => USD 94,56
 
-Beregningseksempel for en bestilling på USD 100 gjort via en partner med 10 % provisjon
+Eksempel på beregning for en USD 100 booking via en affiliate med 10 % kommisjon
 
-100–4 % = 96\
-96–1,5 % = 94,56\
-94,56–10 %=85,1\
-Betales til hotellet («Nettopris») => USD 85,1
+100-4 % = 96  
+96-1,5 % = 94,56  
+94,56-10 % = 85,1  
+Utbetalbart til hotell ("Netto pris") => USD 85,1
 
-***
+---
 
-**Merknad angående betalingshåndtering av tredjepartsintegratorer**
+**Melding om betalingshåndtering av tredjepartsintegratorer**
 
-**Vær oppmerksom på at visse tilknyttede selskaper, heretter referert til som «tredjepartsintegratorer», vil være ansvarlige for å håndtere betalingstransaksjoner. Som et resultat av dette vil disse tredjepartsintegratorene overta rollen som registrert selger. Følgelig vil Winks betalingsvilkår ikke lenger gjelde for disse transaksjonene. I stedet må hotellet godta nye betalingsvilkår som er spesifikke for tredjepartsintegratorene.**
+**Vennligst merk at enkelte affiliates, heretter kalt "Tredjepartsintegratorer," vil være ansvarlige for håndtering av betalingstransaksjoner. Disse Tredjepartsintegratorene vil derfor innta rollen som registrert selger. Følgelig gjelder ikke lenger Winks betalingsvilkår for disse transaksjonene. I stedet må nye betalingsvilkår spesifikke for Tredjepartsintegratorene aksepteres av hotellet.**
 
-***
+---
 
 **7. Skatter**
 
-7.1 Overnattingsstedets leverandør er ansvarlig for å sørge for at prisen inkluderer alle gjeldende avgifter. Det er overnattingsstedets ansvar å sørge for at avgiftene som er inkludert i prisene er nøyaktige og oppdaterte. Når overnattingsstedets leverandør ikke oppgir at det finnes byskatter, turistavgifter eller andre lokale avgifter som skal betales, skal det forstås som at disse er inkludert i prisen.
+7.1 Overnattingsleverandøren er ansvarlig for å sikre at prisen inkluderer alle gjeldende skatter. Det er Overnattingsleverandørens ansvar å sikre at skattene inkludert i prisene er korrekte og oppdaterte. Dersom Overnattingsleverandøren ikke oppgir byskatter, turistskatter eller andre lokale avgifter som skal betales, skal det forstås at disse er inkludert i prisen.
 
-7.2 Hver overnattingsleverandør er ansvarlig for å betale eventuelle skatter til de aktuelle offentlige etatene og/eller institusjonene.
+7.2 Hver Overnattingsleverandør er ansvarlig for å innbetale skatter til relevante offentlige myndigheter og/eller institusjoner.
 
-7.3 Leverandøren av overnatting skal være ansvarlig for, og samtykker i å holde Wink skadesløs for eventuelle tap, kostnader, straffer og/eller skader som følge av manglende informasjon om nøyaktige og oppdaterte skatter i prisene og/eller manglende informasjon om eller nøyaktig informasjon til Wink om gjeldende skatter.
+7.3 Overnattingsleverandøren er ansvarlig og forplikter seg til å holde Wink skadesløs for eventuelle tap, kostnader, bøter og/eller skader som følge av manglende eller feilaktig inkludering av skatter i prisene og/eller manglende eller feilaktig informasjon til Wink om gjeldende skatter.
 
-7.4 Wink skal, når de tilbyr rom til sine partnere, inkludere alle gjeldende skatter (med forbehold om underavsnitt (a) i denne seksjonen). Alle beløp som skal betales i henhold til denne avtalen, med mindre annet er angitt, skal være inklusive mva. eller andre gjeldende skatter eller avgifter (unntatt selskapsskatt eller andre skatter på fortjeneste). Hvis et mva-beløp beregnes og pålegges av en relevant myndighet som er ansvarlig for mva. i landet der disse tjenestene leveres, skal Wink, etter mottak av en gyldig skattefaktura fra overnattingsleverandøren, betale overnattingsleverandøren det mva-beløpet som er inkludert i de mva-inkluderte beløpene som skal betales i henhold til denne avtalen.
+7.4 Når Wink tilbyr rom til sine partnere, skal alle gjeldende skatter inkluderes (med forbehold om punkt (a) i denne seksjonen). Alle beløp som skal betales under denne Avtalen, med mindre annet er angitt, inkluderer MVA eller andre gjeldende skatter eller avgifter (unntatt selskapsskatt eller andre skatter på overskudd). Dersom MVA pålegges av relevant myndighet i landet der tjenestene leveres, skal Wink, ved mottak av gyldig skattefaktura fra Overnattingsleverandøren, betale MVA-beløpet inkludert i de MVA-inkluderende beløpene som skal betales under denne Avtalen.
 
-7.5 Ethvert krav fra relevant myndighet om gebyrer eller renter som følge av forsinket betaling, eller fakturert MVA, skal dekkes av overnattingsleverandøren. Videre, hvis et MVA-beløp beregnes og ilegges av en relevant myndighet som er ansvarlig for MVA i landet der tjenestene mottas under en selvregnskapsmekanisme, skal Wink regnskapsføre denne MVA-en på sin MVA-melding i samsvar med landets MVA-lovgivning. Ethvert krav fra relevant myndighet om gebyrer eller renter som følge av forsinket betaling av selvregnskapsført MVA skal dekkes av Wink.
+7.5 Eventuelle krav fra myndigheter om bøter eller renter som følge av sen betaling eller fakturert MVA skal belastes Overnattingsleverandøren. Dersom MVA pålegges under en selvangivelsesmekanisme, skal Wink rapportere denne MVA i sin MVA-melding i henhold til gjeldende lovgivning. Eventuelle krav om bøter eller renter for sen betaling av slik MVA skal belastes Wink.
 
-**8. Bankopplysninger og utpekt representant for overnattingsleverandøren**
+**8. Bankdetaljer og Overnattingsleverandørens utpekte representant**
 
-Overnattingsleverandøren skal sørge for at bankkontoopplysningene som er gitt til Wink er nøyaktige til enhver tid, og skal uten forsinkelse varsle om eventuelle endringer i disse.
+Overnattingsleverandøren skal sørge for at bankkontodetaljene som er oppgitt til Wink er korrekte til enhver tid, og skal uten opphold varsle om endringer.
 
-Kun personen som signerer denne avtalen skal være den eneste utpekte representanten for overnattingsleverandøren som skal ha myndighet til å be om endringer i overnattingsleverandørens bankkonto og/eller mottakerinformasjon. Ingen annen person skal ha slik myndighet på vegne av overnattingsleverandøren. Enhver endring av en slik utpekte person skal forespurt til Wink skriftlig, og enhver slik endring skal kun implementeres via en skriftlig endring av denne avtalen undertegnet av begge parter.
+Kun den som signerer denne avtalen skal være den eneste utpekte representanten for Overnattingsleverandøren med myndighet til å be om endringer i bankkonto- og/eller betalingsinformasjon. Ingen andre skal ha slik myndighet på vegne av Overnattingsleverandøren. Endring av slik representant skal skje skriftlig til Wink, og endringen trer i kraft først ved skriftlig endring av denne Avtalen signert av begge parter.
 
-**9. Endringer i bestillingen**
+**9. Endringer i booking**
 
-9.1 Overnattingsstedet er ansvarlig for enhver endring av bestillingen utover avbestillingsreglene som er angitt i bestillingsbekreftelsen som er akseptert via direkte kommunikasjon med gjesten.
+9.1 Overnattingsleverandører er ansvarlige for endringer i booking utenfor avbestillingsreglene angitt i bookingbekreftelsen, og skal håndtere dette direkte med gjesten.
 
-9.2 Dersom det har vært en feil fra overnattingsstedets side som har ført til at en feil pris er lastet opp, og en bestilling følgelig gjøres til feil pris, skal bestillingen godkjennes av overnattingsstedet til feil pris.
+9.2 Ved feil fra Overnattingsleverandør som fører til feil pris, og booking skjer til feil pris, skal booking respekteres til den feilaktige prisen.
 
-9.3 Wink har intet ansvar overfor overnattingsleverandøren for eventuelle prisfeil begått av overnattingsleverandøren.
+9.3 Wink har intet ansvar for prisfeil gjort av Overnattingsleverandøren.
 
-**10. Bestillingsidentifikasjon / Samarbeid mot svindel**
+**10. Bookingidentifikasjon / samarbeid mot svindel**
 
-10.1 Overnattingsleverandøren skal sørge for at fullstendige og korrekte firmaopplysninger for Wink-kunder er nøyaktig utfylt i systemene deres, slik at hver bestilling tydelig kan identifiseres som en bestilling gjort i henhold til og i samsvar med denne avtalen.
+10.1 Overnattingsleverandøren skal sikre at fullstendige og korrekte opplysninger om Wink-kunder er registrert i deres systemer slik at hver booking tydelig kan identifiseres som gjort under denne Avtalen.
 
-10.2 Hver deltakende overnattingsleverandør må gjøre kommersielt rimelige anstrengelser for å sikre at identifikasjonen som fremvises av en gjest samsvarer med bestillingsinformasjonen ved innsjekking. Hvis en reservasjon er en potensielt uredelig bestilling, eller visse data oppgitt av en gjest ikke kan bekreftes av Wink, skal overnattingsleverandøren og Wink samarbeide for å håndtere den potensielt uredelige bestillingen, noe som kan inkludere kansellering av en slik reservasjon når som helst. Overnattingsleverandøren samtykker i å samarbeide fullt ut med Wink og skal gi Wink all informasjon som måtte bli bedt om i forbindelse med den potensielt uredelige bestillingen.
+10.2 Hver deltakende Overnattingsleverandør skal gjøre rimelige kommersielle anstrengelser for å sikre at gjestens legitimasjon ved innsjekk samsvarer med bookinginformasjonen. Ved potensielt svindelbooking eller manglende verifiserbar informasjon, skal Overnattingsleverandøren og Wink samarbeide om å håndtere dette, inkludert mulighet for kansellering. Overnattingsleverandøren skal samarbeide fullt ut og gi Wink all etterspurt informasjon.
 
-10.3 Partene er enige om at dersom en overnattingsleverandør ikke overholder denne klausulen, og bestillingen senere viser seg å være en potensielt uredelig bestilling, skal Wink ikke være ansvarlig.
+10.3 Partene er enige om at dersom Overnattingsleverandøren ikke overholder denne klausulen, og bookingen senere viser seg å være svindel, er ikke Wink ansvarlig.
 
-**11. Utilgjengelighet / Manglende oppfyllelse**
+**11. Utilgjengelighet / manglende oppfyllelse**
 
-11.1 Dersom det oppstår en situasjon med utilgjengelighet (enten på grunn av overbooking eller annet) som krever at en overnattingsleverandør flytter en gjest til et alternativt overnattingssted, samtykker overnattingsleverandøren i å gjøre sitt beste for å beholde/opprettholde gjester og bestillinger slik at gjestene kan bli værende på et slikt overnattingssted i størst mulig grad. Dersom overnattingsleverandøren til slutt må flytte en gjest til et alternativt overnattingssted, samtykker overnattingsleverandøren i følgende:
+11.1 Ved utilgjengelighet (f.eks. overbooking) som krever at Overnattingsleverandøren må flytte en gjest til alternativ overnatting, skal Overnattingsleverandøren gjøre sitt beste for å beholde gjester og bookinger slik at gjesten kan bli på stedet så langt som mulig. Dersom flytting er nødvendig, skal Overnattingsleverandøren:
 
-* Å umiddelbart varsle Wink før gjesten flyttes;
-* Å flytte gjesten til en alternativ eiendom med samme eller høyere kategori/vurdering i samme område, under de samme betingelsene som er bestilt, skal betales av overnattingsstedet uten ekstra kostnad for den berørte gjesten, og skal inkludere, uten begrensning.
-* Eventuelle kostnader knyttet til transport og andre flytteutgifter på vegne av den berørte gjesten.
-* For å tillate Wink å trekke fra alle direkte kostnader forårsaket av utilgjengelighet og/eller flytting fra overnattingsleverandørens utestående saldo(er) i tilfelle Wink pådrar seg økonomisk straff, kompensasjon eller kostnad knyttet til slik utilgjengelighet og/eller flytting.
+* Umiddelbart varsle Wink før flytting;  
+* Flytte gjesten til en alternativ eiendom av samme eller høyere kategori i samme område, under samme betingelser som booket, uten ekstra kostnad for gjesten, inkludert  
+* Kostnader til transport og andre flytterelaterte utgifter for gjesten;  
+* Tillate Wink å trekke alle direkte kostnader forårsaket av utilgjengelighet og/eller flytting fra Overnattingsleverandørens saldo dersom Wink påføres økonomisk tap, kompensasjon eller kostnader.
 
-11.2 Dersom overnattingsleverandøren ikke oppfyller noen av vilkårene i denne avtalen, inkludert uakseptable forhold i lokalene og/eller mangelfulle fasiliteter og tjenester, har Wink rett til å stoppe betalinger og kreve korrekt oppfyllelse av de avtalte bestillingsvilkårene. Overnattingsleverandøren skal uansett bære hele kostnaden for enhver kompensasjon som skal betales til den berørte gjesten, og holde Wink skadesløs for ethvert ansvar som følge av overnattingsleverandørens mangelfulle oppfyllelse av sine forpliktelser i henhold til denne avtalen.
+11.2 Ved manglende oppfyllelse av Avtalen, inkludert uakseptable forhold eller mangelfulle fasiliteter og tjenester, kan Wink stoppe betalinger og kreve korrekt oppfyllelse. Overnattingsleverandøren bærer fullt ansvar for kompensasjon til berørte gjester og holder Wink skadesløs.
 
-**12. Vilkår for deltakende hotelleiendommer**
+**12. Tilstand på deltakende hotell**
 
-Så snart som mulig skal overnattingsleverandøren varsle via Wink Extranets «Kunngjøringsseksjon» om eventuelle bygge-, renoverings-, oppussing-, oppdaterings- eller annet arbeid som vil eller kan endre en overnattingsleverandørs evne til å tilby rom, fasiliteter og tjenester og/eller som kan påvirke en gjests opphold negativt. For å unngå tvil, når slike omstendigheter fører til manglende tilgjengelighet eller manglende oppfyllelse, skal paragraf 11 i disse Winks generelle vilkår og betingelser («Utilgjengelighet / Manglende oppfyllelse») gjelde, og overnattingsleverandøren skal bære hele kostnaden for enhver kompensasjon som skal betales til den berørte gjesten, og holde Wink skadesløs for ethvert ansvar.
+Overnattingsleverandøren skal så tidlig som mulig varsle via Wink-ekstranettets "Meldingsseksjon" om byggearbeid, renoveringer eller annet som kan påvirke evnen til å tilby rom, fasiliteter og tjenester eller gjestens opphold. Ved utilgjengelighet eller manglende oppfyllelse som følge av dette gjelder punkt 11, og Overnattingsleverandøren bærer fullt ansvar for kompensasjon til gjest og holder Wink skadesløs.
 
-**13. Endring, varighet og opphør**
+**13. Endring, varighet og oppsigelse**
 
-13.1 Endring. Med mindre annet er påkrevd av gjeldende lov, kan Wink endre disse vilkårene når som helst. Hvis vi foretar vesentlige endringer i disse vilkårene, vil vi legge ut de reviderte vilkårene på Wink-plattformen og oppdatere datoen «Sist oppdatert» øverst i disse vilkårene. Hvis du blir berørt av endringen, vil vi også varsle deg om endringene minst tretti (30) dager før datoen de trer i kraft. Hvis du ikke sier opp avtalen din før datoen de reviderte vilkårene trer i kraft, vil din fortsatte bruk av tjenestene utgjøre aksept av eventuelle endringer i de reviderte vilkårene.
+13.1 Endring. Med mindre annet kreves av lov, kan Wink endre disse vilkårene når som helst. Ved vesentlige endringer vil reviderte vilkår publiseres på Wink-plattformen med oppdatert dato. Berørte parter varsles minst 30 dager før endringene trer i kraft. Dersom du ikke sier opp avtalen før endringene trer i kraft, anses du å akseptere de nye vilkårene.
 
-13.2 Varighet. Med mindre annet er avtalt, skal denne avtalen tre i kraft på denne datoen og være gyldig på ubestemt tid.
+13.2 Varighet. Med mindre annet er avtalt, trer denne Avtalen i kraft fra dags dato og gjelder på ubestemt tid.
 
-13.3 Denne avtalen løper inntil den sies opp av partene som følger:
+13.3 Avtalen kan sies opp slik:
 
-* Av Wink, når som helst og uten grunn, med tretti (30) kalenderdagers skriftlig varsel til den andre parten;
-* Av overnattingsstedet, uten grunn når som helst uten varsel ved å deaktivere eiendommen på Wink-ekstranettets dashbord.
-* På enhver annen måte som er uttrykkelig angitt andre steder i denne avtalen.
+* Av Wink, når som helst uten grunn, med 30 dagers skriftlig varsel;  
+* Av Overnattingsleverandøren, når som helst uten grunn, ved å deaktivere eiendommen i Wink-ekstranettet;  
+* På annen måte som uttrykkelig angitt i Avtalen.
 
-13.4 I tillegg forbeholder Wink seg retten til etter eget skjønn å si opp denne avtalen umiddelbart ved skriftlig varsel til overnattingsstedet dersom:
+13.4 Wink kan umiddelbart si opp Avtalen skriftlig dersom:
 
-* Innkvarteringsleverandøren starter insolvens, konkurs, bobestyrerbehandling eller likvidasjon, rettslig administrasjon, administrasjon eller andre lignende prosedyrer (enten det er innledet av Innkvarteringsleverandøren eller av noen av Innkvarteringsleverandørens kreditorer), som ikke avvises eller løses i Innkvarteringsleverandørens favør innen seksti (60) dager deretter.
-* En kreditor tegner eller forsøker å tegne et pant i det deltakende hotellet.
-* Overnattingsleverandøren opphører å drive virksomhet som vanlig.
-* Overnattingsleverandøren mister leieavtalen eller rettighetene til å drive det deltakende hotellet under sitt nåværende merkenavn.
-* Det er en endring i egenskapene til overnattingsstedet, inkludert, men ikke begrenset til, bygging, arbeider og renoveringer.
-* Eller på grunn av en force majeure-hendelse.
+* Overnattingsleverandøren går inn i insolvens, konkurs, tvangsforvaltning eller lignende, og dette ikke løses innen 60 dager;  
+* En kreditor tar pant i det deltakende hotellet;  
+* Overnattingsleverandøren opphører ordinær drift;  
+* Overnattingsleverandøren mister leie- eller driftsrettigheter under nåværende merkenavn;  
+* Endringer i overnattingskarakteristika, inkludert bygging og renovering;  
+* Eller ved force majeure.
 
-13.5 Ved tidlig oppsigelse eller utløp av avtalen uansett årsak, skal overnattingsleverandøren:
+13.5 Ved oppsigelse eller utløp skal Overnattingsleverandøren:
 
-* Overholde alle bestillinger gjort før den effektive oppsigelses- eller utløpsdatoen, til de opprinnelig reserverte prisene, inkludert bestillinger med innsjekkingsdatoer som inntreffer etter oppsigelse eller utløp av gjeldende oppsigelsesperiode, eller på annen måte tilby passende alternative tjenester og
-* Gjør opp kontoen deretter.
+* Respektere alle bookinger gjort før oppsigelse, til opprinnelig pris, inkludert bookinger med innsjekk etter oppsigelsesdato, eller tilby passende alternativer;  
+* Avregne konto i henhold til dette.
 
-**14. Representasjoner og garantier**
+**14. Garantier og erklæringer**
 
-Overnattingsleverandøren garanterer og erklærer at de fullt ut skal overholde følgende:
+Overnattingsleverandøren garanterer at:
 
-14.1 At alle rom og alle fasiliteter og tjenester til enhver tid skal leveres i samsvar med god bransjepraksis og skal leveres med all tilbørlig dyktighet, omsorg, oppmerksomhet og flid;
+14.1 Alle rom og fasiliteter leveres i henhold til god bransjepraksis med nødvendig dyktighet og omsorg;
 
-14.2 At alt personale ved det deltakende hotellet vil være tilstrekkelig kvalifisert og opplært til å utføre sine forpliktelser i henhold til denne avtalen;
+14.2 Alt personell er kvalifisert og opplært til å oppfylle sine forpliktelser;
 
-14.3 Leverandøren av overnatting skal overholde alle gjeldende lover, standarder og andre krav fra alle relevante myndigheter i forbindelse med levering av rommene og alle andre deler av hvert deltakende hotell eller tilknyttede tjenester og/eller fasiliteter og/eller sine forpliktelser i henhold til denne avtalen;
+14.3 Overholder alle lover, standarder og krav fra relevante myndigheter;
 
-14.4 At hvert deltakende hotell har lest og godtatt vilkårene i denne avtalen;
+14.4 Hvert deltakende hotell har lest og akseptert vilkårene;
 
-14.5 At alle rom og/eller fasiliteter og tjenester som tilbys i henhold til eller i forbindelse med denne avtalen er trygge og fullt ut overholder alle lokale, statlige, føderale og/eller nasjonale lover, regler og forskrifter. Leverandøren av overnatting garanterer videre at ingen av rommene (eller noen annen del av noen deltakende hoteller) har individuelle gassvannsberedere installert;
+14.5 Alle rom og fasiliteter er trygge og i samsvar med lover og regler. Ingen individuelle gassvannvarmere er installert;
 
-14.6 At all informasjon som gis enten direkte eller indirekte til Wink av overnattingsleverandøren i henhold til eller i forbindelse med denne avtalen, skal være oppdatert og nøyaktig.
+14.6 All informasjon gitt til Wink er oppdatert og korrekt;
 
-14.7 At overnattingsleverandøren ikke er registrert i, eller bosatt i, et land som er underlagt økonomiske eller handelsmessige sanksjoner; og
+14.7 Overnattingsleverandøren er ikke registrert i eller bosatt i land under økonomiske eller handelsmessige sanksjoner;
 
-14.8 Å utføre for egen regning ethvert arbeid som er nødvendig for å utbedre eventuelle mangler og/eller defekter som er varslet til dem av myndighetene med umiddelbar virkning. Overnattingsstedet skal varsle Wink om dette uten forsinkelse. Overnattingsstedet skal ta hensyn til enhver rimelig anbefaling for forbedringer fra Wink.
+14.8 Utfører på eget initiativ nødvendige utbedringer ved myndighetskrav og varsler Wink uten opphold.
 
 **15. Hendelser og klager fra gjester**
 
-15.1 Dersom en gjest skulle inntreffe en hendelse, må overnattingsleverandøren informere Wink om dette, og detaljene rundt dette, så snart som mulig, og skal samarbeide fullt ut med Wink med hensyn til korrekt håndtering av en slik hendelse.
+15.1 Ved hendelser skal Overnattingsleverandøren informere Wink så snart som mulig og samarbeide fullt ut.
 
-15.2 Overnattingsleverandøren samtykker i å samarbeide fullt ut med Wink i håndteringen av alle gjestekrav eller klager, og skal gi et detaljert svar på enhver Wink-forespørsel om slike saker senest syv (7) kalenderdager etter at den er mottatt fra Wink eller innen den fristen som er avtalt i serviceavtalen.
+15.2 Overnattingsleverandøren skal svare på Winks henvendelser innen 7 dager eller etter avtalt frist.
 
-15.3 Dersom Wink er pålagt å gi kompensasjon til en gjest som følge av en hendelse, krav eller klage fra gjesten på grunn av en handling eller unnlatelse fra overnattingsleverandøren, samtykker overnattingsleverandøren i å umiddelbart holde Wink skadesløs og refundere slike utgifter i sin helhet, og i samsvar med avsnitt 33 i de generelle vilkårene («Skadesløsholdelse») der det er gjeldende.
+15.3 Dersom Wink må kompensere gjest på grunn av Overnattingsleverandørens feil, skal Overnattingsleverandøren refundere Wink i henhold til punkt 33.
 
-15.4 Overnattingsstedet samtykker i å la Wink trekke fra alle kostnader, utgifter og kompensasjoner som følge av gjestehendelser og klager fra Wink fra overnattingsstedets saldo(er).
+15.4 Wink kan trekke kostnader for hendelser og klager fra Overnattingsleverandørens saldo.
 
 **16. Revisjonsrettigheter**
 
-16.1 I løpet av avtaleperioden kan Wink revidere relevante registre hos overnattingsleverandøren og/eller deltakende hoteller etter rimelighet for å foreta verifiseringer knyttet til (i) utførelsen av bestillingene; (ii) alle betalinger mottatt av Wink og/eller gjester; og (iii) alle betalinger betalt eller skal betales av Wink og/eller gjester.
+16.1 Under avtaleperioden kan Wink revidere relevante dokumenter for å verifisere bookinger og betalinger.
 
-16.2 Hver part skal bære sine egne kostnader knyttet til enhver revisjon, unntatt i følgende tilfeller: Dersom revisjonen viser at overnattingsleverandøren ikke overholder noen av sine forpliktelser i henhold til denne avtalen, skal overnattingsleverandøren, uten at det berører Winks andre rettigheter og rettsmidler, betale for revisjonen i sin helhet, og skal ta de nødvendige skritt for å bringe sine kontraktsmessige forpliktelser i samsvar.
+16.2 Hver part bærer egne kostnader, unntatt hvis revisjonen avdekker manglende oppfyllelse, da Overnattingsleverandøren dekker kostnadene.
 
 **17. Forsikring**
 
-Overnattingsleverandøren skal ha tilstrekkelig forsikringsdekning hos anerkjente forsikringsselskaper, som har lisens til å drive virksomhet i den aktuelle staten/landet, med hensyn til alle tredjepartsrisikoer som oppstår eller kan oppstå i forbindelse med eller i forbindelse med levering av overnatting (eller fasiliteter og tjenester) og/eller denne avtalen, inkludert Winks ansvar som direkte eller indirekte oppstår fra eller i forbindelse med krav knyttet til (i) tap av eller skade på fast eiendom eller løsøre; (ii) personskade eller død for en person; (iii) tap eller skade på tredjeparts eiendom; eller (iv) dens ansvar overfor tredjeparter som den tilbyr overnattingstjenestene til.
+Overnattingsleverandøren skal ha tilstrekkelig forsikring hos anerkjente forsikringsselskaper for alle tredjepartsrisikoer knyttet til overnatting og denne Avtalen, inkludert ansvar for tap, skade, personskade, tredjepartsskader osv.
 
-**18. Antibestikkelser, handelsrestriksjoner og forretningsetikk**
+**18. Antikorrupsjon, handelsrestriksjoner og forretningsetikk**
 
-Wink har nulltoleranse for brudd på internasjonale handelsnormer, lovgivning for forebygging av bestikkelser og korrupsjon, og gjeldende restriksjoner på handel, pengestrøm og finansiering av terrorisme.
+Wink har nulltoleranse for brudd på internasjonale handelsnormer, korrupsjon og terrorfinansiering.
 
-Overnattingsleverandøren garanterer at de overholder og skal overholde, og deres tilknyttede parter overholder og skal overholde Winks etiske retningslinjer for leverandører.
+Overnattingsleverandøren garanterer at de og deres tilknyttede parter overholder Winks leverandørkodeks.
 
-Overnattingsleverandøren erklærer, garanterer og forplikter seg til å overholde og i alle henseender overholde alle internasjonale handelsnormer, gjeldende restriksjoner på handel, pengestrøm og lovgivning om terrorfinansiering og forebygging av bestikkelser og korrupsjon, inkludert, men ikke begrenset til, den britiske bestikkelsesloven av 2010 og Singapores lov om forebygging av korrupsjon.
+Overnattingsleverandøren bekrefter at de overholder alle relevante lover, inkludert UK Bribery Act 2010 og Singapore Prevention of Corruption Act.
 
-Overnattingsleverandøren garanterer at verken de eller deres tilknyttede parter, etter beste overbevisning, er dømt for bestikkelser eller korrupsjon, eller er gjenstand for etterforskning fra statlige, administrative eller regulerende organer.
+Overnattingsleverandøren garanterer at verken de eller deres tilknyttede parter er dømt for korrupsjon eller under etterforskning.
 
 **19. Konfidensialitet**
 
-19.1 Konfidensiell informasjon. Partene forstår og samtykker i at hver part i forbindelse med oppfyllelsen av denne avtalen kan ha tilgang til eller bli eksponert for, direkte eller indirekte, konfidensiell og sensitiv informasjon fra den andre parten («konfidensiell informasjon»). Konfidensiell informasjon inkluderer kundedata, transaksjonsvolum, markedsførings- og forretningsplaner, forretnings-, finansiell, teknisk og driftsinformasjon, bruksstatistikk, rangeringsdata, informasjon om pris-, produkt- og tilgjengelighetsparitet, prispolitikk, konverteringsdata og klikkvolum, og annen relatert statistikk, personopplysninger om gjester, programvare eller informasjon om programvare levert eller brukt av Wink i forbindelse med denne avtalen, vilkårene i denne avtalen, og slik annen ikke-offentlig informasjon som enten en utleverende part betegner som privat eller konfidensiell, eller som en mottakende part med rimelighet burde vite at bør behandles som privat og konfidensiell.
+19.1 Konfidensiell informasjon inkluderer kundeopplysninger, transaksjonsvolumer, markedsføringsplaner, priser, personopplysninger, programvare og annen ikke-offentlig informasjon.
 
-19.2 Beskytte og ivareta konfidensiell informasjon. Hver part samtykker i at: (a) all konfidensiell informasjon skal forbli den utleverende partens eksklusive eiendom, og den mottakende parten skal ikke bruke konfidensiell informasjon til noe annet formål enn for å fremme denne avtalen, (b) den skal opprettholde, og skal bruke forsiktige metoder for å få sine ansatte, ledere, representanter, kontraktsparter og agenter (de «tillatte personene») til å opprettholde, konfidensialiteten og hemmeligholdet til den konfidensielle informasjonen, (c) den skal kun utlevere konfidensiell informasjon til de tillatte personene som trenger å vite slik informasjon for å fremme denne avtalen, (d) den skal ikke, og skal bruke forsiktige metoder for å sikre at tillatte personer ikke (i) kopierer, publiserer, overfører, reproduserer, avslører, utleverer eller gjør den konfidensielle informasjonen tilgjengelig for noen tredjepart, eller (ii) bruker eller lagrer den i et ubeskyttet gjenfinningssystem eller database (annet enn i henhold til vilkårene heri), og (e) den skal returnere eller ødelegge all ((papir- og digital) kopi av) konfidensiell informasjon på skriftlig anmodning fra den andre parten. Dersom en av partene behandler personopplysninger på vegne av den andre parten som en del av levering av tjenester i henhold til denne avtalen, skal partene regulere slik behandling gjennom en databehandleravtale (DPA) og skal utgjøre en del av vilkårene i denne avtalen.
+19.2 Partene skal beskytte konfidensiell informasjon, kun dele med nødvendige personer, og returnere eller destruere informasjon ved skriftlig forespørsel.
 
-19.3 Tillatt utlevering. Uavhengig av det foregående, skal konfidensiell informasjon ikke omfatte informasjon i den grad den (i) er eller blir en del av det offentlige domene uten handling eller unnlatelse fra mottakerpartens side, (ii) var i besittelse av mottakerparten før datoen for denne avtalen, (iii) blir utlevert til mottakerparten av en tredjepart som ikke har noen taushetsplikt med hensyn til dette, eller (iv) må utleveres i henhold til lov, rettskjennelse, stevning eller offentlig myndighet. Wink har rett til å utlevere denne avtalen konfidensielt til sine overnattingsleverandørselskaper.
+19.3 Unntak gjelder for informasjon som er offentlig, kjent før avtalen, mottatt fra tredjepart uten konfidensialitetsplikt, eller kreves offentliggjort ved lov.
 
-19.4 Kundedata. Partene skal gjøre kommersielt rimelige anstrengelser for å beskytte konfidensialiteten og personvernet til kundedata og for å beskytte dem mot uautorisert bruk eller utgivelse. Partene samtykker i å overholde gjeldende lover om behandling av personopplysninger og beskyttelse av personvernet. Partene skal til enhver tid bruke rimelige og passende sikkerhetstiltak for å forhindre korrupsjon av og uautorisert tilgang til kundedata. Slike tiltak vil blant annet omfatte datakryptering og kanalkryptering. Der det er relevant, må overnattingsleverandøren varsle Wink om ethvert sikkerhetsbrudd så raskt som mulig (senest 1 dag etter at bruddet er oppdaget). Hver part skal ha en personvernerklæring tilgjengelig for kunder som beskriver hvordan den beskytter og bruker kundedata. Partene kan utøve sin rett til å be om tilgang til sine personopplysninger, retting eller sletting av slike data, og sin rett til å protestere, dataportabilitet og begrensning av behandlingen, ved hjelp av en skriftlig forespørsel til den andre parten, til adressene angitt i overskriften til denne avtalen, i tillegg til å sende inn et krav til det lokale datatilsynet.
+19.4 Partene skal beskytte personopplysninger i samsvar med gjeldende lover og varsle om sikkerhetsbrudd innen 1 dag.
 
-19.5 Kunngjøringer. Ingen av partene skal opprette, publisere, distribuere eller tillate skriftlig materiale som refererer til den andre parten uten først å sende inn slikt materiale til den andre parten og innhente skriftlig samtykke fra den parten som ikke sender inn materialet på forhånd. Dette samtykket skal ikke urimelig nektes eller forsinkes.
+19.5 Ingen part skal publisere materiale som refererer til den andre uten skriftlig samtykke.
 
-19.6 Hver part kan kontakte den andre partens personvernombud (DPO) via følgende e-postadresser og/eller postadresser: dataprotectionofficer@Wink.
+19.6 Kontakt for personvernansvarlig: dataprotectionofficer@Wink.
 
 **20. Immaterielle rettigheter**
 
-20.1 Overnattingsstedet erkjenner at Wink og/eller dets lisensgivere skal beholde eierskapet til alle rettigheter, eierskap og interesser i og til alle immaterielle rettigheter tilhørende Wink eller som er nedfelt i Wink-nettstedet, inkludert (men ikke begrenset til) Wink-logoen, innholdet og Wink-dataene. Ingenting i denne avtalen skal anses å overføre noen slik rettighet, eierskap eller interesse til overnattingsstedet på noen måte.
+20.1 Wink og/eller dets lisensgivere beholder alle rettigheter til Wink-immaterielle rettigheter, inkludert logo, innhold og data.
 
-20.2 Leverandøren av overnatting skal ikke avsløre, integrere, inkludere, bruke, kombinere, utnytte, innlemme eller på annen måte gjøre Innholdet og Wink-dataene (eller deler av disse) tilgjengelige (a) med sitt eget innhold og/eller innholdet til noen Wink-konkurrent (inkludert hotellene), eller (b) til eller til fordel for (i) seg selv (med unntak av for å aktivere Tjenesten og Systemet i samsvar med vilkårene i denne Avtalen), eller (ii) noen Wink-konkurrent (inkludert hotellene) (enten for promotering av, markedsføring av, referanse til, promotering av, reklame for eller på annen måte i interesse for eller for en slik part), eller (c) til noe annet formål eller på noen annen måte og/eller på eller gjennom tredjepartsplattformer, med unntak av det som uttrykkelig er angitt i denne Avtalen. Partneren skal ikke endre, modifisere, forvrenge, lage avledede og/eller nye verk basert på og/eller avledet fra Innholdet, og Innholdet skal ikke inkludere en (direkte eller indirekte) lenke, referanse, klikk eller referanse til (nettstedet til) en Wink-konkurrent (inkludert hotellene).
+20.2 Overnattingsleverandøren skal ikke bruke eller kombinere Wink-innhold med konkurrenters innhold eller gjøre det tilgjengelig for konkurrenter, unntatt som avtalt.
 
-20.3 Leverandøren av overnatting skal (og skal sørge for at selskapene i gruppen av overnattingsleverandører ikke (direkte eller indirekte) registrerer, erverver, bruker, kjøper eller skaffer seg et domenenavn på internett som inneholder et eller flere ord som er identiske med, eller forvirrende eller vesentlig like «Wink» eller noen varianter, oversettelser eller feilstavelser av dette, inkludert som en del av adressen).
+20.3 Overnattingsleverandøren skal ikke registrere domenenavn som ligner på "Wink".
 
-20.4 Ved å inngå denne avtalen gir Wink ikke avkall på eller mister noen av sine rettigheter som Wink har krav på i henhold til lov, kontrakt eller på annen måte (nå eller i fremtiden) med hensyn til Winks immaterielle rettigheter overfor overnattingsleverandøren eller andre tredjeparter.
+20.4 Wink frasier seg ikke noen rettigheter til immaterielle rettigheter ved inngåelse av denne Avtalen.
 
-**21. Eierskifte**
+**21. Eierendring**
 
-21.1 Leverandøren av overnatting (og der konteksten krever det, hvert deltakende hotell) skal ikke selge, leie ut eller på annen måte avhende sin andel i noen hotelleiendom uten å gi minst tre (3) måneders skriftlig varsel. Ved slikt salg, utleie eller annen avhending skal leverandøren av overnatting (og/eller deltakende hotell) uttrykkelig bestemme i kontrakten for salg, leie eller annen avhending at denne avtalen (inkludert alle bestillinger gjort under den) skal tildeles eller fornyes til den nye enheten etter kontrollendringen, i henhold til underavsnitt (b) i denne klausulen.
+21.1 Overnattingsleverandøren skal gi minst 3 måneders skriftlig varsel ved salg, leie eller annen overdragelse av hotell, og sikre at Avtalen overføres til ny eier.
 
-21.2 Dersom Wink av en eller annen grunn ikke ønsker å forfølge avtalen med den nye enheten, kan partene bli enige om å si opp denne avtalen umiddelbart og uten at det berører eksisterende bestillinger og andre rettigheter som en av partene måtte ha opptjent før slik oppsigelse.
+21.2 Dersom Wink ikke ønsker å fortsette med ny eier, kan Avtalen termineres umiddelbart uten å påvirke eksisterende bookinger.
 
-**22. Listeinnhold**
+**22. Innhold i oppføringen**
 
-22.1 Wink vil gi overnattingsleverandøren tilgang til Winks ekstranett. Overnattingsleverandøren forplikter seg til å laste opp all informasjon og innhold knyttet til produktet, inkludert, men ikke begrenset til, fotografier, bilder, design, tekst, lyd, video, beskrivelser og fasiliteter (heretter kalt «Innhold»), for å sikre optimal distribusjon av produktet, og skal holde innholdet oppdatert. Dersom overnattingsleverandøren ikke leverer innholdet, gir denne uttrykkelig Wink tillatelse til å gjøre det ved å laste det ned direkte fra overnattingsleverandørens nettsted, og aksepterer hele ansvaret for eventuelle problemer, inkludert krav som måtte oppstå fra slik opplasting. I tillegg gir overnattingsleverandøren Wink rett til å endre og/eller justere størrelsen og oppløsningen på innholdet for markedsførings- og distribusjonsformål.
+22.1 Wink gir tilgang til ekstranett for opplasting av produktinformasjon og innhold. Overnattingsleverandøren er ansvarlig for innholdet og gir Wink rett til å justere det for markedsføring.
 
-22.2 Dersom overnattingsleverandøren ikke har tilgang til ekstranettet av årsaker utenfor deres kontroll, vil overnattingsleverandøren umiddelbart varsle Wink.
+22.2 Ved problemer med tilgang skal Wink varsles umiddelbart.
 
-22.3 Overnattingsstedet erklærer og garanterer at det har alle nødvendige rettigheter, lisenser, samtykker og autorisasjoner som kreves for å: (i) levere Innholdet til Wink; (ii) Overnattingsstedet gir herved Wink en ikke-eksklusiv, royaltyfri, ugjenkallelig, verdensomspennende og underlisensierbar rett til tredjeparts markedsførings- og/eller distribusjonspartnere til å bruke, endre, vise, publisere og justere Innholdet, navnet, logoene, varemerkene og all annen immateriell eiendom og industriell eiendom tilhørende Overnattingsstedet («IPR-er») med det formål å oppfylle denne avtalen; (iii) Overnattingsstedet garanterer overfor Wink og dets kunder at slike IPR-er ikke krenker noen tredjeparts rettigheter; og (iv) Overnattingsstedet skal være ansvarlig for all ærekrenkende eller umoralsk informasjon, sannferdigheten og nøyaktigheten av dens IPR-er gitt til Wink på noen måte.
+22.3 Overnattingsleverandøren garanterer at de har nødvendige rettigheter til innholdet og gir Wink en ikke-eksklusiv, royaltyfri, verdensomspennende lisens til bruk.
 
-22.4 Leverandøren av overnatting skal, til enhver tid under og etter utløpet av opphør av denne avtalen, holde Wink, dets leverandører av overnatting og/eller dets partnere skadesløse og holde dem skadesløse på forespørsel fra og mot ethvert tap som Wink, dets leverandører av overnatting og/eller dets partnere pådrar seg, tilkjenner eller er avtalt å betale som følge av ethvert krav om immaterielle rettigheter.
+22.4 Overnattingsleverandøren skal holde Wink skadesløs for eventuelle immaterielle rettighetskrav.
 
-22.5 Overnattingsleverandøren skal: (i) gi Wink oppdateringer på den måten Wink ber om om fremdriften i IPR-kravet, inkludert bevis på at IPR-kravet er avgjort eller avvist av kravshaveren, så snart som rimelig praktisk mulig; (ii) Dersom Overnattingsleverandøren ikke overholder denne klausulen, eller hvis Wink ikke er fullt ut fornøyd med fremdriften i IPR-kravet, eller for å forhindre ytterligere skader, skal Wink overta umiddelbar kontroll over IPR-kravet på Overnattingsleverandørens bekostning. Wink har rett til å motregne eventuelle kostnader og kompensasjon som er betalt som følge av IPR-kravet mot ethvert nåværende, betinget og/eller fremtidig beløp som forfaller eller skyldes Overnattingsleverandøren.
+22.5 Ved manglende oppfyllelse kan Wink overta kontroll over immaterielle rettighetskrav på Overnattingsleverandørens kostnad.
 
-**23. Publisitet / Ekstern kommunikasjon**
+**23. Offentlig kommunikasjon**
 
-23.1 Overnattingsleverandøren skal ikke utlevere noen form for kommunikasjon eller materiale relatert til Wink eller denne avtalen, verken til media eller noen annen ekstern part uten Winks skriftlige samtykke på forhånd, og Overnattingsleverandøren skal være eneansvarlig og direkte ansvarlig for eventuelle skader eller tap som Wink pådrar seg i strid med denne bestemmelsen.
+23.1 Overnattingsleverandøren skal ikke offentliggjøre informasjon om Wink eller Avtalen uten skriftlig samtykke.
 
-23.2 Overnattingsleverandøren skal rådføre seg med Wink angående innholdet i all slik kommunikasjon eller materiale som den har til hensikt å offentliggjøre, og overnattingsleverandøren må gi Wink en kopi av all slik kommunikasjon eller materiale som til slutt offentliggjøres.
+23.2 Overnattingsleverandøren skal konsultere Wink før publisering og gi kopi av materialet.
 
-**24. Presedens**
+**24. Prioritet**
 
-24.1 Denne avtalen er opprettet for å tillate individuelle kommersielle avtaler som Wink senere vil ha med hver av overnattingsleverandørene. Ved avvik skal vilkårene og betingelsene som er fastsatt i denne avtalen gjelde for overnattingsleverandørene, med forbehold om følgende:
+24.1 Denne Avtalen gjelder for individuelle kommersielle avtaler mellom Wink og Overnattingsleverandører.
 
-24.2 Når det gjelder betalingsvilkår angående avtalte avbestillinger og manglende oppmøte, betalingsregler, utmeldinger og tilgjengelighet av rom (standardtype), skal vilkårene i denne avtalen ha forrang.
+24.2 Ved uoverensstemmelse gjelder betalingsvilkårene i denne Avtalen.
 
-24.3 Når det gjelder priser, minimumsbelegg, rabatter for tredjeparter og barn, og gjeldende markeder, skal vilkårene som er avtalt i den gjeldende individuelle forretningsavtalen ha forrang.
+24.3 Vedrørende priser, minimumsopphold, rabatter og markeder gjelder individuelle kommersielle avtaler.
 
-**25. Signeringsmyndighet – Representasjon og signatur fra overnattingsleverandør**
+**25. Fullmakt til signering**
 
-25.1 Leverandøren av overnatting garanterer at den, personen som signerer denne avtalen, og/eller enhver annen person som gir informasjon (inkludert, for å unngå tvil, eventuelle betalingsvilkår) til Wink i forbindelse med eller i henhold til denne avtalen, har myndighet, kapasitet og nødvendig fullmakt til å signere denne avtalen for og på vegne av hvert eneste deltakende hotell, og at en slik person har myndighet, kapasitet og nødvendig fullmakt til å binde leverandøren av overnatting og hvert eneste deltakende hotell til denne avtalen, og skal, i løpet av avtaleperioden, overholde, utføre og sikre at hvert deltakende hotell overholder og utfører sine forpliktelser i henhold til denne avtalen.
+25.1 Overnattingsleverandøren garanterer at den som signerer har fullmakt til å binde alle deltakende hoteller til Avtalen.
 
-25.2 Overnattingsstedet samtykker uttrykkelig i at elektronisk aksept av denne avtalen og dens vilkår og betingelser, inkludert de som er knyttet til endringer, er gyldig, bindende og kan håndheves.
+25.2 Elektronisk aksept av Avtalen og endringer er gyldig og bindende.
 
 **26. Språk**
 
-Den engelskspråklige versjonen av denne avtalen skal være forrangsmessig i alle henseender og skal ha forrang ved eventuelle uoverensstemmelser med oversatte versjoner.
+Den engelske versjonen av Avtalen gjelder ved uoverensstemmelser med oversettelser.
 
-**27. Dispensasjoner**
+**27. Fraskrivelser**
 
-Ingen fraskrivelse av brudd eller betingelser i denne avtalen skal anses som en fraskrivelse av andre eller senere brudd eller betingelser, enten av lignende eller annen art.
+Ingen fraskrivelse av brudd på Avtalen skal tolkes som fraskrivelse av andre eller senere brudd.
 
-**28. Adskillelighet**
+**28. Delbarhet**
 
-Dersom noen bestemmelse i denne avtalen av et offentlig håndhevingsorgan, en domstol eller en tribunal med kompetent jurisdiksjon bestemmes som ulovlig, ugyldig eller på annen måte ikke kan håndheves i henhold til nasjonal lov, skal slik bestemmelse tolkes, endres eller slettes i den grad det er nødvendig for å gjøre slik bestemmelse og/eller denne avtalen lovlig, gyldig eller på annen måte kan håndheves, og den gjenværende delen av slik bestemmelse og de gjenværende andre bestemmelsene heri skal fortsette å gjelde, forbli i full kraft og virkning, og fortsette å være bindende, og skal tolkes for å gi virkning til partenes intensjon i størst mulig grad.
+Dersom en bestemmelse er ugyldig, skal den endres eller fjernes for å gjøre Avtalen gyldig, og resten av Avtalen skal fortsatt gjelde.
 
 **29. Partenes forhold**
 
-Partene er, og skal opptre som, uavhengige kontraktører i utførelsen av denne avtalen. Ingen av partene skal opptre som, eller anses å være, en agent for eller partner for den andre parten for noe formål overhodet, og ingen av partene skal ha myndighet til å binde den andre parten på noen måte.
+Partene er uavhengige kontraktører og skal ikke opptre som agent eller partner for hverandre.
 
-**30. Oppgave**
+**30. Overdragelse**
 
-30.1 Ingen av partene har rett til å overdra, overføre eller hefte noen av sine rettigheter og/eller forpliktelser i henhold til denne avtalen uten skriftlig samtykke fra den andre parten, forutsatt at Wink kan overdra, overføre eller hefte noen av sine rettigheter og/eller forpliktelser i henhold til denne avtalen (helt eller delvis eller fra tid til annen) til et tilknyttet selskap uten skriftlig samtykke fra overnattingsleverandøren.
+30.1 Ingen part kan overdra rettigheter eller forpliktelser uten skriftlig samtykke, unntatt Wink som kan overdra til tilknyttet selskap uten samtykke.
 
-30.2 Denne avtalen inngås til fordel for partene og deres respektive etterfølgere og tillatte stedfortredere, og ingenting heri er ment å eller skal implisitt gi noen annen person noen juridisk eller rimelig rett, fordel eller rettsmiddel av noen art, i henhold til eller på grunn av denne avtalen, med unntak av den grad annet er uttrykkelig angitt i denne avtalen.
+30.2 Avtalen er til fordel for Partene og deres etterfølgere, og gir ingen rettigheter til tredjepart.
 
 **31. Force Majeure**
 
-Wink skal ikke være ansvarlig for forsinkelser eller manglende oppfyllelse av forpliktelser i henhold til disse vilkårene som følge av årsaker utenfor Winks eller Wink Payments' rimelige kontroll, inkludert, men ikke begrenset til, force majeure, naturkatastrofer, krig, terrorisme, opptøyer, embargoer, handlinger fra sivile eller militære myndigheter, brann, flom, ulykker, pandemier, epidemier eller sykdom, streiker eller mangel på transportfasiliteter, drivstoff, energi, arbeidskraft eller materialer («force majeure-hendelse»).
+Wink er ikke ansvarlig for forsinkelser eller manglende oppfyllelse som skyldes forhold utenfor rimelig kontroll, som naturkatastrofer, krig, terror, streik, pandemi osv.
 
 **32. Ansvarsbegrensning**
 
-32.1 I den grad loven tillater det, skal ingen av partene være ansvarlige for noen indirekte, tilfeldige, følgeskader, spesielle eller straffende skader som følge av denne avtalen eller brudd på den, selv om partene er gjort oppmerksomme på muligheten for slike skader. Denne begrensningen gjelder ikke for brudd på denne avtalen knyttet til konfidensialitet og/eller immaterielle rettigheter.
+32.1 Ingen part er ansvarlig for indirekte eller følgeskader, unntatt ved brudd på konfidensialitet eller immaterielle rettigheter.
 
-32.2 Ingen av partene kan fraskrive seg ansvar med hensyn til (i) dødsfall eller personskade forårsaket av deres egen eller deres ansattes, agenters eller underleverandørers uaktsomhet, (ii) svindel begått av dem selv eller deres ansatte, eller (iii) brudd, handlinger, unnlatelser eller ansvar som ikke kan begrenses i henhold til gjeldende lov.
+32.2 Ansvar kan ikke utelukkes ved dødsfall, personskade, svindel eller lovpålagt ansvar.
 
-32.3 Partene erkjenner og samtykker i at ansvarsunntakene og begrensningene som er angitt i denne avtalen er rettferdige og rimelige.
+32.3 Partene anser ansvarsbegrensningene som rimelige.
 
-**33. Skadesløsholdelse**
+**33. Erstatning**
 
-I den grad det er tillatt i henhold til gjeldende lov, samtykker du i å frita, forsvare (etter Winks valg), holde skadesløs og holde Wink og alle dets overnattingsleverandører og datterselskaper, og deres ledere, direktører, ansatte og agenter, skadesløse fra og mot ethvert krav, ansvar, skader, tap og utgifter, inkludert, uten begrensning, rimelige juridiske og regnskapsmessige gebyrer, som oppstår som følge av eller på noen måte er forbundet med (i) ditt brudd på disse vilkårene; (ii) din feilaktige bruk av tjenestene; (iii) din unnlatelse, eller vår unnlatelse etter din ordre, av å rapportere, innkreve eller betale skatter nøyaktig; eller (iv) ditt brudd på lover, forskrifter eller tredjeparts rettigheter.
+Du godtar å holde Wink og dets partnere skadesløse for krav, tap og kostnader som følge av brudd på vilkårene, feil bruk, manglende skatterapportering eller brudd på lover.
 
-**34. Gjeldende lov og jurisdiksjon**
+**34. Lovvalg og jurisdiksjon**
 
-34.1 Denne avtalen skal utelukkende reguleres av og tolkes i samsvar med lovene i Singapore. Kontraktsloven (Tredjeparters rettigheter) fra 2001 (kap. 53B) skal ikke gjelde for denne avtalen. Partene skal under alle omstendigheter forsøke å løse sine tvister på en minnelig måte utenfor retten ved først å gjennomføre diskusjoner og forhandlinger i god tro.
+34.1 Avtalen reguleres av singaporsk lov. Tvister skal søkes løst i minnelighet.
 
-34.2 Eventuelle tvister som oppstår fra eller i forbindelse med denne avtalen skal utelukkende forelegges og behandles av den kompetente domstolen i Singapore, uten hensyn til lovvalgsregler.
+34.2 Tvister avgjøres av kompetent domstol i Singapore.
 
-**35. Motparter**
+**35. Signering i flere eksemplarer**
 
-Denne avtalen kan undertegnes av motparter, som hver (når de er underskrevet) skal anses som en original, og som samlet sett skal utgjøre ett og samme dokument. Videre skal enhver skannet/elektronisk kopi av Winks skriftlige signatur ha samme og lik virkning som en original håndskrevet signatur fra Wink og skal ikke påvirke gyldigheten av denne avtalen.
+Avtalen kan signeres i flere eksemplarer som til sammen utgjør ett dokument. Skannet eller elektronisk signatur har samme gyldighet som original signatur.
 
 **36. Hele avtalen**
 
-36.1 Denne avtalen (inkludert registreringsskjemaet for overnattingsleverandørpartner, vedlegg og tillegg, som utgjør en integrert del av denne avtalen) utgjør hele avtalen og forståelsen mellom partene med hensyn til dens innhold, og erstatter og erstatter alle tidligere avtaler, ordninger, ((ikke-)bindende) tilbud, forpliktelser eller uttalelser angående slikt innhold.
+36.1 Avtalen, inkludert registreringsskjema og vedlegg, utgjør hele avtalen og erstatter tidligere avtaler.
 
-36.2 Dersom noen bestemmelse i denne avtalen er eller blir ugyldig eller ikke-bindende, skal partene forbli bundet av alle andre bestemmelser heri. I så fall skal partene erstatte den ugyldige eller ikke-bindende bestemmelsen med bestemmelser som er gyldige og bindende, og som i størst mulig grad har en lignende virkning som den ugyldige eller ikke-bindende bestemmelsen, gitt innholdet og formålet med denne avtalen.
+36.2 Ugyldige bestemmelser erstattes med gyldige som har tilsvarende effekt.
 
-**37. Henrettelse**
+**37. Ikrafttredelse**
 
-Avtalen trer først i kraft og virkning etter skriftlig bekreftelse på aksept og godkjenning av overnattingsleverandøren fra Wink. Ved å registrere seg og melde seg på Winks partnerprogram som overnattingsleverandør, samtykker, erkjenner og aksepterer overnattingsleverandøren vilkårene og betingelsene i denne avtalen, inkludert bestemmelsene knyttet til endringer i denne avtalen.
+Avtalen trer i kraft ved skriftlig bekreftelse fra Wink. Ved registrering og påmelding til Wink-programmet aksepterer Overnattingsleverandøren vilkårene, inkludert endringer.
 
-Avtalen er lest og alle vilkår og betingelser er godkjent av overnattingsstedet. Tilknyttede selskaper samtykker uttrykkelig i at elektronisk aksept av denne avtalen og dens vilkår og betingelser, inkludert de som er knyttet til endringer, er gyldig, bindende og kan håndheves.
+Avtalen er lest og akseptert. Elektronisk aksept er gyldig og bindende.
 
-**38. Merknader**
+**38. Varsler**
 
-Alle varsler fra en part i henhold til denne avtalen skal være på engelsk, skriftlig, og skal leveres personlig, med forhåndsbetalt og rekommandert post, eller med en internasjonalt anerkjent ekspressbudtjeneste (f.eks. FedEx, UPS, DHL) til det registrerte kontoret eller via e-post til kontaktpersonen.
+Alle varsler skal være på engelsk, skriftlige, og leveres personlig, med forhåndsbetalt og registrert post, eller internasjonal ekspresskurér til registrert adresse eller via e-post til kontaktperson.
 
-Enhver melding i henhold til denne avtalen skal anses å være mottatt (i) hvis den leveres personlig, ved signering av en leveringskvittering, eller (ii) hvis den leveres via forhåndsbetalt rekommandert post, ved leveringsbevis; eller (iii) hvis den leveres via ekspressbud, på budtjenestens registrerte leveringsdato (iv) hvis den leveres via e-post, forutsatt at bekreftelse på mottak er sendt inn.
-
+Varsel anses mottatt ved (i) personlig levering med kvittering, (ii) registrert post ved leveringsbevis, (iii) ekspresskurér ved registrert leveringsdato, eller (iv) e-post ved bekreftelse på mottak.

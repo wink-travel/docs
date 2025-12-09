@@ -1,165 +1,163 @@
 ---
 title: Maksuehdot
-description: >-
-  Tämä asiakirja käsittelee rahastojen saatavuutta ja sitä, miten Wink maksaa
-  tytäryhtiöilleen.
+description: Tämä asiakirja kattaa varojen saatavuuden ja miten Wink maksaa kumppaneilleen.
 sidebar:
-  order: 21
+  order: 22
 ---
-:::huomautus
+
+:::note
 Viimeksi päivitetty 12.6.2024
 :::
 
-**MAKSUEHDOT MAJOITUSPALVELUNTARJOAJILLE**
+**MAKSUEHDOT MAJOITUSPALVELUIDEN TARJOAJILLE**
 
-Nämä maksuehdot (”**Maksuehdot**”) ovat sitova oikeudellinen sopimus majoituspaikan tarjoajan ja TripPayn (jäljempän&#xE4;**"Maksunvälittäjä"**), Traveliko Singapore Pte. Ltd:n kokonaan omistama tytäryhtiö, joka hallinnoi Wink-alustan (jäljempänä "maksupalveluita") kautta tai siihen liittyen suoritettavia maksupalveluita (määritelty jäljempänä)**"Silmänisku"**). Kun näissä maksuehdoissa mainitaan ”**Maksuvälittäjä**, “**me**, “**meille**” tai ”**meidän**”, se viittaa TripPay-yritykseen, jonka kanssa olet tehnyt sopimuksen maksupalveluista.
+Nämä Maksuehdot (“**Maksuehdot**”) ovat sitova oikeudellinen sopimus Majoituspalvelun Tarjoajan ja TripPayn (jäljempänä **”Maksunvälittäjä”**), Traveliko Singapore Pte. Ltd:n kokonaan omistaman tytäryhtiön, välillä, joka säätelee Maksupalveluita (määritelty alla), joita toteutetaan Wink-alustan (jäljempänä **”Wink”**) kautta tai siihen liittyen. Kun näissä Maksuehdoissa mainitaan ”**Maksunvälittäjä**”, ”**me**”, ”**meitä**” tai ”**meidän**”, tarkoitetaan TripPay-yhtiötä, jonka kanssa teette sopimuksen Maksupalveluista.
 
-Maksuvälittäjä tarjoaa maksupalveluita majoituspalvelujen tarjoajille, jotka myyvät majoitusta Wink-alustan kautta. Näihin maksupalveluihin voivat sisältyä (jos saatavilla) seuraavat (yhdessä "**Maksupalvelut**"):
+Maksunvälittäjä tarjoaa maksupalveluita Majoituspalvelun Tarjoajille, jotka myyvät varastoaan Wink-alustan kautta. Nämä maksupalvelut voivat sisältää (jos saatavilla) seuraavat palvelut (yhteisesti ”**Maksupalvelut**”):
 
-* Maksujen kerääminen vierailta ("Sisäänmaksu") veloittamalla heidän ostokseensa liittyvää maksutapaa, kuten luottokorttia, pankkikorttia, tilisiirtoa, kryptovaluuttoja tai PayPalia ("Maksutapa");
-* Maksujen suorittaminen majoituspalvelujen tarjoajille ("Maksu");
-* Maksunkeräyspalvelut; ja
-* Muut majoituspalveluihin liittyvät maksupalvelut.
+* Maksujen kerääminen vierailta (“Pay-in”), veloittamalla ostoon liitetty maksutapa, kuten luotto- tai pankkikortti, tilisiirto, kryptovaluutat tai PayPal (“Maksutapa”);  
+* Maksujen suorittaminen Majoituspalvelun Tarjoajille (“Pay-out”);  
+* Maksujen keräyspalvelut; ja  
+* Muut maksuihin liittyvät palvelut Majoituspalvelun Tarjoajan palveluihin liittyen.
 
-Maksupalveluiden käyttämiseksi sinun on oltava vähintään 18-vuotias, sinulla on oltava maksupalveluntarjoajan ehtojen mukainen hyvämaineinen Wink-tili ja sinun on pidettävä maksu- ja henkilötietosi oikeina ja täydellisinä.
+Maksupalveluiden käyttämiseen sinun tulee olla vähintään 18-vuotias, sinulla tulee olla Wink-tili, joka on voimassa Maksunvälittäjän ehtojen mukaisesti, ja sinun tulee pitää maksutietosi ja henkilötietosi tarkkoina ja ajan tasalla.
 
-Sopimus on luettu ja majoituspalveluntarjoaja on hyväksynyt kaikki ehdot. Majoituspalveluntarjoaja nimenomaisesti hyväksyy, että tämän sopimuksen ja sen ehtojen, mukaan lukien muutosten, sähköinen hyväksyminen on pätevä, sitova ja täytäntöönpanokelpoinen.
+Sopimus on luettu ja kaikki ehdot on hyväksytty Majoituspalvelun Tarjoajan toimesta. Majoituspalvelun Tarjoaja hyväksyy nimenomaisesti, että tämän Sopimuksen ja sen ehtojen sähköinen hyväksyminen, mukaan lukien muutoksiin liittyvät ehdot, on pätevä, sitova ja täytäntöönpanokelpoinen.
 
-Sopimusosapuoli tarjoaa maksupalvelut Majoituspaikan sijaintimaasta riippuen seuraavasti:
+Maksupalvelut tarjotaan sopimusosapuolen toimesta maasta riippuen, jossa Majoitus sijaitsee, seuraavasti:
 
-* Yhdysvallat: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.
-* Muu maailma: TripPay Slovakia
+* Yhdysvallat: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
+* Muut maat: TripPay Slovakia
 
-**1. Maksupalveluiden käyttösi**
+**1. Maksupalveluiden käyttö**
 
-1.1**Maksuvälityspalvelut**Käyttämällä Maksupalveluita sitoudut noudattamaan näitä Maksuehtoja. Maksuvälittäjä voi tilapäisesti rajoittaa tai keskeyttää pääsysi Maksupalveluihin tai niiden ominaisuuksiin suorittaakseen ylläpitotoimenpiteitä, jotka varmistavat Maksupalveluiden asianmukaisen toiminnan. Maksuvälittäjä voi parantaa, laajentaa ja muokata Maksupalveluita sekä ottaa käyttöön uusia Maksupalveluita aika ajoin. Maksuvälittäjä ilmoittaa Majoituspalveluntarjoajille kaikista Maksupalveluiden muutoksista, elleivät tällaiset muutokset olennaisesti lisää Majoituspalveluntarjoajan sopimusvelvoitteita tai vähennä Majoituspalveluntarjoajan oikeuksia näiden Maksuehtojen mukaisesti.
+1.1 **Maksunvälittäjän palvelut**. Käyttämällä Maksupalveluita sitoudut noudattamaan näitä Maksuehtoja. Maksunvälittäjä voi tilapäisesti rajoittaa tai keskeyttää pääsysi tai käyttöösi Maksupalveluihin tai niiden ominaisuuksiin suorittaakseen huoltotoimenpiteitä, jotka varmistavat Maksupalveluiden asianmukaisen toiminnan. Maksunvälittäjä voi parantaa, kehittää ja muuttaa Maksupalveluita sekä ottaa käyttöön uusia Maksupalveluita aika ajoin. Maksunvälittäjä ilmoittaa Majoituspalvelun Tarjoajille kaikista Maksupalveluiden muutoksista, ellei kyseiset muutokset olennaisesti lisää Majoituspalvelun Tarjoajan sopimusvelvoitteita tai vähennä Majoituspalvelun Tarjoajan oikeuksia näiden Maksuehtojen mukaisesti.
 
-1.2**Vahvistus**Valtuutat Maksuvälittäjän, suoraan tai kolmansien osapuolten kautta, tekemään mitä tahansa tiedusteluja, joita pidämme tarpeellisina henkilöllisyytesi varmentamiseksi. Tähän voi sisältyä (i) henkilöllisyytesi seulonta kolmansien osapuolten tietokantoja tai muita lähteitä vasten, (ii) raporttien pyytäminen palveluntarjoajilta, (iii) pyyntö antaa virallinen henkilöllisyystodistus (esim. ajokortti tai passi), syntymäaikasi, osoitteesi ja muita tietoja; tai (iv) vaatimus sinun ryhtyä toimiin sähköpostiosoitteesi, maksutapasi tai maksutapasi omistajuuden vahvistamiseksi. Maksuvälittäjä pidättää oikeuden lopettaa, keskeyttää tai rajoittaa pääsyä maksupalveluihin, jos emme pysty hankkimaan tai varmentamaan näitä tietoja.
+1.2 **Varmennus**. Valtuutat Maksunvälittäjän, suoraan tai kolmansien osapuolten kautta, tekemään kaikki tarpeellisiksi katsomamme tarkistukset henkilöllisyytesi varmistamiseksi. Tämä voi sisältää (i) sinut kolmansien osapuolten tietokantoja tai muita lähteitä vastaan tarkistamisen, (ii) palveluntarjoajilta raporttien pyytämisen, (iii) pyynnön toimittaa virallinen henkilöllisyystodistus (esim. ajokortti tai passi), syntymäaika, osoite ja muita tietoja; tai (iv) vaatimuksen vahvistaa sähköpostiosoitteesi, Maksutapasi tai Pay-out-menetelmäsi omistajuus. Maksunvälittäjä pidättää oikeuden lopettaa, keskeyttää tai rajoittaa pääsyä Maksupalveluihin, jos emme pysty hankkimaan tai varmistamaan näitä tietoja.
 
-1.3**Lisäehdot**Tiettyjen maksupalveluiden käyttöösi voidaan soveltaa lisäehtoja tai sinun on ehkä hyväksyttävä tällaisia ​​ehtoja. Jos näiden maksuehtojen ja tiettyyn maksupalveluun sovellettavien ehtojen välillä on ristiriita, jälkimmäiset ehdot ovat ensisijaisia ​​kyseisen maksupalvelun käyttöön, ellei toisin ole mainittu.
+1.3 **Lisäehdot**. Pääsysi tai käyttöösi tietyissä Maksupalveluissa voi olla sidottu tai edellyttää lisäehtojen hyväksymistä. Jos näiden Maksuehtojen ja tiettyä Maksupalvelua koskevien ehtojen välillä on ristiriita, jälkimmäiset ehdot ovat etusijalla kyseisen Maksupalvelun käytössä, ellei toisin ole määritelty.
 
-1.4**Pankkitilitiedot**Majoituspalveluntarjoajan on varmistettava, että sen Winkille toimittamat pankkitilitiedot ovat aina oikein, ja sen on ilmoitettava viipymättä kaikista niiden muutoksista.
+1.4 **Pankkitilitiedot**. Majoituspalvelun Tarjoajan tulee varmistaa, että Winkille ilmoitetut pankkitilitiedot ovat aina oikeat, ja ilmoittaa viipymättä kaikista muutoksista.
 
-Vain tämän sopimuksen allekirjoittaja on Majoituspalveluntarjoajan ainoa nimetty edustaja, jolla on valtuudet pyytää muutoksia Majoituspalveluntarjoajan pankkitili- ja/tai maksunsaajan tietoihin. Kenelläkään muulla henkilöllä ei ole tällaista valtuutta Majoituspalveluntarjoajan puolesta. Tällaisen nimetyn henkilön muutosta on pyydettävä Winkiltä kirjallisesti, ja tällainen muutos pannaan täytäntöön ainoastaan ​​molempien osapuolten allekirjoittamalla kirjallisella sopimuksella.
+Vain tämän sopimuksen allekirjoittaja on Majoituspalvelun Tarjoajan yksinomainen edustaja, jolla on valtuudet pyytää muutoksia Majoituspalvelun Tarjoajan pankkitili- ja/tai maksunsaajatietoihin. Muilla henkilöillä ei ole tällaista valtuutta Majoituspalvelun Tarjoajan puolesta. Tällaisen edustajan vaihdos tulee pyytää kirjallisesti Winkille, ja muutos toteutetaan vain kirjallisella molempien osapuolten allekirjoittamalla sopimusmuutoksella.
 
 **2. Maksujen kerääminen ja maksaminen**
 
-2.1**Maksun kerääminen ja maksaminen**Maksuvälittäjä kerää maksun vierailta majoitusliikkeen puolesta (maksu). Maksupalkkiot määräytyvät vieraan maksutavan (esim. Visa, PayPal) ja valuuttamuunnoksen ("maksupalkkiot") mukaan, jos ja kun sovellettavissa. Kun varat ovat käytettävissä maksua varten, veloitetaan maksupalkkiot, mukaan lukien pankkikulut ja valuutanmuunnos ("maksupalkkiot"), jos ja kun sovellettavissa.
+2.1 **Maksujen kerääminen ja maksaminen**. Maksunvälittäjä kerää maksut vieraiden puolesta Majoituspalvelun Tarjoajalle (Pay-in). Pay-in-maksut määräytyvät vieraan maksutavan (esim. Visa, PayPal) ja valuutanvaihdon perusteella (“Pay-in-maksut”), jos ja kun sovellettavissa. Kun varat ovat saatavilla Pay-outia varten, Pay-out-maksut, mukaan lukien pankkikulut ja valuutanvaihto (“Pay-out-maksut”), voivat tulla sovellettaviksi.
 
-2.2**Maksupalvelumaksut**Maksuvälittäjä veloittaa 4 % maksupalveluista varauksen kokonaishinnasta.
+2.2 **Maksupalvelumaksut**. Maksunvälittäjä veloittaa 4 % kokonaistilauksen arvosta Maksupalveluista.
 
-2.3**Varojen saatavuus**Jos vieraan maksut on vastaanotettu onnistuneesti, maksunvälittäjä asettaa varaukseen liittyvät varat majoituspaikan tarjoajan saataville 24 tunnin kuluessa vieraan sisäänkirjautumisesta.
+2.3 **Varojen saatavuus**. Edellyttäen, että Maksunvälittäjä on onnistuneesti vastaanottanut maksut vieraalta, Maksunvälittäjä tekee varat varauksesta saataville Majoituspalvelun Tarjoajalle 24 tunnin kuluessa vieraan sisäänkirjautumisesta.
 
-2.4**Maksu**. Varauksen maksu paikalliselle pankkitilillesi tai virtuaaliluottokortille on varauksen kokonaisarvo vähennettynä maksupalvelumaksuilla (4 %), Wink-varausmaksulla (1,5 %) ja kumppanipalkkiolla, jos ja kun se on sovellettavissa majoituspalveluntarjoajien ehtojen mukaisesti. Vahvistetun varauksen peruutuksen sattuessa maksunvälittäjä maksaa sinulle mahdollisen erääntyneen summan ehtojen ja sovellettavan peruutuskäytännön mukaisesti.
+2.4 **Pay-out**. Varausten Pay-out paikalliselle pankkitilillesi tai virtuaalikortille on varauksen kokonaishinta vähennettynä Maksupalvelumaksuilla (4 %), Winkin varausmaksulla (1,5 %) ja kumppanipalkkiolla, jos sovellettavissa Majoituspalvelun Tarjoajan ehdoissa. Vahvistetun varauksen peruutustilanteessa Maksunvälittäjä maksaa sinulle sovellettavan summan ehtojen ja peruutuskäytännön mukaisesti.
 
-2.5**Maksutietovaatimukset**Saadaksesi maksun paikalliselle pankkitilillesi tai maksuvälittäjätiliisi liitetyn virtuaalisen luottokortin kautta, sinun on annettava laskutustiedot, kuten yrityksen tiedot, nimi, virallinen tunnistenumero, verotunnus, laskutusosoite ja rahoitusvälineen tiedot joko maksuvälittäjälle tai sen kolmannen osapuolen maksunkäsittelijälle/käsittelijöille. Lisätietoja voidaan vaatia, kuten asuinosoite, tilillä oleva nimi, tilin tyyppi, reititysnumero, tilinumero, sähköpostiosoite, tunnistenumero ja tiettyyn maksunkäsittelijään liittyvät tilitiedot. Valtuutat maksuvälittäjän keräämään ja tallentamaan laskutustietosi ja rahoitusvälineesi tiedot. Maksuvälittäjä voi myös jakaa tietojasi viranomaisten kanssa sovellettavan lain edellyttämällä tavalla.
+2.5 **Pay-out-tietovaatimukset**. Saadaksesi Pay-outin paikalliselle pankkitilillesi tai virtuaalikortille, joka on liitetty Maksunvälittäjä-tiliisi, sinun tulee toimittaa laskutustiedot, kuten yritystiedot, nimi, virallinen henkilötunnus, verotunnus, laskutusosoite ja maksuvälineen tiedot joko Maksunvälittäjälle tai sen kolmannen osapuolen maksunkäsittelijöille. Lisätietoja saatetaan vaatia, kuten asuinosoite, tilin nimi, tilityyppi, pankin tunnus, tilinumero, sähköpostiosoite, tunnistenumero ja maksunkäsittelijään liittyvät tilitiedot. Valtuutat Maksunvälittäjän keräämään ja tallentamaan laskutus- ja maksuvälinetietosi. Maksunvälittäjä voi myös jakaa tietojasi viranomaisille sovellettavan lain mukaisesti.
 
-2.6**Maksurajoitukset**Maksuvälittäjä voi tilapäisesti asettaa pitoon, keskeyttää tai peruuttaa minkä tahansa maksun laittoman toiminnan tai petoksen estämiseksi, riskinarvioinnin, turvallisuuden tai tutkinnan loppuun saattamiseksi; tai jos emme pysty vahvistamaan henkilöllisyyttäsi. Lisäksi Maksuvälittäjä voi tilapäisesti asettaa pitoon, keskeyttää tai viivästyttää minkä tahansa sinulle Ehtojen mukaisesti kuuluvan maksun aloittamista tai käsittelyä, jos ylivoimaisen esteen (kuten jäljempänä määritellään) vuoksi tehdään paljon varausten peruutuksia tai muutoksia.
+2.6 **Pay-out-rajoitukset**. Maksunvälittäjä voi tilapäisesti pidättää, keskeyttää tai peruuttaa Pay-outin estääkseen laittoman toiminnan tai petoksen, riskinarvioinnin, turvallisuuden tai tutkinnan vuoksi; tai jos emme pysty varmistamaan henkilöllisyyttäsi. Lisäksi Maksunvälittäjä voi tilapäisesti pidättää, keskeyttää tai viivästyttää Pay-outin aloittamista tai käsittelyä näiden ehtojen mukaisesti suurten varausperuutusten tai muutosten vuoksi ylivoimaisen esteen (Force Majeure) seurauksena.
 
-2.7**Maksujen rajoitukset**Maksuvälittäjä voi vaatimustenmukaisuus- tai operatiivisista syistä rajoittaa maksun määrää. Jos sinulle erääntyy maksua, joka ylittää kyseisen rajan, maksuvälittäjä voi suorittaa useita maksuja (mahdollisesti useiden päivien aikana) täyden maksusumman maksamiseksi.
+2.7 **Pay-out-rajoitukset**. Noudattaakseen sääntelyä tai operatiivisia syitä Maksunvälittäjä voi rajoittaa Pay-outin määrää. Jos sinulle on maksettava suurempi summa, Maksunvälittäjä voi suorittaa useita Pay-outeja (mahdollisesti usean päivän aikana) maksun täydentämiseksi.
 
-2.8**Valuutanmuunnos**Maksuvälittäjä suorittaa maksusi valitsemassasi valuutassa maksuvälittäjän kautta. Käytettävissä olevat valuutat voivat olla rajoitettuja sääntelyyn tai toimintaan liittyvistä syistä asuinmaasi ja/tai maksuvälittäjän sopimuskumppanisi/sopimuskumppaniesi perusteella. Tällaisista rajoituksista ilmoitetaan maksuvälittäjän kautta, ja sinua pyydetään valitsemaan toinen valuutta. Maksuvälittäjä käyttää USD:tä, EUR:a ja GBP:tä vakiovaluuttoina varojen vastaanottamiseen ja maksamiseen. Muita valuuttoja sisältävistä tapahtumista aiheutuu valuutanmuunnoskuluja.
+2.8 **Valuutanvaihto**. Maksunvälittäjä maksaa Pay-outit valitsemassasi valuutassa Maksunvälittäjän kautta. Saatavilla olevat valuutat voivat olla rajoitettuja sääntely- tai operatiivisista syistä maasi ja/tai Maksunvälittäjän sopimusyksikön mukaan. Tällaiset rajoitukset ilmoitetaan Maksunvälittäjän kautta, ja sinua pyydetään valitsemaan toinen valuutta. Maksunvälittäjä käyttää USD, EUR ja GBP vakio-valuuttoina varojen vastaanottoon ja maksamiseen. Muut valuutat aiheuttavat valuutanvaihtokustannuksia.
 
-2.9**Varojen käsittely**Maksuvälittäjä voi yhdistää vierailta keräämiään summia ja sijoittaa ne sovellettavien lakien sallimalla tavalla. Maksuvälittäjä pitää itsellään kaikki näistä sijoituksista saamansa korot.
+2.9 **Varojen käsittely**. Maksunvälittäjä voi yhdistää vierailta kerätyt summat ja sijoittaa ne sovellettavien lakien sallimissa rajoissa. Maksunvälittäjä pidättää oikeuden säilyttää sijoituksista saamansa korot.
 
-2.10**Kumppanin tarkkuus**Majoituspalveluntarjoaja on vastuussa maksupalveluntarjoajan profiilissa olevien pankkitietojen oikeellisuudesta. Jos pankkitilinumero annetaan väärin, pankit veloittavat lisämaksun käsittelymaksusta. Maksunvälittäjä vähentää tämän käsittelymaksun seuraavasta palkkiomaksusta. Mikäli yhteistyökumppanin ilmoittama pankkitili on suljettu tai jäädytetty tai ei pysty vastaanottamaan/kohdistamaan maksuja syistä, jotka eivät johdu maksupalveluntarjoajasta, maksupalveluntarjoajan maksuvelvollisuus tämän sopimuksen nojalla vapautuu, kunhan maksupalveluntarjoajan kirjanpidosta käy ilmi, että maksu on suoritettu.
+2.10 **Kumppanin tarkkuus**. Majoituspalvelun Tarjoaja vastaa pankkitietojen oikeellisuudesta Maksunvälittäjän profiilissa. Virheellisestä tilinumerosta aiheutuu pankkien käsittelykulu, joka vähennetään seuraavasta komissiomaksusta. Jos kumppanin ilmoittama pankkitili on suljettu, jäädytetty tai ei pysty vastaanottamaan maksuja syistä, jotka eivät johdu Maksunvälittäjästä, Maksunvälittäjän maksuvelvollisuus tämän sopimuksen mukaan lakkaa, kun Maksunvälittäjän tiedot osoittavat maksun suoritetuksi.
 
-2.11**Maksuvaltuutukset**Valtuutat Maksuvälittäjän perimään sinulta näiden Maksuehtojen ja/tai Ehtojen mukaisesti erääntyneet summat joko (i) veloittamalla kyseiseen varaukseen liittyvää Maksutapaa tai (ii) pidättämällä summan tulevasta Maksustasi. Tarkemmin sanottuna valtuutat Maksuvälittäjän perimään sinulta:
+2.11 **Maksuvaltuutukset**. Valtuutat Maksunvälittäjän perimään sinulta näiden Maksuehtojen ja/tai ehtojen mukaiset maksut joko (i) veloittamalla varaukseen liitetyn Maksutavan tai (ii) pidättämällä summan tulevasta Pay-outistasi. Erityisesti valtuutat Maksunvälittäjän perimään sinulta:
 
-* Kaikki Winkille tai maksupalveluntarjoajalle maksettavat summat (esim. varaustesi, varausmuutosten, peruutusten, majoituspalveluntarjoajan tai toimittajan seurauksena), mukaan lukien Winkin tai maksupalveluntarjoajan puolestasi etukäteen maksamien kustannusten korvaus.
-* Verot, soveltuvin osin ja Ehdoissa määritellyllä tavalla.
-* Ehtojen mukaisesti perittävät palvelumaksut tai peruutusmaksut (esim. jos majoituspalveluntarjoajana peruutat vahvistetun varauksen).
-* Kaikki summat, jotka on jo maksettu sinulle majoituspalveluntarjoajana, vaikka vieras on peruuttanut vahvistetun varauksen tai Wink on päättänyt, että varaus on peruutettava Ehtojen, vieraan hyvityskäytännön tai muun sovellettavan peruutuskäytännön mukaisesti. Hyväksyt, että jos sinulle on jo maksettu, maksunvälittäjällä on oikeus periä sinulta tällainen vieraan hyvitys, mukaan lukien vähentämällä kyseisen hyvityssumman sinulle tulevista maksuista.
+* Kaikki Winkille tai Maksunvälittäjälle kuuluvat summat (esim. varauksistasi, varausmuutoksista, peruutuksista, Majoituspalvelun Tarjoajalta tai Toimittajalta), mukaan lukien Winkille tai Maksunvälittäjälle etukäteen maksetut kulut.  
+* Verot, jos sovellettavissa ja ehtojen mukaisesti.  
+* Palvelu- tai peruutusmaksut ehtojen mukaisesti (esim. jos Majoituspalvelun Tarjoajana peruutat vahvistetun varauksen).  
+* Kaikki summat, jotka on jo maksettu sinulle Majoituspalvelun Tarjoajana, vaikka vieras olisi peruuttanut vahvistetun varauksen tai Wink olisi päättänyt peruuttaa varauksen ehtojen, vieraan hyvityskäytännön tai muun sovellettavan peruutuskäytännön mukaisesti. Hyväksyt, että jos olet jo saanut maksun, Maksunvälittäjällä on oikeus periä kyseinen hyvityssumma sinulta, mukaan lukien vähentämällä se tulevista Pay-outeista.
 
-2.12**Kokoelmat**Jos Maksuvälittäjä ei pysty perimään näiden Maksuehtojen mukaisia ​​​​velkasi, Maksuvälittäjä voi ryhtyä perintätoimiin kyseisten summien perimiseksi sinulta.
+2.12 **Perintä**. Jos Maksunvälittäjä ei pysty perimään sinulta näiden Maksuehtojen mukaisia maksuja, se voi ryhtyä perintätoimiin.
 
-2.13**Ilmoitukset**Maksuvälittäjä lähettää pyynnöstä ilmoituksen majoituspalveluntarjoajalle erääntyneestä saldosta. Maksuvälittäjä lähettää nämä ilmoitukset arkistoituihin tai ilmoitettuihin yhteystietoihin. Kumppanin vastuulla on varmistaa, että tiedot ovat oikein ja ajan tasalla.
+2.13 **Ilmoitukset**. Maksunvälittäjä lähettää pyynnöstä ilmoituksen mahdollisesta maksamattomasta saldosta Majoituspalvelun Tarjoajalle. Ilmoitukset lähetetään tiedoissa oleviin yhteystietoihin. Kumppanin vastuulla on varmistaa, että tiedot ovat oikeat ja ajan tasalla.
 
-2.14**Kolmannen osapuolen integraattorit**Huomaa, että tietyt yhteistyökumppanit, jäljempänä "kolmannen osapuolen integraattorit", ovat vastuussa maksutapahtumien käsittelystä. Tämän seurauksena nämä kolmannen osapuolen integraattorit ottavat vastuullisen kauppiaan roolin. Näin ollen Winkin maksuehdot eivät enää koske näitä tapahtumia. Sen sijaan hotellin on hyväksyttävä uudet kolmannen osapuolen integraattoreille ominaiset maksuehdot.
+2.14 **Kolmannen osapuolen integraattorit**. Huomioithan, että tietyt kumppanit, jäljempänä ”Kolmannen osapuolen integraattorit”, vastaavat maksutapahtumien käsittelystä. Näissä tapauksissa Kolmannen osapuolen integraattorit toimivat kauppiaana. Tällöin Winkin maksuehdot eivät koske näitä tapahtumia, vaan hotelli hyväksyy Kolmannen osapuolen integraattoreiden omat maksuehdot.
 
-**3. Maksunkäsittelyvirheet ja hyvitykset**
+**3. Maksujen käsittelyvirheet ja hyvitykset**
 
-3.1**Virheet**Maksuvälittäjä ryhtyy tarvittaviin toimenpiteisiin korjatakseen kaikki havaitsemansa maksunkäsittelyvirheet. Näihin toimenpiteisiin voi sisältyä maksuvälittäjätilisi hyvittäminen tai veloittaminen (tarvittaessa), jotta saat tai maksat oikean summan. Tämän voi suorittaa maksuvälittäjä tai kolmas osapuoli, kuten rahoituslaitoksesi. Voimme myös ryhtyä toimenpiteisiin periäksemme sinulle virheellisesti lähetetyt varat (mukaan lukien, mutta ei rajoittuen, päällekkäiset maksut, jotka sinulle on suoritettu käsittelyvirheen vuoksi) vähentämällä, kuittaamalla ja/tai veloittamalla kyseisten varojen summan kaikista tulevista sinulle kuuluvista maksuista. Siltä osin kuin saat varoja virheellisesti, sitoudut palauttamaan kyseiset varat välittömästi maksuvälittäjälle.
+3.1 **Virheet**. Maksunvälittäjä ryhtyy tarvittaviin toimiin korjatakseen havaitsemansa maksujen käsittelyvirheet. Toimet voivat sisältää Maksunvälittäjä-tilisi hyvittämisen tai veloittamisen, jotta saat oikean summan. Tämä voi tapahtua Maksunvälittäjän tai kolmannen osapuolen, kuten rahoituslaitoksen, toimesta. Saatamme myös periä virheellisesti maksetut varat (esim. kaksoismaksut) vähentämällä summan tulevista Pay-outeista. Jos saat varoja virheellisesti, sitoudut palauttamaan ne välittömästi Maksunvälittäjälle.
 
-3.2**Hyvitykset**Maksuvälittäjä hoitaa ja maksaa kaikki vieraalle Ehtojen ja vieraan hyvityskäytännön mukaisesti kuuluvat hyvitykset tai palautukset näiden Maksuehtojen mukaisesti.
+3.2 **Hyvitykset**. Vieraille maksettavat hyvitykset ehtojen ja vieraan hyvityskäytännön mukaisesti käynnistää ja suorittaa Maksunvälittäjä näiden Maksuehtojen mukaisesti.
 
-3.3 Tämän kohdan 3.2 mukaisesti Maksuvälittäjä käsittelee hyvitykset välittömästi. Hyvityksen vastaanottamisen ajankohta riippuu kuitenkin maksutavasta ja sovellettavan maksujärjestelmän (esim. Visa, Mastercard) säännöistä. Ylivoimaisen esteen sattuessa, joka voi vaikuttaa hyvitysten käsittelyyn ja maksamiseen, Maksuvälittäjä aloittaa ja käsittelee hyvityksen niin pian kuin se on käytännössä mahdollista.
+3.3 Edellä mainitun kohdan 3.2 mukaisesti Maksunvälittäjä käsittelee hyvitykset välittömästi. Hyvityksen saamiseen kuluva aika riippuu Maksutavasta ja sovellettavista maksujärjestelmän säännöistä (esim. Visa, Mastercard). Ylivoimaisen esteen (Force Majeure) vaikutuksesta hyvitysten käsittelyyn Maksunvälittäjä käynnistää ja käsittelee hyvityksen mahdollisimman pian.
 
-**4. Maksuvälittäjän nimittäminen rajoitetuksi maksunperintäasiamieheksi**
+**4. Maksunvälittäjän nimittäminen rajoitetuksi maksujen keräysagentiksi**
 
-4.1 Jokainen majoituspalveluntarjoaja, mukaan lukien jokainen majoituspalveluntarjoajan tiimin jäsen, nimittää täten maksuvälittäjän majoituspalveluntarjoajan maksujen kerääjäksi ainoastaan ​​rajoitettuun tarkoitukseen vastaanottaa ja käsitellä varoja majoituspalveluntarjoajan puolesta majoituspalveluntarjoajan palveluita ostavilta vierailta.
+4.1 Kukin Majoituspalvelun Tarjoaja, mukaan lukien sen tiimin jäsenet, nimittää Maksunvälittäjän ainoastaan rajoitettuun tarkoitukseen vastaanottamaan ja käsittelemään varoja vierailta, jotka ostavat Majoituspalvelun Tarjoajan palveluita Majoituspalvelun Tarjoajan puolesta.
 
-4.2 Jokainen majoituspalveluntarjoaja, mukaan lukien jokainen majoituspalveluntarjoajan tiimin jäsen, hyväksyy, että vieraan maksupalveluntarjoajan kautta suorittama maksu katsotaan samaksi kuin suoraan majoituspalveluntarjoajalle suoritettu maksu, ja majoituspalveluntarjoaja tarjoaa vieraan varaaman majoituspalvelun sovitulla tavalla ikään kuin majoituspalveluntarjoaja olisi vastaanottanut maksun suoraan vieraalta. Jokainen majoituspalveluntarjoaja hyväksyy, että maksupalveluntarjoaja voi hyvittää vieraalle maksun Ehtojen mukaisesti. Jokainen majoituspalveluntarjoaja ymmärtää, että maksupalveluntarjoajan velvollisuus maksaa majoituspalveluntarjoajalle edellyttää vieraalta saatujen asiaankuuluvien maksujen vastaanottamista. Maksunvälittäjä takaa maksut majoituspalveluntarjoajalle/palveluntarjoajille vain niistä summista, jotka maksupalveluntarjoaja on onnistuneesti vastaanottanut vierailta näiden maksuehtojen mukaisesti. Hyväksyessään nimityksen majoituspalveluntarjoajan rajoitetuksi maksujen perintäasiamieheksi maksupalveluntarjoaja ei ota vastuuta majoituspalveluntarjoajan toimista tai laiminlyönneistä.
+4.2 Kukin Majoituspalvelun Tarjoaja, mukaan lukien tiimin jäsenet, hyväksyy, että vieraan Maksunvälittäjän kautta suorittama maksu katsotaan suoritetuksi suoraan Majoituspalvelun Tarjoajalle, ja Majoituspalvelun Tarjoaja toimittaa vieraan varaaman palvelun sovitulla tavalla ikään kuin maksu olisi vastaanotettu suoraan vieraalta. Kukin Majoituspalvelun Tarjoaja hyväksyy, että Maksunvälittäjä voi hyvittää vieraan ehtojen mukaisesti. Kukin Majoituspalvelun Tarjoaja ymmärtää, että Maksunvälittäjän maksuvelvollisuus on ehdollinen onnistuneeseen maksujen vastaanottoon vieraalta. Maksunvälittäjä takaa maksut Majoituspalvelun Tarjoajille vain niiltä osin kuin Maksunvälittäjä on onnistuneesti vastaanottanut maksut vierailta näiden Maksuehtojen mukaisesti. Nimittäessään Maksunvälittäjän rajoitetuksi maksujen keräysagentiksi Maksunvälittäjä ei ota vastuuta Majoituspalvelun Tarjoajan teoista tai laiminlyönneistä.
 
-4.3 Jokainen vieras tiedostaa ja hyväksyy, että huolimatta siitä, että maksunvälittäjä ei ole osapuolena sinun ja majoituspalveluntarjoajan/-palveluntarjoajien välisessä sopimuksessa, mukaan lukien kukin majoituspalveluntarjoajan tiimin jäsen, maksunvälittäjä toimii kunkin majoituspalveluntarjoajan maksunkeräysagenttina rajoitetusti maksujen vastaanottamiseksi majoituspalveluntarjoajan/-palveluntarjoajien puolesta. Kun vieras maksaa varat maksunvälittäjälle, vieraan maksuvelvollisuus majoituspalveluntarjoajalle/-palveluntarjoajille sovitusta summasta lakkaa, ja maksunvälittäjä on vastuussa maksunvälittäjän onnistuneesti vastaanottamien varojen toimittamisesta majoituspalveluntarjoajalle/-palveluntarjoajille näissä maksuehdoissa kuvatulla tavalla. Mikäli maksunvälittäjä ei toimita kyseisiä summia, majoituspalveluntarjoajalla/-palveluntarjoajilla on takautumisoikeus vain maksunvälittäjään eikä suoraan vieraaseen.
+4.3 Kukin vieras hyväksyy ja ymmärtää, että vaikka Maksunvälittäjä ei ole osapuoli sopimuksessa sinun ja Majoituspalvelun Tarjoajan (mukaan lukien tiimin jäsenten) välillä, Maksunvälittäjä toimii Majoituspalvelun Tarjoajan maksujen keräysagenttina rajoitetusti. Kun vieras maksaa Maksunvälittäjälle, vieraan maksuvelvollisuus Majoituspalvelun Tarjoajaa kohtaan lakkaa, ja Maksunvälittäjä vastaa varojen välittämisestä Majoituspalvelun Tarjoajalle näiden Maksuehtojen mukaisesti. Jos Maksunvälittäjä ei maksa näitä summia, Majoituspalvelun Tarjoajalla on oikeus vaatia korvausta vain Maksunvälittäjältä, ei suoraan vieraalta.
 
-**5. Kielletyt toiminnot**
+**5. Kielletyt toimet**
 
-5.1 Majoituspalveluntarjoaja on yksin vastuussa kaikkien niiden lakien, sääntöjen, määräysten ja verovelvoitteiden noudattamisesta, jotka saattavat koskea maksupalveluiden käyttöäsi. Maksupalveluiden käytön yhteydessä et saa ja sitoudut olemaan auttamatta tai mahdollistamatta muita:
+5.1 Majoituspalvelun Tarjoaja vastaa yksin siitä, että se noudattaa kaikkia sovellettavia lakeja, sääntöjä, määräyksiä ja verovelvoitteita Maksupalveluiden käytössä. Maksupalveluiden käytön yhteydessä et saa, etkä saa auttaa tai mahdollistaa muita:
 
-* Rikkoa tai kiertää sovellettavia lakeja tai määräyksiä;
-* Rikkoa tai kiertää kolmansien osapuolten kanssa tehtyjä sopimuksia, kolmansien osapuolten oikeuksia tai ehtoja, käytäntöjä tai standardeja;
-* Käyttää Maksupalveluita mihin tahansa kaupalliseen tai muuhun tarkoitukseen, jota nämä Maksuehdot eivät nimenomaisesti salli;
-* Välttää, ohittaa, poistaa, deaktivoida, heikentää, purkaa salauksen tai muulla tavoin kiertää mitään Maksupalveluntarjoajan Maksupalveluiden suojaamiseksi toteuttamaa teknistä toimenpidettä;
-* Ryhdy mihin tahansa toimiin, jotka vahingoittavat tai vaikuttavat haitallisesti tai voisivat vahingoittaa tai vaikuttaa haitallisesti Maksupalveluiden suorituskykyyn tai asianmukaiseen toimintaan;
-* Yrittää tulkita, purkaa, purkaa tai takaisinmallintaa mitään Maksupalveluiden tarjoamiseen käytettyä ohjelmistoa; tai
-* Loukkaa tai vahingoita kenenkään muun oikeuksia tai muutoin vahingoita ketään.
+* Rikkoa tai kiertää sovellettavia lakeja tai määräyksiä;  
+* Rikkoa tai kiertää kolmansien osapuolten sopimuksia, oikeuksia tai ehtoja, politiikkoja tai standardeja;  
+* Käyttää Maksupalveluita kaupallisiin tai muihin tarkoituksiin, joita nämä Maksuehdot eivät nimenomaisesti salli;  
+* Välttää, ohittaa, poistaa, poistaa käytöstä, heikentää, purkaa tai muuten kiertää Maksunvälittäjän teknisiä suojaustoimia Maksupalveluiden suojaamiseksi;  
+* Tehdä mitään toimenpiteitä, jotka vahingoittavat tai voivat vahingoittaa Maksupalveluiden suorituskykyä tai asianmukaista toimintaa;  
+* Yrittää purkaa, kääntää, hajottaa tai jäljittää Maksupalveluiden ohjelmistoja; tai  
+* Loukata kenenkään oikeuksia tai muuten aiheuttaa haittaa kenellekään.
 
-5.2 Maksuvälittäjä soveltaa nollatoleranssia kansainvälisten kauppanormien, lahjonnan ja korruption vastaisen lainsäädännön sekä sovellettavien kauppaa, varainsiirtoja ja terrorismin rahoitusta koskevien rajoitusten rikkomuksiin.
+5.2 Maksunvälittäjä suhtautuu nollatoleranssilla kansainvälisen kaupan normeihin, lahjonnan ja korruption ehkäisyyn sekä sovellettaviin kaupan, varojen liikkeen ja terrorismin rahoituksen rajoituksiin.
 
-Majoituspalveluntarjoaja takaa, että se noudattaa ja tulee noudattamaan, ja sen Lähipiirit noudattavat ja tulevat noudattamaan maksupalveluntarjoajien käytännesääntöjä.
+Majoituspalvelun Tarjoaja takaa noudattavansa Maksunvälittäjän Toimittajan eettistä ohjeistusta yhdessä siihen liittyvien osapuolten kanssa.
 
-Majoituspalveluntarjoaja vakuuttaa ja sitoutuu noudattamaan kaikilta osin kaikkia kansainvälisiä kauppanormeja ja sovellettavia kauppaa, varojen kulkua, terrorismin rahoitusta sekä lahjontaa ja korruptiota koskevia rajoituksia, mukaan lukien, mutta ei rajoittuen, Yhdysvaltain korruptionvastainen laki, Yhdistyneen kuningaskunnan lahjontalaki 2010 ja Singaporen korruptionvastainen laki.
+Majoituspalvelun Tarjoaja vakuuttaa ja sitoutuu noudattamaan kaikilta osin kansainvälisiä kaupan normeja, sovellettavia kaupan, varojen liikkeen ja terrorismin rahoituksen rajoituksia sekä lahjonnan ja korruption ehkäisyä koskevia lakeja, mukaan lukien, mutta ei rajoittuen, Yhdysvaltain Anti-Corruption Actiin, Iso-Britannian Bribery Act 2010:een ja Singaporen Prevention of Corruption Actiin.
 
-Majoituspalveluntarjoaja takaa, että sen parhaan tietämyksen mukaan sitä tai sen Lähipiiriä ei ole tuomittu lahjontaan tai korruptioon liittyvästä rikoksesta, eikä niitä tutkita mikään valtion, hallinnon tai sääntelyelin.
+Majoituspalvelun Tarjoaja takaa, ettei se eikä sen liittyvät osapuolet ole tuomittu lahjontaan tai korruptioon liittyvästä rikoksesta eikä ole minkään viranomaisen tutkinnan kohteena.
 
 **6. Ylivoimainen este**
 
-Maksuvälittäjä ei ole vastuussa mistään näiden Maksuehtojen mukaisten velvoitteiden viivästyksestä tai laiminlyönnistä, joka johtuu Winkin tai Maksuvälittäjän kohtuullisen vaikutusmahdollisuuden ulkopuolella olevista syistä, mukaan lukien, mutta ei rajoittuen, luonnonkatastrofit, sota, terrorismi, mellakat, kauppasaarrot, siviili- tai sotilasviranomaisten toimet, tulipalot, tulvat, onnettomuudet, pandemiat, epidemiat tai taudit, lakot tai kuljetusvälineiden, polttoaineen, energian, työvoiman tai materiaalien pula ("Ylivoimainen este").
+Maksunvälittäjä ei ole vastuussa viivästyksistä tai velvoitteiden täyttämättä jättämisestä näiden Maksuehtojen nojalla, jos syyt ovat Winkin tai Maksunvälittäjän kohtuullisen hallinnan ulkopuolella, kuten luonnonkatastrofit, sota, terrorismi, mellakat, saarron, viranomaisten toimet, tulipalot, tulvat, onnettomuudet, pandemiat, epidemiat, lakot tai kuljetus-, polttoaine-, energia-, työvoima- tai materiaalipula (“Ylivoimainen este”).
 
 **7. Vastuuvapauslausekkeet**
 
-7.1 Jos päätät käyttää Maksupalveluita, teet niin vapaaehtoisesti ja omalla vastuullasi. Lain sallimissa rajoissa Maksupalvelut tarjotaan "sellaisenaan" ilman minkäänlaista takuuta, ei suoraa eikä epäsuoraa.
+7.1 Jos päätät käyttää Maksupalveluita, teet sen vapaaehtoisesti ja omalla vastuullasi. Lain sallimassa laajuudessa Maksupalvelut tarjotaan ”sellaisina kuin ne ovat”, ilman mitään takuita, suoria tai epäsuoria.
 
-7.2 Huolimatta siitä, että Maksuvälittäjä on nimitetty Majoituspalveluntarjoajan rajoitetuksi maksujen perintäasiamieheksi 6 §:n mukaisesti, Maksuvälittäjä sanoutuu nimenomaisesti irti kaikesta vastuusta Majoituspalveluntarjoajan tai muun kolmannen osapuolen toimista tai laiminlyönneistä. Maksuvälittäjällä ei ole mitään velvollisuuksia tai velvoitteita kunkin Majoituspalveluntarjoajan edustajana, paitsi siltä osin kuin näissä Maksusehdoissa on nimenomaisesti määrätty, ja kaikki lain mahdolliset lisävelvollisuudet tai -velvollisuudet on sovellettavan lain sallimissa rajoissa nimenomaisesti poissuljettu.
+7.2 Huolimatta Maksunvälittäjän nimityksestä Majoituspalvelun Tarjoajan rajoitetuksi maksujen keräysagentiksi, Maksunvälittäjä kieltää nimenomaisesti kaiken vastuun Majoituspalvelun Tarjoajan tai kolmannen osapuolen teoista tai laiminlyönneistä. Maksunvälittäjällä ei ole velvollisuuksia agenttina Majoituspalvelun Tarjoajaa kohtaan, paitsi mitä näissä Maksuehdoissa nimenomaisesti on säädetty, ja kaikki muut lain nojalla mahdollisesti oletettavat velvollisuudet on lain sallimassa laajuudessa nimenomaisesti suljettu pois.
 
-7.3 Jos päätämme suorittaa henkilöllisyyden varmentamisen mille tahansa majoituspalveluntarjoajalle, sovellettavan lain sallimissa rajoissa sanoudumme irti kaikista nimenomaisista tai epäsuorista takuista siitä, että tällaiset tarkastukset tunnistavat majoituspalveluntarjoajan aiempia väärinkäytöksiä tai takaavat, ettei majoituspalveluntarjoaja syyllisty väärinkäytöksiin tulevaisuudessa.
+7.3 Jos teemme henkilöllisyyden tarkistuksen Majoituspalvelun Tarjoajalle, lain sallimassa laajuudessa emme anna mitään takuita siitä, että tarkistukset paljastavat aiemmat väärinkäytökset tai takaavat, ettei Majoituspalvelun Tarjoaja syyllisty väärinkäytöksiin tulevaisuudessa.
 
-7.4 Edellä mainitut vastuuvapauslausekkeet ovat voimassa lain sallimassa enimmäislaajuudessa. Sinulla voi olla muita lakisääteisiä oikeuksia tai takuita, joita ei voida lain mukaan sulkea pois. Lakisääteisten takuiden kesto on kuitenkin rajoitettu lain sallimaan enimmäislaajuuteen (jos sellainen on).
+7.4 Edellä mainitut vastuuvapauslausekkeet koskevat lain sallimassa laajuudessa. Sinulla voi olla muita lakisääteisiä oikeuksia tai takuita, joita ei voida laillisesti sulkea pois. Kuitenkin lakisääteisten takuiden kesto rajoittuu lain sallimaan enimmäisaikaan.
 
-**8. Vastuunrajoitus**
+**8. Vastuunrajoitukset**
 
-8.1 Lain sallimissa rajoissa kumpikaan osapuoli ei ole vastuussa mistään epäsuorista, satunnaisista, välillisistä, erityisistä tai rankaisevista vahingoista, jotka johtuvat tästä sopimuksesta tai sen rikkomisesta, vaikka tällaisten vahinkojen mahdollisuudesta olisi ilmoitettu. Tämä rajoitus ei koske tämän sopimuksen rikkomista, joka liittyy luottamuksellisuuteen ja/tai immateriaalioikeuksiin.
+8.1 Lain sallimassa laajuudessa kumpikaan osapuoli ei ole vastuussa välillisistä, satunnaisista, seurannais-, erityis- tai rangaistusluonteisista vahingoista, jotka johtuvat tästä sopimuksesta tai sen rikkomisesta, vaikka osapuolta olisi varoitettu tällaisten vahinkojen mahdollisuudesta. Tämä rajoitus ei koske sopimuksen rikkomista, joka liittyy luottamuksellisuuteen tai immateriaalioikeuksiin.
 
-8.2 Kumpikaan osapuoli ei voi sulkea pois vastuutaan koskien (i) sen tai sen työntekijöiden, edustajien tai alihankkijoiden huolimattomuudesta johtuvaa kuolemaa tai henkilövahinkoa, (ii) sen itsensä tai sen työntekijöiden tekemää petosta tai (iii) mitä tahansa rikkomusta, tekoa, laiminlyöntiä tai vastuuta, jota ei voida rajoittaa sovellettavan lain nojalla.
+8.2 Kumpikaan osapuoli ei voi sulkea vastuuta (i) kuolemasta tai henkilövahingosta, joka johtuu sen tai sen työntekijöiden, agenttien tai alihankkijoiden huolimattomuudesta, (ii) petoksesta, jonka se tai sen työntekijät ovat tehneet, tai (iii) mistä tahansa rikkomuksesta, teosta, laiminlyönnistä tai vastuusta, jota sovellettava laki ei salli rajoittaa.
 
-8.3 Osapuolet tunnustavat ja sopivat, että tässä sopimuksessa esitetyt vastuun poissulkemiset ja rajoitukset ovat oikeudenmukaisia ​​ja kohtuullisia.
+8.3 Osapuolet tunnustavat ja hyväksyvät, että tässä sopimuksessa asetetut vastuuvapaudet ja rajoitukset ovat kohtuullisia.
 
 **9. Vahingonkorvaus**
 
-Sovellettavan lain sallimissa rajoissa sitoudut vapauttamaan Maksuvälittäjän ja kaikki sen tytäryhtiöt ja konserniyhtiöt sekä niiden toimihenkilöt, johtajat, työntekijät ja edustajat vastuusta, puolustamaan niitä (Maksuvälittäjän valinnan mukaan), korvaamaan ja pitämään Maksuvälittäjän ja kaikki sen tytäryhtiöt ja konserniyhtiöt sekä niiden toimihenkilöt, johtajat, työntekijät ja edustajat vahingoittumattomina kaikilta vaatimuksilta, vastuilta, vahingoilta, tappioilta ja kuluilta, mukaan lukien rajoituksetta kohtuulliset laki- ja kirjanpitokulut, jotka johtuvat tai liittyvät millään tavalla (i) näiden Maksuehtojen rikkomiseen; (ii) Maksupalveluiden virheelliseen käyttöön; (iii) laiminlyöntiisi tai meidän laiminlyöntiimme verojen tarkasta ilmoittamisessa, keräämisessä tai maksamisessa sinun ohjeistuksestasi; tai (iv) lakien, asetusten tai kolmansien osapuolten oikeuksien rikkomiseen.
+Lain sallimassa laajuudessa sitoudut vapauttamaan, puolustamaan (Maksunvälittäjän valinnan mukaan), korvaamaan ja pitämään Maksunvälittäjän ja sen tytäryhtiöt, johtajat, työntekijät ja agentit vahingoittumattomina kaikista vaatimuksista, vastuista, vahingoista, tappioista ja kuluista, mukaan lukien kohtuulliset oikeudelliset ja kirjanpitokulut, jotka johtuvat tai liittyvät (i) näiden Maksuehtojen rikkomiseen; (ii) Maksupalveluiden väärinkäyttöön; (iii) verojen virheelliseen raportointiin, keräämiseen tai maksamiseen; tai (iv) lakien, säädösten tai kolmansien osapuolten oikeuksien rikkomiseen.
 
-**10. Muutokset, voimassaoloaika, irtisanominen ja muut toimenpiteet**
+**10. Muutokset, voimassaolo, päättäminen ja muut toimenpiteet**
 
-10.1**Muokkaus**. Ellei sovellettava laki toisin vaadi, Maksuvälittäjä voi muuttaa näitä Maksuehtoja milloin tahansa. Jos teemme olennaisia ​​muutoksia näihin Maksuehtoihin, julkaisemme tarkistetut Maksuehdot Wink-alustalla ja päivitämme "Viimeksi päivitetty" -päivämäärän näiden Maksuehtojen yläreunassa. Jos muutos vaikuttaa sinuun, ilmoitamme sinulle muutoksista myös vähintään kolmekymmentä (30) päivää ennen niiden voimaantulopäivää. Jos et irtisano sopimustasi ennen tarkistettujen Maksuehtojen voimaantulopäivää, Maksupalveluiden käytön jatkaminen katsotaan tarkistettujen Maksuehtojen muutosten hyväksymiseksi.
+10.1 **Muutokset**. Lain sallimissa rajoissa Maksunvälittäjä voi muuttaa näitä Maksuehtoja milloin tahansa. Jos teemme olennaisia muutoksia, julkaistaan päivitetyt Maksuehdot Wink-alustalla ja päivitetään ”Viimeksi päivitetty” -päivämäärä. Jos muutokset vaikuttavat sinuun, ilmoitamme niistä vähintään 30 päivää ennen voimaantuloa. Jos et irtisano sopimusta ennen muutosten voimaantuloa, Maksupalveluiden käyttö tarkoittaa muutosten hyväksymistä.
 
-10.2**Termi**Tämä sinun ja Maksuvälittäjän välinen sopimus, jota nämä Maksuehdot heijastavat, tulee voimaan, kun luot Wink-tilin tai käytät Maksupalveluita, ja se on voimassa, kunnes joko sinä tai me irtisanomme tämän sopimuksen kohdan 10.3 mukaisesti.
+10.2 **Voimassaolo**. Tämä sopimus Maksunvälittäjän kanssa tulee voimaan, kun luot Wink-tilin tai käytät Maksupalveluita, ja on voimassa, kunnes jompikumpi osapuoli päättää sen kohdan 10.3 mukaisesti.
 
-10.3**Irtisanominen**Voit irtisanoa tämän sopimuksen milloin tahansa lähettämällä meille sähköpostia tai poistamalla Wink-tilisi. Tämän sopimuksen irtisanominen toimii myös ilmoituksena Wink-tilisi peruuttamisesta Ehtojen mukaisesti. Rajoittamatta alla määriteltyjä oikeuksiamme, Maksuvälittäjä voi irtisanoa tämän sopimuksen milloin tahansa antamalla sinulle kolmenkymmenen (30) päivän irtisanomisajan sähköpostitse rekisteröityyn sähköpostiosoitteeseesi. Maksuvälittäjä voi myös irtisanoa tämän sopimuksen välittömästi ilman irtisanomisaikaa, jos (i) olet olennaisesti rikkonut tämän sopimuksen mukaisia ​​velvoitteitasi; (ii) olet antanut virheellisiä, vilpillisiä, vanhentuneita tai puutteellisia tietoja; (iii) olet rikkonut sovellettavia lakeja, määräyksiä tai kolmansien osapuolten oikeuksia; tai (iv) Maksuvälittäjä uskoo vilpittömästi, että tällainen toimenpide on kohtuudella tarpeen muiden majoituspalvelujen tarjoajien, Winkin, Maksuvälittäjän tai kolmansien osapuolten suojelemiseksi.
+10.3 **Päättäminen**. Voit päättää sopimuksen milloin tahansa lähettämällä meille sähköpostin tai poistamalla Wink-tilisi. Sopimuksen päättäminen toimii myös ilmoituksena Wink-tilin peruuttamisesta ehtojen mukaisesti. Maksunvälittäjä voi päättää sopimuksen milloin tahansa 30 päivän kirjallisella ilmoituksella rekisteröityyn sähköpostiosoitteeseesi. Maksunvälittäjä voi myös päättää sopimuksen välittömästi ilman ilmoitusta, jos (i) olet olennaisesti rikkonut sopimusvelvoitteitasi; (ii) olet antanut virheellisiä, petollisia, vanhentuneita tai puutteellisia tietoja; (iii) olet rikkonut sovellettavia lakeja, säädöksiä tai kolmansien osapuolten oikeuksia; tai (iv) Maksunvälittäjä katsoo hyvän uskonsa perusteella, että toimenpide on tarpeen muiden Majoituspalvelun Tarjoajien, Winkin, Maksunvälittäjän tai kolmansien osapuolten suojelemiseksi.
 
-10.4**Keskeyttäminen ja muut toimenpiteet**Maksuvälittäjä voi rajoittaa tai keskeyttää Maksupalveluiden käyttösi tai pääsysi niihin väliaikaisesti tai pysyvästi (i) noudattaakseen sovellettavaa lakia tai tuomioistuimen, lainvalvontaviranomaisen tai muun hallintoviranomaisen määräystä tai pyyntöä, (ii) jos olet rikkonut näitä Maksuehtoja, Ehtoja, sovellettavia lakeja, määräyksiä tai kolmansien osapuolten oikeuksia, (iii) jos olet antanut virheellisiä, vilpillisiä, vanhentuneita tai puutteellisia tietoja vaadituista Maksutiedoista, (iv) näiden Maksuehtojen mukaisten erääntyneiden tai maksamatta olevien summien osalta tai (v) jos Maksuvälittäjä uskoo vilpittömästi, että tällainen toimenpide on kohtuudella tarpeen Winkin, sen Majoituspalvelujen tarjoajien, Maksuvälittäjän tai kolmansien osapuolten henkilökohtaisen turvallisuuden tai omaisuuden suojelemiseksi tai petosten tai muun laittoman toiminnan estämiseksi.
+10.4 **Keskeytys ja muut toimenpiteet**. Maksunvälittäjä voi rajoittaa tai tilapäisesti tai pysyvästi keskeyttää pääsysi tai käyttöösi Maksupalveluihin (i) noudattaakseen sovellettavaa lakia tai viranomaisen määräystä, (ii) jos olet rikkonut näitä Maksuehtoja, ehtoja, lakeja, säädöksiä tai kolmansien osapuolten oikeuksia, (iii) jos olet antanut virheellisiä, petollisia, vanhentuneita tai puutteellisia Pay-out-tietoja, (iv) jos sinulla on maksamattomia tai erääntyneitä maksuja näiden Maksuehtojen mukaan, tai (v) jos Maksunvälittäjä katsoo hyvän uskonsa perusteella, että toimenpide on tarpeen Winkin, Majoituspalvelun Tarjoajien, Maksunvälittäjän tai kolmansien osapuolten henkilö- tai omaisuusturvan suojaamiseksi tai petosten estämiseksi.
 
-10.5**Valitus**Jos maksunvälittäjä ryhtyy mihin tahansa kohdissa 10.3 ja 10.4 kuvatuista toimenpiteistä, voit valittaa päätöksestä ottamalla yhteyttä asiakaspalveluun.
+10.5 **Valitus**. Jos Maksunvälittäjä ryhtyy toimenpiteisiin kohdan 10.3 ja 10.4 mukaisesti, voit valittaa päätöksestä ottamalla yhteyttä asiakaspalveluun.
 
-10.6**Irtisanomisen vaikutus**Jos peruutat Wink-tilisi majoituspalveluntarjoajana tai maksuvälittäjänä, joka ryhtyy johonkin yllä kuvatuista toimenpiteistä, maksuvälittäjä voi tarjota täyden hyvityksen kaikille vahvistetuille varauksille vieraille, etkä ole oikeutettu mihinkään korvaukseen vireillä olevista tai vahvistetuista varauksista, jotka on peruutettu.
+10.6 **Päättämisen vaikutus**. Jos peruutat Wink-tilisi Majoituspalvelun Tarjoajana tai Maksunvälittäjä ryhtyy edellä mainittuihin toimenpiteisiin, Maksunvälittäjä voi palauttaa vahvistettujen varausten vieraille koko maksun, eikä sinulla ole oikeutta korvauksiin peruutetuista tai vireillä olevista varauksista.
 
-10.7**Selviytyminen**Näiden maksuehtojen kohdat 5–11 jäävät voimaan tämän sopimuksen irtisanomisen tai voimassaolon päättymisen jälkeen.
+10.7 **Säilyminen**. Näiden Maksuehtojen kohdat 5–11 pysyvät voimassa sopimuksen päättymisen tai umpeutumisen jälkeen.
 
-**11. Sovellettava laki ja riitojenratkaisu**
+**11. Sovellettava laki ja riitojen ratkaisu**
 
-11.1 Jos teet sopimuksen Payment Facilitator US:n kanssa, näitä maksuehtoja tulkitaan Wyomingin osavaltion ja Yhdysvaltojen lakien mukaisesti ottamatta huomioon lainvalintasäännöksiä. Oikeudenkäynnit (muut kuin vähäisiä vaatimuksia koskevat kanteet) on nostettava Wyomingin osavaltion tai liittovaltion tuomioistuimessa, ellemme molemmat sovi jostakin muusta oikeuspaikasta. Sinä ja me molemmat hyväksymme Wyomingin oikeuspaikan ja henkilökohtaisen lainkäyttövallan.
+11.1 Jos teet sopimuksen Maksunvälittäjän Yhdysvaltain yksikön kanssa, näitä Maksuehtoja tulkitaan Wyomingin osavaltion ja Yhdysvaltojen lakien mukaisesti ilman lainvalintasäännöksiä. Oikeudenkäynnit (pienriitoja lukuun ottamatta) on nostettava Wyomingin osavaltion tai liittovaltion tuomioistuimessa, ellei toisin sovita. Molemmat osapuolet hyväksyvät Wyomingin tuomioistuimen toimivallan.
 
-11.2 Jos teet sopimuksen Payment Facilitator UK:n kanssa, näitä maksuehtoja tulkitaan Englannin lain mukaisesti. Jos toimit kuluttajana ja jos asuinmaasi pakolliset lakisääteiset kuluttajansuojasäännökset sisältävät sinulle edullisempia määräyksiä, näitä määräyksiä sovelletaan riippumatta Englannin lain valinnasta. Kuluttajana voit nostaa näihin maksuehtoihin liittyvät oikeudenkäynnit asuinpaikkasi toimivaltaisessa tuomioistuimessa tai Englannin tuomioistuimessa. Jos Payment Facilitator haluaa valvoa oikeuksiaan sinua kuluttajana vastaan, voimme tehdä niin vain sen lainkäyttöalueen tuomioistuimissa, jossa asut. Jos toimit yrityksenä, sitoudut Englannin tuomioistuinten yksinomaiseen toimivaltaan.
+11.2 Jos teet sopimuksen Maksunvälittäjän Iso-Britannian yksikön kanssa, näitä Maksuehtoja tulkitaan Englannin lain mukaisesti. Jos toimit kuluttajana ja asuinmaasi pakolliset kuluttajansuojalait sisältävät sinulle suotuisampia määräyksiä, ne ovat etusijalla Englannin lain valinnan sijaan. Kuluttajana voit nostaa oikeusjutun asuinpaikkasi toimivaltaisessa tuomioistuimessa tai Englannissa. Jos toimit yrityksenä, hyväksyt Englannin tuomioistuinten yksinomaisen toimivallan.
 
-11.3 Jos teet sopimuksen Payment Facilitator Slovakian kanssa, näitä maksuehtoja tulkitaan EU:n lainsäädännön mukaisesti. Jos toimit kuluttajana, oikeudenkäynnit, joita voit nostaa meitä vastaan ​​näistä maksuehdoista johtuvien tai niihin liittyvien asioiden johdosta, voidaan nostaa ainoastaan ​​Bratislavan kaupungissa sijaitsevassa tuomioistuimessa tai asuinpaikkasi tuomioistuimessa. Jos toimit yrityksenä, sitoudut alistumaan Bratislavan kaupungissa, Slovakiassa sijaitsevan tuomioistuimen yksinomaiseen toimivaltaan.
-
+11.3 Jos teet sopimuksen Maksunvälittäjän Slovakian yksikön kanssa, näitä Maksuehtoja tulkitaan EU-lakien mukaisesti. Kuluttajana voit nostaa oikeusjutun Bratislavan kaupungissa sijaitsevassa tuomioistuimessa tai asuinpaikkasi toimivaltaisessa tuomioistuimessa. Yrityksenä hyväksyt Bratislavan kaupungissa sijaitsevan tuomioistuimen yksinomaisen toimivallan.

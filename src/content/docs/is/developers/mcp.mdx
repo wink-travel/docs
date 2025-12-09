@@ -1,0 +1,105 @@
+---
+title: MCP Server
+description: Tengdu fljótt AI-umboðsmenn við Wink skjöl og SDK með hýsta MCP þjóninum.
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## Yfirlit
+Hýsti Wink MCP þjónninn er aðgengilegur á:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Bendið samhæfum AI viðskiptavinum (VS Code, Cursor, aðrir sem innleiða MCP HTTP flutning) á þennan enda til að leyfa þeim að:
+- Skoða vörur & pallskjöl (`wink://docs/...`)
+- Uppgötva SDK og kafa í API klasa / módel (`wink://sdk/...` & `wink://sdk/.../docs`)
+- Framkvæma létta merkingar- / lykilorðaleit yfir skjöl & SDK samantektir
+
+## Flutningur
+Notið aðal straumflutnings HTTP endapunktinn:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Ef viðskiptavinur styður aðeins SSE, notið:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Cursor MCP skjöl: https://cursor.com/docs/context/mcp
+Uppsetning: Bætið við fjarþjóni í gegnum MCP stillingar.
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+Opinber skjöl: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Lágmarks fjarstilling (notanda- eða vinnusvæðisskrá `mcp.json`):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+Ábendingar:
+- Notið Command Palette: „MCP: List Servers“ til að staðfesta tengingu & skoða verkfæri.
+- Verkfæravali leyfir ykkur að virkja/óvirkja `sdk_search` og `docs_search`.
+- Bætið við samhengi: Spjallgluggi → Bæta við samhengi → MCP auðlindir til að tengja skjalsíður.
+
+## Kjarnauppsprettu URI
+
+| URI | Lýsing |
+|-----|-------------|
+| `wink://docs` | Skjalamöppu yfirlit (flokkað eftir flokkum) |
+| `wink://docs/{path}` | Sérstakur skjalsgrein (Markdown / MDX) |
+| `wink://sdk` | Yfirlit SDK (hvert SDK + fjöldi skjala) |
+| `wink://sdk/{sdkPath}` | SDK README / möppu skjala / sérstakt skjöl |
+
+### Módule Skjöl
+Að opna SDK skjalamöppu (t.d. `wink://sdk/python/wink-sdk-booking/docs`) skilar hópuðu:
+- **API klasa** (fjöldi aðferða + dæmi um aðferðanöfn)
+- **Módel & Tegundir** (gagnauppbyggingar sem API notar)
+
+## Leitartól (Fljótleg yfirlit)
+| Tól | Tilgangur | Dæmi um fyrirspurnir |
+|------|---------|-----------------------|
+| `sdk_search` | Finna hvaða SDK / API klasa á að nota | `hætta við bókun`, `lista eignir`, `affiliate birgðir` |
+| `docs_search` | Finna hugmyndafræðileg skjöl / leiðbeiningar | `auðkenning`, `vefkranar`, `wordPress` |
+
+Látið `query` vera tómt til að fá tillögur. Hvert niðurstaða inniheldur MCP URI sem hægt er að opna.
+
+## Algeng notkunarmynstur
+1. Keyrið `sdk_search` með ykkar tilgangi (t.d. *„lista eignir“*).
+2. Opnið skilaða SDK README eða `docs_uri` til að skoða API / módel.
+3. Notið `docs_search` fyrir stuðningshugmyndir (auðkenning, vefkranar).
+
+## Athugasemdir
+- Hver skilaður URI má opna af umboðsmanni til að fá fullan aðgang.
+- Tillögur birtast sjálfkrafa þegar fyrirspurnir eru tómar.
+
+## Núverandi studd SDK
+- Wink Python SDKs
+
+## Vegakort (Yfirgripsmikið)
+- Viðbótar tungumála SDK (Java, JS/TS)
+- Bæta við TripPay SDK
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink á GitHub</LinkButton>

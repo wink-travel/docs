@@ -1,0 +1,105 @@
+---
+title: MCP 서버
+description: 호스팅된 MCP 서버를 통해 AI 에이전트를 Wink 문서 및 SDK에 빠르게 연결하세요.
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## 개요
+호스팅된 Wink MCP 서버는 다음에서 이용할 수 있습니다:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+호환되는 AI 클라이언트(VS Code, Cursor, MCP HTTP 전송을 구현한 기타 클라이언트)를 이 엔드포인트로 지정하여 다음을 수행할 수 있습니다:
+- 제품 및 플랫폼 문서 탐색 (`wink://docs/...`)
+- SDK 발견 및 API 클래스 / 모델 상세 탐색 (`wink://sdk/...` 및 `wink://sdk/.../docs`)
+- 문서 및 SDK 요약에 대한 경량 의미론적 / 키워드 검색 수행
+
+## 전송
+기본 스트리밍 가능한 HTTP 엔드포인트를 사용하세요:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+클라이언트가 SSE만 지원하는 경우 다음을 사용하세요:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Cursor MCP 문서: https://cursor.com/docs/context/mcp  
+설정: MCP 설정을 통해 원격 서버 추가.
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+공식 문서: https://code.visualstudio.com/docs/copilot/customization/mcp-servers  
+최소 원격 구성 (사용자 또는 작업공간 `mcp.json`):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+팁:
+- 명령 팔레트에서 “MCP: List Servers”를 사용해 연결 확인 및 도구 탐색.
+- 도구 선택기에서 `sdk_search` 및 `docs_search` 활성화/비활성화 가능.
+- 컨텍스트 추가: 채팅 뷰 → 컨텍스트 추가 → MCP 리소스에서 문서 페이지 첨부.
+
+## 핵심 리소스 URI
+
+| URI | 설명 |
+|-----|-------------|
+| `wink://docs` | 문서 인덱스 (카테고리별 그룹화) |
+| `wink://docs/{path}` | 특정 문서 항목 (Markdown / MDX) |
+| `wink://sdk` | SDK 개요 (각 SDK 및 문서 수 포함) |
+| `wink://sdk/{sdkPath}` | SDK README / 모듈 문서 폴더 / 특정 모듈 문서 |
+
+### 모듈 문서
+SDK 문서 폴더 열기 (예: `wink://sdk/python/wink-sdk-booking/docs`) 시 그룹화된 다음을 반환:
+- **API 클래스** (메서드 수 + 샘플 메서드 이름)
+- **모델 및 타입** (해당 API에서 사용하는 데이터 구조)
+
+## 검색 도구 (간단 참조)
+| 도구 | 용도 | 일반 쿼리 예시 |
+|------|---------|-----------------------|
+| `sdk_search` | 사용할 SDK / API 클래스 찾기 | `예약 취소`, `숙소 목록`, `제휴 인벤토리` |
+| `docs_search` | 개념 문서 / 가이드 찾기 | `인증`, `웹훅`, `워드프레스` |
+
+`query`를 비워두면 제안이 제공됩니다. 모든 결과에는 열 수 있는 MCP URI가 포함됩니다.
+
+## 일반 사용 패턴
+1. 의도에 맞게 `sdk_search` 실행 (예: *"숙소 목록"*).
+2. 반환된 SDK README 또는 `docs_uri`를 열어 API / 모델 확인.
+3. 지원 개념(인증, 웹훅)을 위해 `docs_search` 사용.
+
+## 참고
+- 반환된 각 URI는 에이전트가 전체 내용을 열 수 있습니다.
+- 쿼리가 비어 있으면 제안이 자동으로 표시됩니다.
+
+## 현재 지원되는 SDK
+- Wink Python SDK
+
+## 로드맵 (고수준)
+- 추가 언어 SDK (Java, JS/TS)
+- TripPay SDK 추가
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">GitHub의 Wink</LinkButton>

@@ -1,0 +1,105 @@
+---
+title: Máy chủ MCP
+description: Kết nối nhanh các tác nhân AI với tài liệu & SDK của Wink thông qua máy chủ MCP được lưu trữ.
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## Tổng quan
+Máy chủ MCP của Wink được lưu trữ có sẵn tại:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Hướng các khách hàng AI tương thích (VS Code, Cursor, các công cụ khác triển khai giao thức MCP HTTP) đến điểm cuối này để cho phép họ:
+- Duyệt tài liệu sản phẩm & nền tảng (`wink://docs/...`)
+- Khám phá SDK & tìm hiểu sâu các lớp / mô hình API (`wink://sdk/...` & `wink://sdk/.../docs`)
+- Thực hiện tìm kiếm ngữ nghĩa / từ khóa nhẹ trên tài liệu & tóm tắt SDK
+
+## Giao thức truyền tải
+Sử dụng điểm cuối HTTP chính có thể truyền luồng:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Nếu khách hàng của bạn chỉ hỗ trợ SSE, hãy sử dụng:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Tài liệu MCP của Cursor: https://cursor.com/docs/context/mcp
+Cài đặt: Thêm máy chủ từ xa qua cài đặt MCP.
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+Tài liệu chính thức: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Cấu hình từ xa tối thiểu (người dùng hoặc workspace `mcp.json`):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+Mẹo:
+- Sử dụng Command Palette: “MCP: List Servers” để xác nhận kết nối & duyệt công cụ.
+- Bộ chọn công cụ cho phép bạn bật/tắt `sdk_search` và `docs_search`.
+- Thêm ngữ cảnh: Chế độ Chat → Thêm Ngữ cảnh → Tài nguyên MCP để đính kèm các trang tài liệu.
+
+## Các URI Tài nguyên Cốt lõi
+
+| URI | Mô tả |
+|-----|-------------|
+| `wink://docs` | Chỉ mục tài liệu (nhóm theo danh mục) |
+| `wink://docs/{path}` | Bài viết tài liệu cụ thể (Markdown / MDX) |
+| `wink://sdk` | Tổng quan SDK (mỗi SDK + số lượng tài liệu) |
+| `wink://sdk/{sdkPath}` | README SDK / thư mục tài liệu module / tài liệu module cụ thể |
+
+### Tài liệu Module
+Mở thư mục tài liệu SDK (ví dụ `wink://sdk/python/wink-sdk-booking/docs`) trả về nhóm:
+- **Lớp API** (số lượng phương thức + tên ví dụ phương thức)
+- **Mô hình & Kiểu** (cấu trúc dữ liệu được sử dụng bởi các API đó)
+
+## Công cụ Tìm kiếm (Tham khảo Nhanh)
+| Công cụ | Mục đích | Ví dụ Truy vấn Thông thường |
+|------|---------|-----------------------|
+| `sdk_search` | Tìm SDK / lớp API cần dùng | `hủy đặt phòng`, `liệt kê bất động sản`, `kho hàng liên kết` |
+| `docs_search` | Tìm tài liệu khái niệm / hướng dẫn | `xác thực`, `webhooks`, `wordPress` |
+
+Để trống `query` để nhận đề xuất. Mỗi kết quả bao gồm URI MCP bạn có thể mở.
+
+## Mẫu Sử dụng Thông thường
+1. Chạy `sdk_search` với ý định của bạn (ví dụ *"liệt kê bất động sản"*).
+2. Mở README SDK trả về hoặc `docs_uri` của nó để xem API / mô hình.
+3. Dùng `docs_search` cho các khái niệm hỗ trợ (xác thực, webhooks).
+
+## Ghi chú
+- Mỗi URI trả về có thể được tác nhân mở để xem nội dung đầy đủ.
+- Đề xuất xuất hiện tự động khi truy vấn để trống.
+
+## SDK Hiện Hỗ Trợ
+- SDK Python của Wink
+
+## Lộ trình (Tổng quan)
+- Thêm SDK ngôn ngữ khác (Java, JS/TS)
+- Thêm SDK TripPay
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink trên GitHub</LinkButton>

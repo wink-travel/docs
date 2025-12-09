@@ -1,413 +1,411 @@
 ---
 title: Condicions del servei
-description: >-
-  Condicions fàcilment accessibles i actualitzades per a tots els nostres
-  usuaris afiliats.
+description: Condicions fàcilment accessibles i actualitzades per a tots els nostres usuaris afiliats.
 sidebar:
-  order: 20
+  order: 21
 ---
-:::nota
+
+:::note
 Última actualització 2024-06-12
 :::
+  
+**CONDICIONS GENERALS PER A PROVEÏDORS D’ALLOTJAMENT**
 
-**CONDICIONS GENERALS PER A PROVEÏDORS D'ALLOTJAMENT**
-
-En registrar-se i inscriure's al programa Wink com a proveïdor d'allotjament, el proveïdor d'allotjament ha revisat i entén, reconeix i accepta els termes i condicions d'aquest acord de proveïdor d'allotjament (l'"Acord").
+En registrar-se i inscriure’s al programa Wink com a proveïdor d’allotjament, el proveïdor d’allotjament ha revisat, entès, reconegut i accepta les condicions d’aquest acord de proveïdor d’allotjament (l’"Acord").
 
 **ENTRE:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, una empresa constituïda segons les lleis de Singapur i amb domicili social a #03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095 amb número de registre d'IVA 201437335D ("Wink"), i
+**TRAVELIKO SINGAPORE PTE. LTD.**, una empresa constituïda sota les lleis de Singapur i amb domicili social a \#03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095 amb número de registre d’IVA 201437335D ("Wink"), i
 
-**EL PROVEÏDOR D'ALLOTJAMENT**, les dades del qual figuren al Formulari de Registre del Proveïdor d'Allotjament o s'han enviat en línia (el "Proveïdor d'Allotjament").
+**EL PROVEÏDOR D’ALLOTJAMENT**, els detalls del qual consten en el Formulari de Registre de Proveïdor d’Allotjament o s’han enviat en línia (el "Proveïdor d’Allotjament").
 
-Wink i el Proveïdor d'Allotjament són cadascun una "Part" d'aquest Acord i es denominen col·lectivament les "Parts".
+Wink i el Proveïdor d’Allotjament són cadascun una “Part” d’aquest Acord i col·lectivament es denominen les “Parts”.
 
-Aquest document estableix els termes i condicions per a:
+Aquest document estableix les Condicions per a:
 
-1. La prestació de serveis de distribució d'allotjament a través de Wink o qualsevol altre mitjà que el Proveïdor d'Allotjament utilitzi per distribuir els seus productes (d'ara endavant, "Proveïdor d'Allotjament"), dels quals els detalls s'especifiquen a les Condicions de Pagament i s'ha acordat el preu, les condicions i la disponibilitat; i
-2. La prestació de serveis d'allotjament per part del Proveïdor d'Allotjament al consumidor/hoste final, que ha estat reservat a través de Wink.
+1. La prestació de serveis de distribució d’allotjament a través de Wink o qualsevol altre mitjà que el Proveïdor d’Allotjament utilitzi per distribuir els seus productes (d’ara endavant conegut com a “Proveïdor d’Allotjament”), dels quals els detalls es detallen en els Termes de Pagament i el preu, condicions i disponibilitat han estat acordats; i  
+2. La prestació de serveis d’allotjament pel Proveïdor d’Allotjament al consumidor final/hoste, que ha estat reservat a través de Wink.
 
-Wink no posseeix, controla, ofereix ni gestiona cap anunci. Wink no és part dels contractes celebrats directament entre els proveïdors d'allotjament i els hostes. Wink no actua com a agent en cap qualitat per als proveïdors d'allotjament, excepte en els casos especificats a les condicions de pagament dels serveis ("Condicions de pagament").
+Wink no posseeix, controla, ofereix ni gestiona cap llistat. Wink no és part dels contractes celebrats directament entre Proveïdors d’Allotjament i hostes. Wink no actua com a agent en cap capacitat per als Proveïdors d’Allotjament, excepte com s’especifica en els termes de pagament dels serveis (“Termes de Pagament”).
 
-En cas de discrepància entre aquests Termes i Condicions (d'ara endavant, els "Termes") i les Condicions de Pagament, s'aplicaran aquestes últimes.
+En cas de discrepància entre aquestes Condicions (d’ara endavant conegudes com els ”Termes") i els Termes de Pagament, prevaldran aquests últims.
 
-Ara, per tant, les parts han acordat el següent:
+Per tant, les Parts han acordat el següent:
 
 **1. Definicions**
 
-A més dels termes definits en altres parts d'aquest Acord, les definicions següents s'apliquen a tot el present Acord, llevat que es mostri la intenció contrària:
+A més dels termes definits en altres parts d’aquest Acord, s’apliquen les següents definicions al llarg d’aquest Acord, tret que s’indiqui el contrari:
 
-**"Proveïdor(s) d'allotjament"**&#x73;ignifica qualsevol Part que crea un compte a Wink amb la intenció de vendre el seu propi inventari d'habitacions i serveis auxiliars a través de la plataforma Wink.
+**“Proveïdor(s) d’Allotjament”** significa qualsevol Part que crea un compte a Wink amb la intenció de vendre les seves pròpies habitacions i inventari de serveis auxiliars a través de la plataforma Wink.
 
-**"Acord"**&#x73;ignifica aquest acord.
+**“Acord”** significa aquest acord.
 
-**"Millor tarifa disponible" o "BAR"**&#x73;ignifica la tarifa més baixa amb descompte previ i comissionable per a habitacions, amb IVA inclòs, que ofereix al públic en general l'hotel participant, el proveïdor d'allotjament o, en nom seu, qualsevol distribuïdor extern. Per evitar dubtes, les tarifes promocionals, les tarifes de vacances i qualsevol altra tarifa pública sense restriccions s'inclouran com a Millors Tarifes Disponibles.
+**"Millor Tarifari Disponible" o "BAR"** significa la tarifa més baixa predescompte, comissionable per a Habitacions, inclòs l’IVA, que s’ofereix al públic general per l’Hotel Participant, el Proveïdor d’Allotjament o en nom seu per qualsevol distribuïdor tercer. Per evitar dubtes, les tarifes promocionals, tarifes de vacances i qualsevol altra tarifa pública sense restriccions s’inclouran com a Millor Tarifari Disponible.
 
-**"Reserva(es)"**&#x73;ignifica una sol·licitud de reserva d'una habitació feta a través de Wink o d'un client de Wink que es comunica al Proveïdor d'Allotjament i que aquest accepta.
+**"Reserva(es)"** significa una sol·licitud de reserva d’una Habitació feta a través de Wink o un client de Wink que es comunica i és acceptada pel Proveïdor d’Allotjament.
 
-**"Quota de reserva"**&#xE9;s l'1,5% deduït del valor de la reserva com a comissió de processament per Wink.
+**“Comissió de Reserva”** és el 1,5% deduït del valor de la reserva com a taxa de processament per part de Wink.
 
-**"Valor de reserva"**&#xE9;s l'import total cobrat pel Facilitador de Pagaments al client per una Reserva.
+**“Valor de la Reserva”** és l’import total recaptat pel Facilitador de Pagaments del client per una Reserva.
 
-**"Reserva fora de sèrie"**&#x73;ignifica l'incompliment d'un Proveïdor d'Allotjament a l'hora d'allotjar qualsevol Hoste a causa, entre altres coses, de la manca de disponibilitat d'Habitacions per part de l'Hotel Participant o en nom seu per part del Proveïdor d'Allotjament o de qualsevol distribuïdor extern.
+**"No Disponibilitat"** significa la incapacitat d’un Proveïdor d’Allotjament per allotjar qualsevol Hoste per raons com, entre altres, la manca de disponibilitat d’habitacions per part de l’Hotel Participant o en nom seu pel Proveïdor d’Allotjament o qualsevol distribuïdor tercer.
 
-**"Comissió"**&#x73;ignifica l'import degut a un Afiliat per cada Transacció Materialitzada d'acord amb aquest Acord.
+**“Comissió"** significa l’import degut a un Afiliat per cada Transacció Materialitzada d’acord amb aquest Acord.
 
-**"Instal·lacions i serveis"**&#x73;ignifica qualsevol instal·lació, àpat, comoditat i/o altres serveis proporcionats per un hotel participant.
+**"Instal·lacions i Serveis"** significa qualsevol instal·lació, àpats, comoditats i/o altres serveis proporcionats per un Hotel Participant.
 
-**"Convidat(s)"**&#x73;ignifica l'usuari final que ha utilitzat, utilitza o té reservada la Sala (i altres Instal·lacions i Serveis, segons correspongui) com a resultat d'una reserva directa o indirecta amb Wink.
+**"Hoste(s)"** significa l’usuari final que ha utilitzat, està utilitzant o té reserva per utilitzar finalment l’Habitació (i altres Instal·lacions i Serveis aplicables) com a resultat d’una reserva directa o indirecta amb Wink.
 
-**“Hotel(s)”**&#x73;ignifica qualsevol Allotjament disponible als llocs web de Wink o a través d'aquests.
+**“Hotel(s)”** significa qualsevol allotjament disponible a o a través dels llocs web de Wink.
 
-**"Plataforma Wink"**&#x73;ignifica la xarxa privada o solució tècnica utilitzada per les parts per tal de compartir informació de manera segura d'acord amb l'Acord.
+**"Plataforma Wink"** significa la xarxa privada o solució tècnica utilitzada per les Parts per compartir informació de manera segura segons l’Acord.
 
-**"Propietat intel·lectual"**&#x73;ignifica tots els drets de propietat intel·lectual de qualsevol naturalesa (tant si estan registrats en forma documental com si no, o emmagatzemats en qualsevol disc o memòria magnètica o òptica) a qualsevol lloc del món, ja siguin registrats, registrables o no, incloent-hi patents, models d'utilitat, marques comercials, dissenys registrats i noms de domini, sol·licituds de qualsevol dels anteriors, noms comercials o empresarials, fons de comerç, drets d'autor i drets de naturalesa de drets d'autor, drets de disseny, drets sobre bases de dades, drets morals, coneixements tècnics i qualsevol altre dret de propietat intel·lectual que subsisteixi en programari informàtic, programes informàtics, llocs web, documents, informació, tècniques, mètodes comercials, dibuixos, logotips, manuals d'instruccions, llistes i procediments i dades de clients, mètodes i procediments de màrqueting i documentació publicitària, inclòs l'"aspecte i la sensació" de qualsevol lloc web.
+**"Propietat Intel·lectual"** significa tots els drets de propietat intel·lectual de qualsevol naturalesa (registrats o no, en qualsevol format) a tot el món, incloent patents, models d’utilitat, marques, dissenys registrats i noms de domini, aplicacions, noms comercials, bona voluntat, drets d’autor, drets morals, know-how i qualsevol altre dret de propietat intel·lectual relacionat amb programari, llocs web, documents, informació, tècniques, mètodes comercials, dibuixos, logotips, manuals, llistes i procediments, mètodes de màrqueting i literatura publicitària, incloent l’aspecte i la sensació de qualsevol lloc web.
 
-**"Transacció(ns) materialitzada(des)"**&#x73;ignifica la Reserva per part d'un Hoste amb un Proveïdor d'Allotjament, i la qual reserva ha donat lloc a la provisió real d'allotjament, tal com ha confirmat a Wink el Proveïdor d'Allotjament. Les Transaccions Materialitzades sempre s'ajustaran per modificacions (per exemple, estades escurçades), devolucions, frau amb targetes de crèdit, deutes incobrables o d'altra mena. Per evitar dubtes, les cancel·lacions, les no presentacions, etc., no es poden considerar mai Transaccions Materialitzades.
+**“Transacció Materialitzada(s)"** significa la Reserva feta per un Hoste amb un Proveïdor d’Allotjament, que ha resultat en la prestació efectiva d’allotjament, confirmada a Wink pel Proveïdor d’Allotjament. Les Transaccions Materialitzades sempre s’ajustaran per modificacions (p. ex., estades reduïdes), devolucions, frau amb targeta de crèdit, deutes incobrables o altres. Per evitar dubtes, cancel·lacions, no presentacions, etc., mai es consideraran Transaccions Materialitzades.
 
-**"Preu net"**&#x73;ignifica la tarifa particular que Wink pagarà a cada Hotel Participant per les Habitacions que les Parts hagin acordat mútuament per escrit.
+**"Tarifa Neta"** significa la tarifa particular que Wink pagarà a cada Hotel Participant per les Habitacions que les Parts hagin acordat mútuament per escrit.
 
-**"Absència(ns)"**&#x73;ignifica qualsevol ocasió en què un Client no arribi a temps a un Hotel Participant d'acord amb una Reserva.
+**"No Presentació(s)"** significa qualsevol ocasió en què un Hoste no arribi a temps a un Hotel Participant segons una Reserva.
 
-**"Soci"**&#x73;ignifica qualsevol empresa o individu que es connecta o utilitza la plataforma Wink per promocionar i vendre inventari de proveïdors d'allotjament al seu públic i/o clients a canvi d'una comissió.
+**“Soci”** significa qualsevol empresa o individu que es connecta o utilitza la plataforma Wink per promocionar i vendre l’inventari dels Proveïdors d’Allotjament a la seva audiència i/o clients a canvi d’una comissió.
 
-**"Facilitador de pagaments"**&#x75;na filial propietat al 100% de Traveliko Singapore Pte. Ltd. (“TripPay”), que regeix els Serveis de Pagament, cobrant els pagaments dels hostes (“Ingresso”), carregant el mètode de pagament associat a la seva compra, com ara targeta de crèdit, targeta de dèbit, transferència bancària, criptomonedes o PayPal, etc., i desemborsant els fons deguts (“Preu net”) al proveïdor d'allotjament.
+**“Facilitador de Pagaments”** una filial totalment propietat de Traveliko Singapore Pte. Ltd. (“TripPay”), que gestiona els Serveis de Pagament, recaptant pagaments dels hostes (“Pay-in”), carregant el mètode de pagament associat a la compra, com targeta de crèdit, dèbit, transferència bancària, criptomonedes o PayPal, etc., i distribuint els fons deguts (“Tarifa Neta”) al Proveïdor d’Allotjament.
 
-**"Ingressar"**&#x73;ignifica l'adquisició d'un pagament realitzat per un convidat per part del Facilitador de pagaments.
+**“Pay-in”** significa l’adquisició d’un pagament fet per un hoste pel Facilitador de Pagaments.
 
-**"Pagament"**&#x73;ignifica el desemborsament de la Comissió Neta a l'Afiliat pel Facilitador de Pagaments.
+**“Pay-out”** significa la distribució de la Comissió Neta a l’Afiliat pel Facilitador de Pagaments.
 
-**"Comissió del servei de pagament"**&#xE9;s el 4% deduït de la comissió d'afiliat com a quota d'adquisició de pagaments pel Facilitador de pagaments.
+**“Taxa de Servei de Pagament”** és el 4% deduït de la comissió de l’Afiliat com a taxa d’adquisició de pagament pel Facilitador de Pagaments.
 
-**"Condicions de pagament"**&#x73;ignifica les tarifes, la disponibilitat, les ofertes, les promocions, les condicions de pagament i qualsevol altra norma o condició relacionada amb la distribució d'habitacions que siguin acordades mútuament entre les parts.
+**"Termes de Pagament"** significa les tarifes, disponibilitat, ofertes, promocions, termes de pagament i qualsevol altra regla o condició relacionada amb la distribució d’Habitacions acordada mútuament entre les Parts.
 
-**"Reserva potencialment fraudulenta"**&#x73;ignifica (i) Una Reserva que resulta d'informació no vàlida o incorrecta proporcionada a Wink en el moment d'aquesta Reserva, o com a resultat d'una disputa de targeta de crèdit, o com a resultat d'un informe de càrrecs no autoritzats; o (ii) Qualsevol Reserva que pugui estar associada amb transaccions anteriors d'alt risc o fraudulentes.
+**"Reserva Potencialment Fraudulenta"** significa (i) una Reserva que resulta d’informació invàlida o incorrecta proporcionada a Wink en el moment de la Reserva, o com a resultat d’una disputa amb targeta de crèdit, o d’un informe de càrrecs no autoritzats; o (ii) qualsevol Reserva que pugui estar associada amb transaccions anteriors d’alt risc o fraudulentes.
 
-**"Tarifa(es)"**&#x73;ignifica la tarifa o tarifes d'habitació d'hotel posades a disposició de Wink pel Proveïdor d'Allotjament respecte a qualsevol tipus d'habitació o tipus de tarifa aplicable en virtut de l'Acord que es distribuirà a tots els Canals de Wink.
+**"Tarifa(es)"** significa la tarifa d’habitació d’hotel disponible per a Wink pel Proveïdor d’Allotjament respecte a qualsevol tipus d’habitació o tipus de tarifa aplicable sota l’Acord per distribuir a tots els canals de Wink.
 
-**"Habitació(ns)"**&#x73;ignifica l'allotjament o allotjaments ubicats en qualsevol hotel o allotjament participant.
+**"Habitació(s)"** significa l’allotjament situat a qualsevol Hotel Participant o allotjament.
 
-**"Impostos"**&#x73;ignifica tots els impostos i/o càrrecs per serveis locals, estatals, federals i nacionals, incloent-hi, per evitar dubtes, qualsevol impost sobre el valor afegit (IVA), vendes, ús, impostos especials, allotjament, transitoris, lloguers, municipals, turístics i altres tipus d'impostos, taxes o càrrecs governamentals similars.
+**"Impostos"** significa tots els impostos locals, estatals, federals i nacionals i/o càrrecs per serveis, incloent, per evitar dubtes, qualsevol impost sobre el valor afegit (IVA), impostos sobre vendes, ús, accises, allotjament, transitori, lloguer, ciutat, resort i altres tipus similars d’impostos, taxes governamentals o càrrecs.
 
-**“TripPay”**&#x73;ignifica l'empresa filial de propietat total que cobra pagaments (Pagament inicial) i desemborsaments (Pagament final) per a Wink, anomenada Facilitador de pagaments.
+**“TripPay”** significa la filial totalment propietat que recull pagaments (Pay-in) i distribucions (Pay-out) per a Wink, anomenada Facilitador de Pagaments.
 
-**"Canals de venda"**&#x73;ignifica (i) llocs web operats, gestionats o propietat de Wink perquè altres empreses els utilitzin per fer reserves i que només són accessibles amb contrasenyes emeses per Wink; (ii) connexions API entre Wink i els llocs web de viatges dels seus clients; o (iii) qualsevol altre mètode de distribució pel qual Wink subministra habitacions als seus clients per a la seva distribució o venda posterior, ja sigui en llocs web o d'una altra manera.
+**"Canals de Venda"** significa (i) llocs web operats, gestionats o propietat de Wink per a altres empreses per fer reserves i que només són accessibles amb contrasenyes emeses per Wink; (ii) connexions API entre Wink i els llocs web de viatges dels seus clients; o (iii) qualsevol altre mètode de distribució pel qual Wink subministra Habitacions als seus clients per a la seva distribució o venda posterior, ja sigui en llocs web o d’una altra manera.
 
-**1.1 Sense col·laboració**
+**1.1 Cap Societat**
 
-1.1.1 Aquest Acord no pretén, ni res del que s'hi disposa ni de cap dels acords que s'hi contemplen, crear una empresa conjunta o la relació de socis, societats o principal i agent entre les Parts. A menys que les Parts acordin el contrari per escrit, cap d'elles (i) celebrarà cap contracte o compromís amb tercers com a agent de l'altra Part o en nom de l'altra Part, (ii) es descriurà o es presentarà com a tal agent o de cap manera es presentarà com a tal agent, o (iii) actuarà en nom o representarà l'altra Part de cap manera o per a cap finalitat.
+1.1.1 Aquest Acord no té la intenció, ni res aquí o en qualsevol dels acords contemplats aquí, ha de ser interpretat com la creació d’una empresa conjunta o la relació de socis, societat o principal i agent entre les Parts. Excepte que les Parts ho acordïn per escrit, cap d’elles (i) no celebrarà cap contracte o compromís amb tercers com a agent o en nom de l’altra Part, (ii) no es descriurà ni es presentarà com a tal agent ni es mostrarà com a tal agent, ni (iii) actuarà o representarà l’altra Part de cap manera ni per cap propòsit.
 
-1.1.2 Llevat que Wink acordi el contrari per escrit o que s'estipuli el contrari en aquest Acord, el Proveïdor d'Allotjament no publicarà enlloc del lloc web del Proveïdor d'Allotjament cap declaració, ja sigui expressa o implícita, que el lloc web formi part de, estigui avalat per o sigui un lloc web oficial de Wink.
+1.1.2 Excepte acord escrit en contra per part de Wink o excepte que s’indiqui el contrari en aquest Acord, el Proveïdor d’Allotjament no publicarà en cap lloc als seus llocs web cap declaració, expressa o implícita, que indiqui que el lloc web forma part, està avalat o és un lloc web oficial de Wink.
 
-**2. Contractació amb els hostes**
+**2. Contractació amb hostes**
 
-Quan rebeu una confirmació de reserva a través de la plataforma Wink, esteu signant un contracte directament amb l'hoste i sou responsable de prestar els vostres serveis segons els termes i al preu especificat a la confirmació de la reserva. També accepteu pagar les tarifes relacionades si escau, tal com es defineix a les Condicions de pagament.
+Quan reps una confirmació de reserva a través de la plataforma Wink, estàs entrant en un contracte directament amb l’hoste i ets responsable de lliurar els teus serveis segons els termes i al preu especificat a la confirmació de reserva. També acceptes pagar les taxes relacionades si s’escau, tal com es defineix en els Termes de Pagament.
 
-**3. Independència dels proveïdors d'allotjament**
+**3. Independència dels Proveïdors d’Allotjament**
 
-La vostra relació amb Wink és la d'una entitat legal independent, excepte que TripPay actua com a facilitador de pagaments tal com es descriu a les Condicions de pagament. Wink no dirigeix ​​ni controla els serveis que proporcioneu, i accepteu que teniu plena discreció per decidir si i quan proporcionar aquests serveis, i a quin preu i en quines condicions oferir-los.
+La teva relació amb Wink és la d’una entitat legal independent, excepte que TripPay actua com a facilitador de pagaments segons es descriu en els Termes de Pagament. Wink no dirigeix ni controla els serveis que ofereixes, i acceptes que tens plena discreció sobre si i quan oferir aquests serveis, a quin preu i en quines condicions.
 
-**4. Gestionar el vostre anunci**
+**4. Gestió del teu llistat**
 
-Com a proveïdor d'allotjament, Wink us ofereix les eines que necessiteu per vendre el vostre inventari en línia a través dels nostres canals de vendes patentats.
+Com a Proveïdor d’Allotjament, Wink t’ofereix les eines necessàries per vendre el teu inventari en línia a través dels nostres Canals de Venda propietaris.
 
-Els proveïdors d'allotjament són responsables de mantenir la informació i el contingut dels seus anuncis actualitzats i precisos en tot moment. Els proveïdors d'allotjament han de respectar la disponibilitat, els preus i qualsevol altre compromís acordat en aquest document. Els proveïdors d'allotjament són els únics responsables d'actualitzar i mantenir actualitzats en tot moment la disponibilitat, les tarifes i els impostos locals aplicables, si n'hi ha, a través de l'extranet de Wink. Els proveïdors d'allotjament permeten a Wink promocionar les habitacions en tots els mercats. Wink recomana fermament als proveïdors d'allotjament que ofereixin les tarifes, promocions i ofertes més competitives en tot moment.
+Els Proveïdors d’Allotjament són responsables de mantenir la informació i el contingut del seu llistat actualitzats i precisos en tot moment. Han de respectar la disponibilitat, preus i qualsevol altre compromís acordat aquí. Els Proveïdors d’Allotjament són exclusivament responsables d’actualitzar i mantenir actualitzada en tot moment la disponibilitat, tarifes i impostos locals aplicables, si n’hi ha, a través de l’extranet de Wink. Els Proveïdors d’Allotjament autoritzen Wink a promocionar les Habitacions a tots els mercats. Wink recomana molt que els Proveïdors d’Allotjament ofereixin les Tarifes, promocions i ofertes més competitives en tot moment.
 
 **5. Obligacions legals**
 
-5.1 Els proveïdors d'allotjament són responsables d'entendre i complir totes les lleis, normes, regulacions i contractes amb tercers que s'apliquin al vostre anunci.
+5.1 Els Proveïdors d’Allotjament són responsables d’entendre i complir qualsevol llei, norma, regulació i contracte amb tercers que s’apliqui al seu llistat.
 
-5.2 Els proveïdors d'allotjament són responsables de gestionar i utilitzar les dades personals dels hostes i d'altres persones d'acord amb les lleis de privadesa aplicables i aquestes Condicions.
+5.2 Els Proveïdors d’Allotjament són responsables de gestionar i utilitzar les dades personals dels hostes i altres persones en compliment de les lleis de privadesa aplicables i aquests Termes.
 
-**6. Tarifes i comissions de reserva**
+**6. Taxes de reserva i comissions**
 
-Wink proporciona als proveïdors d'allotjament les eines digitals que necessiten per distribuir i vendre el seu inventari en línia a través de 5 canals propis. En activar la vostra propietat mitjançant la funció d'autoactivació del vostre tauler de control, la vostra propietat es podrà reservar automàticament a Traveliko.com i a través de la Xarxa. De fet, podeu desactivar aquests canals manualment a l'extranet, a la secció del menú - Distribució - Canals de vendes.
+Wink proporciona als Proveïdors d’Allotjament les eines digitals necessàries per distribuir i vendre el seu inventari en línia a través de 5 canals propietaris. Activant la teva propietat mitjançant la funció d’autoactivació al teu tauler, la teva propietat serà automàticament reservable a Traveliko.com i a través de la Xarxa. Pots desactivar manualment aquests canals a l’extranet a la secció \- Distribució \- Canals de venda.
 
-* Traveliko.com – OTA amb 0% de comissió
-* Winklinks: funció d'enllaç a la biografia per a canals de xarxes socials com ara Instagram.
-* Compartir a les xarxes socials: enllaços ràpids que es poden compartir a qualsevol lloc en línia
-* Motor de reserves: motor de reserves per Internet per a llocs web d'hotels i més.
-* Wink Network – Xarxa d'afiliats que connecta hotels directament amb els nostres socis afiliats
+* Traveliko.com – OTA amb 0% de comissió  
+* Winklinks \- Funció de link-in-bio per a canals de xarxes socials com Instagram.  
+* Social Share \- Enllaços ràpids que es poden compartir a qualsevol lloc en línia  
+* Motor de reserves \- Motor de reserves per a llocs web d’hotels i més.  
+* Xarxa Wink – Xarxa d’afiliats que connecta hotels directament amb els nostres socis afiliats
 
-Les comissions de reserva, les tarifes i els càrrecs de pagament s'apliquen de la manera següent per a qualsevol reserva confirmada:
+Les Taxes de Reserva, Comissions i Taxes de Pagament s’apliquen de la següent manera per a qualsevol reserva confirmada:
 
-* Traveliko.com: Comissió del facilitador de pagaments tal com es descriu a les Condicions de pagament (4%) + Comissió de reserva de Wink (1,5%)
-* WinkLinks: Comissió del facilitador de pagaments tal com es descriu a les Condicions de pagament (4%) + Comissió de reserva de Wink (1,5%)
-* Compartir a les xarxes socials: Comissió del facilitador de pagaments tal com es descriu a les Condicions de pagament (4%) + Comissió de reserva de Wink (1,5%)
-* Motor de reserves: Comissió del facilitador de pagaments tal com es descriu a les Condicions de pagament (4%) + Comissió de reserva de Wink (1,5%)
-* Wink Network: Comissió del facilitador de pagaments tal com es descriu a les Condicions de pagament (4%) + Comissió de reserva de Wink (1,5%) + Comissió d'afiliació (comissió negociada a discreció de l'hotel)
+* Traveliko.com: Taxa de Facilitador de Pagaments segons Termes de Pagament (4%) \+ Taxa de Reserva Wink (1,5%)  
+* WinkLinks: Taxa de Facilitador de Pagaments segons Termes de Pagament (4%) \+ Taxa de Reserva Wink (1,5%)  
+* Social Share: Taxa de Facilitador de Pagaments segons Termes de Pagament (4%) \+ Taxa de Reserva Wink (1,5%)  
+* Motor de reserves: Taxa de Facilitador de Pagaments segons Termes de Pagament (4%) \+ Taxa de Reserva Wink (1,5%)  
+* Xarxa Wink: Taxa de Facilitador de Pagaments segons Termes de Pagament (4%) \+ Taxa de Reserva Wink (1,5%) \+ Comissió d’Afiliat (comissió negociada a discreció de l’hotel)
 
-Exemple de càlcul per a una reserva de 100 USD feta a través de Trvaveliko, Social Share, Booking Engine o WinkLinks
+Exemple de càlcul per a una reserva de 100 USD feta via Traveliko, Social Share, Motor de reserves o WinkLinks
 
-100-4% = 96\
-96-1,5%=94,56\
-Pagable a l'hotel (“Preu net”) => 94,96 USD
+100-4% = 96  
+96-1,5% = 94,56  
+Pagable a l’hotel (“Tarifa Neta”) \=\> 94,56 USD
 
-Exemple de càlcul per a una reserva de 100 USD feta a través d'un afiliat amb una comissió del 10%
+Exemple de càlcul per a una reserva de 100 USD feta via un Afiliat amb una comissió del 10%
 
-100-4% = 96\
-96-1,5%=94,56\
-94,56-10%=85,1\
-Pagable a l'hotel (“Preu net”) => 85,1 USD
+100-4% = 96  
+96-1,5% = 94,56  
+94,56-10% = 85,1  
+Pagable a l’hotel (“Tarifa Neta”) \=\> 85,1 USD
 
-***
+---
 
-**Avís sobre la gestió de pagaments per part d'integradors externs**
+**Avís sobre la gestió de pagaments per integradors tercers**
 
-**Tingueu en compte que certs afiliats, d'ara endavant denominats "Integradors externs", seran responsables de gestionar les transaccions de pagament. Com a resultat, aquests integradors externs assumiran el paper del comerciant registrat. En conseqüència, les condicions de pagament de Wink ja no s'aplicaran a aquestes transaccions. En lloc d'això, l'hotel haurà d'acceptar les noves condicions de pagament específiques dels integradors externs.**
+**Tingueu en compte que certs afiliats, d’ara endavant anomenats "Integradors Tercers", seran responsables de gestionar les transaccions de pagament. Per tant, aquests Integradors Tercers assumiran el paper de comerciant registrat. En conseqüència, els termes de pagament de Wink ja no s’aplicaran a aquestes transaccions. En canvi, s’hauran d’acceptar nous termes de pagament específics per als Integradors Tercers per part de l’hotel.**
 
-***
+---
 
 **7. Impostos**
 
-7.1 El Proveïdor d'Allotjament és responsable d'assegurar-se que la Tarifa inclogui tots els impostos aplicables. És responsabilitat del Proveïdor d'Allotjament assegurar-se que els impostos inclosos a les Tarifes siguin exactes i estiguin actualitzats. Quan el Proveïdor d'Allotjament no indiqui l'existència de taxes municipals, taxes turístiques o altres taxes locals que s'hagin de pagar, s'entendrà que estan incloses a la Tarifa.
+7.1 El Proveïdor d’Allotjament és responsable d’assegurar que la Tarifa inclou tots els Impostos aplicables. És responsabilitat del Proveïdor d’Allotjament assegurar que els Impostos inclosos a les Tarifes siguin precisos i actualitzats. Quan el Proveïdor d’Allotjament no indiqui l’existència d’impostos municipals, taxes turístiques o altres taxes locals a pagar, s’entendrà que estan inclosos a la Tarifa.
 
-7.2 Cada Proveïdor d'Allotjament és responsable de remetre els Impostos a les agències i/o institucions governamentals pertinents.
+7.2 Cada Proveïdor d’Allotjament és responsable de remetre qualsevol Impost a les agències i/o institucions governamentals corresponents.
 
-7.3 El Proveïdor d'Allotjament serà responsable i acceptarà indemnitzar Wink per qualsevol pèrdua, cost, penalització i/o dany en què es produeixi com a resultat de qualsevol incompliment de la inclusió d'Impostos precisos i actualitzats a les seves Tarifes i/o com a resultat de qualsevol incompliment de la informació o la no informació precisa a Wink sobre els Impostos aplicables.
+7.3 El Proveïdor d’Allotjament serà responsable i accepta indemnitzar Wink per qualsevol pèrdua, cost, penalització i/o danys derivats de no incloure Impostos precisos i actualitzats a les seves Tarifes i/o de no informar o informar incorrectament a Wink dels Impostos aplicables.
 
-7.4 Wink, en oferir Habitacions als seus Socis, inclourà tots els Impostos aplicables (subjectes a la Subsecció (a) d'aquesta Secció). Totes les quantitats a pagar en virtut d'aquest Acord, llevat que s'indiqui el contrari, inclouran l'IVA o altres impostos o taxes aplicables (excepte l'impost de societats o altres impostos sobre els beneficis). Si qualsevol import d'IVA és avaluat i aplicat per qualsevol autoritat pertinent responsable de l'IVA al país on es presten aquests serveis, Wink, en rebre una factura fiscal vàlida del Proveïdor d'Allotjament, pagarà al Proveïdor d'Allotjament l'import de l'IVA inclòs en les quantitats amb IVA inclòs a pagar en virtut d'aquest Acord.
+7.4 Wink, quan ofereix Habitacions als seus Socis, inclourà tots els Impostos aplicables (subjecte a la Subsecció (a) d’aquesta Secció). Totes les quantitats pagables sota aquest Acord, tret que s’indiqui el contrari, inclouran l’IVA o altres impostos o drets aplicables (excepte l’impost de societats o altres impostos sobre beneficis). Si qualsevol autoritat competent imposa IVA, Wink pagarà al Proveïdor d’Allotjament l’import d’IVA inclòs en les quantitats pagables sota aquest Acord, prèvia recepció d’una factura vàlida.
 
-7.5 Qualsevol reclamació per part de l'autoritat competent per sancions o interessos derivats del pagament endarrerit, o qualsevol IVA facturat, haurà de ser a càrrec del Proveïdor d'Allotjament. A més, si qualsevol import d'IVA és avaluat i aplicat per qualsevol autoritat competent responsable de l'IVA al país on es reben els serveis en virtut d'un mecanisme d'autocomptabilitat, Wink comptabilitzarà aquest IVA a la seva declaració d'IVA d'acord amb la legislació de l'IVA del país. Qualsevol reclamació per part de l'autoritat competent per sancions o interessos derivats del pagament endarrerit de qualsevol IVA autocomptabilitzat serà a càrrec de Wink.
+7.5 Qualsevol reclamació per penalitzacions o interessos per pagament tardà o IVA facturat serà a càrrec del Proveïdor d’Allotjament. A més, si l’IVA s’autoaplica segons la legislació del país, Wink el declararà a la seva declaració d’IVA. Qualsevol reclamació per penalitzacions o interessos per pagament tardà d’aquest IVA serà a càrrec de Wink.
 
-**8. Dades bancàries i representant designat del proveïdor d'allotjament**
+**8. Dades bancàries i representant designat del Proveïdor d’Allotjament**
 
-El Proveïdor d'Allotjament s'assegurarà que les dades del compte bancari proporcionades a Wink siguin exactes en tot moment i notificarà sense demora qualsevol canvi en aquestes.
+El Proveïdor d’Allotjament ha d’assegurar que les dades bancàries proporcionades a Wink siguin sempre correctes i notificar sense demora qualsevol canvi.
 
-Només la persona que signi aquest acord serà l'únic representant designat del Proveïdor d'Allotjament que tindrà l'autoritat per sol·licitar canvis al compte bancari del Proveïdor d'Allotjament i/o a la informació del beneficiari. Cap altra persona tindrà aquesta autoritat en nom del Proveïdor d'Allotjament. Qualsevol canvi d'aquesta persona designada s'haurà de sol·licitar a Wink per escrit, i qualsevol canvi d'aquest tipus s'implementarà només mitjançant una esmena escrita a aquest Acord executada per ambdues parts.
+Només la persona que signa aquest acord serà el representant designat exclusiu del Proveïdor d’Allotjament amb autoritat per sol·licitar canvis a les dades bancàries i/o del beneficiari. Cap altra persona tindrà aquesta autoritat. Qualsevol canvi d’aquesta persona designada s’haurà de sol·licitar per escrit a Wink i s’implementarà només mitjançant una esmena escrita a aquest Acord signada per ambdues Parts.
 
-**9. Modificacions de reserves**
+**9. Modificacions de la reserva**
 
-9.1 Els proveïdors d'allotjament són responsables de qualsevol modificació de la reserva fora de la política de cancel·lació indicada a la confirmació de la reserva acceptada mitjançant comunicació directa amb el client.
+9.1 Els Proveïdors d’Allotjament són responsables de qualsevol modificació de reserva fora de la política de cancel·lació indicada a la confirmació de reserva acceptada per comunicació directa amb l’Hoste.
 
-9.2 Quan hi hagi hagut un error per part del Proveïdor d'Allotjament que hagi provocat la càrrega d'una Tarifa incorrecta i, en conseqüència, es faci una Reserva amb la Tarifa incorrecta, el Proveïdor d'Allotjament haurà d'atendre la reserva amb la Tarifa incorrecta.
+9.2 Si hi ha un error del Proveïdor d’Allotjament que provoca que es publiqui una tarifa incorrecta i es fa una reserva a aquesta tarifa, el Proveïdor d’Allotjament ha de respectar la reserva a la tarifa incorrecta.
 
-9.3 Wink no tindrà cap responsabilitat envers el Proveïdor d'Allotjament per cap error de tarifa comès pel Proveïdor d'Allotjament.
+9.3 Wink no serà responsable davant el Proveïdor d’Allotjament per errors de tarifa comesos pel Proveïdor d’Allotjament.
 
-**10. Identificació de reserves / Cooperació antifrau**
+**10. Identificació de la reserva / Cooperació antifrau**
 
-10.1 El Proveïdor d'Allotjament s'assegurarà que les dades completes i correctes de l'empresa dels clients de Wink s'emplenen amb precisió als seus sistemes, de manera que cada Reserva sigui clarament identificable com una Reserva realitzada en virtut d'aquest Acord i de conformitat amb aquest.
+10.1 El Proveïdor d’Allotjament ha d’assegurar que les dades completes i correctes dels clients de Wink estiguin correctament registrades als seus sistemes perquè cada Reserva sigui clarament identificable com a feta sota aquest Acord.
 
-10.2 Cada Proveïdor d'Allotjament Participant ha de fer tots els esforços comercialment raonables per garantir que, en el moment del registre d'entrada, la identificació presentada per un Hoste coincideixi amb la informació de la reserva. Si una reserva és una Reserva Potencialment Fraudulenta, o Wink no pot verificar certes dades proporcionades per un Hoste, el Proveïdor d'Allotjament i Wink treballaran conjuntament per abordar la Reserva Potencialment Fraudulenta, cosa que pot incloure la cancel·lació d'aquesta reserva en qualsevol moment. El Proveïdor d'Allotjament accepta cooperar plenament amb Wink i proporcionarà a Wink qualsevol informació que pugui sol·licitar en relació amb la Reserva Potencialment Fraudulenta.
+10.2 Cada Proveïdor d’Allotjament participant ha d’usar esforços comercials raonables per assegurar que, en el registre d’entrada, la identificació presentada per un Hoste coincideixi amb la informació de la reserva. Si una reserva és Potencialment Fraudulenta o si certs dades no es poden verificar, el Proveïdor d’Allotjament i Wink treballaran conjuntament per gestionar la reserva, incloent la possibilitat de cancel·lar-la en qualsevol moment. El Proveïdor d’Allotjament cooperarà plenament amb Wink i proporcionarà la informació que es sol·liciti.
 
-10.3 Les parts acorden que, si un proveïdor d'allotjament incompleix aquesta clàusula i posteriorment es descobreix que la reserva és potencialment fraudulenta, Wink no en serà responsable.
+10.3 Les Parts acorden que si un Proveïdor d’Allotjament no compleix aquesta clàusula i la reserva es considera Potencialment Fraudulenta, Wink no serà responsable.
 
-**11. Indisponibilitat / Incompliment**
+**11. No disponibilitat / Incumpliment**
 
-11.1 En cas de qualsevol situació d'indisponibilitat (ja sigui per sobrereserva o per altres motius) que requereixi que un Proveïdor d'Allotjament hagi de traslladar qualsevol Hoste a un allotjament alternatiu, el Proveïdor d'Allotjament accepta fer tot el possible per mantenir els Hostes i les Reserves per tal de permetre que els Hostes romanguin en aquest allotjament en la mesura del possible. En cas que el Proveïdor d'Allotjament hagi de traslladar finalment un Hoste a un allotjament alternatiu, aleshores accepta el següent:
+11.1 En cas de no disponibilitat (per sobre-reserva o altres causes) que obligui a reubicar un Hoste, el Proveïdor d’Allotjament farà tot el possible per mantenir els Hostes i les reserves perquè puguin romandre a l’allotjament el màxim possible. Si cal reubicar l’Hoste, el Proveïdor d’Allotjament:
 
-* Notificar immediatament a Wink abans de traslladar el Convidat;
-* Per traslladar l'hoste a una propietat alternativa de categoria/qualificació igual o superior a la mateixa zona, en les mateixes condicions reservades, i aquest trasllat serà pagat pel Proveïdor d'Allotjament sense cap cost addicional per a l'hoste afectat, i inclourà, entre d'altres.
-* Qualsevol cost relacionat amb el transport i altres despeses relacionades amb el trasllat en nom del convidat afectat.
-* Per permetre que Wink dedueixi tots els costos directes causats per la indisponibilitat i/o el trasllat del saldo(s) a cobrar del Proveïdor d'Allotjament en cas que Wink incorri en alguna penalització econòmica, compensació o cost associat a aquesta indisponibilitat i/o trasllat.
+* Notificarà immediatament a Wink abans de la reubicació;  
+* Traslladarà l’Hoste a una propietat alternativa de categoria igual o superior a la mateixa zona, sota les mateixes condicions reservades, sense cost addicional per a l’Hoste, incloent, sense limitació:  
+* Qualsevol cost relacionat amb transport i altres despeses de reubicació per a l’Hoste afectat.  
+* Permetrà a Wink deduir tots els costos directes causats per la no disponibilitat i/o reubicació del saldo pendent del Proveïdor d’Allotjament si Wink assumeix alguna penalització, compensació o cost associat.
 
-11.2 En cas d'incompliment per part del Proveïdor d'Allotjament de qualsevol de les condicions d'aquest Acord, incloses les condicions inacceptables de les instal·lacions i/o les deficiències de les Instal·lacions i Serveis, Wink tindrà dret a aturar els pagaments i a exigir el compliment correcte de les condicions de reserva acordades. El Proveïdor d'Allotjament, en qualsevol cas, assumirà el cost total de qualsevol compensació a pagar al Client afectat, eximint Wink de qualsevol responsabilitat derivada del compliment defectuós per part del Proveïdor d'Allotjament de les seves obligacions en virtut d'aquest Acord.
+11.2 En cas d’incumpliment per part del Proveïdor d’Allotjament de qualsevol condició d’aquest Acord, incloent condicions inacceptables de les instal·lacions o serveis deficients, Wink podrà aturar els pagaments i exigir el compliment correcte dels termes de la reserva. El Proveïdor d’Allotjament assumirà el cost total de qualsevol compensació a l’Hoste afectat, mantenint Wink lliure de responsabilitat.
 
-**12. Condicions dels establiments hotelers participants**
+**12. Condicions de la propietat de l’Hotel Participant**
 
-El Proveïdor d'Allotjament notificarà, com més aviat millor, a través de la "Secció d'Anuncis" de l'Extranet de Wink, qualsevol construcció, renovació, remodelació, actualització o altres treballs que alterin o puguin alterar la capacitat d'un Proveïdor d'Allotjament per proporcionar Habitacions, Instal·lacions i Serveis i/o que puguin afectar negativament l'estada d'un Hoste. Per evitar dubtes, sempre que una indisponibilitat o incompliment es derivi d'aquestes circumstàncies, s'aplicarà la Secció 11 d'aquests Termes i Condicions Generals de Wink ("Indisponibilitat / Incompliment") i el Proveïdor d'Allotjament assumirà el cost total de qualsevol compensació a pagar al Hoste afectat, eximint Wink de qualsevol responsabilitat.
+El Proveïdor d’Allotjament notificarà tan aviat com sigui possible a través de la secció “Anuncis” de l’extranet de Wink qualsevol construcció, renovació, actualització o treball que pugui afectar la capacitat de proporcionar Habitacions, Instal·lacions i Serveis o que pugui afectar negativament l’estada d’un Hoste. En cas de no disponibilitat o incompliment per aquestes causes, s’aplicarà la Secció 11 i el Proveïdor d’Allotjament assumirà el cost total de qualsevol compensació, mantenint Wink lliure de responsabilitat.
 
 **13. Modificació, durada i terminació**
 
-13.1 Modificació. Excepte que la legislació aplicable exigeixi el contrari, Wink pot modificar aquestes Condicions en qualsevol moment. Si fem canvis importants en aquestes Condicions, publicarem les Condicions revisades a la Plataforma Wink i actualitzarem la data de "Darrera actualització" a la part superior d'aquestes Condicions. Si la modificació us afecta, també us notificarem les modificacions almenys trenta (30) dies abans de la data en què entrin en vigor. Si no rescindiu el vostre acord abans de la data en què les Condicions revisades entrin en vigor, l'ús continuat dels Serveis constituirà l'acceptació de qualsevol canvi en les Condicions revisades.
+13.1 Modificació. Excepte que la llei aplicable indiqui el contrari, Wink pot modificar aquests Termes en qualsevol moment. Si fem canvis importants, publicarem els Termes revisats a la Plataforma Wink i actualitzarem la data de “Última actualització”. Si et veus afectat, t’avisarem almenys trenta (30) dies abans que els canvis entrin en vigor. Si no rescindeixes abans que els Termes revisats siguin efectius, l’ús continuat dels Serveis implicarà acceptació dels canvis.
 
-13.2 Durada. Llevat que s'acordi el contrari, aquest Acord començarà a partir de la data del present per un període indefinit.
+13.2 Durada. Excepte acord en contra, aquest Acord comença avui i és per temps indefinit.
 
-13.3 Aquest Acord tindrà vigència fins que les Parts el rescindeixin de la manera següent:
+13.3 Aquest Acord continua fins que les Parts el rescindeixin així:
 
-* Per Wink, en qualsevol moment i sense causa justificada, amb una notificació per escrit a l'altra Part amb trenta (30) dies d'antelació;
-* Pel proveïdor d'allotjament, sense causa justificada en qualsevol moment i sense previ avís, desactivant la propietat al tauler de control de la extranet de Wink.
-* De qualsevol altra manera expressament prevista en altres parts d'aquest Acord.
+* Per Wink, en qualsevol moment i sense causa, amb un preavís escrit de trenta (30) dies;  
+* Per el Proveïdor d’Allotjament, sense causa i en qualsevol moment, desactivant la propietat a l’extranet;  
+* D’una altra manera expressament prevista en aquest Acord.
 
-13.4 A més, Wink es reserva el dret, a la seva entera discreció, de rescindir aquest Acord immediatament mitjançant notificació per escrit al Proveïdor d'Allotjament si:
+13.4 A més, Wink pot rescindir immediatament per escrit si:
 
-* El Proveïdor d'Allotjament inicia un procediment d'insolvència, fallida, concurs de creditors o liquidació, gestió judicial, administració o altres procediments similars (tant si els inicia el Proveïdor d'Allotjament com qualsevol dels seus creditors), que no es desestimen o es resolen a favor del Proveïdor d'Allotjament en un termini de seixanta (60) dies a partir de la data en què es produeixi.
-* Un creditor executa o intenta executar una hipoteca sobre l'Hotel Participant.
-* El proveïdor d'allotjament deixa de dur a terme la seva activitat en el curs ordinari.
-* El proveïdor d'allotjament perd el seu contracte d'arrendament o els drets d'operar l'hotel participant amb la seva marca actual.
-* Hi ha un canvi en les característiques de l'allotjament, incloent-hi, entre d'altres, la construcció, les obres i les reformes.
-* O a causa d'un esdeveniment de força major.
+* El Proveïdor d’Allotjament entra en insolvència, fallida, administració judicial o procediments similars que no es resolguin a favor seu en 60 dies;  
+* Un creditor executa o intenta executar una hipoteca sobre l’Hotel Participant;  
+* El Proveïdor d’Allotjament deixa d’operar normalment;  
+* El Proveïdor d’Allotjament perd el lloguer o drets d’operar l’Hotel sota la marca actual;  
+* Hi ha un canvi en les característiques de l’allotjament, incloent construcció o renovacions;  
+* O per un esdeveniment de força major.
 
-13.5 En cas de rescissió anticipada o venciment del Contracte per qualsevol motiu, el Proveïdor d'Allotjament haurà de:
+13.5 En la terminació anticipada o expiració, el Proveïdor d’Allotjament:
 
-* Respectar totes les reserves realitzades abans de la data de finalització o venciment efectiu, a les tarifes reservades originalment, incloses les reserves amb dates d'entrada que es produeixin després de la finalització o venciment de qualsevol període de preavís aplicable, o proporcionar serveis alternatius adequats i
-* Liquideu el compte en conseqüència.
+* Complirà totes les reserves fetes abans de la data efectiva, a les tarifes originals, incloent reserves amb dates posteriors a la terminació, o proporcionarà serveis alternatius adequats;  
+* Liquidarà el compte corresponent.
 
-**14. Declaracions i garanties**
+**14. Representacions i garanties**
 
-El proveïdor d'allotjament garanteix i declara que complirà plenament amb el següent:
+El Proveïdor d’Allotjament garanteix i declara que complirà plenament:
 
-14.1 Que la provisió de totes les habitacions i totes les instal·lacions i serveis s'ha de fer en tot moment d'acord amb les bones pràctiques de la indústria i es proporcionar amb la deguda habilitat, cura, atenció i diligència;
+14.1 Que la prestació de totes les Habitacions i Instal·lacions i Serveis serà sempre segons la bona pràctica industrial i amb la deguda habilitat, cura i diligència;
 
-14.2 Que tot el personal de l'Hotel Participant estarà degudament qualificat i format per complir les seves obligacions en virtut d'aquest Acord;
+14.2 Que tot el personal de l’Hotel Participant estarà qualificat i format adequadament;
 
-14.3 El Proveïdor d'Allotjament haurà de complir totes les lleis, normes i altres requisits aplicables de totes les autoritats pertinents en relació amb la provisió de les Habitacions i totes les altres parts de cada Hotel Participant o qualsevol servei i/o instal·lació associats i/o les seves obligacions en virtut d'aquest Acord;
+14.3 Que complirà totes les lleis, normes i requisits aplicables relacionats amb la prestació de les Habitacions i altres serveis;
 
-14.4 Que cada Hotel Participant ha llegit i acceptat els termes d'aquest Acord;
+14.4 Que cada Hotel Participant ha llegit i acceptat els termes d’aquest Acord;
 
-14.5 Que totes les Habitacions i/o qualsevol Instal·lació i Servei proporcionat d'acord amb o en relació amb aquest Acord siguin segurs i compleixin plenament amb totes les lleis, normes i regulacions locals, estatals, federals i/o nacionals. El Proveïdor d'Allotjament garanteix a més que cap de les Habitacions (ni cap altra part dels Hotels Participants) té instal·lats escalfadors d'aigua de gas individuals;
+14.5 Que totes les Habitacions i serveis proporcionats són segurs i compleixen totes les lleis locals, estatals, federals i nacionals. A més, garanteix que cap habitació ni part de l’hotel té escalfadors d’aigua a gas individuals;
 
-14.6 Que tota la informació proporcionada directament o indirectament a Wink pel Proveïdor d'Allotjament d'acord amb o en relació amb aquest Acord serà actualitzada i precisa.
+14.6 Que tota la informació proporcionada a Wink és actualitzada i precisa;
 
-14.7 Que el Proveïdor d'Allotjament no estigui constituït en un país subjecte a sancions econòmiques o comercials ni sigui resident d'aquest; i
+14.7 Que el Proveïdor d’Allotjament no està incorporat ni resideix en un país subjecte a sancions econòmiques o comercials;
 
-14.8 Completar al seu propi cost qualsevol treball que sigui necessari per eliminar qualsevol deficiència i/o defecte que li notifiquin les autoritats amb efecte immediat. El Proveïdor d'Allotjament notificarà a Wink sense demora. El Proveïdor d'Allotjament tindrà en compte qualsevol recomanació raonable de millora feta per Wink.
+14.8 Que completarà a la seva costa qualsevol treball necessari per eliminar deficiències notificades per les autoritats amb efecte immediat i informarà Wink sense demora.
 
-**15. Incidències i queixes dels clients**
+**15. Incidents i reclamacions d’hostes**
 
-15.1 En cas que es produeixi algun incident a un Hoste, el Proveïdor d'Allotjament ha d'informar-ne a Wink, i els detalls corresponents, tan aviat com sigui possible, i cooperarà plenament amb Wink per tal de gestionar adequadament qualsevol incident d'aquest tipus.
+15.1 Si ocorre un incident amb un Hoste, el Proveïdor d’Allotjament ha d’informar Wink tan aviat com sigui possible i cooperar plenament.
 
-15.2 El Proveïdor d'Allotjament accepta cooperar plenament amb Wink en la gestió de totes les reclamacions o queixes dels Hostes, i proporcionarà una resposta detallada a qualsevol consulta de Wink sobre aquests assumptes en un termini màxim de set (7) dies naturals després de rebre-la de Wink o dins del termini acordat a l'acord de nivell de servei.
+15.2 El Proveïdor d’Allotjament cooperarà amb Wink en la gestió de reclamacions o queixes d’hostes i respondrà detalladament a qualsevol consulta de Wink en un termini de set (7) dies o segons acord.
 
-15.3 En cas que Wink hagi de proporcionar una compensació a un Hoste com a resultat de qualsevol incident, reclamació o queixa de l'Hoste a causa d'un acte o omissió del Proveïdor d'Allotjament, el Proveïdor d'Allotjament accepta indemnitzar i reemborsar Wink immediatament per aquesta despesa i en la seva totalitat, i d'acord amb la Secció 33 de les Condicions Generals ("Indemnització") segons correspongui.
+15.3 Si Wink ha de compensar un Hoste per un incident causat pel Proveïdor d’Allotjament, aquest indemnitzarà Wink ràpidament segons la Secció 33.
 
-15.4 El Proveïdor d'Allotjament accepta permetre que Wink dedueixi del saldo del Proveïdor d'Allotjament tots els costos, despeses i compensacions en què s'hagi incorregut com a resultat d'incidents i queixes dels Hostes per part de Wink.
+15.4 El Proveïdor d’Allotjament permetrà a Wink deduir tots els costos i compensacions derivats d’incidents i queixes d’hostes del seu saldo.
 
-**16. Drets d'auditoria**
+**16. Drets d’auditoria**
 
-16.1 Durant el Termini, Wink podrà auditar qualsevol registre rellevant del Proveïdor d'Allotjament i/o dels Hotels Participants segons sigui raonablement necessari per dur a terme verificacions relacionades amb (i) l'execució de les Reserves; (ii) tots els pagaments rebuts per Wink i/o els Hostes; i (iii) tots els pagaments pagats o a pagar per Wink i/o els Hostes.
+16.1 Durant la vigència, Wink pot auditar registres rellevants del Proveïdor d’Allotjament i Hotels Participants per verificar reserves, pagaments rebuts i pagaments efectuats.
 
-16.2 Cada Part assumirà els seus propis costos respecte a qualsevol auditoria, excepte en la circumstància següent: Si l'auditoria demostra que el Proveïdor d'Allotjament incompleix alguna de les seves obligacions en virtut d'aquest Acord, aleshores, sense perjudici dels altres drets i recursos de Wink, el Proveïdor d'Allotjament pagarà l'auditoria íntegrament i prendrà les mesures necessàries per complir les seves obligacions contractuals.
+16.2 Cada Part assumirà els seus costos d’auditoria, excepte si l’auditoria demostra incompliment del Proveïdor d’Allotjament, en aquest cas aquest assumirà tots els costos i corregirà l’incompliment.
 
-**17. Assegurances**
+**17. Assegurança**
 
-El Proveïdor d'Allotjament mantindrà una cobertura d'assegurança adequada amb asseguradores de bona reputació, amb llicència per operar a l'estat/país corresponent, respecte a tots els riscos de tercers que sorgeixin o puguin sorgir en relació amb o connectats amb la prestació d'allotjament (o qualsevol instal·lació i servei) i/o aquest Acord, inclosa la responsabilitat de Wink derivada directament o indirectament de o en conjunció amb qualsevol reclamació respecte a (i) pèrdua o danys a qualsevol bé immoble o moble; (ii) lesions personals o mort de qualsevol persona; (iii) pèrdua o danys a la propietat de tercers; o (iv) la seva responsabilitat envers tercers als quals proporciona els serveis d'allotjament.
+El Proveïdor d’Allotjament mantindrà una assegurança adequada amb asseguradores reputades i autoritzades, que cobreixi riscos de tercers relacionats amb la prestació d’allotjament i serveis, incloent responsabilitats per danys a propietats, lesions personals, pèrdues de tercers, etc.
 
-**18. Lluita contra el suborn, restriccions comercials i ètica empresarial**
+**18. Antisoborn, restriccions comercials i ètica empresarial**
 
-Wink adopta un enfocament de tolerància zero amb les infraccions de les normes comercials internacionals, la legislació de prevenció del suborn i la corrupció i les restriccions aplicables al comerç, el flux de fons i el finançament del terrorisme.
+Wink té tolerància zero amb incompliments de normes comercials internacionals, lleis antisoborn i restriccions comercials.
 
-El Proveïdor d'Allotjament garanteix que compleix i complirà, i les seves Parts Associades compleixen i compliran, el Codi de Conducta del Proveïdor de Wink.
+El Proveïdor d’Allotjament garanteix que compleix i farà complir el Codi de Conducta de Proveïdors de Wink.
 
-El Proveïdor d'Allotjament declara, garanteix i es compromet a complir i complirà en tots els aspectes totes les normes comercials internacionals, les restriccions aplicables al comerç, el flux de fons i el finançament del terrorisme, així com la legislació sobre prevenció del suborn i la corrupció, inclosa, entre d'altres, la Llei de suborn del Regne Unit de 2010 i la Llei de prevenció de la corrupció de Singapur.
+El Proveïdor d’Allotjament declara que compleix totes les normes internacionals, restriccions comercials, finançament del terrorisme i lleis antisoborn, incloent la UK Bribery Act 2010 i la Singapore Prevention of Corruption Act.
 
-El Proveïdor d'Allotjament garanteix que, segons el seu coneixement, ni ells ni les seves Parts Associades han estat condemnats per un delicte que impliqui suborn o corrupció ni són objecte de cap investigació per part de cap organisme governamental, administratiu o regulador.
+Garanteix que ni ell ni les seves parts associades han estat condemnats per delictes de suborn o corrupció ni són objecte d’investigació.
 
 **19. Confidencialitat**
 
-19.1 Informació confidencial. Les parts entenen i acorden que, en l'execució d'aquest Acord, cada part pot tenir accés o pot estar exposada, directament o indirectament, a informació confidencial i sensible de l'altra part (la "Informació confidencial"). La informació confidencial inclou dades del client, volum de transaccions, plans de màrqueting i de negoci, informació empresarial, financera, tècnica i operativa, estadístiques d'ús, dades de classificació, informació respecte a la paritat de tarifes, productes i disponibilitat, polítiques de preus, dades de conversió i volum de clics, i altres estadístiques relacionades, dades personals dels convidats, qualsevol programari o informació relativa al programari proporcionat o utilitzat per Wink en relació amb aquest Acord, els termes d'aquest Acord i qualsevol altra informació no pública que una part divulgadora designi com a privada o confidencial o de la qual una part receptora hauria de saber raonablement que s'hauria de tractar com a privada i confidencial.
+19.1 Informació Confidencial. Les Parts reconeixen que poden tenir accés a informació confidencial i sensible de l’altra Part, incloent dades de clients, plans de negoci, dades personals, programari, termes d’aquest Acord, i altra informació no pública.
 
-19.2 Protegir i salvaguardar la informació confidencial. Cada part acorda que: (a) tota la informació confidencial seguirà sent propietat exclusiva de la part divulgadora i la part receptora no utilitzarà cap informació confidencial per a cap finalitat excepte per al compliment d'aquest Acord, (b) mantindrà i utilitzarà mètodes prudents per aconseguir que els seus empleats, funcionaris, representants, parts contractants i agents (les "Persones Autoritzades") mantinguin la confidencialitat i el secret de la informació confidencial, (c) només divulgarà informació confidencial a les persones autoritzades que necessitin conèixer aquesta informació per al compliment d'aquest Acord, (d) no utilitzarà mètodes prudents per garantir que les persones autoritzades no (i) copiïn, publiquin, transmetin, reprodueixin, divulguin, divulguin o posin la informació confidencial a disposició de tercers, o (ii) l'utilitzin o emmagatzemin en un sistema o base de dades de recuperació no protegit (excepte d'acord amb els termes del present document), i (e) retornarà o destruirà totes les (còpies (impreses i digitals) de la informació confidencial a petició escrita de l'altra part. En cas que alguna de les Parts processi dades personals en nom de l'altra com a part de la prestació dels serveis en virtut d'aquest Acord, les Parts regularan aquest processament mitjançant un Acord de Processament de Dades (APD) i el conformaran part dels termes i condicions d'aquest Acord.
+19.2 Protecció. Cada Part mantindrà la confidencialitat, només revelarà la informació a persones autoritzades, no copiarà ni divulgarà la informació a tercers, i retornarà o destruirà la informació a petició.
 
-19.3 Divulgació permesa. No obstant l'anterior, la Informació Confidencial no inclourà cap informació en la mesura que (i) sigui o esdevingui part del domini públic sense cap acte o omissió per part de la Part receptora, (ii) fos en possessió de la Part receptora abans de la data d'aquest Acord, (iii) sigui divulgada a la Part receptora per un tercer que no tingui cap obligació de confidencialitat al respecte, o (iv) s'hagi de divulgar d'acord amb la llei, una ordre judicial, una citació o una autoritat governamental. Wink té dret a divulgar aquest Acord de manera confidencial a les seves empreses Proveïdores d'Allotjament.
+19.3 Excepcions. No es considera confidencial la informació que sigui pública, ja coneguda, proporcionada per tercers sense obligació de confidencialitat, o requerida per llei.
 
-19.4 Dades del client. Les parts faran tot el possible des del punt de vista comercial per salvaguardar la confidencialitat i la privadesa de les dades del client i per protegir-les de l'ús o la divulgació no autoritzats. Les parts acorden complir les lleis aplicables sobre el processament de dades personals i la protecció de la privadesa. Les parts utilitzaran en tot moment mesures de seguretat raonables i adequades per evitar la corrupció i l'accés no autoritzat a les dades del client. Aquestes mesures inclouran, entre altres coses, el xifratge de dades i el xifratge de canals. Quan sigui pertinent, el proveïdor d'allotjament ha de notificar a Wink qualsevol violació de la seguretat el més aviat possible (no més tard d'1 dia després de descobrir la violació). Cada part tindrà una política de privadesa accessible als clients que descrigui la manera com protegeix i utilitza les dades del client. Les parts poden exercir els seus drets per sol·licitar l'accés a les seves dades personals, la rectificació o l'esborrat d'aquestes dades, i el seu dret d'oposició, portabilitat de les dades i restricció del seu processament, mitjançant una sol·licitud escrita a l'altra part, a les adreces indicades a l'encapçalament d'aquest acord, a més de presentar una reclamació davant l'Agència de Protecció de Dades local.
+19.4 Dades de clients. Les Parts protegiran les dades personals dels clients segons la llei i notificaran qualsevol violació de seguretat a Wink en menys d’un dia. Cada Part tindrà una política de privadesa accessible als clients.
 
-19.5 Anuncis. Cap de les parts crearà, publicarà, distribuirà ni permetrà cap material escrit que faci referència a l'altra part sense haver-lo presentat prèviament i haver rebut el consentiment previ per escrit de la part que no l'ha presentat. Aquest consentiment no es denegarà ni es retardarà injustificadament.
+19.5 Anuncis. Cap Part publicarà materials que facin referència a l’altra sense consentiment previ per escrit.
 
-19.6 Cada Part pot contactar amb el Delegat de Protecció de Dades (DPO) de l'altra Part a través de les següents adreces de correu electrònic i/o postal: dataprotectionofficer@Wink.
+19.6 Contacte DPO. Cada Part pot contactar amb l’Oficial de Protecció de Dades de l’altra a dataprotectionofficer@Wink.
 
 **20. Drets de propietat intel·lectual**
 
-20.1 El Proveïdor d'Allotjament reconeix que Wink i/o els seus llicenciadors conservaran la propietat de tots els drets, títols i interessos sobre tots els Drets de Propietat Intel·lectual de Wink o incorporats al Lloc web de Wink, incloent-hi (entre d'altres) el logotip de Wink, el Contingut i les Dades de Wink. Res del que s'inclou en aquest Acord es considerarà que transfereix cap d'aquests drets, títols o interessos al Proveïdor d'Allotjament de cap manera.
+20.1 El Proveïdor d’Allotjament reconeix que Wink i els seus llicenciadors mantenen la propietat de tots els drets de propietat intel·lectual de Wink, incloent el logotip, contingut i dades de Wink.
 
-20.2 El Proveïdor d'Allotjament no divulgarà, integrarà, inclourà, utilitzarà, combinarà, explotarà, incorporarà ni posarà a disposició de cap altra manera el Contingut i les Dades de Wink (o qualsevol part d'aquestes) (a) amb el seu propi contingut i/o el contingut de cap Competidor de Wink (inclosos els Hotels), o (b) per a o en benefici de (i) si mateix (excepte per habilitar el Servei i el Sistema d'acord amb els termes d'aquest Acord), o (ii) cap Competidor de Wink (inclosos els Hotels) (ja sigui per a la promoció, comercialització, referència, promoció, publicitat o d'una altra manera en interès d'aquesta part), o (c) per a qualsevol altre propòsit o de qualsevol altra manera i/o en o a través de Plataformes de Tercers, excepte en els casos expressament previstos en aquest Acord. L'Afiliat no modificarà, alterarà, modificarà, distorsionarà, crearà obres derivades i/o noves basades en i/o derivades del Contingut i el Contingut no inclourà un enllaç (directe o indirecte), referència, clic o referència a (el lloc web d') un Competidor de Wink (inclosos els Hotels).
+20.2 El Proveïdor d’Allotjament no divulgarà ni utilitzarà el contingut i dades de Wink amb contingut propi o de competidors, ni per a benefici propi o de competidors, ni en plataformes de tercers, excepte per permetre el servei segons aquest Acord.
 
-20.3 El Proveïdor d'Allotjament s'assegurarà (i s'assegurarà que les empreses del Grup de Proveïdors d'Allotjament no registrin, adquireixin, utilitzin, comprin o obtinguin (directa o indirectament) noms de domini d'Internet que incorporin cap paraula o paraules idèntiques, confusivament o substancialment similars a "Wink" o qualsevol variació, traducció o errors ortogràfics d'aquest, incloses com a part de l'adreça).
+20.3 El Proveïdor d’Allotjament no registrarà ni utilitzarà noms de domini que siguin idèntics o similars a "Wink".
 
-20.4 En subscriure aquest Acord, Wink no renuncia ni perd (explícitament o tàcitament) cap dels seus drets que li corresponen per qualsevol llei, contracte o d'altra manera (ara o en el futur) respecte als Drets de Propietat Intel·lectual de Wink respecte al Proveïdor d'Allotjament o altres tercers.
+20.4 En signar aquest Acord, Wink no renuncia a cap dret sobre la propietat intel·lectual.
 
-**21. Canvi de titularitat**
+**21. Canvi de propietat**
 
-21.1 El Proveïdor d'Allotjament (i, quan el context ho requereixi, cada Hotel Participant) no vendrà, arrendarà ni disposarà de cap altra manera del seu interès en cap propietat hotelera sense donar un preavís per escrit d'almenys tres (3) mesos. En cas d'aquesta venda, arrendament o altra disposició, el Proveïdor d'Allotjament (i/o l'Hotel Participant) disposarà expressament en el contracte de compravenda, arrendament o altra disposició que aquest Acord (incloses totes les Reserves realitzades en virtut d'aquest) s'assignarà o novarà a la nova entitat després del canvi de control, d'acord amb les Subseccions (b) d'aquesta clàusula.
+21.1 El Proveïdor d’Allotjament (i l’Hotel Participant) no vendrà, llogarà ni disposarà de la seva propietat sense avisar per escrit amb tres (3) mesos d’antelació. En cas de venda o cessió, l’Acord i les reserves es transferiran a la nova entitat.
 
-21.2 Si Wink no volgués continuar amb l'Acord amb la nova entitat per qualsevol motiu, les Parts poden acordar rescindir aquest Acord immediatament i sense perjudici de les Reserves existents i qualsevol altre dret que qualsevol de les Parts pogués haver acumulat abans d'aquesta rescissió.
+21.2 Si Wink no vol continuar amb la nova entitat, les Parts poden rescindir l’Acord immediatament sense perjudici de reserves existents.
 
-**22. Contingut de la llista**
+**22. Contingut del llistat**
 
-22.1 Wink proporcionarà al Proveïdor d'Allotjament accés a l'extranet de Wink. El Proveïdor d'Allotjament es compromet a carregar tota la informació i els continguts relacionats amb el producte, incloent-hi, entre d'altres, fotografies, imatges, dissenys, text, àudio, vídeo, descripcions i instal·lacions (d'ara endavant, "Contingut") per garantir una distribució òptima del producte i mantindrà el Contingut actualitzat. En cas que el Proveïdor d'Allotjament no proporcioni el Contingut, autoritza expressament Wink a fer-ho descarregant-lo directament del lloc web del Proveïdor d'Allotjament i accepta tota la responsabilitat per qualsevol problema, incloses les reclamacions que puguin sorgir d'aquesta càrrega. A més, el Proveïdor d'Allotjament atorga a Wink el dret de modificar i/o ajustar la mida i la resolució del Contingut amb finalitats de màrqueting i distribució.
+22.1 Wink proporcionarà accés a l’extranet. El Proveïdor d’Allotjament s’encarregarà de pujar i mantenir actualitzat tot el contingut relacionat amb el producte, incloent fotos, textos i instal·lacions. Si no ho fa, autoritza Wink a descarregar-lo directament del seu lloc web i accepta la responsabilitat per qualsevol problema. També autoritza Wink a modificar la mida i resolució per a màrqueting.
 
-22.2 En cas que el Proveïdor d'Allotjament no pugui accedir a l'extranet per causes fora del seu control, ho notificarà immediatament a Wink.
+22.2 Si no pot accedir a l’extranet per causes fora del seu control, ho notificarà a Wink.
 
-22.3 El Proveïdor d'Allotjament declara i garanteix que té tots els drets, llicències, consentiments i autoritzacions necessaris per: (i) proporcionar el Contingut a Wink; (ii) el Proveïdor d'Allotjament atorga a Wink un dret no exclusiu, lliure de drets d'autor, irrevocable, mundial i sublicenciable a socis de màrqueting i/o distribució tercers per utilitzar, modificar, mostrar, publicar i ajustar el Contingut, el nom, els logotips, les marques comercials i qualsevol altra propietat intel·lectual i industrial del Proveïdor d'Allotjament ("DPI") amb la finalitat de complir el present Acord; (iii) el Proveïdor d'Allotjament garanteix a Wink i als seus clients que aquests DPI no infringeixen cap dret de tercers; i (iv) el Proveïdor d'Allotjament serà responsable de qualsevol informació difamatòria o immoral, de la veracitat i l'exactitud dels seus DPI proporcionats a Wink per qualsevol mitjà.
+22.3 El Proveïdor d’Allotjament garanteix que té tots els drets i llicències per proporcionar el contingut i concedeix a Wink una llicència no exclusiva, gratuïta, irrevocable i sublicenciable per utilitzar-lo per a la distribució i màrqueting. Garanteix que no infringeix drets de tercers i és responsable de qualsevol informació difamatòria o immoral.
 
-22.4 El Proveïdor d'Allotjament, en tot moment durant i després de l'expiració de la rescissió d'aquest Acord, indemnitzarà i mantindrà indemnes Wink, els seus Proveïdors d'Allotjament i/o els seus socis completament i els eximirà de responsabilitat, si se li sol·liciti, de qualsevol pèrdua incorreguda per Wink, els seus Proveïdors d'Allotjament i/o els seus socis, adjudicada contra ells o acordada que siguin pagades per aquests, derivada de qualsevol reclamació de drets de propietat intel·lectual.
+22.4 El Proveïdor d’Allotjament indemnitzarà Wink i socis per qualsevol reclamació de drets de propietat intel·lectual.
 
-22.5 El Proveïdor d'Allotjament haurà de: (i) proporcionar a Wink actualitzacions de la manera sol·licitada per Wink sobre el progrés de la reclamació de DPI, incloent-hi proves que la reclamació de DPI ha estat resolta o desestimada pel demandant tan aviat com sigui raonablement possible; (ii) En cas que el Proveïdor d'Allotjament incompleixi aquesta clàusula o si Wink no estigui plenament satisfet amb el progrés de la reclamació de DPI o per tal d'evitar més danys, Wink assumirà el control immediat de la reclamació de DPI a càrrec del Proveïdor d'Allotjament. Wink tindrà dret a compensar qualsevol cost i compensació pagada com a conseqüència de la reclamació de DPI amb qualsevol import present, contingent i/o futur degut o degut pel Proveïdor d'Allotjament.
+22.5 Proporcionarà actualitzacions sobre reclamacions i, si no compleix, Wink assumirà el control de la reclamació a costa del Proveïdor d’Allotjament i podrà compensar costos amb quantitats degudes.
 
 **23. Publicitat / Comunicacions externes**
 
-23.1 El Proveïdor d'Allotjament no publicarà cap comunicació o material relacionat amb Wink o aquest Acord, ja sigui als mitjans de comunicació o a qualsevol altra Part externa, sense el consentiment previ per escrit de Wink, i el Proveïdor d'Allotjament serà l'únic i directament responsable de qualsevol dany o pèrdua en què Wink incorri en violació d'aquesta disposició.
+23.1 El Proveïdor d’Allotjament no publicarà cap comunicació relacionada amb Wink o aquest Acord sense consentiment previ per escrit i serà responsable de qualsevol dany.
 
-23.2 El Proveïdor d'Allotjament consultarà amb Wink respecte al contingut de qualsevol comunicació o material que es proposi publicar, i el Proveïdor d'Allotjament haurà de proporcionar a Wink una còpia de qualsevol comunicació o material que finalment es publiqui.
+23.2 Consultarà amb Wink sobre el contingut i li proporcionarà una còpia de qualsevol comunicació publicada.
 
-**24. Precedència**
+**24. Preeminència**
 
-24.1 Aquest Acord es crea per tal de permetre acords comercials individuals que posteriorment Wink mantindrà amb cadascun dels Proveïdors d'Allotjament. En cas de discrepància, els termes i condicions estipulats en aquest Acord s'aplicaran als Proveïdors d'Allotjament, subjectes al següent:
+24.1 Aquest Acord permet acords comercials individuals entre Wink i cada Proveïdor d’Allotjament. En cas de discrepància, s’aplicaran les condicions d’aquest Acord subjectes a:
 
-24.2 Pel que fa a les Condicions de pagament relatives a cancel·lacions acordades i no presentacions, polítiques de pagament, exempcions i disponibilitat d'habitacions (tipus estàndard), prevaldran les condicions d'aquest Acord;
+24.2 En termes de pagament, cancel·lacions, no presentacions, polítiques de pagament i disponibilitat, prevaldran els termes d’aquest Acord;
 
-24.3 Pel que fa a les tarifes, les ocupacions mínimes, els descomptes per a terceres persones i nens, i els mercats aplicables, prevaldran les condicions acordades en el contracte comercial individual aplicable.
+24.3 En tarifes, ocupacions mínimes, descomptes i mercats aplicables, prevaldran els acords comercials individuals.
 
-**25. Autorització per signar: representació i signatura del proveïdor d'allotjament**
+**25. Autoritat per signar – Representació i signatura del Proveïdor d’Allotjament**
 
-25.1 El Proveïdor d'Allotjament garanteix que ell mateix, la persona que signa aquest Acord i/o qualsevol altra persona que proporcioni informació (incloses, per evitar dubtes, les Condicions de Pagament) a Wink en relació amb o de conformitat amb aquest Acord té l'autoritat, la capacitat i el poder necessaris per signar aquest Acord per i en nom de tots i cadascun dels Hotels Participants, i que aquesta persona té l'autoritat, la capacitat i el poder necessaris per vincular el Proveïdor d'Allotjament i tots i cadascun dels Hotels Participants a aquest Acord i, durant tot el Termini, complirà, executarà i garantirà que cada Hotel Participant compleixi i acompleixi les seves obligacions en virtut d'aquest Acord.
+25.1 El Proveïdor d’Allotjament garanteix que la persona que signa aquest Acord té autoritat per vincular-lo a ell i a cada Hotel Participant i complirà les seves obligacions.
 
-25.2 El Proveïdor d'Allotjament accepta explícitament que l'acceptació electrònica d'aquest Acord i els seus Termes i Condicions, inclosos els relacionats amb les modificacions, és vàlida, vinculant i exigible.
+25.2 Accepta que l’acceptació electrònica d’aquest Acord i les seves condicions, incloses modificacions, és vàlida i vinculant.
 
-**26. Llenguatge**
+**26. Idioma**
 
-La versió en anglès d'aquest Acord prevaldrà en tots els aspectes i prevaldrà en cas d'incoherències amb les versions traduïdes, si n'hi ha.
+La versió en anglès d’aquest Acord prevaldrà en cas d’inconsistències amb traduccions.
 
 **27. Renúncies**
 
-Cap renúncia a cap incompliment o condició d'aquest Acord es considerarà una renúncia a qualsevol altre incompliment o condició posterior, ja sigui de naturalesa similar o diferent.
+Cap renúncia a incompliments o condicions es considerarà renúncia a altres incompliments o condicions.
 
 **28. Divisibilitat**
 
-Si una agència governamental encarregada de l'aplicació de la llei, un tribunal o un tribunal de jurisdicció competent determina que alguna disposició d'aquest Acord és il·legal, invàlida o inaplicable d'altra manera segons les lleis nacionals, aleshores aquesta disposició s'interpretarà, modificarà o suprimirà en la mesura que sigui necessari per fer que aquesta disposició i/o aquest Acord siguin legals, vàlids o aplicables d'altra manera, i la part restant d'aquesta disposició i les altres disposicions del present document subsistiran, romandran en plena vigència i efecte i continuaran sent vinculants, i s'interpretaran per donar efecte a la intenció de les Parts en la màxima mesura possible.
+Si alguna disposició és declarada il·legal o inaplicable, es modificarà o eliminarà per fer-la vàlida i la resta de l’Acord continuarà vigent.
 
-**29. Relació entre les parts**
+**29. Relació entre les Parts**
 
-Les Parts són, i actuaran com a, contractistes independents en l'execució d'aquest Acord. Cap de les Parts actuarà com a, ni serà considerada com a, agent o soci de l'altra Part per a cap finalitat, ni cap de les Parts tindrà l'autoritat per vincular l'altra en cap sentit.
+Les Parts actuen com a contractistes independents i cap d’elles és agent o soci de l’altra.
 
-**30. Tasca**
+**30. Assignació**
 
-30.1 Cap de les Parts tindrà dret a cedir, transferir o gravar cap dels seus drets i/o obligacions en virtut d'aquest Acord sense el consentiment previ per escrit de l'altra Part, sempre que Wink pugui cedir, transferir o gravar qualsevol dels seus drets i/o obligacions en virtut d'aquest Acord (en la seva totalitat o en part o de tant en tant) a una empresa afiliada sense el consentiment previ per escrit del Proveïdor d'Allotjament.
+30.1 Cap Part pot cedir drets o obligacions sense consentiment escrit, excepte Wink que pot cedir a una empresa afiliada sense consentiment.
 
-30.2 Aquest Acord es conclou en benefici de les Parts i dels seus respectius successors i cessionaris autoritzats, i res del que s'estableix en aquest Acord pretén conferir ni conferirà implícitament a cap altra persona cap dret, benefici o recurs legal o equitatiu de cap naturalesa, en virtut d'aquest Acord o per raó d'aquest, excepte en la mesura que s'indiqui explícitament el contrari en aquest Acord.
+30.2 Aquest Acord beneficia les Parts i els seus successors i no confereix drets a tercers.
 
 **31. Força major**
 
-Wink no serà responsable de cap retard o incompliment de qualsevol obligació en virtut d'aquestes Condicions que resulti de causes fora del control raonable de Wink o Wink Payments, incloent-hi, entre d'altres, actes de Déu, desastres naturals, guerra, terrorisme, disturbis, embargaments, actes de les autoritats civils o militars, incendis, inundacions, accidents, pandèmies, epidèmies o malalties, vagues o escassetat d'instal·lacions de transport, combustible, energia, mà d'obra o materials ("Causa de Força Major").
+Wink no serà responsable per retards o incompliments per causes fora del seu control raonable, incloent desastres naturals, guerra, terrorisme, pandèmies, etc.
 
 **32. Limitació de responsabilitats**
 
-32.1 En la màxima mesura permesa per la llei, cap de les Parts serà responsable de cap dany indirecte, incidental, conseqüent, especial o punitiu que sorgeixi d'aquest Acord o del seu incompliment, fins i tot si s'ha informat de la possibilitat d'aquests danys. Aquesta limitació no s'aplicarà a cap incompliment d'aquest Acord relacionat amb la confidencialitat i/o els drets de propietat intel·lectual.
+32.1 Cap Part serà responsable per danys indirectes, especials o punitives, excepte en casos de confidencialitat o propietat intel·lectual.
 
-32.2 Cap de les Parts pot excloure la responsabilitat respecte a (i) una mort o lesions personals causades per la seva negligència o la dels seus empleats, agents o subcontractistes, (ii) frau comès per ella mateixa o pels seus empleats, o (iii) qualsevol incompliment, acte, omissió o responsabilitat que no pugui ser limitada per cap llei aplicable.
+32.2 No es pot excloure responsabilitat per mort o lesions per negligència, frau o altres responsabilitats legals.
 
-32.3 Les parts reconeixen i acorden que les exclusions i limitacions de responsabilitat establertes en aquest Acord són justes i raonables.
+32.3 Les Parts consideren justes i raonables aquestes limitacions.
 
 **33. Indemnització**
 
-En la màxima mesura permesa per la legislació aplicable, vostè accepta eximir, defensar (a elecció de Wink), indemnitzar i eximir de responsabilitat Wink i tots els seus Proveïdors d'Allotjament i filials, i els seus directius, directors, empleats i agents, de i contra qualsevol reclamació, responsabilitat, dany, pèrdua i despesa, incloent-hi, entre d'altres, honoraris legals i comptables raonables, que sorgeixin de o estiguin relacionats de qualsevol manera amb (i) el seu incompliment d'aquestes Condicions; (ii) el seu ús indegut dels Serveis; (iii) el seu incompliment, o el nostre incompliment sota la seva direcció, d'informar, recaptar o remetre impostos amb precisió; o (iv) el seu incompliment de qualsevol llei, reglament o dret de tercers.
+En la màxima mesura permesa per la llei, acceptes alliberar, defensar i indemnitzar Wink i els seus proveïdors per reclamacions, danys i despeses derivats del teu incompliment, ús indegut dels serveis, incompliment fiscal o incompliment legal.
 
-**34. Llei aplicable i jurisdicció**
+**34. Legislació aplicable i jurisdicció**
 
-34.1 Aquest Acord es regirà i s'interpretarà exclusivament d'acord amb les lleis de Singapur. La Llei de contractes (drets de tercers) de 2001 (cap. 53B) no s'aplicarà a aquest Acord. Les parts intentaran en qualsevol cas resoldre les seves controvèrsies de manera amistosa i extrajudicial mitjançant la realització prèvia de discussions i negociacions de bona fe.
+34.1 Aquest Acord es regeix exclusivament per les lleis de Singapur. Les Parts intentaran resoldre disputes amistosament abans de litigar.
 
-34.2 Qualsevol controvèrsia que sorgeixi o estigui relacionada amb aquest acord es sotmetrà i serà resolta exclusivament pel tribunal competent de Singapur, sense tenir en compte les normes de conflicte de lleis.
+34.2 Les disputes es sotmetran exclusivament als tribunals competents de Singapur.
 
-**35. Contraparts**
+**35. Còpies**
 
-Aquest Acord es pot executar en còpies, cadascuna de les quals (un cop executada) es considerarà un original, i que en conjunt constituiran un mateix instrument. A més, qualsevol còpia escanejada/electrònica de la signatura escrita de Wink tindrà el mateix efecte que una signatura manuscrita original de Wink i no afectarà la validesa d'aquest Acord.
+Aquest Acord pot ser signat en diverses còpies, cadascuna considerada original. Les còpies electròniques o escanejades de la signatura de Wink tenen la mateixa validesa que l’original.
 
 **36. Acord complet**
 
-36.1 Aquest Acord (inclòs el Formulari de Registre de Soci Proveïdor d'Allotjament, els annexos, els apèndixs i els documents adjunts, que formen part integrant d'aquest Acord) constitueix l'acord i l'entesa complets de les Parts respecte al seu objecte i substitueix i deroga tots els acords, arranjaments, ofertes, compromisos o declaracions anteriors relacionats amb aquest objecte.
+36.1 Aquest Acord (incloent formularis, annexos i apèndixs) constitueix l’acord complet i substitueix qualsevol acord previ.
 
-36.2 Si alguna disposició d'aquest Acord és o esdevé invàlida o no vinculant, les Parts continuaran obligades per totes les altres disposicions del present. En aquest cas, les Parts substituiran la disposició invàlida o no vinculant per disposicions que siguin vàlides i vinculants i que tinguin, en la mesura que sigui possible, un efecte similar a la disposició invàlida o no vinculant, tenint en compte el contingut i la finalitat d'aquest Acord.
+36.2 Si alguna disposició és invàlida, la resta continuarà vigent i es substituirà per una disposició vàlida amb efecte similar.
 
 **37. Execució**
 
-L'Acord només entra en vigor i entra en vigor després de la confirmació per escrit de l'acceptació i l'aprovació del Proveïdor d'Allotjament per part de Wink. En registrar-se i inscriure's al programa de socis de Wink com a Proveïdor d'Allotjament, el Proveïdor d'Allotjament accepta, accepta i accepta els termes i condicions d'aquest Acord, incloses les disposicions relacionades amb les modificacions d'aquest Acord.
+L’Acord entra en vigor amb la confirmació escrita d’acceptació del Proveïdor d’Allotjament per part de Wink. En registrar-se i inscriure’s al programa Wink, el Proveïdor d’Allotjament accepta els termes, incloses modificacions.
 
-El proveïdor de l'allotjament ha llegit l'acord i ha acceptat tots els termes i condicions. L'afiliat accepta explícitament que l'acceptació electrònica d'aquest acord i els seus termes i condicions, inclosos els relacionats amb les modificacions, és vàlida, vinculant i aplicable.
+S’ha llegit i acceptat tot l’Acord. L’acceptació electrònica és vàlida i vinculant.
 
 **38. Avisos**
 
-Totes les notificacions per part d'una Part en virtut d'aquest Acord s'han de fer en anglès, per escrit i s'han de lliurar en persona, per correu prepagat i certificat, o per un servei de missatgeria exprés reconegut internacionalment (per exemple, FedEx, UPS, DHL) al domicili social o per correu electrònic a la persona de contacte.
+Tots els avisos seran en anglès, per escrit, i lliurats en persona, per correu certificat, o per missatgeria reconeguda internacionalment a l’oficina registrada o per correu electrònic a la persona de contacte.
 
-Qualsevol notificació en virtut d'aquest Acord es considerarà rebuda (i) si s'entrega en mà, en el moment de la signatura d'un rebut de lliurament o, (ii) si es fa per correu certificat amb franqueig pagat, en el moment de la prova de lliurament; o (iii) si es fa per missatgeria urgent, en la data de lliurament registrada per aquest missatgeria (iv) si es fa per correu electrònic, sempre que es presenti un justificant de recepció.
-
+Els avisos es consideraran rebuts (i) en lliurament en mà amb signatura, (ii) en correu certificat amb prova de lliurament, (iii) en missatgeria amb data registrada, o (iv) en correu electrònic amb confirmació de recepció.

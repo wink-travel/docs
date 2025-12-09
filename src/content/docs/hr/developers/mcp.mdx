@@ -1,0 +1,105 @@
+---
+title: MCP poslužitelj
+description: Brzo povežite AI agente s Wink dokumentacijom i SDK-ovima putem hostanog MCP poslužitelja.
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## Pregled
+Hostani Wink MCP poslužitelj dostupan je na:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Usmjerite kompatibilne AI klijente (VS Code, Cursor, drugi koji implementiraju MCP HTTP transport) na ovu adresu kako bi mogli:
+- Pregledavati dokumentaciju proizvoda i platforme (`wink://docs/...`)
+- Otkriti SDK-ove i detaljno istražiti API klase / modele (`wink://sdk/...` i `wink://sdk/.../docs`)
+- Izvesti laganu semantičku / ključnu pretragu kroz dokumente i sažetke SDK-ova
+
+## Transport
+Koristite primarni streamabilni HTTP endpoint:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Ako vaš klijent podržava samo SSE, koristite:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Cursor MCP dokumentacija: https://cursor.com/docs/context/mcp
+Postavljanje: Dodajte udaljeni poslužitelj putem MCP postavki.
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+Službena dokumentacija: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Minimalna udaljena konfiguracija (korisnička ili radna mapa `mcp.json`):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+Savjeti:
+- Koristite Command Palette: “MCP: List Servers” za potvrdu veze i pregled alata.
+- Alat za odabir omogućuje uključivanje/isključivanje `sdk_search` i `docs_search`.
+- Dodajte kontekst: Chat prikaz → Add Context → MCP Resources za pridruživanje stranica dokumentacije.
+
+## Glavni URI resursa
+
+| URI | Opis |
+|-----|-------------|
+| `wink://docs` | Indeks dokumentacije (grupiran po kategorijama) |
+| `wink://docs/{path}` | Specifični dokumentacijski članak (Markdown / MDX) |
+| `wink://sdk` | Pregled SDK-a (svaki SDK + broj dokumenata) |
+| `wink://sdk/{sdkPath}` | SDK README / mapa s dokumentacijom modula / specifični dokument modula |
+
+### Dokumentacija modula
+Otvaranje mape s dokumentacijom SDK-a (npr. `wink://sdk/python/wink-sdk-booking/docs`) vraća grupirano:
+- **API klase** (broj metoda + primjeri naziva metoda)
+- **Modeli i tipovi** (strukture podataka koje koriste ti API-ji)
+
+## Alati za pretraživanje (brzi pregled)
+| Alat | Svrha | Primjeri tipičnih upita |
+|------|---------|-----------------------|
+| `sdk_search` | Pronađite koji SDK / API klasu koristiti | `otkaži rezervaciju`, `popis objekata`, `affiliate inventar` |
+| `docs_search` | Pronađite konceptualnu dokumentaciju / vodiče | `autentikacija`, `webhooks`, `wordPress` |
+
+Ostavite `query` praznim za primanje prijedloga. Svaki rezultat uključuje MCP URI koji možete otvoriti.
+
+## Tipični obrazac korištenja
+1. Pokrenite `sdk_search` s vašom namjerom (npr. *"popis objekata"*).
+2. Otvorite vraćeni SDK README ili njegov `docs_uri` za pregled API-ja / modela.
+3. Koristite `docs_search` za podržavajuće koncepte (autentikacija, webhooks).
+
+## Napomene
+- Svaki vraćeni URI agent može otvoriti za puni sadržaj.
+- Prijedlozi se automatski pojavljuju kada su upiti prazni.
+
+## Trenutno podržani SDK-ovi
+- Wink Python SDK-ovi
+
+## Plan razvoja (visoka razina)
+- Dodatni jezični SDK-ovi (Java, JS/TS)
+- Dodavanje TripPay SDK-ova
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink na GitHubu</LinkButton>

@@ -1,165 +1,163 @@
 ---
 title: Greiðsluskilmálar
-description: >-
-  Þetta skjal fjallar um fjármagnsframboð og hvernig Wink greiðir út tengdum
-  aðilum sínum.
+description: Þessi skjöl fjalla um framboð fjármuna og hvernig Wink greiðir út til samstarfsaðila sinna.
 sidebar:
-  order: 21
+  order: 22
 ---
-:::athugið
+
+:::note
 Síðast uppfært 2024-06-12
 :::
 
-**GREIÐSLUSKILMÁLAR FYRIR GISTINGAÞJÓNUSTA**
+**GREIÐSLUSKILMÁL FYRIR GISTINGARAÐILA**
 
-Þessir greiðsluskilmálar þjónustunnar (“**Greiðsluskilmálar**„) eru bindandi lagalegur samningur milli gistiþjónustuaðila og TripPay (hér eftir nefn&#x74;**„Greiðslumiðlari“**), dótturfélag í fullri eigu Traveliko Singapore Pte. Ltd., sem stjórnar greiðsluþjónustu (skilgreint hér að neðan) sem framkvæmd er í gegnum eða í tengslum við Wink Platform (hér eftir nefn&#x74;**„Blikk“**&#xDE;egar þessir greiðsluskilmálar minnast á „**Greiðslumiðlari**„“**við**„“**okkur**„“ eða „**okkar**„,“ vísar það til TripPay fyrirtækisins sem þú ert í samningi við um greiðsluþjónustu.
+Þessir greiðsluskilmálar þjónustu (“**Greiðsluskilmálar**”) eru bindandi löglegt samkomulag milli Gistingaraðila og TripPay (hér eftir nefndur **„Greiðslumiðlari“**), sem er alfarið dótturfélag Traveliko Singapore Pte. Ltd., og stjórna greiðslumiðlun (skilgreind hér að neðan) sem fer fram í gegnum eða í tengslum við Wink vettvanginn (hér eftir nefndur **„Wink“**). Þegar í þessum greiðsluskilmálum er minnst á „**Greiðslumiðlara**,“ „**við**,“ „**okkur**,“ eða „**okkar**,“ þá vísar það til TripPay fyrirtækisins sem þú ert að semja við um greiðslumiðlun.
 
-Greiðsluþjónustan veitir greiðsluþjónustu til gistiþjónustuaðila sem selja birgðir í gegnum Wink-kerfið. Þessar greiðsluþjónustur geta falið í sér (ef þær eru í boði) eftirfarandi (sameiginlega „**Greiðsluþjónusta**„)):
+Greiðslumiðlari veitir greiðslumiðlunarþjónustu til Gistingaraðila sem selja birgðir í gegnum Wink vettvanginn. Þessi greiðslumiðlun getur falið í sér (ef í boði) eftirfarandi (sameiginlega, „**Greiðslumiðlun**“):
 
-* Að innheimta greiðslur frá gestum („Innborgun“) með því að skuldfæra greiðslumáta sem tengist kaupunum þeirra, svo sem kreditkort, debetkort, bankamillifærslu, dulritunargjaldmiðla eða PayPal („Greiðslumáti“);
-* Að framkvæma greiðslur til gistiþjónustuaðila („Útborgun“);
-* Þjónusta við innheimtu greiðslur; og
-* Önnur greiðslutengd þjónusta í tengslum við þjónustu gistiþjónustu.
+* Innheimtu greiðslna frá Gestum („Innheimta“), með því að rukka greiðslumáta sem tengist kaupum þeirra, svo sem kreditkort, debetkort, millifærslu, rafmyntir eða PayPal („Greiðslumáti“);  
+* Útborgun til Gistingaraðila („Útborgun“);  
+* Þjónustu við innheimtu greiðslna; og  
+* Aðrar greiðslutengdar þjónustur í tengslum við þjónustu Gistingaraðila.
 
-Til að nota greiðsluþjónustuna verður þú að vera að minnsta kosti 18 ára, eiga Wink-reikning í góðu ásigkomulagi í samræmi við skilmála greiðslumiðlara og halda greiðslu- og persónuupplýsingum þínum réttum og tæmandi.
+Til að nota greiðslumiðlunina verður þú að vera að minnsta kosti 18 ára, hafa Wink reikning í góðu standi í samræmi við skilmála Greiðslumiðlara og halda greiðslu- og persónuupplýsingum þínum réttu og fullkomnum.
 
-Gististaðurinn hefur lesið samninginn og allir skilmálar hans hafa verið samþykktir af hálfu gistiþjónustunnar. Gististaðurinn samþykkir sérstaklega að rafræn samþykki þessa samnings og skilmála hans, þar á meðal þeirra sem tengjast breytingum, sé gilt, bindandi og framfylgjanlegt.
+Samningurinn hefur verið lesinn og allar skilmálar og skilyrði samþykkt af Gistingaraðila. Gistingaraðili samþykkir sérstaklega að rafræn samþykkt á þessum samningi og skilmálum hans, þar með talið breytingum, sé gild, bindandi og framkvæmanleg.
 
-Greiðsluþjónustan verður veitt af samningsaðila eftir því í hvaða landi gistingin er staðsett á eftirfarandi hátt:
+Greiðslumiðlun verður veitt af samningsaðila eftir því í hvaða landi Gistingin er staðsett, eins og hér segir:
 
-* Bandaríkin: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.
-* Restin af heiminum: TripPay Slóvakía
+* Bandaríkin: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
+* Restin af heiminum: TripPay Slovakia
 
-**1. Notkun þín á greiðsluþjónustunni**
+**1. Notkun þín á greiðslumiðlun**
 
-1.1**Greiðslumiðlunarþjónusta**Með því að nota greiðsluþjónustuna samþykkir þú að fara að þessum greiðsluskilmálum. Greiðslumiðlari kann tímabundið að takmarka eða stöðva aðgang þinn að eða notkun á greiðsluþjónustunni eða eiginleikum hennar til að framkvæma viðhaldsaðgerðir sem tryggja rétta virkni greiðsluþjónustunnar. Greiðslumiðlari kann að bæta, auka og breyta greiðsluþjónustunni og kynna nýjar greiðsluþjónustur öðru hvoru. Greiðslumiðlari mun tilkynna gistiþjónustuaðilum um allar breytingar á greiðsluþjónustunni nema slíkar breytingar auki ekki verulega samningsskyldur gistiþjónustuaðilans eða minnki réttindi gistiþjónustuaðilans samkvæmt þessum greiðsluskilmálum.
+1.1 **Þjónusta Greiðslumiðlara**. Með því að nota greiðslumiðlunina samþykkir þú að fara eftir þessum greiðsluskilmálum. Greiðslumiðlari getur tímabundið takmarkað eða stöðvað aðgang þinn að eða notkun greiðslumiðlunar eða eiginleika hennar til að framkvæma viðhald sem tryggir réttan rekstur greiðslumiðlunar. Greiðslumiðlari getur bætt, þróað og breytt greiðslumiðluninni og kynnt nýja greiðslumiðlun frá tíma til tíma. Greiðslumiðlari mun tilkynna Gistingaraðilum um breytingar á greiðslumiðluninni nema slíkar breytingar auki ekki verulega samningsskyldur Gistingaraðila né dragi úr réttindum hans samkvæmt þessum greiðsluskilmálum.
 
-1.2**Staðfesting**Þú heimilar Greiðsluþjónustunni, beint eða í gegnum þriðja aðila, að gera allar fyrirspurnir sem við teljum nauðsynlegar til að staðfesta hver þú ert. Þetta getur falið í sér (i) að skima þig gegn gagnagrunnum þriðja aðila eða öðrum heimildum, (ii) að óska ​​eftir skýrslum frá þjónustuaðilum, (iii) að biðja þig um að leggja fram opinber skilríki (t.d. ökuskírteini eða vegabréf), fæðingardag þinn, heimilisfang þitt og aðrar upplýsingar; eða (iv) að krefjast þess að þú grípir til aðgerða til að staðfesta eignarhald á netfanginu þínu, greiðslumáta(m) eða útborgunarmáta(m). Greiðsluþjónustan áskilur sér rétt til að loka, fresta eða takmarka aðgang að Greiðsluþjónustunni ef við getum ekki fengið eða staðfest neinar af þessum upplýsingum.
+1.2 **Staðfesting**. Þú heimilar Greiðslumiðlara, beint eða í gegnum þriðja aðila, að gera allar fyrirspurnir sem við teljum nauðsynlegar til að staðfesta auðkenni þitt. Þetta getur falið í sér (i) að skoða þig í gagnagrunnum þriðja aðila eða öðrum heimildum, (ii) að biðja um skýrslur frá þjónustuveitendum, (iii) að biðja þig um að leggja fram opinbera auðkenningu (t.d. ökuskírteini eða vegabréf), fæðingardag, heimilisfang og aðrar upplýsingar; eða (iv) að krefjast þess að þú staðfestir eignarhald á netfangi þínu, greiðslumáta eða úttektarmáta. Greiðslumiðlari áskilur sér rétt til að segja upp, stöðva eða takmarka aðgang að greiðslumiðlun ef við getum ekki fengið eða staðfest þessar upplýsingar.
 
-1.3**Viðbótarskilmálar**Aðgangur þinn að eða notkun ákveðinna greiðsluþjónustu kann að vera háð, eða krafist þess að þú samþykkir, viðbótarskilmála. Ef árekstur er milli þessara greiðsluskilmála og skilmála sem gilda um tiltekna greiðsluþjónustu, skulu síðarnefndu skilmálarnir gilda um notkun þína á eða aðgang að þeirri greiðsluþjónustu nema annað sé tekið fram.
+1.3 **Viðbótar skilmálar**. Aðgangur þinn að eða notkun á ákveðnum greiðslumiðlunum getur verið háð eða krefjast samþykkis viðbótar skilmála. Ef ágreiningur er milli þessara greiðsluskilmála og skilmála sem gilda um tiltekna greiðslumiðlun, gilda síðari skilmálar um notkun þína á þeirri greiðslumiðlun nema annað sé tekið fram.
 
-1.4**Upplýsingar um bankareikning**Gististaðurinn skal tryggja að bankaupplýsingar hans sem Wink er veittar séu alltaf réttar og skal tilkynna tafarlaust um allar breytingar á þeim.
+1.4 **Upplýsingar um bankareikning**. Gistingaraðili skal tryggja að bankaupplýsingar sem hann gefur upp til Wink séu alltaf réttar og tilkynna tafarlaust um breytingar á þeim.
 
-Aðeins sá sem undirritar þennan samning skal vera eini tilnefndi fulltrúi gistiþjónustunnar sem hefur heimild til að óska ​​eftir breytingum á bankareikningi gistiþjónustunnar og/eða upplýsingum um greiðsluþega. Enginn annar aðili skal hafa slíkt vald fyrir hönd gistiþjónustunnar. Allar breytingar á slíkum tilnefndum einstaklingi skulu sendar Wink skriflega og slíkar breytingar skulu aðeins framkvæmdar með skriflegri breytingu á þessum samningi sem báðir aðilar undirrita.
+Aðeins sá sem undirritar þennan samning skal vera eini tilnefndi fulltrúi Gistingaraðila með heimild til að óska eftir breytingum á bankareikningi Gistingaraðila og/eða greiðslumóttakara. Enginn annar hefur slíka heimild fyrir hönd Gistingaraðila. Breytingar á tilnefndum aðila skulu tilkynntar skriflega til Wink og verða aðeins framkvæmdar með skriflegri breytingu á þessum samningi undirrituðum af báðum aðilum.
 
 **2. Innheimta og útborgun greiðslna**
 
-2.1**Innheimta og útborgun greiðslu**Greiðslumiðlari innheimtir greiðslu frá gestum fyrir hönd gistiþjónustunnar (innborgun). Innborgunargjöld eru innheimt eftir greiðslumáta gestsins (t.d. Visa, PayPal) og gjaldmiðilsbreytingu („innborgunargjöld“), ef og þegar við á. Þegar fjármagn verður tiltækt til útborgunar eru innheimt útborgunargjöld, þar á meðal bankagjöld og gjaldmiðilsbreyting („útborgunargjöld“), ef og þegar við á.
+2.1 **Innheimta og útborgun**. Greiðslumiðlari innheimtir greiðslu frá gestum fyrir hönd Gistingaraðila (Innheimta). Innheimtugjöld eru reiknuð út frá greiðslumáta gestsins (t.d. Visa, PayPal) og gjaldeyrisviðskiptum („Innheimtugjöld“), ef við á. Þegar fé verður tiltækt til útborgunar, koma útborgunargjöld til, þar með talið bankakostnaður og gjaldeyrisviðskipti („Útborgunargjöld“), ef við á.
 
-2.2**Gjöld greiðsluþjónustu**Greiðslumiðlun innheimtir 4% af heildarverði bókunarinnar fyrir greiðsluþjónustu.
+2.2 **Gjöld fyrir greiðslumiðlun**. Greiðslumiðlari rukkar 4% af heildarverði bókunar fyrir greiðslumiðlun.
 
-2.3**Aðgengi að fjármagni**Með fyrirvara um móttöku greiðslna frá gesti mun greiðslumiðlari gera fjármunina sem tengjast bókuninni aðgengilegan gistiþjónustuaðila innan sólarhrings frá innritun gesta.
+2.3 **Framboð fjármuna**. Háð því að greiðslur frá gesti berist Greiðslumiðlara með góðum árangri mun Greiðslumiðlari gera fé tengt bókun aðgengilegt Gistingaraðila innan 24 klukkustunda frá innritun gests.
 
-2.4**Útborgun**Útborgunin á bankareikning þinn eða með sýndarkreditkorti fyrir bókun verður heildarupphæð bókunarinnar að frádregnum greiðsluþjónustugjöldum (4%), bókunargjaldi Wink (1,5%) og þóknun samstarfsaðila ef og þegar við á, eins og skilgreint er í skilmálum gistiþjónustunnar. Ef staðfest bókun er aflýst mun greiðslumiðlari greiða þér upphæðina sem þú átt rétt á (ef einhver er) eins og kveðið er á um í skilmálum og viðeigandi afbókunarstefnu.
+2.4 **Útborgun**. Útborgun til þíns staðbundna bankareiknings eða með sýndarkreditkorti fyrir bókun verður heildarverð bókunar að frádregnum greiðslumiðlunargjöldum (4%), bókunargjaldi Wink (1,5%) og samstarfskauptökum ef við á samkvæmt skilmálum Gistingaraðila. Ef bókun er felld niður mun Greiðslumiðlari greiða þér þann upphæð sem þú átt rétt á samkvæmt skilmálum og viðeigandi afbókunarstefnu.
 
-2,5**Kröfur um útborgunargögn**Til að fá útborgun inn á bankareikninginn þinn eða í gegnum sýndarkreditkort sem tengist reikningnum þínum hjá Payment Facilitator, verður þú að láta Payment Facilitator eða þriðja aðila í té greiðslumiðlunaraðila greiðsluupplýsingar eins og upplýsingar um fyrirtæki, nafn, opinber skilríki, skattakenni, greiðslufang og upplýsingar um fjármálagerninga. Frekari upplýsingar kunna að vera nauðsynlegar, svo sem heimilisfang, nafn á reikningnum, tegund reiknings, leiðarnúmer, reikningsnúmer, netfang, auðkennisnúmer og reikningsupplýsingar sem tengjast tilteknum greiðslumiðlunaraðila. Þú heimilar Payment Facilitator að safna og geyma greiðsluupplýsingar þínar og upplýsingar um fjármálagerninga. Payment Facilitator kann einnig að deila upplýsingum þínum með stjórnvöldum eins og gildandi lög kveða á um.
+2.5 **Upplýsingar um útborgun**. Til að fá útborgun á staðbundinn bankareikning eða með sýndarkreditkorti tengdu Greiðslumiðlara reikningi þínum, verður þú að veita reikningsupplýsingar eins og fyrirtækjaupplýsingar, nafn, opinbera auðkenningu, kennitölu, reikningsheimilisfang og upplýsingar um fjármálatæki annaðhvort til Greiðslumiðlara eða þriðja aðila greiðsluvinnslu. Viðbótarupplýsingar geta verið krafist, svo sem heimilisfang, nafn á reikningi, tegund reiknings, leiðnúmer, reikningsnúmer, netfang, auðkennisnúmer og reikningsupplýsingar tengdar tilteknum greiðsluvinnslu. Þú heimilar Greiðslumiðlara að safna og geyma reikningsupplýsingar þínar og upplýsingar um fjármálatæki. Greiðslumiðlari getur einnig deilt upplýsingum þínum með stjórnvöldum samkvæmt gildandi lögum.
 
-2.6**Útgreiðslutakmarkanir**Greiðslumiðlari kann tímabundið að fresta, stöðva eða hætta við greiðslur til að koma í veg fyrir ólöglega starfsemi eða svik, til að meta áhættu, tryggja öryggi eða ljúka rannsókn; eða ef við getum ekki staðfest hver þú ert. Ennfremur kann Greiðslumiðlari tímabundið að fresta, stöðva eða seinka því að hefja eða vinna úr greiðslum sem þú átt rétt á samkvæmt skilmálunum vegna afbókana eða breytinga á þeim í miklu magni sem stafa af óviðráðanlegum atvikum (eins og skilgreint er hér að neðan).
+2.6 **Takmarkanir á útborgun**. Greiðslumiðlari getur tímabundið sett á bið, stöðvað eða hætt við útborgun til að koma í veg fyrir ólöglega starfsemi eða svik, vegna áhættumats, öryggis eða rannsóknar; eða ef við getum ekki staðfest auðkenni þitt. Enn fremur getur Greiðslumiðlari tímabundið sett á bið, stöðvað eða seinkað útborgun vegna mikillar fjölda afbókana eða breytinga á bókunum sem stafa af Force Majeure atburði (eins og skilgreint hér að neðan).
 
-2.7**Takmarkanir á útborgunum**Greiðslumiðlari kann að takmarka upphæð útborgunar vegna reglufylgni eða rekstrarástæðna. Ef þú átt rétt á upphæð sem er umfram það hámark kann greiðslumiðlari að framkvæma röð útborgana (hugsanlega yfir marga daga) til að veita þér alla útborgunarupphæðina.
+2.7 **Takmörkun á útborgunum**. Af samræmingar- eða rekstrarástæðum getur Greiðslumiðlari takmarkað upphæð útborgunar. Ef þú átt rétt á hærri upphæð getur Greiðslumiðlari greitt út í röð útborgana (mögulega yfir marga daga) til að greiða þér fulla upphæð.
 
-2,8**Gjaldmiðilsbreyting**Greiðslumiðlari mun greiða þér út í þeim gjaldmiðli sem þú hefur valið í gegnum greiðslumiðlarann. Tiltækir gjaldmiðlar geta verið takmarkaðir vegna reglugerðar- eða rekstrarástæðna eftir búsetulandi þínu og/eða samningsaðila/samningsaðilum greiðslumiðlarans. Allar slíkar takmarkanir verða tilkynntar í gegnum greiðslumiðlarann ​​og þú verður beðinn um að velja annan gjaldmiðil. Greiðslumiðlari notar USD, EUR og GBP sem staðlaða gjaldmiðla til að taka við og greiða fé. Allar færslur sem fela í sér aðra gjaldmiðla munu hafa í för með sér kostnað við gjaldmiðlaskipti.
+2.8 **Gjaldeyrisviðskipti**. Greiðslumiðlari mun greiða út í gjaldmiðli sem þú hefur valið í gegnum Greiðslumiðlara. Gjaldmiðlar sem í boði eru geta verið takmarkaðir vegna reglugerða eða rekstrar eftir búsetulandi þínu og/eða samningsaðila Greiðslumiðlara. Slíkar takmarkanir verða tilkynntar og þú verður beðinn um að velja annan gjaldmiðil. Greiðslumiðlari notar USD, EUR og GBP sem staðlaða gjaldmiðla til að taka við og greiða út fé. Öll viðskipti með aðra gjaldmiðla bera með sér kostnað vegna gjaldeyrisviðskipta.
 
-2.9**Meðhöndlun fjármuna**Greiðslumiðlunin kann að sameina fjárhæðir sem hún innheimtir frá gestum og fjárfesta þær eins og heimilt er samkvæmt gildandi lögum. Greiðslumiðlunin mun halda eftir öllum vöxtum sem hún aflar af þessum fjárfestingum.
+2.9 **Meðhöndlun fjármuna**. Greiðslumiðlari getur sameinað upphæðir sem hann innheimtir frá Gestum og fjárfest þær samkvæmt gildandi lögum. Greiðslumiðlari heldur eftir vöxtum af slíkum fjárfestingum.
 
-2.10**Nákvæmni tengdra aðila**Gististaðurinn ber ábyrgð á að tryggja nákvæmni bankaupplýsinga sem geymdar eru í prófíl greiðslumiðlarans. Ef rangt bankareikningsnúmer er gefið upp mun bankinn innheimta viðbótar vinnslugjald. Greiðslumiðlarinn mun draga þetta vinnslugjald frá næstu þóknunargreiðslu. Ef bankareikningurinn sem samstarfsaðilinn gefur upp er lokaður eða frystur eða ekki er hægt að taka við/endurspegla greiðslur af ástæðum sem ekki er hægt að rekja til greiðslumiðlarans, skal greiðsluskylda greiðslumiðlarans samkvæmt þessum samningi falla niður svo framarlega sem skrár greiðslumiðlarans sýna að greiðsla hefur verið innt af hendi.
+2.10 **Réttmæti upplýsinga samstarfsaðila**. Gistingaraðili ber ábyrgð á að bankaupplýsingar í prófílnum hjá Greiðslumiðlara séu réttar. Ef bankareikningsnúmer er rangt gefið upp, verður innheimt meðferðarþóknun frá bönkum. Greiðslumiðlari dregur þessa þóknun frá næstu þóknun. Ef bankareikningur Gistingaraðila er lokaður, frystur eða getur ekki tekið við greiðslum vegna annarra ástæðna en Greiðslumiðlari ber ábyrgð á, fellst greiðsluskylda Greiðslumiðlara undir þessum samningi þegar skráningar sýna að greiðsla hefur verið gerð.
 
-2.11**Greiðsluheimildir**Þú heimilar greiðslumiðlara að innheimta frá þér upphæðir sem þú átt rétt á samkvæmt þessum greiðsluskilmálum og/eða skilmálunum með því annað hvort (i) að skuldfæra greiðslumáta sem tengist viðkomandi bókun, eða (ii) með því að halda upphæðinni eftir af framtíðarútborgun þinni. Nánar tiltekið heimilar þú greiðslumiðlara að innheimta frá þér:
+2.11 **Greiðsluleyfi**. Þú heimilar Greiðslumiðlara að innheimta frá þér upphæðir samkvæmt þessum greiðsluskilmálum og/eða skilmálum annaðhvort (i) með því að rukka greiðslumáta tengdan viðkomandi bókun, eða (ii) með því að halda eftir upphæð frá framtíðargreiðslum til þín. Sérstaklega heimilar þú Greiðslumiðlara að innheimta frá þér:
 
-* Sérhver upphæð sem Wink eða greiðslumiðlari greiða þarf (t.d. vegna bókana þinna, breytinga á bókunum, afbókana, gistingaraðila eða birgja), þar með talið endurgreiðsla fyrir kostnað sem Wink eða greiðslumiðlari hefur greidd fyrirfram fyrir þína hönd.
-* Skattar, þar sem við á og eins og fram kemur í skilmálunum.
-* Öll þjónustugjöld eða afbókunargjöld sem lögð eru á samkvæmt skilmálunum (t.d. ef þú, sem gistiaðili, afbókar staðfesta bókun).
-* Allar upphæðir sem þegar hafa verið greiddar þér sem gistiþjónustuaðila þrátt fyrir að gestur hafi afbókað staðfesta bókun eða Wink ákveði að nauðsynlegt sé að afbóka í samræmi við skilmálana, endurgreiðslustefnu gesta eða aðrar viðeigandi afbókunarstefnur. Þú samþykkir að ef þú hefur þegar fengið greitt, þá eigi greiðslumiðlari rétt á að endurheimta upphæð slíkrar endurgreiðslu gesta frá þér, þar á meðal með því að draga slíka endurgreiðsluupphæð frá öllum framtíðarútborgunum sem þú átt rétt á.
+* Hvaða upphæð sem er skuldsett Wink eða Greiðslumiðlara (t.d. vegna bókana, breytinga, afbókana, Gistingaraðila eða birgja), þar með talið endurgreiðslu kostnaðar sem Wink eða Greiðslumiðlari hefur greitt fyrir þig.  
+* Skatta, þar sem við á og samkvæmt skilmálum.  
+* Þjónustugjöld eða afbókunargjöld samkvæmt skilmálum (t.d. ef þú sem Gistingaraðili afbókar staðfesta bókun).  
+* Upphæðir sem þegar hafa verið greiddar þér sem Gistingaraðila þrátt fyrir að gestur hafi afbókað staðfesta bókun eða Wink hafi ákveðið að afbóka bókun samkvæmt skilmálum, endurgreiðslustefnu gesta eða annarri viðeigandi afbókunarstefnu. Þú samþykkir að ef þú hefur þegar fengið greiðslu, hefur Greiðslumiðlari rétt til að endurheimta slíka endurgreiðslu frá þér, þar með talið með því að draga hana frá framtíðarútborgunum til þín.
 
-2.12**Söfn**Ef greiðslumiðlari getur ekki innheimt neinar fjárhæðir sem þú skuldar samkvæmt þessum greiðsluskilmálum, kann greiðslumiðlari að grípa til innheimtuaðgerða til að endurheimta slíkar fjárhæðir frá þér.
+2.12 **Innheimta**. Ef Greiðslumiðlari getur ekki innheimt upphæðir sem þú skuldar samkvæmt þessum greiðsluskilmálum, getur Greiðslumiðlari hafið innheimtuaðgerðir til að ná í þær.
 
-2.13**Tilkynningar**Greiðslumiðlari mun, að beiðni, senda tilkynningu um allar útistandandi skuldir til gistiþjónustuaðilans. Greiðslumiðlari mun senda þessar tilkynningar á þær tengiliðaupplýsingar sem eru skráðar eða sendar. Það er á ábyrgð samstarfsaðilans að tryggja að þessar upplýsingar séu réttar og uppfærðar.
+2.13 **Tilkynningar**. Greiðslumiðlari mun, eftir beiðni, senda tilkynningu um ógreiddan skuldastað Gistingaraðila. Greiðslumiðlari sendir tilkynningar á skráð tengiliðaupplýsingar. Það er ábyrgð samstarfsaðila að tryggja að þessar upplýsingar séu réttar og uppfærðar.
 
-2.14**Þriðja aðila samþættingaraðilar**Vinsamlegast athugið að ákveðnir samstarfsaðilar, hér eftir nefndir „þriðju aðilar“, munu bera ábyrgð á að meðhöndla greiðslufærslur. Þar af leiðandi munu þessir þriðju aðilar taka við hlutverki skráðs söluaðila. Þar af leiðandi munu greiðsluskilmálar Wink ekki lengur gilda um þessar færslur. Í staðinn verður hótelið að samþykkja nýja greiðsluskilmála sem eru sértækir fyrir þriðju aðilana.
+2.14 **Þriðju aðila samþættingar**. Vinsamlegast athugið að sumir samstarfsaðilar, hér eftir nefndir „Þriðju aðila samþættingar“, bera ábyrgð á greiðslumiðlun. Þessir aðilar verða þá skráðir sem kaupmaður. Greiðsluskilmálar Wink gilda ekki um þessar færslur. Í staðinn þarf hótelið að samþykkja nýja greiðsluskilmála sem gilda um Þriðju aðila samþættinguna.
 
-**3. Villur í greiðsluvinnslu og endurgreiðslur**
+**3. Villur í greiðslumeðhöndlun og endurgreiðslur**
 
-3.1**Villur**Greiðslumiðlari mun grípa til nauðsynlegra ráðstafana til að leiðrétta öll villur í greiðsluvinnslu sem við verðum vör við. Þessi skref geta falið í sér að færa inn á eða út (eftir því sem við á) reikninginn þinn hjá greiðslumiðlaranum, þannig að þú fáir eða greiðir rétta upphæð. Þetta getur verið framkvæmt af greiðslumiðlaranum eða þriðja aðila, svo sem fjármálastofnun þinni. Við gætum einnig gripið til ráðstafana til að endurheimta fjármuni sem þér voru sendir fyrir mistök (þar á meðal en ekki takmarkað við ef um tvíteknar greiðslur er að ræða vegna vinnsluvillu), með því að lækka, skuldajafna og/eða skuldfæra upphæð slíkra fjármuna frá framtíðarútborgunum sem þú átt rétt á. Að því marki sem þú færð fjármuni fyrir mistök samþykkir þú að endurgreiða greiðslumiðlaranum tafarlaust.
+3.1 **Villur**. Greiðslumiðlari mun gera nauðsynlegar ráðstafanir til að leiðrétta villur í greiðslumeðhöndlun sem við verðum varir við. Þetta getur falið í sér að bæta við eða draga frá (eftir atvikum) á reikning þinn hjá Greiðslumiðlara svo þú fáir eða greiðir rétt upphæð. Þetta getur verið gert af Greiðslumiðlara eða þriðja aðila eins og fjármálastofnun þinni. Við getum einnig reynt að endurheimta fé sem hefur verið sent þér fyrir mistök (þar með talið tvöfaldar greiðslur) með því að draga það frá framtíðarútborgunum til þín. Ef þú færð fé fyrir mistök samþykkir þú að skila því tafarlaust til Greiðslumiðlara.
 
-3.2**Endurgreiðslur**Allar endurgreiðslur eða inneignir sem gesti ber samkvæmt skilmálum og endurgreiðslustefnu gesta verða hafnar og greiddar af greiðslumiðlara í samræmi við þessa greiðsluskilmála.
+3.2 **Endurgreiðslur**. Allar endurgreiðslur eða inneignir sem berast gesti samkvæmt skilmálum og endurgreiðslustefnu gesta verða framkvæmdar af Greiðslumiðlara í samræmi við þessa greiðsluskilmála.
 
-3.3 Með fyrirvara um þessa grein 3.2 mun greiðslumiðlari vinna úr endurgreiðslum tafarlaust. Hins vegar fer tímasetning móttöku endurgreiðslu eftir greiðslumáta og reglum viðeigandi greiðslukerfa (t.d. Visa, Mastercard). Ef óviðráðanlegir atburðir koma upp sem geta haft áhrif á vinnslu og uppgjör endurgreiðslna mun greiðslumiðlari hefja og vinna úr endurgreiðslunni eins fljótt og kostur er.
+3.3 Með fyrirvara um lið 3.2 mun Greiðslumiðlari vinna úr endurgreiðslum strax. Tímasetning endurgreiðslu fer þó eftir greiðslumáta og reglum greiðslukerfa (t.d. Visa, Mastercard). Ef Force Majeure atburður hefur áhrif á meðhöndlun og greiðslu endurgreiðslna mun Greiðslumiðlari hefja og vinna úr endurgreiðslu eins fljótt og unnt er.
 
-**4. Skipun greiðslumiðlara sem takmarkaðs innheimtuaðila greiðslu**
+**4. Tilnefning Greiðslumiðlara sem takmarkaðs innheimtustjóra**
 
-4.1 Hver gististaður, þar með talið hver meðlimur í teymi gististaðarins, tilnefnir hér með greiðslumiðlara sem greiðsluinnheimtuaðila gististaðarins eingöngu í þeim takmörkuðu tilgangi að taka við og vinna úr fjármunum frá gestum sem kaupa þjónustu gististaðarins fyrir hönd gististaðarins.
+4.1 Hver Gistingaraðili, þar með talið liðsmenn hans, tilnefnir hér með Greiðslumiðlara sem takmarkaðan innheimtustjóra fyrir greiðslur frá Gestum sem kaupa þjónustu Gistingaraðila fyrir hönd Gistingaraðila.
 
-4.2 Hver gistiaðili, þar með talið hver meðlimur gistiþjónustuteymisins, samþykkir að greiðsla sem gestur greiðir í gegnum greiðslumiðlunaraðila skuli talin jafngild greiðsla sem greidd er beint til gistiþjónustuaðilans og að gistiþjónustan muni veita þá þjónustu gistiþjónustu sem gesturinn bókaði á samkomulagðan hátt eins og gistiþjónustan hefði móttekið greiðsluna beint frá gestinum. Hver gistiþjónusta samþykkir að greiðslumiðlunaraðili geti endurgreitt gestinum í samræmi við skilmálana. Hver gistiþjónusta skilur að skylda greiðslumiðlunaraðila til að greiða gistiþjónustuaðilanum er háð og skilyrt því að viðkomandi greiðslur frá gestinum hafi borist. Greiðslumiðlunaraðili ábyrgist greiðslur til gistiþjónustuaðila(a) aðeins fyrir þær upphæðir sem greiðslumiðlunaraðili hefur móttekið frá gestum í samræmi við þessa greiðsluskilmála. Með því að samþykkja skipun sem takmarkaður innheimtuaðili gistiþjónustuaðilans ber greiðslumiðlunaraðili enga ábyrgð á athöfnum eða athafnaleysi gistiþjónustuaðilans.
+4.2 Hver Gistingaraðili, þar með talið liðsmenn hans, samþykkir að greiðsla frá gesti í gegnum Greiðslumiðlara teljist jafngilda greiðslu beint til Gistingaraðila og Gistingaraðili mun veita bókaða þjónustu eins og hann hefði fengið greiðslu beint frá gesti. Hver Gistingaraðili samþykkir að Greiðslumiðlari geti endurgreitt gesti samkvæmt skilmálum. Hver Gistingaraðili skilur að greiðsluskylda Greiðslumiðlara gagnvart honum er háð og bundin við að greiðslur frá gestum berist Greiðslumiðlara með góðum árangri. Greiðslumiðlari ábyrgist greiðslur til Gistingaraðila aðeins fyrir þeim upphæðum sem hafa verið mótteknar með góðum árangri frá gestum samkvæmt þessum greiðsluskilmálum. Með því að samþykkja tilnefningu sem takmarkaður innheimtustjóri ber Greiðslumiðlari enga ábyrgð á athöfnum eða vanrækslu Gistingaraðila.
 
-4.3 Hver gestur viðurkennir og samþykkir að þrátt fyrir að greiðslumiðlari sé ekki aðili að samningnum milli þín og gistiþjónustuaðilans/þjónustuaðilanna, þar með talið hvers starfsmanns gistiþjónustuaðilans, þá gegnir greiðslumiðlari greiðsluinnheimtuaðili hvers gistiþjónustuaðila þeim takmörkuðu tilgangi að taka við greiðslum fyrir hönd gistiþjónustuaðilans/þjónustuaðilanna. Þegar gestur hefur greitt greiðslumiðlara féð fellur greiðsluskylda hans gagnvart gistiþjónustuaðilanum/þjónustuaðilum upp á samkomulagða upphæð niður og greiðslumiðlari ber ábyrgð á að millifæra féð sem greiðslumiðlari hefur móttekið til gistiþjónustuaðilans/þjónustuaðilanna á þann hátt sem lýst er í þessum greiðsluskilmálum. Ef greiðslumiðlari millifærir ekki slíkar upphæðir, mun gistiþjónustan/þjónustuaðilarnir aðeins eiga rétt á greiðslumiðlaranum en ekki gestinum beint.
+4.3 Hver gestur viðurkennir og samþykkir að þrátt fyrir að Greiðslumiðlari sé ekki aðili að samningi milli þín og Gistingaraðila, þar með talið liðsmanna hans, starfar Greiðslumiðlari sem takmarkaður innheimtustjóri fyrir greiðslur fyrir hönd Gistingaraðila. Þegar gestur greiðir Greiðslumiðlara er greiðsluskylda hans gagnvart Gistingaraðila fyrir samkomulagið útrýmt og Greiðslumiðlari ber ábyrgð á að greiða fé sem hann hefur móttekið til Gistingaraðila samkvæmt þessum greiðsluskilmálum. Ef Greiðslumiðlari greiðir ekki slíkar upphæðir, getur Gistingaraðili aðeins leitað réttar síns gegn Greiðslumiðlara en ekki beint gegn gesti.
 
-**5. Bönnuð starfsemi**
+**5. Bönnuð athöfn**
 
-5.1 Gististaðurinn ber einn ábyrgð á að fara að öllum lögum, reglum, reglugerðum og skattskyldum sem kunna að eiga við um notkun þína á greiðsluþjónustunni. Í tengslum við notkun þína á greiðsluþjónustunni mátt þú ekki og samþykkir að þú munir ekki og munir ekki aðstoða eða gera öðrum kleift að:
+5.1 Gistingaraðili ber einungis ábyrgð á að fara eftir öllum lögum, reglum, reglugerðum og skattaskyldum sem kunna að eiga við um notkun þína á greiðslumiðluninni. Í tengslum við notkun þína á greiðslumiðluninni máttu ekki og samþykkir þú að þú munt ekki og munt ekki aðstoða eða gera öðrum kleift að:
 
-* Brjóta gegn eða komast hjá gildandi lögum eða reglugerðum;
-* Brjóta gegn eða komast hjá samningum við þriðja aðila, réttindum þriðja aðila eða skilmálum, stefnum eða stöðlum;
-* Nota greiðsluþjónustuna í viðskiptalegum eða öðrum tilgangi sem ekki er sérstaklega heimilaður samkvæmt þessum greiðsluskilmálum;
-* Forðastu, komast framhjá, fjarlægja, gera óvirka, skerða, afrugla eða á annan hátt komast hjá öllum tæknilegum ráðstöfunum sem greiðslumiðlari hefur innleitt til að vernda greiðsluþjónustuna;
-* Að grípa til aðgerða sem skaða eða hafa neikvæð áhrif á, eða gætu skaðað eða haft neikvæð áhrif á, afköst eða rétta virkni greiðsluþjónustunnar;
-* Reyna að dulkóða, afkóða, taka í sundur eða bakvirkja hugbúnað sem notaður er til að veita greiðsluþjónustuna; eða
-* Brjóta gegn réttindum annarra eða valda öðrum skaða á annan hátt.
+* Brjóta eða komast hjá gildandi lögum eða reglugerðum;  
+* Brjóta eða komast hjá samningum við þriðja aðila, réttindum þriðja aðila eða skilmálum, stefnum eða stöðlum;  
+* Nota greiðslumiðlunina í viðskiptalegum eða öðrum tilgangi sem ekki er sérstaklega leyfður samkvæmt þessum greiðsluskilmálum;  
+* Forðast, sleppa, fjarlægja, slökkva á, skerða, afkóða eða komast hjá tæknilegum aðgerðum sem Greiðslumiðlari hefur innleitt til að vernda greiðslumiðlunina;  
+* Gera neitt sem skemmir eða hefur neikvæð áhrif á virkni eða réttan rekstur greiðslumiðlunarinnar;  
+* Reyna að ráða fram, afkóða, sundurliða eða snúa við hugbúnaði sem notaður er til að veita greiðslumiðlunina; eða  
+* Brjóta eða skerða réttindi annarra eða valda öðrum skaða.
 
-5.2 Greiðslumiðlun beitir núll umburðarlyndi gagnvart brotum á alþjóðlegum viðskiptareglum, lögum um mútugreiðslur og spillingu og gildandi takmörkunum á viðskipti, fjárstreymi og fjármögnun hryðjuverka.
+5.2 Greiðslumiðlari hefur enga þolinmæði gagnvart brotum á alþjóðlegum viðskiptareglum, mútu- og spillingarvarnarlögum og gildandi takmörkunum á viðskiptum, fjármagnsflutningi og fjármögnun hryðjuverka.
 
-Gististaðurinn ábyrgist að hann/hún fylgir og muni fylgja, og tengdir aðilar hans fylgja og skulu fylgja siðareglum greiðslumiðlunarbirgja.
+Gistingaraðili ábyrgist að hann og tengdir aðilar hans fari eftir og muni fara eftir siðareglum birgja Greiðslumiðlara.
 
-Gististaðurinn lýsir því yfir, ábyrgist og skuldbindur sig til að fara að og muni í hvívetna fylgja öllum alþjóðlegum viðskiptareglum, gildandi takmörkunum á viðskiptum, fjármagnsflæði og löggjöf um fjármögnun hryðjuverka og varnir gegn mútugreiðslum og spillingu, þar á meðal, en ekki takmarkað við, bandarísku lögin gegn spillingu, bresku lögin gegn mútugreiðslum frá 2010 og lögin gegn spillingu í Singapúr.
+Gistingaraðili staðfestir, ábyrgist og skuldbindur sig til að fara eftir öllum alþjóðlegum viðskiptareglum, gildandi takmörkunum á viðskiptum, fjármagnsflutningi, fjármögnun hryðjuverka og mútu- og spillingarvarnarlögum, þar með talið, en ekki takmarkað við, bandaríska Anti-Corruption Act, breska Bribery Act 2010 og Singapore Prevention of Corruption Act.
 
-Gististaðurinn ábyrgist að eftir bestu vitund hafi hvorki hann né tengdir aðilar hans verið sakfelldir fyrir brot sem felur í sér mútur eða spillingu né séu þeir undir rannsókn af hálfu neinna ríkisstofnana, stjórnsýslustofnana eða eftirlitsaðila.
+Gistingaraðili ábyrgist að svo vitað sé hafi hvorki hann né tengdir aðilar hans verið sakfelldir fyrir mútu- eða spillingarbrot né séu undir rannsókn stjórnvalda, stjórnsýslu eða eftirlitsstofnana.
 
-**6. Óviðráðanleg atvik**
+**6. Force Majeure**
 
-Greiðslumiðlari ber ekki ábyrgð á töfum eða vanrækslu á að uppfylla skyldur samkvæmt þessum greiðsluskilmálum sem stafa af orsökum sem Wink eða greiðslumiðlari hefur ekki sanngjarna stjórn á, þar á meðal en ekki takmarkað við óviðráðanlegar aðstæður, náttúruhamfarir, stríð, hryðjuverk, óeirðir, viðskiptabönn, aðgerðir borgaralegra eða hernaðarlegra yfirvalda, eldsvoða, flóð, slys, heimsfaraldra, farsóttir eða sjúkdóma, verkföll eða skortur á samgöngum, eldsneyti, orku, vinnuafli eða efni („Óviðráðanleg atvik“).
+Greiðslumiðlari ber ekki ábyrgð á töfum eða vanefndum á skyldum samkvæmt þessum greiðsluskilmálum sem stafa af orsökum utan viðráðanlegra aðstæðna Wink eða Greiðslumiðlara, þar með talið, en ekki takmarkað við, náttúruhamfarir, stríð, hryðjuverk, uppþot, viðskiptabann, aðgerðir stjórnvalda, eldsvoða, flóð, slys, farsóttir, verkföll eða skort á flutningum, eldsneyti, orku, vinnuafli eða hráefni („Force Majeure atburður“).
 
-**7. Fyrirvarar**
+**7. Afneitun ábyrgðar**
 
-7.1 Ef þú velur að nota Greiðsluþjónustuna gerir þú það sjálfviljugur og á þína ábyrgð. Að því marki sem lög leyfa er Greiðsluþjónustan veitt „eins og hún er“ án nokkurrar ábyrgðar, hvorki skýrrar né óskýrrar.
+7.1 Ef þú velur að nota greiðslumiðlunina gerir þú það af fúsum og frjálsum vilja og á eigin ábyrgð. Í mesta leyfilega mæli samkvæmt lögum er greiðslumiðlun veitt „eins og hún er“, án nokkurrar ábyrgðar, hvorki skýr né gefin í skyn.
 
-7.2 Þrátt fyrir skipun greiðslumiðlara sem takmarkaðs greiðsluinnheimtuaðila gistiþjónustu samkvæmt 6. gr., afsalar greiðslumiðlari sér sérstaklega allri ábyrgð á athöfnum eða athafnaleysi gistiþjónustuaðila eða annars þriðja aðila. Greiðslumiðlari hefur engar skyldur eða skuldbindingar sem umboðsmaður fyrir hvern gistiþjónustuaðila nema að því marki sem sérstaklega er tekið fram í þessum greiðsluskilmálum, og allar viðbótarskyldur eða skyldur sem kunna að vera gefnar í skyn samkvæmt lögum eru, að því marki sem gildandi lög leyfa, sérstaklega undanskildar.
+7.2 Þrátt fyrir tilnefningu Greiðslumiðlara sem takmarkaðs innheimtustjóra Gistingaraðila samkvæmt lið 6, afneitar Greiðslumiðlari skýrt allri ábyrgð á athöfnum eða vanrækslu Gistingaraðila eða þriðja aðila. Greiðslumiðlari hefur engar skyldur eða ábyrgðir sem umboðsmaður Gistingaraðila nema þær sem sérstaklega eru tilgreindar í þessum greiðsluskilmálum, og allar aðrar skyldur sem kunna að vera gefnar í skyn samkvæmt lögum eru, að mestu leyti leyfilegu samkvæmt lögum, skýrt útilokaðar.
 
-7.3 Ef við veljum að framkvæma auðkennisstaðfestingu á gistiþjónustuaðila, að því marki sem gildandi lög leyfa, höfnum við ábyrgð af hvaða tagi sem er, hvort sem er skýr eða óskýr, á því að slíkar athuganir muni leiða í ljós fyrri misferli gistiþjónustuaðila eða ábyrgjast að gistiþjónusta muni ekki fremja misferli í framtíðinni.
+7.3 Ef við framkvæmum auðkennisstaðfestingu á Gistingaraðila, afneitum við ábyrgð á því að slíkar athuganir muni greina fyrri misferli eða tryggja að Gistingaraðili muni ekki fremja misferli í framtíðinni, að því marki sem lög leyfa.
 
-7.4 Ofangreindar fyrirvarar gilda að því marki sem lög leyfa. Þú gætir átt önnur lögbundin réttindi eða ábyrgðir sem ekki er hægt að útiloka með lögum. Hins vegar skal gildistími allra lögbundinna ábyrgða takmarkaður við það hámark (ef einhverjar) sem lög leyfa.
+7.4 Fyrri afneitun ábyrgðar gildir að mestu leyfilegu marki samkvæmt lögum. Þú gætir átt önnur lagaleg réttindi eða ábyrgðir sem ekki er hægt að útiloka löglega. Hins vegar er lengd ábyrgðar takmörkuð að mestu leyfilegu marki samkvæmt lögum.
 
 **8. Takmörkun ábyrgðar**
 
-8.1 Að því marki sem lög leyfa ber hvorugur aðilinn ábyrgð á óbeinum, tilfallandi, afleiddum, sérstökum eða refsilegum skaðabótum sem leiða af þessum samningi eða brotum á honum, jafnvel þótt honum hafi verið tilkynnt um möguleikann á slíku tjóni. Þessi takmörkun á ekki við um brot á þessum samningi sem varða trúnað og/eða hugverkaréttindi.
+8.1 Að mestu leyfilegu marki samkvæmt lögum ber hvorugur aðili ábyrgð á óbeinum, tilviljanakenndum, afleiðingum, sérstökum eða refsiviðurlögum vegna þessa samnings eða brots á honum, jafnvel þótt viðkomandi hafi verið upplýstur um möguleika á slíkum skaða. Þessi takmörkun gildir ekki um brot á trúnaði og/eða hugverkarétti.
 
-8.2 Hvorugur aðili getur undanskilið sig ábyrgð vegna (i) dauða eða líkamstjóns sem orsakast af vanrækslu hans eða starfsmanna hans, umboðsmanna eða undirverktaka, (ii) svika sem hann eða starfsmenn hans hafa framið, eða (iii) brota, athafna, vanrækslu eða ábyrgðar sem ekki er hægt að takmarka samkvæmt gildandi lögum.
+8.2 Hvorugur aðili má útiloka ábyrgð vegna (i) dauða eða persónuskaða af völdum gáleysis hans eða starfsmanna, umboðsmanna eða undirverktaka, (ii) svika framin af honum eða starfsmönnum hans, eða (iii) brots, athafnar, vanrækslu eða ábyrgðar sem ekki má takmarka samkvæmt lögum.
 
-8.3 Aðilar viðurkenna og samþykkja að undantekningar og takmarkanir á ábyrgð sem fram koma í þessum samningi séu sanngjarnar og eðlilegar.
+8.3 Aðilar viðurkenna að útilokanir og takmarkanir ábyrgðar í þessum samningi eru sanngjarnar og réttlátar.
 
 **9. Skaðabætur**
 
-Að því marki sem gildandi lög leyfa samþykkir þú að verja (að vali Greiðslumiðlara), bæta tjón og halda Greiðslumiðlara og öllum tengdum félögum þess og dótturfélögum, og stjórnendum þeirra, stjórnarmönnum, starfsmönnum og umboðsmönnum, skaðlausum af öllum kröfum, skuldbindingum, tjóni, tapi og útgjöldum, þar með talið, án takmarkana, sanngjörnum lögfræði- og bókhaldskostnaði, sem stafar af eða tengist á nokkurn hátt (i) broti þínu á þessum greiðsluskilmálum; (ii) óviðeigandi notkun þinni á Greiðsluþjónustunni; (iii) vanrækslu þinni, eða vanrækslu okkar að þínu fyrirmælum, að tilkynna, innheimta eða greiða skatta á réttan hátt; eða (iv) broti þínu á lögum, reglugerðum eða réttindum þriðja aðila.
+Að mestu leyfilegu marki samkvæmt lögum samþykkir þú að leysa Greiðslumiðlara og tengda aðila hans undan ábyrgð, verja (eftir vali Greiðslumiðlara), bæta skaða og halda Greiðslumiðlara og tengda aðila hans, stjórnendur, starfsmenn og umboðsmenn skaðlausum frá öllum kröfum, ábyrgðum, skaða, tapi og kostnaði, þar með talið lögfræðilegum og bókhaldslegum kostnaði, sem stafa af eða tengjast (i) brotum þínum á þessum greiðsluskilmálum; (ii) óviðeigandi notkun þinni á greiðslumiðluninni; (iii) vanefndum þínum eða okkar á þínum fyrirmælum um að skila réttum skýrslum, innheimtu eða greiðslu skatta; eða (iv) brotum þínum á lögum, reglugerðum eða réttindum þriðja aðila.
 
-**10. Breyting, gildistími, uppsögn og aðrar ráðstafanir**
+**10. Breytingar, gildistími, uppsögn og aðrar ráðstafanir**
 
-10.1**Breyting**Nema annað sé kveðið á um samkvæmt gildandi lögum, getur greiðslumiðlari breytt þessum greiðsluskilmálum hvenær sem er. Ef við gerum verulegar breytingar á þessum greiðsluskilmálum munum við birta endurskoðaða greiðsluskilmála á Wink-vettvanginum og uppfæra dagsetninguna „Síðast uppfært“ efst í þessum greiðsluskilmálum. Ef breytingin hefur áhrif á þig munum við einnig láta þig vita af breytingunum að minnsta kosti þrjátíu (30) dögum fyrir gildistöku þeirra. Ef þú segir ekki upp samningnum fyrir gildistöku endurskoðaðra greiðsluskilmála, þá jafngildir áframhaldandi notkun þín á greiðsluþjónustunni samþykki fyrir öllum breytingum á endurskoðuðum greiðsluskilmálum.
+10.1 **Breytingar**. Nema annað sé krafist samkvæmt lögum, getur Greiðslumiðlari breytt þessum greiðsluskilmálum hvenær sem er. Ef við gerum verulegar breytingar munum við birta uppfærða greiðsluskilmála á Wink vettvanginum og uppfæra „Síðast uppfært“ dagsetningu efst í þessum greiðsluskilmálum. Ef breytingar hafa áhrif á þig munum við einnig tilkynna þér þær að minnsta kosti þrjátíu (30) dögum fyrir gildistöku þeirra. Ef þú riftir ekki samningnum fyrir gildistöku nýju skilmálanna, telst áframhaldandi notkun þín á greiðslumiðluninni samþykki á breytingunum.
 
-10.2**Hugtak**Þessi samningur milli þín og greiðslumiðlara, sem endurspeglast í þessum greiðsluskilmálum, tekur gildi þegar þú býrð til Wink-reikning eða notar greiðsluþjónustuna og er í gildi þar til annað hvort þú eða við segjum upp þessum samningi í samræmi við 10.3. grein.
+10.2 **Gildistími**. Þessi samningur milli þín og Greiðslumiðlara, eins og hann birtist í þessum greiðsluskilmálum, tekur gildi þegar þú stofnar Wink reikning eða notar greiðslumiðlunina og gildir þar til annað hvort þú eða við riftum samningnum samkvæmt lið 10.3.
 
-10.3**Uppsögn**Þú getur sagt upp þessum samningi hvenær sem er með því að senda okkur tölvupóst eða með því að eyða Wink reikningnum þínum. Uppsögn þessa samnings gildir einnig sem uppsagnarfrestur fyrir Wink reikninginn þinn samkvæmt skilmálunum. Án þess að takmarka réttindi okkar sem tilgreind eru hér að neðan, getur Greiðslumiðlun sagt upp þessum samningi hvenær sem er til þæginda með því að senda þér þrjátíu (30) daga fyrirvara með tölvupósti á skráð netfang þitt. Greiðslumiðlun getur einnig sagt upp þessum samningi með skjótum hætti án fyrirvara ef (i) þú hefur verulega brotið gegn skyldum þínum samkvæmt þessum samningi; (ii) þú hefur gefið upp rangar, sviksamlegar, úreltar eða ófullkomnar upplýsingar; (iii) þú hefur brotið gegn gildandi lögum, reglugerðum eða réttindum þriðja aðila; eða (iv) Greiðslumiðlun telur í góðri trú að slík aðgerð sé sanngjarnlega nauðsynleg til að vernda aðra gistingaraðila, Wink, Greiðslumiðlun eða þriðja aðila.
+10.3 **Uppsögn**. Þú getur sagt upp þessum samningi hvenær sem er með því að senda okkur tölvupóst eða eyða Wink reikningi þínum. Uppsögn þjónar einnig sem tilkynning um að hætta við Wink reikning samkvæmt skilmálum. Greiðslumiðlari getur sagt upp samningnum hvenær sem er með 30 daga fyrirvara með tölvupósti til skráðs netfangs þíns. Greiðslumiðlari getur einnig sagt upp samningnum strax án fyrirvara ef (i) þú hefur brotið verulega gegn skyldum þínum samkvæmt samningnum; (ii) þú hefur gefið rangar, sviknar, úreltar eða ófullnægjandi upplýsingar; (iii) þú hefur brotið lög, reglugerðir eða réttindi þriðja aðila; eða (iv) Greiðslumiðlari telur í góðri trú að slíkt sé nauðsynlegt til að vernda aðra Gistingaraðila, Wink, Greiðslumiðlara eða þriðja aðila.
 
-10.4**Stöðvun og aðrar ráðstafanir**Greiðslumiðlunin kann að takmarka eða tímabundið eða varanlega stöðva notkun þína á eða aðgang að greiðsluþjónustunni (i) til að fara að gildandi lögum, eða fyrirmælum eða beiðni dómstóls, löggæslu eða annarrar stjórnsýslustofnunar eða ríkisstofnunar, (ii) ef þú hefur brotið gegn þessum greiðsluskilmálum, skilmálunum, gildandi lögum, reglugerðum eða réttindum þriðja aðila, (iii) ef þú hefur gefið upp ónákvæmar, sviksamlegar, úreltar eða ófullkomnar upplýsingar varðandi nauðsynleg greiðslugögn, (iv) fyrir allar upphæðir sem þú skuldar samkvæmt þessum greiðsluskilmálum sem eru gjaldfallnar eða í vanskilum, eða (v) ef Greiðslumiðlunin telur í góðri trú að slík aðgerð sé sanngjarnt nauðsynleg til að vernda persónulegt öryggi eða eignir Wink, gistingaraðila þess, greiðslumiðlunar eða þriðja aðila, eða til að koma í veg fyrir svik eða aðra ólöglega starfsemi.
+10.4 **Stöðvun og aðrar ráðstafanir**. Greiðslumiðlari getur takmarkað eða tímabundið eða varanlega stöðvað notkun þína á eða aðgang að greiðslumiðluninni (i) til að fara eftir lögum eða úrskurði dómstóls, lögreglu eða annarra stjórnvalda, (ii) ef þú hefur brotið gegn þessum greiðsluskilmálum, skilmálum, lögum, reglugerðum eða réttindum þriðja aðila, (iii) ef þú hefur gefið rangar, sviknar, úreltar eða ófullnægjandi upplýsingar um útborgunargögn, (iv) vegna skuldar sem er of seint greidd eða í vanskilum, eða (v) ef Greiðslumiðlari telur í góðri trú að slíkt sé nauðsynlegt til að vernda öryggi Wink, Gistingaraðila, Greiðslumiðlara eða þriðja aðila eða til að koma í veg fyrir svik eða aðra ólöglega starfsemi.
 
-10,5**Áfrýjun**Ef greiðslumiðlari grípur til einhverra þeirra ráðstafana sem lýst er í 10.3 og 10.4. gr. geturðu kært slíka ákvörðun með því að hafa samband við þjónustuver.
+10.5 **Áfrýjun**. Ef Greiðslumiðlari beitir aðgerðum samkvæmt lið 10.3 og 10.4 getur þú áfrýjað ákvörðuninni með því að hafa samband við þjónustudeild.
 
-10.6**Áhrif uppsagnar**Ef þú hættir við Wink-reikninginn þinn þar sem gistiaðili eða greiðslumiðlari grípur til einhverra af þeim ráðstöfunum sem lýst er hér að ofan, getur greiðslumiðlarinn veitt fulla endurgreiðslu til allra gesta með staðfestar bókanir og þú átt ekki rétt á neinum bótum fyrir staðfestar bókanir sem voru aflýstar eða í bið.
+10.6 **Áhrif uppsagnar**. Ef þú hættir við Wink reikning sem Gistingaraðili eða Greiðslumiðlari beitir aðgerðum sem lýst er hér að ofan, getur Greiðslumiðlari greitt fulla endurgreiðslu til gesta með staðfestar bókanir og þú átt ekki rétt á bótum fyrir bókanir sem eru í bið eða hafa verið felldar niður.
 
-10.7**Lifun**Ákvæði 5. til 11. greinar þessara greiðsluskilmála skulu halda gildi sínu eftir að samningi þessum er sagt upp eða honum lýkur.
+10.7 **Gildistími eftir uppsögn**. Liðir 5 til 11 í þessum greiðsluskilmálum gilda áfram eftir uppsögn eða lok samnings.
 
-**11. Gildandi lög og lausn deilumála**
+**11. Lög og úrlausn ágreinings**
 
-11.1 Ef þú ert að gera samning við Payment Facilitator US, verða þessir greiðsluskilmálar túlkaðir í samræmi við lög Wyoming-ríkis og Bandaríkjanna, án tillits til ákvæða um lagaárekstra. Málshöfðun (önnur en smákröfumál) verður að höfða fyrir ríkis- eða alríkisdómstóli í Wyoming nema við komumst að samkomulagi um annan stað. Þú og við samþykkjum bæði varnarþing og lögsögu í Wyoming.
+11.1 Ef þú ert að semja við Greiðslumiðlara í Bandaríkjunum, skulu þessir greiðsluskilmálar túlkaðir samkvæmt lögum Wyoming-ríkis og Bandaríkjanna, án tillits til árekstra lagaákvæða. Málsóknir (nema smávægileg mál) skulu höfðaðar fyrir ríkis- eða sambandsdómstól í Wyoming nema báðir aðilar samþykki annað. Þú og við samþykkjum dómstóla og lögsögu í Wyoming.
 
-11.2 Ef þú ert að semja við Payment Facilitator UK verða þessir greiðsluskilmálar túlkaðir í samræmi við ensk lög. Ef þú starfar sem neytandi og ef bindandi lagaákvæði um neytendavernd í búsetulandi þínu innihalda ákvæði sem eru hagstæðari fyrir þig, skulu slík ákvæði gilda óháð því hvort ensk lög eru valin. Sem neytandi getur þú höfðað hvaða mál sem er varðandi þessa greiðsluskilmála fyrir lögbærum dómstóli á búsetustað þínum eða dómstóli í Englandi. Ef Payment Facilitator óskar eftir að framfylgja einhverjum réttindum sínum gegn þér sem neytanda, getum við aðeins gert það fyrir dómstólum í því lögsagnarumdæmi þar sem þú ert búsettur. Ef þú starfar sem fyrirtæki samþykkir þú að lúta einkarétt enskra dómstóla.
+11.2 Ef þú ert að semja við Greiðslumiðlara í Bretlandi, skulu þessir greiðsluskilmálar túlkaðir samkvæmt enskum lögum. Ef þú ert neytandi og skyldubundnar neytendaverndarlög í búsetulandi þínu eru hagstæðari, gilda þau óháð vali á enskum lögum. Sem neytandi getur þú höfðað mál fyrir dómstól í búsetu þinni eða í Englandi. Ef Greiðslumiðlari vill beita réttindum sínum gegn þér sem neytanda, má það aðeins vera fyrir dómstólum í lögsögu þar sem þú ert búsettur. Ef þú ert aðili að fyrirtæki samþykkir þú að sæta einokunardómstólum í Englandi.
 
-11.3 Ef þú ert í samningi við Payment Facilitator Slovakia verða þessir greiðsluskilmálar túlkaðir í samræmi við lög ESB. Ef þú starfar sem neytandi má aðeins höfða mál gegn okkur vegna eða í tengslum við þessa greiðsluskilmála fyrir dómstóli í borginni Bratislava eða fyrir dómstóli með lögsögu á búsetustað þínum. Ef þú starfar sem fyrirtæki samþykkir þú að lúta einkarétt lögsögu dómstóls í borginni Bratislava í Slóvakíu.
-
+11.3 Ef þú ert að semja við Greiðslumiðlara í Slóvakíu, skulu þessir greiðsluskilmálar túlkaðir samkvæmt lögum ESB. Ef þú ert neytandi, málsóknir sem þú getur höfðað gegn okkur vegna eða í tengslum við þessa greiðsluskilmála skulu aðeins höfðaðar fyrir dómstól í Bratislava eða dómstól með lögsögu í búsetu þinni. Ef þú ert aðili að fyrirtæki samþykkir þú að sæta einokunardómstólum í Bratislava, Slóvakíu.

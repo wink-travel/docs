@@ -1,411 +1,411 @@
 ---
-title: Услови коришћења услуге
-description: Лако доступни и ажурирани услови за све наше партнерске кориснике.
+title: Uslovi korišćenja
+description: Lako dostupni i ažurni uslovi za sve naše korisnike partnera.
 sidebar:
-  order: 20
+  order: 21
 ---
-:::напомена
-Последње ажурирање 12.06.2024.
+
+:::note
+Poslednje ažuriranje 2024-06-12
 :::
+  
+**OPŠTI USLOVI I ODREDBE ZA PRUŽAOCE SMEŠTAJA**
 
-**ОПШТИ УСЛОВИ ЗА ПРУЖАОЦЕ СМЕШТАЈА**
+Registracijom i prijavom u Wink program kao pružalac smeštaja, pružalac smeštaja potvrđuje da je pregledao, razume, prihvata i prihvata uslove i odredbe ovog ugovora o pružaocu smeštaja (u daljem tekstu „Ugovor“).
 
-Регистрацијом и пријављивањем у Wink програм као пружалац смештаја, пружалац смештаја овим потврђује да је прегледао и разумео, потврђује и прихвата услове и одредбе овог уговора са пружаоцем смештаја („Уговор“).
+**IZMEĐU:**
 
-**ИЗМЕЂУ:**
+**TRAVELIKO SINGAPORE PTE. LTD.**, kompanije registrovane po zakonima Singapura sa sedištem na adresi \#03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095, sa PDV registarskim brojem 201437335D („Wink“), i
 
-**ТРАВЕЛИКО СИНГАПУР ПТЕ. ЛТД.**, компанија основана у складу са законима Сингапура и са регистрованим седиштем на адреси #03-01 Wilkie Edge, 8 Wilkie Road, Сингапур 228095 са ПДВ бројем 201437335D („Wink“), и
+**PRUŽAOCA SMEŠTAJA**, čiji su podaci navedeni u obrascu za registraciju pružaoca smeštaja ili su dostavljeni online (u daljem tekstu „Pružalac smeštaja“).
 
-**ПРЕДУЗИЛАЦ СМЕШТАЈА**, чији су подаци наведени у Обрасцу за регистрацију смештаја или су достављени онлајн („Смештај“).
+Wink i Pružalac smeštaja su pojedinačno „Strana“ ovog Ugovora, a zajedno se nazivaju „Strane“.
 
-Винк и Пружалац смештаја су сваки „Страна“ овог Уговора и заједнички се називају „Стране“.
+Ovaj dokument utvrđuje Uslove i odredbe za:
 
-Овим документом се утврђују Услови и одредбе за:
+1. Pružanje usluga distribucije smeštaja putem Wink-a ili bilo kojih drugih sredstava koje Pružalac smeštaja koristi za distribuciju svojih proizvoda (u daljem tekstu „Pružalac smeštaja“), za koje su detalji navedeni u Uslovima plaćanja, a cena, uslovi i dostupnost su dogovoreni; i  
+2. Pružanje usluga smeštaja od strane Pružaoca smeštaja krajnjem potrošaču/gostu, koji je rezervisao preko Wink-a.
 
-1. Пружање услуга дистрибуције смештаја путем Винка или било ког другог средства које Пружалац смештаја користи за дистрибуцију својих производа (у даљем тексту „Пружалац смештаја“), за које су детаљи наведени у Условима плаћања и за које су договорени цена, услови и доступност; и
-2. Пружање услуга смештаја од стране Давалаца смештаја крајњем потрошачу/госту, које је резервисано преко Винка.
+Wink ne poseduje, ne kontroliše, ne nudi niti upravlja bilo kojim oglasima. Wink nije strana u ugovorima zaključenim direktno između Pružaoca smeštaja i gostiju. Wink ne deluje kao agent u bilo kom svojstvu za Pružaoca smeštaja, osim kako je navedeno u uslovima plaćanja usluga („Uslovi plaćanja“).
 
-Винк не поседује, не контролише, не нуди нити управља било којим огласима. Винк није страна у уговорима закљученим директно између пружалаца смештаја и гостију. Винк не делује као агент ни у ком својству за пружаоце смештаја, осим како је наведено у условима плаћања услуга („Услови плаћања“).
+U slučaju neslaganja između ovih Uslova i odredbi (u daljem tekstu „Uslovi“) i Uslova plaćanja, primenjivaće se ovi drugi.
 
-У случају неслагања између ових Услова и одредби (у даљем тексту „Услови“) и Услова плаћања, примењиваће се ови други.
+Stoga su Strane dogovorile sledeće:
 
-Сада су се, дакле, странке споразумеле о следећем:
+**1. Definicije**
 
-**1. Дефиниције**
+Pored termina definisanih na drugim mestima u ovom Ugovoru, sledeće definicije važe kroz ceo Ugovor, osim ako nije drugačije naznačeno:
 
-Поред термина дефинисаних на другим местима у овом Уговору, следеће дефиниције се примењују у целом овом Уговору, осим ако није другачије назначено:
+**„Pružalac smeštaja“** označava bilo koju Stranu koja kreira nalog na Wink platformi sa namerom da prodaje sopstvene sobe i prateće usluge putem Wink platforme.
 
-**„Пружалац(и) смештаја“**&#x437;начи свака Уговорна страна која креира налог на Wink-у са намером да продаје сопствене собе и инвентар помоћних услуга путем Wink платформе.
+**„Ugovor“** označava ovaj ugovor.
 
-**„Споразум“**&#x437;начи овај споразум.
+**„Najbolja dostupna cena“ ili „BAR“** označava najnižu cenu pre popusta, sa uključenim PDV-om, koja se nudi široj javnosti od strane Hotela učesnika, Pružaoca smeštaja ili u njegovo ime od strane bilo kog trećeg distributera. Za izbegavanje sumnje, promotivne cene, sezonske cene i sve druge javno dostupne neograničene cene uključene su kao Najbolje dostupne cene.
 
-**„Најбоља доступна цена“ или „BAR“**&#x437;начи најнижу цену за собе без урачунатог попуста, са провизијом, која укључује ПДВ, коју широј јавности нуди хотел учесник, пружалац смештаја или у његово име било који трећи дистрибутер. Ради избегавања сумње, промотивне цене, цене за одмор и све друге јавне неограничене цене биће укључене као најбоље доступне цене.
+**„Rezervacija“** označava zahtev za rezervaciju sobe napravljen preko Wink-a ili klijenta Wink-a koji je saopšten i prihvaćen od strane Pružaoca smeštaja.
 
-**„Резервација(е)“**&#x437;начи захтев за резервацију собе поднет путем Wink-а или Wink клијента, који је саопштен и прихваћен од стране Пружаоца смештаја.
+**„Naknada za rezervaciju“** je 1,5% odbijeno od vrednosti rezervacije kao naknada za obradu od strane Wink-a.
 
-**„Накнада за резервацију“**&#x458;е 1,5% које Wink одбија од вредности резервације као накнаду за обраду.
+**„Vrednost rezervacije“** je ukupni iznos koji je Primalac plaćanja prikupio od gosta za rezervaciju.
 
-**„Вредност резервације“**&#x458;е укупан износ који је Посредник за плаћање наплатио од госта за резервацију.
+**„Nedostupnost“** označava neuspeh Pružaoca smeštaja da smesti bilo kog gosta zbog, između ostalog, nedostupnosti sobe u Hotelu učesniku ili u njegovo ime od strane Pružaoca smeštaja ili bilo kog trećeg distributera.
 
-**"Резервисано"**&#x437;начи неуспех Даваоца Смештаја да смести било ког Госта због, између осталог, недостатка расположивих соба од стране Хотела Учесника или у његово име од стране Даваоца Смештаја или било ког трећег дистрибутера.
+**„Provizija“** označava iznos koji se duguje partneru za svaku realizovanu transakciju u skladu sa ovim Ugovorom.
 
-**„Комисија“**&#x437;начи износ који се дугује Повезаном друштву за сваку Материјално реализовану трансакцију у складу са овим Уговором.
+**„Objekti i usluge“** označavaju bilo koje objekte, obroke, pogodnosti i/ili druge usluge koje pruža Hotel učesnik.
 
-**„Садржаји и услуге“**&#x437;начи све објекте, оброке, погодности и/или друге услуге које пружа хотел учесник.
+**„Gost“** označava krajnjeg korisnika koji je koristio, koristi ili je rezervisao sobu (i druge objekte i usluge, ako je primenjivo) kao rezultat direktne ili indirektne rezervacije preko Wink-a.
 
-**„Гост(и)“**&#x437;начи крајњи корисник који је користио, користи или је резервисан да коначно користи Собу (и друге објекте и услуге, ако је применљиво) као резултат директне или индиректне резервације код компаније Wink.
+**„Hotel“** označava bilo koji smeštaj dostupan na ili preko Wink vebsajtova.
 
-**„Хотел(и)“**&#x437;начи било који смештај доступан на или путем Wink веб страница.
+**„Wink platforma“** označava privatnu mrežu ili tehničko rešenje koje Strane koriste za bezbedno deljenje informacija u skladu sa Ugovorom.
 
-**„Винк платформа“**&#x437;начи приватна мрежа или техничко решење које Стране користе ради безбедне размене информација у складу са Споразумом.
+**„Intelektualna svojina“** označava sva prava intelektualne svojine bilo koje vrste (bilo da su dokumentovana ili ne, bilo da su snimljena na magnetnom ili optičkom disku ili memoriji) bilo gde u svetu, registrovana, registrabilna ili ne, uključujući patente, korisne modele, žigove, registrovane dizajne i domene, aplikacije za bilo koje od navedenog, trgovačka ili poslovna imena, goodwill, autorska prava i prava slična autorskim pravima, prava na dizajn, prava na baze podataka, moralna prava, know-how i druga prava intelektualne svojine koja postoje u softveru, programima, vebsajtovima, dokumentima, informacijama, tehnikama, poslovnim metodama, crtežima, logotipima, uputstvima, listama i procedurama i podacima o kupcima, marketinškim metodama i reklamnim materijalima, uključujući „izgled i doživljaj“ bilo kojih vebsajtova.
 
-**„Интелектуална својина“**&#x437;начи сва права интелектуалне својине било које природе (без обзира да ли су забележена у документарном облику или сачувана на било ком магнетном или оптичком диску или меморији) било где у свету, без обзира да ли су регистрована, региструјућа или на други начин, укључујући патенте, корисне моделе, жигове, регистроване дизајне и имена домена, пријаве за било шта од наведеног, трговачка или пословна имена, гудвил, ауторска права и права у виду ауторских права, права на дизајн, права на базе података, морална права, знање и сва друга права интелектуалне својине која постоје у рачунарском софтверу, рачунарским програмима, веб страницама, документима, информацијама, техникама, пословним методама, цртежима, логотипима, упутствима за употребу, листама и процедурама и подацима о купцима, маркетиншким методама и поступцима и рекламној литератури, укључујући „изглед и осећај“ било којих веб страница.
+**„Realizovana transakcija“** označava rezervaciju gosta kod Pružaoca smeštaja koja je rezultirala stvarnim pružanjem smeštaja, što je potvrđeno Wink-u od strane Pružaoca smeštaja. Realizovane transakcije će uvek biti prilagođene za izmene (npr. skraćeni boravak), povraćaje, prevare sa kreditnim karticama, loše dugove ili slično. Za izbegavanje sumnje, otkazivanja, nepojavljivanja i slično nikada ne mogu biti smatrani realizovanim transakcijama.
 
-**„Материјална трансакција(е)“**&#x437;начи Резервацију коју је Гост извршио код Пружаоца Смештаја, а која је резултирала стварним обезбеђивањем смештаја, што је Пружалац Смештаја потврдио Винку. Материјалне трансакције ће увек бити прилагођене изменама (нпр. скраћени боравци), повраћајима средстава, преварама са кредитним картицама, лошим дугом или на други начин. Ради избегавања сумње, отказивања, недолазак итд. никада се не могу сматрати материјализованим трансакцијама.
+**„Neto cena“** označava cenu koju Wink plaća svakom Hotelu učesniku za sobe koje su Strane međusobno dogovorile u pisanom obliku.
 
-**„Нето стопа“**&#x437;начи одређену цену коју ће Винк платити сваком хотелу учеснику за собе о којима су се Стране међусобно договориле у писаној форми.
+**„Neprijavljivanje“** označava svaku situaciju kada gost ne stigne na vreme u Hotel učesnika u skladu sa rezervacijom.
 
-**„Непојављивање/недолазак“**&#x437;начи сваки случај у којем Гост не стигне благовремено у Хотел који учествује у складу са Резервацијом.
+**„Partner“** označava bilo koji biznis ili pojedinca koji se povezuje ili koristi Wink platformu za promociju i prodaju inventara Pružaoca smeštaja svojoj publici i/ili kupcima za proviziju.
 
-**„Партнер“**&#x437;начи свако предузеће или појединац који се повезује или користи Wink платформу за промоцију и продају инвентара пружалаца смештаја својој публици и/или купцима за провизију.
+**„Primalac plaćanja“** je u potpunom vlasništvu Traveliko Singapore Pte. Ltd. („TripPay“), koji upravlja uslugama plaćanja, prikupljanjem uplata od gostiju („Pay-in“), naplaćujući način plaćanja povezan sa njihovom kupovinom, kao što su kreditne kartice, debitne kartice, bankovni transferi, kriptovalute ili PayPal itd., i isplaćuje sredstva („Neto cenu“) Pružaocu smeštaja.
 
-**„Посредник за плаћање“**&#x43F;одружница у потпуном власништву компаније Traveliko Singapore Pte. Ltd. („TripPay“), која управља услугама плаћања, наплаћујући уплате од гостију („Уплата“), наплаћујући начин плаћања повезан са њиховом куповином, као што су кредитна картица, дебитна картица, банковни трансфер, криптовалуте или PayPal итд. и исплаћујући дуговани износ („Нето цена“) пружаоцу смештаја.
+**„Pay-in“** označava primanje uplate od gosta od strane Primaoca plaćanja.
 
-**„Уплата“**&#x437;начи примање уплате коју је гост извршио од стране Посредника за плаћање.
+**„Pay-out“** označava isplatu neto provizije partneru od strane Primaoca plaćanja.
 
-**„Исплата“**&#x437;начи исплату нето провизије партнеру од стране посредника за плаћање.
+**„Naknada za uslugu plaćanja“** je 4% odbijeno od provizije partnera kao naknada za obradu plaćanja od strane Primaoca plaćanja.
 
-**„Накнада за услугу плаћања“**&#x458;е 4% које од партнерске провизије одбија посредник за плаћање као накнаду за прикупљање средстава.
+**„Uslovi plaćanja“** označavaju cene, dostupnost, ponude, promocije, uslove plaćanja i bilo koja druga pravila ili uslove vezane za distribuciju soba koje su međusobno dogovorene između Strana.
 
-**„Услови плаћања“**&#x437;начи Цене, расположивост, понуде, промоције, услове плаћања и сва друга правила или услове који се односе на расподелу соба, а који су обострано договорени између Уговорних страна.
+**„Potencijalno prevarantska rezervacija“** označava (i) rezervaciju koja je rezultat netačnih ili neispravnih informacija dostavljenih Wink-u u trenutku rezervacije, ili kao rezultat spora oko kreditne kartice, ili prijave neovlašćenih naplata; ili (ii) bilo koju rezervaciju koja može biti povezana sa prethodnim visokorizičnim ili prevarantskim transakcijama.
 
-**„Потенцијално преварна резервација“**&#x437;начи (i) Резервацију која је резултат неважећих или нетачних информација достављених компанији Wink у време такве Резервације, или као резултат спора око кредитне картице, или као резултат пријаве неовлашћених наплата; или (ii) Било коју Резервацију која може бити повезана са претходним трансакцијама високог ризика или преварним трансакцијама.
+**„Cena“** označava cenu hotelske sobe koju Pružalac smeštaja stavlja na raspolaganje Wink-u u vezi sa bilo kojom primenjivom vrstom sobe ili tipom cene prema Ugovoru za distribuciju na svim Wink kanalima.
 
-**„Стопа(е)“**&#x43E;значава цену(е) хотелске собе коју је Пружалац смештаја ставио на располагање Винку у вези са било којим применљивим типом собе или типом цене према Уговору, а која ће бити дистрибуирана на свим Винк каналима.
+**„Soba“** označava smeštaj koji se nalazi u bilo kom Hotelu učesniku ili smeštajnom objektu.
 
-**„Соба(е)“**&#x437;начи смештај(и) који се налази(ју) у било ком хотелу или смештају који учествује у програму.
+**„Porezi“** označavaju sve lokalne, državne, savezne i nacionalne poreze i/ili takse za usluge uključujući, za izbegavanje sumnje, PDV, poreze na promet, upotrebu, akcize, takse za smeštaj, privremene takse, zakupnine, gradske, turističke i druge slične poreze, državne takse ili naknade.
 
-**„Порези“**&#x437;начи све локалне, државне, савезне и националне порезе и/или накнаде за услуге, укључујући, ради избегавања сумње, све порезе на додату вредност (ПДВ), порезе на продају, порезе на употребу, акцизе, порезе на смештај, порезе на прелазне боравке, порезе на изнајмљивање, градске порезе, порезе на одмаралишта и друге сличне врсте пореза, владиних такса или накнада.
+**„TripPay“** označava u potpunosti u vlasništvu kompaniju koja prikuplja uplate (Pay-in) i vrši isplate (Pay-out) za Wink, poznatu kao Primalac plaćanja.
 
-**„ТрипПеј“**&#x437;начи подружница у потпуном власништву која прикупља уплате (уплата) и исплате (исплата) за Wink, названа Посредник плаћања.
+**„Prodajni kanali“** označavaju (i) vebsajtove koje upravlja, vodi ili poseduje Wink za druge biznise da koriste za pravljenje rezervacija i koji su dostupni samo uz lozinke koje izdaje Wink; (ii) API veze između Wink-a i vebsajtova klijenata; ili (iii) bilo koji drugi metod distribucije putem kojeg Wink isporučuje sobe svojim klijentima za dalju distribuciju ili prodaju, bilo na vebsajtovima ili na drugi način.
 
-**„Продајни канали“**&#x437;начи (i) веб странице којима управља, којима управља или које поседује Wink, а које користе друге компаније за резервације и којима се може приступити само уз лозинке које издаје Wink; (ii) API везе између Wink-а и веб страница за путовања његових клијената; или (iii) било коју другу методу дистрибуције којом Wink пружа собе својим клијентима за њихову даљу дистрибуцију или продају, било на веб страницама или на други начин.
+**1.1 Nema partnerstva**
 
-**1.1 Без партнерства**
+1.1.1 Ovaj Ugovor nije namenjen, niti bilo šta u njemu ili u bilo kojim aranžmanima predviđenim ovim Ugovorom treba tumačiti kao stvaranje zajedničkog ulaganja ili odnosa partnera, partnerstva ili principal-agent odnosa između Strana. Osim ako Strane drugačije ne dogovore pismenim putem, nijedna od njih neće (i) zaključivati ugovore ili obaveze sa trećim stranama kao agent druge Strane, (ii) predstavljati se kao takav agent ili na bilo koji način se predstavljati kao agent, ili (iii) delovati u ime ili predstavljati drugu Stranu u bilo kom svojstvu ili za bilo koju svrhu.
 
-1.1.1 Овај Уговор није намењен, нити се било шта у њему или у било ком од овде предвиђених аранжмана треба тумачити, као стварање заједничког подухвата или односа партнера, партнерства или налогодавца и агента између или међу Уговорним странама. Осим ако се Уговорне стране не договоре другачије у писаној форми, ниједна од њих неће (i) закључивати било какав уговор или обавезу са трећим лицима као агент за или у име друге Уговорне стране, (ii) описивати или представљати себе као таквог агента или се на било који начин представљати као такав агент, или (iii) деловати у име или заступати другу Уговорну страну на било који начин или у било коју сврху.
+1.1.2 Osim ako Wink drugačije ne odobri pismenim putem ili osim kako je drugačije navedeno u ovom Ugovoru, Pružalac smeštaja neće nigde na svojim vebsajtovima objavljivati izjave, bilo izričite ili implicitne, da je vebsajt deo, odobren od strane ili zvanični vebsajt Wink-a.
 
-1.1.2 Осим ако се Винк писмено не договори другачије или осим ако није другачије наведено у овом Уговору, Пружалац смештаја неће објављивати нигде на веб-сајту(ама) Пружаоца смештаја било какву изјаву, било изричиту или имплицитну, да је веб-сајт део, да га одобри или да је званични веб-сајт Винка.
+**2. Ugovaranje sa gostima**
 
-**2. Уговарање са гостима**
+Kada primite potvrdu rezervacije preko Wink platforme, ulazite u ugovor direktno sa gostom i odgovorni ste za pružanje usluga u skladu sa uslovima i po ceni navedenoj u potvrdi rezervacije. Takođe se slažete da platite povezane naknade ako i kada budu primenjive, kako je definisano u Uslovima plaćanja.
 
-Када примите потврду резервације путем Wink платформе, закључујете уговор директно са гостом и одговорни сте за пружање услуга под условима и по цени наведеној у потврди резервације. Такође се слажете да платите повезане накнаде ако и када је то применљиво, како је дефинисано у Условима плаћања.
+**3. Nezavisnost Pružaoca smeštaja**
 
-**3. Независност пружалаца смештаја**
+Vaš odnos sa Wink-om je odnos nezavisnog pravnog subjekta, osim što TripPay deluje kao primalac plaćanja kako je opisano u Uslovima plaćanja. Wink ne upravlja niti kontroliše usluge koje pružate, i slažete se da imate potpunu diskreciju da odlučite da li i kada ćete pružati te usluge, po kojoj ceni i pod kojim uslovima.
 
-Ваш однос са Винком је однос независног правног лица, осим што ТрипПеј делује као посредник у плаћању, како је описано у Условима плаћања. Винк не усмерава нити контролише услуге које пружате и слажете се да имате потпуно дискреционо право да ли и када ћете пружити те услуге, као и по којој цени и под којим условима ћете их понудити.
+**4. Upravljanje vašim oglasom**
 
-**4. Управљање вашим огласом**
+Kao Pružalac smeštaja, Wink vam nudi alate potrebne za prodaju vašeg inventara online putem naših vlasničkih prodajnih kanala.
 
-Као добављач смештаја, Wink вам нуди алате потребне за продају вашег инвентара онлајн путем наших сопствених продајних канала.
+Pružaoci smeštaja su odgovorni za ažuriranje i tačnost informacija i sadržaja oglasa u svakom trenutku. Pružaoci smeštaja moraju poštovati dostupnost, cene i sve druge obaveze dogovorene ovim Ugovorom. Pružaoci smeštaja su isključivo odgovorni za ažuriranje i održavanje ažurnosti dostupnosti, cena i primenjivih lokalnih poreza, ako ih ima, putem Wink ekstraneta. Pružaoci smeštaja ovim dozvoljavaju Wink-u da promoviše sobe na svim tržištima. Wink snažno preporučuje Pružaocima smeštaja da uvek nude najkonkurentnije cene, promocije i ponude.
 
-Пружаоци смештаја су одговорни за стално ажурирање и тачност информација и садржаја својих огласа. Пружаоци смештаја ће поштовати расположивост, цене и све друге обавезе договорене овде. Пружаоци смештаја су искључиво одговорни за ажурирање и стално одржавање доступности, цена и применљивих локалних пореза, ако их има, путем Wink екстранета. Пружаоци смештаја овим дозвољавају Wink-у да промовише собе на свим тржиштима. Wink топло препоручује пружаоцима смештаја да у сваком тренутку нуде најконкурентније цене, промоције и понуде.
+**5. Pravni zahtevi**
 
-**5. Правне обавезе**
+5.1 Pružaoci smeštaja su odgovorni za razumevanje i poštovanje svih zakona, pravila, propisa i ugovora sa trećim stranama koji se odnose na njihov oglas.
 
-5.1 Пружаоци смештаја су одговорни за разумевање и поштовање свих закона, правила, прописа и уговора са трећим лицима који се примењују на ваш смештај.
+5.2 Pružaoci smeštaja su odgovorni za rukovanje i korišćenje ličnih podataka gostiju i drugih u skladu sa važećim zakonima o privatnosti i ovim Uslovima.
 
-5.2 Пружаоци смештаја су одговорни за руковање и коришћење личних података гостију и других лица у складу са важећим законима о приватности и овим Условима.
+**6. Naknade za rezervacije i provizije**
 
-**6. Накнаде и провизије за резервацију**
+Wink pruža Pružaocima smeštaja digitalne alate potrebne za distribuciju i prodaju inventara online kroz 5 vlasničkih kanala. Aktiviranjem vaše nekretnine putem funkcije samostalne aktivacije na vašoj kontrolnoj tabli, vaša nekretnina će automatski postati rezervabilna na Traveliko.com i kroz Mrežu. Možete ručno deaktivirati te kanale u ekstranetu u meniju \- Distribucija \- Prodajni kanali.
 
-Винк пружа смештајним објектима дигиталне алате који су им потребни за дистрибуцију и продају свог инвентара онлајн путем 5 сопствених канала. Активирањем вашег објекта путем функције самоактивације на вашој контролној табли, ваш објекат ће аутоматски постати доступан за резервације на Traveliko.com и путем мреже. Можете ручно деактивирати те канале у екстранету у одељку менија - Дистрибуција - Продајни канали.
+* Traveliko.com – OTA sa 0% provizije  
+* Winklinks \- Link-in-bio funkcija za društvene mreže poput Instagrama.  
+* Social Share \- Brzi linkovi koji se mogu deliti bilo gde online  
+* Booking Engine \- Internet rezervacioni sistem za hotelske vebsajtove i druge.  
+* Wink Network – Affiliate mreža koja povezuje hotele direktno sa našim partnerskim affiliate-ima
 
-* Traveliko.com – 0% провизије преко интернета
-* Винклинкс - Функција линк-ин-биографије за канале друштвених медија као што је Инстаграм.
-* Дељење на друштвеним мрежама - Брзи линкови који се могу делити било где на мрежи
-* Резервациони систем - Интернет резервациони систем за хотелске веб странице и још много тога.
-* Wink Network – Партнерска мрежа која директно повезује хотеле са нашим партнерима
+Naknade za rezervacije, provizije i naknade za plaćanje primenjuju se na sledeći način za svaku potvrđenu rezervaciju:
 
-Накнаде за резервацију, провизије и накнаде за плаћање примењују се на следећи начин за сваку потврђену резервацију:
+* Traveliko.com: Naknada Primaoca plaćanja kako je opisano u Uslovima plaćanja (4%) \+ Naknada za rezervaciju Wink-a (1,5%)  
+* WinkLinks: Naknada Primaoca plaćanja (4%) \+ Naknada za rezervaciju Wink-a (1,5%)  
+* Social Share: Naknada Primaoca plaćanja (4%) \+ Naknada za rezervaciju Wink-a (1,5%)  
+* Booking Engine: Naknada Primaoca plaćanja (4%) \+ Naknada za rezervaciju Wink-a (1,5%)  
+* Wink Network: Naknada Primaoca plaćanja (4%) \+ Naknada za rezervaciju Wink-a (1,5%) \+ Provizija partnera (dogovorena provizija po diskreciji hotela)
 
-* Traveliko.com: Накнада за посредника у плаћању као што је описано у Условима плаћања (4%) + Накнада за резервацију Wink-а (1,5%)
-* WinkLinks: Накнада за посредника у плаћању као што је описано у Условима плаћања (4%) + Wink накнада за резервацију (1,5%)
-* Дељење на друштвеним мрежама: Накнада за посредника у плаћању као што је описано у Условима плаћања (4%) + Накнада за резервацију Wink-а (1,5%)
-* Резервациони систем: Накнада за посредника у плаћању као што је описано у Условима плаћања (4%) + Wink накнада за резервацију (1,5%)
-* Wink мрежа: Накнада за посредника у плаћању као што је описано у Условима плаћања (4%) + Wink накнада за резервацију (1,5%) + партнерска провизија (договорена провизија по нахођењу хотела)
+Primer obračuna za rezervaciju od 100 USD preko Traveliko, Social Share, Booking Engine ili WinkLinks
 
-Пример прорачуна за резервацију од 100 УСД направљену путем Trvaveliko-а, друштвеног дељења, система за резервације или WinkLinks-а
+100-4% = 96  
+96-1,5% = 94,56  
+Isplativo hotelu („Neto cena“) => 94,56 USD
 
-100-4% = 96\
-96-1,5%=94,56\
-Плаћа се хотелу („Нето цена“) => 94,96 УСД
+Primer obračuna za rezervaciju od 100 USD preko partnera sa 10% provizije
 
-Пример прорачуна за резервацију од 100 УСД направљену преко партнера са провизијом од 10%
+100-4% = 96  
+96-1,5% = 94,56  
+94,56-10% = 85,1  
+Isplativo hotelu („Neto cena“) => 85,1 USD
 
-100-4% = 96\
-96-1,5%=94,56\
-94,56-10%=85,1\
-Плаћа се хотелу („Нето цена“) => 85,1 УСД
+---
 
-***
+**Obaveštenje o rukovanju plaćanjima od strane trećih integratora**
 
-**Обавештење у вези са обрадом плаћања од стране трећих страна интегратора**
+**Napominjemo da će određeni partneri, u daljem tekstu „Treći integratori“, biti odgovorni za rukovanje transakcijama plaćanja. Kao rezultat toga, ovi Treći integratori će preuzeti ulogu trgovca zapisa. Shodno tome, uslovi plaćanja Wink-a više neće važiti za ove transakcije. Umesto toga, hotel mora prihvatiti nove uslove plaćanja specifične za Treće integratore.**
 
-**Имајте у виду да ће одређена филијала, у даљем тексту „Интегратори треће стране“, бити одговорна за обраду платних трансакција. Као резултат тога, ови интегратори треће стране ће преузети улогу евидентираног трговца. Сходно томе, услови плаћања компаније Wink више се неће примењивати на ове трансакције. Уместо тога, хотел мора да прихвати нове услове плаћања специфичне за интеграторе треће стране.**
+---
 
-***
+**7. Porezi**
 
-**7. Порези**
+7.1 Pružalac smeštaja je odgovoran da osigura da cena uključuje sve primenjive poreze. Odgovornost Pružaoca smeštaja je da osigura da su porezi uključeni u cene tačni i ažurni. Kada Pružalac smeštaja ne navede postojanje gradskih poreza, turističkih taksi ili drugih lokalnih taksi za plaćanje, smatraće se da su oni uključeni u cenu.
 
-7.1 Давалац смештаја је одговоран да обезбеди да Цена укључује све важеће порезе. Одговорност Давалаца смештаја је да обезбеди да су порези укључени у Цене тачни и ажурни. Када Давалац смештаја не назначи постојање градских пореза, туристичких такса или других локалних накнада које треба платити, сматраће се да су оне укључене у Цену.
+7.2 Svaki Pružalac smeštaja je odgovoran za uplatu poreza nadležnim državnim agencijama i/ili institucijama.
 
-7.2 Сваки пружалац смештаја је одговоран за уплату свих пореза надлежним владиним агенцијама и/или институцијама.
+7.3 Pružalac smeštaja snosi odgovornost i slaže se da obešteti Wink za bilo kakve gubitke, troškove, kazne i/ili štete nastale usled neuključivanja tačnih i ažurnih poreza u njihove cene i/ili usled neinformisanja ili netačnog informisanja Wink-a o primenjivim porezima.
 
-7.3 Пружалац смештаја ће бити одговоран за и сагласан је да обештети Винк за све губитке, трошкове, казне и/или штету насталу као резултат било каквог неукључивања тачних и ажурираних Пореза у своје Цене и/или као резултат било каквог неинформисања или нетачног обавештавања Винка о применљивим Порезима.
+7.4 Kada Wink nudi sobe svojim partnerima, uključiće sve primenjive poreze (uzimajući u obzir stav (a) ovog člana). Svi iznosi plaćeni po ovom Ugovoru, osim ako nije drugačije naznačeno, uključuju PDV ili druge primenjive poreze ili dažbine (osim poreza na dobit). Ako bilo koji iznos PDV-a bude obračunat i naplaćen od strane nadležnog organa u zemlji u kojoj se usluge pružaju, Wink će, po prijemu važećeg poreskog računa od Pružaoca smeštaja, platiti Pružaocu smeštaja iznos PDV-a uključen u ukupne iznose sa PDV-om.
 
-7.4 Wink, када нуди собе својим партнерима, укључиће све важеће порезе (у складу са подчланом (а) овог одељка). Сви износи који се плаћају по овом Уговору, осим ако није другачије назначено, укључују ПДВ или друге важеће порезе или царине (осим пореза на добит предузећа или других пореза на добит). Ако било који износ ПДВ-а процени и наплати било који надлежни орган надлежан за ПДВ у земљи у којој се те услуге пружају, Wink ће, по пријему важеће пореске фактуре од Пружаоца смештаја, платити Пружаоцу смештаја износ ПДВ-а укључен у износе са ПДВ-ом који се плаћају по овом Уговору.
+7.5 Bilo kakva potraživanja nadležnog organa za kazne ili kamate zbog kašnjenja u plaćanju ili bilo kog fakturisanog PDV-a biće na teret Pružaoca smeštaja. Dalje, ako bilo koji iznos PDV-a bude obračunat i naplaćen od strane nadležnog organa u zemlji u kojoj se usluge primaju pod mehanizmom samoprijave, Wink će obračunati ovaj PDV u svojoj PDV prijavi u skladu sa zakonodavstvom zemlje. Bilo kakva potraživanja nadležnog organa za kazne ili kamate zbog kašnjenja u plaćanju samoprijavljenog PDV-a biće na teret Wink-a.
 
-7.5 Сваки захтев надлежног органа за казне или камате који произилазе из кашњења у плаћању, или било који фактурисани ПДВ, треба да буде на рачун Пружаоца смештаја. Даље, ако било који износ ПДВ-а процени и наплати било који надлежни орган надлежан за ПДВ у земљи у којој се услуге примају по механизму самообрачуна, онда ће Винк обрачунати овај ПДВ у својој ПДВ пријави у складу са законским прописима о ПДВ-у у земљи. Сваки захтев надлежног органа за казне или камате који произилазе из кашњења у плаћању било ког самообрачунатог ПДВ-а биће на рачун Винк-а.
+**8. Bankovni podaci i ovlašćeni predstavnik Pružaoca smeštaja**
 
-**8. Банковни подаци и именовани представник пружаоца смештаја**
+Pružalac smeštaja će osigurati da su njegovi bankovni podaci dostavljeni Wink-u tačni u svakom trenutku i bez odlaganja će obavestiti o bilo kakvim promenama.
 
-Давалац смештаја је дужан да обезбеди да су подаци о његовом банковном рачуну достављени Винку у сваком тренутку тачни и да ће без одлагања обавестити о свим променама истих.
+Samo osoba koja potpisuje ovaj ugovor biće jedini ovlašćeni predstavnik Pružaoca smeštaja sa pravom da zahteva promene bankovnih podataka i/ili podataka o primaocu uplate. Nijedna druga osoba neće imati takvo ovlašćenje u ime Pružaoca smeštaja. Svaka promena ovlašćene osobe mora biti zatražena pismenim putem Wink-u, a promena će biti sprovedena samo putem pismenog aneksa ovom Ugovoru koji potpisuju obe Strane.
 
-Само лице које потписује овај уговор биће једини овлашћени представник Даваоца смештаја који ће имати овлашћење да захтева измене банковног рачуна и/или података о примаоцу уплате Даваоца смештаја. Ниједна друга особа неће имати такво овлашћење у име Даваоца смештаја. Свака промена таквог овлашћеног лица мора се захтевати од стране Wink-а у писаној форми, а свака таква промена ће бити спроведена само путем писменог измена овог Уговора који потписују обе стране.
+**9. Izmene rezervacija**
 
-**9. Измене резервације**
+9.1 Pružaoci smeštaja su odgovorni za bilo kakve izmene rezervacija van politike otkazivanja navedene u potvrdi rezervacije prihvaćenoj direktnom komunikacijom sa gostom.
 
-9.1 Пружаоци смештаја су одговорни за сваку измену резервације ван политике отказивања наведене у потврди резервације прихваћеној путем директне комуникације са Гостом.
+9.2 Ukoliko je došlo do greške Pružaoca smeštaja pri unosu cene i rezervacija je napravljena po netačnoj ceni, Pružalac smeštaja je dužan da poštuje rezervaciju po toj netačnoj ceni.
 
-9.2 Уколико је дошло до грешке Пружаоца смештаја која је резултирала отпремањем погрешне цене и последичном извршењем резервације по погрешној цени, Пружалац смештаја би требало да поштује резервацију по погрешној цени.
+9.3 Wink neće snositi odgovornost prema Pružaocu smeštaja za bilo kakve greške u cenama koje je napravio Pružalac smeštaja.
 
-9.3 Wink неће сносити никакву одговорност према Даваоцу смештаја за било какве грешке у ценама које је направио Давалац смештаја.
+**10. Identifikacija rezervacije / Saradnja u borbi protiv prevara**
 
-**10. Идентификација резервације / Сарадња у борби против превара**
+10.1 Pružalac smeštaja će osigurati da su potpuni i tačni podaci o klijentima Wink-a pravilno evidentirani u njihovim sistemima kako bi svaka rezervacija bila jasno identifikovana kao rezervacija napravljena u skladu sa ovim Ugovorom.
 
-10.1 Пружалац смештаја ће осигурати да су потпуни и тачни подаци о компанији Wink клијената тачно попуњени у њиховим системима тако да свака Резервација буде јасно препознатљива као Резервација извршена у складу са овим Уговором.
+10.2 Svaki Pružalac smeštaja mora koristiti komercijalno razumna sredstva da osigura da se prilikom prijave identifikacija gosta poklapa sa informacijama o rezervaciji. Ako je rezervacija potencijalno prevarantska ili određeni podaci gosta ne mogu biti verifikovani od strane Wink-a, Pružalac smeštaja i Wink će sarađivati na rešavanju situacije, što može uključivati otkazivanje rezervacije u bilo kom trenutku. Pružalac smeštaja se obavezuje na punu saradnju i dostavljanje svih traženih informacija Wink-u u vezi sa potencijalno prevarantskom rezervacijom.
 
-10.2 Сваки учествујући пружалац смештаја мора да уложи комерцијално разумне напоре како би осигурао да се, приликом пријаве, идентификација коју је гост представио подудара са информацијама о резервацији. Ако је резервација потенцијално преварна резервација или одређене податке које је гост дао Wink не може да провери, онда ће пружалац смештаја и Wink сарађивати како би решили потенцијално преварну резервацију, што може укључивати отказивање такве резервације у било ком тренутку. Пружалац смештаја се слаже да у потпуности сарађује са Wink-ом и да ће Wink-у пружити све информације које може затражити у вези са потенцијално преварном резервацијом.
+10.3 Strane se slažu da ukoliko Pružalac smeštaja ne postupi u skladu sa ovom klauzulom, a rezervacija se kasnije pokaže kao potencijalno prevarantska, Wink neće snositi odgovornost.
 
-10.3 Стране се слажу да уколико Пружалац смештаја не поступи у складу са овом клаузулом, а накнадно се утврди да је Резервација потенцијално преварна, Wink неће бити одговоран.
+**11. Nedostupnost / Neizvršenje**
 
-**11. Недоступност / Неиспуњење**
+11.1 U slučaju nedostupnosti (bilo zbog prekomerne rezervacije ili drugih razloga) koja zahteva da Pružalac smeštaja premesti gosta u drugi smeštaj, Pružalac smeštaja se obavezuje da uloži maksimalne napore da zadrži goste i rezervacije kako bi gosti mogli ostati u smeštaju u najvećoj mogućoj meri. Ukoliko je neophodno premestiti gosta, Pružalac smeštaja se obavezuje na sledeće:
 
-11.1 У случају било какве ситуације недоступности (било због пребукирања или нечег другог) која захтева од Даваоца смештаја да премести било ког Госта у алтернативни смештај, Давалац смештаја се слаже да ће уложити све напоре да задржи Госте и Резервације како би Гостима омогућио да остану у таквом смештају у највећој могућој мери. У случају да Давалац смештаја на крају мора да премести Госта у алтернативни смештај, тада се Давалац смештаја слаже са следећим:
+* Odmah obavestiti Wink pre premještanja gosta;  
+* Premestiti gosta u alternativni objekat iste ili više kategorije u istoj oblasti, pod istim uslovima rezervacije, a troškove premještanja snosi Pružalac smeštaja bez dodatnih troškova za gosta, uključujući, ali ne ograničavajući se na:  
+* Troškove prevoza i druge troškove vezane za premještanje gosta.  
+* Dozvoliti Wink-u da odbije sve direktne troškove nastale zbog nedostupnosti i/ili premještanja sa računa Pružaoca smeštaja ukoliko Wink snosi bilo kakve finansijske kazne, kompenzacije ili troškove povezane sa tim.
 
-* Да одмах обавести Wink пре пресељења Госта;
-* Да се ​​Гост пресели у алтернативни смештај исте или више категорије/оцене у истом подручју, под истим условима као што су резервисани, а такво пресељење ће сносити Давалац смештаја без додатних трошкова за погођеног Госта, и обухватаће, без ограничења.
-* Сви трошкови везани за превоз и друге трошкове везане за пресељење у име погођеног Госта.
-* Да би се омогућило Винку да од потраживања Пружаоца смештаја одбије све директне трошкове настале недоступношћу и/или пресељењем у случају да Винк претрпи било какву финансијску казну, надокнаду или трошкове повезане са таквом недоступношћу и/или пресељењем.
+11.2 U slučaju neizvršenja bilo kojih uslova ovog Ugovora od strane Pružaoca smeštaja, uključujući neprihvatljive uslove objekta i/ili nedostatke u objektima i uslugama, Wink ima pravo da obustavi isplate i zahteva ispravno izvršenje uslova rezervacije. Pružalac smeštaja snosiće u potpunosti troškove bilo kakve kompenzacije gostu, oslobađajući Wink od bilo kakve odgovornosti nastale usled neadekvatnog izvršenja obaveza.
 
-11.2 У случају неиспуњавања било ког од услова овог Уговора од стране Давалаца смештаја, укључујући неприхватљиве услове просторија и/или недостатке Објеката и Услуга, Винк има право да обустави плаћања и да захтева исправно испуњење договорених услова Резервације. Давалац смештаја ће, у сваком случају, сносити пуне трошкове било какве надокнаде која се исплаћује погођеном Госту, ослобађајући Винк од било какве одговорности која произилази из неправилног испуњења обавеза Давалаца смештаја по овом Уговору.
+**12. Uslovi objekta hotela učesnika**
 
-**12. Услови за хотелске објекте који учествују у акцији**
+Pružalac smeštaja će što je pre moguće obavestiti putem Wink ekstraneta u sekciji „Obaveštenja“ o bilo kakvim građevinskim radovima, renoviranju, osvežavanju, ažuriranjima ili drugim radovima koji mogu uticati na mogućnost pružanja soba, objekata i usluga ili negativno uticati na boravak gosta. Za izbegavanje sumnje, u slučaju nedostupnosti ili neizvršenja usled ovih okolnosti, primenjivaće se član 11 ovih Opštih uslova Wink-a („Nedostupnost / Neizvršenje“) i Pružalac smeštaja snosiće u potpunosti troškove kompenzacije gostu, oslobađajući Wink od odgovornosti.
 
-У најкраћем могућем року, Пружалац смештаја ће обавестити путем одељка „Обавештења“ на Wink Extranet-у о свим грађевинским радовима, реновирањима, преуређењима, ажурирањима или другим радовима који ће или могу изменити способност Пружаоца смештаја да обезбеди собе, садржаје и услуге и/или би могли негативно утицати на боравак Госта. Ради избегавања сумње, кад год недоступност или неиспуњење произилази из таквих околности, примењиваће се Члан 11 ових Wink Општих услова и одредби („Недоступност / Неиспуњење“) и Пружалац смештаја ће сносити пуне трошкове било какве надокнаде која се исплаћује погођеном Госту, ослобађајући Wink од било какве одговорности.
+**13. Izmene, trajanje i raskid**
 
-**13. Измена, рок и раскид**
+13.1 Izmene. Osim ako nije drugačije propisano važećim zakonom, Wink može u bilo kom trenutku izmeniti ove Uslove. Ukoliko napravimo značajne izmene, objavićemo revidirane Uslove na Wink platformi i ažurirati datum „Poslednje izmene“ na vrhu ovih Uslova. Ukoliko ste pogođeni izmenama, obavestićemo vas najmanje trideset (30) dana pre nego što izmene stupe na snagu. Ukoliko ne raskinete ugovor pre datuma stupanja na snagu revidiranih Uslova, vaše dalje korišćenje usluga predstavljaće prihvatanje izmena.
 
-13.1 Измена. Осим ако није другачије прописано важећим законом, Wink може изменити ове Услове у било ком тренутку. Ако направимо значајне измене ових Услова, објавићемо ревидиране Услове на Wink платформи и ажурирати датум „Последње ажурирање“ на врху ових Услова. Ако вас измена погађа, такође ћемо вас обавестити о изменама најмање тридесет (30) дана пре датума ступања на снагу. Ако не раскинете свој уговор пре датума ступања на снагу ревидираних Услова, ваше даље коришћење Услуга ће представљати прихватање свих измена ревидираних Услова.
+13.2 Trajanje. Osim ako nije drugačije dogovoreno, ovaj Ugovor stupa na snagu na dan potpisivanja i traje na neodređeno vreme.
 
-13.2 Рок важења. Осим ако није другачије договорено, овај Уговор ступа на снагу на дан потписивања на неодређено време.
+13.3 Ovaj Ugovor traje dok ga Strane ne raskinu na sledeći način:
 
-13.3 Овај Уговор важи док га Уговорне стране не раскину на следећи начин:
+* Od strane Wink-a, u bilo kom trenutku i bez razloga, uz prethodnu pismenu obavest od trideset (30) kalendarskih dana drugoj Strani;  
+* Od strane Pružaoca smeštaja, bez razloga, u bilo kom trenutku bez obaveštenja deaktiviranjem nekretnine na ekstranet kontrolnoj tabli;  
+* Na bilo koji drugi način izričito predviđen ovim Ugovorom.
 
-* Од стране Wink-а, у било које време и без разлога, уз писано обавештење другој страни тридесет (30) календарских дана унапред;
-* Од стране пружаоца смештаја, без разлога у било које време и без претходне најаве деактивирањем објекта на контролној табли објекта Wink екстранета.
-* На било који други начин изричито предвиђен на другом месту у овом Уговору.
+13.4 Takođe, Wink zadržava pravo po sopstvenom nahođenju da odmah raskine ovaj Ugovor pismenim obaveštenjem Pružaocu smeštaja ukoliko:
 
-13.4 Поред тога, Wink задржава право да по сопственом нахођењу одмах раскине овај Уговор писменим обавештењем Пружаоцу смештаја ако:
+* Pružalac smeštaja započne postupak insolventnosti, bankrotstva, stečaja, upravljanja ili slično (bilo da ga pokrene Pružalac ili njegov poverilac), a koji nije rešen u korist Pružaoca u roku od šezdeset (60) dana;  
+* Poverilac izvrši ili pokuša da izvrši hipoteku na Hotel učesnika;  
+* Pružalac smeštaja prestane sa poslovanjem u redovnom toku;  
+* Pružalac smeštaja izgubi zakup ili prava na upravljanje Hotelom pod trenutnim brendom;  
+* Dođe do promene karakteristika smeštaja, uključujući građevinske radove i renoviranja;  
+* Zbog događaja više sile.
 
-* Давалац смештаја покрене поступак инсолвенције, банкрота, стечаја или ликвидације, судске управе, администрације или друге сличне поступке (било да их је покренуо Давалац смештаја или било који од поверилаца Давалаца смештаја), који нису одбачени или решени у корист Давалаца смештаја у року од шездесет (60) дана након тога
-* Поверилац извршава или покушава да изврши хипотеку на хотелу који учествује.
-* Пружалац смештаја престаје да обавља пословање у уобичајеном току.
-* Пружалац смештаја губи закуп или права да управља хотелом који учествује под његовим тренутним брендом.
-* Дошло је до промене карактеристика смештаја, укључујући, али не ограничавајући се на, изградњу, радове и реновирања.
-* Или због догађаја више силе.
+13.5 Po ranom raskidu ili isteku Ugovora iz bilo kog razloga, Pružalac smeštaja će:
 
-13.5 По превременом раскиду или истеку Уговора из било ког разлога, Пружалац смештаја је дужан:
+* Poštovati sve rezervacije napravljene pre datuma raskida ili isteka, po originalno rezervisanim cenama, uključujući rezervacije sa datumima prijave nakon raskida ili isteka, ili obezbediti odgovarajuće alternativne usluge; i  
+* Izmiriti račun u skladu sa tim.
 
-* Поштујте све резервације направљене пре датума ступања на снагу раскида или истека, по првобитно резервисаним ценама, укључујући и оне резервације са датумима пријаве који се дешавају након раскида или истека било ког важећег рока за обавештење, или на други начин обезбедите одговарајуће алтернативне услуге и
-* Измирите рачун у складу са тим.
+**14. Izjave i garancije**
 
-**14. Изјаве и гаранције**
+Pružalac smeštaja garantuje i izjavljuje da će u potpunosti poštovati sledeće:
 
-Давалац смештаја гарантује и изјављује да ће се у потпуности придржавати следећег:
+14.1 Da će sve sobe i svi objekti i usluge uvek biti u skladu sa dobrom industrijskom praksom i pruženi sa dužnom pažnjom, veštinom i marljivošću;
 
-14.1 Да ће обезбеђивање свих соба, као и свих објеката и услуга у сваком тренутку бити у складу са добром индустријском праксом и да ће се пружати са свом дужном вештином, пажњом, бригом и марљивошћу;
+14.2 Da će sav osoblje Hotela učesnika biti adekvatno kvalifikovano i obučeno za izvršenje obaveza iz ovog Ugovora;
 
-14.2 Да ће целокупно особље Хотела учесника бити одговарајуће квалификовано и обучено за извршавање својих обавеза по овом Уговору;
+14.3 Da će Pružalac smeštaja poštovati sve važeće zakone, standarde i zahteve relevantnih vlasti u vezi sa pružanjem soba, objekata i usluga i obavezama iz ovog Ugovora;
 
-14.3 Тај Пружалац смештаја ће се придржавати свих важећих закона, стандарда и других захтева свих релевантних органа у вези са обезбеђивањем Соба и свих осталих делова сваког Хотела учесника или било којих повезаних услуга и/или објеката и/или својих обавеза према овом Уговору;
+14.4 Da je svaki Hotel učesnik pročitao i prihvatio uslove ovog Ugovora;
 
-14.4 Да је сваки хотел учесник прочитао и прихватио услове овог Уговора;
+14.5 Da su sve sobe i/ili objekti i usluge bezbedni i u potpunosti u skladu sa svim lokalnim, državnim, saveznim i nacionalnim zakonima i propisima. Pružalac smeštaja dalje garantuje da nijedna soba (niti bilo koji deo Hotela učesnika) nema instalirane pojedinačne gasne bojlere;
 
-14.5 Да су све собе и/или било који објекти и услуге пружени у складу са или у вези са овим Уговором безбедни и да су у потпуности у складу са свим локалним, државним, савезним и/или националним законима, правилима и прописима. Пружалац смештаја даље гарантује да ниједна од соба (нити било који други део било ког хотела који учествује) нема инсталиране индивидуалне бојлере на гас;
+14.6 Da su sve informacije koje je Pružalac smeštaja direktno ili indirektno dostavio Wink-u u vezi sa ovim Ugovorom ažurne i tačne.
 
-14.6 Да ће све информације које је Пружалац смештаја директно или индиректно доставио Винку у складу са овим Уговором или у вези са њим бити ажурне и тачне.
+14.7 Da Pružalac smeštaja nije registrovan niti rezident zemlje pod ekonomskim ili trgovinskim sankcijama;
 
-14.7 Да пружалац смештаја није регистрован у земљи која подлеже економским или трговинским санкцијама, нити је њен становник; и
+14.8 Da će na sopstveni trošak izvršiti sve radove neophodne za otklanjanje nedostataka i/ili mana koje su mu odmah naložene od strane nadležnih organa. Pružalac smeštaja će o tome bez odlaganja obavestiti Wink. Takođe će uzeti u obzir razumne preporuke za poboljšanje koje da Wink.
 
-14.8 Да о свом трошку заврши све радове који су неопходни за отклањање било каквих недостатака и/или кварова о којима га обавесте надлежни органи, са тренутним дејством. Пружалац смештаја је дужан да о томе без одлагања обавести Винк. Пружалац смештаја је дужан да узме у обзир сваку разумну препоруку за побољшање коју да Винк.
+**15. Incidenti i žalbe gostiju**
 
-**15. Инциденти и жалбе гостију**
+15.1 Ukoliko se gostu dogodi bilo kakav incident, Pružalac smeštaja mora o tome obavestiti Wink i dostaviti detalje što je pre moguće, te u potpunosti sarađivati sa Wink-om u vezi sa rešavanjem incidenta.
 
-15.1 Уколико се Госту догоди било какав инцидент, Давалац смештаја мора што пре обавестити Винк о томе и детаљима инцидента и у потпуности ће сарађивати са Винк-ом у погледу одговарајућег решавања таквог инцидента.
+15.2 Pružalac smeštaja se obavezuje na punu saradnju sa Wink-om u rešavanju svih zahteva ili žalbi gostiju i dostaviće detaljan odgovor na svaki upit Wink-a najkasnije u roku od sedam (7) kalendarskih dana od prijema ili u roku dogovorenom u ugovoru o nivou usluge.
 
-15.2 Пружалац смештаја се слаже да ће у потпуности сарађивати са Винком у решавању свих захтева или жалби Госта и да ће пружити детаљан одговор на сваки Винк упит о таквим питањима најкасније седам (7) календарских дана након што га прими од Винка или у року договореном у уговору о нивоу услуге.
+15.3 Ukoliko Wink bude morao da nadoknadi štetu gostu zbog incidenta, zahteva ili žalbe nastale radnjom ili propustom Pružaoca smeštaja, Pružalac smeštaja se obavezuje da Wink-u odmah nadoknadi takve troškove u celosti, u skladu sa članom 33 Opštih uslova („Naknada štete“).
 
-15.3 У случају да је Винк дужан да обезбеди надокнаду Госту као резултат било каквог инцидента, потраживања или жалбе Госта услед радње или пропуста Давалаца смештаја, Давалац смештаја се слаже да ће без одлагања надокнадити Винку такве трошкове у целости, и у складу са Чланом 33 Општих услова („Накнада“), како је применљиво.
+15.4 Pružalac smeštaja dozvoljava Wink-u da odbije sve troškove, izdatke i kompenzacije nastale usled incidenata i žalbi gostiju sa računa Pružaoca smeštaja.
 
-15.4 Давалац смештаја се слаже да дозволи Винку да одбије све трошкове, издатке и надокнаде настале као резултат инцидената и жалби гостију од стране Винка са рачуна Давалаца смештаја.
+**16. Prava na reviziju**
 
-**16. Права на ревизију**
+16.1 Tokom trajanja Ugovora, Wink može izvršiti reviziju relevantnih evidencija Pružaoca smeštaja i/ili Hotela učesnika radi provere (i) izvršenja rezervacija; (ii) svih uplata primljenih od Wink-a i/ili gostiju; i (iii) svih uplata koje je Wink platio ili treba da plati.
 
-16.1 Током Трајања, Wink може да ревидира било коју релевантну евиденцију Пружаоца Смештаја и/или Хотела Учесника, како је разумно потребно, како би се извршиле провере у вези са (i) извршењем Резервација; (ii) свим плаћањима која су примили Wink и/или Гости; и (iii) свим плаћањима која су плаћена или која треба да се плате од стране Wink и/или Гости.
+16.2 Svaka Strana snosi svoje troškove revizije, osim u slučaju da revizija pokaže da Pružalac smeštaja ne ispunjava svoje obaveze iz ovog Ugovora, kada će Pružalac smeštaja snositi sve troškove revizije i preduzeti potrebne korake da uskladi svoje obaveze.
 
-16.2 Свака Уговорна страна сноси своје трошкове у вези са било којом ревизијом, осим у следећим околностима: Ако ревизија покаже да Пружалац смештаја не испуњава било коју од својих обавеза по овом Уговору, онда ће, без утицаја на друга права и правна средства компаније Wink, Пружалац смештаја у потпуности платити трошкове ревизије и предузети неопходне кораке да испуни своје уговорне обавезе.
+**17. Osiguranje**
 
-**17. Осигурање**
+Pružalac smeštaja će održavati adekvatno osiguranje kod renomiranih osiguravajućih društava, licenciranih za poslovanje u relevantnoj državi/zemlji, za sve rizike trećih lica koji mogu nastati u vezi sa pružanjem smeštaja (ili bilo kojih objekata i usluga) i/ili ovim Ugovorom, uključujući odgovornost Wink-a nastalu direktno ili indirektno u vezi sa zahtevima za (i) gubitak ili štetu na imovini; (ii) ličnu povredu ili smrt; (iii) štetu na imovini trećih lica; ili (iv) odgovornost prema trećim licima kojima se pružaju usluge smeštaja.
 
-Пружалац смештаја ће одржавати адекватно осигурање код реномираних осигуравача, лиценцираних за пословање у одговарајућој држави/земљи, у погледу свих ризика према трећим лицима који настају или могу настати у вези са или повезаним са пружањем смештаја (или било којих објеката и услуга) и/или овим Уговором, укључујући одговорност компаније Wink која директно или индиректно произилази из или у вези са било каквим потраживањима у вези са (i) губитком или оштећењем било које непокретне или личне имовине; (ii) телесном повредом или смрћу било које особе; (iii) губитком или оштећењем имовине треће стране; или (iv) његовом одговорношћу према трећим лицима којима пружа услуге смештаја.
+**18. Protiv podmićivanja, trgovinskih ograničenja i poslovne etike**
 
-**18. Борба против подмићивања, трговинска ограничења и пословна етика**
+Wink ima politiku nulte tolerancije prema kršenju međunarodnih trgovinskih normi, zakonodavstva o sprečavanju podmićivanja i korupcije, kao i primenjivih ograničenja trgovine, toka sredstava i finansiranja terorizma.
 
-Винк заузима приступ нулте толеранције према кршењу међународних трговинских норми, закона о спречавању подмићивања и корупције, као и важећих ограничења у трговини, току средстава и финансирању тероризма.
+Pružalac smeštaja garantuje da on i njegove povezane strane poštuju Kodeks ponašanja dobavljača Wink-a.
 
-Пружалац смештаја гарантује да се придржава и да ће се придржавати, а његове повезане стране се придржавају и да ће се придржавати Кодекса понашања добављача компаније Wink.
+Pružalac smeštaja izjavljuje, garantuje i obavezuje se da će u potpunosti poštovati sve međunarodne trgovinske norme, primenjiva ograničenja trgovine, toka sredstava, finansiranja terorizma i zakonodavstvo o sprečavanju podmićivanja i korupcije, uključujući, ali ne ograničavajući se na UK Bribery Act 2010 i Singapore Prevention of Corruption Act.
 
-Пружалац смештаја изјављује, гарантује и обавезује се да ће се придржавати и да ће се у сваком погледу придржавати свих међународних трговинских норми, важећих ограничења у трговини, току средстава и законских прописа о финансирању тероризма и спречавању подмићивања и корупције, укључујући, али не ограничавајући се на, Закон о подмићивању у Великој Британији из 2010. године и Закон о спречавању корупције у Сингапуру.
+Pružalac smeštaja garantuje da, koliko mu je poznato, ni on ni njegove povezane strane nisu osuđeni za krivično delo podmićivanja ili korupcije niti su predmet bilo kakve istrage od strane državnih, upravnih ili regulatornih tela.
 
-Пружалац смештаја гарантује да, колико је њему познато, ни он ни његове повезане стране нису осуђени за кривично дело које укључује подмићивање или корупцију, нити су предмет било какве истраге од стране било којих владиних, административних или регулаторних тела.
+**19. Povjerljivost**
 
-**19. Поверљивост**
+19.1 Povjerljive informacije. Strane razumeju i slažu se da tokom izvršenja ovog Ugovora mogu imati pristup ili biti izložene, direktno ili indirektno, poverljivim i osetljivim informacijama druge strane („Poverljive informacije“). Poverljive informacije uključuju podatke o korisnicima, obim transakcija, marketinške i poslovne planove, poslovne, finansijske, tehničke i operativne informacije, statistiku korišćenja, podatke o rangiranju, informacije o cenama, proizvodima i dostupnosti, politike cena, podatke o konverziji i obimu klikova, lične podatke gostiju, softver ili informacije o softveru koje Wink koristi ili pruža u vezi sa ovim Ugovorom, uslove ovog Ugovora i druge neobjavljene informacije koje strana označi kao poverljive ili za koje druga strana treba razumeti da su poverljive.
 
-19.1 Поверљиве информације. Стране разумеју и слажу се да у извршавању овог Уговора, свака Страна може имати приступ или бити изложена, директно или индиректно, поверљивим и осетљивим информацијама друге Стране („Поверљиве информације“). Поверљиве информације укључују податке о клијентима, обим трансакција, маркетиншке и пословне планове, пословне, финансијске, техничке и оперативне информације, статистику коришћења, податке о рангирању, информације у вези са паритетом цена, производа и доступности, политике цена, податке о конверзији и обим кликова, и друге сродне статистике, личне податке Гостију, било који софтвер или информације у вези са софтвером који је Винк обезбедио или користио у вези са овим Уговором, услове овог Уговора и друге нејавне информације које било која Страна која открива информације означи као приватне или поверљиве или за које Страна која прима информације треба разумно да зна да се са њима треба поступати као са приватним и поверљивим.
+19.2 Zaštita poverljivih informacija. Svaka strana se obavezuje da: (a) sve poverljive informacije ostaju isključiva svojina strane koja ih otkriva i da ih neće koristiti osim u svrhu izvršenja ovog Ugovora, (b) da će održavati poverljivost i koristiti razumne metode da natera svoje zaposlene, predstavnike, ugovorne strane i agente („Dozvoljene osobe“) da čuvaju poverljivost, (c) da će otkrivati poverljive informacije samo dozvoljenim osobama kojima su potrebne za izvršenje ovog Ugovora, (d) da neće kopirati, objavljivati, prenositi, reproducirati, otkrivati ili na bilo koji način učiniti poverljive informacije dostupnim trećim stranama, niti ih koristiti ili čuvati u nezaštićenom sistemu, i (e) da će vratiti ili uništiti sve kopije poverljivih informacija na pismeni zahtev druge strane. Ukoliko bilo koja strana obrađuje lične podatke u ime druge strane u okviru usluga po ovom Ugovoru, strane će regulisati takvu obradu putem Ugovora o obradi podataka (DPA) koji će biti deo ovog Ugovora.
 
-19.2 Заштита и очување поверљивих информација. Свака Страна се слаже да: (а) све Поверљиве информације остају искључиво власништво Стране која их открива, а Страна која прима информације неће користити никакве Поверљиве информације ни у коју сврху осим у сврху спровођења овог Уговора, (б) ће одржавати поверљивост и тајност Поверљивих информација и користиће их разумне методе како би натерала своје запослене, службенике, представнике, уговорне стране и агенте („Дозвољена лица“) да их одржавају, (ц) ће открити Поверљиве информације само оним Дозвољеним лицима којима су такве информације потребне у сврху спровођења овог Уговора, (д) ​​неће и користиће разумне методе како би осигурала да Дозвољена лица (и) не копирају, објављују, преносе, репродукују, откривају, откривају или стављају Поверљиве информације на располагање било којој трећој страни, или (ии) не користе или чувају их у незаштићеном систему за преузимање или бази података (осим у складу са условима овог уговора), и (е) ће вратити или уништити све (штампане и електронске) копије) Поверљивих информација на писмени захтев друге Стране. У случају да било која Уговорна страна обрађује личне податке у име друге стране као део пружања услуга по овом Уговору, Уговорне стране ће регулисати такву обраду путем Уговора о обради података (УОП) и чиниће део услова и одредби овог Уговора.
+19.3 Dozvoljeno otkrivanje. Poverljive informacije ne uključuju informacije koje (i) postanu javno dostupne bez krivice strane koja ih prima, (ii) su bile u posedu strane koja ih prima pre ovog Ugovora, (iii) su otkrivene strani koja prima od treće strane bez obaveze poverljivosti, ili (iv) moraju biti otkrivene po zakonu, sudskom nalogu ili državnoj vlasti. Wink ima pravo da poverljivo otkrije ovaj Ugovor svojim kompanijama Pružaoca smeštaja.
 
-19.3 Дозвољено откривање. Без обзира на горе наведено, Поверљиве информације неће укључивати никакве информације у мери у којој (i) јесу или постану део јавног власништва без икаквог чина или пропуста стране примаоца, (ii) су биле у поседу примаоца пре датума овог Уговора, (iii) су откривене примаоцу од стране треће стране која нема обавезу поверљивости у вези са тим, или (iv) је потребно да буду откривене на основу закона, судског налога, судског позива или владиних овлашћења. Wink има право да открије овај Уговор у поверењу својим компанијама које пружају смештај.
+19.4 Podaci o korisnicima. Strane će koristiti razumne mere da zaštite poverljivost i privatnost podataka o korisnicima i spreče neovlašćenu upotrebu ili objavljivanje. Strane se slažu da poštuju važeće zakone o obradi ličnih podataka i zaštiti privatnosti. Koristiće razumne i odgovarajuće mere bezbednosti, uključujući enkripciju podataka i kanala. Pružalac smeštaja mora odmah obavestiti Wink o bilo kakvom bezbednosnom incidentu (najkasnije 1 dan od otkrivanja). Svaka strana će imati politiku privatnosti dostupnu korisnicima koja opisuje kako štiti i koristi podatke o korisnicima. Strane mogu ostvariti prava pristupa, ispravke, brisanja, prigovora, prenosivosti i ograničenja obrade ličnih podataka putem pisanog zahteva drugoj strani na adrese navedene u zaglavlju ovog Ugovora, kao i podnošenjem zahteva lokalnoj Agenciji za zaštitu podataka.
 
-19.4 Подаци о клијентима. Стране ће уложити комерцијално разумне напоре да заштите поверљивост и приватност Података о клијентима и да их заштите од неовлашћене употребе или објављивања. Стране се слажу да се придржавају важећих закона о обради личних података и заштити приватности. Стране ће у сваком тренутку користити разумне и одговарајуће мере безбедности како би спречиле оштећење и неовлашћени приступ Подацима о клијентима. Такве мере ће укључивати, између осталог, шифровање података и шифровање канала. Где је то релевантно, Пружалац смештаја мора што пре обавестити Винк о сваком кршењу безбедности (најкасније 1 дан након откривања кршења). Свака страна ће имати политику приватности доступну клијентима која описује начин на који штити и користи Подаце о клијентима. Стране могу остварити своја права да захтевају приступ својим личним подацима, исправку или брисање таквих података, као и своје право на приговор, преносивост података и ограничавање њихове обраде, путем писаног захтева другој страни, на адресе наведене у наслову овог Уговора, поред подношења захтева локалној Агенцији за заштиту података.
+19.5 Obaveštenja. Nijedna strana neće kreirati, objavljivati ili distribuirati materijale koji se odnose na drugu stranu bez prethodnog pismenog odobrenja. Ovo odobrenje neće biti neopravdano uskraćeno ili odloženo.
 
-19.5 Обавештења. Ниједна страна неће креирати, објављивати, дистрибуирати или дозволити било какве писане материјале који се односе на другу страну, а да претходно не достави такав материјал другој страни и не добије претходну писмену сагласност стране која га не доставља. Ова сагласност неће бити неразумно ускраћена или одложена.
+19.6 Svaka strana može kontaktirati službenika za zaštitu podataka (DPO) druge strane putem e-mail adrese: dataprotectionofficer@Wink.
 
-19.6 Свака Уговорна страна може контактирати службеника за заштиту података (СЗП) друге Уговорне стране путем следећих имејл и/или поштанских адреса: dataprotectionofficer@Wink.
+**20. Prava intelektualne svojine**
 
-**20. Права интелектуалне својине**
+20.1 Pružalac smeštaja priznaje da Wink i/ili njegovi davaoci licenci zadržavaju vlasništvo nad svim pravima intelektualne svojine Wink-a ili ugrađenim u Wink vebsajt, uključujući (ali ne ograničavajući se na) Wink logo, sadržaj i Wink podatke. Ništa u ovom Ugovoru neće se tumačiti kao prenos bilo kakvih prava, vlasništva ili interesa Pružaocu smeštaja.
 
-20.1 Пружалац смештаја потврђује да ће Wink и/или његови даваоци лиценци задржати власништво над свим правима, правом власништва и интересом у вези са свим правима интелектуалне својине Wink-а или онима који су отелотворени на Wink веб-сајту, укључујући (али не ограничавајући се на) Wink лого, Садржај и Wink податке. Ништа садржано у овом Уговору неће се сматрати преносом било ког таквог права, права власништва или интереса на Пружаоца смештаја на било који начин.
+20.2 Pružalac smeštaja neće otkrivati, integrisati, koristiti, kombinovati, eksploatisati, uključivati ili na drugi način učiniti sadržaj i Wink podatke dostupnim (a) sa sopstvenim sadržajem ili sadržajem bilo kog Wink konkurenta (uključujući hotele), (b) za sopstvenu korist (osim za omogućavanje usluge i sistema u skladu sa ovim Ugovorom), ili (c) za bilo koju drugu svrhu ili na bilo koji drugi način osim kako je izričito predviđeno ovim Ugovorom. Partner neće menjati, izmenjivati, iskrivljavati, stvarati izvedena dela ili nove radove zasnovane na sadržaju i sadržaj neće sadržavati linkove, reference ili klikove ka vebsajtu Wink konkurenta.
 
-20.2 Пружалац смештаја неће откривати, интегрисати, укључивати, користити, комбиновати, експлоатисати, уграђивати или на други начин учинити Садржај и Wink податке (или било који њихов део) доступним (а) са сопственим садржајем и/или садржајем било ког Wink конкурента (укључујући Хотеле), или (б) за или у корист (и) себе (осим за омогућавање Услуге и Система у складу са условима овог Уговора), или (ии) било ког Wink конкурента (укључујући Хотеле) (било да је у питању промоција, маркетинг, референца на, промоција, оглашавање или на други начин у интересу или за такву страну), или (ц) за било коју другу сврху или на било који други начин и/или на или путем Платформи Трећих Лица, осим како је изричито предвиђено овим Уговором. Придружени члан неће мењати, модификовати, искривљавати, креирати изведена и/или нова дела заснована на и/или изведена из Садржаја и Садржај неће садржати (директну или индиректну) везу, референцу, клик-тхруст или референцу на (веб локацију) Wink конкурента (укључујући Хотеле).
+20.3 Pružalac smeštaja neće registrovati, kupovati ili koristiti internet domen koji sadrži reč „Wink“ ili njene varijacije, prevode ili greške u kucanju kao deo adrese.
 
-20.3 Пружалац смештаја ће (и ће обезбедити да компаније унутар Групе пружалаца смештаја неће (директно или индиректно) регистровати, стицати, користити, куповати или добијати име интернет домена које садржи било коју реч или речи које су идентичне или збуњујуће или суштински сличне речи „Wink“ или било којим варијацијама, преводима или погрешно написаним речима, укљученим као део адресе.
+20.4 Zaključenjem ovog Ugovora, Wink ne odustaje ni od jednog prava koja ima po zakonu, ugovoru ili na drugi način u vezi sa Wink pravima intelektualne svojine u odnosu na Pružaoca smeštaja ili treća lica.
 
-20.4 Закључивањем овог Уговора, Винк се не одриче (експлицитно или прећутно) нити губи било које од својих права на која има право по било ком закону, уговору или на други начин (сада или у будућности) у вези са Правима интелектуалне својине Винка у односу на Пружаоца смештаја или друге треће стране.
+**21. Promena vlasništva**
 
-**21. Промена власништва**
+21.1 Pružalac smeštaja (i gde je primenjivo, svaki Hotel učesnik) neće prodati, izdati u zakup ili na drugi način otuđiti svoj interes u bilo kojoj hotelskoj nekretnini bez najmanje tri (3) meseca prethodne pismene obavesti. U slučaju takve prodaje, zakupa ili otuđenja, Pružalac smeštaja će u ugovoru jasno navesti da se ovaj Ugovor (uključujući sve rezervacije) prenosi ili novira na novi entitet nakon promene kontrole, uz poštovanje stavke (b) ovog člana.
 
-21.1 Пружалац смештаја (и тамо где контекст захтева, сваки хотел учесник) неће продавати, изнајмљивати или на други начин располагати својим уделом у било којој хотелској некретнини, без претходног писменог обавештења од најмање три (3) месеца. У случају такве продаје, закупа или другог располагања, Пружалац смештаја (и/или хотел учесник) ће изричито предвидети у уговору о продаји, закупу или другом располагању да ће овај Уговор (укључујући све резервације извршене на основу њега) бити додељен или пребачен на нови ентитет након промене контроле, у складу са пододељцима (б) ове клаузуле.
+21.2 Ukoliko Wink ne želi da nastavi ugovor sa novim entitetom iz bilo kog razloga, Strane mogu dogovoriti trenutni raskid Ugovora bez uticaja na postojeće rezervacije i prava stečena pre raskida.
 
-21.2 Уколико Wink из било ког разлога не жели да настави са закључивањем Уговора са новим ентитетом, Уговорне стране се могу сложити да одмах раскину овај Уговор и без утицаја на било које постојеће Резервације и било која друга права која је било која Уговорна страна стекла пре таквог раскида.
+**22. Sadržaj oglasa**
 
-**22. Садржај листинга**
+22.1 Wink će Pružaocu smeštaja omogućiti pristup Wink ekstranetu. Pružalac smeštaja se obavezuje da će otpremiti sve informacije i sadržaje vezane za proizvod, uključujući fotografije, slike, dizajne, tekst, audio, video, opise i objekte („Sadržaj“) radi optimalne distribucije i održavati ih ažurnim. Ukoliko Pružalac smeštaja ne dostavi sadržaj, izričito ovlašćuje Wink da ga preuzme direktno sa vebsajta Pružaoca i prihvata punu odgovornost za eventualne probleme, uključujući zahteve koji mogu nastati. Takođe, Pružalac smeštaja daje Wink-u pravo da menja veličinu i rezoluciju sadržaja za marketinške i distributivne svrhe.
 
-22.1 Винк ће обезбедити Пружаоцу смештаја приступ Винк екстранету. Пружалац смештаја се обавезује да отпреми све информације и садржаје који се односе на производ, укључујући, али не ограничавајући се на фотографије, слике, дизајн, текст, аудио, видео, описе и садржаје (у даљем тексту „Садржај“) како би се осигурала оптимална дистрибуција производа и одржаваће Садржај ажурним. У случају да Пружалац смештаја не обезбеди Садржај, изричито овлашћује Винк да то учини преузимањем директно са веб странице Пружаоца смештаја и прихвата сву одговорност за све проблеме, укључујући и Потраживања која могу настати из таквог отпремања. Поред тога, Пружалац смештаја даје Винку право да измени и/или прилагоди величину и резолуцију Садржаја у сврху маркетинга и дистрибуције.
+22.2 Ukoliko Pružalac smeštaja ne može pristupiti ekstranetu iz razloga van svoje kontrole, odmah će obavestiti Wink.
 
-22.2 У случају да Пружалац смештаја не може да приступи екстранету из разлога који су ван његове контроле, Пружалац смештаја ће о томе одмах обавестити Wink.
+22.3 Pružalac smeštaja garantuje da poseduje sva potrebna prava, licence, saglasnosti i ovlašćenja za: (i) dostavljanje sadržaja Wink-u; (ii) daje Wink-u neekskluzivno, besplatno, neopozivo, svetsko i podlicencirano pravo korišćenja, modifikacije, prikazivanja, objavljivanja i prilagođavanja sadržaja, imena, logotipa, žigova i druge intelektualne svojine Pružaoca („IPR“) za izvršenje ovog Ugovora; (iii) garantuje da takva prava ne krše prava trećih lica; i (iv) snosi odgovornost za bilo kakve klevetničke ili nemoralne informacije i tačnost IPR koje je dostavio Wink-u.
 
-22.3 Пружалац смештаја изјављује и гарантује да поседује сва потребна права, лиценце, сагласности и овлашћења потребна за: (i) пружање Садржаја Винку; (ii) Пружалац смештаја овим даје Винку неексклузивно, бесплатно, неопозиво, светско и право које се може подлиценцирати трећим лицима, маркетиншким и/или дистрибутивним партнерима, да користе, мењају, приказују, објављују и прилагођавају Садржај, име, логотипе, заштитне знакове и било коју другу интелектуалну и индустријску својину Пружаоца смештаја („ИПС“) у сврху извршења овог Уговора; (iii) Пружалац смештаја гарантује Винку и његовим клијентима да таква ИПС не крше било која права трећих лица; и (iv) Пружалац смештаја ће бити одговоран за све клеветничке или неморалне информације, истинитост и тачност својих ИПС достављених Винку на било који начин.
+22.4 Pružalac smeštaja će u svakom trenutku tokom i nakon isteka ili raskida ovog Ugovora obeštetiti i držati Wink, njegove Pružače smeštaja i partnere bezbednim od bilo kakvih gubitaka nastalih usled zahteva u vezi sa IPR.
 
-22.4 Пружалац смештаја ће, у сваком тренутку током и након истека раскида овог Уговора, обештетити и заштитити Винк, његове Пружаоце смештаја и/или његове партнере у потпуности и заштитити их од свих губитака које је претрпео, досуђених или за које је договорено да их плате Винк, његови Пружаоци смештаја и/или његови партнери, а који произилазе из било ког захтева за интелектуалну својину.
+22.5 Pružalac smeštaja će: (i) dostavljati Wink-u ažuriranja o toku zahteva u vezi sa IPR uključujući dokaze o rešavanju ili odbacivanju zahteva; (ii) ukoliko ne postupi po ovom članu ili Wink nije zadovoljan napretkom, Wink će preuzeti kontrolu nad zahtevom o trošku Pružaoca smeštaja i ima pravo da odbije troškove i kompenzacije nastale usled zahteva od bilo kojih iznosa koje Pružalac duguje.
 
-22.5 Пружалац смештаја је дужан да: (i) пружи Винку ажурирања на начин који Винк захтева о напретку захтева за повреду права интелектуалне својине, укључујући доказе да је подносилац захтева решио или одбацио захтев за повреду права интелектуалне својине чим је то разумно изводљиво; (ii) У случају да Пружалац смештаја не поступи у складу са овом клаузулом или ако Винк није у потпуности задовољан напретком захтева за повреду права интелектуалне својине или како би се спречила даља штета, Винк ће преузети тренутну контролу над захтевом за повреду права интелектуалне својине на трошак Пружаоца смештаја. Винк ће имати право да надокнади све трошкове и надокнаду исплаћене као последица захтева за повреду права интелектуалне својине са било којим садашњим, условним и/или будућим износом који доспева или дугује Пружаоцу смештаја.
+**23. Promocija / Spoljna komunikacija**
 
-**23. Публицитет / Спољна комуникација**
+23.1 Pružalac smeštaja neće objavljivati nikakve materijale ili komunikacije vezane za Wink ili ovaj Ugovor bez prethodnog pismenog odobrenja Wink-a i biće isključivo odgovoran za štetu nastalu kršenjem ove odredbe.
 
-23.1 Пружалац смештаја неће објављивати никакву комуникацију или материјале у вези са Винком или овим Уговором, било медијима или било којој другој спољној страни без претходне писмене сагласности Винка, а Пружалац смештаја ће бити искључиво и директно одговоран за било какву штету или губитак који Винк претрпи кршењем ове одредбе.
+23.2 Pružalac smeštaja će konsultovati Wink u vezi sa sadržajem bilo kakve komunikacije koju planira da objavi i dostaviće Wink-u kopiju konačnog materijala.
 
-23.2 Пружалац смештаја ће се консултовати са Винком у вези са садржајем било које такве комуникације или материјала који намерава да објави, а Пружалац смештаја мора да достави Винку копију сваке такве комуникације или материјала који буде коначно објављен.
+**24. Prednost**
 
-**24. Предност**
+24.1 Ovaj Ugovor je napravljen da omogući pojedinačne komercijalne ugovore koje će Wink zaključivati sa svakim Pružaocem smeštaja. U slučaju neslaganja, uslovi ovog Ugovora važiće za Pružaoca smeštaja uz sledeće:
 
-24.1 Овај Уговор је састављен како би се омогућило склапање појединачних комерцијалних уговора које ће Wink накнадно имати са сваким од Пружалаца смештаја. У случају неслагања, услови и одредбе предвиђени овим Уговором примењиваће се на Пружаоце смештаја, под следећим условима:
+24.2 U vezi sa Uslovima plaćanja koji se odnose na otkazivanja, nepojavljivanja, politike plaćanja, oslobađanja i dostupnost soba, uslovi ovog Ugovora imaju prednost;
 
-24.2 У вези са Условима плаћања у вези са договореним отказивањима и недоласком, политикама плаћања, отказима и расположивошћу соба (стандардни тип), важе услови овог Уговора;
+24.3 U vezi sa cenama, minimalnim popunjavanjem, popustima za treća lica i decu i primenjivim tržištima, važiće uslovi dogovoreni u pojedinačnom komercijalnom ugovoru.
 
-24.3 У вези са ценама, минималним бројем запослених, попустима за трећа лица и децу, као и важећим тржиштима, важе услови договорени у важећем појединачном комерцијалном уговору.
+**25. Ovlašćenje za potpisivanje – Predstavništvo i potpis Pružaoca smeštaja**
 
-**25. Овлашћење за потписивање – Изјава и потпис пружаоца смештаја**
+25.1 Pružalac smeštaja garantuje da on, osoba koja potpisuje ovaj Ugovor i/ili bilo koja druga osoba koja dostavlja informacije Wink-u u vezi sa ovim Ugovorom ima ovlašćenje, kapacitet i potrebnu moć da potpiše ovaj Ugovor u ime svakog Hotela učesnika i da će tokom trajanja Ugovora poštovati i osigurati da svaki Hotel učesnik poštuje svoje obaveze.
 
-25.1 Пружалац смештаја гарантује да он, лице које потписује овај Уговор и/или било које друго лице које пружа информације (укључујући, ради избегавања сумње, било које Услове плаћања) компанији Wink у вези са или у складу са овим Уговором има овлашћење, капацитет и потребну моћ да потпише овај Уговор за и у име сваког Хотела учесника, и да то лице има овлашћење, капацитет и потребну моћ да обавеже Пружаоца смештаја и сваки Хотел учесник на овај Уговор и да ће, током целог Трајања, поштовати, извршавати и осигурати да сваки Хотел учесник поштује и извршава своје обавезе према овом Уговору.
+25.2 Pružalac smeštaja izričito prihvata da je elektronsko prihvatanje ovog Ugovora i njegovih uslova, uključujući izmene, važeće, obavezujuće i izvršivo.
 
-25.2 Пружалац смештаја се изричито слаже да је електронско прихватање овог Уговора и његових Услова и одредби, укључујући и оне који се односе на измене, важеће, обавезујуће и применљиво.
+**26. Jezik**
 
-**26. Језик**
+Engleska verzija ovog Ugovora ima prevlast u svim aspektima i primenjivaće se u slučaju neslaganja sa prevedenim verzijama.
 
-Верзија овог Уговора на енглеском језику је меродаванa у свим аспектима и имаће предност у случају било каквих неслагања са преведеним верзијама, ако их има.
+**27. Odbacivanja prava**
 
-**27. Одрицања**
+Nijedno odbacivanje kršenja ili uslova ovog Ugovora neće se smatrati odbacivanjem bilo kog drugog ili budućeg kršenja ili uslova, bilo istog ili različitog karaktera.
 
-Ниједно одрицање од било ког кршења или услова овог Уговора неће се сматрати одрицањем од било ког другог или накнадног кршења или услова, било сличне или другачије природе.
+**28. Deljivost**
 
-**28. Одвојивост**
+Ako bilo koja odredba ovog Ugovora bude proglašena nezakonitom, nevažećom ili neizvršivom, biće prilagođena ili izostavljena koliko je potrebno da bi ostatak Ugovora ostao važeći i obavezujući.
 
-Ако било која одредба овог Уговора буде утврђена од стране владине агенције за спровођење закона, суда или трибунала надлежне јурисдикције као незаконита, неважећа или на други начин неприменљива према националним законима, онда ће таква одредба бити тумачена, измењена или избрисана у мери која је потребна да би таква одредба и/или овај Уговор постали законити, важећи или на други начин применљиви, а преостали део такве одредбе и преостале друге одредбе овог Уговора ће остати на снази, остати на снази и наставити да буду обавезујуће, и биће тумачене тако да се у највећој могућој мери оствари намера Уговорних страна.
+**29. Odnos Strana**
 
-**29. Однос странака**
+Strane su i delovaće kao nezavisni ugovarači. Nijedna strana neće delovati kao agent ili partner druge strane niti imati ovlašćenje da je obavezuje.
 
-Стране су и деловаће као независни извођачи у извршењу овог Уговора. Ниједна страна неће деловати као, нити ће се сматрати, агентом или партнером друге стране у било коју сврху, нити ће било која страна имати овлашћење да обавеже другу у било ком погледу.
+**30. Prenos prava**
 
-**30. Задатак**
+30.1 Nijedna strana neće prenositi svoja prava ili obaveze bez prethodnog pisanog pristanka druge strane, osim Wink koji može preneti prava ili obaveze povezanoj kompaniji bez pristanka Pružaoca smeštaja.
 
-30.1 Ниједна Уговорна страна нема право да уступи, пренесе или оптерети било које од својих права и/или обавеза по овом Уговору без претходне писмене сагласности друге Уговорне стране, под условом да Винк може уступити, пренети или оптеретити било које од својих права и/или обавеза по овом Уговору (у целини или делимично или с времена на време) повезаној компанији без претходне писмене сагласности Даваоца смештаја.
+30.2 Ovaj Ugovor je za korist Strana i njihovih naslednika i dozvoljenih pravnih naslednika i ne daje prava trećim licima osim ako nije drugačije navedeno.
 
-30.2 Овај Уговор је закључен у корист Уговорних страна и њихових одговарајућих наследника и дозвољених цесионера, и ништа овде није намењено да имплицитно додели било којој другој особи било какво законско или праведно право, корист или правни лек било које природе, на основу или по основу овог Уговора, осим у мери у којој је изричито другачије наведено у овом Уговору.
+**31. Viša sila**
 
-**31. Виша сила**
+Wink nije odgovoran za kašnjenja ili neizvršenje obaveza usled okolnosti van njegove kontrole, uključujući prirodne nepogode, rat, terorizam, štrajkove, pandemije i slično.
 
-Винк неће бити одговоран за било какво кашњење или неизвршење било које обавезе према овим Условима које произилазе из узрока ван разумне контроле Винка или Винк Пејментса, укључујући, али не ограничавајући се на, више силе, природне катастрофе, рат, тероризам, нереде, ембарго, поступке цивилних или војних власти, пожар, поплаве, несреће, пандемије, епидемије или болести, штрајкове или несташицу транспортних средстава, горива, енергије, радне снаге или материјала („Случај више силе“).
+**32. Ograničenje odgovornosti**
 
-**32. Ограничење одговорности**
+32.1 U najvećoj meri dozvoljenoj zakonom, nijedna strana nije odgovorna za indirektne, slučajne, posledične, posebne ili kaznene štete, osim u slučajevima kršenja poverljivosti ili prava intelektualne svojine.
 
-32.1 У највећој мери дозвољеној законом, ниједна Уговорна страна неће бити одговорна за било какву индиректну, случајну, последичну, посебну или казнену штету која произилази из овог Уговора или његовог кршења, чак и ако је обавештена о могућности такве штете. Ово ограничење се неће примењивати на било какво кршење овог Уговора у вези са поверљивошћу и/или правима интелектуалне својине.
+32.2 Nijedna strana ne može isključiti odgovornost za smrt ili ličnu povredu usled nepažnje, prevaru ili druge obaveze koje se ne mogu ograničiti zakonom.
 
-32.2 Ниједна Уговорна страна не може искључити одговорност у погледу (i) смрти или телесне повреде узроковане њеним немаром или немаром њених запослених, агената или подизвођача, (ii) преваре коју је починила она сама или њени запослени, или (iii) било каквог кршења, радње, пропуста или одговорности која не може бити ограничена било којим важећим законом.
+32.3 Strane smatraju da su ograničenja odgovornosti fer i razumna.
 
-32.3 Стране признају и слажу се да су искључења и ограничења одговорности утврђена у овом Уговору праведна и разумна.
+**33. Naknada štete**
 
-**33. Обезштећење**
+U najvećoj meri dozvoljenoj zakonom, slažete se da oslobodite, branite i obeštetite Wink i njegove partnere od bilo kakvih zahteva, šteta, gubitaka i troškova nastalih usled vašeg kršenja ovih Uslova, nepravilne upotrebe usluga, neplaćanja poreza ili kršenja zakona.
 
-У највећој мери дозвољеној важећим законом, слажете се да ослободите, браните (по Винк-овом избору), обештетите и заштитите Винк и све његове пружаоце смештаја и подружнице, као и њихове службенике, директоре, запослене и агенте од било каквих потраживања, обавеза, штета, губитака и трошкова, укључујући, без ограничења, разумне правне и рачуноводствене трошкове, који произилазе из или су на било који начин повезани са (i) вашим кршењем ових Услова; (ii) вашим неправилним коришћењем Услуга; (iii) вашим пропустом, или нашим пропустом, по вашем налогу, да тачно пријавимо, наплатимо или уплатимо порезе; или (iv) вашим кршењем било којих закона, прописа или права трећих лица.
+**34. Mjerodavno pravo i nadležnost**
 
-**34. Меродавно право и надлежност**
+34.1 Ovaj Ugovor se isključivo tumači i primenjuje po zakonima Singapura. Zakon o pravima trećih lica 2001. (Cap 53B) se ne primenjuje. Strane će pokušati da reše sporove mirnim putem.
 
-34.1 Овај Уговор ће се искључиво регулисати и тумачити у складу са законима Сингапура. Закон о уговорима (права трећих лица) из 2001. године (глава 53Б) неће се примењивати на овај Уговор. Стране ће у сваком случају покушати да реше своје спорове пријатељским путем ван суда, прво водећи разговоре и преговоре у доброј вери.
+34.2 Svi sporovi biće rešavani isključivo pred nadležnim sudom u Singapuru.
 
-34.2 Сви спорови који настану из или у вези са овим уговором биће искључиво поднети и решавани од стране надлежног суда у Сингапуру, без обзира на правила о колизији закона.
+**35. Primerci**
 
-**35. Еквиваленти**
+Ovaj Ugovor može biti potpisan u više primeraka, koji zajedno čine jedan dokument. Elektronski potpis Wink-a ima istu snagu kao i originalni potpis.
 
-Овај Уговор може бити састављен у двоје делова, од којих ће се сваки (једном потписан) сматрати оригиналом, а који заједно чине један те исти инструмент. Штавише, свака скенирана/електронска копија Винковог писаног потписа имаће исту и једнаку снагу као и оригинални својеручни потпис Винка и неће утицати на валидност овог Уговора.
+**36. Celokupan ugovor**
 
-**36. Целокупан уговор**
+36.1 Ovaj Ugovor (uključujući obrasce, anekse i dodatke) predstavlja celokupan dogovor Strana i zamenjuje sve prethodne dogovore.
 
-36.1 Овај Уговор (укључујући Образац за регистрацију партнера пружаоца смештаја, распореде, анексе и додатке, који чине саставни део овог Уговора) представља целовити споразум и разумевање Уговорних страна у вези са његовим предметом и замењује и надомеђује све претходне споразуме, аранжмане, ((не)обавезујуће) понуде, обавезе или изјаве у вези са тим предметом.
+36.2 Ako bilo koja odredba postane nevažeća, ostale ostaju na snazi, a Strane će zameniti nevažeću odredbu važećom koja ima sličan efekat.
 
-36.2 Уколико било која одредба овог Уговора јесте или постане неважећа или необавезујућа, Стране ће остати обавезне свим осталим одредбама овог Уговора. У том случају, Стране ће заменити неважећу или необавезујућу одредбу одредбама које су важеће и обавезујуће и које имају, у највећој могућој мери, сличан ефекат као неважећа или необавезујућа одредба, с обзиром на садржај и сврху овог Уговора.
+**37. Zaključenje**
 
-**37. Извршење**
+Ugovor stupa na snagu pisanom potvrdom prihvatanja od strane Wink-a. Registracijom i prijavom u Wink program kao Pružalac smeštaja, prihvatate uslove ovog Ugovora, uključujući izmene.
 
-Уговор ступа на снагу тек након писмене потврде прихватања и одобрења Пружаоца смештаја од стране компаније Wink. Регистрацијом и пријављивањем у партнерски програм компаније Wink као Пружалац смештаја, Пружалац смештаја се слаже, потврђује и прихвата услове и одредбе овог Уговора, укључујући одредбе које се односе на измене овог Уговора.
+Ugovor je pročitan i svi uslovi su prihvaćeni. Partner izričito prihvata da je elektronsko prihvatanje važeće i obavezujuće.
 
-Уговор је прочитан и пружалац смештаја је прихватио све услове и одредбе. Партнер се изричито слаже да је електронско прихватање овог уговора и његових услова и одредби, укључујући и оне који се односе на измене, важеће, обавезујуће и применљиво.
+**38. Obaveštenja**
 
-**38. Обавештења**
+Sva obaveštenja moraju biti na engleskom, u pisanom obliku, i dostavljena lično, preporučenom poštom ili međunarodnim kurirskim službama na registrovanu adresu ili putem e-maila kontakt osobi.
 
-Сва обавештења било које Уговорне стране по овом Уговору биће на енглеском језику, у писаној форми, и биће достављена лично, путем унапред плаћене и препоручене поште, или путем међународно признате експресне курирске службе (нпр. FedEx, UPS, DHL) на адресу регистрованог седишта или путем е-поште контакт особи.
-
-Свако обавештење по овом Уговору сматраће се примљеним (i) ако је достављено лично, након потписивања потврде о пријему или, (ii) ако је достављено препорученом поштом са плаћеном пошиљком, након потврде о пријему; или (iii) ако је достављено курирском службом, на дан евидентирани код курирске службе (iv) ако је достављено имејлом, под условом да је достављена потврда о пријему.
-
+Obaveštenje se smatra primljenim (i) ako je dostavljeno lično, potpisom potvrde o prijemu, (ii) ako je poslato preporučenom poštom, dokazom o dostavi, (iii) ako je poslato kurirskom službom, datumom evidentirane dostave, ili (iv) ako je poslato e-mailom uz potvrdu prijema.

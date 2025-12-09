@@ -1,0 +1,105 @@
+---
+title: MCP 服务器
+description: 通过托管的 MCP 服务器快速将 AI 代理连接到 Wink 文档和 SDK。
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## 概览
+托管的 Wink MCP 服务器地址为：
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+将兼容的 AI 客户端（VS Code、Cursor 及其他实现 MCP HTTP 传输的客户端）指向此端点，以便它们能够：
+- 浏览产品和平台文档（`wink://docs/...`）
+- 发现 SDK 并深入查看 API 类 / 模型（`wink://sdk/...` 和 `wink://sdk/.../docs`）
+- 对文档和 SDK 摘要执行轻量级语义 / 关键词搜索
+
+## 传输
+使用主要的可流式 HTTP 端点：
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+如果您的客户端仅支持 SSE，请使用：
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Cursor MCP 文档：https://cursor.com/docs/context/mcp  
+设置：通过 MCP 设置添加远程服务器。
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+官方文档：https://code.visualstudio.com/docs/copilot/customization/mcp-servers  
+最简远程配置（用户或工作区的 `mcp.json`）：
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+提示：
+- 使用命令面板：“MCP: 列出服务器”确认连接并浏览工具。
+- 工具选择器允许启用/禁用 `sdk_search` 和 `docs_search`。
+- 添加上下文：聊天视图 → 添加上下文 → MCP 资源，附加文档页面。
+
+## 核心资源 URI
+
+| URI | 描述 |
+|-----|------|
+| `wink://docs` | 文档索引（按类别分组） |
+| `wink://docs/{path}` | 具体文档文章（Markdown / MDX） |
+| `wink://sdk` | SDK 概览（每个 SDK + 文档计数） |
+| `wink://sdk/{sdkPath}` | SDK README / 模块文档文件夹 / 具体模块文档 |
+
+### 模块文档
+打开 SDK 文档文件夹（例如 `wink://sdk/python/wink-sdk-booking/docs`）返回分组的：
+- **API 类**（方法数量 + 示例方法名）
+- **模型与类型**（这些 API 使用的数据结构）
+
+## 搜索工具（快速参考）
+| 工具 | 目的 | 典型查询示例 |
+|------|------|--------------|
+| `sdk_search` | 查找应使用的 SDK / API 类 | `取消预订`，`列出房源`，`联盟库存` |
+| `docs_search` | 查找概念文档 / 指南 | `身份验证`，`Webhook`，`WordPress` |
+
+留空 `query` 可接收建议。每个结果都包含可打开的 MCP URI。
+
+## 典型使用流程
+1. 使用您的意图运行 `sdk_search`（例如 *“列出房源”*）。
+2. 打开返回的 SDK README 或其 `docs_uri`，检查 API / 模型。
+3. 使用 `docs_search` 查找支持性概念（身份验证、Webhook）。
+
+## 备注
+- 每个返回的 URI 代理都可以打开以获取完整内容。
+- 查询为空时会自动显示建议。
+
+## 当前支持的 SDK
+- Wink Python SDK
+
+## 路线图（高层）
+- 额外语言 SDK（Java、JS/TS）
+- 添加 TripPay SDK
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink 在 GitHub</LinkButton>

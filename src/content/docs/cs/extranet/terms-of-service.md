@@ -1,411 +1,411 @@
 ---
 title: Podmínky služby
-description: Snadno dostupné a aktuální podmínky pro všechny naše partnerské uživatele.
+description: Snadno dostupné a aktuální podmínky pro všechny naše uživatele partnerů.
 sidebar:
-  order: 20
+  order: 21
 ---
+
 :::note
-Naposledy aktualizováno 12. 6. 2024
+Naposledy aktualizováno 2024-06-12
 :::
+  
+**OBECNÉ PODMÍNKY PRO POSKYTOVATELE UBYTOVÁNÍ**
 
-**VŠEOBECNÉ OBCHODNÍ PODMÍNKY PRO POSKYTOVATELE UBYTOVÁNÍ**
-
-Registrací a přihlášením do programu Wink jako poskytovatel ubytování poskytovatel ubytování tímto potvrzuje, že se seznámil s podmínkami této smlouvy s poskytovatelem ubytování („Smlouva“), rozumí jim, bere na vědomí a souhlasí s nimi.
+Registrací a přihlášením do programu Wink jako poskytovatel ubytování poskytovatel ubytování tímto potvrzuje, že si přečetl, rozumí, uznává a přijímá podmínky této smlouvy o poskytování ubytování (dále jen „Smlouva“).
 
 **MEZI:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, společnost založená podle singapurského práva se sídlem na adrese #03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095, s identifikačním číslem DPH 201437335D („Wink“), a
+**TRAVELIKO SINGAPORE PTE. LTD.**, společností založenou podle zákonů Singapuru se sídlem na adrese \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, s daňovým identifikačním číslem 201437335D („Wink“), a
 
-**POSKYTOVATEL UBYTOVÁNÍ**, jehož údaje jsou uvedeny v registračním formuláři ubytovatele nebo byly odeslány online („ubytovatel“).
+**POSKYTOVATELEM UBYTOVÁNÍ**, jehož údaje jsou uvedeny v registračním formuláři poskytovatele ubytování nebo byly odeslány online (dále jen „Poskytovatel ubytování“).
 
-Společnost Wink a Poskytovatel ubytování jsou každý „stranou“ této Smlouvy a společně se na ně vztahuje jako na „strany“.
+Wink a Poskytovatel ubytování jsou každá „Strana“ této Smlouvy a společně jsou označovány jako „Strany“.
 
-Tento dokument stanoví obchodní podmínky pro:
+Tento dokument stanovuje Podmínky pro:
 
-1. Poskytování distribučních služeb ubytování prostřednictvím společnosti Wink nebo jakýmikoli jinými prostředky, které Poskytovatel ubytování používá k distribuci svých produktů (dále jen „Poskytovatel ubytování“), pro které jsou podrobnosti uvedeny v Platebních podmínkách a byla dohodnuta cena, podmínky a dostupnost; a
-2. Poskytování ubytovacích služeb ubytovatelem konečnému spotřebiteli/hostovi, který byl rezervován prostřednictvím Wink.
+1. Poskytování služeb distribuce ubytování prostřednictvím Wink nebo jakýmkoli jiným způsobem, který Poskytovatel ubytování používá k distribuci svých produktů (dále jen „Poskytovatel ubytování“), jejichž podrobnosti jsou uvedeny v Platebních podmínkách a cena, podmínky a dostupnost byly dohodnuty; a  
+2. Poskytování ubytovacích služeb Poskytovatelem ubytování konečnému spotřebiteli/hostu, které bylo rezervováno prostřednictvím Wink.
 
-Společnost Wink nevlastní, nekontroluje, nenabízí ani nespravuje žádné nabídky. Wink není stranou smluv uzavřených přímo mezi ubytovateli a hosty. Wink nejedná jako zástupce v žádné funkci ubytovatelů, s výjimkou případů uvedených v platebních podmínkách služeb („Platební podmínky“).
+Wink nevlastní, nekontroluje, nenabízí ani nespravuje žádné nabídky. Wink není stranou smluv uzavřených přímo mezi Poskytovateli ubytování a hosty. Wink nejedná jako zástupce Poskytovatelů ubytování, kromě případů uvedených v platebních podmínkách služeb („Platební podmínky“).
 
-V případě rozporu mezi těmito Obchodními podmínkami (dále jen „Podmínky“) a Platebními podmínkami platí Platební podmínky.
+V případě rozporu mezi těmito Podmínkami (dále jen „Podmínky“) a Platebními podmínkami platí ty druhé.
 
-Strany se proto nyní dohodly takto:
+Strany se proto dohodly následovně:
 
 **1. Definice**
 
-Kromě pojmů definovaných jinde v této Smlouvě se v celé této Smlouvě uplatňují následující definice, pokud není zřejmý opak:
+Kromě termínů definovaných jinde v této Smlouvě platí následující definice po celou dobu platnosti této Smlouvy, pokud není uvedeno jinak:
 
-**„Poskytovatel(é) ubytování“**&#x7A;namená jakoukoli Stranu, která si vytvoří účet na platformě Wink s úmyslem prodávat své vlastní pokoje a doplňkové služby prostřednictvím platformy Wink.
+**„Poskytovatel(é) ubytování“** znamená jakoukoli Stranu, která si vytvoří účet na Wink s úmyslem prodávat své vlastní pokoje a doplňkové služby prostřednictvím platformy Wink.
 
-**"Dohoda"**&#x7A;namená tuto dohodu.
+**„Smlouva“** znamená tuto smlouvu.
 
-**„Nejlepší dostupná sazba“ nebo „BAR“**&#x7A;namená nejnižší předem zlevněnou, provizní cenu za pokoje včetně DPH, kterou široké veřejnosti nabízí zúčastněný hotel, ubytovatel nebo jeho jménem jakýkoli distributor třetí strany. Aby se předešlo pochybnostem, propagační ceny, prázdninové ceny a jakékoli jiné veřejné neomezené ceny se zahrnují jako nejlepší dostupné ceny.
+**„Nejlepší dostupná cena“ nebo „BAR“** znamená nejnižší před-slevovou, provizní cenu za pokoje včetně DPH, kterou nabízí veřejnosti Participující hotel, Poskytovatel ubytování nebo jím pověřený třetí distributor. Pro vyloučení pochybností jsou do Nejlepší dostupné ceny zahrnuty i propagační ceny, sváteční ceny a jakékoli jiné veřejně dostupné neomezené ceny.
 
-**„Rezervace“**&#x7A;namená žádost o rezervaci pokoje provedenou prostřednictvím služby Wink nebo klienta služby Wink, která je sdělena ubytovateli a jím přijata.
+**„Rezervace“** znamená požadavek na rezervaci pokoje učiněný prostřednictvím Wink nebo klienta Wink, který je Poskytovatelem ubytování přijat.
 
-**„Poplatek za rezervaci“**&#x6A;e 1,5% poplatek za zpracování, který si Wink odečte z hodnoty rezervace.
+**„Rezervační poplatek“** je 1,5 % odečtených z hodnoty rezervace jako poplatek za zpracování ze strany Wink.
 
-**„Hodnota rezervace“**&#x6A;e celková částka, kterou zprostředkovatel plateb vybere od hosta za rezervaci.
+**„Hodnota rezervace“** je celková částka vybraná platebním zprostředkovatelem od hosta za rezervaci.
 
-**„Rezervace“**&#x7A;namená neschopnost ubytovatele ubytovat jakéhokoli hosta, mimo jiné z důvodu, že zúčastněný hotel nebo jeho jménem ubytovatel či jakýkoli distributor třetí strany neobsahují žádné pokoje.
+**„Book-Out“** znamená neschopnost Poskytovatele ubytování ubytovat hosta z důvodu například nedostupnosti pokoje v Participujícím hotelu nebo jím pověřeným Poskytovatelem ubytování či třetím distributorem.
 
-**"Komise"**&#x7A;namená částku dlužnou Přidružené osobě za každou Uskutečněnou transakci v souladu s touto Smlouvou.
+**„Provize“** znamená částku dlužnou partnerovi za každou realizovanou transakci v souladu s touto Smlouvou.
 
-**"Vybavení a služby"**&#x7A;namená jakékoli zařízení, stravování, vybavení a/nebo jiné služby poskytované zúčastněným hotelem.
+**„Zařízení a služby“** znamená jakákoli zařízení, jídla, vybavení a/nebo jiné služby poskytované Participujícím hotelem.
 
-**„Host(é)“**&#x7A;namená koncového uživatele, který používal, používá nebo je rezervován k konečnému užívání Pokoje (a případně dalších Zařízení a Služeb) v důsledku přímé nebo nepřímé rezervace u společnosti Wink.
+**„Host(é)“** znamená konečného uživatele, který využil, využívá nebo má rezervaci na využití pokoje (a případně dalších zařízení a služeb) v důsledku přímé či nepřímé rezervace přes Wink.
 
-**„Hotel(y)“**&#x7A;namená jakékoli ubytování dostupné na webových stránkách Wink nebo jejich prostřednictvím.
+**„Hotel(y)“** znamená jakékoli ubytování dostupné na nebo prostřednictvím webových stránek Wink.
 
-**„Platforma Wink“**&#x7A;namená soukromou síť nebo technické řešení používané stranami za účelem bezpečného sdílení informací podle Smlouvy.
+**„Platforma Wink“** znamená soukromou síť nebo technické řešení používané Stranami k bezpečnému sdílení informací podle této Smlouvy.
 
-**„Duševní vlastnictví“**&#x7A;namená veškerá práva duševního vlastnictví jakékoli povahy (ať už zaznamenaná v dokumentární formě nebo uložená na jakémkoli magnetickém nebo optickém disku či paměti) kdekoli na světě, ať už registrovaná, registrovatelná nebo jinak, včetně patentů, užitných vzorů, ochranných známek, registrovaných průmyslových vzorů a doménových jmen, přihlášek na cokoli z výše uvedeného, ​​obchodních názvů, goodwillu, autorských práv a práv v podobě autorských práv, průmyslových práv, práv k databázím, morálních práv, know-how a jakýchkoli dalších práv duševního vlastnictví, která existují v počítačovém softwaru, počítačových programech, webových stránkách, dokumentech, informacích, technikách, obchodních metodách, výkresech, logech, návodech k obsluze, seznamech a postupech a údajích o zákaznících, marketingových metodách a postupech a reklamních materiálech, včetně „vzhledu a dojmu“ jakýchkoli webových stránek.
+**„Duševní vlastnictví“** znamená veškerá práva duševního vlastnictví jakéhokoli druhu (zda zaznamenaná v dokumentární formě nebo uložená na magnetickém či optickém disku či paměti) kdekoli na světě, ať už registrovaná, registrovatelná nebo jinak, včetně patentů, užitných vzorů, ochranných známek, registrovaných vzorů a doménových jmen, žádostí o výše uvedené, obchodních nebo obchodních názvů, goodwillu, autorských práv a práv podobných autorským právům, práv k designu, práv k databázím, morálních práv, know-how a dalších práv duševního vlastnictví, která existují v softwaru, počítačových programech, webových stránkách, dokumentech, informacích, technikách, obchodních metodách, kresbách, logech, návodech, seznamech a postupech a údajích o zákaznících, marketingových metodách a reklamních materiálech, včetně „vzhledu a dojmu“ jakýchkoli webových stránek.
 
-**„Materializovaná(é) transakce(e)“**&#x7A;namená Rezervaci provedenou Hostem u Poskytovatele ubytování, která vedla ke skutečnému poskytnutí ubytování, jak bylo Poskytovatelem ubytování potvrzeno společnosti Wink. Zhmotněné transakce budou vždy upraveny o úpravy (např. zkrácené pobyty), storna plateb, podvody s kreditními kartami, nedobytné dluhy nebo jiné. Aby se předešlo pochybnostem, zrušení, nedostavení se atd. nelze nikdy považovat za zhmotněné transakce.
+**„Realizovaná transakce“** znamená rezervaci hosta u Poskytovatele ubytování, která vedla k reálnému poskytnutí ubytování, jak bylo potvrzeno Wink Poskytovatelem ubytování. Realizované transakce budou vždy upraveny o změny (např. zkrácení pobytu), chargebacky, podvody s kreditní kartou, špatné dluhy nebo jiné. Pro vyloučení pochybností, zrušení, nedostavení se apod. nelze považovat za realizované transakce.
 
-**„Čistá sazba“**&#x7A;namená konkrétní sazbu, kterou Wink zaplatí každému zúčastněnému hotelu za pokoje, na kterých se strany vzájemně písemně dohodly.
+**„Čistá sazba“** znamená konkrétní sazbu, kterou Wink zaplatí každému Participujícímu hotelu za pokoje, na kterých se Strany písemně dohodly.
 
-**„Nedostavení se“**&#x7A;namená jakoukoli situaci, kdy se Host včas nedostaví do Zúčastněného hotelu na základě Rezervace.
+**„No-Show“** znamená jakoukoli situaci, kdy host nedorazí včas do Participujícího hotelu podle rezervace.
 
-**"Partner"**&#x7A;namená jakoukoli firmu nebo jednotlivce, který se připojuje k platformě Wink nebo ji používá k propagaci a prodeji inventáře ubytovacích zařízení svému publiku a/nebo zákazníkům za provizi.
+**„Partner“** znamená jakýkoli podnik nebo jednotlivce, který se připojuje nebo používá platformu Wink k propagaci a prodeji inventáře Poskytovatelů ubytování svému publiku a/nebo zákazníkům za provizi.
 
-**„Zprostředkovatel plateb“**&#x70;lně vlastněná dceřiná společnost Traveliko Singapore Pte. Ltd. („TripPay“), která spravuje platební služby, inkasuje platby od hostů („Pay-in“) inkasováním plateb z platební metody spojené s jejich nákupem, jako je kreditní karta, debetní karta, bankovní převod, kryptoměny nebo PayPal atd., a vyplácí dlužnou částku („Netto sazba“) poskytovateli ubytování.
+**„Platební zprostředkovatel“** plně vlastněná dceřiná společnost Traveliko Singapore Pte. Ltd. („TripPay“), která spravuje platební služby, vybírá platby od hostů („Pay-in“) prostřednictvím platebních metod spojených s jejich nákupem, jako jsou kreditní karta, debetní karta, bankovní převod, kryptoměny nebo PayPal atd., a vyplácí dlužné prostředky („Čistá sazba“) Poskytovateli ubytování.
 
-**„Platba“**&#x7A;namená přijetí platby provedené hostem zprostředkovatelem plateb.
+**„Pay-in“** znamená přijetí platby od hosta platebním zprostředkovatelem.
 
-**„Výplata“**&#x7A;namená vyplacení Čisté provize Partnerovi Zprostředkovatelem plateb.
+**„Pay-out“** znamená vyplacení čisté provize partnerovi platebním zprostředkovatelem.
 
-**„Poplatek za platební službu“**&#x6A;e 4 % stržené z partnerské provize jako poplatek za zprostředkování platby platebním zprostředkovatelem.
+**„Poplatek za platební službu“** je 4 % odečtených z provize partnera jako poplatek za získání platby platebním zprostředkovatelem.
 
-**„Platební podmínky“**&#x7A;namená Ceny, dostupnost, nabídky, propagační akce, platební podmínky a veškerá další pravidla nebo podmínky týkající se distribuce Pokojů, na kterých se Smluvní strany vzájemně dohodly.
+**„Platební podmínky“** znamenají sazby, dostupnost, nabídky, propagace, platební podmínky a jakákoli další pravidla nebo podmínky týkající se distribuce pokojů, na kterých se Strany dohodly.
 
-**„Potenciálně podvodná rezervace“**&#x7A;namená (i) Rezervaci, která je výsledkem neplatných nebo nesprávných informací poskytnutých společnosti Wink v době takové Rezervace, nebo v důsledku sporu o kreditní kartu, nebo v důsledku nahlášení neoprávněných poplatků; nebo (ii) Jakoukoli Rezervaci, která může být spojena s předchozími vysoce rizikovými nebo podvodnými transakcemi.
+**„Potenciálně podvodná rezervace“** znamená (i) rezervaci, která vznikla na základě neplatných nebo nesprávných informací poskytnutých Wink v době rezervace, nebo v důsledku sporu o kreditní kartu, nebo na základě hlášení neoprávněných poplatků; nebo (ii) jakoukoli rezervaci, která může být spojena s předchozími vysoce rizikovými nebo podvodnými transakcemi.
 
-**„Sazba(y)“**&#x7A;namená cenu/ceny hotelového pokoje, kterou/které Poskytovatel ubytování zpřístupnil společnosti Wink s ohledem na jakýkoli příslušný typ pokoje nebo typ ceny dle Smlouvy, a která bude/budou distribuována na všech kanálech Wink.
+**„Sazba(y)“** znamená sazbu za hotelový pokoj(y) zpřístupněnou Wink Poskytovatelem ubytování pro jakýkoli příslušný typ pokoje nebo sazby podle Smlouvy k distribuci na všech kanálech Wink.
 
-**„Místnost(y)“**&#x7A;namená ubytování nacházející se v jakémkoli zúčastněném hotelu nebo ubytovacím zařízení.
+**„Pokoj(e)“** znamená ubytování v jakémkoli Participujícím hotelu nebo ubytovacím zařízení.
 
-**"Daně"**&#x7A;namená všechny místní, státní, federální a národní daně a/nebo poplatky za služby, včetně, pro vyloučení pochybností, veškerých daní z přidané hodnoty (DPH), daní z prodeje, spotřební daně, daní z ubytování, daní z přechodného pobytu, daní z pronájmu, městských daní, daní z letovisek a dalších podobných typů daní, vládních poplatků nebo poplatků.
+**„Daně“** znamenají všechny místní, státní, federální a národní daně a/nebo poplatky za služby, včetně, pro vyloučení pochybností, jakékoli daně z přidané hodnoty (DPH), prodejní, uživatelské, spotřební, ubytovací, přechodné, nájemní, městské, rekreační a jiné podobné daně, vládní poplatky nebo poplatky.
 
-**„TripPay“**&#x7A;namená plně vlastněnou dceřinou společnost, která pro Wink inkasuje platby (příjem) a výdaje (výplata), dále označovanou jako Platební zprostředkovatel.
+**„TripPay“** znamená plně vlastněnou dceřinou společnost, která vybírá platby (Pay-in) a provádí výplaty (Pay-out) pro Wink, označovanou jako Platební zprostředkovatel.
 
-**„Prodejní kanály“**&#x7A;namená (i) webové stránky provozované, spravované nebo vlastněné společností Wink pro účely rezervací jiných podniků a přístupné pouze s hesly vydanými společností Wink; (ii) API připojení mezi společností Wink a cestovními webovými stránkami jejích klientů; nebo (iii) jakoukoli jinou distribuční metodu, kterou společnost Wink poskytuje pokoje svým klientům pro jejich další distribuci nebo prodej, ať už na webových stránkách nebo jinak.
+**„Prodejní kanály“** znamenají (i) webové stránky provozované, spravované nebo vlastněné Wink pro jiné podniky k provádění rezervací, které jsou přístupné pouze s hesly vydanými Wink; (ii) API propojení mezi Wink a cestovními weby jeho klientů; nebo (iii) jakoukoli jinou distribuční metodu, kdy Wink dodává pokoje svým klientům k dalšímu prodeji nebo distribuci, ať už na webových stránkách nebo jinak.
 
 **1.1 Žádné partnerství**
 
-1.1.1 Tato Smlouva není zamýšlena a ani by se cokoli v ní ani v žádném z jejích ujednání nemělo vykládat tak, že by vznikl společný podnik nebo vztah partnerů, partnerství nebo vztahu zmocnitele a zástupce mezi Stranami. Pokud se Strany písemně nedohodnou jinak, žádná z nich nesmí (i) uzavírat žádnou smlouvu ani závazek s třetími stranami jako zástupce druhé Strany nebo jejím jménem, ​​(ii) popisovat se ani prezentovat jako takový zástupce ani se jakýmkoli způsobem za takového zástupce vydávat, ani (iii) jakýmkoli způsobem nebo za jakýmkoli účelem jednat jménem druhé Strany nebo ji zastupovat.
+1.1.1 Tato Smlouva není zamýšlena, ani by nic v ní nebo v jakýchkoli dohodách v ní obsažených nemělo být vykládáno tak, aby vytvářelo společný podnik nebo vztah partnerů, partnerství nebo vztah zmocnitele a zástupce mezi Stranami. Pokud se Strany písemně nedohodnou jinak, žádná z nich nesmí (i) uzavírat smlouvy nebo závazky s třetími stranami jako zástupce druhé Strany, (ii) označovat se nebo prezentovat jako takový zástupce nebo se jím jakkoli vydávat, ani (iii) jednat nebo zastupovat druhou Stranu jakýmkoli způsobem nebo za jakýmkoli účelem.
 
-1.1.2 Není-li písemně dohodnuto jinak společností Wink nebo není-li v této Smlouvě stanoveno jinak, ubytovatel nesmí nikde na svých webových stránkách zveřejnit žádné prohlášení, ať už výslovné nebo implicitní, že webové stránky jsou součástí webových stránek společnosti Wink, že jsou jimi schváleny nebo že se jedná o oficiální webové stránky společnosti Wink.
+1.1.2 Pokud se Wink písemně nedohodne jinak nebo není v této Smlouvě uvedeno jinak, Poskytovatel ubytování nesmí nikde na svých webových stránkách uvádět žádné prohlášení, výslovné nebo implicitní, že web je součástí, schválený nebo oficiální web Wink.
 
 **2. Uzavírání smluv s hosty**
 
-Obdržením potvrzení rezervace prostřednictvím platformy Wink uzavíráte smlouvu přímo s hostem a jste zodpovědní za poskytnutí služeb za podmínek a za cenu uvedenou v potvrzení rezervace. Souhlasíte také s úhradou souvisejících poplatků, pokud a kdy budou relevantní, jak je definováno v Platebních podmínkách.
+Když obdržíte potvrzení rezervace prostřednictvím platformy Wink, uzavíráte smlouvu přímo s hostem a jste odpovědní za poskytování svých služeb za podmínek a za cenu uvedenou v potvrzení rezervace. Také souhlasíte s placením souvisejících poplatků, pokud a kdy jsou relevantní podle Platebních podmínek.
 
 **3. Nezávislost poskytovatelů ubytování**
 
-Váš vztah se společností Wink je vztahem nezávislého právního subjektu, s výjimkou toho, že TripPay vystupuje jako zprostředkovatel plateb, jak je popsáno v Platebních podmínkách. Společnost Wink neřídí ani nekontroluje služby, které poskytujete, a souhlasíte s tím, že máte plné právo na to, zda a kdy tyto služby poskytnete, za jakou cenu a za jakých podmínek je nabídnete.
+Váš vztah s Wink je vztahem nezávislé právnické osoby, kromě toho, že TripPay působí jako platební zprostředkovatel, jak je popsáno v Platebních podmínkách. Wink neřídí ani nekontroluje služby, které poskytujete, a souhlasíte, že máte plnou svobodu rozhodnout, zda a kdy tyto služby poskytnete, za jakou cenu a za jakých podmínek.
 
-**4. Správa vašeho inzerátu**
+**4. Správa vašeho profilu**
 
-Jako poskytovatel ubytování vám Wink nabízí nástroje, které potřebujete k online prodeji vašeho inventáře prostřednictvím našich vlastních prodejních kanálů.
+Jako Poskytovatel ubytování vám Wink nabízí nástroje potřebné k prodeji vašeho inventáře online prostřednictvím našich vlastních prodejních kanálů.
 
-Poskytovatelé ubytování jsou zodpovědní za to, aby informace a obsah jejich nabídek byly vždy aktuální a přesné. Poskytovatelé ubytování respektují dostupnost, ceny a veškeré další závazky dohodnuté v tomto dokumentu. Poskytovatelé ubytování jsou výhradně zodpovědní za aktualizaci a neustálé udržování aktuálnosti dostupnosti, cen a případných místních daní prostřednictvím extranetu Wink. Poskytovatelé ubytování tímto umožňují společnosti Wink propagovat pokoje na všech trzích. Společnost Wink důrazně doporučuje poskytovatelům ubytování, aby vždy nabízeli co nejkonkurenceschopnější ceny, propagační akce a nabídky.
+Poskytovatelé ubytování jsou odpovědní za to, aby informace a obsah jejich nabídky byly vždy aktuální a přesné. Poskytovatelé ubytování musí respektovat dostupnost, ceny a jakékoli další závazky dohodnuté v této smlouvě. Jsou výhradně odpovědní za aktualizaci a udržování aktuálních údajů o dostupnosti, cenách a případných místních daních prostřednictvím Wink extranet. Poskytovatelé ubytování tímto umožňují Wink propagovat pokoje na všech trzích. Wink důrazně doporučuje poskytovatelům ubytování nabízet vždy co nejkonkurenceschopnější ceny, akce a nabídky.
 
 **5. Právní povinnosti**
 
-5.1 Poskytovatelé ubytování jsou zodpovědní za pochopení a dodržování veškerých zákonů, pravidel, předpisů a smluv se třetími stranami, které se vztahují na vaši nabídku.
+5.1 Poskytovatelé ubytování jsou odpovědní za pochopení a dodržování všech zákonů, pravidel, předpisů a smluv s třetími stranami, které se vztahují na jejich nabídku.
 
-5.2 Poskytovatelé ubytování jsou zodpovědní za nakládání s osobními údaji hostů a dalších osob a za jejich používání v souladu s platnými zákony na ochranu osobních údajů a těmito Podmínkami.
+5.2 Poskytovatelé ubytování jsou odpovědní za nakládání a používání osobních údajů hostů a dalších osob v souladu s platnými zákony o ochraně soukromí a těmito Podmínkami.
 
-**6. Poplatky a provize za rezervaci**
+**6. Rezervační poplatky a provize**
 
-Wink poskytuje ubytovatelům digitální nástroje, které potřebují k distribuci a prodeji svých nabídek online prostřednictvím 5 vlastních kanálů. Aktivací vaší nemovitosti pomocí funkce samoaktivace na vašem ovládacím panelu se vaše nemovitost automaticky stane rezervovatelnou na Traveliko.com a prostřednictvím sítě. Tyto kanály můžete ručně deaktivovat v extranetu v sekci nabídky - Distribuce - Prodejní kanály.
+Wink poskytuje Poskytovatelům ubytování digitální nástroje potřebné k distribuci a prodeji jejich inventáře online prostřednictvím 5 vlastních kanálů. Aktivací vaší nemovitosti pomocí funkce samoaktivace na vašem dashboardu se vaše nemovitost automaticky zpřístupní k rezervaci na Traveliko.com a v síti. Tyto kanály můžete také ručně deaktivovat v extranet v sekci \- Distribuce \- Prodejní kanály.
 
-* Traveliko.com – 0% provize online
-* Winklinks - Funkce odkazu v profilu pro sociální sítě, jako je Instagram.
-* Sdílení na sociálních sítích – Rychlé odkazy, které lze sdílet kdekoli online
-* Rezervační systém - Internetový rezervační systém pro hotelové webové stránky a další.
-* Wink Network – Partnerská síť propojující hotely přímo s našimi partnerskými společnostmi
+* Traveliko.com – OTA s 0% provizí  
+* Winklinks \- funkce link-in-bio pro sociální média jako Instagram  
+* Social Share \- rychlé odkazy, které lze sdílet kdekoli online  
+* Rezervační engine \- internetový rezervační engine pro weby hotelů a další  
+* Wink Network – affiliate síť propojující hotely přímo s našimi partnerskými partnery
 
-Poplatky za rezervaci, provize a platební poplatky se vztahují na všechny potvrzené rezervace takto:
+Rezervační poplatky, provize a poplatky za platby se vztahují následovně na jakoukoli potvrzenou rezervaci:
 
-* Traveliko.com: Poplatek za zprostředkování platby, jak je popsáno v platebních podmínkách (4 %) + poplatek za rezervaci Wink (1,5 %)
-* WinkLinks: Poplatek za zprostředkování plateb, jak je popsáno v platebních podmínkách (4 %) + poplatek za rezervaci WinkLinks (1,5 %)
-* Sdílení na sociálních sítích: Poplatek za zprostředkování plateb, jak je popsáno v platebních podmínkách (4 %) + poplatek za rezervaci přes Wink (1,5 %)
-* Rezervační systém: Poplatek zprostředkovatele plateb, jak je popsáno v platebních podmínkách (4 %) + rezervační poplatek Wink (1,5 %)
-* Síť Wink: Poplatek za zprostředkování plateb, jak je popsáno v platebních podmínkách (4 %) + poplatek za rezervaci Wink (1,5 %) + partnerská provize (dohodnutá provize dle uvážení hotelu)
+* Traveliko.com: Poplatek platebního zprostředkovatele podle Platebních podmínek (4 %) \+ Rezervační poplatek Wink (1,5 %)  
+* WinkLinks: Poplatek platebního zprostředkovatele podle Platebních podmínek (4 %) \+ Rezervační poplatek Wink (1,5 %)  
+* Social Share: Poplatek platebního zprostředkovatele podle Platebních podmínek (4 %) \+ Rezervační poplatek Wink (1,5 %)  
+* Rezervační engine: Poplatek platebního zprostředkovatele podle Platebních podmínek (4 %) \+ Rezervační poplatek Wink (1,5 %)  
+* Wink Network: Poplatek platebního zprostředkovatele podle Platebních podmínek (4 %) \+ Rezervační poplatek Wink (1,5 %) \+ Provize partnera (dohodnutá provize dle uvážení hotelu)
 
-Příklad výpočtu pro rezervaci v hodnotě 100 USD provedenou přes Trvaveliko, Social Share, Booking Engine nebo WinkLinks
+Příklad výpočtu pro rezervaci v hodnotě 100 USD přes Traveliko, Social Share, Rezervační engine nebo WinkLinks
 
-100-4 % = 96\
-96-1,5 % = 94,56\
-Splatné hotelu („Čistá sazba“) => 94,96 USD
+100 - 4 % = 96  
+96 - 1,5 % = 94,56  
+Vypláceno hotelu („Čistá sazba“) \=\> 94,56 USD
 
-Příklad výpočtu pro rezervaci v hodnotě 100 USD provedenou prostřednictvím affiliate partnera s provizí 10 %
+Příklad výpočtu pro rezervaci v hodnotě 100 USD přes partnera s 10% provizí
 
-100-4 % = 96\
-96-1,5 % = 94,56\
-94,56 - 10 % = 85,1\
-Splatné hotelu („Čistá sazba“) => 85,1 USD
+100 - 4 % = 96  
+96 - 1,5 % = 94,56  
+94,56 - 10 % = 85,1  
+Vypláceno hotelu („Čistá sazba“) \=\> 85,1 USD
 
-***
+---
 
-**Oznámení týkající se zpracování plateb externími integrátory**
+**Upozornění ohledně zpracování plateb třetími stranami**
 
-**Vezměte prosím na vědomí, že za zpracování platebních transakcí budou zodpovědní někteří přidružení partneři, dále jen „nezávislí integrátoři“. V důsledku toho tito nezávislí integrátoři převezmou roli registrovaného obchodníka. V důsledku toho se na tyto transakce již nebudou vztahovat platební podmínky společnosti Wink. Místo toho musí hotel akceptovat nové platební podmínky specifické pro dané nezávislé integrátory.**
+**Upozorňujeme, že někteří partneři, dále označovaní jako „Třetí integrátoři“, budou odpovědní za zpracování platebních transakcí. Tito Třetí integrátoři tak převezmou roli obchodníka záznamu. V důsledku toho se na tyto transakce již nebudou vztahovat platební podmínky Wink. Místo toho musí hotel přijmout nové platební podmínky specifické pro Třetí integrátory.**
 
-***
+---
 
 **7. Daně**
 
-7.1 Ubytovatel je povinen zajistit, aby Cena zahrnovala všechny příslušné Daně. Je odpovědností Ubytovatele zajistit, aby Daně uvedené v Cenách byly přesné a aktuální. Pokud Ubytovatel neuvede existenci městských daní, turistických poplatků nebo jiných místních poplatků, které je třeba uhradit, má se za to, že jsou zahrnuty v Ceně.
+7.1 Poskytovatel ubytování je odpovědný za to, aby sazba zahrnovala všechny příslušné daně. Je odpovědností Poskytovatele ubytování zajistit, že daně zahrnuté v sazbách jsou přesné a aktuální. Pokud Poskytovatel ubytování neoznámí existenci městských daní, turistických poplatků nebo jiných místních poplatků k úhradě, rozumí se, že jsou zahrnuty v sazbě.
 
-7.2 Každý poskytovatel ubytování je zodpovědný za odvedení veškerých daní příslušným vládním orgánům a/nebo institucím.
+7.2 Každý Poskytovatel ubytování je odpovědný za odvádění daní příslušným vládním úřadům a/nebo institucím.
 
-7.3 Poskytovatel ubytování nese odpovědnost za jakékoli ztráty, náklady, pokuty a/nebo škody vzniklé v důsledku nezahrnutí přesných a aktuálních daní do sazeb a/nebo v důsledku neinformování nebo nepřesného informování společnosti Wink o příslušných daních a souhlasí s jejich odškodněním.
+7.3 Poskytovatel ubytování je odpovědný a souhlasí s tím, že Wink odškodní za jakékoli ztráty, náklady, pokuty a/nebo škody vzniklé v důsledku neúplného nebo neaktuálního zahrnutí daní do svých sazeb a/nebo v důsledku neinformování nebo nesprávného informování Wink o příslušných daních.
 
-7.4 Společnost Wink při nabídce Pokojů svým Partnerům uvede všechny příslušné Daně (s výhradou pododstavce (a) tohoto oddílu). Veškeré částky splatné podle této Smlouvy, pokud není uvedeno jinak, zahrnují DPH nebo jiné příslušné daně či cla (s výjimkou daně z příjmu právnických osob nebo jiných daní ze zisku). Pokud je jakýkoli příslušný orgán odpovědný za DPH v zemi, ve které jsou tyto služby poskytovány, vyměřen a vybrán jakýkoli podíl DPH, pak společnost Wink po obdržení platného daňového dokladu od Poskytovatele ubytování uhradí Poskytovateli ubytování částku DPH zahrnutou v částkách splatných podle této Smlouvy včetně DPH.
+7.4 Wink při nabízení pokojů svým partnerům zahrne všechny příslušné daně (s výhradou bodu (a) tohoto oddílu). Veškeré částky splatné podle této Smlouvy, pokud není uvedeno jinak, zahrnují DPH nebo jiné příslušné daně či poplatky (kromě daně z příjmu právnických osob nebo jiných daní zisku). Pokud jakákoli částka DPH bude vyměřena a uvalena příslušným úřadem odpovědným za DPH v zemi, kde jsou služby poskytovány, Wink po obdržení platného daňového dokladu od Poskytovatele ubytování zaplatí Poskytovateli ubytování částku DPH zahrnutou v částkách splatných podle této Smlouvy.
 
-7.5 Jakýkoli nárok příslušného úřadu na pokuty nebo úroky vyplývající z pozdní platby nebo fakturované DPH by měl být na účet ubytovatele. Dále, pokud je jakýkoli příslušný úřad odpovědný za DPH v zemi, ve které jsou služby poskytovány, vyměřen a vybrán v rámci mechanismu samoúčtování, pak společnost Wink tuto DPH vyúčtuje ve svém přiznání k DPH v souladu s právními předpisy o DPH v dané zemi. Jakýkoli nárok příslušného úřadu na pokuty nebo úroky vyplývající z pozdní platby jakékoli samoúčtované DPH bude na účet společnosti Wink.
+7.5 Jakýkoli nárok příslušného úřadu na pokuty nebo úroky vzniklé z opožděné platby nebo jakékoli fakturované DPH bude na účet Poskytovatele ubytování. Dále, pokud bude jakákoli částka DPH vyměřena a uvalena příslušným úřadem odpovědným za DPH v zemi, kde jsou služby přijímány, v rámci mechanismu samovyměření, Wink tuto DPH zohlední ve svém daňovém přiznání v souladu s legislativou dané země. Jakýkoli nárok příslušného úřadu na pokuty nebo úroky z opožděné platby samovyměřené DPH bude na účet Wink.
 
-**8. Bankovní údaje a určený zástupce poskytovatele ubytování**
+**8. Bankovní údaje a určený zástupce Poskytovatele ubytování**
 
-Poskytovatel ubytování zajistí, aby údaje o jeho bankovním účtu poskytnuté společnosti Wink byly vždy přesné, a neprodleně oznámí jakékoli jejich změny.
+Poskytovatel ubytování zajistí, že jeho bankovní údaje poskytnuté Wink jsou vždy přesné, a bez prodlení oznámí jakékoli změny.
 
-Pouze osoba podepisující tuto smlouvu bude jediným určeným zástupcem ubytovatele, který bude mít pravomoc požadovat změny bankovního účtu a/nebo údajů o příjemci platby ubytovatele. Žádná jiná osoba nebude mít takové oprávnění jménem ubytovatele. Jakákoli změna takto určené osoby musí být písemně požádána společnosti Wink a jakákoli taková změna bude provedena pouze písemným dodatkem k této smlouvě podepsaným oběma stranami.
+Pouze osoba podepisující tuto smlouvu bude jediným určeným zástupcem Poskytovatele ubytování, který má pravomoc požadovat změny bankovních údajů a/nebo údajů o příjemci platby. Žádná jiná osoba nemá takovou pravomoc jménem Poskytovatele ubytování. Jakákoli změna této určené osoby musí být písemně oznámena Wink a bude provedena pouze písemnou dodatkem k této Smlouvě podepsaným oběma Stranami.
 
-**9. Úpravy rezervace**
+**9. Změny rezervací**
 
-9.1 Ubytovatelé odpovídají za jakoukoli změnu rezervace mimo rámec storno podmínek uvedených v potvrzení rezervace přijatém prostřednictvím přímé komunikace s hostem.
+9.1 Poskytovatelé ubytování jsou odpovědní za jakékoli změny rezervace mimo storno podmínky uvedené v potvrzení rezervace přijaté přímou komunikací s hostem.
 
-9.2 Pokud došlo k chybě ubytovacího zařízení, která vedla k nahrání nesprávné ceny, a rezervace byla následně provedena s nesprávnou cenou, měl by ubytovací podnik rezervaci uznat s nesprávnou cenou.
+9.2 Pokud dojde k chybě Poskytovatele ubytování, která způsobí nesprávné nahrání sazby a rezervace je provedena za nesprávnou sazbu, Poskytovatel ubytování by měl rezervaci dodržet za tuto nesprávnou sazbu.
 
-9.3 Společnost Wink nenese vůči ubytovateli žádnou odpovědnost za jakékoli chyby v ceně, kterých se ubytovatel dopustí.
+9.3 Wink nenese žádnou odpovědnost vůči Poskytovateli ubytování za chyby v sazbách způsobené Poskytovatelem ubytování.
 
-**10. Identifikace rezervace / Spolupráce v boji proti podvodům**
+**10. Identifikace rezervace / Spolupráce proti podvodům**
 
-10.1 Poskytovatel ubytování zajistí, aby v jeho systémech byly přesně vyplněny úplné a správné firemní údaje klientů Wink, aby každá Rezervace byla jasně identifikovatelná jako Rezervace provedená na základě této Smlouvy a v souladu s ní.
+10.1 Poskytovatel ubytování zajistí, že úplné a správné údaje o klientech Wink jsou přesně zaznamenány v jejich systémech tak, aby každá rezervace byla jasně identifikovatelná jako rezervace učiněná podle této Smlouvy.
 
-10.2 Každý zúčastněný poskytovatel ubytování musí vynaložit komerčně přiměřené úsilí, aby zajistil, že při check-inu se doklad totožnosti předložený hostem shoduje s informacemi v rezervaci. Pokud je rezervace potenciálně podvodnou rezervací nebo pokud některé údaje poskytnuté hostem nemůže společnost Wink ověřit, pak poskytovatel ubytování a společnost Wink budou spolupracovat na řešení potenciálně podvodné rezervace, což může zahrnovat i zrušení takové rezervace kdykoli. Poskytovatel ubytování souhlasí s plnou spoluprací se společností Wink a poskytne společnosti Wink veškeré informace, které si může vyžádat v souvislosti s potenciálně podvodnou rezervací.
+10.2 Každý Participující poskytovatel ubytování musí vynaložit přiměřené úsilí, aby při přihlášení hosta ověřil, že předložená identifikace odpovídá údajům o rezervaci. Pokud je rezervace potenciálně podvodná nebo některá data poskytnutá hostem nelze ověřit Winkem, Poskytovatel ubytování a Wink spolupracují na řešení této situace, včetně možnosti zrušení rezervace kdykoli. Poskytovatel ubytování souhlasí s plnou spoluprací s Winkem a poskytne mu požadované informace.
 
-10.3 Smluvní strany se dohodly, že pokud Poskytovatel ubytování nedodrží toto ustanovení a Rezervace se následně ukáže jako Potenciálně podvodná Rezervace, pak Wink nenese odpovědnost.
+10.3 Strany souhlasí, že pokud Poskytovatel ubytování nesplní tuto povinnost a rezervace se ukáže jako potenciálně podvodná, Wink nenese odpovědnost.
 
-**11. Nedostupnost / Neplnění**
+**11. Nedostupnost / Nesplnění**
 
-11.1 V případě jakékoli situace nedostupnosti (ať už z důvodu nadměrné dostupnosti nebo z jiného důvodu), která vyžaduje, aby ubytovatel přemístil hosta do alternativního ubytování, souhlasí ubytovatel s tím, že vynaloží veškeré úsilí k udržení hostů a rezervací, aby hosté mohli v takovém ubytování co nejvíce zůstat. V případě, že ubytovatel nakonec musí hosta přemístit do alternativního ubytování, souhlasí s následujícím:
+11.1 V případě nedostupnosti (např. overbookingu), která vyžaduje přesun hosta do jiného ubytování, Poskytovatel ubytování se zavazuje vynaložit veškeré úsilí, aby hosty a rezervace udržel a umožnil jim zůstat v původním ubytování co nejvíce. Pokud je přesun nevyhnutelný, Poskytovatel ubytování souhlasí s:
 
-* Bezodkladně informovat společnost Wink před přemístěním hosta;
-* Přestěhovat Hosta do alternativního ubytování stejné nebo vyšší kategorie/hodnocení ve stejné oblasti, za stejných rezervovaných podmínek, a takové přemístění uhradí Ubytovatel bez dalších poplatků pro dotčeného Hosta a bude zahrnovat mimo jiné...
-* Veškeré náklady související s dopravou a dalšími výdaji souvisejícími s přemístěním jménem dotčeného hosta.
-* Umožnit společnosti Wink odečíst veškeré přímé náklady způsobené nedostupností a/nebo přemístěním od zůstatku/ů pohledávek Poskytovatele ubytování v případě, že společnosti Wink vznikne jakákoli finanční pokuta, kompenzace nebo náklady spojené s takovou nedostupností a/nebo přemístěním.
+* Okamžitým oznámením Wink před přesunem hosta;  
+* Přesunem hosta do alternativní nemovitosti stejné nebo vyšší kategorie ve stejné oblasti za stejných podmínek bez dalších nákladů pro hosta, včetně, mimo jiné,  
+* Nákladů na dopravu a dalších výdajů spojených s přesunem hosta;  
+* Umožněním Wink odečíst všechny přímé náklady vzniklé z nedostupnosti a/nebo přesunu z pohledávek Poskytovatele ubytování, pokud Wink utrpí finanční sankce, náhrady nebo náklady spojené s těmito situacemi.
 
-11.2 V případě nesplnění kterékoli z podmínek této Smlouvy ze strany Ubytovatele, včetně nepřijatelného stavu prostor a/nebo nedostatků v Zařízení a službách, je Wink oprávněn zastavit platby a požadovat řádné splnění dohodnutých podmínek Rezervace. Ubytovatel v každém případě ponese plné náklady na jakoukoli kompenzaci splatnou dotčenému Hostovi a zbaví Wink jakékoli odpovědnosti vyplývající z vadného plnění povinností Ubytovatele podle této Smlouvy.
+11.2 V případě nesplnění podmínek této Smlouvy Poskytovatelem ubytování, včetně nepřijatelných podmínek prostor a/nebo nedostatků zařízení a služeb, má Wink právo zastavit platby a požadovat řádné splnění podmínek rezervace. Poskytovatel ubytování nese plné náklady na jakékoli odškodnění hosta a udrží Wink bez odpovědnosti za škody vzniklé vadným plněním povinností Poskytovatele ubytování.
 
-**12. Podmínky pro zúčastněné hotelové objekty**
+**12. Podmínky nemovitosti Participujícího hotelu**
 
-Ubytovatel co nejdříve oznámí prostřednictvím sekce Oznámení na Wink Extranetu veškeré stavební práce, rekonstrukce, modernizace nebo jiné práce, které změní nebo mohou změnit schopnost ubytovatele poskytovat pokoje, zařízení a služby a/nebo by mohly nepříznivě ovlivnit pobyt hosta. Aby se předešlo pochybnostem, v případě, že z takových okolností vyplývá nedostupnost nebo neplnění, uplatní se článek 11 těchto Všeobecných obchodních podmínek Wink („Nedostupnost / Neplnění“) a ubytovatel ponese plné náklady na jakoukoli kompenzaci splatnou dotčenému hostovi, čímž zbaví Wink jakékoli odpovědnosti.
+Poskytovatel ubytování co nejdříve oznámí prostřednictvím sekce „Oznámení“ ve Wink Extranetu jakékoli stavební práce, renovace, aktualizace nebo jiné zásahy, které mohou ovlivnit schopnost poskytovat pokoje, zařízení a služby nebo negativně ovlivnit pobyt hosta. V případě nedostupnosti nebo nesplnění z těchto důvodů platí ustanovení článku 11 a Poskytovatel ubytování nese plné náklady na odškodnění hosta, přičemž Wink je zproštěn odpovědnosti.
 
-**13. Změna, doba trvání a ukončení**
+**13. Změny, doba trvání a ukončení**
 
-13.1 Úprava. S výjimkou případů, kdy platné právní předpisy vyžadují jinak, může společnost Wink tyto Podmínky kdykoli upravit. Pokud provedeme podstatné změny těchto Podmínek, zveřejníme revidované Podmínky na Platformě Wink a aktualizujeme datum „Poslední aktualizace“ v horní části těchto Podmínek. Pokud se vás úprava týká, budeme vás o úpravách informovat také nejméně třicet (30) dní před datem jejich účinnosti. Pokud svou smlouvu neukončíte před datem účinnosti revidovaných Podmínek, vaše další používání Služeb bude představovat souhlas s veškerými změnami revidovaných Podmínek.
+13.1 Změny. S výjimkou případů vyžadovaných zákonem může Wink kdykoli upravit tyto Podmínky. Pokud dojde k podstatným změnám, zveřejní Wink upravené Podmínky na platformě Wink a aktualizuje datum „Naposledy aktualizováno“ v horní části těchto Podmínek. Pokud jste změnami dotčeni, oznámíme vám je nejméně třicet (30) dní před jejich účinností. Pokud smlouvu před účinností změn neukončíte, vaše další používání služeb znamená souhlas s upravenými Podmínkami.
 
-13.2 Doba trvání. Není-li dohodnuto jinak, tato Smlouva nabývá účinnosti dnem jejího uzavření na dobu neurčitou.
+13.2 Doba trvání. Pokud není dohodnuto jinak, tato Smlouva začíná platit dnem podpisu na dobu neurčitou.
 
-13.3 Tato Smlouva platí do doby, než ji Strany vypoví takto:
+13.3 Smlouva trvá do jejího ukončení Stranami následovně:
 
-* Společností Wink, kdykoli a bez udání důvodu, s třiceti (30)denní písemnou výpovědní lhůtou doručenou druhé straně;
-* Poskytovatelem ubytování, bez udání důvodu kdykoli a bez předchozího upozornění deaktivací nemovitosti na palubní desce nemovitosti v extranetu Wink.
-* Jakýmkoli jiným způsobem výslovně uvedeným jinde v této Smlouvě.
+* Wink může smlouvu kdykoli bez udání důvodu ukončit s třicetidenní písemnou výpovědí;  
+* Poskytovatel ubytování může smlouvu kdykoli bez udání důvodu ukončit deaktivací nemovitosti v extranet Wink;  
+* Jiným způsobem, pokud je výslovně uvedeno v této Smlouvě.
 
-13.4 Společnost Wink si dále vyhrazuje právo dle vlastního uvážení okamžitě vypovědět tuto Smlouvu písemnou výpovědí zaslanou Poskytovateli ubytování, pokud:
+13.4 Wink si vyhrazuje právo okamžitě ukončit smlouvu písemným oznámením Poskytovateli ubytování, pokud:
 
-* Ubytovatel zahájí insolvenční řízení, konkurz, nucenou správu nebo likvidaci, soudní správu, nucenou správu nebo jiné podobné řízení (ať už zahájené ubytovatelem nebo kterýmkoli z věřitelů ubytovatele), které není do šedesáti (60) dnů od zahájení řízení zamítnuto nebo vyřešeno ve prospěch ubytovatele.
-* Věřitel vymůže nebo se pokusí vymáhat hypotéku na zúčastněný hotel.
-* Poskytovatel ubytování ukončí svou činnost v běžném režimu.
-* Poskytovatel ubytování ztrácí nájemní smlouvu nebo práva provozovat zúčastněný hotel pod jeho současnou značkou.
-* Dochází ke změně charakteristik ubytování, včetně, ale nikoli výhradně, výstavby, prací a renovací.
+* Poskytovatel ubytování zahájí insolvenční řízení, bankrot, správu nebo podobné řízení, které nebude do 60 dnů ukončeno ve prospěch Poskytovatele;  
+* Věřitel uplatní nebo se pokusí uplatnit zástavní právo na Participující hotel;  
+* Poskytovatel ubytování přestane podnikat obvyklým způsobem;  
+* Poskytovatel ubytování ztratí nájem nebo práva k provozu Participujícího hotelu pod současnou značkou;  
+* Dojde ke změně charakteru ubytování, včetně stavebních prací a renovací;  
 * Nebo v důsledku události vyšší moci.
 
-13.5 Při předčasném ukončení nebo vypršení platnosti Smlouvy z jakéhokoli důvodu je Ubytovatel povinen:
+13.5 Po předčasném ukončení nebo uplynutí smlouvy Poskytovatel ubytování:
 
-* Respektovat všechny rezervace provedené před datem ukončení nebo vypršení platnosti za původně rezervované ceny, včetně rezervací s daty nástupu na místo po ukončení nebo vypršení platné výpovědní lhůty, nebo jinak poskytnout vhodné alternativní služby a
-* Vyrovnejte účet podle toho.
+* Dodrží všechny rezervace učiněné před ukončením za původně rezervované sazby, včetně rezervací s datem příjezdu po ukončení smlouvy, nebo zajistí vhodné alternativní služby;  
+* Uhradí příslušné závazky.
 
 **14. Prohlášení a záruky**
 
-Poskytovatel ubytování zaručuje a prohlašuje, že bude plně dodržovat následující:
+Poskytovatel ubytování zaručuje a prohlašuje, že bude plně dodržovat:
 
-14.1 Že poskytování všech pokojů a veškerého zařízení a služeb bude vždy v souladu s osvědčenými postupy v oboru a bude poskytováno s náležitou dovedností, péčí, pozorností a pečlivostí;
+14.1 Poskytování všech pokojů a zařízení a služeb v souladu s dobrými průmyslovými standardy s náležitou péčí a odborností;
 
-14.2 Že veškerý personál Zúčastněného hotelu bude řádně kvalifikovaný a vyškolený k plnění svých povinností vyplývajících z této Smlouvy;
+14.2 Všichni zaměstnanci Participujícího hotelu budou kvalifikovaní a proškolení k plnění svých povinností;
 
-14.3 Poskytovatel ubytování bude dodržovat veškeré platné zákony, normy a další požadavky všech příslušných orgánů týkající se poskytování Pokojů a všech ostatních částí každého Zúčastněného hotelu nebo jakýchkoli souvisejících služeb a/nebo zařízení a/nebo svých povinností vyplývajících z této Smlouvy;
+14.3 Dodržování všech platných zákonů, norem a požadavků příslušných orgánů;
 
-14.4 Že si každý zúčastněný hotel přečetl a souhlasí s podmínkami této Smlouvy;
+14.4 Každý Participující hotel si přečetl a přijal podmínky této Smlouvy;
 
-14.5 Že všechny Pokoje a/nebo jakákoli Zařízení a Služby poskytované na základě této Smlouvy nebo v souvislosti s ní jsou bezpečné a plně splňují všechny místní, státní, federální a/nebo národní zákony, pravidla a předpisy. Poskytovatel ubytování dále zaručuje, že žádný z Pokojů (ani žádná jiná část žádného Zúčastněného hotelu) nemá nainstalované individuální plynové ohřívače vody;
+14.5 Všechny pokoje a zařízení jsou bezpečné a plně vyhovují všem místním, státním a federálním zákonům a předpisům. Poskytovatel dále zaručuje, že žádný pokoj ani část Participujících hotelů nemá instalovány individuální plynové ohřívače vody;
 
-14.6 Veškeré informace poskytnuté přímo či nepřímo společnosti Wink Poskytovatelem ubytování na základě této Smlouvy nebo v souvislosti s ní budou aktuální a přesné.
+14.6 Veškeré informace poskytnuté Wink přímo či nepřímo jsou aktuální a přesné;
 
-14.7 Poskytovatel ubytování není zapsán v obchodním rejstříku země, na kterou se vztahují hospodářské nebo obchodní sankce, ani v takové zemi nemá bydliště; a
+14.7 Poskytovatel ubytování není založen ani rezidentem země podléhající ekonomickým nebo obchodním sankcím;
 
-14.8 Provést na vlastní náklady veškeré práce nezbytné k odstranění nedostatků a/nebo vad, o kterých mu byly oznámeny úřady, s okamžitou platností. Ubytovatel o tom neprodleně informuje společnost Wink. Ubytovatel vezme v úvahu jakékoli rozumné doporučení na zlepšení ze strany společnosti Wink.
+14.8 Na vlastní náklady dokončí jakékoli práce nezbytné k odstranění nedostatků oznámených úřady a bez prodlení o tom informuje Wink. Zohlední přiměřená doporučení Wink.
 
 **15. Incidenty a stížnosti hostů**
 
-15.1 Pokud se hostovi stane jakákoli událost, ubytovatel je povinen o ní a jejích podrobnostech co nejdříve informovat společnost Wink a plně spolupracovat se společností Wink s ohledem na vhodné řešení jakékoli takové události.
+15.1 V případě incidentu s hostem musí Poskytovatel ubytování co nejdříve informovat Wink a plně s ním spolupracovat při řešení situace.
 
-15.2 Ubytovatel souhlasí s plnou spoluprací se společností Wink při řešení všech reklamací nebo stížností hostů a poskytne podrobnou odpověď na jakýkoli dotaz společnosti Wink týkající se těchto záležitostí nejpozději do sedmi (7) kalendářních dnů od jeho obdržení od společnosti Wink nebo ve lhůtě dohodnuté v dohodě o úrovni služeb.
+15.2 Poskytovatel ubytování souhlasí s plnou spoluprací s Winkem při řešení stížností hostů a poskytne odpověď na dotazy Wink nejpozději do sedmi (7) kalendářních dnů nebo dle dohodnuté lhůty.
 
-15.3 V případě, že je společnost Wink povinna poskytnout hostovi kompenzaci v důsledku jakéhokoli incidentu, nároku nebo stížnosti hosta v důsledku jednání nebo opomenutí ubytovatele, pak se ubytovatel zavazuje neprodleně odškodnit a uhradit společnosti Wink takové výdaje v plné výši a v souladu s článkem 33 Všeobecných podmínek („Odškodnění“), pokud je to relevantní.
+15.3 Pokud Wink musí hostovi poskytnout odškodnění kvůli incidentu způsobenému Poskytovatelem ubytování, Poskytovatel ubytování se zavazuje Wink toto odškodnění uhradit v plné výši v souladu s článkem 33 („Odstupnění“).
 
-15.4 Ubytovatel souhlasí s tím, že umožní společnosti Wink odečíst veškeré náklady, výdaje a kompenzace vzniklé v důsledku incidentů a stížností hostů ze strany společnosti Wink z zůstatku (zůstatků) ubytovatele.
+15.4 Poskytovatel ubytování souhlasí, že Wink může odečíst veškeré náklady a odškodnění vzniklé z incidentů a stížností hostů z jeho zůstatků.
 
-**16. Auditní práva**
+**16. Práva na audit**
 
-16.1 Během Doby trvání smlouvy může společnost Wink provést audit jakýchkoli relevantních záznamů Poskytovatele ubytování a/nebo Zúčastněných hotelů, jak to může být přiměřeně nutné za účelem provedení ověření týkajících se (i) provádění Rezervací; (ii) veškerých plateb přijatých společností Wink a/nebo Hosty; a (iii) veškerých plateb uhrazených nebo splatných společností Wink a/nebo Hosty.
+16.1 Během platnosti smlouvy může Wink provést audit záznamů Poskytovatele ubytování a Participujících hotelů k ověření výkonu rezervací, plateb přijatých od hostů a plateb provedených Winkem.
 
-16.2 Každá ze stran hradí své vlastní náklady spojené s jakýmkoli auditem, s výjimkou následujících okolností: Pokud audit prokáže, že Poskytovatel ubytování neplní některou ze svých povinností vyplývajících z této Smlouvy, pak Poskytovatel ubytování uhradí audit v plné výši a podnikne nezbytné kroky k dosažení souladu se svými smluvními povinnostmi, aniž by tím byla dotčena ostatní práva a opravné prostředky společnosti Wink.
+16.2 Každá Strana hradí své náklady na audit, kromě případů, kdy audit odhalí nesplnění povinností Poskytovatele ubytování, který pak uhradí celý audit a přijme opatření k nápravě.
 
 **17. Pojištění**
 
-Poskytovatel ubytování musí mít dostatečné pojištění u renomovaných pojišťoven s licencí k podnikání v příslušném státě/zemi, s ohledem na veškerá rizika vůči třetím stranám, která vznikají nebo mohou vzniknout v souvislosti s poskytováním ubytování (nebo jakýchkoli zařízení a služeb) a/nebo s touto Smlouvou, včetně odpovědnosti společnosti Wink vyplývající přímo či nepřímo z jakýchkoli nároků týkajících se (i) ztráty nebo poškození jakéhokoli nemovitého nebo movitého majetku; (ii) zranění nebo smrti jakékoli osoby; (iii) ztráty nebo poškození majetku třetích stran; nebo (iv) jeho odpovědnosti vůči třetím stranám, kterým poskytuje ubytovací služby.
+Poskytovatel ubytování zajistí adekvátní pojištění u renomovaných pojišťoven oprávněných působit v dané zemi, pokrývající rizika třetích stran spojená s poskytováním ubytování a služeb, včetně odpovědnosti za škody na majetku, úrazy, smrt, škody třetím stranám apod.
 
-**18. Protikorupční opatření, obchodní omezení a obchodní etika**
+**18. Protikorupční opatření, obchodní omezení a etika**
 
-Společnost Wink zaujímá nulovou toleranci k porušování mezinárodních obchodních norem, právních předpisů v oblasti předcházení úplatkářství a korupce a příslušných omezení obchodu, toku finančních prostředků a financování terorismu.
+Wink má nulovou toleranci k porušování mezinárodních obchodních norem, protikorupční legislativy a omezení obchodu, financování terorismu a praní špinavých peněz.
 
-Poskytovatel ubytování zaručuje, že dodržuje a bude dodržovat a jeho přidružené strany dodržují a budou dodržovat Kodex chování dodavatelů Wink.
+Poskytovatel ubytování zaručuje, že dodržuje a jeho přidružené strany dodržují Kodex chování dodavatelů Wink.
 
-Poskytovatel ubytování prohlašuje, zaručuje a zavazuje se, že bude ve všech ohledech dodržovat veškeré mezinárodní obchodní normy, platná omezení obchodu, toku finančních prostředků a právní předpisy týkající se financování terorismu a předcházení úplatkářství a korupce, včetně, ale nikoli výhradně, britského zákona o úplatkářství z roku 2010 a singapurského zákona o předcházení korupci.
+Poskytovatel ubytování prohlašuje, že dodržuje všechny mezinárodní obchodní normy, omezení obchodu, financování terorismu a protikorupční zákony, včetně britského zákona o úplatkářství z roku 2010 a singapurského zákona o prevenci korupce.
 
-Poskytovatel ubytování zaručuje, že dle jeho nejlepšího vědomí a svědomí nebyl ani on, ani jeho přidružené strany odsouzen za trestný čin týkající se úplatkářství nebo korupce, ani nejsou předmětem jakéhokoli vyšetřování ze strany vládních, správních nebo regulačních orgánů.
+Poskytovatel ubytování zaručuje, že ani on, ani jeho přidružené strany nebyly odsouzeny za korupční trestný čin ani nejsou předmětem vyšetřování vládními nebo regulačními orgány.
 
 **19. Důvěrnost**
 
-19.1 Důvěrné informace. Smluvní strany berou na vědomí a souhlasí s tím, že při plnění této Smlouvy může mít každá ze Smluvních stran přístup k důvěrným a citlivým informacím druhé Smluvní strany nebo jim může být přímo či nepřímo vystavena („Důvěrné informace“). Důvěrné informace zahrnují Zákaznické údaje, objem transakcí, marketingové a obchodní plány, obchodní, finanční, technické a provozní informace, statistiky užívání, údaje o hodnocení, informace o sazbách, produktech a paritě dostupnosti, cenové politiky, údaje o konverzích a objem prokliků a další související statistiky, osobní údaje Hostů, jakýkoli software nebo informace týkající se softwaru poskytovaného nebo používaného společností Wink v souvislosti s touto Smlouvou, podmínky této Smlouvy a další neveřejné informace, které buď zpřístupňovající Smluvní strana označí za soukromé nebo důvěrné, nebo o kterých by přijímající Smluvní strana měla rozumně vědět, že by s nimi mělo být zacházeno jako se soukromými a důvěrnými.
+19.1 Důvěrné informace. Strany souhlasí, že během plnění této Smlouvy mohou získat přístup k důvěrným informacím druhé Strany („Důvěrné informace“), které zahrnují údaje o zákaznících, obchodní plány, finanční a technické informace, statistiky, osobní údaje hostů, software a další neveřejné informace označené jako důvěrné.
 
-19.2 Chraňte a zabezpečujte důvěrné informace. Každá ze stran souhlasí s tím, že: (a) veškeré důvěrné informace zůstanou výhradním vlastnictvím sdělující strany a přijímající strana nebude žádné důvěrné informace používat k žádnému účelu, s výjimkou účelu potřebného k plnění této Smlouvy, (b) bude zachovávat důvěrnost a tajemství důvěrných informací a bude je obezřetně zajišťovat svými zaměstnanci, vedoucími pracovníky, zástupci, smluvními stranami a zástupci („Oprávněné osoby“), (c) bude sdělovat důvěrné informace pouze těm Oprávněným osobám, které je potřebují znát k plnění této Smlouvy, (d) nebude Oprávněné osoby (i) kopírovat, publikovat, přenášet, reprodukovat, zveřejňovat, zveřejňovat ani zpřístupňovat důvěrné informace třetím stranám, ani (ii) je používat ani ukládat do nechráněného vyhledávacího systému nebo databáze (jinak než v souladu s podmínkami této Smlouvy), a (e) na písemnou žádost druhé strany vrátí nebo zničí všechny (tištěné i elektronické) kopie důvěrných informací. V případě, že kterákoli ze stran zpracovává osobní údaje jménem druhé strany v rámci poskytování služeb podle této smlouvy, upraví strany toto zpracování prostřednictvím smlouvy o zpracování údajů (DPA), která bude tvořit součást obchodních podmínek této smlouvy.
+19.2 Ochrana důvěrných informací. Každá Strana souhlasí, že (a) Důvěrné informace zůstanou výhradním majetkem poskytující Strany a nebudou použity jinak než k plnění této Smlouvy, (b) zajistí, aby její zaměstnanci a zástupci zachovali důvěrnost, (c) Důvěrné informace budou sdíleny pouze s oprávněnými osobami, (d) nebudou kopírovány, zveřejňovány ani zpřístupňovány třetím stranám, (e) na požádání vrátí nebo zničí všechny kopie Důvěrných informací. Pokud Strany zpracovávají osobní údaje, upraví to samostatná smlouva o zpracování dat.
 
-19.3 Povolené zveřejnění. Bez ohledu na výše uvedené, Důvěrné informace nezahrnují žádné informace v rozsahu, v jakém (i) jsou nebo se stanou veřejně dostupnými bez jakéhokoli jednání nebo opomenutí ze strany přijímající strany, (ii) byly přijímající stranou v držení před datem této Smlouvy, (iii) jsou přijímající straně sděleny třetí stranou, která nemá povinnost mlčenlivosti ohledně těchto informací, nebo (iv) je jejich zveřejnění vyžadováno na základě zákona, soudního příkazu, předvolání nebo vládní autority. Společnost Wink je oprávněna sdělit tuto Smlouvu důvěrně svým společnostem poskytujícím ubytování.
+19.3 Výjimky z důvěrnosti. Důvěrné informace nezahrnují informace, které (i) jsou veřejně dostupné bez zavinění přijímající Strany, (ii) byly přijímající Stranou známy před uzavřením smlouvy, (iii) byly poskytnuty třetí stranou bez povinnosti mlčenlivosti, nebo (iv) musí být zveřejněny podle zákona či soudního příkazu. Wink může tuto Smlouvu důvěrně sdílet se svými poskytovateli ubytování.
 
-19.4 Údaje o zákaznících. Strany vynaloží komerčně přiměřené úsilí k ochraně důvěrnosti a soukromí údajů o zákaznících a k jejich ochraně před neoprávněným použitím nebo zveřejněním. Strany se dohodly, že budou dodržovat platné zákony o zpracování osobních údajů a ochraně soukromí. Strany budou vždy používat přiměřená a vhodná bezpečnostní opatření, aby zabránily poškození a neoprávněnému přístupu k údajům o zákaznících. Taková opatření budou mimo jiné zahrnovat šifrování dat a šifrování kanálů. V případě potřeby musí Poskytovatel ubytování co nejdříve informovat společnost Wink o jakémkoli narušení bezpečnosti (nejpozději do 1 dne od zjištění narušení). Každá strana bude mít pro zákazníky přístupné zásady ochrany osobních údajů, které popisují způsob, jakým chrání a používá údaje o zákaznících. Strany mohou uplatnit svá práva na přístup ke svým osobním údajům, opravu nebo výmaz těchto údajů a své právo na vznesení námitky, přenositelnost údajů a omezení jejich zpracování písemnou žádostí zaslanou druhé straně na adresy uvedené v záhlaví této Smlouvy, a také podáním reklamace u místního Úřadu pro ochranu osobních údajů.
+19.4 Údaje o zákaznících. Strany se zavazují chránit osobní údaje zákazníků a dodržovat platné zákony o ochraně osobních údajů. Poskytovatel ubytování musí Wink bez prodlení informovat o bezpečnostním incidentu (do 1 dne od zjištění). Každá Strana má zásady ochrany soukromí přístupné zákazníkům. Strany mohou uplatnit práva na přístup, opravu, výmaz, námitku, přenositelnost a omezení zpracování osobních údajů písemnou žádostí.
 
-19.5 Oznámení. Žádná ze stran nesmí vytvářet, publikovat, distribuovat ani povolovat žádné písemné materiály, které odkazují na druhou stranu, aniž by tyto materiály nejprve předložila druhé straně a nezískala předchozí písemný souhlas strany, která je neposkytla. Tento souhlas nesmí být bezdůvodně odepřen ani odkládán.
+19.5 Oznámení. Žádná Strana nesmí zveřejnit materiály odkazující na druhou Stranu bez předchozího písemného souhlasu. Tento souhlas nesmí být neodůvodněně odepřen.
 
-19.6 Každá ze stran může kontaktovat pověřence pro ochranu osobních údajů (DPO) druhé strany prostřednictvím následující e-mailové a/nebo poštovní adresy: dataprotectionofficer@Wink.
+19.6 Kontaktní údaje pověřence pro ochranu osobních údajů (DPO): dataprotectionofficer@Wink.
 
 **20. Práva duševního vlastnictví**
 
-20.1 Poskytovatel ubytování bere na vědomí, že společnost Wink a/nebo její poskytovatelé licencí si ponechávají vlastnictví všech práv, nároků a podílů na všech Právech duševního vlastnictví společnosti Wink nebo na Webových stránkách Wink, včetně (mimo jiné) loga Wink, Obsahu a Dat Wink. Nic v této Smlouvě nelze považovat za jakýkoli převod takového práva, nároku nebo podílu na Poskytovatele ubytování.
+20.1 Poskytovatel ubytování uznává, že Wink a/nebo jeho poskytovatelé licencí si ponechávají vlastnická práva ke všem právům duševního vlastnictví Wink, včetně loga, obsahu a dat Wink. Nic v této Smlouvě nepřenáší tato práva na Poskytovatele ubytování.
 
-20.2 Poskytovatel ubytování nesmí zveřejňovat, integrovat, zahrnovat, používat, kombinovat, využívat, začleňovat ani jinak zpřístupňovat Obsah a Data Wink (ani jejich část) (a) se svým vlastním obsahem a/nebo obsahem jakéhokoli Soutěžícího Wink (včetně Hotelů), nebo (b) (i) sobě nebo ve prospěch (i) sebe sama (s výjimkou umožnění Služby a Systému v souladu s podmínkami této Smlouvy), nebo (ii) jakéhokoli Soutěžícího Wink (včetně Hotelů) (ať už za účelem propagace, marketingu, odkazování na, propagace, reklamy nebo jinak v zájmu takové strany), nebo (c) pro jakýkoli jiný účel nebo jakýmkoli jiným způsobem a/nebo na Platformách třetích stran nebo jejich prostřednictvím, s výjimkou případů výslovně stanovených v této Smlouvě. Partner nesmí měnit, upravovat, zkreslovat, vytvářet odvozená a/nebo nová díla založená na Obsahu a/nebo z něj odvozená a Obsah nesmí obsahovat (přímý ani nepřímý) odkaz, odkaz, prokliknutí ani odkaz na (webové stránky) Soutěžícího Wink (včetně Hotelů).
+20.2 Poskytovatel ubytování nesmí zveřejňovat, integrovat, používat nebo zpřístupňovat obsah a data Wink společně s obsahem konkurentů Wink nebo pro jejich prospěch, kromě případů výslovně uvedených v této Smlouvě. Nesmí upravovat obsah ani zahrnovat odkazy na konkurenty Wink.
 
-20.3 Poskytovatel ubytování se zavazuje (a zajistí, aby společnosti v rámci Skupiny poskytovatelů ubytování (přímo ani nepřímo) neregistrovaly, nezískaly, nepoužívaly, nekupovaly ani nezískaly název internetové domény, který obsahuje jakékoli slovo nebo slova, která jsou shodná, matoucí nebo podstatně podobná slovu „Wink“ nebo jakýmkoli jeho variantám, překladům nebo pravopisným chybám, obsaženým v adrese.
+20.3 Poskytovatel ubytování nesmí registrovat, používat nebo získávat internetové domény obsahující slovo „Wink“ nebo jeho varianty.
 
-20.4 Uzavřením této Smlouvy se Wink (výslovně ani mlčky) nevzdává ani neztrácí žádná ze svých práv, která jí náleží na základě jakéhokoli zákona, smlouvy nebo jinak (nyní ani v budoucnu) ve vztahu k Právům duševního vlastnictví Wink vůči Poskytovateli ubytování ani jiným třetím stranám.
+20.4 Uzavřením této Smlouvy Wink nevzdává žádná svá práva k duševnímu vlastnictví vůči Poskytovateli ubytování nebo třetím stranám.
 
 **21. Změna vlastnictví**
 
-21.1 Poskytovatel ubytování (a tam, kde to kontext vyžaduje, každý zúčastněný hotel) neprodá, nepronajme ani jinak nezbaví se svého podílu v žádném hotelovém majetku bez písemného oznámení alespoň tři (3) měsíce předem. V případě takového prodeje, pronájmu nebo jiného nakládání Poskytovatel ubytování (a/nebo zúčastněný hotel) ve smlouvě o prodeji, pronájmu nebo jiném nakládání výslovně stanoví, že tato Smlouva (včetně všech Rezervací provedených na jejím základě) bude po změně kontroly postoupena nebo převedena na nový subjekt v souladu s pododstavci (b) tohoto článku.
+21.1 Poskytovatel ubytování (a Participující hotel) nesmí prodat, pronajmout ani jinak převést svůj podíl v hotelové nemovitosti bez alespoň tří měsíců předchozího písemného oznámení. V případě takového převodu musí smlouva výslovně uvádět, že tato Smlouva (včetně všech rezervací) bude převedena na novou entitu.
 
-21.2 Pokud by společnost Wink z jakéhokoli důvodu nechtěla pokračovat v uzavření Smlouvy s novým subjektem, mohou se Smluvní strany dohodnout na okamžitém ukončení této Smlouvy, a to bez újmy na stávajících Rezervacích a dalších právech, která kterákoli ze Smluvních stran mohla před takovým ukončením vzniknout.
+21.2 Pokud Wink nebude chtít pokračovat ve smlouvě s novou entitou, Strany se mohou dohodnout na okamžitém ukončení smlouvy bez újmy na existujících rezervacích a právech.
 
-**22. Obsah výpisu**
+**22. Obsah nabídky**
 
-22.1 Wink poskytne Ubytovateli přístup k extranetu Wink. Ubytovatel se zavazuje nahrát veškeré informace a obsah týkající se produktu, včetně, ale nikoli výhradně, fotografií, obrázků, designu, textu, zvuku, videa, popisů a vybavení (dále jen „Obsah“), aby zajistil optimální distribuci produktu, a bude udržovat Obsah aktuální. V případě, že Ubytovatel Obsah neposkytne, výslovně zmocňuje Wink k tomu, aby tak učinil, a to jeho stažením přímo z webových stránek Ubytovatele, a přebírá plnou odpovědnost za jakékoli problémy, včetně reklamací, které mohou z takového nahrání vzniknout. Ubytovatel dále uděluje Wink právo upravovat a/nebo upravovat velikost a rozlišení Obsahu pro marketingové a distribuční účely.
+22.1 Wink poskytne Poskytovateli ubytování přístup do Wink extranet. Poskytovatel ubytování se zavazuje nahrát veškeré informace a obsah týkající se produktu, včetně fotografií, textů, popisů a zařízení („Obsah“), a udržovat je aktuální. Pokud Poskytovatel obsah neposkytne, výslovně povoluje Wink stáhnout jej přímo z jeho webu a přijímá plnou odpovědnost za případné problémy. Poskytovatel také uděluje Wink právo upravovat velikost a rozlišení obsahu pro marketingové účely.
 
-22.2 V případě, že Ubytovatel nemá přístup k extranetu z důvodů, které nemůže ovlivnit, Ubytovatel o tom neprodleně informuje společnost Wink.
+22.2 Pokud Poskytovatel nemůže přistupovat do extranet z důvodů mimo jeho kontrolu, okamžitě o tom informuje Wink.
 
-22.3 Ubytovatel prohlašuje a zaručuje, že má veškerá potřebná práva, licence, souhlasy a oprávnění potřebná k: (i) poskytování Obsahu společnosti Wink; (ii) Ubytovatel tímto uděluje společnosti Wink nevýhradní, bezplatné, neodvolatelné, celosvětové a sublicencovatelné marketingovým a/nebo distribučním partnerům třetích stran právo používat, upravovat, zobrazovat, publikovat a upravovat Obsah, název, loga, ochranné známky a jakékoli další duševní a průmyslové vlastnictví Ubytovatele („IPR“) za účelem plnění této Smlouvy; (iii) Ubytovatel zaručuje společnosti Wink a jejím klientům, že tato IPR neporušují žádná práva třetích stran; a (iv) Ubytovatel je odpovědný za jakékoli hanlivé nebo nemorální informace, pravdivost a přesnost svých IPR poskytnutých společnosti Wink jakýmikoli prostředky.
+22.3 Poskytovatel prohlašuje, že má všechna potřebná práva a licence k poskytnutí obsahu Wink, a uděluje Wink nevýhradní, bezplatné, neodvolatelné, celosvětové a sublicencovatelné právo používat, upravovat a zobrazovat obsah a duševní vlastnictví Poskytovatele pro účely této Smlouvy. Poskytovatel zaručuje, že tato práva neporušují práva třetích stran a nese odpovědnost za jakékoli pomlouvačné nebo nemorální informace.
 
-22.4 Ubytovatel se zavazuje, že po celou dobu trvání této Smlouvy a po jejím uplynutí odškodní a plně odškodní Wink, jeho ubytovatele a/nebo jeho partnery a na požádání je ochrání před veškerými ztrátami, které Wink, jeho ubytovatelům a/nebo jeho partnerům vzniknou, které jsou jim přiznány nebo které jsou jimi odsouhlaseny k úhradě v souvislosti s jakýmkoli nárokem na práva duševního vlastnictví.
+22.4 Poskytovatel ubytování bude po celou dobu a po ukončení smlouvy odškodňovat Wink a jeho partnery za jakékoli nároky týkající se práv duševního vlastnictví.
 
-22.5 Ubytovatel se zavazuje: (i) poskytnout společnosti Wink aktualizace způsobem požadovaným společností Wink o průběhu vyřizování nároku na práva duševního vlastnictví, včetně důkazů o tom, že nárok na práva duševního vlastnictví byl žalobcem vyřešen nebo zamítnut, jakmile je to přiměřeně proveditelné; (ii) V případě, že ubytovatel nedodrží toto ustanovení nebo pokud společnost Wink není plně spokojena s průběhem vyřizování nároku na práva duševního vlastnictví, nebo za účelem předcházení dalším škodám, převezme společnost Wink okamžitou kontrolu nad nárokem na práva duševního vlastnictví na náklady ubytovatele. Společnost Wink bude oprávněna započíst veškeré náklady a kompenzace vyplacené v důsledku nároku na práva duševního vlastnictví proti jakékoli současné, podmíněné a/nebo budoucí částce (částkám) splatné nebo dlužné vůči ubytovateli.
+22.5 Poskytovatel bude Wink informovat o průběhu nároků na práva duševního vlastnictví a v případě neplnění této povinnosti nebo nespokojenosti Wink převezme kontrolu nad nároky na náklady Poskytovatele.
 
-**23. Publicita / Externí komunikace**
+**23. Publicita / Vnější komunikace**
 
-23.1 Ubytovatel nesmí bez předchozího písemného souhlasu společnosti Wink zveřejnit žádnou komunikaci ani materiály týkající se společnosti Wink nebo této Smlouvy, ať už médiím nebo jakékoli jiné externí straně, a Ubytovatel nese výhradní a přímou odpovědnost za jakoukoli škodu nebo ztrátu, která společnosti Wink vznikne v důsledku porušení tohoto ustanovení.
+23.1 Poskytovatel nesmí zveřejňovat žádné materiály týkající se Wink nebo této Smlouvy bez předchozího písemného souhlasu Wink a nese plnou odpovědnost za škody způsobené porušením tohoto ustanovení.
 
-23.2 Ubytovatel se bude poradit se společností Wink ohledně obsahu jakékoli takové komunikace nebo materiálu, který hodlá zveřejnit, a ubytovatel musí společnosti Wink poskytnout kopii jakékoli takové komunikace nebo materiálu, který bude nakonec zveřejněn.
+23.2 Poskytovatel se před zveřejněním konzultuje s Winkem a poskytne mu kopii zveřejněných materiálů.
 
 **24. Přednost**
 
-24.1 Tato Smlouva je vytvořena za účelem umožnění individuálních obchodních smluv, které bude následně společnost Wink uzavřela s každým z Ubytovatelů. V případě rozporu se na Ubytovatele vztahují podmínky stanovené v této Smlouvě, a to s výhradou následujícího:
+24.1 Tato Smlouva umožňuje uzavření individuálních obchodních dohod mezi Wink a Poskytovateli ubytování. V případě rozporu platí:
 
-24.2 Ve vztahu k Platebním podmínkám týkajícím se dohodnutých zrušení a nedostavení se, platebním zásadám, uvolnění rezervací a dostupnosti pokojů (standardní typ) mají přednost podmínky této Smlouvy;
+24.2 V otázkách Platebních podmínek týkajících se storna, no-show, platebních politik, uvolnění a dostupnosti pokojů platí podmínky této Smlouvy;
 
-24.3 Pokud jde o sazby, minimální počet osob, slevy pro třetí osoby a děti a příslušné trhy, platí podmínky dohodnuté v příslušné individuální obchodní smlouvě.
+24.3 V otázkách sazeb, minimální obsazenosti, slev pro třetí osoby a děti a příslušných trhů platí podmínky individuálních obchodních dohod.
 
-**25. Oprávnění k podpisu – Prohlášení a podpis poskytovatele ubytování**
+**25. Oprávnění k podpisu – Zástupce Poskytovatele ubytování**
 
-25.1 Poskytovatel ubytování zaručuje, že on, osoba podepisující tuto Smlouvu a/nebo jakákoli jiná osoba poskytující informace (včetně, pro vyloučení pochybností, jakýchkoli Platebních podmínek) společnosti Wink v souvislosti s touto Smlouvou nebo na základě ní má oprávnění, způsobilost a potřebnou pravomoc podepsat tuto Smlouvu jménem každého jednotlivého Zúčastněného hotelu a že tato osoba má oprávnění, způsobilost a potřebnou pravomoc zavázat Poskytovatele ubytování a každý jednotlivé Zúčastněný hotel k této Smlouvě a že po celou dobu trvání Smlouvy bude dodržovat, plnit a zajistí, aby každý Zúčastněný hotel dodržoval a plnil své povinnosti vyplývající z této Smlouvy.
+25.1 Poskytovatel ubytování zaručuje, že osoba podepisující tuto Smlouvu má plnou pravomoc a oprávnění ji podepsat za všechny Participující hotely a zavazuje se, že během platnosti smlouvy bude dodržovat její podmínky.
 
-25.2 Ubytovatel výslovně souhlasí s tím, že elektronické přijetí této Smlouvy a jejích Obchodních podmínek, včetně těch, které se týkají změn, je platné, závazné a vymahatelné.
+25.2 Poskytovatel výslovně souhlasí, že elektronické přijetí této Smlouvy a jejích podmínek, včetně změn, je platné, závazné a vymahatelné.
 
 **26. Jazyk**
 
-Anglická verze této Smlouvy je ve všech ohledech rozhodující a má přednost v případě jakýchkoli nesrovnalostí s přeloženými verzemi, pokud existují.
+Anglická verze této Smlouvy je rozhodující a má přednost v případě rozporu s překlady.
 
-**27. Výjimky**
+**27. Zřeknutí se práv**
 
-Žádné zřeknutí se jakéhokoli porušení nebo podmínky této Smlouvy nebude považováno za zřeknutí se jakéhokoli jiného nebo následného porušení nebo podmínky, ať už podobné nebo odlišné povahy.
+Žádné zřeknutí se porušení nebo podmínky této Smlouvy nebude považováno za zřeknutí se jiných nebo budoucích porušení.
 
 **28. Oddělitelnost**
 
-Pokud je jakékoli ustanovení této Smlouvy shledáno orgánem činným v trestním řízení, soudem nebo tribunálem příslušné jurisdikce jako nezákonné, neplatné nebo jinak nevymahatelné podle vnitrostátních zákonů, bude takové ustanovení vykládáno, upravováno nebo vymazáno v rozsahu nezbytném k tomu, aby se toto ustanovení a/nebo tato Smlouva staly legálními, platnými nebo jinak vymahatelnými, a zbývající část takového ustanovení a zbývající ostatní ustanovení této Smlouvy zůstanou v platnosti, zůstanou v plné platnosti a účinnosti a budou i nadále závazná a budou vykládána tak, aby v co největší míře naplňovala záměr Stran.
+Pokud je jakékoli ustanovení této Smlouvy shledáno neplatným nebo nevymahatelným, bude upraveno nebo odstraněno tak, aby byla Smlouva platná a vymahatelná, přičemž ostatní ustanovení zůstanou v platnosti.
 
-**29. Vztah stran**
+**29. Vztah Stran**
 
-Strany jsou a budou při plnění této Smlouvy jednat jako nezávislí dodavatelé. Žádná ze stran nebude jednat jako zástupce nebo partner druhé strany ani nebude považována za takového zástupce pro jakýkoli účel, ani žádná ze stran nebude oprávněna druhou stranu jakkoli zavazovat.
+Strany jsou nezávislými dodavateli a žádná ze stran není agentem nebo partnerem druhé.
 
-**30. Úkol**
+**30. Postoupení**
 
-30.1 Žádná ze stran není oprávněna postoupit, převést nebo zatížit žádná ze svých práv a/nebo povinností vyplývajících z této Smlouvy bez předchozího písemného souhlasu druhé strany, za předpokladu, že Wink může postoupit, převést nebo zatížit kterákoli ze svých práv a/nebo povinností vyplývajících z této Smlouvy (zcela nebo zčásti nebo čas od času) přidružené společnosti bez předchozího písemného souhlasu Ubytovatele.
+30.1 Žádná Strana nesmí postoupit svá práva nebo povinnosti bez písemného souhlasu druhé Strany, kromě Wink, který může postoupit svá práva přidružené společnosti bez souhlasu Poskytovatele.
 
-30.2 Tato Smlouva je uzavřena ve prospěch Stran a jejich příslušných nástupců a povolených postupníků a nic v ní uvedené nemá za cíl ani implicitně neuděluje žádné jiné osobě jakékoli zákonné nebo spravedlivé právo, výhodu nebo opravný prostředek jakékoli povahy na základě této Smlouvy nebo z jejího důvodu, s výjimkou případů, kdy je v této Smlouvě výslovně uvedeno jinak.
+30.2 Tato Smlouva je uzavřena pro prospěch Stran a jejich nástupců a nepřiznává práva třetím stranám, pokud není výslovně uvedeno jinak.
 
 **31. Vyšší moc**
 
-Společnost Wink nenese odpovědnost za žádné zpoždění nebo neplnění jakékoli povinnosti vyplývající z těchto Podmínek, které je důsledkem příčin mimo přiměřenou kontrolu společnosti Wink nebo Wink Payments, včetně, ale nikoli výhradně, vyšší moci, přírodních katastrof, války, terorismu, nepokojů, embarg, činů civilních nebo vojenských orgánů, požárů, povodní, nehod, pandemií, epidemií nebo nemocí, stávek nebo nedostatku dopravních prostředků, paliva, energie, pracovních sil nebo materiálů („událost vyšší moci“).
+Wink nenese odpovědnost za zpoždění nebo nesplnění povinností způsobené okolnostmi mimo jeho kontrolu, jako jsou přírodní katastrofy, války, terorismus, pandemie, stávky apod.
 
 **32. Omezení odpovědnosti**
 
-32.1 V maximálním rozsahu povoleném zákonem nenese žádná ze stran odpovědnost za jakékoli nepřímé, náhodné, následné, zvláštní nebo sankční škody vyplývající z této Smlouvy nebo jejího porušení, a to ani v případě, že byla na možnost vzniku takových škod upozorněna. Toto omezení se nevztahuje na žádné porušení této Smlouvy týkající se důvěrnosti a/nebo práv duševního vlastnictví.
+32.1 V maximálním rozsahu povoleném zákonem nenese žádná Strana odpovědnost za nepřímé, náhodné, následné, zvláštní nebo trestní škody vyplývající z této Smlouvy, kromě porušení důvěrnosti a práv duševního vlastnictví.
 
-32.2 Žádná ze stran nemůže vyloučit odpovědnost v souvislosti s (i) smrtí nebo újmou na zdraví způsobenými její nedbalostí nebo nedbalostí jejích zaměstnanců, zástupců či subdodavatelů, (ii) podvodem spáchaným jí samotnou nebo jejími zaměstnanci, nebo (iii) jakýmkoli porušením, činem, opomenutím nebo odpovědností, která nemůže být omezena podle platných právních předpisů.
+32.2 Odpovědnost nelze vyloučit za smrt nebo úraz způsobený nedbalostí, podvod nebo jiné zákonem nezakázané případy.
 
-32.3 Strany berou na vědomí a souhlasí s tím, že vyloučení a omezení odpovědnosti stanovené v této Smlouvě jsou spravedlivé a přiměřené.
+32.3 Strany uznávají, že omezení odpovědnosti jsou spravedlivá a přiměřená.
 
 **33. Odškodnění**
 
-V maximálním rozsahu povoleném platnými právními předpisy souhlasíte s tím, že zbavíte odpovědnosti, budete bránit (dle uvážení společnosti Wink), odškodníte a ochráníte společnost Wink a všechny její poskytovatele ubytování a dceřiné společnosti a jejich vedoucí pracovníky, ředitele, zaměstnance a zástupce před jakýmikoli nároky, závazky, škodami, ztrátami a výdaji, včetně, bez omezení, přiměřených právních a účetních poplatků, které vyplývají z nebo jsou jakkoli spojeny s (i) vaším porušením těchto Podmínek; (ii) vaším nesprávným používáním Služeb; (iii) vaším neprovedením přesného hlášení, výběru nebo odvedení daní nebo naším neprovedením na váš pokyn; nebo (iv) vaším porušením jakýchkoli zákonů, předpisů nebo práv třetích stran.
+V maximálním rozsahu povoleném zákonem souhlasíte s tím, že Wink a jeho poskytovatelé ubytování budou od vás odškodněni a chráněni před nároky, škodami a náklady vzniklými z vašeho porušení těchto Podmínek, nesprávného používání služeb, nesprávného hlášení daní nebo porušení zákonů.
 
 **34. Rozhodné právo a jurisdikce**
 
-34.1 Tato Smlouva se řídí a vykládá výhradně v souladu s právními předpisy Singapuru. Na tuto Smlouvu se nevztahuje zákon o smlouvách (práva třetích stran) z roku 2001 (kapitola 53B). Strany se v každém případě pokusí urovnat své spory smírnou cestou mimosoudně, a to nejprve vedením jednání a jednání v dobré víře.
+34.1 Tato Smlouva se řídí zákony Singapuru. Zákon o právech třetích stran z roku 2001 (Cap 53B) se na tuto Smlouvu nevztahuje. Strany se pokusí spory řešit smírně.
 
-34.2 Veškeré spory vyplývající z této smlouvy nebo v souvislosti s ní budou předloženy a řešeny výhradně příslušnému soudu v Singapuru, bez ohledu na kolizní normy.
+34.2 Veškeré spory budou řešeny výhradně příslušným soudem v Singapuru bez ohledu na kolizní normy.
 
-**35. Protějšky**
+**35. Počet vyhotovení**
 
-Tato Smlouva může být vyhotovena ve více stejnopisech, z nichž každý (po podepsání) bude považován za originál a které dohromady budou tvořit jednu a tutéž listinu. Kromě toho bude mít jakákoli naskenovaná/elektronická kopie písemného podpisu společnosti Wink stejnou a rovnocennou platnost jako originální vlastnoruční podpis společnosti Wink a nebude mít vliv na platnost této Smlouvy.
+Tato Smlouva může být podepsána ve více vyhotoveních, z nichž každé je originálem a společně tvoří jeden dokument. Elektronický podpis Wink má stejnou platnost jako originální podpis.
 
 **36. Celá smlouva**
 
-36.1 Tato Smlouva (včetně Registračního formuláře partnera poskytovatele ubytování, harmonogramů, příloh a dodatků, které tvoří nedílnou součást této Smlouvy) představuje úplnou dohodu a porozumění stran ohledně jejího předmětu a nahrazuje a ruší všechny předchozí dohody, ujednání, ((ne)závazné) nabídky, závazky nebo prohlášení týkající se tohoto předmětu.
+36.1 Tato Smlouva (včetně registračního formuláře, příloh a dodatků) představuje úplnou dohodu Stran a nahrazuje všechny předchozí dohody.
 
-36.2 Pokud je jakékoli ustanovení této Smlouvy neplatné nebo nezávazné nebo se takovým stane, zůstávají Strany vázány všemi ostatními ustanoveními této Smlouvy. V takovém případě Strany nahradí neplatné nebo nezávazné ustanovení ustanoveními, která jsou platná a závazná a která mají v co největší míře podobný účinek jako neplatné nebo nezávazné ustanovení, s ohledem na obsah a účel této Smlouvy.
+36.2 Pokud je jakékoli ustanovení neplatné, Strany nahradí toto ustanovení platným s co nejpodobnějším účinkem.
 
-**37. Poprava**
+**37. Uzavření smlouvy**
 
-Smlouva nabývá platnosti a účinnosti až písemným potvrzením přijetí a schválení Ubytovatele společností Wink. Registrací a přihlášením do partnerského programu Wink jako Ubytovatel souhlasí Ubytovatel s podmínkami této Smlouvy, včetně ustanovení týkajících se změn této Smlouvy, bere je na vědomí a přijímá je.
+Smlouva nabývá platnosti písemným potvrzením přijetí Poskytovatelem ubytování ze strany Wink. Registrací a přihlášením do programu Wink jako Poskytovatel ubytování souhlasíte s podmínkami této Smlouvy včetně změn.
 
-Smlouva byla přečtena a všechny podmínky byly ubytovatelem odsouhlaseny. Partner výslovně souhlasí s tím, že elektronické přijetí této smlouvy a jejích podmínek, včetně těch, které se týkají změn, je platné, závazné a vymahatelné.
+Smlouva byla přečtena a všechny podmínky byly Poskytovatelem ubytování odsouhlaseny. Partner výslovně souhlasí, že elektronické přijetí této smlouvy a jejích podmínek, včetně změn, je platné, závazné a vymahatelné.
 
 **38. Oznámení**
 
-Veškerá oznámení Strany podle této Smlouvy musí být v angličtině, písemně a doručena osobně, doporučeně s předplacenou poštou nebo mezinárodně uznávanou expresní kurýrní službou (např. FedEx, UPS, DHL) do sídla společnosti nebo e-mailem kontaktní osobě.
+Veškerá oznámení podle této Smlouvy musí být v angličtině, písemná a doručena osobně, doporučenou poštou nebo mezinárodním expresním kurýrem (např. FedEx, UPS, DHL) na sídlo nebo e-mailem kontaktní osobě.
 
-Jakékoli oznámení podle této Smlouvy se považuje za doručené (i) pokud je doručeno osobně, po podpisu potvrzení o doručení, nebo (ii) pokud je doručeno předplacenou doporučenou poštou, po potvrzení o doručení; nebo (iii) pokud je doručeno expresní kurýrní službou, po datu doručení zaznamenaném tímto kurýrem, (iv) pokud je doručeno e-mailem, za předpokladu, že je předloženo potvrzení o doručení.
-
+Oznámení se považuje za doručené (i) při osobním předání s potvrzením o převzetí, (ii) při doručení doporučenou poštou na základě potvrzení o doručení, (iii) při doručení expresním kurýrem na základě záznamu o datu doručení, (iv) při e-mailu po potvrzení přijetí.

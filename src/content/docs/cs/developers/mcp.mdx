@@ -1,0 +1,105 @@
+---
+title: MCP Server
+description: Rychle připojte AI agenty k dokumentaci Wink a SDK přes hostovaný MCP server.
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## Přehled
+Hostovaný Wink MCP server je dostupný na:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Nasměrujte kompatibilní AI klienty (VS Code, Cursor, další implementující MCP HTTP transport) na tento endpoint, aby mohli:
+- Procházet dokumentaci produktů a platformy (`wink://docs/...`)
+- Objevovat SDK a prohlížet API třídy / modely (`wink://sdk/...` & `wink://sdk/.../docs`)
+- Provádět lehké sémantické / klíčové vyhledávání v dokumentaci a souhrnech SDK
+
+## Transport
+Použijte primární streamovatelný HTTP endpoint:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Pokud váš klient podporuje pouze SSE, použijte:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Cursor MCP dokumentace: https://cursor.com/docs/context/mcp
+Nastavení: Přidejte vzdálený server přes MCP nastavení.
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+Oficiální dokumentace: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Minimální vzdálená konfigurace (uživatelský nebo workspace `mcp.json`):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+Tipy:
+- Použijte Command Palette: „MCP: List Servers“ pro potvrzení připojení a procházení nástrojů.
+- Výběr nástrojů umožňuje zapnout/vypnout `sdk_search` a `docs_search`.
+- Přidejte kontext: Zobrazení chatu → Přidat kontext → MCP Resources pro připojení stránek dokumentace.
+
+## Hlavní URI zdrojů
+
+| URI | Popis |
+|-----|-------|
+| `wink://docs` | Index dokumentace (seskupeno podle kategorií) |
+| `wink://docs/{path}` | Konkrétní článek dokumentace (Markdown / MDX) |
+| `wink://sdk` | Přehled SDK (každé SDK + počet dokumentů) |
+| `wink://sdk/{sdkPath}` | README SDK / složka s dokumentací modulu / konkrétní dokument modulu |
+
+### Dokumentace modulů
+Otevření složky dokumentace SDK (např. `wink://sdk/python/wink-sdk-booking/docs`) vrací seskupené:
+- **API třídy** (počet metod + ukázkové názvy metod)
+- **Modely a typy** (datové struktury používané těmito API)
+
+## Nástroje pro vyhledávání (rychlá reference)
+| Nástroj | Účel | Typické příklady dotazů |
+|---------|-------|------------------------|
+| `sdk_search` | Najít, které SDK / API třídy použít | `cancel booking`, `list properties`, `affiliate inventory` |
+| `docs_search` | Najít konceptuální dokumentaci / návody | `authentication`, `webhooks`, `wordPress` |
+
+Nechte `query` prázdné pro získání návrhů. Každý výsledek obsahuje MCP URI, které můžete otevřít.
+
+## Typický způsob použití
+1. Spusťte `sdk_search` s vaším záměrem (např. *"list properties"*).
+2. Otevřete vrácené README SDK nebo jeho `docs_uri` pro prohlédnutí API / modelů.
+3. Použijte `docs_search` pro doplňující koncepty (autentizace, webhooks).
+
+## Poznámky
+- Každé vrácené URI může agent otevřít pro plný obsah.
+- Návrhy se zobrazují automaticky, pokud jsou dotazy prázdné.
+
+## Aktuálně podporovaná SDK
+- Wink Python SDK
+
+## Plán vývoje (vysoká úroveň)
+- Další jazyková SDK (Java, JS/TS)
+- Přidání TripPay SDK
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink na GitHubu</LinkButton>

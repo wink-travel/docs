@@ -1,0 +1,105 @@
+---
+title: MCP 伺服器
+description: 透過託管的 MCP 伺服器快速連接 AI 代理至 Wink 文件與 SDK。
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## 概覽
+託管的 Wink MCP 伺服器位於：
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+將相容的 AI 用戶端（VS Code、Cursor、其他實作 MCP HTTP 傳輸的工具）指向此端點，可讓它們：
+- 瀏覽產品與平台文件（`wink://docs/...`）
+- 探索 SDK 並深入 API 類別 / 模型（`wink://sdk/...` 與 `wink://sdk/.../docs`）
+- 對文件與 SDK 摘要執行輕量語意 / 關鍵字搜尋
+
+## 傳輸
+使用主要可串流的 HTTP 端點：
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+若您的用戶端僅支援 SSE，請使用：
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Cursor MCP 文件：https://cursor.com/docs/context/mcp  
+設定：透過 MCP 設定新增遠端伺服器。
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+官方文件：https://code.visualstudio.com/docs/copilot/customization/mcp-servers  
+最簡遠端設定（使用者或工作區 `mcp.json`）：
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+提示：
+- 使用指令面板：「MCP: List Servers」確認連線並瀏覽工具。
+- 工具選擇器可啟用/停用 `sdk_search` 與 `docs_search`。
+- 新增上下文：聊天視圖 → 新增上下文 → MCP 資源，附加文件頁面。
+
+## 核心資源 URI
+
+| URI | 說明 |
+|-----|------|
+| `wink://docs` | 文件索引（依類別分組） |
+| `wink://docs/{path}` | 特定文件文章（Markdown / MDX） |
+| `wink://sdk` | SDK 概覽（每個 SDK + 文件計數） |
+| `wink://sdk/{sdkPath}` | SDK README / 模組文件資料夾 / 特定模組文件 |
+
+### 模組文件
+開啟 SDK 文件資料夾（例如 `wink://sdk/python/wink-sdk-booking/docs`）會回傳分組：
+- **API 類別**（方法數量 + 範例方法名稱）
+- **模型與類型**（API 使用的資料結構）
+
+## 搜尋工具（快速參考）
+| 工具 | 目的 | 典型查詢範例 |
+|------|------|--------------|
+| `sdk_search` | 找出應使用的 SDK / API 類別 | `cancel booking`、`list properties`、`affiliate inventory` |
+| `docs_search` | 尋找概念性文件 / 指南 | `authentication`、`webhooks`、`wordPress` |
+
+查詢欄留空可接收建議。每個結果都包含可開啟的 MCP URI。
+
+## 典型使用流程
+1. 使用您的意圖執行 `sdk_search`（例如 *「list properties」*）。
+2. 開啟回傳的 SDK README 或其 `docs_uri`，檢視 API / 模型。
+3. 使用 `docs_search` 查找支援概念（認證、Webhook）。
+
+## 注意事項
+- 每個回傳的 URI 代理可開啟以取得完整內容。
+- 查詢為空時會自動顯示建議。
+
+## 目前支援的 SDK
+- Wink Python SDKs
+
+## 路線圖（高階）
+- 其他語言 SDK（Java、JS/TS）
+- 新增 TripPay SDKs
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink 在 GitHub</LinkButton>

@@ -1,0 +1,105 @@
+---
+title: MCP सर्वर
+description: होस्टेड MCP सर्वर के माध्यम से AI एजेंट्स को Wink दस्तावेज़ और SDKs से जल्दी कनेक्ट करें।
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## अवलोकन
+होस्टेड Wink MCP सर्वर इस पर उपलब्ध है:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+संगत AI क्लाइंट्स (VS Code, Cursor, अन्य जो MCP HTTP ट्रांसपोर्ट लागू करते हैं) को इस एंडपॉइंट पर पॉइंट करें ताकि वे:
+- उत्पाद और प्लेटफ़ॉर्म दस्तावेज़ ब्राउज़ कर सकें (`wink://docs/...`)
+- SDKs खोजें और API क्लासेस / मॉडल्स में गहराई से जाएं (`wink://sdk/...` & `wink://sdk/.../docs`)
+- दस्तावेज़ और SDK सारांशों पर हल्का सेमांटिक / कीवर्ड खोज करें
+
+## ट्रांसपोर्ट
+प्राथमिक स्ट्रीम करने योग्य HTTP एंडपॉइंट का उपयोग करें:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+यदि आपका क्लाइंट केवल SSE सपोर्ट करता है, तो उपयोग करें:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Cursor MCP दस्तावेज़: https://cursor.com/docs/context/mcp
+सेटअप: MCP सेटिंग्स के माध्यम से रिमोट सर्वर जोड़ें।
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+आधिकारिक दस्तावेज़: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+न्यूनतम रिमोट कॉन्फ़िग (यूजर या वर्कस्पेस `mcp.json`):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+टिप्स:
+- कनेक्शन की पुष्टि और टूल्स ब्राउज़ करने के लिए कमांड पैलेट में “MCP: List Servers” का उपयोग करें।
+- टूल्स पिकर से आप `sdk_search` और `docs_search` को सक्षम/अक्षम कर सकते हैं।
+- संदर्भ जोड़ें: चैट व्यू → Add Context → MCP Resources से दस्तावेज़ पेज संलग्न करें।
+
+## कोर रिसोर्स URI
+
+| URI | विवरण |
+|-----|-------------|
+| `wink://docs` | दस्तावेज़ सूचकांक (श्रेणी द्वारा समूहित) |
+| `wink://docs/{path}` | विशिष्ट दस्तावेज़ लेख (Markdown / MDX) |
+| `wink://sdk` | SDK अवलोकन (प्रत्येक SDK + दस्तावेज़ गिने जाते हैं) |
+| `wink://sdk/{sdkPath}` | SDK README / मॉड्यूल दस्तावेज़ फ़ोल्डर / विशिष्ट मॉड्यूल दस्तावेज़ |
+
+### मॉड्यूल दस्तावेज़
+SDK दस्तावेज़ फ़ोल्डर खोलने पर (जैसे `wink://sdk/python/wink-sdk-booking/docs`) समूहित रूप में मिलता है:
+- **API क्लासेस** (मेथड की संख्या + नमूना मेथड नाम)
+- **मॉडल्स और टाइप्स** (उन APIs द्वारा उपयोग किए गए डेटा स्ट्रक्चर)
+
+## खोज टूल्स (त्वरित संदर्भ)
+| टूल | उद्देश्य | सामान्य क्वेरी उदाहरण |
+|------|---------|-----------------------|
+| `sdk_search` | कौन सा SDK / API क्लास उपयोग करना है खोजें | `cancel booking`, `list properties`, `affiliate inventory` |
+| `docs_search` | अवधारणात्मक दस्तावेज़ / गाइड खोजें | `authentication`, `webhooks`, `wordPress` |
+
+सुझाव प्राप्त करने के लिए `query` खाली छोड़ें। हर परिणाम में MCP URI शामिल होता है जिसे आप खोल सकते हैं।
+
+## सामान्य उपयोग पैटर्न
+1. अपनी मंशा के साथ `sdk_search` चलाएं (जैसे *"list properties"*).
+2. लौटाए गए SDK README या उसके `docs_uri` को खोलकर APIs / मॉडल्स जांचें।
+3. सहायक अवधारणाओं (authentication, webhooks) के लिए `docs_search` का उपयोग करें।
+
+## नोट्स
+- प्रत्येक लौटाया गया URI एजेंट द्वारा पूर्ण सामग्री के लिए खोला जा सकता है।
+- जब क्वेरी खाली होती है तो सुझाव स्वतः प्रकट होते हैं।
+
+## वर्तमान में समर्थित SDKs
+- Wink Python SDKs
+
+## रोडमैप (उच्च-स्तरीय)
+- अतिरिक्त भाषा SDKs (Java, JS/TS)
+- TripPay SDKs जोड़ें
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">GitHub पर Wink</LinkButton>

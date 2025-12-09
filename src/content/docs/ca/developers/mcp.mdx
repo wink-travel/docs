@@ -1,0 +1,105 @@
+---
+title: Servidor MCP
+description: Connecta ràpidament agents d'IA a la documentació i SDKs de Wink mitjançant el servidor MCP allotjat.
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## Visió general
+El servidor MCP allotjat de Wink està disponible a:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Apunta clients d'IA compatibles (VS Code, Cursor, altres que implementin el transport HTTP MCP) a aquest punt d'accés per permetre'ls:
+- Navegar per la documentació de productes i plataforma (`wink://docs/...`)
+- Descobrir SDKs i aprofundir en classes / models d'API (`wink://sdk/...` i `wink://sdk/.../docs`)
+- Realitzar cerques semàntiques lleugeres o per paraules clau sobre resums de docs i SDKs
+
+## Transport
+Utilitza el punt d'accés HTTP principal i transmissible:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Si el teu client només suporta SSE, utilitza:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Docs MCP de Cursor: https://cursor.com/docs/context/mcp
+Configuració: Afegeix el servidor remot via la configuració MCP.
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+Docs oficials: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Configuració remota mínima (usuari o espai de treball `mcp.json`):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+Consells:
+- Utilitza la paleta de comandes: “MCP: List Servers” per confirmar la connexió i navegar per les eines.
+- El selector d'eines et permet activar/desactivar `sdk_search` i `docs_search`.
+- Afegeix context: Vista de xat → Afegeix context → Recursos MCP per adjuntar pàgines de docs.
+
+## URIs de recursos principals
+
+| URI | Descripció |
+|-----|------------|
+| `wink://docs` | Índex de documentació (agrupat per categoria) |
+| `wink://docs/{path}` | Article de documentació específic (Markdown / MDX) |
+| `wink://sdk` | Visió general dels SDK (cada SDK + recompte de docs) |
+| `wink://sdk/{sdkPath}` | README del SDK / carpeta de docs del mòdul / doc específic del mòdul |
+
+### Docs de mòduls
+Obrir una carpeta de docs d'un SDK (p. ex. `wink://sdk/python/wink-sdk-booking/docs`) retorna agrupats:
+- **Classes d'API** (recompte de mètodes + noms d'exemple de mètodes)
+- **Models i Tipus** (estructures de dades utilitzades per aquestes APIs)
+
+## Eines de cerca (Referència ràpida)
+| Eina | Propòsit | Exemples típics de consulta |
+|------|----------|-----------------------------|
+| `sdk_search` | Trobar quin SDK / classe d'API usar | `cancel·lar reserva`, `llistar propietats`, `inventari d'afiliats` |
+| `docs_search` | Trobar docs conceptuals / guies | `autenticació`, `webhooks`, `wordPress` |
+
+Deixa `query` buit per rebre suggeriments. Cada resultat inclou l'URI MCP que pots obrir.
+
+## Patró d'ús típic
+1. Executa `sdk_search` amb la teva intenció (p. ex. *"llistar propietats"*).
+2. Obre el README del SDK retornat o el seu `docs_uri` per inspeccionar APIs / models.
+3. Utilitza `docs_search` per conceptes de suport (autenticació, webhooks).
+
+## Notes
+- Cada URI retornat pot ser obert per l'agent per obtenir el contingut complet.
+- Les suggerències apareixen automàticament quan les consultes estan buides.
+
+## SDKs actualment compatibles
+- SDKs Python de Wink
+
+## Full de ruta (Alt nivell)
+- SDKs per a més llenguatges (Java, JS/TS)
+- Afegir SDKs TripPay
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink a GitHub</LinkButton>

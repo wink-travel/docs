@@ -1,0 +1,105 @@
+---
+title: MCP-palvelin
+description: Yhdistä nopeasti tekoälyagentit Wink-dokumentaatioon ja SDK:ihin isännöidyn MCP-palvelimen kautta.
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## Yleiskatsaus
+Isännöity Wink MCP -palvelin on saatavilla osoitteessa:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Ohjaa yhteensopivat tekoälyasiakkaat (VS Code, Cursor, muut MCP HTTP -siirtoa tukevat) tähän päätepisteeseen, jotta ne voivat:
+- Selailla tuote- ja alustan dokumentaatiota (`wink://docs/...`)
+- Löytää SDK:t ja tutkia API-luokkia / malleja (`wink://sdk/...` & `wink://sdk/.../docs`)
+- Suorittaa kevyitä semanttisia / avainsanahakuja dokumentaatioissa ja SDK-yhteenvedoissa
+
+## Siirto
+Käytä ensisijaista striimattavaa HTTP-päätepistettä:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Jos asiakkaasi tukee vain SSE:tä, käytä:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Cursor MCP -dokumentaatio: https://cursor.com/docs/context/mcp
+Asetus: Lisää etäpalvelin MCP-asetusten kautta.
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+Viralliset ohjeet: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Minimaalinen etäkonfiguraatio (käyttäjä- tai työtilan `mcp.json`):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+Vinkkejä:
+- Käytä komentopalettia: “MCP: List Servers” vahvistaaksesi yhteyden ja selataksesi työkaluja.
+- Työkalujen valitsin antaa mahdollisuuden ottaa käyttöön/poistaa käytöstä `sdk_search` ja `docs_search`.
+- Lisää konteksti: Keskustelunäkymä → Lisää konteksti → MCP-resurssit liittääksesi dokumenttisivuja.
+
+## Ydint resurssi-URI:t
+
+| URI | Kuvaus |
+|-----|-------------|
+| `wink://docs` | Dokumentaation indeksi (ryhmitelty kategorian mukaan) |
+| `wink://docs/{path}` | Tietty dokumentaatioartikkeli (Markdown / MDX) |
+| `wink://sdk` | SDK:n yleiskatsaus (jokainen SDK + dokumentti lasketaan) |
+| `wink://sdk/{sdkPath}` | SDK:n README / moduulien dokumentaatiokansio / tietty moduulin dokumentti |
+
+### Moduulidokumentaatio
+SDK-dokumentaatiokansion avaaminen (esim. `wink://sdk/python/wink-sdk-booking/docs`) palauttaa ryhmitellyt:
+- **API-luokat** (metodien määrä + esimerkkimetodien nimet)
+- **Mallit ja tyypit** (näiden API:en käyttämät tietorakenteet)
+
+## Hakutyökalut (Pikaviite)
+| Työkalu | Tarkoitus | Tyypillisiä hakuesimerkkejä |
+|------|---------|-----------------------|
+| `sdk_search` | Löytää käytettävän SDK:n / API-luokan | `peruuta varaus`, `listaa kohteet`, `kumppanivarasto` |
+| `docs_search` | Löytää käsitteellisiä dokumentaatioita / oppaita | `todennus`, `webhookit`, `wordPress` |
+
+Jätä `query` tyhjäksi saadaksesi ehdotuksia. Jokainen tulos sisältää MCP-URI:n, jonka voit avata.
+
+## Tyypillinen käyttötapaus
+1. Suorita `sdk_search` aikomuksellasi (esim. *"listaa kohteet"*).
+2. Avaa palautettu SDK README tai sen `docs_uri` tutkiaksesi API:ita / malleja.
+3. Käytä `docs_search` tukevien käsitteiden (todennus, webhookit) löytämiseen.
+
+## Huomautuksia
+- Jokainen palautettu URI voidaan avata agentin toimesta koko sisällön saamiseksi.
+- Ehdotukset tulevat automaattisesti näkyviin, kun haut ovat tyhjiä.
+
+## Tällä hetkellä tuetut SDK:t
+- Wink Python SDK:t
+
+## Tulevaisuuden suunnitelma (korkean tason)
+- Lisäkieliset SDK:t (Java, JS/TS)
+- TripPay SDK:iden lisääminen
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink GitHubissa</LinkButton>

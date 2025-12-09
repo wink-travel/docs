@@ -1,0 +1,105 @@
+---
+title: שרת MCP
+description: התחבר במהירות לסוכני AI לתיעוד Wink ו-SDKs דרך שרת MCP המתארח.
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## סקירה כללית
+שרת MCP של Wink המתארח זמין בכתובת:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+כוון לקוחות AI תואמים (VS Code, Cursor, אחרים המיישמים MCP HTTP transport) לנקודת הקצה הזו כדי לאפשר להם:
+- לגלוש בתיעוד מוצר ופלטפורמה (`wink://docs/...`)
+- לגלות SDKs ולחקור מחלקות / מודלים של API (`wink://sdk/...` & `wink://sdk/.../docs`)
+- לבצע חיפוש סמנטי / מילות מפתח קלות במשאבי התיעוד ותקצירי ה-SDK
+
+## תחבורה
+השתמש בנקודת הקצה הראשית הניתנת להזנה בזרם HTTP:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+אם הלקוח שלך תומך רק ב-SSE, השתמש בכתובת:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+תיעוד MCP של Cursor: https://cursor.com/docs/context/mcp
+הגדרה: הוסף שרת מרוחק דרך הגדרות MCP.
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+תיעוד רשמי: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+קונפיגורציה מרוחקת מינימלית (קובץ `mcp.json` למשתמש או סביבת עבודה):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+טיפים:
+- השתמש ב-Command Palette: “MCP: List Servers” כדי לאשר חיבור ולגלוש בכלים.
+- בורר הכלים מאפשר להפעיל/לבטל `sdk_search` ו-`docs_search`.
+- הוסף הקשר: תצוגת צ'אט → הוסף הקשר → משאבי MCP כדי לצרף דפי תיעוד.
+
+## כתובות URI עיקריות למשאבים
+
+| URI | תיאור |
+|-----|-------------|
+| `wink://docs` | אינדקס התיעוד (ממוין לפי קטגוריה) |
+| `wink://docs/{path}` | מאמר תיעוד ספציפי (Markdown / MDX) |
+| `wink://sdk` | סקירת SDK (כל SDK + ספירת מסמכים) |
+| `wink://sdk/{sdkPath}` | README של SDK / תיקיית מסמכי מודול / מסמך מודול ספציפי |
+
+### מסמכי מודול
+פתיחת תיקיית מסמכי SDK (למשל `wink://sdk/python/wink-sdk-booking/docs`) מחזירה קבוצה של:
+- **מחלקות API** (מספר שיטות + שמות דוגמאות לשיטות)
+- **מודלים וסוגים** (מבני נתונים המשמשים את ה-APIs הללו)
+
+## כלי חיפוש (התייחסות מהירה)
+| כלי | מטרה | דוגמאות לשאילתות טיפוסיות |
+|------|---------|-----------------------|
+| `sdk_search` | מצא איזה SDK / מחלקת API להשתמש | `cancel booking`, `list properties`, `affiliate inventory` |
+| `docs_search` | מצא תיעוד רעיוני / מדריכים | `authentication`, `webhooks`, `wordPress` |
+
+השאר את `query` ריק כדי לקבל הצעות. כל תוצאה כוללת את כתובת ה-MCP שניתן לפתוח.
+
+## דפוס שימוש טיפוסי
+1. הרץ `sdk_search` עם הכוונה שלך (למשל *"list properties"*).
+2. פתח את README של ה-SDK שהוחזר או את `docs_uri` שלו כדי לבדוק APIs / מודלים.
+3. השתמש ב-`docs_search` למושגים תומכים (אימות, webhooks).
+
+## הערות
+- כל URI שהוחזר ניתן לפתיחה על ידי הסוכן לתוכן מלא.
+- הצעות מופיעות אוטומטית כאשר השאילתות ריקות.
+
+## SDKs נתמכים כיום
+- Wink Python SDKs
+
+## מפת דרכים (ברמה גבוהה)
+- SDKs בשפות נוספות (Java, JS/TS)
+- הוספת SDKs של TripPay
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink ב-GitHub</LinkButton>

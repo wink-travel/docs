@@ -1,411 +1,408 @@
 ---
 title: Pogoji storitve
-description: Lahko dostopni in posodobljeni pogoji za vse naše partnerske uporabnike.
+description: Enostavno dostopni in ažurni pogoji za vse naše uporabnike partnerjev.
 sidebar:
-  order: 20
+  order: 21
 ---
+
 :::note
-Zadnja posodobitev: 12. 6. 2024
+Zadnja posodobitev 2024-06-12
 :::
+  
+**SPLOŠNI POGOJI IN DOLOČILA ZA PONUDNIKE NASTANITEV**
 
-**SPLOŠNI POGOJI POSLOVANJA ZA PONUDNIKE NASTANITEV**
-
-Z registracijo in prijavo v program Wink kot ponudnik nastanitve ponudnik nastanitve s tem potrjuje, da je pregledal in razumel, potrjuje in sprejema določila in pogoje te pogodbe s ponudnikom nastanitve (»Pogodba«).
+Z registracijo in prijavo v program Wink kot ponudnik nastanitve je ponudnik nastanitve pregledal, razumel, potrdil in sprejel pogoje te pogodbe o ponudniku nastanitve (v nadaljevanju "Pogodba").
 
 **MED:**
 
-**TRAVELIKO SINGAPORE D.O.O.**, podjetje, ustanovljeno v skladu s singapursko zakonodajo, s sedežem na naslovu #03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095, z davčno številko 201437335D ("Wink"), in
+**TRAVELIKO SINGAPORE PTE. LTD.**, podjetjem, ustanovljenim po zakonih Singapurja s sedežem na naslovu \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 z davčno številko 201437335D ("Wink"), in
 
-**PONUDNIK NASTANITVE**, katerih podatki so navedeni v registracijskem obrazcu ponudnika nastanitve ali so bili posredovani na spletu ("ponudnik nastanitve").
+**PONUDBNIKOM NASTANITVE**, katerega podatki so navedeni v obrazcu za registracijo ponudnika nastanitve ali so bili oddani preko spleta (v nadaljevanju "Ponudnik nastanitve").
 
-Wink in ponudnik nastanitve sta vsak posamično »stranka« te pogodbe in se skupaj imenujeta »stranki«.
+Wink in Ponudnik nastanitve sta vsaka posebej "Stranka" te Pogodbe in skupaj se imenujeta "Stranki."
 
 Ta dokument določa pogoje za:
 
-1. Zagotavljanje storitev distribucije nastanitev prek sistema Wink ali na kateri koli drug način, ki ga ponudnik nastanitve uporablja za distribucijo svojih izdelkov (v nadaljevanju »ponudnik nastanitve«), za katere so podrobnosti določene v plačilnih pogojih in so bili dogovorjeni cena, pogoji in razpoložljivost; in
-2. Zagotavljanje nastanitvenih storitev s strani ponudnika nastanitve končnemu potrošniku/gostu, ki je bil rezerviran prek Winka.
+1. Nudenje storitev distribucije nastanitev preko Wink ali drugih sredstev, ki jih Ponudnik nastanitve uporablja za distribucijo svojih produktov (v nadaljevanju "Ponudnik nastanitve"), za katere so podrobnosti določene v Pogojih plačila, pri čemer so cena, pogoji in razpoložljivost dogovorjeni; in  
+2. Nudenje nastanitvenih storitev s strani Ponudnika nastanitve končnemu potrošniku/gostu, ki je bila rezervirana preko Wink.
 
-Wink ne poseduje, ne nadzoruje, ne ponuja in ne upravlja nobenih oglasov. Wink ni stranka v pogodbah, sklenjenih neposredno med ponudniki nastanitev in gosti. Wink ne deluje kot zastopnik v nobeni vlogi za ponudnike nastanitev, razen kot je določeno v plačilnih pogojih storitev (»Plačilni pogoji«).
+Wink ne poseduje, ne upravlja, ne ponuja ali ne nadzoruje nobenih ponudb. Wink ni stranka pogodb, sklenjenih neposredno med Ponudniki nastanitev in gosti. Wink ne deluje kot agent Ponudnikov nastanitev, razen kot je določeno v pogojih plačila storitev ("Pogoji plačila").
 
-V primeru neskladja med temi Splošnimi pogoji (v nadaljevanju »Pogoji«) in Plačilnimi pogoji veljajo slednji.
+V primeru neskladja med temi Pogoji (v nadaljevanju "Pogoji") in Pogoji plačila, veljajo slednji.
 
-Zato so se pogodbenice sedaj dogovorile o naslednjem:
+Stranki se zato dogovorita, kot sledi:
 
 **1. Definicije**
 
-Poleg izrazov, opredeljenih drugje v tej pogodbi, se v tej pogodbi uporabljajo naslednje opredelitve, razen če ni razvidno nasprotno:
+Poleg izrazov, definiranih drugje v tej Pogodbi, veljajo naslednje definicije, razen če ni drugače določeno:
 
-**„Ponudnik(-i) nastanitve“**&#x70;omeni katero koli stranko, ki ustvari račun na platformi Wink z namenom prodaje lastnih sob in zalog pomožnih storitev prek platforme Wink.
+**“Ponudnik nastanitve(i)”** pomeni katero koli Stranko, ki ustvari račun na Wink z namenom prodaje svojih sob in dodatnih storitev preko platforme Wink.
 
-**"Sporazum"**&#x70;omeni ta sporazum.
+**“Pogodba”** pomeni to pogodbo.
 
-**"Najboljša razpoložljiva cena" ali "BAR"**&#x70;omeni najnižjo vnaprej znižano ceno za sobe z vključeno provizijo, vključno z DDV, ki jo širši javnosti ponuja sodelujoči hotel, ponudnik nastanitve ali v njegovem imenu kateri koli tretji distributer. Da bi se izognili dvomu, se kot najboljše razpoložljive cene vključijo promocijske cene, počitniške cene in vse druge javne neomejene cene.
+**"Najboljša razpoložljiva cena" ali "BAR"** pomeni najnižjo predpopustno, provizijsko ceno za sobe, vključno z DDV, ki jo ponuja Participirajoči hotel, Ponudnik nastanitve ali v njegovem imenu kateri koli tretji distributer. Za izogib dvomom, promocijske cene, počitniške cene in druge javno dostopne neomejene cene so vključene kot Najboljše razpoložljive cene.
 
-**"Rezervacija(e)"**&#x70;omeni zahtevo za rezervacijo sobe, oddano prek Winka ali odjemalca Winka, ki je posredovana ponudniku nastanitve in jo ta sprejme.
+**"Rezervacija(e)"** pomeni zahtevo za rezervacijo sobe preko Wink ali Winkovega naročnika, ki jo Ponudnik nastanitve sprejme.
 
-**"Provizija za rezervacijo"**&#x6A;e 1,5 %, ki ga Wink odšteje od vrednosti rezervacije kot provizijo za obdelavo.
+**“Provizija za rezervacijo”** je 1,5 % od vrednosti rezervacije, ki jo Wink zaračuna kot strošek obdelave.
 
-**"Vrednost rezervacije"**&#x6A;e skupni znesek, ki ga posrednik plačil prejme od gosta za rezervacijo.
+**“Vrednost rezervacije”** je skupni znesek, ki ga Plačilni posrednik zbere od gosta za rezervacijo.
 
-**"Rezervacija"**&#x70;omeni nezmožnost ponudnika nastanitve, da bi namestil gosta, med drugim zaradi tega, ker sodelujoči hotel ali v njegovem imenu ponudnik nastanitve ali kateri koli tretji distributer nima na voljo sob.
+**"Book-Out"** pomeni neuspeh Ponudnika nastanitve, da namesti gosta zaradi, med drugim, pomanjkanja razpoložljivosti sobe v Participirajočem hotelu ali v njegovem imenu s strani Ponudnika nastanitve ali tretjega distributerja.
 
-**"Komisija"**&#x70;omeni znesek, ki ga je treba dolgovati povezani družbi za vsako materializirano transakcijo v skladu s to pogodbo.
+**“Provizija"** pomeni znesek, ki ga je treba plačati partnerju za vsako realizirano transakcijo v skladu s to Pogodbo.
 
-**"Objekti in storitve"**&#x70;omeni vse objekte, obroke, ugodnosti in/ali druge storitve, ki jih zagotavlja sodelujoči hotel.
+**"Objekti in storitve"** pomeni vse objekte, obroke, ugodnosti in/ali druge storitve, ki jih nudi Participirajoči hotel.
 
-**"Gost(i)"**&#x70;omeni končnega uporabnika, ki je uporabljal, uporablja ali je rezerviran za končno uporabo sobe (in drugih prostorov in storitev, kjer je to primerno) kot rezultat neposredne ali posredne rezervacije pri Wink.
+**"Gost(i)"** pomeni končnega uporabnika, ki je uporabil, uporablja ali je rezerviral sobo (in druge objekte in storitve, če so na voljo) kot posledico neposredne ali posredne rezervacije preko Wink.
 
-**»Hotel(i)«**&#x70;omeni katero koli namestitev, ki je na voljo na spletnih mestih Wink ali prek njih.
+**“Hotel(i)”** pomeni katero koli nastanitev, dostopno na ali preko Wink spletnih strani.
 
-**"Platforma Wink"**&#x70;omeni zasebno omrežje ali tehnično rešitev, ki jo pogodbenici uporabljata za varno izmenjavo informacij v skladu s sporazumom.
+**"Wink platforma"** pomeni zasebno omrežje ali tehnično rešitev, ki jo Stranke uporabljajo za varno izmenjavo informacij v skladu s Pogodbo.
 
-**"Intelektualna lastnina"**&#x70;omeni vse pravice intelektualne lastnine katere koli narave (ne glede na to, ali so zabeležene v dokumentarni obliki ali shranjene na katerem koli magnetnem ali optičnem disku ali pomnilniku) kjer koli na svetu, ne glede na to, ali so registrirane, registrabilne ali kako drugače, vključno s patenti, uporabnimi modeli, blagovnimi znamkami, registriranimi modeli in domenskimi imeni, prijavami za katero koli od zgoraj naštetih, trgovskimi ali poslovnimi imeni, dobrim imenom, avtorskimi pravicami in pravicami v naravi avtorskih pravic, pravicami do modelov, pravicami do podatkovnih baz, moralnimi pravicami, znanjem in izkušnjami ter vsemi drugimi pravicami intelektualne lastnine, ki obstajajo v računalniški programski opremi, računalniških programih, spletnih mestih, dokumentih, informacijah, tehnikah, poslovnih metodah, risbah, logotipih, navodilih za uporabo, seznamih in postopkih ter podatkih o strankah, trženjskih metodah in postopkih ter oglaševalskem gradivu, vključno z "videzom in občutkom" vseh spletnih mest.
+**"Intelektualna lastnina"** pomeni vse pravice intelektualne lastnine katerekoli vrste (ne glede na to, ali so dokumentirane ali shranjene na magnetnem ali optičnem nosilcu) kjerkoli na svetu, registrirane ali neregistrirane, vključno s patenti, blagovnimi znamkami, registriranimi oblikami, domenami, prijavami, poslovnimi imeni, dobrim imenom, avtorskimi pravicami, pravicami do baz podatkov, moralnimi pravicami, know-how in drugimi pravicami intelektualne lastnine, ki obstajajo v programski opremi, spletnih straneh, dokumentih, informacijah, tehnikah, poslovnih metodah, risbah, logotipih, navodilih, seznamih in postopkih ter podatkih o strankah, marketinških metodah in oglaševalskem gradivu, vključno z "izgledom in občutkom" spletnih strani.
 
-**»Materializirana transakcija(e)«**&#x70;omeni rezervacijo gosta pri ponudniku nastanitve, ki je dejansko zagotovila nastanitev, kot jo je ponudnik nastanitve potrdil podjetju Wink. Materializirane transakcije bodo vedno prilagojene spremembam (npr. skrajšanim bivanjem), vračilom bremenitev, goljufijam s kreditnimi karticami, slabim dolgom ali drugim. Da bi se izognili dvomu, odpovedi, neprihodi itd. nikoli ne morejo veljati za materializirane transakcije.
+**“Realizirana transakcija(e)"** pomeni rezervacijo gosta pri Ponudniku nastanitve, ki je rezultirala v dejanski izvedbi nastanitve, kot je potrjeno Wink s strani Ponudnika nastanitve. Realizirane transakcije se vedno prilagajajo za spremembe (npr. krajše bivanje), vračila, goljufije s kreditnimi karticami, slabe terjatve ipd. Za izogib dvomom, odpovedi, ne-prihodi ipd. nikoli niso realizirane transakcije.
 
-**"Neto stopnja"**&#x70;omeni posebno ceno, ki jo bo Wink plačal vsakemu sodelujočemu hotelu za sobe, o katerih sta se stranki medsebojno pisno dogovorili.
+**"Neto cena"** pomeni določeno ceno, ki jo Wink plača vsakemu Participirajočemu hotelu za sobe, o kateri so se Stranke pisno dogovorile.
 
-**"Neprisotni"**&#x70;omeni vsak primer, ko gost ne prispe pravočasno v sodelujoči hotel v skladu z rezervacijo.
+**"Ne-prihod(i)"** pomeni vsako situacijo, ko gost ne pride pravočasno v Participirajoči hotel v skladu z rezervacijo.
 
-**"Partner"**&#x70;omeni katero koli podjetje ali posameznika, ki se povezuje s platformo Wink ali jo uporablja za promocijo in prodajo ponudbe ponudnikov nastanitev svojemu občinstvu in/ali strankam za provizijo.
+**“Partner”** pomeni katero koli podjetje ali posameznika, ki se povezuje ali uporablja Wink platformo za promocijo in prodajo inventarja Ponudnikov nastanitev svoji publiki in/ali strankam za provizijo.
 
-**"Posrednik plačil"**&#x68;čerinska družba v 100-odstotni lasti Traveliko Singapore Pte. Ltd. (»TripPay«), ki upravlja plačilne storitve, pobira plačila od gostov (»Vplačilo«) z bremenitvijo plačilne metode, povezane z njihovim nakupom, kot so kreditna kartica, debetna kartica, bančno nakazilo, kriptovalute ali PayPal itd. ... in izplača dolgovani znesek (»Neto cena«) ponudniku nastanitve.
+**“Plačilni posrednik”** je v celoti v lasti Traveliko Singapore Pte. Ltd. (“TripPay”), ki upravlja plačilne storitve, zbira plačila od gostov ("Pay-in") z bremenitvijo plačilne metode, povezane z nakupom, kot so kreditna kartica, debetna kartica, bančno nakazilo, kriptovalute ali PayPal itd., in izplačuje sredstva, ki jih dolguje ("Neto cena") ponudniku nastanitve.
 
-**"Plačilo"**&#x70;omeni pridobitev plačila, ki ga gost opravi s strani plačilnega posrednika.
+**“Pay-in”** pomeni pridobitev plačila, ki ga izvede gost preko Plačilnega posrednika.
 
-**"Izplačilo"**&#x70;omeni izplačilo neto provizije partnerju s strani plačilnega posrednika.
+**“Pay-out”** pomeni izplačilo neto provizije partnerju s strani Plačilnega posrednika.
 
-**"Provizija za plačilno storitev"**&#x6A;e 4 %, ki jih posrednik plačil odšteje od partnerske provizije kot provizijo za pridobitev plačil.
+**“Strošek plačilne storitve”** je 4 % od partnerjeve provizije, ki jo Plačilni posrednik zaračuna kot strošek pridobivanja plačila.
 
-**"Plačilni pogoji"**&#x70;omeni cene, razpoložljivost, ponudbe, promocije, plačilne pogoje in vsa druga pravila ali pogoje v zvezi z razdelitvijo sob, o katerih se pogodbenici medsebojno dogovorita.
+**"Pogoji plačila"** pomenijo cene, razpoložljivost, ponudbe, promocije, plačilne pogoje in druge pravila ali pogoje, povezane z distribucijo sob, ki so med Strankama dogovorjeni.
 
-**"Potencialno goljufiva rezervacija"**&#x70;omeni (i) rezervacijo, ki je posledica neveljavnih ali napačnih podatkov, posredovanih podjetju Wink v času takšne rezervacije, ali kot posledica spora v zvezi s kreditno kartico ali kot posledica prijave nepooblaščenih bremenitev; ali (ii) katero koli rezervacijo, ki je lahko povezana s prejšnjimi visoko tveganimi ali goljufivimi transakcijami.
+**"Potencialno goljufiva rezervacija"** pomeni (i) rezervacijo, ki izhaja iz neveljavnih ali napačnih podatkov, posredovanih Wink ob rezervaciji, ali zaradi spora glede kreditne kartice, ali zaradi prijave nepooblaščenih bremenitev; ali (ii) katerokoli rezervacijo, ki je lahko povezana s preteklimi visokorizičnimi ali goljufivimi transakcijami.
 
-**"Stopnja(e)"**&#x70;omeni ceno(-e) hotelske sobe, ki jo(-e) ponudnik nastanitve da(-jo) na voljo podjetju Wink glede na katero koli veljavno vrsto sobe ali vrsto cene v skladu s pogodbo, ki se distribuira(-jo) na vseh kanalih Wink.
+**"Cena(i)"** pomeni ceno hotelske sobe, ki jo Ponudnik nastanitve zagotovi Wink za katerokoli vrsto sobe ali tip cene v skladu s Pogodbo za distribucijo na vseh Wink kanalih.
 
-**"Soba(e)"**&#x70;omeni namestitev(-e), ki se nahaja(-jo) v katerem koli sodelujočem hotelu ali nastanitvi.
+**"Soba(e)"** pomeni nastanitev, ki se nahaja v katerem koli Participirajočem hotelu ali prenočišču.
 
-**"Davki"**&#x70;omeni vse lokalne, državne, zvezne in nacionalne davke in/ali stroške storitev, vključno z, da bi se izognili dvomu, vsemi davki na dodano vrednost (DDV), davki od prodaje, uporabe, trošarinami, davki od namestitve, prehodnimi davki, davki od najemnin, mestnimi davki, davki od letovišč in drugimi podobnimi vrstami davkov, vladnih pristojbin ali stroškov.
+**"Davki"** pomenijo vse lokalne, državne, zvezne in nacionalne davke in/ali storitvene dajatve, vključno, za izogib dvomom, z DDV, prodajnimi, uporabo, trošarinami, nastanitvenimi, prehodnimi, najemnimi, mestnimi, turističnimi in drugimi podobnimi davki, vladnimi taksami ali dajatvami.
 
-**»TripPay«**&#x70;omeni hčerinsko podjetje v celoti v lasti družbe, ki pobira plačila (vplačila) in izplačila (izplačila) za Wink, imenovano Posrednik plačil.
+**“TripPay”** pomeni v celoti v lasti podjetja, ki zbira plačila (Pay-in) in izplačila (Pay-out) za Wink, imenovan Plačilni posrednik.
 
-**"Prodajni kanali"**&#x70;omeni (i) spletna mesta, ki jih upravlja, upravlja ali je v lasti Wink za druga podjetja, da jih uporabljajo za rezervacije in do katerih je mogoče dostopati le z gesli, ki jih izda Wink; (ii) povezave API med Winkom in potovalnimi spletnimi mesti njegovih strank; ali (iii) katero koli drugo metodo distribucije, s katero Wink svojim strankam zagotavlja sobe za njihovo nadaljnjo distribucijo ali prodajo, bodisi na spletnih mestih ali kako drugače.
+**"Prodajni kanali"** pomenijo (i) spletne strani, ki jih upravlja, vodi ali ima v lasti Wink za uporabo drugih podjetij za rezervacije in so dostopne le z gesli, ki jih izda Wink; (ii) API povezave med Wink in spletnimi stranmi njegovih strank; ali (iii) katerikoli drug način distribucije, kjer Wink dobavlja sobe svojim strankam za nadaljnjo distribucijo ali prodajo, bodisi na spletnih straneh ali drugače.
 
 **1.1 Brez partnerstva**
 
-1.1.1 Ta pogodba ni namenjena in se nobena od njenih določb ali dogovorov, predvidenih v njej, ne sme razlagati kot ustanovitev skupnega podjetja ali odnosa partnerjev, partnerstva ali naročnika in zastopnika med strankama. Razen če se stranki pisno ne dogovorita drugače, nobena od njiju ne sme (i) skleniti nobene pogodbe ali obveznosti s tretjimi osebami kot zastopnik za ali v imenu druge stranke, (ii) se opisovati ali predstavljati kot tak zastopnik ali se na kakršen koli način izdajati za takega zastopnika ali (iii) kakor koli ali za kakršen koli namen delovati v imenu ali zastopati drugo stranko.
+1.1.1 Ta Pogodba ni namenjena in se ne sme razlagati kot ustanovitev skupnega podjetja ali razmerja partnerstva, partnerstva ali zastopnika med Strankama. Razen če se Stranki pisno dogovorita drugače, nobena od njih ne sme (i) sklepati pogodb ali zavez z tretjimi osebami kot zastopnik druge Stranke, (ii) se predstavljati kot tak zastopnik ali na kakršen koli način dajati vtis, da je tak zastopnik, ali (iii) delovati v imenu ali zastopati drugo Stranko.
 
-1.1.2 Razen če se Wink pisno ne dogovori drugače ali če ni v tej pogodbi določeno drugače, ponudnik nastanitve na svojem spletnem mestu (spletnih mestih) ne sme objaviti nobene izjave, bodisi izrecne bodisi implicitne, da je spletno mesto del spletnega mesta Wink, da ga podpira ali da je uradno spletno mesto Wink.
+1.1.2 Razen če se z Wink pisno dogovorita drugače ali razen če ni drugače določeno v tej Pogodbi, Ponudnik nastanitve ne sme nikjer na svojih spletnih straneh objavljati izjav, bodisi izrecnih ali implicitnih, da je spletna stran del Wink, da jo Wink podpira ali da je uradna spletna stran Wink.
 
-**2. Sklepanje pogodb z gosti**
+**2. Pogodba z gosti**
 
-Ko prejmete potrditev rezervacije prek platforme Wink, sklenete pogodbo neposredno z gostom in ste odgovorni za zagotavljanje storitev v skladu s pogoji in po ceni, navedeni na potrditvi rezervacije. Strinjate se tudi s plačilom s tem povezanih stroškov, če in kadar je to primerno, kot je opredeljeno v Plačilnih pogojih.
+Ko prejmete potrdilo o rezervaciji preko Wink platforme, sklepate pogodbo neposredno z gostom in ste odgovorni za izvedbo storitev po pogojih in ceni, navedenih v potrdilu o rezervaciji. Prav tako se zavezujete plačati povezane pristojbine, če in ko so določene v Pogojih plačila.
 
 **3. Neodvisnost ponudnikov nastanitev**
 
-Vaše razmerje z Winkom je razmerje neodvisne pravne osebe, razen da TripPay deluje kot posrednik pri plačilih, kot je opisano v Plačilnih pogojih. Wink ne usmerja ali nadzoruje storitev, ki jih zagotavljate, in strinjate se, da imate popolno diskrecijsko pravico pri odločanju o tem, ali in kdaj boste te storitve zagotovili ter po kakšni ceni in pod kakšnimi pogoji jih boste ponudili.
+Vaš odnos z Wink je kot neodvisna pravna oseba, razen da TripPay deluje kot plačilni posrednik, kot je opisano v Pogojih plačila. Wink ne usmerja ali nadzoruje storitev, ki jih nudite, in se strinjate, da imate popolno diskrecijo, ali in kdaj boste te storitve nudili, po kakšni ceni in pod kakšnimi pogoji.
 
-**4. Upravljanje vašega oglasa**
+**4. Upravljanje vaše ponudbe**
 
-Kot ponudnik nastanitev vam Wink ponuja orodja, ki jih potrebujete za spletno prodajo vašega inventarja prek naših lastniških prodajnih kanalov.
+Kot ponudnik nastanitve vam Wink ponuja orodja za prodajo vašega inventarja preko naših lastniških prodajnih kanalov.
 
-Ponudniki nastanitev so odgovorni za to, da so podatki in vsebina njihovih oglasov vedno posodobljeni in točni. Ponudniki nastanitev morajo spoštovati razpoložljivost, cene in vse druge obveznosti, dogovorjene v tem dokumentu. Ponudniki nastanitev so izključno odgovorni za posodabljanje in stalno ažurnost razpoložljivosti, cen in morebitnih lokalnih davkov prek ekstraneta Wink. Ponudniki nastanitev s tem dovoljujejo Winku, da promovira sobe na vseh trgih. Wink ponudnikom nastanitev toplo priporoča, da vedno ponujajo najbolj konkurenčne cene, promocije in ponudbe.
+Ponudniki nastanitev so odgovorni, da so podatki in vsebina njihove ponudbe vedno ažurni in točni. Ponudniki morajo spoštovati razpoložljivost, cene in druge dogovorjene obveznosti. Izključno so odgovorni za posodabljanje razpoložljivosti, cen in veljavnih lokalnih davkov, če obstajajo, preko Wink ekstraneta. Ponudniki dovoljujejo Wink promocijo sob na vseh trgih. Wink močno priporoča, da ponudniki vedno nudijo najbolj konkurenčne cene, promocije in ponudbe.
 
 **5. Pravne obveznosti**
 
-5.1 Ponudniki nastanitev so odgovorni za razumevanje in upoštevanje vseh zakonov, pravil, predpisov in pogodb s tretjimi osebami, ki veljajo za vaš oglas.
+5.1 Ponudniki nastanitev so odgovorni za razumevanje in spoštovanje vseh zakonov, pravil, predpisov in pogodb s tretjimi osebami, ki veljajo za njihovo ponudbo.
 
-5.2 Ponudniki nastanitev so odgovorni za ravnanje in uporabo osebnih podatkov gostov in drugih oseb v skladu z veljavnimi zakoni o zasebnosti in temi pogoji.
+5.2 Ponudniki so odgovorni za ravnanje in uporabo osebnih podatkov gostov in drugih v skladu z veljavnimi zakoni o varstvu zasebnosti in temi Pogoji.
 
-**6. Pristojbine in provizije za rezervacijo**
+**6. Provizije za rezervacije in plačila**
 
-Wink ponudnikom nastanitev zagotavlja digitalna orodja, ki jih potrebujejo za distribucijo in prodajo svojih nepremičnin na spletu prek 5 lastniških kanalov. Z aktivacijo vaše nepremičnine prek funkcije samodejne aktivacije na nadzorni plošči bo vaša nepremičnina samodejno postala rezervirana na Traveliko.com in prek omrežja. Te kanale lahko ročno deaktivirate v ekstranetu v razdelku menija - Distribucija - Prodajni kanali.
+Wink ponuja ponudnikom nastanitev digitalna orodja za distribucijo in prodajo njihovega inventarja preko 5 lastniških kanalov. Z aktivacijo vaše nastanitve preko samodejne aktivacije na nadzorni plošči bo vaša nastanitev samodejno rezervabilna na Traveliko.com in preko omrežja. Te kanale lahko ročno deaktivirate v ekstranetu pod menijem \- Distribucija \- Prodajni kanali.
 
-* Traveliko.com – 0 % provizije prek spleta
-* Winklinks - Funkcija povezave v bio za kanale družbenih medijev, kot je Instagram.
-* Deljenje na družbenih omrežjih – hitre povezave, ki jih lahko delite kjer koli na spletu
-* Rezervacijski sistem - Internetni rezervacijski sistem za hotelske spletne strani in drugo.
-* Wink Network – Partnersko omrežje, ki povezuje hotele neposredno z našimi partnerskimi podjetji
+* Traveliko.com – 0 % provizija OTA  
+* Winklinks \- funkcija povezave v bio za družbena omrežja, kot je Instagram.  
+* Social Share \- hitre povezave, ki jih lahko delite kjerkoli na spletu  
+* Booking Engine \- spletni rezervacijski sistem za hotelske strani in druge.  
+* Wink Network – partnersko omrežje, ki povezuje hotele neposredno z našimi partnerskimi partnerji
 
-Za vse potrjene rezervacije veljajo naslednji stroški rezervacije, provizije in plačilne pristojbine:
+Provizije za rezervacije, plačilne provizije in stroški plačil veljajo za vsako potrjeno rezervacijo:
 
-* Traveliko.com: Provizija za posrednika plačil, kot je opisano v plačilnih pogojih (4 %) + provizija za rezervacijo Wink (1,5 %)
-* WinkLinks: Provizija za posrednika plačil, kot je opisano v plačilnih pogojih (4 %) + provizija za rezervacijo Wink (1,5 %)
-* Deljenje na družbenih omrežjih: Provizija za posrednika plačil, kot je opisano v plačilnih pogojih (4 %) + provizija za rezervacijo Wink (1,5 %)
-* Rezervacijski sistem: Provizija za posrednika plačil, kot je opisano v plačilnih pogojih (4 %) + provizija za rezervacijo Wink (1,5 %)
-* Wink Network: Provizija za posrednika plačil, kot je opisano v plačilnih pogojih (4 %) + provizija za rezervacijo Wink (1,5 %) + partnerska provizija (dogovorjena provizija po presoji hotela)
+* Traveliko.com: strošek plačilnega posrednika, kot je opisano v Pogojih plačila (4 %) + provizija Wink za rezervacijo (1,5 %)  
+* WinkLinks: strošek plačilnega posrednika (4 %) + provizija Wink (1,5 %)  
+* Social Share: strošek plačilnega posrednika (4 %) + provizija Wink (1,5 %)  
+* Booking Engine: strošek plačilnega posrednika (4 %) + provizija Wink (1,5 %)  
+* Wink Network: strošek plačilnega posrednika (4 %) + provizija Wink (1,5 %) + partnerska provizija (dogovorjena provizija po presoji hotela)
 
-Primer izračuna za rezervacijo v vrednosti 100 USD, opravljeno prek Trvaveliko, družbenih omrežij, sistema za rezervacije ali WinkLinks
+Primer izračuna za rezervacijo v vrednosti 100 USD preko Traveliko, Social Share, Booking Engine ali WinkLinks
 
-100-4 % = 96\
-96-1,5 % = 94,56\
-Plačljivo hotelu („Neto cena“) => 94,96 USD
+100 - 4 % = 96  
+96 - 1,5 % = 94,56  
+Plačljivo hotelu ("Neto cena") => 94,56 USD
 
-Primer izračuna za rezervacijo v vrednosti 100 USD, opravljeno prek partnerja z 10-odstotno provizijo
+Primer izračuna za rezervacijo v vrednosti 100 USD preko partnerja s 10 % provizijo
 
-100-4 % = 96\
-96-1,5 % = 94,56\
-94,56-10 % = 85,1\
-Plačljivo hotelu („Neto cena“) => 85,1 USD
+100 - 4 % = 96  
+96 - 1,5 % = 94,56  
+94,56 - 10 % = 85,1  
+Plačljivo hotelu ("Neto cena") => 85,1 USD
 
-***
+---
 
-**Obvestilo o obdelavi plačil s strani tretjih integratorjev**
+**Obvestilo glede obdelave plačil s strani tretjih integratorjev**
 
-**Upoštevajte, da bodo za obdelavo plačilnih transakcij odgovorne nekatere povezane družbe, v nadaljevanju imenovane »tretje osebe, ki integrirajo«. Posledično bodo te tretje osebe, ki integrirajo, prevzele vlogo registriranega trgovca. Posledično za te transakcije ne bodo več veljali Winkovi plačilni pogoji. Namesto tega mora hotel sprejeti nove plačilne pogoje, specifične za tretje osebe, ki integrirajo.**
+**Prosimo, upoštevajte, da bodo nekateri partnerji, v nadaljevanju imenovani "Tretji integratorji", odgovorni za obdelavo plačilnih transakcij. Posledično bodo ti Tretji integratorji prevzeli vlogo trgovca v evidenci. Zato pogoji plačila Wink ne bodo več veljali za te transakcije. Namesto tega morajo hoteli sprejeti nove pogoje plačila, specifične za Tretje integratorje.**
 
-***
+---
 
 **7. Davki**
 
-7.1 Ponudnik nastanitve je odgovoren za to, da Cena vključuje vse veljavne davke. Odgovornost Ponudnika nastanitve je zagotoviti, da so davki, vključeni v Cene, točni in posodobljeni. Kadar Ponudnik nastanitve ne navede obstoja mestnih davkov, turističnih taks ali drugih lokalnih pristojbin, ki jih je treba plačati, se razume, da so vključeni v Ceno.
+7.1 Ponudnik nastanitve je odgovoren, da zagotovi, da cena vključuje vse veljavne davke. Ponudnik mora zagotoviti, da so davki vključeni v cene točni in ažurni. Če ponudnik ne navede obstoja mestnih davkov, turističnih taks ali drugih lokalnih dajatev, se šteje, da so vključeni v ceno.
 
-7.2 Vsak ponudnik nastanitve je odgovoren za nakazilo vseh davkov ustreznim vladnim agencijam in/ali institucijam.
+7.2 Vsak ponudnik je odgovoren za plačilo davkov pristojnim državam in institucijam.
 
-7.3 Ponudnik nastanitve je odgovoren za in se strinja, da bo Wink povrnil vse izgube, stroške, kazni in/ali škodo, nastalo zaradi kakršne koli nevključitve natančnih in posodobljenih davkov v njihove tarife in/ali zaradi kakršne koli neobveščanja ali netočnega obveščanja Winka o veljavnih davkih.
+7.3 Ponudnik nastanitve je odgovoren in se zavezuje, da bo povrnil Wink za vse izgube, stroške, kazni in/ali odškodnine, ki nastanejo zaradi neustreznega vključevanja davkov v cene ali zaradi neobveščanja Wink o veljavnih davkih.
 
-7.4 Wink mora pri ponujanju sob svojim partnerjem vključiti vse veljavne davke (v skladu s pododstavkom (a) tega oddelka). Vsi zneski, ki jih je treba plačati po tej pogodbi, razen če ni navedeno drugače, vključujejo DDV ali druge veljavne davke ali dajatve (razen davka od dohodkov pravnih oseb ali drugih davkov od dobička). Če pristojni organ, pristojen za DDV v državi, v kateri se te storitve opravljajo, odmeri in pobere kakršen koli znesek DDV, mora Wink po prejemu veljavnega davčnega računa od ponudnika nastanitve ponudniku nastanitve plačati znesek DDV, ki je vključen v zneske z vključenim DDV, ki jih je treba plačati po tej pogodbi.
+7.4 Wink bo pri ponudbi sob partnerjem vključil vse veljavne davke (ob upoštevanju točke (a) tega člena). Vse vsote, ki jih je treba plačati po tej pogodbi, razen če ni drugače navedeno, vključujejo DDV ali druge veljavne davke (razen davka od dobička). Če je DDV obračunan s strani pristojnega organa, bo Wink po prejemu veljavnega davčnega računa plačal ponudniku znesek DDV, vključen v plačljive zneske.
 
-7.5 Vsak zahtevek pristojnega organa za kazni ali obresti, ki izhajajo iz zamude pri plačilu, ali kakršen koli zaračunani DDV, mora biti v breme ponudnika nastanitve. Poleg tega, če kateri koli pristojni organ, pristojen za DDV v državi, v kateri so storitve prejete, odmeri in pobere kakršen koli znesek DDV v skladu z mehanizmom samoobračunavanja, mora Wink ta DDV obračunati v svoji obračunu DDV v skladu z zakonodajo o DDV v državi. Vsak zahtevek pristojnega organa za kazni ali obresti, ki izhajajo iz zamude pri plačilu kakršnega koli samoobračunanega DDV, mora biti v breme Winka.
+7.5 Morebitne kazni ali obresti zaradi zamude pri plačilu ali obračunanega DDV nosi ponudnik nastanitve. Če je DDV obračunan po samoprijavi, bo Wink to upošteval v svoji DDV napovedi. Morebitne kazni zaradi zamude pri plačilu samoprijavljenega DDV nosi Wink.
 
-**8. Bančni podatki in pooblaščeni predstavnik ponudnika nastanitve**
+**8. Bančni podatki in pooblaščeni zastopnik ponudnika nastanitve**
 
-Ponudnik nastanitve mora zagotoviti, da so podatki o njegovem bančnem računu, posredovani podjetju Wink, vedno točni, in ga mora nemudoma obvestiti o vseh spremembah le-teh.
+Ponudnik mora zagotoviti, da so njegovi bančni podatki, posredovani Wink, vedno točni in mora brez odlašanja sporočiti spremembe.
 
-Samo oseba, ki podpiše to pogodbo, je edini imenovani predstavnik ponudnika nastanitve, ki je pooblaščen za zahtevo po spremembah bančnega računa in/ali podatkov o prejemniku plačila ponudnika nastanitve. Nobena druga oseba nima takšnega pooblastila v imenu ponudnika nastanitve. Vsaka sprememba tako imenovane osebe se mora pisno zahtevati pri Winku, vsaka taka sprememba pa se izvede le s pisnim dodatkom k tej pogodbi, ki ga podpišeta obe stranki.
+Samo oseba, ki podpiše to pogodbo, je pooblaščeni zastopnik ponudnika za zahtevo sprememb bančnih podatkov ali podatkov o prejemniku plačila. Vsaka sprememba pooblaščene osebe mora biti pisno sporočena Wink in bo izvedena le z pisnim aneksom k tej pogodbi, ki ga podpišeta obe Stranki.
 
-**9. Spremembe rezervacije**
+**9. Spremembe rezervacij**
 
-9.1 Ponudniki nastanitev so odgovorni za vsako spremembo rezervacije, ki ni v skladu s pravili o odpovedi, navedenimi na potrditvi rezervacije, sprejeti prek neposredne komunikacije z gostom.
+9.1 Ponudniki so odgovorni za spremembe rezervacij, ki so zunaj politike odpovedi, določene v potrdilu o rezervaciji, in jih sprejmejo v neposredni komunikaciji z gostom.
 
-9.2 Če je prišlo do napake ponudnika nastanitve, zaradi katere je bila naložena napačna cena, in je bila posledično rezervacija opravljena po napačni ceni, mora ponudnik nastanitve rezervacijo odobriti po napačni ceni.
+9.2 Če ponudnik zaradi napake naloži napačno ceno in je rezervacija opravljena po tej napačni ceni, mora ponudnik spoštovati to ceno.
 
-9.3 Wink ne prevzema nobene odgovornosti do ponudnika nastanitve za kakršne koli napake v ceniku, ki jih stori ponudnik nastanitve.
+9.3 Wink ne prevzema odgovornosti za napake v cenah, ki jih naredi ponudnik.
 
-**10. Identifikacija rezervacije / Sodelovanje pri preprečevanju goljufij**
+**10. Identifikacija rezervacij / sodelovanje proti goljufijam**
 
-10.1 Ponudnik nastanitve mora zagotoviti, da so v njegovih sistemih natančno vneseni polni in pravilni podatki o podjetju strank Wink, tako da je vsaka rezervacija jasno prepoznavna kot rezervacija, opravljena v skladu s to pogodbo.
+10.1 Ponudnik mora zagotoviti, da so podatki o Winkovih strankah pravilno vneseni v njihove sisteme, da je vsaka rezervacija jasno prepoznavna kot rezervacija v skladu s to pogodbo.
 
-10.2 Vsak sodelujoči ponudnik nastanitve si mora v komercialno razumnih mejah prizadevati, da se ob prijavi identifikacija, ki jo predloži gost, ujema s podatki o rezervaciji. Če je rezervacija potencialno goljufiva rezervacija ali če Wink ne more preveriti določenih podatkov, ki jih posreduje gost, bosta ponudnik nastanitve in Wink sodelovala pri reševanju potencialno goljufive rezervacije, kar lahko vključuje tudi preklic takšne rezervacije kadar koli. Ponudnik nastanitve se strinja, da bo v celoti sodeloval z Winkom in mu bo posredoval vse informacije, ki jih lahko zahteva v zvezi s potencialno goljufivo rezervacijo.
+10.2 Vsak ponudnik mora ob prijavi preveriti, da se identifikacija gosta ujema z rezervacijo. Če je rezervacija potencialno goljufiva ali podatki ne morejo biti preverjeni, bosta ponudnik in Wink sodelovala pri reševanju, kar lahko vključuje tudi preklic rezervacije. Ponudnik se zavezuje k polnemu sodelovanju in posredovanju zahtevanih informacij.
 
-10.3 Stranki se strinjata, da Wink ne odgovarja, če ponudnik nastanitve ne ravna v skladu s to določbo in se naknadno ugotovi, da je rezervacija potencialno goljufiva.
+10.3 Če ponudnik ne izpolni te obveznosti in je rezervacija kasneje ugotovljena kot goljufiva, Wink ne bo odgovoren.
 
-**11. Nedosegljivost / Neizpolnitev**
+**11. Ne-razpoložljivost / neizpolnitev**
 
-11.1 V primeru kakršne koli nerazpoložljivosti (bodisi zaradi prevelikega števila rezervacij ali česa drugega), ki od ponudnika nastanitve zahteva, da gosta preseli v nadomestno namestitev, se ponudnik nastanitve strinja, da si bo po najboljših močeh prizadeval ohraniti goste in rezervacije, da bi gostom omogočil, da v največji možni meri ostanejo v taki namestitvi. V primeru, da mora ponudnik nastanitve gosta na koncu preseliti v nadomestno namestitev, se strinja z naslednjim:
+11.1 Če pride do ne-razpoložljivosti (npr. prekomerna rezervacija), ki zahteva premestitev gosta, se ponudnik zavezuje, da bo storil vse, da gost ostane v nastanitvi. Če je premestitev nujna, mora ponudnik:
 
-* Da pred preselitvijo gosta nemudoma obvesti Wink;
-* Premestitev Gosta v drugo nastanitev enake ali višje kategorije/ocene na istem območju, pod enakimi rezerviranimi pogoji, pri čemer Ponudnik nastanitve krije stroške za prizadetega Gosta brez dodatnih stroškov in vključuje, vendar ne omejeno na to.
-* Vse stroške, povezane s prevozom in drugimi stroški, povezanimi s selitvijo, v imenu prizadetega gosta.
-* Da lahko Wink od stanja terjatev ponudnika nastanitve odšteje vse neposredne stroške, ki nastanejo zaradi nerazpoložljivosti in/ali selitve, v primeru, da Wink utrpi kakršno koli finančno kazen, odškodnino ali stroške, povezane s tako nerazpoložljivostjo in/ali selitvijo.
+* Takoj obvestiti Wink pred premestitvijo;  
+* Premestiti gosta v drugo nastanitev enake ali višje kategorije v istem območju, pod enakimi pogoji, brez dodatnih stroškov za gosta, vključno z vsemi stroški prevoza in drugimi stroški premestitve;  
+* Dovoliti Wink, da odšteje vse neposredne stroške premestitve od terjatev ponudnika, če Wink utrpi finančno kazen ali stroške zaradi ne-razpoložljivosti ali premestitve.
 
-11.2 V primeru neizpolnjevanja katerega koli od pogojev te pogodbe s strani ponudnika nastanitve, vključno z nesprejemljivim stanjem prostorov in/ali pomanjkljivostmi v zvezi z objekti in storitvami, ima Wink pravico ustaviti plačila in zahtevati pravilno izpolnitev dogovorjenih pogojev rezervacije. Ponudnik nastanitve v vsakem primeru krije celotne stroške morebitne odškodnine, ki jo je treba plačati prizadetemu gostu, s čimer Wink odvezuje kakršne koli odgovornosti, ki izhaja iz pomanjkljive izpolnitve obveznosti ponudnika nastanitve iz te pogodbe.
+11.2 Če ponudnik ne izpolni pogojev te pogodbe, vključno z neustreznimi pogoji nastanitve ali pomanjkljivostmi v objektih in storitvah, ima Wink pravico ustaviti plačila in zahtevati pravilno izpolnitev. Ponudnik nosi vse stroške odškodnin gostom in varuje Wink pred odgovornostjo.
 
-**12. Pogoji za sodelujoče hotele**
+**12. Pogoji objekta Participirajočega hotela**
 
-Ponudnik nastanitve mora čim prej prek razdelka »Obvestila« na Wink Extranetu obvestiti o vseh gradbenih, prenovitvenih, adaptacijskih, posodobitvenih ali drugih delih, ki bodo ali lahko spremenijo sposobnost ponudnika nastanitve, da zagotovi sobe, objekte in storitve in/ali bi lahko negativno vplivala na bivanje gosta. Da bi se izognili dvomu, se v primeru nerazpoložljivosti ali neizpolnitve zaradi takšnih okoliščin uporabi 11. člen teh Splošnih pogojev poslovanja Wink (»Nerazpoložljivost / Neizpolnitev«) in ponudnik nastanitve krije celotne stroške morebitne odškodnine, ki jo je treba plačati prizadetemu gostu, s čimer Wink odvezuje kakršne koli odgovornosti.
+Ponudnik mora čim prej preko Wink ekstraneta obvestiti o vseh gradbenih delih, prenovah ali drugih posegih, ki lahko vplivajo na razpoložljivost sob, objektov ali storitev ali bivanje gostov. V takih primerih velja člen 11 o ne-razpoložljivosti in ponudnik nosi vse stroške odškodnin.
 
-**13. Sprememba, trajanje in prenehanje**
+**13. Spremembe, trajanje in prenehanje**
 
-13.1 Sprememba. Razen če veljavna zakonodaja ne zahteva drugače, lahko Wink te Pogoje kadar koli spremeni. Če bomo te Pogoje bistveno spremenili, bomo revidirane Pogoje objavili na platformi Wink in posodobili datum »Zadnja posodobitev« na vrhu teh Pogojev. Če vas sprememba zadeva, vas bomo o spremembah obvestili vsaj trideset (30) dni pred datumom začetka veljavnosti. Če pogodbe ne prekinete pred datumom začetka veljavnosti revidiranih Pogojev, bo vaša nadaljnja uporaba Storitev pomenila sprejetje vseh sprememb revidiranih Pogojev.
+13.1 Spremembe. Razen če zakon ne določa drugače, lahko Wink kadar koli spremeni te pogoje. Če naredimo pomembne spremembe, bomo objavili posodobljene pogoje na Wink platformi in posodobili datum "Zadnje posodobitve". Če ste prizadeti, vas bomo o spremembah obvestili vsaj 30 dni pred uveljavitvijo. Če pogodbe ne prekinete pred uveljavitvijo, se šteje, da ste spremembe sprejeli.
 
-13.2 Trajanje. Če ni dogovorjeno drugače, ta pogodba začne veljati z dnem sklenitve za nedoločen čas.
+13.2 Trajanje. Pogodba začne veljati na dan podpisa in velja za nedoločen čas, razen če ni dogovorjeno drugače.
 
-13.3 Ta pogodba velja, dokler je pogodbeni stranki ne odpovesta na naslednji način:
+13.3 Pogodba traja do prekinitve s strani Strank:
 
-* Z Wink, kadar koli in brez razloga, s trideset (30) koledarskih dni vnaprejšnjega pisnega obvestila drugi stranki;
-* S strani ponudnika nastanitve, brez razloga kadar koli in brez predhodnega obvestila z deaktiviranjem nepremičnine na nadzorni plošči nepremičnine v ekstranetu Wink.
-* Na kateri koli drug način, ki je izrecno določen drugje v tej pogodbi.
+* S strani Wink kadarkoli brez razloga s 30-dnevnim pisnim obvestilom;  
+* S strani ponudnika kadarkoli brez razloga z deaktivacijo nastanitve v ekstranetu;  
+* Na druge načine, določene v pogodbi.
 
-13.4 Poleg tega si Wink pridržuje pravico, da po lastni presoji takoj odpove to pogodbo s pisnim obvestilom ponudniku nastanitve, če:
+13.4 Wink lahko pogodbo takoj prekine z obvestilom, če:
 
-* Ponudnik nastanitve začne postopek zaradi insolventnosti, stečaja, prisilne poravnave ali likvidacije, sodne poravnave, upravljanja ali drugih podobnih postopkov (ne glede na to, ali jih je začel ponudnik nastanitve ali kateri koli od upnikov ponudnika nastanitve), ki niso zaključeni ali rešeni v korist ponudnika nastanitve v šestdesetih (60) dneh po tem
-* Upnik izvrši ali poskuša izvršiti hipoteko na sodelujočem hotelu.
-* Ponudnik nastanitve preneha poslovati v običajnem poteku dejavnosti.
-* Ponudnik nastanitve izgubi najemno pogodbo ali pravice do upravljanja sodelujočega hotela pod njegovo trenutno blagovno znamko.
-* Spreminjajo se značilnosti nastanitve, vključno z, vendar ne omejeno na, gradnjo, dela in prenove.
-* Ali zaradi dogodka višje sile.
+* Ponudnik začne stečajni postopek ali druge podobne postopke, ki niso rešeni v njegovo korist v 60 dneh;  
+* Upnik izvrši ali poskuša izvršiti hipotekarni zastoj na hotelu;  
+* Ponudnik preneha z običajnim poslovanjem;  
+* Ponudnik izgubi najem ali pravice do upravljanja hotela pod obstoječo blagovno znamko;  
+* Pride do spremembe značilnosti nastanitve, vključno z gradbenimi deli;  
+* Zaradi višje sile.
 
-13.5 Ob predčasni prekinitvi ali izteku pogodbe iz kakršnega koli razloga mora ponudnik nastanitve:
+13.5 Ob predčasni prekinitvi ali izteku pogodbe mora ponudnik:
 
-* Spoštovati vse rezervacije, opravljene pred datumom začetka veljavnosti odpovedi ali poteka veljavnosti, po prvotno rezerviranih cenah, vključno s tistimi rezervacijami z datumi prijave, ki nastopi po prenehanju ali poteku katerega koli veljavnega odpovednega roka, ali kako drugače zagotoviti ustrezne alternativne storitve in
-* Račun poravnajte v skladu s tem.
+* Spoštovati vse rezervacije, narejene pred datumom prekinitve, po prvotno dogovorjenih cenah, tudi če je prijava po datumu prekinitve, ali zagotoviti ustrezne alternative;  
+* Poravnati račun.
 
-**14. Izjave in jamstva**
+**14. Zagotovitve in garancije**
 
-Ponudnik nastanitve jamči in izjavlja, da bo v celoti upošteval naslednje:
+Ponudnik jamči, da bo:
 
-14.1 Da bodo vse sobe ter vsi objekti in storitve vedno v skladu z dobro prakso v panogi in da bodo zagotovljene z vso potrebno spretnostjo, skrbnostjo, pozornostjo in skrbnostjo;
+14.1 Vse sobe in storitve nudil v skladu z dobro prakso in z ustrezno skrbnostjo;
 
-14.2 Da bo vse osebje Sodelujočega hotela ustrezno usposobljeno in usposobljeno za izpolnjevanje svojih obveznosti iz te pogodbe;
+14.2 Vse osebje bo ustrezno usposobljeno;
 
-14.3 Ponudnik nastanitve mora upoštevati vse veljavne zakone, standarde in druge zahteve vseh ustreznih organov v zvezi z zagotavljanjem sob in vseh drugih delov vsakega sodelujočega hotela ali kakršnih koli povezanih storitev in/ali objektov in/ali svojih obveznosti iz te pogodbe;
+14.3 Spoštoval vse veljavne zakone in predpise;
 
-14.4 Da je vsak sodelujoči hotel prebral in sprejel določila te pogodbe;
+14.4 Vsak Participirajoči hotel je prebral in sprejel pogoje te pogodbe;
 
-14.5 Da so vse sobe in/ali kateri koli objekti in storitve, ki se zagotavljajo v skladu s to pogodbo ali v povezavi z njo, varni in v celoti ustrezajo vsem lokalnim, državnim, zveznim in/ali nacionalnim zakonom, pravilom in predpisom. Ponudnik nastanitve nadalje jamči, da nobena od sob (niti kateri koli drug del katerega koli sodelujočega hotela) nima nameščenih individualnih plinskih grelnikov vode;
+14.5 Vse sobe in storitve so varne in skladne z zakoni; sobe nimajo individualnih plinskih grelnikov;
 
-14.6 Da so vse informacije, ki jih ponudnik nastanitve neposredno ali posredno posreduje podjetju Wink v skladu s to pogodbo ali v povezavi z njo, posodobljene in točne.
+14.6 Vse informacije, posredovane Wink, so točne in ažurne;
 
-14.7 Da ponudnik nastanitve ni ustanovljen v državi, za katero veljajo gospodarske ali trgovinske sankcije, ali da ni rezident države, za katero veljajo takšne sankcije; in
+14.7 Ni rezident države, ki je pod ekonomskimi ali trgovinskimi sankcijami;
 
-14.8 Na lastne stroške opraviti vsa dela, ki so potrebna za odpravo morebitnih pomanjkljivosti in/ali napak, o katerih ga obvestijo pristojni organi, z učinkom, ki je takojšen. Ponudnik nastanitve mora o tem nemudoma obvestiti Wink. Ponudnik nastanitve mora upoštevati vsa razumna priporočila za izboljšave, ki jih poda Wink.
+14.8 Na lastne stroške odpravil vse pomanjkljivosti, o čemer bo takoj obvestil Wink.
 
 **15. Incidenti in pritožbe gostov**
 
-15.1 Če se gostu zgodi kakršen koli incident, mora ponudnik nastanitve o tem in podrobnostih incidenta čim prej obvestiti Wink ter v celoti sodelovati z Winkom pri ustreznem reševanju takega incidenta.
+15.1 Ponudnik mora Wink nemudoma obvestiti o vsakem incidentu, ki se zgodi gostu, in sodelovati pri reševanju.
 
-15.2 Ponudnik nastanitve se strinja, da bo v celoti sodeloval z družbo Wink pri obravnavi vseh zahtevkov ali pritožb gostov in da bo na vsako poizvedbo družbe Wink o takšnih zadevah posredoval podroben odgovor najkasneje v sedmih (7) koledarskih dneh po prejemu od družbe Wink ali v roku, dogovorjenem v sporazumu o ravni storitev.
+15.2 Ponudnik se zavezuje k sodelovanju pri reševanju zahtevkov in pritožb gostov in mora odgovoriti Wink v 7 dneh ali v dogovorjenem roku.
 
-15.3 V primeru, da mora Wink Gostu izplačati odškodnino zaradi kakršnega koli incidenta, zahtevka ali pritožbe gosta zaradi dejanja ali opustitve Ponudnika nastanitve, se Ponudnik nastanitve strinja, da bo Winku nemudoma povrnil škodo in mu povrnil take stroške v celoti in v skladu s 33. členom Splošnih pogojev ("Odškodnina"), kot je ustrezno.
+15.3 Če Wink zaradi incidenta gostu izplača odškodnino zaradi kršitve ponudnika, mora ponudnik takoj povrniti stroške Wink.
 
-15.4 Ponudnik nastanitve se strinja, da bo Winku dovolil, da od stanja(-ov) ponudnika nastanitve odšteje vse stroške, izdatke in odškodnine, nastale zaradi incidentov in pritožb gostov s strani Winka.
+15.4 Ponudnik dovoljuje Wink, da odšteje stroške incidentov in pritožb od njegovih terjatev.
 
 **16. Pravice do revizije**
 
-16.1 Med trajanjem veljavnosti lahko Wink revidira vse ustrezne evidence ponudnika nastanitve in/ali sodelujočih hotelov, kot je to razumno potrebno, da se izvedejo preverjanja v zvezi z (i) izvedbo rezervacij; (ii) vsemi plačili, ki jih prejme Wink in/ali gostje; in (iii) vsemi plačili, ki jih plača ali jih je treba plačati Wink in/ali gostje.
+16.1 Med trajanjem pogodbe lahko Wink pregleda evidence ponudnika glede rezervacij in plačil.
 
-16.2 Vsaka stranka krije svoje stroške v zvezi z revizijo, razen v naslednjih okoliščinah: Če revizija pokaže, da ponudnik nastanitve ne izpolnjuje katere koli od svojih obveznosti iz te pogodbe, potem ponudnik nastanitve, brez poseganja v druge pravice in pravna sredstva družbe Wink, v celoti plača stroške revizije in sprejme potrebne ukrepe za izpolnitev svojih pogodbenih obveznosti.
+16.2 Stroške revizije nosi vsaka Stranka sama, razen če revizija pokaže neizpolnjevanje obveznosti ponudnika, ki mora v tem primeru kriti stroške.
 
 **17. Zavarovanje**
 
-Ponudnik nastanitve mora imeti ustrezno zavarovalno kritje pri uglednih zavarovalnicah, ki imajo licenco za poslovanje v ustrezni državi/kraji, za vsa tveganja tretjih oseb, ki nastanejo ali lahko nastanejo v zvezi z zagotavljanjem nastanitve (ali kakršnih koli objektov in storitev) in/ali to pogodbo, vključno z odgovornostjo Wink, ki izhaja neposredno ali posredno iz ali v povezavi z zahtevki v zvezi z (i) izgubo ali škodo na kateri koli nepremičnini ali osebni lastnini; (ii) telesno poškodbo ali smrtjo katere koli osebe; (iii) izgubo ali škodo na lastnini tretjih oseb; ali (iv) njegovo odgovornostjo do tretjih oseb, ki jim zagotavlja nastanitvene storitve.
+Ponudnik mora imeti ustrezno zavarovanje za vse tveganja, povezana z nastanitvijo in to pogodbo, vključno z odgovornostjo do tretjih oseb.
 
-**18. Preprečevanje podkupovanja, trgovinske omejitve in poslovna etika**
+**18. Protikorupcija, trgovinske omejitve in poslovna etika**
 
-Wink ima ničelno toleranco do kršitev mednarodnih trgovinskih norm, zakonodaje o preprečevanju podkupovanja in korupcije ter veljavnih omejitev glede trgovine, pretoka sredstev in financiranja terorizma.
+Wink ne tolerira kršitev mednarodnih trgovinskih norm, preprečevanja podkupovanja in korupcije ter omejitev trgovine.
 
-Ponudnik nastanitve jamči, da ravna in bo ravnal v skladu s Kodeksom ravnanja dobaviteljev Wink, njegove povezane stranke pa ravnajo in bodo ravnale v skladu s Kodeksom ravnanja.
+Ponudnik jamči, da spoštuje Winkov kodeks ravnanja dobaviteljev in vse veljavne zakone, vključno z UK Bribery Act 2010 in Singapore Prevention of Corruption Act.
 
-Ponudnik nastanitve izjavlja, jamči in se zavezuje, da bo v vseh pogledih spoštoval vse mednarodne trgovinske norme, veljavne omejitve glede trgovine, pretoka sredstev ter zakonodajo o preprečevanju financiranja terorizma ter podkupovanja in korupcije, vključno z, vendar ne omejeno na, britanski zakon o podkupovanju iz leta 2010 in singapurski zakon o preprečevanju korupcije.
-
-Ponudnik nastanitve jamči, da po njegovem najboljšem vedenju niti on niti njegove povezane stranke niso bile obsojene zaradi kaznivega dejanja, ki vključuje podkupovanje ali korupcijo, niti niso predmet kakršne koli preiskave s strani vladnih, upravnih ali regulativnih organov.
+Ponudnik zagotavlja, da ni bil obsojen zaradi podkupovanja ali korupcije in ni predmet preiskav.
 
 **19. Zaupnost**
 
-19.1 Zaupne informacije. Stranki razumeta in se strinjata, da ima lahko vsaka stranka pri izvajanju te pogodbe dostop do zaupnih in občutljivih informacij druge stranke ali je lahko neposredno ali posredno izpostavljena tem informacijam (»Zaupne informacije«). Zaupne informacije vključujejo podatke o strankah, obseg transakcij, trženjske in poslovne načrte, poslovne, finančne, tehnične in operativne informacije, statistiko uporabe, podatke o uvrstitvah, informacije o cenah, izdelkih in pariteti razpoložljivosti, cenovne politike, podatke o konverzijah in obseg klikov ter druge povezane statistike, osebne podatke gostov, vso programsko opremo ali informacije o programski opremi, ki jo Wink zagotavlja ali uporablja v povezavi s to pogodbo, pogoje te pogodbe in druge nejavne informacije, ki jih stranka, ki razkriva informacije, označi kot zasebne ali zaupne ali za katere bi stranka prejemnica morala razumno vedeti, da jih je treba obravnavati kot zasebne in zaupne.
+19.1 Zaupne informacije vključujejo podatke o strankah, transakcijah, poslovnih načrtih, osebnih podatkih gostov, programski opremi, pogojih pogodbe in druge ne-javne informacije.
 
-19.2 Zaščita in varovanje zaupnih informacij. Vsaka stranka se strinja, da: (a) vse zaupne informacije ostanejo izključna last stranke, ki jih razkrije, stranka prejemnica pa ne sme uporabljati nobenih zaupnih informacij za noben namen, razen za uresničevanje te pogodbe, (b) mora ohranjati zaupnost in tajnost zaupnih informacij in uporabljati preudarne metode, da jo njeni zaposleni, uradniki, predstavniki, pogodbene stranke in zastopniki ("Pooblaščene osebe") ohranjajo, (c) mora razkriti zaupne informacije le tistim pooblaščenim osebam, ki jih morajo poznati za uresničevanje te pogodbe, (d) ne sme in mora uporabljati preudarne metode za zagotovitev, da pooblaščene osebe (i) ne kopirajo, objavljajo, prenašajo, reproducirajo, razkrivajo, razkrivajo ali dajejo na voljo tretjim osebam ali (ii) jih uporabljajo ali shranjujejo v nezaščitenem sistemu za pridobivanje ali zbirki podatkov (razen v skladu s pogoji te pogodbe) in (e) mora na pisno zahtevo druge stranke vrniti ali uničiti vse ((fizične in elektronske) kopije) zaupnih informacij. V primeru, da katera koli stranka obdeluje osebne podatke v imenu druge stranke kot del zagotavljanja storitev v skladu s to pogodbo, stranki tako obdelavo uredita s pogodbo o obdelavi podatkov (DPA), ki bo sestavni del pogojev te pogodbe.
+19.2 Vsaka Stranka se zavezuje, da bo zaupne informacije varovala in jih uporabljala le za izvajanje te pogodbe, jih razkrila le pooblaščenim osebam in jih po potrebi vrnila ali uničila.
 
-19.3 Dovoljeno razkritje. Ne glede na zgoraj navedeno zaupne informacije ne vključujejo informacij, ki (i) so ali postanejo del javne domene brez dejanja ali opustitve s strani prejemnice, (ii) jih je prejemnica imela v lasti pred datumom te pogodbe, (iii) jih prejemnici razkrije tretja oseba, ki nima obveznosti varovanja zaupnosti v zvezi s tem, ali (iv) jih je treba razkriti v skladu z zakonom, sodnim nalogom, sodnim pozivom ali vladnim pooblastilom. Wink je upravičen, da to pogodbo zaupno razkrije svojim ponudnikom nastanitev.
+19.3 Zaupne informacije ne vključujejo informacij, ki so javno dostopne, so bile v posesti prej, so bile razkrite s strani tretje osebe brez obveznosti zaupnosti ali so zahtevane z zakonom.
 
-19.4 Podatki o strankah. Stranke si bodo v komercialno razumnih okoliščinah prizadevale za zaščito zaupnosti in zasebnosti podatkov o strankah ter za njihovo zaščito pred nepooblaščeno uporabo ali objavo. Stranke se strinjajo, da bodo spoštovale veljavne zakone o obdelavi osebnih podatkov in varstvu zasebnosti. Stranke bodo vedno uporabljale razumne in ustrezne varnostne ukrepe za preprečevanje poškodb in nepooblaščenega dostopa do podatkov o strankah. Takšni ukrepi bodo med drugim vključevali šifriranje podatkov in šifriranje kanalov. Kjer je to ustrezno, mora ponudnik nastanitve čim prej obvestiti Wink o vsaki kršitvi varnosti (najkasneje v enem dnevu po odkritju kršitve). Vsaka stranka mora imeti strankam dostopno politiko zasebnosti, ki opisuje način, kako varuje in uporablja podatke o strankah. Stranke lahko uveljavljajo svoje pravice do dostopa do svojih osebnih podatkov, popravka ali izbrisa teh podatkov ter pravico do ugovora, prenosljivosti podatkov in omejitve njihove obdelave s pisno zahtevo drugi stranki na naslove, navedene v glavi te pogodbe, poleg tega pa lahko vložijo zahtevek pri lokalni agenciji za varstvo podatkov.
+19.4 Stranki bosta varovali osebne podatke v skladu z zakonodajo in obvestili Wink o morebitnih varnostnih kršitvah.
 
-19.5 Obvestila. Nobena stranka ne sme ustvarjati, objavljati, distribuirati ali dovoliti kakršnih koli pisnih gradiv, ki se sklicujejo na drugo stranko, ne da bi ji prej predložila takšno gradivo in pridobila predhodno pisno soglasje stranke, ki ga ne predloži. To soglasje se ne sme nerazumno zadrževati ali odlašati.
+19.5 Nobena Stranka ne sme objavljati materialov, ki omenjajo drugo Stranko brez predhodnega pisnega soglasja.
 
-19.6 Vsaka stranka lahko stopi v stik z pooblaščeno osebo za varstvo podatkov (DPO) druge stranke prek naslednjega e-poštnega in/ali poštnega naslova: dataprotectionofficer@Wink.
+19.6 Kontaktni naslov za varstvo podatkov je dataprotectionofficer@Wink.
 
 **20. Pravice intelektualne lastnine**
 
-20.1 Ponudnik nastanitve potrjuje, da Wink in/ali njegovi dajalci licenc ohranijo lastništvo vseh pravic, lastništva in deležev v zvezi z vsemi pravicami intelektualne lastnine Wink ali tistimi, ki so vključene v spletno mesto Wink, vključno z (vendar ne omejeno na) logotipom Wink, vsebino in podatki Wink. Nič v tej pogodbi se ne šteje za prenos katere koli takšne pravice, lastništva ali deleža na ponudnika nastanitve na kakršen koli način.
+20.1 Ponudnik priznava, da Wink in njegovi licenčniki ohranjajo lastništvo vseh pravic do intelektualne lastnine Wink, vključno z logotipom, vsebino in podatki Wink.
 
-20.2 Ponudnik nastanitve ne sme razkriti, integrirati, vključiti, uporabiti, kombinirati, izkoriščati, vključiti ali kako drugače dati na voljo Vsebine in Podatkov Wink (ali katerega koli njihovega dela) (a) z lastno vsebino in/ali vsebino katerega koli Konkurenta Wink (vključno s Hoteli) ali (b) (i) sebi (razen za omogočanje Storitve in Sistema v skladu s pogoji te Pogodbe) ali (ii) kateremu koli Konkurentu Wink (vključno s Hoteli) (bodisi za promocijo, trženje, sklicevanje na, promocijo, oglaševanje ali kako drugače v interesu take stranke ali zanjo), ali (c) za kakršen koli drug namen ali na kakršen koli drug način in/ali na ali prek Platform Tretjih Oseb, razen če je to izrecno določeno v tej Pogodbi. Povezana oseba ne sme spreminjati, preoblikovati, izkrivljati, ustvarjati izpeljanih in/ali novih del, ki temeljijo na in/ali izhajajo iz Vsebine, in Vsebina ne sme vključevati (neposredne ali posredne) povezave, sklicevanja, klika ali sklicevanja na (spletno mesto) Konkurenta Wink (vključno s Hoteli).
+20.2 Ponudnik ne sme razkrivati, uporabljati ali združevati vsebine Wink z vsebino konkurentov ali za druge namene, razen kot je določeno v pogodbi.
 
-20.3 Ponudnik nastanitve se zavezuje (in mora zagotoviti, da podjetja v skupini ponudnikov nastanitev ne bodo (neposredno ali posredno) registrirala, pridobila, uporabljala, kupila ali pridobila internetnega domenskega imena, ki vsebuje katero koli besedo ali besede, ki so enake ali zavajajoče ali bistveno podobne besedi »Wink« ali katerim koli različicam, prevodom ali napačno črkovanim oblikam le-tega, vključenim kot del naslova.
+20.3 Ponudnik ne sme registrirati domen, ki vsebujejo besedo "Wink" ali njene različice.
 
-20.4 S sklenitvijo te pogodbe se Wink (izrecno ali molče) ne odpoveduje ali izgubi nobene od svojih pravic, do katerih je upravičen na podlagi katerega koli zakona, pogodbe ali kako drugače (zdaj ali v prihodnosti) v zvezi s pravicami intelektualne lastnine Wink v razmerju do ponudnika nastanitve ali drugih tretjih oseb.
+20.4 Wink ne odpoveduje svojih pravic do intelektualne lastnine.
 
 **21. Sprememba lastništva**
 
-21.1 Ponudnik nastanitve (in kjer to zahteva kontekst, vsak sodelujoči hotel) ne bo prodal, oddal v najem ali kako drugače odtujil svojega deleža v kateri koli hotelski nepremičnini brez vsaj tri (3) mesece predhodnega pisnega obvestila. V primeru takšne prodaje, najema ali druge razpolaganja bo ponudnik nastanitve (in/ali sodelujoči hotel) v prodajni pogodbi, pogodbi o najemu ali drugi razpolaganju izrecno določil, da se ta pogodba (vključno z vsemi rezervacijami, opravljenimi na njeni podlagi) po spremembi nadzora prenese ali prenovi na novo pravno osebo v skladu s pododstavki (b) te določbe.
+21.1 Ponudnik ne sme prodati, oddati v najem ali drugače razpolagati s svojo hotelsko lastnino brez vsaj 3-mesečnega pisnega obvestila. V primeru prodaje mora pogodba omogočiti prenos pravic in obveznosti na novega lastnika.
 
-21.2 Če Wink iz kakršnega koli razloga ne želi nadaljevati pogodbe z novo entiteto, se lahko pogodbenici dogovorita, da to pogodbo takoj prekineta, ne da bi to vplivalo na obstoječe rezervacije in druge pravice, ki jih je katera koli pogodbenica pridobila pred tako prekinitvijo.
+21.2 Če Wink ne želi nadaljevati pogodbe z novim lastnikom, se lahko pogodba takoj prekine brez vpliva na obstoječe rezervacije.
 
-**22. Vsebina seznama**
+**22. Vsebina ponudbe**
 
-22.1 Wink bo ponudniku nastanitve omogočil dostop do ekstraneta Wink. Ponudnik nastanitve se zavezuje, da bo naložil vse informacije in vsebine v zvezi z izdelkom, vključno s fotografijami, slikami, dizajni, besedilom, zvokom, videoposnetki, opisi in možnostmi (v nadaljevanju »Vsebina«), da bi zagotovil optimalno distribucijo izdelka, in bo vsebino vzdrževal posodobljeno. V primeru, da ponudnik nastanitve ne zagotovi vsebine, izrecno pooblašča Wink, da to stori tako, da jo prenese neposredno s spletnega mesta ponudnika nastanitve, in prevzema vso odgovornost za morebitne težave, vključno z zahtevki, ki lahko nastanejo zaradi takega nalaganja. Poleg tega ponudnik nastanitve daje Winku pravico do spreminjanja in/ali prilagajanja velikosti in ločljivosti vsebine za namene trženja in distribucije.
+22.1 Wink omogoča dostop do ekstraneta za nalaganje vsebin, kot so fotografije, opisi in objekti, za optimalno distribucijo. Če ponudnik ne zagotovi vsebine, dovoljuje Wink, da jo prenese s spletne strani ponudnika in prevzame odgovornost za morebitne težave.
 
-22.2 Če ponudnik nastanitve ne more dostopati do ekstraneta iz razlogov, na katere nima vpliva, bo o tem nemudoma obvestil Wink.
+22.2 Če ponudnik ne more dostopati do ekstraneta, mora to takoj sporočiti Wink.
 
-22.3 Ponudnik nastanitve izjavlja in jamči, da ima vse potrebne pravice, licence, soglasja in pooblastila, potrebna za: (i) zagotavljanje Vsebine podjetju Wink; (ii) Ponudnik nastanitve s tem podjetju Wink podeljuje neizključno, brezplačno, nepreklicno, svetovno in podlicencirano pravico tretjim trženjskim in/ali distribucijskim partnerjem do uporabe, spreminjanja, prikazovanja, objavljanja in prilagajanja Vsebine, imena, logotipov, blagovnih znamk in katere koli druge intelektualne in industrijske lastnine Ponudnika nastanitve ("PIL") za namene izvajanja te Pogodbe; (iii) Ponudnik nastanitve jamči podjetju Wink in njegovim strankam, da takšne PIL ne kršijo nobenih pravic tretjih oseb; in (iv) Ponudnik nastanitve je odgovoren za kakršne koli obrekljive ali nemoralne informacije, resničnost in točnost svojih PIL, ki jih je podjetju Wink posredoval na kakršen koli način.
+22.3 Ponudnik jamči, da ima vse potrebne pravice za vsebino in da ne krši pravic tretjih oseb. Ponudnik podeljuje Wink neizključne, brezplačne, nepovratne pravice za uporabo vsebine za namene te pogodbe.
 
-22.4 Ponudnik nastanitve bo ves čas med in po izteku odpovedi te pogodbe v celoti odškodoval in varoval Wink, njegove ponudnike nastanitev in/ali njegove partnerje pred kakršno koli izgubo, ki nastane, je bila dodeljena Winku, njegovim ponudnikom nastanitev in/ali njegovim partnerjem ali so bile te izgube dogovorjene za plačilo s strani Wink, njegovih ponudnikov nastanitev in/ali njegovih partnerjev in izhajajo iz kakršnega koli zahtevka glede pravic intelektualne lastnine.
+22.4 Ponudnik bo povrnil Wink za vse izgube zaradi zahtevkov glede pravic intelektualne lastnine.
 
-22.5 Ponudnik nastanitve mora: (i) podjetju Wink posredovati posodobitve na način, ki ga zahteva Wink, o napredku zahtevka za pravice intelektualne lastnine, vključno z dokazili, da je vlagatelj zahtevek za pravice intelektualne lastnine poravnal ali zavrnil v najkrajšem možnem času; (ii) V primeru, da ponudnik nastanitve ne izpolni te klavzule ali če Wink ni v celoti zadovoljen s potekom zahtevka za pravice intelektualne lastnine ali da bi preprečil nadaljnjo škodo, Wink prevzame takojšen nadzor nad zahtevkom za pravice intelektualne lastnine na stroške ponudnika nastanitve. Wink bo upravičen do pobota vseh stroškov in odškodnin, plačanih kot posledica zahtevka za pravice intelektualne lastnine, z vsemi sedanjimi, pogojnimi in/ali prihodnjimi zneski, ki jih ponudnik nastanitve dolguje ali jih dolguje.
+22.5 Ponudnik bo obveščal Wink o poteku zahtevkov in v primeru nezadovoljstva Wink prevzel nadzor nad zahtevkom na stroške ponudnika.
 
-**23. Oglaševanje / Zunanje komuniciranje**
+**23. Promocija / zunanje komunikacije**
 
-23.1 Ponudnik nastanitve ne sme posredovati nobene komunikacije ali gradiva v zvezi z družbo Wink ali to pogodbo, bodisi medijem bodisi kateri koli drugi zunanji stranki, brez predhodnega pisnega soglasja družbe Wink, in ponudnik nastanitve je izključno in neposredno odgovoren za kakršno koli škodo ali izgubo, ki jo družba Wink utrpi zaradi kršitve te določbe.
+23.1 Ponudnik ne sme objavljati nobenih komunikacij o Wink brez predhodnega pisnega soglasja Wink in je odgovoren za škodo, ki bi nastala Wink zaradi kršitve tega pravila.
 
-23.2 Ponudnik nastanitve se bo posvetoval z družbo Wink glede vsebine kakršnega koli takega sporočila ali gradiva, ki ga namerava objaviti, in mora družbi Wink zagotoviti kopijo vsakega takega sporočila ali gradiva, ki bo na koncu objavljeno.
+23.2 Ponudnik se mora posvetovati z Wink glede vsebine komunikacij in posredovati kopije objavljenih materialov.
 
 **24. Prednost**
 
-24.1 Ta pogodba je sklenjena z namenom, da se omogoči sklepanje posameznih komercialnih pogodb med Winkom in vsakim od ponudnikov nastanitev. V primeru neskladja se za ponudnike nastanitev uporabljajo pogoji, določeni v tej pogodbi, pod naslednjim pogojem:
+24.1 Ta pogodba omogoča posamezne komercialne dogovore med Wink in ponudniki. V primeru neskladja veljajo pogoji te pogodbe, razen:
 
-24.2 Glede plačilnih pogojev glede dogovorjenih odpovedi in neprihodov, plačilnih politik, odpovedi rezervacij in razpoložljivosti sob (standardni tip) prevladajo določila te pogodbe;
+24.2 Glede pogojev plačila, odpovedi, ne-prihodov in razpoložljivosti sob veljajo ti pogoji;
 
-24.3 Glede cen, minimalnega števila oseb, popustov za tretje osebe in otroke ter veljavnih trgov prevladajo pogoji, dogovorjeni v veljavni individualni komercialni pogodbi.
+24.3 Glede cen, minimalnih zasedb, popustov in trgov veljajo dogovori v posameznih komercialnih pogodbah.
 
-**25. Pooblastilo za podpis – Izjava in podpis ponudnika nastanitve**
+**25. Pooblastilo za podpis – zastopstvo ponudnika**
 
-25.1 Ponudnik nastanitve jamči, da ima on, oseba, ki podpiše to pogodbo, in/ali katera koli druga oseba, ki posreduje informacije (vključno z, da se izognemo dvomu, kakršnimi koli plačilnimi pogoji) podjetju Wink v zvezi s to pogodbo ali na podlagi nje, pooblastilo, sposobnost in potrebno moč za podpis te pogodbe za in v imenu vsakega posameznega sodelujočega hotela ter da ima ta oseba pooblastilo, sposobnost in potrebno moč, da zaveže ponudnika nastanitve in vsak posamezni sodelujoči hotel k tej pogodbi ter da bo v celotnem obdobju veljavnosti pogodbe spoštoval, izvajal in zagotavljal, da vsak sodelujoči hotel izpolnjuje in izvaja svoje obveznosti iz te pogodbe.
+25.1 Ponudnik jamči, da ima oseba, ki podpisuje pogodbo, pooblastilo za podpis in zavezuje ponudnika in vse Participirajoče hotele k izpolnjevanju obveznosti.
 
-25.2 Ponudnik nastanitve se izrecno strinja, da je elektronsko sprejetje te pogodbe in njenih pogojev poslovanja, vključno s tistimi, ki se nanašajo na spremembe, veljavno, zavezujoče in izvršljivo.
+25.2 Ponudnik soglaša, da je elektronska sprejem pogodbe in sprememb veljavna in zavezujoča.
 
 **26. Jezik**
 
-Angleška različica te pogodbe je v vseh pogledih prevladujoča in ima prednost v primeru kakršnih koli neskladij s prevedenimi različicami, če obstajajo.
+Angleška različica pogodbe je prevladujoča in ima prednost pred prevodi.
 
-**27. Opustitve**
+**27. Odpovedi**
 
-Nobena odpoved pravici do katere koli kršitve ali pogoja te pogodbe se ne šteje za odpoved pravici do katere koli druge ali poznejše kršitve ali pogoja, ne glede na to, ali je podobne ali drugačne narave.
+Odpoved ene kršitve ne pomeni odpoved drugih ali prihodnjih kršitev.
 
-**28. Ločljivost**
+**28. Delna veljavnost**
 
-Če vladni organ pregona, sodišče ali tribunal pristojne jurisdikcije ugotovi, da je katera koli določba te pogodbe nezakonita, neveljavna ali kako drugače neizvršljiva v skladu z nacionalno zakonodajo, se bo taka določba razlagala, spreminjala ali izbrisala v obsegu, ki je potreben, da postane taka določba in/ali ta pogodba zakonita, veljavna ali kako drugače izvršljiva, preostali del te določbe in preostale druge določbe te pogodbe pa bodo ostale v polni veljavi in ​​​​učinku ter bodo še naprej zavezujoče in se bodo razlagale tako, da se v največji možni meri uresniči namen pogodbenic.
+Če je katera določba neveljavna, se jo prilagodi ali izbriše, ostale določbe ostanejo v veljavi.
 
-**29. Razmerje med strankama**
+**29. Odnos med Strankama**
 
-Stranki sta in bosta pri izvajanju te pogodbe delovali kot neodvisni izvajalci. Nobena stranka ne bo delovala kot zastopnik ali partner druge stranke za kakršen koli namen in se ne bo štela za takega zastopnika ali partnerja druge stranke, niti nobena stranka ni pooblaščena, da bi drugo stranko kakor koli zavezala.
+Stranki sta neodvisni pogodbeni stranki in nobena ne sme zastopati druge kot agent ali partner.
 
-**30. Naloga**
+**30. Prenos pravic**
 
-30.1 Nobena stranka ni upravičena do odstopa, prenosa ali obremenitve katere koli od svojih pravic in/ali obveznosti iz te pogodbe brez predhodnega pisnega soglasja druge stranke, pod pogojem, da lahko Wink odstopa, prenese ali obremeni katero koli od svojih pravic in/ali obveznosti iz te pogodbe (v celoti ali delno ali občasno) na povezano podjetje brez predhodnega pisnega soglasja ponudnika nastanitve.
+30.1 Nobena Stranka ne sme prenesti pravic ali obveznosti brez pisnega soglasja druge, razen Wink, ki lahko prenese pravice na povezana podjetja brez soglasja ponudnika.
 
-30.2 Ta pogodba je sklenjena v korist strank in njihovih naslednikov ter dovoljenih prevzemnikov, nič v njej pa ni namenjeno ali ne bo implicitno podeljevalo kateri koli drugi osebi kakršne koli zakonske ali pravične pravice, koristi ali pravnega sredstva kakršne koli narave v skladu s to pogodbo ali zaradi nje, razen če je v tej pogodbi izrecno navedeno drugače.
+30.2 Pogodba koristi Strankam in njihovim naslednikom, brez pravic tretjih oseb.
 
 **31. Višja sila**
 
-Wink ne odgovarja za kakršno koli zamudo ali neizpolnitev katere koli obveznosti iz teh pogojev, ki je posledica vzrokov, na katere Wink ali Wink Payments nima razumnega vpliva, vključno z, vendar ne omejeno na, višjo silo, naravne nesreče, vojno, terorizem, nemire, embarge, dejanja civilnih ali vojaških oblasti, požar, poplave, nesreče, pandemije, epidemije ali bolezni, stavke ali pomanjkanje prevoznih sredstev, goriva, energije, delovne sile ali materialov (»dogodek višje sile«).
+Wink ni odgovoren za zamude ali neizpolnitve zaradi višje sile, kot so naravne nesreče, vojna, terorizem, pandemije, stavke ipd.
 
 **32. Omejitev odgovornosti**
 
-32.1 V največjem obsegu, ki ga dovoljuje zakonodaja, nobena od strank ne odgovarja za kakršno koli posredno, naključno, posledično, posebno ali kazensko škodo, ki izhaja iz te pogodbe ali njene kršitve, tudi če je bila obveščena o možnosti takšne škode. Ta omejitev ne velja za nobeno kršitev te pogodbe v zvezi z zaupnostjo in/ali pravicami intelektualne lastnine.
+32.1 Do največje dovoljene mere po zakonu nobena Stranka ni odgovorna za posredne, naključne ali kazenske škode, razen za kršitve zaupnosti ali intelektualne lastnine.
 
-32.2 Nobena stranka ne more izključiti odgovornosti v zvezi z (i) smrtjo ali telesno poškodbo, ki jo povzroči njena malomarnost ali malomarnost njenih zaposlenih, zastopnikov ali podizvajalcev, (ii) goljufijo, ki jo stori sama ali njeni zaposleni, ali (iii) katero koli kršitvijo, dejanjem, opustitvijo ali odgovornostjo, ki je ni mogoče omejiti po nobeni veljavni zakonodaji.
+32.2 Odgovornost ni izključena za smrt ali telesne poškodbe zaradi malomarnosti, goljufijo ali druge zakonsko neomejene primere.
 
-32.3 Stranki potrjujeta in se strinjata, da so izključitve in omejitve odgovornosti, določene v tej pogodbi, poštene in razumne.
+32.3 Stranki se strinjata, da so omejitve odgovornosti poštene in razumne.
 
-**33. Odškodnina**
+**33. Odškodninska odgovornost**
 
-V največjem obsegu, ki ga dovoljuje veljavna zakonodaja, se strinjate, da boste Wink in vse njegove ponudnike nastanitev in podružnice ter njihove uradnike, direktorje, zaposlene in zastopnike oprostili, branili, odškodovali in varovali pred kakršnimi koli zahtevki, odgovornostmi, škodo, izgubami in stroški, vključno z, vendar ne omejeno na, razumne pravne in računovodske stroške, ki izhajajo iz ali so kakor koli povezani z (i) vašo kršitvijo teh pogojev; (ii) vašo nepravilno uporabo storitev; (iii) vašo opustitev ali našo opustitev po vaših navodilih pri natančnem poročanju, pobiranju ali nakazovanju davkov; ali (iv) vašo kršitvijo kakršnih koli zakonov, predpisov ali pravic tretjih oseb.
+V največji meri, kot dovoljuje zakon, se zavezujete, da boste sprostili, branili, odškodninsko povrnili in varovali Wink in njegove ponudnike pred zahtevki, ki izhajajo iz vaše kršitve teh pogojev, nepravilne uporabe storitev, nepravilnega obračunavanja davkov ali kršitev zakonov.
 
-**34. Veljavno pravo in pristojnost**
+**34. Pravo in pristojnost**
 
-34.1 Ta pogodba se izključno ureja in razlaga v skladu z zakonodajo Singapurja. Zakon o pogodbah (pravice tretjih oseb) iz leta 2001 (poglavje 53B) se za to pogodbo ne uporablja. Stranki si bosta v vsakem primeru prizadevali rešiti spore sporazumno izvensodno, tako da bosta najprej opravili pogovore in pogajanja v dobri veri.
+34.1 Pogodba se ureja po zakonih Singapurja. Zakon o pogodbah (pravice tretjih oseb) 2001 (Cap 53B) se ne uporablja. Stranki bosta poskušali reševati spore sporazumno.
 
-34.2 Vsi spori, ki izhajajo iz te pogodbe ali so z njo povezani, se predložijo in obravnavajo izključno pristojnemu sodišču v Singapurju, ne glede na pravila o koliziji zakonov.
+34.2 Morebitni spori se rešujejo izključno pred pristojnim sodiščem v Singapurju.
 
-**35. Protipostavke**
+**35. Izvodi**
 
-Ta pogodba se lahko sestavi v dvojnikih, od katerih se vsak (ko je podpisan) šteje za izvirnik in ki skupaj predstavljajo eno in isto listino. Poleg tega ima vsaka skenirana/elektronska kopija Winkovega pisnega podpisa enak in enakovreden učinek kot izvirni ročno napisan podpis Winka in ne vpliva na veljavnost te pogodbe.
+Pogodba je lahko podpisana v več izvodih, ki skupaj tvorijo en sam dokument. Elektronski podpisi Wink imajo enako veljavnost kot ročni podpisi.
 
-**36. Celoten sporazum**
+**36. Celotna pogodba**
 
-36.1 Ta pogodba (vključno z obrazcem za registracijo partnerskega ponudnika nastanitve, urniki, prilogami in dodatki, ki so sestavni del te pogodbe) predstavlja celoten dogovor in razumevanje strank glede njene vsebine ter nadomešča in izničuje vse predhodne dogovore, dogovore, ((ne)zavezujoče) ponudbe, zaveze ali izjave v zvezi s to vsebino.
+36.1 Ta pogodba (vključno z registracijskim obrazcem, prilogami in aneksi) predstavlja celoten dogovor med Strankama in nadomešča vse prejšnje dogovore.
 
-36.2 Če je katera koli določba te pogodbe neveljavna ali nezavezujoča ali postane taka, so za stranki še naprej vezane vse druge določbe te pogodbe. V tem primeru stranki neveljavno ali nezavezujočo določbo nadomestita z določbami, ki so veljavne in zavezujoče ter imajo v največji možni meri podoben učinek kot neveljavna ali nezavezujoča določba, glede na vsebino in namen te pogodbe.
+36.2 Če je katera določba neveljavna, ostanejo ostale določbe v veljavi, neveljavna pa se nadomesti z veljavno, ki ima čim bolj podoben učinek.
 
-**37. Izvršitev**
+**37. Uveljavitev**
 
-Pogodba začne veljati šele s pisno potrditvijo sprejema in odobritve ponudnika nastanitve s strani podjetja Wink. Z registracijo in prijavo v partnerski program Wink kot ponudnik nastanitve se ponudnik nastanitve strinja, potrjuje in sprejema določila in pogoje te pogodbe, vključno z določbami v zvezi s spremembami te pogodbe.
+Pogodba začne veljati z pisnim potrditvijo sprejema ponudnika s strani Wink. Z registracijo in prijavo v program Wink kot ponudnik nastanitve ponudnik sprejema pogoje te pogodbe, vključno s spremembami.
 
-Ponudnik nastanitve je prebral pogodbo in se z vsemi pogoji strinjal. Podružnica se izrecno strinja, da je elektronska potrditev te pogodbe in njenih pogojev, vključno s tistimi, ki se nanašajo na spremembe, veljavna, zavezujoča in izvršljiva.
+Ponudnik potrjuje, da je pogodbo prebral in se strinja z vsemi pogoji. Elektronsko sprejemanje je veljavno in zavezujoče.
 
 **38. Obvestila**
 
-Vsa obvestila pogodbenice v skladu s to pogodbo morajo biti v angleščini, v pisni obliki in dostavljena osebno, s predplačano in priporočeno pošto ali z mednarodno priznano ekspresno kurirsko službo (npr. FedEx, UPS, DHL) na registrirani sedež ali po elektronski pošti kontaktni osebi.
+Vsa obvestila morajo biti v angleščini, pisna in dostavljena osebno, po priporočeni pošti ali mednarodnem kurirju (npr. FedEx, UPS, DHL) na registrirani naslov ali po elektronski pošti kontaktni osebi.
 
-Vsako obvestilo v skladu s to pogodbo se šteje za prejeto (i) če je dostavljeno osebno, ob podpisu potrdila o dostavi ali (ii) če je dostavljeno s predplačano priporočeno pošto, ob dokazilu o dostavi; ali (iii) če je dostavljeno s hitro kurirsko službo, ob datumu dostave, ki ga je zabeležil kurir (iv) če je dostavljeno po elektronski pošti, pod pogojem, da je predloženo potrdilo o prejemu.
-
+Obvestilo se šteje za prejeto: (i) ob osebni dostavi z podpisom potrdila, (ii) ob dokazilu o dostavi priporočene pošte, (iii) ob datumu dostave kurirske službe, (iv) ob potrditvi prejema elektronske pošte.

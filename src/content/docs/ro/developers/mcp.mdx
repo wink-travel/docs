@@ -1,0 +1,105 @@
+---
+title: Server MCP
+description: Conectează rapid agenții AI la documentația și SDK-urile Wink prin serverul MCP găzduit.
+sidebar:
+  order: 10
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+## Prezentare generală
+Serverul MCP găzduit Wink este disponibil la:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Indică clienților AI compatibili (VS Code, Cursor, alții care implementează transportul MCP HTTP) acest punct final pentru a le permite să:
+- Răsfoiască documentația produsului și platformei (`wink://docs/...`)
+- Descopere SDK-uri și să aprofundeze clasele / modelele API (`wink://sdk/...` & `wink://sdk/.../docs`)
+- Efectueze căutări semantice / pe cuvinte cheie ușoare în documentație și rezumatele SDK-urilor
+
+## Transport
+Folosește punctul final HTTP principal, streamabil:
+
+```
+https://docs.mcp.wink.travel/mcp
+```
+
+Dacă clientul tău suportă doar SSE, folosește:
+
+```
+https://docs.mcp.wink.travel/sse
+```
+
+### Cursor
+Documentația MCP pentru Cursor: https://cursor.com/docs/context/mcp
+Configurare: Adaugă serverul la distanță prin setările MCP.
+```json
+{
+  "mcpServers": {
+    "wink-docs": {
+      "url": "https://docs.mcp.wink.travel/mcp",
+    }
+  }
+}
+```
+
+### VS Code
+Documentația oficială: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Configurație minimă la distanță (fișierul `mcp.json` utilizator sau workspace):
+```json
+{
+  "servers": {
+    "wink-docs": {
+      "type": "http",
+      "url": "https://docs.mcp.wink.travel/mcp"
+    }
+  }
+}
+```
+
+Sfaturi:
+- Folosește Command Palette: „MCP: List Servers” pentru a confirma conexiunea și a răsfoi uneltele.
+- Selectorul de unelte îți permite să activezi/dezactivezi `sdk_search` și `docs_search`.
+- Adaugă context: Vizualizare Chat → Add Context → MCP Resources pentru a atașa pagini de documentație.
+
+## URI-uri principale ale resurselor
+
+| URI | Descriere |
+|-----|-----------|
+| `wink://docs` | Indexul documentației (grupat pe categorii) |
+| `wink://docs/{path}` | Articol specific de documentație (Markdown / MDX) |
+| `wink://sdk` | Prezentare generală SDK (fiecare SDK + număr de documente) |
+| `wink://sdk/{sdkPath}` | README SDK / folder documentație modul / document specific modul |
+
+### Documentația modulului
+Deschiderea unui folder de documentație SDK (ex. `wink://sdk/python/wink-sdk-booking/docs`) returnează grupat:
+- **Clase API** (număr metode + exemple de nume metode)
+- **Modele & Tipuri** (structuri de date folosite de acele API-uri)
+
+## Unelte de căutare (Referință rapidă)
+| Unealtă | Scop | Exemple tipice de interogări |
+|---------|------|------------------------------|
+| `sdk_search` | Găsește ce SDK / clasă API să folosești | `anulează rezervarea`, `listează proprietăți`, `inventar afiliat` |
+| `docs_search` | Găsește documentație conceptuală / ghiduri | `autentificare`, `webhooks`, `wordPress` |
+
+Lasă `query` gol pentru a primi sugestii. Fiecare rezultat include URI MCP pe care îl poți deschide.
+
+## Model tipic de utilizare
+1. Rulează `sdk_search` cu intenția ta (ex. *„listează proprietăți”*).
+2. Deschide README-ul SDK returnat sau `docs_uri` pentru a inspecta API-urile / modelele.
+3. Folosește `docs_search` pentru concepte suport (autentificare, webhooks).
+
+## Note
+- Fiecare URI returnat poate fi deschis de agent pentru conținut complet.
+- Sugestiile apar automat când interogările sunt goale.
+
+## SDK-uri suportate în prezent
+- SDK-urile Python Wink
+
+## Plan de dezvoltare (la nivel înalt)
+- SDK-uri pentru alte limbaje (Java, JS/TS)
+- Adăugarea SDK-urilor TripPay
+
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink pe GitHub</LinkButton>
