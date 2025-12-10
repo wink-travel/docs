@@ -8,7 +8,7 @@ sidebar:
 ---
 Historiquement, l'accès et la vente de tout produit lié au voyage impliquaient des accords de confidentialité et des intégrations complexes entre deux \[ou plusieurs] agences de voyages agréées disposant d'une expertise technique suffisante, d'un accès à une passerelle de paiement et de la conformité à la norme PCI DSS. C'était une démarche coûteuse et chronophage, et la barrière à l'entrée était insurmontable pour le commun des mortels.
 
-[Wink Studio](https://studio.wink.travel)est notre portail d'affiliation. Il rend la vente de voyages accessible à tous, aussi simple que de partager un lien ou aussi complexe que de gérer une agence de voyages en ligne.
+[Wink Studio](https://studio.wink.travel) est notre portail d'affiliation. Il rend la vente de voyages accessible à tous, aussi simple que de partager un lien ou aussi complexe que de gérer une agence de voyages en ligne.
 
 Le portail d'affiliation présente l'inventaire de voyages disponible auprès de fournisseurs (hôtels, auberges, locations, prestataires d'expériences) du monde entier. Votre objectif est de trouver l'inventaire qui vous convient, puis de le présenter et de le vendre au mieux à votre public.
 

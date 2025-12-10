@@ -10,7 +10,7 @@ sidebar:
 대부분의 링크 관리자는 제휴 링크를 게시하는 모든 사람에게 구독을 요구합니다.
 :::
 
-우리는 건설했다[윙크링크스](https://i.trvl.as/); 여행 분야에 초점을 맞춘 완전 무료 링크 관리자로, 온라인에서 효과적으로 관심을 끌고 광고하고 판매합니다.
+우리는 건설했다 [윙크링크스](https://i.trvl.as/) ; 여행 분야에 초점을 맞춘 완전 무료 링크 관리자로, 온라인에서 효과적으로 관심을 끌고 광고하고 판매합니다.
 
 ## 특징
 
@@ -28,7 +28,7 @@ sidebar:
 ## 풍부한 콘텐츠
 
 :::note
-설정`Intelligent`당신의 🟢에[설정](/link-manager/settings)이 기능을 사용하려면.
+설정`Intelligent`당신의 🟢에 [설정](/link-manager/settings) 이 기능을 사용하려면.
 :::
 
 지원하는 사이트의 링크를 공유하는 경우`rich`/`oEmbed`콘텐츠, 귀하의 링크가 WinkLinks에서 활성화됩니다.
@@ -44,16 +44,16 @@ sidebar:
 
 ## 고급의
 
-WinkLinks는 또한 귀하가 찾은 여행 재고를 공개하는 좋은 방법입니다.[윙크 스튜디오](https://studio.wink.travel)그리고 청중에게 판매하고 싶은 것이 있습니다.
+WinkLinks는 또한 귀하가 찾은 여행 재고를 공개하는 좋은 방법입니다. [윙크 스튜디오](https://studio.wink.travel) 그리고 청중에게 판매하고 싶은 것이 있습니다.
 
 WinkLinks를 사용하여 다음을 판매하세요.
 
-* [공유 가능한 링크](/studio/shareable-links)- 표시 방식을 선택하세요:
+* [공유 가능한 링크](/studio/shareable-links) - 표시 방식을 선택하세요:
   * [광고 배너](/developers/web-components/#content-loader).
   * 실시간 가격 업데이트가 제공되는 일반 링크입니다.
-* [카드](/studio/cards)- 실시간 가격 및 예약 가능 여부를 확인할 수 있는 카드입니다.
-* [그리드](/studio/grids)- 예약 가능한 카드가 있는 그리드.
-* [지도](/studio/maps)- 예약 가능한 카드로 열리는 마커가 있는 지도.
+* [카드](/studio/cards) - 실시간 가격 및 예약 가능 여부를 확인할 수 있는 카드입니다.
+* [그리드](/studio/grids) - 예약 가능한 카드가 있는 그리드.
+* [지도](/studio/maps) - 예약 가능한 카드로 열리는 마커가 있는 지도.
 
 :::참고
 WinkLinks 계정을 관리하려면 제휴 계정에 로그인하세요.[윙크 스튜디오](https://studio.wink.travel).

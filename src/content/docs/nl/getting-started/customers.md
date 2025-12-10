@@ -18,7 +18,7 @@ Merken en ketens hebben net iets andere behoeften dan een enkele accommodatie. O
 
 * Beheer meerdere eigendommen onder één account.
 * Beheerders toewijzen aan eigendommen
-* Gebruik [WinkLinks](/link-manager/wink-links),[WordPress](/developers/wordpress)en onze[Webcomponenten](/developers/web-components)om meerdere panden op één plek te vermarkten en verkopen.
+* Gebruik [WinkLinks](/link-manager/wink-links), [WordPress](/developers/wordpress) en onze [WordPress](/developers/wordpress) om meerdere panden op één plek te vermarkten en verkopen.
 
 ## Beheermaatschappijen
 
@@ -30,7 +30,7 @@ Influencers gebruiken Wink om hun publiek beter te gelde te maken. Ze doen dit d
 
 ## Reisagenten
 
-Reisagenten krijgen toegang tot reisinventaris wereldwijd tegen geweldige prijzen via onze speciale[reisagentenportaal](https://agent.wink.travel)Ze kunnen boekingen maken via ons portaal, via onze API of door hun gebruikers zelf te laten boeken op de website van het reisbureau dat onze technologieën gebruikt.
+Reisagenten krijgen toegang tot reisinventaris wereldwijd tegen geweldige prijzen via onze speciale [reisagentenportaal](https://agent.wink.travel) Ze kunnen boekingen maken via ons portaal, via onze API of door hun gebruikers zelf te laten boeken op de website van het reisbureau dat onze technologieën gebruikt.
 
 ## Corporaties
 
@@ -43,11 +43,11 @@ Bedrijven hebben meer behoefte aan een reisplatform:
 * Er is integratie van kostenbeheer en rapportage nodig.
 * Ze hebben behoefte aan conciërgeondersteuning en MICE-diensten bij evenementen.
 
-Zakelijke reizigers kunnen hun eigen accounts beheren op onze[bedrijfsportaal](/corporate/what-is-group)of gebruik onze officieel ondersteunde[MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)plug-in en[Akkoord](https://www.concur.com/)integratie.
+Zakelijke reizigers kunnen hun eigen accounts beheren op onze [bedrijfsportaal](/corporate/what-is-group) of gebruik onze officieel ondersteunde [bedrijfsportaal](/corporate/what-is-group) plug-in en [bedrijfsportaal](/corporate/what-is-group) integratie.
 
 ## Ontwikkelaars
 
-Hoewel we dit platform door en voor hoteliers hebben gebouwd... is elke regel code specifiek ontworpen met het oog op herbruikbaarheid. Ons team van ontwikkelaars heeft Wink gebouwd in de hoop dat de volgende 🦄 reisapp op onze codebase wordt gebouwd. Navigeer naar de[Ontwikkelaar](/developers/build-on-wink)pagina om te zien hoe Wink u kan ondersteunen bij uw volgende onderneming.
+Hoewel we dit platform door en voor hoteliers hebben gebouwd... is elke regel code specifiek ontworpen met het oog op herbruikbaarheid. Ons team van ontwikkelaars heeft Wink gebouwd in de hoop dat de volgende 🦄 reisapp op onze codebase wordt gebouwd. Navigeer naar de [Ontwikkelaar](/developers/build-on-wink) pagina om te zien hoe Wink u kan ondersteunen bij uw volgende onderneming.
 
 ## Ander
 

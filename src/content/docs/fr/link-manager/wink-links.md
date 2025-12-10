@@ -12,7 +12,7 @@ Un gestionnaire de liens vous permet d'enregistrer et d'organiser les URL que vo
 La plupart des gestionnaires de liens exigent un abonnement pour toute personne publiant des liens d'affiliation.
 :::
 
-Nous avons construit[Liens Wink](https://i.trvl.as/); un gestionnaire de liens entièrement gratuit, axé sur l'espace voyage, pour exciter, faire de la publicité et vendre efficacement en ligne.
+Nous avons construit [Liens Wink](https://i.trvl.as/) ; un gestionnaire de liens entièrement gratuit, axé sur l'espace voyage, pour exciter, faire de la publicité et vendre efficacement en ligne.
 
 ## Caractéristiques
 
@@ -30,7 +30,7 @@ Nous avons construit[Liens Wink](https://i.trvl.as/); un gestionnaire de liens e
 ## Contenu riche
 
 :::note
-Définir`Intelligent`à 🟢 dans votre[Paramètres](/link-manager/settings)pour utiliser cette fonctionnalité.
+Définir`Intelligent`à 🟢 dans votre [Paramètres](/link-manager/settings) pour utiliser cette fonctionnalité.
 :::
 
 Si vous partagez un lien depuis un site qui prend en charge`rich`/`oEmbed`contenu, votre lien prend vie sur WinkLinks.
@@ -46,16 +46,16 @@ Sites pris en charge :
 
 ## Avancé
 
-WinkLinks est également un excellent moyen d'exposer l'inventaire de voyages que vous avez trouvé, via[Wink Studio](https://studio.wink.travel), et que vous souhaitez vendre à votre public.
+WinkLinks est également un excellent moyen d'exposer l'inventaire de voyages que vous avez trouvé, via [Wink Studio](https://studio.wink.travel), et que vous souhaitez vendre à votre public.
 
 Utilisez WinkLinks pour vendre votre :
 
-* [Liens partageables](/studio/shareable-links)- Choisissez d'afficher comme :
+* [Liens partageables](/studio/shareable-links) - Choisissez d'afficher comme :
   * [Bannière publicitaire](/developers/web-components/#content-loader).
   * Lien normal avec mises à jour des prix en temps réel.
-* [Cartes](/studio/cards)- Cartes réservables avec prix et disponibilité en temps réel.
-* [Grilles](/studio/grids)- Grille avec cartes réservables.
-* [Cartes](/studio/maps)- Carte avec des marqueurs qui s'ouvrent sur des cartes réservables.
+* [Cartes](/studio/cards) - Cartes réservables avec prix et disponibilité en temps réel.
+* [Grilles](/studio/grids) - Grille avec cartes réservables.
+* [Cartes](/studio/maps) - Carte avec des marqueurs qui s'ouvrent sur des cartes réservables.
 
 :::note
 Pour gérer votre compte WinkLinks, connectez-vous à votre compte affilié sur[Wink Studio](https://studio.wink.travel).

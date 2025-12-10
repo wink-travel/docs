@@ -12,7 +12,7 @@ Tenglastjóri gerir þér kleift að vista og skipuleggja vefslóðir sem þér 
 Flestir tenglastjórar krefjast áskriftar fyrir alla sem birta tengla.
 :::
 
-Við smíðuðum[WinkLinks](https://i.trvl.as/); alveg ókeypis tenglastjóri, einbeittur að ferðaþjónustu, til að vekja áhuga, auglýsa og selja á skilvirkan hátt á netinu.
+Við smíðuðum [WinkLinks](https://i.trvl.as/) ; alveg ókeypis tenglastjóri, einbeittur að ferðaþjónustu, til að vekja áhuga, auglýsa og selja á skilvirkan hátt á netinu.
 
 ## Eiginleikar
 
@@ -30,7 +30,7 @@ Við smíðuðum[WinkLinks](https://i.trvl.as/); alveg ókeypis tenglastjóri, e
 ## Ríkt efni
 
 :::athugasemd
-Setja`Intelligent`til 🟢 í þínu[Stillingar](/link-manager/settings)til að nota þennan eiginleika.
+Setja`Intelligent`til 🟢 í þínu [Stillingar](/link-manager/settings) til að nota þennan eiginleika.
 :::
 
 Ef þú deilir tengli af síðu sem styður`rich`/`oEmbed`efni, tengillinn þinn lifna við á WinkLinks.
@@ -46,16 +46,16 @@ Stuðningssíður:
 
 ## Ítarlegt
 
-WinkLinks er líka frábær leið til að sýna ferðabirgðir sem þú fannst, í gegnum[Wink Studio](https://studio.wink.travel)og sem þú vilt selja áhorfendum þínum.
+WinkLinks er líka frábær leið til að sýna ferðabirgðir sem þú fannst, í gegnum [Wink Studio](https://studio.wink.travel) og sem þú vilt selja áhorfendum þínum.
 
 Notaðu WinkLinks til að selja:
 
-* [Deilanlegir tenglar](/studio/shareable-links)- Veldu að birta sem:
+* [Deilanlegir tenglar](/studio/shareable-links) - Veldu að birta sem:
   * [Auglýsingaborði](/developers/web-components/#content-loader).
   * Venjulegur hlekkur með verðuppfærslum í rauntíma.
-* [Spil](/studio/cards)- Bókanleg kort með verðlagningu og framboði í rauntíma.
-* [Ristir](/studio/grids)- Tafla með bókanlegum kortum.
-* [Kort](/studio/maps)- Kort með merkjum sem opnast í bókanleg kort.
+* [Spil](/studio/cards) - Bókanleg kort með verðlagningu og framboði í rauntíma.
+* [Ristir](/studio/grids) - Tafla með bókanlegum kortum.
+* [Kort](/studio/maps) - Kort með merkjum sem opnast í bókanleg kort.
 
 :::athugið
 Til að stjórna WinkLinks reikningnum þínum skaltu skrá þig inn á tengdareikninginn þinn á[Wink Studio](https://studio.wink.travel).&#x20;

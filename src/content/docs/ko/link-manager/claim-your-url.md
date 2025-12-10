@@ -4,7 +4,7 @@ description: 이 기사에서는 WinkLinks의 허영 URL을 신청하는 방법�
 sidebar:
   order: 1
 ---
-생성하여[제휴 계정](/studio/what-is-studio)이미 WinkLinks 허영 URL이 있습니다. WinkLinks 게시자 기능은 다른 제휴 기능과 함께 Studio 앱에 제공됩니다.
+생성하여 [제휴 계정](/studio/what-is-studio) 이미 WinkLinks 허영 URL이 있습니다. WinkLinks 게시자 기능은 다른 제휴 기능과 함께 Studio 앱에 제공됩니다.
 
 ### 예
 

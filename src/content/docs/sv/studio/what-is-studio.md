@@ -8,7 +8,7 @@ sidebar:
 ---
 Historiskt sett innebar tillgång till och försäljning av allt som rörde resor sekretessavtal och komplexa integrationer mellan två \[eller fler] licensierade resebyråföretag som hade tillräcklig teknisk expertis, tillgång till en betalningsgateway och båda var PCI DSS-kompatibla. Det var en kostsam och tidskrävande ansträngning och inträdesbarriären var omöjligt hög för vanliga människor.
 
-[Wink Studio](https://studio.wink.travel)är vår affiliateportal. Den gör försäljning av resematerial tillgängligt för alla och lika enkelt som att dela en länk eller lika avancerat som att driva en onlineresebyrå.
+[Wink Studio](https://studio.wink.travel) är vår affiliateportal. Den gör försäljning av resematerial tillgängligt för alla och lika enkelt som att dela en länk eller lika avancerat som att driva en onlineresebyrå.
 
 Affiliateportalen exponerar tillgängligt reseutbud från leverantörer (t.ex. hotell, vandrarhem, uthyrningsföretag, upplevelseleverantörer) var som helst i världen. Ditt mål är att hitta det utbud som passar dig och sedan använda det bästa sättet att exponera och sälja det utbudet till din publik.
 

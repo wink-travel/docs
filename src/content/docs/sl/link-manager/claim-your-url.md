@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 1
 ---
-Z ustvarjanjem[partnerski račun](/studio/what-is-studio), že imate URL za lažno uporabo WinkLinks. Funkcije za založnike WinkLinks so na voljo v naši aplikaciji Studio; poleg drugih funkcij naših partnerskih programov.
+Z ustvarjanjem [partnerski račun](/studio/what-is-studio), že imate URL za lažno uporabo WinkLinks. Funkcije za založnike WinkLinks so na voljo v naši aplikaciji Studio; poleg drugih funkcij naših partnerskih programov.
 
 ### Primer
 

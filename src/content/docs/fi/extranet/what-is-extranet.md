@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Wink-ekstranet](https://extranet.wink.travel)on kiinteistöportaalimme. Se on tarkoitettu hotelleille, ketjuille, tuotemerkeille ja hotelliyhtiöille kiinteistöjensä digitaalisen profiilin luomiseen ja hallintaan Wink-alustalla.
+[Wink-ekstranet](https://extranet.wink.travel) on kiinteistöportaalimme. Se on tarkoitettu hotelleille, ketjuille, tuotemerkeille ja hotelliyhtiöille kiinteistöjensä digitaalisen profiilin luomiseen ja hallintaan Wink-alustalla.
 
 Extranetimme on suunniteltu mahdollisimman yksinkertaiseksi, mutta silti tukemaan kaikkia ominaisuuksia, joita tehokäyttäjät odottavat edistyneeltä kiinteistöportaalilta. Tässä pari esimerkkiä:
 

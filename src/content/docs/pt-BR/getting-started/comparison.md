@@ -34,7 +34,7 @@ Veja como o Wink se compara a outros segmentos de viagens online no mercado. Aba
 
 Alguns hotéis tentam nos comparar ao mecanismo de reservas da internet que vem junto com o channel manager e nos pedem um preço fixo mensal com base no número de chaves da propriedade.
 
-Não somos uma IBE e esperamos[Academia Wink](/)Ajuda a esclarecer isso. Há prós e contras em qualquer serviço. Se o seu IBE funciona para a sua propriedade, mantenha-o.
+Não somos uma IBE e esperamos [Academia Wink](/) Ajuda a esclarecer isso. Há prós e contras em qualquer serviço. Se o seu IBE funciona para a sua propriedade, mantenha-o.
 A Wink existe para preencher diversas lacunas no setor de viagens e reunir tudo em um só lugar.
 
 :::dica

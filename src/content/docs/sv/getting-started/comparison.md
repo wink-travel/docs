@@ -34,7 +34,7 @@ Lär dig hur Wink står sig i jämförelse med andra segment för online-resor p
 
 Vissa hotell försöker jämföra oss med sin internetbaserade bokningsmotor som medföljde deras kanalhanterare och ber oss att ge dem ett fast månadspris baserat på antalet nycklar till deras boende.
 
-Vi är inte en IBE och förhoppningsvis[Wink Academy](/)hjälper till att klargöra detta. Det finns för- och nackdelar med alla tjänster. Om din IBE fungerar för din verksamhet, håll dig till den.
+Vi är inte en IBE och förhoppningsvis [Wink Academy](/) hjälper till att klargöra detta. Det finns för- och nackdelar med alla tjänster. Om din IBE fungerar för din verksamhet, håll dig till den.
 Wink finns för att fylla flera luckor i resebranschen och samla allt på ett ställe.
 
 :::tips

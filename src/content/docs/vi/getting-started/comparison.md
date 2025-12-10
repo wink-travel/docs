@@ -34,7 +34,7 @@ Tìm hiểu Wink so sánh với các phân khúc du lịch trực tuyến khác 
 
 Một số khách sạn cố gắng so sánh chúng tôi với công cụ đặt phòng trực tuyến đi kèm với trình quản lý kênh của họ và yêu cầu chúng tôi đưa ra mức giá cố định hàng tháng dựa trên số lượng chìa khóa trong cơ sở lưu trú của họ.
 
-Chúng tôi không phải là IBE và hy vọng[Học viện Wink](/)giúp làm rõ điều này. Có những ưu và nhược điểm đối với bất kỳ dịch vụ nào. Nếu IBE của bạn phù hợp với tài sản của bạn, hãy gắn bó với dịch vụ đó.
+Chúng tôi không phải là IBE và hy vọng [Học viện Wink](/) giúp làm rõ điều này. Có những ưu và nhược điểm đối với bất kỳ dịch vụ nào. Nếu IBE của bạn phù hợp với tài sản của bạn, hãy gắn bó với dịch vụ đó.
 Wink tồn tại để lấp đầy một số khoảng trống trong ngành du lịch và tập hợp tất cả lại tại một nơi.
 
 :::tip

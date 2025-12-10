@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 1
 ---
-Creant un[compte d'afiliat](/studio/what-is-studio), ja tens una URL personalitzada de WinkLinks. Les funcions d'editor de WinkLinks existeixen a la nostra aplicació Studio; juntament amb les altres funcions d'afiliació.
+Creant un [compte d'afiliat](/studio/what-is-studio), ja tens una URL personalitzada de WinkLinks. Les funcions d'editor de WinkLinks existeixen a la nostra aplicació Studio; juntament amb les altres funcions d'afiliació.
 
 ### Exemple
 

@@ -25,7 +25,7 @@ Imate pravico zahtevati, da izbrišemo vse osebne podatke, ki jih hranimo o vas.
 
 Če želite zahtevati izbris podatkov:
 
-* 📧**Pošlji e-pošto na**:[podpora@wink.travel](mailto:support@wink.travel)
+* 📧**Pošlji e-pošto na**: [podpora@wink.travel](mailto:support@wink.travel) 
 * 📝 Uporabite zadevo:`Data Deletion Request`
 * 🔍 Prosimo, navedite identifikacijske podatke, kot so:
   * E-poštni naslov, ki ga uporabljamo na naši platformi

@@ -4,7 +4,7 @@ description: 'W tym artykule dowiesz się, jak uzyskać adres URL WinkLinks.'
 sidebar:
   order: 1
 ---
-Tworząc[konto partnerskie](/studio/what-is-studio), masz już adres URL WinkLinks vanity. Funkcje wydawcy WinkLinks są dostępne w naszej aplikacji Studio; obok naszych innych funkcji partnerskich.
+Tworząc [konto partnerskie](/studio/what-is-studio), masz już adres URL WinkLinks vanity. Funkcje wydawcy WinkLinks są dostępne w naszej aplikacji Studio; obok naszych innych funkcji partnerskich.
 
 ### Przykład
 

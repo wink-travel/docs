@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 1
 ---
-Ved å opprette en[tilknyttet konto](/studio/what-is-studio), du har allerede en WinkLinks-fancy-URL. WinkLinks-publiseringsfunksjoner finnes i Studio-appen vår, sammen med våre andre tilknyttede funksjoner.
+Ved å opprette en [tilknyttet konto](/studio/what-is-studio), du har allerede en WinkLinks-fancy-URL. WinkLinks-publiseringsfunksjoner finnes i Studio-appen vår, sammen med våre andre tilknyttede funksjoner.
 
 ### Eksempel
 

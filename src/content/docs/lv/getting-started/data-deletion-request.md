@@ -25,7 +25,7 @@ Jums ir tiesības pieprasīt, lai mēs dzēstu jebkādu jūsu personas informāc
 
 Lai pieprasītu datu dzēšanu:
 
-* 📧**Sūtīt e-pastu uz**:[atbalsts@wink.travel](mailto:support@wink.travel)
+* 📧**Sūtīt e-pastu uz**: [atbalsts@wink.travel](mailto:support@wink.travel) 
 * 📝 Izmantojiet tēmas rindu:`Data Deletion Request`
 * 🔍 Lūdzu, norādiet identificējošu informāciju, piemēram:
   * E-pasta adrese, kas tiek izmantota mūsu platformā

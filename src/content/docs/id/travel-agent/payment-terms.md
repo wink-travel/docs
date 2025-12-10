@@ -16,7 +16,7 @@ Hal ini hanya dapat dilakukan melalui API kami dan hanya oleh agen perjalanan ya
 
 Semua agen perjalanan masih dapat melakukan pemesanan melalui portal agen perjalanan kami menggunakan gateway pembayaran Wink dengan kartu kredit mereka sendiri atau kartu kredit wisatawan. Oleh karena itu, semua agen perjalanan juga harus menyetujui ketentuan pembayaran jika gateway pembayaran Wink adalah pedagang yang tercatat.
 
-Istilah-istilah tersebut tersedia di bawah[Portal Afiliasi > Ketentuan Pembayaran](/studio/payment-terms):::
+Istilah-istilah tersebut tersedia di bawah [Portal Afiliasi > Ketentuan Pembayaran](/studio/payment-terms) :::
 
 **SYARAT PEMBAYARAN WINK**\
 **UNTUK AGEN PERJALANAN (Pedagang Resmi)**

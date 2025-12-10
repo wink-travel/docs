@@ -18,7 +18,7 @@ Zīmoliem un ķēdēm ir nedaudz atšķirīgas vajadzības nekā vienam īpašum
 
 * Pārvaldiet vairākus īpašumus vienā kontā.
 * Piešķirt pārvaldniekus īpašumiem
-* Lietošana[WinkLinks](/link-manager/wink-links),[WordPress](/developers/wordpress)un mūsu[Tīmekļa komponenti](/developers/web-components)pārdot un reklamēt vairākus īpašumus vienuviet.
+* Lietošana [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) un mūsu [WinkLinks](/link-manager/wink-links) pārdot un reklamēt vairākus īpašumus vienuviet.
 
 ## Pārvaldības uzņēmumi
 
@@ -30,7 +30,7 @@ Ietekmētāji izmanto Wink, lai labāk monetizētu savu auditoriju. Viņi to dar
 
 ## Ceļojumu aģenti
 
-Ceļojumu aģenti iegūst piekļuvi ceļojumu inventāram visā pasaulē par lieliskām cenām, izmantojot mūsu īpašos pakalpojumus.[ceļojumu aģenta portāls](https://agent.wink.travel)Viņi var veikt rezervācijas, izmantojot mūsu portālu, mūsu API vai ļaujot saviem lietotājiem pašiem veikt rezervācijas ceļojumu aģentūras tīmekļa vietnē, kas izmanto mūsu tehnoloģijas.
+Ceļojumu aģenti iegūst piekļuvi ceļojumu inventāram visā pasaulē par lieliskām cenām, izmantojot mūsu īpašos pakalpojumus. [ceļojumu aģenta portāls](https://agent.wink.travel) Viņi var veikt rezervācijas, izmantojot mūsu portālu, mūsu API vai ļaujot saviem lietotājiem pašiem veikt rezervācijas ceļojumu aģentūras tīmekļa vietnē, kas izmanto mūsu tehnoloģijas.
 
 ## Korporācijas
 
@@ -43,11 +43,11 @@ Korporācijām ir nepieciešama plašāka ceļojumu platforma:
 * Nepieciešama izdevumu pārvaldības un pārskatu integrācija.
 * Viņiem ir nepieciešams konsjerža atbalsts, kā arī MICE pakalpojumi pasākumos.
 
-Korporatīvie ceļotāji var pārvaldīt savus kontus mūsu platformā.[korporatīvais portāls](/corporate/what-is-group)vai izmantojiet mūsu oficiāli atbalstīto[MS SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)spraudnis un[Piekrītu](https://www.concur.com/)integrācija.
+Korporatīvie ceļotāji var pārvaldīt savus kontus mūsu platformā. [korporatīvais portāls](/corporate/what-is-group) vai izmantojiet mūsu oficiāli atbalstīto [korporatīvais portāls](/corporate/what-is-group) spraudnis un [korporatīvais portāls](/corporate/what-is-group) integrācija.
 
 ## Izstrādātāji
 
-Kamēr mēs šo platformu veidojām viesnīcniekiem un viesnīcniekiem... Katra koda rindiņa tika veidota ar mērķi nodrošināt atkārtotu izmantošanu. Mūsu izstrādātāju komanda izveidoja Wink cerībā, ka nākamā 🦄 ceļojumu lietotne tiks veidota, balstoties uz mūsu koda bāzi. Dodieties uz[Izstrādātājs](/developers/build-on-wink)lapu, lai uzzinātu, kā Wink var jūs atbalstīt jūsu nākamajā pasākumā.
+Kamēr mēs šo platformu veidojām viesnīcniekiem un viesnīcniekiem... Katra koda rindiņa tika veidota ar mērķi nodrošināt atkārtotu izmantošanu. Mūsu izstrādātāju komanda izveidoja Wink cerībā, ka nākamā 🦄 ceļojumu lietotne tiks veidota, balstoties uz mūsu koda bāzi. Dodieties uz [Izstrādātājs](/developers/build-on-wink) lapu, lai uzzinātu, kā Wink var jūs atbalstīt jūsu nākamajā pasākumā.
 
 ## Citi
 

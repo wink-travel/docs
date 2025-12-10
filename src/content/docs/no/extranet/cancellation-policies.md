@@ -15,7 +15,7 @@ Avbestillingsreglene bestemmer hvordan bookerens midler håndteres dersom gjeste
 
 Som oftest er disse to alternativene nok. Begge gir deg imidlertid mye rom for å tilpasse avbestillingsreglene dine ytterligere.
 
-:::tips\[Morsomt faktum]
+:::tips[Morsomt faktum]
 Wink støtter totalt 8500 varianter av avbestillingsregler.
 :::
 

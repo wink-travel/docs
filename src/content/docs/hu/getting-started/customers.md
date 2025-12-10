@@ -18,7 +18,7 @@ A márkáknak és láncoknak némileg eltérő igényeik vannak, mint egyetlen i
 
 * Több ingatlan kezelése egyetlen fiók alatt.
 * Tulajdonosok kezelőinek hozzárendelése
-* Használat[WinkLinks](/link-manager/wink-links),[WordPress](/developers/wordpress)és a mi[Webkomponensek](/developers/web-components)több ingatlan egy helyen történő értékesítése és értékesítése.
+* Használat [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) és a mi [WinkLinks](/link-manager/wink-links) több ingatlan egy helyen történő értékesítése és értékesítése.
 
 ## Alapkezelő társaságok
 
@@ -30,7 +30,7 @@ Az influenszerek a Winket használják közönségük hatékonyabb bevételszerz
 
 ## Utazási irodák
 
-Az utazási irodák világszerte nagyszerű áron férhetnek hozzá utazási készleteinkhez dedikált szolgáltatásainkon keresztül.[utazási iroda portál](https://agent.wink.travel)Foglalásokat végezhetnek portálunkon, API-nkon keresztül, vagy úgy, hogy a felhasználóik maguk foglalják az utazási iroda weboldalán, amely a mi technológiánkat használja.
+Az utazási irodák világszerte nagyszerű áron férhetnek hozzá utazási készleteinkhez dedikált szolgáltatásainkon keresztül. [utazási iroda portál](https://agent.wink.travel) Foglalásokat végezhetnek portálunkon, API-nkon keresztül, vagy úgy, hogy a felhasználóik maguk foglalják az utazási iroda weboldalán, amely a mi technológiánkat használja.
 
 ## vállalatok
 
@@ -43,11 +43,11 @@ A vállalatoknak inkább utazási platformra van szükségük:
 * Költségkezelési és jelentéskészítési integrációt igényelnek.
 * Szükségük van concierge támogatásra, valamint MICE szolgáltatásokra rendezvényeken.
 
-A céges utazók saját fiókjaikat kezelhetik a mi oldalunkon.[vállalati portál](/corporate/what-is-group)vagy használja hivatalosan támogatott szolgáltatásainkat[MS SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)bővítmény és[Egyetért](https://www.concur.com/)integráció.
+A céges utazók saját fiókjaikat kezelhetik a mi oldalunkon. [vállalati portál](/corporate/what-is-group) vagy használja hivatalosan támogatott szolgáltatásainkat [vállalati portál](/corporate/what-is-group) bővítmény és [vállalati portál](/corporate/what-is-group) integráció.
 
 ## Fejlesztők
 
-Miközben ezt a platformot szállodások számára és általuk építettük... Minden kódsort kifejezetten az újrafelhasználhatóság érdekében írtunk. Fejlesztőink csapata abban a reményben készítette a Winket, hogy a következő 🦄 utazási alkalmazás a kódbázisunkra épüljön. Navigáljon a következőhöz:[Fejlesztő](/developers/build-on-wink)oldalt, hogy megtudd, hogyan támogathat a Wink a következő vállalkozásodban.
+Miközben ezt a platformot szállodások számára és általuk építettük... Minden kódsort kifejezetten az újrafelhasználhatóság érdekében írtunk. Fejlesztőink csapata abban a reményben készítette a Winket, hogy a következő 🦄 utazási alkalmazás a kódbázisunkra épüljön. Navigáljon a következőhöz: [Fejlesztő](/developers/build-on-wink) oldalt, hogy megtudd, hogyan támogathat a Wink a következő vállalkozásodban.
 
 ## Más
 

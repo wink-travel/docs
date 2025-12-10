@@ -25,7 +25,7 @@ Hakkınızda sakladığımız kişisel bilgilerin silinmesini talep etme hakkın
 
 Veri silme talebinde bulunmak için:
 
-* 📧**E-posta gönder**:[destek@wink.travel](mailto:support@wink.travel)
+* 📧**E-posta gönder**: [destek@wink.travel](mailto:support@wink.travel) 
 * 📝 Konu satırını kullanın:`Data Deletion Request`
 * 🔍 Lütfen aşağıdaki gibi tanımlayıcı bilgileri ekleyin:
   * Platformumuzla kullanılan e-posta adresi

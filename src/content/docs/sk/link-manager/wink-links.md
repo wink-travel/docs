@@ -12,7 +12,7 @@ Správca odkazov vám umožňuje ukladať a organizovať adresy URL, ktoré sa v
 Väčšina správcov odkazov vyžaduje predplatné pre každého, kto uverejňuje partnerské odkazy.
 :::
 
-Postavili sme[WinkLinks](https://i.trvl.as/); úplne bezplatný správca odkazov zameraný na cestovanie, ktorý umožňuje nadchnúť, inzerovať a efektívne predávať online.
+Postavili sme [WinkLinks](https://i.trvl.as/) ; úplne bezplatný správca odkazov zameraný na cestovanie, ktorý umožňuje nadchnúť, inzerovať a efektívne predávať online.
 
 ## Funkcie
 
@@ -30,7 +30,7 @@ Postavili sme[WinkLinks](https://i.trvl.as/); úplne bezplatný správca odkazov
 ## Bohatý obsah
 
 :::note
-Set`Intelligent`do 🟢 vo vašom[Nastavenia](/link-manager/settings)používať túto funkciu.
+Set`Intelligent`do 🟢 vo vašom [Nastavenia](/link-manager/settings) používať túto funkciu.
 :::
 
 Ak zdieľate odkaz zo stránky, ktorá podporuje`rich`/`oEmbed`obsah, váš odkaz ožije na WinkLinks.
@@ -46,16 +46,16 @@ Podporované stránky:
 
 ## Pokročilé
 
-WinkLinks je tiež skvelý spôsob, ako odhaliť cestovné ponuky, ktoré ste našli, prostredníctvom[Štúdio Wink](https://studio.wink.travel)a ktoré chcete predať svojmu publiku.
+WinkLinks je tiež skvelý spôsob, ako odhaliť cestovné ponuky, ktoré ste našli, prostredníctvom [Štúdio Wink](https://studio.wink.travel) a ktoré chcete predať svojmu publiku.
 
 Použite WinkLinks na predaj svojich:
 
-* [Zdieľovateľné odkazy](/studio/shareable-links)- Vyberte, či sa má zobraziť ako:
+* [Zdieľovateľné odkazy](/studio/shareable-links) - Vyberte, či sa má zobraziť ako:
   * [Reklamný banner](/developers/web-components/#content-loader).
   * Normálny odkaz s aktualizáciami cien v reálnom čase.
-* [Karty](/studio/cards)- Rezervovateľné karty s cenami a dostupnosťou v reálnom čase.
-* [Mriežky](/studio/grids)- Mriežka s rezervovateľnými kartami.
-* [Mapy](/studio/maps)- Mapa so značkami, ktoré sa otvárajú do rezervovateľných kariet.
+* [Karty](/studio/cards) - Rezervovateľné karty s cenami a dostupnosťou v reálnom čase.
+* [Mriežky](/studio/grids) - Mriežka s rezervovateľnými kartami.
+* [Mapy](/studio/maps) - Mapa so značkami, ktoré sa otvárajú do rezervovateľných kariet.
 
 :::note
 Ak chcete spravovať svoj účet WinkLinks, prihláste sa do svojho partnerského účtu na[Štúdio Wink](https://studio.wink.travel).

@@ -8,7 +8,7 @@ sidebar:
 ---
 Historycznie, uzyskanie dostępu do czegokolwiek związanego z podróżami i sprzedaż czegokolwiek takiego wiązało się z NDA i złożonymi integracjami między dwoma \[lub większą liczbą] licencjonowanych firm agentów podróży, które miały wystarczającą wiedzę techniczną, dostęp do bramki płatności i były zgodne z PCI DSS. Było to kosztowne i czasochłonne przedsięwzięcie, a bariera wejścia była niemożliwie wysoka dla zwykłych ludzi.
 
-[Studio Wink](https://studio.wink.travel)jest naszym portalem partnerskim. Sprawia, że sprzedaż zasobów turystycznych jest dostępna dla każdego i tak łatwa, jak udostępnianie linku lub tak zaawansowana, jak prowadzenie internetowej agencji turystycznej.
+[Studio Wink](https://studio.wink.travel) jest naszym portalem partnerskim. Sprawia, że sprzedaż zasobów turystycznych jest dostępna dla każdego i tak łatwa, jak udostępnianie linku lub tak zaawansowana, jak prowadzenie internetowej agencji turystycznej.
 
 Portal partnerski udostępnia dostępne zasoby turystyczne od dostawców (tj. hoteli, hosteli, wypożyczalni, dostawców doświadczeń) z dowolnego miejsca na świecie. Twoim celem jest znalezienie zasobów, które są dla Ciebie odpowiednie, a następnie wykorzystanie najlepszego sposobu na udostępnienie i sprzedaż tych zasobów odbiorcom.
 

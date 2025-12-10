@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Mạng lưới mở rộng Wink](https://extranet.wink.travel)là cổng thông tin bất động sản của chúng tôi. Cổng thông tin này dành cho các khách sạn, chuỗi, thương hiệu và công ty quản lý khách sạn để tạo và quản lý hồ sơ kỹ thuật số của các bất động sản của họ trên nền tảng Wink.
+[Mạng lưới mở rộng Wink](https://extranet.wink.travel) là cổng thông tin bất động sản của chúng tôi. Cổng thông tin này dành cho các khách sạn, chuỗi, thương hiệu và công ty quản lý khách sạn để tạo và quản lý hồ sơ kỹ thuật số của các bất động sản của họ trên nền tảng Wink.
 
 Extranet của chúng tôi được thiết kế chu đáo để đơn giản nhất có thể, nhưng vẫn hỗ trợ tất cả các tính năng mà người dùng có thể mong đợi từ một cổng thông tin bất động sản tiên tiến. Để cung cấp cho bạn một vài ví dụ:
 

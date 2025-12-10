@@ -92,7 +92,7 @@ Only the person signing this agreement shall be the sole designated representati
 5.1 You are solely responsible for compliance with any and all laws, rules, regulations, and tax obligations that may apply to your use of the Payment Services. In connection with your use of the Payment Services, you may not and you agree that you will not and will not assist or enable others to:
 
 * breach or circumvent any applicable laws or regulations;  
-* breach or circumvent any agreements with third parties, third-party rights, or the [Terms](/studio/terms-of-service);  
+* breach or circumvent any agreements with third parties, third-party rights, or the [Terms](/studio/terms-of-service) ;  
 * use the Payment Services for any commercial or other purposes that are not expressly permitted by these Payment Terms;  
 * avoid, bypass, remove, deactivate, impair, descramble, or otherwise circumvent any technological measure implemented by Payment Facilitator to protect the Payment Services;  
 * take any action that damages or adversely affects, or could damage or adversely affect, the performance or proper functioning of the Payment Services;  

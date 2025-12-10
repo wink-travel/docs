@@ -18,7 +18,7 @@ Brändidel ja kettidel on veidi erinevad vajadused kui ühel kinnisvaraobjektil.
 
 * Halda mitut kinnisvaraobjekti ühe konto all.
 * Määrake kinnisvarale haldurid
-* Kasutamine[WinkLinks](/link-manager/wink-links),[WordPressi](/developers/wordpress)ja meie[Veebikomponendid](/developers/web-components)mitut kinnisvaraobjekti ühes kohas turustada ja müüa.
+* Kasutamine [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) ja meie [WinkLinks](/link-manager/wink-links) mitut kinnisvaraobjekti ühes kohas turustada ja müüa.
 
 ## Haldusfirmad
 
@@ -30,7 +30,7 @@ Mõjutajad kasutavad Winki oma publiku paremaks raha teenimiseks. Nad teevad sed
 
 ## Reisibürood
 
-Reisibürood saavad meie spetsiaalsete teenuste kaudu juurdepääsu reisivarustusele kogu maailmas suurepäraste hindadega.[reisibüroo portaal](https://agent.wink.travel)Nad saavad broneeringuid teha meie portaali või API kaudu või lubades oma kasutajatel broneerida ise reisibüroo veebisaidil, mis kasutab meie tehnoloogiaid.
+Reisibürood saavad meie spetsiaalsete teenuste kaudu juurdepääsu reisivarustusele kogu maailmas suurepäraste hindadega. [reisibüroo portaal](https://agent.wink.travel) Nad saavad broneeringuid teha meie portaali või API kaudu või lubades oma kasutajatel broneerida ise reisibüroo veebisaidil, mis kasutab meie tehnoloogiaid.
 
 ## Korporatsioonid
 
@@ -43,11 +43,11 @@ Ettevõtted vajavad reisiplatvormilt paremat:
 * See nõuab kulude haldamise ja aruandluse integratsiooni.
 * Nad vajavad uksehoidja tuge ja ka MICE-teenuseid üritustel.
 
-Ärireisijad saavad oma kontosid meie saidil hallata.[ettevõtte portaal](/corporate/what-is-group)või kasutage meie ametlikult toetatud[MS SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)plugin ja[Nõustun](https://www.concur.com/)integratsioon.
+Ärireisijad saavad oma kontosid meie saidil hallata. [ettevõtte portaal](/corporate/what-is-group) või kasutage meie ametlikult toetatud [ettevõtte portaal](/corporate/what-is-group) plugin ja [ettevõtte portaal](/corporate/what-is-group) integratsioon.
 
 ## Arendajad
 
-Kuigi me ehitasime selle platvormi hotellipidajate poolt ja neile... Iga koodirida loodi spetsiaalselt korduvkasutatavuse eesmärgil. Meie arendajate meeskond lõi Winki lootuses, et järgmine 🦄 reisirakendus ehitatakse meie koodibaasile. Navigeeri aadressile[Arendaja](/developers/build-on-wink)lehekülge, et näha, kuidas Wink saab teid teie järgmises ettevõtmises toetada.
+Kuigi me ehitasime selle platvormi hotellipidajate poolt ja neile... Iga koodirida loodi spetsiaalselt korduvkasutatavuse eesmärgil. Meie arendajate meeskond lõi Winki lootuses, et järgmine 🦄 reisirakendus ehitatakse meie koodibaasile. Navigeeri aadressile [Arendaja](/developers/build-on-wink) lehekülge, et näha, kuidas Wink saab teid teie järgmises ettevõtmises toetada.
 
 ## Muu
 

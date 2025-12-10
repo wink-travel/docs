@@ -16,7 +16,7 @@ Wink 十年前就开始为酒店业提供服务。酒店利用 Wink 高效管理
 
 * 使用一个帐户管理多个属性。
 * 为物业分配经理
-* 使用 [WinkLinks](/link-manager/wink-links)，[WordPress](/developers/wordpress)和我们的[Web 组件](/developers/web-components)在一个地方营销和销售多处房产。
+* 使用 [WinkLinks](/link-manager/wink-links) ， [WordPress](/developers/wordpress) 和我们的 [WordPress](/developers/wordpress) 在一个地方营销和销售多处房产。
 
 ## 管理公司
 
@@ -28,7 +28,7 @@ Wink 十年前就开始为酒店业提供服务。酒店利用 Wink 高效管理
 
 ## 旅行社
 
-旅行社可以通过我们专门的[旅行社门户网站](https://agent.wink.travel)。他们可以通过我们的门户网站、通过我们的 API 进行预订，或者让他们的用户在使用我们技术的旅行社网站上自行预订。
+旅行社可以通过我们专门的 [旅行社门户网站](https://agent.wink.travel) 。他们可以通过我们的门户网站、通过我们的 API 进行预订，或者让他们的用户在使用我们技术的旅行社网站上自行预订。
 
 ## 公司
 
@@ -41,11 +41,11 @@ Wink 十年前就开始为酒店业提供服务。酒店利用 Wink 高效管理
 * 需要费用管理和报告整合。
 * 他们需要礼宾支持以及活动中的 MICE 服务。
 
-商务旅客可以通过我们的网站管理自己的帐户[企业门户](/corporate/what-is-group)或者使用我们官方支持的[微软 SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)插件和[同意](https://www.concur.com/) 一体化。
+商务旅客可以通过我们的网站管理自己的帐户 [企业门户](/corporate/what-is-group) 或者使用我们官方支持的 [企业门户](/corporate/what-is-group) 插件和[同意](https://www.concur.com/) 一体化。
 
 ## 开发人员
 
-虽然我们是由酒店经营者构建并服务于酒店经营者的平台……但每一行代码都是为了实现可复用性而构建的。我们的开发团队构建了 Wink，希望下一个🦄旅行应用能够基于我们的代码库构建。导航至[开发人员](/developers/build-on-wink)页面来了解 Wink 如何为您的下一次创业提供支持。
+虽然我们是由酒店经营者构建并服务于酒店经营者的平台……但每一行代码都是为了实现可复用性而构建的。我们的开发团队构建了 Wink，希望下一个🦄旅行应用能够基于我们的代码库构建。导航至 [开发人员](/developers/build-on-wink) 页面来了解 Wink 如何为您的下一次创业提供支持。
 
 ## 其他
 

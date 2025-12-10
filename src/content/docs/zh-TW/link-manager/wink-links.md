@@ -10,7 +10,7 @@ sidebar:
 大多數連結管理器要求發布聯盟連結的任何人都必須訂閱。
 :::
 
-我們建造[WinkLinks](https://i.trvl.as/)；一個完全免費的連結管理器，專注於旅遊領域，以激發、宣傳和有效地在線銷售。
+我們建造 [WinkLinks](https://i.trvl.as/) ；一個完全免費的連結管理器，專注於旅遊領域，以激發、宣傳和有效地在線銷售。
 
 ## 特徵
 
@@ -44,19 +44,19 @@ sidebar:
 
 ## 先進的
 
-WinkLinks 也是一個很好的方式來展示你找到的旅行清單，透過[Wink工作室](https://studio.wink.travel)，並且是您想要向受眾推銷的產品。
+WinkLinks 也是一個很好的方式來展示你找到的旅行清單，透過 [Wink工作室](https://studio.wink.travel) ，並且是您想要向受眾推銷的產品。
 
 使用 WinkLinks 銷售您的：
 
 * [可共享連結](/studio/shareable-links) - 選擇顯示為：
-  * [廣告橫幅](/developers/web-components/#content-loader)。
+  * [廣告橫幅](/developers/web-components/#content-loader) 。
   * 具有即時價格更新的正常連結。
 * [牌](/studio/cards) - 可預訂的卡，包含即時價格和可用性。
 * [網格](/studio/grids) - 帶有可預訂卡片的網格。
 * [地圖](/studio/maps) - 帶有標記的地圖，可打開為可預訂的卡片。
 
 ：：：筆記
-要管理您的 WinkLinks 帳戶，請登入您的聯盟帳戶[Wink工作室](https://studio.wink.travel)。
+要管理您的 WinkLinks 帳戶，請登入您的聯盟帳戶 [Wink工作室](https://studio.wink.travel) 。
 :::
 
 ：：：提示

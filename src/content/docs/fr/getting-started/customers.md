@@ -18,7 +18,7 @@ Les marques et les chaînes ont des besoins légèrement différents de ceux d'u
 
 * Gérez plusieurs propriétés sous un seul compte.
 * Affecter des gestionnaires aux propriétés
-* Utiliser [Liens Wink](/link-manager/wink-links),[WordPress](/developers/wordpress)et notre[Composants Web](/developers/web-components)pour commercialiser et vendre plusieurs propriétés au même endroit.
+* Utiliser [Liens Wink](/link-manager/wink-links), [WordPress](/developers/wordpress) et notre [WordPress](/developers/wordpress) pour commercialiser et vendre plusieurs propriétés au même endroit.
 
 ## Sociétés de gestion
 
@@ -30,7 +30,7 @@ Les influenceurs utilisent Wink pour mieux monétiser leur audience. Pour ce fai
 
 ## Agents de voyages
 
-Les agents de voyages ont accès à un inventaire de voyages dans le monde entier à des prix avantageux grâce à notre service dédié.[portail des agents de voyages](https://agent.wink.travel)Ils peuvent effectuer des réservations via notre portail, via notre API ou en laissant leurs utilisateurs réserver eux-mêmes sur le site Web de l'agence de voyages qui utilise nos technologies.
+Les agents de voyages ont accès à un inventaire de voyages dans le monde entier à des prix avantageux grâce à notre service dédié. [portail des agents de voyages](https://agent.wink.travel) Ils peuvent effectuer des réservations via notre portail, via notre API ou en laissant leurs utilisateurs réserver eux-mêmes sur le site Web de l'agence de voyages qui utilise nos technologies.
 
 ## Sociétés
 
@@ -43,11 +43,11 @@ Les entreprises ont besoin d’une plateforme de voyage plus performante :
 * Ils nécessitent une intégration de la gestion des dépenses et des rapports.
 * Ils ont besoin d’un soutien de conciergerie, ainsi que de services MICE lors d’événements.
 
-Les voyageurs d'affaires peuvent gérer leurs propres comptes sur notre[portail d'entreprise](/corporate/what-is-group)ou utilisez notre support officiel[MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)plugin et[D'accord](https://www.concur.com/)intégration.
+Les voyageurs d'affaires peuvent gérer leurs propres comptes sur notre [portail d'entreprise](/corporate/what-is-group) ou utilisez notre support officiel [portail d'entreprise](/corporate/what-is-group) plugin et [portail d'entreprise](/corporate/what-is-group) intégration.
 
 ## Développeurs
 
-Bien que nous ayons développé cette plateforme par et pour les hôteliers… Chaque ligne de code a été conçue dans un souci précis de réutilisabilité. Notre équipe de développeurs a développé Wink dans l'espoir que la prochaine application de voyage 🦄 s'appuie sur notre base de code. Accédez à[Promoteur](/developers/build-on-wink)page pour voir comment Wink peut vous accompagner dans votre prochaine aventure.
+Bien que nous ayons développé cette plateforme par et pour les hôteliers… Chaque ligne de code a été conçue dans un souci précis de réutilisabilité. Notre équipe de développeurs a développé Wink dans l'espoir que la prochaine application de voyage 🦄 s'appuie sur notre base de code. Accédez à [Promoteur](/developers/build-on-wink) page pour voir comment Wink peut vous accompagner dans votre prochaine aventure.
 
 ## Autre
 

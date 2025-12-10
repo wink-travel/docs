@@ -25,19 +25,19 @@ Le sue responsabilità includono:
 * Fornire inventario prenotabile nel formato, nella lingua e nella valuta desiderati, ad esempio:
   * UN [link condivisibile](/studio/shareable-links)su Facebook.
   * Una landing page dell'hotel su https://ota.wink.travel con l'inventario per quell'hotel.
-  * UN [carta](/studio/cards)contenente inventario affiliato.
+  * UN [carta](/studio/cards) contenente inventario affiliato.
   * UN [mappa](/studio/maps)sul tuo[WinkLinks](/link-manager/wink-links) account.
-  * UN [chiamata API](/developers/apis)da un sistema di un agente di viaggio remoto.
+  * UN [chiamata API](/developers/apis) da un sistema di un agente di viaggio remoto.
 * Fornire ai viaggiatori un modo per:
   * Cerca l'inventario di viaggio.
   * Prenota l'inventario disponibile.
   * Gestire il loro[prenotazioni e recensioni](/booking-engine/bookings).
-  * Gestire il loro[lista dei desideri](/booking-engine/bucket-list)di cose da prenotare in futuro.
+  * Gestire il loro [lista dei desideri](/booking-engine/bucket-list) di cose da prenotare in futuro.
   * Gestire il loro[profilo di viaggio](/booking-engine/travel-preferences).*ad esempio allergie, contatti di emergenza ecc.*
 
 Il motore di prenotazione è un insieme di funzionalità riutilizzabili che rendiamo pubbliche tramite https://ota.wink.travel; un sito web altamente personalizzabile che consente agli hotel e agli affiliati di vendere i propri prodotti ai viaggiatori.
 
-Gli integratori che desiderano ancora più libertà hanno accesso a tutte le stesse funzionalità tramite il nostro[Plugin di WordPress](/developers/wordpress/),[Componenti Web](/developers/web-components) E [API](/developers/apis).
+Gli integratori che desiderano ancora più libertà hanno accesso a tutte le stesse funzionalità tramite il nostro [Plugin di WordPress](/developers/wordpress/),[Componenti Web](/developers/web-components) E [API](/developers/apis).
 
 Continuate nelle sezioni successive per saperne di più su ciò che il motore di prenotazione ha da offrire.
 

@@ -18,7 +18,7 @@ Marcas e redes têm necessidades ligeiramente diferentes de uma única proprieda
 
 * Gerencie várias propriedades em uma única conta.
 * Atribuir gerentes às propriedades
-* Usar [WinkLinks](/link-manager/wink-links),[WordPress](/developers/wordpress)e nosso[Componentes da Web](/developers/web-components)para comercializar e vender várias propriedades em um só lugar.
+* Usar [WinkLinks](/link-manager/wink-links), [WordPress](/developers/wordpress) e nosso [WordPress](/developers/wordpress) para comercializar e vender várias propriedades em um só lugar.
 
 ## Empresas de gestão
 
@@ -43,11 +43,11 @@ As corporações exigem mais uma plataforma de viagens:
 * Eles exigem integração de gerenciamento de despesas e relatórios.
 * Eles precisam de suporte de concierge, bem como serviços MICE em eventos.
 
-Os viajantes corporativos podem gerenciar suas próprias contas em nosso[portal corporativo](/corporate/what-is-group)ou use nosso suporte oficial[MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)plugin e[Concordo](https://www.concur.com/)integração.
+Os viajantes corporativos podem gerenciar suas próprias contas em nosso [portal corporativo](/corporate/what-is-group) ou use nosso suporte oficial [portal corporativo](/corporate/what-is-group) plugin e [portal corporativo](/corporate/what-is-group) integração.
 
 ## Desenvolvedores
 
-Embora tenhamos construído esta plataforma por e para hoteleiros... Cada linha de código foi criada com o propósito específico de reutilização. Nossa equipe de desenvolvedores criou o Wink na esperança de que o próximo aplicativo de viagens 🦄 seja construído sobre nossa base de código. Navegue até[Desenvolvedor](/developers/build-on-wink)página para ver como a Wink pode ajudar você em seu próximo empreendimento.
+Embora tenhamos construído esta plataforma por e para hoteleiros... Cada linha de código foi criada com o propósito específico de reutilização. Nossa equipe de desenvolvedores criou o Wink na esperança de que o próximo aplicativo de viagens 🦄 seja construído sobre nossa base de código. Navegue até [Desenvolvedor](/developers/build-on-wink) página para ver como a Wink pode ajudar você em seu próximo empreendimento.
 
 ## Outro
 

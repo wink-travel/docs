@@ -4,7 +4,7 @@ description: 'Selles artiklis räägime teile, kuidas oma WinkLinksi edevus-URL-
 sidebar:
   order: 1
 ---
-Luues[partnerkonto](/studio/what-is-studio), sul on juba WinkLinksi edevus-URL. WinkLinksi avaldaja funktsioonid on meie Studio rakenduses olemas koos meie teiste partnerlusfunktsioonidega.
+Luues [partnerkonto](/studio/what-is-studio), sul on juba WinkLinksi edevus-URL. WinkLinksi avaldaja funktsioonid on meie Studio rakenduses olemas koos meie teiste partnerlusfunktsioonidega.
 
 ### Näide
 

@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Extranetul Wink](https://extranet.wink.travel)este portalul nostru imobiliar. Este destinat hotelurilor, lanțurilor hoteliere, brandurilor și companiilor de administrare hotelieră pentru a crea și gestiona profilul digital al proprietăților lor pe platforma Wink.
+[Extranetul Wink](https://extranet.wink.travel) este portalul nostru imobiliar. Este destinat hotelurilor, lanțurilor hoteliere, brandurilor și companiilor de administrare hotelieră pentru a crea și gestiona profilul digital al proprietăților lor pe platforma Wink.
 
 Extranetul nostru a fost conceput cu grijă pentru a fi cât mai simplu posibil, dar pentru a oferi în același timp toate funcțiile pe care utilizatorii avansați le așteaptă de la un portal imobiliar avansat. Iată câteva exemple:
 

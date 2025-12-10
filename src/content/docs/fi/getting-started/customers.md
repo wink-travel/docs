@@ -18,7 +18,7 @@ Tuotemerkeillä ja ketjuilla on hieman erilaiset tarpeet kuin yksittäisillä ki
 
 * Hallitse useita kiinteistöjä yhdellä tilillä.
 * Määritä hallinnoijia kiinteistöille
-* Käytä[WinkLinks](/link-manager/wink-links),[WordPress](/developers/wordpress)ja meidän[Verkkokomponentit](/developers/web-components)markkinoida ja myydä useita kiinteistöjä yhdessä paikassa.
+* Käytä [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) ja meidän [WinkLinks](/link-manager/wink-links) markkinoida ja myydä useita kiinteistöjä yhdessä paikassa.
 
 ## Hallinnointiyhtiöt
 
@@ -30,7 +30,7 @@ Vaikuttajat käyttävät Winkiä yleisönsä tehokkaampaan rahallistamiseen. He 
 
 ## Matkatoimistot
 
-Matkatoimistot saavat käyttöönsä matkavarastoja maailmanlaajuisesti loistavin hinnoin omistautuneen[matkatoimistoportaali](https://agent.wink.travel)He voivat tehdä varauksia portaalimme kautta, API:mme kautta tai antamalla käyttäjiensä varata itse matkatoimiston verkkosivustolla, joka käyttää teknologioitamme.
+Matkatoimistot saavat käyttöönsä matkavarastoja maailmanlaajuisesti loistavin hinnoin omistautuneen [matkatoimistoportaali](https://agent.wink.travel) He voivat tehdä varauksia portaalimme kautta, API:mme kautta tai antamalla käyttäjiensä varata itse matkatoimiston verkkosivustolla, joka käyttää teknologioitamme.
 
 ## Yritykset
 
@@ -43,11 +43,11 @@ Yritykset tarvitsevat enemmän matkustusalustaa:
 * Ne edellyttävät kulujenhallinnan ja raportoinnin integrointia.
 * He tarvitsevat concierge-tukea sekä MICE-palveluita tapahtumissa.
 
-Liikematkustajat voivat hallita omia tilejään palvelussamme[yritysportaali](/corporate/what-is-group)tai käytä virallisesti tuettua[MS SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)laajennus ja[Samaa mieltä](https://www.concur.com/)integraatio.
+Liikematkustajat voivat hallita omia tilejään palvelussamme [yritysportaali](/corporate/what-is-group) tai käytä virallisesti tuettua [yritysportaali](/corporate/what-is-group) laajennus ja [yritysportaali](/corporate/what-is-group) integraatio.
 
 ## Kehittäjät
 
-Vaikka rakensimme tätä alustaa hotellialan toimijoille ja heille... Jokainen koodirivi on rakennettu uudelleenkäytettävyyttä silmällä pitäen. Kehittäjätiimimme loi Winkin toivoen, että seuraava 🦄 matkailusovellus rakennetaan koodipohjamme päälle. Siirry kohtaan[Kehittäjä](/developers/build-on-wink)sivulta, miten Wink voi tukea sinua seuraavassa hankkeessasi.
+Vaikka rakensimme tätä alustaa hotellialan toimijoille ja heille... Jokainen koodirivi on rakennettu uudelleenkäytettävyyttä silmällä pitäen. Kehittäjätiimimme loi Winkin toivoen, että seuraava 🦄 matkailusovellus rakennetaan koodipohjamme päälle. Siirry kohtaan [Kehittäjä](/developers/build-on-wink) sivulta, miten Wink voi tukea sinua seuraavassa hankkeessasi.
 
 ## Muut
 

@@ -4,7 +4,7 @@ description: In questo articolo ti spieghiamo come rivendicare il tuo vanity URL
 sidebar:
   order: 1
 ---
-Creando un[account affiliato](/studio/what-is-studio), hai già un URL personalizzato WinkLinks. Le funzionalità di pubblicazione di WinkLinks sono disponibili nella nostra app Studio, insieme alle altre funzionalità di affiliazione.
+Creando un [account affiliato](/studio/what-is-studio), hai già un URL personalizzato WinkLinks. Le funzionalità di pubblicazione di WinkLinks sono disponibili nella nostra app Studio, insieme alle altre funzionalità di affiliazione.
 
 ### Esempio
 

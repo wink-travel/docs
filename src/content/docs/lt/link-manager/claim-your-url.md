@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 1
 ---
-Sukūrus[partnerio paskyra](/studio/what-is-studio), jūs jau turite „WinkLinks“ reklaminį URL. „WinkLinks“ leidėjo funkcijos yra mūsų „Studio“ programėlėje, kartu su kitomis partnerių programos funkcijomis.
+Sukūrus [partnerio paskyra](/studio/what-is-studio), jūs jau turite „WinkLinks“ reklaminį URL. „WinkLinks“ leidėjo funkcijos yra mūsų „Studio“ programėlėje, kartu su kitomis partnerių programos funkcijomis.
 
 ### Pavyzdys
 

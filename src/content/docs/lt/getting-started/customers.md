@@ -18,7 +18,7 @@ Prekių ženklai ir tinklai turi šiek tiek kitokius poreikius nei vienas objekt
 
 * Tvarkykite kelis objektus vienoje paskyroje.
 * Priskirti valdytojus nuosavybėms
-* Naudojimas[„WinkLinks“](/link-manager/wink-links),[WordPress](/developers/wordpress)ir mūsų[Žiniatinklio komponentai](/developers/web-components)parduoti ir reklamuoti kelis objektus vienoje vietoje.
+* Naudojimas [„WinkLinks“](/link-manager/wink-links), [„WinkLinks“](/link-manager/wink-links) ir mūsų [„WinkLinks“](/link-manager/wink-links) parduoti ir reklamuoti kelis objektus vienoje vietoje.
 
 ## Valdymo įmonės
 
@@ -30,7 +30,7 @@ Svetingumo ir turizmo valdymo įmonės gali valdyti savo nekilnojamojo turto por
 
 ## Kelionių agentai
 
-Kelionių agentai gali naudotis kelionių inventoriumi visame pasaulyje puikiomis kainomis per mūsų specialius pasiūlymus.[kelionių agento portalas](https://agent.wink.travel)Jie gali užsisakyti per mūsų portalą, per mūsų API arba leisdami savo vartotojams patiems užsisakyti kelionių agentūros svetainėje, kurioje naudojamos mūsų technologijos.
+Kelionių agentai gali naudotis kelionių inventoriumi visame pasaulyje puikiomis kainomis per mūsų specialius pasiūlymus. [kelionių agento portalas](https://agent.wink.travel) Jie gali užsisakyti per mūsų portalą, per mūsų API arba leisdami savo vartotojams patiems užsisakyti kelionių agentūros svetainėje, kurioje naudojamos mūsų technologijos.
 
 ## Korporacijos
 
@@ -43,11 +43,11 @@ Korporacijoms reikia labiau orientuotos kelionių platformos:
 * Reikalinga išlaidų valdymo ir ataskaitų teikimo integracija.
 * Jiems reikalinga konsjeržo pagalba, taip pat MICE paslaugos renginiuose.
 
-Keliaujantys verslo klientams gali patys tvarkyti savo paskyras mūsų svetainėje.[įmonės portalas](/corporate/what-is-group)arba naudokitės mūsų oficialiai palaikoma[MS SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)įskiepis ir[Sutinku](https://www.concur.com/)integracija.
+Keliaujantys verslo klientams gali patys tvarkyti savo paskyras mūsų svetainėje. [įmonės portalas](/corporate/what-is-group) arba naudokitės mūsų oficialiai palaikoma [įmonės portalas](/corporate/what-is-group) įskiepis ir [įmonės portalas](/corporate/what-is-group) integracija.
 
 ## Kūrėjai
 
-Nors šią platformą kūrėme viešbučių savininkams ir jiems... Kiekviena kodo eilutė buvo sukurta siekiant pakartotinio naudojimo. Mūsų kūrėjų komanda sukūrė „Wink“ tikėdamasi, kad kita 🦄 kelionių programėlė bus sukurta remiantis mūsų kodo baze. Eikite į[Kūrėjas](/developers/build-on-wink)puslapį, kad sužinotumėte, kaip „Wink“ gali jus paremti jūsų kitame versle.
+Nors šią platformą kūrėme viešbučių savininkams ir jiems... Kiekviena kodo eilutė buvo sukurta siekiant pakartotinio naudojimo. Mūsų kūrėjų komanda sukūrė „Wink“ tikėdamasi, kad kita 🦄 kelionių programėlė bus sukurta remiantis mūsų kodo baze. Eikite į [Kūrėjas](/developers/build-on-wink) puslapį, kad sužinotumėte, kaip „Wink“ gali jus paremti jūsų kitame versle.
 
 ## Kita
 

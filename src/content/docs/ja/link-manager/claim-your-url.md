@@ -4,7 +4,7 @@ description: この記事では、WinkLinks のバニティ URL を取得する�
 sidebar:
   order: 1
 ---
-作成することで[アフィリエイトアカウント](/studio/what-is-studio)すでにWinkLinksのバニティURLをお持ちです。WinkLinksのパブリッシャー機能は、他のアフィリエイト機能と同様に、Studioアプリに搭載されています。
+作成することで [アフィリエイトアカウント](/studio/what-is-studio) すでにWinkLinksのバニティURLをお持ちです。WinkLinksのパブリッシャー機能は、他のアフィリエイト機能と同様に、Studioアプリに搭載されています。
 
 ### 例
 

@@ -12,7 +12,7 @@ Mit einem Link-Manager können Sie URLs, die Sie interessieren, für später spe
 Die meisten Link-Manager verlangen für das Posten von Affiliate-Links ein Abonnement.
 :::
 
-Wir bauten[WinkLinks](https://i.trvl.as/); ein völlig kostenloser Link-Manager, der sich auf den Reisebereich konzentriert, um online zu begeistern, zu werben und effektiv zu verkaufen.
+Wir bauten [WinkLinks](https://i.trvl.as/) ; ein völlig kostenloser Link-Manager, der sich auf den Reisebereich konzentriert, um online zu begeistern, zu werben und effektiv zu verkaufen.
 
 ## Merkmale
 
@@ -30,7 +30,7 @@ Wir bauten[WinkLinks](https://i.trvl.as/); ein völlig kostenloser Link-Manager,
 ## Umfangreicher Inhalt
 
 :::Hinweis
-Set`Intelligent`zu 🟢 in Ihrem[Einstellungen](/link-manager/settings)um diese Funktion zu nutzen.
+Set`Intelligent`zu 🟢 in Ihrem [Einstellungen](/link-manager/settings) um diese Funktion zu nutzen.
 ::
 
 Wenn Sie einen Link von einer Site teilen, die`rich`/`oEmbed`Inhalt, Ihr Link wird auf WinkLinks lebendig.
@@ -46,16 +46,16 @@ Unterstützte Sites:
 
 ## Fortschrittlich
 
-WinkLinks ist auch eine großartige Möglichkeit, das von Ihnen gefundene Reiseinventar zu präsentieren, durch[Wink Studio](https://studio.wink.travel), und die Sie Ihrem Publikum verkaufen möchten.
+WinkLinks ist auch eine großartige Möglichkeit, das von Ihnen gefundene Reiseinventar zu präsentieren, durch [Wink Studio](https://studio.wink.travel), und die Sie Ihrem Publikum verkaufen möchten.
 
 Verwenden Sie WinkLinks, um Folgendes zu verkaufen:
 
-* [Teilbare Links](/studio/shareable-links)- Wählen Sie die Anzeige als:
+* [Teilbare Links](/studio/shareable-links) - Wählen Sie die Anzeige als:
   * [Werbebanner](/developers/web-components/#content-loader).
   * Normaler Link mit Preisaktualisierungen in Echtzeit.
-* [Karten](/studio/cards)- Buchbare Karten mit Preisen und Verfügbarkeit in Echtzeit.
-* [Gitter](/studio/grids)- Raster mit buchbaren Karten.
-* [Karten](/studio/maps)- Karte mit Markierungen, die sich zu buchbaren Karten öffnen lassen.
+* [Karten](/studio/cards) - Buchbare Karten mit Preisen und Verfügbarkeit in Echtzeit.
+* [Gitter](/studio/grids) - Raster mit buchbaren Karten.
+* [Karten](/studio/maps) - Karte mit Markierungen, die sich zu buchbaren Karten öffnen lassen.
 
 :::Hinweis
 Um Ihr WinkLinks-Konto zu verwalten, melden Sie sich bei Ihrem Partnerkonto an unter[Wink Studio](https://studio.wink.travel).

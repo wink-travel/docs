@@ -4,7 +4,7 @@ description: I den här artikeln berättar vi hur du gör anspråk på din WinkL
 sidebar:
   order: 1
 ---
-Genom att skapa en[affiliate-konto](/studio/what-is-studio), du har redan en WinkLinks-avity-URL. WinkLinks-publiceringsfunktioner finns i vår Studio-app, tillsammans med våra andra affiliate-funktioner.
+Genom att skapa en [affiliate-konto](/studio/what-is-studio), du har redan en WinkLinks-avity-URL. WinkLinks-publiceringsfunktioner finns i vår Studio-app, tillsammans med våra andra affiliate-funktioner.
 
 ### Exempel
 

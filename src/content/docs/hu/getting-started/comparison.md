@@ -34,7 +34,7 @@ Ismerje meg, hogyan viszonyul a Wink a piacon található más online utazási s
 
 Néhány szálloda megpróbál minket összehasonlítani az internetes foglalási rendszerükkel, amely a channel managerükkel együtt érkezett, és arra kérnek minket, hogy adjunk nekik egy fix, havi árat a szálláshelyükhöz tartozó kulcsok száma alapján.
 
-Nem vagyunk független brit bírók, és remélhetőleg[Wink Akadémia](/)segít tisztázni ezt. Minden szolgáltatásnak vannak előnyei és hátrányai. Ha az Ön IBE-je működik az Ön szálláshelyén, akkor ragaszkodjon hozzá.
+Nem vagyunk független brit bírók, és remélhetőleg [Wink Akadémia](/) segít tisztázni ezt. Minden szolgáltatásnak vannak előnyei és hátrányai. Ha az Ön IBE-je működik az Ön szálláshelyén, akkor ragaszkodjon hozzá.
 
 A Wink célja, hogy számos hiányosságot betöltsön az utazási iparban, és mindent egy helyre hozzon.
 

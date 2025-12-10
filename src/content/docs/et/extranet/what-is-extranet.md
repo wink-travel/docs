@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Winki ekstranet](https://extranet.wink.travel)on meie kinnisvaraportaal. See on mõeldud hotellidele, kettidele, kaubamärkidele ja hotellihaldusettevõtetele oma kinnisvara digitaalse profiili loomiseks ja haldamiseks Winki platvormil.
+[Winki ekstranet](https://extranet.wink.travel) on meie kinnisvaraportaal. See on mõeldud hotellidele, kettidele, kaubamärkidele ja hotellihaldusettevõtetele oma kinnisvara digitaalse profiili loomiseks ja haldamiseks Winki platvormil.
 
 Meie ekstranet on läbimõeldult kujundatud võimalikult lihtsaks, kuid samas toetama kõiki funktsioone, mida edasijõudnud kasutajad on harjunud täiustatud kinnisvaraportaalilt ootama. Toon paar näidet:
 

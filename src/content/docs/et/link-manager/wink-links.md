@@ -12,7 +12,7 @@ Lingihaldur võimaldab teil salvestada ja korraldada teile meeldivaid URL-e hili
 Enamik lingihaldureid nõuab liikmelisuse registreerimist kõigilt, kes postitavad partnerlinke.
 :::
 
-Me ehitasime[WinkLinks](https://i.trvl.as/); täiesti tasuta lingihaldur, mis on keskendunud reisiruumile, et veebis tõhusalt erutada, reklaamida ja müüa.
+Me ehitasime [WinkLinks](https://i.trvl.as/) ; täiesti tasuta lingihaldur, mis on keskendunud reisiruumile, et veebis tõhusalt erutada, reklaamida ja müüa.
 
 ## Omadused
 
@@ -30,7 +30,7 @@ Me ehitasime[WinkLinks](https://i.trvl.as/); täiesti tasuta lingihaldur, mis on
 ## Rikkalik sisu
 
 :::märkus
-Määra`Intelligent`et 🟢 sinu[Seaded](/link-manager/settings)selle funktsiooni kasutamiseks.
+Määra`Intelligent`et 🟢 sinu [Seaded](/link-manager/settings) selle funktsiooni kasutamiseks.
 :::
 
 Kui jagate linki saidilt, mis toetab`rich`/`oEmbed`sisu, teie link ärkab WinkLinksis ellu.
@@ -46,16 +46,16 @@ Toetatud saidid:
 
 ## Täpsem
 
-WinkLinks on ka suurepärane viis leitud reisiinventari tutvustamiseks[Wink Studio](https://studio.wink.travel)ja mida soovite oma sihtrühmale müüa.
+WinkLinks on ka suurepärane viis leitud reisiinventari tutvustamiseks [Wink Studio](https://studio.wink.travel) ja mida soovite oma sihtrühmale müüa.
 
 Kasutage WinkLinksi oma toodete müümiseks:
 
-* [Jagatavad lingid](/studio/shareable-links)- Valige kuvamisviis:
+* [Jagatavad lingid](/studio/shareable-links) - Valige kuvamisviis:
   * [Reklaambänner](/developers/web-components/#content-loader).
   * Tavaline link reaalajas hinnavärskendustega.
-* [Kaardid](/studio/cards)- Broneeritavad kaardid reaalajas hinna ja saadavusega.
-* [Ruudustikud](/studio/grids)- Broneeritavate kaartidega ruudustik.
-* [Kaardid](/studio/maps)- Kaart markeritega, mis avanevad broneeritavateks kaartideks.
+* [Kaardid](/studio/cards) - Broneeritavad kaardid reaalajas hinna ja saadavusega.
+* [Ruudustikud](/studio/grids) - Broneeritavate kaartidega ruudustik.
+* [Kaardid](/studio/maps) - Kaart markeritega, mis avanevad broneeritavateks kaartideks.
 
 :::märkus
 Oma WinkLinksi konto haldamiseks logige sisse oma partnerkontole saidil[Wink Studio](https://studio.wink.travel).

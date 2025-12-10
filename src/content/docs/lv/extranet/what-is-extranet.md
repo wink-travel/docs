@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Wink ekstranets](https://extranet.wink.travel)ir mūsu īpašumu portāls. Tas ir paredzēts viesnīcām, ķēdēm, zīmoliem un viesnīcu pārvaldības uzņēmumiem, lai izveidotu un pārvaldītu savu īpašumu digitālo profilu Wink platformā.
+[Wink ekstranets](https://extranet.wink.travel) ir mūsu īpašumu portāls. Tas ir paredzēts viesnīcām, ķēdēm, zīmoliem un viesnīcu pārvaldības uzņēmumiem, lai izveidotu un pārvaldītu savu īpašumu digitālo profilu Wink platformā.
 
 Mūsu ekstranets ir pārdomāti izstrādāts, lai tas būtu pēc iespējas vienkāršāks, taču joprojām atbalstītu visas funkcijas, ko pieredzējuši lietotāji sagaida no uzlabota īpašumu portāla. Lai sniegtu pāris piemērus:
 

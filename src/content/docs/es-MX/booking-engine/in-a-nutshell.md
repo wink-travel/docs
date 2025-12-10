@@ -23,19 +23,19 @@ Sus responsabilidades incluyen:
 * Ofrecer inventario reservable en el formato, idioma y moneda deseados, como:
   * A [enlace para compartir](/studio/shareable-links) En facebook.
   * Una página de destino de un hotel en https://ota.wink.travel con el inventario de ese hotel.
-  * A [tarjeta](/studio/cards)que contiene inventario de afiliados.
-  * A [mapa](/studio/maps)En tu[Enlaces de guiño](/link-manager/wink-links) cuenta.
-  * Un [Llamada API](/developers/apis)desde un sistema de agencia de viajes remoto.
+  * A [tarjeta](/studio/cards) que contiene inventario de afiliados.
+  * A [mapa](/studio/maps) En tu[Enlaces de guiño](/link-manager/wink-links) cuenta.
+  * Un [Llamada API](/developers/apis) desde un sistema de agencia de viajes remoto.
 * Ofrecer a los viajeros una forma de:
   * Búsqueda de inventario de viajes.
   * Reserva inventario disponible.
   * Gestionar sus[reservas y reseñas](/booking-engine/bookings).
-  * Gestionar sus[lista de deseos](/booking-engine/bucket-list)de cosas para reservar en el futuro.
+  * Gestionar sus [lista de deseos](/booking-engine/bucket-list) de cosas para reservar en el futuro.
   * Gestionar sus[perfil de viaje](/booking-engine/travel-preferences).*p.ej. alergias, contacto de emergencia, etc.*
 
 El motor de reservas es una colección de funcionalidades reutilizables que exponemos a través de https://ota.wink.travel; un sitio web altamente personalizable para que los hoteles y afiliados vendan sus productos a los viajeros.
 
-Los integradores que desean aún más libertad tienen acceso a todas las mismas funciones a través de nuestro[Complemento de WordPress](/developers/wordpress/),[Componentes web](/developers/web-components) y [API](/developers/apis).
+Los integradores que desean aún más libertad tienen acceso a todas las mismas funciones a través de nuestro [Complemento de WordPress](/developers/wordpress/),[Componentes web](/developers/web-components) y [API](/developers/apis).
 
 Continúe con las siguientes secciones para leer más sobre lo que el motor de reservas tiene para ofrecer.
 

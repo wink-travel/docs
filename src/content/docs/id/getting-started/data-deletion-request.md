@@ -25,7 +25,7 @@ Anda memiliki hak untuk meminta kami menghapus informasi pribadi apa pun yang ka
 
 Untuk meminta penghapusan data:
 
-* 📧**Kirim email ke**:[dukungan@wink.travel](mailto:support@wink.travel)
+* 📧**Kirim email ke**: [dukungan@wink.travel](mailto:support@wink.travel) 
 * 📝 Gunakan baris subjek:`Data Deletion Request`
 * 🔍 Harap sertakan detail identitas seperti:
   * Alamat email yang digunakan dengan platform kami

@@ -12,7 +12,7 @@ Met een linkmanager kun je URL's die je leuk vindt, opslaan en ordenen voor late
 De meeste linkbeheerders vereisen een abonnement voor iedereen die affiliatelinks plaatst.
 :::
 
-Wij bouwden[WinkLinks](https://i.trvl.as/); een volledig gratis linkmanager, gericht op de reisbranche, om online effectief te enthousiasmeren, adverteren en verkopen.
+Wij bouwden [WinkLinks](https://i.trvl.as/) ; een volledig gratis linkmanager, gericht op de reisbranche, om online effectief te enthousiasmeren, adverteren en verkopen.
 
 ## Functies
 
@@ -30,7 +30,7 @@ Wij bouwden[WinkLinks](https://i.trvl.as/); een volledig gratis linkmanager, ger
 ## Rijke inhoud
 
 :::notitie
-Instellen`Intelligent`naar 🟢 in jouw[Instellingen](/link-manager/settings)om deze functie te gebruiken.
+Instellen`Intelligent`naar 🟢 in jouw [Instellingen](/link-manager/settings) om deze functie te gebruiken.
 ::
 
 Als u een link deelt vanaf een site die`rich`/`oEmbed`inhoud, dan komt uw link tot leven op WinkLinks.
@@ -46,16 +46,16 @@ Ondersteunde sites:
 
 ## Geavanceerd
 
-WinkLinks is ook een geweldige manier om de reisinventaris die u hebt gevonden, te tonen via[Wink Studio](https://studio.wink.travel), en die u aan uw publiek wilt verkopen.
+WinkLinks is ook een geweldige manier om de reisinventaris die u hebt gevonden, te tonen via [Wink Studio](https://studio.wink.travel), en die u aan uw publiek wilt verkopen.
 
 Gebruik WinkLinks om te verkopen:
 
-* [Deelbare links](/studio/shareable-links)- Kies om weer te geven als:
+* [Deelbare links](/studio/shareable-links) - Kies om weer te geven als:
   * [Advertentiebanner](/developers/web-components/#content-loader).
   * Normale link met realtime prijsupdates.
-* [Kaarten](/studio/cards)- Boekbare kaarten met realtime prijzen en beschikbaarheid.
-* [Rasters](/studio/grids)- Raster met boekbare kaarten.
-* [Kaarten](/studio/maps)- Kaart met markeringen die openklappen tot boekbare kaarten.
+* [Kaarten](/studio/cards) - Boekbare kaarten met realtime prijzen en beschikbaarheid.
+* [Rasters](/studio/grids) - Raster met boekbare kaarten.
+* [Kaarten](/studio/maps) - Kaart met markeringen die openklappen tot boekbare kaarten.
 
 :::note
 Om je WinkLinks-account te beheren, log je in op je affiliate-account op[Wink Studio](https://studio.wink.travel).

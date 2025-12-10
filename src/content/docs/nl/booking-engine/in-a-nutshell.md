@@ -6,10 +6,10 @@ sidebar:
 ---
 Zo segmenteren we verantwoordelijkheid op Wink:
 
-* [Extranet](/extranet/what-is-extranet)houdt zich bezig met het voorraadbeheer van leveranciers.
-* [Studio](/studio/what-is-studio)houdt zich bezig met het beheer van de content door affiliates.
+* [Extranet](/extranet/what-is-extranet) houdt zich bezig met het voorraadbeheer van leveranciers.
+* [Studio](/studio/what-is-studio) houdt zich bezig met het beheer van de content door affiliates.
 * `Booking Engine`houdt zich bezig met het maken van de inhoud, gecreëerd in`Studio`, die gebaseerd was op de inventaris die in`Extranet`en boekbaar maken.
-* [Betaling](/payment/what-is-trip-pay)houdt zich bezig met het in rekening brengen/terugbetalen van kosten aan reizigers die \[via platforms als Wink] boeken, en met het betalen van leveranciers.
+* [Betaling](/payment/what-is-trip-pay) houdt zich bezig met het in rekening brengen/terugbetalen van kosten aan reizigers die \[via platforms als Wink] boeken, en met het betalen van leveranciers.
 
 De boekingsmodule vormt de kern van ons platform.
 
@@ -21,21 +21,21 @@ Tot de verantwoordelijkheden behoren:
 * Talen beheren.
 * Analyses genereren op basis van gebruikersinteracties, gebeurtenissen en API-aanroepen.
 * Het aanbieden van boekbare inventaris in het gewenste formaat, taal en valuta, zoals:
-  * A [deelbare link](/studio/shareable-links)op Facebook.
+  * A [deelbare link](/studio/shareable-links) op Facebook.
   * Een hotellandingspagina op https://ota.wink.travel met een overzicht van de hotelaanbiedingen.
-  * A [kaart](/studio/cards)met affiliate-inventaris.
-  * A [kaart](/studio/maps)op jouw[WinkLinks](/link-manager/wink-links) rekening.
-  * Een [API-oproep](/developers/apis)vanuit een extern reisagentsysteem.
+  * A [kaart](/studio/cards) met affiliate-inventaris.
+  * A [kaart](/studio/maps) op jouw[WinkLinks](/link-manager/wink-links) rekening.
+  * Een [API-oproep](/developers/apis) vanuit een extern reisagentsysteem.
 * Biedt reizigers de mogelijkheid om:
   * Zoek naar reisinventaris.
   * Boek beschikbare inventaris.
   * Beheer hun[boekingen en beoordelingen](/booking-engine/bookings).
-  * Beheer hun[bucketlist](/booking-engine/bucket-list)van dingen die u in de toekomst wilt boeken.
+  * Beheer hun [bucketlist](/booking-engine/bucket-list) van dingen die u in de toekomst wilt boeken.
   * Beheer hun[reisprofiel](/booking-engine/travel-preferences).*Bijvoorbeeld allergieën, contactgegevens in noodgevallen etc.*
 
 De boekingsengine is een verzameling van herbruikbare functionaliteiten die we beschikbaar stellen via https://ota.wink.travel; een zeer aanpasbare website voor hotels en partners om hun producten aan reizigers te verkopen.
 
-Integratoren die nog meer vrijheid willen, hebben via onze[WordPress-plug-in](/developers/wordpress/),[Webcomponenten](/developers/web-components) En [API's](/developers/apis).
+Integratoren die nog meer vrijheid willen, hebben via onze [WordPress-plug-in](/developers/wordpress/),[Webcomponenten](/developers/web-components) En [API's](/developers/apis).
 
 Lees verder in de volgende secties om meer te lezen over wat de boekingsmodule te bieden heeft.
 

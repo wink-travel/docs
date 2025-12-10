@@ -8,11 +8,11 @@ Nasze rozwiązanie dla zarejestrowanych agentów podróży to[Agent mrugnięcia 
 
 Bardziej zaawansowani agenci turystyczni mogą zdecydować się na integrację na poziomie API w celu obsługi płatności i wypłat poza platformą Wink.
 
-Agenci podróży mają podzbiór tych samych funkcji portalu, co[Studio Wink](/studio/what-is-studio)więc nie będziemy ich tu ponownie omawiać.
+Agenci podróży mają podzbiór tych samych funkcji portalu, co [Studio Wink](/studio/what-is-studio) więc nie będziemy ich tu ponownie omawiać.
 
 ## Szukaj
 
-Idź do[Szukaj](/studio/search)aby dowiedzieć się, jak wyszukiwać i rezerwować hotele.
+Idź do [Szukaj](/studio/search) aby dowiedzieć się, jak wyszukiwać i rezerwować hotele.
 
 W przeciwnym wypadku przejdź do następnej sekcji.
 

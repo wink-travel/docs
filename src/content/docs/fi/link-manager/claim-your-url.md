@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 1
 ---
-Luomalla[kumppanitili](/studio/what-is-studio), sinulla on jo WinkLinks-sivuston oma URL-osoite. WinkLinksin julkaisijaominaisuudet ovat Studio-sovelluksessamme muiden kumppanuusominaisuuksien ohella.
+Luomalla [kumppanitili](/studio/what-is-studio), sinulla on jo WinkLinks-sivuston oma URL-osoite. WinkLinksin julkaisijaominaisuudet ovat Studio-sovelluksessamme muiden kumppanuusominaisuuksien ohella.
 
 ### Esimerkki
 

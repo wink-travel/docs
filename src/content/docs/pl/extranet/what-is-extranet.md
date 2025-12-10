@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Okienko Extranet](https://extranet.wink.travel)jest naszym portalem nieruchomości. Jest przeznaczony dla hoteli, sieci, marek i firm zarządzających hotelami, aby tworzyć i zarządzać cyfrowym profilem swoich nieruchomości na platformie Wink.
+[Okienko Extranet](https://extranet.wink.travel) jest naszym portalem nieruchomości. Jest przeznaczony dla hoteli, sieci, marek i firm zarządzających hotelami, aby tworzyć i zarządzać cyfrowym profilem swoich nieruchomości na platformie Wink.
 
 Nasz Extranet został starannie zaprojektowany, aby był możliwie najprostszy, ale nadal obsługiwał wszystkie funkcje, których zaawansowani użytkownicy oczekują od zaawansowanego portalu nieruchomości. Aby podać kilka przykładów:
 

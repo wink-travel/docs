@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[„Wink“ ekstranetas](https://extranet.wink.travel)yra mūsų nekilnojamojo turto portalas. Jis skirtas viešbučiams, tinklams, prekių ženklams ir viešbučių valdymo įmonėms, kad jos galėtų kurti ir valdyti savo nekilnojamojo turto skaitmeninį profilį „Wink“ platformoje.
+[„Wink“ ekstranetas](https://extranet.wink.travel) yra mūsų nekilnojamojo turto portalas. Jis skirtas viešbučiams, tinklams, prekių ženklams ir viešbučių valdymo įmonėms, kad jos galėtų kurti ir valdyti savo nekilnojamojo turto skaitmeninį profilį „Wink“ platformoje.
 
 Mūsų ekstranetas buvo kruopščiai sukurtas taip, kad būtų kuo paprastesnis, tačiau vis tiek palaikytų visas funkcijas, kurių patyrę vartotojai tikisi iš pažangaus nekilnojamojo turto portalo. Pateiksiu keletą pavyzdžių:
 

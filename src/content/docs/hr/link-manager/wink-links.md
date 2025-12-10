@@ -12,7 +12,7 @@ Upravitelj poveznica omogućuje vam spremanje i organiziranje URL-ova koji vam s
 Većina upravitelja poveznica zahtijeva pretplatu za svakoga tko objavljuje affiliate poveznice.
 :::
 
-Izgradili smo[WinkLinks](https://i.trvl.as/); potpuno besplatni upravitelj poveznica, usmjeren na putničku industriju, za poticanje, oglašavanje i učinkovitu online prodaju.
+Izgradili smo [WinkLinks](https://i.trvl.as/) ; potpuno besplatni upravitelj poveznica, usmjeren na putničku industriju, za poticanje, oglašavanje i učinkovitu online prodaju.
 
 ## Značajke
 
@@ -30,7 +30,7 @@ Izgradili smo[WinkLinks](https://i.trvl.as/); potpuno besplatni upravitelj povez
 ## Bogat sadržaj
 
 :::napomena
-Postavi`Intelligent`do 🟢 u tvom[Postavke](/link-manager/settings)koristiti ovu značajku.
+Postavi`Intelligent`do 🟢 u tvom [Postavke](/link-manager/settings) koristiti ovu značajku.
 :::
 
 Ako podijelite poveznicu s web-mjesta koje podržava`rich`/`oEmbed`sadržaj, vaša poveznica oživljava na WinkLinksu.
@@ -46,16 +46,16 @@ Podržane stranice:
 
 ## Napredno
 
-WinkLinks je također odličan način za izlaganje pronađenih turističkih inventara putem[Wink Studio](https://studio.wink.travel)i koje želite prodati svojoj publici.
+WinkLinks je također odličan način za izlaganje pronađenih turističkih inventara putem [Wink Studio](https://studio.wink.travel) i koje želite prodati svojoj publici.
 
 Koristite WinkLinks za prodaju:
 
-* [Linkovi za dijeljenje](/studio/shareable-links)- Odaberite prikaz kao:
+* [Linkovi za dijeljenje](/studio/shareable-links) - Odaberite prikaz kao:
   * [Oglasni banner](/developers/web-components/#content-loader).
   * Normalna veza s ažuriranjima cijena u stvarnom vremenu.
-* [Karte](/studio/cards)- Kartice koje se mogu rezervirati s cijenama i dostupnošću u stvarnom vremenu.
-* [Mreže](/studio/grids)- Mreža s karticama koje se mogu rezervirati.
-* [Karte](/studio/maps)- Karta s oznakama koje se otvaraju u kartice za rezervacije.
+* [Karte](/studio/cards) - Kartice koje se mogu rezervirati s cijenama i dostupnošću u stvarnom vremenu.
+* [Mreže](/studio/grids) - Mreža s karticama koje se mogu rezervirati.
+* [Karte](/studio/maps) - Karta s oznakama koje se otvaraju u kartice za rezervacije.
 
 :::napomena
 Za upravljanje svojim WinkLinks računom, prijavite se na svoj partnerski račun na[Wink Studio](https://studio.wink.travel).

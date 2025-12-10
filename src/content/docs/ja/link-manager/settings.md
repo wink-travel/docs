@@ -20,9 +20,9 @@ WinkLinksの動作を設定する方法は次のとおりです。`Settings`：
 
 ## API
 
-管理したい開発者`WinkLinks`向かうことができます[開発者 > API > WinkLinks](/developers/apis/#winklinks-api)。
+管理したい開発者`WinkLinks`向かうことができます [開発者 > API > WinkLinks](/developers/apis/#winklinks-api) 。
 
 ## さらに読む
 
-* 詳細はこちら[カスタマイズ](/studio/customization)。
+* 詳細はこちら [カスタマイズ](/studio/customization) 。
 

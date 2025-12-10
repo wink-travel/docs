@@ -34,7 +34,7 @@ Kynntu þér hvernig Wink ber sig saman við aðra markaðshluta netferða. Hér
 
 Sum hótel reyna að bera okkur saman við bókunarvél sína á netinu sem fylgdi með rásarstjóranum þeirra og biðja okkur um að gefa þeim fast mánaðarlegt verð miðað við fjölda lykla að eigninni.
 
-Við erum ekki IBE og vonandi[Wink Academy](/)hjálpar til við að skýra þetta. Það eru kostir og gallar við alla þjónustu. Ef IBE þinn virkar fyrir eignina þína, haltu þig við það.
+Við erum ekki IBE og vonandi [Wink Academy](/) hjálpar til við að skýra þetta. Það eru kostir og gallar við alla þjónustu. Ef IBE þinn virkar fyrir eignina þína, haltu þig við það.
 Wink er til til að fylla í nokkur skarð í ferðaþjónustugeiranum og sameina allt á einum stað.
 
 :::ábending

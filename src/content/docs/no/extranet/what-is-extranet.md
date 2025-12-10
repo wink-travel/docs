@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Wink Extranet](https://extranet.wink.travel)er vår eiendomsportal. Den er ment for hoteller, kjeder, merkevarer og hotellforvaltningsselskaper for å opprette og administrere den digitale profilen til eiendommene sine på Wink-plattformen.
+[Wink Extranet](https://extranet.wink.travel) er vår eiendomsportal. Den er ment for hoteller, kjeder, merkevarer og hotellforvaltningsselskaper for å opprette og administrere den digitale profilen til eiendommene sine på Wink-plattformen.
 
 Ekstranettet vårt er nøye utformet for å være så enkelt som mulig, men samtidig støtte alle funksjonene som avanserte brukere forventer av en avansert eiendomsportal. Her er et par eksempler:
 
@@ -18,7 +18,7 @@ La våre veiledere veilede deg gjennom hele prosessen. Når du føler deg komfor
 
 Wink er et avansert innholdsstyringssystem for eiendommer og opplevelsesleverandører. Alt du kan gjøre i en av appene våre, kan du gjøre via API. Dette lar deg gjøre en dyp integrasjon med Wink i en slik grad at du kan selge gjennom Wink uten å måtte logge inn på noen av appene våre.
 
-:::tips\[Profftips]
+:::tips[Profftips]
 Betaler du for dyr hosting av medieinnhold gjennom Leonardo International? Du kan gjøre akkurat det samme gjennom Wink, OG du får mange flere alternativer for å manipulere og finjustere bildene og videoene dine.
 :::
 

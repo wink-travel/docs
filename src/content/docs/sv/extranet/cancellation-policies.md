@@ -13,7 +13,7 @@ Avbokningsreglerna avgör hur bokarens medel hanteras om gästen inte kan närva
 
 För det mesta räcker dessa två alternativ. Båda ger dig dock stort utrymme att anpassa din avbokningspolicy ytterligare.
 
-:::tips\[Kul fakta]
+:::tips[Kul fakta]
 Wink stöder totalt 8500 varianter av avbokningspolicyer.
 :::
 

@@ -34,7 +34,7 @@ Pelajari bagaimana Wink dibandingkan dengan segmen perjalanan daring lainnya di 
 
 Beberapa hotel mencoba membandingkan kami dengan mesin pemesanan internet mereka yang disertakan dengan manajer saluran mereka dan meminta kami memberi mereka harga tetap per bulan berdasarkan jumlah kunci properti mereka.
 
-Kami bukan IBE dan mudah-mudahan[Akademi Wink](/)membantu memperjelas hal ini. Ada pro dan kontra untuk setiap layanan. Jika IBE Anda sesuai untuk properti Anda, gunakan saja.
+Kami bukan IBE dan mudah-mudahan [Akademi Wink](/) membantu memperjelas hal ini. Ada pro dan kontra untuk setiap layanan. Jika IBE Anda sesuai untuk properti Anda, gunakan saja.
 Wink hadir untuk mengisi beberapa kekosongan dalam industri perjalanan dan menyatukan semuanya di satu tempat.
 
 :::tip

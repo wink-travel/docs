@@ -35,7 +35,7 @@ Erfahren Sie, wie Wink im Vergleich zu anderen Online-Reisesegmenten abschneidet
 
 Einige Hotels versuchen, uns mit ihrer Internet-Buchungsmaschine zu vergleichen, die im Lieferumfang ihres Channel-Managers enthalten ist, und verlangen von uns einen festen monatlichen Preis, der auf der Anzahl der Schlüssel für ihr Anwesen basiert.
 
-Wir sind kein IBE und hoffen,[Wink Academy](/)hilft, dies zu klären. Jeder Service hat Vor- und Nachteile. Wenn Ihre IBE für Ihre Unterkunft funktioniert, bleiben Sie dabei.
+Wir sind kein IBE und hoffen, [Wink Academy](/) hilft, dies zu klären. Jeder Service hat Vor- und Nachteile. Wenn Ihre IBE für Ihre Unterkunft funktioniert, bleiben Sie dabei.
 Wink existiert, um mehrere Lücken in der Reisebranche zu schließen und alles an einem Ort zusammenzuführen.
 
 :::Tipp

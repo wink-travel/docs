@@ -10,7 +10,7 @@ Un gestore di link ti permette di salvare e organizzare gli URL che ti interessa
 La maggior parte dei gestori di link richiede un abbonamento a chiunque pubblichi link di affiliazione.
 :::
 
-Abbiamo costruito[WinkLinks](https://i.trvl.as/); un gestore di link completamente gratuito, focalizzato sul settore dei viaggi, per entusiasmare, pubblicizzare e vendere efficacemente online.
+Abbiamo costruito [WinkLinks](https://i.trvl.as/) ; un gestore di link completamente gratuito, focalizzato sul settore dei viaggi, per entusiasmare, pubblicizzare e vendere efficacemente online.
 
 ## Caratteristiche
 
@@ -28,7 +28,7 @@ Abbiamo costruito[WinkLinks](https://i.trvl.as/); un gestore di link completamen
 ## Contenuto ricco
 
 :::nota
-Imposta`Intelligent`a 🟢 nel tuo[Impostazioni](/link-manager/settings)per utilizzare questa funzionalità.
+Imposta`Intelligent`a 🟢 nel tuo [Impostazioni](/link-manager/settings) per utilizzare questa funzionalità.
 ::
 
 Se condividi un collegamento da un sito che supporta`rich`/`oEmbed`contenuto, il tuo link prende vita su WinkLinks.
@@ -44,16 +44,16 @@ Siti supportati:
 
 ## Avanzato
 
-WinkLinks è anche un ottimo modo per esporre l'inventario di viaggio che hai trovato, attraverso[Wink Studio](https://studio.wink.travel)e che vuoi vendere al tuo pubblico.
+WinkLinks è anche un ottimo modo per esporre l'inventario di viaggio che hai trovato, attraverso [Wink Studio](https://studio.wink.travel) e che vuoi vendere al tuo pubblico.
 
 Utilizza WinkLinks per vendere:
 
-* [Link condivisibili](/studio/shareable-links)- Scegli di visualizzare come:
+* [Link condivisibili](/studio/shareable-links) - Scegli di visualizzare come:
   * [banner pubblicitario](/developers/web-components/#content-loader).
   * Collegamento normale con aggiornamenti dei prezzi in tempo reale.
-* [Carte](/studio/cards)- Carte prenotabili con prezzi e disponibilità in tempo reale.
-* [Griglie](/studio/grids)- Griglia con schede prenotabili.
-* [Mappe](/studio/maps)- Mappa con indicatori che si aprono in schede prenotabili.
+* [Carte](/studio/cards) - Carte prenotabili con prezzi e disponibilità in tempo reale.
+* [Griglie](/studio/grids) - Griglia con schede prenotabili.
+* [Mappe](/studio/maps) - Mappa con indicatori che si aprono in schede prenotabili.
 
 :::nota
 Per gestire il tuo account WinkLinks, accedi al tuo account affiliato su[Wink Studio](https://studio.wink.travel).

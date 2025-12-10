@@ -18,7 +18,7 @@ Brandurile și lanțurile au nevoi ușor diferite față de o singură proprieta
 
 * Gestionați mai multe proprietăți sub un singur cont.
 * Atribuiți administratori proprietăților
-* Utilizare[WinkLinks](/link-manager/wink-links),[WordPress](/developers/wordpress)și al nostru[Componente web](/developers/web-components)pentru a comercializa și vinde mai multe proprietăți într-un singur loc.
+* Utilizare [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) și al nostru [WinkLinks](/link-manager/wink-links) pentru a comercializa și vinde mai multe proprietăți într-un singur loc.
 
 ## Companii de administrare
 
@@ -30,7 +30,7 @@ Influencerii folosesc Wink pentru a monetiza mai bine publicul lor. Fac acest lu
 
 ## Agenții de turism
 
-Agenții de turism au acces la inventarul de călătorii din întreaga lume la prețuri excelente prin intermediul serviciului nostru dedicat[portalul agenției de turism](https://agent.wink.travel)Pot face rezervări prin intermediul portalului nostru, prin intermediul API-ului nostru sau permițând utilizatorilor să își rezerve singuri pe site-ul web al agenției de turism care utilizează tehnologiile noastre.
+Agenții de turism au acces la inventarul de călătorii din întreaga lume la prețuri excelente prin intermediul serviciului nostru dedicat [portalul agenției de turism](https://agent.wink.travel) Pot face rezervări prin intermediul portalului nostru, prin intermediul API-ului nostru sau permițând utilizatorilor să își rezerve singuri pe site-ul web al agenției de turism care utilizează tehnologiile noastre.
 
 ## Corporații
 
@@ -43,11 +43,11 @@ Corporațiile au nevoie de o platformă de călătorie mai complexă:
 * Necesită integrarea managementului cheltuielilor și a raportării.
 * Au nevoie de asistență concierge, precum și de servicii MICE la evenimente.
 
-Călătorii corporativi își pot gestiona propriile conturi pe site-ul nostru[portal corporativ](/corporate/what-is-group)sau folosiți serviciile noastre susținute oficial[MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)plugin și[De acord](https://www.concur.com/)integrare.
+Călătorii corporativi își pot gestiona propriile conturi pe site-ul nostru [portal corporativ](/corporate/what-is-group) sau folosiți serviciile noastre susținute oficial [portal corporativ](/corporate/what-is-group) plugin și [portal corporativ](/corporate/what-is-group) integrare.
 
 ## Dezvoltatori
 
-Deși am construit această platformă de către și pentru hotelieri... Fiecare linie de cod a fost construită cu scopul specific de a fi reutilizabilă. Echipa noastră de dezvoltatori a construit Wink în speranța că următoarea aplicație de călătorie 🦄 va fi construită pe baza noastră de cod. Navigați la[Dezvoltator](/developers/build-on-wink)pentru a vedea cum te poate sprijini Wink în următoarea ta aventură.
+Deși am construit această platformă de către și pentru hotelieri... Fiecare linie de cod a fost construită cu scopul specific de a fi reutilizabilă. Echipa noastră de dezvoltatori a construit Wink în speranța că următoarea aplicație de călătorie 🦄 va fi construită pe baza noastră de cod. Navigați la [Dezvoltator](/developers/build-on-wink) pentru a vedea cum te poate sprijini Wink în următoarea ta aventură.
 
 ## Alte
 

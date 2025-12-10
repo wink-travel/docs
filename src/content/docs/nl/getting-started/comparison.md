@@ -34,7 +34,7 @@ Ontdek hoe Wink zich verhoudt tot andere online reissegmenten in de markt. Hiero
 
 Sommige hotels vergelijken ons met hun online boekingssysteem dat standaard bij hun channel manager zit en vragen ons om een vaste, maandelijkse prijs op basis van het aantal sleutels van hun accommodatie.
 
-Wij zijn geen IBE en hopelijk[Wink Academie](/)Helpt dit te verduidelijken. Elke dienst heeft voor- en nadelen. Als uw IBE voor uw accommodatie werkt, houd u daar dan aan.
+Wij zijn geen IBE en hopelijk [Wink Academie](/) Helpt dit te verduidelijken. Elke dienst heeft voor- en nadelen. Als uw IBE voor uw accommodatie werkt, houd u daar dan aan.
 Wink bestaat om verschillende leemtes in de reisbranche op te vullen en alles op één plek samen te brengen.
 
 :::tip

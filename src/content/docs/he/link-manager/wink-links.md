@@ -10,7 +10,7 @@ sidebar:
 רוב מנהלי הקישורים דורשים מנוי מכל מי שמפרסם קישורי שותפים.
 :::
 
-בנינו[WinkLinks](https://i.trvl.as/)מנהל קישורים חינמי לחלוטין, המתמקד בתחום התיירות, כדי לעורר, לפרסם ולמכור ביעילות באינטרנט.
+בנינו [WinkLinks](https://i.trvl.as/) מנהל קישורים חינמי לחלוטין, המתמקד בתחום התיירות, כדי לעורר, לפרסם ולמכור ביעילות באינטרנט.
 
 ## תכונות
 
@@ -28,7 +28,7 @@ sidebar:
 ## תוכן עשיר
 
 :::הערה
-הגדר`Intelligent`ל-🟢 בך[הגדרות](/link-manager/settings)כדי להשתמש בתכונה זו.
+הגדר`Intelligent`ל-🟢 בך [הגדרות](/link-manager/settings) כדי להשתמש בתכונה זו.
 :::
 
 אם אתה משתף קישור מאתר שתומך`rich`/`oEmbed`תוכן, הקישור שלך מתעורר לחיים ב-WinkLinks.
@@ -44,16 +44,16 @@ sidebar:
 
 ## מִתקַדֵם
 
-WinkLinks היא גם דרך מצוינת לחשוף את מלאי הנסיעות שמצאתם, באמצעות[אולפן וינק](https://studio.wink.travel), ושאתם רוצים למכור לקהל שלכם.
+WinkLinks היא גם דרך מצוינת לחשוף את מלאי הנסיעות שמצאתם, באמצעות [אולפן וינק](https://studio.wink.travel), ושאתם רוצים למכור לקהל שלכם.
 
 השתמשו ב-WinkLinks כדי למכור את:
 
-* [קישורים הניתנים לשיתוף](/studio/shareable-links)- בחר להציג כ:
+* [קישורים הניתנים לשיתוף](/studio/shareable-links) - בחר להציג כ:
   * [באנר פרסומת](/developers/web-components/#content-loader).
   * קישור רגיל עם עדכוני מחירים בזמן אמת.
-* [כרטיסים](/studio/cards)- כרטיסים להזמנה עם תמחור וזמינות בזמן אמת.
-* [רשתות](/studio/grids)- רשת עם כרטיסים הניתנים להזמנה.
-* [מפות](/studio/maps)- מפה עם סמנים שנפתחים לכרטיסים הניתנים להזמנה.
+* [כרטיסים](/studio/cards) - כרטיסים להזמנה עם תמחור וזמינות בזמן אמת.
+* [רשתות](/studio/grids) - רשת עם כרטיסים הניתנים להזמנה.
+* [מפות](/studio/maps) - מפה עם סמנים שנפתחים לכרטיסים הניתנים להזמנה.
 
 :::הערה
 כדי לנהל את חשבון WinkLinks שלך, התחבר לחשבון השותפים שלך ב-[אולפן וינק](https://studio.wink.travel).&#x20;

@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Wink Extranet](https://extranet.wink.travel)ist unser Immobilienportal. Es richtet sich an Hotels, Ketten, Marken und Hotelmanagementunternehmen, um das digitale Profil ihrer Unterkünfte auf der Wink-Plattform zu erstellen und zu verwalten.
+[Wink Extranet](https://extranet.wink.travel) ist unser Immobilienportal. Es richtet sich an Hotels, Ketten, Marken und Hotelmanagementunternehmen, um das digitale Profil ihrer Unterkünfte auf der Wink-Plattform zu erstellen und zu verwalten.
 
 Unser Extranet wurde so einfach wie möglich gestaltet, bietet aber dennoch alle Funktionen, die Power-User von einem modernen Immobilienportal erwarten. Hier einige Beispiele:
 

@@ -34,7 +34,7 @@ Uzziniet, kā Wink salīdzināms ar citiem tiešsaistes ceļojumu segmentiem tir
 
 Dažas viesnīcas mēģina mūs salīdzināt ar savu interneta rezervēšanas sistēmu, kas bija iekļauta viņu kanālu pārvaldnieka komplektā, un lūdz mums noteikt fiksētu mēneša cenu, pamatojoties uz viņu īpašuma atslēgu skaitu.
 
-Mēs neesam IBE un cerams, ka[Wink akadēmija](/)palīdz to noskaidrot. Jebkuram pakalpojumam ir plusi un mīnusi. Ja jūsu IBE der jūsu īpašumam, pieturieties pie tā.
+Mēs neesam IBE un cerams, ka [Wink akadēmija](/) palīdz to noskaidrot. Jebkuram pakalpojumam ir plusi un mīnusi. Ja jūsu IBE der jūsu īpašumam, pieturieties pie tā.
 
 Wink pastāv, lai aizpildītu vairākas nepilnības ceļojumu nozarē un apvienotu visu vienuviet.
 

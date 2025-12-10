@@ -12,7 +12,7 @@ Saišu pārvaldnieks ļauj saglabāt un kārtot jums tīkamus URL vēlākai izma
 Lielākā daļa saišu pārvaldnieku pieprasa abonementu ikvienam, kas publicē saistītās saites.
 :::
 
-Mēs uzbūvējām[WinkLinks](https://i.trvl.as/); pilnīgi bezmaksas saišu pārvaldnieks, kas koncentrējas uz ceļojumu jomu, lai piesaistītu uzmanību, reklamētos un efektīvi pārdotu tiešsaistē.
+Mēs uzbūvējām [WinkLinks](https://i.trvl.as/) ; pilnīgi bezmaksas saišu pārvaldnieks, kas koncentrējas uz ceļojumu jomu, lai piesaistītu uzmanību, reklamētos un efektīvi pārdotu tiešsaistē.
 
 ## Funkcijas
 
@@ -30,7 +30,7 @@ Mēs uzbūvējām[WinkLinks](https://i.trvl.as/); pilnīgi bezmaksas saišu pār
 ## Bagātīgs saturs
 
 :::piezīme
-Iestatīt`Intelligent`uz 🟢 tavā[Iestatījumi](/link-manager/settings)lai izmantotu šo funkciju.
+Iestatīt`Intelligent`uz 🟢 tavā [Iestatījumi](/link-manager/settings) lai izmantotu šo funkciju.
 :::
 
 Ja kopīgojat saiti no vietnes, kas atbalsta`rich`/`oEmbed`saturs, jūsu saite atdzīvojas vietnē WinkLinks.
@@ -46,16 +46,16 @@ Atbalstītās vietnes:
 
 ## Paplašināts
 
-WinkLinks ir arī lielisks veids, kā atklāt atrasto ceļojumu inventāru, izmantojot[Wink Studio](https://studio.wink.travel), un ko vēlaties pārdot savai auditorijai.
+WinkLinks ir arī lielisks veids, kā atklāt atrasto ceļojumu inventāru, izmantojot [Wink Studio](https://studio.wink.travel), un ko vēlaties pārdot savai auditorijai.
 
 Izmantojiet WinkLinks, lai pārdotu savu:
 
-* [Koplietojamas saites](/studio/shareable-links)- Izvēlieties, kā parādīt:
+* [Koplietojamas saites](/studio/shareable-links) - Izvēlieties, kā parādīt:
   * [Reklāmas baneris](/developers/web-components/#content-loader).
   * Parasta saite ar cenu atjauninājumiem reāllaikā.
-* [Kartītes](/studio/cards)- Rezervējamas kartes ar cenām un pieejamību reāllaikā.
-* [Režģi](/studio/grids)- Režģis ar rezervējamām kartēm.
-* [Kartes](/studio/maps)- Karte ar marķieriem, kas atveras rezervējamās kartītēs.
+* [Kartītes](/studio/cards) - Rezervējamas kartes ar cenām un pieejamību reāllaikā.
+* [Režģi](/studio/grids) - Režģis ar rezervējamām kartēm.
+* [Kartes](/studio/maps) - Karte ar marķieriem, kas atveras rezervējamās kartītēs.
 
 :::piezīme
 Lai pārvaldītu savu WinkLinks kontu, piesakieties savā partnera kontā vietnē[Wink Studio](https://studio.wink.travel).

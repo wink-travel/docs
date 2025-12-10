@@ -12,7 +12,7 @@ Hinahayaan ka ng manager ng link na i-save at ayusin ang mga URL na gusto mo par
 Karamihan sa mga tagapamahala ng link ay nangangailangan ng isang subscription para sa sinumang nagpo-post ng mga link na kaakibat.
 :::
 
-Nagtayo kami [WinkLinks](https://i.trvl.as/); isang ganap na libreng tagapamahala ng link, na nakatuon sa espasyo sa paglalakbay, upang pasiglahin, mag-advertise at magbenta nang epektibo online.
+Nagtayo kami [WinkLinks](https://i.trvl.as/) ; isang ganap na libreng tagapamahala ng link, na nakatuon sa espasyo sa paglalakbay, upang pasiglahin, mag-advertise at magbenta nang epektibo online.
 
 ## Mga tampok
 

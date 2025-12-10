@@ -34,7 +34,7 @@ Wink'in pazardaki diğer çevrimiçi seyahat segmentleriyle nasıl karşılaşt�
 
 Bazı oteller bizi kanal yöneticileriyle birlikte gelen internet rezervasyon motoruyla karşılaştırmaya çalışıyor ve tesislerindeki anahtar sayısına göre sabit, aylık bir fiyat vermemizi istiyor.
 
-Biz bir IBE değiliz ve umarım[Göz kırpma akademisi](/)bunu açıklığa kavuşturmaya yardımcı olur. Herhangi bir hizmetin artıları ve eksileri vardır. IBE'niz mülkünüz için çalışıyorsa, buna bağlı kalın.
+Biz bir IBE değiliz ve umarım [Göz kırpma akademisi](/) bunu açıklığa kavuşturmaya yardımcı olur. Herhangi bir hizmetin artıları ve eksileri vardır. IBE'niz mülkünüz için çalışıyorsa, buna bağlı kalın.
 Wink, seyahat endüstrisindeki birçok boşluğu doldurmak ve hepsini tek bir yerde bir araya getirmek için var.
 
 :::ipucu

@@ -10,7 +10,7 @@ Menedżer linków pozwala zapisywać i organizować adresy URL, które lubisz, n
 Większość menedżerów linków wymaga subskrypcji dla każdego, kto zamieszcza linki afiliacyjne.
 :::
 
-Zbudowaliśmy[Linki do mrugnięć](https://i.trvl.as/); całkowicie darmowy menedżer linków, skupiony na branży turystycznej, którego celem jest wzbudzanie emocji, reklamowanie i skuteczna sprzedaż online.
+Zbudowaliśmy [Linki do mrugnięć](https://i.trvl.as/) ; całkowicie darmowy menedżer linków, skupiony na branży turystycznej, którego celem jest wzbudzanie emocji, reklamowanie i skuteczna sprzedaż online.
 
 ## Cechy
 
@@ -28,7 +28,7 @@ Zbudowaliśmy[Linki do mrugnięć](https://i.trvl.as/); całkowicie darmowy mene
 ## Bogata zawartość
 
 :::uwaga
-Zestaw`Intelligent`do 🟢 w twoim[Ustawienia](/link-manager/settings)aby użyć tej funkcji.
+Zestaw`Intelligent`do 🟢 w twoim [Ustawienia](/link-manager/settings) aby użyć tej funkcji.
 :::
 
 Jeśli udostępniasz link ze strony, która obsługuje`rich`/`oEmbed`treść, Twój link ożywa na WinkLinks.
@@ -44,16 +44,16 @@ Obsługiwane witryny:
 
 ## Zaawansowany
 
-WinkLinks to także świetny sposób na udostępnienie znalezionych ofert podróży, poprzez[Studio Wink](https://studio.wink.travel)i które chcesz sprzedać swojej publiczności.
+WinkLinks to także świetny sposób na udostępnienie znalezionych ofert podróży, poprzez [Studio Wink](https://studio.wink.travel) i które chcesz sprzedać swojej publiczności.
 
 Użyj WinkLinks, aby sprzedać:
 
-* [Udostępniane linki](/studio/shareable-links)- Wybierz opcję wyświetlania:
+* [Udostępniane linki](/studio/shareable-links) - Wybierz opcję wyświetlania:
   * [Baner reklamowy](/developers/web-components/#content-loader).
   * Zwykły link z aktualizacjami cen w czasie rzeczywistym.
-* [Karty](/studio/cards)- Karty z możliwością rezerwacji, z aktualnymi cenami i dostępnością.
-* [Siatki](/studio/grids)- Siatka z kartami do rezerwacji.
-* [Mapy](/studio/maps)- Mapa z markerami, które można otwierać w postaci kart do rezerwacji.
+* [Karty](/studio/cards) - Karty z możliwością rezerwacji, z aktualnymi cenami i dostępnością.
+* [Siatki](/studio/grids) - Siatka z kartami do rezerwacji.
+* [Mapy](/studio/maps) - Mapa z markerami, które można otwierać w postaci kart do rezerwacji.
 
 :::uwaga
 Aby zarządzać swoim kontem WinkLinks, zaloguj się na swoje konto partnerskie na[Studio Wink](https://studio.wink.travel).

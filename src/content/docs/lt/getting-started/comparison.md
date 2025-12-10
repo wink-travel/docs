@@ -34,7 +34,7 @@ Sužinokite, kaip „Wink“ lyginasi su kitais rinkos internetinių kelionių s
 
 Kai kurie viešbučiai bando mus lyginti su savo internetine rezervavimo sistema, kuri pateikiama kartu su jų kanalų valdytoju, ir prašo mūsų nustatyti fiksuotą mėnesinę kainą, pagrįstą jų objekto raktų skaičiumi.
 
-Mes nesame nepriklausomas britų universitetų narys ir tikimės[„Wink“ akademija](/)Tai padeda išsiaiškinti. Kiekviena paslauga turi privalumų ir trūkumų. Jei jūsų IBE tinka jūsų turtui, laikykitės jo.
+Mes nesame nepriklausomas britų universitetų narys ir tikimės [„Wink“ akademija](/) Tai padeda išsiaiškinti. Kiekviena paslauga turi privalumų ir trūkumų. Jei jūsų IBE tinka jūsų turtui, laikykitės jo.
 
 „Wink“ egzistuoja tam, kad užpildytų kelias spragas kelionių industrijoje ir viską sujungtų į vieną vietą.
 

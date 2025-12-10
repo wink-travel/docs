@@ -16,7 +16,7 @@ Brendovi i lanci imaju malo drugačije potrebe od pojedinačnih nekretnina. Na W
 
 * Upravljajte više nekretnina pod jednim računom.
 * Dodijelite upravitelje svojstvima
-* Koristi[WinkLinks](/link-manager/wink-links),[WordPress](/developers/wordpress)i naši[Web komponente](/developers/web-components)plasirati na tržište i prodati više nekretnina na jednom mjestu.
+* Koristi [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) i naši [WinkLinks](/link-manager/wink-links) plasirati na tržište i prodati više nekretnina na jednom mjestu.
 
 ## Upraviteljske tvrtke
 
@@ -28,7 +28,7 @@ Influenceri koriste Wink kako bi bolje monetizirali svoju publiku. To čine part
 
 ## Putničke agencije
 
-Putnički agenti dobivaju pristup putničkoj ponudi diljem svijeta po odličnim cijenama putem našeg namjenskog[portal putničke agencije](https://agent.wink.travel)Mogu rezervirati putem našeg portala, putem našeg API-ja ili tako da dopuste svojim korisnicima da sami rezerviraju na web stranici putničke agencije koja koristi naše tehnologije.
+Putnički agenti dobivaju pristup putničkoj ponudi diljem svijeta po odličnim cijenama putem našeg namjenskog [portal putničke agencije](https://agent.wink.travel) Mogu rezervirati putem našeg portala, putem našeg API-ja ili tako da dopuste svojim korisnicima da sami rezerviraju na web stranici putničke agencije koja koristi naše tehnologije.
 
 ## Korporacije
 
@@ -41,11 +41,11 @@ Korporacije zahtijevaju više platforme za putovanja:
 * Zahtijevaju integraciju upravljanja troškovima i izvještavanja.
 * Potrebna im je podrška recepcionara, kao i MICE usluge na događajima.
 
-Poslovni putnici mogu upravljati svojim računima na našoj[korporativni portal](/corporate/what-is-group)ili koristite naše službeno podržane[MS SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)dodatak i[Slažem se](https://www.concur.com/)integracija.
+Poslovni putnici mogu upravljati svojim računima na našoj [korporativni portal](/corporate/what-is-group) ili koristite naše službeno podržane [korporativni portal](/corporate/what-is-group) dodatak i [korporativni portal](/corporate/what-is-group) integracija.
 
 ## Razvojni programeri
 
-Iako smo ovu platformu izgradili od strane i za hotelijere... Svaki redak koda izgrađen je s posebnom svrhom ponovne upotrebe. Naš tim programera izgradio je Wink u nadi da će sljedeća 🦄 putnička aplikacija biti izgrađena na našoj bazi koda. Idite na[Razvojni programer](/developers/build-on-wink)stranicu kako biste vidjeli kako vam Wink može pomoći u vašem sljedećem pothvatu.
+Iako smo ovu platformu izgradili od strane i za hotelijere... Svaki redak koda izgrađen je s posebnom svrhom ponovne upotrebe. Naš tim programera izgradio je Wink u nadi da će sljedeća 🦄 putnička aplikacija biti izgrađena na našoj bazi koda. Idite na [Razvojni programer](/developers/build-on-wink) stranicu kako biste vidjeli kako vam Wink može pomoći u vašem sljedećem pothvatu.
 
 ## Ostalo
 

@@ -12,7 +12,7 @@ A linkkezelő lehetővé teszi a kívánt URL-ek mentését és rendszerezését
 A legtöbb linkkezelő előfizetést igényel bárkitől, aki affiliate linkeket posztol.
 :::
 
-Építettünk[WinkLinks](https://i.trvl.as/); egy teljesen ingyenes linkkezelő, amely az utazási területre összpontosít, hogy hatékonyan ösztönözze, reklámozza és értékesítse az online közönséget.
+Építettünk [WinkLinks](https://i.trvl.as/) ; egy teljesen ingyenes linkkezelő, amely az utazási területre összpontosít, hogy hatékonyan ösztönözze, reklámozza és értékesítse az online közönséget.
 
 ## Jellemzők
 
@@ -30,7 +30,7 @@ A legtöbb linkkezelő előfizetést igényel bárkitől, aki affiliate linkeket
 ## Gazdag tartalom
 
 :::note
-Beállítás`Intelligent`hogy 🟢 a te[Beállítások](/link-manager/settings)a funkció használatához.
+Beállítás`Intelligent`hogy 🟢 a te [Beállítások](/link-manager/settings) a funkció használatához.
 :::
 
 Ha megosztasz egy linket egy olyan oldalról, amely támogatja`rich`/`oEmbed`tartalom, a linked életre kel a WinkLinks-en.
@@ -46,16 +46,16 @@ Támogatott oldalak:
 
 ## Fejlett
 
-A WinkLinks nagyszerű módja annak is, hogy bemutasd a talált utazási készletedet, a következőn keresztül:[Wink Stúdió](https://studio.wink.travel), és amelyet el szeretne adni a közönségének.
+A WinkLinks nagyszerű módja annak is, hogy bemutasd a talált utazási készletedet, a következőn keresztül: [Wink Stúdió](https://studio.wink.travel), és amelyet el szeretne adni a közönségének.
 
 Használd a WinkLinks-et az értékesítéshez:
 
-* [Megosztható linkek](/studio/shareable-links)- Válassza ki a megjelenítés módját:
+* [Megosztható linkek](/studio/shareable-links) - Válassza ki a megjelenítés módját:
   * [Hirdetési banner](/developers/web-components/#content-loader).
   * Normál link valós idejű árfrissítésekkel.
-* [Kártyák](/studio/cards)- Foglalható kártyák valós idejű árakkal és elérhetőséggel.
-* [Rácsok](/studio/grids)- Rács foglalható kártyákkal.
-* [Térképek](/studio/maps)- Térkép jelölőkkel, amelyek foglalható kártyákra nyílnak.
+* [Kártyák](/studio/cards) - Foglalható kártyák valós idejű árakkal és elérhetőséggel.
+* [Rácsok](/studio/grids) - Rács foglalható kártyákkal.
+* [Térképek](/studio/maps) - Térkép jelölőkkel, amelyek foglalható kártyákra nyílnak.
 
 :::megjegyzés
 A WinkLinks fiókod kezeléséhez jelentkezz be affiliate fiókodba a következő címen:[Wink Stúdió](https://studio.wink.travel).

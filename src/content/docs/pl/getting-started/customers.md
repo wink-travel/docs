@@ -18,7 +18,7 @@ Marki i sieci mają nieco inne potrzeby niż pojedyncza nieruchomość. Na Wink 
 
 * Zarządzaj wieloma nieruchomościami z poziomu jednego konta.
 * Przypisz menedżerów do nieruchomości
-* Używać [Linki do mrugnięć](/link-manager/wink-links),[WordPress](/developers/wordpress)i nasz[Komponenty sieciowe](/developers/web-components)do marketingu i sprzedaży wielu nieruchomości w jednym miejscu.
+* Używać [Linki do mrugnięć](/link-manager/wink-links), [WordPress](/developers/wordpress) i nasz [WordPress](/developers/wordpress) do marketingu i sprzedaży wielu nieruchomości w jednym miejscu.
 
 ## Firmy zarządzające
 
@@ -30,7 +30,7 @@ Influencerzy używają Wink, aby lepiej monetyzować swoją publiczność. Robi�
 
 ## Agenci podróży
 
-Agenci podróży zyskują dostęp do oferty podróży na całym świecie w atrakcyjnych cenach dzięki naszym dedykowanym[portal agenta podróży](https://agent.wink.travel)Mogą dokonywać rezerwacji za pośrednictwem naszego portalu, za pośrednictwem naszego API lub pozwalając swoim użytkownikom na dokonywanie rezerwacji na stronie internetowej agenta podróży, która korzysta z naszych technologii.
+Agenci podróży zyskują dostęp do oferty podróży na całym świecie w atrakcyjnych cenach dzięki naszym dedykowanym [portal agenta podróży](https://agent.wink.travel) Mogą dokonywać rezerwacji za pośrednictwem naszego portalu, za pośrednictwem naszego API lub pozwalając swoim użytkownikom na dokonywanie rezerwacji na stronie internetowej agenta podróży, która korzysta z naszych technologii.
 
 ## Korporacje
 
@@ -43,11 +43,11 @@ Korporacje potrzebują lepszej platformy podróżniczej:
 * Wymagają zarządzania wydatkami i integracji raportowania.
 * Potrzebują wsparcia concierge, a także usług MICE podczas wydarzeń.
 
-Podróżujący służbowo mogą zarządzać swoimi kontami na naszej stronie[portal korporacyjny](/corporate/what-is-group)lub skorzystaj z naszego oficjalnie obsługiwanego[MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)wtyczka i[Przyznać](https://www.concur.com/)integracja.
+Podróżujący służbowo mogą zarządzać swoimi kontami na naszej stronie [portal korporacyjny](/corporate/what-is-group) lub skorzystaj z naszego oficjalnie obsługiwanego [portal korporacyjny](/corporate/what-is-group) wtyczka i [portal korporacyjny](/corporate/what-is-group) integracja.
 
 ## Deweloperzy
 
-Chociaż zbudowaliśmy tę platformę przez i dla hotelarzy... Każda linijka kodu została stworzona w konkretnym celu ponownego użycia. Nasz zespół programistów stworzył Wink z nadzieją, że kolejna aplikacja podróżnicza 🦄 zostanie zbudowana na bazie naszego kodu. Przejdź do[Wywoływacz](/developers/build-on-wink)aby dowiedzieć się, w jaki sposób Wink może wesprzeć Cię w Twoim kolejnym przedsięwzięciu.
+Chociaż zbudowaliśmy tę platformę przez i dla hotelarzy... Każda linijka kodu została stworzona w konkretnym celu ponownego użycia. Nasz zespół programistów stworzył Wink z nadzieją, że kolejna aplikacja podróżnicza 🦄 zostanie zbudowana na bazie naszego kodu. Przejdź do [Wywoływacz](/developers/build-on-wink) aby dowiedzieć się, w jaki sposób Wink może wesprzeć Cię w Twoim kolejnym przedsięwzięciu.
 
 ## Inny
 

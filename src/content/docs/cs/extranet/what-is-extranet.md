@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Wink Extranet](https://extranet.wink.travel)je náš realitní portál. Je určen pro hotely, řetězce, značky a hotelové společnosti, kde si mohou vytvářet a spravovat digitální profily svých nemovitostí na platformě Wink.
+[Wink Extranet](https://extranet.wink.travel) je náš realitní portál. Je určen pro hotely, řetězce, značky a hotelové společnosti, kde si mohou vytvářet a spravovat digitální profily svých nemovitostí na platformě Wink.
 
 Náš extranet byl promyšleně navržen tak, aby byl co nejjednodušší, ale zároveň podporoval všechny funkce, které nároční uživatelé od pokročilého realitního portálu očekávají. Uveďme si několik příkladů:
 

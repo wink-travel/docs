@@ -4,7 +4,7 @@ description: U ovom članku ćemo vam reći kako zatražiti svoj WinkLinks vanit
 sidebar:
   order: 1
 ---
-Stvaranjem[partnerski račun](/studio/what-is-studio), već imate WinkLinks vanity URL. WinkLinks značajke za izdavače postoje u našoj Studio aplikaciji; uz naše ostale značajke za partnere.
+Stvaranjem [partnerski račun](/studio/what-is-studio), već imate WinkLinks vanity URL. WinkLinks značajke za izdavače postoje u našoj Studio aplikaciji; uz naše ostale značajke za partnere.
 
 ### Primjer
 

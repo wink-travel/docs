@@ -8,7 +8,7 @@ sidebar:
 ---
 Istoriškai norint gauti prieigą prie bet ko, kas susiję su kelionėmis, ir jį parduoti, reikėjo konfidencialumo sutarčių ir sudėtingų integracijų tarp dviejų \[ar daugiau] licencijuotų kelionių agentūrų įmonių, kurios turėjo pakankamai techninės patirties, prieigą prie mokėjimo šliuzo ir abi atitiko PCI DSS reikalavimus. Tai buvo brangios ir daug laiko reikalaujančios pastangos, o patekimo į rinką kliūtis paprastiems žmonėms buvo neįtikėtinai didelė.
 
-[„Wink“ studija](https://studio.wink.travel)yra mūsų partnerių portalas. Jis leidžia visiems parduoti kelionių inventorių taip pat lengvai, kaip bendrinti nuorodą, arba taip pat sudėtingai, kaip valdyti internetinę kelionių agentūrą.
+[„Wink“ studija](https://studio.wink.travel) yra mūsų partnerių portalas. Jis leidžia visiems parduoti kelionių inventorių taip pat lengvai, kaip bendrinti nuorodą, arba taip pat sudėtingai, kaip valdyti internetinę kelionių agentūrą.
 
 Partnerių portalas siūlo tiekėjų (pvz., viešbučių, nakvynės namų, nuomos punktų, patirties teikėjų) kelionių inventorių iš viso pasaulio. Jūsų tikslas – rasti jums tinkamiausią inventorių ir tada geriausiai jį pristatyti bei parduoti savo auditorijai.
 

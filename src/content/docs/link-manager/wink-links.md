@@ -11,7 +11,7 @@ A link manager lets you save and organize URLs you like for later. Your browser 
 Most link managers require a subscription for anyone posting affiliate links. 
 :::
 
-We built [WinkLinks](https://i.trvl.as/); a completely free link manager, focused on the travel space, to excite, advertise and sell effectively online. 
+We built [WinkLinks](https://i.trvl.as/) ; a completely free link manager, focused on the travel space, to excite, advertise and sell effectively online. 
 
 ## Features
 

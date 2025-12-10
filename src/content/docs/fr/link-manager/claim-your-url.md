@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 1
 ---
-En créant un[compte d'affiliation](/studio/what-is-studio)Vous disposez déjà d'une URL personnalisée WinkLinks. Les fonctionnalités d'éditeur WinkLinks sont disponibles dans notre application Studio, aux côtés de nos autres fonctionnalités d'affiliation.
+En créant un [compte d'affiliation](/studio/what-is-studio) Vous disposez déjà d'une URL personnalisée WinkLinks. Les fonctionnalités d'éditeur WinkLinks sont disponibles dans notre application Studio, aux côtés de nos autres fonctionnalités d'affiliation.
 
 ### Exemple
 

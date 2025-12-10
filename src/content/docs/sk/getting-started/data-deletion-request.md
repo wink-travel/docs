@@ -25,7 +25,7 @@ Máte právo požiadať nás o vymazanie akýchkoľvek osobných údajov, ktoré
 
 Ak chcete požiadať o vymazanie údajov:
 
-* 📧**Poslať e-mail na**:[podpora@wink.travel](mailto:support@wink.travel)
+* 📧**Poslať e-mail na**: [podpora@wink.travel](mailto:support@wink.travel) 
 * 📝 Použite predmet správy:`Data Deletion Request`
 * 🔍 Uveďte, prosím, identifikačné údaje, ako napríklad:
   * E-mailová adresa používaná na našej platforme

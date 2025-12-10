@@ -12,7 +12,7 @@ Pengurus pautan membolehkan anda menyimpan dan mengatur URL yang anda suka untuk
 Kebanyakan pengurus pautan memerlukan langganan untuk sesiapa sahaja yang menyiarkan pautan ahli gabungan.
 :::
 
-Kami membina [WinkLinks](https://i.trvl.as/); pengurus pautan percuma sepenuhnya, menumpukan pada ruang perjalanan, untuk menguja, mengiklan dan menjual dengan berkesan dalam talian.
+Kami membina [WinkLinks](https://i.trvl.as/) ; pengurus pautan percuma sepenuhnya, menumpukan pada ruang perjalanan, untuk menguja, mengiklan dan menjual dengan berkesan dalam talian.
 
 ## Ciri-ciri
 

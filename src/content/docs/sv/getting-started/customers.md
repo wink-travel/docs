@@ -18,7 +18,7 @@ Varumärken och kedjor har något andra behov än en enskild fastighet. På Wink
 
 * Hantera flera fastigheter under ett enda konto.
 * Tilldela administratörer till fastigheter
-* Använd[WinkLinks](/link-manager/wink-links),[WordPress](/developers/wordpress)och vår[Webbkomponenter](/developers/web-components)att marknadsföra och sälja flera fastigheter på ett och samma ställe.
+* Använd [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) och vår [WinkLinks](/link-manager/wink-links) att marknadsföra och sälja flera fastigheter på ett och samma ställe.
 
 ## Förvaltningsbolag
 
@@ -30,7 +30,7 @@ Influencers använder Wink för att tjäna pengar på sin publik. De gör det ge
 
 ## Resebyråer
 
-Resebyråer får tillgång till reseutbud över hela världen till fantastiska priser genom våra dedikerade[resebyråportal](https://agent.wink.travel)De kan göra bokningar via vår portal, via vårt API eller genom att låta sina användare boka själva på resebyråns webbplats som använder vår teknik.
+Resebyråer får tillgång till reseutbud över hela världen till fantastiska priser genom våra dedikerade [resebyråportal](https://agent.wink.travel) De kan göra bokningar via vår portal, via vårt API eller genom att låta sina användare boka själva på resebyråns webbplats som använder vår teknik.
 
 ## Företag
 
@@ -43,11 +43,11 @@ Företag behöver mer av en reseplattform:
 * De kräver integration av utgiftshantering och rapportering.
 * De behöver concierge-stöd, såväl som MICE-tjänster vid evenemang.
 
-Affärsresenärer kan hantera sina egna konton på vår[företagsportal](/corporate/what-is-group)eller använd vår officiellt stödda[MS SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)plugin och[Instämma](https://www.concur.com/)integration.
+Affärsresenärer kan hantera sina egna konton på vår [företagsportal](/corporate/what-is-group) eller använd vår officiellt stödda [företagsportal](/corporate/what-is-group) plugin och [företagsportal](/corporate/what-is-group) integration.
 
 ## Utvecklare
 
-Medan vi byggde den här plattformen av och för hotellägare... Varje kodrad byggdes med det specifika syftet att återanvända den. Vårt team av utvecklare byggde Wink i hopp om att nästa 🦄 reseapp byggs ovanpå vår kodbas. Navigera till[Framkallare](/developers/build-on-wink)sidan för att se hur Wink kan stödja dig i ditt nästa projekt.
+Medan vi byggde den här plattformen av och för hotellägare... Varje kodrad byggdes med det specifika syftet att återanvända den. Vårt team av utvecklare byggde Wink i hopp om att nästa 🦄 reseapp byggs ovanpå vår kodbas. Navigera till [Framkallare](/developers/build-on-wink) sidan för att se hur Wink kan stödja dig i ditt nästa projekt.
 
 ## Andra
 

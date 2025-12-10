@@ -4,7 +4,7 @@ description: 在本文中，我们将告诉您如何声明您的 WinkLinks 虚�
 sidebar:
   order: 1
 ---
-通过创建一个[联盟账户](/studio/what-is-studio)，您已经拥有 WinkLinks 个性化网址。WinkLinks 发布商功能已包含在我们的 Studio 应用中；此外，我们还提供其他联盟营销功能。
+通过创建一个 [联盟账户](/studio/what-is-studio) ，您已经拥有 WinkLinks 个性化网址。WinkLinks 发布商功能已包含在我们的 Studio 应用中；此外，我们还提供其他联盟营销功能。
 
 ### 例子
 

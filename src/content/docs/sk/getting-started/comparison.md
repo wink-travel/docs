@@ -34,7 +34,7 @@ Zistite, ako si Wink stojí v porovnaní s inými segmentmi online cestovania na
 
 Niektoré hotely sa nás snažia porovnávať so svojím internetovým rezervačným systémom, ktorý bol súčasťou ich channel managera, a žiadajú nás o fixnú mesačnú cenu na základe počtu kľúčov od ich nehnuteľnosti.
 
-Nie sme IBE a dúfajme, že[Wink Academy](/)Pomáha to objasniť. Každá služba má svoje výhody aj nevýhody. Ak vaša IBE funguje pre vašu nehnuteľnosť, zostaňte pri nej.
+Nie sme IBE a dúfajme, že [Wink Academy](/) Pomáha to objasniť. Každá služba má svoje výhody aj nevýhody. Ak vaša IBE funguje pre vašu nehnuteľnosť, zostaňte pri nej.
 Wink existuje preto, aby zaplnil niekoľko medzier v cestovnom ruchu a spojil všetko na jednom mieste.
 
 :::tip

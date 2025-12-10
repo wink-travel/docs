@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 1
 ---
-Bằng cách tạo ra một[tài khoản liên kết](/studio/what-is-studio), bạn đã có url vanity WinkLinks. Các tính năng của nhà xuất bản WinkLinks có trong ứng dụng Studio của chúng tôi; cùng với các tính năng liên kết khác của chúng tôi.
+Bằng cách tạo ra một [tài khoản liên kết](/studio/what-is-studio), bạn đã có url vanity WinkLinks. Các tính năng của nhà xuất bản WinkLinks có trong ứng dụng Studio của chúng tôi; cùng với các tính năng liên kết khác của chúng tôi.
 
 ### Ví dụ
 

@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Wink extranet](https://extranet.wink.travel)a mi ingatlanportálunk. Szállodák, szállodaláncok, márkák és szállodaüzemeltető cégek számára készült, hogy létrehozzák és kezeljék ingatlanjaik digitális profilját a Wink platformon.
+[Wink extranet](https://extranet.wink.travel) a mi ingatlanportálunk. Szállodák, szállodaláncok, márkák és szállodaüzemeltető cégek számára készült, hogy létrehozzák és kezeljék ingatlanjaik digitális profilját a Wink platformon.
 
 Extranetünket gondosan úgy terveztük, hogy a lehető legegyszerűbb legyen, mégis támogassa az összes olyan funkciót, amelyet a haladó felhasználók elvárnak egy fejlett ingatlanportáltól. Íme néhány példa:
 

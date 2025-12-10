@@ -4,7 +4,7 @@ description: 'Ebben a cikkben elmondjuk, hogyan igényelheted a WinkLinks Vanity
 sidebar:
   order: 1
 ---
-Egy[partnerfiók](/studio/what-is-studio), már van egy WinkLinks Vanity URL-ed. A WinkLinks közzétevői funkciói megtalálhatók a Studio alkalmazásunkban; a többi affiliate funkció mellett.
+Egy [partnerfiók](/studio/what-is-studio), már van egy WinkLinks Vanity URL-ed. A WinkLinks közzétevői funkciói megtalálhatók a Studio alkalmazásunkban; a többi affiliate funkció mellett.
 
 ### Példa
 

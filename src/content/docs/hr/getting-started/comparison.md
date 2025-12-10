@@ -34,7 +34,7 @@ Saznajte kako se Wink uspoređuje s drugim segmentima online putovanja na trži�
 
 Neki hoteli nas pokušavaju usporediti sa svojim internetskim sustavom za rezervacije koji dolazi u paketu s njihovim upraviteljem kanala i traže od nas da im damo fiksnu mjesečnu cijenu na temelju broja ključeva od njihovog objekta.
 
-Nismo IBE i nadamo se[Wink Academy](/)pomaže razjasniti ovo. Postoje prednosti i nedostaci svake usluge. Ako vaša IBE odgovara vašoj nekretnini, ostanite pri tome.
+Nismo IBE i nadamo se [Wink Academy](/) pomaže razjasniti ovo. Postoje prednosti i nedostaci svake usluge. Ako vaša IBE odgovara vašoj nekretnini, ostanite pri tome.
 Wink postoji kako bi popunio nekoliko praznina u turističkoj industriji i sve to objedinio na jednom mjestu.
 
 :::savjet

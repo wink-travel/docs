@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 1
 ---
-Vytvořením[partnerský účet](/studio/what-is-studio), již máte URL adresu WinkLinks. Funkce pro vydavatele WinkLinks existují v naší aplikaci Studio; spolu s dalšími funkcemi našich affiliate partnerů.
+Vytvořením [partnerský účet](/studio/what-is-studio), již máte URL adresu WinkLinks. Funkce pro vydavatele WinkLinks existují v naší aplikaci Studio; spolu s dalšími funkcemi našich affiliate partnerů.
 
 ### Příklad
 

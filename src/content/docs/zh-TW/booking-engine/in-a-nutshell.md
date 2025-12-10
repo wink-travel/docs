@@ -29,19 +29,19 @@ sidebar:
 * 為旅行者提供以下方式：
   * 搜尋旅行庫存。
   * 預訂可用庫存。
-  * 管理他們的[預訂和評論](/booking-engine/bookings)。
+  * 管理他們的 [預訂和評論](/booking-engine/bookings) 。
   * 管理他們的[願望清單](/booking-engine/bucket-list) 未來要預訂的事。
-  * 管理他們的[旅行概況](/booking-engine/travel-preferences)。 *例如過敏、緊急聯絡人等*
+  * 管理他們的 [旅行概況](/booking-engine/travel-preferences) 。 *例如過敏、緊急聯絡人等*
 
 預訂引擎是我們透過 https://ota.wink.travel 公開的可重複使用功能的集合；一個高度可自訂的網站，飯店和附屬機構可以透過網站向旅客銷售產品。
 
-想要更多自由的整合商可以透過我們的[WordPress 外掛](/developers/wordpress/)，[Web 元件](/developers/web-components) 和[蜜蜂](/developers/apis)。
+想要更多自由的整合商可以透過我們的 [WordPress 外掛](/developers/wordpress/) ，[Web 元件](/developers/web-components) 和 [WordPress 外掛](/developers/wordpress/) 。
 
 繼續閱讀下一部分，以了解有關預訂引擎提供的更多資訊。
 
 ## 進一步閱讀
 
-* 了解我們的[WordPress 外掛](/developers/wordpress/)。
-* 了解我們的[Web 元件](/developers/web-components)。
-* 了解我們的[蜜蜂](/developers/apis)。
+* 了解我們的 [WordPress 外掛](/developers/wordpress/) 。
+* 了解我們的 [Web 元件](/developers/web-components) 。
+* 了解我們的 [蜜蜂](/developers/apis) 。
 

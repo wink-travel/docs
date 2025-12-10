@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 1
 ---
-Ao criar um[conta de afiliado](/studio/what-is-studio), você já tem uma URL personalizada do WinkLinks. Os recursos de editor do WinkLinks estão disponíveis em nosso aplicativo Studio, além de nossos outros recursos de afiliados.
+Ao criar um [conta de afiliado](/studio/what-is-studio), você já tem uma URL personalizada do WinkLinks. Os recursos de editor do WinkLinks estão disponíveis em nosso aplicativo Studio, além de nossos outros recursos de afiliados.
 
 ### Exemplo
 

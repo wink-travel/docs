@@ -34,7 +34,7 @@ Preberite, kako se Wink primerja z drugimi spletnimi potovalnimi segmenti na trg
 
 Nekateri hoteli nas poskušajo primerjati s svojim spletnim rezervacijskim sistemom, ki je priložen njihovemu upravljalniku kanalov, in nas prosijo, naj jim ponudimo fiksno mesečno ceno, ki temelji na številu ključev njihove nepremičnine.
 
-Nismo IBE in upajmo,[Akademija Wink](/)pomaga razjasniti to. Vsaka storitev ima svoje prednosti in slabosti. Če vaša IBE ustreza vaši nepremičnini, pri tem vztrajajte.
+Nismo IBE in upajmo, [Akademija Wink](/) pomaga razjasniti to. Vsaka storitev ima svoje prednosti in slabosti. Če vaša IBE ustreza vaši nepremičnini, pri tem vztrajajte.
 Wink obstaja zato, da zapolni več vrzeli v potovalni industriji in vse združi na enem mestu.
 
 :::nasvet

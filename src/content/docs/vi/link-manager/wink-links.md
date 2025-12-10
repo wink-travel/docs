@@ -12,7 +12,7 @@ Trình quản lý liên kết cho phép bạn lưu và sắp xếp các URL bạ
 Hầu hết các trình quản lý liên kết đều yêu cầu đăng ký cho bất kỳ ai đăng liên kết liên kết.
 :::
 
-Chúng tôi đã xây dựng[Liên kết nháy mắt](https://i.trvl.as/); một trình quản lý liên kết hoàn toàn miễn phí, tập trung vào không gian du lịch, để thu hút, quảng cáo và bán hàng trực tuyến hiệu quả.
+Chúng tôi đã xây dựng [Liên kết nháy mắt](https://i.trvl.as/) ; một trình quản lý liên kết hoàn toàn miễn phí, tập trung vào không gian du lịch, để thu hút, quảng cáo và bán hàng trực tuyến hiệu quả.
 
 ## Đặc trưng
 
@@ -30,7 +30,7 @@ Chúng tôi đã xây dựng[Liên kết nháy mắt](https://i.trvl.as/); một
 ## Nội dung phong phú
 
 :::lưu ý
-Đặt`Intelligent`đến 🟢 trong của bạn[Cài đặt](/link-manager/settings)để sử dụng tính năng này.
+Đặt`Intelligent`đến 🟢 trong của bạn [Cài đặt](/link-manager/settings) để sử dụng tính năng này.
 :::
 
 Nếu bạn chia sẻ một liên kết từ một trang web hỗ trợ`rich`/`oEmbed`nội dung, liên kết của bạn sẽ hiển thị trên WinkLinks.
@@ -46,16 +46,16 @@ Các trang web được hỗ trợ:
 
 ## Trình độ cao
 
-WinkLinks cũng là một cách tuyệt vời để giới thiệu kho dữ liệu du lịch mà bạn tìm thấy, thông qua[Studio Nháy mắt](https://studio.wink.travel)và bạn muốn bán sản phẩm đó cho khán giả của mình.
+WinkLinks cũng là một cách tuyệt vời để giới thiệu kho dữ liệu du lịch mà bạn tìm thấy, thông qua [Studio Nháy mắt](https://studio.wink.travel) và bạn muốn bán sản phẩm đó cho khán giả của mình.
 
 Sử dụng WinkLinks để bán:
 
-* [Liên kết có thể chia sẻ](/studio/shareable-links)- Chọn hiển thị như sau:
+* [Liên kết có thể chia sẻ](/studio/shareable-links) - Chọn hiển thị như sau:
   * [Biểu ngữ quảng cáo](/developers/web-components/#content-loader).
   * Liên kết bình thường với giá cập nhật theo thời gian thực.
-* [Thẻ](/studio/cards)- Thẻ có thể đặt trước với giá cả và tình trạng còn phòng theo thời gian thực.
-* [Lưới](/studio/grids)- Lưới có thẻ đặt trước.
-* [Bản đồ](/studio/maps)- Bản đồ có các điểm đánh dấu mở thành thẻ có thể đặt trước.
+* [Thẻ](/studio/cards) - Thẻ có thể đặt trước với giá cả và tình trạng còn phòng theo thời gian thực.
+* [Lưới](/studio/grids) - Lưới có thẻ đặt trước.
+* [Bản đồ](/studio/maps) - Bản đồ có các điểm đánh dấu mở thành thẻ có thể đặt trước.
 
 :::lưu ý
 Để quản lý tài khoản WinkLinks của bạn, hãy đăng nhập vào tài khoản liên kết của bạn trên[Studio Nháy mắt](https://studio.wink.travel).

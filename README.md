@@ -6,7 +6,7 @@
       </picture>
     </a>
   </p>
-  <p>Beautifully crafted documentation built with [Astro](https://astro.build) and [Starlight](https://starlight.astro.build)</p>
+  <p>Beautifully crafted documentation built with [Astro](https://astro.build) and [Starlight](https://starlight.astro.build) </p>
 </div>
 
 ## Getting Started

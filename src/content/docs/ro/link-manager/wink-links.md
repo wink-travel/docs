@@ -12,7 +12,7 @@ Un manager de linkuri vă permite să salvați și să organizați adresele URL 
 Majoritatea managerilor de linkuri necesită un abonament pentru oricine postează linkuri de afiliere.
 :::
 
-Am construit[WinkLinks](https://i.trvl.as/); un manager de linkuri complet gratuit, axat pe domeniul călătoriilor, pentru a stimula, promova și vinde eficient online.
+Am construit [WinkLinks](https://i.trvl.as/) ; un manager de linkuri complet gratuit, axat pe domeniul călătoriilor, pentru a stimula, promova și vinde eficient online.
 
 ## Caracteristici
 
@@ -30,7 +30,7 @@ Am construit[WinkLinks](https://i.trvl.as/); un manager de linkuri complet gratu
 ## Conținut bogat
 
 :::notă
-Setare`Intelligent`la 🟢 în al tău[Setări](/link-manager/settings)pentru a utiliza această funcție.
+Setare`Intelligent`la 🟢 în al tău [Setări](/link-manager/settings) pentru a utiliza această funcție.
 :::
 
 Dacă distribuiți un link de pe un site care acceptă`rich`/`oEmbed`conținut, linkul tău prinde viață pe WinkLinks.
@@ -46,16 +46,16 @@ Site-uri acceptate:
 
 ## Avansat
 
-WinkLinks este, de asemenea, o modalitate excelentă de a expune inventarul de călătorii pe care l-ați găsit, prin intermediul[Wink Studio](https://studio.wink.travel)și pe care vrei să le vinzi publicului tău.
+WinkLinks este, de asemenea, o modalitate excelentă de a expune inventarul de călătorii pe care l-ați găsit, prin intermediul [Wink Studio](https://studio.wink.travel) și pe care vrei să le vinzi publicului tău.
 
 Folosește WinkLinks pentru a vinde:
 
-* [Linkuri partajabile](/studio/shareable-links)- Alegeți să afișați ca:
+* [Linkuri partajabile](/studio/shareable-links) - Alegeți să afișați ca:
   * [Banner publicitar](/developers/web-components/#content-loader).
   * Legătură normală cu actualizări de prețuri în timp real.
-* [Cărți](/studio/cards)- Carduri rezervabile cu prețuri și disponibilitate în timp real.
-* [Grile](/studio/grids)- Grilă cu cărți care pot fi rezervate.
-* [Hărți](/studio/maps)- Hartă cu marcaje care se deschid în fișe rezervabile.
+* [Cărți](/studio/cards) - Carduri rezervabile cu prețuri și disponibilitate în timp real.
+* [Grile](/studio/grids) - Grilă cu cărți care pot fi rezervate.
+* [Hărți](/studio/maps) - Hartă cu marcaje care se deschid în fișe rezervabile.
 
 :::notă
 Pentru a vă gestiona contul WinkLinks, conectați-vă la contul dvs. de afiliat pe[Wink Studio](https://studio.wink.travel).

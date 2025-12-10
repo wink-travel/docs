@@ -20,9 +20,9 @@ sidebar:
 
 ## API
 
-想要管理的開發人員`WinkLinks` 可以前往[開發者 > API > WinkLinks](/developers/apis/#winklinks-api)。
+想要管理的開發人員`WinkLinks` 可以前往 [開發者 > API > WinkLinks](/developers/apis/#winklinks-api) 。
 
 ## 進一步閱讀
 
-* 閱讀更多[自訂](/studio/customization)。
+* 閱讀更多 [自訂](/studio/customization) 。
 

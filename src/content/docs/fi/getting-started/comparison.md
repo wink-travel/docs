@@ -34,7 +34,7 @@ Opi vertautumaan Winkiin muihin markkinoilla oleviin verkkomatkailualan segmentt
 
 Jotkut hotellit yrittävät verrata meitä verkkovarausjärjestelmään, joka tuli heidän kanavanhallintansa mukana, ja pyytävät meitä antamaan heille kiinteän kuukausihinnan, joka perustuu heidän kiinteistönsä avainten määrään.
 
-Emme ole IBE ja toivottavasti[Wink-akatemia](/)auttaa selventämään tätä. Kaikilla palveluilla on hyvät ja huonot puolensa. Jos IBE-yrityksesi toimii yrityksessäsi, pysy siinä.
+Emme ole IBE ja toivottavasti [Wink-akatemia](/) auttaa selventämään tätä. Kaikilla palveluilla on hyvät ja huonot puolensa. Jos IBE-yrityksesi toimii yrityksessäsi, pysy siinä.
 
 Wink on olemassa täyttämään useita matkailualan aukkoja ja kokoamaan kaiken yhteen paikkaan.
 

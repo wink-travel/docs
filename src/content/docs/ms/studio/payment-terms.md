@@ -93,7 +93,7 @@ Hanya orang yang menandatangani perjanjian ini akan menjadi wakil tunggal Penyed
 5.1 Anda bertanggungjawab sepenuhnya untuk pematuhan mana-mana dan semua undang-undang, peraturan, peraturan dan kewajipan cukai yang mungkin dikenakan ke atas penggunaan Perkhidmatan Pembayaran oleh anda. Sehubungan dengan penggunaan Perkhidmatan Pembayaran oleh anda, anda mungkin tidak dan anda bersetuju bahawa anda tidak akan dan tidak akan membantu atau membolehkan orang lain untuk:
 
 * melanggar atau memintas mana-mana undang-undang atau peraturan yang berkenaan;
-* melanggar atau memintas sebarang perjanjian dengan pihak ketiga, hak pihak ketiga, atau [Syarat](/studio/terms-of-service);
+* melanggar atau memintas sebarang perjanjian dengan pihak ketiga, hak pihak ketiga, atau [Syarat](/studio/terms-of-service) ;
 * menggunakan Perkhidmatan Pembayaran untuk sebarang tujuan komersial atau tujuan lain yang tidak dibenarkan secara nyata oleh Syarat Pembayaran ini;
 * mengelak, memintas, mengalih keluar, menyahaktifkan, merosakkan, merungkai atau sebaliknya memintas sebarang langkah teknologi yang dilaksanakan oleh Fasilitator Pembayaran untuk melindungi Perkhidmatan Pembayaran;
 * mengambil sebarang tindakan yang merosakkan atau menjejaskan, atau boleh merosakkan atau menjejaskan, prestasi atau fungsi Perkhidmatan Pembayaran yang sepatutnya;

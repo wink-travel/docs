@@ -18,7 +18,7 @@ Vörumerki og keðjur hafa aðeins aðrar þarfir en stakar eignir. Á Wink geta
 
 * Stjórnaðu mörgum eignum undir einum reikningi.
 * Úthluta umsjónarmönnum til eigna
-* Nota[WinkLinks](/link-manager/wink-links),[WordPress](/developers/wordpress)og okkar[Vefþættir](/developers/web-components)að markaðssetja og selja margar fasteignir á einum stað.
+* Nota [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) og okkar [WinkLinks](/link-manager/wink-links) að markaðssetja og selja margar fasteignir á einum stað.
 
 ## Stjórnunarfélög
 
@@ -30,7 +30,7 @@ Fyrirtæki sem sérhæfa sig í ferðaþjónustu og áfangastaðastjórnun geta 
 
 ## Ferðaskrifstofur
 
-Ferðaskrifstofur fá aðgang að ferðabirgðum um allan heim á frábæru verði í gegnum okkar sérstöku þjónustu.[ferðaskrifstofuvefur](https://agent.wink.travel)Þeir geta bókað í gegnum gáttina okkar, í gegnum API-ið okkar eða með því að leyfa notendum sínum að bóka sig sjálfir á vefsíðu ferðaskrifstofunnar sem notar tækni okkar.
+Ferðaskrifstofur fá aðgang að ferðabirgðum um allan heim á frábæru verði í gegnum okkar sérstöku þjónustu. [ferðaskrifstofuvefur](https://agent.wink.travel) Þeir geta bókað í gegnum gáttina okkar, í gegnum API-ið okkar eða með því að leyfa notendum sínum að bóka sig sjálfir á vefsíðu ferðaskrifstofunnar sem notar tækni okkar.
 
 ## Fyrirtæki
 
@@ -43,11 +43,11 @@ Fyrirtæki þurfa meiri ferðavettvang:
 * Þetta krefst samþættingar kostnaðarstjórnunar og skýrslugerðar.
 * Þeir þurfa aðstoð móttökustjóra, sem og MICE þjónustu á viðburðum.
 
-Fyrirtækjaferðalangar geta stjórnað eigin reikningum sínum á okkar[fyrirtækjagátt](/corporate/what-is-group)eða notaðu opinberlega studda okkar[MS SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)viðbót og[Sammála](https://www.concur.com/)samþætting.
+Fyrirtækjaferðalangar geta stjórnað eigin reikningum sínum á okkar [fyrirtækjagátt](/corporate/what-is-group) eða notaðu opinberlega studda okkar [fyrirtækjagátt](/corporate/what-is-group) viðbót og [fyrirtækjagátt](/corporate/what-is-group) samþætting.
 
 ## Forritarar
 
-Þó að við smíðuðum þennan vettvang af og fyrir hótelgesti... Hver einasta kóðalína var smíðuð með það að markmiði að vera endurnýtanleg. Teymi okkar forritara smíðaði Wink í von um að næsta 🦄 ferðaappið yrði smíðað ofan á kóðagrunn okkar. Farðu á[Forritari](/developers/build-on-wink)síðu til að sjá hvernig Wink getur stutt þig í næsta verkefni þínu.
+Þó að við smíðuðum þennan vettvang af og fyrir hótelgesti... Hver einasta kóðalína var smíðuð með það að markmiði að vera endurnýtanleg. Teymi okkar forritara smíðaði Wink í von um að næsta 🦄 ferðaappið yrði smíðað ofan á kóðagrunn okkar. Farðu á [Forritari](/developers/build-on-wink) síðu til að sjá hvernig Wink getur stutt þig í næsta verkefni þínu.
 
 ## Annað
 

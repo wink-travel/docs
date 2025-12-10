@@ -12,7 +12,7 @@ En länkhanterare låter dig spara och organisera webbadresser du gillar för se
 De flesta länkhanterare kräver en prenumeration för alla som publicerar affiliate-länkar.
 :::
 
-Vi byggde[WinkLinks](https://i.trvl.as/)en helt gratis länkhanterare, fokuserad på resebranschen, för att engagera, annonsera och sälja effektivt online.
+Vi byggde [WinkLinks](https://i.trvl.as/) en helt gratis länkhanterare, fokuserad på resebranschen, för att engagera, annonsera och sälja effektivt online.
 
 ## Drag
 
@@ -30,7 +30,7 @@ Vi byggde[WinkLinks](https://i.trvl.as/)en helt gratis länkhanterare, fokuserad
 ## Rikt innehåll
 
 :::notering
-Ange`Intelligent`till 🟢 i din[Inställningar](/link-manager/settings)för att använda den här funktionen.
+Ange`Intelligent`till 🟢 i din [Inställningar](/link-manager/settings) för att använda den här funktionen.
 :::
 
 Om du delar en länk från en webbplats som stöder`rich`/`oEmbed`innehåll, din länk kommer till liv på WinkLinks.
@@ -46,16 +46,16 @@ Webbplatser som stöds:
 
 ## Avancerad
 
-WinkLinks är också ett bra sätt att exponera resekatalogen du hittat, genom[Wink Studio](https://studio.wink.travel), och som du vill sälja till din publik.
+WinkLinks är också ett bra sätt att exponera resekatalogen du hittat, genom [Wink Studio](https://studio.wink.travel), och som du vill sälja till din publik.
 
 Använd WinkLinks för att sälja dina:
 
-* [Delbara länkar](/studio/shareable-links)- Välj att visa som:
+* [Delbara länkar](/studio/shareable-links) - Välj att visa som:
   * [Annonsbanner](/developers/web-components/#content-loader).
   * Vanlig länk med prisuppdateringar i realtid.
-* [Kort](/studio/cards)- Bokningsbara kort med priser och tillgänglighet i realtid.
-* [Rutnät](/studio/grids)- Rutnät med bokningsbara kort.
-* [Kartor](/studio/maps)- Karta med markörer som öppnas till bokningsbara kort.
+* [Kort](/studio/cards) - Bokningsbara kort med priser och tillgänglighet i realtid.
+* [Rutnät](/studio/grids) - Rutnät med bokningsbara kort.
+* [Kartor](/studio/maps) - Karta med markörer som öppnas till bokningsbara kort.
 
 :::notera
 För att hantera ditt WinkLinks-konto, logga in på ditt affiliate-konto på[Wink Studio](https://studio.wink.travel).&#x20;

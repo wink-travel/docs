@@ -34,7 +34,7 @@ Dowiedz się, jak Wink wypada na tle innych segmentów podróży online na rynku
 
 Niektóre hotele próbują porównywać nas do swojej internetowej wyszukiwarki rezerwacji, dołączonej do ich menedżera kanałów, i proszą nas o podanie stałej, miesięcznej ceny w oparciu o liczbę kluczy do ich obiektu.
 
-Nie jesteśmy IBE i mamy nadzieję, że[Akademia Mrugnięcia](/)pomaga to wyjaśnić. Każda usługa ma swoje plusy i minusy. Jeśli Twój IBE działa dla Twojej nieruchomości, trzymaj się tego.
+Nie jesteśmy IBE i mamy nadzieję, że [Akademia Mrugnięcia](/) pomaga to wyjaśnić. Każda usługa ma swoje plusy i minusy. Jeśli Twój IBE działa dla Twojej nieruchomości, trzymaj się tego.
 Wink istnieje, aby wypełnić kilka luk w branży turystycznej i zebrać wszystko w jednym miejscu.
 
 :::tip

@@ -18,7 +18,7 @@ Les marques i cadenes tenen necessitats lleugerament diferents de les d'una sola
 
 * Gestiona diverses propietats sota un únic compte.
 * Assignar gestors a propietats
-* Ús[WinkLinks](/link-manager/wink-links),[WordPress](/developers/wordpress)i el nostre[Components web](/developers/web-components)comercialitzar i vendre múltiples propietats en un sol lloc.
+* Ús [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) i el nostre [WinkLinks](/link-manager/wink-links) comercialitzar i vendre múltiples propietats en un sol lloc.
 
 ## Societats de gestió
 
@@ -30,7 +30,7 @@ Els influencers utilitzen Wink per monetitzar millor el seu públic. Ho fan asso
 
 ## agents de viatges
 
-Els agents de viatges tenen accés a inventari de viatges a tot el món a preus excel·lents a través del nostre servei dedicat[portal d'agents de viatges](https://agent.wink.travel)Poden fer reserves a través del nostre portal, a través de la nostra API o permetent que els seus usuaris reservin ells mateixos al lloc web de l'agència de viatges que utilitza les nostres tecnologies.
+Els agents de viatges tenen accés a inventari de viatges a tot el món a preus excel·lents a través del nostre servei dedicat [portal d'agents de viatges](https://agent.wink.travel) Poden fer reserves a través del nostre portal, a través de la nostra API o permetent que els seus usuaris reservin ells mateixos al lloc web de l'agència de viatges que utilitza les nostres tecnologies.
 
 ## Corporacions
 
@@ -43,11 +43,11 @@ Les corporacions necessiten més plataforma de viatges:
 * Requereixen la integració de la gestió de despeses i la generació d'informes.
 * Necessiten suport de consergeria, així com serveis de MICE en esdeveniments.
 
-Els viatgers corporatius poden gestionar els seus propis comptes a la nostra[portal corporatiu](/corporate/what-is-group)o utilitzeu el nostre suport oficial[MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)complement i[D'acord](https://www.concur.com/)integració.
+Els viatgers corporatius poden gestionar els seus propis comptes a la nostra [portal corporatiu](/corporate/what-is-group) o utilitzeu el nostre suport oficial [portal corporatiu](/corporate/what-is-group) complement i [portal corporatiu](/corporate/what-is-group) integració.
 
 ## Desenvolupadors
 
-Mentre vam construir aquesta plataforma per i per als hotelers... Cada línia de codi es va crear amb el propòsit específic de la reusabilitat. El nostre equip de desenvolupadors va crear Wink amb l'esperança que la propera aplicació de viatges 🦄 es construeixi sobre la nostra base de codi. Navegueu fins a la[Desenvolupador](/developers/build-on-wink)pàgina per veure com Wink et pot ajudar en el teu proper projecte.
+Mentre vam construir aquesta plataforma per i per als hotelers... Cada línia de codi es va crear amb el propòsit específic de la reusabilitat. El nostre equip de desenvolupadors va crear Wink amb l'esperança que la propera aplicació de viatges 🦄 es construeixi sobre la nostra base de codi. Navegueu fins a la [Desenvolupador](/developers/build-on-wink) pàgina per veure com Wink et pot ajudar en el teu proper projecte.
 
 ## Altres
 

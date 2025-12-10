@@ -34,7 +34,7 @@ Lær hvordan Wink sammenlignes med andre segmenter for nettbasert reisevirksomhe
 
 Noen hoteller prøver å sammenligne oss med sin nettbaserte bookingmotor som fulgte med kanalbehandleren deres, og ber oss om å gi dem en fast månedlig pris basert på antall nøkler til eiendommen deres.
 
-Vi er ikke en IBE og forhåpentligvis[Wink Academy](/)hjelper med å avklare dette. Det finnes fordeler og ulemper med enhver tjeneste. Hvis IBE-en din fungerer for eiendommen din, så hold deg til den.
+Vi er ikke en IBE og forhåpentligvis [Wink Academy](/) hjelper med å avklare dette. Det finnes fordeler og ulemper med enhver tjeneste. Hvis IBE-en din fungerer for eiendommen din, så hold deg til den.
 Wink eksisterer for å fylle flere hull i reiselivsbransjen og samle alt på ett sted.
 
 :::tips

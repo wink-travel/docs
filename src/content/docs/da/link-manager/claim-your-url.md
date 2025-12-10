@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 1
 ---
-Ved at oprette en[affiliate-konto](/studio/what-is-studio), du har allerede en WinkLinks vanity-url. WinkLinks-udgiverfunktioner findes i vores Studio-app; sammen med vores andre affilierede funktioner.
+Ved at oprette en [affiliate-konto](/studio/what-is-studio), du har allerede en WinkLinks vanity-url. WinkLinks-udgiverfunktioner findes i vores Studio-app; sammen med vores andre affilierede funktioner.
 
 ### Eksempel
 

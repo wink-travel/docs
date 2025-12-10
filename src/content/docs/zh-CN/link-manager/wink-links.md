@@ -10,7 +10,7 @@ sidebar:
 大多数链接管理器要求发布联盟链接的任何人都必须订阅。
 :::
 
-我们建造[WinkLinks](https://i.trvl.as/)；一个完全免费的链接管理器，专注于旅游领域，以激发、宣传和有效地在线销售。
+我们建造 [WinkLinks](https://i.trvl.as/) ；一个完全免费的链接管理器，专注于旅游领域，以激发、宣传和有效地在线销售。
 
 ## 特征
 
@@ -28,7 +28,7 @@ sidebar:
 ## 内容丰富
 
 :::注意
-设置`Intelligent`🟢 在你的[设置](/link-manager/settings)使用此功能。
+设置`Intelligent`🟢 在你的 [设置](/link-manager/settings) 使用此功能。
 :::
 
 如果您分享来自支持`rich`/`oEmbed`内容，您的链接就会在 WinkLinks 上生效。
@@ -44,16 +44,16 @@ sidebar:
 
 ## 先进的
 
-WinkLinks 也是一个很好的方式来展示你找到的旅行清单，通过[Wink工作室](https://studio.wink.travel)，并且是您想要向受众推销的产品。
+WinkLinks 也是一个很好的方式来展示你找到的旅行清单，通过 [Wink工作室](https://studio.wink.travel) ，并且是您想要向受众推销的产品。
 
 使用 WinkLinks 销售您的：
 
-* [可共享链接](/studio/shareable-links)- 选择显示为：
-  * [广告横幅](/developers/web-components/#content-loader)。
+* [可共享链接](/studio/shareable-links) - 选择显示为：
+  * [广告横幅](/developers/web-components/#content-loader) 。
   * 具有实时价格更新的正常链接。
-* [牌](/studio/cards)- 可预订的卡，包含实时价格和可用性。
-* [网格](/studio/grids)- 带有可预订卡片的网格。
-* [地图](/studio/maps)- 带有标记的地图，可打开为可预订的卡片。
+* [牌](/studio/cards) - 可预订的卡，包含实时价格和可用性。
+* [网格](/studio/grids) - 带有可预订卡片的网格。
+* [地图](/studio/maps) - 带有标记的地图，可打开为可预订的卡片。
 
 :::注意
 要管理您的 WinkLinks 帐户，请登录您的联盟帐户[Wink工作室](https://studio.wink.travel).

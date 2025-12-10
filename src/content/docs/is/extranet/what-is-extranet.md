@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Wink Extranet](https://extranet.wink.travel)er fasteignavefurinn okkar. Hann er ætlaður hótelum, keðjum, vörumerkjum og hótelrekstrarfyrirtækjum til að búa til og stjórna stafrænum prófílum eigna sinna á Wink-vettvanginum.
+[Wink Extranet](https://extranet.wink.travel) er fasteignavefurinn okkar. Hann er ætlaður hótelum, keðjum, vörumerkjum og hótelrekstrarfyrirtækjum til að búa til og stjórna stafrænum prófílum eigna sinna á Wink-vettvanginum.
 
 Útivistarnetið okkar hefur verið vandlega hannað til að vera eins einfalt og mögulegt er, en samt til að styðja alla þá eiginleika sem afkastamiklir notendur búast við af háþróaðri fasteignavefsíðu. Til að gefa þér nokkur dæmi:
 

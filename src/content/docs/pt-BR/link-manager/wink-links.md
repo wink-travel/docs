@@ -12,7 +12,7 @@ Um gerenciador de links permite salvar e organizar URLs que você gosta para usa
 A maioria dos gerenciadores de links exige uma assinatura para quem publica links de afiliados.
 :::
 
-Nós construímos[WinkLinks](https://i.trvl.as/); um gerenciador de links totalmente gratuito, focado no setor de viagens, para estimular, anunciar e vender efetivamente on-line.
+Nós construímos [WinkLinks](https://i.trvl.as/) ; um gerenciador de links totalmente gratuito, focado no setor de viagens, para estimular, anunciar e vender efetivamente on-line.
 
 ## Características
 
@@ -30,7 +30,7 @@ Nós construímos[WinkLinks](https://i.trvl.as/); um gerenciador de links totalm
 ## Conteúdo rico
 
 :::nota
-Definir`Intelligent`para 🟢 em seu[Configurações](/link-manager/settings)para usar este recurso.
+Definir`Intelligent`para 🟢 em seu [Configurações](/link-manager/settings) para usar este recurso.
 :::
 
 Se você compartilhar um link de um site que oferece suporte`rich`/`oEmbed`conteúdo, seu link ganha vida no WinkLinks.
@@ -46,16 +46,16 @@ Sites suportados:
 
 ## Avançado
 
-WinkLinks também é uma ótima maneira de expor o inventário de viagens que você encontrou, por meio de[Estúdio Wink](https://studio.wink.travel), e que você quer vender para seu público.
+WinkLinks também é uma ótima maneira de expor o inventário de viagens que você encontrou, por meio de [Estúdio Wink](https://studio.wink.travel), e que você quer vender para seu público.
 
 Use o WinkLinks para vender:
 
-* [Links compartilháveis](/studio/shareable-links)- Escolha exibir como:
+* [Links compartilháveis](/studio/shareable-links) - Escolha exibir como:
   * [Banner de anúncio](/developers/web-components/#content-loader).
   * Link normal com atualizações de preços em tempo real.
-* [Cartões](/studio/cards)- Cartões reserváveis com preços e disponibilidade em tempo real.
-* [Grades](/studio/grids)- Grade com cartões reserváveis.
-* [Mapas](/studio/maps)- Mapa com marcadores que se abrem em cartões reserváveis.
+* [Cartões](/studio/cards) - Cartões reserváveis com preços e disponibilidade em tempo real.
+* [Grades](/studio/grids) - Grade com cartões reserváveis.
+* [Mapas](/studio/maps) - Mapa com marcadores que se abrem em cartões reserváveis.
 
 :::nota
 Para gerenciar sua conta WinkLinks, faça login em sua conta de afiliado em[Estúdio Wink](https://studio.wink.travel).

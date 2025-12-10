@@ -4,7 +4,7 @@ description: 'Šajā rakstā mēs jums pastāstīsim, kā pieprasīt savu WinkLi
 sidebar:
   order: 1
 ---
-Izveidojot[filiāles konts](/studio/what-is-studio), jums jau ir WinkLinks īsā URL adrese. WinkLinks izdevēja funkcijas ir pieejamas mūsu Studio lietotnē; līdzās citām mūsu partneru funkcijām.
+Izveidojot [filiāles konts](/studio/what-is-studio), jums jau ir WinkLinks īsā URL adrese. WinkLinks izdevēja funkcijas ir pieejamas mūsu Studio lietotnē; līdzās citām mūsu partneru funkcijām.
 
 ### Piemērs
 

@@ -93,7 +93,7 @@ Tanging ang taong pumirma sa kasunduang ito ang magiging tanging itinalagang kin
 5.1 Ikaw ang tanging may pananagutan para sa pagsunod sa anuman at lahat ng mga batas, tuntunin, regulasyon, at obligasyon sa buwis na maaaring ilapat sa iyong paggamit ng Mga Serbisyo sa Pagbabayad. Kaugnay ng iyong paggamit ng Mga Serbisyo sa Pagbabayad, maaari kang hindi at sumasang-ayon ka na hindi mo tutulungan o hindi papayagan ang iba na:
 
 * paglabag o pag-iwas sa anumang naaangkop na mga batas o regulasyon;
-* paglabag o pag-iwas sa anumang mga kasunduan sa mga third party, mga karapatan ng third-party, o sa [Mga tuntunin](/studio/terms-of-service);
+* paglabag o pag-iwas sa anumang mga kasunduan sa mga third party, mga karapatan ng third-party, o sa [Mga tuntunin](/studio/terms-of-service) ;
 * gamitin ang Mga Serbisyo sa Pagbabayad para sa anumang komersyal o iba pang layunin na hindi hayagang pinahihintulutan ng Mga Tuntunin sa Pagbabayad na ito;
 * iwasan, i-bypass, alisin, i-deactivate, i-pahina, i-descramble, o kung hindi man ay iwasan ang anumang teknolohikal na hakbang na ipinatupad ng Payment Facilitator upang protektahan ang Mga Serbisyo sa Pagbabayad;
 * gumawa ng anumang aksyon na pumipinsala o makakaapekto, o maaaring makapinsala o makakaapekto, sa pagganap o maayos na paggana ng Mga Serbisyo sa Pagbabayad;

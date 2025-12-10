@@ -12,7 +12,7 @@ En lenkebehandler lar deg lagre og organisere nettadresser du liker til senere. 
 De fleste lenkeadministratorer krever et abonnement for alle som legger ut affiliate-lenker.
 :::
 
-Vi bygde[WinkLinks](https://i.trvl.as/)en helt gratis lenkebehandler, fokusert på reiselivsbransjen, for å begeistre, annonsere og selge effektivt på nett.
+Vi bygde [WinkLinks](https://i.trvl.as/) en helt gratis lenkebehandler, fokusert på reiselivsbransjen, for å begeistre, annonsere og selge effektivt på nett.
 
 ## Funksjoner
 
@@ -30,7 +30,7 @@ Vi bygde[WinkLinks](https://i.trvl.as/)en helt gratis lenkebehandler, fokusert p
 ## Rikt innhold
 
 :::merknad
-Angi`Intelligent`til 🟢 i din[Innstillinger](/link-manager/settings)for å bruke denne funksjonen.
+Angi`Intelligent`til 🟢 i din [Innstillinger](/link-manager/settings) for å bruke denne funksjonen.
 :::
 
 Hvis du deler en lenke fra et nettsted som støtter`rich`/`oEmbed`innhold, lenken din blir levende på WinkLinks.
@@ -46,16 +46,16 @@ Støttede nettsteder:
 
 ## Avansert
 
-WinkLinks er også en fin måte å eksponere reisekatalogen du fant, gjennom[Wink Studio](https://studio.wink.travel), og som du ønsker å selge til publikummet ditt.
+WinkLinks er også en fin måte å eksponere reisekatalogen du fant, gjennom [Wink Studio](https://studio.wink.travel), og som du ønsker å selge til publikummet ditt.
 
 Bruk WinkLinks til å selge dine:
 
-* [Delbare lenker](/studio/shareable-links)– Velg å vise som:
+* [Delbare lenker](/studio/shareable-links) – Velg å vise som:
   * [Annonsebanner](/developers/web-components/#content-loader).
   * Vanlig lenke med prisoppdateringer i sanntid.
-* [Kort](/studio/cards)- Bestillbare kort med priser og tilgjengelighet i sanntid.
-* [Rutenett](/studio/grids)- Rutenett med bestillbare kort.
-* [Kart](/studio/maps)- Kart med markører som åpnes til bokbare kort.
+* [Kort](/studio/cards) - Bestillbare kort med priser og tilgjengelighet i sanntid.
+* [Rutenett](/studio/grids) - Rutenett med bestillbare kort.
+* [Kart](/studio/maps) - Kart med markører som åpnes til bokbare kort.
 
 :::merknad
 For å administrere WinkLinks-kontoen din, logg inn på tilknyttede kontoer på[Wink Studio](https://studio.wink.travel).&#x20;

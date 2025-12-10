@@ -8,7 +8,7 @@ sidebar:
 ---
 Sögulega séð hefur það falið í sér trúnaðarsamninga og flóknar samþættingar milli tveggja \[eða fleiri] leyfisbundinna ferðaskrifstofa sem höfðu næga tæknilega þekkingu, aðgang að greiðslugátt og voru bæði PCI DSS-samrýmanleg. Þetta var kostnaðarsamt og tímafrekt verkefni og aðgangshindrunin var ótrúlega mikil fyrir venjulegt fólk.
 
-[Wink Studio](https://studio.wink.travel)er samstarfsgátt okkar. Hún gerir sölu á ferðabirgðum aðgengilega öllum og jafn auðvelda og að deila tengli eða jafn háþróaða og að reka ferðaskrifstofu á netinu.
+[Wink Studio](https://studio.wink.travel) er samstarfsgátt okkar. Hún gerir sölu á ferðabirgðum aðgengilega öllum og jafn auðvelda og að deila tengli eða jafn háþróaða og að reka ferðaskrifstofu á netinu.
 
 Tengdavefurinn sýnir tiltækt ferðabirgðaúrval frá birgjum (þ.e. hótelum, farfuglaheimilum, leiguhúsnæði, upplifunaraðilum) hvar sem er í heiminum. Markmið þitt er að finna það úrval sem hentar þér og nota síðan bestu leiðina til að sýna það og selja það til markhópsins.
 

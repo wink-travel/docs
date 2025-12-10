@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Wink Extranet](https://extranet.wink.travel)er vores ejendomsportal. Den er beregnet til hoteller, kæder, brands og hoteladministrationsselskaber, så de kan oprette og administrere den digitale profil for deres ejendomme på Wink-platformen.
+[Wink Extranet](https://extranet.wink.travel) er vores ejendomsportal. Den er beregnet til hoteller, kæder, brands og hoteladministrationsselskaber, så de kan oprette og administrere den digitale profil for deres ejendomme på Wink-platformen.
 
 Vores Extranet er omhyggeligt designet til at være så enkelt som muligt, men stadig understøtte alle de funktioner, som superbrugere forventer af en avanceret ejendomsportal. Her er et par eksempler:
 

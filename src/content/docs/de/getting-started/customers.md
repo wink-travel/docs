@@ -18,7 +18,7 @@ Marken und Ketten haben etwas andere Bedürfnisse als einzelne Hotels. Auf Wink 
 
 * Verwalten Sie mehrere Eigenschaften unter einem einzigen Konto.
 * Zuweisen von Managern zu Eigenschaften
-* Verwenden [WinkLinks](/link-manager/wink-links),[WordPress](/developers/wordpress)und unsere[Webkomponenten](/developers/web-components)um mehrere Immobilien an einem Ort zu vermarkten und zu verkaufen.
+* Verwenden [WinkLinks](/link-manager/wink-links), [WordPress](/developers/wordpress) und unsere [WordPress](/developers/wordpress) um mehrere Immobilien an einem Ort zu vermarkten und zu verkaufen.
 
 ## Verwaltungsgesellschaften
 
@@ -30,7 +30,7 @@ Influencer nutzen Wink, um ihre Zielgruppe besser zu monetarisieren. Dies erreic
 
 ## Reisebüros
 
-Reisebüros erhalten Zugang zu Reiseangeboten weltweit zu günstigen Preisen durch unsere engagierten[Reisebüroportal](https://agent.wink.travel)Sie können Buchungen über unser Portal oder über unsere API vornehmen oder indem sie ihre Benutzer selbst auf der Website des Reisebüros buchen lassen, das unsere Technologien verwendet.
+Reisebüros erhalten Zugang zu Reiseangeboten weltweit zu günstigen Preisen durch unsere engagierten [Reisebüroportal](https://agent.wink.travel) Sie können Buchungen über unser Portal oder über unsere API vornehmen oder indem sie ihre Benutzer selbst auf der Website des Reisebüros buchen lassen, das unsere Technologien verwendet.
 
 ## Unternehmen
 
@@ -43,11 +43,11 @@ Unternehmen benötigen eine umfassendere Reiseplattform:
 * Sie erfordern eine Integration des Spesenmanagements und der Berichterstattung.
 * Sie benötigen Concierge-Unterstützung sowie MICE-Dienste bei Veranstaltungen.
 
-Geschäftsreisende können ihre eigenen Konten auf unserer[Unternehmensportal](/corporate/what-is-group)oder nutzen Sie unsere offiziell unterstützte[MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)Plugin und[Concur](https://www.concur.com/)Integration.
+Geschäftsreisende können ihre eigenen Konten auf unserer [Unternehmensportal](/corporate/what-is-group) oder nutzen Sie unsere offiziell unterstützte [Unternehmensportal](/corporate/what-is-group) Plugin und [Unternehmensportal](/corporate/what-is-group) Integration.
 
 ## Entwickler
 
-Während wir diese Plattform von und für Hoteliers entwickelt haben, wurde jede Codezeile speziell für die Wiederverwendbarkeit entwickelt. Unser Entwicklerteam hat Wink in der Hoffnung entwickelt, dass die nächste 🦄 Reise-App auf unserer Codebasis basiert. Navigieren Sie zum[Entwickler](/developers/build-on-wink)Seite, um zu sehen, wie Wink Sie bei Ihrem nächsten Vorhaben unterstützen kann.
+Während wir diese Plattform von und für Hoteliers entwickelt haben, wurde jede Codezeile speziell für die Wiederverwendbarkeit entwickelt. Unser Entwicklerteam hat Wink in der Hoffnung entwickelt, dass die nächste 🦄 Reise-App auf unserer Codebasis basiert. Navigieren Sie zum [Entwickler](/developers/build-on-wink) Seite, um zu sehen, wie Wink Sie bei Ihrem nächsten Vorhaben unterstützen kann.
 
 ## Andere
 

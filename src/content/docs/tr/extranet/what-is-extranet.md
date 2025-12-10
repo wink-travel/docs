@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Göz kırpma ekstranet](https://extranet.wink.travel)emlak portalımızdır. Oteller, zincirler, markalar ve otel yönetim şirketlerinin Wink platformunda mülklerinin dijital profilini oluşturmaları ve yönetmeleri için tasarlanmıştır.
+[Göz kırpma ekstranet](https://extranet.wink.travel) emlak portalımızdır. Oteller, zincirler, markalar ve otel yönetim şirketlerinin Wink platformunda mülklerinin dijital profilini oluşturmaları ve yönetmeleri için tasarlanmıştır.
 
 Extranet'imiz mümkün olduğunca basit olacak şekilde, ancak yine de ileri düzey kullanıcıların gelişmiş bir emlak portalından beklediği tüm özellikleri destekleyecek şekilde düşünülerek tasarlanmıştır. Size birkaç örnek vermek gerekirse:
 

@@ -16,7 +16,7 @@ Wink 十年前就開始為飯店提供入職培訓服務。飯店使用 Wink 有
 
 * 使用一個帳戶管理多個屬性。
 * 為物業分配經理
-* 使用[WinkLinks](/link-manager/wink-links)，[WordPress](/developers/wordpress) 和我們的[Web 元件](/developers/web-components) 在一個地方行銷和銷售多處房產。
+* 使用 [WinkLinks](/link-manager/wink-links) ，[WordPress](/developers/wordpress) 和我們的[Web 元件](/developers/web-components) 在一個地方行銷和銷售多處房產。
 
 ## 管理公司
 
@@ -28,7 +28,7 @@ Wink 十年前就開始為飯店提供入職培訓服務。飯店使用 Wink 有
 
 ## 旅行社
 
-旅行社可以透過我們專門的[旅行社入口網站](https://agent.wink.travel)。他們可以透過我們的入口網站、透過我們的 API 進行預訂，或讓他們的用戶在使用我們技術的旅行社網站上自行預訂。
+旅行社可以透過我們專門的 [旅行社入口網站](https://agent.wink.travel) 。他們可以透過我們的入口網站、透過我們的 API 進行預訂，或讓他們的用戶在使用我們技術的旅行社網站上自行預訂。
 
 ## 公司
 

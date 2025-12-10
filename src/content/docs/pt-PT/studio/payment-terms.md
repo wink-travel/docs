@@ -93,7 +93,7 @@ Apenas a pessoa que assina este contrato será o único representante designado 
 5.1 É o único responsável pelo cumprimento de todas e quaisquer leis, regras, regulamentos e obrigações fiscais que se possam aplicar à sua utilização dos Serviços de Pagamento. Em relação à sua utilização dos Serviços de Pagamento, não pode e concorda que não irá e não ajudará ou permitirá que outros:
 
 * violar ou contornar quaisquer leis ou regulamentos aplicáveis;
-* violar ou contornar quaisquer acordos com terceiros, direitos de terceiros ou [Termos](/studio/terms-of-service);
+* violar ou contornar quaisquer acordos com terceiros, direitos de terceiros ou [Termos](/studio/terms-of-service) ;
 * utilizar os Serviços de Pagamento para quaisquer fins comerciais ou outros que não sejam expressamente permitidos pelos presentes Termos de Pagamento;
 * evitar, ignorar, remover, desativar, prejudicar, descodificar ou de qualquer outra forma contornar qualquer medida tecnológica implementada pelo Facilitador de Pagamentos para proteger os Serviços de Pagamento;
 * tomar qualquer ação que prejudique ou afete adversamente, ou possa danificar ou afetar adversamente, o desempenho ou o funcionamento adequado dos Serviços de Pagamento;

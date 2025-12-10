@@ -12,7 +12,7 @@ Un gestor de enlaces te permite guardar y organizar las URL que te gustan para l
 La mayoría de los gestores de enlaces requieren una suscripción para publicar enlaces de afiliado.
 :::
 
-Nosotros construimos[Enlaces de guiño](https://i.trvl.as/); un gestor de enlaces totalmente gratuito, enfocado al ámbito de los viajes, para entusiasmar, publicitar y vender eficazmente online.
+Nosotros construimos [Enlaces de guiño](https://i.trvl.as/) ; un gestor de enlaces totalmente gratuito, enfocado al ámbito de los viajes, para entusiasmar, publicitar y vender eficazmente online.
 
 ## Características
 
@@ -30,7 +30,7 @@ Nosotros construimos[Enlaces de guiño](https://i.trvl.as/); un gestor de enlace
 ## Contenido enriquecido
 
 :::nota
-Conjunto`Intelligent`a 🟢 en tu[Ajustes](/link-manager/settings)Para usar esta función.
+Conjunto`Intelligent`a 🟢 en tu [Ajustes](/link-manager/settings) Para usar esta función.
 
 Si compartes un enlace desde un sitio que admite`rich`/`oEmbed`Contenido, su enlace cobra vida en WinkLinks.
 
@@ -45,16 +45,16 @@ Sitios compatibles:
 
 ## Avanzado
 
-WinkLinks también es una excelente manera de exponer el inventario de viajes que encontró, a través de[Estudio Wink](https://studio.wink.travel), y que quieres vender a tu audiencia.
+WinkLinks también es una excelente manera de exponer el inventario de viajes que encontró, a través de [Estudio Wink](https://studio.wink.travel), y que quieres vender a tu audiencia.
 
 Utilice WinkLinks para vender sus:
 
-* [Enlaces para compartir](/studio/shareable-links)- Elija mostrar como:
+* [Enlaces para compartir](/studio/shareable-links) - Elija mostrar como:
   * [Banner publicitario](/developers/web-components/#content-loader).
   * Enlace normal con actualizaciones de precios en tiempo real.
-* [Tarjetas](/studio/cards)- Tarjetas reservables con precios y disponibilidad en tiempo real.
-* [Cuadrículas](/studio/grids)- Cuadrícula con tarjetas reservables.
-* [Mapas](/studio/maps)- Mapa con marcadores que se abren en tarjetas reservables.
+* [Tarjetas](/studio/cards) - Tarjetas reservables con precios y disponibilidad en tiempo real.
+* [Cuadrículas](/studio/grids) - Cuadrícula con tarjetas reservables.
+* [Mapas](/studio/maps) - Mapa con marcadores que se abren en tarjetas reservables.
 
 :::nota
 Para administrar su cuenta de WinkLinks, inicie sesión en su cuenta de afiliado en[Estudio Wink](https://studio.wink.travel).

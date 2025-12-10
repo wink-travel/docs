@@ -18,7 +18,7 @@ Markalar ve zincirler tek bir mülkten biraz farklı ihtiyaçlara sahiptir. Wink
 
 * Tek bir hesap altında birden fazla mülkü yönetin.
 * Yöneticileri mülklere atayın
-* Kullanmak [Göz kırpma bağlantıları](/link-manager/wink-links),[WordPress](/developers/wordpress)ve bizim[Web Bileşenleri](/developers/web-components)birden fazla gayrimenkulü tek bir yerde pazarlamak ve satmak.
+* Kullanmak [Göz kırpma bağlantıları](/link-manager/wink-links), [WordPress](/developers/wordpress) ve bizim [WordPress](/developers/wordpress) birden fazla gayrimenkulü tek bir yerde pazarlamak ve satmak.
 
 ## Yönetim şirketleri
 
@@ -43,11 +43,11 @@ Seyahat acenteleri, özel hizmetlerimiz aracılığıyla dünya çapındaki seya
 * Gider yönetimi ve raporlama entegrasyonuna ihtiyaç duyarlar.
 * Etkinliklerde concierge desteğine ve MICE hizmetlerine ihtiyaçları var.
 
-Kurumsal seyahat edenler kendi hesaplarını sitemizde yönetebilirler.[kurumsal portal](/corporate/what-is-group)veya resmi olarak desteklenen[MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)eklenti ve[Katılıyorum](https://www.concur.com/)Entegrasyon.
+Kurumsal seyahat edenler kendi hesaplarını sitemizde yönetebilirler. [kurumsal portal](/corporate/what-is-group) veya resmi olarak desteklenen [kurumsal portal](/corporate/what-is-group) eklenti ve [kurumsal portal](/corporate/what-is-group) Entegrasyon.
 
 ## Geliştiriciler
 
-Bu platformu otelciler tarafından ve onlar için inşa ederken... Her bir kod satırı, yeniden kullanılabilirlik özel amacı için inşa edildi. Geliştirici ekibimiz, bir sonraki 🦄 seyahat uygulamasının kod tabanımızın üzerine inşa edilmesi umuduyla Wink'i inşa etti.[Geliştirici](/developers/build-on-wink)Wink'in bir sonraki girişiminizde size nasıl destek olabileceğini görmek için sayfaya göz atın.
+Bu platformu otelciler tarafından ve onlar için inşa ederken... Her bir kod satırı, yeniden kullanılabilirlik özel amacı için inşa edildi. Geliştirici ekibimiz, bir sonraki 🦄 seyahat uygulamasının kod tabanımızın üzerine inşa edilmesi umuduyla Wink'i inşa etti. [Geliştirici](/developers/build-on-wink) Wink'in bir sonraki girişiminizde size nasıl destek olabileceğini görmek için sayfaya göz atın.
 
 ## Diğer
 

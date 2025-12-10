@@ -22,9 +22,9 @@ sidebar:
 
 ## เอพีไอ
 
-นักพัฒนาที่ต้องการบริหารจัดการ`WinkLinks`สามารถมุ่งหน้าไปยัง[นักพัฒนา > API > WinkLinks](/developers/apis/#winklinks-api)-
+นักพัฒนาที่ต้องการบริหารจัดการ`WinkLinks`สามารถมุ่งหน้าไปยัง [นักพัฒนา > API > WinkLinks](/developers/apis/#winklinks-api) -
 
 ## อ่านเพิ่มเติม
 
-* อ่านเพิ่มเติมเกี่ยวกับ[การปรับแต่ง](/studio/customization)-
+* อ่านเพิ่มเติมเกี่ยวกับ [การปรับแต่ง](/studio/customization) -
 

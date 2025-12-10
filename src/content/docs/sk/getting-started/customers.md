@@ -18,7 +18,7 @@ Značky a reťazce majú mierne odlišné potreby ako jednotlivé nehnuteľnosti
 
 * Spravujte viacero nehnuteľností pod jedným účtom.
 * Priradiť správcov k nehnuteľnostiam
-* Použitie[WinkLinks](/link-manager/wink-links),[WordPress](/developers/wordpress)a naše[Webové komponenty](/developers/web-components)predávať a propagovať viacero nehnuteľností na jednom mieste.
+* Použitie [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) a naše [WinkLinks](/link-manager/wink-links) predávať a propagovať viacero nehnuteľností na jednom mieste.
 
 ## Správcovské spoločnosti
 
@@ -30,7 +30,7 @@ Influenceri používajú Wink na lepšiu monetizáciu svojho publika. Robia to p
 
 ## Cestovné kancelárie
 
-Cestovné kancelárie majú prístup k cestovným ponukám po celom svete za skvelé ceny prostredníctvom našich špecializovaných služieb.[portál cestovnej kancelárie](https://agent.wink.travel)Rezervácie si môžu robiť prostredníctvom nášho portálu, nášho API alebo tak, že umožnia svojim používateľom rezervovať si sami na webovej stránke cestovnej kancelárie, ktorá používa naše technológie.
+Cestovné kancelárie majú prístup k cestovným ponukám po celom svete za skvelé ceny prostredníctvom našich špecializovaných služieb. [portál cestovnej kancelárie](https://agent.wink.travel) Rezervácie si môžu robiť prostredníctvom nášho portálu, nášho API alebo tak, že umožnia svojim používateľom rezervovať si sami na webovej stránke cestovnej kancelárie, ktorá používa naše technológie.
 
 ## Korporácie
 
@@ -43,11 +43,11 @@ Korporácie potrebujú viac cestovnej platformy:
 * Vyžadujú integráciu správy výdavkov a reportingu.
 * Potrebujú podporu concierge, ako aj MICE služby na podujatiach.
 
-Firemní cestujúci si môžu spravovať svoje vlastné účty na našej[firemný portál](/corporate/what-is-group)alebo použite našu oficiálne podporovanú[MS SharePoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)plugin a[Súhlasím](https://www.concur.com/)integrácia.
+Firemní cestujúci si môžu spravovať svoje vlastné účty na našej [firemný portál](/corporate/what-is-group) alebo použite našu oficiálne podporovanú [firemný portál](/corporate/what-is-group) plugin a [firemný portál](/corporate/what-is-group) integrácia.
 
 ## Vývojári
 
-Hoci sme túto platformu vytvorili hoteliermi pre hotelierov... Každý riadok kódu bol vytvorený s ohľadom na jej opätovné použitie. Náš tím vývojárov vytvoril Wink v nádeji, že ďalšia 🦄 cestovná aplikácia bude postavená na našej kódovej základni. Prejdite na[Vývojár](/developers/build-on-wink)stránku, kde nájdete informácie o tom, ako vás Wink môže podporiť vo vašom ďalšom podnikaní.
+Hoci sme túto platformu vytvorili hoteliermi pre hotelierov... Každý riadok kódu bol vytvorený s ohľadom na jej opätovné použitie. Náš tím vývojárov vytvoril Wink v nádeji, že ďalšia 🦄 cestovná aplikácia bude postavená na našej kódovej základni. Prejdite na [Vývojár](/developers/build-on-wink) stránku, kde nájdete informácie o tom, ako vás Wink môže podporiť vo vašom ďalšom podnikaní.
 
 ## Iné
 

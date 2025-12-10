@@ -8,11 +8,11 @@ Giải pháp của chúng tôi dành cho các đại lý du lịch đã đăng k
 
 Các đại lý du lịch tiên tiến hơn có thể chọn tích hợp ở cấp API để xử lý thanh toán và chi trả bên ngoài nền tảng Wink.
 
-Các đại lý du lịch có một tập hợp con các tính năng cổng thông tin giống như[Studio Nháy mắt](/studio/what-is-studio)vì vậy chúng tôi sẽ không đề cập lại ở đây nữa.
+Các đại lý du lịch có một tập hợp con các tính năng cổng thông tin giống như [Studio Nháy mắt](/studio/what-is-studio) vì vậy chúng tôi sẽ không đề cập lại ở đây nữa.
 
 ## Tìm kiếm
 
-Đi đến[Tìm kiếm](/studio/search)để tìm hiểu cách tìm kiếm và đặt phòng khách sạn.
+Đi đến [Tìm kiếm](/studio/search) để tìm hiểu cách tìm kiếm và đặt phòng khách sạn.
 
 Nếu không, hãy tiếp tục tới phần tiếp theo.
 

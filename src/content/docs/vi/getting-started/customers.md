@@ -18,7 +18,7 @@ Các thương hiệu và chuỗi có nhu cầu hơi khác so với một bất �
 
 * Quản lý nhiều bất động sản trong cùng một tài khoản.
 * Chỉ định người quản lý cho các thuộc tính
-* Sử dụng [Liên kết nháy mắt](/link-manager/wink-links),[WordPress](/developers/wordpress)và của chúng tôi[Thành phần Web](/developers/web-components)để tiếp thị và bán nhiều bất động sản tại một nơi.
+* Sử dụng [Liên kết nháy mắt](/link-manager/wink-links), [WordPress](/developers/wordpress) và của chúng tôi [WordPress](/developers/wordpress) để tiếp thị và bán nhiều bất động sản tại một nơi.
 
 ## Các công ty quản lý
 
@@ -43,11 +43,11 @@ Các tập đoàn cần nhiều nền tảng du lịch hơn:
 * Yêu cầu quản lý chi phí và tích hợp báo cáo.
 * Họ cần sự hỗ trợ của dịch vụ lễ tân cũng như dịch vụ MICE tại các sự kiện.
 
-Du khách doanh nghiệp có thể tự quản lý tài khoản của mình trên[cổng thông tin doanh nghiệp](/corporate/what-is-group)hoặc sử dụng hỗ trợ chính thức của chúng tôi[MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)plugin và[Đồng ý](https://www.concur.com/)sự tích hợp.
+Du khách doanh nghiệp có thể tự quản lý tài khoản của mình trên [cổng thông tin doanh nghiệp](/corporate/what-is-group) hoặc sử dụng hỗ trợ chính thức của chúng tôi [cổng thông tin doanh nghiệp](/corporate/what-is-group) plugin và [cổng thông tin doanh nghiệp](/corporate/what-is-group) sự tích hợp.
 
 ## Nhà phát triển
 
-Trong khi chúng tôi xây dựng nền tảng này bởi và dành cho các chủ khách sạn... Mỗi dòng mã được xây dựng cho mục đích cụ thể là khả năng tái sử dụng. Nhóm các nhà phát triển của chúng tôi đã xây dựng Wink với hy vọng rằng ứng dụng du lịch 🦄 tiếp theo sẽ được xây dựng trên cơ sở mã của chúng tôi. Điều hướng đến[Nhà phát triển](/developers/build-on-wink)trang để xem Wink có thể hỗ trợ bạn như thế nào trong dự án tiếp theo của bạn.
+Trong khi chúng tôi xây dựng nền tảng này bởi và dành cho các chủ khách sạn... Mỗi dòng mã được xây dựng cho mục đích cụ thể là khả năng tái sử dụng. Nhóm các nhà phát triển của chúng tôi đã xây dựng Wink với hy vọng rằng ứng dụng du lịch 🦄 tiếp theo sẽ được xây dựng trên cơ sở mã của chúng tôi. Điều hướng đến [Nhà phát triển](/developers/build-on-wink) trang để xem Wink có thể hỗ trợ bạn như thế nào trong dự án tiếp theo của bạn.
 
 ## Khác
 

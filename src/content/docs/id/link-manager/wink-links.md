@@ -12,7 +12,7 @@ Pengelola tautan memungkinkan Anda menyimpan dan mengatur URL yang Anda suka unt
 Sebagian besar pengelola tautan mengharuskan langganan bagi siapa pun yang mengeposkan tautan afiliasi.
 :::
 
-Kami membangun[Tautan Wink](https://i.trvl.as/); pengelola tautan yang sepenuhnya gratis, berfokus pada ruang perjalanan, untuk menarik, mengiklankan, dan menjual secara efektif secara daring.
+Kami membangun [Tautan Wink](https://i.trvl.as/) ; pengelola tautan yang sepenuhnya gratis, berfokus pada ruang perjalanan, untuk menarik, mengiklankan, dan menjual secara efektif secara daring.
 
 ## Fitur
 
@@ -30,7 +30,7 @@ Kami membangun[Tautan Wink](https://i.trvl.as/); pengelola tautan yang sepenuhny
 ## Konten yang kaya
 
 :::catatan
-Tetapkan`Intelligent`untuk 🟢 di kamu[Pengaturan](/link-manager/settings)untuk menggunakan fitur ini.
+Tetapkan`Intelligent`untuk 🟢 di kamu [Pengaturan](/link-manager/settings) untuk menggunakan fitur ini.
 :::
 
 Jika Anda membagikan tautan dari situs yang mendukung`rich`/`oEmbed`konten, tautan Anda menjadi hidup di WinkLinks.
@@ -46,16 +46,16 @@ Situs yang didukung:
 
 ## Canggih
 
-WinkLinks juga merupakan cara yang bagus untuk mengekspos inventaris perjalanan yang Anda temukan, melalui[Studio Kedipan](https://studio.wink.travel), dan yang ingin Anda jual kepada audiens Anda.
+WinkLinks juga merupakan cara yang bagus untuk mengekspos inventaris perjalanan yang Anda temukan, melalui [Studio Kedipan](https://studio.wink.travel), dan yang ingin Anda jual kepada audiens Anda.
 
 Gunakan WinkLinks untuk menjual:
 
-* [Tautan yang dapat dibagikan](/studio/shareable-links)- Pilih untuk ditampilkan sebagai:
+* [Tautan yang dapat dibagikan](/studio/shareable-links) - Pilih untuk ditampilkan sebagai:
   * [Spanduk iklan](/developers/web-components/#content-loader).
   * Tautan normal dengan pembaruan harga waktu nyata.
-* [Kartu](/studio/cards)- Kartu yang dapat dipesan dengan harga dan ketersediaan waktu nyata.
-* [Jaringan](/studio/grids)- Kotak dengan kartu yang dapat dipesan.
-* [Peta](/studio/maps)- Peta dengan penanda yang terbuka menjadi kartu yang dapat dipesan.
+* [Kartu](/studio/cards) - Kartu yang dapat dipesan dengan harga dan ketersediaan waktu nyata.
+* [Jaringan](/studio/grids) - Kotak dengan kartu yang dapat dipesan.
+* [Peta](/studio/maps) - Peta dengan penanda yang terbuka menjadi kartu yang dapat dipesan.
 
 :::catatan
 Untuk mengelola akun WinkLinks Anda, masuk ke akun afiliasi Anda di[Studio Kedipan](https://studio.wink.travel).

@@ -10,7 +10,7 @@ Un gestor d'enllaços et permet desar i organitzar les URL que t'agraden per a m
 La majoria de gestors d'enllaços requereixen una subscripció per a qualsevol persona que publiqui enllaços d'afiliació.
 :::
 
-Vam construir[WinkLinks](https://i.trvl.as/); un gestor d'enllaços completament gratuït, centrat en l'àmbit dels viatges, per entusiasmar, anunciar i vendre de manera efectiva en línia.
+Vam construir [WinkLinks](https://i.trvl.as/) ; un gestor d'enllaços completament gratuït, centrat en l'àmbit dels viatges, per entusiasmar, anunciar i vendre de manera efectiva en línia.
 
 ## Característiques
 
@@ -28,7 +28,7 @@ Vam construir[WinkLinks](https://i.trvl.as/); un gestor d'enllaços completament
 ## Contingut enriquit
 
 :::nota
-Defineix`Intelligent`a 🟢 al teu[Configuració](/link-manager/settings)per utilitzar aquesta funció.
+Defineix`Intelligent`a 🟢 al teu [Configuració](/link-manager/settings) per utilitzar aquesta funció.
 :::
 
 Si compartiu un enllaç d'un lloc web que admet`rich`/`oEmbed`contingut, el vostre enllaç cobra vida a WinkLinks.
@@ -44,16 +44,16 @@ Llocs web compatibles:
 
 ## Avançat
 
-WinkLinks també és una manera excel·lent d'exposar l'inventari de viatges que heu trobat, a través de[Wink Studio](https://studio.wink.travel), i que vols vendre al teu públic.
+WinkLinks també és una manera excel·lent d'exposar l'inventari de viatges que heu trobat, a través de [Wink Studio](https://studio.wink.travel), i que vols vendre al teu públic.
 
 Utilitza WinkLinks per vendre el teu:
 
-* [Enllaços compartibles](/studio/shareable-links)- Trieu mostrar-ho com a:
+* [Enllaços compartibles](/studio/shareable-links) - Trieu mostrar-ho com a:
   * [Bàner publicitari](/developers/web-components/#content-loader).
   * Enllaç normal amb actualitzacions de preus en temps real.
-* [Cartes](/studio/cards)- Targetes que es poden reservar amb preus i disponibilitat en temps real.
-* [Graelles](/studio/grids)- Graella amb targetes reservables.
-* [Mapes](/studio/maps)- Mapa amb marcadors que s'obren en targetes reservables.
+* [Cartes](/studio/cards) - Targetes que es poden reservar amb preus i disponibilitat en temps real.
+* [Graelles](/studio/grids) - Graella amb targetes reservables.
+* [Mapes](/studio/maps) - Mapa amb marcadors que s'obren en targetes reservables.
 
 :::nota
 Per gestionar el vostre compte de WinkLinks, inicieu la sessió al vostre compte d'afiliat a[Wink Studio](https://studio.wink.travel).

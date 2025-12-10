@@ -12,7 +12,7 @@ En linkadministrator giver dig mulighed for at gemme og organisere URL'er, du ka
 De fleste linkadministratorer kræver et abonnement for alle, der poster affilierede links.
 :::
 
-Vi byggede[WinkLinks](https://i.trvl.as/)en helt gratis linkmanager med fokus på rejsebranchen, der kan begejstre, annoncere og sælge effektivt online.
+Vi byggede [WinkLinks](https://i.trvl.as/) en helt gratis linkmanager med fokus på rejsebranchen, der kan begejstre, annoncere og sælge effektivt online.
 
 ## Funktioner
 
@@ -30,7 +30,7 @@ Vi byggede[WinkLinks](https://i.trvl.as/)en helt gratis linkmanager med fokus p�
 ## Rigt indhold
 
 :::note
-Sæt`Intelligent`til 🟢 i din[Indstillinger](/link-manager/settings)for at bruge denne funktion.
+Sæt`Intelligent`til 🟢 i din [Indstillinger](/link-manager/settings) for at bruge denne funktion.
 :::
 
 Hvis du deler et link fra et websted, der understøtter`rich`/`oEmbed`indhold, dit link bliver levende på WinkLinks.
@@ -46,16 +46,16 @@ Understøttede websteder:
 
 ## Fremskreden
 
-WinkLinks er også en god måde at eksponere den rejsebeholdning, du har fundet, via[Wink Studio](https://studio.wink.travel), og som du ønsker at sælge til dit publikum.
+WinkLinks er også en god måde at eksponere den rejsebeholdning, du har fundet, via [Wink Studio](https://studio.wink.travel), og som du ønsker at sælge til dit publikum.
 
 Brug WinkLinks til at sælge dine:
 
-* [Delbare links](/studio/shareable-links)- Vælg at vise som:
+* [Delbare links](/studio/shareable-links) - Vælg at vise som:
   * [Annoncebanner](/developers/web-components/#content-loader).
   * Normalt link med prisopdateringer i realtid.
-* [Kort](/studio/cards)- Bookbare kort med priser og tilgængelighed i realtid.
-* [Gitre](/studio/grids)- Gitter med bogbare kort.
-* [Kort](/studio/maps)- Kort med markører, der åbner til bogbare kort.
+* [Kort](/studio/cards) - Bookbare kort med priser og tilgængelighed i realtid.
+* [Gitre](/studio/grids) - Gitter med bogbare kort.
+* [Kort](/studio/maps) - Kort med markører, der åbner til bogbare kort.
 
 :::note
 For at administrere din WinkLinks-konto skal du logge ind på din affiliate-konto på[Wink Studio](https://studio.wink.travel).&#x20;

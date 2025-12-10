@@ -12,7 +12,7 @@ Nuorodų tvarkyklė leidžia išsaugoti ir tvarkyti jums patinkančius URL adres
 Dauguma nuorodų tvarkyklių reikalauja prenumeratos visiems, skelbiantiems partnerių nuorodas.
 :::
 
-Mes pastatėme[„WinkLinks“](https://i.trvl.as/); visiškai nemokama nuorodų tvarkyklė, skirta kelionių erdvei, skirta sužadinti, reklamuotis ir efektyviai parduoti internete.
+Mes pastatėme [„WinkLinks“](https://i.trvl.as/) ; visiškai nemokama nuorodų tvarkyklė, skirta kelionių erdvei, skirta sužadinti, reklamuotis ir efektyviai parduoti internete.
 
 ## Savybės
 
@@ -30,7 +30,7 @@ Mes pastatėme[„WinkLinks“](https://i.trvl.as/); visiškai nemokama nuorodų
 ## Turtingas turinys
 
 :::note
-Nustatyti`Intelligent`į 🟢 tavo[Nustatymai](/link-manager/settings)norint naudoti šią funkciją.
+Nustatyti`Intelligent`į 🟢 tavo [Nustatymai](/link-manager/settings) norint naudoti šią funkciją.
 :::
 
 Jei bendrinate nuorodą iš svetainės, kuri palaiko`rich`/`oEmbed`turinys, jūsų nuoroda atgyja „WinkLinks“.
@@ -46,16 +46,16 @@ Palaikomos svetainės:
 
 ## Išplėstinis
 
-„WinkLinks“ taip pat yra puikus būdas parodyti rastą kelionių inventorių per[„Wink“ studija](https://studio.wink.travel)ir kurį norite parduoti savo auditorijai.
+„WinkLinks“ taip pat yra puikus būdas parodyti rastą kelionių inventorių per [„Wink“ studija](https://studio.wink.travel) ir kurį norite parduoti savo auditorijai.
 
 Naudokite „WinkLinks“, kad parduotumėte savo:
 
-* [Bendrinamos nuorodos](/studio/shareable-links)- Pasirinkite, kaip rodyti:
+* [Bendrinamos nuorodos](/studio/shareable-links) - Pasirinkite, kaip rodyti:
   * [Reklaminė juosta](/developers/web-components/#content-loader).
   * Įprasta nuoroda su kainų atnaujinimais realiuoju laiku.
-* [Kortelės](/studio/cards)- Užsakomos kortelės su kainomis ir prieinamumu realiuoju laiku.
-* [Tinkleliai](/studio/grids)- Tinklelis su užsakomomis kortelėmis.
-* [Žemėlapiai](/studio/maps)- Žemėlapis su žymekliais, kurie atsidaro į rezervuojamas korteles.
+* [Kortelės](/studio/cards) - Užsakomos kortelės su kainomis ir prieinamumu realiuoju laiku.
+* [Tinkleliai](/studio/grids) - Tinklelis su užsakomomis kortelėmis.
+* [Žemėlapiai](/studio/maps) - Žemėlapis su žymekliais, kurie atsidaro į rezervuojamas korteles.
 
 :::pastaba
 Norėdami tvarkyti savo „WinkLinks“ paskyrą, prisijunkite prie savo partnerio paskyros svetainėje[„Wink“ studija](https://studio.wink.travel).

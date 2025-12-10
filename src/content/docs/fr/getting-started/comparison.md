@@ -34,7 +34,7 @@ Découvrez comment Wink se compare aux autres segments de voyage en ligne du mar
 
 Certains hôtels tentent de nous comparer à leur moteur de réservation Internet fourni avec leur gestionnaire de canaux et nous demandent de leur donner un prix fixe mensuel basé sur le nombre de clés de leur propriété.
 
-Nous ne sommes pas un IBE et espérons[Académie Wink](/)Cela permet de clarifier les choses. Chaque service présente des avantages et des inconvénients. Si votre IBE est adapté à votre établissement, conservez-le.
+Nous ne sommes pas un IBE et espérons [Académie Wink](/) Cela permet de clarifier les choses. Chaque service présente des avantages et des inconvénients. Si votre IBE est adapté à votre établissement, conservez-le.
 
 Wink a pour vocation de combler plusieurs lacunes dans le secteur du voyage et de regrouper toutes les activités en un seul et même endroit.
 

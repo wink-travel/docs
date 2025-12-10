@@ -25,7 +25,7 @@ Tens dret a sol·licitar que eliminem qualsevol informació personal que tinguem
 
 Per sol·licitar l'eliminació de dades:
 
-* 📧**Envia un correu electrònic a**:[suport@wink.travel](mailto:support@wink.travel)
+* 📧**Envia un correu electrònic a**: [suport@wink.travel](mailto:support@wink.travel) 
 * 📝 Utilitzeu la línia d'assumpte:`Data Deletion Request`
 * 🔍 Si us plau, incloeu-hi dades identificatives com ara:
   * L'adreça de correu electrònic utilitzada amb la nostra plataforma

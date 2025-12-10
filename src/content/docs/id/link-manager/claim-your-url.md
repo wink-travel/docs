@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 1
 ---
-Dengan membuat sebuah[akun afiliasi](/studio/what-is-studio), Anda sudah memiliki url khusus WinkLinks. Fitur penerbit WinkLinks tersedia di aplikasi Studio kami; bersama dengan fitur afiliasi kami yang lain.
+Dengan membuat sebuah [akun afiliasi](/studio/what-is-studio), Anda sudah memiliki url khusus WinkLinks. Fitur penerbit WinkLinks tersedia di aplikasi Studio kami; bersama dengan fitur afiliasi kami yang lain.
 
 ### Contoh
 

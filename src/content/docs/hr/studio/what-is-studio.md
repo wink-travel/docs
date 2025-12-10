@@ -8,7 +8,7 @@ sidebar:
 ---
 Povijesno gledano, pristup i prodaja bilo čega vezanog uz putovanja uključivali su ugovore o tajnosti podataka i složene integracije između dvije \[ili više] licenciranih tvrtki za putovanja koje su imale dovoljno tehničkog znanja, pristup platnom sustavu i obje su bile usklađene s PCI DSS-om. To je bio skup i dugotrajan napor, a prepreka za ulazak bila je nevjerojatno visoka za obične ljude.
 
-[Wink Studio](https://studio.wink.travel)je naš partnerski portal. Omogućuje prodaju putničke opreme svima, jednostavnu kao dijeljenje poveznice ili naprednu kao vođenje online putničke agencije.
+[Wink Studio](https://studio.wink.travel) je naš partnerski portal. Omogućuje prodaju putničke opreme svima, jednostavnu kao dijeljenje poveznice ili naprednu kao vođenje online putničke agencije.
 
 Partnerski portal izlaže dostupan inventar za putovanja od dobavljača (npr. hotela, hostela, najma, pružatelja doživljaja) bilo gdje u svijetu. Vaš je cilj pronaći inventar koji vam odgovara, a zatim upotrijebiti najbolji način za izlaganje i prodaju tog inventara svojoj publici.
 

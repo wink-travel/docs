@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 1
 ---
-Með því að búa til[tengdareikningur](/studio/what-is-studio)Þú ert nú þegar með WinkLinks sérstakt vefslóðakerfi. Útgefendaeiginleikar WinkLinks eru til staðar í Studio appinu okkar, ásamt öðrum eiginleikum okkar fyrir samstarfsaðila.
+Með því að búa til [tengdareikningur](/studio/what-is-studio) Þú ert nú þegar með WinkLinks sérstakt vefslóðakerfi. Útgefendaeiginleikar WinkLinks eru til staðar í Studio appinu okkar, ásamt öðrum eiginleikum okkar fyrir samstarfsaðila.
 
 ### Dæmi
 

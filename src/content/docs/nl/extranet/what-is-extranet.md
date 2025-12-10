@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Wink Extranet](https://extranet.wink.travel)is ons vastgoedportaal. Het is bedoeld voor hotels, ketens, merken en hotelmanagementbedrijven om het digitale profiel van hun vastgoed op het Wink-platform te creëren en beheren.
+[Wink Extranet](https://extranet.wink.travel) is ons vastgoedportaal. Het is bedoeld voor hotels, ketens, merken en hotelmanagementbedrijven om het digitale profiel van hun vastgoed op het Wink-platform te creëren en beheren.
 
 Ons extranet is zorgvuldig ontworpen om zo eenvoudig mogelijk te zijn, maar toch alle functies te ondersteunen die ervaren gebruikers van een geavanceerde vastgoedportal verwachten. Om u een paar voorbeelden te geven:
 

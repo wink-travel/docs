@@ -12,7 +12,7 @@ Linkkihallinnan avulla voit tallentaa ja järjestää haluamiasi URL-osoitteita 
 Useimmat linkkinhallintaohjelmat vaativat tilauksen kaikilta, jotka julkaisevat affiliate-linkkejä.
 :::
 
-Me rakensimme[WinkLinks](https://i.trvl.as/); täysin ilmainen linkkihallintatyökalu, joka keskittyy matkailuun ja tehokkaaseen verkkomarkkinointiin, mainostamiseen ja myymiseen.
+Me rakensimme [WinkLinks](https://i.trvl.as/) ; täysin ilmainen linkkihallintatyökalu, joka keskittyy matkailuun ja tehokkaaseen verkkomarkkinointiin, mainostamiseen ja myymiseen.
 
 ## Ominaisuudet
 
@@ -30,7 +30,7 @@ Me rakensimme[WinkLinks](https://i.trvl.as/); täysin ilmainen linkkihallintaty�
 ## Rikas sisältö
 
 :::huomautus
-Aseta`Intelligent`että 🟢 sinun[Asetukset](/link-manager/settings)käyttääksesi tätä ominaisuutta.
+Aseta`Intelligent`että 🟢 sinun [Asetukset](/link-manager/settings) käyttääksesi tätä ominaisuutta.
 :::
 
 Jos jaat linkin sivustolta, joka tukee`rich`/`oEmbed`sisältöä, linkkisi herää eloon WinkLinksissä.
@@ -46,16 +46,16 @@ Tuetut sivustot:
 
 ## Edistynyt
 
-WinkLinks on myös loistava tapa esitellä löytämääsi matkailutarjontaa[Wink-studio](https://studio.wink.travel)ja jota haluat myydä yleisöllesi.
+WinkLinks on myös loistava tapa esitellä löytämääsi matkailutarjontaa [Wink-studio](https://studio.wink.travel) ja jota haluat myydä yleisöllesi.
 
 Käytä WinkLinksiä myydäksesi:
 
-* [Jaettavat linkit](/studio/shareable-links)- Valitse näyttötavaksi:
+* [Jaettavat linkit](/studio/shareable-links) - Valitse näyttötavaksi:
   * [Mainosbanneri](/developers/web-components/#content-loader).
   * Normaali linkki reaaliaikaisiin hintapäivityksiin.
-* [Kortit](/studio/cards)- Varattavissa olevat kortit reaaliaikaisilla hinnoilla ja saatavuudella.
-* [Ruudukot](/studio/grids)- Ruudukko varattavissa olevilla korteilla.
-* [Kartat](/studio/maps)- Kartta, jonka merkit avautuvat varattavissa oleviin kortteihin.
+* [Kortit](/studio/cards) - Varattavissa olevat kortit reaaliaikaisilla hinnoilla ja saatavuudella.
+* [Ruudukot](/studio/grids) - Ruudukko varattavissa olevilla korteilla.
+* [Kartat](/studio/maps) - Kartta, jonka merkit avautuvat varattavissa oleviin kortteihin.
 
 :::huomautus
 WinkLinks-tilisi hallinnoimiseksi kirjaudu sisään kumppanitilillesi osoitteessa[Wink-studio](https://studio.wink.travel).

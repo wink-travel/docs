@@ -34,7 +34,7 @@ Vaadake, kuidas Wink võrdub teiste turul olevate veebipõhiste reisisegmentideg
 
 Mõned hotellid proovivad meid võrrelda oma internetipõhise broneerimismootoriga, mis oli kaasas nende müügikanalihalduriga, ja paluvad meil pakkuda neile fikseeritud igakuist hinda, mis põhineb nende majutusasutuse võtmete arvul.
 
-Me ei ole IBE ja loodetavasti[Winki Akadeemia](/)aitab seda selgitada. Igal teenusel on plusse ja miinuseid. Kui teie IBE teie majutusasutusele sobib, siis jääge selle juurde.
+Me ei ole IBE ja loodetavasti [Winki Akadeemia](/) aitab seda selgitada. Igal teenusel on plusse ja miinuseid. Kui teie IBE teie majutusasutusele sobib, siis jääge selle juurde.
 
 Wink on loodud selleks, et täita mitmeid lünki reisitööstuses ja koondada kõik ühte kohta.
 

@@ -10,7 +10,7 @@ Um gestor de links permite-lhe guardar e organizar URLs de que gosta para mais t
 A maioria dos gestores de links exige uma subscrição para qualquer pessoa que publique links de afiliados.
 :::
 
-Nós construímos [WinkLinks](https://i.trvl.as/); um gestor de links totalmente gratuito, focado no setor das viagens, para entusiasmar, anunciar e vender eficazmente online.
+Nós construímos [WinkLinks](https://i.trvl.as/) ; um gestor de links totalmente gratuito, focado no setor das viagens, para entusiasmar, anunciar e vender eficazmente online.
 
 ## Funcionalidades
 

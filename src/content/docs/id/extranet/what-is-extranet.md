@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Ekstranet Wink](https://extranet.wink.travel)adalah portal properti kami. Portal ini ditujukan bagi hotel, jaringan hotel, merek, dan perusahaan manajemen hotel untuk membuat dan mengelola profil digital properti mereka di platform Wink.
+[Ekstranet Wink](https://extranet.wink.travel) adalah portal properti kami. Portal ini ditujukan bagi hotel, jaringan hotel, merek, dan perusahaan manajemen hotel untuk membuat dan mengelola profil digital properti mereka di platform Wink.
 
 Ekstranet kami telah dirancang dengan cermat agar sesederhana mungkin, tetapi tetap mendukung semua fitur yang diharapkan oleh pengguna aktif dari portal properti canggih. Berikut beberapa contohnya:
 

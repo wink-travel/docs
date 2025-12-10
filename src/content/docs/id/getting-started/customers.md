@@ -18,7 +18,7 @@ Merek dan jaringan memiliki kebutuhan yang sedikit berbeda dibandingkan dengan s
 
 * Kelola beberapa properti di bawah satu akun.
 * Tetapkan manajer ke properti
-* Menggunakan [Tautan Wink](/link-manager/wink-links)Bahasa Indonesia:[Bahasa Indonesia: WordPress](/developers/wordpress)dan kami[Komponen Web](/developers/web-components)untuk memasarkan dan menjual beberapa properti di satu tempat.
+* Menggunakan [Tautan Wink](/link-manager/wink-links) Bahasa Indonesia: [Bahasa Indonesia: WordPress](/developers/wordpress) dan kami [Bahasa Indonesia: WordPress](/developers/wordpress) untuk memasarkan dan menjual beberapa properti di satu tempat.
 
 ## Perusahaan manajemen
 
@@ -30,7 +30,7 @@ Para influencer menggunakan Wink untuk memonetisasi audiens mereka dengan lebih 
 
 ## Agen perjalanan
 
-Agen perjalanan mendapatkan akses ke inventaris perjalanan di seluruh dunia dengan harga menarik melalui layanan khusus kami[portal agen perjalanan](https://agent.wink.travel)Mereka dapat melakukan pemesanan melalui portal kami, melalui API kami, atau dengan membiarkan penggunanya memesan sendiri di situs web agen perjalanan yang menggunakan teknologi kami.
+Agen perjalanan mendapatkan akses ke inventaris perjalanan di seluruh dunia dengan harga menarik melalui layanan khusus kami [portal agen perjalanan](https://agent.wink.travel) Mereka dapat melakukan pemesanan melalui portal kami, melalui API kami, atau dengan membiarkan penggunanya memesan sendiri di situs web agen perjalanan yang menggunakan teknologi kami.
 
 ## Perusahaan
 
@@ -43,11 +43,11 @@ Perusahaan membutuhkan lebih banyak platform perjalanan:
 * Memerlukan integrasi pengelolaan biaya dan pelaporan.
 * Mereka memerlukan dukungan concierge, dan layanan MICE dalam berbagai acara.
 
-Pelancong korporat dapat mengelola akun mereka sendiri di[portal perusahaan](/corporate/what-is-group)atau gunakan dukungan resmi kami[MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)plugin dan[Setuju](https://www.concur.com/)integrasi.
+Pelancong korporat dapat mengelola akun mereka sendiri di [portal perusahaan](/corporate/what-is-group) atau gunakan dukungan resmi kami [portal perusahaan](/corporate/what-is-group) plugin dan [portal perusahaan](/corporate/what-is-group) integrasi.
 
 ## Pengembang
 
-Sementara kami membangun platform ini oleh dan untuk pelaku bisnis perhotelan... Setiap baris kode dibangun untuk tujuan khusus agar dapat digunakan kembali. Tim pengembang kami membangun Wink dengan harapan bahwa aplikasi perjalanan 🦄 berikutnya akan dibangun di atas basis kode kami. Navigasi ke[Pengembang](/developers/build-on-wink)halaman untuk melihat bagaimana Wink dapat mendukung Anda dalam usaha Anda berikutnya.
+Sementara kami membangun platform ini oleh dan untuk pelaku bisnis perhotelan... Setiap baris kode dibangun untuk tujuan khusus agar dapat digunakan kembali. Tim pengembang kami membangun Wink dengan harapan bahwa aplikasi perjalanan 🦄 berikutnya akan dibangun di atas basis kode kami. Navigasi ke [Pengembang](/developers/build-on-wink) halaman untuk melihat bagaimana Wink dapat mendukung Anda dalam usaha Anda berikutnya.
 
 ## Lainnya
 

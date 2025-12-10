@@ -9,7 +9,7 @@ Správce odkazů vám umožňuje ukládat a organizovat adresy URL, které se v�
 :::pozornost
 Většina správců odkazů vyžaduje předplatné pro každého, kdo zveřejňuje affiliate odkazy. :::
 
-Postavili jsme[WinkLinks](https://i.trvl.as/); zcela bezplatný správce odkazů zaměřený na cestovní ruch, který nadchne, inzeruje a efektivně prodává online.
+Postavili jsme [WinkLinks](https://i.trvl.as/) ; zcela bezplatný správce odkazů zaměřený na cestovní ruch, který nadchne, inzeruje a efektivně prodává online.
 
 ## Funkce
 
@@ -27,7 +27,7 @@ Postavili jsme[WinkLinks](https://i.trvl.as/); zcela bezplatný správce odkazů
 ## Bohatý obsah
 
 :::note
-Sada`Intelligent`do 🟢 ve vašem[Nastavení](/link-manager/settings)používat tuto funkci.
+Sada`Intelligent`do 🟢 ve vašem [Nastavení](/link-manager/settings) používat tuto funkci.
 :::
 
 Pokud sdílíte odkaz z webu, který podporuje`rich`/`oEmbed`obsah, váš odkaz ožije na WinkLinks.
@@ -43,16 +43,16 @@ Podporované weby:
 
 ## Moderní
 
-WinkLinks je také skvělý způsob, jak zveřejnit nalezené cestovní nabídky, a to prostřednictvím[Wink Studio](https://studio.wink.travel)a které chcete prodat svému publiku.
+WinkLinks je také skvělý způsob, jak zveřejnit nalezené cestovní nabídky, a to prostřednictvím [Wink Studio](https://studio.wink.travel) a které chcete prodat svému publiku.
 
 Použijte WinkLinks k prodeji:
 
-* [Sdílitelné odkazy](/studio/shareable-links)- Vyberte zobrazení jako:
+* [Sdílitelné odkazy](/studio/shareable-links) - Vyberte zobrazení jako:
   * [Reklamní banner](/developers/web-components/#content-loader).
   * Normální odkaz s aktualizacemi cen v reálném čase.
-* [Karty](/studio/cards)- Rezervovatelné karty s cenami a dostupností v reálném čase.
-* [Mřížky](/studio/grids)- Mřížka s rezervovatelnými kartami.
-* [Mapy](/studio/maps)- Mapa se značkami, které se otevírají do rezervačních karet.
+* [Karty](/studio/cards) - Rezervovatelné karty s cenami a dostupností v reálném čase.
+* [Mřížky](/studio/grids) - Mřížka s rezervovatelnými kartami.
+* [Mapy](/studio/maps) - Mapa se značkami, které se otevírají do rezervačních karet.
 
 :::note
 Chcete-li spravovat svůj účet WinkLinks, přihlaste se ke svému partnerskému účtu na[Wink Studio](https://studio.wink.travel).

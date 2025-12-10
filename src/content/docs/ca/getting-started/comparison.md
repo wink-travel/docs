@@ -34,7 +34,7 @@ Descobreix com es compara Wink amb altres segments de viatges en línia del merc
 
 Alguns hotels intenten comparar-nos amb el seu motor de reserves per internet que ve inclòs amb el seu gestor de canals i ens demanen que els donem un preu fix mensual basat en el nombre de claus del seu establiment.
 
-No som una IBE i esperem que[Wink Academy](/)ajuda a aclarir això. Hi ha avantatges i inconvenients per a qualsevol servei. Si el vostre IBE funciona per a la vostra propietat, seguiu-lo.
+No som una IBE i esperem que [Wink Academy](/) ajuda a aclarir això. Hi ha avantatges i inconvenients per a qualsevol servei. Si el vostre IBE funciona per a la vostra propietat, seguiu-lo.
 Wink existeix per omplir diversos buits en la indústria del turisme i reunir-ho tot en un sol lloc.
 
 :::consell

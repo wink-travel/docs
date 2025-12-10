@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Extranet Wink](https://extranet.wink.travel)é o nosso portal imobiliário. Ele permite que hotéis, redes, marcas e administradoras de hotéis criem e gerenciem o perfil digital de seus imóveis na plataforma Wink.
+[Extranet Wink](https://extranet.wink.travel) é o nosso portal imobiliário. Ele permite que hotéis, redes, marcas e administradoras de hotéis criem e gerenciem o perfil digital de seus imóveis na plataforma Wink.
 
 Nossa extranet foi cuidadosamente projetada para ser o mais simples possível, mas ainda assim oferecer todos os recursos que usuários avançados esperam de um portal imobiliário avançado. Para dar alguns exemplos:
 

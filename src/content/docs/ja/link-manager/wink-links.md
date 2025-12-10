@@ -10,7 +10,7 @@ sidebar:
 ほとんどのリンクマネージャーでは、アフィリエイトリンクを投稿するユーザーにサブスクリプションが求められます。
 :::
 
-私たちは構築しました[ウィンクリンクス](https://i.trvl.as/)旅行業界に特化した、オンラインで効果的に宣伝、宣伝、販売を行う完全に無料のリンク マネージャーです。
+私たちは構築しました [ウィンクリンクス](https://i.trvl.as/) 旅行業界に特化した、オンラインで効果的に宣伝、宣伝、販売を行う完全に無料のリンク マネージャーです。
 
 ## 特徴
 
@@ -28,7 +28,7 @@ sidebar:
 ## 豊富なコンテンツ
 
 :::note
-設定`Intelligent`あなたの🟢に[設定](/link-manager/settings)この機能を使用するには。
+設定`Intelligent`あなたの🟢に [設定](/link-manager/settings) この機能を使用するには。
 :::
 
 対応しているサイトからリンクを共有する場合`rich`/`oEmbed`コンテンツがあれば、あなたのリンクは WinkLinks 上で活性化されます。
@@ -44,19 +44,19 @@ sidebar:
 
 ## 高度な
 
-WinkLinksは、あなたが見つけた旅行の在庫を公開するのに最適な方法です。[ウィンクスタジオ](https://studio.wink.travel)、そしてそれを視聴者に売りたいのです。
+WinkLinksは、あなたが見つけた旅行の在庫を公開するのに最適な方法です。 [ウィンクスタジオ](https://studio.wink.travel) 、そしてそれを視聴者に売りたいのです。
 
 WinkLinks を使用して以下を販売します:
 
-* [共有可能なリンク](/studio/shareable-links)- 表示方法を選択します:
-  * [広告バナー](/developers/web-components/#content-loader)。
+* [共有可能なリンク](/studio/shareable-links) - 表示方法を選択します:
+  * [広告バナー](/developers/web-components/#content-loader) 。
   * リアルタイムの価格更新を含む通常のリンク。
-* [カード](/studio/cards)- リアルタイムの価格と空き状況を確認できる予約可能なカード。
-* [グリッド](/studio/grids)- 予約可能なカードのグリッド。
-* [地図](/studio/maps)- 予約可能なカードに開くマーカー付きの地図。
+* [カード](/studio/cards) - リアルタイムの価格と空き状況を確認できる予約可能なカード。
+* [グリッド](/studio/grids) - 予約可能なカードのグリッド。
+* [地図](/studio/maps) - 予約可能なカードに開くマーカー付きの地図。
 
 :::note
-WinkLinksアカウントを管理するには、アフィリエイトアカウントにログインしてください。[ウィンクスタジオ](https://studio.wink.travel)。
+WinkLinksアカウントを管理するには、アフィリエイトアカウントにログインしてください。 [ウィンクスタジオ](https://studio.wink.travel) 。
 :::
 
 :::ヒント

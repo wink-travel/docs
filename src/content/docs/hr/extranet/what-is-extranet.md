@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 0
 ---
-[Wink Extranet](https://extranet.wink.travel)je naš portal za nekretnine. Namijenjen je hotelima, lancima, brendovima i tvrtkama za upravljanje hotelima za izradu i upravljanje digitalnim profilom svojih nekretnina na Wink platformi.
+[Wink Extranet](https://extranet.wink.travel) je naš portal za nekretnine. Namijenjen je hotelima, lancima, brendovima i tvrtkama za upravljanje hotelima za izradu i upravljanje digitalnim profilom svojih nekretnina na Wink platformi.
 
 Naš Extranet je pažljivo dizajniran kako bi bio što jednostavniji, ali i dalje podržavao sve značajke koje napredni korisnici očekuju od naprednog portala za nekretnine. Evo nekoliko primjera:
 

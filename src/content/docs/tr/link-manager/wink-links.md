@@ -12,7 +12,7 @@ Bir bağlantı yöneticisi, beğendiğiniz URL'leri daha sonra kullanmak üzere 
 Çoğu bağlantı yöneticisi, ortaklık bağlantıları yayınlayan herkes için bir abonelik gerektirir.
 :::
 
-Biz inşa ettik[Göz kırpma bağlantıları](https://i.trvl.as/); seyahat alanına odaklanmış, heyecan yaratmak, reklam yapmak ve çevrimiçi ortamda etkili bir şekilde satış yapmak için tamamen ücretsiz bir bağlantı yöneticisi.
+Biz inşa ettik [Göz kırpma bağlantıları](https://i.trvl.as/) ; seyahat alanına odaklanmış, heyecan yaratmak, reklam yapmak ve çevrimiçi ortamda etkili bir şekilde satış yapmak için tamamen ücretsiz bir bağlantı yöneticisi.
 
 ## Özellikler
 
@@ -30,7 +30,7 @@ Biz inşa ettik[Göz kırpma bağlantıları](https://i.trvl.as/); seyahat alan�
 ## Zengin içerik
 
 :::not
-Ayarla`Intelligent`🟢 senin içinde[Ayarlar](/link-manager/settings)Bu özelliği kullanmak için.
+Ayarla`Intelligent`🟢 senin içinde [Ayarlar](/link-manager/settings) Bu özelliği kullanmak için.
 :::
 
 Destekleyen bir siteden bir bağlantı paylaşırsanız`rich`/`oEmbed`içerik, bağlantınız WinkLinks'te canlanır.
@@ -46,16 +46,16 @@ Desteklenen siteler:
 
 ## Gelişmiş
 
-WinkLinks ayrıca, bulduğunuz seyahat envanterini ifşa etmenin harika bir yoludur.[Göz kırpma stüdyosu](https://studio.wink.travel)ve hedef kitlenize satmak istediğiniz şey.
+WinkLinks ayrıca, bulduğunuz seyahat envanterini ifşa etmenin harika bir yoludur. [Göz kırpma stüdyosu](https://studio.wink.travel) ve hedef kitlenize satmak istediğiniz şey.
 
 WinkLinks'i kullanarak şunları satabilirsiniz:
 
-* [Paylaşılabilir bağlantılar](/studio/shareable-links)- Aşağıdaki şekilde görüntülemeyi seçin:
+* [Paylaşılabilir bağlantılar](/studio/shareable-links) - Aşağıdaki şekilde görüntülemeyi seçin:
   * [Reklam afişi](/developers/web-components/#content-loader).
   * Gerçek zamanlı fiyat güncellemeleriyle normal bağlantı.
-* [Kartlar](/studio/cards)- Gerçek zamanlı fiyatlandırma ve müsaitlik bilgisi olan rezerve edilebilir kartlar.
-* [Izgaralar](/studio/grids)- Rezervasyon yapılabilen kartlardan oluşan tablo.
-* [Haritalar](/studio/maps)- Rezervasyon yapılabilen kartlara dönüşen işaretleyicili harita.
+* [Kartlar](/studio/cards) - Gerçek zamanlı fiyatlandırma ve müsaitlik bilgisi olan rezerve edilebilir kartlar.
+* [Izgaralar](/studio/grids) - Rezervasyon yapılabilen kartlardan oluşan tablo.
+* [Haritalar](/studio/maps) - Rezervasyon yapılabilen kartlara dönüşen işaretleyicili harita.
 
 :::not
 WinkLinks hesabınızı yönetmek için, bağlı kuruluş hesabınıza giriş yapın[Göz kırpma stüdyosu](https://studio.wink.travel).

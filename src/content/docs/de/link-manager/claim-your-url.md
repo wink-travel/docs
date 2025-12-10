@@ -6,7 +6,7 @@ description: >-
 sidebar:
   order: 1
 ---
-Durch die Erstellung eines[Partnerkonto](/studio/what-is-studio), Sie haben bereits eine WinkLinks-Vanity-URL. WinkLinks-Publisher-Funktionen sind in unserer Studio-App verfügbar; neben unseren anderen Affiliate-Funktionen.
+Durch die Erstellung eines [Partnerkonto](/studio/what-is-studio), Sie haben bereits eine WinkLinks-Vanity-URL. WinkLinks-Publisher-Funktionen sind in unserer Studio-App verfügbar; neben unseren anderen Affiliate-Funktionen.
 
 ### Beispiel
 

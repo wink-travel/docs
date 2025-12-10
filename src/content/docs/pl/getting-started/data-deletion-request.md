@@ -25,7 +25,7 @@ Masz prawo zażądać usunięcia wszelkich danych osobowych, które Ciebie dotyc
 
 Aby poprosić o usunięcie danych:
 
-* 📧**Wyślij e-mail do**:[wsparcie@wink.travel](mailto:support@wink.travel)
+* 📧**Wyślij e-mail do**: [wsparcie@wink.travel](mailto:support@wink.travel) 
 * 📝 Użyj tematu:`Data Deletion Request`
 * 🔍 Prosimy o podanie danych identyfikacyjnych, takich jak:
   * Adres e-mail używany na naszej platformie

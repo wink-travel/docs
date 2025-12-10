@@ -34,7 +34,7 @@ Scopri come Wink si confronta con altri segmenti di mercato del settore viaggi o
 
 Alcuni hotel cercano di paragonarci al loro motore di prenotazione online fornito in bundle con il loro channel manager e ci chiedono di offrire loro un prezzo fisso mensile in base al numero di chiavi della loro struttura.
 
-Non siamo un IBE e speriamo[Wink Academy](/)Aiuta a chiarire questo punto. Ogni servizio ha i suoi pro e contro. Se il tuo IBE funziona per la tua struttura, continua a usarlo.
+Non siamo un IBE e speriamo [Wink Academy](/) Aiuta a chiarire questo punto. Ogni servizio ha i suoi pro e contro. Se il tuo IBE funziona per la tua struttura, continua a usarlo.
 Wink esiste per colmare diverse lacune nel settore dei viaggi e riunire tutto in un unico posto.
 
 :::suggerimento

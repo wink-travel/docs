@@ -34,7 +34,7 @@ Află cum se compară Wink cu alte segmente de călătorii online de pe piață.
 
 Unele hoteluri încearcă să ne compare cu motorul lor de rezervări online, care a venit la pachet cu managerul lor de canale, și ne cer să le oferim un preț fix, lunar, bazat pe numărul de chei ale proprietății lor.
 
-Nu suntem un IBE și sperăm[Academia Wink](/)ajută la clarificarea acestui aspect. Există avantaje și dezavantaje pentru orice serviciu. Dacă IBE-ul dvs. funcționează pentru proprietatea dvs., rămâneți la acesta.
+Nu suntem un IBE și sperăm [Academia Wink](/) ajută la clarificarea acestui aspect. Există avantaje și dezavantaje pentru orice serviciu. Dacă IBE-ul dvs. funcționează pentru proprietatea dvs., rămâneți la acesta.
 
 Wink există pentru a umple mai multe goluri din industria turismului și a le reuni pe toate într-un singur loc.
 

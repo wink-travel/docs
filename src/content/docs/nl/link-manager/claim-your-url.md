@@ -4,7 +4,7 @@ description: In dit artikel leggen we uit hoe u uw WinkLinks-vanity-URL kunt cla
 sidebar:
   order: 1
 ---
-Door een[affiliate-account](/studio/what-is-studio), je hebt al een WinkLinks-vanity-url. WinkLinks-uitgeversfuncties zijn beschikbaar in onze Studio-app, naast onze andere affiliate-functies.
+Door een [affiliate-account](/studio/what-is-studio), je hebt al een WinkLinks-vanity-url. WinkLinks-uitgeversfuncties zijn beschikbaar in onze Studio-app, naast onze andere affiliate-functies.
 
 ### Voorbeeld
 
