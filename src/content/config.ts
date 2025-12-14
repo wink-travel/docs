@@ -6,7 +6,7 @@ export const collections = {
   docs: defineCollection({
     loader: docsLoader({
      // Strip the `.md`/`.mdx` file extension, but don’t lowercase
-     generateId: ({ entry }) => entry.split('.').slice(0, -1).join('.')
+     generateId: ({ entry }) => entry.split('.').slice(0, -1).join('.').replace(/\/index$/i, "")
    }),
     schema: docsSchema() }),
 };
