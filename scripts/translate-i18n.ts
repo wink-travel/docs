@@ -10,7 +10,7 @@ import {
   statSync,
   mkdirSync,
 } from "fs";
-import { resolve, join, dirname } from "path";
+import { resolve, join, dirname, extname } from "path";
 import { fileURLToPath } from "url";
 import cliProgress from "cli-progress";
 import OpenAI from "openai";
@@ -21,6 +21,29 @@ const HASH_ALGO = "sha256";
 const HASH_FILE_NAME = ".file.hashes.json";
 
 type HashMap = Record<string, string>;
+
+// Minimal link rewriter for docs content (md/mdx):
+// - Markdown links only: [text](/path) -> [text](/<lang>/path)
+// Skips if already has any locale prefix (/xx/ or /xx-YY/)
+const hasAnyLocalePrefix = (href: string): boolean => /^\/[a-z]{2}(?:-[A-Z]{2})?\//.test(href);
+const rewriteLinksOnContent = (content: string, lang: string): string => {
+  let updated = content;
+
+  const mdLinkRegex = /\[([^\]]+)\]\((\/[^(\s)]*)\)/g;
+  updated = updated.replace(mdLinkRegex, (full, text, href) => {
+    if (href.startsWith(`/${lang}/`) || hasAnyLocalePrefix(href)) return full;
+    return `[${text}](/${lang}${href})`;
+  });
+
+  // LinkButton components: <LinkButton ... href="/path" ...>
+  const linkButtonHrefRegex = /(<LinkButton\b[^>]*?\bhref=(["']))(\/[^"']*)(\2)/g;
+  updated = updated.replace(linkButtonHrefRegex, (full, pre, quote, href, postQuote) => {
+    if (href.startsWith(`/${lang}/`) || hasAnyLocalePrefix(href)) return full;
+    return `${pre}/${lang}${href}${postQuote}`;
+  });
+
+  return updated;
+};
 
 // Helper filesystem utilities
 const createDirectory = (filePath: string): void => mkdirSync(filePath);
@@ -246,6 +269,16 @@ async function translateFile(
     console.log(
       `✅ Skipping ${targetLang}/${relativePath}, already up to date.`
     );
+    // For doc files (.md/.mdx), ensure links have locale prefix even when skipping
+    const ext = extname(relativePath).toLowerCase();
+    if (ext === ".md" || ext === ".mdx") {
+      const existingContent = readFile(fileName);
+      const rewritten = rewriteLinksOnContent(existingContent, targetLang);
+      if (rewritten !== existingContent) {
+        console.log(`🔧 Rewriting links in ${targetLang}/${relativePath} to add locale prefix...`);
+        writeFile(fileName, rewritten);
+      }
+    }
     return;
   }
 
@@ -256,8 +289,15 @@ async function translateFile(
     return;
   }
 
+  let output = translatedFile;
+  // Post-process all doc files: add locale prefixes to root-relative links
+  const outExt = extname(relativePath).toLowerCase();
+  if (outExt === ".md" || outExt === ".mdx") {
+    output = rewriteLinksOnContent(output, targetLang);
+  }
+
   console.log(`✍️ Writing translated file: ${fileName}`);
-  writeFile(fileName, translatedFile);
+  writeFile(fileName, output);
 
   // ✅ Save hash in map
   langHashMap[relativePath] = currentHash;
