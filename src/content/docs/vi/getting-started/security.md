@@ -1,78 +1,76 @@
 ---
-title: Security
-description: >-
-  Bài viết này chứa thông tin về các biện pháp bảo mật mà chúng tôi triển khai
-  và được công ty bảo mật bên thứ 3 của chúng tôi công bố hàng năm.
+title: Bảo Mật
+description: Bài viết này chứa thông tin về các biện pháp bảo mật mà chúng tôi thực hiện và được công bố hàng năm bởi công ty bảo mật bên thứ ba của chúng tôi.
 sidebar:
   order: 6
 ---
-# Tài liệu tổng quan về bảo mật Wink
 
-*Cập nhật lần cuối: 7 tháng 9 năm 2024*
+# Tài Liệu Tổng Quan Bảo Mật Wink
+
+*Cập nhật lần cuối: 7 tháng 9, 2024*
 
 *Phiên bản 1.0*
 
-## Mục đích và phạm vi
+## Mục Đích và Phạm Vi
 
-Là một phần trong cam kết liên tục của chúng tôi về bảo mật và bảo vệ dữ liệu người dùng, chúng tôi tiến hành kiểm tra thâm nhập thường xuyên trên ứng dụng web của mình. Tài liệu này phác thảo các phương pháp kiểm tra của chúng tôi, cung cấp tóm tắt các phát hiện và nêu bật cách tiếp cận của chúng tôi đối với việc cải thiện bảo mật liên tục.
+Là một phần trong cam kết liên tục của chúng tôi về bảo mật và bảo vệ dữ liệu người dùng, chúng tôi tiến hành kiểm thử xâm nhập định kỳ trên ứng dụng web của mình. Tài liệu này trình bày các phương pháp kiểm thử, cung cấp tóm tắt các phát hiện và làm nổi bật cách tiếp cận của chúng tôi đối với việc cải tiến bảo mật liên tục.
 
-Tài liệu này sẽ được cập nhật khi có báo cáo mới hoặc khi có những thay đổi quan trọng.
+Tài liệu này sẽ được cập nhật khi có báo cáo mới hoặc khi có những thay đổi quan trọng xảy ra.
 
-Phạm vi lĩnh vực:\
-\*.nháy mắt.du lịch\
+Các miền trong phạm vi:  
+\*.wink.travel  
 \*.trippay.io
 
-## Tần suất và lịch trình kiểm tra
+## Tần Suất và Lịch Trình Kiểm Thử
 
-Các cuộc kiểm tra thâm nhập của chúng tôi được tiến hành hàng năm, với các cuộc kiểm tra bổ sung được lên lịch khi cần thiết sau khi có các bản cập nhật đáng kể cho ứng dụng hoặc cơ sở hạ tầng. Nhịp độ kiểm tra thường xuyên này đảm bảo chúng tôi luôn đi trước các mối đe dọa đang phát triển và duy trì một môi trường an toàn.
+Các bài kiểm thử xâm nhập của chúng tôi được thực hiện hàng năm, với các bài kiểm thử bổ sung được lên lịch khi cần thiết sau các cập nhật quan trọng đối với ứng dụng hoặc hạ tầng. Chu kỳ kiểm thử định kỳ này đảm bảo chúng tôi luôn đi trước các mối đe dọa đang phát triển và duy trì môi trường an toàn.
 
-## Phương pháp thử nghiệm
+## Phương Pháp Kiểm Thử
 
-Kiểm tra thâm nhập của chúng tôi rất toàn diện và bao gồm nhiều khía cạnh bảo mật, bao gồm nhưng không giới hạn ở:
+Kiểm thử xâm nhập của chúng tôi toàn diện và bao gồm nhiều khía cạnh bảo mật, bao gồm nhưng không giới hạn:
 
-* **OWASP Top 10:**&#x43;ác bài kiểm tra của chúng tôi đặc biệt nhắm vào các rủi ro bảo mật quan trọng nhất, chẳng hạn như Injection, Xác thực bị hỏng và Tấn công xuyên trang (XSS).
-* **Kiểm thử hộp đen và hộp xám:**&#x54;ùy thuộc vào phạm vi, nhóm của chúng tôi sử dụng các phương pháp này để mô phỏng cả tình huống tấn công bên ngoài và bên trong.
-* **Kiểm tra tự động và thủ công:**&#x43;húng tôi sử dụng Burp Suite Pro, một bộ công cụ kiểm tra bảo mật hàng đầu, để tiến hành quét bảo mật tự động và hỗ trợ các kỹ thuật kiểm tra thủ công để xác định các lỗ hổng phức tạp và có được phạm vi bảo vệ tốt nhất có thể. Để xác định lỗ hổng cụ thể hơn, một số công cụ chuyên dụng được sử dụng, ví dụ: SQLmap.
+* **OWASP Top 10:** Các bài kiểm thử của chúng tôi tập trung vào những rủi ro bảo mật nghiêm trọng nhất, như Injection, Xác thực bị phá vỡ, và Cross-Site Scripting (XSS).  
+* **Kiểm Thử Hộp Đen và Hộp Xám:** Tùy theo phạm vi, đội ngũ của chúng tôi sử dụng các phương pháp này để mô phỏng cả các kịch bản tấn công từ bên ngoài và bên trong.  
+* **Kiểm Thử Tự Động và Thủ Công:** Chúng tôi sử dụng Burp Suite Pro, bộ công cụ kiểm thử bảo mật hàng đầu, để thực hiện quét bảo mật tự động và hỗ trợ các kỹ thuật kiểm thử thủ công nhằm phát hiện các lỗ hổng phức tạp và đạt được phạm vi kiểm thử tốt nhất có thể. Để xác định lỗ hổng cụ thể hơn, một số công cụ chuyên biệt như SQLmap cũng được sử dụng.
 
-## Tóm tắt các phát hiện
+## Tóm Tắt Các Phát Hiện
 
-Sau đây là bản tóm tắt cấp cao về báo cáo thử nghiệm thâm nhập mới nhất của chúng tôi:
+Dưới đây là tóm tắt cấp cao của báo cáo kiểm thử xâm nhập gần đây nhất:
 
-* **Tổng số lỗ hổng đã xác định:**&#x32;
-* **Phân bố mức độ nghiêm trọng:**
-  * Quan trọng: 2
-* **Các loại lỗ hổng được phát hiện:**
-  * Kiểm soát truy cập bị hỏng
+* **Tổng số lỗ hổng được xác định:** 2  
+* **Phân bố mức độ nghiêm trọng:**  
+  * Nguy cấp: 2  
+* **Loại lỗ hổng phát hiện:**  
+  * Kiểm soát truy cập bị phá vỡ  
   * Thiết kế không an toàn
 
-Để biết kết quả chi tiết, vui lòng tham khảo báo cáo đầy đủ.
+Để biết chi tiết các phát hiện, vui lòng tham khảo báo cáo đầy đủ.
 
-### Xếp hạng rủi ro và tác động
+### Đánh Giá Rủi Ro và Tác Động
 
-Cả hai lỗ hổng được tìm thấy đều được đánh giá là nghiêm trọng vì cả hai đều có thể gây ra tác động tài chính nghiêm trọng. Lỗ hổng đầu tiên cho phép người dùng đã xác thực có ác ý kiểm soát tài khoản thanh toán Trippay của công ty khác. Lỗ hổng thứ hai cho phép người dùng có ác ý sửa đổi số tiền thanh toán cần thiết cho một lần đặt phòng.
+Cả hai lỗ hổng được phát hiện đều được đánh giá là nguy cấp vì cả hai đều có thể gây ra tác động tài chính nghiêm trọng. Lỗ hổng đầu tiên cho phép người dùng đã xác thực độc hại kiểm soát tài khoản thanh toán Trippay của công ty khác. Lỗ hổng thứ hai cho phép người dùng độc hại thay đổi số tiền thanh toán yêu cầu cho một đặt phòng.
 
-### Nỗ lực khắc phục và giảm thiểu
+### Nỗ Lực Khắc Phục và Giảm Thiểu
 
-Chúng tôi đã thực hiện các bước sau để giải quyết các lỗ hổng đã xác định:
+Chúng tôi đã thực hiện các bước sau để xử lý các lỗ hổng được xác định:
 
-* **Bản vá tức thời:**&#x43;ác lỗ hổng nghiêm trọng đã được vá trong vòng 48 giờ kể từ khi phát hiện.
-* **Đánh giá và củng cố mã:**&#x4E;hóm phát triển đã triển khai các biện pháp kiểm soát bảo mật bổ sung dựa trên các khuyến nghị của chúng tôi.
+* **Bản vá ngay lập tức:** Các lỗ hổng nguy cấp đã được vá trong vòng 48 giờ kể từ khi phát hiện.  
+* **Xem xét và củng cố mã nguồn:** Đội phát triển đã triển khai các biện pháp kiểm soát bảo mật bổ sung dựa trên các khuyến nghị của chúng tôi.
 
-## Cải tiến liên tục
+## Cải Tiến Liên Tục
 
-Kiểm thử thâm nhập là một phần trong chiến lược rộng hơn của chúng tôi nhằm cải thiện bảo mật liên tục. Những phát hiện từ mỗi bài kiểm tra sẽ hướng dẫn các chính sách bảo mật của chúng tôi, tác động đến các hoạt động phát triển và thúc đẩy các cải tiến trong kiến trúc bảo mật của chúng tôi.
+Kiểm thử xâm nhập là một phần trong chiến lược rộng hơn của chúng tôi nhằm cải tiến bảo mật liên tục. Các phát hiện từ mỗi bài kiểm thử hướng dẫn chính sách bảo mật, ảnh hưởng đến thực hành phát triển và thúc đẩy các cải tiến trong kiến trúc bảo mật của chúng tôi.
 
-## Chuyên môn của nhóm
+## Chuyên Môn Đội Ngũ
 
-Kiểm tra thâm nhập của chúng tôi được thực hiện bởi một chuyên gia nội bộ có nhiều kinh nghiệm trong nhiều dự án và ngành công nghiệp khác nhau. Sử dụng các công cụ và phương pháp hàng đầu, chuyên gia của chúng tôi đảm bảo ứng dụng của chúng tôi được kiểm tra kỹ lưỡng trước các mối đe dọa bảo mật mới nhất.
+Kiểm thử xâm nhập được thực hiện bởi chuyên gia nội bộ có kinh nghiệm sâu rộng qua nhiều dự án và ngành nghề khác nhau. Sử dụng các công cụ và phương pháp hàng đầu, chuyên gia của chúng tôi đảm bảo ứng dụng được kiểm thử kỹ lưỡng trước các mối đe dọa bảo mật mới nhất.
 
-## Cam kết về an ninh
+## Cam Kết Bảo Mật
 
-Chúng tôi cam kết duy trì môi trường ứng dụng an toàn cho người dùng và các bên liên quan. Những nỗ lực liên tục của chúng tôi trong việc thử nghiệm và cải thiện bảo mật thể hiện cam kết của chúng tôi trong việc bảo vệ chống lại các mối đe dọa đang phát triển.
+Chúng tôi cam kết duy trì môi trường ứng dụng an toàn cho người dùng và các bên liên quan. Nỗ lực liên tục trong kiểm thử và cải tiến bảo mật thể hiện cam kết của chúng tôi trong việc bảo vệ trước các mối đe dọa đang phát triển.
 
-## Báo cáo Truy cập và Cập nhật
+## Truy Cập Báo Cáo và Cập Nhật
 
-Tài liệu này sẽ được cập nhật liên tục khi có báo cáo kiểm tra thâm nhập mới. Để truy cập báo cáo đầy đủ, vui lòng liên hệ với chúng tôi qua email bên dưới. Các bản cập nhật trong tương lai sẽ bao gồm các lỗ hổng mới được xác định, các nỗ lực khắc phục và điều chỉnh phương pháp kiểm tra của chúng tôi.
+Tài liệu này sẽ được cập nhật liên tục khi có các báo cáo kiểm thử xâm nhập mới được phát hành. Để truy cập báo cáo đầy đủ, vui lòng liên hệ với chúng tôi qua email dưới đây. Các cập nhật trong tương lai sẽ bao gồm các lỗ hổng mới được xác định, nỗ lực khắc phục và điều chỉnh phương pháp kiểm thử.
 
-Để biết thêm thông tin chi tiết, vui lòng liên hệ security@wink.travel.
-
+Để biết thêm thông tin, vui lòng liên hệ security@wink.travel.

@@ -1,79 +1,76 @@
 ---
-title: Security
-description: >-
-  Dit artikel bevat informatie over de beveiligingsmaatregelen die wij
-  implementeren en die jaarlijks door ons externe beveiligingsbedrijf worden
-  gepubliceerd.
+title: Beveiliging
+description: Dit artikel bevat informatie over de beveiligingsmaatregelen die wij implementeren en die jaarlijks worden gepubliceerd door ons externe beveiligingsbedrijf.
 sidebar:
   order: 6
 ---
-# Wink-beveiligingsoverzichtdocument
+
+# Wink Beveiligingsoverzicht Document
 
 *Laatst bijgewerkt: 7 september 2024*
 
 *Versie 1.0*
 
-## Doel en reikwijdte
+## Doel en Reikwijdte
 
-Als onderdeel van onze voortdurende inzet voor beveiliging en de bescherming van gebruikersgegevens voeren we regelmatig penetratietests uit op onze webapplicatie. Dit document beschrijft onze testmethodologieën, geeft een samenvatting van de bevindingen en benadrukt onze aanpak voor continue beveiligingsverbetering.
+Als onderdeel van onze voortdurende inzet voor beveiliging en het beschermen van gebruikersgegevens, voeren wij regelmatig penetratietests uit op onze webapplicatie. Dit document beschrijft onze testmethodologieën, geeft een samenvatting van de bevindingen en belicht onze aanpak voor continue beveiligingsverbetering.
 
-Dit document wordt bijgewerkt wanneer er nieuwe rapporten worden uitgebracht of wanneer er belangrijke wijzigingen optreden.
+Dit document wordt bijgewerkt zodra er nieuwe rapporten worden geproduceerd of wanneer er significante wijzigingen plaatsvinden.
 
-Domeinen binnen het toepassingsgebied:\
-\*.wink.travel\
+Domeinen binnen de scope:  
+\*.wink.travel  
 \*.trippay.io
 
-## Testfrequentie en -schema
+## Testfrequentie en Planning
 
-Onze penetratietests worden jaarlijks uitgevoerd, met extra tests indien nodig na belangrijke updates van de applicatie of infrastructuur. Deze regelmatige testcyclus zorgt ervoor dat we evoluerende bedreigingen voorblijven en een veilige omgeving behouden.
+Onze penetratietests worden jaarlijks uitgevoerd, met extra tests indien nodig na belangrijke updates van de applicatie of infrastructuur. Deze regelmatige testcyclus zorgt ervoor dat we voorblijven op veranderende bedreigingen en een veilige omgeving behouden.
 
 ## Testmethodologieën
 
-Onze penetratietesten zijn uitgebreid en bestrijken een breed scala aan beveiligingsaspecten, waaronder maar niet beperkt tot:
+Onze penetratietests zijn uitgebreid en bestrijken een breed scala aan beveiligingsaspecten, waaronder maar niet beperkt tot:
 
-* **OWASP Top 10:**&#x4F;nze tests zijn specifiek gericht op de meest kritieke beveiligingsrisico's, zoals injectie, verbroken authenticatie en Cross-Site Scripting (XSS).
-* **Black Box- en Grey Box-testen:**&#x41;fhankelijk van de omvang maakt ons team gebruik van deze methodologieën om zowel externe als interne aanvalsscenario's te simuleren.
-* **Geautomatiseerde en handmatige tests:**&#x57;e gebruiken Burp Suite Pro, een toonaangevende toolkit voor beveiligingstests, om geautomatiseerde beveiligingsscans uit te voeren en handmatige testtechnieken te ondersteunen bij het identificeren van complexe kwetsbaarheden en het verkrijgen van de best mogelijke dekking. Voor meer specifieke kwetsbaarheidsidentificatie gebruiken we gespecialiseerde tools, zoals SQLmap.
+* **OWASP Top 10:** Onze tests richten zich specifiek op de meest kritieke beveiligingsrisico’s, zoals Injection, Broken Authentication en Cross-Site Scripting (XSS).  
+* **Black Box en Grey Box Testing:** Afhankelijk van de scope gebruikt ons team deze methodologieën om zowel externe als interne aanvalsscenario’s te simuleren.  
+* **Geautomatiseerd en Handmatig Testen:** We gebruiken Burp Suite Pro, een toonaangevende set beveiligingstools, om geautomatiseerde beveiligingsscans uit te voeren en handmatige testtechnieken te ondersteunen om complexe kwetsbaarheden te identificeren en de best mogelijke dekking te krijgen. Voor meer specifieke kwetsbaarheidsidentificatie worden enkele gespecialiseerde tools gebruikt, bijvoorbeeld SQLmap.
 
-## Samenvatting van de bevindingen
+## Samenvatting van Bevindingen
 
-Hieronder vindt u een samenvatting van ons meest recente rapport over penetratietesten:
+Hieronder volgt een overzicht op hoofdlijnen van ons meest recente penetratietestrapport:
 
-* **Totaal aantal geïdentificeerde kwetsbaarheden:**&#x32;
-* **Ernstverdeling:**
-  * Kritisch: 2
-* **Soorten gedetecteerde kwetsbaarheden:**
-  * Gebroken toegangscontrole
-  * Onveilig ontwerp
+* **Totaal Geïdentificeerde Kwetsbaarheden:** 2  
+* **Verdeling naar Ernst:**  
+  * Kritiek: 2  
+* **Soorten Gevonden Kwetsbaarheden:**  
+  * Broken Access Control  
+  * Onveilige Ontwerpkeuzes
 
-Voor gedetailleerde bevindingen verwijzen wij u naar het volledige rapport.
+Voor gedetailleerde bevindingen verwijzen wij naar het volledige rapport.
 
-### Risicobeoordelingen en impact
+### Risicobeoordelingen en Impact
 
-Beide gevonden kwetsbaarheden worden als kritiek beoordeeld, omdat ze allebei ernstige financiële gevolgen kunnen hebben. De eerste kwetsbaarheid stelde een kwaadwillende, geauthenticeerde gebruiker in staat de controle over de Trippay-betaalrekening van een ander bedrijf over te nemen. De tweede kwetsbaarheid stelde een kwaadwillende gebruiker in staat het vereiste betalingsbedrag voor een boeking te wijzigen.
+Beide gevonden kwetsbaarheden zijn als kritiek beoordeeld omdat ze beide ernstige financiële gevolgen hadden kunnen hebben. De eerste maakte het een kwaadaardige geauthenticeerde gebruiker mogelijk om controle te krijgen over het Trippay-betaalaccount van een ander bedrijf. De tweede kwetsbaarheid stelde een kwaadaardige gebruiker in staat het te betalen bedrag voor een boeking aan te passen.
 
-### Sanerings- en mitigatie-inspanningen
+### Herstel- en Mitigatie-inspanningen
 
-We hebben de volgende stappen ondernomen om de geïdentificeerde kwetsbaarheden te verhelpen:
+We hebben de volgende stappen ondernomen om de geïdentificeerde kwetsbaarheden aan te pakken:
 
-* **Onmiddellijke patches:**&#x44;e kritieke kwetsbaarheden zijn binnen 48 uur na ontdekking gepatcht.
-* **Codebeoordeling en verharding:**&#x48;et ontwikkelteam heeft aanvullende beveiligingsmaatregelen geïmplementeerd op basis van onze aanbevelingen.
+* **Directe Patches:** De kritieke kwetsbaarheden zijn binnen 48 uur na ontdekking gepatcht.  
+* **Code Review en Versterking:** Het ontwikkelingsteam heeft aanvullende beveiligingsmaatregelen geïmplementeerd op basis van onze aanbevelingen.
 
-## Continue verbetering
+## Continue Verbetering
 
-Penetratietesten maken deel uit van onze bredere strategie voor continue beveiligingsverbetering. De bevindingen van elke test vormen de basis voor ons beveiligingsbeleid, beïnvloeden ontwikkelpraktijken en stimuleren verbeteringen in onze beveiligingsarchitectuur.
+Penetratietesten maken deel uit van onze bredere strategie voor continue beveiligingsverbetering. Bevindingen uit elke test sturen onze beveiligingsbeleid, beïnvloeden ontwikkelpraktijken en stimuleren verbeteringen in onze beveiligingsarchitectuur.
 
-## Teamexpertise
+## Team Expertise
 
-Onze penetratietests worden uitgevoerd door een interne professional met ruime ervaring in diverse projecten en sectoren. Met behulp van toonaangevende tools en methoden zorgt onze expert ervoor dat onze applicatie grondig wordt getest tegen de nieuwste beveiligingsdreigingen.
+Onze penetratietests worden uitgevoerd door een interne professional met uitgebreide ervaring in diverse projecten en sectoren. Met behulp van toonaangevende tools en methoden zorgt onze expert ervoor dat onze applicatie grondig wordt getest tegen de nieuwste beveiligingsdreigingen.
 
-## Toewijding aan veiligheid
+## Toewijding aan Beveiliging
 
-We streven ernaar een veilige applicatieomgeving te creëren voor onze gebruikers en stakeholders. Onze voortdurende inspanningen op het gebied van beveiligingstests en -verbeteringen tonen onze toewijding aan bescherming tegen evoluerende bedreigingen.
+Wij zijn toegewijd aan het handhaven van een veilige applicatieomgeving voor onze gebruikers en belanghebbenden. Onze voortdurende inspanningen op het gebied van beveiligingstesten en -verbetering tonen onze inzet om te beschermen tegen veranderende bedreigingen.
 
-## Rapporttoegang en updates
+## Toegang tot Rapporten en Updates
 
-Dit document wordt continu bijgewerkt naarmate er nieuwe penetratietestrapporten verschijnen. Voor het volledige rapport kunt u contact met ons opnemen via onderstaand e-mailadres. Toekomstige updates zullen nieuw geïdentificeerde kwetsbaarheden, herstelmaatregelen en aanpassingen aan onze testmethodologieën bevatten.
+Dit document wordt continu bijgewerkt zodra nieuwe penetratietestrapporten worden uitgebracht. Voor toegang tot het volledige rapport kunt u contact met ons opnemen via onderstaande e-mail. Toekomstige updates zullen nieuw geïdentificeerde kwetsbaarheden, herstelmaatregelen en aanpassingen in onze testmethodologieën bevatten.
 
-Voor verdere vragen kunt u contact opnemen met security@wink.travel.
-
+Voor verdere vragen kunt u contact opnemen via security@wink.travel.

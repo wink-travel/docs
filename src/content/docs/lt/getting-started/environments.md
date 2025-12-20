@@ -1,43 +1,41 @@
 ---
-title: Environments
-description: >-
-  Šiame straipsnyje pateikiama informacija testuotojams ir kūrėjams apie tai,
-  kaip gauti prieigą prie skirtingų mūsų serverių aplinkų.
+title: Aplinkos
+description: Šiame straipsnyje pateikiama informacija testuotojams ir kūrėjams apie prieigą prie mūsų skirtingų serverių aplinkų.
 sidebar:
   order: 8
 ---
-„Wink“ įmonėje viskam, ką darome, naudojame dvi aplinkas:
 
-* Gamyba yra mūsų stabili aplinka.
-* „Staging“ yra mūsų sertifikavimo ir testavimo aplinka.
+Wink platformoje mes nuolat veikiame 2 aplinkas:
 
-Jei esate integratorius, viešbutis ar kelionių agentas, norintis pasiruošti sertifikavimui arba išbandyti „Wink“ platformą, susikurkite paskyrą mūsų testavimo aplinkoje, kad pradėtumėte.
+- Produkcija yra mūsų stabili aplinka.
+- Staging yra mūsų sertifikavimo ir testavimo aplinka.
+
+Jei esate integratorius, viešbutis ar kelionių agentas, norintis pasiruošti sertifikavimui arba išbandyti Wink platformą, sukurkite paskyrą mūsų staging aplinkoje, kad pradėtumėte.
 
 :::note
-Parengiamoji aplinka prieinama pagal užklausą. Tai reiškia, kad ji užmigs, jei nebus naudojama, ir vėl įsijungs, kai bus naudojama. Būkite kantrūs, jei ją žadinate. Visų serverių paleidimas trunka apie minutę, kai pirmą kartą prisijungiate prie vieno iš mūsų serverių ar programėlių.
+Staging aplinka prieinama pagal užklausą. Tai reiškia, kad ji užmiega, jei nėra naudojama, ir pati įsijungia, kai yra naudojama. Prašome būti kantriems, jei ją pažadinote. Po pirmojo prisijungimo prie vieno iš mūsų serverių ar programų užtrunka apie minutę, kol visi serveriai pilnai paleidžiami.
 :::
 
 ## Serveriai
 
-Žemiau pateikiama matrica su mūsų serverių pavadinimais ir jų naudojimu.
+Žemiau pateikta matrica su mūsų serverių pavadinimais ir jų paskirtimi.
 
-| Funkcija | Pastatymas | Produkcija
+| Funkcija | Staging | Produkcija
 | ------- | ------- | ---------- |
-| IAM | https://staging-iam.wink.travel | https://iam.wink.travel |
-| Inventorius | https://staging-api.wink.travel | https://api.wink.travel |
-| Integracijos | https://staging-integrations.wink.travel | https://integrations.wink.travel |
-| Mokėjimas | https://staging-api.trippay.io | https://api.trippay.io |
+| IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
+| Inventorius | https://staging-api.wink.travel | https://api.wink.travel | 
+| Integracijos | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Mokėjimai | https://staging-api.trippay.io | https://api.trippay.io | 
 
-## Paraiškos
+## Programėlės
 
-Mūsų programėlės taip pat turi testavimo ir gamybos aplinkas mūsų klientams.
+Mūsų programėlės taip pat turi testavimo ir produkcijos aplinkas mūsų klientams.
 
-| Paraiška | Parengimas | Gamyba
+| Programėlė | Staging | Produkcija
 | ------- | ------- | ---------- |
-| Agentas | https://staging-agent.wink.travel | https://agent.wink.travel |
-| Įmonės | https://staging-group.wink.travel | https://group.wink.travel |
-| Ekstranetas | https://staging-extranet.wink.travel | https://extranet.wink.travel |
-| Mokėjimas | https://staging-pay.wink.travel | https://pay.wink.travel |
-| Studija | https://staging-studio.wink.travel | https://studio.wink.travel |
+| Agentas | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| Korporatyvinė | https://staging-group.wink.travel | https://group.wink.travel | 
+| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| Mokėjimai | https://staging-pay.wink.travel | https://pay.wink.travel | 
+| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
-

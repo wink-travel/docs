@@ -1,73 +1,71 @@
 ---
 title: Persónuverndarstefna
-description: >-
-  Auðvelt aðgengileg og uppfærð persónuverndarstefna fyrir alla ferðalanga
-  okkar.
+description: Auðveldlega aðgengileg og uppfærð persónuverndarstefna fyrir alla ferðalanga notendur okkar.
 sidebar:
   order: 5
 ---
-TRAVELIKO SINGAPORE PTE. LTD., sem starfar undir nafninu Wink („félagið“), vill upplýsa þig sem hefur samband við félagið um að það er nauðsynlegt að safna, taka saman og nota persónuupplýsingar þínar fyrir þjónustu félagsins í samræmi við þessa persónuverndarstefnu. Með því að hafa samband við og afhenda félaginu persónuupplýsingar þínar í þeim tilgangi að eiga samskipti, samhæfa þjónustu og/eða veita þér þjónustu, telur það að þú samþykkir og samþykkir að vera bundinn af og fylgja þessari persónuverndarstefnu.
 
-Persónuupplýsingar eru unnar, fyrirtækið kann að fá persónuupplýsingar um þær í gegnum ýmsar leiðir sem hér segir:
+TRAVELIKO SINGAPORE PTE. LTD., sem starfar undir nafninu Wink („Fyrirtækið“), vill upplýsa þig sem hefur samband við Fyrirtækið að nauðsynlegt er að safna, vinna úr og nota persónuupplýsingar þínar fyrir þjónustu Fyrirtækisins í samræmi við þessa Persónuverndarstefnu. Með því að hafa samband og veita Fyrirtækinu persónuupplýsingar þínar í þeim tilgangi að eiga samskipti, samræma og/eða veita þér þjónustu Fyrirtækisins, telst þú samþykkja og samþykkja að vera bundinn af og fara eftir þessari Persónuverndarstefnu.
 
-(1) Beint frá þér í gegnum samskipti fyrirtækisins við þig;
+Persónuupplýsingar sem eru unnar, getur Fyrirtækið fengið persónuupplýsingar þínar frá ýmsum rásum sem hér segir:
 
-(2) Óbeint, með tilvísun frá þriðja aðila sem þú getur veitt samþykki fyrir því að afhenda félaginu persónuupplýsingar þínar; eða
+(1) Beint frá þér í gegnum samskipti Fyrirtækisins við þig;
 
-(3) Safnað sjálfkrafa í gegnum kerfið þegar þú opnar vefsíðu fyrirtækisins og/eða notar þjónustuna.
+(2) Óbeint, í gegnum tilvísun frá þriðja aðila sem þú gætir veitt samþykki fyrir að birta persónuupplýsingar þínar til Fyrirtækisins; eða
 
-Persónuupplýsingarnar sem fyrirtækið er nauðsynlegt að safna, taka saman, nota og vinna úr samkvæmt þessari persónuverndarstefnu eru eftirfarandi:
+(3) Sjálfvirkt safnað í gegnum kerfi þegar þú heimsækir vefsíðu Fyrirtækisins og/eða notar þjónustuna.
 
-(1) Fullt nafn þitt, þar með taldar upplýsingar um þig eða upplýsingar um fulltrúa þinn (ef þú hefur samband við okkur í nafni lögaðila), sem geta innihaldið persónuupplýsingar þínar.
+Persónuupplýsingarnar sem Fyrirtækið þarf að safna, vinna úr og nota samkvæmt þessari Persónuverndarstefnu eru eftirfarandi:
 
-(2) Tengiliðaupplýsingar eins og símanúmer, netfang eða upplýsingar um samfélagsmiðla.
+(1) Fullt nafn þitt, þar með talið tengdar upplýsingar eða upplýsingar um fulltrúa þinn (ef þú hefur samband í nafni lögaðila) sem geta falið í sér auðkennisgögn þín.
 
-(3) Aðrar persónuupplýsingar sem þú gætir látið félaginu í té í samskiptum, svo sem upplýsingar um fyrirspurnir, upplýsingar um áhugamál eða aðrar persónugreinanlegar upplýsingar sem þú lætur félaginu í té beint í gegnum ýmsar samskiptaleiðir.
+(2) Tengiliðaupplýsingar eins og símanúmer, netfang eða upplýsingar um samfélagsmiðlareikninga.
 
-(4) Ef samskipti eiga sér stað í gegnum vefsíðuna geta tæknilegar upplýsingar eins og IP-tölu, vafrakökur, þar á meðal upplýsingar um vafrahegðun þína, verið til staðar.
+(3) Aðrar persónuupplýsingar sem þú gætir veitt Fyrirtækinu í samskiptum, svo sem upplýsingar um fyrirspurnir, áhugasvið eða aðrar persónugreinanlegar upplýsingar sem þú veitir beint í gegnum ýmsar samskiptaleiðir.
 
-Tilgangur vinnslu og notkunar persónuupplýsinga. Fyrirtækið er nauðsynlegt til að safna, taka saman og nota persónuupplýsingar umsækjanda í eftirfarandi tilgangi:
+(4) Ef samskipti fara fram í gegnum vefsíðuna, geta tæknilegar upplýsingar þínar eins og IP-tala, kökur og upplýsingar um vafrahegðun verið teknar saman.
 
-(1) Til að stjórna samskiptum sem þú hefur átt í samskiptum við fyrirtækið, svo sem að svara spurningum, veita viðeigandi upplýsingar eftir beiðni og þörf krefur, meðhöndla kvartanir eða svara athugasemdum sem þú gerir beint við fyrirtækið í gegnum ýmsar samskiptaleiðir, þar á meðal stöðuga samræmingu, undirritun þjónustusamnings og/eða framkvæmd réttinda og skyldna sem fyrirtækið og þú kunna að koma þér saman um;
+Tilgangur með vinnslu og notkun persónuupplýsinga, þarf Fyrirtækið að safna, vinna úr og nota persónuupplýsingar umsækjanda um starf fyrir eftirfarandi tilgangi:
 
-(2) Til að uppfylla lagaskyldur sem félagið kann að vera háð ákveðnum skilyrðum. Þetta getur falið í sér, en takmarkast ekki við, að sinna skyldum sem tengjast gerð bókhaldsgagna og skatta í tengslum við þjónustu sem félagið veitir þér;
+(1) Fyrir stjórnun samskipta sem þú átt við Fyrirtækið, svo sem að svara spurningum, veita viðeigandi upplýsingar eftir beiðni, stjórna kvörtunum eða svara athugasemdum sem þú gerir beint við Fyrirtækið í gegnum ýmsar samskiptaleiðir, þar með talið áframhaldandi samræmingu, framkvæmd þjónustusamninga og/eða uppfyllingu réttinda og skyldna sem Fyrirtækið og þú gætuð samið um;
 
-(3) Í þeim tilgangi að byggja upp og bæta viðskiptasambönd, þar á meðal að efla þjónustuna sem fyrirtækið veitir þér í þágu, sem fyrirtækið kann að safna og/eða nota persónuupplýsingar þínar í þeim tilgangi að hafa eftirlit, tryggja þjónustu, greina stjórnendur og leysa viðskiptatengd mál, þar á meðal, en ekki takmarkað við, þjálfun starfsmanna og áætlanagerð um framtíðarþjónustubætur;
+(2) Fyrir uppfyllingu lagalegra skuldbindinga sem Fyrirtækið kann að vera bundið af samkvæmt ákveðnum skilyrðum. Þetta getur falið í sér, en takmarkast ekki við, að sinna skyldum tengdum gerð bókhalds- og skattaskjala í tengslum við þjónustu sem Fyrirtækið veitir þér;
 
-(4) Til að vernda og verja lagaleg réttindi félagsins ef þú og félagið lendir í ágreiningi; og
+(3) Til að byggja upp og bæta viðskiptasambönd, þar með talið að bæta þjónustu sem Fyrirtækið veitir þér, þar sem Fyrirtækið getur safnað og/eða notað persónuupplýsingar þínar til að stjórna, tryggja þjónustu, greina stjórnun og leysa viðskiptatengd mál, þar með talið, en ekki takmarkað við, þjálfun starfsmanna og framtíðarþróun þjónustu;
 
-(5) Með fyrirvara um skýrt samþykki sem veitt er félaginu, svo sem markaðssetningu og fréttabréfasendingar, er félaginu heimilt að vinna persónuupplýsingarnar í þeim tilgangi sem skilgreindur er í samþykkinu.
+(4) Til að verja og verja lögmætar réttindi Fyrirtækisins ef ágreiningur kemur upp milli þín og Fyrirtækisins; og
 
-Geymslutími persónuupplýsinga, til að geta framkvæmt starfsemi sína í samræmi við ofangreind markmið er fyrirtækið nauðsynlegt að safna, taka saman og vinna úr persónuupplýsingum þínum samkvæmt eftirfarandi tímabili:
+(5) Með skýru samþykki sem þú veitir Fyrirtækinu, svo sem markaðssetningu og fréttabréfaumsóknum, getur Fyrirtækið unnið úr persónuupplýsingum fyrir þá tilgangi sem skilgreindir eru í samþykkinu.
 
-(1) Til að vinna persónuupplýsingar í þeim tilgangi að veita þjónustu, framkvæma samning og/eða uppfylla réttindi og skyldur samkvæmt samningnum er félagið nauðsynlegt að vinna úr persónuupplýsingum þínum svo lengi sem félagið hefur skyldu til að veita þér þjónustu;
+Geymslutími persónuupplýsinga, til að uppfylla tilganginn sem lýst er hér að ofan, þarf Fyrirtækið að safna, vinna úr og vinna með persónuupplýsingar þínar samkvæmt eftirfarandi tímabili:
 
-(2) Til að vinna persónuupplýsingar í þeim tilgangi að uppfylla skyldur samkvæmt gildandi lögum er félagið nauðsynlegt að vinna persónuupplýsingar þínar í þann tíma sem tilgreindur er í gildandi lögum;
+(1) Fyrir vinnslu persónuupplýsinga í þeim tilgangi að veita þjónustu, framkvæma samninga og/eða uppfylla réttindi og skyldur samkvæmt samningi, þarf Fyrirtækið að vinna með persónuupplýsingar þínar svo lengi sem Fyrirtækið ber ábyrgð á að veita þér þjónustu;
 
-(3) Fyrirtækið áskilur sér rétt til að geyma persónuupplýsingar vegna vinnslu persónuupplýsinga í þeim tilgangi að byggja upp og bæta viðskiptasambönd og/eða bæta þjónustuna, að því marki sem fyrirtækið kann að hafa viðskiptaþarfir. Fyrirtækið ábyrgist að varðveisla persónuupplýsinganna muni ekki óeðlilega hafa áhrif á réttindi hins skráða.
+(2) Fyrir vinnslu persónuupplýsinga í þeim tilgangi að uppfylla skyldur samkvæmt gildandi lögum, þarf Fyrirtækið að vinna með persónuupplýsingar þínar í þann tíma sem lög kveða á um;
 
-(4) Vegna vinnslu persónuupplýsinga til verndar og baráttu fyrir lögmætum réttindum félagsins er félagið skylt að geyma slíkar persónuupplýsingar í samræmi við ákvæði gildandi laga; og
+(3) Fyrir vinnslu persónuupplýsinga í þeim tilgangi að byggja upp og bæta viðskiptasambönd og/eða bæta þjónustu, áskilur Fyrirtækið sér rétt til að varðveita persónuupplýsingar svo lengi sem nauðsynlegt er fyrir viðskiptaþörf. Fyrirtækið tryggir að varðveisla persónuupplýsinga hafi ekki óhófleg áhrif á réttindi gagnasubjekts;
 
-(5) Ef þú veitir félaginu samþykki fyrir vinnslu persónuupplýsinga þinna í tilteknum tilgangi, mun félagið vinna úr persónuupplýsingum þínum þar til þú afturkallar slíkt samþykki.
+(4) Fyrir vinnslu persónuupplýsinga til að verja og berjast fyrir lögmætum réttindum Fyrirtækisins, þarf Fyrirtækið að varðveita slíkar persónuupplýsingar í samræmi við tímamörk sem lög kveða á um; og
 
-Miðlun persónuupplýsinga, almennt verða persónuupplýsingar þínar ekki afhentar nema í þeim tilvikum að fyrirtækið þyrfti að afhenda eftirfarandi aðila:
+(5) Ef þú veitir Fyrirtækinu samþykki til að vinna með persónuupplýsingar þínar fyrir ákveðna tilgangi, mun Fyrirtækið vinna með persónuupplýsingar þínar þar til þú dregur samþykkið til baka.
 
-(1) Utanaðkomandi þjónustuaðilar félagsins sem ráðnir eru til að veita félaginu stuðningsþjónustu við að veita þér þjónustu, þar á meðal ráðgjafar félagsins. Slík miðlun persónuupplýsinga til þessara þriðju aðila skal fara fram í samræmi við tilganginn og eingöngu ef þörf krefur; eða
+Birting persónuupplýsinga, almennt verða persónuupplýsingar þínar ekki birtar nema í þeim tilvikum að Fyrirtækið þurfi að birta þær til eftirfarandi aðila:
 
-(2) Stjórnvöld, eftirlitsaðilar eða dómstólar sem fyrirtækið kann að vera háð fyrirmælum, lögum eða dómi um að afhenda persónuupplýsingarnar.
+(1) Ytri þjónustuaðilar Fyrirtækisins sem eru ráðnir til að veita stuðningsþjónustu við Fyrirtækið við að veita þér þjónustu, þar með talið ráðgjafar Fyrirtækisins. Slík birting persónuupplýsinga til þessara þriðja aðila fer fram í samræmi við tilgang og aðeins eftir þörfum;
 
-Félagið skuldbindur sig til að innleiða viðeigandi öryggisráðstafanir varðandi persónuupplýsingar til að koma í veg fyrir óheimilan og ólöglegan aðgang, breytingar, lagfæringar eða miðlun. Félagið skuldbindur sig til að endurskoða þessar ráðstafanir reglulega til að tryggja að þær séu í samræmi við staðla og gildandi lög.
+(2) Stjórnvöld, eftirlitsstofnanir eða dómstólar sem Fyrirtækið kann að vera bundið af úrskurði, lögum eða dómi um að birta persónuupplýsingar.
 
-Réttindi gagna, félagið virðir réttindi þín sem gagna samkvæmt gildandi lögum. Þú getur haft samband við félagið til að nýta þér réttindi þín sem eru (1) réttur til að afturkalla samþykki, (2) réttur til aðgangs, (3) réttur til að óska ​​eftir afriti af persónuupplýsingum, (4) réttur til að leiðrétta persónuupplýsingar, (5) réttur til að andmæla vinnslu persónuupplýsinga, (6) réttur til að óska ​​eftir flytjanleika gagna ef félagið geymir persónuupplýsingarnar á formi sem er læsilegt eða almennt notað af sjálfvirkum tólum eða búnaði, þar á meðal réttur til að flytja slíkar persónuupplýsingar til annarra ábyrgðaraðila, (7) réttur til að óska ​​eftir eyðingu eða afpersun persónuupplýsinga ef ekki er þörf á vinnslu þeirra, (8) réttur til að óska ​​eftir stöðvun notkunar persónuupplýsinga og (9) réttur til að leggja fram kvörtun.
+Fyrirtækið skuldbindur sig til að innleiða viðeigandi öryggisráðstafanir til að koma í veg fyrir óheimilan og ólögmætan aðgang, breytingu, breyttingu eða birtingu. Fyrirtækið skuldbindur sig til að endurskoða þessar ráðstafanir reglulega til að tryggja samræmi við staðla og gildandi lög.
 
-Upplýsingar um fyrirtækið
+Réttindi gagnasubjekts, Fyrirtækið virðir réttindi þín sem gagnasubjekt samkvæmt gildandi lögum. Þú getur haft samband við Fyrirtækið til að nýta þér réttindin sem eru (1) rétturinn til að draga samþykki til baka, (2) rétturinn til aðgangs, (3) rétturinn til að óska eftir afriti af persónuupplýsingum, (4) rétturinn til að leiðrétta persónuupplýsingar, (5) rétturinn til að mótmæla vinnslu persónuupplýsinga, (6) rétturinn til að óska eftir flutningi gagna ef Fyrirtækið geymir persónuupplýsingar í lesanlegu eða algengum formi sem sjálfvirkar vélar eða búnaður geta lesið, þar með talið rétturinn til að flytja slíkar persónuupplýsingar til annarra gagnastjórnenda, (7) rétturinn til að óska eftir eyðingu eða nafnleynd persónuupplýsinga ef ekki er þörf á frekari vinnslu, (8) rétturinn til að óska eftir stöðvun á notkun persónuupplýsinga, og (9) rétturinn til að leggja fram kvörtun.
 
-Persónuverndarfulltrúi
+Upplýsingar um samband við Fyrirtækið
+
+Gagnaverndarstjóri
 
 Nafn: Yann Gouriou
 
-Heimilisfang: #03-01 Wilkie Edge, 8 Wilkie Road, Singapúr 228095
+Heimilisfang: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
 
-Netfang: dataprotectionofficer@wink.travel
+Netfang: dataprotectionofficer@wink.travel  
 Símanúmer: +66 (0) 854891301
-

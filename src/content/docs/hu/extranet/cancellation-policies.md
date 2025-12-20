@@ -1,45 +1,45 @@
 ---
 title: Lemondási feltételek
-description: 'Ez a cikk bemutatja, hogyan kezelheti a lemondási szabályzatokat a Wink-en.'
+description: Ez a cikk megmutatja, hogyan kezelheti a lemondási feltételeket a Winkben.
 sidebar:
   order: 12
 ---
-A lemondási szabályzatok kezeléséhez kattintson a`Monetize > Cancellation policies`a fő navigációs sávról.
 
-A lemondási szabályzat határozza meg, hogyan kezeljük a foglalás összegét abban az esetben, ha a vendég nem tud megjelenni. A lemondási szabályzat kétféle lehet:
+A lemondási feltételek kezeléséhez kattintson a fő navigációs sávban a `Monetize > Cancellation policies` menüpontra.
+
+A lemondási feltételek meghatározzák, hogyan kezeljük a foglaló pénzét, ha a vendég nem tud megjelenni. A lemondási feltételek két különböző típusa létezik:
 
 1. Visszatéríthető
 2. Nem visszatéríthető
 
-A legtöbb esetben ez a két lehetőség elegendő. Mindkettő azonban rengeteg lehetőséget kínál a lemondási feltételek további testreszabására.
+Többnyire ezek a két opció elegendő. Mindkettő azonban nagy szabadságot ad a lemondási feltételek további testreszabásához.
 
-:::tip\[Érdekesség]
-A Wink összesen 8500 lemondási szabályzatot támogat.
+:::tip[Érdekesség]
+A Wink összesen 8500 különböző lemondási feltétel variációt támogat.
 :::
 
-Lemondási szabályzat létrehozásához kattintson a`Create a new cancellation policy`gomb.
+Lemondási feltétel létrehozásához kattintson a `Create a new cancellation policy` gombra.
 
 ## Nem visszatéríthető
 
-Nem visszatérítendő lemondási szabályzat létrehozásához kapcsold ki a kapcsolót 🛑, amikor a rendszer megkérdezi, hogy a szabályzat visszatéríthető-e.
+Nem visszatéríthető lemondási feltétel létrehozásához állítsa a kapcsolót 🛑 kikapcsolt állásba, amikor megkérdezik, hogy a feltétel visszatéríthető-e.
 
 ### Opciók
 
-Opcionálisan konfigurálhatja a`non-refundable`politikát a nagyobb kontroll érdekében.
+Lehetőség van a `nem visszatéríthető` feltétel további finomhangolására a nagyobb kontroll érdekében.
 
-* **Mennyibe kerül a vendégnek lemondás esetén?**&#x41;lapértelmezés szerint a nem visszatéríthető biztosítás 100%-ban nem visszatéríthető. Az összeget itt finomhangolhatja.*pl. a teljes ár 50%-a*
-* **Van határidő a vádiratnak?**&#x48;a finomhangolta az összeget, akkor tovább finomhangolhatja azt az időtartam beállításával, amíg az összeg érvényben marad.*pl. érkezés előtt 3 nappal*
-* **Mennyibe kerül a vendégnek a határidő utáni lemondás?**&#x41;mennyiben a vendég túllépi a fent megadott határidőt, beállíthatja, hogy a vendég mennyit fizessen a határidő lejárta után.*pl. a teljes ár 70%-a*
+- **Mennyit számítanak fel a vendégnek a lemondásért?** Alapértelmezés szerint a nem visszatéríthető feltétel 100%-ban nem visszatéríthető. Itt finomhangolhatja az összeget. *pl. az összeg 50%-a*
+- **Van-e határidő a díj felszámítására?** Ha finomhangolta az összeget, tovább pontosíthatja azt azzal, hogy beállítja, meddig érvényes ez az összeg. *pl. érkezés előtt 3 napig*
+- **Mennyit számítanak fel a vendégnek a határidő után történő lemondásért?** Ha a vendég túllépi a fent beállított határidőt, megadhatja, mennyit kell fizetnie a határidő után. *pl. az összeg 70%-a*
 
 ## Visszatéríthető
 
-Visszatéríthető lemondási szabályzat létrehozásához kapcsold be a kapcsolót ✅ állásba, amikor a rendszer megkérdezi, hogy a szabályzat visszatéríthető-e.
+Visszatéríthető lemondási feltétel létrehozásához állítsa a kapcsolót ✅ bekapcsolt állásba, amikor megkérdezik, hogy a feltétel visszatéríthető-e.
 
 ### Opciók
 
-Opcionálisan konfigurálhatja a`refundable`politikát a nagyobb kontroll érdekében.
+Lehetőség van a `visszatéríthető` feltétel további finomhangolására a nagyobb kontroll érdekében.
 
-* **Mennyivel az érkezés előtt mondhatja le a vendég díjmentesen?**&#x41;lapértelmezés szerint a visszatérítendő szabályzat mindig 100%-ban visszatéríthető. A határidőt itt finomhangolhatja.*pl. 3 nappal az érkezés előtt*
-* **Milyen díjat kell fizetnie a vendégnek, ha a lemondás a fenti határidő után történik?**&#x48;a finomhangolta a határidőt, beállíthatja azt az összeget, amelyet a vendég a határidő lejárta után fizet.*pl. a teljes ár 50%-a*
-* **Mennyit kell fizetni a vendégnek „Nem megjelenés” esetén?**&#x41;bban az esetben, ha a vendég nem jelenik meg, beállíthatja a felszámított összeget.`No show`.*pl. a teljes ár 100%-a*
-
+- **Meddig, az érkezés előtt, mondhatja le a vendég ingyenesen?** Alapértelmezés szerint a visszatéríthető feltétel mindig 100%-ban visszatéríthető. Itt finomhangolhatja a határidőt. *pl. érkezés előtt 3 nappal*
+- **Mennyit számítanak fel a vendégnek, ha a lemondás a fenti határidő után történik?** Ha finomhangolta a határidőt, megadhatja, mennyit kell fizetnie a vendégnek a határidő után. *pl. az összeg 50%-a*
+- **Mennyit számítanak fel a vendégnek, ha nem jelenik meg?** Ha a vendég nem jelenik meg, megadhatja, mennyit számítanak fel a `No show` esetén. *pl. az összeg 100%-a*

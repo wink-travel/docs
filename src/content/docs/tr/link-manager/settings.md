@@ -1,30 +1,28 @@
 ---
-title: Settings
-description: >-
-  Bu yazımızda, ayarlar kısmından erişebileceğiniz özellikleri kullanarak
-  WinkLinks sayfanızı nasıl özelleştirebileceğinizi anlatıyoruz.
+title: Ayarlar
+description: Bu makalede, ayarlar altında size sunulan özellikleri kullanarak WinkLinks sayfanızı nasıl özelleştirebileceğinizi anlatıyoruz.
 sidebar:
   order: 4
 ---
-WinkLinks ayarlarınızı yönetmek için şuraya gidin:`WinkLinks`ana gezinme çubuğunda ve tıklayın`Settings`sekmesi.
 
-WinkLinks davranışınızı şu şekilde yapılandırabilirsiniz:`Settings`:
+WinkLinks ayarlarınızı yönetmek için ana navigasyon çubuğunda `WinkLinks`e gidin ve `Ayarlar` sekmesine tıklayın.
 
-* **Zeki**Zekayı etkinleştirerek, bilgiyi geri almaya çalışıyoruz`rich`içerik şu sitelerden edinilebilir:`Wink`,`Spotify`,`Instagram`,`Facebook`,`YouTube`,`X (formerly Twitter)`ve diğerleri.*Örn. Bir IG gönderisini WinkLinks'te paylaşırsanız, gönderi IG'de gördüğünüz gibi beğeniler, yorumlar ve gönderiyle etkileşim kurmanın bir yoluyla birlikte gösterilecektir.*
-* **İlk gösterim**Hedef kitlenizin sitenizle ilk etkileşimini nasıl gerçekleştireceğini ve içeriğinizi nasıl göreceğini kontrol edin. Size sunulan üç seçenek vardır:
-  * `Column-based`tasarım. Bu bizim tercih ettiğimiz tasarımdır ve çok fazla içerik görüntülemezseniz sayfanızda harika görünecektir. Ancak,`heavy`eğer çok zengin içerik paylaşıyorsanız.
-  * `Row-based`tasarım. Bu, içeriğinizi tarayıcıların tüketmesi için biraz daha az ağır hale getirmenin bir yoludur ancak kartların daha iyi hizalanması için içeriğinizin benzer miktarda metne sahip olmasını öneririz.
-  * `List-based`tasarım. Diğer bağlantı yöneticilerinin çoğu, bir URL ve asgari içerikle basit bir liste görüntüler. Çok fazla içeriğiniz varsa ve bunları olabildiğince çabuk görüntülemek istiyorsanız, içeriğinizi görüntülemenin bu yolunu seçin.
-* **Profil resmi**Her WinkLinks sayfasının en üstünde hesap profil resminiz ve hesap açıklamanız bulunur. Profil resminizi iki şekilde görüntüleyebilirsiniz:
-  * `Circle`Eğer resminiz kendinize aitse veya yuvarlak bir kabın içine sığabilecek herhangi bir şeye aitse dairesel bir stil kullanmanızı öneririz.
-  * `Rectangle`Şirket logonuz profil resminiz ise dikdörtgen bir stil kullanmanızı öneririz çünkü şirket logolarının çoğu dikdörtgen şeklindedir.
-* **Özelleştirme**WinkLinks sayfanız için hangi özelleştirmeyi kullanmak istediğinizi seçin. Bu, Wink envanter kartlarını, haritalarını veya ızgaralarını görüntülerken tema renklerinizi ve güzergahınızı etkiler.
+İşte WinkLinks davranışınızı `Ayarlar` ile yapılandırabileceğiniz yollar:
+
+- **Akıllı** Akıllılığı etkinleştirerek, `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (eski adıyla Twitter)` ve diğerleri gibi sitelerden mevcut `zengin` içeriği almaya çalışıyoruz. *örneğin, WinkLinks'te bir IG gönderisi paylaşırsanız, gönderi IG'de gördüğünüz gibi beğeniler, yorumlar ve gönderi ile etkileşim kurma yolları ile görüntülenir.*
+- **İlk görüntüleme** Kitlenizin sitenizle ilk etkileşimini ve içeriğinizi nasıl gördüğünü kontrol edin. Size sunulan üç seçenek vardır:
+    - `Sütun tabanlı` tasarım. Bu bizim tercih ettiğimiz tasarımdır ve çok fazla içerik paylaşmıyorsanız sayfanızda harika görünecektir. Ancak, çok fazla zengin içerik paylaşıyorsanız `ağır` olabilir.
+    - `Satır tabanlı` tasarım. Bu, içeriğinizi tarayıcıların tüketmesi için biraz daha hafif hale getirmenin bir yoludur ancak kartların daha iyi hizalanması için içeriğinizin benzer miktarda metin içermesini öneririz.
+    - `Liste tabanlı` tasarım. Diğer çoğu bağlantı yöneticisi, bir URL ve minimal içerik içeren basit bir liste gösterir. Çok fazla içeriğiniz varsa ve bunu mümkün olan en hızlı şekilde göstermek istiyorsanız bu görüntüleme biçimini seçin.
+- **Profil fotoğrafı** Her WinkLinks sayfasının üstünde hesap profil fotoğrafınız ve hesap açıklamanız bulunur. Profil fotoğrafınızı iki şekilde görüntüleyebilirsiniz:
+    - `Daire` Fotoğrafınız kendinizin veya yuvarlak bir konteynere sığan başka bir şeyin resmi ise dairesel stili kullanmanızı öneririz.
+    - `Dikdörtgen` Profil fotoğrafınız şirket logonuz ise, çoğu şirket logosu dikdörtgen olduğundan dikdörtgen stili kullanmanızı öneririz.
+- **Özelleştirme** WinkLinks sayfanız için hangi özelleştirmeyi kullanmak istediğinizi seçin. Bu, tema renklerinizi ve Wink envanter kartları, haritalar veya ızgaralar gösterilirken seyahat planınızı etkiler.
 
 ## API
 
-Yönetmek isteyen geliştiriciler`WinkLinks`gidebilir[Geliştiriciler > API > WinkLinks](/developers/apis/#winklinks-api).
+`WinkLinks`i yönetmek isteyen geliştiriciler [Geliştiriciler > API > WinkLinks](/tr/developers/apis/#winklinks-api) sayfasına gidebilirler.
 
 ## Daha fazla okuma
 
-* Daha fazlasını okuyun[Özelleştirmeler](/studio/customization).
-
+- [Özelleştirmeler](/tr/studio/customization) hakkında daha fazla bilgi edinin.

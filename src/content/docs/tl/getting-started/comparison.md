@@ -1,44 +1,42 @@
 ---
-title: Comparison
-description: >-
-  Alamin kung paano inihahambing ang Wink sa mga katulad na kumpanya sa
-  paglalakbay sa online at kung ano ang ilan sa mga benepisyo sa pagsali sa
-  Wink.
+title: Paghahambing
+description: Alamin kung paano ikinukumpara ng Wink sa mga katulad na online travel companies at kung ano ang mga benepisyo ng pagsali sa Wink.
 sidebar:
   order: 5
 ---
-Alamin kung paano inihahambing ang Wink sa iba pang mga online na segment ng paglalakbay sa merkado. Nasa ibaba ang isang mabilis na breakdown ng mga feature na naisip naming mahalagang paghambingin.
+
+Alamin kung paano ikinukumpara ng Wink sa iba pang mga online travel segments sa merkado. Nasa ibaba ang mabilisang paghahati-hati ng mga tampok na sa tingin namin ay mahalagang ikumpara.
 
 ## Feature matrix
 
-| Tampok | Wink | OTA | IBE | Bangko ng kama
-| ------------------------ | -- | -- | -- | -- |
-| Internet booking engine | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Link-in-bio storefront | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| B2B affiliate network | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Suporta sa ahente sa paglalakbay | 🟢 | 🟢 | ⚫️ | 🟢 |
-| pamamahagi at marketing na tinulungan ng AI | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Mga tool na madaling gamitin sa lipunan | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| B2C channel na walang komisyon | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Libreng Google Hotel listing | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Web Component / SDK / API access | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Direktang relasyon | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Napag-uusapang mga komisyon sa bawat channel ng pagbebenta | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Channel manager at koneksyon sa PMS | 🟢 | 🟢 | 🟢 | 🟢 |
-| Pagmamay-ari ng Supplier ang Customer | 🟢 | ⚫️ | 🟢 | 🟢 |
-| Subaybayan ang ROI | 🟢 | 🟢 | ⚫️ | ⚫️ |
-| Pay-per-Performance | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Pinagsamang gateway ng pagbabayad | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Mga pagbabayad gamit ang Wise | 🟢 | 🟢 | ⚫️ | ⚫️ |
+| Feature | Wink | OTA | IBE | Bed Bank
+| ----------------------- | -- | -- | -- | -- |
+| Internet booking engine | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Link-in-bio storefront | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| B2B affiliate network | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Travel agent support | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| AI-assisted distribution & marketing | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Social-friendly tools | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Commission-free B2C channel | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Free Google Hotel listing | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Web Component / SDK / API access | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Direct relationships | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Negotiable commissions per sales channel | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Channel manager & PMS connectivity | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Supplier owns the Customer | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| Track ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Pay-per-Performance | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Integrated payment gateway | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Payouts with Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+
 
 ## Wink vs Internet Booking Engine (IBE)
 
-Sinusubukan ng ilang hotel na ikumpara kami sa kanilang internet booking engine na kasama ng kanilang channel manager at hinihiling sa amin na bigyan sila ng nakapirming, buwanang, presyo batay sa bilang ng mga susi sa kanilang property.
+May ilang hotel na sinusubukang ikumpara kami sa kanilang internet booking engine na kasama sa kanilang channel manager at hinihiling sa amin na magbigay ng isang fixed, buwanang presyo base sa bilang ng mga susi ng kanilang property.
 
-Hindi kami IBE at sana [Wink Academy](/) tumutulong upang linawin ito. May mga kalamangan at kahinaan sa anumang serbisyo. Kung ang iyong IBE ay gumagana para sa iyong ari-arian, manatili doon.
-Umiiral ang Wink upang punan ang ilang mga bakante sa industriya ng paglalakbay at pagsama-samahin ang lahat sa isang lugar.
+Hindi kami isang IBE at sana makatulong ang [Wink Academy](/tl/) upang linawin ito. May mga kalamangan at kahinaan ang anumang serbisyo. Kung ang iyong IBE ay epektibo para sa iyong property, manatili ka doon.  
+Ang Wink ay umiiral upang punan ang ilang mga puwang sa industriya ng paglalakbay at pagsamahin ang lahat sa isang lugar. 
 
 :::tip
-Hindi mo kailangang palitan ang iyong kasalukuyang IBE. Gayunpaman, inirerekumenda namin ang pagbibigay sa aming social-friendly na booking engine, o link manager, na pumunta sa isa sa iyong mga social media account upang makita kung paano sila nagko-convert. Wala kang babayaran kung walang mga booking - Ano ang kailangan mong mawala? 😉
+Hindi mo kailangang palitan ang iyong kasalukuyang IBE. Gayunpaman, inirerekomenda naming subukan ang aming social-friendly booking engine, o link manager, sa isa sa iyong mga social media account upang makita kung paano ito nagko-convert. Hindi ka magbabayad kung walang booking - Ano ang mawawala sa iyo? 😉
 :::
-

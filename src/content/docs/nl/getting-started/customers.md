@@ -1,55 +1,53 @@
 ---
-title: Customers
-description: >-
-  In dit artikel leggen we uit welke soorten klanten wij bedienen en hoe Wink u
-  kan helpen.
+title: Klanten
+description: Dit artikel legt uit welke soorten klanten wij bedienen en hoe Wink kan helpen.
 sidebar:
   order: 2
 ---
-In dit artikel leggen we uit welke soorten klanten wij bedienen en hoe we u het beste kunnen helpen.
 
-## Eigenschappen
+Dit artikel legt uit welke soorten klanten wij bedienen en hoe wij het beste kunnen helpen.
 
-Wink begon tien jaar geleden met het onboarden van hotels. Hotels gebruiken Wink om hun inventaris effectief te beheren via duizenden verkoopkanalen, waaronder hun eigen brand.com-website, en om meer te verdienen met elke boeking. Tegelijkertijd versterken ze hun directe kanalen met behulp van onze hospitality-gerichte tools die de merkidentiteit en winstgevendheid versterken.
+## Accommodaties
+
+Wink is tien jaar geleden begonnen met het onboarden van hotels. Hotels gebruiken Wink om hun voorraad effectief te beheren via duizenden verkoopkanalen, inclusief hun eigen brand.com-site, en om meer te verdienen met elke boeking terwijl ze directe kanalen versterken met behulp van onze op hospitality gerichte tools die de merkidentiteit en winstgevendheid verbeteren​.
 
 ## Merken & Ketens
 
-Merken en ketens hebben net iets andere behoeften dan een enkele accommodatie. Op Wink kunnen ze:
+Merken en ketens hebben iets andere behoeften dan een enkele accommodatie. Op Wink kunnen zij:
 
-* Beheer meerdere eigendommen onder één account.
-* Beheerders toewijzen aan eigendommen
-* Gebruik [WinkLinks](/link-manager/wink-links), [WordPress](/developers/wordpress) en onze [WordPress](/developers/wordpress) om meerdere panden op één plek te vermarkten en verkopen.
+- Meerdere accommodaties beheren onder één account.
+- Managers toewijzen aan accommodaties.
+- Gebruikmaken van [WinkLinks](/nl/link-manager/wink-links), [WordPress](/nl/developers/wordpress) en onze [Web Components](/nl/developers/web-components) om meerdere accommodaties op één plek te promoten en verkopen.
 
-## Beheermaatschappijen
+## Beheerbedrijven
 
-Bedrijven die zich bezighouden met hospitality management en bestemmingsmanagement kunnen hun vastgoedportefeuilles namens de eigenaren beheren. Er is een duidelijk voordeel aan het laten afhandelen van de verkoop aan het online segment door online gerichte, digitaal bewuste bureaus, terwijl hotels zich kunnen richten op het beheren van de klanttevredenheid zodra ze ter plaatse zijn.
+Hospitality managementbedrijven en destination management companies kunnen hun vastgoedportefeuilles beheren namens de eigenaren. Er is een duidelijk voordeel om online-georiënteerde, digitaal bewuste bureaus de verkoop aan het online segment te laten verzorgen, terwijl hotels zich kunnen richten op het managen van klanttevredenheid zodra gasten op locatie zijn.
 
-## Beïnvloeders
+## Influencers
 
-Influencers gebruiken Wink om hun publiek beter te gelde te maken. Ze doen dit door samen te werken met hotels, aanbiedingen op maat te creëren en de sociale tools en krachtige analyses van Wink te gebruiken om bij te houden welke producten het best verkopen.
+Influencers gebruiken Wink om hun publiek beter te gelde te maken. Ze doen dit door samen te werken met hotels, aangepaste deals te creëren en gebruik te maken van Winks social-vriendelijke tools en krachtige analytics om te volgen welke producten het beste verkopen​.
 
 ## Reisagenten
 
-Reisagenten krijgen toegang tot reisinventaris wereldwijd tegen geweldige prijzen via onze speciale [reisagentenportaal](https://agent.wink.travel) Ze kunnen boekingen maken via ons portaal, via onze API of door hun gebruikers zelf te laten boeken op de website van het reisbureau dat onze technologieën gebruikt.
+Reisagenten krijgen toegang tot reisvoorraad wereldwijd tegen scherpe prijzen via ons speciale [reisagentenportaal](https://agent.wink.travel). Ze kunnen boekingen maken via ons portaal, via onze API of door hun gebruikers zelf te laten boeken op de reisagentenwebsite die onze technologieën gebruikt.
 
-## Corporaties
+## Bedrijven
 
-Bedrijven hebben meer behoefte aan een reisplatform:
+Bedrijven hebben meer nodig van een reisplatform:
 
-* Ze vereisen goed georganiseerde routes die flexibiliteit en last-minutewijzigingen ondersteunen.
-* Ze hebben betrouwbare communicatiemiddelen nodig, zoals internet.
-* Ze hebben voorkeuren voor leveranciers met betrekking tot lidmaatschappen.
-* Vaak hebben ze een zakelijke creditcard en stellen ze bestedingslimieten in.
-* Er is integratie van kostenbeheer en rapportage nodig.
-* Ze hebben behoefte aan conciërgeondersteuning en MICE-diensten bij evenementen.
+- Ze hebben goed georganiseerde reisschema’s nodig die flexibiliteit en last-minute wijzigingen ondersteunen.
+- Ze hebben betrouwbare communicatietools nodig, zoals internet.
+- Ze hebben voorkeuren voor leveranciers met lidmaatschappen.
+- Ze hebben vaak een zakelijke creditcard en stellen bestedingslimieten in.
+- Ze hebben behoefte aan onkostenbeheer en rapportage-integratie.
+- Ze hebben conciërgeservice nodig, evenals MICE-diensten bij evenementen.
 
-Zakelijke reizigers kunnen hun eigen accounts beheren op onze [bedrijfsportaal](/corporate/what-is-group) of gebruik onze officieel ondersteunde [bedrijfsportaal](/corporate/what-is-group) plug-in en [bedrijfsportaal](/corporate/what-is-group) integratie.
+Zakelijke reizigers kunnen hun eigen accounts beheren via ons [bedrijfsportaal](/nl/corporate/what-is-group) of gebruikmaken van onze officieel ondersteunde [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin en [Concur](https://www.concur.com/) integratie.
 
 ## Ontwikkelaars
 
-Hoewel we dit platform door en voor hoteliers hebben gebouwd... is elke regel code specifiek ontworpen met het oog op herbruikbaarheid. Ons team van ontwikkelaars heeft Wink gebouwd in de hoop dat de volgende 🦄 reisapp op onze codebase wordt gebouwd. Navigeer naar de [Ontwikkelaar](/developers/build-on-wink) pagina om te zien hoe Wink u kan ondersteunen bij uw volgende onderneming.
+Hoewel we dit platform hebben gebouwd door en voor hoteliers... is elke regel code geschreven met het specifieke doel van herbruikbaarheid. Ons team van ontwikkelaars heeft Wink gebouwd in de hoop dat de volgende 🦄 reisapp bovenop onze codebase wordt gebouwd. Ga naar de [Developer](/nl/developers/build-on-wink) pagina om te zien hoe Wink jou kan ondersteunen bij je volgende project.
 
-## Ander
+## Overig
 
-Iedereen die reisinventaris wil vinden en verkopen, kan profiteren van Wink. Zet je passie voor hospitality om in actie en verdien een geweldige commissie op elke boeking.
-
+Iedereen die reisvoorraad wil vinden en verkopen, kan profiteren van het gebruik van Wink. Zet je passie voor hospitality om in actie door een mooie commissie te verdienen op elke boeking.

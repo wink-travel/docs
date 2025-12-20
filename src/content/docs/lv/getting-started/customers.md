@@ -1,55 +1,53 @@
 ---
-title: Customers
-description: >-
-  Šajā rakstā ir paskaidrots, kāda veida klientus mēs apkalpojam un kā Wink var
-  palīdzēt.
+title: Klienti
+description: Šis raksts izskaidro klientu tipus, kuriem mēs sniedzam pakalpojumus, un kā Wink var palīdzēt.
 sidebar:
   order: 2
 ---
-Šajā rakstā ir paskaidrots, kāda veida klientus mēs apkalpojam un kā mēs vislabāk varam palīdzēt.
 
-## Īpašumi
+Šis raksts izskaidro klientu tipus, kuriem mēs sniedzam pakalpojumus, un kā mēs vislabāk varam palīdzēt.
 
-Wink sāka piesaistīt viesnīcas pirms desmit gadiem. Viesnīcas izmanto Wink, lai efektīvi pārvaldītu savu inventāru tūkstošos pārdošanas kanālu, tostarp savā brand.com vietnē, un lai nopelnītu vairāk ar katru rezervāciju, vienlaikus veicinot tiešos kanālus ar mūsu viesmīlībai paredzēto rīku palīdzību, kas uzlabo zīmola identitāti un rentabilitāti.
+## Naktsmītnes
+
+Wink sāka sadarboties ar viesnīcām pirms desmit gadiem. Viesnīcas izmanto Wink, lai efektīvi pārvaldītu savu inventāru tūkstošos pārdošanas kanālu, tostarp savā brand.com vietnē, un nopelnītu vairāk ar katru rezervāciju, vienlaikus veicinot tiešos kanālus, izmantojot mūsu viesmīlībai vērstos rīkus, kas uzlabo zīmola identitāti un rentabilitāti​.
 
 ## Zīmoli un ķēdes
 
-Zīmoliem un ķēdēm ir nedaudz atšķirīgas vajadzības nekā vienam īpašumam. Wink platformā tie var:
+Zīmoliem un ķēdēm ir nedaudz atšķirīgas vajadzības nekā vienai naktsmītnei. Wink platformā viņi var:
 
-* Pārvaldiet vairākus īpašumus vienā kontā.
-* Piešķirt pārvaldniekus īpašumiem
-* Lietošana [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) un mūsu [WinkLinks](/link-manager/wink-links) pārdot un reklamēt vairākus īpašumus vienuviet.
+- Pārvaldīt vairākas naktsmītnes vienā kontā.
+- Piešķirt pārvaldniekus naktsmītnēm.
+- Izmantot [WinkLinks](/lv/link-manager/wink-links), [WordPress](/lv/developers/wordpress) un mūsu [Web Components](/lv/developers/web-components), lai tirgotu un pārdotu vairākas naktsmītnes vienuviet.
 
 ## Pārvaldības uzņēmumi
 
-Viesmīlības pārvaldības uzņēmumi un galamērķu pārvaldības uzņēmumi var pārvaldīt savus īpašumu portfeļus īpašnieku vārdā. Ir neapšaubāma priekšrocība, ja pārdošanu tiešsaistes segmentam ļauj aģentūras, kas orientējas uz digitālajām tehnoloģijām, savukārt viesnīcas var koncentrēties uz klientu apmierinātības pārvaldību, tiklīdz viņi ierodas telpās.
+Viesmīlības pārvaldības uzņēmumi un galamērķu pārvaldības uzņēmumi var pārvaldīt savu naktsmītņu portfeli īpašnieku vārdā. Ir skaidra priekšrocība ļaut tiešsaistē orientētām, digitāli apzinīgām aģentūrām pārvaldīt pārdošanu tiešsaistes segmentam, kamēr viesnīcas var koncentrēties uz klientu apmierinātības nodrošināšanu, kad viesi ierodas.
 
 ## Ietekmētāji
 
-Ietekmētāji izmanto Wink, lai labāk monetizētu savu auditoriju. Viņi to dara, sadarbojoties ar viesnīcām, veidojot pielāgotus piedāvājumus un izmantojot Wink sociālajiem tīkliem draudzīgos rīkus un jaudīgo analītiku, lai izsekotu, kuri produkti tiek pārdoti vislabāk.
+Ietekmētāji izmanto Wink, lai labāk monetizētu savu auditoriju. Viņi sadarbojas ar viesnīcām, veido pielāgotus piedāvājumus un izmanto Wink sociālajiem tīkliem draudzīgos rīkus un spēcīgo analītiku, lai izsekotu, kuri produkti pārdodas vislabāk​.
 
 ## Ceļojumu aģenti
 
-Ceļojumu aģenti iegūst piekļuvi ceļojumu inventāram visā pasaulē par lieliskām cenām, izmantojot mūsu īpašos pakalpojumus. [ceļojumu aģenta portāls](https://agent.wink.travel) Viņi var veikt rezervācijas, izmantojot mūsu portālu, mūsu API vai ļaujot saviem lietotājiem pašiem veikt rezervācijas ceļojumu aģentūras tīmekļa vietnē, kas izmanto mūsu tehnoloģijas.
+Ceļojumu aģenti iegūst piekļuvi ceļojumu inventāram visā pasaulē par izdevīgām cenām, izmantojot mūsu īpašo [ceļojumu aģentu portālu](https://agent.wink.travel). Viņi var veikt rezervācijas caur mūsu portālu, izmantojot mūsu API vai ļaujot saviem lietotājiem pašiem rezervēt ceļojumu aģentu vietnē, kas izmanto mūsu tehnoloģijas.
 
 ## Korporācijas
 
 Korporācijām ir nepieciešama plašāka ceļojumu platforma:
 
-* Viņiem nepieciešami labi organizēti maršruti, kas atbalsta elastību un pēdējā brīža izmaiņas.
-* Viņiem nepieciešami uzticami saziņas rīki, piemēram, internets.
-* Viņiem ir pārdevēju preferences ar dalību.
-* Viņiem bieži ir korporatīvā kredītkarte un noteikti tēriņu limiti.
-* Nepieciešama izdevumu pārvaldības un pārskatu integrācija.
-* Viņiem ir nepieciešams konsjerža atbalsts, kā arī MICE pakalpojumi pasākumos.
+- Tām nepieciešami labi organizēti maršruti, kas atbalsta elastību un pēdējā brīža izmaiņas.
+- Tām nepieciešami uzticami saziņas rīki, piemēram, internets.
+- Tām ir piegādātāju preferences ar dalības programmām.
+- Tām bieži ir korporatīvā kredītkarte un noteikti izdevumu limiti.
+- Tām nepieciešama izdevumu pārvaldība un atskaišu integrācija.
+- Tām nepieciešama konsjerža atbalsts, kā arī MICE pakalpojumi pasākumos.
 
-Korporatīvie ceļotāji var pārvaldīt savus kontus mūsu platformā. [korporatīvais portāls](/corporate/what-is-group) vai izmantojiet mūsu oficiāli atbalstīto [korporatīvais portāls](/corporate/what-is-group) spraudnis un [korporatīvais portāls](/corporate/what-is-group) integrācija.
+Korporatīvie ceļotāji var pārvaldīt savus kontus mūsu [korporatīvajā portālā](/lv/corporate/what-is-group) vai izmantot mūsu oficiāli atbalstīto [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) spraudni un [Concur](https://www.concur.com/) integrāciju.
 
 ## Izstrādātāji
 
-Kamēr mēs šo platformu veidojām viesnīcniekiem un viesnīcniekiem... Katra koda rindiņa tika veidota ar mērķi nodrošināt atkārtotu izmantošanu. Mūsu izstrādātāju komanda izveidoja Wink cerībā, ka nākamā 🦄 ceļojumu lietotne tiks veidota, balstoties uz mūsu koda bāzi. Dodieties uz [Izstrādātājs](/developers/build-on-wink) lapu, lai uzzinātu, kā Wink var jūs atbalstīt jūsu nākamajā pasākumā.
+Lai gan šo platformu izveidojām viesnīcu nozarei... Katrs koda rindiņa tika veidota ar mērķi to atkārtoti izmantot. Mūsu izstrādātāju komanda izveidoja Wink ar cerību, ka nākamā 🦄 ceļojumu lietotne tiks veidota uz mūsu koda bāzes. Dodieties uz [Developer](/lv/developers/build-on-wink) lapu, lai redzētu, kā Wink var jūs atbalstīt jūsu nākamajā projektā.
 
 ## Citi
 
-Ikviens, kurš vēlas atrast un pārdot ceļojumu inventāru, var gūt labumu no Wink izmantošanas. Pārvērtiet savu aizraušanos ar viesmīlību darbībā, nopelnot lielisku komisijas maksu par katru rezervāciju.
-
+Ikviens, kurš vēlas atrast un pārdot ceļojumu inventāru, var gūt labumu, izmantojot Wink. Pārvērtiet savu aizraušanos ar viesmīlību darbībā, nopelnot lielu komisiju par katru rezervāciju.

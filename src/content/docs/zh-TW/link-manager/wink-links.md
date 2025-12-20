@@ -1,65 +1,65 @@
 ---
 title: WinkLinks
-description: 在本文中，我們解釋了什麼是連結管理器以及我們的連結管理器可以做什麼。
+description: 本文說明什麼是連結管理器以及我們的連結管理器能做什麼。
 sidebar:
   order: 0
 ---
-連結管理員可讓您儲存和組織您喜歡的 URL 以供日後使用。您的瀏覽器書籤就是連結管理員的一個範例。隨著社群媒體的出現，向朋友和觀眾展示和提供連結的需求越來越大。您的 Facebook 動態就是社群友善連結管理員的一個範例。
 
-：：：警告
-大多數連結管理器要求發布聯盟連結的任何人都必須訂閱。
+連結管理器讓你可以儲存並組織你喜歡的網址以便日後使用。你的瀏覽器書籤就是一種連結管理器。隨著社群媒體的興起，讓連結能夠被朋友和觀眾看到並分享的需求也越來越大。你的 Facebook 動態消息就是一種社群友善的連結管理器。
+
+:::caution
+大多數連結管理器要求任何發布聯盟連結的人訂閱付費。
 :::
 
-我們建造 [WinkLinks](https://i.trvl.as/) ；一個完全免費的連結管理器，專注於旅遊領域，以激發、宣傳和有效地在線銷售。
+我們打造了 [WinkLinks](https://i.trvl.as/)；一個完全免費的連結管理器，專注於旅遊領域，讓你能有效地在線上推廣、廣告和銷售。
 
-## 特徵
+## 功能
 
-* WinkLinks 可讓您免費添加所有現有的聯盟鏈接，例如 Commission Junction 和 Amazon。
-* 你會得到一個很酷的虛榮網址，例如<https://i.trvl.as/bob>，適用於您只能共用一個 URL 的情況。
-* 您可以組織和共享連結並上傳文件。
-* 飯店、連鎖店和品牌可以使用 WinkLinks 作為高級預訂引擎：
-  * 支援多種屬性。
-  * 支援多個目的地。
-  * 支援多種貨幣。
-  * 支援多種語言。
-* WinkLinks 支持`rich content` *（見下文）*。
-* 只需點擊兩下即可從 IG 預訂 🚀
+- WinkLinks 讓你免費新增所有現有的聯盟連結，如 Commission Junction 和 Amazon。
+- 你會獲得一個酷炫的專屬網址，例如 [https://i.trvl.as/bob](https://i.trvl.as/bob)，適合只能分享單一網址的時候使用。
+- 你可以組織並分享連結，還能上傳檔案。
+- 飯店、連鎖品牌可以使用 WinkLinks 作為進階訂房引擎：
+    - 支援多個物業。
+    - 支援多個目的地。
+    - 支援多種貨幣。
+    - 支援多種語言。
+- WinkLinks 支援 `豐富內容` *(見下方)*。
+- 從 IG 到訂房只需 2 次點擊 🚀
 
-## 內容豐富
+## 豐富內容
 
-：：：筆記
-放`Intelligent` 在你的🟢[設定](/link-manager/settings) 使用此功能。
+:::note
+在你的 [設定](/zh-TW/link-manager/settings) 中將 `Intelligent` 設為 🟢 即可使用此功能。
 :::
 
-如果您分享來自支持`rich` /`oEmbed` 內容，您的連結就會在 WinkLinks 上生效。
+如果你分享的連結來自支援 `rich` / `oEmbed` 內容的網站，你的連結在 WinkLinks 上會變得生動活潑。
 
-支持的網站：
+支援的網站：
 
-* Facebook -*與帖子互動並播放視頻*。
-* Instagram -*與帖子互動並播放視頻*。
-* Youtube - *播放影片*。
-* X（原 Twitter）-*與貼文互動*。
-* Spotify -*播放您喜愛的播放清單*。
-* 眨眼 -*看`Advanced`*。
+- Facebook - *可互動貼文並播放影片*。
+- Instagram - *可互動貼文並播放影片*。
+- YouTube - *播放影片*。
+- X（前身為 Twitter）- *可互動貼文*。
+- Spotify - *播放你喜愛的播放清單*。
+- Wink - *見 `Advanced`*。
 
-## 先進的
+## 進階功能
 
-WinkLinks 也是一個很好的方式來展示你找到的旅行清單，透過 [Wink工作室](https://studio.wink.travel) ，並且是您想要向受眾推銷的產品。
+WinkLinks 也是展示你透過 [Wink Studio](https://studio.wink.travel) 找到的旅遊庫存，並想銷售給你的觀眾的絕佳方式。
 
-使用 WinkLinks 銷售您的：
+使用 WinkLinks 銷售你的：
 
-* [可共享連結](/studio/shareable-links) - 選擇顯示為：
-  * [廣告橫幅](/developers/web-components/#content-loader) 。
-  * 具有即時價格更新的正常連結。
-* [牌](/studio/cards) - 可預訂的卡，包含即時價格和可用性。
-* [網格](/studio/grids) - 帶有可預訂卡片的網格。
-* [地圖](/studio/maps) - 帶有標記的地圖，可打開為可預訂的卡片。
+- [可分享連結](/zh-TW/studio/shareable-links) - 可選擇顯示為：
+    - [廣告橫幅](/zh-TW/developers/web-components/#content-loader)。
+    - 帶有即時價格更新的普通連結。
+- [卡片](/zh-TW/studio/cards) - 可訂房的卡片，帶有即時價格與可用性。
+- [網格](/zh-TW/studio/grids) - 含可訂房卡片的網格。
+- [地圖](/zh-TW/studio/maps) - 含標記並可開啟可訂房卡片的地圖。
 
-：：：筆記
-要管理您的 WinkLinks 帳戶，請登入您的聯盟帳戶 [Wink工作室](https://studio.wink.travel) 。
+:::note
+要管理你的 WinkLinks 帳號，請登入你的聯盟帳號於 [Wink Studio](https://studio.wink.travel)。
 :::
 
-：：：提示
-要查看帳戶的實際操作，請查看我們的共同創辦人 Bjorn 的 WinkLinks 帳戶：<https://i.trvl.as/bjorn>。
+:::tip
+想看帳號實際運作，請參考我們共同創辦人 Bjorn 的 WinkLinks 帳號：[https://i.trvl.as/bjorn](https://i.trvl.as/bjorn)。
 :::
-

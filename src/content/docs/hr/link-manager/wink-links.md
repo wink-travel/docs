@@ -1,67 +1,65 @@
 ---
 title: WinkLinks
-description: >-
-  U ovom članku objašnjavamo što je upravitelj poveznica i što naš upravitelj
-  poveznica može učiniti.
+description: U ovom članku objašnjavamo što je upravitelj poveznica i što naš upravitelj poveznica može učiniti.
 sidebar:
   order: 0
 ---
-Upravitelj poveznica omogućuje vam spremanje i organiziranje URL-ova koji vam se sviđaju za kasnije. Oznake vašeg preglednika primjer su upravitelja poveznica. Pojavom društvenih medija pojavila se veća potreba za izlaganjem i stavljanjem poveznica na raspolaganje vašim prijateljima i publici. Vaš Facebook feed primjer je upravitelja poveznica prilagođenog društvenim mrežama.
 
-:::oprez
+Upravitelj poveznica omogućuje vam spremanje i organiziranje URL-ova koje volite za kasnije. Vaše oznake u pregledniku su primjer upravitelja poveznica. S pojavom društvenih mreža, pojavila se veća potreba za izlaganjem i dijeljenjem poveznica s vašim prijateljima i publikom. Vaš Facebook feed je primjer društveno prilagođenog upravitelja poveznica.
+
+:::caution
 Većina upravitelja poveznica zahtijeva pretplatu za svakoga tko objavljuje affiliate poveznice.
 :::
 
-Izgradili smo [WinkLinks](https://i.trvl.as/) ; potpuno besplatni upravitelj poveznica, usmjeren na putničku industriju, za poticanje, oglašavanje i učinkovitu online prodaju.
+Izradili smo [WinkLinks](https://i.trvl.as/) ; potpuno besplatan upravitelj poveznica, usmjeren na putnički sektor, za uzbuđivanje, oglašavanje i učinkovitu prodaju na mreži.
 
 ## Značajke
 
-* WinkLinks vam omogućuje besplatno dodavanje svih vaših postojećih affiliate linkova, poput Commission Junctiona i Amazona.
-* Dobivate cool vanity URL, kao što je<https://i.trvl.as/bob>, za one slučajeve kada možete dijeliti samo jedan URL.
-* Možete organizirati i dijeliti poveznice te prenositi datoteke.
-* Hoteli, lanci i brendovi mogu koristiti WinkLinks kao napredni sustav za rezervacije:
-  * Podržava više svojstava.
-  * Podržava više odredišta.
-  * Podržava više valuta.
-  * Podržava više jezika.
-* WinkLinks podržava`rich content` *(vidi dolje)*.
-* Idi s Instagrama na rezervaciju u samo 2 klika 🚀
+- WinkLinks vam omogućuje da besplatno dodate sve svoje postojeće affiliate poveznice, poput Commission Junction i Amazona.
+- Dobivate cool vanity URL, poput [https://i.trvl.as/bob](https://i.trvl.as/bob), za one situacije kada možete podijeliti samo jedan URL.
+- Možete organizirati i dijeliti poveznice te učitavati datoteke.
+- Hoteli, lancevi i brendovi mogu koristiti WinkLinks kao napredni rezervacijski sustav:
+    - Podržava više objekata.
+    - Podržava više destinacija.
+    - Podržava više valuta.
+    - Podržava više jezika.
+- WinkLinks podržava `rich content` *(pogledajte dolje)*.
+- Od IG do rezervacije u samo 2 klika 🚀
 
-## Bogat sadržaj
+## Rich content
 
-:::napomena
-Postavi`Intelligent`do 🟢 u tvom [Postavke](/link-manager/settings) koristiti ovu značajku.
+:::note
+Postavite `Intelligent` na 🟢 u vašim [Postavkama](/hr/link-manager/settings) da biste koristili ovu značajku.
 :::
 
-Ako podijelite poveznicu s web-mjesta koje podržava`rich`/`oEmbed`sadržaj, vaša poveznica oživljava na WinkLinksu.
+Ako dijelite poveznicu sa stranice koja podržava `rich` / `oEmbed` sadržaj, vaša poveznica oživljava na WinkLinks.
 
 Podržane stranice:
 
-* Facebook -*Interakcija s objavom i reprodukcija videa*.
-* Instagram -*Interakcija s objavom i reprodukcija videa*.
-* YouTube -*Reproduciraj videozapis*.
-* X (prije Twitter) -*Interakcija s objavom*.
-* Spotify -*Reproducirajte svoje omiljene popise za reprodukciju*.
-* Namig -*Vidi`Advanced`*.
+- Facebook - *Interakcija s objavom i reprodukcija videa*.
+- Instagram - *Interakcija s objavom i reprodukcija videa*.
+- YouTube - *Reprodukcija videa*.
+- X (prije Twitter) - *Interakcija s objavom*.
+- Spotify - *Reprodukcija vaših omiljenih playlisti*.
+- Wink - *Pogledajte `Advanced`*.
 
-## Napredno
+## Advanced
 
-WinkLinks je također odličan način za izlaganje pronađenih turističkih inventara putem [Wink Studio](https://studio.wink.travel) i koje želite prodati svojoj publici.
+WinkLinks je također izvrstan način za izlaganje putničkog inventara koji ste pronašli putem [Wink Studio](https://studio.wink.travel) i koji želite prodati svojoj publici.
 
-Koristite WinkLinks za prodaju:
+Koristite WinkLinks za prodaju vaših:
 
-* [Linkovi za dijeljenje](/studio/shareable-links) - Odaberite prikaz kao:
-  * [Oglasni banner](/developers/web-components/#content-loader).
-  * Normalna veza s ažuriranjima cijena u stvarnom vremenu.
-* [Karte](/studio/cards) - Kartice koje se mogu rezervirati s cijenama i dostupnošću u stvarnom vremenu.
-* [Mreže](/studio/grids) - Mreža s karticama koje se mogu rezervirati.
-* [Karte](/studio/maps) - Karta s oznakama koje se otvaraju u kartice za rezervacije.
+- [Dijeljivih poveznica](/hr/studio/shareable-links) - Odaberite prikaz kao:
+    - [Ad banner](/hr/developers/web-components/#content-loader).
+    - Normalna poveznica s ažuriranjima cijena u stvarnom vremenu.
+- [Kartica](/hr/studio/cards) - Rezervabilne kartice s cijenama i dostupnošću u stvarnom vremenu.
+- [Mreža](/hr/studio/grids) - Mreža s rezervabilnim karticama.
+- [Karte](/hr/studio/maps) - Karta s markerima koji se otvaraju u rezervabilne kartice.
 
-:::napomena
-Za upravljanje svojim WinkLinks računom, prijavite se na svoj partnerski račun na[Wink Studio](https://studio.wink.travel).
+:::note
+Za upravljanje svojim WinkLinks računom prijavite se u svoj affiliate račun na [Wink Studio](https://studio.wink.travel).
 :::
 
-:::savjet
-Da biste vidjeli račun u akciji, pogledajte Bjorn-ov, WinkLinks račun, račun našeg suosnivača:<https://i.trvl.as/bjorn>.
+:::tip
+Za pregled računa u akciji, pogledajte Bjornov, našeg suosnivača, WinkLinks račun: [https://i.trvl.as/bjorn](https://i.trvl.as/bjorn).
 :::
-

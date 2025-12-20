@@ -1,22 +1,22 @@
 ---
-title: Hvad er agent?
-description: Lær hvordan Wink støtter registrerede rejsebureauer.
+title: Hvad er Agent?
+description: Lær hvordan Wink understøtter registrerede rejsebureauer.
 sidebar:
   order: 0
 ---
-Vores løsning til registrerede rejsebureauer er [Blinkagent](https://agent.wink.travel) Det er en selvbetjeningsportal, som agenter kan bruge til at søge og booke på vegne af deres kunder og tjene en provision for hver booking.
 
-Mere avancerede rejsebureauer kan vælge at integrere på API-niveau med henblik på at håndtere betalinger og udbetalinger uden for Wink-platformen.
+Vores løsning for registrerede rejsebureauer er [Wink Agent](https://agent.wink.travel). Det er en selvbetjeningsportal, som agenter kan bruge til at søge og booke på vegne af deres kunder og tjene en kommission for sig selv på hver booking.
 
-Rejsebureauer har en delmængde af de samme portalfunktioner som [Wink Studio](/studio/what-is-studio) så vi dækker dem ikke igen her.
+Mere avancerede rejsebureauer kan vælge at integrere på API-niveau med henblik på at håndtere betaling og udbetalinger uden for Wink-platformen.
 
-## Søge
+Rejsebureauer har et delmængde af de samme portal-funktioner som [Wink Studio](/da/studio/what-is-studio), så vi vil ikke gennemgå dem igen her.
 
-Gå til [Søge](/studio/search) for at lære, hvordan man søger efter og booker hoteller.
+## Søg
+
+Gå til [Søg](/da/studio/search) for at lære, hvordan man søger efter og booker hoteller.
 
 Ellers fortsæt til næste afsnit.
 
-## API'en
+## API
 
-Udviklere, der ønsker at administrere`Travel Agent`kan tage hen til[Udviklere > API > Rejsebureau](/developers/apis/#travel-agent-api).
-
+Udviklere, der ønsker at administrere `Travel Agent`, kan gå til [Developers > API > Travel Agent](/da/developers/apis/#travel-agent-api).

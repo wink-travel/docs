@@ -1,47 +1,47 @@
 ---
-title: Trumpai tariant
-description: 'Šiame straipsnyje rasite viską, ką norėjote sužinoti apie rezervavimo sistemą.'
+title: Trumpai apžvelgiant
+description: Šiame straipsnyje rasite viską, ką norėjote sužinoti apie užsakymų variklį.
 sidebar:
   order: 0
 ---
-Štai kaip mes segmentuojame atsakomybę „Wink“ sistemoje:
 
-* [Ekstranetas](/extranet/what-is-extranet) rūpinasi tiekėjais, valdančiais atsargas.
-* [Studija](/studio/what-is-studio) nerimauja dėl filialų, valdančių turinį.
-* `Booking Engine`rūpinasi turinio, sukurto`Studio`, kuris buvo pagrįstas sukurtu inventoriumi`Extranet`ir padaryti jį rezervuojamą.
-* [Mokėjimas](/payment/what-is-trip-pay) rūpinasi keliautojų, kurie užsisako \[per tokias platformas kaip „Wink“, apmokestinimu / pinigų grąžinimu ir mokėjimu tiekėjams.
+Štai kaip mes paskirstome atsakomybę Wink platformoje:
 
-Rezervavimo sistema yra mūsų platformos pagrindas.
+- [Extranet](/lt/extranet/what-is-extranet) rūpinasi tiekėjais, valdžiusiais inventorių.
+- [Studio](/lt/studio/what-is-studio) rūpinasi filialais, valdžiusiais turinį.
+- `Booking Engine` rūpinasi turinio, sukurto `Studio`, kuris buvo pagrįstas inventoriumi, sukurtu `Extranet`, ir padaro jį užsakomu.
+- [Payment](/lt/payment/what-is-trip-pay) rūpinasi keliautojų, kurie užsako [per platformas kaip Wink], apmokestinimu / grąžinimu ir tiekėjų apmokėjimu.
 
-Jos pareigos apima:
+Užsakymų variklis yra mūsų platformos šerdis.
 
-* Valiutų valdymas ir valiutų kursų atnaujinimas.
-* Suteikti tarifų teikėjams galimybę siųsti mums tarifų duomenis.
-* Paieškos duomenų valdymas.*pvz., regionai, šalys, kelionės tikslai, objektai ir kt.*
-* Kalbų valdymas.
-* Analizės generavimas remiantis naudotojų sąveika, įvykiais ir API iškvietimais.
-* Rezervuojamų prekių pateikimas pageidaujamu formatu, kalba ir valiuta, pvz.:
-  * A [bendrinama nuoroda](/studio/shareable-links) „Facebook“ tinkle.
-  * Viešbučio nukreipimo puslapis svetainėje https://ota.wink.travel su to viešbučio inventoriumi.
-  * A [kortelė](/studio/cards) kuriame yra filialų inventoriaus.
-  * A [žemėlapis](/studio/maps) ant tavo [žemėlapis](/studio/maps) sąskaita.
-  * An [API iškvietimas](/developers/apis) iš nuotolinės kelionių agento sistemos.
-* Suteikti keliautojams galimybę:
-  * Ieškoti kelionių inventoriaus.
-  * Rezervuoti turimą inventorių.
-  * Tvarkyti jų[užsakymai ir atsiliepimai](/booking-engine/bookings).
-  * Tvarkyti jų [norų sąrašas](/booking-engine/bucket-list) dalykų, kuriuos galima užsisakyti ateityje.
-  * Tvarkyti jų[kelionių profilis](/booking-engine/travel-preferences).*pvz., alergijos, skubi pagalba ir kt.*
+Jo atsakomybės apima:
 
-Užsakymo sistema – tai pakartotinai naudojamų funkcijų rinkinys, kurį pateikiame per https://ota.wink.travel; tai labai pritaikoma svetainė, skirta viešbučiams ir jų filialams parduoti savo prekes keliautojams.
+- Valdyti valiutas ir palaikyti valiutų kursus atnaujintus.
+- Suteikti kainų tiekėjams galimybę siųsti mums kainų duomenis.
+- Valdyti paieškos duomenis. *pvz., regionus, šalis, kelionių tikslus, apgyvendinimo vietas ir pan.*
+- Valdyti kalbas.
+- Generuoti analizę, remiantis vartotojų sąveikomis, įvykiais ir API užklausomis.
+- Pateikti užsakomu inventorių norimu formatu, kalba ir valiuta, pavyzdžiui:
+    - [dalinamą nuorodą](/lt/studio/shareable-links) Facebook platformoje.
+    - Viešbučio nukreipimo puslapį https://ota.wink.travel su tuo viešbučiu susijusiu inventoriu.
+    - [kortelę](/lt/studio/cards), kurioje yra filialų inventorius.
+    - [žemėlapį](/lt/studio/maps) jūsų [WinkLinks](/lt/link-manager/wink-links) paskyroje.
+    - [API užklausą](/lt/developers/apis) iš nuotolinės kelionių agentūros sistemos.
+- Suteikti keliautojams galimybę:
+    - Ieškoti kelionių inventoriaus.
+    - Užsakyti prieinamą inventorių.
+    - Valdyti savo [užsakymus ir atsiliepimus](/lt/booking-engine/bookings).
+    - Valdyti savo [norų sąrašą](/lt/booking-engine/bucket-list) dalykų, kuriuos planuoja užsakyti ateityje.
+    - Valdyti savo [kelionių profilį](/lt/booking-engine/travel-preferences). *pvz., alergijas, skubios pagalbos kontaktą ir pan.*
 
-Integratoriai, norintys dar daugiau laisvės, gali pasiekti visas tas pačias funkcijas per mūsų [WordPress įskiepis](/developers/wordpress/), [WordPress įskiepis](/developers/wordpress/) ir[API](/developers/apis).
+Užsakymų variklis yra pakartotinai naudojamų funkcijų rinkinys, kurį mes pateikiame per https://ota.wink.travel; tai labai pritaikoma svetainė viešbučiams ir filialams parduoti savo paslaugas keliautojams.
 
-Norėdami daugiau sužinoti apie tai, ką siūlo rezervavimo sistema, skaitykite kituose skyriuose.
+Integratoriai, norintys dar daugiau laisvės, turi prieigą prie tų pačių funkcijų per mūsų [WordPress įskiepį](/lt/developers/wordpress/), [Web Components](/lt/developers/web-components) ir [API](/lt/developers/apis).
 
-## Papildoma literatūra
+Tęskite skaitymą tolesnėse skiltyse, kad sužinotumėte daugiau apie tai, ką siūlo užsakymų variklis.
 
-* Skaitykite apie mūsų[WordPress įskiepis](/developers/wordpress/).
-* Skaitykite apie mūsų[Žiniatinklio komponentai](/developers/web-components).
-* Skaitykite apie mūsų[API](/developers/apis).
+## Tolimesnis skaitymas
 
+- Skaitykite apie mūsų [WordPress įskiepį](/lt/developers/wordpress/).
+- Skaitykite apie mūsų [Web Components](/lt/developers/web-components).
+- Skaitykite apie mūsų [API](/lt/developers/apis).

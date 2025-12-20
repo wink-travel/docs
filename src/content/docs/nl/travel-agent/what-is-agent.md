@@ -1,22 +1,22 @@
 ---
 title: Wat is Agent?
-description: Ontdek hoe Wink geregistreerde reisagenten ondersteunt.
+description: Leer hoe Wink geregistreerde reisagenten ondersteunt.
 sidebar:
   order: 0
 ---
-Onze oplossing voor geregistreerde reisagenten is [Knipoogagent](https://agent.wink.travel) Het is een selfserviceportaal waarmee agenten namens hun klanten kunnen zoeken en boeken. Bovendien verdienen ze hiermee commissie op elke boeking.
 
-Meer ervaren reisagenten kunnen ervoor kiezen om op API-niveau te integreren om betalingen en uitbetalingen buiten het Wink-platform te verwerken.
+Onze oplossing voor geregistreerde reisagenten is [Wink Agent](https://agent.wink.travel). Het is een selfserviceportaal dat agenten kunnen gebruiken om namens hun klanten te zoeken en te boeken en zo een commissie te verdienen op elke boeking.
 
-Reisagenten hebben een deel van dezelfde portaalfuncties als [Wink Studio](/studio/what-is-studio) Daarom zullen we ze hier niet nogmaals bespreken.
+Meer gevorderde reisagenten kunnen ervoor kiezen om op API-niveau te integreren voor het afhandelen van betalingen en uitbetalingen buiten het Wink-platform.
 
-## Zoekopdracht
+Reisagenten hebben een subset van dezelfde portaalfuncties als [Wink Studio](/nl/studio/what-is-studio), dus we zullen die hier niet opnieuw behandelen.
 
-Ga naar [Zoekopdracht](/studio/search) om te leren hoe u hotels kunt zoeken en boeken.
+## Zoeken
 
-Ga anders verder met het volgende gedeelte.
+Ga naar [Zoeken](/nl/studio/search) om te leren hoe je hotels kunt zoeken en boeken.
+
+Ga anders door naar de volgende sectie.
 
 ## API
 
-Ontwikkelaars die willen beheren`Travel Agent`kan naar[Ontwikkelaars > API > Reisagent](/developers/apis/#travel-agent-api).
-
+Ontwikkelaars die `Travel Agent` willen beheren, kunnen terecht bij [Developers > API > Travel Agent](/nl/developers/apis/#travel-agent-api).

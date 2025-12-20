@@ -1,45 +1,45 @@
 ---
-title: Storno podmienky
-description: 'Tento článok vám ukáže, ako spravovať pravidlá zrušenia na platforme Wink.'
+title: Zásady storna
+description: Tento článok vám ukáže, ako spravovať zásady storna vo Wink.
 sidebar:
   order: 12
 ---
-Ak chcete spravovať svoje pravidlá zrušenia, kliknite na`Monetize > Cancellation policies`z hlavného navigačného panela.
 
-Storno podmienky určujú, ako sa s finančnými prostriedkami rezervujúceho naloží v prípade, že sa hosť nemôže zúčastniť. Storno podmienky sa delia na dva rôzne druhy:
+Na správu svojich zásad storna kliknite v hlavnom navigačnom paneli na `Monetize > Cancellation policies`.
 
-1. Vrátiteľné
-2. Nevratné
+Zásady storna určujú, ako sa zaobchádza so zákazníckymi prostriedkami v prípade, že hosť nemôže prísť. Zásady storna sú v dvoch odlišných variantoch:
 
-Väčšinou tieto dve možnosti stačia. Obe vám však dávajú veľa priestoru na ďalšie prispôsobenie vašich storno podmienok.
+1. Refundovateľné
+2. Nerefundovateľné
 
-:::tip\[Zaujímavosť]
-Wink podporuje celkovo 8500 variácií storno podmienok.
+Väčšinou sú tieto dve možnosti postačujúce. Obidve vám však dávajú veľa priestoru na ďalšie prispôsobenie vašej zásady storna.
+
+:::tip[Zaujímavosť]
+Wink podporuje celkovo 8500 variácií zásad storna.
 :::
 
-Ak chcete vytvoriť storno podmienky, kliknite na`Create a new cancellation policy`tlačidlo.
+Na vytvorenie zásady storna kliknite na tlačidlo `Create a new cancellation policy`.
 
-## Nevratné
+## Nerefundovateľné
 
-Ak chcete vytvoriť storno podmienky s nevratnou platbou, prepnite prepínač do polohy 🛑, keď sa zobrazí otázka, či je politika vratná.
-
-### Možnosti
-
-Voliteľne si môžete nakonfigurovať`non-refundable`ďalej presadzovať politiku pre väčšiu kontrolu.
-
-* **Koľko sa účtuje hosťovi za zrušenie rezervácie?**&#x160;tandardne je nevratná politika 100 % nevratná politika. Výšku si môžete upraviť tu.*napr. 50 % z celkovej ceny*
-* **Má obvinenie lehotu?**&#x41;k ste sumu doladili, môžete ju ďalej doladiť nastavením, ako dlho bude táto suma platiť.*napr. do 3 dní pred príchodom*
-* **Koľko sa účtuje hosťovi za zrušenie rezervácie po uplynutí lehoty?**&#x56; prípade, že hosť prekročí vyššie stanovený termín, môžete si nastaviť sumu, ktorú má hosť zaplatiť po uplynutí lehoty.*napr. 70 % z celkovej ceny*
-
-## Vrátiteľné
-
-Ak chcete vytvoriť storno podmienky s možnosťou vrátenia platby, nastavte prepínač do polohy ✅, keď sa zobrazí otázka, či je politika vratná.
+Na vytvorenie nerefundovateľnej zásady storna nastavte prepínač na 🛑 vypnuté, keď sa vás opýta, či je zásada refundovateľná.
 
 ### Možnosti
 
-Voliteľne si môžete nakonfigurovať`refundable`ďalej presadzovať politiku pre väčšiu kontrolu.
+Voliteľne môžete svoju `nerefundovateľnú` zásadu ďalej konfigurovať pre väčšiu kontrolu.
 
-* **Ako dlho pred príchodom môže hosť bezplatne zrušiť rezerváciu?**&#x160;tandardne je vratná ponuka vždy 100 % vratná. Termín si môžete doladiť tu.*napr. 3 dni pred príchodom*
-* **Koľko by mal byť hosťovi účtovaný, ak dôjde k zrušeniu rezervácie po vyššie uvedenej lehote?**&#x41;k ste doladili termín, môžete nastaviť sumu, ktorú hosť zaplatí po jeho uplynutí.*napr. 50 % z celkovej ceny*
-* **Koľko by mal byť hosťovi účtovaný poplatok za „nedostavenie sa“?**&#x56; prípade, že sa hosť nedostaví, môžete nastaviť sumu, ktorá sa hosťovi účtuje za`No show`.*napr. 100 % z celkovej ceny*
+- **Koľko sa hosťovi účtuje za storno?** Predvolene je nerefundovateľná zásada 100% nerefundovateľná. Môžete tu doladiť sumu. *napr. 50 % z celkovej ceny*
+- **Má poplatok stanovený termín?** Ak ste doladili sumu, môžete ju ďalej upraviť nastavením, ako dlho táto suma platí. *napr. Do 3 dní pred príchodom*
+- **Koľko sa hosťovi účtuje za storno po uplynutí termínu?** Ak hosť prekročí vyššie uvedený termín, môžete nastaviť sumu, ktorú hosť zaplatí po termíne. *napr. 70 % z celkovej ceny*
 
+## Refundovateľné
+
+Na vytvorenie refundovateľnej zásady storna nastavte prepínač na ✅ zapnuté, keď sa vás opýta, či je zásada refundovateľná.
+
+### Možnosti
+
+Voliteľne môžete svoju `refundovateľnú` zásadu ďalej konfigurovať pre väčšiu kontrolu.
+
+- **Ako dlho pred príchodom môže hosť zrušiť bez poplatku?** Predvolene je refundovateľná zásada vždy 100 % refundovateľná. Môžete tu doladiť termín. *napr. 3 dni pred príchodom*
+- **Koľko by sa malo hosťovi účtovať, ak zruší po vyššie uvedenom termíne?** Ak ste doladili termín, môžete nastaviť sumu, ktorú hosť zaplatí po termíne. *napr. 50 % z celkovej ceny*
+- **Koľko by sa malo hosťovi účtovať za „No show“?** Ak hosť nepríde, môžete nastaviť sumu, ktorú hosť zaplatí za `No show`. *napr. 100 % z celkovej ceny*

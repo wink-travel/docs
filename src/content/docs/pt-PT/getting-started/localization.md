@@ -1,69 +1,69 @@
 ---
-title: Localization
-description: Este artigo explica como gerimos a localização no Wink.
+title: Localização
+description: Este artigo explica como gerimos a localização na Wink.
 sidebar:
   order: 7
 ---
-Este artigo explica como gerimos a localização no Wink.
 
-## Idiomas suportados
+Este artigo explica como gerimos a localização na Wink.
 
-O Wink suporta os seguintes idiomas:
+## Línguas suportadas
 
-* Inglês
-* Bahasa Indonésia
-* Malaio
-* Bulgarski
-* Catalão
-* Cestina
-* dinamarquês
-* Alemão
-* Eesti
-* Espanhol
-* Espanhol (AR)
-* Espanhol (MX)
-* Filipino
-* Suomi
-* francês
-* Elonioquia
-* עברית
-* हिन्दी
-* Hrvatski
-* Magiar
-* Íslenska
-* Italiano
-* 日本語
-* 한국어
-* Latviski
-* Lituânia
-* Nederlands
-* Norueguês
-* Polonês
-* Português (BR)
-* Português (PT)
-* Română
-* Russo
-* Esloveno
-* Eslovénia
-* Srpski
-* Sueco
-* ภาษาไทย
-* Türkçe
-* Ukrainska
-* Tiếng Việt
-* Al-Qayrawan
-* 简体中文
-* 繁體中文
+A Wink suporta as seguintes línguas:
 
-## Nível de plataforma
+- English
+- Bahasa Indonesia
+- Bahasa Malaysia
+- Български
+- Català
+- Čeština
+- Dansk
+- Deutsch
+- Eesti
+- Español
+- Español (AR)
+- Español (MX)
+- Filipino
+- Suomi
+- Français
+- Ελληνικά
+- עברית
+- हिन्दी
+- Hrvatski
+- Magyar
+- Íslenska
+- Italiano
+- 日本語
+- 한국어
+- Latviski
+- Lietuvių
+- Nederlands
+- Norsk
+- Polski
+- Português (BR)
+- Português (PT)
+- Română
+- Русский
+- Slovenčina
+- Slovenščina
+- Srpski
+- Svenska
+- ภาษาไทย
+- Türkçe
+- Українська
+- Tiếng Việt
+- العربية
+- 简体中文
+- 繁體中文
 
-Todos os nossos aplicativos estão localizados para suportar todos os idiomas mencionados acima. Cada aplicação tem um seletor de idioma na parte inferior da página, onde o utilizador pode selecionar o idioma pretendido. O mecanismo de reservas permite também a transmissão do idioma desejado através do URL.
+## A nível da plataforma
+
+Todas as nossas aplicações estão localizadas para suportar todas as línguas mencionadas acima. Cada aplicação tem um seletor de língua no rodapé da página onde o utilizador pode escolher a sua língua desejada. O motor de reservas também suporta a passagem da língua desejada através da URL.
 
 ## Conteúdo gerado pelo utilizador
 
-O conteúdo gerado pelo utilizador é localizado para suportar todos os idiomas acima mencionados. Os utilizadores podem optar por criar a versão inglesa do conteúdo e deixar o Wink fazer o resto. Ou podem gerir um conjunto específico de idiomas para ter mais controlo e deixar o Wink tratar do resto.
+O conteúdo gerado pelo utilizador está localizado para suportar todas as línguas mencionadas acima. Os utilizadores podem optar por criar a versão em English do conteúdo e deixar a Wink tratar do resto. Ou, podem gerir um conjunto específico de línguas para maior controlo e deixar a Wink tratar do resto.
 
-## Advertências
+## Avisos
 
-O idioma padrão é o inglês. A menos que seja especificado de outra forma, utilizaremos primeiro o idioma padrão quando um utilizador utilizar qualquer uma das nossas aplicações. Não definimos o idioma ativo com base na localidade do navegador do utilizador.
-
+A língua predefinida é English. A menos que especificado de outra forma, usaremos a língua predefinida primeiro quando um utilizador utilizar qualquer uma das nossas aplicações. Não definimos a língua ativa com base na localidade do navegador do utilizador.

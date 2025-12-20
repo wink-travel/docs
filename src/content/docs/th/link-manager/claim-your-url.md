@@ -1,17 +1,16 @@
 ---
-title: อ้างสิทธิ์ URL ของคุณ
-description: ในบทความนี้ เราจะบอกคุณถึงวิธีการอ้างสิทธิ์ URL ส่วนตัวของ WinkLinks ของคุณ
+title: ขอรับ URL ของคุณ
+description: ในบทความนี้ เราจะแนะนำวิธีการขอรับ URL vanity ของ WinkLinks ของคุณ
 sidebar:
   order: 1
 ---
-โดยการสร้าง [บัญชีพันธมิตร](/studio/what-is-studio) คุณมี URL ส่วนตัวของ WinkLinks แล้ว ฟีเจอร์ผู้เผยแพร่ WinkLinks มีอยู่ในแอป Studio ของเรา ควบคู่ไปกับฟีเจอร์พันธมิตรอื่นๆ ของเรา
+
+โดยการสร้าง [บัญชีพันธมิตร](/th/studio/what-is-studio) คุณจะมี URL vanity ของ WinkLinks อยู่แล้ว ฟีเจอร์ผู้เผยแพร่ WinkLinks มีอยู่ในแอป Studio ของเรา พร้อมกับฟีเจอร์พันธมิตรอื่นๆ
 
 ### ตัวอย่าง
 
-หากชื่อบัญชีของคุณคือ Queen Bee URL ส่วนตัวของ WinkLinks ของคุณจะเป็น:
+หากชื่อบัญชีของคุณคือ Queen Bee URL vanity ของ WinkLinks ของคุณจะเป็น:
 
-<h4 align="center">https://i.trvl.as/ราชินีผึ้ง</h4>
+<h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-ชื่อบัญชีมีให้เลือกใช้งานบน`first come - first serve`พื้นฐาน - คว้า URL ที่ไม่ซ้ำใครของคุณในขณะที่ยังทำได้!
-
+ชื่อบัญชีจะถูกจัดสรรตามลำดับ `มาก่อนได้ก่อน` — รีบคว้า URL เฉพาะของคุณในขณะที่ยังสามารถทำได้!

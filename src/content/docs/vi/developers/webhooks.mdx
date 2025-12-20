@@ -1,100 +1,101 @@
 ---
 title: Webhooks
-description: Đăng ký tham gia sự kiện Wink và TripPay.
+description: Đăng ký nhận sự kiện từ Wink và TripPay.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 import CloudinaryImage from '/src/components/cloudinary-image.astro';
 
-Webhooks là cách giúp bạn nhận và phản hồi các sự kiện thời gian thực từ Wink và TripPay liên quan đến tài khoản của bạn.
+Webhooks là cách để bạn nhận và phản hồi các sự kiện thời gian thực từ Wink và TripPay liên quan đến tài khoản của bạn.
 
 ## Ví dụ
 
 <Steps>
-  1. Có một lần đặt phòng trên Wink.
-  2. Sự kiện Wink `booking.created` được gửi đi.
-  3. Hệ thống của bạn đang tích cực lắng nghe sự kiện này.
-  4. Hệ thống của bạn theo dõi bộ phân tích của riêng bạn và sử dụng sự kiện này để cập nhật cơ sở dữ liệu chuỗi thời gian.
+1. Một đặt phòng được thực hiện trên Wink.
+1. Sự kiện Wink `booking.created` được phát đi.
+2. Hệ thống của bạn đang lắng nghe sự kiện này.
+3. Hệ thống của bạn theo dõi bộ phân tích riêng và sử dụng sự kiện này để cập nhật cơ sở dữ liệu chuỗi thời gian.
 </Steps>
-
 
 <figure>
-  <CloudinaryImage width="350" height="215" resize="scale" quality="best" alt="Mẫu webhook" src="academy/webhook" errorImage="noimage_opaque_nyrtl0.png" />
-
-  <figcaption>*Mẫu mục nhập webhook*</figcaption>
+<CloudinaryImage
+      width="350"
+      height="215"
+      resize="scale"
+      quality="best"
+      alt="Mẫu webhook"
+      src="academy/webhook"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Mẫu mục webhook*</figcaption>
 </figure>
 
+:::note
+Webhook của Wink khác với webhook của TripPay.
 
-:::lưu ý
-Webhook Wink khác với webhook TripPay.
+- Nếu bạn muốn lắng nghe các sự kiện của Wink, bạn có thể tạo webhook từ [Extranet](https://extranet.wink.travel) hoặc [Studio](https://studio.wink.travel).
+- Nếu bạn muốn lắng nghe các sự kiện của TripPay, bạn có thể tạo webhook từ [Payment](https://pay.wink.travel).
+:::
 
-* Nếu bạn muốn lắng nghe các sự kiện Wink, bạn có thể tạo một webhook từ[Mạng ngoại vi](https://extranet.wink.travel) hoặc [Phòng thu](https://studio.wink.travel).
-* Nếu bạn muốn lắng nghe các sự kiện TripPay, bạn có thể tạo một webhook từ[Sự chi trả](https://pay.wink.travel).
-  :::
-
-*Đối với ví dụ này, chúng tôi sẽ xác thực thông qua[Phòng thu](https://studio.wink.travel).*
+*Trong ví dụ này, chúng ta sẽ xác thực qua [Studio](https://studio.wink.travel).*
 
 <Steps>
-  1. Sau khi xác thực, hãy nhấp vào biểu tượng hồ sơ của bạn ở góc trên bên phải và một menu sẽ xuất hiện.
-  2. Nhấp vào `Webhooks` liên kết.
-  3. Bạn sẽ được chuyển hướng đến trang webhooks của mình.
+1. Sau khi xác thực, nhấp vào biểu tượng hồ sơ của bạn ở góc trên bên phải, một menu sẽ xuất hiện.
+2. Nhấp vào liên kết `Webhooks`.
+3. Bạn sẽ được chuyển hướng đến trang webhooks của bạn.
 </Steps>
-
 
 ## Tạo webhook
 
-:::thận trọng
-Bạn cần tạo một tài khoản liên kết trên Wink hoặc một tài khoản trên TripPay trước khi tạo webhook vì bạn sẽ liên kết webhook của mình với một tài khoản cụ thể.
+:::caution
+Bạn cần tạo tài khoản đại lý trên Wink hoặc tài khoản trên TripPay trước khi tạo webhook vì bạn sẽ liên kết webhook với một tài khoản cụ thể.
 :::
 
-Sau đây là các bước để tạo webhook:
+Dưới đây là các bước để tạo một webhook:
 
 <Steps>
-  1. Từ trang webhooks, hãy nhấp vào `Create new webhook` cái nút.
-  2. ***Tên*** Đặt tên cho webhook của bạn. *ví dụ: Wink Stalker*
-  3. ***Cho phép*** Để nguyên như vậy để được kích hoạt.
-  4. **Tên thực thể** Liên kết webhook của bạn với một trong các tài khoản hiện có. *ví dụ: Tài khoản Cool*
-  5. **Sự kiện** Hãy lắng nghe những sự kiện mà bạn quan tâm. *ví dụ. `booking.created`*
-  6. **URL Webhook** Nhập URL nơi bạn sẽ nghe các sự kiện của chúng tôi. *ví dụ. `https://my.system.com/webhook/wink`*
-  7. Nhấp vào `Save` nút để tiếp tục.
+1. Từ trang webhooks, nhấp vào nút `Create new webhook`.
+2. ***Tên*** Đặt tên cho webhook của bạn. *ví dụ: Wink Stalker*
+3. ***Kích hoạt*** Giữ nguyên để bật.
+4. **Tên thực thể** Liên kết webhook với một trong các tài khoản hiện có của bạn. *ví dụ: Cool Account*
+5. **Sự kiện** Lắng nghe các sự kiện bạn quan tâm. *ví dụ: `booking.created`*
+6. **URL Webhook** Nhập URL nơi bạn sẽ lắng nghe các sự kiện từ chúng tôi. *ví dụ: `https://my.system.com/webhook/wink`*
+7. Nhấp nút `Save` để tiếp tục.
 </Steps>
 
-
-Bạn được chuyển hướng trở lại danh sách webhook và webhook mới của bạn đã sẵn sàng hoạt động.
+Bạn sẽ được chuyển hướng trở lại danh sách webhook và webhook mới của bạn đã sẵn sàng hoạt động.
 
 ## Cập nhật webhook
 
-Bạn sẽ cần cập nhật ứng dụng của mình nếu muốn:
+Bạn cần cập nhật ứng dụng nếu muốn:
 
-* Vô hiệu hóa webhook của bạn.
-* Nghe thêm/ít sự kiện hơn.
-* Thay đổi URL webhook lắng nghe của bạn.
+- Vô hiệu hóa webhook.
+- Lắng nghe nhiều hơn / ít hơn các sự kiện.
+- Thay đổi URL webhook để lắng nghe.
 
-Để cập nhật webhook hiện có, hãy thực hiện như sau:
+Để cập nhật một webhook hiện có, làm như sau:
 
 <Steps>
-  1. Nhấp vào `Actions` liên kết đến webhook mà bạn muốn cập nhật.
-  2. Nhấp vào `Update` nút bên dưới Hành động.
-  3. Thực hiện thay đổi cho webhook.
-  4. Nhấp vào `Save` nút để tiếp tục.
+1. Nhấp vào liên kết `Actions` cho webhook bạn muốn cập nhật.
+2. Nhấp nút `Update` dưới phần Actions.
+3. Thực hiện các thay đổi cho webhook.
+4. Nhấp nút `Save` để tiếp tục.
 </Steps>
 
-
-Bạn được chuyển hướng trở lại danh sách webhooks của mình.
+Bạn sẽ được chuyển hướng trở lại danh sách webhook.
 
 ## Xóa webhook
 
-Nếu bạn không còn nhu cầu sử dụng webhook nữa, bạn có thể xóa nó.
+Nếu bạn không còn sử dụng webhook nữa, bạn có thể tiến hành xóa nó.
 
-Để xóa webhook, hãy thực hiện như sau:
+Để xóa một webhook, làm như sau:
 
 <Steps>
-  1. Nhấp vào `Actions` liên kết đến webhook mà bạn muốn cập nhật.
-  2. Nhấp vào `Remove` nút bên dưới Hành động.
-  3. Nhấp chuột `OK` nút để xác nhận xóa.
+1. Nhấp vào liên kết `Actions` cho webhook bạn muốn xóa.
+2. Nhấp nút `Remove` dưới phần Actions.
+3. Nhấp nút `OK` để xác nhận xóa.
 </Steps>
 
-
-Bạn được chuyển hướng trở lại danh sách webhooks của mình.
-
+Bạn sẽ được chuyển hướng trở lại danh sách webhook.

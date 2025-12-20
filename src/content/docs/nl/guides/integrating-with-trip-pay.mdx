@@ -1,43 +1,40 @@
 ---
-title: Integratie met TripPay
-description: >-
-  Dit artikel bevat een uitgebreid voorbeeld van hoe u kunt integreren met
-  TripPay en hoe u de betaling voor u kunt laten afhandelen.
+title: Integreren met TripPay
+description: Dit artikel bevat een volledig voorbeeld van hoe je kunt integreren met TripPay en de betaling door TripPay kunt laten afhandelen.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Dit artikel bevat een end-to-endvoorbeeld van hoe u kunt integreren met TripPay.
+Dit artikel bevat een end-to-end voorbeeld van hoe je kunt integreren met TripPay.
 
-Het is aan te raden dat u het volgende alvast leest:
+Het is aan te raden dat je al hebt gelezen:
 
-* [Betaling > Mapping](/payment/mapping).
-* [Betaling > Integratie](/payment/integration).
-* [Betalingswebcomponent](/developers/web-components/#payment).
-* [Betalings-API](/developers/apis/#payment-api).*Lees het gedeelte over`Create payable contracts`*
+- [Betaling > Mapping](/nl/payment/mapping).
+- [Betaling > Integratie](/nl/payment/integration).
+- [Payment Web Component](/nl/developers/web-components/#payment).
+- [Payment API](/nl/developers/apis/#payment-api). *Lees de sectie over `Create payable contracts`*
 
-Dit zijn de stappen om TripPay succesvol te gebruiken om een boeking te betalen:
+Hier zijn de stappen om TripPay succesvol te gebruiken voor het betalen van een boeking:
 
 <Steps>
-  1. Zorg ervoor dat de begunstigden die u in het boekingscontract vermeldt, in kaart zijn gebracht.
-  2. Laat de reiziger kiezen welke uitrusting hij wil boeken en wacht tot hij kan betalen.
-  3. Maak een `payable contract` met TripPay die de te boeken items bevat.
-  4. Laat de reiziger betalen via de TripPay-webcomponent.
+1. Zorg dat de begunstigden die je noemt in het boekingscontract zijn gemapt.
+2. Laat de reiziger de inventaris kiezen die hij wil boeken en zich klaarmaken om te betalen.
+3. Maak een `payable contract` aan bij TripPay dat de te boeken items bevat.
+4. Laat de reiziger betalen met de TripPay Web Component.
 </Steps>
 
+We gaan ervan uit dat je `Stap 1` en `Stap 2` al hebt voltooid en klaar bent om TripPay te informeren over de boeking.
 
-Wij gaan ervan uit dat u dit al heeft afgerond`Step 1` En `Step 2`en bereid zijn TripPay op de hoogte te stellen van de boeking.
-
-## Maak een betaalbaar contract
+## Maak een payable contract aan
 
 :::note
-Ga naar de Betalings-API voor meer informatie over de vereisten voor het aanmaken van een betaalcontract.
+Ga naar de Payment API om meer te leren over de vereisten voor het aanmaken van een payable contract.
 :::
 
 ### Verzoek
-
-Hier is een JSON-voorbeeldverzoek dat alles bevat wat u nodig hebt voor uw eerste betaalbare contract.
+Hier is een JSON voorbeeldverzoek dat alles bevat wat je nodig hebt om je eerste payable contract aan te maken.
 
 ```json {3-6, 8-9}
 {
@@ -132,49 +129,49 @@ Hier is een JSON-voorbeeldverzoek dat alles bevat wat u nodig hebt voor uw eerst
 
 Uitleg:
 
-We gaan hier niet alle gegevenspunten uitleggen, omdat deze al in de API-documentatie worden behandeld.
+We zullen hier niet elk datapunt uitleggen omdat deze al in de API-documentatie behandeld worden.
 
-* Lijnen:**2 - 7**is de gebruiker die verantwoordelijk is voor de boeking. Er zijn twee soorten boekers:
-  * Reiziger.
-  * Reisagent.
-* Lijnen:**8 - 9**is het TripPay-account dat de boeking faciliteert. Het kan zijn:
-  * Uw TripPay-integratoraccount.
-  * Als u een affiliatenetwerk beheert, kan dit uw affiliate zijn.
-* Gebruik een`traceId`Om meerdere boekingen bij meerdere leveranciers te groeperen. Zo kunt u een groepsboeking annuleren.
-* `redirectUrl`laat TripPay weten naar welke pagina er moet worden doorgestuurd nadat de betaling is voltooid.
-* `sourceUrl`is de site/app waarop de boeking heeft plaatsgevonden.
+- Regels: **2 - 7** is de gebruiker die verantwoordelijk is voor de boeking. Er zijn twee soorten boekers:
+    - Reiziger.
+    - Reisagent.
+- Regels: **8 - 9** is de TripPay-account die de boeking faciliteert. Dit kan zijn:
+    - Je eigen TripPay integrator-account.
+    - Als je een affiliate netwerk runt, kan dit je affiliate zijn.
+- Gebruik een `traceId` om meerdere boekingen over meerdere leveranciers te groeperen. Zo kun je een groepsboeking annuleren.
+- `redirectUrl` laat TripPay weten naar welke pagina moet worden doorgestuurd nadat de betaling voltooid is.
+- `sourceUrl` is de site/app waarop de boeking heeft plaatsgevonden.
 
-De`contractList`De array bevat de artikelen die de reiziger bij meerdere leveranciers wil kopen. Elk artikel bevat:
+De array `contractList` bevat het item/de items die de reiziger wil kopen van meerdere leveranciers. Elk item bevat:
 
-* De`identifier`is een geldige UUID die u genereert.
-* De leverancier bij wie u voorraad wilt boeken.
-* De voorraad die u bij die leverancier wilt boeken. Deze worden allemaal gespecificeerd in de geneste array.`contractItemList`.
-* Elke inzending onder`contractItemList`bevat:
-  * **Gastgebruiker**Dit is de gebruiker die op het terrein aankomt.
-  * **Naam in het Engels**De naam van de inventaris in de Engelse taal.
-  * **Beschrijving in het Engels**Een langere beschrijving van de inventaris in de Engelse taal.
-  * **Prijs**De prijs van het artikel.
-  * **Routebeschrijving**Wanneer dit item geboekt moet worden.
-  * **Prijstype**Hoe de prijs werd berekend.
-  * **Voorraadtype**Wat voor soort inventaris dit is.
-  * **Te betalen**Wanneer de reiziger moet betalen.*Momenteel ondersteunen wij alleen directe betalingsopties.*
-  * **Beleid**Neem annuleringsvoorwaarden op.
-  * **Dagelijkse tarievenlijst**Als er een kamer wordt geboekt, kunt u aangeven hoeveel de kamer kost per nacht dat de gast verblijft.
-  * **Begunstigden**Geef aan welke TripPay-rekening(en) welk bedrag van de prijs van het artikel toegewezen moet krijgen.*Vaste/percentagebedragen worden ondersteund.*
+- De `identifier` is een geldige UUID die je genereert.
+- De leverancier waarvan je inventaris wilt boeken.
+- De inventaris die je van die leverancier wilt boeken. Deze zijn allemaal gespecificeerd in de geneste array `contractItemList`.
+- Elke invoer onder `contractItemList` bevat:
+    - **Gastgebruiker** Dit is de gebruiker die op de locatie zal aankomen.
+    - **Naam in het Engels** De naam van de inventaris in het Engels.
+    - **Beschrijving in het Engels** Een langere beschrijving van de inventaris in het Engels.
+    - **Prijs** De prijs van het item.
+    - **Reisroute** Wanneer dit item geboekt moet worden.
+    - **Prijsbepalingstype** Hoe de prijs is berekend.
+    - **Type inventaris** Wat voor soort inventaris dit is.
+    - **Te betalen** Wanneer de reiziger in rekening wordt gebracht. *We ondersteunen momenteel alleen directe betalingsopties.*
+    - **Beleid** Neem annuleringsvoorwaarden op.
+    - **Dagelijkse tarieflijst** Als het geboekte item een kamer is, kun je opnemen hoeveel die kamer per nacht kost.
+    - **Begunstigden** Geef aan welke TripPay-account(s) welk bedrag van de prijs van het item toegewezen moeten krijgen. *Vaste / procentuele bedragen worden ondersteund.*
 
 :::note
 In het bovenstaande JSON-voorbeeld hebben we 3 begunstigden:
 
-* 1,5% werd toegewezen aan het platform dat de boeking faciliteerde.*bijv. Knipoog*
-* Er werd 9,85% aan de affiliate toegekend als commissie.*bijvoorbeeld Kim Kardashian*
-* 88,65% werd toegewezen aan de leverancier voor de boeking van de kamer.*bijv. Hilton*
+- 1,5% werd toegewezen aan het platform dat de boeking faciliteerde. *bijv. Wink*
+- 9,85% werd toegewezen aan de affiliate als commissie. *bijv. Kim Kardashian*
+- 88,65% werd toegewezen aan de leverancier voor de boeking van de kamer. *bijv. Hilton*
 
-Wanneer TripPay reageert met een betaalbaar contract, zul je merken dat het zijn eigen begunstigde 4,0% heeft geïnjecteerd.
+Wanneer TripPay reageert met een payable contract, zul je merken dat het een eigen begunstigde heeft toegevoegd van 4,0%.
 :::
 
 ### Antwoord
 
-Wanneer TripPay op uw verzoek reageert, ziet het er ongeveer zo uit:
+Wanneer TripPay reageert op je verzoek, ziet het er ongeveer zo uit:
 
 ```json {3}
 [
@@ -208,19 +205,18 @@ Wanneer TripPay op uw verzoek reageert, ziet het er ongeveer zo uit:
 ]
 ```
 
-Bewaar de`id`op regel 3. U gebruikt dit om in het TripPay-webcomponent te injecteren.
+Bewaar de `id` op regel 3. Je gebruikt deze om in de TripPay web component te injecteren.
 
-## TripPay insluiten
+## Embed TripPay
 
 :::note
-Zorg ervoor dat je onze stijlen en Javascript vooraf hebt geladen.
+Zorg dat je onze stijlen en Javascript van tevoren hebt geladen.
 :::
 
-Op dit punt bent u klaar om de`Payment Web Component`in uw website en toon deze aan de gebruiker.
+Op dit punt ben je klaar om de `Payment Web Component` in je website te embedden en aan de gebruiker te tonen.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Wat de integratie betreft, hoeft u verder niets te doen. Al het zware werk wordt vanaf nu door TripPay gedaan.
-
+Wat betreft de integratie, dat is alles wat je hoeft te doen. Al het zware werk wordt vanaf hier door TripPay gedaan.

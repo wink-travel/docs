@@ -1,25 +1,27 @@
 ---
 title: Dostawcy stawek
-description: 'Oto aktualna lista dostawców taryf, których obsługujemy bezpośrednio w Wink.'
+description: Oto aktualna lista dostawców stawek, których obsługujemy bezpośrednio na Wink.
 sidebar:
   order: 18
 ---
-## Ustaw dostawcę stawki
 
-Aby ustawić dostawcę stawek, kliknij`Distribution > Channel manager`z głównego paska nawigacyjnego.
+## Ustaw dostawcę stawek
 
-Wybierz swojego dostawcę stawek z listy rozwijanej i kliknij`Save`przycisk. Pozwoli to dostawcy stawek na przesłanie nam stawek, a my powiadomimy go, gdy na Wink zostanie dokonana rezerwacja dla jednej z Twoich nieruchomości.
+Aby ustawić dostawcę stawek, kliknij `Distribution > Channel manager` w głównym pasku nawigacyjnym.
+
+Wybierz swojego dostawcę stawek z listy rozwijanej i kliknij przycisk `Save`. Pozwoli to dostawcy stawek przesyłać nam stawki, a my powiadomimy go, gdy na Wink zostanie dokonana rezerwacja dla jednej z Twoich nieruchomości.
+
 
 ### SynXis
 
-Jeśli Twoja nieruchomość korzysta z menedżera kanałów SynXis, musisz wykonać jeszcze jeden krok, zanim będziesz gotowy na połączenie z usługą Wink.
+Jeśli Twoja nieruchomość korzysta z channel managera SynXis, przed połączeniem z Wink jest wymagany jeszcze jeden krok.
 
-* Skontaktuj się z przedstawicielem Twojego konta SynXis lub działem obsługi klienta (SHSCustomerCare@sabre.com).
-* Daj im znać, że chcesz połączyć się z Wink za pomocą Channel Connect Express (***CCX***).
-* Poproszą Cię o wypełnienie formularz&#x61;***PRS***.
-  * Zostaniesz poproszony o podanie danych użytkownika Wink.
-  * ...i wybraną przez Ciebie walutę.
-* Wypełnij formularz i prześlij go do SynXis.
+- Skontaktuj się ze swoim przedstawicielem konta SynXis lub działem obsługi klienta (SHSCustomerCare@sabre.com).
+- Poinformuj ich, że chcesz połączyć się z Wink za pomocą Channel Connect Express (***CCX***).
+- Poproszą Cię o wypełnienie formularza ***PRS***.
+  - Będziesz musiał podać swoje dane logowania do Wink.
+  - ...oraz wybraną walutę.
+- Wypełnij formularz i prześlij go z powrotem do SynXis.
 
 ## Dostawcy
 
@@ -27,38 +29,38 @@ Poniżej znajduje się lista dostawców, których obsługujemy:
 
 Dostępne typy:
 
-* Menedżer kanału (CM)
-* System zarządzania nieruchomościami (PMS)
-* Centralny System Rezerwacji (CRS)
+- Channel Manager (CM)
+- Property Management System (PMS)
+- Central Reservation System (CRS)
 
-*Jeżeli dostawca ma serwer proxy, oznacza to, że pośrednio otrzymujemy stawki od dostawcy za pośrednictwem serwera proxy.*
+*Jeśli dostawca ma proxy, oznacza to, że pośrednio otrzymujemy stawki od dostawcy przez proxy.*
 
-| Dostawca | Typ | Pełnomocnik | Od | Ostatnia modyfikacja | Komentarz
+| Vendor | Type | Proxy | Since | Last modified | Comment
 | -- | -- | -- | -- | -- | -- |
-| Hoteliers Guru | CM | | 2017 | 2017 | |
-| Travelclick | CM | | 2016 | 2016 | |
-| Yield Planet | CM | | 2016 | 2016 | |
-| Siteminder | CM | | 2016 | 2016 | |
-| Cloudbeds | CM | | 2016 | 2016 | |
-| MyAllocator | CM | | 2016 | 2016 | |
-| ResAvenue | CM | | 2017 | 2017 | |
-| Fastbooking | CM | | 2016 | 2016 | Teraz d-edge |
-| Omnibees | CM | | 2019 | 2019 | |
-| Hotel Link | CM | | 2017 | 2017 | |
-| RateGain | CM | | 2016 | 2018 | |
-| Allotz | CM | | 2019 | 2019 | |
-| d-edge | CM | | 2018 | 2018 | |
-| Comanche | PMS | | 2017 | 2017 | |
-| Synxis | PMS | | 2019 | 2019 | |
-| Channex | PMS | | 2023 | 2023 | |
-| Idealny pobyt | PMS | Channex | 2023 | 2023 | |
+| Hoteliers Guru | CM |  | 2017 | 2017 | |
+| Travelclick | CM |  | 2016 | 2016 | |
+| Yield Planet | CM |  | 2016 | 2016 | |
+| Siteminder | CM |  | 2016 | 2016 | |
+| Cloudbeds | CM |  | 2016 | 2016 | |
+| MyAllocator | CM |  | 2016 | 2016 | |
+| ResAvenue | CM |  | 2017 | 2017 | |
+| Fastbooking | CM |  | 2016 | 2016 | Teraz d-edge |
+| Omnibees | CM |  | 2019 | 2019 | |
+| Hotel Link | CM |  | 2017 | 2017 | |
+| RateGain | CM |  | 2016 | 2018 | |
+| Allotz | CM |  | 2019 | 2019 | |
+| d-edge | CM |  | 2018 | 2018 | |
+| Comanche | PMS |  | 2017 | 2017 | |
+| Synxis | PMS |  | 2019 | 2019 | |
+| Channex | PMS |  | 2023 | 2023 | |
+| A Perfect Stay | PMS | Channex | 2023 | 2023 | |
 | Mews | PMS | Channex | 2023 | 2023 | |
 | Opera | PMS | Channex | 2023 | 2023 | |
 | Apaleo | PMS | Channex | 2023 | 2023 | |
-| Rezerwacja Abode | PMS | Channex | 2023 | 2023 | |
+| Abode Booking | PMS | Channex | 2023 | 2023 | |
 | AIOSELL | PMS | Channex | 2023 | 2023 | |
 | Ajjir | PMS | Channex | 2023 | 2023 | |
-| Wszystkie zarezerwowane | PMS | Channex | 2023 | 2023 | |
+| All Booked | PMS | Channex | 2023 | 2023 | |
 | Alojate | PMS | Channex | 2023 | 2023 | |
 | Atlantis | PMS | Channex | 2023 | 2023 | |
 | ATM | PMS | Channex | 2023 | 2023 | |
@@ -105,7 +107,7 @@ Dostępne typy:
 | GuestPoint | PMS | Channex | 2023 | 2023 | |
 | GuestPro | PMS | Channex | 2023 | 2023 | |
 | GuestSmart | PMS | Channex | 2023 | 2023 | |
-| Pomoc dla hoteli | PMS | Channex | 2023 | 2023 | |
+| Helping Hotels | PMS | Channex | 2023 | 2023 | |
 | Host-It | PMS | Channex | 2023 | 2023 | |
 | Hotelmeister | PMS | Channex | 2023 | 2023 | |
 | Hotelmu | PMS | Channex | 2023 | 2023 | |
@@ -135,13 +137,12 @@ Dostępne typy:
 | Quovai | PMS | Channex | 2023 | 2023 | |
 | ResBook | PMS | Channex | 2023 | 2023 | |
 | ResClick | PMS | Channex | 2023 | 2023 | |
-| Klucz rezerwacyjny | PMS | Channex | 2023 | 2023 | |
+| Reservation Key | PMS | Channex | 2023 | 2023 | |
 | ResMaster | PMS | Channex | 2023 | 2023 | |
-| Guru odosobnienia | PMS | Channex | 2023 | 2023 | |
+| Retreat Guru | PMS | Channex | 2023 | 2023 | |
 | Revenatium | PMS | Channex | 2023 | 2023 | |
 | Revivo | PMS | Channex | 2023 | 2023 | |
 | rezStream | PMS | Channex | 2023 | 2023 | |
 | Roomsy | PMS | Channex | 2023 | 2023 | |
 | Roverpass | PMS | Channex | 2023 | 2023 | |
 | Servo | PMS | Channex | 2023 | 2023 | |
-

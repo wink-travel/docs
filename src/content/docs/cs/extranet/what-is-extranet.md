@@ -1,26 +1,24 @@
 ---
-title: Co je to extranet?
-description: >-
-  Tento článek vás provede všemi potřebnými informacemi, abyste mohli začít s
-  provozováním hotelu na platformě Wink.
+title: Co je Extranet?
+description: Tento článek vás provede tím, co potřebujete vědět, abyste mohli začít na Wink jako hotel.
 sidebar:
   order: 0
 ---
-[Wink Extranet](https://extranet.wink.travel) je náš realitní portál. Je určen pro hotely, řetězce, značky a hotelové společnosti, kde si mohou vytvářet a spravovat digitální profily svých nemovitostí na platformě Wink.
 
-Náš extranet byl promyšleně navržen tak, aby byl co nejjednodušší, ale zároveň podporoval všechny funkce, které nároční uživatelé od pokročilého realitního portálu očekávají. Uveďme si několik příkladů:
+[Wink Extranet](https://extranet.wink.travel) je náš portál pro nemovitosti. Je určen pro hotely, řetězce, značky a hotelové management společnosti k vytvoření a správě digitálního profilu jejich nemovitostí na platformě Wink.
 
-1. Jednoduchost: Využijte náš inteligentní pracovní postup pro onboarding k registraci vaší nemovitosti a jejímu spuštění REÁLNĚ za méně než hodinu.
-2. Pokročilé: Wink podporuje 8500 různých variant storno podmínek
-3. Skvělé: Dejte jednomu člověku na planetě Zemi 10% slevu, aniž by se musel přihlašovat nebo zadávat promo kód.
+Náš Extranet byl pečlivě navržen tak, aby byl co nejjednodušší, ale zároveň podporoval všechny funkce, které pokročilí uživatelé očekávají od pokročilého portálu pro nemovitosti. Abychom vám dali pár příkladů:
 
-Nechte se celým procesem provést našimi průvodci. Až se budete cítit dostatečně pohodlně... pusťte se do toho sami.
+1. Jednoduchost: Použijte náš inteligentní onboarding workflow k zařazení vaší nemovitosti a spuštění LIVE za méně než hodinu.
+2. Pokročilost: Wink podporuje 8500 různých variant storno podmínek.
+3. Skvělé: Dejte jedné osobě na planetě Zemi 10% slevu, aniž by se uživatel musel přihlašovat nebo zadávat promo kód.
 
-Wink je pokročilý systém pro správu obsahu pro nemovitosti a poskytovatele zážitků. Vše, co můžete dělat v jedné z našich aplikací, můžete dělat prostřednictvím API. To vám umožňuje hlubokou integraci s Winkem do takové míry, že můžete prodávat prostřednictvím Winku, aniž byste se museli přihlašovat do kterékoli z našich aplikací.
+Nechte naše průvodce, aby vás provedli celým procesem. Až se budete cítit dostatečně jistí... pusťte se do toho sami.
 
-:::tip\[Tip pro profesionály]
-Platíte za drahý hosting mediálních zdrojů přes Leonardo International? Přesně totéž můžete udělat přes Wink A ZÍSKÁTE mnohem více možností pro manipulaci a doladění obrázků a videí.
+Wink je pokročilý systém pro správu obsahu pro nemovitosti a poskytovatele zážitků. Vše, co můžete dělat v jedné z našich aplikací, můžete dělat i přes API. To vám umožňuje provést hlubokou integraci s Winkem do takové míry, že můžete prodávat přes Wink, aniž byste se kdy museli přihlašovat do jakékoli z našich aplikací.
+
+:::tip[Profesionální tip]
+Platíte za drahé hostování mediálních souborů přes Leonardo International? Můžete dělat totéž přes Wink A navíc získáte mnohem více možností, jak upravovat a dolaďovat své obrázky a videa.
 :::
 
-Všechny tyto funkce jsou pro vás zdarma. Pouze při rezervaci si účtujeme malý poplatek. Nic neztratíte - vše získáte.
-
+Všechny tyto funkce jsou pro vás zdarma. Poplatek si účtujeme pouze při uskutečnění rezervace. Nemáte co ztratit – vše můžete získat.

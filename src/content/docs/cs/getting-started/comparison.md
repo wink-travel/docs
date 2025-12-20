@@ -1,43 +1,42 @@
 ---
-title: Comparison
-description: >-
-  Zjistěte, jak si Wink vede v porovnání s podobnými online cestovními
-  kancelářemi a jaké jsou výhody připojení se k Winku.
+title: Porovnání
+description: Zjistěte, jak se Wink srovnává s podobnými online cestovními společnostmi a jaké jsou výhody připojení k Wink.
 sidebar:
   order: 5
 ---
-Zjistěte, jak si Wink vede v porovnání s ostatními segmenty online cestování na trhu. Níže je uveden stručný rozpis funkcí, které jsme považovali za důležité pro porovnání.
 
-## Matice prvků
+Zjistěte, jak se Wink srovnává s ostatními segmenty online cestovního ruchu na trhu. Níže je rychlý přehled funkcí, které jsme považovali za důležité porovnat.
 
-| Funkce | Mrknutí | OTA | IBE | Bed Bank
+## Matice funkcí
+
+| Funkce | Wink | OTA | IBE | Bed Bank
 | ----------------------- | -- | -- | -- | -- |
-| Internetový rezervační systém | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Odkaz na prodejnu v bio | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Partnerská síť B2B | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Podpora cestovních kanceláří | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Distribuce a marketing s podporou umělé inteligence | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Sociálně přátelské nástroje | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| B2C kanál bez provizí | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Seznam hotelů Google zdarma | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Přístup k webovým komponentám / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Přímé vztahy | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Sjednatelné provize za prodejní kanál | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Správce kanálů a propojení s PMS | 🟢 | 🟢 | 🟢 | 🟢 |
-| Dodavatel vlastní zákazníka | 🟢 | ⚫️ | 🟢 | 🟢 |
-| Sledování návratnosti investic | 🟢 | 🟢 | ⚫️ | ⚫️ |
-| Platba za výkon | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Integrovaná platební brána | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Výplaty s Wise | 🟢 | 🟢 | ⚫️ | ⚫️ |
+| Internetový rezervační engine | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Link-in-bio prodejna | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| B2B affiliate síť | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Podpora cestovních agentů | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Distribuce a marketing s podporou AI | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Nástroje přátelské k sociálním sítím | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| B2C kanál bez provize | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Zdarma Google Hotel listing | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Přístup k Web Component / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Přímé vztahy | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Vyjednatelné provize podle prodejního kanálu | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Připojení channel managera & PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Dodavatel vlastní zákazníka | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| Sledování návratnosti investic (ROI) | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Platba za výkon | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Integrovaná platební brána | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Výplaty přes Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
-## Wink vs. internetový rezervační systém (IBE)
 
-Některé hotely se nás snaží přirovnat ke svému internetovému rezervačnímu systému, který je součástí jejich channel manageru, a žádají nás o fixní měsíční cenu na základě počtu klíčů od jejich nemovitosti.
+## Wink vs Internet Booking Engine (IBE)
 
-Nejsme IBE a doufejme, že [Wink Academy](/) pomáhá to objasnit. Každá služba má své výhody i nevýhody. Pokud váš IBE vyhovuje vaší nemovitosti, držte se ho.
-Wink existuje proto, aby zaplnil několik mezer v cestovním ruchu a spojil vše na jednom místě.
+Některé hotely se nás snaží srovnávat s jejich internetovým rezervačním enginem, který je součástí jejich channel managera, a žádají nás o pevnou měsíční cenu založenou na počtu pokojů jejich objektu.
+
+Nejsme IBE a doufejme, že [Wink Academy](/cs/) pomůže toto objasnit. Každá služba má své výhody a nevýhody. Pokud vám váš IBE vyhovuje, zůstaňte u něj.  
+Wink existuje, aby vyplnil několik mezer v cestovním průmyslu a spojil vše na jednom místě.
 
 :::tip
-Nemusíte nahrazovat svůj stávající IBE. Doporučujeme však vyzkoušet náš rezervační systém, který je přátelský k sociálním sítím, nebo správce odkazů, na jednom ze svých účtů na sociálních sítích a zjistit, jak se vám daří. Pokud nejsou žádné rezervace, neplatíte nic – co byste ztratili? 😉
+Nemusíte nahrazovat svůj stávající IBE. Doporučujeme však vyzkoušet náš sociálně přátelský rezervační engine nebo správce odkazů na jednom z vašich sociálních účtů, abyste viděli, jak se konvertují. Neplatíte nic, pokud nejsou žádné rezervace – co tedy můžete ztratit? 😉
 :::
-

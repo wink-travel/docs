@@ -1,19 +1,16 @@
 ---
-title: Zahtevajte svoj URL
-description: >-
-  V tem članku vam bomo povedali, kako zahtevati svoj URL z lažnim imenom
-  WinkLinks.
+title: Zahtevajte svojo URL
+description: V tem članku vam povemo, kako zahtevati svojo WinkLinks vanity URL.
 sidebar:
   order: 1
 ---
-Z ustvarjanjem [partnerski račun](/studio/what-is-studio), že imate URL za lažno uporabo WinkLinks. Funkcije za založnike WinkLinks so na voljo v naši aplikaciji Studio; poleg drugih funkcij naših partnerskih programov.
+
+Z ustvarjanjem [partnerskega računa](/sl/studio/what-is-studio) že imate WinkLinks vanity URL. Funkcije založnika WinkLinks so na voljo v naši aplikaciji Studio, skupaj z drugimi partnerskimi funkcijami.
 
 ### Primer
 
-Če je ime vašega računa Queen Bee, bo vaš URL za WinkLinks naslednji:
+Če je ime vašega računa Queen Bee, bo vaša WinkLinks vanity URL:
 
 <h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-Imena računov so na voljo na`first come - first serve`osnova - Pridobite si svoj edinstveni URL, dokler lahko!
-
+Imena računov so na voljo po načelu `kdor prej pride, prej melje` – Pridobite svojo edinstveno URL, dokler lahko!

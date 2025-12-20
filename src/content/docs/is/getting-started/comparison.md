@@ -1,43 +1,42 @@
 ---
-title: Comparison
-description: >-
-  Kynntu þér hvernig Wink ber sig saman við sambærileg ferðaþjónustufyrirtæki á
-  netinu og hverjir eru sumir af kostunum við að ganga til liðs við Wink.
+title: Samanburður
+description: Lærðu hvernig Wink ber sig saman við svipaðar netferðafyrirtæki og hverjir eru kostirnir við að ganga til liðs við Wink.
 sidebar:
   order: 5
 ---
-Kynntu þér hvernig Wink ber sig saman við aðra markaðshluta netferða. Hér að neðan er stutt yfirlit yfir eiginleika sem við töldum mikilvæga til samanburðar.
 
-## Eiginleikafylki
+Lærðu hvernig Wink ber sig saman við aðra netferðageira á markaðnum. Hér að neðan er stuttur samanburður á eiginleikum sem við töldum mikilvægt að bera saman.
 
-| Eiginleiki | Blikk | OTA | IBE | Bed Bank
-| ------------------------ | -- | -- | -- | -- |
-| Bókunarvél á netinu | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Tengill í lífsstíl verslunar | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Tenglanet fyrir fyrirtæki til fyrirtækja | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Aðstoð við ferðaskrifstofur | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Dreifing og markaðssetning með aðstoð gervigreindar | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Samfélagsvæn verkfæri | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Þóknunarlaus B2C rás | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Ókeypis hótelskráning á Google | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Aðgangur að vefþáttum / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Bein tengsl | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Samningsatriði um þóknun á hverja sölurás | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Rásastjóri og tengsl við PMS | 🟢 | 🟢 | 🟢 | 🟢 |
-| Birgir á viðskiptavininn | 🟢 | ⚫️ | 🟢 | 🟢 |
-| Fylgjast með arðsemi fjárfestingar | 🟢 | 🟢 | ⚫️ | ⚫️ |
-| Greitt fyrir hverja frammistöðu | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Samþætt greiðslugátt | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Útborganir með Wise | 🟢 | 🟢 | ⚫️ | ⚫️ |
+## Eiginleikamatrix
 
-## Wink á móti bókunarvél á netinu (IBE)
+| Eiginleiki | Wink | OTA | IBE | Bed Bank
+| ----------------------- | -- | -- | -- | -- |
+| Internet bókunarvél | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Link-in-bio verslun | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| B2B tengslanettverk | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Stuðningur við ferðaskrifstofur | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| AI-aðstoð við dreifingu & markaðssetningu | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Félagsmiðla-vænir verkfæri | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Þóknunarlaus B2C rás | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Ókeypis Google hótelskráning | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Vefhluti / SDK / API aðgangur | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Bein tengsl | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Samningshæfar þóknanir eftir söluás | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Tenging við rásarstjóra & PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Birgir á viðskiptavininn | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| Rekja arðsemi (ROI) | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Greiðsla eftir árangri | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Innbyggður greiðslugátt | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Greiðslur með Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
-Sum hótel reyna að bera okkur saman við bókunarvél sína á netinu sem fylgdi með rásarstjóranum þeirra og biðja okkur um að gefa þeim fast mánaðarlegt verð miðað við fjölda lykla að eigninni.
 
-Við erum ekki IBE og vonandi [Wink Academy](/) hjálpar til við að skýra þetta. Það eru kostir og gallar við alla þjónustu. Ef IBE þinn virkar fyrir eignina þína, haltu þig við það.
-Wink er til til að fylla í nokkur skarð í ferðaþjónustugeiranum og sameina allt á einum stað.
+## Wink vs Internet Booking Engine (IBE)
 
-:::ábending
-Þú þarft ekki að skipta út núverandi IBE-reikningi þínum. Hins vegar mælum við með að þú prófir samfélagsmiðlavæna bókunarvélina okkar, eða tenglastjórann, á einum af samfélagsmiðlareikningunum þínum til að sjá hvernig þeir skila árangri. Þú borgar ekkert ef engar bókanir eru til - Hvað hefur þú að tapa? 😉
+Sum hótel reyna að bera okkur saman við internet bókunarvélina sem fylgdi með rásarstjóranum þeirra og biðja okkur um fasta, mánaðarlega verðlagningu byggða á fjölda herbergja á eign þeirra.
+
+Við erum ekki IBE og vonandi hjálpar [Wink Academy](/is/) til við að skýra þetta. Það eru kostir og gallar við hvaða þjónustu sem er. Ef IBE þitt virkar vel fyrir eign þína, haltu þig við það.  
+Wink er til staðar til að fylla nokkur skörð í ferðaiðnaðinum og sameina allt á einum stað.
+
+:::tip
+Þú þarft ekki að skipta út núverandi IBE þínu. Hins vegar mælum við með að þú prófir félagsmiðla-væna bókunarvél okkar, eða tengjastjórann, á einni af félagsmiðlareikningum þínum til að sjá hvernig þau umbreytast. Þú borgar ekkert ef engar bókanir verða – Hvað hefur þú að tapa? 😉
 :::
-

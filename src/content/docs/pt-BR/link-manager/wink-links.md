@@ -1,67 +1,65 @@
 ---
 title: WinkLinks
-description: >-
-  Neste artigo, explicamos o que é um gerenciador de links e o que ele pode
-  fazer.
+description: Neste artigo, explicamos o que é um gerenciador de links e o que nosso gerenciador de links pode fazer.
 sidebar:
   order: 0
 ---
-Um gerenciador de links permite salvar e organizar URLs que você gosta para usar mais tarde. Os favoritos do seu navegador são um exemplo de gerenciador de links. Com o advento das mídias sociais, surgiu uma necessidade maior de expor e disponibilizar links para seus amigos e públicos. Seu feed do Facebook é um exemplo de gerenciador de links otimizado para redes sociais.
 
-:::Atenção
-A maioria dos gerenciadores de links exige uma assinatura para quem publica links de afiliados.
+Um gerenciador de links permite que você salve e organize URLs que gosta para usar depois. Os favoritos do seu navegador são um exemplo de gerenciador de links. Com o advento das redes sociais, surgiu uma necessidade maior de expor e disponibilizar links para seus amigos e públicos. Seu feed do Facebook é um exemplo de gerenciador de links amigável às redes sociais.
+
+:::caution
+A maioria dos gerenciadores de links exige uma assinatura para quem publica links de afiliados. 
 :::
 
-Nós construímos [WinkLinks](https://i.trvl.as/) ; um gerenciador de links totalmente gratuito, focado no setor de viagens, para estimular, anunciar e vender efetivamente on-line.
+Construímos o [WinkLinks](https://i.trvl.as/); um gerenciador de links totalmente gratuito, focado no setor de viagens, para entusiasmar, anunciar e vender de forma eficaz online.
 
-## Características
+## Recursos
 
-* O WinkLinks permite que você adicione todos os seus links de afiliados existentes, como Commission Junction e Amazon, gratuitamente.
-* Você obtém uma URL de vaidade legal, como<https://i.trvl.as/bob>, para aqueles momentos em que você só pode compartilhar uma única URL.
-* Você pode organizar e compartilhar links e enviar arquivos.
-* Hotéis, redes e marcas podem usar o WinkLinks como um mecanismo de reserva avançado:
-  * Suporta múltiplas propriedades.
-  * Suporta múltiplos destinos.
-  * Suporta diversas moedas.
-  * Suporta vários idiomas.
-* Suporte WinkLinks`rich content` *(Veja abaixo)*.
-* Vá do IG para a reserva em apenas 2 cliques 🚀
+- O WinkLinks permite que você adicione todos os seus links de afiliados existentes, como Commission Junction e Amazon, gratuitamente.
+- Você recebe uma URL personalizada legal, como [https://i.trvl.as/bob](https://i.trvl.as/bob), para aqueles momentos em que só pode compartilhar um único URL.
+- Você pode organizar e compartilhar links e fazer upload de arquivos.
+- Hotéis, redes e marcas podem usar o WinkLinks como um motor de reservas avançado:
+    - Suporta múltiplas propriedades.
+    - Suporta múltiplos destinos.
+    - Suporta múltiplas moedas.
+    - Suporta múltiplos idiomas.
+- O WinkLinks suporta `rich content` *(veja abaixo)*.
+- Vá do IG para a reserva em apenas 2 cliques 🚀
 
-## Conteúdo rico
+## Rich content
 
-:::nota
-Definir`Intelligent`para 🟢 em seu [Configurações](/link-manager/settings) para usar este recurso.
+:::note
+Ative `Intelligent` para 🟢 em suas [Configurações](/pt-BR/link-manager/settings) para usar este recurso.
 :::
 
-Se você compartilhar um link de um site que oferece suporte`rich`/`oEmbed`conteúdo, seu link ganha vida no WinkLinks.
+Se você compartilhar um link de um site que suporta conteúdo `rich` / `oEmbed`, seu link ganha vida no WinkLinks.
 
 Sites suportados:
 
-* Facebook - *Interaja com a postagem e reproduza um vídeo*.
-* Instagram -*Interaja com a postagem e reproduza um vídeo*.
-* YouTube - *Reproduzir um vídeo*.
-* X (antigo Twitter) -*Interaja com uma postagem*.
-* Spotify -*Reproduza suas playlists favoritas*.
-* Piscar - *Ver `Advanced`*.
+- Facebook - *Interaja com a publicação e assista a um vídeo*.
+- Instagram - *Interaja com a publicação e assista a um vídeo*.
+- YouTube - *Assista a um vídeo*.
+- X (antigo Twitter) - *Interaja com uma publicação*.
+- Spotify - *Ouça suas playlists favoritas*.
+- Wink - *Veja `Advanced`*.
 
 ## Avançado
 
-WinkLinks também é uma ótima maneira de expor o inventário de viagens que você encontrou, por meio de [Estúdio Wink](https://studio.wink.travel), e que você quer vender para seu público.
+O WinkLinks também é uma ótima forma de expor o inventário de viagens que você encontrou, através do [Wink Studio](https://studio.wink.travel), e que deseja vender para seu público.
 
-Use o WinkLinks para vender:
+Use o WinkLinks para vender seus:
 
-* [Links compartilháveis](/studio/shareable-links) - Escolha exibir como:
-  * [Banner de anúncio](/developers/web-components/#content-loader).
-  * Link normal com atualizações de preços em tempo real.
-* [Cartões](/studio/cards) - Cartões reserváveis com preços e disponibilidade em tempo real.
-* [Grades](/studio/grids) - Grade com cartões reserváveis.
-* [Mapas](/studio/maps) - Mapa com marcadores que se abrem em cartões reserváveis.
+- [Links compartilháveis](/pt-BR/studio/shareable-links) - Escolha exibir como:
+    - [Banner de anúncio](/pt-BR/developers/web-components/#content-loader).
+    - Link normal com atualizações de preços em tempo real.
+- [Cards](/pt-BR/studio/cards) - Cards reserváveis com preços e disponibilidade em tempo real.
+- [Grids](/pt-BR/studio/grids) - Grade com cards reserváveis.
+- [Maps](/pt-BR/studio/maps) - Mapa com marcadores que abrem cards reserváveis.
 
-:::nota
-Para gerenciar sua conta WinkLinks, faça login em sua conta de afiliado em[Estúdio Wink](https://studio.wink.travel).
+:::note
+Para gerenciar sua conta WinkLinks, faça login na sua conta de afiliado no [Wink Studio](https://studio.wink.travel).
 :::
 
-:::dica
-Para ver uma conta em ação, confira a conta WinkLinks de Bjorn, nosso cofundador:<https://i.trvl.as/bjorn>.
+:::tip
+Para ver uma conta em ação, confira a conta WinkLinks do Bjorn, nosso cofundador: [https://i.trvl.as/bjorn](https://i.trvl.as/bjorn).
 :::
-

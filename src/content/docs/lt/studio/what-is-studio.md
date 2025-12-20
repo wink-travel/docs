@@ -1,18 +1,16 @@
 ---
-title: Kas yra studija?
-description: >-
-  Šiame puslapyje paaiškinami sunkumai, susiję su kelioninių prekių prieinamumu
-  ir kaip „Wink“ partnerių portalas tai labai palengvina.
+title: Kas yra Studio?
+description: Šiame puslapyje paaiškinama, kokie sunkumai kyla prieinant prie kelionių inventoriaus ir kaip Wink partnerių portalas tai žymiai palengvina.
 sidebar:
   order: 0
 ---
-Istoriškai norint gauti prieigą prie bet ko, kas susiję su kelionėmis, ir jį parduoti, reikėjo konfidencialumo sutarčių ir sudėtingų integracijų tarp dviejų \[ar daugiau] licencijuotų kelionių agentūrų įmonių, kurios turėjo pakankamai techninės patirties, prieigą prie mokėjimo šliuzo ir abi atitiko PCI DSS reikalavimus. Tai buvo brangios ir daug laiko reikalaujančios pastangos, o patekimo į rinką kliūtis paprastiems žmonėms buvo neįtikėtinai didelė.
 
-[„Wink“ studija](https://studio.wink.travel) yra mūsų partnerių portalas. Jis leidžia visiems parduoti kelionių inventorių taip pat lengvai, kaip bendrinti nuorodą, arba taip pat sudėtingai, kaip valdyti internetinę kelionių agentūrą.
+Istoriškai prieiga prie kelionių paslaugų ir jų pardavimas reikalavo konfidencialumo susitarimų (NDA) ir sudėtingų integracijų tarp dviejų [ar daugiau] licencijuotų kelionių agentūrų, turinčių pakankamai techninių žinių, prieigą prie mokėjimų vartų ir atitinkančių PCI DSS reikalavimus. Tai buvo brangus ir daug laiko reikalaujantis procesas, o įėjimo barjeras paprastiems žmonėms buvo praktiškai neįveikiamas.
 
-Partnerių portalas siūlo tiekėjų (pvz., viešbučių, nakvynės namų, nuomos punktų, patirties teikėjų) kelionių inventorių iš viso pasaulio. Jūsų tikslas – rasti jums tinkamiausią inventorių ir tada geriausiai jį pristatyti bei parduoti savo auditorijai.
+[Wink Studio](https://studio.wink.travel) yra mūsų partnerių portalas. Jis leidžia visiems lengvai parduoti kelionių inventorių – tiek paprastai dalijantis nuoroda, tiek pažangiai valdant internetinę kelionių agentūrą.
 
-„Studio“ siūlo jums galimybę naršyti tiekėjus ir jų prekių asortimentą. Radę jums patinkantį produktą, turime daug būdų, kaip jį parduoti internetu, o ypač socialiniuose tinkluose.
+Partnerių portalas suteikia prieigą prie kelionių inventoriaus iš tiekėjų (pvz., viešbučių, hostelių, nuomojamų būstų, patirčių teikėjų) visame pasaulyje. Jūsų tikslas – rasti tinkamą inventorių ir tada pasirinkti geriausią būdą jį pristatyti ir parduoti savo auditorijai.
+
+Studio suteikia galimybę naršyti tiekėjus ir jų inventorių. Radę tai, kas jums patinka, turime daugybę būdų, kaip parduoti tą inventorių internetu, ypač per socialinius tinklus.
 
 Skaitykite toliau ir sužinokite apie visas funkcijas, kurias siūlome partneriams.
-

@@ -1,43 +1,40 @@
 ---
 title: Integrācija ar TripPay
-description: >-
-  Šajā rakstā ir sniegts pilns piemērs tam, kā integrēties ar TripPay un ļaut
-  tam apstrādāt maksājumu jūsu vietā.
+description: Šajā rakstā ir pilns piemērs, kā integrēties ar TripPay un ļaut tam veikt maksājumu jūsu vietā.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Šajā rakstā ir sniegts pilnīgs piemērs tam, kā integrēties ar TripPay.
+Šajā rakstā ir sniegts pilns piemērs, kā integrēties ar TripPay.
 
-Ieteicams jau izlasīt:
+Ieteicams, ka jūs jau esat izlasījis:
 
-* [Maksājums > Kartēšana](/payment/mapping).
-* [Maksājums > Integrācija](/payment/integration).
-* [Maksājumu tīmekļa komponents](/developers/web-components/#payment).
-* [Maksājumu API](/developers/apis/#payment-api).*Izlasiet sadaļu par`Create payable contracts`*
+- [Maksājums > Kartēšana](/lv/payment/mapping).
+- [Maksājums > Integrācija](/lv/payment/integration).
+- [Maksājuma tīmekļa komponents](/lv/developers/web-components/#payment).
+- [Maksājuma API](/lv/developers/apis/#payment-api). *Izlasiet sadaļu par `Maksājamo līgumu izveidi`*
 
-Lai veiksmīgi izmantotu TripPay rezervācijas apmaksai, veiciet tālāk norādītās darbības.
+Šeit ir soļi, kā veiksmīgi izmantot TripPay, lai samaksātu par rezervāciju:
 
 <Steps>
-  1. Pārliecinieties, ka rezervēšanas līgumā minētie labuma guvēji ir kartēti.
-  2. Ļaujiet ceļotājam izvēlēties inventāru, ko viņš vēlas rezervēt, un sagatavojieties maksāšanai.
-  3. Izveidot `payable contract` ar TripPay, kurā ir norādītas rezervējamās preces.
-  4. Ļaujiet ceļotājam norēķināties, izmantojot TripPay tīmekļa komponentu.
+1. Pārliecinieties, ka rezervācijas līgumā minētie saņēmēji ir kartēti.
+2. Ļaujiet ceļotājam izvēlēties inventāru, ko viņš vēlas rezervēt, un sagatavoties maksājumam.
+3. Izveidojiet TripPay `maksājamo līgumu`, kas satur rezervējamās preces.
+4. Ļaujiet ceļotājam veikt maksājumu, izmantojot TripPay tīmekļa komponentu.
 </Steps>
 
+Pieņemam, ka jūs jau esat pabeidzis `1. un 2. soli` un esat gatavs informēt TripPay par rezervāciju.
 
-Mēs pieņemam, ka jūs jau esat pabeidzis`Step 1`un`Step 2`un ir gatavi informēt TripPay par rezervāciju.
+## Maksājamā līguma izveide
 
-## Izveidojiet apmaksātu līgumu
-
-:::piezīme
-Lai uzzinātu vairāk par maksājama līguma izveides prasībām, apmeklējiet Maksājumu API.
+:::note
+Dodieties uz Maksājuma API, lai uzzinātu vairāk par prasībām maksājamā līguma izveidei.
 :::
 
 ### Pieprasījums
-
-Šeit ir JSON parauga pieprasījums, kurā ir iekļauts viss nepieciešamais, lai izveidotu savu pirmo apmaksājamo līgumu.
+Šeit ir JSON parauga pieprasījums, kas ietver visu nepieciešamo jūsu pirmajam maksājamajam līgumam.
 
 ```json {3-6, 8-9}
 {
@@ -132,49 +129,49 @@ Lai uzzinātu vairāk par maksājama līguma izveides prasībām, apmeklējiet M
 
 Paskaidrojums:
 
-Mēs šeit nepaskaidrosim katru datu punktu, jo tie jau ir aplūkoti API dokumentācijā.
+Mēs neizskaidrosim katru datu punktu, jo tie jau ir aprakstīti API dokumentācijā.
 
-* Līnijas:**2–7**ir lietotājs, kas ir atbildīgs par rezervāciju. Ir divu veidu rezervētāji:
-  * Ceļotājs.
-  * Ceļojumu aģents.
-* Līnijas:**8.–9.**&#x69;r TripPay konts, kas nodrošina rezervāciju. Tas var būt:
-  * Jūsu TripPay integratora konts.
-  * Ja jūs pārvaldāt saistīto uzņēmumu tīklu, tas var būt jūsu saistītais uzņēmums.
-* Izmantojiet`traceId`lai grupētu vairākas rezervācijas vairākiem piegādātājiem. Tādā veidā jūs varat atcelt grupas rezervāciju.
-* `redirectUrl`ļauj TripPay zināt, uz kuru lapu pāradresēt pēc maksājuma pabeigšanas.
-* `sourceUrl`ir vietne/lietotne, kurā tika veikta rezervācija.
+- Rindas: **2 - 7** ir lietotājs, kas atbild par rezervāciju. Ir divu veidu rezervētāji:
+    - Ceļotājs.
+    - Ceļojumu aģents.
+- Rindas: **8 - 9** ir TripPay konts, kas veic rezervācijas apstrādi. Tas var būt:
+    - Jūsu TripPay integratora konts.
+    - Ja jūs vadāt filiāļu tīklu, tas var būt jūsu filiāle.
+- Izmantojiet `traceId`, lai grupētu vairākas rezervācijas no vairākiem piegādātājiem. Tā jūs varat atcelt grupas rezervāciju.
+- `redirectUrl` ļauj TripPay zināt, uz kuru lapu novirzīt pēc maksājuma pabeigšanas.
+- `sourceUrl` ir vietne / lietotne, kurā veikta rezervācija.
 
-The`contractList`Masīvs satur preces, ko ceļotājs vēlas iegādāties no vairākiem piegādātājiem. Katra prece satur:
+`contractList` masīvā ir prece(-es), ko ceļotājs vēlas iegādāties no vairākiem piegādātājiem. Katrs priekšmets satur:
 
-* The`identifier`ir derīgs jūsu ģenerēts UUID.
-* Piegādātājs, no kura vēlaties rezervēt krājumus.
-* Inventārs, kuru vēlaties rezervēt no šī piegādātāja. Tas viss ir norādīts ligzdotajā masīvā.`contractItemList`.
-* Katrs ieraksts zem`contractItemList`satur:
-  * **Vieslietotājs**Šis ir lietotājs, kurš ieradīsies telpās.
-  * **Vārds angļu valodā**Inventāra nosaukums angļu valodā.
-  * **Apraksts angļu valodā**Garāks inventāra apraksts angļu valodā.
-  * **Cena**Preces cena.
-  * **Maršruts**Kad šī prece ir jārezervē.
-  * **Cenu veids**Kā tika aprēķināta cena.
-  * **Krājumu veids**Kāda veida inventārs tas ir?
-  * **Maksājams**Kad ceļotājam būtu jāiekasē maksa.*Pašlaik mēs atbalstām tikai tūlītējas apmaksas iespējas.*
-  * **Politika**Iekļaujiet atcelšanas politikas noteikumus.
-  * **Dienas cenrādis**Ja rezervējamais vienums ir istaba, varat izvēlēties iekļaut istabas cenu par katru viesa uzturēšanās nakti.
-  * **Saņēmēji**Norādiet, kuram(-iem) TripPay kontam(-iem) jāpiešķir kāda(-s) preces cenas summa(-s).*Tiek atbalstītas fiksētas/procentuālas summas.*
+- `identifier` ir derīgs UUID, ko jūs ģenerējat.
+- Piegādātājs, no kura vēlaties rezervēt inventāru.
+- Inventārs, ko vēlaties rezervēt no šī piegādātāja. Tie visi ir norādīti iekšējā masīvā `contractItemList`.
+- Katrs ieraksts `contractItemList` satur:
+    - **Vieslietotājs** Lietotājs, kas ieradīsies objektā.
+    - **Nosaukums angļu valodā** Inventāra nosaukums angļu valodā.
+    - **Apraksts angļu valodā** Garāks inventāra apraksts angļu valodā.
+    - **Cena** Preces cena.
+    - **Maršruts** Kad šī prece jārezervē.
+    - **Cenu veids** Kā tika aprēķināta cena.
+    - **Inventāra veids** Kāda veida inventārs tas ir.
+    - **Maksājums** Kad ceļotājam jāveic maksājums. *Pašlaik atbalstām tikai tūlītējā maksājuma iespējas.*
+    - **Politika** Iekļauj atcelšanas politikas noteikumus.
+    - **Dienas likmju saraksts** Ja rezervē istabu, varat norādīt, cik maksā istaba katru nakti, ko viesis uzturas.
+    - **Saņēmēji** Norādiet, kuriem TripPay kontiem jāpiešķir kāda daļa no preces cenas. *Atbalstītas fiksētas un procentuālās summas.*
 
-:::piezīme
-Iepriekš minētajā JSON piemērā mums ir 3 saņēmēji:
+:::note
+Iepriekšējā JSON piemērā ir 3 saņēmēji:
 
-* 1,5% tika piešķirti platformai, kas veicināja rezervāciju.*piem., Wink*
-* 9,85% tika piešķirti filiālei kā komisija.*piemēram, Kima Kardašjana*
-* 88,65% tika piešķirti piegādātājam istabas rezervēšanai.*piem., Hiltons*
+- 1,5% tika piešķirti platformai, kas veica rezervāciju. *piemēram, Wink*
+- 9,85% tika piešķirti filiālei kā komisija. *piemēram, Kim Kardashian*
+- 88,65% tika piešķirti piegādātājam par istabas rezervāciju. *piemēram, Hilton*
 
-Kad TripPay atbildēs ar apmaksātu līgumu, jūs ievērosiet, ka tas ir iepludinājis savu saņēmēju 4,0% apmērā.
+Kad TripPay atbild ar maksājamo līgumu, jūs pamanīsiet, ka tas ir pievienojis savu saņēmēju ar 4,0%.
 :::
 
 ### Atbilde
 
-Kad TripPay atbildēs uz jūsu pieprasījumu, tas izskatīsies apmēram šādi:
+Kad TripPay atbildēs uz jūsu pieprasījumu, tas izskatīsies aptuveni šādi:
 
 ```json {3}
 [
@@ -208,19 +205,18 @@ Kad TripPay atbildēs uz jūsu pieprasījumu, tas izskatīsies apmēram šādi:
 ]
 ```
 
-Saglabāt`id`3. rindā. Jūs to izmantosiet, lai ievadītu TripPay tīmekļa komponentā.
+Saglabājiet `id` no 3. rindas. To izmantosiet, lai ievietotu TripPay tīmekļa komponentā.
 
-## Iegult TripPay
+## TripPay iegulšana
 
 :::note
 Pārliecinieties, ka iepriekš esat ielādējis mūsu stilus un Javascript.
 :::
 
-Šajā brīdī jūs esat gatavs iegult`Payment Web Component`savā tīmekļa vietnē un parādiet to lietotājam.
+Tagad esat gatavs iegult `Maksājuma tīmekļa komponentu` savā vietnē un parādīt to lietotājam.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Kas attiecas uz integrāciju, tas ir viss, kas jums jādara. Visu smago darbu turpmāk veic TripPay.
-
+Kas attiecas uz integrāciju, tas ir viss, kas jums jādara. Viss smagais darbs turpmāk tiek veikts TripPay.

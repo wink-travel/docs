@@ -1,42 +1,39 @@
 ---
 title: Intégration avec TripPay
-description: >-
-  Cet article contient un exemple complet de la manière d'intégrer TripPay et de
-  le laisser gérer le paiement pour vous.
+description: Cet article contient un exemple complet de la manière d'intégrer TripPay et de lui laisser gérer le paiement pour vous.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Cet article contient un exemple de bout en bout de la manière d'intégrer TripPay.
+Cet article contient un exemple complet de bout en bout sur la manière d'intégrer TripPay.
 
-Il est recommandé que vous ayez déjà lu :
+Il est recommandé d'avoir déjà lu :
 
-* [Paiement > Cartographie](/payment/mapping).
-* [Paiement > Intégration](/payment/integration).
-* [Composant Web de paiement](/developers/web-components/#payment).
-* [API de paiement](/developers/apis/#payment-api).*Lire la section sur`Create payable contracts`*
+- [Paiement > Mapping](/fr/payment/mapping).
+- [Paiement > Intégration](/fr/payment/integration).
+- [Composant Web de Paiement](/fr/developers/web-components/#payment).
+- [API de Paiement](/fr/developers/apis/#payment-api). *Lisez la section sur `Créer des contrats payables`*
 
-Voici les étapes à suivre pour utiliser avec succès TripPay pour payer une réservation :
+Voici les étapes pour utiliser avec succès TripPay afin de payer une réservation :
 
 <Steps>
-  1. Assurez-vous que les bénéficiaires que vous mentionnez dans le contrat de réservation ont été cartographiés.
-  2. Laissez le voyageur choisir l'inventaire qu'il souhaite réserver et préparez-le à payer.
-  3. Créer un `payable contract` avec TripPay qui contient les articles à réserver.
-  4. Laissez le voyageur payer en utilisant le composant Web TripPay.
+1. Assurez-vous que les bénéficiaires mentionnés dans le contrat de réservation ont été mappés.
+2. Laissez le voyageur choisir l'inventaire qu'il souhaite réserver et préparez-le au paiement.
+3. Créez un `contrat payable` avec TripPay qui contient les articles à réserver.
+4. Laissez le voyageur payer en utilisant le Composant Web TripPay.
 </Steps>
 
-
-Nous supposons que vous avez déjà terminé`Step 1` et `Step 2`et sont prêts à informer TripPay de la réservation.
+Nous supposons que vous avez déjà complété `Étape 1` et `Étape 2` et que vous êtes prêt à informer TripPay de la réservation.
 
 ## Créer un contrat payable
 
 :::note
-Accédez à l'API de paiement pour en savoir plus sur les conditions requises pour créer un contrat payable.
+Consultez l'API de Paiement pour en savoir plus sur les exigences pour créer un contrat payable.
 :::
 
-### Demande
-
+### Requête
 Voici un exemple de requête JSON qui inclut tout ce dont vous avez besoin pour créer votre premier contrat payable.
 
 ```json {3-6, 8-9}
@@ -130,51 +127,51 @@ Voici un exemple de requête JSON qui inclut tout ce dont vous avez besoin pour 
 }
 ```
 
-Explication:
+Explication :
 
-Nous n'expliquerons pas ici tous les points de données car ils sont déjà couverts dans la documentation de l'API.
+Nous n'expliquerons pas chaque point de données ici car ils sont déjà couverts dans la documentation de l'API.
 
-* Lignes:**2 - 7**est l'utilisateur responsable de la réservation. Il existe deux types de réservations :
-  * Voyageur.
-  * Agent de voyage.
-* Lignes:**8 - 9**Le compte TripPay qui facilite la réservation. Il peut s'agir :
-  * Votre compte intégrateur TripPay.
-  * Si vous gérez un réseau d’affiliation, cela peut être votre affilié.
-* Utiliser un`traceId`Pour regrouper plusieurs réservations auprès de plusieurs fournisseurs. Vous pouvez ainsi annuler une réservation groupée.
-* `redirectUrl`permet à TripPay de savoir vers quelle page rediriger une fois le paiement terminé.
-* `sourceUrl`est le site / l'application sur lequel la réservation a eu lieu.
+- Lignes : **2 - 7** correspondent à l'utilisateur responsable de la réservation. Il existe deux types de réservateurs :
+    - Voyageur.
+    - Agent de voyage.
+- Lignes : **8 - 9** correspondent au compte TripPay facilitant la réservation. Il peut s'agir de :
+    - Votre compte intégrateur TripPay.
+    - Si vous gérez un réseau d'affiliés, cela peut être votre affilié.
+- Utilisez un `traceId` pour regrouper plusieurs réservations auprès de plusieurs fournisseurs. Cela vous permet d'annuler une réservation groupée.
+- `redirectUrl` indique à TripPay vers quelle page rediriger après la fin du paiement.
+- `sourceUrl` est le site / l'application sur lequel la réservation a eu lieu.
 
-Le `contractList`Le tableau contient le ou les articles que le voyageur souhaite acheter auprès de plusieurs fournisseurs. Chaque article contient :
+Le tableau `contractList` contient l(es) article(s) que le voyageur souhaite acheter auprès de plusieurs fournisseurs. Chaque article contient :
 
-* Le `identifier`est un UUID valide que vous générez.
-* Le fournisseur auprès duquel vous souhaitez réserver l'inventaire.
-* L'inventaire que vous souhaitez réserver auprès de ce fournisseur. Ces informations sont spécifiées dans le tableau imbriqué.`contractItemList`.
-* Chaque entrée sous`contractItemList` contient:
-  * **Utilisateur invité**Il s’agit de l’utilisateur qui arrivera sur les lieux.
-  * **Nom en anglais**Le nom de l'inventaire en anglais.
-  * **Description en anglais**Une description plus longue de l'inventaire en anglais.
-  * **Prix**Le prix de l'article.
-  * **Itinéraire**Quand cet article doit être réservé.
-  * **Type de tarification**Comment le prix a été calculé.
-  * **Type d'inventaire**De quel type d'inventaire s'agit-il ?
-  * **Payable**Quand le voyageur doit être facturé.*Nous ne prenons actuellement en charge que les options de paiement immédiat.*
-  * **Politique**Inclure les règles de politique d’annulation.
-  * **Liste des tarifs journaliers**Si l'élément réservé est une chambre, vous pouvez choisir d'inclure le coût de cette chambre pour chaque nuit passée par le client.
-  * **Bénéficiaires**Indiquez à quel(s) compte(s) TripPay doivent être attribués quel(s) montant(s) du prix de l'article.*Les montants fixes/en pourcentage sont pris en charge.*
+- L’`identifier` est un UUID valide que vous générez.
+- Le fournisseur auprès duquel vous souhaitez réserver l'inventaire.
+- L'inventaire que vous souhaitez réserver auprès de ce fournisseur. Ceux-ci sont tous spécifiés dans le tableau imbriqué `contractItemList`.
+- Chaque entrée sous `contractItemList` contient :
+    - **Utilisateur invité** C’est l’utilisateur qui arrivera sur les lieux.
+    - **Nom en anglais** Le nom de l'inventaire en langue anglaise.
+    - **Description en anglais** Une description plus longue de l'inventaire en langue anglaise.
+    - **Prix** Le prix de l'article.
+    - **Itinéraire** Quand cet article doit être réservé.
+    - **Type de tarification** Comment le prix a été calculé.
+    - **Type d'inventaire** Quel type d'inventaire il s'agit.
+    - **Payable** Quand le voyageur doit être facturé. *Nous ne supportons actuellement que les options de paiement immédiat.*
+    - **Politique** Inclure les règles de politique d'annulation.
+    - **Liste des tarifs journaliers** Si l'article réservé est une chambre, vous pouvez choisir d'inclure le coût de cette chambre pour chaque nuitée du séjour.
+    - **Bénéficiaires** Inclure quel(s) compte(s) TripPay doit recevoir quelle(s) part(s) du prix de l'article. *Les montants fixes / en pourcentage sont supportés.*
 
 :::note
-Dans l'exemple JSON ci-dessus, nous avons trois bénéficiaires :
+Dans l'exemple JSON ci-dessus, nous avons 3 bénéficiaires :
 
-* 1,5% a été alloué à la plateforme qui a facilité la réservation.*par exemple Wink*
-* 9,85 % ont été alloués à l'affilié à titre de commission.*par exemple Kim Kardashian*
-* 88,65% ont été alloués au fournisseur pour la réservation de la chambre.*par exemple Hilton*
+- 1,5 % a été alloué à la plateforme qui a facilité la réservation. *ex. Wink*
+- 9,85 % a été alloué à l'affilié en tant que commission. *ex. Kim Kardashian*
+- 88,65 % a été alloué au fournisseur pour la réservation de la chambre. *ex. Hilton*
 
-Lorsque TripPay répond avec un contrat payable, vous remarquerez qu'il a injecté son propre bénéficiaire à hauteur de 4,0 %.
+Lorsque TripPay répond avec un contrat payable, vous remarquerez qu'il a injecté son propre bénéficiaire à 4,0 %.
 :::
 
 ### Réponse
 
-Lorsque TripPay répond à votre demande, cela ressemblera à ceci :
+Lorsque TripPay répond à votre requête, cela ressemblera à ceci :
 
 ```json {3}
 [
@@ -208,19 +205,18 @@ Lorsque TripPay répond à votre demande, cela ressemblera à ceci :
 ]
 ```
 
-Sauver le`id`sur la ligne 3. Vous l'utiliserez pour injecter dans le composant Web TripPay.
+Enregistrez l’`id` à la ligne 3. Vous l’utiliserez pour l’injecter dans le composant web TripPay.
 
 ## Intégrer TripPay
 
 :::note
-Assurez-vous d'avoir préalablement chargé nos styles et notre code Javascript.
+Assurez-vous d'avoir chargé nos styles et Javascript au préalable.
 :::
 
-À ce stade, vous êtes prêt à intégrer le`Payment Web Component`dans votre site Web et montrez-le à l'utilisateur.
+À ce stade, vous êtes prêt à intégrer le `Composant Web de Paiement` dans votre site web et à l'afficher à l'utilisateur.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-En ce qui concerne l'intégration, c'est tout ce que vous avez à faire. À partir de maintenant, TripPay se charge du reste.
-
+En ce qui concerne l'intégration, c'est tout ce que vous devez faire. Tout le travail lourd est pris en charge par TripPay à partir de maintenant.

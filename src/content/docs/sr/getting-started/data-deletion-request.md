@@ -1,43 +1,43 @@
 ---
-title: Захтев за брисање података
-description: Научите како да захтевате брисање личних података на Винку.
+title: Zahtev za brisanje podataka
+description: Saznajte kako da zatražite brisanje vaših ličnih podataka na Wink.
 sidebar:
   order: 9
 ---
-У компанији Wink поштујемо вашу приватност и у потпуности смо посвећени заштити ваших личних података. Поштујемо**Општа уредба о заштити података (GDPR)**&#x438; друге важеће законе о заштити података широм света.
 
-Ова страница описује како можете да захтевате брисање било којих личних података које смо можда прикупили путем наше платформе — укључујући, али не ограничавајући се на податке добијене путем друштвених мрежа за пријаву као што су Фејсбук или Инстаграм.
+U Wink-u poštujemo vašu privatnost i u potpunosti smo posvećeni zaštiti vaših ličnih podataka. Usklađeni smo sa **Opštom uredbom o zaštiti podataka (GDPR)** i drugim važećim zakonima o zaštiti podataka širom sveta.
 
-## Наша посвећеност приватности података
+Ova stranica opisuje kako možete zatražiti brisanje bilo kojih ličnih podataka koje smo možda prikupili putem naše platforme — uključujući, ali ne ograničavajući se na podatke dobijene preko provajdera društvenih prijava kao što su Facebook ili Instagram.
 
-Прикупљамо само податке који су неопходни за пружање наших услуга и никада не продајемо ваше личне податке. То може да укључује:
+## Naša posvećenost privatnosti podataka
 
-* Ваше име и адреса е-поште
-* Информације са јавног профила (нпр. са Фејсбука или Гугла)
-* Подаци о коришћењу или активности на нашој платформи
-* Све дозволе које сте експлицитно дали
+Prikupljamo samo podatke neophodne za pružanje naših usluga i nikada ne prodajemo vaše lične informacije. To može uključivati:
 
-Предузимамо одговарајуће мере за заштиту ваших података и обрађујемо све захтеве за брисање у складу са GDPR-ом и политиком података компаније Meta.
+- Vaše ime i email adresu
+- Javne informacije profila (npr. sa Facebook-a ili Google-a)
+- Podatke o korišćenju ili aktivnostima na našoj platformi
+- Sve dozvole koje ste nam izričito dali
 
-## Захтев за брисање података
+Preduzimamo odgovarajuće mere za zaštitu vaših podataka i obrađujemo sve zahteve za brisanje u skladu sa GDPR-om i Meta politikom podataka.
 
-Имате право да захтевате да избришемо све личне податке које поседујемо о вама.
+## Kako zatražiti brisanje podataka
 
-Да бисте затражили брисање података:
+Imate pravo da zatražite da obrišemo bilo koje lične informacije koje posedujemo o vama.
 
-* 📧**Пошаљите имејл на**:<support@wink.travel>
-* 📝 Користите наслов:`Data Deletion Request`
-* 🔍 Молимо вас да наведете идентификационе податке као што су:
-  * Адреса е-поште која се користи са нашом платформом
-  * Ваш Фејсбук или Гугл ИД или слично (ако је применљиво)
+Da biste zatražili brisanje podataka:
 
-Одговорићемо у року**30 дана**пријема вашег захтева, како је то прописано Општом уредбом о заштити података (GDPR).
+- 📧 **Pošaljite email na**: [support@wink.travel](mailto:support@wink.travel)
+- 📝 Koristite naslov poruke: `Data Deletion Request`  
+- 🔍 Molimo vas da uključite identifikacione podatke kao što su:
+  - Email adresa korišćena na našoj platformi
+  - Vaš Facebook ili Google ID ili slično (ako je primenjivo)
 
-## Питања или недоумице?
+Odgovorićemo u roku od **30 dana** od prijema vašeg zahteva, u skladu sa GDPR-om.
 
-Ако имате било каквих питања о томе како прикупљамо, користимо или бришемо ваше податке, слободно контактирајте наш тим за приватност на<support@wink.travel>.
+## Pitanja ili nedoumice?
 
-***
+Ako imate bilo kakvih pitanja o tome kako prikupljamo, koristimo ili brišemo vaše podatke, slobodno kontaktirajte naš tim za privatnost na [support@wink.travel](mailto:support@wink.travel).
 
-Хвала вам што нам верујете. Заштиту података схватамо озбиљно и посвећени смо томе да вам пружимо потпуну контролу над вашим информацијама.
+---
 
+Hvala što nam verujete. Ozbiljno shvatamo zaštitu podataka i posvećeni smo tome da vam pružimo potpunu kontrolu nad vašim informacijama.

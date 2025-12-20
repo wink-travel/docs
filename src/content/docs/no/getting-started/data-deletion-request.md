@@ -1,43 +1,43 @@
 ---
 title: Forespørsel om sletting av data
-description: Lær hvordan du kan be om å slette personopplysningene dine på Wink.
+description: Lær hvordan du kan be om sletting av dine personopplysninger på Wink.
 sidebar:
   order: 9
 ---
-Hos Wink respekterer vi personvernet ditt og er fullt ut forpliktet til å beskytte dine personopplysninger. Vi overholder**Personvernforordningen (GDPR)**&#x6F;g andre gjeldende databeskyttelseslover rundt om i verden.
 
-Denne siden beskriver hvordan du kan be om sletting av personopplysninger vi måtte ha samlet inn via plattformen vår – inkludert, men ikke begrenset til, data innhentet via leverandører av sosiale påloggingstjenester som Facebook eller Instagram.
+Hos Wink respekterer vi ditt personvern og er fullt forpliktet til å beskytte dine personopplysninger. Vi overholder **General Data Protection Regulation (GDPR)** og andre gjeldende lover om databeskyttelse over hele verden.
 
-## Vår forpliktelse til personvern
+Denne siden beskriver hvordan du kan be om sletting av personopplysninger vi kan ha samlet inn gjennom vår plattform — inkludert, men ikke begrenset til, data innhentet via sosiale påloggingsleverandører som Facebook eller Instagram.
 
-Vi samler kun inn dataene som er nødvendige for å tilby tjenestene våre, og vi selger aldri dine personopplysninger. Dette kan omfatte:
+## Vårt engasjement for personvern
 
-* Ditt navn og e-postadresse
-* Offentlig profilinformasjon (f.eks. fra Facebook eller Google)
-* Bruks- eller aktivitetsdata på plattformen vår
-* Eventuelle tillatelser som uttrykkelig er gitt av deg
+Vi samler kun inn data som er nødvendige for å levere våre tjenester, og vi selger aldri dine personopplysninger. Dette kan inkludere:
 
-Vi tar passende tiltak for å beskytte dataene dine og behandler alle slettingsforespørsler i samsvar med GDPR og Metas datapolicy.
+- Ditt navn og e-postadresse
+- Offentlig profilinformasjon (f.eks. fra Facebook eller Google)
+- Bruks- eller aktivitetsdata på vår plattform
+- Eventuelle tillatelser du eksplisitt har gitt
 
-## Be om sletting av data
+Vi tar passende tiltak for å sikre dine data og behandler alle forespørsler om sletting i samsvar med GDPR og Metas datapolitikk.
 
-Du har rett til å be om at vi sletter all personlig informasjon vi har om deg.
+## Forespørsel om sletting av data
 
-Slik ber du om sletting av data:
+Du har rett til å be om at vi sletter alle personopplysninger vi har om deg.
 
-* 📧**Send en e-post til**:<support@wink.travel>
-* 📝 Bruk emnefeltet:`Data Deletion Request`
-* 🔍 Vennligst inkluder identifiserende detaljer som:
-  * E-postadressen som brukes med plattformen vår
-  * Din Facebook- eller Google-ID eller lignende (hvis aktuelt)
+For å be om sletting av data:
 
-Vi vil svare innen**30 dager**for å motta forespørselen din, slik det kreves av GDPR.
+- 📧 **Send en e-post til**: [support@wink.travel](mailto:support@wink.travel)
+- 📝 Bruk emnelinjen: `Data Deletion Request`  
+- 🔍 Vennligst inkluder identifiserende detaljer som:
+  - E-postadressen som er brukt på vår plattform
+  - Din Facebook- eller Google-ID eller lignende (hvis aktuelt)
+
+Vi vil svare innen **30 dager** etter mottak av forespørselen, som krevd av GDPR.
 
 ## Spørsmål eller bekymringer?
 
-Hvis du har spørsmål om hvordan vi samler inn, bruker eller sletter dataene dine, kan du gjerne kontakte personvernteamet vårt på<support@wink.travel>.
+Hvis du har spørsmål om hvordan vi samler inn, bruker eller sletter dine data, er du velkommen til å kontakte vårt personvernteam på [support@wink.travel](mailto:support@wink.travel).
 
-***
+---
 
-Takk for at du stoler på oss. Vi tar databeskyttelse på alvor og er forpliktet til å gi deg full kontroll over informasjonen din.
-
+Takk for at du stoler på oss. Vi tar databeskyttelse på alvor og er forpliktet til å gi deg full kontroll over din informasjon.

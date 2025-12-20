@@ -1,21 +1,21 @@
 ---
-title: Mengapa Sertai
-description: Artikel ini membimbing anda melalui semua faedah menyertai Wink.
+title: Kenapa Sertai
+description: Artikel ini menerangkan semua manfaat menyertai Wink.
 sidebar:
   order: 0
 ---
-Wink dicipta untuk menjadikan jualan inventori perjalanan menarik semula dan menjadikannya boleh diakses oleh lebih ramai pengguna.
+
+Wink diwujudkan untuk menjadikan penjualan inventori pelancongan lebih menarik semula dan untuk menjadikannya boleh diakses oleh lebih ramai pengguna.  
 Terdapat banyak sebab yang baik untuk anda menyertai Wink.
 
 Akaun pengguna membolehkan anda:
 
-* Cipta dan urus hartanah dan jual di mana-mana sahaja bakal pengembara berada.
-* Cipta dan urus akaun ahli gabungan dan dapatkan komisen atas tempahan yang anda mudahkan.
-* Buat dan urus akaun ejen pelancongan dan tempah bagi pihak pelanggan anda.
-* Dapatkan url kesombongan WinkLinks anda (*cth. https://i.trvl.as/bob*) dan gunakannya dalam URL bio IG anda.
-* Tempah percutian anda yang seterusnya dan jimat.
-* Lakukan semua perkara di atas sebagai pembangun dengan menyepadukan dengan Wink.
-* Semua ciri kami tersedia untuk anda **F-R-E-E**.
+- Mencipta dan menguruskan hartanah serta menjual di mana-mana sahaja di mana pelancong berpotensi berada.
+- Mencipta dan menguruskan akaun afiliasi serta memperoleh komisen daripada tempahan yang anda fasilitasi.
+- Mencipta dan menguruskan akaun ejen pelancongan dan menempah bagi pihak pelanggan anda.
+- Mendapatkan url vanity WinkLinks anda (*contoh https://i.trvl.as/bob*) dan menggunakannya dalam URL bio IG anda.
+- Menempah percutian anda yang seterusnya dan berjimat.
+- Melakukan semua di atas sebagai pembangun dengan mengintegrasikan dengan Wink.
+- Semua ciri kami tersedia untuk anda secara **P-E-R-C-U-M-A**.
 
-Teruskan ke bahagian seterusnya untuk mengetahui cara mendaftar dan mula menjana pendapatan dengan Wink.
-
+Teruskan ke bahagian seterusnya untuk belajar cara mendaftar dan mula menjana pendapatan dengan Wink.

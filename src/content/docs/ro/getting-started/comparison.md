@@ -1,44 +1,42 @@
 ---
-title: Comparison
-description: >-
-  Află cum se compară Wink cu alte companii de turism online similare și care
-  sunt unele dintre beneficiile înscrierii la Wink.
+title: Comparație
+description: Află cum se compară Wink cu alte companii de turism online similare și care sunt unele dintre beneficiile aderării la Wink.
 sidebar:
   order: 5
 ---
-Află cum se compară Wink cu alte segmente de călătorii online de pe piață. Mai jos este o scurtă descriere a caracteristicilor pe care le-am considerat importante pentru a le compara.
 
-## Matricea de caracteristici
+Află cum se compară Wink cu alte segmente de turism online de pe piață. Mai jos este o prezentare rapidă a caracteristicilor pe care le-am considerat importante pentru comparație.
 
-| Articol | Wink | OTA | IBE | Bed Bank
-| ------------------------ | -- | -- | -- | -- |
-| Motor de rezervări pe internet | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Vitrină cu link în bio | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Rețea de afiliere B2B | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Asistență agenție de turism | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Distribuție și marketing asistate de inteligență artificială | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Instrumente prietenoase cu rețelele sociale | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Canal B2C fără comision | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Listare gratuită a hotelurilor pe Google | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Acces la componente web / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Relații directe | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Comisioane negociabile per canal de vânzări | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Manager de canale și conectivitate PMS | 🟢 | 🟢 | 🟢 | 🟢 |
-| Furnizorul deține clientul | 🟢 | ⚫️ | 🟢 | 🟢 |
-| Urmărirea rentabilității investiției | 🟢 | 🟢 | ⚫️ | ⚫️ |
-| Plată pe performanță | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Gateway de plată integrat | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Plăți cu Wise | 🟢 | 🟢 | ⚫️ | ⚫️ |
+## Matricea caracteristicilor
 
-## Wink vs. Motor de rezervări pe internet (IBE)
+| Caracteristică | Wink | OTA | IBE | Bed Bank
+| ----------------------- | -- | -- | -- | -- |
+| Motor de rezervare pe internet | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Magazin link-in-bio | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Rețea de afiliați B2B | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Suport pentru agenții de turism | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Distribuție și marketing asistate de AI | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Instrumente prietenoase cu social media | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Canal B2C fără comision | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Listare gratuită pe Google Hotel | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Acces la Web Component / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Relații directe | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Comisioane negociabile pe canal de vânzare | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Manager de canale & conectivitate PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Furnizorul deține clientul | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| Urmărire ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Plata pe performanță | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Gateway de plată integrat | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Plăți prin Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
-Unele hoteluri încearcă să ne compare cu motorul lor de rezervări online, care a venit la pachet cu managerul lor de canale, și ne cer să le oferim un preț fix, lunar, bazat pe numărul de chei ale proprietății lor.
 
-Nu suntem un IBE și sperăm [Academia Wink](/) ajută la clarificarea acestui aspect. Există avantaje și dezavantaje pentru orice serviciu. Dacă IBE-ul dvs. funcționează pentru proprietatea dvs., rămâneți la acesta.
+## Wink vs Motor de rezervare pe internet (IBE)
 
-Wink există pentru a umple mai multe goluri din industria turismului și a le reuni pe toate într-un singur loc.
+Unele hoteluri încearcă să ne compare cu motorul lor de rezervare pe internet care vine împreună cu managerul lor de canale și ne cer să le oferim un preț fix, lunar, bazat pe numărul de camere ale proprietății lor.
 
-:::sfat
-Nu trebuie să înlocuiești IBE-ul existent. Cu toate acestea, îți recomandăm să încerci motorul nostru de rezervări prietenos cu rețelele sociale, sau managerul de linkuri, pe unul dintre conturile tale de socializare pentru a vedea cum se convertesc. Nu plătești nimic dacă nu există rezervări - Ce ai de pierdut? 😉
+Noi nu suntem un IBE și, sperăm, [Wink Academy](/ro/) ajută să clarifice acest lucru. Există avantaje și dezavantaje pentru orice serviciu. Dacă IBE-ul tău funcționează pentru proprietatea ta, rămâi cu el.  
+Wink există pentru a umple mai multe goluri în industria turismului și pentru a le aduce pe toate împreună într-un singur loc.
+
+:::tip
+Nu trebuie să înlocuiești IBE-ul existent. Totuși, recomandăm să încerci motorul nostru de rezervare prietenos cu social media sau managerul de linkuri pe unul dintre conturile tale de social media pentru a vedea cum convertesc. Nu plătești nimic dacă nu există rezervări - Ce ai de pierdut? 😉
 :::
-

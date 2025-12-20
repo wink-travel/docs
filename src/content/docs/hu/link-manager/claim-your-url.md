@@ -1,17 +1,16 @@
 ---
-title: Igényelje URL-jét
-description: 'Ebben a cikkben elmondjuk, hogyan igényelheted a WinkLinks Vanity URL-címedet.'
+title: Igényeld a saját URL-címedet
+description: Ebben a cikkben elmagyarázzuk, hogyan igényelheted a WinkLinks egyedi URL-címedet.
 sidebar:
   order: 1
 ---
-Egy [partnerfiók](/studio/what-is-studio), már van egy WinkLinks Vanity URL-ed. A WinkLinks közzétevői funkciói megtalálhatók a Studio alkalmazásunkban; a többi affiliate funkció mellett.
+
+Egy [partneri fiók](/hu/studio/what-is-studio) létrehozásával már rendelkezel egy WinkLinks egyedi URL-címmel. A WinkLinks kiadói funkciók elérhetők a Studio alkalmazásunkban, más partneri funkcióink mellett.
 
 ### Példa
 
-Ha a fiókod neve Queen Bee, akkor a WinkLinks egyedi URL-címe a következő lesz:
+Ha a fiók neve Queen Bee, a WinkLinks egyedi URL-címed a következő lesz:
 
 <h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-A fióknevek elérhetők egy`first come - first serve`alap - Szerezd meg az egyedi URL-címedet, amíg lehet!
-
+A fióknevek elérhetők az `aki előbb jön, aki előbb kapja` elv alapján – Ragadd meg az egyedi URL-címed, amíg lehetőséged van rá!

@@ -1,21 +1,21 @@
 ---
 title: Mengapa Bergabung
-description: Artikel ini memandu Anda melalui semua manfaat bergabung dengan Wink.
+description: Artikel ini menjelaskan semua manfaat bergabung dengan Wink.
 sidebar:
   order: 0
 ---
-Wink diciptakan untuk membuat penjualan inventaris perjalanan menjadi menarik lagi dan membuatnya dapat diakses oleh lebih banyak pengguna.
-Ada banyak alasan bagus bagi Anda untuk bergabung dengan Wink.
 
-Akun pengguna memungkinkan Anda:
+Wink dibuat untuk membuat penjualan inventaris perjalanan menjadi menarik kembali dan agar dapat diakses oleh lebih banyak pengguna.  
+Ada banyak alasan bagus untuk Anda bergabung dengan Wink.
 
-* Buat dan kelola properti dan jual di mana pun calon wisatawan berada.
-* Buat dan kelola akun afiliasi dan dapatkan komisi atas pemesanan yang Anda fasilitasi.
-* Buat dan kelola akun agen perjalanan dan pesan atas nama pelanggan Anda.
-* Ambil url cantik WinkLinks Anda (*misalnya https://i.trvl.as/bob*) dan gunakan di URL bio IG Anda.
-* Pesan liburan Anda berikutnya dan berhemat.
-* Lakukan semua hal di atas sebagai pengembang dengan berintegrasi dengan Wink.
-* Semua fitur kami tersedia untuk Anda**BEBAS**.
+Akun pengguna memungkinkan Anda untuk:
 
-Lanjutkan ke bagian berikutnya untuk mempelajari cara mendaftar dan mulai memperoleh penghasilan dengan Wink.
+- Membuat dan mengelola properti serta menjual di mana pun calon pelancong berada.
+- Membuat dan mengelola akun afiliasi serta mendapatkan komisi dari pemesanan yang Anda fasilitasi.
+- Membuat dan mengelola akun agen perjalanan serta memesan atas nama pelanggan Anda.
+- Mengambil url vanity WinkLinks Anda (*misalnya https://i.trvl.as/bob*) dan menggunakannya di URL bio IG Anda.
+- Memesan liburan berikutnya dan menghemat biaya.
+- Melakukan semua hal di atas sebagai pengembang dengan mengintegrasikan dengan Wink.
+- Semua fitur kami tersedia untuk Anda secara **G-R-A-T-I-S**.
 
+Lanjutkan ke bagian berikutnya untuk mempelajari cara mendaftar dan mulai menghasilkan dengan Wink.

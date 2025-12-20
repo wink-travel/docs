@@ -1,71 +1,71 @@
 ---
 title: Privātuma politika
-description: Viegli pieejama un aktuāla privātuma politika visiem mūsu ceļotājiem.
+description: Viegli pieejama un aktuāla privātuma politika visiem mūsu ceļotāju lietotājiem.
 sidebar:
   order: 5
 ---
-TRAVELIKO SINGAPORE PTE. LTD., kas darbojas ar nosaukumu Wink (“Uzņēmums”), vēlas informēt jūs, kas sazinās ar Uzņēmumu, ka ir nepieciešams apkopot, apkopot un izmantot jūsu personas datus Uzņēmuma pakalpojumu sniegšanai saskaņā ar šo Privātuma politiku. Sazinoties ar Uzņēmumu un atklājot tam savus personas datus saziņas, koordinācijas un/vai Uzņēmuma pakalpojumu sniegšanas nolūkos, tas uzskata, ka jūs piekrītat un piekrītat ievērot šo Privātuma politiku.
 
-Apstrādājot personas datus, Sabiedrība var iegūt jūsu personas datus no dažādiem kanāliem šādi:
+TRAVELIKO SINGAPORE PTE. LTD., kas darbojas zem nosaukuma Wink (turpmāk – “Uzņēmums”), vēlas informēt jūs, kas sazinās ar Uzņēmumu, ka ir nepieciešams vākt, apkopot un izmantot jūsu personas datus Uzņēmuma pakalpojumu nodrošināšanai saskaņā ar šo Privātuma politiku. Sazinoties un atklājot savus personas datus Uzņēmumam saziņas, koordinācijas un/vai Uzņēmuma pakalpojumu sniegšanas nolūkos, tiek uzskatīts, ka jūs piekrītat un apņematies ievērot un izpildīt šo Privātuma politiku.
 
-(1) Tieši no jums, izmantojot Sabiedrības saziņu ar jums;
+Apstrādājamie personas dati, Uzņēmums var iegūt jūsu personas datus no dažādiem kanāliem šādi:
 
-(2) Netieši, izmantojot trešās personas ieteikumu, kurai jūs varat sniegt piekrišanu izpaust jūsu personas datus Sabiedrībai; vai
+(1) Tieši no jums, sazinoties ar Uzņēmumu;
 
-(3) Sistēma automātiski apkopo, kad jūs piekļūstat Uzņēmuma tīmekļa vietnei un/vai izmantojat pakalpojumus.
+(2) Netieši, caur trešās puses ieteikumu, kurai jūs varat piešķirt piekrišanu atklāt jūsu personas datus Uzņēmumam; vai
 
-Saskaņā ar šo Privātuma politiku Sabiedrībai ir jāvāc, jāapkopo, jāizmanto un jāapstrādā šādi personas dati:
+(3) Automātiski, izmantojot sistēmu, kad jūs piekļūstat Uzņēmuma tīmekļa vietnei un/vai izmantojat pakalpojumus.
 
-(1) Jūsu pilns vārds, tostarp saistītā informācija vai jūsu pārstāvja informācija (ja sazināties ar mums juridiskas personas vārdā), kas var ietvert jūsu identitātes informācijas dokumentu.
+Personas dati, kurus Uzņēmumam ir nepieciešams vākt, apkopot, izmantot un apstrādāt saskaņā ar šo Privātuma politiku, ir šādi:
 
-(2) Kontaktinformācija, piemēram, tālruņa numurs, e-pasta adrese vai sociālo mediju konta informācija.
+(1) Jūsu pilns vārds, tostarp saistītā informācija vai jūsu pārstāvja informācija (ja jūs sazināties Uzņēmuma vārdā kā juridiska persona), kas var ietvert jūsu identitātes apliecinošu dokumentu.
 
-(3) Citi personas dati, ko jūs varat sniegt Sabiedrībai saziņas laikā, piemēram, informācija par jautājumiem, informācija par interesēm vai jebkura cita personu identificējoša informācija, ko jūs sniedzat Sabiedrībai tieši, izmantojot dažādus saziņas kanālus.
+(2) Kontaktinformācija, piemēram, tālruņa numurs, e-pasts vai sociālo mediju konta informācija.
 
-(4) Saziņas gadījumā, izmantojot tīmekļa vietni, var tikt iekļauta jūsu tehniskā informācija, piemēram, IP adrese, sīkfaili, tostarp informācija par jūsu pārlūkošanas paradumiem.
+(3) Citi personas dati, ko jūs varat sniegt Uzņēmumam saziņas laikā, piemēram, informācija par jautājumiem, interešu informācija vai jebkura cita personiski identificējama informācija, ko jūs tieši sniedzat Uzņēmumam caur dažādiem saziņas kanāliem.
 
-Personas datu apstrādes un izmantošanas mērķis. Sabiedrībai ir nepieciešams apkopot, apkopot un izmantot Darba pretendenta personas datus šādiem mērķiem:
+(4) Saziņas gadījumā caur tīmekļa vietni var ietvert jūsu tehnisko informāciju, piemēram, IP adresi, sīkdatnes, tostarp informāciju par jūsu pārlūkošanas uzvedību.
 
-(1) Lai pārvaldītu saziņu, ar kuru esat sazinājies ar Sabiedrību, piemēram, atbildot uz jautājumiem, sniedzot atbilstošu informāciju pēc pieprasījuma un nepieciešamības, pārvaldot sūdzības vai atbildot uz komentāriem, ko sniedzat tieši Sabiedrībai, izmantojot dažādus saziņas kanālus, tostarp lai nodrošinātu nepārtrauktu koordināciju, pakalpojumu līguma izpildi un/vai tiesību un pienākumu izpildi, par kuriem Sabiedrība un jūs varat vienoties;
+Personas datu apstrādes un izmantošanas mērķis, Uzņēmumam ir nepieciešams vākt, apkopot un izmantot Darba pieteikuma iesniedzēja personas datus šādiem mērķiem:
 
-(2) Juridisku pienākumu izpildei, kuriem Sabiedrība var būt pakļauta noteiktiem nosacījumiem. Tas var ietvert, bet neaprobežojas ar, pienākumu veikšanu, kas saistīti ar grāmatvedības dokumentu un nodokļu sagatavošanu saistībā ar jebkādiem Sabiedrības sniegtajiem pakalpojumiem jums;
+(1) Lai pārvaldītu saziņu, ar kuru jūs esat sazinājies ar Uzņēmumu, piemēram, atbildētu uz jautājumiem, sniegtu pieprasīto un nepieciešamo informāciju, pārvaldītu sūdzības vai reaģētu uz komentāriem, ko jūs tieši sniedzat Uzņēmumam caur dažādiem saziņas kanāliem, tostarp nepārtrauktu koordināciju, pakalpojumu līguma izpildi un/vai tiesību un pienākumu izpildi, par ko jūs un Uzņēmums varat vienoties;
 
-(3) Lai veidotu un uzlabotu biznesa attiecības, tostarp uzlabotu pakalpojumu, ko Sabiedrība sniedz jūsu labā, ko Sabiedrība var apkopot un/vai izmantot jūsu personas datus kontroles, pakalpojumu nodrošināšanas, vadības analīzes un ar uzņēmējdarbību saistītu jautājumu risināšanas nolūkos, tostarp, bet ne tikai, darbinieku apmācības un turpmākās pakalpojumu uzlabošanas plānošanai;
+(2) Lai izpildītu juridiskās saistības, kurām Uzņēmums var būt pakļauts noteiktos apstākļos. Tas var ietvert, bet neaprobežojas ar, pienākumu veikšanu, kas saistīti ar grāmatvedības dokumentu un nodokļu sagatavošanu saistībā ar jebkādiem pakalpojumiem, ko Uzņēmums sniedz jums;
 
-(4) Lai aizsargātu un aizstāvētu Sabiedrības likumīgās tiesības gadījumā, ja jums un Sabiedrībai rodas strīds; un
+(3) Lai veidotu un uzlabotu biznesa attiecības, tostarp uzlabotu pakalpojumu, ko Uzņēmums sniedz jūsu labā, Uzņēmums var vākt un/vai izmantot jūsu personas datus kontroles, pakalpojumu nodrošināšanas, pārvaldības analīzes un biznesa jautājumu risināšanas nolūkos, tostarp, bet ne tikai, darbinieku apmācībai un nākotnes pakalpojumu uzlabošanas plānošanai;
 
-(5) Saskaņā ar Sabiedrībai sniegtu nepārprotamu piekrišanu, piemēram, mārketinga un informatīvo biļetenu saziņai, Sabiedrība var apstrādāt Personas datus mērķiem, kas definēti piekrišanā.
+(4) Lai aizsargātu un aizstāvētu Uzņēmuma likumīgās tiesības gadījumā, ja jums un Uzņēmumam rodas strīds; un
 
-Personas datu glabāšanas periods. Lai veiktu iepriekš aprakstītos mērķus, Sabiedrībai ir jāvāc, jāapkopo un jāapstrādā jūsu personas dati atbilstoši šādam periodam:
+(5) Pamatojoties uz skaidru piekrišanu, kas piešķirta Uzņēmumam, piemēram, mārketinga un informatīvo izdevumu saziņai, Uzņēmums var apstrādāt personas datus šajos piekrišanas noteiktajos nolūkos.
 
-(1) Lai apstrādātu personas datus pakalpojumu sniegšanas, līguma izpildes un/vai no līguma izrietošo tiesību un pienākumu izpildes nolūkā, Sabiedrībai ir jāapstrādā Jūsu personas dati tik ilgi, kamēr Sabiedrībai ir pienākums sniegt Jums pakalpojumus;
+Personas datu glabāšanas periods, lai izpildītu iepriekš aprakstītos mērķus, Uzņēmumam ir nepieciešams vākt, apkopot un apstrādāt jūsu personas datus šādos termiņos:
 
-(2) Lai veiktu personas datu apstrādi saskaņā ar piemērojamajiem tiesību aktiem, Sabiedrībai ir nepieciešams apstrādāt jūsu personas datus piemērojamajos tiesību aktos noteikto laika periodu;
+(1) Personas datu apstrādei pakalpojumu sniegšanas, līguma izpildes un/vai tiesību un pienākumu izpildes nolūkos Uzņēmumam ir nepieciešams apstrādāt jūsu personas datus tik ilgi, kamēr Uzņēmumam ir pienākums sniegt jums pakalpojumus;
 
-(3) Personas datu apstrādei biznesa attiecību veidošanas un uzlabošanas un/vai pakalpojuma uzlabošanas nolūkā Sabiedrība patur tiesības saglabāt šos personas datus tādā apmērā, kādā Sabiedrībai tas varētu būt nepieciešams biznesa vajadzībām. Sabiedrība garantē, ka personas datu saglabāšana nepamatoti neietekmēs datu subjekta tiesības;
+(2) Personas datu apstrādei likumdošanas prasību izpildes nolūkos Uzņēmumam ir nepieciešams apstrādāt jūsu personas datus likumos noteiktajā termiņā;
 
-(4) Lai apstrādātu personas datus Sabiedrības likumīgo tiesību aizsardzības un aizstāvēšanas nolūkos, Sabiedrībai ir nepieciešams glabāt šādus personas datus saskaņā ar piemērojamajos tiesību aktos noteikto kārtību; un
+(3) Personas datu apstrādei biznesa attiecību veidošanas un uzlabošanas un/vai pakalpojumu uzlabošanas nolūkos Uzņēmums patur tiesības glabāt šos personas datus tik ilgi, cik tas ir nepieciešams biznesa vajadzībām. Uzņēmums garantē, ka personas datu glabāšana nepārkāps datu subjekta tiesības nepamatoti;
 
-(5) Ja jūs sniedzat Sabiedrībai piekrišanu apstrādāt jūsu personas datus konkrētiem mērķiem, Sabiedrība apstrādās jūsu personas datus, līdz jūs atsauksiet šo piekrišanu.
+(4) Personas datu apstrādei Uzņēmuma likumīgo tiesību aizsardzības nolūkos Uzņēmumam ir nepieciešams glabāt šos personas datus likumos noteiktajā termiņā; un
 
-Personas datu izpaušana, parasti jūsu personas dati netiks izpausti, izņemot gadījumus, kad Sabiedrībai tie būtu jāizpauž šādai personai:
+(5) Ja jūs piešķirat piekrišanu Uzņēmumam apstrādāt jūsu personas datus konkrētiem nolūkiem, Uzņēmums apstrādās jūsu personas datus līdz brīdim, kad jūs atsauksiet šo piekrišanu.
 
-(1) Sabiedrības ārējie pakalpojumu sniedzēji, kas iesaistīti atbalsta pakalpojumu sniegšanā Sabiedrībai, sniedzot pakalpojumus Jums, tostarp Sabiedrības konsultanti. Šāda personas datu izpaušana šīm trešajām personām tiek veikta saskaņā ar mērķiem un tikai pēc nepieciešamības zināt; vai
+Personas datu atklāšana, parasti jūsu personas dati netiks atklāti, izņemot gadījumus, kad Uzņēmumam būs nepieciešams atklāt tos šādām personām:
 
-(2) Valdība, regulatīvās iestādes vai tiesas, ka Sabiedrībai var tikt piemērots rīkojums, likums vai spriedums par personas datu izpaušanu.
+(1) Uzņēmuma ārējiem pakalpojumu sniedzējiem, kas iesaistīti atbalsta pakalpojumu sniegšanā Uzņēmumam, lai nodrošinātu pakalpojumus jums, tostarp Uzņēmuma konsultantiem. Šāda personas datu atklāšana šīm trešajām pusēm notiks saskaņā ar mērķiem un tikai nepieciešamības gadījumā;
 
-Uzņēmums apņemas ieviest atbilstošus personas datu drošības pasākumus, lai novērstu jebkādu neatļautu un nelikumīgu piekļuvi, grozīšanu, labošanu vai izpaušanu. Uzņēmums apņemas regulāri pārskatīt šos pasākumus, lai nodrošinātu to atbilstību standartiem un piemērojamajiem tiesību aktiem.
+(2) Valsts, regulējošām iestādēm vai tiesām, kurām Uzņēmums var būt pakļauts rīkojumam, likumam vai spriedumam atklāt personas datus.
 
-Datu subjekta tiesības, Sabiedrība respektē jūsu kā datu subjekta tiesības saskaņā ar piemērojamajiem tiesību aktiem. Jūs varat sazināties ar Sabiedrību, lai īstenotu savas tiesības, kas ir (1) tiesības atsaukt piekrišanu, (2) tiesības piekļūt datiem, (3) tiesības pieprasīt personas datu kopiju, (4) tiesības labot personas datus, (5) tiesības iebilst pret jebkādu personas datu apstrādi, (6) tiesības pieprasīt datu pārnesamību, ja Sabiedrība glabā personas datus formātā, kas ir lasāms vai ko parasti izmanto automatizēti rīki vai iekārtas, tostarp tiesības pārsūtīt šādus personas datus citiem datu pārziņiem, (7) tiesības pieprasīt personas datu dzēšanu vai anonimizāciju, ja nav nepieciešams tos apstrādāt, (8) tiesības pieprasīt personas datu izmantošanas apturēšanu un (9) tiesības iesniegt sūdzību.
+Uzņēmums apņemas īstenot atbilstošus personas datu drošības pasākumus, lai novērstu jebkādu neatļautu un nelikumīgu piekļuvi, modificēšanu, grozīšanu vai atklāšanu. Uzņēmums apņemas regulāri pārskatīt šos pasākumus, lai nodrošinātu to atbilstību standartiem un piemērojamajiem likumiem.
+
+Datu subjektu tiesības, Uzņēmums cienīs jūsu tiesības kā datu subjektam saskaņā ar piemērojamiem likumiem. Jūs varat sazināties ar Uzņēmumu, lai izmantotu šādas tiesības: (1) tiesības atsaukt piekrišanu, (2) tiesības piekļūt, (3) tiesības pieprasīt personas datu kopiju, (4) tiesības labot personas datus, (5) tiesības iebilst pret personas datu apstrādi, (6) tiesības pieprasīt datu pārnesamību gadījumā, ja Uzņēmums glabā personas datus formātā, kas ir lasāms vai plaši izmantots automatizētiem rīkiem vai iekārtām, tostarp tiesības pārsūtīt šos personas datus citiem datu pārziņiem, (7) tiesības pieprasīt personas datu dzēšanu vai anonimizēšanu, ja nav nepieciešamības tos apstrādāt, (8) tiesības pieprasīt personas datu izmantošanas apturēšanu un (9) tiesības iesniegt sūdzību.
 
 Uzņēmuma kontaktinformācija
 
 Datu aizsardzības speciālists
 
-Vārds: Jans Guriu
+Vārds: Yann Gouriou
 
-Adrese: Wilkie Edge #03-01, Wilkie Road 8, Singapūra 228095
+Adrese: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
 
-E-pasts: dataprotectionofficer@wink.travel
+E-pasts: dataprotectionofficer@wink.travel  
 Tālruņa numurs: +66 (0) 854891301
-

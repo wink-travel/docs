@@ -1,43 +1,43 @@
 ---
-title: Datu dzēšanas pieprasījums
-description: 'Uzziniet, kā pieprasīt savu personas datu dzēšanu pakalpojumā Wink.'
+title: Pieprasījums par datu dzēšanu
+description: Uzziniet, kā pieprasīt savu personisko datu dzēšanu Wink platformā.
 sidebar:
   order: 9
 ---
-Wink mēs respektējam jūsu privātumu un esam pilnībā apņēmušies aizsargāt jūsu personas datus. Mēs ievērojam**Vispārīgā datu aizsardzības regula (VDAR)**&#x75;n citi piemērojamie datu aizsardzības likumi visā pasaulē.
 
-Šajā lapā ir aprakstīts, kā jūs varat pieprasīt jebkādu personas datu dzēšanu, ko mēs, iespējams, esam apkopojuši, izmantojot mūsu platformu, tostarp, bet ne tikai, datus, kas iegūti, izmantojot sociālo pieteikšanās pakalpojumu sniedzējus, piemēram, Facebook vai Instagram.
+Wink cienām jūsu privātumu un esam pilnībā apņēmušies aizsargāt jūsu personiskos datus. Mēs ievērojam **Vispārīgo datu aizsardzības regulu (GDPR)** un citus piemērojamos datu aizsardzības likumus visā pasaulē.
 
-## Mūsu apņemšanās ievērot datu privātumu
+Šajā lapā ir aprakstīts, kā jūs varat pieprasīt jebkuru personisko datu dzēšanu, ko mēs varam būt savākuši caur mūsu platformu — tostarp, bet ne tikai, datus, kas iegūti, izmantojot sociālās pieteikšanās pakalpojumu sniedzējus, piemēram, Facebook vai Instagram.
 
-Mēs apkopojam tikai tos datus, kas nepieciešami mūsu pakalpojumu sniegšanai, un mēs nekad nepārdodam jūsu personas datus. Tas var ietvert:
+## Mūsu apņemšanās datu privātumam
 
-* Jūsu vārds un e-pasta adrese
-* Publiska profila informācija (piemēram, no Facebook vai Google)
-* Lietošanas vai aktivitāšu dati mūsu platformā
-* Visas jūsu skaidri piešķirtās atļaujas
+Mēs vācam tikai tos datus, kas nepieciešami mūsu pakalpojumu sniegšanai, un nekad nepārdodam jūsu personisko informāciju. Tas var ietvert:
 
-Mēs veicam atbilstošus pasākumus, lai aizsargātu jūsu datus un apstrādātu visus dzēšanas pieprasījumus saskaņā ar GDPR un Meta datu politiku.
+- Jūsu vārdu un e-pasta adresi
+- Publisku profila informāciju (piemēram, no Facebook vai Google)
+- Lietošanas vai aktivitātes datus mūsu platformā
+- Jebkādas jūsu skaidri piešķirtas atļaujas
 
-## Datu dzēšanas pieprasīšana
+Mēs veicam atbilstošus pasākumus, lai aizsargātu jūsu datus, un apstrādājam visus dzēšanas pieprasījumus saskaņā ar GDPR un Meta datu politiku.
 
-Jums ir tiesības pieprasīt, lai mēs dzēstu jebkādu jūsu personas informāciju, kas mums ir.
+## Pieprasīt datu dzēšanu
+
+Jums ir tiesības pieprasīt, lai mēs dzēšam jebkuru personisko informāciju, kas mums ir par jums.
 
 Lai pieprasītu datu dzēšanu:
 
-* 📧**Sūtīt e-pastu uz**: [atbalsts@wink.travel](mailto:support@wink.travel) 
-* 📝 Izmantojiet tēmas rindu:`Data Deletion Request`
-* 🔍 Lūdzu, norādiet identificējošu informāciju, piemēram:
-  * E-pasta adrese, kas tiek izmantota mūsu platformā
-  * Jūsu Facebook vai Google ID vai līdzīgs (ja piemērojams)
+- 📧 **Sūtiet e-pastu uz**: [support@wink.travel](mailto:support@wink.travel)
+- 📝 Izmantojiet tēmas rindu: `Data Deletion Request`  
+- 🔍 Lūdzu, iekļaujiet identificējošus datus, piemēram:
+  - E-pasta adresi, kas izmantota mūsu platformā
+  - Jūsu Facebook vai Google ID vai līdzīgu (ja piemērojams)
 
-Mēs atbildēsim laikā**30 dienas**par jūsu pieprasījuma saņemšanu, kā to pieprasa GDPR.
+Mēs atbildēsim **30 dienu** laikā pēc jūsu pieprasījuma saņemšanas, kā to prasa GDPR.
 
 ## Jautājumi vai bažas?
 
-Ja jums ir kādi jautājumi par to, kā mēs apkopojam, izmantojam vai dzēšam jūsu datus, lūdzu, sazinieties ar mūsu privātuma komandu, izmantojot[atbalsts@wink.travel](mailto:support@wink.travel).
+Ja jums ir kādi jautājumi par to, kā mēs vācam, izmantojam vai dzēšam jūsu datus, droši sazinieties ar mūsu privātuma komandu, rakstot uz [support@wink.travel](mailto:support@wink.travel).
 
-***
+---
 
-Paldies par uzticēšanos. Mēs nopietni uztveram datu aizsardzību un esam apņēmušies nodrošināt jums pilnīgu kontroli pār jūsu informāciju.
-
+Paldies, ka uzticaties mums. Mēs nopietni uztveram datu aizsardzību un esam apņēmušies nodrošināt jums pilnīgu kontroli pār jūsu informāciju.

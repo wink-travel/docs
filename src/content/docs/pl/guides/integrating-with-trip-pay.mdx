@@ -1,43 +1,40 @@
 ---
 title: Integracja z TripPay
-description: >-
-  W tym artykule znajdziesz szczegółowy przykład integracji z TripPay i
-  umożliwienia mu obsługi płatności.
+description: Ten artykuł zawiera pełny przykład integracji z TripPay i umożliwienia mu obsługi płatności za Ciebie.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-W tym artykule znajdziesz kompleksowy przykład integracji z TripPay.
+Ten artykuł zawiera kompleksowy przykład integracji z TripPay.
 
-Zalecamy, abyś przeczytał już:
+Zalecamy, abyś wcześniej zapoznał się z:
 
-* [Płatność > Mapowanie](/payment/mapping).
-* [Płatność > Integracja](/payment/integration).
-* [Komponent sieciowy płatności](/developers/web-components/#payment).
-* [API płatności](/developers/apis/#payment-api).*Przeczytaj sekcję na temat`Create payable contracts`*
+- [Płatności > Mapowanie](/pl/payment/mapping).
+- [Płatności > Integracja](/pl/payment/integration).
+- [Payment Web Component](/pl/developers/web-components/#payment).
+- [Payment API](/pl/developers/apis/#payment-api). *Przeczytaj sekcję o `Create payable contracts`*
 
-Oto kroki pozwalające pomyślnie opłacić rezerwację za pomocą TripPay:
+Oto kroki, aby pomyślnie użyć TripPay do zapłaty za rezerwację:
 
 <Steps>
-  1. Upewnij się, że beneficjenci wymienieni w umowie rezerwacyjnej zostali wskazani.
-  2. Pozwól podróżnemu wybrać ofertę, którą chce zarezerwować, i przygotować się do zapłaty.
-  3. Utwórz `payable contract` z TripPay zawierającym pozycje do zarezerwowania.
-  4. Umożliw podróżnemu płacenie za pomocą komponentu internetowego TripPay.
+1. Upewnij się, że beneficjenci, których wymieniasz w kontrakcie rezerwacyjnym, zostali zmapowani.
+2. Pozwól podróżnemu wybrać inwentarz, który chce zarezerwować i przygotuj go do płatności.
+3. Utwórz `payable contract` z TripPay, który zawiera elementy do zarezerwowania.
+4. Pozwól podróżnemu zapłacić za pomocą TripPay Web Component.
 </Steps>
 
+Zakładamy, że ukończyłeś już `Krok 1` i `Krok 2` i jesteś gotowy, aby poinformować TripPay o rezerwacji.
 
-Zakładamy, że już ukończyłeś`Step 1` I `Step 2`i jesteś gotowy powiadomić TripPay o rezerwacji.
+## Utwórz payable contract
 
-## Utwórz umowę płatniczą
-
-:::uwaga
-Przejdź do API płatności, aby dowiedzieć się więcej o wymaganiach dotyczących tworzenia kontraktu płatniczego.
+:::note
+Przejdź do Payment API, aby dowiedzieć się więcej o wymaganiach dotyczących tworzenia payable contract.
 :::
 
-### Wniosek
-
-Poniżej znajduje się przykładowy wniosek JSON zawierający wszystko, czego potrzebujesz, aby utworzyć swój pierwszy kontrakt płatniczy.
+### Żądanie
+Oto przykładowe żądanie JSON, które zawiera wszystko, co potrzebne do utworzenia pierwszego payable contract.
 
 ```json {3-6, 8-9}
 {
@@ -132,49 +129,49 @@ Poniżej znajduje się przykładowy wniosek JSON zawierający wszystko, czego po
 
 Wyjaśnienie:
 
-Nie będziemy tutaj wyjaśniać każdego punktu danych, ponieważ są one już omówione w dokumentacji API.
+Nie będziemy tłumaczyć każdego punktu danych, ponieważ są one już omówione w dokumentacji API.
 
-* Linie:**2 - 7**jest użytkownikiem odpowiedzialnym za rezerwację. Istnieją dwa rodzaje rezerwujących:
-  * Podróżny.
-  * Agent podróży.
-* Linie:**8 - 9**jest kontem TripPay ułatwiającym rezerwację. Może to być:
-  * Twoje konto integratora TripPay.
-  * Jeśli prowadzisz sieć afiliacyjną, może ona być Twoim afiliatem.
-* Użyj`traceId`grupować wiele rezerwacji u wielu dostawców. W ten sposób możesz anulować rezerwację grupową.
-* `redirectUrl`informuje TripPay, na którą stronę ma zostać przekierowany po zakończeniu płatności.
-* `sourceUrl`jest stroną/aplikacją, za pośrednictwem której dokonano rezerwacji.
+- Linie: **2 - 7** to użytkownik odpowiedzialny za rezerwację. Istnieją dwa typy rezerwujących:
+    - Podróżny.
+    - Agent turystyczny.
+- Linie: **8 - 9** to konto TripPay obsługujące rezerwację. Może to być:
+    - Twoje konto integratora TripPay.
+    - Jeśli prowadzisz sieć afiliacyjną, może to być Twój afiliant.
+- Użyj `traceId`, aby grupować wiele rezerwacji u różnych dostawców. Dzięki temu możesz anulować rezerwację grupową.
+- `redirectUrl` informuje TripPay, na którą stronę przekierować po zakończeniu płatności.
+- `sourceUrl` to strona / aplikacja, na której dokonano rezerwacji.
 
-Ten`contractList`tablica zawiera elementy, które podróżny chce kupić od wielu dostawców. Każdy element zawiera:
+Tablica `contractList` zawiera element(y), które podróżny chce zakupić od wielu dostawców. Każdy element zawiera:
 
-* Ten`identifier`jest prawidłowym UUID, który generujesz.
-* Dostawca, od którego chcesz zarezerwować zapasy.
-* Zapasy, które chcesz zarezerwować od tego dostawcy. Wszystkie są określone w zagnieżdżonej tablicy`contractItemList`.
-* Każdy wpis pod`contractItemList` zawiera:
-  * **Użytkownik gość**To jest użytkownik, który przybędzie na teren obiektu.
-  * **Nazwa po angielsku**Nazwa inwentarza w języku angielskim.
-  * **Opis w języku angielskim**Dłuższy opis inwentarza w języku angielskim.
-  * **Cena**Cena przedmiotu.
-  * **Trasa**Kiedy należy zarezerwować tę pozycję.
-  * **Typ cennika**Jak obliczono cenę.
-  * **Typ zapasów**Jaki to rodzaj inwentarza?
-  * **Płatny**Kiedy należy pobrać opłatę od podróżnego.*Obecnie obsługujemy jedynie płatności natychmiastowe.*
-  * **Polityka**Uwzględnij zasady anulowania.
-  * **Lista stawek dziennych**Jeśli rezerwowany jest pokój, możesz podać cenę pokoju za każdą noc pobytu gościa.
-  * **Odbiorcy**Podaj, na które konto(a) TripPay ma zostać przelana określona kwota ceny przedmiotu.*Obsługiwane są kwoty stałe/procentowe.*
+- `identifier` to ważny UUID, który generujesz.
+- Dostawcę, od którego chcesz zarezerwować inwentarz.
+- Inwentarz, który chcesz zarezerwować u tego dostawcy. Wszystko to jest określone w zagnieżdżonej tablicy `contractItemList`.
+- Każdy wpis w `contractItemList` zawiera:
+    - **Użytkownik gościa** To użytkownik, który pojawi się na miejscu.
+    - **Nazwa w języku angielskim** Nazwa inwentarza w języku angielskim.
+    - **Opis w języku angielskim** Dłuższy opis inwentarza w języku angielskim.
+    - **Cena** Cena elementu.
+    - **Plan podróży** Kiedy ten element powinien zostać zarezerwowany.
+    - **Typ wyceny** Jak obliczono cenę.
+    - **Typ inwentarza** Jaki to typ inwentarza.
+    - **Płatność** Kiedy podróżny powinien zostać obciążony. *Obecnie obsługujemy tylko opcje natychmiastowej płatności.*
+    - **Polityka** Zawiera zasady anulowania.
+    - **Lista stawek dziennych** Jeśli rezerwowany element to pokój, możesz dołączyć koszt pokoju za każdą noc pobytu gościa.
+    - **Beneficjenci** Zawiera, które konto(y) TripPay powinny otrzymać jaką część ceny elementu. *Obsługiwane są kwoty stałe / procentowe.*
 
-:::uwaga
+:::note
 W powyższym przykładzie JSON mamy 3 beneficjentów:
 
-* 1,5% przeznaczono na platformę umożliwiającą dokonanie rezerwacji.*np. Mrugnięcie*
-* 9,85% zostało przyznane partnerowi jako prowizja.*np. Kim Kardashian*
-* 88,65% przypadło dostawcy za rezerwację pokoju.*np. Hilton*
+- 1,5% zostało przydzielone platformie, która ułatwiła rezerwację. *np. Wink*
+- 9,85% zostało przydzielone afiliantowi jako prowizja. *np. Kim Kardashian*
+- 88,65% zostało przydzielone dostawcy za rezerwację pokoju. *np. Hilton*
 
-Gdy TripPay odpowie kontraktem płatnym, zauważysz, że wstrzyknął własnego beneficjenta na poziomie 4,0%.
+Gdy TripPay odpowie payable contract, zauważysz, że dodał własnego beneficjenta na poziomie 4,0%.
 :::
 
 ### Odpowiedź
 
-Gdy TripPay odpowie na Twoje zapytanie, jego treść będzie wyglądać mniej więcej tak:
+Gdy TripPay odpowie na Twoje żądanie, będzie to wyglądać mniej więcej tak:
 
 ```json {3}
 [
@@ -208,19 +205,18 @@ Gdy TripPay odpowie na Twoje zapytanie, jego treść będzie wyglądać mniej wi
 ]
 ```
 
-Zapisz`id`w wierszu 3. Użyjesz tego do wstrzyknięcia do komponentu internetowego TripPay.
+Zapisz `id` z linii 3. Użyjesz go do wstrzyknięcia do TripPay web component.
 
 ## Osadź TripPay
 
-:::uwaga
-Upewnij się, że załadowałeś nasze style i Javascript wcześniej.
+:::note
+Upewnij się, że wcześniej załadowałeś nasze style i Javascript.
 :::
 
-W tym momencie jesteś gotowy do osadzenia`Payment Web Component`do swojej witryny i pokaż ją użytkownikowi.
+W tym momencie jesteś gotowy, aby osadzić `Payment Web Component` na swojej stronie i pokazać go użytkownikowi.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Jeśli chodzi o integrację, to wszystko, co musisz zrobić. Od tej pory całą ciężką pracę wykonuje TripPay.
-
+Jeśli chodzi o integrację, to wszystko, co musisz zrobić. Cała ciężka praca jest wykonywana przez TripPay od tego momentu.

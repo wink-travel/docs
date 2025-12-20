@@ -1,64 +1,62 @@
 ---
-title: Pricing
-description: >-
-  Gamitin ang lahat ng serbisyo ng Wink sa nilalaman ng iyong puso nang libre.
-  Magbabayad ka lamang ng isang maliit na bayad sa bawat booking.
+title: Presyo
+description: Gamitin ang lahat ng serbisyo ng Wink nang libre hangga't gusto mo. Magbabayad ka lamang ng maliit na bayad sa bawat booking.
 sidebar:
   order: 4
 ---
-Ang lahat ng mga serbisyo ng Wink ay libre para magamit ng lahat. Kapag may booking, naniningil si Wink ng maliit na bayad para mapanatili ang platform.
 
-Sinusuportahan ng Wink ang parehong mga modelo ng merchant at ahente.
+Lahat ng serbisyo ng Wink ay libre para magamit ng lahat. Kapag may booking, naniningil ang Wink ng maliit na bayad para mapanatili ang platform.
+
+Sinusuportahan ng Wink ang parehong merchant at agent na mga modelo.
 
 ## Modelo 1
 
-Ang wink ay ang merchant of record sa oras na maganap ang booking. Responsable si Wink para sa mga pondo at nagdadala, anuman at lahat, ng mga lisensya para magpatakbo ng isang ahensya sa paglalakbay.
-Nalalapat ang modelong ito sa 95% ng lahat ng booking
+Ang Wink ang merchant of record sa oras ng booking. Ang Wink ang responsable sa mga pondo at may hawak ng lahat ng lisensya para mag-operate bilang travel agency.
+Ang modelong ito ay naaangkop sa 95% ng lahat ng booking.
 
-Wink charges `5.5% per booking` upang mapanatili ang platform.
-Karamihan sa mga iyon ay napupunta sa gateway ng pagbabayad (Visa, MasterCard atbp). Ang isang average na booking ay nagkakahalaga sa amin `2.95%` upang makakuha; minsan kasing taas `3.6%`. Ibinalik pa kami ng mga bahagyang refund dahil nakikita ito ng gateway ng pagbabayad bilang bagong pagsingil.
-Gusto naming maging ganap na transparent tungkol sa pagpepresyo ngayon upang makatipid sa lahat ng oras bago subukang makipag-ayos ng karagdagang mga diskwento bago gamitin ang Wink. Ang aming modelo ng pagpepresyo ay higit pa sa patas at kailangan din naming maghanap-buhay.
+Naniningil ang Wink ng `5.5% bawat booking` para mapanatili ang platform. 
+Karamihan nito ay napupunta sa payment gateway (Visa, MasterCard, atbp). Ang karaniwang gastos sa isang booking ay `2.95%`; minsan umaabot hanggang `3.6%`. Ang mga partial refund ay nagpapataas pa ng gastos dahil tinitingnan ito ng payment gateway bilang bagong singil. 
+Nais naming maging ganap na transparent tungkol sa pagpepresyo ngayon upang makatipid ng oras bago subukang makipag-negosasyon para sa karagdagang diskwento bago gamitin ang Wink. Ang aming modelo ng pagpepresyo ay patas at kailangan din naming kumita.
 
-### Pagkasira
+### Paghahati-hati
 
-:::note\[Processing fee]
-Si Wink ay naniningil ng 1.5% processing fee / booking. Nagbibigay-daan ito sa amin na mag-alok ng lahat ng aming mga serbisyo nang libre at sumasaklaw sa pagpapanatili ng platform.
+:::note[Bayad sa pagproseso]
+Naniningil ang Wink ng 1.5% na bayad sa pagproseso bawat booking. Pinapayagan tayo nitong ialok ang lahat ng serbisyo nang libre at sumasaklaw sa pagpapanatili ng platform.
 :::
 
-:::note\[Bayad sa pagbabayad]
-Ang TripPay ay naniningil ng 4.0% na bayad sa pagbabayad / booking. Sinasaklaw nito ang pagkuha ng bayad mula sa manlalakbay.
+:::note[Bayad sa pagbabayad]
+Naniningil ang TripPay ng 4.0% na bayad sa pagbabayad bawat booking. Sinasaklaw nito ang pagkuha ng bayad mula sa manlalakbay.
 :::
 
-:::note\[Funds disbursement]
-May mga bayarin na nauugnay sa pagpapadala ng mga pondo sa iyong account. Depende ito sa paraan ng disbursement na iyong pinili. Kasalukuyan naming sinusuportahan ang:
+:::note[Paghahatid ng pondo]
+May mga bayad na kaugnay sa pagpapadala ng pondo sa iyong account. Depende ito sa paraan ng paghahatid na pipiliin mo. Sa kasalukuyan, sinusuportahan namin ang:
 
-* **Virtual na credit card** (mga hotel lang) ~2.0%
-* **Bank transfer** Ang gastos ay depende sa bansa kung saan ka matatagpuan at kung saan ipapadala ang mga pondo. Nagsasama kami ng calculator ng quote na magagamit mo kapag mayroon kang magagamit na mga pondo sa iyong account.
+- **Virtual credit card** (para sa mga hotel lamang) ~2.0%
+- **Bank transfer** Ang gastos ay depende sa bansa kung saan ka naroroon at kung saan nanggagaling ang pondo. Mayroon kaming quote calculator na maaari mong gamitin kapag may available kang pondo sa iyong account.
 
-Kung gusto mong suportahan namin ang isa pang paraan ng pagbabayad, magpadala sa amin ng e-mail.
+Kung nais mong suportahan namin ang ibang paraan ng pagbayad, magpadala ng e-mail sa amin.
 :::
 
 ## Modelo 2
 
-Available lang ang modelong ito sa mga ahensya sa paglalakbay na may hawak na lisensya ng ahensya sa paglalakbay sa kanilang rehiyon at gustong maging merchant of record. Ang ilan sa aming mga rehistradong ahente sa paglalakbay ay gustong maging responsable sa paghawak ng pagbabayad at pag-disbursing ng mga pondo sa mga hotel. Sa ilalim ng modelong ito, sila ang may pananagutan para sa mga pondo at nagdadala ng mga kinakailangang lisensya para gumana sa kanilang bansa.
+Ang modelong ito ay para lamang sa mga travel agency na may hawak ng lisensya sa kanilang rehiyon at nais maging merchant of record. Ang ilan sa aming mga rehistradong travel agent ay nais maging responsable sa paghawak ng bayad at paghahatid ng pondo sa mga hotel. Sa ilalim ng modelong ito, sila ang responsable sa pondo at may hawak ng kinakailangang lisensya para mag-operate sa kanilang bansa.
 
-### Pagkasira
+### Paghahati-hati
 
-:::note\[Processing fee]
-Si Wink ay naniningil ng 1.5% processing fee / booking. Nagbibigay-daan ito sa amin na mag-alok ng lahat ng aming mga serbisyo nang libre at sumasaklaw sa pagpapanatili ng platform.
+:::note[Bayad sa pagproseso]
+Naniningil ang Wink ng 1.5% na bayad sa pagproseso bawat booking. Pinapayagan tayo nitong ialok ang lahat ng serbisyo nang libre at sumasaklaw sa pagpapanatili ng platform.
 :::
 
-Gamit ang modelong ito, babayaran lang ng mga travel agent ang processing fee ni Wink at i-invoice ng Wink ang travel agent buwan-buwan.
+Sa modelong ito, ang mga travel agent ay nagbabayad lamang ng bayad sa pagproseso ng Wink at mag-i-invoice ang Wink sa travel agent buwan-buwan.
 
-## Mga serbisyo sa hinaharap
+## Mga Serbisyong Darating
 
-Mag-aalok kami ng mga opsyonal na serbisyong nakabatay sa subscription sa hinaharap na magpapadali sa pagbebenta para sa lahat o mag-aalok ng mga pinamamahalaang affiliate na account na nagbebenta para sa iyo. Kung interesado ka, iparinig ang iyong boses sa pamamagitan ng pag-email sa amin sa <hi@wink.travel>.
+Mag-aalok kami ng mga opsyonal na subscription-based na serbisyo sa hinaharap na magpapadali pa sa pagbebenta para sa lahat o mag-aalok ng managed affiliate accounts na gagawa ng pagbebenta para sa iyo. Kung interesado ka, iparating ang iyong saloobin sa pamamagitan ng pag-email sa amin sa [hi@wink.travel](mailto:hi@wink.travel).
 
-Manatiling nakatutok.
+Abangan.
 
-## Epekto ng platform
+## Epekto ng Platform
 
-Sa wakas, habang patuloy kaming lumalaki sa parehong laki at mga booking, gusto naming maibahagi sa iyo ang ilan sa mga epekto ng platform. Ang mas maraming booking ay nagdudulot ng mga pagkakataon para sa mga diskwento sa dami mula sa aming gateway ng pagbabayad na magbibigay-daan sa aming babaan ang aming bayad sa pagproseso para sa lahat.
+Sa huli, habang patuloy kaming lumalaki sa laki at bilang ng booking, nais naming maibahagi ang ilan sa mga epekto ng platform sa iyo. Mas maraming booking ang magdudulot ng mga oportunidad para sa volume discounts mula sa aming payment gateway na magpapahintulot sa amin na babaan ang aming bayad sa pagproseso para sa lahat.
 
-Sumali sa Wink ngayon at tumuklas ng bago, kumikita, paraan para magnegosyo sa industriya ng hospitality!
-
+Sumali sa Wink ngayon at tuklasin ang isang bagong, kapaki-pakinabang na paraan ng pagnenegosyo sa industriya ng hospitality!

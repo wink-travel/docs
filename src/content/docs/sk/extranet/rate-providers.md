@@ -1,64 +1,66 @@
 ---
-title: Poskytovatelia sadzieb
-description: 'Tu je aktuálny zoznam poskytovateľov cien, ktorých podporujeme priamo na Wink.'
+title: Poskytovatelia cien
+description: Tu je aktuálny zoznam poskytovateľov cien, ktorých priamo podporujeme na Wink.
 sidebar:
   order: 18
 ---
-## Nastaviť poskytovateľa sadzieb
 
-Ak chcete nastaviť poskytovateľa sadzieb, kliknite na`Distribution > Channel manager`z hlavného navigačného panela.
+## Nastavenie poskytovateľa cien
 
-Vyberte si poskytovateľa sadzieb z rozbaľovacieho zoznamu a kliknite na`Save`tlačidlo. Toto umožní poskytovateľovi cien posielať nám ceny a my ho upozorníme, keď sa na stránke Wink vykoná rezervácia pre jednu z vašich nehnuteľností.
+Ak chcete nastaviť svojho poskytovateľa cien, kliknite na `Distribution > Channel manager` v hlavnom navigačnom paneli.
+
+Vyberte svojho poskytovateľa cien zo zoznamu a kliknite na tlačidlo `Save`. Tým umožníte poskytovateľovi cien zasielať nám ceny a budeme ich informovať, keď dôjde k rezervácii na Wink pre jednu z vašich nehnuteľností.
+
 
 ### SynXis
 
-Ak vaša nehnuteľnosť používa správcu kanálov SynXis, pred pripojením k Wink je potrebný ďalší krok.
+Ak vaša nehnuteľnosť používa channel manager SynXis, je potrebný ešte jeden krok predtým, než budete pripravení sa pripojiť k Wink.
 
-* Kontaktujte, prosím, svojho obchodného zástupcu SynXis alebo zákaznícku podporu (SHSCustomerCare@sabre.com).
-* Dajte im vedieť, že sa chcete pripojiť k Winku cez Channel Connect Express (***CCX***).
-* Dajú vám vyplniť formulá&#x72;***PRS***.
-  * Budete požiadaní o vyplnenie svojich používateľských prihlasovacích údajov Wink.
-  * ...a požadovanú menu.
-* Vyplňte formulár a odošlite ho späť spoločnosti SynXis.
+- Prosím, kontaktujte svojho zástupcu účtu SynXis alebo zákaznícku podporu (SHSCustomerCare@sabre.com).
+- Informujte ich, že sa chcete pripojiť k Wink cez Channel Connect Express (***CCX***).
+- Budú od vás požadovať vyplnenie formulára ***PRS***.
+  - Budete požiadaní o zadanie svojich prihlasovacích údajov do Wink.
+  - ...a o požadovanú menu.
+- Vyplňte formulár a odošlite ho späť do SynXis.
 
 ## Dodávatelia
 
-Nižšie je uvedený zoznam dodávateľov, ktorých podporujeme:
+Nižšie je zoznam dodávateľov, ktorých podporujeme:
 
 Dostupné typy:
 
-* Manažér kanálov (CM)
-* Systém správy nehnuteľností (PMS)
-* Centrálny rezervačný systém (CRS)
+- Channel Manager (CM)
+- Property Management System (PMS)
+- Central Reservation System (CRS)
 
-*Ak má dodávateľ splnomocnenca, znamená to, že nepriamo dostávame sadzbu od dodávateľa prostredníctvom splnomocnenca.*
+*Ak má dodávateľ proxy, znamená to, že ceny od dodávateľa prijímame nepriamo cez proxy.*
 
-| Dodávateľ | Typ | Proxy | Od | Posledná úprava | Komentár
+| Vendor | Type | Proxy | Since | Last modified | Comment
 | -- | -- | -- | -- | -- | -- |
-| Hoteliers Guru | CM | | 2017 | 2017 | |
-| Travelclick | CM | | 2016 | 2016 | |
-| Yield Planet | CM | | 2016 | 2016 | |
-| Siteminder | CM | | 2016 | 2016 | |
-| Cloudbeds | CM | | 2016 | 2016 | |
-| MyAllocator | CM | | 2016 | 2016 | |
-| ResAvenue | CM | | 2017 | 2017 | |
-| Fastbooking | CM | | 2016 | 2016 | Teraz d-edge |
-| Omnibees | CM | | 2019 | 2019 | |
-| Hotel Link | CM | | 2017 | 2017 | |
-| RateGain | CM | | 2016 | 2018 | |
-| Allotz | CM | | 2019 | 2019 | |
-| d-edge | CM | | 2018 | 2018 | |
-| Comanche | PMS | | 2017 | 2017 | |
-| Synxis | PMS | | 2019 | 2019 | |
-| Channex | PMS | | 2023 | 2023 | |
-| Dokonalý pobyt | PMS | Channex | 2023 | 2023 | |
+| Hoteliers Guru | CM |  | 2017 | 2017 | |
+| Travelclick | CM |  | 2016 | 2016 | |
+| Yield Planet | CM |  | 2016 | 2016 | |
+| Siteminder | CM |  | 2016 | 2016 | |
+| Cloudbeds | CM |  | 2016 | 2016 | |
+| MyAllocator | CM |  | 2016 | 2016 | |
+| ResAvenue | CM |  | 2017 | 2017 | |
+| Fastbooking | CM |  | 2016 | 2016 | Teraz d-edge |
+| Omnibees | CM |  | 2019 | 2019 | |
+| Hotel Link | CM |  | 2017 | 2017 | |
+| RateGain | CM |  | 2016 | 2018 | |
+| Allotz | CM |  | 2019 | 2019 | |
+| d-edge | CM |  | 2018 | 2018 | |
+| Comanche | PMS |  | 2017 | 2017 | |
+| Synxis | PMS |  | 2019 | 2019 | |
+| Channex | PMS |  | 2023 | 2023 | |
+| A Perfect Stay | PMS | Channex | 2023 | 2023 | |
 | Mews | PMS | Channex | 2023 | 2023 | |
 | Opera | PMS | Channex | 2023 | 2023 | |
 | Apaleo | PMS | Channex | 2023 | 2023 | |
-| Rezervácia ubytovania | PMS | Channex | 2023 | 2023 | |
+| Abode Booking | PMS | Channex | 2023 | 2023 | |
 | AIOSELL | PMS | Channex | 2023 | 2023 | |
 | Ajjir | PMS | Channex | 2023 | 2023 | |
-| Všetko rezervované | PMS | Channex | 2023 | 2023 | |
+| All Booked | PMS | Channex | 2023 | 2023 | |
 | Alojate | PMS | Channex | 2023 | 2023 | |
 | Atlantis | PMS | Channex | 2023 | 2023 | |
 | ATM | PMS | Channex | 2023 | 2023 | |
@@ -84,7 +86,7 @@ Dostupné typy:
 | Comando | PMS | Channex | 2023 | 2023 | |
 | Condly | PMS | Channex | 2023 | 2023 | |
 | Cortec | PMS | Channex | 2023 | 2023 | |
-| Pult | PMS | Channex | 2023 | 2023 | |
+| Counter | PMS | Channex | 2023 | 2023 | |
 | Desbravador | PMS | Channex | 2023 | 2023 | |
 | dtravel | PMS | Channex | 2023 | 2023 | |
 | Easy Front Desk | PMS | Channex | 2023 | 2023 | |
@@ -105,7 +107,7 @@ Dostupné typy:
 | GuestPoint | PMS | Channex | 2023 | 2023 | |
 | GuestPro | PMS | Channex | 2023 | 2023 | |
 | GuestSmart | PMS | Channex | 2023 | 2023 | |
-| Pomoc hotelom | PMS | Channex | 2023 | 2023 | |
+| Helping Hotels | PMS | Channex | 2023 | 2023 | |
 | Host-It | PMS | Channex | 2023 | 2023 | |
 | Hotelmeister | PMS | Channex | 2023 | 2023 | |
 | Hotelmu | PMS | Channex | 2023 | 2023 | |
@@ -130,19 +132,17 @@ Dostupné typy:
 | PAN Hospitality | PMS | Channex | 2023 | 2023 | |
 | Passepartout | PMS | Channex | 2023 | 2023 | |
 | Pitaya | PMS | Channex | 2023 | 2023 | |
-| Prestíž | PMS | Channex | 2023 | 2023 | |
+| Prestige | PMS | Channex | 2023 | 2023 | |
 | Pxsol | PMS | Channex | 2023 | 2023 | |
 | Quovai | PMS | Channex | 2023 | 2023 | |
 | ResBook | PMS | Channex | 2023 | 2023 | |
 | ResClick | PMS | Channex | 2023 | 2023 | |
-| Rezervačný kľúč | PMS | Channex | 2023 | 2023 | |
+| Reservation Key | PMS | Channex | 2023 | 2023 | |
 | ResMaster | PMS | Channex | 2023 | 2023 | |
 | Retreat Guru | PMS | Channex | 2023 | 2023 | |
 | Revenatium | PMS | Channex | 2023 | 2023 | |
-| Revivo | PMS | Kanál | 2023 | 2023 | |
-| rezStream | PMS | Kanál | 2023 | 2023 | |
-| Roomsy | PMS | Kanál | 2023 | 2023 | |
-| Roverpass | PMS | Kanál | 2023 | 2023 | |
-| Servo | PMS | Kanál | 2023 | 2023 | |
-| Servo | PMS | Kanál | 2023 | 2023 | |
-
+| Revivo | PMS | Channex | 2023 | 2023 | |
+| rezStream | PMS | Channex | 2023 | 2023 | |
+| Roomsy | PMS | Channex | 2023 | 2023 | |
+| Roverpass | PMS | Channex | 2023 | 2023 | |
+| Servo | PMS | Channex | 2023 | 2023 | |

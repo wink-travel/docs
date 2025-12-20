@@ -1,252 +1,252 @@
 ---
 title: Hizmet Şartları
-description: >-
-  Bu makale Wink Platformundaki seyahat acentelerine yönelik hizmet şartlarımızı
-  içermektedir.
+description: Bu makale, Wink Platformu üzerindeki seyahat acenteleri için hizmet şartlarımızı içermektedir.
 sidebar:
   order: 4
 ---
-:::not
+
+:::note
 Son güncelleme 2024-10-30
 :::
 
-:::dikkat\[Bildirim]
-Aşağıdaki hizmet şartları, fonları kendi başlarına edinmek ve dağıtmak isteyen seyahat acenteleri için geçerlidir.
-Bu yalnızca API'miz aracılığıyla ve yalnızca kayıt işlemi sırasında bunu yapmak istediklerini belirten seyahat acenteleri tarafından yapılabilir.
+:::caution[Duyuru]
+Aşağıdaki hizmet şartları, kendi adına fon tahsil etmek ve dağıtmak isteyen seyahat acenteleri için geçerlidir.  
+Bu yalnızca API'miz aracılığıyla ve kayıt sürecinde bunu yapmak istediklerini belirten seyahat acenteleri tarafından yapılabilir.
 
-Tüm seyahat acenteleri, Wink'in ödeme ağ geçidini kullanarak kendi kredi kartlarıyla veya seyahat edenin kredi kartıyla seyahat acentesi portalımız üzerinden rezervasyon yapabilir. Bu nedenle, tüm seyahat acentelerinin, Wink'in ödeme ağ geçidinin kayıtlı tüccar olduğu hizmet şartlarını da kabul etmesi gerekir.
+Tüm seyahat acenteleri, kendi veya yolcunun kredi kartı ile Wink'in ödeme altyapısını kullanarak seyahat acentesi portalımız üzerinden rezervasyon yapmaya devam edebilir. Bu nedenle, tüm seyahat acentelerinin Wink'in ödeme altyapısının kayıtlı satıcı olduğu hizmet şartlarını da kabul etmesi gerekmektedir.
 
-Bu şartlar aşağıdakiler altında mevcuttur:[Ortak Portalı > Hizmet Şartları](/studio/terms-of-service).
+Bu şartlar [Affiliate Portal > Terms of Service](/tr/studio/terms-of-service) altında mevcuttur.
 :::
 
-**WINK GENEL ŞARTLAR VE KOŞULLAR**\
-**SEYAHAT ACENTELERİ İÇİN (Kayıtlı Tüccar)**
+**WINK GENEL ŞARTLARI VE KOŞULLARI**  
+**SEYAHAT ACENTELERİ İÇİN (Kayıtlı Satıcı)**
 
-**ARASINDA:**
+**TARAFLAR:**
 
-1. **TRAVELIKO SINGAPUR PTE. LTD.**&#x53;ingapur yasalarına göre kurulmuş ve kayıtlı ofisi #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 adresinde bulunan ve KDV kayıt numarası 201437335D olan bir şirket (bundan böyle "Wink" olarak anılacaktır) ve
+1. **TRAVELIKO SINGAPORE PTE. LTD.**, Singapur yasalarına göre kurulmuş ve kayıtlı ofisi \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 adresinde bulunan, KDV kayıt numarası 201437335D olan şirket (bundan sonra "Wink" olarak anılacaktır) ve  
+     
+2. **SEYAHAT ACENTESİ**, Seyahat Acentesi Kayıt Formunda belirtilen veya çevrimiçi olarak gönderilmiş bilgileri içeren taraf ("Seyahat Acentesi").
 
-2. **SEYAHAT ACENTASI**Seyahat Acentesi Kayıt Formunda bilgileri yer alan veya çevrimiçi olarak gönderilen ("Seyahat Acentesi").
+**GEREKÇE:**
 
-**HALBUKİ:**
+(i) Wink, katılımcı Konaklama Sağlayıcılarının (toplu olarak "Konaklama Sağlayıcıları") envanterlerini rezervasyona açabildiği ve Seyahat Acentesinin misafirleri adına bu Konaklama Sağlayıcılarında rezervasyon yapabildiği çevrimiçi bir sistem ("Sistem") işletmektedir ("Hizmet");
 
-(i) Wink, katılımcı Konaklama Yerlerinin (toplu olarak "Konaklama Sağlayıcıları") envanterlerini rezervasyon için kullanıma sunabilecekleri ve Seyahat Acentesinin Misafirleri adına bu Konaklama Yeri Sağlayıcılarında rezervasyon yapabileceği bir çevrimiçi sistem ("Sistem") işletmektedir ("Hizmet");
+(ii) Wink, herhangi bir listeyi sahiplenmez, kontrol etmez, sunmaz veya yönetmez. Wink, Konaklama Sağlayıcıları ile Misafirler arasında doğrudan yapılan sözleşmelerin tarafı değildir. Wink, Konaklama Sağlayıcıları adına herhangi bir şekilde temsilci olarak hareket etmez;
 
-(ii) Wink hiçbir listelemenin sahibi, kontrol eden, sunan veya yöneten değildir. Wink, Konaklama Sağlayıcıları ile Misafirler arasında doğrudan akdedilen sözleşmelerin tarafı değildir. Wink, Konaklama Sağlayıcıları için hiçbir şekilde bir acente olarak hareket etmemektedir;
+(iii) Wink, kendi web sitelerini ("Wink Web Siteleri") işletir ve Hizmeti sağlar ve üçüncü tarafların web sitelerinde Hizmete bağlantılar sunar;
 
-(iii) Wink kendi web sitelerini (Wink Web Siteleri) sürdürür ve kullanır ve ayrıca Hizmeti ve üçüncü tarafların web sitelerindeki Hizmete bağlantıları sağlar;
+(iv) Seyahat Acentesi, bir veya daha fazla internet alan adı, web sitesi veya uygulamaya sahiptir, kontrol eder, barındırır ve/veya işletir ve Hizmeti kullanırken kayıtlı satıcı olmak istemektedir.
 
-(iv) Seyahat Acentesi, bir veya daha fazla İnternet alan adı, web sitesi veya uygulamasının sahibi, kontrol eden, barındıran ve/veya işleten kişidir ve Hizmeti kullanırken kayıtlı satıcı olmak istemektedir.
+(v) Seyahat Acentesi ve Wink, Seyahat Acentesinin Hizmeti (doğrudan veya dolaylı olarak) müşterilerine ve Seyahat Acentesi Web Sitesi(leri) ve Uygulaması(lar) ziyaretçilerine bu Sözleşmede belirtilen şekilde ve şartlarda ("Şartlar") sunmasını istemektedir.
 
-(v) Seyahat Acentesi ve Wink, Seyahat Acentesi'nin Hizmeti (doğrudan veya dolaylı olarak) müşterilerine ve Seyahat Acentesi Web Sitesi(leri) ve Uygulama(ları) ziyaretçilerine, bu Sözleşme'de belirtilen biçimde ve şartlar ve koşullar altında (bundan böyle "Şartlar" olarak anılacaktır) sunmasını istemektedir.
+**BU NEDENLE, TARAFLAR AŞAĞIDAKİ KONULARDA ANLAŞMIŞTIR:**
 
-**ŞİMDİ BU NEDENLE TARAFLAR AŞAĞIDAKİ ŞEKİLDE ANLAŞMIŞLARDIR:**
+**1\. Tanımlar**
 
-**1. Tanımlar**
+1. Bu Sözleşmede başka yerlerde tanımlanan terimlere ek olarak, aksi açıkça belirtilmedikçe aşağıdaki tanımlar geçerlidir:
 
-1. Bu Sözleşme'de başka yerlerde tanımlanan terimlere ek olarak, aksi bir niyet açıkça belirtilmediği sürece aşağıdaki tanımlar bu Sözleşme'nin tamamında geçerlidir:
+* **"Konaklama"**, oteller, moteller, misafirhaneler, kahvaltı dahil konaklama yerleri, hosteller, villalar, daireler, dağ evleri, hanlar, tatil köyleri ve diğer her türlü konaklama veya barınma sağlayıcısını (Wink Web Sitelerinde mevcut olup olmamasına bakılmaksızın) ifade eder.  
+    
+* **"Konaklama Sağlayıcı(lar)"**, Wink platformu üzerinden kendi odalarını ve ek hizmet envanterini satmak amacıyla Hizmet Sağlayıcıda hesap oluşturan tarafları ifade eder.  
+    
+* **"Rezervasyon"**, Seyahat Acentesi aracılığıyla Misafir tarafından Konaklama Sağlayıcısı tarafından sunulan konaklama hizmetleri için yapılan rezervasyon veya sipariştir.
 
-* **"Konaklama"**&#x6F;tel, motel, misafirhane, oda ve kahvaltı, hostel, villa, daire, pansiyon, han, tatil köyü ve diğer (tür) konaklama veya konaklama sağlayıcıları (Wink Web Sitelerinde mevcut olsun veya olmasın) dahil ancak bunlarla sınırlı olmamak üzere her türlü konaklama biçimi anlamına gelir.
+* **"Rezervasyon Ücreti"**, Seyahat Acentesi tarafından Misafirden tahsil edilen toplam tutardan %1,5 oranında kesilen ve işlem ücreti olarak Wink'e ödenen tutardır.
 
-* **"Konaklama Sağlayıcısı(ları)"**&#x57;ink platformu aracılığıyla kendi odalarını ve ek hizmet envanterini satma niyetiyle Servis Sağlayıcıda bir hesap oluşturan herhangi bir Taraf anlamına gelir.
+* **"Rezervasyon Değeri"**, Seyahat Acentesi tarafından Misafirden bir Rezervasyon için tahsil edilen toplam tutardır.
 
-* **"Rezervasyon"**&#x42;ir Misafirin, Konaklama Sağlayıcısı tarafından sunulan konaklama hizmetleri için Seyahat Acentesi aracılığıyla yaptığı rezervasyon veya sipariş anlamına gelir.
+* **"Komisyon"**, Rezervasyon Değerinden "Ayrı Sözleşme"de kararlaştırılan yüzde oranında hesaplanan ve Konaklama Sağlayıcısı tarafından Seyahat Acentesine ödenecek tutardır.  
+    
+* **“Mücbir Sebep”**, tarafın makul kontrolü dışında olan, doğal afetler, savaş, terörizm, sivil huzursuzluk, pandemiler ve devlet işlemleri gibi olayları içeren ancak bunlarla sınırlı olmayan ve tarafın bu Sözleşme kapsamındaki yükümlülüklerini yerine getirmesini engelleyen herhangi bir olayı ifade eder.  
+    
+* **“Misafir”**, Seyahat Acentesi aracılığıyla konaklama hizmetleri için rezervasyon yapan birey veya gruptur.  
+    
+* **"Kayıtlı Satıcı"**, Misafirlerden ödeme işlemlerini yasal olarak yetkili ve sorumlu olan, ödeme işlemlerini, iadeleri, itirazları yöneten ve ödeme düzenlemelerine uyumu sağlayan varlığı ifade eder. Kayıtlı Satıcı, Rezervasyonla ilgili ücretlerin Misafirin kredi kartı ekstresinde görünen isimdir.
 
-* **"Rezervasyon Ücreti"**&#x53;eyahat Acentesi tarafından Misafirden tahsil edilen toplam tutar üzerinden kesilen %1,5'lik tutarın Wink'e işlem ücreti olarak ödenmesi anlamına gelir.
+* **"Net Ödeme"**, Rezervasyon Değerinden Wink Rezervasyon Ücreti ve Seyahat Acentesi Komisyonu düşüldükten sonra Konaklama Sağlayıcısına ödenecek tutardır.  
+    
+* **“Ödemeler”**, bu Sözleşme kapsamında taraflardan birinin diğerine ödemesi gereken komisyonlar, ücretler veya diğer mali yükümlülükleri ifade eder.
 
-* **"Rezervasyon Değeri"**&#x53;eyahat Acentesi tarafından bir Rezervasyon için Misafirden tahsil edilen toplam tutar anlamına gelir.
+* **"Ödeme Kolaylaştırıcısı"**, Traveliko Singapore Pte. Ltd.'nin tamamen sahip olduğu ve ödeme hizmetlerini yöneten, misafirlerden kredi kartı, banka transferi, kripto para veya PayPal gibi ödeme yöntemleriyle tahsilat yapan yan kuruluşudur.  
+    
+* **“Platform”**, Seyahat Acentesinin Misafirler için Rezervasyon yapabileceği veya yönetebileceği Hizmet Sağlayıcı tarafından işletilen çevrimiçi sistemi ifade eder.
 
-* **"Komisyon"**&#x4B;onaklama Sağlayıcısı tarafından Seyahat Acentesine borçlu olunan tutar, Rezervasyon Değeri üzerinden “Ayrı Sözleşme”de kararlaştırılan yüzde üzerinden hesaplanır.
+* **"Ayrı Sözleşme"**, Seyahat Acentesi ile Konaklama Sağlayıcısı arasında Komisyon ve ödeme takvimi gibi özel ödeme koşullarını detaylandıran bağımsız sözleşmedir.  
+    
+* **“Hizmetler”**, Hizmet Sağlayıcı tarafından Seyahat Acentesine bu Sözleşme kapsamında sağlanan, Platform erişimi, rezervasyon kolaylaştırma ve müşteri desteği dahil ancak bunlarla sınırlı olmayan hizmetlerdir.  
+    
+* **“Hizmet Sağlayıcı”**, Singapur'da kayıtlı olan Wink, **TRAVELIKO SINGAPORE PTE. LTD**'yi ifade eder.  
+    
+* **“Seyahat Acentesi”**, Hizmet Sağlayıcı ile bu Sözleşmeyi imzalayan ve Hizmet Sağlayıcı Platformu üzerinden seyahat rezervasyonlarını tanıtıp satan tarafı ifade eder.
 
-* **“Mücbir Sebep”**&#x62;ir tarafın makul kontrolü dışında gerçekleşen ve doğal afetler, savaş eylemleri, terörizm, iç karışıklıklar, salgın hastalıklar ve hükümet eylemleri dahil ancak bunlarla sınırlı olmamak üzere bir tarafın bu Sözleşme kapsamındaki yükümlülüklerini yerine getirmesini engelleyen her türlü olay anlamına gelir.
+**2\. Münhasırlık Olmaması**
 
-* **"Misafir"**&#x53;eyahat Acentesi aracılığıyla konaklama hizmetleri için rezervasyon yaptıran birey veya grup anlamına gelir.
+2.1 Seyahat Acentesi, Wink'in münhasır olmayan bir dağıtıcısı olarak faaliyet gösterecektir.
 
-* **"Kayıtlı Tüccar"**&#x4D;isafirlerden gelen ödemeleri işlemek, ödeme işlemlerini, iadeleri, geri ödemeleri ele almak ve ödeme düzenlemelerine uyumu sağlamak dahil olmak üzere yasal olarak yetkilendirilmiş ve sorumlu olan kuruluş anlamına gelir. Kayıtlı Tüccar, Rezervasyonla ilgili ücretler için Misafirin kredi kartı ekstresinde adı görünen kuruluştur.
+2.2 Hizmet, Seyahat Acentesi Kayıt Formunda ve formda belirtilen web sitesinde belirtildiği şekilde Wink tarafından Seyahat Acentesine sunulacaktır.
 
-* **"Net Ödeme"**&#x52;ezervasyon Bedelinden Wink Rezervasyon Ücreti ve Seyahat Acentesinin Komisyonu düşüldükten sonra Konaklama Sağlayıcısına ödenecek tutar anlamına gelir.
+**3\. Ödeme Tahsilatı ve Dağıtımı**
 
-* **“Ödemeler”**&#x6B;omisyonlar, ücretler veya diğer masraflar dahil olmak üzere, bir tarafın diğerine ödemesi gereken bu Sözleşme kapsamında doğan mali yükümlülükler anlamına gelir.
+3.1 **Ödeme Tahsilatı:** Seyahat Acentesi, rezervasyon sırasında Misafirden ödeme tahsil edecektir.
 
-* **"Ödeme Kolaylaştırıcısı"**&#x54;raveliko Singapore Pte. Ltd.'nin tam mülkiyetinde bir yan kuruluş olup, Ödeme Hizmetlerini yönetir ve misafirlerden kredi kartı, banka kartı, banka havalesi, kripto para birimleri veya PayPal gibi satın alımlarıyla ilişkili ödeme yöntemlerini kullanarak ödeme toplar.
+3.2 **Ücret Kesintisi:** Seyahat Acentesi, Rezervasyon Değerinden aşağıdakileri kesecektir:
 
-* **“Platform”**&#x53;eyahat Acentasının Misafirler için Rezervasyon yapabildiği veya yönetebildiği, Hizmet Sağlayıcısı tarafından işletilen çevrimiçi sistem anlamına gelir.
+* Wink için %1,5 Rezervasyon Ücreti.  
+* Seyahat Acentesi Komisyonu.
 
-* **"Ayrı Anlaşma"**&#x53;eyahat Acentesi ile Konaklama Sağlayıcısı arasında, Komisyon ve ödeme takvimi dahil olmak üzere belirli ödeme koşullarını ayrıntılı olarak açıklayan bağımsız sözleşme anlamına gelir.
+3.3 **Net Ödeme:** Kalan Net Ödeme, Seyahat Acentesi tarafından Konaklama Sağlayıcısına, Seyahat Acentesi ile Konaklama Sağlayıcısı arasındaki ayrı sözleşme şartlarına göre ödenecektir. Wink, Konaklama Sağlayıcısına herhangi bir ödeme yapmakla yükümlü değildir.
 
-* **“Hizmetler”**&#x48;izmet Sağlayıcının Seyahat Acentesine bu Sözleşme kapsamında sağladığı hizmetler anlamına gelir; bunlara Platform'a erişim, rezervasyon kolaylaştırma ve müşteri desteği dahildir ancak bunlarla sınırlı değildir.
+3.4 **Ayrı Sözleşme:** Seyahat Acentesinin, ödeme şartlarını detaylandıran her Konaklama Sağlayıcısı ile ayrı bir sözleşmesi olmalıdır. Bu Sözleşme, Seyahat Acentesi ile Konaklama Sağlayıcıları arasındaki ilişkiyi düzenlemez.
 
-* **“Hizmet Sağlayıcı”**&#x47;öz kırpmak anlamına gelecektir,**TRAVELIKO SINGAPUR PTE.LTD.ŞTİ**Singapur'da kayıtlı.
+3.5 **Wink'in Faturalandırması:** Wink, Seyahat Acentesine aylık olarak %1,5 Rezervasyon Ücreti için fatura düzenleyecektir. Seyahat Acentesi, bu faturayı belirtilen ödeme şartları içinde ödemekle yükümlüdür.
 
-* **“Seyahat Acentesi”**&#x48;izmet Sağlayıcının Platformu aracılığıyla seyahat rezervasyonlarını tanıtmak ve satmak amacıyla Hizmet Sağlayıcı ile bu Sözleşmeyi imzalayan kuruluş anlamına gelir.
+**4\. Roller ve Sorumluluklar**
 
-**2. Münhasır Olmama**
+4.1 **Seyahat Acentesinin Sorumlulukları:**
 
-2.1 Seyahat Acentesi, Wink'in münhasır olmayan distribütörü olarak faaliyet gösterecektir.
+* Misafirlerden ödeme tahsil etmek.  
+* Net Ödemeyi, ayrı sözleşmelere uygun olarak Konaklama Sağlayıcılarına zamanında ve doğru şekilde dağıtmak.  
+* Ödeme işlemlerindeki hataları veya tutarsızlıkları derhal düzeltmek.  
+* Wink'in aylık Rezervasyon Ücreti faturasını ödemek.
 
-2.2 Hizmet, Wink tarafından Seyahat Acentesi Kayıt Formunda belirtilen şekilde ve Seyahat Acentesi Kayıt Formunda belirtilen web sitesi(ler)inde Seyahat Acentesi'ne sunulacaktır.
+4.2 **Wink'in Sorumlulukları:**
 
-**3. Ödeme Tahsilatı ve Dağıtımı**
+* Konaklama Sağlayıcılarına yapılacak ödemelerden sorumlu değildir. Tüm finansal işlemler Seyahat Acentesinin sorumluluğundadır.  
+* Sisteme erişim sağlamak ve Hizmetin Seyahat Acentesi için kullanılabilir olmasını temin etmek.
 
-3.1**Ödemelerin Tahsilatı:**&#x53;eyahat Acentesi, rezervasyon sırasında Misafirden ödemeyi tahsil edecektir.
+**5\. Fikri Mülkiyet Hakları**
 
-3.2**Ücretlerin Kesintisi:**&#x53;eyahat Acentesi, Rezervasyon Değerinden aşağıdakileri düşecektir:
+5.1 **Lisanslar:** Her taraf, diğer tarafa bu Sözleşme kapsamındaki yükümlülüklerini yerine getirmek amacıyla sınırlı, münhasır olmayan, telifsiz ve dünya çapında bir lisans verir.
 
-* Wink için %1,5 Rezervasyon Ücreti.
-* Seyahat Acentası Komisyonu.
+5.2 **Kısıtlamalar:** Seyahat Acentesi, Wink tarafından sağlanan fikri mülkiyet veya içeriği alt lisanslayamaz, devredemez veya açıklayamaz.
 
-3.3**Net Ödeme:**&#x4B;alan Net Ödeme, Seyahat Acentesi tarafından, Seyahat Acentesi ile Konaklama Sağlayıcısı arasındaki ayrı bir sözleşmenin şartlarına göre ilgili Konaklama Sağlayıcısına ödenecektir. Wink, Konaklama Sağlayıcısına herhangi bir ödeme yapmaktan sorumlu olmayacaktır.
+**6\. Wink'e Ödeme**
 
-3.4**Ayrı Sözleşme:**&#x53;eyahat Acentesi'nin her Konaklama Sağlayıcısı ile ödeme şartlarını ve koşullarını ayrıntılı olarak açıklayan ayrı bir sözleşmeye sahip olması gerekir. Wink ile Seyahat Acentesi arasındaki bu Sözleşme, Seyahat Acentesi ile Konaklama Sağlayıcıları arasındaki ilişkiyi yönetmez.
+6.1 **Ödeme Takvimi:**
 
-3.5**Wink’in Faturalandırması:**&#x57;ink, ay boyunca biriken %1,5 Rezervasyon Ücreti için Seyahat Acentesine aylık bir fatura düzenleyecektir. Seyahat Acentesinin bu faturayı belirtilen ödeme koşulları içinde ödemekten sorumluluğu vardır.
+* Bu Sözleşme kapsamında Seyahat Acentesinin Wink'e yapacağı tüm ödemeler, Wink'ten doğru ve eksiksiz fatura alındıktan sonra 15 gün içinde yapılacaktır, aksi yazılı olarak kararlaştırılmadıkça. Ödemeler USD cinsinden, yasal gereklilikler dışında herhangi bir kesinti veya stopaj olmadan yapılacaktır.  
+  
 
-**4. Roller ve Sorumluluklar**
+6.2 **Gecikmiş Ödemeler:**
 
-4.1**Seyahat Acentasının Sorumlulukları:**
+* Bu Sözleşme kapsamında herhangi bir ödeme vadesinde alınmazsa, Wink, yasal olarak izin verilen en yüksek oran veya %5 aylık faiz oranı (daha düşük olan) üzerinden gecikme faizi talep etme hakkını saklı tutar. Faiz, vade tarihinden ödeme tarihine kadar hesaplanır. Ayrıca, Wink hizmetleri ödemeye kadar askıya alabilir. Ancak, Wink tarafından gönderilen faturada hata varsa, Seyahat Acentesi yalnızca doğru ve eksiksiz kısmı ödemekle yükümlüdür ve hatalı kısım için faiz veya ceza ödemez.
 
-* Seyahat Acentesi, Misafirlerden ödemelerin tahsil edilmesinden sorumludur.
-* Seyahat Acentesi, Konaklama Sağlayıcılarına Net Ödemenin ayrı anlaşmaları uyarınca zamanında ve doğru bir şekilde ödenmesini sağlamalıdır.
-* Seyahat Acentesi, ödeme işlemlerinde meydana gelen hatalardan veya tutarsızlıklardan sorumludur ve bunları derhal düzeltmek zorundadır.
-* Seyahat Acentesi, Wink'in Rezervasyon Ücretleri için aylık faturasını ödemekten sorumludur.
+6.3 **İadeler ve Krediler:**
 
-4.2**Wink'in Sorumlulukları:**
+* Hizmet, Seyahat Acentesinin sorumluluğunda olmayan nedenlerle sağlanmaz veya iptal edilirse, Wink iptal bildirimi alındıktan sonra 30 gün içinde Seyahat Acentesine iade veya kredi sağlar, hizmet ücreti önceden ödenmişse.
 
-* Wink, Konaklama Sağlayıcılarına yapılan ödemelerden sorumlu olmayacaktır. Seyahat Acentesi, Konaklama Sağlayıcıları ile yapılan tüm finansal işlemlerden tek başına sorumludur.
-* Wink, Sisteme erişim sağlayacak ve Hizmetin Seyahat Acentesine sunulmasını sağlayacaktır.
+6.4 **Para Birimi ve Vergiler:**
 
-**5. Fikri Mülkiyet Hakları**
+* Ödemeler USD cinsinden yapılacaktır. Seyahat Acentesi, bu Sözleşme kapsamındaki işlemlerle ilgili vergiler, harçlar veya diğer ücretlerden, ayrıca USD dışındaki para birimleriyle yapılan ödemelerde döviz dönüşüm maliyetlerinden sorumludur.
 
-5.1**Lisanslar:**&#x54;arafların her biri, diğer tarafa, yalnızca bu Sözleşme kapsamındaki yükümlülükleri yerine getirmek amacıyla fikri mülkiyetini kullanması için sınırlı, münhasır olmayan, telifsiz ve dünya çapında bir lisans verir.
+6.5 **Ödeme Yöntemleri:**
 
-5.2**Kısıtlamalar:**&#x53;eyahat Acentesi, Wink tarafından sağlanan hiçbir fikri mülkiyeti veya içeriği alt lisanslayamaz, devredemez veya ifşa edemez.
+* Seyahat Acentesi ödemeleri banka transferi, kredi kartı veya PayPal ile yapacaktır ve seçilen ödeme yöntemine ilişkin tüm ücretler Seyahat Acentesine aittir.
 
-**6. Wink'e Ödeme**
+6.6 **Ödeme İhtilafları:**
 
-6.1**Ödeme Planı:**
+* Fatura ile ilgili bir ihtilaf durumunda, Seyahat Acentesi faturanın tarihinden itibaren 10 gün içinde Wink'i yazılı olarak bilgilendirerek ihtilafın gerekçelerini sunacaktır. Taraflar iyi niyetle ihtilafı çözmek için görüşecektir. İhtilaf konusu olmayan fatura kısmı vadesinde ödenecektir.
 
-* Seyahat Acentesi tarafından bu Sözleşme kapsamında Wink'e ödenmesi gereken tüm ödemeler, aksi yazılı olarak kararlaştırılmadığı takdirde Wink'ten doğru ve kesin faturanın alınmasından itibaren 15 gün içinde yapılacaktır. Ödemeler, yasa tarafından gerekli kılınan durumlar haricinde herhangi bir kesinti veya tevkifat yapılmadan USD olarak yapılacaktır.
+**7\. Seyahat Acentesinin Sorumlulukları**
 
-6.2**Gecikmiş Ödemeler:**
+7.1 **Yasalara ve Düzenlemelere Uyum:**
 
-* Bu Sözleşme kapsamında ödenmesi gereken herhangi bir ödeme vadesinde alınmazsa, Wink, vadesinden ödeme tarihine kadar hesaplanan, ödenmemiş tutar üzerinden aylık %5 oranında veya yasanın izin verdiği azami oranda (hangisi düşükse) faiz talep etme hakkını saklı tutar. Ayrıca, Wink ödeme alınana kadar hizmetleri askıya alabilir. Ancak, Wink tarafından sunulan faturada herhangi bir hata veya yanlışlık varsa, Seyahat Acentesi yalnızca faturanın doğru ve kesin kısmını ödemekle yükümlü olacak ve faturanın yanlış kısmını ödememek nedeniyle herhangi bir faiz ücretine veya cezaya tabi tutulmayacaktır.
+* Seyahat Acentesi, işini yürütürken yerel, ulusal ve uluslararası tüm yasalara, düzenlemelere ve sektör standartlarına, özellikle tüketici koruma, veri koruma ve kara para aklamayla mücadeleye ilişkin olanlara uyacaktır.  
+  
 
-6.3**İadeler ve Krediler:**
+7.2 **Hizmetlerin Doğru Temsili:**
 
-* Seyahat Acentesinden kaynaklanmayan koşullar nedeniyle bir hizmetin sağlanamaması veya iptal edilmesi halinde Wink, hizmet bedelinin önceden ödenmiş olması koşuluyla, iptal bildiriminin alınmasından itibaren 30 gün içinde Seyahat Acentesine iade yapacak veya kredi kartına aktaracaktır.
+* Seyahat Acentesi, Platform üzerinden sunulan hizmetleri ve konaklamaları doğru şekilde temsil edecektir. Misafirlere sağlanan tüm bilgilerin (tanımlar, fiyatlar, müsaitlik dahil) doğru ve güncel olmasını sağlayacaktır.
 
-6.4**Para Birimi ve Vergiler:**
+7.3 **Hizmetlerin Tanıtımı:**
 
-* Ödemeler ABD Doları cinsinden yapılacaktır. Seyahat Acentesi, ödemelerin ABD Doları dışındaki bir para biriminde yapılması durumunda döviz dönüştürme maliyetleri dahil olmak üzere, bu Sözleşme kapsamındaki işlemlere uygulanabilecek tüm vergilerden, harçlardan veya diğer ücretlerden sorumlu olacaktır.
+* Seyahat Acentesi, Hizmet Sağlayıcı tarafından sağlanan yönergelere uygun olarak Platform üzerinden sunulan hizmetleri aktif şekilde tanıtacaktır. Bu, pazarlama faaliyetleri, güncel tanıtım materyallerinin korunması ve tüm tanıtım içeriklerinin doğru ve reklam standartlarına uygun olmasını içerir.
 
-6.5**Ödeme Yöntemleri:**
+7.4 **Rezervasyon Yönetimi:**
 
-* Seyahat Acentesi ödemeleri banka havalesi, kredi kartı veya PayPal aracılığıyla yapacak ve Seyahat Acentesi tarafından seçilen ödeme yöntemiyle ilgili tüm ücretler Seyahat Acentesi tarafından karşılanacaktır.
+* Seyahat Acentesi, Platform üzerinden yapılan tüm rezervasyonları (rezervasyon, iptal ve değişiklikler dahil) yönetecektir. Misafirler ve Konaklama Sağlayıcıları ile iletişim kurarak rezervasyonların doğru işlenmesini ve onaylanmasını sağlayacaktır.
 
-6.6**Ödeme Anlaşmazlıkları:**
+7.5 **Ödeme Tahsilatı ve Gönderimi:**
 
-* Herhangi bir faturayla ilgili bir anlaşmazlık olması durumunda, Seyahat Acentesi faturanın tarihinden itibaren 10 gün içinde Wink'e anlaşmazlığın ayrıntılı nedenlerini bildirerek bildirimde bulunacaktır. Her iki taraf da anlaşmazlığı derhal çözmek için iyi niyetle müzakere edecektir. Faturanın anlaşmazlıksız kısmı vadesinde ödenecektir.
+* Seyahat Acentesi, Platform üzerinden yapılan rezervasyonlar için Misafirlerden ödeme tahsil etmek ve ödeme şartlarında belirtilen şekilde Konaklama Sağlayıcıları ile Hizmet Sağlayıcıya ödemeleri göndermekle sorumludur. Tüm ödemelerin güvenli ve ilgili finansal düzenlemelere uygun olarak işlenmesini sağlayacaktır.
 
-**7. Seyahat Acentesinin Sorumlulukları**
+7.6 **Misafir Şikayetleri ve İhtilafların Yönetimi:**
 
-7.1**Yasa ve Mevzuata Uygunluk:**
+* Seyahat Acentesi, Platform üzerinden sunulan hizmetlerle ilgili şikayet, ihtilaf veya sorunlarda Misafirlerin birincil iletişim noktasıdır. Bu tür şikayet ve ihtilafları makul şekilde hızlı ve olumlu ilişkileri koruyacak biçimde çözmeye çalışacaktır.
 
-* Seyahat Acentesi, tüketici koruması, veri koruma ve kara para aklamayı önleme ile ilgili olanlar dahil ancak bunlarla sınırlı olmamak üzere, faaliyetlerini yürütürken geçerli tüm yerel, ulusal ve uluslararası yasalara, düzenlemelere ve sektör standartlarına uyacaktır.
+7.7 **Raporlama ve Hesap Verebilirlik:**
 
-7.2**Hizmetlerin Doğru Sunumu:**
+* Seyahat Acentesi, bu Sözleşme kapsamındaki yükümlülüklerinin performansını gösteren satış verileri, rezervasyon istatistikleri ve müşteri geri bildirimleri dahil düzenli raporlar sunacaktır. Raporların doğruluğundan sorumludur ve Hizmet Sağlayıcı ile denetim veya incelemelerde işbirliği yapacaktır.
 
-* Seyahat Acentesi, Platform aracılığıyla sunulan hizmetleri ve konaklama yerlerini doğru bir şekilde temsil edecektir. Seyahat Acentesi, açıklamalar, fiyatlar ve müsaitlik dahil ancak bunlarla sınırlı olmamak üzere Misafirlere sağlanan tüm bilgilerin doğru ve güncel olmasını sağlamaktan sorumludur.
+7.8 **Gizlilik:**
 
-7.3**Hizmetlerin Tanıtımı:**
+* Seyahat Acentesi, Hizmet Sağlayıcının müşteri verileri, fiyat bilgileri ve iş stratejileri dahil tüm ticari sırlarını gizli tutacak ve Hizmet Sağlayıcının önceden yazılı izni olmadan üçüncü taraflara açıklamayacaktır.
 
-* Seyahat Acentesi, Hizmet Sağlayıcısı tarafından sağlanan yönergelere uygun olarak Platform aracılığıyla sunulan hizmetleri aktif olarak tanıtacaktır. Bu, pazarlama faaliyetleri, güncel promosyon materyallerinin sürdürülmesi ve tüm promosyon içeriğinin doğru ve geçerli reklam standartlarına uygun olmasını sağlamayı içerir ancak bunlarla sınırlı değildir.
+7.9 **Platform Şartlarına Uyum:**
 
-7.4**Rezervasyon Yönetimi:**
+* Seyahat Acentesi, Hizmet Sağlayıcı Platformunun kullanımına ilişkin tüm şartlara, güncellemeler dahil, uyacaktır. Çalışanları ve temsilcilerinin bu şartlardan haberdar olmasını ve uymasını sağlayacaktır.
 
-* Seyahat Acentesi, rezervasyonları, iptalleri ve değişiklikleri işlemek dahil ancak bunlarla sınırlı olmamak üzere Platform üzerinden yapılan tüm Rezervasyonları yönetecektir. Seyahat Acentesi, tüm Rezervasyonların doğru bir şekilde işlenmesini ve onaylanmasını sağlamak için Misafirler ve Konaklama Sağlayıcıları ile iletişim kurmaktan sorumlu olacaktır.
+7.10 **Tazminat:**
 
-7.5**Ödemelerin Tahsilatı ve Gönderimi:**
+* Seyahat Acentesi, bu Sözleşmenin ihlali, yasalara uyumsuzluk, hizmetlerin yanlış tanıtımı veya Misafirler ya da Konaklama Sağlayıcılarına karşı yükümlülüklerin yerine getirilmemesi nedeniyle ortaya çıkan tüm talepler, zararlar, sorumluluklar ve masraflar için Hizmet Sağlayıcıyı tazmin edecek ve zararsız tutacaktır.
 
-* Seyahat Acentesi, Platform aracılığıyla yapılan Rezervasyonlar için Misafirlerden ödemeleri toplamaktan ve Ödeme Koşullarında belirtildiği gibi, kararlaştırılan ödemeleri Konaklama Sağlayıcılarına ve Hizmet Sağlayıcıya göndermekten sorumludur. Seyahat Acentesi, tüm ödemelerin güvenli bir şekilde ve geçerli finansal düzenlemelere uygun şekilde işlenmesini sağlayacaktır.
+**8\. Komisyonlar ve Ücretler**
 
-7.6**Misafir Şikayetleri ve Anlaşmazlıklarının Ele Alınması:**
+8.1 **Komisyon Hesaplama:** Seyahat Acentesine ödenecek Komisyon, Rezervasyon Değerinden Wink Rezervasyon Ücreti düşüldükten sonra, Seyahat Acentesi ile Konaklama Sağlayıcısı arasındaki sözleşmede belirlenen yüzde oranında hesaplanacaktır.
 
-* Seyahat Acentesi, Platform aracılığıyla sağlanan hizmetlerle ilgili tüm şikayetler, anlaşmazlıklar veya sorunlar konusunda Misafirler için birincil iletişim noktası olacaktır. Seyahat Acentesi, bu tür şikayetleri ve anlaşmazlıkları derhal ve hem Misafirler hem de Konaklama Sağlayıcıları ile olumlu bir ilişki sürdüren bir şekilde çözmek için makul çaba gösterecektir.
+8.2 **Wink'in Rezervasyon Ücreti:** Wink, %1,5 Rezervasyon Ücreti için aylık fatura düzenleyecektir. Seyahat Acentesi, bu faturayı belirtilen ödeme şartları içinde ödemekle yükümlüdür.
 
-7.7**Raporlama ve Hesap Verebilirlik:**
+**9\. Hukuki Hükümler**
 
-* Seyahat Acentesi, Hizmet Sağlayıcıya, satış verileri, rezervasyon istatistikleri ve müşteri geri bildirimleri dahil ancak bunlarla sınırlı olmamak üzere, bu Sözleşme kapsamındaki yükümlülüklerinin yerine getirilmesini ayrıntılarıyla açıklayan düzenli raporlar sunacaktır. Seyahat Acentesi, bu raporların doğruluğundan sorumlu olacak ve operasyonlarının herhangi bir denetiminde veya incelemesinde Hizmet Sağlayıcı ile iş birliği yapacaktır.
+9.1 **Sorumluluğun Sınırlandırılması:** Taraflardan hiçbiri, bu Sözleşmeden kaynaklanan dolaylı, tesadüfi, sonuçsal, özel veya cezai zararlardan sorumlu olmayacaktır.
 
-7.8**Gizlilik:**
+9.2 **Tazminat:** Her taraf, bu Sözleşmenin ihlali veya kusuru nedeniyle diğer tarafı ortaya çıkan taleplerden tazmin etmeyi kabul eder.
 
-* Seyahat Acentesi, müşteri verileri, fiyatlandırma bilgileri ve iş stratejileri dahil ancak bunlarla sınırlı olmamak üzere, Hizmet Sağlayıcının tüm tescilli bilgilerinin ve ticari sırlarının gizliliğini koruyacaktır. Seyahat Acentesi, Hizmet Sağlayıcının önceden yazılı onayı olmadan bu bilgileri herhangi bir üçüncü tarafa ifşa etmeyecektir.
+9.3 **Mücbir Sebep:** Taraflardan hiçbiri, makul kontrolü dışındaki nedenlerle (doğal afetler, savaş, terörizm, grevler vb.) yükümlülüklerini yerine getirmemekten sorumlu tutulamaz.
 
-7.9**Platform Şartlarına Uygunluk:**
+**10\. Süre ve Fesih**
 
-* Seyahat Acentesi, Hizmet Sağlayıcının Platformunun kullanımıyla ilişkili tüm hüküm ve koşullara, bu hüküm ve koşullardaki herhangi bir güncelleme veya değişiklik dahil olmak üzere uyacaktır. Seyahat Acentesi, çalışanlarının ve acentelerinin bu hüküm ve koşulların farkında olmasını ve bunlara uymasını sağlamaktan sorumludur.
+10.1 **Süre:** Bu Sözleşme, imza tarihinden itibaren yürürlüğe girer ve taraflardan biri feshedene kadar devam eder.
 
-7.10**Tazminat:**
+10.2 **Fesih:** Taraflardan herhangi biri, kendi takdirine bağlı olarak bu Sözleşmeyi feshedebilir.
 
-* Seyahat Acentesi, bu Sözleşmenin Seyahat Acentesi tarafından ihlal edilmesinden kaynaklanan veya bununla ilgili olarak ortaya çıkan her türlü talep, zarar, yükümlülük ve masraftan Hizmet Sağlayıcısını tazmin edecek ve zarar görmemesini sağlayacaktır. Bu ihlaller, yürürlükteki yasalara uyulmaması, hizmetlerin yanlış tanıtılması veya Misafirlere veya Konaklama Sağlayıcılarına karşı yükümlülüklerinin yerine getirilmemesiyle sınırlı değildir.
+10.3 **Fesih Sonrası:** Fesih halinde, Seyahat Acentesi tüm ödenmemiş ödemeleri yapacak ve Wink ile ilgili fikri mülkiyet veya içeriği kullanmayı durduracaktır.
 
-**8. Komisyonlar ve Ücretler**
+**11\. Geçerli Hukuk ve Uyuşmazlık Çözümü**
 
-8.1**Komisyon Hesaplaması:**&#x53;eyahat Acentesine ödenecek Komisyon, Seyahat Acenteleri ile Konaklama Sağlayıcısı arasındaki sözleşmede belirlenen, Wink Rezervasyon Ücreti düşüldükten sonraki Rezervasyon Değerinin bir yüzdesi olacaktır.
+11.1 **Geçerli Hukuk:** Bu Sözleşme, Singapur yasalarına tabi olacak ve bu yasalara göre yorumlanacaktır.
 
-8.2**Wink'in Rezervasyon Ücreti:**&#x57;ink, %1,5 Rezervasyon Ücreti için aylık bir fatura düzenleyecektir. Seyahat Acentesi, bu faturanın Wink tarafından belirtilen ödeme koşulları dahilinde ödenmesinden sorumludur.
+11.2 **Uyuşmazlık Çözümü:** 
 
-**9. Yasal Hükümler**
+11.2.1 **Müzakere:** Herhangi bir uyuşmazlık durumunda taraflar, iyi niyetle müzakere ederek çözüm arayacaktır. Müzakereler, bir tarafın diğerine yazılı bildirimde bulunmasıyla başlayacaktır.
 
-9.1**Sorumluluğun Sınırlandırılması:**&#x54;arafların hiçbiri bu Sözleşmeden doğan dolaylı, tesadüfi, sonuçsal, özel veya cezai zararlardan sorumlu tutulamaz.
+11.2.2 **Tahkim:** Müzakerelerle çözülemeyen uyuşmazlıklar, Singapur Uluslararası Tahkim Merkezi (SIAC) Kuralları uyarınca tek hakemli tahkime gönderilecektir. Tahkim yeri Singapur, dili İngilizce olacaktır.
 
-9.2**Tazminat:**&#x54;arafların her biri, bu Sözleşmenin ihlalinden veya tazmin eden Tarafın ihmalinden kaynaklanan her türlü talep karşısında diğer tarafı tazmin etmeyi ve zararsız tutmayı kabul eder.
+11.2.3 **Yargı Yetkisi:** Yukarıdakilere rağmen, taraflar haklarını veya mülklerini korumak için Singapur mahkemelerinde geçici veya ihtiyati tedbir talep etme hakkını saklı tutar. Bu mahkemeler münhasır yetkilidir.
 
-9.3**Mücbir Sebep:**&#x54;arafların hiçbiri, doğal afetler, savaş, terörizm, grevler vb. dahil olmak üzere makul kontrolleri dışında kalan nedenlerden dolayı performans göstermede yaşanan gecikmelerden veya başarısızlıklardan sorumlu tutulamaz.
+**12\. Mücbir Sebep**
 
-**10. Süre ve Fesih**
+12.1 **Tanım:** Taraflardan hiçbiri, Mücbir Sebep Olayı nedeniyle yükümlülüklerini yerine getirememekten sorumlu tutulamaz. "Mücbir Sebep Olayı", doğal afetler (deprem, sel, kasırga vb.), savaş, terörizm, sivil huzursuzluk, pandemiler, devlet işlemleri veya makul şekilde öngörülemeyen diğer olayları içerir.
 
-10.1**Terim:**&#x42;u Sözleşme, imzalandığı tarihte yürürlüğe girecek ve Taraflardan herhangi biri tarafından feshedilinceye kadar yürürlükte kalacaktır.
+12.2 **Bildirim:** Etkilenen taraf, Mücbir Sebep Olayı gerçekleşir gerçekleşmez diğer tarafı yazılı olarak bilgilendirmelidir. Bildirimde olayın tanımı, beklenen süresi ve etkilenen yükümlülükler yer almalıdır.
 
-10.2**Fesih:**&#x54;araflardan her biri kendi takdirine bağlı olarak bu Sözleşmeyi feshedebilir.
+12.3 **Hizmetlere Etkisi:**
 
-10.3**Fesih Sonrası:**&#x46;esih halinde Seyahat Acentesi tüm ödenmemiş ödemeleri ödeyecek ve Wink ile ilgili tüm fikri mülkiyet veya içeriği kullanmayı bırakacaktır.
+* Hizmetlerin Askıya Alınması: Mücbir Sebep Olayı, Seyahat Acentesinin Hizmetleri sunma kapasitesini etkilerse, hizmetler olay süresince cezasız askıya alınır. Seyahat Acentesinin ilgili hizmetlerle bağlantılı ödeme yükümlülükleri de askıya alınır.  
+* Seyahat Acentesinin Yükümlülükleri: Mücbir Sebep Olayı nedeniyle yerine getirilemeyen yükümlülüklerden Seyahat Acentesi sorumlu tutulmaz. Ancak, olaydan doğrudan etkilenmeyen diğer yükümlülüklerini yerine getirmeye devam etmelidir.
 
-**11. Yürürlükteki Hukuk ve Uyuşmazlıkların Çözümü**
+12.4 **Süre ve Fesih:** Mücbir Sebep Olayı 60 günden fazla sürerse, taraflardan biri diğerine yazılı bildirimle bu Sözleşmeyi feshedebilir. Fesih halinde, taraflar sadece Mücbir Sebep Olayı öncesinde oluşan yükümlülüklerden sorumludur.
 
-11.1**Uygulanacak Hukuk:**&#x42;u Sözleşme, kanunlar ihtilafı ilkeleri dikkate alınmaksızın Singapur yasalarına tabi olacak ve bu yasalara göre yorumlanacaktır.
+12.5 **Yükümlülüklerin Yeniden Başlaması:** Mücbir Sebep Olayı sona erdiğinde, taraflar makul ölçüde mümkün olan en kısa sürede yükümlülüklerini yerine getirmeye devam edecektir.
 
-11.2**Uyuşmazlıkların Çözümü:**
+**13\. Gizlilik**
 
-11.2.1**Müzakere:**&#x42;u Sözleşmeden kaynaklanan veya bu Sözleşmeyle ilgili herhangi bir anlaşmazlık, talep, soru veya uyuşmazlık olması durumunda, taraflar öncelikle anlaşmazlığı iyi niyetli müzakereler yoluyla çözmeye çalışacaktır. Bu müzakereler, bir tarafın diğerine yazılı bildirimde bulunması üzerine başlayacaktır.
+13.1 Taraflar, tüm ticari sırları gizli tutacak ve önceden yazılı izin olmadan üçüncü taraflara açıklamayacaktır.
 
-11.2.2**Tahkim:**&#x41;nlaşmazlık otuz (30) gün içinde müzakereler yoluyla çözülemezse, anlaşmazlık Singapur Uluslararası Tahkim Merkezi (SIAC) Kuralları uyarınca tahkime havale edilecek ve nihai olarak bu maddeye atıfla dahil edildiği kabul edilen tahkim yoluyla çözülecektir. Hakem sayısı bir olacak ve tahkimin yeri veya yasal yeri Singapur olacaktır. Tahkim işlemlerinde kullanılacak dil İngilizce olacaktır.
+**14\. Çeşitli Hükümler**
 
-11.2.3**Yetki alanı:**&#x59;ukarıdakilere bakılmaksızın, tarafların her biri, bir hakem atanmasını beklerken haklarını veya mallarını korumak için Singapur mahkemelerinde geçici veya ihtiyati tedbir talep etme hakkını saklı tutar ve bu tür mahkemeler, söz konusu tedbiri verme konusunda münhasır yargı yetkisine sahip olacaktır.
+14.1 **Tam Sözleşme:** Bu Sözleşme, taraflar arasındaki tüm önceki anlaşmaları geçersiz kılar ve tam anlaşmayı oluşturur.
 
-**12. Mücbir Sebep**
+14.2 **Değişiklikler:** Bu Sözleşmedeki değişiklikler yazılı olarak yapılmalı ve her iki tarafça imzalanmalıdır.
 
-12.1**Tanım**: Taraflardan hiçbiri, bu Sözleşme kapsamındaki yükümlülüklerini yerine getirmede herhangi bir başarısızlık veya gecikmeden, söz konusu başarısızlık veya gecikme bir Mücbir Sebep Olayı nedeniyle meydana gelirse sorumlu tutulamaz. "Mücbir Sebep Olayı", doğal afetler (deprem, sel veya kasırga gibi), savaş, terörizm, iç karışıklık, pandemi, hükümet eylemleri veya makul bir şekilde öngörülemeyecek veya önlenemeyecek herhangi bir olay dahil ancak bunlarla sınırlı olmamak üzere, bir tarafın makul kontrolü dışındaki herhangi bir olay anlamına gelir.
-
-12.2**Bildiri**: Etkilenen taraf, bir Mücbir Sebep Olayının meydana gelmesinden sonra makul ölçüde mümkün olan en kısa sürede diğer tarafa yazılı bildirimde bulunmalıdır. Bu bildirim, Mücbir Sebep Olayının bir açıklamasını, beklenen süresini ve etkilenen yükümlülükleri içermelidir.
-
-12.3**Hizmetler Üzerindeki Etki**:
-
-* Hizmetlerin Askıya Alınması: Bir Mücbir Sebep Olayı, işletmenizin Seyahat Acentesine hizmet sağlama yeteneğini etkilerse, bu hizmetler ceza olmaksızın olayın süresi boyunca askıya alınacaktır. Seyahat Acentesinin etkilenen hizmetlerle ilgili ödeme yükümlülükleri de bu süre boyunca askıya alınacaktır.
-* Seyahat Acentesinin Yükümlülükleri: Seyahat Acenteniz, Mücbir Sebep Olayı nedeniyle yerine getirilmesi imkansız olan işletmenize karşı yükümlülüklerinizden sorumlu tutulamaz. Ancak Seyahat Acenteniz, olaydan doğrudan etkilenmeyen diğer tüm yükümlülükleri yerine getirmeye devam etmelidir.
-
-12.4**Süre ve Fesih**: Mücbir Sebep Olayı altmış (60) günden fazla sürerse, taraflardan biri diğer tarafa yazılı bildirimde bulunarak bu Sözleşmeyi feshedebilir. Bu tür bir fesih durumunda, tarafların hiçbiri Mücbir Sebep Olayından önce tahakkuk eden yükümlülükler dışında diğerine karşı herhangi bir sorumluluğa sahip olmayacaktır.
-
-12.5**Yükümlülüklerin Yeniden Başlaması**: Mücbir Sebep Olayı sona erdiğinde, her iki taraf da makul ölçüde uygulanabilir olduğu ölçüde bu Sözleşme kapsamındaki yükümlülüklerini derhal yeniden üstlenecektir.
-
-**13. Gizlilik**
-
-13.1 Taraflar, tüm özel bilgilerin gizliliğini koruyacak ve önceden yazılı onay olmaksızın bunları herhangi bir üçüncü tarafa ifşa etmeyecektir.
-
-**14. Çeşitli**
-
-14.1**Tüm Anlaşma:**&#x42;u Sözleşme, Taraflar arasındaki tüm anlaşmayı oluşturur ve önceki tüm anlaşmaların veya mutabakatların yerini alır.
-
-14.2**Değişiklikler:**&#x42;u Sözleşme'de yapılacak her türlü değişikliğin yazılı olarak yapılması ve Taraflarca imzalanması gerekmektedir.
-
-14.3**Bölünebilirlik:**&#x42;u Sözleşmenin herhangi bir hükmünün geçersiz veya uygulanamaz olduğu tespit edilirse, kalan hükümler tam olarak yürürlükte kalmaya devam edecektir.
-
+14.3 **Geçersizlik:** Bu Sözleşmenin herhangi bir hükmü geçersiz veya uygulanamaz bulunursa, diğer hükümler tam olarak yürürlükte kalmaya devam eder.

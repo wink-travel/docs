@@ -4,44 +4,44 @@ description: Þessi grein leiðir þig í gegnum allt sem þú vildir vita um b�
 sidebar:
   order: 0
 ---
-Svona skiptir við ábyrgðinni í sundur á Wink:
 
-* [Aukanet](/extranet/what-is-extranet) hefur áhyggjur af því að birgjar stjórni birgðum.
-* [Stúdíó](/studio/what-is-studio) hefur áhyggjur af samstarfsaðilum sem sjá um efni.
-* `Booking Engine`sér um að búa til efnið, sem búið er til í`Studio`, sem byggðist á birgðum sem mynduðust í`Extranet`og gera það bókanlegt.
-* [Greiðsla](/payment/what-is-trip-pay) fjallar um að rukka/endurgreiða ferðalanga sem bóka \[í gegnum palla eins og Wink] og greiða söluaðilum.
+Svona skiptum við ábyrgðinni á Wink:
 
-Bókunarvélin er kjarninn í kerfinu okkar.
+- [Extranet](/is/extranet/what-is-extranet) snýr að birgjum sem stjórna birgðastöðu.
+- [Studio](/is/studio/what-is-studio) snýr að samstarfsaðilum sem stjórna efni.
+- `Booking Engine` snýr að því að gera efnið, sem búið var til í `Studio` og byggði á birgðastöðu sem búin var til í `Extranet`, bókanlegt.
+- [Payment](/is/payment/what-is-trip-pay) snýr að því að rukka / endurgreiða ferðalanga sem bóka [í gegnum vettvang eins og Wink], og greiða birgjum.
 
-Ábyrgð þess felur í sér:
+Bókunarvélin er kjarninn í vettvangi okkar.
 
-* Að stjórna gjaldmiðlum og halda gengi gjaldmiðla uppfærðum.
-* Að gefa verðveitendum leið til að senda okkur verðgögn.
-* Stjórnun leitargagna.*t.d. svæði, lönd, áfangastaðir, eignir o.s.frv.*
-* Að stjórna tungumálum.
-* Að búa til greiningar byggðar á notendaviðskiptum, atburðum og API-köllum.
-* Að birta bókanlegar birgðir á æskilegu sniði, tungumáli og gjaldmiðli, svo sem:
-  * A [deilanlegur hlekkur](/studio/shareable-links) á Facebook.
-  * Lendingarsíða hótels á https://ota.wink.travel með birgðum af því hóteli.
-  * A [kort](/studio/cards) sem inniheldur birgðir tengdra fyrirtækja.
-  * A [kort](/studio/maps) á þínum [kort](/studio/maps) reikningur.
-  * An [API-kall](/developers/apis) frá fjartengdu ferðaskrifstofukerfi.
-* Að veita ferðamönnum leið til að:
-  * Leita að ferðabirgðum.
-  * Bókaðu tiltækar birgðir.
-  * Stjórna þeirra[bókanir og umsagnir](/booking-engine/bookings).
-  * Stjórna þeirra [draumalisti](/booking-engine/bucket-list) af hlutum til að bóka í framtíðinni.
-  * Stjórna þeirra[ferðaprófíll](/booking-engine/travel-preferences).*t.d. ofnæmi, neyðartilvik o.s.frv.*
+Ábyrgð hennar felst í:
 
-Bókunarvélin er safn af endurnýtanlegum virkni sem við kynnum í gegnum https://ota.wink.travel; mjög sérsniðna vefsíðu fyrir hótel og samstarfsaðila til að selja vörur sínar til ferðalanga.
+- Að stjórna gjaldmiðlum og halda gengi uppfærðu.
+- Að gefa verðveitum leið til að senda okkur verðgögn.
+- Að stjórna uppflettigögnum. *t.d. svæðum, löndum, áfangastöðum, gististöðum o.s.frv.*
+- Að stjórna tungumálum.
+- Að búa til greiningar byggðar á notendaviðmótum, atburðum og API-köllum.
+- Að bjóða upp á bókanlega birgðastöðu í æskilegu sniði, tungumáli og gjaldmiðli, svo sem:
+    - [deilanlegan hlekk](/is/studio/shareable-links) á Facebook.
+    - Gististaðasíðu á https://ota.wink.travel með birgðastöðu fyrir þann gististað.
+    - [spjald](/is/studio/cards) sem inniheldur birgðastöðu samstarfsaðila.
+    - [kort](/is/studio/maps) á [WinkLinks](/is/link-manager/wink-links) reikningnum þínum.
+    - [API-kall](/is/developers/apis) frá fjarstýrðu ferðaskrifstofukerfi.
+- Að veita ferðalöngum leið til að:
+    - Leita að ferðabirgðastöðu.
+    - Bóka lausa birgðastöðu.
+    - Stjórna sínum [bókunum og umsögnum](/is/booking-engine/bookings).
+    - Stjórna sínum [óskalista](/is/booking-engine/bucket-list) yfir hluti til að bóka í framtíðinni.
+    - Stjórna sínum [ferðastillingum](/is/booking-engine/travel-preferences). *t.d. ofnæmi, neyðarsamband o.s.frv.*
 
-Samþættingaraðilar, sem vilja enn meira frelsi, hafa aðgang að öllum sömu eiginleikum í gegnum okkar [WordPress viðbót](/developers/wordpress/), [WordPress viðbót](/developers/wordpress/) og[API-viðmót](/developers/apis).
+Bókunarvélin er safn af endurnýtanlegum virkni sem við bjóðum upp á í gegnum https://ota.wink.travel; mjög sérhannaða vefsíðu fyrir hótel og samstarfsaðila til að selja vörur sínar til ferðalanga.
 
-Haltu áfram í næstu kafla til að lesa meira um það sem bókunarvélin hefur upp á að bjóða.
+Þeir sem vilja enn meiri frelsi hafa aðgang að öllum sömu eiginleikum í gegnum okkar [WordPress viðbót](/is/developers/wordpress/), [Web Components](/is/developers/web-components) og [API](/is/developers/apis).
+
+Haltu áfram í næstu köflum til að lesa meira um hvað bókunarvélin hefur upp á að bjóða.
 
 ## Frekari lestur
 
-* Lesið um okkar[WordPress viðbót](/developers/wordpress/).
-* Lesið um okkar[Vefþættir](/developers/web-components).
-* Lesið um okkar[API-viðmót](/developers/apis).
-
+- Lestu um okkar [WordPress viðbót](/is/developers/wordpress/).
+- Lestu um okkar [Web Components](/is/developers/web-components).
+- Lestu um okkar [API](/is/developers/apis).

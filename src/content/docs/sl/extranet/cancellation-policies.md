@@ -1,45 +1,45 @@
 ---
 title: Politike odpovedi
-description: 'Ta članek vam pokaže, kako upravljati pravilnike o preklicu na Winku.'
+description: Ta članek vam pokaže, kako upravljati politike odpovedi na Wink.
 sidebar:
   order: 12
 ---
-Za upravljanje pravilnikov o odpovedi kliknite na`Monetize > Cancellation policies`iz glavne navigacijske vrstice.
 
-Politika odpovedi določa, kako se ravna s sredstvi rezervacije, če gost ne more priti. Politika odpovedi je dveh različnih vrst:
+Za upravljanje vaših politik odpovedi kliknite na `Monetize > Cancellation policies` v glavni navigacijski vrstici.
 
-1. Vračljivo
-2. Nepovratno
+Politike odpovedi določajo, kako se ravna s sredstvi rezervatorja v primeru, da gost ne more priti. Politike odpovedi so na voljo v dveh različnih oblikah:
 
-Večinoma sta ti dve možnosti dovolj. Vendar pa vam obe dajeta veliko manevrskega prostora za dodatno prilagoditev politike odpovedi.
+1. Povratne
+2. Nepovratne
 
-:::nasvet\[Zanimivost]
-Wink podpira skupno 8500 različic pravilnika o odpovedi.
+Večinoma sta ti dve možnosti dovolj. Vendar pa obe omogočata veliko možnosti za nadaljnjo prilagoditev vaše politike odpovedi.
+
+:::tip[Zanimivost]
+Wink podpira skupno 8500 različic politike odpovedi.
 :::
 
-Če želite ustvariti pravilnik o odpovedi, kliknite`Create a new cancellation policy`gumb.
+Za ustvarjanje politike odpovedi kliknite gumb `Create a new cancellation policy`.
 
-## Nepovratno
+## Nepovratne
 
-Če želite ustvariti pravilnik o odpovedi brez možnosti vračila denarja, nastavite stikalo na 🛑 izklopljeno, ko vas sistem vpraša, ali je pravilnik vračljiv.
-
-### Možnosti
-
-Po želji lahko konfigurirate svoj`non-refundable`nadaljnji nadzor nad politiko.
-
-* **Koliko gostu zaračunajo v primeru odpovedi?**&#x50;rivzeto je politika brez možnosti vračila denarja 100-odstotna politika brez možnosti vračila denarja. Znesek lahko natančneje prilagodite tukaj.*npr. 50 % celotne cene*
-* **Ali ima obtožba rok?**&#x10C;e ste znesek natančno nastavili, ga lahko še dodatno natančneje prilagodite tako, da nastavite, kako dolgo ostane ta znesek v veljavi.*npr. do 3 dni pred prihodom*
-* **Koliko se gostu zaračuna za odpoved po preteku roka?**&#x56; primeru, da gost prekorači zgoraj navedeni rok, lahko določite znesek, ki ga mora plačati po preteku roka.*npr. 70 % celotne cene*
-
-## Vračljivo
-
-Če želite ustvariti pravilnik o odpovedi z možnostjo vračila denarja, nastavite stikalo na ✅, ko se prikaže vprašanje, ali je pravilnik vračljiv.
+Za ustvarjanje nepovratne politike odpovedi nastavite stikalo na 🛑 izklopljeno, ko vas vprašajo, ali je politika povratna.
 
 ### Možnosti
 
-Po želji lahko konfigurirate svoj`refundable`nadaljnji nadzor nad politiko.
+Po želji lahko svojo `nepovratno` politiko dodatno konfigurirate za večji nadzor.
 
-* **Koliko časa pred prihodom lahko gost brezplačno odpove rezervacijo?**&#x50;rivzeto je politika vračila vedno 100-odstotna. Rok lahko natančneje nastavite tukaj.*npr. 3 dni pred prihodom*
-* **Koliko je treba gostu zaračunati, če se odpoved zgodi po zgoraj navedenem roku?**&#x10C;e ste rok natančno določili, lahko določite znesek, ki ga gost plača po preteku roka.*npr. 50 % celotne cene*
-* **Koliko naj bi gost plačal v primeru neprihoda?**&#x56; primeru, da se gost ne pojavi, lahko določite znesek, ki ga gostu zaračunamo za`No show`.*npr. 100 % celotne cene*
+- **Koliko se gostu zaračuna za odpoved?** Privzeto je nepovratna politika 100 % nepovratna. Tukaj lahko natančneje določite znesek. *npr. 50 % celotne cene*
+- **Ali ima zaračunavanje rok?** Če ste natančneje določili znesek, ga lahko dodatno prilagodite tako, da nastavite, kako dolgo ta znesek velja. *npr. do 3 dni pred prihodom*
+- **Koliko se gostu zaračuna za odpoved po preteku roka?** Če gost preseže zgornji rok, lahko nastavite znesek, ki ga gost plača po preteku roka. *npr. 70 % celotne cene*
 
+## Povratne
+
+Za ustvarjanje povratne politike odpovedi nastavite stikalo na ✅ vklopljeno, ko vas vprašajo, ali je politika povratna.
+
+### Možnosti
+
+Po želji lahko svojo `povratno` politiko dodatno konfigurirate za večji nadzor.
+
+- **Kako dolgo pred prihodom lahko gost odpove brezplačno?** Privzeto je povratna politika vedno 100 % povratna. Tukaj lahko natančneje določite rok. *npr. 3 dni pred prihodom*
+- **Koliko naj se gostu zaračuna, če odpove po zgornjem roku?** Če ste natančneje določili rok, lahko nastavite znesek, ki ga gost plača po preteku roka. *npr. 50 % celotne cene*
+- **Koliko naj se gostu zaračuna za 'No show'?** Če gost ne pride, lahko nastavite znesek, ki se gostu zaračuna za `No show`. *npr. 100 % celotne cene*

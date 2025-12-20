@@ -1,43 +1,43 @@
 ---
 title: Andmete kustutamise taotlus
-description: 'Siit saate teada, kuidas taotleda oma isikuandmete kustutamist Winkis.'
+description: Õpi, kuidas Winkis taotleda oma isikuandmete kustutamist.
 sidebar:
   order: 9
 ---
-Winkis austame teie privaatsust ja oleme täielikult pühendunud teie isikuandmete kaitsmisele. Me järgime**Isikuandmete kaitse üldmäärus (GDPR)**&#x6A;a muud kohaldatavad andmekaitseseadused üle maailma.
 
-Sellel lehel on kirjeldatud, kuidas saate taotleda meie platvormi kaudu kogutud isikuandmete kustutamist – sealhulgas, kuid mitte ainult, sotsiaalsete sisselogimisteenuste pakkujate, näiteks Facebooki või Instagrami kaudu saadud andmed.
+Winkis austame teie privaatsust ja oleme täielikult pühendunud teie isikuandmete kaitsmisele. Me järgime **üldist andmekaitsemäärust (GDPR)** ja muid kehtivaid andmekaitse seadusi üle maailma.
 
-## Meie pühendumus andmekaitsele
+See leht kirjeldab, kuidas saate taotleda mis tahes isikuandmete kustutamist, mida võime olla kogunud meie platvormi kaudu — sealhulgas, kuid mitte ainult, andmeid, mis on saadud sotsiaallogimise pakkujate kaudu nagu Facebook või Instagram.
 
-Kogume ainult andmeid, mis on vajalikud meie teenuste osutamiseks, ja me ei müü kunagi teie isikuandmeid. See võib hõlmata järgmist:
+## Meie pühendumus andmete privaatsusele
 
-* Teie nimi ja e-posti aadress
-* Avalik profiiliteave (nt Facebookist või Google'ist)
-* Kasutus- või tegevusandmed meie platvormil
-* Kõik teie poolt selgesõnaliselt antud õigused
+Kogume ainult neid andmeid, mis on vajalikud meie teenuste osutamiseks, ja me ei müü kunagi teie isikuandmeid. See võib hõlmata:
 
-Rakendame asjakohaseid meetmeid teie andmete kaitsmiseks ja kõigi kustutamistaotluste töötlemiseks vastavalt isikuandmete kaitse üldmäärusele ja Meta andmepoliitikale.
+- Teie nime ja e-posti aadressi
+- Avalikku profiiliinfot (nt Facebookist või Google’ist)
+- Platvormi kasutus- või tegevusandmeid
+- Kõiki teie poolt selgesõnaliselt antud õigusi
+
+Võtame asjakohaseid meetmeid teie andmete kaitsmiseks ning töötleme kõiki kustutamistaotlusi vastavalt GDPR-ile ja Meta andmekaitsepoliitikale.
 
 ## Andmete kustutamise taotlemine
 
-Teil on õigus nõuda, et me kustutaksime kõik teie kohta käivad isikuandmed.
+Teil on õigus taotleda, et me kustutaksime kõik teie kohta käivad isikuandmed, mis meil on.
 
-Andmete kustutamise taotlemiseks tehke järgmist.
+Andmete kustutamise taotlemiseks:
 
-* 📧**Saada e-kiri aadressile**:<support@wink.travel>
-* 📝 Kasuta teemarida:`Data Deletion Request`
-* 🔍 Palun lisage identifitseerimisandmed, näiteks:
-  * Meie platvormil kasutatav e-posti aadress
-  * Teie Facebooki või Google'i ID või sarnane (vajadusel)
+- 📧 **Saatke e-kiri aadressile**: [support@wink.travel](mailto:support@wink.travel)
+- 📝 Kasutage teema real: `Data Deletion Request`  
+- 🔍 Palun lisage tuvastamiseks vajalikud andmed, näiteks:
+  - Platvormil kasutatud e-posti aadress
+  - Teie Facebooki või Google’i ID või muu sarnane (kui see on asjakohane)
 
-Vastame aja jooksul**30 päeva**teie taotluse kättesaamisest vastavalt GDPR-i nõuetele.
+Vastame teie taotlusele **30 päeva** jooksul alates selle kättesaamisest, nagu nõuab GDPR.
 
 ## Küsimused või mured?
 
-Kui teil on küsimusi selle kohta, kuidas me teie andmeid kogume, kasutame või kustutame, võtke julgelt ühendust meie privaatsusmeeskonnaga aadressil<support@wink.travel>.
+Kui teil on küsimusi selle kohta, kuidas me teie andmeid kogume, kasutame või kustutame, võtke julgelt ühendust meie privaatsusmeeskonnaga aadressil [support@wink.travel](mailto:support@wink.travel).
 
-***
+---
 
-Täname teid usalduse eest. Me suhtume andmekaitsesse tõsiselt ja oleme pühendunud teile täieliku kontrolli andmisele oma andmete üle.
-
+Täname, et usaldate meid. Võtame andmekaitset tõsiselt ja oleme pühendunud andma teile täieliku kontrolli oma teabe üle.

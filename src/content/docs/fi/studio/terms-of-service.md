@@ -1,440 +1,401 @@
 ---
-title: Palveluehdot
-description: >-
-  Helposti saatavilla olevat ja ajantasaiset ehdot kaikille
-  kumppanikäyttäjillemme.
+title: Käyttöehdot
+description: Helposti saatavilla olevat ja ajan tasalla olevat ehdot kaikille kumppanikäyttäjillemme.
 sidebar:
   order: 12
 ---
-:::huomautus
+
+:::note
 Viimeksi päivitetty 12.6.2024
 :::
 
-**WINKIN YLEISET EHDOT TYTYRYHTIÖILLE**
+**WINKIN YLEISET EHDOT KUMPPANEILLE**
 
-Rekisteröitymällä ja liittymällä Wink-kumppaniohjelmaan kumppanuuskumppanina, kumppani on täten lukenut ja ymmärtänyt, tunnustanut ja hyväksynyt tämän kumppanuussopimuksen ("sopimus") ehdot.\
-VÄLILLÄ:
+Rekisteröitymällä ja liittymällä Wink-kumppaniohjelmaan kumppanina, kumppani on tutustunut, ymmärtää, hyväksyy ja sitoutuu näihin kumppanisopimuksen ehtoihin ("sopimus").  
+OSAPUOLINA:
 
-1. **TRAVELIKO SINGAPORE PTE. LTD**., Singaporen lakien mukaisesti perustettu yhtiö, jonka rekisteröity toimipaikka on osoitteessa #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 ja jonka ALV-rekisterinumero on 201437335D (jäljempänä "Wink"), ja
-2. **TYTYRYHMÄ**, jonka tiedot on esitetty kumppanuuskumppanin rekisteröintilomakkeessa tai jotka on lähetetty verkossa ("Kumppani").
+1. **TRAVELIKO SINGAPORE PTE. LTD**., Singaporen lakien mukaan perustettu yhtiö, jonka rekisteröity toimipaikka on osoitteessa #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, ALV-rekisterinumero 201437335D (jäljempänä "Wink"), ja  
+2. **KUMPPANI**, jonka tiedot on annettu Kumppanin rekisteröintilomakkeessa tai lähetetty verkossa ("Kumppani").
 
-Wink ja Konserniyhtiö ovat tämän Sopimuksen "Osapuoli", ja niihin viitataan yhteisesti "Osapuolina".
+Wink ja Kumppani ovat tämän sopimuksen "Osapuolia" ja yhdessä "Osapuolet".
 
-**OTTAVAT HUOMIOON:**\
-(i) Wink ylläpitää verkkojärjestelmää ("Järjestelmä"), jonka kautta osallistuvat Majoituspaikat (yhdessä "Majoituksen tarjoajat", kukin "Majoituksen tarjoaja") voivat asettaa tarjontaansa varattavaksi ja jonka kautta Vieraat voivat tehdä varauksia kyseisiltä Majoituspaikan tarjoajilta ("Palvelu");\
-(ii) Wink ei omista, hallitse, tarjoa tai hallinnoi mitään kohteita. Wink ei ole osapuoli majoituspalvelujen tarjoajien ja vieraiden välillä suoraan tehdyissä sopimuksissa. Wink ei toimi missään ominaisuudessa majoituspalvelujen tarjoajien edustajana;\
-(iii) Wink ylläpitää ja hyödyntää omia verkkosivustojaan ("Wink-verkkosivustot") ja tarjoaa myös Palvelun ja linkkejä Palveluun kolmansien osapuolten verkkosivustoilla;\
-(iv) Konserniyhtiö omistaa, hallinnoi, isännöi ja/tai ylläpitää yhtä tai useampaa internet-verkkotunnusta, verkkosivustoa ja sovellusta;\
-(v) Kumppani ja Wink haluavat, että Kumppani asettaa Palvelun (suoraan tai epäsuorasti) saataville asiakkailleen ja Kumppanin verkkosivuston/verkkosivustojen ja sovellusten kävijöille tässä Sopimuksessa esitetyssä muodossa ja ehdoilla (jäljempänä "Ehdot").
+**TAUSTAA:**  
+(i) Wink ylläpitää verkkopalvelua ("Järjestelmä"), jonka kautta osallistuvat majoituspalveluntarjoajat (yhteisesti "Majoituspalveluntarjoajat", kukin "Majoituspalveluntarjoaja") voivat tarjota varattavaa inventaariota, ja jonka kautta Vieraat voivat tehdä varauksia näille Majoituspalveluntarjoajille ("Palvelu");  
+(ii) Wink ei omista, hallinnoi, tarjoa tai hallinnoi listauksia. Wink ei ole osapuolena suoraan Majoituspalveluntarjoajien ja Vieraiden välillä tehtävissä sopimuksissa. Wink ei toimi agenttina Majoituspalveluntarjoajille missään ominaisuudessa;  
+(iii) Wink ylläpitää ja hyödyntää omia verkkosivustojaan ("Wink-verkkosivustot") ja tarjoaa myös Palvelua sekä linkkejä Palveluun kolmansien osapuolien verkkosivustoilla;  
+(iv) Kumppani omistaa, hallinnoi, ylläpitää ja/tai operoi yhtä tai useampaa verkkotunnusta, verkkosivustoa ja sovellusta;  
+(v) Kumppani ja Wink haluavat, että Kumppani tarjoaa Palvelun (suoraan tai epäsuorasti) asiakkailleen ja Kumppanin verkkosivustojen ja sovellusten kävijöille tässä sopimuksessa määritellyin ehdoin ("Ehdot").
 
-**Nyt siis osapuolet ovat sopineet seuraavaa:**
+**Näin ollen Osapuolet ovat sopineet seuraavaa:**
 
 **1. Määritelmät**
 
-1.1 Tässä sopimuksessa muualla määriteltyjen termien lisäksi seuraavat määritelmät sovelletaan koko sopimukseen, ellei toisin mainita:
+1.1 Tämän sopimuksen muissa kohdissa määriteltyjen termien lisäksi seuraavat määritelmät pätevät koko sopimuksen ajan, ellei toisin ilmene:
 
-**"Majoitus"**&#x74;arkoittaa minkä tahansa muotoista majoitusta, mukaan lukien, mutta ei rajoittuen, majoituspalvelujen tarjoajat, motellit, majatalot, aamiaismajoitukset, hostellit, huvilat, huoneistot (palveluineen tai muine palveluineen), majatalot, vierasmajoitus, lomakeskukset, osakehuoneistot, leirintäalueet ja kaikki muut (tyyppiset) majoitus- tai majoituspalvelujen tarjoajat (riippumatta siitä, onko ne saatavilla Winkin verkkosivustoilla vai ei).\
-**"Majoituspalveluntarjoaja(t)"**&#x74;arkoittaa mitä tahansa osapuolta, joka luo Wink-tilin aikomuksenaan myydä**oma**huoneiden ja oheispalveluiden varasto Wink-alustan kautta.\
-**"Majoituspalveluiden tuotemerkit"**&#x74;arkoittaa mitä tahansa termiä tai avainsanaa, joka on sama tai hämmentävän samankaltainen (mukaan lukien kaikki muunnelmat, käännökset, kirjoitusvirheet ja yksikkö-/monikkomuodot) kuin mikä tahansa majoituspalveluntarjoajan tavaramerkki tai kauppanimi (riippumatta siitä, onko se rekisteröity vai rekisteröimätön)\
-**"Kumppani"**&#x74;arkoittaa Osapuolta, jonka asiaankuuluvat (yhteys)tiedot on esitetty kumppanuuskumppanin rekisteröintilomakkeessa.\
-**"Kumppanuusyhtiöiden lähdöt"**&#x6F;n merkitykseltään määritelty kohdassa 5.4.\
-**"Kumppaniryhmä"**&#x74;arkoittaa Konserniyhtiötä ja Konserniyhtiön lopullista holdingyhtiötä (mukaan lukien yritysten tai yhteisöjen ryhmä, joka on (konserniyhtiön lopullisen holdingyhtiön tai osakkeenomistajien) (suorassa tai epäsuorassa) määräysvallassa).\
-**"Kumppanikumppanin rekisteröintilomake"**&#x74;arkoittaa Kumppanin täyttämää verkkopohjaista rekisteröitymislomaketta.\
-**"Kumppanisivusto(t)"**&#x74;arkoittaa Tytäryhtiön omistamaa, hallinnoimaa, isännöimää ja ylläpitämää verkkosivustoa/verkkosivustoja ja sovellusta/sovelluksia, joilla Palvelu on saatavilla.\
-**"Sovellus(et)"**&#x74;arkoittaa mobiililaitteille tarkoitettua natiivisovellusta.\
-**"Sopimus"**&#x74;arkoittaa tätä sopimusta.\
-**"Varaus"**&#x74;arkoittaa Winkin tallentamaa onnistunutta tapahtumaa vieraalta majoituspaikan tarjoajan varaamiseksi.\
-**"Varausmaksu"**&#x6F;n Winkin kumppanipalkkiosta vähentämä 1,5 %:n käsittelymaksu.\
-**"Varauksen arvo"**&#x6F;n maksupalveluntarjoajan vieraalta varauksesta keräämä kokonaissumma.\
-**"Lauseke"**&#x74;arkoittaa tämän sopimuksen lauseketta.\
-**"Komissio"**&#x74;arkoittaa Kumppanille velkaa olevaa summaa ennen maksupalvelumaksun ja varausmaksun vähentämistä jokaisesta toteutuneesta tapahtumasta tämän sopimuksen mukaisesti.\
-**"Yhteydet"**&#x74;arkoittaa kaikkia Winkin luomia, isännöimiä ja ylläpitämiä verkkokomponentteja, linkkejä, aloitussivuja ja/tai JSON-syötteitä ja/tai syvälinkkejä ja/tai hyperlinkkejä.\
-**"Sisältö"**&#x74;arkoittaa kaikkia Wink-verkkosivustolla saatavilla olevia majoituspalveluntarjoajien (kuvailevia) tietoja, mukaan lukien, mutta ei rajoittuen, majoituspalveluntarjoajien tiedot ja kuvaukset, asiakasarvostelut, metatiedot, tiedot palveluista ja (peruutus-/ei saapumis)käytännöt sekä majoituspalveluntarjoajien yleiset ehdot (mukaan lukien niiden käännökset) sekä valokuvat, videot ja kuvat, mutta pois lukien hinnat ja saatavuus (mukaan lukien päivitykset, muutokset, korvaukset, lisäykset tai tarkistukset).\
-**"Kontrolli"**&#x74;arkoittaa vallan tai kyvyn hallussapitoa (suoraan tai epäsuorasti, yksin tai yhdessä muiden kanssa, joko äänioikeutettujen arvopapereiden tai muiden omistusosuuksien omistamisen, kumppanuuden tai muun kautta) (i) käyttää tai määrätä käyttämään yli puolta äänioikeuksista yhtiön osakkeenomistajien kokouksessa, (ii) nimittää yli puolet yhtiön (ei-)toimitusjohtajista tai valvovista jäsenistä tai (iii) ohjata tai määrätä yhtiön johdon suuntaan.\
-**"Asiakastiedot"**&#x74;arkoittaa vieraan henkilötietoja (”PII”), mukaan lukien, mutta ei rajoittuen, vieraan nimi, osoite (mukaan lukien sähköpostiosoite), luottokorttitiedot ja muut vieraan luottamukselliset ja yksityiset tiedot.\
-**"Tupla-annos"**&#x74;arkoittaa useita mainoksia samalla hakukoneen tulossivulla, joiden tarkoituksena on ohjata liikennettä samankaltaisille verkkosivustoille tai sivuille, joilla on samanlainen sisältö.\
-**"Vieras"**&#x74;arkoittaa verkkosivustojen tai sovellusten kävijää, joka on tehnyt majoituspaikan tarjoajan varauksen palvelun kautta.\
-**"Immateriaalioikeus"**&#x74;arkoittaa mitä tahansa patenttia, tekijänoikeutta, keksintöä, tietokantaoikeutta, mallioikeutta, rekisteröityä mallia, tavaramerkkiä, kauppanimeä, tuotemerkkiä, logoa, palvelumerkkiä, tietotaitoa, hyödyllisyysmallia, rekisteröimätöntä mallia tai, tarvittaessa, mitä tahansa tällaista oikeutta, tietotaitoa, kauppa- tai liikenimeä, verkkotunnusta (millä tahansa (maakoodi) pääverkkotunnuksella, esim. .com, .net., co.th, .de, .fr, eu, co.uk. jne.) koskevaa hakemusta tai muuta vastaavaa oikeutta tai velvoitetta, olipa se rekisteröity tai rekisteröimätön, tai muuta teollis- tai immateriaalioikeutta, joka on voimassa millä tahansa alueella tai lainkäyttöalueella maailmassa.\
-**"JSON"**&#x74;arkoittaa Winkin tietokannan ja tytäryhtiön tietokannan välistä JSON-yhteyttä, jonka Wink voi tarjota sovittavin ehdoin.\
-**"Linkki"**&#x74;arkoittaa verkkosivulle tai sähköpostiviestiin upotettua kuvaketta, objektia, grafiikkaa tai tekstiä, joka koostuu hypertekstiosoittimesta Winkin URL-osoitteeseen kumppanisivustolla/-sivustoilla.\
-**"Kauppiastapahtuma"**&#x74;arkoittaa toteutunutta tapahtumaa, jossa maksunvälittäjä on rekisteröity kauppias ja jossa maksunvälittäjä kerää varat suoraan vieraalta varausta varten.\
-**"Toteutuneet tapahtumat"**&#x74;arkoittaa varausta, jonka kävijä tekee yhteistyökumppanin verkkosivustolla/-sivustoilla ja/tai sovelluksessa/-sovelluksissa Yhteyden kautta tehdessään varauksen majoituspalveluntarjoajalta, ja tämä varaus on johtanut majoituksen tosiasialliseen tarjoamiseen, jonka majoituspalveluntarjoaja on vahvistanut Winkille. Toteutuneet tapahtumat oikaistaan ​​aina muutosten (esim. lyhentyneiden oleskelujen), takaisinperintöjen, luottokorttipetosten, velkojen tai muiden tekijöiden varalta. Selvyyden vuoksi peruutuksia, saapumatta jättämisiä jne. ei voida koskaan pitää toteutuneina tapahtumina.\
-**"Mikrosivusto"**&#x74;arkoittaa kaikkia Winkin pääsivuston white label -versioita, jotka Wink omistaa, on luonut, isännöi ja ylläpitää. Mikrosivustolla voi olla merkintä ”powered by Wink” -logosta tai vastaavasta.\
-**"Nettopalkkio"**&#x6F;n summa, joka on velkaa Yhteistyökumppanille toteutuneista tapahtumista maksupalvelumaksun ja varausmaksun vähentämisen jälkeen.\
-**"Maksettu haku"**&#x74;arkoittaa mitä tahansa verkkomainontaa, joka sitoo mainoksen näyttämisen tiettyyn avainsanapohjaiseen hakupyyntöön.\
-**"Maksunvälittäjä"**&#x54;raveliko Singapore Pte. Ltd:n kokonaan omistama tytäryhtiö, joka hallinnoi maksupalveluita, kerää maksuja vierailta ("Sisäänmaksu") veloittamalla heidän ostokseensa liittyvää maksutapaa, kuten luottokorttia, pankkikorttia, tilisiirtoa, kryptovaluuttoja tai PayPalia jne. ja maksaa velan ("Nettopalkkio") yhteistyökumppanin paikalliselle pankkitilille.\
-**"Maksu sisään"**&#x74;arkoittaa vieraan suorittaman maksun vastaanottamista maksuvälittäjän toimesta.\
-**"Maksu"**&#x74;arkoittaa maksupalveluntarjoajan suorittamaa nettopalkkion maksamista tytäryhtiölle.\
-**"Maksupalvelumaksu"**&#x6F;n maksupalveluntarjoajan maksujen käsittelypalkkiona vähentämä 4 % kumppanuuspalkkiosta.\
-**"Hintavertailu"**&#x74;arkoittaa majoituspalveluntarjoajien hintojen ja/tai saatavuuden vertailua, joka on saatavilla kahdelta tai useammalta majoituspalveluntarjoajien verkkovarausalustalta.\
-**"Jälleenmyynti"**&#x6F;n merkitykseltään kohdassa 4.1.7 määritelty.\
-**"Myyjän portaali"**&#x6F;n merkitykseltään kohdassa 4.1.8 määritelty.\
-**"SEM"**&#x74;arkoittaa hakukonemarkkinointia ja sisältää kaikenlaisen verkkomarkkinoinnin, jolla pyritään edistämään verkkosivustoja lisäämällä niiden näkyvyyttä hakukoneiden tulossivuilla hakukoneoptimoinnin, maksetun sijoittelun, kontekstuaalisen mainonnan tai maksetun sisällyttämisen avulla.\
-**"Hakukoneoptimointi"**&#x74;arkoittaa hakukoneoptimointia ja sisältää prosessin, jossa (i) parannetaan verkkosivustolle tai verkkosivulle tulevan liikenteen määrää tai laatua hakukoneista "luonnollisten" tai maksamattomien ("orgaanisten" tai "algoritmististen") hakutulosten kautta tai (ii) saavutetaan tai luodaan parempi sijoitus hakukoneiden tuloksissa tietylle avainsanalle tai avainsanoille.\
-**"Samankaltainen verkkotunnus"**&#x6F;n merkitykseltään kohdassa 4.7.1 määritelty.\
-**"Roskapostin sääntely"**&#x74;arkoittaa kaikkia kolmansien osapuolten alustojen kulloinkin määräämiä, sovellettaviksi julistettuja tai ilmoittamia käytäntöjä, määräyksiä, rajoituksia tai velvoitteita, jotka (i) kieltävät tai estävät kaksoisnäytön, sisällön naamioinnin tai vastaavan tekniikan tai menetelmän tai (ii) sisältävät tällaisia ​​lisärajoituksia tai -määräyksiä roskapostituksen tai ainutlaatuisen käyttökokemuksen säilyttämisen osalta.\
-**"Kolmannen osapuolen alustat"**&#x74;arkoittaa mitä tahansa (kolmannen osapuolen) hakukonetta (markkinointipalveluntarjoajaa), metahakukonetta, hakukoneiden indeksoijia, matkailusivustoja, hintavertailusivustoja, sosiaalisen median yhteisöjä, selaimia, sisällönjako- ja hosting-palveluita sekä multimediablogipalveluita tai muita (vastaavia) kanavia tai muita (liikenteen hosting-)medioita, joko verkossa tai sen ulkopuolella.\
-**"Verkkosivustot"**&#x74;arkoittaa Winkin ja sen tytäryhtiöiden ja yhteistyökumppaneiden verkkosivustoa (mukaan lukien tytäryhtiöiden verkkosivusto(t)), jolla/joilla Winkin tuote ja palvelu on saatavilla.\
-**"Silmäniskun kilpailija"**&#x74;arkoittaa kaikkia Winkin suoria tai epäsuoria kilpailijoita (lukuun ottamatta epäselvyyksien välttämiseksi Wink-konsernin yrityksiä).\
-**"Silmäniskutiedot"**&#x74;arkoittaa Winkin immateriaalioikeuksia ja sisältöä, jotka on toimitettu tytäryhtiölle tämän sopimuksen nojalla, sekä muita Winkin omistamia tai käyttämiä tai Winkin verkkosivustoille sisältyviä tai niille Winkin tytäryhtiölle saataville asettamia tietoja (esim. hinnat ja saatavuus).\
-**"Wink-verkkosivustot"**&#x74;arkoittaa Winkin verkkosivustoa/verkkosivustoja, mukaan lukien, mutta ei rajoittuen, Wink, traveliko.com ja kaikki niiden paikalliset tai vaihtoehtoiset versiot (riippumatta pääverkkotunnuksesta), sekä niiden kaikki muunnelmat, mukaan lukien, mutta ei välttämättä rajoittuen, mobiiliverkkosivusto, mobiilisovellukset jne.
+**"Majoitus"** tarkoittaa mitä tahansa majoitusmuotoa, mukaan lukien mutta ei rajoittuen Majoituspalveluntarjoajiin, motelleihin, vierastaloihin, bed & breakfast -paikkoihin, hostelleihin, huviloihin, huoneistoihin (palvelu- tai muut), majataloihin, lomakeskuksiin, asunto-osakkeisiin, leirintämajoituksiin ja muihin majoitus- tai yöpymispalveluntarjoajiin (riippumatta siitä, ovatko ne saatavilla Wink-verkkosivustoilla).  
+**"Majoituspalveluntarjoaja(t)"** tarkoittaa osapuolta, joka luo tilin Winkissä tarkoituksenaan myydä **omia** huoneitaan ja lisäpalveluitaan Wink-alustan kautta.  
+**"Majoituspalveluntarjoajan brändit"** tarkoittaa mitä tahansa termiä tai avainsanaa, joka on sama tai sekoitettavissa (mukaan lukien variaatiot, käännökset, kirjoitusvirheet ja yksikkö-/monikkomuodot) minkä tahansa Majoituspalveluntarjoajan tavaramerkkiin tai kauppanimen kanssa (rekisteröity tai rekisteröimätön).  
+**"Kumppani"** tarkoittaa osapuolta, jonka asiaankuuluvat (yhteystiedot) on annettu Kumppanin rekisteröintilomakkeessa.  
+**"Kumppanin lähtötilaukset"** tarkoittaa kohdan 5.4 mukaista merkitystä.  
+**"Kumppaniryhmä"** tarkoittaa Kumppania ja Kumppanin emoyhtiötä (mukaan lukien suoraan tai epäsuorasti Kumppanin emoyhtiön tai osakkeenomistajien hallinnassa olevat yritykset tai yksiköt).  
+**"Kumppanin rekisteröintilomake"** tarkoittaa verkossa täytettävää rekisteröitymislomaketta, jonka Kumppani täyttää.  
+**"Kumppanin verkkosivusto(t)"** tarkoittaa Kumppanin omistamia, hallinnoimia, ylläpitämiä ja operoimia verkkosivustoja ja sovelluksia, joilla Palvelu on saatavilla.  
+**"Sovellus(t)"** tarkoittaa mobiililaitteille tarkoitettua natiivisovellusta.  
+**"Sopimus"** tarkoittaa tätä sopimusta.  
+**"Varaus"** tarkoittaa Winkissä onnistuneesti kirjattua varausta Vieraalta Majoituspalveluntarjoajalle.  
+**"Varausmaksu"** on 1,5 %:n maksu, joka vähennetään Kumppanin komissiosta käsittelykuluna Winkiltä.  
+**"Varausarvo"** tarkoittaa maksupalveluntarjoajan Vieraalta varausta varten keräämää kokonaissummaa.  
+**"Kohta"** tarkoittaa tämän sopimuksen kohtaa.  
+**"Komissio"** tarkoittaa Kumppanille maksettavaa summaa ennen maksupalvelumaksun ja varausmaksun vähentämistä kunkin toteutuneen tapahtuman osalta tämän sopimuksen mukaisesti.  
+**"Yhteydet"** tarkoittaa kaikkia Winkin luomia, ylläpitämiä ja isännöimiä verkkokomponentteja, linkkejä, laskeutumissivuja, JSON-syötteitä, syvälinkkejä tai hyperlinkkejä.  
+**"Sisältö"** tarkoittaa kaikkia Wink-verkkosivustolla saatavilla olevia Majoituspalveluntarjoajien kuvaustietoja, mukaan lukien tiedot, kuvaukset, vieraspalautteet, metatiedot, tilatiedot, peruutus- ja ei-ilmoittautumiskäytännöt sekä yleiset ehdot (mukaan lukien käännökset) sekä valokuvat, videot ja kuvat, mutta ei hintoja tai saatavuutta (mukaan lukien päivitykset, muutokset, korvaukset, lisäykset tai muutokset).  
+**"Hallinta"** tarkoittaa valtaa tai kykyä (suoraan tai epäsuorasti, yksin tai yhdessä muiden kanssa, esimerkiksi äänioikeuksien omistuksen, osakkuuden, yhtiökumppanuuden tai muun kautta) (i) käyttää yli puolta yhtiökokouksen äänioikeuksista, (ii) nimittää yli puolet yhtiön hallituksen tai valvontakomitean jäsenistä, tai (iii) ohjata yhtiön johtoa.  
+**"Asiakastiedot"** tarkoittaa Vieraiden henkilökohtaisia tunnistetietoja ("PII"), kuten nimi, osoite (mukaan lukien sähköpostiosoite), luottokorttitiedot ja muut luottamukselliset tiedot.  
+**"Kaksoispalvelu"** tarkoittaa useita mainoksia samalla hakutulossivulla, joiden tarkoituksena on ohjata liikennettä samankaltaisille sivustoille tai sivuille, joilla on samankaltainen sisältö.  
+**"Vieras"** tarkoittaa verkkosivuston tai sovelluksen kävijää, joka on tehnyt varauksen Majoituspalveluntarjoajalle Palvelun kautta.  
+**"Immateriaalioikeus"** tarkoittaa patentteja, tekijänoikeuksia, keksintöjä, tietokantaoikeuksia, mallioikeuksia, rekisteröityjä malleja, tavaramerkkejä, kauppanimiä, brändejä, logoja, palvelumerkkejä, tietotaitoa, hyödyllisyysmalleja, rekisteröimättömiä malleja tai soveltuvin osin näihin liittyviä hakemuksia, kauppanimiä, verkkotunnuksia (minkä tahansa maan päätealueella, esim. .com, .net, .co.th, .de, .fr, eu, .co.uk jne.) tai muita vastaavia oikeuksia tai velvoitteita, rekisteröityjä tai rekisteröimättömiä, teollisia tai immateriaalioikeuksia missä tahansa maailman alueella tai lainkäyttöalueella.  
+**"JSON"** tarkoittaa JSON-yhteyttä Winkin tietokannan ja Kumppanin tietokannan välillä, jonka Wink voi tarjota sovituin ehdoin.  
+**"Linkki"** tarkoittaa upotettua kuvaketta, objektia, grafiikkaa tai tekstiä verkkosivulla tai sähköpostissa, joka sisältää hyperlinkin Winkin URL-osoitteeseen Kumppanin verkkosivustolla.  
+**"Kauppiastapahtuma"** tarkoittaa toteutunutta tapahtumaa, jossa Maksupalveluntarjoaja on kauppias, keräten maksut suoraan Vieraalta varauksesta.  
+**"Toteutunut tapahtuma(t)"** tarkoittaa Kumppanin verkkosivuston tai sovelluksen kävijän tekemää varausta Majoituspalveluntarjoajalle, joka on johtanut majoituksen toteutumiseen, kuten Majoituspalveluntarjoaja on vahvistanut Winkille. Toteutuneita tapahtumia säädetään aina muutosten, hyvitysten, petosten, luottotappioiden tai muiden syiden vuoksi. Peruutuksia, ei-ilmoittautumisia ym. ei koskaan katsota toteutuneiksi tapahtumiksi.  
+**"Mikrosivusto"** tarkoittaa kaikkia Winkin pääverkkosivuston valkoisen merkin versioita, joita Wink omistaa, luo, ylläpitää ja isännöi. Mikrosivusto voi olla merkitty "powered by Wink" -logolla tai vastaavalla.  
+**"Nettokomissio"** tarkoittaa Kumppanille maksettavaa summaa toteutuneista tapahtumista maksupalvelumaksun ja varausmaksun vähentämisen jälkeen.  
+**"Maksettu haku"** tarkoittaa mitä tahansa verkkomarkkinointimuotoa, jossa mainoksen esittäminen sidotaan tiettyyn avainsanahakuun.  
+**"Maksupalveluntarjoaja"** on Traveliko Singapore Pte. Ltd:n kokonaan omistama tytäryhtiö, joka hallinnoi maksupalveluita, keräten maksut Vieraalta ("Pay-in") maksutavalla, kuten luottokortti, pankkisiirto, kryptovaluutat tai PayPal, ja maksaa Nettokomission Kumppanin paikalliselle pankkitilille.  
+**"Pay-in"** tarkoittaa maksun vastaanottamista Vieraalta Maksupalveluntarjoajan kautta.  
+**"Pay-out"** tarkoittaa Nettokomission maksamista Kumppanille Maksupalveluntarjoajan toimesta.  
+**"Maksupalvelumaksu"** on 4 %:n maksu, joka vähennetään Kumppanin komissiosta Maksupalveluntarjoajan maksun hankintamaksuna.  
+**"Hintavertailu"** tarkoittaa Majoituspalveluntarjoajien hintojen ja/tai saatavuuden vertailua kahden tai useamman verkkovarauspalvelun välillä.  
+**"Jälleenmyynti"** tarkoittaa kohdan 4.1.7 mukaista merkitystä.  
+**"Myyjäportaali"** tarkoittaa kohdan 4.1.8 mukaista merkitystä.  
+**"SEM"** tarkoittaa hakukonemarkkinointia, joka sisältää kaikenlaisen verkkomainonnan, jonka tavoitteena on lisätä verkkosivustojen näkyvyyttä hakutulossivuilla hakukoneoptimoinnin, maksetun sijoittelun, kontekstuaalisen mainonnan tai maksetun sisällyttämisen avulla.  
+**"SEO"** tarkoittaa hakukoneoptimointia, joka sisältää prosessin (i) parantaa verkkosivuston tai -sivun liikenteen määrää tai laatua hakukoneiden kautta "luonnollisten" tai maksuttomien ("orgaanisten" tai "algoritmisten") hakutulosten avulla, tai (ii) saavuttaa parempi sijoitus hakutuloksissa tietylle avainsanalle tai avainsanoille.  
+**"Samanlainen verkkotunnus"** tarkoittaa kohdan 4.7.1 mukaista merkitystä.  
+**"Roskapostisäännökset"** tarkoittaa kolmansien osapuolien alustoilla määrättyjä tai sovellettavia sääntöjä, jotka (i) kieltävät kaksoispalvelun, piilottamisen tai vastaavat tekniikat, tai (ii) sisältävät muita rajoituksia roskapostin tai käyttäjäkokemuksen säilyttämiseksi.  
+**"Kolmannen osapuolen alustat"** tarkoittaa hakukoneita, metahakukoneita, hakurobotteja, matkahaun sivustoja, hintavertailusivustoja, sosiaalisen median yhteisöjä, selaimia, sisällönjakopalveluita, blogipalveluita tai muita vastaavia kanavia, online- tai offline-muodossa.  
+**"Verkkosivustot"** tarkoittaa Wink-verkkosivustoja ja niiden tytäryhtiöiden ja kumppaneiden verkkosivustoja (mukaan lukien Kumppanin verkkosivustot), joilla Wink-tuotteet ja -palvelut ovat saatavilla.  
+**"Winkin kilpailija"** tarkoittaa suoraa tai epäsuoraa kilpailijaa Winkille (pois lukien Wink-konsernin yhtiöt).  
+**"Wink-data"** tarkoittaa Winkin immateriaalioikeuksia ja Sisältöä, joka toimitetaan Kumppanille tämän sopimuksen nojalla, sekä muuta Winkin omistamaa tai käyttämää tietoa Wink-verkkosivustoilla (esim. hinnat ja saatavuus).  
+**"Wink-verkkosivustot"** tarkoittaa Winkin verkkosivustoja, mukaan lukien mutta ei rajoittuen Wink, traveliko.com ja kaikki paikalliset tai vaihtoehtoiset versiot (minkä tahansa päätealueen kanssa), sekä niiden variaatiot, mukaan lukien mobiiliversiot ja sovellukset.
 
 **1.2 Ei kumppanuutta**
 
-1.2.1 Tämän sopimuksen tarkoituksena ei ole, eikä mitään tässä sopimuksessa tai missään tässä tarkoitetuissa järjestelyissä tule tulkita sellaiseksi, että se loisi yhteisyrityksen tai osapuolten välisen kumppanien, kumppanuuden tai päämiehen ja edustajan välisen suhteen.
+1.2.1 Tätä sopimusta ei ole tarkoitettu eikä sitä tule tulkita yhteisyritykseksi, kumppanuudeksi tai agenttisuhteeksi Osapuolten välillä.
 
-1.2.2 Ellei Wink ole kirjallisesti toisin sopinut tai tässä Sopimuksessa toisin määrätty, Kumppani ei saa julkaista missään Kumppanin verkkosivustolla/verkkosivustoilla mitään nimenomaista tai epäsuoraa lausuntoa siitä, että verkkosivusto on osa Winkiä, Winkin hyväksymä tai Winkin virallinen verkkosivusto.
+1.2.2 Ellei Wink toisin kirjallisesti sovi tai tässä sopimuksessa toisin määrätä, Kumppani ei saa julkaista Kumppanin verkkosivustolla mitään lausumaa, joka ilmaisee, että sivusto on osa Winkia, Winkin hyväksymä tai virallinen Wink-verkkosivusto.
 
-1.2.3 Yhteistyökumppani voi olla suoraan yhteydessä majoituspalvelujen tarjoajiin määrittääkseen yksinoikeudella tai ensisijaisesti saatavat hinnat, ehdot, kampanjat, pakettien lisäominaisuudet ja vastaavat.
+1.2.3 Kumppani voi olla suoraan yhteydessä Majoituspalveluntarjoajiin neuvotellakseen yksinoikeudellisista tai suosituista hinnoista, ehdoista, kampanjoista, paketeista ja lisäpalveluista.
 
-**2. Tämän sopimuksen soveltamisala**
+**2. Sopimuksen soveltamisala**
 
-**2.1 Ei-yksinoikeus**\
-Tämän sopimuksen ehtojen mukaisesti Tytäryhtiö toimii Winkin ei-yksinomaisena jakelijana (tytäryhtiönä).
+**2.1 Ei yksinoikeutta**  
+Tämän sopimuksen ehtojen mukaisesti Kumppani toimii Winkille ei-yksinomaisena jakelijana (kumppanina).
 
 **2.2 Palvelu**
 
-2.2.1 Tämän sopimuksen voimassaoloaikana Osapuolet ovat sopineet, että Wink tarjoaa Palvelun Kumppanille Kumppanin rekisteröintilomakkeessa (eli Linkissä tai Mikrosivustolla) ja Kumppanin rekisteröintilomakkeessa määritellyllä verkkosivustolla (eli Kumppanin verkkosivustolla/verkkosivustoilla) määritellyllä tavalla.
+2.2.1 Sopimuksen voimassaoloaikana Osapuolet ovat sopineet, että Palvelu tehdään Winkiltä Kumppanille saataville Kumppanin rekisteröintilomakkeessa määritellyllä tavalla (esim. Linkki tai Mikrosivusto) ja verkkosivustoilla, jotka on määritelty rekisteröintilomakkeessa (Kumppanin verkkosivustot).
 
-2.2.2 Kun vierailija tekee varauksen yhteistyökumppanisivustoilla tai niiden kautta Järjestelmän kautta, Wink on vastuussa asiaankuuluvien varaustietojen välittämisestä varauksen tehneeltä vierailijalta majoituspalveluntarjoajalle (esim. saapumispäivä, öiden lukumäärä, huonetyyppi, vieraan nimi) ja sitä seuraavan (sähköposti)vahvistuksen ja/tai vahvistuskupongin lähettämisestä vieraalle.
+2.2.2 Kun varaus tehdään Kumppanin verkkosivustolla tai sen kautta Järjestelmän kautta, Wink vastaa varauksen tietojen välittämisestä varauksen tehneeltä Vieraalta Majoituspalveluntarjoajalle (esim. saapumispäivä, yöpymisten määrä, huonetyyppi, vieraan nimi) sekä vahvistuksen ja/tai vahvistuskuponkin lähettämisestä Vieraalle.
 
-2.2.3 Palveluun sisältyy asiakaspalvelua Vieraille ja heidän hyödykseen. Yhteistyökumppanin on viipymättä ohjattava ja/tai toimitettava eteenpäin kaikki asiakaspalveluun liittyvät ongelmat ja kysymykset, jotka koskevat Palvelua, varausta (sen toteutumista) (mukaan lukien varauksen muutokset tai peruutukset), Majoituspalveluntarjoajaa ja kaikkia muita asiaankuuluvia (maksu)ongelmia, valituksia ja kysymyksiä suoraan (Winkin asiakaspalvelukeskukselle) eikä tarjottava muita palveluita tältä osin.
+2.2.3 Palveluun sisältyy asiakaspalvelu Vieraiden hyväksi. Kumppani ohjaa välittömästi kaikki asiakaspalveluun liittyvät kysymykset ja ongelmat (varauksen tekeminen, muutos, peruutus, Majoituspalveluntarjoaja, maksut, valitukset) suoraan Winkille eikä tarjoa näihin liittyviä lisäpalveluita.
 
-**2.3 Linkki tai mikrosivusto**
+**2.3 Linkki tai Mikrosivusto**
 
-2.3.1 Mikäli Palvelu asetetaan saataville Linkin kautta, Kumppanin tulee omalla kustannuksellaan integroida ja asettaa Linkki saataville sellaisissa näkyvässä paikassa, verkkosivuilla ja sellaisessa paikassa, koossa ja muodossa Kumppanin verkkosivustolla(-illa) Winkin ohjeiden mukaisesti tai Osapuolten yhteisesti sopimalla tavalla.
+2.3.1 Jos Palvelu tarjotaan Linkin kautta, Kumppani integroi ja tekee Linkin saataville omalla kustannuksellaan näkyvälle paikalle Kumppanin verkkosivustolla Winkiltä saatujen ohjeiden tai Osapuolten yhteisen sopimuksen mukaisesti.
 
-2.3.2 Mikäli Palvelu tarjotaan Mikrosivuston kautta, Kumppanin tulee omalla kustannuksellaan integroida ja asettaa Yhteydet ja/tai Mikrosivusto saataville sellaisissa näkyvissä paikoissa, verkkosivuilla ja sellaisessa paikassa, koossa ja muodossa Kumppanin verkkosivustolla(-illa) kuin Wink on ohjeistanut tai kuin Osapuolet ovat yhdessä sopineet.
+2.3.2 Jos Palvelu tarjotaan Mikrosivuston kautta, Kumppani integroi ja tekee Yhteydet ja/tai Mikrosivuston saataville omalla kustannuksellaan näkyvälle paikalle Kumppanin verkkosivustolla Winkiltä saatujen ohjeiden tai Osapuolten yhteisen sopimuksen mukaisesti.
 
 **3. Lisenssi**
 
-**3.1 Keskinäinen lisenssi**
+**3.1 Molemminpuolinen lisenssi**
 
-3.1.1 Kohdan 4.4 mukaisesti Wink myöntää täten Kumppanille ei-yksinomaisen, peruutettavissa olevan, rajoitetun, rojaltivapaan ja maailmanlaajuisen oikeuden ja lisenssin:
+3.1.1 Kohdan 4.4 ehtojen mukaisesti Wink myöntää Kumppanille ei-yksinomaisen, peruutettavissa olevan, rajoitetun, rojaltivapaan ja maailmanlaajuisen oikeuden ja lisenssin:
 
-1. näyttää kyseisiä Wink-datan osia ja majoituspalveluntarjoajien lisätietoja yhteistyökumppanin verkkosivustolla/verkkosivustoilla, kaikki sellaisina kuin Wink on ne yhteistyökumppanille toimittanut tai asettanut saataville;
-2. mainostaa ja markkinoida Palvelua tässä sopimuksessa määriteltyjen ehtojen mukaisesti.
+1) näyttää Wink-datan ja Majoituspalveluntarjoajien tiedot Kumppanin verkkosivustolla, kaikki Winkiltä Kumppanille toimitettu;  
+2) markkinoida ja mainostaa Palvelua tämän sopimuksen ehtojen mukaisesti.
 
-3.1.2 Yhteistyökumppani myöntää täten Winkille rojaltivapaan ja maailmanlaajuisen oikeuden ja lisenssin:
+3.1.2 Kumppani myöntää Winkille rojaltivapaan ja maailmanlaajuisen oikeuden ja lisenssin:
 
-1. sisällyttää, integroida, sisällyttää ja näyttää Linkin, Mikrosivuston ja/tai Yhteyden (soveltuvin osin) Kumppanin verkkosivustolla/verkkosivustoilla, ja
-2. asettaa Palvelu saataville Yhteistyökumppanin verkkosivustolla/verkkosivustoilla.
+1) sisällyttää, integroida ja näyttää Linkin, Mikrosivuston ja/tai Yhteyden Kumppanin verkkosivustolla;  
+2) tehdä Palvelu saataville Kumppanin verkkosivustolla.
 
-**3.2 Ei alilisenssioikeutta ja salassapito-oikeutta**
+**3.2 Ei alilisensointioikeutta ja salassapito**
 
-3.2.1 Ellei Wink ole kirjallisesti toisin sopinut, Yhteistyökumppanilla ei ole oikeutta (i) myöntää alilisenssiä kohdan 3.1.1 nojalla myönnetyistä oikeuksista tai (ii) myöntää alilisenssiä Linkistä tai Yhteydestä millekään kolmannelle osapuolelle tai (iii) linkkiä Wink-verkkosivustolle Yhteistyökumppaniryhmään kuuluvien yritysten ja/tai kolmansien osapuolten verkkosivustojen kautta tai yhteistyössä niiden kanssa.
+3.2.1 Ellei Wink toisin kirjallisesti sovi, Kumppani ei saa (i) alilisensoida kohtaan 3.1.1 myönnettyjä oikeuksia, (ii) alilisensoida Linkkiä tai Yhteyttä kolmannelle osapuolelle, tai (iii) hyperlinkittää Wink-verkkosivustolle yhteistyössä Kumppaniryhmän yritysten tai kolmansien osapuolien kanssa.
 
-3.2.2 Ellei Wink ole kirjallisesti toisin sopinut tai tässä Sopimuksessa toisin määrätty, Yhteistyökumppanilla ei ole suoraa tai epäsuoraa oikeutta myydä, käyttää, siirtää, (al)lisensoida, välittää, paljastaa, asettaa saataville, sallia pääsyä, ilmaista tai muutoin levittää Wink-tietoja tai -sisältöä (i) millekään kolmannelle osapuolelle, (ii) hinta-/saatavuusvertailutarkoituksiin, sivustoille, arvosteluihin tai tutkimuksiin, (iii) mihinkään muuhun tarkoitukseen kuin (majoituspaikan tarjoajan varausten tekemiseen Palvelun kautta) tai (iv) muutoin.
+3.2.2 Ellei Wink toisin kirjallisesti sovi tai tässä sopimuksessa toisin määrätä, Kumppani ei saa suoraan tai epäsuorasti myydä, käyttää, siirtää, alilisensoida, tiedottaa, paljastaa, tehdä saataville, sallia pääsyä, levittää Wink-dataa tai Sisältöä (i) kolmannelle osapuolelle, (ii) hintavertailuun, arvosteluihin tai tutkimuksiin, (iii) muuhun tarkoitukseen kuin Palvelun kautta tehtävien varausten tuottamiseen, tai (iv) muulla tavalla.
 
-**4. Liitot ja sitoumukset**
+**4. Sitoumukset ja velvoitteet**
 
-**4.1 Yleiset sitoumukset, sitoumukset ja velvoitteet**
+**4.1 Yleiset sitoumukset ja velvoitteet**
 
-4.1.1 Tämän sopimuksen ehtojen mukaisesti Kumppani sitoutuu ryhtymään kaupallisesti kohtuullisiin toimiin (i) mukauttaakseen Kumppanin verkkosivustoa/verkkosivustoja ja integroidakseen linkin, yhteydet ja/tai mikrosivuston siten, että se tuottaa mahdollisimman paljon liikennettä Wink-verkkosivustolle tai Kumppanin verkkosivustolle/verkkosivustoille, ja (ii) mainostaakseen ja markkinoidakseen Majoituspalveluntarjoajia ja mahdollisuutta varata Majoituspalveluntarjoajia Kumppanin verkkosivustolla/verkkosivustoilla kaupallisessa ja sisäisessä verkostossaan ja tätä varten asettamaan saataville jakeluverkostonsa ja kanavansa (esim. internetin ja intranetin).
+4.1.1 Sopimuksen ehtojen mukaisesti Kumppani sitoutuu kaupallisesti kohtuullisin ponnistuksin (i) räätälöimään Kumppanin verkkosivuston ja integroimaan Linkin, Yhteydet ja/tai Mikrosivuston siten, että liikennettä ohjautuu mahdollisimman paljon Wink-verkkosivustolle tai Kumppanin verkkosivustolle, ja (ii) markkinoimaan Majoituspalveluntarjoajia ja niiden varaustoimintaa Kumppanin kaupallisessa ja sisäisessä verkostossa, tarjoten jakeluverkostonsa ja kanavansa (esim. internet ja intranet) tätä tarkoitusta varten.
 
-4.1.2 Yhteistyökumppani sitoutuu olemaan tekemättä tai jättämään tekemättä mitään toimia, jotka voisivat vaikuttaa Winkin ja Winkin verkkosivustoilla saatavilla olevien majoituspalvelujen tarjoajien suhteeseen. Yhteistyökumppani sitoutuu olemaan aiheuttamatta tai sallimatta mitään sellaista, mikä voisi johtaa Winkin poissulkemiseen varausprosessista minkä tahansa majoituspalveluntarjoajan kanssa.
+4.1.2 Kumppani sitoutuu olemaan tekemättä mitään, mikä voisi vaikuttaa Winkin suhteeseen Wink-verkkosivustolla oleviin Majoituspalveluntarjoajiin. Kumppani ei saa aiheuttaa tai sallia mitään, mikä voisi johtaa Winkin sulkemiseen pois varausprosessista minkään Majoituspalveluntarjoajan kanssa.
 
-4.1.3 Kumppani sitoutuu olemaan kommunikoimatta minkään majoituspalveluntarjoajan kanssa, lukuun ottamatta kohdan 1.2.3 mukaista poikkeusta, Järjestelmän kautta tehtyjen (kulutettujen) varausten osalta tai minkään asiakaspalvelun osalta, joka liittyy Järjestelmän kautta tehtyihin tai kulutettuihin varauksiin.
+4.1.3 Kumppani ei saa olla yhteydessä Majoituspalveluntarjoajiin varauksiin tai asiakaspalveluun liittyen, paitsi kohdan 1.2.3 mukaisesti.
 
-4.1.4 Kumppanin on asianmukaisesti ja huolellisesti ylläpidettävä ja mukautettava kumppaneiden verkkosivustojen sisältöä ja pidettävä kumppaneiden verkkosivusto(t) ajan tasalla ja oikeina. Kumppanin on viipymättä korjattava kaikki virheet tai puutteet kumppaneiden verkkosivustoilla ja majoituspalvelujen tarjoajia koskevissa tiedoissa saatuaan tiedon tällaisista virheistä tai saatuaan niistä ilmoituksen Winkiltä.
+4.1.4 Kumppani ylläpitää ja päivittää Kumppanin verkkosivuston sisällön huolellisesti ja pitää sen ajan tasalla. Kumppani korjaa viipymättä virheet tai puutteet, kun niistä tulee tietoiseksi tai Wink ilmoittaa niistä.
 
-4.1.5 Kumppani ei saa (a) ohjelmallisesti arvioida ja poimia tietoja (mukaan lukien asiakasarvostelut) Wink-verkkosivuston mistään osasta (esim. näytön kaappauksella) tai yrittää tehdä niin, eikä saa millään tavalla, mukaan lukien, mutta ei rajoittuen, mekaanisesti, sähköisesti, kopioimalla, tallentamalla tai muulla tavoin, kopioida, jäljentää, muokata, muuttaa, mukauttaa, purkaa, takaisinmallintaa, kaapata tai muulla tavoin määrittää linkkien tai minkään Wink-verkkosivustolla olevan sisällön tai sen tarjoamien palveluiden lähdekoodia (tai niiden taustalla olevia ideoita, algoritmeja, rakennetta tai organisaatiota) tai yrittää tehdä niin; (b) ladata (i) mitään viruksia, troijalaisia, matoja, aikapommeja, robottikomentoja tai muita tietokoneohjelmointirutiineja, joiden tarkoituksena on vahingoittaa, häiritä haitallisesti, salaa siepata tai pakkolunastaa mitä tahansa järjestelmää, tietoja tai henkilötietoja; (c) tehdä mitään esityksiä vierailijoille, suurelle yleisölle tai millekään muulle osapuolelle, joka on millään tavalla yhteydessä Yhtiöön, palveluihin, linkkeihin tai Wink-verkkosivustoon; (d) (yrittää) saada Winkiltä luottoa tai palkkioita harhaanjohtamalla, antamalla vääriä tietoja, petollisella toiminnalla tai millä tahansa muulla Winkiä harhauttavalla juonella tai tempulla; tai (e) muutoin (yrittää) aiheuttaa haittaa Winkille ja Wink-verkkosivustolle. Edellä mainittujen ehtojen rikkominen johtaa yhteistyökumppanin erottamiseen ohjelmasta ja kaikkien erääntyneiden maksujen menettämiseen.
+4.1.5 Kumppani ei saa (a) ohjelmallisesti kerätä tai poimia tietoja Wink-verkkosivustolta (esim. ruudunkaappaus) tai yrittää sitä, eikä millään keinoin kopioida, muokata, purkaa, kääntää, poistaa tai muuten käyttää Wink-verkkosivuston lähdekoodia tai sisältöä; (b) ladata viruksia, troijalaisia, matoja, aikapommeja tai muita haittaohjelmia; (c) antaa vieraille tai yleisölle harhaanjohtavia tietoja Winkistä, sen palveluista tai verkkosivustosta; (d) yrittää saada komissioita väärin perustein; tai (e) muuten vahingoittaa Winkia tai Wink-verkkosivustoa. Rikkomukset johtavat Kumppanin välittömään erottamiseen ohjelmasta ja maksamattomien maksujen menetykseen.
 
-4.1.6 Yhteistyökumppani ei saa tehdä staattisia kopioita Wink-verkkosivuston sisällöstä tai mistään sen osasta (mukaan lukien asiakasarvostelut).
+4.1.6 Kumppani ei saa tehdä staattista kopiota Sisällöstä tai Wink-verkkosivuston osista (kuten vieraspalautteista).
 
-4.1.7 Tämän sopimuksen nojalla Kumppani ei saa hyötyä varauksista tai varauksista Winkiltä saamansa palkkion lisäksi tämän sopimuksen ehtojen mukaisesti. Kumppani (mukaan lukien sen työntekijä ja sen valtuuttama henkilö) ei saa tehdä varauksia tai varauksia millekään majoituspalveluntarjoajalle Wink-verkkosivustolla tai Kumppanin verkkosivustolla tarkoituksenaan jälleenmyydä tällainen varaus tai varaus kolmannelle osapuolelle tai kolmannen osapuolen hyödyksi ("Jälleenmyynti"). Selvyyden vuoksi Winkillä on yksinomainen oikeus katsoa mikä tahansa varaus tai varaus jälleenmyynniksi, jos kyseisen varauksen tai varauksen maksu ei tule suoraan henkilöltä, jonka nimissä kyseinen varaus tai varaus on tehty.\
-Jälleenmyyntiä pidetään tämän sopimuksen olennaisena rikkomuksena. Yhteistyökumppani tiedostaa, että jälleenmyynti on tämän sopimuksen perustarkoituksen vastaista. Jälleenmyynnin tapauksessa Wink pidättää oikeuden hylätä varauksia ja/tai peruuttaa vahvistettuja varauksia ilman ennakkoilmoitusta tai hyvitystä. Wink voi myös välittömästi irtisanoa yhteistyökumppanin osallistumisen ohjelmaan oman harkintansa mukaan, sanotun kuitenkaan rajoittamatta muita tässä sopimuksessa määriteltyjä oikeussuojakeinoja, mukaan lukien palkkion menettäminen ja korvauksen vaatiminen.
+4.1.7 Kumppani ei saa tehdä varauksia tai varauksia Majoituspalveluntarjoajilta Wink- tai Kumppanin verkkosivustolla tarkoituksenaan jälleenmyydä niitä kolmannelle osapuolelle ("Jälleenmyynti"). Wink voi yksipuolisesti katsoa varauksen Jälleenmyynniksi, jos maksu ei tule varauksen tekijältä. Jälleenmyynti on sopimusrikkomus, joka voi johtaa varausten hylkäämiseen, peruutuksiin, Kumppanin erottamiseen ja komission menetykseen.
 
-4.1.8 Wink tarjoaa yhteistyökumppanille pääsyn Winkin nimetylle verkkosivustolle ("Kumppaniportaali"), käyttäjätunnuksen ja salasanan, joiden avulla yhteistyökumppani voi seurata majoitusvarauksia yhteistyökumppanin verkkosivuston/verkkosivustojen kautta, sekä kaikkiin Winkin verkossa tarjoamiin asiaankuuluviin hallintatietoihin. Kumppanin on suojattava ja pidettävä käyttäjätunnus ja salasana luottamuksellisina ja turvallisesti tallennettuina eikä luovutettava niitä kenellekään muulle kuin niille, joiden on päästävä Myyjäportaaliin. Kumppanin on ilmoitettava Winkille välittömästi kaikista (epäillyistä) tietoturvaloukkauksista tai väärinkäytöksistä.
+4.1.8 Wink tarjoaa Kumppanille pääsyn nimettyyn Wink-verkkosivustoon ("Myyjäportaali"), käyttäjätunnuksen ja salasanan, joiden avulla Kumppani voi seurata varauksia ja hallintatietoja. Kumppani pitää tunnukset luottamuksellisina ja ilmoittaa välittömästi Winkille mahdollisista tietoturvaloukkauksista.
 
-4.1.9 Kaikkiin yhteistyökumppanin Wink-verkkosivustolla tai yhteistyökumppanin verkkosivustolla majoituspalveluntarjoajan kanssa tekemiin varauksiin sovelletaan Winkin käyttöehtoja, joita voidaan päivittää ajoittain. Epäselvyyksien välttämiseksi yhteistyökumppani ei saa käyttää Wink-verkkosivustoa tai sen sisältöä mihinkään kaupalliseen tarkoitukseen muutoin kuin palkkion vastaanottamiseen tämän sopimuksen ehtojen mukaisesti.
+4.1.9 Kaikki Kumppanin tekemät varaukset Majoituspalveluntarjoajilta Wink- tai Kumppanin verkkosivustolla ovat Winkin käyttöehtojen alaisia. Kumppani ei saa käyttää Wink-verkkosivustoa kaupallisiin tarkoituksiin komission vastaanottamisen ulkopuolella.
 
-4.1.10 Kumppani hyväksyy ja tiedostaa, että tässä kohdassa 4 esitetyt rajoittavat ehdot, sitoumukset, velvoitteet ja rajoitukset ovat kohtuullisia ja olennaisen tärkeitä Winkille, erityisesti (i) sen halukkuuden tehdä tämä Sopimus Kumppanin kanssa ja asettaa Palvelu, Sisältö ja Winkin immateriaalioikeudet (suoraan tai epäsuorasti) Kumppanin saataville, ja (ii) Winkin liikearvon, tuotteen, palvelun ja (markkina)maineen suojaamisen vuoksi. Lisäksi Kumppani hyväksyy ja tiedostaa, että kaikkia tässä kohdassa 4 esitettyjä ehtoja, sitoumuksia, takuita, velvoitteita ja rajoituksia (a) Kumppanin on noudatettava viipymättä, asianmukaisesti ja huolellisesti, ja (b) ne koskevat myös kaikkia henkilöitä, joilla on pääsy Myyjäportaaliin Kumppanin käyttäjätunnuksen kautta, kaikkia henkilöitä, joiden kohtuudella uskotaan edustavan Kumppania, ja Kumppaniryhmään kuuluvia yrityksiä. Kumppani hankkii, takaa ja sitoutuu siihen, että jokainen henkilö, jolla on pääsy Myyjäportaaliin Kumppanin käyttäjätunnuksen kautta, jokainen henkilö, jonka voidaan kohtuudella olettaa edustavan Kumppania, sekä Kumppaniryhmään kuuluvat yritykset noudattavat, noudattavat ja toimivat tässä kohdassa 4 määriteltyjen ehtojen mukaisesti.
+4.1.10 Kumppani hyväksyy, että tässä kohdassa 4 määritellyt rajoitukset ja velvoitteet ovat kohtuullisia ja tärkeitä Winkille, erityisesti Palvelun, Sisällön ja Winkin immateriaalioikeuksien suojaamiseksi. Kumppani sitoutuu noudattamaan näitä ehtoja myös niiden henkilöiden osalta, joilla on pääsy Myyjäportaaliin Kumppanin tunnuksilla.
 
-**4.2 Liikearvo, brändin suojaaminen ja liikenne**
+**4.2 Hyvä tahto, brändin suoja ja liikenne**
 
-4.2.1 Suojellakseen Winkin tuotetta, palvelua, tuotemerkkiä ja liikearvoa, Kumppani sitoutuu ja takaa täten, että Kumppanin verkkosivusto(t) (mukaan lukien kaikki muut Kumppanin tai Kumppanikonserniin kuuluvien yritysten omistamat, hallinnoimat tai ylläpitämät verkkosivustot (suoraan tai epäsuorasti)) lukuun ottamatta Mikrosivustoa, on (ja pysyy) riittävän ja olennaisesti erillisenä ja erilaisena Winkin verkkosivustosta (Winkin yksinomaisen harkinnan mukaan). Kumppani hyväksyy ja vahvistaa täten, että tämän sopimuksen voimassaoloaikana ja sen jälkeen:\
-(a) Kumppanin verkkosivuston/-sivustojen (mukaan lukien kaikki muut (suoraan tai epäsuorasti) Kumppanin omistamat, hallinnoimat tai ylläpitämät verkkosivustot) ulkoasun ja käyttökokemuksen on oltava selkeästi ja merkittävästi erilainen kuin Wink-verkkosivusto, mukaan lukien värimaailman, sommittelun, kirjasintyyppien, suunnittelun ja asettelun (mukaan lukien brändi), (klikkaus)painikkeiden, laatikoiden ja bannerien sekä käytettävissä olevien ominaisuuksien osalta (lukuun ottamatta niitä ominaisuuksia, jotka ovat kohtuudella välttämättömiä Kumppanin tämän sopimuksen mukaisten velvoitteiden suorittamiseksi);\
-(b) kaikkien Kumppanin verkkosivustolla/verkkosivustoilla (mukaan lukien kaikki muut Kumppanin omistamat, hallinnoimat tai isännöimät verkkosivustot) käytettyjen logojen on oltava selvästi erilaisia ​​kuin Winkin logo (lukuun ottamatta logoja, jotka Wink on mahdollisesti toimittanut Kumppanin käytettäväksi tämän Sopimuksen nojalla tai sen nojalla);\
-(c) Yhteistyökumppani ei saa millään tavalla jäljitellä tai kopioida Wink-verkkosivustoja (yleisesti tai tiettyjen (uusien) ominaisuuksien, sivujen, muodon, koostumuksen tai näkökohtien osalta), ja\
-(d) Kumppanin on viipymättä ja omalla kustannuksellaan noudatettava kaikkia Winkin kohtuullisia pyyntöjä tehdä tällaisia ​​(lisä)muutoksia, -korjauksia tai -täsmennyksiä mihin tahansa Kumppanin verkkosivuston/-sivustojen osaan, joka on tai voidaan katsoa olevan hämmentävän tai merkittävästi samanlainen kuin jokin Winkin verkkosivuston osa.
+4.2.1 Kumppani sitoutuu pitämään Kumppanin verkkosivuston (mukaan lukien muut suoraan tai epäsuorasti Kumppanin tai sen ryhmän omistamat tai hallinnoimat sivustot) selvästi ja merkittävästi erillään Wink-verkkosivustosta Winkille sopivalla tavalla. Tämä koskee mm. värimaailmaa, typografiaa, ulkoasua, brändiä, painikkeita, laatikoita, bannereita ja ominaisuuksia (paitsi ne, jotka ovat tarpeen sopimuksen täyttämiseksi). Kumppanin käyttämien logojen tulee olla selvästi erilaisia Wink-logosta (paitsi Winkiltä saadut logot). Kumppani ei saa kopioida Wink-verkkosivustoa eikä saa viivytyksettä tehdä Winkin pyytämiä muutoksia, jos sivusto muistuttaa liikaa Wink-verkkosivustoa.
 
 **4.3 Immateriaalioikeudet**
 
-4.3.1 Yhteistyökumppani hyväksyy, että Wink ja/tai sen lisenssinantajat säilyttävät omistusoikeuden kaikkiin Winkin tai Wink-verkkosivustolla ilmeneviin immateriaalioikeuksiin, mukaan lukien (mutta ei rajoittuen) Wink-logoon, sisältöön ja Wink-tietoihin. Mitään tässä sopimuksessa ei voida katsoa siirtävän tällaista oikeutta, omistusoikeutta tai etua Yhteistyökumppanille millään tavalla.
+4.3.1 Kumppani tunnustaa, että Wink ja/tai sen lisenssinantajat omistavat kaikki oikeudet Winkin immateriaalioikeuksiin, mukaan lukien Wink-logo, Sisältö ja Wink-data. Sopimus ei siirrä näitä oikeuksia Kumppanille.
 
-4.3.2 Yhteistyökumppani ei saa paljastaa, integroida, sisällyttää, käyttää, yhdistää, hyödyntää, sisällyttää tai muutoin asettaa Sisältöä ja Wink-dataa (tai mitään sen osaa) saataville (a) oman sisältönsä ja/tai minkään Wink-kilpailijan (mukaan lukien Majoituspalvelujen tarjoajat) sisällön kanssa tai (b) (i) itselleen (paitsi Palvelun ja Järjestelmän mahdollistamiseksi tämän Sopimuksen ehtojen mukaisesti) tai (ii) millekään Wink-kilpailijalle (mukaan lukien Majoituspalvelujen tarjoajat) tai heidän hyödykseen (joko kyseisen osapuolen mainostamiseksi, markkinoimiseksi, viittaukseksi, edistämiseksi, mainostamiseksi tai muuten kyseisen osapuolen edun mukaisesti) tai (c) mihinkään muuhun tarkoitukseen tai millään muulla tavalla ja/tai Kolmansien Osapuolten Alustoilla tai niiden kautta, paitsi jos tässä Sopimuksessa nimenomaisesti niin määrätään. Yhteistyökumppani ei saa muuttaa, muokata, vääristää, luoda johdannais- ja/tai uusia teoksia Sisällön perusteella ja/tai siitä johdettuina, eikä Sisältö saa sisältää (suoraa tai epäsuoraa) linkkiä, viittausta, klikkauslinkkiä tai viittausta Wink-kilpailijan (mukaan lukien Majoituspalvelujen tarjoajat) (verkkosivustolle).
+4.3.2 Kumppani ei saa paljastaa, yhdistää, käyttää tai hyödyntää Sisältöä ja Wink-dataa omassa sisällössään tai kilpailijoiden sisällössä, eikä luovuttaa niitä kolmansille osapuolille muuhun kuin Palvelun tarjoamiseen.
 
-4.3.3 Kumppani ei saa (ja sen on varmistettava, että Kumppaniryhmään kuuluvat yritykset eivät saa) (suoraan tai epäsuorasti) rekisteröidä, hankkia, käyttää, ostaa tai saada haltuunsa internet-verkkotunnusta, joka sisältää sanan tai sanoja, jotka ovat identtisiä, hämmentävän tai olennaisesti samankaltaisia ​​kuin "Wink" tai sen muunnelmia, käännöksiä tai kirjoitusvirheitä, osana osoitetta.
+4.3.3 Kumppani ja sen ryhmän yritykset eivät saa rekisteröidä tai käyttää verkkotunnuksia, jotka sisältävät "Wink" -sanan tai sen variaatioita, jotka ovat sekoitettavissa Wink-brändiin.
 
-4.3.4 Tämän sopimuksen solmimalla Wink ei (nimenomaisesti tai hiljaisesti) luovu tai menetä mitään oikeuksiaan, joihin sillä on lain, sopimuksen tai muun perusteella (nyt tai tulevaisuudessa) oikeus Winkin immateriaalioikeuksiin suhteessa tytäryhtiöön tai muihin kolmansiin osapuoliin.
+4.3.4 Sopimuksen allekirjoittaminen ei tarkoita Winkiltä minkään immateriaalioikeuden luopumista tai menettämistä Kumppania tai muita kolmansia osapuolia kohtaan.
 
-**4.4 Mainostaminen ja markkinointi**
+**4.4 Markkinointi ja mainonta**
 
-4.4.1 Sopimuksen voimassaoloaikana Kumppani sitoutuu ja takaa, ettei se (ja sen tulee varmistaa, että Kumppaniryhmään kuuluvat yritykset eivät) suorita, ryhdy käyttämään, suorita tai käytä (tai anna tai valtuuta kolmansia osapuolia suorittamaan, ryhdymään, käyttämään, suorittamaan tai käyttämään) (a) maksettua hakua, hakukoneoptimointia tai hakukoneoptimointia, (b) mitään toimintaa, jolla pyritään vaikuttamaan epäoikeudenmukaisesti Kolmansien Osapuolten Alustojen tuloksiin, tai (c) mitään muuta verkossa kohdennettua mainontaa (joko suoraan, epäsuorasti tai Kolmansien Osapuolten Alustojen kautta) seuraavien osalta:
+4.4.1 Sopimuksen voimassaoloaikana Kumppani sitoutuu olemaan harjoittamatta (eikä sallimaan kolmansien osapuolien harjoittavan) maksettua hakua, SEM- tai SEO-toimintaa, tai muuta kohdennettua verkkomainontaa, joka liittyy:
 
-1. Palvelu;
-2. Wink-verkkosivusto;
-3. Sisältö;
-4. Wink-tiedot;
-5. Wink-tuotemerkit;
-6. majoituspalveluntarjoajan tuotemerkit (ellei kyseisen majoituspalveluntarjoajan tuotemerkin omistaja ole antanut etukäteen kirjallista suostumustaan ​​yhteistyökumppanille kyseisen majoituspalveluntarjoajan tuotemerkin käyttöön), tai
-7. Kumppanisivusto siinä määrin kuin maksettu haku, hakukoneoptimointi, hakukoneoptimointi tai muu verkossa kohdennettu mainonta liittyy (a) Majoituksen tarjoamiseen, varaamiseen tai varaamiseen (joko Palvelun kautta tai muuten) tai (b) Majoitusta koskeviin tietoihin.
+1. Palveluun;  
+2. Wink-verkkosivustoon;  
+3. Sisältöön;  
+4. Wink-dataan;  
+5. Wink-brändeihin;  
+6. Majoituspalveluntarjoajien brändeihin (ellei kyseisen brändin omistaja ole antanut kirjallisen luvan); tai  
+7. Kumppanin verkkosivustoon, jos mainonta liittyy majoituksen tarjontaan, varaukseen tai tietoihin.
 
-Kohdan 4.4.1 määräykset (i)–(v) osalta pysyvät voimassa tämän sopimuksen irtisanomisen jälkeen.
+Kohta 4.4.1 (i)–(v) pysyy voimassa myös sopimuksen päättymisen jälkeen.
 
-4.4.2 Kumppani ei saa käyttää, hyödyntää tai muutoin hyödyntää, suoraan tai epäsuorasti, mitään T-alustoja pyrkiäkseen välttämään tai kiertämään tämän Sopimuksen mukaisia ​​​​sopimuksiaan, velvoitteitaan tai rajoituksiaan tai sellaisia ​​​​rajoituksia tai sopimuksia, joiden osalta Kumppani voi kohtuudella olettaa, että tällaiset toimet kuuluvat tämän Sopimuksen soveltamisalaan.
+4.4.2 Kumppani ei saa käyttää Winkin alustoja tai muita keinoja kiertääkseen tämän sopimuksen ehtoja.
 
-4.4.3 Yhteistyökumppani ei saa hyödyntää tai käyttää Sisältöä mihinkään tarkoitukseen tai millään tavalla ja/tai Kolmansien Osapuolten Alustoilla tai niiden kautta, paitsi jos tässä Sopimuksessa on nimenomaisesti niin määrätty.
+4.4.3 Kumppani ei saa käyttää Sisältöä muuhun kuin tässä sopimuksessa sallittuun tarkoitukseen.
 
-4.4.4 Tämän sopimuksen voimassaoloaikana (ja sen jälkeen Wink-tuotemerkkien ja Wink-tietojen osalta) tytäryhtiön on välittömästi noudatettava kaikkia Winkin pyyntöjä noudattaa tätä kohtaa 4.4. Muussa tapauksessa Wink voi irtisanoa sopimuksen välittömästi ja rajoittamatta sen oikeudellisia ja sopimusperusteisia oikeussuojakeinoja.
+4.4.4 Kumppani sitoutuu noudattamaan Winkiltä tulevia kohtuullisia pyyntöjä tämän kohdan 4.4 noudattamiseksi, muuten Wink voi purkaa sopimuksen välittömästi.
 
-**4.5 Ei tuplatarjoilua tai naamiointia**
+**4.5 Ei kaksoispalvelua tai piilottamista**
 
-4.5.1 Kumppanisivustoja ei saa (suoraan tai epäsuorasti) linkittää Wink-sivustoille kaksoistarjoamisen tai muun vastaavan tekniikan tai menetelmän tai muiden roskapostia koskevissa säännöksissä asetettujen rajoitusten vuoksi.
+4.5.1 Kumppanin verkkosivustot eivät saa olla linkitetty Wink-verkkosivustoihin kaksoispalvelun tai vastaavien tekniikoiden vuoksi.
 
-4.5.2 Mikäli Palvelu asetetaan saataville Linkin tai Mikrosivuston kautta, Kumppani ei saa asettaa Palvelua (suoraan tai epäsuorasti) saataville matkahaku- tai hintavertailusivustojen kautta tai käyttää niitä tähän tarkoitukseen, ellei Winkin kanssa ole kirjallisesti toisin sovittu.
+4.5.2 Palvelun ollessa Linkin tai Mikrosivuston kautta saatavilla, Kumppani ei saa käyttää hintavertailu- tai matkahaun sivustoja ilman Winkiltä saatua kirjallista lupaa.
 
-4.5.3 Kumppani ei saa (suoraan tai epäsuorasti) asettaa Kumppanin verkkosivustoa/-sivustoja, Sisältöä tai Palvelua saataville tai esittää Sisältöä Kolmannen Osapuolen Alustoille tarkoituksenaan tai tarkoituksenaan johtaa harhaan, pettää, huijata tai huijata Kolmannen Osapuolen Alustojen ihmiseditoreita, hakukoneiden indeksoijia, indeksointirobotteja tai (meta)hakukoneita (mukaan lukien vastaavat työkalut tai moottorit) antaakseen Kumppanin verkkosivustolle/-sivustoille korkeamman sijoituksen tai näkyvyyden, jos sitä/ne eivät muuten näytetty tai se olisi korkeammalla sijoituksella, jos se ei olisi käyttänyt naamiointia tai vastaavaa tekniikkaa tai menetelmää.
+4.5.3 Kumppani ei saa käyttää harhaanjohtavia keinoja (kuten piilottamista) saadakseen paremman sijoituksen kolmansien osapuolien hakukoneissa.
 
-4.5.4 Kumppani sitoutuu ja takaa noudattavansa viipymättä Roskapostitussäännöksiä (ja kaikkia Winkin tässä suhteessa tekemiä kohtuullisia pyyntöjä) välttääkseen Winkin tai yhteistyökumppanisivuston(-ien) rikkomukset kyseisistä käytännöistä yhteistyökumppanisivuston(-ien) vuoksi tai suhteessa siihen. Epäselvyyksien välttämiseksi Kumppani ei voi vedota mihinkään oikeuksiin tältä osin Winkiä kohtaan ja luopuu täten kaikista (puolustusoikeuksista) tai vaatimuksista Winkiä vastaan ​​tältä osin.
+4.5.4 Kumppani sitoutuu noudattamaan roskapostisäännöksiä ja Winkiltä tulevia pyyntöjä niiden noudattamiseksi.
 
-**4.6 Kaupustelukielto**
+**4.6 Ei houkuttelua**
 
-Kumppani sitoutuu olemaan ottamatta yhteyttä, pyytämättä tai hyväksymättä mitään Majoituspalveluntarjoajaa (i) liikekumppanikseen varauksia tai varauksia varten (suoraan tai epäsuorasti) Kumppanin verkkosivustolla/-sivustojen kautta, (ii) mainostilan myyntiä tai muita (verkko)mainonta- tai markkinointitarkoituksia varten (joko bannerien, klikkauslinkkien, (teksti)linkkien, ponnahdusikkunoiden tai muun kautta) Kumppanin verkkosivustolla/-sivustoilla tai (iii) mistään muusta syystä.
+Kumppani sitoutuu olemaan ottamatta yhteyttä, houkuttelematta tai hyväksymättä Majoituspalveluntarjoajaa liikekumppaniksi varauksia varten, mainostilaa myyntiin tai muihin tarkoituksiin Kumppanin verkkosivustolla.
 
-**4.7 Samankaltaisia ​​verkkotunnuksia**
+**4.7 Samanlaiset verkkotunnukset**
 
-4.7.1 Mikäli Kumppanilla on tai hän käyttää (hämmentävästi) Wink Brandsin kaltaista verkkotunnusta ("Samankaltainen verkkotunnus") Kumppanin verkkosivustolla/verkkosivustoilla (Winkin harkinnan mukaan) tai jos Kumppani haluaa rekisteröidä, hankkia, käyttää, ostaa tai saada Samankaltaisen verkkotunnuksen (Winkin etukäteen antaman kirjallisen hyväksynnän mukaisesti), sovelletaan seuraavaa. Kumppanin on (ja sen on varmistettava, että sen Hallitsemat yritykset eivät) suoraan tai epäsuorasti:
+4.7.1 Jos Kumppanilla on tai se käyttää verkkotunnusta, joka on sekoitettavissa Wink-brändiin ("Samanlainen verkkotunnus") tai haluaa rekisteröidä sellaisen, Kumppani sitoutuu olemaan:
 
-1. tehdä tarjouksia tai ostaa internet-sijoitteluoikeuksia Samankaltaiselle verkkotunnukselle tai millekään sen osalle tai samankaltaisuuksille millään tavalla missään mainonnassaan, mukaan lukien, mutta ei rajoittuen, internet- ja verkkomainonta.\
-   2\. Sisällytä Samankaltaista verkkotunnusta tai sen osaa tai vastaavia muunnelmia, käännöksiä tai kirjoitusvirheitä minkään verkkosivuston koodin metatunnisteisiin. Tämä sisältää metaotsikon, meta-avainsanat tai metakuvauksen.\
-   3\. ostaa, hankkia tai käyttää suoraan tai epäsuorasti mitään avainsanoja kolmansien osapuolten alustoilta liikenteen uudelleenohjaamiseksi samankaltaiseen verkkotunnukseen, ja\
-   4\. ostaa Samankaltaisen verkkotunnuksen tai minkä tahansa sen osan tai sen muunnelmia, käännöksiä tai kirjoitusvirheitä käytettäväksi tekstilinkeissä, bannerimainoksissa, ponnahdusikkunamainoksissa tai muuntyyppisissä mainoksissa, jotka voitaisiin liittää avainsanakampanjaan.
+1. ostamatta mainostilaa tai avainsanoja, jotka ohjaavat liikennettä kyseiselle verkkotunnukselle;  
+2. käyttämättä samanlaista verkkotunnusta meta-tageissa;  
+3. ostamatta avainsanoja kolmansilta osapuolilta liikenteen ohjaamiseksi;  
+4. ostamatta samanlaista verkkotunnusta mainoskampanjoihin.
 
-4.7.2 Muiden Samankaltaisten Verkkotunnusten kuin Yhteistyökumppanin verkkosivuston osalta Osapuolet ovat sopineet, että (i) kaikki tällaiset Samankaltaiset Verkkotunnukset linkitetään suoraan Yhteistyökumppanin verkkosivustolle suoran uudelleenohjauksen kautta eivätkä ne ole aktiivisesti saatavilla tai verkossa mihinkään tarkoitukseen, ja (ii) Yhteistyökumppani (eikä mikään Yhteistyökumppaniryhmästä) saa millään tavalla (verkossa tai sen ulkopuolella) markkinoida, mainostaa, luovuttaa, myydä, tarjota, mainostaa, (ali)lisensoida, asettaa saataville, sallia pääsyä, viitata, julkaista tai jaella Samankaltaisia ​​Verkkotunnuksia.
+4.7.2 Samanlaiset verkkotunnukset tulee ohjata suoraan Kumppanin verkkosivustolle uudelleenohjauksella, eikä niitä saa aktiivisesti markkinoida tai käyttää muuhun tarkoitukseen.
 
 **4.8 Hintavertailu**
 
-4.8.1 Mikäli Kumppani tarjoaa hintavertailua asiaankuuluvalla(-illa) kumppanuussivustolla(-illa) kumppanuuskumppanin rekisteröintilomakkeen mukaisesti, Kumppanille myönnetään kyseisen(-ien) kumppanuussivuston(-ien) osalta pääsy asiaankuuluvien majoituspalvelujen tarjoajien hinta- ja saatavuustietoihin, jotka ovat saatavilla Wink-verkkosivustolla (yhdessä "Hinta- ja saatavuustiedot"), ainoastaan ​​suoran yhteyden kautta Wink-verkkopalvelimiin (eli JSON-yhteyden kautta). Hinta- ja saatavuustiedot asetetaan saataville Winkin julkaisemien lisäehtojen mukaisesti.
+4.8.1 Jos Kumppani tarjoaa hintavertailua, sille annetaan pääsy Majoituspalveluntarjoajien hintoihin ja saatavuustietoihin suoraan Winkin palvelimilta JSON-yhteyden kautta.
 
-4.8.2 Hinta- ja saatavuustiedot eivät sisällä Wink-tietoja ja -sisältöä Wink-verkkosivustolta tai -palvelimilta tai kolmannelta osapuolelta (verkkosivustolta), jonka kanssa Winkillä on sopimussuhde sisällön tarjoamisesta, eikä Kumppanilla ole oikeutta käyttää, kopioida, viitata tai sisällyttää niitä verkkosivustoilleen, joilla Hintavertailu on saatavilla.
+4.8.2 Kumppani ei saa käyttää Wink-dataa tai sisältöä hintavertailusivustolla.
 
-4.8.3 Mikäli Yhteistyökumppani tarjoaa hintavertailua, Yhteistyökumppanin on varmistettava, että kaikkien Wink-kilpailijoiden (mukaan lukien kaikki majoituspalvelujen tarjoajat tai varauskeskukset, välittäjät tai edustajat (yhdessä "Kolmannen osapuolen palveluntarjoajat")) Yhteistyökumppanin verkkosivustolla saatavilla olevat huonehinnat ovat tarkkoja, oikeita eivätkä harhaanjohtavia tai petollisia verrattuna kolmannen osapuolen palveluntarjoajien verkkosivustolla saatavilla oleviin todellisiin hintoihin.
+4.8.3 Kumppani varmistaa, että kaikki kilpailijoiden hinnat ovat tarkkoja ja eivät harhaanjohtavia.
 
-4.8.4 Winkiä kohdellaan Kumppanin hintavertailusivustolla vähintään yhtä edullisesti (sijoituksen, näyttöpaikan ja konversiomahdollisuuksien osalta) kuin parhaiten konvertoivia (x) Winkin kilpailijoita, (y) majoituspalvelujen tarjoajia tai (z) mitä tahansa varauskeskusta, agenttia tai välittäjää, jota Winkin kilpailija tai majoituspalvelujen tarjoajat hallinnoivat, omistavat tai valvovat ja joka on saatavilla Kumppanin hintavertailusivustolla.
+4.8.4 Wink saa olla vähintään yhtä suotuisassa asemassa hintavertailussa kuin parhaat kilpailijat.
 
-**4.9 Todistustaakka, määräysten noudattaminen, kieltomääräykset ja muut oikeussuojakeinot**
+**4.9 Todistustaakka, noudattaminen, kieltotuomio ja muut oikeussuojakeinot**
 
-4.9.1 Osapuolet sopivat ja tunnustavat, että jos Kumppani rikkoo tai laiminlyö tämän kohdan 4 mukaisia ​​velvoitteitaan (väitettynä tai uhkaavana), todistustaakka on Kumppanilla. Toisin sanoen Winkillä on olettamuksen hyöty ja Kumppanin on esitettävä ja toimitettava riittävät ja tyydyttävät todisteet (eli ratkaisevat ja kiistattomat) puolustaakseen tai hylätäkseen vaateen.
+4.9.1 Kumppani kantaa todistustaakan mahdollisissa rikkomuksissa.
 
-4.9.2 Mikäli Winkin verkkosivusto, kampanja tai mainos linkitetään kumppanuussivustoon/-sivustoihin tai kumppanuuden kampanjaan tai mainokseen (tai päinvastoin) tai jos kumppanuus rikkoo (uhkaavasti) roskapostitussääntöjä, kumppanuuden on (i) ilmoitettava Winkille viipymättä tällaisesta (uhkaavasta) rikkomuksesta saatuaan tiedon rikkomuksesta ja (ii) Winkin ensimmäisestä pyynnöstä viipymättä pantava täytäntöön, noudatettava ja noudatettava kaikkia tässä sopimuksessa asetettuja tai Winkin pyytämiä ehtoja, rajoituksia ja kieltoja. Kumppanin on viipymättä otettava yhteyttä jokaiseen kolmannen osapuolen alustaan ​​tai kolmannen osapuolen toimijaan ja tarkistettava kumppanuussivusto(t) ja kaikki mainostekstit, otsikot, kuvaukset, avainsanat, URL-osoitteet, tekstilinkit, mainokset, mukaan lukien kaikki metatunnisteet (metaotsikot, metaavainsanat ja metakuvaukset), jotta ne ovat tämän sopimuksen ehtojen mukaisia ​​tai Winkin pyynnöstä.
+4.9.2 Kumppani ilmoittaa Winkille viipymättä rikkomuksista ja ryhtyy Winkiltä tuleviin toimenpiteisiin.
 
-4.9.3 Kumppani hyväksyy ja tiedostaa, että Winkin kohtuullisten pyyntöjen noudattamisen tai täytäntöönpanon odotettaessa tai siinä tapauksessa, että Kumppani ei viipymättä noudata kaikkia Winkin tämän kohdan 4 mukaisia ​​tai sen nojalla tekemiä pyyntöjä, Winkillä on oikeus lykätä tai keskeyttää tämän Sopimuksen mukaiset velvoitteensa (mukaan lukien Palvelun, Järjestelmän ja Wink-tietojen tarjoaminen) tai irtisanoa tämä Sopimus välittömästi, tämän kuitenkaan rajoittamatta Winkin oikeuksia tämän Sopimuksen nojalla tai muutoin.
+4.9.3 Wink voi keskeyttää tai purkaa sopimuksen, jos Kumppani ei noudata ehtoja.
 
-4.9.4 Mikäli Konserniyhtiö rikkoo tai rikkoo tässä kohdassa 4 määriteltyjä sopimuksia, sitoumuksia, rajoituksia, velvoitteita ja/tai takuita, Winkillä on oikeus käyttää seuraavia toimia ja oikeuksia, lain tai sopimuksen mukaisista oikeussuojakeinoista ja kanteista huolimatta, jotka koskevat tiettyä suoritusta, vahinkojen korvaamista tai kieltomääräystä tai kohtuullista oikeussuojaa:\
-(a) keskeyttää tämän Sopimuksen mukaiset (maksu)velvoitteensa tai irtisanoa Sopimuksen välittömästi ilman ennakkoilmoitusta Tytäryhtiölle ja rajoittamatta Winkin oikeuksia tämän Sopimuksen nojalla tai muutoin;\
-(b) Winkillä on oikeus alentaa palkkio 0 prosenttiin kaikista tehdyistä varauksista ja/tai jokaisesta toteutuneesta tapahtumasta sinä aikana, jona Kumppani rikkoo kohdassa 4 määriteltyjä asiaankuuluvia velvoitteita tai ei ole korjannut kohdassa 4 määriteltyjen asiaankuuluvien velvoitteiden rikkomustaan ​​kokonaisuudessaan;\
-(c) Wink pidättää oikeuden vaatia Kumppanilta Winkin tämän sopimuksen nojalla maksaman palkkion palauttamista; ja\
-(d) jos Samankaltaista verkkotunnusta käytetään (tai jos Kumppani omistaa tai rekisteröi verkkosivuston, jolla on (hämmentävästi) Winkin omistama tai käyttämä verkkotunnus) ja jos 4 kohtaa rikotaan toistuvasti ja/tai olennaisesti, Kumppanin on siirrettävä, luovutettava ja rekisteröitävä Samankaltainen verkkotunnus (mukaan lukien verkkosivusto(t), joilla on (hämmentävästi) Winkin omistama tai käyttämä verkkotunnus) Winkin nimiin Winkin valitseman verkkotunnusrekisteröintiyrityksen kautta 20 arkipäivän kuluessa rikkomuksen tapahtumisesta. Mikäli Kumppani ei tee yhteistyötä ja toteuta) asiaankuuluvien verkkotunnusten siirtoa, luovutusta ja omistusoikeutta, Kumppani valtuuttaa ja antaa Winkille valtakirjan allekirjoittamaan ja/tai allekirjoittamaan kaikki asiakirjat, jotka ovat välttämättömiä tai hyödyllisiä verkkotunnusten luovutuksen, rekisteröinnin, luovutuksen ja siirron yhteydessä Winkille ja Winkin nimiin.
+4.9.4 Rikkomustilanteissa Wink voi mm. keskeyttää maksut, vaatia komission palautusta ja vaatia verkkotunnusten siirtoa Winkille.
 
 **5. Komissio**
 
-5.1 Wink maksaa yhteistyökumppanille palkkion, joka on majoituspalvelun tarjoajan asettama prosenttiosuus toteutuneen tapahtuman tuottamasta varauksen arvosta. Wink käyttää kolmannen osapuolen maksupalveluntarjoajan palveluita sisään- ja ulosmaksutapahtumissa. Maksuehdot on määritelty erillisessä sopimuksessa.
+5.1 Wink maksaa Kumppanille komission, jonka prosenttiosuuden määrittää Majoituspalveluntarjoaja toteutuneen varauksen arvosta. Maksut hoidetaan kolmannen osapuolen maksupalveluntarjoajan kautta.
 
-5.2 Majoituspaikan tarjoaja asettaa kumppanuuspalkkioprosentin eli ACP:n. Oletusarvoinen ACP on 10 %, mutta osapuolet voivat sopia eri prosenttiosuudesta kohdan 1.2.3 mukaisesti.
+5.2 Komission prosenttiosuuden määrittää Majoituspalveluntarjoaja. Oletuksena 10 %, mutta osapuolet voivat sopia toisin.
 
-5.3 Palkkio maksetaan seuraavan kaavan mukaisesti:
+5.3 Komissio lasketaan kaavalla:
 
-Komissio = BV \* ACP\
-Maksettu nettopalkkio (maksu) = Palkkio - PSF - BF
+Komissio = Varausarvo * Komission prosenttiosuus  
+Maksettu nettokomissio = Komissio - Maksupalvelumaksu - Varausmaksu
 
-**"BV"**&#x74;arkoittaa varauksen arvoa\
-**"AKT"**&#x74;arkoittaa kumppanuuspalkkioprosenttia\
-**"BF"**&#x74;arkoittaa varausmaksua (1,5 %)\
-**"PSF"**&#x74;arkoittaa maksupalvelumaksuja (4 %)
+5.4 Wink seuraa kaikkia tapahtumia ja pyrkii varmistamaan niiden oikeellisuuden. Kumppanilla ei ole korvausvaatimuksia, ellei kyseessä ole törkeä huolimattomuus tai petos.
 
-5.4 Wink seuraa kaikkia tapahtumia ja ryhtyy kaupallisesti kohtuullisiin toimiin varmistaakseen, että kaikki toteutuneet tapahtumat seurataan, raportoidaan ja maksetaan. Winkin tiedot ovat kuitenkin lopullisia, eikä Kumppanilla ole oikeutta korvata menetettyjä tuloja tai vahinkoja, jos Wink ei seuraa tai raportoi Kumppanin Lähtöjä tarkasti, paitsi jos Wink on syyllistynyt törkeään väärinkäytökseen tai petolliseen toimintaan. Jälkimmäisiä tapauksia lukuun ottamatta Kumppanin ainoa keino on irtisanoa tämä sopimus ja lopettaa osallistumisensa ohjelmaan.
+5.5 Nettokomissio on Kumppanin ainoa korvaus tämän sopimuksen perusteella. Kumppani tarkistaa maksut ja ilmoittaa virheistä viipymättä. Vaatimuksia ei hyväksytä 90 päivän jälkeen.
 
-5.5 Määritelty nettopalkkio on ainoa korvaus, jonka Kumppanilla on oikeus saada tämän sopimuksen nojalla. Kumppanilla ei ole oikeutta muihin etuihin. Winkin vastuulla on tarkistaa nettopalkkiomaksujen oikeellisuus ennen maksun suorittamista, ja Kumppanin vastuulla on tarkistaa kaikki nettopalkkiomaksut niiden vastaanottamisen jälkeen ja ilmoittaa viipymättä väitetyistä virheistä. Kumpikaan osapuoli ei voi esittää vaatimuksia yli- tai alimaksuista yhdeksänkymmenen (90) kalenteripäivän kuluessa maksun eräpäivästä. Kaikki tilaukset edellyttävät Winkin hyväksyntää varauspyynnön tekohetkellä voimassa olevien käytäntöjensä mukaisesti. Winkin käytännöt voivat muuttua ilman erillistä ilmoitusta.
+5.6 Wink pitää kirjaa tapahtumista ja tarjoaa Kumppanille analytiikkaa ja raportteja. Jos Wink epäonnistuu kirjanpidossa, Kumppanin ainoa oikeus on sopimuksen päättäminen.
 
-5.6 Wink pyrkii kaupallisesti kohtuullisin keinoin tarkastamaan kaikki tämän sopimuksen piiriin kuuluvat tapahtumat. Wink tarjoaa yhteistyökumppanille pääsyn analytiikkaan ja koontinäyttöön, jossa on yhteenveto kaikista tulevista ja vanhentuneista varauksista. Yhteistyökumppanilla on myös pääsy maksuraportteihin, jotka näyttävät ennustetut tulot ja maksuhistorian. Jos Wink ei pidä tarkkaa kirjanpitoa tai suorita tarkastusta, yhteistyökumppanin ainoa keino on irtisanoa tämä sopimus ja lopettaa osallistumisensa ohjelmaan.
+**6. Vakuutukset ja takuut**
 
-**6. Vakuutukset ja vakuutukset.**
+**6.1 Kumppanin vakuutukset**
 
-**6.1 Tytäryhtiöiden takuut**
+Kumppani vakuuttaa Winkille, että sopimuksen voimassaoloaikana:  
+(i) Kumppanilla on kaikki oikeudet ja valtuudet ylläpitää verkkosivustoaan ja käyttää Linkkiä, Mikrosivustoa tai Yhteyttä;  
+(ii) Kumppanin verkkosivusto ei sisällä sopimatonta, laitonta tai loukkaavaa sisältöä eikä se esitä olevansa osa Winkia;  
+(iii) Kumppani ei käytä petollisia mainosmenetelmiä eikä harhaanjohtavia keinoja liikenteen ohjaamiseksi Wink-verkkosivustoille tai muihin Wink-konsernin sivustoihin;  
+(iv) Kumppanilla on kaikki tarvittavat luvat ja viranomaisluvat liiketoiminnan harjoittamiseen;  
+(v) Kumppani toimii itsenäisenä yrittäjänä ja vastaa omista veroistaan ja sosiaaliturvamaksuistaan.
 
-Kumppani täten vakuuttaa Winkille, että tämän sopimuksen voimassaoloaikana:\
-(i) Kumppanilla on kaikki tarvittavat oikeudet, omistusoikeus, valta ja valtuutus omistaa, ylläpitää ja käyttää Kumppanin verkkosivustoa/-sivustoja (mukaan lukien asiaankuuluvat verkkotunnukset) ja sisällyttää Linkki, Mikrosivusto tai Yhteys (soveltuvin osin) Kumppanin verkkosivustolle/-sivustoille;\
-(ii) Yhteistyökumppanin verkkosivusto(t) ei saa (a) harjoittaa Black Hat -taktiikkaa, rikkoa roskapostitusmääräyksiä, yleistä politiikkaa ja moraalia tai (b) sisältää tai näyttää sopimatonta, virheellistä tai laitonta sisältöä, viittauksia, materiaalia, tietoa, linkkejä tai bannereita (esim. pornografian, rasismin ja vastaavien osalta), herjaavia lausuntoja, elementtejä, jotka loukkaavat kolmansien osapuolten yksityisyyttä tai ovat loukkaavia, loukkaavia tai säädyttömiä, (c) kopioida tai muistuttaa Wink-verkkosivuston tai minkään Wink-konsernin tai tytäryhtiön verkkosivuston ulkoasua ja käyttökokemusta tai luoda vaikutelmaa, että se on osa Wink-verkkosivustoa tai mitään Wink-konsernin tytäryhtiöiden verkkosivustoa; (d) yllyttää syrjintään rodun, sukupuolen, uskonnon, kansallisuuden, vammaisuuden, seksuaalisen suuntautumisen tai iän perusteella; (e) edistää tai harjoittaa laitonta toimintaa; (f) loukata kolmansien osapuolten immateriaalioikeuksia; (g) sisältää tai edistää harhaanjohtavia tietoja tai edistää uhkapelejä; tai (h) muutoin olla luonteeltaan sopimattomia. Edellä mainittujen määräysten rikkominen voi johtaa yhteistyökumppanin välittömään erottamiseen ohjelmasta ja kaikkien erääntyneiden maksujen menettämiseen.\
-(iii) Kumppani ei saa käyttää saalistushinnoittelua edistäviä mainontamenetelmiä, joiden tarkoituksena on ohjata liikennettä pois Winkin tai sen lähipiiriin kuuluvien yritysten omistamilta tai ylläpitämiltä verkkosivustoilta, mukaan lukien rajoituksetta Wink.com (ja kaikki sen paikalliset versiot riippumatta siitä, mikä on ylätason verkkotunnus), priceline.com, rentalcars.com (ja kaikki sen paikalliset versiot riippumatta siitä, mikä on ylätason verkkotunnus), www.booking.com, www.kayak.com, Wink (ja kaikki sen paikalliset versiot riippumatta siitä, mikä on ylätason verkkotunnus), www.opentable.com (ja kaikki sen paikalliset versiot riippumatta siitä, mikä on ylätason verkkotunnus) sekä kaikki muut Winkin ajoittain ilmoittamat verkkosivustot. Lisäksi Kumppanin on kiellettävä Kumppanin hallinnoimia verkkosivustoja käyttämästä tällaisia ​​saalistushinnoittelua edistäviä mainontamenetelmiä. Saalistushinnoittelulla tarkoitetaan mitä tahansa menetelmää, joka luo tai lisää linkkejä tai bannereita verkkosivustoille, avaa selainikkunoita tai mitä tahansa menetelmää, joka on keksitty liikenteen ohjaamiseksi verkkosivustolta ilman kyseisen verkkosivuston omistajan tietoa, lupaa ja osallistumista. Esimerkkejä ovat muun muassa avainsanoja jäsentävät selainlaajennukset, kuten Text Enhance, TopText ja +Surf, bannereiden korvausteknologia, kuten Gator, verkkosivustosta riippumaton selaimen käynnistysteknologia sekä Wink Marksin käyttö hakukoneiden mainosteksteissä (esim. Google AdWords, Yahoo! Search Marketing,...) tai vastaavissa ja yleisesti ottaen kaikki muut menetelmät, jotka voisivat harhaanjohtavasti antaa potentiaalisille asiakkaille kuvan, että heidät ohjataan Wink-verkkosivustolle. Edellä mainittujen ehtojen rikkominen voi johtaa yhteistyökumppanin välittömään erottamiseen ohjelmasta ja kaikkien maksamatta olevien maksujen menettämiseen.\
-(iv) Konserniyhtiöllä on hallussaan ja se on noudattanut kaikkia lupia, lisenssejä ja muita viranomaisten myöntämiä valtuutuksia, jotka ovat tarpeen sen toiminnan ja liiketoiminnan harjoittamiseksi, suorittamiseksi ja jatkamiseksi, ja\
-(v) Konserniyhtiö on itsenäinen urakoitsija kaikissa tarkoituksissa ja on vastuussa omista veroistaan, sosiaalimaksuistaan ​​ja kaikista muista veroihin liittyvistä asioista.
+**6.2 Osapuolten vakuutukset**
 
-**6.2 Osapuolten takuut ja sitoumukset**
+6.2.1 Molemmat osapuolet vakuuttavat, että heillä on valtuudet ja oikeudet tehdä ja noudattaa tätä sopimusta.
 
-6.2.1 Kumpikin osapuoli vakuuttaa toiselle osapuolelle, että tämän sopimuksen voimassaoloaikana:\
-(i) sillä on täydet yhtiövaltuudet ja -oikeudet tehdä tämän sopimuksen mukaisia ​​velvoitteitaan ja täyttää ne;\
-(ii) se on ryhtynyt kaikkiin sen edellyttämiin yritysvastuullisiin toimiin tämän sopimuksen allekirjoittamisen ja täytäntöönpanon valtuuttamiseksi;\
-(iii) tämä sopimus muodostaa kyseisen osapuolen oikeudellisesti päteviä ja sitovia velvoitteita sen ehtojen mukaisesti.
+6.2.2 Osapuolet suojaavat verkkosivustojaan kohtuullisin toimin.
 
-6.2.2 Kumpikin osapuoli pyrkii kaupallisesti kohtuullisin keinoin suojaamaan verkkosivustoaan (verkkosivustojaan).
+6.2.3 Kumppani ei maksa lahjuksia tai muita etuja viranomaisille tai muille tahoille sopimuksen vastaisesti. Rikkomus oikeuttaa Winkin purkamaan sopimuksen välittömästi.
 
-6.2.3 Yhteistyökumppani vakuuttaa ja takaa, ettei se suorita tai tarjoa suoritettavaksi mitään maksua, lahjaa tai minkään arvokkaan omaisuuden siirtoa: (i) millekään virkamiehelle tai valtion työntekijälle (mukaan lukien valtion omistamien yksiköiden tai yritysten työntekijät) tai heidän käyttöönsä tai hyödykseen; tai (ii) millekään poliittiselle puolueelle (mukaan lukien sen virkamiehet tai ehdokkaat); (iii) millekään kaupalliselle taholle, henkilölle tai yhteisölle; tai (iv) välittäjälle maksua varten millekään edellä mainituista, tarkoituksena saada vastaanottaja tekemään tai jättämään tekemättä teon, joka rikkoo vastaanottajan laillista velvollisuutta hankkia tai säilyttää liiketoimintaa tai varmistaa mikä tahansa epäasianmukainen etu; tai tarkoituksena saada vastaanottaja suorittamaan virheellisesti asiaankuuluvaa tehtävää tai toimintaa, joka liittyy mihin tahansa Winkin puolesta tai Winkin etujen mukaisesti tässä sopimuksessa tarkoitettuun toimintaan. Jos Yhteistyökumppani rikkoo tätä ehtoa, Winkillä on oikeus irtisanoa tämä sopimus välittömästi.
-
-6.2.4 Yllä olevan kohdan 6.2.3 noudattamisen määrittämiseksi Winkillä on oikeus omalla kustannuksellaan suorittaa paikan päällä tarkastus ja tilintarkastus kaikille Kumppanin asiaankuuluville kirjanpito- ja myyntikirjoille, asiakirjoille, sopimuksille, tiloille, tietokonejärjestelmille, sopimuksille ja asiakirjoille Kumppanin toimistojen tavanomaisten aukioloaikojen puitteissa ja tavalla, joka ei kohtuuttomasti häiritse Kumppanin normaalia liiketoimintaa. Tällaisia ​​tarkastuksia ei saa suorittaa useammin kuin kaksi kertaa kahdentoista (12) kuukauden välein.
+6.2.4 Winkillä on oikeus tarkastaa Kumppanin kirjanpito ja sopimukset enintään kahdesti vuodessa.
 
 **6.3 Vastuuvapauslauseke**
 
-6.3.1 Ellei tässä sopimuksessa nimenomaisesti toisin määrätä, kumpikaan Osapuoli ei anna mitään nimenomaista tai epäsuoraa vakuutusta tai takuuta tämän sopimuksen kohteeseen liittyen ja kiistää täten kaikki epäsuorat takuut, mukaan lukien kaikki epäsuorat takuut myyntikelpoisuudesta tai soveltuvuudesta tiettyyn tarkoitukseen kyseisen kohteen osalta. Wink tarjoaa Palvelun "sellaisenaan" ja "saatavuuden mukaan" eikä takaa käyttöaikaa.
+6.3.1 Sopimuksen mukaisesti kumpikaan osapuoli ei anna muita takuita kuin tässä sovitut. Wink tarjoaa Palvelun "sellaisena kuin se on" eikä takaa jatkuvaa saatavuutta.
 
-6.3.2 Kumpikin osapuoli tunnustaa internetin käyttöön liittyvät vaikeudet, erityisesti vaihtelevat nopeudet ja verkon ruuhkautuminen, jotka voivat aiheuttaa keskeytyksiä ja vaikeuksia verkkosivuston käytössä. Kumpikin osapuoli ei ole vastuussa toista osapuolta kohtaan mistään verkkosivustojen, myyjäportaalin, järjestelmän ja/tai palvelun (tilapäisestä (suunnitellusta tai suunnittelemattomasta) ja/tai osittaisesta tai täydellisestä) toimintahäiriöstä tai käyttökatkoksesta (ylläpidon, päivitysten tai muun vuoksi).
+6.3.2 Osapuolet ymmärtävät internetin käytön haasteet, kuten yhteyksien katkokset, eivätkä vastaa niistä.
 
-**7. Korvaukset ja vastuu**
+**7. Vahingonkorvaukset ja vastuu**
 
 **7.1 Vahingonkorvaus**
 
-Sovellettavan lain sallimissa rajoissa sitoudut vapauttamaan, puolustamaan (Winkin valinnan mukaan), korvaamaan ja pitämään Winkin ja kaikki sen Majoituspalvelujen tarjoajat ja tytäryhtiöt sekä niiden toimihenkilöt, johtajat, työntekijät ja edustajat vahingoittumattomina kaikista vaatimuksista, vastuista, vahingoista, menetyksistä ja kuluista, mukaan lukien rajoituksetta kohtuulliset laki- ja kirjanpitokulut, jotka johtuvat tai liittyvät millään tavalla (i) näiden Ehtojen rikkomiseen; (ii) Palveluiden virheelliseen käyttöön; (iii) laiminlyöntiisi tai meidän laiminlyöntiimme sinun ohjeistasi verojen tarkasta ilmoittamisessa, keräämisessä tai maksamisessa; tai (iv) lakien, asetusten tai kolmansien osapuolten oikeuksien rikkomiseen.
+Sovellettavan lain sallimissa rajoissa Kumppani vapauttaa, puolustaa ja korvaa Winkia ja sen tytäryhtiöitä kaikista vaatimuksista, vahingoista ja kuluista, jotka johtuvat Kumppanin sopimusrikkomuksista, palvelun väärinkäytöstä, verojen virheellisestä raportoinnista tai lakien rikkomisesta.
 
 **7.2 Vastuun enimmäismäärä**
 
-Ellei tässä sopimuksessa toisin määrätä, osapuolen enimmäisvastuu kaikista toisen osapuolen tätä sopimusta vastaan ​​esittämistä vaatimuksista vuoden aikana ei saa ylittää kyseisen osapuolen edeltävien kuuden kuukauden aikana saamaa tai maksamaa palkkiota yhteensä tai 10 000 Yhdysvaltain dollaria (kumpi on suurempi), ellei kyseessä ole Korvaavan osapuolen petos tai tahallinen väärinkäytös, jolloin vastuunrajoitus ei sovellu kyseiseen vastuulliseen osapuoleen.
+Sopimuksen mukaisesti osapuolen vastuu rajoittuu kuuden kuukauden komissioiden summaan tai 10 000 USD:iin, ellei kyseessä ole petos tai tahallinen väärinkäytös.
 
 **7.3 Kolmannen osapuolen vaatimus**
 
-Kolmannen osapuolen esittämän vaatimuksen sattuessa korvauksenhaltijan on ilmoitettava siitä viipymättä toiselle osapuolelle, ja osapuolten on toimittava vilpittömässä mielessä ja pyrittävä kaupallisesti kohtuullisiin keinoihin neuvotellakseen, tehdäkseen yhteistyötä ja avustaakseen toisiaan tällaisen vaatimuksen puolustamisessa ja/tai sovittelussa, kun taas korvauksenhaltijalla on oikeus ottaa vaatimus haltuunsa ja hoitaa puolustus ja sovinto (neuvoteltuaan ja suostuttuaan korvauksenhaltijan kanssa ja ottaen asianmukaisesti huomioon molempien osapuolten edut), eikä kumpikaan osapuoli saa myöntää mitään, jättää asiakirjoja, suostua tuomion antamiseen tai tehdä mitään kompromissia tai sovintoa ilman toisen osapuolen etukäteen antamaa kirjallista suostumusta (jota ei saa kohtuuttomasti evätä, viivyttää tai asettaa ehtoja).
+Osapuolet ilmoittavat toisilleen viipymättä kolmannen osapuolen vaatimuksista ja toimivat yhteistyössä niiden käsittelemiseksi.
 
-**7.4 Vastuusta luopuminen välillisistä vahingoista yms.**
+**7.4 Seuraamusten poissulkeminen**
 
-Missään tapauksessa kumpikaan osapuoli ei ole vastuussa toiselle osapuolelle mistään tuotannonmenetyksestä, voitonmenetyksestä, tulonmenetyksestä, sopimuksen menetyksestä, liikearvon tai maineen menetyksestä tai vahingoittumisesta, korvausvaatimusten menetyksestä tai mistään epäsuorista, erityisistä, rankaisevista, satunnaisista tai välillisistä vahingoista tai menetyksistä riippumatta siitä, johtuvatko tällaiset vahingot sopimusrikkomuksesta, oikeudenloukkauksesta tai muusta syystä. Kaikista tällaisista vahingoista ja menetyksistä luovutaan täten nimenomaisesti.
+Kumpikaan osapuoli ei ole vastuussa välillisistä, erityisistä tai rangaistavista vahingoista, kuten tuotannon menetyksestä tai maineen vahingoittumisesta.
 
 **7.5 Sopimussakko**
 
-Rajoittamatta tämän sopimuksen muiden kohtien määräyksiä, sekä Kumppani että Wink sopivat, että tämän sopimuksen kohdissa 4 ja 10 esitettyjen immateriaalioikeuksia ja luottamuksellisuutta koskevien määräysten olennaisesta rikkomisesta aiheutuneiden todellisten vahinkojen määrän määrittäminen voi olla epäkäytännöllistä ja vaikeaa. Siksi osapuolet sopivat, että jos Kumppanin todetaan rikkoneen näitä määräyksiä, Kumppanin on maksettava Winkille sopimussakkona kaksikymmentäviisituhatta Yhdysvaltain dollaria (25 000 USD) jokaisesta rikkomuksesta. Kumppani ja Wink sopivat lisäksi, että nämä sopimussakkomääräykset edustavat kohtuullista korvausta Winkille tällaisesta rikkomuksesta aiheutuvasta alkuperäisestä tappiosta. Kumppani hyväksyy myös, että mikään tässä määräyksessä ei rajoita Winkin oikeutta saada kieltomääräyksiä ja muita asianmukaisia ​​oikeussuojakeinoja. Tämä määräys ei myöskään rajoita Winkin oikeutta vaatia lisä- ja/tai kumulatiivisia korvauksia tämän (jos vahinko todistettavasti ylittää sopimussakon määrän) tai minkään muun tämän sopimuksen määräyksen rikkomisesta.
+Immateriaalioikeuksien ja salassapitosäännösten rikkomisesta Kumppani maksaa Winkille 25 000 USD sakkoa rikkomusta kohden. Tämä ei rajoita Winkille kuuluvia muita oikeuksia.
 
-8. **Muutos, voimassaoloaika ja irtisanominen**
+**8. Muutokset, voimassaolo ja irtisanominen**
 
-**8.1 Muutos.**
+**8.1 Muutokset**
 
-Ellei sovellettava laki toisin määrää, Wink voi muuttaa näitä Ehtoja milloin tahansa. Jos teemme olennaisia ​​muutoksia näihin Ehtoihin, julkaisemme tarkistetut ehdot Wink-alustalla ja päivitämme "Viimeksi päivitetty" -päivämäärän näiden Ehtojen yläreunassa. Jos muutos vaikuttaa sinuun, ilmoitamme sinulle muutoksista myös vähintään kolmekymmentä (30) päivää ennen niiden voimaantulopäivää. Jos et irtisano sopimustasi ennen tarkistettujen Ehtojen voimaantulopäivää, Palveluiden käytön jatkaminen katsotaan tarkistettujen Ehtojen muutosten hyväksymiseksi.
+Wink voi muuttaa näitä ehtoja milloin tahansa. Materiaalisista muutoksista ilmoitetaan vähintään 30 päivää etukäteen. Jos Kumppani ei irtisano sopimusta ennen muutosten voimaantuloa, muutokset hyväksytään.
 
-**8.2 Termi**
+**8.2 Voimassaolo**
 
-Ellei toisin sovita, tämä sopimus tulee voimaan tämän päivämäärän ja on voimassa toistaiseksi.
+Sopimus alkaa allekirjoituspäivästä ja on voimassa toistaiseksi.
 
-8.3.1 Kumpikin osapuoli voi irtisanoa tämän sopimuksen välittömästi milloin tahansa ja mistä tahansa syystä ilmoittamalla siitä kirjallisesti toiselle osapuolelle.
+8.3.1 Kumpi tahansa osapuoli voi irtisanoa sopimuksen välittömästi kirjallisella ilmoituksella.
 
-8.3.2 Kumpikin osapuoli voi irtisanoa tämän sopimuksen tai keskeyttää sen voimassaolon toisen osapuolen osalta välittömästi ja ilman sopimusrikkomusilmoitusta, jos:\
-(a) toisen osapuolen olennainen rikkomus mitä tahansa tämän sopimuksen ehtoa vastaan;\
-(b) (hakemuksen jättäminen) konkurssiin tai maksun keskeyttämiseen (tai vastaavaan toimenpiteeseen) toista Osapuolta kohtaan, tai\
-(c) toisen Osapuolen määräysvallan (suora tai epäsuora) muutos.
+8.3.2 Sopimus voidaan purkaa tai keskeyttää välittömästi, jos toinen osapuoli rikkoo sopimusta olennaisesti, menee konkurssiin tai sen hallinta muuttuu.
 
-8.3.3 Wink pidättää oikeuden irtisanoa tämän sopimuksen ilman erillistä ilmoitusta, jos kuuden peräkkäisen kuukauden aikana ei ole tapahtunut toteutuneita tapahtumia.
+8.3.3 Wink voi purkaa sopimuksen ilman ilmoitusta, jos kuuden kuukauden aikana ei ole tapahtunut toteutuneita varauksia.
 
-8.3.4 Tämän sopimuksen irtisanomisen jälkeen Wink jatkaa Kumppanille maksamatta olevien palkkioiden maksamista kolmen kuukauden ajan irtisanomispäivästä edellyttäen, että Winkillä on Kumppanin oikeat yhteys- ja pankkitiedot kyseisenä aikana. Jos Kumppani ei vaadi maksamatonta palkkiota kyseisen kolmen kuukauden kuluessa, tämä laiminlyönti katsotaan Kumppanin oikeudesta vaatia kyseistä palkkiota luopumiseksi. Rajoittamatta tässä sopimuksessa muualla määrättyjä palkkioiden vähentämistä, keskeyttämistä tai menettämistä koskevia määräyksiä, kaikki maksamatta olevat palkkiot menetetään, jos Kumppani on syyllistynyt tahalliseen väärinkäytökseen, törkeään huolimattomuuteen, petokseen tai olennaiseen tämän sopimuksen rikkomiseen.
+8.3.4 Sopimuksen päättyessä Wink maksaa Kumppanille maksamattomat komissiot kolmen kuukauden ajalta, edellyttäen, että yhteystiedot ovat ajan tasalla. Maksamattomat komissiot menetetään, jos Kumppani on syyllistynyt tahalliseen väärinkäytökseen.
 
-8.3.5 Irtisanomisen jälkeen ja ellei toisin määrätä, tämä Sopimus päättyy ehdottomasti ja kokonaan ja lakkaa olemasta voimassa rajoittamatta Osapuolen oikeuksia ja oikeussuojakeinoja toisen Osapuolen vahingonkorvausvelvollisuuden tai Sopimuksen rikkomisen osalta. Kohdat 4.1.2, 4.1.5, 4.1.6, 4.1.7, 4.2, 4.3, 4.4.1, 4.9.4(c), 9 ja 10 jäävät voimaan Sopimuksen irtisanomisen jälkeen.
+8.3.5 Sopimuksen päättyessä Kumppani poistaa kaikki linkit ja viittaukset Winkiin.
 
-8.3.6 Irtisanomisen tultua voimaan, Yhteistyökumppani poistaa välittömästi kaikki linkit Wink-verkkosivustoille, kaiken Winkiin liittyvän sisällön, linkit, bannerit, logot ja muut viittaukset Winkiin.
-
-**9. Kirjanpito, asiakirjat ja tilintarkastusoikeus**
+**9. Kirjanpito, tiedot ja tarkastusoikeus**
 
 **9.1 Järjestelmät**
 
-Winkin kirjanpitoa ja tietoja (mukaan lukien Extranet ja/tai sähköpostit) pidetään ratkaisevana todisteena tämän sopimuksen nojalla Kumppanille kuuluvan palkkion määrästä.
+Winkin kirjanpito on lopullinen todiste Kumppanille maksettavasta komissiosta.
 
 **9.2 Tarkastusoikeudet**
 
-Jos Winkillä on vilpittömässä mielessä syytä uskoa, että Kumppani on rikkonut 4 kohdan mukaisia ​​velvoitteitaan, Wink voi tarkastaa kyseiset Kumppanin kirjanpidon ja kirjanpidon tiedot Kumppanin 4 kohdan mukaisten velvoitteiden todentamiseksi, tarkastelemiseksi ja (soveltuvin osin) tutkimiseksi seuraavien mukaisesti:\
-(a) Osapuolet nimittävät viipymättä riippumattoman, molempien osapuolten kohtuullisesti hyväksymän tilintarkastajan ("Tilintarkastaja"), jolla on lupa suorittaa tilintarkastus aliyhtiölle/tytäryhtiöille maksettavan palkkion (menetelmän ja laskentatavan) osalta.\
-(b) Osapuolet antavat tilintarkastajalle kaikki sellaiset tiedot, datan, yhteistyön, avun ja pääsyn kirjanpitoon, asiakirjoihin, tiedostoihin ja papereihin sekä sähköisesti tallennettuihin tietoihin, joita tilintarkastaja kohtuudella pyytää tehtävänsä suorittamiseksi ajallaan.\
-(c) Tilintarkastaja toimittaa molemmille osapuolille kopion raportistaan ​​("Raportti"), jossa esitetään tarkastuksen tulokset ja havainnot.\
-(d) Tarkastukset suoritetaan arkipäivisin normaaleina aukioloaikoina.\
-(e) Wink vastaa tilintarkastajan kustannuksista ja kuluista, ellei tilintarkastaja kohtuullisuuden ja tasapuolisuuden perusteella toisin päätä.
+Wink voi tarkastaa Kumppanin kirjanpidon ja sopimukset varmistaakseen sopimuksen ehtojen noudattamisen. Tarkastukset tehdään kohtuullisesti ja Wink maksaa tarkastuksen kustannukset, ellei toisin todeta.
 
-10. **Lahjonnan torjunta, kaupan rajoitukset ja liiketoimintaetiikka.**
+**10. Lahjonnan ehkäisy, kaupparajoitukset ja liiketoiminnan etiikka**
 
-Wink soveltaa nollatoleranssia kansainvälisten kauppanormien, lahjonnan ja korruption vastaisen lainsäädännön sekä sovellettavien kauppaa, varainsiirtoja ja terrorismin rahoitusta koskevien rajoitusten rikkomuksiin.\
-Tytäryhtiö takaa, että se noudattaa ja tulee noudattamaan, ja sen Lähipiirit noudattavat ja tulevat noudattamaan Winkin toimittajien käytännesääntöjä.\
-Kumppani vakuuttaa, takaa ja sitoutuu noudattamaan kaikilta osin kaikkia kansainvälisiä kauppanormeja ja sovellettavia kauppaa, varojen virtausta, terrorismin rahoitusta sekä lahjonnan ja korruption vastaista lainsäädäntöä, mukaan lukien, mutta ei rajoittuen, Yhdistyneen kuningaskunnan lahjontalaki 2010 ja Singaporen korruption vastainen laki.\
-Kumppani takaa, että sen parhaan tietämyksen mukaan sitä tai sen Lähipiiriä ei ole tuomittu lahjontaan tai korruptioon liittyvästä rikoksesta, eikä niitä tutkita mikään valtion, hallinnon tai sääntelyelin.
+Wink noudattaa nollatoleranssia lahjontaan, korruptioon ja kansainvälisen kaupan rajoituksiin. Kumppani sitoutuu noudattamaan Winkin toimittajien eettisiä ohjeita ja kaikkia sovellettavia lakeja, mukaan lukien UK Bribery Act 2010 ja Singapore Prevention of Corruption Act. Kumppani vakuuttaa, ettei se tai sen yhteydessä toimivat ole syyllistynyt lahjontaan tai korruptioon.
 
-**11. Luottamuksellisuus**
+**11. Salassapito**
 
 **11.1 Luottamukselliset tiedot**
 
-Osapuolet ymmärtävät ja sopivat, että tätä sopimusta täyttäessään kumpikin osapuoli voi päästä käsiksi toisen osapuolen luottamuksellisiin ja arkaluonteisiin tietoihin ("Luottamukselliset tiedot") tai joutua niiden kohteeksi suoraan tai epäsuorasti. Luottamuksellisia tietoja ovat asiakastiedot, tapahtumamäärät, markkinointi- ja liiketoimintasuunnitelmat, liiketoiminta-, talous-, tekniset ja operatiiviset tiedot, käyttötilastot, sijoitustiedot, tiedot hinta-, tuote- ja saatavuuspariteetista, hinnoittelukäytännöistä, konversiotiedot ja klikkausmääristä sekä muut asiaan liittyvät tilastot, vieraiden henkilötiedot, kaikki Winkin tämän sopimuksen yhteydessä toimittamat tai käyttämät ohjelmistot tai tiedot ohjelmistoista, tämän sopimuksen ehdot sekä muut sellaiset ei-julkiset tiedot, jotka joko luovuttava osapuoli nimeää yksityisiksi tai luottamuksellisiksi tai joiden vastaanottavan osapuolen tulisi kohtuudella tietää olevan yksityisiä ja luottamuksellisia.
+Osapuolet voivat saada tietoonsa toistensa luottamuksellisia tietoja, kuten asiakastietoja, liiketoimintasuunnitelmia, teknisiä tietoja, henkilökohtaisia tietoja ja muuta ei-julkista tietoa.
 
-**11.2 Luottamuksellisten tietojen suojaaminen ja turvaaminen**
+**11.2 Luottamuksellisuuden suojaaminen**
 
-Kumpikin Osapuoli sopii, että: (a) kaikki Luottamukselliset Tiedot pysyvät luovuttavan Osapuolen yksinomaisena omaisuutena, eikä vastaanottava Osapuoli saa käyttää Luottamuksellisia Tietoja mihinkään muuhun tarkoitukseen kuin tämän Sopimuksen edistämiseksi, (b) sen on ylläpidettävä Luottamuksellisten Tietojen luottamuksellisuutta ja salassapitoa sekä käytettävä varovaisia ​​menetelmiä varmistaakseen, että sen työntekijät, toimihenkilöt, edustajat, sopimuspuolet ja asiamiehet ("Luvalla olevat Henkilöt") säilyttävät tämän, (c) se paljastaa Luottamuksellisia Tietoja vain Luvalla oleville Henkilöille ja joiden on tiedettävä tällaiset tiedot tämän Sopimuksen edistämiseksi, (d) se ei saa ja sen on käytettävä varovaisia ​​menetelmiä varmistaakseen, että Luvalla olevat Henkilöt eivät (i) kopioi, julkaise, lähetä, jäljennä, paljasta, paljasta tai aseta Luottamuksellisia Tietoja kolmansien osapuolten saataville tai (ii) käytä tai tallenna niitä suojaamattomaan hakujärjestelmään tai tietokantaan (muuten kuin tämän Sopimuksen ehtojen mukaisesti), ja (e) se palauttaa tai tuhoaa kaikki Luottamukselliset Tiedot ((paperi- ja pehmeät) kopiot) toisen Osapuolen kirjallisesta pyynnöstä. Mikäli jompikumpi osapuoli käsittelee henkilötietoja toisen osapuolen puolesta osana tämän sopimuksen mukaisten palvelujen tarjoamista, osapuolet sääntelevät tällaista käsittelyä tietojenkäsittelysopimuksella (DPA), ja se muodostaa osan tämän sopimuksen ehtoja.
+Osapuolet sitoutuvat pitämään tiedot salassa, käyttämään niitä vain sopimuksen toteuttamiseen, rajoittamaan tiedon jakamista tarpeellisille henkilöille ja palauttamaan tai tuhoamaan tiedot pyynnöstä.
 
-**11.3 Sallittu luovutus**
+**11.3 Sallittu paljastaminen**
 
-Edellä esitetystä huolimatta luottamuksellisiin tietoihin ei sisälly mitään tietoja siltä osin kuin ne (i) ovat tai tulevat osaksi julkista omaisuutta vastaanottavan osapuolen teon tai laiminlyönnin seurauksena, (ii) olivat vastaanottavan osapuolen hallussa ennen tämän sopimuksen päivämäärää, (iii) ne luovuttaa vastaanottavalle osapuolelle kolmas osapuoli, jolla ei ole salassapitovelvollisuutta niiden suhteen, tai (iv) ne on luovutettava lain, tuomioistuimen määräyksen, haasteen tai viranomaisen viranomaisen nojalla. Winkillä on oikeus luovuttaa tämä sopimus luottamuksellisesti konserniyhtiöilleen.
+Luottamukselliset tiedot eivät sisällä tietoja, jotka ovat julkisia, vastaanottajalla ennestään, kolmannen osapuolen paljastamia ilman salassapitovelvoitetta tai lain vaatimuksia.
 
 **11.4 Asiakastiedot**
 
-Osapuolet ryhtyvät kaupallisesti kohtuullisiin toimiin Asiakkaan tietojen luottamuksellisuuden ja yksityisyyden suojaamiseksi sekä niiden suojaamiseksi luvattomalta käytöltä tai luovuttamiselta. Osapuolet sopivat noudattavansa sovellettavia henkilötietojen käsittelyä ja yksityisyyden suojaa koskevia lakeja. Osapuolet käyttävät aina kohtuullisia ja asianmukaisia ​​turvatoimia estääkseen Asiakkaan tietojen korruptoitumisen ja luvattoman käytön. Tällaisia ​​toimenpiteitä ovat muun muassa tietojen salaus ja kanavan salaus. Tarvittaessa Tytäryhtiön on ilmoitettava Winkille kaikista tietoturvaloukkauksista mahdollisimman pian (viimeistään 1 päivän kuluessa rikkomuksen havaitsemisesta). Kummallakin osapuolella on oltava asiakkaiden saatavilla tietosuojakäytäntö, jossa kuvataan, miten se suojaa ja käyttää Asiakkaan tietoja.
+Osapuolet suojaavat asiakastietoja ja noudattavat sovellettavia tietosuojalakeja. Kumppani ilmoittaa Winkille tietoturvaloukkauksista viipymättä.
 
 **11.5 Tiedotteet**
 
-Kumpikaan osapuoli ei saa luoda, julkaista, levittää tai sallia mitään kirjallista materiaalia, jossa viitataan toiseen osapuoleen, toimittamatta ensin kyseistä materiaalia toiselle osapuolelle ja saamatta jääneen osapuolen etukäteistä kirjallista suostumusta. Tätä suostumusta ei saa kohtuuttomasti evätä tai viivyttää.
+Kumpikaan osapuoli ei julkaise toistaan koskevia tiedotteita ilman toisen kirjallista suostumusta.
 
-11.6 Kumpikin osapuoli voi ottaa yhteyttä toisen osapuolen tietosuojavastaavaan (DPO) seuraavien sähköpostiosoitteiden ja/tai postiosoitteiden kautta: dataprotectionofficer@Wink.travel
+11.6 Osapuolet voivat ottaa yhteyttä toistensa tietosuojavastaaviin osoitteessa dataprotectionofficer@Wink.travel
 
-12. **Allekirjoitusoikeus – tytäryhtiön edustus ja allekirjoitus**
+**12. Allekirjoitusoikeus – Kumppanin edustus ja allekirjoitus**
 
-Kumppani takaa, että sillä, tämän sopimuksen allekirjoittavalla henkilöllä ja/tai kenellä tahansa muulla henkilöllä, joka toimittaa Winkille tietoja (mukaan lukien epäselvyyksien välttämiseksi kaikki maksuehdot) tämän sopimuksen yhteydessä tai sen nojalla, on oikeus, kelpoisuus ja tarvittava toimivalta allekirjoittaa tämä sopimus ja että tällaisella henkilöllä on oikeus, kelpoisuus ja tarvittava toimivalta sitoa Kumppani tähän sopimukseen ja että hän noudattaa ja suorittaa tämän sopimuksen mukaisia ​​velvoitteitaan koko sopimuskauden ajan ja varmistaa, että Kumppani noudattaa ja suorittaa tämän sopimuksen mukaisia ​​velvoitteitaan.\
-Kumppani nimenomaisesti hyväksyy, että tämän sopimuksen ja sen ehtojen, mukaan lukien muutosten, sähköinen hyväksyntä on pätevä, sitova ja täytäntöönpanokelpoinen.
+Kumppani vakuuttaa, että sillä ja sopimuksen allekirjoittajalla on valtuudet sitoutua sopimukseen. Kumppani hyväksyy sähköisen hyväksynnän sitovana.
 
-13. **Kieli**
+**13. Kieli**
 
-Tämän sopimuksen englanninkielinen versio on määräävä kaikilta osin ja on ensisijainen mahdollisten ristiriitaisuuksien ilmetessä käännettyjen versioiden kanssa.
+Sopimuksen englanninkielinen versio on ratkaiseva mahdollisissa ristiriitatilanteissa.
 
-14. **Poikkeusluvat**
+**14. Luopumiset**
 
-Mitään tämän sopimuksen rikkomuksesta tai ehdosta luopumista ei katsota luopumiseksi mistään muusta tai myöhemmästä rikkomuksesta tai ehdosta, olipa se luonteeltaan samanlainen tai erilainen.
+Yhden rikkomuksen luopuminen ei tarkoita muiden rikkomusten hyväksymistä.
 
-**15. Erillisyys**
+**15. Osittainen pätemättömyys**
 
-Jos toimivaltainen viranomainen, tuomioistuin tai muu lainkäyttöalue katsoo jonkin tämän sopimuksen määräyksen laittomaksi, pätemättömäksi tai muuten täytäntöönpanokelvottomaksi kansallisen lainsäädännön nojalla, kyseistä määräystä tulkitaan, muutetaan tai poistetaan siinä määrin kuin on tarpeen kyseisen määräyksen ja/tai tämän sopimuksen tekemiseksi lailliseksi, päteväksi tai muuten täytäntöönpanokelpoiseksi, ja kyseisen määräyksen jäljellä oleva osa ja muut tämän sopimuksen määräykset pysyvät täysin voimassa ja sitovina, ja niitä tulkitaan siten, että ne vastaavat osapuolten tarkoitusta mahdollisimman täysimääräisesti.
+Jos jokin sopimuksen kohta todetaan pätemättömäksi, se korvataan laillisella ja pätevällä ehdolla, ja muu sopimus pysyy voimassa.
 
-**16. Osapuolten välinen suhde**
+**16. Osapuolten suhde**
 
-Osapuolet ovat itsenäisiä urakoitsijoita ja toimivat itsenäisinä urakoitsijoina tätä sopimusta täyttäessään. Kumpikaan osapuoli ei toimi eikä sitä pidetä toisen osapuolen edustajana tai kumppanina missään tarkoituksessa, eikä kummallakaan osapuolella ole oikeutta sitoa toista osapuolta millään tavalla.
+Osapuolet ovat itsenäisiä toimijoita eivätkä toistensa edustajia tai kumppaneita.
 
-**17. Tehtävä**
+**17. Siirto**
 
-Kummallakaan osapuolella ei ole oikeutta siirtää tai rasittaa mitään tämän sopimuksen mukaisia ​​oikeuksiaan ja/tai velvoitteitaan ilman toisen osapuolen etukäteistä kirjallista suostumusta, edellyttäen, että Wink voi siirtää tai rasittaa mitä tahansa tämän sopimuksen mukaisia ​​oikeuksiaan ja/tai velvoitteitaan (kokonaan tai osittain tai ajoittain) konserniyhtiölle ilman konsernin tytäryhtiön etukäteistä kirjallista suostumusta.\
-Tämä sopimus on tehty osapuolten ja heidän seuraajiensa ja sallittujen oikeudenomistajiensa hyväksi, eikä mikään tässä sopimuksessa ole tarkoitettu eikä tule epäsuorasti antamaan kenellekään muulle henkilölle mitään laillista tai kohtuullista oikeutta, etua tai oikeussuojakeinoa tämän sopimuksen nojalla tai sen perusteella, ellei tässä sopimuksessa nimenomaisesti toisin mainita.
+Osapuoli ei saa siirtää oikeuksiaan tai velvoitteitaan ilman toisen kirjallista suostumusta, paitsi Wink voi siirtää oikeuksiaan konsernin sisällä.
 
-18. **Ylivoimainen este.**
+**18. Force Majeure**
 
-Wink.travel ei ole vastuussa mistään viivästyksestä tai näiden ehtojen mukaisten velvoitteiden täyttämättä jättämisestä, joka johtuu Winkin tai Wink Paymentsin kohtuullisen kontrollin ulkopuolella olevista syistä, mukaan lukien, mutta ei rajoittuen, luonnonkatastrofit, sota, terrorismi, mellakat, kauppasaarrot, siviili- tai sotilasviranomaisten toimet, tulipalot, tulvat, onnettomuudet, pandemiat, epidemiat tai taudit, lakot tai kuljetusvälineiden, polttoaineen, energian, työvoiman tai materiaalien pula ("**Ylivoimainen este**").
+Wink ei ole vastuussa viivästyksistä tai laiminlyönneistä, jotka johtuvat ylivoimaisista esteistä, kuten luonnonkatastrofeista, sodasta, terrorismista, epidemioista tai muista vastaavista.
 
-19. **Sovellettava laki ja lainkäyttöalue**
+**19. Sovellettava laki ja oikeuspaikka**
 
-Tähän sopimukseen sovelletaan yksinomaan Singaporen lakia, ja sitä tulkitaan sen mukaisesti. Sopimukseen ei sovelleta vuoden 2001 sopimuslakia (kolmansien osapuolten oikeudet) (Cap 53B). Osapuolet pyrkivät joka tapauksessa ratkaisemaan riitansa sovinnollisesti tuomioistuimen ulkopuolella käymällä ensin vilpittömiä keskusteluja ja neuvotteluja.\
-Tästä sopimuksesta johtuvat tai siihen liittyvät riidat käsitellään yksinomaan Singaporen toimivaltaisessa tuomioistuimessa lainvalintasäännöistä riippumatta.\
-peruuttamattomasti luopuu oikeudestaan ​​vastustaa kanteen nostamista kyseisissä tuomioistuimissa, väittää, että kanne on nostettu epämukavassa oikeuspaikassa, tai väittää, että kyseisillä tuomioistuimilla ei ole toimivaltaa.
+Sopimukseen sovelletaan Singaporen lakia. Riidat pyritään ratkaisemaan sovinnollisesti, ja ne käsitellään Singaporen toimivaltaisessa tuomioistuimessa.
 
-20. **Vastakappaleet.**
+**20. Allekirjoituskopiot**
 
-Tämä sopimus voidaan allekirjoittaa kappaleina, joista kutakin (allekirjoituksen jälkeen) pidetään alkuperäisenä ja jotka yhdessä muodostavat yhden ja saman asiakirjan. Lisäksi kaikilla Winkin kirjallisen allekirjoituksen skannatuilla/sähköisillä kopioilla on sama ja yhtäläinen vaikutus kuin Winkin alkuperäisellä käsin kirjoitetulla allekirjoituksella, eikä niillä ole vaikutusta tämän sopimuksen pätevyyteen.
+Sopimus voidaan allekirjoittaa useina kopioina, jotka yhdessä muodostavat yhden asiakirjan. Skannattu tai sähköinen allekirjoitus on yhtä pätevä kuin alkuperäinen.
 
-21. **Koko sopimus**
+**21. Koko sopimus**
 
-Tämä sopimus (mukaan lukien kumppanuuskumppanin rekisteröintilomake, liitteet ja lisäykset, jotka ovat olennainen osa tätä sopimusta) muodostaa osapuolten koko sopimuksen ja yhteisymmärryksen sen kohteesta ja korvaa kaikki aikaisemmat sopimukset, järjestelyt, ((ei)sitovat) tarjoukset, sitoumukset tai lausunnot kyseisestä kohteesta.\
-Jos jokin tämän sopimuksen määräys on tai tulee pätemättömäksi tai sitomattomaksi, osapuolet pysyvät sidottuina kaikkiin muihin tämän sopimuksen määräyksiin. Tässä tapauksessa osapuolet korvaavat pätemättömän tai sitomattoman määräyksen määräyksillä, jotka ovat päteviä ja sitovia ja joilla on mahdollisimman pitkälti samanlainen vaikutus kuin pätemättömällä tai sitomattomalla määräyksellä, ottaen huomioon tämän sopimuksen sisällön ja tarkoituksen.
+Tämä sopimus ja siihen liitetyt asiakirjat muodostavat koko osapuolten välisen sopimuksen ja korvaavat aiemmat sopimukset.
 
-22. **Suoritus**
+**22. Voimaantulo**
 
-Sopimus tulee voimaan vasta, kun Wink on kirjallisesti vahvistanut hyväksyvänsä kumppanin. Rekisteröitymällä ja liittymällä Winkin kumppaniohjelmaan kumppanina kumppani hyväksyy tämän sopimuksen ehdot, mukaan lukien sopimuksen muutoksiin liittyvät määräykset.\
-Kumppani on lukenut sopimuksen ja hyväksynyt kaikki ehdot. Kumppani ymmärtää, että Wink voi milloin tahansa (suoraan tai epäsuorasti) pyytää asiakassuosituksia ehdoilla, jotka voivat poiketa tässä sopimuksessa olevista ehdoista, tai ylläpitää verkkosivustoja, jotka ovat samankaltaisia ​​tai kilpailevat yhteistyökumppanin verkkosivuston kanssa. Kumppani on itsenäisesti arvioinut ohjelmaan osallistumisen toivottavuutta eikä luota mihinkään muuhun kuin tässä sopimuksessa esitettyyn vakuutukseen, takuuseen tai lausuntoon. Kumppani nimenomaisesti hyväksyy, että tämän sopimuksen ja sen ehtojen, mukaan lukien muutoksiin liittyvien ehtojen, sähköinen hyväksyminen on pätevä, sitova ja täytäntöönpanokelpoinen.
+Sopimus tulee voimaan, kun Wink hyväksyy Kumppanin kirjallisesti. Kumppani on lukenut ja hyväksynyt ehdot, mukaan lukien muutokset. Kumppani ymmärtää, että Wink voi toimia eri ehdoilla tai kilpailla Kumppanin kanssa.
 
-23. **Ilmoitukset**
+**23. Ilmoitukset**
 
-Kaikkien osapuolen tämän sopimuksen mukaisten ilmoitusten on oltava englanniksi, kirjallisia ja toimitettava henkilökohtaisesti maksettuna ja kirjattuna kirjeenä tai kansainvälisesti tunnustetun pikakuriirin (esim. FedEx, UPS, DHL) välityksellä rekisteröityyn toimipaikkaan tai sähköpostitse yhteyshenkilölle.\
-Tämän sopimuksen mukainen ilmoitus katsotaan vastaanotetuksi, (i) jos se on toimitettu henkilökohtaisesti, vastaanottokuittauksen allekirjoituksella tai (ii) jos se on toimitettu ennakkoon maksetulla kirjatulla kirjeellä, vastaanottotodistuksella; tai (iii) jos se on toimitettu kuriirin välityksellä, kyseisen kuriirin kirjattuna toimituspäivänä; (iv) jos se on toimitettu sähköpostitse, edellyttäen, että vastaanottokuittaus toimitetaan.
-
+Kaikki ilmoitukset tehdään englanniksi kirjallisesti ja toimitetaan henkilökohtaisesti, kirjattuna postina tai sähköpostitse. Ilmoitus katsotaan vastaanotetuksi, kun se on toimitettu vastaanottajalle.

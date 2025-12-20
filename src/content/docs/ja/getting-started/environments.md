@@ -1,41 +1,41 @@
 ---
-title: Environments
-description: この記事には、テスターと開発者向けに、さまざまなサーバー環境にアクセスする方法に関する情報が記載されています。
+title: 環境
+description: 本記事は、テスターや開発者向けに、当社のさまざまなサーバー環境へのアクセス方法についての情報を含んでいます。
 sidebar:
   order: 8
 ---
-Wink では、あらゆる作業に対して常に 2 つの環境を実行しています。
 
-* 生産は私たちの安定した環境です。
-* ステージングは、認証およびテスト環境です。
+Winkでは、常にすべての作業に対して2つの環境を運用しています：
 
-認定の準備や Wink プラットフォームのテストを希望するインテグレーター、ホテル、旅行代理店の場合は、ステージング環境でアカウントを作成して開始してください。
+- Productionは安定した環境です。
+- Stagingは認証およびテスト用の環境です。
+
+認証準備やWinkプラットフォームのテストを希望するインテグレーター、ホテル、旅行代理店の方は、まずstaging環境でアカウントを作成してください。
 
 :::note
-ステージング環境はリクエストベースで利用可能です。つまり、使用されていない場合はスリープ状態になり、使用があれば自動的に再起動します。ステージング環境を起動する場合は、しばらくお待ちください。弊社のサーバーまたはアプリのいずれかに初めて接続してから、すべてのサーバーが起動するまで約1分かかります。
+staging環境はリクエストベースで利用可能です。つまり、使用がない場合はスリープ状態になり、使用があると自動的に再起動します。起動時は少しお待ちください。最初にサーバーやアプリのいずれかに接続してから、すべてのサーバーが起動するまで約1分かかります。
 :::
 
 ## サーバー
 
-以下は、当社のサーバーの名前とその使用状況を示すマトリックスです。
+以下は、当社のサーバー名とその用途を示したマトリックスです。
 
-| 機能 | ステージング | 本番環境
+| 機能 | Staging | Production
 | ------- | ------- | ---------- |
-| IAM | https://staging-iam.wink.travel | https://iam.wink.travel |
-| インベントリ | https://staging-api.wink.travel | https://api.wink.travel |
-| 統合 | https://staging-integrations.wink.travel | https://integrations.wink.travel |
-| 支払い | https://staging-api.trippay.io | https://api.trippay.io |
+| IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
+| Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
+| Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Payment | https://staging-api.trippay.io | https://api.trippay.io | 
 
 ## アプリケーション
 
-当社のアプリケーションには、お客様向けのテスト環境と実稼働環境もあります。
+当社のアプリケーションも、お客様向けにテスト環境と本番環境を用意しています。
 
-| アプリケーション | ステージング | プロダクション
+| アプリケーション | Staging | Production
 | ------- | ------- | ---------- |
-| エージェント | https://staging-agent.wink.travel | https://agent.wink.travel |
-| コーポレート | https://staging-group.wink.travel | https://group.wink.travel |
-| エクストラネット | https://staging-extranet.wink.travel | https://extranet.wink.travel |
-| お支払い | https://staging-pay.wink.travel | https://pay.wink.travel |
-| スタジオ | https://staging-studio.wink.travel | https://studio.wink.travel |
+| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| Corporate | https://staging-group.wink.travel | https://group.wink.travel | 
+| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
+| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
-

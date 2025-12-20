@@ -1,69 +1,69 @@
 ---
-title: Localization
-description: 'Šajā rakstā ir paskaidrots, kā mēs pārvaldām lokalizāciju pakalpojumā Wink.'
+title: Lokalizācija
+description: Šis raksts izskaidro, kā mēs pārvaldām lokalizāciju Wink.
 sidebar:
   order: 7
 ---
-Šajā rakstā ir paskaidrots, kā mēs pārvaldām lokalizāciju pakalpojumā Wink.
+
+Šis raksts izskaidro, kā mēs pārvaldām lokalizāciju Wink.
 
 ## Atbalstītās valodas
 
 Wink atbalsta šādas valodas:
 
-* Angļu
-* Indonēzijas valoda
-* Malaizijas valoda
-* Čilgarski
-* Katalā
-* Čeština
-* Dāņu
-* Vācu valoda
-* Igaunija
-* Spāņu valoda
-* Spāņu (AR)
-* Spāņu (MX)
-* Filipīniešu
-* Somija
-* Franču
-* Elīlanieka
-* עברית
-* हिन्दी
-* Hrvatski
-* Magyar
-* Íslenska
-* Itāļu
-* 日本語
-* 한국어
-* Latviski
-* Lietuviešu
-* Nīderlandiešu
-* Norvēģu
-* Poļu
-* Portugāļu (BR)
-* Portugāļu (PT)
-* Romāniju
-* Krievu
-* Slovēņu
-* Slovēņu
-* Serbu
-* Zviedru
-* ภาษาไทย
-* Türkçe
-* Ukraņska
-* Tiếng Việt
-* العربية
-* 简体中文
-* 繁體中文
+- Angļu
+- Bahasa Indonesia
+- Bahasa Malaysia
+- Български
+- Català
+- Čeština
+- Dansk
+- Deutsch
+- Eesti
+- Español
+- Español (AR)
+- Español (MX)
+- Filipino
+- Suomi
+- Français
+- Ελληνικά
+- עברית
+- हिन्दी
+- Hrvatski
+- Magyar
+- Íslenska
+- Italiano
+- 日本語
+- 한국어
+- Latviski
+- Lietuvių
+- Nederlands
+- Norsk
+- Polski
+- Português (BR)
+- Português (PT)
+- Română
+- Русский
+- Slovenčina
+- Slovenščina
+- Srpski
+- Svenska
+- ภาษาไทย
+- Türkçe
+- Українська
+- Tiếng Việt
+- العربية
+- 简体中文
+- 繁體中文
 
-## Platformas līmeņa
+## Platformas līmenī
 
-Visas mūsu lietotnes ir lokalizētas, lai atbalstītu visas iepriekš minētās valodas. Katrai lietotnei lapas apakšdaļā ir valodas atlasītājs, no kura lietotājs var izvēlēties vēlamo valodu. Rezervēšanas sistēma atbalsta arī vēlamās valodas nodošanu, izmantojot URL.
+Visas mūsu lietotnes ir lokalizētas, lai atbalstītu visas iepriekš minētās valodas. Katras lietotnes lapas apakšā ir valodas izvēlne, no kuras lietotājs var izvēlēties sev vēlamo valodu. Rezervēšanas dzinējs arī atbalsta vēlamās valodas nodošanu caur URL.
 
-## Lietotāju ģenerēts saturs
+## Lietotāju radītais saturs
 
-Lietotāju ģenerēts saturs ir lokalizēts, lai atbalstītu visas iepriekš minētās valodas. Lietotāji var izvēlēties izveidot satura versiju angļu valodā un ļaut Wink paveikt pārējo. Vai arī viņi var pārvaldīt konkrētu valodu kopu, lai iegūtu lielāku kontroli, un ļaut Wink paveikt pārējo.
+Lietotāju radītais saturs ir lokalizēts, lai atbalstītu visas iepriekš minētās valodas. Lietotāji var izvēlēties izveidot satura angļu versiju un ļaut Wink parūpēties par pārējo. Vai arī viņi var pārvaldīt konkrētu valodu kopumu, lai iegūtu lielāku kontroli, un ļaut Wink parūpēties par pārējo.
 
-## Atrunas
+## Brīdinājumi
 
-Noklusējuma valoda ir angļu. Ja vien nav norādīts citādi, kad lietotājs izmantos jebkuru no mūsu lietotnēm, mēs vispirms izmantosim noklusējuma valodu. Mēs neiestatām aktīvo valodu, pamatojoties uz lietotāja pārlūkprogrammas lokalizāciju.
-
+Noklusējuma valoda ir angļu. Ja nav norādīts citādi, mēs vispirms izmantosim noklusējuma valodu, kad lietotājs izmanto kādu no mūsu lietotnēm. Mēs neiestatām aktīvo valodu, pamatojoties uz lietotāja pārlūkprogrammas lokalizāciju.

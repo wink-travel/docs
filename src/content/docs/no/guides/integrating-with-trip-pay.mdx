@@ -1,43 +1,40 @@
 ---
 title: Integrering med TripPay
-description: >-
-  Denne artikkelen inneholder et fullstendig eksempel på hvordan du integrerer
-  med TripPay og lar den håndtere betalingen for deg.
+description: Denne artikkelen inneholder et fullstendig eksempel på hvordan du integrerer med og lar TripPay håndtere betalingen for deg.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Denne artikkelen inneholder et komplett eksempel på hvordan man integrerer med TripPay.
+Denne artikkelen inneholder et komplett eksempel på hvordan du integrerer med TripPay.
 
 Det anbefales at du allerede har lest:
 
-* [Betaling > Kartlegging](/payment/mapping).
-* [Betaling > Integrasjon](/payment/integration).
-* [Betalingsnettkomponent](/developers/web-components/#payment).
-* [Betalings-API](/developers/apis/#payment-api).*Les avsnittet om`Create payable contracts`*
+- [Payment > Mapping](/no/payment/mapping).
+- [Payment > Integration](/no/payment/integration).
+- [Payment Web Component](/no/developers/web-components/#payment).
+- [Payment API](/no/developers/apis/#payment-api). *Les seksjonen om `Create payable contracts`*
 
-Her er trinnene for å bruke TripPay til å betale for en bestilling:
+Her er stegene for å bruke TripPay til å betale for en booking:
 
 <Steps>
-  1. Sørg for at mottakerne du nevner i bestillingskontrakten er kartlagt.
-  2. La den reisende velge hvilket inventar de ønsker å bestille, og la dem gjøre seg klare til å betale.
-  3. Opprett en `payable contract` med TripPay som inneholder varene som skal bestilles.
-  4. La den reisende betale ved hjelp av TripPay-webkomponenten.
+1. Sørg for at mottakerne du nevner i bookingkontrakten er kartlagt.
+2. La reisende velge inventaret de ønsker å booke og forbered dem på å betale.
+3. Opprett en `payable contract` med TripPay som inneholder elementene som skal bookes.
+4. La den reisende betale ved å bruke TripPay Web Component.
 </Steps>
 
+Vi antar at du allerede har fullført `Steg 1` og `Steg 2` og er klar til å informere TripPay om bookingen.
 
-Vi antar at du allerede har fullført`Step 1`og`Step 2`og er klare til å gi TripPay beskjed om bestillingen.
+## Opprett payable contract
 
-## Opprett betalingskontrakt
-
-:::merknad
-Gå til betalings-API-et for å lære mer om kravene for å opprette en betalbar kontrakt.
+:::note
+Gå til Payment API for å lære mer om kravene for å opprette en payable contract.
 :::
 
 ### Forespørsel
-
-Her er en JSON-eksempelforespørsel som inneholder alt du trenger for å opprette din første betalbare kontrakt.
+Her er et JSON-eksempel på en forespørsel som inkluderer alt du trenger for å opprette din første payable contract.
 
 ```json {3-6, 8-9}
 {
@@ -132,44 +129,45 @@ Her er en JSON-eksempelforespørsel som inneholder alt du trenger for å opprett
 
 Forklaring:
 
-Vi kommer ikke til å forklare alle datapunktene her, da de allerede er dekket i API-dokumentasjonen.
+Vi forklarer ikke hvert datapunkt her da de allerede er dekket i API-dokumentasjonen.
 
-* Linjer:**2–7**er brukeren som er ansvarlig for bestillingen. Det finnes to typer bestillere:
-  * Reisende.
-  * Reisebyrå.
-* Linjer:**8–9**Er TripPay-kontoen som tilrettelegger bestillingen? Det kan være:
-  * Din TripPay-integratorkonto.
-  * Hvis du driver et affiliate-nettverk, kan det være din affiliate.
-* Bruk en`traceId`å gruppere flere bestillinger på tvers av flere leverandører. På denne måten kan du avbryte en gruppebestilling.
-* `redirectUrl`lar TripPay vite hvilken side den skal omdirigere til etter at betalingen er fullført.
-* `sourceUrl`er nettstedet/appen bestillingen ble gjort på.
+- Linjer: **2 - 7** er brukeren som er ansvarlig for bookingen. Det finnes to typer bookere:
+    - Reisende.
+    - Reisebyrå.
+- Linjer: **8 - 9** er TripPay-kontoen som fasiliterer bookingen. Det kan være:
+    - Din TripPay integratorkonto.
+    - Hvis du driver et affiliate-nettverk, kan det være din affiliate.
+- Bruk en `traceId` for å gruppere flere bookinger på tvers av flere leverandører. På denne måten kan du kansellere en gruppebooking.
+- `redirectUrl` forteller TripPay hvilken side den skal videresende til etter at betalingen er fullført.
+- `sourceUrl` er nettstedet / appen bookingen ble gjort på.
 
-Den`contractList`Matrisen inneholder varen(e) den reisende ønsker å kjøpe fra flere leverandører. Hver vare inneholder:
+`contractList`-arrayet inneholder elementet/elementene den reisende ønsker å kjøpe fra flere leverandører. Hvert element inneholder:
 
-* Den`identifier`er en gyldig UUID du genererer.
-* Leverandøren du ønsker å bestille lagerbeholdning fra.
-* Varelageret du ønsker å bestille fra den leverandøren. Alt dette er spesifisert i den nestede tabellen.`contractItemList`.
-* Hver oppføring under`contractItemList`inneholder:
-  * **Gjestebruker**Dette er brukeren som skal ankomme lokalene.
-  * **Navn på engelsk**Navnet på inventaret på engelsk.
-  * **Beskrivelse på engelsk**En lengre beskrivelse av inventaret på engelsk.
-  * **Pris**Prisen på varen.
-  * **Reiserute**Når denne varen skal bestilles.
-  * **Pristype**Hvordan prisen ble beregnet.
-  * **Lagertype**Hva slags varelager dette er.
-  * **Som skal betales**Når den reisende skal belastes.*Vi støtter for øyeblikket bare umiddelbare betalingsalternativer.*
-  * **Politikk**Inkluder regler for avbestillingsregler.
-  * **Daglig prisliste**Hvis varen som bestilles er et rom, kan du velge å inkludere hvor mye rommet kostet for hver natt gjesten bor.
-  * **Mottakere**Oppgi hvilke TripPay-kontoer som skal tildeles hvilke beløp av varens pris.*Faste beløp / prosentbeløp støttes.*
+- `identifier` er en gyldig UUID du genererer.
+- Leverandøren du ønsker å booke inventar fra.
+- Inventaret du ønsker å booke fra den leverandøren. Disse er alle spesifisert i den nestede arrayen `contractItemList`.
+- Hver oppføring under `contractItemList` inneholder:
+    - **Gjeste-bruker** Dette er brukeren som skal ankomme stedet.
+    - **Navn på engelsk** Navnet på inventaret på engelsk.
+    - **Beskrivelse på engelsk** En lengre beskrivelse av inventaret på engelsk.
+    - **Pris** Prisen på elementet.
+    - **Reiserute** Når dette elementet skal bookes.
+    - **Pristype** Hvordan prisen ble kalkulert.
+    - **Inventartype** Hvilken type inventar dette er.
+    - **Betalbar** Når den reisende skal belastes. *Vi støtter for øyeblikket kun umiddelbare betalingsalternativer.*
+    - **Policy** Inkluder regler for avbestillingspolicy.
+    - **Daglig prisliste** Hvis elementet som bookes er et rom, kan du velge å inkludere hvor mye rommet koster for hver natt gjesten bor.
+    - **Mottakere** Inkluder hvilke TripPay-konto(er) som skal tildeles hvilke beløp av prisen på elementet. *Faste / prosentandeler støttes.*
 
-:::merknad
-I JSON-eksemplet ovenfor har vi tre mottakere:
+:::note
+I JSON-eksemplet over har vi 3 mottakere:
 
-* 1,5 % ble tildelt plattformen som tilrettela bestillingen.*f.eks. Blunk*
-* 9,85 % ble tildelt affiliaten som provisjon.*f.eks. Kim Kardashian*
-* 88,65 % ble tildelt leverandøren for bestilling av rommet.*f.eks. Hilton*
+- 1,5 % ble tildelt plattformen som fasiliterte bookingen. *f.eks. Wink*
+- 9,85 % ble tildelt affiliaten som provisjon. *f.eks. Kim Kardashian*
+- 88,65 % ble tildelt leverandøren for bookingen av rommet. *f.eks. Hilton*
 
-Når TripPay svarer med en betalbar kontrakt, vil du legge merke til at de har tilført sin egen mottaker 4,0 %. :::
+Når TripPay svarer med en payable contract, vil du merke at den har lagt til sin egen mottaker på 4,0 %.
+:::
 
 ### Svar
 
@@ -207,19 +205,18 @@ Når TripPay svarer på forespørselen din, vil det se omtrent slik ut:
 ]
 ```
 
-Lagre`id`på linje 3. Du skal bruke dette til å sette det inn i TripPay-webkomponenten.
+Lagre `id` på linje 3. Denne skal du bruke for å injisere i TripPay webkomponenten.
 
-## Bygg inn TripPay
+## Integrer TripPay
 
-:::merknad
-Sørg for at du har lastet inn stilene og Javascript-filen vår på forhånd.
+:::note
+Sørg for at du har lastet inn våre stiler og Javascript på forhånd.
 :::
 
-På dette tidspunktet er du klar til å legge inn`Payment Web Component`inn på nettstedet ditt og vis det til brukeren.
+Nå er du klar til å integrere `Payment Web Component` på nettstedet ditt og vise det til brukeren.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Når det gjelder integrering, er det alt du trenger å gjøre. Alt det tunge arbeidet gjøres av TripPay fra nå av.
-
+Når det gjelder integrasjon, er dette alt du trenger å gjøre. Alt det tunge arbeidet gjøres av TripPay herfra.

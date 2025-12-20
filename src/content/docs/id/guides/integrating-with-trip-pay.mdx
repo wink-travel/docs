@@ -1,43 +1,40 @@
 ---
 title: Integrasi dengan TripPay
-description: >-
-  Artikel ini berisi contoh lengkap tentang cara berintegrasi dan membiarkan
-  TripPay menangani pembayaran untuk Anda.
+description: Artikel ini berisi contoh lengkap cara mengintegrasikan dan membiarkan TripPay menangani pembayaran untuk Anda.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Artikel ini berisi contoh menyeluruh tentang cara berintegrasi dengan TripPay.
+Artikel ini berisi contoh menyeluruh tentang cara mengintegrasikan dengan TripPay.
 
-Disarankan agar Anda sudah membaca:
+Disarankan Anda sudah membaca:
 
-* [Pembayaran > Pemetaan](/payment/mapping).
-* [Pembayaran > Integrasi](/payment/integration).
-* [Komponen Web Pembayaran](/developers/web-components/#payment).
-* [API Pembayaran](/developers/apis/#payment-api).*Baca bagian tentang`Create payable contracts`*
+- [Payment > Mapping](/id/payment/mapping).
+- [Payment > Integration](/id/payment/integration).
+- [Payment Web Component](/id/developers/web-components/#payment).
+- [Payment API](/id/developers/apis/#payment-api). *Baca bagian tentang `Create payable contracts`*
 
-Berikut langkah-langkah untuk berhasil menggunakan TripPay untuk membayar pemesanan:
+Berikut adalah langkah-langkah untuk berhasil menggunakan TripPay untuk membayar pemesanan:
 
 <Steps>
-  1. Pastikan penerima manfaat yang Anda sebutkan dalam kontrak pemesanan telah dipetakan.
-  2. Biarkan wisatawan memilih inventaris yang ingin mereka pesan dan biarkan mereka bersiap membayar.
-  3. Membuat sebuah `payable contract` dengan TripPay yang berisi item yang akan dipesan.
-  4. Biarkan wisatawan membayar menggunakan Komponen Web TripPay.
+1. Pastikan penerima manfaat yang Anda sebutkan dalam kontrak pemesanan sudah dipetakan.
+2. Biarkan pelancong memilih inventaris yang ingin mereka pesan dan bersiap untuk membayar.
+3. Buat `payable contract` dengan TripPay yang berisi item yang akan dipesan.
+4. Biarkan pelancong membayar menggunakan TripPay Web Component.
 </Steps>
 
+Kami mengasumsikan Anda sudah menyelesaikan `Langkah 1` dan `Langkah 2` dan siap memberi tahu TripPay tentang pemesanan.
 
-Kami berasumsi Anda sudah menyelesaikannya`Step 1` Dan `Step 2`dan siap memberi tahu TripPay tentang pemesanan.
+## Buat payable contract
 
-## Buat kontrak yang harus dibayar
-
-:::catatan
-Buka API Pembayaran untuk mempelajari lebih lanjut tentang persyaratan untuk membuat kontrak yang dapat dibayarkan.
+:::note
+Kunjungi Payment API untuk mempelajari lebih lanjut tentang persyaratan membuat payable contract.
 :::
 
-### Meminta
-
-Berikut adalah contoh permintaan JSON yang mencakup semua yang Anda butuhkan untuk membuat kontrak pembayaran pertama Anda.
+### Permintaan
+Berikut adalah contoh permintaan JSON yang mencakup semua yang Anda butuhkan untuk membuat payable contract pertama Anda.
 
 ```json {3-6, 8-9}
 {
@@ -68,7 +65,7 @@ Berikut adalah contoh permintaan JSON yang mencakup semua yang Anda butuhkan unt
             "telephone": "+1 212 555 1212",
           },
           "nameInEnglish": "Deluxe King",
-          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "descriptionInEnglish": "Ini adalah deluxe king terbaik yang bisa dibeli dengan uang.",
           "price": {
             "amount": 100,
             "currency": "USD"
@@ -132,49 +129,49 @@ Berikut adalah contoh permintaan JSON yang mencakup semua yang Anda butuhkan unt
 
 Penjelasan:
 
-Kami tidak akan menjelaskan setiap titik data di sini karena sudah tercakup dalam dokumen API.
+Kami tidak akan menjelaskan setiap titik data di sini karena sudah dibahas dalam dokumen API.
 
-* Garis:**2 - 7**adalah pengguna yang bertanggung jawab atas pemesanan. Ada dua jenis pemesan:
-  * Wisatawan.
-  * Agen perjalanan.
-* Garis:**8 - 9**adalah akun TripPay yang memfasilitasi pemesanan. Bisa berupa:
-  * Akun integrator TripPay Anda.
-  * Jika Anda menjalankan jaringan afiliasi, itu bisa menjadi afiliasi Anda.
-* Gunakan`traceId`untuk mengelompokkan beberapa pemesanan di beberapa pemasok. Dengan cara ini Anda dapat membatalkan pemesanan grup.
-* `redirectUrl`memungkinkan TripPay mengetahui halaman mana yang akan diarahkan setelah pembayaran selesai.
-* `sourceUrl`adalah situs/aplikasi tempat pemesanan terjadi.
+- Baris: **2 - 7** adalah pengguna yang bertanggung jawab atas pemesanan. Ada dua jenis pemesan:
+    - Pelancong.
+    - Agen perjalanan.
+- Baris: **8 - 9** adalah akun TripPay yang memfasilitasi pemesanan. Bisa berupa:
+    - Akun integrator TripPay Anda.
+    - Jika Anda menjalankan jaringan afiliasi, bisa berupa afiliasi Anda.
+- Gunakan `traceId` untuk mengelompokkan beberapa pemesanan dari beberapa pemasok. Dengan cara ini Anda dapat membatalkan pemesanan grup.
+- `redirectUrl` memberi tahu TripPay halaman mana yang harus diarahkan setelah pembayaran selesai.
+- `sourceUrl` adalah situs / aplikasi tempat pemesanan dilakukan.
 
-Itu`contractList`array berisi item yang ingin dibeli oleh wisatawan dari beberapa pemasok. Setiap item berisi:
+Array `contractList` berisi item yang ingin dibeli pelancong dari beberapa pemasok. Setiap item berisi:
 
-* Itu`identifier`adalah UUID valid yang Anda buat.
-* Pemasok tempat Anda ingin memesan inventaris.
-* Inventaris yang ingin Anda pesan dari pemasok tersebut. Semua ini ditentukan dalam array bersarang`contractItemList`.
-* Setiap entri di bawah`contractItemList`berisi:
-  * **Pengguna tamu**Ini adalah pengguna yang akan tiba di lokasi.
-  * **Nama dalam bahasa Inggris**Nama inventaris dalam bahasa Inggris.
-  * **Deskripsi dalam bahasa Inggris**Deskripsi inventaris yang lebih panjang dalam bahasa Inggris.
-  * **Harga**Harga barang.
-  * **Rencana perjalanan**Kapan barang ini harus dipesan.
-  * **Jenis harga**Bagaimana harga dihitung.
-  * **Jenis inventaris**Jenis inventaris apa ini?
-  * **Dapat dibayar**Kapan wisatawan harus dikenakan biaya.*Saat ini kami hanya mendukung opsi pembayaran langsung.*
-  * **Kebijakan**Sertakan aturan kebijakan pembatalan.
-  * **Daftar tarif harian**Jika item yang dipesan adalah kamar, Anda dapat memilih untuk menyertakan berapa biaya kamar tersebut untuk setiap malam tamu menginap.
-  * **Penerima Manfaat**Sertakan akun TripPay mana yang harus dialokasikan berapa jumlah harga barang.*Jumlah tetap/persen didukung.*
+- `identifier` adalah UUID valid yang Anda buat.
+- Pemasok yang ingin Anda pesan inventarisnya.
+- Inventaris yang ingin Anda pesan dari pemasok tersebut. Semua ini ditentukan dalam array bersarang `contractItemList`.
+- Setiap entri di bawah `contractItemList` berisi:
+    - **Pengguna tamu** Ini adalah pengguna yang akan tiba di lokasi.
+    - **Nama dalam Bahasa Inggris** Nama inventaris dalam bahasa Inggris.
+    - **Deskripsi dalam Bahasa Inggris** Deskripsi lebih panjang tentang inventaris dalam bahasa Inggris.
+    - **Harga** Harga item.
+    - **Itinerary** Kapan item ini harus dipesan.
+    - **Jenis harga** Cara harga dihitung.
+    - **Jenis inventaris** Jenis inventaris ini.
+    - **Payable** Kapan pelancong harus dikenakan biaya. *Saat ini kami hanya mendukung opsi pembayaran langsung.*
+    - **Kebijakan** Sertakan aturan kebijakan pembatalan.
+    - **Daftar tarif harian** Jika item yang dipesan adalah kamar, Anda dapat memilih untuk menyertakan berapa biaya kamar tersebut untuk setiap malam tamu menginap.
+    - **Penerima manfaat** Sertakan akun TripPay mana yang harus dialokasikan berapa jumlah dari harga item. *Jumlah tetap / persentase didukung.*
 
-:::catatan
-Dalam contoh JSON di atas, kita memiliki 3 penerima manfaat:
+:::note
+Dalam contoh JSON di atas, kami memiliki 3 penerima manfaat:
 
-* 1,5% dialokasikan ke platform yang memfasilitasi pemesanan.*misalnya Wink*
-* 9,85% dialokasikan kepada afiliasi sebagai komisi.*misalnya Kim Kardashian*
-* 88,65% dialokasikan kepada pemasok untuk pemesanan kamar.*misalnya Hilton*
+- 1,5% dialokasikan ke platform yang memfasilitasi pemesanan. *misalnya Wink*
+- 9,85% dialokasikan ke afiliasi sebagai komisi. *misalnya Kim Kardashian*
+- 88,65% dialokasikan ke pemasok untuk pemesanan kamar. *misalnya Hilton*
 
-Ketika TripPay merespons dengan kontrak yang harus dibayar, Anda akan melihat bahwa TripPay menyuntikkan penerima manfaatnya sendiri sebesar 4,0%.
+Ketika TripPay merespons dengan payable contract, Anda akan melihat bahwa mereka menyisipkan penerima manfaat mereka sendiri sebesar 4,0%.
 :::
 
-### Tanggapan
+### Respon
 
-Ketika TripPay menanggapi permintaan Anda, tampilannya akan seperti ini:
+Ketika TripPay merespons permintaan Anda, tampilannya akan seperti ini:
 
 ```json {3}
 [
@@ -208,19 +205,18 @@ Ketika TripPay menanggapi permintaan Anda, tampilannya akan seperti ini:
 ]
 ```
 
-Simpan`id`pada baris 3. Anda akan menggunakan ini untuk menyuntikkan ke komponen web TripPay.
+Simpan `id` pada baris 3. Anda akan menggunakannya untuk disisipkan ke dalam TripPay web component.
 
 ## Sematkan TripPay
 
-:::catatan
-Pastikan Anda telah memuat gaya dan Javascript kami sebelumnya.
+:::note
+Pastikan Anda sudah memuat style dan Javascript kami sebelumnya.
 :::
 
-Pada titik ini, Anda siap untuk menanamkan`Payment Web Component`ke situs web Anda dan menunjukkannya kepada pengguna.
+Pada titik ini, Anda siap untuk menyematkan `Payment Web Component` ke situs web Anda dan menampilkannya kepada pengguna.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Sejauh menyangkut integrasi, itu saja yang perlu Anda lakukan. Semua pekerjaan berat dilakukan oleh TripPay mulai sekarang.
-
+Sejauh integrasi berjalan, itu saja yang perlu Anda lakukan. Semua pekerjaan berat dilakukan oleh TripPay mulai dari sini.

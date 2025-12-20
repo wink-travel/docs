@@ -1,22 +1,22 @@
 ---
-title: Mis on agent?
-description: 'Siit saate teada, kuidas Wink toetab registreeritud reisibüroosid.'
+title: Mis on Agent?
+description: Õpi, kuidas Wink toetab registreeritud reisibüroosid.
 sidebar:
   order: 0
 ---
-Meie lahendus registreeritud reisibüroodele on [Wink Agent](https://agent.wink.travel) See on iseteenindusportaal, mida agendid saavad kasutada oma klientide nimel otsimiseks ja broneerimiseks ning iga broneeringu pealt vahendustasu teenimiseks.
 
-Edasijõudnumad reisibürood saavad valida API-taseme integratsiooni, et hallata makseid ja väljamakseid väljaspool Winki platvormi.
+Meie lahendus registreeritud reisibüroodele on [Wink Agent](https://agent.wink.travel). See on iseteenindusportaal, mida agentuurid saavad kasutada oma klientide nimel otsimiseks ja broneerimiseks ning teenida iga broneeringu pealt komisjonitasu.
 
-Reisibüroodel on samade portaalifunktsioonide alamhulk nagu [Wink Studio](/studio/what-is-studio) seega me neid siin uuesti ei käsitle.
+Edasijõudnud reisibürood võivad valida API-tasandi integratsiooni, et hallata makseid ja väljamakseid väljaspool Wink platvormi.
 
-## Otsi
+Reisibüroodel on osa samu portaali funktsioone nagu [Wink Studio](/et/studio/what-is-studio), seega me ei käsitle neid siin uuesti.
 
-Mine lehele [Otsi](/studio/search) et õppida hotelle otsima ja broneerima.
+## Otsing
 
-Vastasel juhul jätkake järgmise jaotisega.
+Mine lehele [Otsing](/et/studio/search), et õppida, kuidas otsida ja broneerida hotelle.
+
+Vastasel juhul jätka järgmise jaotisega.
 
 ## API
 
-Arendajad, kes soovivad hallata`Travel Agent`saab suunduda[Arendajad > API > Reisibüroo](/developers/apis/#travel-agent-api).
-
+Arendajad, kes soovivad hallata `Travel Agent` funktsiooni, saavad minna lehele [Developers > API > Travel Agent](/et/developers/apis/#travel-agent-api).

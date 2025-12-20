@@ -4,19 +4,19 @@ description: Tìm hiểu cách Wink hỗ trợ các đại lý du lịch đã đ
 sidebar:
   order: 0
 ---
-Giải pháp của chúng tôi dành cho các đại lý du lịch đã đăng ký là[Đại lý nháy mắt](https://agent.wink.travel). Đây là cổng thông tin tự phục vụ mà các đại lý có thể sử dụng để tìm kiếm và đặt chỗ thay mặt cho khách hàng và kiếm hoa hồng cho mỗi lần đặt chỗ.
 
-Các đại lý du lịch tiên tiến hơn có thể chọn tích hợp ở cấp API để xử lý thanh toán và chi trả bên ngoài nền tảng Wink.
+Giải pháp của chúng tôi dành cho các đại lý du lịch đã đăng ký là [Wink Agent](https://agent.wink.travel). Đây là một cổng tự phục vụ mà các đại lý có thể sử dụng để tìm kiếm và đặt chỗ thay mặt khách hàng của họ và kiếm hoa hồng cho mỗi lần đặt chỗ.
 
-Các đại lý du lịch có một tập hợp con các tính năng cổng thông tin giống như [Studio Nháy mắt](/studio/what-is-studio) vì vậy chúng tôi sẽ không đề cập lại ở đây nữa.
+Các đại lý du lịch có kinh nghiệm hơn có thể chọn tích hợp ở cấp độ API nhằm mục đích xử lý thanh toán và chi trả ngoài nền tảng Wink.
+
+Các đại lý du lịch có một tập hợp con các tính năng của cổng giống như [Wink Studio](/vi/studio/what-is-studio) nên chúng tôi sẽ không đề cập lại ở đây.
 
 ## Tìm kiếm
 
-Đi đến [Tìm kiếm](/studio/search) để tìm hiểu cách tìm kiếm và đặt phòng khách sạn.
+Truy cập [Tìm kiếm](/vi/studio/search) để tìm hiểu cách tìm kiếm và đặt khách sạn.
 
-Nếu không, hãy tiếp tục tới phần tiếp theo.
+Nếu không, hãy tiếp tục đến phần tiếp theo.
 
-## Giao diện lập trình ứng dụng (API)
+## API
 
-Các nhà phát triển muốn quản lý`Travel Agent`có thể đi đến[Nhà phát triển > API > Đại lý du lịch](/developers/apis/#travel-agent-api).
-
+Các nhà phát triển muốn quản lý `Travel Agent` có thể truy cập [Developers > API > Travel Agent](/vi/developers/apis/#travel-agent-api).

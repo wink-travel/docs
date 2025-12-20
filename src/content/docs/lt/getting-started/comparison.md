@@ -1,44 +1,42 @@
 ---
-title: Comparison
-description: >-
-  Sužinokite, kaip „Wink“ lyginasi su panašiomis internetinėmis kelionių
-  agentūromis ir kokie yra prisijungimo prie „Wink“ privalumai.
+title: Palyginimas
+description: Sužinokite, kaip Wink lyginamas su panašiomis internetinėmis kelionių įmonėmis ir kokie yra prisijungimo prie Wink privalumai.
 sidebar:
   order: 5
 ---
-Sužinokite, kaip „Wink“ lyginasi su kitais rinkos internetinių kelionių segmentais. Žemiau pateikiama trumpa funkcijų, kurias, mūsų manymu, buvo svarbu palyginti, analizė.
+
+Sužinokite, kaip Wink lyginamas su kitais internetinių kelionių segmentais rinkoje. Žemiau pateikiamas greitas svarbių funkcijų palyginimas.
 
 ## Funkcijų matrica
 
-| Funkcija | Mirktelėjimas | OTA | IBE | Bed Bank
-| ------------------------- | -- | -- | -- | -- |
-| Internetinė užsakymų sistema | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Vitrina su nuoroda biografijoje | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| B2B partnerių tinklas | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Kelionių agentų palaikymas | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Dirbtinio intelekto pagalba vykdomas platinimas ir rinkodara | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Socialiniai įrankiai | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| B2C kanalas be komisinių | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Nemokamas „Google“ viešbučių skelbimas | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Žiniatinklio komponentas / SDK / API prieiga | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Tiesioginiai ryšiai | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Aptariami komisiniai už kiekvieną pardavimo kanalą | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Kanalų tvarkyklė ir PMS ryšys | 🟢 | 🟢 | 🟢 | 🟢 |
-| Tiekėjas yra kliento savininkas | 🟢 | ⚫️ | 🟢 | 🟢 |
-| Investicijų grąžos stebėjimas | 🟢 | 🟢 | ⚫️ | ⚫️ |
-| Mokėjimas pagal našumą | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Integruoti mokėjimo vartai | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Išmokėjimai su „Wise“ | 🟢 | 🟢 | ⚫️ | ⚫️ |
+| Funkcija | Wink | OTA | IBE | Bed Bank
+| ----------------------- | -- | -- | -- | -- |
+| Internetinė užsakymų sistema | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Link-in-bio parduotuvė | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| B2B filialų tinklas | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Kelionių agentų palaikymas | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Dirbtiniu intelektu paremta platinimo ir rinkodaros sistema | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Socialiniams tinklams pritaikyti įrankiai | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Komisiniai nemokama B2C kanalas | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Nemokamas Google viešbučių sąrašas | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Web komponentas / SDK / API prieiga | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Tiesioginiai santykiai | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Derybiniai komisiniai pagal pardavimo kanalą | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Kanalų valdymo ir PMS jungtis | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Tiekėjas valdo klientą | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| ROI sekimas | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Mokėjimas už rezultatus | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Integruota mokėjimų sistema | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Išmokos per Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
-## „Wink“ ir interneto užsakymų sistemos (IBE) palyginimas
 
-Kai kurie viešbučiai bando mus lyginti su savo internetine rezervavimo sistema, kuri pateikiama kartu su jų kanalų valdytoju, ir prašo mūsų nustatyti fiksuotą mėnesinę kainą, pagrįstą jų objekto raktų skaičiumi.
+## Wink vs Internetinė užsakymų sistema (IBE)
 
-Mes nesame nepriklausomas britų universitetų narys ir tikimės [„Wink“ akademija](/) Tai padeda išsiaiškinti. Kiekviena paslauga turi privalumų ir trūkumų. Jei jūsų IBE tinka jūsų turtui, laikykitės jo.
+Kai kurie viešbučiai bando lyginti mus su jų internetine užsakymų sistema, kuri buvo įtraukta į jų kanalų valdymo sistemą, ir prašo pateikti fiksuotą mėnesinį mokestį, pagrįstą jų turto kambarių skaičiumi.
 
-„Wink“ egzistuoja tam, kad užpildytų kelias spragas kelionių industrijoje ir viską sujungtų į vieną vietą.
+Mes nesame IBE ir tikimės, kad [Wink Academy](/lt/) padės tai paaiškinti. Kiekviena paslauga turi savo privalumų ir trūkumų. Jei jūsų IBE tinka jūsų turtui, naudokitės juo.
+Wink egzistuoja tam, kad užpildytų kelias spragas kelionių pramonėje ir sujungtų viską vienoje vietoje.
 
 :::tip
-Jums nereikia keisti esamo IBE. Tačiau rekomenduojame išbandyti mūsų socialiniams tinklams pritaikytą užsakymų sistemą arba nuorodų tvarkyklę vienoje iš jūsų socialinės žiniasklaidos paskyrų, kad pamatytumėte, kaip jos konvertuoja. Jums nereikia mokėti nieko, jei nėra jokių užsakymų – ką galite prarasti? 😉
+Jums nereikia keisti savo esamos IBE. Tačiau rekomenduojame išbandyti mūsų socialiniams tinklams pritaikytą užsakymų sistemą arba nuorodų valdymo įrankį viename iš jūsų socialinių tinklų paskyrų, kad pamatytumėte, kaip jie konvertuoja. Jūs nieko nemokate, jei nėra užsakymų – ką galite prarasti? 😉
 :::
-

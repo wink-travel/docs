@@ -1,47 +1,47 @@
 ---
-title: Dióhéjban
-description: 'Ez a cikk mindent bemutat, amit a foglalási motorról tudni akartál.'
+title: Röviden összefoglalva
+description: Ez a cikk végigvezet mindenen, amit a foglalási motorral kapcsolatban tudni szeretnél.
 sidebar:
   order: 0
 ---
-Így szegmentáljuk a felelősséget a Wink-en:
 
-* [Extranet](/extranet/what-is-extranet) aggódik a beszállítók készletgazdálkodása miatt.
-* [Stúdió](/studio/what-is-studio) aggódik a tartalmat kezelő partnerek miatt.
-* `Booking Engine`a tartalom elkészítésével foglalkozik, amelyet a`Studio`, amely a ...-ban létrehozott leltáron alapult.`Extranet`és foglalhatóvá teszi.
-* [Fizetés](/payment/what-is-trip-pay) azzal foglalkozik, hogy felszámítsa/visszatérítse az utazóknak a \[Winkhez hasonló platformokon keresztül] foglaló utasok díjait, és fizessen az eladóknak.
+Így osztjuk meg a felelősséget a Wink-ben:
 
-A foglalási motor platformunk középpontjában áll.
+- A [Extranet](/hu/extranet/what-is-extranet) a készletet kezelő beszállítókkal foglalkozik.
+- A [Studio](/hu/studio/what-is-studio) az affiliate partnerek által kezelt tartalommal foglalkozik.
+- A `Booking Engine` azzal foglalkozik, hogy a `Studio` által létrehozott, az `Extranet` készletén alapuló tartalmat foglalhatóvá tegye.
+- A [Payment](/hu/payment/what-is-trip-pay) a foglaló utasok díjazásával / visszatérítésével, valamint a beszállítók kifizetésével foglalkozik.
 
-Feladatai közé tartozik:
+A foglalási motor a platformunk magja.
 
-* Devizák kezelése és az árfolyamok naprakészen tartása.
-* Lehetőséget adunk a díjszabási szolgáltatóknak, hogy díjszabási adatokat küldjenek nekünk.
-* Keresési adatok kezelése.*pl. régiók, országok, úti célok, ingatlanok stb.*
-* Nyelvek kezelése.
-* Analitika generálása felhasználói interakciók, események és API-hívások alapján.
-* Foglalható készlet megjelenítése a kívánt formátumban, nyelven és pénznemben, például:
-  * Egy [megosztható link](/studio/shareable-links) a Facebookon.
-  * Egy szálloda landing page a https://ota.wink.travel oldalon, a szálloda készletével.
-  * Egy [kártya](/studio/cards) partnerkészletet tartalmazó.
-  * Egy [térkép](/studio/maps) a te [térkép](/studio/maps) fiók.
-  * Egy [API-hívás](/developers/apis) egy távoli utazási irodai rendszerből.
-* Lehetőséget biztosítva az utazóknak a következőkre:
-  * Utazási készlet keresése.
-  * Elérhető készlet lefoglalása.
-  * Kezelje a[foglalások és vélemények](/booking-engine/bookings).
-  * Kezelje a [bakancslista](/booking-engine/bucket-list) a jövőben lefoglalandó dolgokról.
-  * Kezelje a[utazási profil](/booking-engine/travel-preferences).*pl. allergiák, vészhelyzet esetén értesítendő esetek stb.*
+Felelősségi körei:
 
-A foglalási motor olyan újrafelhasználható funkciók gyűjteménye, amelyeket a https://ota.wink.travel oldalon teszünk elérhetővé; ez egy nagymértékben testreszabható weboldal, ahol a szállodák és partnereik értékesíthetik termékeiket az utazóknak.
+- Pénznemek kezelése és az árfolyamok naprakészen tartása.
+- Ár szolgáltatók számára lehetőség biztosítása az áradatok küldésére.
+- Keresési adatok kezelése. *pl. régiók, országok, úti célok, szálláshelyek stb.*
+- Nyelvek kezelése.
+- Elemzések generálása a felhasználói interakciók, események és API hívások alapján.
+- Foglalható készlet szolgáltatása a kívánt formátumban, nyelven és pénznemben, például:
+    - Egy [megosztható link](/hu/studio/shareable-links) Facebookon.
+    - Egy szállodai kezdőlap a https://ota.wink.travel oldalon az adott szálloda készletével.
+    - Egy [kártya](/hu/studio/cards), amely affiliate készletet tartalmaz.
+    - Egy [térkép](/hu/studio/maps) a [WinkLinks](/hu/link-manager/wink-links) fiókodban.
+    - Egy [API hívás](/hu/developers/apis) egy távoli utazási ügynökségi rendszertől.
+- Utasok számára lehetőség biztosítása, hogy:
+    - Keresni tudjanak az utazási készletben.
+    - Foglaljanak elérhető készletet.
+    - Kezeljék a [foglalásaikat és értékeléseiket](/hu/booking-engine/bookings).
+    - Kezeljék a jövőbeni foglalások [bucket listáját](/hu/booking-engine/bucket-list).
+    - Kezeljék az [utazási profiljukat](/hu/booking-engine/travel-preferences). *pl. allergiák, vészhelyzeti kapcsolattartó stb.*
 
-Azok az integrátorok, akik még nagyobb szabadságra vágynak, ugyanazokhoz a funkciókhoz férhetnek hozzá a mi rendszerünkön keresztül. [WordPress bővítmény](/developers/wordpress/), [WordPress bővítmény](/developers/wordpress/) és[API-k](/developers/apis).
+A foglalási motor egy újrahasznosítható funkciók gyűjteménye, amelyet a https://ota.wink.travel oldalon keresztül teszünk elérhetővé; egy rendkívül testreszabható weboldal szállodák és affiliate partnerek számára, hogy termékeiket utazóknak értékesítsék.
 
-Folytassa a következő részekkel, hogy többet megtudjon a foglalási motor kínálatáról.
+Az integrátorok, akik még nagyobb szabadságot szeretnének, ugyanazokat a funkciókat érhetik el a [WordPress pluginunk](/hu/developers/wordpress/), [Web Components](/hu/developers/web-components) és [API-k](/hu/developers/apis) segítségével.
 
-## További olvasmányok
+Folytasd a következő szakaszokkal, hogy többet megtudj arról, mit kínál a foglalási motor.
 
-* Olvasson a mi[WordPress bővítmény](/developers/wordpress/).
-* Olvasson a mi[Webkomponensek](/developers/web-components).
-* Olvasson a mi[API-k](/developers/apis).
+## További olvasnivaló
 
+- Olvass a [WordPress pluginunkról](/hu/developers/wordpress/).
+- Olvass a [Web Components-ről](/hu/developers/web-components).
+- Olvass az [API-inkról](/hu/developers/apis).

@@ -1,43 +1,41 @@
 ---
-title: Environments
-description: >-
-  इस आलेख में परीक्षकों और डेवलपर्स के लिए हमारे विभिन्न सर्वर वातावरणों तक
-  पहुंच प्राप्त करने के तरीके के बारे में जानकारी दी गई है।
+title: पर्यावरण
+description: इस लेख में परीक्षकों और डेवलपर्स के लिए हमारे विभिन्न सर्वर पर्यावरणों तक पहुंच प्राप्त करने के बारे में जानकारी है।
 sidebar:
   order: 8
 ---
-विंक में, हम हर समय जो कुछ भी करते हैं उसके लिए 2 वातावरण चलाते हैं:
 
-* उत्पादन हमारा स्थिर वातावरण है।
-* स्टेजिंग हमारा प्रमाणन और परीक्षण वातावरण है।
+Wink में, हम हमेशा हर काम के लिए 2 पर्यावरण चलाते हैं:
 
-यदि आप एक इंटीग्रेटर, होटल या ट्रैवल एजेंट हैं और प्रमाणीकरण की तैयारी करना चाहते हैं या विंक प्लेटफॉर्म का परीक्षण करना चाहते हैं, तो आरंभ करने के लिए हमारे स्टेजिंग वातावरण में एक खाता बनाएं।
+- प्रोडक्शन हमारा स्थिर पर्यावरण है।
+- स्टेजिंग हमारा प्रमाणन और परीक्षण पर्यावरण है।
 
-:::नोट
-स्टेजिंग एनवायरनमेंट अनुरोध के आधार पर उपलब्ध है। इसका मतलब है कि अगर कोई उपयोग नहीं होगा तो यह सो जाएगा और जब उपयोग होगा तो खुद ही चालू हो जाएगा। अगर आप इसे जगा रहे हैं तो कृपया धैर्य रखें। हमारे किसी सर्वर या ऐप से पहली बार कनेक्ट होने के बाद सभी सर्वर को चालू होने में लगभग एक मिनट लगता है।
+यदि आप एक इंटीग्रेटर, होटल या ट्रैवल एजेंट हैं जो प्रमाणन के लिए तैयारी करना चाहते हैं या Wink प्लेटफ़ॉर्म का परीक्षण करना चाहते हैं, तो शुरू करने के लिए हमारे स्टेजिंग पर्यावरण में एक खाता बनाएं।
+
+:::note
+स्टेजिंग पर्यावरण अनुरोध-आधारित उपलब्ध है। इसका मतलब है कि यदि इसका उपयोग नहीं हो रहा है तो यह सो जाएगा और उपयोग होने पर फिर से चालू हो जाएगा। कृपया धैर्य रखें यदि आप इसे जागृत कर रहे हैं। हमारे किसी सर्वर या ऐप से पहली बार कनेक्ट करने के बाद सभी सर्वरों को शुरू होने में लगभग एक मिनट लगता है।
 :::
 
 ## सर्वर
 
-नीचे एक मैट्रिक्स है जिसमें हमारे सर्वरों के नाम और उनका उपयोग दर्शाया गया है।
+नीचे हमारे सर्वरों के नाम और उनके उपयोग की एक मैट्रिक्स दी गई है।
 
-| फ़ीचर | स्टेजिंग | उत्पादन
+| फीचर | स्टेजिंग | प्रोडक्शन
 | ------- | ------- | ---------- |
-| IAM | https://staging-iam.wink.travel | https://iam.wink.travel |
-| इन्वेंटरी | https://staging-api.wink.travel | https://api.wink.travel |
-| एकीकरण | https://staging-integrations.wink.travel | https://integrations.wink.travel |
-| भुगतान | https://staging-api.trippay.io | https://api.trippay.io |
+| IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
+| इन्वेंटरी | https://staging-api.wink.travel | https://api.wink.travel | 
+| इंटीग्रेशन | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| पेमेंट | https://staging-api.trippay.io | https://api.trippay.io | 
 
-## अनुप्रयोग
+## एप्लिकेशन
 
-हमारे अनुप्रयोगों में हमारे ग्राहकों के लिए परीक्षण और उत्पादन वातावरण भी उपलब्ध हैं।
+हमारे एप्लिकेशन में भी हमारे ग्राहकों के लिए परीक्षण और प्रोडक्शन पर्यावरण होते हैं।
 
-| आवेदन | स्टेजिंग | उत्पादन
+| एप्लिकेशन | स्टेजिंग | प्रोडक्शन
 | ------- | ------- | ---------- |
-| एजेंट | https://staging-agent.wink.travel | https://agent.wink.travel |
-| कॉर्पोरेट | https://staging-group.wink.travel | https://group.wink.travel |
-| एक्स्ट्रानेट | https://staging-extranet.wink.travel | https://extranet.wink.travel |
-| भुगतान | https://staging-pay.wink.travel | https://pay.wink.travel |
-| स्टूडियो | https://staging-studio.wink.travel | https://studio.wink.travel |
+| एजेंट | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| कॉर्पोरेट | https://staging-group.wink.travel | https://group.wink.travel | 
+| एक्सट्रानेट | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| पेमेंट | https://staging-pay.wink.travel | https://pay.wink.travel | 
+| स्टूडियो | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
-

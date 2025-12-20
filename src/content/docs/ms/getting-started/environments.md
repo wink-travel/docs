@@ -1,43 +1,41 @@
 ---
-title: Environments
-description: >-
-  Artikel ini mengandungi maklumat untuk penguji dan pembangun tentang cara
-  mendapatkan akses kepada persekitaran pelayan kami yang berbeza.
+title: Persekitaran
+description: Artikel ini mengandungi maklumat untuk penguji dan pembangun tentang cara mendapatkan akses ke pelbagai persekitaran pelayan kami.
 sidebar:
   order: 8
 ---
+
 Di Wink, kami menjalankan 2 persekitaran untuk semua yang kami lakukan pada setiap masa:
 
-* Pengeluaran adalah persekitaran kami yang stabil.
-* Pementasan ialah persekitaran pensijilan dan ujian kami.
+- Production adalah persekitaran stabil kami.
+- Staging adalah persekitaran pensijilan dan ujian kami.
 
-Jika anda seorang penyepadu, hotel atau ejen pelancongan yang ingin membuat persediaan untuk pensijilan atau menguji platform Wink, buat akaun dalam persekitaran pementasan kami untuk bermula.
+Jika anda seorang integrator, hotel atau ejen pelancongan yang ingin bersedia untuk pensijilan atau menguji platform Wink, buat akaun dalam persekitaran staging kami untuk memulakan.
 
-:::nota
-Persekitaran pementasan tersedia atas dasar permintaan. Ini bermakna ia akan tidur jika tiada penggunaan dan menghidupkan semula apabila ada. Harap bersabar jika anda sedang membangunkannya. Ia mengambil masa kira-kira seminit untuk memulakan semua pelayan selepas anda mula-mula menyambung dengan salah satu pelayan atau apl kami.
+:::note
+Persekitaran staging tersedia atas permintaan. Ini bermakna ia akan tidur jika tiada penggunaan dan akan hidup semula apabila ada. Sila bersabar jika anda sedang menghidupkannya. Ia mengambil masa kira-kira satu minit untuk memulakan semua pelayan selepas anda pertama kali berhubung dengan salah satu pelayan atau aplikasi kami.
 :::
 
 ## Pelayan
 
-Di bawah ialah matriks yang mengandungi nama pelayan kami dan penggunaannya.
+Di bawah adalah matriks yang mengandungi nama pelayan kami dan kegunaannya.
 
-| Ciri | Pementasan | Pengeluaran
+| Ciri | Staging | Production
 | ------- | ------- | ---------- |
-| IAM | https://staging-iam.wink.travel | https://iam.wink.travel |
-| Inventori | https://staging-api.wink.travel | https://api.wink.travel |
-| Integrasi | https://staging-integrations.wink.travel | https://integrations.wink.travel |
-| Pembayaran | https://staging-api.trippay.io | https://api.trippay.io |
+| IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
+| Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
+| Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Payment | https://staging-api.trippay.io | https://api.trippay.io | 
 
 ## Aplikasi
 
-Aplikasi kami juga mempunyai persekitaran ujian dan pengeluaran untuk pelanggan kami.
+Aplikasi kami juga mempunyai persekitaran ujian dan produksi untuk pelanggan kami.
 
-| Permohonan | Pementasan | Pengeluaran
+| Aplikasi | Staging | Production
 | ------- | ------- | ---------- |
-| Ejen | https://staging-agent.wink.travel | https://agent.wink.travel |
-| Korporat | https://staging-group.wink.travel | https://group.wink.travel |
-| Ekstranet | https://staging-extranet.wink.travel | https://extranet.wink.travel |
-| Pembayaran | https://staging-pay.wink.travel | https://pay.wink.travel |
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel |
+| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| Corporate | https://staging-group.wink.travel | https://group.wink.travel | 
+| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
+| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
-

@@ -1,18 +1,16 @@
 ---
-title: Mis on stuudio?
-description: >-
-  See leht selgitab reisivarustusele juurdepääsu raskusi ja seda, kuidas Winki
-  partnerportaal selle palju lihtsamaks teeb.
+title: Mis on Studio?
+description: See leht selgitab raskusi reisivarudele juurdepääsuga ja kuidas Wink'i partnerite portaal teeb selle palju lihtsamaks.
 sidebar:
   order: 0
 ---
-Ajalooliselt hõlmas reisimisega seotud teenustele juurdepääsu saamine ja müümine konfidentsiaalsuslepinguid ja keerulisi integratsioone kahe \[või enama] litsentseeritud reisibüroo ettevõtte vahel, kellel oli piisav tehniline oskusteave, juurdepääs makseväravale ja kes mõlemad vastasid PCI DSS-i nõuetele. See oli kulukas ja aeganõudev ettevõtmine ning sisenemisbarjäär oli tavainimeste jaoks võimatult kõrge.
 
-[Wink Studio](https://studio.wink.travel) on meie partnerportaal. See muudab reisivarustuse müügi kõigile kättesaadavaks ja sama lihtsaks kui lingi jagamine või sama keeruliseks kui veebipõhise reisibüroo pidamine.
+Ajalooliselt tähendas reisiga seotud toodete kättesaamine ja müümine konfidentsiaalsuslepinguid ning keerukaid integratsioone kahe [või enama] litsentseeritud reisibüroo vahel, kellel oli piisavalt tehnilisi teadmisi, juurdepääs makselahendusele ning kes olid mõlemad PCI DSS nõuetele vastavad. See oli kulukas ja aeganõudev protsess ning tavainimese jaoks oli sisenemisbarjäär võimatult kõrge.
 
-Partnerportaal pakub reisivarustust tarnijatelt (nt hotellid, hostelid, rendifirmad, elamuste pakkujad) kõikjalt maailmast. Teie eesmärk on leida endale sobiv varustus ja seejärel kasutada parimat viisi selle varustuse tutvustamiseks ja müümiseks oma sihtrühmale.
+[Wink Studio](https://studio.wink.travel) on meie partnerite portaal. See teeb reisivarude müümise kõigile kättesaadavaks ja sama lihtsaks kui lingi jagamine või sama arenenud kui veebipõhise reisibüroo haldamine.
 
-Stuudio pakub teile võimalust tarnijate ja nende laoseisu sirvida. Kui olete leidnud midagi meelepärast, on meil palju võimalusi selle laoseisu veebis ja eriti sotsiaalmeedia kaudu müümiseks.
+Partnerite portaal kuvab tarnijate (nt hotellid, hostellid, rendid, elamuskeskused) kogu maailmas saadaval olevat reisivarude valikut. Sinu eesmärk on leida endale sobiv varu ja seejärel kasutada parimat viisi selle varu oma publikule kuvamiseks ja müümiseks.
 
-Jätka lugemist ja saa teada kõigist funktsioonidest, mida me partneritele pakume.
+Studio pakub võimalust sirvida tarnijaid ja nende varusid. Kui oled leidnud midagi, mis sulle meeldib, on meil palju võimalusi selle varu veebis ja eriti sotsiaalmeedia kaudu müümiseks.
 
+Jätka lugemist ja saa teada kõigist funktsioonidest, mida pakume partneritele.

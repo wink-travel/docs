@@ -1,55 +1,53 @@
 ---
-title: Customers
-description: >-
-  Tässä artikkelissa kerrotaan, millaisia ​​asiakkaita palvelemme ja miten Wink
-  voi auttaa.
+title: Asiakkaat
+description: Tässä artikkelissa selitetään, millaisia asiakkaita palvelemme ja miten Wink pystyy auttamaan.
 sidebar:
   order: 2
 ---
-Tässä artikkelissa kerrotaan, millaisia ​​asiakkaita palvelemme ja miten voimme parhaiten auttaa.
 
-## Ominaisuudet
+Tässä artikkelissa selitetään, millaisia asiakkaita palvelemme ja miten voimme parhaiten auttaa.
 
-Wink aloitti hotellien rekrytoinnin kymmenen vuotta sitten. Hotellit käyttävät Winkiä hallitakseen tehokkaasti varastoaan tuhansissa myyntikanavissa, mukaan lukien omalla brand.com-sivustollaan, ja ansaitakseen enemmän jokaisella varauksella samalla tehostaen suoria kanavia hotellialalle keskittyvien työkalujemme avulla, jotka parantavat brändi-identiteettiä ja kannattavuutta.
+## Kiinteistöt
 
-## Tuotemerkit ja ketjut
+Wink aloitti hotellien käyttöönoton kymmenen vuotta sitten. Hotellit käyttävät Winkia hallitakseen tehokkaasti varastoaan tuhansilla myyntikanavilla, mukaan lukien heidän oma brand.com-sivustonsa, ja ansaitakseen enemmän jokaisesta varauksesta samalla kun he vahvistavat suoria kanavia vieraanvaraisuuteen keskittyvien työkalujemme avulla, jotka parantavat brändi-identiteettiä ja kannattavuutta​.
 
-Tuotemerkeillä ja ketjuilla on hieman erilaiset tarpeet kuin yksittäisillä kiinteistöillä. Winkissä ne voivat:
+## Brändit ja ketjut
 
-* Hallitse useita kiinteistöjä yhdellä tilillä.
-* Määritä hallinnoijia kiinteistöille
-* Käytä [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) ja meidän [WinkLinks](/link-manager/wink-links) markkinoida ja myydä useita kiinteistöjä yhdessä paikassa.
+Brändeillä ja ketjuilla on hieman erilaiset tarpeet kuin yksittäisellä kiinteistöllä. Winkissä he voivat:
 
-## Hallinnointiyhtiöt
+- Hallita useita kiinteistöjä yhden tilin alla.
+- Määrittää kiinteistöille vastuuhenkilöitä.
+- Käyttää [WinkLinks](/fi/link-manager/wink-links), [WordPress](/fi/developers/wordpress) ja meidän [Web Components](/fi/developers/web-components) -komponenttejamme markkinoidakseen ja myydäkseen useita kiinteistöjä yhdessä paikassa.
 
-Majoitus- ja ravitsemusalan yritykset ja matkailu- ja ravitsemuspalveluyritykset voivat hallinnoida kiinteistöportfolioitaan omistajien puolesta. On ehdoton etu antaa verkkoon keskittyneiden ja digitaalisesti valveutuneiden toimistojen hoitaa myynti verkkosegmentille, kun taas hotellit voivat keskittyä asiakastyytyväisyyden hallintaan heidän saapuessaan tiloihin.
+## Hallintayhtiöt
+
+Vieraanvaraisuuden hallintayhtiöt ja matkakohteiden hallintayhtiöt voivat hallita kiinteistöportfoliotaan omistajien puolesta. On selkeä etu antaa verkkoon keskittyvien, digitaalisesti valveutuneiden toimistojen hoitaa myyntiä verkkoasiakkaille, kun hotellit voivat keskittyä asiakastyytyväisyyden hallintaan heidän saapuessaan paikan päälle.
 
 ## Vaikuttajat
 
-Vaikuttajat käyttävät Winkiä yleisönsä tehokkaampaan rahallistamiseen. He tekevät niin tekemällä yhteistyötä hotellien kanssa, luomalla räätälöityjä tarjouksia ja hyödyntämällä Winkin sosiaalisesti ystävällisiä työkaluja ja tehokasta analytiikkaa seuratakseen, mitkä tuotteet myyvät parhaiten.
+Vaikuttajat käyttävät Winkia ansaitakseen paremmin yleisöstään. He tekevät yhteistyötä hotellien kanssa, luovat räätälöityjä tarjouksia ja hyödyntävät Wink:n sosiaaliseen mediaan sopivia työkaluja sekä tehokkaita analytiikkatyökaluja seuratakseen, mitkä tuotteet myyvät parhaiten​.
 
 ## Matkatoimistot
 
-Matkatoimistot saavat käyttöönsä matkavarastoja maailmanlaajuisesti loistavin hinnoin omistautuneen [matkatoimistoportaali](https://agent.wink.travel) He voivat tehdä varauksia portaalimme kautta, API:mme kautta tai antamalla käyttäjiensä varata itse matkatoimiston verkkosivustolla, joka käyttää teknologioitamme.
+Matkatoimistot saavat pääsyn matkavarastoihin maailmanlaajuisesti erinomaisin hinnoin omien [matkatoimistoportaalimme](https://agent.wink.travel) kautta. He voivat tehdä varauksia portaalimme kautta, API:n avulla tai antaa käyttäjiensä tehdä varauksia itse matkatoimiston verkkosivustolla, joka käyttää teknologioitamme.
 
 ## Yritykset
 
-Yritykset tarvitsevat enemmän matkustusalustaa:
+Yritykset tarvitsevat enemmän matkailualustan ominaisuuksia:
 
-* Ne vaativat hyvin organisoituja matkasuunnitelmia, jotka tukevat joustavuutta ja viime hetken muutoksia.
-* He tarvitsevat luotettavia viestintävälineitä, kuten internetin.
-* Heillä on toimittajamieltymyksiä jäsenyyksien suhteen.
-* Heillä on usein yrityksen luottokortti ja he ovat asettaneet kulutusrajoja.
-* Ne edellyttävät kulujenhallinnan ja raportoinnin integrointia.
-* He tarvitsevat concierge-tukea sekä MICE-palveluita tapahtumissa.
+- He tarvitsevat hyvin järjestettyjä matkasuunnitelmia, jotka tukevat joustavuutta ja viime hetken muutoksia.
+- He tarvitsevat luotettavia viestintävälineitä, kuten internetyhteyden.
+- Heillä on toimittajapreferenssejä jäsenyyksineen.
+- Heillä on usein yritysluottokortti ja kulurajoitukset.
+- He tarvitsevat kulujen hallintaa ja raportointiin integroitumista.
+- He tarvitsevat concierge-palvelua sekä MICE-palveluita tapahtumissa.
 
-Liikematkustajat voivat hallita omia tilejään palvelussamme [yritysportaali](/corporate/what-is-group) tai käytä virallisesti tuettua [yritysportaali](/corporate/what-is-group) laajennus ja [yritysportaali](/corporate/what-is-group) integraatio.
+Yritysasiakkaat voivat hallita omia tilejään meidän [yritysportaalissamme](/fi/corporate/what-is-group) tai käyttää virallisesti tuettua [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) -lisäosaa ja [Concur](https://www.concur.com/) -integraatiota.
 
 ## Kehittäjät
 
-Vaikka rakensimme tätä alustaa hotellialan toimijoille ja heille... Jokainen koodirivi on rakennettu uudelleenkäytettävyyttä silmällä pitäen. Kehittäjätiimimme loi Winkin toivoen, että seuraava 🦄 matkailusovellus rakennetaan koodipohjamme päälle. Siirry kohtaan [Kehittäjä](/developers/build-on-wink) sivulta, miten Wink voi tukea sinua seuraavassa hankkeessasi.
+Vaikka rakensimme tämän alustan hotelleille ja hotelleiden tarpeisiin... Jokainen koodirivi on rakennettu uudelleenkäytettävyyttä varten. Kehittäjätiimimme loi Wink:n toiveena, että seuraava 🦄 matkailusovellus rakennetaan meidän koodipohjamme päälle. Siirry [Kehittäjä](/fi/developers/build-on-wink) -sivulle nähdäksesi, miten Wink voi tukea sinua seuraavassa hankkeessasi.
 
 ## Muut
 
-Kuka tahansa, joka haluaa löytää ja myydä matkailutuotteita, voi hyötyä Winkin käytöstä. Tee intohimostasi vieraanvaraisuutta kohtaan todellisuutta ansaitsemalla loistava palkkio jokaisesta varauksesta.
-
+Kaikki, jotka haluavat löytää ja myydä matkavarastoja, voivat hyötyä Wink:n käytöstä. Muuta intohimosi vieraanvaraisuuteen toiminnaksi ansaitsemalla erinomainen provisio jokaisesta varauksesta.

@@ -1,42 +1,40 @@
 ---
 title: Integrace s TripPay
-description: >-
-  Tento článek obsahuje kompletní příklad toho, jak se integrovat s TripPay a
-  nechat platbu zpracovat za vás.
+description: Tento článek obsahuje kompletní příklad, jak se integrovat a nechat TripPay za vás zpracovat platbu.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Tento článek obsahuje komplexní příklad integrace s TripPay.
+Tento článek obsahuje příklad end-to-end, jak se integrovat s TripPay.
 
-Doporučuje se, abyste si již přečetli:
+Doporučujeme, abyste již měli přečteno:
 
-* [Platba > Mapování](/payment/mapping).
-* [Platba > Integrace](/payment/integration).
-* [Webová komponenta pro platby](/developers/web-components/#payment).
-* [Platební API](/developers/apis/#payment-api).*Přečtěte si sekci o`Create payable contracts`*
+- [Payment > Mapping](/cs/payment/mapping).
+- [Payment > Integration](/cs/payment/integration).
+- [Payment Web Component](/cs/developers/web-components/#payment).
+- [Payment API](/cs/developers/apis/#payment-api). *Přečtěte si sekci o `Create payable contracts`*
 
-Zde jsou kroky k úspěšnému použití TripPay k úhradě rezervace:
+Zde jsou kroky, jak úspěšně použít TripPay k zaplacení rezervace:
 
 <Steps>
-  1. Ujistěte se, že příjemci, které uvádíte ve smlouvě o rezervaci, byli zmapováni.
-  2. Nechte cestovatele vybrat si inventář, který chce rezervovat, a připravte se na platbu.
-  3. Vytvořte `payable contract` s TripPay, který obsahuje položky k rezervaci.
-  4. Nechte cestovatele platit pomocí webové komponenty TripPay.
+1. Ujistěte se, že příjemci, které uvádíte v rezervační smlouvě, jsou namapováni.
+2. Nechte cestovatele vybrat inventář, který chce rezervovat, a připravit se na platbu.
+3. Vytvořte s TripPay `payable contract`, který obsahuje položky k rezervaci.
+4. Nechte cestovatele zaplatit pomocí TripPay Web Component.
 </Steps>
 
+Předpokládáme, že jste již dokončili `Krok 1` a `Krok 2` a jste připraveni informovat TripPay o rezervaci.
 
-Předpokládáme, že jste již dokončili`Step 1`a`Step 2`a jsou připraveni informovat TripPay o rezervaci.
-
-## Vytvořit splatnou smlouvu
+## Vytvoření payable contract
 
 :::note
-Další informace o požadavcích na vytvoření splatné smlouvy naleznete v rozhraní Platební API. :::
+Přejděte na Payment API, kde se dozvíte více o požadavcích na vytvoření payable contract.
+:::
 
-### Žádost
-
-Zde je ukázkový požadavek JSON, který obsahuje vše, co potřebujete k vytvoření vaší první splatné smlouvy.
+### Request
+Zde je ukázka JSON požadavku, která obsahuje vše, co potřebujete k vytvoření vašeho prvního payable contract.
 
 ```json {3-6, 8-9}
 {
@@ -131,46 +129,47 @@ Zde je ukázkový požadavek JSON, který obsahuje vše, co potřebujete k vytvo
 
 Vysvětlení:
 
-Nebudeme zde vysvětlovat každý datový bod, protože jsou již zahrnuty v dokumentaci k API.
+Nevysvětlíme zde každý datový bod, protože jsou již pokryty v dokumentaci API.
 
-* Řádky:**2 - 7**je uživatel zodpovědný za rezervaci. Existují dva typy rezervujících:
-  * Cestovatel.
-  * Cestovní agent.
-* Řádky:**8 - 9**je účet TripPay, který umožňuje rezervaci. Může to být:
-  * Váš účet integrátora TripPay.
-  * Pokud provozujete partnerskou síť, může to být váš partner.
-* Použijte`traceId`seskupit více rezervací u více dodavatelů. Tímto způsobem můžete zrušit skupinovou rezervaci.
-* `redirectUrl`dá TripPay vědět, na kterou stránku má po dokončení platby přesměrovat.
-* `sourceUrl`je web / aplikace, na které byla rezervace provedena.
+- Řádky: **2 - 7** představují uživatele odpovědného za rezervaci. Existují dva typy rezervujících:
+    - Cestovatel.
+    - Cestovní agent.
+- Řádky: **8 - 9** představují TripPay účet, který zprostředkovává rezervaci. Může to být:
+    - Váš TripPay integrátor účet.
+    - Pokud provozujete affiliate síť, může to být váš affiliate.
+- Použijte `traceId` pro seskupení více rezervací u více dodavatelů. Tímto způsobem můžete zrušit skupinovou rezervaci.
+- `redirectUrl` informuje TripPay, na kterou stránku má přesměrovat po dokončení platby.
+- `sourceUrl` je web / aplikace, na které k rezervaci došlo.
 
-Ten/Ta/To`contractList`Pole obsahuje položku (položky), které chce cestovatel zakoupit od více dodavatelů. Každá položka obsahuje:
+Pole `contractList` obsahuje položku(y), které chce cestovatel zakoupit od více dodavatelů. Každá položka obsahuje:
 
-* Ten/Ta/To`identifier`je platný UUID, který vygenerujete.
-* Dodavatel, u kterého chcete rezervovat zásoby.
-* Zásoby, které chcete od daného dodavatele rezervovat. Všechny tyto položky jsou uvedeny ve vnořeném poli.`contractItemList`.
-* Každý záznam pod`contractItemList`obsahuje:
-  * **Hostující uživatel**Toto je uživatel, který dorazí na místo.
-  * **Jméno v angličtině**Název inventáře v angličtině.
-  * **Popis v angličtině**Delší popis inventáře v angličtině.
-  * **Cena**Cena položky.
-  * **Itinerář**Kdy by měla být tato položka rezervována.
-  * **Typ ceny**Jak byla cena vypočítána.
-  * **Typ inventáře**O jaký typ inventáře se jedná.
-  * **Splatné**Kdy by měl být cestujícímu účtován poplatek.*V současné době podporujeme pouze možnosti okamžité platby.*
-  * **Politika**Zahrňte pravidla pro zrušení rezervace.
-  * **Denní sazba**Pokud je rezervovanou položkou pokoj, můžete zvolit, zda chcete uvést cenu pokoje za každou noc, během níž se host ubytuje.
-  * **Příjemci**Uveďte, na který účet TripPay by měla být přidělena jaká částka z ceny položky.*Podporovány jsou fixní / procentuální částky.*
+- `identifier` je platné UUID, které generujete.
+- Dodavatele, u kterého chcete rezervovat inventář.
+- Inventář, který chcete rezervovat u tohoto dodavatele. Vše je specifikováno v zanořeném poli `contractItemList`.
+- Každý záznam v `contractItemList` obsahuje:
+    - **Hostující uživatel** Toto je uživatel, který dorazí na místo.
+    - **Název v angličtině** Název inventáře v anglickém jazyce.
+    - **Popis v angličtině** Delší popis inventáře v anglickém jazyce.
+    - **Cena** Cena položky.
+    - **Itinerář** Kdy by měla být položka rezervována.
+    - **Typ ceny** Jak byla cena vypočítána.
+    - **Typ inventáře** Jaký typ inventáře to je.
+    - **Platba** Kdy by měl být cestovatel účtován. *Momentálně podporujeme pouze možnosti okamžité platby.*
+    - **Zásady** Zahrňte pravidla storno podmínek.
+    - **Denní sazby** Pokud je rezervovaná položka pokoj, můžete uvést cenu za každou noc pobytu hosta.
+    - **Příjemci** Uveďte, kterým TripPay účtům by měla být přidělena jaká část ceny položky. *Podporovány jsou pevné i procentuální částky.*
 
 :::note
-Ve výše uvedeném příkladu JSON máme 3 příjemce:
+V uvedeném JSON příkladu máme 3 příjemce:
 
-* 1,5 % bylo přiděleno platformě, která rezervaci zprostředkovala.*např. mrknutí*
-* Partnerovi bylo přiděleno 9,85 % jako provize.*např. Kim Kardashian*
-* Dodavateli bylo přiděleno 88,65 % za rezervaci pokoje.*např. Hilton*
+- 1,5 % bylo přiděleno platformě, která zprostředkovala rezervaci. *např. Wink*
+- 9,85 % bylo přiděleno affiliate jako provize. *např. Kim Kardashian*
+- 88,65 % bylo přiděleno dodavateli za rezervaci pokoje. *např. Hilton*
 
-Když TripPay odpoví splatnou smlouvou, všimnete si, že vložil vlastního příjemce ve výši 4,0 %. :::
+Když TripPay odpoví s payable contract, všimnete si, že přidal svého vlastního příjemce s 4,0 %.
+:::
 
-### Odpověď
+### Response
 
 Když TripPay odpoví na váš požadavek, bude to vypadat nějak takto:
 
@@ -206,19 +205,18 @@ Když TripPay odpoví na váš požadavek, bude to vypadat nějak takto:
 ]
 ```
 
-Uložit`id`na řádku 3. Toto použijete k vložení do webové komponenty TripPay.
+Uložte `id` na řádku 3. Budete ho používat pro vložení do TripPay webové komponenty.
 
-## Vložit TripPay
+## Vložení TripPay
 
 :::note
-Ujistěte se, že jste si předem načetli naše styly a Javascript.
+Ujistěte se, že jste předem načetli naše styly a Javascript.
 :::
 
-V tomto okamžiku jste připraveni vložit`Payment Web Component`na váš web a ukázat ho uživateli.
+V tuto chvíli jste připraveni vložit `Payment Web Component` do svého webu a zobrazit ji uživateli.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Co se týče integrace, to je vše, co musíte udělat. Veškerou těžkou práci odteď vykonává TripPay.
-
+Pokud jde o integraci, to je vše, co musíte udělat. Veškerou náročnou práci odtud provádí TripPay.

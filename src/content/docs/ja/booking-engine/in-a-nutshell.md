@@ -1,47 +1,47 @@
 ---
 title: 要約
-description: この記事では、予約エンジンについて知っておきたいすべてのことを説明します。
+description: この文章では、予約エンジンについて知りたいことをすべて解説します。
 sidebar:
   order: 0
 ---
-Wink では次のように責任を区分しています。
 
-* [エクストラネット](/extranet/what-is-extranet) サプライヤーの在庫管理に関心があります。
-* [スタジオ](/studio/what-is-studio) アフィリエイトによるコンテンツ管理に関心があります。
-* `Booking Engine`コンテンツの作成に関心があり、`Studio`、これは、`Extranet`予約できるようにします。
-* [支払い](/payment/what-is-trip-pay) Winkのようなプラットフォームを通じて予約した旅行者への請求/払い戻し、およびベンダーへの支払いに取り組んでいます。
+Winkにおける責任分担は以下の通りです：
 
-予約エンジンは当社のプラットフォームの中核です。
+- [Extranet](/ja/extranet/what-is-extranet) はサプライヤーが在庫を管理することに関わります。
+- [Studio](/ja/studio/what-is-studio) はアフィリエイトがコンテンツを管理することに関わります。
+- `Booking Engine` は、`Extranet` で作成された在庫を元に `Studio` で作成されたコンテンツを予約可能にすることに関わります。
+- [Payment](/ja/payment/what-is-trip-pay) は、[Winkのようなプラットフォームを通じて]予約した旅行者からの課金・返金やベンダーへの支払いに関わります。
 
-その責任には以下が含まれます。
+予約エンジンは当プラットフォームの中核です。
 
-* 通貨を管理し、為替レートを最新の状態に保ちます。
-* レートプロバイダーにレートデータを送信するための手段を提供します。
-* ルックアップデータの管理。*例: 地域、国、目的地、物件など。*
-* 言語の管理。
-* ユーザーインタラクション、イベント、API 呼び出しに基づいて分析を生成します。
-* 次のような、希望する形式、言語、通貨で予約可能な在庫を提供します。
-  * あ[共有可能なリンク](/studio/shareable-links) Facebookで。
-  * https://ota.wink.travel のホテルランディング ページに、そのホテルの在庫が表示されます。
-  * あ [カード](/studio/cards) アフィリエイト在庫を含みます。
-  * あ [地図](/studio/maps) あなたの[ウィンクリンクス](/link-manager/wink-links) アカウント。
-  * アン [API呼び出し](/developers/apis) リモート旅行代理店システムから。
-* 旅行者に次の方法を提供します:
-  * 旅行在庫を検索します。
-  * 利用可能な在庫を予約します。
-  * 管理する [予約とレビュー](/booking-engine/bookings) 。
-  * 管理する [バケットリスト](/booking-engine/bucket-list) 将来予約するもの。
-  * 管理する [旅行プロフィール](/booking-engine/travel-preferences) 。*例: アレルギー、緊急連絡先など*
+その責任範囲は以下を含みます：
 
-予約エンジンは、ホテルや関連会社が旅行者に商品を販売するための高度にカスタマイズ可能な Web サイトである https://ota.wink.travel を通じて公開される再利用可能な機能のコレクションです。
+- 通貨の管理と為替レートの最新化。
+- レート提供者がレートデータを送信するための手段の提供。
+- 参照データの管理。*例：地域、国、目的地、施設など。*
+- 言語の管理。
+- ユーザーの操作、イベント、APIコールに基づく分析の生成。
+- 希望のフォーマット、言語、通貨で予約可能な在庫を提供。例えば：
+    - Facebook上の[共有可能なリンク](/ja/studio/shareable-links)。
+    - https://ota.wink.travel のホテルランディングページにそのホテルの在庫を表示。
+    - アフィリエイト在庫を含む[カード](/ja/studio/cards)。
+    - [WinkLinks](/ja/link-manager/wink-links)アカウント上の[マップ](/ja/studio/maps)。
+    - リモートの旅行代理店システムからの[APIコール](/ja/developers/apis)。
+- 旅行者に以下の手段を提供：
+    - 旅行在庫の検索。
+    - 利用可能な在庫の予約。
+    - [予約とレビュー](/ja/booking-engine/bookings)の管理。
+    - 将来予約したいものの[バケットリスト](/ja/booking-engine/bucket-list)の管理。
+    - [旅行プロフィール](/ja/booking-engine/travel-preferences)の管理。*例：アレルギー、緊急連絡先など。*
 
-さらに自由度の高いソリューションを求めるインテグレーターは、当社の [WordPressプラグイン](/developers/wordpress/) 、[Webコンポーネント](/developers/web-components) そして [API](/developers/apis) 。
+予約エンジンは https://ota.wink.travel を通じて提供する再利用可能な機能の集合体であり、ホテルやアフィリエイトが旅行者に商品を販売するための高度にカスタマイズ可能なウェブサイトです。
 
-次のセクションに進み、予約エンジンが提供する機能について詳しくお読みください。
+さらに自由度を求める統合者は、当社の[WordPressプラグイン](/ja/developers/wordpress/)、[Web Components](/ja/developers/web-components)、[API](/ja/developers/apis)を通じて同じ機能すべてにアクセスできます。
+
+次のセクションに進み、予約エンジンの提供内容についてさらにお読みください。
 
 ## さらに読む
 
-* 当社の [WordPressプラグイン](/developers/wordpress/) 。
-* 当社の [Webコンポーネント](/developers/web-components) 。
-* 当社の [API](/developers/apis) 。
-
+- 当社の[WordPressプラグイン](/ja/developers/wordpress/)について読む。
+- 当社の[Web Components](/ja/developers/web-components)について読む。
+- 当社の[API](/ja/developers/apis)について読む。

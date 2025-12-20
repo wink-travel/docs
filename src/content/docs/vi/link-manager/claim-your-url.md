@@ -1,19 +1,16 @@
 ---
-title: Yêu cầu URL của bạn
-description: >-
-  Trong bài viết này, chúng tôi sẽ hướng dẫn bạn cách xác nhận URL tùy chỉnh
-  WinkLinks của mình.
+title: Yêu Cầu URL Của Bạn
+description: Trong bài viết này, chúng tôi sẽ hướng dẫn bạn cách yêu cầu URL vanity WinkLinks của bạn.
 sidebar:
   order: 1
 ---
-Bằng cách tạo ra một [tài khoản liên kết](/studio/what-is-studio), bạn đã có url vanity WinkLinks. Các tính năng của nhà xuất bản WinkLinks có trong ứng dụng Studio của chúng tôi; cùng với các tính năng liên kết khác của chúng tôi.
+
+Bằng cách tạo một [tài khoản affiliate](/vi/studio/what-is-studio), bạn đã có một URL vanity WinkLinks. Các tính năng dành cho nhà xuất bản WinkLinks có trong ứng dụng Studio của chúng tôi; cùng với các tính năng affiliate khác.
 
 ### Ví dụ
 
-Nếu tên tài khoản của bạn là Queen Bee, thì URL tùy chỉnh WinkLinks của bạn sẽ là:
+Nếu tên tài khoản của bạn là Queen Bee, URL vanity WinkLinks của bạn sẽ là:
 
 <h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-Tên tài khoản có sẵn trên một`first come - first serve`cơ sở - Hãy nắm bắt URL duy nhất của bạn khi bạn có thể!
-
+Tên tài khoản được cấp theo nguyên tắc `ai đến trước - được phục vụ trước` - Hãy lấy URL độc đáo của bạn ngay khi có thể!

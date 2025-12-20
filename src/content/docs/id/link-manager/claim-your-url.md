@@ -1,19 +1,16 @@
 ---
 title: Klaim URL Anda
-description: >-
-  Dalam artikel ini, kami memberi tahu Anda cara mengklaim URL khusus WinkLinks
-  Anda.
+description: Dalam artikel ini, kami menjelaskan cara mengklaim URL vanity WinkLinks Anda.
 sidebar:
   order: 1
 ---
-Dengan membuat sebuah [akun afiliasi](/studio/what-is-studio), Anda sudah memiliki url khusus WinkLinks. Fitur penerbit WinkLinks tersedia di aplikasi Studio kami; bersama dengan fitur afiliasi kami yang lain.
+
+Dengan membuat [akun afiliasi](/id/studio/what-is-studio), Anda sudah memiliki URL vanity WinkLinks. Fitur penerbit WinkLinks tersedia di aplikasi Studio kami; bersama dengan fitur afiliasi lainnya.
 
 ### Contoh
 
-Jika nama akun Anda adalah Queen Bee, url khusus WinkLinks Anda akan menjadi:
+Jika nama akun Anda adalah Queen Bee, URL vanity WinkLinks Anda akan menjadi:
 
-<h4 align="center">https://i.trvl.as/ratu-lebah</h4>
+<h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-Nama akun tersedia di`first come - first serve`dasar - Dapatkan URL unik Anda selagi bisa!
-
+Nama akun tersedia berdasarkan `siapa cepat dia dapat` - Dapatkan URL unik Anda selagi bisa!

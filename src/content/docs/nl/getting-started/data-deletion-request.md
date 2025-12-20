@@ -1,45 +1,43 @@
 ---
-title: Verzoek tot verwijdering van gegevens
-description: >-
-  Lees hoe u kunt aanvragen hoe u uw persoonlijke gegevens op Wink kunt
-  verwijderen.
+title: Verzoek tot gegevensverwijdering
+description: Leer hoe je kunt verzoeken om je persoonlijke gegevens te verwijderen op Wink.
 sidebar:
   order: 9
 ---
-Bij Wink respecteren we uw privacy en zetten we ons volledig in voor de bescherming van uw persoonsgegevens. We voldoen aan de**Algemene Verordening Gegevensbescherming (AVG)**&#x65;n andere toepasselijke wetten inzake gegevensbescherming overal ter wereld.
 
-Op deze pagina leggen we uit hoe u kunt verzoeken om verwijdering van persoonlijke gegevens die we mogelijk via ons platform hebben verzameld. Dit omvat, maar is niet beperkt tot, gegevens die zijn verkregen via sociale login-providers zoals Facebook of Instagram.
+Bij Wink respecteren we je privacy en zijn we volledig toegewijd aan het beschermen van je persoonlijke gegevens. We voldoen aan de **Algemene Verordening Gegevensbescherming (AVG)** en andere toepasselijke privacywetten wereldwijd.
 
-## Onze toewijding aan gegevensprivacy
+Op deze pagina wordt uitgelegd hoe je kunt verzoeken om verwijdering van persoonlijke gegevens die we via ons platform hebben verzameld — inclusief maar niet beperkt tot gegevens verkregen via social login providers zoals Facebook of Instagram.
 
-We verzamelen alleen de gegevens die nodig zijn om onze diensten te leveren en we verkopen uw persoonsgegevens nooit. Dit kan het volgende omvatten:
+## Onze inzet voor gegevensprivacy
 
-* Uw naam en e-mailadres
-* Openbare profielinformatie (bijvoorbeeld van Facebook of Google)
-* Gebruiks- of activiteitsgegevens op ons platform
-* Alle toestemmingen die expliciet door u zijn verleend
+We verzamelen alleen de gegevens die nodig zijn om onze diensten te leveren, en we verkopen je persoonlijke informatie nooit. Dit kan onder meer omvatten:
 
-Wij nemen passende maatregelen om uw gegevens te beschermen en verwerken alle verzoeken tot verwijdering in overeenstemming met de AVG en het gegevensbeleid van Meta.
+- Je naam en e-mailadres
+- Openbare profielinformatie (bijv. van Facebook of Google)
+- Gebruik- of activiteitsgegevens op ons platform
+- Alle expliciet door jou verleende toestemmingen
 
-## Verzoek om gegevensverwijdering
+We nemen passende maatregelen om je gegevens te beveiligen en verwerken alle verwijderingsverzoeken in overeenstemming met de AVG en het gegevensbeleid van Meta.
 
-U hebt het recht om ons te verzoeken alle persoonlijke informatie die wij over u hebben, te verwijderen.
+## Verzoek tot gegevensverwijdering
 
-Om verwijdering van gegevens aan te vragen:
+Je hebt het recht om te verzoeken dat wij alle persoonlijke informatie die wij over jou hebben, verwijderen.
 
-* 📧**Stuur een e-mail naar**:<support@wink.travel>
-* 📝 Gebruik de onderwerpregel:`Data Deletion Request`
-* 🔍 Geef identificerende details zoals:
-  * Het e-mailadres dat u gebruikt met ons platform
-  * Uw Facebook- of Google-ID of vergelijkbaar (indien van toepassing)
+Om een verzoek tot gegevensverwijdering in te dienen:
 
-Wij zullen binnen 24 uur reageren**30 dagen**om uw verzoek te ontvangen, zoals vereist door de AVG.
+- 📧 **Stuur een e-mail naar**: [support@wink.travel](mailto:support@wink.travel)
+- 📝 Gebruik de onderwerpregel: `Data Deletion Request`  
+- 🔍 Voeg identificerende gegevens toe, zoals:
+  - Het e-mailadres dat je gebruikt voor ons platform
+  - Je Facebook- of Google-ID of iets dergelijks (indien van toepassing)
 
-## Vragen of opmerkingen?
+We reageren binnen **30 dagen** na ontvangst van je verzoek, zoals vereist door de AVG.
 
-Als u vragen heeft over hoe wij uw gegevens verzamelen, gebruiken of verwijderen, kunt u gerust contact opnemen met ons privacyteam via<support@wink.travel>.
+## Vragen of zorgen?
 
-***
+Als je vragen hebt over hoe we je gegevens verzamelen, gebruiken of verwijderen, neem dan gerust contact op met ons privacyteam via [support@wink.travel](mailto:support@wink.travel).
 
-Bedankt voor uw vertrouwen in ons. Wij nemen gegevensbescherming serieus en streven ernaar u volledige controle over uw gegevens te geven.
+---
 
+Bedankt voor je vertrouwen. We nemen gegevensbescherming serieus en zetten ons in om je volledige controle over je informatie te geven.

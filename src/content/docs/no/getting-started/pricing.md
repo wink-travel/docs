@@ -1,64 +1,62 @@
 ---
-title: Pricing
-description: >-
-  Bruk alle Winks tjenester så mye du vil gratis. Du betaler bare et lite gebyr
-  per bestilling.
+title: Prising
+description: Bruk alle Wink sine tjenester så mye du vil, helt gratis. Du betaler kun en liten avgift per booking.
 sidebar:
   order: 4
 ---
-Alle Winks tjenester er gratis for alle å bruke. Når det foretas en bestilling, tar Wink et lite gebyr for å vedlikeholde plattformen.
 
-Wink støtter både selger- og agentmodellene.
+Alle Wink sine tjenester er gratis for alle å bruke. Når det skjer en booking, tar Wink en liten avgift for å vedlikeholde plattformen.
+
+Wink støtter både merchant- og agentmodeller.
 
 ## Modell 1
 
-Wink er den registrerte selgeren på bestillingstidspunktet. Wink er ansvarlig for midlene og har alle lisenser til å drive et reisebyrå.
+Wink er merchant of record når bookingen skjer. Wink er ansvarlig for midlene og har alle nødvendige lisenser for å drive et reisebyrå.  
+Denne modellen gjelder for 95 % av alle bookinger.
 
-Denne modellen gjelder for 95 % av alle bestillinger.
+Wink tar `5,5 % per booking` for å vedlikeholde plattformen.  
+Det meste av dette går til betalingsgatewayen (Visa, MasterCard osv.). En gjennomsnittlig booking koster oss `2,95 %` å anskaffe; noen ganger så mye som `3,6 %`. Delvise refusjoner koster oss mer siden betalingsgatewayen ser dette som en ny transaksjon.  
+Vi ønsker å være helt åpne om prisingen nå for å spare alle tid før man prøver å forhandle frem ytterligere rabatter uten å ha brukt Wink. Vår prismodell er mer enn rettferdig, og vi må også tjene til livets opphold.
 
-Blunkeavgifter`5.5% per booking`å vedlikeholde plattformen. Mesteparten av dette går til betalingsløsninger (Visa, MasterCard osv.). En gjennomsnittlig bestilling koster oss`2.95%`å tilegne seg; noen ganger så høyt som`3.6%`Delvis refusjon koster oss ytterligere, ettersom betalingsportalen ser på dette som en ny kostnad.
-Vi ønsker å være helt transparente om priser nå for å spare alle litt tid før vi prøver å forhandle frem ytterligere rabatter før vi har brukt Wink. Prismodellen vår er mer enn rettferdig, og vi må også tjene til livets opphold.
+### Fordeling
 
-### Sammenbrudd
-
-:::merknad\[Behandlingsgebyr]
-Wink tar et behandlingsgebyr på 1,5 % per bestilling. Dette gjør at vi kan tilby alle tjenestene våre gratis og dekker vedlikehold av plattformen.
+:::note[Behandlingsgebyr]
+Wink tar et behandlingsgebyr på 1,5 % per booking. Dette gjør at vi kan tilby alle våre tjenester gratis og dekker plattformvedlikehold.
 :::
 
-:::merknad\[Betalingsgebyr]
-TripPay tar et betalingsgebyr på 4,0 % per bestilling. Dette dekker betalingen fra den reisende.
+:::note[Betalingsgebyr]
+TripPay tar et betalingsgebyr på 4,0 % per booking. Dette dekker innkreving av betaling fra reisende.
 :::
 
-:::merknad\[Utbetaling av midler]
-Det er gebyrer forbundet med å sende penger til kontoen din. Dette avhenger av utbetalingsmetoden du velger. Vi støtter for øyeblikket:
+:::note[Utbetaling av midler]
+Det påløper gebyrer for å sende midler til din konto. Dette avhenger av hvilken utbetalingsmetode du velger. Vi støtter for øyeblikket:
 
-* **Virtuelt kredittkort**(kun hoteller) ~2,0 %
-* **Bankoverføring**Kostnaden avhenger av landet du befinner deg i og hvor pengene sendes fra. Vi inkluderer en kalkulator for pristilbud du kan bruke når du har tilgjengelige midler på kontoen din.
+- **Virtuelt kredittkort** (kun hoteller) ~2,0 %
+- **Bankoverføring** Kostnaden avhenger av landet du befinner deg i og hvor midlene sendes fra. Vi inkluderer en kalkulator for pristilbud som du kan bruke når du har tilgjengelige midler på kontoen din.
 
-Hvis du ønsker at vi skal støtte en annen utbetalingsmetode, send oss ​​en e-post.
+Hvis du ønsker at vi skal støtte en annen utbetalingsmetode, send oss en e-post.
 :::
 
 ## Modell 2
 
-Denne modellen er kun tilgjengelig for reisebyråer som har reisebyrålisens i sin region og som ønsker å være registrert selger. Noen av våre registrerte reisebyråer ønsker å være ansvarlige for å håndtere betaling og utbetaling av midler til hoteller. I henhold til denne modellen er de ansvarlige for midlene og har de nødvendige lisensene for å operere i sitt land.
+Denne modellen er kun tilgjengelig for reisebyråer som har reisebyrålisens i sin region og som ønsker å være merchant of record. Noen av våre registrerte reiseagenter ønsker å være ansvarlige for håndtering av betaling og utbetaling av midler til hoteller. Under denne modellen er de ansvarlige for midlene og har nødvendige lisenser for å operere i sitt land.
 
-### Sammenbrudd
+### Fordeling
 
-:::merknad\[Behandlingsgebyr]
-Wink tar et behandlingsgebyr på 1,5 % per bestilling. Dette gjør at vi kan tilby alle tjenestene våre gratis og dekker vedlikehold av plattformen.
+:::note[Behandlingsgebyr]
+Wink tar et behandlingsgebyr på 1,5 % per booking. Dette gjør at vi kan tilby alle våre tjenester gratis og dekker plattformvedlikehold.
 :::
 
-Med denne modellen betaler reisebyråene kun Winks behandlingsgebyr, og Wink fakturerer reisebyrået månedlig.
+Ved bruk av denne modellen betaler reiseagentene kun Wink sitt behandlingsgebyr, og Wink fakturerer reiseagenten månedlig.
 
 ## Fremtidige tjenester
 
-Vi vil i fremtiden tilby valgfrie abonnementsbaserte tjenester som gjør det enda enklere å selge for alle, eller tilby administrerte affiliate-kontoer som gjør salget for deg. Hvis det interesserer deg, kan du få din stemme hørt ved å sende oss en e-post på[hei@wink.travel](mailto:hi@wink.travel).
+Vi vil tilby valgfrie abonnementstjenester i fremtiden som gjør det enda enklere å selge for alle, eller tilby administrerte affiliate-kontoer som selger for deg. Hvis det interesserer deg, gjør stemmen din hørt ved å sende oss en e-post på [hi@wink.travel](mailto:hi@wink.travel).
 
 Følg med.
 
-## Plattformeffekt
+## Plattform-effekt
 
-Til slutt, ettersom vi fortsetter å vokse både i størrelse og bestillinger, ønsker vi å dele noen av plattformeffektene med dere. Flere bestillinger gir muligheter for volumrabatter fra betalingsgatewayen vår, noe som vil gjøre det mulig for oss å senke behandlingsgebyret vårt for alle.
+Til slutt, etter hvert som vi vokser i både størrelse og antall bookinger, ønsker vi å kunne dele noen av plattform-effektene med deg. Flere bookinger gir muligheter for volumrabatter fra vår betalingsgateway, noe som vil gjøre det mulig for oss å senke behandlingsgebyret for alle.
 
-Bli med i Wink i dag og oppdag en ny, lukrativ måte å drive forretning på i hotellbransjen!
-
+Bli med i Wink i dag og oppdag en ny, lønnsom måte å drive forretning i reiselivsbransjen på!

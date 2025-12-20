@@ -1,26 +1,24 @@
 ---
-title: Шта је Екстранет?
-description: >-
-  Овај чланак вас води кроз оно што треба да знате да бисте започели са радом на
-  хотелу Винк.
+title: Šta je Extranet?
+description: Ovaj članak vas vodi kroz sve što treba da znate da biste započeli sa Wink kao hotel.
 sidebar:
   order: 0
 ---
-[Винк Екстранет](https://extranet.wink.travel) је наш портал за некретнине. Намењен је хотелима, ланцима, брендовима и компанијама за управљање хотелима како би креирали и управљали дигиталним профилом својих некретнина на Wink платформи.
 
-Наш Екстранет је пажљиво дизајниран да буде што једноставнији, али да и даље подржава све функције које напредни корисници очекују од напредног портала за некретнине. Да вам дам неколико примера:
+[Wink Extranet](https://extranet.wink.travel) je naš portal za objekte. Namenjen je hotelima, lancima, brendovima i kompanijama za upravljanje hotelima da kreiraju i upravljaju digitalnim profilom svojih objekata na Wink platformi.
 
-1. Једноставност: Користите наш интелигентни ток рада за увођење у систем како бисте увели свој објекат и покренули га за мање од сат времена.
-2. Напредно: Wink подржава 8500 различитих варијација политика отказивања
-3. Супер: Дајте једној особи на планети Земљи попуст од 10% без потребе да се корисник пријављује или уноси промотивни код.
+Naš Extranet je pažljivo dizajniran da bude što jednostavniji, ali da i dalje podržava sve funkcije koje napredni korisnici očekuju od naprednog portala za objekte. Da vam damo nekoliko primera:
 
-Дозволите нашим чаробњацима да вас воде кроз цео процес. Када се будете осећали довољно удобно... крените сами.
+1. Jednostavnost: Koristite naš inteligentni onboarding proces da povežete svoj objekat i budete uživo za manje od sat vremena.
+2. Napredno: Wink podržava 8500 različitih varijacija politika otkazivanja.
+3. Kul: Dajte jednoj osobi na planeti popust od 10% bez potrebe da se korisnik prijavljuje ili unosi promo kod.
 
-Винк је напредни систем за управљање садржајем за објекте и добављаче корисничког искуства. Све што можете да урадите у једној од наших апликација, можете да урадите путем АПИ-ја. Ово вам омогућава дубоку интеграцију са Винком до те мере да можете да продајете путем Винка без потребе да се пријављујете ни у једну од наших апликација.
+Neka vas naši čarobnjaci vode kroz ceo proces. Kada se budete osećali dovoljno sigurno... krenite sami.
 
-:::савет\[Професионални савет]
-Да ли плаћате скупо хостовање медијских садржаја преко Leonardo International-а? Можете да урадите потпуно исту ствар преко Wink-а И добијате много више опција за манипулацију и фино подешавање ваших слика и видео записа.
+Wink je napredni sistem za upravljanje sadržajem za objekte i pružaoce iskustava. Sve što možete da uradite u nekoj od naših aplikacija, možete uraditi i putem API-ja. Ovo vam omogućava duboku integraciju sa Wink-om do te mere da možete prodavati preko Wink-a bez potrebe da se ikada prijavljujete u bilo koju od naših aplikacija.
+
+:::tip[Pro savet]
+Da li plaćate skupo hostovanje medijskih sadržaja preko Leonardo International? Možete raditi potpuno isto preko Wink-a I dobijate mnogo više opcija za manipulaciju i fino podešavanje vaših slika i video zapisa.
 :::
 
-Све ове функције су вам бесплатне. Само када направите резервацију, наплаћујемо малу накнаду. Немате шта да изгубите - све добијате.
-
+Sve ove funkcije su vam dostupne bez ikakvih troškova. Naknadu uzimamo samo kada napravite rezervaciju. Nemate šta da izgubite - Sve da dobijete.

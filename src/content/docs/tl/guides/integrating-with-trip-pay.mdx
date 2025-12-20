@@ -1,43 +1,40 @@
 ---
 title: Pagsasama sa TripPay
-description: >-
-  Ang artikulong ito ay naglalaman ng isang buong halimbawa kung paano isama at
-  hayaan ang TripPay na pangasiwaan ang pagbabayad para sa iyo.
+description: Naglalaman ang artikulong ito ng isang buong halimbawa kung paano makipagsama at hayaan ang TripPay na hawakan ang pagbabayad para sa iyo.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Ang artikulong ito ay naglalaman ng isang end-to-end na halimbawa ng kung paano isama sa TripPay.
+Naglalaman ang artikulong ito ng isang end-to-end na halimbawa kung paano makipagsama sa TripPay.
 
 Inirerekomenda na nabasa mo na ang:
 
-* [Pagbabayad > Pagma-map](/payment/mapping).
-* [Pagbabayad > Pagsasama](/payment/integration).
-* [Web Component ng Pagbabayad](/developers/web-components/#payment).
-* [API ng Pagbabayad](/developers/apis/#payment-api). *Basahin ang seksyon sa `Create payable contracts`*
+- [Payment > Mapping](/tl/payment/mapping).
+- [Payment > Integration](/tl/payment/integration).
+- [Payment Web Component](/tl/developers/web-components/#payment).
+- [Payment API](/tl/developers/apis/#payment-api). *Basahin ang seksyon tungkol sa `Create payable contracts`*
 
-Narito ang mga hakbang upang matagumpay na magamit ang TripPay upang magbayad para sa isang booking:
+Narito ang mga hakbang upang matagumpay na magamit ang TripPay para magbayad ng booking:
 
 <Steps>
-  1. Siguraduhin na ang mga benepisyaryo na iyong binanggit sa kontrata sa pagpapareserba ay na-map.
-  2. Hayaang piliin ng manlalakbay ang imbentaryo na gusto niyang i-book at ihanda silang magbayad.
-  3. Lumikha ng a `payable contract` gamit ang TripPay na naglalaman ng mga item na ibi-book.
-  4. Hayaang magbayad ang manlalakbay gamit ang TripPay Web Component.
+1. Siguraduhing na-map na ang mga beneficiary na binanggit mo sa booking contract.
+2. Hayaan ang traveler na pumili ng inventory na nais nilang i-book at ihanda silang magbayad.
+3. Gumawa ng `payable contract` sa TripPay na naglalaman ng mga item na i-book.
+4. Hayaan ang traveler na magbayad gamit ang TripPay Web Component.
 </Steps>
 
+Ipinagpapalagay namin na natapos mo na ang `Step 1` at `Step 2` at handa ka nang ipaalam sa TripPay ang tungkol sa booking.
 
-Ipinapalagay namin na nakumpleto mo na `Step 1` at `Step 2` at handang ipaalam sa TripPay ang tungkol sa booking.
+## Gumawa ng payable contract
 
-## Lumikha ng kontrata na maaaring bayaran
-
-:::tandaan
-Pumunta sa Payment API para matuto pa tungkol sa mga kinakailangan para gumawa ng kontratang babayaran.
+:::note
+Pumunta sa Payment API upang matuto pa tungkol sa mga kinakailangan sa paggawa ng payable contract.
 :::
 
-### Kahilingan
-
-Narito ang isang sample na kahilingan ng JSON na kasama ang lahat ng kailangan mong gawin para sa iyong unang kontratang babayaran.
+### Request
+Narito ang isang JSON sample request na naglalaman ng lahat ng kailangan mo para gumawa ng iyong unang payable contract.
 
 ```json {3-6, 8-9}
 {
@@ -132,49 +129,49 @@ Narito ang isang sample na kahilingan ng JSON na kasama ang lahat ng kailangan m
 
 Paliwanag:
 
-Hindi namin ipapaliwanag ang bawat punto ng data dito dahil sakop na ang mga ito sa mga doc ng API.
+Hindi namin ipapaliwanag ang bawat data point dito dahil nasaklaw na ito sa API docs.
 
-* Mga linya: **2 - 7** ay ang user na responsable para sa booking. Mayroong dalawang uri ng booker:
-  * Manlalakbay.
-  * Ahente sa paglalakbay.
-* Mga linya: **8 - 9** ay ang TripPay account na nagpapadali sa booking. Maaari itong maging:
-  * Ang iyong TripPay integrator account.
-  * Kung nagpapatakbo ka ng isang kaakibat na network, maaari itong maging kaakibat mo.
-* Gumamit ng a `traceId` upang igrupo ang maraming booking sa maraming supplier. Sa ganitong paraan maaari mong kanselahin ang isang group booking.
-* `redirectUrl` nagpapaalam sa TripPay kung aling pahina ang ire-redirect pagkatapos makumpleto ang pagbabayad.
-* `sourceUrl` ay ang site / app kung saan naganap ang booking.
+- Mga Linya: **2 - 7** ay ang user na responsable sa booking. May dalawang uri ng bookers:
+    - Traveler.
+    - Travel agent.
+- Mga Linya: **8 - 9** ay ang TripPay account na nagpapadali ng booking. Maaari itong:
+    - Iyong TripPay integrator account.
+    - Kung nagpapatakbo ka ng affiliate network, maaari itong iyong affiliate.
+- Gumamit ng `traceId` upang pagsamahin ang maraming booking mula sa maraming supplier. Sa ganitong paraan maaari mong kanselahin ang isang group booking.
+- Ang `redirectUrl` ay nagsasabi sa TripPay kung saang pahina ito magre-redirect pagkatapos makumpleto ang pagbabayad.
+- Ang `sourceUrl` ay ang site / app kung saan naganap ang booking.
 
-Ang `contractList` Ang array ay naglalaman ng (mga) item na gustong bilhin ng manlalakbay mula sa maraming supplier. Ang bawat item ay naglalaman ng:
+Ang `contractList` array ay naglalaman ng item(s) na nais bilhin ng traveler mula sa maraming supplier. Bawat item ay naglalaman ng:
 
-* Ang `identifier` ay isang wastong UUID na iyong nabuo.
-* Ang supplier kung saan mo gustong mag-book ng imbentaryo.
-* Ang imbentaryo na gusto mong i-book mula sa supplier na iyon. Ang lahat ng ito ay tinukoy sa nested array `contractItemList`.
-* Bawat entry sa ilalim `contractItemList` naglalaman ng:
-  * **Guest user** Ito ang user na darating sa lugar.
-  * **Pangalan sa Ingles** Ang pangalan ng imbentaryo sa wikang Ingles.
-  * **Paglalarawan sa Ingles** Isang mas mahabang paglalarawan ng imbentaryo sa wikang Ingles.
-  * **Presyo** Ang presyo ng item.
-  * **Itinerary** Kailan dapat i-book ang item na ito.
-  * **Uri ng pagpepresyo** Paano kinakalkula ang presyo.
-  * **Uri ng imbentaryo** Anong uri ng imbentaryo ito.
-  * **Mababayaran** Kailan dapat singilin ang manlalakbay. *Kasalukuyan lang naming sinusuportahan ang mga agarang opsyon sa pagbabayad.*
-  * **Patakaran** Isama ang mga patakaran sa pagkansela.
-  * **Listahan ng pang-araw-araw na rate** Kung ang item na ini-book ay isang kuwarto, maaari mong piliing isama kung magkano ang halaga ng kuwartong iyon para sa bawat gabing pananatili ng bisita.
-  * **Mga benepisyaryo** Isama kung aling (mga) TripPay account ang dapat ilaan kung anong halaga ng (mga) presyo ng item. *Ang mga naayos / Porsiyento ay sinusuportahan.*
+- Ang `identifier` ay isang valid na UUID na iyong gagawin.
+- Ang supplier na nais mong i-book ng inventory.
+- Ang inventory na nais mong i-book mula sa supplier na iyon. Lahat ito ay tinukoy sa nested array na `contractItemList`.
+- Bawat entry sa ilalim ng `contractItemList` ay naglalaman ng:
+    - **Guest user** Ito ang user na darating sa lugar.
+    - **Name in English** Ang pangalan ng inventory sa wikang Ingles.
+    - **Description in English** Isang mas mahabang paglalarawan ng inventory sa wikang Ingles.
+    - **Price** Ang presyo ng item.
+    - **Itinerary** Kailan dapat i-book ang item na ito.
+    - **Pricing type** Paano kinuwenta ang presyo.
+    - **Inventory type** Anong uri ng inventory ito.
+    - **Payable** Kailan dapat singilin ang traveler. *Sa kasalukuyan, sinusuportahan lang namin ang mga opsyon para sa agarang pagbabayad.*
+    - **Policy** Isama ang mga patakaran sa pagkansela.
+    - **Daily rate list** Kung ang item na bine-book ay isang kuwarto, maaari mong isama kung magkano ang halaga ng kuwarto para sa bawat gabi ng pananatili ng guest.
+    - **Beneficiaries** Isama kung aling TripPay account(s) ang dapat makatanggap ng anong halaga ng presyo ng item. *Sinusuportahan ang Fixed / Percent na halaga.*
 
-:::tandaan
-Sa halimbawa ng JSON sa itaas, mayroon kaming 3 benepisyaryo:
+:::note
+Sa halimbawa ng JSON sa itaas, mayroon tayong 3 beneficiaries:
 
-* 1.5% ang inilaan sa platform na nagpadali sa booking. *hal. Kumindat*
-* 9.85% ang inilaan sa kaanib bilang komisyon. *hal. Kim Kardashian*
-* 88.65% ang inilaan sa supplier para sa booking ng kuwarto. *hal. Hilton*
+- 1.5% ay inilaan sa platform na nagpadali ng booking. *hal. Wink*
+- 9.85% ay inilaan sa affiliate bilang komisyon. *hal. Kim Kardashian*
+- 88.65% ay inilaan sa supplier para sa booking ng kuwarto. *hal. Hilton*
 
-Kapag tumugon ang TripPay na may bayad na kontrata, mapapansin mong nag-inject ito ng sarili nitong benepisyaryo sa 4.0%.
+Kapag sumagot ang TripPay ng payable contract, mapapansin mong nag-inject ito ng sarili nitong beneficiary na 4.0%.
 :::
 
-### Tugon
+### Response
 
-Kapag tumugon ang TripPay sa iyong kahilingan, magiging ganito ang hitsura:
+Kapag sumagot ang TripPay sa iyong request, ganito ang magiging itsura nito:
 
 ```json {3}
 [
@@ -208,19 +205,18 @@ Kapag tumugon ang TripPay sa iyong kahilingan, magiging ganito ang hitsura:
 ]
 ```
 
-I-save ang `id` sa linya 3. Gagamitin mo ito para mag-inject sa TripPay web component.
+I-save ang `id` sa linya 3. Gagamitin mo ito para i-inject sa TripPay web component.
 
 ## I-embed ang TripPay
 
-:::tandaan
-Tiyaking na-load mo muna ang aming mga istilo at Javascript.
+:::note
+Siguraduhing na-load mo na ang aming mga style at Javascript bago ito gawin.
 :::
 
-Sa puntong ito, handa ka nang i-embed ang `Payment Web Component` sa iyong website at ipakita ito sa gumagamit.
+Sa puntong ito, handa ka nang i-embed ang `Payment Web Component` sa iyong website at ipakita ito sa user.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Hanggang sa pagsasama, iyon lang ang kailangan mong gawin. Ang lahat ng mabibigat na trabaho ay ginagawa ng TripPay mula dito.
-
+Hanggang dito na lang ang kailangan mong gawin para sa integration. Ang lahat ng mabibigat na gawain ay gagawin na ng TripPay mula rito.

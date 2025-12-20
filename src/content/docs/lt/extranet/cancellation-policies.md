@@ -1,45 +1,45 @@
 ---
-title: Atšaukimo politika
-description: 'Šiame straipsnyje parodyta, kaip valdyti atšaukimo politiką „Wink“.'
+title: Atšaukimo politikos
+description: Šiame straipsnyje parodyta, kaip valdyti atšaukimo politikas Wink platformoje.
 sidebar:
   order: 12
 ---
-Norėdami tvarkyti atšaukimo politiką, spustelėkite`Monetize > Cancellation policies`iš pagrindinės naršymo juostos.
 
-Atšaukimo politika nustato, kaip tvarkomos rezervuojančiojo lėšos, jei svečias negali atvykti. Atšaukimo politika yra dviejų tipų:
+Norėdami valdyti savo atšaukimo politikas, pagrindinėje navigacijos juostoje spustelėkite `Monetize > Cancellation policies`.
 
-1. Grąžinama
-2. Negrąžinamas
+Atšaukimo politikos nustato, kaip tvarkomi užsakovo pinigai, jei svečias negali atvykti. Atšaukimo politikos būna dviejų rūšių:
 
-Dažniausiai šių dviejų variantų pakanka. Tačiau abu variantai suteikia daug erdvės dar labiau pritaikyti atšaukimo politiką.
+1. Grąžinamos
+2. Negrąžinamos
 
-:::tip\[Įdomus faktas]
-„Wink“ palaiko iš viso 8500 atšaukimo politikos variantų.
+Daugeliu atvejų šios dvi parinktys yra pakankamos. Tačiau abi suteikia daug galimybių toliau suasmeninti atšaukimo politiką.
+
+:::tip[Įdomybė]
+Wink palaiko iš viso 8500 atšaukimo politikos variantų.
 :::
 
-Norėdami sukurti atšaukimo politiką, spustelėkite`Create a new cancellation policy`mygtukas.
+Norėdami sukurti atšaukimo politiką, spustelėkite mygtuką `Create a new cancellation policy`.
 
-## Negrąžinamas
+## Negrąžinamos
 
-Norėdami sukurti negrąžinamo atšaukimo politiką, išjunkite jungiklį 🛑, kai jūsų paklaus, ar politika grąžinama.
-
-### Parinktys
-
-Galite pasirinktinai sukonfigūruoti savo`non-refundable`politiką, siekiant didesnės kontrolės.
-
-* **Kiek kainuoja svečias už atšaukimą?**&#x50;agal numatytuosius nustatymus negrąžinamo draudimo polisas yra 100 % negrąžinamas. Čia galite patikslinti sumą.*pvz., 50 % visos kainos*
-* **Ar mokestis turi terminą?**&#x4A;ei tiksliai pakoregavote sumą, galite ją dar kartą pakoreguoti nustatydami, kiek laiko ta suma galios.*pvz., iki 3 dienų iki atvykimo*
-* **Kiek kainuoja svečias, atšaukęs po termino?**&#x4A;ei svečias praleidžia aukščiau nustatytą terminą, galite nustatyti sumą, kurią svečias turi sumokėti pasibaigus terminui.*pvz., 70 % visos kainos*
-
-## Grąžinama
-
-Norėdami sukurti grąžintino atšaukimo politiką, įjunkite jungiklį į ✅ padėtį, kai bus paklausta, ar politika grąžinama.
+Norėdami sukurti negrąžinamą atšaukimo politiką, nustatykite jungiklį į 🛑 išjungta, kai klausiama, ar politika yra grąžinama.
 
 ### Parinktys
 
-Galite pasirinktinai sukonfigūruoti savo`refundable`politiką, siekiant didesnės kontrolės.
+Galite papildomai sukonfigūruoti savo `negrąžinamą` politiką, kad turėtumėte didesnę kontrolę.
 
-* **Kiek laiko iki atvykimo svečias gali nemokamai atšaukti užsakymą?**&#x50;agal numatytuosius nustatymus grąžinamos sumos polisas visada grąžina 100 % pinigų. Čia galite patikslinti terminą.*pvz., 3 dienos prieš atvykimą*
-* **Kokia kaina turėtų būti taikoma svečiui, jei atšaukimas įvyksta po aukščiau nurodyto termino?**&#x4A;ei patikslinote terminą, galite nustatyti sumą, kurią svečias moka po termino.*pvz., 50 % visos kainos*
-* **Kiek turėtų būti mokama svečiui už neatvykimą?**&#x4A;ei svečias neatvyksta, galite nustatyti sumą, kurią jis turės sumokėti už`No show`.*pvz., 100 % visos kainos*
+- **Kiek svečiui yra taikomas mokestis už atšaukimą?** Pagal numatytuosius nustatymus negrąžinama politika reiškia 100 % negrąžinamą mokestį. Čia galite tikslinti sumą. *pvz., 50 % nuo bendros kainos*
+- **Ar mokestis turi terminą?** Jei tikslinote sumą, galite dar labiau ją koreguoti nustatydami, kiek laiko ši suma galioja. *pvz., iki 3 dienų prieš atvykimą*
+- **Kiek svečiui taikomas mokestis už atšaukimą po termino?** Jei svečias viršija aukščiau nustatytą terminą, galite nustatyti sumą, kurią svečias moka po termino. *pvz., 70 % nuo bendros kainos*
 
+## Grąžinamos
+
+Norėdami sukurti grąžinamą atšaukimo politiką, nustatykite jungiklį į ✅ įjungta, kai klausiama, ar politika yra grąžinama.
+
+### Parinktys
+
+Galite papildomai sukonfigūruoti savo `grąžinamą` politiką, kad turėtumėte didesnę kontrolę.
+
+- **Kiek laiko prieš atvykimą svečias gali atšaukti nemokamai?** Pagal numatytuosius nustatymus grąžinama politika visada yra 100 % grąžinama. Čia galite tikslinti terminą. *pvz., 3 dienos prieš atvykimą*
+- **Kiek svečiui taikomas mokestis, jei atšaukimas įvyksta po aukščiau nurodyto termino?** Jei tikslinote terminą, galite nustatyti sumą, kurią svečias moka po termino. *pvz., 50 % nuo bendros kainos*
+- **Kiek svečiui taikomas mokestis už „Neatvykimą“?** Jei svečias neatvyksta, galite nustatyti sumą, kurią svečias moka už `No show`. *pvz., 100 % nuo bendros kainos*

@@ -1,43 +1,40 @@
 ---
 title: Samþætting við TripPay
-description: >-
-  Þessi grein inniheldur ítarlegt dæmi um hvernig á að samþætta við TripPay og
-  láta það sjá um greiðsluna fyrir þig.
+description: Þessi grein inniheldur fullkomið dæmi um hvernig á að samþætta við og láta TripPay sjá um greiðsluna fyrir þig.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Þessi grein inniheldur ítarlegt dæmi um hvernig á að samþætta við TripPay.
+Þessi grein inniheldur dæmi frá upphafi til enda um hvernig á að samþætta við TripPay.
 
-Það er mælt með því að þú hafir þegar lesið:
+Mælt er með að þú hafir þegar lesið:
 
-* [Greiðsla > Kortlagning](/payment/mapping).
-* [Greiðsla > Samþætting](/payment/integration).
-* [Greiðsluvefþáttur](/developers/web-components/#payment).
-* [Greiðslu-API](/developers/apis/#payment-api).*Lestu kaflann um`Create payable contracts`*
+- [Payment > Mapping](/is/payment/mapping).
+- [Payment > Integration](/is/payment/integration).
+- [Payment Web Component](/is/developers/web-components/#payment).
+- [Payment API](/is/developers/apis/#payment-api). *Lestu kaflann um `Create payable contracts`*
 
-Hér eru skrefin til að nota TripPay til að greiða fyrir bókun:
+Hér eru skrefin til að nota TripPay til að greiða fyrir bókun með góðum árangri:
 
 <Steps>
-  1. Gakktu úr skugga um að rétthafarnir sem þú nefnir í bókunarsamningnum hafi verið kortlagðir.
-  2. Leyfðu ferðalangnum að velja þá geymslu sem hann vill bóka og láttu hann undirbúa greiðslu.
-  3. Búa til `payable contract` með TripPay sem inniheldur vörurnar sem á að bóka.
-  4. Láttu ferðalanginn greiða með TripPay vefþáttinum.
+1. Gakktu úr skugga um að þeir sem þú nefnir sem þiggjendur í bókunarsamningnum hafi verið kortlagðir.
+2. Láttu ferðalanginn velja birgðirnar sem hann vill bóka og undirbúa sig til að greiða.
+3. Búðu til `payable contract` með TripPay sem inniheldur þá hluti sem á að bóka.
+4. Láttu ferðalanginn greiða með TripPay Web Component.
 </Steps>
 
+Við gerum ráð fyrir að þú hafir þegar lokið `Skrefi 1` og `Skrefi 2` og ert tilbúinn að láta TripPay vita af bókuninni.
 
-Við gerum ráð fyrir að þú hafir þegar lokið`Step 1`og`Step 2`og eru tilbúin að láta TripPay vita af bókuninni.
+## Búa til greiðslusamning
 
-## Stofna greiðslusamning
-
-:::athugið
-Farið í greiðsluforritaskilið til að fá frekari upplýsingar um kröfur til að búa til greiðslusamning.
+:::note
+Farðu á Payment API til að læra meira um kröfurnar til að búa til greiðslusamning.
 :::
 
-### Beiðni
-
-Hér er dæmi um JSON-beiðni sem inniheldur allt sem þú þarft til að búa til fyrir fyrsta greiðslusamninginn þinn.
+### Fyrirspurn
+Hér er JSON dæmi um fyrirspurn sem inniheldur allt sem þú þarft til að búa til þinn fyrsta greiðslusamning.
 
 ```json {3-6, 8-9}
 {
@@ -132,49 +129,49 @@ Hér er dæmi um JSON-beiðni sem inniheldur allt sem þú þarft til að búa t
 
 Útskýring:
 
-Við munum ekki útskýra alla gagnapunkta hér þar sem þeir eru þegar fjallaðir um í API-skjölunum.
+Við munum ekki útskýra hvert gagnapunkt hér þar sem þau eru þegar útskýrð í API skjölunum.
 
-* Línur:**2 - 7**er notandinn sem ber ábyrgð á bókuninni. Það eru tvær gerðir bókara:
-  * Ferðamaður.
-  * Ferðaskrifstofa.
-* Línur:**8 - 9**Er TripPay reikningurinn sem sér um bókunina? Það getur verið:
-  * TripPay samþættingarreikningurinn þinn.
-  * Ef þú rekur samstarfsnet getur það verið samstarfsnetið þitt.
-* Notaðu`traceId`til að flokka margar bókanir hjá mörgum birgjum. Þannig er hægt að hætta við hópbókun.
-* `redirectUrl`lætur TripPay vita á hvaða síðu á að beina eftir að greiðsla er lokið.
-* `sourceUrl`er síðan/appið sem bókunin fór fram á.
+- Línur: **2 - 7** eru notandinn sem ber ábyrgð á bókuninni. Það eru tveir gerðir bókenda:
+    - Ferðalangur.
+    - Ferðaskrifstofumaður.
+- Línur: **8 - 9** eru TripPay reikningurinn sem sér um bókunina. Hann getur verið:
+    - Þinn TripPay samþættingarreikningur.
+    - Ef þú rekur tengdanet, getur það verið tengdiliður þinn.
+- Notaðu `traceId` til að hópa saman margar bókanir frá mörgum birgjum. Þannig getur þú hætt við hópbókun.
+- `redirectUrl` segir TripPay hvaða síðu á að vísa á eftir að greiðslan er lokið.
+- `sourceUrl` er vefsvæðið / appið þar sem bókunin átti sér stað.
 
-Hinn`contractList`Fylki inniheldur vöruna/vörurnar sem ferðamaðurinn vill kaupa frá mörgum birgjum. Hver vara inniheldur:
+Fylkið `contractList` inniheldur þann hlut eða þá hluti sem ferðalangurinn vill kaupa frá mörgum birgjum. Hver hlutur inniheldur:
 
-* Hinn`identifier`er gilt UUID sem þú býrð til.
-* Birgirinn sem þú vilt bóka birgðir frá.
-* Birgðirnar sem þú vilt bóka frá þeim birgja. Þetta er allt tilgreint í innfelldu fylkinu.`contractItemList`.
-* Sérhver færsla undir`contractItemList`inniheldur:
-  * **Gestir**Þetta er notandinn sem mun koma á staðinn.
-  * **Nafn á ensku**Heiti birgðarinnar á ensku.
-  * **Lýsing á ensku**Lengri lýsing á birgðunum á ensku.
-  * **Verð**Verð hlutarins.
-  * **Ferðaáætlun**Hvenær á að bóka þennan hlut.
-  * **Verðlagningartegund**Hvernig verðið var reiknað út.
-  * **Tegund birgða**Hvers konar birgðir þetta eru.
-  * **Greiðanlegt**Hvenær á að rukka ferðamanninn.*Við styðjum aðeins tafarlausar greiðslur eins og er.*
-  * **Stefna**Hafa með reglur um afpöntunarstefnu.
-  * **Dagleg verðlisti**Ef varan sem verið er að bóka er herbergi, getur þú valið að taka með kostnaðinn við herbergið fyrir hverja nótt sem gesturinn dvelur.
-  * **Rétthafar**Takið með hvaða TripPay reikning(ar) á að fá úthlutað hvaða upphæð(ir) af verði vörunnar.*Fastar upphæðir / prósentuupphæðir eru studdar.*
+- `identifier` er gilt UUID sem þú býrð til.
+- Birginn sem þú vilt bóka birgðir frá.
+- Birgðirnar sem þú vilt bóka frá þeim birgi. Þær eru allar tilgreindar í innra fylkinu `contractItemList`.
+- Hver færsla undir `contractItemList` inniheldur:
+    - **Gestanotandi** Þetta er notandinn sem mun koma á staðinn.
+    - **Nafn á ensku** Nafn birgðarinnar á ensku.
+    - **Lýsing á ensku** Lengri lýsing á birgðinni á ensku.
+    - **Verð** Verð hlutarins.
+    - **Ferðaáætlun** Hvenær á að bóka þennan hlut.
+    - **Tegund verðlagningar** Hvernig verðið var reiknað.
+    - **Tegund birgða** Hvaða tegund birgða þetta er.
+    - **Greiðsluskyldur** Hvenær ferðalangurinn á að greiða. *Við styðjum nú aðeins tafarlausar greiðslumöguleika.*
+    - **Stefna** Inniheldur reglur um afpöntun.
+    - **Dagsverðlisti** Ef hluturinn sem er bókaður er herbergi, getur þú valið að taka með hversu mikið herbergið kostar fyrir hverja nótt sem gesturinn dvelur.
+    - **Þiggjendur** Inniheldur hvaða TripPay reikning(ur) eiga að fá hvaða hluta af verði hlutarins. *Fastar / prósentu upphæðir eru studdar.*
 
-:::athugið
-Í JSON dæminu hér að ofan höfum við þrjá rétthafa:
+:::note
+Í ofangreindu JSON dæmi eru 3 þiggjendur:
 
-* 1,5% var úthlutað til þess kerfis sem gerði bókunina mögulega.*t.d. Wink*
-* 9,85% var úthlutað til samstarfsaðilans sem þóknun.*t.d. Kim Kardashian*
-* 88,65% fengu úthlutað birgjanum fyrir bókun herbergisins.*t.d. Hilton*
+- 1,5% var úthlutað til vettvangsins sem sá um bókunina. *t.d. Wink*
+- 9,85% var úthlutað tengdiliðnum sem þóknun. *t.d. Kim Kardashian*
+- 88,65% var úthlutað birgjanum fyrir bókun herbergisins. *t.d. Hilton*
 
-Þegar TripPay svarar með greiðslusamningi, munt þú taka eftir því að það lagði inn 4,0% innborgun til eigin rétthafa.
+Þegar TripPay svarar með greiðslusamningi, munt þú taka eftir að það setti inn sinn eigin þiggjanda með 4,0%.
 :::
 
 ### Svar
 
-Þegar TripPay svarar beiðni þinni mun það líta svona út:
+Þegar TripPay svarar fyrirspurn þinni mun það líta út svona:
 
 ```json {3}
 [
@@ -208,19 +205,18 @@ Hinn`contractList`Fylki inniheldur vöruna/vörurnar sem ferðamaðurinn vill ka
 ]
 ```
 
-Vista`id`í línu 3. Þú munt nota þetta til að sprauta inn í TripPay vefþáttinn.
+Vistaðu `id` á línu 3. Þú munt nota það til að setja inn í TripPay vefhlutann.
 
-## Innfella TripPay
+## Innbyggja TripPay
 
-:::athugið
-Gakktu úr skugga um að þú hafir hlaðið inn stílunum okkar og Javascript fyrirfram.
+:::note
+Gakktu úr skugga um að þú hafir hlaðið inn stílum og Javascript áður.
 :::
 
-Á þessum tímapunkti ertu tilbúinn að fella inn`Payment Web Component`inn á vefsíðuna þína og sýna það notandanum.
+Á þessum tímapunkti ertu tilbúinn að innbyggja `Payment Web Component` á vefsíðuna þína og sýna notandanum.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Hvað samþættingu varðar, þá er það allt sem þú þarft að gera. TripPay sér um allt erfiða verkið héðan í frá.
-
+Varðandi samþættingu, þá er þetta allt sem þú þarft að gera. Allt þungt verk er unnið af TripPay héðan í frá.

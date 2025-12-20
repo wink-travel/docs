@@ -1,43 +1,43 @@
 ---
-title: Žádost o smazání dat
-description: 'Zjistěte, jak požádat o smazání vašich osobních údajů na platformě Wink.'
+title: Žádost o vymazání dat
+description: Naučte se, jak požádat o vymazání svých osobních údajů na Wink.
 sidebar:
   order: 9
 ---
-Ve společnosti Wink respektujeme vaše soukromí a plně se zavazujeme chránit vaše osobní údaje. Dodržujeme**Obecné nařízení o ochraně osobních údajů (GDPR)**&#x61; další platné zákony na ochranu osobních údajů po celém světě.
 
-Tato stránka popisuje, jak můžete požádat o smazání veškerých osobních údajů, které jsme mohli shromáždit prostřednictvím naší platformy – včetně, ale nikoli výhradně, údajů získaných prostřednictvím poskytovatelů sociálních sítí, jako je Facebook nebo Instagram.
+Ve Wink respektujeme vaše soukromí a plně se zavazujeme chránit vaše osobní údaje. Dodržujeme **Obecné nařízení o ochraně osobních údajů (GDPR)** a další platné zákony o ochraně dat po celém světě.
 
-## Náš závazek k ochraně osobních údajů
+Tato stránka popisuje, jak můžete požádat o vymazání jakýchkoli osobních údajů, které jsme mohli shromáždit prostřednictvím naší platformy — včetně, ale nejen, údajů získaných přes poskytovatele sociálního přihlášení jako Facebook nebo Instagram.
 
-Shromažďujeme pouze údaje nezbytné k poskytování našich služeb a nikdy neprodáváme vaše osobní údaje. Může se jednat o:
+## Naše závazky k ochraně dat
 
-* Vaše jméno a e-mailová adresa
-* Informace z veřejného profilu (např. z Facebooku nebo Googlu)
-* Údaje o používání nebo aktivitě na naší platformě
-* Veškerá oprávnění, která jste výslovně udělili
+Shromažďujeme pouze údaje nezbytné pro poskytování našich služeb a nikdy neprodáváme vaše osobní informace. Může to zahrnovat:
 
-Přijímáme vhodná opatření k ochraně vašich údajů a všechny žádosti o smazání zpracováváme v souladu s GDPR a zásadami ochrany osobních údajů společnosti Meta.
+- Vaše jméno a e-mailovou adresu
+- Veřejné informace z profilu (např. z Facebooku nebo Google)
+- Údaje o používání nebo aktivitě na naší platformě
+- Jakákoli oprávnění, která jste nám výslovně udělili
 
-## Žádost o smazání dat
+Přijímáme vhodná opatření k ochraně vašich dat a všechny žádosti o vymazání zpracováváme v souladu s GDPR a zásadami ochrany dat společnosti Meta.
 
-Máte právo požádat o smazání veškerých osobních údajů, které o vás uchováváme.
+## Žádost o vymazání dat
 
-Chcete-li požádat o smazání údajů:
+Máte právo požádat, abychom vymazali jakékoli osobní údaje, které o vás uchováváme.
 
-* 📧**Poslat e-mail uživateli**: [podpora@wink.travel](mailto:support@wink.travel) 
-* 📝 Použijte předmět zprávy:`Data Deletion Request`
-* 🔍 Uveďte prosím identifikační údaje, jako například:
-  * E-mailová adresa používaná s naší platformou
-  * Vaše Facebookové nebo Google ID nebo podobné (pokud je to relevantní)
+Pro žádost o vymazání dat:
 
-Odpovíme do**30 dní**přijetí vaší žádosti, jak to vyžaduje GDPR.
+- 📧 **Zašlete e-mail na**: [support@wink.travel](mailto:support@wink.travel)
+- 📝 Použijte předmět: `Data Deletion Request`  
+- 🔍 Uveďte identifikační údaje, například:
+  - E-mailovou adresu používanou na naší platformě
+  - Vaše Facebook nebo Google ID či podobné (pokud je to relevantní)
 
-## Máte otázky nebo obavy?
+Odpovíme vám do **30 dnů** od obdržení vaší žádosti, jak vyžaduje GDPR.
 
-Pokud máte jakékoli dotazy ohledně toho, jak shromažďujeme, používáme nebo mažeme vaše údaje, neváhejte kontaktovat náš tým pro ochranu osobních údajů na adrese[podpora@wink.travel](mailto:support@wink.travel).
+## Dotazy nebo obavy?
 
-***
+Pokud máte jakékoli otázky ohledně toho, jak shromažďujeme, používáme nebo vymazáváme vaše data, neváhejte kontaktovat náš tým pro ochranu soukromí na [support@wink.travel](mailto:support@wink.travel).
 
-Děkujeme vám za důvěru. Ochranu údajů bereme vážně a zavazujeme se vám poskytnout plnou kontrolu nad vašimi informacemi.
+---
 
+Děkujeme, že nám důvěřujete. Ochranu dat bereme vážně a zavazujeme se vám poskytnout plnou kontrolu nad vašimi informacemi.

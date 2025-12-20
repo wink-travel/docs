@@ -1,148 +1,148 @@
 ---
-title: Βαθμολογήστε τους παρόχους
-description: >-
-  Ακολουθεί η ενημερωμένη λίστα παρόχων χρεώσεων που υποστηρίζουμε απευθείας στο
-  Wink.
+title: Πάροχοι Τιμών
+description: Εδώ είναι η ενημερωμένη λίστα των παρόχων τιμών που υποστηρίζουμε απευθείας στο Wink.
 sidebar:
   order: 18
 ---
-## Ορισμός παρόχου χρέωσης
 
-Για να ορίσετε τον πάροχο χρεώσεων, κάντε κλικ στο`Distribution > Channel manager`από την κύρια γραμμή πλοήγησης.
+## Ορισμός παρόχου τιμών
 
-Επιλέξτε τον πάροχο χρεώσεων από την αναπτυσσόμενη λίστα και κάντε κλικ στο`Save`κουμπί. Αυτό θα επιτρέψει στον πάροχο τιμών να μας στείλει τιμές και θα τον ειδοποιήσουμε όταν υπάρξει κράτηση στο Wink για ένα από τα καταλύματά σας.
+Για να ορίσετε τον πάροχο τιμών σας, κάντε κλικ στο `Distribution > Channel manager` από τη βασική γραμμή πλοήγησης.
+
+Επιλέξτε τον πάροχο τιμών από τη λίστα επιλογών και κάντε κλικ στο κουμπί `Save`. Αυτό θα επιτρέψει στον πάροχο τιμών να μας στέλνει τιμές και θα τους ειδοποιούμε όταν γίνει κράτηση στο Wink για κάποιο από τα καταλύματά σας.
+
 
 ### SynXis
 
-Εάν το κατάλυμά σας χρησιμοποιεί τον διαχειριστή καναλιών SynXis, απαιτούνται περισσότερα βήματα προτού είστε έτοιμοι να συνδεθείτε με το Wink.
+Εάν το κατάλυμά σας χρησιμοποιεί τον channel manager SynXis, απαιτείται ένα ακόμη βήμα πριν είστε έτοιμοι να συνδεθείτε με το Wink.
 
-* Επικοινωνήστε με τον εκπρόσωπο του λογαριασμού SynXis ή την εξυπηρέτηση πελατών σας (SHSCustomerCare@sabre.com).
-* Ενημερώστε τους ότι θέλετε να συνδεθείτε με το Wink μέσω του Channel Connect Express (***CCX***).
-* Θα σας δώσουν μια ολοκληρωμένη φόρμ&#x3B1;***PRS***.
-  * Θα σας ζητηθεί να συμπληρώσετε τα διαπιστευτήρια χρήστη Wink.
-  * ...και το νόμισμα που επιθυμείτε.
-* Συμπληρώστε τη φόρμα και υποβάλετέ την πίσω στο SynXis.
+- Παρακαλούμε επικοινωνήστε με τον εκπρόσωπο λογαριασμού SynXis ή την εξυπηρέτηση πελατών (SHSCustomerCare@sabre.com).
+- Ενημερώστε τους ότι θέλετε να συνδεθείτε με το Wink μέσω Channel Connect Express (***CCX***).
+- Θα σας ζητηθεί να συμπληρώσετε τη φόρμα ***PRS***.
+  - Θα σας ζητηθεί να εισάγετε τα διαπιστευτήρια χρήστη Wink.
+  - ...και το επιθυμητό νόμισμα.
+- Συμπληρώστε τη φόρμα και υποβάλετέ την πίσω στη SynXis.
 
-## Προμηθευτές
+## Πάροχοι
 
-Παρακάτω είναι μια λίστα με τους προμηθευτές που υποστηρίζουμε:
+Παρακάτω είναι μια λίστα με τους παρόχους που υποστηρίζουμε:
 
 Διαθέσιμοι τύποι:
 
-* Διαχειριστής καναλιών (CM)
-* Σύστημα Διαχείρισης Ακινήτων (PMS)
-* Κεντρικό Σύστημα Κρατήσεων (CRS)
+- Channel Manager (CM)
+- Property Management System (PMS)
+- Central Reservation System (CRS)
 
-*Εάν ο προμηθευτής έχει έναν πληρεξούσιο, αυτό σημαίνει ότι λαμβάνουμε έμμεσα τιμή από τον προμηθευτή μέσω του πληρεξουσίου.*
+*Εάν ο πάροχος έχει proxy, σημαίνει ότι λαμβάνουμε έμμεσα τιμές από τον πάροχο μέσω του proxy.*
 
-| Προμηθευτής | Τύπος | Μεσολάβηση | Από | Τελευταία τροποποίηση | Σχόλιο
-| -- | -- | -- | -- | -- | -- | |
-| Ξενοδόχοι | CM | | 2017 | 2017 | |
-| Travelclick | CM | | 2016 | 2016 | |
-| Yield Planet | CM | | 2016 | 2016 | |
-| Siteminder | CM | | 2016 | 2016 | |
-| Cloudbeds | CM | | 2016 | 2016 | |
-| MyAllocator | CM | | 2016 | 2016 | |
-| ResAvenue | CM | | 2017 | 2017 | |
-| Fastbooking | CM | | 2016 | 2016 | Τώρα d-edge |
-| Omnibees | CM | | 2019 | 2019 | |
-| Σύνδεσμος Ξενοδοχείων | CM | | 2017 | 2017 | |
-| RateGain | CM | | 2016 | 2018 | |
-| Allotz | CM | | 2019 | 2019 | |
-| d-edge | CM | | 2018 | 2018 | |
-| Comanche | PMS | | 2017 | 2017 | |
-| Synxis | PMS | | 2019 | 2019 | |
-| Κανάλι | PMS | | 2023 | 2023 | |
-| Μια Τέλεια Διαμονή | PMS | Κανάλι | 2023 | 2023 | |
-| Mews | PMS | Κανάλι | 2023 | 2023 | |
-| Όπερα | PMS | Κανάλι | 2023 | 2023 | |
-| Apaleo | PMS | Κανάλι | 2023 | 2023 | |
-| Κράτηση Κατοικίας | PMS | Κανάλι | 2023 | 2023 | |
-| AIOSELL | PMS | Κανάλι | 2023 | 2023 | |
-| Ajjir | PMS | Κανάλι | 2023 | 2023 | |
-| Όλα Κρατημένα | PMS | Κανάλι | 2023 | 2023 | |
-| Alojate | PMS | Κανάλι | 2023 | 2023 | |
-| Atlantis | PMS | Κανάλι | 2023 | 2023 | |
-| ATM | PMS | Κανάλι | 2023 | 2023 | |
-| Ξενοδοχεία Ayenda | PMS | Κανάλι | 2023 | 2023 | |
+| Vendor | Type | Proxy | Since | Last modified | Comment
+| -- | -- | -- | -- | -- | -- |
+| Hoteliers Guru | CM |  | 2017 | 2017 | |
+| Travelclick | CM |  | 2016 | 2016 | |
+| Yield Planet | CM |  | 2016 | 2016 | |
+| Siteminder | CM |  | 2016 | 2016 | |
+| Cloudbeds | CM |  | 2016 | 2016 | |
+| MyAllocator | CM |  | 2016 | 2016 | |
+| ResAvenue | CM |  | 2017 | 2017 | |
+| Fastbooking | CM |  | 2016 | 2016 | Τώρα d-edge |
+| Omnibees | CM |  | 2019 | 2019 | |
+| Hotel Link | CM |  | 2017 | 2017 | |
+| RateGain | CM |  | 2016 | 2018 | |
+| Allotz | CM |  | 2019 | 2019 | |
+| d-edge | CM |  | 2018 | 2018 | |
+| Comanche | PMS |  | 2017 | 2017 | |
+| Synxis | PMS |  | 2019 | 2019 | |
+| Channex | PMS |  | 2023 | 2023 | |
+| A Perfect Stay | PMS | Channex | 2023 | 2023 | |
+| Mews | PMS | Channex | 2023 | 2023 | |
+| Opera | PMS | Channex | 2023 | 2023 | |
+| Apaleo | PMS | Channex | 2023 | 2023 | |
+| Abode Booking | PMS | Channex | 2023 | 2023 | |
+| AIOSELL | PMS | Channex | 2023 | 2023 | |
+| Ajjir | PMS | Channex | 2023 | 2023 | |
+| All Booked | PMS | Channex | 2023 | 2023 | |
+| Alojate | PMS | Channex | 2023 | 2023 | |
+| Atlantis | PMS | Channex | 2023 | 2023 | |
+| ATM | PMS | Channex | 2023 | 2023 | |
+| Ayenda Hoteles | PMS | Channex | 2023 | 2023 | |
 | Ayrton | PMS | Channex | 2023 | 2023 | |
 | Bali Zen Den | PMS | Channex | 2023 | 2023 | |
 | Banana Desk | PMS | Channex | 2023 | 2023 | |
 | Be Better Hotels | PMS | Channex | 2023 | 2023 | |
 | Bidrento | PMS | Channex | 2023 | 2023 | |
+| Big Solutions | PMS | Channex | 2023 | 2023 | |
 | Bitz | PMS | Channex | 2023 | 2023 | |
 | Blue Jay PMS | PMS | Channex | 2023 | 2023 | |
 | BookandLink | PMS | Channex | 2023 | 2023 | |
 | Book World | PMS | Channex | 2023 | 2023 | |
-| Bookelier | PMS | Κανάλι | 2023 | 2023 | |
-| Booking Factory | PMS | Κανάλι | 2023 | 2023 | |
-| Bookipro | PMS | Κανάλι | 2023 | 2023 | |
-| Booktech | PMS | Κανάλι | 2023 | 2023 | |
-| Bouk | PMS | Κανάλι | 2023 | 2023 | |
-| Cakra | PMS | Κανάλι | 2023 | 2023 | |
-| Callista | PMS | Κανάλι | 2023 | 2023 | |
-| Citrus | PMS | Κανάλι | 2023 | 2023 | |
-| Comando | PMS | Κανάλι | 2023 | 2023 | |
-| Condly | PMS | Κανάλι | 2023 | 2023 | |
-| Cortec | PMS | Κανάλι | 2023 | 2023 | |
-| Ταμείο | PMS | Κανάλι | 2023 | 2023 | |
-| Desbravador | PMS | Κανάλι | 2023 | 2023 | |
-| dtravel | PMS | Κανάλι | 2023 | 2023 | |
-| Εύκολη Ρεσεψιόν | PMS | Κανάλι | 2023 | 2023 | |
-| Εύκολη Διαμονή | PMS | Κανάλι | 2023 | 2023 | |
-| Ecobooking | PMS | Κανάλι | 2023 | 2023 | |
-| ehotelspace | PMS | Κανάλι | 2023 | 2023 | |
-| Eksenia | PMS | Κανάλι | 2023 | 2023 | |
-| Ermeshotels | PMS | Κανάλι | 2023 | 2023 | |
-| ezCloud | PMS | Κανάλι | 2023 | 2023 | |
-| ezyinn | PMS | Κανάλι | 2023 | 2023 | |
-| Finner | PMS | Κανάλι | 2023 | 2023 | |
-| Firefly | PMS | Κανάλι | 2023 | 2023 | |
-| FitsHotel | PMS | Κανάλι | 2023 | 2023 | |
-| FrontDesk Express | PMS | Κανάλι | 2023 | 2023 | |
-| FrontDesk Master | PMS | Κανάλι | 2023 | 2023 | |
-| Getabed | PMS | Κανάλι | 2023 | 2023 | |
+| Bookelier | PMS | Channex | 2023 | 2023 | |
+| Booking Factory | PMS | Channex | 2023 | 2023 | |
+| Bookipro | PMS | Channex | 2023 | 2023 | |
+| Booktech | PMS | Channex | 2023 | 2023 | |
+| Bouk | PMS | Channex | 2023 | 2023 | |
+| Cakra | PMS | Channex | 2023 | 2023 | |
+| Callista | PMS | Channex | 2023 | 2023 | |
+| Citrus | PMS | Channex | 2023 | 2023 | |
+| Comando | PMS | Channex | 2023 | 2023 | |
+| Condly | PMS | Channex | 2023 | 2023 | |
+| Cortec | PMS | Channex | 2023 | 2023 | |
+| Counter | PMS | Channex | 2023 | 2023 | |
+| Desbravador | PMS | Channex | 2023 | 2023 | |
+| dtravel | PMS | Channex | 2023 | 2023 | |
+| Easy Front Desk | PMS | Channex | 2023 | 2023 | |
+| Easy Rez | PMS | Channex | 2023 | 2023 | |
+| Ecobooking | PMS | Channex | 2023 | 2023 | |
+| ehotelspace | PMS | Channex | 2023 | 2023 | |
+| Eksenia | PMS | Channex | 2023 | 2023 | |
+| Ermeshotels | PMS | Channex | 2023 | 2023 | |
+| ezCloud | PMS | Channex | 2023 | 2023 | |
+| ezyinn | PMS | Channex | 2023 | 2023 | |
+| Finner | PMS | Channex | 2023 | 2023 | |
+| Firefly | PMS | Channex | 2023 | 2023 | |
+| FitsHotel | PMS | Channex | 2023 | 2023 | |
+| FrontDesk Express | PMS | Channex | 2023 | 2023 | |
+| FrontDesk Master | PMS | Channex | 2023 | 2023 | |
+| Getabed | PMS | Channex | 2023 | 2023 | |
 | Guest Guru | PMS | Channex | 2023 | 2023 | |
 | GuestPoint | PMS | Channex | 2023 | 2023 | |
 | GuestPro | PMS | Channex | 2023 | 2023 | |
 | GuestSmart | PMS | Channex | 2023 | 2023 | |
-| Βοηθώντας Ξενοδοχεία | PMS | Channex | 2023 | 2023 | |
+| Helping Hotels | PMS | Channex | 2023 | 2023 | |
 | Host-It | PMS | Channex | 2023 | 2023 | |
 | Hotelmeister | PMS | Channex | 2023 | 2023 | |
 | Hotelmu | PMS | Channex | 2023 | 2023 | |
 | OnePlace | PMS | Channex | 2023 | 2023 | |
-| HotelPoint | PMS | Κανάλι | 2023 | 2023 | |
-| Hotelgest | PMS | Κανάλι | 2023 | 2023 | |
-| Ξενοδόχος 101 | PMS | Κανάλι | 2023 | 2023 | |
-| Hotelsminder | PMS | Κανάλι | 2023 | 2023 | |
-| Hotelzify | PMS | Κανάλι | 2023 | 2023 | |
-| δωμάτια ιγκλού | PMS | Κανάλι | 2023 | 2023 | |
-| Johku | PMS | Κανάλι | 2023 | 2023 | |
-| KAO Hoteles | PMS | Κανάλι | 2023 | 2023 | |
-| Σύστημα Καταλυμάτων | PMS | Κανάλι | 2023 | 2023 | |
-| Καταλύματα | PMS | Κανάλι | 2023 | 2023 | |
-| Καταλύματα | PMS | Κανάλι | 2023 | 2023 | |
-| Mashvisor | PMS | Κανάλι | 2023 | 2023 | |
-| Masteryield | PMS | Κανάλι | 2023 | 2023 | |
-| Msool | PMS | Κανάλι | 2023 | 2023 | |
-| MyRent | PMS | Κανάλι | 2023 | 2023 | |
-| Newsoft | PMS | Κανάλι | 2023 | 2023 | |
-| Nokumo | PMS | Κανάλι | 2023 | 2023 | |
-| OTA Sync | PMS | Κανάλι | 2023 | 2023 | |
-| PAN Hospitality | PMS | Κανάλι | 2023 | 2023 | |
-| Passepartout | PMS | Κανάλι | 2023 | 2023 | |
-| Pitaya | PMS | Κανάλι | 2023 | 2023 | |
-| Prestige | PMS | Κανάλι | 2023 | 2023 | |
-| Pxsol | PMS | Κανάλι | 2023 | 2023 | |
-| Quovai | PMS | Κανάλι | 2023 | 2023 | |
-| ResBook | PMS | Κανάλι | 2023 | 2023 | |
-| ResClick | PMS | Κανάλι | 2023 | 2023 | |
-| Κλειδί Κράτησης | PMS | Κανάλι | 2023 | 2023 | |
-| ResMaster | PMS | Κανάλι | 2023 | 2023 | |
-| Retreat Guru | PMS | Κανάλι | 2023 | 2023 | | Revenatium | PMS | Κανάλι | 2023 | 2023 | |
-| Revivo | PMS | Κανάλι | 2023 | 2023 | |
-| rezStream | PMS | Κανάλι | 2023 | 2023 | |
-| Roomsy | PMS | Κανάλι | 2023 | 2023 | |
-| Roverpass | PMS | Κανάλι | 2023 | 2023 | |
-| Σέρβο | PMS | Κανάλι | 2023 | 2023 | |
-
+| HotelPoint | PMS | Channex | 2023 | 2023 | |
+| Hotelgest | PMS | Channex | 2023 | 2023 | |
+| Hotelier 101 | PMS | Channex | 2023 | 2023 | |
+| Hotelsminder | PMS | Channex | 2023 | 2023 | |
+| Hotelzify | PMS | Channex | 2023 | 2023 | |
+| igloorooms | PMS | Channex | 2023 | 2023 | |
+| Johku | PMS | Channex | 2023 | 2023 | |
+| KAO Hoteles | PMS | Channex | 2023 | 2023 | |
+| LodgingSystem | PMS | Channex | 2023 | 2023 | |
+| Lodgy | PMS | Channex | 2023 | 2023 | |
+| Mashvisor | PMS | Channex | 2023 | 2023 | |
+| Masteryield | PMS | Channex | 2023 | 2023 | |
+| Msool | PMS | Channex | 2023 | 2023 | |
+| MyRent | PMS | Channex | 2023 | 2023 | |
+| Newsoft | PMS | Channex | 2023 | 2023 | |
+| Nokumo | PMS | Channex | 2023 | 2023 | |
+| OTA Sync | PMS | Channex | 2023 | 2023 | |
+| PAN Hospitality | PMS | Channex | 2023 | 2023 | |
+| Passepartout | PMS | Channex | 2023 | 2023 | |
+| Pitaya | PMS | Channex | 2023 | 2023 | |
+| Prestige | PMS | Channex | 2023 | 2023 | |
+| Pxsol | PMS | Channex | 2023 | 2023 | |
+| Quovai | PMS | Channex | 2023 | 2023 | |
+| ResBook | PMS | Channex | 2023 | 2023 | |
+| ResClick | PMS | Channex | 2023 | 2023 | |
+| Reservation Key | PMS | Channex | 2023 | 2023 | |
+| ResMaster | PMS | Channex | 2023 | 2023 | |
+| Retreat Guru | PMS | Channex | 2023 | 2023 | |
+| Revenatium | PMS | Channex | 2023 | 2023 | |
+| Revivo | PMS | Channex | 2023 | 2023 | |
+| rezStream | PMS | Channex | 2023 | 2023 | |
+| Roomsy | PMS | Channex | 2023 | 2023 | |
+| Roverpass | PMS | Channex | 2023 | 2023 | |
+| Servo | PMS | Channex | 2023 | 2023 | |

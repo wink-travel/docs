@@ -1,45 +1,45 @@
 ---
-title: Atcelšanas politika
-description: 'Šajā rakstā ir parādīts, kā pārvaldīt atcelšanas politiku pakalpojumā Wink.'
+title: Atcelšanas politikas
+description: Šis raksts parāda, kā pārvaldīt atcelšanas politikas Wink platformā.
 sidebar:
   order: 12
 ---
-Lai pārvaldītu atcelšanas politiku, noklikšķiniet uz`Monetize > Cancellation policies`no galvenās navigācijas joslas.
 
-Atcelšanas politika nosaka, kā tiek apstrādāti rezervētāja līdzekļi, ja viesis nevar ierasties. Atcelšanas politika ir divu veidu:
+Lai pārvaldītu savas atcelšanas politikas, noklikšķiniet uz `Monetize > Cancellation policies` galvenajā navigācijas joslā.
 
-1. Atmaksājams
-2. Neatmaksājams
+Atcelšanas politikas nosaka, kā tiek rīkots ar rezervētāja līdzekļiem gadījumā, ja viesis nevar ierasties. Atcelšanas politikas ir divu veidu:
 
-Vairumā gadījumu šīs divas iespējas ir pietiekamas. Tomēr abas sniedz jums daudz iespēju pielāgot atcelšanas politiku.
+1. Atmaksājamas
+2. Neatmaksājamas
 
-:::padoms\[Interesants fakts]
-Wink atbalsta kopumā 8500 atcelšanas politikas variācijas.
+Lielākoties šīs divas opcijas ir pietiekamas. Tomēr abas dod daudz iespēju tālāk pielāgot atcelšanas politiku.
+
+:::tip[Interesants fakts]
+Wink atbalsta kopumā 8500 dažādas atcelšanas politikas variācijas.
 :::
 
-Lai izveidotu atcelšanas politiku, noklikšķiniet uz pogas`Create a new cancellation policy`poga.
+Lai izveidotu atcelšanas politiku, noklikšķiniet uz pogas `Create a new cancellation policy`.
 
-## Neatmaksājams
+## Neatmaksājama
 
-Lai izveidotu neatmaksājamu atcelšanas politiku, izslēdziet slēdzi 🛑, kad tiek jautāts, vai politika ir atmaksājama.
+Lai izveidotu neatmaksājamu atcelšanas politiku, iestatiet slēdzi uz 🛑 izslēgts, kad tiek jautāts, vai politika ir atmaksājama.
 
-### Iespējas
+### Opcijas
 
-Varat pēc izvēles konfigurēt savu`non-refundable`politiku, lai panāktu lielāku kontroli.
+Jūs varat pēc izvēles tālāk konfigurēt savu `neatmaksājamo` politiku, lai iegūtu lielāku kontroli.
 
-* **Cik maksā viesim atcelšanas gadījumā?**&#x50;ēc noklusējuma neatmaksājamā polise ir 100% neatmaksājamā polise. Šeit varat precizēt summu.*piemēram, 50% no kopējās cenas*
-* **Vai maksājumam ir noteikts termiņš?**&#x4A;a esat precīzi noregulējis summu, varat to vēl vairāk noregulēt, iestatot, cik ilgi šī summa paliek spēkā.*piemēram, līdz 3 dienām pirms ierašanās*
-* **Cik maksā viesim par atcelšanu pēc termiņa beigām?**&#x4A;a viesis nokavē iepriekš noteikto termiņu, varat iestatīt summu, ko viesim jāmaksā pēc termiņa beigām.*piemēram, 70% no kopējās cenas*
+- **Cik daudz viesim tiek iekasēts par atcelšanu?** Pēc noklusējuma neatmaksājama politika nozīmē 100% neatmaksājamu summu. Šeit varat precizēt summu. *piemēram, 50% no kopējās cenas*
+- **Vai iekasējumam ir termiņš?** Ja esat precizējis summu, varat to vēl vairāk pielāgot, norādot, cik ilgi šī summa ir spēkā. *piemēram, līdz 3 dienām pirms ierašanās*
+- **Cik daudz viesim tiek iekasēts par atcelšanu pēc termiņa?** Gadījumā, ja viesis pārsniedz iepriekš noteikto termiņu, varat iestatīt summu, kas viesim jāmaksā pēc termiņa. *piemēram, 70% no kopējās cenas*
 
-## Atmaksājams
+## Atmaksājama
 
-Lai izveidotu atmaksājamas atcelšanas politiku, ieslēdziet slēdzi pozīcijā ✅, kad tiek jautāts, vai politika ir atmaksājama.
+Lai izveidotu atmaksājamu atcelšanas politiku, iestatiet slēdzi uz ✅ ieslēgts, kad tiek jautāts, vai politika ir atmaksājama.
 
-### Iespējas
+### Opcijas
 
-Varat pēc izvēles konfigurēt savu`refundable`politiku, lai panāktu lielāku kontroli.
+Jūs varat pēc izvēles tālāk konfigurēt savu `atmaksājamo` politiku, lai iegūtu lielāku kontroli.
 
-* **Cik ilgi pirms ierašanās viesis var atcelt rezervāciju bez maksas?**&#x50;ēc noklusējuma atmaksājamas polises summa vienmēr ir 100% atmaksājama. Termiņu varat precizēt šeit.*piemēram, 3 dienas pirms ierašanās*
-* **Kāda maksa viesim jāmaksā, ja atcelšana notiek pēc iepriekš minētā termiņa?**&#x4A;a precizējāt termiņu, varat iestatīt summu, ko viesis maksā pēc termiņa beigām.*piemēram, 50% no kopējās cenas*
-* **Cik maksā viesim neierašanās gadījumā?**&#x4A;a viesis neierodas, varat iestatīt summu, kas viesim tiks piemērota par`No show`.*piemēram, 100% no kopējās cenas*
-
+- **Cik ilgi pirms ierašanās viesis var atcelt bez maksas?** Pēc noklusējuma atmaksājama politika vienmēr ir 100% atmaksājama. Šeit varat precizēt termiņu. *piemēram, 3 dienas pirms ierašanās*
+- **Cik viesim jāmaksā, ja atcelšana notiek pēc iepriekš minētā termiņa?** Ja esat precizējis termiņu, varat iestatīt summu, kas viesim jāmaksā pēc termiņa. *piemēram, 50% no kopējās cenas*
+- **Cik viesim jāmaksā par "Neierodšanos"?** Gadījumā, ja viesis neierodas, varat iestatīt summu, kas viesim tiek iekasēta par `Neierodšanos`. *piemēram, 100% no kopējās cenas*

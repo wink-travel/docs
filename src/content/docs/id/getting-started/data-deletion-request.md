@@ -1,43 +1,43 @@
 ---
 title: Permintaan penghapusan data
-description: Pelajari cara meminta penghapusan data pribadi Anda di Wink.
+description: Pelajari cara mengajukan permintaan penghapusan data pribadi Anda di Wink.
 sidebar:
   order: 9
 ---
-Di Wink, kami menghormati privasi Anda dan berkomitmen penuh untuk melindungi data pribadi Anda. Kami mematuhi**Peraturan Perlindungan Data Umum (GDPR)**&#x64;an undang-undang perlindungan data lainnya yang berlaku di seluruh dunia.
 
-Halaman ini menguraikan bagaimana Anda dapat meminta penghapusan data pribadi apa pun yang mungkin telah kami kumpulkan melalui platform kami — termasuk namun tidak terbatas pada data yang diperoleh melalui penyedia login sosial seperti Facebook atau Instagram.
+Di Wink, kami menghormati privasi Anda dan berkomitmen penuh untuk melindungi data pribadi Anda. Kami mematuhi **General Data Protection Regulation (GDPR)** dan undang-undang perlindungan data lain yang berlaku di seluruh dunia.
+
+Halaman ini menjelaskan bagaimana Anda dapat mengajukan permintaan penghapusan data pribadi apa pun yang mungkin telah kami kumpulkan melalui platform kami — termasuk namun tidak terbatas pada data yang diperoleh melalui penyedia login sosial seperti Facebook atau Instagram.
 
 ## Komitmen Kami terhadap Privasi Data
 
-Kami hanya mengumpulkan data yang diperlukan untuk menyediakan layanan kami, dan kami tidak pernah menjual informasi pribadi Anda. Ini dapat mencakup:
+Kami hanya mengumpulkan data yang diperlukan untuk menyediakan layanan kami, dan kami tidak pernah menjual informasi pribadi Anda. Ini mungkin termasuk:
 
-* Nama dan alamat email Anda
-* Informasi profil publik (misalnya, dari Facebook atau Google)
-* Data penggunaan atau aktivitas di platform kami
-* Izin apa pun yang diberikan secara tegas oleh Anda
+- Nama dan alamat email Anda
+- Informasi profil publik (misalnya, dari Facebook atau Google)
+- Data penggunaan atau aktivitas di platform kami
+- Izin apa pun yang secara eksplisit Anda berikan
 
 Kami mengambil langkah-langkah yang tepat untuk melindungi data Anda dan memproses semua permintaan penghapusan sesuai dengan GDPR dan kebijakan data Meta.
 
-## Meminta Penghapusan Data
+## Mengajukan Permintaan Penghapusan Data
 
-Anda memiliki hak untuk meminta kami menghapus informasi pribadi apa pun yang kami miliki tentang Anda.
+Anda berhak mengajukan permintaan agar kami menghapus informasi pribadi apa pun yang kami miliki tentang Anda.
 
-Untuk meminta penghapusan data:
+Untuk mengajukan permintaan penghapusan data:
 
-* 📧**Kirim email ke**: [dukungan@wink.travel](mailto:support@wink.travel) 
-* 📝 Gunakan baris subjek:`Data Deletion Request`
-* 🔍 Harap sertakan detail identitas seperti:
-  * Alamat email yang digunakan dengan platform kami
-  * ID Facebook atau Google Anda atau yang serupa (jika ada)
+- 📧 **Kirim email ke**: [support@wink.travel](mailto:support@wink.travel)
+- 📝 Gunakan subjek: `Data Deletion Request`  
+- 🔍 Harap sertakan detail identifikasi seperti:
+  - Alamat email yang digunakan di platform kami
+  - ID Facebook atau Google Anda atau yang serupa (jika berlaku)
 
-Kami akan merespon dalam waktu**30 hari**menerima permintaan Anda, sebagaimana diharuskan oleh GDPR.
+Kami akan merespons dalam waktu **30 hari** setelah menerima permintaan Anda, sesuai dengan ketentuan GDPR.
 
-## Ada Pertanyaan atau Kekhawatiran?
+## Pertanyaan atau Kekhawatiran?
 
-Jika Anda memiliki pertanyaan tentang bagaimana kami mengumpulkan, menggunakan, atau menghapus data Anda, jangan ragu untuk menghubungi tim privasi kami di[dukungan@wink.travel](mailto:support@wink.travel).
+Jika Anda memiliki pertanyaan tentang bagaimana kami mengumpulkan, menggunakan, atau menghapus data Anda, jangan ragu untuk menghubungi tim privasi kami di [support@wink.travel](mailto:support@wink.travel).
 
-***
+---
 
-Terima kasih telah mempercayai kami. Kami menganggap serius perlindungan data dan berkomitmen untuk memberi Anda kendali penuh atas informasi Anda.
-
+Terima kasih telah mempercayai kami. Kami sangat serius dalam perlindungan data dan berkomitmen memberikan Anda kendali penuh atas informasi Anda.

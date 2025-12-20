@@ -1,21 +1,21 @@
 ---
-title: ¿Por qué unirse?
-description: Este artículo le explica todos los beneficios de unirse a Wink.
+title: Por qué unirse
+description: Este artículo te guía a través de todos los beneficios de unirte a Wink.
 sidebar:
   order: 0
 ---
-Wink se creó para que la venta de inventario de viajes volviera a ser emocionante y accesible para más usuarios.
-Hay muchas buenas razones para unirse a Wink.
 
-Una cuenta de usuario le permite:
+Wink fue creado para hacer que vender inventario de viajes sea emocionante nuevamente y para hacerlo accesible a más usuarios.  
+Hay muchas buenas razones para que te unas a Wink.
 
-* Crea y gestiona propiedades y vende en cualquier lugar donde se encuentren viajeros potenciales.
-* Cree y administre cuentas de afiliados y gane una comisión por las reservas que facilite.
-* Cree y administre cuentas de agentes de viajes y reserve en nombre de sus clientes.
-* Obtén tu URL personalizada de WinkLinks (*p. ej. https://i.trvl.as/bob*) y úsalo en la URL de tu biografía de IG.
-* Reserva tus próximas vacaciones y ahorra.
-* Haga todo lo anterior como desarrollador integrándose con Wink.
-* Todas nuestras funcionalidades están disponibles para usted.**GRATIS**.
+Una cuenta de usuario te permite:
 
-Continúe con la siguiente sección para aprender cómo registrarse y comenzar a ganar con Wink.
+- Crear y administrar propiedades y vender dondequiera que estén los viajeros potenciales.
+- Crear y administrar cuentas de afiliados y ganar una comisión por las reservas que facilites.
+- Crear y administrar cuentas de agentes de viajes y reservar en nombre de tus clientes.
+- Obtener tu URL personalizada de WinkLinks (*p. ej. https://i.trvl.as/bob*) y usarla en la URL de tu biografía de IG.
+- Reservar tus próximas vacaciones y ahorrar.
+- Hacer todo lo anterior como desarrollador integrándote con Wink.
+- Todas nuestras funciones están disponibles para ti **G-R-A-T-I-S**.
 
+Continúa a la siguiente sección para aprender cómo registrarte y comenzar a ganar con Wink.

@@ -1,26 +1,24 @@
 ---
-title: Mis on ekstranet?
-description: >-
-  See artikkel tutvustab teile, mida peate teadma, et alustada Winki hotelli
-  kasutamisega.
+title: Mis on Extranet?
+description: See artikkel juhendab sind, mida pead teadma, et alustada Winkis hotellina.
 sidebar:
   order: 0
 ---
-[Winki ekstranet](https://extranet.wink.travel) on meie kinnisvaraportaal. See on mõeldud hotellidele, kettidele, kaubamärkidele ja hotellihaldusettevõtetele oma kinnisvara digitaalse profiili loomiseks ja haldamiseks Winki platvormil.
 
-Meie ekstranet on läbimõeldult kujundatud võimalikult lihtsaks, kuid samas toetama kõiki funktsioone, mida edasijõudnud kasutajad on harjunud täiustatud kinnisvaraportaalilt ootama. Toon paar näidet:
+[Wink Extranet](https://extranet.wink.travel) on meie kinnisvara portaal. See on mõeldud hotellidele, kettidele, brändidele ja hotelli haldusettevõtetele, et luua ja hallata oma kinnisvarade digitaalset profiili Wink platvormil.
 
-1. Lihtsus: Kasutage meie intelligentset sisseelamisvoogu oma kinnisvara registreerimiseks ja selle vähem kui tunniga avalikuks tegemiseks.
-2. Täpsem: Wink toetab 8500 erinevat tühistamispoliitika varianti
-3. Lahe: Anna ühele inimesele planeedil Maa 10% allahindlust ilma, et kasutaja peaks sisse logima või sooduskoodi sisestama.
+Meie Extranet on hoolikalt disainitud nii lihtsaks kui võimalik, kuid toetab siiski kõiki funktsioone, mida võimsad kasutajad ootavad arenenud kinnisvara portaalilt. Mõned näited:
 
-Lase meie võluritel sind kogu protsessi vältel juhendada. Kui tunned end piisavalt mugavalt... asu asja kallale.
+1. Lihtsus: Kasuta meie intelligentset sissejuhatavat töövoogu, et oma kinnisvara lisada ja minna VEEBISSE vähem kui tunniga.
+2. Arendatud: Wink toetab 8500 erinevat tühistamispoliitika variatsiooni.
+3. Lahe: Anna ühele inimesele kogu maailmas 10% allahindlust ilma, et kasutaja peaks sisse logima või sisestama sooduskoodi.
 
-Wink on täiustatud sisuhaldussüsteem kinnisvara- ja kogemuste pakkujatele. Kõike, mida saate teha meie rakendustes, saate teha API kaudu. See võimaldab teil Winkiga sügavalt integreeruda sedavõrd, et saate Winki kaudu müüa ilma ühtegi meie rakendusse sisse logimata.
+Lase meie võluritel juhatada sind kogu protsessi vältel. Kui tunned end piisavalt kindlalt... tegutse iseseisvalt.
 
-:::tip\[Proffi nipp]
-Kas maksate kalli meediamajutuse eest Leonardo Internationali kaudu? Winki kaudu saate teha täpselt sama asja JA teil on palju rohkem võimalusi oma piltide ja videote manipuleerimiseks ja peenhäälestamiseks.
+Wink on arenenud sisuhaldussüsteem kinnisvaradele ja elamuste pakkujatele. Kõike, mida saad teha meie rakendustes, saad teha ka API kaudu. See võimaldab sul teha süvaintegratsiooni Winkiga nii põhjalikult, et saad müüa läbi Winki ilma kunagi meie rakendustesse sisse logimata.
+
+:::tip[Pro näpunäide]
+Kas maksad Leonardo Internationali kaudu kallist meediaressursside majutust? Saad teha täpselt sama Winkis JA sul on palju rohkem võimalusi oma piltide ja videote manipuleerimiseks ja täpsustamiseks.
 :::
 
-Kõik need funktsioonid on teile tasuta. Ainult broneeringu tegemisel võtame väikese tasu. Midagi pole kaotada - kõik on võita.
-
+Kõik need funktsioonid on sulle tasuta. Me võtame väikese tasu alles siis, kui teed broneeringu. Pole midagi kaotada – kõik on võita.

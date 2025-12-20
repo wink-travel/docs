@@ -1,26 +1,24 @@
 ---
-title: Kas ir ekstranets?
-description: >-
-  Šajā rakstā ir sniegta informācija par to, kas jums jāzina, lai sāktu darbu ar
-  Wink kā viesnīcu.
+title: Kas ir Extranet?
+description: Šis raksts iepazīstina ar to, kas jums jāzina, lai sāktu darbu ar Wink kā viesnīcai.
 sidebar:
   order: 0
 ---
-[Wink ekstranets](https://extranet.wink.travel) ir mūsu īpašumu portāls. Tas ir paredzēts viesnīcām, ķēdēm, zīmoliem un viesnīcu pārvaldības uzņēmumiem, lai izveidotu un pārvaldītu savu īpašumu digitālo profilu Wink platformā.
 
-Mūsu ekstranets ir pārdomāti izstrādāts, lai tas būtu pēc iespējas vienkāršāks, taču joprojām atbalstītu visas funkcijas, ko pieredzējuši lietotāji sagaida no uzlabota īpašumu portāla. Lai sniegtu pāris piemērus:
+[Wink Extranet](https://extranet.wink.travel) ir mūsu īpašumu portāls. Tas ir paredzēts viesnīcām, ķēdēm, zīmoliem un viesnīcu pārvaldības uzņēmumiem, lai izveidotu un pārvaldītu savu īpašumu digitālo profilu Wink platformā.
 
-1. Vienkāršība: Izmantojiet mūsu viedās ieviešanas darbplūsmu, lai ieviestu savu īpašumu un sāktu to lietot mazāk nekā stundas laikā.
-2. Papildu iespējas: Wink atbalsta 8500 dažādas atcelšanas politikas variācijas
-3. Forši: Piešķiriet vienam cilvēkam uz planētas Zeme 10% atlaidi bez nepieciešamības pieteikties vai ievadīt reklāmas kodu.
+Mūsu Extranet ir rūpīgi izstrādāts, lai būtu pēc iespējas vienkāršāks, bet tajā pašā laikā atbalstītu visas funkcijas, ko pieredzējuši lietotāji sagaida no progresīva īpašumu portāla. Lai sniegtu dažus piemērus:
 
-Ļaujiet mūsu burvjiem vadīt jūs cauri visam procesam. Kad jutīsieties pietiekami ērti... ķerieties pie darba vienatnē.
+1. Vienkāršība: Izmantojiet mūsu inteliģento uzņemšanas darba plūsmu, lai reģistrētu savu īpašumu un kļūtu tiešsaistē mazāk nekā stundas laikā.
+2. Progresīvs: Wink atbalsta 8500 dažādas atcelšanas politiku variācijas.
+3. Forši: Dodiet vienai personai uz planētas Zeme 10% atlaidi, neļaujot lietotājam pieteikties vai ievadīt reklāmas kodu.
 
-Wink ir uzlabota satura pārvaldības sistēma īpašumu un pieredzes nodrošinātājiem. Visu, ko varat darīt kādā no mūsu lietotnēm, varat darīt, izmantojot API. Tas ļauj jums veikt dziļu integrāciju ar Wink tik lielā mērā, ka varat pārdot, izmantojot Wink, pat nepiesakoties nevienā no mūsu lietotnēm.
+Ļaujiet mūsu burvjiem vadīt jūs cauri visam procesam. Kad jutīsieties pietiekami pārliecināti... dariet to paši.
 
-:::tip\[Profesionāls padoms]
-Vai maksājat par dārgu multivides resursu mitināšanu, izmantojot Leonardo International? Jūs varat darīt tieši to pašu, izmantojot Wink, UN jums ir daudz vairāk iespēju manipulēt un precīzi pielāgot savus attēlus un videoklipus.
+Wink ir progresīva satura pārvaldības sistēma īpašumiem un pieredzes sniedzējiem. Viss, ko varat darīt kādā no mūsu lietotnēm, varat darīt arī caur API. Tas ļauj veikt dziļu integrāciju ar Wink tādā līmenī, ka varat pārdot caur Wink, nekad nepiesakoties nevienā no mūsu lietotnēm.
+
+:::tip[Pro padoms]
+Vai jūs maksājat par dārgu mediju resursu mitināšanu caur Leonardo International? Jūs varat darīt tieši to pašu caur Wink UN iegūt daudz vairāk iespēju manipulēt un precīzi pielāgot savus attēlus un video.
 :::
 
-Visas šīs funkcijas jums ir bez maksas. Tikai veicot rezervāciju, mēs iekasējam nelielu maksu. Nekas nav ko zaudēt - viss ir jāiegūst.
-
+Visas šīs funkcijas jums ir pieejamas bez maksas. Mēs iekasējam nelielu maksu tikai tad, kad veicat rezervāciju. Nav ko zaudēt – viss ir iegūstams.

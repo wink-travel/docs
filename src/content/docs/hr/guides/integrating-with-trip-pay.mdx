@@ -1,43 +1,40 @@
 ---
-title: Integracija s TripPayom
-description: >-
-  Ovaj članak sadrži potpuni primjer kako se integrirati s TripPayom i kako
-  dopustiti da on umjesto vas obradi plaćanje.
+title: Integracija s TripPay
+description: Ovaj članak sadrži potpuni primjer kako se integrirati i dopustiti TripPayu da za vas obradi plaćanje.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Ovaj članak sadrži primjer kako se integrirati s TripPayom.
+Ovaj članak sadrži primjer od početka do kraja kako se integrirati s TripPay.
 
 Preporučuje se da ste već pročitali:
 
-* [Plaćanje > Mapiranje](/payment/mapping).
-* [Plaćanje > Integracija](/payment/integration).
-* [Web komponenta za plaćanje](/developers/web-components/#payment).
-* [API za plaćanje](/developers/apis/#payment-api).*Pročitajte odjeljak o`Create payable contracts`*
+- [Payment > Mapping](/hr/payment/mapping).
+- [Payment > Integration](/hr/payment/integration).
+- [Payment Web Component](/hr/developers/web-components/#payment).
+- [Payment API](/hr/developers/apis/#payment-api). *Pročitajte odjeljak o `Create payable contracts`*
 
 Evo koraka za uspješno korištenje TripPaya za plaćanje rezervacije:
 
 <Steps>
-  1. Provjerite jesu li korisnici koje spomenete u ugovoru o rezervaciji mapirani.
-  2. Neka putnik odabere inventar koji želi rezervirati i neka se pripremi za plaćanje.
-  3. Stvori `payable contract` s TripPayom koji sadrži stavke koje treba rezervirati.
-  4. Neka putnik plati putem TripPay web komponente.
+1. Provjerite jesu li korisnici koje spominjete u ugovoru o rezervaciji mapirani.
+2. Dopustite putniku da odabere inventar koji želi rezervirati i pripremi se za plaćanje.
+3. Kreirajte `payable contract` s TripPayem koji sadrži stavke za rezervaciju.
+4. Dopustite putniku da plati koristeći TripPay Web Component.
 </Steps>
 
+Pretpostavljamo da ste već završili `Korak 1` i `Korak 2` i spremni ste obavijestiti TripPay o rezervaciji.
 
-Pretpostavljamo da ste već završili`Step 1`i`Step 2`i spremni su obavijestiti TripPay o rezervaciji.
+## Kreirajte payable contract
 
-## Stvori ugovor o plaćanju
-
-:::napomena
-Idite na API za plaćanje kako biste saznali više o zahtjevima za izradu ugovora s mogućnošću plaćanja.
+:::note
+Posjetite Payment API za više informacija o zahtjevima za kreiranje payable contracta.
 :::
 
 ### Zahtjev
-
-Evo primjera JSON zahtjeva koji uključuje sve što vam je potrebno za izradu vašeg prvog ugovornog ugovora.
+Evo primjera JSON zahtjeva koji uključuje sve što vam treba za kreiranje vašeg prvog payable contracta.
 
 ```json {3-6, 8-9}
 {
@@ -68,7 +65,7 @@ Evo primjera JSON zahtjeva koji uključuje sve što vam je potrebno za izradu va
             "telephone": "+1 212 555 1212",
           },
           "nameInEnglish": "Deluxe King",
-          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "descriptionInEnglish": "Ovo je najbolji deluxe king koji novac može kupiti.",
           "price": {
             "amount": 100,
             "currency": "USD"
@@ -130,50 +127,51 @@ Evo primjera JSON zahtjeva koji uključuje sve što vam je potrebno za izradu va
 }
 ```
 
-Obrazloženje:
+Objašnjenje:
 
-Ovdje nećemo objašnjavati svaku podatkovnu točku jer su već obrađene u API dokumentaciji.
+Nećemo objašnjavati svaki podatak ovdje jer su već pokriveni u API dokumentaciji.
 
-* Linije:**2 - 7**je korisnik odgovoran za rezervaciju. Postoje dvije vrste korisnika koji rezerviraju:
-  * Putnik.
-  * Turistički agent.
-* Linije:**8 - 9**je TripPay račun koji omogućuje rezervaciju. Može biti:
-  * Vaš TripPay integracijski račun.
-  * Ako vodite partnersku mrežu, ona može biti vaš partner.
-* Koristite`traceId`grupirati više rezervacija kod više dobavljača. Na taj način možete otkazati grupnu rezervaciju.
-* `redirectUrl`obavještava TripPay na koju stranicu ga preusmjeriti nakon što je plaćanje dovršeno.
-* `sourceUrl`je stranica/aplikacija na kojoj je rezervacija izvršena.
+- Redci: **2 - 7** su korisnik odgovoran za rezervaciju. Postoje dvije vrste rezervatora:
+    - Putnik.
+    - Putni agent.
+- Redci: **8 - 9** su TripPay račun koji posreduje u rezervaciji. To može biti:
+    - Vaš TripPay integratorski račun.
+    - Ako vodite affiliate mrežu, to može biti vaš affiliate.
+- Koristite `traceId` za grupiranje više rezervacija preko više dobavljača. Na taj način možete otkazati grupnu rezervaciju.
+- `redirectUrl` obavještava TripPay na koju stranicu preusmjeriti nakon što je plaćanje završeno.
+- `sourceUrl` je stranica / aplikacija na kojoj je rezervacija napravljena.
 
-The`contractList`Niz sadrži artikl(e) koje putnik želi kupiti od više dobavljača. Svaki artikl sadrži:
+Niz `contractList` sadrži stavku(e) koje putnik želi kupiti od više dobavljača. Svaka stavka sadrži:
 
-* The`identifier`je valjani UUID koji generirate.
-* Dobavljač od kojeg želite rezervirati zalihe.
-* Zalihe koje želite rezervirati od tog dobavljača. Sve su navedene u ugniježđenom nizu`contractItemList`.
-* Svaki unos ispod`contractItemList`sadrži:
-  * **Gostujući korisnik**Ovo je korisnik koji će stići na lokaciju.
-  * **Ime na engleskom**Naziv inventara na engleskom jeziku.
-  * **Opis na engleskom**Duži opis inventara na engleskom jeziku.
-  * **Cijena**Cijena artikla.
-  * **Plan putovanja**Kada ovu stavku treba rezervirati.
-  * **Vrsta cijene**Kako je cijena izračunata.
-  * **Vrsta inventara**Koja je ovo vrsta inventara.
-  * **Plativo**Kada putniku treba naplatiti naknadu.*Trenutno podržavamo samo opcije trenutnog plaćanja.*
-  * **Politika**Uključite pravila o otkazivanju.
-  * **Dnevni cjenik**Ako se rezervira soba, možete odabrati da uključite cijenu te sobe za svaku noć boravka gosta.
-  * **Korisnici**Navedite kojem TripPay računu treba dodijeliti koji iznos cijene artikla.*Podržani su fiksni / postotni iznosi.*
+- `identifier` je valjani UUID koji generirate.
+- Dobavljač od kojeg želite rezervirati inventar.
+- Inventar koji želite rezervirati od tog dobavljača. Sve su navedene u ugniježđenom nizu `contractItemList`.
+- Svaki unos u `contractItemList` sadrži:
+    - **Gost korisnik** Ovo je korisnik koji će doći na lokaciju.
+    - **Ime na engleskom** Ime inventara na engleskom jeziku.
+    - **Opis na engleskom** Duži opis inventara na engleskom jeziku.
+    - **Cijena** Cijena stavke.
+    - **Itinerar** Kada treba rezervirati ovu stavku.
+    - **Tip cijene** Kako je cijena izračunata.
+    - **Tip inventara** Koji je tip inventara.
+    - **Plaćanje** Kada se putniku naplaćuje. *Trenutno podržavamo samo opcije trenutnog plaćanja.*
+    - **Pravila** Uključite pravila otkazivanja.
+    - **Dnevni cjenik** Ako je stavka soba, možete uključiti koliko ta soba košta za svaku noć boravka gosta.
+    - **Korisnici prihoda** Uključite koji TripPay račun(i) trebaju dobiti koji dio cijene stavke. *Podržani su fiksni i postotni iznosi.*
 
-:::napomena
-U gornjem JSON primjeru imamo 3 korisnika:
+:::note
+U gornjem JSON primjeru imamo 3 korisnika prihoda:
 
-* 1,5% je dodijeljeno platformi koja je omogućila rezervaciju.*npr. Namig*
-* Partneru je dodijeljeno 9,85% kao provizija.*npr. Kim Kardashian*
-* Dobavljaču je dodijeljeno 88,65% za rezervaciju sobe.*npr. Hilton*
+- 1,5% je dodijeljeno platformi koja je omogućila rezervaciju. *npr. Wink*
+- 9,85% je dodijeljeno affiliateu kao provizija. *npr. Kim Kardashian*
+- 88,65% je dodijeljeno dobavljaču za rezervaciju sobe. *npr. Hilton*
 
-Kada TripPay odgovori ugovorom o plaćanju, primijetit ćete da je uplatio vlastitog korisnika s 4,0%. :::
+Kada TripPay odgovori s payable contractom, primijetit ćete da je ubacio svog korisnika prihoda s 4,0%.
+:::
 
 ### Odgovor
 
-Kada TripPay odgovori na vaš zahtjev, to će izgledati otprilike ovako:
+Kada TripPay odgovori na vaš zahtjev, izgledat će otprilike ovako:
 
 ```json {3}
 [
@@ -207,19 +205,18 @@ Kada TripPay odgovori na vaš zahtjev, to će izgledati otprilike ovako:
 ]
 ```
 
-Spremi`id`u retku 3. Ovo ćete koristiti za ubrizgavanje u web komponentu TripPay.
+Spremite `id` na retku 3. Koristit ćete ga za ubacivanje u TripPay web komponentu.
 
-## Ugradi TripPay
+## Ugradite TripPay
 
-:::napomena
+:::note
 Provjerite jeste li prethodno učitali naše stilove i Javascript.
 :::
 
-U ovom trenutku spremni ste za ugradnju`Payment Web Component`na vašu web stranicu i prikažite je korisniku.
+Sada ste spremni ugraditi `Payment Web Component` na vašu web stranicu i prikazati ga korisniku.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Što se tiče integracije, to je sve što trebate učiniti. Od sada nadalje, sav teški posao obavlja TripPay.
-
+Što se tiče integracije, to je sve što trebate učiniti. Sav težak posao od sada radi TripPay.

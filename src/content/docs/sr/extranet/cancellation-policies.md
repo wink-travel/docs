@@ -1,45 +1,45 @@
 ---
-title: Политике отказивања
-description: Овај чланак вам показује како да управљате правилима отказивања на Винку.
+title: Politike otkazivanja
+description: Ovaj članak vam pokazuje kako da upravljate politikama otkazivanja na Wink-u.
 sidebar:
   order: 12
 ---
-Да бисте управљали својим политикама отказивања, кликните на`Monetize > Cancellation policies`из главне навигационе траке.
 
-Политике отказивања одређују како се рукује средствима резерватора у случају да гост не може да дође. Политике отказивања постоје у два различита облика:
+Da biste upravljali svojim politikama otkazivanja, kliknite na `Monetize > Cancellation policies` u glavnom navigacionom meniju.
 
-1. Повраћај новца
-2. Неповратљиво
+Politike otkazivanja određuju kako se rukuje sredstvima gosta u slučaju da gost ne može doći. Politike otkazivanja dolaze u dva različita oblika:
 
-Већину времена, ове две опције су довољне. Међутим, обе вам дају доста простора за додатно прилагођавање политике отказивања.
+1. Povrat novca
+2. Bez povrata novca
 
-:::савет\[Занимљивост]
-Винк подржава укупно 8500 варијација политике отказивања.
+Većinu vremena, ove dve opcije su dovoljne. Međutim, obe vam daju mnogo prostora za dalju prilagodbu vaše politike otkazivanja.
+
+:::tip[Zanimljivost]
+Wink podržava ukupno 8500 varijacija politike otkazivanja.
 :::
 
-Да бисте креирали политику отказивања, кликните на`Create a new cancellation policy`дугме.
+Da biste kreirali politiku otkazivanja, kliknite na dugme `Create a new cancellation policy`.
 
-## Неповратљиво
+## Bez povrata novca
 
-Да бисте креирали политику отказивања са могућношћу повраћаја новца, искључите прекидач када вас питају да ли је полиса рефундирана.
+Da biste kreirali politiku otkazivanja bez povrata novca, postavite prekidač na 🛑 isključeno kada se pita da li je politika povratna.
 
-### Опције
+### Opcije
 
-Опционо можете конфигурисати свој`non-refundable`политику даље ради веће контроле.
+Opcionalno možete dodatno konfigurisati vašu `bez povrata novca` politiku za veću kontrolu.
 
-* **Колико се госту наплаћује у случају отказивања?**&#x41F;одразумевано, политика неповратка је политика 100% неповратка. Овде можете прецизно подесити износ.*нпр. 50% од укупне цене*
-* **Да ли оптужба има рок?**&#x410;ко сте прецизно подесили износ, можете га додатно прецизно подесити подешавањем колико дуго тај износ остаје на снази.*нпр. до 3 дана пре доласка*
-* **Колико се госту наплаћује за отказивање након истека рока?**&#x423; случају да гост прекорачи горе наведени рок, можете одредити износ који гост плаћа након истека рока.*нпр. 70% од укупне цене*
+- **Koliko se gostu naplaćuje za otkazivanje?** Po defaultu, politika bez povrata novca znači 100% nepovratnu politiku. Ovde možete precizirati iznos. *npr. 50% od ukupne cene*
+- **Da li naplata ima rok?** Ako ste precizirali iznos, možete dodatno podesiti koliko dugo taj iznos važi. *npr. Do 3 dana pre dolaska*
+- **Koliko se gostu naplaćuje za otkazivanje nakon isteka roka?** U slučaju da gost prekorači gore navedeni rok, možete podesiti iznos koji gost plaća nakon roka. *npr. 70% od ukupne cene*
 
-## Повраћај новца
+## Povrat novca
 
-Да бисте креирали политику отказивања са могућношћу повраћаја новца, подесите прекидач на ✅ када се од вас затражи да ли је полиса рефундирана.
+Da biste kreirali politiku otkazivanja sa povratom novca, postavite prekidač na ✅ uključeno kada se pita da li je politika povratna.
 
-### Опције
+### Opcije
 
-Опционо можете конфигурисати свој`refundable`политику даље ради веће контроле.
+Opcionalno možete dodatno konfigurisati vašu `povratnu` politiku za veću kontrolu.
 
-* **Колико дуго, пре доласка, гост може бесплатно отказати резервацију?**&#x41F;одразумевано, политика повраћаја новца је увек 100% повраћај новца. Рок можете прецизно подесити овде.*нпр. 3 дана пре доласка*
-* **Колико треба наплатити госту ако се отказивање деси након горе наведеног рока?**&#x410;ко сте прецизирали рок, можете одредити износ који гост плаћа након истека рока.*нпр. 50% од укупне цене*
-* **Колико треба госту наплатити у случају „непојављивања“?**&#x423; случају да се гост не појави, можете подесити износ који ће му се наплатити`No show`.*нпр. 100% од укупне цене*
-
+- **Koliko dugo pre dolaska gost može otkazati bez naplate?** Po defaultu, politika sa povratom novca je uvek 100% povratna. Ovde možete precizirati rok. *npr. 3 dana pre dolaska*
+- **Koliko se gostu naplaćuje ako otkazivanje nastupi nakon gore navedenog roka?** Ako ste precizirali rok, možete podesiti iznos koji gost plaća nakon roka. *npr. 50% od ukupne cene*
+- **Koliko se gostu naplaćuje za 'No show'?** U slučaju da gost ne dođe, možete podesiti iznos koji se naplaćuje za `No show`. *npr. 100% od ukupne cene*

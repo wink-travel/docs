@@ -1,438 +1,419 @@
 ---
-title: Услови коришћења услуге
-description: Лако доступни и ажурирани услови за све наше партнерске кориснике.
+title: Uslovi korišćenja
+description: Lako dostupni i ažurni uslovi za sve naše affiliate korisnike.
 sidebar:
   order: 12
 ---
-:::напомена
-Последње ажурирање 12.06.2024.
+
+:::note
+Poslednja izmena 2024-06-12
 :::
 
-**WINK ОПШТИ УСЛОВИ И ОДРЕДБЕ ЗА ПАРТНЕРЕ**
-
-Регистрацијом и пријављивањем у Wink партнерски програм као придружени партнер, придружени партнер је овим прегледао и разумео, потврђује и прихвата услове и одредбе овог партнерског уговора („уговор“).\
-ИЗМЕЂУ:
-
-1. **Травелико Сингапур ПТЕ. Лтд.**., компанија основана у складу са законима Сингапура и са регистрованим седиштем на адреси #03-01 Wilkie Edge, 8 Wilkie Road, Сингапур 228095 са ПДВ бројем 201437335D (у даљем тексту „Wink“), и
-2. **ПАРТАЖ**, чији су подаци наведени у Обрасцу за регистрацију партнера или су достављени онлајн („Партнер“).
+**OPŠTI USLOVI I ODREDBE WINK-A ZA AFFILIATE PARTNERE**
+
+Registracijom i prijavom u Wink partnerski program kao affiliate partner, affiliate je pregledao, razume, prihvata i potvrđuje uslove i odredbe ovog affiliate ugovora (u daljem tekstu „ugovor“).  
+IZMEĐU:
+
+1. **TRAVELIKO SINGAPORE PTE. LTD**., kompanije registrovane po zakonima Singapura sa sedištem na adresi, \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, sa PDV registarskim brojem 201437335D (u daljem tekstu „Wink“), i  
+2. **AFFILIATE**, čiji su podaci navedeni u obrascu za registraciju affiliate partnera ili su dostavljeni online (u daljem tekstu „Affiliate“).
 
-Винк и Придружени партнер су „Страна“ овог Уговора и заједнички се називају „Стране“.
-
-**С ОБЗИРАЈУЋИ НА ТО:**\
-(i) Wink управља онлајн системом („Систем“) путем којег Смештајни објекти који учествују (заједнички „Пружаоци смештаја“, сваки „Пружалац смештаја“) могу да ставе свој инвентар на располагање за резервацију, и путем којег Гости могу да изврше резервације код таквих Пружалаца смештаја („Услуга“);\
-(ii) Винк не поседује, не контролише, не нуди нити управља било којим огласима. Винк није страна у уговорима закљученим директно између Пружалаца смештаја и Гостију. Винк не делује као агент ни у ком својству за Пружаоце смештаја;\
-(iii) Винк одржава и користи сопствене веб странице („Винк веб странице“), а такође пружа Услугу и линкове до Услуге на веб страницама трећих страна;\
-(iv) Подружница поседује, контролише, хостује и/или управља једним или више интернет домена, веб локација и апликација;\
-(v) Партнер и Wink желе да Партнер учини Услугу (директно или индиректно) доступном својим клијентима и посетиоцима Партнерске веб странице(а) и Апликације(а) и у таквом облику и под таквим условима и одредбама (у даљем тексту „Услови“) како је наведено у овом Уговору.
+Wink i Affiliate su „Strane“ ovog Ugovora i zajednički se nazivaju „Strane“.
+
+**S OBZIROM NA TO DA:**  
+(i) Wink upravlja online sistemom (u daljem tekstu „Sistem“) putem kojeg učestvujući pružaoci smeštaja (zajedno „Pružaoci smeštaja“, pojedinačno „Pružaoc smeštaja“) mogu učiniti svoj inventar dostupnim za rezervaciju, a gosti mogu vršiti rezervacije kod takvih Pružaoca smeštaja (u daljem tekstu „Usluga“);  
+(ii) Wink ne poseduje, ne kontroliše, ne nudi niti upravlja bilo kojim listingom. Wink nije strana u ugovorima zaključenim direktno između Pružaoca smeštaja i Gostiju. Wink ne deluje kao agent u bilo kom svojstvu za Pružaoca smeštaja;  
+(iii) Wink održava i koristi sopstvene web sajtove (u daljem tekstu „Wink sajtovi“), kao i pruža Uslugu i linkove ka Usluzi na sajtovima trećih lica;  
+(iv) Affiliate poseduje, kontroliše, hostuje i/ili upravlja jednim ili više internet domena, web sajtova i aplikacija;  
+(v) Affiliate i Wink žele da Affiliate učini Uslugu (direktno ili indirektno) dostupnom svojim korisnicima i posetiocima Affiliate sajta i aplikacija u obliku i pod uslovima (u daljem tekstu „Uslovi“) kako je navedeno u ovom Ugovoru.
 
-**Сада су се, дакле, странке споразумеле о следећем:**
+**Sada su Strane dogovorile sledeće:**
 
-**1. Дефиниције**
+**1. Definicije**
 
-1.1 Поред термина дефинисаних на другим местима у овом Уговору, следеће дефиниције се примењују у целом овом Уговору, осим ако није другачије назначено:
+1.1 Pored termina definisanih na drugim mestima u ovom Ugovoru, sledeće definicije važe kroz ceo Ugovor, osim ako nije drugačije naznačeno:
 
-**"Смештај"**&#x437;начи било који облик смештаја, укључујући, али не ограничавајући се на, пружаоце смештаја, мотеле, пансионе, пансионе са доручком, хостеле, виле, апартмане (са услугом или без ње), ложиште, гостионицу, смештај за госте, одмаралишта, кондоминијуме, кампове и било коју другу (врсту) смештаја или пружаоца смештаја (без обзира да ли је доступан на веб-сајтовима Wink или не).\
-**„Пружалац(и) смештаја“**&#x437;начи свака Страна која креира налог на Wink-у са намером да прода своје**свој**инвентар соба и помоћних услуга путем Wink платформе.\
-**„Брендови смештајних услуга“**&#x437;начи било који термин или кључна реч која је иста или збуњујуће слична (укључујући све варијације, преводе, погрешно написане речи и облике једнине/множине) било ком заштитном знаку или трговачком имену (било регистрованом или нерегистрованом) који припада или је у власништву било ког пружаоца смештаја\
-**„Партнерски партнер“**&#x43E;значава Страну чији су релевантни (контакт) подаци наведени у Обрасцу за регистрацију придруженог партнера.\
-**„Одласци партнера“**&#x438;ма значење како је наведено у клаузули 5.4.\
-**„Придружена група“**&#x437;начи Повезано лице и крајња холдинг компанија Повезаног лица (укључујући групу компанија или ентитета који су под (директном или индиректном) контролом (крајње холдинг компаније или акционара(а)) Повезаног лица).\
-**„Образац за регистрацију партнера“**&#x437;начи онлајн формулар за регистрацију и пријаву који треба да попуни Партнер.\
-**„Партнерски веб-сајт(ови)“**&#x43E;значава веб-сајт(ове) и апликацију(е) у власништву, под контролом, хостованом и под управом Подружнице на којима ће Услуга бити доступна.\
-**„Апликација(е)“**&#x437;начи изворна апликација за мобилне уређаје.\
-**„Споразум“**&#x437;начи овај споразум.\
-**„Резервација“**&#x43E;значава успешну трансакцију коју је Wink забележио од стране Госта за резервацију код Пружаоца смештаја.\
-**„Накнада за резервацију“**&#x458;е 1,5% које Wink одбија од партнерске провизије као накнаду за обраду.\
-**„Вредност резервације“**&#x458;е укупан износ који је Посредник за плаћање наплатио од госта за резервацију.\
-**„Клаузула“**&#x437;начи клаузула овог Уговора.\
-**„Комисија“**&#x437;начи износ који се дугује Партнеру пре одбитка Накнаде за платну услугу и Накнаде за резервацију за сваку материјализовану трансакцију у складу са овим Уговором.\
-**„Везе“**&#x437;начи све веб-компоненте, линкове, одредишне странице и/или JSON фидове и/или дубоке линкове и/или хиперлинкове, које је креирао, хостовао и одржавао Wink.\
-**„Садржај“**&#x437;начи све (дескриптивне) информације о пружаоцима смештаја доступне на веб-сајту Wink, укључујући, али не ограничавајући се на, информације и описе пружаоца смештаја, рецензије гостију, метаподатке, детаље о објектима и политике (отказивања/недоласка) и опште услове пружаоца смештаја (укључујући све њихове преводе) и фотографије, видео записе, слике, али искључујући цене и доступност (укључујући сва ажурирања, измене, замене, допуне или измене).\
-**"Контрола"**&#x437;начи поседовање моћи или способности да се (директно или индиректно, самостално или у сарадњи са другима, било кроз власништво над хартијама од вредности са правом гласа или другим власничким интересима, партнерством или на други начин) (i) врши или узрокује вршење више од половине права гласа на скупштини акционара компаније, (ii) именује више од половине ((не)извршних) директора или надзорних директора компаније, или (iii) усмерава или узрокује смернице управљања које се односе на компанију.\
-**„Подаци о купцима“**&#x43E;значава личне податке Госта („PII“), укључујући, али не ограничавајући се на име Госта, адресу (укључујући адресу е-поште), податке о кредитној картици и друге поверљиве и приватне податке Госта.\
-**„Двострука порција“**&#x437;начи више огласа на истој страници резултата претраживача са циљем усмеравања саобраћаја на сличне веб странице или странице са сличним садржајем.\
-**"Гост"**&#x437;начи посетилац веб-сајтова или апликација који је извршио резервацију код пружаоца смештаја путем Услуге.\
-**„Право интелектуалне својине“**&#x437;начи било који патент, ауторско право, проналаске, права на базу података, право на дизајн, регистровани дизајн, заштитни знак, трговачко име, бренд, логотипе, услужни знак, ноу-хау, корисни модел, нерегистровани дизајн или, где је релевантно, било коју пријаву за било које такво право, ноу-хау, трговачко или пословно име, име домена (са било којим (код земље) доменом највишег нивоа, нпр. .com, .net., co.th, .de, .fr, eu, co.uk., итд.) или друго слично право или обавезу, регистровано или нерегистровано, или друго индустријско или право интелектуалне својине које постоји на било којој територији или јурисдикцији у свету.\
-**„ЈСОН“**&#x437;начи JSON везу између Wink базе података и базе података партнера коју Wink може да обезбеди под условима који ће бити договорени.\
-**„Линк“**&#x437;начи уграђену икону, објекат, графику или текст унутар веб странице или е-поште који се састоји од хипертекстуалног показивача на URL адресу Винка на партнерском веб-сајту/веб-сајтовима.\
-**„Трансакција трговца“**&#x43E;значава материјализовану трансакцију у којој је посредник у плаћању евидентирани трговац, при чему посредник у плаћању директно наплаћује средства од Госта за резервацију.\
-**„Материјална трансакција(е)“**&#x437;начи резервација од стране посетиоца партнерског веб-сајта и/или апликације(а) који је, путем Везе, извршио резервацију код пружаоца смештаја, и која је резултирала стварним обезбеђивањем смештаја, што је пружалац смештаја потврдио компанији Wink. Материјалне трансакције ће увек бити прилагођене изменама (нпр. скраћени боравци), повраћајима средстава, преварама са кредитним картицама, лошим дугом или другим факторима. Ради избегавања сумње, отказивања, недолазак итд. никада се не могу сматрати материјализованим трансакцијама.\
-**„Микро сајт“**&#x437;начи све верзије примарне веб странице Винка са „white label“ ознаком, које поседује, креира, хостује и одржава Винк. Микросајт може бити означен логотипом „powered by Wink“ или еквивалентом.\
-**„Нето провизија“**&#x458;е износ који се дугује Партнеру за материјализоване трансакције након одбитка накнаде за услугу плаћања и накнаде за резервацију.\
-**„Плаћена претрага“**&#x437;начи било који облик онлајн оглашавања који повезује приказивање огласа са одређеним захтевом за претрагу заснованим на кључним речима.\
-**„Посредник за плаћање“**&#x43F;одружница у потпуном власништву компаније Traveliko Singapore Pte. Ltd., која управља услугама плаћања, наплаћујући уплате од гостију („Уплата“), наплаћујући начин плаћања повезан са њиховом куповином, као што су кредитна картица, дебитна картица, банковни трансфер, криптовалуте или PayPal итд. и исплаћујући дуговани износ („Нето провизија“) на локални банковни рачун партнера.\
-**„Уплата“**&#x437;начи примање уплате коју је гост извршио од стране Посредника за плаћање.\
-**„Исплата“**&#x437;начи исплату нето провизије партнеру од стране посредника за плаћање.\
-**„Накнада за услугу плаћања“**&#x458;е 4% које од партнерске провизије одбија посредник за плаћање као накнаду за прикупљање средстава.\
-**„Поређење цена“**&#x437;начи поређење цена и/или расположивости пружаоца смештаја које је доступно са или путем две или више онлајн платформи за резервације пружаоца смештаја.\
-**„Препродаја“**&#x438;ма значење како је наведено у клаузули 4.1.7.\
-**„Портал продаваца“**&#x438;ма значење како је наведено у клаузули 4.1.8.\
-**„СЕМ“**&#x437;начи маркетинг претраживача и обухвата било који облик онлајн маркетинга који има за циљ да промовише веб странице повећањем њихове видљивости на страницама резултата претраживача путем коришћења оптимизације за претраживаче, плаћеног пласмана, контекстуалног оглашавања или плаћеног укључивања.\
-**„SEO“**&#x437;начи оптимизација за претраживаче и обухвата процес (i) побољшања обима или квалитета саобраћаја ка веб сајту или веб страници са претраживача путем „природних“ или неплаћених („органских“ или „алгоритамских“) резултата претраге, или (ii) остваривања или стварања побољшаног или бољег ранга у резултатима претраживача за одређену кључну реч или кључне речи.\
-**„Слично име домена“**&#x438;ма значење како је наведено у клаузули 4.7.1.\
-**„Прописи о спаму“**&#x437;начи било које политике, прописе, ограничења или обавезе које с времена на време прописују, проглашавају применљивим или објављују платформе трећих страна, а које (i) забрањују или спречавају двоструко приказивање, прикривање или било коју сличну технику или методу, или (ii) садрже таква даља ограничења или прописе у вези са слањем непожељне поште или очувањем јединственог корисничког искуства.\
-**„Платформе трећих страна“**&#x437;начи било који (трећи) претраживач (маркетиншки добављач), мета-претраживач, „спајдере“ претраживача, сајтове за претрагу путовања, сајтове за поређење цена, заједнице друштвених мрежа, прегледаче, сервисе за дељење и хостовање садржаја и сервисе за мултимедијалне блогове или друге (сличне) канале или друге облике (хостовања саобраћаја) медија, било онлајн или офлајн.\
-**„Веб странице“**&#x437;начи веб-сајт(ове) компаније Wink и њених повезаних компанија и партнера (укључујући партнерски(е) веб-сајт(ове)) на којима је производ и услуга компаније Wink доступан.\
-**„Такмичар у намигивању“**&#x437;начи било ког директног или индиректног конкурента компаније Wink (искључујући, ради избегавања сумње, компаније у групи компанија Wink).\
-**„Подаци о намигивању“**&#x43E;значава Права интелектуалне својине компаније Wink и Садржај како је достављено Партнеру у складу са овим Уговором и друге такве информације које с времена на време поседује или користи Wink или су отелотворене или укључене у Wink веб странице или које Wink ставља на располагање Партнеру (нпр. цене и доступност).\
-**„Wink веб странице“**&#x437;начи веб-сајт(ове) компаније Wink, укључујући, али не ограничавајући се на Wink, traveliko.com и све локалне или алтернативне верзије истих (са било којим доменом највишег нивоа), као и све њихове варијације, укључујући, али не нужно ограничавајући се на мобилну веб-страницу, мобилне апликације итд.
+**„Smeštaj“** označava bilo koji oblik smeštaja, uključujući, ali ne ograničavajući se na Pružaoca smeštaja, motele, pansione, bed & breakfast, hostele, vile, apartmane (servisirane ili ne), lovačke kuće, gostinske smeštaje, odmarališta, kondominijume, kamping smeštaj i bilo koji drugi (tip) smeštaja ili pružaoca usluga smeštaja (bilo da je dostupan na Wink sajtovima ili ne).  
+**„Pružaoci smeštaja“** označava bilo koju Stranu koja kreira nalog na Wink platformi sa namerom da prodaje svoj **vlastiti** inventar soba i pratećih usluga putem Wink platforme.  
+**„Brendovi Pružaoca smeštaja“** označavaju bilo koji termin ili ključnu reč koja je ista ili zbunjujuće slična (uključujući varijacije, prevode, greške u kucanju i jedninu/ množinu) bilo kojim zaštitnim znakovima ili trgovačkim imenima (registrovanim ili neregistrovanim) u vlasništvu bilo kog Pružaoca smeštaja.  
+**„Affiliate“** označava Stranu čiji su relevantni (kontakt) podaci navedeni u obrascu za registraciju affiliate partnera.  
+**„Affiliate Odlasci“** ima značenje kako je navedeno u klauzuli 5.4.  
+**„Affiliate Grupa“** označava Affiliate i krajnju holding kompaniju Affiliate-a (uključujući grupu kompanija ili entiteta koji su pod (direktnom ili indirektnom) kontrolom (krajnje holding kompanije ili akcionara Affiliate-a)).  
+**„Obrazac za registraciju affiliate partnera“** označava online obrazac za prijavu i registraciju koji Affiliate popunjava.  
+**„Affiliate sajt(ovi)“** označava web sajtove i aplikacije u vlasništvu, pod kontrolom, hostovane i upravljane od strane Affiliate-a na kojima će Usluga biti dostupna.  
+**„Aplikacija(e)“** označava nativnu aplikaciju za mobilne uređaje.  
+**„Ugovor“** označava ovaj ugovor.  
+**„Rezervacija“** označava uspešnu transakciju zabeleženu od strane Wink-a od gosta za rezervaciju kod Pružaoca smeštaja.  
+**„Naknada za rezervaciju“** je 1,5% odbijeno od affiliate provizije kao naknada za obradu od strane Wink-a.  
+**„Vrednost rezervacije“** je ukupni iznos koji je prikupljen od gosta za rezervaciju od strane Payment Facilitatora.  
+**„Klauzula“** označava klauzulu ovog Ugovora.  
+**„Provizija“** označava iznos koji pripada Affiliate-u pre odbitka Naknade za uslugu plaćanja i Naknade za rezervaciju za svaku realizovanu transakciju u skladu sa ovim Ugovorom.  
+**„Konekcije“** označavaju sve web-komponente, linkove, landing stranice i/ili JSON feedove i/ili duboke linkove i/ili hiperveze, kreirane, hostovane i održavane od strane Wink-a.  
+**„Sadržaj“** označava sve (opisne) informacije o Pružaocima smeštaja dostupne na Wink sajtu uključujući, ali ne ograničavajući se na informacije i opise Pružaoca smeštaja, recenzije gostiju, meta podatke, detalje o sadržajima i (politike otkazivanja/neosnovanog nepojavljivanja) i opšte uslove Pružaoca smeštaja (uključujući prevode istih) i fotografije, video, slike, ali isključujući cene i dostupnost (uključujući bilo kakve izmene, dopune ili zamene).  
+**„Kontrola“** označava posedovanje moći ili sposobnosti da (direktno ili indirektno, samostalno ili u saradnji sa drugima, bilo kroz vlasništvo glasačkih prava ili drugih vlasničkih interesa, partnerstvo ili na drugi način) (i) vrši ili uzrokuje vršenje više od polovine glasačkih prava na skupštini akcionara kompanije, (ii) imenuje više od polovine (ne)izvršnih direktora ili nadzornih odbora kompanije, ili (iii) usmerava ili uzrokuje usmeravanje upravljanja vezano za kompaniju.  
+**„Podaci o korisnicima“** označavaju lične podatke gosta („PII“), uključujući, ali ne ograničavajući se na ime, adresu (uključujući email adresu), podatke o kreditnoj kartici i druge poverljive i privatne informacije gosta.  
+**„Duplo prikazivanje“** označava više oglasa na istoj stranici rezultata pretraživača sa ciljem usmeravanja saobraćaja na slične sajtove ili stranice sa sličnim sadržajem.  
+**„Gost“** označava posetioca sajtova ili aplikacija koji je izvršio rezervaciju kod Pružaoca smeštaja putem Usluge.  
+**„Pravo intelektualne svojine“** označava bilo koji patent, autorska prava, izume, prava na baze podataka, dizajn, registrovani dizajn, zaštitni znak, trgovačko ime, brend, logotipe, uslužni znak, know-how, korisni model, neregistrovani dizajn ili, gde je relevantno, bilo koju prijavu za takvo pravo, know-how, trgovačko ili poslovno ime, domen (sa bilo kojim (državnim) vršnim domenom, npr. .com, .net, .co.th, .de, .fr, eu, .co.uk, itd.) ili drugo slično pravo ili obavezu, registrovano ili neregistrovano, ili drugo industrijsko ili intelektualno vlasničko pravo koje postoji u bilo kojoj teritoriji ili jurisdikciji u svetu.  
+**„JSON“** označava JSON konekciju između Wink baze podataka i baze podataka Affiliate-a koja može biti obezbeđena od strane Wink-a pod uslovima koji će biti dogovoreni.  
+**„Link“** označava ugrađenu ikonu, objekat, grafiku ili tekst unutar web stranice ili emaila koji sadrži hipertekstualni pokazivač na URL adresu Wink-a na Affiliate sajtu.  
+**„Trgovačka transakcija“** označava realizovanu transakciju u kojoj je Payment Facilitator trgovac zapisan u evidenciji, pri čemu Payment Facilitator direktno prikuplja sredstva od gosta za rezervaciju.  
+**„Realizovane transakcije“** označavaju rezervacije posetilaca Affiliate sajta i/ili aplikacija koji su putem Konekcije izvršili rezervaciju kod Pružaoca smeštaja, a koje su rezultirale stvarnim pružanjem smeštaja, što je potvrđeno Wink-u od strane Pružaoca smeštaja. Realizovane transakcije će uvek biti prilagođene za izmene (npr. skraćeni boravak), povraćaje, prevare sa kreditnim karticama, loše dugove ili slično. Za izbegavanje sumnje, otkazivanja, nepojavljivanja i slično nikada ne mogu biti smatrani realizovanim transakcijama.  
+**„Mikro sajt“** označava sve white label verzije primarnog Wink sajta, koje su u vlasništvu, kreirane, hostovane i održavane od strane Wink-a. Mikro sajt može biti označen logoom „powered by Wink“ ili ekvivalentom.  
+**„Neto provizija“** je iznos koji pripada Affiliate-u za realizovane transakcije nakon odbitka Naknade za uslugu plaćanja i Naknade za rezervaciju.  
+**„Plaćeno pretraživanje“** označava bilo koji oblik online oglašavanja koji vezuje prikazivanje oglasa za specifičan pretraživački zahtev zasnovan na ključnim rečima.  
+**„Payment Facilitator“** je u potpunom vlasništvu Traveliko Singapore Pte. Ltd., koji upravlja uslugama plaćanja, prikupljajući uplate od gostiju („Pay-in“), naplaćujući povezanu metodu plaćanja kao što su kreditne kartice, debitne kartice, bankovni transferi, kriptovalute ili PayPal itd., i isplaćuje sredstva („Neto proviziju“) na lokalni bankovni račun Affiliate-a.  
+**„Pay-in“** označava primanje uplate od gosta od strane Payment Facilitatora.  
+**„Pay-out“** označava isplatu Neto provizije Affiliate-u od strane Payment Facilitatora.  
+**„Naknada za uslugu plaćanja“** je 4% odbijeno od affiliate provizije kao naknada za obradu plaćanja od strane Payment Facilitatora.  
+**„Poređenje cena“** označava poređenje cena i/ili dostupnosti Pružaoca smeštaja dostupnih sa ili preko dva ili više online platformi za rezervaciju smeštaja.  
+**„Preprodaja“** ima značenje kako je navedeno u klauzuli 4.1.7.  
+**„Prodajni portal“** ima značenje kako je navedeno u klauzuli 4.1.8.  
+**„SEM“** označava marketing pretraživača i uključuje bilo koji oblik online marketinga koji nastoji da promoviše sajtove povećavajući njihovu vidljivost na stranicama rezultata pretraživača korišćenjem optimizacije pretraživača, plaćenog plasiranja, kontekstualnog oglašavanja ili plaćenog uključivanja.  
+**„SEO“** označava optimizaciju pretraživača i uključuje proces (i) poboljšanja obima ili kvaliteta saobraćaja na web sajt ili stranicu sa pretraživača putem „prirodnih“ ili neplaćenih („organskih“ ili „algoritamskih“) rezultata pretraživanja, ili (ii) ostvarivanja ili kreiranja boljeg rangiranja u rezultatima pretraživača za određenu ključnu reč ili ključne reči.  
+**„Sličan domen“** ima značenje kako je navedeno u klauzuli 4.7.1.  
+**„Pravila o spamu“** označavaju bilo koje politike, propise, ograničenja ili obaveze koje sa vremena na vreme propisuju, proglašavaju primenjivim ili objavljuju platforme trećih lica koje (i) zabranjuju ili sprečavaju Duplo prikazivanje, Cloaking ili bilo koju sličnu tehniku ili metodu, ili (ii) sadrže dodatna ograničenja ili propise u vezi sa spamovanjem ili očuvanjem jedinstvenog korisničkog iskustva.  
+**„Platforme trećih lica“** označavaju bilo koji (treći) pretraživač (provajder marketinga), meta-pretraživač, pretraživačke robote, sajtove za pretragu putovanja, sajtove za poređenje cena, društvene mreže, pretraživače, servise za deljenje i hostovanje sadržaja i multimedijalne blog servise ili druge (slične) kanale ili oblike (medija za hosting saobraćaja), bilo online ili offline.  
+**„Web sajtovi“** označavaju sajtove Wink-a i njegovih povezanih kompanija i partnerskih sajtova (uključujući Affiliate sajtove) na kojima je proizvod i usluga Wink-a dostupna.  
+**„Wink konkurent“** označava bilo kog direktnog ili indirektnog konkurenta Wink-a (isključujući, radi izbegavanja sumnje, kompanije iz Wink grupe).  
+**„Wink podaci“** označavaju prava intelektualne svojine Wink-a i Sadržaj koji je obezbeđen Affiliate-u u skladu sa ovim Ugovorom i druge informacije koje Wink poseduje ili koristi ili su uključene u Wink sajtove ili su dostupne Affiliate-u (npr. cene i dostupnost).  
+**„Wink sajtovi“** označavaju sajtove Wink-a, uključujući, ali ne ograničavajući se na Wink, traveliko.com i sve lokalne ili alternativne verzije istih (sa bilo kojim vršnim domenom), kao i bilo koje varijacije, uključujući, ali ne nužno ograničavajući se na mobilni sajt, mobilne aplikacije itd.
 
-**1.2 Без партнерства**
+**1.2 Nema partnerstva**
 
-1.2.1 Овај Уговор није намењен, нити било шта у њему или у било ком од овде предвиђених аранжмана треба тумачити, као стварање заједничког подухвата или односа партнера, партнерства или налогодавца и агента између или међу Странама.
+1.2.1 Ovaj Ugovor nije namenjen, niti bilo šta u njemu ili u bilo kojim aranžmanima predviđenim ovim Ugovorom treba tumačiti kao stvaranje zajedničkog ulaganja ili odnosa partnera, partnerstva ili principal-agent odnosa između Strana.
 
-1.2.2 Осим ако није другачије писмено договорено од стране Wink-а или како је другачије наведено у овом Уговору, Партнер неће објављивати нигде на партнерској веб страници (веб страницама) било какву изјаву, било изричиту или имплицитну, да је веб страница део, да је подржава или да је званична веб страница Wink-а.
+1.2.2 Osim ako nije drugačije pisano dogovoreno sa Wink-om ili kako je drugačije navedeno u ovom Ugovoru, Affiliate neće nigde na Affiliate sajtovima objavljivati bilo kakvu izjavu, bilo izričitu ili impliciranu, da je sajt deo, podržan od strane ili zvanični sajt Wink-a.
 
-1.2.3 Партнер може директно да ангажује Пружаоце смештаја како би утврдио ексклузивне или преференцијалне цене, услове, промоције, додатке пакетима и слично.
+1.2.3 Affiliate može direktno komunicirati sa Pružaocima smeštaja radi dogovora o ekskluzivnim ili preferiranim cenama, uslovima, promocijama, paketima i dodacima.
 
-**2. Обим овог споразума**
+**2. Obim ovog Ugovora**
 
-**2.1 Неексклузивност**\
-У складу са условима и одредбама овог Уговора, Партнер ће пословати као неексклузивни дистрибутер (партнер) компаније Wink.
+**2.1 Neekskluzivnost**  
+Podložno uslovima ovog Ugovora, Affiliate će delovati kao neekskluzivni distributer (affiliate) Wink-a.
 
-**2.2 Услуга**
+**2.2 Usluga**
 
-2.2.1 За време трајања овог Уговора, Стране су се сложиле да ће Wink учинити Услугу доступном Партнеру како је наведено у Обрасцу за регистрацију Партнерског партнера (тј. Линк или Микросајт) и на веб-сајту(овима) како је наведено у Обрасцу за регистрацију Партнерског партнера (тј. Веб-сајт(ови) Партнерског партнера).
+2.2.1 Tokom trajanja ovog Ugovora, Strane su se složile da će Usluga biti dostupna Affiliate-u od strane Wink-a kako je navedeno u obrascu za registraciju affiliate partnera (npr. Link ili Mikro sajt) i na web sajtovima kako je navedeno u obrascu za registraciju affiliate partnera (npr. Affiliate sajtovi).
 
-2.2.2 Када посетилац изврши резервацију на или путем Придружених веб страница путем Система, Wink ће бити одговоран за пренос релевантних детаља резервације од посетиоца који је извршио резервацију Пружаоцу смештаја (нпр. датум доласка, број ноћења, тип собе, име госта) и (слање) накнадне (е-поштом) потврде и/или потврдног ваучера Госту.
+2.2.2 Kada posetilac izvrši rezervaciju na ili preko Affiliate sajtova putem Sistema, Wink je odgovoran za prenos relevantnih podataka o rezervaciji od posetioca koji je izvršio rezervaciju do Pružaoca smeštaja (npr. datum dolaska, broj noćenja, tip sobe, ime gosta) i slanje potvrde (emailom) i/ili potvrde vaučera Gostu.
 
-2.2.3 Услуга ће обухватати корисничке услуге за и у корист Гостију. Партнер ће без одлагања упутити и/или проследити сва питања и проблеме везане за корисничку услугу у вези са Услугом, (завршетком) резервације (укључујући сваку измену или отказивање резервације), Пружаоцем смештаја и сва друга релевантна питања (у вези са плаћањем), жалбе и питања директно (центру за корисничку подршку) компаније Wink и неће пружати никакве даље услуге у том погледу.
+2.2.3 Usluga uključuje korisničku podršku za goste. Affiliate će odmah proslediti sve upite i probleme vezane za korisničku podršku u vezi sa Uslugom, rezervacijom (uključujući izmene ili otkazivanja), Pružaocem smeštaja i svim drugim relevantnim pitanjima direktno Wink-u (centru za korisničku podršku) i neće pružati dodatne usluge u tom pogledu.
 
-**2.3 Линк или микросајт**
+**2.3 Link ili Mikro sajt**
 
-2.3.1 У случају да је Услуга доступна путем Линка, Партнер ће о свом трошку интегрисати и учинити Линк доступним на истакнутом месту/местима, веб страницама и на таквом месту, величини и облику на веб сајту/веб сајтовима Партнера како је наложио Wink или како су се Уговорне стране обострано договориле.
+2.3.1 Ukoliko je Usluga dostupna putem Linka, Affiliate će na sopstveni trošak integrisati i učiniti Link dostupnim na istaknutim mestima, web stranicama i u obliku, veličini i poziciji na Affiliate sajtovima kako to Wink uputi ili kako se Strane dogovore.
 
-2.3.2 У случају да је Услуга доступна путем Микро сајта, Партнер ће о свом трошку интегрисати и учинити Везе и/или Микро сајт доступним на истакнутом месту/местима, веб страницама и на таквом месту, величини и облику на веб сајту/веб сајтовима Партнера како је наложио Wink или како су се Уговорне стране обострано договориле.
+2.3.2 Ukoliko je Usluga dostupna putem Mikro sajta, Affiliate će na sopstveni trošak integrisati i učiniti Konekcije i/ili Mikro sajt dostupnim na istaknutim mestima, web stranicama i u obliku, veličini i poziciji na Affiliate sajtovima kako to Wink uputi ili kako se Strane dogovore.
 
-**3. Лиценца**
+**3. Licenca**
 
-**3.1 Узајамна лиценца**
+**3.1 Uzajamna licenca**
 
-3.1.1 У складу са клаузулом 4.4, Wink овим даје Партнеру неексклузивно, опозиво, ограничено, бесплатна и светска права и лиценцу:
+3.1.1 Podložno klauzuli 4.4, Wink ovim daje Affiliate-u neekskluzivno, opozivo, ograničeno, besplatno i svetsko pravo i licencu:
 
-1. да прикаже такве елементе Wink података и такве додатне информације о пружаоцима смештаја на веб-сајтовима партнера, све онако како је Wink обезбедио или учинио доступним партнеру;
-2. да промовише и пласира Услугу у складу са условима наведеним у овом Уговору.
+1) da prikazuje elemente Wink podataka i dodatne informacije o Pružaocima smeštaja na Affiliate sajtovima, sve kako je obezbeđeno ili dostupno od Wink-a;  
+2) da promoviše i reklamira Uslugu pod uslovima ovog Ugovora.
 
-3.1.2 Партнер овим даје Винку право и лиценцу без накнаде за ауторска права и широм света:
+3.1.2 Affiliate ovim daje Wink-u besplatno i svetsko pravo i licencu:
 
-1. да укључи, интегрише, укључи и прикаже Линк, Микросајт и/или Везу (како је применљиво) на Придруженом веб-сајту(овима), и
-2. да би Услуга била доступна на партнерском веб-сајту/веб-сајтовима.
+1) da uključi, integriše, prikaže Link, Mikro sajt i/ili Konekciju (kako je primenjivo) na Affiliate sajtovima, i  
+2) da učini Uslugu dostupnom na Affiliate sajtovima.
 
-**3.2 Без права подлиценцирања и неоткривања**
+**3.2 Bez prava podlicenciranja i obaveza čuvanja poverljivosti**
 
-3.2.1 Осим ако се Винк писмено не договори другачије, Партнер неће (i) имати право да подлиценцира права која су му додељена према Клаузули 3.1.1, или (ii) подлиценцира Линк или Везу било којој трећој страни, или (iii) поставља хиперлинк ка Винк веб-сајту путем или у сарадњи са (веб-сајтовима) компанија унутар Партнерске групе и/или трећим лицима.
+3.2.1 Osim ako nije drugačije pisano dogovoreno sa Wink-om, Affiliate nema pravo (i) da podlicencira prava data u klauzuli 3.1.1, (ii) da podlicencira Link ili Konekciju trećim licima, ili (iii) da kreira hipervezu ka Wink sajtu u saradnji sa sajtovima kompanija unutar Affiliate Grupe i/ili trećih lica.
 
-3.2.2 Осим ако се Винк писмено не договори другачије или како је другачије наведено у овом Уговору, Придружени партнер неће директно или индиректно имати право да продаје, користи, преноси, (под)лиценцира, саопштава, открива, ставља на располагање, дозвољава приступ, открива или на други начин дистрибуира Винк податке или Садржај (i) било којој трећој страни, (ii) у сврху поређења цена/доступности, сајтова, рецензија или истраживања, (iii) у било коју другу сврху осим (генерисања резервација Пружаоца смештаја путем) Услуге, или (iv) на други начин.
+3.2.2 Osim ako nije drugačije pisano dogovoreno sa Wink-om ili kako je drugačije navedeno u ovom Ugovoru, Affiliate nema pravo direktno ili indirektno da prodaje, koristi, prenosi, (pod)licencira, komunicira, otkriva, čini dostupnim, dozvoljava pristup, otkriva ili na drugi način širi Wink podatke ili Sadržaj (i) bilo kojoj trećoj strani, (ii) za poređenje cena/dostupnosti, sajtove, recenzije ili istrage, (iii) za bilo koju drugu svrhu osim (generisanja rezervacija Pružaoca smeštaja putem) Usluge, ili (iv) na drugi način.
 
-**4. Завети и обавезе**
+**4. Obaveze i zaveze**
 
-**4.1 Општи завети, обавезе и преузете обавезе**
+**4.1 Opšte obaveze, zaveze i dužnosti**
 
-4.1.1 У складу са условима овог Уговора, Партнер се слаже да ће уложити комерцијално разумне напоре да (i) прилагоди партнерску веб страницу (веб странице) и интегрише Линк, Конекције и/или Микро страницу на начин који генерише што је могуће више саобраћаја ка Wink веб страници или партнерској веб страници (веб страницама), и (ii) промовише и пласира на тржиште пружаоце смештаја и могућност резервације пружалаца смештаја на партнерској веб страници (веб страницама) у оквиру своје комерцијалне и интерне мреже и у ту сврху ће ставити на располагање своју дистрибутивну мрежу и канале (нпр. свој интернет и интранет).
+4.1.1 Podložno uslovima ovog Ugovora, Affiliate se obavezuje da će koristiti komercijalno razumna nastojanja da (i) prilagodi Affiliate sajtove i integriše Link, Konekcije i/ili Mikro sajt na način da generiše što veći saobraćaj ka Wink sajtu ili Affiliate sajtovima, i (ii) promoviše i reklamira Pružaoca smeštaja i mogućnost rezervacije na Affiliate sajtovima unutar svoje komercijalne i interne mreže, za šta će učiniti dostupnim svoju distribucionu mrežu i kanale (npr. internet i intranet).
 
-4.1.2 Партнер се слаже да неће предузимати или пропуштати предузимање било каквих радњи које могу утицати на однос компаније Wink са пружаоцима смештаја доступним на Wink веб страницама. Партнер се слаже да неће проузроковати или дозволити да се учини било шта што може довести до искључивања компаније Wink из процеса резервације код било ког пружаоца смештаја.
+4.1.2 Affiliate se obavezuje da neće preduzimati ili izostaviti bilo kakvu radnju koja može uticati na odnos Wink-a sa Pružaocima smeštaja dostupnim na Wink sajtovima. Affiliate se obavezuje da neće dozvoliti ili prouzrokovati da Wink bude isključen iz procesa rezervacije kod bilo kog Pružaoca smeštaja.
 
-4.1.3 Партнер се слаже да неће комуницирати ни са једним пружаоцем смештаја, са изузетком из клаузуле 1.2.3, у вези са (искоришћеним) резервацијама направљеним путем Система или за било коју корисничку подршку у вези са таквим резервацијама направљеним путем Система или искоришћеним.
+4.1.3 Affiliate se obavezuje da neće komunicirati sa bilo kojim Pružaocem smeštaja, osim kako je navedeno u klauzuli 1.2.3, u vezi sa rezervacijama izvršenim putem Sistema ili za bilo koju korisničku podršku u vezi sa takvim rezervacijama.
 
-4.1.4 Партнер ће уредно и марљиво одржавати и прилагођавати садржај партнерских веб-сајтова и одржавати партнерске веб-сајтове ажурним и тачним. Партнер ће благовремено исправити све грешке или пропусте на партнерским веб-сајтовима и у информацијама које се односе на пружаоце смештаја након што сазна за такве грешке или га о њима обавести Wink.
+4.1.4 Affiliate će uredno i savesno održavati i prilagođavati sadržaj Affiliate sajtova i držati ih ažurnim i tačnim. Affiliate će odmah ispraviti greške ili propuste na Affiliate sajtovima i u informacijama o Pružaocima smeštaja nakon što postane svestan takvih grešaka ili bude obavešten od Wink-a.
 
-4.1.5 Партнер неће (а) програмски процењивати и извлачити информације (укључујући рецензије гостију) из било ког дела Wink веб странице (нпр. снимком екрана) или покушати да то учини и неће, на било који начин, укључујући, али не ограничавајући се на, механичке, електронске, фотокопирање, снимање или на други начин, копирати, репродуковати, модификовати, мењати, прилагођавати, растављати, обрнутим инжењерингом, скрејповати или на други начин одређивати изворни код (или основних идеја, алгоритама, структуре или организације) линкова или било ког садржаја садржаног на Wink веб страници или услуга које пружа Wink веб страница или покушати да то учини; (б) отпремати (и) било који вирус, тројанског коња, црва, временску бомбу, роботске команде или друге рутине рачунарског програмирања које су намењене да оштете, штетно ометају, прикривено пресретну или експропришу било који систем, податке или личне информације; (ц) давати било какве изјаве посетиоцима, широј јавности или било којој другој страни која је на било који начин повезана са Компанијом, услугама, линковима или Wink веб страницом; (д) (покушај) добијања кредита или провизија од Винка лажним представљањем, давањем лажних изјава, преварним понашањем или било којом другом шемом или триком да се обмане Винк; или (е) на други начин (покушај) наношења штете Винку и Винк веб страници. Свако кршење горе наведених одредби довешће до искључења партнера из програма и губитка свих неизмирених плаћања.
+4.1.5 Affiliate neće (a) programski evaluirati i izvlačiti informacije (uključujući recenzije gostiju) sa bilo kog dela Wink sajta (npr. screen scrape) niti pokušavati to da učini, niti će na bilo koji način, uključujući, ali ne ograničavajući se na mehaničke, elektronske, fotokopiranje, snimanje ili slično, kopirati, reprodukovati, modifikovati, menjati, prilagođavati, rastavljati, reverzno inženjerisati, skidati ili na drugi način utvrđivati izvorni kod (ili osnovne ideje, algoritme, strukturu ili organizaciju) linkova ili bilo kog sadržaja ili usluga Wink sajta ili pokušavati to da učini; (b) postavljati (i) viruse, trojance, crve, vremenske bombe, robotske komande ili druge kompjuterske programe namenjene oštećenju, ometanju, tajnom presretanju ili prisvajanju bilo kog sistema, podataka ili ličnih informacija; (c) davati bilo kakve izjave posetiocima, javnosti ili bilo kojoj drugoj strani u vezi sa Kompanijom, uslugama, linkovima ili Wink sajtom; (d) pokušavati da dobije kredit ili provizije od Wink-a lažnim prikazivanjem, davanjem neistinitih izjava, prevarnim ponašanjem ili bilo kojom drugom šemom ili trikovima za obmanu Wink-a; ili (e) na drugi način pokušavati da nanese štetu Wink-u i Wink sajtu. Svako kršenje ovih odredbi može dovesti do trenutnog isključenja Affiliate-a iz programa i gubitka svih dospelih uplata.
 
-4.1.6 Партнер не сме правити статичке копије Садржаја или било ког дела Wink веб странице (укључујући и рецензије гостију).
+4.1.6 Affiliate neće praviti statičke kopije Sadržaja ili bilo kog dela Wink sajta (uključujući recenzije gostiju).
 
-4.1.7 Према овом Уговору, Партнер неће профитирати од резервација поред примања Провизије од Винка, у складу са условима овог Уговора. Партнер (укључујући његовог запосленог и лице које је овластио) неће вршити никакве резервације код било ког Пружаоца Смештаја на Винк веб-сајту или Партнерском веб-сајту са циљем препродаје такве резервације трећој страни или у њену корист („Препродаја“). Ради избегавања сумње, Винк има искључиво дискреционо право да сматра било коју резервацију препродајом где плаћање такве резервације није директно од особе у чије име је таква резервација извршена.\
-Препродаја се сматра материјалним кршењем овог Уговора. Партнер признаје да је препродаја супротна основној сврси овог Уговора. У случају препродаје, Wink задржава право да одбије резервације и/или откаже потврђене резервације без претходног обавештења или повраћаја новца. Wink такође може одмах прекинути учешће Партнера у програму по сопственом нахођењу, без утицаја на друга правна средства наведена у овом Уговору, укључујући губитак Провизије и захтев за надокнаду штете.
+4.1.7 Prema ovom Ugovoru, Affiliate neće ostvarivati profit od rezervacija osim provizije koju prima od Wink-a pod uslovima ovog Ugovora. Affiliate (uključujući zaposlene i osobe sa ovlašćenjem) neće praviti rezervacije kod bilo kog Pružaoca smeštaja na Wink sajtu ili Affiliate sajtu sa ciljem preprodaje takvih rezervacija trećim licima (u daljem tekstu „Preprodaja“). Radi izbegavanja sumnje, Wink ima diskreciono pravo da smatra bilo koju rezervaciju ili narudžbinu kao Preprodaju ukoliko uplata za tu rezervaciju nije direktno od osobe u čije ime je rezervacija napravljena. Preprodaja se smatra bitnim kršenjem ovog Ugovora. Affiliate priznaje da je Preprodaja suprotna osnovnoj svrsi ovog Ugovora. U slučaju Preprodaje, Wink zadržava pravo da odbije rezervacije i/ili otkaže potvrđene rezervacije bez prethodne najave ili povraćaja novca. Wink takođe može odmah prekinuti učešće Affiliate-a u programu po sopstvenom nahođenju, bez prejudiciranja drugih prava iz ovog Ugovora, uključujući gubitak provizije i zahtev za naknadu štete.
 
-4.1.8 Wink пружа Партнеру приступ одређеној веб страници Wink-а („Партнерски портал“), корисничко име и лозинку који омогућавају Партнеру да прати резервацију смештаја путем Партнерске веб странице(а) и све релевантне информације о управљању које Wink ставља на располагање онлајн. Партнер ће чувати и чувати корисничко име и лозинку поверљивим и безбедно сачуваним и неће их откривати било којој особи осим онима којима је потребан приступ Продавчевом порталу. Партнер ће одмах обавестити Wink о сваком (сумњивом) кршењу безбедности или неправилној употреби.
+4.1.8 Wink obezbeđuje Affiliate-u pristup namenskom Wink sajtu (u daljem tekstu „Prodajni portal“), korisničkom ID-u i lozinki koji omogućavaju Affiliate-u da prati rezervacije smeštaja preko Affiliate sajtova i sve relevantne informacije za upravljanje koje Wink online obezbeđuje. Affiliate će čuvati korisnički ID i lozinku poverljivo i neće ih otkrivati nikome osim osobama kojima je pristup neophodan. Affiliate će odmah obavestiti Wink o bilo kakvom (sumnjivom) bezbednosnom incidentu ili neprimerenoj upotrebi.
 
-4.1.9 Свака резервација или резервација код било ког пружаоца смештаја коју изврши Партнер на Wink веб-сајту или Партнерском веб-сајту подлеже Wink условима коришћења који се могу повремено ажурирати. Ради избегавања сумње, Партнер не сме користити Wink веб-сајт или његов садржај у било коју комерцијалну сврху осим у сврху примања провизије, у складу са условима овог Уговора.
+4.1.9 Sve rezervacije kod Pružaoca smeštaja koje Affiliate napravi na Wink sajtu ili Affiliate sajtu podležu Wink uslovima korišćenja koji se mogu povremeno menjati. Radi izbegavanja sumnje, Affiliate neće koristiti Wink sajt ili njegov sadržaj u komercijalne svrhe osim za primanje provizije pod uslovima ovog Ugovora.
 
-4.1.10 Партнер се слаже и потврђује да су рестриктивни споразуми, обавезе, предуслови, обавезе и ограничења наведени у овој клаузули 4 разумни и од материјалног значаја за Wink, посебно због (i) његове спремности да закључи овај Уговор са Партнером и учини Услугу, Садржај и Права интелектуалне својине Wink (директно или индиректно) доступним Партнеру, и (ii) заштите угледа, производа, услуге и (тржишног) угледа Wink-а. Штавише, Партнер се слаже и потврђује да ће сви споразуми, предуслови, обавезе, гаранције, обавезе и ограничења наведени у овој клаузули 4 (a) бити благовремено, уредно и марљиво поштовани од стране Партнера, и (б) такође се примењују у погледу било које особе која има приступ Порталу продаваца путем корисничког ИД-а Партнера, било које особе за коју се разумно верује да представља Партнера и компанија унутар Групе Партнера. Партнер ће обезбедити, гарантовати и обавезати се да ће свака особа која има приступ Порталу продавца путем корисничког ИД-а Партнера, свака особа за коју се разумно верује да представља Партнера и компаније унутар Групе Партнера поштовати, придржавати се, поштовати и поступати у складу са условима и одредбама наведеним у овој клаузули 4.
+4.1.10 Affiliate prihvata i priznaje da su ograničavajuće odredbe, zaveze, obaveze i restrikcije iz ove klauzule 4 razumno i od suštinskog značaja za Wink, naročito za (i) njegovu spremnost da zaključi ovaj Ugovor sa Affiliate-om i učini Uslugu, Sadržaj i Wink prava intelektualne svojine dostupnim Affiliate-u, i (ii) zaštitu ugleda, proizvoda, usluge i (tržišnog) renomea Wink-a. Takođe, Affiliate prihvata da sve odredbe iz ove klauzule 4 (a) moraju biti odmah, uredno i savesno ispunjene od strane Affiliate-a, i (b) važe i za sve osobe koje imaju pristup Prodajnom portalu preko korisničkog ID-a Affiliate-a, osobe koje se razumno smatraju predstavnicima Affiliate-a i kompanije unutar Affiliate Grupe. Affiliate će obezbediti da sve takve osobe poštuju i postupaju u skladu sa uslovima ove klauzule 4.
 
-**4.2 Гудвил, заштита бренда и саобраћај**
+**4.2 Zaštita ugleda, brenda i saobraćaja**
 
-4.2.1 Да би заштитио производ, услугу, бренд и репутацију компаније Wink, Партнер се овим обавезује, обавезује и гарантује да је/су Партнерски веб-сајт(ови) (укључујући све остале веб-сајтове (директно или индиректно) у власништву, под контролом или хостованим од стране Партнера или компанија унутар Партнерске групе) осим Микро сајта (и да ће остати) довољно и значајно различит/а од Wink веб-сајта (што ће бити одређено по сопственом нахођењу Wink-а). Партнер се овим слаже и потврђује да за време трајања овог Уговора и након тога:\
-(а) изглед и осећај Веб странице/а Партнера (укључујући све остале веб странице (директно или индиректно) у власништву, под контролом или хостом Партнера) биће јасно и значајно другачији од Веб странице Wink, укључујући и у погледу шеме боја, композиције, фонтова, дизајна и распореда (укључујући бренд), дугмади (за клик), оквира и банера и доступних функција (осим оних функција које су разумно потребне за испуњавање обавеза Партнера према овом Уговору);\
-(б) сваки логотип(и) који се користи на веб-сајтовима Партнера (укључујући све друге веб-сајтове у власништву, под контролом или хостом Партнера) мора се јасно разликовати од логотипа Wink (осим било ког логотипа који Wink може дати на коришћење од стране Партнера у складу са овим Уговором);\
-(ц) Партнер неће ни на који начин имитирати или копирати Wink веб странице (уопштено или у погледу одређених (нових) карактеристика, страница, форме, састава или аспеката), и\
-(д) Партнер ће без одлагања, о свом трошку, удовољити свим разумним захтевима компаније Wink да изврши такве (даље) измене, преправке или допуне било ког аспекта веб-сајта партнера који јесте или се може сматрати збуњујућим или значајно сличним било ком елементу веб-сајта Wink.
+4.2.1 Radi zaštite proizvoda, usluge, brenda i ugleda Wink-a, Affiliate se obavezuje da Affiliate sajtovi (uključujući sve druge sajtove u vlasništvu, kontroli ili hostovane od strane Affiliate-a ili kompanija unutar Affiliate Grupe), osim Mikro sajta, budu dovoljno i značajno različiti od Wink sajta (što Wink određuje po sopstvenom nahođenju). Affiliate prihvata da tokom trajanja ovog Ugovora i nakon toga:  
+(a) izgled i dojam Affiliate sajtova (uključujući sve druge sajtove u vlasništvu, kontroli ili hostovane od strane Affiliate-a) budu jasno i značajno različiti od Wink sajta, uključujući šemu boja, kompoziciju, fontove, dizajn i raspored (uključujući brend), dugmad, okvire i banere i dostupne funkcije (osim onih neophodnih za ispunjenje obaveza iz ovog Ugovora);  
+(b) bilo koji logo korišćen na Affiliate sajtovima bude jasno različit od Wink logotipa (osim logotipa koji je Wink obezbedio Affiliate-u za korišćenje u skladu sa ovim Ugovorom);  
+(c) Affiliate neće na bilo koji način imitirati ili kopirati Wink sajtove (u celini ili u pogledu određenih (novih) funkcija, stranica, formi, kompozicije ili aspekata); i  
+(d) Affiliate će odmah, na sopstveni trošak, ispuniti razumne zahteve Wink-a za izmene ili dopune Affiliate sajtova koje su zbunjujuće ili značajno slične Wink sajtu.
 
-**4.3 Права интелектуалне својине**
+**4.3 Prava intelektualne svojine**
 
-4.3.1 Партнер потврђује да ће Wink и/или његови даваоци лиценци задржати власништво над свим правима, титулом и интересом у вези са свим Правима интелектуалне својине Wink-а или отелотвореним на Wink веб-сајту, укључујући (али не ограничавајући се на) Wink лого, Садржај и Wink податке. Ништа садржано у овом Уговору неће се сматрати преносом било ког таквог права, титуле или интереса на Партнера на било који начин.
+4.3.1 Affiliate priznaje da Wink i/ili njegovi davaoci licenci zadržavaju vlasništvo nad svim pravima, naslovima i interesima u Wink intelektualnoj svojini ili onome što je uključeno u Wink sajt, uključujući Wink logo, Sadržaj i Wink podatke. Ništa u ovom Ugovoru ne prenosi takva prava na Affiliate-a.
 
-4.3.2 Партнер неће откривати, интегрисати, укључивати, користити, комбиновати, експлоатисати, уграђивати или на други начин учинити Садржај и Wink податке (или било који њихов део) доступним (а) са сопственим садржајем и/или садржајем било ког Wink конкурента (укључујући и пружаоце смештаја), или (б) за или у корист (и) себе (осим за омогућавање Услуге и Система у складу са условима овог Уговора), или (ии) било ког Wink конкурента (укључујући и пружаоце смештаја) (било да је у питању промоција, маркетинг, референца на, промоција, оглашавање или на други начин у интересу или за такву страну), или (ц) за било коју другу сврху или на било који други начин и/или на или путем Платформи трећих страна, осим како је изричито предвиђено овим Уговором. Партнер неће мењати, модификовати, искривљавати, креирати изведена и/или нова дела заснована на и/или изведена из Садржаја, а Садржај неће садржати (директну или индиректну) везу, референцу, клик-тхруст или референцу на (веб локацију) Wink конкурента (укључујући и пружаоце смештаја).
+4.3.2 Affiliate neće otkrivati, integrisati, koristiti, kombinovati, eksploatisati, uključivati ili na drugi način činiti dostupnim Sadržaj i Wink podatke (ili bilo koji njihov deo) (a) sa sopstvenim sadržajem i/ili sadržajem bilo kog Wink konkurenta (uključujući Pružaoca smeštaja), ili (b) za sopstvenu korist (osim za omogućavanje Usluge i Sistema u skladu sa ovim Ugovorom), ili (c) za bilo kog Wink konkurenta (uključujući Pružaoca smeštaja), ili (d) za bilo koju drugu svrhu ili na bilo koji drugi način i/ili preko platformi trećih lica osim ako je izričito dozvoljeno ovim Ugovorom. Affiliate neće menjati, iskrivljavati, stvarati izvedena ili nova dela zasnovana na Sadržaju i Sadržaj neće sadržavati direktne ili indirektne linkove, reference ili klikove ka Wink konkurentima.
 
-4.3.3 Филијала ће (и ће обезбедити да компаније унутар Филијалне групе неће) неће (директно или индиректно) регистровати, стицати, користити, куповати или добијати име интернет домена које садржи било коју реч или речи које су идентичне или збуњујуће или суштински сличне речи „Wink“ или било којим варијацијама, преводима или погрешно написаним речима, укљученим као део адресе.
+4.3.3 Affiliate neće (direktno ili indirektno) registrovati, kupovati ili koristiti internet domen koji sadrži reč ili reči identične ili zbunjujuće slične „Wink“ ili varijacije, prevode ili greške u kucanju, kao deo adrese.
 
-4.3.4 Склапањем овог Уговора, Винк се не одриче (експлицитно или прећутно) нити губи било које од својих права на која има право по било ком закону, уговору или на други начин (сада или у будућности) у вези са Правима интелектуалне својине Винк-а према Придруженом друштву или другим трећим лицима.
+4.3.4 Zaključenjem ovog Ugovora, Wink ne odustaje ni na koji način od svojih prava u vezi sa Wink intelektualnom svojinom prema Affiliate-u ili trećim licima.
 
-**4.4 Промоција и маркетинг**
+**4.4 Promocija i marketing**
 
-4.4.1 Током трајања Уговора, Партнер се слаже и гарантује да неће (и обезбедиће да компаније унутар Партнерске групе неће) спроводити, предузимати, користити, изводити или вршити (или имати или овластити треће стране да спроводе, предузимају, користе, изводе или врше) (а) активности плаћеног претраживања, SEM или SEO, (б) било коју активност која неправедно утиче на резултате платформи трећих страна или (ц) било који други облик циљаног оглашавања на мрежи (било директно, индиректно или путем платформи трећих страна) у погледу:
+4.4.1 Tokom trajanja Ugovora, Affiliate se obavezuje da neće (i neće dozvoliti kompanijama unutar Affiliate Grupe da) sprovoditi, koristiti ili dozvoliti trećim licima da sprovode (a) plaćene pretrage, SEM ili SEO aktivnosti, (b) bilo kakve aktivnosti koje nepravedno utiču na rezultate platformi trećih lica, ili (c) bilo koji drugi oblik online ciljane reklame u vezi sa:
 
-1. Услуга;
-2. Вебсајт Wink;
-3. Садржај;
-4. Подаци о намигнућу;
-5. Винк Брендови;
-6. Брендови пружаоца смештаја (осим ако власник таквог бренда пружаоца смештаја није дао претходну писмену сагласност Подружници за коришћење тог одређеног бренда пружаоца смештаја), или
-7. Партнерски веб-сајт у мери у којој су Плаћена претрага, СЕМ, СЕО или друге активности циљаног оглашавања на мрежи повезане са (а) понудом, резервацијом или резервацијом Смештаја (било путем Услуге или на други начин), или (б) информацијама у вези са Смештајем.
+1. Uslugom;  
+2. Wink sajtom;  
+3. Sadržajem;  
+4. Wink podacima;  
+5. Wink brendovima;  
+6. Brendovima Pružaoca smeštaja (osim ako vlasnik brenda nije dao pisanu saglasnost); ili  
+7. Affiliate sajtom u meri u kojoj su ove aktivnosti vezane za ponudu, rezervaciju ili smeštaj ili informacije o smeštaju.
 
-Клаузула 4.4.1 у погледу става (i) до (v) укључујући и њега остаје на снази након престанка важења овог Уговора.
+Klauzula 4.4.1 u delu od (i) do (v) ostaje na snazi i nakon prestanka ovog Ugovora.
 
-4.4.2 Партнер не сме користити, експлоатисати или на други начин запошљавати, директно или индиректно, било коју Т платформу, да би покушао да избегне или заобиђе своје обавезе или ограничења према овом Уговору или она ограничења или обавезе за које Партнер може разумно очекивати да такве радње спадају у делокруг овог Уговора.
+4.4.2 Affiliate neće koristiti T platforme da izbegne ili zaobiđe svoje obaveze ili ograničenja iz ovog Ugovora.
 
-4.4.3 Подружница не сме да експлоатише или користи Садржај у било коју сврху или на било који начин и/или на или путем Платформи трећих страна, осим како је изричито предвиђено овим Уговором.
+4.4.3 Affiliate neće koristiti Sadržaj za bilo koju svrhu ili na bilo koji način osim kako je izričito dozvoljeno ovim Ugovorom.
 
-4.4.4 Током трајања овог Уговора (и након тога у погледу Wink брендова и Wink података), Подружница ће одмах поступити у складу са сваким захтевом Wink-а да се придржава ове клаузуле 4.4, у супротном Wink може раскинути уговор са тренутним дејством и без утицаја на своја законска и уговорна средства.
+4.4.4 Tokom trajanja ovog Ugovora (i nakon toga u vezi sa Wink brendovima i podacima), Affiliate će odmah ispuniti svaki zahtev Wink-a za poštovanje ove klauzule 4.4, u suprotnom Wink može odmah raskinuti Ugovor bez prejudiciranja drugih prava.
 
-**4.5 Забрањено је двоструко приказивање или прикривање**
+**4.5 Zabranjeno duplo prikazivanje i cloaking**
 
-4.5.1 Придружени веб-сајтови не смеју бити (директно или индиректно) повезани са Wink веб-сајтовима због двоструког сервирања или било које сличне технике или методе или других ограничења као што је наведено у било којим Правилницима о спаму.
+4.5.1 Affiliate sajtovi neće biti povezani sa Wink sajtovima zbog Duplog prikazivanja ili sličnih tehnika ili metoda ili drugih ograničenja iz pravila o spamu.
 
-4.5.2 У случају да је Услуга доступна путем Линка или Микро сајта, Партнер неће учинити Услугу доступном (директно или индиректно) путем или користити у ту сврху сајтове за претрагу путовања или сајтове за поређење цена, осим ако се Винк писмено не договори другачије.
+4.5.2 Ako je Usluga dostupna putem Linka ili Mikro sajta, Affiliate neće učiniti Uslugu dostupnom preko sajtova za pretragu putovanja ili poređenje cena, osim ako nije drugačije dogovoreno sa Wink-om.
 
-4.5.3 Партнер неће (директно или индиректно) учинити Веб-сајт(ове) Партнера, Садржај или Услугу доступним или представити Садржај Платформама Трећих Лица са намером или сврхом или (покушавањем) обмањивања, преваре, преваре или заваравања људских уредника, претраживача, веб-краулера или (мета) претраживача (укључујући све сличне алате или претраживаче) Платформи Трећих Лица како би Веб-сајту(овима) Партнера дао виши ранг или приказ када се иначе не би приказивао или био више рангиран да није користио прикривање или било коју сличну технику или метод.
+4.5.3 Affiliate neće na bilo koji način učiniti Affiliate sajtove, Sadržaj ili Uslugu dostupnim platformama trećih lica sa namerom da obmane ili prevari urednike, pretraživačke robote ili pretraživače da bi se postiglo bolje rangiranje ili prikazivanje.
 
-4.5.4 Партнер се обавезује и гарантује да ће се без одлагања придржавати, поштовати и поштовати Правилнике о спаму (и све разумне захтеве које Винк поднесе у том погледу) како би избегао било какво кршење таквих политика од стране Винка или партнерског веб-сајта(ова) због или у вези са партнерским веб-сајтом(овима). Ради избегавања сумње, Партнер не може да спроводи никаква права у овом погледу према или у вези са Винком и овим се одриче било какве (права на) одбрану или потраживања против Винка у овом погледу.
+4.5.4 Affiliate se obavezuje da će poštovati pravila o spamu i zahteve Wink-a u vezi sa tim, i odriče se prava na bilo kakvu odbranu ili potraživanja prema Wink-u u vezi sa tim.
 
-**4.6 Забрана нуђења услуга/услуга**
+**4.6 Zabranjeno direktno kontaktiranje Pružaoca smeštaja**
 
-Партнер се слаже да неће контактирати, тражити или прихватати било ког пружаоца смештаја (i) као свог пословног партнера за резервације (директно или индиректно) на или путем партнерског веб-сајта(ова), (ii) за продају огласног простора или друге (онлајн) рекламне или маркетиншке сврхе (било путем банера, кликова, (текстуалних) линкова, искачућих прозора или на други начин) на партнерском веб-сајту(овима), или (iii) из било ког другог разлога.
+Affiliate se obavezuje da neće kontaktirati, tražiti ili prihvatiti Pružaoca smeštaja kao poslovnog partnera za rezervacije, prodaju reklamnog prostora ili druge marketinške svrhe na Affiliate sajtovima ili iz bilo kog drugog razloga.
 
-**4.7 Слична имена домена**
+**4.7 Slični domeni**
 
-4.7.1 У случају да Партнер има или користи име домена (збуњујуће) слично брендовима Wink („Слично име домена“) за веб-сајт(ове) Партнера (што ће бити одређено по нахођењу Wink-а) или у случају да Партнер жели да региструје, стекне, користи, купи или добије слично име домена (уз претходно писмено одобрење Wink-а), важи следеће. Партнер ће (и обезбедиће да компаније које контролише неће) неће, директно или индиректно:
+4.7.1 Ako Affiliate poseduje ili koristi domen zbunjujuće sličan Wink brendovima (u daljem tekstu „Sličan domen“) ili želi da registruje takav domen (uz prethodnu pisanu saglasnost Wink-a), ne sme direktno ili indirektno:
 
-1. лицитирати или куповати права на интернет пласман за слично име домена или било који његов део или сличности на било који начин у било ком од својих огласа, укључујући, али не ограничавајући се на, интернет и веб оглашавање.\
-   2\. укључивати слично име домена или било који његов део, или сличне варијације, преводе или правописне грешке, у мета ознаке било ког кода веб странице. Ово укључује мета наслов, мета кључне речи или мета опис.\
-   3\. куповати, добијати или користити, директно или индиректно, било које кључне речи са платформи трећих страна како би се преусмерио саобраћај на слично име домена, и\
-   4\. купити слично име домена или било који његов део, или било које варијације, преводе или погрешно написане речи, за употребу у текстуалним линковима, банер огласима, искачућим огласима или било којој другој врсти огласа који би могао бити повезан са кампањом кључних речи.
+1. licitirati ili kupovati prava za internet plasman za Sličan domen u bilo kojoj reklami;  
+2. uključivati Sličan domen ili njegove varijacije u meta tagove bilo kog sajta;  
+3. kupovati ili koristiti ključne reči sa platformi trećih lica za preusmeravanje saobraćaja na Sličan domen;  
+4. koristiti Sličan domen u tekstualnim linkovima, banerima, pop-up oglasima ili drugim oglasima povezanim sa kampanjama ključnih reči.
 
-4.7.2 У погледу сличних имена домена која нису Придружени веб-сајт, Стране су се сложиле да (i) сва таква слична имена домена буду директно повезана са Придруженим веб-сајтом путем или путем директног преусмеравања и да неће бити активно доступна или онлајн у било коју сврху, и (ii) Придружено лице (нити било ко из Придружене групе) неће ни на који начин (онлајн или офлајн) пласирати на тржиште, промовисати, располагати, продавати, нудити, рекламирати, (под)лиценцирати, стављати на располагање, дозвољавати приступ, позивати се на, објављивати или дистрибуирати слична имена домена.
+4.7.2 Svi Slični domeni osim Affiliate sajta moraju biti direktno preusmereni na Affiliate sajt i ne smeju biti aktivno dostupni ili reklamirani.
 
-**4.8 Поређење цена**
+**4.8 Poređenje cena**
 
-4.8.1 У случају да Партнер нуди Поређење цена на релевантној/им партнерској веб страници/ама, као што је наведено у Обрасцу за регистрацију партнера, Партнер ће за ту релевантну/им партнерску веб страницу/ама имати искључиво приступ подацима о ценама и расположивости релевантних пружалаца смештаја, како је доступно на Wink веб страници (заједнички, „Подаци о ценама и расположивости“), у складу са директном везом са Wink веб серверима (тј. путем JSON везе). Подаци о ценама и расположивости биће доступни у складу са додатним условима које је Wink ставио на располагање.
+4.8.1 Ako Affiliate nudi poređenje cena na relevantnim Affiliate sajtovima, biće mu omogućen pristup podacima o cenama i dostupnosti Pružaoca smeštaja sa Wink sajta putem direktne JSON konekcije, pod uslovima koje odredi Wink.
 
-4.8.2 Подаци о ценама и расположивости не укључују, и Партнер нема право да користи, копира, позива се на или укључује на својим веб страницама где је доступно Поређење цена, Wink податке и садржај са Wink веб странице или веб сервера или треће стране (веб странице) са којом Wink има уговорни однос за пружање Садржаја.
+4.8.2 Affiliate ne sme koristiti Wink podatke i Sadržaj sa Wink sajta ili trećih lica na mestima gde je dostupno poređenje cena.
 
-4.8.3 У случају да Партнер нуди Поређење цена, Партнер ће осигурати да су цене соба које су сви Wink конкуренти (укључујући све пружаоце смештаја или центре за резервације, посреднике или агенте (заједнички „Треће стране“)) на веб-сајту Партнера тачне, исправне и да нису обмањујуће или обмањујуће у поређењу са стварном/стварном/стварним ценама које су доступне на веб-сајту/веб-сајтовима Трећих страна.
+4.8.3 Affiliate će osigurati da cene prikazane na poređenju cena budu tačne i ne zavaravajuće u odnosu na stvarne cene na sajtovima trećih lica.
 
-4.8.4 Wink ће бити третиран барем подједнако повољно на веб-сајту за поређење цена Партнера (у погледу рангирања, приказивања и могућности конверзије) као и најбоља конверзија (x) Wink конкурента, (y) пружалаца смештаја или (z) било ког центра за резервације, агента или посредника или којим управља, поседује или контролише Wink конкурент или пружалац смештаја, доступан на веб-сајту за поређење цена Партнера.
+4.8.4 Wink će biti tretiran bar jednako povoljno na poređenju cena Affiliate sajta kao i najbolji konkurenti, Pružaoci smeštaja ili agenti.
 
-**4.9 Терет доказивања, усклађеност, судска забрана и даља правна средства**
+**4.9 Teret dokaza, usklađenost i pravni lekovi**
 
-4.9.1 Стране се слажу и признају да у случају (наводног или претећег) кршења или прекршаја од стране Партнера својих обавеза из ове клаузуле 4, терет доказивања сноси Партнер. Другим речима, Wink носи корист од претпоставке, а Партнер мора да пружи и достави довољне и задовољавајуће доказе (тј. убедљиве и непобитне) како би одбранио или одбацио тужбу.
+4.9.1 U slučaju navodnog kršenja obaveza iz ove klauzule 4, teret dokaza je na Affiliate-u.
 
-4.9.2 У случају да је Винк веб-сајт, кампања или оглас повезан са партнерским веб-сајтом(овима) или кампањом или огласом партнера (или обрнуто) или у случају (претећег) кршења Правилника о спаму од стране партнера, партнер ће (i) одмах обавестити Винк о таквом (претећем) кршењу након што сазна за такво кршење, и (ii) на први захтев Винка, одмах имплементирати, поштовати и придржавати се свих услова, ограничења и забрана наведених у овом Уговору или које захтева Винк. Партнер ће одмах контактирати сваку платформу треће стране или агенцију треће стране и ревидирати партнерски(е) веб-сајт(ове) и све огласне текстове, наслове, описе, кључне речи, URL-ове, текстуалне линкове, огласе, укључујући све мета ознаке (мета наслове, мета кључне речи и мета описе) како би били у складу са условима овог Уговора или како захтева Винк.
+4.9.2 U slučaju povezanosti kampanja ili kršenja pravila o spamu, Affiliate će odmah obavestiti Wink i ispuniti sve zahteve Wink-a.
 
-4.9.3 Партнер се слаже и потврђује да, док се не испуне или спроведу разумни захтеви које је поднео Винк или у случају да Партнер не поступи благовремено у складу са свим таквим захтевима Винка према или у складу са овом клаузулом 4, Винк има право да одложи или обустави своје обавезе према овом Уговору (укључујући понуду Услуге, Система и Винк података) или да одмах раскине овај Уговор, без утицаја на Винк-ова права према овом Уговору или на други начин.
+4.9.3 Ako Affiliate ne ispuni zahteve Wink-a, Wink može odložiti ili suspendovati svoje obaveze ili odmah raskinuti Ugovor.
 
-4.9.4 У случају кршења споразума, обавеза, ограничења, обавеза и/или гаранција наведених у овој клаузули 4 од стране или које се могу приписати Партнеру, Винк ће имати право да користи следеће радње и права, без обзира на правна средства и радње за одређено извршење, накнаду штете или судску забрану или правичну заштиту доступну законом или уговором:\
-(а) обуставу својих (плаћајних) обавеза према овом Уговору или раскид овог Уговора са тренутним дејством без претходног обавештења Партнеру и без утицаја на права компаније Wink према овом Уговору или на други начин;\
-(б) Wink има право да смањи Провизију на 0% за све извршене резервације и/или сваку Материјализовану трансакцију током периода у којем Партнер прекрши релевантне обавезе наведене у Клаузули 4 или није у потпуности отклонио своје кршење релевантних обавеза како је наведено у Клаузули 4;\
-(ц) Wink задржава право да захтева од Партнера да врати Провизију коју је Wink исплатио по овом Уговору; и\
-(д) у случају коришћења Сличног имена домена (или власништва или регистрације од стране Придруженог лица веб странице са (збуњујуће) сличним именом домена као што је у власништву или коришћено од стране Винка) и поновљеног и/или материјалног кршења Клаузуле 4, Придружено лице ће пренети, доделити и регистровати Слично име домена (укључујући веб страницу(е) са (збуњујуће) сличним именом домена) на и у име Винка преко компаније за регистрацију имена домена по Винковом избору, што треба да се заврши у року од 20 радних дана од настанка кршења. У случају да Придружено лице не (сарађује са и не изврши) преусмеравање, доделу и пренос (од) релевантних имена домена, Придружено лице овим неопозиво и безусловно овлашћује, овлашћује и даје пуномоћје и у корист Винка да потпише и/или изврши сва документа која су неопходна или корисна у вези са или потребна за доделу, регистрацију, преусмеравање и пренос имена домена на и у име Винка.
+4.9.4 U slučaju kršenja obaveza iz ove klauzule 4, Wink može:  
+(a) suspendovati ili raskinuti Ugovor bez prethodne najave;  
+(b) smanjiti proviziju na 0% za sve rezervacije tokom trajanja kršenja;  
+(c) zahtevati povraćaj isplaćene provizije;  
+(d) zahtevati prenos i registraciju Sličnog domena na Wink u roku od 20 radnih dana, uz ovlašćenje Wink-u da izvrši prenos ako Affiliate ne sarađuje.
 
-**5. Комисија**
+**5. Provizija**
 
-5.1 Wink ће исплатити Партнеру провизију, која представља проценат који одређује Пружалац смештаја од вредности резервације генерисане материјализованом трансакцијом. Wink користи услуге посредника за плаћање треће стране за трансакције уплате и исплате. Услови плаћања су наведени у посебном уговору.
+5.1 Wink će isplatiti Affiliate-u proviziju u procentu koji postavlja Pružaoc smeštaja na vrednost rezervacije ostvarene realizovanom transakcijom. Wink koristi usluge trećeg lica za plaćanja. Uslovi plaćanja su definisani posebnim ugovorom.
 
-5.2 Проценат партнерске провизије или ACP одређује Пружалац смештаја. Користи се подразумевани ACP од 10%, али стране се могу договорити о другачијем проценту као што је наведено у клаузули 1.2.3.
+5.2 Procenat provizije (ACP) postavlja Pružaoc smeštaja. Podrazumevani ACP je 10%, ali strane mogu dogovoriti drugačiji procenat.
 
-5.3 Провизија ће бити исплаћена у складу са следећом формулом:
+5.3 Provizija se računa po formuli:
 
-Провизија = БВ \* АКП\
-Нето исплаћена провизија (исплата) = Провизија - PSF - BF
+Provizija = BV * ACP  
+Neto provizija (isplata) = Provizija - Naknada za uslugu plaćanja - Naknada za rezervaciju
 
-**„БВ“**&#x437;начи вредност резервације\
-**„АКП“**&#x437;начи проценат партнерске провизије\
-**„БФ“**&#x437;начи накнада за резервацију (1,5%)\
-**„ПСФ“**&#x437;начи Накнаде за платне услуге (4%)
+**„BV“** znači Vrednost rezervacije  
+**„ACP“** znači Procenat provizije affiliate-a  
+**„BF“** znači Naknada za rezervaciju (1,5%)  
+**„PSF“** znači Naknada za uslugu plaćanja (4%)
 
-5.4 Wink прати све трансакције и уложиће комерцијално разумне напоре како би осигурао да се све материјализоване трансакције прате, пријављују и плаћају. Међутим, Wink-ова евиденција ће бити коначна и Партнер неће имати право на надокнаду за било какав изгубљени приход или штету у случају да Wink не успе тачно да прати или пријави одласке Партнера, осим у случају грубог кршења пословних обавеза или преварног понашања од стране Wink-а. Осим у овим последњим случајевима, једино право Партнера је да раскине овај Уговор и прекине своје учешће у програму.
+5.4 Wink prati sve transakcije i ulaže razumne napore da osigura praćenje, izveštavanje i isplatu svih realizovanih transakcija. Međutim, evidencija Wink-a je konačna i Affiliate nema pravo na naknadu u slučaju greške osim u slučaju grube nepažnje ili prevare Wink-a. U takvim slučajevima, jedino rešenje Affiliate-a je raskid Ugovora.
 
-5.5 Наведена нето провизија биће једина накнада коју Партнер има право да прими по овом Уговору. Партнер нема право ни на какве друге погодности. Винк-ова је одговорност да провери тачност исплата нето провизија пре исплате и одговорност је Партнера да провери све исплате нето провизија по пријему и да одмах пријави наводне грешке. Ниједна страна не може поднети захтеве за преплату или недовољну исплату деведесет (90) календарских дана након датума доспећа плаћања. Све поруџбине подлежу прихватању од стране Винк-а у складу са његовим политикама у време захтева за резервацију. Винк-ове политике се могу променити без претходне најаве.
+5.5 Neto provizija je jedina naknada na koju Affiliate ima pravo po ovom Ugovoru. Affiliate nije ovlašćen za druge benefite. Wink je odgovoran za proveru tačnosti isplata, a Affiliate za proveru po prijemu i pravovremeno prijavljivanje grešaka. Zahtevi za naknadu se ne mogu podnositi nakon 90 kalendarskih dana od datuma dospeća. Sve narudžbine podležu prihvatanju Wink-a u skladu sa politikama koje se mogu menjati bez najave.
 
-5.6 Wink ће уложити комерцијално разумне напоре да спроведе ревизију свих трансакција које су предмет овог Уговора. Wink ће обезбедити Партнеру приступ аналитици и контролној табли која сумира све предстојеће и истекле резервације. Партнер ће такође имати приступ извештајима о плаћању, који ће приказивати пројектовану зараду и историју плаћања. Уколико Wink не води тачну евиденцију или ревизију, једино решење Партнера је да раскине овај Уговор и прекине своје учешће у програму.
+5.6 Wink vodi evidenciju svih transakcija i obezbeđuje Affiliate-u pristup analitici i kontrolnoj tabli sa pregledom rezervacija i izveštajima o isplatama. Ako Wink ne vodi tačne evidencije, jedino rešenje Affiliate-a je raskid Ugovora.
 
-**6. Изјаве и гаранције.**
+**6. Izjave i garancije**
 
-**6.1 Гаранције партнера**
+**6.1 Garancije Affiliate-a**
 
-Партнер овим изјављује и гарантује компанији Wink да за време трајања овог Уговора:\
-(i) Партнер има сва потребна права, власништво, овлашћења и овлашћења да поседује, управља и користи Партнерски веб-сајт(ове) (укључујући релевантно име(на) домена) и да укључи Линк, Микросајт или Везу (како је применљиво) на Партнерском веб-сајту(овима);\
-(ii) Партнерски веб-сајт(ови) не смеју (а) да се баве тактиком „црног шешира“, да крше Прописе о спаму, јавну политику и морал, или (б) да садрже или приказују било какав неприкладан, неправилан или незаконит садржај, референцу, материјал, информације, линкове или банере (нпр. у вези са порнографијом, расизмом и слично), клеветничке изјаве, елементе који крше приватност трећих лица или су увредљиви, офанзивни или непристојни, (ц) да копирају или подсећају на дизајн, имена домена (укључујући поддомене), изглед и осећај, или да стварају утисак да су део Wink веб-сајта или било ког од Wink-ових партнера или подружница; (д) да заговарају дискриминацију на основу расе, пола, религије, националности, инвалидитета, сексуалне оријентације или старости; (е) да промовишу или се баве незаконитим активностима; (ф) да крше права интелектуалне својине трећих лица; (г) да садрже или промовишу обмањујуће информације или да промовишу коцкање; или (х) да на други начин буду неприкладне природе. Било какво кршење горе наведених одредби може довести до тренутног искључења Партнера из програма и губитка свих неизмирених плаћања.\
-(iii) Партнер неће користити никакве предаторске методе оглашавања осмишљене да генеришу саобраћај са било које веб странице у власништву или којом управља Винк или било која од његових повезаних компанија, укључујући, без ограничења, Wink.com (и све локалне верзије истог са било којим доменом највишег нивоа), priceline.com, rentalcars.com (и све локалне верзије истог са било којим доменом највишег нивоа), www.booking.com, www.kayak.com, Wink (и све локалне верзије истог са било којим доменом највишег нивоа) www.opentable.com (и све локалне верзије истог са било којим доменом највишег нивоа), као и било које друге веб странице које Винк може повремено обавестити. Поред тога, Партнер ће забранити веб страницама које Партнер контролише такве предаторске методе оглашавања. Предаторско оглашавање се дефинише као свака метода која креира или преклапа линкове или банере на веб страницама, покреће прозоре прегледача или било која метода измишљена за генерисање саобраћаја са веб странице без знања, дозволе и учешћа власника веб странице. Примери укључују, али нису ограничени на, додатке за прегледач за парсирање кључних речи као што су Text Enhance, TopText и +Surf, технологију замене банера као што је Gator, технологију покретања прегледача која не зависи од веб странице, као и коришћење Wink Marks-а у текстовима огласа за претраживаче (нпр. Google AdWords, Yahoo! Search Marketing,...) или еквивалентно и генерално све друге методе које би могле обмањујуће навести потенцијалне купце да поверују да ће бити усмерени на Wink веб страницу. Свако кршење горе наведених одредби може довести до тренутног искључења партнера из програма и губитка свих доспелих плаћања.\
-(iv) Подружница поседује и испунила је све дозволе, лиценце и друга владина овлашћења неопходна за обављање, извршавање и наставак свог пословања и пословања, и\
-(v) Подружница је независни извођач радова у свим сврхама и биће одговорна за сопствене порезе, социјалне доприносе и сва друга питања везана за порезе.
+Affiliate garantuje Wink-u da tokom trajanja Ugovora:  
+(i) poseduje sva prava i ovlašćenja za upravljanje Affiliate sajtovima i uključivanje Linka, Mikro sajta ili Konekcije;  
+(ii) Affiliate sajtovi neće koristiti neprimerene taktike, neće kršiti pravila o spamu, neće sadržavati neprikladan, nezakonit ili uvredljiv sadržaj, neće kopirati ili ličiti na Wink sajtove, neće promovisati diskriminaciju, nezakonite aktivnosti, kršenje prava intelektualne svojine, obmanjujuće informacije ili kockanje;  
+(iii) Affiliate neće koristiti agresivne metode oglašavanja koje odvode saobraćaj sa Wink sajtova ili povezanih sajtova;  
+(iv) poseduje i poštuje sve potrebne dozvole i licence;  
+(v) je nezavisni izvođač i odgovoran za svoje poreze i doprinose.
 
-**6.2 Гаранције и обавезе странака**
+**6.2 Garancije i obaveze Strana**
 
-6.2.1 Свака Уговорна страна изјављује и гарантује другој Уговорној страни да ће за време трајања овог Уговора:\
-(i) има пуна корпоративна овлашћења и овлашћења да закључи и испуни своје обавезе према овом Уговору;\
-(ii) предузео је све корпоративне радње које су му потребне да би овластио потписивање и извршење овог Уговора;\
-(iii) овај Уговор представља правно ваљане и обавезујуће обавезе те Стране у складу са његовим одредбама.
+6.2.1 Svaka Strana garantuje da ima punu moć i ovlašćenje za zaključenje i izvršenje ovog Ugovora.
 
-6.2.2 Свака Уговорна страна ће уложити комерцијално разумне напоре да заштити и обезбеди своју веб страницу/веб странице.
+6.2.2 Svaka Strana će koristiti razumne napore da zaštiti svoje sajtove.
 
-6.2.3 Партнер изјављује и гарантује да неће вршити или нудити било какву уплату, поклон или пренос било чега вредног: (i) било ком државном службенику или државном службенику (укључујући запослене у државним ентитетима или корпорацијама); или (ii) било којој политичкој странци (укључујући њене званичнике или кандидате); (iii) било којој комерцијалној странци, особи или ентитету; или (iv) посреднику за плаћање било чему од горе наведеног, како би се прималац навео да учини или пропусти да учини радњу која крши законску дужност тог примаоца, да добије или задржи посао или да обезбеди било какву неправилну предност; или да би се навело на неправилно обављање релевантне функције или активности у вези са било којим активностима у име компаније Wink или за интересе компаније Wink, како је предвиђено овим Уговором. Кршење ове одредбе од стране Партнера даје право компанији Wink да раскине овај Уговор са тренутним дејством.
+6.2.3 Affiliate garantuje da neće nuditi ili davati mito ili neprikladne poklone bilo kome u vezi sa ovim Ugovorom. Kršenje ove odredbe daje Wink-u pravo na trenutni raskid Ugovora.
 
-6.2.4 Ради утврђивања усклађености са горе наведеном клаузулом 6.2.3, Wink ће имати право, о свом трошку, да изврши инспекцију локације и ревизију свих релевантних рачуноводствених и продајних књига, евиденција, уговора, објеката, рачунарских система, уговора и докумената Филијале, током редовног радног времена у канцеларијама Филијале и на начин који не омета неразумно нормалне пословне активности Филијале. Такве ревизије се неће спроводити чешће од два пута сваких дванаест (12) месеци.
+6.2.4 Wink ima pravo da izvrši inspekciju i reviziju poslovnih knjiga Affiliate-a do dva puta godišnje.
 
-**6.3 Одрицање од одговорности**
+**6.3 Odricanje od garancija**
 
-6.3.1 Осим ако није другачије изричито предвиђено овим Уговором, ниједна Уговорна страна не даје никакву изјаву или гаранцију, изричиту или имплицитну, у вези са предметом овог Уговора и овим се одриче свих имплицитних гаранција, укључујући све имплицитне гаранције продајности или подобности за одређену сврху у вези са тим предметом. Винк пружа Услугу „каква јесте“ и „како је доступна“ и не гарантује време непрекидног рада.
+6.3.1 Osim izričito navedenog, nijedna Strana ne daje garancije u vezi sa predmetom ovog Ugovora. Wink pruža Uslugu „kakva jeste“ i ne garantuje dostupnost.
 
-6.3.2 Свака Страна признаје тешкоће својствене коришћењу интернета, посебно различите брзине и загушење мреже могу проузроковати прекиде и потешкоће у приступу веб страници. Свака Страна искључује сваку одговорност према другој Страни која је повезана са било каквим (привременим (планираним или непланираним) и/или делимичним или потпуним) кваром или застојем (због одржавања, ажурирања или на други начин) веб страница, Портала продаваца, Система и/или Услуге.
+6.3.2 Strane isključuju odgovornost za prekide ili probleme u radu sajtova, Prodajnog portala, Sistema ili Usluge.
 
-**7. Обезбеђење штете и одговорност**
+**7. Naknada štete i odgovornost**
 
-**7.1 Обезбеђење штете**
+**7.1 Naknada štete**
 
-У највећој мери дозвољеној важећим законом, слажете се да ослободите, браните (по Винк-овом избору), обештетите и заштитите Винк и све његове пружаоце смештаја и подружнице, као и њихове службенике, директоре, запослене и агенте од било каквих потраживања, обавеза, штета, губитака и трошкова, укључујући, без ограничења, разумне правне и рачуноводствене трошкове, који произилазе из или су на било који начин повезани са (i) вашим кршењем ових Услова; (ii) вашим неправилним коришћењем Услуга; (iii) вашим пропустом, или нашим пропустом, по вашем налогу, да тачно пријавимо, наплатимо или уплатимо порезе; или (iv) вашим кршењем било којих закона, прописа или права трећих лица.
+U najvećoj meri dozvoljenoj zakonom, slažete se da oslobodite, branite i obeštetite Wink i njegove Pružaoca smeštaja i povezane kompanije od bilo kakvih zahteva, šteta i troškova nastalih usled kršenja ovih Uslova, nepravilne upotrebe Usluga, neplaćanja poreza ili kršenja zakona.
 
-**7.2 Максимална одговорност**
+**7.2 Maksimalna odgovornost**
 
-Осим ако није другачије предвиђено овим Уговором, максимална одговорност једне Стране за све потраживања поднета против те Стране од стране друге Стране по овом Уговору или у вези са њим у једној години не сме прећи укупну провизију коју је та Страна примила или исплатила у претходних 6 месеци или 10.000 америчких долара (шта год је веће), осим у случају преваре или намерног недоличног понашања Стране која надокнађује штету, у ком случају ограничење одговорности није применљиво на такву одговорну Страну.
+Osim u slučaju prevare ili namernog propusta, maksimalna odgovornost Strane ne prelazi zbir provizija primljenih ili plaćenih u prethodnih 6 meseci ili 10.000 USD, šta god je veće.
 
-**7.3 Потраживање треће стране**
+**7.3 Zahtev trećeg lica**
 
-У случају потраживања треће стране, обештећена Страна ће без одлагања обавестити другу Страну, а Стране ће поступати у доброј вери и уложити своје комерцијално разумне напоре да се консултују, сарађују и помажу једна другој у одбрани и/или решавању таквог потраживања, при чему ће обештећена Страна имати право да преузме потраживање и преузме одбрану и решавање поравнања (у консултацији и договору са обештећеном Страном и уз дужно поштовање интереса обе Стране), и ниједна Страна неће давати никаква признања, подносити било какве документе, сагласност за доношење било какве пресуде или закључивати било какав компромис или поравнање без претходне писмене сагласности друге Стране (која неће бити неразумно ускраћена, одложена или условљена).
+U slučaju zahteva trećeg lica, Strane će sarađivati u odbrani i rešavanju spora.
 
-**7.4 Одрицање од последичне штете итд.**
+**7.4 Odricanje od indirektne štete**
 
-Ни у ком случају ниједна Страна неће бити одговорна другој Страни за било какав губитак производње, губитак профита, губитак прихода, губитак уговора, губитак или оштећење угледа или репутације, губитак потраживања или било какву индиректну, посебну, казнену, случајну или последичну штету или губитке, без обзира да ли се таква штета наводи као резултат кршења уговора, деликтног права или на други начин. Овим се изричито одричу свих таквих штета и губитака.
+Nijedna Strana neće biti odgovorna za gubitak profita, ugleda ili druge indirektne štete.
 
-**7.5 Договорена штета**
+**7.5 Ugovorna kazna**
 
-Без обзира на оно што је наведено на другим местима у овом Уговору, и Партнер и Винк се слажу да може бити непрактично и тешко утврдити износ стварне штете настале материјалним кршењем одредби о интелектуалној својини и поверљивости наведених у клаузулама 4 и 10 овог Уговора. Стога се стране слажу да, у случају да се утврди да је Партнер прекршио такве одредбе, Партнер ће платити Винку, као патентну одштету, двадесет пет хиљада америчких долара (25.000 УСД) за свако кршење. Партнер и Винк се даље слажу да ова одредба о патентној одштети представља разумну надокнаду за почетни губитак који би Винк претрпео због било каквог таквог кршења. Партнер се такође слаже да ништа у овој одредби нема намену да ограничи Винково право да добије судску забрану и другу правну заштиту која је прикладна. Ова одредба такође не утиче на Винково право да захтева додатну и/или кумулативну одштету за кршење овог (у случају да штета очигледно прелази износ патентне одштете) или било које друге одредбе овог Уговора.
+U slučaju kršenja prava intelektualne svojine i poverljivosti iz klauzula 4 i 10, Affiliate će platiti Wink-u 25.000 USD po kršenju kao ugovornu kaznu. Ovo ne ograničava pravo Wink-a na druge pravne mere.
 
-8. **Измена, рок и престанак**
+**8. Izmene, trajanje i raskid**
 
-**8.1 Измена.**
+**8.1 Izmene**
 
-Осим ако важећи закон не захтева другачије, Винк може изменити ове Услове у било ком тренутку. Уколико направимо значајне измене ових Услова, објавићемо ревидиране Услове на Винк платформи и ажурирати датум „Последње ажурирање“ на врху ових Услова. Ако вас измена погађа, такође ћемо вас обавестити о изменама најмање тридесет (30) дана пре датума ступања на снагу. Ако не раскинете свој уговор пре датума ступања на снагу ревидираних Услова, ваше даље коришћење Услуга ће се сматрати прихватањем свих измена ревидираних Услова.
+Wink može menjati ove Uslove u bilo kom trenutku. Ako su izmene značajne, obavestiće vas najmanje 30 dana pre stupanja na snagu. Nastavak korišćenja Usluga nakon toga znači prihvatanje izmena.
 
-**8.2 Рок.**
+**8.2 Trajanje**
 
-Осим ако није другачије договорено, овај Уговор ступа на снагу на дан потписивања на неодређено време.
+Ugovor počinje da važi od dana potpisivanja i traje neodređeno.
 
-8.3.1 Свака Страна може раскинути овај Уговор са тренутним дејством у било ком тренутку и из било ког разлога, писаним обавештењем другој Страни.
+8.3.1 Svaka Strana može raskinuti Ugovor odmah i iz bilo kog razloga pismenim obaveštenjem.
 
-8.3.2 Свака Страна може раскинути овај Уговор или суспендовати овај Уговор у односу на другу Страну, са тренутним дејством и без потребе за обавештењем о неизвршењу обавеза у случају:\
-(а) материјално кршење било које одредбе овог Уговора од стране друге Стране;\
-(б) (подношење захтева за) стечај или обуставу плаћања (или сличну радњу) у односу на другу страну, или\
-(ц) (директна или индиректна) промена Контроле у ​​односу на другу Страну.
+8.3.2 Raskid ili suspenzija može biti i bez prethodne najave u slučaju bitnog kršenja, bankrota ili promene kontrole.
 
-8.3.3 Wink задржава право да раскине овај Уговор без претходне најаве у случају да се нису догодиле материјализоване трансакције у периоду од 6 узастопних месеци.
+8.3.3 Wink može raskinuti Ugovor bez najave ako nema realizovanih transakcija 6 meseci.
 
-8.3.4 По раскиду овог Уговора, Wink ће наставити да исплаћује Партнеру сваку неизмирену Провизију у периоду од 3 месеца након датума раскида, под условом да Wink има тачне контакт и банковне податке за Партнера током тог периода. Уколико Партнер не поднесе захтев за било какву неисплаћену Провизију у року од 3 месеца, такав пропуст ће представљати ефективно одустајање од права Партнера да поднесе захтев за такву Провизију. Без утицаја на оно што је наведено на другим местима у овом Уговору у вези са смањењем, суспензијом или губитком Провизије, свака неизмирена Провизија биће одузета у случају да је Партнер починио намерно кршење правила, груби немар, превару или материјално кршење овог Уговора.
+8.3.4 Nakon raskida, Wink će isplatiti dospele provizije za 3 meseca pod uslovom da ima tačne podatke. Nepodizanje u roku znači odricanje od prava.
 
-8.3.5 По раскиду и осим ако није другачије одређено, овај Уговор ће апсолутно и у потпуности престати да важи и престаће да важи без утицаја на права и правна средства једне Уговорне стране у погледу обештећења или кршења овог Уговора од стране друге Уговорне стране. Чланови 4.1.2, 4.1.5, 4.1.6, 4.1.7, 4.2, 4.3, 4.4.1, 4.9.4(c), 9 и 10 остају на снази и након раскида овог Уговора.
+8.3.5 Nakon raskida, Ugovor prestaje osim prava na naknadu štete i drugih prava. Odredbe 4.1.2, 4.1.5, 4.1.6, 4.1.7, 4.2, 4.3, 4.4.1, 4.9.4(c), 9 i 10 ostaju na snazi.
 
-8.3.6 Одмах по ступању на снагу раскида, Партнер ће уклонити све линкове ка Wink веб-сајтовима, сав садржај везан за Wink, линкове, банере, логотипе и друге референце на Wink.
+8.3.6 Odmah po raskidu, Affiliate će ukloniti sve linkove i sadržaje vezane za Wink.
 
-**9. Право на књиге, евиденцију и ревизију**
+**9. Knjige, evidencija i pravo revizije**
 
-**9.1 Системи**
+**9.1 Sistemi**
 
-Књиге и евиденција компаније Wink (укључујући Extranet и/или имејлове) сматраће се коначним доказом у погледу износа Провизије која се дугује Партнеру по овом Уговору.
+Evidencija Wink-a smatra se konačnim dokazom o iznosu provizije.
 
-**9.2 Права на ревизију**
+**9.2 Prava revizije**
 
-Ако Винк у доброј вери има разлога да верује да је Партнер прекршио своје обавезе у погледу Клаузуле 4, Винк може да ревидира такве евиденције и књиге (рачуноводствених послова) Партнера у сврху провере, прегледа и истраге (како је применљиво) обавеза Партнера према Клаузули 4, у складу са следећим:\
-(а) Стране ће без одлагања именовати независног овлашћеног ревизора („Ревизор“), разумно прихватљивог за обе Стране, коме ће бити дозвољено да спроведе ревизију у погледу (метода и обрачуна) провизије (која ће бити) исплаћена Подфилијали.\
-(б) Стране ће ревизору пружити све такве информације, податке, сарадњу, помоћ и приступ књигама и евиденцијама рачуна, документима, фајловима и папирима и информацијама сачуваним електронски, које ревизор може разумно захтевати у сврху благовременог завршетка обима свог задатка.\
-(ц) Ревизор ће обема странама доставити копију свог извештаја („Извештај“), који ће садржати резултате и налазе ревизије.\
-(д) Ревизије ће се спроводити радним данима током редовног радног времена.\
-(е) Винк ће сносити трошкове и издатке Ревизора, осим ако Ревизор не одлучи другачије на основу разумности и правичности.
+Ako Wink sumnja u kršenje obaveza iz klauzule 4, može izvršiti reviziju evidencije Affiliate-a uz angažovanje nezavisnog revizora, koji će dostaviti izveštaj. Troškove snosi Wink osim ako revizor ne odluči drugačije.
 
-10. **Борба против подмићивања, трговинска ограничења и пословна етика.**
+**10. Protiv podmićivanja, trgovinskih ograničenja i poslovne etike**
 
-Винк заузима приступ нулте толеранције према кршењу међународних трговинских норми, закона о спречавању подмићивања и корупције и важећих ограничења у трговини, протоку средстава и финансирању тероризма.\
-Подружница гарантује да се придржава и да ће се придржавати, а његове повезане стране се придржавају и да ће се придржавати Кодекса понашања добављача компаније Wink.\
-Подружница изјављује, гарантује и обавезује се да ће се придржавати и да ће се у сваком погледу придржавати свих међународних трговинских норми, важећих ограничења у вези са трговином, протоком средстава и финансирањем тероризма и спречавањем подмићивања и корупције, укључујући, али не ограничавајући се на, Закон о подмићивању у Великој Британији из 2010. године и Закон о спречавању корупције у Сингапуру.\
-Подружница гарантује да, колико је њој познато, ни она ни њене Повезане стране нису осуђене за кривично дело које укључује подмићивање или корупцију, нити су предмет било какве истраге од стране било којих владиних, административних или регулаторних тела.
+Wink ima nultu toleranciju prema kršenju međunarodnih normi, zakona o sprečavanju korupcije i trgovinskih ograničenja.  
+Affiliate garantuje da poštuje Wink Kodeks ponašanja dobavljača.  
+Affiliate garantuje da poštuje sve relevantne zakone, uključujući UK Bribery Act 2010 i Singapore Prevention of Corruption Act.  
+Affiliate garantuje da nije osuđivan za korupciju i da nije predmet istrage.
 
-**11. Поверљивост**
+**11. Poverljivost**
 
-**11.1 Поверљиве информације**
+**11.1 Poverljive informacije**
 
-Стране разумеју и слажу се да у извршавању овог Уговора, свака Страна може имати приступ или бити изложена, директно или индиректно, поверљивим и осетљивим информацијама друге Стране („Поверљиве информације“). Поверљиве информације укључују податке о клијентима, обим трансакција, маркетиншке и пословне планове, пословне, финансијске, техничке и оперативне информације, статистику коришћења, податке о рангирању, информације у вези са паритетом цена, производа и доступности, политику цена, податке о конверзији и обиму кликова и друге сродне статистике, личне податке Гостију, било који софтвер или информације у вези са софтвером који је Винк обезбедио или користио у вези са овим Уговором, услове овог Уговора и друге нејавне информације које било која Страна која открива информације означи као приватне или поверљиве или за које Страна која прима информације треба разумно да зна да се са њима треба поступати као са приватним и поверљивим информацијама.
+Strane se slažu da će čuvati poverljive informacije, uključujući podatke o korisnicima, poslovne i tehničke informacije, statistike, lične podatke gostiju, softver i uslove ovog Ugovora.
 
-**11.2 Заштитите и чувајте поверљиве информације**
+**11.2 Zaštita poverljivih informacija**
 
-Свака Страна се слаже да: (а) све Поверљиве информације остају искључиво власништво Стране која их открива, а Страна која прима информације неће користити никакве Поверљиве информације ни у коју сврху осим у сврху спровођења овог Уговора, (б) ће одржавати поверљивост и тајност Поверљивих информација, као и користити разумне методе како би натерала своје запослене, службенике, представнике, уговорне стране и агенте („Дозвољена лица“) да их одржавају, (ц) ће открити Поверљиве информације само оним Дозвољеним лицима којима су такве информације потребне у сврху спровођења овог Уговора, (д) ​​неће, и користиће разумне методе како би осигурала да Дозвољена лица не (и) копирају, објављују, преносе, репродукују, откривају, откривају или стављају Поверљиве информације на располагање било којој трећој страни, или (ии) користе или чувају их у незаштићеном систему за преузимање или бази података (осим у складу са условима овог уговора), и (е) ће вратити или уништити све (штампане и електронске) копије Поверљивих информација на писмени захтев друге Стране. У случају да било која Уговорна страна обрађује личне податке у име друге стране као део пружања услуга по овом Уговору, Уговорне стране ће регулисати такву обраду путем Уговора о обради података (УОП) и чиниће део услова и одредби овог Уговора.
+Svaka Strana će koristiti razumne mere da zaštiti poverljive informacije i neće ih koristiti osim u svrhu ovog Ugovora. Poverljive informacije će biti otkrivene samo osobama kojima je to neophodno.
 
-**11.3 Дозвољено откривање**
+**11.3 Dozvoljeno otkrivanje**
 
-Без обзира на горе наведено, Поверљиве информације неће обухватати никакве информације у мери у којој (i) јесу или постану део јавног власништва без икаквог чина или пропуста стране примаоца, (ii) су биле у поседу примаоца пре датума овог Уговора, (iii) су откривене примаоцу од стране треће стране која нема обавезу поверљивости у вези са њима, или (iv) је потребно да буду откривене на основу закона, судског налога, судског позива или владиних овлашћења. Wink има право да открије овај Уговор у поверењу својим повезаним компанијама.
+Poverljive informacije ne uključuju informacije koje su javno dostupne, koje je Strana već posedovala, koje su otkrivene od strane trećeg lica bez obaveze poverljivosti ili koje su zakonski zahtevane za otkrivanje.
 
-**11.4 Подаци о купцима**
+**11.4 Podaci o korisnicima**
 
-Стране ће уложити комерцијално разумне напоре да заштите поверљивост и приватност Података о клијентима и да их заштите од неовлашћене употребе или објављивања. Стране се слажу да се придржавају важећих закона о обради личних података и заштити приватности. Стране ће у сваком тренутку користити разумне и одговарајуће мере безбедности како би спречиле оштећење и неовлашћени приступ Подацима о клијентима. Такве мере ће укључивати, између осталог, шифровање података и шифровање канала. Где је то релевантно, Повезани партнер мора што пре обавестити Wink о сваком кршењу безбедности (најкасније 1 дан након откривања кршења). Свака Страна ће имати политику приватности доступну клијентима која описује начин на који штити и користи Подаке о клијентима.
+Strane će koristiti razumne mere da zaštite podatke o korisnicima i poštuju zakone o zaštiti podataka. Affiliate mora odmah obavestiti Wink o bezbednosnim incidentima.
 
-**11.5 Обавештења**
+**11.5 Obaveštenja**
 
-Ниједна страна неће креирати, објављивати, дистрибуирати или дозволити било какав писани материјал који се односи на другу страну, а да претходно не достави такав материјал другој страни и не добије претходну писмену сагласност стране која га не доставља. Ова сагласност се не сме неразумно ускраћивати или одлагати.
+Nijedna Strana neće objavljivati materijale koji se odnose na drugu Stranu bez prethodne pisane saglasnosti.
 
-11.6 Свака страна може контактирати службеника за заштиту података (DPO) друге стране путем следећих имејл и/или поштанских адреса: dataprotectionofficer@Wink.travel
+11.6 Kontakt za zaštitu podataka: dataprotectionofficer@Wink.travel
 
-12. **Овлашћење за потписивање – Заступање и потпис придруженог лица.**
+**12. Ovlašćenje za potpisivanje**
 
-Партнер гарантује да он, лице које потписује овај Уговор и/или било које друго лице које пружа информације (укључујући, ради избегавања сумње, било које Услове плаћања) компанији Wink у вези са или у складу са овим Уговором има овлашћење, капацитет и потребну моћ да потпише овај Уговор и да то лице има овлашћење, капацитет и потребну моћ да обавеже Партнера на овај Уговор и да ће, током целог Трајања, поштовати, извршавати и осигурати да Партнер поштује и извршава своје обавезе према овом Уговору.\
-Партнер се изричито слаже да је електронско прихватање овог Уговора и његових Услова и одредби, укључујући и оне који се односе на измене, важеће, обавезујуће и применљиво.
+Affiliate garantuje da ima ovlašćenje da potpiše ovaj Ugovor i da će poštovati njegove uslove. Elektronsko prihvatanje Ugovora je važeće i obavezujuće.
 
-13. **Језик**
+**13. Jezik**
 
-Верзија овог Уговора на енглеском језику је меродаванa у свим аспектима и имаће предност у случају било каквих неслагања са преведеним верзијама, ако их има.
+Engleska verzija Ugovora je merodavna u slučaju neslaganja sa prevodima.
 
-14. **Одрицања**
+**14. Odbacivanja prava**
 
-Ниједно одрицање од било ког кршења или услова овог Уговора неће се сматрати одрицањем од било ког другог или накнадног кршења или услова, било сличне или другачије природе.
+Neodricanje od bilo kog kršenja ne znači odricanje od drugih ili budućih kršenja.
 
-**15. Одвојивост**
+**15. Deljivost**
 
-Ако било која одредба овог Уговора буде утврђена од стране владине агенције за спровођење закона, суда или трибунала надлежне јурисдикције као незаконита, неважећа или на други начин неприменљива према националним законима, онда ће таква одредба бити тумачена, измењена или избрисана у мери која је потребна да би таква одредба и/или овај Уговор постали законити, важећи или на други начин применљиви, а преостали део такве одредбе и преостале друге одредбе овог Уговора ће остати на снази, остати на снази и наставити да буду обавезујуће, и биће тумачене тако да се у највећој могућој мери оствари намера Уговорних страна.
+Ako je neka odredba nevažeća, biće prilagođena ili uklonjena, a ostale odredbe ostaju na snazi.
 
-**16. Однос странака**
+**16. Odnos Strana**
 
-Стране су и деловаће као независни извођачи у извршењу овог Уговора. Ниједна страна неће деловати као, нити ће се сматрати, агентом или партнером друге стране у било коју сврху, нити ће било која страна имати овлашћење да обавеже другу у било ком погледу.
+Strane su nezavisni izvođači i nijedna ne može zastupati drugu.
 
-**17. Задатак**
+**17. Prenos prava**
 
-Ниједна Уговорна страна нема право да уступи, пренесе, оптерети било које од својих права и/или обавеза по овом Уговору без претходне писмене сагласности друге Уговорне стране, под условом да Винк може уступити, пренети, оптеретити било које од својих права и/или обавеза по овом Уговору (у целини или делимично или с времена на време) повезаној компанији без претходне писмене сагласности Повезане компаније.\
-Овај Уговор је закључен у корист Уговорних страна и њихових одговарајућих наследника и дозвољених цесионера, и ништа овде није намењено нити ће имплицитно доделити било којој другој особи било какво законско или правично право, корист или правни лек било које природе, на основу или по основу овог Уговора, осим у мери у којој је изричито другачије наведено у овом Уговору.
+Nijedna Strana ne može preneti prava ili obaveze bez saglasnosti druge, osim Wink koji može preneti prava unutar svoje grupe.
 
-18. **Виша сила.**
+**18. Viša sila**
 
-Wink.travel неће бити одговоран за било какво кашњење или неизвршење било које обавезе према овим Условима које произилазе из узрока ван разумне контроле Wink-а или Wink Payments-а, укључујући, али не ограничавајући се на, више силе, природне катастрофе, рат, тероризам, нереде, ембарго, поступке цивилних или војних власти, пожар, поплаве, несреће, пандемије, епидемије или болести, штрајкове или несташицу транспортних средстава, горива, енергије, радне снаге или материјала („**Догађај више силе**„“).
+Wink nije odgovoran za kašnjenja ili neizvršenje usled okolnosti van kontrole, uključujući prirodne nepogode, rat, terorizam, štrajkove itd.
 
-19. **Меродавно право и надлежност**
+**19. Mjerodavno pravo i nadležnost**
 
-Овај Уговор ће се искључиво регулисати и тумачити у складу са законима Сингапура. Закон о уговорима (права трећих лица) из 2001. године (глава 53Б) неће се примењивати на овај Уговор. Стране ће у сваком случају покушати да реше своје спорове пријатељским путем ван суда, прво водећи разговоре и преговоре у доброј вери.\
-Сви спорови који настану из или у вези са овим уговором биће искључиво поднети и решавани од стране надлежног суда у Сингапуру, без обзира на правила о колизији закона.\
-неопозиво се одриче сваког права које може имати да се успротиви тужби која се покреће пред таквим судовима, да тврди да је тужба покренута пред незгодним форумом или да тврди да такви судови немају надлежност.
+Ugovor podleže zakonima Singapura. Sporovi će se rešavati mirnim putem, a zatim pred nadležnim sudom u Singapuru.
 
-20. **Пандани.**
+**20. Primerci**
 
-Овај Уговор може бити састављен у двоје делова, од којих ће се сваки (једном потписан) сматрати оригиналом, а који заједно чине један те исти инструмент. Штавише, свака скенирана/електронска копија Винковог писаног потписа имаће исту и једнаку снагу као и оригинални својеручни потпис Винка и неће утицати на валидност овог Уговора.
+Ugovor može biti potpisan u više primeraka, uključujući elektronske kopije.
 
-21. **Цео уговор**
+**21. Celokupan ugovor**
 
-Овај Уговор (укључујући Образац за регистрацију придруженог партнера, прилоге, анексе и допунске документе, који чине саставни део овог Уговора) представља целовити споразум и разумевање Страна у вези са његовим предметом и замењује и надомеђује све претходне споразуме, аранжмане, ((не)обавезујуће) понуде, обавезе или изјаве у вези са тим предметом.\
-Уколико било која одредба овог Уговора јесте или постане неважећа или необавезујућа, Стране ће остати обавезне свим осталим одредбама овог Уговора. У том случају, Стране ће заменити неважећу или необавезујућу одредбу одредбама које су важеће и обавезујуће и које имају, у највећој могућој мери, сличан ефекат као неважећа или необавезујућа одредба, с обзиром на садржај и сврху овог Уговора.
+Ovaj Ugovor i prateći dokumenti predstavljaju celokupan dogovor Strana.
 
-22. **Извршење**
+**22. Zaključenje**
 
-Споразум ступа на снагу и дејство тек након писмене потврде о прихватању и одобрењу Партнера од стране компаније Wink. Регистрацијом и пријављивањем у партнерски програм Wink као партнер, Партнер се слаже, потврђује и прихвата услове и одредбе овог Споразума, укључујући одредбе које се односе на измене овог Споразума.\
-Уговор је прочитан и сви услови и одредбе су прихваћени од стране партнера. Партнер разуме да Wink може у било ком тренутку (директно или индиректно) тражити препоруке купаца под условима који се могу разликовати од оних садржаних у овом уговору или управљати веб страницама које су сличне или конкуришу веб страници партнера. Партнер је независно проценио пожељност учешћа у програму и не ослања се ни на какву изјаву, гаранцију или изјаву осим оне наведене у овом уговору. Партнер се изричито слаже да је електронско прихватање овог уговора и његових услова и одредби, укључујући и оне који се односе на измене, важеће, обавезујуће и применљиво.
+Ugovor stupa na snagu nakon pisane potvrde Wink-a. Registracijom u Wink program, Affiliate prihvata uslove. Elektronsko prihvatanje je važeće.
 
-23. **Обавештења**
+**23. Obaveštenja**
 
-Сва обавештења било које Уговорне стране по овом Уговору биће на енглеском језику, у писаној форми, и биће достављена лично, путем унапред плаћене и препоручене поште, или путем међународно признате експресне курирске службе (нпр. FedEx, UPS, DHL) на адресу регистрованог седишта или путем е-поште контакт особи.\
-Свако обавештење по овом Уговору сматраће се примљеним (i) ако је достављено лично, након потписивања потврде о пријему или, (ii) ако је достављено препорученом поштом, након потврде о пријему; или (iii) ако је достављено курирском службом, на дан забележен код курирске службе (iv) ако је достављено имејлом, под условом да је достављена потврда о пријему.
-
+Sva obaveštenja moraju biti na engleskom, u pisanom obliku, dostavljena lično, preporučenom poštom, kurirskom službom ili emailom uz potvrdu prijema.

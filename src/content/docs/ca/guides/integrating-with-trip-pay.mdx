@@ -1,43 +1,40 @@
 ---
 title: Integració amb TripPay
-description: >-
-  Aquest article conté un exemple complet de com integrar-se amb TripPay i
-  deixar que gestioni el pagament per vosaltres.
+description: Aquest article conté un exemple complet de com integrar-se i deixar que TripPay gestioni el pagament per tu.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
 Aquest article conté un exemple complet de com integrar-se amb TripPay.
 
 Es recomana que ja hagis llegit:
 
-* [Pagament > Mapatge](/payment/mapping).
-* [Pagament > Integració](/payment/integration).
-* [Component web de pagament](/developers/web-components/#payment).
-* [API de pagament](/developers/apis/#payment-api).*Llegiu la secció sobre`Create payable contracts`*
+- [Payment > Mapping](/ca/payment/mapping).
+- [Payment > Integration](/ca/payment/integration).
+- [Payment Web Component](/ca/developers/web-components/#payment).
+- [Payment API](/ca/developers/apis/#payment-api). *Llegeix la secció sobre `Create payable contracts`*
 
-Aquests són els passos per utilitzar TripPay correctament per pagar una reserva:
+Aquí tens els passos per utilitzar TripPay amb èxit per pagar una reserva:
 
 <Steps>
-  1. Assegureu-vos que els beneficiaris que esmenteu al contracte de reserva hagin estat mapejats.
-  2. Deixa que el viatger esculli l'inventari que vol reservar i que es prepari per pagar.
-  3. Crea un `payable contract` amb TripPay que conté els articles que s'han de reservar.
-  4. Deixa que el viatger pagui amb el component web de TripPay.
+1. Assegura't que els beneficiaris que menciones en el contracte de reserva estiguin mapejats.
+2. Deixa que el viatger triï l’inventari que vol reservar i que es prepari per pagar.
+3. Crea un `contracte pagable` amb TripPay que contingui els articles a reservar.
+4. Deixa que el viatger pagui utilitzant el Payment Web Component de TripPay.
 </Steps>
 
+Suposem que ja has completat el `Pas 1` i el `Pas 2` i estàs preparat per informar TripPay sobre la reserva.
 
-Suposem que ja has completat`Step 1`i`Step 2`i esteu preparats per informar a TripPay sobre la reserva.
+## Crear contracte pagable
 
-## Crear un contracte a pagar
-
-:::nota
-Aneu a l'API de pagament per obtenir més informació sobre els requisits per crear un contracte de pagament.
+:::note
+Ves a la Payment API per aprendre més sobre els requisits per crear un contracte pagable.
 :::
 
 ### Sol·licitud
-
-Aquí teniu una sol·licitud de mostra JSON que inclou tot el que necessiteu per crear el vostre primer contracte de pagament.
+Aquí tens un exemple JSON de sol·licitud que inclou tot el que necessites per crear el teu primer contracte pagable.
 
 ```json {3-6, 8-9}
 {
@@ -132,49 +129,49 @@ Aquí teniu una sol·licitud de mostra JSON que inclou tot el que necessiteu per
 
 Explicació:
 
-No explicarem tots els punts de dades aquí, ja que ja estan tractats a la documentació de l'API.
+No explicarem cada punt de dades aquí ja que ja estan coberts a la documentació de l’API.
 
-* Línies:**2 - 7**és l'usuari responsable de la reserva. Hi ha dos tipus de persones que fan reserves:
-  * Viatger.
-  * Agent de viatges.
-* Línies:**8 - 9**és el compte de TripPay que facilita la reserva. Pot ser:
-  * El vostre compte integrador de TripPay.
-  * Si gestioneu una xarxa d'afiliats, pot ser el vostre afiliat.
-* Utilitza un`traceId`per agrupar diverses reserves entre diversos proveïdors. D'aquesta manera podeu cancel·lar una reserva de grup.
-* `redirectUrl`indica a TripPay a quina pàgina redirigir un cop finalitzat el pagament.
-* `sourceUrl`és el lloc web/aplicació on s'ha realitzat la reserva.
+- Línies: **2 - 7** és l’usuari responsable de la reserva. Hi ha dos tipus de reservadors:
+    - Viatger.
+    - Agent de viatges.
+- Línies: **8 - 9** és el compte TripPay que facilita la reserva. Pot ser:
+    - El teu compte integrador de TripPay.
+    - Si gestiones una xarxa d’afiliats, pot ser el teu afiliat.
+- Utilitza un `traceId` per agrupar múltiples reserves de diversos proveïdors. Així pots cancel·lar una reserva grupal.
+- `redirectUrl` indica a TripPay a quina pàgina redirigir després que el pagament s’hagi completat.
+- `sourceUrl` és el lloc web o app on es va fer la reserva.
 
-El`contractList`La matriu conté els articles que el viatger vol comprar a diversos proveïdors. Cada article conté:
+L’array `contractList` conté l’article o articles que el viatger vol comprar de diversos proveïdors. Cada article conté:
 
-* El`identifier`és un UUID vàlid que genereu.
-* El proveïdor del qual voleu reservar l'inventari.
-* L'inventari que voleu reservar d'aquest proveïdor. Tots aquests elements s'especifiquen a la matriu imbricada.`contractItemList`.
-* Cada entrada sota`contractItemList`conté:
-  * **Usuari convidat**Aquest és l'usuari que arribarà a les instal·lacions.
-  * **Nom en anglès**El nom de l'inventari en anglès.
-  * **Descripció en anglès**Una descripció més extensa de l'inventari en anglès.
-  * **Preu**El preu de l'article.
-  * **Itinerari**Quan s'ha de reservar aquest element.
-  * **Tipus de preu**Com es va calcular el preu.
-  * **Tipus d'inventari**Quin tipus d'inventari és aquest.
-  * **Pagable**Quan s'ha de cobrar al viatger.*Actualment només admetem opcions de pagament immediat.*
-  * **Política**Inclou les normes de política de cancel·lació.
-  * **Llista de tarifes diàries**Si l'element que es reserva és una habitació, podeu triar incloure quant costa aquesta habitació per cada nit que s'hi allotja el client.
-  * **Beneficiaris**Inclou a quin(s) compte(s) de TripPay se'ls ha d'assignar quina quantitat del preu de l'article.*S'admeten imports fixos/percentuals.*
+- L’`identifier` és un UUID vàlid que generes.
+- El proveïdor del qual vols reservar inventari.
+- L’inventari que vols reservar d’aquest proveïdor. Tot això està especificat a l’array anidat `contractItemList`.
+- Cada entrada dins `contractItemList` conté:
+    - **Usuari convidat** Aquest és l’usuari que arribarà a les instal·lacions.
+    - **Nom en anglès** El nom de l’inventari en anglès.
+    - **Descripció en anglès** Una descripció més llarga de l’inventari en anglès.
+    - **Preu** El preu de l’article.
+    - **Itinerari** Quan s’ha de reservar aquest article.
+    - **Tipus de preu** Com s’ha calculat el preu.
+    - **Tipus d’inventari** Quin tipus d’inventari és.
+    - **Pagable** Quan s’ha de cobrar al viatger. *Actualment només suportem opcions de pagament immediat.*
+    - **Política** Inclou les regles de la política de cancel·lació.
+    - **Llista de tarifes diàries** Si l’article reservat és una habitació, pots incloure quant costa aquesta habitació per cada nit d’estada.
+    - **Beneficiaris** Inclou quins comptes TripPay han de rebre quina quantitat del preu de l’article. *S’admeten quantitats fixes o percentatges.*
 
-:::nota
-A l'exemple JSON anterior, tenim 3 beneficiaris:
+:::note
+En l’exemple JSON anterior, tenim 3 beneficiaris:
 
-* L'1,5% es va destinar a la plataforma que va facilitar la reserva.*p. ex. Wink*
-* El 9,85% es va assignar a l'afiliat com a comissió.*p. ex. Kim Kardashian*
-* El 88,65% es va assignar al proveïdor per a la reserva de l'habitació.*p. ex. Hilton*
+- 1,5% s’assigna a la plataforma que facilita la reserva. *p. ex. Wink*
+- 9,85% s’assigna a l’afiliat com a comissió. *p. ex. Kim Kardashian*
+- 88,65% s’assigna al proveïdor per la reserva de l’habitació. *p. ex. Hilton*
 
-Quan TripPay respongui amb un contracte de pagament, notareu que ha injectat el seu propi beneficiari al 4,0%.
+Quan TripPay respon amb un contracte pagable, veuràs que ha injectat el seu propi beneficiari amb un 4,0%.
 :::
 
 ### Resposta
 
-Quan TripPay respongui a la teva sol·licitud, tindrà un aspecte semblant a aquest:
+Quan TripPay respon a la teva sol·licitud, serà similar a això:
 
 ```json {3}
 [
@@ -208,19 +205,18 @@ Quan TripPay respongui a la teva sol·licitud, tindrà un aspecte semblant a aqu
 ]
 ```
 
-Desa el`id`a la línia 3. Faràs servir això per injectar-ho al component web de TripPay.
+Desa l’`id` de la línia 3. L’utilitzaràs per injectar-lo al web component de TripPay.
 
-## Incrusta TripPay
+## Integrar TripPay
 
-:::nota
-Assegureu-vos que heu carregat els nostres estils i Javascript prèviament.
+:::note
+Assegura’t d’haver carregat prèviament els nostres estils i Javascript.
 :::
 
-En aquest punt, esteu a punt per integrar el`Payment Web Component`al vostre lloc web i mostrar-lo a l'usuari.
+Ara estàs preparat per integrar el `Payment Web Component` al teu lloc web i mostrar-lo a l’usuari.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Pel que fa a la integració, això és tot el que has de fer. Tota la feina pesada la fa TripPay a partir d'ara.
-
+Pel que fa a la integració, això és tot el que has de fer. Tot el treball pesat el fa TripPay a partir d’aquí.

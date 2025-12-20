@@ -1,22 +1,22 @@
 ---
-title: エージェントとは何ですか?
-description: Wink が登録旅行代理店をどのようにサポートしているかをご覧ください。
+title: Agentとは？
+description: Winkが登録済み旅行代理店をどのようにサポートしているかを学びましょう。
 sidebar:
   order: 0
 ---
-登録旅行代理店向けのソリューションは [ウィンクエージェント](https://agent.wink.travel) これは、エージェントが顧客に代わって検索や予約を行い、予約ごとに手数料を獲得できるセルフサービス ポータルです。
 
-より高度な旅行代理店は、Wink プラットフォーム外での支払いと支払いの処理を目的として、API レベルでの統合を選択できます。
+登録済み旅行代理店向けのソリューションは[Wink Agent](https://agent.wink.travel)です。これは、代理店が顧客の代わりに検索・予約を行い、各予約ごとに手数料を得ることができるセルフサーブポータルです。
 
-旅行代理店には、以下のポータル機能の一部が提供されます。 [ウィンクスタジオ](/studio/what-is-studio) したがって、ここでは再度取り上げません。
+より高度な旅行代理店は、Winkプラットフォーム外での支払いおよび支払い処理のためにAPIレベルでの統合を選択できます。
+
+旅行代理店は[Wink Studio](/ja/studio/what-is-studio)と同じポータル機能の一部を利用できるため、ここでは再度説明しません。
 
 ## 検索
 
-へ移動 [検索](/studio/search) ホテルの検索と予約方法を学びます。
+ホテルの検索と予約方法については、[Search](/ja/studio/search)をご覧ください。
 
 それ以外の場合は、次のセクションに進んでください。
 
 ## API
 
-管理したい開発者`Travel Agent`向かうことができます [開発者 > API > 旅行代理店](/developers/apis/#travel-agent-api) 。
-
+`Travel Agent`を管理したい開発者は、[Developers > API > Travel Agent](/ja/developers/apis/#travel-agent-api)にアクセスしてください。

@@ -1,78 +1,76 @@
 ---
-title: Security
-description: >-
-  Tento článok obsahuje informácie o bezpečnostných opatreniach, ktoré
-  implementujeme a ktoré každoročne publikuje naša externá bezpečnostná firma.
+title: Bezpečnosť
+description: Tento článok obsahuje informácie o bezpečnostných opatreniach, ktoré implementujeme a ktoré sú každoročne zverejňované našou externou bezpečnostnou firmou.
 sidebar:
   order: 6
 ---
-# Prehľad zabezpečenia Wink
 
-*Posledná aktualizácia: 7. septembra 2024*
+# Prehľad bezpečnosti Wink
+
+*Posledná aktualizácia: 7. september 2024*
 
 *Verzia 1.0*
 
 ## Účel a rozsah
 
-V rámci nášho trvalého záväzku k bezpečnosti a ochrane používateľských údajov vykonávame pravidelné penetračné testovanie našej webovej aplikácie. Tento dokument popisuje naše testovacie metodiky, poskytuje zhrnutie zistení a zdôrazňuje náš prístup k neustálemu zlepšovaniu bezpečnosti.
+V rámci nášho neustáleho záväzku k bezpečnosti a ochrane údajov používateľov vykonávame pravidelné penetračné testy našej webovej aplikácie. Tento dokument popisuje naše testovacie metodiky, poskytuje zhrnutie zistení a zdôrazňuje náš prístup k neustálemu zlepšovaniu bezpečnosti.
 
-Tento dokument bude aktualizovaný pri vypracovaní nových správ alebo pri výskyte významných zmien.
+Tento dokument bude aktualizovaný vždy, keď budú vypracované nové správy alebo dôjde k významným zmenám.
 
-Domény v rozsahu:\
-\*.wink.cestovanie\
+Domény v rozsahu:  
+\*.wink.travel  
 \*.trippay.io
 
 ## Frekvencia a harmonogram testovania
 
-Naše penetračné testy sa vykonávajú každoročne a ďalšie testy sa plánujú podľa potreby po významných aktualizáciách aplikácie alebo infraštruktúry. Táto pravidelná frekvencia testov zabezpečuje, že máme náskok pred vyvíjajúcimi sa hrozbami a udržiavame bezpečné prostredie.
+Naše penetračné testy sa vykonávajú raz ročne, s ďalšími testami plánovanými podľa potreby po významných aktualizáciách aplikácie alebo infraštruktúry. Tento pravidelný testovací cyklus zabezpečuje, že sme o krok vpred pred vyvíjajúcimi sa hrozbami a udržiavame bezpečné prostredie.
 
-## Metodiky testovania
+## Testovacie metodiky
 
-Naše penetračné testovanie je komplexné a pokrýva širokú škálu bezpečnostných aspektov vrátane, ale nie výlučne:
+Naše penetračné testovanie je komplexné a pokrýva širokú škálu bezpečnostných aspektov, vrátane, ale nie výlučne:
 
-* **Top 10 OWASP:**&#x4E;aše testy sa zameriavajú najmä na najkritickejšie bezpečnostné riziká, ako sú napríklad injekcie, prerušená autentifikácia a skriptovanie medzi stránkami (XSS).
-* **Testovanie čiernej a sivej skrinky:**&#x56; závislosti od rozsahu náš tím využíva tieto metodiky na simuláciu externých aj interných scenárov útokov.
-* **Automatizované a manuálne testovanie:**&#x4E;a vykonávanie automatizovaných bezpečnostných kontrol a na podporu manuálnych testovacích techník s cieľom identifikovať komplexné zraniteľnosti a získať čo najlepšie pokrytie používame Burp Suite Pro, poprednú sadu nástrojov na testovanie bezpečnosti. Na presnejšiu identifikáciu zraniteľností používame niektoré špecializované nástroje, napr. SQLmap.
+* **OWASP Top 10:** Naše testy sa špecificky zameriavajú na najkritickejšie bezpečnostné riziká, ako sú Injection, Broken Authentication a Cross-Site Scripting (XSS).  
+* **Black Box a Grey Box testovanie:** V závislosti od rozsahu náš tím využíva tieto metodiky na simuláciu externých aj interných útokov.  
+* **Automatizované a manuálne testovanie:** Používame Burp Suite Pro, popredný nástroj na testovanie bezpečnosti, na vykonávanie automatizovaných bezpečnostných skenov a na podporu manuálnych testovacích techník na identifikáciu zložitých zraniteľností a dosiahnutie čo najlepšieho pokrytia. Pre špecifickejšiu identifikáciu zraniteľností sa používajú aj niektoré špecializované nástroje, napr. SQLmap.
 
 ## Zhrnutie zistení
 
-Nasleduje stručné zhrnutie našej najnovšej správy o penetračnom testovaní:
+Nižšie je uvedené vysokú úroveň zhrnutia našej najnovšej správy z penetračného testovania:
 
-* **Celkový počet identifikovaných zraniteľností:**&#x32;
-* **Rozdelenie závažnosti:**
-  * Kritické: 2
-* **Typy zistených zraniteľností:**
-  * Nefunkčná kontrola prístupu
-  * Neistý dizajn
+* **Celkový počet identifikovaných zraniteľností:** 2  
+* **Rozdelenie závažnosti:**  
+  * Kritické: 2  
+* **Typy zraniteľností zistených:**  
+  * Porušenie kontroly prístupu  
+  * Nezabezpečený dizajn
 
-Podrobné zistenia nájdete v celej správe.
+Pre podrobné zistenia si prosím prečítajte celú správu.
 
-### Hodnotenie rizika a vplyv
+### Hodnotenie rizík a dopad
 
-Obe nájdené zraniteľnosti sú hodnotené ako kritické, pretože obe mohli mať vážne finančné dopady. Prvá z nich umožnila škodlivému overenému používateľovi získať kontrolu nad platobným účtom Trippay inej spoločnosti. Druhá zraniteľnosť umožnila škodlivému používateľovi upraviť výšku platby požadovanej za rezerváciu.
+Obe zistené zraniteľnosti sú hodnotené ako kritické, pretože obe mohli mať vážne finančné dopady. Prvá umožnila škodlivému autentifikovanému používateľovi získať kontrolu nad platobným účtom inej spoločnosti v Trippay. Druhá zraniteľnosť umožnila škodlivému používateľovi upraviť sumu platby požadovanej za rezerváciu.
 
-### Úsilie o nápravu a zmiernenie rizík
+### Opatrenia na nápravu a zmiernenie
 
-Na riešenie identifikovaných zraniteľností sme podnikli nasledujúce kroky:
+Prijali sme nasledujúce kroky na riešenie identifikovaných zraniteľností:
 
-* **Okamžité záplaty:**&#x4B;ritické zraniteľnosti boli opravené do 48 hodín od ich objavenia.
-* **Kontrola a sprísňovanie kódu:**&#x56;ývojový tím implementoval dodatočné bezpečnostné kontroly na základe našich odporúčaní.
+* **Okamžité záplaty:** Kritické zraniteľnosti boli opravené do 48 hodín od ich zistenia.  
+* **Kontrola kódu a spevnenie:** Vývojový tím implementoval ďalšie bezpečnostné kontroly na základe našich odporúčaní.
 
 ## Neustále zlepšovanie
 
-Penetračné testovanie je súčasťou našej širšej stratégie pre neustále zlepšovanie bezpečnosti. Zistenia z každého testu usmerňujú naše bezpečnostné politiky, ovplyvňujú vývojové postupy a podporujú vylepšenia našej bezpečnostnej architektúry.
+Penetračné testovanie je súčasťou našej širšej stratégie neustáleho zlepšovania bezpečnosti. Zistenia z každého testu usmerňujú naše bezpečnostné politiky, ovplyvňujú vývojové postupy a poháňajú vylepšenia v našej bezpečnostnej architektúre.
 
 ## Odbornosť tímu
 
-Naše penetračné testovanie vykonáva náš interný odborník s rozsiahlymi skúsenosťami v rôznych projektoch a odvetviach. Pomocou špičkových nástrojov a metód náš expert zabezpečuje, aby bola naša aplikácia dôkladne otestovaná na najnovšie bezpečnostné hrozby.
+Naše penetračné testovanie vykonáva interný odborník s rozsiahlymi skúsenosťami z rôznych projektov a odvetví. Použitím popredných nástrojov a metód náš expert zabezpečuje, že naša aplikácia je dôkladne testovaná proti najnovším bezpečnostným hrozbám.
 
 ## Záväzok k bezpečnosti
 
-Záleží nám na udržiavaní bezpečného aplikačného prostredia pre našich používateľov a zainteresované strany. Naše neustále úsilie v oblasti testovania a vylepšovania bezpečnosti dokazuje náš záväzok chrániť sa pred neustále sa vyvíjajúcimi hrozbami.
+Sme odhodlaní udržiavať bezpečné prostredie aplikácie pre našich používateľov a zainteresované strany. Naše neustále úsilie v oblasti testovania a zlepšovania bezpečnosti preukazuje náš záväzok chrániť pred vyvíjajúcimi sa hrozbami.
 
-## Prístup k prehľadom a aktualizácie
+## Prístup k správe a aktualizácie
 
-Tento dokument bude priebežne aktualizovaný s vydaním nových správ o penetračných testoch. Ak chcete získať prístup k celej správe, kontaktujte nás prostredníctvom nižšie uvedeného e-mailu. Budúce aktualizácie budú zahŕňať novo identifikované zraniteľnosti, opatrenia na ich odstránenie a úpravy našich testovacích metodík.
+Tento dokument bude priebežne aktualizovaný, keď budú vydané nové správy z penetračných testov. Pre prístup k plnej správe nás prosím kontaktujte na nižšie uvedenom e-maile. Budúce aktualizácie budú obsahovať novo identifikované zraniteľnosti, opatrenia na nápravu a úpravy našich testovacích metodík.
 
-V prípade ďalších otázok kontaktujte, prosím, security@wink.travel.
-
+Pre ďalšie otázky nás kontaktujte na security@wink.travel.

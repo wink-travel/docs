@@ -1,17 +1,16 @@
 ---
-title: Nõua oma URL-i
-description: 'Selles artiklis räägime teile, kuidas oma WinkLinksi edevus-URL-i taotleda.'
+title: Nõua oma URL
+description: Selles artiklis selgitame, kuidas nõuda oma WinkLinks'i kohandatud URL-i.
 sidebar:
   order: 1
 ---
-Luues [partnerkonto](/studio/what-is-studio), sul on juba WinkLinksi edevus-URL. WinkLinksi avaldaja funktsioonid on meie Studio rakenduses olemas koos meie teiste partnerlusfunktsioonidega.
+
+Affiliate konto loomisel [affiliate account](/et/studio/what-is-studio) on sul juba WinkLinks'i kohandatud URL. WinkLinks'i kirjastaja funktsioonid on saadaval meie Studio rakenduses koos teiste affiliate funktsioonidega.
 
 ### Näide
 
-Kui teie konto nimi on Queen Bee, on teie WinkLinksi edevus-URL järgmine:
+Kui sinu konto nimi on Queen Bee, siis sinu WinkLinks'i kohandatud URL on:
 
 <h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-Kontode nimed on saadaval aadressil`first come - first serve`alus - Haarake oma unikaalne URL, kuni saate!
-
+Konto nimed on saadaval põhimõttel `kes ees, see mees` – haara oma unikaalne URL, kuni saad!

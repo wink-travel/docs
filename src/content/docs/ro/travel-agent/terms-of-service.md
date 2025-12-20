@@ -1,252 +1,252 @@
 ---
-title: Termeni și condiții
-description: >-
-  Acest articol conține termenii și condițiile noastre de utilizare pentru
-  agenții de turism de pe Platforma Wink.
+title: Termeni și Condiții
+description: Acest articol conține termenii și condițiile noastre pentru agenții de turism pe Platforma Wink.
 sidebar:
   order: 4
 ---
-:::notă
-Ultima actualizare 30.10.2024
+
+:::note
+Ultima actualizare 2024-10-30
 :::
 
-:::atenție\[Notă]
-Termenii și condițiile de utilizare de mai jos se aplică agenților de turism care doresc să achiziționeze și să distribuie fonduri pe cont propriu.
-Acest lucru se poate face doar prin intermediul API-ului nostru și numai de către agenții de turism care au indicat că doresc să facă acest lucru în timpul procesului de înscriere.
+:::caution[Notificare]
+Termenii și condițiile de mai jos se aplică agenților de turism care doresc să achiziționeze și să distribuie fonduri pe cont propriu.  
+Acest lucru se poate face doar prin API-ul nostru și numai de către agenții de turism care au indicat acest lucru în procesul de înregistrare.
 
-Toți agenții de turism pot în continuare să facă rezervări prin intermediul portalului nostru de plată Wink, utilizând propriul card de credit sau cardul de credit al călătorului. Prin urmare, toți agenții de turism trebuie să fie de acord și cu termenii și condițiile de utilizare în cazul în care gateway-ul de plată Wink este comerciantul înregistrat.
+Toți agenții de turism pot continua să rezerve prin portalul pentru agenți de turism folosind gateway-ul de plată Wink cu cardul lor sau al călătorului. Prin urmare, toți agenții de turism trebuie să accepte și termenii și condițiile în care gateway-ul de plată Wink este comerciantul înregistrat.
 
-Acești termeni sunt disponibili în cadrul[Portal de afiliere > Termeni și condiții](/studio/terms-of-service).
+Acești termeni sunt disponibili în [Affiliate Portal > Terms of Service](/ro/studio/terms-of-service).
 :::
 
-**TERMENI ȘI CONDIȚII GENERALE WINK**\
-**PENTRU AGENȚII DE TURISM (Comerciant autorizat)**
+**TERMENII ȘI CONDIȚIILE GENERALE WINK**  
+**PENTRU AGENȚII DE TURISM (Comerciantul înregistrat)**
 
 **ÎNTRE:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**&#x6F; societate înregistrată în conformitate cu legislația din Singapore și cu sediul social la adresa #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, cu numărul de înregistrare TVA 201437335D (denumită în continuare „Wink”) și
+1. **TRAVELIKO SINGAPORE PTE. LTD.**, o companie înființată conform legilor din Singapore, cu sediul înregistrat la \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, cu număr de înregistrare TVA 201437335D (denumită în continuare „Wink”) și  
+     
+2. **AGENTUL DE TURISM** ale cărui detalii sunt specificate în Formularul de Înregistrare al Agentului de Turism sau au fost trimise online („Agentul de Turism”).
 
-2. **AGENTUL DE TURISM**ale cărui date sunt prezentate în Formularul de înregistrare a agentului de turism sau au fost trimise online („Agentul de turism”).
+**AVÂND ÎN VEDERE:**
 
-**ÎNTRUCÂT:**
+(i) Wink operează un sistem online (denumit „Sistemul”) prin care unitățile de cazare participante (denumite colectiv „Furnizorii de Cazare”) pot pune la dispoziție inventarul lor pentru rezervare, iar Agentul de Turism poate face rezervări la acești Furnizori de Cazare în numele oaspeților săi („Serviciul”);
 
-(i) Wink operează un sistem online („Sistemul”) prin care Unitățile de cazare participante (denumite colectiv „Furnizorii de cazare”) își pot pune la dispoziție inventarul pentru rezervare și prin care Agentul de turism poate face rezervări la acești Furnizori de cazare în numele Oaspeților săi („Serviciul”);
+(ii) Wink nu deține, nu controlează, nu oferă și nu administrează niciun anunț. Wink nu este parte în contractele încheiate direct între Furnizorii de Cazare și Oaspeți. Wink nu acționează ca agent în niciun fel pentru Furnizorii de Cazare;
 
-(ii) Wink nu deține, controlează, oferă și nu gestionează nicio proprietate. Wink nu este parte la contractele încheiate direct între Furnizorii de Cazare și Oaspeți. Wink nu acționează ca agent în nicio calitate pentru Furnizorii de Cazare;
+(iii) Wink întreține și exploatează propriile site-uri web (denumite „Site-urile Wink”) și oferă Serviciul și linkuri către Serviciu pe site-urile terților;
 
-(iii) Wink își întreține și exploatează propriile site-uri web („Site-urile web Wink”) și furnizează, de asemenea, Serviciul și link-uri către Serviciu pe site-urile web ale unor terțe părți;
+(iv) Agentul de Turism deține, controlează, găzduiește și/sau operează unul sau mai multe domenii de internet, site-uri web sau aplicații și dorește să fie comerciantul înregistrat în timp ce utilizează Serviciul.
 
-(iv) Agentul de turism deține, controlează, găzduiește și/sau operează unul sau mai multe domenii de internet, site-uri web sau aplicații și dorește să fie comerciantul înregistrat atunci când utilizează Serviciul.
+(v) Agentul de Turism și Wink doresc ca Agentul de Turism să pună Serviciul (direct sau indirect) la dispoziția clienților și vizitatorilor site-urilor și aplicațiilor Agentului de Turism, în forma și condițiile (denumite în continuare „Termenii”) stabilite în acest Acord.
 
-(v) Agentul de Turism și Wink doresc ca Agentul de Turism să pună Serviciul (direct sau indirect) la dispoziția clienților și vizitatorilor Site-ului(ilor) Web și Aplicației(ilor) Agentului de Turism, în forma și în termenii și condițiile (denumite în continuare „Termeni”) prevăzute în prezentul Acord.
+**PRIN URMARE, PĂRȚILE CONVIN URMĂTOARELE:**
 
-**Prin urmare, părțile convin după cum urmează:**
+**1\. Definiții**
 
-**1. Definiții**
+1. Pe lângă termenii definiți în alte părți ale acestui Acord, următoarele definiții se aplică pe tot parcursul Acordului, cu excepția cazului în care intenția contrară este evidentă:
 
-1. Pe lângă termenii definiți în altă parte în prezentul Acord, următoarele definiții se aplică în întregul Acord, cu excepția cazului în care apare intenția contrară:
+* **„Cazare”** înseamnă orice formă de cazare, inclusiv, dar fără a se limita la hoteluri, moteluri, pensiuni, bed & breakfast, hosteluri, vile, apartamente, lodge-uri, hanuri, stațiuni și orice alt tip de furnizor de cazare (indiferent dacă este disponibil sau nu pe Site-urile Wink).  
+    
+* **„Furnizor(i) de Cazare”** înseamnă orice Parte care creează un cont pe Service Provider cu intenția de a vinde propriul inventar de camere și servicii auxiliare prin platforma Wink.  
+    
+* **„Rezervare”** înseamnă o rezervare sau comandă făcută de un Oaspete prin Agentul de Turism pentru servicii de cazare oferite de un Furnizor de Cazare.
 
-* **"Cazare"**&#xEE;nseamnă orice formă de cazare, inclusiv, dar fără a se limita la, hoteluri, moteluri, pensiuni, pensiuni cu mic dejun, hosteluri, vile, apartamente, cabane, hanuri, stațiuni și orice alt (tip de) furnizor de cazare sau cazare (indiferent dacă este sau nu disponibil pe site-urile web Wink).
+* **„Taxa de Rezervare”** înseamnă 1,5% dedusă din suma totală colectată de Agentul de Turism de la Oaspete, care este plătibilă către Wink ca taxă de procesare.
 
-* **„Furnizor(i) de cazare”**&#xEE;nseamnă orice Parte care creează un cont pe Furnizorul de Servicii cu intenția de a vinde propriile camere și inventarul de servicii auxiliare prin intermediul platformei Wink.
+* **„Valoarea Rezervării”** înseamnă suma totală colectată de Agentul de Turism de la Oaspete pentru o Rezervare.
 
-* **"Rezervare"**&#x76;a însemna o rezervare sau o comandă efectuată de un Oaspete prin intermediul Agentului de Turism pentru servicii de cazare oferite de un Furnizor de Cazare.
+* **„Comision”** înseamnă suma datorată Agentului de Turism de către Furnizorul de Cazare, calculată ca procentul convenit în „Acordul Separat” din Valoarea Rezervării.  
+    
+* **„Forță Majoră”** înseamnă orice eveniment dincolo de controlul rezonabil al unei părți, inclusiv, dar fără a se limita la dezastre naturale, acte de război, terorism, tulburări civile, pandemii și acțiuni guvernamentale, care împiedică o parte să își îndeplinească obligațiile conform acestui Acord.  
+    
+* **„Oaspete”** înseamnă o persoană fizică sau grup care face o rezervare prin Agentul de Turism pentru servicii de cazare.  
+    
+* **„Comerciantul înregistrat”** se referă la entitatea autorizată legal și responsabilă pentru procesarea plăților de la Oaspeți, inclusiv gestionarea tranzacțiilor de plată, rambursărilor, chargeback-urilor și asigurarea conformității cu reglementările de plată. Comerciantul înregistrat este entitatea al cărei nume apare pe extrasul de cont al cardului de credit al Oaspetelui pentru taxele legate de Rezervare.
 
-* **„Taxă de rezervare”**&#xEE;nseamnă 1,5% dedus din suma totală colectată de Agentul de Turism de la Oaspete, care se plătește către Wink ca taxă de procesare.
+* **„Plata Netă”** înseamnă suma care trebuie plătită Furnizorului de Cazare după deducerea Taxei de Rezervare Wink și a Comisionului Agentului de Turism din Valoarea Rezervării.  
+    
+* **„Plăți”** înseamnă obligațiile financiare care decurg din acest Acord, inclusiv comisioane, taxe sau alte sume datorate de o parte celeilalte.
 
-* **„Valoare de rezervare”**&#xEE;nseamnă suma totală colectată de Agentul de Turism de la Oaspete pentru o Rezervare.
+* **„Facilitator de Plăți”** este o filială deținută integral de Traveliko Singapore Pte. Ltd. care guvernează Serviciile de Plată, colectând plăți de la oaspeți prin încărcarea metodei de plată asociate achiziției lor, cum ar fi card de credit, card de debit, transfer bancar, criptomonede sau PayPal etc.  
+    
+* **„Platforma”** înseamnă sistemul online operat de Service Provider prin care Agentul de Turism poate face sau gestiona Rezervări pentru Oaspeți.
 
-* **"Comision"**&#xEE;nseamnă suma datorată Agentului de Turism de către Furnizorul de Cazare, calculată la procentul convenit din „Acordul Separat” din Valoarea Rezervării.
+* **„Acord Separat”** înseamnă contractul independent între Agentul de Turism și Furnizorul de Cazare care detaliază termenii specifici de plată, inclusiv Comisionul și programul de plată.  
+    
+* **„Servicii”** înseamnă serviciile furnizate de Service Provider Agentului de Turism în baza acestui Acord, inclusiv, dar fără a se limita la accesul la Platformă, facilitarea rezervărilor și suportul pentru clienți.  
+    
+* **„Service Provider”** înseamnă Wink, **TRAVELIKO SINGAPORE PTE. LTD** înregistrată în Singapore.  
+    
+* **„Agent de Turism”** înseamnă entitatea care încheie acest Acord cu Service Provider pentru a promova și vinde rezervări de călătorie prin Platforma Service Provider.
 
-* **„Forță majoră”**&#x76;a însemna orice eveniment aflat în afara controlului rezonabil al unei părți, inclusiv, dar fără a se limita la, dezastre naturale, acte de război, terorism, tulburări civile, pandemii și acțiuni guvernamentale, care împiedică o parte să își îndeplinească obligațiile în temeiul prezentului Acord.
+**2\. Non-Exclusivitate**
 
-* **"Oaspete"**&#xEE;nseamnă o persoană sau un grup care face o rezervare prin intermediul Agenției de Turism pentru servicii de cazare.
+2.1 Agentul de Turism va opera ca distribuitor non-exclusiv al Wink.
 
-* **„Comerciant de înregistrare”**&#x73;e referă la entitatea autorizată legal și responsabilă de procesarea plăților de la Oaspeți, inclusiv gestionarea tranzacțiilor de plată, rambursări, returnări de plăți și asigurarea conformității cu reglementările privind plățile. Comerciantul de înregistrare este entitatea al cărei nume apare pe extrasul de cont al cardului de credit al Oaspetelui pentru taxele aferente Rezervării.
+2.2 Serviciul va fi pus la dispoziție de Wink Agentului de Turism conform Formularului de Înregistrare al Agentului de Turism și pe site-urile web specificate în Formularul de Înregistrare.
 
-* **„Plată netă”**&#xEE;nseamnă suma care trebuie plătită Furnizorului de Cazare după deducerea Taxei de Rezervare Wink și a Comisionului Agentului de Turism din Valoarea Rezervării.
+**3\. Colectarea și Distribuirea Plăților**
 
-* **„Plăți”**&#xEE;nseamnă obligațiile financiare care decurg din prezentul Acord, inclusiv comisioanele, taxele sau alte taxe, plătibile de o parte celeilalte părți.
+3.1 **Colectarea Plăților:** Agentul de Turism va colecta plata de la Oaspete în momentul rezervării.
 
-* **„Facilitator de plăți”**&#x65;ste o filială deținută în totalitate de Traveliko Singapore Pte. Ltd., care gestionează Serviciile de plată, colectând plăți de la oaspeți prin debitarea metodei de plată asociate achiziției lor, cum ar fi cardul de credit, cardul de debit, transferul bancar, criptomonedele sau PayPal etc.
+3.2 **Deducerea Taxelor:** Agentul de Turism va deduce următoarele din Valoarea Rezervării:
 
-* **"Platformă"**&#x76;a însemna sistemul online operat de Furnizorul de Servicii prin care Agentul de Turism poate efectua sau gestiona Rezervări pentru Oaspeți.
+* 1,5% Taxă de Rezervare pentru Wink.  
+* Comisionul Agentului de Turism.
 
-* **„Acord separat”**&#xEE;nseamnă contractul independent dintre Agentul de Turism și Furnizorul de Cazare care detaliază termenii specifici de plată, inclusiv Comisia și graficul de plată.
+3.3 **Plata Netă:** Plata Netă rămasă va fi distribuită de Agentul de Turism către Furnizorul de Cazare conform termenilor unui acord separat între Agentul de Turism și Furnizorul de Cazare. Wink nu va fi responsabil pentru efectuarea plăților către Furnizorul de Cazare.
 
-* **„Servicii”**&#x76;a însemna serviciile furnizate de Furnizorul de Servicii Agentului de Turism în temeiul prezentului Acord, inclusiv, dar fără a se limita la, accesul la Platformă, facilitarea rezervărilor și asistența pentru clienți.
+3.4 **Acord Separat:** Agentul de Turism trebuie să aibă un acord separat cu fiecare Furnizor de Cazare care detaliază termenii și condițiile de plată. Acest Acord între Wink și Agentul de Turism nu guvernează relația dintre Agentul de Turism și Furnizorii de Cazare.
 
-* **„Furnizor de servicii”**&#x76;a însemna Wink,**TRAVELIKO SINGAPORE PTE. LTD**înregistrată în Singapore.
+3.5 **Facturarea Wink:** Wink va emite o factură lunară către Agentul de Turism pentru Taxa de Rezervare de 1,5% acumulată în cursul lunii. Agentul de Turism este responsabil pentru plata acestei facturi în termenii specificați.
 
-* **„Agent de turism”**&#xEE;nseamnă entitatea care încheie prezentul Acord cu Furnizorul de Servicii pentru a promova și vinde rezervări de călătorie prin intermediul Platformei Furnizorului de Servicii.
+**4\. Roluri și Responsabilități**
 
-**2. Ne-exclusivitate**
+4.1 **Responsabilitățile Agentului de Turism:**
 
-2.1 Agentul de turism va opera ca distribuitor neexclusiv al Wink.
+* Agentul de Turism este responsabil pentru colectarea plăților de la Oaspeți.  
+* Agentul de Turism trebuie să asigure distribuirea la timp și corectă a Plății Nete către Furnizorii de Cazare conform acordurilor lor separate.  
+* Agentul de Turism este responsabil pentru orice erori sau discrepanțe în procesarea plăților și trebuie să le remedieze prompt.  
+* Agentul de Turism este responsabil pentru plata facturii lunare a Wink pentru Taxele de Rezervare.
 
-2.2 Serviciul va fi pus la dispoziția Agentului de Turism de către Wink, conform celor prevăzute în Formularul de Înregistrare a Agentului de Turism și pe site-ul/site-urile web prevăzut(e) în Formularul de Înregistrare a Agentului de Turism.
+4.2 **Responsabilitățile Wink:**
 
-**3. Colectarea și distribuirea plăților**
+* Wink nu va fi responsabil pentru plățile către Furnizorii de Cazare. Agentul de Turism deține responsabilitatea exclusivă pentru toate tranzacțiile financiare cu Furnizorii de Cazare.  
+* Wink va asigura accesul la Sistem și va garanta disponibilitatea Serviciului pentru Agentul de Turism.
 
-3.1**Colectarea plăților:**&#x41;gentul de turism va încasa plata de la oaspete în momentul rezervării.
+**5\. Drepturi de Proprietate Intelectuală**
 
-3.2**Deducerea taxelor:**&#x41;gentul de turism va deduce următoarele din Valoarea Rezervării:
+5.1 **Licențe:** Fiecare Parte acordă celeilalte o licență limitată, neexclusivă, fără redevențe, valabilă la nivel mondial, pentru a utiliza proprietatea intelectuală doar în scopul îndeplinirii obligațiilor din acest Acord.
 
-* Taxă de rezervare de 1,5% pentru Wink.
-* Comisia agenției de turism.
+5.2 **Restricții:** Agentul de Turism nu va sublicenția, transfera sau dezvălui nicio proprietate intelectuală sau conținut furnizat de Wink.
 
-3.3**Plată netă:**&#x50;lata netă rămasă va fi plătită de către Agentul de Turism către Furnizorul de Cazare respectiv, în conformitate cu termenii unui acord separat între Agentul de Turism și Furnizorul de Cazare. Wink nu va fi răspunzător pentru efectuarea niciunei plăți către Furnizorul de Cazare.
+**6\. Plata către Wink**
 
-3.4**Acord separat:**&#x41;gentul de turism este obligat să încheie un acord separat cu fiecare Furnizor de Cazare care să detalieze termenii și condițiile de plată. Prezentul Acord între Wink și Agentul de turism nu guvernează relația dintre Agentul de turism și Furnizorii de Cazare.
+6.1 **Programul de Plată:**
 
-3.5**Facturarea Wink:**&#x57;ink va emite o factură lunară către Agentul de Turism pentru comisionul de rezervare de 1,5% acumulat pe parcursul lunii. Agentul de Turism este responsabil pentru achitarea acestei facturi în termenele de plată specificate.
+* Toate plățile datorate către Wink de către Agentul de Turism în baza acestui Acord vor fi efectuate în termen de 15 zile de la primirea facturii corecte și exacte de la Wink, cu excepția cazului în care s-a convenit altfel în scris. Plățile vor fi efectuate în USD, fără deduceri sau rețineri, cu excepția celor impuse de lege.  
+  
 
-**4. Roluri și responsabilități**
+6.2 **Plăți Întârziate:**
 
-4.1**Responsabilitățile agentului de turism:**
+* Dacă o plată datorată în baza acestui Acord nu este primită la data scadentă, Wink își rezervă dreptul de a percepe dobândă de 5% pe lună sau rata maximă permisă de lege, oricare este mai mică, asupra sumei restante, calculată de la data scadenței până la data plății. De asemenea, Wink poate suspenda serviciile până la primirea plății. Totuși, dacă există greșeli sau erori în factura emisă de Wink, Agentul de Turism va fi obligat să plătească doar partea corectă și exactă a facturii și nu va fi supus niciunei dobânzi sau penalități pentru neplata părții incorecte a facturii.
 
-* Agentul de turism este responsabil pentru colectarea plăților de la oaspeți.
-* Agentul de turism trebuie să asigure plata la timp și corectă a plății nete către furnizorii de cazare, în conformitate cu acordurile lor separate.
-* Agentul de turism este responsabil pentru orice erori sau discrepanțe în procesarea plăților și trebuie să le remedieze prompt.
-* Agentul de turism este responsabil pentru plata facturii lunare a Wink pentru Taxele de rezervare.
+6.3 **Rambursări și Credite:**
 
-4.2**Responsabilitățile lui Wink:**
+* În cazul în care un serviciu nu este furnizat sau este anulat din motive neatribuite Agentului de Turism, Wink va rambursa sau credita Agentul de Turism în termen de 30 de zile de la primirea notificării de anulare, cu condiția ca taxa pentru serviciu să fi fost deja plătită.
 
-* Wink nu va fi răspunzător pentru plățile către Furnizorii de Cazare. Agentul de Turism este singurul responsabil pentru toate tranzacțiile financiare cu Furnizorii de Cazare.
-* Wink va oferi acces la Sistem și se va asigura că Serviciul este disponibil Agentului de Turism.
+6.4 **Monedă și Taxe:**
 
-**5. Drepturi de proprietate intelectuală**
+* Plățile vor fi efectuate în USD. Agentul de Turism este responsabil pentru orice taxe, impozite sau alte costuri aplicabile tranzacțiilor în baza acestui Acord, inclusiv costurile de conversie valutară dacă plățile sunt efectuate într-o altă monedă decât USD.
 
-5.1**Licențe:**&#x46;iecare Parte acordă celeilalte Părți o licență limitată, neexclusivă, fără redevențe și la nivel mondial pentru a utiliza proprietatea sa intelectuală exclusiv în scopul îndeplinirii obligațiilor care decurg din prezentul Acord.
+6.5 **Metode de Plată:**
 
-5.2**Restricții:**&#x41;gentul de turism nu va sublicenția, transfera sau divulga nicio proprietate intelectuală sau conținut furnizat de Wink.
+* Agentul de Turism va efectua plățile prin transfer bancar, card de credit sau PayPal, iar orice taxe asociate metodei de plată alese vor fi suportate de Agentul de Turism.
 
-**6. Plată către Wink**
+6.6 **Dispute privind Plățile:**
 
-6.1**Programul de plată:**
+* În cazul unui litigiu privind o factură, Agentul de Turism va notifica Wink în termen de 10 zile de la data facturii, oferind motive detaliate pentru dispută. Ambele părți vor negocia cu bună credință pentru a rezolva disputa prompt. Partea necontestată a facturii va fi plătită la data scadenței.
 
-* Toate plățile datorate către Wink de către Agentul de Turism în temeiul prezentului Acord se vor efectua în termen de 15 zile de la primirea facturii corecte și exacte de la Wink, cu excepția cazului în care se convine altfel în scris. Plățile se vor efectua în USD, fără nicio deducere sau reținere la sursă, cu excepția cazurilor prevăzute de lege.
+**7\. Responsabilitățile Agentului de Turism**
 
-6.2**Plăți întârziate:**
+7.1 **Respectarea Legilor și Reglementărilor:**
 
-* Dacă orice plată datorată în temeiul prezentului Acord nu este primită până la data scadenței, Wink își rezervă dreptul de a percepe dobânzi la o rată de 5% pe lună sau rata maximă permisă de lege, oricare dintre acestea este mai mică, pentru suma restantă, calculată de la data scadenței până la data plății. În plus, Wink poate suspenda serviciile până la primirea plății. Cu toate acestea, dacă există greșeli sau erori în factura transmisă de Wink, Agentul de Turism va fi obligat doar să efectueze plata părții corecte și exacte a facturii și nu va fi supus niciunei taxe de dobândă sau penalități pentru neplata părții incorecte a facturii.
+* Agentul de Turism va respecta toate legile, reglementările și standardele industriei aplicabile la nivel local, național și internațional în desfășurarea activității sale, inclusiv, dar fără a se limita la cele privind protecția consumatorului, protecția datelor și prevenirea spălării banilor.  
+  
 
-6.3**Rambursări și credite:**
+7.2 **Reprezentarea Corectă a Serviciilor:**
 
-* În cazul în care un serviciu nu este furnizat sau este anulat din cauza unor circumstanțe care nu sunt imputabile Agentului de Turism, Wink va rambursa sau credita Agentul de Turism în termen de 30 de zile de la primirea notificării de anulare, cu condiția ca taxa de serviciu să fi fost deja plătită.
+* Agentul de Turism va reprezenta corect serviciile și cazări oferite prin Platformă. Agentul de Turism este responsabil să se asigure că toate informațiile furnizate Oaspeților, inclusiv descrierile, prețurile și disponibilitatea, sunt corecte și actualizate.
 
-6.4**Monedă și taxe:**
+7.3 **Promovarea Serviciilor:**
 
-* Plățile se vor efectua în USD. Agentul de turism va fi responsabil pentru orice taxe, impozite sau alte taxe care pot fi aplicabile tranzacțiilor în temeiul prezentului Acord, inclusiv costurile de conversie valutară dacă plățile sunt efectuate într-o altă monedă decât USD.
+* Agentul de Turism va promova activ serviciile oferite prin Platformă conform ghidurilor furnizate de Service Provider. Aceasta include, dar nu se limitează la activități de marketing, menținerea materialelor promoționale actualizate și asigurarea că toate conținuturile promoționale sunt corecte și conforme cu standardele publicitare aplicabile.
 
-6,5**Metode de plată:**
+7.4 **Gestionarea Rezervărilor:**
 
-* Agentul de turism va efectua plățile prin transfer bancar, card de credit sau PayPal, iar orice comisioane asociate metodei de plată alese de Agentul de turism vor fi suportate de către Agentul de turism.
+* Agentul de Turism va gestiona toate Rezervările făcute prin Platformă, inclusiv procesarea rezervărilor, anulărilor și modificărilor. Agentul de Turism va comunica cu Oaspeții și Furnizorii de Cazare pentru a se asigura că toate Rezervările sunt procesate și confirmate corect.
 
-6.6**Litigii privind plata:**
+7.5 **Colectarea și Remiterea Plăților:**
 
-* În cazul unei dispute cu privire la orice factură, Agentul de Turism va notifica Wink în termen de 10 zile de la data facturii, furnizând motivele detaliate ale disputei. Ambele părți vor negocia cu bună-credință pentru a rezolva prompt disputa. Partea necontestată a facturii va fi plătită până la data scadenței.
+* Agentul de Turism este responsabil pentru colectarea plăților de la Oaspeți pentru Rezervările făcute prin Platformă și pentru remiterea plăților convenite către Furnizorii de Cazare și Service Provider, conform Termenilor de Plată. Agentul de Turism va asigura că toate plățile sunt procesate în siguranță și în conformitate cu reglementările financiare aplicabile.
 
-**7. Responsabilitățile agentului de turism**
+7.6 **Gestionarea Reclamațiilor și Disputelor Oaspeților:**
 
-7.1**Respectarea legilor și reglementărilor:**
+* Agentul de Turism va fi punctul principal de contact pentru Oaspeți în legătură cu orice reclamații, dispute sau probleme legate de serviciile furnizate prin Platformă. Agentul de Turism va face eforturi rezonabile pentru a rezolva aceste reclamații și dispute prompt și într-un mod care să mențină o relație pozitivă atât cu Oaspeții, cât și cu Furnizorii de Cazare.
 
-* Agentul de turism va respecta toate legile, reglementările și standardele industriale locale, naționale și internaționale aplicabile în desfășurarea activității sale, inclusiv, dar fără a se limita la, cele referitoare la protecția consumatorilor, protecția datelor și combaterea spălării banilor.
+7.7 **Raportare și Responsabilitate:**
 
-7.2**Reprezentare exactă a serviciilor:**
+* Agentul de Turism va furniza Service Provider rapoarte regulate care detaliază performanța obligațiilor sale în baza acestui Acord, inclusiv, dar fără a se limita la date de vânzări, statistici ale Rezervărilor și feedback-ul clienților. Agentul de Turism este responsabil pentru acuratețea acestor rapoarte și va coopera cu Service Provider în orice audit sau revizuire a operațiunilor sale.
 
-* Agentul de turism va reprezenta cu acuratețe serviciile și cazările oferite prin intermediul Platformei. Agentul de turism este responsabil pentru asigurarea faptului că toate informațiile furnizate Oaspeților, inclusiv, dar fără a se limita la, descrieri, prețuri și disponibilitate, sunt corecte și actualizate.
+7.8 **Confidențialitate:**
 
-7.3**Promovarea serviciilor:**
+* Agentul de Turism va păstra confidențialitatea tuturor informațiilor proprietare și secretelor comerciale ale Service Provider, inclusiv, dar fără a se limita la datele clienților, informații despre prețuri și strategii de afaceri. Agentul de Turism nu va dezvălui aceste informații niciunei terțe părți fără consimțământul scris prealabil al Service Provider.
 
-* Agentul de turism va promova activ serviciile oferite prin intermediul Platformei în conformitate cu instrucțiunile furnizate de Furnizorul de servicii. Aceasta include, dar nu se limitează la, activități de marketing, menținerea materialelor promoționale actualizate și asigurarea faptului că tot conținutul promoțional este corect și respectă standardele de publicitate aplicabile.
+7.9 **Respectarea Termenilor Platformei:**
 
-7.4**Gestionarea rezervărilor:**
+* Agentul de Turism va respecta toți termenii și condițiile asociate utilizării Platformei Service Provider, inclusiv orice actualizări sau modificări ale acestor termeni. Agentul de Turism este responsabil să se asigure că angajații și agenții săi sunt conștienți și respectă acești termeni.
 
-* Agentul de turism va gestiona toate Rezervările efectuate prin intermediul Platformei, inclusiv, dar fără a se limita la, procesarea rezervărilor, anulărilor și modificărilor. Agentul de turism va fi responsabil pentru comunicarea cu Oaspeții și Furnizorii de Cazare pentru a se asigura că toate Rezervările sunt procesate și confirmate cu exactitate.
+7.10 **Despăgubire:**
 
-7,5**Colectarea și remiterea plăților:**
+* Agentul de Turism va despăgubi și va ține Service Provider nevinovat de orice pretenții, daune, răspunderi și cheltuieli care decurg din sau sunt legate de încălcarea acestui Acord de către Agentul de Turism, inclusiv, dar fără a se limita la nerespectarea legilor aplicabile, reprezentarea eronată a serviciilor sau neîndeplinirea obligațiilor față de Oaspeți sau Furnizorii de Cazare.
 
-* Agentul de turism va fi responsabil pentru colectarea plăților de la Oaspeți pentru Rezervările efectuate prin intermediul Platformei și pentru remiterea plăților convenite către Furnizorii de Cazare și Furnizorul de Servicii, așa cum este specificat în Termenii de Plată. Agentul de turism se va asigura că toate plățile sunt procesate în siguranță și în conformitate cu reglementările financiare aplicabile.
+**8\. Comisioane și Taxe**
 
-7.6**Gestionarea reclamațiilor și disputelor oaspeților:**
+8.1 **Calculul Comisionului:** Comisionul plătibil Agentului de Turism va fi un procent (stabilit în acordul dintre Agentul de Turism și Furnizorul de Cazare) din Valoarea Rezervării după deducerea Taxei de Rezervare Wink.
 
-* Agentul de turism va fi principalul punct de contact pentru Oaspeți cu privire la orice reclamații, dispute sau probleme legate de serviciile furnizate prin intermediul Platformei. Agentul de turism va depune eforturi rezonabile pentru a rezolva astfel de reclamații și dispute prompt și într-un mod care să mențină o relație pozitivă atât cu Oaspeții, cât și cu Furnizorii de Cazare.
+8.2 **Taxa de Rezervare Wink:** Wink va emite o factură lunară pentru Taxa de Rezervare de 1,5%. Agentul de Turism este responsabil pentru plata acestei facturi în termenii de plată specificați de Wink.
 
-7.7**Raportare și responsabilitate:**
+**9\. Dispoziții Legale**
 
-* Agentul de turism va furniza Furnizorului de servicii rapoarte periodice care detaliază îndeplinirea obligațiilor sale în temeiul prezentului Acord, inclusiv, dar fără a se limita la, date de vânzări, statistici de rezervare și feedback de la clienți. Agentul de turism va fi responsabil pentru acuratețea acestor rapoarte și va coopera cu Furnizorul de servicii în cadrul oricărui audit sau revizuire a operațiunilor sale.
+9.1 **Limitarea Răspunderii:** Niciuna dintre Părți nu va fi răspunzătoare pentru daune indirecte, incidentale, consecințe, speciale sau punitive care decurg din acest Acord.
 
-7,8**Confidențialitate:**
+9.2 **Despăgubire:** Fiecare Parte este de acord să despăgubească și să țină cealaltă Parte nevinovată de orice pretenții care decurg din încălcarea acestui Acord sau din neglijența Părții care despăgubește.
 
-* Agentul de turism va menține confidențialitatea tuturor informațiilor de proprietate și secretelor comerciale ale Furnizorului de servicii, inclusiv, dar fără a se limita la, datele clienților, informațiile privind prețurile și strategiile de afaceri. Agentul de turism nu va divulga astfel de informații niciunei terțe părți fără acordul prealabil scris al Furnizorului de servicii.
+9.3 **Forță Majoră:** Niciuna dintre Părți nu va fi răspunzătoare pentru întârzieri sau neîndepliniri cauzate de evenimente dincolo de controlul rezonabil, inclusiv dezastre naturale, război, terorism, greve etc.
 
-7.9**Respectarea Termenilor Platformei:**
+**10\. Durata și Încetarea**
 
-* Agentul de turism va respecta toți termenii și condițiile asociate cu utilizarea Platformei Furnizorului de Servicii, inclusiv orice actualizări sau modificări ale acestor termeni. Agentul de turism este responsabil pentru asigurarea faptului că angajații și agenții săi sunt conștienți de și respectă acești termeni.
+10.1 **Durata:** Acest Acord începe la data semnării și continuă până la încetarea de către oricare dintre Părți.
 
-7.10**Despăgubire:**
+10.2 **Încetarea:** Oricare Parte poate înceta acest Acord după propria discreție.
 
-* Agentul de Turism va despăgubi și va exonera de răspundere Furnizorul de Servicii pentru orice pretenții, daune, răspunderi și cheltuieli care decurg din sau sunt legate de încălcarea prezentului Acord de către Agentul de Turism, inclusiv, dar fără a se limita la, orice nerespectare a legilor aplicabile, prezentarea eronată a serviciilor sau neîndeplinirea obligațiilor sale față de Oaspeți sau Furnizori de Cazare.
+10.3 **Post-Încetare:** La încetare, Agentul de Turism va achita toate plățile restante și va înceta utilizarea oricărei proprietăți intelectuale sau conținut legat de Wink.
 
-**8. Comisioane și taxe**
+**11\. Legea Aplicabilă și Soluționarea Disputelor**
 
-8.1**Calculul comisionului:**&#x43;omisia plătibilă Agentului de Turism va fi un procent (stabilit în acordul dintre Agentul de Turism și Furnizorul de Cazare) din Valoarea Rezervării după deducerea Taxei de Rezervare Wink.
+11.1 **Legea Aplicabilă:** Acest Acord va fi guvernat și interpretat în conformitate cu legile din Singapore, fără a ține cont de principiile sale privind conflictul de legi.
 
-8.2**Taxă de rezervare Wink:**&#x57;ink va emite o factură lunară pentru taxa de rezervare de 1,5%. Agentul de turism este responsabil pentru achitarea acestei facturi în termenele de plată specificate de Wink.
+11.2 **Soluționarea Disputelor:** 
 
-**9. Prevederi legale**
+11.2.1 **Negociere:** În cazul oricărei dispute, pretenții, întrebări sau dezacorduri legate de acest Acord, părțile vor încerca mai întâi să rezolve disputa prin negocieri de bună credință. Aceste negocieri vor începe la notificarea scrisă a uneia dintre părți către cealaltă.
 
-9.1**Limitarea răspunderii:**&#x4E;iciuna dintre Părți nu va fi răspunzătoare pentru daune indirecte, incidentale, consecutive, speciale sau punitive care decurg din prezentul Acord.
+11.2.2 **Arbitraj:** Dacă disputa nu poate fi rezolvată prin negocieri în termen de treizeci (30) de zile, disputa va fi trimisă și soluționată definitiv prin arbitraj conform Regulilor Centrului Internațional de Arbitraj din Singapore (SIAC), care sunt considerate incorporate prin referință în această clauză. Numărul arbitrilor va fi unul, iar sediul arbitrajului va fi Singapore. Limba folosită în procedura de arbitraj va fi engleza.
 
-9.2**Despăgubire:**&#x46;iecare Parte este de acord să despăgubească și să exonereze cealaltă de răspundere pentru orice pretenții care decurg din încălcarea prezentului Acord sau din neglijența Părții care despăgubește.
+11.2.3 **Jurisdicție:** Indiferent de cele de mai sus, oricare parte își rezervă dreptul de a solicita măsuri provizorii sau ordonanțe judecătorești în instanțele din Singapore pentru a-și proteja drepturile sau proprietatea în așteptarea numirii unui arbitru, iar orice astfel de instanță va avea jurisdicție exclusivă pentru a acorda astfel de măsuri.
 
-9.3**Forță majoră:**&#x4E;iciuna dintre Părți nu va fi răspunzătoare pentru întârzieri sau neîndepliniri din cauze independente de voința sa rezonabilă, inclusiv evenimente forțate, dezastre naturale, război, terorism, greve etc.
+**12\. Forță Majoră**
 
-**10. Termen și încetare**
+12.1 **Definiție:** Niciuna dintre părți nu va fi răspunzătoare pentru neîndeplinirea sau întârzierea în îndeplinirea obligațiilor sale în baza acestui Acord dacă aceasta se datorează unui Eveniment de Forță Majoră. „Eveniment de Forță Majoră” înseamnă orice eveniment dincolo de controlul rezonabil al unei părți, inclusiv, dar fără a se limita la dezastre naturale (cutremure, inundații, uragane), război, terorism, tulburări civile, pandemii, acțiuni guvernamentale sau orice alt eveniment care nu putea fi anticipat sau evitat în mod rezonabil.
 
-10.1**Termen:**&#x50;rezentul Acord intră în vigoare la data semnării și continuă până la denunțarea lui de către oricare dintre Părți.
+12.2 **Notificare:** Partea afectată trebuie să notifice cealaltă parte în scris cât mai curând posibil după producerea Evenimentului de Forță Majoră. Această notificare va include o descriere a Evenimentului de Forță Majoră, durata estimată și obligațiile afectate.
 
-10.2**Terminare:**&#x4F;ricare dintre Părți poate rezilia prezentul Acord la discreția sa.
+12.3 **Impact asupra Serviciilor:**
 
-10.3**După încetare:**&#x4C;a încetarea contractului, Agentul de Turism va achita toate plățile restante și va înceta utilizarea oricărei proprietăți intelectuale sau conținut legat de Wink.
+* Suspendarea Serviciilor: Dacă un Eveniment de Forță Majoră afectează capacitatea afacerii tale de a furniza servicii Agentului de Turism, aceste servicii vor fi suspendate pe durata evenimentului fără penalități. Obligațiile de plată ale Agentului de Turism legate de serviciile afectate vor fi, de asemenea, suspendate în această perioadă.  
+* Obligațiile Agentului de Turism: Agentul de Turism nu va fi ținut responsabil pentru obligațiile față de afacerea ta care devin imposibil de îndeplinit din cauza Evenimentului de Forță Majoră. Totuși, Agentul de Turism trebuie să continue să îndeplinească toate celelalte obligații neafectate direct de eveniment.
 
-**11. Legea aplicabilă și soluționarea litigiilor**
+12.4 **Durata și Încetarea:** Dacă Evenimentul de Forță Majoră continuă mai mult de șaizeci (60) de zile, oricare parte poate înceta acest Acord prin notificare scrisă către cealaltă parte. În cazul unei astfel de încetări, niciuna dintre părți nu va avea răspundere față de cealaltă, cu excepția obligațiilor acumulate înainte de Evenimentul de Forță Majoră.
 
-11.1**Legea aplicabilă:**&#x50;rezentul Acord va fi guvernat și interpretat în conformitate cu legile din Singapore, fără a ține cont de principiile sale privind conflictul de legi.
+12.5 **Reluarea Obligațiilor:** Odată ce Evenimentul de Forță Majoră a încetat, ambele părți vor relua prompt obligațiile din acest Acord în măsura în care este rezonabil practicabil.
 
-11.2**Rezolvarea litigiilor:**
+**13\. Confidențialitate**
 
-11.2.1**Negociere:**&#xCE;n cazul oricărei dispute, reclamații, întrebări sau dezacorduri care decurg din sau în legătură cu prezentul Acord, părțile vor încerca mai întâi să soluționeze disputa prin negocieri cu bună-credință. Astfel de negocieri vor începe prin notificarea scrisă a uneia dintre părți către cealaltă.
+13.1 Ambele Părți vor păstra confidențialitatea tuturor informațiilor proprietare și nu le vor dezvălui niciunei terțe părți fără consimțământul scris prealabil.
 
-11.2.2**Arbitraj:**&#x44;acă disputa nu poate fi soluționată prin negocieri în termen de treizeci (30) de zile, aceasta va fi trimisă și soluționată definitiv prin arbitraj în conformitate cu Regulile Centrului Internațional de Arbitraj din Singapore (SIAC), care se consideră a fi încorporate prin referință în prezenta clauză. Numărul de arbitri va fi unul, iar sediul, sau locul legal, al arbitrajului va fi Singapore. Limba care va fi utilizată în procedurile de arbitraj va fi engleza.
+**14\. Diverse**
 
-11.2.3**Jurisdicție:**&#x46;ără a aduce atingere celor de mai sus, oricare dintre părți își rezervă dreptul de a solicita măsuri provizorii sau injunctive în instanțele din Singapore pentru a-și proteja drepturile sau proprietatea în așteptarea numirii unui arbitru, iar orice astfel de instanță va avea competența exclusivă de a acorda astfel de măsuri.
+14.1 **Întregul Acord:** Acest Acord constituie întregul acord între Părți și înlocuiește toate acordurile sau înțelegerile anterioare.
 
-**12. Forță majoră**
+14.2 **Modificări:** Orice modificare a acestui Acord trebuie făcută în scris și semnată de ambele Părți.
 
-12.1**Definiţie**Niciuna dintre părți nu va fi răspunzătoare pentru nicio neîndeplinire sau întârziere în îndeplinirea obligațiilor sale în temeiul prezentului Acord, dacă o astfel de neîndeplinire sau întârziere se datorează unui Eveniment de Forță Majoră. Un „Eveniment de Forță Majoră” înseamnă orice eveniment care nu se află sub controlul rezonabil al unei părți, inclusiv, dar fără a se limita la, dezastre naturale (cum ar fi cutremure, inundații sau uragane), război, terorism, tulburări civile, pandemii, acțiuni guvernamentale sau orice alt eveniment care nu ar fi putut fi anticipat sau evitat în mod rezonabil.
-
-12.2**Notificare**Partea afectată trebuie să notifice cealaltă parte în scris, cât mai curând posibil, după producerea unui Eveniment de Forță Majoră. O astfel de notificare va include o descriere a Evenimentului de Forță Majoră, durata preconizată a acestuia și obligațiile afectate.
-
-12.3**Impactul asupra serviciilor**:
-
-* Suspendarea Serviciilor: Dacă un Eveniment de Forță Majoră afectează capacitatea afacerii dumneavoastră de a furniza servicii Agenției de Turism, aceste servicii vor fi suspendate pe durata evenimentului, fără penalități. Obligațiile de plată ale Agenției de Turism aferente serviciilor afectate vor fi, de asemenea, suspendate în această perioadă.
-* Obligațiile Agentului de Turism: Agentul de Turism nu va fi tras la răspundere pentru nicio obligație față de afacerea dumneavoastră care este imposibil de îndeplinit din cauza Evenimentului de Forță Majoră. Cu toate acestea, Agentul de Turism trebuie să continue să îndeplinească toate celelalte obligații care nu sunt afectate direct de eveniment.
-
-12.4**Durată și încetare**Dacă Evenimentul de Forță Majoră continuă mai mult de șaizeci (60) de zile, oricare dintre părți poate rezilia prezentul Acord prin notificare scrisă adresată celeilalte părți. În cazul unei astfel de rezilieri, niciuna dintre părți nu va avea nicio răspundere față de cealaltă, cu excepția obligațiilor acumulate anterior Evenimentului de Forță Majoră.
-
-12,5**Reluarea obligațiilor**Odată ce Evenimentul de Forță Majoră a încetat, ambele părți își vor relua imediat obligațiile care le revin în temeiul prezentului Acord, în măsura în care acest lucru este rezonabil și practic.
-
-**13. Confidențialitate**
-
-13.1 Ambele Părți vor păstra confidențialitatea tuturor informațiilor care fac obiectul unui drept de proprietate și nu le vor divulga niciunei terțe părți fără acordul prealabil scris.
-
-**14. Diverse**
-
-14.1**Întregul Acord:**&#x50;rezentul Acord constituie întregul acord dintre Părți și înlocuiește toate acordurile sau înțelegerile anterioare.
-
-14.2**Amendamente:**&#x4F;rice modificare a prezentului Acord trebuie făcută în scris și semnată de ambele Părți.
-
-14.3**Divizibilitate:**&#x44;acă vreo prevedere a prezentului Acord se dovedește a fi invalidă sau inaplicabilă, celelalte prevederi vor continua să fie în vigoare și să producă efecte depline.
-
+14.3 **Separabilitate:** Dacă orice prevedere a acestui Acord este considerată invalidă sau inaplicabilă, prevederile rămase vor continua să aibă efect deplin.

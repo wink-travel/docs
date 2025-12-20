@@ -1,21 +1,21 @@
 ---
 title: Hvorfor bli med
-description: Denne artikkelen tar deg gjennom alle fordelene ved å bli med i Wink.
+description: Denne artikkelen forklarer alle fordelene ved å bli med i Wink.
 sidebar:
   order: 0
 ---
-Wink ble opprettet for å gjøre salg av reiseutstyr spennende igjen og for å gjøre det tilgjengelig for flere brukere.
-Det er mange gode grunner til at du bør bli med i Wink.
+
+Wink ble laget for å gjøre salg av reiseinventar spennende igjen og for å gjøre det tilgjengelig for flere brukere.  
+Det finnes mange gode grunner til at du bør bli med i Wink.
 
 En brukerkonto lar deg:
 
-* Opprett og administrer eiendommer og selg overalt hvor potensielle reisende befinner seg.
-* Opprett og administrer affiliate-kontoer og tjen provisjon på bestillinger du tilrettelegger.
-* Opprett og administrer reisebyråkontoer og bestill på vegne av kundene dine.
-* Hent din WinkLinks-forfengelighets-URL (*f.eks. https://i.trvl.as/bob*) og bruk den i URL-en til IG-bioen din.
-* Bestill din neste ferie og spar.
-* Gjør alt det ovennevnte som utvikler ved å integrere med Wink.
-* Alle funksjonene våre er tilgjengelige for deg**GRATIS**.
+- Opprette og administrere eiendommer og selge der potensielle reisende er.
+- Opprette og administrere affiliate-kontoer og tjene provisjon på bestillinger du formidler.
+- Opprette og administrere reisebyråkontoer og bestille på vegne av kundene dine.
+- Skaff deg din egen WinkLinks vanity-URL (*f.eks. https://i.trvl.as/bob*) og bruk den i bio-URL-en på Instagram.
+- Bestille din neste ferie og spare penger.
+- Gjøre alt det ovennevnte som utvikler ved å integrere med Wink.
+- Alle våre funksjoner er tilgjengelige for deg **K-R-A-F-T-F-R-I**.
 
-Fortsett til neste avsnitt for å lære hvordan du registrerer deg og begynner å tjene penger med Wink.
-
+Fortsett til neste seksjon for å lære hvordan du registrerer deg og begynner å tjene med Wink.

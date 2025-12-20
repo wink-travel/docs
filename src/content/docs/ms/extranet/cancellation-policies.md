@@ -1,45 +1,45 @@
 ---
-title: Dasar Pembatalan
-description: Artikel ini menunjukkan kepada anda cara mengurus dasar pembatalan pada Wink.
+title: Polisi Pembatalan
+description: Artikel ini menunjukkan cara mengurus polisi pembatalan di Wink.
 sidebar:
   order: 12
 ---
-Untuk mengurus dasar Pembatalan anda, klik pada `Monetize > Cancellation policies` daripada bar navigasi utama.
 
-Dasar pembatalan menentukan cara dana penempah dikendalikan sekiranya tetamu tidak dapat hadir. Dasar pembatalan datang dalam dua perisa berbeza:
+Untuk mengurus polisi Pembatalan anda, klik pada `Monetize > Cancellation policies` dari bar navigasi utama.
 
-1. Boleh dipulangkan
-2. Tidak boleh dikembalikan
+Polisi pembatalan menentukan bagaimana dana pemesan dikendalikan sekiranya tetamu tidak dapat hadir. Polisi pembatalan datang dalam dua jenis yang berbeza:
 
-Selalunya, dua opton ini sudah mencukupi. Walau bagaimanapun, kedua-duanya memberi anda banyak ruang untuk menyesuaikan dasar pembatalan anda dengan lebih lanjut.
+1. Boleh Dibelanjakan Semula
+2. Tidak Boleh Dibelanjakan Semula
 
-:::tip\[Fakta menyeronokkan]
-Wink menyokong sejumlah 8500 variasi dasar pembatalan.
+Kebiasaannya, kedua-dua pilihan ini sudah mencukupi. Walau bagaimanapun, kedua-duanya memberi anda banyak ruang untuk menyesuaikan polisi pembatalan anda dengan lebih lanjut.
+
+:::tip[Fakta menarik]
+Wink menyokong sebanyak 8500 variasi polisi pembatalan.
 :::
 
-Untuk membuat dasar pembatalan, klik butang `Create a new cancellation policy` butang.
+Untuk membuat polisi pembatalan, klik butang `Create a new cancellation policy`.
 
-## Tidak boleh dikembalikan
+## Tidak Boleh Dibelanjakan Semula
 
-Untuk membuat dasar pembatalan tidak boleh dibayar balik, tetapkan suis kepada 🛑 mati apabila ditanya sama ada polisi itu boleh dibayar balik.
-
-### Pilihan
-
-Anda boleh mengkonfigurasi pilihan anda `non-refundable` polisi selanjutnya untuk kawalan yang lebih besar.
-
-* **Berapakah bayaran tetamu untuk pembatalan?** Secara lalai, polisi tidak boleh dibayar balik ialah polisi tidak boleh dibayar balik 100%. Anda boleh memperhalusi jumlahnya di sini. *cth. 50% daripada jumlah harga*
-* **Adakah caj mempunyai tarikh akhir?** Jika anda memperhalusi amaun itu, anda boleh memperhalusinya lagi dengan menetapkan tempoh masa amaun itu kekal berkuat kuasa. *cth. Sehingga 3 hari sebelum ketibaan*
-* **Berapakah bayaran tetamu untuk pembatalan selepas tarikh akhir?** Sekiranya tetamu melepasi tarikh akhir yang ditetapkan di atas, anda boleh menetapkan jumlah yang dibayar tetamu selepas tarikh akhir. *cth. 70% daripada jumlah harga*
-
-## Boleh dipulangkan
-
-Untuk membuat dasar pembatalan yang boleh dibayar balik, tetapkan suis kepada ✅ hidup apabila ditanya sama ada polisi itu boleh dibayar balik.
+Untuk membuat polisi pembatalan yang tidak boleh dibelanjakan semula, tetapkan suis ke 🛑 mati apabila ditanya sama ada polisi itu boleh dibelanjakan semula.
 
 ### Pilihan
 
-Anda boleh mengkonfigurasi pilihan anda `refundable` polisi selanjutnya untuk kawalan yang lebih besar.
+Anda boleh memilih untuk mengkonfigurasi polisi `tidak boleh dibelanjakan semula` anda dengan lebih lanjut untuk kawalan yang lebih baik.
 
-* **Berapa lama, sebelum ketibaan, tetamu boleh membatalkan secara percuma?** Secara lalai, polisi boleh bayar balik sentiasa boleh dibayar balik 100%. Anda boleh memperhalusi tarikh akhir di sini. *cth. 3 hari sebelum ketibaan*
-* **Apakah yang perlu dikenakan kepada tetamu jika pembatalan berlaku selepas tarikh akhir di atas?** Jika anda memperhalusi tarikh akhir, anda boleh menetapkan amaun yang tetamu bayar selepas tarikh akhir. *cth. 50% daripada jumlah harga*
-* **Berapakah bayaran yang perlu dikenakan kepada tetamu untuk 'Tidak hadir?** Sekiranya tetamu tidak muncul, anda boleh menetapkan amaun yang dikenakan kepada tetamu untuk a `No show`. *cth. 100% daripada jumlah harga*
+- **Berapa banyak tetamu dikenakan bayaran untuk pembatalan?** Secara lalai, polisi tidak boleh dibelanjakan semula adalah polisi 100% tidak boleh dibelanjakan semula. Anda boleh melaras jumlahnya di sini. *contoh: 50% daripada jumlah harga*
+- **Adakah caj itu mempunyai tarikh akhir?** Jika anda melaras jumlahnya, anda boleh melarasnya lagi dengan menetapkan berapa lama jumlah itu berkuat kuasa. *contoh: Sehingga 3 hari sebelum ketibaan*
+- **Berapa banyak tetamu dikenakan bayaran untuk pembatalan selepas tarikh akhir?** Sekiranya tetamu melepasi tarikh akhir yang ditetapkan di atas, anda boleh menetapkan jumlah yang tetamu bayar selepas tarikh akhir. *contoh: 70% daripada jumlah harga* 
 
+## Boleh Dibelanjakan Semula
+
+Untuk membuat polisi pembatalan yang boleh dibelanjakan semula, tetapkan suis ke ✅ hidup apabila ditanya sama ada polisi itu boleh dibelanjakan semula.
+
+### Pilihan
+
+Anda boleh memilih untuk mengkonfigurasi polisi `boleh dibelanjakan semula` anda dengan lebih lanjut untuk kawalan yang lebih baik.
+
+- **Berapa lama, sebelum ketibaan, tetamu boleh membatalkan tanpa caj?** Secara lalai, polisi boleh dibelanjakan semula sentiasa 100% boleh dibelanjakan semula. Anda boleh melaras tarikh akhir di sini. *contoh: 3 hari sebelum ketibaan*
+- **Berapa banyak tetamu harus dikenakan bayaran jika pembatalan berlaku selepas tarikh akhir di atas?** Jika anda melaras tarikh akhir, anda boleh menetapkan jumlah yang tetamu bayar selepas tarikh akhir. *contoh: 50% daripada jumlah harga* 
+- **Berapa banyak tetamu harus dikenakan bayaran untuk 'Tidak hadir'?** Sekiranya tetamu tidak hadir, anda boleh menetapkan jumlah yang tetamu dikenakan untuk `No show`. *contoh: 100% daripada jumlah harga*

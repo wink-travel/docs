@@ -1,19 +1,16 @@
 ---
-title: Reivindique o seu URL
-description: >-
-  Neste artigo, explicaremos como reivindicar o seu URL personalizado do
-  WinkLinks.
+title: Reivindique a Sua URL
+description: Neste artigo, explicamos como reivindicar a sua URL personalizada WinkLinks.
 sidebar:
   order: 1
 ---
-Ao criar um [conta de afiliado](/studio/what-is-studio), já tem um URL personalizado do WinkLinks. As funcionalidades do editor WinkLinks estão disponíveis na nossa aplicação Studio; juntamente com os nossos outros recursos de afiliados.
+
+Ao criar uma [conta de afiliado](/pt-PT/studio/what-is-studio), já tem uma URL personalizada WinkLinks. As funcionalidades de publisher WinkLinks existem na nossa aplicação Studio; juntamente com as outras funcionalidades para afiliados.
 
 ### Exemplo
 
-Se o nome da sua conta for Queen Bee, o URL personalizado do WinkLinks será:
+Se o nome da sua conta for Queen Bee, a sua URL personalizada WinkLinks será:
 
 <h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-Os nomes das contas estão disponíveis num `first come - first serve` base - Obtenha o seu URL único enquanto pode!
-
+Os nomes de conta estão disponíveis por ordem de `quem chega primeiro, serve primeiro` - Garanta a sua URL única enquanto pode!

@@ -1,252 +1,252 @@
 ---
 title: Servicevoorwaarden
-description: >-
-  Dit artikel bevat onze servicevoorwaarden voor reisagenten op het
-  Wink-platform.
+description: Dit artikel bevat onze servicevoorwaarden voor reisagenten op het Wink Platform.
 sidebar:
   order: 4
 ---
+
 :::note
-Laatst bijgewerkt op 30-10-2024
+Laatst bijgewerkt 2024-10-30
 :::
 
-:::caution\[Notice]
-De onderstaande servicevoorwaarden zijn van toepassing op reisagenten die zelf geld willen verwerven en uitbetalen.
-Dit kan alleen via onze API en alleen door reisagenten die dit tijdens het aanmeldingsproces hebben aangegeven.
+:::caution[Opmerking]
+De onderstaande servicevoorwaarden zijn van toepassing op reisagenten die zelf fondsen willen verwerven en uitbetalen.  
+Dit kan alleen via onze API en alleen door reisagenten die tijdens het aanmeldproces hebben aangegeven dit te willen doen.
 
-Alle reisagenten kunnen nog steeds boeken via ons reisagentenportaal met behulp van de betalingsgateway van Wink, met hun eigen creditcard of die van de reiziger. Daarom moeten alle reisagenten ook akkoord gaan met de servicevoorwaarden, waarbij de betalingsgateway van Wink de geregistreerde verkoper is.
+Alle reisagenten kunnen nog steeds boeken via ons reisagentenportaal met de betaalgateway van Wink, met hun eigen of de creditcard van de reiziger. Daarom moeten alle reisagenten ook akkoord gaan met de servicevoorwaarden waarbij de betaalgateway van Wink de handelaar van registratie is.
 
-Deze voorwaarden zijn beschikbaar onder[Affiliate Portal > Servicevoorwaarden](/studio/terms-of-service).
-::
+Deze voorwaarden zijn beschikbaar onder [Affiliate Portal > Terms of Service](/nl/studio/terms-of-service).
+:::
 
-**WINK ALGEMENE VOORWAARDEN**\
-**VOOR REISAGENTEN (Merchant of Record)**
+**ALGEMENE VOORWAARDEN VAN WINK**  
+**VOOR REISAGENTEN (Handelaar van registratie)**
 
 **TUSSEN:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**&#x65;en vennootschap opgericht volgens de wetten van Singapore en met statutaire zetel op #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 met btw-registratienummer 201437335D (hierna te noemen "Wink") en
+1. **TRAVELIKO SINGAPORE PTE. LTD.**, een bedrijf opgericht volgens de wetten van Singapore en met geregistreerd kantoor op \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 met btw-registratienummer 201437335D (hierna "Wink" genoemd) en  
+     
+2. **DE REISAGENT** waarvan de gegevens zijn opgenomen in het registratieformulier voor reisagenten of online zijn ingediend (de "Reisagent").
 
-2. **DE REISAGENT**waarvan de gegevens zijn vermeld op het Registratieformulier Reisagent of online zijn ingediend (de "Reisagent").
+**OVERWEGENDE DAT:**
 
-**TERWIJL:**
+(i) Wink een online systeem exploiteert (het "Systeem") waarmee deelnemende accommodaties (gezamenlijk de "Accommodatieaanbieders") hun inventaris beschikbaar kunnen stellen voor reservering en waarmee de Reisagent reserveringen kan maken bij deze Accommodatieaanbieders namens hun gasten (de "Dienst");
 
-(i) Wink exploiteert een online systeem (het "Systeem") waarmee deelnemende accommodaties (gezamenlijk de "Accommodatieverstrekkers") hun inventaris beschikbaar kunnen stellen voor reservering en waarmee de Reisagent namens hun Gasten reserveringen kan maken bij dergelijke Accommodatieverstrekkers (de "Dienst");
+(ii) Wink geen eigendom heeft van, geen controle uitoefent over, geen aanbiedingen doet of geen lijsten beheert. Wink is geen partij bij de contracten die rechtstreeks tussen de Accommodatieaanbieders en gasten worden gesloten. Wink treedt niet op als agent namens Accommodatieaanbieders;
 
-(ii) Wink bezit, beheert, biedt of beheert geen advertenties. Wink is geen partij bij de contracten die rechtstreeks tussen de accommodatieverstrekkers en gasten worden gesloten. Wink treedt in geen enkele hoedanigheid op als agent voor accommodatieverstrekkers;
+(iii) Wink haar eigen websites onderhoudt en exploiteert (de "Wink Websites") en ook de Dienst levert en links naar de Dienst aanbiedt op websites van derden;
 
-(iii) Wink onderhoudt en exploiteert haar eigen websites (de "Wink-websites") en biedt daarnaast de Service en links naar de Service aan op de websites van derden;
+(iv) De Reisagent eigenaar is van, controle heeft over, host en/of beheert één of meer internetdomeinen, websites of applicaties en wenst de handelaar van registratie te zijn bij het gebruik van de Dienst.
 
-(iv) De Reisagent bezit, beheert, host en/of exploiteert een of meer internetdomeinen, websites of applicaties en wil de verkoper van record zijn bij het gebruik van de Service.
+(v) De Reisagent en Wink wensen dat de Reisagent de Dienst (direct of indirect) beschikbaar stelt aan haar klanten en bezoekers van de Reisagent Website(s) en App(s) en in die vorm en onder die voorwaarden (hierna de "Voorwaarden" genoemd) zoals uiteengezet in deze Overeenkomst.
 
-(v) De Reisagent en Wink wensen dat de Reisagent de Dienst (rechtstreeks of onrechtstreeks) beschikbaar stelt aan haar klanten en bezoekers van de Website(s) en App(s) van de Reisagent en in een dergelijke vorm en onder dergelijke voorwaarden (hierna te noemen de "Voorwaarden") zoals uiteengezet in deze Overeenkomst.
+**DAAROM KOMEN DE PARTIJEN ALS VOLGT OVEREEN:**
 
-**DERHALVE KOMEN DE PARTIJEN HET VOLGENDE OVEREEN:**
+**1\. Definities**
 
-**1. Definities**
+1. Naast de elders in deze Overeenkomst gedefinieerde termen, gelden de volgende definities door de hele Overeenkomst, tenzij uitdrukkelijk anders blijkt:
 
-1. Naast de begrippen die elders in deze Overeenkomst zijn gedefinieerd, zijn de volgende definities overal in deze Overeenkomst van toepassing, tenzij het tegendeel blijkt:
+* **"Accommodatie"** betekent elke vorm van accommodatie, waaronder maar niet beperkt tot hotels, motels, pensions, bed & breakfasts, hostels, villa's, appartementen, lodges, herbergen, resorts en elke andere (soort) accommodatie- of logiesaanbieder (ongeacht of deze beschikbaar is op de Wink Websites).  
+    
+* **"Accommodatieaanbieder(s)"** betekent elke partij die een account aanmaakt op de Service Provider met de intentie om haar eigen kamers en aanvullende diensten via het Wink platform te verkopen.  
+    
+* **"Boeking"** betekent een reservering of bestelling die door een gast via de Reisagent is gemaakt voor accommodatiediensten aangeboden door een Accommodatieaanbieder.
 
-* **"Accommodatie"**&#x62;etekent elke vorm van accommodatie, waaronder maar niet beperkt tot hotels, motels, pensions, bed & breakfasts, hostels, villa's, appartementen, lodges, herbergen, resorts en elke andere (soort) accommodatie- of logiesverstrekker (ongeacht of deze beschikbaar is op de Wink-websites).
+* **"Boekingskosten"** betekent de 1,5% die wordt afgetrokken van het totaalbedrag dat de Reisagent van de gast heeft ontvangen, welke verschuldigd is aan Wink als verwerkingskosten.
 
-* **"Accommodatieaanbieder(s)"**&#x62;etekent iedere Partij die een account aanmaakt bij de Dienstverlener met de intentie om haar eigen kamers en bijbehorende diensten te verkopen via het Wink-platform.
+* **"Boekingswaarde"** betekent het totaalbedrag dat de Reisagent van de gast heeft ontvangen voor een Boeking.
 
-* **"Boeking"**&#x62;etekent een reservering of bestelling door een Gast via de Reisagent voor accommodatiediensten aangeboden door een Accommodatieverstrekker.
+* **"Commissie"** betekent het bedrag dat de Reisagent verschuldigd is door de Accommodatieaanbieder, berekend als het afgesproken percentage uit de “Aparte Overeenkomst” van de Boekingswaarde.  
+    
+* **“Overmacht”** betekent elk evenement buiten de redelijke controle van een partij, waaronder maar niet beperkt tot natuurrampen, oorlogshandelingen, terrorisme, burgerlijke onrust, pandemieën en overheidsmaatregelen, die een partij verhinderen haar verplichtingen uit hoofde van deze Overeenkomst na te komen.  
+    
+* **“Gast”** betekent een individu of groep die via de Reisagent een boeking maakt voor accommodatiediensten.  
+    
+* **"Handelaar van registratie"** verwijst naar de entiteit die wettelijk bevoegd en verantwoordelijk is voor het verwerken van betalingen van gasten, inclusief het afhandelen van betalingstransacties, terugbetalingen, chargebacks en het waarborgen van naleving van betalingsregels. De handelaar van registratie is de entiteit wiens naam op de creditcardafschrift van de gast verschijnt voor kosten gerelateerd aan de Boeking.
 
-* **"Boekingskosten"**&#x62;etekent de 1,5% die wordt ingehouden op het totale bedrag dat door de reisagent van de gast wordt ontvangen en die aan Wink moet worden betaald als verwerkingskosten.
+* **"Netto betaling"** betekent het bedrag dat aan de Accommodatieaanbieder wordt betaald na aftrek van de Wink Boekingskosten en de Commissie van de Reisagent van de Boekingswaarde.  
+    
+* **“Betalingen”** betekent de financiële verplichtingen die voortvloeien uit deze Overeenkomst, inclusief commissies, kosten of andere vergoedingen, verschuldigd door de ene partij aan de andere.
 
-* **"Boekingswaarde"**&#x62;etekent het totale bedrag dat door de Reisagent van de Gast wordt geïnd voor een Boeking.
+* **"Payment Facilitator"** is een volledig dochteronderneming van Traveliko Singapore Pte. Ltd. die de betalingsdiensten beheert, betalingen van gasten incasseert door de betaalmethode te belasten die aan hun aankoop is gekoppeld, zoals creditcard, debetkaart, bankoverschrijving, cryptocurrencies of PayPal, enz.  
+    
+* **“Platform”** betekent het online systeem dat door de Service Provider wordt geëxploiteerd waarmee de Reisagent boekingen kan maken of beheren voor gasten.
 
-* **"Commissie"**&#x62;etekent het bedrag dat de Accommodatieverstrekker aan de Reisagent verschuldigd is, berekend tegen het overeengekomen percentage uit de “Afzonderlijke Overeenkomst” van de Boekingswaarde.
+* **"Aparte Overeenkomst"** betekent het onafhankelijke contract tussen de Reisagent en de Accommodatieaanbieder waarin de specifieke betalingsvoorwaarden, inclusief de Commissie en het betalingsschema, worden vastgelegd.  
+    
+* **“Diensten”** betekent de diensten die door de Service Provider aan de Reisagent worden geleverd onder deze Overeenkomst, waaronder maar niet beperkt tot toegang tot het Platform, boekingsfacilitatie en klantenondersteuning.  
+    
+* **“Service Provider”** betekent Wink, **TRAVELIKO SINGAPORE PTE. LTD** geregistreerd in Singapore.  
+    
+* **“Reisagent”** betekent de entiteit die deze Overeenkomst aangaat met de Service Provider om reisboekingen te promoten en te verkopen via het Platform van de Service Provider.
 
-* **“Overmacht”**&#x62;etekent elke gebeurtenis die buiten de redelijke controle van een partij valt, met inbegrip van, maar niet beperkt tot, natuurrampen, oorlogsdaden, terrorisme, burgerlijke onrust, pandemieën en overheidsmaatregelen, die een partij verhinderen haar verplichtingen uit hoofde van deze Overeenkomst na te komen.
+**2\. Niet-exclusiviteit**
 
-* **"Gast"**&#x62;etekent een individu of groep die via de reisagent een boeking maakt voor accommodatiediensten.
+2.1 De Reisagent zal optreden als niet-exclusieve distributeur van Wink.
 
-* **"Handelaar van record"**&#x56;erwijst naar de entiteit die wettelijk bevoegd en verantwoordelijk is voor het verwerken van betalingen van gasten, inclusief het afhandelen van betalingstransacties, terugbetalingen, terugboekingen en het waarborgen van de naleving van betalingsregels. De Merchant of Record is de entiteit wiens naam op het creditcardafschrift van de gast staat voor kosten die verband houden met de boeking.
+2.2 De Dienst zal door Wink beschikbaar worden gesteld aan de Reisagent zoals vermeld in het registratieformulier voor reisagenten en op de website(s) vermeld in het registratieformulier.
 
-* **"Netto betaling"**&#x62;etekent het bedrag dat aan de Accommodatieverstrekker betaald dient te worden na aftrek van de Wink-boekingskosten en de commissie van de Reisagent van de Boekingswaarde.
+**3\. Betalingsinning en -verdeling**
 
-* **“Betalingen”**&#x62;etekent de financiële verplichtingen die voortvloeien uit deze Overeenkomst, met inbegrip van commissies, vergoedingen en andere kosten die door de ene partij aan de andere moeten worden betaald.
+3.1 **Betalingsinning:** De Reisagent zal de betaling van de gast innen op het moment van boeken.
 
-* **"Betalingsfacilitator"**&#x69;s een volledige dochteronderneming van Traveliko Singapore Pte. Ltd. die de betaaldiensten beheert en betalingen van gasten int door de betaalmethode te belasten die aan hun aankoop is gekoppeld, zoals creditcard, betaalpas, bankoverschrijving, cryptovaluta of PayPal, etc.
+3.2 **Aftrek van kosten:** De Reisagent zal het volgende aftrekken van de Boekingswaarde:
 
-* **"Platform"**&#x62;etekent het online systeem dat door de Dienstverlener wordt beheerd en waarmee de Reisagent Boekingen voor Gasten kan maken of beheren.
+* 1,5% Boekingskosten voor Wink.  
+* Commissie van de Reisagent.
 
-* **"Afzonderlijke overeenkomst"**&#x62;etekent het onafhankelijke contract tussen de Reisagent en de Accommodatieverstrekker waarin de specifieke betalingsvoorwaarden, met inbegrip van de Commissie en het betalingsschema, worden vermeld.
+3.3 **Netto betaling:** Het resterende netto bedrag zal door de Reisagent worden uitbetaald aan de respectievelijke Accommodatieaanbieder volgens de voorwaarden van een aparte overeenkomst tussen de Reisagent en de Accommodatieaanbieder. Wink is niet aansprakelijk voor betalingen aan de Accommodatieaanbieder.
 
-* **“Diensten”**&#x62;etekent de diensten die door de Dienstverlener aan de Reisagent worden geleverd krachtens deze Overeenkomst, met inbegrip van maar niet beperkt tot toegang tot het Platform, bemiddeling bij het boeken en klantenondersteuning.
+3.4 **Aparte Overeenkomst:** De Reisagent dient een aparte overeenkomst te hebben met elke Accommodatieaanbieder waarin de betalingsvoorwaarden worden vastgelegd. Deze Overeenkomst tussen Wink en de Reisagent regelt niet de relatie tussen de Reisagent en de Accommodatieaanbieders.
 
-* **“Dienstverlener”**&#x7A;al betekenen Knipoog,**TRAVELIKO SINGAPORE PTE. LTD**geregistreerd in Singapore.
+3.5 **Facturatie door Wink:** Wink zal maandelijks een factuur sturen aan de Reisagent voor de 1,5% Boekingskosten die in de maand zijn opgelopen. De Reisagent is verantwoordelijk voor het voldoen van deze factuur binnen de gespecificeerde betalingstermijnen.
 
-* **“Reisagent”**&#x62;etekent de entiteit die deze Overeenkomst aangaat met de Dienstverlener om reisboekingen via het Platform van de Dienstverlener te promoten en te verkopen.
+**4\. Rollen en verantwoordelijkheden**
 
-**2. Niet-exclusiviteit**
+4.1 **Verantwoordelijkheden van de Reisagent:**
 
-2.1 De reisagent fungeert als niet-exclusieve distributeur van Wink.
+* De Reisagent is verantwoordelijk voor het innen van betalingen van gasten.  
+* De Reisagent moet tijdige en correcte uitbetaling van de netto betaling aan Accommodatieaanbieders garanderen volgens hun aparte overeenkomsten.  
+* De Reisagent is verantwoordelijk voor eventuele fouten of afwijkingen in de betalingsverwerking en moet deze snel corrigeren.  
+* De Reisagent is verantwoordelijk voor het betalen van de maandelijkse factuur van Wink voor de Boekingskosten.
 
-2.2 De Service wordt door Wink aan de Reisagent ter beschikking gesteld zoals uiteengezet in het Registratieformulier Reisagent en op de website(s) die in het Registratieformulier Reisagent staan vermeld.
+4.2 **Verantwoordelijkheden van Wink:**
 
-**3. Betalingsincasso en -distributie**
+* Wink is niet aansprakelijk voor betalingen aan Accommodatieaanbieders. De Reisagent draagt de volledige verantwoordelijkheid voor alle financiële transacties met de Accommodatieaanbieders.  
+* Wink zal toegang tot het Systeem bieden en ervoor zorgen dat de Dienst beschikbaar is voor de Reisagent.
 
-3.1**Inning van betalingen:**&#x44;e reisagent int de betaling bij de gast op het moment van de boeking.
+**5\. Intellectuele eigendomsrechten**
 
-3.2**Aftrek van kosten:**&#x44;e reisagent zal het volgende van de boekingswaarde aftrekken:
+5.1 **Licenties:** Elke partij verleent de andere een beperkte, niet-exclusieve, royaltyvrije, wereldwijde licentie om haar intellectuele eigendom uitsluitend te gebruiken voor het nakomen van de verplichtingen uit deze Overeenkomst.
 
-* 1,5% boekingskosten voor Wink.
-* Commissie voor reisagenten.
+5.2 **Beperkingen:** De Reisagent mag geen sublicenties verlenen, overdragen of intellectuele eigendom of inhoud van Wink openbaar maken.
 
-3.3**Netto betaling:**&#x44;e resterende nettobetaling wordt door de reisagent aan de betreffende accommodatieverstrekker uitgekeerd volgens de voorwaarden van een afzonderlijke overeenkomst tussen de reisagent en de accommodatieverstrekker. Wink is niet aansprakelijk voor betalingen aan de accommodatieverstrekker.
+**6\. Betaling aan Wink**
 
-3.4**Afzonderlijke overeenkomst:**&#x44;e reisagent dient met elke accommodatieverstrekker een aparte overeenkomst te sluiten waarin de betalingsvoorwaarden zijn vastgelegd. Deze overeenkomst tussen Wink en de reisagent is niet van toepassing op de relatie tussen de reisagent en de accommodatieverstrekkers.
+6.1 **Betalingsschema:**
 
-3.5**Wink’s Facturatie:**&#x57;ink stuurt maandelijks een factuur naar de reisagent voor de 1,5% boekingskosten die over de maand zijn opgebouwd. De reisagent is verantwoordelijk voor het betalen van deze factuur binnen de gestelde betalingstermijn.
+* Alle betalingen aan Wink door de Reisagent onder deze Overeenkomst dienen binnen 15 dagen na ontvangst van de correcte en accurate factuur van Wink te worden voldaan, tenzij schriftelijk anders overeengekomen. Betalingen worden gedaan in USD, vrij van enige aftrek of inhoudingen, behalve indien wettelijk vereist.  
+  
 
-**4. Rollen en verantwoordelijkheden**
+6.2 **Te late betalingen:**
 
-4.1**Verantwoordelijkheden van de reisagent:**
+* Indien een betaling niet op de vervaldatum is ontvangen, behoudt Wink zich het recht voor rente te berekenen tegen 5% per maand of het maximale wettelijk toegestane tarief, afhankelijk van wat lager is, over het openstaande bedrag, berekend vanaf de vervaldatum tot de betaaldatum. Daarnaast kan Wink de diensten opschorten totdat de betaling is ontvangen. Indien er fouten in de factuur van Wink zijn, hoeft de Reisagent alleen het correcte deel van de factuur te betalen en is geen rente of boete verschuldigd over het onjuiste deel.
 
-* De reisagent is verantwoordelijk voor het innen van betalingen van gasten.
-* De reisagent moet ervoor zorgen dat de nettobetaling tijdig en correct wordt uitbetaald aan accommodatieverstrekkers, overeenkomstig hun afzonderlijke overeenkomsten.
-* De reisagent is verantwoordelijk voor eventuele fouten of discrepanties bij de betalingsverwerking en moet deze zo snel mogelijk verhelpen.
-* De reisagent is verantwoordelijk voor het betalen van de maandelijkse factuur van Wink voor de boekingskosten.
+6.3 **Terugbetalingen en tegoeden:**
 
-4.2**Verantwoordelijkheden van Wink:**
+* Indien een dienst niet wordt geleverd of wordt geannuleerd door omstandigheden die niet aan de Reisagent zijn toe te rekenen, zal Wink binnen 30 dagen na ontvangst van de annulering de Reisagent terugbetalen of crediteren, mits de servicekosten reeds zijn betaald.
 
-* Wink is niet aansprakelijk voor betalingen aan accommodatieverstrekkers. De reisagent is als enige verantwoordelijk voor alle financiële transacties met de accommodatieverstrekkers.
-* Wink verleent toegang tot het Systeem en zorgt ervoor dat de Dienst beschikbaar is voor de Reisagent.
+6.4 **Valuta en belastingen:**
 
-**5. Intellectuele eigendomsrechten**
+* Betalingen worden gedaan in USD. De Reisagent is verantwoordelijk voor eventuele belastingen, heffingen of andere kosten die van toepassing kunnen zijn op de transacties onder deze Overeenkomst, inclusief valutaconversiekosten indien betalingen in een andere valuta dan USD worden gedaan.
 
-5.1**Licenties:**&#x45;lke Partij verleent de andere Partij een beperkte, niet-exclusieve, royaltyvrije, wereldwijde licentie om haar intellectuele eigendom te gebruiken uitsluitend voor het doel om de verplichtingen uit deze Overeenkomst na te komen.
+6.5 **Betaalmethoden:**
 
-5.2**Beperkingen:**&#x44;e reisagent mag geen intellectueel eigendom of inhoud die door Wink wordt verstrekt, in sublicentie geven, overdragen of openbaar maken.
+* De Reisagent zal betalingen doen via bankoverschrijving, creditcard of PayPal, en eventuele kosten verbonden aan de gekozen betaalmethode zijn voor rekening van de Reisagent.
 
-**6. Betaling aan Wink**
+6.6 **Betalingsgeschillen:**
 
-6.1**Betalingsschema:**
+* Bij een geschil over een factuur dient de Reisagent Wink binnen 10 dagen na factuurdatum te informeren met gedetailleerde redenen. Beide partijen zullen te goeder trouw onderhandelen om het geschil snel op te lossen. Het onbetwiste deel van de factuur dient op de vervaldatum te worden betaald.
 
-* Alle betalingen die de reisagent op grond van deze overeenkomst aan Wink verschuldigd is, dienen binnen 15 dagen na ontvangst van de correcte en correcte factuur van Wink te worden gedaan, tenzij schriftelijk anders is overeengekomen. Betalingen dienen te worden gedaan in Amerikaanse dollars, zonder enige aftrek of inhoudingen, behalve indien wettelijk vereist.
+**7\. Verantwoordelijkheden van de Reisagent**
 
-6.2**Late betalingen:**
+7.1 **Naleving van wetten en regels:**
 
-* Indien een betaling op grond van deze Overeenkomst niet op de vervaldatum is ontvangen, behoudt Wink zich het recht voor om rente in rekening te brengen van 5% per maand of het wettelijk toegestane maximum, afhankelijk van welke lager is, over het openstaande bedrag, berekend vanaf de vervaldatum tot de datum van betaling. Daarnaast kan Wink de dienstverlening opschorten totdat de betaling is ontvangen. Indien er echter fouten of vergissingen in de door Wink ingediende factuur staan, is de reisagent slechts verplicht het juiste en correcte deel van de factuur te betalen en is hij/zij geen rente of boete verschuldigd voor het niet betalen van het onjuiste deel van de factuur.
+* De Reisagent zal voldoen aan alle toepasselijke lokale, nationale en internationale wetten, regels en industrienormen in de uitoefening van haar activiteiten, waaronder maar niet beperkt tot consumentenbescherming, gegevensbescherming en anti-witwasregelgeving.  
+  
 
-6.3**Terugbetalingen en tegoeden:**
+7.2 **Nauwkeurige weergave van diensten:**
 
-* Indien een dienst niet wordt verleend of wordt geannuleerd wegens omstandigheden die niet aan de reisagent kunnen worden toegerekend, zal Wink de reisagent binnen 30 dagen na ontvangst van de kennisgeving van de annulering terugbetalen of crediteren, op voorwaarde dat de servicekosten reeds zijn betaald.
+* De Reisagent zal de diensten en accommodaties die via het Platform worden aangeboden nauwkeurig weergeven. De Reisagent is verantwoordelijk voor het waarborgen dat alle aan gasten verstrekte informatie, waaronder beschrijvingen, prijzen en beschikbaarheid, accuraat en actueel is.
 
-6.4**Valuta en belastingen:**
+7.3 **Promotie van diensten:**
 
-* Betalingen dienen te worden gedaan in Amerikaanse dollars (USD). De reisagent is verantwoordelijk voor alle belastingen, heffingen en andere kosten die van toepassing kunnen zijn op de transacties onder deze overeenkomst, inclusief valutakosten indien betalingen worden gedaan in een andere valuta dan USD.
+* De Reisagent zal de via het Platform aangeboden diensten actief promoten in overeenstemming met de richtlijnen van de Service Provider. Dit omvat onder meer marketingactiviteiten, het bijhouden van actuele promotiematerialen en het waarborgen dat alle promotionele inhoud accuraat is en voldoet aan de toepasselijke reclamevoorschriften.
 
-6.5**Betaalmethoden:**
+7.4 **Boekingsbeheer:**
 
-* De reisagent verricht betalingen via bankoverschrijving, creditcard of PayPal. Alle kosten die verbonden zijn aan de door de reisagent gekozen betaalmethode, zijn voor rekening van de reisagent.
+* De Reisagent beheert alle boekingen via het Platform, inclusief het verwerken van reserveringen, annuleringen en wijzigingen. De Reisagent is verantwoordelijk voor communicatie met gasten en Accommodatieaanbieders om te zorgen dat alle boekingen correct worden verwerkt en bevestigd.
 
-6.6**Betalingsgeschillen:**
+7.5 **Inning en afdracht van betalingen:**
 
-* In geval van een geschil over een factuur dient de reisagent Wink binnen 10 dagen na de factuurdatum op de hoogte te stellen, met opgave van de gedetailleerde redenen voor het geschil. Beide partijen zullen te goeder trouw onderhandelen om het geschil zo snel mogelijk op te lossen. Het onbetwiste deel van de factuur dient uiterlijk op de vervaldatum te worden betaald.
+* De Reisagent is verantwoordelijk voor het innen van betalingen van gasten voor boekingen via het Platform en het afdragen van de overeengekomen betalingen aan de Accommodatieaanbieders en de Service Provider, zoals gespecificeerd in de betalingsvoorwaarden. De Reisagent zorgt ervoor dat alle betalingen veilig worden verwerkt en voldoen aan de toepasselijke financiële regelgeving.
 
-**7. Verantwoordelijkheden van de reisagent**
+7.6 **Afhandeling van klachten en geschillen van gasten:**
 
-7.1**Naleving van wet- en regelgeving:**
+* De Reisagent is het primaire aanspreekpunt voor gasten met klachten, geschillen of problemen met betrekking tot de via het Platform geleverde diensten. De Reisagent zal redelijke inspanningen leveren om dergelijke klachten en geschillen snel en op een manier op te lossen die een positieve relatie met zowel gasten als Accommodatieaanbieders behoudt.
 
-* De reisagent dient bij de uitoefening van zijn werkzaamheden te voldoen aan alle toepasselijke lokale, nationale en internationale wetten, voorschriften en industrienormen, met inbegrip van, maar niet beperkt tot, de wetten met betrekking tot consumentenbescherming, gegevensbescherming en het bestrijden van witwassen.
+7.7 **Rapportage en verantwoording:**
 
-7.2**Nauwkeurige weergave van diensten:**
+* De Reisagent zal de Service Provider regelmatig rapportages verstrekken over de uitvoering van haar verplichtingen onder deze Overeenkomst, waaronder verkoopgegevens, boekingsstatistieken en klantfeedback. De Reisagent is verantwoordelijk voor de juistheid van deze rapportages en zal meewerken aan audits of beoordelingen van haar activiteiten door de Service Provider.
 
-* De reisagent dient de via het platform aangeboden diensten en accommodaties correct weer te geven. De reisagent is ervoor verantwoordelijk dat alle informatie die aan gasten wordt verstrekt, inclusief maar niet beperkt tot beschrijvingen, prijzen en beschikbaarheid, correct en actueel is.
+7.8 **Vertrouwelijkheid:**
 
-7.3**Promotie van diensten:**
+* De Reisagent zal de vertrouwelijkheid bewaren van alle eigendomsinformatie en handelsgeheimen van de Service Provider, waaronder klantgegevens, prijsinformatie en bedrijfsstrategieën. De Reisagent zal dergelijke informatie niet aan derden bekendmaken zonder voorafgaande schriftelijke toestemming van de Service Provider.
 
-* De reisagent promoot de via het platform aangeboden diensten actief volgens de richtlijnen van de dienstverlener. Dit omvat, maar is niet beperkt tot, marketingactiviteiten, het actueel houden van promotiemateriaal en het waarborgen dat alle promotionele content accuraat is en voldoet aan de toepasselijke reclamenormen.
+7.9 **Naleving van platformvoorwaarden:**
 
-7.4**Boekingsbeheer:**
+* De Reisagent zal zich houden aan alle voorwaarden verbonden aan het gebruik van het Platform van de Service Provider, inclusief updates of wijzigingen van deze voorwaarden. De Reisagent is verantwoordelijk voor het informeren van haar medewerkers en agenten over deze voorwaarden en het toezien op naleving.
 
-* De reisagent beheert alle boekingen die via het platform worden gemaakt, inclusief maar niet beperkt tot het verwerken van reserveringen, annuleringen en wijzigingen. De reisagent is verantwoordelijk voor de communicatie met gasten en accommodatieverstrekkers om ervoor te zorgen dat alle boekingen correct worden verwerkt en bevestigd.
+7.10 **Schadeloosstelling:**
 
-7,5**Inning en overmaking van betalingen:**
+* De Reisagent zal de Service Provider vrijwaren en schadeloos stellen voor alle claims, schade, aansprakelijkheden en kosten voortvloeiend uit of gerelateerd aan de schending van deze Overeenkomst door de Reisagent, waaronder maar niet beperkt tot het niet naleven van toepasselijke wetten, verkeerde voorstelling van diensten of het niet nakomen van verplichtingen jegens gasten of Accommodatieaanbieders.
 
-* De reisagent is verantwoordelijk voor het innen van betalingen van gasten voor boekingen die via het platform zijn gemaakt en voor het afdragen van de overeengekomen betalingen aan de accommodatieverstrekkers en de dienstverlener, zoals gespecificeerd in de betalingsvoorwaarden. De reisagent zorgt ervoor dat alle betalingen veilig en in overeenstemming met de toepasselijke financiële regelgeving worden verwerkt.
+**8\. Commissies en kosten**
 
-7.6**Behandeling van klachten en geschillen van gasten:**
+8.1 **Berekening van commissie:** De aan de Reisagent verschuldigde commissie is een percentage (vastgelegd in de overeenkomst tussen de Reisagent en de Accommodatieaanbieder) van de Boekingswaarde na aftrek van de Wink Boekingskosten.
 
-* De reisagent is het primaire aanspreekpunt voor gasten met betrekking tot klachten, geschillen of problemen met betrekking tot de diensten die via het platform worden aangeboden. De reisagent zal zich naar redelijkheid inspannen om dergelijke klachten en geschillen snel op te lossen, op een manier die een positieve relatie met zowel gasten als accommodatieverstrekkers in stand houdt.
+8.2 **Boekingskosten van Wink:** Wink zal maandelijks een factuur sturen voor de 1,5% Boekingskosten. De Reisagent is verantwoordelijk voor het voldoen van deze factuur binnen de door Wink gespecificeerde betalingstermijnen.
 
-7.7**Rapportage en verantwoording:**
+**9\. Juridische bepalingen**
 
-* De reisagent verstrekt de dienstverlener regelmatig rapporten over de uitvoering van zijn verplichtingen onder deze overeenkomst, inclusief maar niet beperkt tot verkoopgegevens, boekingsstatistieken en feedback van klanten. De reisagent is verantwoordelijk voor de nauwkeurigheid van deze rapporten en werkt samen met de dienstverlener bij eventuele audits of beoordelingen van zijn activiteiten.
+9.1 **Beperking van aansprakelijkheid:** Geen van beide partijen is aansprakelijk voor indirecte, incidentele, gevolg-, speciale of bestraffende schade voortvloeiend uit deze Overeenkomst.
 
-7.8**Vertrouwelijkheid:**
+9.2 **Schadeloosstelling:** Elke partij stemt ermee in de andere partij te vrijwaren en schadeloos te stellen voor claims voortvloeiend uit een schending van deze Overeenkomst of nalatigheid van de schadeloosstellende partij.
 
-* De reisagent zal de vertrouwelijkheid van alle bedrijfsinformatie en bedrijfsgeheimen van de dienstverlener handhaven, inclusief maar niet beperkt tot klantgegevens, prijsinformatie en bedrijfsstrategieën. De reisagent zal dergelijke informatie niet aan derden bekendmaken zonder voorafgaande schriftelijke toestemming van de dienstverlener.
+9.3 **Overmacht:** Geen van beide partijen is aansprakelijk voor vertragingen of niet-nakoming veroorzaakt door omstandigheden buiten hun redelijke controle, waaronder natuurrampen, oorlog, terrorisme, stakingen, enz.
 
-7.9**Naleving van de platformvoorwaarden:**
+**10\. Looptijd en beëindiging**
 
-* De reisagent dient zich te houden aan alle voorwaarden die verband houden met het gebruik van het platform van de dienstverlener, inclusief eventuele updates of wijzigingen van deze voorwaarden. De reisagent is ervoor verantwoordelijk dat zijn medewerkers en agenten op de hoogte zijn van en zich houden aan deze voorwaarden.
+10.1 **Looptijd:** Deze Overeenkomst gaat in op de datum van ondertekening en loopt door totdat een van beide partijen deze beëindigt.
 
-7.10**Schadeloosstelling:**
+10.2 **Beëindiging:** Elke partij kan deze Overeenkomst naar eigen inzicht beëindigen.
 
-* De reisagent vrijwaart en stelt de dienstverlener schadeloos tegen alle vorderingen, schade, aansprakelijkheden en kosten die voortvloeien uit of verband houden met de schending van deze overeenkomst door de reisagent, met inbegrip van maar niet beperkt tot het niet naleven van toepasselijke wetten, het onjuist voorstellen van diensten of het niet nakomen van zijn verplichtingen jegens gasten of accommodatieverstrekkers.
+10.3 **Na beëindiging:** Na beëindiging zal de Reisagent alle openstaande betalingen voldoen en stoppen met het gebruik van intellectuele eigendom of inhoud gerelateerd aan Wink.
 
-**8. Commissies en vergoedingen**
+**11\. Toepasselijk recht en geschillenbeslechting**
 
-8.1**Berekening van de commissie:**&#x44;e commissie die aan de reisagent moet worden betaald, is een percentage (vastgelegd in de overeenkomst tussen de reisagent en de accommodatieverstrekker) van de boekingswaarde na aftrek van de Wink-boekingskosten.
+11.1 **Toepasselijk recht:** Deze Overeenkomst wordt beheerst door en geïnterpreteerd in overeenstemming met de wetten van Singapore, zonder rekening te houden met conflicterende rechtsprincipes.
 
-8.2**Wink's boekingskosten:**&#x57;ink stuurt maandelijks een factuur voor de boekingskosten van 1,5%. De reisagent is verantwoordelijk voor het voldoen van deze factuur binnen de door Wink gestelde betalingstermijn.
+11.2 **Geschillenbeslechting:** 
 
-**9. Wettelijke bepalingen**
+11.2.1 **Onderhandeling:** Bij een geschil, claim, vraag of meningsverschil voortvloeiend uit of gerelateerd aan deze Overeenkomst, zullen partijen eerst proberen het geschil in goed vertrouwen te beslechten door onderhandelingen. Deze onderhandelingen beginnen na schriftelijke kennisgeving door een partij aan de andere.
 
-9.1**Beperking van aansprakelijkheid:**&#x47;een van beide Partijen is aansprakelijk voor enige indirecte, incidentele, gevolg-, speciale of punitieve schade die voortvloeit uit deze Overeenkomst.
+11.2.2 **Arbitrage:** Indien het geschil niet binnen dertig (30) dagen via onderhandelingen kan worden opgelost, wordt het geschil voorgelegd aan en definitief beslecht door arbitrage volgens de regels van het Singapore International Arbitration Centre (SIAC), die geacht worden in deze clausule te zijn opgenomen. Het aantal arbiters is één, de zetel van arbitrage is Singapore. De taal van de arbitrageprocedure is Engels.
 
-9.2**Schadeloosstelling:**&#x45;lke Partij stemt ermee in de andere Partij te vrijwaren en schadeloos te stellen tegen alle claims die voortvloeien uit een schending van deze Overeenkomst of de nalatigheid van de vrijwarende Partij.
+11.2.3 **Bevoegdheid:** Niettegenstaande het bovenstaande behoudt elke partij het recht om voorlopige of gebodsmaatregelen te zoeken bij de rechtbanken van Singapore ter bescherming van haar rechten of eigendom tijdens het wachten op de benoeming van een arbiter, en dergelijke rechtbanken hebben exclusieve bevoegdheid om dergelijke maatregelen te verlenen.
 
-9.3**Overmacht:**&#x47;een van beide Partijen is aansprakelijk voor vertragingen of het niet nakomen van verplichtingen die het gevolg zijn van oorzaken die redelijkerwijs buiten hun macht liggen, waaronder overmacht, natuurrampen, oorlog, terrorisme, stakingen, etc.
+**12\. Overmacht**
 
-**10. Looptijd en beëindiging**
+12.1 **Definitie:** Geen van beide partijen is aansprakelijk voor het niet of vertraagd nakomen van verplichtingen onder deze Overeenkomst indien dit het gevolg is van een Overmachtgebeurtenis. Een "Overmachtgebeurtenis" betekent elk evenement buiten de redelijke controle van een partij, waaronder maar niet beperkt tot natuurrampen (zoals aardbevingen, overstromingen of orkanen), oorlog, terrorisme, burgerlijke onrust, pandemieën, overheidsmaatregelen of andere onvoorziene gebeurtenissen.
 
-10.1**Termijn:**&#x44;eze Overeenkomst gaat in op de datum van ondertekening en blijft van kracht totdat deze door een van beide Partijen wordt beëindigd.
+12.2 **Melding:** De getroffen partij moet de andere partij zo spoedig mogelijk schriftelijk informeren na het optreden van een Overmachtgebeurtenis. Deze melding bevat een beschrijving van de gebeurtenis, de verwachte duur en de getroffen verplichtingen.
 
-10.2**Beëindiging:**&#x42;eide Partijen kunnen deze Overeenkomst naar eigen goeddunken beëindigen.
+12.3 **Impact op diensten:**
 
-10.3**Na beëindiging:**&#x42;ij beëindiging van de overeenkomst dient de reisagent alle openstaande betalingen te voldoen en het gebruik van alle intellectuele eigendomsrechten of inhoud met betrekking tot Wink te staken.
+* Opschorting van diensten: Indien een Overmachtgebeurtenis de mogelijkheid van uw bedrijf om diensten aan de Reisagent te leveren beïnvloedt, worden deze diensten gedurende de gebeurtenis opgeschort zonder boete. De betalingsverplichtingen van de Reisagent met betrekking tot de getroffen diensten worden ook opgeschort gedurende deze periode.  
+* Verplichtingen van de Reisagent: De Reisagent is niet verantwoordelijk voor verplichtingen die onmogelijk zijn uit te voeren door de Overmachtgebeurtenis. De Reisagent moet echter alle andere niet direct getroffen verplichtingen blijven nakomen.
 
-**11. Toepasselijk recht en geschillenbeslechting**
+12.4 **Duur en beëindiging:** Indien de Overmachtgebeurtenis langer dan zestig (60) dagen duurt, kan elke partij deze Overeenkomst schriftelijk beëindigen. In dat geval is geen van beide partijen aansprakelijk voor verplichtingen die na de Overmachtgebeurtenis ontstaan, behalve voor verplichtingen die vóór de gebeurtenis zijn ontstaan.
 
-11.1**Toepasselijk recht:**&#x44;eze Overeenkomst wordt beheerst door en uitgelegd in overeenstemming met de wetten van Singapore, met uitsluiting van de beginselen van het internationaal privaatrecht.
+12.5 **Hervatting van verplichtingen:** Zodra de Overmachtgebeurtenis is beëindigd, zullen beide partijen hun verplichtingen onder deze Overeenkomst zo spoedig mogelijk hervatten voor zover redelijkerwijs mogelijk.
 
-11.2**Geschillenbeslechting:**
+**13\. Vertrouwelijkheid**
 
-11.2.1**Onderhandeling:**&#x49;n geval van een geschil, claim, vraag of meningsverschil voortvloeiend uit of verband houdend met deze Overeenkomst, zullen partijen eerst proberen het geschil te beslechten door middel van onderhandelingen te goeder trouw. Dergelijke onderhandelingen beginnen na schriftelijke kennisgeving door de ene partij aan de andere.
+13.1 Beide partijen zullen de vertrouwelijkheid van alle eigendomsinformatie bewaren en deze niet aan derden bekendmaken zonder voorafgaande schriftelijke toestemming.
 
-11.2.2**Arbitrage:**&#x49;ndien het geschil niet binnen dertig (30) dagen door middel van onderhandelingen kan worden opgelost, wordt het geschil voorgelegd aan en definitief beslecht door arbitrage volgens de regels van het Singapore International Arbitration Centre (SIAC), die geacht worden door middel van verwijzing in deze clausule te zijn opgenomen. Het aantal arbiters bedraagt één en de zetel, of wettelijke plaats, van arbitrage is Singapore. De taal die in de arbitrageprocedure wordt gebruikt, is Engels.
+**14\. Overige bepalingen**
 
-11.2.3**Jurisdictie:**&#x4F;ngeacht het bovenstaande behoudt elke partij het recht om voorlopige of gerechtelijke maatregelen te zoeken bij de rechtbanken van Singapore om haar rechten of eigendommen te beschermen in afwachting van de benoeming van een arbiter. Een dergelijke rechtbank heeft de exclusieve jurisdictie om dergelijke maatregelen te verlenen.
+14.1 **Volledige overeenkomst:** Deze Overeenkomst vormt de volledige overeenkomst tussen de partijen en vervangt alle eerdere afspraken of overeenkomsten.
 
-**12. Overmacht**
+14.2 **Wijzigingen:** Wijzigingen in deze Overeenkomst moeten schriftelijk worden vastgelegd en door beide partijen worden ondertekend.
 
-12.1**Definitie**: Geen van beide partijen is aansprakelijk voor enige tekortkoming of vertraging in de nakoming van haar verplichtingen onder deze Overeenkomst indien deze tekortkoming of vertraging te wijten is aan een geval van overmacht. Een "geval van overmacht" betekent elke gebeurtenis die buiten de redelijke controle van een partij valt, inclusief maar niet beperkt tot natuurrampen (zoals aardbevingen, overstromingen of orkanen), oorlog, terrorisme, burgerlijke onrust, pandemieën, overheidsmaatregelen of enige andere gebeurtenis die redelijkerwijs niet had kunnen worden voorzien of voorkomen.
-
-12.2**Kennisgeving**De getroffen partij dient de andere partij zo spoedig mogelijk na het optreden van een overmachtssituatie schriftelijk op de hoogte te stellen. Deze kennisgeving dient een beschrijving te bevatten van de overmachtssituatie, de verwachte duur ervan en de verplichtingen die hierdoor worden beïnvloed.
-
-12.3**Impact op diensten**:
-
-* Opschorting van diensten: Indien een overmachtssituatie de mogelijkheid van uw bedrijf om diensten aan de reisagent te verlenen beïnvloedt, worden deze diensten zonder boete opgeschort voor de duur van de gebeurtenis. De betalingsverplichtingen van de reisagent met betrekking tot de getroffen diensten worden gedurende deze periode eveneens opgeschort.
-* Verplichtingen van de reisagent: De reisagent is niet aansprakelijk voor verplichtingen jegens uw bedrijf die niet nagekomen kunnen worden als gevolg van de overmachtsituatie. De reisagent dient echter wel alle andere verplichtingen na te komen die niet direct door de overmachtsituatie worden beïnvloed.
-
-12.4**Duur en beëindiging**Indien de overmachtssituatie langer dan zestig (60) dagen aanhoudt, kan elke partij deze overeenkomst beëindigen door de andere partij hiervan schriftelijk op de hoogte te stellen. In geval van een dergelijke beëindiging heeft geen van beide partijen enige aansprakelijkheid jegens de andere partij, met uitzondering van verplichtingen die vóór de overmachtssituatie zijn ontstaan.
-
-12,5**Hervatting van verplichtingen**:Zodra de overmachtsituatie is beëindigd, dienen beide partijen hun verplichtingen onder deze Overeenkomst onmiddellijk te hervatten, voor zover dat redelijkerwijs mogelijk is.
-
-**13. Vertrouwelijkheid**
-
-13.1 Beide Partijen zullen de vertrouwelijkheid van alle eigendomsinformatie handhaven en deze niet aan derden bekendmaken zonder voorafgaande schriftelijke toestemming.
-
-**14. Diversen**
-
-14.1**Volledige overeenkomst:**&#x44;eze Overeenkomst vormt de volledige overeenkomst tussen de Partijen en vervangt alle eerdere overeenkomsten of afspraken.
-
-14.2**Wijzigingen:**&#x45;ventuele wijzigingen in deze Overeenkomst moeten schriftelijk worden vastgelegd en door beide Partijen worden ondertekend.
-
-14.3**Scheidbaarheid:**&#x49;ndien enige bepaling van deze Overeenkomst ongeldig of onuitvoerbaar wordt bevonden, blijven de overige bepalingen volledig van kracht.
-
+14.3 **Scheiding:** Indien een bepaling van deze Overeenkomst ongeldig of onafdwingbaar wordt bevonden, blijven de overige bepalingen volledig van kracht.

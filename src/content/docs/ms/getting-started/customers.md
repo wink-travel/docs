@@ -1,55 +1,53 @@
 ---
-title: Customers
-description: >-
-  Artikel ini menerangkan jenis pelanggan yang kami layan dan cara Wink dapat
-  membantu.
+title: Pelanggan
+description: Artikel ini menerangkan jenis pelanggan yang kami layani dan bagaimana Wink dapat membantu.
 sidebar:
   order: 2
 ---
-Artikel ini menerangkan jenis pelanggan yang kami layan dan cara terbaik kami untuk membantu.
+
+Artikel ini menerangkan jenis pelanggan yang kami layani dan bagaimana kami dapat membantu dengan terbaik.
 
 ## Hartanah
 
-Wink mula memasuki hotel sedekad yang lalu. Hotel menggunakan Wink untuk menguruskan inventori mereka dengan berkesan merentas 1000-an saluran jualan, termasuk tapak jenama.com mereka sendiri, dan untuk memperoleh lebih banyak dengan setiap tempahan sambil meningkatkan saluran langsung dengan bantuan alat tertumpu kepada hospitaliti kami yang meningkatkan identiti jenama dan keuntungan.
+Wink mula menerima hotel sepuluh tahun yang lalu. Hotel menggunakan Wink untuk mengurus inventori mereka dengan berkesan merentasi ribuan saluran jualan, termasuk laman web brand.com mereka sendiri, dan untuk memperoleh lebih banyak dengan setiap tempahan sambil meningkatkan saluran langsung dengan bantuan alat berfokuskan hospitaliti kami yang meningkatkan identiti jenama dan keuntungan​.
 
-## Jenama & Rantaian
+## Jenama & Rangkaian
 
-Jenama dan rantai mempunyai keperluan yang sedikit berbeza daripada satu harta. Pada Wink, mereka boleh:
+Jenama dan rangkaian mempunyai keperluan yang sedikit berbeza daripada hartanah tunggal. Di Wink, mereka boleh:
 
-* Urus berbilang hartanah di bawah satu akaun.
-* Tetapkan pengurus kepada hartanah
-* guna [WinkLinks](/link-manager/wink-links), [WordPress](/developers/wordpress) dan kami [Komponen Web](/developers/web-components) untuk memasarkan dan menjual pelbagai hartanah di satu tempat.
+- Mengurus pelbagai hartanah di bawah satu akaun.
+- Menugaskan pengurus kepada hartanah
+- Menggunakan [WinkLinks](/ms/link-manager/wink-links), [WordPress](/ms/developers/wordpress) dan [Komponen Web](/ms/developers/web-components) kami untuk memasarkan dan menjual pelbagai hartanah di satu tempat.
 
 ## Syarikat pengurusan
 
-Syarikat pengurusan hospitaliti dan syarikat pengurusan destinasi boleh menguruskan portfolio hartanah mereka bagi pihak pemilik. Terdapat kelebihan muktamad untuk membenarkan agensi tertumpu dalam talian, sedar secara digital, mengendalikan penjualan kepada segmen dalam talian manakala hotel boleh menumpukan pada mengurus kepuasan pelanggan sebaik sahaja mereka tiba di premis.
+Syarikat pengurusan hospitaliti dan syarikat pengurusan destinasi boleh mengurus portfolio hartanah mereka bagi pihak pemilik. Terdapat kelebihan yang jelas dengan membiarkan agensi yang berfokuskan dalam talian dan sedar digital mengendalikan jualan kepada segmen dalam talian sementara hotel boleh menumpukan pada pengurusan kepuasan pelanggan setelah mereka tiba di premis.
 
-## Pengaruh
+## Influencer
 
-Pengaruh menggunakan Wink untuk mengewangkan khalayak mereka dengan lebih baik. Mereka berbuat demikian dengan bekerjasama dengan hotel, membuat tawaran tersuai dan memanfaatkan alatan mesra sosial Wink dan analitik yang berkuasa untuk menjejaki produk yang paling laris.
+Influencer menggunakan Wink untuk memonetkan audiens mereka dengan lebih baik. Mereka melakukannya dengan bekerjasama dengan hotel, mencipta tawaran khusus, dan memanfaatkan alat mesra sosial Wink serta analitik yang kuat untuk menjejak produk mana yang paling laris​.
 
 ## Ejen pelancongan
 
-Ejen pelancongan mendapat akses kepada inventori perjalanan di seluruh dunia pada harga hebat melalui kami yang berdedikasi [portal ejen pelancongan](https://agent.wink.travel). Mereka boleh membuat tempahan melalui portal kami, melalui API kami atau dengan membenarkan pengguna mereka menempah sendiri di tapak web ejen pelancongan yang menggunakan teknologi kami.
+Ejen pelancongan mendapat akses kepada inventori pelancongan di seluruh dunia pada harga hebat melalui [portal ejen pelancongan] khusus kami (https://agent.wink.travel). Mereka boleh membuat tempahan melalui portal kami, melalui API kami atau membenarkan pengguna mereka membuat tempahan sendiri di laman web ejen pelancongan yang menggunakan teknologi kami.
 
-## Syarikat-syarikat
+## Korporat
 
-Syarikat memerlukan lebih banyak platform perjalanan:
+Korporat memerlukan lebih daripada sekadar platform pelancongan:
 
-* Mereka memerlukan jadual perjalanan yang teratur yang menyokong fleksibiliti dan perubahan saat akhir.
-* Mereka memerlukan alat komunikasi yang boleh dipercayai, seperti internet.
-* Mereka mempunyai keutamaan vendor dengan keahlian.
-* Mereka selalunya mempunyai kad kredit korporat dan menetapkan had perbelanjaan.
-* Pengurusan perbelanjaan memerlukan integrasi pelaporan.
-* Mereka memerlukan sokongan concierge, serta perkhidmatan MICE di acara.
+- Mereka memerlukan jadual perjalanan yang teratur yang menyokong fleksibiliti dan perubahan saat akhir.
+- Mereka memerlukan alat komunikasi yang boleh dipercayai, seperti internet.
+- Mereka mempunyai keutamaan vendor dengan keahlian.
+- Mereka sering mempunyai kad kredit korporat dan menetapkan had perbelanjaan.
+- Mereka memerlukan pengurusan perbelanjaan dan integrasi pelaporan.
+- Mereka memerlukan sokongan concierge, serta perkhidmatan MICE di acara.
 
-Pengembara korporat boleh menguruskan akaun mereka sendiri di kami [portal korporat](/corporate/what-is-group) atau gunakan sokongan rasmi kami [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) pemalam dan [Setuju](https://www.concur.com/) integrasi.
+Pengembara korporat boleh mengurus akaun mereka sendiri di [portal korporat](/ms/corporate/what-is-group) kami atau menggunakan plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dan integrasi [Concur](https://www.concur.com/) yang disokong secara rasmi.
 
-## pemaju
+## Pembangun
 
-Semasa kami membina platform ini oleh dan untuk pengusaha hotel... Setiap baris kod telah dibina untuk tujuan khusus untuk kegunaan semula. Pasukan pembangun kami membina Wink dengan harapan apl perjalanan 🦄 seterusnya dibina di atas asas kod kami. Navigasi ke [pemaju](/developers/build-on-wink) halaman untuk melihat bagaimana Wink boleh menyokong anda dalam usaha anda yang seterusnya.
+Walaupun kami membina platform ini oleh dan untuk pengusaha hotel... Setiap baris kod dibina dengan tujuan khusus untuk kegunaan semula. Pasukan pembangun kami membina Wink dengan harapan aplikasi pelancongan 🦄 seterusnya dibina di atas asas kod kami. Layari halaman [Pembangun](/ms/developers/build-on-wink) untuk melihat bagaimana Wink boleh menyokong anda dalam usaha anda yang seterusnya.
 
 ## Lain-lain
 
-Sesiapa sahaja yang ingin mencari dan menjual inventori perjalanan boleh mendapat manfaat daripada menggunakan Wink. Ubah semangat anda untuk layanan mesra menjadi tindakan dengan memperoleh komisen yang hebat untuk setiap tempahan.
-
+Sesiapa yang ingin mencari dan menjual inventori pelancongan boleh mendapat manfaat daripada menggunakan Wink. Ubah minat anda dalam hospitaliti menjadi tindakan dengan memperoleh komisen hebat pada setiap tempahan.

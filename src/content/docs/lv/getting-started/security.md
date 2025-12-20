@@ -1,78 +1,76 @@
 ---
-title: Security
-description: >-
-  Šajā rakstā ir sniegta informācija par drošības pasākumiem, ko mēs ieviešam un
-  ko katru gadu publicē mūsu trešās puses drošības uzņēmums.
+title: Drošība
+description: Šajā rakstā ir informācija par drošības pasākumiem, ko mēs īstenojam, un kas tiek publicēti ikgadēji mūsu trešās puses drošības uzņēmuma.
 sidebar:
   order: 6
 ---
+
 # Wink drošības pārskata dokuments
 
-*Pēdējoreiz atjaunināts: 2024. gada 7. septembrī*
+*Pēdējā atjaunināšana: 2024. gada 7. septembris*
 
-*1.0 versija*
+*Versija 1.0*
 
 ## Mērķis un darbības joma
 
-Kā daļa no mūsu pastāvīgās apņemšanās nodrošināt drošību un aizsargāt lietotāju datus, mēs regulāri veicam ielaušanās testēšanu mūsu tīmekļa lietojumprogrammā. Šajā dokumentā ir izklāstītas mūsu testēšanas metodoloģijas, sniegts secinājumu kopsavilkums un izcelta mūsu pieeja nepārtrauktai drošības uzlabošanai.
+Kā daļa no mūsu pastāvīgās apņemšanās nodrošināt drošību un aizsargāt lietotāju datus, mēs regulāri veicam iekļūšanas testēšanu mūsu tīmekļa lietotnē. Šis dokuments apraksta mūsu testēšanas metodoloģijas, sniedz kopsavilkumu par atklājumiem un izceļ mūsu pieeju nepārtrauktai drošības uzlabošanai.
 
-Šis dokuments tiks atjaunināts, tiklīdz tiks sagatavoti jauni ziņojumi vai notiks būtiskas izmaiņas.
+Šis dokuments tiks atjaunināts, kad tiks sagatavoti jauni ziņojumi vai notiks būtiskas izmaiņas.
 
-Aptveramās jomas:\
-\*.wink.travel\
+Darbības jomas domēni:  
+\*.wink.travel  
 \*.trippay.io
 
 ## Testēšanas biežums un grafiks
 
-Mūsu ielaušanās testi tiek veikti katru gadu, un papildu testi tiek ieplānoti pēc nepieciešamības pēc būtiskiem lietojumprogrammas vai infrastruktūras atjauninājumiem. Šī regulārā testēšanas biežums nodrošina, ka mēs esam soli priekšā mainīgajiem apdraudējumiem un uzturējam drošu vidi.
+Mūsu iekļūšanas testi tiek veikti reizi gadā, un papildus testi tiek plānoti pēc nepieciešamības, sekojot būtiskām lietotnes vai infrastruktūras izmaiņām. Šis regulārais testēšanas ritms nodrošina, ka mēs esam soli priekšā mainīgajiem draudiem un uzturam drošu vidi.
 
 ## Testēšanas metodoloģijas
 
-Mūsu penetrācijas testēšana ir visaptveroša un aptver plašu drošības aspektu klāstu, tostarp, bet ne tikai:
+Mūsu iekļūšanas testēšana ir visaptveroša un aptver plašu drošības aspektu loku, tostarp, bet ne tikai:
 
-* **OWASP 10 labākie:**&#x4D;ūsu testi īpaši vērsti uz kritiskākajiem drošības riskiem, piemēram, injekciju, bojātu autentifikāciju un starpvietņu skriptēšanu (XSS).
-* **Melnās kastes un pelēkās kastes testēšana:**&#x41;tkarībā no darbības jomas mūsu komanda izmanto šīs metodoloģijas, lai simulētu gan ārējus, gan iekšējus uzbrukumu scenārijus.
-* **Automatizēta un manuāla testēšana:**&#x4D;ēs izmantojam Burp Suite Pro — vadošo drošības testēšanas rīku komplektu, lai veiktu automatizētas drošības skenēšanas un palīdzētu manuālās testēšanas metodēm identificēt sarežģītas ievainojamības un iegūt vislabāko iespējamo pārklājumu. Precīzākai ievainojamību identificēšanai tiek izmantoti daži specializēti rīki, piemēram, SQLmap.
+* **OWASP Top 10:** Mūsu testi īpaši mērķē uz kritiskākajiem drošības riskiem, piemēram, injekciju, bojātu autentifikāciju un vietņu skriptu ievietošanu (XSS).  
+* **Black Box un Grey Box testēšana:** Atkarībā no darbības jomas mūsu komanda izmanto šīs metodoloģijas, lai simulētu gan ārējās, gan iekšējās uzbrukuma situācijas.  
+* **Automatizētā un manuālā testēšana:** Mēs izmantojam Burp Suite Pro, vadošo drošības testēšanas rīku komplektu, lai veiktu automatizētas drošības skenēšanas un atbalstītu manuālās testēšanas tehnikas, lai identificētu sarežģītas ievainojamības un nodrošinātu pēc iespējas labāku pārklājumu. Lai precīzāk identificētu ievainojamības, tiek izmantoti arī specializēti rīki, piemēram, SQLmap.
 
-## Secinājumu kopsavilkums
+## Atklājumu kopsavilkums
 
-Tālāk ir sniegts mūsu jaunākā iespiešanās testēšanas ziņojuma vispārīgs kopsavilkums:
+Zemāk ir augsta līmeņa kopsavilkums par mūsu nesenāko iekļūšanas testēšanas ziņojumu:
 
-* **Kopējais identificēto ievainojamību skaits:**&#x32;
-* **Smaguma sadalījums:**
-  * Kritiski: 2
-* **Atklāto ievainojamību veidi:**
-  * Bojāta piekļuves kontrole
-  * Nedrošs dizains
+* **Kopējais atklāto ievainojamību skaits:** 2  
+* **Smaguma sadalījums:**  
+  * Kritiskas: 2  
+* **Atklāto ievainojamību veidi:**  
+  * Bojāta piekļuves kontrole  
+  * Nedroša dizaina risinājums
 
-Detalizētus secinājumus skatiet pilnajā ziņojumā.
+Detalizētai informācijai lūdzu skatīt pilno ziņojumu.
 
-### Riska vērtējumi un ietekme
+### Riska novērtējums un ietekme
 
-Abas atrastās ievainojamības ir novērtētas kā kritiskas, jo abām varētu būt bijusi nopietna finansiāla ietekme. Pirmā ļāva ļaunprātīgam autentificētam lietotājam iegūt kontroli pār cita uzņēmuma Trippay maksājumu kontu. Otrā ievainojamība ļāva ļaunprātīgam lietotājam mainīt rezervācijai nepieciešamo maksājuma summu.
+Abas atklātās ievainojamības ir novērtētas kā kritiskas, jo abas varēja radīt smagas finansiālas sekas. Pirmā ļāva ļaunprātīgam autentificētam lietotājam pārņemt citas kompānijas Trippay maksājumu kontroles tiesības. Otrā ievainojamība ļāva ļaunprātīgam lietotājam mainīt maksājuma summu, kas nepieciešama rezervācijai.
 
-### Sanācijas un mazināšanas pasākumi
+### Novēršanas un mazināšanas pasākumi
 
-Esam veikuši šādus pasākumus, lai novērstu konstatētās ievainojamības:
+Mēs esam veikuši šādas darbības, lai risinātu atklātās ievainojamības:
 
-* **Tūlītēji ielāpi:**&#x4B;ritiskās ievainojamības ir novērstas 48 stundu laikā pēc to atklāšanas.
-* **Koda pārskatīšana un sacietēšana:**&#x49;zstrādātāju komanda ir ieviesusi papildu drošības kontroles, pamatojoties uz mūsu ieteikumiem.
+* **Ātras labojumu ieviešana:** Kritiskās ievainojamības tika novērstas 48 stundu laikā pēc to atklāšanas.  
+* **Koda pārskatīšana un nostiprināšana:** Izstrādes komanda ir ieviesusi papildu drošības kontroli, balstoties uz mūsu ieteikumiem.
 
 ## Nepārtraukta uzlabošana
 
-Iekļūšanas testēšana ir daļa no mūsu plašākās stratēģijas nepārtrauktai drošības uzlabošanai. Katra testa rezultāti nosaka mūsu drošības politikas, ietekmē izstrādes praksi un veicina uzlabojumus mūsu drošības arhitektūrā.
+Iekļūšanas testēšana ir daļa no mūsu plašākas stratēģijas nepārtrauktai drošības uzlabošanai. Katru testu atklājumi virza mūsu drošības politiku, ietekmē izstrādes praksi un veicina uzlabojumus mūsu drošības arhitektūrā.
 
-## Komandas zināšanas
+## Komandas ekspertīze
 
-Mūsu ielaušanās testēšanu veic iekšējais profesionālis ar plašu pieredzi dažādos projektos un nozarēs. Izmantojot vadošos rīkus un metodes, mūsu eksperts nodrošina, ka mūsu lietojumprogramma ir rūpīgi pārbaudīta pret jaunākajiem drošības apdraudējumiem.
+Mūsu iekļūšanas testēšanu veic iekšējais profesionālis ar plašu pieredzi dažādos projektos un nozarēs. Izmantojot vadošos rīkus un metodes, mūsu eksperts nodrošina, ka mūsu lietotne tiek rūpīgi pārbaudīta pret jaunākajiem drošības draudiem.
 
 ## Apņemšanās drošībai
 
-Mēs esam apņēmušies uzturēt drošu lietojumprogrammu vidi mūsu lietotājiem un ieinteresētajām personām. Mūsu pastāvīgie centieni drošības testēšanā un uzlabošanā apliecina mūsu apņemšanos aizsargāties pret mainīgiem apdraudējumiem.
+Mēs esam apņēmušies uzturēt drošu lietotnes vidi mūsu lietotājiem un ieinteresētajām pusēm. Mūsu pastāvīgās pūles drošības testēšanā un uzlabošanā apliecina mūsu apņemšanos aizsargāt pret mainīgajiem draudiem.
 
-## Piekļuve ziņojumiem un atjauninājumi
+## Ziņojuma piekļuve un atjauninājumi
 
-Šis dokuments tiks nepārtraukti atjaunināts, tiklīdz tiks publicēti jauni ielaušanās testu ziņojumi. Lai piekļūtu pilnam ziņojumam, lūdzu, sazinieties ar mums, izmantojot tālāk norādīto e-pastu. Turpmākajos atjauninājumos būs iekļautas jaunizveidotas ievainojamības, novēršanas pasākumi un mūsu testēšanas metodoloģiju pielāgojumi.
+Šis dokuments tiks nepārtraukti atjaunināts, kad tiks izlaisti jauni iekļūšanas testu ziņojumi. Lai piekļūtu pilnam ziņojumam, lūdzu, sazinieties ar mums, izmantojot zemāk norādīto e-pastu. Nākamajos atjauninājumos tiks iekļautas jaunatklātās ievainojamības, novēršanas pasākumi un izmaiņas mūsu testēšanas metodoloģijās.
 
-Lai saņemtu papildu informāciju, lūdzu, sazinieties ar mums pa e-pastu security@wink.travel.
-
+Papildu jautājumu gadījumā lūdzu rakstiet uz security@wink.travel.

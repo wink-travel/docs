@@ -1,30 +1,28 @@
 ---
-title: Settings
-description: >-
-  У овом чланку ћемо вам рећи како можете прилагодити своју WinkLinks страницу
-  користећи функције које су вам доступне у подешавањима.
+title: Podešavanja
+description: U ovom članku objašnjavamo kako možete prilagoditi vašu WinkLinks stranicu koristeći funkcije dostupne u podešavanjima.
 sidebar:
   order: 4
 ---
-Да бисте управљали подешавањима WinkLinks-а, идите на`WinkLinks`у главној навигационој траци и кликните на`Settings`таб.
 
-Ево начина на које можете конфигурисати понашање вашег WinkLinks-а`Settings`:
+Da biste upravljali podešavanjima za WinkLinks, idite na `WinkLinks` u glavnom navigacionom meniju i kliknite na karticu `Settings`.
 
-* **Интелигентно**Омогућавањем интелигенције покушавамо да пронађемо`rich`садржај доступан са сајтова као што су,`Wink`,`Spotify`,`Instagram`,`Facebook`,`YouTube`,`X (formerly Twitter)`и други.*нпр. ако делите објаву на Инстаграму на WinkLinks-у, објава ће бити приказана онако како је видите на Инстаграму, са лајковима, коментарима и начином интеракције са објавом.*
-* **Почетни приказ**Контролишите како ваша публика прво интерагује са вашим сајтом и види ваш садржај. Доступне су вам три опције:
-  * `Column-based`дизајн. Ово је наш преферирани дизајн и ако не приказујете превише садржаја, изгледаће одлично на вашој страници. Међутим, може постати`heavy`ако делите много садржаја са богатим садржајем.
-  * `Row-based`дизајн. Ово је један од начина да ваш садржај буде мало лакши за прегледаче, али препоручујемо да ваш садржај има сличну количину текста како би се картице боље поравнале.
-  * `List-based`дизајн. Већина осталих менаџера линкова приказује једноставну листу са URL-ом и минималним садржајем. Изаберите овај начин приказивања садржаја ако имате пуно садржаја и желите да га прикажете што је брже могуће.
-* **Слика профила**На врху сваке WinkLinks странице налази се ваша профилна слика налога заједно са описом вашег налога. Слику профила можете приказати на два начина:
-  * `Circle`Препоручујемо коришћење кружног стила ако је ваша слика вас или било чега другог што се уклапа у округли контејнер.
-  * `Rectangle`Препоручујемо употребу правоугаоног облика ако је логотип ваше компаније ваша профилна слика, јер је већина логотипа компанија правоугаоне природе.
-* **Прилагођавање**Изаберите коју прилагодбу желите да користите за своју WinkLinks страницу. Ово утиче на боје ваше теме, као и на ваш план путовања када приказујете Wink картице инвентара, мапе или мреже.
+Evo na koje načine možete konfigurisati ponašanje WinkLinks pomoću `Settings`:
+
+- **Intelligent** Omogućavanjem inteligencije pokušavamo da preuzmemo `rich` sadržaj dostupan sa sajtova kao što su `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (formerly Twitter)` i drugih. *npr. Ako podelite IG objavu na WinkLinks, objava će biti prikazana kao što je vidite na IG, sa lajkovima, komentarima i mogućnošću interakcije sa objavom.*
+- **Initial display** Kontrolišite kako vaša publika prvo komunicira sa vašim sajtom i vidi vaš sadržaj. Na raspolaganju su vam tri opcije:
+    - `Column-based` dizajn. Ovo je naš preporučeni dizajn i ako ne prikazujete previše sadržaja, izgledaće odlično na vašoj stranici. Međutim, može postati `heavy` ako delite mnogo bogatog sadržaja.
+    - `Row-based` dizajn. Ovo je jedan od načina da vaš sadržaj bude malo manje zahtevan za pretraživače, ali preporučujemo da vaš sadržaj ima sličnu količinu teksta kako bi se kartice bolje poravnale.
+    - `List-based` dizajn. Većina drugih menadžera linkova prikazuje jednostavnu listu sa URL-om i minimalnim sadržajem. Izaberite ovaj način prikaza ako imate mnogo sadržaja i želite da ga prikažete što brže.
+- **Profile picture** Na vrhu svake WinkLinks stranice nalazi se profilna slika vašeg naloga zajedno sa opisom naloga. Profilnu sliku možete prikazati na dva načina:
+    - `Circle` Preporučujemo korišćenje kružnog oblika ako je vaša slika vas ili bilo čega drugog što može stati u okrugli okvir.
+    - `Rectangle` Preporučujemo korišćenje pravougaonog oblika ako je logo vaše kompanije vaša profilna slika, jer su većina logotipa pravougaoni.
+- **Customization** Izaberite koju prilagodbu želite da koristite za vašu WinkLinks stranicu. Ovo utiče na boje teme kao i na vaš itinerer prilikom prikaza Wink inventar kartica, mapa ili mreža.
 
 ## API
 
-Програмери који желе да управљају`WinkLinks`може да се упути ка[Програмери > API > WinkLinks](/developers/apis/#winklinks-api).
+Programeri koji žele da upravljaju `WinkLinks` mogu otići na [Developers > API > WinkLinks](/sr/developers/apis/#winklinks-api).
 
-## Додатно читање
+## Dalje čitanje
 
-* Прочитајте више о[Прилагођавања](/studio/customization).
-
+- Pročitajte više o [Customizations](/sr/studio/customization).

@@ -1,62 +1,63 @@
 ---
 title: Privatumo politika
-description: Lengvai prieinama ir naujausia privatumo politika visiems mūsų keliautojams.
+description: Lengvai prieinama ir atnaujinta privatumo politika visiems mūsų keliautojų vartotojams.
 sidebar:
   order: 5
 ---
-„TRAVELIKO SINGAPORE PTE. LTD.“, veikianti pavadinimu „Wink“ („Bendrovė“), norėtų informuoti jus, kurie kreipiasi į Bendrovę, kad Bendrovės paslaugoms teikti būtina rinkti, kaupti ir naudoti jūsų asmens duomenis pagal šią Privatumo politiką. Susisiekdami su Bendrove ir atskleisdami jai savo asmens duomenis komunikacijos, koordinavimo ir (arba) Bendrovės paslaugų teikimo jums tikslais, ji laiko, kad jūs sutinkate ir įsipareigojate laikytis šios Privatumo politikos.
 
-Tvarkant asmens duomenis, Bendrovė gali gauti jūsų asmens duomenis iš įvairių kanalų:
+TRAVELIKO SINGAPORE PTE. LTD., veikianti kaip Wink (toliau – „Įmonė“), nori informuoti jus, susisiekiančius su Įmone, kad būtina rinkti, tvarkyti ir naudoti jūsų asmens duomenis Įmonės paslaugoms pagal šią Privatumo politiką. Susisiekdami ir atskleisdami savo asmens duomenis Įmonei komunikacijos, koordinavimo ir/ar Įmonės paslaugų jums teikimo tikslais, jūs laikote, kad sutinkate ir priimate būti saistomi bei laikytis šios Privatumo politikos.
 
-(1) Tiesiogiai iš jūsų, Bendrovei bendraujant su jumis;
+Asmens duomenys, kurie tvarkomi, Įmonė gali gauti jūsų asmens duomenis iš įvairių kanalų, kaip nurodyta žemiau:
 
-(2) Netiesiogiai, per trečiosios šalies, kuriai galite duoti sutikimą atskleisti savo asmens duomenis Bendrovei, rekomendaciją, arba
+(1) Tiesiogiai iš jūsų per Įmonės komunikaciją su jumis;
 
-(3) Sistema automatiškai renka duomenis, kai lankotės Bendrovės svetainėje ir (arba) naudojatės paslaugomis.
+(2) Netiesiogiai, per trečiosios šalies rekomendaciją, kuriai galite suteikti sutikimą atskleisti jūsų asmens duomenis Įmonei; arba
 
-Pagal šią Privatumo politiką Bendrovė privalo rinkti, kaupti, naudoti ir tvarkyti šiuos asmens duomenis:
+(3) Automatiškai surinkti per sistemą, kai jūs lankotės Įmonės svetainėje ir/ar naudojatės paslaugomis.
 
-(1) Jūsų vardas ir pavardė, įskaitant su jumis susijusią informaciją arba jūsų atstovo informaciją (jei su mumis susisiekiate juridinio asmens vardu), kuri gali apimti jūsų tapatybės dokumentą.
+Asmens duomenys, kuriuos Įmonė privalo rinkti, tvarkyti, naudoti ir apdoroti pagal šią Privatumo politiką, yra šie:
 
-(2) Kontaktinė informacija, pvz., telefono numeris, el. pašto adresas arba socialinių tinklų paskyros informacija.
+(1) Jūsų pilnas vardas, įskaitant susijusią informaciją arba jūsų atstovo informaciją (jei susisiekiate Įmonės vardu kaip juridinis asmuo), kuri gali apimti jūsų tapatybės dokumentą.
 
-(3) Kiti asmens duomenys, kuriuos galite pateikti Bendrovei bendravimo metu, pavyzdžiui, informacija apie užklausas, informacija apie pomėgius ar bet kokia kita asmenį identifikuojanti informacija, kurią pateikiate Bendrovei tiesiogiai įvairiais bendravimo kanalais.
+(2) Kontaktinė informacija, tokia kaip telefono numeris, el. paštas ar socialinių tinklų paskyros informacija.
 
-(4) Jei komunikacija vyksta per svetainę, gali būti įtraukta jūsų techninė informacija, pvz., IP adresas, slapukai, įskaitant informaciją apie jūsų naršymo elgseną.
+(3) Kiti asmens duomenys, kuriuos galite pateikti Įmonei komunikacijos metu, pavyzdžiui, užklausų informacija, susidomėjimo informacija ar bet kokia kita asmeniškai identifikuojama informacija, kurią tiesiogiai pateikiate Įmonei per įvairius komunikacijos kanalus.
 
-Asmens duomenų tvarkymo ir naudojimo tikslas. Bendrovė privalo rinkti, kaupti ir naudoti Darbo ieškančiojo asmens duomenis šiais tikslais:
+(4) Komunikacijos per svetainę atveju gali būti įtraukta jūsų techninė informacija, tokia kaip IP adresas, slapukai (Cookies), įskaitant informaciją apie jūsų naršymo elgseną.
 
-(1) Jūsų ir Bendrovės bendravimo valdymui, pavyzdžiui, atsakant į klausimus, teikiant prašomą ir reikalaujamą informaciją, administruojant skundus arba atsakant į jūsų tiesiogiai Bendrovei pateiktus komentarus įvairiais komunikacijos kanalais, įskaitant nuolatinį koordinavimą, paslaugų teikimo sutarčių vykdymą ir (arba) teisių ir pareigų, dėl kurių Bendrovė ir jūs galite susitarti, vykdymą;
+Asmens duomenų tvarkymo ir naudojimo tikslai, Įmonė privalo rinkti, tvarkyti ir naudoti darbo pareiškėjo asmens duomenis šiais tikslais:
 
-(2) Teisiniams įsipareigojimams, kuriems Bendrovei gali būti taikomos tam tikros sąlygos, vykdyti. Tai gali apimti, bet neapsiriboja, pareigų, susijusių su apskaitos dokumentų ir mokesčių, susijusių su bet kokiomis Bendrovės jums teikiamomis paslaugomis, rengimu, atlikimą;
+(1) Komunikacijos valdymui, kai jūs bendraujate su Įmone, pavyzdžiui, atsakant į klausimus, teikiant reikiamą informaciją pagal užklausą, tvarkant skundus ar atsakant į jūsų komentarus, pateiktus tiesiogiai Įmonei per įvairius komunikacijos kanalus, įskaitant nuolatinę koordinaciją, paslaugų sutarties vykdymą ir/ar teisių bei pareigų, kurias Įmonė ir jūs galite sutarti, vykdymą;
 
-(3) Verslo santykių kūrimo ir gerinimo tikslais, įskaitant Bendrovės teikiamų paslaugų jums gerinimą, kai Bendrovė gali rinkti ir (arba) naudoti jūsų asmens duomenis kontrolės, paslaugų teikimo užtikrinimo, valdymo analizės ir su verslu susijusių problemų sprendimo tikslais, įskaitant, bet neapsiribojant, darbuotojų mokymą ir būsimo paslaugų tobulinimo planavimą;
+(2) Teisinių įsipareigojimų vykdymui, kuriems Įmonė gali būti privaloma pagal tam tikras sąlygas. Tai gali apimti, bet neapsiribojant, pareigų vykdymą, susijusį su apskaitos dokumentų ir mokesčių rengimu, susijusiu su bet kokiomis Įmonės jums teikiamomis paslaugomis;
 
-(4) Siekiant apsaugoti ir ginti Bendrovės teisines teises tuo atveju, jei tarp Jūsų ir Bendrovės kiltų ginčas; ir
+(3) Verslo santykių kūrimui ir gerinimui, įskaitant paslaugų, kurias Įmonė teikia jūsų naudai, tobulinimą, kai Įmonė gali rinkti ir/ar naudoti jūsų asmens duomenis kontrolės, paslaugų užtikrinimo, valdymo analizės ir verslo problemų sprendimo tikslais, įskaitant, bet neapsiribojant, darbuotojų mokymu ir būsimų paslaugų tobulinimo planavimu;
 
-(5) Gavusi aiškų Bendrovei duotą sutikimą, pavyzdžiui, rinkodaros ir naujienlaiškių siuntimo tikslais, Bendrovė gali tvarkyti Asmens duomenis sutikime apibrėžtais tikslais.
+(4) Įmonės teisėtų teisių apsaugai ir gynimui ginčo atveju tarp jūsų ir Įmonės; ir
 
-Asmens duomenų saugojimo laikotarpis. Kad galėtų vykdyti aukščiau aprašytus tikslus, Bendrovė privalo rinkti, kaupti ir tvarkyti Jūsų asmens duomenis pagal šį laikotarpį:
+(5) Gavus aiškų jūsų sutikimą, pavyzdžiui, rinkodaros ir naujienlaiškių komunikacijoms, Įmonė gali tvarkyti asmens duomenis pagal sutikime nurodytus tikslus.
 
-(1) Asmens duomenų tvarkymui paslaugų teikimo, sutarties vykdymo ir (arba) teisių ir pareigų pagal sutartį vykdymo tikslais Bendrovė privalo tvarkyti Jūsų asmens duomenis tol, kol Bendrovė privalo teikti Jums paslaugas;
+Asmens duomenų saugojimo laikotarpis, siekiant įgyvendinti aukščiau aprašytus tikslus, Įmonė privalo rinkti, tvarkyti ir apdoroti jūsų asmens duomenis pagal šiuos laikotarpius:
 
-(2) Kad asmens duomenys būtų tvarkomi siekiant vykdyti pareigas pagal taikomus įstatymus, Bendrovė privalo tvarkyti jūsų asmens duomenis taikomuose įstatymuose nustatytą laikotarpį;
+(1) Asmens duomenų tvarkymui paslaugų teikimo, sutarties vykdymo ir/ar teisių bei pareigų pagal sutartį vykdymo tikslais, Įmonė privalo tvarkyti jūsų asmens duomenis tol, kol Įmonė turi pareigą jums teikti paslaugas;
 
-(3) Bendrovė pasilieka teisę saugoti asmens duomenis, kai tai daroma siekiant užmegzti ir gerinti verslo santykius ir (arba) gerinti paslaugų teikimą, tiek, kiek to gali lemti Bendrovės verslo poreikiai. Bendrovė garantuoja, kad asmens duomenų saugojimas nepagrįstai nepaveiks duomenų subjekto teisių;
+(2) Asmens duomenų tvarkymui teisinių pareigų vykdymo tikslais, Įmonė privalo tvarkyti jūsų asmens duomenis per laikotarpį, nustatytą taikomais įstatymais;
 
-(4) Siekdama apsaugoti ir ginti Bendrovės teisėtas teises, tvarkydama asmens duomenis, Bendrovė privalo saugoti tokius asmens duomenis laikydamasi galiojančiuose įstatymuose nustatytų reikalavimų; ir
+(3) Asmens duomenų tvarkymui verslo santykių kūrimo ir gerinimo ir/ar paslaugų tobulinimo tikslais, Įmonė pasilieka teisę saugoti šiuos asmens duomenis tiek, kiek tai yra verslo būtinybė. Įmonė garantuoja, kad asmens duomenų saugojimas nepakenks duomenų subjektų teisėms nepagrįstai;
 
-(5) Jei duodate Bendrovei sutikimą tvarkyti jūsų asmens duomenis konkrečiais tikslais, Bendrovė tvarkys jūsų asmens duomenis tol, kol atšauksite tokį sutikimą.
+(4) Asmens duomenų tvarkymui Įmonės teisėtų teisių apsaugos ir gynimo tikslais, Įmonė privalo saugoti tokius asmens duomenis pagal taikomų įstatymų nustatytus terminus; ir
 
-Asmens duomenų atskleidimas, paprastai jūsų asmens duomenys nebus atskleisti, išskyrus atvejus, kai Bendrovė turėtų juos atskleisti šiam asmeniui:
+(5) Jei suteikiate sutikimą Įmonei tvarkyti jūsų asmens duomenis konkrečiais tikslais, Įmonė tvarkys jūsų asmens duomenis tol, kol atšauksite tokį sutikimą.
 
-(1) Bendrovės išorės paslaugų teikėjai, pasitelkti teikti Bendrovei pagalbines paslaugas teikiant Jums paslaugas, įskaitant Bendrovės konsultantus. Toks asmens duomenų atskleidimas šioms trečiosioms šalims bus atliekamas tik numatytais tikslais ir tik esant būtinybei žinoti; arba
+Asmens duomenų atskleidimas, paprastai jūsų asmens duomenys nebus atskleidžiami, išskyrus atvejus, kai Įmonė privalo atskleisti šiuos duomenis:
 
-(2) Vyriausybės, reguliavimo institucijos arba teismai, kad Bendrovei gali būti taikomas įsakymas, įstatymas arba sprendimas atskleisti asmens duomenis.
+(1) Išoriniams Įmonės paslaugų teikėjams, kurie teikia pagalbines paslaugas Įmonei teikiant jums paslaugas, įskaitant Įmonės konsultantus. Tokie asmens duomenų atskleidimai šiems tretiesiems asmenims bus atliekami pagal tikslus ir tik pagal būtinybę žinoti; arba
 
-Bendrovė įsipareigoja įgyvendinti tinkamas asmens duomenų saugumo priemones, kad būtų išvengta bet kokios neteisėtos prieigos prie duomenų, jų pakeitimo, papildymo ar atskleidimo. Bendrovė įsipareigoja reguliariai peržiūrėti šias priemones, kad užtikrintų jų atitiktį standartams ir taikomiems įstatymams.
+(2) Valstybės, reguliavimo institucijoms ar teismams, kuriems Įmonė gali būti įpareigota pagal įsakymą, įstatymą ar sprendimą atskleisti asmens duomenis.
 
-Duomenų subjekto teisės. Bendrovė gerbia Jūsų, kaip duomenų subjekto, teises pagal galiojančius įstatymus. Jūs galite susisiekti su Bendrove, kad pasinaudotumėte šiomis teisėmis: (1) teise atšaukti sutikimą, (2) teise susipažinti su duomenimis, (3) teise prašyti asmens duomenų kopijos, (4) teise ištaisyti asmens duomenis, (5) teise nesutikti su bet kokiu asmens duomenų tvarkymu, (6) teise prašyti duomenų perkeliamumo, jei Bendrovė saugo asmens duomenis tokiu formatu, kuris yra skaitomas arba įprastai naudojamas automatizuotų įrankių ar įrangos, įskaitant teisę perduoti tokius asmens duomenis kitiems duomenų valdytojams, (7) teise prašyti ištrinti arba pašalinti asmens duomenis iš identifikatorių, kai jų tvarkyti nebereikia, (8) teise prašyti sustabdyti asmens duomenų naudojimą ir (9) teise pateikti skundą.
+Įmonė įsipareigoja įgyvendinti tinkamas asmens duomenų saugumo priemones, kad būtų užkirstas kelias bet kokiam neteisėtam ir neleistinam prieigai, pakeitimui, redagavimui ar atskleidimui. Įmonė įsipareigoja reguliariai peržiūrėti šias priemones, kad užtikrintų jų atitiktį standartams ir taikomiems įstatymams.
+
+Duomenų subjekto teisės, Įmonė gerbia jūsų teises kaip duomenų subjekto pagal taikomus įstatymus. Galite susisiekti su Įmone, kad pasinaudotumėte šiomis teisėmis: (1) teisė atšaukti sutikimą, (2) teisė gauti prieigą, (3) teisė prašyti asmens duomenų kopijos, (4) teisė taisyti asmens duomenis, (5) teisė prieštarauti bet kokiam asmens duomenų tvarkymui, (6) teisė prašyti duomenų perkėlimo, jei Įmonė saugo asmens duomenis formatu, kuris yra skaitomas arba dažnai naudojamas automatizuotų įrankių ar įrangos, įskaitant teisę perkelti tokius asmens duomenis kitiems duomenų valdytojams, (7) teisė prašyti asmens duomenų ištrynimo arba anonimizavimo, jei nėra būtinybės juos tvarkyti, (8) teisė prašyti sustabdyti asmens duomenų naudojimą, ir (9) teisė pateikti skundą.
 
 Įmonės kontaktinė informacija
 
@@ -64,8 +65,7 @@ Duomenų apsaugos pareigūnas
 
 Vardas: Yann Gouriou
 
-Adresas: Wilkie Edge #03-01, Wilkie Road 8, Singapūras 228095
+Adresas: #03-01 Wilkie Edge, 8 Wilkie Road, Singapūras 228095
 
-El. paštas: dataprotectionofficer@wink.travel
+El. paštas: dataprotectionofficer@wink.travel  
 Telefono numeris: +66 (0) 854891301
-

@@ -1,100 +1,99 @@
 ---
-title: Termeni de plată
-description: >-
-  Acest document prezintă disponibilitatea fondurilor și modul în care Wink
-  oferă suport pentru modelul de agent pentru agenții de turism.
+title: Termeni de Plată
+description: Acest document acoperă disponibilitatea fondurilor și modul în care Wink susține modelul agenției pentru agenții de turism.
 sidebar:
   order: 5
 ---
-:::notă
-Ultima actualizare 30.10.2024
+
+:::note
+Ultima actualizare 2024-10-30
 :::
 
-:::atenție\[Notă]
-Termenii de plată de mai jos se aplică agenților de turism care doresc să achiziționeze și să distribuie fonduri pe cont propriu.
-Acest lucru se poate face numai prin intermediul API-ului nostru și numai de către agenții de turism care au indicat că doresc să facă acest lucru în timpul procesului de înscriere.
+:::caution[Notificare]
+Termenii de plată de mai jos se aplică agenților de turism care doresc să achiziționeze și să distribuie fonduri pe cont propriu.  
+Acest lucru poate fi realizat doar prin API-ul nostru și doar de către agenții de turism care au indicat acest lucru în procesul de înregistrare.
 
-Toți agenții de turism pot în continuare să rezerve prin intermediul portalului nostru de plată Wink, utilizând propriul card de credit sau cardul de credit al călătorului. Prin urmare, toți agenții de turism trebuie să fie de acord și cu termenii de plată în cazul în care gateway-ul de plată Wink este comerciantul înregistrat.
+Toți agenții de turism pot în continuare să rezerve prin portalul pentru agenți de turism folosind gateway-ul de plată Wink cu cardul lor sau al călătorului. Prin urmare, toți agenții de turism trebuie să accepte și termenii de plată în care gateway-ul de plată Wink este comerciantul înregistrat.
 
-Acești termeni sunt disponibili în cadrul[Portal de afiliere > Termeni de plată](/studio/payment-terms).
+Acești termeni sunt disponibili în [Affiliate Portal > Payment Terms](/ro/studio/payment-terms).
 :::
 
-**TERMENI DE PLATĂ WINK**\
-**PENTRU AGENȚII DE TURISM (Comerciant autorizat)**
+**TERMENII DE PLATĂ WINK**  
+**PENTRU AGENȚII DE TURISM (Comerciant înregistrat)**
 
-Prezentele Condiții de Plată („Condiții de Plată”) reprezintă un acord juridic obligatoriu care face parte din relația contractuală stabilită în temeiul „TERMENILOR ȘI CONDIȚIILOR AGENȚII DE TURISM” („Acordul Principal”)
+Acești Termeni de Serviciu pentru Plată („Termenii de Plată”) reprezintă un acord legal obligatoriu care face parte din relația contractuală stabilită în cadrul „TERMENILOR ȘI CONDIȚIILOR PENTRU AGENȚII DE TURISM” („Acordul Principal”).
 
 **ÎNTRE:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**&#x6F; societate înregistrată în conformitate cu legislația din Singapore și cu sediul social la adresa #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, cu numărul de înregistrare TVA 201437335D (denumită în continuare „Wink”) și
+1. **TRAVELIKO SINGAPORE PTE. LTD.**, o companie înființată conform legilor din Singapore, cu sediul social la \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, având numărul de înregistrare TVA 201437335D (denumită în continuare „Wink”) și  
+     
+2. **AGENTUL DE TURISM** ale cărui detalii sunt specificate în Formularul de Înregistrare al Agentului de Turism sau au fost transmise online („Agentul de Turism”).
 
-2. **AGENTUL DE TURISM**ale cărui date sunt prezentate în Formularul de înregistrare a agentului de turism sau au fost trimise online („Agentul de turism”).
+Definițiile și termenii stabiliți în Acordul Principal se aplică acestor Termeni de Plată, cu excepția cazului în care sunt definite altfel aici.
 
-Definițiile și termenii stabiliți în Acordul Principal se aplică acestor Termeni de Plată, cu excepția cazului în care se prevede altfel în prezentul document.
+**1\. Definiții**
 
-**1. Definiții**
+Așa cum sunt definite în acordul principal „TERMENI ȘI CONDIȚII PENTRU AGENȚII DE TURISM” („Acordul Principal”), următorii termeni vor avea aceleași înțelesuri în acești Termeni de Plată:
 
-Conform definiției din acordul principal „TERMENI ȘI CONDIȚII AGENȚII DE TURISM” („Acordul principal”), următorii termeni vor avea aceleași semnificații în acești Termeni de plată:
+* „Furnizor(i) de Cazare”  
+* „Rezervare”  
+* „Taxă de Rezervare”  
+* „Valoarea Rezervării”  
+* „Comision”  
+* „Plată Netă”  
+* „Acord Separat”
 
-* „Furnizor(i) de cazare”
-* "Rezervare"
-* „Taxă de rezervare”
-* „Valoare de rezervare”
-* "Comision"
-* „Plată netă”
-* „Acord separat”
 
-**2. Colectarea și distribuirea plăților**
+**2\. Colectarea și Distribuirea Plăților**
 
-2.1**Încasarea plăților:**&#x41;gentul de turism este responsabil pentru colectarea plății de la Oaspete în momentul rezervării. Acest lucru asigură procesarea imediată și claritatea financiară.
+2.1 **Colectarea Plății:** Agentul de Turism este responsabil pentru colectarea plății de la Oaspete în momentul rezervării. Aceasta asigură procesarea imediată și claritate financiară.
 
-2.2**Deducere taxă:**&#x41;gentul de turism va deduce mai întâi comisionul Furnizorului de Servicii, apoi va deduce comisionul acestuia pentru subtitlu, conform exemplului de mai jos:
+2.2 **Deductibilitatea Taxelor:** Agentul de Turism va deduce mai întâi taxa Furnizorului de Servicii, apoi își va deduce comisionul pentru subtotal conform exemplului de mai jos:
 
-* Taxă de rezervare de 1,5% pentru Wink.
-* Comisia Agentului de Turism, așa cum este specificată în Acordul Separat (vom folosi 10% pentru acest exemplu)
+* 1,5% Taxă de Rezervare pentru Wink.  
+* Comisionul Agentului de Turism specificat în Acordul Separat (vom folosi 10% pentru acest exemplu)
 
-Valoare rezervată 1.000 USD\
-Comision Wink (1,5%) = 15 USD\
+Valoarea Rezervării USD 1.000  
+Taxa Wink (1,5%) = USD 15  
 Subtotal = 1.000 - 15 = 985
 
-2.3**Plată netă către furnizorii de cazare:**&#x41;gentul de turism este responsabil pentru efectuarea plății nete către Furnizorul de cazare, în conformitate cu termenii Acordului separat dintre Agentul de turism și Furnizorul de cazare. Wink nu este răspunzător pentru efectuarea niciunei plăți către Furnizorul de cazare.
+2.3 **Plata Netă către Furnizorii de Cazare:** Agentul de Turism este responsabil pentru distribuirea Plății Nete către Furnizorul de Cazare conform termenilor Acordului Separat dintre Agentul de Turism și Furnizorul de Cazare. Wink nu este responsabil pentru efectuarea niciunei plăți către Furnizorul de Cazare.
 
-**3**.**Facturare și plată**
+**3**. **Facturare și Plată** 
 
-3.1**Facturare lunară:**&#x57;ink va emite o factură lunară corectă și exactă către Agentul de Turism pentru Taxele de Rezervare acumulate în luna precedentă. Agentul de Turism este obligat să achite această factură în termenele de plată specificate în factură.
+3.1 **Facturare Lunară:** Wink va emite o factură corectă și exactă lunar către Agentul de Turism pentru Taxele de Rezervare acumulate în luna precedentă. Agentul de Turism este obligat să achite această factură în termenii de plată specificați pe factură.
 
-3.2**Modalitate de plată:**&#x50;lățile către Wink se vor efectua prin metoda de plată specificată pe factură. Orice costuri asociate cu transferul plății sunt responsabilitatea Agentului de Turism.
+3.2 **Metoda de Plată:** Plățile către Wink se vor face prin metoda de plată specificată pe factură. Orice costuri asociate transferului de plată sunt responsabilitatea Agentului de Turism.
 
-3.3**Plăți întârziate:**&#xCE;n caz de întârziere a plății, Wink își rezervă dreptul de a percepe dobânzi la suma restantă la o rată de 5% pe lună sau rata maximă permisă de lege, oricare dintre acestea este mai mică. În plus, dacă Agentul de Turism întârzie plata către Furnizorul de Cazare conform termenilor Acordului Separat, Wink își rezervă dreptul de a suspenda accesul la Serviciu până la soluționarea tuturor plăților restante atât către Wink, cât și către Furnizorul de Cazare. Cu toate acestea, dacă există greșeli sau erori în factura transmisă de Wink, Agentul de Turism va fi obligat doar să efectueze plata părții corecte și exacte a facturii și nu va fi supus niciunei dobânzi sau penalități pentru neplata părții incorecte a facturii.
+3.3 **Plăți Întârziate:** În cazul întârzierii plății, Wink își rezervă dreptul de a percepe dobândă pentru suma restantă la o rată de 5% pe lună sau la rata maximă permisă de lege, oricare este mai mică. În plus, dacă Agentul de Turism întârzie plata către Furnizorul de Cazare conform termenilor Acordului Separat, Wink își rezervă dreptul de a suspenda accesul la Serviciu până când toate plățile restante către Wink și Furnizorul de Cazare sunt rezolvate. Totuși, dacă există greșeli sau erori în factura emisă de Wink, Agentul de Turism va fi obligat să plătească doar partea corectă și exactă a facturii și nu va fi supus niciunei dobânzi sau penalități pentru neplata părții incorecte a facturii.
 
-**4. Roluri și responsabilități**
+**4\. Roluri și Responsabilități**
 
-4.1**Responsabilitățile agentului de turism:**
+4.1 **Responsabilitățile Agentului de Turism:**
 
-* Asigurați colectarea la timp a plăților de la Oaspeți, respectând termenii descriși în Secțiunea 2.1.
-* Deduceți Taxa de Rezervare și Comisionul corespunzătoare înainte de a remite Plata Netă către Furnizorii de Cazare, conform Acordului Separat.
-* Achitați prompt facturile Wink pentru Taxele de Rezervare în termenii specificați în Secțiunea 3.1.
-* Gestionează și rezolvă în mod activ orice dispute legate de rezervări sau plăți, asigurându-te că se menține comunicarea cu Wink pentru a rezolva problemele eficient.
+* Asigurarea colectării la timp a plăților de la Oaspeți, respectând termenii din Secțiunea 2.1.  
+* Deductibilitatea Taxei de Rezervare și a Comisionului înainte de a remite Plata Netă către Furnizorii de Cazare conform Acordului Separat.  
+* Achitarea facturilor Wink pentru Taxele de Rezervare prompt, în termenii specificați în Secțiunea 3.1.  
+* Gestionarea activă și rezolvarea oricăror dispute legate de rezervări sau plăți, asigurând comunicarea cu Wink pentru a rezolva eficient problemele.
 
-4.2**Responsabilitățile lui Wink:**
+4.2 **Responsabilitățile Wink:**
 
-* Emiteți facturi lunare precise și la timp pentru Taxele de Rezervare, așa cum este detaliat în Secțiunea 3.1.
-* Oferiți agentului de turism acces continuu la platforma Wink pentru procesarea rezervărilor și gestionarea plăților.
-* Asistență acordată agentului de turism în rezolvarea disputelor legate de plăți, furnizând datele tranzacțiilor necesare și asistență, după cum este necesar.
+* Emiterea facturilor lunare corecte și la timp pentru Taxele de Rezervare, conform Secțiunii 3.1.  
+* Oferirea Agentului de Turism acces continuu la platforma Wink pentru procesarea rezervărilor și gestionarea plăților.  
+* Asistarea Agentului de Turism în rezolvarea disputelor legate de plăți prin furnizarea datelor tranzacțiilor și suportul necesar.
 
-**5. Conversie valutară**
+**5\. Conversia Monedei**
 
-Dacă este necesară vreo conversie valutară, aceasta va fi procesată la cursul furnizat de serviciul de procesare a plăților. Agentul de turism este responsabil pentru orice costuri asociate cu conversia valutară.
+Dacă este necesară conversia valutară, aceasta va fi procesată la cursul oferit de serviciul de procesare a plăților. Agentul de Turism este responsabil pentru orice costuri asociate conversiei valutare.
 
-**6. Soluționarea litigiilor**
+**6\. Rezolvarea Disputelor**
 
-Orice litigii care decurg din sau sunt legate de acești Termeni de Plată vor fi tratate conform procedurilor de soluționare a litigiilor din Acordul Principal, asigurând o abordare consecventă și unitară a soluționării conflictelor dintre Wink și Agentul de Turism.
+Orice dispute apărute din sau legate de acești Termeni de Plată vor fi gestionate conform procedurilor de rezolvare a disputelor din Acordul Principal, asigurând o abordare consecventă și unificată pentru rezolvarea conflictelor între Wink și Agentul de Turism.
 
-**7. Modificarea Termenilor**\
-Wink își rezervă dreptul de a modifica oricând acești Termeni de Plată. Orice modificări vor fi comunicate Agentului de Turism cu cel puțin 30 de zile înainte de intrarea în vigoare. Utilizarea în continuare a platformei Wink după data intrării în vigoare constituie acceptarea termenilor modificați.
+**7\. Modificarea Termenilor**  
+Wink își rezervă dreptul de a modifica acești Termeni de Plată în orice moment. Orice modificări vor fi comunicate Agentului de Turism cu cel puțin 30 de zile înainte de a intra în vigoare. Continuarea utilizării platformei Wink după data intrării în vigoare constituie acceptarea termenilor modificați.
 
-**8. Legea aplicabilă și jurisdicția**\
-Prezentele Condiții de Plată sunt guvernate de legile din Singapore. Orice litigii care decurg din sau în legătură cu aceste condiții vor fi soluționate în instanțele din Singapore.
+**8\. Legea Aplicabilă și Jurisdicția**  
+Acești Termeni de Plată sunt guvernați de legile din Singapore. Orice dispute apărute din sau legate de acești termeni vor fi soluționate în instanțele din Singapore.
 
-Prezentele Condiții de Plată sunt parte integrantă și extind prevederile de plată stabilite în Acordul Principal, „TERMENI ȘI CONDIȚII AGENȚI DE TURISM\_220924”, încheiat între Wink și Agentul de Turism.
-
+Acești Termeni de Plată sunt parte integrantă și extind prevederile de plată stabilite în Acordul Principal, „TERMENI ȘI CONDIȚII PENTRU AGENȚII DE TURISM_220924,” între Wink și Agentul de Turism.

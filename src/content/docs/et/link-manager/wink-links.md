@@ -1,67 +1,65 @@
 ---
 title: WinkLinks
-description: >-
-  Selles artiklis selgitame, mis on lingihaldur ja mida meie lingihaldur teha
-  saab.
+description: Selles artiklis selgitame, mis on lingihaldur ja mida meie lingihaldur suudab teha.
 sidebar:
   order: 0
 ---
-Lingihaldur võimaldab teil salvestada ja korraldada teile meeldivaid URL-e hilisemaks kasutamiseks. Teie brauseri järjehoidjad on lingihalduri näide. Sotsiaalmeedia tulekuga tekkis suurem vajadus linkide näitamiseks ja kättesaadavaks tegemiseks oma sõpradele ja publikule. Teie Facebooki voog on näide sotsiaalmeediasõbralikust lingihaldurist.
 
-:::ettevaatust
-Enamik lingihaldureid nõuab liikmelisuse registreerimist kõigilt, kes postitavad partnerlinke.
+Lingihaldur võimaldab sul salvestada ja organiseerida URL-e, mis sulle meeldivad, hilisemaks kasutamiseks. Sinu brauseri järjehoidjad on näide lingihaldurist. Sotsiaalmeedia tulekuga tekkis suurem vajadus linkide jagamiseks ja kättesaadavaks tegemiseks sõpradele ja publikule. Sinu Facebooki voog on näide sotsiaalselt sõbralikust lingihaldurist.
+
+:::caution
+Enamik lingihaldureid nõuavad tellimust kõigilt, kes postitavad siduslinke.
 :::
 
-Me ehitasime [WinkLinks](https://i.trvl.as/) ; täiesti tasuta lingihaldur, mis on keskendunud reisiruumile, et veebis tõhusalt erutada, reklaamida ja müüa.
+Me lõime [WinkLinks](https://i.trvl.as/) — täiesti tasuta lingihalduri, mis on keskendunud reisisektorile, et inspireerida, reklaamida ja müüa tõhusalt veebis.
 
-## Omadused
+## Funktsioonid
 
-* WinkLinks võimaldab teil tasuta lisada kõik oma olemasolevad partnerlingid, näiteks Commission Junction ja Amazon.
-* Saate laheda edevus-URL-i, näiteks<https://i.trvl.as/bob>, nendeks aegadeks, kui saate jagada ainult ühte URL-i.
-* Saate linke korraldada ja jagada ning faile üles laadida.
-* Hotellid, ketid ja kaubamärgid saavad WinkLinksi kasutada täiustatud broneerimismootorina:
-  * Toetab mitut omadust.
-  * Toetab mitut sihtkohta.
-  * Toetab mitut valuutat.
-  * Toetab mitut keelt.
-* WinkLinks toetab`rich content` *(vt allpool)*.
-* Broneeri Instagramist vaid kahe klõpsuga 🚀
+- WinkLinks võimaldab sul lisada kõik oma olemasolevad siduslingid, nagu Commission Junction ja Amazon, tasuta.
+- Saad laheda vanity URL-i, näiteks [https://i.trvl.as/bob](https://i.trvl.as/bob), neile kordadele, kui saad jagada ainult ühte URL-i.
+- Saad linke organiseerida ja jagada ning faile üles laadida.
+- Hotellid, kettid ja brändid saavad kasutada WinkLinksit kui arenenud broneerimismootorit:
+    - Toetab mitut objekti.
+    - Toetab mitut sihtkohta.
+    - Toetab mitut valuutat.
+    - Toetab mitut keelt.
+- WinkLinks toetab `rikast sisu` *(vt allpool)*.
+- Mine IG-st broneerimiseni vaid 2 klikiga 🚀
 
-## Rikkalik sisu
+## Rikast sisu
 
-:::märkus
-Määra`Intelligent`et 🟢 sinu [Seaded](/link-manager/settings) selle funktsiooni kasutamiseks.
+:::note
+Selle funktsiooni kasutamiseks sea `Intelligent` olekuks 🟢 oma [Seadetes](/et/link-manager/settings).
 :::
 
-Kui jagate linki saidilt, mis toetab`rich`/`oEmbed`sisu, teie link ärkab WinkLinksis ellu.
+Kui jagad linki saidilt, mis toetab `rikast` / `oEmbed` sisu, muutub su link WinkLinksis elavaks.
 
 Toetatud saidid:
 
-* Facebook -*Postitusega suhtlemine ja video esitamine*.
-* Instagram -*Postitusega suhtlemine ja video esitamine*.
-* YouTube'i*Esita videot*.
-* X (endine Twitter) -*Postitusega suhtlemine*.
-* Spotify -*Esita oma lemmikesitusloendeid*.
-* Pilgutus -*Vaata`Advanced`*.
+- Facebook - *Suhtle postitusega ja mängi videot*.
+- Instagram - *Suhtle postitusega ja mängi videot*.
+- YouTube - *Mängi videot*.
+- X (endine Twitter) - *Suhtle postitusega*.
+- Spotify - *Mängi oma lemmik esitusloendeid*.
+- Wink - *Vaata `Advanced`*.
 
-## Täpsem
+## Täiustatud
 
-WinkLinks on ka suurepärane viis leitud reisiinventari tutvustamiseks [Wink Studio](https://studio.wink.travel) ja mida soovite oma sihtrühmale müüa.
+WinkLinks on ka suurepärane viis näidata reisiinventari, mille leidsid [Wink Studio](https://studio.wink.travel) kaudu ja mida soovid oma publikule müüa.
 
-Kasutage WinkLinksi oma toodete müümiseks:
+Kasuta WinkLinksit, et müüa oma:
 
-* [Jagatavad lingid](/studio/shareable-links) - Valige kuvamisviis:
-  * [Reklaambänner](/developers/web-components/#content-loader).
-  * Tavaline link reaalajas hinnavärskendustega.
-* [Kaardid](/studio/cards) - Broneeritavad kaardid reaalajas hinna ja saadavusega.
-* [Ruudustikud](/studio/grids) - Broneeritavate kaartidega ruudustik.
-* [Kaardid](/studio/maps) - Kaart markeritega, mis avanevad broneeritavateks kaartideks.
+- [Jagatavad lingid](/et/studio/shareable-links) - vali kuvamisviis:
+    - [Reklaambänner](/et/developers/web-components/#content-loader).
+    - Tavaline link reaalajas hinnauuendustega.
+- [Kaardid](/et/studio/cards) - Broneeritavad kaardid reaalajas hindade ja saadavusega.
+- [Võrgustikud](/et/studio/grids) - Võrgustik broneeritavate kaartidega.
+- [Kaardid](/et/studio/maps) - Kaart markeritega, mis avanevad broneeritavate kaartidena.
 
-:::märkus
-Oma WinkLinksi konto haldamiseks logige sisse oma partnerkontole saidil[Wink Studio](https://studio.wink.travel).
+:::note
+WinkLinks konto haldamiseks logi sisse oma sidusettevõtte kontole [Wink Studios](https://studio.wink.travel).
 :::
 
 :::tip
-Konto toimimise nägemiseks vaadake meie kaasasutaja Bjorni WinkLinksi kontot:<https://i.trvl.as/bjorn>.
+Kontot tegevuses nägemiseks vaata Björni, meie kaasasutaja, WinkLinks kontot: [https://i.trvl.as/bjorn](https://i.trvl.as/bjorn).
 :::
-

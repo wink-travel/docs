@@ -1,43 +1,41 @@
 ---
-title: Environments
-description: >-
-  Овај чланак садржи информације за тестере и програмере о томе како да добију
-  приступ нашим различитим серверским окружењима.
+title: Okruženja
+description: Ovaj članak sadrži informacije za testere i programere o tome kako pristupiti našim različitim serverskim okruženjima.
 sidebar:
   order: 8
 ---
-У компанији Wink, све што радимо користимо у 2 окружења:
 
-* Производња је наше стабилно окружење.
-* Стејџинг је наше окружење за сертификацију и тестирање.
+U Wink-u, uvek imamo 2 okruženja za sve što radimo:
 
-Ако сте интегратор, хотел или туристички агент који жели да се припреми за сертификацију или тестира Wink платформу, креирајте налог у нашем припремном окружењу да бисте започели.
+- Production je naše stabilno okruženje.
+- Staging je naše okruženje za sertifikaciju i testiranje.
 
-:::напомена
-Припремно окружење је доступно на захтев. То значи да ће прећи у режим спавања ако нема коришћења и поново се укључити када га буде. Молимо вас за стрпљење ако га будите. Потребно је око минут да се покрену сви сервери након што се први пут повежете са једним од наших сервера или апликација.
+Ako ste integrator, hotel ili turistički agent koji želi da se pripremi za sertifikaciju ili testira Wink platformu, napravite nalog u našem staging okruženju da biste započeli.
+
+:::note
+Staging okruženje je dostupno na zahtev. To znači da će otići u stanje mirovanja ako nema korišćenja i ponovo se uključiti kada ga neko koristi. Molimo vas za strpljenje dok ga budite. Potrebno je oko minut da se svi serveri pokrenu nakon što se prvi put povežete sa jednim od naših servera ili aplikacija.
 :::
 
-## Сервери
+## Serveri
 
-Испод је матрица која садржи имена наших сервера и њихову употребу.
+Ispod je matrica koja sadrži nazive naših servera i njihovu namenu.
 
-| Функционалност | Поставка | Продукција
+| Feature | Staging | Production
 | ------- | ------- | ---------- |
-| IAM | https://staging-iam.wink.travel | https://iam.wink.travel |
-| Инвентар | https://staging-api.wink.travel | https://api.wink.travel |
-| Интеграције | https://staging-integrations.wink.travel | https://integrations.wink.travel |
-| Плаћање | https://staging-api.trippay.io | https://api.trippay.io |
+| IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
+| Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
+| Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Payment | https://staging-api.trippay.io | https://api.trippay.io | 
 
-## Апликације
+## Aplikacije
 
-Наше апликације такође имају тестна и производна окружења за наше кориснике.
+Naše aplikacije takođe imaju test i produkcijska okruženja za naše korisnike.
 
-| Пријава | Поставка | Продукција
+| Application | Staging | Production
 | ------- | ------- | ---------- |
-| Агент | https://staging-agent.wink.travel | https://agent.wink.travel |
-| Корпоративни | https://staging-group.wink.travel | https://group.wink.travel |
-| Екстранет | https://staging-extranet.wink.travel | https://extranet.wink.travel |
-| Плаћање | https://staging-pay.wink.travel | https://pay.wink.travel |
-| Студио | https://staging-studio.wink.travel | https://studio.wink.travel |
+| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| Corporate | https://staging-group.wink.travel | https://group.wink.travel | 
+| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
+| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
-

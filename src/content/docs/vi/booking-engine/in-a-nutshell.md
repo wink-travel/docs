@@ -1,49 +1,47 @@
 ---
-title: Tóm lại
-description: >-
-  Bài viết này sẽ hướng dẫn bạn mọi thông tin bạn muốn biết về công cụ đặt
-  phòng.
+title: Tóm Tắt
+description: Bài viết này hướng dẫn bạn mọi điều bạn muốn biết về booking engine.
 sidebar:
   order: 0
 ---
-Sau đây là cách chúng tôi phân chia trách nhiệm trên Wink:
 
-* [Mạng ngoại vi](/extranet/what-is-extranet) quan tâm đến việc các nhà cung cấp quản lý hàng tồn kho.
-* [Phòng thu](/studio/what-is-studio) liên quan đến việc các chi nhánh quản lý nội dung.
-* `Booking Engine`quan tâm đến việc tạo ra nội dung, được tạo ra trong`Studio`, dựa trên bản kiểm kê được tạo ra trong`Extranet`và có thể đặt chỗ được.
-* [Sự chi trả](/payment/what-is-trip-pay) liên quan đến việc tính phí/hoàn tiền cho khách du lịch đặt chỗ \[thông qua các nền tảng như Wink] và thanh toán cho các nhà cung cấp.
+Dưới đây là cách chúng tôi phân chia trách nhiệm trên Wink:
 
-Công cụ đặt phòng là cốt lõi của nền tảng của chúng tôi.
+- [Extranet](/vi/extranet/what-is-extranet) liên quan đến nhà cung cấp quản lý tồn kho.
+- [Studio](/vi/studio/what-is-studio) liên quan đến các đối tác quản lý nội dung.
+- `Booking Engine` liên quan đến việc tạo nội dung, được tạo trong `Studio`, dựa trên tồn kho được tạo trong `Extranet` và làm cho nó có thể đặt được.
+- [Payment](/vi/payment/what-is-trip-pay) liên quan đến việc thu phí / hoàn tiền cho khách du lịch đặt [qua các nền tảng như Wink], và thanh toán cho nhà cung cấp.
 
-Trách nhiệm của nó bao gồm:
+Booking engine là trung tâm của nền tảng của chúng tôi.
 
-* Quản lý tiền tệ và cập nhật tỷ giá hối đoái.
-* Cung cấp cho nhà cung cấp giá cước một cách để gửi dữ liệu giá cước cho chúng tôi.
-* Quản lý dữ liệu tra cứu.*ví dụ: khu vực, quốc gia, điểm đến, tài sản, v.v.*
-* Quản lý ngôn ngữ.
-* Tạo phân tích dựa trên tương tác của người dùng, sự kiện và lệnh gọi API.
-* Cung cấp hàng tồn kho có thể đặt trước theo định dạng, ngôn ngữ và loại tiền tệ mong muốn, chẳng hạn như:
-  * MỘT [liên kết có thể chia sẻ](/studio/shareable-links) trên Facebook.
-  * Trang đích khách sạn trên https://ota.wink.travel có thông tin về khách sạn đó.
-  * MỘT [thẻ](/studio/cards) chứa hàng tồn kho liên kết.
-  * MỘT [bản đồ](/studio/maps) trên của bạn[Liên kết nháy mắt](/link-manager/wink-links) tài khoản.
-  * MỘT [Gọi API](/developers/apis) từ hệ thống đại lý du lịch từ xa.
-* Cung cấp cho du khách một cách để:
-  * Tìm kiếm sản phẩm du lịch.
-  * Đặt hàng tồn kho có sẵn.
-  * Quản lý của họ[đặt chỗ và đánh giá](/booking-engine/bookings).
-  * Quản lý của họ [danh sách mong muốn](/booking-engine/bucket-list) những thứ cần đặt trước trong tương lai.
-  * Quản lý của họ[hồ sơ du lịch](/booking-engine/travel-preferences).*ví dụ: Dị ứng, liên lạc khẩn cấp, v.v.*
+Các trách nhiệm của nó bao gồm:
 
-Công cụ đặt phòng là tập hợp các chức năng có thể tái sử dụng mà chúng tôi giới thiệu thông qua https://ota.wink.travel; một trang web có khả năng tùy chỉnh cao dành cho các khách sạn và chi nhánh để bán sản phẩm của họ cho du khách.
+- Quản lý tiền tệ và cập nhật tỷ giá hối đoái.
+- Cung cấp cho nhà cung cấp giá một cách để gửi dữ liệu giá cho chúng tôi.
+- Quản lý dữ liệu tra cứu. *ví dụ: vùng, quốc gia, điểm đến, cơ sở lưu trú, v.v.*
+- Quản lý ngôn ngữ.
+- Tạo phân tích dựa trên tương tác người dùng, sự kiện và các cuộc gọi API.
+- Cung cấp tồn kho có thể đặt được ở định dạng, ngôn ngữ và tiền tệ mong muốn, chẳng hạn như:
+    - Một [liên kết chia sẻ](/vi/studio/shareable-links) trên Facebook.
+    - Một trang đích khách sạn trên https://ota.wink.travel với tồn kho cho khách sạn đó.
+    - Một [thẻ](/vi/studio/cards) chứa tồn kho của đối tác.
+    - Một [bản đồ](/vi/studio/maps) trên tài khoản [WinkLinks](/vi/link-manager/wink-links) của bạn.
+    - Một [cuộc gọi API](/vi/developers/apis) từ hệ thống đại lý du lịch từ xa.
+- Cung cấp cho khách du lịch cách để:
+    - Tìm kiếm tồn kho du lịch.
+    - Đặt tồn kho có sẵn.
+    - Quản lý [đặt chỗ và đánh giá](/vi/booking-engine/bookings).
+    - Quản lý [danh sách mong muốn](/vi/booking-engine/bucket-list) những thứ muốn đặt trong tương lai.
+    - Quản lý [hồ sơ du lịch](/vi/booking-engine/travel-preferences). *ví dụ: Dị ứng, liên hệ khẩn cấp, v.v.*
 
-Các nhà tích hợp muốn có nhiều quyền tự do hơn nữa có thể truy cập vào tất cả các tính năng tương tự thông qua [Tiện ích bổ sung WordPress](/developers/wordpress/),[Thành phần Web](/developers/web-components) Và [API](/developers/apis).
+Booking engine là tập hợp các chức năng có thể tái sử dụng mà chúng tôi cung cấp qua https://ota.wink.travel; một trang web có thể tùy chỉnh cao dành cho khách sạn và đối tác để bán sản phẩm của họ cho khách du lịch.
 
-Tiếp tục đọc các phần tiếp theo để tìm hiểu thêm về những gì công cụ đặt phòng này cung cấp.
+Các nhà tích hợp, muốn có nhiều tự do hơn nữa, có quyền truy cập tất cả các tính năng tương tự thông qua [plugin WordPress](/vi/developers/wordpress/), [Web Components](/vi/developers/web-components) và [APIs](/vi/developers/apis) của chúng tôi.
+
+Tiếp tục đến các phần tiếp theo để đọc thêm về những gì booking engine cung cấp.
 
 ## Đọc thêm
 
-* Đọc về chúng tôi[Tiện ích bổ sung WordPress](/developers/wordpress/).
-* Đọc về chúng tôi[Thành phần Web](/developers/web-components).
-* Đọc về chúng tôi[API](/developers/apis).
-
+- Đọc về [plugin WordPress](/vi/developers/wordpress/) của chúng tôi.
+- Đọc về [Web Components](/vi/developers/web-components) của chúng tôi.
+- Đọc về [APIs](/vi/developers/apis) của chúng tôi.

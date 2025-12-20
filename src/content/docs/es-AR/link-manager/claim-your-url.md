@@ -1,17 +1,16 @@
 ---
 title: Reclama tu URL
-description: En este artículo te contamos cómo reclamar tu URL personalizada de WinkLinks.
+description: En este artículo, te contamos cómo reclamar tu URL personalizada de WinkLinks.
 sidebar:
   order: 1
 ---
-Al crear un [cuenta de afiliado](/studio/what-is-studio) Ya tienes una URL personalizada de WinkLinks. Las funciones de editor de WinkLinks están disponibles en nuestra aplicación Studio, junto con nuestras otras funciones para afiliados.
+
+Al crear una [cuenta de afiliado](/es-AR/studio/what-is-studio), ya tenés una URL personalizada de WinkLinks. Las funciones de editor de WinkLinks están disponibles en nuestra app Studio; junto con otras funciones para afiliados.
 
 ### Ejemplo
 
-Si el nombre de su cuenta es Queen Bee, su URL personalizada de WinkLinks será:
+Si el nombre de tu cuenta es Queen Bee, tu URL personalizada de WinkLinks será:
 
-<h4 align="center">https://i.trvl.as/abeja-reina</h4>
+<h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-Los nombres de las cuentas están disponibles en un`first come - first serve`base - ¡Obtén tu URL única mientras puedas!
-
+Los nombres de cuenta están disponibles por orden de `primero en llegar, primero en ser servido` - ¡Tomá tu URL única mientras puedas!

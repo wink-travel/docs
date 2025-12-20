@@ -1,69 +1,69 @@
 ---
-title: Localization
-description: 'Šiame straipsnyje paaiškinama, kaip tvarkome lokalizaciją „Wink“.'
+title: Lokalizacija
+description: Šiame straipsnyje paaiškinama, kaip valdome lokalizaciją Wink platformoje.
 sidebar:
   order: 7
 ---
-Šiame straipsnyje paaiškinama, kaip tvarkome lokalizaciją „Wink“.
+
+Šiame straipsnyje paaiškinama, kaip valdome lokalizaciją Wink platformoje.
 
 ## Palaikomos kalbos
 
-„Wink“ palaiko šias kalbas:
+Wink palaiko šias kalbas:
 
-* Anglų
-* Indonezijos kalba
-* Malaizijos kalba
-* Čilgarskis
-* Katala
-* Čeština
-* Danų
-* Vokiečių k.
-* Eesti
-* Ispanų k.
-* Ispanų (AR)
-* Ispanų (MX)
-* Filipinų
-* Suomija
-* Prancūzų
-* Elenai
-* Tėtė
-* हिन्दी
-* Kroatija
-* Magyar
-* Íslenska
-* Italų k.
-* 日本語
-* 한국어
-* Latviški
-* Lietuvių
-* Olandų
-* Norvegų
-* lenkų
-* Portugalų (BR)
-* Portugalų (PT)
-* Romėnų
-* Rusų k.
-* Slovėnijos
-* Slovėnų k.
-* Serbų
-* Švedų
-* ภาษาไทย
-* Turkçe
-* Українська
-* Tiếng Việt
-* arabų
-* 简体中文
-* 繁體中文
+- Anglų
+- Bahasa Indonesia
+- Bahasa Malaysia
+- Български
+- Català
+- Čeština
+- Dansk
+- Deutsch
+- Eesti
+- Español
+- Español (AR)
+- Español (MX)
+- Filipino
+- Suomi
+- Français
+- Ελληνικά
+- עברית
+- हिन्दी
+- Hrvatski
+- Magyar
+- Íslenska
+- Italiano
+- 日本語
+- 한국어
+- Latviski
+- Lietuvių
+- Nederlands
+- Norsk
+- Polski
+- Português (BR)
+- Português (PT)
+- Română
+- Русский
+- Slovenčina
+- Slovenščina
+- Srpski
+- Svenska
+- ภาษาไทย
+- Türkçe
+- Українська
+- Tiếng Việt
+- العربية
+- 简体中文
+- 繁體中文
 
-## Platformos lygio
+## Platformos lygis
 
-Visos mūsų programėlės yra lokalizuotos, kad palaikytų visas aukščiau paminėtas kalbas. Kiekvienos programėlės puslapio apačioje yra kalbos parinkiklis, iš kurio vartotojas gali pasirinkti norimą kalbą. Rezervavimo sistema taip pat palaiko norimos kalbos perdavimą per URL adresą.
+Visos mūsų programos yra lokalizuotos, kad palaikytų visas aukščiau išvardytas kalbas. Kiekvienoje programoje puslapio apačioje yra kalbos pasirinkimo meniu, iš kurio vartotojas gali pasirinkti norimą kalbą. Užsakymų sistema taip pat palaiko norimos kalbos perdavimą per URL.
 
-## Vartotojų sukurtas turinys
+## Vartotojų generuojamas turinys
 
-Vartotojų generuojamas turinys yra lokalizuotas, kad būtų palaikomos visos aukščiau paminėtos kalbos. Vartotojai gali pasirinkti sukurti anglišką turinio versiją ir leisti „Wink“ atlikti visa kita. Arba jie gali valdyti konkretų kalbų rinkinį, kad galėtų geriau valdyti, ir leisti „Wink“ atlikti visa kita.
+Vartotojų generuojamas turinys yra lokalizuotas, kad palaikytų visas aukščiau išvardytas kalbas. Vartotojai gali pasirinkti sukurti turinio anglų kalbos versiją ir leisti Wink pasirūpinti likusiu. Arba jie gali valdyti tam tikrą kalbų rinkinį, kad turėtų daugiau kontrolės, o Wink pasirūpins likusiu.
 
 ## Įspėjimai
 
-Numatytoji kalba yra anglų. Jei nenurodyta kitaip, kai vartotojas naudosis bet kuria iš mūsų programų, pirmiausia naudosime numatytąją kalbą. Aktyvios kalbos nenustatome pagal vartotojo naršyklės lokalę.
-
+Numatytoji kalba yra anglų. Jei nenurodyta kitaip, vartotojui naudojantis bet kuria mūsų programa, pirmiausia bus naudojama numatytoji kalba. Mes nenustatome aktyvios kalbos pagal vartotojo naršyklės lokalę.

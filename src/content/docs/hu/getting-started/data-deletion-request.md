@@ -1,43 +1,43 @@
 ---
 title: Adattörlési kérelem
-description: 'Tudja meg, hogyan kérheti személyes adatainak törlését a Wink szolgáltatásban.'
+description: Tudja meg, hogyan kérheti személyes adatai törlését a Wink platformon.
 sidebar:
   order: 9
 ---
-A Winknél tiszteletben tartjuk az Ön adatainak védelmét, és teljes mértékben elkötelezettek vagyunk személyes adatainak védelme iránt. Betartjuk a**Általános adatvédelmi rendelet (GDPR)**&#xE9;s a világ minden táján alkalmazandó egyéb adatvédelmi törvények.
 
-Ez az oldal ismerteti, hogyan kérheti a platformunkon keresztül gyűjtött személyes adatok törlését – beleértve, de nem kizárólagosan a közösségi bejelentkezési szolgáltatókon, például a Facebookon vagy az Instagramon keresztül megszerzett adatokat.
+A Wink-nél tiszteletben tartjuk az Ön magánéletét, és teljes mértékben elkötelezettek vagyunk személyes adatainak védelme iránt. Megfelelünk a **Általános Adatvédelmi Rendeletnek (GDPR)** és más, világszerte alkalmazandó adatvédelmi jogszabályoknak.
+
+Ez az oldal ismerteti, hogyan kérheti bármely személyes adat törlését, amelyet a platformunkon keresztül gyűjthettünk — beleértve, de nem kizárólagosan a Facebook vagy Instagram által biztosított közösségi bejelentkezési szolgáltatókon keresztül szerzett adatokat.
 
 ## Elkötelezettségünk az adatvédelem iránt
 
-Kizárólag a szolgáltatásaink nyújtásához szükséges adatokat gyűjtjük, és soha nem adjuk el az Ön személyes adatait. Ez magában foglalhatja a következőket:
+Csak azokat az adatokat gyűjtjük, amelyek a szolgáltatásaink nyújtásához szükségesek, és soha nem adjuk el személyes információit. Ez magában foglalhatja:
 
-* A neved és az e-mail címed
-* Nyilvános profiladatok (pl. Facebookról vagy Google-ról)
-* Használati vagy tevékenységi adatok platformunkon
-* Az Ön által kifejezetten megadott engedélyek
+- Az Ön nevét és e-mail címét
+- Nyilvános profilinformációkat (pl. Facebookról vagy Google-ről)
+- A platformunkon végzett használati vagy aktivitási adatokat
+- Bármilyen, kifejezetten Ön által megadott engedélyt
 
-Megfelelő intézkedéseket teszünk adatainak védelme érdekében, és minden törlési kérelmet a GDPR-nak és a Meta adatvédelmi irányelveinek megfelelően dolgozunk fel.
+Megfelelő intézkedéseket teszünk adatainak védelmére, és minden törlési kérelmet a GDPR és a Meta adatvédelmi szabályzata szerint kezelünk.
 
-## Adattörlés kérése
+## Adattörlési kérelem benyújtása
 
-Jogában áll kérni, hogy töröljünk minden olyan személyes adatot, amelyet Önről tárolunk.
+Jogában áll kérni, hogy töröljük Önről tárolt személyes adatokat.
 
-Adattörlés kérése:
+Adattörlési kérelem benyújtásához:
 
-* 📧**Küldjön egy e-mailt a következő címre:**:<support@wink.travel>
-* 📝 Használd a tárgy mezőt:`Data Deletion Request`
-* 🔍 Kérjük, tüntesse fel az azonosításra alkalmas adatokat, például:
-  * A platformunkon használt e-mail cím
-  * Facebook- vagy Google-azonosítód vagy hasonló (ha van ilyen)
+- 📧 **Küldjön e-mailt a következő címre**: [support@wink.travel](mailto:support@wink.travel)
+- 📝 Használja a tárgy mezőt: `Data Deletion Request`  
+- 🔍 Kérjük, adja meg az azonosításhoz szükséges adatokat, például:
+  - A platformunkon használt e-mail címet
+  - Facebook vagy Google azonosítóját vagy hasonlót (ha alkalmazható)
 
-Válaszolni fogunk belül**30 nap**a kérésed kézhezvételétől számítva, a GDPR előírásainak megfelelően.
+Kérését a GDPR előírásainak megfelelően **30 napon belül** megválaszoljuk.
 
-## Kérdései vagy aggályai vannak?
+## Kérdések vagy aggályok?
 
-Ha bármilyen kérdése van azzal kapcsolatban, hogyan gyűjtjük, használjuk fel vagy töröljük az adatait, kérjük, vegye fel a kapcsolatot adatvédelmi csapatunkkal a következő címen:<support@wink.travel>.
+Ha bármilyen kérdése van azzal kapcsolatban, hogyan gyűjtjük, használjuk vagy töröljük adatait, kérjük, forduljon adatvédelmi csapatunkhoz a [support@wink.travel](mailto:support@wink.travel) címen.
 
-***
+---
 
-Köszönjük, hogy megbízik bennünk. Komolyan vesszük az adatvédelmet, és elkötelezettek vagyunk amellett, hogy teljes ellenőrzést biztosítsunk Önnek az adatai felett.
-
+Köszönjük, hogy megbízott bennünk. Az adatvédelem számunkra kiemelten fontos, és elkötelezettek vagyunk amellett, hogy teljes irányítást biztosítsunk az Ön adatai felett.

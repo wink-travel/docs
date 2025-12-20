@@ -1,43 +1,43 @@
 ---
 title: Begäran om radering av data
-description: Läs hur du begär att dina personuppgifter raderas på Wink.
+description: Lär dig hur du begär att få dina personuppgifter raderade på Wink.
 sidebar:
   order: 9
 ---
-På Wink respekterar vi din integritet och är fullt engagerade i att skydda dina personuppgifter. Vi följer**Allmänna dataskyddsförordningen (GDPR)**&#x6F;ch andra tillämpliga dataskyddslagar runt om i världen.
 
-Den här sidan beskriver hur du kan begära radering av personuppgifter som vi kan ha samlat in via vår plattform – inklusive men inte begränsat till uppgifter som erhållits via sociala inloggningsleverantörer som Facebook eller Instagram.
+På Wink respekterar vi din integritet och är fullt engagerade i att skydda dina personuppgifter. Vi följer **General Data Protection Regulation (GDPR)** och andra tillämpliga dataskyddslagar runt om i världen.
 
-## Vårt engagemang för dataskydd
+Denna sida beskriver hur du kan begära radering av personuppgifter som vi kan ha samlat in via vår plattform — inklusive men inte begränsat till data som erhållits via sociala inloggningsleverantörer som Facebook eller Instagram.
 
-Vi samlar endast in de uppgifter som är nödvändiga för att tillhandahålla våra tjänster, och vi säljer aldrig dina personuppgifter. Detta kan inkludera:
+## Vårt åtagande för dataskydd
 
-* Ditt namn och din e-postadress
-* Offentlig profilinformation (t.ex. från Facebook eller Google)
-* Användnings- eller aktivitetsdata på vår plattform
-* Alla behörigheter som uttryckligen beviljats ​​av dig
+Vi samlar endast in den data som är nödvändig för att tillhandahålla våra tjänster, och vi säljer aldrig din personliga information. Detta kan inkludera:
 
-Vi vidtar lämpliga åtgärder för att skydda dina uppgifter och behandlar alla begäranden om radering i enlighet med GDPR och Metas datapolicy.
+- Ditt namn och din e-postadress
+- Offentlig profilinformation (t.ex. från Facebook eller Google)
+- Användnings- eller aktivitetsdata på vår plattform
+- Eventuella behörigheter som du uttryckligen har gett
 
-## Begäran om radering av data
+Vi vidtar lämpliga åtgärder för att skydda din data och hanterar alla raderingsförfrågningar i enlighet med GDPR och Metas datapolicy.
 
-Du har rätt att begära att vi raderar all personlig information som vi har om dig.
+## Begära radering av data
+
+Du har rätt att begära att vi raderar all personlig information vi har om dig.
 
 För att begära radering av data:
 
-* 📧**Skicka ett e-postmeddelande till**:<support@wink.travel>
-* 📝 Använd ämnesraden:`Data Deletion Request`
-* 🔍 Vänligen inkludera identifierande detaljer såsom:
-  * E-postadressen som används med vår plattform
-  * Ditt Facebook- eller Google-ID eller liknande (om tillämpligt)
+- 📧 **Skicka ett e-postmeddelande till**: [support@wink.travel](mailto:support@wink.travel)
+- 📝 Använd ämnesraden: `Data Deletion Request`  
+- 🔍 Vänligen inkludera identifierande uppgifter såsom:
+  - Den e-postadress som används på vår plattform
+  - Ditt Facebook- eller Google-ID eller liknande (om tillämpligt)
 
-Vi kommer att svara inom**30 dagar**för att motta din begäran, i enlighet med GDPR.
+Vi kommer att svara inom **30 dagar** efter att ha mottagit din begäran, enligt GDPR.
 
 ## Frågor eller funderingar?
 
-Om du har några frågor om hur vi samlar in, använder eller raderar dina uppgifter är du välkommen att kontakta vårt integritetsteam på<support@wink.travel>.
+Om du har några frågor om hur vi samlar in, använder eller raderar din data, tveka inte att kontakta vårt integritetsteam på [support@wink.travel](mailto:support@wink.travel).
 
-***
+---
 
-Tack för att du litar på oss. Vi tar dataskydd på största allvar och strävar efter att ge dig full kontroll över din information.
-
+Tack för att du litar på oss. Vi tar dataskydd på allvar och är engagerade i att ge dig full kontroll över din information.

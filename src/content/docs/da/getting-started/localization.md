@@ -1,69 +1,69 @@
 ---
-title: Localization
-description: 'Denne artikel forklarer, hvordan vi administrerer lokalisering på Wink.'
+title: Lokalisering
+description: Denne artikel forklarer, hvordan vi håndterer lokalisering på Wink.
 sidebar:
   order: 7
 ---
-Denne artikel forklarer, hvordan vi administrerer lokalisering på Wink.
+
+Denne artikel forklarer, hvordan vi håndterer lokalisering på Wink.
 
 ## Understøttede sprog
 
 Wink understøtter følgende sprog:
 
-* Engelsk
-* Indonesisk
-* Bahasa Malaysia
-* Bulgarsk
-* Catalansk
-* Tjekkisk
-* Dansk
-* Tysk
-* Eetisk
-* Spansk
-* Spansk (AR)
-* Spansk (MX)
-* Filippinsk
-* Suomi
-* Fransk
-* Ελληνικά
-* Hebraisk
-* Hinanden
-* Hrvatski
-* Ungarsk
-* Italiensk
-* Italiensk
-* 日本語
-* 한국어
-* Letlandsk
-* Litauen
-* Hollandsk
-* Norsk
-* Polsk
-* Portugisisk (BR)
-* Portugisisk (PT)
-* Románă
-* Russisk
-* Slovensk
-* Slovensk
-* Srpski
-* Svensk
-* ภาษาไทย
-* Tyrkisk
-* Ukrainsk
-* Tiếng Việt
-* Arabisk
-* 简体中文
-* 繁體中文
+- Engelsk
+- Bahasa Indonesia
+- Bahasa Malaysia
+- Български
+- Català
+- Čeština
+- Dansk
+- Deutsch
+- Eesti
+- Español
+- Español (AR)
+- Español (MX)
+- Filipino
+- Suomi
+- Français
+- Ελληνικά
+- עברית
+- हिन्दी
+- Hrvatski
+- Magyar
+- Íslenska
+- Italiano
+- 日本語
+- 한국어
+- Latviski
+- Lietuvių
+- Nederlands
+- Norsk
+- Polski
+- Português (BR)
+- Português (PT)
+- Română
+- Русский
+- Slovenčina
+- Slovenščina
+- Srpski
+- Svenska
+- ภาษาไทย
+- Türkçe
+- Українська
+- Tiếng Việt
+- العربية
+- 简体中文
+- 繁體中文
 
-## Platformniveau
+## Platform-niveau
 
-Alle vores applikationer er lokaliseret til at understøtte alle de ovennævnte sprog. Hver applikation har en sprogvælger nederst på siden, hvor brugeren kan vælge sit ønskede sprog. Bookingsystemet understøtter også at angive det ønskede sprog via URL'en.
+Alle vores applikationer er lokaliserede til at understøtte alle ovennævnte sprog. Hver applikation har en sprogvælger nederst på siden, hvor brugeren kan vælge sit ønskede sprog. Bookingmotoren understøtter også at angive det ønskede sprog via URL'en.
 
-## Brugergenereret indhold
+## Bruger-genereret indhold
 
-Brugergenereret indhold er lokaliseret til at understøtte alle de ovennævnte sprog. Brugere kan vælge at oprette den engelske version af indholdet og lade Wink klare resten. Eller de kan administrere et specifikt sæt sprog for mere kontrol og lade Wink håndtere resten.
+Bruger-genereret indhold er lokaliseret til at understøtte alle ovennævnte sprog. Brugere kan vælge at oprette den engelske version af indholdet og lade Wink klare resten. Eller de kan administrere et specifikt sæt sprog for mere kontrol og lade Wink håndtere resten.
 
 ## Forbehold
 
-Standardsproget er engelsk. Medmindre andet er angivet, bruger vi standardsproget først, når en bruger bruger en af ​​vores applikationer. Vi indstiller ikke det aktive sprog baseret på brugerens browsers landestandard.
-
+Standardsproget er engelsk. Medmindre andet er angivet, vil vi bruge standardsproget først, når en bruger anvender nogen af vores applikationer. Vi sætter ikke det aktive sprog baseret på brugerens browsersprog.

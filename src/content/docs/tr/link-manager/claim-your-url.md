@@ -1,17 +1,16 @@
 ---
-title: URL'nizi talep edin
-description: Bu yazımızda WinkLinks vanity URL'nizi nasıl talep edeceğinizi anlatacağız.
+title: URL'nizi Talep Edin
+description: Bu makalede, WinkLinks özel URL'nizi nasıl talep edeceğinizi anlatıyoruz.
 sidebar:
   order: 1
 ---
-Bir oluşturarak [Ortaklık hesabı](/studio/what-is-studio), zaten bir WinkLinks vanity url'niz var. WinkLinks yayıncı özellikleri, diğer ortaklık özelliklerimizin yanı sıra Studio uygulamamızda mevcuttur.
+
+Bir [affiliate hesabı](/tr/studio/what-is-studio) oluşturarak, zaten bir WinkLinks özel URL'sine sahip olursunuz. WinkLinks yayıncı özellikleri, diğer affiliate özelliklerimizle birlikte Studio uygulamamızda mevcuttur.
 
 ### Örnek
 
-Hesap adınız Queen Bee ise WinkLinks özel URL'niz şu şekilde olacaktır:
+Hesap adınız Queen Bee ise, WinkLinks özel URL'niz şöyle olacaktır:
 
-<h4 align="center">https://i.trvl.as/kraliçe-arı</h4>
+<h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-Hesap adları şu şekilde mevcuttur:`first come - first serve`temel - Benzersiz URL'nizi elinizden geldiğince erken alın!
-
+Hesap adları `ilk gelen - ilk alır` esasına göre verilir - Benzersiz URL'nizi hemen alın!

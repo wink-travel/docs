@@ -1,43 +1,40 @@
 ---
-title: TripPayga integreerimine
-description: >-
-  See artikkel sisaldab täielikku näidet selle kohta, kuidas TripPayga
-  integreeruda ja lasta tal makse teie eest hallata.
+title: Integreerimine TripPayga
+description: See artikkel sisaldab täielikku näidet, kuidas integreeruda ja lasta TripPayl makse teie eest hallata.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-See artikkel sisaldab terviklikku näidet TripPayga integreerimise kohta.
+See artikkel sisaldab lõpp-lõpuni näidet, kuidas integreeruda TripPayga.
 
-Soovitatav on, et oleksite juba lugenud:
+Soovitatav on, et olete juba lugenud:
 
-* [Makse > Kaardistamine](/payment/mapping).
-* [Makse > Integratsioon](/payment/integration).
-* [Makseveebikomponent](/developers/web-components/#payment).
-* [Makse API](/developers/apis/#payment-api).*Loe peatükki, mis käsitleb`Create payable contracts`*
+- [Makse > Kaardistamine](/et/payment/mapping).
+- [Makse > Integreerimine](/et/payment/integration).
+- [Makse veebikomponent](/et/developers/web-components/#payment).
+- [Makse API](/et/developers/apis/#payment-api). *Lugege jaotist `Loo tasumisele kuuluvad lepingud`*
 
-Siin on sammud TripPay edukaks kasutamiseks broneeringu eest tasumiseks:
+Siin on sammud, kuidas edukalt kasutada TripPayd broneeringu eest tasumiseks:
 
 <Steps>
-  1. Veenduge, et broneerimislepingus mainitud soodustatud isikud on kaardistatud.
-  2. Laske reisijal valida, milliseid varusid ta broneerida soovib, ja laske tal maksmiseks valmistuda.
-  3. Loo `payable contract` koos TripPayga, mis sisaldab broneeritavaid esemeid.
-  4. Laske reisijal maksta TripPay veebikomponendi abil.
+1. Veenduge, et broneerimislepingus mainitud kasusaajad on kaardistatud.
+2. Laske reisijal valida soovitud inventar ja valmistuda maksmiseks.
+3. Looge TripPayga `tasumisele kuuluv leping`, mis sisaldab broneeritavaid üksusi.
+4. Laske reisijal maksta TripPay veebikomponendi abil.
 </Steps>
 
+Eeldame, et olete juba lõpetanud `Samm 1` ja `Samm 2` ning olete valmis TripPayle broneeringust teatama.
 
-Eeldame, et olete juba lõpetanud`Step 1`ja`Step 2`ja on valmis TripPayd broneeringust teavitama.
-
-## Looge makstav leping
+## Loo tasumisele kuuluv leping
 
 :::note
-Makstava lepingu loomise nõuete kohta lisateabe saamiseks minge maksete API-sse.
+Lisateabe saamiseks tasumisele kuuluva lepingu loomise nõuete kohta minge Makse API-sse.
 :::
 
-### Taotlus
-
-Siin on JSON-näidistaotlus, mis sisaldab kõike, mida vajate oma esimese makstava lepingu loomiseks.
+### Päring
+Siin on JSON-i näidispäring, mis sisaldab kõike, mida vajate oma esimese tasumisele kuuluva lepingu loomiseks.
 
 ```json {3-6, 8-9}
 {
@@ -132,49 +129,49 @@ Siin on JSON-näidistaotlus, mis sisaldab kõike, mida vajate oma esimese maksta
 
 Selgitus:
 
-Me ei hakka siin iga andmepunkti selgitama, kuna need on juba API dokumentatsioonis käsitletud.
+Me ei selgita siin kõiki andmepunkte, kuna need on juba API dokumentatsioonis kaetud.
 
-* Read:**2–7**on broneeringu eest vastutav kasutaja. Broneerijaid on kahte tüüpi:
-  * Rändur.
-  * Reisibüroo.
-* Read:**8–9**on TripPay konto, mis teeb broneeringu. See võib olla:
-  * Teie TripPay integraatori konto.
-  * Kui haldate partnerlusvõrgustikku, võib see olla teie partner.
-* Kasutage`traceId`mitme broneeringu koondamiseks mitme tarnija alla. Nii saate grupibroneeringu tühistada.
-* `redirectUrl`annab TripPayle teada, millisele lehele pärast makse sooritamist suunata.
-* `sourceUrl`on sait/rakendus, kus broneering tehti.
+- Read: **2 - 7** on broneeringu eest vastutav kasutaja. On kaks tüüpi broneerijaid:
+    - Reisija.
+    - Reisibüroo esindaja.
+- Read: **8 - 9** on TripPay konto, mis broneeringut vahendab. See võib olla:
+    - Teie TripPay integreerija konto.
+    - Kui juhite sidusvõrku, võib see olla teie sidusettevõte.
+- Kasutage `traceId`, et grupeerida mitu broneeringut mitme tarnija vahel. Nii saate tühistada grupibroneeringu.
+- `redirectUrl` ütleb TripPayle, millisele lehele suunata pärast makse lõpetamist.
+- `sourceUrl` on sait või rakendus, kus broneering tehti.
 
-See`contractList`Massiiv sisaldab kaupa/kaupu, mida reisija soovib mitmelt tarnijalt osta. Iga kaup sisaldab:
+`contractList` massiiv sisaldab üksust(e), mida reisija soovib osta mitmelt tarnijalt. Iga üksus sisaldab:
 
-* See`identifier`on teie loodud kehtiv UUID.
-* Tarnija, kellelt soovite laoseisu broneerida.
-* Laoseisud, mida soovite sellelt tarnijalt broneerida. Need kõik on määratud pesastatud massiivis.`contractItemList`.
-* Iga kirje all`contractItemList`sisaldab:
-  * **Külaliskasutaja**See on kasutaja, kes saabub ruumidesse.
-  * **Nimi inglise keeles**Inventuuri nimi inglise keeles.
-  * **Kirjeldus inglise keeles**Pikem kirjeldus inventuurist inglise keeles.
-  * **Hind**Eseme hind.
-  * **Reisiplaan**Millal see üksus broneerida.
-  * **Hinnakujunduse tüüp**Kuidas hinda arvutati.
-  * **Varude tüüp**Mis tüüpi inventar see on?
-  * **Makstav**Millal tuleks reisijalt tasu võtta.*Praegu toetame ainult kohese maksmise võimalusi.*
-  * **Poliitika**Lisage tühistamispoliitika reeglid.
-  * **Päevahinnakiri**Kui broneeritav objekt on tuba, saate valida, kui palju see tuba iga külalise ööbimise eest maksma läheb.
-  * **Toetusesaajad**Lisage, millisele TripPay kontole/kontodele tuleks toote hinnast milline/milliseid summasid eraldada.*Fikseeritud/protsentuaalsed summad on toetatud.*
+- `identifier` on kehtiv UUID, mille te genereerite.
+- Tarnija, kelle inventari soovite broneerida.
+- Inventar, mida soovite sellelt tarnijalt broneerida. Need on kõik määratletud pesastatud massiivis `contractItemList`.
+- Iga kirje `contractItemList` all sisaldab:
+    - **Külaliskasutaja** See on kasutaja, kes saabub objekti juurde.
+    - **Nimi inglise keeles** Inventari nimi inglise keeles.
+    - **Kirjeldus inglise keeles** Pikem inventari kirjeldus inglise keeles.
+    - **Hind** Üksuse hind.
+    - **Reisigraafik** Millal see üksus tuleks broneerida.
+    - **Hinnatüüp** Kuidas hind arvutati.
+    - **Inventari tüüp** Millist tüüpi inventar see on.
+    - **Tasumisele kuuluv** Millal reisijat arveldada. *Praegu toetame ainult kohest makset.*
+    - **Põhimõte** Lisage tühistamispoliitika reeglid.
+    - **Päevamäärade nimekiri** Kui broneeritav üksus on tuba, saate lisada, kui palju see tuba maksab iga öö eest, mil külaline viibib.
+    - **Kasusaajad** Lisage, millisele TripPay kontole(d) tuleks määrata milline osa hinna summast. *Toetatud on fikseeritud ja protsendipõhised summad.*
 
 :::note
-Ülaltoodud JSON-näites on meil 3 kasusaajat:
+Ülaltoodud JSON-i näites on meil 3 kasusaajat:
 
-* 1,5% eraldati broneeringut vahendavale platvormile.*nt. Silmapilgutus*
-* 9,85% eraldati partnerile komisjonitasuks.*nt Kim Kardashian*
-* Tarnijale eraldati toa broneerimiseks 88,65%.*nt Hilton*
+- 1,5% eraldati platvormile, mis broneeringut vahendas. *nt Wink*
+- 9,85% eraldati sidusettevõttele komisjonitasuna. *nt Kim Kardashian*
+- 88,65% eraldati tarnijale toa broneerimise eest. *nt Hilton*
 
-Kui TripPay vastab makselepinguga, märkate, et ta on oma soodustatud isiku 4,0% ulatuses sisse maksnud.
+Kui TripPay vastab tasumisele kuuluva lepinguga, märkate, et see lisas oma kasusaaja 4,0% ulatuses.
 :::
 
 ### Vastus
 
-Kui TripPay teie päringule vastab, näeb see välja umbes selline:
+Kui TripPay vastab teie päringule, näeb see välja umbes selline:
 
 ```json {3}
 [
@@ -208,19 +205,18 @@ Kui TripPay teie päringule vastab, näeb see välja umbes selline:
 ]
 ```
 
-Salvesta`id`3. real. Seda kasutatakse TripPay veebikomponenti sisestamiseks.
+Salvestage `id` real 3. Seda kasutate TripPay veebikomponendi sisestamiseks.
 
 ## TripPay manustamine
 
 :::note
-Veenduge, et olete eelnevalt meie stiilid ja Javascripti laadinud.
+Veenduge, et olete eelnevalt laadinud meie stiilid ja Javascripti.
 :::
 
-Sel hetkel olete valmis manustama`Payment Web Component`oma veebisaidile ja kuva seda kasutajale.
+Selles etapis olete valmis manustama `Payment Web Component` oma veebisaidile ja seda kasutajale kuvama.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Mis puutub integratsiooni, siis see on kõik, mida peate tegema. Kogu raske töö teeb edaspidi ära TripPay.
-
+Mis puutub integreerimisse, siis see on kõik, mida peate tegema. Kõik raske töö teeb TripPay edaspidi ära.

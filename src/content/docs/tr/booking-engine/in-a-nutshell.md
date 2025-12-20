@@ -1,49 +1,47 @@
 ---
-title: Özetle
-description: >-
-  Bu makale, rezervasyon motoru hakkında bilmek istediğiniz her şeyi size
-  anlatmaktadır.
+title: Kısaca
+description: Bu makale, rezervasyon motoru hakkında bilmek istediğiniz her şeyi anlatıyor.
 sidebar:
   order: 0
 ---
-Wink'te sorumluluğu şu şekilde parçalara ayırıyoruz:
 
-* [Ekstranet](/extranet/what-is-extranet) tedarikçilerin envanter yönetimiyle ilgilenir.
-* [Stüdyo](/studio/what-is-studio) İçeriği yöneten iştiraklerle ilgilenir.
-* `Booking Engine`oluşturulan içeriğin oluşturulmasıyla ilgilenir`Studio`, oluşturulan envantere dayalıydı`Extranet`ve rezervasyona açık hale getiriyoruz.
-* [Ödeme](/payment/what-is-trip-pay) \[Wink gibi platformlar aracılığıyla] rezervasyon yapan yolculardan ücret tahsil etmek/onlara geri ödeme yapmak ve satıcılara ödeme yapmakla ilgilenir.
+Wink'te sorumlulukları şu şekilde ayırıyoruz:
 
-Rezervasyon motoru platformumuzun merkezinde yer alıyor.
+- [Extranet](/tr/extranet/what-is-extranet), tedarikçilerin envanteri yönetmesiyle ilgilenir.
+- [Studio](/tr/studio/what-is-studio), bağlı kuruluşların içeriği yönetmesiyle ilgilenir.
+- `Booking Engine`, `Extranet`'te oluşturulan envantere dayalı olarak `Studio`'da oluşturulan içeriği alır ve rezervasyona açar.
+- [Payment](/tr/payment/what-is-trip-pay), [Wink gibi platformlar üzerinden] rezervasyon yapan gezginlerden tahsilat / iade işlemleri ve tedarikçilere ödeme yapma ile ilgilenir.
+
+Rezervasyon motoru platformumuzun merkezindedir.
 
 Sorumlulukları şunlardır:
 
-* Döviz yönetimi ve döviz kurlarının güncel tutulması.
-* Oran sağlayıcılarına bize oran verilerini gönderme yolu sağlamak.
-* Arama verilerinin yönetimi.*örn. bölgeler, ülkeler, destinasyonlar, mülkler vb.*
-* Dilleri yönetmek.
-* Kullanıcı etkileşimleri, olaylar ve API çağrılarına dayalı analitik üretmek.
-* İstenilen format, dil ve para biriminde rezerve edilebilir envanterin sunulması, örneğin:
-  * A [paylaşılabilir bağlantı](/studio/shareable-links) Facebook'ta.
-  * https://ota.wink.travel adresindeki otelin envanterini içeren bir otel açılış sayfası.
-  * A [kart](/studio/cards) bağlı kuruluş envanterini içeren.
-  * A [harita](/studio/maps)senin üzerinde[Göz kırpma bağlantıları](/link-manager/wink-links) hesap.
-  * Bir [API çağrısı](/developers/apis) uzaktan bir seyahat acentesi sisteminden.
-* Seyahat edenlere şu olanağı sağlamak:
-  * Seyahat envanterini arayın.
-  * Mevcut envanteri rezerve edin.
-  * Yönetmek[rezervasyonlar ve yorumlar](/booking-engine/bookings).
-  * Yönetmek [yapılacaklar listesi](/booking-engine/bucket-list) Gelecekte rezerve edilecek şeyler.
-  * Yönetmek[seyahat profili](/booking-engine/travel-preferences).*Örn. Alerjiler, acil durumlarda iletişime geçilecek kişiler vb.*
+- Dövizleri yönetmek ve döviz kurlarını güncel tutmak.
+- Fiyat sağlayıcılarına fiyat verilerini göndermeleri için bir yol sunmak.
+- Arama verilerini yönetmek. *örneğin bölgeler, ülkeler, destinasyonlar, tesisler vb.*
+- Dilleri yönetmek.
+- Kullanıcı etkileşimleri, olaylar ve API çağrıları bazında analizler oluşturmak.
+- İstenen format, dil ve para biriminde rezervasyona açık envanteri sunmak, örneğin:
+    - Facebook'ta bir [paylaşılabilir bağlantı](/tr/studio/shareable-links).
+    - https://ota.wink.travel adresinde o otel için envanter içeren bir otel açılış sayfası.
+    - Bağlı kuruluş envanteri içeren bir [kart](/tr/studio/cards).
+    - [WinkLinks](/tr/link-manager/wink-links) hesabınızdaki bir [harita](/tr/studio/maps).
+    - Uzaktaki bir seyahat acentesi sisteminden bir [API çağrısı](/tr/developers/apis).
+- Gezginlere şu imkanları sağlamak:
+    - Seyahat envanteri aramak.
+    - Mevcut envanteri rezerve etmek.
+    - [Rezervasyonlarını ve yorumlarını](/tr/booking-engine/bookings) yönetmek.
+    - Gelecekte rezerve etmek istedikleri şeylerin [liste](/tr/booking-engine/bucket-list) yönetimi.
+    - [Seyahat profillerini](/tr/booking-engine/travel-preferences) yönetmek. *örneğin Alerjiler, acil durum iletişim bilgileri vb.*
 
-Rezervasyon motoru, otellerin ve iştiraklerin ürünlerini gezginlere satmaları için son derece özelleştirilebilir bir web sitesi olan https://ota.wink.travel aracılığıyla sunduğumuz yeniden kullanılabilir işlevlerin bir koleksiyonudur.
+Rezervasyon motoru, https://ota.wink.travel üzerinden sunduğumuz, otellerin ve bağlı kuruluşların ürünlerini gezginlere satmaları için yüksek derecede özelleştirilebilir bir web sitesi olan yeniden kullanılabilir işlevsellikler koleksiyonudur.
 
-Daha fazla özgürlük isteyen entegratörler, aynı özelliklerin tümüne bizim aracılığımızla erişebilir. [WordPress eklentisi](/developers/wordpress/),[Web Bileşenleri](/developers/web-components) Ve [API'ler](/developers/apis).
+Daha fazla özgürlük isteyen entegratörler, aynı özelliklere [WordPress eklentimiz](/tr/developers/wordpress/), [Web Bileşenlerimiz](/tr/developers/web-components) ve [API'lerimiz](/tr/developers/apis) aracılığıyla erişebilirler.
 
-Rezervasyon motorunun sunduğu özellikler hakkında daha fazla bilgi edinmek için bir sonraki bölümlere geçin.
+Rezervasyon motorunun sundukları hakkında daha fazla bilgi için sonraki bölümlere devam edin.
 
 ## Daha fazla okuma
 
-* Hakkımızda okuyun[WordPress eklentisi](/developers/wordpress/).
-* Hakkımızda okuyun[Web Bileşenleri](/developers/web-components).
-* Hakkımızda okuyun[API'ler](/developers/apis).
-
+- [WordPress eklentimiz](/tr/developers/wordpress/) hakkında bilgi edinin.
+- [Web Bileşenlerimiz](/tr/developers/web-components) hakkında bilgi edinin.
+- [API'lerimiz](/tr/developers/apis) hakkında bilgi edinin.

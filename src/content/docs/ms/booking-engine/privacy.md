@@ -1,73 +1,71 @@
 ---
-title: Dasar Privasi
-description: >-
-  Dasar privasi yang mudah diakses dan terkini untuk semua pengguna pengembara
-  kami.
+title: Polisi Privasi
+description: Polisi privasi yang mudah diakses dan sentiasa dikemas kini untuk semua pengguna pelancong kami.
 sidebar:
   order: 5
 ---
-TRAVELIKO SINGAPURA PTE. LTD., yang beroperasi di bawah nama Wink ("Syarikat"), ingin memaklumkan kepada anda yang menghubungi Syarikat bahawa adalah perlu untuk mengumpul, menyusun dan menggunakan data peribadi anda untuk perkhidmatan Syarikat mengikut Dasar Privasi ini. Dengan menghubungi dan mendedahkan data peribadi anda kepada Syarikat untuk tujuan komunikasi, penyelarasan dan/atau penyediaan perkhidmatan Syarikat kepada anda, ia menganggap bahawa anda bersetuju dan menerima untuk terikat dan mematuhi Dasar Privasi ini.
 
-Data peribadi sedang diproses, Syarikat boleh mendapatkan data peribadi anda daripada pelbagai saluran seperti berikut:
+TRAVELIKO SINGAPORE PTE. LTD., yang beroperasi di bawah nama Wink (selepas ini dirujuk sebagai “Syarikat”), ingin memaklumkan kepada anda yang menghubungi Syarikat bahawa adalah perlu untuk mengumpul, menyusun dan menggunakan data peribadi anda bagi perkhidmatan Syarikat selaras dengan Polisi Privasi ini. Dengan menghubungi dan mendedahkan data peribadi anda kepada Syarikat untuk tujuan komunikasi, penyelarasan, dan/atau penyediaan perkhidmatan Syarikat kepada anda, anda dianggap bersetuju dan menerima untuk terikat serta mematuhi Polisi Privasi ini.
 
-(1) Terus daripada anda melalui komunikasi Syarikat dengan anda;
+Data peribadi yang diproses, Syarikat mungkin memperoleh data peribadi anda dari pelbagai saluran seperti berikut:
 
-(2) Secara tidak langsung, melalui rujukan daripada pihak ketiga yang anda boleh berikan kebenaran untuk mendedahkan data peribadi anda kepada Syarikat; atau
+(1) Secara langsung daripada anda melalui komunikasi Syarikat dengan anda;
 
-(3) Dikumpul secara automatik melalui sistem apabila anda mengakses laman web Syarikat dan/atau menggunakan perkhidmatan tersebut.
+(2) Secara tidak langsung, melalui rujukan daripada pihak ketiga yang anda mungkin memberi kebenaran untuk mendedahkan data peribadi anda kepada Syarikat; atau
 
-Data peribadi yang diperlukan oleh Syarikat untuk mengumpul, menyusun, menggunakan dan memproses di bawah Dasar Privasi ini adalah seperti berikut:
+(3) Dikumpul secara automatik melalui sistem apabila anda mengakses laman web Syarikat dan/atau menggunakan perkhidmatan.
 
-(1) Nama penuh anda, termasuk maklumat berkaitan anda atau maklumat wakil anda (sekiranya anda menghubungi kami atas nama badan perundangan) yang mungkin termasuk dokumen maklumat identiti anda.
+Data peribadi yang perlu dikumpul, disusun, digunakan dan diproses oleh Syarikat di bawah Polisi Privasi ini adalah seperti berikut:
 
-(2) Maklumat hubungan seperti nombor telefon, e-mel atau maklumat akaun media sosial.
+(1) Nama penuh anda, termasuk maklumat berkaitan atau maklumat wakil anda (sekiranya anda menghubungi kami bagi pihak entiti berkanun) yang mungkin termasuk dokumen pengenalan identiti anda.
 
-(3) Data peribadi lain yang mungkin anda berikan kepada Syarikat semasa komunikasi seperti maklumat mengenai perkara-perkara pertanyaan, maklumat minat atau sebarang maklumat pengenalan peribadi lain yang anda berikan kepada Syarikat secara terus melalui pelbagai saluran komunikasi.
+(2) Maklumat hubungan seperti nombor telefon, emel atau maklumat akaun media sosial.
 
-(4) Dalam kes komunikasi melalui laman web, mungkin termasuk maklumat teknikal anda seperti Alamat IP, Kuki, termasuk maklumat tentang tingkah laku menyemak imbas anda.
+(3) Data peribadi lain yang anda mungkin berikan kepada Syarikat semasa komunikasi seperti maklumat mengenai perkara pertanyaan, maklumat minat atau sebarang maklumat peribadi lain yang anda berikan secara langsung kepada Syarikat melalui pelbagai saluran komunikasi.
 
-Tujuan Pemprosesan dan Penggunaan Data Peribadi, Syarikat adalah perlu untuk mengumpul, menyusun dan menggunakan data peribadi Pemohon Pekerjaan untuk tujuan berikut:
+(4) Dalam kes komunikasi melalui laman web, mungkin termasuk maklumat teknikal anda seperti Alamat IP, Cookies, termasuk maklumat tentang tingkah laku pelayaran anda.
 
-(1) Untuk pengurusan komunikasi yang anda telah berkomunikasi dengan Syarikat, seperti menjawab soalan, menyediakan maklumat yang relevan seperti yang diminta dan dikehendaki, mengurus aduan, atau membalas komen yang anda buat terus kepada Syarikat melalui pelbagai saluran komunikasi, termasuk penyelarasan berterusan, pelaksanaan perjanjian perkhidmatan, dan/atau pelaksanaan hak dan kewajipan yang anda dan Syarikat mungkin bersetuju;
+Tujuan Pemprosesan dan Penggunaan Data Peribadi, Syarikat perlu mengumpul, menyusun dan menggunakan data peribadi Pemohon Kerja untuk tujuan berikut:
 
-(2) Untuk melaksanakan kewajipan undang-undang yang mana Syarikat mungkin tertakluk kepada syarat tertentu. Ini mungkin termasuk, tetapi tidak terhad kepada, melaksanakan tugas yang berkaitan dengan penyediaan dokumen perakaunan dan cukai berkaitan dengan sebarang perkhidmatan yang disediakan oleh Syarikat kepada anda;
+(1) Untuk pengurusan komunikasi yang anda lakukan dengan Syarikat, seperti menjawab soalan, menyediakan maklumat berkaitan seperti yang diminta dan diperlukan, menguruskan aduan, atau memberi respons kepada komen yang anda buat secara langsung kepada Syarikat melalui pelbagai saluran komunikasi, termasuk penyelarasan berterusan, pelaksanaan perjanjian perkhidmatan, dan/atau pelaksanaan hak dan kewajipan yang mungkin dipersetujui antara Syarikat dan anda;
 
-(3) Untuk tujuan membina dan menambah baik perhubungan perniagaan, termasuk meningkatkan perkhidmatan yang Syarikat sediakan untuk manfaat anda, yang mana Syarikat mungkin mengumpul dan/atau menggunakan data peribadi anda untuk tujuan kawalan, jaminan perkhidmatan, analisis pengurusan dan penyelesaian isu berkaitan perniagaan, termasuk, tetapi tidak terhad kepada, latihan pekerja dan perancangan penambahbaikan perkhidmatan masa hadapan;
+(2) Untuk pelaksanaan kewajipan undang-undang yang mungkin dikenakan ke atas Syarikat mengikut syarat tertentu. Ini mungkin termasuk, tetapi tidak terhad kepada, melaksanakan tugas berkaitan penyediaan dokumen perakaunan dan cukai berkaitan dengan sebarang perkhidmatan yang diberikan oleh Syarikat kepada anda;
+
+(3) Untuk tujuan membina dan memperbaiki hubungan perniagaan, termasuk meningkatkan perkhidmatan yang disediakan oleh Syarikat untuk manfaat anda, di mana Syarikat mungkin mengumpul dan/atau menggunakan data peribadi anda untuk tujuan kawalan, jaminan perkhidmatan, analisis pengurusan dan penyelesaian isu berkaitan perniagaan, termasuk, tetapi tidak terhad kepada, latihan pekerja dan perancangan penambahbaikan perkhidmatan masa depan;
 
 (4) Untuk tujuan melindungi dan mempertahankan hak undang-undang Syarikat sekiranya anda dan Syarikat mempunyai pertikaian; dan
 
-(5) Tertakluk kepada persetujuan jelas yang diberikan kepada Syarikat seperti komunikasi pemasaran dan surat berita, Syarikat boleh memproses Data Peribadi untuk tujuan seperti yang ditakrifkan dalam persetujuan.
+(5) Tertakluk kepada persetujuan jelas yang diberikan kepada Syarikat seperti komunikasi pemasaran dan surat berita, Syarikat mungkin memproses Data Peribadi untuk tujuan yang ditakrifkan dalam persetujuan tersebut.
 
-Tempoh Pengekalan Data Peribadi, untuk melaksanakan mengikut tujuan yang dinyatakan di atas, Syarikat perlu mengumpul, menyusun dan memproses data peribadi anda mengikut tempoh berikut:
+Tempoh Penyimpanan Data Peribadi, bagi melaksanakan tujuan yang diterangkan di atas, Syarikat perlu mengumpul, menyusun dan memproses data peribadi anda mengikut tempoh berikut:
 
-(1) Bagi pemprosesan data peribadi bagi tujuan menyediakan perkhidmatan, pelaksanaan perjanjian dan/atau pelaksanaan hak dan kewajipan di bawah perjanjian, Syarikat perlu memproses data peribadi anda.selagi syarikat mempunyai kewajipan untuk menyediakan perkhidmatan kepada anda;
+(1) Untuk pemprosesan data peribadi bagi tujuan penyediaan perkhidmatan, pelaksanaan perjanjian dan/atau pelaksanaan hak dan kewajipan di bawah perjanjian, Syarikat perlu memproses data peribadi anda selama Syarikat mempunyai kewajipan untuk menyediakan perkhidmatan kepada anda;
 
-(2) Bagi pemprosesan data peribadi bagi tujuan melaksanakan tugas mengikut undang-undang yang berkenaan, Syarikat perlu memproses data peribadi anda untuk tempoh masa yang ditetapkan oleh undang-undang yang berkenaan;
+(2) Untuk pemprosesan data peribadi bagi tujuan melaksanakan tugas mengikut undang-undang yang berkuat kuasa, Syarikat perlu memproses data peribadi anda untuk tempoh masa yang ditetapkan oleh undang-undang yang berkuat kuasa;
 
-(3) Bagi pemprosesan data peribadi bagi tujuan membina dan menambah baik perhubungan perniagaan dan/atau menambah baik perkhidmatan, Syarikat berhak untuk mengekalkan data peribadi tersebut setakat mana Syarikat mungkin mempunyai keperluan perniagaan. Syarikat menjamin bahawa pengekalan data peribadi tidak akan menjejaskan hak subjek data secara tidak munasabah;
+(3) Untuk pemprosesan data peribadi bagi tujuan membina dan memperbaiki hubungan perniagaan dan/atau penambahbaikan perkhidmatan, Syarikat berhak menyimpan data peribadi tersebut sejauh mana Syarikat mempunyai keperluan perniagaan. Syarikat menjamin bahawa penyimpanan data peribadi tidak akan menjejaskan hak subjek data secara tidak munasabah;
 
-(4) Untuk pemprosesan data peribadi demi perlindungan dan memperjuangkan hak sah Syarikat, Syarikat mempunyai keperluan untuk menyimpan data peribadi tersebut mengikut preskripsi yang ditakrifkan oleh undang-undang yang berkenaan; dan
+(4) Untuk pemprosesan data peribadi bagi tujuan perlindungan dan mempertahankan hak sah Syarikat, Syarikat perlu menyimpan data peribadi tersebut mengikut tempoh yang ditetapkan oleh undang-undang yang berkuat kuasa; dan
 
-(5) Sekiranya anda memberi kebenaran kepada Syarikat untuk memproses data peribadi anda untuk tujuan tertentu, Syarikat akan memproses data peribadi anda sehingga anda menarik balik kebenaran tersebut.
+(5) Sekiranya anda memberi persetujuan kepada Syarikat untuk memproses data peribadi anda bagi tujuan tertentu, Syarikat akan memproses data peribadi anda sehingga anda menarik balik persetujuan tersebut.
 
-Pendedahan data peribadi, secara amnya, data peribadi anda tidak akan didedahkan, kecuali untuk keadaan yang Syarikat perlu dedahkan kepada orang berikut:
+Pendedahan data peribadi, secara amnya, data peribadi anda tidak akan didedahkan, kecuali dalam keadaan di mana Syarikat perlu mendedahkan kepada pihak berikut:
 
-(1) Penyedia perkhidmatan luar Syarikat yang terlibat untuk menyediakan perkhidmatan sokongan kepada Syarikat dalam menyediakan perkhidmatan kepada anda, termasuk perunding Syarikat. Pendedahan data peribadi tersebut kepada pihak ketiga ini hendaklah dilakukan mengikut tujuan dan hanya atas dasar yang perlu diketahui; atau
+(1) Penyedia perkhidmatan luaran Syarikat yang terlibat dalam menyediakan perkhidmatan sokongan kepada Syarikat dalam menyediakan perkhidmatan kepada anda, termasuk perunding Syarikat. Pendedahan data peribadi kepada pihak ketiga ini akan dilakukan mengikut tujuan dan hanya berdasarkan keperluan untuk mengetahui; atau
 
-(2) Kerajaan, pihak berkuasa kawal selia atau mahkamah bahawa Syarikat mungkin tertakluk kepada perintah, undang-undang atau penghakiman untuk mendedahkan data peribadi.
+(2) Kerajaan, pihak berkuasa pengawalseliaan atau mahkamah yang mana Syarikat mungkin tertakluk kepada perintah, undang-undang atau penghakiman untuk mendedahkan data peribadi.
 
-Syarikat berjanji untuk melaksanakan langkah keselamatan data peribadi yang sesuai untuk menghalang sebarang akses, pengubahsuaian, pindaan atau pendedahan yang tidak dibenarkan dan menyalahi undang-undang. Syarikat komited untuk mengkaji semula langkah-langkah ini secara tetap untuk memastikan keserasiannya dengan piawaian dan undang-undang yang terpakai.
+Syarikat berjanji untuk melaksanakan langkah keselamatan data peribadi yang sesuai bagi mengelakkan sebarang akses, pengubahsuaian, pindaan, atau pendedahan yang tidak dibenarkan dan tidak sah. Syarikat komited untuk mengkaji langkah-langkah ini secara berkala bagi memastikan kesesuaiannya dengan piawaian dan undang-undang yang berkuat kuasa.
 
-Hak subjek data, Syarikat menghormati hak anda sebagai subjek data di bawah undang-undang yang terpakai. Anda boleh menghubungi Syarikat untuk melaksanakan hak-hak iaitu (1) hak untuk menarik balik persetujuan, (2) hak untuk mengakses, (3) hak meminta salinan data peribadi, (4) hak untuk membetulkan data peribadi, (5) hak untuk membantah sebarang pemprosesan data peribadi, (6) hak untuk meminta kemudahalihan data sekiranya Syarikat menyimpan data peribadi tersebut dalam format yang boleh dibaca atau pemindahan hak yang digunakan secara automatik atau digunakan untuk pemindahan data peribadi atau pemindahan secara automatik. data peribadi tersebut kepada pengawal data lain, (7) hak untuk meminta pemadaman atau nyahpengenalpastian data peribadi sekiranya tiada keperluan untuk diproses, (8) hak untuk meminta penggantungan penggunaan data peribadi, dan (9) hak untuk memfailkan aduan.
+Hak subjek data, Syarikat menghormati hak anda sebagai subjek data di bawah undang-undang yang berkuat kuasa. Anda boleh menghubungi Syarikat untuk melaksanakan hak-hak yang berikut (1) hak untuk menarik balik persetujuan, (2) hak untuk mengakses, (3) hak untuk meminta salinan data peribadi, (4) hak untuk membetulkan data peribadi, (5) hak untuk membantah sebarang pemprosesan data peribadi, (6) hak untuk meminta pemindahan data sekiranya Syarikat menyimpan data peribadi dalam format yang boleh dibaca atau biasa digunakan oleh alat atau peralatan automatik termasuk hak untuk memindahkan data peribadi tersebut kepada pengawal data lain, (7) hak untuk meminta pemadaman atau penyamaran data peribadi apabila tiada keperluan untuk memproses, (8) hak untuk meminta penggantungan penggunaan data peribadi, dan (9) hak untuk membuat aduan.
 
-Maklumat hubungan syarikat
+Maklumat hubungan Syarikat
 
 Pegawai Perlindungan Data
 
 Nama: Yann Gouriou
 
-Alamat: #03-01 Wilkie Edge, 8 Wilkie Road, Singapura 228095
+Alamat: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
 
-E-mel: dataprotectionofficer@wink.travel
+Emel: dataprotectionofficer@wink.travel  
 Nombor telefon: +66 (0) 854891301
-

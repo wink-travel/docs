@@ -1,78 +1,76 @@
 ---
-title: Security
-description: >-
-  Þessi grein inniheldur upplýsingar um öryggisráðstafanir sem við innleiðum og
-  eru birtar árlega af þriðja aðila öryggisfyrirtæki okkar.
+title: Öryggi
+description: Þessi grein inniheldur upplýsingar um öryggisráðstafanir sem við innleiðum og eru birtar árlega af þriðja aðila öryggisfyrirtæki okkar.
 sidebar:
   order: 6
 ---
+
 # Yfirlitsskjal um öryggi Wink
 
 *Síðast uppfært: 7. september 2024*
 
 *Útgáfa 1.0*
 
-## Tilgangur og gildissvið
+## Tilgangur og umfang
 
-Sem hluti af áframhaldandi skuldbindingu okkar við öryggi og verndun notendagagna framkvæmum við reglulegar öryggisprófanir á vefforriti okkar. Þetta skjal lýsir prófunaraðferðum okkar, veitir samantekt á niðurstöðum og varpar ljósi á aðferðir okkar við stöðugar öryggisbætur.
+Sem hluti af okkar stöðugu skuldbindingu við öryggi og verndun notendagagna framkvæmum við reglulega innbrotaprófanir á vefumsókn okkar. Þetta skjal lýsir prófunaraðferðum okkar, gefur yfirlit yfir niðurstöður og dregur fram nálgun okkar á stöðuga öryggisbót.
 
-Þetta skjal verður uppfært þegar nýjar skýrslur eru gefnar út eða þegar verulegar breytingar eiga sér stað.
+Þetta skjal verður uppfært þegar nýjar skýrslur berast eða þegar verulegar breytingar eiga sér stað.
 
-Lén innan gildissviðs:\
-\*.wink.travel\
+Lén innan umfangs:  
+\*.wink.travel  
 \*.trippay.io
 
-## Prófunartíðni og áætlun
+## Tíðni og tímasetning prófana
 
-Prófanir okkar eru framkvæmdar árlega og viðbótarprófanir eru áætlaðar eftir þörfum í kjölfar verulegra uppfærslna á forritum eða innviðum. Þessi reglulega prófunartíðni tryggir að við séum á undan síbreytilegum ógnum og viðhöldum öruggu umhverfi.
+Innbrotaprófanir okkar eru framkvæmdar árlega, með viðbótarprófum eftir þörfum eftir verulegar uppfærslur á umsókn eða innviðum. Þessi reglulega prófunarhraði tryggir að við förum á undan þróun ógnanna og viðhalda öruggu umhverfi.
 
 ## Prófunaraðferðir
 
-Öryggisprófanir okkar eru ítarlegar og ná yfir fjölbreytt úrval öryggisþátta, þar á meðal en ekki takmarkað við:
+Innbrotaprófanir okkar eru ítarlegar og ná yfir fjölbreytt öryggisatriði, þar á meðal en ekki takmarkað við:
 
-* **OWASP topp 10:**&#x50;rófanir okkar beinast sérstaklega að mikilvægustu öryggisáhættu, svo sem innspýtingu, bilaðri auðkenningu og skriftum á milli vefsíðna (XSS).
-* **Prófun á svörtum kassa og gráum kassa:**&#x45;ftir umfangi notar teymið okkar þessar aðferðafræði til að herma eftir bæði ytri og innri árásarsviðsmyndum.
-* **Sjálfvirk og handvirk prófun:**&#x56;ið notum Burp Suite Pro, leiðandi öryggisprófunartól, til að framkvæma sjálfvirkar öryggisskannanir og til að aðstoða handvirkar prófunaraðferðir til að bera kennsl á flóknar veikleika og fá bestu mögulegu umfjöllun. Til að greina veikleika ítarlegar eru sérstök verkfæri notuð, t.d. SQLmap.
+* **OWASP Top 10:** Prófanir okkar beinast sérstaklega að alvarlegustu öryggisógnum, svo sem Injection, Broken Authentication og Cross-Site Scripting (XSS).  
+* **Black Box og Grey Box prófanir:** Fer eftir umfangi, notar teymið þessar aðferðir til að líkja eftir bæði ytri og innri árásarsviðum.  
+* **Sjálfvirkar og handvirkar prófanir:** Við notum Burp Suite Pro, leiðandi öryggisprófunartól, til að framkvæma sjálfvirkar öryggisskönnanir og styðja við handvirkar prófanir til að greina flókin veikleika og ná sem bestum yfirgrips. Fyrir sértækari veikleikagreiningu eru notuð sérhæfð verkfæri, t.d. SQLmap.
 
 ## Yfirlit yfir niðurstöður
 
-Eftirfarandi er samantekt á nýjustu skýrslu okkar um skarpskyggnisprófanir:
+Hér að neðan er yfirlit yfir nýjustu innbrotaprófunarskýrslu okkar:
 
-* **Heildarfjöldi veikleika sem greindir voru:**&#x32;
-* **Alvarleikadreifing:**
-  * Mikilvægt: 2
-* **Tegundir öryggisgalla sem greindar voru:**
-  * Biluð aðgangsstýring
+* **Heildarfjöldi veikleika:** 2  
+* **Alvarleikadreifing:**  
+  * Alvarleg: 2  
+* **Tegundir veikleika sem greindust:**  
+  * Brot á aðgangsstýringu  
   * Óörugg hönnun
 
-Fyrir ítarlegri niðurstöður, vinsamlegast vísið til skýrslunnar í heild sinni.
+Fyrir nákvæmar niðurstöður, vinsamlegast skoðið fulla skýrslu.
 
 ### Áhættumat og áhrif
 
-Báðir fundnu veikleikarnir eru flokkaðir sem alvarlegir þar sem báðir hefðu getað haft alvarleg fjárhagsleg áhrif. Sá fyrsti gerði illgjarnum, auðkenndum notanda kleift að fá stjórn á Trippay greiðslureikningi annars fyrirtækis. Seinni veikleikinn gerði illgjarnum notanda kleift að breyta greiðsluupphæð sem krafist er fyrir bókun.
+Báðir veikleikarnir sem fundust eru metnir sem alvarlegir þar sem báðir gætu haft alvarleg fjárhagsleg áhrif. Sá fyrri leyfði illgjarnan staðfestum notanda að ná stjórn á Trippay greiðslureikningi annars fyrirtækis. Sá seinni leyfði illgjarnan notanda að breyta greiðslufjárhæð fyrir bókun.
 
-### Úrbætur og mótvægisaðgerðir
+### Viðbrögð og úrbætur
 
-Við höfum gripið til eftirfarandi aðgerða til að bregðast við þeim veikleikum sem komu í ljós:
+Við höfum gripið til eftirfarandi aðgerða til að bregðast við greindum veikleikum:
 
-* **Tafarlausar uppfærslur:**&#x4D;ikilvægustu veikleikarnir hafa verið lagfærðir innan 48 klukkustunda frá því að þeir uppgötvuðust.
-* **Kóðaendurskoðun og herðing:**&#xDE;róunarteymið hefur innleitt viðbótaröryggisráðstafanir byggðar á tillögum okkar.
+* **Strax viðgerðir:** Alvarlegu veikleikarnir voru lagfærðir innan 48 klukkustunda frá uppgötvun.  
+* **Endurskoðun kóða og styrking:** Þróunarteymið hefur innleitt auknar öryggisstýringar byggðar á tillögum okkar.
 
-## Stöðug framför
+## Stöðugar umbætur
 
-Öryggisprófanir eru hluti af víðtækari stefnu okkar til stöðugra öryggisbóta. Niðurstöður hverrar prófunar leiðbeina öryggisstefnu okkar, hafa áhrif á þróunaraðferðir og knýja áfram úrbætur í öryggisarkitektúr okkar.
+Innbrotaprófanir eru hluti af víðtækri stefnu okkar um stöðugar öryggisbætur. Niðurstöður hvers prófs leiðbeina öryggisstefnu okkar, hafa áhrif á þróunarvenjur og knýja fram endurbætur í öryggisarkitektúr okkar.
 
-## Sérfræðiþekking teymisins
+## Sérfræðiþekking teymis
 
-Öryggisprófanir okkar eru framkvæmdar af sérfræðingi innan fyrirtækisins með mikla reynslu af ýmsum verkefnum og atvinnugreinum. Sérfræðingur okkar notar leiðandi verkfæri og aðferðir til að tryggja að forrit okkar sé vandlega prófað gegn nýjustu öryggisógnum.
+Innbrotaprófanir eru framkvæmdar af innanhúss sérfræðingi með víðtæka reynslu úr fjölmörgum verkefnum og atvinnugreinum. Með notkun leiðandi tækja og aðferða tryggir sérfræðingurinn að umsóknin sé ítarlega prófuð gegn nýjustu öryggisógnum.
 
-## Skuldbinding til öryggis
+## Skuldbinding við öryggi
 
-Við leggjum okkur fram um að viðhalda öruggu forritaumhverfi fyrir notendur okkar og hagsmunaaðila. Stöðug viðleitni okkar í öryggisprófunum og umbótum sýnir fram á skuldbindingu okkar til að vernda gegn sífellt vaxandi ógnum.
+Við erum staðráðin í að viðhalda öruggu umsóknarumhverfi fyrir notendur okkar og hagsmunaaðila. Stöðugar viðleitni okkar til öryggisprófana og umbóta sýnir skuldbindingu okkar til að verjast síbreytilegum ógnunum.
 
 ## Aðgangur að skýrslum og uppfærslur
 
-Þetta skjal verður stöðugt uppfært þegar nýjar skýrslur um prófun á öryggi eru gefnar út. Til að fá aðgang að allri skýrslunni, vinsamlegast hafið samband við okkur í gegnum netfangið hér að neðan. Framtíðaruppfærslur munu innihalda nýgreinda veikleika, úrbætur og breytingar á prófunaraðferðum okkar.
+Þetta skjal verður reglulega uppfært þegar nýjar innbrotaprófunarskýrslur berast. Til að fá aðgang að fullri skýrslu, vinsamlegast hafið samband við okkur í gegnum netfangið hér að neðan. Framtíðaruppfærslur munu innihalda nýgreinda veikleika, úrbætur og breytingar á prófunaraðferðum okkar.
 
 Fyrir frekari fyrirspurnir, vinsamlegast hafið samband við security@wink.travel.
-

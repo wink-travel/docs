@@ -1,100 +1,99 @@
 ---
 title: Maksuehdot
-description: >-
-  Tämä dokumentti käsittelee varojen saatavuutta ja sitä, miten Wink tukee
-  matkatoimistojen agenttimallia.
+description: Tämä asiakirja käsittelee varojen saatavuutta ja kuinka Wink tukee matkatoimistomallia matkatoimistoille.
 sidebar:
   order: 5
 ---
-:::huomautus
+
+:::note
 Viimeksi päivitetty 30.10.2024
 :::
 
-:::varoitus\[Huomautus]
-Alla olevat maksuehdot koskevat matkatoimistoja, jotka haluavat hankkia ja maksaa varoja itse.
-Tämä on mahdollista vain API:mme kautta ja vain matkatoimistojen toimesta, jotka ovat ilmoittaneet haluavansa tehdä tämän rekisteröitymisprosessin aikana.
+:::caution[Huomio]
+Alla olevat maksuehdot koskevat matkatoimistoja, jotka haluavat hankkia ja jakaa varoja itse.
+Tämä on mahdollista vain API:n kautta ja vain matkatoimistoille, jotka ovat ilmoittaneet haluavansa tehdä näin rekisteröitymisen yhteydessä.
 
-Kaikki matkatoimistot voivat edelleen tehdä varauksia matkatoimistoportaalimme kautta omalla tai matkustajan luottokortilla Winkin maksupalvelun kautta. Siksi kaikkien matkatoimistojen on myös hyväksyttävä maksuehdot, joissa Winkin maksupalvelu on rekisteröity kauppias.
+Kaikki matkatoimistot voivat edelleen tehdä varauksia matkatoimistojen portaalin kautta käyttäen Winkin maksupalvelua omalla tai matkustajan luottokortilla. Siksi kaikkien matkatoimistojen tulee myös hyväksyä maksuehdot, joissa Wink toimii kauppiaana.
 
-Nuo ehdot ovat saatavilla alla[Kumppaniportaali > Maksuehdot](/studio/payment-terms).
+Nämä ehdot löytyvät kohdasta [Affiliate Portal > Payment Terms](/fi/studio/payment-terms).
 :::
 
-**WINK-MAKSUEHDOT**\
-**MATKATOIMISTOILLE (rekisteröity kauppias)**
+**WINKIN MAKSUEHDOT**  
+**MATKATOIMISTOILLE (Kauppias)**
 
-Nämä maksuehdot (”Maksuehdot”) ovat sitova oikeudellinen sopimus, joka muodostaa osan ”MATKATOIMISTOJEN EHTOJEN” (”Pääsopimus”) mukaisesti luotua sopimussuhdetta.
+Nämä Maksuehdot (“Maksuehdot”) ovat sitova oikeudellinen sopimus, joka muodostaa osan sopimussuhdetta, joka on perustettu "TERMIT & EHDOT MATKATOIMISTOILLE" (“Pääsopimus”) mukaisesti.
 
-**VÄLILLÄ:**
+**OSAPUOLINA:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**&#x53;ingaporen lakien mukaisesti perustettu yhtiö, jonka rekisteröity toimipaikka on osoitteessa #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 ja jonka ALV-rekisterinumero on 201437335D (jäljempänä "Wink") ja
+1. **TRAVELIKO SINGAPORE PTE. LTD.**, Singaporen lakien mukaan perustettu yhtiö, jonka rekisteröity toimipaikka on osoitteessa \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 ja ALV-rekisterinumero 201437335D (jäljempänä "Wink") ja  
+     
+2. **MATKATOIMISTO**, jonka tiedot on annettu Matkatoimiston rekisteröintilomakkeessa tai jotka on toimitettu verkossa ("Matkatoimisto").
 
-2. **MATKATOIMISTO**jonka tiedot on esitetty matkatoimiston rekisteröintilomakkeessa tai jotka on lähetetty verkossa ("Matkatoimisto").
+Pääsopimuksessa määritellyt termit ja ehdot koskevat näitä Maksuehtoja, ellei tässä toisin määritellä.
 
-Pääsopimuksessa esitetyt määritelmät ja termit soveltuvat näihin maksuehtoihin, ellei tässä toisin määritellä.
+**1\. Määritelmät**
 
-**1. Määritelmät**
+Kuten pääsopimuksessa "TERMIT & EHDOT MATKATOIMISTOILLE" ("Pääsopimus") on määritelty, seuraavilla termeillä on samat merkitykset näissä Maksuehdoissa:
 
-Kuten pääsopimuksessa "MATKATOIMISTOJEN EHDOT" ("Pääsopimus") on määritelty, seuraavilla termeillä on sama merkitys näissä maksuehdoissa:
-
-* "Majoituspalveluntarjoaja(t)"
-* "Varaus"
-* "Varausmaksu"
-* "Varauksen arvo"
-* "Komissio"
-* "Nettomaksu"
+* "Majoituspalveluntarjoaja(t)"  
+* "Varaus"  
+* "Varausmaksu"  
+* "Varauksen arvo"  
+* "Komissio"  
+* "Nettomaksu"  
 * "Erillinen sopimus"
 
-**2. Maksun kerääminen ja jakelu**
 
-2.1**Maksun kerääminen:**&#x4D;atkatoimisto on vastuussa maksun keräämisestä asiakkaalta varauksen yhteydessä. Tämä varmistaa välittömän käsittelyn ja taloudellisen selkeyden.
+**2\. Maksujen kerääminen ja jakaminen**
 
-2.2**Maksun vähennys:**&#x4D;atkatoimiston on ensin vähennettävä palveluntarjoajan palkkio ja sitten oman palkkionsa alaotsikosta alla olevan esimerkin mukaisesti:
+2.1 **Maksujen kerääminen:** Matkatoimisto vastaa maksun keräämisestä Vieraalta varauksen yhteydessä. Tämä varmistaa välittömän käsittelyn ja taloudellisen selkeyden.
 
-* 1,5 % varausmaksu Winkistä.
-* Matkatoimiston palkkio, kuten erillisessä sopimuksessa on määritelty (tässä esimerkissä käytämme 10 %)
+2.2 **Maksujen vähentäminen:** Matkatoimisto vähentää ensin palveluntarjoajan maksun ja sen jälkeen oman komissionsa alla olevan esimerkin mukaisesti:
 
-Varauksen arvo 1 000 USD\
-Silmänräpäysmaksu (1,5 %) = 15 USD\
-Välisumma = 1 000 - 15 = 985
+* 1,5 % varausmaksu Winkille.  
+* Matkatoimiston komissio erillisen sopimuksen mukaisesti (tässä esimerkissä käytämme 10 %)
 
-2.3**Majoituspalvelujen tarjoajille maksettavat nettomaksut:**&#x4D;atkatoimisto on vastuussa nettomaksun maksamisesta majoituspalveluntarjoajalle matkatoimiston ja majoituspalveluntarjoajan välisen erillisen sopimuksen ehtojen mukaisesti. Wink ei ole vastuussa maksujen suorittamisesta majoituspalveluntarjoajalle.
+Varauksen arvo USD 1 000  
+Winkin maksu (1,5 %) = USD 15  
+Välisumma = 1 000 – 15 = 985
 
-**3**.**Laskutus ja maksaminen**
+2.3 **Nettomaksu majoituspalveluntarjoajille:** Matkatoimisto vastaa Nettomaksun maksamisesta majoituspalveluntarjoajalle erillisen sopimuksen ehtojen mukaisesti. Wink ei ole vastuussa maksujen suorittamisesta majoituspalveluntarjoajalle.
 
-3.1**Kuukausilaskutus:**&#x57;ink lähettää matkatoimistolle oikean ja täsmällisen kuukausittaisen laskun edellisen kuukauden aikana kertyneistä varausmaksuista. Matkatoimiston on maksettava tämä lasku laskussa määriteltyjen maksuehtojen mukaisesti.
+**3\. Laskutus ja maksaminen**
 
-3.2**Maksutapa:**&#x4D;aksut Winkille suoritetaan laskussa määritellyllä maksutavalla. Maksun siirtoon liittyvät kulut ovat matkatoimiston vastuulla.
+3.1 **Kuukausilaskutus:** Wink toimittaa matkatoimistolle oikean ja tarkan kuukausilaskun edellisen kuukauden aikana kertyneistä varausmaksuista. Matkatoimiston tulee maksaa lasku laskussa määritellyn maksuehdon mukaisesti.
 
-3.3**Myöhästyneet maksut:**&#x4D;yöhästyneen maksun sattuessa Wink pidättää oikeuden periä myöhästyneestä summasta 5 %:n kuukausikorkoa tai lain sallimaa enimmäiskorkoa, sen mukaan kumpi on alhaisempi. Lisäksi, jos matkatoimisto myöhästyy maksamasta majoituspalveluntarjoajalle erillisen sopimuksen ehtojen mukaisesti, Wink pidättää oikeuden keskeyttää Palvelun käytön, kunnes kaikki sekä Winkille että majoituspalveluntarjoajalle erääntyneet maksut on hoidettu. Jos Winkin toimittamassa laskussa on kuitenkin virheitä, matkatoimiston on maksettava vain laskun oikea ja tarkka osa, eikä sille peritä korkoa tai sakkoa laskun virheellisen osan maksamatta jättämisestä.
+3.2 **Maksutapa:** Maksut Winkille suoritetaan laskussa määritellyllä maksutavalla. Maksun siirrosta aiheutuvat kulut ovat matkatoimiston vastuulla.
 
-**4. Roolit ja vastuut**
+3.3 **Myöhästyneet maksut:** Myöhästyneistä maksuista Wink pidättää oikeuden periä viivästyskorkoa 5 % kuukaudessa tai lain salliman enimmäiskoron mukaan, pienemmän mukaan. Lisäksi, jos matkatoimisto myöhästyy maksussa majoituspalveluntarjoajalle erillisen sopimuksen mukaisesti, Wink pidättää oikeuden keskeyttää palvelun käyttö, kunnes kaikki avoimet maksut sekä Winkille että majoituspalveluntarjoajalle on suoritettu. Jos Winkiltä saapuneessa laskussa on virheitä, matkatoimiston tulee maksaa vain oikea ja tarkka osa laskusta, eikä viivästyskorkoa tai seuraamuksia peritä virheellisestä osasta.
 
-4.1**Matkatoimiston vastuut:**
+**4\. Roolit ja vastuut**
 
-* Varmista maksujen periminen vierailta ajallaan noudattaen kohdassa 2.1 esitettyjä ehtoja.
-* Vähennä asianmukainen varausmaksu ja palkkio ennen nettomaksun suorittamista majoituspalvelujen tarjoajille erillisen sopimuksen mukaisesti.
-* Maksa Winkin Varausmaksuja koskevat laskut viipymättä kohdassa 3.1 määritellyissä ehdoissa.
-* Hallitse ja ratkaise aktiivisesti varauksiin tai maksuihin liittyviä riitoja varmistaen, että viestintä Winkin kanssa säilyy ongelmien tehokkaaksi ratkaisemiseksi.
+4.1 **Matkatoimiston vastuut:**
 
-4.2**Winkin vastuut:**
+* Varmistaa maksujen oikea-aikainen kerääminen Vierailta, noudattaen kohdan 2.1 ehtoja.  
+* Vähentää asianmukainen varausmaksu ja komissio ennen Nettomaksun maksamista majoituspalveluntarjoajille erillisen sopimuksen mukaisesti.  
+* Maksaa Winkille varausmaksulaskut viipymättä kohdan 3.1 ehtojen mukaisesti.  
+* Hoitaa aktiivisesti varauksiin tai maksuihin liittyvät riidat ja pitää yhteyttä Winkin kanssa ongelmien ratkaisemiseksi tehokkaasti.
 
-* Laatia tarkat ja oikea-aikaiset kuukausittaiset laskut Varausmaksuista kohdan 3.1 mukaisesti.
-* Tarjoa matkatoimistolle jatkuva pääsy Wink-alustalle varausten käsittelyä ja maksujen hallintaa varten.
-* Avustaa matkatoimistoa maksuihin liittyvien riitojen ratkaisemisessa tarjoamalla tarvittavat tapahtumatiedot ja tukea tarvittaessa.
+4.2 **Winkin vastuut:**
 
-**5. Valuutanmuunnos**
+* Toimittaa tarkat ja ajantasaiset kuukausilaskut varausmaksuista kohdan 3.1 mukaisesti.  
+* Tarjota matkatoimistolle jatkuva pääsy Wink-alustalle varausten käsittelyä ja maksujen hallintaa varten.  
+* Avustaa matkatoimistoa maksuihin liittyvien riitojen ratkaisemisessa tarjoamalla tarvittavat tapahtumatiedot ja tukea.
 
-Jos valuutan muuntaminen on tarpeen, se käsitellään maksupalvelun tarjoamalla kurssilla. Matkatoimisto on vastuussa valuutan muuntamiseen liittyvistä kustannuksista.
+**5\. Valuuttamuunnos**
 
-**6. Riitojenratkaisu**
+Mahdolliset valuuttamuunnokset suoritetaan maksupalvelun tarjoaman kurssin mukaan. Matkatoimisto vastaa valuuttamuunnoksesta aiheutuvista kuluista.
 
-Näistä maksuehdoista johtuvat tai niihin liittyvät riidat käsitellään pääsopimuksessa määrättyjen riitojenratkaisumenettelyjen mukaisesti, varmistaen johdonmukaisen ja yhtenäisen lähestymistavan Winkin ja matkatoimiston välisten riitojen ratkaisemiseen.
+**6\. Riitojen ratkaisu**
 
-**7. Ehtojen muuttaminen**\
-Wink pidättää oikeuden muuttaa näitä maksuehtoja milloin tahansa. Kaikista muutoksista ilmoitetaan matkatoimistolle vähintään 30 päivää ennen niiden voimaantuloa. Wink-alustan käytön jatkaminen voimaantulopäivän jälkeen katsotaan muutettujen ehtojen hyväksymiseksi.
+Kaikki näistä Maksuehdoista johtuvat tai niihin liittyvät riidat käsitellään Pääsopimuksen riitojenratkaisumenettelyjen mukaisesti, varmistaen yhtenäisen ja johdonmukaisen tavan ratkaista erimielisyydet Winkin ja matkatoimiston välillä.
 
-**8. Sovellettava laki ja lainkäyttöalue**\
-Näihin maksuehtoihin sovelletaan Singaporen lakia. Näistä ehdoista johtuvat tai niihin liittyvät riidat ratkaistaan ​​Singaporen tuomioistuimissa.
+**7\. Ehtojen muutos**  
+Wink pidättää oikeuden muuttaa näitä Maksuehtoja milloin tahansa. Muutoksista tiedotetaan matkatoimistolle vähintään 30 päivää ennen niiden voimaantuloa. Winkin alustan käyttö muutosten voimaantulon jälkeen tarkoittaa muutettujen ehtojen hyväksymistä.
 
-Nämä maksuehdot ovat olennainen osa Winkin ja matkatoimiston välisessä pääsopimuksessa "MATKATOIMISTOJEN EHDOT\_220924" esitettyjä maksuehtoja ja täydentävät niitä.
+**8\. Sovellettava laki ja toimivalta**  
+Näihin Maksuehtoihin sovelletaan Singaporen lakia. Kaikki näistä ehdoista johtuvat tai niihin liittyvät riidat ratkaistaan Singaporen tuomioistuimissa.
 
+Nämä Maksuehdot ovat olennainen osa ja täydentävät Pääsopimuksen "TERMIT & EHDOT MATKATOIMISTOILLE_220924" maksuehtoja Winkin ja matkatoimiston välillä.

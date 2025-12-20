@@ -1,64 +1,63 @@
 ---
 title: Datenschutzrichtlinie
-description: >-
-  Leicht zugängliche und aktuelle Datenschutzrichtlinie für alle unsere
-  reisenden Benutzer.
+description: Leicht zugängliche und stets aktuelle Datenschutzrichtlinie für alle unsere Reisenden.
 sidebar:
   order: 5
 ---
-TRAVELIKO SINGAPORE PTE. LTD., firmierend unter dem Namen Wink (das „Unternehmen“), möchte Sie als Kontaktperson darüber informieren, dass Ihre personenbezogenen Daten für die Erbringung der Dienstleistungen des Unternehmens gemäß dieser Datenschutzrichtlinie erhoben, verarbeitet und verwendet werden müssen. Indem Sie das Unternehmen kontaktieren und Ihre personenbezogenen Daten zu Zwecken der Kommunikation, Koordination und/oder Bereitstellung der Dienstleistungen des Unternehmens an Sie weitergeben, erklären Sie sich mit dieser Datenschutzrichtlinie einverstanden und akzeptieren diese.
 
-Bei der Verarbeitung personenbezogener Daten kann das Unternehmen Ihre personenbezogenen Daten aus verschiedenen Kanälen wie folgt erhalten:
+TRAVELIKO SINGAPORE PTE. LTD., tätig unter dem Namen Wink (das „Unternehmen“), möchte Sie, die das Unternehmen kontaktieren, darüber informieren, dass es notwendig ist, Ihre personenbezogenen Daten für die Dienstleistungen des Unternehmens gemäß dieser Datenschutzrichtlinie zu erheben, zu erfassen und zu verwenden. Indem Sie das Unternehmen kontaktieren und Ihre personenbezogenen Daten für Zwecke der Kommunikation, Koordination und/oder Bereitstellung der Dienstleistungen des Unternehmens offenlegen, gilt dies als Ihre Zustimmung und Akzeptanz, an diese Datenschutzrichtlinie gebunden zu sein und diese einzuhalten.
 
-(1) Direkt von Ihnen über die Kommunikation des Unternehmens mit Ihnen;
+Personenbezogene Daten, die verarbeitet werden, kann das Unternehmen aus verschiedenen Quellen erhalten:
 
-(2) Indirekt über eine Empfehlung eines Dritten, dem Sie möglicherweise die Einwilligung zur Weitergabe Ihrer personenbezogenen Daten an das Unternehmen erteilen; oder
+(1) Direkt von Ihnen durch die Kommunikation des Unternehmens mit Ihnen;
 
-(3) Werden automatisch über das System erfasst, wenn Sie auf die Website des Unternehmens zugreifen und/oder die Dienste nutzen.
+(2) Indirekt, über eine Empfehlung eines Dritten, dem Sie Ihre Zustimmung zur Offenlegung Ihrer personenbezogenen Daten an das Unternehmen gegeben haben; oder
 
-Die personenbezogenen Daten, die das Unternehmen im Rahmen dieser Datenschutzrichtlinie erfassen, zusammenstellen, verwenden und verarbeiten muss, sind die folgenden:
+(3) Automatisch über das System erfasst, wenn Sie die Website des Unternehmens aufrufen und/oder die Dienstleistungen nutzen.
 
-(1) Ihr vollständiger Name, einschließlich Ihrer zugehörigen Daten oder Ihrer Vertreterdaten (falls Sie uns im Namen einer juristischen Person kontaktieren), die Ihr Ausweisdokument enthalten können.
+Die personenbezogenen Daten, die das Unternehmen gemäß dieser Datenschutzrichtlinie erheben, erfassen, verwenden und verarbeiten muss, sind wie folgt:
 
-(2) Kontaktdaten wie Telefonnummer, E-Mail-Adresse oder Social-Media-Kontoinformationen.
+(1) Ihr vollständiger Name, einschließlich Ihrer zugehörigen Informationen oder Ihrer Vertreterinformationen (falls Sie uns im Namen einer juristischen Person kontaktieren), was auch Ihre Identitätsnachweisdokumente umfassen kann.
 
-(3) Andere personenbezogene Daten, die Sie dem Unternehmen während der Kommunikation übermitteln, wie z. B. Informationen zu Anfragethemen, Interessensinformationen oder andere personenbezogene Daten, die Sie dem Unternehmen direkt über verschiedene Kommunikationskanäle übermitteln.
+(2) Kontaktinformationen wie Telefonnummer, E-Mail oder Informationen zu sozialen Medienkonten.
 
-(4) Im Falle der Kommunikation über die Website können technische Informationen wie IP-Adresse, Cookies sowie Informationen zu Ihrem Surfverhalten erfasst werden.
+(3) Weitere personenbezogene Daten, die Sie dem Unternehmen während der Kommunikation bereitstellen, wie Informationen zu Anfragen, Interessensinformationen oder andere persönlich identifizierbare Informationen, die Sie dem Unternehmen direkt über verschiedene Kommunikationskanäle mitteilen.
 
-Zweck der Verarbeitung und Nutzung personenbezogener Daten: Das Unternehmen muss die personenbezogenen Daten des Bewerbers für die folgenden Zwecke erheben, zusammenstellen und verwenden:
+(4) Im Falle der Kommunikation über die Website können technische Informationen wie IP-Adresse, Cookies sowie Informationen über Ihr Surfverhalten enthalten sein.
 
-(1) Für die Verwaltung der Kommunikation, mit der Sie mit dem Unternehmen kommuniziert haben, wie etwa die Beantwortung von Fragen, die Bereitstellung relevanter Informationen auf Anfrage und nach Bedarf, die Bearbeitung von Beschwerden oder die Reaktion auf Kommentare, die Sie über verschiedene Kommunikationskanäle direkt an das Unternehmen richten, einschließlich der kontinuierlichen Koordinierung, der Ausführung von Servicevereinbarungen und/oder der Wahrnehmung von Rechten und Pflichten, die zwischen dem Unternehmen und Ihnen vereinbart wurden;
+Zweck der Verarbeitung und Nutzung personenbezogener Daten, das Unternehmen muss die personenbezogenen Daten des Bewerbers für folgende Zwecke erheben, erfassen und verwenden:
 
-(2) Zur Erfüllung rechtlicher Verpflichtungen, denen das Unternehmen unter bestimmten Bedingungen unterliegen kann. Dies kann unter anderem die Erfüllung von Aufgaben im Zusammenhang mit der Erstellung von Buchhaltungsunterlagen und Steuern im Zusammenhang mit den vom Unternehmen für Sie erbrachten Dienstleistungen umfassen;
+(1) Für die Verwaltung der Kommunikation, die Sie mit dem Unternehmen geführt haben, wie die Beantwortung von Fragen, Bereitstellung relevanter Informationen auf Anfrage, Bearbeitung von Beschwerden oder Reaktion auf Kommentare, die Sie direkt über verschiedene Kommunikationskanäle an das Unternehmen richten, einschließlich fortlaufender Koordination, Ausführung von Dienstleistungsverträgen und/oder Erfüllung von Rechten und Pflichten, auf die sich das Unternehmen und Sie einigen;
 
-(3) Zum Zwecke des Aufbaus und der Verbesserung von Geschäftsbeziehungen, einschließlich der Verbesserung der Dienstleistungen, die das Unternehmen zu Ihrem Vorteil erbringt, wobei das Unternehmen Ihre personenbezogenen Daten zum Zwecke der Kontrolle, der Gewährleistung der Dienstleistung, der Managementanalyse und der Lösung geschäftsbezogener Probleme erheben und/oder verwenden kann, einschließlich, aber nicht beschränkt auf Mitarbeiterschulungen und die Planung künftiger Serviceverbesserungen;
+(2) Zur Erfüllung gesetzlicher Verpflichtungen, denen das Unternehmen unter bestimmten Bedingungen unterliegt. Dies kann unter anderem die Erfüllung von Pflichten im Zusammenhang mit der Erstellung von Buchhaltungsunterlagen und Steuern im Zusammenhang mit den vom Unternehmen erbrachten Dienstleistungen umfassen;
 
-(4) Zum Schutz und zur Verteidigung der gesetzlichen Rechte des Unternehmens im Falle eines Streits zwischen Ihnen und dem Unternehmen; und
+(3) Zum Aufbau und zur Verbesserung von Geschäftsbeziehungen, einschließlich der Verbesserung der vom Unternehmen zu Ihrem Nutzen erbrachten Dienstleistungen, wobei das Unternehmen Ihre personenbezogenen Daten für Kontrollzwecke, Servicegarantien, Managementanalysen und die Lösung geschäftsbezogener Probleme verwenden kann, einschließlich, aber nicht beschränkt auf Mitarbeiterschulungen und zukünftige Serviceverbesserungsplanungen;
 
-(5) Vorbehaltlich einer dem Unternehmen erteilten ausdrücklichen Einwilligung, beispielsweise für Marketing- und Newsletter-Mitteilungen, kann das Unternehmen die personenbezogenen Daten für die in der Einwilligung festgelegten Zwecke verarbeiten.
+(4) Zum Schutz und zur Verteidigung der rechtlichen Rechte des Unternehmens im Falle von Streitigkeiten zwischen Ihnen und dem Unternehmen; und
 
-Aufbewahrungsfrist für personenbezogene Daten: Um die oben beschriebenen Zwecke zu erfüllen, muss das Unternehmen Ihre personenbezogenen Daten für die folgende Dauer erheben, zusammenstellen und verarbeiten:
+(5) Vorbehaltlich einer ausdrücklichen Zustimmung, die dem Unternehmen erteilt wurde, wie z. B. für Marketing- und Newsletter-Kommunikationen, kann das Unternehmen die personenbezogenen Daten für die in der Zustimmung definierten Zwecke verarbeiten.
 
-(1) Für die Verarbeitung personenbezogener Daten zum Zwecke der Bereitstellung von Diensten, der Vertragsabwicklung und/oder der Wahrnehmung von Rechten und Pflichten aus dem Vertrag ist die Verarbeitung Ihrer personenbezogenen Daten durch das Unternehmen erforderlich, solange das Unternehmen verpflichtet ist, Ihnen gegenüber Dienste bereitzustellen;
+Aufbewahrungsdauer der personenbezogenen Daten, um die oben beschriebenen Zwecke zu erfüllen, muss das Unternehmen Ihre personenbezogenen Daten für folgende Zeiträume erheben, erfassen und verarbeiten:
 
-(2) Für die Verarbeitung personenbezogener Daten zum Zwecke der Erfüllung der Pflichten gemäß den geltenden Gesetzen ist es erforderlich, dass das Unternehmen Ihre personenbezogenen Daten für einen in den geltenden Gesetzen festgelegten Zeitraum verarbeitet.
+(1) Für die Verarbeitung personenbezogener Daten zum Zweck der Erbringung von Dienstleistungen, der Vertragserfüllung und/oder der Ausübung von Rechten und Pflichten aus dem Vertrag muss das Unternehmen Ihre personenbezogenen Daten so lange verarbeiten, wie das Unternehmen verpflichtet ist, Ihnen Dienstleistungen zu erbringen;
 
-(3) Bei der Verarbeitung personenbezogener Daten zum Zwecke des Aufbaus und der Verbesserung von Geschäftsbeziehungen und/oder der Verbesserung des Services behält sich das Unternehmen das Recht vor, diese personenbezogenen Daten in dem Umfang aufzubewahren, wie es für das Unternehmen geschäftlich erforderlich ist. Das Unternehmen gewährleistet, dass die Speicherung der personenbezogenen Daten die Rechte der betroffenen Person nicht unangemessen beeinträchtigt.
+(2) Für die Verarbeitung personenbezogener Daten zur Erfüllung gesetzlicher Pflichten muss das Unternehmen Ihre personenbezogenen Daten für den von den geltenden Gesetzen festgelegten Zeitraum verarbeiten;
 
-(4) Für die Verarbeitung personenbezogener Daten zum Schutz und zur Wahrung der legitimen Rechte des Unternehmens ist das Unternehmen verpflichtet, diese personenbezogenen Daten gemäß den geltenden Gesetzen aufzubewahren.
+(3) Für die Verarbeitung personenbezogener Daten zum Aufbau und zur Verbesserung von Geschäftsbeziehungen und/oder zur Verbesserung des Services behält sich das Unternehmen das Recht vor, diese personenbezogenen Daten so lange aufzubewahren, wie es geschäftlich notwendig ist. Das Unternehmen gewährleistet, dass die Aufbewahrung der personenbezogenen Daten die Rechte der betroffenen Person nicht unangemessen beeinträchtigt;
 
-(5) Falls Sie dem Unternehmen eine Einwilligung zur Verarbeitung Ihrer personenbezogenen Daten für bestimmte Zwecke erteilen, verarbeitet das Unternehmen Ihre personenbezogenen Daten bis zu Ihrem Widerruf.
+(4) Für die Verarbeitung personenbezogener Daten zum Schutz und zur Durchsetzung der berechtigten Rechte des Unternehmens muss das Unternehmen diese personenbezogenen Daten gemäß den von den geltenden Gesetzen definierten Verjährungsfristen aufbewahren; und
 
-Offenlegung personenbezogener Daten: Ihre personenbezogenen Daten werden grundsätzlich nicht offengelegt, außer unter den Umständen, dass das Unternehmen sie gegenüber der folgenden Person offenlegen muss:
+(5) Falls Sie dem Unternehmen die Verarbeitung Ihrer personenbezogenen Daten für bestimmte Zwecke gestatten, verarbeitet das Unternehmen Ihre personenbezogenen Daten, bis Sie diese Zustimmung widerrufen.
 
-(1) Externe Dienstleister des Unternehmens, die das Unternehmen bei der Erbringung von Dienstleistungen für Sie unterstützen, einschließlich Berater des Unternehmens. Die Weitergabe personenbezogener Daten an diese Dritten erfolgt zweckgebunden und nur nach dem Need-to-know-Prinzip; oder
+Offenlegung der personenbezogenen Daten, grundsätzlich werden Ihre personenbezogenen Daten nicht offengelegt, außer in folgenden Fällen, in denen das Unternehmen die Daten an folgende Personen weitergeben muss:
 
-(2) Regierungen, Aufsichtsbehörden oder Gerichte, denen das Unternehmen möglicherweise durch eine Anordnung, ein Gesetz oder ein Urteil zur Offenlegung der personenbezogenen Daten verpflichtet ist.
+(1) Externe Dienstleister des Unternehmens, die unterstützende Dienstleistungen für das Unternehmen bei der Erbringung von Dienstleistungen an Sie erbringen, einschließlich Berater des Unternehmens. Die Offenlegung der personenbezogenen Daten an diese Dritten erfolgt nur im Rahmen der Zwecke und nur auf einer „Need-to-know“-Basis; oder
 
-Das Unternehmen verpflichtet sich, geeignete Sicherheitsmaßnahmen für personenbezogene Daten zu ergreifen, um unbefugten und unrechtmäßigen Zugriff, Änderungen, Ergänzungen oder Offenlegungen zu verhindern. Das Unternehmen verpflichtet sich, diese Maßnahmen regelmäßig zu überprüfen, um ihre Vereinbarkeit mit den geltenden Standards und Gesetzen sicherzustellen.
+(2) Regierungs-, Aufsichtsbehörden oder Gerichte, denen das Unternehmen aufgrund einer Anordnung, eines Gesetzes oder eines Urteils zur Offenlegung der personenbezogenen Daten verpflichtet ist.
 
-Rechte der betroffenen Person: Das Unternehmen respektiert Ihre Rechte als betroffene Person gemäß den geltenden Gesetzen. Sie können sich an das Unternehmen wenden, um folgende Rechte auszuüben: (1) Widerruf der Einwilligung, (2) Zugriffsrecht, (3) Anforderung einer Kopie der personenbezogenen Daten, (4) Berichtigung der personenbezogenen Daten, (5) Widerspruchsrecht gegen die Verarbeitung personenbezogener Daten, (6) Datenübertragbarkeit, sofern die personenbezogenen Daten vom Unternehmen in einem für automatisierte Tools oder Geräte lesbaren oder allgemein gebräuchlichen Format gespeichert werden, sowie das Recht auf Übertragung dieser Daten an andere Verantwortliche, (7) Löschung oder Anonymisierung der personenbezogenen Daten, sofern keine weitere Verarbeitung erforderlich ist, (8) Aussetzung der Datenverarbeitung und (9) Beschwerderecht.
+Das Unternehmen verpflichtet sich, angemessene Sicherheitsmaßnahmen für personenbezogene Daten umzusetzen, um unbefugten und rechtswidrigen Zugriff, Änderungen, Modifikationen oder Offenlegungen zu verhindern. Das Unternehmen verpflichtet sich, diese Maßnahmen regelmäßig zu überprüfen, um deren Übereinstimmung mit den Standards und geltenden Gesetzen sicherzustellen.
+
+Rechte der betroffenen Person, das Unternehmen respektiert Ihre Rechte als betroffene Person gemäß den geltenden Gesetzen. Sie können das Unternehmen kontaktieren, um Ihre Rechte auszuüben, die sind: (1) das Recht auf Widerruf der Einwilligung, (2) das Recht auf Zugang, (3) das Recht auf Anforderung einer Kopie der personenbezogenen Daten, (4) das Recht auf Berichtigung der personenbezogenen Daten, (5) das Recht auf Widerspruch gegen die Verarbeitung der personenbezogenen Daten, (6) das Recht auf Datenübertragbarkeit, falls das Unternehmen die personenbezogenen Daten in einem lesbaren oder allgemein verwendeten automatisierten Format speichert, einschließlich des Rechts, diese personenbezogenen Daten an andere Datenverantwortliche zu übertragen, (7) das Recht auf Löschung oder Anonymisierung der personenbezogenen Daten, sofern keine Notwendigkeit zur Verarbeitung mehr besteht, (8) das Recht auf Aussetzung der Nutzung der personenbezogenen Daten und (9) das Recht, eine Beschwerde einzureichen.
 
 Kontaktinformationen des Unternehmens
 
@@ -66,8 +65,7 @@ Datenschutzbeauftragter
 
 Name: Yann Gouriou
 
-Adresse: #03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095
+Adresse: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
 
-E-Mail: dataprotectionofficer@wink.travel
+E-Mail: dataprotectionofficer@wink.travel  
 Telefonnummer: +66 (0) 854891301
-

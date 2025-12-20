@@ -1,79 +1,76 @@
 ---
-title: Security
-description: >-
-  Acest articol conține informații despre măsurile de securitate pe care le
-  implementăm și sunt publicate anual de firma noastră de securitate terță
-  parte.
+title: Securitate
+description: Acest articol conține informații despre măsurile de securitate pe care le implementăm și care sunt publicate anual de firma noastră terță de securitate.
 sidebar:
   order: 6
 ---
-# Document de prezentare generală a securității Wink
+
+# Document de Prezentare a Securității Wink
 
 *Ultima actualizare: 7 septembrie 2024*
 
 *Versiunea 1.0*
 
-## Scop și domeniu de aplicare
+## Scop și Domeniu de Aplicare
 
-Ca parte a angajamentului nostru continuu față de securitate și protejarea datelor utilizatorilor, efectuăm periodic teste de penetrare pe aplicația noastră web. Acest document prezintă metodologiile noastre de testare, oferă un rezumat al constatărilor și evidențiază abordarea noastră privind îmbunătățirea continuă a securității.
+Ca parte a angajamentului nostru continuu față de securitate și protejarea datelor utilizatorilor, efectuăm teste regulate de penetrare asupra aplicației noastre web. Acest document descrie metodologiile noastre de testare, oferă un rezumat al constatărilor și evidențiază abordarea noastră pentru îmbunătățirea continuă a securității.
 
-Acest document va fi actualizat pe măsură ce sunt produse noi rapoarte sau când apar modificări semnificative.
+Acest document va fi actualizat pe măsură ce sunt produse noi rapoarte sau când apar schimbări semnificative.
 
-Domenii incluse în domeniu:\
-\*.wink.travel\
+Domenii în domeniul de aplicare:  
+\*.wink.travel  
 \*.trippay.io
 
-## Frecvența și programul de testare
+## Frecvența și Programul Testărilor
 
-Testele noastre de penetrare sunt efectuate anual, cu teste suplimentare programate după cum este necesar, în urma unor actualizări semnificative ale aplicației sau infrastructurii. Această cadență regulată de testare ne asigură că suntem cu un pas înaintea amenințărilor în continuă evoluție și că menținem un mediu securizat.
+Testele noastre de penetrare sunt efectuate anual, cu teste suplimentare programate după cum este necesar, în urma actualizărilor semnificative ale aplicației sau infrastructurii. Această frecvență regulată a testelor ne asigură că rămânem înaintea amenințărilor în evoluție și menținem un mediu securizat.
 
-## Metodologii de testare
+## Metodologii de Testare
 
 Testarea noastră de penetrare este cuprinzătoare și acoperă o gamă largă de aspecte de securitate, inclusiv, dar fără a se limita la:
 
-* **Top 10 al OWASP:**&#x54;estele noastre vizează în mod specific cele mai critice riscuri de securitate, cum ar fi injecția, autentificarea spartă și scriptarea între site-uri (XSS).
-* **Testarea Black Box și Grey Box:**&#xCE;n funcție de domeniul de aplicare, echipa noastră utilizează aceste metodologii pentru a simula atât scenarii de atac extern, cât și interne.
-* **Testare automată și manuală:**&#x46;olosim Burp Suite Pro, un set de instrumente de testare a securității de top, pentru a efectua scanări automate de securitate și pentru a sprijini tehnicile de testare manuală în vederea identificării vulnerabilităților complexe și obținerii celei mai bune acoperiri posibile. Pentru o identificare mai specifică a vulnerabilităților, se utilizează câteva instrumente specializate, de exemplu, SQLmap.
+* **OWASP Top 10:** Testele noastre vizează în mod specific cele mai critice riscuri de securitate, cum ar fi Injection, Autentificare compromisă și Cross-Site Scripting (XSS).  
+* **Testare Black Box și Grey Box:** În funcție de domeniul de aplicare, echipa noastră utilizează aceste metodologii pentru a simula scenarii de atac externe și interne.  
+* **Testare Automată și Manuală:** Folosim Burp Suite Pro, un set de instrumente de top pentru testarea securității, pentru a efectua scanări automate și pentru a sprijini tehnicile manuale de testare în identificarea vulnerabilităților complexe și pentru a obține cea mai bună acoperire posibilă. Pentru identificarea unor vulnerabilități specifice, sunt folosite unele instrumente specializate, de exemplu SQLmap.
 
-## Rezumatul constatărilor
+## Rezumatul Constatărilor
 
-Următorul este un rezumat general al celui mai recent raport al nostru privind testele de penetrare:
+Următorul este un rezumat la nivel înalt al celui mai recent raport de testare a penetrației:
 
-* **Vulnerabilități totale identificate:**&#x32;
-* **Distribuția severității:**
-  * Critic: 2
-* **Tipuri de vulnerabilități detectate:**
-  * Controlul accesului defect
-  * Design nesigur
+* **Total Vulnerabilități Identificate:** 2  
+* **Distribuția Severității:**  
+  * Critice: 2  
+* **Tipuri de Vulnerabilități Detectate:**  
+  * Control Acces Compromis  
+  * Proiectare Nesigură
 
-Pentru constatări detaliate, vă rugăm să consultați raportul complet.
+Pentru detalii complete, vă rugăm să consultați raportul integral.
 
-### Evaluări ale riscurilor și impact
+### Evaluarea Riscurilor și Impactul
 
-Ambele vulnerabilități descoperite sunt clasificate ca fiind critice, deoarece ambele ar fi putut avea impacturi financiare severe. Prima a permis unui utilizator autentificat rău intenționat să obțină controlul asupra contului de plată Trippay al altei companii. A doua vulnerabilitate a permis unui utilizator rău intenționat să modifice suma de plată necesară pentru o rezervare.
+Ambele vulnerabilități găsite sunt evaluate ca fiind critice, deoarece ambele ar fi putut avea impact financiar sever. Prima a permis unui utilizator autenticat malițios să preia controlul asupra contului de plată Trippay al altei companii. A doua vulnerabilitate a permis unui utilizator malițios să modifice suma plății necesare pentru o rezervare.
 
-### Eforturi de remediere și atenuare
+### Eforturi de Remediere și Atenuare
 
-Am luat următoarele măsuri pentru a remedia vulnerabilitățile identificate:
+Am luat următoarele măsuri pentru a aborda vulnerabilitățile identificate:
 
-* **Patch-uri imediate:**&#x56;ulnerabilitățile critice au fost remediate în termen de 48 de ore de la descoperire.
-* **Revizuirea și consolidarea codului:**&#x45;chipa de dezvoltare a implementat controale de securitate suplimentare pe baza recomandărilor noastre.
+* **Patch-uri Imediate:** Vulnerabilitățile critice au fost remediate în termen de 48 de ore de la descoperire.  
+* **Revizuirea Codului și Consolidare:** Echipa de dezvoltare a implementat controale suplimentare de securitate bazate pe recomandările noastre.
 
-## Îmbunătățire continuă
+## Îmbunătățire Continuă
 
-Testarea de penetrare face parte din strategia noastră mai amplă de îmbunătățire continuă a securității. Rezultatele fiecărui test ghidează politicile noastre de securitate, influențează practicile de dezvoltare și determină îmbunătățiri ale arhitecturii noastre de securitate.
+Testarea de penetrare face parte din strategia noastră mai largă pentru îmbunătățirea continuă a securității. Constatările fiecărui test ghidează politicile noastre de securitate, influențează practicile de dezvoltare și stimulează îmbunătățiri în arhitectura noastră de securitate.
 
-## Expertiza echipei
+## Expertiza Echipei
 
-Testele noastre de penetrare sunt efectuate de un profesionist intern cu o vastă experiență în diverse proiecte și industrii. Folosind instrumente și metode de ultimă generație, expertul nostru se asigură că aplicația noastră este testată temeinic împotriva celor mai recente amenințări de securitate.
+Testarea noastră de penetrare este realizată de un profesionist intern cu experiență vastă în diverse proiecte și industrii. Folosind instrumente și metode de top, expertul nostru asigură testarea riguroasă a aplicației noastre împotriva celor mai recente amenințări de securitate.
 
-## Angajament față de securitate
+## Angajamentul față de Securitate
 
-Ne dedicăm menținerii unui mediu de aplicații securizat pentru utilizatorii și părțile interesate. Eforturile noastre continue în testarea și îmbunătățirea securității demonstrează angajamentul nostru de a proteja împotriva amenințărilor în continuă evoluție.
+Suntem dedicați menținerii unui mediu de aplicație securizat pentru utilizatorii și părțile interesate. Eforturile noastre continue în testarea și îmbunătățirea securității demonstrează angajamentul nostru de a proteja împotriva amenințărilor în evoluție.
 
-## Acces la rapoarte și actualizări
+## Accesul la Raport și Actualizări
 
-Acest document va fi actualizat continuu pe măsură ce sunt emise noi rapoarte de teste de penetrare. Pentru a accesa raportul complet, vă rugăm să ne contactați prin e-mailul de mai jos. Actualizările viitoare vor include vulnerabilități nou identificate, eforturi de remediere și ajustări ale metodologiilor noastre de testare.
+Acest document va fi actualizat continuu pe măsură ce sunt emise noi rapoarte de testare a penetrației. Pentru a accesa raportul complet, vă rugăm să ne contactați prin emailul de mai jos. Actualizările viitoare vor include vulnerabilități nou identificate, eforturi de remediere și ajustări ale metodologiilor noastre de testare.
 
-Pentru informații suplimentare, vă rugăm să contactați security@wink.travel.
-
+Pentru întrebări suplimentare, vă rugăm să contactați security@wink.travel.

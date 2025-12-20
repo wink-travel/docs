@@ -1,18 +1,16 @@
 ---
-title: Шта је Студио?
-description: >-
-  Ова страница објашњава тешкоће у приступу инвентару путовања и како Винков
-  партнерски портал то чини много лакшим.
+title: Šta je Studio?
+description: Ova stranica objašnjava poteškoće u pristupu turističkom inventaru i kako Wink-ov affiliate portal to znatno olakšava.
 sidebar:
   order: 0
 ---
-Историјски гледано, приступ и продаја било чега везаног за путовања подразумевала је уговоре о неоткривању података и сложене интеграције између две \[или више] лиценцираних туристичких агенција које су имале довољно техничке стручности, приступ платној капији и обе су биле у складу са PCI DSS стандардом. То је био скуп и дуготрајан подухват, а баријера за улазак је била невероватно висока за обичне људе.
 
-[Винк Студио](https://studio.wink.travel) је наш партнерски портал. Омогућава продају туристичког инвентара свима и чини је једноставном као дељење линка или напредном као вођење онлајн туристичке агенције.
+Istorijski gledano, pristup i prodaja bilo čega vezanog za putovanja podrazumevali su NDA ugovore i složene integracije između dve [ili više] licenciranih turističkih agencija koje su imale dovoljno tehničkog znanja, pristup platnom prolazu i bile usklađene sa PCI DSS standardom. To je bio skup i vremenski zahtevan proces, a prepreka za ulazak bila je nemoguće visoka za obične ljude.
 
-Партнерски портал приказује доступне туристичке понуде од добављача (нпр. хотела, хостела, смештаја за изнајмљивање, пружалаца услуга искуства) било где у свету. Ваш циљ је да пронађете понуду која вам одговара, а затим да користите најбољи начин да је представите и продате својој публици.
+[Wink Studio](https://studio.wink.travel) je naš affiliate portal. Omogućava da prodaja turističkog inventara bude dostupna svima i jednostavna kao deljenje linka ili napredna kao vođenje online turističke agencije.
 
-Студио вам нуди начин да прегледате добављаче и њихов инвентар. Када пронађете нешто што вам се свиђа, имамо много начина да продате тај инвентар онлајн, а посебно путем друштвених медија.
+Affiliate portal prikazuje dostupan turistički inventar od dobavljača (npr. hoteli, hosteli, izdavanje, provajderi iskustava) bilo gde u svetu. Vaš cilj je da pronađete inventar koji vam odgovara i zatim koristite najbolji način da taj inventar predstavite i prodate svojoj publici.
 
-Наставите са читањем и сазнајте више о свим функцијама које нудимо партнерима.
+Studio nudi način da pregledate dobavljače i njihov inventar. Kada pronađete nešto što vam se sviđa, imamo mnogo načina da taj inventar prodate online, a posebno putem društvenih mreža.
 
+Nastavite sa čitanjem i saznajte sve funkcije koje nudimo affiliate partnerima.

@@ -1,17 +1,16 @@
 ---
-title: Преузмите свој URL
-description: У овом чланку ћемо вам рећи како да затражите свој WinkLinks URL.
+title: Zahtevajte svoj URL
+description: U ovom članku objašnjavamo kako da zahtevate svoj WinkLinks vanity URL.
 sidebar:
   order: 1
 ---
-Стварањем [партнерски налог](/studio/what-is-studio), већ имате WinkLinks посебан URL. WinkLinks објављивачке функције постоје у нашој Studio апликацији; заједно са нашим другим партнерским функцијама.
 
-### Пример
+Kreiranjem [affiliate naloga](/sr/studio/what-is-studio), već imate WinkLinks vanity URL. WinkLinks funkcije za izdavače dostupne su u našoj Studio aplikaciji, zajedno sa ostalim affiliate funkcijama.
 
-Ако је име вашег налога Queen Bee, ваш WinkLinks latest URL ће бити:
+### Primer
 
-<h4 align="center">хттпс://и.трвл.ас/куеен-бее</h4>
+Ako je ime vašeg naloga Queen Bee, vaš WinkLinks vanity URL biće:
 
+<h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-Имена налога су доступна на`first come - first serve`основа - Узмите свој јединствени УРЛ док можете!
-
+Imena naloga su dostupna po principu `prvi koji dođe - prvi koji dobije` - Zgrabite svoj jedinstveni URL dok možete!

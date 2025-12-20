@@ -1,55 +1,53 @@
 ---
-title: Customers
-description: >-
-  Aquest article explica els tipus de clients als quals atenem i com Wink pot
-  ajudar.
+title: Clients
+description: Aquest article explica els tipus de clients que atenem i com Wink pot ajudar.
 sidebar:
   order: 2
 ---
-Aquest article explica els tipus de clients als quals atenem i com podem ajudar-los millor.
+
+Aquest article explica els tipus de clients que atenem i com podem ajudar millor.
 
 ## Propietats
 
-Wink va començar a incorporar hotels fa una dècada. Els hotels utilitzen Wink per gestionar eficaçment el seu inventari a través de milers de canals de vendes, inclòs el seu propi lloc web brand.com, i per guanyar més amb cada reserva alhora que impulsen els canals directes amb l'ajuda de les nostres eines centrades en l'hostaleria que milloren la identitat de la marca i la rendibilitat.
+Wink va començar a incorporar hotels fa una dècada. Els hotels utilitzen Wink per gestionar eficaçment el seu inventari a través de milers de canals de venda, inclòs el seu propi lloc brand.com, i per guanyar més amb cada reserva mentre impulsen els canals directes amb l’ajuda de les nostres eines enfocades a l’hostaleria que milloren la identitat de marca i la rendibilitat​.
 
 ## Marques i cadenes
 
-Les marques i cadenes tenen necessitats lleugerament diferents de les d'una sola propietat. A Wink, poden:
+Les marques i cadenes tenen necessitats lleugerament diferents que una sola propietat. A Wink, poden:
 
-* Gestiona diverses propietats sota un únic compte.
-* Assignar gestors a propietats
-* Ús [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) i el nostre [WinkLinks](/link-manager/wink-links) comercialitzar i vendre múltiples propietats en un sol lloc.
+- Gestionar múltiples propietats sota un únic compte.
+- Assignar gestors a les propietats.
+- Utilitzar [WinkLinks](/ca/link-manager/wink-links), [WordPress](/ca/developers/wordpress) i els nostres [Web Components](/ca/developers/web-components) per comercialitzar i vendre diverses propietats en un sol lloc.
 
-## Societats de gestió
+## Empreses de gestió
 
-Les empreses de gestió hotelera i de destinacions poden gestionar les seves carteres immobiliàries en nom dels propietaris. Hi ha un avantatge definitiu en deixar que les agències centrades en línia i amb consciència digital s'encarreguin de les vendes al segment en línia, mentre que els hotels es poden centrar en gestionar la satisfacció del client un cop arriben a les instal·lacions.
+Les empreses de gestió hotelera i les empreses de gestió de destinacions poden gestionar les seves carteres de propietats en nom dels propietaris. Hi ha un avantatge definitiu a deixar que agències enfocades en línia i digitalment conscients gestionin la venda al segment en línia mentre els hotels es poden centrar a gestionar la satisfacció del client un cop arriben a les instal·lacions.
 
 ## Influencers
 
-Els influencers utilitzen Wink per monetitzar millor el seu públic. Ho fan associant-se amb hotels, creant ofertes personalitzades i aprofitant les eines socials i les potents anàlisis de Wink per fer un seguiment de quins productes es venen millor.
+Els influencers utilitzen Wink per monetitzar millor la seva audiència. Ho fan col·laborant amb hotels, creant ofertes personalitzades i aprofitant les eines socials amigables de Wink i l’analítica potent per fer un seguiment dels productes que es venen millor​.
 
-## agents de viatges
+## Agents de viatge
 
-Els agents de viatges tenen accés a inventari de viatges a tot el món a preus excel·lents a través del nostre servei dedicat [portal d'agents de viatges](https://agent.wink.travel) Poden fer reserves a través del nostre portal, a través de la nostra API o permetent que els seus usuaris reservin ells mateixos al lloc web de l'agència de viatges que utilitza les nostres tecnologies.
+Els agents de viatge tenen accés a inventari de viatges a tot el món a grans preus a través del nostre [portal dedicat per a agents de viatge](https://agent.wink.travel). Poden fer reserves a través del nostre portal, mitjançant la nostra API o deixant que els seus usuaris reservin per si mateixos al lloc web d’agents de viatge que utilitza les nostres tecnologies.
 
-## Corporacions
+## Empreses
 
-Les corporacions necessiten més plataforma de viatges:
+Les empreses requereixen més d’una plataforma de viatges:
 
-* Requereixen itineraris ben organitzats que permetin flexibilitat i canvis d'última hora.
-* Requereixen eines de comunicació fiables, com ara Internet.
-* Tenen preferències de proveïdors amb les subscripcions.
-* Sovint tenen una targeta de crèdit corporativa i estableixen límits de despesa.
-* Requereixen la integració de la gestió de despeses i la generació d'informes.
-* Necessiten suport de consergeria, així com serveis de MICE en esdeveniments.
+- Necessiten itineraris ben organitzats que donin suport a la flexibilitat i canvis d’última hora.
+- Necessiten eines de comunicació fiables, com internet.
+- Tenen preferències de proveïdors amb membres.
+- Sovint disposen d’una targeta de crèdit corporativa i estableixen límits de despesa.
+- Requereixen gestió de despeses i integració d’informes.
+- Necessiten suport de consergeria, així com serveis MICE en esdeveniments.
 
-Els viatgers corporatius poden gestionar els seus propis comptes a la nostra [portal corporatiu](/corporate/what-is-group) o utilitzeu el nostre suport oficial [portal corporatiu](/corporate/what-is-group) complement i [portal corporatiu](/corporate/what-is-group) integració.
+Els viatgers corporatius poden gestionar els seus propis comptes al nostre [portal corporatiu](/ca/corporate/what-is-group) o utilitzar el nostre connector oficialment suportat [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) i la integració amb [Concur](https://www.concur.com/).
 
 ## Desenvolupadors
 
-Mentre vam construir aquesta plataforma per i per als hotelers... Cada línia de codi es va crear amb el propòsit específic de la reusabilitat. El nostre equip de desenvolupadors va crear Wink amb l'esperança que la propera aplicació de viatges 🦄 es construeixi sobre la nostra base de codi. Navegueu fins a la [Desenvolupador](/developers/build-on-wink) pàgina per veure com Wink et pot ajudar en el teu proper projecte.
+Tot i que vam construir aquesta plataforma per i per a hotelers... Cada línia de codi es va crear amb l’objectiu específic de la reutilització. El nostre equip de desenvolupadors va construir Wink amb l’esperança que la propera aplicació de viatges 🦄 es construeixi sobre la nostra base de codi. Navega a la pàgina de [Desenvolupadors](/ca/developers/build-on-wink) per veure com Wink pot donar-te suport en la teva propera aventura.
 
 ## Altres
 
-Qualsevol persona que vulgui trobar i vendre inventari de viatges es pot beneficiar de l'ús de Wink. Converteix la teva passió per l'hospitalitat en acció guanyant una gran comissió per cada reserva.
-
+Qualsevol persona que vulgui trobar i vendre inventari de viatges pot beneficiar-se d’utilitzar Wink. Converteix la teva passió per l’hostaleria en acció guanyant una gran comissió per cada reserva.

@@ -1,78 +1,76 @@
 ---
-title: Security
-description: >-
-  Tämä artikkeli sisältää tietoa turvatoimistamme, joita kolmannen osapuolen
-  tietoturvayrityksemme julkaisee vuosittain.
+title: Turvallisuus
+description: Tässä artikkelissa on tietoa käyttämistämme turvallisuustoimenpiteistä, jotka julkaistaan vuosittain kolmannen osapuolen turvallisuusyrityksemme toimesta.
 sidebar:
   order: 6
 ---
-# Wink Securityn yleiskatsausasiakirja
+
+# Winkin turvallisuuskatsaus
 
 *Viimeksi päivitetty: 7. syyskuuta 2024*
 
 *Versio 1.0*
 
-## Tarkoitus ja soveltamisala
+## Tarkoitus ja laajuus
 
-Osana jatkuvaa sitoutumistamme tietoturvaan ja käyttäjätietojen suojaamiseen suoritamme säännöllisiä penetraatiotestejä verkkosovelluksellemme. Tässä asiakirjassa esitetään testausmenetelmämme, esitetään yhteenveto tuloksista ja korostetaan lähestymistapaamme jatkuvaan tietoturvan parantamiseen.
+Osana jatkuvaa sitoutumistamme turvallisuuteen ja käyttäjätietojen suojaamiseen suoritamme säännöllisesti penetraatiotestejä verkkosovelluksessamme. Tämä dokumentti kuvaa testaustapojamme, tarjoaa yhteenvedon havainnoista ja korostaa lähestymistapaamme jatkuvaan turvallisuuden parantamiseen.
 
-Tätä asiakirjaa päivitetään sitä mukaa, kun uusia raportteja tuotetaan tai tapahtuu merkittäviä muutoksia.
+Tätä dokumenttia päivitetään uusien raporttien valmistuessa tai merkittävien muutosten tapahtuessa.
 
-Alueet, joihin sovelletaan:\
-\*.wink.travel\
+Laajuuteen kuuluvat domainit:  
+\*.wink.travel  
 \*.trippay.io
 
-## Testaustiheys ja -aikataulu
+## Testauksen tiheys ja aikataulu
 
-Tunkeutumistestimme suoritetaan vuosittain, ja lisätestejä ajoitetaan tarpeen mukaan sovelluksen tai infrastruktuurin merkittävien päivitysten jälkeen. Tämä säännöllinen testaustiheys varmistaa, että pysymme kehittyvien uhkien edellä ja ylläpidämme turvallisen ympäristön.
+Penetraatiotestimme suoritetaan vuosittain, ja lisätestejä ajoitetaan tarpeen mukaan sovelluksen tai infrastruktuurin merkittävien päivitysten jälkeen. Tämä säännöllinen testausrytmi varmistaa, että pysymme uhkien edellä ja ylläpidämme turvallista ympäristöä.
 
 ## Testausmenetelmät
 
-Tunkeutumistestauksemme on kattavaa ja kattaa laajan kirjon tietoturva-alueita, mukaan lukien, mutta ei rajoittuen:
+Penetraatiotestauksemme on kattavaa ja kattaa laajan valikoiman turvallisuusnäkökohtia, mukaan lukien mutta ei rajoittuen:
 
-* **OWASPin kymmenen parasta:**&#x54;estimme kohdistuvat erityisesti kriittisimpiin tietoturvariskeihin, kuten injektointiin, rikkoutuneeseen todennukseen ja sivustojen väliseen komentosarjahyökkäykseen (XSS).
-* **Mustan laatikon ja harmaan laatikon testaus:**&#x4C;aajuudesta riippuen tiimimme käyttää näitä menetelmiä simuloidakseen sekä ulkoisia että sisäisiä hyökkäysskenaarioita.
-* **Automaattinen ja manuaalinen testaus:**&#x4B;äytämme Burp Suite Prota, johtavaa tietoturvatestaustyökalusarjaa, automatisoitujen tietoturvaskannausten suorittamiseen ja manuaalisten testaustekniikoiden tukena monimutkaisten haavoittuvuuksien tunnistamiseksi ja parhaan mahdollisen kattavuuden saavuttamiseksi. Tarkempaan haavoittuvuuksien tunnistamiseen käytämme erikoistyökaluja, kuten SQLmapia.
+* **OWASP Top 10:** Testimme kohdistuvat erityisesti kriittisimpiin turvallisuusriskeihin, kuten Injection, Broken Authentication ja Cross-Site Scripting (XSS).  
+* **Black Box ja Grey Box -testaus:** Laajuudesta riippuen tiimimme käyttää näitä menetelmiä simuloidakseen sekä ulkoisia että sisäisiä hyökkäysskenaarioita.  
+* **Automaattinen ja manuaalinen testaus:** Käytämme Burp Suite Pro -työkalua, joka on johtava turvallisuustestaustyökalupaketti, suorittaaksemme automaattisia turvallisuusskannauksia ja tukeaksemme manuaalisia testausmenetelmiä monimutkaisten haavoittuvuuksien tunnistamiseksi ja parhaan mahdollisen kattavuuden saavuttamiseksi. Joidenkin erityisten haavoittuvuuksien tunnistamiseen käytetään myös erikoistyökaluja, kuten SQLmap.
 
-## Yhteenveto löydöksistä
+## Yhteenveto havainnoista
 
 Seuraavassa on yleiskatsaus viimeisimmästä penetraatiotestausraportistamme:
 
-* **Havaittujen haavoittuvuuksien kokonaismäärä:**&#x32;
-* **Vakavuusjakauma:**
-  * Kriittinen: 2
-* **Havaittujen haavoittuvuuksien tyypit:**
-  * Rikkoutunut pääsynhallinta
-  * Epävarma suunnittelu
+* **Löydettyjen haavoittuvuuksien kokonaismäärä:** 2  
+* **Vakavuusjakauma:**  
+  * Kriittinen: 2  
+* **Havaitut haavoittuvuustyypit:**  
+  * Rikottu pääsynvalvonta  
+  * Turvaton suunnittelu
 
-Yksityiskohtaiset havainnot löytyvät koko raportista.
+Yksityiskohtaisiin havaintoihin tutustu koko raporttiin.
 
 ### Riskiluokitukset ja vaikutukset
 
-Molemmat löydetyt haavoittuvuudet on luokiteltu kriittisiksi, koska molemmilla olisi voinut olla vakavia taloudellisia vaikutuksia. Ensimmäinen haavoittuvuus mahdollisti haitallisen todennetun käyttäjän haltuunsa toisen yrityksen Trippay-maksutilin. Toinen haavoittuvuus mahdollisti haitallisen käyttäjän muokata varauksen maksusummaa.
+Molemmat löydetyt haavoittuvuudet on luokiteltu kriittisiksi, koska molemmat olisivat voineet aiheuttaa vakavia taloudellisia vaikutuksia. Ensimmäinen salli haitallisen todennetun käyttäjän hallita toisen yrityksen Trippay-maksutiliä. Toinen haavoittuvuus antoi haitalliselle käyttäjälle mahdollisuuden muuttaa varauksen maksun määrää.
 
-### Korjaavat ja lieventävät toimet
+### Korjaus- ja lieventämistoimet
 
-Olemme ryhtyneet seuraaviin toimenpiteisiin havaittujen haavoittuvuuksien korjaamiseksi:
+Olemme ryhtyneet seuraaviin toimiin havaittujen haavoittuvuuksien korjaamiseksi:
 
-* **Välittömät korjaukset:**&#x4B;riittiset haavoittuvuudet on korjattu 48 tunnin kuluessa niiden löytämisestä.
-* **Koodin tarkistus ja koventaminen:**&#x4B;ehitystiimi on ottanut käyttöön lisäturvatoimia suosituksiemme perusteella.
+* **Välittömät korjaukset:** Kriittiset haavoittuvuudet on korjattu 48 tunnin kuluessa niiden havaitsemisesta.  
+* **Koodikatselmointi ja vahvistaminen:** Kehitystiimi on ottanut käyttöön lisäturvatoimia suositustemme pohjalta.
 
 ## Jatkuva parantaminen
 
-Tunkeutumistestaus on osa laajempaa strategiaamme jatkuvaan tietoturvan parantamiseen. Kunkin testin tulokset ohjaavat tietoturvakäytäntöjämme, vaikuttavat kehityskäytäntöihin ja edistävät tietoturva-arkkitehtuurimme parannuksia.
+Penetraatiotestaus on osa laajempaa strategiaamme jatkuvaan turvallisuuden parantamiseen. Jokaisen testin havainnot ohjaavat turvallisuuspolitiikkaamme, vaikuttavat kehityskäytäntöihin ja edistävät turvallisuusarkkitehtuurimme kehitystä.
 
 ## Tiimin asiantuntemus
 
-Tunkeutumistestauksen suorittaa sisäinen ammattilainen, jolla on laaja kokemus erilaisista projekteista ja toimialoilta. Käyttämällä johtavia työkaluja ja menetelmiä asiantuntijamme varmistavat, että sovelluksemme testataan perusteellisesti uusimpia tietoturvauhkia vastaan.
+Penetraatiotestauksemme suorittaa sisäinen ammattilainen, jolla on laaja kokemus eri projekteista ja toimialoilta. Käyttäen johtavia työkaluja ja menetelmiä asiantuntijamme varmistaa, että sovelluksemme testataan perusteellisesti uusimpia turvallisuusuhkia vastaan.
 
 ## Sitoutuminen turvallisuuteen
 
-Olemme sitoutuneet ylläpitämään turvallisen sovellusympäristön käyttäjillemme ja sidosryhmillemme. Jatkuvat ponnistelumme tietoturvatestauksen ja -parannuksen parissa osoittavat sitoutumisemme suojautumiseen kehittyviltä uhilta.
+Olemme sitoutuneet ylläpitämään turvallista sovellusympäristöä käyttäjillemme ja sidosryhmillemme. Jatkuvat ponnistelumme turvallisuustestauksessa ja parantamisessa osoittavat sitoutumisemme suojautua kehittyviä uhkia vastaan.
 
-## Raporttien käyttöoikeudet ja päivitykset
+## Raportin saatavuus ja päivitykset
 
-Tätä asiakirjaa päivitetään jatkuvasti sitä mukaa, kun uusia penetraatiotestausraportteja julkaistaan. Saadaksesi koko raportin, ota meihin yhteyttä alla olevan sähköpostin kautta. Tulevat päivitykset sisältävät uusia tunnistettuja haavoittuvuuksia, korjaustoimenpiteitä ja testausmenetelmiemme muutoksia.
+Tätä dokumenttia päivitetään jatkuvasti uusien penetraatiotestausraporttien julkaisemisen myötä. Koko raportin saamiseksi ota yhteyttä alla olevaan sähköpostiosoitteeseen. Tulevat päivitykset sisältävät uusia tunnistettuja haavoittuvuuksia, korjaustoimia ja testausmenetelmien tarkistuksia.
 
 Lisätietoja varten ota yhteyttä osoitteeseen security@wink.travel.
-

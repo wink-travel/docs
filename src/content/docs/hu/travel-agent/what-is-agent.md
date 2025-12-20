@@ -1,22 +1,22 @@
 ---
-title: Mi az az ügynök?
-description: 'Tudja meg, hogyan támogatja a Wink a regisztrált utazási irodákat.'
+title: Mi az az Agent?
+description: Tudjon meg többet arról, hogyan támogatja a Wink a regisztrált utazási ügynököket.
 sidebar:
   order: 0
 ---
-Megoldásunk regisztrált utazási irodák számára: [Kacsintásügynök](https://agent.wink.travel) Ez egy önkiszolgáló portál, amelyet az ügynökök használhatnak ügyfeleik nevében történő keresésre és foglalásra, és minden foglalás után jutalékot kapnak maguknak.
 
-A haladóbb utazási irodák választhatják az API-szintű integrációt a Wink platformon kívüli fizetések és kifizetések kezelése céljából.
+A regisztrált utazási ügynökök számára készült megoldásunk a [Wink Agent](https://agent.wink.travel). Ez egy önkiszolgáló portál, amelyet az ügynökök használhatnak ügyfeleik nevében történő keresésre és foglalásra, és minden foglalás után jutalékot szerezhetnek maguknak.
 
-Az utazási irodák ugyanazon portálfunkciók egy részhalmazával rendelkeznek, mint az [Wink Stúdió](/studio/what-is-studio) így ezeket itt nem fogjuk újra boncolgatni.
+A fejlettebb utazási ügynökök választhatják az API szintű integrációt is, hogy a fizetések és kifizetések kezelését a Wink platformon kívül végezzék.
+
+Az utazási ügynökök a portál [Wink Studio](/hu/studio/what-is-studio) funkcióinak egy részhalmazát használják, ezért ezeket itt nem ismertetjük újra.
 
 ## Keresés
 
-Menj ide [Keresés](/studio/search) megtanulni, hogyan kell szállodákat keresni és foglalni.
+Látogasson el a [Keresés](/hu/studio/search) oldalra, hogy megtanulja, hogyan keressen és foglaljon szállodákat.
 
-Ellenkező esetben folytassa a következő szakasszal.
+Egyébként folytassa a következő szakaszra.
 
 ## API
 
-Fejlesztők, akik menedzselni szeretnének`Travel Agent`odamehet[Fejlesztők > API > Utazási iroda](/developers/apis/#travel-agent-api).
-
+A fejlesztők, akik kezelni szeretnék a `Travel Agent` funkciót, látogassanak el a [Developers > API > Travel Agent](/hu/developers/apis/#travel-agent-api) oldalra.

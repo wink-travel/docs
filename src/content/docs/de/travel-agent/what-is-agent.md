@@ -1,22 +1,22 @@
 ---
 title: Was ist Agent?
-description: 'Erfahren Sie, wie Wink registrierte Reisebüros unterstützt.'
+description: Erfahren Sie, wie Wink registrierte Reisebüros unterstützt.
 sidebar:
   order: 0
 ---
-Unsere Lösung für registrierte Reisebüros ist[Wink-Agent](https://agent.wink.travel). Es handelt sich um ein Self-Service-Portal, mit dem Agenten im Namen ihrer Kunden suchen und buchen und für jede Buchung eine Provision verdienen können.
 
-Fortgeschrittenere Reisebüros können sich für eine Integration auf API-Ebene entscheiden, um Zahlungen und Auszahlungen außerhalb der Wink-Plattform abzuwickeln.
+Unsere Lösung für registrierte Reisebüros ist [Wink Agent](https://agent.wink.travel). Es ist ein Self-Service-Portal, das Agenten nutzen können, um im Namen ihrer Kunden zu suchen und zu buchen und dabei eine Provision für jede Buchung zu verdienen.
 
-Reisebüros verfügen über einen Teil der gleichen Portalfunktionen wie [Wink Studio](/studio/what-is-studio) Daher werden wir hier nicht noch einmal darauf eingehen.
+Fortgeschrittene Reisebüros können sich auf API-Ebene integrieren, um Zahlungen und Auszahlungen außerhalb der Wink-Plattform abzuwickeln.
 
-## Suchen
+Reisebüros haben einen Teil der gleichen Portal-Funktionen wie [Wink Studio](/de/studio/what-is-studio), daher werden wir diese hier nicht erneut behandeln.
 
-Gehe zu [Suchen](/studio/search) um zu erfahren, wie Sie Hotels suchen und buchen.
+## Suche
+
+Gehen Sie zu [Search](/de/studio/search), um zu erfahren, wie Sie Hotels suchen und buchen.
 
 Andernfalls fahren Sie mit dem nächsten Abschnitt fort.
 
 ## API
 
-Entwickler, die verwalten möchten`Travel Agent`können Sie zu[Entwickler > API > Reisebüro](/developers/apis/#travel-agent-api).
-
+Entwickler, die `Travel Agent` verwalten möchten, können zu [Developers > API > Travel Agent](/de/developers/apis/#travel-agent-api) gehen.

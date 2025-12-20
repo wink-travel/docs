@@ -1,45 +1,45 @@
 ---
-title: Afpöntunarreglur
-description: Þessi grein sýnir þér hvernig á að stjórna afbókunarstefnu á Wink.
+title: Afgreiðslustefnur
+description: Þessi grein sýnir þér hvernig á að stjórna afgreiðslustefnum á Wink.
 sidebar:
   order: 12
 ---
-Til að stjórna afpöntunarstefnu þinni, smelltu á`Monetize > Cancellation policies`frá aðalleiðsögustikunni.
 
-Afbókunarreglur ákvarða hvernig farið er með fjármuni bókara ef gesturinn kemst ekki. Afbókunarreglurnar eru í tveimur gerðum:
+Til að stjórna afgreiðslustefnum þínum, smelltu á `Monetize > Cancellation policies` í aðalvalmyndinni.
 
-1. Endurgreiðanlegt
-2. Óendurgreiðanlegt
+Afgreiðslustefnur ákvarða hvernig bókunarfé er meðhöndlað ef gestur getur ekki mætt. Afgreiðslustefnur koma í tveimur aðgreindum gerðum:
 
-Oftast duga þessir tveir valmöguleikar. Hins vegar gefa báðir þér mikið svigrúm til að aðlaga afbókunarstefnu þína frekar.
+1. Endurgreiðanlegar
+2. Ekki endurgreiðanlegar
 
-:::ráð\[Skemmtileg staðreynd]
-Wink styður samtals 8500 útgáfur af afpöntunarstefnu.
+Flestum sinnum duga þessar tvær valkostir. Hins vegar gefa báðir þér mikið svigrúm til að sérsníða afgreiðslustefnuna þína enn frekar.
+
+:::tip[Skemmtileg staðreynd]
+Wink styður alls 8500 afbrigði af afgreiðslustefnum.
 :::
 
-Til að búa til afpöntunarstefnu, smelltu á`Create a new cancellation policy`hnappur.
+Til að búa til afgreiðslustefnu, smelltu á hnappinn `Create a new cancellation policy`.
 
-## Óendurgreiðanlegt
+## Ekki endurgreiðanlegar
 
-Til að búa til óendurgreiðanlega afbókunarstefnu skaltu slökkva á 🛑 þegar spurt er hvort stefnunni sé hægt að endurgreiða.
-
-### Valkostir
-
-Þú getur valfrjálst stillt þinn`non-refundable`stefnunni enn frekar til að ná meiri stjórn.
-
-* **Hversu mikið er gesturinn rukkaður fyrir afbókun?**&#x53;jálfgefið er að óendurgreiðanleg trygging sé 100% óendurgreiðanleg. Þú getur fínstillt upphæðina hér.*t.d. 50% af heildarverði*
-* **Er frestur á ákærunni?**&#x45;f þú fínstillir upphæðina geturðu fínstillt hana enn frekar með því að stilla hversu lengi hún gildir.*t.d. þar til 3 dögum fyrir komu*
-* **Hversu mikið er gesturinn rukkaður fyrir afbókun eftir að fresturinn rennur út?**&#x45;f gesturinn fer fram úr frestinum sem tilgreindur er hér að ofan, geturðu ákveðið upphæðina sem gesturinn greiðir eftir frestinn.*t.d. 70% af heildarverði*
-
-## Endurgreiðanlegt
-
-Til að búa til endurgreiðsluskylda afbókunarstefnu skaltu stilla rofann á ✅ þegar spurt er hvort stefnunni sé endurgreiðanlegt.
+Til að búa til ekki endurgreiðanlega afgreiðslustefnu, stilltu rofann á 🛑 af þegar spurt er hvort stefna sé endurgreiðanleg.
 
 ### Valkostir
 
-Þú getur valfrjálst stillt þinn`refundable`stefnunni enn frekar til að ná meiri stjórn.
+Þú getur valkvætt stillt `ekki endurgreiðanlega` stefnu þína frekar til að fá meiri stjórn.
 
-* **Hversu löngu fyrir komu getur gesturinn afbókað án endurgjalds?**&#x53;jálfgefið er að endurgreiðslustefna sé alltaf 100% endurgreidd. Þú getur fínstillt frestinn hér.*t.d. 3 dögum fyrir komu*
-* **Hvað ætti gesturinn að greiða ef afbókunin á sér stað eftir að fresturinn hér að ofan rennur út?**&#x45;f þú fínstillir frestinn geturðu stillt upphæðina sem gesturinn greiðir eftir frestinn.*t.d. 50% af heildarverði*
-* **Hversu mikið ætti gesturinn að greiða fyrir að mæta ekki?**&#x45;f gesturinn mætir ekki geturðu stillt upphæðina sem gesturinn þarf að greiða fyrir.`No show`.*t.d. 100% af heildarverði*
+- **Hversu mikið er rukkað af gestinum fyrir afgreiðslu?** Sjálfgefið er að ekki endurgreiðanleg stefna er 100% ekki endurgreiðanleg. Þú getur fínstillt upphæðina hér. *t.d. 50% af heildarverði*
+- **Er rukkunin með lokadagsetningu?** Ef þú fínstilltir upphæðina geturðu fínstillt hana enn frekar með því að stilla hversu lengi sú upphæð gildir. *t.d. Þangað til 3 dögum fyrir komu*
+- **Hversu mikið er rukkað af gestinum fyrir afgreiðslu eftir lokadagsetningu?** Ef gestur fer fram úr lokadagsetningunni sem sett var hér að ofan, geturðu stillt upphæðina sem gesturinn greiðir eftir lokadagsetningu. *t.d. 70% af heildarverði*
 
+## Endurgreiðanlegar
+
+Til að búa til endurgreiðanlega afgreiðslustefnu, stilltu rofann á ✅ á þegar spurt er hvort stefna sé endurgreiðanleg.
+
+### Valkostir
+
+Þú getur valkvætt stillt `endurgreiðanlega` stefnu þína frekar til að fá meiri stjórn.
+
+- **Hversu lengi fyrir komu getur gestur hætt við án kostnaðar?** Sjálfgefið er að endurgreiðanleg stefna sé alltaf 100% endurgreiðanleg. Þú getur fínstillt lokadagsetninguna hér. *t.d. 3 dögum fyrir komu*
+- **Hvað á að rukka gestinn ef afgreiðsla á sér stað eftir lokadagsetningu hér að ofan?** Ef þú fínstilltir lokadagsetninguna geturðu stillt upphæðina sem gesturinn greiðir eftir lokadagsetningu. *t.d. 50% af heildarverði*
+- **Hversu mikið á að rukka gestinn fyrir „No show“?** Ef gestur mætir ekki, geturðu stillt upphæðina sem rukkuð er fyrir `No show`. *t.d. 100% af heildarverði*

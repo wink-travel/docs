@@ -1,45 +1,43 @@
 ---
 title: Kahilingan sa pagtanggal ng data
-description: >-
-  Alamin kung paano humiling kung paano tanggalin ang iyong personal na data sa
-  Wink.
+description: Alamin kung paano humiling ng pagtanggal ng iyong personal na data sa Wink.
 sidebar:
   order: 9
 ---
-Sa Wink, iginagalang namin ang iyong privacy at ganap na nakatuon sa pagprotekta sa iyong personal na data. Sumusunod kami sa **Pangkalahatang Regulasyon sa Proteksyon ng Data (GDPR)** at iba pang naaangkop na mga batas sa proteksyon ng data sa buong mundo.
 
-Binabalangkas ng page na ito kung paano mo maaaring hilingin ang pagtanggal ng anumang personal na data na maaaring nakolekta namin sa pamamagitan ng aming platform — kabilang ngunit hindi limitado sa data na nakuha sa pamamagitan ng mga social login provider tulad ng Facebook o Instagram.
+Sa Wink, iginagalang namin ang iyong privacy at buong pusong nakatuon sa pagprotekta ng iyong personal na data. Sumusunod kami sa **General Data Protection Regulation (GDPR)** at iba pang naaangkop na mga batas sa proteksyon ng data sa buong mundo.
 
-## Ang Aming Pangako sa Data Privacy
+Itinatakda ng pahinang ito kung paano ka maaaring humiling ng pagtanggal ng anumang personal na data na maaaring nakolekta namin sa pamamagitan ng aming platform — kabilang ngunit hindi limitado sa data na nakuha mula sa mga social login provider tulad ng Facebook o Instagram.
 
-Kinokolekta lang namin ang data na kinakailangan upang maibigay ang aming mga serbisyo, at hindi namin kailanman ibinebenta ang iyong personal na impormasyon. Maaaring kabilang dito ang:
+## Ang Aming Pangako sa Privacy ng Data
 
-* Ang iyong pangalan at email address
-* Pampublikong impormasyon sa profile (hal., mula sa Facebook o Google)
-* Data ng paggamit o aktibidad sa aming platform
-* Anumang mga pahintulot na tahasang ibinigay mo
+Kinokolekta lamang namin ang data na kinakailangan upang maibigay ang aming mga serbisyo, at hindi namin kailanman ibinebenta ang iyong personal na impormasyon. Maaaring kabilang dito ang:
 
-Nagsasagawa kami ng mga naaangkop na hakbang upang mapangalagaan ang iyong data at iproseso ang lahat ng kahilingan sa pagtanggal alinsunod sa patakaran ng data ng GDPR at Meta.
+- Ang iyong pangalan at email address
+- Pampublikong impormasyon ng profile (hal., mula sa Facebook o Google)
+- Data ng paggamit o aktibidad sa aming platform
+- Anumang pahintulot na hayagang ibinigay mo
 
-## Humihiling ng Pagtanggal ng Data
+Gumagawa kami ng angkop na mga hakbang upang pangalagaan ang iyong data at pinoproseso ang lahat ng kahilingan sa pagtanggal alinsunod sa GDPR at patakaran sa data ng Meta.
 
-May karapatan kang humiling na tanggalin namin ang anumang personal na impormasyong hawak namin tungkol sa iyo.
+## Paghiling ng Pagtanggal ng Data
 
-Upang humiling ng pagtanggal ng data:
+May karapatan kang humiling na tanggalin namin ang anumang personal na impormasyon na hawak namin tungkol sa iyo.
 
-* 📧 **Magpadala ng email sa**: <support@wink.travel>
-* 📝 Gamitin ang linya ng paksa: `Data Deletion Request`
-* 🔍 Pakisama ang mga detalye ng pagkakakilanlan tulad ng:
-  * Ang email address na ginamit sa aming platform
-  * Ang iyong Facebook o Google ID o katulad nito (kung naaangkop)
+Para humiling ng pagtanggal ng data:
 
-Kami ay tutugon sa loob **30 araw** ng pagtanggap ng iyong kahilingan, ayon sa kinakailangan ng GDPR.
+- 📧 **Magpadala ng email sa**: [support@wink.travel](mailto:support@wink.travel)
+- 📝 Gamitin ang subject line: `Data Deletion Request`  
+- 🔍 Mangyaring isama ang mga detalye ng pagkakakilanlan tulad ng:
+  - Ang email address na ginamit sa aming platform
+  - Ang iyong Facebook o Google ID o katulad nito (kung naaangkop)
+
+Sasagutin namin ang iyong kahilingan sa loob ng **30 araw** mula sa pagtanggap nito, ayon sa hinihingi ng GDPR.
 
 ## Mga Tanong o Alalahanin?
 
-Kung mayroon kang anumang mga tanong tungkol sa kung paano namin kinokolekta, ginagamit, o tinatanggal ang iyong data, huwag mag-atubiling makipag-ugnayan sa aming koponan sa privacy sa <support@wink.travel>.
+Kung mayroon kang anumang mga tanong tungkol sa kung paano namin kinokolekta, ginagamit, o tinatanggal ang iyong data, huwag mag-atubiling makipag-ugnayan sa aming privacy team sa [support@wink.travel](mailto:support@wink.travel).
 
-***
+---
 
-Salamat sa pagtitiwala sa amin. Sineseryoso namin ang proteksyon ng data at nakatuon kami sa pagbibigay sa iyo ng ganap na kontrol sa iyong impormasyon.
-
+Salamat sa pagtitiwala sa amin. Seryoso naming tinatrato ang proteksyon ng data at nakatuon kami na bigyan ka ng ganap na kontrol sa iyong impormasyon.

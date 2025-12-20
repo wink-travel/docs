@@ -1,45 +1,45 @@
 ---
-title: Tühistamispoliitika
-description: 'See artikkel näitab teile, kuidas Winkis tühistamispoliitikat hallata.'
+title: Tühistamispoliitikad
+description: See artikkel näitab, kuidas hallata tühistamispoliitikaid Winkis.
 sidebar:
   order: 12
 ---
-Tühistamispoliitika haldamiseks klõpsake nuppu`Monetize > Cancellation policies`peamise navigeerimisriba kaudu.
 
-Tühistamispoliitika määrab, kuidas broneerija rahaga ümber käiakse juhul, kui külaline ei saa kohale tulla. Tühistamispoliitikal on kaks erinevat tüüpi:
+Tühistamispoliitikate haldamiseks klõpsake põhimenüüst `Monetize > Cancellation policies`.
+
+Tühistamispoliitikad määravad, kuidas broneerija raha käsitletakse juhul, kui külaline ei saa saabuda. Tühistamispoliitikad jagunevad kahte tüüpi:
 
 1. Tagastatav
-2. Tagastamatu
+2. Mitte-tagastatav
 
-Enamasti piisab neist kahest valikust. Siiski annavad mõlemad teile palju ruumi oma tühistamispoliitika edasiseks kohandamiseks.
+Enamasti on need kaks valikut piisavad. Kuid mõlemad annavad teile palju võimalusi oma tühistamispoliitika täpsemaks kohandamiseks.
 
-:::tip\[Huvitav fakt]
-Wink toetab kokku 8500 tühistamispoliitika varianti.
+:::tip[Huvitav fakt]
+Wink toetab kokku 8500 erinevat tühistamispoliitika variatsiooni.
 :::
 
-Tühistamispoliitika loomiseks klõpsake nuppu`Create a new cancellation policy`nupp.
+Tühistamispoliitika loomiseks klõpsake nuppu `Create a new cancellation policy`.
 
-## Tagastamatu
+## Mitte-tagastatav
 
-Tagasimakse mittevõimaldava tühistamispoliitika loomiseks lülita lüliti 🛑 välja, kui küsitakse, kas poliitika on tagastatav.
+Mitte-tagastatava tühistamispoliitika loomiseks seadke lüliti 🛑 välja, kui küsitakse, kas poliitika on tagastatav.
 
 ### Valikud
 
-Soovi korral saate oma`non-refundable`poliitikat edasi suurema kontrolli saavutamiseks.
+Võite oma `mitte-tagastatavat` poliitikat täiendavalt seadistada suurema kontrolli saavutamiseks.
 
-* **Kui palju tuleb külalisele tühistamise eest maksta?**&#x56;aikimisi on tagastamatu poliis 100% tagastamatu poliis. Saate summat siin täpsustada.*nt 50% koguhinnast*
-* **Kas süüdistusel on tähtaeg?**&#x4B;ui te summat peenhäälestasite, saate seda veelgi peenhäälestada, määrates, kui kaua see summa kehtima jääb.*nt kuni 3 päeva enne saabumist*
-* **Kui palju tuleb külalisele maksta broneeringu tühistamise eest pärast tähtaega?**&#x4B;ui külaline ületab ülaltoodud tähtaega, saate määrata summa, mille külaline maksab pärast tähtaega.*nt 70% koguhinnast*
+- **Kui palju külaline tühistamise eest maksab?** Vaikimisi on mitte-tagastatav poliitika 100% mitte-tagastatav. Siin saate summat täpsustada. *nt 50% koguhinnast*
+- **Kas tasul on tähtaeg?** Kui olete summat täpsustanud, saate seda veelgi täpsustada, määrates, kui kaua see summa kehtib. *nt kuni 3 päeva enne saabumist*
+- **Kui palju külaline maksab tühistamise eest pärast tähtaega?** Kui külaline ületab ülaltoodud tähtaega, saate määrata summa, mida külaline pärast tähtaega maksab. *nt 70% koguhinnast*
 
 ## Tagastatav
 
-Tagasimakse võimalusega tühistamispoliitika loomiseks lülita lüliti sisse, kui sinult küsitakse, kas poliitika on tagastatav.
+Tagastatava tühistamispoliitika loomiseks seadke lüliti ✅ sisse, kui küsitakse, kas poliitika on tagastatav.
 
 ### Valikud
 
-Soovi korral saate oma`refundable`poliitikat edasi suurema kontrolli saavutamiseks.
+Võite oma `tagastatavat` poliitikat täiendavalt seadistada suurema kontrolli saavutamiseks.
 
-* **Kui kaua enne saabumist saab külaline broneeringu tasuta tühistada?**&#x56;aikimisi on tagastatava poliisi puhul alati 100% tagastatav summa. Tähtaega saate siin täpsustada.*nt 3 päeva enne saabumist*
-* **Kui palju peaks külaline maksma, kui tühistamine toimub pärast ülaltoodud tähtaega?**&#x4B;ui olete tähtaega täpsustanud, saate määrata summa, mille külaline pärast tähtaega maksab.*nt 50% koguhinnast*
-* **Kui palju peaks külaliselt mitteilmumise korral küsima?**&#x4A;uhul kui külaline kohale ei ilmu, saate määrata summa, mille külaliselt võetakse.`No show`.*nt 100% koguhinnast*
-
+- **Kui kaua enne saabumist võib külaline tasuta tühistada?** Vaikimisi on tagastatav poliitika alati 100% tagastatav. Siin saate tähtaega täpsustada. *nt 3 päeva enne saabumist*
+- **Kui palju külaline maksab, kui tühistamine toimub pärast ülaltoodud tähtaega?** Kui olete tähtaega täpsustanud, saate määrata summa, mida külaline pärast tähtaega maksab. *nt 50% koguhinnast*
+- **Kui palju peaks külaline maksma „Ei ilmu“ korral?** Kui külaline ei ilmu kohale, saate määrata summa, mida külaline `Ei ilmu` eest maksab. *nt 100% koguhinnast*

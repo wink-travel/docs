@@ -1,43 +1,40 @@
 ---
-title: TripPay ile entegrasyon
-description: >-
-  Bu makale, TripPay ile nasıl entegre olabileceğinize ve ödemeyi sizin adınıza
-  nasıl yönetebileceğine dair tam bir örnek içermektedir.
+title: TripPay ile Entegrasyon
+description: Bu makale, TripPay ile nasıl entegre olunacağını ve ödeme işleminin TripPay tarafından nasıl yönetileceğine dair tam bir örnek içermektedir.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Bu makale TripPay ile entegrasyonun nasıl yapılacağına dair uçtan uca bir örnek içermektedir.
+Bu makale, TripPay ile nasıl uçtan uca entegre olunacağını gösteren bir örnek içermektedir.
 
-Daha önce okumanız tavsiye edilir:
+Öncelikle aşağıdakileri okumanız önerilir:
 
-* [Ödeme > Haritalama](/payment/mapping).
-* [Ödeme > Entegrasyon](/payment/integration).
-* [Ödeme Web Bileşeni](/developers/web-components/#payment).
-* [Ödeme API'si](/developers/apis/#payment-api).*Bölümü okuyun`Create payable contracts`*
+- [Ödeme > Eşleme](/tr/payment/mapping).
+- [Ödeme > Entegrasyon](/tr/payment/integration).
+- [Ödeme Web Bileşeni](/tr/developers/web-components/#payment).
+- [Ödeme API](/tr/developers/apis/#payment-api). *`Create payable contracts` bölümünü okuyun*
 
-TripPay'i rezervasyon ödemesinde başarıyla kullanmak için aşağıdaki adımları izleyin:
+TripPay'i kullanarak bir rezervasyonun ödemesini başarıyla yapmak için adımlar şunlardır:
 
 <Steps>
-  1. Rezervasyon sözleşmesinde belirttiğiniz yararlanıcıların eşleştirildiğinden emin olun.
-  2. Seyahat eden kişinin rezervasyon yapmak istediği envanteri seçmesine izin verin ve ödeme yapmaya hazır olun.
-  3. Bir tane oluştur `payable contract` Rezervasyon yapılacak ürünlerin yer aldığı TripPay ile.
-  4. Seyahat edenin TripPay Web Bileşenini kullanarak ödeme yapmasını sağlayın.
+1. Rezervasyon sözleşmesinde belirttiğiniz yararlanıcıların eşlendiğinden emin olun.
+2. Seyahatçinin rezervasyon yapmak istediği envanteri seçmesine izin verin ve ödemeye hazır hale getirin.
+3. Rezervasyon yapılacak öğeleri içeren bir `ödenecek sözleşme`yi TripPay ile oluşturun.
+4. Seyahatçinin TripPay Web Bileşeni'ni kullanarak ödeme yapmasını sağlayın.
 </Steps>
 
+`Adım 1` ve `Adım 2`'yi tamamladığınızı ve TripPay'e rezervasyon hakkında bilgi vermeye hazır olduğunuzu varsayıyoruz.
 
-Zaten tamamladığınızı varsayıyoruz`Step 1` Ve `Step 2`ve rezervasyonunuzu TripPay'e bildirmeye hazırsınız.
+## Ödenecek sözleşme oluşturma
 
-## Ödenebilir sözleşme oluştur
-
-:::not
-Ödenebilir bir sözleşme oluşturma gereklilikleri hakkında daha fazla bilgi edinmek için Ödeme API'sine gidin.
+:::note
+Ödenecek sözleşme oluşturma gereksinimleri hakkında daha fazla bilgi için Ödeme API'sine bakın.
 :::
 
-### Rica etmek
-
-İlk ödenebilir sözleşmeniz için oluşturmanız gereken her şeyi içeren bir JSON örnek isteği aşağıdadır.
+### İstek
+İlk ödenecek sözleşmenizi oluşturmak için ihtiyacınız olan her şeyi içeren bir JSON örnek isteği aşağıdadır.
 
 ```json {3-6, 8-9}
 {
@@ -132,49 +129,49 @@ Zaten tamamladığınızı varsayıyoruz`Step 1` Ve `Step 2`ve rezervasyonunuzu 
 
 Açıklama:
 
-Burada her veri noktasını açıklamayacağız çünkü bunlar API dokümanlarında zaten yer alıyor.
+Buradaki her veri noktasını açıklamayacağız çünkü API dokümanlarında zaten detaylıca ele alınmıştır.
 
-* Satırlar:**2 - 7**rezervasyondan sorumlu kullanıcıdır. İki tür rezervasyon yapan vardır:
-  * Gezgin.
-  * Seyahat acentesi.
-* Satırlar:**8 - 9**Rezervasyonu kolaylaştıran TripPay hesabıdır. Şunlar olabilir:
-  * TripPay entegratör hesabınız.
-  * Eğer bir ortaklık ağı işletiyorsanız, bu sizin ortak kuruluşunuz olabilir.
-* Birini kullan`traceId`birden fazla tedarikçi arasında birden fazla rezervasyonu gruplamak için. Bu şekilde bir grup rezervasyonunu iptal edebilirsiniz.
-* `redirectUrl`Ödeme tamamlandıktan sonra TripPay'in hangi sayfaya yönlendirileceğini bilmesini sağlar.
-* `sourceUrl`rezervasyonun gerçekleştiği site/uygulamadır.
+- Satırlar: **2 - 7** rezervasyon için sorumlu kullanıcıdır. İki tür rezervasyon yapan vardır:
+    - Seyahatçi.
+    - Seyahat acentesi.
+- Satırlar: **8 - 9** rezervasyonu kolaylaştıran TripPay hesabıdır. Bu:
+    - Sizin TripPay entegratör hesabınız olabilir.
+    - Bir bağlı kuruluş ağı işletiyorsanız, bağlı kuruluşunuz olabilir.
+- Birden fazla tedarikçi arasında birden fazla rezervasyonu gruplayabilmek için `traceId` kullanın. Böylece grup rezervasyonunu iptal edebilirsiniz.
+- `redirectUrl` ödeme tamamlandıktan sonra TripPay'in yönlendireceği sayfayı belirtir.
+- `sourceUrl` rezervasyonun yapıldığı site / uygulamadır.
 
-The`contractList`dizi, gezginin birden fazla tedarikçiden satın almak istediği öğeyi/öğeleri içerir. Her öğe şunları içerir:
+`contractList` dizisi, seyahatçinin birden fazla tedarikçiden satın almak istediği öğeleri içerir. Her öğe şunları içerir:
 
-* The`identifier`oluşturduğunuz geçerli bir UUID'dir.
-* Stok rezervasyonu yapmak istediğiniz tedarikçi.
-* Bu tedarikçiden rezerve etmek istediğiniz envanter. Bunların hepsi iç içe dizide belirtilir`contractItemList`.
-* Her giriş altında`contractItemList`içerir:
-  * **Misafir kullanıcı**Bu, tesise gelecek olan kullanıcıdır.
-  * **İngilizce adı**Envanterin İngilizce dilindeki adı.
-  * **İngilizce açıklama**Envanterin İngilizce dilinde daha uzun bir açıklaması.
-  * **Fiyat**Ürünün fiyatı.
-  * **Gezi Planı**Bu öğenin ne zaman rezerve edilmesi gerektiği.
-  * **Fiyatlandırma türü**Fiyat nasıl hesaplandı.
-  * **Envanter türü**Bu ne tür bir envanterdir.
-  * **Ödenebilir**Seyahat edenin ne zaman ücretlendirilmesi gerekir.*Şu anda yalnızca anında ödeme seçeneklerini destekliyoruz.*
-  * **Politika**İptal politikası kurallarını ekleyin.
-  * **Günlük ücret listesi**Rezerve edilen öğe bir oda ise, misafirin kaldığı her gece için odanın maliyetinin ne kadar olacağını belirtmeyi seçebilirsiniz.
-  * **Yararlanıcılar**Hangi TripPay hesabına/hesaplarına hangi tutarda ürünün fiyatının tahsis edileceğini belirtin.*Sabit/Yüzde miktarları desteklenmektedir.*
+- `identifier` sizin oluşturduğunuz geçerli bir UUID'dir.
+- Envanteri rezervasyon yapmak istediğiniz tedarikçi.
+- O tedarikçiden rezervasyon yapmak istediğiniz envanter. Bunlar iç içe `contractItemList` dizisinde belirtilmiştir.
+- `contractItemList` altındaki her giriş şunları içerir:
+    - **Misafir kullanıcı** Tesislere varacak kullanıcıdır.
+    - **İngilizce isim** Envanterin İngilizce dilindeki adı.
+    - **İngilizce açıklama** Envanterin İngilizce dilindeki daha uzun açıklaması.
+    - **Fiyat** Öğenin fiyatı.
+    - **Güzergah** Bu öğenin ne zaman rezerve edileceği.
+    - **Fiyatlandırma türü** Fiyatın nasıl hesaplandığı.
+    - **Envanter türü** Bu envanterin türü.
+    - **Ödenecek** Seyahatçiden ne zaman ücret alınacağı. *Şu anda sadece anında ödeme seçeneklerini destekliyoruz.*
+    - **Politika** İptal politikası kurallarını dahil edin.
+    - **Günlük fiyat listesi** Rezervasyon yapılan öğe bir oda ise, misafirin kaldığı her gece için o odanın fiyatını dahil edebilirsiniz.
+    - **Yararlanıcılar** Hangi TripPay hesabına öğe fiyatının ne kadarının tahsis edileceğini belirtin. *Sabit / Yüzde tutarlar desteklenir.*
 
-:::not
-Yukarıdaki JSON örneğinde 3 yararlanıcımız var:
+:::note
+Yukarıdaki JSON örneğinde 3 yararlanıcı vardır:
 
-* Rezervasyonun gerçekleştirildiği platforma ise %1,5 oranında pay ayrıldı.*örneğin Göz kırpma*
-* %9,85'i iştirake komisyon olarak ayrıldı.*örneğin Kim Kardashian*
-* Oda rezervasyonunun %88,65'i tedarikçiye tahsis edildi.*örneğin Hilton*
+- %1,5 rezervasyonu kolaylaştıran platforma tahsis edilmiştir. *örneğin Wink*
+- %9,85 bağlı kuruluşa komisyon olarak tahsis edilmiştir. *örneğin Kim Kardashian*
+- %88,65 oda rezervasyonu için tedarikçiye tahsis edilmiştir. *örneğin Hilton*
 
-TripPay ödenebilir bir sözleşmeyle yanıt verdiğinde, kendi yararlanıcısına %4,0 oranında enjekte ettiğini fark edeceksiniz.
+TripPay ödenecek sözleşmeyle yanıt verdiğinde, kendi yararlanıcısını %4,0 oranında eklediğini göreceksiniz.
 :::
 
-### Cevap
+### Yanıt
 
-TripPay isteğinize aşağıdaki gibi bir yanıt verecektir:
+TripPay isteğinize yanıt verdiğinde şöyle görünecektir:
 
 ```json {3}
 [
@@ -208,19 +205,18 @@ TripPay isteğinize aşağıdaki gibi bir yanıt verecektir:
 ]
 ```
 
-Kaydet`id`3. satırda. Bunu TripPay web bileşenine enjekte etmek için kullanacaksınız.
+3. satırdaki `id` değerini kaydedin. Bunu TripPay web bileşenine enjekte etmek için kullanacaksınız.
 
-## TripPay'i yerleştir
+## TripPay'i Gömme
 
-:::not
-Önceden stillerimizi ve Javascript'imizi yüklediğinizden emin olun.
+:::note
+Önceden stil ve Javascript dosyalarımızı yüklediğinizden emin olun.
 :::
 
-Bu noktada, yerleştirmeye hazırsınız`Payment Web Component`web sitenize ekleyin ve kullanıcıya gösterin.
+Bu noktada, `Payment Web Component`'i web sitenize gömmeye ve kullanıcıya göstermeye hazırsınız.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Entegrasyona gelince, yapmanız gereken tek şey bu. Bundan sonra tüm ağır işler TripPay tarafından yapılıyor.
-
+Entegrasyon açısından yapmanız gereken tek şey budur. Geri kalan tüm ağır işler TripPay tarafından yapılacaktır.

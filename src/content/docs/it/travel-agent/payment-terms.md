@@ -1,100 +1,99 @@
 ---
-title: Termini di pagamento
-description: >-
-  Questo documento riguarda la disponibilità dei fondi e il modo in cui Wink
-  supporta il modello di agente per gli agenti di viaggio.
+title: Termini di Pagamento
+description: Questo documento copre la disponibilità dei fondi e come Wink supporta il modello agente per gli agenti di viaggio.
 sidebar:
   order: 5
 ---
-:::nota
-Ultimo aggiornamento 30/10/2024
+
+:::note
+Ultimo aggiornamento 2024-10-30
 :::
 
-:::caution\[Avviso]
-I termini di pagamento di seguito riportati si applicano agli agenti di viaggio che desiderano acquisire ed erogare fondi autonomamente.
-Questo può essere fatto solo tramite la nostra API e solo dagli agenti di viaggio che hanno indicato di volerlo fare durante la procedura di registrazione.
+:::caution[Avviso]
+I termini di pagamento di seguito si applicano agli agenti di viaggio che desiderano acquisire e distribuire fondi autonomamente.  
+Questo può essere fatto solo tramite la nostra API e solo dagli agenti di viaggio che hanno indicato di volerlo fare durante il processo di registrazione.
 
-Tutti gli agenti di viaggio possono comunque prenotare tramite il nostro portale dedicato utilizzando il gateway di pagamento Wink con la propria carta di credito o quella del viaggiatore. Pertanto, tutti gli agenti di viaggio devono accettare anche le condizioni di pagamento in cui il gateway di pagamento Wink è l'esercente ufficiale.
+Tutti gli agenti di viaggio possono comunque prenotare tramite il nostro portale agenti di viaggio utilizzando il gateway di pagamento di Wink con la propria carta di credito o quella del viaggiatore. Pertanto, tutti gli agenti di viaggio devono anche accettare i termini di pagamento in cui il gateway di pagamento di Wink è il merchant of record.
 
-Tali termini sono disponibili sotto[Portale affiliati > Termini di pagamento](/studio/payment-terms).
+Questi termini sono disponibili sotto [Affiliate Portal > Payment Terms](/it/studio/payment-terms).
 :::
 
-**CONDIZIONI DI PAGAMENTO WINK**\
-**PER GLI AGENTI DI VIAGGIO (Commerciante registrato)**
+**TERMINI DI PAGAMENTO WINK**  
+**PER GLI AGENTI DI VIAGGIO (Merchant of Record)**
 
-Le presenti Condizioni di Pagamento del Servizio ("Condizioni di Pagamento") costituiscono un accordo legale vincolante che fa parte del rapporto contrattuale stabilito ai sensi dei "TERMINI E CONDIZIONI PER LE AGENZIE DI VIAGGIO" ("Accordo Principale")
+Questi Termini di Servizio di Pagamento (“Termini di Pagamento”) costituiscono un accordo legale vincolante che fa parte del rapporto contrattuale stabilito ai sensi dei "TERMINI E CONDIZIONI AGENTI DI VIAGGIO" (“Accordo Principale”).
 
-**FRA:**
+**TRA:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**&#x75;na società costituita secondo le leggi di Singapore e con sede legale in #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 con numero di partita IVA 201437335D (di seguito denominata "Wink") e
+1. **TRAVELIKO SINGAPORE PTE. LTD.**, una società costituita secondo le leggi di Singapore con sede legale in \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 e numero di registrazione IVA 201437335D (di seguito denominata "Wink") e  
+     
+2. **L’AGENTE DI VIAGGIO** i cui dati sono indicati nel Modulo di Registrazione Agente di Viaggio o sono stati inviati online (l'"Agente di Viaggio").
 
-2. **L'AGENTE DI VIAGGIO**i cui dati sono indicati nel Modulo di Registrazione dell'Agente di Viaggio o sono stati inviati online (l'"Agente di Viaggio").
+Le definizioni e i termini stabiliti nell’Accordo Principale si applicano a questi Termini di Pagamento salvo diversa definizione nel presente documento.
 
-Le definizioni e i termini stabiliti nel Contratto principale si applicano alle presenti Condizioni di pagamento, salvo diversa definizione nel presente documento.
+**1\. Definizioni**
 
-**1. Definizioni**
+Come definito nell’accordo principale "TERMINI E CONDIZIONI AGENTI DI VIAGGIO" ("Accordo Principale"), i seguenti termini avranno lo stesso significato in questi Termini di Pagamento:
 
-Come definito nell'accordo principale "TERMINI E CONDIZIONI AGENZIE DI VIAGGI" ("Accordo principale"), i seguenti termini avranno lo stesso significato nelle presenti Condizioni di pagamento:
+* "Fornitore di Alloggio(i)"  
+* "Prenotazione"  
+* "Commissione di Prenotazione"  
+* "Valore della Prenotazione"  
+* "Commissione"  
+* "Pagamento Netto"  
+* "Accordo Separato"
 
-* "Fornitore/i di alloggi"
-* "Prenotazione"
-* "Commissione di prenotazione"
-* "Valore della prenotazione"
-* "Commissione"
-* "Pagamento netto"
-* "Accordo separato"
 
-**2. Riscossione e distribuzione dei pagamenti**
+**2\. Raccolta e Distribuzione del Pagamento**
 
-2.1**Riscossione dei pagamenti:**&#x4C;'agente di viaggio è responsabile della riscossione del pagamento dall'ospite al momento della prenotazione. Ciò garantisce l'elaborazione immediata e la trasparenza finanziaria.
+2.1 **Raccolta del Pagamento:** L’Agente di Viaggio è responsabile della raccolta del pagamento dall’Ospite al momento della prenotazione. Ciò garantisce un’elaborazione immediata e chiarezza finanziaria.
 
-2.2**Detrazione della quota:**&#x4C;'agente di viaggio dovrà prima dedurre la commissione del fornitore del servizio e poi la sua commissione per il sottotitolo come nell'esempio seguente:
+2.2 **Detrazione delle Commissioni:** L’Agente di Viaggio deve prima detrarre la commissione del Fornitore di Servizi e poi la propria commissione per il subtotale come nell’esempio seguente:
 
-* Commissione di prenotazione dell'1,5% per Wink.
-* La commissione dell’agente di viaggio come specificato nel contratto separato (per questo esempio useremo il 10%)
+* 1,5% Commissione di Prenotazione per Wink.  
+* La Commissione dell’Agente di Viaggio come specificato nell’Accordo Separato (per questo esempio useremo il 10%)
 
-Valore della prenotazione USD 1.000\
-Commissione Wink (1,5%) = 15 USD\
+Valore Prenotazione USD 1.000  
+Commissione Wink (1,5%) = USD 15  
 Subtotale = 1.000 - 15 = 985
 
-2.3**Pagamento netto ai fornitori di alloggi:**&#x4C;'agente di viaggio è responsabile dell'erogazione del pagamento netto al fornitore dell'alloggio secondo i termini del contratto separato tra l'agente di viaggio e il fornitore dell'alloggio. Wink non è responsabile dell'esecuzione di alcun pagamento al fornitore dell'alloggio.
+2.3 **Pagamento Netto ai Fornitori di Alloggio:** L’Agente di Viaggio è responsabile della distribuzione del Pagamento Netto al Fornitore di Alloggio secondo i termini dell’Accordo Separato tra l’Agente di Viaggio e il Fornitore di Alloggio. Wink non è responsabile di effettuare alcun pagamento al Fornitore di Alloggio.
 
-**3**.**Fatturazione e pagamento**
+**3\. Fatturazione e Pagamento**
 
-3.1**Fatturazione mensile:**&#x57;ink emetterà una fattura mensile corretta e accurata all'agente di viaggio per le commissioni di prenotazione accumulate nel mese precedente. L'agente di viaggio è tenuto a saldare tale fattura entro i termini di pagamento specificati in fattura.
+3.1 **Fatturazione Mensile:** Wink emetterà una fattura mensile corretta e accurata all’Agente di Viaggio per le Commissioni di Prenotazione accumulate durante il mese precedente. L’Agente di Viaggio è tenuto a saldare questa fattura entro i termini di pagamento specificati nella fattura.
 
-3.2**Metodo di pagamento:**&#x49; pagamenti a Wink dovranno essere effettuati tramite il metodo di pagamento specificato in fattura. Eventuali costi associati al bonifico sono a carico dell'agente di viaggio.
+3.2 **Metodo di Pagamento:** I pagamenti a Wink devono essere effettuati tramite il metodo di pagamento specificato nella fattura. Eventuali costi associati al trasferimento del pagamento sono a carico dell’Agente di Viaggio.
 
-3.3**Ritardi nei pagamenti:**&#x49;n caso di ritardo nel pagamento, Wink si riserva il diritto di addebitare interessi di mora sull'importo dovuto al tasso del 5% al mese o al tasso massimo consentito dalla legge, a seconda di quale sia inferiore. Inoltre, qualora l'Agente di Viaggio sia in ritardo nel pagamento del Fornitore di Alloggi secondo i termini del Contratto Separato, Wink si riserva il diritto di sospendere l'accesso al Servizio fino alla risoluzione di tutti i pagamenti in sospeso sia a Wink che al Fornitore di Alloggi. Tuttavia, qualora vi siano errori o inesattezze nella fattura presentata da Wink, l'Agente di Viaggio sarà tenuto a effettuare il pagamento solo della parte corretta e accurata della fattura e non sarà soggetto ad alcun interesse o penale per il mancato pagamento della parte errata della fattura.
+3.3 **Pagamenti in Ritardo:** In caso di pagamento tardivo, Wink si riserva il diritto di addebitare interessi sull’importo scaduto al tasso del 5% al mese o al tasso massimo consentito dalla legge, quello più basso. Inoltre, se l’Agente di Viaggio ritarda il pagamento al Fornitore di Alloggio secondo i termini dell’Accordo Separato, Wink si riserva il diritto di sospendere l’accesso al Servizio fino a quando tutti i pagamenti in sospeso sia verso Wink che verso il Fornitore di Alloggio non siano risolti. Tuttavia, se ci sono errori o inesattezze nella fattura emessa da Wink, l’Agente di Viaggio sarà tenuto a pagare solo la parte corretta e accurata della fattura e non sarà soggetto a interessi o penali per il mancato pagamento della parte errata della fattura.
 
-**4. Ruoli e responsabilità**
+**4\. Ruoli e Responsabilità**
 
-4.1**Responsabilità dell'agente di viaggio:**
+4.1 **Responsabilità dell’Agente di Viaggio:**
 
-* Garantire la riscossione puntuale dei pagamenti da parte degli Ospiti, nel rispetto dei termini indicati nella Sezione 2.1.
-* Dedurre la commissione e la commissione di prenotazione appropriate prima di inviare il pagamento netto ai fornitori di alloggi come da contratto separato.
-* Saldare tempestivamente le fatture di Wink per le Commissioni di Prenotazione entro i termini specificati nella Sezione 3.1.
-* Gestire e risolvere attivamente eventuali controversie relative a prenotazioni o pagamenti, assicurando che la comunicazione con Wink sia costante per risolvere i problemi in modo efficiente.
+* Garantire la raccolta tempestiva dei pagamenti dagli Ospiti, rispettando i termini indicati nella Sezione 2.1.  
+* Detrarre la Commissione di Prenotazione e la Commissione appropriate prima di versare il Pagamento Netto ai Fornitori di Alloggio secondo l’Accordo Separato.  
+* Saldo tempestivo delle fatture di Wink per le Commissioni di Prenotazione entro i termini specificati nella Sezione 3.1.  
+* Gestire attivamente e risolvere eventuali controversie relative a prenotazioni o pagamenti, mantenendo la comunicazione con Wink per risolvere efficacemente le problematiche.
 
-4.2**Responsabilità di Wink:**
+4.2 **Responsabilità di Wink:**
 
-* Emettere fatture mensili precise e tempestive per le Commissioni di Prenotazione come specificato nella Sezione 3.1.
-* Fornire all'agente di viaggio un accesso continuo alla piattaforma Wink per elaborare le prenotazioni e gestire i pagamenti.
-* Assistere l'agente di viaggio nella risoluzione delle controversie relative ai pagamenti, fornendo i dati necessari sulle transazioni e il supporto necessario, se necessario.
+* Emettere fatture mensili accurate e tempestive per le Commissioni di Prenotazione come dettagliato nella Sezione 3.1.  
+* Fornire all’Agente di Viaggio accesso continuo alla piattaforma Wink per l’elaborazione delle prenotazioni e la gestione dei pagamenti.  
+* Assistere l’Agente di Viaggio nella risoluzione di controversie relative ai pagamenti fornendo i dati delle transazioni necessari e supporto come richiesto.
 
-**5. Conversione di valuta**
+**5\. Conversione Valutaria**
 
-Se fosse necessaria una conversione di valuta, questa verrà elaborata al tasso di cambio fornito dal servizio di elaborazione dei pagamenti. L'agente di viaggio è responsabile di eventuali costi associati alla conversione di valuta.
+Se è necessaria una conversione valutaria, questa sarà effettuata al tasso fornito dal servizio di elaborazione dei pagamenti. L’Agente di Viaggio è responsabile di eventuali costi associati alla conversione valutaria.
 
-**6. Risoluzione delle controversie**
+**6\. Risoluzione delle Controversie**
 
-Eventuali controversie derivanti da o correlate alle presenti Condizioni di pagamento saranno gestite come stabilito dalle procedure di risoluzione delle controversie nell'Accordo principale, garantendo un approccio coerente e unificato alla risoluzione dei conflitti tra Wink e l'agente di viaggio.
+Qualsiasi controversia derivante da o relativa a questi Termini di Pagamento sarà gestita secondo le procedure di risoluzione delle controversie previste nell’Accordo Principale, garantendo un approccio coerente e unificato per risolvere i conflitti tra Wink e l’Agente di Viaggio.
 
-**7. Modifica dei Termini**\
-Wink si riserva il diritto di modificare le presenti Condizioni di Pagamento in qualsiasi momento. Eventuali modifiche saranno comunicate all'Agente di Viaggio almeno 30 giorni prima della loro entrata in vigore. L'utilizzo continuato della piattaforma Wink dopo la data di entrata in vigore costituisce accettazione delle condizioni modificate.
+**7\. Modifica dei Termini**  
+Wink si riserva il diritto di modificare questi Termini di Pagamento in qualsiasi momento. Qualsiasi modifica sarà comunicata all’Agente di Viaggio almeno 30 giorni prima della sua entrata in vigore. L’uso continuato della piattaforma Wink dopo la data di efficacia costituisce accettazione dei termini modificati.
 
-**8. Legge applicabile e giurisdizione**\
-Le presenti Condizioni di Pagamento sono regolate dalle leggi di Singapore. Qualsiasi controversia derivante da o relativa alle presenti Condizioni sarà risolta presso i tribunali di Singapore.
+**8\. Legge Applicabile e Giurisdizione**  
+Questi Termini di Pagamento sono regolati dalle leggi di Singapore. Qualsiasi controversia derivante da o relativa a questi termini sarà risolta nei tribunali di Singapore.
 
-Le presenti Condizioni di pagamento costituiscono parte integrante e ampliano le disposizioni di pagamento stabilite nel Contratto principale, "TERMINI E CONDIZIONI AGENTI DI VIAGGIO\_220924", tra Wink e l'agente di viaggio.
-
+Questi Termini di Pagamento sono parte integrante e ampliano le disposizioni di pagamento stabilite nell’Accordo Principale, "TERMINI E CONDIZIONI AGENTI DI VIAGGIO\_220924," tra Wink e l’Agente di Viaggio.

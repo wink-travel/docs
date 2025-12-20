@@ -1,45 +1,45 @@
 ---
 title: Politici de anulare
-description: Acest articol vă arată cum să gestionați politicile de anulare pe Wink.
+description: Acest articol îți arată cum să gestionezi politicile de anulare pe Wink.
 sidebar:
   order: 12
 ---
-Pentru a gestiona politicile de anulare, faceți clic pe`Monetize > Cancellation policies`din bara principală de navigare.
 
-Politicile de anulare stabilesc modul în care sunt gestionate fondurile rezervatorului în cazul în care oaspetele nu poate ajunge. Politicile de anulare sunt de două tipuri distincte:
+Pentru a gestiona politicile tale de anulare, fă clic pe `Monetize > Cancellation policies` din bara principală de navigare.
 
-1. Rambursabil
-2. Nerambursabile
+Politicile de anulare determină cum sunt gestionate fondurile plătite de rezervator în cazul în care oaspetel nu poate ajunge. Politicile de anulare vin în două variante distincte:
 
-De cele mai multe ori, aceste două opțiuni sunt suficiente. Cu toate acestea, ambele vă oferă mult spațiu pentru a vă personaliza politica de anulare.
+1. Rambursabilă
+2. Nerambursabilă
 
-:::sfat\[Curiositate]
-Wink acceptă un total de 8500 de variante ale politicii de anulare.
+De cele mai multe ori, aceste două opțiuni sunt suficiente. Totuși, ambele îți oferă mult spațiu pentru a personaliza politica de anulare mai detaliat.
+
+:::tip[Informație interesantă]
+Wink suportă un total de 8500 de variații ale politicii de anulare.
 :::
 
-Pentru a crea o politică de anulare, faceți clic pe`Create a new cancellation policy`buton.
+Pentru a crea o politică de anulare, fă clic pe butonul `Create a new cancellation policy`.
 
-## Nerambursabile
+## Nerambursabilă
 
-Pentru a crea o politică de anulare nerambursabilă, dezactivați comutatorul la 🛑 atunci când vi se solicită rambursarea.
-
-### Opțiuni
-
-Opțional, puteți configura`non-refundable`politica în continuare pentru un control mai mare.
-
-* **Cât se percepe oaspetelui pentru o anulare?**&#xCE;n mod implicit, o poliță nerambursabilă este o poliță 100% nerambursabilă. Puteți ajusta suma aici.*de exemplu, 50% din prețul total*
-* **Are acuzația un termen limită?**&#x44;acă ați ajustat fin cantitatea, o puteți ajusta și mai mult setând durata de valabilitate a acelei valori.*de exemplu, până la 3 zile înainte de sosire*
-* **Cât se percepe oaspetelui pentru o anulare după termenul limită?**&#xCE;n cazul în care oaspetele depășește termenul limită stabilit mai sus, puteți seta suma pe care o va plăti după termenul limită.*de exemplu, 70% din prețul total*
-
-## Rambursabil
-
-Pentru a crea o politică de anulare rambursabilă, setați comutatorul pe ✅ activat atunci când vi se solicită rambursarea.
+Pentru a crea o politică de anulare nerambursabilă, setează comutatorul pe 🛑 off când ți se cere dacă politica este rambursabilă.
 
 ### Opțiuni
 
-Opțional, puteți configura`refundable`politica în continuare pentru un control mai mare.
+Poți configura opțional politica ta `nerambursabilă` pentru un control mai mare.
 
-* **Cu cât timp înainte de sosire, poate oaspetele anula gratuit?**&#xCE;n mod implicit, o politică de rambursare este întotdeauna 100% rambursabilă. Puteți ajusta termenul limită aici.*de exemplu, cu 3 zile înainte de sosire*
-* **Ce taxă ar trebui să i se perceapă oaspetelui dacă anularea are loc după termenul limită de mai sus?**&#x44;acă ai ajustat termenul limită, poți seta suma pe care o va plăti oaspetele după termenul limită.*de exemplu, 50% din prețul total*
-* **Cât ar trebui să fie perceput oaspetelui pentru o „neprezentare”?**&#xCE;n cazul în care oaspetele nu se prezintă, puteți seta suma care va fi percepută oaspetelui pentru o`No show`.*de exemplu, 100% din prețul total*
+- **Cât se percepe oaspetelui pentru o anulare?** Implicit, o politică nerambursabilă este 100% nerambursabilă. Poți ajusta suma aici. *ex. 50% din prețul total*
+- **Are această taxă un termen limită?** Dacă ai ajustat suma, o poți regla mai departe setând cât timp rămâne valabilă această sumă. *ex. Până la 3 zile înainte de sosire*
+- **Cât se percepe oaspetelui pentru o anulare după termenul limită?** În cazul în care oaspetel depășește termenul limită setat mai sus, poți stabili suma pe care oaspetel o plătește după acest termen. *ex. 70% din prețul total*
 
+## Rambursabilă
+
+Pentru a crea o politică de anulare rambursabilă, setează comutatorul pe ✅ on când ți se cere dacă politica este rambursabilă.
+
+### Opțiuni
+
+Poți configura opțional politica ta `rambursabilă` pentru un control mai mare.
+
+- **Cât timp înainte de sosire poate oaspetel anula gratuit?** Implicit, o politică rambursabilă este întotdeauna 100% rambursabilă. Poți ajusta termenul limită aici. *ex. 3 zile înainte de sosire*
+- **Ce sumă trebuie să plătească oaspetel dacă anularea are loc după termenul limită de mai sus?** Dacă ai ajustat termenul limită, poți seta suma pe care oaspetel o plătește după acest termen. *ex. 50% din prețul total*
+- **Cât trebuie să plătească oaspetel pentru un „No show”?** În cazul în care oaspetel nu se prezintă, poți seta suma pe care oaspetel o plătește pentru un `No show`. *ex. 100% din prețul total*

@@ -1,49 +1,47 @@
 ---
-title: In poche parole
-description: >-
-  In questo articolo ti spiegherò tutto quello che c'è da sapere sul motore di
-  prenotazione.
+title: In Sintesi
+description: Questo articolo ti guida attraverso tutto ciò che volevi sapere sul motore di prenotazione.
 sidebar:
   order: 0
 ---
-Ecco come suddividiamo la responsabilità su Wink:
 
-* [Extranet](/extranet/what-is-extranet)si occupa della gestione dell'inventario da parte dei fornitori.
-* [Studio](/studio/what-is-studio)si occupa della gestione dei contenuti da parte degli affiliati.
-* `Booking Engine`si occupa di realizzare il contenuto, creato in`Studio`, che si basava sull'inventario creato in`Extranet`e rendendolo prenotabile.
-* [Pagamento](/payment/what-is-trip-pay)si occupa di addebitare/rimborsare i viaggiatori che prenotano \[tramite piattaforme come Wink] e di pagare i fornitori.
+Ecco come segmentiamo le responsabilità su Wink: 
 
-Il motore di prenotazione è il cuore della nostra piattaforma.
+- [Extranet](/it/extranet/what-is-extranet) si occupa dei fornitori che gestiscono l'inventario.
+- [Studio](/it/studio/what-is-studio) si occupa degli affiliati che gestiscono i contenuti.
+- `Booking Engine` si occupa di rendere prenotabile il contenuto, creato in `Studio`, basato sull'inventario creato in `Extranet`.
+- [Payment](/it/payment/what-is-trip-pay) si occupa di addebitare / rimborsare i viaggiatori che prenotano [attraverso piattaforme come Wink], e di pagare i fornitori.
+
+Il motore di prenotazione è al centro della nostra piattaforma.
 
 Le sue responsabilità includono:
 
-* Gestire le valute e mantenere aggiornati i tassi di cambio.
-* Fornire ai fornitori di tariffe un modo per inviarci i dati sulle tariffe.
-* Gestione dei dati di ricerca.*ad esempio regioni, paesi, destinazioni, proprietà ecc.*
-* Gestione delle lingue.
-* Generazione di analisi basate sulle interazioni degli utenti, sugli eventi e sulle chiamate API.
-* Fornire inventario prenotabile nel formato, nella lingua e nella valuta desiderati, ad esempio:
-  * UN [link condivisibile](/studio/shareable-links)su Facebook.
-  * Una landing page dell'hotel su https://ota.wink.travel con l'inventario per quell'hotel.
-  * UN [carta](/studio/cards) contenente inventario affiliato.
-  * UN [mappa](/studio/maps)sul tuo[WinkLinks](/link-manager/wink-links) account.
-  * UN [chiamata API](/developers/apis) da un sistema di un agente di viaggio remoto.
-* Fornire ai viaggiatori un modo per:
-  * Cerca l'inventario di viaggio.
-  * Prenota l'inventario disponibile.
-  * Gestire il loro[prenotazioni e recensioni](/booking-engine/bookings).
-  * Gestire il loro [lista dei desideri](/booking-engine/bucket-list) di cose da prenotare in futuro.
-  * Gestire il loro[profilo di viaggio](/booking-engine/travel-preferences).*ad esempio allergie, contatti di emergenza ecc.*
+- Gestire le valute e mantenere aggiornati i tassi di cambio.
+- Fornire ai fornitori di tariffe un modo per inviarci i dati delle tariffe.
+- Gestire i dati di riferimento. *es. regioni, paesi, destinazioni, strutture ecc.*
+- Gestire le lingue.
+- Generare analisi basate sulle interazioni degli utenti, eventi e chiamate API.
+- Fornire l'inventario prenotabile nel formato, lingua e valuta desiderati, come:
+    - Un [link condivisibile](/it/studio/shareable-links) su Facebook.
+    - Una pagina di destinazione hotel su https://ota.wink.travel con l'inventario per quell'hotel.
+    - Una [card](/it/studio/cards) contenente l'inventario affiliato.
+    - Una [mappa](/it/studio/maps) sul tuo account [WinkLinks](/it/link-manager/wink-links).
+    - Una [chiamata API](/it/developers/apis) da un sistema di agenzia di viaggi remoto.
+- Fornire ai viaggiatori un modo per: 
+    - Cercare l'inventario di viaggio.
+    - Prenotare l'inventario disponibile.
+    - Gestire le loro [prenotazioni e recensioni](/it/booking-engine/bookings).
+    - Gestire la loro [bucket list](/it/booking-engine/bucket-list) di cose da prenotare in futuro.
+    - Gestire il loro [profilo di viaggio](/it/booking-engine/travel-preferences). *es. allergie, contatto di emergenza ecc.*
 
-Il motore di prenotazione è un insieme di funzionalità riutilizzabili che rendiamo pubbliche tramite https://ota.wink.travel; un sito web altamente personalizzabile che consente agli hotel e agli affiliati di vendere i propri prodotti ai viaggiatori.
+Il motore di prenotazione è una raccolta di funzionalità riutilizzabili che esponiamo tramite https://ota.wink.travel; un sito altamente personalizzabile per hotel e affiliati per vendere i loro servizi ai viaggiatori.
 
-Gli integratori che desiderano ancora più libertà hanno accesso a tutte le stesse funzionalità tramite il nostro [Plugin di WordPress](/developers/wordpress/),[Componenti Web](/developers/web-components) E [API](/developers/apis).
+Gli integratori, che vogliono ancora più libertà, hanno accesso a tutte le stesse funzionalità tramite il nostro [plugin WordPress](/it/developers/wordpress/), [Web Components](/it/developers/web-components) e [API](/it/developers/apis).
 
-Continuate nelle sezioni successive per saperne di più su ciò che il motore di prenotazione ha da offrire.
+Continua con le sezioni successive per leggere di più su cosa offre il motore di prenotazione.
 
 ## Ulteriori letture
 
-* Leggi di più sul nostro[Plugin di WordPress](/developers/wordpress/).
-* Leggi di più sul nostro[Componenti Web](/developers/web-components).
-* Leggi di più sul nostro[API](/developers/apis).
-
+- Leggi del nostro [plugin WordPress](/it/developers/wordpress/).
+- Leggi dei nostri [Web Components](/it/developers/web-components).
+- Leggi delle nostre [API](/it/developers/apis).

@@ -1,43 +1,41 @@
 ---
-title: Environments
-description: >-
-  Ez a cikk információkat tartalmaz tesztelők és fejlesztők számára arról,
-  hogyan férhetnek hozzá a különböző szerverkörnyezeteinkhez.
+title: Környezetek
+description: Ez a cikk információkat tartalmaz tesztelők és fejlesztők számára arról, hogyan férhetnek hozzá különböző szerverkörnyezetünkhöz.
 sidebar:
   order: 8
 ---
-A Winknél két környezetet üzemeltetünk mindenhez, amit mindenkor csinálunk:
 
-* A termelés a stabil környezetünk.
-* A Staging a mi tanúsítási és tesztelési környezetünk.
+A Winknél mindig 2 környezetet futtatunk minden tevékenységünkhöz:
 
-Ha Ön integrátor, szálloda vagy utazási iroda, és szeretne felkészülni a tanúsításra, vagy tesztelni a Wink platformot, hozzon létre egy fiókot a tesztelési környezetünkben a kezdéshez.
+- A Production a stabil környezetünk.
+- A Staging a tanúsítási és tesztelési környezetünk.
+
+Ha integrátor, szálloda vagy utazási ügynök vagy, aki fel szeretne készülni a tanúsításra vagy tesztelni szeretné a Wink platformot, hozz létre egy fiókot a staging környezetünkben a kezdéshez.
 
 :::note
-A tesztelési környezet kérésre érhető el. Ez azt jelenti, hogy alvó üzemmódba lép, ha nincs használat, és újra bekapcsol, ha van használat. Kérjük, legyen türelmes, ha felébreszti. Körülbelül egy percig tart, amíg az összes szerver elindul, miután először csatlakozott valamelyik szerverünkhöz vagy alkalmazásunkhoz.
+A staging környezet kérésre érhető el. Ez azt jelenti, hogy ha nincs használatban, elalszik, és újra bekapcsol, amikor használatba veszik. Kérjük, légy türelemmel, ha ébreszted. Körülbelül egy percbe telik, amíg az összes szerver elindul, miután először csatlakozol valamelyik szerverünkhöz vagy alkalmazásunkhoz.
 :::
 
 ## Szerverek
 
-Az alábbiakban egy mátrix látható, amely a szervereink nevét és azok használatát tartalmazza.
+Az alábbi táblázat tartalmazza szervereink nevét és azok használatát.
 
-| Kiemelt | Előadás | Gyártás
+| Funkció | Staging | Production
 | ------- | ------- | ---------- |
-| IAM | https://staging-iam.wink.travel | https://iam.wink.travel |
-| Készlet | https://staging-api.wink.travel | https://api.wink.travel |
-| Integrációk | https://staging-integrations.wink.travel | https://integrations.wink.travel |
-| Fizetés | https://staging-api.trippay.io | https://api.trippay.io |
+| IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
+| Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
+| Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Payment | https://staging-api.trippay.io | https://api.trippay.io | 
 
 ## Alkalmazások
 
-Alkalmazásaink teszt- és éles környezetekkel is rendelkeznek ügyfeleink számára.
+Alkalmazásainknak is vannak teszt- és éles környezetei ügyfeleink számára.
 
-| Alkalmazás | Előkészítés | Gyártás
+| Alkalmazás | Staging | Production
 | ------- | ------- | ---------- |
-| Ügynök | https://staging-agent.wink.travel | https://agent.wink.travel |
-| Vállalati | https://staging-group.wink.travel | https://group.wink.travel |
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel |
-| Fizetés | https://staging-pay.wink.travel | https://pay.wink.travel |
-| Stúdió | https://staging-studio.wink.travel | https://studio.wink.travel |
+| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| Corporate | https://staging-group.wink.travel | https://group.wink.travel | 
+| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
+| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
-

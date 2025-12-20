@@ -1,43 +1,41 @@
 ---
-title: Environments
-description: >-
-  See artikkel sisaldab testijatele ja arendajatele mõeldud teavet selle kohta,
-  kuidas pääseda ligi meie erinevatele serverikeskkondadele.
+title: Keskkonnad
+description: See artikkel sisaldab teavet testijatele ja arendajatele selle kohta, kuidas saada juurdepääs meie erinevatele serverikeskkondadele.
 sidebar:
   order: 8
 ---
-Winkis haldame alati kahte keskkonda kõige jaoks, mida teeme:
 
-* Tootmine on meie stabiilne keskkond.
-* Staging on meie sertifitseerimis- ja testimiskeskkond.
+Winkis haldame kõigi meie tegevuste jaoks pidevalt kahte keskkonda:
 
-Kui olete integraator, hotell või reisibüroo, kes soovib valmistuda sertifitseerimiseks või Winki platvormi testida, looge alustamiseks konto meie testimiskeskkonnas.
+- Production on meie stabiilne keskkond.
+- Staging on meie sertifitseerimise ja testimise keskkond.
+
+Kui olete integreerija, hotell või reisibüroo, kes soovib valmistuda sertifitseerimiseks või testida Wink platvormi, looge konto meie staging keskkonnas, et alustada.
 
 :::note
-Lavastuskeskkond on saadaval päringu alusel. See tähendab, et see läheb magama, kui seda ei kasutata, ja lülitub uuesti sisse, kui seda kasutatakse. Palun olge kannatlik, kui te seda äratate. Pärast esimest ühenduse loomist ühe meie serveri või rakendusega võtab kõigi serverite käivitamine umbes minuti.
+Staging keskkond on saadaval taotlusel. See tähendab, et kui seda ei kasutata, läheb see magama ja lülitub ise uuesti sisse, kui kasutus algab. Palun olge kannatlik, kui te selle äratate. Kõik serverid käivituvad umbes minuti jooksul pärast esimest ühendust ühe meie serveri või rakendusega.
 :::
 
 ## Serverid
 
-Allpool on maatriks, mis sisaldab meie serverite nimesid ja nende kasutust.
+Allpool on tabel, mis sisaldab meie serverite nimesid ja nende kasutusotstarvet.
 
-| Funktsioonid | Lavastus | Tootmine
+| Funktsioon | Staging | Production
 | ------- | ------- | ---------- |
-| IAM | https://staging-iam.wink.travel | https://iam.wink.travel |
-| Laoseisud | https://staging-api.wink.travel | https://api.wink.travel |
-| Integratsioonid | https://staging-integrations.wink.travel | https://integrations.wink.travel |
-| Makse | https://staging-api.trippay.io | https://api.trippay.io |
+| IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
+| Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
+| Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Payment | https://staging-api.trippay.io | https://api.trippay.io | 
 
 ## Rakendused
 
-Meie rakendustel on klientidele ka testimis- ja tootmiskeskkonnad.
+Meie rakendustel on samuti test- ja tootmiskeskkonnad meie klientidele.
 
-| Taotlus | Lavastus | Tootmine
+| Rakendus | Staging | Production
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel |
-| Ettevõte | https://staging-group.wink.travel | https://group.wink.travel |
-| Ekstranet | https://staging-extranet.wink.travel | https://extranet.wink.travel |
-| Makse | https://staging-pay.wink.travel | https://pay.wink.travel |
-| Stuudio | https://staging-studio.wink.travel | https://studio.wink.travel |
+| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| Corporate | https://staging-group.wink.travel | https://group.wink.travel | 
+| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
+| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
-

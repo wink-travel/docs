@@ -1,26 +1,24 @@
 ---
-title: Che cosa è Extranet?
-description: >-
-  In questo articolo ti spiegheremo tutto ciò che devi sapere per avviare la
-  gestione di Wink come hotel.
+title: Cos'è l'Extranet?
+description: Questo articolo ti guida su cosa devi sapere per iniziare a usare Wink come hotel.
 sidebar:
   order: 0
 ---
-[Extranet Wink](https://extranet.wink.travel) è il nostro portale immobiliare. È pensato per hotel, catene, marchi e società di gestione alberghiera che desiderano creare e gestire il profilo digitale delle loro strutture sulla piattaforma Wink.
 
-La nostra Extranet è stata progettata con cura per essere il più semplice possibile, ma al contempo supportare tutte le funzionalità che gli utenti esperti si aspettano da un portale immobiliare avanzato. Per farvi un paio di esempi:
+[Wink Extranet](https://extranet.wink.travel) è il nostro portale per le strutture. È pensato per hotel, catene, brand e società di gestione alberghiera per creare e gestire il profilo digitale delle loro strutture sulla piattaforma Wink.
 
-1. Semplicità: utilizza il nostro flusso di lavoro di onboarding intelligente per integrare la tua proprietà e renderla LIVE in meno di un'ora.
-2. Avanzato: Wink supporta 8500 diverse varianti di politiche di cancellazione
-3. Fantastico: regala uno sconto del 10% a una sola persona sul pianeta Terra, senza che l'utente debba effettuare l'accesso o digitare un codice promozionale.
+Il nostro Extranet è stato progettato con cura per essere il più semplice possibile, ma supporta comunque tutte le funzionalità che gli utenti esperti si aspettano da un portale avanzato per le strutture. Per darti un paio di esempi:
 
-Lascia che i nostri maghi ti guidino attraverso l'intero processo. Quando ti sentirai abbastanza a tuo agio... procedi da solo.
+1. Semplicità: usa il nostro flusso di onboarding intelligente per registrare la tua struttura e andare LIVE in meno di un'ora.
+2. Avanzato: Wink supporta 8500 diverse varianti di politiche di cancellazione.
+3. Interessante: offri il 10% di sconto a una singola persona sulla Terra senza che l'utente debba effettuare il login o inserire un codice promozionale.
 
-Wink è un sistema di gestione dei contenuti avanzato per proprietà e fornitori di esperienze. Tutto ciò che puoi fare in una delle nostre app, puoi farlo tramite API. Questo ti permette di integrare Wink in modo così profondo che puoi vendere tramite Wink senza dover mai accedere a nessuna delle nostre app.
+Lascia che i nostri wizard ti guidino attraverso l'intero processo. Quando ti sentirai abbastanza sicuro... procedi da solo.
 
-:::tip\[Suggerimento Pro]
-Stai pagando un costoso hosting di risorse multimediali tramite Leonardo International? Puoi fare esattamente la stessa cosa con Wink E avrai molte più opzioni per manipolare e perfezionare immagini e video.
-:::
+Wink è un sistema avanzato di gestione dei contenuti per strutture e fornitori di esperienze. Tutto ciò che puoi fare in una delle nostre app, puoi farlo tramite API. Questo ti permette di fare un'integrazione profonda con Wink al punto da poter vendere tramite Wink senza dover mai accedere a nessuna delle nostre app.
 
-Tutte queste funzionalità sono gratuite. Solo quando effettui una prenotazione addebitiamo una piccola commissione. Niente da perdere, tutto da guadagnare.
+:::tip[Consiglio Professionale]
+Stai pagando per un hosting costoso di asset media tramite Leonardo International? Puoi fare esattamente la stessa cosa tramite Wink E hai molte più opzioni per manipolare e perfezionare le tue immagini e i tuoi video.
+::: 
 
+Tutte queste funzionalità sono gratuite per te. Prendiamo una piccola commissione solo quando viene effettuata una prenotazione. Non hai nulla da perdere - Tutto da guadagnare.

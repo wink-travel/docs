@@ -1,73 +1,71 @@
 ---
-title: Pravilnik o zasebnosti
-description: >-
-  Lahko dostopna in posodobljena politika zasebnosti za vse naše uporabnike, ki
-  potujejo.
+title: Politika zasebnosti
+description: Enostavno dostopna in ažurna politika zasebnosti za vse naše uporabnike popotnike.
 sidebar:
   order: 5
 ---
-TRAVELIKO SINGAPORE PTE. LTD., ki posluje pod imenom Wink (»podjetje«), vas obvešča, da je treba vaše osebne podatke zbirati, združevati in uporabljati za storitve podjetja v skladu s to politiko zasebnosti. S tem, ko stopite v stik z družbo in ji posredujete svoje osebne podatke za namene komunikacije, koordinacije in/ali zagotavljanja storitev družbe, se šteje, da se strinjate s to politiko zasebnosti in da jo boste upoštevali.
 
-Med obdelavo osebnih podatkov lahko družba pridobi vaše osebne podatke iz različnih kanalov, kot sledi:
+TRAVELIKO SINGAPORE PTE. LTD., ki deluje pod imenom Wink (v nadaljevanju »Družba«), vas želi obvestiti, ki stopate v stik z Družbo, da je potrebno zbirati, sestavljati in uporabljati vaše osebne podatke za storitve Družbe v skladu s to Politiko zasebnosti. S tem, ko stopite v stik in razkrijete svoje osebne podatke Družbi za namene komunikacije, usklajevanja in/ali zagotavljanja storitev Družbe vam, se šteje, da se strinjate in sprejemate, da boste vezani na to Politiko zasebnosti ter jo spoštovali.
 
-(1) Neposredno od vas prek komunikacije družbe z vami;
+Osebne podatke, ki jih Družba obdeluje, lahko pridobi iz različnih kanalov, in sicer:
 
-(2) Posredno, prek napotitve tretje osebe, ki ji morda daste soglasje za razkritje vaših osebnih podatkov podjetju; ali
+(1) Neposredno od vas preko komunikacije z Družbo;
 
-(3) Samodejno zbrano prek sistema, ko dostopate do spletnega mesta podjetja in/ali uporabljate storitve.
+(2) Posredno, preko priporočila tretje osebe, kateri lahko dovolite razkritje vaših osebnih podatkov Družbi; ali
 
-Osebni podatki, ki jih mora družba zbirati, združevati, uporabljati in obdelovati v skladu s to politiko zasebnosti, so naslednji:
+(3) Samodejno zbrano preko sistema, ko dostopate do spletne strani Družbe in/ali uporabljate storitve.
 
-(1) Vaše polno ime, vključno z vašimi povezanimi podatki ali podatki o vašem zastopniku (v primeru, da nas kontaktirate v imenu pravne osebe), ki lahko vključujejo vaš identifikacijski dokument.
+Osebni podatki, ki jih Družba mora zbirati, sestavljati, uporabljati in obdelovati v skladu s to Politiko zasebnosti, so naslednji:
 
-(2) Kontaktni podatki, kot so telefonska številka, e-pošta ali podatki o računu družbenih medijev.
+(1) Vaše polno ime, vključno z vašimi povezanimi informacijami ali informacijami vašega zastopnika (v primeru, da nas kontaktirate v imenu pravne osebe), kar lahko vključuje vaš identifikacijski dokument.
 
-(3) Drugi osebni podatki, ki jih lahko posredujete podjetju med komunikacijo, kot so informacije o vprašanjih, ki vas zanimajo, informacije o interesih ali kateri koli drugi osebno določljivi podatki, ki jih podjetju posredujete neposredno prek različnih komunikacijskih kanalov.
+(2) Kontaktni podatki, kot so telefonska številka, e-pošta ali podatki o računu na družbenih omrežjih.
 
-(4) V primeru komunikacije prek spletnega mesta lahko vključuje vaše tehnične podatke, kot so IP-naslov, piškotki, vključno s podatki o vašem vedenju brskanja.
+(3) Drugi osebni podatki, ki jih lahko posredujete Družbi med komunikacijo, kot so informacije o zadevah poizvedb, informacije o interesih ali druge osebno prepoznavne informacije, ki jih neposredno posredujete Družbi preko različnih komunikacijskih kanalov.
 
-Namen obdelave in uporabe osebnih podatkov: Družba mora zbirati, združevati in uporabljati osebne podatke kandidatov za zaposlitev za naslednje namene:
+(4) V primeru komunikacije preko spletne strani lahko vključuje vaše tehnične informacije, kot so IP naslov, piškotki, vključno s podatki o vašem brskanju.
 
-(1) Za upravljanje komunikacij, s katerimi ste komunicirali z družbo, kot so odgovarjanje na vprašanja, zagotavljanje ustreznih informacij na zahtevo in po potrebi, upravljanje pritožb ali odgovarjanje na komentarje, ki jih družbi posredujete neposredno prek različnih komunikacijskih kanalov, vključno s stalnim usklajevanjem, izvajanjem pogodbe o storitvah in/ali izpolnjevanjem pravic in obveznosti, o katerih se družba in vi dogovorite;
+Namen obdelave in uporabe osebnih podatkov, Družba mora zbirati, sestavljati in uporabljati osebne podatke prosilcev za delo za naslednje namene:
 
-(2) Za izpolnjevanje zakonskih obveznosti, ki so lahko pogojene za družbo. To lahko vključuje, vendar ni omejeno na, opravljanje nalog, povezanih s pripravo računovodskih dokumentov in davkov v zvezi s kakršnimi koli storitvami, ki vam jih družba nudi;
+(1) Za upravljanje komunikacije, s katero ste stopili v stik z Družbo, kot so odgovarjanje na vprašanja, zagotavljanje relevantnih informacij po vaši zahtevi, upravljanje pritožb ali odzivanje na vaše komentarje, ki jih neposredno posredujete Družbi preko različnih komunikacijskih kanalov, vključno s stalnim usklajevanjem, izvrševanjem pogodbe o storitvah in/ali uresničevanjem pravic in obveznosti, o katerih se Družba in vi lahko dogovorita;
 
-(3) Za namene gradnje in izboljšanja poslovnih odnosov, vključno z izboljšanjem storitev, ki jih družba zagotavlja v vašo korist, pri čemer lahko družba zbira in/ali uporablja vaše osebne podatke za namene nadzora, zagotavljanja storitev, analize upravljanja in reševanja poslovnih vprašanj, vključno z, vendar ne omejeno na, usposabljanje zaposlenih in načrtovanje prihodnjih izboljšav storitev;
+(2) Za izpolnjevanje zakonskih obveznosti, ki jih ima Družba pod določenimi pogoji. To lahko vključuje, vendar ni omejeno na, opravljanje nalog, povezanih s pripravo računovodskih dokumentov in davkov v zvezi z morebitnimi storitvami, ki jih Družba nudi vam;
 
-(4) Za namene zaščite in obrambe zakonskih pravic družbe v primeru spora med vami in družbo; in
+(3) Za namen vzpostavljanja in izboljševanja poslovnih odnosov, vključno z izboljšanjem storitev, ki jih Družba nudi za vašo korist, pri čemer lahko Družba zbira in/ali uporablja vaše osebne podatke za nadzor, zagotavljanje storitev, analizo upravljanja in reševanje poslovnih vprašanj, vključno, vendar ne omejeno na, usposabljanje zaposlenih in načrtovanje izboljšav storitev v prihodnosti;
 
-(5) Družba lahko obdeluje osebne podatke za namene, kot so opredeljeni v soglasju, na podlagi izrecnega soglasja, ki ga je prejela, na primer za trženjska sporočila in obvestila o novicah.
+(4) Za namen zaščite in zagovora pravnih pravic Družbe v primeru spora med vami in Družbo; ter
 
-Obdobje hrambe osebnih podatkov: Za izvajanje zgoraj opisanih namenov mora družba zbirati, združevati in obdelovati vaše osebne podatke v naslednjem obdobju:
+(5) Ob predhodnem izrecnem soglasju, kot so marketinške in informativne komunikacije, lahko Družba obdeluje osebne podatke za namene, določene v soglasju.
 
-(1) Za obdelavo osebnih podatkov za namene opravljanja storitev, izvajanja pogodbe in/ali izpolnjevanja pravic in dolžnosti iz pogodbe mora družba obdelovati vaše osebne podatke, dokler je dolžna opravljati storitve za vas;
+Obdobje hrambe osebnih podatkov, da bi izpolnila zgoraj opisane namene, mora Družba zbirati, sestavljati in obdelovati vaše osebne podatke v naslednjem obdobju:
 
-(2) Za obdelavo osebnih podatkov za namen opravljanja nalog v skladu z veljavno zakonodajo mora Družba vaše osebne podatke obdelovati za obdobje, ki ga določa veljavna zakonodaja;
+(1) Za obdelavo osebnih podatkov za namen zagotavljanja storitev, izvrševanja pogodbe in/ali uresničevanja pravic in dolžnosti iz pogodbe, mora Družba obdelovati vaše osebne podatke, dokler ima obveznost zagotavljanja storitev vam;
 
-(3) Za obdelavo osebnih podatkov za namene vzpostavljanja in izboljšanja poslovnih odnosov in/ali izboljšanja storitve si Družba pridržuje pravico, da te osebne podatke hrani v obsegu, ki ga Družba morda potrebuje v poslovnem smislu. Družba jamči, da hramba osebnih podatkov ne bo nerazumno vplivala na pravice posameznika, na katerega se nanašajo osebni podatki;
+(2) Za obdelavo osebnih podatkov za namen izpolnjevanja obveznosti po veljavnih zakonih mora Družba obdelovati vaše osebne podatke za obdobje, določeno z veljavnimi zakoni;
 
-(4) Za obdelavo osebnih podatkov zaradi varstva in boja za zakonite pravice družbe mora družba te osebne podatke hraniti v skladu s predpisi, ki jih določa veljavna zakonodaja; in
+(3) Za obdelavo osebnih podatkov za namen vzpostavljanja in izboljševanja poslovnih odnosov in/ali izboljšanja storitev si Družba pridržuje pravico, da hrani te osebne podatke, kolikor ima poslovno potrebo. Družba zagotavlja, da hramba osebnih podatkov ne bo neupravičeno vplivala na pravice posameznika;
 
-(5) V primeru, da Družbi daste soglasje za obdelavo vaših osebnih podatkov za določene namene, bo Družba vaše osebne podatke obdelovala, dokler te privolitve ne prekličete.
+(4) Za obdelavo osebnih podatkov za zaščito in uveljavljanje zakonitih pravic Družbe mora Družba hraniti te osebne podatke v skladu z rokom, določenim z veljavnimi zakoni; ter
 
-Razkritje osebnih podatkov – vaši osebni podatki na splošno ne bodo razkriti, razen v primeru, ko bi jih družba morala razkriti naslednji osebi:
+(5) V primeru, da nam dovolite obdelavo vaših osebnih podatkov za določene namene, bo Družba obdelovala vaše osebne podatke, dokler to soglasje ne prekličete.
 
-(1) Zunanji ponudniki storitev družbe, ki jih družba najame za zagotavljanje podpornih storitev družbi pri zagotavljanju storitev vam, vključno s svetovalci družbe. Takšno razkritje osebnih podatkov tem tretjim osebam se izvede v skladu z nameni in le na podlagi potrebe po seznanitvi; ali
+Razkritje osebnih podatkov, na splošno vaši osebni podatki ne bodo razkriti, razen v primeru, ko bo Družba morala razkriti naslednjim osebam:
 
-(2) Vlada, regulativni organi ali sodišča, da je lahko Družba predmet odredbe, zakona ali sodbe za razkritje osebnih podatkov.
+(1) Zunanjim ponudnikom storitev Družbe, ki so vključeni v zagotavljanje podpornih storitev Družbi pri nudenju storitev vam, vključno s svetovalci Družbe. Takšno razkritje osebnih podatkov tem tretjim osebam bo izvedeno v skladu z nameni in le na podlagi nujnosti poznavanja; ali
 
-Družba se zavezuje, da bo uvedla ustrezne ukrepe za varstvo osebnih podatkov, da prepreči kakršen koli nepooblaščen in nezakonit dostop, spreminjanje, dopolnjevanje ali razkritje. Družba se zavezuje, da bo te ukrepe redno pregledovala, da bi zagotovila njihovo skladnost s standardi in veljavno zakonodajo.
+(2) Vladnim, regulativnim organom ali sodiščem, ki lahko Družbi naložijo nalog, zakon ali sodbo za razkritje osebnih podatkov.
 
-Pravice posameznika, na katerega se nanašajo osebni podatki, družba spoštuje vaše pravice kot posameznika, na katerega se nanašajo osebni podatki, v skladu z veljavno zakonodajo. Na družbo se lahko obrnete za uveljavljanje pravic, ki so (1) pravica do preklica soglasja, (2) pravica do dostopa, (3) pravica do zahteve po kopiji osebnih podatkov, (4) pravica do popravka osebnih podatkov, (5) pravica do ugovora zoper kakršno koli obdelavo osebnih podatkov, (6) pravica do zahteve po prenosljivosti podatkov, če družba shranjuje osebne podatke v obliki, ki je berljiva ali se običajno uporablja z avtomatiziranimi orodji ali opremo, vključno s pravico do prenosa teh osebnih podatkov drugim upravljavcem podatkov, (7) pravica do zahteve po izbrisu ali anonimizaciji osebnih podatkov, če obdelava ni več potrebna, (8) pravica do zahteve po prekinitvi uporabe osebnih podatkov in (9) pravica do vložitve pritožbe.
+Družba se zavezuje izvajati ustrezne varnostne ukrepe za osebne podatke, da prepreči kakršen koli nepooblaščen in nezakonit dostop, spremembo, popravek ali razkritje. Družba se zavezuje redno pregledovati te ukrepe, da zagotovi njihovo skladnost s standardi in veljavnimi zakoni.
 
-Kontaktni podatki podjetja
+Pravice posameznika, Družba spoštuje vaše pravice kot posameznika v skladu z veljavnimi zakoni. Lahko stopite v stik z Družbo za uveljavljanje pravic, ki so (1) pravica do preklica soglasja, (2) pravica do dostopa, (3) pravica do zahteve kopije osebnih podatkov, (4) pravica do popravka osebnih podatkov, (5) pravica do ugovora obdelavi osebnih podatkov, (6) pravica do zahteve za prenosljivost podatkov v primeru, da Družba hrani osebne podatke v formatu, ki je berljiv ali pogosto uporabljen z avtomatiziranimi orodji ali napravami, vključno s pravico do prenosa teh osebnih podatkov drugim upravljavcem podatkov, (7) pravica do zahteve za izbris ali anonimizacijo osebnih podatkov, če ni več potrebe po obdelavi, (8) pravica do zahteve za začasno ustavitev uporabe osebnih podatkov, in (9) pravica do vložitve pritožbe.
+
+Kontaktni podatki Družbe
 
 Pooblaščenec za varstvo podatkov
 
 Ime: Yann Gouriou
 
-Naslov: #03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095
+Naslov: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
 
-E-pošta: dataprotectionofficer@wink.travel
+E-pošta: dataprotectionofficer@wink.travel  
 Telefonska številka: +66 (0) 854891301
-

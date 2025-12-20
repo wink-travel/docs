@@ -1,19 +1,16 @@
 ---
-title: Revendicați-vă adresa URL
-description: >-
-  În acest articol, vă vom spune cum să revendicați adresa URL personalizată
-  WinkLinks.
+title: Reivindică-ți URL-ul
+description: În acest articol, îți explicăm cum să revendici URL-ul tău personalizat WinkLinks.
 sidebar:
   order: 1
 ---
-Prin crearea unui [cont afiliat](/studio/what-is-studio), aveți deja o adresă URL personalizată WinkLinks. Funcțiile de editor WinkLinks există în aplicația noastră Studio; alături de celelalte funcții de afiliere.
+
+Prin crearea unui [cont de afiliat](/ro/studio/what-is-studio), ai deja un URL personalizat WinkLinks. Funcțiile pentru editori WinkLinks există în aplicația noastră Studio, alături de celelalte funcții pentru afiliați.
 
 ### Exemplu
 
-Dacă numele contului tău este Queen Bee, adresa URL personalizată WinkLinks va fi:
+Dacă numele contului tău este Queen Bee, URL-ul tău personalizat WinkLinks va fi:
 
 <h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-Numele conturilor sunt disponibile pe o`first come - first serve`bază - Ia-ți adresa URL unică cât poți!
-
+Numele conturilor sunt disponibile pe principiul `primul venit - primul servit` - Prinde-ți URL-ul unic cât mai poți!

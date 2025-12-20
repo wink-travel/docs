@@ -1,69 +1,69 @@
 ---
-title: Localization
-description: 'Tento článok vysvetľuje, ako spravujeme lokalizáciu na Winku.'
+title: Lokalizácia
+description: Tento článok vysvetľuje, ako spravujeme lokalizáciu na Wink.
 sidebar:
   order: 7
 ---
-Tento článok vysvetľuje, ako spravujeme lokalizáciu na Winku.
+
+Tento článok vysvetľuje, ako spravujeme lokalizáciu na Wink.
 
 ## Podporované jazyky
 
 Wink podporuje nasledujúce jazyky:
 
-* Angličtina
-* Indonézština
-* Malajzijčina
-* Bulharčina
-* Katalánčina
-* Čeština
-* Dánčina
-* Deutsch
-* Estónčina
-* Španielčina
-* Španielčina (AR)
-* Španielčina (MX)
-* Filipínčina
-* Suomi
-* Français
-* Grécky
-* Hebrejčina
-* Hindčina
-* chorvátčina
-* maďarčina
-* Ílčina
-* Taliansky
-* 日本語
-* 한국어
-* Lotyščina
-* Litovčina
-* Holandčina
-* Nórčina
-* poľština
-* Portugalčina (BR)
-* Portugalčina (PT)
-* Rómčina
-* Ruština
-* Slovenčina
-* slovenčina
-* Srbčina
-* Švédčina
-* ภาษาไทย
-* Turečtina
-* Ukrajinčina
-* Tiếng Việt
-* arabčina
-* 简体中文
-* 繁體中文
+- Angličtina
+- Bahasa Indonesia
+- Bahasa Malaysia
+- Български
+- Català
+- Čeština
+- Dansk
+- Deutsch
+- Eesti
+- Español
+- Español (AR)
+- Español (MX)
+- Filipino
+- Suomi
+- Français
+- Ελληνικά
+- עברית
+- हिन्दी
+- Hrvatski
+- Magyar
+- Íslenska
+- Italiano
+- 日本語
+- 한국어
+- Latviski
+- Lietuvių
+- Nederlands
+- Norsk
+- Polski
+- Português (BR)
+- Português (PT)
+- Română
+- Русский
+- Slovenčina
+- Slovenščina
+- Srpski
+- Svenska
+- ภาษาไทย
+- Türkçe
+- Українська
+- Tiếng Việt
+- العربية
+- 简体中文
+- 繁體中文
 
 ## Na úrovni platformy
 
-Všetky naše aplikácie sú lokalizované tak, aby podporovali všetky vyššie uvedené jazyky. Každá aplikácia má v dolnej časti stránky výber jazyka, z ktorého si používateľ môže vybrať požadovaný jazyk. Rezervačný systém tiež podporuje zadávanie požadovaného jazyka prostredníctvom URL adresy.
+Všetky naše aplikácie sú lokalizované tak, aby podporovali všetky vyššie uvedené jazyky. Každá aplikácia má v spodnej časti stránky výber jazyka, z ktorého si používateľ môže zvoliť požadovaný jazyk. Rezervačný engine tiež podporuje zadanie požadovaného jazyka cez URL.
 
-## Obsah vytvorený používateľmi
+## Obsah vytváraný používateľmi
 
-Obsah generovaný používateľmi je lokalizovaný tak, aby podporoval všetky vyššie uvedené jazyky. Používatelia si môžu vybrať, či si vytvoria anglickú verziu obsahu a zvyšok nechajú na Wink. Alebo si môžu spravovať konkrétnu sadu jazykov pre väčšiu kontrolu a zvyšok nechať na Wink.
+Obsah vytváraný používateľmi je lokalizovaný tak, aby podporoval všetky vyššie uvedené jazyky. Používatelia si môžu zvoliť vytvorenie anglickej verzie obsahu a nechať Wink, aby sa postaral o zvyšok. Alebo môžu spravovať konkrétnu sadu jazykov pre väčšiu kontrolu a nechať Wink, aby sa postaral o zvyšok.
 
 ## Upozornenia
 
-Predvolený jazyk je angličtina. Ak nie je uvedené inak, pri používaní ktorejkoľvek z našich aplikácií používateľom použijeme najprv predvolený jazyk. Aktívny jazyk nenastavujeme na základe miestneho nastavenia prehliadača používateľa.
-
+Predvoleným jazykom je angličtina. Pokiaľ nie je uvedené inak, najprv použijeme predvolený jazyk, keď používateľ používa niektorú z našich aplikácií. Aktívny jazyk nenastavujeme na základe jazyka prehliadača používateľa.

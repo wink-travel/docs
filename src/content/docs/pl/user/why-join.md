@@ -1,23 +1,21 @@
 ---
 title: Dlaczego warto dołączyć
-description: >-
-  W tym artykule znajdziesz opis wszystkich korzyści wynikających z dołączenia
-  do Wink.
+description: Ten artykuł przedstawia wszystkie korzyści z dołączenia do Wink.
 sidebar:
   order: 0
 ---
-Wink został stworzony, aby sprzedaż zasobów turystycznych znów stała się ekscytująca i dostępna dla większej liczby użytkowników.
+
+Wink został stworzony, aby ponownie uczynić sprzedaż oferty turystycznej ekscytującą i dostępną dla większej liczby użytkowników.  
 Istnieje wiele dobrych powodów, dla których warto dołączyć do Wink.
 
-Konto użytkownika umożliwia:
+Konto użytkownika pozwala Ci:
 
-* Twórz i zarządzaj nieruchomościami oraz sprzedawaj je wszędzie tam, gdzie są potencjalni podróżni.
-* Twórz i zarządzaj kontami partnerskimi i zarabiaj prowizję od rezerwacji, które ułatwisz.
-* Twórz i zarządzaj kontami agentów podróży oraz dokonuj rezerwacji w imieniu swoich klientów.
-* Pobierz swój adres URL WinkLinks (*np. https://i.trvl.as/bob*) i użyj go w adresie URL swojego bio na Instagramie.
-* Zarezerwuj następne wakacje i zaoszczędź.
-* Wykonaj wszystkie powyższe czynności jako programista, integrując się z Wink.
-* Wszystkie nasze funkcje są dla Ciebie dostępne**BEZPŁATNY**.
+- Tworzyć i zarządzać obiektami oraz sprzedawać wszędzie tam, gdzie są potencjalni podróżnicy.
+- Tworzyć i zarządzać kontami afiliacyjnymi oraz zarabiać prowizję od rezerwacji, które pośredniczysz.
+- Tworzyć i zarządzać kontami agentów turystycznych oraz rezerwować w imieniu swoich klientów.
+- Uzyskać swój własny adres WinkLinks (*np. https://i.trvl.as/bob*) i używać go w URL swojego bio na IG.
+- Zarezerwować kolejne wakacje i zaoszczędzić.
+- Robić wszystko powyższe jako deweloper, integrując się z Wink.
+- Wszystkie nasze funkcje są dostępne dla Ciebie **Z-D-A-R-M-O**.
 
 Przejdź do następnej sekcji, aby dowiedzieć się, jak się zarejestrować i zacząć zarabiać z Wink.
-

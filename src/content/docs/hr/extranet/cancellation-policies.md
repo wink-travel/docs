@@ -1,45 +1,45 @@
 ---
 title: Pravila otkazivanja
-description: Ovaj članak vam pokazuje kako upravljati pravilima otkazivanja na Winku.
+description: Ovaj članak pokazuje kako upravljati pravilima otkazivanja na Wink.
 sidebar:
   order: 12
 ---
-Za upravljanje pravilima otkazivanja kliknite na`Monetize > Cancellation policies`iz glavne navigacijske trake.
 
-Pravila otkazivanja određuju kako se s sredstvima gosta rukuje u slučaju da gost ne može doći. Pravila otkazivanja dolaze u dva različita oblika:
+Za upravljanje svojim pravilima otkazivanja, kliknite na `Monetize > Cancellation policies` u glavnom navigacijskom izborniku.
 
-1. Povratno
-2. Nepovratno
+Pravila otkazivanja određuju kako se rukuje sredstvima gosta u slučaju da gost ne može doći. Pravila otkazivanja dolaze u dva različita oblika:
 
-Većinom su ove dvije opcije dovoljne. Međutim, obje vam daju puno prostora za daljnje prilagođavanje pravila otkazivanja.
+1. Povratna
+2. Nepovratna
 
-:::savjet\[Zanimljivost]
-Wink podržava ukupno 8500 varijacija pravila o otkazivanju.
+Većinu vremena, ove dvije opcije su dovoljne. Međutim, obje vam daju mnogo prostora za daljnju prilagodbu vašeg pravila otkazivanja.
+
+:::tip[Zanimljivost]
+Wink podržava ukupno 8500 varijacija pravila otkazivanja.
 :::
 
-Za izradu pravila o otkazivanju kliknite na`Create a new cancellation policy`gumb.
+Za kreiranje pravila otkazivanja, kliknite na gumb `Create a new cancellation policy`.
 
-## Nepovratno
+## Nepovratna
 
-Za izradu pravila o otkazivanju bez mogućnosti povrata novca, isključite prekidač kada se prikaže pitanje je li pravilo povratno.
-
-### Opcije
-
-Po želji možete konfigurirati svoj`non-refundable`daljnju politiku za veću kontrolu.
-
-* **Koliko se gostu naplaćuje u slučaju otkazivanja rezervacije?**&#x50;rema zadanim postavkama, politika nepovrata je 100% politika nepovrata. Iznos možete precizno prilagoditi ovdje.*npr. 50% ukupne cijene*
-* **Ima li optužnica rok?**&#x41;ko ste precizno podesili iznos, možete ga dodatno precizno podesiti postavljanjem koliko dugo taj iznos ostaje na snazi.*npr. do 3 dana prije dolaska*
-* **Koliko se gostu naplaćuje za otkazivanje nakon isteka roka?**&#x55; slučaju da gost prekorači gore navedeni rok, možete odrediti iznos koji gost plaća nakon isteka roka.*npr. 70% ukupne cijene*
-
-## Povratno
-
-Za izradu pravila o otkazivanju s mogućnošću povrata novca, postavite prekidač na ✅ kada se prikaže pitanje je li polica povratna.
+Za kreiranje nepovratnog pravila otkazivanja, postavite prekidač na 🛑 isključeno kada se pita je li pravilo povratno.
 
 ### Opcije
 
-Po želji možete konfigurirati svoj`refundable`daljnju politiku za veću kontrolu.
+Opcionalno možete dodatno konfigurirati svoje `nepovratno` pravilo za veću kontrolu.
 
-* **Koliko dugo prije dolaska gost može besplatno otkazati rezervaciju?**&#x50;rema zadanim postavkama, politika povrata novca uvijek je 100%-tna. Rok možete precizno podesiti ovdje.*npr. 3 dana prije dolaska*
-* **Koliki je iznos naplaćen gostu ako se otkazivanje dogodi nakon gore navedenog roka?**&#x41;ko ste precizno podesili rok, možete odrediti iznos koji gost plaća nakon isteka roka.*npr. 50% ukupne cijene*
-* **Koliko bi gost trebao biti naplaćeno u slučaju 'nedolaska'?**&#x55; slučaju da se gost ne pojavi, možete postaviti iznos koji će mu se naplatiti`No show`.*npr. 100% ukupne cijene*
+- **Koliko se gosta naplaćuje za otkazivanje?** Po zadanim postavkama, nepovratno pravilo znači 100% nepovratno. Ovdje možete preciznije podesiti iznos. *npr. 50% ukupne cijene*
+- **Ima li naplata rok?** Ako ste precizirali iznos, možete dodatno podesiti koliko dugo taj iznos vrijedi. *npr. Do 3 dana prije dolaska*
+- **Koliko se gosta naplaćuje za otkazivanje nakon roka?** U slučaju da gost prekorači gore navedeni rok, možete postaviti iznos koji gost plaća nakon roka. *npr. 70% ukupne cijene*
 
+## Povratna
+
+Za kreiranje povratnog pravila otkazivanja, postavite prekidač na ✅ uključeno kada se pita je li pravilo povratno.
+
+### Opcije
+
+Opcionalno možete dodatno konfigurirati svoje `povratno` pravilo za veću kontrolu.
+
+- **Koliko dugo prije dolaska gost može otkazati bez naplate?** Po zadanim postavkama, povratno pravilo je uvijek 100% povratno. Ovdje možete preciznije podesiti rok. *npr. 3 dana prije dolaska*
+- **Koliko se gosta naplaćuje ako otkazivanje nastupi nakon gore navedenog roka?** Ako ste precizirali rok, možete postaviti iznos koji gost plaća nakon roka. *npr. 50% ukupne cijene*
+- **Koliko se gosta naplaćuje za 'No show'?** U slučaju da gost ne dođe, možete postaviti iznos koji se naplaćuje za `No show`. *npr. 100% ukupne cijene*

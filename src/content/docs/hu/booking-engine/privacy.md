@@ -1,73 +1,71 @@
 ---
-title: Adatvédelmi irányelvek
-description: >-
-  Könnyen hozzáférhető és naprakész adatvédelmi szabályzat minden utazó
-  felhasználónk számára.
+title: Adatvédelmi Szabályzat
+description: Könnyen elérhető és naprakész adatvédelmi szabályzat minden utazó felhasználónk számára.
 sidebar:
   order: 5
 ---
-A Wink néven működő TRAVELIKO SINGAPORE PTE. LTD. (a továbbiakban: „Társaság”) tájékoztatja Önt, aki kapcsolatba lép a Társasággal, hogy a Társaság szolgáltatásaihoz a jelen Adatvédelmi Szabályzattal összhangban szükséges a személyes adatainak gyűjtése, összeállítása és felhasználása. Azzal, hogy felveszi a kapcsolatot a Társasággal és megadja személyes adatait a kommunikáció, a koordináció és/vagy a Társaság szolgáltatásainak nyújtása céljából, a Társaság úgy tekinti, hogy Ön elfogadja és elfogadja a jelen Adatvédelmi Szabályzatot, és betartja azt.
 
-A személyes adatok kezelése során a Társaság az alábbi csatornákon keresztül juthat hozzá az Ön személyes adataihoz:
+A TRAVELIKO SINGAPORE PTE. LTD., amely Wink néven működik (a „Társaság”), tájékoztatni kívánja Önt, aki kapcsolatba lép a Társasággal, hogy szükséges az Ön személyes adatainak gyűjtése, összeállítása és felhasználása a Társaság szolgáltatásai érdekében a jelen Adatvédelmi Szabályzatnak megfelelően. Amennyiben kapcsolatba lép a Társasággal és megadja személyes adatait a kommunikáció, koordináció és/vagy a Társaság szolgáltatásainak nyújtása céljából, úgy azt tekintjük, hogy Ön elfogadja és vállalja a jelen Adatvédelmi Szabályzat betartását.
 
-(1) Közvetlenül Öntől a Társaság Önnel folytatott kommunikációján keresztül;
+A feldolgozott személyes adatokat a Társaság különböző csatornákon keresztül szerezheti be az alábbiak szerint:
 
-(2) Közvetve, egy harmadik fél ajánlása útján, akinek Ön hozzájárulhat személyes adatainak a Társasággal való közléséhez; vagy
+(1) Közvetlenül Öntől a Társaság Önnel folytatott kommunikációja során;
 
-(3) Automatikusan gyűjti a rendszer, amikor Ön felkeresi a Társaság weboldalát és/vagy igénybe veszi a szolgáltatásokat.
+(2) Közvetetten, egy harmadik féltől érkező ajánlás útján, akinek Ön engedélyezheti személyes adatainak a Társaság részére történő továbbítását; vagy
 
-A Társaság által a jelen Adatvédelmi Szabályzat értelmében gyűjtendő, összeállítandó, felhasználandó és feldolgozandó személyes adatok a következők:
+(3) Automatikusan gyűjtve a rendszer által, amikor Ön hozzáfér a Társaság weboldalához és/vagy használja a szolgáltatásokat.
 
-(1) Az Ön teljes neve, beleértve a kapcsolódó információkat vagy a képviselőjének adatait (amennyiben jogi személy nevében lép velünk kapcsolatba), amely tartalmazhatja a személyazonosító okmányát is.
+A személyes adatok, amelyeket a Társaságnak a jelen Adatvédelmi Szabályzat alapján szükséges gyűjtenie, összeállítania, használnia és feldolgoznia, a következők:
 
-(2) Elérhetőségi adatok, például telefonszám, e-mail cím vagy közösségi média fiókadatok.
+(1) Teljes neve, beleértve a kapcsolódó vagy képviselői adatait (amennyiben Ön jogi személy nevében lép kapcsolatba velünk), amely magában foglalhatja az azonosító okmányát is.
 
-(3) Egyéb személyes adatok, amelyeket Ön a kommunikáció során megadhat a Társaságnak, például információk a megkeresésekről, érdeklődési körökre vonatkozó információk vagy bármely más, személyazonosításra alkalmas információ, amelyet Ön közvetlenül a Társaságnak ad meg különböző kommunikációs csatornákon keresztül.
+(2) Kapcsolattartási adatok, mint például telefonszám, e-mail vagy közösségi média fiók adatai.
 
-(4) A weboldalon keresztül történő kommunikáció esetén tartalmazhatják az Ön technikai adatait, például IP-címét, sütiket, beleértve a böngészési viselkedésére vonatkozó információkat is.
+(3) Egyéb személyes adatok, amelyeket Ön a kommunikáció során megad a Társaságnak, például érdeklődési körre vonatkozó információk vagy bármely más, közvetlenül a Társaságnak különböző kommunikációs csatornákon keresztül átadott személyazonosításra alkalmas adat.
 
-A személyes adatok feldolgozásának és felhasználásának célja A Társaságnak a következő célokra kell gyűjtenie, összeállítania és felhasználnia a pályázó személyes adatait:
+(4) Weboldalon keresztüli kommunikáció esetén technikai adatok, mint például IP-cím, sütik, valamint böngészési viselkedésre vonatkozó információk.
 
-(1) Az Ön és a Társaság közötti kommunikáció kezelése érdekében, például kérdések megválaszolása, releváns információk kérésre és szükség szerint történő megadása, panaszok kezelése vagy a közvetlenül a Társaságnak különböző kommunikációs csatornákon keresztül tett észrevételeire való válaszadás, beleértve a folyamatos koordinációt, a szolgáltatási szerződés aláírását és/vagy az Ön és a Társaság között esetlegesen megállapodott jogok és kötelezettségek teljesítését;
+A személyes adatok feldolgozásának és felhasználásának célja, hogy a Társaság számára szükséges legyen a jelentkező személyes adatainak gyűjtése, összeállítása és felhasználása az alábbi célokra:
 
-(2) A Társaságra vonatkozó jogi kötelezettségek teljesítése érdekében, amelyek bizonyos feltételekhez köthetők. Ez magában foglalhatja többek között a Társaság által Önnek nyújtott szolgáltatásokkal kapcsolatos számviteli dokumentumok és adóbevallások elkészítésével kapcsolatos feladatok ellátását;
+(1) A Társasággal folytatott kommunikáció kezelése, például kérdések megválaszolása, kért és szükséges információk biztosítása, panaszok kezelése vagy a Társaságnak közvetlenül tett hozzászólásokra adott válaszadás, beleértve a folyamatos koordinációt, szolgáltatási szerződés teljesítését és/vagy a Társaság és Ön között megállapodott jogok és kötelezettségek teljesítését;
 
-(3) Üzleti kapcsolatok építése és fejlesztése céljából, beleértve a Társaság által az Ön javára nyújtott szolgáltatás fejlesztését is, amely célból a Társaság gyűjtheti és/vagy felhasználhatja az Ön személyes adatait ellenőrzés, szolgáltatás biztosítása, vezetői elemzés és üzleti problémák megoldása céljából, beleértve, de nem kizárólagosan, az alkalmazottak képzését és a jövőbeni szolgáltatásfejlesztési tervezést;
+(2) A Társaságra vonatkozó jogi kötelezettségek teljesítése bizonyos feltételek mellett. Ez magában foglalhatja, de nem kizárólagosan, a számviteli dokumentumok és adók előkészítésével kapcsolatos feladatok ellátását a Társaság által Önnek nyújtott szolgáltatások kapcsán;
 
-(4) A Társaság törvényes jogainak védelme és megóvása céljából, amennyiben Ön és a Társaság között vita merülne fel; és
+(3) Üzleti kapcsolatok építése és fejlesztése céljából, beleértve a Társaság által az Ön javára nyújtott szolgáltatás javítását, amelyhez a Társaság gyűjtheti és/vagy felhasználhatja személyes adatait az ellenőrzés, szolgáltatásbiztosítás, menedzsment elemzés és üzleti problémák megoldása érdekében, beleértve, de nem kizárólagosan, a munkavállalók képzését és a jövőbeni szolgáltatásfejlesztési tervezést;
 
-(5) A Társaságnak adott kifejezett hozzájárulás esetén, például marketing és hírlevél-kommunikáció céljából, a Társaság a hozzájárulásban meghatározott célokra kezelheti a Személyes adatokat.
+(4) A Társaság jogi jogainak védelme és érvényesítése érdekében, amennyiben Ön és a Társaság között vita merülne fel; és
 
-A személyes adatok megőrzési ideje: a fent leírt célok teljesítése érdekében a Társaságnak a következő időszakokban kell gyűjtenie, összeállítania és feldolgoznia az Ön személyes adatait:
+(5) Kifejezett hozzájárulás esetén, például marketing és hírlevél kommunikációk céljából, a Társaság feldolgozhatja a személyes adatokat a hozzájárulásban meghatározott célokra.
 
-(1) A személyes adatok szolgáltatásnyújtás, szerződéskötés és/vagy a szerződés szerinti jogok és kötelezettségek teljesítése céljából történő kezelése érdekében a Társaságnak mindaddig fel kell dolgoznia az Ön személyes adatait, ameddig a Társaságnak kötelessége szolgáltatást nyújtani Önnek;
+A személyes adatok megőrzési ideje, a fent leírt célok teljesítése érdekében a Társaságnak szükséges az Ön személyes adatainak gyűjtése, összeállítása és feldolgozása az alábbi időtartamok szerint:
 
-(2) A személyes adatok kezelése a vonatkozó jogszabályok szerinti kötelezettségek teljesítése céljából szükséges, a Társaságnak az Ön személyes adatait a vonatkozó jogszabályokban meghatározott ideig kell kezelnie;
+(1) Szolgáltatásnyújtás, szerződés teljesítése és/vagy a szerződés szerinti jogok és kötelezettségek teljesítése céljából a Társaságnak szükséges az Ön személyes adatait feldolgoznia, amíg a Társaságnak szolgáltatási kötelezettsége van Ön felé;
 
-(3) A Társaság fenntartja a jogot, hogy az üzleti kapcsolatok kiépítése és javítása, illetve a szolgáltatás javítása céljából kezelt személyes adatokat olyan mértékben megőrizze, amennyire erre üzleti okokból szüksége van. A Társaság szavatolja, hogy a személyes adatok megőrzése nem érinti indokolatlanul az érintett jogait;
+(2) Jogszabályi kötelezettségek teljesítése céljából a Társaságnak az Ön személyes adatait a vonatkozó jogszabályok által meghatározott ideig kell feldolgoznia;
 
-(4) A személyes adatok kezelése érdekében, a Társaság jogos jogainak védelme és érvényesítése érdekében a Társaságnak kötelessége az ilyen személyes adatokat az alkalmazandó jogszabályokban meghatározott előírásoknak megfelelően megőrizni; és
+(3) Üzleti kapcsolatok építése és fejlesztése, illetve szolgáltatásfejlesztés céljából a Társaság fenntartja a jogot, hogy az adatokat a szükséges üzleti igények mértékéig megőrizze. A Társaság garantálja, hogy az adatok megőrzése nem sérti indokolatlanul az érintett jogait;
 
-(5) Amennyiben Ön hozzájárul ahhoz, hogy a Társaság meghatározott célból kezelje személyes adatait, a Társaság a személyes adatait mindaddig kezeli, amíg Ön vissza nem vonja a hozzájárulását.
+(4) A Társaság jogos érdekeinek védelme és érvényesítése érdekében a Társaságnak szükséges az adatokat a vonatkozó jogszabályok által meghatározott ideig megőriznie; és
 
-A személyes adatok nyilvánosságra hozatala, általánosságban elmondható, hogy az Ön személyes adatait nem hozzuk nyilvánosságra, kivéve, ha a Társaságnak azokat a következő személlyel kellene közölnie:
+(5) Amennyiben Ön hozzájárulását adja a személyes adatok meghatározott célokra történő feldolgozásához, a Társaság az adatokat a hozzájárulás visszavonásáig kezeli.
 
-(1) A Társaság külső szolgáltatói, akiket a Társaság támogató szolgáltatások nyújtásával bíztak meg az Önnek nyújtott szolgáltatásokkal, beleértve a Társaság tanácsadóit is. A személyes adatok ilyen harmadik felekkel történő közlése a céloknak megfelelően és kizárólag a szükséges ismeret elve alapján történik; vagy
+A személyes adatok nyilvánosságra hozatala, általánosságban az Ön személyes adatait nem hozzuk nyilvánosságra, kivéve az alábbi eseteket:
 
-(2) Kormány, szabályozó hatóságok vagy bíróságok, amelyek szerint a Társaságra vonatkozóan határozat, törvény vagy ítélet vonatkozhat a személyes adatok nyilvánosságra hozatalára.
+(1) A Társaság külső szolgáltatóinak, akik támogatást nyújtanak a Társaságnak az Önnek nyújtott szolgáltatások során, beleértve a Társaság tanácsadóit is. Az ilyen személyes adatok harmadik fél részére történő átadása a céloknak megfelelően, csak szükség szerinti alapon történik;
 
-A Társaság vállalja, hogy megfelelő személyesadat-biztonsági intézkedéseket hajt végre a jogosulatlan és jogellenes hozzáférés, módosítás, módosítás vagy nyilvánosságra hozatal megakadályozása érdekében. A Társaság vállalja, hogy ezeket az intézkedéseket rendszeresen felülvizsgálja annak biztosítása érdekében, hogy azok összeegyeztethetők legyenek a szabványokkal és az alkalmazandó jogszabályokkal.
+(2) Kormányzati, szabályozó hatóságok vagy bíróságok részére, amelyek esetében a Társaság köteles jogi rendelés, törvény vagy ítélet alapján személyes adatokat kiadni.
 
-Az érintettek jogai, a Társaság tiszteletben tartja az Ön, mint érintett jogait a vonatkozó jogszabályok szerint. Ön a Társasággal veheti fel a kapcsolatot a következő jogok gyakorlása érdekében: (1) a hozzájárulás visszavonásának joga, (2) a hozzáférés joga, (3) a személyes adatok másolatának kéréséhez való jog, (4) a személyes adatok helyesbítéséhez való jog, (5) a személyes adatok kezelése elleni tiltakozáshoz való jog, (6) az adathordozhatóság kéréséhez való jog, amennyiben a Társaság a személyes adatokat automatizált eszközök vagy berendezések által olvasható vagy általánosan használt formátumban tárolja, beleértve az ilyen személyes adatok más adatkezelőknek történő továbbításának jogát is, (7) a személyes adatok törlésének vagy azonosíthatatlanná tételének kéréséhez való jog, ha az adatok kezelésére már nincs szükség, (8) a személyes adatok felhasználásának felfüggesztéséhez való jog, és (9) a panasztételhez való jog.
+A Társaság vállalja, hogy megfelelő személyes adatvédelmi intézkedéseket vezet be az illetéktelen és jogellenes hozzáférés, módosítás, változtatás vagy nyilvánosságra hozatal megelőzése érdekében. A Társaság elkötelezett ezen intézkedések rendszeres felülvizsgálata mellett, hogy biztosítsa azok megfelelőségét a szabványoknak és a vonatkozó jogszabályoknak.
 
-Cég elérhetőségei
+Az érintett jogai, a Társaság tiszteletben tartja az Ön jogait az érintett személyként a vonatkozó jogszabályok szerint. Ön kapcsolatba léphet a Társasággal az alábbi jogok gyakorlása érdekében: (1) a hozzájárulás visszavonásának joga, (2) hozzáférés joga, (3) személyes adatok másolatának kérésének joga, (4) személyes adatok helyesbítésének joga, (5) tiltakozás joga a személyes adatok bármely feldolgozása ellen, (6) az adathordozhatóság joga abban az esetben, ha a Társaság az adatokat géppel olvasható vagy általánosan használt formátumban tárolja, beleértve az adatok más adatkezelőnek történő átvitelének jogát, (7) törlés vagy anonimizálás kérésének joga, ha nincs szükség az adatok további feldolgozására, (8) a személyes adatok használatának felfüggesztését kérheti, és (9) panasz benyújtásának joga.
+
+A Társaság elérhetőségei
 
 Adatvédelmi tisztviselő
 
 Név: Yann Gouriou
 
-Cím: #03-01 Wilkie Edge, 8 Wilkie Road, Szingapúr 228095
+Cím: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
 
-E-mail: dataprotectionofficer@wink.travel
+E-mail: dataprotectionofficer@wink.travel  
 Telefonszám: +66 (0) 854891301
-

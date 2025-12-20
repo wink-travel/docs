@@ -1,42 +1,41 @@
 ---
-title: Environments
-description: >-
-  บทความนี้มีข้อมูลสำหรับนักทดสอบและนักพัฒนาเกี่ยวกับวิธีการเข้าถึงสภาพแวดล้อมเซิร์ฟเวอร์ที่แตกต่างกันของเรา
+title: สภาพแวดล้อม
+description: บทความนี้มีข้อมูลสำหรับผู้ทดสอบและนักพัฒนาเกี่ยวกับวิธีการเข้าถึงสภาพแวดล้อมเซิร์ฟเวอร์ต่างๆ ของเรา
 sidebar:
   order: 8
 ---
-ที่ Wink เราใช้สภาพแวดล้อม 2 แบบสำหรับทุกสิ่งที่เราทำตลอดเวลา:
 
-* การผลิตคือสภาพแวดล้อมที่มั่นคงของเรา
-* การจัดฉากคือสภาพแวดล้อมการรับรองและการทดสอบของเรา
+ที่ Wink เราดำเนินการ 2 สภาพแวดล้อมสำหรับทุกสิ่งที่เราทำตลอดเวลา:
 
-หากคุณเป็นผู้บูรณาการ โรงแรมหรือตัวแทนการท่องเที่ยวที่ต้องการเตรียมความพร้อมสำหรับการรับรองหรือทดสอบแพลตฟอร์ม Wink ให้สร้างบัญชีในสภาพแวดล้อมการจัดเตรียมของเราเพื่อเริ่มต้น
+- Production คือสภาพแวดล้อมที่เสถียรของเรา
+- Staging คือสภาพแวดล้อมสำหรับการรับรองและทดสอบ
 
-:::หมายเหตุ
-สภาพแวดล้อมการจัดเตรียมพร้อมใช้งานตามคำขอ ซึ่งหมายความว่าสภาพแวดล้อมจะเข้าสู่โหมดสลีปหากไม่มีการใช้งาน และจะเปิดตัวเองอีกครั้งเมื่อมีการใช้งาน โปรดอดทนหากคุณกำลังปลุกสภาพแวดล้อมขึ้นมา ใช้เวลาประมาณหนึ่งนาทีในการเริ่มเซิร์ฟเวอร์ทั้งหมดหลังจากที่คุณเชื่อมต่อกับเซิร์ฟเวอร์หรือแอปของเราเป็นครั้งแรก
+หากคุณเป็นผู้รวมระบบ โรงแรม หรือเอเจนซี่ท่องเที่ยวที่ต้องการเตรียมตัวสำหรับการรับรองหรือทดสอบแพลตฟอร์ม Wink ให้สร้างบัญชีในสภาพแวดล้อม staging ของเราเพื่อเริ่มต้น
+
+:::note
+สภาพแวดล้อม staging มีให้ใช้งานตามคำขอ ซึ่งหมายความว่าจะเข้าสู่โหมดพักหากไม่มีการใช้งาน และจะเปิดใช้งานเองเมื่อมีการใช้งาน กรุณาอดทนหากคุณกำลังปลุกมันขึ้นมา โดยจะใช้เวลาประมาณหนึ่งนาทีในการเริ่มเซิร์ฟเวอร์ทั้งหมดหลังจากที่คุณเชื่อมต่อกับเซิร์ฟเวอร์หรือแอปของเราเป็นครั้งแรก
 :::
 
 ## เซิร์ฟเวอร์
 
-ด้านล่างนี้เป็นเมทริกซ์ที่มีชื่อเซิร์ฟเวอร์และการใช้งานของเรา
+ด้านล่างเป็นตารางที่แสดงชื่อเซิร์ฟเวอร์ของเราและการใช้งาน
 
-| คุณสมบัติ | การจัดเตรียม | การผลิต
+| Feature | Staging | Production
 | ------- | ------- | ---------- |
-| IAM | https://staging-iam.wink.travel | https://iam.wink.travel |
-| สินค้าคงคลัง | https://staging-api.wink.travel | https://api.wink.travel |
-| การบูรณาการ | https://staging-integrations.wink.travel | https://integrations.wink.travel |
-| การชำระเงิน | https://staging-api.trippay.io | https://api.trippay.io |
+| IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
+| Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
+| Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Payment | https://staging-api.trippay.io | https://api.trippay.io | 
 
-## แอปพลิเคชั่น
+## แอปพลิเคชัน
 
-แอปพลิเคชันของเรามีสภาพแวดล้อมการทดสอบและการผลิตสำหรับลูกค้าของเราด้วย
+แอปพลิเคชันของเราก็มีสภาพแวดล้อมสำหรับทดสอบและใช้งานจริงสำหรับลูกค้าของเราเช่นกัน
 
-| แอปพลิเคชัน | การจัดฉาก | การผลิต
+| Application | Staging | Production
 | ------- | ------- | ---------- |
-| ตัวแทน | https://staging-agent.wink.travel | https://agent.wink.travel |
-| องค์กร | https://staging-group.wink.travel | https://group.wink.travel |
-| เอ็กซ์ทราเน็ต | https://staging-extranet.wink.travel | https://extranet.wink.travel |
-| การชำระเงิน | https://staging-pay.wink.travel | https://pay.wink.travel |
-| สตูดิโอ | https://staging-studio.wink.travel | https://studio.wink.travel |
+| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| Corporate | https://staging-group.wink.travel | https://group.wink.travel | 
+| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
+| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
-

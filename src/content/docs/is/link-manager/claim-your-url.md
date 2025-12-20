@@ -1,19 +1,16 @@
 ---
-title: Gerðu tilkall til vefslóðarinnar
-description: >-
-  Í þessari grein segjum við þér hvernig á að krefjast WinkLinks vanity URL-sins
-  þíns.
+title: Krefjast þíns URL
+description: Í þessari grein segjum við þér hvernig á að krefjast þíns WinkLinks sérsniðna URL.
 sidebar:
   order: 1
 ---
-Með því að búa til [tengdareikningur](/studio/what-is-studio) Þú ert nú þegar með WinkLinks sérstakt vefslóðakerfi. Útgefendaeiginleikar WinkLinks eru til staðar í Studio appinu okkar, ásamt öðrum eiginleikum okkar fyrir samstarfsaðila.
+
+Með því að stofna [affiliate account](/is/studio/what-is-studio) hefur þú þegar WinkLinks sérsniðið URL. WinkLinks útgefanda eiginleikar eru til staðar í Studio appinu okkar; ásamt öðrum affiliate eiginleikum okkar.
 
 ### Dæmi
 
-Ef aðgangsnafnið þitt er Queen Bee, þá verður WinkLinks vefslóðin þín:
+Ef reikningsnafn þitt er Queen Bee, verður WinkLinks sérsniðið URL þitt:
 
 <h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-Reikningsnöfn eru tiltæk á`first come - first serve`grunnur - Náðu í einstaka vefslóðina þína á meðan þú getur!
-
+Reikningsnöfn eru í boði á `fyrstur kemur - fyrstur fær` grunni - Taktu þitt einstaka URL á meðan þú getur!

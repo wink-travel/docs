@@ -1,12 +1,11 @@
 ---
-title: Security
-description: >-
-  See artikkel sisaldab teavet meie rakendatavate turvameetmete kohta, mida meie
-  kolmanda osapoole turvafirma igal aastal avaldab.
+title: Turvalisus
+description: See artikkel sisaldab teavet turvameetmete kohta, mida rakendame, ning mida avaldab igal aastal meie kolmanda osapoole turbefirma.
 sidebar:
   order: 6
 ---
-# Winki turvalisuse ülevaate dokument
+
+# Wink turvalisuse ülevaatedokument
 
 *Viimati uuendatud: 7. september 2024*
 
@@ -14,65 +13,64 @@ sidebar:
 
 ## Eesmärk ja ulatus
 
-Osana meie jätkuvast pühendumusest turvalisusele ja kasutajaandmete kaitsmisele viime oma veebirakenduses regulaarselt läbitungimistesti läbi. See dokument kirjeldab meie testimismetoodikaid, annab kokkuvõtte tulemustest ja toob esile meie lähenemisviisi pidevale turvalisuse täiustamisele.
+Osana meie pidevast pühendumusest turvalisusele ja kasutajate andmete kaitsele viime läbi regulaarselt sissetungimise testimist meie veebirakendusel. See dokument kirjeldab meie testimismetoodikaid, annab kokkuvõtte leidudest ning toob esile meie lähenemise pidevale turvalisuse parandamisele.
 
-Seda dokumenti ajakohastatakse uute aruannete koostamisel või oluliste muudatuste tegemisel.
+Dokumenti uuendatakse, kui valmivad uued aruanded või toimuvad olulised muudatused.
 
-Valdkonnad, mis kuuluvad ulatusse:\
-\*.wink.travel\
+Kaasatud domeenid:  
+\*.wink.travel  
 \*.trippay.io
 
 ## Testimise sagedus ja ajakava
 
-Meie penetratsioonitestid viiakse läbi igal aastal ning vajadusel planeeritakse täiendavaid teste pärast rakenduse või infrastruktuuri olulisi uuendusi. See regulaarne testimise sagedus tagab, et oleme arenevate ohtudega sammu pidanud ja säilitame turvalise keskkonna.
+Meie sissetungimise testid viiakse läbi kord aastas ning lisatestid ajastatakse vajadusel pärast olulisi rakenduse või infrastruktuuri uuendusi. See regulaarne testimistsükkel tagab, et hoiame sammu muutuvate ohtudega ja säilitame turvalise keskkonna.
 
 ## Testimismetoodikad
 
-Meie penetratsioonitestimine on põhjalik ja hõlmab laia valikut turvaaspekte, sealhulgas, kuid mitte ainult:
+Meie sissetungimise testimine on põhjalik ja hõlmab laia valikut turvaaspekte, sealhulgas, kuid mitte ainult:
 
-* **OWASP 10 parimat:**&#x4D;eie testid on suunatud just kõige kriitilisematele turvariskidele, nagu näiteks süstimine, katkine autentimine ja saidiülene skriptimine (XSS).
-* **Musta ja halli kasti testimine:**&#x53;õltuvalt ulatusest kasutab meie meeskond neid metoodikaid nii väliste kui ka sisemiste rünnakustsenaariumide simuleerimiseks.
-* **Automatiseeritud ja käsitsi testimine:**&#x4B;asutame Burp Suite Pro-d, mis on juhtiv turvatestimise tööriistakomplekt, automatiseeritud turvaskannide tegemiseks ja käsitsi testimise tehnikate abistamiseks keeruliste haavatavuste tuvastamiseks ja parima võimaliku ulatuse saavutamiseks. Täpsemaks haavatavuste tuvastamiseks kasutame spetsiaalseid tööriistu, näiteks SQLmap.
+* **OWASP Top 10:** Meie testid keskenduvad kõige kriitilisematele turvariskidele, nagu süstimine, katkenud autentimine ja rist-saidiline skriptimine (XSS).  
+* **Must kasti ja halli kasti testimine:** Sõltuvalt ulatusest kasutab meie meeskond neid metoodikaid, et simuleerida nii väliseid kui ka sisemisi ründe stsenaariume.  
+* **Automatiseeritud ja manuaalne testimine:** Kasutame Burp Suite Pro, juhtivat turvatestimise tööriistakomplekti, et läbi viia automatiseeritud turvaskaneeringuid ning toetada manuaalseid testimistehnikaid keerukate haavatavuste tuvastamiseks ja parima katvuse saavutamiseks. Mõne spetsiifilisema haavatavuse tuvastamiseks kasutatakse ka spetsialiseeritud tööriistu, nt SQLmap.
 
-## Järelduste kokkuvõte
+## Leidude kokkuvõte
 
-Järgnev on meie viimase penetratsioonitestimise aruande lühikokkuvõte:
+Järgmine on meie viimase sissetungimise testimise aruande kõrgetasemeline kokkuvõte:
 
-* **Tuvastatud haavatavuste koguarv:**&#x32;
-* **Raskusastme jaotus:**
-  * Kriitiline: 2
-* **Tuvastatud haavatavuste tüübid:**
-  * Katkine juurdepääsu kontroll
-  * Ebakindel disain
+* **Kokku tuvastatud haavatavused:** 2  
+* **Tõsiduse jaotus:**  
+  * Kriitiline: 2  
+* **Tuvastatud haavatavuste tüübid:**  
+  * Katkenud juurdepääsukontroll  
+  * Ebaturvaline disain
 
-Üksikasjalike järelduste saamiseks vaadake palun täispikka aruannet.
+Üksikasjalike leidude jaoks palun vaadake täielikku aruannet.
 
 ### Riskihinnangud ja mõju
 
-Mõlemad leitud haavatavused on hinnatud kriitilisteks, kuna mõlemal võis olla tõsine rahaline mõju. Esimene võimaldas pahatahtlikul autentitud kasutajal saada kontrolli teise ettevõtte Trippay maksekonto üle. Teine haavatavus võimaldas pahatahtlikul kasutajal muuta broneeringu eest nõutavat maksesummat.
+Mõlemad leitud haavatavused on hinnatud kriitilisteks, kuna mõlemad võisid põhjustada tõsiseid rahalisi tagajärgi. Esimene võimaldas pahatahtlikul autentitud kasutajal kontrollida teise ettevõtte Trippay maksekontot. Teine haavatavus võimaldas pahatahtlikul kasutajal muuta broneeringu maksmiseks nõutavat summat.
 
-### Parandus- ja leevendamismeetmed
+### Parandus- ja leevendusmeetmed
 
-Oleme tuvastatud haavatavuste kõrvaldamiseks astunud järgmisi samme:
+Oleme võtnud järgmised sammud tuvastatud haavatavuste kõrvaldamiseks:
 
-* **Kohesed parandused:**&#x4B;riitilised haavatavused parandati 48 tunni jooksul pärast avastamist.
-* **Koodi ülevaatamine ja karastamine:**&#x41;rendusmeeskond on meie soovituste põhjal rakendanud täiendavaid turvakontrolle.
+* **Kohesed plaastrid:** Kriitilised haavatavused parandati 48 tunni jooksul pärast avastamist.  
+* **Koodi ülevaatus ja tugevdamine:** Arendusmeeskond on rakendanud täiendavaid turvakontrolle meie soovituste põhjal.
 
-## Pidev täiustamine
+## Pidev parendamine
 
-Tungimistestid on osa meie laiemast pideva turvalisuse täiustamise strateegiast. Iga testi tulemused suunavad meie turvapoliitikat, mõjutavad arendustavasid ja edendavad meie turvaarhitektuuri täiustamist.
+Sissetungimise testimine on osa meie laiemast strateegiast pidevaks turvalisuse parandamiseks. Iga testi leiud juhivad meie turvapoliitikaid, mõjutavad arenduspraktikaid ja suunavad turvarajatiste täiustamist.
 
-## Meeskonna asjatundlikkus
+## Meeskonna ekspertteadmised
 
-Meie penetratsioonitestimist viib läbi ettevõttesisene professionaal, kellel on ulatuslikud kogemused erinevates projektides ja tööstusharudes. Kasutades juhtivaid tööriistu ja meetodeid, tagab meie ekspert, et meie rakendust testitakse põhjalikult uusimate turvaohtude suhtes.
+Meie sissetungimise testid viib läbi siseekspert, kellel on ulatuslik kogemus erinevate projektide ja tööstusharude alal. Kasutades juhtivaid tööriistu ja meetodeid, tagab meie ekspert, et meie rakendus on põhjalikult testitud uusimate turvaohtude vastu.
 
 ## Pühendumus turvalisusele
 
-Oleme pühendunud oma kasutajate ja sidusrühmade jaoks turvalise rakenduskeskkonna säilitamisele. Meie pidevad jõupingutused turvalisuse testimisel ja täiustamisel näitavad meie pühendumust kaitsmisele arenevate ohtude eest.
+Oleme pühendunud turvalise rakenduskeskkonna säilitamisele oma kasutajatele ja sidusrühmadele. Meie pidevad jõupingutused turvatestimisel ja parendamisel näitavad meie pühendumust kaitsta muutuvate ohtude eest.
 
-## Aruannete juurdepääs ja värskendused
+## Aruandele juurdepääs ja uuendused
 
-Seda dokumenti uuendatakse pidevalt uute penetratsioonitestide aruannete avaldamisel. Täieliku aruande saamiseks võtke meiega ühendust alloleva e-posti teel. Tulevased värskendused hõlmavad uusi tuvastatud haavatavusi, parandusmeetmeid ja meie testimismetoodikate kohandusi.
+Seda dokumenti uuendatakse pidevalt, kui väljastatakse uusi sissetungimise testimise aruandeid. Täieliku aruande saamiseks võtke palun ühendust alloleva e-posti aadressi kaudu. Tulevased uuendused sisaldavad uusi tuvastatud haavatavusi, parandusmeetmeid ja meie testimismetoodikate kohandusi.
 
-Lisaküsimuste korral võtke ühendust aadressil security@wink.travel.
-
+Lisaküsimuste korral palun võtke ühendust aadressil security@wink.travel.

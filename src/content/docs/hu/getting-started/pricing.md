@@ -1,66 +1,62 @@
 ---
-title: Pricing
-description: >-
-  Használja kedvére ingyenesen a Wink összes szolgáltatását. Foglalásonként csak
-  egy kis díjat kell fizetnie.
+title: Árazás
+description: Használd ki korlátlanul Wink összes szolgáltatását ingyenesen. Csak egy kis díjat fizetsz foglalásonként.
 sidebar:
   order: 4
 ---
-A Wink összes szolgáltatása ingyenesen használható mindenki számára. Foglalás esetén a Wink kis díjat számít fel a platform fenntartásáért.
 
-A Wink mind a kereskedői, mind az ügynöki modellt támogatja.
+Wink összes szolgáltatása ingyenesen elérhető mindenki számára. Foglalás esetén Wink kis díjat számít fel a platform fenntartásáért.
+
+Wink támogatja mind a kereskedői, mind az ügynöki modellt.
 
 ## 1. modell
 
-A Wink a foglalás időpontjában a kereskedő. A Wink felelős a pénzeszközökért, és rendelkezik az utazási iroda működtetéséhez szükséges összes engedéllyel.
-
+Wink a foglalás időpontjában a kereskedő. Wink felel a pénzeszközökért és rendelkezik az utazási iroda működtetéséhez szükséges minden engedéllyel.
 Ez a modell a foglalások 95%-ára vonatkozik.
 
-Wink díjak`5.5% per booking`a platform fenntartása érdekében.
-Ennek nagy része a fizetési átjáróhoz (Visa, MasterCard stb.) megy. Egy átlagos foglalás költsége nekünk`2.95%`szerezni; néha olyan magas, mint`3.6%`A részleges visszatérítések további nehézséget jelentenek, mivel a fizetési átjáró ezt új költségként érzékeli.
+Wink `5,5% foglalásonként` díjat számít fel a platform fenntartásáért. 
+Ennek nagy része a fizetési szolgáltatónak (Visa, MasterCard stb.) megy. Egy átlagos foglalás megszerzése `2,95%`-ba kerül; néha akár `3,6%`-ig is felmehet. A részleges visszatérítések további költséget jelentenek, mivel a fizetési szolgáltató ezt új díjként kezeli. 
+Teljes átláthatóságra törekszünk az árazás terén, hogy mindenki időt takaríthasson meg, mielőtt további kedvezményeket próbálna kialkudni Wink használata előtt. Árazási modellünk több mint tisztességes, és nekünk is meg kell élnünk.
 
-Teljesen átláthatóak szeretnénk lenni az árazással kapcsolatban, hogy mindenkinek időt takarítsunk meg, mielőtt további kedvezményekről tárgyalnánk, mielőtt igénybe vettük volna a Winket. Az árazási modellünk több mint korrekt, és meg kell élnünk valamiből.
+### Részletezés
 
-### Lebontás
-
-:::note\[Feldolgozási díj]
-A Wink 1,5% feldolgozási díjat számít fel foglalásonként. Ez lehetővé teszi számunkra, hogy minden szolgáltatásunkat ingyenesen kínáljuk, és fedezi a platform karbantartását.
+:::note[Tranzakciós díj]
+Wink 1,5% tranzakciós díjat számít fel foglalásonként. Ez teszi lehetővé, hogy minden szolgáltatásunk ingyenes legyen, és fedezi a platform fenntartását.
 :::
 
-:::note\[Fizetési díj]
-A TripPay 4,0%-os fizetési díjat számít fel foglalásonként. Ez a díj fedezi az utastól történő fizetés megszerzését.
+:::note[Fizetési díj]
+A TripPay 4,0% fizetési díjat számít fel foglalásonként. Ez fedezi az utazótól történő fizetés beszedését.
 :::
 
-:::note\[Pénzügyi kifizetés]
-A számlájára történő pénzküldés díjköteles. Ez a választott kifizetési módtól függ. Jelenleg a következőket támogatjuk:
+:::note[Összeg kifizetése]
+A pénzeszközök számládra történő átutalásához kapcsolódó díjak vannak. Ez a választott kifizetési módtól függ. Jelenleg a következőket támogatjuk:
 
-* **Virtuális hitelkártya**(csak szállodák) ~2,0%
-* **Banki átutalás**A költség attól függ, hogy melyik országban tartózkodik, és honnan küldik a pénzt. Mellékelünk egy árkalkulátort, amelyet akkor használhat, ha van rendelkezésre álló pénz a számláján.
+- **Virtuális hitelkártya** (csak szállodák) ~2,0%
+- **Banki átutalás** A költség az országodtól és a pénz forrásától függ. Tartalmazunk egy árajánlat-kalkulátort, amelyet használhatsz, ha van elérhető egyenleged a számládon.
 
-Ha azt szeretné, hogy más fizetési módot támogassunk, küldjön nekünk e-mailt.
+Ha más kifizetési módot szeretnél, írj nekünk e-mailt.
 :::
 
 ## 2. modell
 
-Ez a modell csak azoknak az utazási irodáknak érhető el, amelyek rendelkeznek utazási irodai engedéllyel a régiójukban, és akik hivatalos kereskedőként kívánnak működni. Néhány regisztrált utazási ügynökünk felelős a szállodáknak történő kifizetések kezeléséért és folyósításáért. E modell keretében ők felelősek az összegekért, és rendelkeznek a szükséges engedélyekkel az országukban való működéshez.
+Ez a modell csak azoknak az utazási irodáknak érhető el, akik rendelkeznek utazási iroda működtetéséhez szükséges engedéllyel a régiójukban, és akik kereskedőként kívánnak eljárni. Néhány regisztrált utazási ügynökünk szeretné kezelni a fizetést és a pénzeszközök szállodák felé történő kifizetését. Ebben a modellben ők felelnek a pénzeszközökért, és rendelkeznek a működéshez szükséges engedélyekkel az adott országban.
 
-### Lebontás
+### Részletezés
 
-:::note\[Feldolgozási díj]
-A Wink 1,5% feldolgozási díjat számít fel foglalásonként. Ez lehetővé teszi számunkra, hogy minden szolgáltatásunkat ingyenesen kínáljuk, és fedezi a platform karbantartását.
+:::note[Tranzakciós díj]
+Wink 1,5% tranzakciós díjat számít fel foglalásonként. Ez teszi lehetővé, hogy minden szolgáltatásunk ingyenes legyen, és fedezi a platform fenntartását.
 :::
 
-Ezzel a modellel az utazási irodák csak a Wink feldolgozási díját fizetik, és a Wink havonta számlázza ki az utazási irodának.
+Ebben a modellben az utazási ügynökök csak Wink tranzakciós díját fizetik, és Wink havonta számlázza az ügynököt.
 
-## Jövőbeli szolgáltatások
+## Jövőbeni szolgáltatások
 
-A jövőben opcionális előfizetéses szolgáltatásokat kínálunk majd, amelyek még könnyebbé teszik az értékesítést mindenki számára, vagy olyan menedzselt affiliate fiókokat, amelyek elvégzik az értékesítést Ön helyett. Ha ez érdekli, jelezze véleményét, ha ír nekünk e-mailt a következő címre:[szia@wink.travel](mailto:hi@wink.travel).
+A jövőben opcionális előfizetéses szolgáltatásokat kínálunk, amelyek még könnyebbé teszik az értékesítést mindenki számára, vagy menedzselt affiliate fiókokat, amelyek helyetted végzik az értékesítést. Ha ez érdekel, hallasd a hangod az [hi@wink.travel](mailto:hi@wink.travel) címen.
 
-Maradjatok velünk.
+Maradj velünk.
 
-## Platformhatás
+## Platform hatás
 
-Végül, mivel folyamatosan növekszünk mind méretben, mind foglalásokban, szeretnénk megosztani veletek néhány platformeredményt. A több foglalás lehetőséget teremt mennyiségi kedvezményekre a fizetési átjárónkon keresztül, ami lehetővé teszi számunkra, hogy mindenki számára csökkentsük a feldolgozási díjat.
+Végül, ahogy növekszünk méretben és foglalások számában, szeretnénk megosztani veled a platform hatásait. Több foglalás nagyobb volumenű kedvezményeket hozhat a fizetési szolgáltatónktól, ami lehetővé tenné, hogy csökkentsük a tranzakciós díjunkat mindenki számára.
 
-Csatlakozz még ma a Winkhez, és fedezz fel egy új, jövedelmező üzleti módot a vendéglátóiparban!
-
+Csatlakozz ma Winkhez, és fedezd fel a vendéglátóiparban rejlő új, jövedelmező üzleti lehetőséget!

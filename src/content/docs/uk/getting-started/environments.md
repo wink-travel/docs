@@ -1,42 +1,41 @@
 ---
-title: Environments
-description: >-
-  Ця стаття містить інформацію для тестувальників та розробників про те, як
-  отримати доступ до наших різних серверних середовищ.
+title: Середовища
+description: Ця стаття містить інформацію для тестувальників і розробників про те, як отримати доступ до наших різних серверних середовищ.
 sidebar:
   order: 8
 ---
-У Wink ми постійно використовуємо 2 середовища для всього, що робимо:
 
-* Виробництво – це наше стабільне середовище.
-* Тестування та сертифікація – це наша среда для технічної підготовки.
+У Wink ми постійно підтримуємо 2 середовища для всього, що робимо:
 
-Якщо ви інтегратор, готель або туристичний агент, який бажає підготуватися до сертифікації або протестувати платформу Wink, створіть обліковий запис у нашому тестовому середовищі, щоб розпочати.
+- Production — це наше стабільне середовище.
+- Staging — це наше середовище для сертифікації та тестування.
 
-:::примітка
-Проміжне середовище доступне на основі запиту. Це означає, що воно перейде в режим сну, якщо його не використовувати, і знову ввімкнеться, коли воно буде. Будь ласка, будьте терплячими, якщо ви його прокидаєте. Запуск усіх серверів займає близько хвилини після першого підключення до одного з наших серверів або програм. :::
+Якщо ви інтегратор, готель або туристичний агент, який хоче підготуватися до сертифікації або протестувати платформу Wink, створіть обліковий запис у нашому staging-середовищі, щоб почати.
+
+:::note
+Середовище staging доступне за запитом. Це означає, що воно переходить у режим сну, якщо ним не користуються, і автоматично вмикається, коли з’являється активність. Будь ласка, будьте терплячі, якщо ви його пробуджуєте. Запуск усіх серверів після першого підключення до одного з наших серверів або додатків займає близько хвилини.
+:::
 
 ## Сервери
 
-Нижче наведено матрицю, що містить назви наших серверів та їх використання.
+Нижче наведена матриця з назвами наших серверів та їх призначенням.
 
-| Функціонал | Постановка | Виробництво
+| Функція | Staging | Production
 | ------- | ------- | ---------- |
-| IAM | https://staging-iam.wink.travel | https://iam.wink.travel |
-| Інвентаризація | https://staging-api.wink.travel | https://api.wink.travel |
-| Інтеграції | https://staging-integrations.wink.travel | https://integrations.wink.travel |
-| Оплата | https://staging-api.trippay.io | https://api.trippay.io |
+| IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
+| Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
+| Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Payment | https://staging-api.trippay.io | https://api.trippay.io | 
 
-## Застосування
+## Додатки
 
-Наші додатки також мають тестове та виробниче середовища для наших клієнтів.
+Наші додатки також мають тестове та продуктивне середовища для наших клієнтів.
 
-| Заявка | Постановка | Виробництво
+| Додаток | Staging | Production
 | ------- | ------- | ---------- |
-| Агент | https://staging-agent.wink.travel | https://agent.wink.travel |
-| Корпоративний | https://staging-group.wink.travel | https://group.wink.travel |
-| Екстранет | https://staging-extranet.wink.travel | https://extranet.wink.travel |
-| Оплата | https://staging-pay.wink.travel | https://pay.wink.travel |
-| Студія | https://staging-studio.wink.travel | https://studio.wink.travel |
+| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| Corporate | https://staging-group.wink.travel | https://group.wink.travel | 
+| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
+| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
-

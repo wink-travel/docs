@@ -1,43 +1,42 @@
 ---
-title: Comparison
-description: >-
-  Сазнајте како се Wink пореди са сличним онлајн туристичким компанијама и које
-  су неке од предности придруживања Wink-у.
+title: Poređenje
+description: Saznajte kako se Wink upoređuje sa sličnim online turističkim kompanijama i koje su neke od prednosti pridruživanja Wink-u.
 sidebar:
   order: 5
 ---
-Сазнајте како се Wink пореди са другим сегментима онлајн путовања на тржишту. У наставку је кратак преглед карактеристика које смо сматрали важним за поређење.
 
-## Матрица карактеристика
+Saznajte kako se Wink upoređuje sa drugim segmentima online turizma na tržištu. Ispod je kratak pregled funkcija za koje smo smatrali da je važno da se uporede.
 
-| Карактеристика | Намигивање | ОТА | ИБЕ | Бед Банк
+## Matrica funkcija
+
+| Funkcija | Wink | OTA | IBE | Bed Bank
 | ----------------------- | -- | -- | -- | -- |
-| Интернет резервације | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Линк-ин-био продавница | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Б2Б партнерска мрежа | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Подршка туристичким агентима | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Дистрибуција и маркетинг уз помоћ вештачке интелигенције | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Алати прилагођени друштвеним мрежама | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Б2Ц канал без провизије | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Бесплатан Google списак хотела | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Веб компонента / SDK / API приступ | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Директни односи | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Провизије о којима се може договарати по продајном каналу | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Менаџер канала и повезивање са PMS-ом | 🟢 | 🟢 | 🟢 | 🟢 |
-| Добављач поседује купца | 🟢 | ⚫️ | 🟢 | 🟢 |
-| Праћење повраћаја инвестиције | 🟢 | 🟢 | ⚫️ | ⚫️ |
-| Плаћање по учинку | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Интегрисани систем плаћања | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Исплате са Wise | 🟢 | 🟢 | ⚫️ | ⚫️ |
+| Internet booking engine | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Link-in-bio prodavnica | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| B2B affiliate mreža | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Podrška turističkim agentima | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Distribucija i marketing uz pomoć AI | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Alati prilagođeni društvenim mrežama | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| B2C kanal bez provizije | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Besplatna Google Hotel lista | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Pristup Web Component / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Direktni odnosi | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Pregovarane provizije po prodajnom kanalu | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Povezanost sa channel manager-om i PMS-om | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Dobavljač poseduje kupca | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| Praćenje ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Plaćanje po učinku | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Integrisani payment gateway | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Isplate preko Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
-## Wink наспрам интернет система за резервације (IBE)
 
-Неки хотели покушавају да нас упореде са својим интернет системом за резервације који је дошао у пакету са њиховим менаџером канала и траже од нас да им дамо фиксну, месечну цену на основу броја кључева од њиховог објекта.
+## Wink vs Internet Booking Engine (IBE)
 
-Ми нисмо ИБЕ и надамо се [Академија Винк](/) помаже да се ово разјасни. Свака услуга има своје предности и мане. Ако ваш IBE одговара вашем објекту, држите се тога.
-Wink постоји да попуни неколико празнина у туристичкој индустрији и да све то обједини на једном месту.
+Neki hoteli pokušavaju da nas uporede sa njihovim internet booking engine-om koji je došao u paketu sa njihovim channel manager-om i traže od nas da im damo fiksnu, mesečnu cenu baziranu na broju soba u njihovom objektu.
 
-:::савет
-Не морате да замените свој постојећи IBE. Међутим, препоручујемо да испробате наш друштвено-прилагођени систем за резервације, или менаџер линкова, на једном од ваших налога на друштвеним мрежама како бисте видели колико конвертују. Не плаћате ништа ако нема резервација - шта имате да изгубите? 😉
+Mi nismo IBE i nadamo se da [Wink Academy](/sr/) pomaže da se to razjasni. Svaka usluga ima svoje prednosti i mane. Ako vaš IBE funkcioniše za vaš objekat, ostanite pri tome.  
+Wink postoji da popuni nekoliko praznina u turističkoj industriji i da sve to objedini na jednom mestu.
+
+:::tip
+Ne morate da zamenite svoj postojeći IBE. Međutim, preporučujemo da probate naš booking engine prilagođen društvenim mrežama, ili link manager, na nekom od vaših naloga na društvenim mrežama da vidite kako se konvertuje. Ne plaćate ništa ako nema rezervacija – Šta imate da izgubite? 😉
 :::
-

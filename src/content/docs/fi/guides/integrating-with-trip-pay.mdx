@@ -1,43 +1,40 @@
 ---
 title: Integrointi TripPayn kanssa
-description: >-
-  Tässä artikkelissa on täydellinen esimerkki siitä, miten voit integroida
-  TripPayn ja antaa sen hoitaa maksun puolestasi.
+description: Tässä artikkelissa on täydellinen esimerkki siitä, miten integroit TripPayn kanssa ja annat TripPayn hoitaa maksun puolestasi.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Tämä artikkeli sisältää kokonaisvaltaisen esimerkin TripPayn integroinnista.
+Tässä artikkelissa on esimerkki kokonaisvaltaisesta integraatiosta TripPayn kanssa.
 
 On suositeltavaa, että olet jo lukenut:
 
-* [Maksu > Yhdistämistiedot](/payment/mapping).
-* [Maksu > Integraatio](/payment/integration).
-* [Maksuverkkokomponentti](/developers/web-components/#payment).
-* [Maksu-API](/developers/apis/#payment-api).*Lue osio aiheesta`Create payable contracts`*
+- [Maksu > Kartoitus](/fi/payment/mapping).
+- [Maksu > Integraatio](/fi/payment/integration).
+- [Maksu Web-komponentti](/fi/developers/web-components/#payment).
+- [Maksu API](/fi/developers/apis/#payment-api). *Lue osio `Luo maksettavat sopimukset`*
 
-Tässä ovat vaiheet TripPayn käyttämiseen varauksen maksamiseen:
+Tässä ovat vaiheet, joilla käytät TripPayta onnistuneesti varauksen maksamiseen:
 
 <Steps>
-  1. Varmista, että varaussopimuksessa mainitsemasi edunsaajat on kartoitettu.
-  2. Anna matkustajan valita varattavat palvelut ja valmistautua maksamaan.
-  3. Luo `payable contract` TripPaylla, joka sisältää varattavat tuotteet.
-  4. Anna matkustajan maksaa TripPay-verkkokomponentin avulla.
+1. Varmista, että varaus­sopimuksessa mainitsemasi edunsaajat on kartoitettu.
+2. Anna matkustajan valita haluamansa varattava kohde ja valmistautua maksamaan.
+3. Luo TripPayn kanssa `maksettava sopimus`, joka sisältää varattavat kohteet.
+4. Anna matkustajan maksaa TripPayn Web-komponentilla.
 </Steps>
 
+Oletamme, että olet jo suorittanut `Vaiheen 1` ja `Vaiheen 2` ja olet valmis ilmoittamaan TripPaylle varauksesta.
 
-Oletamme, että olet jo suorittanut`Step 1`ja`Step 2`ja ovat valmiita ilmoittamaan TripPaylle varauksesta.
-
-## Luo maksullinen sopimus
+## Luo maksettava sopimus
 
 :::note
-Lisätietoja maksullisen sopimuksen luomisen vaatimuksista on Maksu-API:ssa.
+Siirry Maksu API:in saadaksesi lisätietoja maksettavan sopimuksen luomisen vaatimuksista.
 :::
 
-### Pyytää
-
-Tässä on JSON-näytepyyntö, joka sisältää kaiken tarvittavan ensimmäisen maksullisen sopimuksesi luomiseen.
+### Pyyntö
+Tässä on JSON-esimerkkipyyntö, joka sisältää kaiken tarvittavan ensimmäisen maksettavan sopimuksesi luomiseen.
 
 ```json {3-6, 8-9}
 {
@@ -132,44 +129,44 @@ Tässä on JSON-näytepyyntö, joka sisältää kaiken tarvittavan ensimmäisen 
 
 Selitys:
 
-Emme selitä tässä kaikkia datapisteitä, koska ne on jo käsitelty API-dokumentaatiossa.
+Emme selitä jokaista tietokohtaa tässä, koska ne on jo käsitelty API-dokumentaatiossa.
 
-* Rivit:**2–7**on varauksesta vastaava käyttäjä. Varauksen tekijöitä on kahdenlaisia:
-  * Matkustaja.
-  * Matkatoimisto.
-* Rivit:**8–9**on TripPay-tili, joka mahdollistaa varauksen tekemisen. Se voi olla:
-  * TripPay-integraattoritilisi.
-  * Jos ylläpidät kumppanuusverkostoa, se voi olla sinun kumppanuutesi.
-* Käytä`traceId`ryhmitellä useita varauksia useille eri toimittajille. Tällä tavoin voit peruuttaa ryhmävarauksen.
-* `redirectUrl`kertoo TripPaylle, mille sivulle maksun suorittamisen jälkeen ohjataan.
-* `sourceUrl`on sivusto/sovellus, jolla varaus tehtiin.
+- Rivit: **2 - 7** ovat varauksen vastuuhenkilö. On kaksi varaajatyyppiä:
+    - Matkustaja.
+    - Matkatoimisto.
+- Rivit: **8 - 9** ovat TripPay-tili, joka mahdollistaa varauksen. Se voi olla:
+    - Oma TripPay-integraattoritilisi.
+    - Jos pyörität affiliate-verkostoa, se voi olla affiliate-tilisi.
+- Käytä `traceId`-tunnistetta ryhmitelläksesi useita varauksia useilta toimittajilta. Näin voit peruuttaa ryhmävarauksen.
+- `redirectUrl` kertoo TripPaylle, mille sivulle ohjataan maksun jälkeen.
+- `sourceUrl` on sivusto tai sovellus, jossa varaus tehtiin.
 
-The`contractList`taulukko sisältää tuotteet, jotka matkustaja haluaa ostaa useilta toimittajilta. Jokainen tuote sisältää:
+`contractList`-taulukko sisältää kohteen/kohteet, jotka matkustaja haluaa ostaa useilta toimittajilta. Jokainen kohde sisältää:
 
-* The`identifier`on luomasi kelvollinen UUID.
-* Toimittaja, jolta haluat varata varaston.
-* Varasto, jonka haluat varata kyseiseltä toimittajalta. Nämä kaikki on määritelty sisäkkäisessä taulukossa.`contractItemList`.
-* Jokainen merkintä alla`contractItemList`sisältää:
-  * **Vieraskäyttäjä**Tämä on käyttäjä, joka saapuu tiloihin.
-  * **Nimi englanniksi**Varaston nimi englanniksi.
-  * **Kuvaus englanniksi**Pidempi kuvaus varastosta englanniksi.
-  * **Hinta**Tuotteen hinta.
-  * **Matkasuunnitelma**Milloin tämä kohde tulisi varata.
-  * **Hinnoittelutyyppi**Miten hinta laskettiin.
-  * **Varastotyyppi**Minkä tyyppinen varasto tämä on?
-  * **Maksettava**Milloin matkustajalta pitäisi periä maksu.*Tuemme tällä hetkellä vain välittömiä maksuvaihtoehtoja.*
-  * **Käytäntö**Sisällytä peruutusehdot.
-  * **Päivähintalista**Jos varattava kohde on huone, voit valita, kuinka paljon kyseinen huone maksaa kultakin vieraan yöpymiseltä.
-  * **Edunsaajat**Sisällytä kenttään, mille TripPay-tilille/-tileille tuotteen hinta tulisi kohdistaa.*Kiinteitä/prosenttisesti määrät ovat tuettuja.*
+- `identifier` on kelvollinen UUID, jonka luot itse.
+- Toimittaja, jolta haluat varata inventaarion.
+- Inventaario, jonka haluat varata kyseiseltä toimittajalta. Nämä on määritelty sisäkkäisessä taulukossa `contractItemList`.
+- Jokainen `contractItemList`-kohde sisältää:
+    - **Vieraskäyttäjä** Tämä on käyttäjä, joka saapuu kohteeseen.
+    - **Nimi englanniksi** Inventaarion nimi englannin kielellä.
+    - **Kuvaus englanniksi** Pidempi kuvaus inventaariosta englanniksi.
+    - **Hinta** Kohteen hinta.
+    - **Matka-aikataulu** Milloin kohde varataan.
+    - **Hinnoittelutyyppi** Miten hinta on laskettu.
+    - **Inventaarion tyyppi** Minkä tyyppisestä inventaariosta on kyse.
+    - **Maksettava** Milloin matkustajalta veloitetaan. *Tällä hetkellä tuemme vain välitöntä maksua.*
+    - **Politiikka** Sisällytä peruutusehdot.
+    - **Päivähintalista** Jos varattava kohde on huone, voit halutessasi sisällyttää huoneen hinnan jokaiselle yölle, jonka vieras yöpyy.
+    - **Edunsaajat** Sisällytä, mitkä TripPay-tilit saavat minkä osuuden kohteen hinnasta. *Kiinteät / prosenttiosuudet ovat tuettuja.*
 
-:::huomautus
-Yllä olevassa JSON-esimerkissä meillä on kolme edunsaajaa:
+:::note
+Yllä olevassa JSON-esimerkissä on 3 edunsaajaa:
 
-* 1,5 % kohdennettiin alustalle, joka mahdollisti varauksen.*esim. Wink*
-* 9,85 % kohdennettiin tytäryhtiölle provisioina.*esim. Kim Kardashian*
-* Huoneen varauksesta toimittajalle osoitettiin 88,65 %.*esim. Hilton*
+- 1,5 % kohdistettiin alustalle, joka mahdollisti varauksen. *esim. Wink*
+- 9,85 % kohdistettiin affiliate-tilille komissiona. *esim. Kim Kardashian*
+- 88,65 % kohdistettiin toimittajalle huoneen varauksesta. *esim. Hilton*
 
-Kun TripPay vastaa maksusopimuksella, huomaat, että se on lisännyt oman edunsaajansa 4,0 %.
+Kun TripPay vastaa maksettavalla sopimuksella, huomaat, että se lisäsi oman edunsaajansa 4,0 %:lla.
 :::
 
 ### Vastaus
@@ -208,19 +205,18 @@ Kun TripPay vastaa pyyntöösi, se näyttää suunnilleen tältä:
 ]
 ```
 
-Tallenna`id`rivillä 3. Käytät tätä syöttääksesi sen TripPay-verkkokomponenttiin.
+Tallenna `id` riviltä 3. Tätä käytät TripPayn web-komponenttiin syöttämiseen.
 
 ## Upota TripPay
 
 :::note
-Varmista, että olet ladannut tyylimme ja Javascriptin etukäteen.
+Varmista, että olet ladannut tyylimme ja Javascriptimme etukäteen.
 :::
 
-Tässä vaiheessa olet valmis upottamaan`Payment Web Component`verkkosivustollesi ja näytä se käyttäjälle.
+Tässä vaiheessa olet valmis upottamaan `Payment Web Component` -komponentin verkkosivustollesi ja näyttämään sen käyttäjälle.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Integraation osalta se on kaikki mitä sinun tarvitsee tehdä. TripPay tekee kaiken raskaan työn tästä eteenpäin.
-
+Integraation osalta tämä on kaikki, mitä sinun tarvitsee tehdä. Kaikki raskas työ hoidetaan TripPayn toimesta tästä eteenpäin.

@@ -1,22 +1,22 @@
 ---
 title: Ce este Agentul?
-description: Află cum Wink oferă asistență agenților de turism înregistrați.
+description: Aflați cum Wink sprijină agenții de turism înregistrați.
 sidebar:
   order: 0
 ---
-Soluția noastră pentru agenții de turism înregistrați este [Agent cu ochiul](https://agent.wink.travel) Este un portal self-service pe care agenții îl pot folosi pentru a căuta și a face rezervări în numele clienților lor și pentru a câștiga un comision pentru fiecare rezervare.
 
-Agenții de turism mai avansați pot alege să se integreze la nivel API în scopul gestionării plăților și a încasărilor în afara platformei Wink.
+Soluția noastră pentru agenții de turism înregistrați este [Wink Agent](https://agent.wink.travel). Este un portal self-service pe care agenții îl pot folosi pentru a căuta și rezerva în numele clienților lor și pentru a câștiga un comision pentru fiecare rezervare.
 
-Agenții de turism au un subset al acelorași caracteristici ale portalului ca și [Wink Studio](/studio/what-is-studio) așa că nu le vom mai acoperi aici.
+Agenții de turism mai avansați pot alege să se integreze la nivel de API pentru a gestiona plățile și decontările în afara platformei Wink.
+
+Agenții de turism au un subset din aceleași funcționalități ale portalului ca [Wink Studio](/ro/studio/what-is-studio), așa că nu le vom acoperi din nou aici.
 
 ## Căutare
 
-Mergi la [Căutare](/studio/search) pentru a învăța cum să cauți și să rezervi hoteluri.
+Accesați [Search](/ro/studio/search) pentru a învăța cum să căutați și să rezervați hoteluri.
 
-Altfel, continuați la secțiunea următoare.
+Altfel, continuați cu secțiunea următoare.
 
-## API-ul
+## API
 
-Dezvoltatorii care doresc să gestioneze`Travel Agent`se poate îndrepta spre[Dezvoltatori > API > Agent de turism](/developers/apis/#travel-agent-api).
-
+Dezvoltatorii care doresc să gestioneze `Travel Agent` pot accesa [Developers > API > Travel Agent](/ro/developers/apis/#travel-agent-api).

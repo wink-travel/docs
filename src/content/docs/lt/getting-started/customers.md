@@ -1,55 +1,53 @@
 ---
-title: Customers
-description: >-
-  Šiame straipsnyje paaiškinama, kokių tipų klientus aptarnaujame ir kaip „Wink“
-  gali padėti.
+title: Klientai
+description: Šiame straipsnyje paaiškinama, kokius klientus aptarnaujame ir kaip Wink gali padėti.
 sidebar:
   order: 2
 ---
-Šiame straipsnyje paaiškinama, kokius klientus aptarnaujame ir kaip geriausiai galime jiems padėti.
 
-## Ypatybės
+Šiame straipsnyje paaiškinama, kokius klientus aptarnaujame ir kaip geriausiai galime padėti.
 
-„Wink“ pradėjo siūlyti viešbučių paslaugas prieš dešimtmetį. Viešbučiai naudoja „Wink“, kad efektyviai valdytų savo atsargas tūkstančiuose pardavimo kanalų, įskaitant savo brand.com svetainę, ir uždirbtų daugiau su kiekvienu užsakymu, tuo pačiu stiprindami tiesioginius kanalus, pasitelkdami mūsų svetingumo sektoriui skirtus įrankius, kurie stiprina prekės ženklo tapatybę ir pelningumą.
+## Viešbučiai
 
-## Prekių ženklai ir tinklai
+Wink pradėjo įtraukti viešbučius prieš dešimtmetį. Viešbučiai naudoja Wink, kad efektyviai valdytų savo inventorių tūkstančiuose pardavimo kanalų, įskaitant savo prekės ženklo .com svetainę, ir uždirbtų daugiau su kiekvienu užsakymu, tuo pačiu stiprindami tiesioginius kanalus naudodamiesi mūsų svetingumui skirtomis priemonėmis, kurios gerina prekės ženklo identitetą ir pelningumą​.
 
-Prekių ženklai ir tinklai turi šiek tiek kitokius poreikius nei vienas objektas. „Wink“ platformoje jie gali:
+## Prekės ženklai ir tinklai
 
-* Tvarkykite kelis objektus vienoje paskyroje.
-* Priskirti valdytojus nuosavybėms
-* Naudojimas [„WinkLinks“](/link-manager/wink-links), [„WinkLinks“](/link-manager/wink-links) ir mūsų [„WinkLinks“](/link-manager/wink-links) parduoti ir reklamuoti kelis objektus vienoje vietoje.
+Prekės ženklai ir tinklai turi šiek tiek kitokius poreikius nei atskiras viešbutis. Wink platformoje jie gali:
+
+- Valdyti kelis viešbučius viename paskyroje.
+- Paskirti vadybininkus viešbučiams.
+- Naudoti [WinkLinks](/lt/link-manager/wink-links), [WordPress](/lt/developers/wordpress) ir mūsų [Web Components](/lt/developers/web-components), kad rinkodaros ir pardavimų veikla būtų vykdoma keliuose viešbučiuose vienoje vietoje.
 
 ## Valdymo įmonės
 
-Svetingumo ir turizmo valdymo įmonės gali valdyti savo nekilnojamojo turto portfelius savininkų vardu. Yra neabejotinas pranašumas leisti į internetą orientuotoms, skaitmenines technologijas išmanančioms agentūroms tvarkyti pardavimus internetiniam segmentui, o viešbučiai gali sutelkti dėmesį į klientų pasitenkinimo valdymą jiems atvykus į patalpas.
+Svetingumo valdymo įmonės ir kelionių tikslų valdymo įmonės gali valdyti savo viešbučių portfelius savininkų vardu. Yra aiški nauda leidžiant internetui orientuotoms, skaitmeninėms agentūroms rūpintis pardavimais interneto segmente, o viešbučiams sutelkti dėmesį į klientų pasitenkinimo valdymą atvykus į vietą.
 
-## Įtakingi asmenys
+## Influenceriai
 
-Įtakos formuotojai naudoja „Wink“, kad geriau uždirbtų pinigų iš savo auditorijos. Jie tai daro bendradarbiaudami su viešbučiais, kurdami individualius pasiūlymus ir naudodamiesi „Wink“ socialiniams tinklams pritaikytais įrankiais bei galinga analitika, kad stebėtų, kurie produktai parduodami geriausiai.
+Influenceriai naudoja Wink, kad geriau monetizuotų savo auditoriją. Jie tai daro bendradarbiaudami su viešbučiais, kurdami individualias akcijas ir naudodamiesi Wink socialiniams tinklams pritaikytomis priemonėmis bei galinga analitika, kad stebėtų, kurie produktai parduodami geriausiai​.
 
 ## Kelionių agentai
 
-Kelionių agentai gali naudotis kelionių inventoriumi visame pasaulyje puikiomis kainomis per mūsų specialius pasiūlymus. [kelionių agento portalas](https://agent.wink.travel) Jie gali užsisakyti per mūsų portalą, per mūsų API arba leisdami savo vartotojams patiems užsisakyti kelionių agentūros svetainėje, kurioje naudojamos mūsų technologijos.
+Kelionių agentai gauna prieigą prie kelionių inventoriaus visame pasaulyje už puikias kainas per mūsų specialų [kelionių agentų portalą](https://agent.wink.travel). Jie gali atlikti užsakymus per mūsų portalą, per mūsų API arba leisti savo vartotojams patiems užsisakyti kelionių agentų svetainėje, naudojančioje mūsų technologijas.
 
-## Korporacijos
+## Įmonės
 
-Korporacijoms reikia labiau orientuotos kelionių platformos:
+Įmonėms reikalinga daugiau nei tik kelionių platforma:
 
-* Jiems reikalingi gerai organizuoti maršrutai, kurie būtų lankstūs ir leistų atlikti paskutinės minutės pakeitimus.
-* Jiems reikalingos patikimos ryšio priemonės, tokios kaip internetas.
-* Jie turi tiekėjų pageidavimus, susijusius su narystėmis.
-* Jie dažnai turi įmonės kreditinę kortelę ir nustato išlaidų limitus.
-* Reikalinga išlaidų valdymo ir ataskaitų teikimo integracija.
-* Jiems reikalinga konsjeržo pagalba, taip pat MICE paslaugos renginiuose.
+- Joms reikalingi gerai organizuoti maršrutai, palaikantys lankstumą ir paskutinės minutės pakeitimus.
+- Joms reikalingos patikimos komunikacijos priemonės, tokios kaip internetas.
+- Jos turi tiekėjų pageidavimus su narystėmis.
+- Dažnai turi įmonės kreditinę kortelę ir nustatytas išlaidų ribas.
+- Reikalauja išlaidų valdymo ir ataskaitų integracijos.
+- Joms reikalinga konsjeržo pagalba bei MICE paslaugos renginiuose.
 
-Keliaujantys verslo klientams gali patys tvarkyti savo paskyras mūsų svetainėje. [įmonės portalas](/corporate/what-is-group) arba naudokitės mūsų oficialiai palaikoma [įmonės portalas](/corporate/what-is-group) įskiepis ir [įmonės portalas](/corporate/what-is-group) integracija.
+Įmonių keliautojai gali valdyti savo paskyras mūsų [įmonių portale](/lt/corporate/what-is-group) arba naudoti oficialiai palaikomą [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) papildinį ir [Concur](https://www.concur.com/) integraciją.
 
 ## Kūrėjai
 
-Nors šią platformą kūrėme viešbučių savininkams ir jiems... Kiekviena kodo eilutė buvo sukurta siekiant pakartotinio naudojimo. Mūsų kūrėjų komanda sukūrė „Wink“ tikėdamasi, kad kita 🦄 kelionių programėlė bus sukurta remiantis mūsų kodo baze. Eikite į [Kūrėjas](/developers/build-on-wink) puslapį, kad sužinotumėte, kaip „Wink“ gali jus paremti jūsų kitame versle.
+Nors šią platformą sukūrėme viešbučių verslui... Kiekviena kodo eilutė buvo sukurta tam, kad būtų pakartotinai naudojama. Mūsų kūrėjų komanda sukūrė Wink tikėdamasi, kad kitas 🦄 kelionių programėlė bus pastatyta ant mūsų kodo bazės. Eikite į [Developer](/lt/developers/build-on-wink) puslapį, kad sužinotumėte, kaip Wink gali jus palaikyti jūsų kitame projekte.
 
-## Kita
+## Kiti
 
-Kiekvienas, norintis rasti ir parduoti kelionių inventorių, gali pasinaudoti „Wink“ paslaugomis. Paverskite savo aistrą svetingumui veiksmais, uždirbdami puikius komisinius už kiekvieną užsakymą.
-
+Bet kas, kas nori rasti ir parduoti kelionių inventorių, gali pasinaudoti Wink. Paverskite savo aistrą svetingumui veiksmu ir uždirbkite puikų komisinį mokestį už kiekvieną užsakymą.

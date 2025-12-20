@@ -1,43 +1,41 @@
 ---
-title: Environments
-description: >-
-  Αυτό το άρθρο περιέχει πληροφορίες για δοκιμαστές και προγραμματιστές σχετικά
-  με τον τρόπο απόκτησης πρόσβασης στα διαφορετικά περιβάλλοντα διακομιστών μας.
+title: Περιβάλλοντα
+description: Αυτό το άρθρο περιέχει πληροφορίες για δοκιμαστές και προγραμματιστές σχετικά με το πώς να αποκτήσουν πρόσβαση στα διάφορα περιβάλλοντα διακομιστών μας.
 sidebar:
   order: 8
 ---
-Στο Wink, διαθέτουμε 2 περιβάλλοντα για οτιδήποτε κάνουμε ανά πάσα στιγμή:
 
-* Η παραγωγή είναι το σταθερό μας περιβάλλον.
-* Το Staging είναι το περιβάλλον πιστοποίησης και δοκιμών μας.
+Στην Wink, λειτουργούμε 2 περιβάλλοντα για όλα όσα κάνουμε ανά πάσα στιγμή:
 
-Εάν είστε integrator, ξενοδοχείο ή ταξιδιωτικό πρακτορείο που επιθυμείτε να προετοιμαστείτε για πιστοποίηση ή να δοκιμάσετε την πλατφόρμα Wink, δημιουργήστε έναν λογαριασμό στο περιβάλλον προετοιμασίας μας για να ξεκινήσετε.
+- Το Production είναι το σταθερό μας περιβάλλον.
+- Το Staging είναι το περιβάλλον πιστοποίησης και δοκιμών μας.
 
-:::σημείωση
-Το περιβάλλον προετοιμασίας είναι διαθέσιμο κατόπιν αιτήματος. Αυτό σημαίνει ότι θα μεταβεί σε κατάσταση αναστολής λειτουργίας εάν δεν υπάρχει χρήση και θα ενεργοποιηθεί ξανά όταν υπάρχει. Παρακαλούμε να είστε υπομονετικοί εάν το αφυπνίζετε. Χρειάζεται περίπου ένα λεπτό για να ξεκινήσουν όλοι οι διακομιστές αφού συνδεθείτε για πρώτη φορά με έναν από τους διακομιστές ή τις εφαρμογές μας.
+Αν είστε ενσωματωτής, ξενοδοχείο ή ταξιδιωτικός πράκτορας που επιθυμεί να προετοιμαστεί για πιστοποίηση ή να δοκιμάσει την πλατφόρμα Wink, δημιουργήστε έναν λογαριασμό στο περιβάλλον staging για να ξεκινήσετε.
+
+:::note
+Το περιβάλλον staging είναι διαθέσιμο κατόπιν αιτήματος. Αυτό σημαίνει ότι θα μπει σε κατάσταση ύπνου αν δεν υπάρχει χρήση και θα ξυπνήσει όταν υπάρξει. Παρακαλούμε να είστε υπομονετικοί αν το ξυπνάτε. Χρειάζεται περίπου ένα λεπτό για να ξεκινήσουν όλοι οι διακομιστές μετά την πρώτη σύνδεσή σας με έναν από τους διακομιστές ή τις εφαρμογές μας.
 :::
 
 ## Διακομιστές
 
-Παρακάτω είναι ένας πίνακας που περιέχει τα ονόματα των διακομιστών μας και τη χρήση τους.
+Παρακάτω υπάρχει ένας πίνακας που περιέχει τα ονόματα των διακομιστών μας και τη χρήση τους.
 
-| Χαρακτηριστικό | Σκηνοθεσία | Παραγωγή
+| Feature | Staging | Production
 | ------- | ------- | ---------- |
-| IAM | https://staging-iam.wink.travel | https://iam.wink.travel |
-| Απόθεμα | https://staging-api.wink.travel | https://api.wink.travel |
-| Ενσωματώσεις | https://staging-integrations.wink.travel | https://integrations.wink.travel |
-| Πληρωμή | https://staging-api.trippay.io | https://api.trippay.io |
+| IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
+| Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
+| Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Payment | https://staging-api.trippay.io | https://api.trippay.io | 
 
 ## Εφαρμογές
 
 Οι εφαρμογές μας διαθέτουν επίσης περιβάλλοντα δοκιμών και παραγωγής για τους πελάτες μας.
 
-| Εφαρμογή | Σκηνοθεσία | Παραγωγή
-| ------- | ------- | --------- |
-| Πράκτορας | https://staging-agent.wink.travel | https://agent.wink.travel |
-| Εταιρικός | https://staging-group.wink.travel | https://group.wink.travel |
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel |
-| Πληρωμή | https://staging-pay.wink.travel | https://pay.wink.travel |
-| Στούντιο | https://staging-studio.wink.travel | https://studio.wink.travel |
+| Application | Staging | Production
+| ------- | ------- | ---------- |
+| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| Corporate | https://staging-group.wink.travel | https://group.wink.travel | 
+| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
+| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
-

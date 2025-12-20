@@ -1,49 +1,47 @@
 ---
-title: Lühidalt
-description: >-
-  See artikkel tutvustab teile kõike, mida soovite broneerimismootori kohta
-  teada.
+title: Kokkuvõttes
+description: See artikkel juhendab sind läbi kõigi asjade, mida soovisid teada broneerimismootori kohta.
 sidebar:
   order: 0
 ---
-Winkis vastutuse segmenteerimine toimub järgmiselt.
 
-* [Ekstranet](/extranet/what-is-extranet) muretseb tarnijate varude haldamise pärast.
-* [Stuudio](/studio/what-is-studio) muretseb sisu haldavate sidusettevõtete pärast.
-* `Booking Engine`tegeleb sisu loomisega, mis on loodud`Studio`, mis põhines aastal loodud inventuuril`Extranet`ja selle broneeritavaks muutmine.
-* [Makse](/payment/what-is-trip-pay) tegeleb reisijatele, kes broneerivad \[platvormide nagu Wink kaudu], arvete tasumise/tagastamise ja müüjatele maksmisega.
+Siin on, kuidas me Winkis vastutuse jaotame:
 
-Broneerimismootor on meie platvormi keskmes.
+- [Extranet](/et/extranet/what-is-extranet) tegeleb tarnijate varude haldamisega.
+- [Studio](/et/studio/what-is-studio) tegeleb sidusettevõtete sisuhaldusega.
+- `Booking Engine` tegeleb sisuga, mis on loodud `Studios` ja mis põhineb `Extranetis` loodud varudel, ning teeb selle broneeritavaks.
+- [Payment](/et/payment/what-is-trip-pay) tegeleb reisijate tasude võtmise ja tagasimaksetega, kes broneerivad [selliste platvormide kaudu nagu Wink], ning müüjate tasustamisega.
 
-Selle kohustuste hulka kuuluvad:
+Broneerimismootor on meie platvormi tuum.
 
-* Valuutade haldamine ja vahetuskursside ajakohasena hoidmine.
-* Andes hinnapakkujatele võimaluse meile hinnaandmeid saata.
-* Otsinguandmete haldamine.*nt piirkonnad, riigid, sihtkohad, kinnisvaraobjektid jne.*
-* Keelte haldamine.
-* Analüütika genereerimine kasutajate interaktsioonide, sündmuste ja API-kõnede põhjal.
-* Broneeritava inventari pakkumine soovitud vormingus, keeles ja valuutas, näiteks:
-  * A [jagatav link](/studio/shareable-links) Facebookis.
-  * Hotelli maandumisleht aadressil https://ota.wink.travel koos selle hotelli valikuga.
-  * A [kaart](/studio/cards) mis sisaldab sidusettevõtte inventari.
-  * A [kaart](/studio/maps) sinu peal [kaart](/studio/maps) konto.
-  * Üks [API-kõne](/developers/apis) kaugreisibüroo süsteemist.
-* Pakkudes reisijatele võimalust:
-  * Otsi reisivarustust.
-  * Broneeri saadaolev inventar.
-  * Halda oma[broneeringud ja arvustused](/booking-engine/bookings).
-  * Halda oma [unistuste nimekiri](/booking-engine/bucket-list) asjadest, mida tulevikus broneerida.
-  * Halda oma[reisiprofiil](/booking-engine/travel-preferences).*nt allergiad, hädaolukorra kontakt jne.*
+Selle vastutusaladeks on:
 
-Broneerimismootor on kogum korduvkasutatavaid funktsioone, mida me avalikustame aadressil https://ota.wink.travel; see on ülimalt kohandatav veebisait, kus hotellid ja sidusettevõtted saavad oma kaupa reisijatele müüa.
+- Valuutade haldamine ja vahetuskursi ajakohasena hoidmine.
+- Hindade pakkujatele võimaluse andmine saata meile hinnateavet.
+- Otsingandmete haldamine. *nt piirkonnad, riigid, sihtkohad, majutusasutused jne.*
+- Keelte haldamine.
+- Analüütika genereerimine kasutajate interaktsioonide, sündmuste ja API-päringute põhjal.
+- Broneeritava varu serveerimine soovitud formaadis, keeles ja valuutas, näiteks:
+    - [jagatav link](/et/studio/shareable-links) Facebookis.
+    - Hotelli maandumisleht aadressil https://ota.wink.travel selle hotelli varuga.
+    - [kaart](/et/studio/cards), mis sisaldab sidusettevõtte varusid.
+    - [kaart](/et/studio/maps) sinu [WinkLinks](/et/link-manager/wink-links) kontol.
+    - [API-päring](/et/developers/apis) kaugreisibüroo süsteemist.
+- Reisijatele võimaluse pakkumine:
+    - Otsida reisi varusid.
+    - Broneerida saadaval olevat varu.
+    - Hallata oma [broneeringuid ja arvustusi](/et/booking-engine/bookings).
+    - Hallata oma [soovide nimekirja](/et/booking-engine/bucket-list) tulevaste broneeringute jaoks.
+    - Hallata oma [reisiprofiili](/et/booking-engine/travel-preferences). *nt allergiad, hädaolukorra kontakt jne.*
 
-Integraatoritel, kes soovivad veelgi suuremat vabadust, on juurdepääs kõigile samadele funktsioonidele meie kaudu [WordPressi pistikprogramm](/developers/wordpress/), [WordPressi pistikprogramm](/developers/wordpress/) ja[API-d](/developers/apis).
+Broneerimismootor on korduvkasutatavate funktsioonide kogum, mida me pakume aadressil https://ota.wink.travel; väga kohandatav veebisait hotellidele ja sidusettevõtetele, et müüa oma teenuseid reisijatele.
 
-Jätka järgmiste osadega, et lugeda lähemalt broneerimismootori pakutavate võimaluste kohta.
+Integraatoritel, kes soovivad veelgi rohkem vabadust, on juurdepääs kõigile samadele funktsioonidele meie [WordPressi pluginas](/et/developers/wordpress/), [Veebikomponentides](/et/developers/web-components) ja [API-des](/et/developers/apis).
 
-## Lisalugemist
+Jätka järgmiste osadega, et lugeda rohkem sellest, mida broneerimismootor pakub.
 
-* Loe meie kohta[WordPressi pistikprogramm](/developers/wordpress/).
-* Loe meie kohta[Veebikomponendid](/developers/web-components).
-* Loe meie kohta[API-d](/developers/apis).
+## Täiendav lugemine
 
+- Loe meie [WordPressi pluginast](/et/developers/wordpress/).
+- Loe meie [Veebikomponentidest](/et/developers/web-components).
+- Loe meie [API-dest](/et/developers/apis).

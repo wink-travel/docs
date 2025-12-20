@@ -1,47 +1,47 @@
 ---
-title: I en nøddeskal
-description: 'Denne artikel gennemgår alt, hvad du gerne vil vide om bookingsystemet.'
+title: Kort fortalt
+description: Denne artikel guider dig gennem alt, hvad du ønskede at vide om bookingmotoren.
 sidebar:
   order: 0
 ---
-Sådan segmenterer vi ansvaret på Wink:
 
-* [Extranet](/extranet/what-is-extranet) beskæftiger sig med leverandører, der administrerer lagerbeholdning.
-* [Studie](/studio/what-is-studio) beskæftiger sig med affiliates, der administrerer indhold.
-* `Booking Engine`beskæftiger sig med at lave indholdet, der skabes i`Studio`, der var baseret på den opgørelse, der blev oprettet i`Extranet`og gør det muligt at booke.
-* [Betaling](/payment/what-is-trip-pay) beskæftiger sig med at opkræve/refundere rejsende, der booker \[gennem platforme som Wink], og betale leverandører.
+Sådan opdeler vi ansvaret på Wink:
 
-Bookingsystemet er kernen i vores platform.
+- [Extranet](/da/extranet/what-is-extranet) beskæftiger sig med leverandører, der administrerer lager.
+- [Studio](/da/studio/what-is-studio) beskæftiger sig med affiliates, der administrerer indhold.
+- `Booking Engine` beskæftiger sig med at gøre det indhold, der er oprettet i `Studio`, baseret på lageret oprettet i `Extranet`, bookbart.
+- [Payment](/da/payment/what-is-trip-pay) beskæftiger sig med at opkræve/refundere rejsende, der booker [gennem platforme som Wink], og betale leverandører.
 
-Dens ansvarsområder omfatter:
+Bookingmotoren er kernen i vores platform.
 
-* Valutastyring og ajourføring af valutakurser.
-* Giver prisudbydere en måde at sende os prisdata.
-* Administration af opslagsdata.*f.eks. regioner, lande, destinationer, ejendomme osv.*
-* Håndtering af sprog.
-* Generering af analyser baseret på brugerinteraktioner, hændelser og API-kald.
-* Visning af reserverbar lagerbeholdning i det ønskede format, sprog og valuta, såsom:
-  * En [delbart link](/studio/shareable-links) på Facebook.
-  * En hotellandingsside på https://ota.wink.travel med inventar for det pågældende hotel.
-  * En [kort](/studio/cards) indeholdende affiliate-inventar.
-  * En [kort](/studio/maps) på din [kort](/studio/maps) konto.
-  * En [API-kald](/developers/apis) fra et fjerntliggende rejsebureausystem.
-* At give rejsende en måde at:
-  * Søg efter rejseinventar.
-  * Bogfør tilgængeligt lager.
-  * Administrer deres[bookinger og anmeldelser](/booking-engine/bookings).
-  * Administrer deres [bucketliste](/booking-engine/bucket-list) ting at booke i fremtiden.
-  * Administrer deres[rejseprofil](/booking-engine/travel-preferences).*f.eks. allergier, nødkontakt osv.*
+Dens ansvarsområder inkluderer:
 
-Bookingsystemet er en samling af genbrugelig funktionalitet, som vi tilbyder via https://ota.wink.travel; en hjemmeside med høj brugerdefinerbarhed, hvor hoteller og partnere kan sælge deres varer til rejsende.
+- At administrere valutaer og holde valutakurser opdaterede.
+- At give rateudbydere en måde at sende os ratedata på.
+- At administrere opslagdata. *f.eks. regioner, lande, destinationer, ejendomme osv.*
+- At administrere sprog.
+- At generere analyser baseret på brugerinteraktioner, begivenheder og API-kald.
+- At levere bookbart lager i det ønskede format, sprog og valuta, såsom:
+    - Et [delbart link](/da/studio/shareable-links) på Facebook.
+    - En hotel-landingsside på https://ota.wink.travel med lager for det pågældende hotel.
+    - Et [kort](/da/studio/cards) indeholdende affiliate-lager.
+    - Et [kort](/da/studio/maps) på din [WinkLinks](/da/link-manager/wink-links) konto.
+    - Et [API-kald](/da/developers/apis) fra et eksternt rejsebureau-system.
+- At give rejsende en måde at:
+    - Søge efter rejselager.
+    - Booke tilgængeligt lager.
+    - Administrere deres [bookinger og anmeldelser](/da/booking-engine/bookings).
+    - Administrere deres [bucket list](/da/booking-engine/bucket-list) over ting, de vil booke i fremtiden.
+    - Administrere deres [rejseprofil](/da/booking-engine/travel-preferences). *f.eks. allergier, nød-kontaktperson osv.*
 
-Integratorer, der ønsker endnu mere frihed, har adgang til alle de samme funktioner via vores [WordPress-plugin](/developers/wordpress/), [WordPress-plugin](/developers/wordpress/) og[API'er](/developers/apis).
+Bookingmotoren er en samling af genanvendelig funktionalitet, som vi eksponerer gennem https://ota.wink.travel; et højt tilpasseligt website for hoteller og affiliates til at sælge deres varer til rejsende.
 
-Fortsæt til de næste afsnit for at læse mere om, hvad bookingsystemet har at tilbyde.
+Integratører, der ønsker endnu mere frihed, har adgang til alle de samme funktioner via vores [WordPress plugin](/da/developers/wordpress/), [Web Components](/da/developers/web-components) og [APIs](/da/developers/apis).
+
+Fortsæt til de næste sektioner for at læse mere om, hvad bookingmotoren har at tilbyde.
 
 ## Yderligere læsning
 
-* Læs om vores[WordPress-plugin](/developers/wordpress/).
-* Læs om vores[Webkomponenter](/developers/web-components).
-* Læs om vores[API'er](/developers/apis).
-
+- Læs om vores [WordPress plugin](/da/developers/wordpress/).
+- Læs om vores [Web Components](/da/developers/web-components).
+- Læs om vores [APIs](/da/developers/apis).

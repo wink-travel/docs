@@ -1,43 +1,43 @@
 ---
 title: Tietojen poistopyyntö
-description: Opi pyytämään henkilötietojesi poistamista Winkissä.
+description: Opi, miten voit pyytää henkilötietojesi poistamista Winkissä.
 sidebar:
   order: 9
 ---
-Winkillä kunnioitamme yksityisyyttäsi ja olemme täysin sitoutuneet suojaamaan henkilötietojasi. Noudatamme**Yleinen tietosuoja-asetus (GDPR)**&#x6A;a muut sovellettavat tietosuojalait ympäri maailmaa.
 
-Tällä sivulla kerrotaan, kuinka voit pyytää alustamme kautta keräämiemme henkilötietojen poistamista – mukaan lukien, mutta ei rajoittuen, sosiaalisen median kirjautumispalveluntarjoajien, kuten Facebookin tai Instagramin, kautta saadut tiedot.
+Winkissä kunnioitamme yksityisyyttäsi ja sitoudumme täysin suojaamaan henkilötietojasi. Noudatamme **yleistä tietosuoja-asetusta (GDPR)** sekä muita soveltuvia tietosuojalakeja maailmanlaajuisesti.
+
+Tällä sivulla kerrotaan, miten voit pyytää minkä tahansa henkilötiedon poistamista, jonka olemme saattaneet kerätä alustamme kautta — mukaan lukien, mutta ei rajoittuen, sosiaalisen kirjautumisen tarjoajilta kuten Facebook tai Instagram saatuihin tietoihin.
 
 ## Sitoutumisemme tietosuojaan
 
-Keräämme vain palvelujemme tarjoamiseen tarvittavat tiedot, emmekä koskaan myy henkilötietojasi. Tämä voi sisältää:
+Keräämme vain palveluidemme tarjoamiseen tarvittavat tiedot, emmekä koskaan myy henkilötietojasi. Näihin voi kuulua:
 
-* Nimesi ja sähköpostiosoitteesi
-* Julkiset profiilitiedot (esim. Facebookista tai Googlesta)
-* Käyttö- tai toimintatiedot alustallamme
-* Kaikki nimenomaisesti myöntämäsi oikeudet
+- Nimesi ja sähköpostiosoitteesi
+- Julkiset profiilitiedot (esim. Facebookista tai Googlelta)
+- Käyttö- tai toimintatiedot alustallamme
+- Kaikki nimenomaisesti sinulta saadut luvat
 
-Ryhdymme asianmukaisiin toimenpiteisiin tietojesi suojaamiseksi ja käsittelemme kaikki poistopyynnöt GDPR:n ja Metan tietosuojakäytännön mukaisesti.
+Ryhdymme asianmukaisiin toimiin tietojesi suojaamiseksi ja käsittelemme kaikki poistopyynnöt GDPR:n ja Metan tietosuojakäytännön mukaisesti.
 
-## Tietojen poistamisen pyytäminen
+## Tietojen poistopyynnön tekeminen
 
-Sinulla on oikeus pyytää meitä poistamaan kaikki hallussamme olevat henkilötietosi.
+Sinulla on oikeus pyytää meitä poistamaan kaikki sinusta hallussamme olevat henkilötiedot.
 
-Tietojen poistamisen pyytäminen:
+Tietojen poistopyynnön tekemiseksi:
 
-* 📧**Lähetä sähköpostia osoitteeseen**:<support@wink.travel>
-* 📝 Käytä otsikkoriviä:`Data Deletion Request`
-* 🔍 Liitä mukaan tunnistetiedot, kuten:
-  * Alustallamme käytetty sähköpostiosoite
-  * Facebook- tai Google-tunnuksesi tai vastaava (jos sovellettavissa)
+- 📧 **Lähetä sähköpostia osoitteeseen**: [support@wink.travel](mailto:support@wink.travel)
+- 📝 Käytä otsikkona: `Data Deletion Request`  
+- 🔍 Sisällytä tunnistustiedot, kuten:
+  - Alustallamme käytetty sähköpostiosoite
+  - Facebook- tai Google-tunnuksesi tai vastaava (jos sovellettavissa)
 
-Vastaamme kuluessa**30 päivää**pyyntösi vastaanottamisesta GDPR:n vaatimusten mukaisesti.
+Vastaamme pyyntöösi **30 päivän** kuluessa sen vastaanottamisesta, kuten GDPR edellyttää.
 
-## Kysymyksiä tai huolenaiheita?
+## Kysymyksiä tai huolia?
 
-Jos sinulla on kysyttävää siitä, miten keräämme, käytämme tai poistamme tietojasi, ota rohkeasti yhteyttä tietosuojatiimiimme osoitteessa<support@wink.travel>.
+Jos sinulla on kysyttävää siitä, miten keräämme, käytämme tai poistamme tietojasi, ota rohkeasti yhteyttä tietosuojatiimiimme osoitteessa [support@wink.travel](mailto:support@wink.travel).
 
-***
+---
 
-Kiitos luottamuksestasi. Otamme tietosuojan vakavasti ja olemme sitoutuneet antamaan sinulle täyden hallinnan tietoihisi.
-
+Kiitos luottamuksestasi. Otamme tietosuojan vakavasti ja sitoudumme antamaan sinulle täyden hallinnan tietoihisi.

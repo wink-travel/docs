@@ -1,49 +1,47 @@
 ---
-title: W paru słowach
-description: >-
-  W tym artykule znajdziesz wszystkie informacje, które chciałbyś wiedzieć o
-  systemie rezerwacji.
+title: W skrócie
+description: Ten artykuł przeprowadzi Cię przez wszystko, co chciałeś wiedzieć o silniku rezerwacji.
 sidebar:
   order: 0
 ---
-Oto jak segmentujemy odpowiedzialność w Wink:
 
-* [Ekstranet](/extranet/what-is-extranet) zajmuje się dostawcami, którzy zarządzają zapasami.
-* [Studio](/studio/what-is-studio) zajmuje się zarządzaniem treścią przez podmioty stowarzyszone.
-* `Booking Engine`zajmuje się tworzeniem treści, tworzonych w`Studio`, który powstał na podstawie inwentarza utworzonego w`Extranet`i umożliwienie rezerwacji.
-* [Zapłata](/payment/what-is-trip-pay) zajmuje się pobieraniem opłat i zwrotem pieniędzy od podróżnych, którzy dokonują rezerwacji \[za pośrednictwem platform takich jak Wink] i płacą sprzedawcom.
+Oto jak dzielimy odpowiedzialność w Wink:
 
-System rezerwacyjny jest sercem naszej platformy.
+- [Extranet](/pl/extranet/what-is-extranet) zajmuje się dostawcami zarządzającymi inwentarzem.
+- [Studio](/pl/studio/what-is-studio) zajmuje się afiliantami zarządzającymi treścią.
+- `Booking Engine` zajmuje się tworzeniem treści, stworzonych w `Studio`, które opierały się na inwentarzu stworzonym w `Extranet` i udostępnianiem ich do rezerwacji.
+- [Payment](/pl/payment/what-is-trip-pay) zajmuje się pobieraniem opłat / zwrotami dla podróżnych rezerwujących [poprzez platformy takie jak Wink] oraz wypłatami dla dostawców.
 
-Do jego obowiązków należą:
+Silnik rezerwacji jest sercem naszej platformy.
 
-* Zarządzanie walutami i aktualizowanie kursów walut.
-* Umożliwienie dostawcom usług taryfowych przesyłania nam danych o stawkach.
-* Zarządzanie danymi wyszukiwania.*np. regiony, kraje, miejsca docelowe, nieruchomości itp.*
-* Zarządzanie językami.
-* Generowanie analiz na podstawie interakcji użytkowników, zdarzeń i wywołań API.
-* Dostarczanie możliwego do rezerwacji asortymentu w pożądanym formacie, języku i walucie, takim jak:
-  * A [link do udostępniania](/studio/shareable-links) na Facebooku.
-  * Strona docelowa hotelu na stronie https://ota.wink.travel zawierająca informacje o tym hotelu.
-  * A [karta](/studio/cards) zawierający zasoby partnerskie.
-  * A [mapa](/studio/maps) na twoim[Linki do mrugnięć](/link-manager/wink-links) konto.
-  * Jakiś [Wywołanie API](/developers/apis) ze zdalnego systemu agenta podróży.
-* Zapewniamy podróżnym możliwość:
-  * Wyszukaj ofertę podróży.
-  * Zarezerwuj dostępny inwentarz.
-  * Zarządzaj nimi[rezerwacje i recenzje](/booking-engine/bookings).
-  * Zarządzaj nimi [lista rzeczy do zrobienia](/booking-engine/bucket-list) rzeczy do zarezerwowania w przyszłości.
-  * Zarządzaj nimi[profil podróży](/booking-engine/travel-preferences).*np. alergie, kontakt w nagłych wypadkach itp.*
+Jego obowiązki obejmują:
 
-System rezerwacji to zbiór funkcji, które można ponownie wykorzystać. Udostępniamy je za pośrednictwem https://ota.wink.travel — wysoce konfigurowalnej witryny internetowej, na której hotele i podmioty stowarzyszone mogą sprzedawać swoje produkty podróżnym.
+- Zarządzanie walutami i utrzymywanie aktualnych kursów wymiany.
+- Umożliwianie dostawcom taryf przesyłania nam danych o cenach.
+- Zarządzanie danymi referencyjnymi. *np. regiony, kraje, destynacje, obiekty itp.*
+- Zarządzanie językami.
+- Generowanie analiz na podstawie interakcji użytkowników, zdarzeń i wywołań API.
+- Udostępnianie rezerwowanego inwentarza w pożądanym formacie, języku i walucie, takich jak:
+    - [link do udostępniania](/pl/studio/shareable-links) na Facebooku.
+    - Strona docelowa hotelu na https://ota.wink.travel z inwentarzem tego hotelu.
+    - [karta](/pl/studio/cards) zawierająca inwentarz afilianta.
+    - [mapa](/pl/studio/maps) na Twoim koncie [WinkLinks](/pl/link-manager/wink-links).
+    - [wywołanie API](/pl/developers/apis) z zewnętrznego systemu agenta turystycznego.
+- Zapewnianie podróżnym możliwości:
+    - Wyszukiwania inwentarza podróży.
+    - Rezerwowania dostępnego inwentarza.
+    - Zarządzania swoimi [rezerwacjami i opiniami](/pl/booking-engine/bookings).
+    - Zarządzania swoją [liście życzeń](/pl/booking-engine/bucket-list) rzeczy do zarezerwowania w przyszłości.
+    - Zarządzania swoim [profilem podróżnym](/pl/booking-engine/travel-preferences). *np. alergie, kontakt alarmowy itp.*
 
-Integratorzy, którzy chcą mieć jeszcze większą swobodę, mają dostęp do wszystkich tych samych funkcji za pośrednictwem naszego [Wtyczka WordPress](/developers/wordpress/),[Komponenty sieciowe](/developers/web-components) I [Pszczoła](/developers/apis).
+Silnik rezerwacji to zbiór wielokrotnego użytku funkcji, które udostępniamy przez https://ota.wink.travel; wysoce konfigurowalną stronę internetową dla hoteli i afiliantów do sprzedaży ich ofert podróżnym.
 
-Aby dowiedzieć się więcej na temat oferty systemu rezerwacyjnego, przejdź do następnych sekcji.
+Integratorzy, którzy chcą jeszcze większej swobody, mają dostęp do tych samych funkcji poprzez naszą [wtyczkę WordPress](/pl/developers/wordpress/), [Web Components](/pl/developers/web-components) oraz [API](/pl/developers/apis).
+
+Przejdź do kolejnych sekcji, aby dowiedzieć się więcej o tym, co oferuje silnik rezerwacji.
 
 ## Dalsza lektura
 
-* Przeczytaj o naszym[Wtyczka WordPress](/developers/wordpress/).
-* Przeczytaj o naszym[Komponenty sieciowe](/developers/web-components).
-* Przeczytaj o naszym[Pszczoła](/developers/apis).
-
+- Przeczytaj o naszej [wtyczce WordPress](/pl/developers/wordpress/).
+- Przeczytaj o naszych [Web Components](/pl/developers/web-components).
+- Przeczytaj o naszych [API](/pl/developers/apis).

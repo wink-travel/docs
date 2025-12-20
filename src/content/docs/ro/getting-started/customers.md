@@ -1,55 +1,53 @@
 ---
-title: Customers
-description: >-
-  Acest articol explică tipurile de clienți pe care îi deservim și cum vă poate
-  ajuta Wink.
+title: Clienți
+description: Acest articol explică tipurile de clienți pe care îi deservim și cum poate Wink să ajute.
 sidebar:
   order: 2
 ---
-Acest articol explică tipurile de clienți pe care îi deservim și cum îi putem ajuta cel mai bine.
+
+Acest articol explică tipurile de clienți pe care îi deservim și cum putem ajuta cel mai bine.
 
 ## Proprietăți
 
-Wink a început să integreze hoteluri în urmă cu un deceniu. Hotelurile folosesc Wink pentru a-și gestiona eficient inventarul pe mii de canale de vânzări, inclusiv propriul site brand.com, și pentru a câștiga mai mult cu fiecare rezervare, stimulând în același timp canalele directe cu ajutorul instrumentelor noastre axate pe ospitalitate, care sporesc identitatea și profitabilitatea mărcii.
+Wink a început să integreze hoteluri acum un deceniu. Hotelurile folosesc Wink pentru a-și gestiona eficient inventarul pe mii de canale de vânzare, inclusiv propriul site brand.com, și pentru a câștiga mai mult cu fiecare rezervare, în timp ce stimulează canalele directe cu ajutorul instrumentelor noastre dedicate ospitalității, care îmbunătățesc identitatea brandului și profitabilitatea​.
 
-## Mărci și lanțuri
+## Branduri și lanțuri
 
-Brandurile și lanțurile au nevoi ușor diferite față de o singură proprietate. Pe Wink, acestea pot:
+Brandurile și lanțurile au nevoi ușor diferite față de o singură proprietate. Pe Wink, ele pot:
 
-* Gestionați mai multe proprietăți sub un singur cont.
-* Atribuiți administratori proprietăților
-* Utilizare [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) și al nostru [WinkLinks](/link-manager/wink-links) pentru a comercializa și vinde mai multe proprietăți într-un singur loc.
+- Gestiona mai multe proprietăți sub un singur cont.
+- Atribui manageri proprietăților.
+- Folosi [WinkLinks](/ro/link-manager/wink-links), [WordPress](/ro/developers/wordpress) și [Web Components](/ro/developers/web-components) pentru a promova și vinde mai multe proprietăți într-un singur loc.
 
-## Companii de administrare
+## Companii de management
 
-Companiile de administrare a ospitalității și companiile de administrare a destinațiilor își pot gestiona portofoliile de proprietăți în numele proprietarilor. Există un avantaj clar în a permite agențiilor axate pe online, conștiente de tehnologia digitală, să se ocupe de vânzările către segmentul online, în timp ce hotelurile se pot concentra pe gestionarea satisfacției clienților odată ce aceștia ajung la locație.
+Companiile de management în ospitalitate și cele de management al destinațiilor pot gestiona portofoliile de proprietăți în numele proprietarilor. Există un avantaj clar în a lăsa agențiile orientate spre online și conștiente digital să se ocupe de vânzarea către segmentul online, în timp ce hotelurile se pot concentra pe gestionarea satisfacției clienților odată ce aceștia ajung la locație.
 
 ## Influenceri
 
-Influencerii folosesc Wink pentru a monetiza mai bine publicul lor. Fac acest lucru prin parteneriate cu hoteluri, crearea de oferte personalizate și valorificarea instrumentelor prietenoase cu rețelele sociale și a analizelor puternice ale Wink pentru a urmări ce produse se vând cel mai bine.
+Influencerii folosesc Wink pentru a-și monetiza mai bine audiența. Ei fac acest lucru prin parteneriate cu hoteluri, crearea de oferte personalizate și valorificarea instrumentelor prietenoase cu social media și a analizelor puternice oferite de Wink pentru a urmări care produse se vând cel mai bine​.
 
-## Agenții de turism
+## Agenți de turism
 
-Agenții de turism au acces la inventarul de călătorii din întreaga lume la prețuri excelente prin intermediul serviciului nostru dedicat [portalul agenției de turism](https://agent.wink.travel) Pot face rezervări prin intermediul portalului nostru, prin intermediul API-ului nostru sau permițând utilizatorilor să își rezerve singuri pe site-ul web al agenției de turism care utilizează tehnologiile noastre.
+Agenții de turism au acces la inventar de călătorie la nivel mondial, la prețuri excelente, prin intermediul portalului nostru dedicat pentru agenți de turism [travel agent portal](https://agent.wink.travel). Ei pot face rezervări prin portalul nostru, prin API-ul nostru sau lăsând utilizatorii să-și facă singuri rezervările pe site-ul agenției de turism care folosește tehnologiile noastre.
 
-## Corporații
+## Companii
 
-Corporațiile au nevoie de o platformă de călătorie mai complexă:
+Companiile au nevoie de o platformă de călătorii mai complexă:
 
-* Aceștia necesită itinerarii bine organizate, care să permită flexibilitatea și schimbările de ultim moment.
-* Aceștia necesită instrumente de comunicare fiabile, cum ar fi internetul.
-* Au preferințe de furnizor în ceea ce privește abonamentele.
-* Adesea au un card de credit corporativ și stabilesc limite de cheltuieli.
-* Necesită integrarea managementului cheltuielilor și a raportării.
-* Au nevoie de asistență concierge, precum și de servicii MICE la evenimente.
+- Au nevoie de itinerarii bine organizate care să susțină flexibilitatea și modificările de ultim moment.
+- Au nevoie de instrumente de comunicare fiabile, cum ar fi internetul.
+- Au preferințe pentru furnizori cu abonamente.
+- Adesea dispun de carduri de credit corporative și stabilesc limite de cheltuieli.
+- Necesită gestionarea cheltuielilor și integrarea rapoartelor.
+- Au nevoie de suport concierge, precum și de servicii MICE la evenimente.
 
-Călătorii corporativi își pot gestiona propriile conturi pe site-ul nostru [portal corporativ](/corporate/what-is-group) sau folosiți serviciile noastre susținute oficial [portal corporativ](/corporate/what-is-group) plugin și [portal corporativ](/corporate/what-is-group) integrare.
+Călătorii corporativi își pot gestiona propriile conturi pe [portalul corporativ](/ro/corporate/what-is-group) sau pot folosi pluginul oficial suportat [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) și integrarea [Concur](https://www.concur.com/).
 
 ## Dezvoltatori
 
-Deși am construit această platformă de către și pentru hotelieri... Fiecare linie de cod a fost construită cu scopul specific de a fi reutilizabilă. Echipa noastră de dezvoltatori a construit Wink în speranța că următoarea aplicație de călătorie 🦄 va fi construită pe baza noastră de cod. Navigați la [Dezvoltator](/developers/build-on-wink) pentru a vedea cum te poate sprijini Wink în următoarea ta aventură.
+Deși am construit această platformă de și pentru hotelieri... Fiecare linie de cod a fost creată cu scopul specific de a fi reutilizabilă. Echipa noastră de dezvoltatori a construit Wink în speranța că următoarea aplicație 🦄 de călătorii va fi construită pe baza codului nostru. Navigați la pagina [Developer](/ro/developers/build-on-wink) pentru a vedea cum vă poate susține Wink în următorul vostru proiect.
 
-## Alte
+## Alții
 
-Oricine dorește să găsească și să vândă articole pentru călătorii poate beneficia de utilizarea Wink. Transformă-ți pasiunea pentru ospitalitate în acțiune câștigând un comision excelent pentru fiecare rezervare.
-
+Oricine dorește să găsească și să vândă inventar de călătorie poate beneficia de utilizarea Wink. Transformă-ți pasiunea pentru ospitalitate în acțiune câștigând un comision excelent la fiecare rezervare.

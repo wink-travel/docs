@@ -1,22 +1,22 @@
 ---
-title: Mikä on agentti?
-description: 'Lue, miten Wink tukee rekisteröityjä matkatoimistoja.'
+title: Mikä on Agent?
+description: Opi, miten Wink tukee rekisteröityjä matkatoimistoja.
 sidebar:
   order: 0
 ---
-Ratkaisumme rekisteröityneille matkatoimistoille on [Wink-agentti](https://agent.wink.travel) Se on itsepalveluportaali, jonka avulla asiakaspalvelijat voivat hakea ja varata asiakkaidensa puolesta ja ansaita itselleen palkkion jokaisesta varauksesta.
 
-Edistyneemmät matkatoimistot voivat integroitua API-tasolla maksujen ja voitonmaksujen käsittelyä varten Wink-alustan ulkopuolella.
+Ratkaisumme rekisteröidyille matkatoimistoille on [Wink Agent](https://agent.wink.travel). Se on itsepalveluportaali, jota agentit voivat käyttää asiakkaidensa puolesta hotellien etsimiseen ja varaamiseen sekä ansaita palkkion jokaisesta varauksesta itselleen.
 
-Matkatoimistoilla on osa samoista portaaliominaisuuksista kuin [Wink-studio](/studio/what-is-studio) joten emme käsittele niitä tässä uudelleen.
+Kokeneemmat matkatoimistot voivat valita integraation API-tasolla maksujen ja suoritusten käsittelyä varten Wink-alustan ulkopuolella.
+
+Matkatoimistoilla on osa samoista portaaliominaisuuksista kuin [Wink Studio](/fi/studio/what-is-studio) -palvelussa, joten emme käsittele niitä tässä uudelleen.
 
 ## Haku
 
-Siirry osoitteeseen [Haku](/studio/search) oppia etsimään ja varaamaan hotelleja.
+Siirry kohtaan [Haku](/fi/studio/search) oppiaksesi, miten hotelleja haetaan ja varataan.
 
 Muussa tapauksessa jatka seuraavaan osioon.
 
 ## API
 
-Kehittäjät, jotka haluavat hallita`Travel Agent`voi suunnata kohti[Kehittäjät > API > Matkatoimisto](/developers/apis/#travel-agent-api).
-
+Kehittäjät, jotka haluavat hallita `Travel Agent` -toimintoa, voivat siirtyä kohtaan [Developers > API > Travel Agent](/fi/developers/apis/#travel-agent-api).

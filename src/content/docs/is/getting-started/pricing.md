@@ -1,64 +1,62 @@
 ---
-title: Pricing
-description: >-
-  Notaðu allar þjónustur Wink að vild án endurgjalds. Þú borgar aðeins lítið
-  gjald fyrir hverja bókun.
+title: Verðlagning
+description: Notaðu öll þjónustu Wink að vild án endurgjalds. Þú greiðir aðeins litla þóknun fyrir hverja bókun.
 sidebar:
   order: 4
 ---
-Allar þjónustur Wink eru ókeypis fyrir alla. Þegar bókun er gerð innheimtir Wink lítið gjald fyrir að viðhalda kerfinu.
 
-Wink styður bæði kaupmanns- og umboðsmannslíkön.
+Öll þjónusta Wink er öllum að kostnaðarlausu. Þegar bókun á sér stað, rukkar Wink litla þóknun til að viðhalda pallinum.
 
-## Líkan 1
+Wink styður bæði kaupsýslumódel og umboðsmannamódel.
 
-Wink er skráður söluaðili þegar bókun fer fram. Wink ber ábyrgð á fjármunum og hefur öll leyfi til að reka ferðaskrifstofu.
-Þessi fyrirmynd á við um 95% allra bókana.
+## Módel 1
 
-Augnagjöld`5.5% per booking`til að viðhalda kerfinu.
-Mest af því fer í greiðslugáttina (Visa, MasterCard o.s.frv.). Meðalbókun kostar okkur`2.95%`að eignast; stundum allt að`3.6%`Hlutaendurgreiðslur kosta okkur enn meira þar sem greiðslugáttin lítur á þetta sem nýtt gjald.
-Við viljum vera alveg gagnsæ varðandi verðlagningu núna til að spara öllum tíma áður en við reynum að semja um frekari afslætti áður en við höfum notað Wink. Verðlagningarlíkan okkar er meira en sanngjarnt og við þurfum líka að sjá okkur farborða.
+Wink er kaupmaður bókunartímans. Wink ber ábyrgð á fjármunum og hefur öll leyfi til að reka ferðaskrifstofu.
+Þetta módel á við um 95% allra bókana.
 
-### Sundurliðun
-
-:::athugið\[Vinnslugjald]
-Wink innheimtir 1,5% vinnslugjald fyrir bókun. Þetta gerir okkur kleift að bjóða upp á allar þjónustur okkar ókeypis og nær yfir viðhald kerfisins.
-:::
-
-:::athugið\[Greiðslugjald]
-TripPay innheimtir 4,0% greiðslugjald fyrir bókun. Þetta gjald nær yfir greiðslu frá ferðalanginum.
-:::
-
-:::athugið\[Útborgun fjár]
-Það eru gjöld tengd því að senda fé inn á reikninginn þinn. Þetta fer eftir því hvaða útborgunaraðferð þú velur. Við styðjum nú:
-
-* **Raunverulegt kreditkort**(aðeins hótel) ~2,0%
-* **Bankamillifærsla**Kostnaðurinn fer eftir því í hvaða landi þú ert staðsettur og hvaðan fjármunirnir eru sendir. Við bjóðum upp á reiknivél fyrir verðtilboð sem þú getur notað þegar þú ert með tiltækt fjármagn á reikningnum þínum.
-
-Ef þú vilt að við styðjum aðra greiðslumáta, sendu okkur tölvupóst.
-:::
-
-## Líkan 2
-
-Þessi gerð er aðeins í boði fyrir ferðaskrifstofur sem hafa leyfi til þess á sínu svæði og vilja vera skráðir söluaðilar. Sumir af skráðum ferðaskrifstofum okkar vilja bera ábyrgð á greiðslum og úthlutun fjármuna til hótela. Samkvæmt þessari gerð bera þeir ábyrgð á fjármunum og hafa nauðsynleg leyfi til að starfa í sínu landi.
+Wink rukkar `5,5% fyrir hverja bókun` til að viðhalda pallinum. 
+Flest af því fer til greiðslugáttarinnar (Visa, MasterCard o.s.frv.). Meðalbókun kostar okkur `2,95%` til að afla; stundum allt að `3,6%`. Hlutaendurgreiðslur kosta okkur enn meira þar sem greiðslugáttin sér það sem nýja gjöf. 
+Við viljum vera algjörlega gagnsæ um verðlagningu núna til að spara öllum tíma áður en reynt er að semja um frekari afslætti áður en Wink hefur verið notað. Verðlagningarmódel okkar er sanngjarnt og við þurfum líka að lifa af.
 
 ### Sundurliðun
 
-:::athugið\[Vinnslugjald]
-Wink innheimtir 1,5% vinnslugjald fyrir bókun. Þetta gerir okkur kleift að bjóða upp á allar þjónustur okkar ókeypis og nær yfir viðhald kerfisins.
+:::note[Úrvinnslugjald]
+Wink rukkar 1,5% úrvinnslugjald fyrir hverja bókun. Þetta gerir okkur kleift að bjóða alla þjónustu okkar ókeypis og nær yfir viðhald pallsins.
 :::
 
-Með þessari fyrirmynd greiða ferðaskrifstofur aðeins afgreiðslugjald Wink og Wink sendir ferðaskrifstofunni reikning mánaðarlega.
+:::note[Greiðslugjald]
+TripPay rukkar 4,0% greiðslugjald fyrir hverja bókun. Þetta nær yfir að afla greiðslu frá ferðamanninum.
+:::
 
-## Þjónusta í framtíðinni
+:::note[Úttekt fjármuna]
+Það eru gjöld tengd við að senda fé á reikninginn þinn. Þetta fer eftir úttektaraðferðinni sem þú velur. Við styðjum núna:
 
-Við munum bjóða upp á valfrjálsa áskriftarþjónustu í framtíðinni sem gerir það enn auðveldara að selja fyrir alla eða bjóða upp á stýrða samstarfsreikninga sem sjá um söluna fyrir þig. Ef þú hefur áhuga á því, láttu rödd þína heyrast með því að senda okkur tölvupóst á[hæ@wink.travel](mailto:hi@wink.travel).
+- **Raunverulegt kreditkort** (aðeins hótel) ~2,0%
+- **Bankaflutning** Kostnaður fer eftir landi þar sem þú ert staðsettur og hvaðan féð er sent. Við bjóðum upp á tilvitnunarreiknivél sem þú getur notað þegar þú hefur laust fé á reikningnum þínum.
 
-Verið á varðbergi.
+Ef þú vilt að við styðjum aðra úttektaraðferð, sendu okkur tölvupóst.
+:::
 
-## Pallaráhrif
+## Módel 2
 
-Að lokum, þar sem við höldum áfram að vaxa bæði hvað varðar stærð og bókanir, viljum við deila nokkrum af áhrifum kerfisins með ykkur. Fleiri bókanir skapa tækifæri til magnafsláttar í gegnum greiðslugátt okkar sem myndi gera okkur kleift að lækka vinnslugjöld okkar fyrir alla.
+Þetta módel er aðeins í boði fyrir ferðaskrifstofur sem hafa ferðaskrifstofuleyfi í sínu svæði og vilja vera kaupmaður bókunartímans. Sumir af skráðum ferðasölum okkar vilja bera ábyrgð á greiðslu og úttekt fjármuna til hótela. Undir þessu módeli bera þeir ábyrgð á fjármunum og hafa nauðsynleg leyfi til að starfa í sínu landi.
 
-Skráðu þig í Wink í dag og uppgötvaðu nýja, arðbæra leið til að stunda viðskipti í ferðaþjónustugeiranum!
+### Sundurliðun
 
+:::note[Úrvinnslugjald]
+Wink rukkar 1,5% úrvinnslugjald fyrir hverja bókun. Þetta gerir okkur kleift að bjóða alla þjónustu okkar ókeypis og nær yfir viðhald pallsins.
+:::
+
+Með þessu módeli greiða ferðasalar aðeins úrvinnslugjald Wink og Wink sendir ferðasalanum reikning mánaðarlega.
+
+## Framtíðarþjónusta
+
+Við munum bjóða valfrjálsa áskriftarþjónustu í framtíðinni sem gerir öllum enn auðveldara að selja eða bjóða upp á stjórnað tengdra reikninga sem selja fyrir þig. Ef það vekur áhuga þinn, láttu rödd þína heyrast með því að senda okkur tölvupóst á [hi@wink.travel](mailto:hi@wink.travel).
+
+Vertu á varðbergi.
+
+## Áhrif pallsins
+
+Að lokum, þegar við vöxum bæði í stærð og bókunum, viljum við geta deilt einhverjum áhrifum pallsins með þér. Fleiri bókanir færa tækifæri til magnaðra afslátta frá greiðslugáttinni okkar sem myndi gera okkur kleift að lækka úrvinnslugjaldið fyrir alla.
+
+Skráðu þig hjá Wink í dag og uppgötvaðu nýjan, arðbæran hátt til að stunda viðskipti í gistigeiranum!

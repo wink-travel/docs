@@ -1,65 +1,62 @@
 ---
-title: Pricing
-description: >-
-  Kasutage kõiki Winki teenuseid südamerahuga tasuta. Maksate iga broneeringu
-  eest vaid väikese tasu.
+title: Hinnakujundus
+description: Kasutage kõiki Wink'i teenuseid tasuta nii palju kui soovite. Maksate vaid väikese tasu iga broneeringu eest.
 sidebar:
   order: 4
 ---
-Kõik Winki teenused on kõigile tasuta kasutamiseks. Broneeringu korral võtab Wink platvormi haldamise eest väikese tasu.
 
-Wink toetab nii kaupmehe kui ka agendi mudelit.
+Kõik Wink'i teenused on kõigile tasuta kasutamiseks. Kui toimub broneering, võtab Wink väikese tasu platvormi hooldamiseks.
+
+Wink toetab nii kaupmehe kui ka agendi mudeleid.
 
 ## Mudel 1
 
-Wink on broneeringu tegemise ajal registreeritud kaupmees. Wink vastutab rahaliste vahendite eest ja omab kõiki reisibüroo tegevuslubasid.
-
+Wink on broneeringu toimumise ajal kaupmees. Wink vastutab rahaliste vahendite eest ning omab kõiki vajalikke litsentse reisibüroo tegevuseks.
 See mudel kehtib 95% kõigist broneeringutest.
 
-Pilgutuse tasud`5.5% per booking`platvormi haldamiseks.
-Suurem osa sellest läheb makseväravale (Visa, MasterCard jne). Keskmine broneering maksab meile`2.95%`omandama; mõnikord nii kõrge kui`3.6%`Osalised tagasimaksed tekitavad meile veelgi suuremat kahju, kuna maksevärav käsitleb seda uue tasuna.
-Soovime hinnakujunduse osas olla nüüd täiesti läbipaistvad, et säästa kõigi aega enne Winki kasutamist edasiste allahindluste üle läbirääkimiste alustamist. Meie hinnamudel on enam kui õiglane ja me peame ka ise elatist teenima.
+Wink võtab platvormi hooldamiseks `5,5% iga broneeringu pealt`.
+Enamik sellest läheb makselahenduse pakkujale (Visa, MasterCard jne). Keskmine broneering maksab meile `2,95%` omandamiskuludena; mõnikord kuni `3,6%`. Osalised tagasimaksed tekitavad lisakulusid, kuna makselahendus näeb seda kui uut tasu.
+Soovime olla hinnakujunduse osas täiesti läbipaistvad, et säästa kõigi aega enne edasiste allahindluste läbirääkimisi, kui Wink'i pole veel kasutatud. Meie hinnamudel on rohkem kui õiglane ja me peame ka elatist teenima.
 
 ### Jaotus
 
-:::note\[Töötlustasu]
-Wink võtab broneeringu kohta 1,5% töötlemistasu. See võimaldab meil pakkuda kõiki oma teenuseid tasuta ja katab platvormi hoolduskulud.
+:::note[Töötlemistasu]
+Wink võtab 1,5% töötlemistasu iga broneeringu eest. See võimaldab meil pakkuda kõiki teenuseid tasuta ja katab platvormi hoolduse.
 :::
 
-:::note\[Maksetasu]
-TripPay võtab broneeringu kohta 4,0% maksetasu. See katab reisijalt makse saamise.
+:::note[Makse tasu]
+TripPay võtab 4,0% maksetasu iga broneeringu eest. See katab makse saamise reisijalt.
 :::
 
-:::note\[Rahade väljamaksmine]
-Teie kontole raha saatmisega kaasnevad tasud. See sõltub teie valitud väljamakseviisist. Praegu toetame:
+:::note[Rahade väljamakse]
+Teie kontole raha saatmisega on seotud tasud. See sõltub valitud väljamakse meetodist. Praegu toetame:
 
-* **Virtuaalne krediitkaart**(ainult hotellid) ~2,0%
-* **Pangaülekanne**Hind sõltub teie asukohariigist ja raha saatmise lähtekohast. Lisame hinnakalkulaatori, mida saate kasutada siis, kui teie kontol on raha saadaval.
+- **Virtuaalne krediitkaart** (ainult hotellid) ~2,0%
+- **Pangasiire** Tasud sõltuvad teie asukohariigist ja raha saatmise kohast. Pakume hinnakalkulaatorit, mida saate kasutada, kui teie kontol on vabu vahendeid.
 
-Kui soovite, et toetaksime mõnda muud väljamakseviisi, saatke meile e-kiri.
+Kui soovite, et toetaksime mõnda muud väljamakse meetodit, saatke meile e-kiri.
 :::
 
 ## Mudel 2
 
-See mudel on saadaval ainult reisibüroodele, kellel on oma piirkonnas reisibüroo litsents ja kes soovivad olla registreeritud kaupmehed. Mõned meie registreeritud reisibüroodest soovivad vastutada hotellidele maksete ja raha väljamaksmise eest. Selle mudeli kohaselt vastutavad nad raha eest ja omavad oma riigis tegutsemiseks vajalikke litsentse.
+See mudel on saadaval ainult reisibüroodele, kellel on oma piirkonnas reisibüroo litsents ja kes soovivad olla kaupmehed. Mõned meie registreeritud reisibürood soovivad ise maksete haldamise ja hotellidele raha väljamaksmise eest vastutada. Selle mudeli puhul vastutavad nad rahaliste vahendite eest ja omavad oma riigis vajalikke litsentse.
 
 ### Jaotus
 
-:::note\[Töötlustasu]
-Wink võtab broneeringu kohta 1,5% töötlemistasu. See võimaldab meil pakkuda kõiki oma teenuseid tasuta ja katab platvormi hoolduskulud.
+:::note[Töötlemistasu]
+Wink võtab 1,5% töötlemistasu iga broneeringu eest. See võimaldab meil pakkuda kõiki teenuseid tasuta ja katab platvormi hoolduse.
 :::
 
-Selle mudeli abil maksavad reisibürood ainult Winki töötlemistasu ja Wink esitab reisibüroole igakuiselt arve.
+Selle mudeli kasutamisel maksavad reisibürood ainult Wink'i töötlemistasu ning Wink esitab reisibüroole arve igakuiselt.
 
 ## Tulevased teenused
 
-Tulevikus pakume valikulisi tellimuspõhiseid teenuseid, mis muudavad müügi kõigile veelgi lihtsamaks, või hallatud partnerkontosid, mis teie eest müügi teevad. Kui see teid huvitab, andke oma hääl kuuldavale, saates meile e-kirja aadressile[tere@wink.travel](mailto:hi@wink.travel).
+Tulevikus pakume valikulisi tellimuspõhiseid teenuseid, mis muudavad müügi kõigile veelgi lihtsamaks või pakuvad hallatavaid sidusettevõtte kontosid, mis müüvad teie eest. Kui see teid huvitab, andke oma hääl teada, saates meile e-kirja aadressil [hi@wink.travel](mailto:hi@wink.travel).
 
 Jääge lainel.
 
-## Platvormi efekt
+## Platvormi mõju
 
-Lõpetuseks, kuna meie nii suurus kui ka broneeringute arv jätkuvalt kasvavad, soovime teiega jagada mõningaid platvormi mõjusid. Rohkem broneeringuid annab meile võimalusi mahuliste allahindluste saamiseks meie maksevärava kaudu, mis võimaldaks meil kõigi jaoks töötlemistasu alandada.
+Lõpuks, kui jätkame nii suuruse kui ka broneeringute arvu kasvamist, soovime jagada teiega osa platvormi mõjudest. Rohkem broneeringuid toob võimalusi mahuallahindlusteks meie makselahenduse pakkujalt, mis võimaldaks meil kõigi jaoks töötlemistasu alandada.
 
-Liitu Winkiga juba täna ja avasta uus ja tulus viis äri ajamiseks majutus- ja toitlustussektoris!
-
+Liituge Wink'iga juba täna ja avastage uus, tulus viis tegutseda majutustööstuses!

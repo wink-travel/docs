@@ -1,100 +1,99 @@
 ---
-title: Fizetési feltételek
-description: >-
-  Ez a dokumentum a források elérhetőségét és azt tárgyalja, hogy a Wink hogyan
-  támogatja az utazási irodák ügynöki modelljét.
+title: Fizetési Feltételek
+description: Ez a dokumentum a pénzeszközök rendelkezésre állását és azt tárgyalja, hogyan támogatja a Wink az ügynöki modellt az utazási ügynökök számára.
 sidebar:
   order: 5
 ---
-:::megjegyzés
+
+:::note
 Utolsó frissítés: 2024-10-30
 :::
 
-:::caution\[Értesítés]
-Az alábbi fizetési feltételek azokra az utazási irodákra vonatkoznak, amelyek saját maguk kívánnak pénzt beszerezni és kifizetni.
-Ez csak az API-nkon keresztül, és csak azok az utazási irodák tehetik meg, akik a regisztráció során jelezték, hogy ezt szeretnék.
+:::caution[Figyelem]
+Az alábbi fizetési feltételek azoknak az utazási ügynököknek érvényesek, akik saját maguk kívánják megszerezni és kifizetni a pénzeszközöket.  
+Ez csak az API-nkon keresztül lehetséges, és csak azok az utazási ügynökök használhatják, akik a regisztráció során jelezték ezt a szándékukat.
 
-Minden utazási iroda továbbra is foglalhat utazási irodánk portálján keresztül a Wink fizetési átjáróján keresztül, saját vagy az utas hitelkártyájával. Ezért minden utazási irodának el kell fogadnia a fizetési feltételeket is, ahol a Wink fizetési átjárója a kereskedő.
+Minden utazási ügynök továbbra is foglalhat a Wink utazási ügynök portálján keresztül, a Wink fizetési átjáróját használva saját vagy az utazó hitelkártyájával. Ezért minden utazási ügynöknek el kell fogadnia azokat a fizetési feltételeket, ahol a Wink fizetési átjáró a kereskedői nyilvántartásban szereplő fél.
 
-Ezek a feltételek elérhetők a következő címen:[Partnerportál > Fizetési feltételek](/studio/payment-terms).
+Ezek a feltételek elérhetők az [Affiliate Portal > Payment Terms](/hu/studio/payment-terms) alatt.
 :::
 
-**WINK FIZETÉSI FELTÉTELEK**\
-**UTAZÁSI IRODASZTÁLYOKNAK (Bejegyzett kereskedő)**
+**WINK FIZETÉSI FELTÉTELEK**  
+**UTAZÁSI ÜGYNÖKÖK SZÁMÁRA (Kereskedői Nyilvántartásban Szereplő Fél)**
 
-Jelen Fizetési Feltételek („Fizetési Feltételek”) egy kötelező érvényű jogi megállapodás, amely az „UTAZÁSI IRODÁK FELTÉTELEI” („Fő Megállapodás”) alapján létrejött szerződéses jogviszony részét képezi.
+Ezek a Szolgáltatási Fizetési Feltételek („Fizetési Feltételek”) kötelező érvényű jogi megállapodást képeznek, amely a "UTAZÁSI ÜGYNÖKÖK ÁLTALÁNOS SZERZŐDÉSI FELTÉTELEI" („Fő Megállapodás”) keretében létrejött szerződéses viszony részét képezik.
 
-**KÖZÖTT:**
+**FELEK:**
 
-1. **TRAVELIKO SINGAPORE KFT.**&#x65;gy szingapúri törvények szerint bejegyzett társaság, amelynek bejegyzett székhelye a #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 címen található, adószáma 201437335D (a továbbiakban: „Wink”), és
+1. **TRAVELIKO SINGAPORE PTE. LTD.**, egy Szingapúr törvényei szerint bejegyzett társaság, székhelye: #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, adószám: 201437335D (a továbbiakban: "Wink") és  
+     
+2. **AZ UTAZÁSI ÜGYNÖK**, akinek adatai az Utazási Ügynök Regisztrációs Űrlapon szerepelnek vagy online lettek benyújtva (a „Utazási Ügynök”).
 
-2. **AZ UTAZÁSI IRODÁN**akinek az adatai az Utazási Iroda Regisztrációs Űrlapján szerepelnek, vagy online lettek benyújtva (a továbbiakban: „Utazási Iroda”).
+A Fő Megállapodásban meghatározott definíciók és feltételek érvényesek ezekre a Fizetési Feltételekre, hacsak itt másként nincs meghatározva.
 
-A jelen Fizetési Feltételekre a Fő Megállapodásban meghatározott definíciók és kifejezések vonatkoznak, kivéve, ha a jelen Feltételek másként rendelkeznek.
+**1\. Fogalommeghatározások**
 
-**1. Fogalommeghatározások**
+A "UTAZÁSI ÜGYNÖKÖK ÁLTALÁNOS SZERZŐDÉSI FELTÉTELEI" („Fő Megállapodás”) szerint a következő kifejezések ugyanazt a jelentést hordozzák ezekben a Fizetési Feltételekben:
 
-A „UTAZÁSI IRODÁK FELTÉTELEI” („Főmegállapodás”) című fő megállapodásban meghatározottak szerint a következő kifejezések a jelen Fizetési Feltételekben azonos jelentéssel bírnak:
+* "Szálláshely Szolgáltató(k)"  
+* "Foglalás"  
+* "Foglalási Díj"  
+* "Foglalás Értéke"  
+* "Jutalék"  
+* "Nettó Fizetés"  
+* "Külön Megállapodás"
 
-* "Szálláshely-szolgáltató(k)"
-* "Foglalás"
-* "Foglalási díj"
-* "Foglalási érték"
-* "Jutalék"
-* "Nettó fizetés"
-* „Külön megállapodás”
 
-**2. Fizetések beszedése és elosztása**
+**2\. Fizetés Beszedése és Elosztása**
 
-2.1**Fizetés beszedése:**&#x41;z Utazási Iroda felelős a fizetés beszedéséért a Vendégtől a foglaláskor. Ez biztosítja az azonnali feldolgozást és a pénzügyi átláthatóságot.
+2.1 **Fizetés Beszedése:** Az Utazási Ügynök felelős a vendégtől a foglalás időpontjában történő fizetés beszedéséért. Ez biztosítja a gyors feldolgozást és pénzügyi átláthatóságot.
 
-2.2**Díjlevonás:**&#x41;z Utazási Iroda először a Szolgáltató díját vonja le, majd a jutalékát a feliratért az alábbi példa szerint:
+2.2 **Díjlevonás:** Az Utazási Ügynök először a Szolgáltató díját vonja le, majd a jutalékát a következő példa szerint:
 
-* 1,5% foglalási díj a Winkért.
-* Az utazási iroda jutaléka a külön megállapodásban meghatározottak szerint (ebben a példában 10%-ot használunk)
+* 1,5% Foglalási Díj a Wink részére.  
+* Az Utazási Ügynök jutaléka a Külön Megállapodásban meghatározottak szerint (példánkban 10%).
 
-Foglalási érték 1000 USD\
-Kacsintásdíj (1,5%) = 15 USD\
-Részösszeg = 1000 - 15 = 985
+Foglalás Értéke USD 1,000  
+Wink Díj (1,5%) = USD 15  
+Részösszeg = 1,000 - 15 = 985
 
-2.3**Nettó fizetés a szállásadóknak:**&#x41;z Utazási Iroda felelős a nettó kifizetésnek a Szálláshely-szolgáltatónak történő kifizetéséért az Utazási Iroda és a Szálláshely-szolgáltató közötti Külön Megállapodás feltételei szerint. A Wink nem felelős a Szálláshely-szolgáltatónak történő kifizetésekért.
+2.3 **Nettó Fizetés a Szálláshely Szolgáltatóknak:** Az Utazási Ügynök felelős a Nettó Fizetés kifizetéséért a Szálláshely Szolgáltatónak a Külön Megállapodás feltételei szerint. A Wink nem vállal felelősséget a Szálláshely Szolgáltató részére történő kifizetésekért.
 
-**3**.**Számlázás és fizetés**
+**3\. Számlázás és Fizetés**
 
-3.1**Havi számlázás:**&#x41; Wink helyes és pontos havi számlát állít ki az Utazási Irodának az előző hónapban felhalmozott Foglalási Díjakról. Az Utazási Iroda köteles ezt a számlát a számlán meghatározott fizetési határidőn belül kiegyenlíteni.
+3.1 **Havi Számlázás:** A Wink helyes és pontos havi számlát állít ki az Utazási Ügynök részére a megelőző hónapban felhalmozott Foglalási Díjakról. Az Utazási Ügynök köteles a számlán feltüntetett fizetési feltételek szerint rendezni a számlát.
 
-3.2**Fizetési mód:**&#x41; Wink részére a fizetéseket a számlán meghatározott fizetési módon kell teljesíteni. Az átutalással kapcsolatos minden költség az Utazási Irodát terheli.
+3.2 **Fizetési Mód:** A Wink részére történő fizetések a számlán megadott fizetési módon keresztül történnek. A fizetési átutalással kapcsolatos költségek az Utazási Ügynököt terhelik.
 
-3.3**Késedelmes fizetések:**&#x4B;ésedelmes fizetés esetén a Wink fenntartja a jogot, hogy a késedelmes összegre havi 5%-os kamatot, vagy a törvény által megengedett maximális kamatot számítson fel, attól függően, hogy melyik az alacsonyabb. Továbbá, ha az Utazási Iroda késedelembe esik a Szálláshely-szolgáltatónak a Külön Megállapodás feltételei szerint történő fizetésével, a Wink fenntartja a jogot, hogy a Szolgáltatáshoz való hozzáférést felfüggessze, amíg mind a Wink, mind a Szálláshely-szolgáltató felé fennálló összes fennálló fizetést rendezik. Ha azonban a Wink által benyújtott számlában bármilyen hiba vagy tévedés van, az Utazási Iroda csak a számla helyes és pontos részét köteles kifizetni, és a számla helytelen részének kifizetésének elmulasztása miatt nem számít fel kamatot vagy büntetést.
+3.3 **Késedelmes Fizetés:** Késedelmes fizetés esetén a Wink jogosult a lejárt összeg után havi 5%-os kamatot felszámítani, vagy a törvény által megengedett legmagasabb kamatot, amelyik alacsonyabb. Továbbá, ha az Utazási Ügynök késik a Szálláshely Szolgáltató részére történő fizetéssel a Külön Megállapodás szerint, a Wink jogosult felfüggeszteni a szolgáltatáshoz való hozzáférést mindaddig, amíg minden fennálló tartozás a Wink és a Szálláshely Szolgáltató felé rendezésre nem kerül. Azonban, ha a Wink által benyújtott számlában hibák vagy tévedések vannak, az Utazási Ügynök csak a helyes és pontos számlarészt köteles kifizetni, és nem terheli kamat vagy büntetés a hibás számlarész meg nem fizetése miatt.
 
-**4. Szerepkörök és felelősségek**
+**4\. Szerepek és Felelősségek**
 
-4.1**Utazási ügynök feladatai:**
+4.1 **Utazási Ügynök Felelősségei:**
 
-* Gondoskodjon a Vendégek fizetéseinek időben történő beszedéséről, a 2.1. szakaszban foglalt feltételek betartásával.
-* A nettó fizetés Szálláshely-szolgáltatóknak történő átutalása előtt vonja le a megfelelő foglalási díjat és jutalékot a Külön Megállapodás szerint.
-* A Wink Foglalási Díjakkal kapcsolatos számláit haladéktalanul rendezni a 3.1. szakaszban meghatározott feltételeken belül.
-* Aktívan kezeli és megoldja a foglalásokkal vagy fizetésekkel kapcsolatos vitákat, biztosítva a Winkkel való kommunikációt a problémák hatékony megoldása érdekében.
+* Biztosítani a fizetések időben történő beszedését a vendégektől a 2.1 pontban foglaltak szerint.  
+* Levonni a megfelelő Foglalási Díjat és Jutalékot, mielőtt a Nettó Fizetést kifizetné a Szálláshely Szolgáltatóknak a Külön Megállapodás szerint.  
+* Időben rendezni a Wink által kiállított Foglalási Díj számlákat a 3.1 pontban meghatározott feltételek szerint.  
+* Aktívan kezelni és megoldani minden foglalással vagy fizetéssel kapcsolatos vitát, biztosítva a Wink-kel való kommunikációt a hatékony problémamegoldás érdekében.
 
-4.2**Wink feladatai:**
+4.2 **Wink Felelősségei:**
 
-* Pontos és időben történő havi számlákat kell kiállítani a Foglalási Díjakról, a 3.1. szakaszban részletezettek szerint.
-* Biztosítson folyamatos hozzáférést az utazási irodának a Wink platformhoz a foglalások feldolgozásához és a fizetések kezeléséhez.
-* Segítse az Utazási Irodát a fizetésekkel kapcsolatos viták rendezésében a szükséges tranzakciós adatok és támogatás biztosításával.
+* Pontos és időben történő havi számlák kiállítása a Foglalási Díjakról a 3.1 pont szerint.  
+* Folyamatos hozzáférést biztosítani az Utazási Ügynök számára a Wink platformhoz a foglalások feldolgozásához és a fizetések kezeléséhez.  
+* Segíteni az Utazási Ügynököt a fizetésekkel kapcsolatos viták rendezésében, szükség esetén biztosítva a tranzakciós adatokat és támogatást.
 
-**5. Valutaváltás**
+**5\. Devizaátváltás**
 
-Amennyiben bármilyen pénznemváltásra van szükség, azt a fizetésfeldolgozó szolgáltatás által megadott árfolyamon dolgozzuk fel. Az Utazási Iroda felelős a pénznemváltással kapcsolatos költségekért.
+Amennyiben devizaátváltásra van szükség, azt a fizetési feldolgozó szolgáltatás által biztosított árfolyamon hajtják végre. A devizaátváltással kapcsolatos költségek az Utazási Ügynököt terhelik.
 
-**6. Vitarendezés**
+**6\. Viták Rendezése**
 
-A jelen Fizetési Feltételekből eredő vagy azokkal kapcsolatos vitákat a Fő Megállapodásban foglalt vitarendezési eljárások szerint kell kezelni, biztosítva a Wink és az Utazási Iroda közötti konfliktusok rendezésére vonatkozó következetes és egységes megközelítést.
+Az ebből a Fizetési Feltételekből eredő vagy azzal kapcsolatos vitákat a Fő Megállapodásban meghatározott vitakezelési eljárások szerint kell rendezni, biztosítva a Wink és az Utazási Ügynök közötti egységes és következetes konfliktuskezelést.
 
-**7. A Feltételek Módosítása**\
-A Wink fenntartja a jogot, hogy a jelen Fizetési Feltételeket bármikor módosítsa. A változásokról legalább 30 nappal a hatálybalépés előtt értesíteni kell az Utazási Irodát. A Wink platformjának a hatálybalépés dátuma utáni további használata a módosított feltételek elfogadását jelenti.
+**7\. Feltételek Módosítása**  
+A Wink jogosult ezen Fizetési Feltételeket bármikor módosítani. A változásokat legalább 30 nappal a hatálybalépés előtt közli az Utazási Ügynökkel. A Wink platform használatának folytatása a hatálybalépés után a módosított feltételek elfogadását jelenti.
 
-**8. Irányadó jog és joghatóság**\
-Ezeket a Fizetési Feltételeket Szingapúr törvényei szabályozzák. A jelen feltételekből eredő vagy azokkal kapcsolatos vitákat Szingapúr bíróságai rendezik.
+**8\. Irányadó Jog és Joghatóság**  
+Ezek a Fizetési Feltételek Szingapúr jogszabályai szerint értelmezendők. Az ebből eredő vagy azzal kapcsolatos vitákat Szingapúr bíróságai előtt kell rendezni.
 
-Jelen Fizetési Feltételek szerves részét képezik a Wink és az Utazási Iroda között létrejött „UTAZÁSI IRODÁK FELTÉTELEI\_220924” című fő megállapodásban foglalt fizetési rendelkezéseknek, és kiegészítik azokat.
-
+Ezek a Fizetési Feltételek szerves részét képezik, és kiegészítik a Fő Megállapodás, a "UTAZÁSI ÜGYNÖKÖK ÁLTALÁNOS SZERZŐDÉSI FELTÉTELEI_220924" fizetési rendelkezéseit a Wink és az Utazási Ügynök között.

@@ -1,55 +1,53 @@
 ---
-title: Customers
-description: >-
-  See artikkel selgitab, milliseid kliente me teenindame ja kuidas Wink saab
-  aidata.
+title: Kliendid
+description: See artikkel selgitab, milliseid kliente me teenindame ja kuidas Wink saab aidata.
 sidebar:
   order: 2
 ---
-See artikkel selgitab, milliseid kliente me teenindame ja kuidas me saame neid kõige paremini aidata.
 
-## Omadused
+See artikkel selgitab, milliseid kliente me teenindame ja kuidas me saame kõige paremini aidata.
 
-Wink alustas hotellide pardaletoomisega kümme aastat tagasi. Hotellid kasutavad Winki oma laoseisu tõhusaks haldamiseks tuhandetes müügikanalites, sealhulgas oma brand.com saidil, ja iga broneeringuga suurema tulu teenimiseks, edendades samal ajal otsekanaleid meie hotellindusele suunatud tööriistade abil, mis parandavad brändi identiteeti ja kasumlikkust.
+## Kinnistud
 
-## Brändid ja ketid
+Wink alustas hotellide liidestamist kümme aastat tagasi. Hotellid kasutavad Winki, et tõhusalt hallata oma inventari tuhandetes müügikanalites, sealhulgas oma brändi.com saidil, ning teenida iga broneeringuga rohkem, samal ajal tugevdades otseseid kanaleid meie külalislahkusele keskenduvate tööriistade abil, mis parandavad brändi identiteeti ja kasumlikkust​.
 
-Brändidel ja kettidel on veidi erinevad vajadused kui ühel kinnisvaraobjektil. Winkis saavad nad:
+## Brändid ja kettid
 
-* Halda mitut kinnisvaraobjekti ühe konto all.
-* Määrake kinnisvarale haldurid
-* Kasutamine [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) ja meie [WinkLinks](/link-manager/wink-links) mitut kinnisvaraobjekti ühes kohas turustada ja müüa.
+Brändidel ja kettidel on veidi erinevad vajadused kui üksikul kinnistul. Winkis saavad nad:
 
-## Haldusfirmad
+- Hallata mitut kinnistut ühe konto all.
+- Määrata kinnistutele juhid
+- Kasutada [WinkLinks](/et/link-manager/wink-links), [WordPressi](/et/developers/wordpress) ja meie [veebikomponente](/et/developers/web-components), et turundada ja müüa mitut kinnistut ühes kohas.
 
-Majutus- ja turismiettevõtted saavad oma kinnisvaraportfelle omanike nimel hallata. Veebisegmendile müügi lubamisel veebikesksetel ja digitaalselt teadlikel agentuuridel on kindel eelis, samal ajal kui hotellid saavad keskenduda klientide rahulolu haldamisele pärast nende saabumist hotelli.
+## Juhtimisettevõtted
+
+Külalislahkuse juhtimisettevõtted ja sihtkoha juhtimisettevõtted saavad hallata kinnistute portfelle omanike nimel. On selge eelis lasta veebile keskendunud, digitaalselt teadlikel agentuuridel müüa veebisegmendile, samal ajal kui hotellid saavad keskenduda kliendirahulolu haldamisele, kui külalised kohale jõuavad.
 
 ## Mõjutajad
 
-Mõjutajad kasutavad Winki oma publiku paremaks raha teenimiseks. Nad teevad seda hotellidega koostööd tehes, kohandatud pakkumisi luues ning Winki sotsiaalmeediasõbralikke tööriistu ja võimsat analüütikat kasutades, et jälgida, millised tooted kõige paremini müüvad.
+Mõjutajad kasutavad Winki, et paremini oma publikut monetiseerida. Nad teevad seda, tehes koostööd hotellidega, luues kohandatud pakkumisi ja kasutades Winki sotsiaalselt sõbralikke tööriistu ning võimsaid analüütikavahendeid, et jälgida, millised tooted kõige paremini müüvad​.
 
 ## Reisibürood
 
-Reisibürood saavad meie spetsiaalsete teenuste kaudu juurdepääsu reisivarustusele kogu maailmas suurepäraste hindadega. [reisibüroo portaal](https://agent.wink.travel) Nad saavad broneeringuid teha meie portaali või API kaudu või lubades oma kasutajatel broneerida ise reisibüroo veebisaidil, mis kasutab meie tehnoloogiaid.
+Reisibüroodel on juurdepääs reisivarudele üle kogu maailma suurepäraste hindadega meie spetsiaalse [reisibüroo portaali](https://agent.wink.travel) kaudu. Nad saavad teha broneeringuid meie portaali kaudu, meie API kaudu või lasta oma kasutajatel ise broneerida reisibüroo veebisaidil, mis kasutab meie tehnoloogiaid.
 
-## Korporatsioonid
+## Ettevõtted
 
-Ettevõtted vajavad reisiplatvormilt paremat:
+Ettevõtted vajavad rohkem kui lihtsalt reisiplatvormi:
 
-* Nad vajavad hästi organiseeritud reisiplaane, mis toetavad paindlikkust ja viimase hetke muudatusi.
-* Nad vajavad usaldusväärseid suhtlusvahendeid, näiteks internetti.
-* Neil on liikmelisusega müüjate eelistused.
-* Neil on sageli ettevõtte krediitkaart ja nad on seadnud kulutuslimiidid.
-* See nõuab kulude haldamise ja aruandluse integratsiooni.
-* Nad vajavad uksehoidja tuge ja ka MICE-teenuseid üritustel.
+- Nad vajavad hästi organiseeritud marsruute, mis toetavad paindlikkust ja viimase hetke muudatusi.
+- Nad vajavad usaldusväärseid suhtlustööriistu, nagu internet.
+- Neil on tarnijate eelistused koos liikmelisustega.
+- Neil on sageli ettevõtte krediitkaart ja seatud kulupiirangud.
+- Nad vajavad kulude haldamist ja aruandluse integratsiooni.
+- Nad vajavad konverentsiteenuseid ning MICE-teenuseid üritustel.
 
-Ärireisijad saavad oma kontosid meie saidil hallata. [ettevõtte portaal](/corporate/what-is-group) või kasutage meie ametlikult toetatud [ettevõtte portaal](/corporate/what-is-group) plugin ja [ettevõtte portaal](/corporate/what-is-group) integratsioon.
+Ettevõtte reisijad saavad hallata oma kontosid meie [ettevõtte portaalis](/et/corporate/what-is-group) või kasutada meie ametlikult toetatud [MS Sharepointi](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) pistikprogrammi ja [Concuri](https://www.concur.com/) integratsiooni.
 
 ## Arendajad
 
-Kuigi me ehitasime selle platvormi hotellipidajate poolt ja neile... Iga koodirida loodi spetsiaalselt korduvkasutatavuse eesmärgil. Meie arendajate meeskond lõi Winki lootuses, et järgmine 🦄 reisirakendus ehitatakse meie koodibaasile. Navigeeri aadressile [Arendaja](/developers/build-on-wink) lehekülge, et näha, kuidas Wink saab teid teie järgmises ettevõtmises toetada.
+Kuigi me ehitasime selle platvormi hotellipidajate jaoks... Iga koodirida on loodud korduvkasutatavuse eesmärgil. Meie arendajate meeskond ehitas Winki lootuses, et järgmine 🦄 reisirakendus ehitatakse meie koodibaasi peale. Liigu lehele [Arendaja](/et/developers/build-on-wink), et näha, kuidas Wink saab sind sinu järgmises ettevõtmises toetada.
 
-## Muu
+## Muud
 
-Kõik, kes soovivad reisivarustust leida ja müüa, saavad Winkist kasu. Muutke oma kirg külalislahkuse vastu teoks, teenides iga broneeringu pealt suurepärast vahendustasu.
-
+Kõik, kes soovivad leida ja müüa reisivarusid, saavad kasu Winkist. Muuda oma kirg külalislahkuse vastu tegudeks, teenides iga broneeringu pealt suure vahendustasu.

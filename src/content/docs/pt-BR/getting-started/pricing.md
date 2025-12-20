@@ -1,64 +1,62 @@
 ---
-title: Pricing
-description: >-
-  Use todos os serviços do Wink à vontade, gratuitamente. Você paga apenas uma
-  pequena taxa por reserva.
+title: Preços
+description: Use todos os serviços da Wink à vontade, gratuitamente. Você paga apenas uma pequena taxa por reserva.
 sidebar:
   order: 4
 ---
-Todos os serviços do Wink são gratuitos para todos. Quando há uma reserva, o Wink cobra uma pequena taxa para manter a plataforma.
 
-O Wink oferece suporte aos modelos de comerciante e agente.
+Todos os serviços da Wink são gratuitos para todos os usuários. Quando há uma reserva, a Wink cobra uma pequena taxa para manter a plataforma.
+
+A Wink suporta tanto o modelo de comerciante quanto o modelo de agente.
 
 ## Modelo 1
 
-A Wink é a empresa registrada no momento da reserva. A Wink é responsável pelos fundos e detém todas as licenças para operar uma agência de viagens.
+A Wink é o comerciante registrado no momento em que a reserva ocorre. A Wink é responsável pelos fundos e possui todas as licenças necessárias para operar uma agência de viagens.
 Este modelo se aplica a 95% de todas as reservas.
 
-Cobranças de piscadela`5.5% per booking`para manter a plataforma.
-A maior parte vai para o gateway de pagamento (Visa, MasterCard etc.). Uma reserva média nos custa`2.95%`para adquirir; às vezes tão alto quanto`3.6%`Reembolsos parciais nos prejudicam ainda mais, pois o gateway de pagamento os considera como uma nova cobrança.
-Queremos ser totalmente transparentes sobre os preços agora para economizar tempo para todos antes de tentar negociar mais descontos antes de usar o Wink. Nosso modelo de preços é mais do que justo e precisamos nos sustentar também.
+A Wink cobra `5,5% por reserva` para manter a plataforma.  
+A maior parte disso vai para a gateway de pagamento (Visa, MasterCard etc). Uma reserva média nos custa `2,95%` para adquirir; às vezes chega a `3,6%`. Reembolsos parciais nos prejudicam ainda mais, pois a gateway de pagamento os vê como uma nova cobrança.  
+Queremos ser completamente transparentes sobre os preços agora para economizar tempo de todos antes de tentar negociar descontos adicionais sem ter usado a Wink. Nosso modelo de preços é mais do que justo e também precisamos garantir nossa sustentabilidade.
 
-### Discriminação
+### Detalhamento
 
-:::Nota\[Taxa de processamento]
-A Wink cobra uma taxa de processamento/reserva de 1,5%. Isso nos permite oferecer todos os nossos serviços gratuitamente e cobre a manutenção da plataforma.
+:::note[Taxa de processamento]
+A Wink cobra uma taxa de processamento de 1,5% por reserva. Isso nos permite oferecer todos os nossos serviços gratuitamente e cobre a manutenção da plataforma.
 :::
 
-:::Nota\[Taxa de pagamento]
-O TripPay cobra uma taxa de pagamento de 4,0% por reserva. Isso inclui a aquisição do pagamento do viajante.
+:::note[Taxa de pagamento]
+A TripPay cobra uma taxa de pagamento de 4,0% por reserva. Isso cobre a aquisição do pagamento do viajante.
 :::
 
-:::nota\[Desembolso de fundos]
-Há taxas associadas ao envio de fundos para sua conta. Isso depende do método de desembolso escolhido. Atualmente, oferecemos suporte para:
+:::note[Distribuição dos fundos]
+Existem taxas associadas ao envio dos fundos para sua conta. Isso depende do método de pagamento que você escolher. Atualmente, suportamos:
 
-* **Cartão de crédito virtual**(apenas hotéis) ~2,0%
-* **Transferência bancária**O custo depende do país onde você está localizado e de onde os fundos são enviados. Incluímos uma calculadora de cotações que você pode usar quando tiver fundos disponíveis em sua conta.
+- **Cartão de crédito virtual** (apenas hotéis) ~2,0%
+- **Transferência bancária** O custo depende do país onde você está localizado e de onde os fundos são enviados. Incluímos uma calculadora de cotações que você pode usar quando tiver fundos disponíveis em sua conta.
 
-Se você quiser que ofereçamos outro método de pagamento, envie-nos um e-mail.
+Se desejar que suportemos outro método de pagamento, envie-nos um e-mail.
 :::
 
 ## Modelo 2
 
-Este modelo está disponível apenas para agências de viagens que possuam licença de agência de viagens em sua região e que desejem ser o agente registrado. Alguns de nossos agentes de viagens registrados desejam ser responsáveis por administrar o pagamento e o desembolso de fundos para hotéis. Nesse modelo, eles são responsáveis pelos fundos e possuem as licenças necessárias para operar em seu país.
+Este modelo está disponível apenas para agências de viagens que possuem licença para operar em sua região e que desejam ser o comerciante registrado. Alguns de nossos agentes de viagens registrados querem ser responsáveis pelo processamento do pagamento e pela distribuição dos fundos para os hotéis. Nesse modelo, eles são responsáveis pelos fundos e possuem as licenças necessárias para operar em seu país.
 
-### Discriminação
+### Detalhamento
 
-:::Nota\[Taxa de processamento]
-A Wink cobra uma taxa de processamento/reserva de 1,5%. Isso nos permite oferecer todos os nossos serviços gratuitamente e cobre a manutenção da plataforma.
+:::note[Taxa de processamento]
+A Wink cobra uma taxa de processamento de 1,5% por reserva. Isso nos permite oferecer todos os nossos serviços gratuitamente e cobre a manutenção da plataforma.
 :::
 
-Usando esse modelo, os agentes de viagens pagam apenas a taxa de processamento da Wink, que faturará o agente de viagens mensalmente.
+Usando este modelo, os agentes de viagens pagam apenas a taxa de processamento da Wink, e a Wink enviará uma fatura mensal para o agente de viagens.
 
 ## Serviços futuros
 
-No futuro, ofereceremos serviços opcionais baseados em assinatura que tornarão ainda mais fácil vender para todos, ou ofereceremos contas de afiliados gerenciadas que farão as vendas por você. Se isso lhe interessa, faça sua voz ser ouvida enviando um e-mail para[oi@wink.travel](mailto:hi@wink.travel).
+No futuro, ofereceremos serviços opcionais baseados em assinatura que tornarão ainda mais fácil vender para todos ou ofereceremos contas afiliadas gerenciadas que fazem as vendas para você. Se isso lhe interessar, faça sua voz ser ouvida enviando um e-mail para [hi@wink.travel](mailto:hi@wink.travel).
 
-Fique atento.
+Fique ligado.
 
-## Efeito plataforma
+## Efeito da plataforma
 
-Por fim, à medida que continuamos a crescer em tamanho e em número de reservas, gostaríamos de compartilhar alguns dos efeitos da plataforma com vocês. Mais reservas trazem oportunidades de descontos por volume em nosso gateway de pagamento, o que nos permitiria reduzir nossa taxa de processamento para todos.
+Por fim, à medida que continuamos a crescer em tamanho e em número de reservas, queremos poder compartilhar alguns dos efeitos da plataforma com você. Mais reservas trazem oportunidades de descontos por volume da nossa gateway de pagamento, o que nos permitiria reduzir nossa taxa de processamento para todos.
 
-Junte-se à Wink hoje mesmo e descubra uma maneira nova e lucrativa de fazer negócios no setor de hospitalidade!
-
+Junte-se à Wink hoje e descubra uma nova forma lucrativa de fazer negócios na indústria da hospitalidade!

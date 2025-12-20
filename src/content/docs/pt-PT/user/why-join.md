@@ -1,21 +1,21 @@
 ---
-title: Porquê participar
-description: Este artigo explica todos os benefícios de se associar ao Wink.
+title: Porquê aderir
+description: Este artigo explica todos os benefícios de aderir ao Wink.
 sidebar:
   order: 0
 ---
-O Wink foi criado para tornar a venda de inventário de viagens novamente emocionante e acessível a mais utilizadores.
-Há muitos bons motivos para se juntar ao Wink.
+
+O Wink foi criado para tornar a venda de inventário de viagens emocionante novamente e para a tornar acessível a mais utilizadores.  
+Existem muitas boas razões para aderir ao Wink.
 
 Uma conta de utilizador permite-lhe:
 
-* Crie e gerencie propriedades e venda onde quer que os potenciais viajantes estejam.
-* Crie e gerencie contas de afiliados e ganhe uma comissão sobre as reservas que facilitar.
-* Crie e gerencie contas de agentes de viagens e reserve em nome dos seus clientes.
-* Obtenha o seu URL personalizado do WinkLinks (*por exemplo https://i.trvl.as/bob*) e utilize-o no URL da sua biografia do IG.
-* Reserve as suas próximas férias e poupe.
-* Faça tudo isto como developer integrando-se com o Wink.
-* Todos os nossos recursos estão disponíveis para si **LIVRE**.
+- Criar e gerir propriedades e vender em todos os locais onde potenciais viajantes estão.
+- Criar e gerir contas de afiliados e ganhar uma comissão nas reservas que facilitar.
+- Criar e gerir contas de agentes de viagens e reservar em nome dos seus clientes.
+- Obter o seu URL personalizado WinkLinks (*ex. https://i.trvl.as/bob*) e usá-lo no URL da sua bio do IG.
+- Reservar as suas próximas férias e poupar.
+- Fazer tudo o que foi referido acima como programador, integrando-se com o Wink.
+- Todas as nossas funcionalidades estão disponíveis para si **G-R-Á-T-I-S**.
 
-Continue para a secção seguinte para saber como se registar e começar a ganhar com o Wink.
-
+Continue para a próxima secção para aprender como se registar e começar a ganhar com o Wink.

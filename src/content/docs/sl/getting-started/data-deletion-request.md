@@ -1,43 +1,43 @@
 ---
 title: Zahteva za izbris podatkov
-description: 'Naučite se, kako zahtevati izbris svojih osebnih podatkov na Winku.'
+description: Izvedite, kako zahtevati izbris vaših osebnih podatkov na Wink.
 sidebar:
   order: 9
 ---
-Pri podjetju Wink spoštujemo vašo zasebnost in smo v celoti zavezani varovanju vaših osebnih podatkov. Upoštevamo**Splošna uredba o varstvu podatkov (GDPR)**&#x69;n druge veljavne zakone o varstvu podatkov po vsem svetu.
 
-Na tej strani je opisano, kako lahko zahtevate izbris vseh osebnih podatkov, ki smo jih morda zbrali prek naše platforme – vključno s podatki, pridobljenimi prek ponudnikov družbenih omrežij za prijavo, kot sta Facebook ali Instagram, vendar ne omejeno nanje.
+V Wink spoštujemo vašo zasebnost in smo popolnoma zavezani k varovanju vaših osebnih podatkov. Upoštevamo **Splošno uredbo o varstvu podatkov (GDPR)** in druge veljavne zakone o varstvu podatkov po vsem svetu.
 
-## Naša zavezanost k varovanju zasebnosti podatkov
+Ta stran opisuje, kako lahko zahtevate izbris vseh osebnih podatkov, ki smo jih morda zbrali prek naše platforme — vključno, a ne omejeno na podatke, pridobljene prek ponudnikov socialnih prijav, kot so Facebook ali Instagram.
 
-Zbiramo le podatke, ki so potrebni za zagotavljanje naših storitev, in vaših osebnih podatkov nikoli ne prodajamo. To lahko vključuje:
+## Naša zaveza k varstvu podatkov
 
-* Vaše ime in e-poštni naslov
-* Podatki javnega profila (npr. iz Facebooka ali Googla)
-* Podatki o uporabi ali dejavnosti na naši platformi
-* Vsa dovoljenja, ki ste jih izrecno podelili
+Zbiramo le podatke, potrebne za zagotavljanje naših storitev, in nikoli ne prodajamo vaših osebnih informacij. To lahko vključuje:
 
-Sprejemamo ustrezne ukrepe za zaščito vaših podatkov in vse zahteve za izbris obravnavamo v skladu z GDPR in politiko podatkov podjetja Meta.
+- Vaše ime in e-poštni naslov
+- Javno profilne informacije (npr. iz Facebooka ali Googla)
+- Podatke o uporabi ali dejavnosti na naši platformi
+- Vse dovoljenja, ki ste jih izrecno dali
+
+Sprejemamo ustrezne ukrepe za zaščito vaših podatkov in vse zahteve za izbris obdelujemo v skladu z GDPR in Meta politiko podatkov.
 
 ## Zahteva za izbris podatkov
 
 Imate pravico zahtevati, da izbrišemo vse osebne podatke, ki jih hranimo o vas.
 
-Če želite zahtevati izbris podatkov:
+Za zahtevo izbrisa podatkov:
 
-* 📧**Pošlji e-pošto na**: [podpora@wink.travel](mailto:support@wink.travel) 
-* 📝 Uporabite zadevo:`Data Deletion Request`
-* 🔍 Prosimo, navedite identifikacijske podatke, kot so:
-  * E-poštni naslov, ki ga uporabljamo na naši platformi
-  * Vaš Facebook ali Google ID ali podobno (če je primerno)
+- 📧 **Pošljite e-pošto na**: [support@wink.travel](mailto:support@wink.travel)
+- 📝 Uporabite zadevo: `Data Deletion Request`  
+- 🔍 Prosimo, vključite identifikacijske podatke, kot so:
+  - E-poštni naslov, uporabljen na naši platformi
+  - Vaša Facebook ali Google ID ali podobno (če je primerno)
 
-Odgovorili bomo v roku**30 dni**prejema vaše zahteve, kot to zahteva GDPR.
+Odgovorili vam bomo v roku **30 dni** od prejema vaše zahteve, kot to zahteva GDPR.
 
 ## Vprašanja ali pomisleki?
 
-Če imate kakršna koli vprašanja o tem, kako zbiramo, uporabljamo ali brišemo vaše podatke, se obrnite na našo ekipo za varstvo podatkov na[podpora@wink.travel](mailto:support@wink.travel).
+Če imate kakršnakoli vprašanja o tem, kako zbiramo, uporabljamo ali brišemo vaše podatke, se lahko obrnete na našo ekipo za zasebnost na [support@wink.travel](mailto:support@wink.travel).
 
-***
+---
 
-Hvala, ker nam zaupate. Varstvo podatkov jemljemo resno in smo zavezani k temu, da vam zagotovimo popoln nadzor nad vašimi podatki.
-
+Hvala, ker nam zaupate. Varstvo podatkov jemljemo resno in smo zavezani, da vam omogočimo popoln nadzor nad vašimi informacijami.

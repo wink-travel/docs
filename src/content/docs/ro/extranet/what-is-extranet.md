@@ -1,26 +1,24 @@
 ---
-title: Ce este Extranetul?
-description: >-
-  Acest articol vă prezintă ce trebuie să știți pentru a începe să utilizați
-  Wink ca hotel.
+title: Ce este Extranet?
+description: Acest articol te ghidează prin tot ce trebuie să știi pentru a începe să folosești Wink ca hotel.
 sidebar:
   order: 0
 ---
-[Extranetul Wink](https://extranet.wink.travel) este portalul nostru imobiliar. Este destinat hotelurilor, lanțurilor hoteliere, brandurilor și companiilor de administrare hotelieră pentru a crea și gestiona profilul digital al proprietăților lor pe platforma Wink.
 
-Extranetul nostru a fost conceput cu grijă pentru a fi cât mai simplu posibil, dar pentru a oferi în același timp toate funcțiile pe care utilizatorii avansați le așteaptă de la un portal imobiliar avansat. Iată câteva exemple:
+[Wink Extranet](https://extranet.wink.travel) este portalul nostru pentru proprietăți. Este destinat hotelurilor, lanțurilor, brandurilor și companiilor de management hotelier pentru a crea și gestiona profilul digital al proprietăților lor pe platforma Wink.
 
-1. Simplitate: Folosește fluxul nostru inteligent de procesare a informațiilor pentru a-ți înregistra proprietatea și a o lansa în mai puțin de o oră.
-2. Avansat: Wink acceptă 8500 de variante diferite de politici de anulare
-3. Cool: Oferă unei singure persoane de pe planeta Pământ o reducere de 10% fără ca utilizatorul să fie nevoit să se conecteze sau să introducă un cod promoțional.
+Extranetul nostru a fost conceput cu grijă pentru a fi cât mai simplu posibil, dar în același timp să susțină toate funcționalitățile pe care utilizatorii avansați le așteaptă de la un portal avansat pentru proprietăți. Pentru a-ți da câteva exemple:
 
-Lasă-i pe vrăjitorii noștri să te ghideze prin întregul proces. Când te simți suficient de confortabil... fă-o singur.
+1. Simplitate: Folosește fluxul nostru inteligent de onboarding pentru a-ți înregistra proprietatea și a o pune LIVE în mai puțin de o oră.
+2. Avansat: Wink suportă 8500 de variații diferite ale politicilor de anulare.
+3. Cool: Oferă unei singure persoane de pe planetă o reducere de 10% fără ca utilizatorul să fie nevoit să se autentifice sau să introducă un cod promoțional.
 
-Wink este un sistem avansat de gestionare a conținutului pentru proprietăți și furnizori de experiențe. Tot ce poți face într-una dintre aplicațiile noastre, poți face prin intermediul API-ului. Acest lucru îți permite o integrare profundă cu Wink, într-o asemenea măsură încât poți vinde prin Wink fără a fi nevoie să te conectezi la niciuna dintre aplicațiile noastre.
+Lasă vrăjitorii noștri să te ghideze prin întregul proces. Când te simți suficient de confortabil... continuă pe cont propriu.
 
-:::tip\[Sfat profesionist]
-Plătești pentru găzduire costisitoare de resurse media prin Leonardo International? Poți face exact același lucru prin Wink ȘI primești mult mai multe opțiuni pentru a manipula și regla fin imaginile și videoclipurile.
+Wink este un sistem avansat de management al conținutului pentru proprietăți și furnizori de experiențe. Tot ce poți face într-una dintre aplicațiile noastre, poți face și prin API. Acest lucru îți permite să faci o integrare profundă cu Wink într-o asemenea măsură încât să poți vinde prin Wink fără să fie nevoie să te autentifici vreodată în oricare dintre aplicațiile noastre.
+
+:::tip[Sfaturi Pro]
+Plătești pentru găzduirea scumpă a materialelor media prin Leonardo International? Poți face exact același lucru prin Wink ȘI primești multe mai multe opțiuni pentru a manipula și ajusta fin imaginile și videoclipurile tale.
 :::
 
-Toate aceste funcții sunt gratuite pentru dumneavoastră. Numai atunci când faceți o rezervare percepem o mică taxă. Nimic de pierdut - totul de câștigat.
-
+Toate aceste funcționalități sunt oferite fără niciun cost pentru tine. Taxăm doar o mică comision atunci când faci o rezervare. Nimic de pierdut - Totul de câștigat.

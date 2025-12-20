@@ -1,64 +1,62 @@
 ---
-title: Pricing
-description: >-
-  Koristite sve Winkove usluge besplatno koliko god želite. Plaćate samo malu
-  naknadu po rezervaciji.
+title: Cijene
+description: Koristite sve Winkove usluge koliko god želite besplatno. Plaćate samo malu naknadu po rezervaciji.
 sidebar:
   order: 4
 ---
-Sve Winkove usluge su besplatne za korištenje. Prilikom rezervacije, Wink naplaćuje malu naknadu za održavanje platforme.
 
-Wink podržava i trgovački i agentski model.
+Sve Winkove usluge su besplatne za korištenje svima. Kada dođe do rezervacije, Wink naplaćuje malu naknadu za održavanje platforme.
+
+Wink podržava i model trgovca i model agenta.
 
 ## Model 1
 
-Wink je ovlašteni trgovac u trenutku rezervacije. Wink je odgovoran za sredstva i posjeduje sve dozvole za vođenje turističke agencije.
-Ovaj model primjenjuje se na 95% svih rezervacija.
+Wink je trgovac zapisa u trenutku kada se rezervacija dogodi. Wink je odgovoran za sredstva i posjeduje sve potrebne licence za vođenje putničke agencije.
+Ovaj model se primjenjuje na 95% svih rezervacija.
 
-Naplata namigivanja`5.5% per booking`za održavanje platforme.
-Većina toga ide na platni sustav (Visa, MasterCard itd.). Prosječna rezervacija nas košta`2.95%`steći; ponekad i do visine`3.6%`Djelomični povrat novca dodatno nas košta jer platni sustav to vidi kao novu naplatu.
-Želimo biti potpuno transparentni u pogledu cijena sada kako bismo svima uštedjeli vrijeme prije nego što pokušaju pregovarati o daljnjim popustima prije korištenja Winka. Naš model određivanja cijena je više nego pošten, a moramo i zarađivati ​​za život.
+Wink naplaćuje `5,5% po rezervaciji` za održavanje platforme. 
+Većina toga ide platnoj mreži (Visa, MasterCard itd.). Prosječna rezervacija nas košta `2,95%` za stjecanje; ponekad i do `3,6%`. Djelomični povrati dodatno nas opterećuju jer platna mreža to vidi kao novu naplatu. 
+Želimo biti potpuno transparentni oko cijena sada kako bismo svima uštedjeli vrijeme prije nego što pokušaju pregovarati o dodatnim popustima prije korištenja Winka. Naš model cijena je više nego pošten i i mi moramo zaraditi za život.
 
-### Raspored
+### Raspodjela
 
-:::napomena\[Naknada za obradu]
-Wink naplaćuje naknadu za obradu od 1,5% / rezervaciju. To nam omogućuje da sve naše usluge ponudimo besplatno i pokriva održavanje platforme.
+:::note[Naknada za obradu]
+Wink naplaćuje naknadu za obradu od 1,5% po rezervaciji. To nam omogućuje da sve naše usluge nudimo besplatno i pokriva održavanje platforme.
 :::
 
-:::napomena\[Naknada za plaćanje]
-TripPay naplaćuje naknadu za plaćanje od 4,0% / rezervaciju. To pokriva prikupljanje uplate od putnika.
+:::note[Naknada za plaćanje]
+TripPay naplaćuje naknadu za plaćanje od 4,0% po rezervaciji. To pokriva stjecanje plaćanja od putnika.
 :::
 
-:::napomena\[Isplata sredstava]
-Postoje naknade povezane sa slanjem sredstava na vaš račun. To ovisi o odabranoj metodi isplate. Trenutno podržavamo:
+:::note[Isplata sredstava]
+Postoje naknade povezane s isplatom sredstava na vaš račun. To ovisi o metodi isplate koju odaberete. Trenutno podržavamo:
 
-* **Virtualna kreditna kartica**(samo hoteli) ~2,0%
-* **Bankovni prijenos**Trošak ovisi o zemlji u kojoj se nalazite i odakle se sredstva šalju. Uključujemo kalkulator cijena koji možete koristiti kada imate raspoloživa sredstva na svom računu.
+- **Virtualnu kreditnu karticu** (samo hoteli) ~2,0%
+- **Bankovni transfer** Trošak ovisi o zemlji u kojoj se nalazite i odakle se sredstva šalju. Uključili smo kalkulator ponuda koji možete koristiti kada imate dostupna sredstva na računu.
 
-Ako želite da podržimo drugu metodu isplate, pošaljite nam e-poštu.
+Ako želite da podržimo drugu metodu isplate, pošaljite nam e-mail.
 :::
 
 ## Model 2
 
-Ovaj model dostupan je samo putničkim agencijama koje imaju licencu putničke agencije u svojoj regiji i koje žele biti ovlašteni trgovac. Neki od naših registriranih putničkih agenata žele biti odgovorni za obradu plaćanja i isplatu sredstava hotelima. Prema ovom modelu, oni su odgovorni za sredstva i imaju potrebne licence za rad u svojoj zemlji.
+Ovaj model je dostupan samo putničkim agencijama koje posjeduju licencu za putničku agenciju u svojoj regiji i koje žele biti trgovac zapisa. Neki od naših registriranih putničkih agenata žele biti odgovorni za rukovanje plaćanjem i isplatom sredstava hotelima. U ovom modelu oni su odgovorni za sredstva i posjeduju potrebne licence za rad u svojoj zemlji.
 
-### Raspored
+### Raspodjela
 
-:::napomena\[Naknada za obradu]
-Wink naplaćuje naknadu za obradu od 1,5% / rezervaciju. To nam omogućuje da sve naše usluge ponudimo besplatno i pokriva održavanje platforme.
+:::note[Naknada za obradu]
+Wink naplaćuje naknadu za obradu od 1,5% po rezervaciji. To nam omogućuje da sve naše usluge nudimo besplatno i pokriva održavanje platforme.
 :::
 
-Koristeći ovaj model, putničke agencije plaćaju samo Winkovu naknadu za obradu, a Wink će putničkoj agenciji slati račune mjesečno.
+Koristeći ovaj model, putnički agenti plaćaju samo Winkovu naknadu za obradu, a Wink će putničkom agentu fakturirati mjesečno.
 
 ## Buduće usluge
 
-U budućnosti ćemo ponuditi opcionalne usluge temeljene na pretplati koje će svima još više olakšati prodaju ili ponuditi upravljane partnerske račune koji će obavljati prodaju umjesto vas. Ako vas to zanima, izrazite svoje mišljenje slanjem e-pošte na<hi@wink.travel>.
+U budućnosti ćemo nuditi opcionalne usluge temeljene na pretplati koje će svima olakšati prodaju ili nuditi upravljane affiliate račune koji prodaju umjesto vas. Ako vas to zanima, dajte svoj glas slanjem e-maila na [hi@wink.travel](mailto:hi@wink.travel).
 
 Ostanite s nama.
 
 ## Učinak platforme
 
-Konačno, kako nastavljamo rasti i po veličini i po broju rezervacija, želimo s vama podijeliti neke od učinaka platforme. Više rezervacija donosi mogućnosti za količinske popuste putem našeg platnog sustava, što bi nam omogućilo da smanjimo naknadu za obradu za sve.
+Na kraju, kako nastavljamo rasti i po veličini i po broju rezervacija, želimo moći podijeliti neke od učinaka platforme s vama. Više rezervacija donosi prilike za količinske popuste od naše platne mreže što bi nam omogućilo da smanjimo naknadu za obradu za sve.
 
-Pridružite se Winku već danas i otkrijte novi, unosan način poslovanja u ugostiteljstvu!
-
+Pridružite se Winku danas i otkrijte novi, unosan način poslovanja u industriji ugostiteljstva!

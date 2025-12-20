@@ -1,43 +1,42 @@
 ---
-title: Comparison
-description: >-
-  Ketahui cara Wink dibandingkan dengan syarikat pelancongan dalam talian yang
-  serupa dan apakah beberapa faedah menyertai Wink.
+title: Perbandingan
+description: Ketahui bagaimana Wink dibandingkan dengan syarikat pelancongan dalam talian yang serupa dan apakah beberapa manfaat untuk menyertai Wink.
 sidebar:
   order: 5
 ---
-Ketahui cara Wink dibandingkan dengan segmen pelancongan dalam talian lain dalam pasaran. Di bawah ialah pecahan pantas ciri yang kami fikir penting untuk dibandingkan.
+
+Ketahui bagaimana Wink dibandingkan dengan segmen pelancongan dalam talian lain di pasaran. Berikut adalah ringkasan cepat ciri-ciri yang kami anggap penting untuk dibandingkan.
 
 ## Matriks ciri
 
-| Ciri | Kejap | OTA | IBE | Bank Katil
-| ------------------------ | -- | -- | -- | -- |
-| Enjin tempahan internet | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Pautan dalam bio etalase | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Rangkaian gabungan B2B | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Sokongan ejen pelancongan | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Pengedaran & pemasaran berbantukan AI | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Alat mesra sosial | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Saluran B2C tanpa komisen | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Penyenaraian Hotel Google percuma | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Akses Komponen Web / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Hubungan langsung | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Komisen boleh niaga setiap saluran jualan | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Pengurus saluran & sambungan PMS | 🟢 | 🟢 | 🟢 | 🟢 |
-| Pembekal memiliki Pelanggan | 🟢 | ⚫️ | 🟢 | 🟢 |
-| Jejaki ROI | 🟢 | 🟢 | ⚫️ | ⚫️ |
-| Bayar setiap Prestasi | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Gerbang pembayaran bersepadu | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Pembayaran dengan Wise | 🟢 | 🟢 | ⚫️ | ⚫️ |
+| Ciri | Wink | OTA | IBE | Bed Bank
+| ----------------------- | -- | -- | -- | -- |
+| Enjin tempahan internet | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Kedai pautan dalam bio | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Rangkaian afiliasi B2B | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Sokongan ejen pelancongan | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Pengedaran & pemasaran dibantu AI | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Alat mesra sosial | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Saluran B2C tanpa komisen | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Penyenaraian Hotel Google percuma | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Akses Komponen Web / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Hubungan langsung | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Komisen boleh dirunding mengikut saluran jualan | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Pengurus saluran & sambungan PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Pembekal memiliki Pelanggan | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| Jejak ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Bayar mengikut prestasi | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Gerbang pembayaran bersepadu | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Pembayaran dengan Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
-## Wink lwn Enjin Tempahan Internet (IBE)
 
-Sesetengah hotel cuba membandingkan kami dengan enjin tempahan internet mereka yang disertakan dengan pengurus saluran mereka dan meminta kami memberi mereka harga tetap, bulanan, berdasarkan bilangan kunci harta mereka.
+## Wink vs Internet Booking Engine (IBE)
 
-Kami bukan IBE dan mudah-mudahan [Akademi Wink](/) membantu untuk menjelaskan perkara ini. Terdapat kebaikan dan keburukan untuk mana-mana perkhidmatan. Jika IBE anda bekerja untuk harta anda, kekalkan itu.
-Wink wujud untuk mengisi beberapa kekosongan dalam industri pelancongan dan menyatukan semuanya di satu tempat.
+Sesetengah hotel cuba membandingkan kami dengan enjin tempahan internet mereka yang disertakan bersama pengurus saluran mereka dan meminta kami memberikan harga tetap bulanan berdasarkan bilangan bilik di hartanah mereka.
 
-:::petua
-Anda tidak perlu menggantikan IBE sedia ada anda. Walau bagaimanapun, kami mengesyorkan agar enjin tempahan mesra sosial kami, atau pengurus pautan, pergi ke salah satu akaun media sosial anda untuk melihat cara mereka menukar. Anda tidak membayar apa-apa jika tiada sebarang tempahan - Apa yang anda perlu rugi? 😉
+Kami bukan IBE dan diharapkan [Wink Academy](/ms/) membantu menjelaskan perkara ini. Setiap perkhidmatan ada kelebihan dan kekurangannya. Jika IBE anda berfungsi untuk hartanah anda, teruskan menggunakannya.  
+Wink wujud untuk mengisi beberapa kekosongan dalam industri pelancongan dan menggabungkannya semua di satu tempat.
+
+:::tip
+Anda tidak perlu menggantikan IBE sedia ada anda. Walau bagaimanapun, kami mengesyorkan mencuba enjin tempahan mesra sosial kami, atau pengurus pautan, pada salah satu akaun media sosial anda untuk melihat bagaimana ia menukar. Anda tidak perlu membayar apa-apa jika tiada tempahan dibuat - Apa yang anda perlu rugi? 😉
 :::
-

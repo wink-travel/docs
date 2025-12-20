@@ -1,19 +1,16 @@
 ---
 title: Wat is Studio?
-description: >-
-  Op deze pagina worden de moeilijkheden bij het verkrijgen van toegang tot
-  reisinventaris uitgelegd en hoe het affiliateportaal van Wink dat een stuk
-  eenvoudiger maakt.
+description: Deze pagina legt de moeilijkheden uit bij het verkrijgen van toegang tot reisvoorraad en hoe het affiliateportaal van Wink dat veel gemakkelijker maakt.
 sidebar:
   order: 0
 ---
-Historisch gezien vereiste het verkrijgen van toegang tot, en de verkoop van, alles wat met reizen te maken had geheimhoudingsverklaringen en complexe integraties tussen twee \[of meer] erkende reisbureaus die over voldoende technische expertise beschikten, toegang hadden tot een betalingsgateway en allebei PCI DSS-compatibel waren. Het was een kostbare en tijdrovende klus en de toetredingsdrempel was voor de gemiddelde consument onhaalbaar hoog.
 
-[Wink Studio](https://studio.wink.travel) is ons affiliate portaal. Het maakt het verkopen van reisinventaris voor iedereen toegankelijk en net zo eenvoudig als het delen van een link of zo geavanceerd als het runnen van een online reisbureau.
+Historisch gezien vereiste het verkrijgen van toegang tot en het verkopen van alles wat met reizen te maken heeft, NDA's en complexe integraties tussen twee [of meer] gelicentieerde reisbureaubedrijven die voldoende technische expertise hadden, toegang tot een betalingsgateway en beide PCI DSS-compliant waren. Het was een kostbare en tijdrovende inspanning en de toetredingsdrempel was onmogelijk hoog voor gewone mensen.
 
-Het affiliate portaal toont beschikbare reisaanbiedingen van leveranciers (zoals hotels, hostels, verhuurbedrijven, aanbieders van ervaringen) wereldwijd. Je doel is om de juiste aanbieding te vinden en deze vervolgens op de beste manier aan je publiek te presenteren en te verkopen.
+[Wink Studio](https://studio.wink.travel) is ons affiliateportaal. Het maakt het verkopen van reisvoorraad voor iedereen toegankelijk en net zo eenvoudig als het delen van een link of zo geavanceerd als het runnen van een online reisbureau.
 
-Studio biedt je de mogelijkheid om door leveranciers en hun aanbod te bladeren. Zodra je iets hebt gevonden dat je bevalt, hebben we talloze manieren om die voorraad online en met name via sociale media te verkopen.
+Het affiliateportaal toont beschikbare reisvoorraad van leveranciers (bijv. hotels, hostels, verhuur, ervaringsaanbieders) overal ter wereld. Jouw doel is om de voorraad te vinden die bij jou past en vervolgens de beste manier te gebruiken om die voorraad aan jouw publiek te tonen en te verkopen.
 
-Lees verder en ontdek alle functies die wij affiliates bieden.
+Studio biedt een manier om leveranciers en hun voorraad te doorzoeken. Zodra je iets hebt gevonden dat je bevalt, hebben we veel manieren om die voorraad online te verkopen en vooral via sociale media.
 
+Lees verder en ontdek alle functies die we aan affiliates bieden.

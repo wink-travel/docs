@@ -1,73 +1,71 @@
 ---
 title: Zásady ochrany osobných údajov
-description: >-
-  Ľahko dostupné a aktuálne zásady ochrany osobných údajov pre všetkých našich
-  cestujúcich.
+description: Ľahko dostupné a aktuálne zásady ochrany osobných údajov pre všetkých našich cestovateľských používateľov.
 sidebar:
   order: 5
 ---
-Spoločnosť TRAVELIKO SINGAPORE PTE. LTD., pôsobiaca pod názvom Wink („Spoločnosť“), by rada informovala vás, ktorí kontaktujete Spoločnosť, že je potrebné zhromažďovať, zostavovať a používať vaše osobné údaje pre služby Spoločnosti v súlade s týmito Zásadami ochrany osobných údajov. Kontaktovaním a zverejnením vašich osobných údajov Spoločnosti na účely komunikácie, koordinácie a/alebo poskytovania služieb Spoločnosti vám sa má za to, že súhlasíte s tým, že budete viazaní týmito Zásadami ochrany osobných údajov a že ich budete dodržiavať.
 
-Pri spracovaní osobných údajov môže Spoločnosť získavať vaše osobné údaje z rôznych kanálov takto:
+TRAVELIKO SINGAPORE PTE. LTD., pôsobiaca pod názvom Wink (ďalej len „Spoločnosť“), by vás, ktorí kontaktujete Spoločnosť, chcela informovať, že je nevyhnutné zhromažďovať, spracovávať a používať vaše osobné údaje pre služby Spoločnosti v súlade s týmito Zásadami ochrany osobných údajov. Kontaktovaním a zverejnením vašich osobných údajov Spoločnosti za účelom komunikácie, koordinácie a/alebo poskytovania služieb Spoločnosti vám sa považuje, že súhlasíte a prijímate záväzok dodržiavať tieto Zásady ochrany osobných údajov.
 
-(1) Priamo od vás prostredníctvom komunikácie medzi Spoločnosťou a vami;
+Osobné údaje, ktoré sa spracúvajú, môže Spoločnosť získať z rôznych kanálov nasledovne:
 
-(2) Nepriamo, prostredníctvom odporúčania od tretej strany, ktorej môžete udeliť súhlas so zverejnením vašich osobných údajov Spoločnosti; alebo
+(1) Priamo od vás prostredníctvom komunikácie so Spoločnosťou;
 
-(3) Automaticky zhromažďované prostredníctvom systému, keď navštívite webovú stránku Spoločnosti a/alebo používate služby.
+(2) Nepriamo, prostredníctvom odporúčania tretej strany, ktorej môžete udeliť súhlas so zverejnením vašich osobných údajov Spoločnosti; alebo
 
-Osobné údaje, ktoré je Spoločnosť povinná zhromažďovať, zostavovať, používať a spracovávať podľa týchto Zásad ochrany osobných údajov, sú nasledovné:
+(3) Automaticky zbierané systémom, keď pristupujete na webovú stránku Spoločnosti a/alebo používate služby.
 
-(1) Vaše celé meno vrátane súvisiacich údajov alebo údajov o vašom zástupcovi (v prípade, že nás kontaktujete v mene právnickej osoby), ktoré môžu zahŕňať aj váš doklad totožnosti.
+Osobné údaje, ktoré je nevyhnutné zhromažďovať, spracovávať a používať podľa týchto Zásad ochrany osobných údajov, sú nasledovné:
 
-(2) Kontaktné informácie, ako napríklad telefónne číslo, e-mail alebo informácie o účte na sociálnych sieťach.
+(1) Vaše celé meno vrátane súvisiacich informácií alebo informácií o vašom zástupcovi (v prípade, že nás kontaktujete v mene právnickej osoby), ktoré môžu zahŕňať váš doklad totožnosti.
 
-(3) Ďalšie osobné údaje, ktoré môžete spoločnosti poskytnúť počas komunikácie, ako napríklad informácie o otázkach týkajúcich sa dopytu, informácie o záujmoch alebo akékoľvek iné osobné identifikačné údaje, ktoré spoločnosti poskytnete priamo prostredníctvom rôznych komunikačných kanálov.
+(2) Kontaktné informácie, ako telefónne číslo, e-mail alebo informácie o účte na sociálnych sieťach.
 
-(4) V prípade komunikácie prostredníctvom webovej stránky môže obsahovať vaše technické informácie, ako je IP adresa, súbory cookie, vrátane informácií o vašom správaní pri prehliadaní.
+(3) Iné osobné údaje, ktoré môžete Spoločnosti poskytnúť počas komunikácie, ako informácie o predmetoch dopytu, záujmové informácie alebo akékoľvek iné osobne identifikovateľné informácie, ktoré Spoločnosti priamo poskytnete prostredníctvom rôznych komunikačných kanálov.
 
-Účel spracovania a používania osobných údajov, Spoločnosť je nevyhnutná na zhromažďovanie, zostavovanie a používanie osobných údajov uchádzačov o zamestnanie na nasledujúce účely:
+(4) V prípade komunikácie cez webovú stránku môžu byť zahrnuté vaše technické informácie, ako IP adresa, cookies, vrátane informácií o vašom správaní pri prehliadaní.
 
-(1) Na správu komunikácie, ktorou ste komunikovali so Spoločnosťou, ako napríklad odpovedanie na otázky, poskytovanie relevantných informácií podľa požiadaviek, riešenie sťažností alebo odpovedanie na pripomienky, ktoré predkladáte priamo Spoločnosti prostredníctvom rôznych komunikačných kanálov, vrátane priebežnej koordinácie, plnenia zmluvy o poskytovaní služieb a/alebo plnenia práv a povinností, na ktorých sa Spoločnosť a Vy dohodnete;
+Účel spracovania a používania osobných údajov, Spoločnosť musí zhromažďovať, spracovávať a používať osobné údaje uchádzača o zamestnanie na nasledujúce účely:
 
-(2) Na plnenie zákonných povinností, ktorým môže byť Spoločnosť viazaná určitými podmienkami. To môže zahŕňať, ale nie je obmedzené na, plnenie povinností spojených s prípravou účtovných dokladov a daní v súvislosti s akýmikoľvek službami, ktoré Vám Spoločnosť poskytuje;
+(1) Na riadenie komunikácie, ktorú ste so Spoločnosťou viedli, ako odpovedanie na otázky, poskytovanie relevantných informácií podľa požiadaviek, riešenie sťažností alebo reagovanie na vaše komentáre priamo prostredníctvom rôznych komunikačných kanálov, vrátane kontinuálnej koordinácie, vykonávania zmluvy o službách a/alebo plnenia práv a povinností, na ktorých sa Spoločnosť a vy môžete dohodnúť;
 
-(3) Za účelom budovania a zlepšovania obchodných vzťahov vrátane zlepšovania služieb, ktoré Spoločnosť poskytuje vo váš prospech, pričom Spoločnosť môže zhromažďovať a/alebo používať vaše osobné údaje na účely kontroly, zabezpečenia služieb, analýzy riadenia a riešenia obchodných problémov vrátane, ale nie výlučne, školenia zamestnancov a plánovania budúceho zlepšovania služieb;
+(2) Na plnenie zákonných povinností, ktorým môže byť Spoločnosť podrobená za určitých podmienok. To môže zahŕňať, ale nie je obmedzené na, plnenie povinností súvisiacich s prípravou účtovných dokladov a daní v súvislosti s akýmikoľvek službami poskytovanými Spoločnosťou vám;
 
-(4) Na účely ochrany a obhajoby zákonných práv Spoločnosti v prípade sporu medzi vami a Spoločnosťou; a
+(3) Za účelom budovania a zlepšovania obchodných vzťahov, vrátane zlepšovania služieb, ktoré Spoločnosť poskytuje vo váš prospech, pričom Spoločnosť môže zhromažďovať a/alebo používať vaše osobné údaje na účely kontroly, zabezpečenia služieb, analýzy riadenia a riešenia obchodných záležitostí, vrátane, ale nie výlučne, školenia zamestnancov a plánovania budúceho zlepšenia služieb;
 
-(5) Na základe výslovného súhlasu udeleného Spoločnosti, napríklad na marketingové a newsletterové oznámenia, môže Spoločnosť spracovávať Osobné údaje na účely definované v súhlase.
+(4) Za účelom ochrany a obhajoby právnych nárokov Spoločnosti v prípade sporu medzi vami a Spoločnosťou; a
 
-Doba uchovávania osobných údajov, aby spoločnosť mohla plniť vyššie uvedené účely, musí zhromažďovať, zostavovať a spracovávať vaše osobné údaje podľa nasledujúcej doby:
+(5) Na základe výslovného súhlasu udeleného Spoločnosti, ako sú marketingové a newsletterové komunikácie, môže Spoločnosť spracovávať osobné údaje na účely definované v súhlase.
 
-(1) Na účely spracovania osobných údajov na účely poskytovania služieb, plnenia zmluvy a/alebo výkonu práv a povinností vyplývajúcich zo zmluvy je Spoločnosť povinná spracovávať Vaše osobné údaje, pokiaľ má Spoločnosť povinnosť poskytovať Vám služby;
+Doba uchovávania osobných údajov, aby Spoločnosť mohla plniť účely uvedené vyššie, je nevyhnutné zhromažďovať, spracovávať a uchovávať vaše osobné údaje podľa nasledujúcich období:
 
-(2) Na účely spracovania osobných údajov na účely plnenia povinností podľa platných právnych predpisov je Spoločnosť povinná spracovávať vaše osobné údaje počas obdobia stanoveného platnými právnymi predpismi;
+(1) Na spracovanie osobných údajov za účelom poskytovania služieb, vykonania zmluvy a/alebo plnenia práv a povinností podľa zmluvy, je Spoločnosť povinná spracovávať vaše osobné údaje tak dlho, ako má povinnosť vám poskytovať služby;
 
-(3) Na účely spracovania osobných údajov za účelom budovania a zlepšovania obchodných vzťahov a/alebo zlepšovania služieb si Spoločnosť vyhradzuje právo uchovávať tieto osobné údaje v rozsahu, v akom to Spoločnosť môže mať z obchodných dôvodov. Spoločnosť zaručuje, že uchovávanie osobných údajov nebude mať neprimeraný vplyv na práva dotknutej osoby;
+(2) Na spracovanie osobných údajov za účelom plnenia povinností podľa platných zákonov je Spoločnosť povinná spracovávať vaše osobné údaje počas obdobia určeného platnými zákonmi;
 
-(4) Na účely spracovania osobných údajov na účely ochrany a boja za oprávnené práva Spoločnosti je Spoločnosť povinná uchovávať tieto osobné údaje v súlade s predpismi stanovenými platnými právnymi predpismi; a
+(3) Na spracovanie osobných údajov za účelom budovania a zlepšovania obchodných vzťahov a/alebo zlepšovania služieb si Spoločnosť vyhradzuje právo uchovávať tieto osobné údaje v rozsahu, v akom to Spoločnosť považuje za obchodne nevyhnutné. Spoločnosť zaručuje, že uchovávanie osobných údajov nebude neprimerane ovplyvňovať práva dotknutej osoby;
+
+(4) Na spracovanie osobných údajov za účelom ochrany a presadzovania oprávnených práv Spoločnosti je Spoločnosť povinná uchovávať takéto osobné údaje podľa lehôt stanovených platnými zákonmi; a
 
 (5) V prípade, že udelíte Spoločnosti súhlas so spracovaním vašich osobných údajov na konkrétne účely, Spoločnosť bude spracovávať vaše osobné údaje, kým tento súhlas neodvoláte.
 
-Zverejnenie osobných údajov, vo všeobecnosti vaše osobné údaje nebudú zverejnené, s výnimkou okolností, kedy by ich spoločnosť musela zverejniť nasledujúcej osobe:
+Zverejnenie osobných údajov, všeobecne vaše osobné údaje nebudú zverejnené, okrem situácií, keď bude Spoločnosť potrebovať zverejniť ich nasledujúcim osobám:
 
-(1) Externí poskytovatelia služieb Spoločnosti, ktorých spoločnosť poverila poskytovaním podporných služieb pre spoločnosť pri poskytovaní služieb vám, vrátane konzultantov Spoločnosti. Takéto zverejnenie osobných údajov týmto tretím stranám sa uskutoční v súlade s účelom a iba na základe potreby vedieť; alebo
+(1) Externým poskytovateľom služieb Spoločnosti, ktorí sú zapojení do poskytovania podporných služieb Spoločnosti pri poskytovaní služieb vám, vrátane konzultantov Spoločnosti. Takéto zverejnenie osobných údajov týmto tretím stranám bude vykonané v súlade s účelmi a iba na základe potreby vedieť; alebo
 
-(2) Vláda, regulačné orgány alebo súdy, že Spoločnosť môže byť predmetom príkazu, zákona alebo rozsudku na zverejnenie osobných údajov.
+(2) Vládnym, regulačným orgánom alebo súdom, ktorým môže byť Spoločnosť podrobená príkazu, zákonu alebo rozhodnutiu na zverejnenie osobných údajov.
 
-Spoločnosť sa zaväzuje zaviesť vhodné opatrenia na zabezpečenie osobných údajov, aby zabránila akémukoľvek neoprávnenému a nezákonnému prístupu, zmene, doplneniu alebo zverejneniu. Spoločnosť sa zaväzuje pravidelne kontrolovať tieto opatrenia, aby sa zabezpečila ich kompatibilita so štandardmi a platnými zákonmi.
+Spoločnosť sa zaväzuje implementovať primerané bezpečnostné opatrenia na ochranu osobných údajov, aby zabránila akémukoľvek neoprávnenému a nezákonnému prístupu, zmene, úprave alebo zverejneniu. Spoločnosť sa zaväzuje pravidelne tieto opatrenia prehodnocovať, aby zabezpečila ich súlad so štandardmi a platnými zákonmi.
 
-Práva dotknutej osoby, Spoločnosť rešpektuje Vaše práva ako dotknutej osoby podľa platných právnych predpisov. Môžete sa obrátiť na Spoločnosť, aby ste si uplatnili tieto práva: (1) právo na odvolanie súhlasu, (2) právo na prístup, (3) právo vyžiadať si kópiu osobných údajov, (4) právo na opravu osobných údajov, (5) právo namietať proti akémukoľvek spracovaniu osobných údajov, (6) právo požiadať o prenosnosť údajov v prípade, že Spoločnosť uchováva osobné údaje vo formáte, ktorý je čitateľný alebo bežne používaný automatizovanými nástrojmi alebo zariadeniami, vrátane práva na prenos týchto osobných údajov iným prevádzkovateľom, (7) právo požiadať o vymazanie alebo anonymizáciu osobných údajov, ak nie je potrebné ich spracovanie, (8) právo požiadať o pozastavenie používania osobných údajov a (9) právo podať sťažnosť.
+Práva dotknutej osoby, Spoločnosť rešpektuje vaše práva ako dotknutej osoby podľa platných zákonov. Môžete kontaktovať Spoločnosť na uplatnenie práv, ktorými sú (1) právo odvolať súhlas, (2) právo na prístup, (3) právo požadovať kópiu osobných údajov, (4) právo na opravu osobných údajov, (5) právo namietať proti akémukoľvek spracovaniu osobných údajov, (6) právo požadovať prenositeľnosť údajov v prípade, že Spoločnosť uchováva osobné údaje vo formáte čitateľnom alebo bežne používanom automatizovanými nástrojmi alebo zariadeniami vrátane práva preniesť takéto osobné údaje iným správcov údajov, (7) právo požadovať vymazanie alebo anonymizáciu osobných údajov, ak už nie je nevyhnutné ich spracovávať, (8) právo požadovať pozastavenie používania osobných údajov a (9) právo podať sťažnosť.
 
-Kontaktné informácie spoločnosti
+Kontaktné údaje Spoločnosti
 
 Zodpovedná osoba za ochranu údajov
 
 Meno: Yann Gouriou
 
-Adresa: #03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095
+Adresa: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
 
-E-mail: dataprotectionofficer@wink.travel
+E-mail: dataprotectionofficer@wink.travel  
 Telefónne číslo: +66 (0) 854891301
-

@@ -1,22 +1,22 @@
 ---
-title: Čo je agent?
-description: 'Zistite, ako Wink podporuje registrovaných cestovných kancelárií.'
+title: Čo je Agent?
+description: Zistite, ako Wink podporuje registrovaných cestovných agentov.
 sidebar:
   order: 0
 ---
-Naše riešenie pre registrovaných cestovných kancelárií je [Agent žmurknutia](https://agent.wink.travel) Je to samoobslužný portál, ktorý môžu agenti používať na vyhľadávanie a rezervácie v mene svojich zákazníkov a za každú rezerváciu si zarábajú províziu.
 
-Pokročilejšie cestovné kancelárie sa môžu rozhodnúť pre integráciu na úrovni API na účely spracovania platieb a výplat mimo platformy Wink.
+Naše riešenie pre registrovaných cestovných agentov je [Wink Agent](https://agent.wink.travel). Je to samoobslužný portál, ktorý môžu agenti používať na vyhľadávanie a rezervovanie v mene svojich zákazníkov a zároveň si za každú rezerváciu zarobiť províziu.
 
-Cestovné kancelárie majú podmnožinu rovnakých funkcií portálu ako [Štúdio Wink](/studio/what-is-studio) takže sa nimi tu znova nebudeme zaoberať.
+Pokročilejší cestovní agenti si môžu zvoliť integráciu na úrovni API za účelom správy platieb a výplat mimo platformy Wink.
 
-## Hľadať
+Cestovní agenti majú podmnožinu rovnakých funkcií portálu ako [Wink Studio](/sk/studio/what-is-studio), preto ich tu nebudeme znova rozoberať.
 
-Prejsť na [Hľadať](/studio/search) naučiť sa, ako vyhľadávať a rezervovať hotely.
+## Vyhľadávanie
 
-V opačnom prípade pokračujte na ďalšiu časť.
+Prejdite na [Vyhľadávanie](/sk/studio/search) a naučte sa, ako vyhľadávať a rezervovať hotely.
+
+Inak pokračujte do ďalšej sekcie.
 
 ## API
 
-Vývojári, ktorí chcú spravovať`Travel Agent`môžem sa presunúť do[Vývojári > API > Cestovná kancelária](/developers/apis/#travel-agent-api).
-
+Vývojári, ktorí chcú spravovať `Travel Agent`, môžu prejsť na [Developers > API > Travel Agent](/sk/developers/apis/#travel-agent-api).

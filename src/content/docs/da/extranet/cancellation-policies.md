@@ -1,47 +1,45 @@
 ---
 title: Afbestillingsregler
-description: >-
-  Denne artikel viser dig, hvordan du administrerer afbestillingspolitikker på
-  Wink.
+description: Denne artikel viser dig, hvordan du administrerer afbestillingsregler på Wink.
 sidebar:
   order: 12
 ---
-For at administrere dine afbestillingsregler skal du klikke på`Monetize > Cancellation policies`fra den primære navigationslinje.
 
-Afbestillingspolitikker bestemmer, hvordan bookerens penge håndteres, hvis gæsten ikke kan deltage. Afbestillingspolitikker findes i to forskellige varianter:
+For at administrere dine afbestillingsregler skal du klikke på `Monetize > Cancellation policies` i hovednavigationslinjen.
+
+Afbestillingsregler bestemmer, hvordan bookerens midler håndteres, hvis gæsten ikke kan komme. Afbestillingsregler findes i to forskellige varianter:
 
 1. Refunderbar
 2. Ikke-refunderbar
 
-For det meste er disse to muligheder nok. Begge giver dig dog masser af plads til at tilpasse din afbestillingspolitik yderligere.
+De fleste gange er disse to muligheder tilstrækkelige. Begge giver dig dog god mulighed for at tilpasse din afbestillingsregel yderligere.
 
-:::tip\[Sjov fakta]
-Wink understøtter i alt 8500 variationer af afbestillingspolitikker.
+:::tip[Sjov fakta]
+Wink understøtter i alt 8500 variationer af afbestillingsregler.
 :::
 
-For at oprette en afbestillingspolitik skal du klikke på`Create a new cancellation policy`knap.
+For at oprette en afbestillingsregel skal du klikke på knappen `Create a new cancellation policy`.
 
 ## Ikke-refunderbar
 
-For at oprette en ikke-refunderbar afbestillingspolitik skal du indstille kontakten til 🛑 fra, når du bliver spurgt, om politikken er refunderbar.
+For at oprette en ikke-refunderbar afbestillingsregel skal du sætte kontakten til 🛑 fra, når du bliver spurgt, om reglen er refunderbar.
 
 ### Valgmuligheder
 
-Du kan valgfrit konfigurere din`non-refundable`politikken yderligere for større kontrol.
+Du kan valgfrit konfigurere din `ikke-refunderbare` regel yderligere for større kontrol.
 
-* **Hvor meget opkræves gæsten for en afbestilling?**&#x53;om standard er en ikke-refunderbar police en 100% ikke-refunderbar police. Du kan finjustere beløbet her.*f.eks. 50% af den samlede pris*
-* **Har sigtelsen en frist?**&#x48;vis du finjusterer beløbet, kan du finjustere det yderligere ved at indstille, hvor længe beløbet forbliver aktivt.*f.eks. indtil 3 dage før ankomst*
-* **Hvor meget opkræves gæsten for en afbestilling efter fristen?**&#x48;vis gæsten overskrider den ovenfor angivne frist, kan du fastsætte det beløb, gæsten skal betale efter fristen.*f.eks. 70% af den samlede pris*
+- **Hvor meget opkræves gæsten ved en afbestilling?** Som standard er en ikke-refunderbar regel 100% ikke-refunderbar. Du kan finjustere beløbet her. *f.eks. 50% af den samlede pris*
+- **Har opkrævningen en deadline?** Hvis du har finjusteret beløbet, kan du finjustere det yderligere ved at angive, hvor længe beløbet gælder. *f.eks. Indtil 3 dage før ankomst*
+- **Hvor meget opkræves gæsten ved afbestilling efter deadline?** Hvis gæsten overskrider den ovenfor angivne deadline, kan du angive, hvor meget gæsten skal betale efter deadline. *f.eks. 70% af den samlede pris*
 
 ## Refunderbar
 
-For at oprette en refunderbar afbestillingspolitik skal du indstille kontakten til ✅, når du bliver spurgt, om politikken er refunderbar.
+For at oprette en refunderbar afbestillingsregel skal du sætte kontakten til ✅ til, når du bliver spurgt, om reglen er refunderbar.
 
 ### Valgmuligheder
 
-Du kan valgfrit konfigurere din`refundable`politikken yderligere for større kontrol.
+Du kan valgfrit konfigurere din `refunderbare` regel yderligere for større kontrol.
 
-* **Hvor lang tid før ankomst kan gæsten afbestille gratis?**&#x53;om standard er en refunderbar police altid 100% refunderbar. Du kan finjustere deadline her.*f.eks. 3 dage før ankomst*
-* **Hvad skal gæsten opkræves, hvis afbestillingen sker efter ovenstående frist?**&#x48;vis du finjusterede deadline, kan du indstille det beløb, gæsten skal betale efter deadline.*f.eks. 50% af den samlede pris*
-* **Hvor meget skal gæsten opkræves for 'udeblivelse'?**&#x48;vis gæsten ikke dukker op, kan du indstille det beløb, gæsten skal opkræves for en`No show`.*f.eks. 100% af den samlede pris*
-
+- **Hvor lang tid før ankomst kan gæsten afbestille uden omkostninger?** Som standard er en refunderbar regel altid 100% refunderbar. Du kan finjustere deadline her. *f.eks. 3 dage før ankomst*
+- **Hvad skal gæsten opkræves, hvis afbestillingen sker efter ovenstående deadline?** Hvis du har finjusteret deadline, kan du angive, hvor meget gæsten skal betale efter deadline. *f.eks. 50% af den samlede pris*
+- **Hvor meget skal gæsten opkræves ved 'No show'?** Hvis gæsten ikke møder op, kan du angive, hvor meget gæsten opkræves for en `No show`. *f.eks. 100% af den samlede pris*

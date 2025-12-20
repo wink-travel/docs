@@ -1,55 +1,53 @@
 ---
-title: Customers
-description: >-
-  Þessi grein útskýrir hvers konar viðskiptavini við þjónustum og hvernig Wink
-  getur aðstoðað.
+title: Viðskiptavinir
+description: Þessi grein útskýrir tegundir viðskiptavina sem við þjónustum og hvernig Wink getur hjálpað.
 sidebar:
   order: 2
 ---
-Þessi grein útskýrir hvers konar viðskiptavini við þjónum og hvernig við getum best aðstoðað þá.
 
-## Eiginleikar
+Þessi grein útskýrir tegundir viðskiptavina sem við þjónustum og hvernig við getum best aðstoðað.
 
-Wink hóf að taka hótel í notkun fyrir áratug. Hótel nota Wink til að stjórna birgðum sínum á skilvirkan hátt í þúsundum söluleiða, þar á meðal eigin brand.com síðu, og til að græða meira með hverri bókun, um leið og þau styrkja beinar söluleiðir með hjálp verkfæra okkar sem einbeita sér að gestrisni og auka vörumerkjaímynd og arðsemi.
+## Eignir
 
-## Vörumerki og keðjur
+Wink hóf að taka hótel í notkun fyrir um áratug. Hótel nota Wink til að stjórna birgðum sínum á áhrifaríkan hátt yfir þúsundir sölurása, þar á meðal eigin brand.com síðu, og til að græða meira með hverri bókun á sama tíma og þau styrkja beinar rásir með hjálp hótelmiðaðra verkfæra okkar sem bæta vörumerkjavitund og arðsemi​.
 
-Vörumerki og keðjur hafa aðeins aðrar þarfir en stakar eignir. Á Wink geta þau:
+## Vörumerki & Keðjur
 
-* Stjórnaðu mörgum eignum undir einum reikningi.
-* Úthluta umsjónarmönnum til eigna
-* Nota [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) og okkar [WinkLinks](/link-manager/wink-links) að markaðssetja og selja margar fasteignir á einum stað.
+Vörumerki og keðjur hafa aðeins aðrar þarfir en einstök eign. Á Wink geta þau:
 
-## Stjórnunarfélög
+- Stjórnað mörgum eignum undir einum reikningi.
+- Úthlutað stjórnendum að eignum
+- Notað [WinkLinks](/is/link-manager/wink-links), [WordPress](/is/developers/wordpress) og okkar [Web Components](/is/developers/web-components) til að markaðssetja og selja margar eignir á einum stað.
 
-Fyrirtæki sem sérhæfa sig í ferðaþjónustu og áfangastaðastjórnun geta stjórnað fasteignaeignum sínum fyrir hönd eigenda. Það er klár kostur að láta stofnanir sem einbeita sér að netverslun og eru með stafræna þekkingu sjá um sölu til netmarkaðarins á meðan hótel geta einbeitt sér að ánægju viðskiptavina sinna þegar þeir koma á staðinn.
+## Stjórnunarfyrirtæki
+
+Stjórnunarfyrirtæki í hótelgeiranum og áfangastaðastjórnunarfyrirtæki geta stjórnað eignasöfnum fyrir hönd eigenda. Það er afgerandi kostur að láta netmiðaðar, stafrænt meðvitaðar stofnanir sjá um sölu til netmarkaðarins á meðan hótelin geta einbeitt sér að því að stjórna ánægju viðskiptavina þegar þeir koma á staðinn.
 
 ## Áhrifavaldar
 
-Áhrifavaldar nota Wink til að afla sér betri tekna af áhorfendum sínum. Þeir gera það með því að eiga í samstarfi við hótel, búa til sérsniðin tilboð og nýta sér samfélagsvæn verkfæri Wink og öfluga greiningu til að fylgjast með hvaða vörur seljast best.
+Áhrifavaldar nota Wink til að nýta áhorfendur sína betur. Þeir gera það með því að vinna með hótelum, búa til sérsniðin tilboð og nýta samfélagsvæn verkfæri Wink og öfluga greiningartól til að fylgjast með hvaða vörur seljast best​.
 
 ## Ferðaskrifstofur
 
-Ferðaskrifstofur fá aðgang að ferðabirgðum um allan heim á frábæru verði í gegnum okkar sérstöku þjónustu. [ferðaskrifstofuvefur](https://agent.wink.travel) Þeir geta bókað í gegnum gáttina okkar, í gegnum API-ið okkar eða með því að leyfa notendum sínum að bóka sig sjálfir á vefsíðu ferðaskrifstofunnar sem notar tækni okkar.
+Ferðaskrifstofur fá aðgang að ferðabirgðum um allan heim á góðu verði í gegnum okkar sérstaka [ferðaskrifstofu vefsvæði](https://agent.wink.travel). Þær geta gert bókanir í gegnum vefsvæðið okkar, með API eða látið notendur bóka sjálfir á ferðaskrifstofuvef sem notar tækni okkar.
 
 ## Fyrirtæki
 
-Fyrirtæki þurfa meiri ferðavettvang:
+Fyrirtæki þurfa meira af ferðavettvangi:
 
-* Þeir þurfa vel skipulagðar ferðaáætlanir sem styðja sveigjanleika og breytingar á síðustu stundu.
-* Þau þurfa á áreiðanlegum samskiptatækjum að halda, eins og internetinu.
-* Þeir hafa óskir varðandi söluaðila með aðild.
-* Þeir eru oft með fyrirtækjakreditkort og setja sér útgjaldamörk.
-* Þetta krefst samþættingar kostnaðarstjórnunar og skýrslugerðar.
-* Þeir þurfa aðstoð móttökustjóra, sem og MICE þjónustu á viðburðum.
+- Þau þurfa vel skipulagðar ferðir sem styðja sveigjanleika og breytingar í síðustu stundu.
+- Þau þurfa áreiðanleg samskiptatól, svo sem internet.
+- Þau hafa birgja sem þau kjósa með aðild.
+- Þau hafa oft fyrirtækjakort og setja útgjaldamörk.
+- Þau þurfa útgjaldastjórnun og samþættingu skýrslugerðar.
+- Þau þurfa þjónustu við móttöku, auk MICE þjónustu við viðburði.
 
-Fyrirtækjaferðalangar geta stjórnað eigin reikningum sínum á okkar [fyrirtækjagátt](/corporate/what-is-group) eða notaðu opinberlega studda okkar [fyrirtækjagátt](/corporate/what-is-group) viðbót og [fyrirtækjagátt](/corporate/what-is-group) samþætting.
+Fyrirtækjafarar geta stjórnað eigin reikningum á okkar [fyrirtækjavettvangi](/is/corporate/what-is-group) eða notað opinberlega studdan [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) viðbót og [Concur](https://www.concur.com/) samþættingu.
 
 ## Forritarar
 
-Þó að við smíðuðum þennan vettvang af og fyrir hótelgesti... Hver einasta kóðalína var smíðuð með það að markmiði að vera endurnýtanleg. Teymi okkar forritara smíðaði Wink í von um að næsta 🦄 ferðaappið yrði smíðað ofan á kóðagrunn okkar. Farðu á [Forritari](/developers/build-on-wink) síðu til að sjá hvernig Wink getur stutt þig í næsta verkefni þínu.
+Þó við byggðum þennan vettvang fyrir og með hótelstjórum... Var hver lína af kóða skrifuð með það að markmiði að vera endurnýtanleg. Þróunarteymi okkar byggði Wink í þeirri von að næsta 🦄 ferðaforrit verði byggt ofan á kóðagrunn okkar. Farðu á [Developer](/is/developers/build-on-wink) síðuna til að sjá hvernig Wink getur stutt þig í næsta verkefni.
 
-## Annað
+## Aðrir
 
-Allir sem vilja finna og selja ferðavörur geta notið góðs af því að nota Wink. Nýttu ástríðu þína fyrir gestrisni í verk með því að fá frábæra þóknun af hverri bókun.
-
+Allir sem vilja finna og selja ferðabirgðir geta haft gagn af að nota Wink. Breyttu ástríðu þinni fyrir gestrisni í aðgerð með því að þéna góðan þóknun fyrir hverja bókun.

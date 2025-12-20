@@ -1,26 +1,24 @@
 ---
 title: Mi az az Extranet?
-description: >-
-  Ez a cikk végigvezet azon, amit tudnod kell ahhoz, hogy elkezdhesd használni a
-  Winket szállodaként.
+description: Ez a cikk végigvezet azon, amit tudnod kell, hogy elindulj a Wink-en, mint szálloda.
 sidebar:
   order: 0
 ---
-[Wink extranet](https://extranet.wink.travel) a mi ingatlanportálunk. Szállodák, szállodaláncok, márkák és szállodaüzemeltető cégek számára készült, hogy létrehozzák és kezeljék ingatlanjaik digitális profilját a Wink platformon.
 
-Extranetünket gondosan úgy terveztük, hogy a lehető legegyszerűbb legyen, mégis támogassa az összes olyan funkciót, amelyet a haladó felhasználók elvárnak egy fejlett ingatlanportáltól. Íme néhány példa:
+[Wink Extranet](https://extranet.wink.travel) a mi ingatlanportálunk. Szállodák, láncok, márkák és szállodamenedzsment cégek számára készült, hogy létrehozzák és kezeljék ingatlanaik digitális profilját a Wink platformon.
 
-1. Egyszerűség: Használja intelligens bevezetési folyamatunkat ingatlana regisztrációjához és egy órán belüli ÉLŐ üzembe helyezéséhez.
-2. Speciális: A Wink 8500 különböző lemondási szabályzatot támogat
-3. Klassz: Ajándékozz egyetlen embernek a Földön 10% kedvezményt anélkül, hogy a felhasználónak be kellene jelentkeznie vagy promóciós kódot kellene beírnia.
+Extranetünket úgy terveztük, hogy a lehető legegyszerűbb legyen, ugyanakkor támogassa azokat a funkciókat, amelyeket a haladó felhasználók elvárnak egy fejlett ingatlanportáltól. Hogy néhány példát említsünk:
 
-Bízd rá, hogy varázslóink ​​végigvezessenek a teljes folyamaton. Amikor már elég kényelmesen érzed magad... vágj bele egyedül.
+1. Egyszerűség: Használd intelligens bevezető munkafolyamatunkat, hogy kevesebb mint egy óra alatt bevezesd ingatlanodat és ÉLŐBEN elindulj.
+2. Fejlettség: A Wink 8500 különböző lemondási szabályzat variációt támogat.
+3. Menőség: Adj egyetlen személynek a Földön 10% kedvezményt anélkül, hogy a felhasználónak be kellene jelentkeznie vagy promóciós kódot kellene beírnia.
 
-A Wink egy fejlett tartalomkezelő rendszer ingatlanok és élményszolgáltatók számára. Mindent, amit alkalmazásainkban megtehet, API-n keresztül is megtehet. Ez lehetővé teszi a Winkkel való mély integrációt olyan mértékben, hogy a Winken keresztül értékesíthet anélkül, hogy be kellene jelentkeznie bármelyik alkalmazásunkba.
+Hadd vezessenek végig varázslóink az egész folyamaton. Amikor már elég magabiztos vagy... próbáld meg egyedül.
 
-:::tip\[Profi tipp]
-Drága médiatartalmak tárhelyéért fizetsz a Leonardo Internationalon keresztül? Ugyanezt megteheted a Winkkel is, ÉS sokkal több lehetőséget kapsz a képeid és videóid manipulálására és finomhangolására.
+A Wink egy fejlett tartalomkezelő rendszer ingatlanok és élmény szolgáltatók számára. Minden, amit az egyik alkalmazásunkban megtehetsz, megtehető API-n keresztül is. Ez lehetővé teszi, hogy mély integrációt valósíts meg a Wink-kel olyan szinten, hogy Wink-en keresztül értékesíthetsz anélkül, hogy valaha is be kellene jelentkezned bármelyik alkalmazásunkba.
+
+:::tip[Pro Tipp]
+Fizetsz drága médiaeszköz-tárolásért a Leonardo International-nál? Ugyanezt pontosan megteheted a Wink-en keresztül ÉS sokkal több lehetőséged van képeid és videóid manipulálására és finomhangolására.
 :::
 
-Mindezek a funkciók ingyenesek számodra. Csak a foglaláskor számítunk fel egy kis díjat. Nincs vesztenivalód - mindent nyerhetsz.
-
+Mindezek a funkciók díjmentesen állnak rendelkezésedre. Csak akkor veszünk el egy kis díjat, amikor foglalást teszel. Nincs vesztenivalód – Minden nyerhető.

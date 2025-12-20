@@ -1,67 +1,65 @@
 ---
 title: WinkLinks
-description: >-
-  Dalam artikel ini, kami menerangkan maksud pengurus pautan dan perkara yang
-  boleh dilakukan oleh pengurus pautan kami.
+description: Dalam artikel ini, kami menerangkan apa itu pengurus pautan dan apa yang boleh dilakukan oleh pengurus pautan kami.
 sidebar:
   order: 0
 ---
-Pengurus pautan membolehkan anda menyimpan dan mengatur URL yang anda suka untuk kemudian. Penanda halaman penyemak imbas anda ialah contoh pengurus pautan. Dengan kemunculan media sosial, terdapat keperluan yang lebih besar untuk mendedahkan dan menyediakan pautan kepada rakan dan khalayak anda. Suapan Facebook anda ialah contoh pengurus pautan mesra sosial.
 
-:::berhati-hati
-Kebanyakan pengurus pautan memerlukan langganan untuk sesiapa sahaja yang menyiarkan pautan ahli gabungan.
+Pengurus pautan membolehkan anda menyimpan dan mengatur URL yang anda suka untuk kegunaan kemudian. Penanda halaman pelayar anda adalah contoh pengurus pautan. Dengan kemunculan media sosial, terdapat keperluan yang lebih besar untuk mendedahkan dan menjadikan pautan tersedia kepada rakan dan penonton anda. Suapan Facebook anda adalah contoh pengurus pautan mesra sosial.
+
+:::caution
+Kebanyakan pengurus pautan memerlukan langganan untuk sesiapa yang menyiarkan pautan afiliasi. 
 :::
 
-Kami membina [WinkLinks](https://i.trvl.as/) ; pengurus pautan percuma sepenuhnya, menumpukan pada ruang perjalanan, untuk menguja, mengiklan dan menjual dengan berkesan dalam talian.
+Kami membina [WinkLinks](https://i.trvl.as/) ; pengurus pautan yang sepenuhnya percuma, tertumpu pada ruang perjalanan, untuk menggembirakan, mengiklan dan menjual dengan berkesan dalam talian.
 
 ## Ciri-ciri
 
-* WinkLinks membolehkan anda menambah semua pautan ahli gabungan anda yang sedia ada, seperti Commission Junction dan Amazon, secara percuma.
-* Anda mendapat url kesombongan yang menarik, seperti <https://i.trvl.as/bob>, untuk masa yang anda hanya boleh berkongsi satu URL.
-* Anda boleh mengatur dan berkongsi pautan serta memuat naik fail.
-* Hotel, rangkaian & jenama boleh menggunakan WinkLinks sebagai enjin tempahan lanjutan:
-  * Menyokong berbilang sifat.
-  * Menyokong pelbagai destinasi.
-  * Menyokong pelbagai mata wang.
-  * Menyokong pelbagai bahasa.
-* WinkLinks menyokong `rich content` *(lihat di bawah)*.
-* Pergi dari IG untuk menempah dengan hanya 2 klik 🚀
+- WinkLinks membolehkan anda menambah semua pautan afiliasi sedia ada anda, seperti Commission Junction dan Amazon, secara percuma.
+- Anda mendapat URL vanity yang menarik, seperti [https://i.trvl.as/bob](https://i.trvl.as/bob), untuk masa apabila anda hanya boleh berkongsi satu URL.
+- Anda boleh mengatur dan berkongsi pautan serta memuat naik fail.
+- Hotel, rangkaian & jenama boleh menggunakan WinkLinks sebagai enjin tempahan lanjutan:
+    - Menyokong pelbagai hartanah.
+    - Menyokong pelbagai destinasi.
+    - Menyokong pelbagai mata wang.
+    - Menyokong pelbagai bahasa.
+- WinkLinks menyokong `kandungan kaya` *(lihat di bawah)*.
+- Pergi dari IG ke tempahan hanya dalam 2 klik 🚀
 
-## Kandungan yang kaya
+## Kandungan kaya
 
-:::nota
-Tetapkan `Intelligent` kepada 🟢 dalam anda [tetapan](/link-manager/settings) untuk menggunakan ciri ini.
+:::note
+Tetapkan `Intelligent` kepada 🟢 dalam [Tetapan](/ms/link-manager/settings) anda untuk menggunakan ciri ini.
 :::
 
-Jika anda berkongsi pautan daripada tapak yang menyokong `rich` / `oEmbed` kandungan, pautan anda menjadi hidup pada WinkLinks.
+Jika anda berkongsi pautan dari laman yang menyokong kandungan `kaya` / `oEmbed`, pautan anda akan hidup di WinkLinks.
 
-Tapak yang disokong:
+Laman yang disokong:
 
-* Facebook - *Berinteraksi dengan siaran dan mainkan video*.
-* Instagram - *Berinteraksi dengan siaran dan mainkan video*.
-* YouTube - *Mainkan video*.
-* X (dahulunya Twitter) - *Berinteraksi dengan siaran*.
-* Spotify - *Mainkan senarai main kegemaran anda*.
-* Kejap - *Lihat `Advanced`*.
+- Facebook - *Berinteraksi dengan pos dan mainkan video*.
+- Instagram - *Berinteraksi dengan pos dan mainkan video*.
+- YouTube - *Mainkan video*.
+- X (dahulu Twitter) - *Berinteraksi dengan pos*.
+- Spotify - *Mainkan senarai main kegemaran anda*.
+- Wink - *Lihat `Advanced`*.
 
-## Maju
+## Lanjutan
 
-WinkLinks juga merupakan cara terbaik untuk mendedahkan inventori perjalanan yang anda temui, melalui [Studio Wink](https://studio.wink.travel), dan yang anda ingin jual kepada khalayak anda.
+WinkLinks juga merupakan cara yang hebat untuk mendedahkan inventori perjalanan yang anda temui, melalui [Wink Studio](https://studio.wink.travel), dan yang anda ingin jual kepada penonton anda.
 
 Gunakan WinkLinks untuk menjual:
 
-* [Pautan boleh kongsi](/studio/shareable-links) - Pilih untuk dipaparkan sebagai:
-  * [Sepanduk iklan](/developers/web-components/#content-loader).
-  * Pautan biasa dengan kemas kini harga masa nyata.
-* [Kad](/studio/cards) - Kad boleh ditempah dengan harga masa nyata & ketersediaan.
-* [Grid](/studio/grids) - Grid dengan kad boleh ditempah.
-* [Peta](/studio/maps) - Peta dengan penanda yang dibuka ke dalam kad boleh ditempah.
+- [Pautan boleh dikongsi](/ms/studio/shareable-links) - Pilih untuk dipaparkan sebagai:
+    - [Sepanduk iklan](/ms/developers/web-components/#content-loader).
+    - Pautan biasa dengan kemas kini harga masa nyata.
+- [Kad](/ms/studio/cards) - Kad boleh ditempah dengan harga & ketersediaan masa nyata.
+- [Grid](/ms/studio/grids) - Grid dengan kad boleh ditempah.
+- [Peta](/ms/studio/maps) - Peta dengan penanda yang membuka kad boleh ditempah.
 
-:::nota
-Untuk mengurus akaun WinkLinks anda, log masuk ke akaun ahli gabungan anda pada [Studio Wink](https://studio.wink.travel).
+:::note
+Untuk mengurus akaun WinkLinks anda, log masuk ke akaun afiliasi anda di [Wink Studio](https://studio.wink.travel).
 :::
 
-:::petua
-Untuk melihat akaun sedang beraksi, lihat akaun Bjorn, pengasas bersama kami, akaun WinkLinks: <https://i.trvl.as/bjorn>.
+:::tip
+Untuk melihat akaun dalam tindakan, lihat akaun WinkLinks Bjorn, pengasas bersama kami: [https://i.trvl.as/bjorn](https://i.trvl.as/bjorn).
 :::
-

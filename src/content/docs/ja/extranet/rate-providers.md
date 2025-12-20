@@ -1,56 +1,58 @@
 ---
-title: 料金プロバイダー
-description: Wink で直接サポートしている料金プロバイダーの最新リストを以下に示します。
+title: レートプロバイダー
+description: Winkで直接サポートしている最新のレートプロバイダー一覧です。
 sidebar:
   order: 18
 ---
-## 料金プロバイダーの設定
 
-料金プロバイダーを設定するには、`Distribution > Channel manager`メインナビゲーションバーから。
+## レートプロバイダーの設定
 
-ドロップダウンリストから料金プロバイダーを選択し、`Save`ボタンをクリックしてください。これにより、料金提供者が料金情報を当社に送信できるようになり、お客様の宿泊施設でWink上で予約が発生した際に、当社から料金提供者に通知が届きます。
+レートプロバイダーを設定するには、メインナビバーの `Distribution > Channel manager` をクリックしてください。
 
-### シンキシス
+ドロップダウンリストからレートプロバイダーを選択し、`Save` ボタンをクリックします。これにより、レートプロバイダーが当社にレートを送信できるようになり、Winkであなたの物件に予約が入った際に通知されます。
 
-宿泊施設が SynXis チャネル マネージャーを使用している場合は、Wink に接続する前にさらに手順を実行する必要があります。
 
-* SynXis アカウント担当者またはカスタマー ケア (SHSCustomerCare@sabre.com) にご連絡ください。
-* Channel Connect Express経由でWinkに接続したいことを伝えます（***CCX***）。
-* フォームに記入してもらいま&#x3059;***PRS***。
-  * Wink ユーザーの資格情報を入力するよう求められます。
-  * ...そして希望する通貨。
-* フォームに記入し、SynXis に返送してください。
+### SynXis
+
+物件でSynXisチャネルマネージャーを使用している場合、Winkと接続する前にもう一つ手順があります。
+
+- SynXisのアカウント担当者またはカスタマーケア（SHSCustomerCare@sabre.com）にご連絡ください。
+- WinkとChannel Connect Express（***CCX***）経由で接続したい旨を伝えてください。
+- 彼らからフォーム***PRS***の記入を求められます。
+  - Winkのユーザー認証情報を入力してください。
+  - ...および希望通貨を入力してください。
+- フォームを完成させてSynXisに提出してください。
 
 ## ベンダー
 
-以下は当社がサポートしているベンダーの一覧です。
+以下は当社がサポートしているベンダーの一覧です：
 
-利用可能なタイプ:
+利用可能なタイプ：
 
-* チャネルマネージャー（CM）
-* 不動産管理システム（PMS）
-* 中央予約システム（CRS）
+- チャネルマネージャー (CM)
+- プロパティマネジメントシステム (PMS)
+- セントラル予約システム (CRS)
 
-*ベンダーがプロキシを持っている場合、プロキシを通じてベンダーから間接的に料金を受け取ることになります。*
+*ベンダーにプロキシがある場合、それはプロキシを通じて間接的にベンダーからレートを受け取っていることを意味します。*
 
-| ベンダー | タイプ | プロキシ | 開始日 | 最終更新日 | コメント
+| ベンダー | タイプ | プロキシ | 導入年 | 最終更新 | コメント
 | -- | -- | -- | -- | -- | -- |
-| Hoteliers Guru | CM | | 2017 | 2017 | |
-| Travelclick | CM | | 2016 | 2016 | |
-| Yield Planet | CM | | 2016 | 2016 | |
-| Siteminder | CM | | 2016 | 2016 | |
-| Cloudbeds | CM | | 2016 | 2016 | |
-| MyAllocator | CM | | 2016 | 2016 | |
-| ResAvenue | CM | | 2017 | 2017 | |
-| Fastbooking | CM | | 2016 | 2016 | Now d-edge |
-| Omnibees | CM | | 2019 | 2019 | |
-| Hotel Link | CM | | 2017 | 2017 | |
-| RateGain | CM | | 2016 | 2018 | |
-| Allotz | CM | | 2019 | 2019 | |
-| d-edge | CM | | 2018 | 2018 | |
-| Comanche | PMS | | 2017 | 2017 | |
-| Synxis | PMS | | 2019 | 2019 | |
-| Channex | PMS | | 2023 | 2023 | |
+| Hoteliers Guru | CM |  | 2017 | 2017 | |
+| Travelclick | CM |  | 2016 | 2016 | |
+| Yield Planet | CM |  | 2016 | 2016 | |
+| Siteminder | CM |  | 2016 | 2016 | |
+| Cloudbeds | CM |  | 2016 | 2016 | |
+| MyAllocator | CM |  | 2016 | 2016 | |
+| ResAvenue | CM |  | 2017 | 2017 | |
+| Fastbooking | CM |  | 2016 | 2016 | 現在は d-edge |
+| Omnibees | CM |  | 2019 | 2019 | |
+| Hotel Link | CM |  | 2017 | 2017 | |
+| RateGain | CM |  | 2016 | 2018 | |
+| Allotz | CM |  | 2019 | 2019 | |
+| d-edge | CM |  | 2018 | 2018 | |
+| Comanche | PMS |  | 2017 | 2017 | |
+| Synxis | PMS |  | 2019 | 2019 | |
+| Channex | PMS |  | 2023 | 2023 | |
 | A Perfect Stay | PMS | Channex | 2023 | 2023 | |
 | Mews | PMS | Channex | 2023 | 2023 | |
 | Opera | PMS | Channex | 2023 | 2023 | |
@@ -58,7 +60,7 @@ sidebar:
 | Abode Booking | PMS | Channex | 2023 | 2023 | |
 | AIOSELL | PMS | Channex | 2023 | 2023 | |
 | Ajjir | PMS | Channex | 2023 | 2023 | |
-| すべて予約済み | PMS | Channex | 2023 | 2023 | |
+| All Booked | PMS | Channex | 2023 | 2023 | |
 | Alojate | PMS | Channex | 2023 | 2023 | |
 | Atlantis | PMS | Channex | 2023 | 2023 | |
 | ATM | PMS | Channex | 2023 | 2023 | |
@@ -105,7 +107,7 @@ sidebar:
 | GuestPoint | PMS | Channex | 2023 | 2023 | |
 | GuestPro | PMS | Channex | 2023 | 2023 | |
 | GuestSmart | PMS | Channex | 2023 | 2023 | |
-| ホテルを支援 | PMS | Channex | 2023 | 2023 | |
+| Helping Hotels | PMS | Channex | 2023 | 2023 | |
 | Host-It | PMS | Channex | 2023 | 2023 | |
 | Hotelmeister | PMS | Channex | 2023 | 2023 | |
 | Hotelmu | PMS | Channex | 2023 | 2023 | |
@@ -135,7 +137,7 @@ sidebar:
 | Quovai | PMS | Channex | 2023 | 2023 | |
 | ResBook | PMS | Channex | 2023 | 2023 | |
 | ResClick | PMS | Channex | 2023 | 2023 | |
-| 予約キー | PMS | Channex | 2023 | 2023 | |
+| Reservation Key | PMS | Channex | 2023 | 2023 | |
 | ResMaster | PMS | Channex | 2023 | 2023 | |
 | Retreat Guru | PMS | Channex | 2023 | 2023 | |
 | Revenatium | PMS | Channex | 2023 | 2023 | |
@@ -144,4 +146,3 @@ sidebar:
 | Roomsy | PMS | Channex | 2023 | 2023 | |
 | Roverpass | PMS | Channex | 2023 | 2023 | |
 | Servo | PMS | Channex | 2023 | 2023 | |
-

@@ -1,18 +1,16 @@
 ---
 title: Mikä on Studio?
-description: >-
-  Tällä sivulla selitetään matkavarastojen käytön vaikeudet ja miten Winkin
-  kumppanuusportaali tekee siitä paljon helpompaa.
+description: Tämä sivu selittää matkavaraston saatavuuden haasteita ja kuinka Winkin kumppanien portaali tekee siitä paljon helpompaa.
 sidebar:
   order: 0
 ---
-Historiallisesti matkailuun liittyvien tuotteiden ja palveluiden myynti ja niihin pääsy vaativat salassapitosopimuksia ja monimutkaisia ​​integraatioita kahden \[tai useamman] lisensoidun matkatoimistoyrityksen välillä. Yritykset olivat riittävän teknisiä taitoja, maksuyhdyskäytävän käyttäjät ja molemmat olivat PCI DSS -standardin mukaisia. Se oli kallista ja aikaa vievää, ja markkinoille pääsyn kynnys oli tavallisille ihmisille mahdottoman korkea.
 
-[Wink-studio](https://studio.wink.travel) on kumppanuusportaalimme. Se tekee matkailutuotteiden myynnistä kaikkien saatavilla ja yhtä helppoa kuin linkin jakaminen tai yhtä edistynyttä kuin verkkomatkatoimiston pyörittäminen.
+Historiallisesti matkailuun liittyvän sisällön saaminen ja myyminen vaati salassapitosopimuksia (NDA) ja monimutkaisia integraatioita kahden [tai useamman] lisensoidun matkatoimiston välillä, joilla oli riittävästi teknistä osaamista, pääsy maksunvälitysjärjestelmään ja jotka olivat molemmat PCI DSS -yhteensopivia. Se oli kallis ja aikaa vievä prosessi, ja sisäänpääsyn kynnys oli tavallisille ihmisille mahdottoman korkea.
 
-Kumppaniportaali tarjoaa saatavilla olevia matkailutuotteita toimittajilta (esim. hotelleilta, hostelleilta, vuokra-autoilta, elämyspalveluiden tarjoajilta) kaikkialta maailmasta. Tavoitteenasi on löytää sinulle sopiva tuotevalikoima ja sitten käyttää parasta tapaa esitellä ja myydä sitä yleisöllesi.
+[Wink Studio](https://studio.wink.travel) on kumppanien portaali. Se tekee matkavaraston myymisestä kaikkien saatavilla olevaa ja yhtä helppoa kuin linkin jakaminen tai yhtä kehittynyttä kuin verkkomatkatoimiston pyörittäminen.
 
-Studio tarjoaa sinulle tavan selata toimittajia ja heidän varastoaan. Kun olet löytänyt jotain mieleistäsi, meillä on monia tapoja myydä sitä verkossa ja erityisesti sosiaalisen median kautta.
+Kumppanien portaali tarjoaa saatavilla olevaa matkavarastoa toimittajilta (esim. hotellit, hostellit, vuokra-asunnot, elämyspalveluntarjoajat) mistä päin maailmaa tahansa. Tavoitteesi on löytää sinulle sopiva varasto ja käyttää parasta tapaa esitellä ja myydä sitä yleisöllesi.
 
-Jatka lukemista ja tutustu kaikkiin ominaisuuksiin, joita tarjoamme kumppaneillemme.
+Studio tarjoaa tavan selata toimittajia ja heidän varastoaan. Kun olet löytänyt jotain, mistä pidät, meillä on monia tapoja myydä tätä varastoa verkossa ja erityisesti sosiaalisen median kautta.
 
+Jatka lukemista ja tutustu kaikkiin ominaisuuksiin, joita tarjoamme kumppaneille.

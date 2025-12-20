@@ -1,100 +1,99 @@
 ---
-title: Platobné podmienky
-description: >-
-  Tento dokument sa zaoberá dostupnosťou finančných prostriedkov a tým, ako
-  spoločnosť Wink podporuje model agenta pre cestovné kancelárie.
+title: Podmienky platby
+description: Tento dokument pokrýva dostupnosť finančných prostriedkov a spôsob, akým Wink podporuje model agenta pre cestovné kancelárie.
 sidebar:
   order: 5
 ---
+
 :::note
-Naposledy aktualizované 30.10.2024
+Naposledy aktualizované 2024-10-30
 :::
 
-:::pozornosť\[Oznámenie]
-Nižšie uvedené platobné podmienky platia pre cestovné kancelárie, ktoré chcú samy získavať a vyplácať finančné prostriedky.
-Toto je možné vykonať iba prostredníctvom nášho rozhrania API a iba cestovnými kanceláriami, ktoré počas procesu registrácie uviedli, že to chcú urobiť.
+:::caution[Upozornenie]
+Nižšie uvedené podmienky platby sa vzťahujú na cestovné kancelárie, ktoré si želajú samostatne získavať a vyplácať finančné prostriedky.  
+Toto je možné vykonať iba prostredníctvom nášho API a iba cestovnými kanceláriami, ktoré počas registračného procesu uviedli, že to chcú robiť.
 
-Všetky cestovné kancelárie si stále môžu rezervovať cez náš portál cestovných kancelárií pomocou platobnej brány Wink so svojou vlastnou alebo kreditnou kartou cestujúceho. Preto musia všetky cestovné kancelárie súhlasiť aj s platobnými podmienkami, ak je platobná brána Wink registrovaným obchodníkom.
+Všetky cestovné kancelárie môžu naďalej rezervovať cez náš portál pre cestovné kancelárie pomocou platobnej brány Wink s vlastnou alebo kreditnou kartou cestujúceho. Preto všetky cestovné kancelárie musia tiež súhlasiť s podmienkami platby, kde je platobná brána Wink obchodníkom záznamu.
 
-Tieto podmienky sú k dispozícii za[Partnerský portál > Platobné podmienky](/studio/payment-terms).
+Tieto podmienky sú dostupné v [Affiliate Portal > Payment Terms](/sk/studio/payment-terms).
 :::
 
-**PLATOBNÉ PODMIENKY WINK**\
-**PRE CESTOVNÝCH AGENTÚR (Registrovaný obchodník)**
+**PLATOBNÉ PODMIENKY WINK**  
+**PRE CESTOVNÉ KANCELÁRIE (Obchodník záznamu)**
 
-Tieto platobné podmienky služby („Platobné podmienky“) sú záväznou právnou dohodou, ktorá tvorí súčasť zmluvného vzťahu založeného na základe „OBCHODNÝCH PODMIENOK CESTOVNÝCH KANCELÁRIÍ“ („Hlavná dohoda“)
+Tieto Podmienky platby služieb („Podmienky platby“) sú záväznou právnou dohodou, ktorá tvorí súčasť zmluvného vzťahu ustanoveného v rámci „PODMIENOK A DOHÔD PRE CESTOVNÉ KANCELÁRIE“ („Hlavná dohoda“).
 
 **MEDZI:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**&#x73;poločnosť založená podľa singapurských zákonov so sídlom na adrese #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 s IČ DPH 201437335D (ďalej len „Wink“) a
+1. **TRAVELIKO SINGAPORE PTE. LTD.**, spoločnosť založená podľa zákonov Singapuru so sídlom na adrese \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, s daňovým identifikačným číslom 201437335D (ďalej len „Wink“) a  
+     
+2. **CESTOVNÁ KANCELÁRIA**, ktorej údaje sú uvedené v registračnom formulári cestovnej kancelárie alebo boli zaslané online („Cestovná kancelária“).
 
-2. **CESTOVNÁ AGENTÚRA**ktorej údaje sú uvedené v registračnom formulári cestovnej kancelárie alebo boli odoslané online („cestovná kancelária“).
+Definície a podmienky ustanovené v Hlavnej dohode sa vzťahujú na tieto Podmienky platby, pokiaľ tu nie je uvedené inak.
 
-Definície a pojmy uvedené v Hlavnej zmluve sa vzťahujú na tieto Platobné podmienky, pokiaľ nie je v tomto dokumente uvedené inak.
+**1\. Definície**
 
-**1. Definície**
+Ako je definované v hlavnej dohode „PODMIENKY A DOHODY PRE CESTOVNÉ KANCELÁRIE“ („Hlavná dohoda“), nasledujúce pojmy majú v týchto Podmienkach platby rovnaký význam:
 
-V zmysle hlavnej zmluvy „OBCHODNÉ PODMIENKY CESTOVNÝCH AGENTÚR“ („Hlavná zmluva“) majú nasledujúce pojmy v týchto Platobných podmienkach rovnaký význam:
-
-* "Poskytovateľ(i) ubytovania"
-* "Rezervácia"
-* „Poplatok za rezerváciu“
-* „Hodnota rezervácie“
-* „Komisia“
-* „Čistá platba“
+* „Poskytovateľ ubytovania“  
+* „Rezervácia“  
+* „Poplatok za rezerváciu“  
+* „Hodnota rezervácie“  
+* „Provízia“  
+* „Čistá platba“  
 * „Samostatná dohoda“
 
-**2. Výber a distribúcia platieb**
 
-2.1**Inkaso platieb:**&#x43;estovná kancelária je zodpovedná za inkaso platby od hosťa v čase rezervácie. Tým sa zabezpečí okamžité spracovanie a finančná prehľadnosť.
+**2\. Zber a rozdeľovanie platieb**
 
-2.2**Zrážka poplatku:**&#x43;estovná kancelária najprv odpočíta poplatok poskytovateľa služieb a potom svoju províziu za titulky podľa nižšie uvedeného príkladu:
+2.1 **Zber platieb:** Cestovná kancelária je zodpovedná za vybratie platby od hosťa v čase rezervácie. To zabezpečuje okamžité spracovanie a finančnú prehľadnosť.
 
-* 1,5% rezervačný poplatok pre Wink.
-* Provízia cestovnej kancelárie uvedená v samostatnej zmluve (v tomto príklade použijeme 10 %)
+2.2 **Odpočet poplatkov:** Cestovná kancelária najprv odpočíta poplatok poskytovateľa služby a potom svoju províziu podľa príkladu nižšie:
 
-Hodnota rezervácie 1 000 USD\
-Poplatok za žmurknutie (1,5 %) = 15 USD\
-Medzisúčet = 1 000 - 15 = 985
+* 1,5 % poplatok za rezerváciu pre Wink.  
+* Provízia cestovnej kancelárie podľa Samostatnej dohody (v tomto príklade použijeme 10 %)
 
-2.3**Čistá platba poskytovateľom ubytovania:**&#x43;estovná kancelária je zodpovedná za vyplatenie Čistej platby Poskytovateľovi ubytovania v súlade s podmienkami Samostatnej zmluvy medzi Cestovnou kanceláriou a Poskytovateľom ubytovania. Spoločnosť Wink nezodpovedá za žiadne platby Poskytovateľovi ubytovania.
+Hodnota rezervácie USD 1 000  
+Poplatok Wink (1,5 %) = USD 15  
+Medzisúčet = 1 000 – 15 = 985
 
-**3**.**Fakturácia a platba**
+2.3 **Čistá platba poskytovateľom ubytovania:** Cestovná kancelária je zodpovedná za vyplatenie Čistej platby poskytovateľovi ubytovania podľa podmienok Samostatnej dohody medzi cestovnou kanceláriou a poskytovateľom ubytovania. Wink nezodpovedá za vykonanie akýchkoľvek platieb poskytovateľovi ubytovania.
 
-3.1**Mesačná fakturácia:**&#x53;poločnosť Wink vystaví cestovnej kancelárii správnu a presnú mesačnú faktúru za poplatky za rezerváciu nahromadené počas predchádzajúceho mesiaca. Cestovná kancelária je povinná túto faktúru uhradiť v rámci platobných podmienok uvedených na faktúre.
+**3\. Fakturácia a platba**
 
-3.2**Spôsob platby:**&#x50;latby spoločnosti Wink sa uskutočňujú prostredníctvom spôsobu platby uvedeného na faktúre. Akékoľvek náklady spojené s prevodom platby hradí cestovná kancelária.
+3.1 **Mesačná fakturácia:** Wink vystaví cestovnej kancelárii správnu a presnú mesačnú faktúru za poplatky za rezervácie nahromadené počas predchádzajúceho mesiaca. Cestovná kancelária je povinná túto faktúru uhradiť v lehote splatnosti uvedenej na faktúre.
 
-3.3**Oneskorené platby:**&#x56; prípade omeškania s platbou si spoločnosť Wink vyhradzuje právo účtovať úrok z dlžnej sumy vo výške 5 % mesačne alebo v maximálnej sadzbe povolenej zákonom, podľa toho, ktorá je nižšia. Okrem toho, ak sa cestovná kancelária oneskorí s platbou poskytovateľovi ubytovania podľa podmienok samostatnej zmluvy, spoločnosť Wink si vyhradzuje právo pozastaviť prístup k službe, kým nebudú vyriešené všetky neuhradené platby voči spoločnosti Wink aj poskytovateľovi ubytovania. Ak sa však na faktúre predloženej spoločnosťou Wink vyskytnú chyby alebo omyly, cestovná kancelária je povinná uhradiť iba správnu a presnú časť faktúry a nebude podliehať žiadnym úrokom ani sankciám za neuhradenie nesprávnej časti faktúry.
+3.2 **Spôsob platby:** Platby pre Wink sa uskutočňujú spôsobom uvedeným na faktúre. Všetky náklady spojené s prevodom platby nesie cestovná kancelária.
 
-**4. Úlohy a zodpovednosti**
+3.3 **Meškanie s platbou:** V prípade omeškania platby si Wink vyhradzuje právo účtovať úrok z omeškaného plnenia vo výške 5 % mesačne alebo maximálnu zákonom povolenú sadzbu, podľa toho, ktorá je nižšia. Ak cestovná kancelária mešká s platbou poskytovateľovi ubytovania podľa podmienok Samostatnej dohody, Wink si vyhradzuje právo pozastaviť prístup k službe, kým nebudú vyriešené všetky nevyrovnané platby voči Wink aj poskytovateľovi ubytovania. Ak však faktúra vystavená Wink obsahuje chyby, cestovná kancelária je povinná uhradiť iba správnu a presnú časť faktúry a nebude podliehať žiadnym úrokom ani sankciám za neuhradenie nesprávnej časti faktúry.
 
-4.1**Zodpovednosti cestovnej kancelárie:**
+**4\. Úlohy a zodpovednosti**
 
-* Zabezpečiť včasný výber platieb od Hostí v súlade s podmienkami uvedenými v časti 2.1.
-* Pred zaplatením čistej platby poskytovateľom ubytovania podľa samostatnej zmluvy odpočítajte príslušný rezervačný poplatok a províziu.
-* Uhradiť faktúry spoločnosti Wink za Rezervačné poplatky bezodkladne v lehotách uvedených v časti 3.1.
-* Aktívne riadiť a riešiť akékoľvek spory týkajúce sa rezervácií alebo platieb a zabezpečiť komunikáciu so spoločnosťou Wink s cieľom efektívneho riešenia problémov.
+4.1 **Zodpovednosti cestovnej kancelárie:**
 
-4.2**Zodpovednosti Wink:**
+* Zabezpečiť včasný zber platieb od hostí v súlade s podmienkami uvedenými v bode 2.1.  
+* Odpočítať príslušný poplatok za rezerváciu a províziu pred odoslaním Čistej platby poskytovateľom ubytovania podľa Samostatnej dohody.  
+* Včas uhrádzať faktúry Wink za poplatky za rezervácie podľa podmienok uvedených v bode 3.1.  
+* Aktívne riešiť a vyriešiť akékoľvek spory týkajúce sa rezervácií alebo platieb, pričom zabezpečiť komunikáciu s Wink na efektívne vyriešenie problémov.
 
-* Vystavovať presné a včasné mesačné faktúry za Poplatky za rezerváciu, ako je podrobne uvedené v časti 3.1.
-* Poskytnite cestovnej kancelárii nepretržitý prístup k platforme Wink na spracovanie rezervácií a správu platieb.
-* Pomáhať cestovnej kancelárii pri riešení sporov týkajúcich sa platieb poskytnutím potrebných údajov o transakciách a podpory podľa potreby.
+4.2 **Zodpovednosti Wink:**
 
-**5. Prevod meny**
+* Vystavovať presné a včasné mesačné faktúry za poplatky za rezervácie podľa bodu 3.1.  
+* Poskytovať cestovnej kancelárii nepretržitý prístup k platforme Wink na spracovanie rezervácií a správu platieb.  
+* Pomáhať cestovnej kancelárii pri riešení sporov týkajúcich sa platieb poskytovaním potrebných údajov o transakciách a podpory podľa potreby.
 
-Ak je potrebný prepočet meny, bude spracovaný podľa kurzu poskytnutého službou spracovania platieb. Cestovná kancelária je zodpovedná za všetky náklady spojené s prepočtom meny.
+**5\. Konverzia meny**
 
-**6. Riešenie sporov**
+Ak je potrebná konverzia meny, bude spracovaná podľa kurzu poskytovaného platobnou službou. Cestovná kancelária nesie náklady spojené s konverziou meny.
 
-Akékoľvek spory vyplývajúce z týchto Platobných podmienok alebo s nimi súvisiace sa budú riešiť v súlade s postupmi riešenia sporov uvedenými v Hlavnej zmluve, čím sa zabezpečí konzistentný a jednotný prístup k riešeniu konfliktov medzi spoločnosťou Wink a Cestovnou kanceláriou.
+**6\. Riešenie sporov**
 
-**7. Zmena podmienok**\
-Spoločnosť Wink si vyhradzuje právo kedykoľvek zmeniť tieto Platobné podmienky. Akékoľvek zmeny budú oznámené cestovnej kancelárii najmenej 30 dní pred nadobudnutím účinnosti. Pokračovanie v používaní platformy Wink po dátume nadobudnutia účinnosti predstavuje súhlas so zmenenými podmienkami.
+Akékoľvek spory vyplývajúce z týchto Podmienok platby alebo s nimi súvisiace budú riešené podľa postupov riešenia sporov uvedených v Hlavnej dohode, čím sa zabezpečí jednotný a konzistentný prístup k riešeniu konfliktov medzi Wink a cestovnou kanceláriou.
 
-**8. Rozhodné právo a jurisdikcia**\
-Tieto platobné podmienky sa riadia zákonmi Singapuru. Akékoľvek spory vyplývajúce z týchto podmienok alebo súvisiace s nimi budú riešené na súdoch v Singapure.
+**7\. Zmena podmienok**  
+Wink si vyhradzuje právo kedykoľvek zmeniť tieto Podmienky platby. O všetkých zmenách bude cestovná kancelária informovaná aspoň 30 dní pred ich nadobudnutím platnosti. Pokračovanie v používaní platformy Wink po nadobudnutí platnosti zmien znamená súhlas s upravenými podmienkami.
 
-Tieto platobné podmienky sú neoddeliteľnou súčasťou a rozširujú platobné ustanovenia uvedené v hlavnej zmluve s názvom „ZMLUVNÉ PODMIENKY CESTOVNÁ KANCELÁRIA\_220924“ medzi spoločnosťou Wink a cestovnou kanceláriou.
+**8\. Rozhodné právo a jurisdikcia**  
+Tieto Podmienky platby sa riadia právom Singapuru. Akékoľvek spory vyplývajúce z týchto podmienok alebo s nimi súvisiace budú riešené na súdoch v Singapure.
 
+Tieto Podmienky platby sú neoddeliteľnou súčasťou a rozširujú platobné ustanovenia uvedené v Hlavnej dohode „PODMIENKY A DOHODY PRE CESTOVNÉ KANCELÁRIE_220924“ medzi Wink a cestovnou kanceláriou.

@@ -1,55 +1,53 @@
 ---
-title: Customers
-description: >-
-  Bu makalede, hizmet verdiğimiz müşteri tipleri ve Wink'in bu konuda nasıl
-  yardımcı olabileceği açıklanmaktadır.
+title: Müşteriler
+description: Bu makale, hizmet verdiğimiz müşteri türlerini ve Wink'in nasıl yardımcı olabildiğini açıklar.
 sidebar:
   order: 2
 ---
-Bu makalede, hangi tür müşterilere hizmet verdiğimizi ve onlara nasıl en iyi şekilde yardımcı olabileceğimizi açıklıyoruz.
 
-## Özellikler
+Bu makale, hizmet verdiğimiz müşteri türlerini ve en iyi nasıl yardımcı olabileceğimizi açıklar.
 
-Wink, on yıl önce otelleri bünyesine katmaya başladı. Oteller, kendi brand.com siteleri de dahil olmak üzere 1000'lerce satış kanalında envanterlerini etkili bir şekilde yönetmek ve marka kimliğini ve karlılığı artıran misafirperverlik odaklı araçlarımızın yardımıyla doğrudan kanalları güçlendirirken her rezervasyonla daha fazla kazanmak için Wink'i kullanıyor.
+## Tesisler
+
+Wink, otelleri on yıl önce sisteme dahil etmeye başladı. Oteller, kendi brand.com siteleri de dahil olmak üzere binlerce satış kanalında envanterlerini etkili bir şekilde yönetmek ve her rezervasyondan daha fazla kazanç sağlamak için Wink'i kullanır; ayrıca, marka kimliğini ve kârlılığı artıran konaklama odaklı araçlarımız sayesinde doğrudan kanalları güçlendirirler.
 
 ## Markalar ve Zincirler
 
-Markalar ve zincirler tek bir mülkten biraz farklı ihtiyaçlara sahiptir. Wink'te şunları yapabilirler:
+Markalar ve zincirlerin, tek bir tesisten biraz farklı ihtiyaçları vardır. Wink üzerinde şunları yapabilirler:
 
-* Tek bir hesap altında birden fazla mülkü yönetin.
-* Yöneticileri mülklere atayın
-* Kullanmak [Göz kırpma bağlantıları](/link-manager/wink-links), [WordPress](/developers/wordpress) ve bizim [WordPress](/developers/wordpress) birden fazla gayrimenkulü tek bir yerde pazarlamak ve satmak.
+- Tek bir hesap altında birden fazla tesisi yönetmek.
+- Tesislere yöneticiler atamak.
+- Birden fazla tesisi tek bir yerde pazarlamak ve satmak için [WinkLinks](/tr/link-manager/wink-links), [WordPress](/tr/developers/wordpress) ve [Web Components](/tr/developers/web-components) kullanmak.
 
-## Yönetim şirketleri
+## Yönetim Şirketleri
 
-Misafirperverlik yönetim şirketleri ve destinasyon yönetim şirketleri, mülk portföylerini sahipleri adına yönetebilir. Çevrimiçi odaklı, dijital olarak bilinçli acentelerin çevrimiçi segmente satış yapmasını sağlamanın kesin bir avantajı vardır; oteller ise müşteriler tesise vardıklarında müşteri memnuniyetini yönetmeye odaklanabilir.
+Konaklama yönetim şirketleri ve destinasyon yönetim şirketleri, mülk sahipleri adına portföylerini yönetebilirler. Online odaklı, dijital farkındalığı yüksek ajansların online segmentte satış yapmasına izin vermek, otellerin misafir memnuniyetini tesislerde odaklanarak yönetmelerine olanak tanıyarak kesin bir avantaj sağlar.
 
-## Etkileyiciler
+## Influencerlar
 
-Etkileyiciler, kitlelerini daha iyi paraya dönüştürmek için Wink'i kullanır. Bunu otellerle ortaklık kurarak, özel fırsatlar oluşturarak ve hangi ürünlerin en çok sattığını takip etmek için Wink'in sosyal medya dostu araçlarından ve güçlü analizlerinden yararlanarak yaparlar.
+Influencerlar, kitlelerini daha iyi paraya dönüştürmek için Wink'i kullanır. Otellerle iş birliği yaparak özel fırsatlar yaratır ve Wink'in sosyal dostu araçları ile güçlü analizlerini kullanarak hangi ürünlerin en iyi sattığını takip ederler.
 
-## Seyahat acenteleri
+## Seyahat Acenteleri
 
-Seyahat acenteleri, özel hizmetlerimiz aracılığıyla dünya çapındaki seyahat envanterine harika fiyatlarla erişebilir.[seyahat acentesi portalı](https://agent.wink.travel). Rezervasyonlarını portalımız üzerinden, API'miz aracılığıyla veya kullanıcılarının teknolojilerimizi kullanan seyahat acentesinin web sitesinden kendilerinin rezervasyon yapmasına izin vererek yapabilirler.
+Seyahat acenteleri, özel [seyahat acentesi portalımız](https://agent.wink.travel) aracılığıyla dünya çapında seyahat envanterine uygun fiyatlarla erişim sağlar. Portalımız üzerinden, API'mizle veya kullanıcılarının bizim teknolojilerimizi kullanan seyahat acentesi web sitesinde kendi rezervasyonlarını yapmalarına izin vererek rezervasyon yapabilirler.
 
-## Şirketler
+## Kurumsal Şirketler
 
-Şirketlerin daha fazla seyahat platformuna ihtiyacı var:
+Kurumsal şirketler seyahat platformundan daha fazlasını ister:
 
-* Esnekliği ve son dakika değişikliklerini destekleyen iyi organize edilmiş güzergahlara ihtiyaç duyarlar.
-* İnternet gibi güvenilir iletişim araçlarına ihtiyaç duyarlar.
-* Üyeliklerde satıcı tercihleri var.
-* Genellikle kurumsal bir kredi kartına sahip olurlar ve harcama limitleri belirlerler.
-* Gider yönetimi ve raporlama entegrasyonuna ihtiyaç duyarlar.
-* Etkinliklerde concierge desteğine ve MICE hizmetlerine ihtiyaçları var.
+- Esnekliği ve son dakika değişikliklerini destekleyen iyi organize edilmiş seyahat programları gerektirirler.
+- İnternet gibi güvenilir iletişim araçlarına ihtiyaç duyarlar.
+- Üyeliklerle birlikte tedarikçi tercihleri vardır.
+- Genellikle kurumsal kredi kartı ve harcama limitleri belirlerler.
+- Gider yönetimi ve raporlama entegrasyonu isterler.
+- Konsiyerj desteği ve etkinliklerde MICE hizmetlerine ihtiyaç duyarlar.
 
-Kurumsal seyahat edenler kendi hesaplarını sitemizde yönetebilirler. [kurumsal portal](/corporate/what-is-group) veya resmi olarak desteklenen [kurumsal portal](/corporate/what-is-group) eklenti ve [kurumsal portal](/corporate/what-is-group) Entegrasyon.
+Kurumsal seyahatçiler, kendi hesaplarını [kurumsal portalımızda](/tr/corporate/what-is-group) yönetebilir veya resmi desteklenen [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) eklentisi ve [Concur](https://www.concur.com/) entegrasyonunu kullanabilirler.
 
 ## Geliştiriciler
 
-Bu platformu otelciler tarafından ve onlar için inşa ederken... Her bir kod satırı, yeniden kullanılabilirlik özel amacı için inşa edildi. Geliştirici ekibimiz, bir sonraki 🦄 seyahat uygulamasının kod tabanımızın üzerine inşa edilmesi umuduyla Wink'i inşa etti. [Geliştirici](/developers/build-on-wink) Wink'in bir sonraki girişiminizde size nasıl destek olabileceğini görmek için sayfaya göz atın.
+Bu platformu otelciler için ve otelcilerle birlikte inşa ettik... Her satır kod, yeniden kullanılabilirlik amacıyla yazıldı. Geliştirici ekibimiz, bir sonraki 🦄 seyahat uygulamasının kod tabanımız üzerine inşa edilmesi umuduyla Wink'i geliştirdi. Wink'in bir sonraki girişiminizde size nasıl destek olabileceğini görmek için [Geliştirici](/tr/developers/build-on-wink) sayfasına göz atın.
 
 ## Diğer
 
-Seyahat envanteri bulmak ve satmak isteyen herkes Wink'i kullanmaktan faydalanabilir. Her rezervasyonda büyük bir komisyon kazanarak misafirperverliğe olan tutkunuzu eyleme dönüştürün.
-
+Seyahat envanteri bulmak ve satmak isteyen herkes Wink'ten faydalanabilir. Konaklama tutkunuzu harekete dönüştürerek her rezervasyondan harika bir komisyon kazanın.

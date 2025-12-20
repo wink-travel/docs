@@ -1,30 +1,28 @@
 ---
-title: Settings
-description: >-
-  Selles artiklis räägime teile, kuidas saate oma WinkLinksi lehte kohandada,
-  kasutades seadetes saadaolevaid funktsioone.
+title: Seaded
+description: Selles artiklis selgitame, kuidas saate oma WinkLinks lehte kohandada, kasutades teile seadete all kättesaadavaid funktsioone.
 sidebar:
   order: 4
 ---
-WinkLinksi seadete haldamiseks minge aadressile`WinkLinks`ja klõpsake peamise navigeerimisribal nuppu`Settings`sakk.
 
-Siin on viisid, kuidas saate oma WinkLinksi käitumist konfigureerida`Settings`:
+WinkLinks seadete haldamiseks minge põhimenüüs `WinkLinks` ja klõpsake vahekaardil `Seaded`.
 
-* **Nutikas**Luurefunktsioonide lubamisega püüame taastada`rich`sisu, mis on saadaval sellistelt saitidelt nagu`Wink`,`Spotify`,`Instagram`,`Facebook`,`YouTube`,`X (formerly Twitter)`ja teised.*nt kui jagad WinkLinksis Instagrami postitust, kuvatakse postitus nii, nagu sa seda Instagramis näed, koos meeldimiste, kommentaaride ja postitusega suhtlemise võimalusega.*
-* **Esialgne kuva**Kontrolli, kuidas sinu sihtrühm sinu saidiga esmakordselt suhtleb ja sinu sisu näeb. Sul on valida kolme valiku vahel:
-  * `Column-based`kujundus. See on meie eelistatud kujundus ja kui te ei kuva liiga palju sisu, näeb see teie lehel suurepärane välja. Siiski võib see muutuda`heavy`kui jagad palju rikkalikku sisu.
-  * `Row-based`disain. See on üks viis, kuidas muuta teie sisu brauseritele veidi vähem koormavaks, kuid soovitame, et teie sisus oleks sarnane tekstimaht, et kaardid joonduksid paremini.
-  * `List-based`disain. Enamik teisi lingihaldureid kuvab lihtsa loendi URL-i ja minimaalse sisuga. Valige see sisu kuvamise viis, kui teil on palju sisu ja soovite seda võimalikult kiiresti kuvada.
-* **Profiilipilt**Iga WinkLinksi lehe ülaosas on teie konto profiilipilt koos konto kirjeldusega. Profiilipilti saab kuvada kahel viisil:
-  * `Circle`Soovitame kasutada ringikujulist stiili, kui teie pilt on teist endast või millestki muust, mis mahub ümmargusesse anumasse.
-  * `Rectangle`Soovitame kasutada ristkülikukujulist tüüpi, kui teie ettevõtte logo on teie profiilipilt, kuna enamik ettevõtete logosid on ristkülikukujulised.
-* **Kohandamine**Valige, millist kohandamist soovite oma WinkLinksi lehel kasutada. See mõjutab nii teie teema värve kui ka teie teekonda Winki inventarikaartide, kaartide või ruudustike kuvamisel.
+Siin on viisid, kuidas saate oma WinkLinks käitumist seadete abil konfigureerida:
+
+- **Intelligentne** Intelligentsuse lubamisel püüame hankida `rikast` sisu sellistelt saitidelt nagu `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (endine Twitter)` ja teised. *nt kui jagate WinkLinksis IG postitust, kuvatakse postitus täpselt nii nagu IG-s, koos laikide, kommentaaride ja võimalusega postitusega suhelda.*
+- **Esialgne kuvamine** Kontrollige, kuidas teie publik teie saidiga esmalt suhtleb ja teie sisu näeb. Teil on kolm valikut:
+    - `Veerupõhine` disain. See on meie eelistatud disain ja kui te ei kuva liiga palju sisu, näeb see teie lehel suurepärane välja. Kuid see võib muutuda `raskeks`, kui jagate palju rikast sisu.
+    - `Reapõhine` disain. See on üks viis muuta teie sisu brauseritele veidi kergemini tarbitavaks, kuid soovitame, et teie sisus oleks sarnane tekstimahu tase, et kaardid paremini joonduksid.
+    - `Loendipõhine` disain. Enamik teisi lingihaldureid kuvab lihtsa loendi URL-i ja minimaalse sisuga. Valige see kuvamisviis, kui teil on palju sisu ja soovite seda võimalikult kiiresti kuvada.
+- **Profiilipilt** Iga WinkLinks lehe ülaosas on teie konto profiilipilt koos konto kirjeldusega. Saate oma profiilipilti kuvada kahel viisil:
+    - `Ring` Soovitame kasutada ümmargust stiili, kui teie pilt on teie enda või muu, mis sobib ümmargusse konteinerisse.
+    - `Ristkülik` Soovitame kasutada ristkülikukujulist stiili, kui teie profiilipilt on ettevõtte logo, kuna enamik ettevõtte logosid on loomult ristkülikukujulised.
+- **Kohandamine** Valige, millist kohandust soovite oma WinkLinks lehel kasutada. See mõjutab teie teema värve ning teie marsruuti Wink inventari kaartide, kaartide või võrkude kuvamisel.
 
 ## API
 
-Arendajad, kes soovivad hallata`WinkLinks`saab suunduda[Arendajad > API > WinkLinks](/developers/apis/#winklinks-api).
+Arendajad, kes soovivad hallata `WinkLinks`i, saavad minna [Developers > API > WinkLinks](/et/developers/apis/#winklinks-api).
 
-## Lisalugemist
+## Täiendav lugemine
 
-* Loe lähemalt[Kohandused](/studio/customization).
-
+- Loe rohkem [Kohanduste](/et/studio/customization) kohta.

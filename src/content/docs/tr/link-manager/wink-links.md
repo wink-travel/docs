@@ -1,67 +1,65 @@
 ---
 title: WinkLinks
-description: >-
-  Bu yazımızda link yöneticisinin ne olduğunu ve link yöneticimizin neler
-  yapabileceğini anlatacağız.
+description: Bu makalede, bir link yöneticisinin ne olduğunu ve link yöneticimizin neler yapabileceğini açıklıyoruz.
 sidebar:
   order: 0
 ---
-Bir bağlantı yöneticisi, beğendiğiniz URL'leri daha sonra kullanmak üzere kaydetmenize ve düzenlemenize olanak tanır. Tarayıcınızın yer imleri bir bağlantı yöneticisi örneğidir. Sosyal medyanın ortaya çıkmasıyla, arkadaşlarınıza ve kitlenize bağlantıları gösterme ve kullanılabilir hale getirme ihtiyacı daha da arttı. Facebook akışınız, sosyal medya dostu bir bağlantı yöneticisi örneğidir.
 
-:::dikkat
-Çoğu bağlantı yöneticisi, ortaklık bağlantıları yayınlayan herkes için bir abonelik gerektirir.
+Bir link yöneticisi, beğendiğiniz URL'leri daha sonra kullanmak üzere kaydetmenizi ve düzenlemenizi sağlar. Tarayıcı yer imleriniz bir link yöneticisine örnektir. Sosyal medyanın ortaya çıkmasıyla, linklerin arkadaşlarınıza ve izleyicilerinize sunulması ve erişilebilir hale getirilmesi ihtiyacı arttı. Facebook akışınız sosyal dostu bir link yöneticisine örnektir.
+
+:::caution
+Çoğu link yöneticisi, bağlı kuruluş linki paylaşan herkes için abonelik gerektirir. 
 :::
 
-Biz inşa ettik [Göz kırpma bağlantıları](https://i.trvl.as/) ; seyahat alanına odaklanmış, heyecan yaratmak, reklam yapmak ve çevrimiçi ortamda etkili bir şekilde satış yapmak için tamamen ücretsiz bir bağlantı yöneticisi.
+Biz, tamamen ücretsiz ve seyahat alanına odaklanmış, çevrimiçi olarak etkili şekilde heyecan yaratmak, reklam yapmak ve satış yapmak için [WinkLinks](https://i.trvl.as/) adlı bir link yöneticisi geliştirdik.
 
 ## Özellikler
 
-* WinkLinks, Commission Junction ve Amazon gibi mevcut tüm ortaklık bağlantılarınızı ücretsiz olarak eklemenize olanak tanır.
-* Şöyle havalı bir gösterişli URL elde edersiniz:<https://i.trvl.as/bob>, yalnızca tek bir URL paylaşabildiğiniz zamanlar için.
-* Bağlantıları düzenleyebilir, paylaşabilir ve dosya yükleyebilirsiniz.
-* Oteller, zincirler ve markalar WinkLinks'i gelişmiş bir rezervasyon motoru olarak kullanabilirler:
-  * Birden fazla özelliği destekler.
-  * Birden fazla hedefi destekler.
-  * Birden fazla para birimini destekler.
-  * Birden fazla dili destekler.
-* WinkLinks destekler`rich content` *(aşağıya bakınız)*.
-* Sadece 2 tıklamayla IG'den rezervasyona geçin 🚀
+- WinkLinks, Commission Junction ve Amazon gibi mevcut tüm bağlı kuruluş linklerinizi ücretsiz olarak eklemenizi sağlar.
+- Sadece tek bir URL paylaşmanız gereken durumlar için [https://i.trvl.as/bob](https://i.trvl.as/bob) gibi havalı bir özel URL alırsınız.
+- Linkleri düzenleyebilir, paylaşabilir ve dosya yükleyebilirsiniz.
+- Oteller, zincirler ve markalar WinkLinks'i gelişmiş bir rezervasyon motoru olarak kullanabilir:
+    - Birden fazla mülkü destekler.
+    - Birden fazla destinasyonu destekler.
+    - Birden fazla para birimini destekler.
+    - Birden fazla dili destekler.
+- WinkLinks `zengin içerik` *(aşağıya bakınız)* destekler.
+- IG'den rezervasyona sadece 2 tıklamada gidin 🚀
 
 ## Zengin içerik
 
-:::not
-Ayarla`Intelligent`🟢 senin içinde [Ayarlar](/link-manager/settings) Bu özelliği kullanmak için.
+:::note
+Bu özelliği kullanmak için [Ayarlar](/tr/link-manager/settings) sayfanızda `Akıllı` seçeneğini 🟢 olarak ayarlayın.
 :::
 
-Destekleyen bir siteden bir bağlantı paylaşırsanız`rich`/`oEmbed`içerik, bağlantınız WinkLinks'te canlanır.
+`Zengin` / `oEmbed` içeriği destekleyen bir siteden link paylaşırsanız, linkiniz WinkLinks üzerinde canlanır.
 
 Desteklenen siteler:
 
-* Facebook -*Gönderiyle etkileşim kurun ve bir video oynatın*.
-* Instagram -*Gönderiyle etkileşim kurun ve bir video oynatın*.
-* YouTube -*Bir video oynat*.
-* X (eski adıyla Twitter) -*Bir gönderiyle etkileşim kurun*.
-* Spotify -*En sevdiğiniz çalma listelerini çalın*.
-* Göz kırpma -*Görmek `Advanced`*.
+- Facebook - *Gönderi ile etkileşim kurun ve video oynatın*.
+- Instagram - *Gönderi ile etkileşim kurun ve video oynatın*.
+- YouTube - *Video oynatın*.
+- X (eski adıyla Twitter) - *Bir gönderi ile etkileşim kurun*.
+- Spotify - *Favori çalma listelerinizi oynatın*.
+- Wink - *`Gelişmiş` bölümüne bakınız*.
 
 ## Gelişmiş
 
-WinkLinks ayrıca, bulduğunuz seyahat envanterini ifşa etmenin harika bir yoludur. [Göz kırpma stüdyosu](https://studio.wink.travel) ve hedef kitlenize satmak istediğiniz şey.
+WinkLinks, [Wink Studio](https://studio.wink.travel) aracılığıyla bulduğunuz ve izleyicilerinize satmak istediğiniz seyahat envanterini sergilemek için de harika bir yoldur.
 
-WinkLinks'i kullanarak şunları satabilirsiniz:
+WinkLinks'i şu amaçlarla kullanın:
 
-* [Paylaşılabilir bağlantılar](/studio/shareable-links) - Aşağıdaki şekilde görüntülemeyi seçin:
-  * [Reklam afişi](/developers/web-components/#content-loader).
-  * Gerçek zamanlı fiyat güncellemeleriyle normal bağlantı.
-* [Kartlar](/studio/cards) - Gerçek zamanlı fiyatlandırma ve müsaitlik bilgisi olan rezerve edilebilir kartlar.
-* [Izgaralar](/studio/grids) - Rezervasyon yapılabilen kartlardan oluşan tablo.
-* [Haritalar](/studio/maps) - Rezervasyon yapılabilen kartlara dönüşen işaretleyicili harita.
+- [Paylaşılabilir linkler](/tr/studio/shareable-links) - Şu şekilde görüntülemeyi seçin:
+    - [Reklam bannerı](/tr/developers/web-components/#content-loader).
+    - Gerçek zamanlı fiyat güncellemeleri ile normal link.
+- [Kartlar](/tr/studio/cards) - Gerçek zamanlı fiyat ve müsaitlik ile rezervasyon yapılabilir kartlar.
+- [Izgaralar](/tr/studio/grids) - Rezervasyon yapılabilir kartlarla ızgara.
+- [Haritalar](/tr/studio/maps) - Rezervasyon yapılabilir kartlar açan işaretçili harita.
 
-:::not
-WinkLinks hesabınızı yönetmek için, bağlı kuruluş hesabınıza giriş yapın[Göz kırpma stüdyosu](https://studio.wink.travel).
+:::note
+WinkLinks hesabınızı yönetmek için, bağlı kuruluş hesabınızla [Wink Studio](https://studio.wink.travel) üzerinden giriş yapın.
 :::
 
-:::ipucu
-Bir hesabın eylem halinde olduğunu görmek için kurucu ortağımız Bjorn'un WinkLinks hesabına göz atın:<https://i.trvl.as/bjorn>.
+:::tip
+Bir hesabın nasıl çalıştığını görmek için, kurucu ortağımız Bjorn'un WinkLinks hesabına göz atın: [https://i.trvl.as/bjorn](https://i.trvl.as/bjorn).
 :::
-

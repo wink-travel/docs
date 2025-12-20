@@ -1,41 +1,41 @@
 ---
-title: Environments
-description: 本文包含有關測試人員和開發人員如何存取我們不同的伺服器環境的資訊。
+title: 環境
+description: 本文包含測試人員和開發人員如何取得我們不同伺服器環境存取權的資訊。
 sidebar:
   order: 8
 ---
-在 Wink，我們為所做的每件事始終運行兩個環境：
 
-* 生產是我們穩定的環境。
-* Staging 是我們的認證和測試環境。
+在 Wink，我們隨時運行兩個環境來處理所有工作：
 
-如果您是整合商、飯店或旅行社，希望準備認證或測試 Wink 平台，請在我們的暫存環境中建立帳戶以開始使用。
+- Production 是我們的穩定環境。
+- Staging 是我們的認證與測試環境。
 
-：：：筆記
-暫存環境可依請求提供。這意味著如果沒有使用，它就會進入睡眠狀態，有使用時就會自動重新開啟。如果您正在喚醒它，請耐心等待。首次連接到我們的某個伺服器或應用程式後，大約需要一分鐘來啟動所有伺服器。
+如果您是整合商、飯店或旅行社，想要準備認證或測試 Wink 平台，請在我們的 staging 環境中建立帳號以開始使用。
+
+:::note
+staging 環境採用申請制。這表示若無使用，環境會進入休眠狀態，當有使用時會自動啟動。若您正在喚醒環境，請耐心等候。首次連接我們的伺服器或應用程式後，啟動所有伺服器約需一分鐘。
 :::
 
 ## 伺服器
 
-以下是包含我們伺服器名稱及其用途的矩陣。
+以下為我們伺服器名稱及其用途的對照表。
 
-|專題 |分期 |生產
+| 功能 | Staging | Production
 | ------- | ------- | ---------- |
-| IAM | https://staging-iam.wink.travel | https://iam.wink.travel |
-|庫存 | https://staging-api.wink.travel | https://api.wink.travel |
-|整合 | https://staging-integrations.wink.travel | https://integrations.wink.travel |
-|付款 | https://staging-api.trippay.io | https://api.trippay.io |
+| IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
+| Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
+| Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Payment | https://staging-api.trippay.io | https://api.trippay.io | 
 
-## 應用
+## 應用程式
 
-我們的應用程式還為客戶提供測試和生產環境。
+我們的應用程式也為客戶提供測試與正式環境。
 
-|應用 |分期 |生產
+| 應用程式 | Staging | Production
 | ------- | ------- | ---------- |
-|代理 | https://staging-agent.wink.travel | https://agent.wink.travel |
-|公司 | https://staging-group.wink.travel | https://group.wink.travel |
-|外部網路 | https://staging-extranet.wink.travel | https://extranet.wink.travel |
-|付款 | https://staging-pay.wink.travel | https://pay.wink.travel |
-|工作室 | https://staging-studio.wink.travel | https://studio.wink.travel |
+| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| Corporate | https://staging-group.wink.travel | https://group.wink.travel | 
+| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
+| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
-

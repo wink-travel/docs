@@ -1,30 +1,30 @@
 ---
-title: Authentication
-description: Opi todentamaan henkilöllisyytesi Winkin OAuth2-valtuutuspalvelimen avulla.
+title: Autentikointi
+description: Opi, miten autentikoidut käyttämällä Winkin OAuth2-valtuutuspalvelinta.
 sidebar:
   order: 2
 ---
+
 :::tip
-Wink IAM -todennuspalvelin tukee yleisiä OAuth2-päätepisteitä:
+Wink IAM -autentikointipalvelin tukee yleisiä OAuth2-päätepisteitä:
 
-* /oauth2/authorize
-* /oauth2/token
-* /oauth2/introspect
-* /oauth2/peruuta
-* /oauth2/käyttäjäinfo
-  :::
+- /oauth2/authorize
+- /oauth2/token
+- /oauth2/introspect
+- /oauth2/revoke
+- /oauth2/userinfo
+:::
 
-Sovellus tarjoaa sinulle`Client ID`ja`Secret Key`että sinun on luotava todennettu OAuth2-istunto, jota voit käyttää kommunikointiin Wink- ja TripPay-APIen kanssa.
+Sovellus antaa sinulle `Client ID` ja `Secret Key` -tiedot, joita tarvitset luodaksesi autentikoidun OAuth2-istunnon, jota voit käyttää kommunikoidessasi Wink- ja TripPay-rajapintojen kanssa.
 
-Tässä ovat vaiheet todennetun istunnon luomiseksi.
+Tässä ovat vaiheet autentikoidun istunnon luomiseksi.
 
-**Vaihe 1**Hae käyttöoikeustunnus testiympäristössä tai tuotantoympäristössämme:
+**Vaihe 1**. Hanki käyttöoikeustunnus staging-ympäristössä tai tuotantoympäristössämme:
 
-Todennäköisesti käytät omalle kielellesi suunniteltua vankkaa OAuth2-kirjastoa, joka tekee kaiken raskaan työn puolestasi.
+Todennäköisesti käytät kielen omaa vankkaa OAuth2-kirjastoa, joka hoitaa kaiken raskaan työn puolestasi.
+Esimerkkimme näyttävät peruskäytön komentoriviltä käyttäen `curl`-komentoa.
 
-Esimerkeissämme näytetään komentoriviltä tehtävän peruskäyttö.`curl`.
-
-### Lavastus
+### Staging
 
 ```bash
 
@@ -48,7 +48,7 @@ curl -X POST https://iam.wink.travel/oauth2/token \
 
 ```
 
-Tämä palauttaa käyttöoikeustunnuksen sekä muita OAuth2-vastaustietoja:
+Tämä palauttaa käyttöoikeustunnuksen sekä muuta OAuth2-vastausdatan:
 
 ```json
 {
@@ -56,14 +56,13 @@ Tämä palauttaa käyttöoikeustunnuksen sekä muita OAuth2-vastaustietoja:
 }
 ```
 
-Kun soitat mihin tahansa päätepisteeseemme, sisällytä otsikkoon seuraavat tiedot:
+Kun teet kutsun mihin tahansa päätepisteeseemme, sisällytä seuraavat otsikot:
 
-* `Wink-Version`=`2.0`Uusin -*Katso muut saatavilla olevat versiot API-dokumentaatiostamme.*
-* `Authentication`=`Bearer: ${access_token}` *Syötä käyttöoikeustunnuksesi.*
+- `Wink-Version` = `2.0` Uusin - *Katso API-dokumentaatiostamme muut saatavilla olevat versiot.*
+- `Authentication` = `Bearer: ${access_token}` *Lisää käyttöoikeustunnuksesi.*
 
 :::tip
-Voit testata kaikkia API-rajapintojamme kirjoittamatta riviäkään koodia ennen aloittamista.
+Voit testata kaikkia API-rajapintoja ilman, että kirjoitat yhtään koodiriviä ennen aloittamista.
 
-Hae 'Asiakastunnus' ja 'Salainen avain' jostakin sovelluksistasi ja siirry mihin tahansa palveluistamme.[API-rajapinnat](/developers/apis).
+Hanki 'Client ID' ja 'Secret Key' jostakin sovelluksestasi ja siirry mihin tahansa [APIs](/fi/developers/apis) -sivuston rajapintaan.
 :::
-

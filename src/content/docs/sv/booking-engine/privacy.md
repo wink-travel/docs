@@ -1,64 +1,65 @@
 ---
 title: Integritetspolicy
-description: Lättillgänglig och aktuell integritetspolicy för alla våra resenärer.
+description: En lättillgänglig och uppdaterad integritetspolicy för alla våra resenärsanvändare.
 sidebar:
   order: 5
 ---
-TRAVELIKO SINGAPORE PTE. LTD., som verkar under namnet Wink (”Företaget”), vill informera dig som kontaktar Företaget om att det är nödvändigt att samla in, sammanställa och använda dina personuppgifter för Företagets tjänster i enlighet med denna integritetspolicy. Genom att kontakta och lämna ut dina personuppgifter till Företaget i syfte att kommunicera, samordna och/eller tillhandahålla Företagets tjänster till dig, anser vi att du samtycker till och accepterar att vara bunden av och följa denna integritetspolicy.
 
-Personuppgifter behandlas, Bolaget kan komma att inhämta dina personuppgifter från olika kanaler enligt följande:
+TRAVELIKO SINGAPORE PTE. LTD., som verkar under namnet Wink (”Företaget”), vill informera dig som kontaktar Företaget att det är nödvändigt att samla in, sammanställa och använda dina personuppgifter för Företagets tjänst i enlighet med denna integritetspolicy. Genom att kontakta och lämna ut dina personuppgifter till Företaget för kommunikation, samordning och/eller tillhandahållande av Företagets tjänster till dig, anses du samtycka till och acceptera att vara bunden av och följa denna integritetspolicy.
 
-(1) Direkt från dig genom företagets kommunikation med dig;
+Personuppgifter som behandlas kan Företaget erhålla från olika kanaler enligt följande:
 
-(2) Indirekt, via en remiss från en tredje part som du kan ge samtycke till att lämna ut dina personuppgifter till företaget; eller
+(1) Direkt från dig genom Företagets kommunikation med dig;
 
-(3) Insamlas automatiskt via systemet när du besöker företagets webbplats och/eller använder tjänsterna.
+(2) Indirekt, via en hänvisning från en tredje part som du kan ha gett samtycke till att lämna ut dina personuppgifter till Företaget; eller
 
-De personuppgifter som företaget behöver samla in, sammanställa, använda och behandla enligt denna integritetspolicy är följande:
+(3) Automatiskt insamlade via system när du besöker Företagets webbplats och/eller använder tjänsterna.
 
-(1) Ditt fullständiga namn, inklusive dina relaterade uppgifter eller information om ditt ombud (om du kontaktar oss i en juridisk persons namn) vilket kan inkludera din identitetshandling.
+De personuppgifter som Företaget behöver samla in, sammanställa, använda och behandla enligt denna integritetspolicy är följande:
 
-(2) Kontaktinformation såsom telefonnummer, e-postadress eller information om sociala medier.
+(1) Ditt fullständiga namn, inklusive relaterad information eller din företrädares information (om du kontaktar oss i egenskap av juridisk person) vilket kan inkludera din identitetshandling.
 
-(3) Andra personuppgifter som du kan komma att lämna till företaget under kommunikationen, såsom information om förfrågningar, intresseinformation eller annan personligt identifierbar information som du lämnar till företaget direkt via olika kommunikationskanaler.
+(2) Kontaktinformation såsom telefonnummer, e-post eller information om sociala mediekonton.
 
-(4) Vid kommunikation via webbplatsen kan din tekniska information såsom IP-adress, cookies, inklusive information om ditt surfbeteende, inkluderas.
+(3) Andra personuppgifter som du kan lämna till Företaget under kommunikationen, såsom information om förfrågningar, intresseinformation eller annan personligt identifierbar information som du direkt tillhandahåller Företaget via olika kommunikationskanaler.
 
-Syfte med behandlingen och användningen av personuppgifter Företaget är nödvändigt för att samla in, sammanställa och använda arbetssökandes personuppgifter för följande ändamål:
+(4) Vid kommunikation via webbplatsen kan det inkludera din tekniska information såsom IP-adress, cookies, inklusive information om ditt surfbeteende.
 
-(1) För hantering av kommunikation som du har haft med företaget, såsom att svara på frågor, tillhandahålla relevant information på begäran och i enlighet med kraven, hantera klagomål eller svara på kommentarer som du lämnar direkt till företaget via olika kommunikationskanaler, inklusive kontinuerlig samordning, ingående av serviceavtal och/eller fullgörande av rättigheter och skyldigheter som företaget och du kan komma överens om;
+Syftet med behandlingen och användningen av personuppgifter, behöver Företaget samla in, sammanställa och använda Jobbsökandes personuppgifter för följande ändamål:
 
-(2) För att fullgöra rättsliga skyldigheter som Bolaget kan vara underkastat under vissa omständigheter. Detta kan inkludera, men är inte begränsat till, att utföra arbetsuppgifter i samband med upprättande av redovisningsdokument och skatter i samband med tjänster som Bolaget tillhandahåller dig;
+(1) För hantering av kommunikationer som du har haft med Företaget, såsom att besvara frågor, tillhandahålla relevant information enligt begäran, hantera klagomål eller svara på kommentarer som du lämnar direkt till Företaget via olika kommunikationskanaler, inklusive löpande samordning, genomförande av tjänsteavtal och/eller fullgörande av rättigheter och skyldigheter som Företaget och du kan ha kommit överens om;
 
-(3) I syfte att bygga och förbättra affärsrelationer, inklusive att förbättra den tjänst som företaget tillhandahåller till din fördel, varvid företaget kan komma att samla in och/eller använda dina personuppgifter i syfte att kontrollera, säkerställa tjänsten, analysera ledningen och lösa affärsrelaterade problem, inklusive, men inte begränsat till, utbildning av anställda och planering för framtida tjänsteförbättringar;
+(2) För att uppfylla rättsliga skyldigheter som Företaget kan vara föremål för under vissa villkor. Detta kan inkludera, men är inte begränsat till, att fullgöra uppgifter kopplade till upprättande av bokföringsdokument och skatter i samband med tjänster som tillhandahålls av Företaget till dig;
 
-(4) I syfte att skydda och försvara Bolagets juridiska rättigheter i händelse av att du och Bolaget skulle ha en tvist; och
+(3) För att bygga och förbättra affärsrelationer, inklusive att förbättra den service som Företaget tillhandahåller för din nytta, där Företaget kan samla in och/eller använda dina personuppgifter för kontroll, säkerställande av service, analys av förvaltning och lösning av affärsrelaterade frågor, inklusive men inte begränsat till medarbetarutbildning och planering av framtida serviceförbättringar;
 
-(5) Med förbehåll för ett uttryckligt samtycke som beviljats ​​Bolaget, såsom marknadsföring och nyhetsbrevskommunikation, får Bolaget behandla Personuppgifterna för de ändamål som anges i samtycket.
+(4) För att skydda och försvara Företagets juridiska rättigheter vid en tvist mellan dig och Företaget; och
 
-Lagringsperiod för personuppgifter, för att kunna utföra de syften som beskrivs ovan är företaget nödvändigt att samla in, sammanställa och behandla dina personuppgifter enligt följande period:
+(5) Med förbehåll för ett uttryckligt samtycke som ges till Företaget, såsom marknadsföring och nyhetsbrevskommunikation, kan Företaget behandla personuppgifterna för de ändamål som definieras i samtycket.
 
-(1) För behandling av personuppgifter i syfte att tillhandahålla tjänster, fullgöra ett avtal och/eller fullgöra rättigheter och skyldigheter enligt avtalet är Bolaget nödvändigt att behandla dina personuppgifter så länge Bolaget har en skyldighet att tillhandahålla tjänster till dig;
+Lagringsperiod för personuppgifter, för att kunna fullgöra ovanstående ändamål behöver Företaget samla in, sammanställa och behandla dina personuppgifter enligt följande period:
 
-(2) För behandling av personuppgifter i syfte att utföra arbetsuppgifter enligt gällande lagar är Bolaget nödvändigt att behandla dina personuppgifter under en tidsperiod som anges i gällande lagar;
+(1) För behandling av personuppgifter i syfte att tillhandahålla tjänster, genomföra avtal och/eller fullgöra rättigheter och skyldigheter enligt avtalet, behöver Företaget behandla dina personuppgifter så länge Företaget har en skyldighet att tillhandahålla tjänster till dig;
 
-(3) För behandling av personuppgifter i syfte att bygga och förbättra affärsrelationer och/eller förbättra tjänsten förbehåller sig Bolaget rätten att behålla dessa personuppgifter i den utsträckning Bolaget kan ha affärsmässiga behov. Bolaget garanterar att bevarandet av personuppgifterna inte oskäligt kommer att påverka den registrerades rättigheter;
+(2) För behandling av personuppgifter i syfte att fullgöra skyldigheter enligt tillämpliga lagar, behöver Företaget behandla dina personuppgifter under den tid som anges i tillämpliga lagar;
 
-(4) För behandling av personuppgifter i syfte att skydda och försvara Bolagets legitima rättigheter är Bolaget skyldigt att lagra sådana personuppgifter i enlighet med gällande lagar; och
+(3) För behandling av personuppgifter i syfte att bygga och förbättra affärsrelationer och/eller förbättra tjänsten, förbehåller sig Företaget rätten att behålla dessa personuppgifter i den mån Företaget har affärsbehov. Företaget garanterar att lagringen av personuppgifterna inte oskäligt påverkar den registrerades rättigheter;
 
-(5) Om du ger Bolaget samtycke till att behandla dina personuppgifter för specifika ändamål, kommer Bolaget att behandla dina personuppgifter tills du återkallar ett sådant samtycke.
+(4) För behandling av personuppgifter i syfte att skydda och försvara Företagets legitima rättigheter, behöver Företaget behålla sådana personuppgifter enligt den preskription som anges i tillämpliga lagar; och
 
-Utlämnande av personuppgifter, i allmänhet kommer dina personuppgifter inte att lämnas ut, förutom i de fall då företaget skulle behöva lämna ut till följande person:
+(5) Om du ger samtycke till att Företaget behandlar dina personuppgifter för specifika ändamål, kommer Företaget att behandla dina personuppgifter tills du återkallar detta samtycke.
 
-(1) Externa tjänsteleverantörer som anlitats av bolaget för att tillhandahålla stödtjänster till bolaget i samband med att de tillhandahåller tjänster till dig, inklusive bolagets konsulter. Sådant utlämnande av personuppgifterna till dessa tredje parter ska ske i enlighet med ändamålen och endast på basis av behovet av att få information; eller
+Utlämnande av personuppgifter, generellt kommer dina personuppgifter inte att lämnas ut, förutom i de fall där Företaget behöver lämna ut till följande personer:
 
-(2) Myndigheter, tillsynsmyndigheter eller domstolar som Bolaget kan bli föremål för en order, lag eller dom om att lämna ut personuppgifterna.
+(1) Externa tjänsteleverantörer som anlitas av Företaget för att tillhandahålla stödjande tjänster till Företaget vid tillhandahållandet av tjänster till dig, inklusive Företagets konsulter. Sådant utlämnande av personuppgifter till dessa tredje parter sker i enlighet med ändamålen och endast på en behovsbaserad grund; eller
 
-Företaget åtar sig att implementera lämpliga säkerhetsåtgärder för personuppgifter för att förhindra obehörig och olaglig åtkomst, modifiering, tillägg eller utlämnande. Företaget åtar sig att regelbundet granska dessa åtgärder för att säkerställa att de är förenliga med standarderna och tillämpliga lagar.
+(2) Myndigheter, tillsynsmyndigheter eller domstolar där Företaget kan vara föremål för en order, lag eller dom som kräver utlämnande av personuppgifter.
 
-Rättigheter som registrerad, Bolaget respekterar dina rättigheter som registrerad enligt gällande lagar. Du kan kontakta Bolaget för att utöva följande rättigheter: (1) rätten att återkalla samtycke, (2) rätten till åtkomst, (3) rätten att begära en kopia av dina personuppgifter, (4) rätten att korrigera personuppgifterna, (5) rätten att invända mot behandling av personuppgifterna, (6) rätten att begära dataportabilitet i händelse av att Bolaget lagrar personuppgifterna i ett format som är läsbart eller som vanligtvis används av automatiserade verktyg eller utrustning, inklusive rätten att överföra sådana personuppgifter till andra personuppgiftsansvariga, (7) rätten att begära radering eller avidentifiering av personuppgifterna när det inte finns något behov av behandling, (8) rätten att begära att användningen av personuppgifterna avbryts och (9) rätten att lämna in ett klagomål.
+Företaget åtar sig att implementera lämpliga säkerhetsåtgärder för personuppgifter för att förhindra obehörig och olaglig åtkomst, ändring, modifiering eller utlämnande. Företaget förbinder sig att regelbundet granska dessa åtgärder för att säkerställa dess överensstämmelse med standarder och tillämpliga lagar.
 
-Företags kontaktinformation
+Den registrerades rättigheter, Företaget respekterar dina rättigheter som registrerad enligt tillämpliga lagar. Du kan kontakta Företaget för att utöva rättigheterna som är (1) rätt att återkalla samtycke, (2) rätt att få tillgång, (3) rätt att begära en kopia av personuppgifterna, (4) rätt att korrigera personuppgifterna, (5) rätt att motsätta sig behandling av personuppgifter, (6) rätt att begära dataportabilitet om Företaget lagrar personuppgifterna i ett format som är läsbart eller vanligt använt av automatiserade verktyg eller utrustning, inklusive rätt att överföra sådana personuppgifter till andra personuppgiftsansvariga, (7) rätt att begära radering eller avidentifiering av personuppgifterna när det inte längre är nödvändigt att behandla dem, (8) rätt att begära att användningen av personuppgifterna upphör, och (9) rätt att lämna in ett klagomål.
+
+Företagets kontaktinformation
 
 Dataskyddsombud
 
@@ -66,6 +67,5 @@ Namn: Yann Gouriou
 
 Adress: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
 
-E-post: dataprotectionofficer@wink.travel
+E-post: dataprotectionofficer@wink.travel  
 Telefonnummer: +66 (0) 854891301
-

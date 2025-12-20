@@ -1,64 +1,62 @@
 ---
-title: Pricing
-description: >-
-  Nutzen Sie alle Leistungen von Wink nach Herzenslust und kostenlos. Sie zahlen
-  lediglich eine geringe Gebühr pro Buchung.
+title: Preise
+description: Nutze alle Dienste von Wink nach Herzenslust kostenlos. Du zahlst nur eine kleine Gebühr pro Buchung.
 sidebar:
   order: 4
 ---
-Alle Dienste von Wink sind für jedermann kostenlos nutzbar. Bei einer Buchung erhebt Wink eine geringe Gebühr für die Pflege der Plattform.
 
-Wink unterstützt sowohl das Händler- als auch das Agentenmodell.
+Alle Dienste von Wink sind für alle kostenlos nutzbar. Bei einer Buchung erhebt Wink eine kleine Gebühr zur Wartung der Plattform.
+
+Wink unterstützt sowohl das Händler- als auch das Agenturmodell.
 
 ## Modell 1
 
-Wink ist der Vertragspartner zum Zeitpunkt der Buchung. Wink ist für die Finanzierung verantwortlich und verfügt über sämtliche Lizenzen zum Betrieb eines Reisebüros.
+Wink ist zum Zeitpunkt der Buchung der Händler im rechtlichen Sinne. Wink ist verantwortlich für die Gelder und besitzt alle erforderlichen Lizenzen zur Führung eines Reisebüros.
 Dieses Modell gilt für 95 % aller Buchungen.
 
-Wink-Gebühren`5.5% per booking`für die Pflege der Plattform.
-Der Großteil davon fließt in das Zahlungsgateway (Visa, MasterCard usw.). Eine durchschnittliche Buchung kostet uns`2.95%`zu erwerben; manchmal so hoch wie`3.6%`Teilrückerstattungen verursachen zusätzliche Kosten, da das Zahlungsportal diese als neue Belastung wertet.
-Wir möchten jetzt völlig transparent mit unseren Preisen umgehen, um allen Zeit zu sparen, bevor sie versuchen, weitere Rabatte auszuhandeln, ohne Wink genutzt zu haben. Unser Preismodell ist mehr als fair, und wir müssen auch unseren Lebensunterhalt verdienen.
+Wink berechnet `5,5 % pro Buchung`, um die Plattform zu warten. 
+Der Großteil davon geht an das Zahlungs-Gateway (Visa, MasterCard etc.). Eine durchschnittliche Buchung kostet uns `2,95 %` Akquisitionsgebühr; manchmal bis zu `3,6 %`. Teilrückerstattungen kosten uns zusätzlich, da das Zahlungs-Gateway dies als neue Belastung sieht. 
+Wir möchten jetzt völlig transparent über die Preise informieren, um allen Zeit zu sparen, bevor versucht wird, weitere Rabatte auszuhandeln, ohne Wink genutzt zu haben. Unser Preismodell ist mehr als fair und wir müssen auch unseren Lebensunterhalt bestreiten.
 
-### Abbauen
+### Aufschlüsselung
 
-:::Hinweis \[Bearbeitungsgebühr]
-Wink erhebt eine Bearbeitungsgebühr von 1,5 % pro Buchung. Dadurch können wir alle unsere Dienstleistungen kostenlos anbieten und die Plattformwartung abdecken.
+:::note[Bearbeitungsgebühr]
+Wink erhebt eine Bearbeitungsgebühr von 1,5 % pro Buchung. Dies ermöglicht es uns, alle unsere Dienste kostenlos anzubieten und deckt die Wartung der Plattform ab.
 :::
 
-:::Hinweis \[Zahlungsgebühr]
-TripPay erhebt eine Zahlungsgebühr von 4,0 % pro Buchung. Diese Gebühr deckt die Zahlungsabwicklung des Reisenden ab.
+:::note[Zahlungsgebühr]
+TripPay erhebt eine Zahlungsgebühr von 4,0 % pro Buchung. Diese deckt die Akquisition der Zahlung vom Reisenden ab.
 :::
 
-:::Hinweis \[Geldauszahlung]
-Für die Überweisung von Geldern auf Ihr Konto fallen Gebühren an. Diese hängen von der gewählten Auszahlungsmethode ab. Wir unterstützen derzeit:
+:::note[Auszahlung der Gelder]
+Für die Überweisung der Gelder auf dein Konto fallen Gebühren an. Diese hängen von der von dir gewählten Auszahlungsart ab. Wir unterstützen derzeit:
 
-* **Virtuelle Kreditkarte**(nur Hotels) ~2,0 %
-* **Banküberweisung**Die Kosten hängen von Ihrem Standort und dem Zielland ab. Wir bieten einen Angebotsrechner an, den Sie nutzen können, wenn Ihr Konto über ausreichend Guthaben verfügt.
+- **Virtuelle Kreditkarte** (nur Hotels) ~2,0 %
+- **Banküberweisung** Die Kosten hängen vom Land ab, in dem du dich befindest, und von dem Land, aus dem die Gelder gesendet werden. Wir bieten einen Angebotsrechner an, den du nutzen kannst, wenn Guthaben auf deinem Konto verfügbar ist.
 
-Wenn Sie möchten, dass wir eine andere Auszahlungsmethode unterstützen, senden Sie uns eine E-Mail.
-::
+Wenn du möchtest, dass wir eine andere Auszahlungsart unterstützen, sende uns eine E-Mail.
+:::
 
 ## Modell 2
 
-Dieses Modell ist nur für Reisebüros verfügbar, die in ihrer Region über eine Reisebürolizenz verfügen und als Vertragshändler auftreten möchten. Einige unserer registrierten Reisebüros möchten die Abwicklung der Zahlungen und Auszahlungen an Hotels übernehmen. Im Rahmen dieses Modells sind sie für die Zahlungen verantwortlich und verfügen über die erforderlichen Lizenzen für die Tätigkeit in ihrem Land.
+Dieses Modell steht nur Reisebüros zur Verfügung, die eine Reisebürolizenz in ihrer Region besitzen und als Händler im rechtlichen Sinne auftreten möchten. Einige unserer registrierten Reisebüros möchten für die Zahlungsabwicklung und Auszahlung der Gelder an Hotels verantwortlich sein. In diesem Modell sind sie für die Gelder verantwortlich und besitzen die notwendigen Lizenzen für den Betrieb in ihrem Land.
 
-### Abbauen
+### Aufschlüsselung
 
-:::Hinweis \[Bearbeitungsgebühr]
-Wink erhebt eine Bearbeitungsgebühr von 1,5 % pro Buchung. Dadurch können wir alle unsere Dienstleistungen kostenlos anbieten und die Plattformwartung abdecken.
+:::note[Bearbeitungsgebühr]
+Wink erhebt eine Bearbeitungsgebühr von 1,5 % pro Buchung. Dies ermöglicht es uns, alle unsere Dienste kostenlos anzubieten und deckt die Wartung der Plattform ab.
 :::
 
-Bei diesem Modell zahlen Reisebüros lediglich die Bearbeitungsgebühr von Wink und Wink stellt dem Reisebüro monatlich eine Rechnung.
+Bei diesem Modell zahlen Reisebüros nur die Bearbeitungsgebühr an Wink, und Wink stellt dem Reisebüro monatlich eine Rechnung.
 
 ## Zukünftige Dienste
 
-Wir werden in Zukunft optionale Abonnementdienste anbieten, die den Verkauf für alle noch einfacher machen, oder verwaltete Partnerkonten anbieten, die den Verkauf für Sie übernehmen. Wenn Sie daran interessiert sind, schreiben Sie uns eine E-Mail an<hi@wink.travel>.
+Wir werden in Zukunft optionale abonnementbasierte Dienste anbieten, die den Verkauf für alle noch einfacher machen oder verwaltete Affiliate-Konten, die den Verkauf für dich übernehmen. Wenn dich das interessiert, melde dich bei uns unter [hi@wink.travel](mailto:hi@wink.travel).
 
-Bleiben Sie dran.
+Bleib dran.
 
 ## Plattformeffekt
 
-Da wir sowohl in unserer Größe als auch in unseren Buchungen weiter wachsen, möchten wir Sie über die Auswirkungen unserer Plattform informieren. Mehr Buchungen eröffnen Ihnen die Möglichkeit, Mengenrabatte über unser Zahlungsportal zu erhalten, wodurch wir unsere Bearbeitungsgebühren für alle senken können.
+Schließlich möchten wir, während wir in Größe und Buchungen weiter wachsen, einige der Plattformeffekte mit dir teilen. Mehr Buchungen bringen Möglichkeiten für Mengenrabatte von unserem Zahlungs-Gateway, was uns erlauben würde, die Bearbeitungsgebühr für alle zu senken.
 
-Werden Sie noch heute Mitglied bei Wink und entdecken Sie eine neue, lukrative Möglichkeit, im Gastgewerbe Geschäfte zu machen!
-
+Werde noch heute Teil von Wink und entdecke eine neue, lukrative Art, im Gastgewerbe Geschäfte zu machen!

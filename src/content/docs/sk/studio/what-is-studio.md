@@ -1,18 +1,16 @@
 ---
-title: Čo je Štúdio?
-description: >-
-  Táto stránka vysvetľuje ťažkosti s prístupom k cestovným ponukám a ako to
-  partnerský portál spoločnosti Wink značne uľahčuje.
+title: Čo je Studio?
+description: Táto stránka vysvetľuje ťažkosti s prístupom k cestovnému inventáru a ako Winkov partnerský portál tento prístup výrazne uľahčuje.
 sidebar:
   order: 0
 ---
-Historicky, získanie prístupu k čomukoľvek súvisiacemu s cestovaním a jeho predaj zahŕňali dohody o mlčanlivosti a zložité integrácie medzi dvoma \[alebo viacerými] licencovanými cestovnými kanceláriami, ktoré mali dostatočné technické znalosti, prístup k platobnej bráne a obe spĺňali normy PCI DSS. Bolo to nákladné a časovo náročné úsilie a vstupná bariéra bola pre bežných ľudí neuveriteľne vysoká.
 
-[Štúdio Wink](https://studio.wink.travel) je náš partnerský portál. Vďaka nemu je predaj cestovných potrieb prístupný každému a je rovnako jednoduchý ako zdieľanie odkazu alebo rovnako pokročilý ako prevádzkovanie online cestovnej kancelárie.
+Historicky získavanie prístupu k cestovnému inventáru a jeho predaj zahŕňal NDA a zložité integrácie medzi dvoma [alebo viacerými] licencovanými cestovnými agentúrami, ktoré mali dostatočné technické znalosti, prístup k platobnej bráne a boli v súlade s PCI DSS. Bola to nákladná a časovo náročná snaha a bariéra vstupu bola pre bežných ľudí nepriechodne vysoká.
 
-Partnerský portál zobrazuje dostupné cestovné ponuky od dodávateľov (t. j. hotelov, hostelov, prenájmov, poskytovateľov zážitkov) z celého sveta. Vaším cieľom je nájsť ponuky, ktoré sú pre vás vhodné, a potom ich čo najlepšie prezentovať a predávať svojmu publiku.
+[Wink Studio](https://studio.wink.travel) je náš partnerský portál. Umožňuje predaj cestovného inventáru každému a je tak jednoduchý ako zdieľanie odkazu alebo tak pokročilý ako prevádzkovanie online cestovnej kancelárie.
 
-Štúdio vám ponúka spôsob, ako prehliadať dodávateľov a ich inventár. Keď nájdete niečo, čo sa vám páči, máme pre vás mnoho spôsobov, ako tento inventár predať online a najmä prostredníctvom sociálnych médií.
+Partnerský portál zobrazuje dostupný cestovný inventár od dodávateľov (napr. hotely, hostely, prenájmy, poskytovatelia zážitkov) kdekoľvek na svete. Vaším cieľom je nájsť inventár, ktorý vám vyhovuje, a potom použiť najlepší spôsob, ako tento inventár prezentovať a predávať vašej cieľovej skupine.
 
-Čítajte ďalej a dozviete sa o všetkých funkciách, ktoré ponúkame partnerským programom.
+Studio vám ponúka možnosť prehliadať dodávateľov a ich inventár. Keď nájdete niečo, čo sa vám páči, máme mnoho spôsobov, ako tento inventár predávať online a najmä cez sociálne médiá.
 
+Pokračujte v čítaní a spoznajte všetky funkcie, ktoré ponúkame partnerom.

@@ -1,45 +1,45 @@
 ---
 title: Peruutusehdot
-description: 'Tässä artikkelissa näytetään, miten voit hallita peruutusehtoja Winkissä.'
+description: Tässä artikkelissa näytetään, miten hallinnoit peruutusehtoja Winkissä.
 sidebar:
   order: 12
 ---
-Voit hallita peruutusehtojasi napsauttamalla`Monetize > Cancellation policies`päänavigointipalkista.
 
-Peruutusehdot määrittävät, miten varaajan varoja käsitellään, jos vieras ei pääse paikalle. Peruutusehdot ovat kahdenlaisia:
+Peruutusehtojen hallitsemiseksi klikkaa päävalikosta `Monetize > Cancellation policies`.
 
-1. Hyvitettävä
-2. Ei palautettavissa
+Peruutusehdot määrittävät, miten varauksen maksut käsitellään, jos vieras ei pääsekään paikalle. Peruutusehtoja on kahta erilaista tyyppiä:
 
-Useimmiten nämä kaksi vaihtoehtoa riittävät. Molemmat antavat kuitenkin paljon tilaa mukauttaa peruutusehtoasi entisestään.
+1. Hyvityksen saa
+2. Ei hyvitystä
 
-:::vihje\[Hauska fakta]
-Wink tukee yhteensä 8500 erilaista peruutuskäytäntöä.
+Useimmiten nämä kaksi vaihtoehtoa riittävät. Kumpikin antaa kuitenkin paljon mahdollisuuksia räätälöidä peruutusehtoa tarkemmin.
+
+:::tip[Hauska fakta]
+Wink tukee yhteensä 8500 erilaista peruutusehdon variaatiota.
 :::
 
-Luo peruutusehdot napsauttamalla`Create a new cancellation policy`painiketta.
+Luo peruutusehto klikkaamalla `Create a new cancellation policy` -painiketta.
 
-## Ei palautettavissa
+## Ei hyvitystä
 
-Luodaksesi peruutusehdon, jossa maksua ei hyvitetä, aseta kytkin 🛑-asentoon pois päältä, kun sinulta kysytään, onko käytäntö hyvitettävä.
+Luo ei-hyvitystä peruutusehto asettamalla kytkin 🛑 pois päältä, kun kysytään, onko ehto hyvityksen saanut.
 
-### Asetukset
+### Vaihtoehdot
 
-Voit halutessasi määrittää`non-refundable`politiikkaa edelleen paremman valvonnan saavuttamiseksi.
+Voit halutessasi määrittää `ei hyvitystä` -ehtoa tarkemmin saadaksesi enemmän hallintaa.
 
-* **Paljonko peruutuksesta veloitetaan asiakkaalta?**&#x4F;letusarvoisesti ei-hyvitettävä vakuutus on 100 %:sti ei-hyvitettävä vakuutus. Voit hienosäätää summaa täällä.*esim. 50 % kokonaishinnasta*
-* **Onko maksulla määräaikaa?**&#x4A;os hienosääsit määrää, voit hienosäätää sitä edelleen asettamalla, kuinka kauan kyseinen määrä pysyy voimassa.*esim. viimeistään 3 päivää ennen saapumista*
-* **Paljonko asiakkaalta veloitetaan peruutuksesta määräajan jälkeen?**&#x4A;os vieras ylittää yllä asetetun määräajan, voit asettaa summan, jonka vieras maksaa määräajan jälkeen.*esim. 70 % kokonaishinnasta*
+- **Kuinka paljon vieraalta veloitetaan peruutuksesta?** Oletuksena ei-hyvitystä ehto tarkoittaa 100 %:n hyvityksettömyyttä. Voit hienosäätää määrää täällä. *esim. 50 % kokonaishinnasta*
+- **Onko veloituksella määräaikaa?** Jos hienosäädit määrää, voit säätää sitä edelleen asettamalla, kuinka kauan tuo määrä on voimassa. *esim. Saapumista edeltävät 3 päivää*
+- **Kuinka paljon vieraalta veloitetaan peruutuksesta määräajan jälkeen?** Jos vieras peruuttaa määräajan jälkeen, voit asettaa, kuinka paljon vieras maksaa määräajan jälkeen. *esim. 70 % kokonaishinnasta*
 
-## Hyvitettävä
+## Hyvityksen saa
 
-Luodaksesi hyvitettävän peruutusehdon, aseta kytkin asentoon ✅ päällä, kun sinulta kysytään, onko käytäntö hyvitettävä.
+Luo hyvityksen saanut peruutusehto asettamalla kytkin ✅ päälle, kun kysytään, onko ehto hyvityksen saanut.
 
-### Asetukset
+### Vaihtoehdot
 
-Voit halutessasi määrittää`refundable`politiikkaa edelleen paremman valvonnan saavuttamiseksi.
+Voit halutessasi määrittää `hyvityksen saa` -ehtoa tarkemmin saadaksesi enemmän hallintaa.
 
-* **Kuinka kauan ennen saapumista vieras voi peruuttaa varauksen maksutta?**&#x4F;letusarvoisesti hyvitettävä vakuutus on aina 100 % hyvitettävä. Voit hienosäätää määräaikaa täällä.*esim. 3 päivää ennen saapumista*
-* **Mitä asiakkaalta veloitetaan, jos peruutus tapahtuu yllä mainitun määräajan jälkeen?**&#x4A;os olet hienosäätänyt määräaikaa, voit asettaa summan, jonka vieras maksaa määräajan jälkeen.*esim. 50 % kokonaishinnasta*
-* **Kuinka paljon vieraalta pitäisi veloittaa, jos hän ei saavu paikalle?**&#x4A;os vieras ei saavu paikalle, voit asettaa hinnan, joka vieraalta veloitetaan.`No show`.*esim. 100 % kokonaishinnasta*
-
+- **Kuinka kauan ennen saapumista vieras voi peruuttaa maksutta?** Oletuksena hyvityksen saa -ehto on aina 100 % hyvityksen saanut. Voit hienosäätää määräaikaa täällä. *esim. 3 päivää ennen saapumista*
+- **Mitä vieraalta veloitetaan, jos peruutus tapahtuu yllä asetetun määräajan jälkeen?** Jos hienosäädit määräaikaa, voit asettaa, kuinka paljon vieras maksaa määräajan jälkeen. *esim. 50 % kokonaishinnasta*
+- **Kuinka paljon vieraalta veloitetaan, jos hän ei saavu?** Jos vieras ei saavu paikalle, voit asettaa, kuinka paljon vieras maksaa `No show` -tapauksessa. *esim. 100 % kokonaishinnasta*

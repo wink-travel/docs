@@ -1,438 +1,437 @@
 ---
 title: Pogoji storitve
-description: Lahko dostopni in posodobljeni pogoji za vse naše partnerske uporabnike.
+description: Enostavno dostopni in ažurni pogoji za vse naše affiliate uporabnike.
 sidebar:
   order: 12
 ---
+
 :::note
-Zadnja posodobitev 12. 6. 2024
+Zadnja posodobitev 2024-06-12
 :::
 
-**SPLOŠNI POGOJI POSLOVANJA WINK ZA PARTNERJE**
+**SPLOŠNI POGOJI IN DOLOČILA WINK ZA AFFILIATE PARTNERJE**
 
-Z registracijo in prijavo v partnerski program Wink kot pridruženi partner potrjuje, da je pridruženi partner pregledal, razumel, priznal in sprejel določila in pogoje te partnerske pogodbe (»pogodba«).\
+Z registracijo in prijavo v partnerski program Wink kot affiliate partner, je affiliate partner s tem pregledal, razumel, potrdil in sprejel pogoje te affiliate pogodbe (v nadaljevanju "pogodba").  
 MED:
 
-1. **TRAVELIKO SINGAPORE D.O.O.**., družba, ustanovljena v skladu s singapursko zakonodajo, s sedežem na naslovu #03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095, z davčno številko 201437335D (v nadaljevanju "Wink"), in
-2. **POVEZANI PARTNER**, katerih podatki so navedeni v registracijskem obrazcu za pridruženega partnerja ali so bili posredovani na spletu ("pridruženi partner").
+1. **TRAVELIKO SINGAPORE PTE. LTD**., podjetjem, ustanovljenim po zakonih Singapurja s sedežem na naslovu \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, z davčno številko 201437335D (v nadaljevanju "Wink"), in  
+2. **AFFILIATE PARTNERJEM**, katerega podatki so navedeni v obrazcu za registracijo affiliate partnerja ali so bili oddani preko spleta (v nadaljevanju "Affiliate"). 
 
-Wink in podružnica sta »stranka« te pogodbe in se skupaj imenujeta »stranki«.
+Wink in Affiliate sta "Stranki" te pogodbe in skupaj se imenujeta "Stranki".
 
-**KER:**\
-(i) Wink upravlja spletni sistem (»Sistem«), prek katerega lahko sodelujoče namestitve (skupaj »Ponudniki nastanitev«, vsak »Ponudnik nastanitve«) dajo na voljo svojo ponudbo za rezervacijo in prek katerega lahko gostje opravijo rezervacije pri teh ponudnikih nastanitev (»Storitev«);\
-(ii) Wink ne poseduje, ne nadzoruje, ne ponuja in ne upravlja nobenih oglasov. Wink ni stranka v pogodbah, sklenjenih neposredno med ponudniki nastanitev in gosti. Wink ne deluje kot zastopnik v nobeni vlogi za ponudnike nastanitev;\
-(iii) Wink vzdržuje in uporablja lastna spletna mesta (»spletna mesta Wink«) ter zagotavlja Storitev in povezave do Storitve na spletnih mestih tretjih oseb;\
-(iv) Podružnica ima v lasti, nadzoruje, gosti in/ali upravlja eno ali več internetnih domen, spletnih mest in aplikacij;\
-(v) Partner in Wink želita, da Partner Storitev (neposredno ali posredno) omogoči svojim strankam in obiskovalcem Partnerjevega spletnega mesta(-ov) in Aplikacije(-j) v takšni obliki in pod takimi pogoji (v nadaljevanju »Pogoji«), kot so določeni v tej Pogodbi.
+**KER:**  
+(i) Wink upravlja spletni sistem (v nadaljevanju "Sistem"), preko katerega sodelujoči ponudniki nastanitev (skupaj "Ponudniki nastanitev", posamezno "Ponudnik nastanitve") omogočajo svojo zalogo za rezervacije, preko katerega lahko Gostje opravijo rezervacije pri teh ponudnikih nastanitev (v nadaljevanju "Storitev");  
+(ii) Wink ne poseduje, ne upravlja, ne ponuja ali ne nadzoruje nobenih seznamov. Wink ni stranka pogodb, sklenjenih neposredno med ponudniki nastanitev in gosti. Wink ne deluje kot agent za ponudnike nastanitev;  
+(iii) Wink vzdržuje in izkorišča lastne spletne strani (v nadaljevanju "Wink spletne strani") ter prav tako nudi Storitev in povezave do Storitve na spletnih straneh tretjih oseb;  
+(iv) Affiliate poseduje, nadzoruje, gosti in/ali upravlja eno ali več internetnih domen, spletnih strani in aplikacij;  
+(v) Affiliate in Wink želita, da Affiliate omogoči Storitev (posredno ali neposredno) svojim strankam in obiskovalcem Affiliate spletnih strani in aplikacij v obliki in pod pogoji (v nadaljevanju "Pogoji"), kot so določeni v tej pogodbi.
 
-**Zato sta se pogodbenici dogovorili o naslednjem:**
+**ZATO sta se Stranki dogovorili, kot sledi:**
 
-**1. Definicije**
+**1. Opredelitve**
 
-1.1 Poleg izrazov, opredeljenih drugje v tej pogodbi, se v tej pogodbi uporabljajo naslednje opredelitve, razen če ni razvidno nasprotno:
+1.1 Poleg izrazov, definiranih drugje v tej pogodbi, veljajo naslednje opredelitve skozi celotno pogodbo, razen če ni drugače navedeno:
 
-**"Nastanitev"**&#x70;omeni katero koli obliko nastanitve, vključno z, vendar ne omejeno na, ponudnike nastanitev, motele, penzione, prenočišča z zajtrkom, hostle, vile, apartmaje (s storitvami ali brez), koče, gostišča, nastanitve za goste, letovišča, stanovanja, kampe in vse druge (vrste) nastanitve ali ponudnike nastanitve (ne glede na to, ali so na voljo na spletnih mestih Wink ali ne).\
-**„Ponudnik(-i) nastanitve“**&#x70;omeni katero koli stranko, ki ustvari račun na Winku z namenom prodaje svojih**lastno**popis sob in pomožnih storitev prek platforme Wink.\
-**"Blagovne znamke ponudnikov nastanitev"**&#x70;omeni kateri koli izraz ali ključno besedo, ki je enak ali zavajajoče podoben (vključno z vsemi različicami, prevodi, napačnim črkovanjem in edninskim/množinskim oblikami) katerim koli blagovnim znamkam ali trgovskemu imenu (registriranemu ali neregistriranemu), ki pripada ali je v lasti katerega koli ponudnika nastanitve\
-**"Podružnica"**&#x70;omeni stranko, katere ustrezni (kontaktni) podatki so navedeni v registracijskem obrazcu pridruženega partnerja.\
-**"Odhodi podružnic"**&#x69;ma pomen, kot je določen v točki 5.4.\
-**"Skupina partnerjev"**&#x70;omeni Podružnico in končno holding družbo Podružnice (vključno s skupino družb ali subjektov, ki so pod (neposrednim ali posrednim) nadzorom (končne holding družbe ali delničarja(jev) Podružnice).\
-**"Obrazec za registracijo partnerskega programa"**&#x70;omeni spletni obrazec za prijavo in registracijo, ki ga mora izpolniti podružnica.\
-**"Partnerska spletna mesta"**&#x70;omeni spletno(-a) mesto(-a) in aplikacijo(-e), ki so v lasti, pod nadzorom, gostovanju in upravljanju Podružnice, na katerih bo Storitev na voljo.\
-**»Aplikacija(e)«**&#x70;omeni izvorno aplikacijo za mobilne naprave.\
-**"Sporazum"**&#x70;omeni ta sporazum.\
-**"Rezervacija"**&#x70;omeni uspešno transakcijo, ki jo Wink zabeleži od Gosta za rezervacijo Ponudnika nastanitve.\
-**"Provizija za rezervacijo"**&#x6A;e 1,5 %, ki ga Wink odšteje od partnerske provizije kot provizijo za obdelavo.\
-**"Vrednost rezervacije"**&#x6A;e skupni znesek, ki ga posrednik plačil prejme od gosta za rezervacijo.\
-**"Klavzula"**&#x70;omeni klavzulo te pogodbe.\
-**"Komisija"**&#x70;omeni znesek, ki ga je treba dolgovati partnerju pred odbitkom provizije za plačilne storitve in provizije za rezervacijo za vsako izvedeno transakcijo v skladu s to pogodbo.\
-**"Povezave"**&#x70;omeni vse spletne komponente, povezave, ciljne strani in/ali vire JSON in/ali globoke povezave in/ali hiperpovezave, ki jih je ustvaril, gostil in vzdržuje Wink.\
-**"Vsebina"**&#x70;omeni vse (opisne) informacije ponudnikov nastanitev, ki so na voljo na spletni strani Wink, vključno z, vendar ne omejeno na, informacije in opise ponudnikov nastanitev, ocene gostov, metapodatke, podrobnosti o objektih in pravilnike (o odpovedi/neprihodu) ter splošne pogoje ponudnikov nastanitev (vključno z morebitnimi prevodi le-teh) ter fotografije, videoposnetke, slike, vendar brez cen in razpoložljivosti (vključno z morebitnimi posodobitvami, spremembami, zamenjavami, dodatki ali spremembami).\
-**"Nadzor"**&#x70;omeni posedovanje moči ali sposobnosti (neposredno ali posredno, samostojno ali v sodelovanju z drugimi, bodisi z lastništvom glasovalnih vrednostnih papirjev ali drugih lastniških deležev, partnerstva ali kako drugače) (i) izvajati ali povzročiti izvajanje več kot polovice glasovalnih pravic na skupščini delničarjev družbe, (ii) imenovati več kot polovico ((ne)izvršnih) direktorjev ali nadzornih direktorjev družbe ali (iii) usmerjati ali povzročati usmeritev poslovodstva v zvezi z družbo.\
-**"Podatki o strankah"**&#x70;omeni osebno določljive podatke Gosta (»PII«), vključno z, vendar ne omejeno na, ime Gosta, naslov (vključno z e-poštnim naslovom), podatke o kreditni kartici in druge zaupne in zasebne podatke Gosta.\
-**"Dvojna porcija"**&#x70;omeni več oglasov na isti strani z rezultati iskalnika z namenom usmerjanja prometa na podobna spletna mesta ali strani s podobno vsebino.\
-**"Gost"**&#x70;omeni obiskovalca spletnih mest ali aplikacij, ki je prek storitve opravil rezervacijo ponudnika nastanitve.\
-**"Pravica intelektualne lastnine"**&#x70;omeni kateri koli patent, avtorske pravice, izume, pravice do podatkovnih baz, pravico do vzorčnega modela, registrirani model, blagovno znamko, trgovsko ime, blagovno znamko, logotipe, storitveno znamko, strokovno znanje, uporabni model, neregistriran model ali, kjer je to ustrezno, katero koli prijavo za takšno pravico, strokovno znanje, trgovsko ali poslovno ime, ime domene (s katero koli domeno najvišje ravni (koda države), npr. .com, .net., co.th, .de, .fr, eu, co.uk. itd.) ali drugo podobno pravico ali obveznost, registrirano ali neregistrirano, ali drugo industrijsko ali intelektualno lastninsko pravico, ki obstaja na katerem koli ozemlju ali v kateri koli jurisdikciji na svetu.\
-**"JSON"**&#x70;omeni JSON povezavo med bazo podatkov Wink in bazo podatkov partnerja, ki jo lahko zagotovi Wink pod pogoji, o katerih se je treba dogovoriti.\
-**"Povezava"**&#x70;omeni vdelano ikono, predmet, grafiko ali besedilo na spletni strani ali v e-poštnem sporočilu, ki je sestavljen iz hipertekstovnega kazalca na URL naslov Wink na partnerskem spletnem mestu (spletnih mestih).\
-**"Transakcija trgovca"**&#x70;omeni materializirano transakcijo, pri kateri je plačilni posrednik registrirani trgovec, pri čemer plačilni posrednik prejme sredstva neposredno od gosta za rezervacijo.\
-**»Materializirana transakcija(e)«**&#x70;omeni rezervacijo obiskovalca partnerskega spletnega mesta (spletnih mest) in/ali aplikacije (aplikacij), ki je prek povezave opravil rezervacijo pri ponudniku nastanitve, in ta rezervacija je dejansko zagotovila nastanitev, kar je ponudnik nastanitve potrdil podjetju Wink. Materializirane transakcije bodo vedno prilagojene spremembam (npr. skrajšanim bivanjem), vračilom bremenitev, goljufijam s kreditnimi karticami, slabim dolgom ali drugim. Da bi se izognili dvomu, odpovedi, neprihodi itd. nikoli ne morejo biti obravnavani kot materializirane transakcije.\
-**"Mikro spletno mesto"**&#x70;omeni vse različice primarnega spletnega mesta Wink z belo oznako, ki so v lasti, jih je ustvaril, gostil in vzdržuje Wink. Mikro spletno mesto je lahko označeno z logotipom »powered by Wink« ali enakovrednim znakom.\
-**"Neto provizija"**&#x6A;e znesek, ki ga je treba dolgovati partnerju za izvedeno(-e) transakcijo(-e) po odbitku provizije za plačilno storitev in provizije za rezervacijo.\
-**"Plačano iskanje"**&#x70;omeni katero koli obliko spletnega oglaševanja, ki predstavitev oglasa veže na določeno iskalno poizvedbo na podlagi ključne besede.\
-**"Posrednik plačil"**&#x68;čerinska družba v 100-odstotni lasti Traveliko Singapore Pte. Ltd., ki upravlja plačilne storitve, pobira plačila od gostov (»vplačilo«) z bremenitvijo plačilne metode, povezane z njihovim nakupom, kot so kreditna kartica, debetna kartica, bančno nakazilo, kriptovalute ali PayPal itd. ... in izplača dolgovani znesek (»neto provizija«) na lokalni bančni račun partnerja.\
-**"Plačilo"**&#x70;omeni pridobitev plačila, ki ga gost opravi s strani plačilnega posrednika.\
-**"Izplačilo"**&#x70;omeni izplačilo neto provizije partnerju s strani plačilnega posrednika.\
-**"Provizija za plačilno storitev"**&#x6A;e 4 %, ki jih posrednik plačil odšteje od partnerske provizije kot provizijo za pridobitev plačil.\
-**"Primerjava cen"**&#x70;omeni primerjavo cen in/ali razpoložljivosti ponudnikov nastanitev, ki je na voljo na dveh ali več spletnih platformah za rezervacije ponudnikov nastanitev.\
-**"Preprodaja"**&#x69;ma pomen, kot je določen v točki 4.1.7.\
-**"Portal prodajalcev"**&#x69;ma pomen, kot je določen v točki 4.1.8.\
-**"SEM"**&#x70;omeni trženje v iskalnikih in vključuje katero koli obliko spletnega trženja, ki si prizadeva za promocijo spletnih mest s povečanjem njihove vidnosti na straneh z rezultati iskalnikov z uporabo optimizacije za iskalnike, plačanega umeščanja, kontekstualnega oglaševanja ali plačanega vključevanja.\
-**"SEO"**&#x70;omeni optimizacijo za iskalnike in vključuje postopek (i) izboljšanja obsega ali kakovosti prometa na spletno mesto ali spletno stran iz iskalnikov prek »naravnih« ali neplačanih (»organskih« ali »algoritmičnih«) rezultatov iskanja ali (ii) doseganja ali ustvarjanja izboljšane ali boljše uvrstitve v rezultatih iskalnikov za določeno ključno besedo ali ključne besede.\
-**»Podobno ime domene«**&#x69;ma pomen, kot je določen v točki 4.7.1.\
-**"Predpisi o neželeni pošti"**&#x70;omeni vse politike, predpise, omejitve ali obveznosti, ki jih občasno predpišejo, razglasijo za veljavne ali objavijo platforme tretjih oseb, ki (i) prepovedujejo ali preprečujejo dvojno prikazovanje, prikrivanje ali katero koli podobno tehniko ali metodo ali (ii) vsebujejo takšne nadaljnje omejitve ali predpise v zvezi s pošiljanjem neželene pošte ali ohranjanjem edinstvene uporabniške izkušnje.\
-**"Platforme tretjih oseb"**&#x70;omeni kateri koli iskalnik (ponudnik trženja) (tretje osebe), metaiskalnik, iskalne pajke, spletna mesta za iskanje potovanj, spletna mesta za primerjavo cen, skupnosti družbenih omrežij, brskalnike, storitve deljenja in gostovanja vsebin ter storitve multimedijskega bloganja ali druge (podobne) kanale ali druge oblike medijev (gostovanje prometa), bodisi na spletu bodisi brez povezave.\
-**"Spletna mesta"**&#x70;omeni spletno(-a) mesto(-a) družbe Wink in njenih povezanih družb ter pridruženih partnerjev (vključno s spletnim(-i) mestom(-i) pridruženega podjetja), na katerem(-ih) je na voljo izdelek in storitev družbe Wink.\
-**"Tekmovalka v namigu"**&#x70;omeni katerega koli neposrednega ali posrednega konkurenta podjetja Wink (razen, da bi se izognili dvomu, podjetij v skupini podjetij Wink).\
-**"Podatki o namigu"**&#x70;omeni pravice intelektualne lastnine družbe Wink in vsebine, kot so posredovane partnerju v skladu s to pogodbo, ter druge informacije, ki so občasno v lasti ali jih uporablja družba Wink ali so utelešene ali vključene na spletnih mestih družbe Wink ali ki jih družba Wink da na voljo partnerju (npr. cene in razpoložljivost).\
-**"Spletna mesta Wink"**&#x70;omeni spletno(-a) mesto(-a) družbe Wink, vključno z, vendar ne omejeno na, Wink, traveliko.com in vsemi lokalnimi ali alternativnimi različicami le-teh (s katero koli domeno najvišje ravni), kot tudi vse njihove različice, vključno z, vendar ne nujno omejeno na, mobilno spletno mesto, mobilne aplikacije itd.
+**"Nastanitev"** pomeni katerokoli obliko nastanitve, vključno, a ne omejeno na ponudnike nastanitev, motele, gostišča, bed & breakfast, hostle, vile, apartmaje (z ali brez storitev), lovske koče, prenočišča, letovišča, kondominiume, kamp nastanitve in druge vrste nastanitev ali ponudnike prenočišč (ne glede na to, ali so na voljo na Wink spletnih straneh).  
+**"Ponudnik nastanitev"** pomeni katerokoli Stranko, ki ustvari račun na Wink z namenom prodaje svoje **lastne** sobe in dodatnih storitev preko Wink platforme.  
+**"Blagovne znamke ponudnikov nastanitev"** pomeni kateri koli izraz ali ključna beseda, ki je enaka ali zavajajoče podobna (vključno z različicami, prevodi, napačnimi črkovanji in edninskimi/množinskimi oblikami) katerim koli blagovnim znamkam ali trgovskim imenom (registriranim ali neregistriranim), ki pripadajo ali so v lasti katerega koli ponudnika nastanitev.  
+**"Affiliate"** pomeni Stranko, katere ustrezni (kontaktni) podatki so navedeni v obrazcu za registracijo affiliate partnerja.  
+**"Affiliate odhodi"** ima pomen, določen v členu 5.4.  
+**"Affiliate skupina"** pomeni Affiliate in končno holding družbo Affiliate (vključno s skupino podjetij ali entitet, ki so pod (posrednim ali neposrednim) nadzorom (končne holding družbe ali delničarjev) Affiliate).  
+**"Obrazec za registracijo affiliate partnerja"** pomeni spletni obrazec za prijavo in registracijo, ki ga izpolni Affiliate.  
+**"Affiliate spletna stran(e)"** pomeni spletno stran(e) in aplikacijo(e), ki jih poseduje, nadzoruje, gosti in upravlja Affiliate, na katerih bo Storitev na voljo.  
+**"Aplikacija(e)"** pomeni nativno aplikacijo za mobilne naprave.  
+**"Pogodba"** pomeni to pogodbo.  
+**"Rezervacija"** pomeni uspešno transakcijo, ki jo Wink zabeleži od gosta za rezervacijo pri ponudniku nastanitev.  
+**"Provizija za rezervacijo"** je 1,5 % provizija, ki jo Wink odšteje od affiliate provizije kot strošek obdelave.  
+**"Vrednost rezervacije"** je skupni znesek, ki ga plačnik plačila zbere od gosta za rezervacijo.  
+**"Člen"** pomeni člen te pogodbe.  
+**"Provizija"** pomeni znesek, ki pripada Affiliate pred odbitkom stroškov plačilne storitve in provizije za rezervacijo za vsako realizirano transakcijo v skladu s to pogodbo.  
+**"Povezave"** pomeni vse spletne komponente, povezave, pristajalne strani in/ali JSON vire in/ali globoke povezave in/ali hiperpovezave, ki jih ustvari, gosti in vzdržuje Wink.  
+**"Vsebina"** pomeni vse (opisne) informacije o ponudnikih nastanitev, ki so na voljo na Wink spletni strani, vključno, a ne omejeno na informacije in opise ponudnikov nastanitev, ocene gostov, meta podatke, podrobnosti o objektih in (politike odpovedi/neprihoda) ter splošne pogoje ponudnikov nastanitev (vključno z morebitnimi prevodi) ter fotografije, video posnetke, slike, vendar izključuje cene in razpoložljivost (vključno z vsemi posodobitvami, spremembami, zamenjavami, dodatki ali popravki).  
+**"Nadzor"** pomeni posedovanje moči ali sposobnosti, da (posredno ali neposredno, samostojno ali v sodelovanju z drugimi, bodisi preko lastništva glasovalnih vrednostnih papirjev ali drugih lastniških deležev, partnerstva ali drugače) (i) uveljavlja ali povzroči uveljavitev več kot polovice glasovalnih pravic na skupščini delničarjev podjetja, (ii) imenuje več kot polovico (ne)izvršnih direktorjev ali nadzornih organov podjetja, ali (iii) usmerja ali povzroči usmerjanje upravljanja podjetja.  
+**"Podatki o strankah"** pomeni osebne podatke gosta ("PII"), vključno, a ne omejeno na ime gosta, naslov (vključno z e-poštnim naslovom), podatke o kreditni kartici in druge zaupne in zasebne informacije gosta.  
+**"Dvojno oglaševanje"** pomeni več oglasov na isti strani rezultatov iskalnika z namenom usmerjanja prometa na podobne spletne strani ali strani s podobno vsebino.  
+**"Gost"** pomeni obiskovalca spletnih strani ali aplikacij, ki je opravil rezervacijo pri ponudniku nastanitev preko Storitve.  
+**"Pravica intelektualne lastnine"** pomeni katerokoli patentno pravico, avtorske pravice, izume, pravice do baz podatkov, pravice do oblikovanja, registrirano oblikovanje, blagovno znamko, trgovsko ime, znamko, logotipe, storitvene znamke, know-how, uporabniški model, neregistrirano oblikovanje ali, kjer je primerno, katerokoli prijavo za takšno pravico, know-how, trgovsko ali poslovno ime, domeno (z ne glede na vrhnjo domeno, npr. .com, .net, .co.th, .de, .fr, eu, .co.uk itd.) ali drugo podobno pravico ali obveznost, bodisi registrirano ali neregistrirano, ali drugo industrijsko ali intelektualno lastninsko pravico, ki obstaja v katerikoli jurisdikciji na svetu.  
+**"JSON"** pomeni JSON povezavo med Wink bazo podatkov in bazo podatkov Affiliate, ki jo lahko Wink zagotovi pod pogoji, ki jih je treba dogovoriti.  
+**"Povezava"** pomeni vdelano ikono, objekt, grafiko ali besedilo znotraj spletne strani ali e-pošte, ki vsebuje hiperpovezavo do URL naslova Wink na Affiliate spletnih straneh.  
+**"Trgovinska transakcija"** pomeni realizirano transakcijo, pri kateri je plačilni posrednik uradni trgovec, ki zbira sredstva neposredno od gosta za rezervacijo.  
+**"Realizirane transakcije"** pomenijo rezervacijo obiskovalca Affiliate spletnih strani in/ali aplikacij, ki je preko Povezave opravil rezervacijo pri ponudniku nastanitev, in ki je rezultirala v dejanski izvedbi nastanitve, kot je potrjeno Wink s strani ponudnika nastanitev. Realizirane transakcije bodo vedno prilagojene za spremembe (npr. skrajšane bivanja), vračila, goljufije s kreditnimi karticami, slabe terjatve ali drugače. Za izogib dvomom, odpovedi, neprihodi ipd. nikoli ne štejejo kot realizirane transakcije.  
+**"Mikro stran"** pomeni vse različice osnovne Wink spletne strani z belo etiketo, ki jih poseduje, ustvarja, gosti in vzdržuje Wink. Mikro stran je lahko označena z logotipom 'powered by Wink' ali ekvivalentom.  
+**"Neto provizija"** je znesek, ki pripada Affiliate za realizirane transakcije po odbitku stroškov plačilne storitve in provizije za rezervacijo.  
+**"Plačano iskanje"** pomeni katerokoli obliko spletnega oglaševanja, ki povezuje prikaz oglasa s specifično iskalno zahtevo na podlagi ključnih besed.  
+**"Plačilni posrednik"** je v celoti v lasti Traveliko Singapore Pte. Ltd., ki upravlja plačilne storitve, zbira plačila od gostov ("Pay-in") z zaračunavanjem plačilne metode, povezane z nakupom, kot so kreditna kartica, debetna kartica, bančno nakazilo, kriptovalute ali PayPal itd., in izplačuje sredstva ("Neto provizijo") na lokalni bančni račun Affiliate.  
+**"Pay-in"** pomeni pridobitev plačila, ki ga izvede plačilni posrednik od gosta.  
+**"Pay-out"** pomeni izplačilo Neto provizije Affiliate s strani plačilnega posrednika.  
+**"Strošek plačilne storitve"** je 4 % strošek, ki ga plačilni posrednik odšteje od affiliate provizije kot strošek pridobivanja plačila.  
+**"Primerjava cen"** pomeni primerjavo cen in/ali razpoložljivosti ponudnikov nastanitev, ki je na voljo z dveh ali več spletnih platform za rezervacijo nastanitev.  
+**"Preprodaja"** ima pomen, določen v členu 4.1.7.  
+**"Prodajni portal"** ima pomen, določen v členu 4.1.8.  
+**"SEM"** pomeni marketing na iskalnikih in vključuje katerokoli obliko spletnega marketinga, ki si prizadeva povečati vidnost spletnih strani na straneh rezultatov iskalnikov z uporabo optimizacije iskalnikov, plačanega umeščanja, kontekstualnega oglaševanja ali plačanega vključevanja.  
+**"SEO"** pomeni optimizacijo iskalnikov in vključuje proces (i) izboljšanja količine ali kakovosti prometa na spletno stran ali spletno stran z iskalnikov preko "naravnih" ali neplačanih ("organskih" ali "algoritemsko") rezultatov iskanja, ali (ii) doseganja ali ustvarjanja izboljšanega ali boljšega uvrščanja v rezultatih iskalnikov za določeno ključno besedo ali ključne besede.  
+**"Podobno ime domene"** ima pomen, določen v členu 4.7.1.  
+**"Pravila o neželeni pošti"** pomenijo vse politike, predpise, omejitve ali obveznosti, ki jih občasno določajo, razglasijo za veljavne ali objavijo platforme tretjih oseb, ki (i) prepovedujejo ali preprečujejo dvojno oglaševanje, prikrivanje ali katerokoli podobno tehniko ali metodo, ali (ii) vsebujejo dodatne omejitve ali predpise glede neželene pošte ali ohranjanja edinstvene uporabniške izkušnje.  
+**"Platforme tretjih oseb"** pomenijo kateri koli (tretji) iskalnik (ponudnik marketinga), meta iskalnik, pajki iskalnikov, spletne strani za iskanje potovanj, strani za primerjavo cen, družabna omrežja, brskalnike, storitve za deljenje in gostovanje vsebin ter multimedijske blogerske storitve ali druge (podobne) kanale ali druge oblike (gostovanja prometa) medijev, bodisi spletne ali nespletne.  
+**"Spletne strani"** pomenijo spletne strani Wink in njegovih povezanih podjetij ter partnerskih podjetij (vključno z Affiliate spletnimi stranmi), na katerih je na voljo izdelek in storitev Wink.  
+**"Konkurenčno podjetje Wink"** pomeni katerega koli neposrednega ali posrednega konkurenta Wink (razen, za izogib dvomom, podjetij v skupini Wink).  
+**"Podatki Wink"** pomenijo pravice intelektualne lastnine Wink in Vsebino, ki je na voljo Affiliate v skladu s to pogodbo, ter druge informacije, ki jih Wink občasno poseduje ali uporablja ali so vključene v Wink spletne strani ali so na voljo Affiliate (npr. cene in razpoložljivost).  
+**"Wink spletne strani"** pomenijo spletne strani Wink, vključno, a ne omejeno na Wink, traveliko.com in vse lokalne ali alternativne različice (z ne glede na vrhnjo domeno), kot tudi vse njihove različice, vključno, a ne omejeno na mobilno spletno stran, mobilne aplikacije itd.
 
 **1.2 Brez partnerstva**
 
-1.2.1 Ta pogodba ni namenjena ustvarjanju skupnega podjetja ali odnosa partnerjev, partnerstva ali naročnika in zastopnika med strankama in med njimi, niti se nobena od njenih določb ali dogovorov ne sme razlagati kot taka.
+1.2.1 Ta pogodba ni namenjena in nič v njej ali v kakršnih koli dogovorih, ki jih vsebuje, ne sme biti razumljeno kot ustanovitev skupnega podjetja ali razmerja partnerjev, partnerstva ali zastopnika in naročnika med Strankama.
 
-1.2.2 Razen če se Wink pisno ne dogovori drugače ali če ni drugače določeno v tej pogodbi, partner na svojem spletnem mestu (spletnih mestih) ne sme objaviti nobene izjave, bodisi izrecne bodisi implicitne, da je spletno mesto del spletnega mesta Wink, da ga podpira ali da je uradno spletno mesto Wink.
+1.2.2 Razen če je pisno drugače dogovorjeno z Wink ali drugače določeno v tej pogodbi, Affiliate ne sme nikjer na Affiliate spletnih straneh objaviti nobene izjave, bodisi izrecne ali implicitne, da je spletna stran del, potrjena ali uradna spletna stran Wink.
 
-1.2.3 Podružnica lahko neposredno sodeluje s ponudniki nastanitev, da določi ekskluzivne ali prednostne cene, pogoje, promocije, dodatke k paketom in podobno.
+1.2.3 Affiliate lahko neposredno sodeluje s ponudniki nastanitev za določitev ekskluzivnih ali prednostnih cen, pogojev, promocij, paketov, dodatkov in podobno.
 
-**2. Področje uporabe tega sporazuma**
+**2. Obseg te pogodbe**
 
-**2.1 Neizključnost**\
-V skladu s pogoji te pogodbe podružnica deluje kot neizključni distributer (podružnica) podjetja Wink.
+**2.1 Neekskluzivnost**  
+Ob upoštevanju pogojev te pogodbe bo Affiliate deloval kot neekskluzivni distributer (affiliate) Wink.
 
 **2.2 Storitev**
 
-2.2.1 Stranki se dogovorita, da bo Wink za čas veljavnosti te pogodbe omogočil Storitev partnerju, kot je določeno v Obrazcu za registracijo partnerja (tj. Povezava ali Mikro Spletno mesto) in na Spletnem(-ih) mestu(-ih), kot je določeno v Obrazcu za registracijo partnerja (tj. Spletno mesto(-a) partnerja).
+2.2.1 Za obdobje trajanja te pogodbe sta se Stranki dogovorili, da bo Storitev na voljo Affiliate preko Wink, kot je določeno v obrazcu za registracijo affiliate partnerja (npr. Povezava ali Mikro stran) in na spletnih straneh, določenih v obrazcu za registracijo affiliate partnerja (npr. Affiliate spletne strani).
 
-2.2.2 Ko obiskovalec opravi rezervacijo na ali prek partnerskih spletnih mest prek sistema, je Wink odgovoren za posredovanje ustreznih podatkov o rezervaciji od obiskovalca, ki je opravil rezervacijo, ponudniku nastanitve (npr. datum prihoda, število nočitev, vrsta sobe, ime gosta) in (pošiljanje) naknadne (e-poštne) potrditve in/ali potrditvenega kupona gostu.
+2.2.2 Ko obiskovalec opravi rezervacijo na ali preko Affiliate spletnih strani preko Sistema, je Wink odgovoren za prenos ustreznih podatkov o rezervaciji od obiskovalca, ki je zaključil rezervacijo, do ponudnika nastanitev (npr. datum prihoda, število nočitev, tip sobe, ime gosta) in za pošiljanje nadaljnje (e-poštne) potrditve in/ali potrdilnega bona Gostu.
 
-2.2.3 Storitev vključuje storitve za stranke v korist Gostov. Partner bo vsa vprašanja in težave, povezana s storitvami za stranke, v zvezi s Storitvijo, (izpolnitvijo) rezervacije (vključno z morebitnimi spremembami ali preklicem rezervacije), Ponudnikom nastanitve in vsa druga relevantna vprašanja, pritožbe in vprašanja (v zvezi s plačili) nemudoma nakazal in/ali posredoval neposredno (centru za pomoč strankam) Wink in v zvezi s tem ne bo nudil nobenih nadaljnjih storitev.
+2.2.3 Storitev vključuje tudi podporo strankam v korist Gostov. Affiliate bo nemudoma posredoval in/ali preusmeril vse zadeve in vprašanja, povezana s podporo strankam glede Storitve, (izvedbe) rezervacije (vključno s spremembami ali odpovedmi rezervacije), ponudnika nastanitev in vseh drugih relevantnih (plačilnih) vprašanj, pritožb in vprašanj neposredno Wink (centru za podporo strankam) in ne bo nudil dodatnih storitev na tem področju.
 
-**2.3 Povezava ali mikrospletno mesto**
+**2.3 Povezava ali Mikro stran**
 
-2.3.1 V primeru, da je Storitev na voljo prek Povezave, mora Partner na lastne stroške integrirati in dati Povezavo na voljo na vidnem mestu/mestih, spletnih straneh in na takšnem mestu, velikosti in obliki na Partnerjevem spletnem mestu/spletnih mestih, kot to naroči Wink ali kot se Stranki medsebojno dogovorita.
+2.3.1 Če je Storitev na voljo preko Povezave, bo Affiliate na lastne stroške integriral in omogočil Povezavo na vidnih mestih, spletnih straneh in v takšni obliki, velikosti in na takšnem mestu na Affiliate spletnih straneh, kot ga določi Wink ali kot se dogovorita Stranki.
 
-2.3.2 V primeru, da je Storitev na voljo prek Mikro Spletnega Mesta, mora Partner na lastne stroške integrirati in dati na voljo Povezave in/ali Mikro Spletno Mesto na vidnem mestu/mestih, spletnih straneh in na takšnem mestu, velikosti in obliki na Partnerjevem Spletnem Mestu/Spletnih Mestih, kot to naroči Wink ali kot se Stranki medsebojno dogovorita.
+2.3.2 Če je Storitev na voljo preko Mikro strani, bo Affiliate na lastne stroške integriral in omogočil Povezave in/ali Mikro stran na vidnih mestih, spletnih straneh in v takšni obliki, velikosti in na takšnem mestu na Affiliate spletnih straneh, kot ga določi Wink ali kot se dogovorita Stranki.
 
 **3. Licenca**
 
-**3.1 Vzajemna licenca**
+**3.1 Medsebojna licenca**
 
-3.1.1 V skladu s klavzulo 4.4 Wink s tem podeljuje partnerju neizključno, preklicno, omejeno, brezplačno in svetovno pravico in licenco:
+3.1.1 Ob upoštevanju člena 4.4, Wink podeljuje Affiliate neekskluzivno, preklicno, omejeno, brezplačno in svetovno pravico in licenco:
 
-1. prikazati takšne elemente podatkov Wink in takšne nadaljnje informacije o ponudnikih nastanitev na partnerskem spletnem mestu (spletnih mestih), vse kot jih Wink zagotovi ali da na voljo partnerju;
-2. promovirati in tržiti Storitev v skladu s pogoji, določenimi v tej Pogodbi.
+1) prikazovati elemente Podatkov Wink in dodatne informacije ponudnikov nastanitev na Affiliate spletnih straneh, vse kot jih Wink zagotovi ali omogoči Affiliate;  
+2) promovirati in tržiti Storitev v skladu s pogoji te pogodbe.
 
-3.1.2 Partner s tem podeljuje Winku brezplačno in svetovno pravico in licenco:
+3.1.2 Affiliate podeljuje Wink brezplačno in svetovno pravico in licenco:
 
-1. vključiti, integrirati, vključiti in prikazati Povezavo, Mikro spletno mesto in/ali Povezavo (kot je primerno) na partnerskem spletnem mestu (spletnih mestih) in
-2. da bo Storitev na voljo na partnerskem(-ih) spletnem(-ih) mestu(-ih).
+1) vključiti, integrirati, prikazati Povezavo, Mikro stran in/ali Povezavo (kot je primerno) na Affiliate spletnih straneh, in  
+2) omogočiti Storitev na Affiliate spletnih straneh.
 
-**3.2 Brez pravice do podlicenciranja in nerazkritja**
+**3.2 Brez pravice do podlicence in zaupnost**
 
-3.2.1 Razen če se Wink pisno ne dogovori drugače, podružnica ni (i) upravičena do podlicenciranja pravic, ki so ji podeljene v skladu s klavzulo 3.1.1, ali (ii) podlicenciranja Povezave ali Priključka tretji osebi ali (iii) ustvarjanja hiperpovezave do spletnega mesta Wink prek ali v sodelovanju s (spletnimi stranmi) podjetij znotraj Skupine podružnic in/ali tretjih oseb.
+3.2.1 Razen če je pisno drugače dogovorjeno z Wink, Affiliate nima pravice (i) podlicencirati pravic, podeljenih v členu 3.1.1, ali (ii) podlicencirati Povezave ali Povezave tretjim osebam, ali (iii) vzpostavljati hiperpovezav do Wink spletne strani preko ali v sodelovanju s spletnimi stranmi podjetij v Affiliate skupini in/ali tretjih oseb.
 
-3.2.2 Razen če se Wink pisno ne dogovori drugače ali če ni drugače določeno v tej pogodbi, podružnica ni neposredno ali posredno upravičena do prodaje, uporabe, prenosa, (pod)licenciranja, sporočanja, razkrivanja, dajanja na voljo, omogočanja dostopa, razkrivanja ali drugačnega širjenja podatkov ali vsebine Wink (i) kateri koli tretji osebi, (ii) za namene primerjave cen/razpoložljivosti, spletnih mest, ocen ali preiskav, (iii) za kateri koli drug namen, razen (ustvarjanja rezervacij ponudnikov nastanitev prek) storitve ali (iv) kako drugače.
+3.2.2 Razen če je pisno drugače dogovorjeno z Wink ali drugače določeno v tej pogodbi, Affiliate ne sme neposredno ali posredno prodajati, uporabljati, prenašati, (pod)licencirati, komunicirati, razkrivati, omogočati dostop, razkrivati ali drugače razširjati Podatkov Wink ali Vsebine (i) tretjim osebam, (ii) za namene primerjave cen/razpoložljivosti, strani, ocen ali preiskav, (iii) za kakršen koli drug namen kot (generiranje rezervacij ponudnikov nastanitev preko) Storitve, ali (iv) drugače.
 
 **4. Zaveze in obveznosti**
 
-**4.1 Splošne pogodbe, zaveze in obveznosti**
+**4.1 Splošne zaveze, obveznosti in dolžnosti**
 
-4.1.1 V skladu s pogoji te pogodbe se partner strinja, da si bo v komercialno razumnih okoliščinah prizadeval (i) prilagoditi partnersko spletno mesto (spletna mesta) in integrirati povezavo, povezave in/ali mikro spletno mesto na tak način, da bo ustvaril čim več prometa na spletno mesto Wink ali partnersko spletno mesto (spletna mesta), in (ii) promoviral in tržil ponudnike nastanitev ter možnost rezervacije ponudnikov nastanitev na partnerskem spletnem mestu (spletnih mestih) znotraj svojega komercialnega in notranjega omrežja ter bo v ta namen dal na voljo svoje distribucijsko omrežje in kanale (npr. internet in intranet).
+4.1.1 Ob upoštevanju pogojev te pogodbe se Affiliate zavezuje, da bo komercialno razumno prizadeval (i) prilagoditi Affiliate spletne strani in integrirati Povezavo, Povezave in/ali Mikro stran tako, da bo ustvaril čim več prometa na Wink spletno stran ali Affiliate spletne strani, in (ii) promovirati in tržiti ponudnike nastanitev ter možnost rezervacije ponudnikov nastanitev na Affiliate spletnih straneh znotraj svojega komercialnega in notranjega omrežja ter za ta namen omogočil svojo distribucijsko mrežo in kanale (npr. internet in intranet).
 
-4.1.2 Partner se strinja, da ne bo sprejel ali opustil nobenih ukrepov, ki bi lahko vplivali na odnos podjetja Wink s ponudniki nastanitev, ki so na voljo na spletnih straneh Wink. Partner se strinja, da ne bo povzročil ali dovolil, da bi se storilo karkoli, kar bi lahko povzročilo izključitev podjetja Wink iz postopka rezervacije pri katerem koli ponudniku nastanitev.
+4.1.2 Affiliate se zavezuje, da ne bo izvajal ali opustil ukrepe, ki bi lahko vplivali na odnos Wink s ponudniki nastanitev, ki so na voljo na Wink spletnih straneh. Affiliate se zavezuje, da ne bo povzročil ali dovolil ničesar, kar bi povzročilo izključitev Wink iz procesa rezervacije pri katerem koli ponudniku nastanitev.
 
-4.1.3 Partner se strinja, da ne bo komuniciral z nobenim ponudnikom nastanitve, z izjemo iz točke 1.2.3, v zvezi z (izkoriščenimi) rezervacijami, opravljenimi prek sistema, ali za kakršno koli storitev za stranke v zvezi s takimi rezervacijami, opravljenimi prek sistema ali izkoriščenimi.
+4.1.3 Affiliate se zavezuje, da ne bo komuniciral z nobenim ponudnikom nastanitev, razen kot je določeno v členu 1.2.3, glede (izvedenih) rezervacij preko Sistema ali za kakršnokoli podporo strankam v zvezi s takšnimi rezervacijami.
 
-4.1.4 Partner mora redno in skrbno vzdrževati ter prilagajati vsebino partnerskih spletnih mest ter skrbeti za ažurnost in točnost partnerskih spletnih mest. Partner mora nemudoma odpraviti morebitne napake ali opustitve na partnerskih spletnih mestih in v informacijah, ki se nanašajo na ponudnike nastanitev, potem ko se za takšne napake zave ali ko ga o njih obvesti Wink.
+4.1.4 Affiliate bo vestno vzdrževal in prilagajal vsebine Affiliate spletnih strani ter jih ohranjal ažurne in točne. Affiliate bo nemudoma popravil vse napake ali izpuste na Affiliate spletnih straneh in v informacijah o ponudnikih nastanitev, ko bo za to izvedel ali ga bo o tem obvestil Wink.
 
-4.1.5 Partner ne sme (a) programsko ocenjevati in pridobivati ​​informacij (vključno z ocenami gostov) iz katerega koli dela spletnega mesta Wink (npr. s strganjem zaslona) ali poskušati tega storiti in ne sme na noben način, vključno z mehanskimi, elektronskimi, fotokopirnimi, snemalnimi ali kako drugače, kopirati, reproducirati, spreminjati, prilagajati, razstavljati, izvajati obratnega inženiringa, strgati ali kako drugače določati izvorne kode (ali osnovnih idej, algoritmov, strukture ali organizacije) povezav ali katere koli vsebine ali storitev, ki jih ponuja spletno mesto Wink, ali poskušati tega storiti; (b) nalagati (i) kakršnih koli virusov, trojanskih konj, črvov, časovnih bomb, robotskih ukazov ali drugih računalniških programskih rutin, ki so namenjene poškodovanju, škodljivemu motenju, prikritemu prestrezanju ali razlastitvi katerega koli sistema, podatkov ali osebnih podatkov; (c) dajati kakršnih koli zagotovil obiskovalcem, širši javnosti ali kateri koli drugi stranki, ki je kakor koli povezana z družbo, storitvami, povezavami ali spletnim mestom Wink; (d) (poskus) pridobivanja kreditov ali provizij od Winka z lažnim predstavljanjem, dajanjem lažnih izjav, goljufivim vedenjem ali katero koli drugo shemo ali zvijačo za zavajanje Winka; ali (e) kako drugače (poskus) povzročanja škode Winku in spletnemu mestu Wink. Vsaka kršitev zgoraj navedenih določb bo povzročila izključitev partnerja iz programa in izgubo vseh neporavnanih plačil.
+4.1.5 Affiliate ne sme (a) programsko ocenjevati in izločati informacij (vključno z ocenami gostov) iz katerega koli dela Wink spletne strani (npr. screen scrape) ali poskušati to storiti in ne sme na noben način, vključno z mehanskimi, elektronskimi, fotokopiranjem, snemanjem ali drugače, kopirati, reproducirati, spreminjati, prilagajati, razstavljati, razstavljati, obratno inženirstvo, strgati ali drugače določiti izvorno kodo (ali osnovne ideje, algoritme, strukturo ali organizacijo) povezav ali vsebine na Wink spletni strani ali poskušati to storiti; (b) nalagati (i) virusov, trojanskih konjev, črvov, časovnih bomb, ukazov robotov ali drugih računalniških programskih rutin, namenjenih škodovanju, motenju, prikritemu prestrezanju ali odvzemu sistema, podatkov ali osebnih informacij; (c) dajati kakršnekoli izjave obiskovalcem, javnosti ali katerikoli drugi stranki, povezani s podjetjem, storitvami, povezavami ali Wink spletno stranjo; (d) (poskušati) pridobiti kredit ali provizije od Wink z zavajanjem, lažnimi izjavami, goljufivim vedenjem ali katerim koli drugim trikom za zavajanje Wink; ali (e) drugače (poskušati) povzročiti škodo Wink in Wink spletni strani. Vsaka kršitev teh določb bo povzročila takojšnjo izključitev Affiliate iz programa in izgubo vseh neizplačanih plačil.
 
-4.1.6 Partner ne sme ustvarjati statične kopije Vsebine ali katerega koli dela Spletnega mesta Wink (vključno z ocenami gostov).
+4.1.6 Affiliate ne sme narediti nobene statične kopije Vsebine ali katerega koli dela Wink spletne strani (vključno z ocenami gostov).
 
-4.1.7 V skladu s to pogodbo partner ne sme ustvarjati dobička iz rezervacij ali odhodkov poleg prejemanja provizije od Winka v skladu s pogoji te pogodbe. Partner (vključno z njegovim zaposlenim in osebo, ki jo pooblasti) ne sme opravljati nobenih rezervacij ali odhodkov pri nobenem ponudniku nastanitve na spletni strani Wink ali na spletni strani partnerja z namenom nadaljnje prodaje takšne rezervacije ali odhodka tretji osebi ali v njeno korist (»Preprodaja«). Da bi se izognili dvomu, ima Wink izključno diskrecijsko pravico, da katero koli rezervacijo ali odhodek šteje za Preprodajo, če plačilo takšne rezervacije ali odhodka ni neposredno od osebe, v imenu katere(-ih) je taka rezervacija ali odhodek opravljena.\
-Preprodaja se šteje za bistveno kršitev te pogodbe. Partner priznava, da je preprodaja v nasprotju s temeljnim namenom te pogodbe. V primeru preprodaje si Wink pridržuje pravico, da zavrne rezervacije in/ali prekliče potrjene rezervacije brez predhodnega obvestila ali vračila denarja. Wink lahko tudi takoj prekine sodelovanje partnerja v programu po lastni presoji, brez poseganja v druga pravna sredstva, določena v tej pogodbi, vključno z izgubo provizije in zahtevo po odškodnini.
+4.1.7 V skladu s to pogodbo Affiliate ne sme pridobivati dobička iz rezervacij ali naročil poleg prejemanja provizije od Wink v skladu s pogoji te pogodbe. Affiliate (vključno z zaposlenimi in pooblaščenimi osebami) ne sme opravljati rezervacij pri ponudnikih nastanitev na Wink spletni strani ali Affiliate spletnih straneh z namenom preprodaje takšnih rezervacij tretjim osebam (»Preprodaja«). Za izogib dvomom ima Wink izključno pravico, da šteje katerokoli rezervacijo kot Preprodajo, če plačilo za rezervacijo ni neposredno od osebe, v čigar imenu je rezervacija opravljena. Preprodaja se šteje kot materialna kršitev te pogodbe. Affiliate priznava, da je Preprodaja v nasprotju s temeljnim namenom te pogodbe. V primeru Preprodaje si Wink pridržuje pravico, da zavrne rezervacije in/ali prekliče potrjene rezervacije brez predhodnega obvestila ali vračila. Wink lahko tudi takoj prekine sodelovanje Affiliate v programu po lastni presoji, ne da bi to vplivalo na druge pravne ukrepe, vključno z izgubo provizije in zahtevkom za odškodnino.
 
-4.1.8 Wink partnerju omogoča dostop do določenega spletnega mesta Wink ("Partnerski portal"), uporabniško ime in geslo, ki partnerju omogočata spremljanje rezervacije nastanitve prek partnerskega spletnega mesta ("Partnerskih spletnih mest"), in vse ustrezne upravljavske informacije, ki jih Wink daje na voljo na spletu. Partner bo varoval in hranil zaupno ter varno shranjeno uporabniško ime in geslo ter ju ne bo razkril nikomur drugemu, razen tistim, ki potrebujejo dostop do prodajalčevega portala. Partner bo Wink nemudoma obvestil o vsaki (sumljivi) kršitvi varnosti ali nepravilni uporabi.
+4.1.8 Wink omogoča Affiliate dostop do namensko določene spletne strani Wink (»Prodajni portal«), uporabniškega ID in gesla, ki omogočajo spremljanje rezervacij nastanitev preko Affiliate spletnih strani in vseh relevantnih informacij za upravljanje, ki jih Wink zagotavlja preko spleta. Affiliate mora varovati in zaupno hraniti uporabniški ID in geslo ter jih ne sme razkriti nikomur, razen tistim, ki potrebujejo dostop do Prodajnega portala. Affiliate mora takoj obvestiti Wink o kakršnem koli (sumu) varnostne kršitve ali neprimerne uporabe.
 
-4.1.9 Za vsako rezervacijo ali rezervacijo pri katerem koli ponudniku nastanitve, ki jo opravi partner na spletni strani Wink ali partnerski spletni strani, veljajo pogoji uporabe Wink, ki se lahko občasno posodabljajo. Da bi se izognili dvomu, partner ne sme uporabljati spletne strani Wink ali njene vsebine v noben komercialni namen, razen za prejemanje provizije v skladu s pogoji te pogodbe.
+4.1.9 Vsaka rezervacija ali naročilo pri ponudniku nastanitev, ki jo opravi Affiliate na Wink spletni strani ali Affiliate spletnih straneh, je predmet pogojev uporabe Wink, ki se lahko občasno posodabljajo. Za izogib dvomom, Affiliate ne sme uporabljati Wink spletne strani ali njene vsebine za kakršen koli komercialni namen, razen za prejemanje provizije v skladu s pogoji te pogodbe.
 
-4.1.10 Partner se strinja in potrjuje, da so omejevalne pogodbe, zaveze, obveznosti in omejitve iz te 4. točke razumne in bistvenega pomena za Wink, zlasti zaradi (i) njegove pripravljenosti, da sklene to pogodbo s Partnerjem in Partnerju (neposredno ali posredno) omogoči dostop do Storitve, Vsebine in Pravic intelektualne lastnine Wink, ter (ii) zaščite dobrega imena, izdelkov, storitev in (tržnega) ugleda Wink. Poleg tega se Partner strinja in potrjuje, da Partner vse pogodbe, zaveze, jamstva, obveznosti in omejitve iz te 4. točke (a) nemudoma, ustrezno in skrbno izpolnjuje in (b) veljajo tudi za vsako osebo, ki ima dostop do portala prodajalcev prek uporabniškega ID-ja Partnerja, vsako osebo, za katero se razumno domneva, da zastopa Partnerja, in podjetja znotraj Skupine Partnerjev. Podružnica mora zagotoviti, jamčiti in se zavezati, da bodo vsaka oseba, ki ima dostop do prodajnega portala prek uporabniškega ID-ja podružnice, vsaka oseba, za katero se razumno domneva, da zastopa podružnico, in podjetja znotraj skupine podružnic upoštevali, se držali, upoštevali in ravnali v skladu s pogoji, določenimi v tej 4. členu.
+4.1.10 Affiliate se strinja in priznava, da so omejitve, zaveze, obveznosti in prepovedi, določene v tem členu 4, razumne in bistvenega pomena za Wink, zlasti za (i) njegovo pripravljenost za sklenitev te pogodbe z Affiliate in omogočanje Storitve, Vsebine in pravic intelektualne lastnine Wink (posredno ali neposredno) Affiliate, in (ii) zaščito ugleda, izdelka, storitve in (tržnega) ugleda Wink. Poleg tega se Affiliate strinja in priznava, da vse zaveze, obveznosti, jamstva in omejitve iz tega člena 4 (a) mora Affiliate nemudoma, vestno in skrbno spoštovati, in (b) veljajo tudi za vsako osebo, ki ima dostop do Prodajnega portala preko uporabniškega ID Affiliate, vsako osebo, za katero je upravičeno verjeti, da zastopa Affiliate, in podjetja v Affiliate skupini. Affiliate bo zagotovil, jamčil in se zavezal, da bodo vse te osebe spoštovale, upoštevale, izpolnjevale in delovale v skladu s pogoji tega člena 4.
 
-**4.2 Dobro ime, zaščita blagovne znamke in promet**
+**4.2 Ugled, zaščita blagovne znamke in promet**
 
-4.2.1 Za zaščito izdelka, storitve, blagovne znamke in dobrega imena družbe Wink se partner s tem zavezuje, obvezuje in jamči, da je(-jo) spletna stran(-a) partnerja(-ov) (vključno z vsemi drugimi spletnimi stranmi (neposredno ali posredno) v lasti, pod nadzorom ali gostiteljem partnerja ali podjetij znotraj skupine partnerjev) razen mikro strani (in bo(-do) ostala(-o) dovolj in bistveno ločena(-a) od spletne strani Wink (kar določi po lastni presoji družbe Wink). Partner se s tem strinja in potrjuje, da za čas trajanja te pogodbe in tudi po tem:\
-(a) videz in občutek spletnega mesta(-ov) partnerja (vključno z vsemi drugimi spletnimi mesti (neposredno ali posredno) v lasti, pod nadzorom ali gostitelju partnerja) se morata izrazito in bistveno razlikovati od spletnega mesta Wink, vključno z barvno shemo, sestavo, pisavami, oblikovanjem in postavitvijo (vključno z blagovno znamko), gumbi (za klik), polji in pasicami ter razpoložljivimi funkcijami (razen tistih funkcij, ki so razumno potrebne za izpolnjevanje obveznosti partnerja v skladu s to pogodbo);\
-(b) kateri koli logotip(i), uporabljen(i) na spletnem(-ih) omrežju(-ih) partnerja (vključno z vsemi drugimi spletnimi mesti, ki so v lasti, pod nadzorom ali gostovanju partnerja), se mora(-jo) bistveno razlikovati od logotipa Wink (razen logotipa, ki ga Wink lahko zagotovi za uporabo s strani partnerja v skladu s to pogodbo);\
-(c) Podružnica ne sme na noben način posnemati ali kopirati spletnih mest Wink (na splošno ali glede določenih (novih) funkcij, strani, oblike, sestave ali vidikov) in\
-(d) Partner bo nemudoma in na lastne stroške izpolnil vse razumne zahteve družbe Wink za takšne (nadaljnje) spremembe, dopolnitve ali dopolnitve katerega koli vidika spletnega mesta (spletnih mest) Partnerja, ki je ali se lahko šteje za zavajajočega ali bistveno podobnega kateremu koli elementu spletnega mesta Wink.
+4.2.1 Za zaščito izdelka, storitve, blagovne znamke in ugleda Wink se Affiliate zavezuje, da bodo Affiliate spletne strani (vključno z vsemi drugimi spletnimi stranmi, ki jih neposredno ali posredno poseduje, nadzoruje ali gosti Affiliate ali podjetja v Affiliate skupini), razen Mikro strani, dovolj in bistveno drugačne od Wink spletnih strani (po presoji Wink). Affiliate se strinja in priznava, da bo za obdobje trajanja te pogodbe in tudi po tem:  
+(a) izgled in občutek Affiliate spletnih strani (vključno z vsemi drugimi spletnimi stranmi, ki jih poseduje, nadzoruje ali gosti Affiliate) bistveno in jasno drugačen od Wink spletnih strani, vključno s shemo barv, sestavo, pisavami, oblikovanjem in postavitvijo (vključno z blagovno znamko), (klik) gumbi, polji in pasicami ter razpoložljivimi funkcijami (razen tistih, ki so upravičeno potrebne za izpolnitev obveznosti Affiliate po tej pogodbi);  
+(b) vsi logotipi, uporabljeni na Affiliate spletnih straneh (vključno z vsemi drugimi spletnimi stranmi, ki jih poseduje, nadzoruje ali gosti Affiliate), bodo jasno drugačni od Wink logotipa (razen logotipov, ki jih Wink zagotovi Affiliate za uporabo v skladu s to pogodbo);  
+(c) Affiliate ne bo na noben način posnemal ali kopiral Wink spletnih strani (splošno ali glede določenih (novih) funkcij, strani, oblik, sestave ali vidikov), in  
+(d) Affiliate bo na lastne stroške nemudoma izpolnil vse razumne zahteve Wink za spremembe, prilagoditve ali popravke katerega koli vidika Affiliate spletnih strani, ki je lahko zavajajoče ali bistveno podoben kateremukoli elementu Wink spletnih strani.
 
 **4.3 Pravice intelektualne lastnine**
 
-4.3.1 Partner potrjuje, da Wink in/ali njegovi dajalci licenc ohranijo lastništvo vseh pravic, lastništva in deležev v vseh pravicah intelektualne lastnine Winka ali tistih, ki so vključene v spletno mesto Wink, vključno z (vendar ne omejeno na) logotipom Wink, vsebino in podatki Wink. Nič v tej pogodbi se ne šteje za prenos katere koli takšne pravice, lastništva ali deleža na Partnerja na kakršen koli način.
+4.3.1 Affiliate priznava, da Wink in/ali njegovi licenčniki ohranjajo lastništvo vseh pravic, naslovov in interesov do vseh pravic intelektualne lastnine Wink ali v Wink spletnih straneh, vključno (a ne omejeno na) Wink logotip, Vsebino in Podatke Wink. Nobena določba te pogodbe ne pomeni prenosa takšnih pravic, naslovov ali interesov na Affiliate.
 
-4.3.2 Partner ne sme razkrivati, integrirati, vključevati, uporabljati, kombinirati, izkoriščati, vključevati ali kako drugače dati na voljo Vsebine in Podatkov Wink (ali katerega koli njihovega dela) (a) z lastno vsebino in/ali vsebino katerega koli Konkurenta Wink (vključno s Ponudniki nastanitev) ali (b) sebi ali v korist (i) sebe (razen za omogočanje Storitve in Sistema v skladu s pogoji te Pogodbe) ali (ii) katerega koli Konkurenta Wink (vključno s Ponudniki nastanitev) (bodisi za promocijo, trženje, sklicevanje na, promocijo, oglaševanje ali kako drugače v interesu ali za takšno stranko) ali (c) za kakršen koli drug namen ali na kakršen koli drug način in/ali na ali prek Platform tretjih oseb, razen če je to izrecno določeno v tej Pogodbi. Partner ne sme spreminjati, preoblikovati, spreminjati, popačiti, ustvarjati izpeljanih in/ali novih del, ki temeljijo na in/ali izhajajo iz Vsebine, in Vsebina ne sme vključevati (neposredne ali posredne) povezave, sklicevanja, klika ali sklicevanja na (spletno mesto) Konkurenta Wink (vključno s Ponudniki nastanitev).
+4.3.2 Affiliate ne sme razkrivati, vključevati, uporabljati, kombinirati, izkoriščati, vključevati ali drugače omogočati dostop do Vsebine in Podatkov Wink (ali katerega koli dela le-teh) (a) z lastno vsebino in/ali vsebino katerega koli konkurenta Wink (vključno s ponudniki nastanitev), ali (b) sebi (razen za omogočanje Storitve in Sistema v skladu s pogoji te pogodbe), ali (c) kateremukoli konkurentu Wink (vključno s ponudniki nastanitev) (ne glede na namen promocije, trženja, oglaševanja ali drugega interesa), ali (d) za kakršen koli drug namen ali na kakršen koli drug način in/ali preko platform tretjih oseb, razen če je izrecno določeno v tej pogodbi. Affiliate ne sme spreminjati, popačiti, ustvarjati izpeljank ali novih del na podlagi Vsebine in Vsebina ne sme vsebovati (neposredne ali posredne) povezave, sklicevanja, klik-preko ali sklicevanja na spletno stran konkurenta Wink (vključno s ponudniki nastanitev).
 
-4.3.3 Podružnica se zavezuje (in zagotavlja, da to storijo tudi podjetja znotraj Podružnične skupine) da ne bo (neposredno ali posredno) registrirala, pridobila, uporabljala, kupila ali pridobila internetnega domenskega imena, ki vsebuje katero koli besedo ali besede, ki so enake ali zavajajoče ali bistveno podobne besedi »Wink« ali katerim koli različicam, prevodom ali napačno črkovanim oblikam le-tega, vključenim kot del naslova.
+4.3.3 Affiliate ne sme (in bo zagotovil, da podjetja v Affiliate skupini ne bodo) neposredno ali posredno registrirati, pridobiti, uporabljati, kupovati ali pridobivati internetnih domen, ki vključujejo katero koli besedo ali besede, ki so enake ali zavajajoče podobne "Wink" ali njegovim različicam, prevodom ali napačnim črkovanjem, vključene kot del naslova.
 
-4.3.4 S sklenitvijo te pogodbe se Wink (izrecno ali molče) ne odpoveduje ali izgubi nobene od svojih pravic, do katerih je upravičen na podlagi katerega koli zakona, pogodbe ali kako drugače (zdaj ali v prihodnosti) v zvezi s pravicami intelektualne lastnine Wink do podružnice ali drugih tretjih oseb.
+4.3.4 S sklenitvijo te pogodbe Wink ne odpoveduje ali izgublja nobene svoje pravice, do katere je upravičen po katerem koli zakonu, pogodbi ali drugače (zdaj ali v prihodnosti) v zvezi s pravicami intelektualne lastnine Wink v odnosu do Affiliate ali tretjih oseb.
 
 **4.4 Promocija in trženje**
 
-4.4.1 Med trajanjem Pogodbe se Povezana oseba strinja in jamči, da ne bo (in bo poskrbela, da podjetja znotraj Povezane skupine tega ne bodo storila) izvajala, prevzemala, uporabljala, izvajala ali izvajala (ali imela ali pooblastila tretjih oseb, da izvajajo, prevzemajo, uporabljajo, izvajajo ali izvajajo) (a) dejavnosti plačljivega iskanja, SEM ali SEO, (b) kakršne koli dejavnosti, ki bi nepošteno vplivala na rezultate platform tretjih oseb, ali (c) katere koli druge oblike spletnega ciljnega oglaševanja (bodisi neposredno, posredno ali prek platform tretjih oseb) v zvezi z:
+4.4.1 V času trajanja pogodbe se Affiliate zavezuje in jamči, da ne bo (in bo zagotovil, da podjetja v Affiliate skupini ne bodo) izvajal, uporabljal, izvajal ali dovolil (ali pooblaščal tretje osebe za izvajanje) (a) plačanega iskanja, SEM ali SEO aktivnosti, (b) kakršnih koli aktivnosti za nepravičen vpliv na rezultate platform tretjih oseb, ali (c) kakršne koli druge oblike spletnega ciljnega oglaševanja (neposredno, posredno ali preko platform tretjih oseb) v zvezi z:
 
-1. Storitev;
-2. Spletna stran Wink;
-3. Vsebina;
-4. Podatki o pomežiku;
-5. blagovne znamke Wink;
-6. blagovne znamke ponudnika nastanitve (razen če je lastnik takšne blagovne znamke ponudnika nastanitve podružnici dal predhodno pisno soglasje za uporabo te specifične blagovne znamke ponudnika nastanitve) ali
-7. partnersko spletno mesto v obsegu, v katerem so plačano iskanje, SEM, SEO ali druge spletne ciljno oglaševalske dejavnosti povezane z (a) ponudbo, rezervacijo ali rezervacijo nastanitve (bodisi prek storitve ali kako drugače) ali (b) informacijami v zvezi z nastanitvijo.
+1. Storitev;  
+2. Wink spletno stranjo;  
+3. Vsebino;  
+4. Podatki Wink;  
+5. Wink blagovnimi znamkami;  
+6. blagovnimi znamkami ponudnikov nastanitev (razen če je lastnik takšne blagovne znamke ponudnika nastanitev predhodno pisno dovolil Affiliate za uporabo te blagovne znamke), ali  
+7. Affiliate spletno stranjo, če so plačane iskalne, SEM, SEO ali druge spletne ciljne oglaševalske aktivnosti povezane z (a) ponudbo, rezervacijo ali naročilom nastanitve (ne glede na to, ali preko Storitve ali drugače), ali (b) informacijami o nastanitvi.
 
-Klavzula 4.4.1 v zvezi z odstavkom (i) do vključno (v) ostane v veljavi tudi po prenehanju te pogodbe.
+Člen 4.4.1 glede odstavkov (i) do (v) preživi prenehanje te pogodbe.
 
-4.4.2 Partner ne sme uporabljati, izkoriščati ali kako drugače, neposredno ali posredno, uporabljati, uporabljati ali kako drugače zaposlovati katere koli platforme T, da bi se poskušal izogniti ali zaobiti svoje zaveze, obveznosti ali omejitve iz te Pogodbe ali tiste omejitve ali zaveze, za katere bi Partner lahko razumno pričakoval, da takšna dejanja spadajo v področje uporabe te Pogodbe.
+4.4.2 Affiliate ne sme uporabljati, izkoriščati ali drugače uporabljati neposredno ali posredno kakršnih koli T platform za izogibanje ali obhod svojih zavez, obveznosti ali omejitev po tej pogodbi ali tistih omejitev, za katere bi lahko upravičeno pričakoval, da spadajo pod obseg te pogodbe.
 
-4.4.3 Podružnica ne sme izkoriščati ali uporabljati Vsebine za noben namen ali na noben način in/ali na ali prek platform tretjih oseb, razen če je to izrecno določeno v tej Pogodbi.
+4.4.3 Affiliate ne sme izkoriščati ali uporabljati Vsebine za kakršen koli namen ali na kakršen koli način in/ali preko platform tretjih oseb, razen če je izrecno določeno v tej pogodbi.
 
-4.4.4 Med trajanjem te pogodbe (in tudi po tem v zvezi z blagovnimi znamkami Wink in podatki Wink) mora podružnica nemudoma izpolniti vsako zahtevo družbe Wink za spoštovanje in upoštevanje te določbe 4.4, v nasprotnem primeru jo lahko družba Wink prekine s takojšnjim učinkom in brez poseganja v svoja pravna in pogodbena sredstva.
+4.4.4 V času trajanja te pogodbe (in tudi po tem v zvezi z Wink blagovnimi znamkami in Podatki Wink) bo Affiliate nemudoma izpolnil vsako zahtevo Wink za spoštovanje in izpolnjevanje tega člena 4.4, sicer lahko Wink takoj prekine pogodbo brez poseganja v svoje pravne in pogodbene pravice.
 
-**4.5 Prepovedano dvojno prikazovanje ali prikrivanje**
+**4.5 Brez dvojnega oglaševanja ali prikrivanja**
 
-4.5.1 Spletna mesta partnerjev ne smejo biti (neposredno ali posredno) povezana s spletnimi mesti Wink zaradi dvojnega prikazovanja ali katere koli podobne tehnike ali metode ali drugih omejitev, kot so določene v predpisih o neželeni pošti.
+4.5.1 Affiliate spletne strani ne smejo biti (posredno ali neposredno) povezane z Wink spletnimi stranmi zaradi dvojnega oglaševanja ali kakršne koli podobne tehnike ali metode ali drugih omejitev, določenih v pravilih o neželeni pošti.
 
-4.5.2 V primeru, da je Storitev na voljo prek Povezave ali Mikro Spletnega Mesta, Partner ne sme Storitve (neposredno ali posredno) dati na voljo prek spletnih mest za iskanje potovanj ali spletnih mest za primerjavo cen ali jih v ta namen uporabljati, razen če se Wink pisno ne dogovori drugače.
+4.5.2 Če je Storitev na voljo preko Povezave ali Mikro strani, Affiliate ne sme omogočiti Storitve (posredno ali neposredno) preko spletnih strani za iskanje potovanj ali strani za primerjavo cen, razen če je pisno drugače dogovorjeno z Wink.
 
-4.5.3 Partner ne sme (neposredno ali posredno) dati na voljo partnerskega spletnega mesta (spletnih mest), vsebine ali storitve ali predstaviti vsebine platformam tretjih oseb z namenom ali namenom ali s (poskusom) zavajanja, prevare, goljufanja ali prevare človeških urednikov, iskalnih pajkov, spletnih pajkov ali (meta) iskalnikov (vključno s podobnimi orodji ali iskalniki) platform tretjih oseb, da bi partnerskemu spletnemu mestu (spletnim mestom) zagotovil višjo uvrstitev ali prikaz, če sicer ne bi bilo prikazano ali višje uvrščeno, če ne bi uporabljalo skrivanja vsebine ali katere koli podobne tehnike ali metode.
+4.5.3 Affiliate ne sme (posredno ali neposredno) omogočiti ali predstaviti Affiliate spletnih strani, Vsebine ali Storitve platformam tretjih oseb z namenom ali namenom, da bi (poskušal) zavajati, prevarati, zavajati ali zavajati človeške urednike, računalniške pajke iskalnikov, spletne pajke ali (meta) iskalnike (vključno s podobnimi orodji ali iskalniki) platform tretjih oseb, da bi dosegel višjo uvrstitev ali prikaz, ki sicer ne bi bil prikazan ali višje uvrščen brez uporabe prikrivanja ali podobne tehnike ali metode.
 
-4.5.4 Partner se zavezuje, obvezuje in jamči, da bo nemudoma upošteval in spoštoval predpise o neželeni pošti (in vse razumne zahteve Winka v zvezi s tem), da bi se izognil kakršni koli kršitvi takšnih politik s strani Winka ali partnerskega spletnega mesta (spletnih mest) zaradi ali v zvezi s partnerskim spletnim mestom (spletnimi mesti). Da bi se izognili dvomu, partner ne more uveljavljati nobenih pravic v zvezi s tem proti Winku in se s tem odpoveduje kakršni koli (pravici) do obrambe ali zahtevkov proti Winku v zvezi s tem.
+4.5.4 Affiliate se zavezuje, da bo nemudoma spoštoval, upošteval in izpolnjeval pravila o neželeni pošti (in vse razumne zahteve Wink v zvezi s tem), da bi preprečil kršitev s strani Wink ali Affiliate spletnih strani teh politik. Za izogib dvomom, Affiliate ne more uveljavljati nobenih pravic v zvezi s tem proti Wink in s tem odpoveduje kakršnim koli pravicam do obrambe ali zahtevkom proti Wink.
 
 **4.6 Prepoved nagovarjanja**
 
-Partner se strinja, da ne bo kontaktiral, nagovarjal ali sprejemal nobenega ponudnika nastanitve (i) kot svojega poslovnega partnerja za rezervacije (neposredno ali posredno) na ali prek partnerskega spletnega mesta (ali spletnih mest), (ii) za prodajo oglasnega prostora ali druge (spletne) oglaševalske ali trženjske namene (bodisi prek pasic, klikov, (besedilnih) povezav, pojavnih oken ali kako drugače) na partnerskem spletnem mestu (ali spletnih mestih) ali (iii) iz katerega koli drugega razloga.
+Affiliate se zavezuje, da ne bo kontaktiral, nagovarjal ali sprejel nobenega ponudnika nastanitev (i) kot svojega poslovnega partnerja za rezervacije ali naročila (posredno ali neposredno) na ali preko Affiliate spletnih strani, (ii) za prodajo oglasnega prostora ali drugih (spletnih) oglaševalskih ali marketinških namenov (ne glede na obliko) na Affiliate spletnih straneh, ali (iii) iz kakršnega koli drugega razloga.
 
-**4.7 Podobna domenska imena**
+**4.7 Podobna imena domen**
 
-4.7.1 V primeru, da ima ali uporablja partnersko ime domene, ki je (zavajajoče) podobno blagovnim znamkam Wink ("Podobno ime domene") za partnersko spletno mesto (ki ga določi Wink po lastni presoji) ali v primeru, da želi partnersko podjetje registrirati, pridobiti, uporabljati, kupiti ali pridobiti podobno ime domene (s predhodnim pisnim soglasjem Wink), velja naslednje. Partnersko podjetje se zavezuje (in mora zagotoviti, da podjetja, ki jih nadzoruje), da tega ne storijo, neposredno ali posredno:
+4.7.1 Če ima ali uporablja Affiliate domeno, ki je (zavajajoče) podobna Wink blagovnim znamkam (»Podobno ime domene«) za Affiliate spletne strani (po presoji Wink) ali če želi Affiliate registrirati, pridobiti, uporabljati, kupiti ali pridobiti Podobno ime domene (ob predhodnem pisnem dovoljenju Wink), velja naslednje. Affiliate se zavezuje (in bo zagotovil, da podjetja, ki jih nadzoruje, ne bodo) neposredno ali posredno:
 
-1. licitirati ali kupiti pravice do objave na internetu za podobno domensko ime ali kateri koli njegov del ali podobnosti na kakršen koli način v katerem koli od svojih oglasov, vključno z, vendar ne omejeno na, internetno in spletno oglaševanje.\
-   2\. v metaoznake kode katerega koli spletnega mesta vključevati podobnega imena domene ali katerega koli njegovega dela ali podobnih različic, prevodov ali napačno črkovanih besed. To vključuje metanaslov, metaključne besede ali metaopis.\
-   3\. neposredno ali posredno kupovati, pridobivati ​​ali uporabljati katere koli ključne besede s platform tretjih oseb za preusmeritev prometa na podobno domensko ime in\
-   4\. kupiti podobno domensko ime ali kateri koli njegov del ali kakršne koli različice, prevode ali napačno črkovane oblike za uporabo v besedilnih povezavah, oglasnih pasicah, pojavnih oglasih ali kateri koli drugi vrsti oglasov, ki bi lahko bili povezani s kampanjo s ključnimi besedami.
+1. ne bo licitiral ali kupoval pravic do internetnega oglaševanja za Podobno ime domene ali katerega koli dela ali podobnosti v katerikoli obliki oglaševanja, vključno z internetnim in spletnim oglaševanjem;  
+2. ne bo vključil Podobnega imena domene ali katerega koli dela ali podobnih različic, prevodov ali napačnih črkovanj v meta oznake katere koli spletne kode, vključno z meta naslovom, meta ključnimi besedami ali meta opisom;  
+3. ne bo kupoval, pridobival ali uporabljal neposredno ali posredno ključnih besed s platform tretjih oseb za preusmerjanje prometa na Podobno ime domene; in  
+4. ne bo kupoval Podobnega imena domene ali katerega koli dela ali njegovih različic, prevodov ali napačnih črkovanj za uporabo v besedilnih povezavah, pasicah, pojavnih oglasih ali katerem koli drugem oglasu, ki bi lahko bil povezan s kampanjo ključnih besed.
 
-4.7.2 Glede podobnih domenskih imen, ki niso pridruženo spletno mesto, so se pogodbene stranke dogovorile, da (i) bodo vsa taka podobna domenska imena neposredno povezana s pridruženim spletnim mestom prek neposredne preusmeritve in ne bodo aktivno na voljo ali na spletu za kakršen koli namen, in (ii) pridružena družba (niti kateri koli član pridružene skupine) ne bo na noben način (na spletu ali zunaj njega) tržila, promovirala, odtujala, prodajala, ponujala, oglaševala, (pod)licencirala, dajala na voljo, dovoljevala dostop do, se sklicevala nanje, objavljala ali distribuirala podobnih domenskih imen.
+4.7.2 Glede Podobnih imen domen, ki niso Affiliate spletne strani, sta se Stranki dogovorili, da (i) bodo vsa taka Podobna imena domen neposredno povezana z Affiliate spletno stranjo preko neposrednega preusmerjanja in ne bodo aktivno na voljo ali spletno dostopna za kakršen koli namen, in (ii) Affiliate (niti katerokoli podjetje v Affiliate skupini) ne bo na noben način (spletno ali nespletno) tržil, promoviral, prodajal, ponujal, oglaševal, (pod)licenciral, omogočal dostop, skliceval, objavljal ali distribuiral Podobnih imen domen.
 
 **4.8 Primerjava cen**
 
-4.8.1 V primeru, da partner ponuja primerjavo cen na ustreznem partnerskem spletnem mestu (spletnih mestih), kot je določeno v registracijskem obrazcu za partnerskega partnerja, ima partner za to ustrezno partnersko spletno mesto (spletna mesta) izključno dostop do podatkov o cenah in razpoložljivosti ustreznih ponudnikov nastanitev, kot so na voljo na spletnem mestu Wink (skupaj »podatki o cenah in razpoložljivosti«), na podlagi neposredne povezave s spletnimi strežniki Wink (tj. prek povezave JSON). Podatki o cenah in razpoložljivosti bodo na voljo v skladu z nadaljnjimi pogoji, ki jih bo zagotovil Wink.
+4.8.1 Če Affiliate na ustreznih Affiliate spletnih straneh, določenih v obrazcu za registracijo affiliate partnerja, ponuja primerjavo cen, bo za te spletne strani pridobil dostop samo do podatkov o cenah in razpoložljivosti ustreznih ponudnikov nastanitev, kot so na voljo na Wink spletni strani (skupaj "Podatki o cenah in razpoložljivosti") preko neposredne povezave do Wink spletnih strežnikov (npr. preko JSON povezave). Podatki o cenah in razpoložljivosti bodo na voljo v skladu z dodatnimi pogoji, ki jih določi Wink.
 
-4.8.2 Podatki o cenah in razpoložljivosti ne vključujejo podatkov in vsebine Wink s spletnega mesta Wink ali spletnih strežnikov ali tretje osebe (spletnega mesta), s katero ima Wink pogodbeno razmerje za zagotavljanje vsebine, in podružnica ni upravičena do uporabe, kopiranja, sklicevanja na ali vključevanja na svojih spletnih mestih, kjer je na voljo primerjava cen, podatkov in vsebine Wink s spletnega mesta Wink ali spletnih strežnikov ali tretje osebe (spletnega mesta).
+4.8.2 Podatki o cenah in razpoložljivosti ne vključujejo in Affiliate ne sme uporabljati, kopirati, sklicevati se na ali vključevati na svojih spletnih straneh, kjer je na voljo primerjava cen, Podatkov Wink in Vsebine z Wink spletne strani ali spletnih strežnikov ali tretje strani, s katero ima Wink pogodbeno razmerje za zagotavljanje Vsebine.
 
-4.8.3 V primeru, da partner ponuja primerjavo cen, mora zagotoviti, da so cene sob, ki jih vsi konkurenti Wink (vključno z vsemi ponudniki nastanitev ali rezervacijskimi centri, posredniki ali agenti (skupaj "ponudniki tretjih oseb")) na voljo na spletni strani partnerja, točne, pravilne in niso zavajajoče ali varljive v primerjavi z dejansko ceno(-ami), kot so na voljo na spletni strani(-ah) ponudnikov tretjih oseb.
+4.8.3 Če Affiliate ponuja primerjavo cen, bo zagotovil, da so cene sob, ki jih ponujajo vsi konkurenti Wink (vključno z vsemi ponudniki nastanitev ali rezervacijskimi centri, posredniki ali agenti, skupaj "Tretji ponudniki") na Affiliate spletnih straneh točne, pravilne in ne zavajajoče v primerjavi z dejanskimi cenami, kot so na voljo na spletnih straneh Tretjih ponudnikov.
 
-4.8.4 Wink se na spletni strani za primerjavo cen partnerja obravnava vsaj tako ugodno (glede uvrstitve, prikaza in možnosti konverzije) kot (x) konkurenti Wink, (y) ponudniki nastanitev ali (z) kateri koli rezervacijski center, agent ali posrednik ali upravljani, v lasti ali pod nadzorom konkurenta Wink ali ponudnikov nastanitev, ki so na voljo na spletni strani za primerjavo cen partnerja.
+4.8.4 Wink bo na primerjalni spletni strani Affiliate obravnavan vsaj tako ugodno (glede uvrstitve, prikaza in možnosti konverzije) kot najbolj uspešni (x) konkurenti Wink, (y) ponudniki nastanitev ali (z) kateri koli rezervacijski ali posredniški center, agent ali posrednik, ki ga upravlja, ima v lasti ali nadzoruje konkurent Wink ali ponudniki nastanitev, ki so na voljo na primerjalni spletni strani Affiliate.
 
-**4.9 Dokazno breme, skladnost, sodna prepoved in nadaljnja pravna sredstva**
+**4.9 Dokazno breme, skladnost, začasna odredba in nadaljnji ukrepi**
 
-4.9.1 Stranki se strinjata in potrjujeta, da v primeru (domnevne ali grozeče) kršitve ali kršitve obveznosti s strani Partnerja iz te klavzule 4, dokazno breme nosi Partner. Z drugimi besedami, Wink ima pravico do domneve, Partner pa mora zagotoviti in dostaviti zadostne in zadovoljive dokaze (tj. prepričljive in neizpodbitne) za obrambo ali zavrnitev zahtevka.
+4.9.1 Stranki se strinjata in priznavajo, da v primeru (domnevne ali grozeče) kršitve ali neizpolnitve obveznosti Affiliate po tem členu 4 bremena dokazovanja nosi Affiliate. Z drugimi besedami, Wink ima korist predpostavke in Affiliate mora zagotoviti zadostne in zadovoljive dokaze (tj. dokončne in neizpodbitne), da se brani ali zavrne zahtevek.
 
-4.9.2 V primeru, da je spletno mesto, kampanja ali oglas Wink povezan s spletnim mestom(-i) partnerja ali kampanjo ali oglasom partnerja (ali obratno), ali v primeru (grožeče) kršitve Pravilnika o neželeni pošti s strani partnerja, mora partner (i) o taki (grožeči) kršitvi nemudoma obvestiti Wink, ko se zave takšne kršitve, in (ii) na prvo zahtevo Winka nemudoma uvesti, upoštevati in spoštovati vse pogoje, omejitve in prepovedi, določene v tem sporazumu ali ki jih zahteva Wink. Partner mora nemudoma stopiti v stik z vsako platformo tretje osebe ali agencijo tretje osebe ter spremeniti spletno mesto(-a) partnerja in vsa oglasna besedila, naslove, opise, ključne besede, URL-je, besedilne povezave, oglase, vključno z vsemi metaoznakami (metanaslovi, metaključne besede in metaopisi), da bodo skladni s pogoji tega sporazuma ali kot zahteva Wink.
+4.9.2 Če je Wink spletna stran, kampanja ali oglas povezan z Affiliate spletnimi stranmi ali kampanjo ali oglasom Affiliate (ali obratno) ali v primeru (grozeče) kršitve pravil o neželeni pošti s strani Affiliate, mora Affiliate (i) nemudoma obvestiti Wink o takšni (grozeči) kršitvi, ko za to izve, in (ii) na prvo zahtevo Wink nemudoma izvesti, spoštovati in upoštevati vse pogoje, omejitve in prepovedi, določene v tej pogodbi ali zahtevane s strani Wink. Affiliate bo nemudoma kontaktiral vsako platformo tretjih oseb ali agencijo in prilagodil Affiliate spletne strani ter vse oglase, naslove, opise, ključne besede, URL-je, besedilne povezave, oglase, vključno z vsemi meta oznakami (meta naslovi, meta ključne besede in meta opisi), da bo izpolnil pogoje te pogodbe ali zahteve Wink.
 
-4.9.3 Partner se strinja in potrjuje, da ima Wink, dokler ne bodo izpolnjene ali izvedene razumne zahteve družbe Wink ali če partner ne bo nemudoma izpolnil ali se držal vseh takih zahtev družbe Wink v skladu s to klavzulo 4, pravico odložiti ali začasno ustaviti svoje obveznosti iz te pogodbe (vključno s ponudbo storitve, sistema in podatkov Wink) ali takoj odpovedati to pogodbo, ne da bi to vplivalo na pravice družbe Wink v skladu s to pogodbo ali drugače.
+4.9.3 Affiliate se strinja in priznava, da lahko Wink zaradi neizpolnjevanja ali neupoštevanja razumnih zahtev Wink ali v primeru, da Affiliate ne izpolni ali ne spoštuje vseh takšnih zahtev Wink po tem členu 4, odloži ali začasno ustavi svoje obveznosti po tej pogodbi (vključno z zagotavljanjem Storitve, Sistema in Podatkov Wink) ali takoj prekine to pogodbo, ne da bi to vplivalo na Winkove pravice po tej pogodbi ali drugače.
 
-4.9.4 V primeru kršitve zavez, zavez, omejitev, obveznosti in/ali jamstev iz te 4. točke s strani ali pripisljive Povezane družbe, je Wink upravičen do uveljavljanja naslednjih dejanj in pravic, ne glede na pravna sredstva in ukrepe za določeno izpolnitev, odškodnino za škodo ali prepoved ali pravično pravno sredstvo, ki so na voljo po zakonu ali pogodbi:\
-(a) začasna prekinitev (plačilnih) obveznosti iz te Pogodbe ali njena prekinitev s takojšnjim učinkom brez predhodnega obvestila Partnerju in brez poseganja v pravice družbe Wink iz te Pogodbe ali drugače;\
-(b) Wink ima pravico znižati provizijo na 0 % za vse opravljene rezervacije in/ali vsako materializirano transakcijo v obdobju, v katerem partner krši ustrezne obveznosti iz 4. člena ali ni v celoti odpravil kršitve ustreznih obveznosti iz 4. člena;\
-(c) Wink si pridržuje pravico, da od partnerja zahteva vračilo provizije, ki jo je Wink plačal v skladu s to pogodbo; in\
-(d) v primeru uporabe podobnega domenskega imena (ali lastništva ali registracije spletnega mesta z (zavajajoče) podobnim domenskim imenom, kot ga ima v lasti ali uporablja Wink, s strani Povezane osebe in ponavljajoče se in/ali bistvene kršitve 4. člena, mora Povezana oseba prenesti, dodeliti in registrirati podobno domensko ime (vključno s spletnim mestom(-i) z (zavajajoče) podobnim domenskim imenom) na in v imenu Winka prek podjetja za registracijo domenskih imen po izbiri Winka, kar se mora zaključiti v 20 delovnih dneh po nastanku kršitve. V primeru, da Povezana oseba ne sodeluje in ne izvede prenosa, dodelitve in prenosa ustreznih domenskih imen, Povezana oseba s tem nepreklicno in brezpogojno pooblašča, pooblašča in daje pooblastilo Winku in v njegovo korist za podpis in/ali podpis vseh dokumentov, ki so potrebni ali uporabni v zvezi z dodelitvijo, registracijo, dodelitvijo in prenosom domenskih imen na in v imenu Winka.
+4.9.4 V primeru kršitve zavez, obveznosti, omejitev, jamstev in/ali obveznosti po tem členu 4 s strani ali zaradi Affiliate, ima Wink pravico uveljavljati naslednje ukrepe in pravice, ne glede na druge pravne ukrepe za izpolnitev, odškodnino ali začasno odredbo, ki so na voljo po zakonu ali pogodbi:  
+(a) začasno ustavitev svojih (plačilnih) obveznosti po tej pogodbi ali takojšnjo odpoved te pogodbe brez predhodnega obvestila Affiliate in brez poseganja v Winkove pravice po tej pogodbi ali drugače;  
+(b) Wink ima pravico znižati provizijo na 0 % za vse rezervacije in/ali vsako realizirano transakcijo v času, ko Affiliate krši ustrezne obveznosti iz člena 4 ali ni v celoti odpravil kršitve;  
+(c) Wink si pridržuje pravico zahtevati vračilo provizije, ki jo je plačal Affiliate po tej pogodbi; in  
+(d) v primeru uporabe Podobnega imena domene (ali lastništva ali registracije spletne strani z (zavajajoče) podobnim imenom domene kot ga ima ali uporablja Wink) in ponavljajoče ali materialne kršitve člena 4, bo Affiliate prenesel, odstopil in registriral Podobno ime domene (vključno s spletnimi stranmi s podobnim imenom domene) v imenu Wink preko registrarja domen, ki ga izbere Wink, v roku 20 delovnih dni po nastopu kršitve. Če Affiliate ne sodeluje pri prenosu, odstopu in registraciji, pooblašča Wink, da podpiše in izvede vse potrebne dokumente za prenos in registracijo domen v imenu Wink.
 
-**5. Komisija**
+**5. Provizija**
 
-5.1 Wink bo partnerju plačal provizijo, ki je odstotek, ki ga določi ponudnik nastanitve od vrednosti rezervacije, ustvarjene z materializirano transakcijo. Wink za transakcije vplačil in izplačil uporablja storitve zunanjega posrednika za plačila. Plačilni pogoji so določeni v ločeni pogodbi.
+5.1 Wink bo Affiliate plačal provizijo, ki jo določi ponudnik nastanitev kot odstotek vrednosti rezervacije, ustvarjene z realizirano transakcijo. Wink uporablja storitve plačilnega posrednika tretje osebe za transakcije Pay-in in Pay-out. Plačilni pogoji so določeni v ločeni pogodbi.
 
-5.2 Odstotek partnerske provizije ali ACP določi ponudnik nastanitve. Uporablja se privzeti ACP v višini 10 %, vendar se lahko stranki dogovorita o drugačnem odstotku, kot je določeno v točki 1.2.3.
+5.2 Odstotek provizije Affiliate ali ACP določi ponudnik nastanitev. Privzeti ACP je 10 %, vendar se lahko stranki dogovorita za drugačen odstotek, kot je določeno v členu 1.2.3.
 
-5.3 Provizija bo izplačana v skladu z naslednjo formulo:
+5.3 Provizija se plača po naslednji formuli:
 
-Provizija = BV \* ACP\
-Neto izplačana provizija (izplačilo) = Provizija - PSF - BF
+Provizija = BV * ACP  
+Neto provizija (izplačilo) = Provizija - PSF - BF
 
-**"BV"**&#x70;omeni vrednost rezervacije\
-**"AKP"**&#x70;omeni odstotek partnerske provizije\
-**"Čeprav"**&#x70;omeni provizijo za rezervacijo (1,5 %)\
-**"PSF"**&#x70;omeni provizije za plačilne storitve (4 %)
+**"BV"** pomeni vrednost rezervacije  
+**"ACP"** pomeni odstotek provizije affiliate  
+**"BF"** pomeni provizijo za rezervacijo (1,5 %)  
+**"PSF"** pomeni stroške plačilne storitve (4 %)
 
-5.4 Wink spremlja vse transakcije in si bo komercialno razumno prizadeval zagotoviti, da so vse materializirane transakcije sledene, prijavljene in plačane. Vendar pa bodo Winkovi zapisi dokončni in partner nima pravice do odškodnine za izgubljeni prihodek ali škodo v primeru, da Wink ne bo natančno sledil ali poročal o odhodih partnerjev, razen v primeru hude kršitve ali goljufivega ravnanja s strani Winka. Razen v slednjih primerih je edina možnost partnerja prekinitev te pogodbe in prenehanje sodelovanja v programu.
+5.4 Wink spremlja vse transakcije in bo komercialno razumno prizadeval zagotoviti, da so vse realizirane transakcije spremljane, poročane in plačane. Vendar so Winkovi zapisi dokončni in Affiliate nima pravice do odškodnine za izgubljene prihodke ali škodo, če Wink ne spremlja ali ne poroča natančno o Affiliate odhodih, razen v primeru hude malomarnosti ali goljufivega vedenja Wink. Razen v teh primerih je edina pravna možnost Affiliate prekinitev te pogodbe in prenehanje sodelovanja v programu.
 
-5.5 Navedena neto provizija je edino nadomestilo, do katerega je partner upravičen v skladu s to pogodbo. Partner ni upravičen do nobenih drugih ugodnosti. Wink je odgovoren za preverjanje točnosti plačil neto provizij pred plačilom in je odgovoren za preverjanje vseh plačil neto provizij ob prejemu ter za takojšnjo prijavo domnevnih napak. Nobena stranka ne more vložiti zahtevkov za preplačilo ali premajhno plačilo devetdeset (90) koledarskih dni po datumu zapadlosti plačila. Vsa naročila mora Wink sprejeti v skladu s svojimi pravilniki v času zahteve za rezervacijo. Wink-ove pravilnike se lahko spremenijo brez predhodnega obvestila.
+5.5 Neto provizija, določena v pogodbi, je edino nadomestilo, do katerega je Affiliate upravičen po tej pogodbi. Affiliate nima pravice do drugih koristi. Wink je odgovoren za preverjanje pravilnosti izplačil neto provizije pred plačilom, Affiliate pa je odgovoren za preverjanje vseh izplačil neto provizije ob prejemu in mora takoj prijaviti domnevne napake. Zahtevki za preplačila ali podplačila niso možni po 90 koledarskih dneh od datuma zapadlosti plačila. Vse naročila so predmet sprejema Wink v skladu z njegovimi politikami ob času zahteve za rezervacijo. Politike Wink se lahko spremenijo brez predhodnega obvestila.
 
-5.6 Wink si bo v komercialno razumnem okviru prizadeval za izvajanje revizije vseh transakcij, za katere velja ta pogodba. Wink bo partnerju zagotovil dostop do analitike in nadzorne plošče, ki povzema vse prihajajoče in potekle rezervacije. Partner bo imel tudi dostop do poročil o plačilih, ki bodo prikazovala predvideni zaslužek in zgodovino plačil. Če Wink ne bo vodil natančnih evidenc ali revizije, ima partner edino možnost prekiniti to pogodbo in končati svoje sodelovanje v programu.
+5.6 Wink bo komercialno razumno prizadeval voditi revizijo vseh transakcij, ki so predmet te pogodbe. Wink bo Affiliate omogočil dostop do analitike in nadzorne plošče, ki povzema vse prihajajoče in potekle rezervacije. Affiliate bo imel tudi dostop do plačilnih poročil, ki prikazujejo predvidene zaslužke in zgodovino plačil. Če Wink ne bo vodil natančnih evidenc ali revizij, je edina pravna možnost Affiliate prekinitev te pogodbe in prenehanje sodelovanja v programu.
 
-**6. Izjave in jamstva.**
+**6. Izjave in jamstva**
 
-**6.1 Jamstva partnerjev**
+**6.1 Jamstva Affiliate**
 
-Partner s tem izjavlja in jamči družbi Wink, da za čas trajanja te pogodbe:\
-(i) ima podružnica vse potrebne pravice, lastništvo, pooblastila in pristojnosti za lastništvo, upravljanje in uporabo partnerskega spletnega mesta (vključno z ustreznim domenskim imenom (imeni)) ter za vključitev povezave, mikro spletnega mesta ali povezave (kot je primerno) na partnersko spletno mesto (spletna mesta);\
-(ii) Spletna stran(-a) partnerja ne sme(-jo) uporabljati taktik Black Hat, kršiti predpisov o neželeni pošti, javnega reda in morale ali (b) vsebovati ali prikazovati neprimerne, nepravilne ali nezakonite vsebine, referenc, gradiva, informacij, povezav ali pasic (npr. v zvezi s pornografijo, rasizmom in podobno), obrekljivih izjav, elementov, ki kršijo zasebnost tretjih oseb ali so žaljivi, žaljivi ali obsceni, (c) kopirati ali spominjati na dizajn, imena domen (vključno s poddomenami), videz in občutek ali ustvarjati vtisa, da je(-so) del spletne strani Wink ali katere koli spletne strani podružnic ali hčerinskih družb Wink; (d) zagovarjati diskriminacije na podlagi rase, spola, vere, narodnosti, invalidnosti, spolne usmerjenosti ali starosti; (e) spodbujati ali se ukvarjati z nezakonitimi dejavnostmi; (f) kršiti pravic intelektualne lastnine tretjih oseb; (g) vsebovati ali promovirati zavajajočih informacij ali spodbujati iger na srečo; ali (h) biti kako drugače neprimerne narave. Vsaka kršitev zgoraj navedenih določb lahko povzroči takojšnjo izključitev partnerja iz programa in izgubo vseh neporavnanih plačil.\
-(iii) Partner ne sme uporabljati nobenih metod plenilskega oglaševanja, namenjenih ustvarjanju prometa stran od katerega koli spletnega mesta, ki je v lasti ali pod upravljanjem podjetja Wink ali katerega koli od njegovih povezanih podjetij, vključno z, vendar ne omejeno na, Wink.com (in vse lokalne različice le-teh s katero koli domeno najvišje ravni), priceline.com, rentalcars.com (in vse lokalne različice le-teh s katero koli domeno najvišje ravni), www.booking.com, www.kayak.com, Wink (in vse lokalne različice le-teh s katero koli domeno najvišje ravni), www.opentable.com (in vse lokalne različice le-teh s katero koli domeno najvišje ravni), kot tudi vseh drugih spletnih mest, o katerih ga Wink lahko občasno obvesti. Poleg tega mora Partner spletnim mestom, ki jih Partner nadzoruje, prepovedati takšne metode plenilskega oglaševanja. Plenilsko oglaševanje je opredeljeno kot vsaka metoda, ki ustvarja ali prekriva povezave ali pasice na spletnih mestih, ustvarja okna brskalnika ali katera koli metoda, izumljena za ustvarjanje prometa s spletnega mesta brez vednosti, dovoljenja in sodelovanja lastnika spletnega mesta. Primeri vključujejo, vendar niso omejeni na, vtičnike brskalnika za razčlenjevanje ključnih besed, kot so Text Enhance, TopText in +Surf, tehnologijo zamenjave pasic, kot je Gator, tehnologijo ustvarjanja oglasnih pasic v brskalniku, ki ni odvisna od spletnega mesta, ter uporabo oznak Wink v besedilih oglasov iskalnikov (npr. Google AdWords, Yahoo! Search Marketing itd.) ali enakovredno in na splošno vse druge metode, ki bi lahko potencialne stranke zavajajoče prepričale, da bodo preusmerjene na spletno mesto Wink. Vsaka kršitev zgoraj navedenih določb lahko privede do takojšnje izključitve partnerja iz programa in do izgube vseh neporavnanih plačil.\
-(iv) ima podružnica in je izpolnjevala vsa dovoljenja, licence in druga vladna pooblastila, potrebna za vodenje, izvajanje in nadaljevanje svojih dejavnosti in poslovanja, ter\
-(v) Podružnica je neodvisni izvajalec za vse namene in bo odgovorna za lastne davke, socialne prispevke in vse druge davčne zadeve.
+Affiliate izjavlja in jamči Wink, da za obdobje trajanja te pogodbe:  
+(i) ima vse potrebne pravice, lastništvo, pooblastila in pristojnosti za lastništvo, upravljanje in uporabo Affiliate spletnih strani (vključno z ustreznimi domenami) in vključitev Povezave, Mikro strani ali Povezave (kot je primerno) na Affiliate spletne strani;  
+(ii) Affiliate spletne strani ne bodo (a) uporabljale Black Hat taktik, kršile pravil o neželeni pošti, javne politike in morale, ali (b) vsebovale neprimerne, neustrezne ali nezakonite vsebine, sklice, materiale, informacije, povezave ali pasice (npr. glede pornografije, rasizma ipd.), obrekovalnih izjav, elementov, ki kršijo zasebnost tretjih oseb ali so zlorabljajoči, žaljivi ali obsceni, (c) kopirale ali spominjale na dizajn, domene (vključno z poddomenami), izgled in občutek ali ustvarjale vtis, da so del Wink spletne strani ali spletnih strani povezanih družb Wink; (d) zagovarjale diskriminacijo na podlagi rase, spola, vere, narodnosti, invalidnosti, spolne usmerjenosti ali starosti; (e) promovirale ali sodelovale v nezakonitih dejavnostih; (f) kršile pravic intelektualne lastnine tretjih oseb; (g) vsebovale ali promovirale zavajajoče informacije ali igre na srečo; ali (h) bile drugače neprimerne narave. Vsaka kršitev teh določb lahko povzroči takojšnjo izključitev Affiliate iz programa in izgubo vseh neizplačanih plačil.  
+(iii) Affiliate ne bo uporabljal nobenih plenilskih oglaševalskih metod, namenjenih odvračanju prometa s katere koli spletne strani, ki jo poseduje ali upravlja Wink ali katera koli njegova povezana podjetja, vključno, a ne omejeno na Wink.com (in vse lokalne različice z ne glede na vrhnjo domeno), priceline.com, rentalcars.com (in vse lokalne različice), www.booking.com, www.kayak.com, Wink (in vse lokalne različice), www.opentable.com (in vse lokalne različice) ter druge spletne strani, ki jih Wink občasno sporoči. Plenilsko oglaševanje je definirano kot katerakoli metoda, ki ustvarja ali prekriva povezave ali pasice na spletnih straneh, odpira brskalniška okna ali katerakoli metoda, ki je izumljena za ustvarjanje prometa s spletne strani brez vednosti, dovoljenja in sodelovanja lastnika te strani. Primeri vključujejo, a niso omejeni na, vtičnike za razčlenjevanje ključnih besed, kot so Text Enhance, TopText in +Surf, tehnologijo zamenjave pasic, kot je Gator, tehnologijo odpiranja brskalniških oken, ki ni odvisna od spletne strani, kot tudi uporabo Wink znamk v oglasnih besedilih iskalnikov (npr. Google AdWords, Yahoo! Search Marketing) ali ekvivalentno in na splošno druge metode, ki bi lahko zavajajoče usmerile potencialne stranke, da verjamejo, da bodo preusmerjene na Wink spletno stran. Vsaka kršitev teh določb lahko povzroči takojšnjo izključitev Affiliate iz programa in izgubo vseh neizplačanih plačil.  
+(iv) Affiliate ima vsa dovoljenja, licence in druge državne odobritve, potrebne za izvajanje in nadaljevanje svojega poslovanja, in  
+(v) Affiliate je neodvisni izvajalec za vse namene in bo odgovoren za svoje davke, socialne prispevke in vse druge davčne zadeve.
 
 **6.2 Jamstva in zaveze strank**
 
-6.2.1 Vsaka stranka drugi stranki zagotavlja in jamči, da za čas trajanja te pogodbe:\
-(i) ima polna pooblastila in pristojnosti za sklenitev in izpolnjevanje svojih obveznosti iz te pogodbe;\
-(ii) je sprejela vse potrebne korporativne ukrepe za odobritev podpisa in izvajanja te pogodbe;\
-(iii) ta pogodba predstavlja pravno veljavne in zavezujoče obveznosti te pogodbenice v skladu z njenimi določili.
+6.2.1 Vsaka Stranka izjavlja in jamči drugi Stranki, da za obdobje trajanja te pogodbe:  
+(i) ima polno korporativno moč in pristojnost za sklenitev in izpolnitev svojih obveznosti po tej pogodbi;  
+(ii) je sprejela vse korporativne ukrepe, potrebne za odobritev podpisa in izpolnitve te pogodbe;  
+(iii) ta pogodba predstavlja pravno veljavne in zavezujoče obveznosti te Stranke v skladu z njenimi pogoji.
 
-6.2.2 Vsaka stranka si bo v okviru svojih komercialno razumnih prizadevanj prizadevala za zaščito in varstvo svojega(-ih) spletnega(-ih) mesta(-ij).
+6.2.2 Vsaka Stranka bo komercialno razumno varovala in varovala svoje spletne strani.
 
-6.2.3 Podružnica izjavlja in jamči, da ne bo izvedla ali ponudila nobenega plačila, darila ali prenosa česar koli vrednega: (i) kateremu koli vladnemu uradniku ali vladnemu uslužbencu (vključno z zaposlenimi v vladnih subjektih ali korporacijah); ali (ii) kateri koli politični stranki (vključno z njenimi uradniki ali kandidati); (iii) kateri koli komercialni stranki, osebi ali subjektu; ali (iv) posredniku za plačilo kateremu koli od zgoraj navedenega, da bi prejemnika spodbudila k dejanju ali opustitvi dejanja, ki krši zakonito dolžnost takega prejemnika, pridobiti ali ohraniti posel ali si zagotoviti kakršno koli neprimerno prednost; ali spodbudila k nepravilnemu opravljanju ustrezne funkcije ali dejavnosti v zvezi s kakršnimi koli dejavnostmi v imenu Winka ali za interese Winka, kot je predvideno v tej pogodbi. Kršitev te določbe s strani podružnice daje Winku pravico, da to pogodbo prekine s takojšnjim učinkom.
+6.2.3 Affiliate izjavlja in jamči, da ne bo ponudil ali izvedel nobenega plačila, darila ali prenosa vrednosti: (i) kateremukoli vladnemu uradniku ali zaposlenemu (vključno z zaposlenimi v vladnih podjetjih ali korporacijah); (ii) katerikoli politični stranki (vključno z njenimi uradniki ali kandidati); (iii) katerikoli komercialni stranki, osebi ali entiteti; ali (iv) posredniku za plačilo katerikoli od naštetih, z namenom, da prejemnik stori ali opusti dejanje v nasprotju z zakonito dolžnostjo, pridobi ali ohrani posel ali pridobi nepravično prednost; ali da povzroči nepravilno izvajanje funkcije ali dejavnosti v zvezi z dejavnostmi v imenu Wink ali za interese Wink, kot je določeno v tej pogodbi. Kršitev te določbe s strani Affiliate daje Wink pravico do takojšnje prekinitve te pogodbe.
 
-6.2.4 Za namene ugotavljanja skladnosti z zgoraj navedeno določbo 6.2.3 ima Wink pravico, da na svoje stroške opravi pregled lokacije in revizijo vseh ustreznih računovodskih in prodajnih knjig, evidenc, sporazumov, objektov, računalniških sistemov, pogodb in dokumentov Podružnice med rednim delovnim časom v pisarnah Podružnice in na način, ki ne bi nerazumno motil običajnih poslovnih dejavnosti Podružnice. Takšne revizije se v skladu s to pogodbo ne smejo izvajati pogosteje kot dvakrat na dvanajst (12) mesecev.
+6.2.4 Za namen preverjanja skladnosti s členom 6.2.3 ima Wink pravico, na svoj strošek, opraviti inšpekcijski pregled in revizijo vseh relevantnih računovodskih in prodajnih knjig, evidenc, pogodb, objektov, računalniških sistemov, pogodb in dokumentov Affiliate med rednim delovnim časom v prostorih Affiliate, na način, ki ne moti neupravičeno rednih poslovnih aktivnosti Affiliate. Takšne revizije ne smejo biti opravljene več kot dvakrat na leto.
 
-**6.3 Izjava o omejitvi odgovornosti**
+**6.3 Odpoved**
 
-6.3.1 Razen če ni v tej pogodbi izrecno določeno drugače, nobena od strank ne daje nobenih izrecnih ali implicitnih zagotovil ali jamstev v zvezi s predmetom te pogodbe in s tem zavrača vsa implicitna jamstva, vključno z vsemi implicitnimi jamstvi glede prodajnosti ali primernosti za določen namen v zvezi s to zadevo. Wink zagotavlja storitev »kot je« in »kot je na voljo« ter ne jamči za čas delovanja.
+6.3.1 Razen če je v tej pogodbi izrecno drugače določeno, nobena Stranka ne daje nobenih izrecnih ali implicitnih jamstev v zvezi s predmetom te pogodbe in s tem izključuje vsa implicitna jamstva, vključno z jamstvi o primernosti za določen namen ali prodajnosti. Wink zagotavlja Storitev "kot je" in "kot je na voljo" ter ne jamči razpoložljivosti.
 
-6.3.2 Vsaka stranka priznava težave, povezane z uporabo interneta, zlasti različne hitrosti in preobremenjenost omrežja, ki lahko povzročijo prekinitve in težave pri dostopu do spletnega mesta. Vsaka stranka izključuje kakršno koli odgovornost do druge stranke, ki je povezana s kakršno koli (začasno (načrtovano ali nenačrtovano) in/ali delno ali popolno) okvaro ali izpadom (zaradi vzdrževanja, posodobitev ali drugače) spletnih mest, prodajnega portala, sistema in/ali storitve.
+6.3.2 Vsaka Stranka priznava težave, povezane z uporabo interneta, zlasti različne hitrosti in zasičenost omrežja, ki lahko povzročijo prekinitve in težave pri dostopu do spletne strani. Vsaka Stranka izključuje kakršnokoli odgovornost do druge Stranke, povezano z morebitnimi (začasnimi (načrtovanimi ali nenapovedanimi) in/ali delnimi ali popolnimi) izpadi ali nedosegljivostjo spletnih strani, Prodajnega portala, Sistema in/ali Storitve.
 
-**7. Odškodnine in odgovornost**
+**7. Odškodnina in odgovornost**
 
 **7.1 Odškodnina**
 
-V največjem obsegu, ki ga dovoljuje veljavna zakonodaja, se strinjate, da boste Wink in vse njegove ponudnike nastanitev in podružnice ter njihove uradnike, direktorje, zaposlene in zastopnike oprostili, branili, odškodovali in varovali pred kakršnimi koli zahtevki, odgovornostmi, škodo, izgubami in stroški, vključno z, vendar ne omejeno na, razumne pravne in računovodske stroške, ki izhajajo iz ali so kakor koli povezani z (i) vašo kršitvijo teh pogojev; (ii) vašo nepravilno uporabo storitev; (iii) vašo opustitev ali našo opustitev po vaših navodilih pri natančnem poročanju, pobiranju ali nakazovanju davkov; ali (iv) vašo kršitvijo kakršnih koli zakonov, predpisov ali pravic tretjih oseb.
+V največji meri, ki jo dovoljuje veljavna zakonodaja, se strinjate, da boste sprostili, branili (po izbiri Wink), odškodnili in varovali Wink in vse njegove ponudnike nastanitev ter hčerinske družbe, njihove uradnike, direktorje, zaposlene in agente pred vsemi zahtevki, odgovornostmi, škodami, izgubami in stroški, vključno z razumljivimi pravnimi in računovodskimi stroški, ki izhajajo ali so na kakršen koli način povezani z (i) vašo kršitvijo teh pogojev; (ii) vašo neprimerno uporabo Storitve; (iii) vašo neizpolnitvijo ali našo neizpolnitvijo po vaših navodilih glede natančnega poročanja, zbiranja ali plačevanja davkov; ali (iv) vašo kršitvijo zakonov, predpisov ali pravic tretjih oseb.
 
-**7.2 Najvišja odgovornost**
+**7.2 Največja odgovornost**
 
-Razen če ta pogodba ne določa drugače, najvišja odgovornost pogodbenice za vse zahtevke, ki jih druga pogodbenica vloži proti tej pogodbenici v skladu s to pogodbo ali v povezavi z njo v enem letu, ne sme presegati skupne provizije, ki jo je taka pogodbenica prejela ali plačala v preteklih 6 mesecih, ali 10.000 USD (kar je višje), razen v primeru goljufije ali namernega kršitve odškodninske pogodbenice, v tem primeru omejitev odgovornosti za tako odgovorno pogodbenico ne velja.
+Razen če je v tej pogodbi drugače določeno, največja odgovornost Stranke za vse zahtevke, ki jih druga Stranka uveljavlja proti njej po tej pogodbi v enem letu, ne sme presegati skupne provizije, ki jo je ta Stranka prejela ali plačala v preteklih 6 mesecih ali 10.000 USD (kar je več), razen v primeru goljufije ali namernega malomarnosti Stranke, ki odškodnino zahteva, kjer omejitev odgovornosti ne velja.
 
 **7.3 Zahtevek tretje osebe**
 
-V primeru zahtevka tretje osebe mora odškodninska stranka o tem nemudoma obvestiti drugo stranko, stranke pa morajo ravnati v dobri veri in si v vseh komercialno razumnih okoliščinah prizadevati za posvetovanje, sodelovanje in medsebojno pomoč pri obrambi in/ali poravnavi takega zahtevka, pri čemer je odškodninska stranka upravičena prevzeti zahtevek in prevzeti obrambo ter poravnavo (v posvetovanju in soglasju z odškodninsko stranko ter ob upoštevanju interesov obeh strank), nobena stranka pa ne sme dati nobenega priznanja, vložiti nobenih dokumentov, soglašati s sprejetjem kakršne koli sodbe ali skleniti kakršnega koli kompromisa ali poravnave brez predhodnega pisnega soglasja druge stranke (ki se ne sme nerazumno zadrževati, odlašati ali pogojevati).
+V primeru zahtevka tretje osebe bo odškodovana Stranka nemudoma obvestila drugo Stranko, Stranki pa bosta v dobri veri sodelovali in si prizadevali za obrambo in/ali poravnavo zahtevka, pri čemer bo odškodovalna Stranka upravičena prevzeti obrambo in poravnavo (v dogovoru z odškodovano Stranko in ob upoštevanju interesov obeh Strank), in nobena Stranka ne bo priznala krivde, vložila dokumentov, dovolila sodne odločbe ali sklenila poravnave brez predhodnega pisnega soglasja druge Stranke (ki ne sme biti neupravičeno zadržano, odloženo ali pogojevano).
 
-**7.4 Opustitev posledične škode itd.**
+**7.4 Odpoved posledičnih škod**
 
-V nobenem primeru nobena stranka ne odgovarja drugi stranki za kakršno koli izgubo proizvodnje, izgubo dobička, izgubo prihodka, izgubo pogodbe, izgubo ali škodo na dobrem imenu ali ugledu, izgubo zahtevka ali kakršno koli posredno, posebno, kazensko, naključno ali posledično škodo ali izgube, ne glede na to, ali je taka škoda posledica kršitve pogodbe, odškodninske odgovornosti ali česa drugega. Vsa taka škoda in izgube se s tem izrecno zavračajo.
+Nobena Stranka ne bo odgovorna drugi Stranki za izgubo proizvodnje, dobička, prihodka, pogodbe, ugleda ali za kakršnokoli posredno, posebno, kazensko, naključno ali posledično škodo ali izgubo, ne glede na to, ali so te škode posledica kršitve pogodbe, delikta ali drugače. Vse take škode in izgube so izrecno odstopljene in izključene.
 
-**7.5 Pogodbena odškodnina**
+**7.5 Vnaprej določena odškodnina**
 
-Brez poseganja v določila drugih delov te pogodbe se tako Partner kot Wink strinjata, da je lahko neizvedljivo in težko ugotoviti višino dejanske škode, ki jo je povzročila bistvena kršitev določb o intelektualni lastnini in zaupnosti iz 4. in 10. člena te pogodbe. Zato se stranki strinjata, da bo Partner v primeru, da se ugotovi, da je Partner kršil te določbe, Winku kot pogodbeno pavšalno odškodnino plačal petindvajset tisoč ameriških dolarjev (25.000 USD) za vsako kršitev. Partner in Wink se nadalje strinjata, da ta določba o pogodbeni odškodnini predstavlja razumno nadomestilo za začetno izgubo, ki bi jo Wink utrpel zaradi takšne kršitve. Partner se tudi strinja, da nič v tej določbi ni namenjeno omejevanju pravice Winka do pridobitve prepovedi in drugih ustreznih pravnih sredstev. Ta določba prav tako ne posega v pravico Winka do zahtevka za dodatno in/ali kumulativno odškodnino zaradi kršitve te (če škoda dokazljivo presega znesek pogodbene odškodnine) ali katere koli druge določbe te pogodbe.
+Brez poseganja v druge določbe te pogodbe se Stranki strinjata, da je lahko težko določiti dejansko škodo zaradi materialne kršitve določb o intelektualni lastnini in zaupnosti iz členov 4 in 10. Zato se Stranki dogovorita, da bo v primeru ugotovljene kršitve Affiliate plačal Wink vnaprej določeno odškodnino v višini 25.000 USD za vsako kršitev. Stranki se strinjata, da ta določba predstavlja razumljivo nadomestilo za začetno škodo Wink zaradi takšne kršitve. Affiliate se prav tako strinja, da ta določba ne omejuje Winkove pravice do pridobitve začasnih ukrepov in drugih pravnih sredstev. Ta določba ne posega v Winkovo pravico do zahtevka dodatne in/ali kumulativne odškodnine, če škoda presega vnaprej določeni znesek.
 
-8. **Sprememba, trajanje in odpoved**
+**8. Spremembe, trajanje in prenehanje**
 
-**8.1 Sprememba.**
+**8.1 Spremembe**
 
-Razen če veljavna zakonodaja ne zahteva drugače, lahko Wink te Pogoje kadar koli spremeni. Če bomo te Pogoje bistveno spremenili, bomo revidirane Pogoje objavili na platformi Wink in posodobili datum »Zadnje posodobitve« na vrhu teh Pogojev. Če vas sprememba zadeva, vas bomo o spremembah obvestili vsaj trideset (30) dni pred datumom začetka veljavnosti. Če pogodbe ne prekinete pred datumom začetka veljavnosti revidiranih Pogojev, bo vaša nadaljnja uporaba Storitev pomenila sprejetje vseh sprememb revidiranih Pogojev.
+Razen če zakon ne zahteva drugače, lahko Wink kadar koli spremeni te pogoje. Če naredimo pomembne spremembe, bomo objavili spremenjene pogoje na Wink platformi in posodobili datum "Zadnje posodobitve" na vrhu teh pogojev. Če vas spremembe zadevajo, vas bomo o njih obvestili vsaj 30 dni pred začetkom veljavnosti. Če pogodbe ne prekinete pred začetkom veljavnosti spremenjenih pogojev, bo nadaljnja uporaba Storitve pomenila sprejem teh sprememb.
 
-**8.2 Izraz.**
+**8.2 Trajanje**
 
-Razen če ni dogovorjeno drugače, ta pogodba začne veljati z dnem sklenitve za nedoločen čas.
+Če ni drugače dogovorjeno, pogodba začne veljati na dan podpisa in velja za nedoločen čas.
 
-8.3.1 Vsaka stranka lahko to pogodbo odpove s takojšnjim učinkom kadar koli in iz katerega koli razloga s pisnim obvestilom drugi stranki.
+8.3.1 Vsaka Stranka lahko to pogodbo prekine takoj in iz kateregakoli razloga z pisnim obvestilom drugi Stranki.
 
-8.3.2 Vsaka stranka lahko odpove to pogodbo ali jo začasno prekine v odnosu do druge stranke, s takojšnjim učinkom in brez potrebe po obvestilu o neizpolnjevanju obveznosti v primeru:\
-(a) bistvena kršitev katere koli določbe te pogodbe s strani druge pogodbenice;\
-(b) (vložitev zahteve za) stečaj ali začasno ustavitev plačila (ali podoben ukrep) v zvezi z drugo stranko ali\
-(c) (neposredna ali posredna) sprememba nadzora v zvezi z drugo stranko.
+8.3.2 Vsaka Stranka lahko to pogodbo prekine ali začasno ustavi v zvezi z drugo Stranko takoj in brez predhodnega opozorila v primeru:  
+(a) materialne kršitve katerega koli pogoja te pogodbe s strani druge Stranke;  
+(b) (vložitve zahteve za) stečaja ali začasne ustavitve plačil (ali podobnega ukrepa) v zvezi z drugo Stranko; ali  
+(c) (posredne ali neposredne) spremembe nadzora v zvezi z drugo Stranko.
 
-8.3.3 Wink si pridržuje pravico do odpovedi te pogodbe brez predhodnega obvestila v primeru, da v obdobju 6 zaporednih mesecev ni bilo opravljenih nobenih materializiranih transakcij.
+8.3.3 Wink si pridržuje pravico, da to pogodbo prekine brez obvestila, če v obdobju 6 zaporednih mesecev ni bilo nobenih realiziranih transakcij.
 
-8.3.4 Po prenehanju te pogodbe bo Wink še naprej izplačeval partnerju morebitne neporavnane provizije še 3 mesece po datumu prenehanja, pod pogojem, da ima Wink v tem obdobju pravilne kontaktne in bančne podatke za partnerja. Če partner v tem obdobju ne uveljavlja neplačane provizije, to pomeni, da se partner odpoveduje pravici do uveljavljanja takšne provizije. Brez poseganja v določila drugih delov te pogodbe v zvezi z zmanjšanjem, začasno ustavitvijo ali odvzemom provizije se vsaka neporavnana provizija odvzame, če je partner storil namerno kršitev, hudo malomarnost, goljufijo ali bistveno kršitev te pogodbe.
+8.3.4 Ob prenehanju pogodbe bo Wink še naprej plačeval Affiliate morebitno neporavnano provizijo za obdobje 3 mesecev po datumu prenehanja, pod pogojem, da ima Wink pravilne kontaktne in bančne podatke Affiliate v tem obdobju. Če Affiliate ne uveljavlja neplačane provizije v tem 3-mesečnem obdobju, se šteje, da je odpovedal pravico do zahtevka. Brez poseganja v druge določbe o znižanju, začasni ustavitvi ali izgubi provizije, bo vsaka neporavnana provizija izgubljena, če je Affiliate storil namerno malomarnost, hudo malomarnost, goljufijo ali materialno kršitev te pogodbe.
 
-8.3.5 Ob prenehanju in razen če ni določeno drugače, ta Pogodba v celoti in popolnoma preneha veljati, ne da bi to vplivalo na pravice in pravna sredstva Stranke v zvezi z odškodnino ali kršitvijo te Pogodbe s strani druge Stranke. Določbe 4.1.2, 4.1.5, 4.1.6, 4.1.7, 4.2, 4.3, 4.4.1, 4.9.4(c), 9 in 10 ostanejo v veljavi tudi po prenehanju te Pogodbe.
+8.3.5 Ob prenehanju in razen če ni drugače določeno, ta pogodba popolnoma preneha veljati brez poseganja v pravice in pravna sredstva Strank v zvezi z odškodnino ali kršitvijo te pogodbe. Členi 4.1.2, 4.1.5, 4.1.6, 4.1.7, 4.2, 4.3, 4.4.1, 4.9.4(c), 9 in 10 preživijo prenehanje te pogodbe.
 
-8.3.6 Takoj po začetku veljavnosti prekinitve bo podružnica odstranila vse povezave do spletnih mest Wink, vso vsebino, povezano z Wink, povezave, pasice, logotipe in druge sklice na Wink.
+8.3.6 Takoj po prenehanju bo Affiliate odstranil vse povezave do Wink spletnih strani, vse vsebine, povezave, pasice, logotipe in druge sklice na Wink.
 
-**9. Pravica do knjig, evidenc in revizije**
+**9. Knjige, evidence in pravica do revizije**
 
 **9.1 Sistemi**
 
-Knjige in zapisi družbe Wink (vključno z Extranetom in/ali e-pošto) se štejejo za dokončen dokaz glede višine provizije, ki pripada partnerju v skladu s to pogodbo.
+Knjige in evidence Wink (vključno z Extranetom in/ali e-pošto) se štejejo za dokončen dokaz o višini provizije, ki pripada Affiliate po tej pogodbi.
 
 **9.2 Pravice do revizije**
 
-Če ima Wink v dobri veri razlog za domnevo, da je podružnica kršila svoje obveznosti v zvezi s 4. členom, lahko Wink revidira takšne evidence in knjige (poslovne knjige) podružnice z namenom preverjanja, pregleda in preiskave (kot je primerno) obveznosti podružnice v skladu s 4. členom v skladu z naslednjim:\
-(a) Stranki nemudoma imenujeta neodvisnega pooblaščenega revizorja ("revizor"), ki je razumno sprejemljiv za obe stranki in ki bo imel dovoljenje za izvedbo revizije v zvezi z (metodo in izračunom) provizije, ki (bodo) izplačane podpodružnici(-am).\
-(b) Stranke morajo revizorju zagotoviti vse take informacije, podatke, sodelovanje, pomoč in dostop do knjig in evidenc računovodskih izkazov, dokumentov, datotek in papirjev ter informacij, shranjenih v elektronski obliki, kot jih revizor lahko razumno zahteva za pravočasno dokončanje obsega svoje naloge.\
-(c) Revizor bo obema strankama zagotovil kopijo svojega poročila (v nadaljnjem besedilu: poročilo), ki bo vsebovalo rezultate in ugotovitve revizije.\
-(d) Revizije bodo potekale ob delovnih dneh med rednim delovnim časom.\
-(e) Wink krije stroške in izdatke revizorja, razen če revizor na podlagi razumnosti in pravičnosti odloči drugače.
+Če ima Wink utemeljen razlog verjeti, da je Affiliate kršil obveznosti iz člena 4, lahko Wink opravi revizijo evidenc in knjig (računovodskih) Affiliate za namen preverjanja, pregleda in preiskave obveznosti Affiliate po členu 4, v skladu z naslednjim:  
+(a) Stranki bosta nemudoma imenovali neodvisnega certificiranega revizorja (»Revizor«), ki je sprejemljiv za obe Stranki, ki bo lahko opravil revizijo glede metode in izračuna provizije, ki se plačuje podaffiliatejem;  
+(b) Stranki bosta Revizorju zagotovili vse informacije, podatke, sodelovanje, pomoč in dostop do knjig, evidenc, dokumentov, datotek in elektronsko shranjenih informacij, ki jih Revizor upravičeno zahteva za pravočasno izvedbo naloge;  
+(c) Revizor bo obema Strankama posredoval kopijo svojega poročila (»Poročilo«), ki bo vsebovalo rezultate in ugotovitve revizije;  
+(d) Revizije bodo potekale med delovnimi dnevi v rednem delovnem času;  
+(e) Stroške Revizorja bo nosil Wink, razen če Revizor ne odloči drugače na podlagi razumljivosti in pravičnosti.
 
-10. **Preprečevanje podkupovanja, trgovinske omejitve in poslovna etika.**
+**10. Protikorupcijska zakonodaja, trgovinske omejitve in poslovna etika**
 
-Wink ima pristop ničelne tolerance do kršitev mednarodnih trgovinskih norm, zakonodaje o preprečevanju podkupovanja in korupcije ter veljavnih omejitev glede trgovine, pretoka sredstev in financiranja terorizma.\
-Podružnica jamči, da ravna in bo ravnala v skladu s Kodeksom ravnanja dobaviteljev Wink, njene povezane stranke pa ravnajo in bodo ravnale v skladu s Kodeksom ravnanja.\
-Podružnica izjavlja, jamči in se zavezuje, da bo v vseh pogledih spoštovala vse mednarodne trgovinske norme, veljavne omejitve glede trgovine, pretoka sredstev in financiranja terorizma ter podkupovanja in korupcije, vključno z, vendar ne omejeno na, britanski zakon o podkupovanju iz leta 2010 in singapurski zakon o preprečevanju korupcije.\
-Podružnica jamči, da po njenem najboljšem vedenju niti ona niti njene povezane stranke niso bile obsojene zaradi kaznivega dejanja, ki vključuje podkupovanje ali korupcijo, niti niso predmet kakršne koli preiskave s strani vladnih, upravnih ali regulativnih organov.
+Wink ima ničelno toleranco do kršitev mednarodnih trgovinskih norm, zakonodaje o preprečevanju podkupovanja in korupcije ter veljavnih omejitev trgovine, pretoka sredstev in financiranja terorizma.  
+Affiliate jamči, da on in njegove povezane stranke spoštujejo in bodo spoštovale Winkov kodeks ravnanja dobaviteljev.  
+Affiliate izjavlja, jamči in se zavezuje, da bo v vseh pogledih spoštoval vse mednarodne trgovinske norme, veljavne omejitve trgovine, pretoka sredstev in financiranja terorizma ter zakonodajo o preprečevanju podkupovanja in korupcije, vključno, a ne omejeno na UK Bribery Act 2010 in Singapore Prevention of Corruption Act.  
+Affiliate jamči, da po najboljšem vedenju ni bil obsojen zaradi kaznivega dejanja, povezanega s podkupovanjem ali korupcijo, niti ni predmet preiskave s strani vladnih, upravnih ali regulativnih organov.
 
 **11. Zaupnost**
 
 **11.1 Zaupne informacije**
 
-Stranki razumeta in se strinjata, da ima lahko vsaka stranka pri izvajanju te pogodbe dostop do zaupnih in občutljivih informacij druge stranke ali je lahko neposredno ali posredno izpostavljena tem informacijam (»zaupne informacije«). Zaupne informacije vključujejo podatke o strankah, obseg transakcij, trženjske in poslovne načrte, poslovne, finančne, tehnične in operativne informacije, statistiko uporabe, podatke o uvrstitvah, informacije o cenah, izdelkih in pariteti razpoložljivosti, cenovne politike, podatke o konverzijah in obsegu klikov ter druge povezane statistike, osebne podatke gostov, vso programsko opremo ali informacije o programski opremi, ki jo Wink zagotavlja ali uporablja v povezavi s to pogodbo, pogoje te pogodbe in druge nejavne informacije, ki jih stranka, ki razkriva informacije, označi kot zasebne ali zaupne ali za katere bi stranka prejemnica morala razumno vedeti, da jih je treba obravnavati kot zasebne in zaupne.
+Stranki razumeta in se strinjata, da lahko med izvajanjem te pogodbe vsaka Stranka neposredno ali posredno pridobi dostop do zaupnih in občutljivih informacij druge Stranke (»Zaupne informacije«). Zaupne informacije vključujejo podatke o strankah, obseg transakcij, marketinške in poslovne načrte, poslovne, finančne, tehnične in operativne informacije, statistike uporabe, podatke o uvrstitvah, informacije o cenah, izdelkih in pariteti razpoložljivosti, politike cen, podatke o konverzijah in obsegu klikov, osebne podatke gostov, programsko opremo ali informacije o programski opremi, ki jo Wink zagotavlja ali uporablja v zvezi s to pogodbo, pogoje te pogodbe in druge ne-javne informacije, ki jih razkrijejo ali označijo kot zaupne.
 
-**11.2 Zaščita in varovanje zaupnih informacij**
+**11.2 Varovanje in zaščita zaupnih informacij**
 
-Vsaka stranka se strinja, da: (a) vse zaupne informacije ostanejo izključna last stranke, ki jih razkrije, stranka prejemnica pa ne sme uporabljati nobenih zaupnih informacij za noben namen, razen za uresničevanje te pogodbe, (b) mora ohranjati zaupnost in tajnost zaupnih informacij ter uporabljati preudarne metode, da jo ohranijo njeni zaposleni, uradniki, predstavniki, pogodbene stranke in zastopniki ("Pooblaščene osebe"), (c) mora razkriti zaupne informacije le tistim pooblaščenim osebam, ki morajo poznati te informacije za uresničevanje te pogodbe, (d) ne sme in mora uporabljati preudarne metode, da zagotovi, da pooblaščene osebe (i) ne kopirajo, objavljajo, prenašajo, reproducirajo, razkrivajo, razkrivajo ali dajejo na voljo tretjim osebam ali (ii) jih uporabljajo ali shranjujejo v nezaščitenem sistemu za pridobivanje ali zbirki podatkov (razen v skladu s pogoji te pogodbe), in (e) mora na pisno zahtevo druge stranke vrniti ali uničiti vse ((fizične in elektronske) kopije) zaupnih informacij. V primeru, da katera koli stranka obdeluje osebne podatke v imenu druge stranke kot del zagotavljanja storitev v skladu s to pogodbo, stranki uredita takšno obdelavo s pogodbo o obdelavi podatkov (DPA), ki bo sestavni del pogojev te pogodbe.
+Vsaka Stranka se zavezuje, da: (a) vse Zaupne informacije ostanejo izključno last razkrivajoče Stranke in prejemajoča Stranka jih ne sme uporabljati za druge namene kot za izvajanje te pogodbe, (b) bo vzdrževala in uporabila ustrezne metode, da bo njeno osebje, uradniki, predstavniki, pogodbeni partnerji in agenti (»Dovoljene osebe«) vzdrževali zaupnost in skrivnostnost Zaupnih informacij, (c) bo Zaupne informacije razkrila samo Dovoljenim osebam, ki jih potrebujejo za izvajanje te pogodbe, (d) ne bo in bo uporabila ustrezne metode, da Dovoljene osebe ne bodo (i) kopirale, objavljale, prenašale, reproducirale, razkrivale ali omogočale dostop tretjim osebam, ali (ii) uporabljale ali shranjevale v nezaščitenem sistemu (razen v skladu s pogoji te pogodbe), in (e) bo na pisno zahtevo druge Stranke vrnila ali uničila vse (trde in mehke) kopije Zaupnih informacij. Če katera koli Stranka obdeluje osebne podatke v imenu druge kot del storitev po tej pogodbi, bosta Stranki uredili takšno obdelavo z dogovorom o obdelavi podatkov (DPA), ki bo del pogojev te pogodbe.
 
-**11.3 Dovoljeno razkritje**
+**11.3 Dovoljeni razkritje**
 
-Ne glede na zgoraj navedeno zaupne informacije ne vključujejo informacij, ki (i) so ali postanejo del javne domene brez dejanja ali opustitve s strani pogodbenice prejemnice, (ii) jih je pogodbenica prejemnica imela v lasti pred datumom te pogodbe, (iii) jih pogodbenici prejemnici razkrije tretja oseba, ki nima obveznosti zaupnosti v zvezi s tem, ali (iv) jih je treba razkriti v skladu z zakonom, sodnim nalogom, sodnim pozivom ali vladnim pooblastilom. Družba Wink je upravičena, da to pogodbo zaupno razkrije svojim povezanim družbam.
+Kljub zgornjemu Zaupne informacije ne vključujejo informacij, ki (i) postanejo javno dostopne brez kršitve te pogodbe, (ii) so bile v posesti prejemajoče Stranke pred datumom te pogodbe, (iii) so bile razkrite prejemajoči Stranki s strani tretje osebe brez obveznosti zaupnosti, ali (iv) jih je treba razkriti po zakonu, sodni odredbi, pozivu ali vladnem ukazu. Wink ima pravico zaupno razkriti to pogodbo svojim povezanih podjetjem.
 
 **11.4 Podatki o strankah**
 
-Stranke si bodo v komercialno razumnih okoliščinah prizadevale za zaščito zaupnosti in zasebnosti podatkov strank ter za njihovo zaščito pred nepooblaščeno uporabo ali objavo. Stranke se strinjajo, da bodo spoštovale veljavno zakonodajo o obdelavi osebnih podatkov in varstvu zasebnosti. Stranke bodo vedno uporabljale razumne in ustrezne varnostne ukrepe za preprečevanje korupcije in nepooblaščenega dostopa do podatkov strank. Takšni ukrepi bodo med drugim vključevali šifriranje podatkov in šifriranje kanalov. Kjer je to ustrezno, mora podružnica čim prej obvestiti Wink o vsaki kršitvi varnosti (najkasneje v enem dnevu po odkritju kršitve). Vsaka stranka mora imeti politiko zasebnosti, ki je strankam dostopna in opisuje način, kako varuje in uporablja podatke strank.
+Stranki bosta komercialno razumno varovali zaupnost in zasebnost podatkov o strankah ter jih zaščitili pred nepooblaščeno uporabo ali razkritjem. Stranki se zavezujeta spoštovati veljavne zakone o obdelavi osebnih podatkov in varstvu zasebnosti. Stranki bosta vedno uporabljali razumne in ustrezne varnostne ukrepe za preprečevanje poškodbe in nepooblaščenega dostopa do podatkov o strankah, vključno z uporabo šifriranja podatkov in kanalov. Kjer je primerno, mora Affiliate čim prej (najkasneje v enem dnevu po odkritju) obvestiti Wink o morebitni varnostni kršitvi. Vsaka Stranka mora imeti politiko zasebnosti, dostopno strankam, ki opisuje način zaščite in uporabe podatkov o strankah.
 
 **11.5 Obvestila**
 
-Nobena stranka ne sme ustvarjati, objavljati, distribuirati ali dovoliti kakršnega koli pisnega gradiva, ki se sklicuje na drugo stranko, ne da bi ji to gradivo predhodno predložila in pridobila pisno soglasje stranke, ki ga ne predloži. To soglasje se ne sme nerazumno zadrževati ali odlašati.
+Nobena Stranka ne sme ustvariti, objaviti ali distribuirati pisnih materialov, ki se nanašajo na drugo Stranko, brez predhodnega pisnega soglasja druge Stranke. To soglasje ne sme biti neupravičeno zadržano ali odloženo.
 
-11.6 Vsaka stranka lahko stopi v stik z pooblaščeno osebo za varstvo podatkov (DPO) druge stranke prek naslednjega e-poštnega in/ali poštnega naslova: dataprotectionofficer@Wink.travel
+11.6 Vsaka Stranka lahko kontaktira pooblaščenca za varstvo podatkov druge Stranke (DPO) preko e-pošte ali poštnega naslova: dataprotectionofficer@Wink.travel
 
-12. **Pooblastilo za podpis – zastopanje in podpis podružnice.**
+**12. Pooblastilo za podpis – predstavitev in podpis Affiliate**
 
-Partner jamči, da ima on, oseba, ki podpiše to pogodbo, in/ali katera koli druga oseba, ki posreduje informacije (vključno z, da se izognemo dvomu, kakršnimi koli plačilnimi pogoji) podjetju Wink v povezavi s to pogodbo ali na podlagi nje, pooblastilo, sposobnost in potrebno moč za podpis te pogodbe ter da ima ta oseba pooblastilo, sposobnost in potrebno moč, da partnerja zaveže k tej pogodbi, in da bo v celotnem obdobju veljavnosti pogodbe spoštoval, izvajal in zagotavljal, da partner spoštuje in izvaja svoje obveznosti iz te pogodbe.\
-Partner se izrecno strinja, da je elektronsko sprejetje te Pogodbe in njenih Pogojev poslovanja, vključno s tistimi, ki se nanašajo na spremembe, veljavno, zavezujoče in izvršljivo.
+Affiliate jamči, da ima on, oseba, ki podpisuje to pogodbo in/ali katera koli druga oseba, ki zagotavlja informacije (vključno z vsemi pogoji plačila) Wink v zvezi s to pogodbo, pooblastilo, sposobnost in pristojnost za podpis te pogodbe in da ima takšna oseba pooblastilo, sposobnost in pristojnost, da zaveže Affiliate k tej pogodbi in da bo v času trajanja pogodbe spoštoval in izpolnjeval svoje obveznosti po tej pogodbi.  
+Affiliate izrecno soglaša, da je elektronsko sprejetje te pogodbe in njenih pogojev, vključno s spremembami, veljavno, zavezujoče in izvršljivo.
 
-13. **Jezik**
+**13. Jezik**
 
-Angleška različica te pogodbe je v vseh pogledih prevladujoča in ima prednost v primeru kakršnih koli neskladij s prevedenimi različicami, če obstajajo.
+Angleška različica te pogodbe je odločilna v vseh pogledih in prevlada v primeru neskladij s prevedenimi različicami, če obstajajo.
 
-14. **Opustitve**
+**14. Odpovedi**
 
-Nobena odpoved pravici do katere koli kršitve ali pogoja te pogodbe se ne šteje za odpoved pravici do katere koli druge ali poznejše kršitve ali pogoja, ne glede na to, ali je podobne ali drugačne narave.
+Nobena odpoved kršitve ali pogoja te pogodbe ne pomeni odpovedi katerega koli drugega ali kasnejšega kršitve ali pogoja, ne glede na to, ali je podobne ali drugačne narave.
 
-**15. Ločljivost**
+**15. Deljivost**
 
-Če vladni organ pregona, sodišče ali tribunal pristojne jurisdikcije ugotovi, da je katera koli določba te pogodbe nezakonita, neveljavna ali kako drugače neizvršljiva v skladu z nacionalno zakonodajo, se bo taka določba razlagala, spreminjala ali izbrisala v obsegu, ki je potreben, da postane taka določba in/ali ta pogodba zakonita, veljavna ali kako drugače izvršljiva, preostali del te določbe in preostale druge določbe te pogodbe pa bodo ostale v polni veljavi in ​​​​učinku ter bodo še naprej zavezujoče in se bodo razlagale tako, da se v največji možni meri uresniči namen pogodbenic.
+Če katera koli določba te pogodbe ugotovljena s strani pristojnega organa, sodišča ali tribunala kot nezakonita, neveljavna ali drugače neizvršljiva po nacionalni zakonodaji, se taka določba razlaga, spremeni ali izbriše v obsegu, potrebnem za zakonitost, veljavnost ali izvršljivost, preostali del določbe in druge določbe pogodbe pa ostanejo v veljavi in zavezujoče ter se razlagajo v skladu z namenom Strank.
 
-**16. Razmerje med strankama**
+**16. Razmerje med Strankama**
 
-Stranki sta in bosta pri izvajanju te pogodbe delovali kot neodvisni izvajalci. Nobena stranka ne bo delovala kot zastopnik ali partner druge stranke za kakršen koli namen in se ne bo štela za takega zastopnika ali partnerja druge stranke, niti nobena stranka ni pooblaščena, da bi drugo stranko kakor koli zavezala.
+Stranki sta in bosta delovali kot neodvisna izvajalca pri izvajanju te pogodbe. Nobena Stranka ne sme delovati kot agent ali partner druge Stranke in nima pooblastil, da zaveže drugo Stranko.
 
-**17. Naloga**
+**17. Prenos**
 
-Nobena stranka ni upravičena do odstopa, prenosa ali obremenitve katere koli od svojih pravic in/ali obveznosti iz te pogodbe brez predhodnega pisnega soglasja druge stranke, pod pogojem, da lahko Wink odstopa, prenese ali obremeni katero koli od svojih pravic in/ali obveznosti iz te pogodbe (v celoti ali delno ali občasno) na povezano podjetje brez predhodnega pisnega soglasja povezanega podjetja.\
-Ta pogodba je sklenjena v korist strank in njihovih naslednikov ter dovoljenih prevzemnikov, nič v njej pa ni namenjeno ali ne bo implicitno podeljevalo kateri koli drugi osebi kakršne koli zakonske ali pravične pravice, koristi ali pravnega sredstva kakršne koli narave v skladu s to pogodbo ali zaradi nje, razen če je v tej pogodbi izrecno navedeno drugače.
+Nobena Stranka ne sme prenesti, preobremeniti ali prenesti svojih pravic in/ali obveznosti po tej pogodbi brez predhodnega pisnega soglasja druge Stranke, razen Wink, ki lahko prenese svoje pravice in/ali obveznosti (v celoti ali delno) na povezano podjetje brez soglasja Affiliate.  
+Ta pogodba je sklenjena v korist Strank in njihovih naslednikov ter dovoljenih prenosnikov in ne daje nobeni drugi osebi nobene pravice, koristi ali pravnega sredstva, razen če je izrecno določeno drugače.
 
-18. **Višja sila.**
+**18. Viša sila**
 
-Wink.travel ne odgovarja za kakršno koli zamudo ali neizpolnitev katere koli obveznosti iz teh pogojev, ki je posledica vzrokov, na katere Wink ali Wink Payments nima razumnega vpliva, vključno z, vendar ne omejeno na, višjo silo, naravne nesreče, vojno, terorizem, nemire, embarge, dejanja civilnih ali vojaških oblasti, požar, poplave, nesreče, pandemije, epidemije ali bolezni, stavke ali pomanjkanje prevoznih sredstev, goriva, energije, delovne sile ali materialov („**Dogodek višje sile**").
+Wink.travel ne odgovarja za zamude ali neizpolnitev obveznosti po teh pogojih zaradi vzrokov izven razumnega nadzora Wink ali Wink Payments, vključno, a ne omejeno na, naravne nesreče, vojne, terorizem, nemire, embarga, ukrepe civilnih ali vojaških oblasti, požare, poplave, nesreče, pandemije, epidemije, bolezni, stavke ali pomanjkanje prevoznih sredstev, goriva, energije, delovne sile ali materialov ("**Dogodek višje sile**").
 
-19. **Veljavno pravo in pristojnost**
+**19. Pravo in pristojnost**
 
-Ta sporazum se izključno ureja in razlaga v skladu z zakonodajo Singapurja. Zakon o pogodbah (pravice tretjih oseb) iz leta 2001 (poglavje 53B) se za ta sporazum ne uporablja. Stranki si bosta v vsakem primeru prizadevali rešiti spore sporazumno izvensodno, najprej z dobrimi vernimi pogovori in pogajanji.\
-Vsi spori, ki izhajajo iz te pogodbe ali so z njo povezani, se predložijo in obravnavajo izključno pristojnemu sodišču v Singapurju, ne glede na pravila o koliziji zakonov.\
-nepreklicno se odpovedati vsaki pravici, ki jo ima, da ugovarja tožbi, vloženi na takih sodiščih, da trdi, da je bila tožba vložena na neprimernem mestu, ali da trdi, da taka sodišča niso pristojna.
+Ta pogodba se izključno ureja in razlaga v skladu z zakonodajo Singapurja. Zakon o pogodbah (pravice tretjih oseb) 2001 (Cap 53B) se na to pogodbo ne uporablja. Stranki bosta v vsakem primeru poskušali spor rešiti sporazumno izven sodišča z dobronamernimi pogovori in pogajanji.  
+Vse spore, ki izhajajo iz ali so povezani s to pogodbo, bodo izključno reševala pristojna sodišča v Singapurju, ne glede na pravila o konfliktu zakonov.  
+Stranki nepreklicno odpovedujeta pravico, da bi nasprotovali postopku na teh sodiščih, trdili, da je postopek v neprimernem forumu ali da sodišča nimajo pristojnosti.
 
-20. **Protiustavne osebe.**
+**20. Izvodi**
 
-Ta pogodba se lahko sestavi v dvojnikih, od katerih se vsak (ko je podpisan) šteje za izvirnik in ki skupaj predstavljajo eno in isto listino. Poleg tega ima vsaka skenirana/elektronska kopija Winkovega pisnega podpisa enak in enakovreden učinek kot izvirni ročno napisan podpis Winka in ne vpliva na veljavnost te pogodbe.
+Ta pogodba je lahko podpisana v več izvodih, od katerih je vsak (ko je podpisan) veljaven izvod, vsi skupaj pa predstavljajo en sam dokument. Poleg tega ima katerakoli skenirana/elektronska kopija Winkovega podpisa enako veljavo kot originalni ročno podpisan dokument in ne vpliva na veljavnost pogodbe.
 
-21. **Celoten sporazum**
+**21. Celotna pogodba**
 
-Ta pogodba (vključno z obrazcem za registracijo pridruženega partnerja, prilogami, prilogami in dodatki, ki so sestavni del te pogodbe) predstavlja celoten dogovor in razumevanje strank glede njene vsebine ter nadomešča in izničuje vse predhodne dogovore, dogovore, ((ne)zavezujoče) ponudbe, zaveze ali izjave v zvezi s to vsebino.\
-Če je katera koli določba te pogodbe neveljavna ali nezavezujoča ali postane taka, so za stranki še naprej vezane vse druge določbe te pogodbe. V tem primeru stranki neveljavno ali nezavezujočo določbo nadomestita z določbami, ki so veljavne in zavezujoče ter imajo v največji možni meri podoben učinek kot neveljavna ali nezavezujoča določba, glede na vsebino in namen te pogodbe.
+Ta pogodba (vključno z obrazcem za registracijo affiliate partnerja, prilogami in dodatki, ki so sestavni del pogodbe) predstavlja celoten dogovor in razumevanje Strank glede njenega predmeta in nadomešča vse predhodne dogovore, dogovore, (ne)zavezujoče ponudbe, zaveze ali izjave glede tega predmeta.  
+Če katera koli določba te pogodbe postane neveljavna ali nezavezujoča, ostanejo ostale določbe v veljavi. V tem primeru bosta Stranki nadomestili neveljavno ali nezavezujočo določbo z veljavnimi in zavezujočimi določbami, ki imajo čim bolj podoben učinek glede na vsebino in namen pogodbe.
 
-22. **Izvedba**
+**22. Izvršitev**
 
-Sporazum začne veljati šele s pisno potrditvijo sprejema in odobritve partnerja s strani Wink. Z registracijo in prijavo v partnerski program Wink kot partnerski partner se partner strinja, potrjuje in sprejema določila in pogoje tega sporazuma, vključno z določbami v zvezi s spremembami tega sporazuma.\
-Partner je prebral pogodbo in se strinjal z vsemi pogoji. Partner razume, da lahko Wink kadar koli (neposredno ali posredno) zbira priporočila strank pod pogoji, ki se lahko razlikujejo od tistih, ki so navedeni v tej pogodbi, ali upravlja spletna mesta, ki so podobna spletnemu mestu partnerja ali mu konkurirajo. Partner je neodvisno ocenil zaželenost sodelovanja v programu in se ne zanaša na nobeno drugo zagotovilo, jamstvo ali izjavo, razen tiste, ki je določena v tej pogodbi. Partner se izrecno strinja, da je elektronsko sprejetje te pogodbe in njenih pogojev, vključno s tistimi, ki se nanašajo na spremembe, veljavno, zavezujoče in izvršljivo.
+Pogodba začne veljati in učinkovati šele ob pisnem potrditvi sprejema in odobritve Affiliate s strani Wink. Z registracijo in prijavo v partnerski program Wink kot affiliate partner, Affiliate soglaša, potrjuje in sprejema pogoje te pogodbe, vključno z določbami o spremembah pogodbe.  
+Affiliate je prebral pogodbo in se strinja z vsemi pogoji. Razume, da lahko Wink kadarkoli (posredno ali neposredno) pridobiva napotitve strank pod pogoji, ki se lahko razlikujejo od teh, ali upravlja spletne strani, ki so podobne ali konkurirajo affiliate spletni strani. Affiliate je samostojno ocenil primernost sodelovanja v programu in se ne zanaša na nobeno drugo izjavo, garancijo ali trditev, razen kot je določeno v tej pogodbi. Izrecno soglaša, da je elektronsko sprejetje te pogodbe in njenih pogojev, vključno s spremembami, veljavno, zavezujoče in izvršljivo.
 
-23. **Obvestila**
+**23. Obvestila**
 
-Vsa obvestila pogodbenice v skladu s to pogodbo morajo biti v angleščini, v pisni obliki in dostavljena osebno, s predplačano in priporočeno pošto ali z mednarodno priznano ekspresno kurirsko službo (npr. FedEx, UPS, DHL) na registrirani sedež ali po elektronski pošti kontaktni osebi.\
-Vsako obvestilo v skladu s to pogodbo se šteje za prejeto (i) če je dostavljeno osebno, ob podpisu potrdila o dostavi ali (ii) če je dostavljeno s predplačano priporočeno pošto, ob dokazilu o dostavi; ali (iii) če je dostavljeno s hitro kurirsko službo, ob datumu dostave, ki ga zabeleži kurir, (iv) če je dostavljeno po elektronski pošti, pod pogojem, da je predloženo potrdilo o prejemu.
-
+Vsa obvestila ene Stranke drugi po tej pogodbi morajo biti v angleščini, pisna in dostavljena osebno, po predplačani priporočeni pošti ali mednarodno priznani hitri pošti (npr. FedEx, UPS, DHL) na registrirani naslov ali po e-pošti kontaktni osebi.  
+Obvestilo se šteje za prejeto (i) ob osebni dostavi, ob podpisu potrdila o dostavi, (ii) ob dostavi priporočene pošte, ob dokazilu o dostavi, (iii) ob dostavi hitre pošte, ob zabeleženem datumu dostave kurirja, (iv) ob e-pošti, če je potrjeno prejemanje.

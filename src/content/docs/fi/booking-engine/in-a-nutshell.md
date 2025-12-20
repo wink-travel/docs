@@ -1,49 +1,47 @@
 ---
-title: Pähkinänkuoressa
-description: >-
-  Tämä artikkeli opastaa sinua kaikessa, mitä halusit tietää
-  varausjärjestelmästä.
+title: Ytimekkäästi
+description: Tässä artikkelissa käydään läpi kaikki, mitä halusit tietää varausmoottorista.
 sidebar:
   order: 0
 ---
-Näin segmentoimme vastuun Winkissä:
 
-* [Ekstranet](/extranet/what-is-extranet) huolestuu toimittajien varastonhallinnasta.
-* [Studio](/studio/what-is-studio) huolestuu sisällön hallinnoinnista vastaavien tytäryhtiöiden kanssa.
-* `Booking Engine`keskittyy sisällön tuottamiseen, joka on luotu`Studio`, joka perustui vuonna luotuun inventaarioon`Extranet`ja tekemällä siitä varattavissa olevan.
-* [Maksu](/payment/what-is-trip-pay) huoleutuu \[Winkin kaltaisten alustojen kautta] varaavien matkustajien veloittamisesta/hyvityksistä ja toimittajien maksamisesta.
+Näin jaamme vastuut Winkissä:
 
-Varausjärjestelmä on alustamme ydin.
+- [Extranet](/fi/extranet/what-is-extranet) koskee toimittajia, jotka hallinnoivat varastoa.
+- [Studio](/fi/studio/what-is-studio) koskee kumppaneita, jotka hallinnoivat sisältöä.
+- `Booking Engine` vastaa sisällön tekemisestä, joka on luotu `Studiossa` ja perustuu `Extranetissa` luotuun varastoon, ja sen tekemisestä varattavaksi.
+- [Payment](/fi/payment/what-is-trip-pay) vastaa matkustajien veloittamisesta / hyvittämisestä, jotka varaavat [kautta alustoilla kuten Wink], sekä toimittajien maksamisesta.
 
-Sen vastuualueisiin kuuluvat:
+Varausmoottori on alustamme ytimessä.
 
-* Valuttojen hallinta ja valuuttakurssien pitäminen ajan tasalla.
-* Annetaan hintatietojen tarjoajille tapa lähettää meille hintatietoja.
-* Hakutietojen hallinta.*esim. alueet, maat, kohteet, kiinteistöt jne.*
-* Kielten hallinta.
-* Analytiikan luominen käyttäjien vuorovaikutuksen, tapahtumien ja API-kutsujen perusteella.
-* Varattavan varaston tarjoaminen halutussa muodossa, kielellä ja valuutassa, kuten:
-  * A [jaettava linkki](/studio/shareable-links) Facebookissa.
-  * Hotellin laskeutumissivu osoitteessa https://ota.wink.travel, jossa on kyseisen hotellin varastotiedot.
-  * A [kortti](/studio/cards) sisältää kumppanimainontaa.
-  * A [kartta](/studio/maps) sinun [kartta](/studio/maps) tili.
-  * An [API-kutsu](/developers/apis) etämatkatoimistojärjestelmästä.
-* Tarjoamalla matkailijoille keinon:
-  * Hae matkavarastoa.
-  * Varaa saatavilla oleva varasto.
-  * Hallitse heidän[varaukset ja arvostelut](/booking-engine/bookings).
-  * Hallitse heidän [toivelista](/booking-engine/bucket-list) asioita, joita kannattaa varata tulevaisuudessa.
-  * Hallitse heidän[matkaprofiili](/booking-engine/travel-preferences).*esim. allergiat, hätätilanteisiin liittyvät yhteydenotot jne.*
+Sen vastuualueisiin kuuluu:
 
-Varausjärjestelmä on kokoelma uudelleenkäytettäviä toimintoja, jotka tarjoamme osoitteessa https://ota.wink.travel; se on erittäin muokattavissa oleva verkkosivusto, jonka avulla hotellit ja yhteistyökumppanit voivat myydä tuotteitaan matkailijoille.
+- Valuuttahallinta ja valuuttakurssien ajantasaisena pitäminen.
+- Hintatietojen toimittajille tapa lähettää hintadataa.
+- Hakutietojen hallinta. *esim. alueet, maat, kohteet, majoituspaikat jne.*
+- Kielten hallinta.
+- Analytiikan tuottaminen käyttäjävuorovaikutusten, tapahtumien ja API-kutsujen perusteella.
+- Varattavan varaston tarjoaminen halutussa muodossa, kielessä ja valuutassa, kuten:
+    - [Jaa-linkki](/fi/studio/shareable-links) Facebookissa.
+    - Hotellin aloitussivu osoitteessa https://ota.wink.travel, jossa on kyseisen hotellin varasto.
+    - [Kortti](/fi/studio/cards), joka sisältää kumppanin varaston.
+    - [Kartta](/fi/studio/maps) sinun [WinkLinks](/fi/link-manager/wink-links) -tililläsi.
+    - [API-kutsu](/fi/developers/apis) etämatkatoimistojärjestelmästä.
+- Tarjoaa matkustajille mahdollisuuden:
+    - Etsiä matkavarastoa.
+    - Varaa saatavilla olevaa varastoa.
+    - Hallinnoida omia [varauksiaan ja arvostelujaan](/fi/booking-engine/bookings).
+    - Hallinnoida omaa [bucket list](/fi/booking-engine/bucket-list) -listaa tulevista varauksista.
+    - Hallinnoida omaa [matkailuprofiiliaan](/fi/booking-engine/travel-preferences). *esim. allergiat, hätäyhteystiedot jne.*
 
-Integraattorit, jotka haluavat vielä enemmän vapautta, voivat käyttää kaikkia samoja ominaisuuksia kauttamme [WordPress-laajennus](/developers/wordpress/), [WordPress-laajennus](/developers/wordpress/) ja[API-rajapinnat](/developers/apis).
+Varausmoottori on kokoelma uudelleenkäytettäviä toimintoja, joita tarjoamme osoitteessa https://ota.wink.travel; erittäin muokattava verkkosivusto hotelleille ja kumppaneille myydä tuotteitaan matkustajille.
 
-Jatka seuraaviin osioihin lukeaksesi lisää siitä, mitä varausjärjestelmällä on tarjota.
+Integraattoreilla, jotka haluavat vielä enemmän vapautta, on pääsy samoihin ominaisuuksiin [WordPress-laajennuksemme](/fi/developers/wordpress/), [Web Components](/fi/developers/web-components) ja [API:t](/fi/developers/apis) kautta.
+
+Jatka seuraaviin osioihin lukeaksesi lisää siitä, mitä varausmoottori tarjoaa.
 
 ## Lisälukemista
 
-* Lue lisää[WordPress-laajennus](/developers/wordpress/).
-* Lue lisää[Verkkokomponentit](/developers/web-components).
-* Lue lisää[API-rajapinnat](/developers/apis).
-
+- Lue lisää [WordPress-laajennuksestamme](/fi/developers/wordpress/).
+- Lue lisää [Web Components](/fi/developers/web-components).
+- Lue lisää [API:stamme](/fi/developers/apis).

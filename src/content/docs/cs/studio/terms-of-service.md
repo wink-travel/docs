@@ -1,438 +1,437 @@
 ---
 title: Podmínky služby
-description: Snadno dostupné a aktuální podmínky pro všechny naše partnerské uživatele.
+description: Snadno dostupné a aktuální podmínky pro všechny naše affiliate uživatele.
 sidebar:
   order: 12
 ---
+
 :::note
-Naposledy aktualizováno 12. 6. 2024
+Naposledy aktualizováno 2024-06-12
 :::
 
-**OBECNÉ OBCHODNÍ PODMÍNKY WINK PRO PARTNERY**
+**OBECNÉ PODMÍNKY WINK PRO AFFILIATE PARTNERY**
 
-Registrací a přihlášením do partnerského programu Wink jako affiliate partner tímto affiliate partner potvrzuje, že si přečetl, rozumí, bere na vědomí a přijímá podmínky této affiliate smlouvy („smlouva“).\
+Registrací a přihlášením do partnerského programu Wink jako affiliate partner, affiliate partner tímto potvrzuje, že si přečetl, rozumí, uznává a přijímá podmínky této affiliate smlouvy (dále jen „smlouva“).  
 MEZI:
 
-1. **TRAVELIKO SINGAPORE PTE. LTD**., společnost založená podle singapurského práva se sídlem na adrese #03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095, s DIČ 201437335D (dále jen „Wink“), a
-2. **PARTNEŘ**, jehož údaje jsou uvedeny v registračním formuláři Affiliate partnera nebo byly odeslány online („Affiliate partner“).
+1. **TRAVELIKO SINGAPORE PTE. LTD**., společností založenou podle zákonů Singapuru se sídlem na adrese \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, s daňovým identifikačním číslem 201437335D (dále jen „Wink“), a  
+2. **AFFILIATE PARTNEREM**, jehož údaje jsou uvedeny v registračním formuláři affiliate partnera nebo byly odeslány online (dále jen „Affiliate“).
 
-Wink a Partner jsou „Stranou“ této Smlouvy a souhrnně se na ně vztahuje jako na „Strany“.
+Wink a Affiliate jsou „Stranou“ této smlouvy a společně jsou označovány jako „Strany“.
 
-**ZATÍMCO:**\
-(i) Wink provozuje online systém („Systém“), jehož prostřednictvím mohou zúčastněná ubytovací zařízení (souhrnně „Poskytovatelé ubytování“, jednotlivě „Poskytovatel ubytování“) zpřístupnit svá ubytování k rezervaci a prostřednictvím kterého mohou Hosté provádět rezervace u těchto Poskytovatelů ubytování („Služba“);\
-(ii) Wink nevlastní, nekontroluje, nenabízí ani nespravuje žádné nabídky. Wink není stranou smluv uzavřených přímo mezi Poskytovateli ubytování a Hosty. Wink nejedná jako zástupce v žádné funkci Poskytovatelů ubytování;\
-(iii) Wink udržuje a využívá své vlastní webové stránky („webové stránky Wink“) a také poskytuje Službu a odkazy na Službu na webových stránkách třetích stran;\
-(iv) Partner vlastní, ovládá, hostuje a/nebo provozuje jednu nebo více internetových domén, webových stránek a aplikací;\
-(v) Partner a Wink si přejí, aby Partner zpřístupnil Službu (přímo či nepřímo) svým zákazníkům a návštěvníkům Webových stránek a Aplikací Partnera a to v takové formě a za takových podmínek (dále jen „Podmínky“), jak je stanoveno v této Smlouvě.
+**VZHLEDEM K TOMU, ŽE:**  
+(i) Wink provozuje online systém (dále jen „Systém“), prostřednictvím kterého mohou zúčastněné ubytovací zařízení (společně „Poskytovatelé ubytování“, jednotlivě „Poskytovatel ubytování“) zpřístupnit svůj inventář k rezervaci a prostřednictvím kterého mohou hosté provádět rezervace u těchto Poskytovatelů ubytování (dále jen „Služba“);  
+(ii) Wink nevlastní, nekontroluje, nenabízí ani nespravuje žádné nabídky. Wink není stranou smluv uzavřených přímo mezi Poskytovateli ubytování a hosty. Wink nejedná jako zástupce Poskytovatelů ubytování v žádné funkci;  
+(iii) Wink spravuje a využívá své vlastní webové stránky (dále jen „Wink Webové stránky“) a také poskytuje Službu a odkazy na Službu na webových stránkách třetích stran;  
+(iv) Affiliate vlastní, kontroluje, hostuje a/nebo provozuje jednu nebo více internetových domén, webových stránek a aplikací;  
+(v) Affiliate a Wink si přejí, aby Affiliate zpřístupnil Službu (přímo nebo nepřímo) svým zákazníkům a návštěvníkům Affiliate Webových stránek a aplikací a za takových podmínek (dále jen „Podmínky“), jak je uvedeno v této smlouvě.
 
-**Strany se proto nyní dohodly takto:**
+**Strany se proto dohodly následovně:**
 
 **1. Definice**
 
-1.1 Kromě pojmů definovaných jinde v této Smlouvě se v celé této Smlouvě uplatňují následující definice, pokud není uvedeno jinak:
+1.1 Kromě termínů definovaných jinde v této smlouvě platí následující definice po celou dobu platnosti této smlouvy, pokud není uvedeno jinak:
 
-**"Ubytování"**&#x7A;namená jakoukoli formu ubytování, včetně, ale nikoli výhradně, poskytovatelů ubytování, motelů, penzionů, noclehů se snídaní, hostelů, vil, apartmánů (s obsluhou či bez ní), chat, hostinců, ubytování pro hosty, rekreačních středisek, bytů, kempingů a jakéhokoli jiného (typu) ubytování nebo poskytovatele ubytování (ať už je k dispozici na webových stránkách Wink, či nikoli).\
-**„Poskytovatel(é) ubytování“**&#x7A;namená jakoukoli Stranu, která si na Winku vytvoří účet s úmyslem prodat své**vlastní**inventář pokojů a pomocných služeb prostřednictvím platformy Wink.\
-**„Značky poskytovatelů ubytování“**&#x7A;namená jakýkoli termín nebo klíčové slovo, které je stejné nebo matoucí (včetně jakýchkoli variant, překladů, pravopisných chyb a jednotných/množných forem) s jakýmikoli ochrannými známkami nebo obchodním názvem (registrovanými i neregistrovanými) patřícími nebo vlastněnými jakýmkoli poskytovatelem ubytování\
-**"Partner"**&#x7A;namená Stranu, jejíž příslušné (kontaktní) údaje jsou uvedeny v Registračním formuláři Affiliate partnera.\
-**„Odjezdy z přidružených společností“**&#x6D;á význam uvedený v bodě 5.4.\
-**„Partnerská skupina“**&#x7A;namená Přidruženou společnost a konečnou holdingovou společnost Přidružené společnosti (včetně skupiny společností nebo subjektů, které jsou pod (přímou nebo nepřímou) kontrolou (konečné holdingové společnosti nebo akcionáře(ů) Přidružené společnosti).\
-**"Registrační formulář pro partnerské programy"**&#x7A;namená online registrační formulář, který musí Partner vyplnit.\
-**„Partnerské webové stránky“**&#x7A;namená webové stránky a aplikaci vlastněné, ovládané, hostované a provozované Přidruženou společností, na kterých bude Služba zpřístupněna.\
-**„Aplikace“**&#x7A;namená nativní aplikaci pro mobilní zařízení.\
-**"Dohoda"**&#x7A;namená tuto dohodu.\
-**„Rezervace“**&#x7A;namená úspěšnou transakci zaznamenanou společností Wink od Hosta pro rezervaci Ubytovatele.\
-**„Poplatek za rezervaci“**&#x6A;e 1,5 %, které si Wink odečte z partnerské provize jako poplatek za zpracování.\
-**„Hodnota rezervace“**&#x6A;e celková částka, kterou zprostředkovatel plateb vybere od hosta za rezervaci.\
-**"Doložka"**&#x7A;namená ustanovení této Smlouvy.\
-**"Komise"**&#x7A;namená částku dlužnou Partnerovi před odečtením Poplatku za platební služby a Poplatku za rezervaci za každou Uskutečněnou transakci v souladu s touto Smlouvou.\
-**"Spojení"**&#x7A;namená všechny webové komponenty, odkazy, vstupní stránky a/nebo JSON kanály a/nebo deep linky a/nebo hypertextové odkazy, vytvořené, hostované a spravované společností Wink.\
-**"Obsah"**&#x7A;namená veškeré (popisné) informace o ubytovatelích dostupné na webových stránkách Wink, včetně, ale nikoli výhradně, informací a popisů ubytovatelů, recenzí hostů, metadat, podrobností o zařízeních a zásad (storno/nedostavení se) a všeobecných podmínek ubytovatelů (včetně jejich překladů) a fotografií, videí, obrázků, s výjimkou cen a dostupnosti (včetně jakýchkoli aktualizací, úprav, nahrazení, doplňků nebo změn).\
-**"Řízení"**&#x7A;namená držení moci nebo schopnosti (přímo či nepřímo, samostatně či ve shodě s jinými, ať už prostřednictvím vlastnictví hlasovacích cenných papírů nebo jiných majetkových podílů, partnerství či jinak) (i) vykonávat nebo způsobit výkon více než poloviny hlasovacích práv na valné hromadě společnosti, (ii) jmenovat více než polovinu ((ne)výkonných) ředitelů nebo dozorčích ředitelů společnosti, nebo (iii) řídit nebo způsobovat směřování managementu společnosti.\
-**„Údaje o zákaznících“**&#x7A;namená osobní údaje Hosta („PII“), včetně, ale nikoli výhradně, jména Hosta, adresy (včetně e-mailové adresy), údajů o kreditní kartě a dalších důvěrných a soukromých informací Hosta.\
-**„Dvojitá porce“**&#x7A;namená více reklam na stejné stránce s výsledky vyhledávače s cílem přesměrovat návštěvnost na podobné webové stránky nebo stránky s podobným obsahem.\
-**"Host"**&#x7A;namená návštěvníka Webových stránek nebo Aplikací, který provedl rezervaci u Poskytovatele ubytování prostřednictvím Služby.\
-**„Práva duševního vlastnictví“**&#x7A;namená jakýkoli patent, autorská práva, vynálezy, práva k databázi, právo k průmyslovému vzoru, registrovaný průmyslový vzor, ​​ochrannou známku, obchodní název, značku, loga, servisní známku, know-how, užitný vzor, ​​neregistrovaný průmyslový vzor nebo, kde je to relevantní, jakoukoli žádost o takové právo, know-how, obchodní nebo obchodní název, název domény (s jakoukoli doménou nejvyšší úrovně (s kódem země), např. .com, .net., co.th, .de, .fr, eu, co.uk. atd.) nebo jiné podobné právo nebo povinnost, ať už registrované nebo neregistrované, nebo jiné právo průmyslového nebo duševního vlastnictví existující na jakémkoli území nebo jurisdikci na světě.\
-**JSON**znamená JSON spojení mezi databází Wink a databází Partnera, které může být poskytnuto společností Wink za podmínek, které budou dohodnuty.\
-**"Odkaz"**&#x7A;namená vloženou ikonu, objekt, grafiku nebo text na webové stránce nebo v e-mailu, který se skládá z hypertextového odkazu na URL adresu Wink na partnerském webu (webových stránkách).\
-**„Transakce s obchodníkem“**&#x7A;namená Zhmotněnou transakci, ve které je Zprostředkovatel plateb registrovaným obchodníkem, přičemž Zprostředkovatel plateb inkasuje finanční prostředky přímo od Hosta za rezervaci.\
-**„Materializovaná(é) transakce(e)“**&#x7A;namená rezervaci provedenou návštěvníkem partnerských webových stránek a/nebo aplikací, který prostřednictvím Připojení provedl rezervaci u poskytovatele ubytování a tato rezervace vedla ke skutečnému poskytnutí ubytování, jak poskytovatel ubytování potvrdil společnosti Wink. Uskutečněné transakce budou vždy upraveny o úpravy (např. zkrácené pobyty), storna plateb, podvody s kreditními kartami, nedobytné dluhy nebo jiné. Aby se předešlo pochybnostem, zrušení, nedostavení se atd. nelze nikdy považovat za uskutečněné transakce.\
-**„Mikro web“**&#x7A;namená všechny white label verze primárních webových stránek společnosti Wink, které vlastní, vytváří, hostuje a spravuje společnost Wink. Mikrostránka může být označena logem „powered by Wink“ nebo ekvivalentem.\
-**„Čistá provize“**&#x6A;e částka dlužná Partnerovi za uskutečněné transakce po odečtení Poplatku za platební služby a Poplatku za rezervaci.\
-**„Placené vyhledávání“**&#x7A;namená jakoukoli formu online reklamy, která váže zobrazení reklamy na konkrétní vyhledávací požadavek založený na klíčovém slově.\
-**„Zprostředkovatel plateb“**&#x70;lně vlastněná dceřiná společnost Traveliko Singapore Pte. Ltd., která spravuje platební služby, inkasuje platby od hostů („Pay-in“) inkasováním platební metody spojené s jejich nákupem, jako je kreditní karta, debetní karta, bankovní převod, kryptoměny nebo PayPal atd., a vyplácí dlužnou částku („Čistá provize“) na místní bankovní účet Partnera.\
-**„Platba“**&#x7A;namená přijetí platby provedené hostem zprostředkovatelem plateb.\
-**„Výplata“**&#x7A;namená vyplacení Čisté provize Partnerovi Zprostředkovatelem plateb.\
-**„Poplatek za platební službu“**&#x6A;e 4 % stržené z partnerské provize jako poplatek za zprostředkování platby platebním zprostředkovatelem.\
-**"Porovnání cen"**&#x7A;namená porovnání cen a/nebo dostupnosti ubytovacích zařízení, které je k dispozici na dvou nebo více online rezervačních platformách ubytovacích zařízení.\
-**„Další prodej“**&#x6D;á význam uvedený v článku 4.1.7.\
-**„Portál prodejce“**&#x6D;á význam uvedený v článku 4.1.8.\
-**„SEM“**&#x7A;namená marketing ve vyhledávačích a zahrnuje jakoukoli formu online marketingu, která se snaží propagovat webové stránky zvýšením jejich viditelnosti ve výsledcích vyhledávání pomocí optimalizace pro vyhledávače, placeného umístění, kontextové reklamy nebo placeného zařazení.\
-**„SEO“**&#x7A;namená optimalizaci pro vyhledávače a zahrnuje proces (i) zlepšení objemu nebo kvality návštěvnosti webových stránek nebo webových stránek z vyhledávačů prostřednictvím „přirozených“ nebo neplacených („organických“ nebo „algoritmických“) výsledků vyhledávání, nebo (ii) dosažení nebo vytvoření lepšího či lepšího umístění ve výsledcích vyhledávání pro konkrétní klíčové slovo nebo klíčová slova.\
-**„Podobné doménové jméno“**&#x6D;á význam uvedený v článku 4.7.1.\
-**„Předpisy pro spamování“**&#x7A;namená jakékoli zásady, předpisy, omezení nebo povinnosti, které jsou čas od času předepsány, prohlášeny za platné nebo oznámeny platformami třetích stran, které (i) zakazují nebo zabraňují dvojitému zobrazování, maskování nebo jakékoli podobné technice či metodě, nebo (ii) obsahují taková další omezení nebo předpisy týkající se spamu nebo zachování jedinečného uživatelského zážitku.\
-**„Platformy třetích stran“**&#x7A;namená jakýkoli (třetí strana) vyhledávač (poskytovatel marketingových služeb), metavyhledávač, roboty vyhledávačů, weby pro vyhledávání cestování, weby pro porovnávání cen, komunity sociálních sítí, prohlížeče, služby pro sdílení a hostování obsahu a služby multimediálních blogů nebo jiné (podobné) kanály či jiné formy médií (hostování provozu), ať už online nebo offline.\
-**„Webové stránky“**&#x7A;namená webové stránky společnosti Wink a jejích přidružených společností a přidružených partnerů (včetně přidružených webových stránek), na kterých je produkt a služba společnosti Wink k dispozici.\
-**„Soutěžící mrknutí“**&#x7A;namená jakéhokoli přímého nebo nepřímého konkurenta společnosti Wink (s výjimkou, pro vyloučení pochybností, společností ve skupině společností Wink).\
-**„Data mrknutí“**&#x7A;namená Práva duševního vlastnictví společnosti Wink a Obsah, jak je poskytnut Partnerovi na základě této Smlouvy, a další informace, které společnost Wink čas od času vlastní nebo používá, nebo které jsou ztělesněny či zahrnuty na webových stránkách Wink nebo které společnost Wink Partnerovi zpřístupňuje (např. ceny a dostupnost).\
-**„Webové stránky Wink“**&#x7A;namená webové stránky společnosti Wink, včetně, ale nikoli výhradně, webových stránek Wink, traveliko.com a všech jejich lokálních nebo alternativních verzí (s jakoukoli doménou nejvyšší úrovně), jakož i jakékoli jejich varianty, včetně, ale nikoli nutně výhradně, mobilních webových stránek, mobilních aplikací atd.
+**„Ubytování“** znamená jakoukoli formu ubytování, včetně, ale nikoli výlučně, Poskytovatelů ubytování, motelů, penzionů, bed & breakfast, hostelů, vil, apartmánů (servisovaných či jiných), chat, hostinců, rekreačních zařízení, kondominií, kempů a jakéhokoli jiného typu ubytování nebo poskytovatele ubytování (bez ohledu na to, zda je dostupné na Wink Webových stránkách).  
+**„Poskytovatel ubytování“** znamená jakoukoli Stranu, která si vytvoří účet na Wink s úmyslem prodávat svůj **vlastní** inventář pokojů a doplňkových služeb prostřednictvím platformy Wink.  
+**„Značky Poskytovatelů ubytování“** znamená jakýkoli termín nebo klíčové slovo, které je stejné nebo matoucím způsobem podobné (včetně jakýchkoli variant, překladů, překlepů a jednotného/množného čísla) jakýmkoli ochranným známkám nebo obchodním názvům (registrovaným či neregistrovaným) patřícím nebo vlastněným kterýmkoli Poskytovatelem ubytování.  
+**„Affiliate“** znamená Stranu, jejíž příslušné (kontaktní) údaje jsou uvedeny v registračním formuláři affiliate partnera.  
+**„Affiliate Odjezdy“** má význam uvedený v článku 5.4.  
+**„Affiliate Skupina“** znamená Affiliate a konečnou mateřskou společnost Affiliate (včetně skupiny společností nebo subjektů, které jsou pod (přímou nebo nepřímou) kontrolou (konečné mateřské společnosti nebo akcionářů) Affiliate).  
+**„Registrační formulář affiliate partnera“** znamená online formulář pro přihlášení a registraci, který vyplňuje Affiliate.  
+**„Affiliate Webové stránky“** znamená webové stránky a aplikace vlastněné, kontrolované, hostované a provozované Affiliate, na kterých bude Služba zpřístupněna.  
+**„Aplikace“** znamená nativní aplikaci pro mobilní zařízení.  
+**„Smlouva“** znamená tuto smlouvu.  
+**„Rezervace“** znamená úspěšnou transakci zaznamenanou Wink od hosta pro rezervaci u Poskytovatele ubytování.  
+**„Rezervační poplatek“** je 1,5 % odečtených z provize Affiliate jako poplatek za zpracování ze strany Wink.  
+**„Hodnota rezervace“** je celková částka vybraná platebním zprostředkovatelem od hosta za rezervaci.  
+**„Článek“** znamená článek této smlouvy.  
+**„Provize“** znamená částku dlužnou Affiliate před odečtením poplatku za platební službu a rezervačního poplatku za každou realizovanou transakci v souladu s touto smlouvou.  
+**„Propojení“** znamená všechny webové komponenty, odkazy, vstupní stránky a/nebo JSON feedy a/nebo deep linky a/nebo hypertextové odkazy vytvořené, hostované a udržované Wink.  
+**„Obsah“** znamená veškeré (popisné) informace o Poskytovatelích ubytování dostupné na Wink Webových stránkách, včetně, ale nikoli výlučně, informací a popisů Poskytovatelů ubytování, recenzí hostů, metadat, detailů zařízení a (storno/nepřítomnostních) zásad a obecných podmínek Poskytovatelů ubytování (včetně jejich překladů) a fotografií, videí, obrázků, s výjimkou cen a dostupnosti (včetně jakýchkoli aktualizací, úprav, náhrad, doplňků nebo změn).  
+**„Kontrola“** znamená držení moci nebo schopnosti (přímo nebo nepřímo, samostatně nebo ve spolupráci s jinými, ať už prostřednictvím vlastnictví hlasovacích práv nebo jiných vlastnických podílů, partnerství nebo jinak) (i) vykonávat nebo způsobit vykonávání více než poloviny hlasovacích práv na valné hromadě společnosti, (ii) jmenovat více než polovinu ((ne)výkonných) ředitelů nebo dozorčích orgánů společnosti, nebo (iii) řídit nebo způsobit řízení vedení společnosti.  
+**„Data zákazníka“** znamenají osobní identifikovatelné informace hosta („PII“), včetně, ale nikoli výlučně, jména hosta, adresy (včetně e-mailové adresy), údajů o kreditní kartě a dalších důvěrných a soukromých informací o hostu.  
+**„Dvojité zobrazování“** znamená více reklam na stejné stránce výsledků vyhledávače s cílem nasměrovat provoz na podobné webové stránky nebo stránky s podobným obsahem.  
+**„Host“** znamená návštěvníka webových stránek nebo aplikací, který dokončil rezervaci u Poskytovatele ubytování prostřednictvím Služby.  
+**„Právo duševního vlastnictví“** znamená jakýkoli patent, autorské právo, vynálezy, práva k databázím, právo na design, registrovaný design, ochrannou známku, obchodní název, značku, loga, služební značku, know-how, užitný vzor, neregistrovaný design nebo, pokud je to relevantní, jakoukoli žádost o takové právo, know-how, obchodní nebo obchodní název, doménové jméno (s jakoukoli (kódovou) doménou nejvyšší úrovně, např. .com, .net, co.th, .de, .fr, eu, co.uk atd.) nebo jiné podobné právo či povinnost, ať už registrované či neregistrované, nebo jiné průmyslové či duševní vlastnické právo existující v jakémkoli území či jurisdikci na světě.  
+**„JSON“** znamená JSON propojení mezi databází Wink a databází Affiliate, které může Wink poskytnout za dohodnutých podmínek.  
+**„Odkaz“** znamená vloženou ikonu, objekt, grafiku nebo text na webové stránce nebo v e-mailu, který obsahuje hypertextový ukazatel na URL adresu Wink na Affiliate Webových stránkách.  
+**„Obchodní transakce“** znamená realizovanou transakci, při níž je platebním zprostředkovatelem obchodník záznamu, přičemž platební zprostředkovatel vybírá platby přímo od hosta za rezervaci.  
+**„Realizovaná transakce“** znamená rezervaci návštěvníka Affiliate Webových stránek a/nebo aplikací, který prostřednictvím Propojení provedl rezervaci u Poskytovatele ubytování, a tato rezervace vedla k reálnému poskytnutí ubytování, jak bylo potvrzeno Wink Poskytovatelem ubytování. Realizované transakce budou vždy upraveny o změny (např. zkrácení pobytu), chargebacky, podvody s kreditními kartami, nedobytné pohledávky nebo jiné. Pro vyloučení pochybností, storna, neukázání se apod. nemohou být považovány za realizované transakce.  
+**„Mikrostránka“** znamená všechny white label verze primární webové stránky Wink, které jsou vlastněny, vytvořeny, hostovány a udržovány Wink. Mikrostránka může být označena logem „powered by Wink“ nebo obdobným.  
+**„Čistá provize“** je částka dlužná Affiliate za realizované transakce po odečtení poplatku za platební službu a rezervačního poplatku.  
+**„Placené vyhledávání“** znamená jakoukoli formu online reklamy, která váže zobrazení reklamy na konkrétní vyhledávací dotaz založený na klíčových slovech.  
+**„Platební zprostředkovatel“** je plně vlastněná dceřiná společnost Traveliko Singapore Pte. Ltd., která spravuje platební služby, vybírá platby od hostů („Pay-in“) tím, že účtuje platební metodu spojenou s jejich nákupem, jako jsou kreditní karta, debetní karta, bankovní převod, kryptoměny nebo PayPal atd., a vyplácí dlužnou částku („Čistá provize“) na místní bankovní účet Affiliate.  
+**„Pay-in“** znamená přijetí platby provedené hostem platebním zprostředkovatelem.  
+**„Pay-out“** znamená vyplacení Čisté provize Affiliate platebním zprostředkovatelem.  
+**„Poplatek za platební službu“** je 4 % odečtených z provize Affiliate jako poplatek za získání platby platebním zprostředkovatelem.  
+**„Porovnání cen“** znamená porovnání cen a/nebo dostupnosti Poskytovatelů ubytování zpřístupněné z nebo prostřednictvím dvou nebo více online rezervačních platforem Poskytovatelů ubytování.  
+**„Přeprodej“** má význam uvedený v článku 4.1.7.  
+**„Prodejní portál“** má význam uvedený v článku 4.1.8.  
+**„SEM“** znamená marketing ve vyhledávačích a zahrnuje jakoukoli formu online marketingu, která usiluje o zvýšení viditelnosti webových stránek ve výsledcích vyhledávačů pomocí optimalizace pro vyhledávače, placeného umístění, kontextové reklamy nebo placeného zařazení.  
+**„SEO“** znamená optimalizaci pro vyhledávače a zahrnuje proces (i) zlepšení objemu nebo kvality návštěvnosti webu nebo webové stránky z vyhledávačů prostřednictvím „přirozených“ nebo neplacených („organických“ nebo „algoritmických“) výsledků vyhledávání, nebo (ii) dosažení nebo vytvoření lepšího umístění ve výsledcích vyhledávání pro konkrétní klíčové slovo nebo klíčová slova.  
+**„Podobná doména“** má význam uvedený v článku 4.7.1.  
+**„Pravidla proti spamu“** znamenají jakékoli zásady, předpisy, omezení nebo povinnosti, které jsou čas od času stanoveny, prohlášeny za platné nebo oznámeny platformami třetích stran, které (i) zakazují nebo zabraňují Dvojitému zobrazování, Cloakingu nebo jakékoli podobné technice či metodě, nebo (ii) obsahují další omezení nebo předpisy týkající se spamu nebo zachování jedinečného uživatelského zážitku.  
+**„Platformy třetích stran“** znamenají jakýkoli (třetí stranou provozovaný) vyhledávač (marketingový poskytovatel), metavyhledávač, vyhledávací roboti, cestovní vyhledávače, srovnávače cen, sociální sítě, prohlížeče, služby sdílení a hostování obsahu a multimediální blogovací služby nebo jiné (podobné) kanály či jiné formy (hostování provozu) médií, ať už online nebo offline.  
+**„Webové stránky“** znamenají webové stránky Wink a jeho přidružených společností a partnerů (včetně Affiliate Webových stránek), na kterých je dostupný produkt a služba Wink.  
+**„Konkurent Wink“** znamená jakéhokoli přímého nebo nepřímého konkurenta Wink (s výjimkou, pro vyloučení pochybností, společností ve skupině Wink).  
+**„Data Wink“** znamenají práva duševního vlastnictví Wink a Obsah poskytnutý Affiliate podle této smlouvy a další informace, které Wink čas od času vlastní nebo používá, jsou zahrnuty nebo dostupné na Wink Webových stránkách nebo zpřístupněné Wink Affiliate (např. ceny a dostupnost).  
+**„Wink Webové stránky“** znamenají webové stránky Wink, včetně, ale nikoli výlučně, Wink, traveliko.com a všechny místní nebo alternativní verze těchto stránek (s jakoukoli doménou nejvyšší úrovně), stejně jako jakékoli jejich varianty, včetně, ale nikoli výlučně, mobilních webových stránek, mobilních aplikací apod.
 
 **1.2 Žádné partnerství**
 
-1.2.1 Tato Smlouva není zamýšlena a nic v ní ani v žádném z jejích ujednání by nemělo být vykládáno tak, že by vznikl společný podnik nebo vztah partnerů, partnerství nebo vztahu zmocnitele a zástupce mezi Stranami.
+1.2.1 Tato smlouva není zamýšlena, ani by nic v ní nebo v jakýchkoli dohodách s ní souvisejících nemělo být vykládáno tak, aby vytvářelo společný podnik nebo vztah partnerů, partnerství či vztah zmocnitele a zástupce mezi stranami.
 
-1.2.2 Pokud se společnost Wink písemně nedohodne jinak nebo pokud není v této Smlouvě stanoveno jinak, Partner nesmí nikde na svých webových stránkách zveřejnit žádné prohlášení, ať už výslovné nebo implicitní, že webové stránky jsou součástí společnosti Wink, že jsou jí schváleny nebo že jsou oficiálními webovými stránkami společnosti Wink.
+1.2.2 Pokud není písemně dohodnuto jinak společností Wink nebo není v této smlouvě uvedeno jinak, Affiliate nesmí nikde na Affiliate Webových stránkách zveřejnit žádné prohlášení, ať už výslovné nebo naznačené, že webová stránka je součástí, je schválena nebo je oficiální webovou stránkou Wink.
 
-1.2.3 Partner může přímo jednat s Poskytovateli ubytování za účelem stanovení exkluzivních nebo preferovaných sazeb, podmínek, propagačních akcí, doplňkových balíčků a podobně.
+1.2.3 Affiliate může přímo jednat s Poskytovateli ubytování za účelem stanovení exkluzivních nebo preferenčních sazeb, podmínek, akcí, balíčků, doplňků a podobně.
 
-**2. Rozsah působnosti této smlouvy**
+**2. Rozsah této smlouvy**
 
-**2.1 Nevýhradnost**\
-V souladu s podmínkami této Smlouvy bude Partner působit jako nevýhradní distributor (partner) společnosti Wink.
+**2.1 Neexkluzivita**  
+S výhradou podmínek této smlouvy bude Affiliate působit jako neexkluzivní distributor (affiliate) Wink.
 
 **2.2 Služba**
 
-2.2.1 Po dobu trvání této Smlouvy se Strany dohodly, že Službu bude společnost Wink zpřístupňovat Partnerovi, jak je uvedeno v Registračním formuláři Partnerského partnera (tj. Odkaz nebo Mikrostránka) a na webových stránkách, jak je uvedeno v Registračním formuláři Partnerského partnera (tj. Webové stránky Partnera).
+2.2.1 Po dobu platnosti této smlouvy se Strany dohodly, že Služba bude Winkem zpřístupněna Affiliate, jak je uvedeno v Registračním formuláři affiliate partnera (tj. Odkaz nebo Mikrostránka) a na webových stránkách uvedených v Registračním formuláři affiliate partnera (tj. Affiliate Webové stránky).
 
-2.2.2 Pokud návštěvník provede rezervaci na webových stránkách partnerů nebo prostřednictvím Systému, je společnost Wink zodpovědná za přenos příslušných údajů o rezervaci od návštěvníka, který rezervaci provedl, k Poskytovateli ubytování (např. datum příjezdu, počet nocí, typ pokoje, jméno hosta) a za (zaslání) následného (e-mailového) potvrzení a/nebo potvrzovacího voucheru Hostovi.
+2.2.2 Když návštěvník provede rezervaci na nebo prostřednictvím Affiliate Webových stránek přes Systém, Wink bude odpovědný za přenos příslušných údajů o rezervaci od návštěvníka, který rezervaci dokončil, k Poskytovateli ubytování (např. datum příjezdu, počet nocí, typ pokoje, jméno hosta) a za zaslání následného (e-mailového) potvrzení a/nebo potvrzovacího voucheru hostu.
 
-2.2.3 Služba zahrnuje zákaznický servis pro Hosty a ve prospěch Hostů. Partner neprodleně postoupí a/nebo předá veškeré záležitosti a dotazy týkající se zákaznického servisu týkající se Služby, (uskutečnění) rezervace (včetně jakékoli změny nebo zrušení rezervace), Poskytovatele ubytování a všechny další relevantní (platební) záležitosti, stížnosti a dotazy přímo (zákaznickému centru) společnosti Wink a neposkytuje v tomto ohledu žádné další služby.
+2.2.3 Služba bude zahrnovat zákaznický servis pro a ve prospěch hostů. Affiliate bude neprodleně předávat veškeré záležitosti a dotazy týkající se zákaznického servisu ve vztahu ke Službě, (uskutečnění) rezervace (včetně jakýchkoli změn nebo zrušení rezervace), Poskytovateli ubytování a všem dalším relevantním (platebním) otázkám, stížnostem a dotazům přímo (zákaznickému centru) Wink a nebude poskytovat žádné další služby v tomto ohledu.
 
-**2.3 Odkaz nebo mikrostránka**
+**2.3 Odkaz nebo Mikrostránka**
 
-2.3.1 V případě, že je Služba zpřístupněna prostřednictvím Odkazu, Partner na své vlastní náklady integruje a zpřístupní Odkaz na takovém prominentním místě (místech), webových stránkách a v takovém místě, velikosti a formě na Webových stránkách Partnera dle pokynů společnosti Wink nebo dle vzájemné dohody Stran.
+2.3.1 V případě, že je Služba zpřístupněna prostřednictvím Odkazu, Affiliate na vlastní náklady integruje a zpřístupní Odkaz na takovém prominentním místě, webových stránkách a v takovém umístění, velikosti a formě na Affiliate Webových stránkách, jak je určeno Winkem nebo dohodnuto mezi Stranami.
 
-2.3.2 V případě, že je Služba zpřístupněna prostřednictvím Mikrostránky, Partner na své vlastní náklady integruje a zpřístupní Připojení a/nebo Mikrostránku na takovém prominentním místě (místech), webových stránkách a na takovém místě, velikosti a formě na Webových stránkách Partnera dle pokynů společnosti Wink nebo dle vzájemné dohody Stran.
+2.3.2 V případě, že je Služba zpřístupněna prostřednictvím Mikrostránky, Affiliate na vlastní náklady integruje a zpřístupní Propojení a/nebo Mikrostránku na takovém prominentním místě, webových stránkách a v takovém umístění, velikosti a formě na Affiliate Webových stránkách, jak je určeno Winkem nebo dohodnuto mezi Stranami.
 
 **3. Licence**
 
 **3.1 Vzájemná licence**
 
-3.1.1 S výhradou článku 4.4 společnost Wink tímto uděluje Partnerovi nevýhradní, odvolatelné, omezené, bezplatně platné a celosvětové právo a licenci:
+3.1.1 S výhradou článku 4.4 tímto Wink uděluje Affiliate nevýhradní, odvolatelné, omezené, bezplatné a celosvětové právo a licenci:
 
-1. zobrazovat takové prvky dat Wink a další informace o poskytovatelích ubytování na webových stránkách Partnera/Partnerů, a to vše tak, jak je Wink Partnerovi poskytl nebo zpřístupnil;
-2. propagovat a uvádět Službu na trh v souladu s podmínkami stanovenými v této Smlouvě.
+1) zobrazovat takové prvky Dat Wink a další informace o Poskytovatelích ubytování na Affiliate Webových stránkách, vše jak je poskytnuto nebo zpřístupněno Winkem Affiliate;  
+2) propagovat a marketingově podporovat Službu za podmínek uvedených v této smlouvě.
 
-3.1.2 Partner tímto uděluje společnosti Wink bezplatná a celosvětová práva a licenci:
+3.1.2 Affiliate tímto uděluje Wink bezplatné a celosvětové právo a licenci:
 
-1. začlenit, integrovat, zahrnout a zobrazit Odkaz, Mikrostránku a/nebo Připojení (dle potřeby) na Partnerských webových stránkách a
-2. zpřístupnit Službu na webových stránkách Partnera/Partnerů.
+1) začlenit, integrovat, zahrnout a zobrazit Odkaz, Mikrostránku a/nebo Propojení (dle potřeby) na Affiliate Webových stránkách, a  
+2) zpřístupnit Službu na Affiliate Webových stránkách.
 
-**3.2 Žádné právo na sublicencování a mlčenlivost**
+**3.2 Žádné právo na sublicenci a mlčenlivost**
 
-3.2.1 Pokud se společnost Wink písemně nedohodne jinak, Partner není oprávněn (i) sublicencovat práva, která mu byla udělena podle článku 3.1.1, ani (ii) sublicencovat Odkaz nebo Spojení žádné třetí straně, ani (iii) vytvářet hypertextové odkazy na webové stránky Wink prostřednictvím (webových stránek) společností v rámci Skupiny Partnerů a/nebo třetích stran nebo ve spolupráci s nimi.
+3.2.1 Pokud není písemně dohodnuto jinak společností Wink, Affiliate nesmí (i) udělit sublicenci na práva udělená podle článku 3.1.1, (ii) sublicencovat Odkaz nebo Propojení třetí straně, ani (iii) vytvářet hypertextové odkazy na Wink Webové stránky prostřednictvím nebo ve spolupráci s (webovými stránkami) společností v rámci Affiliate Skupiny a/nebo třetích stran.
 
-3.2.2 Pokud se společnost Wink písemně nedohodne jinak nebo není v této Smlouvě stanoveno jinak, není Partner přímo ani nepřímo oprávněn prodávat, používat, převádět, (sub)licencovat, sdělovat, zveřejňovat, zpřístupňovat, umožňovat přístup k, vyzrazovat nebo jinak šířit Data nebo Obsah společnosti Wink (i) žádné třetí straně, (ii) pro účely porovnávání cen/dostupnosti, webů, recenzí nebo šetření, (iii) pro jakýkoli jiný účel než (generování rezervací Poskytovatele ubytování prostřednictvím) Služby nebo (iv) jinak.
+3.2.2 Pokud není písemně dohodnuto jinak společností Wink nebo není v této smlouvě uvedeno jinak, Affiliate nesmí přímo ani nepřímo prodávat, používat, převádět, (sub)licencovat, komunikovat, zveřejňovat, zpřístupňovat, umožňovat přístup, vyzrazovat nebo jinak šířit Data Wink nebo Obsah (i) žádné třetí straně, (ii) pro účely porovnání cen/dostupnosti, stránek, recenzí nebo šetření, (iii) pro jiný účel než (generování rezervací Poskytovatelů ubytování prostřednictvím) Služby, nebo (iv) jinak.
 
-**4. Závazky a závazky**
+**4. Závazky a povinnosti**
 
-**4.1 Obecné závazky, dohody a povinnosti**
+**4.1 Obecné závazky, povinnosti a závazky**
 
-4.1.1 V souladu s podmínkami této Smlouvy se Partner zavazuje vynaložit komerčně přiměřené úsilí k (i) přizpůsobení Webových stránek Partnera a integraci Odkazu, Propojení a/nebo Mikrostránky takovým způsobem, aby generoval co největší návštěvnost Webových stránek Wink nebo Webových stránek Partnera, a (ii) propagaci a marketing Poskytovatelů ubytování a možnosti rezervovat si ubytování na Webových stránkách Partnera v rámci své obchodní a interní sítě a za tímto účelem zpřístupní svou distribuční síť a kanály (např. internet a intranet).
+4.1.1 S výhradou podmínek této smlouvy se Affiliate zavazuje vynaložit obchodně přiměřené úsilí k (i) přizpůsobení Affiliate Webových stránek a integraci Odkazu, Propojení a/nebo Mikrostránky tak, aby generoval co nejvíce provozu na Wink Webové stránky nebo Affiliate Webové stránky, a (ii) propagaci a marketingu Poskytovatelů ubytování a možnosti rezervace u Poskytovatelů ubytování na Affiliate Webových stránkách v rámci své obchodní a interní sítě a pro tento účel zpřístupní svou distribuční síť a kanály (např. internet a intranet).
 
-4.1.2 Partner se zavazuje, že nepodnikne ani se nezdrží jakýchkoli kroků, které by mohly ovlivnit vztah společnosti Wink s poskytovateli ubytování dostupnými na webových stránkách Wink. Partner se zavazuje, že nezpůsobí ani nedovolí, aby bylo učiněno cokoli, co by mohlo vést k vyloučení společnosti Wink z procesu rezervace u jakéhokoli poskytovatele ubytování.
+4.1.2 Affiliate se zavazuje neprovádět ani nezanedbat žádné kroky, které by mohly ovlivnit vztah Wink s Poskytovateli ubytování dostupnými na Wink Webových stránkách. Affiliate se zavazuje nezpůsobit ani nedovolit nic, co by mohlo vést k vyloučení Wink z procesu rezervace u jakéhokoli Poskytovatele ubytování.
 
-4.1.3 Partner souhlasí s tím, že nebude komunikovat s žádným Poskytovatelem ubytování, s výjimkou uvedenou v článku 1.2.3, ohledně (uskutečněných) rezervací provedených prostřednictvím Systému ani ohledně zákaznického servisu v souvislosti s takovými rezervacemi provedenými prostřednictvím Systému nebo uskutečněnými.
+4.1.3 Affiliate se zavazuje nekomunikovat s žádným Poskytovatelem ubytování, s výjimkou článku 1.2.3, ohledně (využitých) rezervací provedených prostřednictvím Systému nebo ohledně zákaznického servisu týkajícího se těchto rezervací.
 
-4.1.4 Partner se zavazuje řádně a pečlivě udržovat a upravovat obsah Partnerských webových stránek a udržovat Partnerské webové stránky aktuální a přesné. Partner se zavazuje neprodleně opravit jakékoli chyby nebo opomenutí na Partnerských webových stránkách a v informacích týkajících se Poskytovatelů ubytování poté, co se o takových chybách dozví nebo je o nich informován společností Wink.
+4.1.4 Affiliate bude řádně a pečlivě udržovat a aktualizovat obsah Affiliate Webových stránek a zajistí, že Affiliate Webové stránky budou aktuální a přesné. Affiliate neprodleně opraví jakékoli chyby nebo opomenutí na Affiliate Webových stránkách a v informacích o Poskytovatelích ubytování poté, co se o těchto chybách dozví nebo bude upozorněn Winkem.
 
-4.1.5 Partner nesmí (a) programově vyhodnocovat a extrahovat informace (včetně recenzí hostů) z jakékoli části webových stránek Wink (např. scrapováním obrazovky) ani se o to pokoušet a nesmí žádným způsobem, včetně, ale nikoli výhradně, mechanických, elektronických, fotokopírování, nahrávání nebo jinak, kopírovat, reprodukovat, upravovat, měnit, adaptovat, rozebírat, zpětně analyzovat, scrapovat nebo jinak určovat zdrojový kód (nebo základní myšlenky, algoritmy, strukturu nebo organizaci) odkazů nebo jakéhokoli obsahu obsaženého na webových stránkách Wink nebo služeb poskytovaných webovými stránkami Wink, ani se o to pokoušet; (b) nahrávat (i) jakýkoli virus, trojského koně, červa, časovanou bombu, robotické příkazy nebo jiné rutiny počítačového programování, které jsou určeny k poškození, škodlivému narušení, tajnému zachycení nebo vyvlastnění jakéhokoli systému, dat nebo osobních údajů; (c) činit jakákoli prohlášení návštěvníkům, široké veřejnosti nebo jakékoli jiné straně jakýmkoli způsobem související se Společností, službami, odkazy nebo webovými stránkami Wink; (d) (pokus o) získání kreditu nebo provizí od společnosti Wink uvedením v omyl, uvedením nepravdivých prohlášení, podvodným jednáním nebo jakýmkoli jiným úmyslem či trikem s cílem oklamat společnost Wink; nebo (e) jiný (pokus o) způsobení újmy společnosti Wink a webovým stránkám Wink. Jakékoli porušení výše uvedených ustanovení povede k vyloučení Partnera z programu a k propadnutí veškerých neuhrazených plateb.
+4.1.5 Affiliate nesmí (a nesmí dovolit, aby) (a) programově vyhodnocovat a extrahovat informace (včetně recenzí hostů) z jakékoli části Wink Webových stránek (např. screen scraping) nebo se o to pokoušet, a nesmí žádným způsobem, včetně mechanických, elektronických, kopírovacích, nahrávacích nebo jiných, kopírovat, reprodukovat, upravovat, měnit, přizpůsobovat, rozebírat, zpětně analyzovat, scrapovat nebo jinak určovat zdrojový kód (nebo základní myšlenky, algoritmy, strukturu či organizaci) odkazů nebo jakéhokoli obsahu na Wink Webových stránkách nebo se o to pokoušet; (b) nahrávat (i) jakýkoli virus, trojského koně, červa, časovou bombu, robotické příkazy nebo jiné počítačové programy určené k poškození, škodlivému zasahování, tajnému zachycení nebo odcizení jakéhokoli systému, dat nebo osobních informací; (c) činit jakákoli prohlášení návštěvníkům, veřejnosti nebo jakékoli jiné straně související s firmou, službami, odkazy nebo Wink Webovými stránkami; (d) (pokusit se) získat kredit nebo provize od Wink klamáním, falešnými prohlášeními, podvodným jednáním nebo jiným trikem k oklamání Wink; nebo (e) jinak (pokusit se) způsobit újmu Wink a Wink Webovým stránkám. Jakékoli porušení těchto ustanovení povede k okamžitému vyloučení Affiliate z programu a ztrátě nároku na jakékoli nevyplacené platby.
 
-4.1.6 Partner nesmí vytvářet žádné statické kopie Obsahu ani žádné části Webových stránek Wink (včetně recenzí hostů).
+4.1.6 Affiliate nesmí vytvářet žádnou statickou kopii Obsahu nebo jakékoli části Wink Webových stránek (včetně recenzí hostů).
 
-4.1.7 Podle této Smlouvy nesmí Partner získávat zisk z rezervací nebo závazků kromě přijímání Provize od společnosti Wink v souladu s podmínkami této Smlouvy. Partner (včetně jeho zaměstnance a osoby jím pověřené) nesmí provádět žádné rezervace ani závazky u žádného Poskytovatele ubytování na Webových stránkách Wink nebo na Webových stránkách Partnera za účelem dalšího prodeje takové rezervace nebo závazku třetí straně nebo ve prospěch třetí strany („Další prodej“). Aby se předešlo pochybnostem, Wink má výhradní uvážení považovat jakoukoli rezervaci nebo závazek za další prodej, pokud platba za takovou rezervaci nebo závazek není provedena přímo od osoby, na jejíž jméno (jména) je taková rezervace nebo závazek provedena.\
-Další prodej je považován za podstatné porušení této Smlouvy. Partner bere na vědomí, že další prodej je v rozporu se základním účelem této Smlouvy. V případě dalšího prodeje si Wink vyhrazuje právo odmítnout rezervace a/nebo zrušit potvrzené rezervace bez předchozího upozornění nebo vrácení peněz. Wink může také okamžitě ukončit účast Partnera v programu dle vlastního uvážení, aniž by byly dotčeny jiné opravné prostředky stanovené v této Smlouvě, včetně propadnutí Provize a žádosti o kompenzaci.
+4.1.7 Podle této smlouvy nesmí Affiliate profitovat z rezervací nebo objednávek nad rámec provize od Wink podle podmínek této smlouvy. Affiliate (včetně svých zaměstnanců a osob pod jeho oprávněním) nesmí provádět žádné rezervace u Poskytovatelů ubytování na Wink Webových stránkách nebo Affiliate Webových stránkách za účelem přeprodeje takové rezervace třetí straně (dále jen „Přeprodej“). Pro vyloučení pochybností má Wink výhradní právo považovat jakoukoli rezervaci za Přeprodej, pokud platba za tuto rezervaci není provedena přímo osobou, na jejíž jméno je rezervace provedena. Přeprodej je považován za závažné porušení této smlouvy. Affiliate bere na vědomí, že Přeprodej je v rozporu se základním účelem této smlouvy. V případě Přeprodeje si Wink vyhrazuje právo odmítnout rezervace a/nebo zrušit potvrzené rezervace bez předchozího upozornění nebo vrácení peněz. Wink může také okamžitě ukončit účast Affiliate v programu dle vlastního uvážení, aniž by tím byly dotčeny jiné nároky uvedené v této smlouvě, včetně ztráty provize a požadavku na náhradu škody.
 
-4.1.8 Wink poskytuje Partnerovi přístup k určeným webovým stránkám Wink („Partnerský portál“), uživatelské jméno a heslo, které Partnerovi umožňují sledovat rezervaci ubytování prostřednictvím Partnerských webových stránek a veškeré relevantní informace pro správu zpřístupněné společností Wink online. Partner se zavazuje chránit a uchovávat uživatelské jméno a heslo důvěrné a bezpečně je uchovávat a nesdělovat je žádné jiné osobě než těm, které potřebují mít přístup k Portálu prodávajícího. Partner se zavazuje neprodleně informovat Wink o jakémkoli (podezření na) narušení bezpečnosti nebo nesprávném použití.
+4.1.8 Wink poskytuje Affiliate přístup na určenou webovou stránku Wink (dále jen „Affiliate portál“), uživatelské ID a heslo, které umožňují Affiliate sledovat rezervace ubytování prostřednictvím Affiliate Webových stránek a veškeré relevantní informace o správě zpřístupněné Wink online. Affiliate je povinen chránit uživatelské ID a heslo, uchovávat je v bezpečí a nesdělovat je nikomu jinému než osobám, které musí mít přístup k Prodejnímu portálu. Affiliate je povinen okamžitě informovat Wink o jakémkoli (podezření na) bezpečnostním narušení nebo nesprávném použití.
 
-4.1.9 Veškerá rezervace nebo zápis u jakéhokoli Poskytovatele ubytování provedený Partnerem na Webových stránkách Wink nebo na Webových stránkách Partnera podléhá Podmínkám používání Wink, které mohou být čas od času aktualizovány. Aby se předešlo pochybnostem, Partner nesmí používat Webové stránky Wink ani jejich obsah k žádným komerčním účelům, s výjimkou účelu přijímání Provize v souladu s podmínkami této Smlouvy.
+4.1.9 Jakákoli rezervace u Poskytovatele ubytování provedená Affiliate na Wink Webových stránkách nebo Affiliate Webových stránkách podléhá Podmínkám použití Wink, které mohou být čas od času aktualizovány. Pro vyloučení pochybností nesmí Affiliate používat Wink Webové stránky nebo jejich obsah pro žádný komerční účel kromě účelu získání provize podle podmínek této smlouvy.
 
-4.1.10 Partner souhlasí a bere na vědomí, že omezující závazky, dohody, povinnosti a omezení uvedené v tomto článku 4 jsou přiměřené a pro společnost Wink podstatné, zejména z důvodu (i) její ochoty uzavřít tuto Smlouvu s Partnerem a zpřístupnit mu Službu, Obsah a Práva duševního vlastnictví Wink (přímo či nepřímo) a (ii) ochrany dobré pověsti, produktu, služby a (tržní) pověsti společnosti Wink. Partner dále souhlasí a bere na vědomí, že všechny dohody, dohody, povinnosti, závazky, záruky, povinnosti a omezení uvedené v tomto článku 4 budou (a) Partnerem neprodleně, řádně a pečlivě dodržovány a (b) se vztahují i ​​na jakoukoli osobu s přístupem k Portálu prodávajícího prostřednictvím uživatelského ID Partnera, jakoukoli osobu, o které se důvodně předpokládá, že Partnera zastupuje, a na společnosti v rámci Skupiny Partnerů. Partner zajistí, zaručí a zaváže se, že jakákoli osoba, která má přístup k portálu prodávajícího prostřednictvím uživatelského ID Partnera, jakákoli osoba, o níž se důvodně předpokládá, že Partnera zastupuje, a společnosti v rámci Skupiny Partnerů budou dodržovat, řídit se a jednat v souladu s podmínkami uvedenými v tomto článku 4.
+4.1.10 Affiliate souhlasí a bere na vědomí, že omezující závazky, povinnosti, závazky, omezení a podmínky uvedené v tomto článku 4 jsou rozumné a zásadní pro Wink, zejména pro (i) jeho ochotu uzavřít tuto smlouvu s Affiliate a zpřístupnit Službu, Obsah a práva duševního vlastnictví Wink (přímo nebo nepřímo) Affiliate, a (ii) ochranu dobré pověsti, produktu, služby a (tržní) reputace Wink. Dále Affiliate souhlasí a bere na vědomí, že všechny závazky, povinnosti, záruky, omezení a podmínky uvedené v tomto článku 4 musí být (a) řádně a pečlivě dodržovány Affiliate, a (b) platí také pro jakoukoli osobu s přístupem k Prodejnímu portálu prostřednictvím uživatelského ID Affiliate, jakoukoli osobu, o níž je rozumně předpokládáno, že zastupuje Affiliate, a společnosti v rámci Affiliate Skupiny. Affiliate zajistí, zaručí a zaváže se, že jakákoli osoba s přístupem k Prodejnímu portálu prostřednictvím uživatelského ID Affiliate, jakákoli osoba, o níž je rozumně předpokládáno, že zastupuje Affiliate, a společnosti v rámci Affiliate Skupiny budou dodržovat, respektovat, plnit a jednat v souladu s podmínkami uvedenými v tomto článku 4.
 
-**4.2 Goodwill, ochrana značky a návštěvnost**
+**4.2 Ochrana dobré pověsti, značky a provozu**
 
-4.2.1 Za účelem ochrany produktu, služby, značky a dobré pověsti společnosti Wink se Partner tímto zavazuje, zavazuje a ručí, že Webové stránky Partnera (včetně všech ostatních webových stránek (přímo či nepřímo) vlastněných, ovládaných nebo hostovaných Partnerem nebo společnostmi v rámci Skupiny Partnerů) s výjimkou Mikrostránky budou (a zůstanou) dostatečně a podstatně odlišné od Webových stránek Wink (což bude určeno dle výhradního uvážení společnosti Wink). Partner tímto souhlasí a bere na vědomí, že po dobu trvání této Smlouvy a i poté:\
-(a) vzhled a dojem z webových stránek Partnera (včetně všech ostatních webových stránek (přímo či nepřímo) vlastněných, ovládaných nebo hostovaných Partnerem) se musí zřetelně a podstatně lišit od webových stránek Wink, a to i pokud jde o barevné schéma, složení, písma, design a rozvržení (včetně značky), tlačítka (pro kliknutí), rámečky a bannery a dostupné funkce (s výjimkou funkcí, které jsou přiměřeně nutné pro plnění povinností Partnera podle této Smlouvy);\
-(b) jakékoli logo (loga) použité na webových stránkách Partnera (včetně všech ostatních webových stránek vlastněných, ovládaných nebo hostovaných Partnerem) se musí zřetelně lišit od loga Wink (s výjimkou loga, které může Wink poskytnout Partnerovi k použití na základě této Smlouvy);\
-(c) Partner nesmí žádným způsobem napodobovat ani kopírovat webové stránky Wink (obecně ani s ohledem na určité (nové) funkce, stránky, formu, složení nebo aspekty) a\
-(d) Partner neprodleně a na vlastní náklady vyhoví veškerým přiměřeným žádostem společnosti Wink o provedení takových (dalších) změn, úprav nebo doplnění jakéhokoli aspektu webových stránek Partnera, které jsou nebo mohou být považovány za matoucí nebo významně podobné jakémukoli prvku webových stránek Wink.
+4.2.1 Za účelem ochrany produktu, služby, značky a dobré pověsti Wink se Affiliate zavazuje, že Affiliate Webové stránky (včetně všech ostatních webových stránek (přímo nebo nepřímo) vlastněných, kontrolovaných nebo hostovaných Affiliate nebo společnostmi v rámci Affiliate Skupiny), s výjimkou Mikrostránky, jsou (a zůstanou) dostatečně a podstatně odlišné od Wink Webových stránek (určeno výhradně Winkem). Affiliate souhlasí a bere na vědomí, že po dobu platnosti této smlouvy a i po jejím ukončení:  
+(a) vzhled a dojem Affiliate Webových stránek (včetně všech ostatních webových stránek vlastněných, kontrolovaných nebo hostovaných Affiliate) bude výrazně a podstatně odlišný od Wink Webových stránek, včetně barevného schématu, kompozice, typografie, designu a rozvržení (včetně značky), tlačítek, boxů a bannerů a dostupných funkcí (s výjimkou funkcí nezbytných pro plnění povinností Affiliate podle této smlouvy);  
+(b) jakékoli logo používané na Affiliate Webových stránkách (včetně všech ostatních webových stránek vlastněných, kontrolovaných nebo hostovaných Affiliate) bude výrazně odlišné od loga Wink (s výjimkou loga, které může být poskytnuto Winkem k použití Affiliate podle této smlouvy);  
+(c) Affiliate nebude nijak napodobovat nebo kopírovat Wink Webové stránky (obecně nebo v souvislosti s určitými (novými) funkcemi, stránkami, formáty, kompozicí nebo aspekty), a  
+(d) Affiliate na vlastní náklady neprodleně vyhoví jakýmkoli rozumným požadavkům Wink na provedení (dalších) změn, úprav nebo doplňků jakéhokoli aspektu Affiliate Webových stránek, který je nebo může být považován za matoucím nebo významně podobným jakémukoli prvku Wink Webových stránek.
 
 **4.3 Práva duševního vlastnictví**
 
-4.3.1 Partner bere na vědomí, že společnost Wink a/nebo její poskytovatelé licencí si ponechávají vlastnictví všech práv, nároků a podílů na všech Právech duševního vlastnictví společnosti Wink nebo na Webových stránkách Wink, včetně (mimo jiné) loga Wink, Obsahu a Dat Wink. Nic v této Smlouvě nelze považovat za jakýkoli převod takového práva, nároku nebo podílu na Partnera.
+4.3.1 Affiliate bere na vědomí, že Wink a/nebo jeho poskytovatelé licencí si ponechávají vlastnictví všech práv, titulů a zájmů k veškerým právům duševního vlastnictví Wink nebo obsaženým ve Wink Webových stránkách, včetně (ale nikoli výlučně) loga Wink, Obsahu a Dat Wink. Nic v této smlouvě nepředstavuje převod těchto práv, titulů nebo zájmů na Affiliate.
 
-4.3.2 Partner nesmí zveřejňovat, integrovat, zahrnovat, používat, kombinovat, využívat, začleňovat ani jinak zpřístupňovat Obsah a Data Wink (ani jejich část) (a) se svým vlastním obsahem a/nebo obsahem jakéhokoli Konkurenta Wink (včetně Poskytovatelů ubytování), nebo (b) (i) sobě nebo ve prospěch (i) sebe sama (s výjimkou umožnění Služby a Systému v souladu s podmínkami této Smlouvy), nebo (ii) jakéhokoli Konkurenta Wink (včetně Poskytovatelů ubytování) (ať už za účelem propagace, marketingu, odkazování na, propagace, reklamy nebo jinak v zájmu takové strany), nebo (c) pro jakýkoli jiný účel nebo jakýmkoli jiným způsobem a/nebo na Platformách třetích stran nebo jejich prostřednictvím, s výjimkou případů výslovně stanovených v této Smlouvě. Partner nesmí měnit, upravovat, zkreslovat, vytvářet odvozená a/nebo nová díla založená na Obsahu a/nebo z něj odvozená a Obsah nesmí obsahovat (přímý ani nepřímý) odkaz, odkaz, prokliknutí ani odkaz na (webové stránky) Konkurenta Wink (včetně Poskytovatelů ubytování).
+4.3.2 Affiliate nesmí zveřejňovat, integrovat, zahrnovat, používat, kombinovat, využívat, začleňovat nebo jinak zpřístupňovat Obsah a Data Wink (nebo jejich část) (a) se svým vlastním obsahem a/nebo obsahem jakéhokoli konkurenta Wink (včetně Poskytovatelů ubytování), nebo (b) pro sebe (s výjimkou umožnění Služby a Systému v souladu s touto smlouvou), nebo (c) jakémukoli konkurentovi Wink (včetně Poskytovatelů ubytování) (ať už pro propagaci, marketing, odkazování, reklamu nebo jinak ve prospěch takové strany), nebo (d) pro jakýkoli jiný účel či způsobem a/nebo na nebo prostřednictvím platforem třetích stran, pokud to není výslovně povoleno touto smlouvou. Affiliate nesmí upravovat, měnit, zkreslovat, vytvářet odvozená nebo nová díla založená na Obsahu a Obsah nesmí obsahovat (přímý nebo nepřímý) odkaz, zmínku, klikací odkaz nebo odkaz na (webové stránky) konkurenta Wink (včetně Poskytovatelů ubytování).
 
-4.3.3 Partner (a zajistí, aby společnosti v rámci Skupiny Partnerů) (přímo ani nepřímo) neregistruje, nezískává, nepoužíva, nekupuje ani nezískává internetové doménové jméno, které obsahuje jakékoli slovo nebo slova, která jsou shodná, matoucí nebo podstatně podobná slovu „Wink“ nebo jakýmkoli jeho variantám, překladům nebo pravopisným chybám, obsaženým v adrese.
+4.3.3 Affiliate nesmí (a zajistí, že společnosti v rámci Affiliate Skupiny nebudou) (přímo nebo nepřímo) registrovat, získávat, používat, kupovat nebo získávat internetové doménové jméno, které obsahuje jakékoli slovo nebo slova, která jsou totožná nebo matoucím způsobem podobná „Wink“ nebo jakýmkoli variantám, překladům či překlepům tohoto slova, zahrnutým jako součást adresy.
 
-4.3.4 Uzavřením této Smlouvy se Wink (výslovně ani mlčky) nevzdává ani neztrácí žádná ze svých práv, která jí náleží na základě jakéhokoli zákona, smlouvy nebo jinak (nyní ani v budoucnu) ve vztahu k Právům duševního vlastnictví Wink vůči Přidružené společnosti nebo jiným třetím stranám.
+4.3.4 Uzavřením této smlouvy Wink výslovně ani mlčky nezřekne ani neztratí žádná svá práva, na která má nárok podle zákona, smlouvy nebo jinak (nyní či v budoucnu) ve vztahu k právům duševního vlastnictví Wink vůči Affiliate nebo třetím stranám.
 
 **4.4 Propagace a marketing**
 
-4.4.1 Během trvání Smlouvy Partner souhlasí a zaručuje, že nebude (a zajistí, aby společnosti v rámci Partnerské skupiny nedělaly) provádět, podnikat, používat, provádět ani vykonávat (ani nechat třetí strany provádět, podnikat, používat, provádět nebo vykonávat nebo pověřit je třetími stranami) (a) aktivity placeného vyhledávání, SEM nebo SEO, (b) žádnou činnost s cílem nekalým způsobem ovlivnit výsledky platforem třetích stran nebo (c) žádnou jinou formu online cílené reklamy (ať už přímo, nepřímo nebo prostřednictvím platforem třetích stran) v souvislosti s:
+4.4.1 Během platnosti smlouvy se Affiliate zavazuje a zaručuje, že nebude (a zajistí, že společnosti v rámci Affiliate Skupiny nebudou) provádět, používat, vykonávat nebo umožňovat třetím stranám provádět (a) placené vyhledávání, SEM nebo SEO aktivity, (b) jakoukoli činnost k neférovému ovlivnění výsledků platforem třetích stran, nebo (c) jakoukoli jinou formu online cílené reklamy (přímo, nepřímo nebo prostřednictvím platforem třetích stran) ve vztahu k:
 
-1. Služba;
-2. Webové stránky Wink;
-3. Obsah;
-4. Wink Data;
-5. Značky Wink;
-6. značky poskytovatelů ubytování (pokud vlastník takové značky poskytovatele ubytování nedal přidružené společnosti předchozí písemný souhlas s používáním dané konkrétní značky poskytovatele ubytování), nebo
-7. Partnerské webové stránky v rozsahu, v jakém se placené vyhledávání, SEM, SEO nebo jiné cílené online reklamní aktivity vztahují k (a) nabídkě, rezervaci nebo závazku Ubytování (ať už prostřednictvím Služby nebo jinak), nebo (b) informacím týkajícím se Ubytování.
+1. Službě;  
+2. Wink Webovým stránkám;  
+3. Obsahu;  
+4. Datům Wink;  
+5. Značkám Wink;  
+6. Značkám Poskytovatelů ubytování (pokud vlastník takové značky Poskytovatele ubytování nedal předchozí písemný souhlas Affiliate k použití této konkrétní značky), nebo  
+7. Affiliate Webovým stránkám, pokud jsou placené vyhledávání, SEM, SEO nebo jiné online cílené reklamní aktivity spojeny s (a) nabídkou, rezervací nebo objednávkou ubytování (ať už prostřednictvím Služby nebo jinak), nebo (b) informacemi o ubytování.
 
-Ustanovení 4.4.1 týkající se odstavce (i) až do (v) včetně zůstává v platnosti i po ukončení této Smlouvy.
+Článek 4.4.1 v rozsahu od odstavce (i) do (v) včetně přežívá ukončení této smlouvy.
 
-4.4.2 Partner nesmí přímo ani nepřímo používat, zneužívat ani jinak využívat žádné T platformy k tomu, aby se pokusil vyhnout nebo obejít své závazky, povinnosti nebo omezení vyplývající z této Smlouvy nebo taková omezení nebo závazky, u kterých by Partner mohl důvodně očekávat, že takové jednání spadají do působnosti této Smlouvy.
+4.4.2 Affiliate nesmí používat, využívat nebo jinak zaměstnávat přímo či nepřímo žádné platformy T k obcházení svých závazků, povinností nebo omezení podle této smlouvy nebo těch omezení či závazků, o kterých by Affiliate rozumně očekával, že spadají do rozsahu této smlouvy.
 
-4.4.3 Partner nesmí využívat ani používat Obsah k žádnému účelu ani žádným způsobem a/nebo na platformách třetích stran nebo jejich prostřednictvím, s výjimkou případů výslovně stanovených v této Smlouvě.
+4.4.3 Affiliate nesmí využívat Obsah pro žádný účel nebo způsobem a/nebo na nebo prostřednictvím platforem třetích stran, pokud to není výslovně povoleno touto smlouvou.
 
-4.4.4 Během doby platnosti této Smlouvy (a i poté, co se týká Značek Wink a Data Wink) je Partner povinen neprodleně vyhovět jakékoli žádosti společnosti Wink o dodržování tohoto článku 4.4. V opačném případě ji může společnost Wink s okamžitou platností ukončit, aniž by byly dotčeny její právní a smluvní opravné prostředky.
+4.4.4 Během platnosti této smlouvy (a i po ní ve vztahu ke značkám Wink a Datům Wink) Affiliate neprodleně vyhoví jakémukoli požadavku Wink na dodržování tohoto článku 4.4, jinak může Wink okamžitě ukončit smlouvu bez újmy na svých právních a smluvních nárocích.
 
-**4.5 Zákaz dvojitého zobrazování ani maskování**
+**4.5 Žádné dvojité zobrazování nebo cloaking**
 
-4.5.1 Partnerské webové stránky nesmí být (přímo ani nepřímo) propojeny s webovými stránkami Wink z důvodu dvojitého zobrazování nebo jakékoli podobné techniky či metody či jiných omezení stanovených v jakýchkoli předpisech o spamu.
+4.5.1 Affiliate Webové stránky nesmí být (přímo nebo nepřímo) propojeny s Wink Webovými stránkami kvůli Dvojitému zobrazování nebo jakékoli podobné technice či metodě nebo jiným omezením uvedeným v pravidlech proti spamu.
 
-4.5.2 V případě, že je Služba zpřístupněna prostřednictvím Odkazu nebo Mikrostránky, Partner nesmí Službu (přímo ani nepřímo) zpřístupnit prostřednictvím vyhledávačů cestování nebo porovnávačů cen, ani ji k tomuto účelu používat, pokud se společnost Wink písemně nedohodne jinak.
+4.5.2 Pokud je Služba zpřístupněna prostřednictvím Odkazu nebo Mikrostránky, Affiliate nesmí zpřístupnit Službu (přímo nebo nepřímo) prostřednictvím nebo používat k tomuto účelu cestovní vyhledávače nebo srovnávače cen, pokud není písemně dohodnuto jinak s Winkem.
 
-4.5.3 Partner nesmí (přímo ani nepřímo) zpřístupňovat webové stránky Partnera, Obsah nebo Službu ani prezentovat Obsah Platformám třetích stran s úmyslem nebo účelem, nebo snahou o klamání, oklamání, podvádění nebo oklamání lidských editorů, vyhledávačů, webových crawlerů nebo (meta)vyhledávačů (včetně podobných nástrojů) Platform třetích stran za účelem zajištění vyššího umístění nebo zobrazení webových stránek Partnera, pokud by se jinak nezobrazily nebo nebyly lépe hodnoceny, pokud by nepoužívaly maskování (Cloaking) nebo podobnou techniku.
+4.5.3 Affiliate nesmí (přímo nebo nepřímo) zpřístupnit Affiliate Webové stránky, Obsah nebo Službu třetím stranám s úmyslem nebo účelem (nebo pokusem) klamat, oklamat, zmást nebo podvést lidské editory, vyhledávací roboty, webové prohledávače nebo (meta) vyhledávače platforem třetích stran, aby Affiliate Webové stránky měly vyšší hodnocení nebo zobrazení, než by měly bez použití Cloakingu nebo podobné techniky či metody.
 
-4.5.4 Partner se zavazuje a zaručuje, že bude neprodleně dodržovat, dodržovat a plnit Pravidla pro spam (a všechny přiměřené žádosti společnosti Wink v tomto ohledu), aby se vyhnul jakémukoli porušení těchto zásad ze strany společnosti Wink nebo Partnerských webových stránek z důvodu nebo v souvislosti s Partnerskými webovými stránkami. Aby se předešlo pochybnostem, Partner nemůže v tomto ohledu vůči společnosti Wink uplatňovat žádná práva a tímto se vzdává jakékoli (práva) obhajoby nebo nároků vůči společnosti Wink v tomto ohledu.
+4.5.4 Affiliate se zavazuje neprodleně dodržovat pravidla proti spamu (a všechny rozumné požadavky Wink v tomto ohledu), aby se zabránilo porušení těchto pravidel ze strany Wink nebo Affiliate Webových stránek. Pro vyloučení pochybností nemůže Affiliate uplatňovat žádná práva vůči Wink v tomto ohledu a tímto se vzdává jakékoli obrany nebo nároků vůči Wink.
 
-**4.6 Zákaz nabízení**
+**4.6 Zákaz oslovení**
 
-Partner souhlasí s tím, že nebude kontaktovat, nabízet ani přijímat žádného Poskytovatele ubytování (i) jako svého obchodního partnera pro rezervace (přímo či nepřímo) na Partnerských webových stránkách nebo jejich prostřednictvím, (ii) za účelem prodeje reklamního prostoru nebo jiných (online) reklamních či marketingových účelů (ať už prostřednictvím bannerů, prokliků, (textových) odkazů, vyskakovacích oken nebo jinak) na Partnerských webových stránkách nebo (iii) z jakéhokoli jiného důvodu.
+Affiliate souhlasí, že nebude kontaktovat, oslovovat ani přijímat žádného Poskytovatele ubytování (i) jako obchodního partnera pro rezervace nebo objednávky (přímo nebo nepřímo) na nebo prostřednictvím Affiliate Webových stránek, (ii) za účelem prodeje reklamního prostoru nebo jiné (online) reklamy či marketingu (ať už prostřednictvím bannerů, klikacích odkazů, (textových) odkazů, vyskakovacích oken nebo jinak) na Affiliate Webových stránkách, nebo (iii) z jiného důvodu.
 
 **4.7 Podobná doménová jména**
 
-4.7.1 V případě, že Partner má nebo používá doménové jméno (matoucím způsobem) podobné značkám Wink („Podobné doménové jméno“) pro webové stránky Partnera (určeno dle uvážení společnosti Wink), nebo v případě, že si Partner přeje zaregistrovat, získat, používat, zakoupit nebo získat podobné doménové jméno (s předchozím písemným souhlasem společnosti Wink), platí následující. Partner se zavazuje (a zajistí, aby společnosti, které ovládá, se zavazují), že se přímo ani nepřímo nedopustí:
+4.7.1 Pokud má nebo používá Affiliate doménové jméno (matoucím způsobem) podobné značkám Wink (dále jen „Podobná doména“) pro Affiliate Webové stránky (určeno výhradně Winkem) nebo pokud si Affiliate přeje zaregistrovat, získat, používat, koupit nebo získat Podobnou doménu (s předchozím písemným souhlasem Wink), platí následující. Affiliate nesmí (a zajistí, že společnosti, které kontroluje, nebudou) přímo nebo nepřímo:
 
-1. jakýmkoli způsobem v rámci své reklamy, včetně, ale nikoli výhradně, internetové a webové reklamy, ucházet se o ni ani ji nekupovat.\
-   2\. zahrnovat Podobný název domény nebo jakoukoli jeho část, případně podobné varianty, překlady či pravopisné chyby, do meta tagů jakéhokoli kódu webových stránek. To zahrnuje meta title, meta keywords nebo meta description.\
-   3\. nakupovat, získávat nebo používat, přímo či nepřímo, jakákoli klíčová slova z platforem třetích stran za účelem přesměrování provozu na Podobné doménové jméno a\
-   4\. zakoupit Podobné doménové jméno nebo jakoukoli jeho část, případně jakékoli jeho varianty, překlady či pravopisné chyby, pro použití v textových odkazech, bannerových reklamách, vyskakovacích reklamách nebo jakémkoli jiném typu reklamy, která by mohla být spojena s kampaní zaměřující se na klíčová slova.
+1. nabízet nebo kupovat internetová umístění pro Podobnou doménu nebo její části či podobnosti v jakékoli formě reklamy, včetně internetové a webové reklamy;  
+2. zahrnovat Podobnou doménu nebo její části či podobné varianty, překlady nebo překlepy do meta tagů jakéhokoli webového kódu, včetně meta titulku, meta klíčových slov nebo meta popisu;  
+3. kupovat, získávat nebo používat přímo či nepřímo jakákoli klíčová slova od platforem třetích stran za účelem přesměrování provozu na Podobnou doménu; a  
+4. kupovat Podobnou doménu nebo její části či varianty, překlady nebo překlepy pro použití v textových odkazech, bannerových reklamách, vyskakovacích reklamách nebo jakémkoli jiném typu reklamy, která by mohla být spojena s kampaní založenou na klíčových slovech.
 
-4.7.2 Ve vztahu k Podobným Doménovým Jménům jiným než Webové Stránky Přidruženého subjektu se Strany dohodly, že (i) všechna taková Podobná Doménová Jména budou přímo propojena s Webovými Stránkami Přidruženého subjektu prostřednictvím přímého přesměrování a nebudou aktivně dostupná ani online pro jakýkoli účel, a (ii) Přidružený subjekt (ani žádný člen Přidružené Skupiny) nebude žádným způsobem (online ani offline) uvádět na trh, propagovat, zbavovat se, prodávat, nabízet, inzerovat, (sub)licencovat, zpřístupňovat, umožňovat přístup k nim, odkazovat na ně, publikovat je ani distribuovat.
+4.7.2 Pokud jde o Podobná doménová jména mimo Affiliate Webové stránky, Strany se dohodly, že (i) všechna taková Podobná doménová jména budou přímo propojena s Affiliate Webovými stránkami prostřednictvím přesměrování a nebudou aktivně dostupná nebo online pro jakýkoli účel, a (ii) Affiliate (ani žádná společnost v rámci Affiliate Skupiny) nebude žádným způsobem (online ani offline) propagovat, nabízet, prodávat, licencovat, zpřístupňovat, odkazovat, zveřejňovat nebo distribuovat Podobná doménová jména.
 
 **4.8 Porovnání cen**
 
-4.8.1 V případě, že Partner nabízí Porovnání cen na relevantních Partnerských webových stránkách, jak je uvedeno v Registračním formuláři Partnerského partnera, bude Partnerovi pro tyto relevantní Partnerské webové stránky udělen přístup k cenám a údajům o dostupnosti příslušných Poskytovatelů ubytování, jak jsou k dispozici na Webových stránkách Wink (souhrnně „Ceny a údaje o dostupnosti“), a to výhradně na základě přímého připojení k webovým serverům Wink (tj. prostřednictvím připojení JSON). Ceny a údaje o dostupnosti budou zpřístupněny v souladu s dalšími podmínkami, které zpřístupní Wink.
+4.8.1 Pokud Affiliate nabízí Porovnání cen na příslušných Affiliate Webových stránkách uvedených v Registračním formuláři affiliate partnera, bude Affiliate pro tyto stránky mít přístup pouze k datům o cenách a dostupnosti relevantních Poskytovatelů ubytování, jak jsou zpřístupněna na Wink Webových stránkách (společně „Data o cenách a dostupnosti“) prostřednictvím přímého připojení k Wink webovým serverům (tj. přes JSON připojení). Data o cenách a dostupnosti budou zpřístupněna za dalších podmínek stanovených Winkem.
 
-4.8.2 Údaje o sazbách a dostupnosti nezahrnují a Partner není oprávněn používat, kopírovat, odkazovat na ani zahrnovat na svých webových stránkách, kde je k dispozici Porovnání cen, Data a Obsah Wink z webových stránek Wink nebo webových serverů nebo třetí strany (webových stránek), se kterou má Wink smluvní vztah k poskytování Obsahu.
+4.8.2 Data o cenách a dostupnosti nezahrnují a Affiliate nesmí používat, kopírovat, odkazovat na nebo zahrnovat na svých webových stránkách, kde je Porovnání cen dostupné, Data Wink a Obsah z Wink Webových stránek nebo webových serverů třetích stran, s nimiž má Wink smluvní vztah k poskytování Obsahu.
 
-4.8.3 V případě, že Partner nabízí Porovnání cen, zajistí, aby ceny pokojů zpřístupněné všemi Konkurenty Wink (včetně všech poskytovatelů ubytování nebo rezervačních center, zprostředkovatelů nebo agentů (souhrnně „Poskytovatelé třetích stran“) na Webových stránkách Partnera byly přesné, správné a nebyly zavádějící ani klamavé ve srovnání se skutečnou cenou (cenami) uvedenou (uvedenými) na webových stránkách Poskytovatelů třetích stran.
+4.8.3 Pokud Affiliate nabízí Porovnání cen, zajistí, že ceny pokojů zpřístupněné všemi konkurenty Wink (včetně všech Poskytovatelů ubytování nebo rezervačních center, zprostředkovatelů či agentů, společně „Třetí poskytovatelé“) na Affiliate Webových stránkách jsou přesné, správné a nezavádějící ve srovnání s aktuálními cenami na webových stránkách Třetích poskytovatelů.
 
-4.8.4 Společnost Wink bude na webových stránkách pro porovnání cen Partnera považována za nejméně stejně příznivou (s ohledem na umístění v žebříčku, zobrazení a možnosti konverze) jako nejlépe konverzující (x) konkurenti Wink, (y) poskytovatelé ubytování nebo (z) jakékoli rezervační centrum, agent nebo zprostředkovatel nebo spravovaný, vlastněný nebo ovládaný konkurentem Wink nebo poskytovateli ubytování, dostupný na webových stránkách pro porovnání cen Partnera.
+4.8.4 Wink bude na webu Porovnání cen Affiliate (v oblasti hodnocení, zobrazení a konverzních příležitostí) zacházen jako minimálně stejně příznivě jako nejlepší konvertující (x) konkurenti Wink, (y) Poskytovatelé ubytování nebo (z) jakékoli rezervační nebo objednávkové centrum, agent nebo zprostředkovatel spravovaný, vlastněný nebo kontrolovaný konkurentem Wink nebo Poskytovateli ubytování, dostupní na webu Porovnání cen Affiliate.
 
-**4.9 Důkazní břemeno, dodržování předpisů, soudní příkaz a další nápravná opatření**
+**4.9 Důkazní břemeno, dodržování, předběžné opatření a další nároky**
 
-4.9.1 Strany souhlasí a berou na vědomí, že v případě (údajného nebo hrozícího) porušení nebo nedodržení povinností Partnera podle tohoto článku 4 nese důkazní břemeno Partner. Jinými slovy, Wink nese výhodu domněnky a Partner musí poskytnout a dodat dostatečné a uspokojivé důkazy (tj. přesvědčivé a nezvratné) k obhajobě nebo zamítnutí nároku.
+4.9.1 Strany souhlasí a berou na vědomí, že v případě (údajného nebo hrozícího) porušení povinností Affiliate podle tohoto článku 4 nese důkazní břemeno Affiliate. Jinými slovy, Wink má výhodu předpokladu a Affiliate musí poskytnout dostatečné a uspokojivé důkazy (tj. závazné a nevyvratitelné) k obraně nebo odmítnutí nároku.
 
-4.9.2 V případě, že je webová stránka, kampaň nebo reklama společnosti Wink propojena s webovou stránkou (webovými stránkami) Partnera nebo s kampaní či reklamou Partnera (nebo naopak), nebo v případě (hrozícího) porušení Pravidel o spamu ze strany Partnera, Partner (i) neprodleně informuje společnost Wink o takovém (hrozícím) porušení poté, co se o takovém porušení dozví, a (ii) na první žádost společnosti Wink neprodleně zavede, bude dodržovat a řídit se všemi podmínkami, omezeními a zákazy stanovenými v této Smlouvě nebo požadovanými společností Wink. Partner neprodleně kontaktuje každou platformu třetí strany nebo agenturu třetí strany a upraví webovou stránku (webové stránky) Partnera a veškeré reklamní texty, názvy, popisy, klíčová slova, adresy URL, textové odkazy, reklamy, včetně všech meta tagů (meta názvy, meta klíčová slova a meta popisy) tak, aby splňovaly podmínky této Smlouvy nebo požadavky společnosti Wink.
+4.9.2 V případě, že je Wink Webová stránka, kampaň nebo reklama propojena s Affiliate Webovými stránkami nebo kampaní či reklamou Affiliate (nebo naopak) nebo v případě (hrozícího) porušení pravidel proti spamu ze strany Affiliate, je Affiliate povinen (i) neprodleně informovat Wink o takovém (hrozícím) porušení poté, co se o něm dozví, a (ii) na první požádání Wink neprodleně provést, dodržovat a řídit se všemi podmínkami, omezeními a zákazy uvedenými v této smlouvě nebo požadovanými Winkem. Affiliate neprodleně kontaktuje každou platformu třetí strany nebo agenturu a upraví Affiliate Webové stránky a veškeré reklamní texty, titulky, popisy, klíčová slova, URL, textové odkazy, reklamy včetně všech meta tagů (meta titulky, meta klíčová slova a meta popisy), aby vyhověl podmínkám této smlouvy nebo požadavkům Wink.
 
-4.9.3 Partner souhlasí a bere na vědomí, že do doby, než budou splněny nebo provedeny přiměřené požadavky společnosti Wink, nebo v případě, že Partner neprodleně nevyhoví nebo nedodrží všechny takové požadavky společnosti Wink podle tohoto článku 4, je společnost Wink oprávněna odložit nebo pozastavit své závazky vyplývající z této Smlouvy (včetně nabídky Služby, Systému a Dat Wink) nebo tuto Smlouvu okamžitě ukončit, aniž by tím byla dotčena práva společnosti Wink vyplývající z této Smlouvy nebo jiná.
+4.9.3 Affiliate souhlasí a bere na vědomí, že pokud nevyhoví nebo neplní rozumné požadavky Wink podle tohoto článku 4, má Wink právo pozastavit nebo přerušit své povinnosti podle této smlouvy (včetně nabídky Služby, Systému a Dat Wink) nebo okamžitě ukončit tuto smlouvu, aniž by tím byly dotčeny práva Wink podle této smlouvy nebo jinak.
 
-4.9.4 V případě porušení smluv, závazků, omezení, povinností a/nebo záruk stanovených v tomto článku 4 ze strany Partnera nebo v případě, že je mu přičitatelné, je Wink oprávněn uplatnit následující žaloby a práva, bez ohledu na nápravná opatření a žaloby na konkrétní plnění, náhradu škody nebo soudní zákaz nebo spravedlivou úlevu, které jsou k dispozici ze zákona nebo smlouvy:\
-(a) pozastavení svých (platebních) závazků podle této Smlouvy nebo její ukončení s okamžitou platností bez předchozího upozornění Partnera a bez újmy na právech společnosti Wink podle této Smlouvy či jiných důvodů;\
-(b) Společnost Wink je oprávněna snížit Provizi na 0 % za všechny provedené rezervace a/nebo každou Zhmotněnou transakci během období, kdy Partner poruší příslušné povinnosti stanovené v článku 4 nebo nenapraví své porušení příslušných povinností uvedených v článku 4 v plném rozsahu;\
-(c) Wink si vyhrazuje právo požadovat od Partnera vrácení Provize vyplacené společností Wink na základě této Smlouvy; a\
-(d) v případě užívání Podobného doménového jména (nebo vlastnictví či registrace webových stránek s (matoucím) podobným doménovým jménem, ​​jaké vlastní nebo používá Wink, Partnerem) a opakovaného a/nebo podstatného porušení článku 4, Partner převede, postoupí a zaregistruje Podobné doménové jméno (včetně webových stránek s (matoucím) podobným doménovým jménem) společnosti Wink a jejím jménem prostřednictvím společnosti registrující doménová jména dle Wink výběru, a to do 20 pracovních dnů od vzniku porušení. V případě, že Partner nebude (spolupracovat s ním a neprovede) převod, postoupení a převod příslušných doménových jmen, Partner tímto neodvolatelně a bezpodmínečně opravňuje, zmocňuje a uděluje plnou moc společnosti Wink a jejím jménem k podepisování a/nebo vyhotovování všech dokumentů, které jsou nezbytné nebo užitečné v souvislosti s postoupením, registrací, převodem a převodem doménových jmen společnosti Wink a jejím jménem nebo pro ně vyžadované.
+4.9.4 V případě porušení závazků, omezení, povinností a/nebo záruk uvedených v tomto článku 4 ze strany Affiliate má Wink právo uplatnit následující opatření a práva, bez ohledu na nároky na specifické plnění, náhradu škody nebo předběžné opatření dostupné podle zákona nebo smlouvy:  
+(a) pozastavení svých (platebních) povinností nebo okamžité ukončení této smlouvy bez předchozího upozornění Affiliate a bez újmy na práva Wink podle této smlouvy nebo jinak;  
+(b) Wink má právo snížit provizi na 0 % za všechny rezervace a/nebo každou realizovanou transakci během doby, kdy Affiliate porušuje příslušné povinnosti uvedené v článku 4 nebo neodstranil své porušení v plném rozsahu;  
+(c) Wink si vyhrazuje právo požadovat od Affiliate vrácení provize vyplacené podle této smlouvy; a  
+(d) v případě použití Podobné domény (nebo vlastnictví či registrace webu s (matoucím) podobným doménovým jménem jako má Wink) a opakovaného a/nebo závažného porušení článku 4, je Affiliate povinen převést, postoupit a zaregistrovat Podobnou doménu (včetně webových stránek s (matoucím) podobným doménovým jménem) na Wink prostřednictvím registrátora domén dle výběru Wink do 20 pracovních dnů od vzniku porušení. Pokud Affiliate nespolupracuje nebo neprovedete převod, tímto neodvolatelně a bezpodmínečně zmocňuje Wink k podpisu a provedení všech dokumentů nezbytných k převodu domén na Wink.
 
-**5. Komise**
+**5. Provize**
 
-5.1 Wink vyplatí Partnerovi provizi, která představuje procento stanovené Poskytovatelem ubytování z hodnoty rezervace generované Uskutečněnou transakcí. Wink využívá pro transakce vkladů a výplat služeb třetí strany – platebního zprostředkovatele. Platební podmínky jsou stanoveny v samostatné smlouvě.
+5.1 Wink zaplatí Affiliate provizi, která je procentem stanoveným Poskytovatelem ubytování z hodnoty rezervace generované realizovanou transakcí. Wink využívá služeb třetího platebního zprostředkovatele pro transakce Pay-in a Pay-out. Platební podmínky jsou stanoveny v samostatné smlouvě.
 
-5.2 Procento partnerské provize neboli ACP stanoví Poskytovatel ubytování. Používá se výchozí ACP ve výši 10 %, ale strany se mohou dohodnout na jiném procentu, jak je uvedeno v článku 1.2.3.
+5.2 Procento provize Affiliate (ACP) stanovuje Poskytovatel ubytování. Výchozí ACP je 10 %, ale strany se mohou dohodnout na jiném procentu, jak je uvedeno v článku 1.2.3.
 
-5.3 Provize bude vyplacena podle následujícího vzorce:
+5.3 Provize bude vyplácena podle následujícího vzorce:
 
-Provize = BV \* ACP\
-Čistá vyplacená provize (výplata) = Provize - PSF - BF
+Provize = BV * ACP  
+Čistá provize vyplacená (Pay-out) = Provize - PSF - BF
 
-**„BV“**&#x7A;namená hodnotu rezervace\
-**„AKT“**&#x7A;namená procento provize pro partnery\
-**„BF“**&#x7A;namená poplatek za rezervaci (1,5 %)\
-**„PSV“**&#x7A;namená poplatky za platební služby (4 %)
+**„BV“** znamená Hodnotu rezervace  
+**„ACP“** znamená procento provize Affiliate  
+**„BF“** znamená Rezervační poplatek (1,5 %)  
+**„PSF“** znamená Poplatek za platební službu (4 %)
 
-5.4 Společnost Wink sleduje všechny transakce a vynaloží komerčně přiměřené úsilí, aby zajistila, že všechny materializované transakce budou sledovány, nahlášeny a proplaceny. Záznamy společnosti Wink však budou konečné a Partner nebude mít nárok na náhradu ušlých příjmů ani škod v případě, že společnost Wink přesně nezaznamená nebo nenahlásí Odchody Partnerů, s výjimkou případů hrubého pochybení nebo podvodného chování ze strany společnosti Wink. S výjimkou těchto posledních případů je jediným řešením Partnera ukončení této Smlouvy a ukončení jeho účasti v programu.
+5.4 Wink sleduje všechny transakce a vynaloží obchodně přiměřené úsilí, aby zajistil, že všechny realizované transakce jsou sledovány, hlášeny a vypláceny. Nicméně záznamy Wink jsou konečné a Affiliate nemá nárok na náhradu za ztrátu příjmů nebo škody v případě, že Wink nezaznamená nebo neohlásí Affiliate Odjezdy přesně, s výjimkou hrubého porušení nebo podvodného jednání ze strany Wink. V těchto případech je jediným nárokem Affiliate ukončení této smlouvy a ukončení účasti v programu.
 
-5.5 Uvedená Čistá provize bude jedinou odměnou, na kterou má Partner nárok podle této Smlouvy. Partner nemá nárok na žádné další výhody. Je odpovědností společnosti Wink ověřit správnost plateb Čisté provize před provedením platby a je odpovědností Partnera ověřit všechny platby Čisté provize po jejich obdržení a neprodleně uplatnit údajné chyby. Žádná ze stran nemůže uplatňovat žádné reklamace přeplatku nebo nedoplatku devadesát (90) kalendářních dnů po datu splatnosti platby. Všechny objednávky podléhají schválení společností Wink v souladu s jejími zásadami platnými v době žádosti o rezervaci. Zásady společnosti Wink se mohou změnit bez předchozího upozornění.
+5.5 Čistá provize uvedená v této smlouvě je jedinou odměnou, na kterou má Affiliate nárok. Affiliate nemá nárok na žádné další výhody. Je odpovědností Wink ověřit správnost plateb Čisté provize před platbou a odpovědností Affiliate je ověřit všechny platby Čisté provize po jejich přijetí a neprodleně nahlásit případné chyby. Nároky na přeplatek nebo nedoplatek nelze uplatnit po uplynutí devadesáti (90) kalendářních dnů od data splatnosti platby. Všechny objednávky podléhají schválení Wink v souladu s jeho zásadami platnými v době žádosti o rezervaci. Zásady Wink se mohou měnit bez předchozího upozornění.
 
-5.6 Společnost Wink vynaloží komerčně přiměřené úsilí k provedení auditu všech transakcí, na které se vztahuje tato Smlouva. Společnost Wink poskytne Partnerovi přístup k analytickým nástrojům a přehledu shrnujícímu všechny nadcházející a prošlé rezervace. Partner bude mít také přístup k přehledům plateb, které budou zobrazovat předpokládané výdělky a historii plateb. Pokud společnost Wink nebude vést přesné záznamy nebo audit, jediným řešením Partnera bude ukončení této Smlouvy a ukončení jeho účasti v programu.
+5.6 Wink vynaloží obchodně přiměřené úsilí k vedení auditu všech transakcí podle této smlouvy. Wink poskytne Affiliate přístup k analytice a přehledovému panelu shrnujícímu všechny nadcházející a vypršené rezervace. Affiliate bude mít také přístup k platebním zprávám, které zobrazí očekávané výdělky a historii plateb. Pokud Wink nezajistí přesné vedení záznamů nebo audit, jediným nárokem Affiliate je ukončení této smlouvy a ukončení účasti v programu.
 
-**6. Prohlášení a záruky.**
+**6. Prohlášení a záruky**
 
-**6.1 Záruky přidružených společností**
+**6.1 Záruky Affiliate**
 
-Partner tímto prohlašuje a zaručuje společnosti Wink, že po dobu trvání této Smlouvy:\
-(i) Partner má veškerá nezbytná práva, nároky, pravomoci a oprávnění vlastnit, provozovat a používat Partnerské webové stránky (včetně příslušného názvu domény) a zahrnout Odkaz, Mikrostránku nebo Připojení (dle potřeby) na Partnerské webové stránky;\
-(ii) Partnerské webové stránky nesmí (a) používat taktiku Black Hat, porušovat předpisy o spamu, veřejný pořádek a morálku, ani (b) obsahovat ani zobrazovat jakýkoli nevhodný, nesprávný nebo nezákonný obsah, odkazy, materiály, informace, odkazy nebo bannery (např. týkající se pornografie, rasismu a podobně), hanlivé výroky, prvky, které porušují soukromí třetích stran nebo jsou urážlivé, útočné nebo obscénní, (c) kopírovat nebo se podobat designu, názvům domén (včetně subdomén), vzhledu a dojmu, ani vytvářet dojem, že jsou součástí webových stránek Wink nebo webových stránek jakýchkoli přidružených společností či dceřiných společností Wink; (d) obhajovat diskriminaci na základě rasy, pohlaví, náboženství, národnosti, postižení, sexuální orientace nebo věku; (e) propagovat nebo se zapojovat do nezákonných aktivit; (f) porušovat práva duševního vlastnictví třetích stran; (g) obsahovat nebo propagovat klamavé informace nebo propagovat hazardní hry; ani (h) být jinak nevhodné povahy. Jakékoli porušení výše uvedených ustanovení může vést k okamžitému ukončení Partnerské účasti v programu a k propadnutí veškerých splatných plateb.\
-(iii) Partner nesmí používat žádné predátorské reklamní metody určené ke generování návštěvnosti mimo webové stránky vlastněné nebo provozované společností Wink nebo některou z jejích přidružených společností, včetně, bez omezení, Wink.com (a všech jejich lokálních verzí s jakoukoli doménou nejvyšší úrovně), priceline.com, rentalcars.com (a všech jejich lokálních verzí s jakoukoli doménou nejvyšší úrovně), www.booking.com, www.kayak.com, Wink (a všech jejich lokálních verzí s jakoukoli doménou nejvyšší úrovně), www.opentable.com (a všech jejich lokálních verzí s jakoukoli doménou nejvyšší úrovně), jakož i jakýchkoli dalších webových stránek, o kterých může Wink čas od času informovat. Partner dále zakáže webovým stránkám, které Partner ovládá, takové predátorské reklamní metody. Predátorská reklama je definována jako jakákoli metoda, která vytváří nebo překrývá odkazy nebo bannery na webových stránkách, otevírá okna prohlížeče nebo jakákoli metoda vynalezená ke generování návštěvnosti z webových stránek bez vědomí, souhlasu a účasti vlastníka webových stránek. Mezi příklady patří mimo jiné pluginy prohlížeče pro analýzu klíčových slov, jako jsou Text Enhance, TopText a +Surf, technologie nahrazování bannerů, jako je Gator, technologie pro vytváření prohlížečů, která není závislá na webových stránkách, a také používání Wink Marks v reklamních textech vyhledávačů (např. Google AdWords, Yahoo! Search Marketing atd.) nebo ekvivalentních technologií a obecně jakékoli jiné metody, které by mohly potenciální zákazníky zavádějícím způsobem vést k domněnce, že budou přesměrováni na webové stránky Wink. Jakékoli porušení výše uvedených ustanovení může vést k okamžitému ukončení účasti Partnera v programu a k propadnutí veškerých neuhrazených plateb.\
-(iv) přidružená společnost je držitelem a splnila veškerá povolení, licence a další vládní schválení nezbytná pro provádění, vykonávání a pokračování své činnosti a podnikání a\
-(v) Přidružená společnost je pro všechny účely nezávislým smluvním partnerem a bude odpovědná za své vlastní daně, sociální příspěvky a všechny další daňové záležitosti.
+Affiliate tímto prohlašuje a zaručuje Wink, že po dobu platnosti této smlouvy:  
+(i) má všechna nezbytná práva, vlastnická práva, moc a oprávnění vlastnit, provozovat a používat Affiliate Webové stránky (včetně příslušných doménových jmen) a zahrnout Odkaz, Mikrostránku nebo Propojení (dle potřeby) na Affiliate Webových stránkách;  
+(ii) Affiliate Webové stránky nebudou (a) používat Black Hat taktiky, porušovat pravidla proti spamu, veřejný pořádek a morálku, nebo (b) obsahovat nebo zobrazovat nevhodný, nesprávný nebo nezákonný obsah, odkazy, materiály, informace, bannery (např. pornografie, rasismus a podobně), pomlouvačné výroky, prvky porušující soukromí třetích stran nebo urážlivé, vulgární či obscénní, (c) kopírovat nebo připomínat design, doménová jména (včetně subdomén), vzhled a dojem nebo vytvářet dojem, že jsou součástí Wink Webových stránek nebo webů přidružených či dceřiných společností Wink; (d) podporovat diskriminaci na základě rasy, pohlaví, náboženství, národnosti, zdravotního postižení, sexuální orientace nebo věku; (e) propagovat nebo se podílet na nezákonných činnostech; (f) porušovat práva duševního vlastnictví třetích stran; (g) obsahovat nebo propagovat klamavé informace nebo propagovat hazardní hry; nebo (h) být jinak nevhodné povahy. Jakékoli porušení těchto ustanovení může vést k okamžitému vyloučení Affiliate z programu a ztrátě nároku na nevyplacené platby.  
+(iii) Affiliate nebude používat žádné predátorské reklamní metody navržené k odvádění provozu z jakékoli webové stránky vlastněné nebo provozované Wink nebo jeho přidruženými společnostmi, včetně, ale nikoli výlučně, Wink.com (a všech místních verzí s jakoukoli doménou nejvyšší úrovně), priceline.com, rentalcars.com (a všech místních verzí), www.booking.com, www.kayak.com, Wink (a všech místních verzí), www.opentable.com (a všech místních verzí) a dalších webů, které Wink může čas od času oznámit. Dále Affiliate zakáže webům, které kontroluje, používat takové predátorské reklamní metody. Predátorská reklama je definována jako jakákoli metoda, která vytváří nebo překrývá odkazy nebo bannery na webových stránkách, otevírá okna prohlížeče nebo jakákoli metoda vynalezená k získání provozu z webu bez vědomí, svolení a účasti vlastníka webu. Příklady zahrnují, ale nejsou omezeny na, pluginy pro prohlížeče analyzující klíčová slova jako Text Enhance, TopText a +Surf, technologii nahrazování bannerů jako Gator, technologii otevírání oken nezávislou na webu, stejně jako použití značek Wink v reklamních textech vyhledávačů (např. Google AdWords, Yahoo! Search Marketing) nebo ekvivalentních a obecně jakékoli jiné metody, které by mohly klamat potenciální zákazníky, že budou přesměrováni na Wink Webové stránky. Jakékoli porušení těchto ustanovení může vést k okamžitému vyloučení Affiliate z programu a ztrátě nároku na nevyplacené platby.  
+(iv) Affiliate má všechna potřebná povolení, licence a další vládní oprávnění nezbytná pro provoz a pokračování své činnosti, a  
+(v) Affiliate je nezávislým dodavatelem pro všechny účely a bude odpovědný za své vlastní daně, sociální příspěvky a všechny další daňové záležitosti.
 
 **6.2 Záruky a závazky stran**
 
-6.2.1 Každá ze stran prohlašuje a zaručuje druhé straně, že po dobu platnosti této smlouvy:\
-(i) má plnou korporátní pravomoc a oprávnění uzavřít tuto Smlouvu a plnit své závazky podle ní;\
-(ii) podnikla veškeré korporátní kroky, které vyžaduje k autorizaci podpisu a plnění této Smlouvy;\
-(iii) tato Smlouva představuje právně platné a závazné povinnosti dané Strany v souladu s jejími podmínkami.
+6.2.1 Každá Strana prohlašuje a zaručuje druhé Straně, že po dobu platnosti této smlouvy:  
+(i) má plnou korporátní moc a oprávnění vstoupit do této smlouvy a plnit své povinnosti;  
+(ii) provedla veškeré korporátní kroky potřebné k autorizaci podpisu a plnění této smlouvy;  
+(iii) tato smlouva představuje právně platné a závazné závazky této Strany v souladu s jejími podmínkami.
 
-6.2.2 Každá ze stran vynaloží komerčně přiměřené úsilí k ochraně a zajištění svých webových stránek.
+6.2.2 Každá Strana vynaloží obchodně přiměřené úsilí k ochraně a zabezpečení svých webových stránek.
 
-6.2.3 Partner prohlašuje a zaručuje, že neposkytne ani nenabídne žádnou platbu, dar ani převod čehokoli hodnotného: (i) jakémukoli vládnímu úředníkovi nebo vládnímu zaměstnanci (včetně zaměstnanců vládních subjektů nebo korporací) nebo pro jejich použití či prospěch; nebo (ii) žádné politické straně (včetně jejích úředníků nebo kandidátů); (iii) žádné komerční straně, osobě nebo subjektu; nebo (iv) zprostředkovateli za úhradu kterékoli z výše uvedených částí, s cílem přimět příjemce k provedení nebo opomenutí jednání v rozporu se zákonnou povinností takového příjemce, k získání nebo udržení obchodu nebo k zajištění jakékoli neoprávněné výhody; nebo k navození nesprávného výkonu relevantní funkce nebo činnosti s ohledem na jakékoli činnosti jménem společnosti Wink nebo v zájmech společnosti Wink, jak je uvedeno v této Smlouvě. Porušení tohoto ustanovení ze strany Partnera opravňuje společnost Wink k okamžitému ukončení této Smlouvy.
+6.2.3 Affiliate prohlašuje a zaručuje, že nebude nabízet ani poskytovat žádné platby, dary nebo převody hodnoty: (i) vládním úředníkům nebo zaměstnancům (včetně zaměstnanců státních podniků), (ii) politickým stranám (včetně jejich představitelů nebo kandidátů), (iii) komerčním subjektům, osobám nebo entitám, nebo (iv) zprostředkovatelům k platbě výše uvedeným, za účelem získání nebo udržení obchodu nebo získání neoprávněné výhody; nebo k vyvolání nesprávného výkonu funkce či činnosti ve vztahu k aktivitám jménem Wink nebo ve prospěch Wink, jak je uvedeno v této smlouvě. Porušení tohoto ustanovení opravňuje Wink k okamžitému ukončení této smlouvy.
 
-6.2.4 Za účelem určení souladu s výše uvedeným bodem 6.2.3 má společnost Wink právo na své náklady provést inspekci na místě a audit všech relevantních účetních a prodejních knih, záznamů, smluv, zařízení, počítačových systémů, smluv a dokumentů Partnera během běžné pracovní doby v kancelářích Partnera a takovým způsobem, aby nepřiměřeně nenarušoval běžné obchodní činnosti Partnera. Takové audity nebudou podle této smlouvy prováděny častěji než dvakrát za dvanáct (12) měsíců.
+6.2.4 Za účelem ověření dodržování článku 6.2.3 má Wink právo na své náklady provést kontrolu a audit všech relevantních účetních a prodejních knih, záznamů, smluv, zařízení, počítačových systémů, smluv a dokumentů Affiliate během běžné pracovní doby v kancelářích Affiliate, přičemž audit nesmí nepřiměřeně zasahovat do běžných obchodních aktivit Affiliate. Audity nebudou prováděny častěji než dvakrát za dvanáct měsíců.
 
-**6.3 Prohlášení o vyloučení odpovědnosti**
+**6.3 Vyloučení záruk**
 
-6.3.1 S výjimkou případů výslovně stanovených v této Smlouvě žádná ze Stran neposkytuje žádná prohlášení ani záruky, výslovné ani implicitní, v souvislosti s předmětem této Smlouvy a tímto se zříká veškerých implicitních záruk, včetně všech implicitních záruk prodejnosti nebo vhodnosti pro konkrétní účel týkajících se takového předmětu. Společnost Wink poskytuje Službu „tak, jak je“ a „jak je k dispozici“ a nezaručuje provozuschopnost.
+6.3.1 Pokud není v této smlouvě výslovně uvedeno jinak, žádná Strana neposkytuje žádné výslovné ani implicitní záruky týkající se předmětu této smlouvy a tímto vylučuje všechny implicitní záruky obchodovatelnosti nebo vhodnosti pro konkrétní účel. Wink poskytuje Službu „tak, jak je“ a „dle dostupnosti“ a nezaručuje dostupnost.
 
-6.3.2 Každá strana bere na vědomí obtíže spojené s používáním internetu, zejména proměnlivé rychlosti a přetížení sítě, které mohou způsobit přerušení a potíže s přístupem na webové stránky. Každá strana vylučuje veškerou odpovědnost vůči druhé straně, která souvisí s jakýmkoli (dočasným (plánovaným nebo neplánovaným) a/nebo částečným nebo úplným) výpadkem nebo odstávkou (z důvodu údržby, aktualizací nebo z jiného důvodu) webových stránek, portálu prodávajícího, systému a/nebo služby.
+6.3.2 Každá Strana bere na vědomí obtíže spojené s používáním internetu, zejména kolísání rychlosti a přetížení sítě, které mohou způsobit přerušení a potíže s přístupem na web. Každá Strana vylučuje veškerou odpovědnost vůči druhé Straně za jakékoli (dočasné (plánované či neplánované) a/nebo částečné či úplné) výpadky nebo odstávky (z důvodu údržby, aktualizací nebo jinak) Webových stránek, Prodejního portálu, Systému a/nebo Služby.
 
-**7. Odškodnění a odpovědnost**
+**7. Náhrady škody a odpovědnost**
 
-**7.1 Odškodnění**
+**7.1 Náhrada škody**
 
-V maximálním rozsahu povoleném platnými právními předpisy souhlasíte s tím, že společnost Wink a všechny její poskytovatele ubytování a dceřiné společnosti a jejich vedoucí pracovníky, ředitele, zaměstnance a zástupce zbavíte odpovědnosti, budete je bránit (dle uvážení společnosti Wink), odškodníte je a ochráníte před jakýmikoli nároky, závazky, škodami, ztrátami a výdaji, včetně, bez omezení, přiměřených právních a účetních poplatků, které vyplývají z nebo jsou jakkoli spojeny s (i) vaším porušením těchto Podmínek; (ii) vaším nesprávným používáním Služeb; (iii) vaším neprovedením přesného nahlášení, výběru nebo odvedení daní nebo naším neprovedením na váš pokyn; nebo (iv) vaším porušením jakýchkoli zákonů, předpisů nebo práv třetích stran.
+V maximálním rozsahu povoleném platným právem souhlasíte s tím, že uvolníte, budete bránit (dle volby Wink), odškodníte a ochráníte Wink a všechny jeho Poskytovatele ubytování a dceřiné společnosti, jejich vedoucí pracovníky, ředitele, zaměstnance a zástupce před jakýmikoli nároky, odpovědnostmi, škodami, ztrátami a výdaji, včetně přiměřených právních a účetních poplatků, vyplývajícími z (i) vašeho porušení těchto podmínek; (ii) vašeho nesprávného používání Služeb; (iii) vašeho selhání nebo našeho selhání na váš pokyn přesně hlásit, vybírat nebo odvádět daně; nebo (iv) vašeho porušení jakýchkoli zákonů, předpisů nebo práv třetích stran.
 
 **7.2 Maximální odpovědnost**
 
-Není-li v této Smlouvě stanoveno jinak, maximální odpovědnost Strany za všechny nároky uplatněné vůči této Straně druhou Stranou na základě této Smlouvy nebo v souvislosti s ní za rok nepřesáhne celkovou provizi obdrženou nebo zaplacenou touto Stranou v předchozích 6 měsících nebo 10 000 USD (podle toho, která částka je vyšší), s výjimkou případů podvodu nebo úmyslného pochybení Odškodňující Strany, v takovém případě se omezení odpovědnosti na takovou odpovědnou Stranu nevztahuje.
+Pokud není v této smlouvě stanoveno jinak, maximální odpovědnost Strany za všechny nároky vznesené druhou Stranou podle této smlouvy za období jednoho roku nepřesáhne souhrnnou provizi přijatou nebo zaplacenou touto Stranou za předchozích 6 měsíců nebo 10 000 USD (podle toho, která částka je vyšší), s výjimkou podvodu nebo úmyslného pochybení Strany poskytující náhradu škody, kdy omezení odpovědnosti neplatí.
 
 **7.3 Nárok třetí strany**
 
-V případě nároku třetí strany je odškodňovaná strana povinna neprodleně informovat druhou stranu a strany jednají v dobré víře a vynakládají veškeré komerčně přiměřené úsilí ke konzultaci, spolupráci a vzájemné pomoci při obhajobě a/nebo urovnání takového nároku, přičemž odškodňující strana je oprávněna převzít nárok a ujmout se obhajoby a urovnání (po konzultaci a dohodě s odškodňovanou stranou a s řádným respektováním zájmů obou stran) a žádná ze stran neučiní žádné přiznání, nepodá žádné dokumenty, nesouhlasí s vydáním jakéhokoli rozsudku ani neuzavře žádný kompromis nebo urovnání bez předchozího písemného souhlasu druhé strany (který nesmí být bezdůvodně zadržován, odkládán ani podmiňován).
+V případě nároku třetí strany bude poškozená Strana neprodleně informovat druhou Stranu a Strany budou jednat v dobré víře a vynaloží obchodně přiměřené úsilí ke konzultaci, spolupráci a pomoci při obraně a/nebo vyrovnání takového nároku, přičemž Strana poskytující náhradu škody má právo převzít nárok a řídit obranu a vyrovnání (v dohodě s poškozenou Stranou a s ohledem na zájmy obou stran). Žádná Strana nesmí bez předchozího písemného souhlasu druhé Strany (který nesmí být bezdůvodně odepřen, zpožděn nebo podmíněn) činit žádná přiznání, podávat dokumenty, souhlasit s rozsudkem nebo vstupovat do kompromisu či vyrovnání.
 
-**7.4 Zřeknutí se následných škod atd.**
+**7.4 Vzdání se nároků na následné škody**
 
-Žádná ze stran nenese v žádném případě odpovědnost vůči druhé straně za jakoukoli ztrátu výroby, ušlý zisk, ušlý příjem, ztrátu smlouvy, ztrátu nebo poškození dobré pověsti nebo dobré pověsti, ztrátu nároku ani za jakékoli nepřímé, zvláštní, sankční, náhodné nebo následné škody nebo ztráty, ať už jsou tyto škody uváděny v důsledku porušení smlouvy, občanskoprávního deliktu nebo z jiného důvodu. Veškeré takové škody a ztráty se tímto výslovně odmítají.
+Žádná Strana nebude odpovědná druhé Straně za ztrátu výroby, ztrátu zisku, ztrátu příjmů, ztrátu smlouvy, ztrátu nebo poškození dobré pověsti, ztrátu nároku nebo jakékoli nepřímé, zvláštní, trestní, náhodné nebo následné škody či ztráty, ať už jsou tyto škody tvrzeny z důvodu porušení smlouvy, deliktu nebo jinak. Všechny takové škody a ztráty jsou tímto výslovně vyloučeny a odmítnuty.
 
-**7.5 Paušální náhrada škody**
+**7.5 Smluvní pokuty**
 
-Aniž by byla dotčena ustanovení jinde v této Smlouvě, jak Partner, tak Wink souhlasí s tím, že může být neproveditelné a obtížné zjistit výši skutečných škod způsobených podstatným porušením ustanovení o duševním vlastnictví a důvěrnosti uvedených v článcích 4 a 10 této Smlouvy. Strany se proto dohodly, že v případě, že se zjistí, že Partner porušil tato ustanovení, zaplatí Partner společnosti Wink jako paušální náhradu škody dvacet pět tisíc amerických dolarů (25 000 USD) za každé porušení. Partner a Wink se dále dohodly, že toto ustanovení o paušální náhradě škody představuje přiměřenou kompenzaci za počáteční ztrátu, která by společnosti Wink v důsledku takového porušení vznikla. Partner rovněž souhlasí s tím, že nic v tomto ustanovení nemá za cíl omezit právo společnosti Wink na získání soudního zákazu a jiné vhodné nápravy. Toto ustanovení se rovněž nedotýká práva společnosti Wink požadovat dodatečné a/nebo kumulativní náhrady škody za porušení tohoto (v případě, že škoda prokazatelně převyšuje výši paušální náhrady škody) nebo jakéhokoli jiného ustanovení této Smlouvy.
+Bez újmy na ustanovení této smlouvy se obě Strany dohodly, že může být obtížné přesně určit výši skutečné škody způsobené závažným porušením ustanovení o duševním vlastnictví a mlčenlivosti uvedených v článcích 4 a 10 této smlouvy. Proto se Strany dohodly, že v případě prokázaného porušení těchto ustanovení zaplatí Affiliate Wink smluvní pokutu ve výši dvacet pět tisíc amerických dolarů (25 000 USD) za každé porušení. Strany dále souhlasí, že tato smluvní pokuta představuje přiměřenou náhradu za počáteční škodu, kterou by Wink utrpěl v důsledku takového porušení. Affiliate také souhlasí, že nic v tomto ustanovení neomezuje právo Wink na získání předběžného opatření a dalších nápravných prostředků, které mohou být vhodné. Toto ustanovení také neomezuje právo Wink požadovat další a/nebo kumulativní náhrady škody za porušení této nebo jiné části smlouvy (pokud škoda prokazatelně přesahuje výši smluvní pokuty).
 
-8. **Změna, doba trvání a ukončení**
+**8. Změny, doba trvání a ukončení**
 
-**8.1 Modifikace.**
+**8.1 Změny**
 
-S výjimkou případů, kdy platné právní předpisy vyžadují jinak, může společnost Wink tyto Podmínky kdykoli změnit. Pokud provedeme podstatné změny těchto Podmínek, zveřejníme revidované Podmínky na Platformě Wink a aktualizujeme datum „Poslední aktualizace“ v horní části těchto Podmínek. Pokud se vás změna týká, budeme vás o změnách informovat také nejméně třicet (30) dní před datem jejich účinnosti. Pokud svou smlouvu neukončíte před datem účinnosti revidovaných Podmínek, vaše další používání Služeb bude představovat souhlas s veškerými změnami revidovaných Podmínek.
+S výjimkou případů vyžadovaných platným právem může Wink kdykoli změnit tyto Podmínky. Pokud provedeme zásadní změny, zveřejníme upravené Podmínky na platformě Wink a aktualizujeme datum „Naposledy aktualizováno“ v horní části těchto Podmínek. Pokud se vás změny týkají, poskytneme vám oznámení o změnách nejméně třicet (30) dní před jejich účinností. Pokud smlouvu neukončíte před datem účinnosti upravených Podmínek, vaše další používání Služeb bude považováno za souhlas s těmito změnami.
 
-**8.2 Podmínka.**
+**8.2 Doba trvání**
 
-Není-li dohodnuto jinak, tato Smlouva nabývá účinnosti dnem jejího uzavření na dobu neurčitou.
+Pokud není dohodnuto jinak, tato smlouva začíná platit dnem podpisu a platí na dobu neurčitou.
 
-8.3.1 Každá ze stran může tuto Smlouvu kdykoli a z jakéhokoli důvodu vypovědět s okamžitou platností písemným oznámením doručeným druhé straně.
+8.3.1 Každá Strana může tuto smlouvu kdykoli a z jakéhokoli důvodu okamžitě písemně ukončit.
 
-8.3.2 Každá ze stran může tuto Smlouvu vypovědět nebo pozastavit její platnost ve vztahu k druhé straně s okamžitou platností a bez nutnosti oznámení o neplnění povinnosti v případě:\
-(a) podstatné porušení kterékoli podmínky této Smlouvy druhou stranou;\
-(b) (podání žádosti o) konkurz nebo pozastavení plateb (nebo podobné opatření) ve vztahu k druhé straně, nebo\
-(c) (přímá nebo nepřímá) změna kontroly ve vztahu k druhé straně.
+8.3.2 Každá Strana může tuto smlouvu ukončit nebo pozastavit vůči druhé Straně s okamžitou platností bez nutnosti výzvy k nápravě v případě:  
+(a) závažného porušení této smlouvy druhou Stranou;  
+(b) (podání žádosti o) bankrotu nebo pozastavení plateb (nebo podobného opatření) vůči druhé Straně; nebo  
+(c) (přímé nebo nepřímé) změny Kontroly druhé Strany.
 
-8.3.3 Společnost Wink si vyhrazuje právo ukončit tuto Smlouvu bez předchozího upozornění v případě, že v období 6 po sobě jdoucích měsíců nedojde k žádným Uskutečněným transakcím.
+8.3.3 Wink si vyhrazuje právo ukončit tuto smlouvu bez výpovědní lhůty, pokud během 6 po sobě jdoucích měsíců nedojde k žádným realizovaným transakcím.
 
-8.3.4 Po ukončení této Smlouvy bude Wink i nadále vyplácet Partnerovi jakoukoli zbývající Provizi po dobu 3 měsíců od data ukončení, za podmínky, že bude mít Wink během tohoto období správné kontaktní a bankovní údaje Partnera. Pokud Partner do této 3měsíční lhůty neuplatní jakoukoli nezaplacenou Provizi, bude to představovat účinné vzdání se práva Partnera na uplatnění takové Provize. Bez újmy na tom, co je uvedeno jinde v této Smlouvě týkající se snížení, pozastavení nebo propadnutí Provize, propadne jakákoli zbývající Provize v případě, že se Partner dopustil úmyslného pochybení, hrubé nedbalosti, podvodu nebo podstatného porušení této Smlouvy.
+8.3.4 Po ukončení smlouvy bude Wink pokračovat ve vyplácení nevyplacené provize Affiliate po dobu 3 měsíců od data ukončení, za předpokladu, že má Wink správné kontaktní a bankovní údaje Affiliate během této doby. Pokud Affiliate nevyžádá nevyplacenou provizi během této 3měsíční lhůty, ztrácí nárok na tuto provizi. Bez újmy na ustanovení o snížení, pozastavení nebo ztrátě provize bude jakákoli nevyplacená provize ztracena v případě, že Affiliate spáchal úmyslné pochybení, hrubou nedbalost, podvod nebo závažné porušení této smlouvy.
 
-8.3.5 Po ukončení platnosti této Smlouvy a s výjimkou případů, kdy je stanoveno jinak, tato Smlouva zcela a bezvýhradně zaniká a přestává být účinná, aniž by byla dotčena práva a opravné prostředky kterékoli ze Stran v souvislosti s odškodněním nebo porušením této Smlouvy druhou Stranou. Ustanovení 4.1.2, 4.1.5, 4.1.6, 4.1.7, 4.2, 4.3, 4.4.1, 4.9.4(c), 9 a 10 zůstávají v platnosti i po ukončení této Smlouvy.
+8.3.5 Po ukončení smlouvy tato smlouva zcela a úplně zaniká, aniž by byla dotčena práva a nároky Strany týkající se náhrady škody nebo porušení smlouvy druhou Stranou. Články 4.1.2, 4.1.5, 4.1.6, 4.1.7, 4.2, 4.3, 4.4.1, 4.9.4(c), 9 a 10 přežívají ukončení této smlouvy.
 
-8.3.6 Ihned po nabytí účinnosti ukončení odstraní Partner veškeré odkazy na webové stránky Wink, veškerý obsah související s Wink, odkazy, bannery, loga a další odkazy na Wink.
+8.3.6 Ihned po účinnosti ukončení Affiliate odstraní všechny odkazy na Wink Webové stránky, veškerý obsah související s Wink, odkazy, bannery, loga a další zmínky o Wink.
 
-**9. Právo na vedení účetních knih, záznamů a audit**
+**9. Knihy, záznamy a právo na audit**
 
 **9.1 Systémy**
 
-Účetní knihy a záznamy společnosti Wink (včetně extranetu a/nebo e-mailů) budou považovány za nezvratný důkaz, pokud jde o výši Provize splatné Partnerovi podle této Smlouvy.
+Knihy a záznamy Wink (včetně Extranetu a/nebo e-mailů) budou považovány za závazný důkaz o výši provize dlužné Affiliate podle této smlouvy.
 
-**9.2 Práva k auditu**
+**9.2 Práva na audit**
 
-Pokud má společnost Wink v dobré víře důvod se domnívat, že Partner porušil své povinnosti podle článku 4, může společnost Wink provést audit těchto záznamů a účetních knih Partnera za účelem ověření, přezkumu a prošetření (pokud je to relevantní) povinností Partnera podle článku 4 v souladu s následujícím:\
-(a) Strany neprodleně jmenují nezávislého certifikovaného auditora („auditor“), který bude pro obě strany přiměřeně přijatelný a který bude oprávněn provést audit týkající se (způsobu a výpočtu) provize (která má být) vyplacena pobočce/pobočkám.\
-(b) Strany poskytnou auditorovi veškeré informace, údaje, spolupráci, pomoc a přístup k účetním knihám a záznamům, dokumentům, souborům a dokumentům a informacím uloženým elektronicky, které auditor může důvodně požadovat za účelem včasného splnění rozsahu svého úkolu.\
-(c) Auditor poskytne oběma stranám kopii své zprávy („Zpráva“), která bude obsahovat výsledky a zjištění auditu.\
-(d) Audity budou prováděny v pracovní dny během běžné pracovní doby.\
-(e) Wink ponese náklady a výdaje auditora, pokud auditor nerozhodne jinak na základě přiměřenosti a spravedlnosti.
+Pokud má Wink v dobré víře důvod se domnívat, že Affiliate porušil své povinnosti podle článku 4, může provést audit záznamů a účetních knih Affiliate za účelem ověření, přezkoumání a vyšetřování povinností Affiliate podle článku 4, za následujících podmínek:  
+(a) Strany neprodleně jmenují nezávislého certifikovaného auditora („Auditor“), který je rozumně přijatelný pro obě Strany a který bude oprávněn provést audit metody a výpočtu provize vyplácené Sub-Affiliate;  
+(b) Strany poskytnou Auditorovi veškeré informace, data, spolupráci, asistenci a přístup k účetním knihám, dokumentům, souborům a elektronicky uloženým informacím, které Auditor rozumně požaduje k dokončení svého úkolu včas;  
+(c) Auditor poskytne oběma Stranám kopii své zprávy („Zpráva“), která bude obsahovat výsledky a zjištění auditu;  
+(d) Audity budou prováděny ve všední dny během běžné pracovní doby;  
+(e) Náklady na Auditora ponese Wink, pokud Auditor nerozhodne jinak na základě rozumnosti a spravedlnosti.
 
-10. **Protikorupční opatření, obchodní omezení a obchodní etika.**
+**10. Protikorupční opatření, obchodní omezení a etika**
 
-Společnost Wink zaujímá nulovou toleranci k porušování mezinárodních obchodních norem, právních předpisů v oblasti předcházení úplatkářství a korupce a příslušných omezení obchodu, toku finančních prostředků a financování terorismu.\
-Partner zaručuje, že dodržuje a bude dodržovat a jeho Přidružené strany dodržují a budou dodržovat Kodex chování dodavatelů Wink.\
-Partner prohlašuje, zaručuje a zavazuje se, že bude ve všech ohledech dodržovat veškeré mezinárodní obchodní normy, platná omezení obchodu, toku finančních prostředků a financování terorismu a právní předpisy týkající se předcházení úplatkářství a korupce, včetně, ale nikoli výhradně, britského zákona o úplatkářství z roku 2010 a singapurského zákona o předcházení korupci.\
-Přidružená společnost zaručuje, že dle jejího nejlepšího vědomí a svědomí nebyla ani ona, ani její Přidružené strany odsouzena za trestný čin týkající se úplatkářství nebo korupce, ani není předmětem žádného vyšetřování ze strany vládních, správních nebo regulačních orgánů.
+Wink uplatňuje nulovou toleranci vůči porušování mezinárodních obchodních norem, zákonů o prevenci úplatkářství a korupce a platných omezení obchodu, toku finančních prostředků a financování terorismu.  
+Affiliate zaručuje, že dodržuje a bude dodržovat, stejně jako jeho přidružené strany, Kodex chování dodavatelů Wink.  
+Affiliate prohlašuje, zaručuje a zavazuje se, že bude ve všech ohledech dodržovat všechny mezinárodní obchodní normy, platná omezení obchodu, toku finančních prostředků a financování terorismu a zákony o prevenci úplatkářství a korupce, včetně, ale nikoli výlučně, britského zákona o úplatkářství z roku 2010 a singapurského zákona o prevenci korupce.  
+Affiliate zaručuje, že podle jeho nejlepšího vědomí nebyl on ani jeho přidružené strany odsouzeny za trestný čin související s úplatkářstvím nebo korupcí ani nejsou předmětem vyšetřování ze strany vládních, správních nebo regulačních orgánů.
 
-**11. Důvěrnost**
+**11. Mlčenlivost**
 
 **11.1 Důvěrné informace**
 
-Smluvní strany berou na vědomí a souhlasí s tím, že při plnění této Smlouvy může mít každá ze Smluvních stran přístup k důvěrným a citlivým informacím druhé Smluvní strany nebo jim může být přímo či nepřímo vystavena („Důvěrné informace“). Důvěrné informace zahrnují Zákaznické údaje, objem transakcí, marketingové a obchodní plány, obchodní, finanční, technické a provozní informace, statistiky užívání, údaje o hodnocení, informace o sazbách, paritě produktů a dostupnosti, cenové politiky, údaje o konverzích a objemu prokliků a další související statistiky, osobní údaje Hostů, jakýkoli software nebo informace týkající se softwaru poskytovaného nebo používaného společností Wink v souvislosti s touto Smlouvou, podmínky této Smlouvy a další neveřejné informace, které buď zpřístupňovající Smluvní strana označí za soukromé nebo důvěrné, nebo o kterých by přijímající Smluvní strana měla rozumně vědět, že by s nimi mělo být zacházeno jako se soukromými a důvěrnými.
+Strany chápou a souhlasí, že při plnění této smlouvy může každá Strana získat přímý nebo nepřímý přístup k důvěrným a citlivým informacím druhé Strany („Důvěrné informace“). Důvěrné informace zahrnují Data zákazníků, objem transakcí, marketingové a obchodní plány, obchodní, finanční, technické a provozní informace, statistiky využití, data hodnocení, informace o cenové, produktové a dostupnostní paritě, cenové politiky, data konverzí a objemy kliknutí a další související statistiky, osobní údaje hostů, jakýkoli software nebo informace o softwaru poskytovaném nebo používaném Winkem v souvislosti s touto smlouvou, podmínky této smlouvy a další neveřejné informace, které zveřejňující Strana označí jako soukromé nebo důvěrné nebo o kterých přijímající Strana rozumně ví, že by měly být považovány za soukromé a důvěrné.
 
-**11.2 Chraňte a zabezpečujte důvěrné informace**
+**11.2 Ochrana a zabezpečení důvěrných informací**
 
-Každá ze stran souhlasí s tím, že: (a) veškeré důvěrné informace zůstanou výhradním vlastnictvím sdělující strany a přijímající strana nepoužije žádné důvěrné informace k žádnému účelu kromě účelu potřebného k plnění této Smlouvy, (b) bude zachovávat důvěrnost a tajemství důvěrných informací a bude je obezřetně zajišťovat svými zaměstnanci, vedoucími pracovníky, zástupci, smluvními stranami a zástupci („Oprávněné osoby“), (c) bude sdělovat důvěrné informace pouze těm Oprávněným osobám, které tyto informace potřebují znát k plnění této Smlouvy, (d) nebude Oprávněné osoby (i) kopírovat, publikovat, přenášet, reprodukovat, zveřejňovat, zveřejňovat ani zpřístupňovat důvěrné informace třetím stranám, ani (ii) je používat ani ukládat do nechráněného vyhledávacího systému nebo databáze (jinak než v souladu s podmínkami této Smlouvy), a (e) na písemnou žádost druhé strany vrátí nebo zničí všechny (tištěné i elektronické) kopie důvěrných informací. V případě, že kterákoli ze stran zpracovává osobní údaje jménem druhé strany v rámci poskytování služeb podle této smlouvy, upraví strany toto zpracování prostřednictvím smlouvy o zpracování údajů (DPA), která bude tvořit součást podmínek této smlouvy.
+Každá Strana souhlasí, že: (a) všechny Důvěrné informace zůstanou výhradním majetkem zveřejňující Strany a přijímající Strana je nebude používat k jinému účelu než k plnění této smlouvy, (b) bude udržovat a použije rozumné metody, aby zajistila, že její zaměstnanci, zástupci, smluvní strany a agenti („Povolené osoby“) budou udržovat mlčenlivost a tajemství Důvěrných informací, (c) bude Důvěrné informace sdělovat pouze těm Povoleným osobám, které je potřebují znát pro plnění této smlouvy, (d) nebude a zajistí, že Povolené osoby nebudou (i) kopírovat, zveřejňovat, přenášet, reprodukovat, vyzrazovat, zveřejňovat nebo zpřístupňovat Důvěrné informace třetím stranám, ani (ii) používat nebo ukládat Důvěrné informace v nezabezpečeném systému nebo databázi (kromě případů podle této smlouvy), a (e) na písemný požadavek druhé Strany vrátí nebo zničí všechny (tištěné i elektronické) kopie Důvěrných informací. Pokud některá Strana zpracovává osobní údaje jménem druhé Strany v rámci poskytování služeb podle této smlouvy, Strany upraví takové zpracování prostřednictvím smlouvy o zpracování dat (DPA), která bude součástí této smlouvy.
 
 **11.3 Povolené zveřejnění**
 
-Bez ohledu na výše uvedené, Důvěrné informace nezahrnují žádné informace v rozsahu, v jakém (i) jsou nebo se stanou veřejně dostupnými bez jakéhokoli jednání nebo opomenutí ze strany přijímající strany, (ii) byly přijímající stranou v držení před datem této Smlouvy, (iii) jsou přijímající straně sděleny třetí stranou, která nemá povinnost mlčenlivosti ohledně těchto informací, nebo (iv) je jejich sdělení vyžadováno na základě zákona, soudního příkazu, předvolání nebo vládní autority. Společnost Wink je oprávněna zveřejnit tuto Smlouvu důvěrně svým přidruženým společnostem.
+Důvěrné informace nezahrnují informace, které (i) se stanou veřejně dostupnými bez porušení této smlouvy přijímající Stranou, (ii) byly přijímající Stranou vlastněny před datem této smlouvy, (iii) jsou zveřejněny třetí stranou bez povinnosti mlčenlivosti, nebo (iv) jsou vyžadovány k zveřejnění zákonem, soudním příkazem, předvoláním nebo vládním orgánem. Wink je oprávněn důvěrně sdílet tuto smlouvu se svými přidruženými společnostmi.
 
-**11.4 Údaje o zákaznících**
+**11.4 Data zákazníků**
 
-Strany vynaloží komerčně přiměřené úsilí k ochraně důvěrnosti a soukromí zákaznických dat a k jejich ochraně před neoprávněným použitím nebo zveřejněním. Strany se dohodly, že budou dodržovat platné zákony o zpracování osobních údajů a ochraně soukromí. Strany budou vždy používat přiměřená a vhodná bezpečnostní opatření, aby zabránily poškození a neoprávněnému přístupu k zákaznickým datům. Taková opatření budou mimo jiné zahrnovat šifrování dat a šifrování kanálů. V případě potřeby musí Partner co nejdříve informovat společnost Wink o jakémkoli narušení bezpečnosti (nejpozději do 1 dne od zjištění narušení). Každá Strana bude mít pro zákazníky přístupné zásady ochrany osobních údajů, které popisují způsob, jakým chrání a používá zákaznická data.
+Strany vynaloží obchodně přiměřené úsilí k ochraně důvěrnosti a soukromí Dat zákazníků a k ochraně před neoprávněným použitím nebo zveřejněním. Strany souhlasí s dodržováním platných zákonů o zpracování osobních údajů a ochraně soukromí. Strany budou vždy používat rozumná a vhodná bezpečnostní opatření k zabránění poškození a neoprávněnému přístupu k Datům zákazníků, včetně šifrování dat a šifrování přenosu. V případě bezpečnostního narušení musí Affiliate Wink neprodleně informovat (nejpozději do 1 dne od zjištění). Každá Strana musí mít zásady ochrany osobních údajů přístupné zákazníkům, které popisují způsob ochrany a používání Dat zákazníků.
 
 **11.5 Oznámení**
 
-Žádná ze stran nesmí vytvářet, publikovat, distribuovat ani povolovat jakékoli písemné materiály, které odkazují na druhou stranu, aniž by tyto materiály nejprve předložila druhé straně a nezískala předchozí písemný souhlas strany, která je nepředává. Tento souhlas nesmí být bezdůvodně odepřen ani odkládán.
+Žádná Strana nesmí vytvářet, zveřejňovat nebo distribuovat materiály, které odkazují na druhou Stranu, bez předchozího písemného souhlasu druhé Strany. Tento souhlas nesmí být bezdůvodně odepřen nebo zpožděn.
 
-11.6 Každá ze stran může kontaktovat pověřence pro ochranu osobních údajů (DPO) druhé strany prostřednictvím následující e-mailové a/nebo poštovní adresy: dataprotectionofficer@Wink.travel
+11.6 Každá Strana může kontaktovat pověřence pro ochranu osobních údajů druhé Strany (DPO) na e-mailové adrese: dataprotectionofficer@Wink.travel
 
-12. **Oprávnění k podpisu – Zastoupení a podpis přidružené společnosti.**
+**12. Oprávnění k podpisu – prohlášení a podpis Affiliate**
 
-Partner zaručuje, že on, osoba podepisující tuto Smlouvu a/nebo jakákoli jiná osoba poskytující informace (včetně, pro vyloučení pochybností, jakýchkoli Platebních podmínek) společnosti Wink v souvislosti s touto Smlouvou nebo na základě ní má oprávnění, způsobilost a potřebnou pravomoc k podpisu této Smlouvy a že tato osoba má oprávnění, způsobilost a potřebnou pravomoc zavázat Partnera k této Smlouvě a že po celou dobu platnosti bude dodržovat, plnit a zajistí, aby Partner dodržoval a plnil své povinnosti vyplývající z této Smlouvy.\
-Partner výslovně souhlasí s tím, že elektronické přijetí této Smlouvy a jejích Obchodních podmínek, včetně těch, které se týkají úprav, je platné, závazné a vymahatelné.
+Affiliate zaručuje, že on, osoba podepisující tuto smlouvu a/nebo jakákoli jiná osoba poskytující informace (včetně, pro vyloučení pochybností, platebních podmínek) Wink v souvislosti s touto smlouvou má oprávnění, způsobilost a potřebnou moc tuto smlouvu podepsat a že tato osoba má oprávnění, způsobilost a moc zavázat Affiliate touto smlouvou a že po celou dobu platnosti smlouvy bude dodržovat a plnit své povinnosti podle této smlouvy.  
+Affiliate výslovně souhlasí, že elektronické přijetí této smlouvy a jejích podmínek, včetně těch týkajících se změn, je platné, závazné a vymahatelné.
 
-13. **Jazyk**
+**13. Jazyk**
 
-Anglická verze této Smlouvy je ve všech ohledech rozhodující a má přednost v případě jakýchkoli nesrovnalostí s přeloženými verzemi, pokud existují.
+Anglická verze této smlouvy je rozhodující ve všech ohledech a má přednost v případě jakýchkoli nesrovnalostí s překlady.
 
-14. **Výjimky**
+**14. Vzdání se práv**
 
-Žádné zřeknutí se jakéhokoli porušení nebo podmínky této Smlouvy nebude považováno za zřeknutí se jakéhokoli jiného nebo následného porušení nebo podmínky, ať už podobné nebo odlišné povahy.
+Žádné vzdání se porušení nebo podmínky této smlouvy nebude považováno za vzdání se jakéhokoli jiného nebo následného porušení nebo podmínky, ať už stejného nebo odlišného charakteru.
 
 **15. Oddělitelnost**
 
-Pokud je jakékoli ustanovení této Smlouvy shledáno orgánem činným v trestním řízení, soudem nebo tribunálem příslušné jurisdikce jako nezákonné, neplatné nebo jinak nevymahatelné podle národních zákonů, bude takové ustanovení vykládáno, upraveno nebo odstraněno v rozsahu nezbytném k tomu, aby se toto ustanovení a/nebo tato Smlouva staly legálními, platnými nebo jinak vymahatelnými, a zbývající část takového ustanovení a zbývající ostatní ustanovení této Smlouvy zůstanou v platnosti, zůstanou v plné platnosti a účinnosti a budou i nadále závazná a budou vykládána tak, aby v co největší míře naplňovala záměr Stran.
+Pokud jakékoli ustanovení této smlouvy bude shledáno nezákonným, neplatným nebo jinak nevynutitelným příslušným orgánem, soudem nebo tribunálem, bude toto ustanovení vykládáno, upraveno nebo odstraněno v nezbytném rozsahu tak, aby bylo zákonné, platné a vynutitelné, a zbytek ustanovení této smlouvy zůstane v plné platnosti a účinnosti a bude vykládán tak, aby co nejvíce odpovídal záměru Stran.
 
-**16. Vztah stran**
+**16. Vztah Stran**
 
-Strany jsou a budou při plnění této Smlouvy jednat jako nezávislí dodavatelé. Žádná ze stran nebude jednat jako zástupce nebo partner druhé strany ani nebude považována za takového zástupce pro jakýkoli účel, ani žádná ze stran nebude oprávněna druhou stranu jakkoli zavazovat.
+Strany jsou a budou jednat jako nezávislí dodavatelé při plnění této smlouvy. Žádná Strana nebude jednat jako zástupce nebo partner druhé Strany a nebude mít oprávnění zavazovat druhou Stranu.
 
-**17. Úkol**
+**17. Postoupení**
 
-Žádná ze stran není oprávněna postoupit, převést ani zatížit žádná ze svých práv a/nebo povinností vyplývajících z této Smlouvy bez předchozího písemného souhlasu druhé strany, za předpokladu, že Wink může postoupit, převést nebo zatížit kterákoli ze svých práv a/nebo povinností vyplývajících z této Smlouvy (zcela nebo zčásti nebo čas od času) přidružené společnosti bez předchozího písemného souhlasu Přidružené společnosti.\
-Tato Smlouva je uzavřena ve prospěch Stran a jejich příslušných nástupců a povolených postupníků a nic v ní uvedené nemá za cíl ani implicitně neuděluje žádné jiné osobě jakékoli zákonné nebo spravedlivé právo, výhodu nebo nápravu jakékoli povahy na základě této Smlouvy nebo z jejího důvodu, s výjimkou případů, kdy je v této Smlouvě výslovně uvedeno jinak.
+Žádná Strana nesmí postoupit, převést nebo zatížit svá práva a/nebo povinnosti podle této smlouvy bez předchozího písemného souhlasu druhé Strany, s výjimkou, že Wink může postoupit, převést nebo zatížit svá práva a/nebo povinnosti (zčásti nebo zcela) přidružené společnosti bez souhlasu Affiliate.  
+Tato smlouva je uzavřena ve prospěch Stran a jejich nástupců a oprávněných nabyvatelů a nic v ní není zamýšleno ani nesmí být vykládáno jako udělení práv třetím osobám.
 
-18. **Vyšší moc.**
+**18. Vyšší moc**
 
-Společnost Wink.travel nenese odpovědnost za žádné zpoždění nebo neplnění jakékoli povinnosti vyplývající z těchto Podmínek vyplývající z příčin mimo přiměřenou kontrolu společnosti Wink nebo Wink Payments, včetně, ale nikoli výhradně, vyšší moci, přírodních katastrof, války, terorismu, nepokojů, embarg, činů civilních nebo vojenských orgánů, požárů, povodní, nehod, pandemií, epidemií nebo nemocí, stávek nebo nedostatku dopravních prostředků, paliva, energie, pracovních sil nebo materiálů („**Událost vyšší moci**„“).
+Wink.travel nenese odpovědnost za jakékoli zpoždění nebo nesplnění povinností podle těchto Podmínek způsobené okolnostmi mimo přiměřenou kontrolu Wink nebo Wink Payments, včetně, ale nikoli výlučně, přírodních katastrof, válek, terorismu, nepokojů, embarg, zásahů státních orgánů, požárů, povodní, nehod, pandemií, stávky nebo nedostatku dopravy, paliva, energie, pracovní síly nebo materiálů („**Událost vyšší moci**“).
 
-19. **Rozhodné právo a jurisdikce**
+**19. Rozhodné právo a jurisdikce**
 
-Tato Smlouva se řídí a vykládá výhradně v souladu s právními předpisy Singapuru. Na tuto Smlouvu se nevztahuje zákon o smlouvách (práva třetích stran) z roku 2001 (kapitola 53B). Strany se v každém případě pokusí urovnat své spory smírnou cestou mimosoudně, a to nejprve vedením jednání a jednání v dobré víře.\
-Veškeré spory vyplývající z této smlouvy nebo v souvislosti s ní budou výhradně předloženy a projednány příslušnému soudu v Singapuru, bez ohledu na kolizní normy.\
-neodvolatelně se vzdát jakéhokoli práva, které by mohlo mít, vznést námitku proti žalobě podané u takových soudů, tvrdit, že žaloba byla podána u nevhodného fóra, nebo tvrdit, že takové soudy nemají jurisdikci.
+Tato smlouva se výlučně řídí a vykládá podle zákonů Singapuru. Zákon o smlouvách (práva třetích stran) z roku 2001 (Cap 53B) se na tuto smlouvu nevztahuje. Strany se v každém případě pokusí vyřešit spory smírnou cestou mimo soud prostřednictvím jednání v dobré víře.  
+Veškeré spory vyplývající z této smlouvy nebo v souvislosti s ní budou výlučně řešeny příslušným soudem v Singapuru bez ohledu na kolizní normy.  
+Strany neodvolatelně vzdávají práva vznést námitku proti vedení řízení u těchto soudů, námitky nepříhodného místa řízení nebo námitky nepříslušnosti těchto soudů.
 
-20. **Protějšky.**
+**20. Vyhotovení**
 
-Tato Smlouva může být vyhotovena ve více stejnopisech, z nichž každý (po podepsání) bude považován za originál a které dohromady budou tvořit jednu a tutéž listinu. Kromě toho bude mít jakákoli naskenovaná/elektronická kopie písemného podpisu společnosti Wink stejnou a rovnocennou platnost jako originální vlastnoruční podpis společnosti Wink a nebude mít vliv na platnost této Smlouvy.
+Tato smlouva může být podepsána ve více vyhotoveních, z nichž každé (po podpisu) bude považováno za originál a společně tvoří jeden a tentýž dokument. Dále jakákoli naskenovaná nebo elektronická kopie podpisu Wink má stejnou platnost jako originální ručně psaný podpis a neovlivňuje platnost této smlouvy.
 
-21. **Celá smlouva**
+**21. Celá smlouva**
 
-Tato Smlouva (včetně Registračního formuláře pro partnery, harmonogramů, příloh a dodatků, které tvoří nedílnou součást této Smlouvy) představuje úplnou dohodu a porozumění stran ohledně jejího předmětu a nahrazuje a ruší všechny předchozí dohody, ujednání, ((ne)závazné) nabídky, závazky nebo prohlášení týkající se tohoto předmětu.\
-Pokud je jakékoli ustanovení této Smlouvy neplatné nebo nezávazné nebo se takovým stane, zůstávají Strany vázány všemi ostatními ustanoveními této Smlouvy. V takovém případě Strany nahradí neplatné nebo nezávazné ustanovení ustanoveními, která jsou platná a závazná a která mají v co největší míře podobný účinek jako neplatné nebo nezávazné ustanovení, s ohledem na obsah a účel této Smlouvy.
+Tato smlouva (včetně Registračního formuláře affiliate partnera, příloh a dodatků, které jsou její nedílnou součástí) představuje úplnou dohodu a porozumění Stran ohledně jejího předmětu a nahrazuje všechny předchozí dohody, ujednání, (ne)závazné nabídky, závazky nebo prohlášení týkající se tohoto předmětu.  
+Pokud se některé ustanovení této smlouvy stane neplatným nebo nevynutitelným, Strany zůstanou vázány všemi ostatními ustanoveními. V takovém případě Strany nahradí neplatné nebo nevynutitelné ustanovení platným a závazným ustanovením, které bude mít co nejpodobnější účinek vzhledem k obsahu a účelu této smlouvy.
 
-22. **Provedení**
+**22. Uzavření**
 
-Smlouva nabývá platnosti a účinnosti až po písemném potvrzení přijetí a schválení Partnera společností Wink. Registrací a přihlášením do partnerského programu Wink jako affiliate partner Partner souhlasí s podmínkami této Smlouvy, včetně ustanovení týkajících se změn této Smlouvy, potvrzuje, že je bere na vědomí a přijímá.\
-Smlouva byla přečtena a všechny podmínky byly partnerem odsouhlaseny. Partner bere na vědomí, že Wink může kdykoli (přímo či nepřímo) získávat doporučení zákazníků za podmínek, které se mohou lišit od podmínek obsažených v této smlouvě, nebo provozovat webové stránky, které jsou podobné webovým stránkám partnera nebo jim konkurují. Partner nezávisle posoudil vhodnost účasti v programu a nespoléhá se na žádné jiné prohlášení, záruku ani prohlášení, než jaké jsou uvedeny v této smlouvě. Partner výslovně souhlasí s tím, že elektronické přijetí této smlouvy a jejích podmínek, včetně těch, které se týkají úprav, je platné, závazné a vymahatelné.
+Smlouva vstupuje v platnost a účinnost až po písemném potvrzení přijetí a schválení Affiliate společností Wink. Registrací a přihlášením do partnerského programu Wink jako affiliate partner, Affiliate souhlasí, uznává a přijímá podmínky této smlouvy, včetně ustanovení týkajících se změn této smlouvy.  
+Affiliate potvrdil, že smlouvu přečetl a souhlasí se všemi jejími podmínkami. Affiliate rozumí, že Wink může kdykoli (přímo nebo nepřímo) získávat doporučení zákazníků za podmínek, které se mohou lišit od těch v této smlouvě, nebo provozovat webové stránky podobné nebo konkurující webu Affiliate. Affiliate nezávisle zhodnotil vhodnost účasti v programu a nespoléhá na žádná jiná prohlášení, záruky nebo tvrzení než ta uvedená v této smlouvě. Affiliate výslovně souhlasí, že elektronické přijetí této smlouvy a jejích podmínek, včetně změn, je platné, závazné a vymahatelné.
 
-23. **Oznámení**
+**23. Oznámení**
 
-Veškerá oznámení Strany podle této Smlouvy musí být v angličtině, písemně a doručena osobně, předplacenou doporučenou poštou nebo mezinárodně uznávanou expresní kurýrní službou (např. FedEx, UPS, DHL) do sídla společnosti nebo e-mailem kontaktní osobě.\
-Jakékoli oznámení podle této Smlouvy se považuje za doručené (i) pokud je doručeno osobně, po podpisu potvrzení o doručení, nebo (ii) pokud je doručeno předplacenou doporučenou poštou, po potvrzení o doručení; nebo (iii) pokud je doručeno expresní kurýrní službou, po datu doručení zaznamenaném tímto kurýrem, (iv) pokud je doručeno e-mailem, za předpokladu, že je předloženo potvrzení o doručení.
-
+Veškerá oznámení podle této smlouvy musí být v angličtině, písemná a doručena osobně, doporučenou a registrovanou poštou nebo mezinárodně uznávanou expresní kurýrní službou (např. FedEx, UPS, DHL) na sídlo nebo e-mailem kontaktní osobě.  
+Oznámení se považuje za doručené (i) při osobním doručení podpisem potvrzení o převzetí, (ii) při doporučené poště na základě dokladu o doručení, (iii) při expresní kurýrní službě na základě zaznamenaného data doručení, (iv) při e-mailu po potvrzení přijetí.

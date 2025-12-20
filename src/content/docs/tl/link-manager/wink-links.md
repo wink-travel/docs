@@ -1,67 +1,65 @@
 ---
 title: WinkLinks
-description: >-
-  Sa artikulong ito, ipinapaliwanag namin kung ano ang isang link manager at
-  kung ano ang magagawa ng aming link manager.
+description: Sa artikulong ito, ipinaliwanag namin kung ano ang link manager at kung ano ang kaya ng aming link manager.
 sidebar:
   order: 0
 ---
-Hinahayaan ka ng manager ng link na i-save at ayusin ang mga URL na gusto mo para sa ibang pagkakataon. Ang iyong mga bookmark sa browser ay isang halimbawa ng isang link manager. Sa pagdating ng social media, nagkaroon ng mas malaking pangangailangan para sa paglalantad at paggawa ng mga link na magagamit sa iyong mga kaibigan at madla. Ang iyong Facebook feed ay isang halimbawa ng isang social-friendly na link manager.
 
-:::ingat
-Karamihan sa mga tagapamahala ng link ay nangangailangan ng isang subscription para sa sinumang nagpo-post ng mga link na kaakibat.
+Ang link manager ay nagpapahintulot sa iyo na mag-save at mag-organisa ng mga URL na gusto mo para sa susunod. Ang iyong browser bookmarks ay isang halimbawa ng link manager. Sa pag-usbong ng social media, dumami ang pangangailangan na maipakita at magamit ang mga link para sa iyong mga kaibigan at audience. Ang iyong Facebook feed ay isang halimbawa ng social-friendly na link manager.
+
+:::caution
+Karamihan sa mga link manager ay nangangailangan ng subscription para sa sinumang nagpo-post ng affiliate links. 
 :::
 
-Nagtayo kami [WinkLinks](https://i.trvl.as/) ; isang ganap na libreng tagapamahala ng link, na nakatuon sa espasyo sa paglalakbay, upang pasiglahin, mag-advertise at magbenta nang epektibo online.
+Nilikha namin ang [WinkLinks](https://i.trvl.as/); isang ganap na libreng link manager, na nakatuon sa travel space, upang magbigay-sigla, mag-advertise, at magbenta nang epektibo online.
 
-## Mga tampok
+## Mga Tampok
 
-* Hinahayaan ka ng WinkLinks na idagdag ang lahat ng iyong umiiral nang affiliate na link, tulad ng Commission Junction at Amazon, nang libre.
-* Makakakuha ka ng cool na vanity url, gaya ng <https://i.trvl.as/bob>, para sa mga oras na maaari ka lamang magbahagi ng isang URL.
-* Maaari kang mag-ayos at magbahagi ng mga link at mag-upload ng mga file.
-* Maaaring gamitin ng mga hotel, chain, at brand ang WinkLinks bilang advanced booking engine:
-  * Sinusuportahan ang maramihang mga katangian.
-  * Sinusuportahan ang maramihang mga destinasyon.
-  * Sinusuportahan ang maramihang mga pera.
-  * Sinusuportahan ang maramihang mga wika.
-* Sinusuportahan ng WinkLinks `rich content` *(tingnan sa ibaba)*.
-* Pumunta mula sa IG upang mag-book sa loob lamang ng 2 pag-click 🚀
+- Pinapayagan ka ng WinkLinks na idagdag ang lahat ng iyong umiiral na affiliate links, tulad ng Commission Junction at Amazon, nang libre.
+- Makakakuha ka ng cool na vanity url, tulad ng [https://i.trvl.as/bob](https://i.trvl.as/bob), para sa mga pagkakataon na maaari ka lamang magbahagi ng isang URL.
+- Maaari mong i-organisa at ibahagi ang mga link at mag-upload ng mga file.
+- Maaaring gamitin ng mga hotel, chain, at brand ang WinkLinks bilang advanced booking engine:
+    - Sumusuporta sa maraming properties.
+    - Sumusuporta sa maraming destinasyon.
+    - Sumusuporta sa maraming pera.
+    - Sumusuporta sa maraming wika.
+- Sinusuportahan ng WinkLinks ang `rich content` *(tingnan sa ibaba)*.
+- Mula IG hanggang booking sa loob lamang ng 2 click 🚀
 
-## Mayaman na nilalaman
+## Rich content
 
-:::tandaan
-Itakda `Intelligent` sa 🟢 sa iyong [Mga setting](/link-manager/settings) para gamitin ang feature na ito.
+:::note
+Itakda ang `Intelligent` sa 🟢 sa iyong [Settings](/tl/link-manager/settings) upang magamit ang tampok na ito.
 :::
 
-Kung nagbabahagi ka ng link mula sa isang site na sumusuporta `rich` / `oEmbed` content, nabubuhay ang iyong link sa WinkLinks.
+Kung magbabahagi ka ng link mula sa isang site na sumusuporta sa `rich` / `oEmbed` content, magiging buhay ang iyong link sa WinkLinks.
 
-Mga sinusuportahang site:
+Mga suportadong site:
 
-* Facebook - *Makipag-ugnayan sa post at mag-play ng video*.
-* Instagram - *Makipag-ugnayan sa post at mag-play ng video*.
-* YouTube - *Mag-play ng video*.
-* X (dating Twitter) - *Makipag-ugnayan sa isang post*.
-* Spotify - *I-play ang iyong mga paboritong playlist*.
-* Wink - *Tingnan mo `Advanced`*.
+- Facebook - *Makipag-ugnayan sa post at panoorin ang video*.
+- Instagram - *Makipag-ugnayan sa post at panoorin ang video*.
+- YouTube - *Panoorin ang video*.
+- X (dating Twitter) - *Makipag-ugnayan sa post*.
+- Spotify - *Pakinggan ang iyong mga paboritong playlist*.
+- Wink - *Tingnan ang `Advanced`*.
 
 ## Advanced
 
-Ang WinkLinks ay isa ring mahusay na paraan upang ilantad ang imbentaryo ng paglalakbay na iyong natagpuan, sa pamamagitan ng [Wink Studio](https://studio.wink.travel), at gusto mong ibenta sa iyong audience.
+Ang WinkLinks ay isang mahusay ding paraan upang ipakita ang travel inventory na nahanap mo, sa pamamagitan ng [Wink Studio](https://studio.wink.travel), at nais mong ibenta sa iyong audience.
 
-Gamitin ang WinkLinks para ibenta ang iyong:
+Gamitin ang WinkLinks upang ibenta ang iyong:
 
-* [Mga naibabahaging link](/studio/shareable-links) - Piliin upang ipakita bilang:
-  * [Banner ng ad](/developers/web-components/#content-loader).
-  * Normal na link na may realtime na mga update sa pagpepresyo.
-* [Mga kard](/studio/cards) - Mga nabu-book na card na may realtime na pagpepresyo at availability.
-* [Mga grid](/studio/grids) - Grid na may mga mai-book na card.
-* [Mga mapa](/studio/maps) - Mapa na may mga marker na nagbubukas sa mga mai-book na card.
+- [Shareable links](/tl/studio/shareable-links) - Piliin kung paano ipapakita:
+    - [Ad banner](/tl/developers/web-components/#content-loader).
+    - Normal na link na may realtime pricing updates.
+- [Cards](/tl/studio/cards) - Mga bookable card na may realtime pricing at availability.
+- [Grids](/tl/studio/grids) - Grid na may mga bookable card.
+- [Maps](/tl/studio/maps) - Mapa na may mga marker na nagbubukas ng mga bookable card.
 
-:::tandaan
-Upang pamahalaan ang iyong WinkLinks account, mag-log in sa iyong affiliate account sa [Wink Studio](https://studio.wink.travel).
+:::note
+Para pamahalaan ang iyong WinkLinks account, mag-login sa iyong affiliate account sa [Wink Studio](https://studio.wink.travel).
 :::
 
 :::tip
-Upang makita ang isang account na gumagana, tingnan ang Bjorn's, ang aming co-founder, WinkLinks account: <https://i.trvl.as/bjorn>.
+Para makita ang isang account na ginagamit, tingnan ang account ni Bjorn, ang aming co-founder, sa WinkLinks: [https://i.trvl.as/bjorn](https://i.trvl.as/bjorn).
 :::
-

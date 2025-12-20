@@ -1,26 +1,24 @@
 ---
 title: Czym jest Extranet?
-description: >-
-  W tym artykule znajdziesz wszystkie informacje, które musisz znać, aby
-  rozpocząć korzystanie z serwisu Wink jako hotel.
+description: Ten artykuł przeprowadzi Cię przez to, co musisz wiedzieć, aby zacząć korzystać z Wink jako hotel.
 sidebar:
   order: 0
 ---
-[Okienko Extranet](https://extranet.wink.travel) jest naszym portalem nieruchomości. Jest przeznaczony dla hoteli, sieci, marek i firm zarządzających hotelami, aby tworzyć i zarządzać cyfrowym profilem swoich nieruchomości na platformie Wink.
 
-Nasz Extranet został starannie zaprojektowany, aby był możliwie najprostszy, ale nadal obsługiwał wszystkie funkcje, których zaawansowani użytkownicy oczekują od zaawansowanego portalu nieruchomości. Aby podać kilka przykładów:
+[Wink Extranet](https://extranet.wink.travel) to nasz portal dla obiektów. Jest przeznaczony dla hoteli, sieci, marek i firm zarządzających hotelami, aby tworzyć i zarządzać cyfrowym profilem swoich obiektów na platformie Wink.
 
-1. Prostota: Skorzystaj z naszego inteligentnego procesu wdrażania, aby wdrożyć swoją nieruchomość i uruchomić ją NA ŻYWO w mniej niż godzinę.
-2. Zaawansowane: Wink obsługuje 8500 różnych wariantów zasad anulowania
-3. Fajnie: Zaoferuj jednej osobie na Ziemi 10% zniżki bez konieczności logowania się lub wpisywania kodu promocyjnego.
+Nasz Extranet został starannie zaprojektowany tak, aby był jak najprostszy, a jednocześnie wspierał wszystkie funkcje, których zaawansowani użytkownicy oczekują od zaawansowanego portalu obiektów. Aby podać kilka przykładów:
 
-Pozwól naszym czarodziejom przeprowadzić Cię przez cały proces. Kiedy poczujesz się wystarczająco komfortowo... zrób to sam.
+1. Prostota: Skorzystaj z naszego inteligentnego procesu onboardingu, aby wprowadzić swój obiekt i uruchomić go w mniej niż godzinę.
+2. Zaawansowanie: Wink obsługuje 8500 różnych wariantów polityk anulowania rezerwacji.
+3. Fajne: Przyznaj jednej osobie na świecie 10% zniżki bez konieczności logowania się lub wpisywania kodu promocyjnego.
 
-Wink to zaawansowany system zarządzania treścią dla dostawców nieruchomości i doświadczeń. Wszystko, co możesz zrobić w jednej z naszych aplikacji, możesz zrobić za pośrednictwem API. Pozwala to na głęboką integrację z Wink do takiego stopnia, że możesz sprzedawać za pośrednictwem Wink bez konieczności logowania się do żadnej z naszych aplikacji.
+Niech nasi przewodnicy przeprowadzą Cię przez cały proces. Gdy poczujesz się na siłach... działaj samodzielnie.
 
-:::tip\[Pro Tip]
-Czy płacisz za drogi hosting zasobów multimedialnych przez Leonardo International? Możesz zrobić dokładnie to samo przez Wink ORAZ masz o wiele więcej opcji manipulowania i dostrajania obrazów i filmów.
+Wink to zaawansowany system zarządzania treścią dla obiektów i dostawców doświadczeń. Wszystko, co możesz zrobić w jednej z naszych aplikacji, możesz zrobić również przez API. Pozwala to na głęboką integrację z Wink do tego stopnia, że możesz sprzedawać przez Wink, nie logując się nigdy do żadnej z naszych aplikacji.
+
+:::tip[Pro Tip]
+Czy płacisz za drogie hostowanie zasobów multimedialnych przez Leonardo International? Możesz zrobić dokładnie to samo przez Wink I zyskujesz wiele więcej opcji manipulacji i precyzyjnej regulacji swoich zdjęć i filmów.
 :::
 
-Wszystkie te funkcje są dla Ciebie bezpłatne. Tylko gdy dokonasz rezerwacji, pobieramy niewielką opłatę. Nic do stracenia - wszystko do zyskania.
-
+Wszystkie te funkcje są dostępne bez żadnych kosztów dla Ciebie. Opłatę pobieramy tylko wtedy, gdy dokonasz rezerwacji. Nic do stracenia - wszystko do zyskania.

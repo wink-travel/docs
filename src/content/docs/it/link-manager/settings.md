@@ -1,30 +1,28 @@
 ---
-title: Settings
-description: >-
-  In questo articolo ti spieghiamo come personalizzare la tua pagina WinkLinks
-  utilizzando le funzionalità disponibili nelle impostazioni.
+title: Impostazioni
+description: In questo articolo, ti spieghiamo come personalizzare la tua pagina WinkLinks utilizzando le funzionalità disponibili nelle impostazioni.
 sidebar:
   order: 4
 ---
-Per gestire le impostazioni di WinkLinks, vai a`WinkLinks`nella barra di navigazione principale e fare clic su`Settings`scheda.
 
-Ecco i modi in cui puoi configurare il comportamento di WinkLinks con`Settings`:
+Per gestire le impostazioni di WinkLinks, vai su `WinkLinks` nella barra di navigazione principale e clicca sulla scheda `Impostazioni`.
 
-* **Intelligente**Abilitando l'intelligenza, cerchiamo di recuperare l'`rich`contenuti disponibili da siti come,`Wink`,`Spotify`,`Instagram`,`Facebook`,`YouTube`,`X (formerly Twitter)`e altri.*Ad esempio, se condividi un post IG su WinkLinks, il post verrà visualizzato così come lo vedi su IG, con Mi piace, commenti e un modo per interagire con il post.*
-* **Visualizzazione iniziale**Controlla il modo in cui il tuo pubblico interagisce per la prima volta con il tuo sito e vede i tuoi contenuti. Hai tre opzioni a disposizione:
-  * `Column-based`Design. Questo è il nostro design preferito e se non mostri troppi contenuti, avrà un bell'aspetto sulla tua pagina. Tuttavia, può risultare`heavy`se condividi molti contenuti interessanti.
-  * `Row-based`design. Questo è un modo per rendere i tuoi contenuti un po' meno pesanti da leggere per i browser, ma ti consigliamo di usare una quantità di testo simile per far sì che le schede si allineino meglio.
-  * `List-based`Design. La maggior parte degli altri gestori di link mostra un elenco semplice con un URL e contenuti minimi. Scegli questo modo di visualizzare i tuoi contenuti se hai molti contenuti e vuoi visualizzarli il più rapidamente possibile.
-* **Immagine del profilo**In cima a ogni pagina di WinkLinks trovi l'immagine del tuo profilo e la relativa descrizione. Puoi visualizzare l'immagine del tuo profilo in due modi:
-  * `Circle`Ti consigliamo di usare uno stile circolare se la tua foto ritrae te stesso o qualsiasi altra cosa che possa entrare in un contenitore rotondo.
-  * `Rectangle`Ti consigliamo di utilizzare un tipo di carattere rettangolare se il logo della tua azienda è l'immagine del tuo profilo, poiché la maggior parte dei loghi aziendali sono di forma rettangolare.
-* **Personalizzazione**Scegli la personalizzazione che desideri utilizzare per la tua pagina WinkLinks. Questa impostazione influisce sui colori del tema e sull'itinerario quando visualizzi schede inventario, mappe o griglie Wink.
+Ecco i modi in cui puoi configurare il comportamento di WinkLinks con le `Impostazioni`:
+
+- **Intelligente** Abilitando l’intelligenza, cerchiamo di recuperare i contenuti `ricchi` disponibili da siti come `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (ex Twitter)` e altri. *es. Se condividi un post IG su WinkLinks, il post verrà mostrato come lo vedi su IG, con like, commenti e un modo per interagire con il post.*
+- **Visualizzazione iniziale** Controlla come il tuo pubblico interagisce inizialmente con il tuo sito e vede i tuoi contenuti. Hai tre opzioni disponibili:
+    - Design `a colonne`. Questo è il nostro design preferito e se non mostri troppi contenuti, apparirà ottimo sulla tua pagina. Tuttavia, può diventare `pesante` se condividi molti contenuti ricchi.
+    - Design `a righe`. Questo è un modo per rendere i tuoi contenuti un po’ meno pesanti da caricare per i browser, ma consigliamo che i tuoi contenuti abbiano una quantità simile di testo per far allineare meglio le schede.
+    - Design `a lista`. La maggior parte degli altri gestori di link mostra una semplice lista con un URL e contenuti minimi. Scegli questo modo di mostrare i tuoi contenuti se ne hai molti e vuoi visualizzarli il più rapidamente possibile.
+- **Immagine del profilo** In cima a ogni pagina WinkLinks c’è l’immagine del profilo del tuo account insieme alla descrizione dell’account. Puoi mostrare la tua immagine del profilo in due modi:
+    - `Cerchio` Consigliamo uno stile circolare se la tua immagine è di te stesso o di qualsiasi altra cosa che si adatti a un contenitore rotondo.
+    - `Rettangolo` Consigliamo uno stile rettangolare se il logo della tua azienda è la tua immagine del profilo, dato che la maggior parte dei loghi aziendali ha forma rettangolare.
+- **Personalizzazione** Scegli quale personalizzazione vuoi usare per la tua pagina WinkLinks. Questo influisce sui colori del tema così come sull’itinerario quando mostri schede di inventario Wink, mappe o griglie.
 
 ## API
 
-Sviluppatori che vogliono gestire`WinkLinks`puoi andare a[Sviluppatori > API > WinkLinks](/developers/apis/#winklinks-api).
+Gli sviluppatori che vogliono gestire `WinkLinks` possono andare su [Developers > API > WinkLinks](/it/developers/apis/#winklinks-api).
 
 ## Ulteriori letture
 
-* Leggi di più su[Personalizzazioni](/studio/customization).
-
+- Leggi di più su [Personalizzazioni](/it/studio/customization).

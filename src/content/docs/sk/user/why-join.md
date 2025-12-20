@@ -1,21 +1,21 @@
 ---
-title: Prečo sa pripojiť
+title: Prečo sa pridať
 description: Tento článok vás prevedie všetkými výhodami pripojenia sa k Wink.
 sidebar:
   order: 0
 ---
-Wink bol vytvorený s cieľom opäť sprístupniť predaj cestovných potrieb a sprístupniť ho väčšiemu počtu používateľov.
-Existuje veľa dobrých dôvodov, prečo sa pridať k Winku.
+
+Wink bol vytvorený, aby opäť spravil predaj cestovného inventára vzrušujúcim a aby bol prístupný širšiemu okruhu používateľov.  
+Existuje mnoho dobrých dôvodov, prečo sa pridať k Wink.
 
 Používateľský účet vám umožňuje:
 
-* Vytvárajte a spravujte nehnuteľnosti a predávajte ich všade, kde sa nachádzajú potenciálni cestovatelia.
-* Vytvárajte a spravujte partnerské účty a získavajte províziu za rezervácie, ktoré sprostredkujete.
-* Vytvárajte a spravujte účty cestovných kancelárií a rezervujte v mene svojich zákazníkov.
-* Získajte svoju virtuálnu URL adresu WinkLinks (*napr. https://i.trvl.as/bob*) a použite ho v URL adrese vášho profilu na Instagrame.
-* Zarezervujte si svoju ďalšiu dovolenku a ušetrite.
-* Urobte všetko vyššie uvedené ako vývojár integráciou s Wink.
-* Všetky naše funkcie sú vám k dispozícii**Z-R-A-D-E**.
+- Vytvárať a spravovať nehnuteľnosti a predávať všade tam, kde sú potenciálni cestovatelia.
+- Vytvárať a spravovať affiliate účty a zarábať províziu z rezervácií, ktoré sprostredkujete.
+- Vytvárať a spravovať účty cestovných agentov a rezervovať v mene svojich zákazníkov.
+- Získať svoju vlastnú WinkLinks vanity URL (*napr. https://i.trvl.as/bob*) a použiť ju v URL svojho IG bio.
+- Rezervovať si svoju ďalšiu dovolenku a ušetriť.
+- Vykonávať všetko vyššie uvedené ako vývojár integráciou s Wink.
+- Všetky naše funkcie sú vám k dispozícii **Z-A-D-A-R-M-O**.
 
-Pokračujte v ďalšej časti a dozviete sa, ako sa zaregistrovať a začať zarábať s Wink.
-
+Pokračujte do ďalšej sekcie, kde sa dozviete, ako sa zaregistrovať a začať zarábať s Wink.

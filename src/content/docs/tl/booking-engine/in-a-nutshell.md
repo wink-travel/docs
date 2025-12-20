@@ -1,49 +1,47 @@
 ---
-title: Sa madaling sabi
-description: >-
-  Gagabayan ka ng artikulong ito sa lahat ng gusto mong malaman tungkol sa
-  booking engine.
+title: Sa Buod
+description: Tinuturuan ka ng artikulong ito tungkol sa lahat ng nais mong malaman tungkol sa booking engine.
 sidebar:
   order: 0
 ---
-Narito kung paano namin hatiin ang responsibilidad sa Wink:
 
-* [Extranet](/extranet/what-is-extranet) nag-aalala mismo sa mga supplier na namamahala ng imbentaryo.
-* [Studio](/studio/what-is-studio) nag-aalala mismo sa mga kaakibat na namamahala ng nilalaman.
-* `Booking Engine` nag-aalala mismo sa paggawa ng nilalaman, na ginawa sa `Studio`, na batay sa imbentaryo na ginawa sa `Extranet` at ginagawa itong bookable.
-* [Pagbabayad](/payment/what-is-trip-pay) nag-aalala mismo sa pagsingil / pag-refund sa mga manlalakbay na nagbu-book \[sa pamamagitan ng mga platform tulad ng Wink], at nagbabayad na mga vendor.
+Ganito namin hinahati ang responsibilidad sa Wink:
 
-Ang booking engine ay nasa core ng aming platform.
+- Ang [Extranet](/tl/extranet/what-is-extranet) ay tumutok sa mga supplier na nagma-manage ng imbentaryo.
+- Ang [Studio](/tl/studio/what-is-studio) ay tumutok sa mga affiliate na nagma-manage ng nilalaman.
+- Ang `Booking Engine` ay tumutok sa paggawa ng nilalaman, na nilikha sa `Studio`, na nakabase sa imbentaryong nilikha sa `Extranet` at ginagawa itong ma-book.
+- Ang [Payment](/tl/payment/what-is-trip-pay) ay tumutok sa pagsingil / pag-refund sa mga biyahero na nag-book [sa pamamagitan ng mga platform tulad ng Wink], at pagbabayad sa mga vendor.
 
-Kasama sa mga responsibilidad nito ang:
+Ang booking engine ang nasa puso ng aming platform.
 
-* Pamamahala ng mga pera at pagpapanatiling napapanahon ang mga halaga ng palitan.
-* Ang pagbibigay sa mga provider ng rate ng paraan upang magpadala sa amin ng data ng rate.
-* Pamamahala ng data ng paghahanap. *hal. rehiyon, bansa, destinasyon, ari-arian atbp.*
-* Pamamahala ng mga wika.
-* Bumubuo ng analytics batay sa mga pakikipag-ugnayan ng user, mga kaganapan at mga tawag sa API.
-* Naghahatid ng mai-book na imbentaryo sa nais na format, wika at pera, gaya ng:
-  * A [maibabahaging link](/studio/shareable-links) sa Facebook.
-  * Isang landing page ng hotel sa https://ota.wink.travel na may imbentaryo para sa hotel na iyon.
-  * A [card](/studio/cards) naglalaman ng imbentaryo ng kaakibat.
-  * A [mapa](/studio/maps) sa iyong [WinkLinks](/link-manager/wink-links) account.
-  * An [API na tawag](/developers/apis) mula sa isang remote travel agent system.
-* Pagbibigay sa mga manlalakbay ng paraan upang:
-  * Maghanap ng imbentaryo ng paglalakbay.
-  * Mag-book ng available na imbentaryo.
-  * Pamahalaan ang kanilang [mga booking at review](/booking-engine/bookings).
-  * Pamahalaan ang kanilang [listahan ng bucket](/booking-engine/bucket-list) ng mga bagay na i-book sa hinaharap.
-  * Pamahalaan ang kanilang [profile sa paglalakbay](/booking-engine/travel-preferences). *hal. Allergy, emergency contact atbp.*
+Kabilang sa mga responsibilidad nito ang:
 
-Ang booking engine ay isang koleksyon ng muling magagamit na functionality na inilalantad namin sa pamamagitan ng https://ota.wink.travel; isang lubos na nako-customize na website para sa mga hotel at kaakibat upang ibenta ang kanilang mga paninda sa mga manlalakbay.
+- Pamamahala ng mga pera at pagpapanatiling up-to-date ng mga exchange rate.
+- Pagbibigay ng paraan sa mga rate provider para ipadala sa amin ang data ng rate.
+- Pamamahala ng lookup data. *hal. mga rehiyon, bansa, destinasyon, mga property, atbp.*
+- Pamamahala ng mga wika.
+- Pagbuo ng analytics base sa mga interaksyon ng user, mga kaganapan, at mga tawag sa API.
+- Pagseserbisyo ng bookable na imbentaryo sa nais na format, wika, at pera, tulad ng:
+    - Isang [shareable link](/tl/studio/shareable-links) sa Facebook.
+    - Isang hotel landing page sa https://ota.wink.travel na may imbentaryo para sa hotel na iyon.
+    - Isang [card](/tl/studio/cards) na naglalaman ng affiliate inventory.
+    - Isang [map](/tl/studio/maps) sa iyong [WinkLinks](/tl/link-manager/wink-links) account.
+    - Isang [API call](/tl/developers/apis) mula sa isang remote travel agent system.
+- Pagbibigay sa mga biyahero ng paraan upang:
+    - Maghanap ng travel inventory.
+    - Mag-book ng available na imbentaryo.
+    - Pamahalaan ang kanilang [bookings and reviews](/tl/booking-engine/bookings).
+    - Pamahalaan ang kanilang [bucket list](/tl/booking-engine/bucket-list) ng mga bagay na nais i-book sa hinaharap.
+    - Pamahalaan ang kanilang [travel profile](/tl/booking-engine/travel-preferences). *hal. Allergies, emergency contact, atbp.*
 
-Ang mga integrator, na gusto ng higit pang kalayaan, ay may access sa lahat ng parehong mga tampok sa pamamagitan ng aming [WordPress plugin](/developers/wordpress/), [Mga Bahagi ng Web](/developers/web-components) at [Mga API](/developers/apis).
+Ang booking engine ay isang koleksyon ng mga reusable na functionality na aming inilalantad sa pamamagitan ng https://ota.wink.travel; isang lubos na nako-customize na website para sa mga hotel at affiliate upang ibenta ang kanilang mga produkto sa mga biyahero.
 
-Magpatuloy sa susunod na mga seksyon para magbasa pa tungkol sa kung ano ang inaalok ng booking engine.
+Ang mga integrator, na nais ng mas malawak na kalayaan, ay may access sa lahat ng parehong mga tampok sa pamamagitan ng aming [WordPress plugin](/tl/developers/wordpress/), [Web Components](/tl/developers/web-components) at [APIs](/tl/developers/apis).
 
-## Karagdagang pagbabasa
+Magpatuloy sa mga susunod na seksyon upang basahin pa ang tungkol sa mga inaalok ng booking engine.
 
-* Basahin ang tungkol sa aming [WordPress plugin](/developers/wordpress/).
-* Basahin ang tungkol sa aming [Mga Bahagi ng Web](/developers/web-components).
-* Basahin ang tungkol sa aming [Mga API](/developers/apis).
+## Karagdagang babasahin
 
+- Basahin ang tungkol sa aming [WordPress plugin](/tl/developers/wordpress/).
+- Basahin ang tungkol sa aming [Web Components](/tl/developers/web-components).
+- Basahin ang tungkol sa aming [APIs](/tl/developers/apis).

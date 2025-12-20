@@ -1,73 +1,71 @@
 ---
-title: política de Privacidade
-description: >-
-  Política de privacidade facilmente acessível e atualizada para todos os nossos
-  usuários viajantes.
+title: Política de Privacidade
+description: Política de privacidade facilmente acessível e atualizada para todos os nossos usuários viajantes.
 sidebar:
   order: 5
 ---
-A TRAVELIKO SINGAPORE PTE. LTD., operando sob o nome Wink (a "Empresa"), gostaria de informar a você que entra em contato com a Empresa que é necessário coletar, compilar e utilizar seus dados pessoais para os serviços da Empresa, de acordo com esta Política de Privacidade. Ao entrar em contato e divulgar seus dados pessoais à Empresa para fins de comunicação, coordenação e/ou prestação dos serviços da Empresa a você, a Empresa considera que você concorda e aceita estar vinculado e cumprir esta Política de Privacidade.
 
-Ao processar dados pessoais, a Empresa pode obter seus dados pessoais de vários canais, conforme a seguir:
+A TRAVELIKO SINGAPORE PTE. LTD., operando sob o nome Wink (a “Empresa”), gostaria de informar quem contata a Empresa que é necessário coletar, compilar e usar seus dados pessoais para o serviço da Empresa de acordo com esta Política de Privacidade. Ao contatar e divulgar seus dados pessoais à Empresa para fins de comunicação, coordenação e/ou prestação dos serviços da Empresa a você, considera-se que você concorda e aceita estar vinculado e cumprir esta Política de Privacidade.
 
-(1) Diretamente de você, por meio das comunicações da Empresa com você;
+Dados pessoais sendo processados, a Empresa pode obter seus dados pessoais por vários canais conforme segue:
 
-(2) Indiretamente, por meio de uma indicação de um terceiro a quem você pode dar consentimento para divulgar seus dados pessoais à Empresa; ou
+(1) Diretamente de você por meio das comunicações da Empresa com você;
 
-(3) Coletados automaticamente pelo sistema quando você acessa o site da Empresa e/ou utiliza os serviços.
+(2) Indiretamente, via indicação de terceiros aos quais você pode conceder consentimento para divulgar seus dados pessoais à Empresa; ou
 
-Os dados pessoais que a Empresa precisa coletar, compilar, usar e processar de acordo com esta Política de Privacidade são os seguintes:
+(3) Coletados automaticamente via sistema quando você acessa o site da Empresa e/ou utiliza os serviços.
 
-(1) Seu nome completo, incluindo suas informações relacionadas ou suas informações de representante (no caso de você estar nos contatando em nome de uma pessoa jurídica), que podem incluir seu documento de informações de identidade.
+Os dados pessoais que a Empresa necessita coletar, compilar, usar e processar sob esta Política de Privacidade são os seguintes:
 
-(2) Informações de contato, como número de telefone, e-mail ou informações de conta de mídia social.
+(1) Seu nome completo, incluindo suas informações relacionadas ou informações do seu representante (no caso de você estar nos contatando em nome de uma pessoa jurídica), que podem incluir seu documento de identidade.
 
-(3) Outros dados pessoais que você pode fornecer à Empresa durante as comunicações, como informações sobre questões de investigação, informações de interesse ou quaisquer outras informações pessoalmente identificáveis que você fornecer à Empresa diretamente por meio de vários canais de comunicação.
+(2) Informações de contato, como número de telefone, e-mail ou informações de conta em redes sociais.
 
-(4) Em caso de comunicação através do site, pode incluir suas informações técnicas, como endereço IP, cookies, incluindo informações sobre seu comportamento de navegação.
+(3) Outros dados pessoais que você possa fornecer à Empresa durante as comunicações, como informações sobre assuntos de consulta, informações de interesse ou qualquer outra informação pessoal identificável que você forneça diretamente à Empresa por meio de vários canais de comunicação.
 
-Finalidade do Tratamento e Utilização de Dados Pessoais, a Empresa é necessária para recolher, compilar e utilizar os dados pessoais do Candidato para as seguintes finalidades:
+(4) No caso de comunicação via site, pode incluir suas informações técnicas, como endereço IP, cookies, incluindo informações sobre seu comportamento de navegação.
 
-(1) Para o gerenciamento das comunicações com as quais você se comunicou com a Empresa, como responder a perguntas, fornecer informações relevantes conforme solicitado e necessário, gerenciar reclamações ou responder a comentários que você faz diretamente à Empresa por meio de vários canais de comunicação, incluindo coordenação contínua, execução de contrato de serviço e/ou desempenho de direitos e obrigações que a Empresa e você possam concordar;
+Finalidade do Processamento e Uso dos Dados Pessoais, a Empresa necessita coletar, compilar e usar os dados pessoais do Candidato a Emprego para as seguintes finalidades:
 
-(2) Para o cumprimento de obrigações legais às quais a Empresa possa estar sujeita sob determinadas condições. Isso pode incluir, mas não se limita a, o desempenho de funções associadas à preparação de documentos contábeis e impostos relacionados a quaisquer serviços prestados pela Empresa a você;
+(1) Para a gestão das comunicações com as quais você tenha se comunicado com a Empresa, como responder perguntas, fornecer informações relevantes conforme solicitado e exigido, gerenciar reclamações ou responder a comentários que você faça diretamente à Empresa por meio de vários canais de comunicação, incluindo coordenação contínua, execução de contrato de serviço e/ou cumprimento de direitos e obrigações que a Empresa e você possam acordar;
 
-(3) Para fins de construção e aprimoramento de relacionamentos comerciais, incluindo o aprimoramento do serviço que a Empresa fornece em seu benefício, podendo a Empresa coletar e/ou usar seus dados pessoais para fins de controle, garantia de serviço, análise de gestão e resolução de problemas relacionados a negócios, incluindo, mas não se limitando a, treinamento de funcionários e planejamento de melhorias futuras de serviços;
+(2) Para o cumprimento de obrigações legais às quais a Empresa possa estar sujeita a certas condições. Isso pode incluir, mas não se limita a, desempenhar funções associadas à preparação de documentos contábeis e fiscais em conexão com quaisquer serviços prestados pela Empresa a você;
 
-(4) Para proteger e defender os direitos legais da Empresa no caso de você e a Empresa terem uma disputa; e
+(3) Para o propósito de construir e melhorar relacionamentos comerciais, incluindo aprimorar o serviço que a Empresa oferece para seu benefício, para o qual a Empresa pode coletar e/ou usar seus dados pessoais para fins de controle, garantia de serviço, análise de gestão e resolução de questões relacionadas ao negócio, incluindo, mas não se limitando a, treinamento de funcionários e planejamento de melhorias futuras de serviço;
 
-(5) Sujeito a um consentimento explícito concedido à Empresa, como comunicações de marketing e newsletters, a Empresa pode processar os Dados Pessoais para os fins definidos no consentimento.
+(4) Para o propósito de proteger e defender os direitos legais da Empresa no caso de você e a Empresa terem uma disputa; e
 
-Período de Retenção de Dados Pessoais, para atuar de acordo com as finalidades descritas acima, a Empresa precisa coletar, compilar e processar seus dados pessoais de acordo com o seguinte período:
+(5) Sujeito a um consentimento explícito concedido à Empresa, como comunicações de marketing e boletins informativos, a Empresa pode processar os Dados Pessoais para as finalidades definidas no consentimento.
 
-(1) Para o processamento de dados pessoais com a finalidade de fornecer serviços, a execução de um contrato e/ou o desempenho de direitos e deveres sob o contrato, a Empresa é necessária para processar seus dados pessoais, desde que a empresa tenha o dever de fornecer serviços a você;
+Período de Retenção dos Dados Pessoais, para cumprir com as finalidades descritas acima, a Empresa necessita coletar, compilar e processar seus dados pessoais conforme o seguinte período:
 
-(2) Para o processamento de dados pessoais com a finalidade de desempenhar as funções de acordo com as leis aplicáveis, a Empresa é necessária para processar seus dados pessoais por um período de tempo especificado pelas leis aplicáveis;
+(1) Para o processamento de dados pessoais com a finalidade de prestação de serviços, execução de contrato e/ou cumprimento de direitos e deveres sob o contrato, a Empresa necessita processar seus dados pessoais enquanto a empresa tiver o dever de prestar serviços a você;
 
-(3) Para o processamento de dados pessoais com a finalidade de construir e aprimorar relacionamentos comerciais e/ou aprimorar o serviço, a Empresa reserva-se o direito de reter esses dados pessoais na medida em que a Empresa possa ter necessidade comercial. A Empresa garante que a retenção dos dados pessoais não afetará injustificadamente os direitos do titular dos dados;
+(2) Para o processamento de dados pessoais com a finalidade de cumprir deveres conforme leis aplicáveis, a Empresa necessita processar seus dados pessoais pelo período de tempo especificado pelas leis aplicáveis;
 
-(4) Para o processamento de dados pessoais com o propósito de proteção e defesa de direitos legítimos da Empresa, a Empresa tem a necessidade de manter tais dados pessoais de acordo com a prescrição definida pelas leis aplicáveis; e
+(3) Para o processamento de dados pessoais com a finalidade de construir e melhorar relacionamentos comerciais e/ou aprimorar o serviço, a Empresa reserva o direito de reter esses dados pessoais na medida em que a Empresa possa ter necessidade comercial. A Empresa garante que a retenção dos dados pessoais não afetará de forma irrazoável os direitos do titular dos dados;
 
-(5) Caso você dê consentimento à Empresa para processar seus dados pessoais para fins específicos, a Empresa processará seus dados pessoais até que você retire tal consentimento.
+(4) Para o processamento de dados pessoais para fins de proteção e defesa dos direitos legítimos da Empresa, a Empresa tem a necessidade de manter tais dados pessoais conforme o prazo definido pelas leis aplicáveis; e
 
-Divulgação de dados pessoais, geralmente, seus dados pessoais não serão divulgados, exceto na circunstância em que a Empresa precisaria divulgá-los à seguinte pessoa:
+(5) Caso você conceda consentimento à Empresa para processar seus dados pessoais para finalidades específicas, a Empresa processará seus dados pessoais até que você retire esse consentimento.
 
-(1) Prestadores de serviços externos da Empresa contratados para fornecer serviços de suporte à Empresa na prestação de serviços a você, incluindo consultores da Empresa. Tal divulgação de dados pessoais a esses terceiros será feita de acordo com as finalidades e somente com base na necessidade de conhecimento; ou
+Divulgação dos dados pessoais, em geral, seus dados pessoais não serão divulgados, exceto nas circunstâncias em que a Empresa precise divulgar para as seguintes pessoas:
 
-(2) Governo, autoridades reguladoras ou tribunais que a Empresa pode estar sujeita a uma ordem, lei ou julgamento para divulgar os dados pessoais.
+(1) Prestadores de serviços externos da Empresa contratados para fornecer serviços de apoio à Empresa na prestação de serviços a você, incluindo consultores da Empresa. Essa divulgação dos dados pessoais a esses terceiros será feita de acordo com as finalidades e somente na base do necessário para o conhecimento; ou
 
-A Empresa se compromete a implementar medidas de segurança de dados pessoais adequadas para impedir qualquer acesso, modificação, alteração ou divulgação não autorizados e ilegais. A Empresa se compromete a revisar essas medidas regularmente para garantir sua compatibilidade com os padrões e a legislação aplicável.
+(2) Governo, autoridades regulatórias ou tribunais aos quais a Empresa possa estar sujeita a uma ordem, lei ou julgamento para divulgar os dados pessoais.
 
-Direitos do titular dos dados, a Empresa respeita seus direitos como titular dos dados sob as leis aplicáveis. Você pode entrar em contato com a Empresa para exercer os direitos que são (1) os direitos de revogar o consentimento, (2) o direito de acesso, (3) o direito de solicitar uma cópia dos dados pessoais, (4) o direito de corrigir os dados pessoais, (5) o direito de se opor a qualquer processamento dos dados pessoais, (6) o direito de solicitar a portabilidade dos dados no caso de a Empresa armazenar os dados pessoais no formato que seja legível ou comumente usado por ferramentas ou equipamentos automatizados, incluindo o direito de transferir esses dados pessoais para outros controladores de dados, (7) o direito de solicitar a exclusão ou a desidentificação dos dados pessoais quando não houver necessidade de processamento, (8) o direito de solicitar a suspensão do uso dos dados pessoais e (9) o direito de registrar uma reclamação.
+A Empresa compromete-se a implementar medidas adequadas de segurança dos dados pessoais para prevenir qualquer acesso não autorizado e ilegal, modificação, alteração ou divulgação. A Empresa compromete-se a revisar essas medidas regularmente para garantir sua compatibilidade com os padrões e com as leis aplicáveis.
 
-Informações de contato da empresa
+Direitos do titular dos dados, a Empresa respeita seus direitos como titular dos dados conforme as leis aplicáveis. Você pode contatar a Empresa para exercer os direitos que são (1) o direito de retirar o consentimento, (2) o direito de acesso, (3) o direito de solicitar uma cópia dos dados pessoais, (4) o direito de corrigir os dados pessoais, (5) o direito de se opor a qualquer processamento dos dados pessoais, (6) o direito de solicitar a portabilidade dos dados no caso de a Empresa armazenar os dados pessoais em formato legível ou comumente usado por ferramentas ou equipamentos automatizados, incluindo o direito de transferir tais dados pessoais para outros controladores de dados, (7) o direito de solicitar a exclusão ou desidentificação dos dados pessoais quando não houver necessidade de processamento, (8) o direito de solicitar a suspensão do uso dos dados pessoais, e (9) o direito de apresentar uma reclamação.
 
-Encarregado da Proteção de Dados
+Informações de contato da Empresa
+
+Encarregado de Proteção de Dados
 
 Nome: Yann Gouriou
 
-Endereço: #03-01 Wilkie Edge, 8 Wilkie Road, Singapura 228095
+Endereço: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
 
-E-mail: dataprotectionofficer@wink.travel
+E-mail: dataprotectionofficer@wink.travel  
 Telefone: +66 (0) 854891301
-

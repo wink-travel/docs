@@ -1,69 +1,69 @@
 ---
-title: Localization
+title: Lokalisering
 description: Den här artikeln förklarar hur vi hanterar lokalisering på Wink.
 sidebar:
   order: 7
 ---
+
 Den här artikeln förklarar hur vi hanterar lokalisering på Wink.
 
-## Språk som stöds
+## Stödda språk
 
 Wink stöder följande språk:
 
-* Engelska
-* Indonesiska
-* Bahasa Malaysia
-* bulgariska
-* Katalanska
-* Tjeckien
-* Danska
-* Deutsch
-* Eetiska
-* Spanska
-* Spanska (AR)
-* Spanska (MX)
-* Filippinare
-* Suomi
-* Franska
-* Ελληνικά
-* Hebreiska
-* Hinand
-* Hrvatski
-* Magyar
-* Isländska
-* italiensk
-* 日本語
-* 한국어
-* Lettiska
-* Litauen
-* Nederländska
-* Norska
-* Polska
-* Portugisiska (BR)
-* Portugisiska (PT)
-* Románă
-* Ryska
-* Slovenska
-* Slovenska
-* Srpski
-* Svenska
-* ภาษาไทย
-* Turkiska
-* Ukrainska
-* Tiếng Việt
-* Arabiska
-* 简体中文
-* 繁體中文
+- Engelska
+- Bahasa Indonesia
+- Bahasa Malaysia
+- Български
+- Català
+- Čeština
+- Dansk
+- Deutsch
+- Eesti
+- Español
+- Español (AR)
+- Español (MX)
+- Filipino
+- Suomi
+- Français
+- Ελληνικά
+- עברית
+- हिन्दी
+- Hrvatski
+- Magyar
+- Íslenska
+- Italiano
+- 日本語
+- 한국어
+- Latviski
+- Lietuvių
+- Nederlands
+- Norsk
+- Polski
+- Português (BR)
+- Português (PT)
+- Română
+- Русский
+- Slovenčina
+- Slovenščina
+- Srpski
+- Svenska
+- ภาษาไทย
+- Türkçe
+- Українська
+- Tiếng Việt
+- العربية
+- 简体中文
+- 繁體中文
 
 ## Plattformsnivå
 
-Alla våra applikationer är lokaliserade för att stödja alla språk som nämns ovan. Varje applikation har en språkväljare längst ner på sidan där användaren kan välja önskat språk. Bokningsmotorn stöder också att ange önskat språk via URL:en.
+Alla våra applikationer är lokaliserade för att stödja alla ovan nämnda språk. Varje applikation har en språkvalsfunktion längst ner på sidan där användaren kan välja sitt önskade språk. Bokningsmotorn stödjer också att skicka önskat språk via URL:en.
 
 ## Användargenererat innehåll
 
-Användargenererat innehåll är lokaliserat för att stödja alla språk som nämns ovan. Användare kan välja att skapa den engelska versionen av innehållet och låta Wink göra resten. Eller så kan de hantera en specifik uppsättning språk för mer kontroll och låta Wink hantera resten.
+Användargenererat innehåll är lokaliserat för att stödja alla ovan nämnda språk. Användare kan välja att skapa en engelsk version av innehållet och låta Wink sköta resten. Eller så kan de hantera en specifik uppsättning språk för mer kontroll och låta Wink hantera resten.
 
-## Förbehåll
+## Varningar
 
-Standardspråket är engelska. Om inget annat anges kommer vi att använda standardspråket först när en användare använder någon av våra applikationer. Vi ställer inte in det aktiva språket baserat på användarens webbläsarspråk.
-
+Standardspråket är engelska. Om inget annat anges använder vi standardspråket först när en användare använder någon av våra applikationer. Vi sätter inte det aktiva språket baserat på användarens webbläsarens lokala inställningar.

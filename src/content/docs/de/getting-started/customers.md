@@ -1,55 +1,53 @@
 ---
-title: Customers
-description: >-
-  In diesem Artikel wird erläutert, welche Arten von Kunden wir bedienen und wie
-  Wink helfen kann.
+title: Kunden
+description: Dieser Artikel erklärt die Kundentypen, die wir bedienen, und wie Wink dabei helfen kann.
 sidebar:
   order: 2
 ---
-In diesem Artikel wird erläutert, welche Arten von Kunden wir betreuen und wie wir ihnen am besten helfen können.
 
-## Eigenschaften
+Dieser Artikel erklärt die Kundentypen, die wir bedienen, und wie wir am besten helfen können.
 
-Wink hat vor zehn Jahren mit der Hotelintegration begonnen. Hotels nutzen Wink, um ihr Angebot über Tausende von Vertriebskanälen, einschließlich ihrer eigenen Website brand.com, effektiv zu verwalten und mit jeder Buchung mehr zu verdienen. Gleichzeitig stärken sie ihre Direktkanäle mithilfe unserer auf das Gastgewerbe ausgerichteten Tools, die die Markenidentität und Rentabilität verbessern.
+## Unterkünfte
+
+Wink begann vor einem Jahrzehnt mit der Integration von Hotels. Hotels nutzen Wink, um ihr Inventar effektiv über 1000e Vertriebskanäle hinweg zu verwalten, einschließlich ihrer eigenen brand.com-Seite, und um mit jeder Buchung mehr zu verdienen, während sie direkte Kanäle mit unseren auf die Hotellerie ausgerichteten Tools stärken, die Markenidentität und Rentabilität verbessern​.
 
 ## Marken & Ketten
 
-Marken und Ketten haben etwas andere Bedürfnisse als einzelne Hotels. Auf Wink können sie:
+Marken und Ketten haben leicht unterschiedliche Bedürfnisse als eine einzelne Unterkunft. Auf Wink können sie:
 
-* Verwalten Sie mehrere Eigenschaften unter einem einzigen Konto.
-* Zuweisen von Managern zu Eigenschaften
-* Verwenden [WinkLinks](/link-manager/wink-links), [WordPress](/developers/wordpress) und unsere [WordPress](/developers/wordpress) um mehrere Immobilien an einem Ort zu vermarkten und zu verkaufen.
+- Mehrere Unterkünfte unter einem einzigen Konto verwalten.
+- Manager für Unterkünfte zuweisen.
+- [WinkLinks](/de/link-manager/wink-links), [WordPress](/de/developers/wordpress) und unsere [Web Components](/de/developers/web-components) nutzen, um mehrere Unterkünfte an einem Ort zu vermarkten und zu verkaufen.
 
-## Verwaltungsgesellschaften
+## Managementgesellschaften
 
-Hospitality-Management-Unternehmen und Destination-Management-Unternehmen können ihre Immobilienportfolios im Auftrag der Eigentümer verwalten. Es ist ein entscheidender Vorteil, den Vertrieb an das Online-Segment online-fokussierten und digital versierten Agenturen zu überlassen, während sich Hotels auf die Kundenzufriedenheit vor Ort konzentrieren können.
+Hospitality-Managementgesellschaften und Destination-Managementgesellschaften können ihre Unterkunftsportfolios im Auftrag der Eigentümer verwalten. Es ist ein klarer Vorteil, online-fokussierte, digital versierte Agenturen den Verkauf an das Online-Segment überlassen zu können, während sich Hotels darauf konzentrieren, die Kundenzufriedenheit vor Ort zu gewährleisten.
 
 ## Influencer
 
-Influencer nutzen Wink, um ihre Zielgruppe besser zu monetarisieren. Dies erreichen sie durch Partnerschaften mit Hotels, die Erstellung individueller Angebote und die Nutzung der sozialfreundlichen Tools und leistungsstarken Analysefunktionen von Wink, um herauszufinden, welche Produkte sich am besten verkaufen.
+Influencer nutzen Wink, um ihre Zielgruppe besser zu monetarisieren. Sie tun dies, indem sie Partnerschaften mit Hotels eingehen, individuelle Angebote erstellen und Winks social-freundliche Tools sowie leistungsstarke Analysen nutzen, um zu verfolgen, welche Produkte sich am besten verkaufen​.
 
 ## Reisebüros
 
-Reisebüros erhalten Zugang zu Reiseangeboten weltweit zu günstigen Preisen durch unsere engagierten [Reisebüroportal](https://agent.wink.travel) Sie können Buchungen über unser Portal oder über unsere API vornehmen oder indem sie ihre Benutzer selbst auf der Website des Reisebüros buchen lassen, das unsere Technologien verwendet.
+Reisebüros erhalten über unser spezielles [Reisebüro-Portal](https://agent.wink.travel) Zugang zu Reiseinventar weltweit zu attraktiven Preisen. Sie können Buchungen über unser Portal, über unsere API oder indem sie ihren Nutzern erlauben, selbst auf der Reisebüro-Website zu buchen, die unsere Technologien verwendet, vornehmen.
 
 ## Unternehmen
 
-Unternehmen benötigen eine umfassendere Reiseplattform:
+Unternehmen benötigen mehr von einer Reiseplattform:
 
-* Sie benötigen gut organisierte Reiserouten, die Flexibilität und kurzfristige Änderungen ermöglichen.
-* Sie benötigen zuverlässige Kommunikationsmittel wie das Internet.
-* Sie haben mit Mitgliedschaften Anbieterpräferenzen.
-* Sie verfügen häufig über eine Firmenkreditkarte und legen Ausgabenlimits fest.
-* Sie erfordern eine Integration des Spesenmanagements und der Berichterstattung.
-* Sie benötigen Concierge-Unterstützung sowie MICE-Dienste bei Veranstaltungen.
+- Sie benötigen gut organisierte Reisepläne, die Flexibilität und Last-Minute-Änderungen unterstützen.
+- Sie benötigen zuverlässige Kommunikationsmittel, wie Internet.
+- Sie haben bevorzugte Anbieter mit Mitgliedschaften.
+- Sie verfügen oft über eine Firmenkreditkarte und setzen Ausgabelimits.
+- Sie benötigen Ausgabenmanagement und Reporting-Integration.
+- Sie brauchen Concierge-Support sowie MICE-Dienstleistungen bei Veranstaltungen.
 
-Geschäftsreisende können ihre eigenen Konten auf unserer [Unternehmensportal](/corporate/what-is-group) oder nutzen Sie unsere offiziell unterstützte [Unternehmensportal](/corporate/what-is-group) Plugin und [Unternehmensportal](/corporate/what-is-group) Integration.
+Geschäftsreisende können ihre eigenen Konten auf unserem [Corporate-Portal](/de/corporate/what-is-group) verwalten oder unser offiziell unterstütztes [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) Plugin und die [Concur](https://www.concur.com/) Integration nutzen.
 
 ## Entwickler
 
-Während wir diese Plattform von und für Hoteliers entwickelt haben, wurde jede Codezeile speziell für die Wiederverwendbarkeit entwickelt. Unser Entwicklerteam hat Wink in der Hoffnung entwickelt, dass die nächste 🦄 Reise-App auf unserer Codebasis basiert. Navigieren Sie zum [Entwickler](/developers/build-on-wink) Seite, um zu sehen, wie Wink Sie bei Ihrem nächsten Vorhaben unterstützen kann.
+Obwohl wir diese Plattform von und für Hoteliers gebaut haben... Jede Codezeile wurde mit dem spezifischen Ziel der Wiederverwendbarkeit entwickelt. Unser Entwicklerteam hat Wink in der Hoffnung gebaut, dass die nächste 🦄 Reise-App auf unserer Codebasis aufbaut. Besuchen Sie die [Developer](/de/developers/build-on-wink) Seite, um zu sehen, wie Wink Sie bei Ihrem nächsten Projekt unterstützen kann.
 
-## Andere
+## Sonstige
 
-Jeder, der Reiseangebote finden und verkaufen möchte, kann von Wink profitieren. Setzen Sie Ihre Leidenschaft für die Hotellerie in die Tat um und verdienen Sie mit jeder Buchung eine attraktive Provision.
-
+Jeder, der Reiseinventar finden und verkaufen möchte, kann von der Nutzung von Wink profitieren. Verwandeln Sie Ihre Leidenschaft für Gastfreundschaft in Aktion, indem Sie bei jeder Buchung eine attraktive Provision verdienen.

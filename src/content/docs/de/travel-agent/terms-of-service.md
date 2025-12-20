@@ -1,252 +1,265 @@
 ---
-title: Servicebedingungen
-description: >-
-  Dieser Artikel enthält unsere Servicebedingungen für Reisebüros auf der
-  Wink-Plattform.
+title: Nutzungsbedingungen
+description: Dieser Artikel enthält unsere Nutzungsbedingungen für Reisebüros auf der Wink Plattform.
 sidebar:
   order: 4
 ---
-:::Hinweis
-Zuletzt aktualisiert: 30.10.2024
+
+:::note
+Zuletzt aktualisiert am 30.10.2024
 :::
 
-:::Vorsicht\[Hinweis]
-Die folgenden Nutzungsbedingungen gelten für Reisebüros, die selbst Gelder akquirieren und auszahlen möchten.
-Dies ist ausschließlich über unsere API und nur für Reisebüros möglich, die dies während des Anmeldevorgangs angegeben haben.
+:::caution[Hinweis]
+Die nachstehenden Nutzungsbedingungen gelten für Reisebüros, die Gelder eigenständig einziehen und auszahlen möchten.  
+Dies ist nur über unsere API möglich und ausschließlich für Reisebüros, die dies während des Anmeldeprozesses angegeben haben.
 
-Alle Reisebüros können weiterhin über unser Reisebüroportal mit dem Zahlungsportal von Wink mit ihrer eigenen oder der Kreditkarte des Reisenden buchen. Daher müssen alle Reisebüros auch den Nutzungsbedingungen zustimmen, wenn das Zahlungsportal von Wink als Vertragshändler fungiert.
+Alle Reisebüros können weiterhin über unser Reisebüro-Portal mit der Zahlungsabwicklung von Wink buchen, entweder mit ihrer eigenen oder der Kreditkarte des Reisenden. Daher müssen alle Reisebüros auch den Nutzungsbedingungen zustimmen, bei denen die Zahlungsabwicklung von Wink als Händler des Zahlungsvorgangs fungiert.
 
-Diese Bedingungen sind verfügbar unter[Partnerportal > Servicebedingungen](/studio/terms-of-service).
-::
+Diese Bedingungen sind unter [Affiliate Portal > Nutzungsbedingungen](/de/studio/terms-of-service) verfügbar.
+:::
 
-**WINK ALLGEMEINE GESCHÄFTSBEDINGUNGEN**\
-**FÜR REISEBÜROS (Merchant of Record)**
+**WINK ALLGEMEINE GESCHÄFTSBEDINGUNGEN**  
+**FÜR REISEBÜROS (Händler des Zahlungsvorgangs)**
 
 **ZWISCHEN:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**&#x65;in nach singapurischem Recht gegründetes Unternehmen mit Sitz in #03-01 Wilkie Edge 8 Wilkie Road, Singapur 228095, und der Umsatzsteuer-Identifikationsnummer 201437335D (nachfolgend „Wink“ genannt) und
+1. **TRAVELIKO SINGAPORE PTE. LTD.**, ein nach den Gesetzen Singapurs gegründetes Unternehmen mit eingetragenem Sitz in \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 und der Mehrwertsteuernummer 201437335D (im Folgenden „Wink“ genannt) und  
+     
+2. **DEM REISEBÜRO**, dessen Daten im Reisebüro-Registrierungsformular angegeben oder online übermittelt wurden (das „Reisebüro“).
 
-2. **DAS REISEBÜRO**deren Angaben im Registrierungsformular für Reisebüros aufgeführt sind oder online übermittelt wurden (das „Reisebüro“).
+**PRÄAMBEL:**
 
-**WOHINGEGEN:**
+(i) Wink betreibt ein Online-System (das „System“), über das teilnehmende Unterkünfte (zusammen die „Unterkunftsanbieter“) ihr Inventar zur Reservierung bereitstellen können und über das das Reisebüro im Namen seiner Gäste Reservierungen bei diesen Unterkunftsanbietern vornehmen kann (der „Service“);
 
-(i) Wink betreibt ein Online-System (das „System“), über das teilnehmende Unterkünfte (zusammen die „Unterkunftsanbieter“) ihr Angebot zur Reservierung anbieten können und über das das Reisebüro im Namen seiner Gäste Reservierungen bei diesen Unterkunftsanbietern vornehmen kann (der „Service“);
+(ii) Wink besitzt, kontrolliert, bietet oder verwaltet keine Einträge. Wink ist keine Vertragspartei der direkt zwischen Unterkunftsanbietern und Gästen geschlossenen Verträge. Wink handelt nicht als Agent im Namen der Unterkunftsanbieter;
 
-(ii) Wink besitzt, kontrolliert, bietet oder verwaltet keine Inserate. Wink ist nicht Vertragspartei der direkt zwischen den Unterkunftsanbietern und Gästen geschlossenen Verträge. Wink fungiert in keiner Weise als Vermittler für die Unterkunftsanbieter.
+(iii) Wink betreibt und nutzt eigene Websites (die „Wink Websites“) und stellt den Service bereit sowie Verlinkungen zum Service auf Websites Dritter;
 
-(iii) Wink unterhält und nutzt seine eigenen Websites (die „Wink-Websites“) und stellt den Dienst und Links zum Dienst auch auf den Websites Dritter bereit;
+(iv) Das Reisebüro besitzt, kontrolliert, hostet und/oder betreibt eine oder mehrere Internet-Domains, Websites oder Anwendungen und möchte als Händler des Zahlungsvorgangs fungieren, während es den Service nutzt.
 
-(iv) Das Reisebüro besitzt, kontrolliert, hostet und/oder betreibt eine oder mehrere Internetdomänen, Websites oder Anwendungen und möchte bei der Nutzung des Dienstes der eingetragene Händler sein.
+(v) Das Reisebüro und Wink wünschen, dass das Reisebüro den Service (direkt oder indirekt) seinen Kunden und Besuchern der Reisebüro-Website(s) und App(s) in der hier vereinbarten Form und zu den hier festgelegten Bedingungen (im Folgenden die „Bedingungen“) zur Verfügung stellt.
 
-(v) Das Reisebüro und Wink möchten, dass das Reisebüro den Service (direkt oder indirekt) seinen Kunden und Besuchern der Website(s) und App(s) des Reisebüros in der Form und zu den Bedingungen (nachfolgend „Bedingungen“ genannt) zur Verfügung stellt, wie in dieser Vereinbarung dargelegt.
+**DIE PARTEIEN VEREINBAREN DAHER FOLGENDES:**
 
-**Daher vereinbaren die Parteien Folgendes:**
+**1\. Definitionen**
 
-**1. Begriffsbestimmungen**
+1. Zusätzlich zu den an anderer Stelle in diesem Vertrag definierten Begriffen gelten im gesamten Vertrag die folgenden Definitionen, sofern nicht anders angegeben:
 
-1. Zusätzlich zu den an anderer Stelle in dieser Vereinbarung definierten Begriffen gelten die folgenden Definitionen in dieser Vereinbarung, sofern nichts anderes beabsichtigt ist:
+* **„Unterkunft“** bezeichnet jede Form von Unterkunft, einschließlich, aber nicht beschränkt auf Hotels, Motels, Gästehäuser, Bed & Breakfasts, Hostels, Villen, Apartments, Lodges, Gasthäuser, Resorts und jeden anderen (Typ von) Unterkunftsanbieter (unabhängig davon, ob diese auf den Wink Websites verfügbar sind).  
+    
+* **„Unterkunftsanbieter“** bezeichnet jede Partei, die ein Konto beim Service Provider erstellt, um ihr eigenes Zimmer- und Zusatzleistungsinventar über die Wink Plattform zu verkaufen.  
+    
+* **„Buchung“** bezeichnet eine Reservierung oder Bestellung, die ein Gast über das Reisebüro für Unterkunftsdienstleistungen eines Unterkunftsanbieters vornimmt.
 
-* **"Unterkunft"**&#x62;ezeichnet jede Form der Unterkunft, einschließlich, aber nicht beschränkt auf Hotels, Motels, Pensionen, Bed & Breakfasts, Hostels, Villen, Apartments, Lodges, Gasthöfe, Resorts und alle anderen (Arten von) Unterkünften oder Beherbergungsanbietern (unabhängig davon, ob diese auf den Wink-Websites verfügbar sind oder nicht).
+* **„Buchungsgebühr“** bezeichnet die 1,5 %, die vom Gesamtbetrag, den das Reisebüro vom Gast einzieht, abgezogen werden und als Bearbeitungsgebühr an Wink zu zahlen sind.
 
-* **„Unterkunftsanbieter“**&#x62;ezeichnet jede Partei, die ein Konto beim Dienstanbieter mit der Absicht erstellt, ihre eigenen Zimmer und Zusatzleistungen über die Wink-Plattform zu verkaufen.
+* **„Buchungswert“** bezeichnet den Gesamtbetrag, den das Reisebüro vom Gast für eine Buchung einzieht.
 
-* **"Buchung"**&#x62;ezeichnet eine Reservierung oder Bestellung eines Gastes über das Reisebüro für von einem Unterkunftsanbieter angebotene Unterkunftsleistungen.
+* **„Provision“** bezeichnet den Betrag, der dem Reisebüro vom Unterkunftsanbieter geschuldet wird, berechnet als vereinbarter Prozentsatz aus der „Separaten Vereinbarung“ vom Buchungswert.  
+    
+* **„Höhere Gewalt“** bezeichnet jedes Ereignis außerhalb der zumutbaren Kontrolle einer Partei, einschließlich, aber nicht beschränkt auf Naturkatastrophen, Kriegshandlungen, Terrorismus, zivile Unruhen, Pandemien und behördliche Maßnahmen, die eine Partei daran hindern, ihre Verpflichtungen aus diesem Vertrag zu erfüllen.  
+    
+* **„Gast“** bezeichnet eine Einzelperson oder Gruppe, die über das Reisebüro eine Buchung für Unterkunftsdienstleistungen vornimmt.  
+    
+* **„Händler des Zahlungsvorgangs“** bezeichnet die juristisch befugte und verantwortliche Einheit für die Abwicklung von Zahlungen der Gäste, einschließlich der Bearbeitung von Zahlungstransaktionen, Rückerstattungen, Rückbuchungen und der Einhaltung von Zahlungsbestimmungen. Der Händler des Zahlungsvorgangs ist die Einheit, deren Name auf dem Kreditkartenabrechnungsbeleg des Gastes für Buchungsgebühren erscheint.
 
-* **"Buchungsgebühr"**&#x62;ezeichnet die 1,5 %, die vom Gesamtbetrag abgezogen werden, den das Reisebüro vom Gast eingezogen hat und die als Bearbeitungsgebühr an Wink zu zahlen sind.
+* **„Nettozahlung“** bezeichnet den Betrag, der nach Abzug der Wink Buchungsgebühr und der Provision des Reisebüros vom Buchungswert an den Unterkunftsanbieter auszuzahlen ist.  
+    
+* **„Zahlungen“** bezeichnet die finanziellen Verpflichtungen aus diesem Vertrag, einschließlich Provisionen, Gebühren oder sonstiger Kosten, die von einer Partei an die andere zu zahlen sind.
 
-* **"Buchungswert"**&#x62;ezeichnet den Gesamtbetrag, den das Reisebüro vom Gast für eine Buchung einzieht.
+* **„Payment Facilitator“** ist eine hundertprozentige Tochtergesellschaft von Traveliko Singapore Pte. Ltd., die die Zahlungsdienste verwaltet und Zahlungen von Gästen durch Belastung der mit ihrem Kauf verbundenen Zahlungsmethode wie Kreditkarte, Debitkarte, Banküberweisung, Kryptowährungen oder PayPal usw. einzieht.  
+    
+* **„Plattform“** bezeichnet das vom Service Provider betriebene Online-System, über das das Reisebüro Buchungen für Gäste vornehmen oder verwalten kann.
 
-* **"Kommission"**&#x62;ezeichnet den Betrag, den der Unterkunftsanbieter dem Reisebüro schuldet, berechnet auf Grundlage des vereinbarten Prozentsatzes aus der „Separaten Vereinbarung“ vom Buchungswert.
+* **„Separate Vereinbarung“** bezeichnet den eigenständigen Vertrag zwischen dem Reisebüro und dem Unterkunftsanbieter, der die spezifischen Zahlungsbedingungen, einschließlich Provision und Zahlungsplan, regelt.  
+    
+* **„Services“** bezeichnet die vom Service Provider dem Reisebüro im Rahmen dieses Vertrags bereitgestellten Dienstleistungen, einschließlich, aber nicht beschränkt auf den Zugang zur Plattform, Buchungsabwicklung und Kundensupport.  
+    
+* **„Service Provider“** bezeichnet Wink, **TRAVELIKO SINGAPORE PTE. LTD**, registriert in Singapur.  
+    
+* **„Reisebüro“** bezeichnet die Partei, die diesen Vertrag mit dem Service Provider abschließt, um Reisebuchungen über die Plattform des Service Providers zu bewerben und zu verkaufen.
 
-* **"Höhere Gewalt"**&#x62;ezeichnet jedes Ereignis außerhalb der angemessenen Kontrolle einer Partei, einschließlich, aber nicht beschränkt auf Naturkatastrophen, Kriegshandlungen, Terrorismus, zivile Unruhen, Pandemien und staatliche Maßnahmen, die eine Partei daran hindern, ihren Verpflichtungen aus dieser Vereinbarung nachzukommen.
+**2\. Nicht-Exklusivität**
 
-* **"Gast"**&#x62;ezeichnet eine Einzelperson oder Gruppe, die über das Reisebüro eine Buchung für Unterkunftsdienstleistungen vornimmt.
+2.1 Das Reisebüro agiert als nicht-exklusiver Vertriebspartner von Wink.
 
-* **„Händler der Aufzeichnung“**&#x62;ezeichnet die Stelle, die gesetzlich befugt und verantwortlich für die Zahlungsabwicklung von Gästen ist, einschließlich der Abwicklung von Zahlungstransaktionen, Rückerstattungen, Rückbuchungen und der Sicherstellung der Einhaltung von Zahlungsvorschriften. Der Vertragshändler ist die Stelle, deren Name auf der Kreditkartenabrechnung des Gastes für die mit der Buchung verbundenen Gebühren erscheint.
+2.2 Der Service wird dem Reisebüro von Wink gemäß dem Reisebüro-Registrierungsformular und den darin angegebenen Websites zur Verfügung gestellt.
 
-* **"Nettozahlung"**&#x62;ezeichnet den Betrag, der dem Unterkunftsanbieter nach Abzug der Wink-Buchungsgebühr und der Reisebüroprovision vom Buchungswert zu zahlen ist.
+**3\. Zahlungseinzug und -verteilung**
 
-* **„Zahlungen“**&#x62;ezeichnet die finanziellen Verpflichtungen, die sich aus dieser Vereinbarung ergeben, einschließlich Provisionen, Gebühren oder anderer Kosten, die von einer Partei an die andere zu zahlen sind.
+3.1 **Zahlungseinzug:** Das Reisebüro zieht die Zahlung vom Gast zum Zeitpunkt der Buchung ein.
 
-* **„Zahlungsvermittler“**&#x69;st eine hundertprozentige Tochtergesellschaft von Traveliko Singapore Pte. Ltd., die die Zahlungsdienste verwaltet und Zahlungen von Gästen einzieht, indem sie die mit ihrem Kauf verbundene Zahlungsmethode wie Kreditkarte, Debitkarte, Banküberweisung, Kryptowährungen oder PayPal usw. belastet.
+3.2 **Abzug von Gebühren:** Das Reisebüro zieht vom Buchungswert folgende Beträge ab:
 
-* **"Plattform"**&#x62;ezeichnet das vom Dienstanbieter betriebene Online-System, über das das Reisebüro Buchungen für Gäste vornehmen oder verwalten kann.
+* 1,5 % Buchungsgebühr für Wink.  
+* Provision des Reisebüros.
 
-* **„Separate Vereinbarung“**&#x62;ezeichnet den unabhängigen Vertrag zwischen dem Reisebüro und dem Unterkunftsanbieter, in dem die spezifischen Zahlungsbedingungen, einschließlich der Provision und des Zahlungsplans, aufgeführt sind.
+3.3 **Nettozahlung:** Die verbleibende Nettozahlung wird vom Reisebüro gemäß den Bedingungen einer separaten Vereinbarung mit dem jeweiligen Unterkunftsanbieter ausgezahlt. Wink haftet nicht für Zahlungen an Unterkunftsanbieter.
 
-* **„Dienstleistungen“**&#x62;ezeichnet die vom Dienstanbieter dem Reisebüro im Rahmen dieser Vereinbarung bereitgestellten Dienste, einschließlich, aber nicht beschränkt auf den Zugriff auf die Plattform, die Buchungserleichterung und den Kundensupport.
+3.4 **Separate Vereinbarung:** Das Reisebüro muss mit jedem Unterkunftsanbieter eine separate Vereinbarung über die Zahlungsbedingungen haben. Dieser Vertrag zwischen Wink und dem Reisebüro regelt nicht die Beziehung zwischen dem Reisebüro und den Unterkunftsanbietern.
 
-* **„Dienstanbieter“**&#x73;oll Wink bedeuten,**TRAVELIKO SINGAPORE PTE. LTD**in Singapur registriert.
+3.5 **Rechnungsstellung durch Wink:** Wink stellt dem Reisebüro monatlich eine Rechnung über die angesammelte 1,5 % Buchungsgebühr. Das Reisebüro ist für die fristgerechte Begleichung dieser Rechnung verantwortlich.
 
-* **„Reisebüro“**&#x62;ezeichnet die juristische Person, die diese Vereinbarung mit dem Dienstanbieter abschließt, um Reisebuchungen über die Plattform des Dienstanbieters zu bewerben und zu verkaufen.
+**4\. Rollen und Verantwortlichkeiten**
 
-**2. Nicht-Exklusivität**
+4.1 **Verantwortlichkeiten des Reisebüros:**
 
-2.1 Das Reisebüro fungiert als nicht exklusiver Vertriebshändler von Wink.
+* Das Reisebüro ist für den Einzug der Zahlungen von Gästen verantwortlich.  
+* Das Reisebüro muss die Nettozahlung fristgerecht und korrekt an die Unterkunftsanbieter gemäß deren separaten Vereinbarungen auszahlen.  
+* Das Reisebüro ist für Fehler oder Unstimmigkeiten bei der Zahlungsabwicklung verantwortlich und muss diese umgehend beheben.  
+* Das Reisebüro ist für die Zahlung der monatlichen Rechnung von Wink über die Buchungsgebühren verantwortlich.
 
-2.2 Der Service wird dem Reisebüro von Wink wie im Registrierungsformular für Reisebüros und auf der/den im Registrierungsformular für Reisebüros angegebenen Website(s) zur Verfügung gestellt.
+4.2 **Verantwortlichkeiten von Wink:**
 
-**3. Zahlungseinzug und -verteilung**
+* Wink haftet nicht für Zahlungen an Unterkunftsanbieter. Das Reisebüro trägt die alleinige Verantwortung für alle finanziellen Transaktionen mit den Unterkunftsanbietern.  
+* Wink stellt den Zugang zum System bereit und sorgt dafür, dass der Service dem Reisebüro zur Verfügung steht.
 
-3.1**Einzug von Zahlungen:**&#x44;as Reisebüro zieht die Zahlung vom Gast zum Zeitpunkt der Buchung ein.
+**5\. Geistige Eigentumsrechte**
 
-3.2**Abzug von Gebühren:**&#x44;as Reisebüro zieht vom Buchungswert Folgendes ab:
+5.1 **Lizenzen:** Jede Partei gewährt der anderen eine beschränkte, nicht-exklusive, gebührenfreie, weltweite Lizenz zur Nutzung ihres geistigen Eigentums ausschließlich zur Erfüllung der Verpflichtungen aus diesem Vertrag.
 
-* 1,5 % Buchungsgebühr für Wink.
-* Reisebüroprovision.
+5.2 **Beschränkungen:** Das Reisebüro darf keine Unterlizenzen vergeben, geistiges Eigentum oder Inhalte von Wink übertragen oder offenlegen.
 
-3.3**Nettozahlung:**&#x44;ie verbleibende Nettozahlung wird vom Reisebüro gemäß den Bedingungen einer separaten Vereinbarung zwischen dem Reisebüro und dem jeweiligen Unterkunftsanbieter an den jeweiligen Unterkunftsanbieter ausgezahlt. Wink ist nicht verpflichtet, Zahlungen an den Unterkunftsanbieter zu leisten.
+**6\. Zahlung an Wink**
 
-3.4**Separate Vereinbarung:**&#x44;as Reisebüro muss mit jedem Unterkunftsanbieter eine separate Vereinbarung über die Zahlungsbedingungen abschließen. Diese Vereinbarung zwischen Wink und dem Reisebüro regelt nicht das Verhältnis zwischen dem Reisebüro und den Unterkunftsanbietern.
+6.1 **Zahlungsplan:**
 
-3.5**Wink’s Rechnungsstellung:**&#x57;ink stellt dem Reisebüro monatlich eine Rechnung über die im Laufe des Monats aufgelaufene Buchungsgebühr von 1,5 % aus. Das Reisebüro ist für die Begleichung dieser Rechnung innerhalb der angegebenen Zahlungsfrist verantwortlich.
+* Alle an Wink zu zahlenden Beträge durch das Reisebüro sind innerhalb von 15 Tagen nach Erhalt der korrekten und vollständigen Rechnung von Wink zu zahlen, sofern nicht schriftlich anders vereinbart. Zahlungen erfolgen in USD, ohne Abzüge oder Einbehalte, außer gesetzlich vorgeschrieben.  
+  
 
-**4. Rollen und Verantwortlichkeiten**
+6.2 **Verspätete Zahlungen:**
 
-4.1**Pflichten des Reisebüros:**
+* Wird eine Zahlung nicht fristgerecht geleistet, behält sich Wink das Recht vor, Zinsen in Höhe von 5 % pro Monat oder dem gesetzlich zulässigen Höchstsatz, je nachdem, welcher niedriger ist, auf den ausstehenden Betrag ab Fälligkeit bis zur Zahlung zu berechnen. Zudem kann Wink die Dienstleistungen bis zum Zahlungseingang aussetzen. Bei Fehlern in der von Wink gestellten Rechnung ist das Reisebüro nur verpflichtet, den korrekten Rechnungsbetrag zu zahlen und unterliegt keinen Zinsen oder Strafen für nicht korrekte Rechnungsanteile.
 
-* Das Reisebüro ist für die Einziehung der Zahlungen von den Gästen verantwortlich.
-* Das Reisebüro muss die rechtzeitige und korrekte Auszahlung der Nettozahlung an die Unterkunftsanbieter gemäß ihren separaten Vereinbarungen sicherstellen.
-* Für etwaige Fehler oder Unstimmigkeiten bei der Zahlungsabwicklung ist das Reisebüro verantwortlich und muss diese umgehend beheben.
-* Das Reisebüro ist für die Zahlung der monatlichen Rechnung von Wink für die Buchungsgebühren verantwortlich.
 
-4.2**Winks Aufgaben:**
+6.3 **Rückerstattungen und Gutschriften:**
 
-* Wink haftet nicht für Zahlungen an Beherbergungsbetriebe. Das Reisebüro trägt die alleinige Verantwortung für alle finanziellen Transaktionen mit den Beherbergungsbetrieben.
-* Wink stellt den Zugriff auf das System bereit und stellt sicher, dass der Dienst dem Reisebüro zur Verfügung steht.
+* Wird eine Dienstleistung nicht erbracht oder aufgrund von Umständen, die nicht dem Reisebüro zuzurechnen sind, storniert, erstattet oder gutschreibt Wink dem Reisebüro innerhalb von 30 Tagen nach Erhalt der Stornierungsmitteilung, sofern die Servicegebühr bereits bezahlt wurde.
 
-**5. Geistige Eigentumsrechte**
 
-5.1**Lizenzen:**&#x4A;ede Partei gewährt der anderen Partei eine beschränkte, nicht exklusive, gebührenfreie, weltweite Lizenz zur Nutzung ihres geistigen Eigentums ausschließlich zum Zweck der Erfüllung der Verpflichtungen aus dieser Vereinbarung.
+6.4 **Währung und Steuern:**
 
-5.2**Einschränkungen:**&#x44;em Reisebüro ist es nicht gestattet, geistiges Eigentum oder von Wink bereitgestellte Inhalte unterzulizenzieren, zu übertragen oder offenzulegen.
+* Zahlungen erfolgen in USD. Das Reisebüro trägt alle anfallenden Steuern, Abgaben oder sonstigen Gebühren, die auf die Transaktionen dieses Vertrags anfallen, einschließlich Währungsumrechnungskosten, falls Zahlungen in einer anderen Währung als USD erfolgen.
 
-**6. Zahlung an Wink**
 
-6.1**Zahlungsplan:**
+6.5 **Zahlungsmethoden:**
 
-* Alle vom Reisebüro im Rahmen dieser Vereinbarung an Wink geschuldeten Zahlungen sind innerhalb von 15 Tagen nach Erhalt der korrekten und genauen Rechnung von Wink zu leisten, sofern nichts anderes schriftlich vereinbart wurde. Zahlungen erfolgen in USD, ohne jegliche Abzüge oder Einbehalte, sofern nicht gesetzlich vorgeschrieben.
+* Das Reisebüro zahlt per Banküberweisung, Kreditkarte oder PayPal. Alle mit der gewählten Zahlungsmethode verbundenen Gebühren trägt das Reisebüro.
 
-6.2**Zahlungsverzug:**
 
-* Geht eine fällige Zahlung aus diesem Vertrag nicht fristgerecht ein, behält sich Wink das Recht vor, Zinsen in Höhe von 5 % pro Monat oder den gesetzlich zulässigen Höchstsatz (je nachdem, welcher Betrag niedriger ist) auf den ausstehenden Betrag zu berechnen, berechnet vom Fälligkeitsdatum bis zum Zahlungsdatum. Darüber hinaus kann Wink die Erbringung von Dienstleistungen bis zum Zahlungseingang aussetzen. Sollte die von Wink eingereichte Rechnung jedoch Fehler enthalten, ist das Reisebüro lediglich zur Zahlung des korrekten Rechnungsbetrags verpflichtet. Für die Nichtzahlung des fehlerhaften Rechnungsbetrags entstehen keine Zinsen oder Strafgebühren.
+6.6 **Zahlungsstreitigkeiten:**
 
-6.3**Rückerstattungen und Gutschriften:**
+* Bei Streitigkeiten über eine Rechnung muss das Reisebüro Wink innerhalb von 10 Tagen nach Rechnungsdatum schriftlich mit detaillierter Begründung informieren. Beide Parteien verhandeln in gutem Glauben, um die Streitigkeit schnell zu lösen. Der unbestrittene Teil der Rechnung ist fristgerecht zu zahlen.
 
-* Wird eine Leistung aus Gründen, die nicht vom Reisebüro zu vertreten sind, nicht erbracht oder storniert, erstattet Wink dem Reisebüro innerhalb von 30 Tagen nach Erhalt der Stornierungsmitteilung den gezahlten Betrag zurück oder schreibt ihn gut, sofern die Servicegebühr bereits bezahlt wurde.
+**7\. Verantwortlichkeiten des Reisebüros**
 
-6.4**Währung und Steuern:**
+7.1 **Einhaltung von Gesetzen und Vorschriften:**
 
-* Zahlungen erfolgen in USD. Das Reisebüro trägt alle Steuern, Zölle und sonstigen Gebühren, die im Rahmen dieser Vereinbarung anfallen können, einschließlich der Kosten für die Währungsumrechnung, wenn Zahlungen in einer anderen Währung als USD erfolgen.
+* Das Reisebüro hält alle anwendbaren lokalen, nationalen und internationalen Gesetze, Vorschriften und Branchenstandards ein, einschließlich, aber nicht beschränkt auf Verbraucherschutz, Datenschutz und Geldwäschebekämpfung.  
+  
 
-6.5**Zahlungsarten:**
+7.2 **Korrekte Darstellung der Dienstleistungen:**
 
-* Das Reisebüro leistet Zahlungen per Banküberweisung, Kreditkarte oder PayPal. Alle mit der vom Reisebüro gewählten Zahlungsmethode verbundenen Gebühren trägt das Reisebüro.
+* Das Reisebüro stellt die über die Plattform angebotenen Dienstleistungen und Unterkünfte korrekt dar. Es ist verantwortlich dafür, dass alle Informationen für Gäste, einschließlich Beschreibungen, Preise und Verfügbarkeiten, genau und aktuell sind.
 
-6.6**Zahlungsstreitigkeiten:**
 
-* Im Falle einer Reklamation einer Rechnung muss das Reisebüro Wink innerhalb von 10 Tagen nach Rechnungsdatum unter Angabe detaillierter Gründe benachrichtigen. Beide Parteien verhandeln nach Treu und Glauben, um die Reklamation schnellstmöglich zu lösen. Der unbestrittene Teil der Rechnung ist fristgerecht zu begleichen.
+7.3 **Bewerbung der Dienstleistungen:**
 
-**7. Pflichten des Reisebüros**
+* Das Reisebüro bewirbt aktiv die über die Plattform angebotenen Dienstleistungen gemäß den Richtlinien des Service Providers. Dies umfasst Marketingaktivitäten, die Pflege aktueller Werbematerialien und die Sicherstellung, dass alle Werbeinhalte korrekt sind und den geltenden Werbestandards entsprechen.
 
-7.1**Einhaltung von Gesetzen und Vorschriften:**
 
-* Das Reisebüro muss bei der Ausübung seiner Geschäftstätigkeit alle geltenden lokalen, nationalen und internationalen Gesetze, Vorschriften und Branchenstandards einhalten, einschließlich, aber nicht beschränkt auf diejenigen zum Verbraucherschutz, Datenschutz und zur Bekämpfung der Geldwäsche.
+7.4 **Buchungsmanagement:**
 
-7.2**Genaue Darstellung der Dienste:**
+* Das Reisebüro verwaltet alle über die Plattform getätigten Buchungen, einschließlich Reservierungen, Stornierungen und Änderungen. Es ist verantwortlich für die Kommunikation mit Gästen und Unterkunftsanbietern, um eine korrekte Bearbeitung und Bestätigung aller Buchungen sicherzustellen.
 
-* Das Reisebüro ist verpflichtet, die über die Plattform angebotenen Dienstleistungen und Unterkünfte korrekt darzustellen. Das Reisebüro ist dafür verantwortlich, dass alle den Gästen zur Verfügung gestellten Informationen, insbesondere Beschreibungen, Preise und Verfügbarkeit, korrekt und aktuell sind.
 
-7.3**Werbung für Dienstleistungen:**
+7.5 **Einzug und Weiterleitung von Zahlungen:**
 
-* Das Reisebüro ist verpflichtet, die über die Plattform angebotenen Dienstleistungen gemäß den Richtlinien des Dienstleisters aktiv zu bewerben. Dies umfasst unter anderem Marketingaktivitäten, die Aktualisierung von Werbematerialien und die Sicherstellung der Richtigkeit aller Werbeinhalte und der Einhaltung der geltenden Werbestandards.
+* Das Reisebüro ist verantwortlich für den Einzug der Zahlungen von Gästen für über die Plattform getätigte Buchungen und die Weiterleitung der vereinbarten Zahlungen an die Unterkunftsanbieter und den Service Provider gemäß den Zahlungsbedingungen. Es stellt sicher, dass alle Zahlungen sicher und unter Einhaltung der geltenden Finanzvorschriften verarbeitet werden.
 
-7.4**Buchungsverwaltung:**
 
-* Das Reisebüro verwaltet alle über die Plattform getätigten Buchungen, einschließlich, aber nicht beschränkt auf die Bearbeitung von Reservierungen, Stornierungen und Änderungen. Das Reisebüro ist für die Kommunikation mit Gästen und Unterkunftsanbietern verantwortlich, um sicherzustellen, dass alle Buchungen korrekt bearbeitet und bestätigt werden.
+7.6 **Bearbeitung von Gästebeschwerden und Streitigkeiten:**
 
-7,5**Einzug und Überweisung von Zahlungen:**
+* Das Reisebüro ist der primäre Ansprechpartner für Gäste bei Beschwerden, Streitigkeiten oder Problemen im Zusammenhang mit den über die Plattform erbrachten Dienstleistungen. Es unternimmt angemessene Anstrengungen, um solche Beschwerden und Streitigkeiten schnell und in einer Weise zu lösen, die eine positive Beziehung zu Gästen und Unterkunftsanbietern aufrechterhält.
 
-* Das Reisebüro ist für die Einziehung der Zahlungen der Gäste für über die Plattform getätigte Buchungen und die Überweisung der vereinbarten Zahlungen an die Unterkunftsanbieter und den Dienstleister gemäß den Zahlungsbedingungen verantwortlich. Das Reisebüro stellt sicher, dass alle Zahlungen sicher und in Übereinstimmung mit den geltenden Finanzvorschriften abgewickelt werden.
 
-7.6**Umgang mit Beschwerden und Streitigkeiten von Gästen:**
+7.7 **Berichterstattung und Rechenschaftspflicht:**
 
-* Das Reisebüro ist der primäre Ansprechpartner für Gäste bei Beschwerden, Streitigkeiten oder Problemen im Zusammenhang mit den über die Plattform bereitgestellten Dienstleistungen. Das Reisebüro bemüht sich nach Kräften, solche Beschwerden und Streitigkeiten zeitnah und so zu lösen, dass eine positive Beziehung sowohl zu Gästen als auch zu Beherbergungsbetrieben erhalten bleibt.
+* Das Reisebüro stellt dem Service Provider regelmäßig Berichte über die Erfüllung seiner Verpflichtungen aus diesem Vertrag zur Verfügung, einschließlich Verkaufsdaten, Buchungsstatistiken und Kundenfeedback. Es ist für die Genauigkeit dieser Berichte verantwortlich und kooperiert bei Audits oder Überprüfungen seiner Geschäftstätigkeiten.
 
-7.7**Berichterstattung und Rechenschaftspflicht:**
 
-* Das Reisebüro legt dem Dienstleister regelmäßig detaillierte Berichte über die Erfüllung seiner Verpflichtungen aus diesem Vertrag vor, insbesondere Verkaufsdaten, Buchungsstatistiken und Kundenfeedback. Das Reisebüro haftet für die Richtigkeit dieser Berichte und arbeitet mit dem Dienstleister bei der Prüfung seiner Geschäftstätigkeit zusammen.
+7.8 **Vertraulichkeit:**
 
-7.8**Vertraulichkeit:**
+* Das Reisebüro wahrt die Vertraulichkeit aller proprietären Informationen und Geschäftsgeheimnisse des Service Providers, einschließlich Kundendaten, Preisinformationen und Geschäftsstrategien. Es darf diese Informationen ohne vorherige schriftliche Zustimmung des Service Providers nicht an Dritte weitergeben.
 
-* Das Reisebüro ist verpflichtet, alle geschützten Informationen und Geschäftsgeheimnisse des Dienstleisters, insbesondere Kundendaten, Preisinformationen und Geschäftsstrategien, vertraulich zu behandeln. Das Reisebüro darf diese Informationen ohne vorherige schriftliche Zustimmung des Dienstleisters nicht an Dritte weitergeben.
 
-7.9**Einhaltung der Plattformbedingungen:**
+7.9 **Einhaltung der Plattformbedingungen:**
 
-* Das Reisebüro ist verpflichtet, alle mit der Nutzung der Plattform des Dienstleisters verbundenen Bedingungen einzuhalten, einschließlich aller Aktualisierungen und Änderungen dieser Bedingungen. Das Reisebüro ist dafür verantwortlich, dass seine Mitarbeiter und Vertreter diese Bedingungen kennen und einhalten.
+* Das Reisebüro hält alle Nutzungsbedingungen der Plattform des Service Providers ein, einschließlich etwaiger Aktualisierungen oder Änderungen. Es sorgt dafür, dass seine Mitarbeiter und Vertreter diese Bedingungen kennen und einhalten.
 
-7.10**Schadloshaltung:**
 
-* Das Reisebüro verpflichtet sich, den Dienstleister von allen Ansprüchen, Schäden, Verbindlichkeiten und Kosten freizustellen, die sich aus oder im Zusammenhang mit der Verletzung dieses Vertrags durch das Reisebüro ergeben, einschließlich, aber nicht beschränkt auf die Nichteinhaltung geltender Gesetze, falsche Angaben zu Dienstleistungen oder die Nichterfüllung seiner Verpflichtungen gegenüber Gästen oder Unterkunftsanbietern.
+7.10 **Schadloshaltung:**
 
-**8. Provisionen und Gebühren**
+* Das Reisebüro stellt den Service Provider von allen Ansprüchen, Schäden, Haftungen und Kosten frei, die aus einer Verletzung dieses Vertrags durch das Reisebüro entstehen, einschließlich, aber nicht beschränkt auf die Nichteinhaltung geltender Gesetze, falsche Darstellung von Dienstleistungen oder Nichterfüllung seiner Verpflichtungen gegenüber Gästen oder Unterkunftsanbietern.
 
-8.1**Berechnung der Provision:**&#x44;ie an das Reisebüro zu zahlende Provision entspricht einem Prozentsatz (festgelegt in der Vereinbarung zwischen dem Reisebüro und dem Unterkunftsanbieter) des Buchungswerts nach Abzug der Wink-Buchungsgebühr.
+**8\. Provisionen und Gebühren**
 
-8.2**Winks Buchungsgebühr:**&#x57;ink stellt eine monatliche Rechnung über die Buchungsgebühr von 1,5 % aus. Das Reisebüro ist für die Begleichung dieser Rechnung innerhalb der von Wink festgelegten Zahlungsbedingungen verantwortlich.
+8.1 **Berechnung der Provision:** Die an das Reisebüro zu zahlende Provision ist ein Prozentsatz (festgelegt in der Vereinbarung zwischen Reisebüro und Unterkunftsanbieter) des Buchungswerts nach Abzug der Wink Buchungsgebühr.
 
-**9. Gesetzliche Bestimmungen**
+8.2 **Buchungsgebühr von Wink:** Wink stellt monatlich eine Rechnung über die 1,5 % Buchungsgebühr. Das Reisebüro ist für die fristgerechte Begleichung dieser Rechnung verantwortlich.
 
-9.1**Haftungsbeschränkung:**&#x4B;eine der Parteien haftet für indirekte, zufällige, Folge-, Sonder- oder Strafschäden, die sich aus dieser Vereinbarung ergeben.
+**9\. Rechtliche Bestimmungen**
 
-9.2**Schadloshaltung:**&#x4A;ede Partei verpflichtet sich, die andere Partei von allen Ansprüchen freizustellen und schadlos zu halten, die sich aus einer Verletzung dieser Vereinbarung oder der Fahrlässigkeit der freistellenden Partei ergeben.
+9.1 **Haftungsbeschränkung:** Keine Partei haftet für indirekte, beiläufige, Folgeschäden, Sonder- oder Strafschäden, die aus diesem Vertrag entstehen.
 
-9.3**Höhere Gewalt:**&#x4B;eine der Parteien haftet für Verzögerungen oder Leistungsausfälle aufgrund von Ursachen, die außerhalb ihrer angemessenen Kontrolle liegen, einschließlich höherer Gewalt, Naturkatastrophen, Krieg, Terrorismus, Streiks usw.
+9.2 **Schadloshaltung:** Jede Partei verpflichtet sich, die andere von Ansprüchen freizustellen, die aus einer Vertragsverletzung oder Fahrlässigkeit der schadlos haltenden Partei resultieren.
 
-**10. Laufzeit und Kündigung**
+9.3 **Höhere Gewalt:** Keine Partei haftet für Verzögerungen oder Nichterfüllung aufgrund von Ursachen außerhalb ihrer zumutbaren Kontrolle, einschließlich höherer Gewalt, Naturkatastrophen, Krieg, Terrorismus, Streiks usw.
 
-10.1**Begriff:**&#x44;iese Vereinbarung beginnt mit dem Tag der Unterzeichnung und gilt bis zur Kündigung durch eine der Parteien.
+**10\. Laufzeit und Kündigung**
 
-10.2**Beendigung:**&#x4A;ede Partei kann diese Vereinbarung nach eigenem Ermessen kündigen.
+10.1 **Laufzeit:** Dieser Vertrag beginnt mit dem Datum der Unterzeichnung und läuft bis zur Kündigung durch eine der Parteien.
 
-10.3**Nach der Kündigung:**&#x4E;ach der Kündigung muss das Reisebüro alle ausstehenden Zahlungen begleichen und die Nutzung jeglichen geistigen Eigentums oder Inhalts im Zusammenhang mit Wink einstellen.
+10.2 **Kündigung:** Jede Partei kann diesen Vertrag nach eigenem Ermessen kündigen.
 
-**11. Geltendes Recht und Streitbeilegung**
+10.3 **Nach der Kündigung:** Nach Beendigung begleicht das Reisebüro alle ausstehenden Zahlungen und stellt die Nutzung von geistigem Eigentum oder Inhalten im Zusammenhang mit Wink ein.
 
-11.1**Geltendes Recht:**&#x44;iese Vereinbarung unterliegt den Gesetzen Singapurs und wird in Übereinstimmung mit diesen ausgelegt, ohne Rücksicht auf Kollisionsnormen.
+**11\. Anwendbares Recht und Streitbeilegung**
 
-11.2**Streitbeilegung:**
+11.1 **Anwendbares Recht:** Dieser Vertrag unterliegt den Gesetzen Singapurs unter Ausschluss seiner Kollisionsnormen.
 
-11.2.1**Verhandlung:**&#x49;m Falle von Streitigkeiten, Ansprüchen, Fragen oder Meinungsverschiedenheiten, die sich aus oder im Zusammenhang mit diesem Vertrag ergeben, werden die Parteien zunächst versuchen, den Streit durch Verhandlungen in gutem Glauben beizulegen. Solche Verhandlungen beginnen nach schriftlicher Mitteilung einer Partei an die andere.
+11.2 **Streitbeilegung:** 
 
-11.2.2**Schiedsgerichtsverfahren:**&#x4B;ann der Streit nicht innerhalb von dreißig (30) Tagen durch Verhandlungen beigelegt werden, wird er einem Schiedsverfahren nach den Regeln des Singapore International Arbitration Centre (SIAC) unterzogen und endgültig beigelegt. Diese Regeln gelten durch Bezugnahme als Bestandteil dieser Klausel. Die Anzahl der Schiedsrichter beträgt eins, und der Sitz bzw. Gerichtsstand des Schiedsverfahrens ist Singapur. Die Schiedssprache ist Englisch.
+11.2.1 **Verhandlung:** Bei Streitigkeiten aus oder im Zusammenhang mit diesem Vertrag versuchen die Parteien zunächst, die Streitigkeit durch Verhandlungen in gutem Glauben zu lösen. Diese Verhandlungen beginnen mit schriftlicher Mitteilung einer Partei an die andere.
 
-11.2.3**Zuständigkeit:**&#x55;ngeachtet des Vorstehenden behält sich jede Partei das Recht vor, bei den Gerichten Singapurs eine einstweilige Verfügung oder Unterlassungsverfügung zu beantragen, um ihre Rechte oder ihr Eigentum zu schützen, während auf die Ernennung eines Schiedsrichters gewartet wird. Jedes dieser Gerichte hat die ausschließliche Zuständigkeit, eine solche Verfügung zu gewähren.
+11.2.2 **Schiedsverfahren:** Kann die Streitigkeit innerhalb von dreißig (30) Tagen nicht durch Verhandlungen gelöst werden, wird sie dem Singapore International Arbitration Centre (SIAC) zur endgültigen Entscheidung vorgelegt, dessen Regeln hiermit als Vertragsbestandteil gelten. Die Anzahl der Schiedsrichter ist eins, der Sitz des Schiedsverfahrens ist Singapur. Die Verfahrenssprache ist Englisch.
 
-**12. Höhere Gewalt**
+11.2.3 **Gerichtsbarkeit:** Ungeachtet des Vorstehenden behält sich jede Partei das Recht vor, vorläufige oder einstweilige Maßnahmen bei den Gerichten in Singapur zu beantragen, um ihre Rechte oder ihr Eigentum zu schützen, während sie auf die Ernennung eines Schiedsrichters wartet. Diese Gerichte haben die ausschließliche Zuständigkeit für solche Maßnahmen.
 
-12.1**Definition**Keine der Parteien haftet für die Nichterfüllung oder Verzögerung der Erfüllung ihrer Verpflichtungen aus diesem Vertrag, wenn diese Nichterfüllung oder Verzögerung auf ein Ereignis höherer Gewalt zurückzuführen ist. Ein „Ereignis höherer Gewalt“ bezeichnet jedes Ereignis, das außerhalb der angemessenen Kontrolle einer Partei liegt, einschließlich, aber nicht beschränkt auf Naturkatastrophen (wie Erdbeben, Überschwemmungen oder Wirbelstürme), Krieg, Terrorismus, zivile Unruhen, Pandemien, staatliche Maßnahmen oder jedes andere Ereignis, das nicht vorhersehbar oder vermeidbar war.
+**12\. Höhere Gewalt**
 
-12.2**Benachrichtigung**: Die betroffene Partei muss die andere Partei so bald wie möglich nach Eintritt eines Ereignisses höherer Gewalt schriftlich benachrichtigen. Diese Benachrichtigung muss eine Beschreibung des Ereignisses höherer Gewalt, seine voraussichtliche Dauer und die betroffenen Verpflichtungen enthalten.
+12.1 **Definition:** Keine Partei haftet für Nichterfüllung oder Verzögerung bei der Erfüllung ihrer Verpflichtungen aus diesem Vertrag, wenn diese auf ein Ereignis höherer Gewalt zurückzuführen sind. Ein „Ereignis höherer Gewalt“ ist ein Ereignis außerhalb der zumutbaren Kontrolle einer Partei, einschließlich, aber nicht beschränkt auf Naturkatastrophen (z. B. Erdbeben, Überschwemmungen, Hurrikane), Krieg, Terrorismus, zivile Unruhen, Pandemien, behördliche Maßnahmen oder andere unvorhersehbare oder unvermeidbare Ereignisse.
 
-12.3**Auswirkungen auf Dienste**:
+12.2 **Benachrichtigung:** Die betroffene Partei muss die andere Partei so bald wie zumutbar schriftlich über das Ereignis höherer Gewalt informieren. Die Mitteilung muss eine Beschreibung des Ereignisses, dessen voraussichtliche Dauer und die betroffenen Verpflichtungen enthalten.
 
-* Aussetzung von Dienstleistungen: Beeinträchtigt ein Ereignis höherer Gewalt die Fähigkeit Ihres Unternehmens, Dienstleistungen für das Reisebüro zu erbringen, werden diese Dienstleistungen für die Dauer des Ereignisses ohne Vertragsstrafe ausgesetzt. Die Zahlungsverpflichtungen des Reisebüros für die betroffenen Dienstleistungen werden während dieser Zeit ebenfalls ausgesetzt.
-* Pflichten des Reisebüros: Das Reisebüro haftet nicht für Verpflichtungen gegenüber Ihrem Unternehmen, die aufgrund des Ereignisses höherer Gewalt nicht erfüllt werden können. Das Reisebüro muss jedoch weiterhin alle anderen Verpflichtungen erfüllen, die nicht direkt von dem Ereignis betroffen sind.
+12.3 **Auswirkungen auf die Services:**
 
-12.4**Dauer und Kündigung**: Dauert das Ereignis höherer Gewalt länger als sechzig (60) Tage an, kann jede Partei diesen Vertrag durch schriftliche Mitteilung an die andere Partei kündigen. Im Falle einer solchen Kündigung haftet keine Partei gegenüber der anderen Partei, mit Ausnahme der Verpflichtungen, die vor dem Ereignis höherer Gewalt entstanden sind.
+* Aussetzung der Services: Wird die Fähigkeit Ihres Unternehmens, Services für das Reisebüro bereitzustellen, durch ein Ereignis höherer Gewalt beeinträchtigt, werden diese Services für die Dauer des Ereignisses ohne Strafe ausgesetzt. Die Zahlungsverpflichtungen des Reisebüros für die betroffenen Services sind ebenfalls während dieser Zeit ausgesetzt.  
+* Verpflichtungen des Reisebüros: Das Reisebüro haftet nicht für Verpflichtungen gegenüber Ihrem Unternehmen, die aufgrund des Ereignisses höherer Gewalt unmöglich zu erfüllen sind. Es muss jedoch alle anderen nicht direkt betroffenen Verpflichtungen weiterhin erfüllen.
 
-12,5**Wiederaufnahme der Verpflichtungen**: Sobald das Ereignis höherer Gewalt vorüber ist, werden beide Parteien ihre Verpflichtungen aus dieser Vereinbarung unverzüglich wieder aufnehmen, soweit dies vernünftigerweise praktikabel ist.
 
-**13. Vertraulichkeit**
+12.4 **Dauer und Kündigung:** Dauert das Ereignis höherer Gewalt länger als sechzig (60) Tage an, kann jede Partei diesen Vertrag mit schriftlicher Mitteilung an die andere Partei kündigen. Im Falle einer solchen Kündigung haftet keine Partei gegenüber der anderen, außer für Verpflichtungen, die vor dem Ereignis höherer Gewalt entstanden sind.
 
-13.1 Beide Parteien verpflichten sich, sämtliche geschützten Informationen vertraulich zu behandeln und sie ohne vorherige schriftliche Zustimmung nicht an Dritte weiterzugeben.
+12.5 **Wiederaufnahme der Verpflichtungen:** Nach Wegfall des Ereignisses höherer Gewalt nehmen beide Parteien ihre Verpflichtungen aus diesem Vertrag unverzüglich soweit wie zumutbar wieder auf.
 
-**14. Sonstiges**
+**13\. Vertraulichkeit**
 
-14.1**Gesamte Vereinbarung:**&#x44;iese Vereinbarung stellt die gesamte Vereinbarung zwischen den Parteien dar und ersetzt alle vorherigen Vereinbarungen oder Absprachen.
+13.1 Beide Parteien wahren die Vertraulichkeit aller proprietären Informationen und geben diese ohne vorherige schriftliche Zustimmung nicht an Dritte weiter.
 
-14.2**Änderungen:**&#x41;lle Änderungen dieser Vereinbarung müssen schriftlich erfolgen und von beiden Parteien unterzeichnet werden.
+**14\. Sonstiges**
 
-14.3**Salvatorische Klausel:**&#x53;ollte sich eine Bestimmung dieser Vereinbarung als ungültig oder nicht durchsetzbar erweisen, bleiben die übrigen Bestimmungen davon unberührt und voll wirksam.
+14.1 **Gesamtvertrag:** Dieser Vertrag stellt die vollständige Vereinbarung zwischen den Parteien dar und ersetzt alle vorherigen Vereinbarungen oder Absprachen.
 
+14.2 **Änderungen:** Änderungen dieses Vertrags bedürfen der Schriftform und der Unterzeichnung durch beide Parteien.
+
+14.3 **Salvatorische Klausel:** Sollte eine Bestimmung dieses Vertrags unwirksam oder undurchsetzbar sein, bleiben die übrigen Bestimmungen in vollem Umfang wirksam.

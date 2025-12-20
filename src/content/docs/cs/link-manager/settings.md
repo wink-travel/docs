@@ -1,30 +1,28 @@
 ---
-title: Settings
-description: >-
-  V tomto článku vám řekneme, jak si můžete přizpůsobit stránku WinkLinks pomocí
-  funkcí, které máte k dispozici v nastavení.
+title: Nastavení
+description: V tomto článku vám ukážeme, jak si můžete přizpůsobit svou stránku WinkLinks pomocí funkcí dostupných v nastavení.
 sidebar:
   order: 4
 ---
-Chcete-li spravovat nastavení WinkLinks, přejděte na`WinkLinks`v hlavním navigačním panelu a klikněte na`Settings`záložka.
 
-Zde jsou způsoby, jak můžete nakonfigurovat chování WinkLinks pomocí`Settings`:
+Pro správu nastavení WinkLinks přejděte v hlavním navigačním panelu na `WinkLinks` a klikněte na záložku `Nastavení`.
 
-* **Inteligentní**Umožněním inteligence se snažíme získat zpět`rich`obsah dostupný z webů jako například`Wink`,`Spotify`,`Instagram`,`Facebook`,`YouTube`,`X (formerly Twitter)`a další.*Např. pokud sdílíte příspěvek na Instagramu na WinkLinks, příspěvek se zobrazí tak, jak ho vidíte na Instagramu, s lajky, komentáři a možností interakce s příspěvkem.*
-* **Počáteční zobrazení**Ovládejte, jak vaše publikum nejprve interaguje s vaším webem a vidí váš obsah. Máte k dispozici tři možnosti:
-  * `Column-based`design. Toto je náš preferovaný design a pokud nezobrazíte příliš mnoho obsahu, bude na vaší stránce vypadat skvěle. Může se však stát, že`heavy`pokud sdílíte hodně bohatého obsahu.
-  * `Row-based`design. To je jeden ze způsobů, jak snížit zátěž obsahu pro prohlížeče, ale doporučujeme, aby obsah měl podobné množství textu, aby se karty lépe zarovnaly.
-  * `List-based`design. Většina ostatních správců odkazů zobrazuje jednoduchý seznam s URL adresou a minimálním obsahem. Tento způsob zobrazení obsahu zvolte, pokud máte hodně obsahu a chcete ho zobrazit co nejrychleji.
-* **Profilový obrázek**V horní části každé stránky WinkLinks se nachází profilový obrázek vašeho účtu spolu s popisem vašeho účtu. Profilový obrázek můžete zobrazit dvěma způsoby:
-  * `Circle`Pokud je na obrázku vy nebo cokoli jiného, ​​co se vejde do kulatého obalu, doporučujeme použít kruhový styl.
-  * `Rectangle`Pokud je logo vaší společnosti vaším profilovým obrázkem, doporučujeme použít obdélníkový typ, protože většina firemních log má obdélníkový tvar.
-* **Přizpůsobení**Vyberte si, jaké přizpůsobení chcete použít pro svou stránku WinkLinks. To ovlivní barvy motivu i itinerář při zobrazování karet inventáře, map nebo mřížek Wink.
+Zde jsou způsoby, jak můžete konfigurovat chování WinkLinks pomocí `Nastavení`:
+
+- **Inteligentní** Povolením inteligence se snažíme získat `bohatý` obsah dostupný ze stránek jako jsou `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (dříve Twitter)` a další. *např. pokud sdílíte příspěvek z IG na WinkLinks, příspěvek se zobrazí tak, jak ho vidíte na IG, s počtem lajků, komentářů a možností interakce s příspěvkem.*
+- **Počáteční zobrazení** Ovládejte, jak vaše publikum poprvé interaguje s vaší stránkou a vidí váš obsah. Máte k dispozici tři možnosti:
+    - `Sloupcové` uspořádání. Toto je náš preferovaný design a pokud nezobrazujete příliš mnoho obsahu, bude na vaší stránce vypadat skvěle. Může se však stát `těžkým`, pokud sdílíte hodně bohatého obsahu.
+    - `Řádkové` uspořádání. Toto je jeden ze způsobů, jak učinit váš obsah prohlížeči méně náročným, ale doporučujeme, aby váš obsah měl podobné množství textu, aby se karty lépe zarovnaly.
+    - `Seznamové` uspořádání. Většina ostatních správců odkazů zobrazuje jednoduchý seznam s URL a minimálním obsahem. Zvolte tento způsob zobrazení, pokud máte hodně obsahu a chcete ho zobrazit co nejrychleji.
+- **Profilový obrázek** V horní části každé stránky WinkLinks je profilový obrázek vašeho účtu spolu s popisem účtu. Profilový obrázek můžete zobrazit dvěma způsoby:
+    - `Kruh` Doporučujeme používat kruhový styl, pokud je váš obrázek vás samotných nebo cokoli, co se vejde do kulatého rámečku.
+    - `Obdélník` Doporučujeme používat obdélníkový styl, pokud je vaším profilovým obrázkem logo firmy, protože většina firemních log má obdélníkový tvar.
+- **Přizpůsobení** Vyberte, jaké přizpůsobení chcete použít pro svou stránku WinkLinks. Toto ovlivňuje barvy motivu i váš itinerář při zobrazování karet inventáře Wink, map nebo mřížek.
 
 ## API
 
-Vývojáři, kteří chtějí spravovat`WinkLinks`může zamířit k[Vývojáři > API > WinkLinks](/developers/apis/#winklinks-api).
+Vývojáři, kteří chtějí spravovat `WinkLinks`, mohou přejít na [Developers > API > WinkLinks](/cs/developers/apis/#winklinks-api).
 
 ## Další čtení
 
-* Přečtěte si více o[Úpravy](/studio/customization).
-
+- Přečtěte si více o [Přizpůsobení](/cs/studio/customization).

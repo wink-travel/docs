@@ -1,43 +1,42 @@
 ---
-title: Comparison
-description: >-
-  Preberite, kako se Wink primerja s podobnimi spletnimi potovalnimi podjetji in
-  kakšne so nekatere prednosti pridružitve Winku.
+title: Primerjava
+description: Spoznajte, kako se Wink primerja s podobnimi spletnimi potovalnimi podjetji in kakšne so nekatere prednosti pridružitve Wink.
 sidebar:
   order: 5
 ---
-Preberite, kako se Wink primerja z drugimi spletnimi potovalnimi segmenti na trgu. Spodaj je kratka razčlenitev funkcij, za katere smo menili, da so pomembne za primerjavo.
 
-## Matrika značilnosti
+Spoznajte, kako se Wink primerja z drugimi spletnimi potovalnimi segmenti na trgu. Spodaj je hiter pregled funkcij, za katere smo menili, da so pomembne za primerjavo.
 
-| Funkcija | Pomežik | OTA | IBE | Bed Bank
+## Matrika funkcij
+
+| Funkcija | Wink | OTA | IBE | Bed Bank
 | ----------------------- | -- | -- | -- | -- |
-| Internetni rezervacijski sistem | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Izložba s povezavo v bio | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Partnersko omrežje B2B | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Podpora potovalnim agentom | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Distribucija in trženje s pomočjo umetne inteligence | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Družbeno prijazna orodja | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Kanal B2C brez provizije | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Brezplačen vnos hotelov na Googlu | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Dostop do spletne komponente / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Neposredni odnosi | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Dogovorjene provizije na prodajni kanal | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Povezljivost s upravljalnikom kanalov in PMS | 🟢 | 🟢 | 🟢 | 🟢 |
-| Dobavitelj je lastnik stranke | 🟢 | ⚫️ | 🟢 | 🟢 |
-| Spremljanje donosnosti naložbe | 🟢 | 🟢 | ⚫️ | ⚫️ |
-| Plačilo na uspešnost | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Integriran plačilni prehod | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Izplačila z Wise | 🟢 | 🟢 | ⚫️ | ⚫️ |
+| Internetni rezervacijski sistem | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Link-in-bio prodajalna | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| B2B partnerska mreža | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Podpora potovalnim agentom | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Distribucija in marketing z AI pomočjo | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Orodja prijazna družbenim omrežjem | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| B2C kanal brez provizij | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Brezplačen Google Hotel listing | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Dostop do spletnih komponent / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Neposredni odnosi | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Pogajljive provizije po prodajnem kanalu | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Povezljivost z upravljalcem kanalov in PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Dobavitelj ima lastništvo nad stranko | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| Sledenje ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Plačilo po uspešnosti | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Integriran plačilni prehod | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Izplačila preko Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
-## Wink proti internetnemu rezervacijskemu sistemu (IBE)
 
-Nekateri hoteli nas poskušajo primerjati s svojim spletnim rezervacijskim sistemom, ki je priložen njihovemu upravljalniku kanalov, in nas prosijo, naj jim ponudimo fiksno mesečno ceno, ki temelji na številu ključev njihove nepremičnine.
+## Wink vs Internetni rezervacijski sistem (IBE)
 
-Nismo IBE in upajmo, [Akademija Wink](/) pomaga razjasniti to. Vsaka storitev ima svoje prednosti in slabosti. Če vaša IBE ustreza vaši nepremičnini, pri tem vztrajajte.
-Wink obstaja zato, da zapolni več vrzeli v potovalni industriji in vse združi na enem mestu.
+Nekateri hoteli nas poskušajo primerjati z njihovim internetnim rezervacijskim sistemom, ki je priložen njihovemu upravljalcu kanalov, in nas prosijo, da jim ponudimo fiksno mesečno ceno glede na število sob njihovega objekta.
 
-:::nasvet
-Obstoječega IBE vam ni treba zamenjati. Vendar priporočamo, da na enem od svojih računov družbenih medijev preizkusite naš sistem za rezervacije ali upravitelja povezav, da vidite, kako se obnesejo. Če ni rezervacij, ne plačate ničesar – kaj lahko izgubite? 😉
+Nismo IBE in upamo, da [Wink Academy](/sl/) pomaga to razjasniti. Vsaka storitev ima svoje prednosti in slabosti. Če vaš IBE deluje za vaš objekt, ga uporabljajte.  
+Wink obstaja, da zapolni več vrzeli v potovalni industriji in vse to združi na enem mestu.
+
+:::tip
+Ni vam treba zamenjati obstoječega IBE. Vendar priporočamo, da preizkusite naš družbeno prijazen rezervacijski sistem ali upravljalnik povezav na enem izmed vaših družbenih omrežij, da vidite, kako se obnesejo. Ne plačate ničesar, če ni rezervacij – Kaj imate za izgubiti? 😉
 :::
-

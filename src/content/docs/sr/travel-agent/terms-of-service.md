@@ -1,252 +1,252 @@
 ---
-title: Услови коришћења услуге
-description: >-
-  Овај чланак садржи наше услове коришћења услуга за туристичке агенте на Wink
-  платформи.
+title: Uslovi korišćenja
+description: Ovaj članak sadrži naše uslove korišćenja za turističke agente na Wink platformi.
 sidebar:
   order: 4
 ---
-:::напомена
-Последње ажурирање 30.10.2024.
+
+:::note
+Poslednja izmena 2024-10-30
 :::
 
-:::опрез\[Обавештење]
-Доле наведени услови коришћења важе за туристичке агенте који желе сами да прикупљају и исплаћују средства.
-Ово се може урадити само путем нашег API-ја и само од стране туристичких агената који су назначили да то желе да ураде током процеса регистрације.
+:::caution[Obaveštenje]
+Uslovi korišćenja ispod važe za turističke agente koji žele da samostalno prikupljaju i raspoređuju sredstva.  
+To se može obaviti samo putem našeg API-ja i samo od strane turističkih agenata koji su to naznačili tokom procesa registracije.
 
-Сви туристички агенти и даље могу да резервишу преко нашег портала за туристичке агенте користећи Wink-ов систем плаћања са својом или кредитном картицом путника. Стога, сви туристички агенти такође морају да прихвате услове коришћења услуге где је Wink-ов систем плаћања регистровани трговац.
+Svi turistički agenti i dalje mogu da rezervišu preko našeg portala za turističke agente koristeći Wink-ov platni prolaz sa svojom ili kreditnom karticom putnika. Stoga, svi turistički agenti takođe moraju pristati na uslove korišćenja gde je Wink-ov platni prolaz trgovac zapisan u evidenciji.
 
-Ти услови су доступни под[Партнерски портал > Услови коришћења услуге](/studio/terms-of-service).
+Ti uslovi su dostupni pod [Affiliate Portal > Terms of Service](/sr/studio/terms-of-service).
 :::
 
-**ОПШТИ УСЛОВИ И ОДРЕДБЕ WINK-а**\
-**ЗА ПУТНИЧКЕ АГЕНТЕ (Овлашћени трговац)**
+**OPŠTI USLOVI I ODREDBE WINK-A**  
+**ZA TURISTIČKE AGENTE (Trgovac u evidenciji)**
 
-**ИЗМЕЂУ:**
+**IZMEĐU:**
 
-1. **ТРАВЕЛИКО СИНГАПУР ПТЕ. ЛТД.**&#x43A;омпанија основана у складу са законима Сингапура и са регистрованим седиштем на адреси #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 са ПДВ бројем 201437335D (у даљем тексту „Wink“) и
+1. **TRAVELIKO SINGAPORE PTE. LTD.**, kompanije registrovane po zakonima Singapura sa sedištem na adresi \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 i poreskim brojem 201437335D (u daljem tekstu "Wink") i  
+     
+2. **TURISTIČKOG AGENTA** čiji su podaci navedeni u obrascu za registraciju turističkog agenta ili su dostavljeni online (u daljem tekstu "Turistički agent").
 
-2. **ПУТНИЧКИ АГЕНТ**чији су подаци наведени у Обрасцу за регистрацију туристичког агента или су достављени онлајн („Туристички агент“).
+**S OBZIROM NA TO DA:**
 
-**С ОБЗИРАЈУЋИ НА ТО:**
+(i) Wink upravlja online sistemom (u daljem tekstu "Sistem") preko kojeg učestvujući pružaoci smeštaja (zajedno "Pružaoci smeštaja") mogu učiniti svoj inventar dostupnim za rezervaciju, a Turistički agent može praviti rezervacije kod takvih Pružaoca smeštaja u ime svojih gostiju (u daljem tekstu "Usluga");
 
-(i) Wink управља онлајн системом („Систем“) путем којег Смештајни објекти који учествују (заједнички „Пружаоци смештаја“) могу да ставе свој инвентар на располагање за резервацију и путем којег Туристички агент може да изврши резервације код таквих Пружалаца смештаја у име својих Гостију („Услуга“);
+(ii) Wink ne poseduje, ne kontroliše, ne nudi niti upravlja bilo kojim oglasima. Wink nije strana u ugovorima zaključenim direktno između Pružaoca smeštaja i gostiju. Wink ne deluje kao agent u bilo kom svojstvu za Pružaoca smeštaja;
 
-(ii) Винк не поседује, не контролише, не нуди нити управља било којим огласима. Винк није страна у уговорима закљученим директно између Пружалаца смештаја и Гостију. Винк не делује као агент ни у ком својству за Пружаоце смештаја;
+(iii) Wink održava i koristi sopstvene veb sajtove (u daljem tekstu "Wink veb sajtovi") i takođe pruža Uslugu i linkove ka Usluzi na veb sajtovima trećih lica;
 
-(iii) Винк одржава и користи сопствене веб странице („Винк веб странице“), а такође пружа Услугу и линкове до Услуге на веб страницама трећих страна;
+(iv) Turistički agent poseduje, kontroliše, hostuje i/ili upravlja jednim ili više internet domena, veb sajtova ili aplikacija i želi da bude trgovac u evidenciji dok koristi Uslugu.
 
-(iv) Туристички агент поседује, контролише, хостује и/или управља једним или више интернет домена, веб локација или апликација и жели да буде регистровани трговац док користи Услугу.
+(v) Turistički agent i Wink žele da Turistički agent učini Uslugu (direktno ili indirektno) dostupnom svojim kupcima i posetiocima veb sajtova i aplikacija Turističkog agenta pod uslovima i odredbama (u daljem tekstu "Uslovi") kako je navedeno u ovom Ugovoru.
 
-(в) Туристички агент и Wink желе да Туристички агент учини Услугу (директно или индиректно) доступном својим клијентима и посетиоцима Веб странице(а) и Апликације(а) Туристичког агента и у таквом облику и под таквим условима и одредбама (у даљем тексту „Услови“) како је наведено у овом Уговору.
+**STOGA, STRANE SE SLAŽU NA SLEDEĆE:**
 
-**САДА, СТОГА, СТРАНЕ СЕ САГЛАШУ О СЛЕДЕЋЕМ:**
+**1\. Definicije**
 
-**1. Дефиниције**
+1. Pored termina definisanih na drugim mestima u ovom Ugovoru, sledeće definicije važe kroz ceo Ugovor osim ako nije drugačije naznačeno:
 
-1. Поред термина дефинисаних на другим местима у овом Уговору, следеће дефиниције се примењују у целом овом Уговору, осим ако није другачије намерно:
+* **"Smeštaj"** označava bilo koji oblik smeštaja uključujući, ali ne ograničavajući se na hotele, motele, pansione, bed & breakfast, hostele, vile, apartmane, lovačke kuće, prenoćišta, odmarališta i bilo koji drugi (tip) pružaoca smeštaja (bilo da je dostupan na Wink veb sajtovima ili ne).  
+    
+* **"Pružaoci smeštaja"** označavaju bilo koju stranu koja kreira nalog na Platformi sa namerom da prodaje svoj inventar soba i pratećih usluga preko Wink platforme.  
+    
+* **"Rezervacija"** znači rezervaciju ili narudžbinu koju Gost pravi preko Turističkog agenta za usluge smeštaja koje nudi Pružaoc smeštaja.
 
-* **"Смештај"**&#x437;начи било који облик смештаја, укључујући, али не ограничавајући се на хотеле, мотеле, пансионе, пансионе са доручком, хостеле, виле, апартмане, ложе, гостионице, одмаралишта и било коју другу (врсту) смештаја или пружаоца услуга смештаја (без обзира да ли је доступан на веб-сајтовима Wink или не).
+* **"Naknada za rezervaciju"** znači 1,5% odbijeno od ukupnog iznosa koji Turistički agent prikupi od Gosta, a koja se plaća Wink-u kao naknada za obradu.
 
-* **„Пружалац(и) смештаја“**&#x437;начи свака Уговорна страна која креира налог код Пружаоца услуга са намером да продаје сопствене собе и инвентар помоћних услуга путем Wink платформе.
+* **"Vrednost rezervacije"** znači ukupni iznos koji Turistički agent prikupi od Gosta za rezervaciju.
 
-* **„Резервација“**&#x43E;значава резервацију или поруџбину коју је Гост извршио преко Туристичке агенције за услуге смештаја које нуди Давалац смештаја.
+* **"Provizija"** znači iznos koji Pružaoc smeštaja duguje Turističkom agentu, obračunat po dogovorenom procentu iz "Posebnog ugovora" od vrednosti rezervacije.  
+    
+* **“Viša sila”** označava bilo koji događaj van razumne kontrole strane, uključujući ali ne ograničavajući se na prirodne katastrofe, ratne sukobe, terorizam, građanske nemire, pandemije i državne mere, koji sprečavaju stranu da ispuni svoje obaveze iz ovog Ugovora.  
+    
+* **“Gost”** označava pojedinca ili grupu koja pravi rezervaciju preko Turističkog agenta za usluge smeštaja.  
+    
+* **"Trgovac u evidenciji"** odnosi se na entitet koji je zakonski ovlašćen i odgovoran za obradu uplata od Gostiju, uključujući rukovanje transakcijama plaćanja, povraćajima, povratima sredstava i osiguravanje usklađenosti sa propisima o plaćanju. Trgovac u evidenciji je entitet čije ime se pojavljuje na izvodu kreditne kartice gosta za naplate vezane za rezervaciju.
 
-* **„Накнада за резервацију“**&#x437;начи 1,5% одбијених од укупног износа који је туристички агент наплатио од госта, а који се плаћа компанији Wink као накнада за обраду.
+* **"Neto uplata"** znači iznos koji se isplaćuje Pružaocu smeštaja nakon odbitka Wink naknade za rezervaciju i provizije Turističkog agenta od vrednosti rezervacije.  
+    
+* **“Uplate”** označavaju finansijske obaveze koje proizilaze iz ovog Ugovora, uključujući provizije, naknade ili druge troškove, koje jedna strana duguje drugoj.
 
-* **„Вредност резервације“**&#x437;начи укупан износ који је туристички агент наплатио од госта за резервацију.
+* **"Posrednik u plaćanju"** je u potpunosti u vlasništvu Traveliko Singapore Pte. Ltd. i upravlja uslugama plaćanja, prikupljajući uplate od gostiju naplaćujući način plaćanja povezan sa njihovom kupovinom kao što su kreditna kartica, debitna kartica, bankovni transfer, kriptovalute ili PayPal itd.  
+    
+* **“Platforma”** označava online sistem kojim upravlja Pružaoc usluge preko kojeg Turistički agent može praviti ili upravljati rezervacijama za goste.
 
-* **„Комисија“**&#x437;начи износ који Пружалац смештаја дугује туристичком агенту, обрачунат по процентуалној вредности договореној у „Посебном уговору“ од вредности резервације.
+* **"Poseban ugovor"** znači nezavisni ugovor između Turističkog agenta i Pružaoca smeštaja koji detaljno opisuje specifične uslove plaćanja, uključujući proviziju i raspored plaćanja.  
+    
+* **“Usluge”** označavaju usluge koje Pružaoc usluge pruža Turističkom agentu u okviru ovog Ugovora, uključujući ali ne ograničavajući se na pristup Platformi, olakšavanje rezervacija i korisničku podršku.  
+    
+* **“Pružaoc usluge”** označava Wink, **TRAVELIKO SINGAPORE PTE. LTD** registrovanu u Singapuru.  
+    
+* **“Turistički agent”** označava entitet koji zaključuje ovaj Ugovor sa Pružaocem usluge radi promocije i prodaje turističkih rezervacija preko Platforme Pružaoca usluge.
 
-* **„Виша сила“**&#x437;начиће сваки догађај ван разумне контроле стране, укључујући, али не ограничавајући се на природне катастрофе, ратне акте, тероризам, грађанске немире, пандемије и владине акције, који спречавају страну да испуни своје обавезе према овом Уговору.
+**2\. Neekskluzivnost**
 
-* **„Гост“**&#x43E;значава појединца или групу која резервише услуге смештаја преко туристичке агенције.
+2.1 Turistički agent će delovati kao neekskluzivni distributer Wink-a.
 
-* **„Регистровани трговац“**&#x43E;дноси се на ентитет који је законски овлашћен и одговоран за обраду плаћања од стране Гостију, укључујући руковање платним трансакцијама, повраћаје новца, повраћаје средстава и обезбеђивање поштовања прописа о плаћању. Трговац регистрован је ентитет чије се име појављује на изводу кредитне картице Госта за трошкове везане за Резервацију.
+2.2 Usluga će biti dostupna Turističkom agentu od strane Wink-a kako je navedeno u obrascu za registraciju Turističkog agenta i na veb sajtovima navedenim u obrascu za registraciju.
 
-* **„Нето плаћање“**&#x437;начи износ који треба платити Пружаоцу смештаја након одбитка накнаде за резервацију компаније Wink и провизије туристичког агента од вредности резервације.
+**3\. Prikupljanje i raspodela uplata**
 
-* **„Плаћања“**&#x43E;значава финансијске обавезе које произилазе из овог Уговора, укључујући провизије, накнаде или друге трошкове, које једна страна плаћа другој.
+3.1 **Prikupljanje uplata:** Turistički agent prikuplja uplatu od Gosta u trenutku rezervacije.
 
-* **„Посредник за плаћање“**&#x458;е подружница у потпуном власништву компаније Traveliko Singapore Pte. Ltd. која управља услугама плаћања, наплаћујући плаћања од гостију наплаћивањем начина плаћања повезаног са њиховом куповином, као што су кредитна картица, дебитна картица, банковни трансфер, криптовалуте или PayPal итд.
+3.2 **Odbitak naknada:** Turistički agent odbija sledeće od vrednosti rezervacije:
 
-* **„Платформа“**&#x43E;значава онлајн систем којим управља Пружалац услуга путем којег Туристички агент може да врши или управља резервацијама за госте.
+* 1,5% naknada za rezervaciju za Wink.  
+* Provizija Turističkog agenta.
 
-* **„Одвојни споразум“**&#x437;начи независни уговор између туристичког агента и пружаоца смештаја који детаљно прецизира специфичне услове плаћања, укључујући провизију и распоред плаћања.
+3.3 **Neto uplata:** Preostala neto uplata se isplaćuje od strane Turističkog agenta odgovarajućem Pružaocu smeštaja u skladu sa uslovima posebnog ugovora između Turističkog agenta i Pružaoca smeštaja. Wink nije odgovoran za isplate Pružaocima smeštaja.
 
-* **„Услуге“**&#x43E;значава услуге које Пружалац услуга пружа туристичком агенту у складу са овим Уговором, укључујући, али не ограничавајући се на приступ Платформи, олакшавање резервације и корисничку подршку.
+3.4 **Poseban ugovor:** Turistički agent mora imati poseban ugovor sa svakim Pružaocem smeštaja koji detaljno opisuje uslove plaćanja. Ovaj Ugovor između Wink-a i Turističkog agenta ne reguliše odnos između Turističkog agenta i Pružaoca smeštaja.
 
-* **„Пружалац услуга“**&#x437;начиће Wink,**Травелико Сингапур ПТЕ. Лтд.**&#x440;егистрован у Сингапуру.
+3.5 **Fakturisanje Wink-a:** Wink će izdavati mesečni račun Turističkom agentu za 1,5% naknade za rezervaciju akumulirane tokom meseca. Turistički agent je odgovoran za izmirenje ovog računa u roku definisanom uslovima plaćanja.
 
-* **„Туристички агент“**&#x43E;значаваће ентитет који закључује овај Уговор са Пружаоцем услуга ради промоције и продаје резервација путовања путем Платформе Пружаоца услуга.
+**4\. Uloge i odgovornosti**
 
-**2. Неексклузивност**
+4.1 **Odgovornosti Turističkog agenta:**
 
-2.1 Туристички агент ће пословати као неексклузивни дистрибутер компаније Wink.
+* Turistički agent je odgovoran za prikupljanje uplata od Gostiju.  
+* Turistički agent mora osigurati pravovremenu i tačnu isplatu neto uplate Pružaocima smeštaja u skladu sa njihovim posebnim ugovorima.  
+* Turistički agent je odgovoran za bilo kakve greške ili neslaganja u obradi uplata i mora ih odmah ispraviti.  
+* Turistički agent je odgovoran za plaćanje mesečnog računa Wink-a za naknade za rezervaciju.
 
-2.2 Wink ће учинити Услугу доступном туристичком агенту како је наведено у Обрасцу за регистрацију туристичког агента и на веб-сајту(ама) наведеном(им) у Обрасцу за регистрацију туристичког агента.
+4.2 **Odgovornosti Wink-a:**
 
-**3. Наплата и дистрибуција**
+* Wink nije odgovoran za isplate Pružaocima smeštaja. Turistički agent ima isključivu odgovornost za sve finansijske transakcije sa Pružaocima smeštaja.  
+* Wink će obezbediti pristup Sistem i osigurati da je Usluga dostupna Turističkom agentu.
 
-3.1**Наплата:**&#x422;уристичка агенција ће наплатити плаћање од госта у тренутку резервације.
+**5\. Prava intelektualne svojine**
 
-3.2**Одбитак накнада:**&#x422;уристички агент ће од вредности резервације одбити следеће:
+5.1 **Licence:** Svaka strana daje drugoj ograničenu, neekskluzivnu, besplatnu, svetsku licencu za korišćenje svoje intelektualne svojine isključivo u svrhu ispunjenja obaveza iz ovog Ugovora.
 
-* Накнада за резервацију од 1,5% за Wink.
-* Комисија за туристичке агенте.
+5.2 **Ograničenja:** Turistički agent ne sme davati podlicencu, prenositi ili otkrivati bilo koju intelektualnu svojinu ili sadržaj koji mu je obezbedio Wink.
 
-3.3**Нето плаћање:**&#x41F;реостали нето износ исплатиће туристичка агенција одговарајућем пружаоцу смештаја у складу са условима посебног уговора између туристичке агенције и пружаоца смештаја. Винк неће бити одговоран за вршење било каквих плаћања пружаоцу смештаја.
+**6\. Plaćanje Wink-u**
 
-3.4**Посебан уговор:**&#x422;уристичка агенција је дужна да има посебан уговор са сваким пружаоцем смештаја у којем се детаљно наводе услови плаћања. Овај уговор између компаније Wink и туристичке агенције не регулише однос између туристичке агенције и пружаоца смештаја.
+6.1 **Raspored plaćanja:**
 
-3,5**Винково фактурисање:**&#x412;инк ће издати месечну фактуру туристичком агенту за накнаду за резервацију од 1,5% акумулирану током месеца. Туристички агент је одговоран за измирење ове фактуре у оквиру наведених услова плаћања.
+* Sve uplate koje Turistički agent duguje Wink-u po ovom Ugovoru moraju biti izvršene u roku od 15 dana od prijema ispravnog i tačnog računa od Wink-a, osim ako nije drugačije dogovoreno pismenim putem. Uplate se vrše u USD, bez ikakvih odbitaka ili zadržavanja osim ako zakon ne zahteva drugačije.  
+  
 
-**4. Улоге и одговорности**
+6.2 **Kašnjenje u plaćanju:**
 
-4.1**Одговорности туристичког агента:**
+* Ukoliko uplata po ovom Ugovoru nije primljena do roka, Wink zadržava pravo da naplati kamatu po stopi od 5% mesečno ili maksimalnoj dozvoljenoj zakonskoj stopi, koja je niža, na neplaćeni iznos, obračunatu od datuma dospeća do datuma plaćanja. Takođe, Wink može obustaviti usluge dok uplata ne bude izvršena. Međutim, ukoliko postoje greške u računu koji je dostavio Wink, Turistički agent je obavezan da plati samo ispravan i tačan deo računa i neće biti podložan kamatama ili kaznama za neplaćeni netačan deo računa.
 
-* Туристички агент је одговоран за наплату од гостију.
-* Туристички агент мора да обезбеди благовремену и тачну исплату нето уплате пружаоцима смештаја у складу са њиховим посебним уговорима.
-* Туристички агент је одговоран за све грешке или неслагања у обради плаћања и мора их одмах исправити.
-* Туристички агент је одговоран за плаћање Винк-ове месечне фактуре за накнаде за резервацију.
+6.3 **Povraćaji i krediti:**
 
-4.2**Винкове одговорности:**
+* U slučaju da usluga nije pružena ili je otkazana zbog okolnosti koje nisu na strani Turističkog agenta, Wink će refundirati ili kreditirati Turističkog agenta u roku od 30 dana od prijema obaveštenja o otkazivanju, pod uslovom da je naknada za uslugu već plaćena.
 
-* Винк неће бити одговоран за плаћања пружаоцима смештаја. Туристички агент сноси искључиву одговорност за све финансијске трансакције са пружаоцима смештаја.
-* Винк ће обезбедити приступ Систему и осигурати да је Услуга доступна туристичком агенту.
+6.4 **Valuta i porezi:**
 
-**5. Права интелектуалне својине**
+* Uplate se vrše u USD. Turistički agent je odgovoran za sve poreze, dažbine ili druge troškove koji mogu biti primenljivi na transakcije po ovom Ugovoru, uključujući troškove konverzije valute ako se uplate vrše u valuti različitoj od USD.
 
-5.1**Лиценце:**&#x421;вака Страна даје другој ограничену, неексклузивну, бесплатну, светску лиценцу за коришћење њене интелектуалне својине искључиво у сврху испуњавања обавеза из овог Уговора.
+6.5 **Načini plaćanja:**
 
-5.2**Ограничења:**&#x422;уристички агент неће подлиценцирати, преносити или откривати било коју интелектуалну својину или садржај који је обезбедио Wink.
+* Turistički agent će vršiti uplate putem bankovnog transfera, kreditne kartice ili PayPal-a, a sve naknade povezane sa izabranim načinom plaćanja snosi Turistički agent.
 
-**6. Плаћање компанији Wink**
+6.6 **Sporovi oko plaćanja:**
 
-6.1**Распоред плаћања:**
+* U slučaju spora oko bilo kog računa, Turistički agent će obavestiti Wink u roku od 10 dana od datuma računa, navodeći detaljne razloge spora. Oba partnera će u dobroj veri pregovarati kako bi spor brzo rešili. Nesporni deo računa biće plaćen do roka dospeća.
 
-* Сва плаћања која туристички агент дугује Винку по овом Уговору биће извршена у року од 15 дана од пријема исправне и тачне фактуре од Винка, осим ако није другачије писмено договорено. Плаћања ће бити вршена у америчким доларима, без икаквих одбитака или задржавања осим ако то није прописано законом.
+**7\. Odgovornosti Turističkog agenta**
 
-6.2**Закаснела плаћања:**
+7.1 **Usklađenost sa zakonima i propisima:**
 
-* Уколико било која уплата која доспева по овом Уговору није примљена до датума доспећа, Винк задржава право да наплати камату по стопи од 5% месечно или максималној стопи дозвољеној законом, шта год је нижа од неизмиреног износа, рачунато од датума доспећа до датума плаћања. Поред тога, Винк може обуставити услуге док се уплата не прими. Међутим, ако постоје грешке или нетачности у фактури коју је доставио Винк, туристички агент ће бити дужан да изврши плаћање само исправног и тачног дела фактуре и неће бити подложан никаквој камати или казни за неплаћање погрешног дела фактуре.
+* Turistički agent će se pridržavati svih važećih lokalnih, nacionalnih i međunarodnih zakona, propisa i industrijskih standarda u obavljanju svoje delatnosti, uključujući ali ne ograničavajući se na zaštitu potrošača, zaštitu podataka i sprečavanje pranja novca.  
+  
 
-6.3**Повраћај новца и кредити:**
+7.2 **Tačna prezentacija usluga:**
 
-* У случају да услуга није пружена или је отказана због околности које нису кривице туристичког агента, Wink ће вратити новац или кредитирати туристичког агента у року од 30 дана од пријема обавештења о отказивању, под условом да је накнада за услугу већ плаћена.
+* Turistički agent će tačno predstavljati usluge i smeštaje ponuđene preko Platforme. Turistički agent je odgovoran za osiguranje da su sve informacije date Gostima, uključujući opise, cene i dostupnost, tačne i ažurirane.
 
-6.4**Валута и порези:**
+7.3 **Promocija usluga:**
 
-* Плаћања ће бити вршена у америчким доларима. Туристички агент ће бити одговоран за све порезе, царине или друге трошкове који могу бити применљиви на трансакције по овом Уговору, укључујући трошкове конверзије валута ако се плаћања врше у валути која није амерички долар.
+* Turistički agent će aktivno promovisati usluge ponuđene preko Platforme u skladu sa smernicama koje pruža Pružaoc usluge. To uključuje, ali nije ograničeno na marketinške aktivnosti, održavanje ažuriranih promotivnih materijala i osiguravanje da sav promotivni sadržaj bude tačan i u skladu sa važećim standardima oglašavanja.
 
-6,5**Начини плаћања:**
+7.4 **Upravljanje rezervacijama:**
 
-* Туристички агент ће вршити плаћања путем банковног трансфера, кредитне картице или PayPal-а, а све накнаде повезане са начином плаћања који је изабрао туристички агент сноси туристички агент.
+* Turistički agent će upravljati svim rezervacijama napravljenim preko Platforme, uključujući obradu rezervacija, otkazivanja i izmena. Turistički agent je odgovoran za komunikaciju sa Gostima i Pružaocima smeštaja kako bi osigurao da su sve rezervacije tačno obrađene i potvrđene.
 
-6.6**Спорови око плаћања:**
+7.5 **Prikupljanje i prenos uplata:**
 
-* У случају спора око било које фактуре, туристички агент ће обавестити Wink у року од 10 дана од датума фактуре, наводећи детаљне разлоге за спор. Обе стране ће преговарати у доброј вери како би спор брзо решиле. Неспорни део фактуре биће плаћен до датума доспећа.
+* Turistički agent je odgovoran za prikupljanje uplata od Gostiju za rezervacije napravljene preko Platforme i prenos dogovorenih uplata Pružaocima smeštaja i Pružaocu usluge, kako je navedeno u uslovima plaćanja. Turistički agent mora osigurati da su sve uplate obrađene sigurno i u skladu sa važećim finansijskim propisima.
 
-**7. Одговорности туристичког агента**
+7.6 **Postupanje sa žalbama i sporovima gostiju:**
 
-7.1**Усклађеност са законима и прописима:**
+* Turistički agent je primarna kontakt tačka za Goste u vezi sa bilo kakvim žalbama, sporovima ili problemima vezanim za usluge pružene preko Platforme. Turistički agent će uložiti razumne napore da brzo reši takve žalbe i sporove na način koji održava pozitivan odnos sa gostima i Pružaocima smeštaja.
 
-* Туристички агент ће се придржавати свих важећих локалних, националних и међународних закона, прописа и индустријских стандарда у обављању свог пословања, укључујући, али не ограничавајући се на оне који се односе на заштиту потрошача, заштиту података и спречавање прања новца.
+7.7 **Izveštavanje i odgovornost:**
 
-7.2**Тачан приказ услуга:**
+* Turistički agent će pružati Pružaocu usluge redovne izveštaje koji detaljno prikazuju izvršenje njegovih obaveza po ovom Ugovoru, uključujući podatke o prodaji, statistiku rezervacija i povratne informacije korisnika. Turistički agent je odgovoran za tačnost ovih izveštaja i sarađivaće sa Pružaocem usluge u bilo kojoj reviziji ili pregledu svojih operacija.
 
-* Туристички агент ће тачно представити услуге и смештај који се нуде путем Платформе. Туристички агент је одговоран за осигуравање да су све информације које се пружају гостима, укључујући, али не ограничавајући се на описе, цене и доступност, тачне и ажурне.
+7.8 **Poverljivost:**
 
-7.3**Промоција услуга:**
+* Turistički agent će čuvati poverljivost svih poverljivih informacija i poslovnih tajni Pružaoca usluge, uključujući ali ne ograničavajući se na podatke o korisnicima, informacije o cenama i poslovne strategije. Turistički agent neće otkrivati takve informacije trećim licima bez prethodnog pisanog pristanka Pružaoca usluge.
 
-* Туристички агент ће активно промовисати услуге које се нуде путем Платформе у складу са смерницама које је дао Пружалац услуга. Ово укључује, али није ограничено на, маркетиншке активности, ажурирање промотивних материјала и осигуравање да је сав промотивни садржај тачан и да је у складу са важећим стандардима оглашавања.
+7.9 **Usklađenost sa uslovima Platforme:**
 
-7.4**Управљање резервацијама:**
+* Turistički agent će se pridržavati svih uslova korišćenja Platforme Pružaoca usluge, uključujući sve izmene ili dopune tih uslova. Turistički agent je odgovoran da obezbedi da njegovi zaposleni i agenti budu upoznati i poštuju ove uslove.
 
-* Туристички агент ће управљати свим резервацијама извршеним путем Платформе, укључујући, али не ограничавајући се на обраду резервација, отказивања и измена. Туристички агент ће бити одговоран за комуникацију са гостима и пружаоцима смештаја како би се осигурало да су све резервације тачно обрађене и потврђене.
+7.10 **Naknada štete:**
 
-7,5**Наплата и уплата:**
+* Turistički agent će obeštetiti i zaštititi Pružaoca usluge od bilo kakvih zahteva, šteta, obaveza i troškova koji proizilaze iz kršenja ovog Ugovora od strane Turističkog agenta, uključujući ali ne ograničavajući se na nepoštovanje važećih zakona, netačno predstavljanje usluga ili neispunjavanje obaveza prema Gostima ili Pružaocima smeštaja.
 
-* Туристички агент је одговоран за наплату од Гостију за Резервације извршене путем Платформе и исплату договорених уплата Пружаоцима Смештаја и Пружаоцу Услуга, како је наведено у Условима Плаћања. Туристички агент је дужан да обезбеди да се сва плаћања обрађују безбедно и у складу са важећим финансијским прописима.
+**8\. Provizije i naknade**
 
-7.6**Решавање жалби и спорова гостију:**
+8.1 **Obračun provizije:** Provizija koja se plaća Turističkom agentu biće procenat (utvrđen u ugovoru između Turističkog agenta i Pružaoca smeštaja) od vrednosti rezervacije nakon odbitka Wink naknade za rezervaciju.
 
-* Туристички агент ће бити главна контакт особа за госте у вези са свим жалбама, споровима или проблемима везаним за услуге које се пружају путем Платформе. Туристички агент ће уложити разумне напоре да такве жалбе и спорове реши брзо и на начин који одржава позитиван однос и са гостима и са пружаоцима смештаја.
+8.2 **Naknada za rezervaciju Wink-a:** Wink će izdavati mesečni račun za 1,5% naknade za rezervaciju. Turistički agent je odgovoran za izmirenje ovog računa u rokovima plaćanja koje odredi Wink.
 
-7,7**Извештавање и одговорност:**
+**9\. Pravne odredbe**
 
-* Туристички агент ће достављати Пружаоцу услуга редовне извештаје са детаљним описом испуњења својих обавеза по овом Уговору, укључујући, али не ограничавајући се на податке о продаји, статистику резервација и повратне информације купаца. Туристички агент ће бити одговоран за тачност ових извештаја и сарађиваће са Пружаоцем услуга у свакој ревизији или прегледу његовог пословања.
+9.1 **Ograničenje odgovornosti:** Nijedna strana neće biti odgovorna za indirektne, slučajne, posledične, posebne ili kaznene štete koje proizilaze iz ovog Ugovora.
 
-7,8**Поверљивост:**
+9.2 **Naknada štete:** Svaka strana se slaže da obešteti i zaštiti drugu stranu od bilo kakvih zahteva koji proizilaze iz kršenja ovog Ugovora ili nemara strane koja obeštećuje.
 
-* Туристички агент ће чувати поверљивост свих власничких информација и пословних тајни Пружаоца услуга, укључујући, али не ограничавајући се на податке о клијентима, информације о ценама и пословне стратегије. Туристички агент неће открити такве информације трећим лицима без претходне писмене сагласности Пружаоца услуга.
+9.3 **Viša sila:** Nijedna strana neće biti odgovorna za kašnjenja ili neizvršenje usled razloga van njihove razumne kontrole, uključujući prirodne nepogode, rat, terorizam, štrajkove itd.
 
-7,9**Усклађеност са условима платформе:**
+**10\. Trajanje i raskid**
 
-* Туристички агент је дужан да се придржава свих услова и одредби повезаних са коришћењем Платформе пружаоца услуга, укључујући сва ажурирања или измене таквих услова. Туристички агент је одговоран да осигура да су његови запослени и агенти упознати са овим условима и да их се придржавају.
+10.1 **Trajanje:** Ovaj Ugovor stupa na snagu na dan potpisivanja i traje dok ga bilo koja strana ne raskine.
 
-7.10**Обезштећење:**
+10.2 **Raskid:** Bilo koja strana može raskinuti ovaj Ugovor po sopstvenom nahođenju.
 
-* Туристички агент ће обештетити и заштитити Пружаоца услуга од свих потраживања, штета, обавеза и трошкова који произилазе из или су повезани са кршењем овог Уговора од стране Туристичког агента, укључујући, али не ограничавајући се на, било какво непоштовање важећих закона, лажно представљање услуга или неизвршење обавеза према Гостима или Пружаоцима смештаја.
+10.3 **Nakon raskida:** Po raskidu, Turistički agent će izmiriti sve neizmirene obaveze i prestati sa korišćenjem bilo koje intelektualne svojine ili sadržaja vezanih za Wink.
 
-**8. Провизије и накнаде**
+**11\. Mjerodavno pravo i rešavanje sporova**
 
-8.1**Обрачун провизије:**&#x41F;ровизија која се плаћа туристичком агенту биће проценат (утврђен уговором између туристичког агента и пружаоца смештаја) од вредности резервације након одбитка Wink накнаде за резервацију.
+11.1 **Mjerodavno pravo:** Ovaj Ugovor će se tumačiti i primenjivati u skladu sa zakonima Singapura, bez obzira na sukob pravnih principa.
 
-8.2**Винкова накнада за резервацију:**&#x412;инк ће издавати месечну фактуру за накнаду за резервацију од 1,5%. Туристичка агенција је одговорна за измирење ове фактуре у оквиру услова плаћања које одреди Винк.
+11.2 **Rešavanje sporova:** 
 
-**9. Законске одредбе**
+11.2.1 **Pregovori:** U slučaju spora, zahteva, pitanja ili neslaganja proisteklog iz ili vezanog za ovaj Ugovor, strane će prvo pokušati da reše spor putem pregovora u dobroj veri. Pregovori počinju pisanom obavesti jedne strane drugoj.
 
-9.1**Ограничење одговорности:**&#x41D;иједна страна неће бити одговорна за било какву индиректну, случајну, последичну, посебну или казнену штету која произилази из овог Уговора.
+11.2.2 **Arbitraža:** Ako se spor ne može rešiti pregovorima u roku od trideset (30) dana, spor će biti upućen i konačno rešen arbitražom prema pravilima Singapurskog međunarodnog arbitražnog centra (SIAC), koja se smatraju uključenim u ovaj član. Broj arbitara biće jedan, a sedište arbitraže biće Singapur. Jezik arbitraže biće engleski.
 
-9.2**Обезштећење:**&#x421;вака Страна се слаже да обештети и заштити другу од било каквих потраживања која произилазе из кршења овог Уговора или непажње Стране која обештећује.
+11.2.3 **Nadležnost:** Bez obzira na gore navedeno, bilo koja strana zadržava pravo da traži privremenu ili zabranu u sudovima Singapura radi zaštite svojih prava ili imovine dok čeka imenovanje arbitra, i takav sud ima isključivu nadležnost za donošenje takve odluke.
 
-9.3**Виша сила:**&#x41D;иједна страна неће бити одговорна за кашњења или неизвршења услед узрока који су ван њене разумне контроле, укључујући више силе, природне катастрофе, рат, тероризам, штрајкове итд.
+**12\. Viša sila**
 
-**10. Рок и раскид**
+12.1 **Definicija:** Nijedna strana neće biti odgovorna za neizvršenje ili kašnjenje u izvršenju svojih obaveza po ovom Ugovoru ako je takvo neizvršenje ili kašnjenje posledica događaja više sile. "Događaj više sile" znači bilo koji događaj van razumne kontrole strane, uključujući ali ne ograničavajući se na prirodne katastrofe (poput zemljotresa, poplava ili uragana), rat, terorizam, građanske nemire, pandemije, državne mere ili bilo koji drugi događaj koji nije mogao biti razumno predviđen ili izbegnut.
 
-10.1**Термин:**&#x41E;вај Уговор ступа на снагу даном потписивања и важи док га једна од Страна не раскине.
+12.2 **Obaveštenje:** Strana pogođena događajem više sile mora obavestiti drugu stranu pismenim putem čim bude razumno moguće nakon nastanka događaja. Takvo obaveštenje treba da sadrži opis događaja više sile, očekivano trajanje i obaveze koje su pogođene.
 
-10.2**Прекид:**&#x421;вака Уговорна страна може раскинути овај Уговор по сопственом нахођењу.
+12.3 **Uticaj na usluge:**
 
-10.3**Након престанка:**&#x41F;о раскиду уговора, туристички агент је дужан да измири све неизмирене уплате и престане да користи било коју интелектуалну својину или садржај који се односи на Винк.
+* Obustava usluga: Ako događaj više sile utiče na sposobnost vašeg poslovanja da pruži usluge Turističkom agentu, te usluge će biti obustavljene tokom trajanja događaja bez kazne. Obaveze Turističkog agenta za plaćanje vezane za pogođene usluge takođe će biti obustavljene tokom tog perioda.  
+* Obaveze Turističkog agenta: Turistički agent neće biti odgovoran za obaveze prema vašem poslovanju koje je nemoguće izvršiti zbog događaja više sile. Međutim, Turistički agent mora nastaviti da ispunjava sve druge obaveze koje nisu direktno pogođene događajem.
 
-**11. Меродавно право и решавање спорова**
+12.4 **Trajanje i raskid:** Ako događaj više sile traje duže od šezdeset (60) dana, bilo koja strana može raskinuti ovaj Ugovor pismenim obaveštenjem drugoj strani. U slučaju takvog raskida, nijedna strana neće imati odgovornost prema drugoj osim za obaveze nastale pre događaja više sile.
 
-11.1**Меродавно право:**&#x41E;вај Уговор ће се регулисати и тумачити у складу са законима Сингапура, без обзира на принципе колизионог права.
+12.5 **Nastavak obaveza:** Kada događaj više sile prestane, obe strane će odmah nastaviti sa izvršenjem svojih obaveza iz ovog Ugovora u meri u kojoj je to razumno moguće.
 
-11.2**Решавање спорова:**
+**13\. Poverljivost**
 
-11.2.1**Преговори:**&#x423; случају било каквог спора, потраживања, питања или неслагања које произилази из или се односи на овај Уговор, стране ће прво покушати да реше спор путем преговора у доброј вери. Такви преговори ће почети након писменог обавештења једне стране другој.
+13.1 Obe strane će čuvati poverljivost svih poverljivih informacija i neće ih otkrivati trećim licima bez prethodnog pisanog pristanka.
 
-11.2.2**Арбитража:**&#x410;ко се спор не може решити путем преговора у року од тридесет (30) дана, спор ће бити упућен на арбитражу и коначно решен путем ње у складу са Правилима Сингапурског међународног арбитражног центра (SIAC), која се сматрају укљученим позивањем у ову клаузулу. Број арбитара ће бити један, а седиште, односно правно место, арбитраже ће бити Сингапур. Језик који ће се користити у арбитражном поступку је енглески.
+**14\. Ostalo**
 
-11.2.3**Надлежност:**&#x411;ез обзира на горе наведено, свака страна задржава право да тражи привремену или судску забрану пред судовима Сингапура ради заштите својих права или имовине док чека именовање арбитра, а сваки такав суд имаће искључиву надлежност да одобри такву заштиту.
+14.1 **Celokupan ugovor:** Ovaj Ugovor predstavlja celokupan sporazum između strana i zamenjuje sve prethodne ugovore ili dogovore.
 
-**12. Виша сила**
+14.2 **Izmene:** Sve izmene ovog Ugovora moraju biti u pisanoj formi i potpisane od strane obe strane.
 
-12.1**Дефиниција**Ниједна страна неће бити одговорна за било какав пропуст или кашњење у извршењу својих обавеза по овом Уговору ако је такав пропуст или кашњење последица догађаја више силе. „Догађај више силе“ значи било који догађај ван разумне контроле стране, укључујући, али не ограничавајући се на природне катастрофе (као што су земљотреси, поплаве или урагани), рат, тероризам, грађанске немире, пандемије, владине акције или било који други догађај који се није могао разумно предвидети или избећи.
-
-12.2**Обавештење**Погођена страна мора писмено обавестити другу страну што је пре разумно могуће након настанка догађаја више силе. Такво обавештење мора да садржи опис догађаја више силе, његово очекивано трајање и обавезе на које се односи.
-
-12.3**Утицај на услуге**:
-
-* Обустава услуга: Ако догађај више силе утиче на способност вашег предузећа да пружи услуге туристичком агенту, те услуге ће бити обустављене за време трајања догађаја без казне. Обавезе плаћања туристичког агента у вези са погођеним услугама такође ће бити обустављене током овог периода.
-* Обавезе туристичког агента: Туристички агент неће бити одговоран за било какве обавезе према вашем предузећу које је немогуће извршити због догађаја више силе. Међутим, туристички агент мора наставити да испуњава све остале обавезе на које догађај није директно утицао.
-
-12.4**Трајање и престанак**Ако догађај више силе траје дуже од шездесет (60) дана, свака страна може раскинути овај Уговор уз писмено обавештење другој страни. У случају таквог раскида, ниједна страна неће имати никакву одговорност према другој, осим за обавезе које су настале пре догађаја више силе.
-
-12,5**Наставак обавеза**Када престане трајање више силе, обе стране ће без одлагања наставити своје обавезе по овом Уговору у мери у којој је то разумно изводљиво.
-
-**13. Поверљивост**
-
-13.1 Обе стране ће чувати поверљивост свих власничких информација и неће их откривати трећим лицима без претходне писмене сагласности.
-
-**14. Разно**
-
-14.1**Цео уговор:**&#x41E;вај Уговор представља целовити споразум између Уговорних страна и замењује све претходне споразуме или договоре.
-
-14.2**Амандмани:**&#x421;ве измене овог Уговора морају бити сачињене у писаној форми и потписане од стране обе стране.
-
-14.3**Одвојивост:**&#x423;колико се утврди да је било која одредба овог Уговора неважећа или неприменљива, преостале одредбе ће остати на снази у потпуности.
-
+14.3 **Podeljivost:** Ako se neka odredba ovog Ugovora smatra nevažećom ili neizvršivom, preostale odredbe ostaju na snazi u punoj meri.

@@ -1,25 +1,27 @@
 ---
 title: ספקי תעריפים
-description: הנה הרשימה המעודכנת של ספקי התעריפים שאנו תומכים בהם ישירות ב-Wink.
+description: להלן רשימת ספקי התעריפים המעודכנת שאנו תומכים בהם ישירות ב-Wink.
 sidebar:
   order: 18
 ---
-## ספק תעריף קבע
 
-כדי להגדיר את ספק התעריפים שלך, לחץ על`Distribution > Channel manager`מסרגל הניווט הראשי.
+## הגדרת ספק תעריפים
 
-בחר את ספק התעריפים שלך מהרשימה הנפתחת ולחץ על הלחצן`Save`כפתור. זה יאפשר לספק התעריפים לשלוח לנו תעריפים ואנחנו נודיע להם כאשר יש הזמנה שבוצעה ב-Wink עבור אחד מהנכסים שלך.
+כדי להגדיר את ספק התעריפים שלך, לחץ על `Distribution > Channel manager` בסרגל הניווט הראשי.
 
-### סינקסיס
+בחר את ספק התעריפים שלך מהרשימה הנפתחת ולחץ על כפתור `Save`. פעולה זו תאפשר לספק התעריפים לשלוח לנו תעריפים ואנחנו נודיע להם כאשר מתבצעת הזמנה ב-Wink עבור אחד הנכסים שלך.
 
-אם הנכס שלך משתמש במנהל הערוצים של SynXis, נדרש שלב נוסף לפני שתהיה מוכן להתחבר עם Wink.
 
-* אנא צרו קשר עם נציג חשבון SynXis שלכם או עם שירות הלקוחות (SHSCustomerCare@sabre.com).
-* תן להם לדעת שאתה רוצה להתחבר ל-Wink דרך Channel Connect Express (***CCX***).
-* הם ידאגו שתמלאו את הטופ&#x5E1;***PRS***.
-  * תתבקש למלא את פרטי המשתמש שלך ב-Wink.
-  * ...והמטבע הרצוי לך.
-* מלאו את הטופס ושלחו אותו בחזרה ל-SynXis.
+### SynXis
+
+אם הנכס שלך משתמש במנהל הערוצים SynXis, נדרש שלב נוסף לפני שתוכל להתחבר ל-Wink.
+
+- אנא צור קשר עם נציג החשבון שלך ב-SynXis או עם שירות הלקוחות (SHSCustomerCare@sabre.com).
+- הודע להם שברצונך להתחבר ל-Wink דרך Channel Connect Express (***CCX***).
+- הם יבקשו ממך למלא את הטופס ***PRS***.
+  - תתבקש למלא את פרטי המשתמש שלך ב-Wink.
+  - ...ואת המטבע הרצוי.
+- מלא את הטופס ושלח אותו חזרה ל-SynXis.
 
 ## ספקים
 
@@ -27,67 +29,67 @@ sidebar:
 
 סוגים זמינים:
 
-* מנהל ערוצים (CM)
-* מערכת ניהול נכסים (PMS)
-* מערכת הזמנות מרכזית (CRS)
+- מנהל ערוצים (CM)
+- מערכת ניהול נכסים (PMS)
+- מערכת הזמנות מרכזית (CRS)
 
-*אם לספק יש מיופה כוח, פירוש הדבר שאנו מקבלים בעקיפין תעריף מהספק באמצעות אותו מיופה כוח.*
+*אם לספק יש פרוקסי, זה אומר שאנו מקבלים תעריפים מהספק בעקיפין דרך הפרוקסי.*
 
 | ספק | סוג | פרוקסי | מאז | שונה לאחרונה | הערה
 | -- | -- | -- | -- | -- | -- |
-| גורו המלונאים | CM | | 2017 | 2017 | |
-| Travelclick | CM | | 2016 | 2016 | |
-| Yield Planet | CM | | 2016 | 2016 | |
-| Siteminder | CM | | 2016 | 2016 | |
-| Cloudbeds | CM | | 2016 | 2016 | |
-| MyAllocator | CM | | 2016 | 2016 | |
-| ResAvenue | CM | | 2017 | 2017 | |
-| Fastbooking | CM | | 2016 | 2016 | Now d-edge |
-| Omnibees | CM | | 2019 | 2019 | |
-| קישור מלון | CM | | 2017 | 2017 | |
-| RateGain | CM | | 2016 | 2018 | |
-| אלוטץ | CM | | 2019 | 2019 | |
-| d-edge | CM | | 2018 | 2018 | |
-| קומאנצ'י | PMS | | 2017 | 2017 | |
-| סינקסיס | PMS | | 2019 | 2019 | |
-| צ'אנקס | PMS | | 2023 | 2023 | |
-| שהייה מושלמת | PMS | צ'אנקס | 2023 | 2023 | |
-| מיוז | PMS | צ'אנקס | 2023 | 2023 | |
-| אופרה | PMS | צ'אנקס | 2023 | 2023 | |
-| אפאלאו | PMS | צ'אנקס | 2023 | 2023 | |
-| הזמנת מקום לינה | PMS | צ'אנקס | 2023 | 2023 | |
-| AIOSELL | PMS | צ'אנקס | 2023 | 2023 | |
-| Ajjir | PMS | צ'אנקס | 2023 | 2023 | |
-| הכל מוזמן | PMS | צ'אנקס | 2023 | 2023 | |
-| Alojate | PMS | צ'אנקס | 2023 | 2023 | |
-| Atlantis | PMS | צ'אנקס | 2023 | 2023 | |
-| כספומט | PMS | צ'אנקס | 2023 | 2023 | |
-| Ayenda Hotels | PMS | צ'אנקס | 2023 | 2023 | |
-| Ayrton | PMS | צ'אנקס | 2023 | 2023 | |
-| באלי זן דן | PMS | צ'אנקס | 2023 | 2023 | |
-| בננה דסק | PMS | צ'אנקס | 2023 | 2023 | |
-| מלונות טובים יותר | PMS | צ'אנקס | 2023 | 2023 | |
-| בידרנטו | PMS | צ'אנקס | 2023 | 2023 | |
-| פתרונות גדולים | PMS | צ'אנקס | 2023 | 2023 | |
-| ביטס | PMS | צ'אנקס | 2023 | 2023 | |
-| בלו ג'יי PMS | PMS | צ'אנקס | 2023 | 2023 | |
-| בוקאנדלינק | PMS | צ'אנקס | 2023 | 2023 | |
-| עולם הספרים | PMS | צ'אנקס | 2023 | 2023 | |
-| בוקלייר | PMS | צ'אנקס | 2023 | 2023 | |
-| בוקינג פקטורי | PMS | צ'אנקס | 2023 | 2023 | |
-| בוקייפרו | PMS | צ'אנקס | 2023 | 2023 | |
-| בוקטק | PMS | צ'אנקס | 2023 | 2023 | |
-| בוק | PMS | צ'אנקס | 2023 | 2023 | |
-| קאקרה | PMS | צ'אנקס | 2023 | 2023 | |
-| קליסטה | PMS | צ'אנקס | 2023 | 2023 | |
-| סיטרוס | PMS | צ'אנקס | 2023 | 2023 | |
-| קומנדו | PMS | צ'אנקס | 2023 | 2023 | |
-| קונדלי | PMS | צ'אנקס | 2023 | 2023 | |
-| קורטק | PMS | Channex | 2023 | 2023 | |
-| דלפק | PMS | Channex | 2023 | 2023 | |
-| תיאור | PMS | Channex | 2023 | 2023 | |
+| Hoteliers Guru | CM |  | 2017 | 2017 | |
+| Travelclick | CM |  | 2016 | 2016 | |
+| Yield Planet | CM |  | 2016 | 2016 | |
+| Siteminder | CM |  | 2016 | 2016 | |
+| Cloudbeds | CM |  | 2016 | 2016 | |
+| MyAllocator | CM |  | 2016 | 2016 | |
+| ResAvenue | CM |  | 2017 | 2017 | |
+| Fastbooking | CM |  | 2016 | 2016 | כעת d-edge |
+| Omnibees | CM |  | 2019 | 2019 | |
+| Hotel Link | CM |  | 2017 | 2017 | |
+| RateGain | CM |  | 2016 | 2018 | |
+| Allotz | CM |  | 2019 | 2019 | |
+| d-edge | CM |  | 2018 | 2018 | |
+| Comanche | PMS |  | 2017 | 2017 | |
+| Synxis | PMS |  | 2019 | 2019 | |
+| Channex | PMS |  | 2023 | 2023 | |
+| A Perfect Stay | PMS | Channex | 2023 | 2023 | |
+| Mews | PMS | Channex | 2023 | 2023 | |
+| Opera | PMS | Channex | 2023 | 2023 | |
+| Apaleo | PMS | Channex | 2023 | 2023 | |
+| Abode Booking | PMS | Channex | 2023 | 2023 | |
+| AIOSELL | PMS | Channex | 2023 | 2023 | |
+| Ajjir | PMS | Channex | 2023 | 2023 | |
+| All Booked | PMS | Channex | 2023 | 2023 | |
+| Alojate | PMS | Channex | 2023 | 2023 | |
+| Atlantis | PMS | Channex | 2023 | 2023 | |
+| ATM | PMS | Channex | 2023 | 2023 | |
+| Ayenda Hoteles | PMS | Channex | 2023 | 2023 | |
+| Ayrton | PMS | Channex | 2023 | 2023 | |
+| Bali Zen Den | PMS | Channex | 2023 | 2023 | |
+| Banana Desk | PMS | Channex | 2023 | 2023 | |
+| Be Better Hotels | PMS | Channex | 2023 | 2023 | |
+| Bidrento | PMS | Channex | 2023 | 2023 | |
+| Big Solutions | PMS | Channex | 2023 | 2023 | |
+| Bitz | PMS | Channex | 2023 | 2023 | |
+| Blue Jay PMS | PMS | Channex | 2023 | 2023 | |
+| BookandLink | PMS | Channex | 2023 | 2023 | |
+| Book World | PMS | Channex | 2023 | 2023 | |
+| Bookelier | PMS | Channex | 2023 | 2023 | |
+| Booking Factory | PMS | Channex | 2023 | 2023 | |
+| Bookipro | PMS | Channex | 2023 | 2023 | |
+| Booktech | PMS | Channex | 2023 | 2023 | |
+| Bouk | PMS | Channex | 2023 | 2023 | |
+| Cakra | PMS | Channex | 2023 | 2023 | |
+| Callista | PMS | Channex | 2023 | 2023 | |
+| Citrus | PMS | Channex | 2023 | 2023 | |
+| Comando | PMS | Channex | 2023 | 2023 | |
+| Condly | PMS | Channex | 2023 | 2023 | |
+| Cortec | PMS | Channex | 2023 | 2023 | |
+| Counter | PMS | Channex | 2023 | 2023 | |
+| Desbravador | PMS | Channex | 2023 | 2023 | |
 | dtravel | PMS | Channex | 2023 | 2023 | |
-| דלפק קבלה קל | PMS | Channex | 2023 | 2023 | |
+| Easy Front Desk | PMS | Channex | 2023 | 2023 | |
 | Easy Rez | PMS | Channex | 2023 | 2023 | |
 | Ecobooking | PMS | Channex | 2023 | 2023 | |
 | ehotelspace | PMS | Channex | 2023 | 2023 | |
@@ -105,22 +107,22 @@ sidebar:
 | GuestPoint | PMS | Channex | 2023 | 2023 | |
 | GuestPro | PMS | Channex | 2023 | 2023 | |
 | GuestSmart | PMS | Channex | 2023 | 2023 | |
-| עזרה למלונות | PMS | Channex | 2023 | 2023 | |
+| Helping Hotels | PMS | Channex | 2023 | 2023 | |
 | Host-It | PMS | Channex | 2023 | 2023 | |
 | Hotelmeister | PMS | Channex | 2023 | 2023 | |
 | Hotelmu | PMS | Channex | 2023 | 2023 | |
 | OnePlace | PMS | Channex | 2023 | 2023 | |
 | HotelPoint | PMS | Channex | 2023 | 2023 | |
 | Hotelgest | PMS | Channex | 2023 | 2023 | |
-| מלון 101 | PMS | צ'אנקס | 2023 | 2023 | |
-| הוטלסמינדר | PMS | צ'אנקס | 2023 | 2023 | |
-| מלון זיפי | PMS | צ'אנקס | 2023 | 2023 | |
-| חדרי איגלו | PMS | צ'אנקס | 2023 | 2023 | |
-| ג'והקו | PMS | צ'אנקס | 2023 | 2023 | |
-| מלונות KAO | PMS | צ'אנקס | 2023 | 2023 | |
-| מערכת לינה | PMS | צ'אנקס | 2023 | 2023 | |
-| לודג'י | PMS | צ'אנקס | 2023 | 2023 | |
-| מאשוויזור | PMS | צ'אנקס | 2023 | 2023 | |
+| Hotelier 101 | PMS | Channex | 2023 | 2023 | |
+| Hotelsminder | PMS | Channex | 2023 | 2023 | |
+| Hotelzify | PMS | Channex | 2023 | 2023 | |
+| igloorooms | PMS | Channex | 2023 | 2023 | |
+| Johku | PMS | Channex | 2023 | 2023 | |
+| KAO Hoteles | PMS | Channex | 2023 | 2023 | |
+| LodgingSystem | PMS | Channex | 2023 | 2023 | |
+| Lodgy | PMS | Channex | 2023 | 2023 | |
+| Mashvisor | PMS | Channex | 2023 | 2023 | |
 | Masteryield | PMS | Channex | 2023 | 2023 | |
 | Msool | PMS | Channex | 2023 | 2023 | |
 | MyRent | PMS | Channex | 2023 | 2023 | |
@@ -135,13 +137,12 @@ sidebar:
 | Quovai | PMS | Channex | 2023 | 2023 | |
 | ResBook | PMS | Channex | 2023 | 2023 | |
 | ResClick | PMS | Channex | 2023 | 2023 | |
-| מפתח הזמנה | PMS | Channex | 2023 | 2023 | |
+| Reservation Key | PMS | Channex | 2023 | 2023 | |
 | ResMaster | PMS | Channex | 2023 | 2023 | |
 | Retreat Guru | PMS | Channex | 2023 | 2023 | |
 | Revenatium | PMS | Channex | 2023 | 2023 | |
 | Revivo | PMS | Channex | 2023 | 2023 | |
-| rezStream | PMS | צ'אנקס | 2023 | 2023 | |
-| Roomsy | PMS | צ'אנקס | 2023 | 2023 | |
-| Roverpass | PMS | צ'אנקס | 2023 | 2023 | |
-| Servo | PMS | צ'אנקס | 2023 | 2023 | |
-
+| rezStream | PMS | Channex | 2023 | 2023 | |
+| Roomsy | PMS | Channex | 2023 | 2023 | |
+| Roverpass | PMS | Channex | 2023 | 2023 | |
+| Servo | PMS | Channex | 2023 | 2023 | |

@@ -1,64 +1,63 @@
 ---
 title: Privaatsuspoliitika
-description: >-
-  Kõigile meie reisikasutajatele hõlpsasti ligipääsetav ja ajakohane
-  privaatsuspoliitika.
+description: Lihtsasti ligipääsetav ja ajakohane privaatsuspoliitika kõigile meie reisikasutajatele.
 sidebar:
   order: 5
 ---
-TRAVELIKO SINGAPORE PTE. LTD., mis tegutseb nime Wink all („Ettevõte“), soovib teid, kes Ettevõttega ühendust võtate, teavitada, et Ettevõtte teenuste osutamiseks on vaja koguda, koostada ja kasutada teie isikuandmeid vastavalt käesolevale Privaatsuspoliitikale. Ettevõttega ühendust võttes ja oma isikuandmete avaldamisel teile teenuste osutamise, koordineerimise ja/või osutamise eesmärgil loetakse, et nõustute käesoleva Privaatsuspoliitikaga ja nõustute seda järgima.
 
-Isikuandmete töötlemisel võib Ettevõte teie isikuandmeid saada järgmistest kanalitest:
+TRAVELIKO SINGAPORE PTE. LTD., mis tegutseb nime all Wink (edaspidi „Ettevõte“), soovib teavitada kõiki, kes Ettevõttega ühendust võtavad, et on vajalik koguda, koostada ja kasutada teie isikuandmeid Ettevõtte teenuse osutamiseks vastavalt käesolevale privaatsuspoliitikale. Võttes ühendust ja avaldades oma isikuandmeid Ettevõttele suhtluse, koordineerimise ja/või Ettevõtte teenuste osutamise eesmärgil, loetakse, et nõustute ja aktsepteerite käesoleva privaatsuspoliitikaga ning kohustute seda järgima.
 
-(1) Otse teilt ettevõtte teiega suhtlemise kaudu;
+Isikuandmed, mida töödeldakse, võib Ettevõte saada erinevatest kanalitest järgmiselt:
 
-(2) Kaudselt, kolmanda osapoole soovituse kaudu, kellele te võite anda nõusoleku oma isikuandmete avaldamiseks ettevõttele; või
+(1) Otseselt teilt Ettevõttega suhtlemise kaudu;
 
-(3) Süsteem kogub automaatselt, kui külastate ettevõtte veebisaiti ja/või kasutate teenuseid.
+(2) Kaudselt, kolmanda osapoole kaudu, kellele võite anda nõusoleku avaldada teie isikuandmed Ettevõttele; või
 
-Isikuandmed, mida Ettevõte peab käesolevate privaatsuspoliitikate kohaselt koguma, koostama, kasutama ja töötlema, on järgmised:
+(3) Automaatse kogumisena süsteemi kaudu, kui külastate Ettevõtte veebisaiti ja/või kasutate teenuseid.
 
-(1) Teie täisnimi, sh teiega seotud teave või esindaja andmed (juhul kui võtate meiega ühendust juriidilise isiku nimel), mis võib sisaldada teie isikut tõendavat dokumenti.
+Isikuandmed, mida Ettevõte peab käesoleva privaatsuspoliitika alusel koguma, koostama, kasutama ja töötlema, on järgmised:
 
-(2) Kontaktandmed, näiteks telefoninumber, e-posti aadress või sotsiaalmeedia konto andmed.
+(1) Teie täielik nimi, sealhulgas teie seotud teave või teie esindaja andmed (kui võtate meiega ühendust juriidilise isiku nimel), mis võib sisaldada teie isikut tõendavat dokumenti.
 
-(3) Muud isikuandmed, mida võite ettevõttele suhtluse käigus edastada, näiteks teave päringute kohta, huvide kohta või muu isikut tuvastav teave, mille edastate ettevõttele otse erinevate suhtluskanalite kaudu.
+(2) Kontaktandmed, nagu telefoninumber, e-post või sotsiaalmeedia konto andmed.
 
-(4) Veebisaidi kaudu toimuva suhtluse korral võib see sisaldada teie tehnilist teavet, nagu IP-aadress, küpsised, sealhulgas teave teie sirvimiskäitumise kohta.
+(3) Muud isikuandmed, mida võite Ettevõttele suhtluse käigus esitada, näiteks päringuteave, huvidega seotud teave või muu isikut tuvastav teave, mille esitate otse Ettevõttele erinevate suhtluskanalite kaudu.
 
-Isikuandmete töötlemise ja kasutamise eesmärk. Ettevõttel on vaja koguda, koostada ja kasutada Tööle kandideerija isikuandmeid järgmistel eesmärkidel:
+(4) Veebisaidi kaudu suhtlemise korral võib see hõlmata teie tehnilist teavet, nagu IP-aadress, küpsised (Cookies) ning teavet teie sirvimiskäitumise kohta.
 
-(1) Ettevõttega suhtlemise haldamiseks, näiteks küsimustele vastamiseks, asjakohase teabe esitamiseks vastavalt taotlusele ja vajadusele, kaebuste haldamiseks või teie poolt Ettevõttele erinevate suhtluskanalite kaudu otse esitatud kommentaaridele vastamiseks, sealhulgas pidevaks koordineerimiseks, teenuselepingu sõlmimiseks ja/või Ettevõtte ja teie vahel kokkulepitud õiguste ja kohustuste täitmiseks;
+Isikuandmete töötlemise ja kasutamise eesmärgid, Ettevõte peab koguma, koostama ja kasutama tööotsija isikuandmeid järgmiste eesmärkide täitmiseks:
 
-(2) Juriidiliste kohustuste täitmiseks, mille suhtes Ettevõtte suhtes võivad kehtida teatud tingimused. See võib hõlmata, kuid mitte ainult, raamatupidamisdokumentide ja maksudega seotud ülesannete täitmist seoses Ettevõtte poolt Teile osutatavate teenustega;
+(1) Suhtluse haldamiseks, millega olete Ettevõttega suhelnud, näiteks küsimustele vastamiseks, nõutava ja vajaliku teabe esitamiseks, kaebuste haldamiseks või kommentaaridele vastamiseks, mida teete otse Ettevõttele erinevate suhtluskanalite kaudu, sealhulgas pidev koordineerimine, teenuslepingute täitmine ja/või õiguste ning kohustuste täitmine, millele Ettevõte ja teie võite kokku leppida;
 
-(3) Ärisuhete loomise ja parandamise eesmärgil, sealhulgas ettevõtte poolt teie huvides pakutava teenuse täiustamiseks, milleks ettevõte võib teie isikuandmeid koguda ja/või kasutada kontrolli, teenuse tagamise, juhtimisanalüüsi ja äriga seotud probleemide lahendamise eesmärgil, sealhulgas, kuid mitte ainult, töötajate koolitamiseks ja edasiseks teenuste täiustamiseks;
+(2) Õiguslike kohustuste täitmiseks, millele Ettevõte võib olla teatud tingimustel allutatud. See võib hõlmata, kuid ei piirdu, raamatupidamisdokumentide ja maksudega seotud ülesannete täitmisega seoses Ettevõtte poolt teile osutatavate teenustega;
 
-(4) Ettevõtte seaduslike õiguste kaitsmiseks ja kaitsmiseks juhul, kui teil on ettevõttega vaidlus; ja
+(3) Ärisuhete loomise ja parandamise eesmärgil, sealhulgas teenuse täiustamiseks, mida Ettevõte teile pakub, ning teie isikuandmete kogumiseks ja/või kasutamiseks kontrolli, teenuse tagamise, juhtimisanalüüsi ja äriga seotud probleemide lahendamise eesmärgil, sealhulgas, kuid mitte ainult, töötajate koolituse ja tulevase teenuse täiustamise planeerimise jaoks;
 
-(5) Ettevõttele antud selgesõnalise nõusoleku korral, näiteks turundus- ja uudiskirjade saatmiseks, võib Ettevõte töödelda Isikuandmeid nõusolekus määratletud eesmärkidel.
+(4) Ettevõtte õiguste kaitsmiseks ja kaitseks vaidluse korral teie ja Ettevõtte vahel; ning
 
-Isikuandmete säilitamise periood. Eespool kirjeldatud eesmärkide täitmiseks on Ettevõttel vaja koguda, koostada ja töödelda teie isikuandmeid järgmise perioodi jooksul:
+(5) Kui olete andnud Ettevõttele selgesõnalise nõusoleku, näiteks turundus- ja uudiskirjade suhtluseks, võib Ettevõte töödelda isikuandmeid vastavalt nõusolekus määratletud eesmärkidel.
 
-(1) Teenuste osutamise, lepingu täitmise ja/või lepingujärgsete õiguste ja kohustuste täitmise eesmärgil toimuva isikuandmete töötlemise eesmärgil on Ettevõttel vaja Teie isikuandmeid töödelda seni, kuni Ettevõttel on kohustus Teile teenuseid osutada;
+Isikuandmete säilitamise periood, et täita eespool kirjeldatud eesmärke, peab Ettevõte koguma, koostama ja töötlema teie isikuandmeid järgmise perioodi jooksul:
 
-(2) Isikuandmete töötlemiseks kohaldatavate seaduste kohase kohustuse täitmiseks on Ettevõttel vaja teie isikuandmeid töödelda kohaldatavate seadustega ettenähtud aja jooksul;
+(1) Teenuste osutamise, lepingu täitmise ja/või õiguste ning kohustuste täitmise eesmärgil peab Ettevõte töötlema teie isikuandmeid seni, kuni Ettevõttel on kohustus teile teenuseid osutada;
 
-(3) Ärisuhete loomise ja parandamise ja/või teenuse täiustamise eesmärgil toimuva isikuandmete töötlemise eesmärgil jätab Ettevõte endale õiguse säilitada isikuandmeid ulatuses, milles see on Ettevõttel äriliselt vajalik. Ettevõte garanteerib, et isikuandmete säilitamine ei mõjuta ebamõistlikult andmesubjekti õigusi;
+(2) Õiguslike kohustuste täitmiseks peab Ettevõte töötlema teie isikuandmeid seadusega ettenähtud aja jooksul;
 
-(4) Isikuandmete töötlemiseks ettevõtte õigustatud õiguste kaitsmise ja nende eest võitlemise eesmärgil on ettevõttel vaja säilitada selliseid isikuandmeid vastavalt kehtivates õigusaktides sätestatud korrale; ja
+(3) Ärisuhete loomise ja parandamise ning/või teenuse täiustamise eesmärgil jätab Ettevõte endale õiguse säilitada isikuandmeid nii kaua, kui see on äriliselt vajalik. Ettevõte tagab, et isikuandmete säilitamine ei mõjuta andmesubjekti õigusi ebamõistlikult;
 
-(5) Juhul kui annate Ettevõttele nõusoleku oma isikuandmete töötlemiseks konkreetsetel eesmärkidel, töötleb Ettevõte teie isikuandmeid seni, kuni te oma nõusoleku tagasi võtate.
+(4) Ettevõtte õiguste kaitsmiseks ja kaitseks peab Ettevõte säilitama isikuandmeid vastavalt kehtivatele seadustele määratud tähtaegadele; ning
 
-Isikuandmete avalikustamine, üldjuhul teie isikuandmeid ei avalikustata, välja arvatud juhul, kui Ettevõte peaks need avaldama järgmisele isikule:
+(5) Kui annate Ettevõttele nõusoleku teie isikuandmete töötlemiseks konkreetsetel eesmärkidel, töötleb Ettevõte teie isikuandmeid kuni nõusoleku tagasivõtmiseni.
 
-(1) Ettevõtte välised teenusepakkujad, kes on kaasatud Ettevõtte tugiteenuste osutamisse teile teenuste osutamisel, sealhulgas Ettevõtte konsultandid. Isikuandmete avalikustamine neile kolmandatele isikutele toimub vastavalt eesmärkidele ja ainult teadmisvajaduse alusel; või
+Isikuandmete avalikustamine, üldjuhul ei avalikustata teie isikuandmeid, välja arvatud juhul, kui Ettevõttel on vaja avalikustada järgmistele isikutele:
 
-(2) Valitsusasutused, reguleerivad asutused või kohtud, kelle suhtes võib kehtida isikuandmete avalikustamiseks korraldus, seadus või kohtuotsus.
+(1) Ettevõtte välistele teenusepakkujatele, kes osutavad Ettevõttele tugiteenuseid teie teenindamiseks, sealhulgas Ettevõtte konsultantidele. Selline isikuandmete avalikustamine neile kolmandatele osapooltele toimub vastavalt eesmärkidele ja ainult vajaduspõhiselt; või
 
-Ettevõte kohustub rakendama asjakohaseid isikuandmete turvameetmeid, et vältida igasugust volitamata ja ebaseaduslikku juurdepääsu, muutmist, parandamist või avalikustamist. Ettevõte kohustub neid meetmeid regulaarselt läbi vaatama, et tagada nende vastavus standarditele ja kohaldatavatele seadustele.
+(2) Valitsusasutustele, reguleerivatele asutustele või kohtutele, kelle korraldusel, seaduse või kohtuotsuse alusel peab Ettevõte isikuandmeid avalikustama.
 
-Andmesubjekti õigused, Ettevõte austab Teie kui andmesubjekti õigusi vastavalt kehtivatele seadustele. Teil on õigus Ettevõttega ühendust võtta, et teostada järgmisi õigusi: (1) õigus nõusolek tagasi võtta, (2) õigus juurdepääsule, (3) õigus nõuda isikuandmete koopiat, (4) õigus isikuandmeid parandada, (5) õigus esitada vastuväiteid isikuandmete töötlemisele, (6) õigus taotleda andmete ülekandmist juhul, kui Ettevõte säilitab isikuandmeid loetavas või automatiseeritud tööriistade või seadmete poolt tavaliselt kasutatavas vormingus, sealhulgas õigus edastada sellised isikuandmed teistele andmetöötlejatele, (7) õigus taotleda isikuandmete kustutamist või anonümiseerimist, kui töötlemiseks pole enam vajadust, (8) õigus taotleda isikuandmete kasutamise peatamist ja (9) õigus esitada kaebus.
+Ettevõte kohustub rakendama asjakohaseid isikuandmete turvameetmeid, et vältida volitamata ja ebaseaduslikku juurdepääsu, muutmist, parandamist või avalikustamist. Ettevõte kohustub neid meetmeid regulaarselt üle vaatama, et tagada nende vastavus standarditele ja kehtivatele seadustele.
+
+Andmesubjekti õigused, Ettevõte austab teie õigusi andmesubjektina kehtivate seaduste alusel. Võite Ettevõttega ühendust võtta, et kasutada järgmisi õigusi: (1) nõusoleku tagasivõtmise õigus, (2) juurdepääsu õigus, (3) õigus taotleda isikuandmete koopiat, (4) õigus isikuandmete parandamiseks, (5) õigus esitada vastuväide isikuandmete töötlemisele, (6) õigus taotleda andmete ülekandmist juhul, kui Ettevõte hoiab isikuandmeid masinloetavas või tavapäraselt kasutatavas vormingus, sealhulgas õigus üle kanda need andmed teistele andmekorraldajatele, (7) õigus taotleda isikuandmete kustutamist või anonüümseks muutmist, kui töötlemine ei ole enam vajalik, (8) õigus taotleda isikuandmete kasutamise peatamist ning (9) õigus esitada kaebus.
 
 Ettevõtte kontaktandmed
 
@@ -66,8 +65,7 @@ Andmekaitseametnik
 
 Nimi: Yann Gouriou
 
-Aadress: #03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095
+Aadress: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
 
-Meiliaadress: dataprotectionofficer@wink.travel
+E-post: dataprotectionofficer@wink.travel  
 Telefoninumber: +66 (0) 854891301
-

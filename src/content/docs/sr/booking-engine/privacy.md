@@ -1,71 +1,71 @@
 ---
-title: Политика приватности
-description: Лако доступна и ажурирана политика приватности за све наше путнике.
+title: Politika privatnosti
+description: Lako dostupna i ažurirana politika privatnosti za sve naše korisnike putnike.
 sidebar:
   order: 5
 ---
-TRAVELIKO SINGAPORE PTE. LTD., која послује под именом Wink („Компанија“), жели да обавести вас који контактирате Компанију да је неопходно прикупљати, састављати и користити ваше личне податке за услуге Компаније у складу са овом Политиком приватности. Контактирањем и откривањем ваших личних података Компанији у сврху комуникације, координације и/или пружања услуга Компаније вама, сматра се да се слажете и прихватате да будете обавезни овом Политиком приватности и да је се придржавате.
 
-Уколико се обрађују лични подаци, Компанија може прикупити ваше личне податке из различитих канала на следећи начин:
+TRAVELIKO SINGAPORE PTE. LTD., koja posluje pod imenom Wink (u daljem tekstu „Kompanija“), želi da obavesti sve koji kontaktiraju Kompaniju da je neophodno prikupljati, obrađivati i koristiti vaše lične podatke za usluge Kompanije u skladu sa ovom Politikom privatnosti. Kontaktiranjem i otkrivanjem vaših ličnih podataka Kompaniji u svrhu komunikacije, koordinacije i/ili pružanja usluga Kompanije vama, smatra se da pristajete i prihvatate da budete vezani i da se pridržavate ove Politike privatnosti.
 
-(1) Директно од вас путем комуникације Компаније са вама;
+Lične podatke koji se obrađuju, Kompanija može dobiti iz različitih izvora na sledeće načine:
 
-(2) Индиректно, путем препоруке треће стране којој можете дати сагласност да открије ваше личне податке Компанији; или
+(1) Direktno od vas kroz komunikaciju Kompanije sa vama;
 
-(3) Аутоматски се прикупљају путем система када приступите веб страници Компаније и/или користите услуге.
+(2) Indirektno, putem preporuke treće strane kojoj možete dati saglasnost da otkrije vaše lične podatke Kompaniji; ili
 
-Лични подаци које је Компанија обавезна да прикупља, саставља, користи и обрађује у складу са овом Политиком приватности су следећи:
+(3) Automatski prikupljene putem sistema kada pristupate veb-sajtu Kompanije i/ili koristite usluge.
 
-(1) Ваше пуно име и презиме, укључујући ваше сродне податке или податке о вашем представнику (у случају да нас контактирате у име правног лица), што може да укључује и ваш документ са идентификационим подацима.
+Lični podaci koje je Kompaniji neophodno da prikuplja, obrađuje i koristi u skladu sa ovom Politikom privatnosti su sledeći:
 
-(2) Контакт информације као што су број телефона, имејл или подаци о налогу на друштвеним мрежама.
+(1) Vaše puno ime, uključujući povezane informacije ili informacije o vašem predstavniku (u slučaju da nas kontaktirate u ime pravnog lica) koje mogu uključivati dokument o identitetu.
 
-(3) Остали лични подаци које можете дати Компанији током комуникације, као што су информације о питањима упита, информације о интересовањима или било које друге личне информације које директно достављате Компанији путем различитих комуникационих канала.
+(2) Kontakt informacije kao što su broj telefona, email ili informacije o nalogu na društvenim mrežama.
 
-(4) У случају комуникације путем веб странице, може укључивати ваше техничке податке као што су IP адреса, колачићи, укључујући информације о вашем понашању приликом прегледања.
+(3) Ostali lični podaci koje možete pružiti Kompaniji tokom komunikacije, kao što su informacije o upitima, interesovanjima ili bilo koje druge lično identifikacione informacije koje direktno pružate Kompaniji putem različitih kanala komunikacije.
 
-Сврха обраде и коришћења личних података: Компанија је неопходна да прикупља, саставља и користи личне податке кандидата за посао у следеће сврхе:
+(4) U slučaju komunikacije putem veb-sajta, mogu uključivati vaše tehničke informacije kao što su IP adresa, kolačići (Cookies), uključujući informacije o vašem ponašanju prilikom pretraživanja.
 
-(1) За управљање комуникацијама којима сте комуницирали са Компанијом, као што је одговарање на питања, пружање релевантних информација на захтев и у складу са захтевима, управљање жалбама или одговарање на коментаре које директно упућујете Компанији путем различитих комуникационих канала, укључујући континуирану координацију, извршење уговора о услугама и/или извршавање права и обавеза о којима се Компанија и ви можете договорити;
+Svrha obrade i korišćenja ličnih podataka, Kompaniji je neophodno da prikuplja, obrađuje i koristi lične podatke kandidata za posao u sledeće svrhe:
 
-(2) За извршење законских обавеза којима Компанија може бити подвргнута одређеним условима. Ово може укључивати, али није ограничено на, обављање послова везаних за припрему рачуноводствених докумената и пореза у вези са било којим услугама које вам Компанија пружа;
+(1) Za upravljanje komunikacijom koju ste ostvarili sa Kompanijom, kao što su odgovaranje na pitanja, pružanje relevantnih informacija po zahtevu, upravljanje žalbama ili odgovaranje na komentare koje direktno upućujete Kompaniji putem različitih kanala komunikacije, uključujući kontinuiranu koordinaciju, izvršenje ugovora o uslugama i/ili ostvarivanje prava i obaveza na koje se Kompanija i vi možete dogovoriti;
 
-(3) У сврху изградње и побољшања пословних односа, укључујући побољшање услуге коју Компанија пружа у вашу корист, а Компанија може прикупљати и/или користити ваше личне податке у сврху контроле, осигурања услуге, анализе управљања и решавања пословних питања, укључујући, али не ограничавајући се на, обуку запослених и планирање будућег побољшања услуга;
+(2) Za izvršenje zakonskih obaveza kojima Kompanija može biti podložna pod određenim uslovima. Ovo može uključivati, ali nije ograničeno na, obavljanje zadataka vezanih za pripremu računovodstvene dokumentacije i poreza u vezi sa bilo kojim uslugama koje Kompanija pruža vama;
 
-(4) Ради заштите и одбране законских права Компаније у случају да дође до спора између вас и Компаније; и
+(3) U svrhu izgradnje i unapređenja poslovnih odnosa, uključujući poboljšanje usluge koju Kompanija pruža u vašu korist, pri čemu Kompanija može prikupljati i/ili koristiti vaše lične podatke radi kontrole, osiguranja usluge, analize upravljanja i rešavanja poslovnih pitanja, uključujući, ali ne ograničavajući se na, obuku zaposlenih i planiranje budućih poboljšanja usluga;
 
-(5) Уз изричиту сагласност дату Компанији, као што су маркетиншке комуникације и билтени, Компанија може обрађивати Личне податке у сврхе дефинисане у сагласности.
+(4) U svrhu zaštite i odbrane pravnih prava Kompanije u slučaju spora između vas i Kompanije; i
 
-Период чувања личних података, како би се извршиле горе описане сврхе, Компанија је неопходна да прикупља, саставља и обрађује ваше личне податке у складу са следећим периодом:
+(5) Uz izričitu saglasnost koju ste dali Kompaniji, kao što su marketinške i biltene komunikacije, Kompanija može obrađivati lične podatke u svrhe definisane u toj saglasnosti.
 
-(1) За обраду личних података у сврху пружања услуга, извршења уговора и/или обављања права и обавеза из уговора, Компанија је неопходна да обрађује ваше личне податке, све док компанија има обавезу да вам пружа услуге;
+Period čuvanja ličnih podataka, kako bi se izvršile svrhe opisane gore, Kompaniji je neophodno da prikuplja, obrađuje i čuva vaše lične podatke u sledećim vremenskim okvirima:
 
-(2) За обраду личних података у сврху обављања дужности у складу са важећим законима, Компанија је неопходна да обрађује ваше личне податке у временском периоду одређеном важећим законима;
+(1) Za obradu ličnih podataka u svrhu pružanja usluga, izvršenja ugovora i/ili ostvarivanja prava i obaveza iz ugovora, Kompaniji je neophodno da obrađuje vaše lične podatke dok traje obaveza Kompanije da vam pruža usluge;
 
-(3) За обраду личних података у сврху изградње и унапређења пословних односа и/или унапређења услуге, Компанија задржава право да задржи те личне податке у мери у којој Компанија може имати пословну потребу. Компанија гарантује да задржавање личних података неће неразумно утицати на права лица на које се подаци односе;
+(2) Za obradu ličnih podataka u svrhu izvršenja obaveza prema važećim zakonima, Kompaniji je neophodno da obrađuje vaše lične podatke u periodu koji je propisan važećim zakonima;
 
-(4) За обраду личних података ради заштите и борбе за легитимна права Друштва, Друштво је неопходно да чува такве личне податке у складу са прописима дефинисаним важећим законима; и
+(3) Za obradu ličnih podataka u svrhu izgradnje i unapređenja poslovnih odnosa i/ili poboljšanja usluge, Kompanija zadržava pravo da čuva te lične podatke u meri u kojoj postoji poslovna potreba. Kompanija garantuje da čuvanje ličnih podataka neće nerazumno uticati na prava ispitanika podataka;
 
-(5) Уколико дате сагласност Компанији да обрађује ваше личне податке у одређене сврхе, Компанија ће обрађивати ваше личне податке док не повучете ту сагласност.
+(4) Za obradu ličnih podataka u svrhu zaštite i borbe za legitimna prava Kompanije, Kompanija ima potrebu da čuva takve lične podatke u skladu sa rokovima propisanim važećim zakonima; i
 
-Откривање личних података, генерално, ваши лични подаци неће бити откривени, осим у околностима које би Компанија морала да открије следећој особи:
+(5) U slučaju da date saglasnost Kompaniji za obradu vaših ličnih podataka u specifične svrhe, Kompanija će obrađivati vaše lične podatke dok ne povučete tu saglasnost.
 
-(1) Спољни добављачи услуга Компаније ангажовани за пружање помоћних услуга Компанији приликом пружања услуга вама, укључујући консултанте Компаније. Такво откривање личних података овим трећим лицима биће обављено у складу са сврхом и само на основу потребе да се зна; или
+Otkrivanje ličnih podataka, uopšteno, vaši lični podaci neće biti otkriveni, osim u slučajevima kada Kompanija mora da ih otkrije sledećim licima:
 
-(2) Влада, регулаторни органи или судови да Компанија може бити подложна налогу, закону или пресуди за откривање личних података.
+(1) Spoljni pružaoci usluga Kompanije angažovani za pružanje podrške Kompaniji u pružanju usluga vama, uključujući konsultante Kompanije. Takvo otkrivanje ličnih podataka ovim trećim stranama vrši se u skladu sa svrhom i samo na osnovu potrebe za znanjem; ili
 
-Компанија се обавезује да примени одговарајуће мере безбедности личних података како би спречила сваки неовлашћени и незаконити приступ, измену, допуну или откривање. Компанија се обавезује да редовно преиспитује ове мере како би се осигурала њихова компатибилност са стандардима и важећим законима.
+(2) Vladine, regulatorne vlasti ili sudovi kojima je Kompanija podložna po nalogu, zakonu ili sudskoj presudi da otkrije lične podatke.
 
-Права субјекта података, Компанија поштује ваша права као субјекта података у складу са важећим законима. Можете контактирати Компанију да бисте остварили права која су (1) право на повлачење сагласности, (2) право на приступ, (3) право на захтев за копију личних података, (4) право на исправку личних података, (5) право на приговор на било какву обраду личних података, (6) право на захтев за преносивост података у случају да Компанија чува личне податке у формату који је читљив или се уобичајено користи од стране аутоматизованих алата или опреме, укључујући право на пренос таквих личних података другим контролорима података, (7) право на захтев за брисање или деидентификацију личних података када више нема потребе за обрадом, (8) право на захтев за обуставу употребе личних података и (9) право на подношење жалбе.
+Kompanija se obavezuje da primeni odgovarajuće mere bezbednosti ličnih podataka kako bi sprečila bilo kakav neovlašćeni i nezakoniti pristup, izmenu, dopunu ili otkrivanje. Kompanija se obavezuje da redovno preispituje ove mere kako bi osigurala njihovu usklađenost sa standardima i važećim zakonima.
 
-Контакт информације компаније
+Prava ispitanika podataka, Kompanija poštuje vaša prava kao ispitanika podataka u skladu sa važećim zakonima. Možete kontaktirati Kompaniju da ostvarite sledeća prava: (1) pravo na povlačenje saglasnosti, (2) pravo na pristup, (3) pravo na zahtev za kopiju ličnih podataka, (4) pravo na ispravku ličnih podataka, (5) pravo na prigovor na bilo koju obradu ličnih podataka, (6) pravo na zahtev za prenosivost podataka u slučaju da Kompanija čuva lične podatke u formatu koji je čitljiv ili uobičajeno korišćen od strane automatizovanih alata ili opreme, uključujući pravo na prenos takvih ličnih podataka drugim kontrolorima podataka, (7) pravo na zahtev za brisanje ili anonimizaciju ličnih podataka ukoliko ne postoji potreba za njihovom obradom, (8) pravo na zahtev za obustavu korišćenja ličnih podataka, i (9) pravo na podnošenje žalbe.
 
-Службеник за заштиту података
+Kontakt informacije Kompanije
 
-Име: Јан Гуриу
+Službenik za zaštitu podataka
 
-Адреса: #03-01 Вилки Еџ, Вилки Роуд 8, Сингапур 228095
+Ime: Yann Gouriou
 
-Имејл: dataprotectionofficer@wink.travel
-Број телефона: +66 (0) 854891301
+Adresa: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
 
+Email: dataprotectionofficer@wink.travel  
+Telefon: +66 (0) 854891301

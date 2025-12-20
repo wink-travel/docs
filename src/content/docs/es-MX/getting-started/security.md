@@ -1,79 +1,76 @@
 ---
-title: Security
-description: >-
-  Este artículo contiene información sobre las medidas de seguridad que
-  implementamos y es publicado anualmente por nuestra empresa de seguridad
-  externa.
+title: Seguridad
+description: Este artículo contiene información sobre las medidas de seguridad que implementamos y que son publicadas anualmente por nuestra firma de seguridad externa.
 sidebar:
   order: 6
 ---
-# Documento de descripción general de seguridad de Wink
+
+# Documento de Resumen de Seguridad de Wink
 
 *Última actualización: 7 de septiembre de 2024*
 
 *Versión 1.0*
 
-## Propósito y alcance
+## Propósito y Alcance
 
-Como parte de nuestro compromiso continuo con la seguridad y la protección de los datos de los usuarios, realizamos pruebas de penetración periódicas en nuestra aplicación web. Este documento describe nuestras metodologías de prueba, ofrece un resumen de los hallazgos y destaca nuestro enfoque para la mejora continua de la seguridad.
+Como parte de nuestro compromiso continuo con la seguridad y la protección de los datos de los usuarios, realizamos pruebas de penetración regulares en nuestra aplicación web. Este documento describe nuestras metodologías de prueba, proporciona un resumen de los hallazgos y destaca nuestro enfoque para la mejora continua de la seguridad.
 
-Este documento se actualizará a medida que se produzcan nuevos informes o cuando se produzcan cambios significativos.
+Este documento se actualizará conforme se produzcan nuevos informes o cuando ocurran cambios significativos.
 
-Dominios en el ámbito:\
-\*.guiño.viaje\
+Dominios en alcance:  
+\*.wink.travel  
 \*.trippay.io
 
-## Frecuencia y programación de pruebas
+## Frecuencia y Calendario de Pruebas
 
-Realizamos nuestras pruebas de penetración anualmente, y programamos pruebas adicionales según sea necesario tras actualizaciones significativas de la aplicación o la infraestructura. Esta frecuencia de pruebas nos permite anticiparnos a las amenazas en constante evolución y mantener un entorno seguro.
+Nuestras pruebas de penetración se realizan anualmente, con pruebas adicionales programadas según sea necesario tras actualizaciones significativas de la aplicación o infraestructura. Esta cadencia regular de pruebas asegura que nos mantengamos por delante de las amenazas en evolución y mantengamos un entorno seguro.
 
-## Metodologías de prueba
+## Metodologías de Prueba
 
-Nuestras pruebas de penetración son integrales y cubren una amplia gama de aspectos de seguridad, incluidos, entre otros:
+Nuestras pruebas de penetración son exhaustivas y cubren una amplia gama de aspectos de seguridad, incluyendo pero no limitándose a:
 
-* **Los 10 mejores de OWASP:**&#x4E;uestras pruebas se centran específicamente en los riesgos de seguridad más críticos, como inyección, autenticación rota y secuencias de comandos entre sitios (XSS).
-* **Pruebas de caja negra y caja gris:**&#x44;ependiendo del alcance, nuestro equipo utiliza estas metodologías para simular escenarios de ataques tanto externos como internos.
-* **Pruebas automatizadas y manuales:**&#x55;tilizamos Burp Suite Pro, un conjunto de herramientas líder en pruebas de seguridad, para realizar análisis de seguridad automatizados y complementar las técnicas de pruebas manuales para identificar vulnerabilidades complejas y obtener la mejor cobertura posible. Para una identificación más específica de vulnerabilidades, utilizamos herramientas especializadas, como SQLmap.
+* **OWASP Top 10:** Nuestras pruebas se enfocan específicamente en los riesgos de seguridad más críticos, como Inyección, Autenticación Rota y Cross-Site Scripting (XSS).  
+* **Pruebas de Caja Negra y Caja Gris:** Dependiendo del alcance, nuestro equipo utiliza estas metodologías para simular escenarios de ataque tanto externos como internos.  
+* **Pruebas Automatizadas y Manuales:** Usamos Burp Suite Pro, un conjunto líder de herramientas de pruebas de seguridad, para realizar escaneos automatizados y apoyar técnicas manuales para identificar vulnerabilidades complejas y obtener la mejor cobertura posible. Para la identificación más específica de vulnerabilidades, se utilizan algunas herramientas especializadas, por ejemplo, SQLmap.
 
-## Resumen de los hallazgos
+## Resumen de Hallazgos
 
-El siguiente es un resumen de alto nivel de nuestro informe de pruebas de penetración más reciente:
+A continuación, un resumen de alto nivel del informe más reciente de pruebas de penetración:
 
-* **Total de vulnerabilidades identificadas:**&#x32;
-* **Distribución de la gravedad:**
-  * Crítico: 2
-* **Tipos de vulnerabilidades detectadas:**
-  * Control de acceso roto
-  * Diseño inseguro
+* **Total de Vulnerabilidades Identificadas:** 2  
+* **Distribución de Severidad:**  
+  * Críticas: 2  
+* **Tipos de Vulnerabilidades Detectadas:**  
+  * Control de Acceso Roto  
+  * Diseño Inseguro
 
-Para conocer los resultados detallados, consulte el informe completo.
+Para hallazgos detallados, consulte el informe completo.
 
-### Calificaciones de riesgo e impacto
+### Calificaciones de Riesgo e Impacto
 
-Ambas vulnerabilidades se consideran críticas, ya que podrían haber tenido graves consecuencias financieras. La primera permitió a un usuario autenticado malintencionado obtener el control de la cuenta de pago de Trippay de otra empresa. La segunda vulnerabilidad permitió a un usuario malintencionado modificar el importe del pago requerido para una reserva.
+Ambas vulnerabilidades encontradas están calificadas como críticas, ya que podrían haber tenido impactos financieros severos. La primera permitió que un usuario autenticado malicioso obtuviera control de la cuenta de pago Trippay de otra empresa. La segunda vulnerabilidad permitió que un usuario malicioso modificara el monto del pago requerido para una reserva.
 
-### Esfuerzos de remediación y mitigación
+### Esfuerzos de Remediación y Mitigación
 
 Hemos tomado las siguientes medidas para abordar las vulnerabilidades identificadas:
 
-* **Parches inmediatos:**&#x4C;as vulnerabilidades críticas fueron solucionadas dentro de las 48 horas siguientes a su descubrimiento.
-* **Revisión y fortalecimiento del código:**&#x45;l equipo de desarrollo ha implementado controles de seguridad adicionales según nuestras recomendaciones.
+* **Parcheo Inmediato:** Las vulnerabilidades críticas fueron parchadas dentro de las 48 horas posteriores a su descubrimiento.  
+* **Revisión y Fortalecimiento de Código:** El equipo de desarrollo ha implementado controles de seguridad adicionales basados en nuestras recomendaciones.
 
-## Mejora continua
+## Mejora Continua
 
-Las pruebas de penetración forman parte de nuestra estrategia más amplia de mejora continua de la seguridad. Los resultados de cada prueba orientan nuestras políticas de seguridad, influyen en las prácticas de desarrollo e impulsan mejoras en nuestra arquitectura de seguridad.
+Las pruebas de penetración forman parte de nuestra estrategia más amplia para la mejora continua de la seguridad. Los hallazgos de cada prueba guían nuestras políticas de seguridad, influyen en las prácticas de desarrollo y promueven mejoras en nuestra arquitectura de seguridad.
 
-## Experiencia del equipo
+## Experiencia del Equipo
 
-Nuestras pruebas de penetración las realiza un profesional interno con amplia experiencia en diversos proyectos e industrias. Utilizando herramientas y métodos de vanguardia, nuestro experto garantiza que nuestra aplicación esté completamente probada contra las amenazas de seguridad más recientes.
+Nuestras pruebas de penetración son realizadas por un profesional interno con amplia experiencia en diversos proyectos e industrias. Usando herramientas y métodos líderes, nuestro experto asegura que nuestra aplicación sea probada exhaustivamente contra las amenazas de seguridad más recientes.
 
-## Compromiso con la seguridad
+## Compromiso con la Seguridad
 
-Nos dedicamos a mantener un entorno de aplicaciones seguro para nuestros usuarios y partes interesadas. Nuestros continuos esfuerzos en pruebas y mejoras de seguridad demuestran nuestro compromiso con la protección contra amenazas en constante evolución.
+Estamos dedicados a mantener un entorno de aplicación seguro para nuestros usuarios y partes interesadas. Nuestros esfuerzos continuos en pruebas y mejoras de seguridad demuestran nuestro compromiso para proteger contra amenazas en evolución.
 
-## Acceso a informes y actualizaciones
+## Acceso al Informe y Actualizaciones
 
-Este documento se actualizará continuamente a medida que se publiquen nuevos informes de pruebas de penetración. Para acceder al informe completo, contáctenos a través del correo electrónico que aparece a continuación. Las futuras actualizaciones incluirán las vulnerabilidades recientemente identificadas, las medidas de remediación y los ajustes a nuestras metodologías de prueba.
+Este documento se actualizará continuamente conforme se emitan nuevos informes de pruebas de penetración. Para acceder al informe completo, por favor contáctenos a través del correo electrónico abajo. Las futuras actualizaciones incluirán vulnerabilidades recién identificadas, esfuerzos de remediación y ajustes en nuestras metodologías de prueba.
 
-Para más consultas, contacte con security@wink.travel.
-
+Para más consultas, por favor contacte a security@wink.travel.

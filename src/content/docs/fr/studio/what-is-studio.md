@@ -1,18 +1,16 @@
 ---
 title: Qu'est-ce que Studio ?
-description: >-
-  Cette page explique les difficultés d'accès à l'inventaire de voyages et
-  comment le portail d'affiliation de Wink rend cela beaucoup plus facile.
+description: Cette page explique les difficultés d'accès à l'inventaire de voyages et comment le portail affilié de Wink facilite grandement cette tâche.
 sidebar:
   order: 0
 ---
-Historiquement, l'accès et la vente de tout produit lié au voyage impliquaient des accords de confidentialité et des intégrations complexes entre deux \[ou plusieurs] agences de voyages agréées disposant d'une expertise technique suffisante, d'un accès à une passerelle de paiement et de la conformité à la norme PCI DSS. C'était une démarche coûteuse et chronophage, et la barrière à l'entrée était insurmontable pour le commun des mortels.
 
-[Wink Studio](https://studio.wink.travel) est notre portail d'affiliation. Il rend la vente de voyages accessible à tous, aussi simple que de partager un lien ou aussi complexe que de gérer une agence de voyages en ligne.
+Historiquement, accéder à, et vendre, quoi que ce soit lié au voyage impliquait des accords de confidentialité (NDA) et des intégrations complexes entre deux [ou plusieurs] agences de voyages agréées disposant de suffisamment d'expertise technique, d'un accès à une passerelle de paiement et étant toutes deux conformes à la norme PCI DSS. C'était un effort coûteux et chronophage, et la barrière à l'entrée était impossiblement élevée pour les personnes ordinaires.
 
-Le portail d'affiliation présente l'inventaire de voyages disponible auprès de fournisseurs (hôtels, auberges, locations, prestataires d'expériences) du monde entier. Votre objectif est de trouver l'inventaire qui vous convient, puis de le présenter et de le vendre au mieux à votre public.
+[Wink Studio](https://studio.wink.travel) est notre portail affilié. Il rend la vente d'inventaire de voyages accessible à tous et aussi simple que de partager un lien ou aussi avancé que de gérer une agence de voyages en ligne.
 
-Studio vous permet de parcourir les fournisseurs et leurs stocks. Une fois que vous avez trouvé un produit qui vous plaît, nous vous proposons de nombreuses façons de le vendre en ligne, notamment sur les réseaux sociaux.
+Le portail affilié expose l'inventaire de voyages disponible auprès des fournisseurs (c'est-à-dire hôtels, auberges, locations, prestataires d'expériences) partout dans le monde. Votre objectif est de trouver l'inventaire qui vous convient, puis d'utiliser la meilleure méthode pour exposer et vendre cet inventaire à votre audience.
 
-Continuez à lire et découvrez toutes les fonctionnalités que nous proposons aux affiliés.
+Studio vous offre un moyen de parcourir les fournisseurs et leur inventaire. Une fois que vous avez trouvé quelque chose qui vous plaît, nous proposons de nombreuses façons de vendre cet inventaire en ligne et surtout via les réseaux sociaux.
 
+Continuez à lire pour découvrir toutes les fonctionnalités que nous offrons aux affiliés.

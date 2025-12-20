@@ -1,29 +1,30 @@
 ---
-title: Authentication
+title: Xác thực
 description: Tìm hiểu cách xác thực bằng máy chủ ủy quyền OAuth2 của Wink.
 sidebar:
   order: 2
 ---
+
 :::tip
-Máy chủ xác thực Wink IAM hỗ trợ các điểm cuối OAuth2 phổ biến:
+Máy chủ xác thực IAM của Wink hỗ trợ các điểm cuối OAuth2 phổ biến:
 
-* /oauth2/ủy quyền
-* /oauth2/mã thông báo
-* /oauth2/tự vấn
-* /oauth2/thu hồi
-* /oauth2/thông tin người dùng
-  :::
+- /oauth2/authorize
+- /oauth2/token
+- /oauth2/introspect
+- /oauth2/revoke
+- /oauth2/userinfo
+:::
 
-Một ứng dụng cung cấp cho bạn một`Client ID` Và `Secret Key`bạn cần tạo phiên OAuth2 đã xác thực mà bạn có thể sử dụng để giao tiếp với Wink và TripPay API.
+Một ứng dụng cung cấp cho bạn `Client ID` và `Secret Key` mà bạn cần để tạo một phiên OAuth2 đã xác thực, bạn có thể sử dụng để giao tiếp với các API của Wink và TripPay.
 
-Sau đây là các bước để tạo phiên xác thực.
+Dưới đây là các bước để tạo một phiên đã xác thực.
 
-**Bước 1**. Truy xuất mã thông báo truy cập trên môi trường dàn dựng hoặc sản xuất của chúng tôi:
+**Bước 1**. Lấy access token trên môi trường staging hoặc môi trường sản xuất của chúng tôi:
 
-Rất có thể bạn sẽ làm việc với một thư viện OAuth2 mạnh mẽ cho ngôn ngữ của mình, thư viện này sẽ thực hiện mọi công việc nặng nhọc cho bạn.
-Các ví dụ của chúng tôi sẽ chỉ ra cách sử dụng cơ bản nhất từ dòng lệnh bằng cách sử dụng`curl`.
+Bạn rất có thể sẽ làm việc với một thư viện OAuth2 mạnh mẽ cho ngôn ngữ của bạn, thư viện này sẽ xử lý tất cả các bước phức tạp cho bạn.
+Các ví dụ của chúng tôi sẽ trình bày cách sử dụng cơ bản nhất từ dòng lệnh sử dụng `curl`.
 
-### dàn dựng
+### Staging
 
 ```bash
 
@@ -35,7 +36,7 @@ curl -X POST https://staging-iam.wink.travel/oauth2/token \
 
 ```
 
-### Sản xuất
+### Production
 
 ```bash
 
@@ -47,7 +48,7 @@ curl -X POST https://iam.wink.travel/oauth2/token \
 
 ```
 
-Thao tác này sẽ trả về mã thông báo truy cập cùng với dữ liệu phản hồi OAuth2 khác:
+Điều này sẽ trả về một access token, cùng với các dữ liệu phản hồi OAuth2 khác:
 
 ```json
 {
@@ -55,14 +56,13 @@ Thao tác này sẽ trả về mã thông báo truy cập cùng với dữ liệ
 }
 ```
 
-Khi bạn thực hiện cuộc gọi đến bất kỳ điểm cuối nào của chúng tôi, hãy bao gồm thông tin sau vào tiêu đề:
+Khi bạn gọi bất kỳ điểm cuối nào của chúng tôi, hãy bao gồm các header sau:
 
-* `Wink-Version`=`2.0`Mới nhất -*Xem tài liệu API của chúng tôi để biết các phiên bản khả dụng khác.*
-* `Authentication`=`Bearer: ${access_token}` *Nhập mã thông báo truy cập của bạn.*
+- `Wink-Version` = `2.0` Mới nhất - *Xem tài liệu API của chúng tôi để biết các phiên bản khác có sẵn.*
+- `Authentication` = `Bearer: ${access_token}` *Chèn access token của bạn.*
 
 :::tip
-Bạn có thể kiểm tra tất cả các API của chúng tôi mà không cần viết một dòng mã nào trước khi bắt đầu.
+Bạn có thể thử tất cả các API của chúng tôi mà không cần viết một dòng mã nào trước khi bắt đầu.
 
-Lấy 'ID khách hàng' và 'Khóa bí mật' từ một trong các ứng dụng của bạn và điều hướng đến bất kỳ ứng dụng nào của chúng tôi[API](/developers/apis).
+Lấy 'Client ID' và 'Secret Key' từ một trong các ứng dụng của bạn và truy cập bất kỳ [API](/vi/developers/apis) nào của chúng tôi.
 :::
-

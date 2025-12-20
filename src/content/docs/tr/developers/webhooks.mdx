@@ -1,100 +1,101 @@
 ---
-title: Webhooks
+title: Webhook'lar
 description: Wink ve TripPay etkinliklerine abone olun.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 import CloudinaryImage from '/src/components/cloudinary-image.astro';
 
-Webhook'lar, Wink ve TripPay'den hesabınızla ilgili gerçek zamanlı olayları almanızı ve bunlara tepki vermenizi sağlayan bir yoldur.
+Webhook'lar, hesabınızla ilgili Wink ve TripPay'den gelen gerçek zamanlı etkinlikleri almanız ve bunlara tepki vermeniz için bir yoldur.
 
 ## Örnek
 
 <Steps>
-  1. Wink'te bir rezervasyon gerçekleşir.
-  2. Wink etkinliği `booking.created` Gönderildi.
-  3. Sisteminiz bu olayı aktif olarak dinliyor.
-  4. Sisteminiz kendi analiz kümenizi izler ve bu olayı zaman serisi veritabanını güncellemek için kullanır.
+1. Wink üzerinde bir rezervasyon gerçekleşir.
+1. Wink etkinliği `booking.created` tetiklenir.
+2. Sisteminiz bu etkinliği aktif olarak dinlemektedir.
+3. Sisteminiz kendi analiz setinizi takip eder ve bu etkinliği zaman serisi veritabanını güncellemek için kullanır.
 </Steps>
-
 
 <figure>
-  <CloudinaryImage width="350" height="215" resize="scale" quality="best" alt="Örnek webhook" src="academy/webhook" errorImage="noimage_opaque_nyrtl0.png" />
-
-  <figcaption>*Örnek webhook girişi*</figcaption>
+<CloudinaryImage
+      width="350"
+      height="215"
+      resize="scale"
+      quality="best"
+      alt="Örnek webhook"
+      src="academy/webhook"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Örnek webhook girişi*</figcaption>
 </figure>
 
+:::note
+Bir Wink webhook'u, bir TripPay webhook'undan farklıdır.
 
-:::not
-Wink webhook'u TripPay webhook'undan farklıdır.
+- Wink etkinliklerini dinlemek istiyorsanız, bir webhook'u [Extranet](https://extranet.wink.travel) veya [Studio](https://studio.wink.travel) üzerinden oluşturabilirsiniz.
+- TripPay etkinliklerini dinlemek istiyorsanız, bir webhook'u [Payment](https://pay.wink.travel) üzerinden oluşturabilirsiniz.
+:::
 
-* Wink etkinliklerini dinlemek istiyorsanız, bir webhook oluşturabilirsiniz[Ekstranet](https://extranet.wink.travel) veya [Stüdyo](https://studio.wink.travel).
-* TripPay etkinliklerini dinlemek istiyorsanız, bir webhook oluşturabilirsiniz[Ödeme](https://pay.wink.travel).
-  :::
-
-*Bu örnek için, kimlik doğrulamasını şu şekilde yapacağız:[Stüdyo](https://studio.wink.travel).*
+*Bu örnek için, [Studio](https://studio.wink.travel) üzerinden kimlik doğrulaması yapacağız.*
 
 <Steps>
-  1. Kimliğinizi doğruladıktan sonra sağ üst köşedeki profil simgenize tıklayın, bir menü açılacak.
-  2. Tıkla `Webhooks` bağlantı.
-  3. Webhooks sayfanıza yönlendirileceksiniz.
+1. Kimlik doğrulaması yapıldıktan sonra, sağ üst köşedeki profil simgenize tıklayın, bir menü açılacaktır.
+2. `Webhooks` bağlantısına tıklayın.
+3. Webhook'lar sayfanıza yönlendirileceksiniz.
 </Steps>
 
+## Webhook oluşturma
 
-## Webhook oluştur
-
-:::dikkat
-Webhook'unuzu belirli bir hesaba bağlayacağınız için bir webhook oluşturmadan önce Wink'te bir ortaklık hesabı veya TripPay'de bir hesap oluşturmanız gerekir.
+:::caution
+Webhook oluştururken, webhook'unuzu belirli bir hesaba bağlayacağınız için önce Wink'te bir bağlı kuruluş hesabı veya TripPay'de bir hesap oluşturmanız gerekir.
 :::
 
 Webhook oluşturma adımları şunlardır:
 
 <Steps>
-  1. Webhooks sayfasından, `Create new webhook` düğme.
-  2. ***İsim*** Webhook'unuza bir isim verin. *örneğin Wink Stalker*
-  3. ***Olanak vermek*** Etkinleştirilmesi için olduğu gibi bırakın.
-  4. **Kuruluş adı** Webhook'unuzu mevcut hesaplarınızdan biriyle bağlayın. *Örn. Cool Hesap*
-  5. **Olaylar** İlginizi çeken etkinlikleri dinleyin. *Örn. `booking.created`*
-  6. **Webhook URL** Etkinliklerimizi dinleyeceğiniz URL'yi girin. *Örn. `https://my.system.com/webhook/wink`*
-  7. Tıkla `Save` Devam etmek için düğmeye basın.
+1. Webhook'lar sayfasından, `Create new webhook` butonuna tıklayın.
+2. ***İsim*** Webhook'unuza bir isim verin. *örneğin Wink Stalker*
+3. ***Etkinleştir*** Etkin bırakın.
+4. **Varlık adı** Webhook'unuzu mevcut hesaplarınızdan biriyle bağlayın. *örneğin Cool Account*
+5. **Etkinlikler** İlginizi çeken etkinlikleri dinleyin. *örneğin `booking.created`*
+6. **Webhook URL'si** Bizden gelecek etkinlikleri dinleyeceğiniz URL'yi girin. *örneğin `https://my.system.com/webhook/wink`*
+7. Devam etmek için `Save` butonuna tıklayın.
 </Steps>
 
+Webhook listenize geri yönlendirilirsiniz ve yeni webhook'unuz kullanıma hazırdır.
 
-Webhook listenize geri yönlendirileceksiniz ve yeni webhook'unuz kullanıma hazır.
+## Webhook güncelleme
 
-## Webhook'u güncelle
+Aşağıdaki durumlarda uygulamanızı güncellemeniz gerekir:
 
-Aşağıdakileri yapmak istiyorsanız uygulamanızı güncellemeniz gerekir:
+- Webhook'unuzu devre dışı bırakmak istiyorsanız.
+- Daha fazla/az etkinlik dinlemek istiyorsanız.
+- Dinleme webhook URL'nizi değiştirmek istiyorsanız.
 
-* Webhook'unuzu devre dışı bırakın.
-* Daha fazla / daha az etkinlik dinleyin.
-* Dinleme webhook URL'nizi değiştirin.
-
-Mevcut bir webhook'u güncellemek için aşağıdakileri yapın:
+Mevcut bir webhook'u güncellemek için şu adımları izleyin:
 
 <Steps>
-  1. Tıkla `Actions` Güncellemek istediğiniz webhook'un bağlantısı.
-  2. Tıkla `Update` Eylemler altındaki düğmeye tıklayın.
-  3. Webhook'ta değişikliklerinizi yapın.
-  4. Tıkla `Save` Devam etmek için düğmeye basın.
+1. Güncellemek istediğiniz webhook için `Actions` bağlantısına tıklayın.
+2. Actions altında `Update` butonuna tıklayın.
+3. Webhook'ta değişikliklerinizi yapın.
+4. Devam etmek için `Save` butonuna tıklayın.
 </Steps>
 
+Webhook listenize geri yönlendirilirsiniz.
 
-Webhook listenize geri yönlendirileceksiniz.
+## Webhook kaldırma
 
-## Webhook'u kaldır
+Webhook'a artık ihtiyacınız yoksa, kaldırabilirsiniz.
 
-Eğer webhook'a artık ihtiyacınız yoksa, devam edip onu kaldırabilirsiniz.
-
-Bir webhook'u kaldırmak için aşağıdakileri yapın:
+Bir webhook'u kaldırmak için şu adımları izleyin:
 
 <Steps>
-  1. Tıkla `Actions` Güncellemek istediğiniz webhook'un bağlantısı.
-  2. Tıkla `Remove` Eylemler altındaki düğmeye tıklayın.
-  3. Tıklamak `OK` Silmeyi onaylamak için düğmeye basın.
+1. Kaldırmak istediğiniz webhook için `Actions` bağlantısına tıklayın.
+2. Actions altında `Remove` butonuna tıklayın.
+3. Silmeyi onaylamak için `OK` butonuna tıklayın.
 </Steps>
 
-
-Webhook listenize geri yönlendirileceksiniz.
-
+Webhook listenize geri yönlendirilirsiniz.

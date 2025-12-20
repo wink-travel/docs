@@ -4,44 +4,44 @@ description: Aquest article t'explica tot el que volies saber sobre el motor de 
 sidebar:
   order: 0
 ---
-Així és com segmentem la responsabilitat a Wink:
 
-* [Extranet](/extranet/what-is-extranet) es preocupa pels proveïdors que gestionen l'inventari.
-* [Estudi](/studio/what-is-studio) es preocupa pels afiliats que gestionen contingut.
-* `Booking Engine`es preocupa de fer el contingut, creat en`Studio`, que es basava en l'inventari creat el`Extranet`i fent-ho reservable.
-* [Pagament](/payment/what-is-trip-pay) es preocupa de cobrar/reemborsar els viatgers que reserven \[a través de plataformes com Wink] i de pagar els proveïdors.
+Així és com segmentem la responsabilitat a Wink: 
 
-El motor de reserves és el nucli de la nostra plataforma.
+- [Extranet](/ca/extranet/what-is-extranet) s'ocupa dels proveïdors que gestionen l'inventari.
+- [Studio](/ca/studio/what-is-studio) s'ocupa dels afiliats que gestionen el contingut.
+- `Booking Engine` s'ocupa de fer que el contingut, creat a `Studio`, que es basa en l'inventari creat a `Extranet`, sigui reservable.
+- [Payment](/ca/payment/what-is-trip-pay) s'ocupa de cobrar / reemborsar els viatgers que reserven [a través de plataformes com Wink], i de pagar els proveïdors.
+
+El motor de reserves és al cor de la nostra plataforma.
 
 Les seves responsabilitats inclouen:
 
-* Gestió de divises i manteniment actualitzat dels tipus de canvi.
-* Donant als proveïdors de tarifes una manera d'enviar-nos dades de tarifes.
-* Gestió de dades de cerca.*p. ex. regions, països, destinacions, propietats, etc.*
-* Gestió d'idiomes.
-* Generació d'analítiques basades en interaccions d'usuaris, esdeveniments i crides a l'API.
-* Publicació d'inventari reservable en el format, l'idioma i la moneda desitjats, com ara:
-  * Un [enllaç compartible](/studio/shareable-links) a Facebook.
-  * Una pàgina de destinació d'un hotel a https://ota.wink.travel amb inventari per a aquest hotel.
-  * Un [targeta](/studio/cards) que conté inventari d'afiliats.
-  * Un [mapa](/studio/maps) al teu [mapa](/studio/maps) compte.
-  * Un [Crida a l'API](/developers/apis) des d'un sistema d'agència de viatges remota.
-* Oferir als viatgers una manera de:
-  * Cerca d'inventari de viatges.
-  * Reserva l'inventari disponible.
-  * Gestionar els seus[reserves i ressenyes](/booking-engine/bookings).
-  * Gestionar els seus [llista de desitjos](/booking-engine/bucket-list) de coses per reservar en el futur.
-  * Gestionar els seus[perfil de viatge](/booking-engine/travel-preferences).*p. ex. al·lèrgies, contacte d'emergència, etc.*
+- Gestionar les monedes i mantenir els tipus de canvi actualitzats.
+- Donar als proveïdors de tarifes una manera d'enviar-nos dades de tarifes.
+- Gestionar dades de consulta. *per exemple regions, països, destinacions, establiments, etc.*
+- Gestionar idiomes.
+- Generar anàlisis basades en les interaccions d'usuaris, esdeveniments i crides API.
+- Oferir inventari reservable en el format, idioma i moneda desitjats, com ara:
+    - Un [enllaç compartible](/ca/studio/shareable-links) a Facebook.
+    - Una pàgina d'aterratge d'hotel a https://ota.wink.travel amb inventari per a aquest hotel.
+    - Una [targeta](/ca/studio/cards) que conté inventari d'afiliats.
+    - Un [mapa](/ca/studio/maps) al teu compte de [WinkLinks](/ca/link-manager/wink-links).
+    - Una [crida API](/ca/developers/apis) des d'un sistema remot d'agència de viatges.
+- Proporcionar als viatgers una manera de: 
+    - Cercar inventari de viatges.
+    - Reservar inventari disponible.
+    - Gestionar les seves [reserves i ressenyes](/ca/booking-engine/bookings).
+    - Gestionar la seva [llista de desitjos](/ca/booking-engine/bucket-list) de coses per reservar en el futur.
+    - Gestionar el seu [perfil de viatge](/ca/booking-engine/travel-preferences). *per exemple al·lèrgies, contacte d'emergència, etc.*
 
-El motor de reserves és un conjunt de funcionalitats reutilitzables que exposem a través de https://ota.wink.travel; un lloc web altament personalitzable perquè hotels i afiliats puguin vendre els seus productes als viatgers.
+El motor de reserves és una col·lecció de funcionalitats reutilitzables que exposem a través de https://ota.wink.travel; un lloc web altament personalitzable perquè hotels i afiliats venguin els seus productes als viatgers.
 
-Els integradors que volen encara més llibertat tenen accés a totes les mateixes funcions a través de la nostra [Complement de WordPress](/developers/wordpress/), [Complement de WordPress](/developers/wordpress/) i[API](/developers/apis).
+Els integradors, que volen encara més llibertat, tenen accés a totes les mateixes funcions a través del nostre [plugin de WordPress](/ca/developers/wordpress/), [Web Components](/ca/developers/web-components) i [APIs](/ca/developers/apis).
 
 Continua a les següents seccions per llegir més sobre el que ofereix el motor de reserves.
 
-## Lectures addicionals
+## Lectures complementàries
 
-* Llegeix sobre el nostre[Complement de WordPress](/developers/wordpress/).
-* Llegeix sobre el nostre[Components web](/developers/web-components).
-* Llegeix sobre el nostre[API](/developers/apis).
-
+- Llegeix sobre el nostre [plugin de WordPress](/ca/developers/wordpress/).
+- Llegeix sobre els nostres [Web Components](/ca/developers/web-components).
+- Llegeix sobre les nostres [APIs](/ca/developers/apis).

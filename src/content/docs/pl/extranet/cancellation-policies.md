@@ -1,45 +1,45 @@
 ---
-title: Zasady anulowania rezerwacji
-description: 'W tym artykule dowiesz się, jak zarządzać zasadami anulowania w serwisie Wink.'
+title: Polityki anulowania
+description: Ten artykuł pokazuje, jak zarządzać politykami anulowania w Wink.
 sidebar:
   order: 12
 ---
-Aby zarządzać zasadami anulowania, kliknij`Monetize > Cancellation policies`z głównego paska nawigacyjnego.
 
-Zasady anulowania określają sposób obsługi środków rezerwujących w przypadku, gdy gość nie może przybyć. Zasady anulowania występują w dwóch różnych wariantach:
+Aby zarządzać swoimi politykami anulowania, kliknij `Monetize > Cancellation policies` w głównym pasku nawigacyjnym.
 
-1. Zwrotny
-2. Nie podlega zwrotowi
+Polityki anulowania określają, jak są traktowane środki rezerwującego w przypadku, gdy gość nie może przyjechać. Polityki anulowania występują w dwóch odrębnych wariantach:
 
-W większości przypadków te dwie opcje są wystarczające. Jednak obie dają Ci dużo miejsca na dalsze dostosowywanie polityki anulowania.
+1. Zwrotne
+2. Bezzwrotne
 
-:::tip\[Ciekawostka]
-Wink obsługuje łącznie 8500 wariantów polityki anulowania.
+Najczęściej te dwie opcje wystarczają. Jednak obie dają dużo możliwości dalszej personalizacji polityki anulowania.
+
+:::tip[Ciekawostka]
+Wink obsługuje łącznie 8500 wariantów polityk anulowania.
 :::
 
-Aby utworzyć zasady anulowania, kliknij`Create a new cancellation policy` przycisk.
+Aby utworzyć politykę anulowania, kliknij przycisk `Create a new cancellation policy`.
 
-## Nie podlega zwrotowi
+## Bezzwrotne
 
-Aby utworzyć politykę anulowania bezzwrotną, ustaw przełącznik w pozycji 🛑 wyłączonej, gdy pojawi się pytanie, czy polityka podlega zwrotowi.
-
-### Opcje
-
-Opcjonalnie możesz skonfigurować swoje`non-refundable`politykę, która zapewni większą kontrolę.
-
-* **Ile gość musi zapłacić w przypadku anulowania rezerwacji?**&#x44;omyślnie, polityka bezzwrotna jest polityką w 100% bezzwrotną. Możesz tutaj dostroić kwotę.*np. 50% całkowitej ceny*
-* **Czy opłata ma termin płatności?**&#x4A;eśli dostosowałeś kwotę, możesz ją jeszcze bardziej udoskonalić, ustawiając czas trwania obowiązywania tej kwoty.*np. Do 3 dni przed przyjazdem*
-* **Ile gość musi zapłacić w przypadku anulowania rezerwacji po terminie?**&#x57; przypadku gdy gość przekroczy termin określony powyżej, możesz ustalić kwotę, jaką gość zapłaci po upływie terminu.*np. 70% całkowitej ceny*
-
-## Zwrotny
-
-Aby utworzyć politykę anulowania z możliwością zwrotu pieniędzy, ustaw przełącznik w pozycji ✅, gdy pojawi się pytanie, czy polityka podlega zwrotowi.
+Aby utworzyć bezzwrotną politykę anulowania, ustaw przełącznik na 🛑 wyłączony, gdy zostaniesz zapytany, czy polityka jest zwrotna.
 
 ### Opcje
 
-Opcjonalnie możesz skonfigurować swoje`refundable`politykę mającą na celu zapewnienie większej kontroli.
+Możesz opcjonalnie dalej konfigurować swoją politykę `bezzwrotną` dla większej kontroli.
 
-* **Jak długo przed przyjazdem gość może bezpłatnie anulować rezerwację?**&#x44;omyślnie polityka zwrotna jest zawsze w 100% zwrotna. Możesz tutaj dostroić termin.*np. 3 dni przed przyjazdem*
-* **Jaką opłatę powinien ponieść gość, jeśli anulowanie rezerwacji nastąpi po terminie podanym powyżej?**&#x4A;eśli doprecyzujesz termin, możesz ustawić kwotę, jaką gość zapłaci po upływie terminu.*np. 50% całkowitej ceny*
-* **Jaką kwotę należy zapłacić gościowi w przypadku „niepojawienia się”?**&#x57; przypadku, gdy gość się nie pojawi, możesz ustawić kwotę, jaką gość zostanie obciążony opłatą za`No show`.*np. 100% całkowitej ceny*
+- **Ile gość jest obciążany za anulowanie?** Domyślnie polityka bezzwrotna oznacza 100% bezzwrotności. Możesz tutaj precyzyjnie ustawić kwotę. *np. 50% całkowitej ceny*
+- **Czy opłata ma termin ważności?** Jeśli dostosowałeś kwotę, możesz ją dalej precyzować, ustawiając, jak długo ta kwota obowiązuje. *np. Do 3 dni przed przyjazdem*
+- **Ile gość jest obciążany za anulowanie po upływie terminu?** W przypadku, gdy gość przekroczy powyższy termin, możesz ustawić kwotę, którą gość zapłaci po terminie. *np. 70% całkowitej ceny*
 
+## Zwrotne
+
+Aby utworzyć zwrotną politykę anulowania, ustaw przełącznik na ✅ włączony, gdy zostaniesz zapytany, czy polityka jest zwrotna.
+
+### Opcje
+
+Możesz opcjonalnie dalej konfigurować swoją politykę `zwrotną` dla większej kontroli.
+
+- **Jak długo przed przyjazdem gość może anulować bez opłat?** Domyślnie polityka zwrotna oznacza zawsze 100% zwrotu. Możesz tutaj precyzyjnie ustawić termin. *np. 3 dni przed przyjazdem*
+- **Ile gość powinien zapłacić, jeśli anulowanie nastąpi po powyższym terminie?** Jeśli dostosowałeś termin, możesz ustawić kwotę, którą gość zapłaci po terminie. *np. 50% całkowitej ceny*
+- **Ile gość powinien zapłacić za 'No show'?** W przypadku, gdy gość się nie pojawi, możesz ustawić kwotę, którą gość zostanie obciążony za `No show`. *np. 100% całkowitej ceny*

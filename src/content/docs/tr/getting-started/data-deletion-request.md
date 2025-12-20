@@ -1,43 +1,43 @@
 ---
 title: Veri silme talebi
-description: Wink'te kişisel verilerinizin silinmesini nasıl talep edeceğinizi öğrenin.
+description: Wink üzerinde kişisel verilerinizi nasıl sileceğinizi öğrenin.
 sidebar:
   order: 9
 ---
-Wink'te gizliliğinize saygı duyuyoruz ve kişisel verilerinizi korumaya tamamen bağlıyız.**Genel Veri Koruma Yönetmeliği (GDPR)**&#x76;e dünya çapında geçerli diğer veri koruma yasaları.
 
-Bu sayfa, Facebook veya Instagram gibi sosyal oturum açma sağlayıcıları aracılığıyla elde edilen veriler dahil ancak bunlarla sınırlı olmamak üzere, platformumuz aracılığıyla toplamış olabileceğimiz kişisel verilerin silinmesini nasıl talep edebileceğinizi açıklamaktadır.
+Wink olarak gizliliğinize saygı duyuyor ve kişisel verilerinizi korumaya tam olarak bağlıyız. **Genel Veri Koruma Yönetmeliği (GDPR)** ve dünya çapında geçerli diğer veri koruma yasalarına uyuyoruz.
 
-## Veri Gizliliğine Bağlılığımız
+Bu sayfa, platformumuz aracılığıyla toplanmış olabilecek kişisel verilerin silinmesini nasıl talep edebileceğinizi açıklamaktadır — Facebook veya Instagram gibi sosyal giriş sağlayıcıları üzerinden elde edilen veriler dahil ancak bunlarla sınırlı olmamak üzere.
 
-Yalnızca hizmetlerimizi sağlamak için gerekli verileri topluyoruz ve kişisel bilgilerinizi asla satmıyoruz. Bu şunları içerebilir:
+## Veri Gizliliğine Olan Taahhüdümüz
 
-* Adınız ve e-posta adresiniz
-* Genel profil bilgileri (örneğin Facebook veya Google'dan)
-* Platformumuzdaki kullanım veya etkinlik verileri
-* Sizin tarafınızdan açıkça verilen tüm izinler
+Hizmetlerimizi sunmak için yalnızca gerekli verileri toplarız ve kişisel bilgilerinizi asla satmayız. Bu veriler şunları içerebilir:
 
-Verilerinizi korumak için uygun önlemleri alıyoruz ve tüm silme taleplerini GDPR ve Meta'nın veri politikasına uygun şekilde işliyoruz.
+- Adınız ve e-posta adresiniz
+- Genel profil bilgileri (örneğin, Facebook veya Google’dan)
+- Platformumuzdaki kullanım veya etkinlik verileri
+- Tarafınızdan açıkça verilen izinler
+
+Verilerinizi korumak için uygun önlemleri alır ve tüm silme taleplerini GDPR ve Meta’nın veri politikası doğrultusunda işleriz.
 
 ## Veri Silme Talebi
 
-Hakkınızda sakladığımız kişisel bilgilerin silinmesini talep etme hakkına sahipsiniz.
+Hakkınızda elimizde bulunan herhangi bir kişisel bilginin silinmesini talep etme hakkınız vardır.
 
 Veri silme talebinde bulunmak için:
 
-* 📧**E-posta gönder**: [destek@wink.travel](mailto:support@wink.travel) 
-* 📝 Konu satırını kullanın:`Data Deletion Request`
-* 🔍 Lütfen aşağıdaki gibi tanımlayıcı bilgileri ekleyin:
-  * Platformumuzla kullanılan e-posta adresi
-  * Facebook veya Google kimliğiniz veya benzeri (varsa)
+- 📧 **E-posta gönderin:** [support@wink.travel](mailto:support@wink.travel)
+- 📝 Konu satırını kullanın: `Data Deletion Request`  
+- 🔍 Lütfen aşağıdaki tanımlayıcı bilgileri ekleyin:
+  - Platformumuzda kullandığınız e-posta adresi
+  - Facebook veya Google kimliğiniz ya da benzeri (varsa)
 
-Biz de en kısa sürede cevap vereceğiz**30 gün**GDPR'nin gerektirdiği şekilde talebinizi almak için.
+Talebinizi aldıktan sonra GDPR gereği **30 gün** içinde yanıt vereceğiz.
 
-## Sorularınız veya endişeleriniz mi var?
+## Sorularınız veya Endişeleriniz mi Var?
 
-Verilerinizi nasıl topladığımız, kullandığımız veya sildiğimiz konusunda herhangi bir sorunuz varsa gizlilik ekibimizle iletişime geçmekten çekinmeyin.[destek@wink.travel](mailto:support@wink.travel).
+Verilerinizin nasıl toplandığı, kullanıldığı veya silindiği hakkında herhangi bir sorunuz varsa, gizlilik ekibimizle [support@wink.travel](mailto:support@wink.travel) adresinden iletişime geçmekten çekinmeyin.
 
-***
+---
 
-Bize güvendiğiniz için teşekkür ederiz. Veri korumasını ciddiye alıyoruz ve size bilgileriniz üzerinde tam kontrol sağlamayı taahhüt ediyoruz.
-
+Bize güvendiğiniz için teşekkür ederiz. Veri korumayı ciddiye alıyor ve bilgilerinizi tam kontrolünüzde tutmayı taahhüt ediyoruz.

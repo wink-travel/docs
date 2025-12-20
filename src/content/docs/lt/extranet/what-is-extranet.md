@@ -1,26 +1,24 @@
 ---
-title: Kas yra ekstranetas?
-description: >-
-  Šiame straipsnyje paaiškinama, ką reikia žinoti norint pradėti naudotis „Wink“
-  kaip viešbučiu.
+title: Kas yra Extranet?
+description: Šiame straipsnyje sužinosite, ką reikia žinoti, norint pradėti naudotis Wink kaip viešbutis.
 sidebar:
   order: 0
 ---
-[„Wink“ ekstranetas](https://extranet.wink.travel) yra mūsų nekilnojamojo turto portalas. Jis skirtas viešbučiams, tinklams, prekių ženklams ir viešbučių valdymo įmonėms, kad jos galėtų kurti ir valdyti savo nekilnojamojo turto skaitmeninį profilį „Wink“ platformoje.
 
-Mūsų ekstranetas buvo kruopščiai sukurtas taip, kad būtų kuo paprastesnis, tačiau vis tiek palaikytų visas funkcijas, kurių patyrę vartotojai tikisi iš pažangaus nekilnojamojo turto portalo. Pateiksiu keletą pavyzdžių:
+[Wink Extranet](https://extranet.wink.travel) yra mūsų nekilnojamojo turto portalas. Jis skirtas viešbučiams, tinklams, prekės ženklams ir viešbučių valdymo įmonėms kurti ir valdyti savo objektų skaitmeninį profilį Wink platformoje.
 
-1. Paprastumas: Pasinaudokite mūsų išmaniuoju įvadiniu procesu, kad galėtumėte užregistruoti savo turtą ir pradėti jį naudoti per mažiau nei valandą.
-2. Išplėstinė: „Wink“ palaiko 8500 skirtingų atšaukimo politikos variantų
-3. Šaunu: Padovanokite vienam žmogui visoje Žemės planetoje 10 % nuolaidą, vartotojui nereikės prisijungti ar įvesti reklamos kodo.
+Mūsų Extranet buvo kruopščiai sukurtas, kad būtų kuo paprastesnis, tačiau vis tiek palaikytų visas funkcijas, kurių pažengę vartotojai tikisi iš pažangaus nekilnojamojo turto portalo. Pateikiame keletą pavyzdžių:
 
-Leiskite mūsų burtininkams jus lydėti per visą procesą. Kai pasijusite pakankamai patogiai... imkitės darbo vieni.
+1. Paprastumas: Naudokite mūsų išmanų įvedimo procesą, kad užregistruotumėte savo objektą ir pradėtumėte veikti per mažiau nei valandą.
+2. Pažangumas: Wink palaiko 8500 skirtingų atšaukimo politikos variantų.
+3. Įdomu: Suteikite vienam žmogui planetoje 10 % nuolaidą be prisijungimo ar promo kodo įvedimo.
 
-„Wink“ yra pažangi turinio valdymo sistema nekilnojamojo turto ir patirties teikėjams. Viską, ką galite daryti vienoje iš mūsų programėlių, galite atlikti per API. Tai leidžia jums atlikti gilią integraciją su „Wink“ tokiu mastu, kad galite parduoti per „Wink“ net neprisijungdami prie jokios mūsų programėlės.
+Leiskite mūsų vedliams jus lydėti per visą procesą. Kai jausitės pakankamai užtikrintai... imkitės darbo savarankiškai.
 
-:::tip\[Profesionalo patarimas]
-Ar mokate už brangų medijos išteklių talpinimą per „Leonardo International“? Tą patį galite padaryti per „Wink“ IR gausite daug daugiau parinkčių, kaip manipuliuoti ir tiksliai derinti savo vaizdus ir vaizdo įrašus.
+Wink yra pažangi turinio valdymo sistema objektams ir patirčių teikėjams. Viską, ką galite padaryti vienoje iš mūsų programėlių, galite atlikti per API. Tai leidžia atlikti gilų integravimą su Wink tiek, kad galite pardavinėti per Wink, niekada neprisijungdami prie mūsų programėlių.
+
+:::tip[Profesionalus patarimas]
+Ar mokate už brangų medijos turinio talpinimą per Leonardo International? Tą patį galite daryti per Wink IR gaunate daug daugiau galimybių manipuliuoti ir tiksliai reguliuoti savo nuotraukas ir vaizdo įrašus.
 :::
 
-Visos šios funkcijos jums nieko nekainuoja. Tik užsakydami imame nedidelį mokestį. Nėra ko prarasti – viskas, ką galima gauti.
-
+Visos šios funkcijos jums nieko nekainuoja. Mokate tik tada, kai atliekate užsakymą. Nėra ko prarasti – viskas, ką galite laimėti.

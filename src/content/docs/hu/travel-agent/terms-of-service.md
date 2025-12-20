@@ -1,252 +1,252 @@
 ---
 title: Szolgáltatási feltételek
-description: >-
-  Ez a cikk tartalmazza a Wink platformon található utazási irodákra vonatkozó
-  szolgáltatási feltételeinket.
+description: Ez a cikk tartalmazza az utazási ügynökök Wink Platformon érvényes szolgáltatási feltételeit.
 sidebar:
   order: 4
 ---
-:::megjegyzés
+
+:::note
 Utolsó frissítés: 2024-10-30
 :::
 
-:::caution\[Közlemény]
-Az alábbi szolgáltatási feltételek azokra az utazási irodákra vonatkoznak, amelyek saját maguk kívánnak pénzt beszerezni és kifizetni.
-Ez csak az API-nkon keresztül és csak azoknak az utazási irodáknak lehetséges, akik a regisztráció során jelezték, hogy ezt szeretnék.
+:::caution[Figyelem]
+Az alábbi szolgáltatási feltételek azoknak az utazási ügynököknek érvényesek, akik saját maguk kívánnak pénzeszközöket szerezni és kifizetni.
+Ez kizárólag az API-nkon keresztül lehetséges, és csak azok az utazási ügynökök használhatják, akik a regisztráció során jelezték ezt a szándékukat.
 
-Minden utazási iroda továbbra is foglalhat utazási irodánk portálján keresztül a Wink fizetési átjáróján keresztül, saját vagy az utas hitelkártyájával. Ezért minden utazási irodának el kell fogadnia a szolgáltatási feltételeket is, ahol a Wink fizetési átjárója a kereskedő.
+Minden utazási ügynök továbbra is foglalhat a Wink utazási ügynök portálján keresztül, a Wink fizetési átjáróját használva saját vagy az utazó hitelkártyájával. Ezért minden utazási ügynöknek el kell fogadnia azokat a szolgáltatási feltételeket is, ahol a Wink fizetési átjáró a kereskedőként szerepel.
 
-Ezek a feltételek elérhetők a következő címen:[Partnerportál > Szolgáltatási feltételek](/studio/terms-of-service).
+Ezek a feltételek elérhetők az [Affiliate Portal > Terms of Service](/hu/studio/terms-of-service) alatt.
 :::
 
-**WINK ÁLTALÁNOS FELTÉTELEK ÉS KIKÖTÉSEK**\
-**UTAZÁSI IRODASZTÁLYOK RÉSZÉRE (Bejegyzett kereskedő)**
+**WINK ÁLTALÁNOS SZERZŐDÉSI FELTÉTELEK**  
+**UTAZÁSI ÜGYNÖKÖK SZÁMÁRA (Kereskedőként)**
 
-**KÖZÖTT:**
+**A FELEK KÖZÖTT:**
 
-1. **TRAVELIKO SINGAPORE KFT.**&#x65;gy szingapúri törvények szerint bejegyzett társaság, amelynek bejegyzett székhelye a #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 címen található, adószáma 201437335D (a továbbiakban: „Wink”), és
-
-2. **AZ UTAZÁSI IRODÁN**akinek az adatai az Utazási Iroda Regisztrációs Űrlapján szerepelnek, vagy online lettek benyújtva (a továbbiakban: „Utazási Iroda”).
+1. **TRAVELIKO SINGAPORE PTE. LTD.**, egy Szingapúr törvényei szerint bejegyzett társaság, székhelye: #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, adószám: 201437335D (a továbbiakban: "Wink"), és  
+     
+2. **AZ UTAZÁSI ÜGYNÖK**, akinek adatai az Utazási Ügynök Regisztrációs Űrlapon szerepelnek vagy online lettek benyújtva (a továbbiakban: "Utazási Ügynök").
 
 **MIVEL:**
 
-(i) A Wink egy online rendszert („Rendszer”) üzemeltet, amelyen keresztül a részt vevő Szálláshelyek (együttesen a „Szálláshely-szolgáltatók”) foglalhatóvá tehetik készletüket, és amelyen keresztül az Utazási Iroda foglalásokat végezhet az ilyen Szálláshely-szolgáltatóknál Vendégei nevében („Szolgáltatás”);
+(i) A Wink egy online rendszert ("Rendszer") üzemeltet, amelyen keresztül a részt vevő Szálláshelyek (együttesen "Szálláshely Szolgáltatók") elérhetővé tehetik készletüket foglalásra, és amelyen keresztül az Utazási Ügynök a Vendégek nevében foglalásokat tehet ezeknél a Szálláshely Szolgáltatóknál (a "Szolgáltatás");
 
-(ii) A Wink nem birtokol, nem ellenőrzi, nem kínál és nem kezel semmilyen hirdetést. A Wink nem vesz részt a Szálláshely-szolgáltatók és a Vendégek között közvetlenül megkötött szerződésekben. A Wink semmilyen minőségben nem jár el a Szálláshely-szolgáltatók ügynökeként;
+(ii) A Wink nem birtokol, nem irányít, nem kínál és nem kezel semmilyen listázást. A Wink nem szerződő fél a Szálláshely Szolgáltatók és a Vendégek között közvetlenül kötött szerződésekben. A Wink nem jár el ügynökként a Szálláshely Szolgáltatók számára;
 
-(iii) A Wink saját weboldalakat („Wink weboldalak”) tart fenn és üzemeltet, valamint harmadik felek weboldalain is biztosítja a Szolgáltatást és a Szolgáltatásra mutató linkeket;
+(iii) A Wink fenntartja és üzemelteti saját weboldalait ("Wink Weboldalak"), valamint biztosítja a Szolgáltatást és hivatkozásokat a Szolgáltatásra harmadik fél weboldalain is;
 
-(iv) Az Utazási Iroda egy vagy több internetes domaint, weboldalt vagy alkalmazást birtokol, ellenőriz, hosztol és/vagy üzemeltet, és a Szolgáltatás használata során a bejegyzett kereskedőként kíván eljárni.
+(iv) Az Utazási Ügynök birtokol, irányít, üzemeltet egy vagy több internetes domaint, weboldalt vagy alkalmazást, és kereskedőként kíván eljárni a Szolgáltatás használata során.
 
-(v) Az Utazási Iroda és a Wink kívánsága, hogy az Utazási Iroda a Szolgáltatást (közvetlenül vagy közvetve) elérhetővé tegye ügyfelei és az Utazási Iroda Weboldalának és Alkalmazásának látogatói számára, a jelen Megállapodásban meghatározott formában és feltételekkel (a továbbiakban: „Feltételek”).
+(v) Az Utazási Ügynök és a Wink azt kívánják, hogy az Utazási Ügynök a Szolgáltatást (közvetlenül vagy közvetve) elérhetővé tegye ügyfelei és az Utazási Ügynök weboldalának és alkalmazásainak látogatói számára, az ebben a Megállapodásban meghatározott feltételek szerint (a továbbiakban: "Feltételek").
 
-**A FELEK EZÉRT A KÖVETKEZŐKBEN ÁLLAPODNAK MEG:**
+**EZÉRT A FELEK A KÖVETKEZŐKBEN ÁLLAPODNAK MEG:**
 
-**1. Fogalommeghatározások**
+**1\. Fogalommeghatározások**
 
-1. A jelen Megállapodásban máshol meghatározott kifejezéseken túlmenően a következő meghatározások érvényesek a Megállapodás egészében, kivéve, ha az ellenkező szándék látszik:
+1. A jelen Megállapodás más részeiben meghatározott fogalmak mellett az alábbi definíciók érvényesek, kivéve, ha ellentétes szándék kifejezetten megjelenik:
 
-* **"Szállás"**&#x62;ármilyen szállástípust jelent, beleértve, de nem kizárólagosan a szállodákat, moteleket, vendégházakat, panziókat, hosteleket, villákat, apartmanokat, üdülőhelyeket, fogadókat, üdülőhelyeket és bármilyen más (típusú) szállás- vagy szálláshely-szolgáltatót (függetlenül attól, hogy elérhető-e a Wink weboldalain).
+* **"Szállás"** bármilyen szálláshelyt jelent, beleértve, de nem kizárólagosan, hoteleket, moteleket, vendégházakat, bed & breakfasteket, hosteleket, villákat, apartmanokat, kunyhókat, fogadókat, üdülőhelyeket és bármely más (típusú) szálláshely vagy szállás szolgáltatót (függetlenül attól, hogy elérhető-e a Wink Weboldalakon).  
+    
+* **"Szálláshely Szolgáltató(k)"** bármely fél, aki fiókot hoz létre a Szolgáltató Platformján azzal a céllal, hogy saját szobáit és kiegészítő szolgáltatásait értékesítse a Wink platformon keresztül.  
+    
+* **"Foglalás"** azt jelenti, hogy egy Vendég az Utazási Ügynökön keresztül foglal szállás szolgáltatásokat egy Szálláshely Szolgáltatónál.
 
-* **"Szálláshely-szolgáltató(k)"**&#x62;ármely olyan Fél, aki fiókot hoz létre a Szolgáltatónál azzal a szándékkal, hogy saját szobáit és kiegészítő szolgáltatásait a Wink platformon keresztül értékesítse.
+* **"Foglalási díj"** az az 1,5%, amelyet az Utazási Ügynök a Vendégtől beszedett teljes összegből levon, és amelyet feldolgozási díjként a Wink részére fizet.
 
-* **"Foglalás"**&#x61; Vendég által az Utazási Irodán keresztül leadott foglalás vagy megrendelés egy Szálláshely-szolgáltató által kínált szállásszolgáltatásokra.
+* **"Foglalás értéke"** az az összeg, amelyet az Utazási Ügynök a Vendégtől beszed egy Foglalás kapcsán.
 
-* **"Foglalási díj"**&#x61;z Utazási Iroda által a Vendégtől beszedett teljes összegből levont 1,5%-ot jelenti, amelyet a Winknek feldolgozási díjként kell fizetni.
+* **"Jutalék"** az az összeg, amelyet a Szálláshely Szolgáltató tartozik az Utazási Ügynöknek, a "Külön Megállapodás" szerinti megállapodott százalékos arány alapján a Foglalás értékéből.  
+    
+* **„Vis maior”** bármely olyan eseményt jelent, amely kívül esik a fél ésszerű ellenőrzési körén, beleértve, de nem kizárólagosan természeti katasztrófákat, háborús cselekményeket, terrorizmust, polgári zavargásokat, világjárványokat és kormányzati intézkedéseket, amelyek megakadályozzák a fél kötelezettségeinek teljesítését a jelen Megállapodás szerint.  
+    
+* **„Vendég”** egyéni vagy csoportos személy, aki az Utazási Ügynökön keresztül foglal szállás szolgáltatásokat.  
+    
+* **"Kereskedőként"** az a jogi személy, aki jogosult és felelős a Vendégektől érkező fizetések feldolgozásáért, beleértve a fizetési tranzakciók kezelését, visszatérítéseket, visszaterheléseket, valamint a fizetési szabályozásoknak való megfelelést. A Kereskedőként az a fél, akinek a neve megjelenik a Vendég hitelkártya-kivonatán a Foglalással kapcsolatos terhelések esetén.
 
-* **"Foglalási érték"**&#x61;z Utazási Iroda által a Vendégtől a Foglaláshoz kapcsolódóan beszedett teljes összeget jelenti.
+* **"Nettó kifizetés"** az az összeg, amelyet a Szálláshely Szolgáltatónak kell kifizetni a Foglalás értékéből a Wink Foglalási díj és az Utazási Ügynök Jutalékának levonása után.  
+    
+* **„Fizetések”** a jelen Megállapodás alapján felmerülő pénzügyi kötelezettségeket jelentik, beleértve a jutalékokat, díjakat vagy egyéb terheket, amelyeket az egyik fél a másiknak fizet.
 
-* **"Jutalék"**&#x61; Szálláshely-szolgáltató által az Utazási Irodának fizetendő összeget jelenti, amelyet a „Külön megállapodás” szerinti foglalási értékből vett, megállapodás szerinti százalékos arányban számítanak ki.
+* **"Fizetési közvetítő"** a Traveliko Singapore Pte. Ltd. teljes tulajdonú leányvállalata, amely a Fizetési Szolgáltatásokat irányítja, és a vendégektől a vásárlásukhoz kapcsolódó fizetési módok (pl. hitelkártya, bankkártya, banki átutalás, kriptovaluták vagy PayPal stb.) terhelésével szedi be a fizetéseket.  
+    
+* **„Platform”** az a online rendszer, amelyet a Szolgáltató üzemeltet, és amelyen keresztül az Utazási Ügynök foglalásokat tehet vagy kezelhet a Vendégek számára.
 
-* **"Vis major"**&#x62;ármely olyan eseményt jelent, amely kívül esik a fél ésszerű ellenőrzésén, beleértve, de nem kizárólagosan a természeti katasztrófákat, háborús cselekményeket, terrorizmust, polgári zavargásokat, világjárványokat és kormányzati intézkedéseket, amelyek megakadályozzák a felet a jelen Megállapodás szerinti kötelezettségeinek teljesítésében.
+* **"Külön Megállapodás"** az Utazási Ügynök és a Szálláshely Szolgáltató között létrejött önálló szerződés, amely részletezi a fizetési feltételeket, beleértve a Jutalékot és a fizetési ütemezést.  
+    
+* **„Szolgáltatások”** a Szolgáltató által az Utazási Ügynök részére nyújtott szolgáltatásokat jelentik, beleértve, de nem kizárólagosan, a Platformhoz való hozzáférést, foglalás közvetítést és ügyféltámogatást.  
+    
+* **„Szolgáltató”** a Wink, a **TRAVELIKO SINGAPORE PTE. LTD** Szingapúrban bejegyzett társaság.  
+    
+* **„Utazási Ügynök”** az a jogi személy, amely a Szolgáltatóval köt szerződést, hogy a Szolgáltató Platformján keresztül utazási foglalásokat népszerűsítsen és értékesítsen.
 
-* **"Vendég"**&#x6F;lyan személyt vagy csoportot jelent, aki vagy amely az Utazási Irodán keresztül szállásfoglalást végez.
+**2\. Nem kizárólagosság**
 
-* **"Bejegyzett kereskedő"**&#x61;rra a jogi személyre utal, amely jogilag felhatalmazással rendelkezik és felelős a vendégek fizetéseinek feldolgozásáért, beleértve a fizetési tranzakciók, visszatérítések, visszaterhelések kezelését és a fizetési szabályok betartásának biztosítását. A nyilvántartott kereskedő az a személy, amelynek a neve szerepel a vendég hitelkártya-kimutatásán a foglalással kapcsolatos költségek esetén.
+2.1 Az Utazási Ügynök nem kizárólagos forgalmazóként működik a Wink számára.
 
-* **"Nettó fizetés"**&#x61; Szálláshely-szolgáltatónak fizetendő összeget jelenti a Wink Foglalási Díj és az Utazási Iroda Jutalékának levonása után a Foglalási Értékből.
+2.2 A Szolgáltatást a Wink az Utazási Ügynök számára elérhetővé teszi az Utazási Ügynök Regisztrációs Űrlapján és az ott megadott weboldalakon feltüntetett módon.
 
-* **„Fizetések”**&#x61; jelen Megállapodásból eredő pénzügyi kötelezettségeket jelenti, beleértve a jutalékokat, díjakat vagy egyéb költségeket, amelyeket az egyik fél a másiknak fizet.
+**3\. Fizetések beszedése és szétosztása**
 
-* **"Fizetési közvetítő"**&#x61; Traveliko Singapore Pte. Ltd. teljes tulajdonú leányvállalata, amely a fizetési szolgáltatásokat kezeli, és a vendégektől a vásárlásukhoz kapcsolódó fizetési mód, például hitelkártya, bankkártya, banki átutalás, kriptovaluták vagy PayPal stb. terhelésével szedi be a fizetéseket.
+3.1 **Fizetések beszedése:** Az Utazási Ügynök a foglalás időpontjában szedi be a fizetést a Vendégtől.
 
-* **„Platform”**&#x61; Szolgáltató által üzemeltetett online rendszert jelenti, amelyen keresztül az Utazási Iroda foglalásokat végezhet vagy kezelhet a Vendégek számára.
+3.2 **Díjak levonása:** Az Utazási Ügynök a Foglalás értékéből a következőket vonja le:
 
-* **„Külön megállapodás”**&#x61;z Utazási Iroda és a Szálláshely-szolgáltató közötti független szerződést jelenti, amely részletezi a konkrét fizetési feltételeket, beleértve a Jutalékot és a fizetési ütemtervet.
+* 1,5% Foglalási díj a Wink részére.  
+* Utazási Ügynök Jutaléka.
 
-* **„Szolgáltatások”**&#x61; Szolgáltató által az Utazási Irodának a jelen Megállapodás alapján nyújtott szolgáltatásokat jelenti, beleértve, de nem kizárólagosan a Platformhoz való hozzáférést, a foglalás lebonyolítását és az ügyfélszolgálatot.
+3.3 **Nettó kifizetés:** A fennmaradó Nettó kifizetést az Utazási Ügynök a Szálláshely Szolgáltatónak fizeti ki a Szálláshely Szolgáltatóval kötött külön megállapodás feltételei szerint. A Wink nem felelős a Szálláshely Szolgáltatónak történő kifizetésekért.
 
-* **„Szolgáltató”**&#x61;zt jelenti, hogy Wink,**TRAVELIKO SINGAPORE KFT.**&#x53;zingapúrban bejegyzett.
+3.4 **Külön Megállapodás:** Az Utazási Ügynöknek külön megállapodással kell rendelkeznie minden Szálláshely Szolgáltatóval, amely részletezi a fizetési feltételeket. Ez a Megállapodás a Wink és az Utazási Ügynök között nem szabályozza az Utazási Ügynök és a Szálláshely Szolgáltatók közötti viszonyt.
 
-* **"Utazási ügynök"**&#x61; Szolgáltatóval jelen Megállapodást kötő szervezetet jelenti, amely utazási foglalásokat népszerűsít és értékesít a Szolgáltató Platformján keresztül.
+3.5 **Wink számlázása:** A Wink havonta számlát állít ki az Utazási Ügynöknek az adott hónapban felhalmozott 1,5% Foglalási díjról. Az Utazási Ügynök felelős a számla megadott fizetési határidőn belüli kiegyenlítéséért.
 
-**2. Kizárólagosság tilalma**
+**4\. Szerepek és felelősségek**
 
-2.1 Az Utazási Iroda a Wink nem kizárólagos forgalmazójaként működik.
+4.1 **Az Utazási Ügynök felelősségei:**
 
-2.2 A Szolgáltatást a Wink az Utazási Iroda Regisztrációs Űrlapján és az Utazási Iroda Regisztrációs Űrlapján meghatározott weboldal(ak)on meghatározottak szerint teszi elérhetővé az Utazási Iroda számára.
+* Az Utazási Ügynök felelős a Vendégektől történő fizetések beszedéséért.  
+* Az Utazási Ügynök köteles a Nettó kifizetést időben és pontosan továbbítani a Szálláshely Szolgáltatóknak a külön megállapodások szerint.  
+* Az Utazási Ügynök felel minden fizetési feldolgozási hibáért vagy eltérésért, és köteles azokat haladéktalanul kijavítani.  
+* Az Utazási Ügynök felelős a Wink havi Foglalási díj számlájának kifizetéséért.
 
-**3. Fizetések beszedése és elosztása**
+4.2 **A Wink felelősségei:**
 
-3.1**Fizetések beszedése:**&#x41;z Utazási Iroda a foglaláskor szedi be a fizetést a Vendégtől.
+* A Wink nem felel a Szálláshely Szolgáltatóknak történő kifizetésekért. Az Utazási Ügynök kizárólagos felelősséggel tartozik minden pénzügyi tranzakcióért a Szálláshely Szolgáltatókkal.  
+* A Wink biztosítja a Rendszerhez való hozzáférést és gondoskodik arról, hogy a Szolgáltatás elérhető legyen az Utazási Ügynök számára.
 
-3.2**Díjak levonása:**&#x41;z Utazási Iroda a Foglalási Értékből a következőket vonja le:
+**5\. Szellemi tulajdonjogok**
 
-* 1,5% foglalási díj a Winkért.
-* Utazási Iroda Bizottsága.
+5.1 **Licenszek:** Minden Fél korlátozott, nem kizárólagos, jogdíjmentes, világméretű licencet ad a másik Félnek kizárólag a jelen Megállapodás szerinti kötelezettségek teljesítése céljából.
 
-3.3**Nettó fizetés:**&#x41; fennmaradó nettó kifizetést az Utazási Iroda a megfelelő Szálláshely-szolgáltatónak fizeti ki az Utazási Iroda és a Szálláshely-szolgáltató közötti külön megállapodás feltételei szerint. A Wink nem vállal felelősséget a Szálláshely-szolgáltatónak történő kifizetésekért.
+5.2 **Korlátozások:** Az Utazási Ügynök nem jogosult a Wink által biztosított szellemi tulajdont vagy tartalmat allicencelni, átruházni vagy harmadik félnek felfedni.
 
-3.4**Külön megállapodás:**&#x41;z Utazási Irodának minden egyes Szálláshely-szolgáltatóval külön megállapodást kell kötnie, amely részletezi a fizetési feltételeket. Ez a Wink és az Utazási Iroda közötti megállapodás nem szabályozza az Utazási Iroda és a Szálláshely-szolgáltatók közötti kapcsolatot.
+**6\. Fizetés a Wink részére**
 
-3.5**Wink számlázása:**&#x41; Wink havi számlát állít ki az Utazási Irodának a hónap során felhalmozódott 1,5%-os foglalási díjról. Az Utazási Iroda felelős a számla meghatározott fizetési határidőkön belüli kiegyenlítéséért.
+6.1 **Fizetési ütemezés:**
 
-**4. Szerepkörök és felelősségek**
+* Minden, az Utazási Ügynök által a Wink részére fizetendő összeg a helyes és pontos számla kézhezvételétől számított 15 napon belül esedékes, kivéve, ha írásban másként állapodnak meg. A fizetések USD-ben történnek, levonások vagy visszatartások nélkül, kivéve a törvény által előírtakat.  
+  
 
-4.1**Utazási ügynök feladatai:**
+6.2 **Késedelmes fizetések:**
 
-* Az Utazási Iroda felelős a Vendégektől érkező fizetések beszedéséért.
-* Az Utazási Irodának biztosítania kell a nettó fizetés időben és pontosan történő kifizetését a Szálláshely-szolgáltatóknak, a külön megállapodásaikkal összhangban.
-* Az Utazási Iroda felelős a fizetési folyamat során felmerülő hibákért vagy eltérésekért, és köteles azokat haladéktalanul kijavítani.
-* Az Utazási Iroda felelős a Wink havi Foglalási Díjszámlájának kifizetéséért.
+* Ha bármely fizetés nem érkezik meg a határidőig, a Wink jogosult 5% havi kamatot vagy a törvény által megengedett legmagasabb kamatot felszámítani, amely alacsonyabb, a fennálló összegre, a lejárattól a fizetés napjáig számítva. Ezen felül a Wink felfüggesztheti a szolgáltatásokat a fizetés beérkezéséig. Ha azonban a Wink által kiállított számlában hibák vagy tévedések vannak, az Utazási Ügynök csak a helyes és pontos számlarész kifizetésére köteles, és nem terheli kamat vagy büntetés a hibás rész meg nem fizetése miatt.
 
-4.2**Wink feladatai:**
+6.3 **Visszatérítések és jóváírások:**
 
-* A Wink nem vállal felelősséget a Szálláshely-szolgáltatóknak teljesített kifizetésekért. Az Utazási Iroda kizárólagos felelősséget vállal a Szálláshely-szolgáltatókkal folytatott összes pénzügyi tranzakcióért.
-* A Wink hozzáférést biztosít a Rendszerhez, és gondoskodik arról, hogy a Szolgáltatás elérhető legyen az Utazási Iroda számára.
+* Ha egy szolgáltatás nem kerül nyújtásra vagy törlésre kerül az Utazási Ügynök hibáján kívüli okból, a Wink 30 napon belül visszatéríti vagy jóváírja az Utazási Ügynöknek a szolgáltatási díjat, feltéve, hogy az már megfizetésre került.
 
-**5. Szellemi tulajdonjogok**
+6.4 **Pénznem és adók:**
 
-5.1**Licencek:**&#x4D;indkét Fél korlátozott, nem kizárólagos, jogdíjmentes, világszerte érvényes licencet biztosít a másik Félnek szellemi tulajdonának felhasználására, kizárólag a jelen Megállapodás szerinti kötelezettségek teljesítése céljából.
+* A fizetések USD-ben történnek. Az Utazási Ügynök felel minden olyan adóért, illetékért vagy egyéb díjért, amely a jelen Megállapodás szerinti tranzakciókra vonatkozhat, beleértve az árfolyamváltási költségeket, ha a fizetés nem USD-ben történik.
 
-5.2**Korlátozások:**&#x41;z Utazási Iroda nem jogosult a Wink által biztosított szellemi tulajdon vagy tartalom allicencet adni, átruházni vagy nyilvánosságra hozni.
+6.5 **Fizetési módok:**
 
-**6. Fizetés a Winknek**
+* Az Utazási Ügynök banki átutalással, hitelkártyával vagy PayPal-lal teljesíti a fizetéseket, és a választott fizetési módhoz kapcsolódó díjakat az Utazási Ügynök viseli.
 
-6.1**Fizetési ütemezés:**
+6.6 **Fizetési viták:**
 
-* A Wink részére a jelen Megállapodás értelmében esedékes összes kifizetést az Utazási Iroda köteles a Wink által kiállított helyes és pontos számla kézhezvételétől számított 15 napon belül teljesíteni, kivéve, ha írásban másként állapodnak meg. A kifizetéseket USD-ben kell teljesíteni, levonásoktól és visszatartásoktól mentesen, kivéve, ha a törvény másképp rendelkezik.
+* Számlavitás esetén az Utazási Ügynök 10 napon belül értesíti a Winkot a számla dátumától számítva, részletes indoklással. A felek jóhiszeműen tárgyalnak a vita mielőbbi rendezése érdekében. A vitatott résztől eltekintve a számla vitathatatlan részét a határidőig ki kell fizetni.
 
-6.2**Késedelmes fizetések:**
+**7\. Az Utazási Ügynök felelősségei**
 
-* Amennyiben a jelen Megállapodás értelmében esedékes bármely fizetés nem érkezik meg a fizetési határidőig, a Wink fenntartja a jogot, hogy a fennálló összegre havi 5%-os vagy a törvény által megengedett maximális kamatot számítson fel – attól függően, hogy melyik az alacsonyabb –, az esedékesség napjától a fizetési napjáig számított fennmaradó összegre. Ezenkívül a Wink felfüggesztheti a szolgáltatásokat a fizetés beérkezéséig. Ha azonban a Wink által benyújtott számlán bármilyen hiba vagy tévedés van, az Utazási Iroda csak a számla helyes és pontos részét köteles kifizetni, és a számla helytelen részének kifizetése elmulasztása miatt nem számít fel kamatot vagy büntetést.
+7.1 **Jogszabályok és előírások betartása:**
 
-6.3**Visszatérítések és jóváírások:**
+* Az Utazási Ügynök köteles betartani minden vonatkozó helyi, nemzeti és nemzetközi jogszabályt, előírást és iparági szabványt üzleti tevékenysége során, beleértve, de nem kizárólagosan a fogyasztóvédelemre, adatvédelemre és pénzmosás elleni szabályokra vonatkozókat.  
+  
 
-* Amennyiben egy szolgáltatás nyújtása nem történik meg, vagy a szolgáltatás az Utazási Irodának fel nem róható okok miatt lemondásra kerül, a Wink a lemondásról szóló értesítés kézhezvételétől számított 30 napon belül visszatéríti vagy jóváírja az Utazási Irodának a befizetett összeget, feltéve, hogy a szolgáltatási díjat már megfizették.
+7.2 **Szolgáltatások pontos bemutatása:**
 
-6.4**Valuta és adók:**
+* Az Utazási Ügynök köteles pontosan bemutatni a Platformon kínált szolgáltatásokat és szállásokat. Felelős azért, hogy a Vendégeknek nyújtott információk, beleértve a leírásokat, árakat és elérhetőséget, pontosak és naprakészek legyenek.
 
-* A fizetéseket USD-ben kell teljesíteni. Az Utazási Iroda felelős minden olyan adóért, illetékért vagy egyéb díjért, amely a jelen Megállapodás szerinti tranzakciókra alkalmazandó, beleértve a devizaátváltási költségeket is, ha a fizetések USD-től eltérő pénznemben történnek.
+7.3 **Szolgáltatások népszerűsítése:**
 
-6.5**Fizetési módok:**
+* Az Utazási Ügynök aktívan népszerűsíti a Platformon kínált szolgáltatásokat a Szolgáltató által megadott irányelvek szerint. Ez magában foglalja, de nem kizárólagosan, a marketing tevékenységeket, a frissített promóciós anyagok fenntartását, és annak biztosítását, hogy minden promóciós tartalom pontos és megfelel a vonatkozó reklámszabályoknak.
 
-* Az Utazási Iroda banki átutalással, hitelkártyával vagy PayPal-lal fizet, és az Utazási Iroda által választott fizetési móddal kapcsolatos díjakat az Utazási Iroda viseli.
+7.4 **Foglalások kezelése:**
 
-6.6**Fizetési viták:**
+* Az Utazási Ügynök kezeli a Platformon keresztül tett összes foglalást, beleértve a foglalások feldolgozását, törlését és módosítását. Felelős a Vendégekkel és Szálláshely Szolgáltatókkal való kommunikációért annak érdekében, hogy minden foglalás pontosan feldolgozásra és megerősítésre kerüljön.
 
-* Bármely számlával kapcsolatos vita esetén az Utazási Iroda a számla dátumától számított 10 napon belül értesíti a Winket, részletesen megindokolva a vitát. Mindkét fél köteles jóhiszeműen tárgyalásokat folytatni a vita mielőbbi rendezése érdekében. A számla nem vitatott részét a fizetési határidőig ki kell fizetni.
+7.5 **Fizetések beszedése és továbbítása:**
 
-**7. Az utazási iroda felelőssége**
+* Az Utazási Ügynök felelős a Vendégektől a Platformon keresztül tett foglalásokért beszedett fizetésekért, valamint a megállapodott kifizetések továbbításáért a Szálláshely Szolgáltatók és a Szolgáltató részére a Fizetési Feltételek szerint. Biztosítja, hogy minden fizetés biztonságosan és a vonatkozó pénzügyi szabályozásoknak megfelelően történjen.
 
-7.1**Törvények és rendeletek betartása:**
+7.6 **Vendégpanaszok és viták kezelése:**
 
-* Az Utazási Iroda üzleti tevékenysége során betartja az összes vonatkozó helyi, nemzeti és nemzetközi törvényt, szabályozást és iparági szabványt, beleértve, de nem kizárólagosan a fogyasztóvédelemmel, az adatvédelemmel és a pénzmosás elleni küzdelemmel kapcsolatosakat.
+* Az Utazási Ügynök az elsődleges kapcsolattartó a Vendégek számára minden panasz, vita vagy probléma esetén, amely a Platformon nyújtott szolgáltatásokkal kapcsolatos. Ésszerű erőfeszítéseket tesz a panaszok és viták gyors és mindkét fél számára elfogadható rendezésére, fenntartva a jó kapcsolatot a Vendégek és a Szálláshely Szolgáltatók között.
 
-7.2**A szolgáltatások pontos ábrázolása:**
+7.7 **Jelentések és elszámoltathatóság:**
 
-* Az Utazási Iroda köteles pontosan bemutatni a Platformon keresztül kínált szolgáltatásokat és szálláslehetőségeket. Az Utazási Iroda felelős azért, hogy a Vendégeknek nyújtott összes információ, beleértve, de nem kizárólagosan a leírásokat, árakat és elérhetőséget, pontos és naprakész legyen.
+* Az Utazási Ügynök rendszeres jelentéseket nyújt a Szolgáltatónak a jelen Megállapodás szerinti kötelezettségei teljesítéséről, beleértve az értékesítési adatokat, foglalási statisztikákat és ügyfélvisszajelzéseket. Felelős a jelentések pontosságáért, és együttműködik a Szolgáltatóval bármilyen audit vagy felülvizsgálat során.
 
-7.3**Szolgáltatások promóciója:**
+7.8 **Titoktartás:**
 
-* Az Utazási Iroda köteles aktívan népszerűsíteni a Platformon keresztül kínált szolgáltatásokat a Szolgáltató által megadott irányelveknek megfelelően. Ez magában foglalja többek között a marketingtevékenységeket, a promóciós anyagok naprakészen tartását, valamint annak biztosítását, hogy minden promóciós tartalom pontos és megfeleljen az alkalmazandó hirdetési szabványoknak.
+* Az Utazási Ügynök köteles megőrizni a Szolgáltató minden üzleti titkát és szellemi tulajdonát, beleértve az ügyféladatokat, árképzési információkat és üzleti stratégiákat. Ezeket az információkat harmadik félnek csak a Szolgáltató előzetes írásbeli engedélyével hozhatja nyilvánosságra.
 
-7.4**Foglaláskezelés:**
+7.9 **A Platform feltételeinek betartása:**
 
-* Az Utazási Iroda kezeli a Platformon keresztül lebonyolított összes Foglalást, beleértve többek között a foglalások, lemondások és módosítások feldolgozását. Az Utazási Iroda felelős a Vendégekkel és a Szálláshely-szolgáltatókkal való kommunikációért annak biztosítása érdekében, hogy minden Foglalás pontosan feldolgozva és visszaigazolva legyen.
+* Az Utazási Ügynök köteles betartani a Szolgáltató Platformjának használatára vonatkozó összes feltételt és kikötést, beleértve azok frissítéseit vagy módosításait. Felelős azért, hogy alkalmazottai és ügynökei ismerjék és betartsák ezeket a feltételeket.
 
-7.5**Fizetések beszedése és átutalása:**
+7.10 **Kártalanítás:**
 
-* Az Utazási Iroda felelős a Platformon keresztül végrehajtott Foglalások díjainak beszedéséért a Vendégektől, és a megállapodás szerinti fizetések átutalásáért a Szálláshely-szolgáltatóknak és a Szolgáltatónak, a Fizetési Feltételekben foglaltak szerint. Az Utazási Iroda biztosítja, hogy minden fizetés biztonságosan és a vonatkozó pénzügyi szabályozásoknak megfelelően kerüljön feldolgozásra.
+* Az Utazási Ügynök köteles kártalanítani és mentesíteni a Szolgáltatót minden olyan igény, kár, felelősség és költség alól, amely a jelen Megállapodás megszegéséből, a vonatkozó jogszabályok be nem tartásából, a szolgáltatások félrevezető bemutatásából vagy a Vendégek vagy Szálláshely Szolgáltatók felé vállalt kötelezettségek elmulasztásából ered.
 
-7.6**Vendégpanaszok és viták kezelése:**
+**8\. Jutalékok és díjak**
 
-* Az Utazási Iroda az elsődleges kapcsolattartó pont a Vendégek számára a Platformon keresztül nyújtott szolgáltatásokkal kapcsolatos panaszok, viták vagy problémák esetén. Az Utazási Iroda ésszerű erőfeszítéseket tesz az ilyen panaszok és viták mielőbbi megoldására, olyan módon, amely pozitív kapcsolatot tart fenn mind a Vendégekkel, mind a Szálláshely-szolgáltatókkal.
+8.1 **Jutalék számítása:** Az Utazási Ügynöknek járó Jutalék a Foglalás értékének egy százaléka (az Utazási Ügynök és a Szálláshely Szolgáltató közötti megállapodás szerint), a Wink Foglalási díj levonása után.
 
-7.7**Jelentéstétel és elszámoltathatóság:**
+8.2 **Wink Foglalási díj:** A Wink havi számlát állít ki az 1,5% Foglalási díjról. Az Utazási Ügynök felelős a számla megadott fizetési határidőn belüli kiegyenlítéséért.
 
-* Az Utazási Iroda rendszeres jelentéseket készít a Szolgáltató számára a jelen Megállapodás szerinti kötelezettségeinek teljesítéséről, beleértve, de nem kizárólagosan az értékesítési adatokat, a Foglalási statisztikákat és az ügyfél-visszajelzéseket. Az Utazási Iroda felelős e jelentések pontosságáért, és együttműködik a Szolgáltatóval a működésének bármilyen ellenőrzése vagy felülvizsgálata során.
+**9\. Jogi rendelkezések**
 
-7.8**Titoktartás:**
+9.1 **Felelősség korlátozása:** Egyik Fél sem felel közvetett, véletlen, következményes, különleges vagy büntető jellegű károkért, amelyek a jelen Megállapodásból erednek.
 
-* Az Utazási Iroda köteles bizalmasan kezelni a Szolgáltató összes üzleti titkát és bizalmas információját, beleértve többek között az ügyféladatokat, az árképzési információkat és az üzleti stratégiákat. Az Utazási Iroda ezeket az információkat a Szolgáltató előzetes írásbeli hozzájárulása nélkül nem adhatja ki harmadik félnek.
+9.2 **Kártalanítás:** Minden Fél vállalja, hogy kártalanítja és mentesíti a másik felet a jelen Megállapodás megszegéséből vagy a kártalanító fél gondatlanságából eredő igények alól.
 
-7.9**Platformfeltételek betartása:**
+9.3 **Vis maior:** Egyik Fél sem felel késedelmekért vagy teljesítési mulasztásokért olyan okok miatt, amelyek kívül esnek ésszerű ellenőrzési körén, beleértve az isteni csapásokat, természeti katasztrófákat, háborút, terrorizmust, sztrájkokat stb.
 
-* Az Utazási Iroda köteles betartani a Szolgáltató Platformjának használatával kapcsolatos összes feltételt, beleértve az ilyen feltételek frissítéseit vagy módosításait is. Az Utazási Iroda felelős azért, hogy alkalmazottai és ügynökei tisztában legyenek ezekkel a feltételekkel és betartsák azokat.
+**10\. Időtartam és megszüntetés**
 
-7.10**Kártalanítás:**
+10.1 **Időtartam:** A jelen Megállapodás a hatályba lépés napján kezdődik és mindkét fél általi megszüntetésig érvényes.
 
-* Az Utazási Iroda köteles kártalanítani és mentesíteni a Szolgáltatót minden olyan követelés, kár, felelősség és költség alól, amely az Utazási Iroda jelen Megállapodás megszegéséből vagy azzal összefüggésben keletkezik, beleértve, de nem kizárólagosan az alkalmazandó törvények be nem tartását, a szolgáltatások félrevezető bemutatását, vagy a Vendégekkel vagy a Szálláshely-szolgáltatókkal szembeni kötelezettségeinek nem teljesítését.
+10.2 **Megszüntetés:** Bármelyik Fél jogosult a Megállapodást saját belátása szerint megszüntetni.
 
-**8. Jutalékok és díjak**
+10.3 **Megszüntetés utáni rendelkezések:** Megszüntetés esetén az Utazási Ügynök rendez minden fennálló fizetést, és megszünteti a Winkhez kapcsolódó szellemi tulajdon vagy tartalom használatát.
 
-8.1**Jutalék kiszámítása:**&#x41;z Utazási Irodának fizetendő Jutalék a Foglalási Érték (a Wink Foglalási Díj levonása utáni) százaléka (az Utazási Iroda és a Szálláshely-szolgáltató közötti megállapodásban meghatározott).
+**11\. Irányadó jog és viták rendezése**
 
-8.2**Wink foglalási díja:**&#x41; Wink havi számlát állít ki az 1,5%-os foglalási díjról. Az Utazási Iroda felelős a számla kiegyenlítéséért a Wink által meghatározott fizetési feltételeken belül.
+11.1 **Irányadó jog:** A jelen Megállapodás Szingapúr joga szerint értelmezendő és alkalmazandó, figyelmen kívül hagyva az ütköző jogi szabályokat.
 
-**9. Jogi rendelkezések**
+11.2 **Vita rendezése:** 
 
-9.1**Felelősség korlátozása:**&#x45;gyik Fél sem felelős semmilyen közvetett, véletlenszerű, következményes, különleges vagy büntető kárért, amely a jelen Megállapodásból ered.
+11.2.1 **Tárgyalás:** Vita, igény, kérdés vagy nézeteltérés esetén a felek először jóhiszemű tárgyalások útján kísérlik meg rendezni a vitát. A tárgyalások írásbeli értesítés után kezdődnek.
 
-9.2**Kártalanítás:**&#x4D;indkét Fél beleegyezik abba, hogy kártalanítja a másikat, és mentesíti őt a jelen Megállapodás megszegéséből vagy a kártalanító Fél gondatlanságából eredő követelések alól.
+11.2.2 **Választottbíróság:** Ha a vita nem rendezhető tárgyalások útján 30 napon belül, a vitát a Szingapúri Nemzetközi Választottbírósági Központ (SIAC) szabályai szerint választottbíróság elé utalják, amely szabályok e záradék részét képezik. A választottbírók száma egy, a választottbíróság helye Szingapúr, a nyelv angol.
 
-9.3**Vis major:**&#x45;gyik Fél sem felelős a teljesítés késedelméért vagy elmaradásáért, amely az ésszerű ellenőrzési körén kívül eső okokból ered, beleértve az őrizetbe vételt, természeti katasztrófát, háborút, terrorizmust, sztrájkot stb.
+11.2.3 **Joghatóság:** A fentiek ellenére bármelyik fél jogosult ideiglenes vagy végrehajtási intézkedésért a szingapúri bíróságokhoz fordulni a jogai vagy tulajdona védelme érdekében a választottbíró kinevezésének várakozása alatt, és az ilyen bíróság kizárólagos joghatósággal rendelkezik az intézkedés kiadására.
 
-**10. Időtartam és megszűnés**
+**12\. Vis maior**
 
-10.1**Kifejezés:**&#x45;z a megállapodás a megkötés napján lép hatályba, és mindaddig érvényben marad, amíg azt bármelyik Fél fel nem mondja.
+12.1 **Meghatározás:** Egyik fél sem felel a jelen Megállapodás szerinti kötelezettségek elmulasztásáért vagy késedelméért, ha az vis maior esemény miatt következik be. A "Vis maior esemény" bármely olyan eseményt jelent, amely kívül esik a fél ésszerű ellenőrzési körén, beleértve, de nem kizárólagosan természeti katasztrófákat (pl. földrengés, árvíz, hurrikán), háborút, terrorizmust, polgári zavargásokat, világjárványokat, kormányzati intézkedéseket vagy bármely más előre nem látható vagy elkerülhető eseményt.
 
-10.2**Megszüntetés:**&#x42;ármelyik Fél saját belátása szerint felmondhatja ezt a Megállapodást.
+12.2 **Értesítés:** Az érintett fél köteles a lehető leghamarabb írásban értesíteni a másik felet a vis maior eseményről. Az értesítés tartalmazza az esemény leírását, várható időtartamát és az érintett kötelezettségeket.
 
-10.3**Megszűnés utáni időszak:**&#x41; szerződés megszűnése esetén az Utazási Iroda rendezi az összes fennálló tartozást, és megszünteti a Winkhez kapcsolódó szellemi tulajdon vagy tartalom használatát.
+12.3 **Hatás a Szolgáltatásokra:**
 
-**11. Irányadó jog és vitarendezés**
+* Szolgáltatások felfüggesztése: Ha a vis maior esemény akadályozza az Ön vállalkozását a Szolgáltatások Utazási Ügynök részére történő nyújtásában, a szolgáltatások az esemény időtartamára büntetés nélkül felfüggesztésre kerülnek. Az érintett szolgáltatásokhoz kapcsolódó Utazási Ügynök fizetési kötelezettségei is felfüggesztésre kerülnek ebben az időszakban.  
+* Az Utazási Ügynök kötelezettségei: Az Utazási Ügynök nem felel olyan kötelezettségekért, amelyek a vis maior esemény miatt teljesíthetetlenek. Ugyanakkor az Utazási Ügynök köteles minden egyéb, az eseménytől közvetlenül nem érintett kötelezettségét teljesíteni.
 
-11.1**Irányadó jog:**&#x45;z a Megállapodás Szingapúr törvényei szerint értelmezendő, tekintet nélkül a kollíziós jogi elvekre.
+12.4 **Időtartam és megszüntetés:** Ha a vis maior esemény több mint hatvan (60) napig tart, bármelyik fél írásban értesítve megszüntetheti a jelen Megállapodást. Ilyen megszüntetés esetén egyik fél sem tartozik felelősséggel a másik fél felé, kivéve a vis maior esemény előtti kötelezettségek teljesítését.
 
-11.2**Vitarendezés:**
+12.5 **Kötelezettségek folytatása:** A vis maior esemény megszűnése után mindkét fél haladéktalanul folytatja a jelen Megállapodás szerinti kötelezettségeinek teljesítését, amennyiben az ésszerűen lehetséges.
 
-11.2.1**Tárgyalás:**&#x41; jelen Megállapodásból eredő vagy azzal kapcsolatos bármilyen vita, követelés, kérdés vagy nézeteltérés esetén a felek először jóhiszemű tárgyalások útján próbálják meg rendezni a vitát. Az ilyen tárgyalások az egyik fél másikhoz intézett írásbeli értesítését követően kezdődnek.
+**13\. Titoktartás**
 
-11.2.2**Döntőbíráskodás:**&#x41;mennyiben a vitát harminc (30) napon belül nem sikerül tárgyalások útján rendezni, a vitát a Szingapúri Nemzetközi Választottbírósági Központ (SIAC) szabályai szerint választottbírósági eljárás elé utalják, amely szabályokat hivatkozásként e záradékba beépítettnek kell tekinteni. A választottbírák száma egy, a választottbírósági eljárás székhelye vagy jogi helye pedig Szingapúr. A választottbírósági eljárásban használandó nyelv az angol.
+13.1 Mindkét Fél köteles megőrizni minden üzleti titkot, és harmadik félnek csak a másik Fél előzetes írásbeli engedélyével hozhatja nyilvánosságra azokat.
 
-11.2.3**Illetékesség:**&#x41; fentiek ellenére bármelyik fél fenntartja a jogot, hogy ideiglenes vagy tiltó intézkedést kérjen Szingapúr bíróságaitól jogai vagy tulajdona védelme érdekében, amíg a választottbíró kinevezésére vár, és az ilyen bíróság kizárólagos joghatósággal rendelkezik az ilyen jogorvoslat megadására.
+**14\. Vegyes rendelkezések**
 
-**12. Vis maior**
+14.1 **Teljes megállapodás:** Jelen Megállapodás a Felek közötti teljes megállapodást képezi, és felülír minden korábbi megállapodást vagy megértést.
 
-12.1**Meghatározás**Egyik fél sem felelős a jelen Megállapodás szerinti kötelezettségeinek teljesítésének elmulasztásáért vagy késedelméért, ha az ilyen mulasztás vagy késedelem Vis Maior eseménynek tudható be. A „Vis Maior esemény” minden olyan eseményt jelent, amely kívül esik a fél ésszerű ellenőrzésén, beleértve, de nem kizárólagosan a természeti katasztrófákat (például földrengéseket, árvizeket vagy hurrikánokat), háborút, terrorizmust, polgári zavargásokat, világjárványokat, kormányzati intézkedéseket vagy bármely más olyan eseményt, amelyet ésszerűen nem lehetett előre látni vagy elkerülni.
+14.2 **Módosítások:** A jelen Megállapodás bármely módosítása csak írásban, mindkét Fél aláírásával érvényes.
 
-12.2**Bejelentés**Az érintett félnek a Vis Maior esemény bekövetkezte után a lehető leghamarabb írásban értesítenie kell a másik felet. Az értesítésnek tartalmaznia kell a Vis Maior esemény leírását, annak várható időtartamát és az érintett kötelezettségeket.
-
-12.3**A szolgáltatásokra gyakorolt ​​hatás**:
-
-* Szolgáltatások felfüggesztése: Amennyiben vis maior esemény befolyásolja vállalkozása azon képességét, hogy szolgáltatásokat nyújtson az Utazási Irodának, a szolgáltatások az esemény időtartamára büntetés nélkül felfüggesztésre kerülnek. Az Utazási Iroda érintett szolgáltatásokkal kapcsolatos fizetési kötelezettségei is felfüggesztésre kerülnek erre az időszakra.
-* Az Utazási Iroda kötelezettségei: Az Utazási Iroda nem vállal felelősséget az Ön vállalkozásával szemben fennálló, vis maior esemény miatt nem teljesíthető kötelezettségekért. Az Utazási Irodának azonban továbbra is teljesítenie kell minden olyan egyéb kötelezettségét, amelyet az esemény közvetlenül nem érint.
-
-12.4**Időtartam és megszűnés**: Amennyiben a Vis Maior esemény több mint hatvan (60) napig fennáll, bármelyik fél jogosult a jelen Megállapodást a másik félnek küldött írásbeli értesítéssel felmondani. Ilyen felmondás esetén egyik fél sem tartozik felelősséggel a másik féllel szemben, kivéve a Vis Maior esemény előtt keletkezett kötelezettségeket.
-
-12,5**Kötelezettségek újrakezdése**A Vis Maior esemény megszűnését követően mindkét fél haladéktalanul folytatja a jelen Megállapodás szerinti kötelezettségeinek teljesítését, amennyire az ésszerűen megvalósítható.
-
-**13. Titoktartás**
-
-13.1 Mindkét Fél köteles megőrizni minden üzleti titokban tartott információt, és előzetes írásbeli hozzájárulás nélkül nem hozhatja nyilvánosságra azokat harmadik fél számára.
-
-**14. Egyéb**
-
-14.1**Teljes megállapodás:**&#x45;z a Megállapodás képezi a Felek közötti teljes megállapodást, és felülír minden korábbi megállapodást vagy egyetértést.
-
-14.2**Módosítások:**&#x41; jelen Megállapodás bármely módosítását írásban kell megtenni, és mindkét Félnek alá kell írnia.
-
-14.3**Elválaszthatóság:**&#x41;mennyiben a jelen Megállapodás bármely rendelkezése érvénytelennek vagy végrehajthatatlannak bizonyul, a fennmaradó rendelkezések teljes hatályban maradnak.
-
+14.3 **Érvénytelenség:** Ha a jelen Megállapodás bármely rendelkezése érvénytelen vagy végrehajthatatlan, a többi rendelkezés teljes egészében hatályban marad.

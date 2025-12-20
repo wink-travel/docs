@@ -1,44 +1,43 @@
 ---
-title: Comparison
-description: >-
-  Siit saad teada, kuidas Wink võrdub sarnaste veebipõhiste reisifirmadega ja
-  millised on Winkiga liitumise eelised.
+title: Võrdlus
+description: Uuri, kuidas Wink võrreldes sarnaste veebipõhiste reisiettevõtetega paistab ning millised on Winkiga liitumise eelised.
 sidebar:
   order: 5
 ---
-Vaadake, kuidas Wink võrdub teiste turul olevate veebipõhiste reisisegmentidega. Allpool on lühike ülevaade funktsioonidest, mida pidasime oluliseks võrrelda.
 
-## Tunnuste maatriks
+Uuri, kuidas Wink võrreldes teiste veebipõhiste reisisegmentidega turul paistab. Allpool on kiire ülevaade funktsioonidest, mida pidasime oluliseks võrrelda.
 
-| Funktsioonid | Wink | OTA | IBE | Bed Bank
-| ------------------------ | -- | -- | -- | -- |
-| Internetipõhine broneerimismootor | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Biograafias olev lingipood | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| B2B partnerlusvõrgustik | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Reisibüroo tugi | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Tehisintellektiga toetatud levitamine ja turundus | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Sotsiaalmeediasõbralikud tööriistad | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Komisjonitasuta B2C kanal | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Tasuta Google'i hotellikuulutus | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Veebikomponent / SDK / API juurdepääs | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Otsesuhted | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Läbiräägitavad komisjonitasud müügikanali kohta | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Kanalihaldur ja PMS-ühenduvus | 🟢 | 🟢 | 🟢 | 🟢 |
-| Tarnija omab klienti | 🟢 | ⚫️ | 🟢 | 🟢 |
-| Investeeringutasuvuse jälgimine | 🟢 | 🟢 | ⚫️ | ⚫️ |
-| Tulemuspõhine maksmine | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Integreeritud maksevärav | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Väljamaksed Wise'iga | 🟢 | 🟢 | ⚫️ | ⚫️ |
+## Funktsioonide maatriks
 
-## Wink vs interneti broneerimismootor (IBE)
+| Funktsioon | Wink | OTA | IBE | Bed Bank
+| ----------------------- | -- | -- | -- | -- |
+| Interneti broneerimismootor | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Link-in-bio müügikoht | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| B2B sidusvõrgustik | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Reisibüroo tugi | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Tehisintellekti abiga levitamine ja turundus | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Sotsiaalmeediasõbralikud tööriistad | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Komisjonitasuta B2C kanal | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Tasuta Google Hotelli lisamine | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Veebikomponent / SDK / API ligipääs | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Otsesuhted | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Läbiräägitavad komisjonitasud müügikanali kohta | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Kanali haldur & PMS ühenduvus | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Tarnija omab klienti | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| ROI jälgimine | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Tulemustasu alusel maksmine | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Integreeritud makselahendus | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Maksete väljamaksed Wise kaudu | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
-Mõned hotellid proovivad meid võrrelda oma internetipõhise broneerimismootoriga, mis oli kaasas nende müügikanalihalduriga, ja paluvad meil pakkuda neile fikseeritud igakuist hinda, mis põhineb nende majutusasutuse võtmete arvul.
 
-Me ei ole IBE ja loodetavasti [Winki Akadeemia](/) aitab seda selgitada. Igal teenusel on plusse ja miinuseid. Kui teie IBE teie majutusasutusele sobib, siis jääge selle juurde.
+## Wink vs Interneti broneerimismootor (IBE)
 
-Wink on loodud selleks, et täita mitmeid lünki reisitööstuses ja koondada kõik ühte kohta.
+Mõned hotellid püüavad meid võrrelda oma interneti broneerimismootoriga, mis tuli nende kanalihalduriga komplektis, ja paluvad meil anda fikseeritud kuutasu põhine hinnapakkumine vastavalt nende objekti võtmete arvule.
+
+Me ei ole IBE ja loodetavasti aitab [Wink Academy](/et/) seda selgitada. Igal teenusel on omad plussid ja miinused. Kui sinu IBE sobib sinu objektile, jää sellega.
+
+Wink on loodud täitma mitmeid tühimikke reisitööstuses ja ühendama kõik ühte kohta.
 
 :::tip
-Sa ei pea oma olemasolevat IBE-d välja vahetama. Soovitame aga proovida meie sotsiaalmeediasõbralikku broneerimismootorit ehk lingihaldurit ühel oma sotsiaalmeedia kontol, et näha, kuidas need konverteerivad. Sa ei maksa midagi, kui broneeringuid pole – mida sul kaotada on? 😉
+Sul ei ole vaja oma olemasolevat IBE-d asendada. Soovitame siiski proovida meie sotsiaalmeediasõbralikku broneerimismootorit või linkide haldurit mõnel oma sotsiaalmeedia kontol, et näha, kuidas need konverteeruvad. Sa ei maksa midagi, kui broneeringuid ei tule – mida sa kaotada võid? 😉
 :::
-

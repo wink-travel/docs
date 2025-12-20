@@ -1,66 +1,65 @@
 ---
 title: Tietosuojakäytäntö
-description: >-
-  Helposti saatavilla oleva ja ajantasainen tietosuojakäytäntö kaikille
-  matkustaville käyttäjillemme.
+description: Helposti saatavilla oleva ja ajan tasalla oleva tietosuojakäytäntö kaikille matkustajakäyttäjillemme.
 sidebar:
   order: 5
 ---
-TRAVELIKO SINGAPORE PTE. LTD., joka toimii nimellä Wink (”Yhtiö”), haluaa ilmoittaa sinulle, joka otat yhteyttä Yhtiöön, että Yhtiön palvelun tarjoamiseksi on tarpeen kerätä, koota ja käyttää henkilötietojasi tämän Tietosuojakäytännön mukaisesti. Ottamalla yhteyttä Yhtiöön ja luovuttamalla henkilötietojasi Yhtiölle viestintää, koordinointia ja/tai Yhtiön palveluiden tarjoamista varten, Yhtiö katsoo, että hyväksyt ja sitoudut noudattamaan tätä Tietosuojakäytäntöä.
 
-Henkilötietoja käsiteltäessä Yhtiö voi saada henkilötietojasi useista eri kanavista seuraavasti:
+TRAVELIKO SINGAPORE PTE. LTD., joka toimii nimellä Wink (”Yhtiö”), haluaa tiedottaa sinulle, joka otat yhteyttä Yhtiöön, että on tarpeen kerätä, koota ja käyttää henkilötietojasi Yhtiön palvelua varten tämän tietosuojakäytännön mukaisesti. Ottamalla yhteyttä ja luovuttamalla henkilötietosi Yhtiölle viestintää, koordinointia ja/tai Yhtiön palvelujen tarjoamista varten, katsotaan, että hyväksyt ja sitoudut noudattamaan tätä tietosuojakäytäntöä.
 
-(1) Suoraan sinulta Yhtiön kanssasi käymieni viestien kautta;
+Henkilötiedot, joita käsitellään, Yhtiö voi saada henkilötietosi eri kanavista seuraavasti:
 
-(2) Välillisesti kolmannen osapuolen suosituksen kautta, jolle annat suostumuksen henkilötietojesi luovuttamiseen Yhtiölle; tai
+(1) Suoraan sinulta Yhtiön kanssasi käymän viestinnän kautta;
 
-(3) Järjestelmä kerää tiedot automaattisesti, kun käytät yrityksen verkkosivustoa ja/tai palveluita.
+(2) Epäsuorasti kolmannen osapuolen välityksellä, jolle voit antaa suostumuksen luovuttaa henkilötietosi Yhtiölle; tai
 
-Yhtiön on kerättävä, koottava, käytettävä ja käsiteltävä tämän tietosuojakäytännön mukaisesti seuraavat henkilötiedot:
+(3) Automaattisesti kerättynä järjestelmän kautta, kun käytät Yhtiön verkkosivustoa ja/tai palveluita.
 
-(1) Koko nimesi, mukaan lukien asiaankuuluvat tiedot tai edustajasi tiedot (jos otat meihin yhteyttä oikeushenkilön puolesta), jotka voivat sisältää henkilöllisyystodistuksesi.
+Henkilötiedot, joita Yhtiön on tarpeen kerätä, koota, käyttää ja käsitellä tämän tietosuojakäytännön mukaisesti, ovat seuraavat:
 
-(2) Yhteystiedot, kuten puhelinnumero, sähköpostiosoite tai sosiaalisen median tilitiedot.
+(1) Koko nimesi, mukaan lukien siihen liittyvät tiedot tai edustajatietosi (jos otat yhteyttä Yhtiöön oikeushenkilön nimissä), mikä voi sisältää henkilöllisyystodistuksesi tiedot.
 
-(3) Muut henkilötiedot, joita saatat antaa Yhtiölle viestinnän aikana, kuten tiedot tiedusteluista, kiinnostuksen kohteista tai muut henkilökohtaisesti tunnistettavat tiedot, jotka annat Yhtiölle suoraan eri viestintäkanavien kautta.
+(2) Yhteystiedot, kuten puhelinnumero, sähköposti tai sosiaalisen median tilitiedot.
 
-(4) Verkkosivuston kautta tapahtuvan viestinnän yhteydessä voidaan käyttää teknisiä tietojasi, kuten IP-osoitettasi ja evästeitä, mukaan lukien tietoja selauskäyttäytymisestäsi.
+(3) Muut henkilötiedot, joita voit antaa Yhtiölle viestinnän aikana, kuten tiedot kyselyistä, kiinnostuksen kohteista tai muut henkilökohtaisesti tunnistettavat tiedot, jotka annat suoraan Yhtiölle eri viestintäkanavien kautta.
 
-Henkilötietojen käsittelyn ja käytön tarkoitus Yhtiön on kerättävä, koottava ja käytettävä Työnhakijan henkilötietoja seuraaviin tarkoituksiin:
+(4) Verkkosivuston kautta tapahtuvan viestinnän yhteydessä voi sisältää teknisiä tietojasi, kuten IP-osoitteen, evästeet sekä tiedot selauskäyttäytymisestäsi.
 
-(1) Yhtiön kanssa käymäsi viestinnän hallinnoimiseksi, kuten kysymyksiin vastaaminen, pyydettyjen ja vaadittujen tietojen toimittaminen, valitusten käsittely tai suoraan Yhtiölle eri viestintäkanavien kautta antamiisi kommentteihin vastaaminen, mukaan lukien jatkuva koordinointi, palvelusopimuksen täytäntöönpano ja/tai Yhtiön ja sinun välilläsi mahdollisesti sopimien oikeuksien ja velvollisuuksien suorittaminen;
+Henkilötietojen käsittelyn ja käytön tarkoitus, Yhtiön on tarpeen kerätä, koota ja käyttää henkilötietojasi seuraaviin tarkoituksiin:
 
-(2) Yhtiön tiettyjen ehtojen alaisten lakisääteisten velvoitteiden suorittamiseksi. Tähän voivat sisältyä muun muassa kirjanpito- ja veroasiakirjojen laatimiseen liittyvien tehtävien suorittaminen Yhtiön sinulle tarjoamien palveluiden yhteydessä;
+(1) Viestinnän hallintaan, jonka olet käynyt Yhtiön kanssa, kuten kysymyksiin vastaamiseen, pyydettyjen ja vaadittujen tietojen tarjoamiseen, valitusten käsittelyyn tai suoriin kommentteihin vastaamiseen eri viestintäkanavien kautta, mukaan lukien jatkuva koordinointi, palvelusopimuksen täytäntöönpano ja/tai oikeuksien ja velvollisuuksien toteuttaminen, joista Yhtiö ja sinä olette sopineet;
 
-(3) Liikesuhteiden rakentamiseksi ja parantamiseksi, mukaan lukien Yhtiön tarjoaman palvelun parantaminen sinulle, jolloin Yhtiö voi kerätä ja/tai käyttää henkilötietojasi valvontaa, palvelun varmistamista, johdon analysointia ja liiketoimintaan liittyvien ongelmien ratkaisemista varten, mukaan lukien, mutta ei rajoittuen, työntekijöiden koulutus ja tuleva palvelun parantamisen suunnittelu;
+(2) Lakisääteisten velvoitteiden täyttämiseen, joihin Yhtiö voi olla tietyissä olosuhteissa velvollinen. Tämä voi sisältää, mutta ei rajoitu, kirjanpito- ja verodokumenttien valmisteluun liittyvien tehtävien suorittamiseen Yhtiön sinulle tarjoamien palvelujen yhteydessä;
 
-(4) Yhtiön laillisten oikeuksien suojaamiseksi ja puolustamiseksi, jos sinulla ja Yhtiöllä on riita; ja
+(3) Liikesuhteiden rakentamiseen ja parantamiseen, mukaan lukien Yhtiön tarjoamien palvelujen kehittämiseen sinun hyödyksesi, jolloin Yhtiö voi kerätä ja/tai käyttää henkilötietojasi palvelun valvonnan, laadunvarmistuksen, hallinnan analysoinnin ja liiketoimintaan liittyvien ongelmien ratkaisemisen tarkoituksiin, mukaan lukien, mutta ei rajoittuen, henkilöstön koulutukseen ja tulevien palvelujen parantamissuunnitteluun;
 
-(5) Yhtiö voi käsitellä henkilötietoja suostumuksessa määriteltyihin tarkoituksiin, edellyttäen, että Yhtiölle on annettu nimenomainen suostumus, kuten markkinointi- ja uutiskirjeviestintää varten.
+(4) Yhtiön laillisten oikeuksien suojaamiseen ja puolustamiseen tilanteessa, jossa sinulla ja Yhtiöllä on riita; sekä
 
-Henkilötietojen säilytysaika. Jotta yhtiö voi suorittaa edellä kuvattuja tarkoituksia, sen on kerättävä, koottava ja käsiteltävä henkilötietojasi seuraavan ajanjakson mukaisesti:
+(5) Selkeän suostumuksen perusteella, kuten markkinointi- ja uutiskirjeviestinnässä, Yhtiö voi käsitellä henkilötietoja suostumuksessa määriteltyihin tarkoituksiin.
 
-(1) Yhtiön on tarpeen käsitellä henkilötietojasi palveluiden tarjoamiseksi, sopimuksen täytäntöönpanemiseksi ja/tai sopimuksen mukaisten oikeuksien ja velvollisuuksien suorittamiseksi niin kauan kuin yhtiöllä on velvollisuus tarjota sinulle palveluita;
+Henkilötietojen säilytysaika, edellä kuvattujen tarkoitusten toteuttamiseksi Yhtiön on tarpeen kerätä, koota ja käsitellä henkilötietojasi seuraavien aikarajojen mukaisesti:
 
-(2) Jotta Yhtiö voi käsitellä henkilötietoja sovellettavien lakien mukaisten tehtävien suorittamiseksi, sen on käsiteltävä henkilötietojasi sovellettavien lakien määrittelemän ajan;
+(1) Palvelujen tarjoamista, sopimuksen täytäntöönpanoa ja/tai sopimuksen mukaisten oikeuksien ja velvollisuuksien toteuttamista varten Yhtiön on tarpeen käsitellä henkilötietojasi niin kauan kuin Yhtiöllä on velvollisuus tarjota sinulle palveluja;
 
-(3) Yhtiö pidättää oikeuden säilyttää henkilötietoja liikesuhteiden rakentamista ja parantamista ja/tai palvelun parantamista varten siltä osin kuin yhtiöllä on siihen liiketoiminnallisia tarpeita. Yhtiö takaa, että henkilötietojen säilyttäminen ei kohtuuttomasti vaikuta rekisteröidyn oikeuksiin;
+(2) Lakisääteisten velvoitteiden täyttämiseksi Yhtiön on tarpeen käsitellä henkilötietojasi sovellettavien lakien määrittelemän ajan;
 
-(4) Yhtiön on säilytettävä henkilötietoja sovellettavien lakien määrittelemien edellytysten mukaisesti, jotta Yhtiö voi käsitellä henkilötietoja suojellakseen ja puolustaakseen oikeutettuja oikeuksiaan.
+(3) Liikesuhteiden rakentamisen ja palvelun parantamisen tarkoituksiin Yhtiöllä on oikeus säilyttää henkilötietoja niin kauan kuin liiketoiminnan kannalta on tarpeen. Yhtiö takaa, että henkilötietojen säilyttäminen ei kohtuuttomasti vaikuta rekisteröidyn oikeuksiin;
 
-(5) Jos annat Yhtiölle suostumuksen henkilötietojesi käsittelyyn tiettyihin tarkoituksiin, Yhtiö käsittelee henkilötietojasi, kunnes peruutat suostumuksesi.
+(4) Yhtiön laillisten oikeuksien suojaamiseksi ja puolustamiseksi Yhtiöllä on tarpeen säilyttää henkilötietoja sovellettavien lakien määräämän ajan; sekä
 
-Henkilötietojen luovuttaminen, pääsääntöisesti henkilötietojasi ei luovuteta, paitsi niissä tilanteissa, joissa Yhtiön olisi luovutettava ne seuraavalle henkilölle:
+(5) Jos annat Yhtiölle suostumuksen käsitellä henkilötietojasi tiettyihin tarkoituksiin, Yhtiö käsittelee henkilötietojasi siihen asti, kunnes peruutat suostumuksesi.
 
-(1) Yhtiön ulkoiset palveluntarjoajat, jotka on palkattu tarjoamaan Yhtiölle tukipalveluita palveluiden tarjoamiseksi sinulle, mukaan lukien Yhtiön konsultit. Henkilötietojen luovuttaminen näille kolmansille osapuolille tapahtuu tarkoitusten mukaisesti ja ainoastaan ​​​​tarpeen mukaan; tai
+Henkilötietojen luovutus, yleisesti ottaen henkilötietojasi ei luovuteta, paitsi tilanteissa, joissa Yhtiön on tarpeen luovuttaa tiedot seuraaville tahoille:
 
-(2) Hallitus, sääntelyviranomaiset tai tuomioistuimet, joiden mukaan Yhtiöön voi kohdistua määräys, laki tai tuomio, joka edellyttää henkilötietojen luovuttamista.
+(1) Yhtiön ulkopuolisille palveluntarjoajille, jotka tukevat Yhtiötä palvelujen tarjoamisessa sinulle, mukaan lukien Yhtiön konsultit. Tällainen henkilötietojen luovutus näille kolmansille osapuolille tapahtuu tarkoituksen mukaisesti ja vain tarpeen mukaan;
 
-Yhtiö sitoutuu toteuttamaan asianmukaiset henkilötietojen turvatoimet estääkseen luvattoman ja laittoman pääsyn tietoihin, niiden muokkaamisen, korjaamisen tai paljastamisen. Yhtiö sitoutuu tarkastelemaan näitä toimenpiteitä säännöllisesti varmistaakseen niiden yhteensopivuuden standardien ja sovellettavien lakien kanssa.
+(2) Viranomaisille, sääntelyelimille tai tuomioistuimille, joille Yhtiö voi olla velvollinen luovuttamaan henkilötietoja määräyksen, lain tai tuomion perusteella.
 
-Rekisteröidyn oikeudet, Yhtiö kunnioittaa oikeuksiasi rekisteröitynä sovellettavien lakien mukaisesti. Voit ottaa yhteyttä Yhtiöön käyttääksesi oikeuksiasi, jotka ovat (1) oikeus peruuttaa suostumus, (2) oikeus tutustua tietoihisi, (3) oikeus pyytää kopio henkilötiedoista, (4) oikeus oikaista henkilötietoja, (5) oikeus vastustaa henkilötietojen käsittelyä, (6) oikeus pyytää tietojen siirrettävyyttä, jos Yhtiö tallentaa henkilötiedot luettavassa tai automatisoitujen työkalujen tai laitteiden yleisesti käyttämässä muodossa, mukaan lukien oikeus siirtää kyseiset henkilötiedot toisille rekisterinpitäjille, (7) oikeus pyytää henkilötietojen poistamista tai tunnistamattomaksi tekemistä, kun niiden käsittelylle ei ole enää tarvetta, (8) oikeus pyytää henkilötietojen käytön keskeyttämistä ja (9) oikeus tehdä valitus.
+Yhtiö sitoutuu toteuttamaan asianmukaiset henkilötietojen suojaustoimenpiteet estääkseen luvattoman ja lainvastaisen pääsyn, muokkauksen, muutoksen tai luovutuksen. Yhtiö sitoutuu tarkistamaan nämä toimenpiteet säännöllisesti varmistaakseen niiden yhteensopivuuden standardien ja sovellettavien lakien kanssa.
 
-Yrityksen yhteystiedot
+Rekisteröidyn oikeudet, Yhtiö kunnioittaa oikeuksiasi rekisteröitynä sovellettavien lakien mukaisesti. Voit ottaa yhteyttä Yhtiöön käyttääksesi seuraavia oikeuksia: (1) oikeus peruuttaa suostumus, (2) oikeus saada pääsy tietoihin, (3) oikeus pyytää kopio henkilötiedoista, (4) oikeus korjata henkilötietoja, (5) oikeus vastustaa henkilötietojen käsittelyä, (6) oikeus pyytää tietojen siirrettävyyttä siinä tapauksessa, että Yhtiö säilyttää henkilötiedot koneellisesti luettavassa tai yleisesti käytetyssä muodossa, mukaan lukien oikeus siirtää tiedot toiselle rekisterinpitäjälle, (7) oikeus pyytää henkilötietojen poistamista tai anonymisointia, kun käsittely ei ole enää tarpeen, (8) oikeus pyytää henkilötietojen käytön keskeytystä, sekä (9) oikeus tehdä valitus.
+
+Yhtiön yhteystiedot
 
 Tietosuojavastaava
 
@@ -68,6 +67,5 @@ Nimi: Yann Gouriou
 
 Osoite: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
 
-Sähköposti: dataprotectionofficer@wink.travel
+Sähköposti: dataprotectionofficer@wink.travel  
 Puhelinnumero: +66 (0) 854891301
-

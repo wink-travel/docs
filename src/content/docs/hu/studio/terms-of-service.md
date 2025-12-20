@@ -1,440 +1,416 @@
 ---
 title: Szolgáltatási feltételek
-description: >-
-  Könnyen hozzáférhető és naprakész feltételek minden partnerfelhasználónk
-  számára.
+description: Könnyen hozzáférhető és naprakész feltételek minden partnerünk számára.
 sidebar:
   order: 12
 ---
-:::megjegyzés
+
+:::note
 Utolsó frissítés: 2024-06-12
 :::
 
-**WINK ÁLTALÁNOS FELTÉTELEK ÉS KIKÖTÉSEK PARTNEREK RÉSZÉRE**
+**WINK ÁLTALÁNOS FELTÉTELEK PARTNEREK SZÁMÁRA**
 
-A Wink partnerprogramba való affiliate partnerként történő regisztrációval és feliratkozással a partner ezennel kijelenti, hogy áttekintette, megértette, tudomásul veszi és elfogadja a jelen affiliate megállapodás (a továbbiakban: „megállapodás”) feltételeit.\
-KÖZÖTT:
+A Wink partnerprogram affiliate partnereként történő regisztrációval és jelentkezéssel az affiliate partner átolvasta, megértette, elfogadja és tudomásul veszi az affiliate megállapodás (a „megállapodás”) feltételeit.  
+FELEK: 
 
-1. **TRAVELIKO SINGAPORE KFT.**., egy Szingapúr törvényei szerint bejegyzett társaság, amelynek székhelye a #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 címen található, adószáma 201437335D (a továbbiakban: „Wink”), és
-2. **A PARTNER**, amelynek adatai a Partneri Regisztrációs Űrlapon szerepelnek, vagy online lettek benyújtva („Partner”).
+1. **TRAVELIKO SINGAPORE PTE. LTD**., egy Szingapúr törvényei szerint bejegyzett társaság, székhelye: \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, adószám: 201437335D (a továbbiakban „Wink”), és  
+2. **AZ AFFILIATE**, akinek adatai az Affiliate Partner Regisztrációs Űrlapon vagy online benyújtásra kerültek (a „Affiliate”). 
 
-A Wink és a Partner a jelen Megállapodás „Félei”, és együttesen „Felek” néven szerepelnek bennük.
+A Wink és az Affiliate a jelen Megállapodás „Felek”-e, együttesen „Felek”-ként hivatkozva rájuk. 
 
-**MIVEL:**\
-(i) A Wink egy online rendszert („Rendszer”) üzemeltet, amelyen keresztül a részt vevő Szálláshelyek (együttesen a „Szálláshely-szolgáltatók”, mindegyik „Szálláshely-szolgáltató”) foglalhatóvá tehetik szállásaikat, és amelyen keresztül a Vendégek foglalásokat tehetnek az ilyen Szálláshely-szolgáltatóknál („Szolgáltatás”);\
-(ii) A Wink nem birtokol, nem ellenőrzi, nem kínál és nem kezel semmilyen hirdetést. A Wink nem vesz részt a Szálláshely-szolgáltatók és a Vendégek között közvetlenül megkötött szerződésekben. A Wink semmilyen minőségben nem jár el a Szálláshely-szolgáltatók ügynökeként;\
-(iii) A Wink saját weboldalakat („Wink weboldalak”) tart fenn és üzemeltet, valamint harmadik felek weboldalain is biztosítja a Szolgáltatást és a Szolgáltatásra mutató linkeket;\
-(iv) a Partner egy vagy több internetes domaint, weboldalt és alkalmazást birtokol, ellenőriz, hosztol és/vagy üzemeltet;\
-(v) a Partner és a Wink kívánsága, hogy a Partner a Szolgáltatást (közvetlenül vagy közvetve) elérhetővé tegye ügyfelei és a Partner weboldal(ak) és alkalmazás(ok) látogatói számára, a jelen Szerződésben meghatározott formában és feltételekkel (a továbbiakban: „Feltételek”).
+**MIVEL:**  
+(i) A Wink egy online rendszert („Rendszer”) üzemeltet, amelyen keresztül részt vevő Szálláshelyek (együttesen „Szálláshely Szolgáltatók”, egyenként „Szálláshely Szolgáltató”) elérhetővé tehetik készletüket foglalásra, és amelyen keresztül Vendégek foglalhatnak ezeknél a Szálláshely Szolgáltatóknál (a „Szolgáltatás”);  
+(ii) A Wink nem birtokol, nem irányít, nem kínál és nem kezel semmilyen listát. A Wink nem szerződő fél a Szálláshely Szolgáltatók és a Vendégek között közvetlenül kötött szerződésekben. A Wink nem jár el ügynökként a Szálláshely Szolgáltatók nevében;  
+(iii) A Wink fenntartja és üzemelteti saját weboldalait („Wink Weboldalak”), továbbá a Szolgáltatást nyújtja és linkeket biztosít a Szolgáltatáshoz harmadik fél weboldalain;  
+(iv) Az Affiliate birtokol, irányít, üzemeltet egy vagy több internetes domaint, weboldalt és alkalmazást;  
+(v) Az Affiliate és a Wink azt kívánják, hogy az Affiliate a Szolgáltatást (közvetlenül vagy közvetve) elérhetővé tegye ügyfelei és az Affiliate Weboldal(ak) és Alkalmazás(ok) látogatói számára, az itt meghatározott feltételek („Feltételek”) szerint. 
 
-**A Felek ezért a következőkben állapodtak meg:**
+**Ezért a Felek az alábbiakban állapodnak meg:**
 
 **1. Fogalommeghatározások**
 
-1.1 A jelen Megállapodásban máshol meghatározott fogalmakon túlmenően a következő meghatározások érvényesek a Megállapodás egészében, kivéve, ha az ellenkező szándék látszik:
+1.1 A jelen Megállapodás más részeiben meghatározott fogalmak mellett az alábbi definíciók érvényesek, hacsak másként nem rendelkezik a Megállapodás: 
 
-**"Szállás"**&#x62;ármilyen szállástípust jelent, beleértve, de nem kizárólagosan a Szállásszolgáltatókat, moteleket, vendégházakat, panziókat, hosteleket, villákat, apartmanokat (szolgáltatással vagy más módon), üdülőházakat, fogadókat, vendégszállásokat, üdülőhelyeket, apartmanokat, kempingeket és bármilyen más (típusú) szálláshelyet vagy szálláshely-szolgáltatót (függetlenül attól, hogy elérhető-e a Wink weboldalain).\
-**„Szálláshely-szolgáltató(k)”**&#x62;ármely olyan Fél, aki fiókot hoz létre a Wink oldalon azzal a szándékkal, hogy eladja a**saját**szobák és kiegészítő szolgáltatások listája a Wink platformon keresztül.\
-**"Szálláshely-szolgáltató márkák"**&#x62;ármely olyan kifejezést vagy kulcsszót jelent, amely megegyezik vagy megtévesztően hasonló (beleértve azok bármely változatát, fordítását, elírását és egyes szám/többes szám alakját) bármely, a Szálláshely-szolgáltató tulajdonában lévő vagy bejegyzett védjegyhez vagy kereskedelmi névhez (függetlenül attól, hogy az bejegyzett vagy nem bejegyzett).\
-**"Partner"**&#x61;zt a Felet jelenti, amelynek vonatkozó (elérhetőségi) adatai a Partneri Regisztrációs Űrlapon szerepelnek.\
-**„Leányvállalati indulások”**&#x6A;elentése megegyezik az 5.4. záradékban meghatározottal.\
-**"Partnercsoport"**&#x61; Kapcsolódó Vállalkozást és a Kapcsolódó Vállalkozás végső holdingvállalatát jelenti (beleértve a Kapcsolódó Vállalkozás (végső holdingvállalatának vagy részvényesének/részvényeseinek) (közvetlen vagy közvetett) Ellenőrzése alatt álló vállalatok vagy szervezetek csoportját).\
-**"Partner regisztrációs űrlap"**&#x61; Partner által kitöltendő online regisztrációs űrlapot jelenti.\
-**"Partner weboldal(ak)"**&#x61; Partner tulajdonában lévő, általa ellenőrzött, hosztolt és üzemeltetett weboldal(ak)at és alkalmazás(oka)t jelenti, amelyeken a Szolgáltatás elérhetővé válik.\
-**„Alkalmazás(ok)”**&#x65;gy mobil eszközökre készült natív alkalmazást jelent.\
-**"Megállapodás"**&#x65;zt a megállapodást jelenti.\
-**„Foglalás”**&#x61; Wink által rögzített sikeres tranzakciót jelenti a Vendég részéről egy Szálláshely-szolgáltató foglalására vonatkozóan.\
-**„Foglalási díj”**&#x61; Wink által a partneri jutalékból levont 1,5% feldolgozási díj.\
-**„Foglalási érték”**&#x61; Fizetési közvetítő által a vendégtől a foglaláshoz beszedett teljes összeg.\
-**"Záradék"**&#x61; jelen Megállapodás egy záradékát jelenti.\
-**"Jutalék"**&#x61; Partnernek fizetendő összeget jelenti a Fizetési Szolgáltatási Díj és a Foglalási Díj levonása előtt minden egyes Megvalósult Tranzakcióért a jelen Megállapodásnak megfelelően.\
-**"Kapcsolatok"**&#x61; Wink által létrehozott, hosztolt és karbantartott összes webkomponenst, linket, landing page-et és/vagy JSON-hírcsatornát és/vagy mélyhivatkozást és/vagy hiperhivatkozást jelenti.\
-**"Tartalom"**&#x61; Wink weboldalon elérhető összes (leíró) információt jelenti a Szálláshely-szolgáltatókról, beleértve, de nem kizárólagosan a Szálláshely-szolgáltatókra vonatkozó információkat és leírásokat, vendégértékeléseket, metaadatokat, a létesítmények részleteit és a (lemondási/meg nem jelenési) szabályzatokat, valamint a Szálláshely-szolgáltatók általános feltételeit (beleértve azok fordítását is), valamint a fényképeket, videókat, képeket, de kivéve az árakat és az elérhetőséget (beleértve a frissítéseket, módosításokat, cseréket, kiegészítéseket vagy kiegészítéseket).\
-**"Ellenőrzés"**&#x61;latt azt a hatalom vagy képesség birtoklását értjük, hogy (közvetlenül vagy közvetve, egyedül vagy másokkal együttesen, akár szavazati joggal rendelkező értékpapírok vagy egyéb tulajdonosi érdekeltségek tulajdonlása, partnerség vagy egyéb módon keresztül) (i) a társaság részvényesi gyűlésén a szavazati jogok több mint felét gyakorolja vagy gyakorlására ösztönözze, (ii) a társaság ((nem) ügyvezető) igazgatóinak vagy felügyelő bizottsági tagjainak több mint felét kinevezze, vagy (iii) irányítsa vagy intézkedjen a társasággal kapcsolatos vezetés irányításáról.\
-**"Ügyféladatok"**&#x61; Vendég személyazonosításra alkalmas adatait jelenti, beleértve, de nem kizárólagosan a Vendég nevét, címét (beleértve az e-mail címet), hitelkártyaadatait és a Vendég egyéb bizalmas és privát információit.\
-**"Dupla adag"**&#x74;öbb hirdetést jelent egy keresőmotor ugyanazon találati oldalán, azzal a céllal, hogy a forgalmat hasonló webhelyekre vagy hasonló tartalmú oldalakra irányítsák.\
-**"Vendég"**&#x61; Weboldalak vagy Alkalmazások olyan látogatóját jelenti, aki a Szolgáltatáson keresztül szállásfoglalást hajtott végre.\
-**„Szellemi tulajdonjog”**&#x62;ármely szabadalmat, szerzői jogot, találmányt, adatbázis-jogot, formatervezési mintát, bejegyzett formatervezési mintát, védjegyet, kereskedelmi nevet, márkanevet, logót, szolgáltatásvédjegyet, know-how-t, használati mintát, nem bejegyzett formatervezési mintát, vagy adott esetben az ilyen jogra, know-how-ra, kereskedelmi vagy cégnévre, domainnévre (bármilyen (országkód) legfelső szintű domainnel, pl. .com, .net., co.th, .de, .fr, eu, co.uk. stb.) vonatkozó bejelentést vagy más hasonló jogot vagy kötelezettséget jelent, függetlenül attól, hogy bejegyzett vagy nem bejegyzett, vagy más ipari vagy szellemi tulajdonjogot, amely a világ bármely területén vagy joghatóságában fennáll.\
-**"JSON"**&#x61; Wink adatbázisa és a Partner adatbázisa közötti JSON kapcsolatot jelenti, amelyet a Wink biztosíthat a megállapodás szerinti feltételek szerint.\
-**"Link"**&#x65;gy weboldalon vagy e-mailben található beágyazott ikont, objektumot, grafikát vagy szöveget jelent, amely egy hipertext mutatót tartalmaz a Wink URL-címére a Partnerwebhely(ek)en.\
-**„Kereskedői tranzakció”**&#x6F;lyan Megvalósult Tranzakciót jelent, amelyben a Fizetési Szervező a nyilvántartott kereskedő, és amely során a Fizetési Szervező közvetlenül a Vendégtől szedi be a foglalással kapcsolatos összeget.\
-**„Megvalósult tranzakció(k)”**&#x61; Partnerweboldal(ak) és/vagy alkalmazás(ok) látogatója által a Kapcsolaton keresztül lefoglalt szállást egy Szálláshely-szolgáltatónál, amely foglalás a szállás tényleges biztosításához vezetett, amit a Szálláshely-szolgáltató a Winknek visszaigazolt. A Megvalósult Tranzakciókat mindig korrigáljuk módosítások (pl. lerövidített tartózkodások), visszatérítések, hitelkártya-csalások, behajthatatlan tartozások vagy egyéb okok esetén. A félreértések elkerülése végett a lemondások, meg nem jelenések stb. soha nem tekinthetők Megvalósult Tranzakciónak.\
-**"Mikro weboldal"**&#x61; Wink elsődleges weboldalának összes white label verzióját jelenti, amelyeket a Wink birtokol, hoz létre, üzemeltet és tart karban. A mikrowebhely „powered by Wink” logóval vagy azzal egyenértékű felirattal jelölhető.\
-**„Nettó jutalék”**&#x61; Partnernek a Megvalósult Tranzakció(k)ért járó összeg a Fizetési Szolgáltatási Díj és a Foglalási Díj levonása után.\
-**"Fizetett keresés"**&#x6D;inden olyan online hirdetési formát jelent, amely a hirdetés megjelenítését egy adott kulcsszóalapú keresési kéréshez köti.\
-**„Fizetési közvetítő”**&#x61; Traveliko Singapore Pte. Ltd. teljes tulajdonú leányvállalata, amely a Fizetési Szolgáltatásokat irányítja, a vendégektől beszedi a fizetéseket („Befizetés”) a vásárlásukhoz kapcsolódó fizetési mód – például hitelkártya, bankkártya, banki átutalás, kriptovaluták vagy PayPal stb. – terhelésével, és a tartozás összegét („Nettó jutalék”) a Partner helyi bankszámlájára utalja.\
-**„Befizetés”**&#x61; Fizetési Közvetítő által a vendég által teljesített fizetés megszerzését jelenti.\
-**„Kifizetés”**&#x61; Fizetési Közvetítő által a Partnernek kifizetett Nettó Jutalékot jelenti.\
-**„Fizetési szolgáltatási díj”**&#x61; Fizetési Szervező által a Partneri jutalékból fizetésfeldolgozási díjként levont 4%.\
-**"Ár-összehasonlítás"**&#x61; Szálláshely-szolgáltató árainak és/vagy elérhetőségének összehasonlítását jelenti, amelyet két vagy több online Szálláshely-szolgáltató foglalási platformja tesz elérhetővé.\
-**„Viszonteladás”**&#x61; 4.1.7. záradékban meghatározott jelentéssel bír.\
-**„Eladói portál”**&#x61; 4.1.8. záradékban meghatározott jelentéssel bír.\
-**"SEM"**&#x6B;eresőoptimalizálást jelent, és magában foglal minden olyan online marketinget, amelynek célja a weboldalak népszerűsítése a keresőmotorok találati oldalain való láthatóságuk növelésével keresőoptimalizálás, fizetett elhelyezés, kontextuális hirdetés vagy fizetett tartalom révén.\
-**"SEO"**&#x6B;eresőoptimalizálást jelent, és magában foglalja a következő folyamatokat: (i) egy webhelyre vagy weboldalra érkező forgalom mennyiségének vagy minőségének javítása a keresőmotorokból „természetes” vagy nem fizetett („organikus” vagy „algoritmikus”) keresési eredmények révén, vagy (ii) egy adott kulcsszó vagy kulcsszavak esetében a keresőmotorok találati listáján jobb vagy jobb helyezés elérése vagy létrehozása.\
-**„Hasonló domain név”**&#x61; 4.7.1. záradékban meghatározott jelentéssel bír.\
-**"Spamküldési szabályozások"**&#x62;ármely olyan szabályzatot, szabályozást, korlátozást vagy kötelezettséget jelent, amelyet Harmadik Fél Platformjai időről időre előírtak, alkalmazandónak nyilvánítottak vagy bejelentettek, és amely (i) tiltja vagy megakadályozza a kettős kiszolgálást, az álcázást vagy bármilyen hasonló technikát vagy módszert, vagy (ii) további korlátozásokat vagy szabályozásokat tartalmaz a spammeléssel vagy az egyedi felhasználói élmény megőrzésével kapcsolatban.\
-**"Harmadik fél platformjai"**&#x62;ármely (harmadik féltől származó) keresőmotort (marketingszolgáltatót), meta-keresőmotort, keresőrobotokat, utazási keresőoldalakat, ár-összehasonlító oldalakat, közösségi hálózatépítő közösségeket, böngészőket, tartalommegosztó és -tárhely szolgáltatásokat, multimédiás blogszolgáltatást vagy más (hasonló) csatornát vagy egyéb (forgalomtárhely) médiaformát jelent, akár online, akár offline.\
-**"Weboldalak"**&#x61; Wink és kapcsolt vállalkozásainak, valamint partnereinek weboldalát (weboldalait) jelenti (beleértve a Partnerweboldal(akat) is), amelyen a Wink terméke és szolgáltatása elérhető.\
-**"Kacsintás versenyző"**&#x61; Wink bármely közvetlen vagy közvetett versenytársát jelenti (kivéve – a félreértések elkerülése végett – a Wink vállalatcsoport vállalatait).\
-**"Wink adatok"**&#x61; Wink szellemi tulajdonjogait és a Tartalmat jelenti, ahogyan azt a jelen Megállapodás alapján a Partnernek átadják, valamint az olyan egyéb információkat, amelyeket időről időre a Wink birtokol vagy használ, vagy amelyeket a Wink weboldalakon megtestesítenek vagy tartalmaznak, vagy amelyeket a Wink a Partner számára elérhetővé tesz (pl. árak és elérhetőség).\
-**"Wink weboldalak"**&#x61; Wink weboldalát/weboldalait jelenti, beleértve, de nem kizárólagosan a Winket, a traveliko.com-ot és azok összes helyi vagy alternatív verzióját (bármilyen legfelső szintű domainnel), valamint azok bármely variációját, beleértve, de nem feltétlenül kizárólagosan a mobil weboldalt, a mobilalkalmazásokat stb.
+**„Szállás”** bármilyen szálláshelyt jelent, beleértve, de nem kizárólagosan, Szálláshely Szolgáltatókat, moteleket, vendégházakat, bed & breakfasteket, hosteleket, villákat, apartmanokat (szervizelt vagy egyéb), kunyhókat, fogadókat, vendégszállásokat, üdülőhelyeket, kondomíniumokat, kemping szállásokat és bármely más (típusú) szálláshely vagy szálláshely-szolgáltató (függetlenül attól, hogy elérhető-e a Wink Weboldalakon).  
+**„Szálláshely Szolgáltató(k)”** bármely Fél, aki fiókot hoz létre a Wink-nél azzal a céllal, hogy saját szobáit és kiegészítő szolgáltatásait értékesítse a Wink platformon keresztül.  
+**„Szálláshely Szolgáltató Márkák”** bármely olyan kifejezés vagy kulcsszó, amely megegyezik vagy összetéveszthetően hasonló (beleértve bármilyen változatot, fordítást, helyesírási hibát és egyes/többes számot) bármely Szálláshely Szolgáltatóhoz tartozó vagy általa birtokolt védjegyhez vagy kereskedelmi névhez (regisztrált vagy nem regisztrált).  
+**„Affiliate”** az a Fél, akinek vonatkozó (kapcsolattartó) adatai az Affiliate Partner Regisztrációs Űrlapon szerepelnek.  
+**„Affiliate Távozások”** jelentése a 5.4. pontban található.  
+**„Affiliate Csoport”** az Affiliate és az Affiliate végső anyavállalata (beleértve azokat a társaságokat vagy entitásokat, amelyek az Affiliate (végső anyavállalatának vagy részvényeseinek) közvetlen vagy közvetett irányítása alatt állnak).  
+**„Affiliate Partner Regisztrációs Űrlap”** az online regisztrációs űrlap, amelyet az Affiliate tölt ki.  
+**„Affiliate Weboldal(ak)”** az Affiliate által birtokolt, irányított, üzemeltetett weboldalak és alkalmazások, amelyeken a Szolgáltatás elérhetővé válik.  
+**„Alkalmazás(ok)”** natív mobilalkalmazás(ok).  
+**„Megállapodás”** jelen megállapodás.  
+**„Foglalás”** egy sikeres tranzakció, amelyet a Wink rögzít egy Vendégtől egy Szálláshely Szolgáltató foglalására.  
+**„Foglalási Díj”** az az 1,5%, amelyet a Wink levon az Affiliate jutalékából feldolgozási díjként.  
+**„Foglalási Érték”** a Fizetési Közvetítő által a vendégtől beszedett teljes összeg egy foglalás esetén.  
+**„Pont”** a jelen Megállapodás egy pontja.  
+**„Jutalék”** az az összeg, amely az Affiliate-nek jár a Fizetési Szolgáltatási Díj és a Foglalási Díj levonása előtt minden Megvalósult Tranzakció után a jelen Megállapodás szerint.  
+**„Kapcsolatok”** minden webkomponens, link, céloldal és/vagy JSON feed és/vagy mélylink és/vagy hiperhivatkozás, amelyet a Wink hoz létre, üzemeltet és tart fenn.  
+**„Tartalom”** minden (leíró) információ a Szálláshely Szolgáltatókról, amely elérhető a Wink Weboldalon, beleértve, de nem kizárólagosan, a Szálláshely Szolgáltató információkat és leírásokat, vendégértékeléseket, metaadatokat, létesítményadatokat, (lemondási/nem megjelenési) szabályzatokat és általános feltételeket (beleértve azok fordításait), valamint fényképeket, videókat, képeket, de nem tartalmazza az árakat és elérhetőséget (beleértve azok frissítéseit, módosításait, cseréit, kiegészítéseit vagy változtatásait).  
+**„Irányítás”** azt jelenti, hogy valaki (közvetlenül vagy közvetve, egyedül vagy másokkal együtt, szavazati jogok vagy egyéb tulajdonosi jogok, társulás vagy más módon) (i) a részvénytársaság közgyűlésén a szavazati jogok több mint felét gyakorolja vagy gyakoroltatja, (ii) a társaság igazgatóinak vagy felügyelő bizottsági tagjainak több mint felét nevezi ki, vagy (iii) irányítja vagy irányíttatja a társaság vezetését.  
+**„Ügyféladatok”** a Vendég személyes azonosításra alkalmas adatai („PII”), beleértve, de nem kizárólagosan, a Vendég nevét, címét (beleértve az e-mail címet), hitelkártya adatait és egyéb bizalmas, privát információkat.  
+**„Dupla megjelenítés”** ugyanazon keresőmotor találati oldalán több hirdetés megjelenítése azzal a céllal, hogy forgalmat irányítson hasonló weboldalakra vagy hasonló tartalmú oldalakra.  
+**„Vendég”** a Weboldalak vagy Alkalmazások látogatója, aki a Szolgáltatáson keresztül Szálláshely Szolgáltató foglalást végzett.  
+**„Szellemi Tulajdonjog”** bármely szabadalom, szerzői jog, találmány, adatbázisjog, formatervezési jog, bejegyzett formatervezés, védjegy, kereskedelmi név, márka, szolgáltatási jel, know-how, használati minta, be nem jegyzett formatervezés vagy, ahol releváns, bármely ilyen jogra vonatkozó kérelem, know-how, kereskedelmi vagy üzleti név, domain név (bármilyen (országkód) felső szintű domainnel, pl. .com, .net, .co.th, .de, .fr, eu, .co.uk stb.) vagy más hasonló jog vagy kötelezettség, akár bejegyzett, akár nem, vagy más ipari vagy szellemi tulajdonjog, amely bármely területen vagy joghatóságban fennáll a világon.  
+**„JSON”** a Wink adatbázisa és az Affiliate adatbázisa közötti JSON kapcsolat, amelyet a Wink a megállapodás szerinti feltételekkel biztosíthat.  
+**„Link”** egy beágyazott ikon, objektum, grafika vagy szöveg egy weboldalon vagy e-mailben, amely hiperhivatkozásként mutat a Wink URL címére az Affiliate Weboldal(akon).  
+**„Kereskedői Tranzakció”** egy Megvalósult Tranzakció, amelyben a Fizetési Közvetítő a kereskedő, és közvetlenül szedi be a vendégtől a foglalás összegét.  
+**„Megvalósult Tranzakció(k)”** az Affiliate Weboldal(ak) és/vagy Alkalmazás(ok) látogatója által a Kapcsolaton keresztül végrehajtott foglalás, amely tényleges szállásnyújtással zárult, amit a Szálláshely Szolgáltató megerősített a Wink felé. A Megvalósult Tranzakciókat mindig módosítják a változtatások (pl. rövidített tartózkodás), visszatérítések, hitelkártya csalás, rossz adósság vagy egyéb okok miatt. A lemondások, nem megjelenések stb. soha nem minősülnek Megvalósult Tranzakciónak.  
+**„Mikrooldal”** a Wink elsődleges weboldalának minden fehér címkés változata, amelyet a Wink birtokol, hoz létre, üzemeltet és tart fenn. A Mikrooldal megjelölhető a „powered by Wink” logóval vagy annak megfelelővel.  
+**„Nettó Jutalék”** az az összeg, amely az Affiliate-nek jár a Megvalósult Tranzakció(k) után a Fizetési Szolgáltatási Díj és a Foglalási Díj levonása után.  
+**„Fizetett Keresés”** bármilyen online hirdetés, amely egy adott kulcsszavas keresési lekérdezéshez köti a hirdetés megjelenítését.  
+**„Fizetési Közvetítő”** a Traveliko Singapore Pte. Ltd. teljes tulajdonú leányvállalata, amely a Fizetési Szolgáltatásokat irányítja, a vendégektől beszedett fizetéseket („Pay-in”) kezeli, a vásárláshoz kapcsolódó fizetési módokat (pl. hitelkártya, bankkártya, banki átutalás, kriptovaluták vagy PayPal stb.) terheli, és kifizeti a Nettó Jutalékot az Affiliate helyi bankszámlájára.  
+**„Pay-in”** a Fizetési Közvetítő által a vendégtől beszedett fizetés.  
+**„Pay-out”** a Fizetési Közvetítő által az Affiliate részére kifizetett Nettó Jutalék.  
+**„Fizetési Szolgáltatási Díj”** a Fizetési Közvetítő által az Affiliate jutalékából levont 4%-os díj.  
+**„Árösszehasonlítás”** két vagy több online Szálláshely Szolgáltató foglalási platform által elérhetővé tett ár- és/vagy elérhetőségi adatok összehasonlítása.  
+**„Újraértékesítés”** jelentése a 4.1.7. pontban található.  
+**„Eladó Portál”** jelentése a 4.1.8. pontban található.  
+**„SEM”** a keresőmotor marketing, amely magában foglalja az online marketing bármely formáját, amely a weboldalak láthatóságának növelésére törekszik a keresőmotorok találati oldalain keresztül keresőoptimalizálás, fizetett elhelyezés, kontextuális hirdetés vagy fizetett megjelenés révén.  
+**„SEO”** a keresőoptimalizálás, amely magában foglalja a (i) a weboldal vagy weboldal oldal forgalmának mennyiségi vagy minőségi javítását keresőmotorokból „természetes” vagy nem fizetett („organikus” vagy „algoritmikus”) keresési eredmények révén, vagy (ii) jobb rangsorolás elérését egy adott kulcsszóra vagy kulcsszavakra a keresőmotorok találati listáján.  
+**„Hasonló Domain Név”** jelentése a 4.7.1. pontban található.  
+**„Spam Szabályozások”** bármely olyan irányelvek, szabályozások, korlátozások vagy kötelezettségek, amelyeket harmadik fél platformok írnak elő, nyilvánítanak alkalmazandónak vagy jelentenek be, amelyek (i) tiltják vagy megakadályozzák a Dupla megjelenítést, Cloakingot vagy bármely hasonló technikát vagy módszert, vagy (ii) további korlátozásokat vagy szabályozásokat tartalmaznak a spam vagy a felhasználói élmény megőrzése érdekében.  
+**„Harmadik Fél Platformok”** bármely (harmadik fél) keresőmotor (marketing szolgáltató), meta-keresőmotor, keresőmotor robotok, utazási keresőoldalak, árösszehasonlító oldalak, közösségi hálózatok, böngészők, tartalommegosztó és hosztoló szolgáltatások, multimédiás blogszolgáltatások vagy más (hasonló) csatornák vagy (forgalom hosztoló) médiaformák, akár online, akár offline.  
+**„Weboldalak”** a Wink és kapcsolt vállalkozásai, valamint partnerei (beleértve az Affiliate Weboldalakat) weboldalai, amelyeken a Wink termékei és szolgáltatásai elérhetők.  
+**„Wink Versenytárs”** bármely közvetlen vagy közvetett versenytárs a Wink számára (kivéve, hogy a Wink csoport vállalatai nem minősülnek versenytársnak).  
+**„Wink Adatok”** a Wink szellemi tulajdonjogai és a jelen Megállapodás alapján az Affiliate részére biztosított Tartalom, valamint a Wink által időről időre birtokolt vagy használt, a Wink Weboldalakban megjelenő vagy az Affiliate részére elérhetővé tett egyéb információk (pl. árak és elérhetőség).  
+**„Wink Weboldalak”** a Wink weboldalai, beleértve, de nem kizárólagosan a Wink, traveliko.com és minden helyi vagy alternatív változatát (bármilyen felső szintű domainnel), valamint azok bármely változatát, beleértve, de nem kizárólagosan a mobil weboldalt, mobilalkalmazásokat stb.
 
-**1.2 Nincs partnerség**
+**1.2 Nincs társulás**
 
-1.2.1 A jelen Megállapodás nem célja, és a benne foglalt rendelkezések semmilyen pontja sem értelmezhető úgy, hogy közös vállalkozást vagy partnerségi, partnerségi vagy megbízó-ügynök kapcsolatot hozzon létre a Felek között.
+1.2.1 Jelen Megállapodás nem hoz létre, és semmi sem értelmezhető úgy, hogy közös vállalkozást vagy társulási, partneri vagy megbízotti viszonyt létesít a Felek között.
 
-1.2.2 A Wink írásbeli eltérő megállapodása vagy a jelen Szerződésben foglaltak hiányában a Partner a Partner weboldalán/weboldalain semmilyen kifejezett vagy hallgatólagos kijelentést nem tehet közzé arról, hogy a weboldal a Wink része, a Wink által támogatott vagy a Wink hivatalos weboldala.
+1.2.2 Kivéve, ha a Wink írásban másként rendelkezik vagy a jelen Megállapodás másként nem rendelkezik, az Affiliate nem tehet közzé semmilyen kifejezett vagy hallgatólagos nyilatkozatot az Affiliate Weboldal(akon), amely szerint a weboldal a Wink része, azt támogatja vagy hivatalos Wink weboldal.
 
-1.2.3 A Partner közvetlenül kapcsolatba léphet a Szálláshely-szolgáltatókkal exkluzív vagy előnyben részesített árak, feltételek, promóciók, csomagkiegészítők és hasonlók meghatározása érdekében.
+1.2.3 Az Affiliate közvetlenül tárgyalhat a Szálláshely Szolgáltatókkal kizárólagos vagy preferált árakról, feltételekről, promóciókról, csomagokról és kiegészítőkről.
 
-**2. A megállapodás hatálya**
+**2. A Megállapodás hatálya**
 
-**2.1 Kizárólagosság kizárása**\
-A jelen Megállapodás feltételeinek megfelelően a Partner a Wink nem kizárólagos forgalmazójaként (leányvállalataként) működik.
+**2.1 Nem kizárólagosság**  
+A jelen Megállapodás feltételei szerint az Affiliate nem kizárólagos forgalmazóként (affiliate) működik a Wink számára.
 
 **2.2 Szolgáltatás**
 
-2.2.1 A Felek megállapodtak abban, hogy a jelen Megállapodás időtartama alatt a Wink a Szolgáltatást a Partnerpartner regisztrációs űrlapján (azaz a Linken vagy Mikrooldalon) és a Partnerpartner regisztrációs űrlapján meghatározott weboldal(ak)on (azaz a Partnerweboldal(ak)on) meghatározottak szerint teszi elérhetővé a Partner számára.
+2.2.1 A Megállapodás időtartama alatt a Felek megállapodnak, hogy a Szolgáltatást a Wink az Affiliate részére az Affiliate Partner Regisztrációs Űrlapban meghatározott módon (pl. Link vagy Mikrooldal) és az ott megadott weboldalon (Affiliate Weboldal(ak)) teszi elérhetővé.
 
-2.2.2 Amikor egy látogató foglalást végez a Partnerwebhelyeken vagy azokon keresztül a Rendszeren keresztül, a Wink felelős a foglalást végző látogató vonatkozó foglalási adatainak továbbításáért a Szálláshely-szolgáltatónak (pl. érkezés dátuma, éjszakák száma, szobatípus, vendég neve), valamint a későbbi (e-mailes) visszaigazolás és/vagy visszaigazoló utalvány (elküldéséért) a Vendégnek.
+2.2.2 Amikor egy látogató foglalást hajt végre az Affiliate Weboldal(akon) vagy azok révén a Rendszeren keresztül, a Wink felelős a foglalás részleteinek továbbításáért a foglalást végző látogatótól a Szálláshely Szolgáltató felé (pl. érkezési dátum, éjszakák száma, szobatípus, vendég neve), valamint a foglalás visszaigazolásának (e-mailben vagy voucher formájában) elküldéséért a Vendégnek.
 
-2.2.3 A Szolgáltatás magában foglalja a Vendégek számára és érdekében nyújtott ügyfélszolgálatot. A Partner haladéktalanul továbbít minden, a Szolgáltatással, a foglalással (annak teljesítésével) (beleértve a foglalás módosítását vagy lemondását), a Szálláshely-szolgáltatóval és minden egyéb releváns (fizetési) problémával, panaszsal és kérdéssel kapcsolatos, ügyfélszolgálati problémát és kérdést közvetlenül a (Wink ügyfélszolgálati központjához) utal és/vagy továbbít, és további szolgáltatást nem nyújt ezzel kapcsolatban.
+2.2.3 A Szolgáltatás magában foglalja az ügyfélszolgálatot a Vendégek részére. Az Affiliate köteles minden ügyfélszolgálati kérdést és problémát a Szolgáltatással, a foglalással (beleértve annak módosítását vagy lemondását), a Szálláshely Szolgáltatóval és egyéb fizetési kérdésekkel kapcsolatban haladéktalanul a Wink ügyfélszolgálatához irányítani, és nem nyújt további szolgáltatásokat ezen a téren.
 
-**2.3 Link vagy mikrowebhely**
+**2.3 Link vagy Mikrooldal**
 
-2.3.1 Amennyiben a Szolgáltatás a Linken keresztül válik elérhetővé, a Partner saját költségére integrálja és elérhetővé teszi a Linket olyan kiemelt helyen, weboldalakon, olyan helyen, méretben és formában a Partner Weboldalán(aion), a Wink utasításai szerint, vagy a Felek kölcsönösen megállapodnak abban.
+2.3.1 Amennyiben a Szolgáltatás a Linken keresztül érhető el, az Affiliate saját költségén integrálja és a Wink utasításai vagy a Felek közös megegyezése szerint kiemelt helyen, megfelelő méretben és formában elérhetővé teszi azt az Affiliate Weboldal(akon).
 
-2.3.2 Amennyiben a Szolgáltatás a Mikro Oldalon keresztül érhető el, a Partner saját költségén integrálja és elérhetővé teszi a Kapcsolatokat és/vagy a Mikro Oldalt olyan kiemelt helyen, weboldalakon és olyan helyen, méretben és formában a Partner Weboldalán(aion), a Wink utasításai szerint, vagy a Felek kölcsönösen megállapodnak abban.
+2.3.2 Amennyiben a Szolgáltatás a Mikrooldalon keresztül érhető el, az Affiliate saját költségén integrálja és a Kapcsolatokat és/vagy a Mikrooldalt a Wink utasításai vagy a Felek közös megegyezése szerint kiemelt helyen, megfelelő méretben és formában elérhetővé teszi az Affiliate Weboldal(akon).
 
-**3. Engedély**
+**3. Licenc**
 
-**3.1 Kölcsönös engedély**
+**3.1 Kölcsönös licenc**
 
-3.1.1 A 4.4. záradék rendelkezéseinek megfelelően a Wink ezennel nem kizárólagos, visszavonható, korlátozott, jogdíjmentes és világszerte érvényes jogot és licencet biztosít a Partnernek:
+3.1.1 A 4.4. pont rendelkezéseinek figyelembevételével a Wink nem kizárólagos, visszavonható, korlátozott, jogdíjmentes és világszerte érvényes jogot és licencet ad az Affiliate részére:
 
-1. a Wink Adatok ezen elemeinek és a Szálláshely-szolgáltatók további információinak megjelenítése a Partner weboldalán/weboldalakon, mindezt úgy, ahogyan a Wink azokat a Partner számára rendelkezésre bocsátotta vagy elérhetővé tette;
-2. a Szolgáltatás népszerűsítése és marketingje a jelen Megállapodásban foglalt feltételek szerint.
+1) a Wink Adatok és a Szálláshely Szolgáltatók további információinak megjelenítésére az Affiliate Weboldal(akon), ahogy azt a Wink az Affiliate részére biztosítja;  
+2) a Szolgáltatás népszerűsítésére és marketingjére a jelen Megállapodás feltételei szerint.
 
-3.1.2 A Partner ezennel jogdíjmentes és világszerte érvényes jogot és licencet biztosít a Winknek:
+3.1.2 Az Affiliate jogdíjmentes és világszerte érvényes jogot és licencet ad a Wink részére:
 
-1. a Link, a Mikrowebhely és/vagy a Kapcsolat (adott esetben) beépítése, integrálása, megjelenítése a Partnerwebhely(ek)en, és
-2. a Szolgáltatás elérhetővé tétele a Partner weboldalán/webhelyein.
+1) a Link, a Mikrooldal és/vagy a Kapcsolat (ahogy alkalmazandó) beépítésére, integrálására, megjelenítésére az Affiliate Weboldal(akon);  
+2) a Szolgáltatás elérhetővé tételére az Affiliate Weboldal(akon).
 
-**3.2 Allicencjog kizárása és titoktartás**
+**3.2 Allicenc és titoktartás**
 
-3.2.1 A Wink eltérő írásbeli megállapodása hiányában a Partner nem jogosult (i) a 3.1.1. záradék alapján neki biztosított jogok allicencbe adására, vagy (ii) a Link vagy a Kapcsolat harmadik félnek való allicencbe adására, illetve (iii) a Wink Weboldalára mutató hiperhivatkozás létrehozására a Partnercsoporton belüli vállalatokon és/vagy harmadik feleken keresztül vagy azokkal együttműködve.
+3.2.1 Kivéve, ha a Wink írásban másként engedélyezi, az Affiliate nem jogosult (i) allicencet adni a 3.1.1. pontban biztosított jogokra, (ii) a Linket vagy Kapcsolatot harmadik félnek allicencbe adni, vagy (iii) a Wink Weboldalra hiperhivatkozást létrehozni az Affiliate Csoport vagy harmadik felek weboldalai révén vagy azokkal együttműködve.
 
-3.2.2 A Wink írásbeli eltérő megállapodása vagy a jelen Megállapodásban foglaltak hiányában a Partner sem közvetlenül, sem közvetve nem jogosult a Wink Adatok vagy a Tartalom eladására, felhasználására, átruházására, (al)licencelésére, közlésére, nyilvánosságra hozatalára, elérhetővé tételére, hozzáférés biztosítására, nyilvánosságra hozatalára vagy egyéb módon történő terjesztésére (i) harmadik félnek, (ii) ár/elérhetőség összehasonlítási célokra, oldalakon, értékelések vagy vizsgálatok céljából, (iii) a Szolgáltatáson (Szálláshely-szolgáltatói foglalások generálásán keresztül) kívüli bármely más célra, vagy (iv) egyéb módon.
+3.2.2 Kivéve, ha a Wink írásban másként engedélyezi vagy a jelen Megállapodás másként nem rendelkezik, az Affiliate nem jogosult közvetlenül vagy közvetve eladni, használni, átadni, (al)licencelni, kommunikálni, felfedni, elérhetővé tenni, hozzáférést engedélyezni, nyilvánosságra hozni vagy más módon terjeszteni a Wink Adatokat vagy a Tartalmat (i) harmadik fél részére, (ii) ár/kapacitás összehasonlítás, értékelések vagy vizsgálatok céljából, (iii) bármely más célra, mint a Szolgáltatáson keresztüli Szálláshely foglalások generálása, vagy (iv) egyébként.
 
-**4. Szövetségek és kötelezettségvállalások**
+**4. Kötelezettségek és vállalások**
 
-**4.1 Általános szerződési feltételek, vállalások és kötelezettségek**
+**4.1 Általános kötelezettségek**
 
-4.1.1 A jelen Megállapodás feltételeinek megfelelően a Partner vállalja, hogy kereskedelmileg ésszerű erőfeszítéseket tesz (i) a Partnerweboldal(ak) testreszabására és a Link, a Kapcsolatok és/vagy a Mikrowebhely integrálására oly módon, hogy a lehető legtöbb forgalmat generálja a Wink weboldalra vagy a Partnerweboldal(ak)ra, és (ii) a Szálláshely-szolgáltatók és a Partnerweboldal(ak)on található Szálláshely-szolgáltatók foglalási lehetőségének népszerűsítésére és marketingjére kereskedelmi és belső hálózatán belül, és ebből a célból elérhetővé teszi terjesztési hálózatát és csatornáit (pl. internetes és intranetes).
+4.1.1 Az Affiliate vállalja, hogy kereskedelmileg ésszerű erőfeszítéseket tesz az Affiliate Weboldal(ak) testreszabására és a Link, Kapcsolatok és/vagy Mikrooldal integrálására úgy, hogy minél több forgalmat generáljon a Wink Weboldalra vagy az Affiliate Weboldal(ak)ra, továbbá népszerűsíti és marketingeli a Szálláshely Szolgáltatókat és a foglalási lehetőséget az Affiliate kereskedelmi és belső hálózatán belül, és ehhez rendelkezésre bocsátja disztribúciós hálózatát és csatornáit (pl. internet és intranet).
 
-4.1.2 A Partner vállalja, hogy nem tesz, illetve nem mulaszt el olyan intézkedést, amely befolyásolhatja a Wink és a Wink weboldalain elérhető Szálláshely-szolgáltatók közötti kapcsolatot. A Partner vállalja, hogy nem okoz, és nem enged meg semmi olyat, ami a Wink kizárását eredményezheti bármely Szálláshely-szolgáltatónál történő foglalási folyamatból.
+4.1.2 Az Affiliate vállalja, hogy nem tesz olyan lépést vagy mulasztást, amely befolyásolhatja a Wink és a Wink Weboldalakon elérhető Szálláshely Szolgáltatók közötti kapcsolatot. Nem okoz vagy enged meg olyan cselekményt, amely kizárná a Wink-et a foglalási folyamatból bármely Szálláshely Szolgáltatóval.
 
-4.1.3 A Partner vállalja, hogy nem kommunikál semmilyen Szálláshely-szolgáltatóval – az 1.2.3. pontban foglaltak kivételével – a Rendszeren keresztül végrehajtott (felhasznált) foglalásokkal, illetve az ilyen, a Rendszeren keresztül végrehajtott vagy felhasznált foglalásokkal kapcsolatos ügyfélszolgálattal kapcsolatban.
+4.1.3 Az Affiliate nem kommunikál a Szálláshely Szolgáltatókkal a Rendszeren keresztül végrehajtott foglalásokkal vagy azok ügyfélszolgálatával kapcsolatban, kivéve az 1.2.3. pontban foglaltakat.
 
-4.1.4 A Partner köteles gondosan és körültekintően karbantartani és frissíteni a Partnerweboldalak tartalmát, valamint naprakészen és pontosan tartani a Partnerweboldal(ak)at. A Partner köteles haladéktalanul kijavítani a Partnerweboldal(ak)on és a Szálláshely-szolgáltatókkal kapcsolatos információkban található hibákat vagy hiányosságokat, miután tudomást szerez azokról, vagy a Wink értesíti.
+4.1.4 Az Affiliate köteles az Affiliate Weboldal(ak) tartalmát naprakészen és pontosan tartani, és a Wink értesítése vagy tudomására jutása után haladéktalanul javítani az esetleges hibákat vagy hiányosságokat.
 
-4.1.5 A Partner nem jogosult (a) programozottan kiértékelni és kinyerni információkat (beleértve a vendégértékeléseket) a Wink weboldal bármely részéből (pl. képernyőmásolás), és nem kísérelheti meg ezt megtenni, és semmilyen módon, beleértve, de nem kizárólagosan a mechanikus, elektronikus, fénymásolási, rögzítési vagy egyéb módon történő eljárást, nem másolhatja, reprodukálhatja, módosíthatja, átalakíthatja, szétszerelheti, visszafejtheti, kaparhatja vagy más módon meghatározhatja a Wink weboldalon található linkek vagy bármely tartalom forráskódját (vagy azok mögöttes ötleteit, algoritmusait, szerkezetét vagy szerveződését), és nem kísérelheti meg ezt megtenni; (b) nem tölthet fel (i) semmilyen vírust, trójai vírust, férget, időzített bombát, robotparancsokat vagy más számítógépes programozási rutinokat, amelyek célja bármely rendszer, adat vagy személyes információ károsítása, káros zavarása, titokban történő elfogása vagy kisajátítása; (c) semmilyen nyilatkozatot tenni a látogatók, a nagyközönség vagy bármely más, a Társasággal, a szolgáltatásokkal, a linkekkel vagy a Wink weboldallal bármilyen módon kapcsolatban álló fél felé; (d) (megpróbálni) jóváírást vagy jutalékot szerezni a Winktől félrevezetéssel, hamis nyilatkozatok tételével, csalárd magatartással vagy bármilyen más, a Wink megtévesztésére irányuló cselszövéssel vagy trükkel; vagy (e) (megpróbálni) kárt okozni a Winknek és a Wink weboldalának. A fent említett rendelkezések bármilyen megsértése a Partner programból való kizárását és a fennálló tartozások elvesztését vonja maga után.
+4.1.5 Az Affiliate nem végezhet programozott adatkinyerést (pl. képernyőkaparás) a Wink Weboldal bármely részéről, nem másolhat, nem módosíthat, nem elemezhet vagy nem próbálhat meg ilyen módon hozzáférni a Wink Weboldal forráskódjához vagy tartalmához, nem tölthet fel vírusokat vagy káros programokat, nem tehet félrevezető nyilatkozatokat, nem próbálhat meg csalással jutalékot szerezni, és nem okozhat kárt a Wink-nek vagy a Wink Weboldalnak. Ezen szabályok megsértése az Affiliate programból való azonnali kizárásához és a kifizetések elvesztéséhez vezet.
 
-4.1.6 A Partner nem készíthet statikus másolatot a Wink weboldal Tartalmáról vagy bármely részéről (beleértve a vendégértékeléseket is).
+4.1.6 Az Affiliate nem készíthet statikus másolatot a Tartalomról vagy a Wink Weboldal bármely részéről (beleértve a vendégértékeléseket).
 
-4.1.7 Jelen Megállapodás értelmében a Partner a jelen Megállapodás feltételei szerint a Winktől kapott Jutalékon felül nem részesülhet hasznot foglalásokból vagy foglalásokból. A Partner (beleértve alkalmazottját és az általa felhatalmazott személyt) nem végezhet semmilyen foglalást vagy foglalást a Wink weboldalon vagy a Partner weboldalán található Szálláshely-szolgáltatónál azzal a céllal, hogy az ilyen foglalást vagy foglalást harmadik félnek vagy harmadik fél javára továbbértékesítse (a „Viszonteladás”). A félreértések elkerülése végett a Wink saját belátása szerint jogosult bármely foglalást vagy foglalást viszonteladásnak tekinteni, amennyiben a foglalás vagy foglalás kifizetése nem közvetlenül attól a személytől származik, akinek a nevére a foglalás vagy foglalás történik.\
-A viszonteladás a jelen Szerződés lényeges megszegésének minősül. A Partner tudomásul veszi, hogy a viszonteladás ellentétes a jelen Szerződés alapvető céljával. Viszonteladás esetén a Wink fenntartja a jogot, hogy előzetes értesítés vagy visszatérítés nélkül elutasítsa a foglalásokat és/vagy törölje a megerősített foglalásokat. A Wink saját belátása szerint azonnali hatállyal megszüntetheti a Partner programban való részvételét, a jelen Szerződésben foglalt egyéb jogorvoslati lehetőségek sérelme nélkül, beleértve a Jutalék elvesztését és a kártérítés igénylését.
+4.1.7 Az Affiliate nem szerezhet hasznot foglalásokból vagy foglalások újraértékesítéséből a Wink-től kapott jutalékon felül. Az Affiliate nem foglalhat vagy foglalásokat nem értékesíthet tovább harmadik fél javára vagy érdekében a Wink Weboldalon vagy az Affiliate Weboldalon. Az ilyen újraértékesítés súlyos szerződésszegésnek minősül, amely a foglalások elutasítását, törlését és az Affiliate programból való azonnali kizárását vonhatja maga után.
 
-4.1.8 A Wink hozzáférést biztosít a Partnernek a Wink kijelölt weboldalához (a továbbiakban: „Partnerportál”), felhasználói azonosítóhoz és jelszóhoz, amelyek lehetővé teszik a Partner számára, hogy nyomon kövesse a szállásfoglalásokat a Partner weboldalán/weboldalain keresztül, valamint az összes releváns, a Wink által online elérhetővé tett kezelési információt. A Partner köteles megvédeni és bizalmasan kezelni a felhasználói azonosítót és jelszót, biztonságosan tárolni azokat, és azokat nem hozza nyilvánosságra senki mással, kivéve azokat, akiknek hozzáféréssel kell rendelkezniük az Eladói Portálhoz. A Partner köteles haladéktalanul értesíteni a Winket minden (gyanított) biztonsági incidensről vagy nem megfelelő használatról.
+4.1.8 A Wink hozzáférést biztosít az Affiliate számára a kijelölt Wink weboldalhoz („Affiliate Portál”), felhasználói azonosítóval és jelszóval, amely lehetővé teszi a foglalások nyomon követését és a menedzsment információk elérését. Az Affiliate köteles a hozzáférési adatokat bizalmasan kezelni, és azonnal értesíteni a Wink-et bármilyen biztonsági incidensről vagy nem megfelelő használatról.
 
-4.1.9 A Partner által a Wink weboldalon vagy a Partner weboldalán keresztül bármely Szálláshely-szolgáltatónál lebonyolított foglalás vagy foglalás a Wink Felhasználási Feltételeinek hatálya alá tartozik, amelyek időről időre frissülhetnek. A félreértések elkerülése végett a Partner nem használhatja fel a Wink weboldalt vagy annak tartalmát kereskedelmi célra, kivéve a Jutalék fogadásának célját, a jelen Szerződés feltételei szerint.
+4.1.9 Az Affiliate által a Wink Weboldalon vagy az Affiliate Weboldalon kötött foglalások a Wink Felhasználási Feltételeinek hatálya alá tartoznak, amelyeket időről időre frissíthetnek. Az Affiliate nem használhatja a Wink Weboldalt vagy annak tartalmát kereskedelmi célokra a jutalékon túl.
 
-4.1.10 A Partner elfogadja és elismeri, hogy a jelen 4. záradékban foglalt korlátozó kikötések, vállalásaik, kötelezettségvállalásaik, és korlátozásaik ésszerűek és lényeges fontossággal bírnak a Wink számára, különösen (i) a jelen Megállapodás Partnerrel való megkötésére és a Szolgáltatás, a Tartalom és a Wink Szellemi Tulajdonjogainak (közvetlenül vagy közvetve) a Partner rendelkezésére bocsátására való hajlandósága, valamint (ii) a Wink jó hírnevének, termékének, szolgáltatásának és (piaci) hírnevének védelme érdekében. Továbbá a Partner elfogadja és elismeri, hogy a jelen 4. záradékban foglalt összes kikötést, vállalást, kötelezettségvállalást, szavatosságot, kötelezettségvállalást és korlátozást (a) a Partner haladéktalanul, kellően és gondosan betartja, és (b) az Eladói Portálhoz a Partner felhasználói azonosítóján keresztül hozzáférő személyekre, a Partnert képviselőnek vélhetően észszerűen ítélhető személyekre és a Partnercsoporton belüli vállalatokra is vonatkozik. A Partner gondoskodik arról, szavatolja és vállalja, hogy bárki, aki a Partner felhasználói azonosítóján keresztül hozzáfér az Eladói Portálhoz, bármely olyan személy, akiről észszerűen feltételezhető, hogy a Partnert képviseli, valamint a Partnercsoporton belüli vállalatok betartják, betartják, betartják és azokkal összhangban járnak el a jelen 4. záradékban foglalt feltételeket.
+4.1.10 Az Affiliate elismeri, hogy a jelen 4. pontban foglalt korlátozó kötelezettségek, vállalások és korlátozások ésszerűek és lényegesek a Wink számára, különösen a Szolgáltatás, a Tartalom és a Wink Szellemi Tulajdonjogok elérhetővé tételéhez, valamint a Wink jó hírnevének védelméhez. Az Affiliate vállalja, hogy ezen kötelezettségeket maga és az Affiliate Csoporthoz tartozó személyek tekintetében is betartja.
 
-**4.2 Goodwill, márkavédelem és forgalom**
+**4.2 Jó hírnév, márkavédelem és forgalom**
 
-4.2.1 A Wink termékének, szolgáltatásának, márkájának és jó hírnevének védelme érdekében a Partner ezennel kötelezettséget vállal, vállalja és szavatolja, hogy a Partner weboldala(i) (beleértve az összes többi, a Partner vagy a Partnercsoporton belüli vállalatok tulajdonában lévő, ellenőrzött vagy általuk üzemeltetett weboldalt (közvetlenül vagy közvetve)) a Mikro weboldal kivételével kellően és lényegesen elkülönül és különbözik a Wink weboldalától (a Wink kizárólagos belátása szerint meghatározva). A Partner ezennel beleegyezik és tudomásul veszi, hogy a jelen Szerződés időtartama alatt és azt követően:\
-(a) a Partner weboldal(ak) megjelenése és érzete (beleértve az összes többi (közvetlenül vagy közvetve) a Partner tulajdonában lévő, általa ellenőrzött vagy üzemeltetett weboldalt) egyértelműen és jelentősen eltér a Wink weboldaltól, beleértve a színvilágot, a kompozíciót, a betűtípusokat, a dizájnt és az elrendezést (beleértve a márkát is), a (kattintási) gombokat, mezőket és bannereket, valamint az elérhető funkciókat (kivéve azokat a funkciókat, amelyek a Partner jelen Megállapodás szerinti kötelezettségeinek teljesítéséhez észszerűen szükségesek);\
-(b) a Partner weboldalán/webhelyein (beleértve az összes többi, a Partner tulajdonában lévő, általa ellenőrzött vagy üzemeltetett weboldalt is) használt logónak/logóknak egyértelműen különbözniük kell a Wink logótól (kivéve azokat a logókat, amelyeket a Wink a jelen Megállapodás értelmében vagy annak értelmében a Partner általi használatra biztosít);\
-(c) a Partner semmilyen módon nem utánozhatja vagy másolhatja a Wink weboldalakat (általánosságban vagy bizonyos (új) funkciók, oldalak, forma, összetétel vagy szempontok tekintetében), és\
-(d) a Partner köteles saját költségén haladéktalanul eleget tenni a Wink minden olyan ésszerű kérésének, amely a Partnerweboldal(ak) bármely olyan aspektusának (további) módosítására, módosítására vagy kiegészítésére vonatkozik, amely a Wink weboldal bármely eleméhez zavaróan vagy jelentősen hasonlónak tekinthető, vagy annak tekinthető.
+4.2.1 Az Affiliate vállalja, hogy az Affiliate Weboldal(ak) (beleértve az Affiliate Csoporthoz tartozó egyéb weboldalakat is, kivéve a Mikrooldalt) megjelenése és kialakítása jelentősen eltér a Wink Weboldal(aktól), beleértve a színvilágot, betűtípusokat, dizájnt, elrendezést, gombokat, bannereket és funkciókat. Az Affiliate vállalja, hogy nem utánozza vagy másolja a Wink Weboldalakat, és a Wink kérésére saját költségén módosítja az Affiliate Weboldal(ak) megjelenését.
 
-**4.3 Szellemi tulajdonjogok**
+**4.3 Szellemi Tulajdonjogok**
 
-4.3.1 A Partner tudomásul veszi, hogy a Wink és/vagy licencadói megtartják a Wink összes szellemi tulajdonjogához vagy a Wink weboldalon megtestesülő összes jog, tulajdonjog és érdekeltség tulajdonjogát, beleértve (de nem kizárólagosan) a Wink logót, a Tartalmat és a Wink adatokat. A jelen Megállapodás egyetlen rendelkezése sem tekinthető úgy, hogy az ilyen jogokat, tulajdonjogokat vagy érdekeltségeket bármilyen módon átruházná a Partnerre.
+4.3.1 Az Affiliate elismeri, hogy a Wink és/vagy licencadói megtartják a Wink Szellemi Tulajdonjogainak tulajdonjogát, beleértve a Wink logót, a Tartalmat és a Wink Adatokat. A jelen Megállapodás nem ruház át semmilyen ilyen jogot az Affiliate-re.
 
-4.3.2 A Partner nem hozhatja nyilvánosságra, nem integrálhatja, nem foglalhatja bele, nem használhatja fel, nem kombinálhatja, nem hasznosíthatja, nem építheti be és más módon sem teheti elérhetővé a Tartalmat és a Wink Adatokat (vagy azok bármely részét) (a) saját tartalmával és/vagy bármely Wink Versenyző (beleértve a Szálláshely-szolgáltatókat is) tartalmával, vagy (b) (i) saját maga (kivéve a Szolgáltatás és a Rendszer jelen Megállapodás feltételeinek megfelelő engedélyezését), vagy (ii) bármely Wink Versenyző (beleértve a Szálláshely-szolgáltatókat is) számára vagy javára (akár az ilyen fél promóciója, marketingje, hivatkozása, promóciója, reklámozása vagy egyéb érdekében), vagy (c) semmilyen más célra vagy módon és/vagy Harmadik Fél Platformjain vagy azokon keresztül, kivéve, ha azt a jelen Megállapodás kifejezetten előírja. A Partner nem módosíthatja, nem alakíthatja át, nem módosíthatja, nem torzíthatja, nem hozhat létre származékos és/vagy új műveket a Tartalom alapján és/vagy abból származtatva, és a Tartalom nem tartalmazhat (közvetlen vagy közvetett) linket, hivatkozást, átkattintást vagy hivatkozást egy Wink Versenyző (beleértve a Szálláshely-szolgáltatókat is) weboldalára.
+4.3.2 Az Affiliate nem hozhat létre, nem használhat, nem kombinálhat vagy nem tesz elérhetővé a Wink Adatokból vagy Tartalomból származó információkat saját vagy versenytárs tartalommal, kivéve a Szolgáltatás nyújtását. Nem módosíthatja vagy torzíthatja a Tartalmat, és nem tartalmazhat közvetlen vagy közvetett hivatkozást Wink versenytársak weboldalaira.
 
-4.3.3 A Partner köteles (és köteles gondoskodni arról, hogy a Partnercsoporton belüli vállalatok) nem regisztrálhat, szerezhet, használhat, vásárolhat vagy szerezhet meg (sem közvetlenül, sem közvetve) olyan internetes domain nevet, amely a cím részét képező "Wink" névvel vagy annak bármely variációjával, fordításával vagy elgépelésével azonos, megtévesztően vagy lényegében hasonló szót vagy szavakat tartalmaz.
+4.3.3 Az Affiliate és az Affiliate Csoporthoz tartozó társaságok nem regisztrálhatnak, nem szerezhetnek meg, nem használhatnak olyan internetes domain nevet, amely a „Wink” szóval vagy annak változataival azonos vagy összetéveszthetően hasonló.
 
-4.3.4 A jelen Megállapodás megkötésével a Wink (kifejezetten vagy hallgatólagosan) nem mond le és nem veszíti el a Wink Szellemi Tulajdonjogaival kapcsolatos, a Partnerrel vagy más harmadik felekkel szemben törvény, szerződés vagy egyéb módon (most vagy a jövőben) által megillető jogait.
+4.3.4 A Wink nem mond le semmilyen jogáról a Wink Szellemi Tulajdonjogokkal kapcsolatban az Affiliate vagy harmadik felek felé.
 
-**4.4 Promóció és marketing**
+**4.4 Népszerűsítés és marketing**
 
-4.4.1 A Megállapodás időtartama alatt a Partner beleegyezik és szavatolja, hogy nem folytat (és gondoskodik arról, hogy a Partnercsoporton belüli vállalatok ne végezzenek, ne vállaljanak, ne használjanak, ne hajtsanak végre vagy gyakoroljanak (vagy ne bízzanak meg, ne hatalmazzanak fel harmadik feleket ezek elvégzésére, vállalására, használatára, végrehajtására vagy gyakorlására) (a) Fizetett Keresés, SEM vagy SEO tevékenységek, (b) olyan tevékenység, amely tisztességtelenül befolyásolja Harmadik Fél Platformjainak eredményeit, vagy (c) bármilyen más formájú online célzott hirdetés (akár közvetlenül, közvetve, akár Harmadik Fél Platformjain keresztül) a következők tekintetében:
+4.4.1 A Megállapodás időtartama alatt az Affiliate vállalja, hogy nem végez (és nem engedélyezi az Affiliate Csoport tagjainak) Paid Search, SEM vagy SEO tevékenységet, nem befolyásolja tisztességtelenül a Harmadik Fél Platformok eredményeit, és nem folytat más online célzott hirdetést a Szolgáltatásra, Wink Weboldalra, Tartalomra, Wink Adatokra, Wink Márkákra, Szálláshely Szolgáltató Márkákra (kivéve, ha az adott Szálláshely Szolgáltató márka tulajdonosa írásban engedélyezte), vagy az Affiliate Weboldalra vonatkozóan.
 
-1. a Szolgálat;
-2. a Wink weboldal;
-3. a Tartalom;
-4. a Wink-adatok;
-5. a Wink márkák;
-6. a Szálláshely-szolgáltatói Márkák (kivéve, ha az ilyen Szálláshely-szolgáltatói Márka tulajdonosa előzetesen írásbeli hozzájárulását adta a Partnernek az adott Szálláshely-szolgáltatói Márka használatához), vagy
-7. a Partnerweboldal, amennyiben a Fizetett Keresés, SEM, SEO vagy egyéb online célzott hirdetési tevékenységek (a) Szálláshely ajánlatához, foglalásához vagy helyfoglalásához (akár a Szolgáltatáson keresztül, akár más módon), vagy (b) a Szálláshelyre vonatkozó információkhoz kapcsolódnak.
+A 4.4.1 pont (i)–(v) bekezdései a Megállapodás megszűnése után is érvényben maradnak.
 
-A 4.4.1. záradék (i)-től (v) bekezdésig terjedő rendelkezései a jelen Megállapodás megszűnését követően is hatályban maradnak.
+4.4.2 Az Affiliate nem használhatja a T Platformokat a jelen Megállapodásban foglalt kötelezettségek vagy korlátozások megkerülésére.
 
-4.4.2 A Partner nem használhatja fel, nem hasznosíthatja vagy alkalmazhatja más módon, közvetlenül vagy közvetve, a T Platformokat a jelen Megállapodás szerinti kötelezettségeinek, szabályainak vagy korlátozásainak, illetve azon korlátozások vagy szabályainak megkerülésére vagy megkerülésére, amelyekről a Partner ésszerűen elvárhatja, hogy az ilyen cselekmények a jelen Megállapodás hatálya alá tartoznak.
+4.4.3 Az Affiliate nem használhatja a Tartalmat harmadik fél platformokon kívül más célra.
 
-4.4.3 A Partner semmilyen célra és semmilyen módon és/vagy Harmadik Fél Platformjain vagy azokon keresztül nem használhatja fel vagy hasznosíthatja a Tartalmat, kivéve, ha azt a jelen Megállapodás kifejezetten előírja.
+4.4.4 A Megállapodás időtartama alatt (és azt követően a Wink Márkákra és Wink Adatokra vonatkozóan) az Affiliate köteles azonnal eleget tenni a Wink által kért, a 4.4. pontban foglaltak betartására vonatkozó kéréseknek, ellenkező esetben a Wink azonnali hatállyal megszüntetheti a Megállapodást.
 
-4.4.4 A jelen Megállapodás időtartama alatt (és azt követően a Wink Márkák és a Wink Adatok tekintetében) a Partner köteles haladéktalanul teljesíteni a Wink által a jelen 4.4. záradék betartására és betartására vonatkozóan benyújtott bármely kérést, amelynek elmulasztása esetén a Wink azonnali hatállyal felmondhatja a Megállapodást, jogi és szerződéses jogorvoslati lehetőségeinek sérelme nélkül.
+**4.5 Dupla megjelenítés és Cloaking tilalma**
 
-**4.5 Dupla kiszolgálás és álcázás tilos**
+4.5.1 Az Affiliate Weboldalak nem lehetnek (közvetlenül vagy közvetve) a Wink Weboldalakhoz kapcsolódva Dupla megjelenítés vagy hasonló technika miatt, illetve nem sérthetik a Spam Szabályozásokat.
 
-4.5.1 A Partnerwebhelyek nem kapcsolódhatnak (sem közvetlenül, sem közvetve) a Wink weboldalakhoz dupla kiszolgálás vagy hasonló technika vagy módszer, illetve a Spamelésről szóló szabályozásban foglalt egyéb korlátozások miatt.
+4.5.2 Amennyiben a Szolgáltatás a Linken vagy Mikrooldalon keresztül érhető el, az Affiliate nem használhat utazási keresőoldalakat vagy árösszehasonlító oldalakat a Szolgáltatás elérhetővé tételére, kivéve, ha a Wink írásban engedélyezi.
 
-4.5.2 Amennyiben a Szolgáltatás a Linken vagy a Mikro Oldalon keresztül érhető el, a Partner nem teheti elérhetővé a Szolgáltatást (közvetlenül vagy közvetve) utazási kereső oldalakon vagy ár-összehasonlító oldalakon keresztül, és nem használhatja azokat erre a célra, kivéve, ha a Wink írásban másként állapodik meg.
+4.5.3 Az Affiliate nem teheti elérhetővé vagy nem jelenítheti meg a Tartalmat a Harmadik Fél Platformokon olyan módon, amely megtéveszti vagy félrevezeti a szerkesztőket, keresőmotor robotokat vagy hasonló eszközöket, hogy az Affiliate Weboldal magasabb rangsorolást kapjon, mint amilyen egyébként járna.
 
-4.5.3 A Partner nem teheti (közvetlenül vagy közvetve) elérhetővé a Partner weboldal(ak)at, a Tartalmat vagy a Szolgáltatást, és nem mutathatja be a Tartalmat Harmadik Fél Platformoknak azzal a szándékkal vagy céllal, hogy félrevezesse, megtévessze, becsapja, megtévessze vagy becsapja a Harmadik Fél Platformok emberi szerkesztőit, számítógépes keresőmotor-robotjait, webcrawlereit vagy (meta)keresőmotorjait (beleértve a hasonló eszközöket vagy motorokat) annak érdekében, hogy a Partner weboldal(ak) magasabb helyezést vagy megjelenítést kapjanak, ha az egyébként nem jelenne meg, vagy magasabb helyezést érne el, ha nem használna Álcázást vagy hasonló technikát vagy módszert.
+4.5.4 Az Affiliate vállalja, hogy betartja a Spam Szabályozásokat és a Wink kéréseit, és nem támaszthat igényt a Wink ellen ezen szabályok megsértése miatt.
 
-4.5.4 A Partner kötelezettséget vállal és szavatolja, hogy haladéktalanul betartja, betartja és betartja a Spam Szabályzatot (és a Wink által ezzel kapcsolatban benyújtott minden ésszerű kérést) annak érdekében, hogy elkerülje a Wink vagy a Partnerweboldal(ak) általi, a Partnerweboldal(ak)ra vonatkozó szabályzatok megsértését. A félreértések elkerülése végett a Partner e tekintetben semmilyen jogot nem érvényesíthet a Winkkel szemben, és ezúton lemond minden (védelemhez való) jogról vagy követelésről a Winkkel szemben e tekintetben.
+**4.6 Nem toborzás**
 
-**4.6 Kéregetés tilalma**
-
-A Partner beleegyezik, hogy nem veszi fel a kapcsolatot, nem kér fel és nem fogad el semmilyen Szálláshely-szolgáltatót (i) üzleti partnerként foglalásokhoz vagy foglaláshoz (közvetlenül vagy közvetve) a Partner weboldalán/weboldalain keresztül, (ii) hirdetési felület értékesítéséhez vagy egyéb (online) hirdetési vagy marketing célokra (akár bannereken, kattintásos hirdetéseken, (szöveges) linkeken, felugró ablakokon vagy más módon) a Partner weboldalán/weboldalain, vagy (iii) bármilyen más okból.
+Az Affiliate vállalja, hogy nem lép kapcsolatba, nem toboroz és nem fogad el Szálláshely Szolgáltatót üzleti partnerként foglalásokra, hirdetési vagy marketing célokra az Affiliate Weboldal(akon) keresztül vagy azokon.
 
 **4.7 Hasonló domain nevek**
 
-4.7.1 Abban az esetben, ha a Partner a Wink Márkákhoz (a továbbiakban: „Hasonló Domain Név”) (megtévesztően hasonló) domain nevet használ vagy használ a Partner Weboldal(ak)hoz (a Wink belátása szerint meghatározva), vagy abban az esetben, ha a Partner Hasonló Domain Nevet kíván regisztrálni, megszerezni, használni, megvásárolni vagy megszerezni (a Wink előzetes írásbeli jóváhagyásával), a következők érvényesek. A Partner köteles (és gondoskodnia kell arról, hogy az általa Ellenőrzött vállalatok ne tegyék) közvetlenül vagy közvetve sem:
+4.7.1 Amennyiben az Affiliate rendelkezik vagy használ a Wink Márkákhoz hasonló domain nevet („Hasonló Domain Név”) az Affiliate Weboldal(ak)hoz, vagy ilyen regisztrációját kéri a Wink előzetes írásbeli engedélyével, az Affiliate nem jogosult:
 
-1. licitáljon vagy vásároljon internetes elhelyezési jogokat a Hasonló Domain Névre vagy annak bármely részére vagy hasonlóságaira vonatkozóan bármilyen módon, bármilyen hirdetésében, beleértve, de nem kizárólagosan, az internetes és webes hirdetéseket.\
-   2\. a Hasonló Domain nevet vagy annak bármely részét, illetve hasonló variációit, fordításait vagy elgépeléseit belefoglalni bármely weboldal kódjának metacímkéibe. Ez magában foglalja a metacímet, a metakulcsszavakat vagy a metaleírást.\
-   3\. közvetlenül vagy közvetve harmadik fél platformjairól származó kulcsszavakat vásárolni, beszerezni vagy használni a forgalom Hasonló Domain névre való átirányítása érdekében, és\
-   4\. megvásárolni a Hasonló Domain nevet vagy annak bármely részét, illetve annak bármilyen variációját, fordítását vagy elgépeléseit szöveges linkekben, bannerhirdetésekben, felugró hirdetésekben vagy bármilyen más típusú hirdetésben való felhasználásra, amely kulcsszókampányhoz társítható.
+1. internetes elhelyezési jogokat vásárolni vagy licitálni a Hasonló Domain Név vagy annak részeire bármilyen hirdetésben;  
+2. a Hasonló Domain Nevet vagy annak részeit, illetve hasonló változatait meta tagekben használni;  
+3. kulcsszavakat vásárolni harmadik fél platformokon a forgalom átirányítására a Hasonló Domain Névhez;  
+4. a Hasonló Domain Nevet vagy annak részeit bármilyen hirdetésben használni, amely kulcsszó kampányhoz kapcsolódik.
 
-4.7.2 A Partnerweboldalon kívüli Hasonló Domainnevek tekintetében a Felek megállapodtak abban, hogy (i) minden ilyen Hasonló Domainnév közvetlenül kapcsolódik a Partnerweboldalhoz közvetlen átirányítás útján, és semmilyen célból nem lesz aktívan elérhető vagy online, és (ii) a Partner (sem a Kapcsolódó Csoport) semmilyen módon (online vagy offline) nem forgalmazhatja, népszerűsítheti, idegenítheti el, értékesítheti, kínálhatja, hirdetheti, (al)licencelheti, nem teheti elérhetővé, nem engedélyezheti a hozzáférést, nem hivatkozhat rájuk, nem teheti közzé és nem terjesztheti a Hasonló Domainneveket.
+4.7.2 A Hasonló Domain Nevek, amelyek nem az Affiliate Weboldal részei, közvetlen átirányítással kapcsolódnak az Affiliate Weboldalhoz, és az Affiliate vagy az Affiliate Csoport nem népszerűsítheti, nem értékesítheti vagy nem teszi elérhetővé azokat.
 
-**4.8 Ár-összehasonlítás**
+**4.8 Árösszehasonlítás**
 
-4.8.1 Abban az esetben, ha a Partner Ár-összehasonlítást kínál egy(ek)en a Partnerpartneri regisztrációs űrlapon meghatározottak szerint, a Partner az adott Partnerweboldal(ak)on kizárólag a Wink weboldalán elérhetővé tett Szálláshely-szolgáltatók ár- és elérhetőségi adataihoz (együttesen: „Árak és Elérhetőségi Adatok”) férhet hozzá a Wink webszervereihez való közvetlen kapcsolaton (azaz JSON-kapcsolaton keresztül) keresztül. Az Árak és Elérhetőségi Adatok a Wink által közzétett további feltételeknek megfelelően lesznek elérhetők.
+4.8.1 Amennyiben az Affiliate Árösszehasonlítást kínál az Affiliate Partner Regisztrációs Űrlapban megadott Affiliate Weboldalon, kizárólag hozzáférést kap a releváns Szálláshely Szolgáltatók ár- és elérhetőségi adataihoz a Wink Weboldalról JSON kapcsolaton keresztül, a Wink által meghatározott feltételek szerint.
 
-4.8.2 Az Árak és Elérhetőségi Adatok nem tartalmazzák, és a Partner nem jogosult felhasználni, másolni, hivatkozni vagy az Ár-összehasonlítást tartalmazó weboldalain feltüntetni a Wink Weboldalról vagy webszerverekről, illetve olyan harmadik féltől (weboldalról), amellyel a Wink szerződéses kapcsolatban áll a Tartalom biztosítására, származó Wink Adatokat és Tartalmat.
+4.8.2 Az ár- és elérhetőségi adatok nem tartalmazzák, és az Affiliate nem használhatja a Wink Adatokat vagy Tartalmat a Wink Weboldalról vagy harmadik fél szervereiről.
 
-4.8.3 Amennyiben a Partner Ár-összehasonlítást kínál, a Partner biztosítja, hogy a Wink összes versenytársa (beleértve az összes Szálláshely-szolgáltatót vagy foglalási központot, közvetítőt vagy ügynököt (együttesen a „Harmadik Fél Szolgáltatók”)) által a Partner Weboldalán elérhetővé tett szobaárak pontosak, helyesek és nem félrevezetőek vagy megtévesztőek a Harmadik Fél Szolgáltatók Weboldalán/Weboldalain elérhető tényleges ár(ak)hoz képest.
+4.8.3 Az Affiliate biztosítja, hogy az árak, amelyeket a Wink Versenytársak vagy harmadik fél szolgáltatók kínálnak az Affiliate Weboldalon, pontosak és nem félrevezetőek a harmadik fél weboldalán elérhető árakhoz képest.
 
-4.8.4 A Wink legalább annyira kedvező bánásmódban részesül a Partner Ár-összehasonlító weboldalán (a rangsorolás, a megjelenítés és a konverziós lehetőségek tekintetében), mint a legjobb konverziót biztosító (x) Wink Versenytársak, (y) Szálláshely-szolgáltatók vagy (z) bármely foglalási vagy helyfoglalási központ, ügynök vagy közvetítő, amelyet a Wink Versenytárs vagy Szálláshely-szolgáltatók kezelnek, tulajdonolnak vagy ellenőriznek, és amelyek a Partner Ár-összehasonlító weboldalán érhetők el.
+4.8.4 A Wink legalább olyan kedvező bánásmódban részesül az Affiliate Árösszehasonlító weboldalán, mint a legjobb konverziót elérő Wink Versenytársak, Szálláshely Szolgáltatók vagy foglalási központok.
 
-**4.9 Bizonyítási teher, megfelelés, tiltó intézkedés és további jogorvoslatok**
+**4.9 Bizonyítási teher, megfelelés, végrehajtás és további jogorvoslatok**
 
-4.9.1 A Felek megállapodnak és tudomásul veszik, hogy a Partner jelen 4. záradék szerinti kötelezettségeinek (állítólagos vagy fenyegető) megsértése vagy megszegése esetén a bizonyítási teher a Partnert terheli. Más szóval, a Wink a feltételezés előnyét élvezi, és a Partnernek elegendő és kielégítő bizonyítékot (azaz meggyőző és cáfolhatatlan) kell szolgáltatnia a követelés védelméhez vagy elutasításához.
+4.9.1 A Felek megállapodnak, hogy az Affiliate kötelezettségeinek megsértése esetén a bizonyítási teher az Affiliate-en van.
 
-4.9.2 Abban az esetben, ha egy Wink weboldal, kampány vagy hirdetés kapcsolódik a Partner weboldal(ak)hoz vagy a Partner kampányához vagy hirdetéséhez (vagy fordítva), vagy ha a Partner (fenyegetően) megsérti a Spam Szabályzatot, a Partner köteles (i) haladéktalanul értesíteni a Winket az ilyen (fenyegetően) megsértésről, miután tudomást szerzett az ilyen megsértésről, és (ii) a Wink első kérésére haladéktalanul végrehajtani, betartani és betartani a jelen Megállapodásban foglalt vagy a Wink által kért összes feltételt, korlátozást és tilalmat. A Partner köteles haladéktalanul felvenni a kapcsolatot minden Harmadik Fél Platformmal vagy harmadik fél ügynökséggel, és módosítani a Partner weboldal(ak)at és az összes hirdetési szöveget, címet, leírást, kulcsszót, URL-t, szöveges linket, hirdetést, beleértve az összes metacímkét (metacímek, metakulcsszavak és metaleírások), hogy megfeleljenek a jelen Megállapodás feltételeinek, vagy a Wink kérésének.
+4.9.2 Ha a Wink Weboldal vagy kampány kapcsolódik az Affiliate Weboldalhoz, vagy az Affiliate megsérti a Spam Szabályozásokat, az Affiliate köteles haladéktalanul értesíteni a Wink-et és végrehajtani a Wink által kért módosításokat.
 
-4.9.3 A Partner elfogadja és tudomásul veszi, hogy a Wink által benyújtott ésszerű kérések teljesítéséig vagy végrehajtásáig, illetve abban az esetben, ha a Partner nem teljesíti haladéktalanul a Wink jelen 4. záradék szerinti vagy az alapján benyújtott összes ilyen kérését, a Wink jogosult a jelen Megállapodás szerinti kötelezettségeinek (beleértve a Szolgáltatás, a Rendszer és a Wink Adatok felajánlását) elhalasztására vagy felfüggesztésére, vagy a jelen Megállapodás azonnali megszüntetésére, a Wink jelen Megállapodás szerinti vagy egyéb jogainak sérelme nélkül.
+4.9.3 Az Affiliate késedelmes vagy nem megfelelő megfelelése esetén a Wink jogosult a Megállapodás szerinti kötelezettségeit felfüggeszteni vagy a Megállapodást azonnali hatállyal megszüntetni.
 
-4.9.4 A jelen 4. záradékban foglalt szerződések, vállalások, korlátozások, kötelezettségek és/vagy szavatosságok Partner általi vagy neki tulajdonítható megszegése esetén a Wink jogosult a következő intézkedésekre és jogokra, függetlenül a törvény vagy szerződés által rendelkezésre álló, konkrét teljesítésre, kártérítésre vagy tiltó vagy méltányos jogorvoslatra vonatkozó jogorvoslatoktól és intézkedésektől:\
-(a) a jelen Megállapodás szerinti (fizetési) kötelezettségeinek felfüggesztése vagy a jelen Megállapodás azonnali hatállyal történő felmondása a Partner előzetes értesítése nélkül, és a Wink jelen Megállapodás szerinti vagy egyéb jogainak sérelme nélkül;\
-(b) A Wink jogosult a Jutalékot 0%-ra csökkenteni minden olyan foglalás és/vagy minden egyes Megvalósult Tranzakció esetében, amelyet az adott időszak alatt végeztek el, amennyiben a Partner megszegi a 4. záradékban foglalt vonatkozó kötelezettségeket, vagy nem orvosolta teljes mértékben a 4. záradékban foglalt vonatkozó kötelezettségek megszegését;\
-(c) A Wink fenntartja a jogot, hogy a Partnertől a Wink által a jelen Megállapodás alapján kifizetett Jutalék visszatérítését követelje; és\
-(d) Hasonló Domainnév használata (vagy a Partner által a Wink tulajdonában lévő vagy általa használt (megtévesztően) hasonló domainnévvel rendelkező weboldal tulajdonjoga vagy regisztrációja), valamint a 4. záradék ismételt és/vagy lényeges megsértése esetén a Partner köteles a Hasonló Domainnevet (beleértve a (megtévesztően) hasonló domainnévvel rendelkező weboldal(ak)at is) a Wink részére és nevére átruházni, hozzárendelni és regisztrálni a Wink által választott domainnév-regisztrátor cégen keresztül, a jogsértés bekövetkeztétől számított 20 munkanapon belül. Abban az esetben, ha a Partner nem működik együtt és nem hajtja végre a vonatkozó domainnevek átruházását, hozzárendelését és átruházását, a Partner ezennel visszavonhatatlanul és feltétel nélkül felhatalmazza, felhatalmazza és meghatalmazza a Winket és annak javára, hogy aláírjon és/vagy végrehajtson minden olyan dokumentumot, amely a domainnevek Wink részére és nevére történő hozzárendelésével, regisztrációjával, hozzárendelésével és átruházásával kapcsolatban szükséges vagy hasznos.
+4.9.4 Az Affiliate szerződésszegése esetén a Wink jogosult a következő intézkedésekre:  
+(a) azonnali hatályú felfüggesztés vagy megszüntetés;  
+(b) a jutalék 0%-ra csökkentése az érintett időszakra;  
+(c) a kifizetett jutalék visszakövetelése;  
+(d) hasonló domain név esetén az átadás, átruházás és regisztráció Wink nevére 20 munkanapon belül, szükség esetén meghatalmazás aláírására.
 
-**5. Bizottság**
+**5. Jutalék**
 
-5.1 A Wink jutalékot fizet a Partnernek, amely a Megvalósult Tranzakció által generált foglalási érték Szálláshely-szolgáltató által meghatározott százaléka. A Wink egy harmadik fél fizetési közvetítő szolgáltatásait veszi igénybe a befizetésekhez és kifizetésekhez. A fizetési feltételeket külön megállapodás tartalmazza.
+5.1 A Wink jutalékot fizet az Affiliate-nek, amelyet a Szálláshely Szolgáltató határoz meg a Megvalósult Tranzakciók foglalási értékének százalékában. A Wink harmadik fél Fizetési Közvetítő szolgáltatásait veszi igénybe a Pay-in és Pay-out tranzakciókhoz. A fizetési feltételeket külön megállapodás szabályozza.
 
-5.2 A Partneri Jutalék Százalékát vagy ACP-t a Szálláshely-szolgáltató határozza meg. Az alapértelmezett ACP 10%, de a felek az 1.2.3. záradékban foglaltak szerint ettől eltérő százalékban is megállapodhatnak.
+5.2 Az Affiliate Jutalék Százalékot (ACP) a Szálláshely Szolgáltató határozza meg. Alapértelmezett ACP 10%, de a felek ettől eltérően is megállapodhatnak.
 
-5.3 A jutalékot a következő képlet szerint fizetik ki:
+5.3 A jutalék számítása: 
 
-Jutalék = BV \* ACP\
-Nettó kifizetett jutalék (kifizetés) = Jutalék - PSF - BF
+Jutalék = Foglalási Érték × ACP  
+Nettó Jutalék (kifizetés) = Jutalék – Fizetési Szolgáltatási Díj – Foglalási Díj
 
-**„BV”**&#x61; Foglalási Értéket jelenti\
-**„AKCS”**&#x61; Partneri Jutalék Százalékát jelenti\
-**„BF”**&#x46;oglalási díjat (1,5%) jelent\
-**„PSF”**&#x66;izetési szolgáltatási díjakat (4%) jelent
+**„Foglalási Érték”** a foglalás értéke  
+**„ACP”** az Affiliate Jutalék Százalék  
+**„Foglalási Díj”** 1,5%  
+**„Fizetési Szolgáltatási Díj”** 4%
 
-5.4 A Wink nyomon követi az összes tranzakciót, és kereskedelmileg ésszerű erőfeszítéseket tesz annak biztosítására, hogy minden Megvalósult Tranzakció nyomon követésre, jelentésre és kifizetésre kerüljön. A Wink nyilvántartása azonban végleges, és a Partner nem jogosult kártérítésre az elmaradt bevételért vagy károkért abban az esetben, ha a Wink nem követi nyomon pontosan vagy nem jelenti a Partneri Távozásokat, kivéve a Wink súlyos kötelességszegése vagy csalárd magatartása esetén. Ez utóbbi esetek kivételével a Partner kizárólagos jogorvoslati lehetősége a jelen Megállapodás felmondása és a programban való részvételének befejezése.
+5.4 A Wink nyomon követi az összes tranzakciót, és kereskedelmileg ésszerű erőfeszítéseket tesz a Megvalósult Tranzakciók pontos nyilvántartására és kifizetésére. Az Affiliate nem jogosult kártérítésre, ha a Wink hibázik, kivéve súlyos gondatlanság vagy csalás esetén. Ilyen esetben az Affiliate kizárólag a Megállapodás megszüntetésére jogosult.
 
-5.5 A meghatározott nettó jutalék az egyetlen kompenzáció, amelyre a Partner a jelen Megállapodás értelmében jogosult. A Partner semmilyen más juttatásra nem jogosult. A Wink felelőssége a nettó jutalék kifizetések pontosságának ellenőrzése a kifizetés előtt, és a Partner felelőssége, hogy minden nettó jutalék kifizetést kézhezvételkor ellenőrizzen, és haladéktalanul jelezze a feltételezett hibákat. A fizetési határidőt követő kilencven (90) naptári napon belül egyik fél sem nyújthat be túlfizetésre vagy alulfizetésre vonatkozó igényt. Minden megrendelést a Wink a foglalási kérelem benyújtásakor érvényes szabályzatainak megfelelően elfogad. A Wink szabályzata előzetes értesítés nélkül változhat.
+5.5 A Nettó Jutalék az Affiliate kizárólagos ellenszolgáltatása. Az Affiliate nem jogosult más juttatásokra. A Wink felelős a kifizetések pontosságának ellenőrzéséért, az Affiliate pedig köteles a kifizetések átvétele után az esetleges hibákat haladéktalanul jelezni. Túl- vagy alulfizetésre vonatkozó igény 90 naptári napon túl nem érvényesíthető. A foglalásokat a Wink elfogadási szabályzata szerint kezelik, amely előzetes értesítés nélkül változhat.
 
-5.6 A Wink kereskedelmileg ésszerű erőfeszítéseket tesz a jelen Megállapodás hatálya alá tartozó összes tranzakció ellenőrzésére. A Wink hozzáférést biztosít a Partnernek az elemzésekhez és egy olyan irányítópulthoz, amely összefoglalja az összes közelgő és lejárt foglalást. A Partner hozzáfér a fizetési jelentésekhez is, amelyek megjelenítik a várható bevételeket és a fizetési előzményeket. Amennyiben a Wink nem vezet pontos nyilvántartást vagy nem ellenőrzi a folyamatot, a Partner kizárólagos jogorvoslati lehetősége a jelen Megállapodás felmondása és a programban való részvételének befejezése.
+5.6 A Wink kereskedelmileg ésszerű erőfeszítéseket tesz a tranzakciók auditálására, és az Affiliate számára elemzéseket és irányítópultot biztosít a foglalások és kifizetések nyomon követésére. Hibás nyilvántartás vagy auditálás esetén az Affiliate kizárólag a Megállapodás megszüntetésére jogosult.
 
-**6. Nyilatkozatok és szavatosságok.**
+**6. Nyilatkozatok és garanciák**
 
-**6.1 Kapcsolódó vállalkozások garanciái**
+**6.1 Affiliate garanciák**
 
-A Partner ezennel kijelenti és szavatolja a Wink felé, hogy a jelen Szerződés időtartama alatt:\
-(i) a Partner rendelkezik minden szükséges joggal, tulajdonjoggal, hatalommal és felhatalmazással a Partner weboldal(ak) (beleértve a vonatkozó domain nevet/doménneveket) tulajdonlásához, üzemeltetéséhez és használatához, valamint a Link, a Mikro weboldal vagy a Kapcsolat (adott esetben) Partner weboldal(ak)on való feltüntetéséhez;\
-(ii) a Partnerweboldal(ak) nem (a) alkalmazhat Black Hat taktikát, sértheti a Spamelés Szabályzatát, a közrendet és az erkölcsöt, vagy (b) nem tartalmazhat vagy jeleníthet meg semmilyen nem megfelelő, helytelen vagy jogellenes tartalmat, hivatkozást, anyagot, információt, linket vagy bannert (pl. pornográfiával, rasszizmussal és hasonlókkal kapcsolatban), rágalmazó kijelentéseket, harmadik felek magánéletét sértő, sértő vagy obszcén elemeket, (c) másolhatja vagy hasonlíthat a Wink Weboldal vagy a Wink bármely leányvállalatának vagy kapcsolt vállalkozásának weboldalának dizájnjára, domainneveire (beleértve az aldoméneket is), megjelenésére és hangulatára, vagy nem keltheti azt a benyomást, hogy a Wink Weboldal vagy a Wink bármely leányvállalatának weboldalának része; (d) nem támogathat faji, nemi, vallási, nemzetiségi, fogyatékossági, szexuális irányultsági vagy életkori alapú diszkriminációt; (e) illegális tevékenységeket népszerűsíthet vagy vehet részt bennük; (f) sértheti harmadik felek szellemi tulajdonjogait; (g) nem tartalmazhat vagy népszerűsíthet megtévesztő információkat, illetve nem népszerűsíthet szerencsejátékot; vagy (h) egyéb módon nem megfelelő jellegű lehet. A fent említett rendelkezések bármilyen megsértése a Partner programból való azonnali kizárását és a fennálló tartozások elvesztését eredményezheti.\
-(iii) A Partner nem alkalmazhat semmilyen ragadozó hirdetési módszert, amelynek célja a Wink vagy bármely kapcsolt vállalkozása tulajdonában lévő vagy üzemeltetett weboldalakról származó forgalom generálása, beleértve korlátozás nélkül a Wink.com-ot (és annak összes helyi verzióját, bármilyen legfelső szintű domainnel), a priceline.com-ot, a rentalcars.com-ot (és annak összes helyi verzióját, bármilyen legfelső szintű domainnel), a www.booking.com-ot, a www.kayak.com-ot, a Wink-et (és annak összes helyi verzióját, bármilyen legfelső szintű domainnel), a www.opentable.com-ot (és annak összes helyi verzióját, bármilyen legfelső szintű domainnel), valamint a Wink által időről időre bejelentett egyéb weboldalakat. Ezenkívül a Partner megtiltja a Partner által ellenőrzött weboldalak számára az ilyen ragadozó hirdetési módszereket. A ragadozó hirdetés minden olyan módszer, amely linkeket vagy bannereket hoz létre vagy helyez el a weboldalakon, böngészőablakokat jelenít meg, vagy bármilyen olyan módszert jelent, amelyet egy weboldalról származó forgalom generálására találtak ki a weboldal tulajdonosának tudta, engedélye és részvétele nélkül. Ilyenek például, de nem kizárólagosan, a kulcsszó-elemző böngészőbővítmények, mint például a Text Enhance, a TopText és a +Surf, a bannerhelyettesítő technológia, mint például a Gator, a weboldaltól független böngészőspawnolási technológia, valamint a Wink Marks használata keresőmotor-hirdetési szövegekben (pl. Google AdWords, Yahoo! Search Marketing,...) vagy azzal egyenértékű, és általánosságban minden olyan módszer, amely félrevezetően azt a benyomást keltheti a potenciális ügyfelekben, hogy egy Wink weboldalra irányítják őket. A fent említett rendelkezések bármilyen megsértése a Partner programból való azonnali kizárását és a fennálló tartozások elvesztését eredményezheti.\
-(iv) a Kapcsolódó Vállalkozás rendelkezik és eleget tett minden olyan engedélynek, licencnek és egyéb kormányzati felhatalmazásnak, amely szükséges a működésének és üzleti tevékenységének folytatásához, lebonyolításához és fenntartásához, és\
-(v) a Kapcsolódó vállalkozás minden szempontból független vállalkozó, és felelős saját adóiért, társadalombiztosítási járulékaiért és minden egyéb adózással kapcsolatos ügyért.
+Az Affiliate kijelenti és szavatolja a Wink felé, hogy a Megállapodás időtartama alatt:  
+(i) rendelkezik minden szükséges joggal, hatáskörrel és jogosultsággal az Affiliate Weboldal(ak) működtetésére és a Link, Mikrooldal vagy Kapcsolat elhelyezésére;  
+(ii) az Affiliate Weboldal(ak) nem tartalmaznak tiltott tartalmat, nem sértik a spam szabályokat, nem tartalmaznak jogellenes vagy sértő anyagot, nem utánozzák a Wink Weboldalakat, nem támogatnak diszkriminációt vagy illegális tevékenységet, nem sértik harmadik fél szellemi tulajdonjogait, nem tartalmaznak megtévesztő információkat vagy szerencsejátékot;  
+(iii) nem alkalmaznak ragadozó hirdetési módszereket, amelyek forgalmat irányítanak a Wink vagy kapcsolt weboldalak rovására, és megakadályozzák az ilyen módszerek használatát az általuk irányított weboldalakon;  
+(iv) rendelkezik minden szükséges engedéllyel és hatósági jóváhagyással;  
+(v) független vállalkozóként működik, és maga felel adózásáért és társadalombiztosítási kötelezettségeiért.
 
-**6.2 A felek szavatossága és kötelezettségvállalásai**
+**6.2 Felek garanciái**
 
-6.2.1 Mindkét Fél kijelenti és szavatolja a másik Félnek, hogy a jelen Megállapodás időtartama alatt:\
-(i) teljes körű vállalati hatalommal és felhatalmazással rendelkezik a jelen Megállapodás szerinti kötelezettségeinek megkötésére és teljesítésére;\
-(ii) megtette a jelen Megállapodás aláírásának és teljesítésének engedélyezéséhez szükséges összes vállalati intézkedést;\
-(iii) ez a Megállapodás jogilag érvényes és kötelező érvényű kötelezettségeket keletkeztet az adott Fél számára a feltételeivel összhangban.
+6.2.1 Mindkét Fél kijelenti és szavatolja, hogy a Megállapodás időtartama alatt:  
+(i) teljes jogkörrel rendelkezik a Megállapodás megkötésére és teljesítésére;  
+(ii) megtette a szükséges vállalati lépéseket a Megállapodás aláírására és teljesítésére;  
+(iii) a Megállapodás jogilag érvényes és kötelező erejű.
 
-6.2.2 Mindkét Fél köteles minden kereskedelmileg ésszerű erőfeszítést megtenni weboldala(i) védelme és biztosítása érdekében.
+6.2.2 Mindkét Fél kereskedelmileg ésszerű erőfeszítéseket tesz weboldalai védelmére.
 
-6.2.3 A Partner kijelenti és szavatolja, hogy nem teljesít és nem ajánl fel semmilyen kifizetést, ajándékot vagy értékkel bíró dolog átruházását: (i) kormánytisztviselő vagy kormányzati alkalmazott (beleértve az állami tulajdonú szervezetek vagy vállalatok alkalmazottait is) részére vagy használatára vagy javára; vagy (ii) politikai pártnak (beleértve annak tisztviselőit vagy jelöltjeit is); (iii) kereskedelmi pártnak, személynek vagy szervezetnek; vagy (iv) közvetítőnek a fentiek bármelyikének történő kifizetés céljából annak érdekében, hogy a kedvezményezettet a jogos kötelezettségét sértő cselekmény megtételére vagy elmulasztására, üzleti tevékenység megszerzésére vagy megtartására, illetve jogtalan előny biztosítására ösztönözze; vagy hogy a Wink nevében vagy a Wink érdekeit szolgáló, a jelen Megállapodásban foglalt tevékenységekhez kapcsolódó releváns funkció vagy tevékenység nem megfelelő végrehajtására ösztönözze. A Partner ezen rendelkezésének megsértése feljogosítja a Winket a jelen Megállapodás azonnali hatállyal történő felmondására.
+6.2.3 Az Affiliate kijelenti, hogy nem fizet vagy ajánl fel fizetést, ajándékot vagy értéket kormányzati tisztviselőknek, politikai pártoknak, kereskedelmi feleknek vagy közvetítőknek jogellenes előnyök megszerzése érdekében. Ezen kötelezettség megsértése azonnali felmondást von maga után.
 
-6.2.4 A fenti 6.2.3. pontban foglaltak betartásának megállapítása céljából a Wink jogosult saját költségére helyszíni ellenőrzést és auditot végezni a Partner összes vonatkozó számviteli és értékesítési könyvében, nyilvántartásában, megállapodásában, létesítményében, számítógépes rendszerében, szerződésében és dokumentumában a Partner irodáiban a szokásos munkaidő alatt és olyan módon, hogy az ne zavarja indokolatlanul a Partner szokásos üzleti tevékenységét. Az ilyen auditokat a jelen dokumentum értelmében tizenkét (12) havonta kétszernél gyakrabban nem szabad elvégezni.
+6.2.4 A Wink jogosult az Affiliate irodáiban auditot végezni a 6.2.3 pont szerinti megfelelés ellenőrzésére, évente legfeljebb kétszer.
 
-**6.3 Jogi nyilatkozat**
+**6.3 Felelősség kizárása**
 
-6.3.1 A jelen Megállapodásban kifejezetten foglalt eltérő rendelkezés hiányában egyik Fél sem tesz semmilyen kifejezett vagy hallgatólagos nyilatkozatot vagy garanciát a jelen Megállapodás tárgyával kapcsolatban, és ezennel elutasít minden hallgatólagos garanciát, beleértve az ilyen tárgy forgalmazhatóságára vagy egy adott célra való alkalmasságára vonatkozó összes hallgatólagos garanciát. A Wink a Szolgáltatást „ahogy van” és „ahogy elérhető” alapon nyújtja, és nem garantálja az üzemidőt.
+6.3.1 A Megállapodásban kifejezetten nem vállalt garanciákon túl a Wink nem vállal semmilyen kifejezett vagy hallgatólagos garanciát, és a Szolgáltatást „ahogy van” és „ahogy elérhető” alapon nyújtja, nem garantálja a folyamatos elérhetőséget.
 
-6.3.2 Mindkét Fél elismeri az internet használatából adódó nehézségeket, különösen a változó sebességeket és a hálózati torlódást, amelyek megszakításokat és nehézségeket okozhatnak a weboldalak elérésében. Mindkét Fél kizár minden felelősséget a másik Féllel szemben, amely a Weboldalak, az Eladói Portál, a Rendszer és/vagy a Szolgáltatás bármilyen (ideiglenes (ütemezett vagy nem ütemezett) és/vagy részleges vagy teljes) meghibásodásával vagy leállásával (karbantartás, frissítés vagy egyéb okok miatt) kapcsolatos.
+6.3.2 A Felek elfogadják, hogy az internet használata során előfordulhatnak hálózati problémák, amelyek megszakíthatják a hozzáférést a Weboldalakhoz, a Seller Portálhoz, a Rendszerhez vagy a Szolgáltatáshoz, és kizárják egymás felelősségét ezekért.
 
 **7. Kártalanítás és felelősség**
 
 **7.1 Kártalanítás**
 
-A vonatkozó jogszabályok által megengedett legteljesebb mértékben Ön beleegyezik, hogy mentesíti, megvédi (a Wink választása szerint), kártalanítja és mentesíti a Winket és annak összes Szálláshely-szolgáltatóját és leányvállalatát, valamint azok tisztségviselőit, igazgatóit, alkalmazottait és ügynökeit minden olyan követeléssel, felelősséggel, kárral, veszteséggel és költséggel szemben, beleértve korlátozás nélkül az ésszerű jogi és könyvelési díjakat is, amelyek a következőkből erednek, vagy bármilyen módon összefüggésben állnak: (i) a jelen Feltételek Ön általi megszegése; (ii) a Szolgáltatások nem megfelelő használata; (iii) az Ön, vagy a mi mulasztásunk az Ön utasítására az adók pontos bejelentésében, beszedésében vagy befizetésében; vagy (iv) bármely törvény, szabályozás vagy harmadik felek jogainak megsértése.
+A lehető legszélesebb jogi körben az Affiliate vállalja, hogy kártalanítja, védi és mentesíti a Wink-et, annak Szálláshely Szolgáltatóit és leányvállalatait, valamint vezetőiket, alkalmazottaikat és ügynökeit minden olyan követelés, felelősség, kár, veszteség és költség alól, amely a jelen Feltételek megsértéséből, a Szolgáltatások nem megfelelő használatából, adóbevallási hibákból vagy jogszabálysértésekből ered.
 
 **7.2 Maximális felelősség**
 
-Hacsak a jelen Megállapodás másként nem rendelkezik, a Fél maximális felelőssége a másik Fél által a jelen Megállapodás alapján vagy azzal összefüggésben egy évben az adott Féllel szemben támasztott összes követelésért nem haladhatja meg az adott Fél által az előző 6 hónapban kapott vagy kifizetett összes jutalékot vagy 10 000 USD-t (amelyik magasabb), kivéve a Kártalanító Fél csalása vagy szándékos kötelességszegése esetén, amely esetben a felelősség korlátozása nem alkalmazandó az adott felelős Félre.
+A Megállapodásban foglaltaktól eltérően a Felek felelőssége egy év alatt nem haladhatja meg az előző 6 hónapban kapott vagy fizetett jutalék összegét vagy 10 000 USD-t (amelyik magasabb), kivéve csalás vagy szándékos károkozás esetén.
 
-**7.3 Harmadik fél követelése**
+**7.3 Harmadik fél igény**
 
-Harmadik fél által benyújtott követelés esetén a kártalanított Fél haladéktalanul értesíti a másik Felet, a Felek pedig jóhiszeműen járnak el, és kereskedelmileg ésszerű erőfeszítéseket tesznek annak érdekében, hogy konzultáljanak, együttműködjenek és segítsék egymást az ilyen követelés elleni védekezésben és/vagy rendezésében, míg a kártalanító Fél jogosult átvenni a követelést, és vállalni a védelmet és a rendezést (a kártalanított Féllel konzultálva és egyetértésben, mindkét Fél érdekeinek kellő figyelembevételével), és egyik Fél sem tehet semmilyen elismerést, nem nyújthat be semmilyen iratot, nem járulhat hozzá semmilyen ítélet meghozatalához, és nem köthet semmilyen kompromisszumot vagy egyezséget a másik Fél előzetes írásbeli hozzájárulása nélkül (amelyet indokolatlanul nem lehet megtagadni, késleltetni vagy feltételekhez kötni).
+Harmadik fél igény esetén a Felek kötelesek jóhiszeműen együttműködni a védelemben vagy rendezésben, és az érintett Fél nem tehet beismerő nyilatkozatot vagy köt megállapodást a másik Fél előzetes írásbeli hozzájárulása nélkül.
 
-**7.4 Következményes károk stb. elengedése**
+**7.4 Közvetett károk kizárása**
 
-Semmilyen esetben sem tehető felelőssé egyik Fél sem a másik Féllel szemben semmilyen termeléskiesésért, profitkiesésért, bevételkiesésért, szerződéskiesésért, jó hírnév vagy goodwill elvesztéséért vagy károsodásáért, követeléskiesésért, illetve semmilyen közvetett, különleges, büntető jellegű, véletlenszerű vagy következményes kárért vagy veszteségért, függetlenül attól, hogy az ilyen károkat szerződésszegés, szerződésen kívüli károkozás vagy egyéb okból eredően állítják-e. Minden ilyen kárról és veszteségről ezennel kifejezetten lemondunk és kizárunk.
+A Felek nem felelősek egymásnak termeléskiesésért, profitvesztésért, bevételkiesésért, szerződésvesztésért, jó hírnév károsodásáért vagy bármilyen közvetett, különleges, büntető vagy következményes kárért.
 
-**7.5 Kártérítési kötbér**
+**7.5 Előre meghatározott kártérítés**
 
-A jelen Megállapodás más részeiben foglaltak sérelme nélkül mind a Partner, mind a Wink egyetért abban, hogy a jelen Megállapodás 4. és 10. záradékában foglalt szellemi tulajdonra és titoktartásra vonatkozó rendelkezések lényeges megsértése által okozott tényleges károk összegének megállapítása kivitelezhetetlen és nehéz lehet. Ezért a felek megállapodnak abban, hogy abban az esetben, ha bebizonyosodik, hogy a Partner megsértette ezeket a rendelkezéseket, a Partner köteles a Winknek huszonötezer amerikai dollárt (25 000 USD) kötbérként fizetni minden egyes jogsértésért. A Partner és a Wink továbbá megállapodnak abban, hogy ez a kötbérre vonatkozó rendelkezés ésszerű kártérítést jelent a Wink által az ilyen jogsértés miatt elszenvedett kezdeti veszteségért. A Partner azt is elfogadja, hogy a jelen rendelkezés egyetlen rendelkezése sem korlátozza a Wink azon jogát, hogy tiltó intézkedést és egyéb megfelelő jogorvoslatot kérjen. Ez a rendelkezés nem sérti a Wink azon jogát sem, hogy további és/vagy halmozott kártérítést követeljen a jelen Megállapodás ezen rendelkezésének (amennyiben a kár bizonyíthatóan meghaladja a kötbér összegét) vagy bármely más rendelkezésének megszegése esetén.
+Az Affiliate és a Wink megállapodnak, hogy a 4. és 10. pontokban foglalt szellemi tulajdon és titoktartási rendelkezések megsértése esetén az Affiliate 25 000 USD előre meghatározott kártérítést fizet minden egyes megsértésért. Ez nem korlátozza a Wink jogát további jogorvoslatokra.
 
-8. **Módosítás, időtartam és megszűnés**
+**8. Módosítás, időtartam és megszüntetés**
 
-**8.1 Módosítás.**
+**8.1 Módosítás**
 
-Hacsak a vonatkozó jogszabályok másként nem rendelkeznek, a Wink bármikor módosíthatja ezeket a Feltételeket. Amennyiben lényeges változtatásokat hajtunk végre a jelen Feltételekben, a módosított Feltételeket közzétesszük a Wink Platformon, és frissítjük a „Utolsó frissítés” dátumát a Feltételek tetején. Ha Önt érinti a módosítás, a módosításokról legalább harminc (30) nappal azok hatálybalépése előtt értesítjük Önt. Ha Ön nem mondja fel a megállapodást a módosított Feltételek hatálybalépése előtt, a Szolgáltatások további használata a módosított Feltételek bármely módosításának elfogadását jelenti.
+A Wink jogosult a Feltételeket bármikor módosítani. Jelentős változás esetén a módosított Feltételeket a Wink Platformon közzéteszi, és legalább 30 nappal a hatálybalépés előtt értesíti az érintetteket. Ha az Affiliate nem mondja fel a megállapodást a hatálybalépés előtt, a módosításokat elfogadottnak kell tekinteni.
 
-**8.2 Kifejezés.**
+**8.2 Időtartam**
 
-Eltérő megállapodás hiányában ez a megállapodás a megkötés napján határozatlan időre lép hatályba.
+A Megállapodás határozatlan időre jön létre, hacsak másként nem állapodnak meg.
 
-8.3.1 Bármelyik Fél jogosult a jelen Megállapodást bármikor és bármilyen okból azonnali hatállyal felmondani a másik Félnek küldött írásbeli értesítéssel.
+8.3.1 Bármely Fél azonnali hatállyal, bármikor, bármilyen okból írásban felmondhatja a Megállapodást.
 
-8.3.2 Bármelyik Fél jogosult a jelen Megállapodást azonnali hatállyal és a szerződésszegésről szóló értesítés nélkül felmondani vagy felfüggeszteni a másik Féllel szemben a következő esetekben:\
-(a) a másik Fél által a jelen Megállapodás bármely rendelkezésének lényeges megszegése;\
-(b) (csődeljárás vagy fizetésfelfüggesztés (vagy hasonló intézkedés) iránti kérelem benyújtása) a másik Féllel szemben, vagy\
-(c) a másik Fél feletti Ellenőrzés (közvetlen vagy közvetett) megváltozása.
+8.3.2 Azonnali hatályú felmondás vagy felfüggesztés lehetséges, ha a másik Fél súlyosan megszegi a Megállapodást, csődöt jelent vagy fizetésképtelenné válik, vagy irányítása megváltozik.
 
-8.3.3 A Wink fenntartja a jogot, hogy a jelen Szerződést előzetes értesítés nélkül felmondja abban az esetben, ha 6 egymást követő hónapon belül nem történt Megvalósult Tranzakció.
+8.3.3 A Wink jogosult a Megállapodást azonnali hatállyal megszüntetni, ha 6 egymást követő hónapban nem történt Megvalósult Tranzakció.
 
-8.3.4 A jelen Szerződés megszűnését követően a Wink továbbra is fizeti a Partnernek a fennálló Jutalékokat a megszűnés dátumát követő 3 hónapig, feltéve, hogy a Wink rendelkezik a Partner helyes elérhetőségeivel és banki adataival ebben az időszakban. Amennyiben a Partner nem igényli a kifizetetlen Jutalékokat a 3 hónapos időszakon belül, ez a mulasztás a Partner Jutalék igénylésére vonatkozó jogáról való lemondást jelenti. A jelen Szerződés más részein a Jutalékok csökkentésére, felfüggesztésére vagy elvesztésére vonatkozóan foglaltak sérelme nélkül a fennálló Jutalékok elvesznek, ha a Partner szándékos kötelességszegést, súlyos gondatlanságot, csalást vagy a jelen Szerződés lényeges megsértését követte el.
+8.3.4 Megszűnés esetén a Wink 3 hónapig kifizeti az esedékes jutalékot, feltéve, hogy rendelkezik az Affiliate helyes adataival. Az Affiliate 3 hónapon belül nem igényelt jutalékát elveszíti. Súlyos szerződésszegés esetén a jutalékot visszatartják vagy visszakövetelik.
 
-8.3.5 A jelen Megállapodás megszűnésekor, és eltérő rendelkezés hiányában, a jelen Megállapodás teljes mértékben és teljes mértékben megszűnik, és hatályát veszti, anélkül, hogy sértené a Fél jogait és jogorvoslati lehetőségeit a másik Fél kártalanításával vagy a jelen Megállapodás másik Fél általi megszegésével kapcsolatban. A 4.1.2., 4.1.5., 4.1.6., 4.1.7., 4.2., 4.3., 4.4.1., 4.9.4(c), 9. és 10. pontok a jelen Megállapodás megszűnését követően is hatályban maradnak.
+8.3.5 A Megállapodás megszűnése nem érinti a Felek jogait és kötelezettségeit a kártérítés vagy szerződésszegés esetén. A 4.1.2, 4.1.5, 4.1.6, 4.1.7, 4.2, 4.3, 4.4.1, 4.9.4(c), 9 és 10 pontok a megszűnés után is hatályban maradnak.
 
-8.3.6 A megszűnés hatálybalépését követően a Partner azonnal eltávolít minden, a Wink weboldalakra mutató linket, minden Winkkel kapcsolatos tartalmat, linket, bannert, logót és egyéb, a Winkre vonatkozó hivatkozást.
+8.3.6 A megszűnés hatálybalépésekor az Affiliate haladéktalanul eltávolít minden Wink Weboldalra mutató linket, Wink tartalmat, logót és egyéb hivatkozást.
 
-**9. Könyvek, nyilvántartások és ellenőrzési jog**
+**9. Könyvek, nyilvántartások és audit jog**
 
-**9.1 A rendszerek**
+**9.1 Rendszerek**
 
-A Wink könyvei és nyilvántartásai (beleértve az Extranetet és/vagy az e-maileket) döntő bizonyítéknak tekintendők a jelen Megállapodás értelmében a Partnernek járó Jutalék összege tekintetében.
+A Wink könyvei és nyilvántartásai (beleértve az Extranetet és e-maileket) végleges bizonyítéknak minősülnek a jutalék összegére vonatkozóan.
 
-**9.2 Auditjogok**
+**9.2 Audit jogok**
 
-Amennyiben a Wink jóhiszeműen okkal feltételezi, hogy a Partner megszegte a 4. záradék szerinti kötelezettségeit, a Wink ellenőrizheti a Partner ilyen nyilvántartásait és könyveit (számviteli könyveit) a Partner 4. záradék szerinti kötelezettségeinek ellenőrzése, felülvizsgálata és (adott esetben) kivizsgálása céljából, az alábbiak szerint:\
-(a) A Felek haladéktalanul kijelölnek egy független, mindkét Fél számára elfogadható, okleveles könyvvizsgálót (a továbbiakban: „Könyvvizsgáló”), akinek engedélyt kell adni az Alvállalkozás(ok)nak fizetendő jutalék (módszerének és kiszámításának) ellenőrzésére.\
-(b) A Felek kötelesek a Könyvvizsgáló rendelkezésére bocsátani minden olyan információt, adatot, együttműködést, segítséget és hozzáférést biztosítani a könyvekhez és számviteli nyilvántartásokhoz, dokumentumokhoz, aktákhoz és papírokhoz, valamint elektronikusan tárolt információkhoz, amelyeket a Könyvvizsgáló ésszerűen kérhet a megbízásának időben történő elvégzése céljából.\
-(c) A Könyvvizsgáló mindkét Félnek átadja jelentésének (a továbbiakban: „Jelentés”) egy példányát, amely jelentés tartalmazza az ellenőrzés eredményeit és megállapításait.\
-(d) Az auditokat munkanapokon, a szokásos munkaidőben végzik.\
-(e) A Wink viseli a könyvvizsgáló költségeit és kiadásait, kivéve, ha a könyvvizsgáló az ésszerűség és a méltányosság alapján másként határoz.
+Ha a Wink jóhiszeműen úgy véli, hogy az Affiliate megsértette a 4. pontban foglalt kötelezettségeket, auditot végezhet az Affiliate könyveiben az alábbiak szerint:  
+(a) Független, mindkét Fél által elfogadott auditor kerül kijelölésre;  
+(b) Az Affiliate köteles az auditor számára minden szükséges adatot és hozzáférést biztosítani;  
+(c) Az auditor jelentést készít mindkét Fél részére;  
+(d) Az audit üzleti napokon, munkaidőben történik;  
+(e) Az auditor költségeit a Wink viseli, kivéve, ha az auditor másként dönt.
 
-10. **Vesztegetés elleni küzdelem, kereskedelmi korlátozások és üzleti etika.**
+**10. Vesztegetés elleni, kereskedelmi korlátozások és üzleti etika**
 
-A Wink zéró toleranciát alkalmaz a nemzetközi kereskedelmi normák, a vesztegetés és a korrupció megelőzésére vonatkozó jogszabályok, valamint a kereskedelemre, a pénzáramlásra és a terrorizmus finanszírozására vonatkozó korlátozások megsértésével szemben.\
-A Partner szavatolja, hogy betartja és betartja, valamint Kapcsolódó Felei betartják és betartják a Wink Beszállítói Magatartási Kódexét.\
-A Partner kijelenti, szavatolja és vállalja, hogy minden tekintetben betartja és betartja az összes nemzetközi kereskedelmi normát, a kereskedelemre, a pénzáramlásra, a terrorizmus finanszírozására, valamint a vesztegetésre és a korrupció megelőzésére vonatkozó jogszabályokat, beleértve, de nem kizárólagosan az Egyesült Királyság 2010. évi vesztegetés elleni törvényét és a szingapúri korrupció megelőzéséről szóló törvényt.\
-A Partner szavatolja, hogy legjobb tudomásulvétele szerint sem őt, sem Kapcsolódó Feleit nem ítélték el vesztegetéssel vagy korrupcióval kapcsolatos bűncselekményért, és nem állnak ellenük kormányzati, közigazgatási vagy szabályozó szerv általi vizsgálat alatt.
+A Wink nulla toleranciát alkalmaz a nemzetközi kereskedelmi normák, vesztegetés és korrupció elleni törvények, valamint a kereskedelmi és terrorizmus finanszírozási korlátozások megsértésével szemben.  
+Az Affiliate garantálja, hogy betartja a Wink Beszállítói Magatartási Kódexét.  
+Az Affiliate kijelenti, hogy betartja az összes vonatkozó nemzetközi kereskedelmi normát, korlátozást és törvényt, beleértve az Egyesült Királyság 2010-es Vesztegetés Elleni Törvényét és a Szingapúri Korrupció Elleni Törvényt.  
+Az Affiliate kijelenti, hogy sem ő, sem kapcsolt felei nem állnak vesztegetéssel vagy korrupcióval kapcsolatos bűncselekmény miatt elítélés vagy vizsgálat alatt.
 
 **11. Titoktartás**
 
 **11.1 Bizalmas információk**
 
-A Felek tudomásul veszik és megállapodnak abban, hogy a jelen Megállapodás teljesítése során bármelyik Fél hozzáférhet, vagy közvetlenül vagy közvetve ki lehet téve a másik Fél bizalmas és érzékeny információinak („Bizalmas Információk”). A Bizalmas Információk magukban foglalják az Ügyféladatokat, a tranzakciók volumenét, a marketing- és üzleti terveket, az üzleti, pénzügyi, műszaki és működési információkat, a használati statisztikákat, a rangsorolási adatokat, az ár-, termék- és elérhetőségi paritásra vonatkozó információkat, az árképzési politikákat, a konverziós adatokat és az átkattintások számát, valamint egyéb kapcsolódó statisztikákat, a Vendégek személyes adatait, a Wink által a jelen Megállapodással összefüggésben biztosított vagy használt szoftvereket vagy szoftverekkel kapcsolatos információkat, a jelen Megállapodás feltételeit, valamint az olyan egyéb nem nyilvános információkat, amelyeket a közzétevő Fél bizalmasként vagy magánjellegűként jelöl meg, vagy amelyekről a fogadó Félnek ésszerűen tudnia kellett, hogy azokat magánjellegűként és bizalmasként kell kezelni.
+A Felek megértik és elfogadják, hogy a Megállapodás teljesítése során közvetlenül vagy közvetve hozzáférhetnek a másik Fél bizalmas és érzékeny információihoz („Bizalmas Információk”), amelyek magukban foglalják az Ügyféladatokat, tranzakciós adatokat, marketing- és üzleti terveket, pénzügyi, műszaki és működési információkat, statisztikákat, személyes adatokat, szoftvereket és a Megállapodás feltételeit.
 
-**11.2 Bizalmas információk védelme és megőrzése**
+**11.2 A Bizalmas Információk védelme**
 
-Mindkét Fél egyetért abban, hogy: (a) minden Bizalmas Információ a közzétévő Fél kizárólagos tulajdonát képezi, és a fogadó Fél a Bizalmas Információt semmilyen célra nem használhatja fel, kivéve a jelen Megállapodás előmozdítását, (b) köteles megőrizni a Bizalmas Információk titkosságát és titokban tartását, és körültekintő módszereket alkalmaz annak biztosítására, hogy alkalmazottai, tisztviselői, képviselői, szerződő felei és ügynökei (a továbbiakban: „Engedélyezett Személyek”) fenntartsák ezt, (c) Bizalmas Információkat csak az Engedélyezett Személyeknek és azoknak a Személyeknek ad ki, akiknek ismerniük kell ezeket az információkat a jelen Megállapodás előmozdítása érdekében, (d) nem jogosult arra, hogy a Engedélyezett Személyek (i) másolja, ne tegye közzé, ne továbbítsa, ne reprodukálja, ne hozza nyilvánosságra, ne hozza nyilvánosságra és ne tegye elérhetővé a Bizalmas Információkat harmadik fél számára, vagy (ii) ne használja fel vagy ne tárolja azokat védelem nélküli visszakereső rendszerben vagy adatbázisban (a jelen Megállapodás feltételeitől eltérően), és (e) a másik Fél írásbeli kérésére visszaszolgáltatja vagy megsemmisíti az összes ((papír és elektronikus)) Bizalmas Információt. Abban az esetben, ha bármelyik Fél a jelen Megállapodás szerinti szolgáltatások nyújtása részeként személyes adatokat kezel a másik nevében, a Felek ezt az adatkezelést Adatfeldolgozási Megállapodás (DPA) útján szabályozzák, és az a jelen Megállapodás feltételeinek részét képezi.
+A Felek vállalják, hogy: (a) a Bizalmas Információk kizárólag a kötelezettségek teljesítésére használhatók, (b) gondoskodnak arról, hogy alkalmazottaik és képviselőik megőrizzék a titoktartást, (c) csak az arra jogosult személyeknek adják át az információkat, (d) nem másolják, nem teszik elérhetővé harmadik fél számára, és (e) a másik Fél írásbeli kérésére visszaadják vagy megsemmisítik a Bizalmas Információkat. Amennyiben személyes adatokat dolgoznak fel, adatfeldolgozási megállapodást kötnek.
 
 **11.3 Engedélyezett közzététel**
 
-A fentiek ellenére a Bizalmas Információ nem foglal magában olyan információt, amely (i) a fogadó Fél részéről semmilyen cselekmény vagy mulasztás miatt közkincs, vagy annak részévé válik, (ii) a fogadó Fél birtokában volt a jelen Megállapodás dátuma előtt, (iii) egy harmadik fél közölte a fogadó Féllel, akinek nincs titoktartási kötelezettsége az információval kapcsolatban, vagy (iv) amelyet törvény, bírósági végzés, idézés vagy kormányzati hatóság ír elő. A Wink jogosult a jelen Megállapodást bizalmasan közölni kapcsolt vállalkozásaival.
+A Bizalmas Információk nem tartalmazzák azokat az adatokat, amelyek (i) nyilvánosságra kerültek, (ii) a Megállapodás előtt birtokában voltak a fogadó Félnek, (iii) harmadik féltől származnak titoktartási kötelezettség nélkül, vagy (iv) jogszabály vagy hatósági rendelkezés alapján közzé kell tenni.
 
 **11.4 Ügyféladatok**
 
-A Felek kereskedelmileg ésszerű erőfeszítéseket tesznek az Ügyféladatok bizalmasságának és védelmének, valamint a jogosulatlan felhasználás vagy nyilvánosságra hozatal elleni védelme érdekében. A Felek megállapodnak abban, hogy betartják a személyes adatok kezelésére és a magánélet védelmére vonatkozó vonatkozó törvényeket. A Felek mindenkor ésszerű és megfelelő biztonsági intézkedéseket tesznek az Ügyféladatok sérülésének és jogosulatlan hozzáférésének megakadályozása érdekében. Ezek az intézkedések magukban foglalják többek között az adattitkosítást és a csatornatitkosítást. Adott esetben a Partner a lehető leghamarabb (legkésőbb a jogsértés felfedezésétől számított 1 napon belül) értesíti a Winket minden biztonsági incidensről. Mindkét Félnek rendelkeznie kell egy, az ügyfelek számára hozzáférhető adatvédelmi szabályzattal, amely leírja, hogyan védi és használja fel az Ügyféladatokat.
+A Felek kereskedelmileg ésszerű erőfeszítéseket tesznek az Ügyféladatok bizalmasságának és védelmének biztosítására, megfelelnek az adatvédelmi jogszabályoknak, és megfelelő biztonsági intézkedéseket alkalmaznak. Az Affiliate köteles a Wink-et haladéktalanul értesíteni bármilyen biztonsági incidensről (legkésőbb 1 napon belül).
 
 **11.5 Közlemények**
 
-Egyik Fél sem hozhat létre, tehet közzé, terjeszthet vagy engedélyezhet olyan írásos anyagokat, amelyek a másik Félre hivatkoznak, anélkül, hogy először be ne nyújtaná az ilyen anyagokat a másik Félnek, és előzetesen írásbeli hozzájárulást nem kapna a be nem nyújtó Féltől. Ez a hozzájárulás nem tagadható meg vagy késleltethető indokolatlanul.
+A Felek nem hoznak nyilvánosságra egymásra vonatkozó anyagokat a másik Fél előzetes írásbeli hozzájárulása nélkül.
 
-11.6 Bármelyik Fél a következő e-mail és/vagy postai címeken keresztül veheti fel a kapcsolatot a másik Fél adatvédelmi tisztviselőjével (DPO): dataprotectionofficer@Wink.travel
+11.6 A Felek adatvédelmi tisztviselői elérhetősége: dataprotectionofficer@Wink.travel
 
-12. **Aláírási jogosultság – Leányvállalati képviselet és aláírás**
+**12. Aláírási jogosultság – Affiliate képviselet és aláírás**
 
-A Partner szavatolja, hogy ő, a jelen Megállapodást aláíró személy és/vagy bármely más, a Winknek a jelen Megállapodással kapcsolatban vagy annak alapján információt (beleértve, a félreértések elkerülése végett, a Fizetési Feltételeket is) szolgáltató személy rendelkezik a jelen Megállapodás aláírásához szükséges felhatalmazással, cselekvőképességgel és a szükséges jogkörrel, és hogy az ilyen személy rendelkezik a Partner jelen Megállapodáshoz való kötelezésének felhatalmazásával, cselekvőképességével és a szükséges jogkörrel, és a Szerződés időtartama alatt betartja és teljesíti a jelen Megállapodás szerinti kötelezettségeit, valamint biztosítja, hogy a Partner betartja és teljesíti azokat.\
-A Partner kifejezetten elfogadja, hogy a jelen Megállapodás és annak Általános Szerződési Feltételeinek elektronikus elfogadása, beleértve a módosításokra vonatkozó feltételeket is, érvényes, kötelező érvényű és végrehajtható.
+Az Affiliate garantálja, hogy az aláíró vagy bármely más, a Megállapodáshoz kapcsolódó információt szolgáltató személy jogosult a Megállapodás aláírására és az Affiliate kötelezettségeinek teljesítésére.  
+Az Affiliate kifejezetten elfogadja, hogy a Megállapodás elektronikus elfogadása érvényes, kötelező és végrehajtható.
 
-13. **Nyelv**
+**13. Nyelv**
 
-A jelen Szerződés angol nyelvű változata az irányadó minden tekintetben, és az esetleges lefordított verziókkal való ellentmondások esetén az elsőbbséget élvez.
+A Megállapodás angol nyelvű változata az irányadó, és elsőbbséget élvez a fordításokkal szemben.
 
-14. **Felmentések**
+**14. Lemondások**
 
-A jelen Megállapodás bármely megszegéséről vagy feltételéről való lemondás nem tekinthető bármely más vagy későbbi, hasonló vagy eltérő jellegű megszegésről vagy feltételről való lemondásnak.
+A Megállapodás bármely megsértésének vagy feltételének lemondása nem jelenti más vagy későbbi feltételek lemondását.
 
-**15. Elválaszthatóság**
+**15. Elkülöníthetőség**
 
-Amennyiben a jelen Megállapodás bármely rendelkezését egy illetékes joghatóságú kormányzati végrehajtó szerv, bíróság vagy törvényszék jogellenesnek, érvénytelennek vagy a nemzeti törvények értelmében egyébként végrehajthatatlannak ítéli, akkor az ilyen rendelkezést olyan mértékben kell értelmezni, módosítani vagy törölni, amennyire az szükséges ahhoz, hogy az adott rendelkezés és/vagy a jelen Megállapodás jogszerűvé, érvényessé vagy egyébként végrehajthatóvá váljon, és az ilyen rendelkezés fennmaradó része, valamint a fennmaradó egyéb rendelkezések továbbra is hatályban maradnak, teljes hatályban és hatályon kívül helyezkednek, és továbbra is kötelező érvényűek, és úgy kell értelmezni, hogy a Felek szándékát a lehető legteljesebb mértékben érvényesítsék.
+Ha a Megállapodás bármely rendelkezése jogellenes, érvénytelen vagy végrehajthatatlan, azt a szükséges mértékben módosítják vagy törlik, a többi rendelkezés érvényben marad.
 
-**16. A felek kapcsolata**
+**16. Felek viszonya**
 
-A Felek a jelen Megállapodás teljesítése során független vállalkozók, és úgy is járnak el. Egyik Fél sem jár el, és nem tekinthető a másik Fél ügynökének vagy partnerének semmilyen célból, és egyik Fél sem jogosult a másikat semmilyen tekintetben kötelezni.
+A Felek független vállalkozók, és egyik Fél sem tekinthető a másik ügynökének vagy partnerének.
 
-**17. Feladat**
+**17. Átruházás**
 
-Egyik Fél sem jogosult a jelen Megállapodás szerinti jogait és/vagy kötelezettségeit a másik Fél előzetes írásbeli hozzájárulása nélkül átruházni, átruházni vagy megterhelni, azzal, hogy a Wink a jelen Megállapodás szerinti jogait és/vagy kötelezettségeit (egészben, részben vagy időről időre) kapcsolt vállalkozásra átruházhatja, átruházhatja vagy megterhelheti a Kapcsolódó Fél előzetes írásbeli hozzájárulása nélkül.\
-Ez a Megállapodás a Felek, valamint jogutódjaik és engedélyezett engedményeseik javára jön létre, és a jelen Megállapodásban semmi sem szándékozik és nem is fog hallgatólagosan bármely más személyre semmilyen jogi vagy méltányos jogot, előnyt vagy jogorvoslatot ruházni a jelen Megállapodás alapján vagy abból fakadóan, kivéve, ha a jelen Megállapodás kifejezetten másként rendelkezik.
+A Felek nem ruházhatják át jogaikat vagy kötelezettségeiket a másik Fél előzetes írásbeli hozzájárulása nélkül, kivéve, hogy a Wink átruházhatja azokat kapcsolt vállalatának.
 
-18. **Vis major.**
+**18. Vis maior**
 
-A Wink.travel nem vállal felelősséget a jelen Feltételek szerinti kötelezettségek teljesítésének késedelméért vagy nem teljesítéséért, amely a Wink vagy a Wink Payments ésszerű ellenőrzésén kívül eső okokból ered, beleértve, de nem kizárólagosan, a vis maiorokat, természeti katasztrófákat, háborút, terrorizmust, zavargásokat, embargókat, polgári vagy katonai hatóságok intézkedéseit, tüzet, árvizeket, baleseteket, világjárványokat, járványokat vagy betegségeket, sztrájkokat vagy a közlekedési eszközök, üzemanyag-, energia-, munkaerő- vagy anyaghiányt („**Vis maior esemény**„”).
+A Wink nem felel késedelemért vagy kötelezettség nem teljesítéséért olyan okok miatt, amelyek kívül esnek ésszerű ellenőrzési körén, például természeti katasztrófák, háború, terrorizmus, járványok stb.
 
-19. **Irányadó jog és joghatóság**
+**19. Irányadó jog és joghatóság**
 
-Ez a Megállapodás kizárólag Szingapúr törvényei szerint értelmezendő, és azokkal összhangban van szabályozva. A 2001. évi szerződésekről (harmadik felek jogai) szóló törvény (53B. fejezet) nem alkalmazandó erre a Megállapodásra. A Felek minden esetben megkísérlik vitáikat békés úton, peren kívül rendezni, először jóhiszemű megbeszéléseket és tárgyalásokat folytatva.\
-A jelen megállapodásból eredő vagy azzal kapcsolatos bármely jogvita kizárólag Szingapúr illetékes bíróságához kerül benyújtásra és az illetékes bíróság elé kerül, tekintet nélkül a kollíziós szabályokra.\
-visszavonhatatlanul lemond minden olyan jogáról, hogy kifogást emeljen az ilyen bíróságokon indított keresettel szemben, azt állítsa, hogy a keresetet nem megfelelő fórumon indították, vagy hogy az ilyen bíróságok nem rendelkeznek joghatósággal.
+A Megállapodás kizárólag Szingapúr joga szerint értelmezendő. A Felek elsődlegesen békés úton rendezik vitáikat, de jogviták esetén kizárólag a szingapúri bíróság rendelkezik joghatósággal.
 
-20. **Ellenfelek.**
+**20. Példányok**
 
-Ez a Megállapodás több másodpéldányban is megköthető, amelyek mindegyike (aláírás után) eredeti példánynak tekintendő, és amelyek együttesen egy és ugyanazon okiratot alkotnak. Továbbá, a Wink írásos aláírásának bármely szkennelt/elektronikus másolata ugyanolyan hatályú, mint a Wink eredeti kézzel írott aláírása, és nem befolyásolja a jelen Megállapodás érvényességét.
+A Megállapodás több példányban is aláírható, amelyek együttesen egy eredeti dokumentumnak minősülnek. A Wink aláírásának elektronikus vagy szkennelt másolata ugyanolyan érvényű, mint az eredeti kézzel írott aláírás.
 
-21. **Teljes megállapodás**
+**21. Teljes megállapodás**
 
-Ez a Megállapodás (beleértve a Partneri Regisztrációs Űrlapot, a mellékleteket és függelékeket, amelyek a Megállapodás szerves részét képezik) a Felek teljes megállapodását és egyetértését képezi a tárgyában, és felülír minden korábbi megállapodást, megállapodást, ((nem) kötelező érvényű) ajánlatot, vállalást vagy nyilatkozatot az ilyen tárgyban.\
-Amennyiben a jelen Megállapodás bármely rendelkezése érvénytelen vagy nem kötelező érvényű, vagy azzá válik, a Felek továbbra is kötelesek betartani a jelen Megállapodás összes többi rendelkezését. Ebben az esetben a Felek kötelesek az érvénytelen vagy nem kötelező érvényű rendelkezést olyan érvényes és kötelező érvényű rendelkezésekkel helyettesíteni, amelyek – tekintettel a jelen Megállapodás tartalmára és céljára – a lehető legnagyobb mértékben hasonló hatással bírnak, mint az érvénytelen vagy nem kötelező érvényű rendelkezés.
+A Megállapodás (beleértve az Affiliate Partner Regisztrációs Űrlapot és mellékleteket) a Felek teljes megállapodását képezi, és felülír minden korábbi megállapodást.
 
-22. **Végrehajtás**
+**22. Hatálybalépés**
 
-A Megállapodás csak akkor lép hatályba és alkalmazandó, ha a Wink írásban visszaigazolja a Partner elfogadását és jóváhagyását. A Wink partnerprogramba való regisztrációval és affiliate partnerként való feliratkozással a Partner elfogadja, tudomásul veszi és elfogadja a jelen Megállapodás feltételeit, beleértve a jelen Megállapodás módosításaira vonatkozó rendelkezéseket is.\
-A partner elolvasta a megállapodást, és elfogadta az összes feltételt. A partner tudomásul veszi, hogy a Wink bármikor (közvetlenül vagy közvetve) kérhet ügyfél-ajánlásokat olyan feltételekkel, amelyek eltérhetnek a jelen megállapodásban foglaltaktól, vagy olyan weboldalakat üzemeltethet, amelyek hasonlóak a partner weboldalához, vagy azzal versengőek. A partner függetlenül értékelte a programban való részvétel kívánatosságát, és nem támaszkodik semmilyen más állításra, garanciára vagy nyilatkozatra, mint a jelen megállapodásban foglaltak. A partner kifejezetten beleegyezik abba, hogy a jelen megállapodás és annak feltételeinek, beleértve a módosításokra vonatkozó feltételeket is, elektronikus elfogadása érvényes, kötelező érvényű és végrehajtható.
+A Megállapodás csak akkor lép hatályba, amikor a Wink írásban elfogadja az Affiliate regisztrációját. Az Affiliate elolvasta és elfogadta a feltételeket, és tudomásul veszi, hogy a Wink bármikor eltérő feltételekkel is működtethet hasonló programokat.
 
-23. **Közlemények**
+**23. Értesítések**
 
-A jelen Megállapodás szerinti összes értesítést a Felek angol nyelven, írásban kell megtenni, és személyesen, előre fizetett és ajánlott levélben, vagy nemzetközileg elismert expressz futárszolgálattal (pl. FedEx, UPS, DHL) kell kézbesíteni a bejegyzett székhelyre, vagy e-mailben a kapcsolattartó személynek.\
-A jelen Megállapodás szerinti bármely értesítést kézbesítettnek kell tekinteni (i) ha személyesen kézbesítették, a tértivevény aláírásával, vagy (ii) ha előre fizetett ajánlott levélben küldték, a kézbesítés igazolásával; vagy (iii) ha gyorspostai úton küldték, a futár által rögzített kézbesítési napon; vagy (iv) ha e-mailben küldték, feltéve, hogy a kézbesítésről elismervényt nyújtottak be.
-
+Minden értesítést angol nyelven, írásban kell megtenni, személyesen, ajánlott postai küldeményként vagy nemzetközileg elismert futárszolgálattal (pl. FedEx, UPS, DHL), vagy e-mailben a megadott kapcsolattartónak. Az értesítés kézbesítettnek minősül, ha kézbesítési elismervény aláírásra került, vagy postai kézbesítés esetén a kézbesítés igazolása megtörtént, vagy futár esetén a kézbesítés dátuma rögzítésre került, vagy e-mail esetén visszaigazolás érkezett.

@@ -1,49 +1,47 @@
 ---
-title: Укратко
-description: >-
-  Овај чланак ће вас провести кроз све што сте желели да знате о систему за
-  резервације.
+title: Ukratko
+description: Ovaj članak vas vodi kroz sve što ste želeli da znate o booking engine-u.
 sidebar:
   order: 0
 ---
-Ево како сегментирамо одговорност на Винку:
 
-* [Екстранет](/extranet/what-is-extranet) бави се добављачима који управљају залихама.
-* [Студио](/studio/what-is-studio) бави се тиме да партнери управљају садржајем.
-* `Booking Engine`бави се израдом садржаја, креираног у`Studio`, који је био заснован на инвентару креираном у`Extranet`и омогућавајући резервацију.
-* [Плаћање](/payment/what-is-trip-pay) бави се наплаћивањем/повраћајем новца путницима који резервишу \[преко платформи попут Wink-а] и плаћањем добављача.
+Evo kako delimo odgovornosti na Wink-u:
 
-Систем за резервације је у сржи наше платформе.
+- [Extranet](/sr/extranet/what-is-extranet) se bavi dobavljačima koji upravljaju inventarom.
+- [Studio](/sr/studio/what-is-studio) se bavi afilijatima koji upravljaju sadržajem.
+- `Booking Engine` se bavi pravljenjem sadržaja, kreiranog u `Studio`, koji je zasnovan na inventaru kreiranom u `Extranet` i omogućava njegovo rezervisanje.
+- [Payment](/sr/payment/what-is-trip-pay) se bavi naplatom / povraćajem novca putnicima koji rezervišu [kroz platforme poput Wink-a], i plaćanjem dobavljačima.
 
-Његове одговорности укључују:
+Booking engine je u srcu naše platforme.
 
-* Управљање валутама и одржавање ажурних девизних курсева.
-* Омогућавање добављачима цена начин да нам пошаљу податке о ценама.
-* Управљање подацима претраге.*нпр. региони, земље, дестинације, некретнине итд.*
-* Управљање језицима.
-* Генерисање аналитике на основу интеракција корисника, догађаја и API позива.
-* Приказивање резервисаног инвентара у жељеном формату, језику и валути, као што су:
-  * А [линк за дељење](/studio/shareable-links) на Фејсбуку.
-  * Одредишна страница хотела на https://ota.wink.travel са понудом за тај хотел.
-  * А [картица](/studio/cards) који садржи инвентар партнера.
-  * А [мапа](/studio/maps) на твом [мапа](/studio/maps) налог.
-  * Један [API позив](/developers/apis) из система удаљене туристичке агенције.
-* Омогућавање путницима да:
-  * Претражите инвентар за путовања.
-  * Резервишите расположиви инвентар.
-  * Управљајте њиховим[резервације и рецензије](/booking-engine/bookings).
-  * Управљајте њиховим [листа жеља](/booking-engine/bucket-list) ствари које треба резервисати у будућности.
-  * Управљајте њиховим[профил путовања](/booking-engine/travel-preferences).*нпр. алергије, контакт у хитним случајевима итд.*
+Njegove odgovornosti uključuju:
 
-Систем за резервације је скуп функционалности које се могу поново користити, а које нудимо путем https://ota.wink.travel; веб странице са високим степеном прилагодљивости за хотеле и њихове партнере како би могли да продају своју робу путницима.
+- Upravljanje valutama i održavanje ažurnih kurseva.
+- Omogućavanje provajderima cena da nam šalju podatke o cenama.
+- Upravljanje podacima za pretragu. *npr. regioni, zemlje, destinacije, objekti itd.*
+- Upravljanje jezicima.
+- Generisanje analitike na osnovu korisničkih interakcija, događaja i API poziva.
+- Prikazivanje rezervabilnog inventara u željenom formatu, jeziku i valuti, kao što su:
+    - [deljivi link](/sr/studio/shareable-links) na Facebook-u.
+    - Landing stranica hotela na https://ota.wink.travel sa inventarom za taj hotel.
+    - [kartica](/sr/studio/cards) koja sadrži afilijatski inventar.
+    - [mapa](/sr/studio/maps) na vašem [WinkLinks](/sr/link-manager/wink-links) nalogu.
+    - [API poziv](/sr/developers/apis) iz udaljenog sistema turističke agencije.
+- Omogućavanje putnicima da:
+    - Pretražuju turistički inventar.
+    - Rezervišu dostupan inventar.
+    - Upravljaju svojim [rezervacijama i recenzijama](/sr/booking-engine/bookings).
+    - Upravljaju svojom [bucket list-om](/sr/booking-engine/bucket-list) stvari koje žele da rezervišu u budućnosti.
+    - Upravljaju svojim [putnim profilom](/sr/booking-engine/travel-preferences). *npr. alergije, kontakt za hitne slučajeve itd.*
 
-Интегратори, који желе још већу слободу, имају приступ свим истим функцијама путем нашег [WordPress додатак](/developers/wordpress/), [WordPress додатак](/developers/wordpress/) и[API-ји](/developers/apis).
+Booking engine je skup ponovo upotrebljivih funkcionalnosti koje izlažemo preko https://ota.wink.travel; visoko prilagodljivog sajta za hotele i afilijate da prodaju svoje usluge putnicima.
 
-Наставите на следеће одељке да бисте сазнали више о томе шта систем за резервације нуди.
+Integratori, koji žele još veću slobodu, imaju pristup svim istim funkcijama putem našeg [WordPress plugina](/sr/developers/wordpress/), [Web Components](/sr/developers/web-components) i [API-ja](/sr/developers/apis).
 
-## Додатно читање
+Nastavite na sledeće sekcije da biste saznali više o tome šta booking engine nudi.
 
-* Прочитајте о нашим[WordPress додатак](/developers/wordpress/).
-* Прочитајте о нашим[Веб компоненте](/developers/web-components).
-* Прочитајте о нашим[API-ји](/developers/apis).
+## Dalje čitanje
 
+- Pročitajte o našem [WordPress pluginu](/sr/developers/wordpress/).
+- Pročitajte o našim [Web Components](/sr/developers/web-components).
+- Pročitajte o našim [API-jima](/sr/developers/apis).

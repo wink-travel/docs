@@ -1,18 +1,16 @@
 ---
 title: Studio Nedir?
-description: >-
-  Bu sayfa seyahat envanterine erişimin zorluklarını ve Wink'in iştirak
-  portalının bunu nasıl kolaylaştırdığını açıklıyor.
+description: Bu sayfa, seyahat envanterine erişmenin zorluklarını ve Wink'in bağlı kuruluş portalının bunu nasıl çok daha kolay hale getirdiğini açıklar.
 sidebar:
   order: 0
 ---
-Tarihsel olarak, seyahatle ilgili herhangi bir şeye erişim sağlamak ve onu satmak, yeterli teknik uzmanlığa, ödeme ağ geçidine erişime sahip ve her ikisi de PCI DSS uyumlu olan iki \[veya daha fazla] lisanslı seyahat acentesi şirketi arasında gizlilik anlaşmaları ve karmaşık entegrasyonlar içeriyordu. Bu maliyetli ve zaman alıcı bir çabaydı ve giriş engeli normal insanlar için imkansız derecede yüksekti.
 
-[Göz kırpma stüdyosu](https://studio.wink.travel) bizim iştirak portalımızdır. Seyahat envanteri satışını herkes için erişilebilir hale getirir ve bir bağlantı paylaşmak kadar kolay veya çevrimiçi bir seyahat acentesi işletmek kadar gelişmiştir.
+Tarihsel olarak, seyahatle ilgili herhangi bir şeye erişim sağlamak ve satmak, iki [veya daha fazla] lisanslı seyahat acentesi şirketi arasında NDA'lar ve karmaşık entegrasyonlar gerektiriyordu; bu şirketlerin yeterli teknik uzmanlığa, bir ödeme geçidine erişime sahip olmaları ve her ikisinin de PCI DSS uyumlu olmaları gerekiyordu. Bu, maliyetli ve zaman alıcı bir çabaydı ve normal insanlar için giriş engeli imkansız derecede yüksekti.
 
-Ortak portal, dünyanın her yerindeki tedarikçilerden (yani oteller, pansiyonlar, kiralıklar, deneyim sağlayıcıları) mevcut seyahat envanterini ortaya çıkarır. Amacınız, sizin için doğru envanteri bulmak ve ardından bu envanteri hedef kitlenize sunmanın ve satmanın en iyi yolunu kullanmaktır.
+[Wink Studio](https://studio.wink.travel), bağlı kuruluş portalımızdır. Seyahat envanterini herkes için erişilebilir hale getirir ve bir bağlantı paylaşmak kadar kolay ya da çevrimiçi bir seyahat acentesi işletmek kadar gelişmiş olabilir.
 
-Studio, tedarikçilere ve envanterlerine göz atmanız için bir yol sunar. Beğendiğiniz bir şey bulduğunuzda, bu envanteri çevrimiçi ve özellikle sosyal medya aracılığıyla satmanız için birçok yolumuz var.
+Bağlı kuruluş portalı, tedarikçilerden (örneğin oteller, hosteller, kiralamalar, deneyim sağlayıcıları) dünya çapında mevcut seyahat envanterini sunar. Amacınız, sizin için doğru olan envanteri bulmak ve ardından bu envanteri kitlenize sunmak ve satmak için en iyi yöntemi kullanmaktır.
 
-Okumaya devam edin ve iştiraklerimize sunduğumuz tüm özellikleri öğrenin.
+Studio, tedarikçileri ve envanterlerini gözden geçirmeniz için bir yol sunar. Beğendiğiniz bir şey bulduğunuzda, bu envanteri çevrimiçi ve özellikle sosyal medya üzerinden satmanız için birçok yolumuz vardır.
 
+Okumaya devam edin ve bağlı kuruluşlara sunduğumuz tüm özellikleri öğrenin.

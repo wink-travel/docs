@@ -1,100 +1,103 @@
 ---
-title: Webhooks
-description: 订阅 Wink 和 TripPay 活动。
+title: Webhooks（网络钩子）
+description: 订阅 Wink 和 TripPay 事件。
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 import CloudinaryImage from '/src/components/cloudinary-image.astro';
 
-Webhook 是一种让您接收并响应来自 Wink 和 TripPay 的有关您帐户的实时事件的方式。
+Webhooks 是一种让您接收并响应来自 Wink 和 TripPay 关于您账户的实时事件的方式。
 
-## 例子
+## 示例
 
 <Steps>
-  1. 在 Wink 上进行预订。
-  2. Wink 活动 `booking.created` 已派遣。
-  3. 您的系统正在积极监听此事件。
-  4. 您的系统会跟踪您自己的一组分析并使用此事件来更新其时间序列数据库。
+1. 在 Wink 上发生一次预订。
+1. 触发 Wink 事件 `booking.created`。
+2. 您的系统正在主动监听此事件。
+3. 您的系统跟踪自己的分析数据，并使用此事件更新其时间序列数据库。
 </Steps>
-
 
 <figure>
-  <CloudinaryImage width="350" height="215" resize="scale" quality="best" alt="示例 Webhook" src="academy/webhook" errorImage="noimage_opaque_nyrtl0.png" />
-
-  <figcaption>*示例 webhook 条目*</figcaption>
+<CloudinaryImage
+      width="350"
+      height="215"
+      resize="scale"
+      quality="best"
+      alt="示例 webhook"
+      src="academy/webhook"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*示例 webhook 条目*</figcaption>
 </figure>
 
-
-:::注意
+:::note
 Wink webhook 与 TripPay webhook 不同。
 
-* 如果你想监听 Wink 事件，你可以创建一个 webhook[外联网](https://extranet.wink.travel) 或者 [工作室](https://studio.wink.travel) 。
-* 如果您想监听 TripPay 事件，您可以创建一个 webhook[支付](https://pay.wink.travel).
-  :::
+- 如果您想监听 Wink 事件，可以从 [Extranet](https://extranet.wink.travel) 或 [Studio](https://studio.wink.travel) 创建 webhook。
+- 如果您想监听 TripPay 事件，可以从 [Payment](https://pay.wink.travel) 创建 webhook。
+:::
 
-*对于此示例，我们将通过以下方式进行身份验证 [工作室](https://studio.wink.travel) 。*
+*在本示例中，我们将通过 [Studio](https://studio.wink.travel) 进行身份验证。*
 
 <Steps>
-  1. 一旦通过身份验证，请单击右上角的个人资料图标，然后会出现一个菜单。
-  2. 点击 `Webhooks` 关联。
-  3. 您将被重定向到您的 webhook 页面。
+1. 认证后，点击右上角的个人资料图标，会出现一个菜单。
+2. 点击 `Webhooks` 链接。
+3. 您将被重定向到您的 webhook 页面。
 </Steps>
-
 
 ## 创建 webhook
 
-:::注意
-您需要在 Wink 上创建一个联盟账户，或在 TripPay 上创建一个账户，然后才能创建 webhook，因为您将把 webhook 绑定到特定账户。
+:::caution
+在创建 webhook 之前，您需要先在 Wink 创建一个分销商账户或在 TripPay 创建一个账户，因为您将把 webhook 绑定到特定账户。
 :::
 
-以下是创建 webhook 的步骤：
+创建 webhook 的步骤如下：
 
 <Steps>
-  1. 在 webhook 页面中，单击 `Create new webhook` 按钮。
-  2. ***姓名*** 给你的 webhook 命名。 *例如 Wink Stalker*
-  3. ***使能够*** 保持原样即可启用。
-  4. **实体名称** 将您的 webhook 与您的一个现有帐户链接。 *例如 Cool Account*
-  5. **活动** 聆听您感兴趣的事件。 *例如 `booking.created`*
-  6. **Webhook URL** 输入您将收听我们活动的 URL。 *例如 `https://my.system.com/webhook/wink`*
-  7. 点击 `Save` 按钮继续。
+1. 在 webhook 页面，点击 `Create new webhook` 按钮。
+2. ***名称*** 给您的 webhook 命名。*例如 Wink Stalker*
+3. ***启用*** 保持默认启用状态。
+4. **实体名称** 将您的 webhook 关联到您已有的账户之一。*例如 Cool Account*
+5. **事件** 选择您感兴趣的事件。*例如 `booking.created`*
+6. **Webhook URL** 输入您用于接收事件的 URL。*例如 `https://my.system.com/webhook/wink`*
+7. 点击 `Save` 按钮继续。
 </Steps>
 
-
-您将被重定向回您的 webhook 列表，并且您的新 webhook 已准备就绪。
+您将被重定向回 webhook 列表，您的新 webhook 已准备就绪。
 
 ## 更新 webhook
 
-如果您想要执行以下操作，则需要更新您的应用：
+如果您想要：
 
-* 禁用你的 webhook。
-* 收听更多/更少事件。
-* 更改您的监听 webhook URL。
+- 禁用您的 webhook。
+- 监听更多或更少的事件。
+- 更改监听的 webhook URL。
 
-要更新现有的 webhook，请执行以下操作：
+您需要更新您的应用。
+
+更新现有 webhook 的步骤如下：
 
 <Steps>
-  1. 点击 `Actions` 您想要更新的 webhook 链接。
-  2. 点击 `Update` 操作下的按钮。
-  3. 对 webhook 进行更改。
-  4. 点击 `Save` 按钮继续。
+1. 点击您想更新的 webhook 的 `Actions` 链接。
+2. 点击 Actions 下的 `Update` 按钮。
+3. 对 webhook 进行修改。
+4. 点击 `Save` 按钮继续。
 </Steps>
 
-
-您将被重定向回您的 webhook 列表。
+您将被重定向回 webhook 列表。
 
 ## 删除 webhook
 
-如果您不再需要该 webhook，您可以继续将其删除。
+如果您不再需要该 webhook，可以将其删除。
 
-要删除 webhook，请执行以下操作：
+删除 webhook 的步骤如下：
 
 <Steps>
-  1. 点击 `Actions` 您想要更新的 webhook 链接。
-  2. 点击 `Remove` 操作下的按钮。
-  3. 点击 `OK` 按钮确认删除。
+1. 点击您想删除的 webhook 的 `Actions` 链接。
+2. 点击 Actions 下的 `Remove` 按钮。
+3. 点击 `OK` 按钮确认删除。
 </Steps>
 
-
-您将被重定向回您的 webhook 列表。
-
+您将被重定向回 webhook 列表。

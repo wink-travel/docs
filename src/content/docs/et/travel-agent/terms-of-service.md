@@ -1,250 +1,252 @@
 ---
 title: Teenusetingimused
-description: See artikkel sisaldab meie teenusetingimusi reisibüroodele Winki platvormil.
+description: See artikkel sisaldab meie teenusetingimusi reisibüroodele Wink platvormil.
 sidebar:
   order: 4
 ---
-:::märkus
-Viimati uuendatud 30.10.2024
+
+:::note
+Viimati uuendatud 2024-10-30
 :::
 
-:::ettevaatust\[Teade]
-Allolevad teenusetingimused kehtivad reisibüroodele, kes soovivad ise raha hankida ja välja maksta.
-Seda saab teha ainult meie API kaudu ja ainult reisibüroode poolt, kes on registreerumisprotsessi käigus sellest soovist teatanud.
+:::caution[Teade]
+Alljärgnevad teenusetingimused kehtivad reisibüroodele, kes soovivad ise vahendada ja väljamakseid teha.  
+See on võimalik ainult meie API kaudu ja ainult reisibüroodele, kes on registreerimisprotsessi käigus märkinud, et soovivad seda teha.
 
-Kõik reisibürood saavad endiselt broneerida meie reisibüroo portaali kaudu, kasutades Winki makseväravat oma või reisija krediitkaardiga. Seetõttu peavad kõik reisibürood nõustuma ka teenuse osutamise tingimustega, mille kohaselt Winki maksevärav on registreeritud kaupmees.
+Kõik reisibürood saavad endiselt broneerida meie reisibüroo portaali kaudu, kasutades Wink'i makselahendust oma või reisija krediitkaardiga. Seetõttu peavad kõik reisibürood nõustuma ka teenusetingimustega, kus Wink'i makselahendus on kaupmehe registris.
 
-Need tingimused on saadaval all[Partnerlusportaal > Kasutustingimused](/studio/terms-of-service).
+Need tingimused on kättesaadavad [Affiliate Portal > Terms of Service](/et/studio/terms-of-service).
 :::
 
-**WINK ÜLDTINGIMUSED**\
-**REISIBÜROODE (registreeritud kaupmees)**
+**WINK ÜLDTINGIMUSED**  
+**REISIBÜROODELE (Kaupmehe registris)**
 
-**VAHEL:**
+**LEPINGUOSALISED:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**&#x53;ingapuri seaduste alusel asutatud äriühing, mille registreeritud asukoht on #03-01 Wilkie Edge 8 Wilkie Road Singapur 228095 ja käibemaksukohustuslase number 201437335D (edaspidi „Wink“) ja
+1. **TRAVELIKO SINGAPORE PTE. LTD.**, Singapuri seaduste alusel asutatud ettevõte, mille registreeritud aadress on \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 ja käibemaksukohustuslase number 201437335D (edaspidi "Wink") ning  
+     
+2. **REISIBÜROO**, kelle andmed on esitatud Reisibüroo registreerimisvormis või on esitatud veebis (edaspidi "Reisibüroo").
 
-2. **REISIBÜROO**kelle andmed on esitatud reisibüroo registreerimisvormil või on esitatud veebis („reisibüroo“).
+**KUNA:**
 
-**NÕUDES, ET:**
+(i) Wink haldab veebipõhist süsteemi (edaspidi "Süsteem"), mille kaudu osalevad majutusettevõtted (kokku "Majutuspakkujad") saavad oma inventari broneerimiseks kättesaadavaks teha ning mille kaudu Reisibüroo saab teha broneeringuid nende Majutuspakkujate nimel oma külalistele (edaspidi "Teenuseosutus");
 
-(i) Wink haldab veebisüsteemi („Süsteem“), mille kaudu osalevad majutusasutused (edaspidi ühiselt „majutuspakkujad“) saavad oma varusid broneerimiseks kättesaadavaks teha ja mille kaudu reisibüroo saab oma külaliste nimel selliste majutuspakkujate juures broneeringuid teha („Teenus“);
+(ii) Wink ei oma, kontrolli, paku ega halda ühtegi majutusettevõtte nimekirja. Wink ei ole osapool lepingutes, mis sõlmitakse otse Majutuspakkujate ja külaliste vahel. Wink ei tegutse majutusettevõtjate agendina;
 
-(ii) Wink ei oma, kontrolli, paku ega halda ühtegi kuulutust. Wink ei ole majutusteenuse pakkujate ja külaliste vahel otse sõlmitud lepingute pool. Wink ei tegutse majutusteenuse pakkujate esindajana ühelgi viisil;
+(iii) Wink haldab ja kasutab oma veebisaite (edaspidi "Wink'i veebisaidid") ning pakub Teenust ja linke Teenusele ka kolmandate osapoolte veebisaitidel;
 
-(iii) Wink haldab ja kasutab oma veebisaite („Winki veebisaidid“) ning pakub Teenust ja Teenusele viivaid linke ka kolmandate isikute veebisaitidel;
+(iv) Reisibüroo omab, kontrollib, majutab ja/või haldab üht või mitut internetidomeeni, veebisaiti või rakendust ning soovib olla kaupmehe registris, kasutades Teenust;
 
-(iv) Reisibüroo omab, kontrollib, majutab ja/või haldab ühte või mitut internetidomeeni, veebisaiti või rakendust ning soovib Teenuse kasutamise ajal olla registreeritud kaupmees.
+(v) Reisibüroo ja Wink soovivad, et Reisibüroo teeb Teenuse (otse või kaudselt) kättesaadavaks oma klientidele ja Reisibüroo veebisaidi(de) ning rakenduse(te) külastajatele sellisel kujul ja tingimustel (edaspidi "Tingimused"), nagu on sätestatud käesolevas lepingus.
 
-(v) Reisibüroo ja Wink soovivad, et reisibüroo teeks Teenuse (otseselt või kaudselt) kättesaadavaks oma klientidele ja reisibüroo veebisaidi(de) ja rakenduse(te) külastajatele sellises vormis ja sellistel tingimustel (edaspidi „Tingimused“), nagu on sätestatud käesolevas Lepingus.
+**SEST TÄHENDAB, ET OSAPOOLED LEPIVAD JÄRGMISTES:**
 
-**SEEGA LEPIVAD POOLED NÜÜD KOKKU JÄRGMISES:**
+**1\. Mõisted**
 
-**1. Mõisted**
+1. Lisaks mujal käesolevas lepingus määratletud mõistetele kehtivad kogu lepingu ulatuses järgmised mõisted, välja arvatud juhul, kui on selgelt vastupidine kavatsus:
 
-1. Lisaks käesolevas Lepingus mujal määratletud mõistetele kehtivad kogu Lepingu ulatuses järgmised definitsioonid, välja arvatud juhul, kui on sätestatud vastupidine kavatsus:
+* **"Majutus"** tähendab igasugust majutust, sealhulgas, kuid mitte ainult, hotelle, motelle, külalistemaju, bed & breakfast'i, hosteleid, villasid, kortereid, lodže, kõrtsid, kuurorte ja muid majutus- või ööbimisvõimalusi (kas või mitte Wink'i veebisaitidel kättesaadavad).  
+    
+* **"Majutuspakkuja(d)"** tähendab osapoolt, kes loob teenusepakkuja platvormil konto eesmärgiga müüa oma tubade ja lisateenuste inventari Wink platvormi kaudu.  
+    
+* **"Broneering"** tähendab külalise poolt Reisibüroo kaudu tehtud broneeringut või tellimust majutusteenustele, mida pakub Majutuspakkuja.
 
-* **"Majutus"**&#x74;ähendab igasugust majutust, sealhulgas, kuid mitte ainult, hotelle, motelle, külalistemaju, hommikusöögiga majutust, hosteleid, villasid, kortereid, suvilaid, võõrastemaju, kuurorte ja mis tahes muud tüüpi majutust või majutusteenuse pakkujat (olenemata sellest, kas see on Winki veebisaitidel saadaval või mitte).
+* **"Broneerimistasu"** tähendab 1,5% summast, mis võetakse maha Reisibüroo külaliselt kogutud kogusummast ja mis on Wink'ile makstav töötlemistasu.
 
-* **"Majutuspakkuja(d)"**&#x74;ähendab iga Poolt, kes loob Teenusepakkuja juures konto eesmärgiga müüa oma tube ja lisateenuste inventari Wink platvormi kaudu.
+* **"Broneeringu väärtus"** tähendab Reisibüroo külaliselt kogutud kogusummat broneeringu eest.
 
-* **"Broneerimine"**&#x74;ähendab külalise poolt reisibüroo kaudu majutusteenuse pakkuja pakutavate majutusteenuste broneeringut või tellimust.
+* **"Komisjon"** tähendab summat, mis on Majutuspakkuja poolt Reisibüroole võlgu, arvutatud kokkulepitud protsendi alusel "Eraldi lepingust" broneeringu väärtusest.  
+    
+* **“Force Majeure”** tähendab mis tahes asjaolu, mis on osapoole mõistlikust kontrollist väljas, sealhulgas, kuid mitte ainult, loodusõnnetused, sõjategevus, terrorism, koduseisak, pandeemiad ja valitsuse tegevused, mis takistavad osapoole kohustuste täitmist käesoleva lepingu alusel.  
+    
+* **“Külaline”** tähendab isikut või gruppi, kes teeb broneeringu Reisibüroo kaudu majutusteenustele.  
+    
+* **"Kaupmehe registris"** tähendab juriidilist isikut, kes on seaduslikult volitatud ja vastutab külalistelt maksete töötlemise eest, sealhulgas maksete tehingute, tagasimaksete, tagasikandmiste ja maksetingimuste järgimise eest. Kaupmehe registris olev isik on see, kelle nimi kuvatakse külalise krediitkaardi väljavõttel broneeringuga seotud tasude kohta.
 
-* **"Broneerimistasu"**&#x74;ähendab 1,5% suurust mahaarvamist reisibüroo poolt külaliselt kogutud kogusummast, mis tuleb Winkile töötlemistasuna maksta.
+* **"Netomakse"** tähendab summat, mis makstakse Majutuspakkujale pärast Wink'i broneerimistasu ja Reisibüroo komisjoni mahaarvamist broneeringu väärtusest.  
+    
+* **“Maksed”** tähendab rahalisi kohustusi, mis tulenevad käesolevast lepingust, sealhulgas komisjonitasud, tasud või muud kulud, mida üks osapool peab teisele maksma.
 
-* **"Broneeringu väärtus"**&#x74;ähendab reisibüroo poolt külaliselt broneeringu eest kogutud kogusummat.
+* **"Maksete vahendaja"** on Traveliko Singapore Pte. Ltd. täielikult omanduses olev tütarettevõte, mis haldab makseteenuseid, kogudes külalistelt makseid, võttes tasu nende ostuga seotud makseviisilt, nagu krediitkaart, deebetkaart, pangaülekanne, krüptovaluutad või PayPal jne.  
+    
+* **“Platvorm”** tähendab teenusepakkuja hallatavat veebipõhist süsteemi, mille kaudu Reisibüroo saab teha või hallata broneeringuid külalistele.
 
-* **"Komisjon"**&#x74;ähendab majutusteenuse pakkuja poolt reisibüroole võlgnetavat summat, mis arvutatakse broneeringu väärtusest „Eraldi lepingus“ kokkulepitud protsendimäära alusel.
+* **"Eraldi leping"** tähendab iseseisvat lepingut Reisibüroo ja Majutuspakkuja vahel, mis sätestab konkreetseid maksetingimusi, sealhulgas komisjoni ja maksegraafiku.  
+    
+* **“Teenused”** tähendab teenuseid, mida teenusepakkuja osutab Reisibüroole käesoleva lepingu alusel, sealhulgas, kuid mitte ainult, juurdepääsu platvormile, broneeringute vahendamist ja kliendituge.  
+    
+* **“Teenusepakkuja”** tähendab Wink'i, **TRAVELIKO SINGAPORE PTE. LTD**-d, mis on registreeritud Singapuris.  
+    
+* **“Reisibüroo”** tähendab osapoolt, kes sõlmib käesoleva lepingu teenusepakkujaga, et edendada ja müüa reisibroneeringuid teenusepakkuja platvormi kaudu.
 
-* **„Vääramatu jõud”**&#x74;ähendab mis tahes sündmust, mis on väljaspool poole mõistlikku kontrolli, sealhulgas, kuid mitte ainult, loodusõnnetused, sõjategevused, terrorism, kodanikurahutused, pandeemiad ja valitsuse tegevused, mis takistavad poolel käesoleva lepingu kohaseid kohustusi täitmast.
+**2\. Mitteeksklusiivsus**
 
-* **"Külaline"**&#x74;ähendab üksikisikut või gruppi, kes broneerib reisibüroo kaudu majutusteenuse.
+2.1 Reisibüroo tegutseb Wink'i mitteeksklusiivse levitajana.
 
-* **"Registreeritud kaupmees"**&#x76;iitab üksusele, mis on seaduslikult volitatud ja vastutab külaliste maksete töötlemise, sh maksetehingute, tagasimaksete ja maksekorralduste menetlemise ning maksemääruste järgimise tagamise eest. Registreeritud kaupmees on üksus, kelle nimi kuvatakse külalise krediitkaardi väljavõttel broneeringuga seotud tasude kohta.
+2.2 Teenus tehakse Wink'i poolt Reisibüroole kättesaadavaks vastavalt Reisibüroo registreerimisvormile ja veebisaidile, mis on registreerimisvormis märgitud.
 
-* **"Netomakse"**&#x74;ähendab summat, mis makstakse majutusteenuse pakkujale pärast broneeringu väärtusest Winki broneerimistasu ja reisibüroo vahendustasu mahaarvamist.
+**3\. Maksete kogumine ja jaotamine**
 
-* **"Maksed"**&#x74;ähendab käesolevast lepingust tulenevaid rahalisi kohustusi, sealhulgas vahendustasusid, tasusid või muid tasusid, mida üks pool maksab teisele poolele.
+3.1 **Makse kogumine:** Reisibüroo kogub makse külaliselt broneeringu tegemise ajal.
 
-* **"Maksete vahendaja"**&#x6F;n Traveliko Singapore Pte. Ltd. täielikult omanduses olev tütarettevõte, mis haldab makseteenuseid ja kogub külalistelt makseid ostuga seotud makseviisi, näiteks krediitkaardi, deebetkaardi, pangaülekande, krüptovaluutade või PayPali kaudu.
+3.2 **Tasude mahaarvamine:** Reisibüroo võtab broneeringu väärtusest maha järgmised tasud:
 
-* **"Platvorm"**&#x74;ähendab teenusepakkuja hallatavat veebisüsteemi, mille kaudu reisibüroo saab külaliste broneeringuid teha või hallata.
+* 1,5% Wink'i broneerimistasu.  
+* Reisibüroo komisjonitasu.
 
-* **"Eraldi kokkulepe"**&#x74;ähendab reisibüroo ja majutusteenuse pakkuja vahelist sõltumatut lepingut, milles on täpsustatud konkreetsed maksetingimused, sealhulgas vahendustasu ja maksegraafik.
+3.3 **Netomakse:** Ülejäänud netomakse makstakse Reisibüroo poolt vastavale Majutuspakkujale vastavalt eraldi lepingule Reisibüroo ja Majutuspakkuja vahel. Wink ei vastuta Majutuspakkujale maksete tegemise eest.
 
-* **"Teenused"**&#x74;ähendab teenuseid, mida teenusepakkuja osutab reisibüroole käesoleva lepingu alusel, sealhulgas, kuid mitte ainult, juurdepääsu platvormile, broneerimise vahendamist ja kliendituge.
+3.4 **Eraldi leping:** Reisibürool peab olema iga Majutuspakkujaga eraldi leping, mis sätestab maksetingimused. Käesolev leping Wink'i ja Reisibüroo vahel ei reguleeri Reisibüroo ja Majutuspakkujate vahelist suhet.
 
-* **„Teenusepakkuja”**&#x74;ähendab Winki,**TRAVELIKO SINGAPORE PTE. LTD**registreeritud Singapuris.
+3.5 **Wink'i arve esitamine:** Wink esitab Reisibüroole igakuise arve 1,5% broneerimistasu eest, mis on kuu jooksul kogunenud. Reisibüroo vastutab selle arve tasumise eest kokkulepitud maksetingimuste raames.
 
-* **"Reisibüroo"**&#x74;ähendab üksust, kes sõlmib teenusepakkujaga käesoleva lepingu, et reklaamida ja müüa reisibroneeringuid teenusepakkuja platvormi kaudu.
+**4\. Rollid ja kohustused**
 
-**2. Mitte-eksklusiivsus**
+4.1 **Reisibüroo kohustused:**
 
-2.1 Reisibüroo tegutseb Winki mitte-eksklusiivse turustajana.
+* Reisibüroo vastutab maksete kogumise eest külalistelt.  
+* Reisibüroo peab tagama netomakse õigeaegse ja täpse väljamakse Majutuspakkujatele vastavalt nende eraldi lepingutele.  
+* Reisibüroo vastutab maksete töötlemise vigade või lahknevuste eest ning peab need viivitamatult parandama.  
+* Reisibüroo vastutab Wink'i igakuise broneerimistasu arve tasumise eest.
 
-2.2 Wink teeb Teenuse Reisibüroole kättesaadavaks Reisibüroo registreerimisvormis ja Reisibüroo registreerimisvormis nimetatud veebisaidil(-idel) sätestatud viisil.
+4.2 **Wink'i kohustused:**
 
-**3. Maksete kogumine ja jaotamine**
+* Wink ei vastuta maksete eest Majutuspakkujatele. Reisibüroo kannab täielikku vastutust kõigi finantstehingute eest Majutuspakkujatega.  
+* Wink tagab juurdepääsu Süsteemile ja Teenuse kättesaadavuse Reisibüroole.
 
-3.1**Maksete kogumine:**&#x52;eisibüroo võtab külaliselt makse broneerimise ajal.
+**5\. Intellektuaalomandi õigused**
 
-3.2**Tasude mahaarvamine:**&#x52;eisibüroo arvab broneeringu väärtusest maha järgmised summad:
+5.1 **Litsentsid:** Iga osapool annab teisele piiratud, mitteeksklusiivse, litsentsitasuvaba ja ülemaailmse litsentsi kasutada oma intellektuaalomandit üksnes käesoleva lepingu kohustuste täitmiseks.
 
-* 1,5% broneerimistasu Winki eest.
-* Reisibüroo komisjon.
+5.2 **Piirangud:** Reisibüroo ei tohi Wink'i intellektuaalomandit ega sisu edasi litsentseerida, üle kanda ega avaldada.
 
-3.3**Netomakse:**&#x52;eisibüroo maksab ülejäänud netomakse vastavale majutusteenuse pakkujale välja vastavalt reisibüroo ja majutusteenuse pakkuja vahelise eraldi lepingu tingimustele. Wink ei vastuta majutusteenuse pakkujale maksete tegemise eest.
+**6\. Maksmine Wink'ile**
 
-3.4**Eraldi leping:**&#x52;eisibürool peab olema iga majutusteenuse pakkujaga eraldi leping, milles on täpsustatud maksetingimused. Käesolev Winki ja reisibüroo vaheline leping ei reguleeri reisibüroo ja majutusteenuse pakkujate vahelisi suhteid.
+6.1 **Maksegraafik:**
 
-3.5**Winki arveldamine:**&#x57;ink esitab reisibüroole igakuise arve kuu jooksul kogunenud 1,5% broneerimistasu kohta. Reisibüroo vastutab selle arve tasumise eest ettenähtud maksetingimuste kohaselt.
+* Kõik Wink'ile käesoleva lepingu alusel makstavad summad tuleb tasuda 15 päeva jooksul pärast õige ja täpse arve saamist, välja arvatud juhul, kui on kirjalikult kokku lepitud teisiti. Maksmine toimub USD-s, ilma mahaarvamiste või kinnipeetavateta, välja arvatud seadusest tulenevad nõuded.  
+  
 
-**4. Rollid ja vastutusalad**
+6.2 **Hilinenud maksed:**
 
-4.1**Reisibüroo töötaja kohustused:**
+* Kui makse ei laeku tähtajaks, jätab Wink endale õiguse arvutada viivist 5% kuus või seadusega lubatud maksimaalse määrani, kumb on madalam, alates maksetähtajast kuni makse laekumiseni. Lisaks võib Wink peatada teenuse osutamise kuni makse laekumiseni. Kui Wink'i esitatud arvel on vigu, peab Reisibüroo tasuma vaid õige ja täpse osa ning ei ole kohustatud maksma viivist ega trahvi vale osa eest.
 
-* Reisibüroo vastutab külalistelt maksete kogumise eest.
-* Reisibüroo peab tagama netomakse õigeaegse ja täpse väljamaksmise majutusteenuse pakkujatele vastavalt nende eraldi lepingutele.
-* Reisibüroo vastutab maksete töötlemisel tekkinud vigade või lahknevuste eest ning on kohustatud need viivitamatult parandama.
-* Reisibüroo vastutab Winki igakuise broneerimistasude arve tasumise eest.
+6.3 **Tagasimaksed ja krediidid:**
 
-4.2**Winki kohustused:**
+* Kui teenust ei osutata või see tühistatakse Reisibüroost sõltumatutel põhjustel, tagastab või krediteerib Wink Reisibüroole summa 30 päeva jooksul pärast tühistamisest teatamist, eeldusel, et teenustasu on juba tasutud.
 
-* Wink ei vastuta majutusteenuse pakkujatele tehtavate maksete eest. Reisibüroo kannab ainuvastutust kõigi majutusteenuse pakkujatega tehtavate finantstehingute eest.
-* Wink annab reisibüroole juurdepääsu süsteemile ja tagab teenuse kättesaadavuse.
+6.4 **Valuuta ja maksud:**
 
-**5. Intellektuaalomandi õigused**
+* Maksmine toimub USD-s. Reisibüroo vastutab kõigi maksude, tollimaksude või muude tasude eest, mis võivad käesoleva lepingu alusel tehingutele kehtida, sealhulgas valuutavahetuskulud, kui maksed tehakse muus valuutas kui USD.
 
-5.1**Litsentsid:**&#x4B;umbki Pool annab teisele Poolele piiratud, mitte-eksklusiivse, tasuta ja ülemaailmse litsentsi oma intellektuaalomandi kasutamiseks üksnes käesoleva Lepingu kohustuste täitmiseks.
+6.5 **Maksmisviisid:**
 
-5.2**Piirangud:**&#x52;eisibüroo ei tohi Winki pakutavat intellektuaalomandit ega sisu edasi litsentsida, üle anda ega avaldada.
+* Reisibüroo teeb maksed pangaülekandega, krediitkaardiga või PayPali kaudu ning kõik makseviisiga seotud tasud kannab Reisibüroo.
 
-**6. Makse Winkile**
+6.6 **Maksetülid:**
 
-6.1**Maksegraafik:**
+* Arve vaidluse korral peab Reisibüroo teavitama Wink'i 10 päeva jooksul arve kuupäevast, esitades vaidluse põhjused. Osapooled peavad heas usus vaidluse kiiresti lahendama. Vaidlemata arve osa tuleb tasuda tähtajaks.
 
-* Kõik käesoleva lepingu alusel reisibüroo poolt Winkile tasumisele kuuluvad maksed tuleb tasuda 15 päeva jooksul alates Winkilt korrektse ja täpse arve saamisest, kui kirjalikult ei ole kokku lepitud teisiti. Maksed tuleb teha USA dollarites, ilma igasuguste mahaarvamiste või kinnipidamisteta, välja arvatud seadusega ettenähtud juhtudel.
+**7\. Reisibüroo kohustused**
 
-6.2**Hilinenud maksed:**
+7.1 **Seaduste ja määruste järgimine:**
 
-* Kui käesoleva lepingu alusel tasumisele kuuluvat makset ei ole maksetähtpäevaks laekunud, jätab Wink endale õiguse nõuda tasumata summalt intressi 5% kuus või seadusega lubatud maksimaalset määra, olenevalt sellest, kumb on madalam, arvutatuna maksetähtpäevast kuni maksetähtpäevani. Lisaks võib Wink teenuste osutamise kuni makse laekumist peatada. Kui Winki esitatud arvel on vigu või ebatäpsusi, on reisibüroo kohustatud tasuma ainult arve õige ja täpse osa ning vale osa tasumata jätmise eest ei kohaldata talle intressi ega trahvi.
+* Reisibüroo peab järgima kõiki kohalikke, riiklikke ja rahvusvahelisi seadusi, määrusi ja tööstusharu standardeid oma tegevuses, sealhulgas tarbijakaitset, andmekaitset ja rahapesu tõkestamist.  
+  
 
-6.3**Tagasimaksed ja krediidid:**
+7.2 **Teenuste täpne esitamine:**
 
-* Juhul kui teenust ei osutata või see tühistatakse reisibüroost mitteolenevatel asjaoludel, tagastab Wink reisibüroole raha või kannab selle krediteerimata 30 päeva jooksul alates tühistamisteate kättesaamisest, eeldusel, et teenustasu on juba tasutud.
+* Reisibüroo peab täpselt esitama platvormi kaudu pakutavad teenused ja majutused. Reisibüroo vastutab, et kõik külalistele antud andmed, sealhulgas kirjeldused, hinnad ja saadavus, oleksid täpsed ja ajakohased.
 
-6.4**Valuuta ja maksud:**
+7.3 **Teenuste reklaamimine:**
 
-* Maksed tehakse USA dollarites. Reisibüroo vastutab kõigi maksude, tollimaksude või muude tasude eest, mis võivad käesoleva lepingu alusel tehtavate tehingute suhtes kohalduda, sealhulgas valuuta konverteerimise kulude eest, kui maksed tehakse muus valuutas kui USA dollarites.
+* Reisibüroo peab aktiivselt reklaamima platvormi kaudu pakutavaid teenuseid vastavalt teenusepakkuja juhistele. See hõlmab turundustegevusi, reklaammaterjalide ajakohastamist ja tagamist, et kogu reklaamsisu on täpne ja vastab kehtivatele reklaamistandarditele.
 
-6.5**Makseviisid:**
+7.4 **Broneeringute haldamine:**
 
-* Reisibüroo teeb makseid pangaülekande, krediitkaardi või PayPali kaudu ning kõik reisibüroo valitud makseviisiga seotud tasud kannab reisibüroo.
+* Reisibüroo haldab kõiki platvormi kaudu tehtud broneeringuid, sealhulgas broneeringute töötlemist, tühistamist ja muutmist. Reisibüroo vastutab suhtluse eest külaliste ja majutusettevõtjatega, et tagada broneeringute täpne töötlemine ja kinnitamine.
 
-6.6**Maksevaidlused:**
+7.5 **Maksete kogumine ja edastamine:**
 
-* Arve vaidlustamise korral teavitab reisibüroo Winki 10 päeva jooksul alates arve kuupäevast, esitades vaidluse üksikasjalikud põhjused. Mõlemad pooled peavad heas usus läbirääkimisi vaidluse kiireks lahendamiseks. Arve vaidlustamata osa tuleb tasuda maksetähtpäevaks.
+* Reisibüroo vastutab külalistelt platvormi kaudu tehtud broneeringute maksete kogumise eest ning kokkulepitud maksete edastamise eest majutusettevõtjatele ja teenusepakkujale vastavalt maksetingimustele. Reisibüroo peab tagama, et kõik maksed töödeldakse turvaliselt ja kehtivate finantsmäärustega kooskõlas.
 
-**7. Reisibüroo töötaja kohustused**
+7.6 **Külaliste kaebuste ja vaidluste käsitlemine:**
 
-7.1**Seaduste ja määruste järgimine:**
+* Reisibüroo on külaliste peamine kontaktpunkt kõigi kaebuste, vaidluste või probleemide korral, mis on seotud platvormi kaudu pakutavate teenustega. Reisibüroo peab tegema mõistlikke jõupingutusi nende kaebuste ja vaidluste kiireks lahendamiseks ning hoidma positiivset suhet nii külaliste kui ka majutusettevõtjatega.
 
-* Reisibüroo peab oma äritegevuses järgima kõiki kohaldatavaid kohalikke, riiklikke ja rahvusvahelisi seadusi, määrusi ja valdkonna standardeid, sealhulgas, kuid mitte ainult, tarbijakaitse, andmekaitse ja rahapesu tõkestamisega seotud seadusi, määrusi ja valdkonna standardeid.
+7.7 **Raporteerimine ja vastutus:**
 
-7.2**Teenuste täpne esitus:**
+* Reisibüroo esitab teenusepakkujale regulaarselt aruandeid oma kohustuste täitmise kohta, sealhulgas müügiandmed, broneeringute statistika ja klienditagasiside. Reisibüroo vastutab nende aruannete täpsuse eest ning teeb koostööd teenusepakkujaga auditite või ülevaadete korral.
 
-* Reisibüroo peab platvormi kaudu pakutavaid teenuseid ja majutust täpselt esitama. Reisibüroo vastutab selle eest, et kogu külalistele edastatav teave, sealhulgas, kuid mitte ainult, kirjeldused, hinnad ja saadavus, oleks täpne ja ajakohane.
+7.8 **Konfidentsiaalsus:**
 
-7.3**Teenuste reklaamimine:**
+* Reisibüroo hoiab konfidentsiaalsena kogu teenusepakkuja ärisaladusi ja omandit, sealhulgas kliendiandmeid, hinnateavet ja äristrateegiaid. Reisibüroo ei avalda neid kolmandatele isikutele ilma teenusepakkuja eelneva kirjaliku nõusolekuta.
 
-* Reisibüroo reklaamib aktiivselt Platvormi kaudu pakutavaid teenuseid vastavalt teenusepakkuja antud suunistele. See hõlmab muu hulgas turundustegevusi, reklaammaterjalide ajakohasena hoidmist ning kogu reklaamsisu täpsuse ja kohaldatavate reklaamistandardite järgimise tagamist.
+7.9 **Platvormi tingimuste järgimine:**
 
-7.4**Broneeringute haldamine:**
+* Reisibüroo järgib kõiki teenusepakkuja platvormi kasutamise tingimusi, sealhulgas nende muudatusi ja uuendusi. Reisibüroo vastutab, et tema töötajad ja agendid on nendest tingimustest teadlikud ja neid järgivad.
 
-* Reisibüroo haldab kõiki platvormi kaudu tehtud broneeringuid, sealhulgas, kuid mitte ainult, broneeringute, tühistamiste ja muudatuste töötlemist. Reisibüroo vastutab külaliste ja majutusteenuse pakkujatega suhtlemise eest, et tagada kõigi broneeringute täpne töötlemine ja kinnitamine.
+7.10 **Kahju hüvitamine:**
 
-7.5**Maksete kogumine ja edastamine:**
+* Reisibüroo hüvitab ja kaitseb teenusepakkujat kõigi nõuete, kahjude, vastutuste ja kulude eest, mis tulenevad Reisibüroo lepingu rikkumisest, sealhulgas seaduste mittejärgimisest, teenuste valest esitamisest või kohustuste mittetäitmisest külaliste või majutusettevõtjate suhtes.
 
-* Reisibüroo vastutab külalistelt platvormi kaudu tehtud broneeringute eest maksete kogumise ja kokkulepitud maksete edastamise eest majutusteenuse pakkujatele ja teenusepakkujale vastavalt maksetingimustele. Reisibüroo tagab, et kõik maksed töödeldakse turvaliselt ja vastavalt kehtivatele finantsmäärustele.
+**8\. Komisjonid ja tasud**
 
-7.6**Külaliste kaebuste ja vaidluste lahendamine:**
+8.1 **Komisjoni arvutamine:** Reisibüroole makstav komisjon on protsent (kokkulepitud Reisibüroo ja Majutuspakkuja vahelises lepingus) broneeringu väärtusest pärast Wink'i broneerimistasu mahaarvamist.
 
-* Reisibüroo on külaliste peamine kontaktpunkt kõigi platvormi kaudu osutatavate teenustega seotud kaebuste, vaidluste või probleemide korral. Reisibüroo teeb mõistlikke jõupingutusi selliste kaebuste ja vaidluste kiireks lahendamiseks viisil, mis säilitab positiivsed suhted nii külaliste kui ka majutusteenuse pakkujatega.
+8.2 **Wink'i broneerimistasu:** Wink esitab igakuise arve 1,5% broneerimistasu eest. Reisibüroo vastutab selle arve tasumise eest Wink'i poolt määratud maksetingimuste raames.
 
-7.7**Aruandlus ja vastutus:**
+**9\. Õiguslikud sätted**
 
-* Reisibüroo esitab teenusepakkujale regulaarselt aruandeid käesoleva lepingu kohaste kohustuste täitmise kohta, sealhulgas, kuid mitte ainult, müügiandmeid, broneerimisstatistikat ja klientide tagasisidet. Reisibüroo vastutab nende aruannete täpsuse eest ja teeb teenusepakkujaga koostööd tema tegevuse auditeerimisel või läbivaatamisel.
+9.1 **Vastutuse piiramine:** Ükski osapool ei vastuta kaudsete, juhuslike, tagajärjel tekkivate, erakorraliste ega karistuslike kahjude eest, mis tulenevad käesolevast lepingust.
 
-7.8**Konfidentsiaalsus:**
+9.2 **Kahju hüvitamine:** Iga osapool hüvitab teisele osapoolele kõik nõuded, mis tulenevad lepingu rikkumisest või hüvitise nõudest rikkumise tõttu.
 
-* Reisibüroo hoiab konfidentsiaalsena kogu teenusepakkuja omandiõigusega kaitstud teavet ja ärisaladusi, sealhulgas, kuid mitte ainult, kliendiandmeid, hinnakujundusteavet ja äristrateegiaid. Reisibüroo ei tohi avaldada sellist teavet kolmandatele isikutele ilma teenusepakkuja eelneva kirjaliku nõusolekuta.
+9.3 **Force Majeure:** Ükski osapool ei vastuta viivituste või täitmata jätmiste eest, mis on põhjustatud asjaoludest, mis on nende mõistlikust kontrollist väljas, sealhulgas loodusõnnetused, sõda, terrorism, streigid jne.
 
-7.9**Platvormi tingimuste järgimine:**
+**10\. Lepingu kestus ja lõpetamine**
 
-* Reisibüroo peab järgima kõiki teenusepakkuja platvormi kasutamisega seotud tingimusi, sealhulgas nende tingimuste kõiki uuendusi või muudatusi. Reisibüroo vastutab selle eest, et tema töötajad ja agendid oleksid nendest tingimustest teadlikud ja neid järgiksid.
+10.1 **Kestus:** Käesolev leping jõustub allkirjastamise kuupäeval ja kehtib kuni ühe osapoole poolt lõpetamiseni.
 
-7.10**Hüvitis:**
+10.2 **Lõpetamine:** Mõlemal osapoolel on õigus leping lõpetada oma äranägemise järgi.
 
-* Reisibüroo hüvitab teenusepakkujale kõik nõuded, kahjud, kohustused ja kulud, mis tulenevad reisibüroo poolt käesoleva lepingu rikkumisest või on sellega seotud, sealhulgas, kuid mitte ainult, kohaldatavate seaduste eiramine, teenuste vale esitamine või külaliste või majutusteenuse pakkujate ees oma kohustuste mittetäitmine.
+10.3 **Pärast lõpetamist:** Lõpetamisel tasub Reisibüroo kõik võlgnetavad summad ning lõpetab Wink'i intellektuaalomandi või sisu kasutamise.
 
-**8. Komisjonitasud ja lõivud**
+**11\. Kohaldatav õigus ja vaidluste lahendamine**
 
-8.1**Komisjonitasu arvutamine:**&#x52;eisibüroole makstav vahendustasu on protsent (mis on sätestatud reisibüroo ja majutusteenuse pakkuja vahelises lepingus) broneeringu väärtusest pärast Winki broneerimistasu mahaarvamist.
+11.1 **Kohaldatav õigus:** Käesolevat lepingut reguleerivad ja tõlgendatakse Singapuri seaduste kohaselt, sõltumata seaduste konfliktidest.
 
-8.2**Winki broneerimistasu:**&#x57;ink esitab igakuiselt arve 1,5% broneerimistasu kohta. Reisibüroo vastutab selle arve tasumise eest Winki määratud maksetingimuste kohaselt.
+11.2 **Vaidluste lahendamine:** 
 
-**9. Õigusnormid**
+11.2.1 **Läbirääkimised:** Vaidluse, nõude, küsimuse või erimeelsuse korral, mis tuleneb või on seotud käesoleva lepinguga, püüavad pooled esmalt lahendada vaidluse heas usus läbirääkimiste teel. Läbirääkimised algavad kirjaliku teatega ühelt poolelt teisele.
 
-9.1**Vastutuse piiramine:**&#x4B;umbki Pool ei vastuta käesolevast Lepingust tulenevate kaudsete, juhuslike, tegevusest tulenevate, eriliste ega karistuslike kahjude eest.
+11.2.2 **Vahendus:** Kui vaidlust ei õnnestu lahendada 30 päeva jooksul läbirääkimiste teel, suunatakse vaidlus lõplikult lahendamiseks Singapuri Rahvusvahelise Vahendusasutuse (SIAC) reeglite alusel, mis on selle klausli osaks. Vahendajate arv on üks, vahenduse koht on Singapur. Vahendusprotsessi keel on inglise keel.
 
-9.2**Hüvitis:**&#x4B;umbki Pool kohustub hüvitama teisele Poolele kõik kahjud ja hoidma teist Poolt kahjutuna mis tahes nõuete eest, mis tulenevad käesoleva Lepingu rikkumisest või hüvitava Poole hooletusest.
+11.2.3 **Kohtuvõim:** Hoolimata eelnevast jätab kumbki osapool endale õiguse taotleda ajutist või keelavat õiguskaitset Singapuri kohtutes oma õiguste või vara kaitseks vahendaja määramise ootamise ajal ning sellisel kohtul on ainupädevus sellise õiguskaitse andmiseks.
 
-9.3**Vääramatu jõud:**&#x4B;umbki Pool ei vastuta viivituste või täitmata jätmiste eest, mis on tingitud nende mõistliku kontrolli alt väljas olevatest põhjustest, sealhulgas vääramatu jõu, loodusõnnetuste, sõja, terrorismi, streikide jms.
+**12\. Force Majeure**
 
-**10. Lepingu kestus ja lõpetamine**
+12.1 **Määratlus:** Ükski osapool ei vastuta oma kohustuste täitmata jätmise või hilinemise eest, kui see on tingitud Force Majeure sündmusest. "Force Majeure sündmus" tähendab mis tahes asjaolu, mis on osapoole mõistlikust kontrollist väljas, sealhulgas, kuid mitte ainult, loodusõnnetused (nt maavärinad, üleujutused, orkaanid), sõda, terrorism, koduseisak, pandeemiad, valitsuse tegevused või muud ettenägematud sündmused.
 
-10.1**Termin:**&#x4B;äesolev leping jõustub allkirjastamise kuupäeval ja kehtib kuni ühe poole poolt lõpetamiseni.
+12.2 **Teavitamine:** Mõjutatud osapool peab teavitama teist osapoolt kirjalikult niipea kui mõistlikult võimalik pärast Force Majeure sündmuse toimumist. Teatis sisaldab Force Majeure sündmuse kirjeldust, eeldatavat kestust ja mõjutatud kohustusi.
 
-10.2**Lõpetamine:**&#x4B;umbki Pool võib käesoleva Lepingu oma äranägemisel lõpetada.
+12.3 **Teenuste mõju:**
 
-10.3**Pärast lõpetamist:**&#x4C;epingu lõpetamise korral tasub reisibüroo kõik tasumata maksed ja lõpetab Winkiga seotud intellektuaalomandi või sisu kasutamise.
+* Teenuste peatamine: Kui Force Majeure sündmus mõjutab teie ettevõtte võimet teenuseid Reisibüroole osutada, peatatakse teenused sündmuse kestuseks ilma trahvita. Reisibüroo maksekohustused mõjutatud teenuste eest peatatakse samuti selle perioodi jooksul.  
+* Reisibüroo kohustused: Reisibüroo ei vastuta kohustuste eest, mida on võimatu täita Force Majeure sündmuse tõttu. Kuid Reisibüroo peab jätkuvalt täitma kõiki muid kohustusi, mida sündmus otseselt ei mõjuta.
 
-**11. Kohaldatav õigus ja vaidluste lahendamine**
+12.4 **Kestus ja lõpetamine:** Kui Force Majeure sündmus kestab kauem kui kuuskümmend (60) päeva, võib kumbki osapool lepingu kirjaliku teatega lõpetada. Sellisel juhul ei vastuta kumbki osapool teisele peale juba tekkinud kohustuste.
 
-11.1**Kohaldatav õigus:**&#x4B;äesolevale lepingule kohaldatakse Singapuri seadusi ja seda tõlgendatakse vastavalt neile, olenemata õigusnormide konfliktist.
+12.5 **Kohustuste jätkamine:** Kui Force Majeure sündmus lõpeb, jätkavad pooled oma kohustuste täitmist käesoleva lepingu alusel mõistlikul määral.
 
-11.2**Vaidluste lahendamine:**
+**13\. Konfidentsiaalsus**
 
-11.2.1**Läbirääkimised:**&#x4B;äesolevast lepingust tuleneva või sellega seotud vaidluse, nõude, küsimuse või lahkarvamuse korral püüavad pooled esmalt vaidluse lahendada heausksete läbirääkimiste teel. Sellised läbirääkimised algavad ühe poole kirjaliku teate esitamisel teisele poolele.
+13.1 Mõlemad osapooled hoiavad konfidentsiaalsena kogu ärisaladusi ega avalda neid kolmandatele isikutele ilma eelneva kirjaliku nõusolekuta.
 
-11.2.2**Vahekohtumenetlus:**&#x4B;ui vaidlust ei õnnestu läbirääkimiste teel lahendada kolmekümne (30) päeva jooksul, suunatakse see lahendamiseks vahekohtusse vastavalt Singapuri Rahvusvahelise Vahekohtukeskuse (SIAC) reeglitele, mis loetakse käesolevasse klauslisse viitena lisatud olevat. Vahekohtunike arv on üks ja vahekohtu asukoht või õiguslik koht on Singapur. Vahekohtumenetluses kasutatav keel on inglise keel.
+**14\. Muud sätted**
 
-11.2.3**Jurisdiktsioon:**&#x45;eltoodust hoolimata on kummalgi poolel õigus taotleda Singapuri kohtutes ajutist õiguskaitset või kohtulikku ettekirjutust oma õiguste või vara kaitsmiseks kuni vahekohtuniku määramiseni ning igal sellisel kohtul on ainupädevus sellist õiguskaitset anda.
+14.1 **Täielik leping:** Käesolev leping moodustab osapoolte vahel kogu lepingu ja asendab kõik varasemad kokkulepped või arusaamad.
 
-**12. Vääramatu jõud**
+14.2 **Muudatused:** Kõik lepingu muudatused peavad olema kirjalikud ja mõlema osapoole poolt allkirjastatud.
 
-12.1**Definitsioon**Kumbki pool ei vastuta käesoleva lepingu kohaste kohustuste täitmata jätmise või täitmisega viivitamise eest, kui selline täitmata jätmine või viivitus on tingitud vääramatust jõust. „Vääramatu jõu sündmus” tähendab mis tahes sündmust, mis on poole mõistliku kontrolli alt väljas, sealhulgas, kuid mitte ainult, loodusõnnetused (näiteks maavärinad, üleujutused või orkaanid), sõda, terrorism, kodanikurahutused, pandeemiad, valitsuse meetmed või mis tahes muu sündmus, mida ei oleks saanud mõistlikult ette näha ega vältida.
-
-12.2**Teavitamine**Mõjutatud pool peab teist poolt kirjalikult teavitama niipea kui võimalik pärast vääramatu jõu sündmuse toimumist. Selline teade peab sisaldama vääramatu jõu sündmuse kirjeldust, selle eeldatavat kestust ja mõjutatud kohustusi.
-
-12.3**Mõju teenustele**:
-
-* Teenuste peatamine: Kui vääramatu jõu sündmus mõjutab teie ettevõtte võimet reisibüroole teenuseid osutada, peatatakse need teenused sündmuse ajaks ilma trahvita. Samuti peatatakse selleks ajaks reisibüroo maksekohustused, mis on seotud mõjutatud teenustega.
-* Reisibüroo kohustused: Reisibüroo ei vastuta teie ettevõtte ees võetud kohustuste eest, mida vääramatu jõu asjaolude tõttu ei ole võimalik täita. Reisibüroo peab aga jätkama kõigi muude kohustuste täitmist, mida see sündmus otseselt ei mõjuta.
-
-12.4**Kestus ja lõpetamine**Kui vääramatu jõu sündmus kestab kauem kui kuuskümmend (60) päeva, võib kumbki pool käesoleva lepingu lõpetada, teatades sellest teisele poolele kirjalikult. Sellise lõpetamise korral ei ole kummalgi poolel teise poole ees mingit vastutust, välja arvatud kohustuste eest, mis tekkisid enne vääramatu jõu sündmust.
-
-12.5**Kohustuste taastamine**Kui vääramatu jõu sündmus on lakanud, jätkavad mõlemad pooled viivitamata oma käesoleva lepingu kohaseid kohustusi niivõrd, kuivõrd see on mõistlikult teostatav.
-
-**13. Konfidentsiaalsus**
-
-13.1 Mõlemad Pooled kohustuvad hoidma kogu ärisaladuse alla kuuluva teabe konfidentsiaalsena ega avalda seda kolmandatele isikutele ilma eelneva kirjaliku nõusolekuta.
-
-**14. Muu**
-
-14.1**Kogu leping:**&#x4B;äesolev Leping moodustab Poolte vahelise täieliku kokkuleppe ja asendab kõik varasemad kokkulepped või arusaamad.
-
-14.2**Muudatused:**&#x4B;õik käesoleva lepingu muudatused tuleb teha kirjalikult ja mõlema poole poolt allkirjastada.
-
-14.3**Eraldatavus:**&#x4B;ui mõni käesoleva lepingu säte osutub kehtetuks või jõustamatuks, jäävad ülejäänud sätted täielikult jõusse.
-
+14.3 **Kehtetavus:** Kui mõni lepingu säte osutub kehtetuks või täitmatuks, jäävad ülejäänud sätted täielikult kehtima.

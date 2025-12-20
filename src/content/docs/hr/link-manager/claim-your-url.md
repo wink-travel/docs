@@ -1,17 +1,16 @@
 ---
-title: Zatražite svoj URL
-description: U ovom članku ćemo vam reći kako zatražiti svoj WinkLinks vanity URL.
+title: Rezervirajte svoj URL
+description: U ovom članku objašnjavamo kako rezervirati svoj WinkLinks vanity URL.
 sidebar:
   order: 1
 ---
-Stvaranjem [partnerski račun](/studio/what-is-studio), već imate WinkLinks vanity URL. WinkLinks značajke za izdavače postoje u našoj Studio aplikaciji; uz naše ostale značajke za partnere.
+
+Kreiranjem [affiliate računa](/hr/studio/what-is-studio), već imate WinkLinks vanity URL. WinkLinks značajke za izdavače dostupne su u našoj Studio aplikaciji, zajedno s ostalim affiliate značajkama.
 
 ### Primjer
 
-Ako je naziv vašeg računa Queen Bee, vaš WinkLinks vanity URL bit će:
+Ako je ime vašeg računa Queen Bee, vaš WinkLinks vanity URL bit će:
 
 <h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-Nazivi računa dostupni su na`first come - first serve`osnova - Zgrabite svoj jedinstveni URL dok možete!
-
+Imena računa dostupna su po principu `tko prvi, njegovo` - Rezervirajte svoj jedinstveni URL dok možete!

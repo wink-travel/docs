@@ -1,55 +1,53 @@
 ---
-title: Customers
-description: >-
-  Овај чланак објашњава које типове купаца услужујемо и како Винк може да нам
-  помогне.
+title: Kupci
+description: Ovaj članak objašnjava vrste kupaca koje služimo i kako im Wink može pomoći.
 sidebar:
   order: 2
 ---
-Овај чланак објашњава које типове купаца услужујемо и како им најбоље можемо помоћи.
 
-## Некретнине
+Ovaj članak objašnjava vrste kupaca koje služimo i kako im najbolje možemo pomoći.
 
-Винк је почео са укључивањем хотела у рад пре једне деценије. Хотели користе Винк за ефикасно управљање својим инвентаром преко хиљада продајних канала, укључујући и сопствени сајт brand.com, и за већу зараду са сваком резервацијом, уз истовремено јачање директних канала уз помоћ наших алата фокусираних на угоститељство који побољшавају идентитет бренда и профитабилност.
+## Nekretnine
 
-## Брендови и ланци
+Wink je počeo sa uključivanjem hotela pre deset godina. Hoteli koriste Wink za efikasno upravljanje svojim inventarom preko hiljada prodajnih kanala, uključujući i svoj sopstveni brand.com sajt, i za ostvarivanje većeg prihoda sa svakom rezervacijom dok istovremeno jačaju direktne kanale uz pomoć naših alata fokusiranih na ugostiteljstvo koji unapređuju identitet brenda i profitabilnost​.
 
-Брендови и ланци имају мало другачије потребе од једног објекта. На Винку могу:
+## Brendovi i lance
 
-* Управљајте више некретнинама под једним налогом.
-* Доделите менаџере објектима
-* Користите [ВинкЛинкс](/link-manager/wink-links), [ВинкЛинкс](/link-manager/wink-links) и наше [ВинкЛинкс](/link-manager/wink-links) да пласирају и продају више некретнина на једном месту.
+Brendovi i lance imaju nešto drugačije potrebe od pojedinačnih objekata. Na Wink-u mogu:
 
-## Компаније за управљање
+- Upravljati više objekata pod jednim nalogom.
+- Dodeljivati menadžere objektima
+- Koristiti [WinkLinks](/sr/link-manager/wink-links), [WordPress](/sr/developers/wordpress) i naše [Web komponente](/sr/developers/web-components) za marketing i prodaju više objekata na jednom mestu.
 
-Компаније за управљање угоститељством и компаније за управљање дестинацијама могу управљати својим портфолијима некретнина у име власника. Постоји дефинитивна предност у томе да се агенције фокусиране на интернет и дигитално освештене баве продајом онлајн сегменту, док се хотели могу фокусирати на управљање задовољством купаца када стигну на локацију.
+## Menadžerske kompanije
 
-## Утицајне особе
+Kompanije za upravljanje ugostiteljstvom i kompanije za upravljanje destinacijama mogu upravljati svojim portfoliom objekata u ime vlasnika. Postoji jasna prednost u tome da online orijentisane, digitalno svesne agencije preuzmu prodaju online segmentu, dok se hoteli mogu fokusirati na upravljanje zadovoljstvom gostiju kada stignu na lokaciju.
 
-Инфлуенсери користе Винк како би боље монетизовали своју публику. То раде тако што сарађују са хотелима, креирају прилагођене понуде и користе Винк-ове алате прилагођене друштвеним мрежама и моћну аналитику како би пратили који се производи најбоље продају.
+## Influenceri
 
-## Туристички агенти
+Influenceri koriste Wink da bolje unovče svoju publiku. To čine partnerstvom sa hotelima, kreiranjem prilagođenih ponuda i korišćenjem Wink-ovih alata prilagođenih društvenim mrežama i moćne analitike za praćenje koji proizvodi se najbolje prodaju​.
 
-Туристички агенти добијају приступ туристичком инвентару широм света по одличним ценама путем нашег наменског [портал туристичке агенције](https://agent.wink.travel) Могу да резервишу преко нашег портала, преко нашег API-ја или тако што ће дозволити својим корисницима да сами резервишу на веб-сајту туристичке агенције која користи наше технологије.
+## Turistički agenti
 
-## Корпорације
+Turistički agenti dobijaju pristup turističkom inventaru širom sveta po odličnim cenama putem našeg posvećenog [portala za turističke agente](https://agent.wink.travel). Mogu praviti rezervacije preko našeg portala, putem našeg API-ja ili dozvoliti svojim korisnicima da sami rezervišu na sajtu turističkog agenta koji koristi naše tehnologije.
 
-Корпорацијама је потребна већа платформа за путовања:
+## Korporacije
 
-* Потребни су им добро организовани планови путовања који подржавају флексибилност и промене у последњем тренутку.
-* Потребни су им поуздани алати за комуникацију, као што је интернет.
-* Имају преференције добављача са чланствима.
-* Често имају корпоративну кредитну картицу и постављају ограничења потрошње.
-* Захтевају интеграцију управљања трошковима и извештавања.
-* Потребна им је подршка консијержа, као и услуге MICE на догађајима.
+Korporacije zahtevaju više od same platforme za putovanja:
 
-Корпоративни путници могу сами да управљају својим налозима на нашем [корпоративни портал](/corporate/what-is-group) или користите наше званично подржане [корпоративни портал](/corporate/what-is-group) додатак и [корпоративни портал](/corporate/what-is-group) интеграција.
+- Potrebni su im dobro organizovani itinereri koji podržavaju fleksibilnost i promene u poslednjem trenutku.
+- Potrebni su im pouzdani alati za komunikaciju, kao što je internet.
+- Imaju preferencije za dobavljače sa članstvima.
+- Često imaju korporativnu kreditnu karticu i postavljene limite potrošnje.
+- Potrebno im je upravljanje troškovima i integracija izveštavanja.
+- Potrebna im je podrška konsijerža, kao i MICE usluge na događajima.
 
-## Програмери
+Korporativni putnici mogu upravljati svojim nalozima na našem [korporativnom portalu](/sr/corporate/what-is-group) ili koristiti naš zvanično podržani [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dodatak i [Concur](https://www.concur.com/) integraciju.
 
-Иако смо ову платформу изградили од стране и за хотелијере... Свака линија кода је направљена са посебном сврхом поновне употребе. Наш тим програмера је изградио Wink у нади да ће следећа 🦄 апликација за путовања бити изграђена на нашој бази кода. Идите до [Програмер](/developers/build-on-wink) страницу да бисте видели како Винк може да вас подржи у вашем следећем подухвату.
+## Programeri
 
-## Друго
+Iako smo ovu platformu izgradili za i od strane hotelijera... Svaka linija koda je napravljena sa ciljem ponovne upotrebljivosti. Naš tim programera je izgradio Wink u nadi da će sledeća 🦄 aplikacija za putovanja biti izgrađena na osnovu naše baze koda. Posetite [Developer](/sr/developers/build-on-wink) stranicu da vidite kako vam Wink može pomoći u vašem sledećem poduhvatu.
 
-Свако ко жели да пронађе и прода туристички инвентар може имати користи од коришћења Винка. Претворите своју страст према угоститељству у акцију тако што ћете зарадити одличну провизију за сваку резервацију.
+## Ostalo
 
+Svako ko želi da pronađe i proda turistički inventar može imati koristi od korišćenja Wink-a. Pretvorite svoju strast prema ugostiteljstvu u akciju i zaradite odličnu proviziju na svakoj rezervaciji.

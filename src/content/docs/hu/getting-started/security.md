@@ -1,79 +1,76 @@
 ---
-title: Security
-description: >-
-  Ez a cikk információkat tartalmaz az általunk végrehajtott biztonsági
-  intézkedésekről, amelyeket harmadik féltől származó biztonsági cégünk évente
-  tesz közzé.
+title: Biztonság
+description: Ez a cikk tartalmazza az általunk bevezetett biztonsági intézkedéseket, amelyeket évente közzétesz harmadik fél biztonsági cége.
 sidebar:
   order: 6
 ---
-# Wink biztonsági áttekintési dokumentum
+
+# Wink Biztonsági Áttekintő Dokumentum
 
 *Utolsó frissítés: 2024. szeptember 7.*
 
-*1.0 verzió*
+*Verzió 1.0*
 
-## Cél és hatókör
+## Cél és Hatály
 
-A biztonság és a felhasználói adatok védelme iránti folyamatos elkötelezettségünk részeként rendszeres behatolásvizsgálatot végzünk webes alkalmazásunkon. Ez a dokumentum felvázolja tesztelési módszereinket, összefoglalja az eredményeket, és kiemeli a folyamatos biztonságfejlesztéshez való hozzáállásunkat.
+A biztonság és a felhasználói adatok védelme iránti folyamatos elkötelezettségünk részeként rendszeres behatolásvizsgálatokat végzünk webalkalmazásunkon. Ez a dokumentum ismerteti a tesztelési módszertanainkat, összefoglalja az eredményeket, és kiemeli a folyamatos biztonsági fejlesztéshez való hozzáállásunkat.
 
-Ez a dokumentum frissülni fog, amint új jelentések készülnek, vagy jelentős változások történnek.
+A dokumentumot frissítjük, amikor új jelentések készülnek, vagy jelentős változások történnek.
 
-Hatályon belüli tartományok:\
-\*.wink.travel\
+A hatályba tartozó domainek:  
+\*.wink.travel  
 \*.trippay.io
 
-## Tesztelési gyakoriság és ütemezés
+## Tesztelési Gyakoriság és Ütemezés
 
-Penetrációs tesztjeinket évente végezzük, további teszteket pedig szükség szerint ütemezünk az alkalmazás vagy az infrastruktúra jelentős frissítéseit követően. Ez a rendszeres tesztelési ütem biztosítja, hogy lépést tartsunk a fejlődő fenyegetésekkel, és biztonságos környezetet tartsunk fenn.
+Befolyásvizsgálatainkat évente végezzük, további teszteket pedig szükség szerint ütemezünk az alkalmazás vagy az infrastruktúra jelentős frissítései után. Ez a rendszeres tesztelési ritmus biztosítja, hogy lépést tartsunk a fejlődő fenyegetésekkel, és biztonságos környezetet tartsunk fenn.
 
-## Tesztelési módszerek
+## Tesztelési Módszertanok
 
-Penetrációs tesztelésünk átfogó, és a biztonsági szempontok széles skáláját fedi le, beleértve, de nem kizárólagosan:
+Befolyásvizsgálataink átfogóak, és számos biztonsági szempontot lefednek, többek között:
 
-* **OWASP Top 10:**&#x54;esztjeink kifejezetten a legkritikusabb biztonsági kockázatokat célozzák meg, mint például az injektálás, a hibás hitelesítés és a webhelyeken belüli szkriptelés (XSS).
-* **Fekete doboz és szürke doboz tesztelése:**&#x41; hatókörtől függően csapatunk ezeket a módszertanokat használja mind külső, mind belső támadási forgatókönyvek szimulálására.
-* **Automatizált és manuális tesztelés:**&#x41; Burp Suite Pro nevű vezető biztonsági tesztelőeszközkészletet használjuk automatizált biztonsági vizsgálatok elvégzéséhez és a manuális tesztelési technikák támogatásához, hogy azonosítsuk az összetett sebezhetőségeket és a lehető legjobb lefedettséget érjük el. A konkrétabb sebezhetőség-azonosításhoz speciális eszközöket használunk, például az SQLmap-et.
+* **OWASP Top 10:** Tesztjeink kifejezetten a legkritikusabb biztonsági kockázatokra irányulnak, mint például az Injection, a Sérült hitelesítés és a Cross-Site Scripting (XSS).  
+* **Black Box és Grey Box Tesztelés:** A hatókörtől függően csapatunk ezeket a módszereket alkalmazza, hogy szimulálja mind a külső, mind a belső támadási forgatókönyveket.  
+* **Automatizált és Manuális Tesztelés:** A Burp Suite Pro, egy vezető biztonsági tesztelő eszközkészlet segítségével automatizált biztonsági vizsgálatokat végzünk, valamint támogatjuk a manuális tesztelési technikákat a komplex sebezhetőségek azonosítására és a lehető legjobb lefedettség elérésére. Specifikusabb sebezhetőség-azonosításhoz néhány speciális eszközt is használunk, pl. SQLmap.
 
-## Az eredmények összefoglalása
+## Eredmények Összefoglalása
 
-Az alábbiakban a legfrissebb penetrációs tesztelési jelentésünk rövid összefoglalása olvasható:
+Az alábbiakban a legutóbbi behatolásvizsgálati jelentésünk magas szintű összefoglalója található:
 
-* **Azonosított sebezhetőségek összesen:**&#x32;
-* **Súlyossági eloszlás:**
-  * Kritikus: 2
-* **Az észlelt sebezhetőségek típusai:**
-  * Hibás hozzáférés-vezérlés
-  * Bizonytalan tervezés
+* **Összes azonosított sebezhetőség:** 2  
+* **Súlyossági eloszlás:**  
+  * Kritikus: 2  
+* **Azonosított sebezhetőségek típusai:**  
+  * Sérült hozzáférés-vezérlés  
+  * Biztonságtalan tervezés
 
-A részletes megállapításokért kérjük, tekintse meg a teljes jelentést.
+A részletes eredményekért kérjük, tekintse meg a teljes jelentést.
 
-### Kockázatértékelések és hatás
+### Kockázati Értékelések és Hatás
 
-Mindkét talált sebezhetőséget kritikusnak minősítették, mivel mindkettő súlyos pénzügyi következményekkel járhatott. Az első lehetővé tette egy rosszindulatú, hitelesített felhasználó számára, hogy átvegye az irányítást egy másik cég Trippay fizetési számlája felett. A második sebezhetőség lehetővé tette egy rosszindulatú felhasználó számára, hogy módosítsa a foglaláshoz szükséges fizetési összeget.
+Mindkét talált sebezhetőség kritikus besorolású, mivel mindkettő súlyos pénzügyi következményekkel járhatott volna. Az első lehetővé tette egy rosszindulatú, hitelesített felhasználó számára, hogy átvegye egy másik cég Trippay fizetési fiókjának irányítását. A második sebezhetőség lehetővé tette egy rosszindulatú felhasználó számára, hogy módosítsa a foglaláshoz szükséges fizetendő összeget.
 
-### Kármentesítési és mérséklési erőfeszítések
+### Javítási és Mérséklési Intézkedések
 
-A következő lépéseket tettük meg az azonosított sebezhetőségek kezelése érdekében:
+A következő lépéseket tettük az azonosított sebezhetőségek kezelésére:
 
-* **Azonnali javítások:**&#x41; kritikus sebezhetőségeket a felfedezésüket követő 48 órán belül javították.
-* **Kód áttekintése és megerősítése:**&#x41; fejlesztőcsapat további biztonsági ellenőrzéseket vezetett be a javaslataink alapján.
+* **Azonnali javítások:** A kritikus sebezhetőségeket 48 órán belül javítottuk a felfedezés után.  
+* **Kódáttekintés és megerősítés:** A fejlesztőcsapat további biztonsági kontrollokat vezetett be ajánlásaink alapján.
 
-## Folyamatos fejlesztés
+## Folyamatos Fejlesztés
 
-A behatolásvizsgálat a folyamatos biztonságfejlesztésre irányuló tágabb stratégiánk része. Az egyes tesztek eredményei irányítják biztonsági szabályzatainkat, befolyásolják a fejlesztési gyakorlatot, és ösztönzik biztonsági architektúránk fejlesztését.
+A behatolásvizsgálat a folyamatos biztonsági fejlesztés szélesebb stratégiájának része. Minden teszt eredményei irányt mutatnak biztonsági szabályzatainkhoz, befolyásolják a fejlesztési gyakorlatokat, és elősegítik biztonsági architektúránk fejlesztését.
 
-## Csapat szakértelme
+## Csapat Szakértelme
 
-Penetrációs tesztelésünket házon belüli szakember végzi, aki széleskörű tapasztalattal rendelkezik különféle projektekben és iparágakban. Vezető eszközöket és módszereket használva szakértőnk biztosítja, hogy alkalmazásunkat alaposan teszteljük a legújabb biztonsági fenyegetésekkel szemben.
+Befolyásvizsgálatainkat egy házon belüli szakember végzi, aki széleskörű tapasztalattal rendelkezik különböző projektekben és iparágakban. Vezető eszközök és módszerek alkalmazásával szakértőnk biztosítja, hogy alkalmazásunk alaposan tesztelve legyen a legújabb biztonsági fenyegetések ellen.
 
-## Elkötelezettség a biztonság iránt
+## Elkötelezettség a Biztonság Mellett
 
-Elkötelezettek vagyunk amellett, hogy biztonságos alkalmazáskörnyezetet biztosítsunk felhasználóink ​​és érdekelt feleink számára. A biztonsági tesztelés és fejlesztés terén tett folyamatos erőfeszítéseink bizonyítják elkötelezettségünket a folyamatosan változó fenyegetések elleni védelem iránt.
+Elkötelezettek vagyunk egy biztonságos alkalmazási környezet fenntartása iránt felhasználóink és érintettjeink számára. Folyamatos biztonsági tesztelési és fejlesztési erőfeszítéseink bizonyítják elkötelezettségünket a fejlődő fenyegetések elleni védelem iránt.
 
-## Jelentéshozzáférés és frissítések
+## Jelentés Hozzáférés és Frissítések
 
-Ez a dokumentum folyamatosan frissülni fog, amint új penetrációs tesztjelentések jelennek meg. A teljes jelentés eléréséhez kérjük, vegye fel velünk a kapcsolatot az alábbi e-mail címen. A jövőbeli frissítések tartalmazni fogják az újonnan azonosított sebezhetőségeket, a javítási erőfeszítéseket és a tesztelési módszertanaink módosításait.
+Ezt a dokumentumot folyamatosan frissítjük, amint új behatolásvizsgálati jelentések készülnek. A teljes jelentés eléréséhez kérjük, vegye fel velünk a kapcsolatot az alábbi e-mail címen. A jövőbeni frissítések tartalmazni fogják az újonnan azonosított sebezhetőségeket, a javítási intézkedéseket és a tesztelési módszertanok módosításait.
 
-További kérdésekkel kérjük, vegye fel a kapcsolatot a security@wink.travel címen.
-
+További kérdések esetén kérjük, írjon a security@wink.travel címre.

@@ -1,21 +1,21 @@
 ---
-title: Зашто се придружити
-description: Овај чланак вас води кроз све предности придруживања Винку.
+title: Zašto se pridružiti
+description: Ovaj članak vas vodi kroz sve prednosti pridruživanja Wink-u.
 sidebar:
   order: 0
 ---
-Винк је креиран да би продаја туристичког инвентара поново постала занимљива и доступна већем броју корисника.
-Постоји много добрих разлога да се придружите Винку.
 
-Кориснички налог вам омогућава:
+Wink je kreiran da ponovo učini prodaju turističkog inventara uzbudljivom i da je učini dostupnom većem broju korisnika.  
+Postoji mnogo dobrih razloga da se pridružite Wink-u.
 
-* Креирајте и управљајте некретнинама и продајте их свуда где се налазе потенцијални путници.
-* Креирајте и управљајте партнерским налозима и зарадите провизију од резервација које олакшавате.
-* Креирајте и управљајте налозима туристичких агенција и резервишите у име својих клијената.
-* Преузмите свој WinkLinks индивидуални URL (*нпр. https://i.trvl.as/bob*) и користите га у URL-у ваше инстаграм биографије.
-* Резервишите свој следећи одмор и уштедите.
-* Урадите све горе наведено као програмер интегришући се са Винк-ом.
-* Све наше функције су вам доступне за**С-Б-Е-Л-А-З-А**.
+Korisnički nalog vam omogućava:
 
-Наставите на следећи одељак да бисте сазнали како да се региструјете и почнете да зарађујете са Винк-ом.
+- Kreiranje i upravljanje smeštajnim objektima i prodaju svuda gde su potencijalni putnici.
+- Kreiranje i upravljanje partnerskim nalozima i zaradu provizije na rezervacijama koje posredujete.
+- Kreiranje i upravljanje nalozima turističkih agenata i rezervisanje u ime vaših klijenata.
+- Preuzimanje vaše WinkLinks prilagođene URL adrese (*npr. https://i.trvl.as/bob*) i korišćenje iste u vašem IG bio URL-u.
+- Rezervisanje sledećeg odmora i uštedu.
+- Sve navedeno radite i kao programer integracijom sa Wink-om.
+- Sve naše funkcije su vam dostupne **B-E-S-P-L-A-T-N-O**.
 
+Nastavite na sledeći odeljak da naučite kako da se registrujete i počnete da zarađujete sa Wink-om.

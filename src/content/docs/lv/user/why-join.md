@@ -1,23 +1,21 @@
 ---
 title: Kāpēc pievienoties
-description: >-
-  Šajā rakstā ir sniegta informācija par visām priekšrocībām, ko sniedz
-  pievienošanās Wink.
+description: Šis raksts iepazīstina ar visām priekšrocībām, pievienojoties Wink.
 sidebar:
   order: 0
 ---
-Wink tika izveidots, lai ceļojumu inventāra pārdošana atkal kļūtu aizraujoša un pieejama lielākam lietotāju skaitam.
-Ir daudz labu iemeslu, kāpēc jums pievienoties Wink.
+
+Wink tika radīts, lai atkal padarītu ceļojumu inventāra pārdošanu aizraujošu un pieejamu vairāk lietotājiem.  
+Ir daudz labu iemeslu, kāpēc pievienoties Wink.
 
 Lietotāja konts ļauj jums:
 
-* Izveidojiet un pārvaldiet īpašumus un pārdodiet tos visur, kur atrodas potenciālie ceļotāji.
-* Izveidojiet un pārvaldiet saistītos kontus un saņemiet komisijas maksu par jūsu veicinātajām rezervācijām.
-* Izveidojiet un pārvaldiet ceļojumu aģentu kontus un rezervējiet klientu vārdā.
-* Paņemiet savu WinkLinks iedomības URL (*piem., https://i.trvl.as/bob*) un izmantojiet to savā IG biogrāfijas URL.
-* Rezervējiet savu nākamo atvaļinājumu un ietaupiet.
-* Veiciet visu iepriekš minēto kā izstrādātājs, integrējoties ar Wink.
-* Visas mūsu funkcijas ir pieejamas jums**F-R-E-E**.
+- Izveidot un pārvaldīt īpašumus un pārdot tos visur, kur ir potenciālie ceļotāji.
+- Izveidot un pārvaldīt filiāļu kontus un nopelnīt komisiju par jūsu veiktajām rezervācijām.
+- Izveidot un pārvaldīt ceļojumu aģentu kontus un veikt rezervācijas jūsu klientu vārdā.
+- Iegūt savu WinkLinks personalizēto URL (*piemēram, https://i.trvl.as/bob*) un izmantot to savā IG bio URL.
+- Rezervēt nākamo atvaļinājumu un ietaupīt.
+- Veikt visu iepriekš minēto kā izstrādātājs, integrējoties ar Wink.
+- Visas mūsu funkcijas ir pieejamas jums **B-E-Z M-A-K-S-A-S**.
 
-Turpiniet lasīt nākamo sadaļu, lai uzzinātu, kā reģistrēties un sākt pelnīt ar Wink.
-
+Turpiniet uz nākamo sadaļu, lai uzzinātu, kā reģistrēties un sākt pelnīt ar Wink.

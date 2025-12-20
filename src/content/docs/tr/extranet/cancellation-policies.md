@@ -1,45 +1,45 @@
 ---
 title: İptal Politikaları
-description: Bu makale Wink'te iptal politikalarının nasıl yönetileceğini göstermektedir.
+description: Bu makale, Wink üzerinde iptal politikalarını nasıl yöneteceğinizi gösterir.
 sidebar:
   order: 12
 ---
-İptal politikalarınızı yönetmek için tıklayın`Monetize > Cancellation policies`ana gezinme çubuğundan.
 
-İptal politikaları, misafirin gelememesi durumunda rezervasyon fonlarının nasıl yönetileceğini belirler. İptal politikaları iki farklı şekilde gelir:
+İptal politikalarınızı yönetmek için ana navigasyon çubuğundan `Monetize > Cancellation policies` seçeneğine tıklayın.
 
-1. İade edilebilir
-2. İade yapılmaz
+İptal politikaları, misafir gelemeyecek durumda olduğunda rezervasyon sahibinin fonlarının nasıl yönetileceğini belirler. İptal politikaları iki farklı türde gelir:
 
-Çoğu zaman, bu iki seçenek yeterlidir. Ancak, her ikisi de iptal politikanızı daha da özelleştirmeniz için size çok fazla alan sağlar.
+1. İade Edilebilir
+2. İade Edilemez
 
-:::ipucu\[Eğlenceli bilgi]
-Wink, toplamda 8500 iptal politikası çeşidini destekler.
+Çoğu zaman, bu iki seçenek yeterlidir. Ancak, her ikisi de iptal politikanızı daha fazla özelleştirmeniz için size geniş bir alan sunar.
+
+:::tip[İlginç bilgi]
+Wink, toplamda 8500 farklı iptal politikası varyasyonunu destekler.
 :::
 
-İptal politikası oluşturmak için tıklayın`Create a new cancellation policy` düğme.
+Bir iptal politikası oluşturmak için `Create a new cancellation policy` butonuna tıklayın.
 
-## İade yapılmaz
+## İade Edilemez
 
-İade edilemeyen bir iptal politikası oluşturmak için, politikanın iade edilebilir olup olmadığı sorulduğunda düğmeyi 🛑 kapalı konuma getirin.
-
-### Seçenekler
-
-İsteğe bağlı olarak yapılandırabilirsiniz`non-refundable`Daha fazla kontrol için politikayı daha da ileriye taşıdı.
-
-* **İptal durumunda misafirden ne kadar ücret alınır?**&#x56;arsayılan olarak, iade edilemeyen bir poliçe %100 iade edilemeyen bir poliçedir. Tutarı burada ince ayarlayabilirsiniz.*örn. toplam fiyatın %50'si*
-* **Suçlamanın bir son tarihi var mı?**&#x4D;iktarı ince ayarladıysanız, o miktarın ne kadar süreyle etkili kalacağını ayarlayarak daha da ince ayar yapabilirsiniz.*Örn. Varıştan 3 gün öncesine kadar*
-* **Son tarihten sonra yapılan iptallerde misafirden ne kadar ücret alınır?**&#x4D;isafirin yukarıda belirtilen son ödeme tarihini geçirmesi durumunda, misafirin son ödeme tarihinden sonra ödeyeceği tutarı belirleyebilirsiniz.*örn. toplam fiyatın %70'i*
-
-## İade edilebilir
-
-İade edilebilir iptal politikası oluşturmak için, politikanın iade edilebilir olup olmadığı sorulduğunda düğmeyi ✅ konumuna getirin.
+İade edilemez bir iptal politikası oluşturmak için, politika iade edilebilir mi sorulduğunda anahtarı 🛑 kapalı konuma getirin.
 
 ### Seçenekler
 
-İsteğe bağlı olarak yapılandırabilirsiniz`refundable`Daha fazla kontrol için politikayı daha da ileriye taşıdı.
+Daha fazla kontrol için `iade edilemez` politikanızı isteğe bağlı olarak daha ayrıntılı yapılandırabilirsiniz.
 
-* **Misafir varışından ne kadar önce ücretsiz olarak iptal edebilir?**&#x56;arsayılan olarak, iade edilebilir bir politika her zaman %100 iade edilebilirdir. Son tarihi burada ince ayarlayabilirsiniz.*Örn. varıştan 3 gün önce*
-* **Yukarıdaki tarihten sonra iptal gerçekleşirse misafirden ne kadar ücret tahsil edilmelidir?**&#x53;on tarihi hassas bir şekilde ayarlarsanız, misafirin son tarihten sonra ödeyeceği tutarı belirleyebilirsiniz.*örn. toplam fiyatın %50'si*
-* **'Gelmeyen misafir için ne kadar ücret ödememiz gerekiyor?**&#x4D;isafir gelmezse, misafirin ne kadar ücretlendirileceğini ayarlayabilirsiniz.`No show`.*örn. toplam fiyatın %100'ü*
+- **Misafir iptal için ne kadar ücretlendirilir?** Varsayılan olarak, iade edilemez politika %100 iade edilmezdir. Burada tutarı ince ayar yapabilirsiniz. *örneğin toplam fiyatın %50'si*
+- **Ücretlendirme için bir son tarih var mı?** Tutarı ince ayarladıysanız, bu tutarın ne kadar süre geçerli kalacağını da belirleyebilirsiniz. *örneğin varıştan 3 gün öncesine kadar*
+- **Son tarihten sonra misafir iptal ederse ne kadar ücretlendirilir?** Misafir yukarıda belirlenen son tarihi geçerse, son tarihten sonra ödenecek tutarı belirleyebilirsiniz. *örneğin toplam fiyatın %70'i*
 
+## İade Edilebilir
+
+İade edilebilir bir iptal politikası oluşturmak için, politika iade edilebilir mi sorulduğunda anahtarı ✅ açık konuma getirin.
+
+### Seçenekler
+
+Daha fazla kontrol için `iade edilebilir` politikanızı isteğe bağlı olarak daha ayrıntılı yapılandırabilirsiniz.
+
+- **Misafir varıştan ne kadar önce ücretsiz iptal yapabilir?** Varsayılan olarak, iade edilebilir politika her zaman %100 iade edilir. Burada son tarihi ince ayar yapabilirsiniz. *örneğin varıştan 3 gün öncesi*
+- **Yukarıdaki son tarihten sonra iptal edilirse misafir ne kadar ücretlendirilir?** Son tarihi ince ayarladıysanız, son tarihten sonra misafirin ödeyeceği tutarı belirleyebilirsiniz. *örneğin toplam fiyatın %50'si*
+- **'No show' durumunda misafir ne kadar ücretlendirilir?** Misafir gelmezse, `No show` için misafirin ne kadar ücretlendirileceğini belirleyebilirsiniz. *örneğin toplam fiyatın %100'ü*

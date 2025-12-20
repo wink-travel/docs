@@ -1,43 +1,40 @@
 ---
 title: Tích hợp với TripPay
-description: >-
-  Bài viết này có ví dụ đầy đủ về cách tích hợp và để TripPay xử lý thanh toán
-  thay bạn.
+description: Bài viết này chứa ví dụ đầy đủ về cách tích hợp và để TripPay xử lý thanh toán cho bạn.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Bài viết này có ví dụ chi tiết về cách tích hợp với TripPay.
+Bài viết này chứa một ví dụ từ đầu đến cuối về cách tích hợp với TripPay.
 
-Chúng tôi khuyên bạn nên đọc:
+Khuyến nghị bạn đã đọc qua:
 
-* [Thanh toán > Bản đồ](/payment/mapping).
-* [Thanh toán > Tích hợp](/payment/integration).
-* [Thành phần thanh toán web](/developers/web-components/#payment).
-* [API thanh toán](/developers/apis/#payment-api).*Đọc phần trên`Create payable contracts`*
+- [Payment > Mapping](/vi/payment/mapping).
+- [Payment > Integration](/vi/payment/integration).
+- [Payment Web Component](/vi/developers/web-components/#payment).
+- [Payment API](/vi/developers/apis/#payment-api). *Đọc phần về `Create payable contracts`*
 
-Sau đây là các bước sử dụng TripPay thành công để thanh toán cho một lần đặt phòng:
+Dưới đây là các bước để sử dụng TripPay thành công trong việc thanh toán cho một đặt chỗ:
 
 <Steps>
-  1. Hãy đảm bảo rằng những người thụ hưởng mà bạn đề cập trong hợp đồng đặt chỗ đã được lập bản đồ.
-  2. Hãy để du khách chọn loại phòng họ muốn đặt và chuẩn bị thanh toán.
-  3. Tạo một `payable contract` với TripPay có chứa các mục cần đặt.
-  4. Cho phép du khách thanh toán bằng Thành phần web TripPay.
+1. Đảm bảo các bên thụ hưởng bạn đề cập trong hợp đồng đặt chỗ đã được ánh xạ.
+2. Cho khách du lịch chọn kho hàng họ muốn đặt và chuẩn bị thanh toán.
+3. Tạo một `hợp đồng phải thanh toán` với TripPay chứa các mục cần đặt.
+4. Cho khách du lịch thanh toán bằng TripPay Web Component.
 </Steps>
 
+Chúng tôi giả định bạn đã hoàn thành `Bước 1` và `Bước 2` và sẵn sàng để thông báo cho TripPay về đặt chỗ.
 
-Chúng tôi cho rằng bạn đã hoàn thành`Step 1` Và `Step 2`và sẵn sàng thông báo cho TripPay về việc đặt chỗ.
+## Tạo hợp đồng phải thanh toán
 
-## Tạo hợp đồng phải trả
-
-:::lưu ý
-Truy cập API thanh toán để tìm hiểu thêm về các yêu cầu để tạo hợp đồng phải trả.
+:::note
+Truy cập Payment API để tìm hiểu thêm về các yêu cầu để tạo hợp đồng phải thanh toán.
 :::
 
-### Lời yêu cầu
-
-Sau đây là yêu cầu mẫu JSON bao gồm mọi thứ bạn cần tạo cho hợp đồng phải trả đầu tiên của mình.
+### Yêu cầu
+Dưới đây là ví dụ yêu cầu JSON bao gồm tất cả những gì bạn cần để tạo hợp đồng phải thanh toán đầu tiên của mình.
 
 ```json {3-6, 8-9}
 {
@@ -132,49 +129,49 @@ Sau đây là yêu cầu mẫu JSON bao gồm mọi thứ bạn cần tạo cho 
 
 Giải thích:
 
-Chúng tôi sẽ không giải thích mọi điểm dữ liệu ở đây vì chúng đã được đề cập trong tài liệu API.
+Chúng tôi sẽ không giải thích từng điểm dữ liệu ở đây vì chúng đã được đề cập trong tài liệu API.
 
-* Dòng:**2-7**là người dùng chịu trách nhiệm đặt chỗ. Có hai loại người đặt chỗ:
-  * Người du lịch.
-  * Đại lý du lịch.
-* Dòng:**8-9**là tài khoản TripPay tạo điều kiện cho việc đặt chỗ. Nó có thể là:
-  * Tài khoản tích hợp TripPay của bạn.
-  * Nếu bạn điều hành một mạng lưới liên kết, thì đó có thể là chi nhánh của bạn.
-* Sử dụng một`traceId`để nhóm nhiều đặt chỗ từ nhiều nhà cung cấp. Bằng cách này, bạn có thể hủy đặt chỗ theo nhóm.
-* `redirectUrl`cho TripPay biết trang nào sẽ được chuyển hướng đến sau khi thanh toán hoàn tất.
-* `sourceUrl`là trang web/ứng dụng mà bạn đã đặt chỗ.
+- Các dòng: **2 - 7** là người dùng chịu trách nhiệm đặt chỗ. Có hai loại người đặt:
+    - Khách du lịch.
+    - Đại lý du lịch.
+- Các dòng: **8 - 9** là tài khoản TripPay hỗ trợ đặt chỗ. Có thể là:
+    - Tài khoản tích hợp TripPay của bạn.
+    - Nếu bạn vận hành mạng liên kết, có thể là đối tác liên kết của bạn.
+- Sử dụng `traceId` để nhóm nhiều đặt chỗ từ nhiều nhà cung cấp khác nhau. Bằng cách này bạn có thể hủy một nhóm đặt chỗ.
+- `redirectUrl` cho TripPay biết trang nào sẽ chuyển hướng sau khi thanh toán hoàn tất.
+- `sourceUrl` là trang web / ứng dụng nơi đặt chỗ diễn ra.
 
-Các`contractList`mảng chứa các mặt hàng mà du khách muốn mua từ nhiều nhà cung cấp. Mỗi mặt hàng chứa:
+Mảng `contractList` chứa các mục mà khách du lịch muốn mua từ nhiều nhà cung cấp. Mỗi mục bao gồm:
 
-* Các`identifier`là UUID hợp lệ do bạn tạo ra.
-* Nhà cung cấp mà bạn muốn đặt hàng tồn kho.
-* Hàng tồn kho bạn muốn đặt từ nhà cung cấp đó. Tất cả đều được chỉ định trong mảng lồng nhau`contractItemList`.
-* Mỗi mục nhập dưới`contractItemList` chứa:
-  * **Người dùng khách**Đây là người dùng sẽ đến cơ sở.
-  * **Tên bằng tiếng Anh**Tên hàng tồn kho bằng tiếng Anh.
-  * **Mô tả bằng tiếng Anh**Mô tả chi tiết hơn về hàng tồn kho bằng tiếng Anh.
-  * **Giá**Giá của sản phẩm.
-  * **Hành trình**Khi nào nên đặt mặt hàng này.
-  * **Loại giá**Giá được tính như thế nào.
-  * **Loại hàng tồn kho**Đây là loại hàng tồn kho nào?
-  * **Phải trả**Khi nào du khách phải trả tiền.*Hiện tại chúng tôi chỉ hỗ trợ các tùy chọn thanh toán ngay lập tức.*
-  * **Chính sách**Bao gồm các quy tắc về chính sách hủy bỏ.
-  * **Bảng giá hằng ngày**Nếu mục được đặt là phòng, bạn có thể chọn bao gồm chi phí cho mỗi đêm khách lưu trú tại phòng đó.
-  * **Người thụ hưởng**Bao gồm tài khoản TripPay nào sẽ được phân bổ số tiền nào trong giá của mặt hàng.*Hỗ trợ số tiền cố định/phần trăm.*
+- `identifier` là UUID hợp lệ do bạn tạo.
+- Nhà cung cấp bạn muốn đặt kho hàng từ đó.
+- Kho hàng bạn muốn đặt từ nhà cung cấp đó. Tất cả được chỉ định trong mảng lồng nhau `contractItemList`.
+- Mỗi mục trong `contractItemList` chứa:
+    - **Người dùng khách** Đây là người sẽ đến nơi.
+    - **Tên bằng tiếng Anh** Tên kho hàng bằng tiếng Anh.
+    - **Mô tả bằng tiếng Anh** Mô tả dài hơn về kho hàng bằng tiếng Anh.
+    - **Giá** Giá của mục.
+    - **Lịch trình** Khi nào mục này được đặt.
+    - **Loại giá** Cách giá được tính.
+    - **Loại kho hàng** Loại kho hàng này là gì.
+    - **Phải thanh toán** Khi nào khách du lịch phải trả tiền. *Hiện tại chúng tôi chỉ hỗ trợ các tùy chọn thanh toán ngay lập tức.*
+    - **Chính sách** Bao gồm các quy tắc chính sách hủy.
+    - **Danh sách giá hàng ngày** Nếu mục được đặt là phòng, bạn có thể chọn bao gồm giá phòng cho mỗi đêm khách lưu trú.
+    - **Các bên thụ hưởng** Bao gồm tài khoản TripPay nào sẽ được phân bổ bao nhiêu phần giá của mục. *Hỗ trợ số tiền cố định / phần trăm.*
 
-:::lưu ý
-Trong ví dụ JSON ở trên, chúng ta có 3 người thụ hưởng:
+:::note
+Trong ví dụ JSON trên, chúng tôi có 3 bên thụ hưởng:
 
-* 1,5% được phân bổ cho nền tảng tạo điều kiện thuận lợi cho việc đặt chỗ.*ví dụ: Nháy mắt*
-* 9,85% được phân bổ cho bên liên kết dưới dạng hoa hồng.*ví dụ Kim Kardashian*
-* 88,65% được phân bổ cho nhà cung cấp để đặt phòng.*ví dụ Hilton*
+- 1,5% được phân bổ cho nền tảng hỗ trợ đặt chỗ. *ví dụ: Wink*
+- 9,85% được phân bổ cho đối tác liên kết làm hoa hồng. *ví dụ: Kim Kardashian*
+- 88,65% được phân bổ cho nhà cung cấp cho việc đặt phòng. *ví dụ: Hilton*
 
-Khi TripPay phản hồi bằng một hợp đồng phải trả, bạn sẽ thấy rằng họ đã tiêm cho người thụ hưởng của mình ở mức 4,0%.
+Khi TripPay phản hồi với hợp đồng phải thanh toán, bạn sẽ thấy nó chèn thêm một bên thụ hưởng của riêng nó với 4,0%.
 :::
 
-### Phản ứng
+### Phản hồi
 
-Khi TripPay phản hồi yêu cầu của bạn, nội dung sẽ trông giống như thế này:
+Khi TripPay phản hồi yêu cầu của bạn, nó sẽ trông như sau:
 
 ```json {3}
 [
@@ -208,19 +205,18 @@ Khi TripPay phản hồi yêu cầu của bạn, nội dung sẽ trông giống 
 ]
 ```
 
-Lưu lại`id`ở dòng 3. Bạn sẽ sử dụng điều này để đưa vào thành phần web TripPay.
+Lưu `id` ở dòng 3. Bạn sẽ dùng nó để chèn vào TripPay web component.
 
 ## Nhúng TripPay
 
-:::lưu ý
-Hãy đảm bảo bạn đã tải các kiểu và Javascript của chúng tôi trước.
+:::note
+Đảm bảo bạn đã tải trước các style và Javascript của chúng tôi.
 :::
 
-Tại thời điểm này, bạn đã sẵn sàng để nhúng`Payment Web Component`vào trang web của bạn và hiển thị cho người dùng.
+Tại thời điểm này, bạn đã sẵn sàng nhúng `Payment Web Component` vào trang web của mình và hiển thị cho người dùng.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Về mặt tích hợp, đó là tất cả những gì bạn cần làm. Mọi công việc nặng nhọc đều do TripPay thực hiện từ đây trở đi.
-
+Về mặt tích hợp, đó là tất cả những gì bạn cần làm. Mọi công việc nặng nhọc sẽ do TripPay xử lý từ đây trở đi.

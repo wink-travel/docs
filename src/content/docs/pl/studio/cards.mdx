@@ -1,91 +1,107 @@
 ---
-title: Cards
-description: >-
-  W tym artykule dowiesz się, jak tworzyć karty dostawców i zapasów na podstawie
-  wyników wyszukiwania, a następnie promować je w swojej witrynie.
+title: Karty
+description: Ten artykuł przeprowadzi Cię przez proces tworzenia kart dostawców i zasobów z wyników wyszukiwania, a następnie promowania ich na Twojej stronie.
 sidebar:
   order: 7
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 import { Badge } from '@astrojs/starlight/components';
 import CloudinaryImage from '/src/components/cloudinary-image.astro';
 
-Karta reprezentuje pojedynczego dostawcę (np. hotel lub dostawcę doświadczeń) lub inwentarz (np. typ pokoju, salę konferencyjną, spa itp.) i ujawnia szczegóły za pośrednictwem interaktywnego, rezerwowalnego interfejsu użytkownika karty.
-Użytkownik może wchodzić w interakcję z kartą w następujący sposób:
+Karta reprezentuje pojedynczego dostawcę (np. hotel lub dostawcę atrakcji) lub zasób (np. typ pokoju, sala konferencyjna, spa itp.) i udostępnia szczegóły za pomocą interaktywnego, rezerwacyjnego interfejsu karty.
+Użytkownik może wchodzić w interakcję z kartą na następujące sposoby:
 
-* Kliknij`Book` przycisk.
-* Kliknij`Gallery`link umożliwiający obejrzenie wszystkich zdjęć i filmów dla tego inwentarza.
-* Kliknij`Best deal`link (jeśli dostępny) umożliwiający sprawdzenie pokoju w najlepszej cenie.
-* Kliknij`Hotel details`link (jeśli dostępny) umożliwiający zapoznanie się z informacjami o nieruchomości.
+- Kliknąć przycisk `Book`.
+- Kliknąć link `Gallery`, aby zobaczyć wszystkie zdjęcia i filmy dotyczące tego zasobu.
+- Kliknąć link `Best deal`, jeśli jest dostępny, aby zobaczyć pokój z najlepszą ceną.
+- Kliknąć link `Hotel details`, jeśli jest dostępny, aby zobaczyć informacje o obiekcie.
 
-Karta obsługuje wiele stron, co pozwala zminimalizować jej rozmiar i kategoryzować dane. Dzięki temu użytkownik może je łatwo wykorzystać, a Ty masz większą szansę na dokonanie rezerwacji przez użytkownika.
+Karta obsługuje wiele stron, aby zminimalizować rozmiar karty i skategoryzować dane; dzięki temu są one łatwo przyswajalne dla użytkownika i zwiększa się szansa na konwersję użytkownika na rezerwację.
 
 Karta ma dwie lub trzy strony:
 
-* Karta hotelowa pokazuje dane obiektu z przodu i najlepszy typ pokoju z tyłu. Cena po obu stronach pokazuje najlepszą cenę dla hotelu.
-* Karta typu pokoju pokazuje dane typu pokoju z przodu i dane nieruchomości z tyłu. Cena wyświetla cenę typu pokoju z przodu i najlepszą cenę dla hotelu z tyłu.
-* Wszystkie inne karty (np. restauracja spa itp.) mają 3 strony. Przykład: Dane spa są wyświetlane na stronie głównej z najlepszą ceną spa. Dane typu pokoju dla pokoju w najlepszej cenie są na drugiej stronie. Dane nieruchomości wraz z pokojem w najlepszej cenie są na trzeciej stronie karty.
+- Karta hotelu pokazuje dane obiektu na przedniej stronie oraz najlepszy typ pokoju na odwrocie. Cena, na obu stronach, pokazuje najlepszą cenę dla hotelu.
+- Karta typu pokoju pokazuje dane typu pokoju na przedniej stronie oraz dane obiektu na odwrocie. Cena pokazuje cenę typu pokoju na przedniej stronie oraz najlepszą cenę dla hotelu na odwrocie.
+- Wszystkie pozostałe karty (np. spa, restauracja itp.) mają 3 strony. Przykład: dane spa wyświetlane są na pierwszej stronie wraz z najlepszą ceną spa. Dane typu pokoju dla pokoju z najlepszą ceną znajdują się na drugiej stronie. Dane obiektu wraz z pokojem o najlepszej cenie znajdują się na trzeciej stronie karty.
 
 <figure>
-  <CloudinaryImage width="350" height="829" resize="scale" quality="best" alt="Podgląd karty" src="academy/card-example" errorImage="noimage_opaque_nyrtl0.png" />
-
-  <figcaption>*Karta typu pokoju skierowana do przodu z informacją o dostępności*</figcaption>
+<CloudinaryImage
+      width="350"
+      height="829"
+      resize="scale"
+      quality="best"
+      alt="Podgląd karty"
+      src="academy/card-example"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Karta typu pokoju widoczna z przodu z dostępnością*</figcaption>
 </figure>
 
+Powyżej znajduje się przykład naszej karty typu pokoju. Zawiera dane obiektu, recenzje i dane pokoju wraz z polityką anulacji i posiłkami.
 
-Powyżej znajduje się przykład naszej karty typu pokoju. Zawiera ona dane dotyczące nieruchomości, recenzji i pokoju, a także zasady anulowania rezerwacji i posiłki.
-
-W dalszej części artykułu dowiesz się, jak utworzyć, dostosować i udostępnić kartę użytkownikom.
+Reszta tego artykułu przeprowadzi Cię przez proces tworzenia, dostosowywania i udostępniania karty użytkownikom.
 
 ## Utwórz kartę
 
 <figure>
-  <CloudinaryImage width="350" height="238" resize="scale" quality="best" alt="Akcje" src="academy/inventory-actions" errorImage="noimage_opaque_nyrtl0.png" />
-
-  <figcaption>*Akcje wyników wyszukiwania*</figcaption>
+<CloudinaryImage
+      width="350"
+      height="238"
+      resize="scale"
+      quality="best"
+      alt="Akcje"
+      src="academy/inventory-actions"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Akcje wyników wyszukiwania*</figcaption>
 </figure>
 
-
-Powyżej znajduje się zdjęcie pobrane z [Szukaj](/studio/search) i pokazuje niektóre rzeczy, które możesz zrobić z wynikami wyszukiwania. Jedną z tych czynności jest`Make a card`.
-Kliknij ten przycisk, a zostaniesz przekierowany na stronę formularza karty, gdzie możesz rozpocząć personalizację swojej karty.
+Powyższy obraz pochodzi z [Search](/pl/studio/search) i pokazuje niektóre z rzeczy, które możesz zrobić z wynikami wyszukiwania. Jedną z tych akcji jest `Make a card`.
+Kliknij ten przycisk, a zostaniesz przekierowany do formularza karty, gdzie możesz zacząć dostosowywać swoją kartę.
 
 ## Dostosuj kartę
 
-Formularz umożliwia personalizację karty w następujący sposób:
+ Formularz pozwala dostosować kartę w następujący sposób:
 
 <Steps>
-  1. Nadaj jej nazwę, aby pamiętać, czego dotyczy karta.
-  2. Wybierz [Personalizacja](/studio/customization) chcesz złożyć wniosek o tę kartę.
-  3. Wybierz początkową stronę karty, którą użytkownicy mają zobaczyć jako pierwszą. Domyślnie jest to natywna strona tego inwentarza.
-  4. Wybierz <Badge text="badge" variant="tip" size="small" /> chcesz użyć na karcie. Odznaka pozwala użytkownikom porównywać zapasy na podstawie łącznego wskaźnika, takiego jak `eco-friendly`.
-  5. Dodaj słowa kluczowe, rozdzielone przecinkiem, które będą używane przez [Roboty sieciowe](https://developer.mozilla.org/en-US/docs/Glossary/Crawler).
-  6. Dodaj tytuły i opisy w językach, w których chcesz, aby użytkownicy je widzieli.
-  7. Wybierz jeden lub więcej obrazów, które będą wyświetlane po kliknięciu przez użytkownika `Gallery` połączyć.
-  8. Kliknij `Save` przycisk, aby kontynuować.
-</Steps>
+ 1. Nadaj jej nazwę, abyś pamiętał, czego dotyczy karta.
+ 2. Wybierz [Customization](/pl/studio/customization), którą chcesz zastosować do tej karty.
+ 3. Wybierz początkową stronę karty, którą chcesz, aby użytkownicy zobaczyli jako pierwszą. Domyślnie jest to natywna strona tego zasobu.
+ 4. Wybierz <Badge text="badge" variant="tip" size="small" />, którego chcesz użyć na karcie. Badge pozwala użytkownikom porównywać zasoby według zbiorczego kryterium, takiego jak `eco-friendly`.
+ 5. Dodaj słowa kluczowe, oddzielone przecinkami, które będą używane przez [Web Crawlers](https://developer.mozilla.org/en-US/docs/Glossary/Crawler).
+ 6. Dodaj tytuły i opisy w językach, które chcesz, aby użytkownik widział.
+ 7. Wybierz jedno lub więcej zdjęć, które będą wyświetlane po kliknięciu przez użytkowników linku `Gallery`.
+ 8. Kliknij przycisk `Save`, aby kontynuować.
+ </Steps>
 
-
-Po zapisaniu karty zostaniesz przekierowany na stronę kart. Twoja karta będzie gotowa, aby pokazać ją światu.
+ Po zapisaniu karty zostaniesz przekierowany na stronę swoich kart, a Twoja karta jest gotowa do udostępnienia światu.
 
 ## Udostępnij kartę
 
 <figure>
-  <CloudinaryImage width="350" height="857" resize="scale" quality="best" alt="Karta" src="academy/card-actions" errorImage="noimage_opaque_nyrtl0.png" />
-
-  <figcaption>*Karta z zawiniętym menu akcji*</figcaption>
+<CloudinaryImage
+      width="350"
+      height="857"
+      resize="scale"
+      quality="best"
+      alt="Karta"
+      src="academy/card-actions"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Karta z złożonym menu akcji*</figcaption>
 </figure>
 
+Powyżej znajduje się obraz pokazujący wszystkie dostępne akcje dla Twojej karty:
 
-Powyżej znajduje się obraz ze wszystkimi dostępnymi akcjami dla Twojej karty:
+- **Update** Aktualizuje konfigurację Twojej karty.
+- **Add to WinkLinks** Dodaje kartę do Twojego konta WinkLinks.
+- **Embed** Pokazuje, jak osadzić tę kartę jako [Card](/pl/developers/web-components/#content-loader) na Twojej stronie internetowej.
+- **Use with WordPress** Pokazuje, jak używać naszego [WordPress plugin](/pl/developers/wordpress) do osadzenia tej karty na Twojej stronie.
 
-* **Aktualizacja**Aktualizuje konfigurację karty.
-* **Dodaj do WinkLinks**Dodaje kartę do Twojego konta WinkLinks.
-* **Osadzać**Pokazuje, jak osadzić tę kartę jako [Karta](/developers/web-components/#content-loader) do Twojej witryny.
-* **Użyj z WordPressem**Pokazuje, jak korzystać z naszego [Wtyczka WordPress](/developers/wordpress) aby osadzić tę kartę na swojej stronie internetowej.
+Niektóre z tych opcji omawiamy szczegółowo poniżej.
 
-Niektóre z tych opcji omawiamy bardziej szczegółowo poniżej.
-
-### Osadzać
+### Embed
 
 ```html {3, 6-9, 11, 13-16}
 <html>
@@ -110,17 +126,16 @@ Niektóre z tych opcji omawiamy bardziej szczegółowo poniżej.
 
 Oto jak osadzić kartę na swojej stronie:
 
-* Wiersz 3 pokazuje, jak osadzić style Wink w swojej witrynie.
-* W wierszach od 6 do 9 pokazano, jak używać [mrugnięcie-ładowacz-treści](/developers/web-components/#content-loader) Komponent internetowy i poproś go o pobranie karty pokoju gościnnego na podstawie Twojego kodu.
-* Wiersz 11 pokazuje, jak osadzić nasz kod JavaScript w swojej witrynie.
-* Wiersz 13 pokazuje, jak osadzić [wink-app-loader](/developers/web-components/#application-loader) Komponent internetowy i poinstruuj go, aby pobrał preferencje konfiguracji na poziomie strony.
+- Linia 3 pokazuje, jak osadzić style Wink na swojej stronie.
+- Linie od 6 do 9 pokazują, jak użyć [wink-content-loader](/pl/developers/web-components/#content-loader) Web Component i polecić mu pobranie karty pokoju gościnnego dla Twojego kodu.
+- Linia 11 pokazuje, jak osadzić nasz Javascript na stronie.
+- Linia 13 pokazuje, jak osadzić [wink-app-loader](/pl/developers/web-components/#application-loader) Web Component i polecić mu pobranie preferencji konfiguracji na poziomie strony.
 
 ## API
 
-Deweloperzy chcący zarządzać kartami mogą przejść do[Deweloperzy > API > Inwentarz](/developers/apis/#inventory-api).
+Deweloperzy, którzy chcą zarządzać kartami, mogą przejść do [Developers > API > Inventory](/pl/developers/apis/#inventory-api).
 
 ## Dalsza lektura
 
-* Dowiedz się więcej o naszej kolekcji[Komponenty sieciowe](/developers/web-components).
-* Dowiedz się więcej o[Wtyczka Wink WordPress](/developers/wordpress).
-
+- Dowiedz się więcej o naszej kolekcji [Web Components](/pl/developers/web-components).
+- Dowiedz się więcej o [Wink WordPress plugin](/pl/developers/wordpress).

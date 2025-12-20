@@ -1,21 +1,21 @@
 ---
-title: Neden Katılmalısınız?
-description: Bu makale Wink'e katılmanın tüm avantajlarını size anlatmaktadır.
+title: Neden Katılmalısınız
+description: Bu makale, Wink'e katılmanın tüm avantajlarını size anlatıyor.
 sidebar:
   order: 0
 ---
-Wink, seyahat envanteri satışını tekrar heyecan verici hale getirmek ve daha fazla kullanıcıya erişilebilir kılmak için yaratıldı.
+
+Wink, seyahat envanterini yeniden heyecan verici hale getirmek ve daha fazla kullanıcıya erişilebilir kılmak için oluşturuldu.  
 Wink'e katılmanız için birçok iyi neden var.
 
 Bir kullanıcı hesabı size şunları sağlar:
 
-* Potansiyel gezginlerin olduğu her yerde mülkler yaratın, yönetin ve satın.
-* Ortak hesapları oluşturun, yönetin ve kolaylaştırdığınız rezervasyonlardan komisyon kazanın.
-* Seyahat acentesi hesapları oluşturun, yönetin ve müşterileriniz adına rezervasyon yapın.
-* WinkLinks vanity url'nizi alın (*örneğin https://i.trvl.as/bob*) ve bunu IG biyografi URL'nizde kullanın.
-* Bir sonraki tatilinizi ayırtın ve tasarruf edin.
-* Yukarıdakilerin hepsini Wink'i entegre ederek bir geliştirici olarak yapın.
-* Tüm özelliklerimiz sizin için mevcuttur**ÖZGÜR**.
+- Mülk oluşturup yönetmek ve potansiyel gezginlerin olduğu her yerde satış yapmak.
+- Ortak hesapları oluşturup yönetmek ve kolaylaştırdığınız rezervasyonlardan komisyon kazanmak.
+- Seyahat acentesi hesapları oluşturup yönetmek ve müşterileriniz adına rezervasyon yapmak.
+- WinkLinks özel URL'nizi (*örneğin https://i.trvl.as/bob*) alıp Instagram biyografinizde URL olarak kullanmak.
+- Bir sonraki tatilinizi rezerve etmek ve tasarruf etmek.
+- Geliştirici olarak Wink ile entegre olup yukarıdakilerin hepsini yapmak.
+- Tüm özelliklerimize **Ü-C-R-E-T-S-İ-Z** erişim.
 
-Wink'e nasıl kayıt olacağınızı ve kazanmaya nasıl başlayacağınızı öğrenmek için bir sonraki bölüme geçin.
-
+Kayıt olmayı ve Wink ile kazanmaya başlamayı öğrenmek için sonraki bölüme geçin.

@@ -1,17 +1,16 @@
 ---
-title: URL을 청구하세요
-description: 이 기사에서는 WinkLinks의 허영 URL을 신청하는 방법을 알려드립니다.
+title: URL 소유권 주장하기
+description: 이 문서에서는 WinkLinks 맞춤 URL을 소유하는 방법을 안내합니다.
 sidebar:
   order: 1
 ---
-생성하여 [제휴 계정](/studio/what-is-studio) 이미 WinkLinks 허영 URL이 있습니다. WinkLinks 게시자 기능은 다른 제휴 기능과 함께 Studio 앱에 제공됩니다.
 
-### 예
+[affiliate account](/ko/studio/what-is-studio)를 생성하면 이미 WinkLinks 맞춤 URL을 갖게 됩니다. WinkLinks 퍼블리셔 기능은 Studio 앱 내에 있으며, 다른 제휴 기능과 함께 제공됩니다.
 
-계정 이름이 Queen Bee인 경우 WinkLinks 바니티 URL은 다음과 같습니다.
+### 예시
+
+계정 이름이 Queen Bee라면, WinkLinks 맞춤 URL은 다음과 같습니다:
 
 <h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-계정 이름은 다음에서 사용할 수 있습니다.`first come - first serve`기반 - 지금 당장 고유 URL을 확보하세요!
-
+계정 이름은 `선착순`으로 제공됩니다 - 지금 바로 고유한 URL을 확보하세요!

@@ -1,19 +1,16 @@
 ---
-title: Vahvista URL-osoitteesi
-description: >-
-  Tässä artikkelissa kerromme, kuinka voit lunastaa
-  WinkLinks-erikois-URL-osoitteesi.
+title: Varaa oma URL-osoitteesi
+description: Tässä artikkelissa kerromme, miten voit varata oman WinkLinksin vanity-URL-osoitteesi.
 sidebar:
   order: 1
 ---
-Luomalla [kumppanitili](/studio/what-is-studio), sinulla on jo WinkLinks-sivuston oma URL-osoite. WinkLinksin julkaisijaominaisuudet ovat Studio-sovelluksessamme muiden kumppanuusominaisuuksien ohella.
+
+Luomalla [kumppanitilin](/fi/studio/what-is-studio) sinulla on jo WinkLinksin vanity-URL-osoite. WinkLinksin julkaisijaominaisuudet löytyvät Studio-sovelluksestamme muiden kumppaniohjelman ominaisuuksien ohella.
 
 ### Esimerkki
 
-Jos tilisi nimi on Queen Bee, WinkLinks-profiiliosoitteesi on:
+Jos tilisi nimi on Queen Bee, WinkLinksin vanity-URL-osoitteesi on:
 
 <h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-Tilin nimet ovat saatavilla osoitteessa`first come - first serve`perusta - Nappaa ainutlaatuinen URL-osoitteesi, kun voit!
-
+Tilinimet ovat saatavilla `ensi tullut, ensi palvellaan` -periaatteella – varaa ainutlaatuinen URL-osoitteesi heti!

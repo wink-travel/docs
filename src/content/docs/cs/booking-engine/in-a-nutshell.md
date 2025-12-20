@@ -1,47 +1,47 @@
 ---
-title: V kostce
-description: 'Tento článek vás provede vším, co jste chtěli vědět o rezervačním systému.'
+title: Stručně řečeno
+description: Tento článek vás provede vším, co jste chtěli vědět o rezervačním systému.
 sidebar:
   order: 0
 ---
-Takto na Winku rozdělujeme odpovědnost:
 
-* [Extranet](/extranet/what-is-extranet) zabývá se správou zásob dodavateli.
-* [Studio](/studio/what-is-studio)se zabývá přidruženými subjekty spravujícími obsah.
-* `Booking Engine`se zabývá tvorbou obsahu, vytvořeného v`Studio`, který byl založen na inventáři vytvořeném v roce`Extranet`a jeho rezervaci.
-* [Platba](/payment/what-is-trip-pay) zabývá se účtováním/vrácením peněz cestujícím, kteří si rezervují \[prostřednictvím platforem jako Wink], a placením prodejců.
+Zde je, jak rozdělujeme odpovědnost ve Wink:
+
+- [Extranet](/cs/extranet/what-is-extranet) se zabývá dodavateli spravujícími inventář.
+- [Studio](/cs/studio/what-is-studio) se zabývá partnery spravujícími obsah.
+- `Booking Engine` se zabývá tím, aby obsah vytvořený ve `Studio`, který vychází z inventáře vytvořeného v `Extranet`, byl rezervovatelný.
+- [Payment](/cs/payment/what-is-trip-pay) se zabývá účtováním / vracením peněz cestovatelům, kteří rezervují [přes platformy jako Wink], a platbami dodavatelům.
 
 Rezervační systém je jádrem naší platformy.
 
-Mezi jeho povinnosti patří:
+Jeho odpovědnosti zahrnují:
 
-* Správa měn a udržování aktuálních směnných kurzů.
-* Umožnění poskytovatelům sazeb zasílat nám data o sazbách.
-* Správa vyhledávacích dat.*např. regiony, země, destinace, nemovitosti atd.*
-* Správa jazyků.
-* Generování analytických dat na základě interakcí uživatelů, událostí a volání API.
-* Zobrazování rezervovatelného inventáře v požadovaném formátu, jazyce a měně, například:
-  * A [odkaz ke sdílení](/studio/shareable-links) na Facebooku.
-  * Úvodní stránka hotelu na https://ota.wink.travel s nabídkou ubytování pro daný hotel.
-  * A [karta](/studio/cards) obsahující inventář affiliate partnerů.
-  * A [mapa](/studio/maps) na tvém [mapa](/studio/maps) účet.
-  * An [Volání API](/developers/apis) ze systému vzdálené cestovní kanceláře.
-* Poskytnutí cestovatelům způsobu, jak:
-  * Hledání cestovních potřeb.
-  * Zarezervujte si dostupné zásoby.
-  * Spravovat jejich[rezervace a recenze](/booking-engine/bookings).
-  * Spravovat jejich [seznam přání](/booking-engine/bucket-list) věcí k rezervaci v budoucnu.
-  * Spravovat jejich[cestovní profil](/booking-engine/travel-preferences).*např. alergie, kontakt v případě nouze atd.*
+- Správu měn a udržování aktuálních směnných kurzů.
+- Poskytnutí způsobu pro poskytovatele sazeb, jak nám zasílat data o sazbách.
+- Správu vyhledávacích dat. *např. regiony, země, destinace, objekty atd.*
+- Správu jazyků.
+- Generování analýz na základě uživatelských interakcí, událostí a API volání.
+- Poskytování rezervovatelného inventáře ve požadovaném formátu, jazyce a měně, například:
+    - [sdílitelný odkaz](/cs/studio/shareable-links) na Facebooku.
+    - Hotelová vstupní stránka na https://ota.wink.travel s inventářem pro daný hotel.
+    - [kartu](/cs/studio/cards) obsahující inventář partnera.
+    - [mapu](/cs/studio/maps) ve vašem účtu [WinkLinks](/cs/link-manager/wink-links).
+    - [API volání](/cs/developers/apis) z externího systému cestovní agentury.
+- Poskytování cestovatelům možností:
+    - Vyhledávat cestovní inventář.
+    - Rezervovat dostupný inventář.
+    - Spravovat své [rezervace a recenze](/cs/booking-engine/bookings).
+    - Spravovat svůj [seznam přání](/cs/booking-engine/bucket-list) věcí k rezervaci v budoucnu.
+    - Spravovat svůj [cestovní profil](/cs/booking-engine/travel-preferences). *např. alergie, kontakty pro nouzové situace atd.*
 
-Rezervační systém je soubor opakovaně použitelných funkcí, které zveřejňujeme prostřednictvím https://ota.wink.travel; vysoce přizpůsobitelného webu pro hotely a jejich partnery, kde mohou prodávat své zboží cestovatelům.
+Rezervační systém je soubor znovupoužitelné funkčnosti, kterou zpřístupňujeme prostřednictvím https://ota.wink.travel; vysoce přizpůsobitelné webové stránky pro hotely a partnery, aby mohli prodávat své služby cestovatelům.
 
-Integrátoři, kteří chtějí ještě větší svobodu, mají přístup ke všem stejným funkcím prostřednictvím našeho [Plugin pro WordPress](/developers/wordpress/), [Plugin pro WordPress](/developers/wordpress/) a[API](/developers/apis).
+Integrátoři, kteří chtějí ještě větší svobodu, mají přístup ke všem stejným funkcím prostřednictvím našeho [WordPress pluginu](/cs/developers/wordpress/), [Web Components](/cs/developers/web-components) a [API](/cs/developers/apis).
 
-Pokračujte v dalších sekcích a přečtěte si více o tom, co rezervační systém nabízí.
+Pokračujte do dalších sekcí a přečtěte si více o tom, co rezervační systém nabízí.
 
 ## Další čtení
 
-* Přečtěte si o našich[Plugin pro WordPress](/developers/wordpress/).
-* Přečtěte si o našich[Webové komponenty](/developers/web-components).
-* Přečtěte si o našich[API](/developers/apis).
-
+- Přečtěte si o našem [WordPress pluginu](/cs/developers/wordpress/).
+- Přečtěte si o našich [Web Components](/cs/developers/web-components).
+- Přečtěte si o našich [API](/cs/developers/apis).

@@ -1,71 +1,69 @@
 ---
-title: Localization
-description: >-
-  Ipinapaliwanag ng artikulong ito kung paano namin pinamamahalaan ang
-  localization sa Wink.
+title: Lokalizasyon
+description: Ipinaliwanag ng artikulong ito kung paano namin pinamamahalaan ang lokalizasyon sa Wink.
 sidebar:
   order: 7
 ---
-Ipinapaliwanag ng artikulong ito kung paano namin pinamamahalaan ang localization sa Wink.
 
-## Mga sinusuportahang wika
+Ipinaliwanag ng artikulong ito kung paano namin pinamamahalaan ang lokalizasyon sa Wink.
+
+## Mga Sinusuportahang Wika
 
 Sinusuportahan ng Wink ang mga sumusunod na wika:
 
-* Ingles
-* Bahasa Indonesia
-* Bahasa Malaysia
-* Български
-* Català
-* Čeština
-* Dansk
-* Deutsch
-* Eesti
-* Español
-* Español (AR)
-* Español (MX)
-* Filipino
-* Suomi
-* Français
-* Ελληνικά
-* עברית
-* हिन्दी
-* Hrvatski
-* Magyar
-* Íslenska
-* Italiano
-* 日本語
-* 한국어
-* Latviski
-* Lietuvių
-* Nederlands
-* Norsk
-* Polski
-* Português (BR)
-* Português (PT)
-* Română
-* Русский
-* Slovenčina
-* Slovenščina
-* Srpski
-* Svenska
-* ภาษาไทย
-* Türkçe
-* Українська
-* Tiếng Việt
-* العربية
-* 简体中文
-* 繁體中文
+- English
+- Bahasa Indonesia
+- Bahasa Malaysia
+- Български
+- Català
+- Čeština
+- Dansk
+- Deutsch
+- Eesti
+- Español
+- Español (AR)
+- Español (MX)
+- Filipino
+- Suomi
+- Français
+- Ελληνικά
+- עברית
+- हिन्दी
+- Hrvatski
+- Magyar
+- Íslenska
+- Italiano
+- 日本語
+- 한국어
+- Latviski
+- Lietuvių
+- Nederlands
+- Norsk
+- Polski
+- Português (BR)
+- Português (PT)
+- Română
+- Русский
+- Slovenčina
+- Slovenščina
+- Srpski
+- Svenska
+- ภาษาไทย
+- Türkçe
+- Українська
+- Tiếng Việt
+- العربية
+- 简体中文
+- 繁體中文
 
-## Antas ng platform
+## Antas ng Plataporma
 
-Ang lahat ng aming mga application ay naisalokal upang suportahan ang lahat ng mga wikang nabanggit sa itaas. Ang bawat application ay may tagapili ng wika sa ibaba ng pahina kung saan maaaring piliin ng user ang kanyang gustong wika. Sinusuportahan din ng booking engine ang pagpasa ng gustong wika sa pamamagitan ng URL.
+Lahat ng aming mga aplikasyon ay nilokalisa upang suportahan ang lahat ng mga wikang nabanggit sa itaas. Bawat aplikasyon ay may tagapili ng wika sa ibaba ng pahina kung saan maaaring piliin ng gumagamit ang nais niyang wika. Sinusuportahan din ng booking engine ang pagpapasa ng nais na wika sa pamamagitan ng URL.
 
-## Nilalaman na binuo ng user
+## Nilalaman na Ginawa ng Gumagamit
 
-Ang nilalamang binuo ng user ay naisalokal upang suportahan ang lahat ng mga wikang nabanggit sa itaas. Maaaring piliin ng mga user na gumawa ng English na bersyon ng content at hayaan si Wink na gawin ang iba. O kaya, maaari nilang pamahalaan ang isang partikular na hanay ng mga wika para sa higit pang kontrol at hayaan ang Wink na pangasiwaan ang iba pa.
+Ang nilalaman na ginawa ng gumagamit ay nilokalisa upang suportahan ang lahat ng mga wikang nabanggit sa itaas. Maaaring piliin ng mga gumagamit na gumawa ng bersyon sa English ng nilalaman at hayaang gawin ng Wink ang iba pa. O kaya, maaari nilang pamahalaan ang isang partikular na set ng mga wika para sa mas kontrol at hayaang asikasuhin ng Wink ang iba pa.
 
-## Mga babala
+## Mga Paalala
 
-Ang default na wika ay English. Maliban kung tinukoy, gagamitin muna namin ang default na wika kapag ginamit ng isang user ang alinman sa aming mga application. Hindi namin itinatakda ang aktibong wika batay sa lokal na browser ng user.
-
+Ang default na wika ay English. Maliban kung may ibang tinukoy, gagamitin muna namin ang default na wika kapag gumamit ang isang gumagamit ng alinman sa aming mga aplikasyon. Hindi namin itinatakda ang aktibong wika base sa locale ng browser ng gumagamit.

@@ -1,100 +1,99 @@
 ---
-title: Syarat Pembayaran
-description: >-
-  Dokumen ini merangkumi ketersediaan dana dan cara Wink menyokong model ejen
-  untuk ejen pelancongan.
+title: Terma Pembayaran
+description: Dokumen ini merangkumi ketersediaan dana dan bagaimana Wink menyokong model ejen untuk ejen pelancongan.
 sidebar:
   order: 5
 ---
-:::nota
-Kemas kini terakhir 2024-10-30
+
+:::note
+Terakhir dikemas kini 2024-10-30
 :::
 
-:::awas\[Notis]
-Syarat pembayaran di bawah dikenakan kepada ejen pelancongan yang ingin memperoleh dan mengeluarkan dana sendiri.
-Ini hanya boleh dilakukan melalui API kami dan hanya oleh ejen pelancongan yang telah menyatakan bahawa mereka mahu melakukan ini semasa proses pendaftaran.
+:::caution[Notis]
+Terma pembayaran di bawah terpakai kepada ejen pelancongan yang ingin memperoleh dan mengagihkan dana sendiri.  
+Ini hanya boleh dilakukan melalui API kami dan hanya oleh ejen pelancongan yang telah menyatakan bahawa mereka ingin melakukan ini semasa proses pendaftaran.
 
-Semua ejen pelancongan masih boleh membuat tempahan melalui portal ejen pelancongan kami menggunakan gerbang pembayaran Wink dengan kad kredit mereka sendiri atau pengembara. Oleh itu, semua ejen pelancongan juga perlu bersetuju dengan syarat pembayaran di mana gerbang pembayaran Wink adalah pedagang rekod.
+Semua ejen pelancongan masih boleh membuat tempahan melalui portal ejen pelancongan kami menggunakan gerbang pembayaran Wink dengan kad kredit mereka sendiri atau kad kredit pengembara. Oleh itu, semua ejen pelancongan juga perlu bersetuju dengan terma pembayaran di mana gerbang pembayaran Wink adalah pedagang rekod.
 
-Terma tersebut tersedia di bawah [Portal Gabungan > Syarat Pembayaran](/studio/payment-terms).
+Terma-terma tersebut boleh didapati di bawah [Affiliate Portal > Payment Terms](/ms/studio/payment-terms).
 :::
 
-**SYARAT PEMBAYARAN WINK**\
-**UNTUK EJEN PERJALANAN (Pedagang Rekod)**
+**TERMA PEMBAYARAN WINK**  
+**UNTUK EJEN PELANCONGAN (Pedagang Rekod)**
 
-Syarat Perkhidmatan Pembayaran ini (“Syarat Pembayaran”) adalah perjanjian undang-undang yang mengikat yang membentuk sebahagian daripada perhubungan kontrak yang diwujudkan di bawah "TERMA & SYARAT AGEN PERJALANAN" (“Perjanjian Utama”)
+Terma Perkhidmatan Pembayaran ini (“Terma Pembayaran”) adalah perjanjian undang-undang yang mengikat yang membentuk sebahagian daripada hubungan kontrak yang ditetapkan di bawah "TERMA & SYARAT EJEN PELANCONGAN" (“Perjanjian Utama”)
 
 **ANTARA:**
 
-1. **TRAVELIKO SINGAPURA PTE. LTD.** sebuah syarikat yang diperbadankan di bawah undang-undang Singapura dan mempunyai pejabat berdaftarnya di #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 dengan nombor daftar VAT 201437335D (selepas ini dikenali sebagai "Wink") dan
+1. **TRAVELIKO SINGAPORE PTE. LTD.** sebuah syarikat yang diperbadankan di bawah undang-undang Singapura dan mempunyai pejabat berdaftar di \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 dengan nombor pendaftaran VAT 201437335D (selepas ini dikenali sebagai "Wink") dan  
+     
+2. **EJEN PELANCONGAN** yang butirannya dinyatakan dalam Borang Pendaftaran Ejen Pelancongan atau telah dihantar secara dalam talian (disebut sebagai "Ejen Pelancongan").
 
-2. **EJEN PERJALANAN** yang butirannya dinyatakan dalam Borang Pendaftaran Ejen Pelancongan atau telah diserahkan dalam talian ("Ejen Pelancongan").
+Definisi dan terma yang ditetapkan dalam Perjanjian Utama terpakai kepada Terma Pembayaran ini kecuali ditakrifkan lain di sini.
 
-Takrif dan terma yang ditetapkan dalam Perjanjian Utama terpakai pada Syarat Pembayaran ini melainkan ditakrifkan sebaliknya di sini.
+**1\. Definisi**
 
-**1. Definisi**
+Seperti yang ditakrifkan dalam perjanjian utama "TERMA & SYARAT EJEN PELANCONGAN" ("Perjanjian Utama"), terma-terma berikut mempunyai maksud yang sama dalam Terma Pembayaran ini:
 
-Seperti yang ditakrifkan dalam perjanjian utama "TERMA & SYARAT EJEN PERJALANAN" ("Perjanjian Utama"), terma berikut hendaklah mempunyai maksud yang sama dalam Terma Pembayaran ini:
-
-* "Penyedia Penginapan"
-* "Tempahan"
-* "Yuran Tempahan"
-* "Nilai Tempahan"
-* "Komisen"
-* "Bayaran Bersih"
+* "Penyedia Penginapan"  
+* "Tempahan"  
+* "Yuran Tempahan"  
+* "Nilai Tempahan"  
+* "Komisen"  
+* "Pembayaran Bersih"  
 * "Perjanjian Berasingan"
 
-**2. Kutipan dan Pengagihan Bayaran**
 
-2.1 **Kutipan Bayaran:** Ejen Pelancongan bertanggungjawab untuk mengutip bayaran daripada Tetamu semasa membuat tempahan. Ini memastikan pemprosesan segera dan kejelasan kewangan.
+**2\. Pengumpulan dan Pengagihan Pembayaran**
 
-2.2 **Potongan Yuran:** Ejen Pelancongan hendaklah memotong yuran Pembekal Perkhidmatan terlebih dahulu kemudian memotong komisennya untuk sari kata seperti contoh di bawah:
+2.1 **Pengumpulan Pembayaran:** Ejen Pelancongan bertanggungjawab untuk mengutip pembayaran daripada Tetamu pada masa tempahan. Ini memastikan pemprosesan segera dan kejelasan kewangan.
 
-* 1.5% Yuran Tempahan untuk Wink.
-* Suruhanjaya Ejen Pelancongan seperti yang dinyatakan dalam Perjanjian Berasingan (kami akan menggunakan 10% untuk contoh ini)
+2.2 **Potongan Yuran:** Ejen Pelancongan hendaklah menolak yuran Penyedia Perkhidmatan terlebih dahulu kemudian menolak komisen beliau untuk subtotal seperti contoh di bawah:
 
-Nilai Tempahan USD 1,000\
-Yuran Wink (1.5%) = USD 15\
-Jumlah kecil = 1,000 - 15 = 985
+* 1.5% Yuran Tempahan untuk Wink.  
+* Komisen Ejen Pelancongan seperti yang dinyatakan dalam Perjanjian Berasingan (kami akan menggunakan 10% untuk contoh ini)
 
-2.3 **Bayaran Bersih kepada Penyedia Penginapan:** Ejen Pelancongan bertanggungjawab untuk mengeluarkan Bayaran Bersih kepada Penyedia Penginapan mengikut syarat Perjanjian Berasingan antara Ejen Pelancongan dan Penyedia Penginapan. Wink tidak bertanggungjawab untuk membuat sebarang pembayaran kepada Pembekal Penginapan.
+Nilai Tempahan USD 1,000  
+Yuran Wink (1.5%) = USD 15  
+Subtotal = 1,000 - 15 = 985
 
-**3**. **Invois dan Pembayaran**
+2.3 **Pembayaran Bersih kepada Penyedia Penginapan:** Ejen Pelancongan bertanggungjawab untuk mengagihkan Pembayaran Bersih kepada Penyedia Penginapan mengikut terma Perjanjian Berasingan antara Ejen Pelancongan dan Penyedia Penginapan. Wink tidak bertanggungjawab untuk membuat sebarang pembayaran kepada Penyedia Penginapan.
 
-3.1 **Invois Bulanan:** Wink akan mengeluarkan invois bulanan yang betul dan tepat kepada Ejen Pelancongan untuk Yuran Tempahan yang terkumpul pada bulan sebelumnya. Ejen Pelancongan dikehendaki menjelaskan invois ini dalam terma pembayaran yang dinyatakan pada invois.
+**3**. **Invois dan Pembayaran** 
+
+3.1 **Invois Bulanan:** Wink akan mengeluarkan invois bulanan yang betul dan tepat kepada Ejen Pelancongan untuk Yuran Tempahan yang terkumpul sepanjang bulan sebelumnya. Ejen Pelancongan dikehendaki menyelesaikan invois ini dalam tempoh pembayaran yang dinyatakan pada invois.
 
 3.2 **Kaedah Pembayaran:** Pembayaran kepada Wink hendaklah dibuat melalui kaedah pembayaran yang dinyatakan pada invois. Sebarang kos yang berkaitan dengan pemindahan pembayaran adalah tanggungjawab Ejen Pelancongan.
 
-3.3 **Pembayaran Lewat:** Sekiranya pembayaran lewat, Wink berhak untuk mengenakan faedah ke atas jumlah tertunggak pada kadar 5% sebulan atau kadar maksimum yang dibenarkan oleh undang-undang, yang mana lebih rendah. Selain itu, jika Ejen Pelancongan lewat membayar kepada Penyedia Penginapan mengikut syarat Perjanjian Berasingan, Wink berhak untuk menggantung akses kepada Perkhidmatan sehingga semua bayaran tertunggak kepada Wink dan Penyedia Penginapan diselesaikan. Walau bagaimanapun, jika terdapat sebarang kesilapan atau kesilapan dalam invois yang dikemukakan oleh Wink, Ejen Pelancongan hanya dikehendaki membuat pembayaran bahagian invois yang betul dan tepat dan tidak akan dikenakan sebarang caj faedah atau penalti kerana gagal membayar bahagian invois yang salah.
+3.3 **Pembayaran Lewat:** Sekiranya berlaku pembayaran lewat, Wink berhak mengenakan faedah ke atas jumlah tertunggak pada kadar 5% sebulan atau kadar maksimum yang dibenarkan oleh undang-undang, yang mana lebih rendah. Selain itu, jika Ejen Pelancongan lewat membayar Penyedia Penginapan mengikut terma Perjanjian Berasingan, Wink berhak menggantung akses kepada Perkhidmatan sehingga semua pembayaran tertunggak kepada kedua-dua Wink dan Penyedia Penginapan diselesaikan. Walau bagaimanapun, jika terdapat sebarang kesilapan atau ralat dalam invois yang dikemukakan oleh Wink, Ejen Pelancongan hanya dikehendaki membuat pembayaran bahagian invois yang betul dan tepat dan tidak akan dikenakan sebarang caj faedah atau penalti kerana gagal membayar bahagian invois yang salah.
 
-**4. Peranan dan Tanggungjawab**
+**4\. Peranan dan Tanggungjawab**
 
 4.1 **Tanggungjawab Ejen Pelancongan:**
 
-* Pastikan kutipan pembayaran tepat pada masanya daripada Tetamu, mematuhi syarat-syarat yang digariskan dalam Bahagian 2.1.
-* Tolak Yuran Tempahan dan Komisen sebelum menghantar Bayaran Bersih kepada Penyedia Penginapan mengikut Perjanjian Berasingan.
-* Selesaikan invois Wink untuk Yuran Tempahan dengan segera dalam terma yang dinyatakan dalam Bahagian 3.1.
-* Mengurus dan menyelesaikan sebarang pertikaian yang berkaitan dengan tempahan atau pembayaran secara aktif, memastikan komunikasi dengan Wink dikekalkan untuk menyelesaikan isu dengan cekap.
+* Memastikan kutipan pembayaran daripada Tetamu tepat pada masanya, mematuhi terma yang dinyatakan dalam Seksyen 2.1.  
+* Menolak Yuran Tempahan dan Komisen yang sesuai sebelum menyerahkan Pembayaran Bersih kepada Penyedia Penginapan mengikut Perjanjian Berasingan.  
+* Menyelesaikan invois Wink untuk Yuran Tempahan dengan segera dalam tempoh yang dinyatakan dalam Seksyen 3.1.  
+* Mengurus dan menyelesaikan sebarang pertikaian berkaitan tempahan atau pembayaran secara aktif, memastikan komunikasi dengan Wink dikekalkan untuk menyelesaikan isu dengan cekap.
 
 4.2 **Tanggungjawab Wink:**
 
-* Mengeluarkan invois bulanan yang tepat dan tepat pada masanya untuk Yuran Tempahan seperti yang diperincikan dalam Bahagian 3.1.
-* Menyediakan Ejen Pelancongan akses berterusan ke platform Wink untuk memproses tempahan dan menguruskan pembayaran.
-* Membantu Ejen Pelancongan dalam menyelesaikan pertikaian yang berkaitan dengan pembayaran dengan menyediakan data transaksi dan sokongan yang diperlukan seperti yang diperlukan.
+* Mengeluarkan invois bulanan yang tepat dan tepat pada masanya untuk Yuran Tempahan seperti yang diperincikan dalam Seksyen 3.1.  
+* Memberikan Ejen Pelancongan akses berterusan ke platform Wink untuk memproses tempahan dan mengurus pembayaran.  
+* Membantu Ejen Pelancongan dalam menyelesaikan pertikaian berkaitan pembayaran dengan menyediakan data transaksi dan sokongan yang diperlukan.
 
-**5. Penukaran Mata Wang**
+**5\. Penukaran Mata Wang**
 
 Jika sebarang penukaran mata wang diperlukan, ia akan diproses pada kadar yang disediakan oleh perkhidmatan pemprosesan pembayaran. Ejen Pelancongan bertanggungjawab untuk sebarang kos yang berkaitan dengan penukaran mata wang.
 
-**6. Penyelesaian Pertikaian**
+**6\. Penyelesaian Pertikaian**
 
-Sebarang pertikaian yang timbul daripada atau berkaitan dengan Syarat Pembayaran ini akan dikendalikan seperti yang ditetapkan di bawah prosedur penyelesaian pertikaian dalam Perjanjian Utama, memastikan pendekatan yang konsisten dan bersatu untuk menyelesaikan konflik antara Wink dan Ejen Pelancongan.
+Sebarang pertikaian yang timbul daripada atau berkaitan dengan Terma Pembayaran ini akan dikendalikan seperti yang ditetapkan di bawah prosedur penyelesaian pertikaian dalam Perjanjian Utama, memastikan pendekatan yang konsisten dan bersatu untuk menyelesaikan konflik antara Wink dan Ejen Pelancongan.
 
-**7. Pengubahsuaian Terma**\
-Wink berhak untuk mengubah suai Syarat Pembayaran ini pada bila-bila masa. Sebarang perubahan akan dimaklumkan kepada Ejen Pelancongan sekurang-kurangnya 30 hari sebelum ia berkuat kuasa. Penggunaan berterusan platform Wink selepas tarikh berkuat kuasa merupakan penerimaan syarat yang diubah suai.
+**7\. Pengubahsuaian Terma**  
+Wink berhak untuk mengubah Terma Pembayaran ini pada bila-bila masa. Sebarang perubahan akan dimaklumkan kepada Ejen Pelancongan sekurang-kurangnya 30 hari sebelum ia berkuat kuasa. Penggunaan berterusan platform Wink selepas tarikh berkuat kuasa dianggap sebagai penerimaan terma yang diubah suai.
 
-**8. Undang-undang dan Bidang Kuasa yang Mentadbir**\
-Syarat Pembayaran ini dikawal oleh undang-undang Singapura. Sebarang pertikaian yang timbul daripada atau berkaitan dengan syarat ini hendaklah diselesaikan di mahkamah Singapura.
+**8\. Undang-undang dan Bidang Kuasa**  
+Terma Pembayaran ini tertakluk kepada undang-undang Singapura. Sebarang pertikaian yang timbul daripada atau berkaitan dengan terma ini akan diselesaikan di mahkamah Singapura.
 
-Syarat Pembayaran ini adalah penting dan diperluaskan berdasarkan peruntukan pembayaran yang ditetapkan dalam Perjanjian Utama, "TERMA & SYARAT AGEN PERJALANAN\_220924," antara Wink dan Ejen Pelancongan.
-
+Terma Pembayaran ini adalah sebahagian penting dan memperluaskan peruntukan pembayaran yang ditetapkan dalam Perjanjian Utama, "TERMA & SYARAT EJEN PELANCONGAN_220924," antara Wink dan Ejen Pelancongan.

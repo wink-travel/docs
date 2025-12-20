@@ -1,73 +1,71 @@
 ---
-title: Personvernerklæring
-description: >-
-  Lett tilgjengelig og oppdatert personvernerklæring for alle våre reisende
-  brukere.
+title: Personvernregler
+description: Enkelt tilgjengelige og oppdaterte personvernregler for alle våre reisende brukere.
 sidebar:
   order: 5
 ---
-TRAVELIKO SINGAPORE PTE. LTD., som opererer under navnet Wink («Selskapet»), ønsker å informere deg som kontakter Selskapet om at det er nødvendig å samle inn, kompilere og bruke dine personopplysninger for Selskapets tjenester i samsvar med denne personvernerklæringen. Ved å kontakte og utlevere dine personopplysninger til Selskapet for kommunikasjon, koordinering og/eller levering av Selskapets tjenester til deg, anser vi at du samtykker i og aksepterer å være bundet av og overholde denne personvernerklæringen.
 
-Personopplysninger behandles, og selskapet kan innhente dine personopplysninger fra ulike kanaler som følger:
+TRAVELIKO SINGAPORE PTE. LTD., som opererer under navnet Wink (heretter «Selskapet»), ønsker å informere deg som kontakter Selskapet om at det er nødvendig å samle inn, sammenstille og bruke dine personopplysninger for Selskapets tjenester i samsvar med denne personvernreglen. Ved å kontakte og oppgi dine personopplysninger til Selskapet for formålene kommunikasjon, koordinering og/eller levering av Selskapets tjenester til deg, anses det at du samtykker til og aksepterer å være bundet av og overholde denne personvernreglen.
 
-(1) Direkte fra deg gjennom selskapets kommunikasjon med deg;
+Personopplysninger som behandles, kan Selskapet innhente dine personopplysninger fra ulike kanaler som følger:
 
-(2) Indirekte, via en henvisning fra en tredjepart som du kan gi samtykke til å utlevere dine personopplysninger til selskapet; eller
+(1) Direkte fra deg gjennom Selskapets kommunikasjon med deg;
 
-(3) Automatisk innsamlet via systemet når du går inn på selskapets nettsted og/eller bruker tjenestene.
+(2) Indirekte, via en henvisning fra en tredjepart som du kan gi samtykke til å utlevere dine personopplysninger til Selskapet; eller
 
-Personopplysningene som selskapet er nødvendig for å samle inn, sammenstille, bruke og behandle i henhold til denne personvernerklæringen er som følger:
+(3) Automatisk innhentet via system når du får tilgang til Selskapets nettside og/eller bruker tjenestene.
 
-(1) Ditt fulle navn, inkludert din relaterte informasjon eller din representantinformasjon (dersom du kontakter oss i navnet til en juridisk person), som kan inkludere ditt identitetsdokument.
+De personopplysningene som Selskapet anser som nødvendige å samle inn, sammenstille, bruke og behandle i henhold til denne personvernreglen er som følger:
 
-(2) Kontaktinformasjon som telefonnummer, e-post eller informasjon om kontoer på sosiale medier.
+(1) Ditt fulle navn, inkludert tilhørende informasjon eller din representants informasjon (dersom du kontakter oss på vegne av en juridisk person) som kan inkludere ditt identitetsdokument.
 
-(3) Andre personopplysninger som du måtte oppgi til selskapet under kommunikasjonen, for eksempel informasjon om spørsmål du måtte ha, interesseinformasjon eller annen personlig identifiserbar informasjon du oppgir til selskapet direkte gjennom ulike kommunikasjonskanaler.
+(2) Kontaktinformasjon som telefonnummer, e-post eller informasjon om sosiale mediekontoer.
 
-(4) Ved kommunikasjon via nettstedet kan det inkludere teknisk informasjon som IP-adresse, informasjonskapsler, inkludert informasjon om nettleseratferden din.
+(3) Andre personopplysninger som du kan gi til Selskapet under kommunikasjonen, slik som informasjon om henvendelser, interesseinformasjon eller annen personlig identifiserbar informasjon du gir direkte til Selskapet gjennom ulike kommunikasjonskanaler.
 
-Formålet med behandling og bruk av personopplysninger er at selskapet er nødvendig for å samle inn, sammenstille og bruke jobbsøkerens personopplysninger til følgende formål:
+(4) Ved kommunikasjon via nettsiden kan det inkludere din tekniske informasjon som IP-adresse, informasjonskapsler (cookies), inkludert informasjon om din nettleseratferd.
 
-(1) For håndtering av kommunikasjon du har hatt med Selskapet, for eksempel å svare på spørsmål, gi relevant informasjon etter forespørsel og behov, håndtere klager eller svare på kommentarer du gir direkte til Selskapet via ulike kommunikasjonskanaler, inkludert kontinuerlig koordinering, inngåelse av tjenesteavtaler og/eller oppfyllelse av rettigheter og forpliktelser som Selskapet og du måtte bli enige om;
+Formål med behandling og bruk av personopplysninger, Selskapet anser det som nødvendig å samle inn, sammenstille og bruke jobbsøkerens personopplysninger for følgende formål:
 
-(2) For å oppfylle juridiske forpliktelser som Selskapet kan være underlagt visse betingelser. Dette kan omfatte, men er ikke begrenset til, å utføre oppgaver knyttet til utarbeidelse av regnskapsdokumenter og skatter i forbindelse med tjenester som Selskapet leverer til deg;
+(1) For håndtering av kommunikasjon som du har hatt med Selskapet, slik som å besvare spørsmål, gi relevant informasjon etter forespørsel, håndtere klager eller svare på kommentarer du gir direkte til Selskapet via ulike kommunikasjonskanaler, inkludert løpende koordinering, gjennomføring av tjenesteavtaler og/eller oppfyllelse av rettigheter og forpliktelser som Selskapet og du kan ha avtalt;
 
-(3) Med det formål å bygge og forbedre forretningsforhold, inkludert å forbedre tjenesten som Selskapet tilbyr til din fordel, som Selskapet kan samle inn og/eller bruke dine personopplysninger til kontroll, tjenestesikring, ledelsesanalyse og løsning av forretningsrelaterte problemer, inkludert, men ikke begrenset til, opplæring av ansatte og planlegging av fremtidig tjenesteforbedring;
+(2) For oppfyllelse av juridiske forpliktelser som Selskapet kan være underlagt. Dette kan inkludere, men er ikke begrenset til, oppgaver knyttet til utarbeidelse av regnskapsdokumenter og skatter i forbindelse med tjenester som Selskapet leverer til deg;
 
-(4) For å beskytte og forsvare selskapets juridiske rettigheter i tilfelle du og selskapet har en tvist; og
+(3) For formål knyttet til å bygge og forbedre forretningsforhold, inkludert å forbedre tjenesten som Selskapet tilbyr til din fordel, hvor Selskapet kan samle inn og/eller bruke dine personopplysninger for kontroll, sikring av tjenesten, analyse av ledelse og løsning av forretningsrelaterte saker, inkludert, men ikke begrenset til, opplæring av ansatte og planlegging av fremtidige tjenesteforbedringer;
 
-(5) Med forbehold om et uttrykkelig samtykke gitt til Selskapet, for eksempel markedsføring og nyhetsbrevkommunikasjon, kan Selskapet behandle Personopplysningene for de formålene som er definert i samtykket.
+(4) For å beskytte og forsvare Selskapets juridiske rettigheter i tilfelle uenighet mellom deg og Selskapet; og
 
-Oppbevaringsperiode for personopplysninger. For å kunne utføre arbeidet i samsvar med formålene beskrevet ovenfor, er selskapet nødvendig for å samle inn, sammenstille og behandle dine personopplysninger i henhold til følgende periode:
+(5) Med forbehold om et eksplisitt samtykke gitt til Selskapet, slik som markedsføring og nyhetsbrevkommunikasjon, kan Selskapet behandle personopplysningene for formål definert i samtykket.
 
-(1) For behandling av personopplysninger med det formål å yte tjenester, inngå en avtale og/eller oppfylle rettigheter og plikter i henhold til avtalen, er Selskapet nødvendig for å behandle dine personopplysninger så lenge Selskapet har en plikt til å yte tjenester til deg;
+Lagringsperiode for personopplysninger, for å kunne utføre formålene beskrevet ovenfor, anser Selskapet det som nødvendig å samle inn, sammenstille og behandle dine personopplysninger i følgende perioder:
 
-(2) For behandling av personopplysninger med det formål å utføre oppgavene i henhold til gjeldende lover, er Selskapet nødvendig for å behandle dine personopplysninger i en periode angitt i gjeldende lover;
+(1) For behandling av personopplysninger med formål å levere tjenester, gjennomføre avtaler og/eller oppfylle rettigheter og plikter under avtalen, anser Selskapet det som nødvendig å behandle dine personopplysninger så lenge Selskapet har plikt til å levere tjenester til deg;
 
-(3) Ved behandling av personopplysninger med det formål å bygge og forbedre forretningsforhold og/eller forbedre tjenesten, forbeholder Selskapet seg retten til å beholde disse personopplysningene i den grad Selskapet måtte ha forretningsmessig behov. Selskapet garanterer at oppbevaring av personopplysningene ikke vil påvirke den registrertes rettigheter i urimelig grad;
+(2) For behandling av personopplysninger med formål å oppfylle plikter i henhold til gjeldende lover, anser Selskapet det som nødvendig å behandle dine personopplysninger i den perioden som er angitt i gjeldende lover;
 
-(4) For behandling av personopplysninger for å beskytte og kjempe for selskapets legitime rettigheter, er selskapet nødt til å oppbevare slike personopplysninger i samsvar med forskriftene som er definert i gjeldende lover; og
+(3) For behandling av personopplysninger med formål å bygge og forbedre forretningsforhold og/eller forbedre tjenesten, forbeholder Selskapet seg retten til å beholde disse personopplysningene så lenge det foreligger forretningsmessig behov. Selskapet garanterer at lagringen av personopplysningene ikke urimelig vil påvirke den registrertes rettigheter;
 
-(5) Dersom du gir Selskapet samtykke til å behandle dine personopplysninger for spesifikke formål, vil Selskapet behandle dine personopplysninger inntil du trekker tilbake et slikt samtykke.
+(4) For behandling av personopplysninger med formål å beskytte og kjempe for Selskapets legitime rettigheter, anser Selskapet det som nødvendig å beholde slike personopplysninger i henhold til forskrifter definert i gjeldende lover; og
 
-Utlevering av personopplysninger. Generelt vil ikke personopplysningene dine bli utlevert, med unntak av tilfeller der selskapet måtte utlevere dem til følgende person:
+(5) Dersom du gir samtykke til at Selskapet behandler dine personopplysninger for spesifikke formål, vil Selskapet behandle dine personopplysninger inntil du trekker tilbake dette samtykket.
 
-(1) Eksterne tjenesteleverandører av selskapet som er engasjert for å yte støttetjenester til selskapet i forbindelse med levering av tjenester til deg, inkludert selskapets konsulenter. Slik utlevering av personopplysninger til disse tredjepartene skal gjøres i samsvar med formålene og kun på grunnlag av behovet for å vite; eller
+Utlevering av personopplysninger, generelt vil ikke dine personopplysninger bli utlevert, unntatt i tilfeller hvor Selskapet må utlevere til følgende personer:
 
-(2) Myndigheter, reguleringsmyndigheter eller domstoler som Selskapet kan være underlagt en ordre, lov eller dom om å utlevere personopplysningene.
+(1) Eksterne tjenesteleverandører som Selskapet engasjerer for å yte støttetjenester til Selskapet i forbindelse med levering av tjenester til deg, inkludert konsulenter for Selskapet. Slik utlevering av personopplysninger til disse tredjepartene skal skje i samsvar med formålene og kun på et behov-til-å-vite-grunnlag; eller
 
-Selskapet forplikter seg til å implementere passende sikkerhetstiltak for personopplysninger for å forhindre uautorisert og ulovlig tilgang, endring, tillegg eller utlevering. Selskapet forplikter seg til å gjennomgå disse tiltakene regelmessig for å sikre at de er i samsvar med standardene og gjeldende lover.
+(2) Myndigheter, regulerende organer eller domstoler som Selskapet kan være underlagt ordre, lov eller dom for å utlevere personopplysninger.
 
-Rettigheter som registrert, Selskapet respekterer dine rettigheter som registrert i henhold til gjeldende lover. Du kan kontakte Selskapet for å utøve rettighetene som er (1) retten til å trekke tilbake samtykke, (2) retten til innsyn, (3) retten til å be om en kopi av personopplysningene dine, (4) retten til å korrigere personopplysningene, (5) retten til å protestere mot enhver behandling av personopplysningene, (6) retten til å be om dataportabilitet dersom Selskapet lagrer personopplysningene i et format som er lesbart eller vanlig brukt av automatiserte verktøy eller utstyr, inkludert retten til å overføre slike personopplysninger til andre behandlingsansvarlige, (7) retten til å be om sletting eller avidentifisering av personopplysningene når det ikke er nødvendig å behandle dem, (8) retten til å be om suspensjon av bruken av personopplysningene, og (9) retten til å sende inn en klage.
+Selskapet forplikter seg til å implementere passende sikkerhetstiltak for personopplysninger for å forhindre uautorisert og ulovlig tilgang, endring, modifisering eller utlevering. Selskapet forplikter seg til å gjennomgå disse tiltakene regelmessig for å sikre at de er i samsvar med standarder og gjeldende lover.
 
-Kontaktinformasjon for selskapet
+Rettigheter for den registrerte, Selskapet respekterer dine rettigheter som registrert i henhold til gjeldende lover. Du kan kontakte Selskapet for å utøve rettighetene som er (1) retten til å trekke tilbake samtykke, (2) retten til innsyn, (3) retten til å be om kopi av personopplysninger, (4) retten til å korrigere personopplysninger, (5) retten til å protestere mot behandling av personopplysninger, (6) retten til å be om dataportabilitet dersom Selskapet lagrer personopplysninger i et format som er lesbart eller vanlig brukt av automatiserte verktøy eller utstyr, inkludert retten til å overføre slike personopplysninger til andre behandlingsansvarlige, (7) retten til å be om sletting eller anonymisering av personopplysninger når det ikke lenger er nødvendig å behandle dem, (8) retten til å be om midlertidig stans av bruk av personopplysninger, og (9) retten til å klage.
 
-Databeskyttelsesansvarlig
+Selskapets kontaktinformasjon
+
+Personvernansvarlig
 
 Navn: Yann Gouriou
 
 Adresse: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
 
-E-post: dataprotectionofficer@wink.travel
+E-post: dataprotectionofficer@wink.travel  
 Telefonnummer: +66 (0) 854891301
-

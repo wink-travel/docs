@@ -1,18 +1,16 @@
 ---
-title: Mi az a Stúdió?
-description: >-
-  Ez az oldal elmagyarázza az utazási készletek elérésének nehézségeit, és azt,
-  hogy a Wink partnerportálja hogyan könnyíti meg ezt.
+title: Mi az a Studio?
+description: Ez az oldal elmagyarázza az utazási készlethez való hozzáférés nehézségeit, és hogy a Wink partnerportálja hogyan teszi ezt sokkal egyszerűbbé.
 sidebar:
   order: 0
 ---
-Történelmileg az utazással kapcsolatos bármilyen tevékenységhez való hozzáférés és értékesítés titoktartási megállapodásokat és összetett integrációkat igényelt két \[vagy több] engedéllyel rendelkező utazási iroda cég között, amelyek megfelelő műszaki szakértelemmel, fizetési átjáróhoz való hozzáféréssel és PCI DSS-kompatibilisséggel rendelkeztek. Ez költséges és időigényes erőfeszítés volt, és a belépési korlátok elképesztően magasak voltak az átlagemberek számára.
 
-[Wink Stúdió](https://studio.wink.travel) a partnerportálunk. Az utazási cikkek értékesítését mindenki számára elérhetővé teszi, és olyan egyszerűvé teszi, mint egy link megosztása, vagy olyan fejletté, mint egy online utazási iroda működtetése.
+Történelmileg az utazással kapcsolatos bármilyen hozzáférés és értékesítés NDA-kat és összetett integrációkat igényelt két [vagy több] engedéllyel rendelkező utazási ügynökség között, amelyek rendelkeztek elegendő műszaki szakértelemmel, hozzáféréssel egy fizetési átjáróhoz, és mindkettő PCI DSS megfelelőséggel bírt. Ez költséges és időigényes folyamat volt, és a belépési korlát lehetetlenül magas volt a hétköznapi emberek számára.
 
-A partnerportál a világ bármely pontjáról elérhető utazási kínálatot kínál beszállítóktól (azaz szállodáktól, hostelektől, bérelhető ingatlanoktól, élményszolgáltatóktól). A célod, hogy megtaláld a számodra megfelelő kínálatot, majd a legjobb módon mutasd be és értékesítsd azt a közönségednek.
+A [Wink Studio](https://studio.wink.travel) a partnerportálunk. Ez lehetővé teszi, hogy az utazási készlet értékesítése mindenki számára elérhető legyen, és olyan egyszerű legyen, mint egy link megosztása, vagy olyan fejlett, mint egy online utazási iroda működtetése.
 
-A Studio lehetőséget kínál a beszállítók és készleteik böngészésére. Miután találtál valamit, ami tetszik, számos módot kínálunk arra, hogy online, és különösen a közösségi médián keresztül értékesítsd azt.
+A partnerportál elérhetővé teszi a beszállítók (pl. szállodák, hostelek, bérlések, élmény-szolgáltatók) utazási készletét bárhol a világon. A célod, hogy megtaláld a számodra megfelelő készletet, majd a legjobb módon mutasd be és értékesítsd azt a közönségednek.
 
-Olvasson tovább, és ismerje meg a partnereknek kínált összes funkciót.
+A Studio lehetőséget kínál arra, hogy böngéssz a beszállítók és készleteik között. Ha találsz valamit, ami tetszik, számos módon értékesítheted azt online, különösen a közösségi médián keresztül.
 
+Olvass tovább, és ismerd meg az összes funkciót, amit a partnerek számára kínálunk.

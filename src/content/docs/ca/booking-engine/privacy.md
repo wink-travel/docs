@@ -1,73 +1,71 @@
 ---
-title: Política de privacitat
-description: >-
-  Política de privacitat fàcilment accessible i actualitzada per a tots els
-  nostres usuaris viatgers.
+title: Política de Privacitat
+description: Política de privacitat fàcilment accessible i actualitzada per a tots els nostres usuaris viatgers.
 sidebar:
   order: 5
 ---
-TRAVELIKO SINGAPORE PTE. LTD., que opera sota el nom de Wink (l'"Empresa"), vol informar-vos que contacteu amb l'Empresa que cal recopilar, compilar i utilitzar les vostres dades personals per al servei de l'Empresa d'acord amb aquesta Política de privadesa. En contactar i divulgar les vostres dades personals a l'Empresa amb finalitats de comunicació, coordinació i/o prestació dels serveis de l'Empresa, considerem que esteu d'acord i accepteu estar obligat per i complir aquesta Política de privadesa.
 
-Atesa la gestió de dades personals, l'empresa pot obtenir les vostres dades personals de diversos canals, com ara:
+TRAVELIKO SINGAPORE PTE. LTD., que opera sota el nom de Wink (la “Companyia”), vol informar a qui contacta la Companyia que és necessari recollir, compilar i utilitzar les seves dades personals per al servei de la Companyia d’acord amb aquesta Política de Privacitat. En contactar i revelar les seves dades personals a la Companyia amb la finalitat de comunicació, coordinació i/o prestació dels serveis de la Companyia, es considera que vostè accepta i està d’acord a complir aquesta Política de Privacitat.
 
-(1) Directament de vostè a través de les comunicacions de l'Empresa amb vostè;
+Les dades personals que es processen, la Companyia pot obtenir les seves dades personals a través de diversos canals com segueix:
 
-(2) Indirectament, mitjançant una derivació d'un tercer a qui vostè pot donar el seu consentiment per divulgar les seves dades personals a l'Empresa; o
+(1) Directament de vostè a través de les comunicacions de la Companyia amb vostè;
 
-(3) Recollides automàticament a través del sistema quan accedeixes al lloc web de l'empresa i/o fas servir els serveis.
+(2) Indirectament, mitjançant una referència d’un tercer a qui vostè pot concedir consentiment per revelar les seves dades personals a la Companyia; o
 
-Les dades personals que l'Empresa ha de recopilar, compilar, utilitzar i processar en virtut d'aquesta Política de privacitat són les següents:
+(3) Recollides automàticament pel sistema quan accedeix al lloc web de la Companyia i/o utilitza els serveis.
 
-(1) El vostre nom complet, inclosa la vostra informació relacionada o la vostra informació representativa (en cas que us poseu en contacte amb nosaltres en nom d'una persona jurídica), que pot incloure el vostre document d'identitat.
+Les dades personals que la Companyia necessita recollir, compilar, utilitzar i processar segons aquesta Política de Privacitat són les següents:
 
-(2) Informació de contacte com ara número de telèfon, correu electrònic o informació del compte de xarxes socials.
+(1) El seu nom complet, incloent la informació relacionada o la informació del seu representant (en cas que contacti en nom d’una persona jurídica) que pot incloure el seu document d’identitat.
 
-(3) Altres dades personals que pugueu proporcionar a l'Empresa durant les comunicacions, com ara informació sobre assumptes de consulta, informació d'interès o qualsevol altra informació d'identificació personal que proporcioneu a l'Empresa directament a través de diversos canals de comunicació.
+(2) Informació de contacte com número de telèfon, correu electrònic o informació del compte de xarxes socials.
 
-(4) En cas de comunicació a través del lloc web, pot incloure la vostra informació tècnica com ara l'adreça IP, les galetes (cookies), inclosa informació sobre el vostre comportament de navegació.
+(3) Altres dades personals que pugui proporcionar a la Companyia durant les comunicacions, com informació sobre qüestions d’interès, informació d’interès o qualsevol altra informació personal identificable que proporcioni directament a la Companyia a través de diversos canals de comunicació.
 
-Finalitat del processament i ús de dades personals, l'empresa ha de recopilar, compilar i utilitzar les dades personals del sol·licitant de feina per a les següents finalitats:
+(4) En cas de comunicació a través del lloc web, pot incloure la seva informació tècnica com l’adreça IP, cookies, incloent informació sobre el seu comportament de navegació.
 
-(1) Per a la gestió de les comunicacions amb les quals us heu comunicat amb l'Empresa, com ara respondre preguntes, proporcionar informació rellevant segons se us hagi sol·licitat i requerit, gestionar queixes o respondre a comentaris que feu directament a l'Empresa a través de diversos canals de comunicació, inclosa la coordinació contínua, l'execució d'acords de servei i/o el compliment de drets i obligacions que l'Empresa i vosaltres pugueu acordar;
+Finalitat del Processament i Ús de les Dades Personals, la Companyia necessita recollir, compilar i utilitzar les dades personals del Sol·licitant de Feina per als següents propòsits:
 
-(2) Per al compliment d'obligacions legals a les quals la Companyia pot estar subjecta en determinades condicions. Això pot incloure, entre d'altres, la realització de tasques associades a la preparació de documents comptables i impostos en relació amb qualsevol servei que la Companyia us presti;
+(1) Per a la gestió de les comunicacions amb les quals ha comunicat amb la Companyia, com respondre preguntes, proporcionar informació rellevant segons la sol·licitud i necessitat, gestionar queixes o respondre als comentaris que faci directament a la Companyia a través de diversos canals de comunicació, incloent coordinació contínua, execució d’acords de servei i/o compliment dels drets i obligacions que la Companyia i vostè puguin acordar;
 
-(3) Amb la finalitat de construir i millorar les relacions comercials, inclosa la millora del servei que l'Empresa ofereix al vostre benefici, i l'Empresa pot recopilar i/o utilitzar les vostres dades personals amb finalitats de control, garantia del servei, anàlisi de gestió i resolució de problemes relacionats amb el negoci, incloent-hi, entre d'altres, la formació dels empleats i la planificació de la millora futura del servei;
+(2) Per al compliment d’obligacions legals a les quals la Companyia pugui estar subjecta sota certes condicions. Això pot incloure, però no es limita a, complir deures associats a la preparació de documents comptables i fiscals relacionats amb qualsevol servei proporcionat per la Companyia a vostè;
 
-(4) Amb la finalitat de protegir i defensar els drets legals de la Companyia en cas que vostè i la Companyia tingueu una disputa; i
+(3) Per a la finalitat de construir i millorar les relacions comercials, incloent millorar el servei que la Companyia proporciona per al seu benefici, per la qual la Companyia pot recollir i/o utilitzar les seves dades personals amb la finalitat de control, assegurament del servei, anàlisi de gestió i resolució de qüestions relacionades amb el negoci, incloent, però no limitat a, formació d’empleats i planificació de millores futures del servei;
 
-(5) Sense perjudici d'un consentiment explícit atorgat a la Companyia, com ara comunicacions de màrqueting i butlletins informatius, la Companyia pot processar les Dades Personals per a les finalitats definides en el consentiment.
+(4) Per a la finalitat de protegir i defensar els drets legals de la Companyia en cas que vostè i la Companyia tinguin un conflicte; i
 
-Període de conservació de les dades personals, per tal de dur a terme les finalitats descrites anteriorment, l'Empresa ha de recopilar, recopilar i processar les vostres dades personals d'acord amb el següent període:
+(5) Subjecte a un consentiment explícit concedit a la Companyia, com ara comunicacions de màrqueting i butlletins, la Companyia pot processar les Dades Personals per als propòsits definits en el consentiment.
 
-(1) Per al processament de dades personals amb la finalitat de prestar serveis, executar un contracte i/o complir els drets i deures derivats del contracte, cal que l'Empresa processi les vostres dades personals, sempre que l'empresa tingui el deure de prestar-vos serveis;
+Període de Retenció de les Dades Personals, per tal de complir amb els propòsits descrits anteriorment, la Companyia necessita recollir, compilar i processar les seves dades personals segons el període següent:
 
-(2) Per al processament de dades personals amb la finalitat de dur a terme les tasques d'acord amb les lleis aplicables, la Companyia ha de processar les vostres dades personals durant un període de temps especificat per les lleis aplicables;
+(1) Per al processament de dades personals amb la finalitat de proporcionar serveis, execució d’acords i/o compliment dels drets i deures sota l’acord, la Companyia necessita processar les seves dades personals mentre la companyia tingui el deure de proporcionar-li serveis;
 
-(3) Per al processament de dades personals amb la finalitat d'establir i millorar relacions comercials i/o millorar el servei, l'Empresa es reserva el dret de conservar aquestes dades personals en la mesura que l'Empresa pugui tenir necessitats comercials. L'Empresa garanteix que la conservació de les dades personals no afectarà injustificadament els drets de l'interessat;
+(2) Per al processament de dades personals amb la finalitat de complir els deures segons les lleis aplicables, la Companyia necessita processar les seves dades personals durant el període de temps especificat per les lleis aplicables;
 
-(4) Per al processament de dades personals amb finalitats de protecció i defensa dels drets legítims de l'Empresa, l'Empresa té la necessitat de conservar aquestes dades personals d'acord amb les prescripcions definides per les lleis aplicables; i
+(3) Per al processament de dades personals amb la finalitat de construir i millorar les relacions comercials i/o millorar el servei, la Companyia es reserva el dret de conservar aquestes dades personals en la mesura que la Companyia pugui tenir necessitat comercial. La Companyia garanteix que la retenció de les dades personals no afectarà de manera irrazonable els drets del titular de les dades;
 
-(5) En cas que doneu el vostre consentiment a l'Empresa per processar les vostres dades personals per a finalitats específiques, l'Empresa processarà les vostres dades personals fins que retireu aquest consentiment.
+(4) Per al processament de dades personals per a la protecció i defensa dels drets legítims de la Companyia, la Companyia necessita conservar aquestes dades personals segons la prescripció definida per les lleis aplicables; i
 
-Divulgació de les dades personals, en general, les vostres dades personals no es divulgaran, excepte en la circumstància que l'Empresa hagi de divulgar-les a la següent persona:
+(5) En cas que vostè doni consentiment a la Companyia per processar les seves dades personals per a finalitats específiques, la Companyia processarà les seves dades personals fins que vostè retirí aquest consentiment.
 
-(1) Proveïdors de serveis externs de l'Empresa contractats per proporcionar serveis de suport a l'Empresa en la prestació de serveis a vostè, inclosos els assessors de l'Empresa. Aquesta divulgació de les dades personals a aquests tercers es farà d'acord amb les finalitats i només en funció de la necessitat de saber-ho; o
+Divulgació de les dades personals, en general, les seves dades personals no seran divulgades, excepte en la circumstància que la Companyia necessiti divulgar-les a les següents persones:
 
-(2) Govern, autoritats reguladores o tribunals que la Companyia pugui estar subjecta a una ordre, llei o sentència per divulgar les dades personals.
+(1) Proveïdors externs de serveis de la Companyia contractats per proporcionar serveis de suport a la Companyia en la prestació de serveis a vostè, incloent consultors de la Companyia. Aquesta divulgació de dades personals a aquests tercers es farà d’acord amb els propòsits i només en base a la necessitat de saber; o
 
-L'Empresa es compromet a implementar mesures de seguretat de dades personals adequades per evitar qualsevol accés, modificació, esmena o divulgació no autoritzada i il·legal. L'Empresa es compromet a revisar aquestes mesures de manera regular per garantir la seva compatibilitat amb els estàndards i les lleis aplicables.
+(2) Autoritats governamentals, reguladores o tribunals als quals la Companyia pugui estar subjecta a una ordre, llei o sentència per divulgar les dades personals.
 
-Drets dels interessats, l'Empresa respecta els vostres drets com a interessat en virtut de les lleis aplicables. Podeu contactar amb l'Empresa per exercir els drets, que són (1) el dret a retirar el consentiment, (2) el dret d'accés, (3) el dret a sol·licitar una còpia de les dades personals, (4) el dret a corregir les dades personals, (5) el dret a oposar-se a qualsevol processament de les dades personals, (6) el dret a sol·licitar la portabilitat de les dades en cas que l'Empresa emmagatzemi les dades personals en un format llegible o que s'utilitza habitualment per eines o equips automatitzats, inclòs el dret a transferir aquestes dades personals a altres responsables del tractament, (7) el dret a sol·licitar l'eliminació o la desidentificació de les dades personals quan no hi hagi necessitat de processar-les, (8) el dret a sol·licitar la suspensió de l'ús de les dades personals i (9) el dret a presentar una reclamació.
+La Companyia es compromet a implementar mesures adequades de seguretat de les dades personals per evitar qualsevol accés, modificació, esmena o divulgació no autoritzada i il·legal. La Companyia es compromet a revisar aquestes mesures de manera regular per assegurar la seva compatibilitat amb els estàndards i les lleis aplicables.
 
-Informació de contacte de l'empresa
+Drets del titular de les dades, la Companyia respecta els seus drets com a titular de les dades segons les lleis aplicables. Pot contactar amb la Companyia per exercir els drets que són (1) el dret a retirar el consentiment, (2) el dret d’accés, (3) el dret a sol·licitar una còpia de les dades personals, (4) el dret a corregir les dades personals, (5) el dret a oposar-se a qualsevol processament de les dades personals, (6) el dret a sol·licitar la portabilitat de les dades en cas que la Companyia emmagatzemi les dades personals en un format llegible o comunament utilitzat per eines o equips automatitzats, incloent el dret a transferir aquestes dades personals a altres responsables del tractament, (7) el dret a sol·licitar l’eliminació o desidentificació de les dades personals quan no hi hagi necessitat de processar-les, (8) el dret a sol·licitar la suspensió de l’ús de les dades personals, i (9) el dret a presentar una reclamació.
 
-Delegat de protecció de dades
+Informació de contacte de la Companyia
+
+Responsable de Protecció de Dades
 
 Nom: Yann Gouriou
 
-Adreça: #03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095
+Adreça: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
 
-Correu electrònic: dataprotectionofficer@wink.travel
-Número de telèfon: +66 (0) 854891301
-
+Correu electrònic: dataprotectionofficer@wink.travel  
+Telèfon: +66 (0) 854891301

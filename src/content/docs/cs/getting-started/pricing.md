@@ -1,63 +1,62 @@
 ---
-title: Pricing
-description: >-
-  Využívejte všechny služby Winku dle libosti zdarma. Za každou rezervaci
-  platíte jen malý poplatek.
+title: Ceny
+description: Využívejte všechny služby Wink naplno a zdarma. Platíte pouze malý poplatek za každou rezervaci.
 sidebar:
   order: 4
 ---
-Všechny služby Winku jsou pro všechny zdarma. V případě rezervace si Wink účtuje malý poplatek za údržbu platformy.
 
-Wink podporuje jak obchodní, tak i agentský model.
+Všechny služby Wink jsou zdarma pro každého. Při rezervaci si Wink účtuje malý poplatek za údržbu platformy.
+
+Wink podporuje jak model obchodníka, tak model agenta.
 
 ## Model 1
 
-Wink je obchodníkem registrovaným v okamžiku provedení rezervace. Wink je zodpovědný za finanční prostředky a vlastní veškeré licence k provozování cestovní kanceláře.
-Tento model se vztahuje na 95 % všech rezervací.
+Wink je obchodníkem zapsaným v okamžiku provedení rezervace. Wink je odpovědný za finanční prostředky a vlastní všechny potřebné licence k provozování cestovní kanceláře.
+Tento model platí pro 95 % všech rezervací.
 
-Poplatky za mrknutí`5.5% per booking`na údržbu platformy.
-Většina z toho jde na platební bránu (Visa, MasterCard atd.). Průměrná rezervace nás stojí`2.95%`získat; někdy až tak vysoko jako`3.6%`Částečné vrácení peněz nás ještě více zdraží, protože platební brána to vnímá jako nový poplatek.
-Chceme být ohledně cen zcela transparentní, abychom všem ušetřili čas, než se budou snažit vyjednat další slevy před použitím služby Wink. Náš cenový model je více než férový a my si také musíme vydělávat na živobytí.
+Wink účtuje `5,5 % za rezervaci` za údržbu platformy. 
+Většina z toho jde na platební bránu (Visa, MasterCard atd.). Průměrná rezervace nás stojí `2,95 %` na získání; někdy až `3,6 %`. Částečné refundace nás dále zatěžují, protože platební brána to považuje za novou platbu. 
+Chceme být nyní zcela transparentní ohledně cen, abychom ušetřili všem čas před pokusy o další slevy, aniž by Wink použili. Náš cenový model je více než spravedlivý a my také potřebujeme vydělávat.
 
-### Zhroucení
+### Rozpis
 
-:::note\[Poplatek za zpracování]
-Wink si účtuje poplatek za zpracování ve výši 1,5 % za každou rezervaci. To nám umožňuje nabízet všechny naše služby zdarma a pokrývá údržbu platformy.
+:::note[Poplatek za zpracování]
+Wink účtuje 1,5% poplatek za zpracování / rezervaci. To nám umožňuje nabízet všechny naše služby zdarma a pokrývá údržbu platformy.
 :::
 
-:::note\[Poplatek za platbu]
-TripPay si účtuje poplatek za platbu ve výši 4,0 % z ceny rezervace. Tento poplatek zahrnuje i přijetí platby od cestovatele.
+:::note[Poplatek za platbu]
+TripPay účtuje 4,0% poplatek za platbu / rezervaci. To pokrývá získání platby od cestovatele.
 :::
 
-:::note\[Výplata finančních prostředků]
-S odesláním finančních prostředků na váš účet jsou spojeny poplatky. To závisí na zvoleném způsobu výplaty. Aktuálně podporujeme:
+:::note[Vyplácení finančních prostředků]
+S odesíláním finančních prostředků na váš účet jsou spojeny poplatky. Záleží na zvolené metodě vyplácení. Aktuálně podporujeme:
 
-* **Virtuální kreditní karta**(pouze hotely) ~2,0 %
-* **Bankovní převod**Cena závisí na zemi, ve které se nacházíte, a na tom, odkud jsou finanční prostředky zasílány. Součástí je kalkulačka cenových nabídek, kterou můžete použít, pokud máte na účtu k dispozici finanční prostředky.
+- **Virtuální kreditní kartu** (pouze hotely) ~2,0 %
+- **Bankovní převod** Cena závisí na zemi, kde se nacházíte, a odkud jsou prostředky odesílány. Součástí je kalkulátor cen, který můžete použít, pokud máte na účtu dostupné prostředky.
 
-Pokud chcete, abychom podporovali jinou metodu výplaty, pošlete nám e-mail. :::
+Pokud chcete, abychom podporovali jinou metodu výplaty, pošlete nám e-mail.
+:::
 
 ## Model 2
 
-Tento model je k dispozici pouze cestovním kancelářím, které mají licenci cestovní kanceláře ve svém regionu a které si přejí být oficiálním obchodníkem. Některé z našich registrovaných cestovních kanceláří chtějí být zodpovědné za zpracování plateb a vyplácení finančních prostředků hotelům. V rámci tohoto modelu jsou zodpovědné za finanční prostředky a mají potřebné licence k provozování činnosti ve své zemi.
+Tento model je dostupný pouze cestovním kancelářím, které mají licenci k provozování cestovní kanceláře ve svém regionu a chtějí být obchodníkem zapsaným v registru. Někteří z našich registrovaných cestovních agentů chtějí být odpovědní za zpracování platby a vyplácení finančních prostředků hotelům. V rámci tohoto modelu jsou odpovědní za finanční prostředky a mají potřebné licence k provozu ve své zemi.
 
-### Zhroucení
+### Rozpis
 
-:::note\[Poplatek za zpracování]
-Wink si účtuje poplatek za zpracování ve výši 1,5 % za každou rezervaci. To nám umožňuje nabízet všechny naše služby zdarma a pokrývá údržbu platformy.
+:::note[Poplatek za zpracování]
+Wink účtuje 1,5% poplatek za zpracování / rezervaci. To nám umožňuje nabízet všechny naše služby zdarma a pokrývá údržbu platformy.
 :::
 
-Při použití tohoto modelu cestovní kanceláře platí pouze poplatek za zpracování společnosti Wink a Wink bude cestovní kanceláři fakturovat měsíčně.
+V tomto modelu cestovní agenti platí pouze Winkův poplatek za zpracování a Wink jim bude fakturovat měsíčně.
 
 ## Budoucí služby
 
-V budoucnu nabídneme volitelné služby založené na předplatném, které ještě více usnadní prodej pro všechny, nebo nabídneme spravované partnerské účty, které prodej udělají za vás. Pokud vás to zajímá, dejte nám vědět, co si myslíte, napište nám na adresu[ahoj@wink.travel](mailto:hi@wink.travel).
+V budoucnu nabídneme volitelné služby na bázi předplatného, které usnadní prodej pro všechny, nebo nabídneme spravované affiliate účty, které budou prodávat za vás. Pokud vás to zajímá, dejte nám vědět e-mailem na [hi@wink.travel](mailto:hi@wink.travel).
 
-Zůstaňte naladěni.
+Zůstaňte s námi.
 
 ## Efekt platformy
 
-A konečně, vzhledem k tomu, že neustále rosteme, a to jak co se týče velikosti, tak i počtu rezervací, chceme se s vámi podělit o některé z efektů platformy. Více rezervací přináší příležitosti k množstevním slevám prostřednictvím naší platební brány, což by nám umožnilo snížit poplatky za zpracování pro všechny.
+Nakonec, jak budeme růst v počtu i rezervacích, chceme s vámi sdílet některé efekty platformy. Více rezervací přináší příležitosti k objemovým slevám od naší platební brány, což by nám umožnilo snížit poplatek za zpracování pro všechny.
 
-Přidejte se k Wink ještě dnes a objevte nový a lukrativní způsob podnikání v pohostinství!
-
+Připojte se k Wink ještě dnes a objevte nový, výnosný způsob podnikání v pohostinství!

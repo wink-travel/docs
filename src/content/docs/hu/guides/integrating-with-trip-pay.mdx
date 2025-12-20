@@ -1,43 +1,40 @@
 ---
 title: Integráció a TripPay-jel
-description: >-
-  Ez a cikk egy teljes példát mutat be arról, hogyan integrálható a TripPay, és
-  hogyan bízhatja rá a fizetés lebonyolítását.
+description: Ez a cikk egy teljes példát tartalmaz arra, hogyan integrálhatod a TripPay-t, és hagyhatod, hogy a TripPay kezelje a fizetést helyetted.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Ez a cikk egy teljes körű példát tartalmaz a TripPay-jel való integrációra.
+Ez a cikk egy végponttól végpontig terjedő példát tartalmaz arra, hogyan integrálhatod a TripPay-t.
 
-Ajánlott, hogy már elolvasd:
+Ajánlott, hogy már elolvastad:
 
-* [Fizetés > Leképezés](/payment/mapping).
-* [Fizetés > Integráció](/payment/integration).
-* [Fizetési webkomponens](/developers/web-components/#payment).
-* [Fizetési API](/developers/apis/#payment-api).*Olvasd el a részt, ami arról szól`Create payable contracts`*
+- [Payment > Mapping](/hu/payment/mapping).
+- [Payment > Integration](/hu/payment/integration).
+- [Payment Web Component](/hu/developers/web-components/#payment).
+- [Payment API](/hu/developers/apis/#payment-api). *Olvasd el a `Create payable contracts` szakaszt*
 
-Íme a lépések a TripPay sikeres használatához a foglalás kifizetéséhez:
+Íme a lépések, hogy sikeresen használd a TripPay-t egy foglalás kifizetésére:
 
 <Steps>
-  1. Győződjön meg róla, hogy a foglalási szerződésben említett kedvezményezettek fel vannak térképezve.
-  2. Hagyd, hogy az utazó válassza ki a lefoglalni kívánt felszerelést, és készüljön fel a fizetésre.
-  3. Hozz létre egy `payable contract` a TripPay-jel, amely tartalmazza a lefoglalandó tételeket.
-  4. Fizessen az utazó a TripPay webes komponens használatával.
+1. Győződj meg róla, hogy a foglalási szerződésben említett kedvezményezettek már fel vannak térképezve.
+2. Hagyd, hogy az utazó kiválassza a foglalni kívánt készletet, és készüljön fel a fizetésre.
+3. Hozz létre egy `payable contract`-ot a TripPay-vel, amely tartalmazza a foglalni kívánt tételeket.
+4. Hagyd, hogy az utazó a TripPay Web Component segítségével fizesse ki a foglalást.
 </Steps>
 
-
-Feltételezzük, hogy már elvégezted`Step 1`és`Step 2`és készen állnak arra, hogy értesítsék a TripPay-t a foglalásról.
+Feltételezzük, hogy már befejezted az `1. lépést` és a `2. lépést`, és készen állsz arra, hogy a TripPay-nek jelezd a foglalást.
 
 ## Fizetendő szerződés létrehozása
 
-:::megjegyzés
-A fizetendő szerződés létrehozásának követelményeiről a Fizetési API-ban tudhat meg többet.
+:::note
+Látogass el a Payment API-hoz, hogy többet megtudj a fizetendő szerződés létrehozásának követelményeiről.
 :::
 
-### Kér
-
-Itt egy JSON minta kérés, amely mindent tartalmaz, amire szükséged van az első fizetendő szerződésed létrehozásához.
+### Kérés
+Íme egy JSON minta kérés, amely tartalmaz mindent, amire szükséged van az első fizetendő szerződésed létrehozásához.
 
 ```json {3-6, 8-9}
 {
@@ -68,7 +65,7 @@ Itt egy JSON minta kérés, amely mindent tartalmaz, amire szükséged van az el
             "telephone": "+1 212 555 1212",
           },
           "nameInEnglish": "Deluxe King",
-          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "descriptionInEnglish": "Ez a legjobb deluxe king, amit pénzért meg lehet venni.",
           "price": {
             "amount": 100,
             "currency": "USD"
@@ -132,49 +129,49 @@ Itt egy JSON minta kérés, amely mindent tartalmaz, amire szükséged van az el
 
 Magyarázat:
 
-Nem fogunk itt minden adatpontot elmagyarázni, mivel azok már szerepelnek az API dokumentációban.
+Nem magyarázunk el minden adatpontot, mert azok már szerepelnek az API dokumentációban.
 
-* Sorok:**2 - 7**a foglalásért felelős felhasználó. Kétféle foglaló létezik:
-  * Utazó.
-  * Utazási ügynök.
-* Sorok:**8-9**a foglalást lehetővé tevő TripPay-fiók. Ez lehet:
-  * Az Ön TripPay integrátori fiókja.
-  * Ha partnerhálózatot üzemeltetsz, az lehet a te partnered.
-* Használjon egy`traceId`több foglalás csoportosítása több szolgáltatónál. Így lemondhatja a csoportos foglalást.
-* `redirectUrl`tudatja a TripPay-jel, hogy melyik oldalra kell átirányítani a fizetés befejezése után.
-* `sourceUrl`az a weboldal/alkalmazás, amelyen a foglalás történt.
+- Sorok: **2 - 7** a foglalásért felelős felhasználó. Kétféle foglaló létezik:
+    - Utazó.
+    - Utazási ügynök.
+- Sorok: **8 - 9** a TripPay fiók, amely a foglalást kezeli. Ez lehet:
+    - A te TripPay integrátor fiókod.
+    - Ha affiliate hálózatot működtetsz, lehet az affiliate fiókod.
+- Használj `traceId`-t, hogy több foglalást csoportosíts több beszállító között. Így egy csoportos foglalást is törölhetsz.
+- A `redirectUrl` megmondja a TripPay-nek, hogy melyik oldalra irányítsa a felhasználót a fizetés befejezése után.
+- A `sourceUrl` az a weboldal vagy alkalmazás, ahol a foglalás történt.
 
-A`contractList`A tömb tartalmazza azokat a tételeket, amelyeket az utazó több szállítótól szeretne megvásárolni. Minden tétel a következőket tartalmazza:
+A `contractList` tömb tartalmazza azokat a tételeket, amelyeket az utazó több beszállítótól szeretne megvásárolni. Minden tétel tartalmazza:
 
-* A`identifier`egy érvényes, általad létrehozott UUID.
-* A beszállító, akitől készletet szeretne foglalni.
-* A beszállítótól lefoglalni kívánt készlet. Ezek mind beágyazott tömbben vannak megadva.`contractItemList`.
-* Minden bejegyzés a következő alatt:`contractItemList`tartalmaz:
-  * **Vendégfelhasználó**Ez a felhasználó fog megérkezni a helyszínre.
-  * **Név angolul**A leltár neve angol nyelven.
-  * **Leírás angolul**A leltár hosszabb leírása angol nyelven.
-  * **Ár**A tétel ára.
-  * **Útiterv**Mikor kell ezt a tételt lefoglalni?
-  * **Árazási típus**Hogyan számolták ki az árat.
-  * **Készlettípus**Milyen típusú leltár ez?
-  * **Kifizetendő**Mikor kell az utazót megterhelni?*Jelenleg csak az azonnali fizetési lehetőségeket támogatjuk.*
-  * **Politika**Tartalmazza a lemondási szabályzatot.
-  * **Napi árlista**Ha a lefoglalt tétel egy szoba, akkor megadhatja, hogy mennyibe kerül a szoba a vendég által eltöltött éjszakákért.
-  * **Kedvezményezettek**Tüntesse fel, hogy a tétel árának melyik TripPay-számlához/számlákhoz milyen összeget/összegeket kell hozzárendelni.*Fix/százalékos összegek támogatottak.*
+- Az `identifier` egy érvényes UUID, amit te generálsz.
+- A beszállító, akitől a készletet foglalni szeretnéd.
+- A készlet, amit az adott beszállítótól foglalni szeretnél. Ezek mind a beágyazott `contractItemList` tömbben vannak megadva.
+- Minden bejegyzés a `contractItemList` alatt tartalmazza:
+    - **Vendég felhasználó** Ez az a felhasználó, aki meg fog érkezni a helyszínre.
+    - **Név angolul** A készlet angol nyelvű neve.
+    - **Leírás angolul** A készlet hosszabb angol nyelvű leírása.
+    - **Ár** A tétel ára.
+    - **Útvonal** Mikor kell lefoglalni ezt a tételt.
+    - **Árképzés típusa** Hogyan lett kiszámítva az ár.
+    - **Készlet típusa** Milyen típusú készletről van szó.
+    - **Fizetendő** Mikor kell az utazónak fizetnie. *Jelenleg csak az azonnali fizetési lehetőségeket támogatjuk.*
+    - **Szabályzat** Tartalmazza a lemondási szabályokat.
+    - **Napi árlista** Ha a foglalás egy szoba, megadhatod, hogy mennyibe kerül az adott szoba minden éjszakára, amit a vendég eltölt.
+    - **Kedvezményezettek** Megadhatod, hogy mely TripPay fiókoknak milyen összeget kell kiosztani a tétel árából. *Fix vagy százalékos összegek támogatottak.*
 
 :::note
-A fenti JSON példában 3 kedvezményezettünk van:
+A fenti JSON példában 3 kedvezményezett van:
 
-* 1,5%-ot különítettek el arra a platformra, amely a foglalást lehetővé tette.*pl. Kacsintás*
-* 9,85%-ot jutalékként osztottak ki a partnernek.*pl. Kim Kardashian*
-* A szobafoglalás 88,65%-át a szolgáltatónak ítélték oda.*pl. Hilton*
+- 1,5% a foglalást lebonyolító platformnak lett kiosztva. *pl. Wink*
+- 9,85% az affiliate-nek jutalékként. *pl. Kim Kardashian*
+- 88,65% a beszállítónak a szoba foglalásáért. *pl. Hilton*
 
-Amikor a TripPay egy fizetendő szerződéssel válaszol, észre fogja venni, hogy a saját kedvezményezettjét 4,0%-ban befizette.
+Amikor a TripPay válaszol egy fizetendő szerződéssel, észre fogod venni, hogy saját kedvezményezettjét is beszúrta 4,0%-kal.
 :::
 
 ### Válasz
 
-Amikor a TripPay válaszol a kérésére, nagyjából így fog kinézni:
+Amikor a TripPay válaszol a kérésedre, valahogy így fog kinézni:
 
 ```json {3}
 [
@@ -208,19 +205,18 @@ Amikor a TripPay válaszol a kérésére, nagyjából így fog kinézni:
 ]
 ```
 
-Mentse el a`id`a 3. sorban. Ezt fogod használni a TripPay webes komponensbe való beillesztéshez.
+Mentsd el a 3. sorban lévő `id`-t. Ezt fogod használni a TripPay web komponensbe való beillesztéshez.
 
 ## TripPay beágyazása
 
-:::megjegyzés
-Előzőleg győződjön meg róla, hogy betöltötte a stílusainkat és a Javascriptet.
+:::note
+Győződj meg róla, hogy előzetesen betöltötted a stílusainkat és a Javascript-et.
 :::
 
-Ezen a ponton készen állsz a beágyazásra`Payment Web Component`be a weboldaladra, és mutasd meg a felhasználónak.
+Ezen a ponton készen állsz arra, hogy beágyazd a `Payment Web Component`-et a weboldaladba, és megjelenítsd a felhasználónak.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Ami az integrációt illeti, ennyi az egész. Innentől kezdve az összes nehéz munkát a TripPay végzi el.
-
+Az integráció szempontjából ennyi a teendőd. A TripPay végzi a nehezét innentől kezdve.

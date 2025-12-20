@@ -1,78 +1,76 @@
 ---
-title: Security
-description: >-
-  Ta članek vsebuje informacije o varnostnih ukrepih, ki jih izvajamo in jih
-  vsako leto objavlja naše zunanje varnostno podjetje.
+title: Varnost
+description: Ta članek vsebuje informacije o varnostnih ukrepih, ki jih izvajamo, in jih vsako leto objavi naša zunanja varnostna družba.
 sidebar:
   order: 6
 ---
-# Pregledni dokument o varnosti Wink
+
+# Dokument o varnosti Wink
 
 *Zadnja posodobitev: 7. september 2024*
 
 *Različica 1.0*
 
-## Namen in področje uporabe
+## Namen in obseg
 
-Kot del naše nenehne zavezanosti varnosti in zaščiti uporabniških podatkov redno izvajamo testiranje penetracije naše spletne aplikacije. Ta dokument opisuje naše metodologije testiranja, vsebuje povzetek ugotovitev in poudarja naš pristop k nenehnemu izboljševanju varnosti.
+Kot del naše stalne zaveze k varnosti in zaščiti uporabniških podatkov redno izvajamo penetracijsko testiranje naše spletne aplikacije. Ta dokument opisuje naše metode testiranja, povzema ugotovitve in izpostavlja naš pristop k nenehnemu izboljševanju varnosti.
 
-Ta dokument bo posodobljen, ko bodo pripravljena nova poročila ali ko bodo prišlo do večjih sprememb.
+Dokument bo posodobljen, ko bodo na voljo novi poročili ali ob pomembnih spremembah.
 
-Domene v obsegu:\
-\*.wink.travel\
+Domena v obsegu:  
+\*.wink.travel  
 \*.trippay.io
 
-## Pogostost in urnik testiranja
+## Pogostost in razpored testiranj
 
-Naši testi penetracije se izvajajo letno, dodatni testi pa so načrtovani po potrebi po večjih posodobitvah aplikacije ali infrastrukture. Ta redna kadenca testiranja zagotavlja, da smo korak pred razvijajočimi se grožnjami in ohranjamo varno okolje.
+Naša penetracijska testiranja izvajamo letno, dodatna testiranja pa so načrtovana po potrebi, predvsem po pomembnih posodobitvah aplikacije ali infrastrukture. Ta redni ritem testiranj zagotavlja, da smo korak pred spreminjajočimi se grožnjami in ohranjamo varno okolje.
 
-## Metodologije testiranja
+## Metode testiranja
 
-Naše testiranje penetracije je celovito in zajema širok spekter varnostnih vidikov, vključno z, vendar ne omejeno na:
+Naše penetracijsko testiranje je celovito in zajema širok spekter varnostnih vidikov, vključno, a ne omejeno na:
 
-* **Najboljših 10 na lestvici OWASP:**&#x4E;aši testi so posebej usmerjeni na najkritičnejša varnostna tveganja, kot so vbrizgavanje, prekinjena avtentikacija in medspletno skriptanje (XSS).
-* **Testiranje črne in sive škatle:**&#x47;lede na obseg naša ekipa uporablja te metodologije za simulacijo zunanjih in notranjih scenarijev napadov.
-* **Avtomatizirano in ročno testiranje:**&#x5A;a izvajanje avtomatiziranih varnostnih pregledov in kot pomoč pri tehnikah ročnega testiranja za prepoznavanje kompleksnih ranljivosti in doseganje najboljše možne pokritosti uporabljamo Burp Suite Pro, vodilni nabor orodij za varnostno testiranje. Za natančnejšo identifikacijo ranljivosti uporabljamo nekatera specializirana orodja, npr. SQLmap.
+* **OWASP Top 10:** Naša testiranja so posebej usmerjena na najpomembnejša varnostna tveganja, kot so Injection, Broken Authentication in Cross-Site Scripting (XSS).  
+* **Black Box in Grey Box testiranje:** Glede na obseg naš tim uporablja ti metodi za simulacijo zunanjih in notranjih napadov.  
+* **Avtomatizirano in ročno testiranje:** Uporabljamo Burp Suite Pro, vodilno orodje za varnostno testiranje, za izvajanje avtomatiziranih varnostnih pregledov in podporo ročnim tehnikam za odkrivanje zapletenih ranljivosti ter doseganje najboljše možne pokritosti. Za specifično identifikacijo ranljivosti uporabljamo tudi specializirana orodja, npr. SQLmap.
 
 ## Povzetek ugotovitev
 
-Sledi povzetek našega najnovejšega poročila o testiranju penetracije:
+Spodaj je visok nivo povzetka našega najnovejšega poročila o penetracijskem testiranju:
 
-* **Skupno število ugotovljenih ranljivosti:**&#x32;
-* **Porazdelitev resnosti:**
-  * Kritično: 2
-* **Vrste zaznanih ranljivosti:**
-  * Prekinjen nadzor dostopa
-  * Nevarna zasnova
+* **Skupno odkritih ranljivosti:** 2  
+* **Razporeditev po resnosti:**  
+  * Kritične: 2  
+* **Vrste odkritih ranljivosti:**  
+  * Prekinjena kontrola dostopa  
+  * Nevaren dizajn
 
-Za podrobnejše ugotovitve glejte celotno poročilo.
+Za podrobnejše ugotovitve si oglejte celotno poročilo.
 
-### Ocene tveganja in vpliv
+### Ocene tveganj in vpliv
 
-Obe najdeni ranljivosti sta ocenjeni kot kritični, saj bi lahko imeli resne finančne posledice. Prva je zlonamernemu overjenemu uporabniku omogočila, da je pridobil nadzor nad plačilnim računom Trippay drugega podjetja. Druga ranljivost je zlonamernemu uporabniku omogočila, da je spremenil znesek plačila, zahtevanega za rezervacijo.
+Obe najdeni ranljivosti sta ocenjeni kot kritični, saj bi obe lahko imeli hude finančne posledice. Prva je omogočila zlonamernemu avtenticiranemu uporabniku prevzem nadzora nad Trippay plačilnim računom drugega podjetja. Druga ranljivost je omogočila zlonamernemu uporabniku spreminjanje zneska plačila, potrebnega za rezervacijo.
 
-### Prizadevanja za sanacijo in blaženje
+### Ukrepi za odpravo in omilitev
 
-Za odpravo ugotovljenih ranljivosti smo sprejeli naslednje ukrepe:
+Sprejeli smo naslednje ukrepe za odpravo odkritih ranljivosti:
 
-* **Takojšnji popravki:**&#x4B;ritične ranljivosti so bile odpravljene v 48 urah po odkritju.
-* **Pregled in utrjevanje kode:**&#x52;azvojna ekipa je na podlagi naših priporočil uvedla dodatne varnostne kontrole.
+* **Takojšnje popravke:** Kritične ranljivosti so bile odpravljene v 48 urah po odkritju.  
+* **Pregled kode in utrjevanje:** Razvojna ekipa je na podlagi naših priporočil uvedla dodatne varnostne kontrole.
 
 ## Nenehno izboljševanje
 
-Testiranje vdora je del naše širše strategije za nenehno izboljševanje varnosti. Ugotovitve vsakega testa usmerjajo naše varnostne politike, vplivajo na razvojne prakse in spodbujajo izboljšave naše varnostne arhitekture.
+Penetracijsko testiranje je del naše širše strategije za nenehno izboljševanje varnosti. Ugotovitve vsakega testiranja usmerjajo naše varnostne politike, vplivajo na razvojne prakse in spodbujajo izboljšave v naši varnostni arhitekturi.
 
-## Strokovno znanje ekipe
+## Strokovnost ekipe
 
-Naše testiranje penetracije izvaja interni strokovnjak z bogatimi izkušnjami na različnih projektih in v različnih panogah. Z uporabo vodilnih orodij in metod naš strokovnjak zagotavlja, da je naša aplikacija temeljito preizkušena glede najnovejših varnostnih groženj.
+Naše penetracijsko testiranje izvaja notranji strokovnjak z obsežnimi izkušnjami na različnih projektih in v panogah. Z uporabo vodilnih orodij in metod naš strokovnjak zagotavlja temeljito testiranje aplikacije proti najnovejšim varnostnim grožnjam.
 
 ## Zavezanost varnosti
 
-Predani smo vzdrževanju varnega aplikacijskega okolja za naše uporabnike in deležnike. Naša nenehna prizadevanja za varnostno testiranje in izboljšanje dokazujejo našo zavezanost zaščiti pred nenehno razvijajočimi se grožnjami.
+Zavezani smo k vzdrževanju varnega aplikacijskega okolja za naše uporabnike in deležnike. Naša stalna prizadevanja pri varnostnem testiranju in izboljšavah dokazujejo našo zavezanost zaščiti pred spreminjajočimi se grožnjami.
 
-## Dostop do poročil in posodobitve
+## Dostop do poročila in posodobitve
 
-Ta dokument se bo nenehno posodabljal, ko bodo izdana nova poročila o penetracijskih testih. Za dostop do celotnega poročila nas kontaktirajte na spodnji e-poštni naslov. Prihodnje posodobitve bodo vključevale na novo odkrite ranljivosti, prizadevanja za odpravo napak in prilagoditve naših metodologij testiranja.
+Ta dokument bo nenehno posodabljan z izdajo novih poročil o penetracijskem testiranju. Za dostop do celotnega poročila nas kontaktirajte preko spodnjega elektronskega naslova. Prihodnje posodobitve bodo vključevale novo odkrite ranljivosti, ukrepe za odpravo in prilagoditve naših metod testiranja.
 
-Za dodatna vprašanja se obrnite na security@wink.travel.
-
+Za dodatna vprašanja nas kontaktirajte na security@wink.travel.

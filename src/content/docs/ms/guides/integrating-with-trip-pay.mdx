@@ -1,43 +1,40 @@
 ---
-title: Mengintegrasikan dengan TripPay
-description: >-
-  Artikel ini mengandungi contoh penuh cara untuk menyepadukan dan membenarkan
-  TripPay mengendalikan pembayaran untuk anda.
+title: Integrasi dengan TripPay
+description: Artikel ini mengandungi contoh penuh bagaimana untuk berintegrasi dengan dan membiarkan TripPay mengendalikan pembayaran untuk anda.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Artikel ini mengandungi contoh hujung ke hujung tentang cara menyepadukan dengan TripPay.
+Artikel ini mengandungi contoh menyeluruh bagaimana untuk berintegrasi dengan TripPay.
 
-Adalah disyorkan bahawa anda telah membaca:
+Adalah disyorkan anda telah membaca:
 
-* [Pembayaran > Pemetaan](/payment/mapping).
-* [Pembayaran > Integrasi](/payment/integration).
-* [Komponen Web Pembayaran](/developers/web-components/#payment).
-* [API Pembayaran](/developers/apis/#payment-api). *Baca bahagian pada `Create payable contracts`*
+- [Payment > Mapping](/ms/payment/mapping).
+- [Payment > Integration](/ms/payment/integration).
+- [Payment Web Component](/ms/developers/web-components/#payment).
+- [Payment API](/ms/developers/apis/#payment-api). *Baca bahagian tentang `Create payable contracts`*
 
-Berikut ialah langkah-langkah untuk berjaya menggunakan TripPay untuk membayar tempahan:
+Berikut adalah langkah-langkah untuk berjaya menggunakan TripPay untuk membayar tempahan:
 
 <Steps>
-  1. Pastikan benefisiari yang anda nyatakan dalam kontrak tempahan telah dipetakan.
-  2. Biarkan pengembara memilih inventori yang ingin mereka tempah dan minta mereka bersedia untuk membayar.
-  3. Buat a `payable contract` dengan TripPay yang mengandungi item yang akan ditempah.
-  4. Biarkan pengembara membayar menggunakan Komponen Web TripPay.
+1. Pastikan penerima manfaat yang anda nyatakan dalam kontrak tempahan telah dipetakan.
+2. Biarkan pengembara memilih inventori yang mereka mahu tempah dan bersedia untuk membayar.
+3. Cipta `kontrak boleh dibayar` dengan TripPay yang mengandungi item yang hendak ditempah.
+4. Biarkan pengembara membayar menggunakan TripPay Web Component.
 </Steps>
 
+Kami menganggap anda telah melengkapkan `Langkah 1` dan `Langkah 2` dan bersedia untuk memberitahu TripPay tentang tempahan tersebut.
 
-Kami menganggap anda telah pun selesai `Step 1` dan `Step 2` dan bersedia untuk memberitahu TripPay tentang tempahan.
+## Cipta kontrak boleh dibayar
 
-## Buat kontrak berbayar
-
-:::nota
-Pergi ke Payment API untuk mengetahui lebih lanjut tentang keperluan untuk membuat kontrak berbayar.
+:::note
+Pergi ke Payment API untuk mengetahui lebih lanjut tentang keperluan untuk mencipta kontrak boleh dibayar.
 :::
 
 ### Permintaan
-
-Berikut ialah contoh permintaan JSON yang merangkumi semua yang anda perlukan untuk membuat kontrak pertama anda yang perlu dibayar.
+Berikut adalah contoh permintaan JSON yang merangkumi segala yang anda perlukan untuk mencipta kontrak boleh dibayar pertama anda.
 
 ```json {3-6, 8-9}
 {
@@ -132,47 +129,47 @@ Berikut ialah contoh permintaan JSON yang merangkumi semua yang anda perlukan un
 
 Penjelasan:
 
-Kami tidak akan menerangkan setiap titik data di sini kerana ia telah pun diliputi dalam dokumen API.
+Kami tidak akan menerangkan setiap titik data di sini kerana ia sudah diterangkan dalam dokumen API.
 
-* Garisan: **2 - 7** adalah pengguna yang bertanggungjawab untuk membuat tempahan. Terdapat dua jenis penempah:
-  * Pengembara.
-  * Ejen pelancongan.
-* Garisan: **8 - 9** adalah akaun TripPay yang memudahkan tempahan. Ia boleh menjadi:
-  * Akaun penyepadu TripPay anda.
-  * Jika anda menjalankan rangkaian ahli gabungan, ia boleh menjadi ahli gabungan anda.
-* Gunakan a `traceId` untuk mengumpulkan berbilang tempahan merentas berbilang pembekal. Dengan cara ini anda boleh membatalkan tempahan berkumpulan.
-* `redirectUrl` membolehkan TripPay mengetahui halaman yang hendak diubah hala selepas pembayaran selesai.
-* `sourceUrl` ialah tapak / aplikasi tempat tempahan berlaku.
+- Baris: **2 - 7** adalah pengguna yang bertanggungjawab untuk tempahan. Terdapat dua jenis pemesan:
+    - Pengembara.
+    - Ejen pelancongan.
+- Baris: **8 - 9** adalah akaun TripPay yang memudahkan tempahan. Ia boleh jadi:
+    - Akaun integrator TripPay anda.
+    - Jika anda menjalankan rangkaian afiliasi, ia boleh jadi afiliasi anda.
+- Gunakan `traceId` untuk mengelompokkan beberapa tempahan merentasi beberapa pembekal. Dengan cara ini anda boleh membatalkan tempahan berkumpulan.
+- `redirectUrl` memberitahu TripPay halaman mana untuk dialihkan selepas pembayaran selesai.
+- `sourceUrl` adalah laman / aplikasi tempat tempahan berlaku.
 
-The `contractList` tatasusunan mengandungi item yang ingin dibeli oleh pengembara daripada berbilang pembekal. Setiap item mengandungi:
+Array `contractList` mengandungi item yang pengembara mahu beli dari pelbagai pembekal. Setiap item mengandungi:
 
-* The `identifier` ialah UUID sah yang anda hasilkan.
-* Pembekal yang anda ingin tempah inventori.
-* Inventori yang anda ingin tempah daripada pembekal tersebut. Ini semua dinyatakan dalam tatasusunan bersarang `contractItemList`.
-* Setiap entri di bawah `contractItemList` mengandungi:
-  * **Pengguna tetamu** Ini adalah pengguna yang akan tiba di premis.
-  * **Nama dalam bahasa Inggeris** Nama inventori dalam bahasa Inggeris.
-  * **Penerangan dalam bahasa Inggeris** Penerangan yang lebih panjang tentang inventori dalam bahasa Inggeris.
-  * **harga** Harga barang.
-  * **Jadual perjalanan** Bila barang ini perlu ditempah.
-  * **Jenis harga** Bagaimana harga dikira.
-  * **Jenis inventori** Apakah jenis inventori ini.
-  * **Boleh dibayar** Apabila pengembara perlu dikenakan bayaran. *Pada masa ini kami hanya menyokong pilihan pembayaran segera.*
-  * **Dasar** Sertakan peraturan dasar pembatalan.
-  * **Senarai kadar harian** Jika item yang ditempah ialah bilik, anda boleh memilih untuk memasukkan kos bilik itu untuk setiap malam penginapan tetamu.
-  * **Penerima manfaat** Sertakan akaun TripPay mana yang harus diperuntukkan berapa jumlah harga item tersebut. *Amaun tetap / Peratus disokong.*
+- `identifier` adalah UUID sah yang anda jana.
+- Pembekal yang anda mahu tempah inventori daripadanya.
+- Inventori yang anda mahu tempah dari pembekal tersebut. Semua ini ditentukan dalam array bersarang `contractItemList`.
+- Setiap entri di bawah `contractItemList` mengandungi:
+    - **Pengguna tetamu** Ini adalah pengguna yang akan tiba di premis.
+    - **Nama dalam Bahasa Inggeris** Nama inventori dalam bahasa Inggeris.
+    - **Penerangan dalam Bahasa Inggeris** Penerangan lebih panjang tentang inventori dalam bahasa Inggeris.
+    - **Harga** Harga item tersebut.
+    - **Itinerari** Bila item ini harus ditempah.
+    - **Jenis harga** Bagaimana harga dikira.
+    - **Jenis inventori** Jenis inventori ini.
+    - **Boleh dibayar** Bila pengembara harus dikenakan bayaran. *Kami kini hanya menyokong pilihan pembayaran segera.*
+    - **Polisi** Sertakan peraturan polisi pembatalan.
+    - **Senarai kadar harian** Jika item yang ditempah adalah bilik, anda boleh sertakan berapa kos bilik itu untuk setiap malam penginapan tetamu.
+    - **Penerima manfaat** Sertakan akaun TripPay mana yang harus diperuntukkan jumlah harga item tersebut. *Jumlah Tetap / Peratus disokong.*
 
-:::nota
-Dalam contoh JSON di atas, kami mempunyai 3 penerima:
+:::note
+Dalam contoh JSON di atas, kami mempunyai 3 penerima manfaat:
 
-* 1.5% diperuntukkan kepada platform yang memudahkan tempahan. *cth. Kejap*
-* 9.85% diperuntukkan kepada ahli gabungan sebagai komisen. *cth. Kim Kardashian*
-* 88.65% diperuntukkan pembekal untuk tempahan bilik. *cth. Hilton*
+- 1.5% diperuntukkan kepada platform yang memudahkan tempahan. *contoh: Wink*
+- 9.85% diperuntukkan kepada afiliasi sebagai komisen. *contoh: Kim Kardashian*
+- 88.65% diperuntukkan kepada pembekal untuk tempahan bilik tersebut. *contoh: Hilton*
 
-Apabila TripPay membalas dengan kontrak yang perlu dibayar, anda akan melihat bahawa ia menyuntik benefisiarinya sendiri pada kadar 4.0%.
+Apabila TripPay membalas dengan kontrak boleh dibayar, anda akan perasan ia menyuntik penerima manfaatnya sendiri sebanyak 4.0%.
 :::
 
-### Respon
+### Respons
 
 Apabila TripPay membalas permintaan anda, ia akan kelihatan seperti ini:
 
@@ -208,19 +205,18 @@ Apabila TripPay membalas permintaan anda, ia akan kelihatan seperti ini:
 ]
 ```
 
-Simpan `id` pada baris 3. Anda akan menggunakan ini untuk menyuntik ke dalam komponen web TripPay.
+Simpan `id` pada baris 3. Anda akan gunakan ini untuk disuntik ke dalam TripPay web component.
 
-## Benamkan TripPay
+## Semat TripPay
 
-:::nota
+:::note
 Pastikan anda telah memuatkan gaya dan Javascript kami terlebih dahulu.
 :::
 
-Pada ketika ini, anda sudah bersedia untuk membenamkan `Payment Web Component` ke dalam laman web anda dan tunjukkan kepada pengguna.
+Pada tahap ini, anda sudah bersedia untuk menyemat `Payment Web Component` ke dalam laman web anda dan memaparkannya kepada pengguna.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Setakat integrasi, itu sahaja yang anda perlu lakukan. Semua kerja berat dilakukan oleh TripPay mulai sekarang.
-
+Setakat integrasi, itu sahaja yang anda perlu lakukan. Semua kerja berat akan dilakukan oleh TripPay dari sini.

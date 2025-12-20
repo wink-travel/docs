@@ -1,100 +1,99 @@
 ---
 title: Betalingsbetingelser
-description: >-
-  Dette dokument dækker tilgængeligheden af ​​midler og hvordan Wink
-  understøtter agentmodellen for rejsebureauer.
+description: Dette dokument dækker tilgængelighed af midler og hvordan Wink understøtter agentmodellen for rejsebureauer.
 sidebar:
   order: 5
 ---
-:::bemærk
+
+:::note
 Sidst opdateret 2024-10-30
 :::
 
-:::caution\[Bemærkning]
-Betalingsbetingelserne nedenfor gælder for rejsebureauer, der ønsker at erhverve og udbetale penge selv.
-Dette kan kun gøres via vores API og kun af rejsebureauer, der har angivet, at de ønsker at gøre dette under tilmeldingsprocessen.
+:::caution[Bemærk]
+Nedenstående betalingsbetingelser gælder for rejsebureauer, der ønsker at modtage og udbetale midler på egen hånd.  
+Dette kan kun ske via vores API og kun af rejsebureauer, der har angivet, at de ønsker dette under tilmeldingsprocessen.
 
-Alle rejsebureauer kan stadig booke via vores rejsebureauportal ved hjælp af Winks betalingsgateway med deres eget eller den rejsendes kreditkort. Derfor skal alle rejsebureauer også acceptere betalingsbetingelserne, hvor Winks betalingsgateway er den registrerede forhandler.
+Alle rejsebureauer kan stadig booke via vores rejsebureauportal ved brug af Winks betalingsgateway med deres eget eller rejsendes kreditkort. Derfor skal alle rejsebureauer også acceptere betalingsbetingelserne, hvor Winks betalingsgateway er registreret som merchant of record.
 
-Disse vilkår er tilgængelige under[Partnerportal > Betalingsbetingelser](/studio/payment-terms).&#x20;
+Disse betingelser findes under [Affiliate Portal > Payment Terms](/da/studio/payment-terms).
 :::
 
-**BETALINGSVILKÅR FOR WINK**\
-**FOR REJSEAGENTENE (registreret handelsmand)**
+**WINK BETALINGSBETINGELSER**  
+**FOR REJSEBUREAUER (Merchant of Record)**
 
-Disse Betalingsbetingelser ("Betalingsbetingelser") er en bindende juridisk aftale, der udgør en del af det kontraktforhold, der er etableret i henhold til "VILKÅR OG BETINGELSER FOR REJSEBUREAUER" ("Hovedaftalen")
+Disse Betalingsbetingelser (“Betalingsbetingelser”) er en bindende juridisk aftale, der udgør en del af den kontraktlige relation etableret under "TERMS & CONDITIONS TRAVEL AGENTS" (“Hovedaftalen”).
 
 **MELLEM:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**&#x65;t selskab stiftet i henhold til Singapores love med registreret adresse på #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 med momsregistreringsnummer 201437335D (herefter kendt som "Wink") og
+1. **TRAVELIKO SINGAPORE PTE. LTD.**, et selskab registreret under Singapores lovgivning med registreret adresse på \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 og momsregistreringsnummer 201437335D (herefter kaldet "Wink") og  
+     
+2. **REJSEBUREAUET**, hvis oplysninger er angivet i rejsebureauets registreringsformular eller er indsendt online (”Rejsebureauet”).
 
-2. **REJSEBUREAUET**hvis oplysninger er angivet i rejsebureauets registreringsformular eller er blevet indsendt online ("Rejsebureauet").
+Definitionerne og vilkårene fastsat i Hovedaftalen gælder for disse Betalingsbetingelser, medmindre andet er defineret heri.
 
-Definitionerne og begreberne i Hovedaftalen gælder for disse Betalingsbetingelser, medmindre andet er defineret heri.
+**1\. Definitioner**
 
-**1. Definitioner**
+Som defineret i hovedaftalen "TERMS & CONDITIONS TRAVEL AGENTS" ("Hovedaftalen"), skal følgende termer have samme betydning i disse Betalingsbetingelser:
 
-Som defineret i hovedaftalen "VILKÅR OG BETINGELSER FOR REJSEBUREAUER" ("Hovedaftalen") har følgende udtryk samme betydning i disse Betalingsbetingelser:
+* "Accommodation Provider(s)"  
+* "Booking"  
+* "Booking Fee"  
+* "Booking Value"  
+* "Commission"  
+* "Net Payment"  
+* "Separate Agreement"
 
-* "Udbyder(e) af indkvartering"
-* "Booking"
-* "Bookinggebyr"
-* "Bookingværdi"
-* "Provision"
-* "Nettobetaling"
-* "Separat aftale"
 
-**2. Betalingsopkrævning og -fordeling**
+**2\. Betalingsindsamling og -fordeling**
 
-2.1**Betalingsopkrævning:**&#x52;ejsebureauet er ansvarlig for at opkræve betaling fra gæsten på bookingtidspunktet. Dette sikrer øjeblikkelig behandling og økonomisk klarhed.
+2.1 **Betalingsindsamling:** Rejsebureauet er ansvarligt for at indsamle betaling fra gæsten på bookingtidspunktet. Dette sikrer øjeblikkelig behandling og økonomisk klarhed.
 
-2.2**Gebyrfradrag:**&#x52;ejsebureauet skal først fratrække tjenesteudbyderens honorar og derefter sin provision for underteksten som vist nedenfor:
+2.2 **Fradrag af gebyr:** Rejsebureauet skal først fratrække serviceudbyderens gebyr og derefter fratrække sin kommission for subtotalen som i eksemplet nedenfor:
 
-* 1,5% bookinggebyr for Wink.
-* Rejsebureauets provision som angivet i den separate aftale (vi bruger 10% i dette eksempel)
+* 1,5% bookinggebyr til Wink.  
+* Rejsebureauets kommission som angivet i Separate Agreement (vi bruger 10% i dette eksempel)
 
-Bookingværdi USD 1.000\
-Blinkgebyr (1,5%) = 15 USD\
+Bookingværdi USD 1.000  
+Wink-gebyr (1,5%) = USD 15  
 Subtotal = 1.000 - 15 = 985
 
-2.3**Nettobetaling til indkvarteringsudbydere:**&#x52;ejsebureauet er ansvarlig for at udbetale nettobetalingen til indkvarteringsudbyderen i henhold til vilkårene i den separate aftale mellem rejsebureauet og indkvarteringsudbyderen. Wink er ikke ansvarlig for at foretage nogen betalinger til indkvarteringsudbyderen.
+2.3 **Nettobetaling til Accommodation Providers:** Rejsebureauet er ansvarligt for at udbetale nettobetalingen til Accommodation Provider i henhold til vilkårene i Separate Agreement mellem rejsebureauet og Accommodation Provider. Wink er ikke ansvarlig for at foretage nogen betalinger til Accommodation Provider.
 
-**3**.**Fakturering og betaling**
+**3**. **Fakturering og betaling** 
 
-3.1**Månedlig fakturering:**&#x57;ink udsteder en korrekt og præcis månedlig faktura til rejsebureauet for de bookinggebyrer, der er akkumuleret i den foregående måned. Rejsebureauet er forpligtet til at betale denne faktura inden for de betalingsbetingelser, der er angivet på fakturaen.
+3.1 **Månedlig fakturering:** Wink udsteder en korrekt og nøjagtig månedlig faktura til rejsebureauet for de bookinggebyrer, der er akkumuleret i den foregående måned. Rejsebureauet skal betale denne faktura inden for de betalingsbetingelser, der er angivet på fakturaen.
 
-3.2**Betalingsmetode:**&#x42;etalinger til Wink skal ske via den betalingsmetode, der er angivet på fakturaen. Eventuelle omkostninger forbundet med betalingsoverførslen er rejsebureauets ansvar.
+3.2 **Betalingsmetode:** Betalinger til Wink skal ske via den betalingsmetode, der er angivet på fakturaen. Eventuelle omkostninger forbundet med betalingsoverførslen påhviler rejsebureauet.
 
-3.3**Forsinkede betalinger:**&#x49; tilfælde af forsinket betaling forbeholder Wink sig retten til at opkræve renter af det forfaldne beløb med en sats på 5% pr. måned eller den maksimalt tilladte sats ved lov, alt efter hvad der er lavest. Derudover forbeholder Wink sig retten til at suspendere adgangen til Tjenesten, hvis Rejsebureauet er forsinket med at betale Indkvarteringsudbyderen i henhold til vilkårene i den Separate Aftale, indtil alle udestående betalinger til både Wink og Indkvarteringsudbyderen er afgjort. Hvis der dog er fejl eller mangler i den faktura, som Wink har indsendt, er Rejsebureauet kun forpligtet til at betale den korrekte og nøjagtige del af fakturaen og er ikke underlagt nogen renter eller bøder for manglende betaling af den forkerte del af fakturaen.
+3.3 **Forsinkede betalinger:** Ved forsinket betaling forbeholder Wink sig retten til at opkræve renter på det forfaldne beløb med en sats på 5% pr. måned eller den maksimale sats, som loven tillader, alt efter hvad der er lavest. Hvis rejsebureauet desuden er forsinket med betaling til Accommodation Provider i henhold til Separate Agreement, forbeholder Wink sig retten til at suspendere adgangen til tjenesten, indtil alle udestående betalinger til både Wink og Accommodation Provider er afklaret. Hvis der er fejl i den faktura, som Wink har udstedt, skal rejsebureauet kun betale den korrekte og nøjagtige del af fakturaen og vil ikke blive pålagt renter eller straf for ikke at betale den forkerte del.
 
-**4. Roller og ansvar**
+**4\. Roller og ansvar**
 
-4.1**Rejsebureauets ansvarsområder:**
+4.1 **Rejsebureauets ansvar:**
 
-* Sørg for rettidig opkrævning af betalinger fra gæster i overensstemmelse med vilkårene beskrevet i afsnit 2.1.
-* Fratræk det relevante bookinggebyr og provision, inden nettobetalingen overføres til indkvarteringsudbyderne i henhold til den separate aftale.
-* Betal Winks fakturaer for bookinggebyrer omgående inden for de vilkår, der er angivet i afsnit 3.1.
-* Aktivt håndtere og løse eventuelle tvister relateret til bookinger eller betalinger, og sikre, at kommunikationen med Wink opretholdes for at løse problemer effektivt.
+* Sikre rettidig indsamling af betalinger fra gæster i overensstemmelse med vilkårene i afsnit 2.1.  
+* Fratrække det korrekte bookinggebyr og kommission, før nettobetalingen overføres til Accommodation Providers i henhold til Separate Agreement.  
+* Betale Winks fakturaer for bookinggebyrer rettidigt inden for de angivne vilkår i afsnit 3.1.  
+* Aktivt håndtere og løse eventuelle tvister vedrørende bookinger eller betalinger og sikre kommunikation med Wink for effektiv løsning af problemer.
 
-4.2**Wink-ansvar:**
+4.2 **Winks ansvar:**
 
-* Udsted nøjagtige og rettidige månedlige fakturaer for bookinggebyrerne som beskrevet i afsnit 3.1.
-* Giv rejsebureauet kontinuerlig adgang til Wink-platformen til behandling af bookinger og administration af betalinger.
-* Hjælp rejsebureauet med at løse tvister relateret til betalinger ved at levere nødvendige transaktionsdata og support efter behov.
+* Udstede korrekte og rettidige månedlige fakturaer for bookinggebyrer som beskrevet i afsnit 3.1.  
+* Give rejsebureauet løbende adgang til Wink-platformen til behandling af bookinger og håndtering af betalinger.  
+* Assistere rejsebureauet med at løse tvister vedrørende betalinger ved at levere nødvendige transaktionsdata og support efter behov.
 
-**5. Valutaomregning**
+**5\. Valutakonvertering**
 
-Hvis der er behov for valutaveksling, vil den blive behandlet til den kurs, der er angivet af betalingsbehandlingstjenesten. Rejsebureauet er ansvarlig for eventuelle omkostninger forbundet med valutaveksling.
+Hvis der kræves valutakonvertering, vil den blive behandlet til den sats, som betalingsbehandlingsservicen tilbyder. Rejsebureauet er ansvarligt for eventuelle omkostninger forbundet med valutakonvertering.
 
-**6. Tvistbilæggelse**
+**6\. Tvistløsning**
 
-Enhver tvist, der opstår som følge af eller i forbindelse med disse Betalingsbetingelser, skal håndteres som angivet i tvistbilæggelsesprocedurerne i Hovedaftalen, hvilket sikrer en ensartet og samlet tilgang til løsning af konflikter mellem Wink og Rejsebureauet.
+Eventuelle tvister, der opstår som følge af eller relaterer til disse Betalingsbetingelser, håndteres i henhold til tvistløsningsprocedurerne i Hovedaftalen, hvilket sikrer en ensartet og samlet tilgang til løsning af konflikter mellem Wink og rejsebureauet.
 
-**7. Ændring af vilkår**\
-Wink forbeholder sig retten til at ændre disse betalingsbetingelser når som helst. Eventuelle ændringer vil blive meddelt rejsebureauet mindst 30 dage før de træder i kraft. Fortsat brug af Wink-platformen efter ikrafttrædelsesdatoen udgør accept af de ændrede betingelser.
+**7\. Ændring af betingelser**  
+Wink forbeholder sig retten til at ændre disse Betalingsbetingelser til enhver tid. Ændringer vil blive kommunikeret til rejsebureauet mindst 30 dage før ikrafttrædelse. Fortsat brug af Wink-platformen efter ikrafttrædelsesdatoen udgør accept af de ændrede betingelser.
 
-**8. Gældende lov og jurisdiktion**\
-Disse betalingsbetingelser er underlagt lovgivningen i Singapore. Enhver tvist, der opstår som følge af eller i forbindelse med disse betingelser, skal afgøres ved domstolene i Singapore.
+**8\. Lovvalg og jurisdiktion**  
+Disse Betalingsbetingelser er underlagt lovgivningen i Singapore. Eventuelle tvister, der opstår som følge af eller relaterer til disse betingelser, skal afgøres ved domstolene i Singapore.
 
-Disse Betalingsbetingelser er en integreret del af og udvider betalingsbestemmelserne i Hovedaftalen, "VILKÅR OG BETINGELSER FOR REJSEBUREAUER\_220924," mellem Wink og Rejsebureauet.
-
+Disse Betalingsbetingelser er en integreret del af og udvider betalingsbestemmelserne i Hovedaftalen, "TERMS & CONDITIONS TRAVEL AGENTS\_220924," mellem Wink og rejsebureauet.

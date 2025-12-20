@@ -1,67 +1,65 @@
 ---
 title: WinkLinks
-description: >-
-  Tässä artikkelissa selitämme, mikä linkkihallinta on ja mitä linkkihallintamme
-  voi tehdä.
+description: Tässä artikkelissa selitämme, mitä linkkien hallinta on ja mitä meidän linkkien hallintatyökalumme voi tehdä.
 sidebar:
   order: 0
 ---
-Linkkihallinnan avulla voit tallentaa ja järjestää haluamiasi URL-osoitteita myöhempää käyttöä varten. Selaimesi kirjanmerkit ovat esimerkki linkkihallinnasta. Sosiaalisen median myötä on kasvanut tarve näyttää ja tehdä linkkejä saataville ystävillesi ja yleisöllesi. Facebook-syötteesi on esimerkki sosiaalisesti ystävällisestä linkkihallinnasta.
 
-:::varoitus
-Useimmat linkkinhallintaohjelmat vaativat tilauksen kaikilta, jotka julkaisevat affiliate-linkkejä.
+Linkkien hallintaohjelma antaa sinun tallentaa ja järjestää URL-osoitteita, joista pidät, myöhempää käyttöä varten. Selaimesi kirjanmerkit ovat esimerkki linkkien hallinnasta. Sosiaalisen median myötä on syntynyt suurempi tarve jakaa ja tehdä linkkejä saataville ystäville ja yleisölle. Facebook-syötteesi on esimerkki sosiaaliseen jakamiseen sopivasta linkkien hallinnasta.
+
+:::caution
+Useimmat linkkien hallintaohjelmat vaativat tilauksen kaikilta, jotka julkaisevat kumppanilinkkejä.
 :::
 
-Me rakensimme [WinkLinks](https://i.trvl.as/) ; täysin ilmainen linkkihallintatyökalu, joka keskittyy matkailuun ja tehokkaaseen verkkomarkkinointiin, mainostamiseen ja myymiseen.
+Me rakensimme [WinkLinks](https://i.trvl.as/) ; täysin ilmaisen linkkien hallinnan, joka on keskittynyt matkailualaan innostamaan, mainostamaan ja myymään tehokkaasti verkossa.
 
 ## Ominaisuudet
 
-* WinkLinksin avulla voit lisätä kaikki olemassa olevat kumppanilinkkisi, kuten Commission Junction ja Amazon, ilmaiseksi.
-* Saat hienon vanity-URL-osoitteen, kuten<https://i.trvl.as/bob>, niille tilanteille, kun voit jakaa vain yhden URL-osoitteen.
-* Voit järjestää ja jakaa linkkejä ja ladata tiedostoja.
-* Hotellit, ketjut ja brändit voivat käyttää WinkLinksiä edistyneenä varausjärjestelmänä:
-  * Tukee useita ominaisuuksia.
-  * Tukee useita kohteita.
-  * Tukee useita valuuttoja.
-  * Tukee useita kieliä.
-* WinkLinks tukee`rich content` *(katso alla)*.
-* Siirry IG:stä varaamaan vain kahdella klikkauksella 🚀
+- WinkLinks antaa sinun lisätä kaikki olemassa olevat kumppanilinkkisi, kuten Commission Junction ja Amazon, ilmaiseksi.
+- Saat tyylikkään vanity-URL-osoitteen, kuten [https://i.trvl.as/bob](https://i.trvl.as/bob), niihin tilanteisiin, kun voit jakaa vain yhden URL-osoitteen.
+- Voit järjestää ja jakaa linkkejä sekä ladata tiedostoja.
+- Hotellit, ketjut ja brändit voivat käyttää WinkLinksia edistyneenä varausmoottorina:
+    - Tukee useita kohteita.
+    - Tukee useita matkakohteita.
+    - Tukee useita valuuttoja.
+    - Tukee useita kieliä.
+- WinkLinks tukee `rikasta sisältöä` *(katso alla)*.
+- Siirry IG:stä varaukseen vain kahdella klikkauksella 🚀
 
 ## Rikas sisältö
 
-:::huomautus
-Aseta`Intelligent`että 🟢 sinun [Asetukset](/link-manager/settings) käyttääksesi tätä ominaisuutta.
+:::note
+Ota `Älykäs` käyttöön 🟢 kohdassa [Asetukset](/fi/link-manager/settings) käyttääksesi tätä ominaisuutta.
 :::
 
-Jos jaat linkin sivustolta, joka tukee`rich`/`oEmbed`sisältöä, linkkisi herää eloon WinkLinksissä.
+Jos jaat linkin sivustolta, joka tukee `rikasta` / `oEmbed`-sisältöä, linkkisi herää eloon WinkLinksissä.
 
 Tuetut sivustot:
 
-* Facebook -*Ole vuorovaikutuksessa julkaisun kanssa ja toista video*.
-* Instagram -*Ole vuorovaikutuksessa julkaisun kanssa ja toista video*.
-* YouTube -*Toista video*.
-* X (entinen Twitter) -*Ole vuorovaikutuksessa julkaisun kanssa*.
-* Spotify-*Toista suosikkisoittolistojasi*.
-* Silmänisku -*Katso`Advanced`*.
+- Facebook - *Ole vuorovaikutuksessa julkaisun kanssa ja toista video*.
+- Instagram - *Ole vuorovaikutuksessa julkaisun kanssa ja toista video*.
+- YouTube - *Toista video*.
+- X (entinen Twitter) - *Ole vuorovaikutuksessa julkaisun kanssa*.
+- Spotify - *Toista suosikkisoittolistasi*.
+- Wink - *Katso `Edistynyt`*.
 
 ## Edistynyt
 
-WinkLinks on myös loistava tapa esitellä löytämääsi matkailutarjontaa [Wink-studio](https://studio.wink.travel) ja jota haluat myydä yleisöllesi.
+WinkLinks on myös loistava tapa näyttää löytämäsi matkailuvarasto, jonka olet löytänyt [Wink Studio](https://studio.wink.travel) -palvelun kautta ja jonka haluat myydä yleisöllesi.
 
-Käytä WinkLinksiä myydäksesi:
+Käytä WinkLinksia myymään:
 
-* [Jaettavat linkit](/studio/shareable-links) - Valitse näyttötavaksi:
-  * [Mainosbanneri](/developers/web-components/#content-loader).
-  * Normaali linkki reaaliaikaisiin hintapäivityksiin.
-* [Kortit](/studio/cards) - Varattavissa olevat kortit reaaliaikaisilla hinnoilla ja saatavuudella.
-* [Ruudukot](/studio/grids) - Ruudukko varattavissa olevilla korteilla.
-* [Kartat](/studio/maps) - Kartta, jonka merkit avautuvat varattavissa oleviin kortteihin.
+- [Jaa-linkkejä](/fi/studio/shareable-links) - Valitse näyttötapa:
+    - [Mainosbanneri](/fi/developers/web-components/#content-loader).
+    - Tavallinen linkki reaaliaikaisilla hintapäivityksillä.
+- [Kortteja](/fi/studio/cards) - Varattavat kortit reaaliaikaisilla hinnoilla ja saatavuudella.
+- [Ruudukkoja](/fi/studio/grids) - Ruudukko varattavilla korteilla.
+- [Karttoja](/fi/studio/maps) - Kartta, jossa on merkkejä, jotka avautuvat varattaviin kortteihin.
 
-:::huomautus
-WinkLinks-tilisi hallinnoimiseksi kirjaudu sisään kumppanitilillesi osoitteessa[Wink-studio](https://studio.wink.travel).
+:::note
+Hallitaksesi WinkLinks-tiliäsi kirjaudu kumppanitilillesi [Wink Studiossa](https://studio.wink.travel).
 :::
 
-:::vihje
-Jos haluat nähdä tilin toiminnassa, tutustu Bjornin, toisen perustajamme, WinkLinks-tiliin:<https://i.trvl.as/bjorn>.
+:::tip
+Nähdäksesi tilin toiminnassa, tutustu Bjornin, perustajakumppanimme, WinkLinks-tiliin: [https://i.trvl.as/bjorn](https://i.trvl.as/bjorn).
 :::
-

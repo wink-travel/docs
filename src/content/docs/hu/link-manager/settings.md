@@ -1,30 +1,28 @@
 ---
-title: Settings
-description: >-
-  Ebben a cikkben elmondjuk, hogyan szabhatod testre a WinkLinks oldaladat a
-  beállítások alatt elérhető funkciók segítségével.
+title: Beállítások
+description: Ebben a cikkben elmagyarázzuk, hogyan testreszabhatod WinkLinks oldaladat a beállítások alatt elérhető funkciók segítségével.
 sidebar:
   order: 4
 ---
-A WinkLinks beállításainak kezeléséhez lépjen a következőhöz:`WinkLinks`a fő navigációs sávon, és kattintson a`Settings`fül.
 
-Így konfigurálhatja a WinkLinks viselkedését a következővel:`Settings`:
+A WinkLinks beállításainak kezeléséhez navigálj a fő navigációs sávban a `WinkLinks` menüpontra, majd kattints a `Beállítások` fülre.
 
-* **Intelligens**Az intelligencia engedélyezésével megpróbáljuk visszanyerni a`rich`olyan oldalakról elérhető tartalom, mint például`Wink`,`Spotify`,`Instagram`,`Facebook`,`YouTube`,`X (formerly Twitter)`és mások.*Pl. Ha megosztasz egy Instagram-bejegyzést a WinkLinks-en, a bejegyzés úgy jelenik meg, ahogyan az Instagramon látod, lájkokkal, hozzászólásokkal és a bejegyzéssel való interakció lehetőségével.*
-* **Kezdő kijelző**Szabályozd, hogy a közönséged hogyan lép először kapcsolatba az oldaladdal és hogyan látja a tartalmaidat. Három lehetőség közül választhatsz:
-  * `Column-based`dizájn. Ez az általunk preferált dizájn, és ha nem jelenítesz meg túl sok tartalmat, akkor remekül fog kinézni az oldaladon. Azonban előfordulhat, hogy`heavy`ha sok gazdag tartalmat osztasz meg.
-  * `Row-based`tervezés. Ez az egyik módja annak, hogy a tartalmad egy kicsit kevésbé legyen nehézkes a böngészők számára, de azt javasoljuk, hogy a tartalmad hasonló mennyiségű szöveget tartalmazzon, hogy a kártyák jobban illeszkedjenek.
-  * `List-based`design. A legtöbb linkkezelő egy egyszerű listát jelenít meg URL-lel és minimális tartalommal. Válassza ezt a megjelenítési módot, ha sok tartalommal rendelkezik, és a lehető leggyorsabban szeretné megjeleníteni.
-* **Profilkép**Minden WinkLinks oldal tetején található a fiókod profilképe a fiókod leírásával együtt. A profilképedet kétféleképpen jelenítheted meg:
-  * `Circle`Kör alakú stílus használatát javasoljuk, ha a képen Önt vagy bármi mást ábrázol, ami elfér egy kerek dobozban.
-  * `Rectangle`Azt javasoljuk, hogy téglalap alakú betűtípust használjon, ha a cége logója a profilképe, mivel a legtöbb céges logó téglalap alakú.
-* **Testreszabás**Válaszd ki, hogy melyik testreszabási beállítást szeretnéd használni a WinkLinks oldaladon. Ez hatással van a téma színeire, valamint az útvonaladra a Wink leltárkártyák, térképek vagy rácsok megjelenítésekor.
+Íme, hogyan konfigurálhatod WinkLinks viselkedését a `Beállítások` segítségével:
+
+- **Intelligens** Az intelligencia engedélyezésével megpróbáljuk lekérni a `gazdag` tartalmat olyan oldalakról, mint a `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (korábban Twitter)` és mások. *pl. Ha megosztasz egy IG posztot a WinkLinks-en, a poszt úgy jelenik meg, ahogy az IG-n látod, kedvelésekkel, kommentekkel és lehetőséggel az interakcióra.*
+- **Kezdeti megjelenítés** Irányítsd, hogyan lép először kapcsolatba a közönséged az oldaladdal és hogyan látja a tartalmadat. Három lehetőség közül választhatsz:
+    - `Oszlop-alapú` dizájn. Ez a preferált dizájnunk, és ha nem jelenítesz meg túl sok tartalmat, nagyszerűen fog kinézni az oldaladon. Ugyanakkor `nehézzé` válhat, ha sok gazdag tartalmat osztasz meg.
+    - `Sor-alapú` dizájn. Ez egy módja annak, hogy a tartalmad kevésbé legyen megterhelő a böngészők számára, de ajánljuk, hogy a tartalom szövegmennyisége hasonló legyen, hogy a kártyák jobban igazodjanak egymáshoz.
+    - `Lista-alapú` dizájn. A legtöbb más linkkezelő egyszerű listát jelenít meg URL-lel és minimális tartalommal. Ezt a megjelenítési módot válaszd, ha sok tartalmad van, és azt a lehető leggyorsabban szeretnéd megjeleníteni.
+- **Profilkép** Minden WinkLinks oldal tetején megjelenik a fiókod profilképe és a fiókleírásod. A profilképed kétféleképpen jelenítheted meg:
+    - `Kör` Ajánljuk a kör alakú stílus használatát, ha a képen te magad vagy, vagy bármi más, ami beleillik egy kerek keretbe.
+    - `Téglalap` Ajánljuk a téglalap alakú stílust, ha a profilképed a céged logója, mivel a legtöbb céglogó téglalap alakú.
+- **Testreszabás** Válaszd ki, melyik testreszabást szeretnéd használni WinkLinks oldaladhoz. Ez befolyásolja a témaszíneket, valamint az útvonaltervet, amikor Wink készletkártyákat, térképeket vagy rácsokat jelenítesz meg.
 
 ## API
 
-Fejlesztők, akik menedzselni szeretnének`WinkLinks`odamehet[Fejlesztők > API > WinkLinks](/developers/apis/#winklinks-api).
+A fejlesztők, akik kezelni szeretnék a `WinkLinks`-et, látogassanak el a [Fejlesztők > API > WinkLinks](/hu/developers/apis/#winklinks-api) oldalra.
 
-## További olvasmányok
+## További olvasnivaló
 
-* További információ[Testreszabások](/studio/customization).
-
+- Olvass többet a [Testreszabásokról](/hu/studio/customization).

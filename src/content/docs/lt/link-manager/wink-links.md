@@ -1,67 +1,65 @@
 ---
 title: WinkLinks
-description: >-
-  Šiame straipsnyje paaiškinsime, kas yra nuorodų tvarkyklė ir ką ji gali
-  padaryti.
+description: Šiame straipsnyje paaiškiname, kas yra nuorodų valdymo įrankis ir ką gali mūsų nuorodų valdymo įrankis.
 sidebar:
   order: 0
 ---
-Nuorodų tvarkyklė leidžia išsaugoti ir tvarkyti jums patinkančius URL adresus vėlesniam laikui. Jūsų naršyklės žymės yra nuorodų tvarkyklės pavyzdys. Atsiradus socialinei žiniasklaidai, atsirado didesnis poreikis rodyti nuorodas ir jas padaryti prieinamas savo draugams ir auditorijai. Jūsų „Facebook“ kanalas yra socialiniams tinklams pritaikytos nuorodų tvarkyklės pavyzdys.
 
-:::atsargiai
-Dauguma nuorodų tvarkyklių reikalauja prenumeratos visiems, skelbiantiems partnerių nuorodas.
+Nuorodų valdymo įrankis leidžia išsaugoti ir tvarkyti jums patinkančius URL vėlesniam laikui. Jūsų naršyklės žymės yra nuorodų valdymo įrankio pavyzdys. Su socialinių tinklų atsiradimu padidėjo poreikis dalintis nuorodomis ir jas padaryti prieinamas draugams bei auditorijai. Jūsų Facebook naujienų srautas yra socialiai draugiško nuorodų valdymo įrankio pavyzdys.
+
+:::caution
+Dauguma nuorodų valdymo įrankių reikalauja prenumeratos visiems, kurie skelbia filialų nuorodas.
 :::
 
-Mes pastatėme [„WinkLinks“](https://i.trvl.as/) ; visiškai nemokama nuorodų tvarkyklė, skirta kelionių erdvei, skirta sužadinti, reklamuotis ir efektyviai parduoti internete.
+Mes sukūrėme [WinkLinks](https://i.trvl.as/) – visiškai nemokamą nuorodų valdymo įrankį, orientuotą į kelionių sritį, kad efektyviai skatintumėte, reklamuotumėte ir parduotumėte internetu.
 
-## Savybės
+## Funkcijos
 
-* „WinkLinks“ leidžia nemokamai pridėti visas esamas filialų nuorodas, pvz., „Commission Junction“ ir „Amazon“.
-* Gausite šaunų tuštybės URL, pvz.<https://i.trvl.as/bob>, tais atvejais, kai galite bendrinti tik vieną URL.
-* Galite tvarkyti ir bendrinti nuorodas bei įkelti failus.
-* Viešbučiai, tinklai ir prekių ženklai gali naudoti „WinkLinks“ kaip pažangią užsakymo sistemą:
-  * Palaiko kelias savybes.
-  * Palaiko kelias paskirties vietas.
-  * Palaiko kelias valiutas.
-  * Palaiko kelias kalbas.
-* „WinkLinks“ palaiko`rich content` *(žr. toliau)*.
-* Užsisakykite iš „Instagram“ vos 2 paspaudimais 🚀
+- WinkLinks leidžia nemokamai pridėti visas jūsų esamas filialų nuorodas, tokias kaip Commission Junction ir Amazon.
+- Gaunate stilingą asmeninį URL, pavyzdžiui, [https://i.trvl.as/bob](https://i.trvl.as/bob), kai galite pasidalinti tik viena nuoroda.
+- Galite tvarkyti ir dalintis nuorodomis bei įkelti failus.
+- Viešbučiai, tinklai ir prekės ženklai gali naudoti WinkLinks kaip pažangią užsakymų sistemą:
+    - Palaiko kelias apgyvendinimo vietas.
+    - Palaiko kelias kelionės kryptis.
+    - Palaiko kelias valiutas.
+    - Palaiko kelias kalbas.
+- WinkLinks palaiko `turtingą turinį` *(žr. žemiau)*.
+- Nuo IG iki užsakymo vos per 2 paspaudimus 🚀
 
 ## Turtingas turinys
 
 :::note
-Nustatyti`Intelligent`į 🟢 tavo [Nustatymai](/link-manager/settings) norint naudoti šią funkciją.
+Norėdami naudoti šią funkciją, nustatykite `Intelligent` į 🟢 savo [Nustatymuose](/lt/link-manager/settings).
 :::
 
-Jei bendrinate nuorodą iš svetainės, kuri palaiko`rich`/`oEmbed`turinys, jūsų nuoroda atgyja „WinkLinks“.
+Jei dalijatės nuoroda iš svetainės, kuri palaiko `turtingą` / `oEmbed` turinį, jūsų nuoroda WinkLinks tampa gyva.
 
 Palaikomos svetainės:
 
-* „Facebook“ –*Sąveikauti su įrašu ir paleisti vaizdo įrašą*.
-* Instagramas –*Sąveikauti su įrašu ir paleisti vaizdo įrašą*.
-* „YouTube“ –*Paleisti vaizdo įrašą*.
-* X (anksčiau „Twitter“) –*Sąveika su įrašu*.
-* „Spotify“ –*Leiskite mėgstamiausius grojaraščius*.
-* Mirktelėjimas -*Žr.`Advanced`*.
+- Facebook – *Bendraukite su įrašu ir žiūrėkite vaizdo įrašą*.
+- Instagram – *Bendraukite su įrašu ir žiūrėkite vaizdo įrašą*.
+- YouTube – *Žiūrėkite vaizdo įrašą*.
+- X (anksčiau Twitter) – *Bendraukite su įrašu*.
+- Spotify – *Leiskite savo mėgstamas grojaraščius*.
+- Wink – *Žr. `Advanced`*.
 
-## Išplėstinis
+## Pažangios funkcijos
 
-„WinkLinks“ taip pat yra puikus būdas parodyti rastą kelionių inventorių per [„Wink“ studija](https://studio.wink.travel) ir kurį norite parduoti savo auditorijai.
+WinkLinks taip pat yra puikus būdas parodyti kelionių inventorių, kurį radote per [Wink Studio](https://studio.wink.travel), ir kurį norite parduoti savo auditorijai.
 
-Naudokite „WinkLinks“, kad parduotumėte savo:
+Naudokite WinkLinks parduoti savo:
 
-* [Bendrinamos nuorodos](/studio/shareable-links) - Pasirinkite, kaip rodyti:
-  * [Reklaminė juosta](/developers/web-components/#content-loader).
-  * Įprasta nuoroda su kainų atnaujinimais realiuoju laiku.
-* [Kortelės](/studio/cards) - Užsakomos kortelės su kainomis ir prieinamumu realiuoju laiku.
-* [Tinkleliai](/studio/grids) - Tinklelis su užsakomomis kortelėmis.
-* [Žemėlapiai](/studio/maps) - Žemėlapis su žymekliais, kurie atsidaro į rezervuojamas korteles.
+- [Dalijamąsias nuorodas](/lt/studio/shareable-links) – Pasirinkite, kaip jas rodyti:
+    - [Reklaminį banerį](/lt/developers/web-components/#content-loader).
+    - Įprastą nuorodą su realaus laiko kainų atnaujinimais.
+- [Korteles](/lt/studio/cards) – Užsakomas korteles su realaus laiko kainomis ir prieinamumu.
+- [Tinklelius](/lt/studio/grids) – Tinklelis su užsakomomis kortelėmis.
+- [Žemėlapius](/lt/studio/maps) – Žemėlapis su žymekliais, kurie atsidaro į užsakomas korteles.
 
-:::pastaba
-Norėdami tvarkyti savo „WinkLinks“ paskyrą, prisijunkite prie savo partnerio paskyros svetainėje[„Wink“ studija](https://studio.wink.travel).
+:::note
+Norėdami valdyti savo WinkLinks paskyrą, prisijunkite prie savo filialų paskyros [Wink Studio](https://studio.wink.travel).
 :::
 
 :::tip
-Norėdami pamatyti, kaip veikia paskyra, peržiūrėkite mūsų bendraįkūrėjo Bjorno „WinkLinks“ paskyrą:<https://i.trvl.as/bjorn>.
+Norėdami pamatyti paskyrą veikiant, peržiūrėkite Bjorn, mūsų bendraįkūrėjo, WinkLinks paskyrą: [https://i.trvl.as/bjorn](https://i.trvl.as/bjorn).
 :::
-

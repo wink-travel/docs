@@ -1,22 +1,22 @@
 ---
 title: Czym jest Agent?
-description: 'Dowiedz się, w jaki sposób Wink wspiera zarejestrowanych agentów podróży.'
+description: Dowiedz się, jak Wink wspiera zarejestrowanych agentów turystycznych.
 sidebar:
   order: 0
 ---
-Nasze rozwiązanie dla zarejestrowanych agentów podróży to[Agent mrugnięcia okiem](https://agent.wink.travel). Jest to portal samoobsługowy, którego agenci mogą używać do wyszukiwania i dokonywania rezerwacji w imieniu swoich klientów i zarabiania prowizji od każdej rezerwacji.
+
+Nasze rozwiązanie dla zarejestrowanych agentów turystycznych to [Wink Agent](https://agent.wink.travel). To portal samoobsługowy, z którego agenci mogą korzystać, aby wyszukiwać i rezerwować w imieniu swoich klientów oraz zarabiać prowizję za każdą rezerwację.
 
 Bardziej zaawansowani agenci turystyczni mogą zdecydować się na integrację na poziomie API w celu obsługi płatności i wypłat poza platformą Wink.
 
-Agenci podróży mają podzbiór tych samych funkcji portalu, co [Studio Wink](/studio/what-is-studio) więc nie będziemy ich tu ponownie omawiać.
+Agenci turystyczni mają dostęp do podzbioru tych samych funkcji portalu co [Wink Studio](/pl/studio/what-is-studio), dlatego nie będziemy ich tutaj ponownie omawiać.
 
-## Szukaj
+## Wyszukiwanie
 
-Idź do [Szukaj](/studio/search) aby dowiedzieć się, jak wyszukiwać i rezerwować hotele.
+Przejdź do [Wyszukiwanie](/pl/studio/search), aby dowiedzieć się, jak wyszukiwać i rezerwować hotele.
 
-W przeciwnym wypadku przejdź do następnej sekcji.
+W przeciwnym razie kontynuuj do następnej sekcji.
 
 ## API
 
-Programiści chcący zarządzać`Travel Agent`możesz udać się do[Deweloperzy > API > Agent podróży](/developers/apis/#travel-agent-api).
-
+Deweloperzy, którzy chcą zarządzać `Travel Agent`, mogą przejść do [Developers > API > Travel Agent](/pl/developers/apis/#travel-agent-api).

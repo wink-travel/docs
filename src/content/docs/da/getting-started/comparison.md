@@ -1,43 +1,42 @@
 ---
-title: Comparison
-description: >-
-  Lær, hvordan Wink klarer sig i forhold til lignende online rejsebureauer, og
-  hvad nogle af fordelene ved at blive medlem af Wink er.
+title: Sammenligning
+description: Lær hvordan Wink sammenlignes med lignende online rejsevirksomheder, og hvad nogle af fordelene ved at tilslutte sig Wink er.
 sidebar:
   order: 5
 ---
-Lær, hvordan Wink klarer sig i forhold til andre online rejsesegmenter på markedet. Nedenfor er en hurtig oversigt over funktioner, som vi mente var vigtige at sammenligne med.
+
+Lær hvordan Wink sammenlignes med andre online rejse-segmenter på markedet. Nedenfor er en hurtig oversigt over funktioner, som vi mente var vigtige at sammenligne.
 
 ## Funktionsmatrix
 
-| Feature | Wink | OTA | IBE | Bed Bank
-| ------------------------ | -- | -- | -- | -- |
-| Internet bookingsystem | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Link-in-bio butiksfacade | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| B2B affiliate netværk | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Rejsebureausupport | 🟢 | 🟢 | ⚫️ | 🟢 |
-| AI-assisteret distribution og marketing | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Socialvenlige værktøjer | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Provisionsfri B2C-kanal | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Gratis Google Hotel-fortegnelse | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Webkomponent / SDK / API-adgang | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Direkte relationer | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Provisioner, der kan forhandles, pr. salgskanal | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Kanaladministrator og PMS-forbindelse | 🟢 | 🟢 | 🟢 | 🟢 |
-| Leverandøren ejer kunden | 🟢 | ⚫️ | 🟢 | 🟢 |
-| Spor ROI | 🟢 | 🟢 | ⚫️ | ⚫️ |
-| Betal pr. ydelse | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Integreret betalingsgateway | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Udbetalinger med Wise | 🟢 | 🟢 | ⚫️ | ⚫️ |
+| Funktion | Wink | OTA | IBE | Bed Bank
+| ----------------------- | -- | -- | -- | -- |
+| Internet booking engine | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Link-in-bio butik | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| B2B affiliate netværk | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Rejsebureau support | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| AI-assisteret distribution & marketing | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Sociale-venlige værktøjer | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Kommissionsfri B2C kanal | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Gratis Google Hotel liste | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Webkomponent / SDK / API adgang | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Direkte relationer | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Forhandlelige kommissioner pr. salgskanal | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Channel manager & PMS forbindelse | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Leverandøren ejer kunden | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| Spor ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Pay-per-Performance | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Integreret betalingsgateway | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Udbetalinger med Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
-## Wink vs. Internet Booking Engine (IBE)
 
-Nogle hoteller forsøger at sammenligne os med deres internetbookingsystem, der fulgte med deres kanaladministrator, og beder os om at give dem en fast månedlig pris baseret på antallet af nøgler til deres ejendom.
+## Wink vs Internet Booking Engine (IBE)
 
-Vi er ikke en IBE og forhåbentlig [Wink Academy](/) hjælper med at afklare dette. Der er fordele og ulemper ved enhver service. Hvis din IBE fungerer for din ejendom, så hold dig til den.
-Wink eksisterer for at udfylde flere huller i rejsebranchen og samle det hele på ét sted.
+Nogle hoteller prøver at sammenligne os med deres internet booking engine, som fulgte med deres channel manager, og beder os om at give dem en fast, månedlig pris baseret på antallet af værelser på deres ejendom.
+
+Vi er ikke en IBE, og forhåbentlig hjælper [Wink Academy](/da/) med at afklare dette. Der er fordele og ulemper ved enhver service. Hvis din IBE fungerer for din ejendom, så fortsæt med den.  
+Wink eksisterer for at udfylde flere huller i rejsebranchen og samle det hele ét sted. 
 
 :::tip
-Du behøver ikke at udskifte din eksisterende IBE. Vi anbefaler dog, at du prøver vores socialvenlige bookingmotor eller linkmanager på en af ​​dine sociale mediekonti for at se, hvordan de konverterer. Du betaler ikke noget, hvis der ikke er nogen bookinger - Hvad har du at miste? 😉
+Du behøver ikke at erstatte din eksisterende IBE. Vi anbefaler dog, at du prøver vores sociale-venlige booking engine eller link manager på en af dine sociale mediekonti for at se, hvordan de konverterer. Du betaler ikke noget, hvis der ikke er nogen bookinger – Hvad har du at tabe? 😉
 :::
-

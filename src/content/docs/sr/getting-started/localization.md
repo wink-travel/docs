@@ -1,69 +1,69 @@
 ---
-title: Localization
-description: Овај чланак објашњава како управљамо локализацијом на Винку.
+title: Lokalizacija
+description: Ovaj članak objašnjava kako upravljamo lokalizacijom na Wink.
 sidebar:
   order: 7
 ---
-Овај чланак објашњава како управљамо локализацијом на Винку.
 
-## Подржани језици
+Ovaj članak objašnjava kako upravljamo lokalizacijom na Wink.
 
-Винк подржава следеће језике:
+## Podržani jezici
 
-* Енглески
-* Бахаса индонежански
-* Малезијски језик
-* Бугарски
-* Каталонски
-* Чештина
-* Дански
-* Дојч
-* Естонски
-* Шпански
-* Шпански (AR)
-* Шпански (MX)
-* Филипински
-* Суоми
-* Француски
-* Елинички
-* Еврејски
-* хинди
-* Хрватски
-* Мађарски
-* Исленска
-* Италијано
-* 日本語
-* 한국어
-* Летонски
-* Литвански
-* Холандски
-* Норски
-* Пољски
-* Португалски (БР)
-* Португалски (PT)
-* Румунски
-* Руски
-* Словенчина
-* Словенски
-* Српски
-* Шведска
-* ภาษาไทย
-* Турски
-* Украјинска
-* Тјенг Вијет
-* Арапски
-* 简体中文
-* 繁體中文
+Wink podržava sledeće jezike:
 
-## На нивоу платформе
+- Engleski
+- Bahasa Indonesia
+- Bahasa Malaysia
+- Български
+- Català
+- Čeština
+- Dansk
+- Deutsch
+- Eesti
+- Español
+- Español (AR)
+- Español (MX)
+- Filipino
+- Suomi
+- Français
+- Ελληνικά
+- עברית
+- हिन्दी
+- Hrvatski
+- Magyar
+- Íslenska
+- Italiano
+- 日本語
+- 한국어
+- Latviski
+- Lietuvių
+- Nederlands
+- Norsk
+- Polski
+- Português (BR)
+- Português (PT)
+- Română
+- Русский
+- Slovenčina
+- Slovenščina
+- Srpski
+- Svenska
+- ภาษาไทย
+- Türkçe
+- Українська
+- Tiếng Việt
+- العربية
+- 简体中文
+- 繁體中文
 
-Све наше апликације су локализоване да подрже све горе поменуте језике. Свака апликација има селектор језика на дну странице где корисник може да изабере жељени језик. Систем за резервације такође подржава прослеђивање жељеног језика путем URL-а.
+## Na nivou platforme
 
-## Садржај који генеришу корисници
+Sve naše aplikacije su lokalizovane da podrže sve gore navedene jezike. Svaka aplikacija ima selektor jezika na dnu stranice sa kojeg korisnik može izabrati željeni jezik. Booking engine takođe podržava prosleđivanje željenog jezika putem URL-a.
 
-Кориснички генерисан садржај је локализован тако да подржава све горе поменуте језике. Корисници могу да изаберу да креирају енглеску верзију садржаја и да остало препусте Винку. Или могу да управљају одређеним скупом језика за већу контролу и да Винку препусте остало.
+## Sadržaj koji kreiraju korisnici
 
-## Упозорења
+Sadržaj koji kreiraju korisnici je lokalizovan da podrži sve gore navedene jezike. Korisnici mogu izabrati da kreiraju verziju sadržaja na engleskom jeziku i prepuste Wink-u da uradi ostalo. Ili, mogu upravljati specifičnim skupom jezika za veću kontrolu i prepustiti Wink-u da se pobrine za ostale.
 
-Подразумевани језик је енглески. Осим ако није другачије назначено, прво ћемо користити подразумевани језик када корисник користи било коју од наших апликација. Не подешавамо активни језик на основу локалних подешавања прегледача корисника.
+## Ograničenja
 
+Podrazumevani jezik je engleski. Osim ako nije drugačije navedeno, koristićemo podrazumevani jezik prvo kada korisnik koristi bilo koju od naših aplikacija. Ne postavljamo aktivni jezik na osnovu lokalizacije korisnikovog pregledača.

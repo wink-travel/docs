@@ -1,49 +1,47 @@
 ---
 title: Na kratko
-description: >-
-  Ta članek vas bo seznanil z vsem, kar ste želeli vedeti o rezervacijskem
-  sistemu.
+description: Ta članek vas popelje skozi vse, kar ste želeli vedeti o rezervacijskem sistemu.
 sidebar:
   order: 0
 ---
-Takole segmentiramo odgovornost na Winku:
 
-* [Ekstranet](/extranet/what-is-extranet) ukvarja se z dobavitelji, ki upravljajo zaloge.
-* [Studio](/studio/what-is-studio)se ukvarja s tem, da podružnice upravljajo vsebino.
-* `Booking Engine`se ukvarja z ustvarjanjem vsebine, ustvarjene v`Studio`, ki je temeljil na inventarju, ustvarjenem leta`Extranet`in ga narediti rezerviranega.
-* [Plačilo](/payment/what-is-trip-pay)se ukvarja z zaračunavanjem/vračilom denarja potnikom, ki rezervirajo \[prek platform, kot je Wink], in plačevanjem prodajalcev.
+Tako razdeljujemo odgovornosti na Wink:
+
+- [Extranet](/sl/extranet/what-is-extranet) skrbi za dobavitelje, ki upravljajo z zalogami.
+- [Studio](/sl/studio/what-is-studio) skrbi za podružnice, ki upravljajo z vsebinami.
+- `Booking Engine` skrbi za to, da je vsebina, ustvarjena v `Studio`, ki temelji na zalogah, ustvarjenih v `Extranet`, na voljo za rezervacijo.
+- [Payment](/sl/payment/what-is-trip-pay) skrbi za zaračunavanje / vračila popotnikom, ki rezervirajo [prek platform, kot je Wink], in plačila dobaviteljem.
 
 Rezervacijski sistem je jedro naše platforme.
 
 Njegove odgovornosti vključujejo:
 
-* Upravljanje valut in posodabljanje menjalnih tečajev.
-* Omogočanje ponudnikom cen načinu, da nam pošljejo podatke o cenah.
-* Upravljanje podatkov iskanja.*npr. regije, države, destinacije, nepremičnine itd.*
-* Upravljanje jezikov.
-* Ustvarjanje analitike na podlagi interakcij uporabnikov, dogodkov in klicev API-ja.
-* Prikazovanje zalog, ki jih je mogoče rezervirati, v želeni obliki, jeziku in valuti, kot so:
-  * A [povezava za deljenje](/studio/shareable-links) na Facebooku.
-  * Ciljna stran hotela na https://ota.wink.travel z ponudbo za ta hotel.
-  * A [kartica](/studio/cards) ki vsebuje inventar partnerskih podjetij.
-  * A [zemljevid](/studio/maps) na tvojem [zemljevid](/studio/maps) račun.
-  * En [Klic API-ja](/developers/apis) iz sistema oddaljene potovalne agencije.
-* Zagotavljanje popotnikom možnosti za:
-  * Iskanje potovalne ponudbe.
-  * Rezervirajte razpoložljivo zalogo.
-  * Upravljajte njihovo[rezervacije in ocene](/booking-engine/bookings).
-  * Upravljajte njihovo [seznam želja](/booking-engine/bucket-list) stvari za rezervacijo v prihodnosti.
-  * Upravljajte njihovo[potovalni profil](/booking-engine/travel-preferences).*npr. alergije, stik v nujnih primerih itd.*
+- Upravljanje valut in posodabljanje menjalnih tečajev.
+- Omogočanje ponudnikom cen, da nam pošljejo podatke o cenah.
+- Upravljanje podatkov za iskanje. *npr. regije, države, destinacije, nastanitve itd.*
+- Upravljanje jezikov.
+- Generiranje analiz na podlagi uporabniških interakcij, dogodkov in API klicev.
+- Prikazovanje rezervabilnih zalog v želeni obliki, jeziku in valuti, kot so:
+    - [deljiva povezava](/sl/studio/shareable-links) na Facebooku.
+    - Ciljna stran hotela na https://ota.wink.travel z zalogo za ta hotel.
+    - [kartica](/sl/studio/cards) z zalogo podružnic.
+    - [zemljevid](/sl/studio/maps) na vašem računu [WinkLinks](/sl/link-manager/wink-links).
+    - [API klic](/sl/developers/apis) iz oddaljenega sistema turističnega agenta.
+- Omogočanje popotnikom, da:
+    - iščejo turistično zalogo.
+    - rezervirajo razpoložljivo zalogo.
+    - upravljajo svoje [rezervacije in ocene](/sl/booking-engine/bookings).
+    - upravljajo svoj [seznam želja](/sl/booking-engine/bucket-list) stvari za prihodnje rezervacije.
+    - upravljajo svoj [potovalni profil](/sl/booking-engine/travel-preferences). *npr. alergije, kontakt v sili itd.*
 
-Rezervacijski sistem je zbirka funkcij za večkratno uporabo, ki jih ponujamo na https://ota.wink.travel; zelo prilagodljivem spletnem mestu za hotele in partnerje, kjer lahko prodajajo svoje izdelke popotnikom.
+Rezervacijski sistem je zbirka ponovno uporabnih funkcionalnosti, ki jih ponujamo preko https://ota.wink.travel; zelo prilagodljive spletne strani za hotele in podružnice, da prodajajo svoje storitve popotnikom.
 
-Integratorji, ki si želijo še več svobode, imajo dostop do vseh istih funkcij prek našega [Vtičnik za WordPress](/developers/wordpress/), [Vtičnik za WordPress](/developers/wordpress/) in[API-ji](/developers/apis).
+Integratorji, ki želijo še več svobode, imajo dostop do vseh istih funkcij preko našega [WordPress vtičnika](/sl/developers/wordpress/), [Web Components](/sl/developers/web-components) in [API-jev](/sl/developers/apis).
 
-Nadaljujte z naslednjimi razdelki, če želite izvedeti več o tem, kaj ponuja rezervacijski sistem.
+Nadaljujte z branjem naslednjih poglavij, da izveste več o tem, kaj rezervacijski sistem ponuja.
 
 ## Nadaljnje branje
 
-* Preberite o naših[Vtičnik za WordPress](/developers/wordpress/).
-* Preberite o naših[Spletne komponente](/developers/web-components).
-* Preberite o naših[API-ji](/developers/apis).
-
+- Preberite o našem [WordPress vtičniku](/sl/developers/wordpress/).
+- Preberite o naših [Web Components](/sl/developers/web-components).
+- Preberite o naših [API-jih](/sl/developers/apis).

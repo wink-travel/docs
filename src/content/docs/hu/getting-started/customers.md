@@ -1,55 +1,53 @@
 ---
-title: Customers
-description: >-
-  Ez a cikk bemutatja, hogy milyen típusú ügyfeleket szolgálunk ki, és hogyan
-  tud a Wink segíteni.
+title: Ügyfelek
+description: Ez a cikk bemutatja az általunk kiszolgált ügyféltípusokat és hogy a Wink hogyan tud segíteni.
 sidebar:
   order: 2
 ---
-Ez a cikk bemutatja, hogy milyen típusú ügyfeleket szolgálunk ki, és hogyan tudunk a legjobban segíteni.
 
-## Tulajdonságok
+Ez a cikk bemutatja az általunk kiszolgált ügyféltípusokat és hogy hogyan tudunk a leghatékonyabban segíteni.
 
-A Wink egy évtizeddel ezelőtt kezdte meg a szállodák bevonását. A szállodák a Wink segítségével hatékonyan kezelik készletüket több ezer értékesítési csatornán, beleértve a saját brand.com oldalukat is, és minden foglalással többet keresnek, miközben a közvetlen értékesítési csatornákat is fellendítik a vendéglátásra összpontosító eszközeink segítségével, amelyek javítják a márkaidentitást és a jövedelmezőséget.
+## Szálláshelyek
+
+A Wink egy évtizede kezdte meg a szállodák onboardolását. A szállodák a Winket használják, hogy hatékonyan kezeljék készletüket több ezer értékesítési csatornán, beleértve a saját brand.com oldalukat is, és hogy minden foglalással többet keressenek, miközben közvetlen csatornáikat növelik vendéglátásra fókuszáló eszközeink segítségével, amelyek erősítik a márkaidentitást és a jövedelmezőséget​.
 
 ## Márkák és láncok
 
-A márkáknak és láncoknak némileg eltérő igényeik vannak, mint egyetlen ingatlannak. A Wink segítségével a következőket tehetik:
+A márkáknak és láncoknak kissé eltérő igényeik vannak egyetlen szálláshelyhez képest. A Wink-en ők képesek:
 
-* Több ingatlan kezelése egyetlen fiók alatt.
-* Tulajdonosok kezelőinek hozzárendelése
-* Használat [WinkLinks](/link-manager/wink-links), [WinkLinks](/link-manager/wink-links) és a mi [WinkLinks](/link-manager/wink-links) több ingatlan egy helyen történő értékesítése és értékesítése.
+- Több szálláshelyet kezelni egyetlen fiók alatt.
+- Menedzsereket hozzárendelni a szálláshelyekhez.
+- Használni a [WinkLinks](/hu/link-manager/wink-links), [WordPress](/hu/developers/wordpress) és a [Web Components](/hu/developers/web-components) eszközöket, hogy több szálláshelyet egy helyen marketingeljenek és értékesítsenek.
 
-## Alapkezelő társaságok
+## Menedzsment cégek
 
-A vendéglátó-ipari és turisztikai menedzsment cégek a tulajdonosok nevében kezelhetik ingatlanportfólióikat. Határozott előnye van annak, ha az online szegmensnek történő értékesítést online fókuszú, digitálisan tudatos ügynökségekre bízzuk, míg a szállodák a vendégek elégedettségének kezelésére koncentrálhatnak, miután megérkeznek a helyszínre.
+A vendéglátóipari menedzsment cégek és desztináció menedzsment cégek a tulajdonosok nevében kezelhetik szálláshely-portfóliójukat. Egyértelmű előny, ha az online fókuszú, digitálisan tudatos ügynökségek kezelik az online szegmens értékesítését, miközben a szállodák a vendégelégedettség kezelésére koncentrálhatnak, amikor a vendégek megérkeznek.
 
-## Befolyásolók
+## Influencerek
 
-Az influenszerek a Winket használják közönségük hatékonyabb bevételszerzésére. Ezt szállodákkal való együttműködés, egyedi ajánlatok létrehozása, valamint a Wink közösségibarát eszközeinek és hatékony elemzéseinek kihasználása révén teszik, hogy nyomon kövessék, mely termékek fogynak a legjobban.
+Az influencerek a Winket használják, hogy jobban monetizálják közönségüket. Ezt úgy érik el, hogy együttműködnek szállodákkal, egyedi ajánlatokat hoznak létre, és kihasználják a Wink közösségi médiára optimalizált eszközeit és erőteljes elemzéseit, hogy nyomon kövessék, mely termékek a legkelendőbbek​.
 
-## Utazási irodák
+## Utazási ügynökök
 
-Az utazási irodák világszerte nagyszerű áron férhetnek hozzá utazási készleteinkhez dedikált szolgáltatásainkon keresztül. [utazási iroda portál](https://agent.wink.travel) Foglalásokat végezhetnek portálunkon, API-nkon keresztül, vagy úgy, hogy a felhasználóik maguk foglalják az utazási iroda weboldalán, amely a mi technológiánkat használja.
+Az utazási ügynökök világszerte hozzáférnek utazási készlethez kiváló árakon a dedikált [utazási ügynök portálunkon](https://agent.wink.travel). Foglalásokat tehetnek portálunkon keresztül, API-nkon keresztül, vagy engedhetik, hogy felhasználóik maguk foglaljanak az utazási ügynök weboldalán, amely a mi technológiánkat használja.
 
-## vállalatok
+## Vállalatok
 
-A vállalatoknak inkább utazási platformra van szükségük:
+A vállalatoknak több kell egy utazási platformtól:
 
-* Jól szervezett útvonalakat igényelnek, amelyek rugalmasak és lehetővé teszik az utolsó pillanatban történő változtatásokat.
-* Megbízható kommunikációs eszközökre van szükségük, például internetre.
-* Tagságokkal kapcsolatban előnyben részesítik az eladókat.
-* Gyakran van céges hitelkártyájuk, és költési limiteket is be tudnak állítani.
-* Költségkezelési és jelentéskészítési integrációt igényelnek.
-* Szükségük van concierge támogatásra, valamint MICE szolgáltatásokra rendezvényeken.
+- Jól szervezett útitervre van szükségük, amely támogatja a rugalmasságot és az utolsó pillanatban történő változtatásokat.
+- Megbízható kommunikációs eszközökre van szükségük, például internetre.
+- Beszállítói preferenciáik vannak tagságokkal.
+- Gyakran rendelkeznek vállalati hitelkártyával és költési limitet állítanak be.
+- Költségkezelésre és jelentéskészítés integrációra van szükségük.
+- Konzorciumi támogatásra, valamint MICE szolgáltatásokra van szükségük rendezvényeken.
 
-A céges utazók saját fiókjaikat kezelhetik a mi oldalunkon. [vállalati portál](/corporate/what-is-group) vagy használja hivatalosan támogatott szolgáltatásainkat [vállalati portál](/corporate/what-is-group) bővítmény és [vállalati portál](/corporate/what-is-group) integráció.
+A vállalati utazók saját fiókjaikat kezelhetik a [vállalati portálunkon](/hu/corporate/what-is-group), vagy használhatják hivatalosan támogatott [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) bővítményünket és a [Concur](https://www.concur.com/) integrációt.
 
 ## Fejlesztők
 
-Miközben ezt a platformot szállodások számára és általuk építettük... Minden kódsort kifejezetten az újrafelhasználhatóság érdekében írtunk. Fejlesztőink csapata abban a reményben készítette a Winket, hogy a következő 🦄 utazási alkalmazás a kódbázisunkra épüljön. Navigáljon a következőhöz: [Fejlesztő](/developers/build-on-wink) oldalt, hogy megtudd, hogyan támogathat a Wink a következő vállalkozásodban.
+Bár ezt a platformot szállodások számára és által építettük... Minden kódsor újrafelhasználhatóság céljából készült. Fejlesztői csapatunk a Winket azzal a reménnyel építette, hogy a következő 🦄 utazási alkalmazás a mi kódbázisunkra épül majd. Látogass el a [Fejlesztő](/hu/developers/build-on-wink) oldalra, hogy megtudd, hogyan támogathat a Wink a következő vállalkozásodban.
 
-## Más
+## Egyéb
 
-Bárki, aki utazási felszereléseket szeretne keresni és értékesíteni, profitálhat a Wink használatából. Váltsa valóra a vendéglátás iránti szenvedélyét, és szerezzen nagyszerű jutalékot minden foglalás után.
-
+Bárki, aki utazási készletet szeretne találni és értékesíteni, profitálhat a Wink használatából. Alakítsd át vendéglátás iránti szenvedélyedet cselekvéssé, és keress nagyszerű jutalékot minden foglalás után.

@@ -1,47 +1,45 @@
 ---
-title: Políticas de cancelación
-description: >-
-  Este artículo le muestra cómo administrar las políticas de cancelación en
-  Wink.
+title: Políticas de Cancelación
+description: Este artículo te muestra cómo gestionar las políticas de cancelación en Wink.
 sidebar:
   order: 12
 ---
-Para administrar sus políticas de cancelación, haga clic en`Monetize > Cancellation policies`desde la barra de navegación principal.
 
-Las políticas de cancelación determinan cómo se gestionan los fondos del cliente en caso de que el huésped no pueda asistir. Existen dos tipos de políticas de cancelación:
+Para gestionar tus políticas de cancelación, haz clic en `Monetize > Cancellation policies` desde la barra de navegación principal.
 
-1. Reintegrable
+Las políticas de cancelación determinan cómo se manejan los fondos del reservante en caso de que el huésped no pueda asistir. Las políticas de cancelación vienen en dos variantes distintas:
+
+1. Reembolsable
 2. No reembolsable
 
-En la mayoría de los casos, estas dos opciones son suficientes. Sin embargo, ambas te ofrecen un amplio margen para personalizar aún más tu política de cancelación.
+La mayoría de las veces, estas dos opciones son suficientes. Sin embargo, ambas te dan mucho margen para personalizar aún más tu política de cancelación.
 
-:::consejo\[Dato curioso]
-Wink admite un total de 8500 variantes de política de cancelación.
+:::tip[Dato curioso]
+Wink soporta un total de 8500 variaciones de políticas de cancelación.
 :::
 
-Para crear una política de cancelación, haga clic en el`Create a new cancellation policy` botón.
+Para crear una política de cancelación, haz clic en el botón `Create a new cancellation policy`.
 
 ## No reembolsable
 
-Para crear una política de cancelación no reembolsable, coloque el interruptor en la posición 🛑 desactivado cuando se le pregunte si la política es reembolsable.
+Para crear una política de cancelación no reembolsable, configura el interruptor en 🛑 apagado cuando te pregunten si la política es reembolsable.
 
 ### Opciones
 
-Opcionalmente, puede configurar su`non-refundable`Política adicional para un mayor control.
+Opcionalmente, puedes configurar tu política `no reembolsable` para tener un mayor control.
 
-* **¿Cuánto se le cobra al huésped por una cancelación?**&#x50;or defecto, una póliza no reembolsable es 100 % no reembolsable. Puedes ajustar el importe aquí.*p. ej. 50% del precio total*
-* **¿El cobro tiene fecha límite?**&#x53;i ajustó la cantidad, puede ajustarla aún más estableciendo durante cuánto tiempo permanecerá vigente esa cantidad.*p.ej. Hasta 3 días antes de la llegada*
-* **¿Cuánto se le cobra al huésped por una cancelación después de la fecha límite?**&#x45;n caso de que el huésped pase del plazo establecido anteriormente, podrás establecer el monto que el huésped pagará después de la fecha límite.*p. ej. el 70% del precio total*
+- **¿Cuánto se le cobra al huésped por una cancelación?** Por defecto, una política no reembolsable es 100% no reembolsable. Puedes ajustar el monto aquí. *ej. 50% del precio total*
+- **¿El cobro tiene una fecha límite?** Si ajustaste el monto, puedes afinarlo aún más estableciendo cuánto tiempo se mantiene ese monto vigente. *ej. Hasta 3 días antes de la llegada*
+- **¿Cuánto se le cobra al huésped por una cancelación después de la fecha límite?** En caso de que el huésped supere la fecha límite establecida arriba, puedes definir el monto que el huésped paga después de la fecha límite. *ej. 70% del precio total*
 
-## Reintegrable
+## Reembolsable
 
-Para crear una política de cancelación reembolsable, active el interruptor ✅ cuando se le pregunte si la política es reembolsable.
+Para crear una política de cancelación reembolsable, configura el interruptor en ✅ encendido cuando te pregunten si la política es reembolsable.
 
 ### Opciones
 
-Opcionalmente, puede configurar su`refundable`Política adicional para un mayor control.
+Opcionalmente, puedes configurar tu política `reembolsable` para tener un mayor control.
 
-* **¿Con cuánta antelación a la llegada puede el huésped cancelar sin coste?**&#x50;or defecto, una política de reembolso siempre es 100 % reembolsable. Puedes ajustar la fecha límite aquí.*p. ej. 3 días antes de la llegada*
-* **¿Cuánto se le debe cobrar al huésped si la cancelación se produce después de la fecha límite mencionada anteriormente?**&#x53;i ajusta la fecha límite, puede establecer el monto que pagará el huésped después de la fecha límite.*p. ej. el 50% del precio total*
-* **¿Cuánto se le debe cobrar al huésped por un 'No show'?**&#x45;n caso de que el huésped no se presente, puedes establecer el monto que se le cobrará al huésped por una`No show`.*p. ej. 100% del precio total*
-
+- **¿Cuánto tiempo antes de la llegada puede el huésped cancelar sin cargo?** Por defecto, una política reembolsable es siempre 100% reembolsable. Puedes ajustar la fecha límite aquí. *ej. 3 días antes de la llegada*
+- **¿Qué se le debe cobrar al huésped si la cancelación ocurre después de la fecha límite anterior?** Si ajustaste la fecha límite, puedes definir el monto que el huésped paga después de la fecha límite. *ej. 50% del precio total*
+- **¿Cuánto se le debe cobrar al huésped por un 'No show'?** En caso de que el huésped no se presente, puedes definir el monto que se le cobra por un `No show`. *ej. 100% del precio total*

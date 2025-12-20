@@ -1,43 +1,42 @@
 ---
-title: Comparison
-description: >-
-  Saiba como a Wink se compara com empresas de viagens online similares e quais
-  são alguns dos benefícios de se associar à Wink.
+title: Comparação
+description: Saiba como o Wink se compara a empresas de viagens online semelhantes e quais são alguns dos benefícios de aderir ao Wink.
 sidebar:
   order: 5
 ---
-Saiba como o Wink se compara com outros segmentos de viagens online no mercado. Abaixo está uma análise rápida das características que consideramos importantes para comparação.
 
-## Matriz de características
+Saiba como o Wink se compara a outros segmentos de viagens online no mercado. Abaixo está uma rápida análise das funcionalidades que considerámos importantes para comparar.
 
-| Matéria | Piscadela | OTA | IBE | Banco de camas
+## Matriz de funcionalidades
+
+| Funcionalidade | Wink | OTA | IBE | Bed Bank
 | ----------------------- | -- | -- | -- | -- |
-| Motor de reservas pela Internet | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Loja virtual com link na bio | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Rede de afiliados B2B | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Suporte para agentes de viagens | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Distribuição e marketing assistidos por IA | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Ferramentas amigas das redes sociais | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Canal B2C sem comissão | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Listagem gratuita de hotéis Google | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Acesso a componentes Web/SDK/API | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Relacionamentos diretos | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Comissões negociáveis por canal de vendas | 🟢 | ⚫️ | ⚫️ | ⚫️ |
-| Gestor de canais e conectividade PMS | 🟢 | 🟢 | 🟢 | 🟢 |
-| O fornecedor é o dono do cliente | 🟢 | ⚫️ | 🟢 | 🟢 |
-| Acompanhe o ROI | 🟢 | 🟢 | ⚫️ | ⚫️ |
-| Pagamento por desempenho | 🟢 | 🟢 | ⚫️ | 🟢 |
-| Gateway de pagamento integrado | 🟢 | 🟢 | 🟢 | ⚫️ |
-| Pagamentos com Wise | 🟢 | 🟢 | ⚫️ | ⚫️ |
+| Motor de reservas online | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Loja link-in-bio | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Rede de afiliados B2B | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Suporte a agentes de viagens | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Distribuição e marketing assistidos por IA | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Ferramentas amigáveis para redes sociais | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Canal B2C sem comissões | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Listagem gratuita no Google Hotel | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Acesso a Web Component / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Relações diretas | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Comissões negociáveis por canal de vendas | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Gestor de canais & conectividade PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Fornecedor detém o cliente | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| Acompanhamento do ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Pagamento por desempenho | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Gateway de pagamento integrado | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Pagamentos com Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
-## Wink vs Mecanismo de Reservas pela Internet (IBE)
 
-Alguns hotéis tentam comparar-nos ao mecanismo de reservas da internet que vem junto com o channel manager e pedem-nos um preço fixo mensal com base no número de chaves da propriedade.
+## Wink vs Motor de Reservas Online (IBE)
 
-Não somos uma IBE e esperamos [Academia Wink](/) ajuda a esclarecer isso. Há prós e contras em qualquer serviço. Se o seu IBE funciona para a sua propriedade, mantenha-o.
-A Wink existe para preencher várias lacunas no setor das viagens e reunir tudo num só local.
+Alguns hotéis tentam comparar-nos ao seu motor de reservas online que vem incluído com o seu gestor de canais e pedem-nos um preço fixo mensal baseado no número de quartos da sua propriedade.
 
-:::dica
-Não precisa de substituir o seu IBE existente. No entanto, recomendamos que experimente o nosso motor de reservas orientado para as redes sociais, ou gestor de links, numa das suas contas de redes sociais para ver como convertem. Não paga nada se não houver reservas. O que tem a perder? 😉
+Nós não somos um IBE e esperamos que a [Wink Academy](/pt-PT/) ajude a esclarecer isso. Existem prós e contras em qualquer serviço. Se o seu IBE funciona para a sua propriedade, mantenha-o.  
+O Wink existe para preencher várias lacunas na indústria de viagens e reunir tudo num só lugar.
+
+:::tip
+Não precisa de substituir o seu IBE atual. No entanto, recomendamos que experimente o nosso motor de reservas amigável para redes sociais, ou gestor de links, numa das suas contas de redes sociais para ver como convertem. Não paga nada se não houver reservas – O que tem a perder? 😉
 :::
-

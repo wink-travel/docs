@@ -1,25 +1,27 @@
 ---
-title: 評級提供者
-description: 以下是我們在 Wink 上直接支援的費率提供者的最新清單。
+title: 價格供應商
+description: 這是我們在 Wink 上直接支援的最新價格供應商清單。
 sidebar:
   order: 18
 ---
-## 設定費率提供者
 
-若要設定您的費率提供者，請點選`Distribution > Channel manager` 從主導覽列。
+## 設定價格供應商
 
-從下拉清單中選擇您的費率提供者，然後點擊`Save` 按鈕。這樣，價格提供者就可以向我們發送價格，當 Wink 上有您的某個房產的預訂時，我們會通知他們。
+要設定您的價格供應商，請從主選單點擊 `Distribution > Channel manager`。
+
+從下拉清單中選擇您的價格供應商，然後點擊 `Save` 按鈕。這將允許價格供應商向我們傳送價格，當 Wink 上您的物業有訂單時，我們也會通知他們。
+
 
 ### SynXis
 
-如果您的房產使用 SynXis 頻道管理器，在您準備好連接 Wink 之前還需要執行更多步驟。
+如果您的物業使用 SynXis 頻道管理系統，還需要完成一個步驟才能與 Wink 連接。
 
-* 請聯絡您的 SynXis 客戶代表或客戶服務部門 (SHSCustomerCare@sabre.com)。
-* 讓他們知道您想透過 Channel Connect Express 連接到 Wink（***CCX***）。
-* 他們會讓你填寫完整的表&#x683C;***公共服務委員會***。
-  * 您將被要求填寫您的 Wink 使用者憑證。
-  * ....以及您想要的貨幣。
-* 填寫表格並將其提交回 SynXis。
+- 請聯繫您的 SynXis 客戶代表或客服 (SHSCustomerCare@sabre.com)。
+- 告知他們您想透過 Channel Connect Express (***CCX***) 連接到 Wink。
+- 他們會請您填寫 ***PRS*** 表格。
+  - 您需要填寫您的 Wink 使用者憑證。
+  - 以及您想使用的貨幣。
+- 填寫完表格後，提交回 SynXis。
 
 ## 供應商
 
@@ -27,121 +29,120 @@ sidebar:
 
 可用類型：
 
-* 通路經理（CM）
-* 物業管理系統（PMS）
-* 中央預約系統（CRS）
+- 頻道管理系統 (CM)
+- 物業管理系統 (PMS)
+- 中央訂房系統 (CRS)
 
-*如果供應商有代理，則表示我們透過代理間接從供應商取得費率。*
+*如果供應商有代理，表示我們是透過代理間接接收該供應商的價格。*
 
-|供應商 |類型 |代理 |自 |最後修改時間 |評論
+| 供應商 | 類型 | 代理 | 起始年份 | 最後修改 | 備註
 | -- | -- | -- | -- | -- | -- |
-|旅館經營者大師 |公分 | | 2017 | 2017 | |
-| Travelclick |公分 | | 2016 | 2016 | |
-|收益星球 |公分 | | 2016 | 2016 | |
-| Siteminder |公分 | | 2016 | 2016 | |
-|雲床 |公分 | | 2016 | 2016 | |
-|我的分配器 |公分 | | 2016 | 2016 | |
-| ResAvenue |公分 | | 2017 | 2017 | |
-|快速預訂 |公分 | | 2016 | 2016 |現在 d-edge |
-|全能蜂 |公分 | | 2019 | 2019 | |
-|飯店連結 |公分 | | 2017 | 2017 | |
-|利率增益 |公分 | | 2016 | 2018 | |
-|阿洛茨 |公分 | | 2019 | 2019 | |
-| d-edge |公分 | | 2018 | 2018 | |
-|科曼奇 |經前症候群 | | 2017 | 2017 | |
-| Synxis |經前症候群 | | 2019 | 2019 | |
-| Channelx |經前症候群 | | 2023 | 2023 | |
-|完美住宿 |經前症候群 | Channelx | 2023 | 2023 | |
-|馬厩 |經前症候群 | Channelx | 2023 | 2023 | |
-|歌劇 |經前症候群 | Channelx | 2023 | 2023 | |
-|阿帕萊奧 |經前症候群 | Channelx | 2023 | 2023 | |
-|住所預訂 |經前症候群 | Channelx | 2023 | 2023 | |
-|艾奧斯爾 |經前症候群 | Channelx | 2023 | 2023 | |
-|阿吉爾 |經前症候群 | Channelx | 2023 | 2023 | |
-|全部已預訂 |經前症候群 | Channelx | 2023 | 2023 | |
-|阿洛賈特 |經前症候群 | Channelx | 2023 | 2023 | |
-|亞特蘭提斯 |經前症候群 | Channelx | 2023 | 2023 | |
-|自動櫃員機 |經前症候群 | Channelx | 2023 | 2023 | |
-| Ayenda 飯店 |經前症候群 | Channelx | 2023 | 2023 | |
-|艾爾頓 |經前症候群 | Channelx | 2023 | 2023 | |
-|峇裡島禪宗 |經前症候群 | Channelx | 2023 | 2023 | |
-|香蕉桌|經前症候群 | Channelx | 2023 | 2023 | |
-|更好的飯店 |經前症候群 | Channelx | 2023 | 2023 | |
-|比德倫托 |經前症候群 | Channelx | 2023 | 2023 | |
-|大解決方案 |經前症候群 | Channelx | 2023 | 2023 | |
-|比茨 |經前症候群 | Channelx | 2023 | 2023 | |
-|藍鳥 PMS |經前症候群 | Channelx | 2023 | 2023 | |
-| BookandLink |經前症候群 | Channelx | 2023 | 2023 | |
-| 圖書世界 |經前症候群 | Channelx | 2023 | 2023 | |
-|布克利爾 |經前症候群 | Channelx | 2023 | 2023 | |
-|預訂工廠 |經前症候群 | Channelx | 2023年 | 2023年 | |
-| Bookipro |經前症候群 | Channelx | 2023 | 2023 | |
-|圖書技術 |經前症候群 | Channelx | 2023 | 2023 | |
-|布克 |經前症候群 | Channelx | 2023 | 2023 | |
-|卡克拉 |經前症候群 | Channelx | 2023 | 2023 | |
-|卡莉斯塔 |經前症候群 | Channelx | 2023 | 2023 | |
-|柑橘 |經前症候群 | Channelx | 2023 | 2023 | |
-|突擊隊 |經前症候群 | Channelx | 2023 | 2023 | |
-|康德利 |經前症候群 | Channelx | 2023 | 2023 | |
-| Cortec |經前症候群 | Channelx | 2023 | 2023 | |
-|計數器 |經前症候群 | Channelx | 2023 | 2023 | |
-|破壞者 |經前症候群 | Channelx | 2023 | 2023 | |
-| dtravel |經前症候群 | Channelx | 2023 | 2023 | |
-|簡易前台 |經前症候群 | Channelx | 2023 | 2023 | |
-| 輕鬆恢復 |經前症候群 | Channelx | 2023 | 2023 | |
-|生態預訂 |經前症候群 | Channelx | 2023 | 2023 | |
-| ehotelspace |經前症候群 | Channelx | 2023 | 2023 | |
-|埃克塞尼亞 |經前症候群 | Channelx | 2023 | 2023 | |
-|艾爾梅斯飯店 |經前症候群 | Channelx | 2023 | 2023 | |
-| ezCloud |經前症候群 | Channelx | 2023 | 2023 | |
-| ezyinn |經前症候群 | Channelx | 2023 | 2023 | |
-|芬納 |經前症候群 | Channelx | 2023 | 2023 | |
-|螢火蟲 |經前症候群 | Channelx | 2023 | 2023 | |
-| FitsHotel |經前症候群 | Channelx | 2023 | 2023 | |
-|前台快遞 |經前症候群 | Channelx | 2023 | 2023 | |
-|前台管理員 |經前症候群 | Channelx | 2023 | 2023 | |
-|床鋪 |經前症候群 | Channelx | 2023 | 2023 | |
-|嘉賓大師 |經前症候群 | Channelx | 2023 | 2023 | |
-|賓客點 |經前症候群 | Channelx | 2023 | 2023 | |
-| GuestPro |經前症候群 | Channelx | 2023 | 2023 | |
-|賓客智慧 |經前症候群 | Channelx | 2023 | 2023 | |
-|幫助飯店 |經前症候群 | Channelx | 2023 | 2023 | |
-| Host-It |經前症候群 | Channelx | 2023 | 2023 | |
-|飯店大師 |經前症候群 | Channelx | 2023 | 2023 | |
-| Hotelmu | 經前症候群 | Channelx | 2023 | 2023 | |
-|一處 |經前症候群 | Channelx | 2023 | 2023 | |
-|飯店點 |經前症候群 | Channelx | 2023 | 2023 | |
-|旅館指南 |經前症候群 | Channelx | 2023 | 2023 | |
-|旅館經營者 101 |經前症候群 | Channelx | 2023 | 2023 | |
-| Hotelsminder |經前症候群 | Channelx | 2023 | 2023 | |
-| Hotelzify |經前症候群 | Channelx | 2023 | 2023 | |
-|冰屋 |經前症候群 | Channelx | 2023 | 2023 | |
-|城九 |經前症候群 | Channelx | 2023 | 2023 | |
-| KAO 飯店 |經前症候群 | Channelx | 2023 | 2023 | |
-|住宿系統 |經前症候群 | Channelx | 2023 | 2023 | |
-|洛吉 |經前症候群 | Channelx | 2023 | 2023 | |
-| Mashvisor |經前症候群 | Channelx | 2023 | 2023 | |
-| Masteryield |經前症候群 | Channelx | 2023 | 2023 | |
-|姆蘇爾 |經前症候群 | Channelx | 2023 | 2023 | |
-|我的租賃 |經前症候群 | Channelx | 2023 | 2023 | |
-| 新軟 |經前症候群 | Channelx | 2023 | 2023 | |
-|野ぎら |經前症候群 | Channelx | 2023 | 2023 | |
-| OTA 同步 |經前症候群 | Channelx | 2023 | 2023 | |
-| PAN 飯店 |經前症候群 | Channelx | 2023 | 2023 | |
-|路路通 |經前症候群 | Channelx | 2023 | 2023 | |
-|火龍果 |經前症候群 | Channelx | 2023 | 2023 | |
-|威望 |經前症候群 | Channelx | 2023 | 2023 | |
-| Pxsol |經前症候群 | Channelx | 2023 | 2023 | |
-|快來加入！經前症候群 | Channelx | 2023 | 2023 | |
-| ResBook |經前症候群 | Channelx | 2023 | 2023 | |
-| ResClick |經前症候群 | Channelx | 2023 | 2023 | |
-|預訂金鑰 |經前症候群 | Channelx | 2023 | 2023 | |
-| ResMaster |經前症候群 | Channelx | 2023年 | 2023年 | |
-|靜脩大師 |經前症候群 | Channelx | 2023 | 2023 | |
-| Revenatium |經前症候群 | Channelx | 2023 | 2023 | |
-| Revivo |經前症候群 | Channelx | 2023 | 2023 | |
-| rezStream |經前症候群 | Channelx | 2023 | 2023 | |
-| Roomsy |經前症候群 | Channelx | 2023 | 2023 | |
-| Roverpass |經前症候群 | Channelx | 2023 | 2023 | |
-|伺服 |經前症候群 | Channelx | 2023 | 2023 | |
-
+| Hoteliers Guru | CM |  | 2017 | 2017 | |
+| Travelclick | CM |  | 2016 | 2016 | |
+| Yield Planet | CM |  | 2016 | 2016 | |
+| Siteminder | CM |  | 2016 | 2016 | |
+| Cloudbeds | CM |  | 2016 | 2016 | |
+| MyAllocator | CM |  | 2016 | 2016 | |
+| ResAvenue | CM |  | 2017 | 2017 | |
+| Fastbooking | CM |  | 2016 | 2016 | 現為 d-edge |
+| Omnibees | CM |  | 2019 | 2019 | |
+| Hotel Link | CM |  | 2017 | 2017 | |
+| RateGain | CM |  | 2016 | 2018 | |
+| Allotz | CM |  | 2019 | 2019 | |
+| d-edge | CM |  | 2018 | 2018 | |
+| Comanche | PMS |  | 2017 | 2017 | |
+| Synxis | PMS |  | 2019 | 2019 | |
+| Channex | PMS |  | 2023 | 2023 | |
+| A Perfect Stay | PMS | Channex | 2023 | 2023 | |
+| Mews | PMS | Channex | 2023 | 2023 | |
+| Opera | PMS | Channex | 2023 | 2023 | |
+| Apaleo | PMS | Channex | 2023 | 2023 | |
+| Abode Booking | PMS | Channex | 2023 | 2023 | |
+| AIOSELL | PMS | Channex | 2023 | 2023 | |
+| Ajjir | PMS | Channex | 2023 | 2023 | |
+| All Booked | PMS | Channex | 2023 | 2023 | |
+| Alojate | PMS | Channex | 2023 | 2023 | |
+| Atlantis | PMS | Channex | 2023 | 2023 | |
+| ATM | PMS | Channex | 2023 | 2023 | |
+| Ayenda Hoteles | PMS | Channex | 2023 | 2023 | |
+| Ayrton | PMS | Channex | 2023 | 2023 | |
+| Bali Zen Den | PMS | Channex | 2023 | 2023 | |
+| Banana Desk | PMS | Channex | 2023 | 2023 | |
+| Be Better Hotels | PMS | Channex | 2023 | 2023 | |
+| Bidrento | PMS | Channex | 2023 | 2023 | |
+| Big Solutions | PMS | Channex | 2023 | 2023 | |
+| Bitz | PMS | Channex | 2023 | 2023 | |
+| Blue Jay PMS | PMS | Channex | 2023 | 2023 | |
+| BookandLink | PMS | Channex | 2023 | 2023 | |
+| Book World | PMS | Channex | 2023 | 2023 | |
+| Bookelier | PMS | Channex | 2023 | 2023 | |
+| Booking Factory | PMS | Channex | 2023 | 2023 | |
+| Bookipro | PMS | Channex | 2023 | 2023 | |
+| Booktech | PMS | Channex | 2023 | 2023 | |
+| Bouk | PMS | Channex | 2023 | 2023 | |
+| Cakra | PMS | Channex | 2023 | 2023 | |
+| Callista | PMS | Channex | 2023 | 2023 | |
+| Citrus | PMS | Channex | 2023 | 2023 | |
+| Comando | PMS | Channex | 2023 | 2023 | |
+| Condly | PMS | Channex | 2023 | 2023 | |
+| Cortec | PMS | Channex | 2023 | 2023 | |
+| Counter | PMS | Channex | 2023 | 2023 | |
+| Desbravador | PMS | Channex | 2023 | 2023 | |
+| dtravel | PMS | Channex | 2023 | 2023 | |
+| Easy Front Desk | PMS | Channex | 2023 | 2023 | |
+| Easy Rez | PMS | Channex | 2023 | 2023 | |
+| Ecobooking | PMS | Channex | 2023 | 2023 | |
+| ehotelspace | PMS | Channex | 2023 | 2023 | |
+| Eksenia | PMS | Channex | 2023 | 2023 | |
+| Ermeshotels | PMS | Channex | 2023 | 2023 | |
+| ezCloud | PMS | Channex | 2023 | 2023 | |
+| ezyinn | PMS | Channex | 2023 | 2023 | |
+| Finner | PMS | Channex | 2023 | 2023 | |
+| Firefly | PMS | Channex | 2023 | 2023 | |
+| FitsHotel | PMS | Channex | 2023 | 2023 | |
+| FrontDesk Express | PMS | Channex | 2023 | 2023 | |
+| FrontDesk Master | PMS | Channex | 2023 | 2023 | |
+| Getabed | PMS | Channex | 2023 | 2023 | |
+| Guest Guru | PMS | Channex | 2023 | 2023 | |
+| GuestPoint | PMS | Channex | 2023 | 2023 | |
+| GuestPro | PMS | Channex | 2023 | 2023 | |
+| GuestSmart | PMS | Channex | 2023 | 2023 | |
+| Helping Hotels | PMS | Channex | 2023 | 2023 | |
+| Host-It | PMS | Channex | 2023 | 2023 | |
+| Hotelmeister | PMS | Channex | 2023 | 2023 | |
+| Hotelmu | PMS | Channex | 2023 | 2023 | |
+| OnePlace | PMS | Channex | 2023 | 2023 | |
+| HotelPoint | PMS | Channex | 2023 | 2023 | |
+| Hotelgest | PMS | Channex | 2023 | 2023 | |
+| Hotelier 101 | PMS | Channex | 2023 | 2023 | |
+| Hotelsminder | PMS | Channex | 2023 | 2023 | |
+| Hotelzify | PMS | Channex | 2023 | 2023 | |
+| igloorooms | PMS | Channex | 2023 | 2023 | |
+| Johku | PMS | Channex | 2023 | 2023 | |
+| KAO Hoteles | PMS | Channex | 2023 | 2023 | |
+| LodgingSystem | PMS | Channex | 2023 | 2023 | |
+| Lodgy | PMS | Channex | 2023 | 2023 | |
+| Mashvisor | PMS | Channex | 2023 | 2023 | |
+| Masteryield | PMS | Channex | 2023 | 2023 | |
+| Msool | PMS | Channex | 2023 | 2023 | |
+| MyRent | PMS | Channex | 2023 | 2023 | |
+| Newsoft | PMS | Channex | 2023 | 2023 | |
+| Nokumo | PMS | Channex | 2023 | 2023 | |
+| OTA Sync | PMS | Channex | 2023 | 2023 | |
+| PAN Hospitality | PMS | Channex | 2023 | 2023 | |
+| Passepartout | PMS | Channex | 2023 | 2023 | |
+| Pitaya | PMS | Channex | 2023 | 2023 | |
+| Prestige | PMS | Channex | 2023 | 2023 | |
+| Pxsol | PMS | Channex | 2023 | 2023 | |
+| Quovai | PMS | Channex | 2023 | 2023 | |
+| ResBook | PMS | Channex | 2023 | 2023 | |
+| ResClick | PMS | Channex | 2023 | 2023 | |
+| Reservation Key | PMS | Channex | 2023 | 2023 | |
+| ResMaster | PMS | Channex | 2023 | 2023 | |
+| Retreat Guru | PMS | Channex | 2023 | 2023 | |
+| Revenatium | PMS | Channex | 2023 | 2023 | |
+| Revivo | PMS | Channex | 2023 | 2023 | |
+| rezStream | PMS | Channex | 2023 | 2023 | |
+| Roomsy | PMS | Channex | 2023 | 2023 | |
+| Roverpass | PMS | Channex | 2023 | 2023 | |
+| Servo | PMS | Channex | 2023 | 2023 | |

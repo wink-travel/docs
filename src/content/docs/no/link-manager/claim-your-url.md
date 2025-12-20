@@ -1,19 +1,16 @@
 ---
-title: Gjør krav på nettadressen din
-description: >-
-  I denne artikkelen forteller vi deg hvordan du kan gjøre krav på din WinkLinks
-  vanity URL.
+title: Krev din URL
+description: I denne artikkelen forklarer vi hvordan du kan kreve din WinkLinks vanity-URL.
 sidebar:
   order: 1
 ---
-Ved å opprette en [tilknyttet konto](/studio/what-is-studio), du har allerede en WinkLinks-fancy-URL. WinkLinks-publiseringsfunksjoner finnes i Studio-appen vår, sammen med våre andre tilknyttede funksjoner.
+
+Ved å opprette en [affiliate-konto](/no/studio/what-is-studio) har du allerede en WinkLinks vanity-URL. WinkLinks utgiverfunksjoner finnes i vår Studio-app, sammen med våre andre affiliate-funksjoner.
 
 ### Eksempel
 
-Hvis kontonavnet ditt er Queen Bee, vil din WinkLinks-fancy-URL være:
+Hvis kontonavnet ditt er Queen Bee, vil din WinkLinks vanity-URL være:
 
 <h4 align="center">https://i.trvl.as/queen-bee</h4>
 
-
-Kontonavn er tilgjengelige på en`first come - first serve`basis – Skaff deg din unike URL mens du kan!
-
+Kontonavn er tilgjengelige etter prinsippet `førstemann til mølla` – Sikre deg din unike URL mens du kan!

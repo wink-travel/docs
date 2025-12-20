@@ -1,43 +1,40 @@
 ---
 title: Integrarea cu TripPay
-description: >-
-  Acest articol conține un exemplu complet despre cum să te integrezi cu TripPay
-  și să lași TripPay să gestioneze plata pentru tine.
+description: Acest articol conține un exemplu complet despre cum să te integrezi și să lași TripPay să gestioneze plata pentru tine.
 sidebar:
   order: 4
 ---
+
 import { Steps } from '@astrojs/starlight/components';
 
-Acest articol conține un exemplu complet despre cum se integrează TripPay.
+Acest articol conține un exemplu complet de integrare cu TripPay.
 
-Este recomandat să fi citit deja:
+Se recomandă să fi citit deja:
 
-* [Plată > Cartografiere](/payment/mapping).
-* [Plată > Integrare](/payment/integration).
-* [Componentă web de plată](/developers/web-components/#payment).
-* [API-ul de plată](/developers/apis/#payment-api).*Citiți secțiunea despre`Create payable contracts`*
+- [Payment > Mapping](/ro/payment/mapping).
+- [Payment > Integration](/ro/payment/integration).
+- [Payment Web Component](/ro/developers/web-components/#payment).
+- [Payment API](/ro/developers/apis/#payment-api). *Citește secțiunea despre `Create payable contracts`*
 
-Iată pașii pentru a utiliza cu succes TripPay pentru a plăti o rezervare:
+Iată pașii pentru a folosi cu succes TripPay pentru plata unei rezervări:
 
 <Steps>
-  1. Asigurați-vă că beneficiarii menționați în contractul de rezervare au fost cartografiați.
-  2. Permiteți călătorului să aleagă inventarul pe care dorește să îl rezerve și pregătiți-l să plătească.
-  3. Creați un `payable contract` cu TripPay care conține articolele care urmează să fie rezervate.
-  4. Permiteți călătorului să plătească folosind componenta web TripPay.
+1. Asigură-te că beneficiarii menționați în contractul de rezervare au fost mapați.
+2. Lasă călătorul să aleagă inventarul pe care dorește să îl rezerve și pregătește-l pentru plată.
+3. Creează un `contract plătibil` cu TripPay care să conțină articolele ce urmează a fi rezervate.
+4. Lasă călătorul să plătească folosind TripPay Web Component.
 </Steps>
 
+Presupunem că ai finalizat deja `Pasul 1` și `Pasul 2` și ești gata să informezi TripPay despre rezervare.
 
-Presupunem că ați finalizat deja`Step 1`și`Step 2`și sunteți gata să informați TripPay despre rezervare.
+## Creează contract plătibil
 
-## Creați un contract plătibil
-
-:::notă
-Accesați API-ul de plată pentru a afla mai multe despre cerințele pentru a crea un contract plătibil.
+:::note
+Accesează Payment API pentru a afla mai multe despre cerințele pentru crearea unui contract plătibil.
 :::
 
 ### Cerere
-
-Iată un exemplu de solicitare JSON care include tot ce trebuie să creezi pentru primul tău contract plătibil.
+Iată un exemplu JSON de cerere care include tot ce ai nevoie pentru a crea primul tău contract plătibil.
 
 ```json {3-6, 8-9}
 {
@@ -130,51 +127,51 @@ Iată un exemplu de solicitare JSON care include tot ce trebuie să creezi pentr
 }
 ```
 
-Explicaţie:
+Explicație:
 
-Nu vom explica fiecare punct de date aici, deoarece acestea sunt deja acoperite în documentația API.
+Nu vom explica fiecare punct de date aici deoarece sunt deja acoperite în documentația API.
 
-* Linii:**2 - 7**este utilizatorul responsabil pentru rezervare. Există două tipuri de persoane care rezervă:
-  * Călător.
-  * Agent de turism.
-* Linii:**8 - 9**este contul TripPay care facilitează rezervarea. Poate fi:
-  * Contul tău de integrator TripPay.
-  * Dacă deții o rețea de afiliere, aceasta poate fi afiliatul tău.
-* Folosește un`traceId`pentru a grupa mai multe rezervări la mai mulți furnizori. În acest fel, puteți anula o rezervare de grup.
-* `redirectUrl`anunță TripPay către ce pagină să redirecționeze după finalizarea plății.
-* `sourceUrl`este site-ul/aplicația pe care a avut loc rezervarea.
+- Liniile: **2 - 7** reprezintă utilizatorul responsabil de rezervare. Există două tipuri de rezervatori:
+    - Călător.
+    - Agent de turism.
+- Liniile: **8 - 9** reprezintă contul TripPay care facilitează rezervarea. Poate fi:
+    - Contul tău de integrator TripPay.
+    - Dacă administrezi o rețea de afiliați, poate fi afiliatul tău.
+- Folosește un `traceId` pentru a grupa mai multe rezervări de la mai mulți furnizori. Astfel poți anula o rezervare de grup.
+- `redirectUrl` informează TripPay către ce pagină să redirecționeze după finalizarea plății.
+- `sourceUrl` este site-ul / aplicația pe care a avut loc rezervarea.
 
-Cel/Cea/Cei/Cele`contractList`matricea conține articolul (articolele) pe care călătorul dorește să le achiziționeze de la mai mulți furnizori. Fiecare articol conține:
+Array-ul `contractList` conține articolul/articolele pe care călătorul dorește să le achiziționeze de la mai mulți furnizori. Fiecare articol conține:
 
-* Cel/Cea/Cei/Cele`identifier`este un UUID valid pe care îl generați.
-* Furnizorul de la care doriți să rezervați stocuri.
-* Stocul pe care doriți să îl rezervați de la furnizorul respectiv. Toate acestea sunt specificate în matricea imbricată`contractItemList`.
-* Fiecare intrare de sub`contractItemList`conține:
-  * **Utilizator invitat**Acesta este utilizatorul care va sosi la sediu.
-  * **Nume în engleză**Denumirea inventarului în limba engleză.
-  * **Descriere în limba engleză**O descriere mai lungă a inventarului în limba engleză.
-  * **Preţ**Prețul articolului.
-  * **Itinerariu**Când ar trebui rezervat acest articol.
-  * **Tipul de preț**Cum a fost calculat prețul.
-  * **Tipul de inventar**Ce tip de inventar este acesta.
-  * **Plătibil**Când ar trebui să i se factureze călătorului.*În prezent, acceptăm doar opțiuni de plată imediată.*
-  * **Politică**Includeți regulile politicii de anulare.
-  * **Listă de tarife zilnice**Dacă elementul rezervat este o cameră, puteți alege să includeți costul camerei respective pentru fiecare noapte petrecută de oaspete.
-  * **Beneficiari**Includeți cărui/căror conturi TripPay ar trebui să li se aloce ce sumă/sume din prețul articolului.*Sunt acceptate sume fixe / procentuale.*
+- `identifier` este un UUID valid pe care îl generezi tu.
+- Furnizorul de la care dorești să rezervi inventarul.
+- Inventarul pe care dorești să îl rezervi de la acel furnizor. Acestea sunt specificate în array-ul imbricat `contractItemList`.
+- Fiecare intrare din `contractItemList` conține:
+    - **Utilizator oaspete** Acesta este utilizatorul care va sosi la locație.
+    - **Numele în engleză** Numele inventarului în limba engleză.
+    - **Descrierea în engleză** O descriere mai detaliată a inventarului în limba engleză.
+    - **Prețul** Prețul articolului.
+    - **Itinerariu** Perioada pentru care trebuie făcută rezervarea.
+    - **Tipul de tarifare** Modul în care a fost calculat prețul.
+    - **Tipul inventarului** Ce tip de inventar este.
+    - **Plătibil** Când trebuie să fie taxat călătorul. *În prezent suportăm doar opțiuni de plată imediată.*
+    - **Politica** Include regulile politicii de anulare.
+    - **Lista tarifelor zilnice** Dacă articolul rezervat este o cameră, poți include cât costă acea cameră pentru fiecare noapte de ședere.
+    - **Beneficiari** Include ce cont(uri) TripPay ar trebui să primească ce sumă/sume din prețul articolului. *Sunt suportate sume fixe / procentuale.*
 
-:::notă
+:::note
 În exemplul JSON de mai sus, avem 3 beneficiari:
 
-* 1,5% a fost alocat platformei care a facilitat rezervarea.*de exemplu, Faceți cu ochiul*
-* 9,85% a fost alocat afiliatului drept comision.*de exemplu, Kim Kardashian*
-* Furnizorului i-a fost alocat 88,65% pentru rezervarea camerei.*de exemplu, Hilton*
+- 1,5% a fost alocat platformei care a facilitat rezervarea. *ex. Wink*
+- 9,85% a fost alocat afiliatului ca și comision. *ex. Kim Kardashian*
+- 88,65% a fost alocat furnizorului pentru rezervarea camerei. *ex. Hilton*
 
-Când TripPay răspunde cu un contract plătibil, veți observa că și-a injectat propriul beneficiar la 4,0%.
+Când TripPay răspunde cu un contract plătibil, vei observa că a introdus propriul beneficiar cu 4,0%.
 :::
 
 ### Răspuns
 
-Când TripPay răspunde solicitării dvs., va arăta cam așa:
+Când TripPay răspunde la cererea ta, va arăta cam așa:
 
 ```json {3}
 [
@@ -208,19 +205,18 @@ Când TripPay răspunde solicitării dvs., va arăta cam așa:
 ]
 ```
 
-Salvați`id`pe linia 3. Veți folosi acest lucru pentru a injecta în componenta web TripPay.
+Salvează `id` de pe linia 3. Îl vei folosi pentru a-l injecta în componenta web TripPay.
 
 ## Încorporează TripPay
 
-:::notă
-Asigură-te că ai încărcat stilurile noastre și Javascript în prealabil.
+:::note
+Asigură-te că ai încărcat anterior stilurile și Javascript-ul nostru.
 :::
 
-În acest moment, sunteți gata să încorporați`Payment Web Component`pe site-ul dvs. web și arătați-l utilizatorului.
+În acest moment, ești gata să încorporezi `Payment Web Component` în site-ul tău și să îl afișezi utilizatorului.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-În ceea ce privește integrarea, asta e tot ce trebuie să faci. Toată munca grea este făcută de TripPay de acum înainte.
-
+În ceea ce privește integrarea, asta este tot ce trebuie să faci. Toată munca grea este realizată de TripPay de aici înainte.

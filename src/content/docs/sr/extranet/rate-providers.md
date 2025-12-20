@@ -1,146 +1,148 @@
 ---
-title: Провајдери цена
-description: Ево ажуриране листе добављача цена које директно подржавамо на Wink-у.
+title: Pružaoci cena
+description: Ovde je ažurirana lista pružalaca cena koje direktno podržavamo na Wink-u.
 sidebar:
   order: 18
 ---
-## Постави добављача цена
 
-Да бисте подесили свог добављача тарифа, кликните на`Distribution > Channel manager`из главне навигационе траке.
+## Podesite pružaoca cena
 
-Изаберите свог добављача тарифа из падајуће листе и кликните на`Save`дугме. Ово ће омогућити добављачу цена да нам пошаље цене, а ми ћемо их обавестити када се на Винку изврши резервација за једну од ваших некретнина.
+Da biste podesili svog pružaoca cena, kliknite na `Distribution > Channel manager` u glavnom navigacionom meniju.
 
-### СинКс
+Izaberite svog pružaoca cena iz padajuće liste i kliknite na dugme `Save`. Ovo će omogućiti pružaocu cena da nam šalje cene i obavestićemo ih kada se desi rezervacija na Wink-u za neku od vaših nekretnina.
 
-Ако ваш објекат користи SynXis менаџер канала, потребан је још један корак пре него што будете спремни да се повежете са Wink-ом.
 
-* Молимо вас да контактирате представника вашег SynXis налога или службу за кориснике (SHSCustomerCare@sabre.com).
-* Обавестите их да желите да се повежете са Wink-ом путем Channel Connect Express-а (***CCX***).
-* Даће вам да попуните образа&#x446;***ПРС***.
-  * Од вас ће се тражити да попуните своје Wink корисничке податке.
-  * ...и жељену валуту.
-* Попуните образац и пошаљите га назад компанији SynXis.
+### SynXis
 
-## Продавци
+Ako vaša nekretnina koristi SynXis channel manager, postoji još jedan korak pre nego što budete spremni da se povežete sa Wink-om.
 
-Испод је листа добављача које подржавамо:
+- Molimo kontaktirajte svog SynXis predstavnika ili korisničku podršku (SHSCustomerCare@sabre.com).
+- Obavestite ih da želite da se povežete sa Wink-om putem Channel Connect Express (***CCX***).
+- Oni će vam dati da popunite obrazac ***PRS***.
+  - Bićete zamoljeni da unesete svoje Wink korisničke podatke.
+  - ...i željenu valutu.
+- Popunite obrazac i pošaljite ga nazad SynXis-u.
 
-Доступне врсте:
+## Dobavljači
 
-* Менаџер канала (CM)
-* Систем за управљање имовином (PMS)
-* Централни резервациони систем (CRS)
+Ispod je lista dobavljača koje podržavamo:
 
-*Ако продавац има посредника, то значи да индиректно примамо цену од продавца преко посредника.*
+Dostupni tipovi:
 
-| Добављач | Тип | Посредник | Од | Последња измена | Коментар
+- Channel Manager (CM)
+- Property Management System (PMS)
+- Central Reservation System (CRS)
+
+*Ako dobavljač ima proxy, to znači da indirektno primamo cene od dobavljača preko proxy-ja.*
+
+| Dobavljač | Tip | Proxy | Od | Poslednja izmena | Komentar
 | -- | -- | -- | -- | -- | -- |
-| Хотелијерс Гуру | CM | | 2017 | 2017 | |
-| Травелклик | CM | | 2016 | 2016 | |
-| Yield Planet | CM | | 2016 | 2016 | |
-| Ситеминдер | CM | | 2016 | 2016 | |
-| Клаудбедс | CM | | 2016 | 2016 | |
-| МојАлокатор | CM | | 2016 | 2016 | |
-| РесАвенју | CM | | 2017 | 2017 | |
-| Фастбукинг | CM | | 2016 | 2016 | Сада d-edge |
-| Омнибис | CM | | 2019 | 2019 | |
-| Хотел Линк | ЦМ | | 2017 | 2017 | |
-| РејтГејн | ЦМ | | 2016 | 2018 | |
-| Алоц | ЦМ | | 2019 | 2019 | |
-| д-еџ | ЦМ | | 2018 | 2018 | |
-| Команчи | ПМС | | 2017 | 2017 | |
-| Синксис | ПМС | | 2019 | 2019 | |
-| Канал | ПМС | | 2023 | 2023 | |
-| Савршен боравак | ПМС | Канал | 2023 | 2023 | |
-| Мјуз | ПМС | Канал | 2023 | 2023 | |
-| Опера | ПМС | Канал | 2023 | 2023 | |
-| Апалео | ПМС | Канал | 2023 | 2023 | |
-| Резервација смештаја | ПМС | Канал | 2023 | 2023 | |
-| АИОСЕЛЛ | ПМС | Канал | 2023 | 2023 | |
-| Аџир | ПМС | Канал | 2023 | 2023 | |
-| Све резервисано | ПМС | Канал | 2023 | 2023 | |
-| Алојате | ПМС | Канал | 2023 | 2023 | |
-| Атлантис | ПМС | Канал | 2023 | 2023 | |
-| Банкомат | ПМС | Канал | 2023 | 2023 | |
-| Хотелске агенције | ПМС | Канал | 2023 | 2023 | |
-| Ајртон | ПМС | Канал | 2023 | 2023 | |
-| Бали Зен Ден | ПМС | Канал | 2023 | 2023 | |
-| Банана Деск | ПМС | Канал | 2023 | 2023 | |
-| Бидренто | ПМС | Канал | 2023 | 2023 | |
-| Велика решења | ПМС | Канал | 2023 | 2023 | |
-| Биц | ПМС | Канал | 2023 | 2023 | |
-| Блу Џеј ПМС | ПМС | Канал | 2023 | 2023 | |
-| БукенЛинк | ПМС | Канал | 2023 | 2023 | |
-| Свет књига | ПМС | Канал | 2023 | 2023 | |
-| Букелиер | ПМС | Канал | 2023 | 2023 | |
-| Букинг Фактори | ПМС | Канал | 2023 | 2023 | |
-| Букипро | ПМС | Канал | 2023 | 2023 | |
-| Букитек | ПМС | Канал | 2023 | 2023 | |
-| Бук | ПМС | Канал | 2023 | 2023 | |
-| Чакра | ПМС | Канал | 2023 | 2023 | |
-| Калиста | ПМС | Канал | 2023 | 2023 | |
-| Цитрус | ПМС | Канал | 2023 | 2023 | |
-| Командо | ПМС | Канал | 2023 | 2023 | |
-| Кондли | ПМС | Канал | 2023 | 2023 | |
-| Кортек | ПМС | Канал | 2023 | 2023 | |
-| Шалтер | ПМС | Канал | 2023 | 2023 | |
-| Десбравадор | ПМС | Канал | 2023 | 2023 | |
-| дтравел | ПМС | Канал | 2023 | 2023 | |
-| Једноставна рецепција | ПМС | Канал | 2023 | 2023 | |
-| Једноставно резервисање | ПМС | Канал | 2023 | 2023 | |
-| Екобукинг | ПМС | Канал | 2023 | 2023 | |
-| ехотелспејс | ПМС | Канал | 2023 | 2023 | |
-| Ексенија | ПМС | Канал | 2023 | 2023 | |
-| Ермесхотелс | ПМС | Канал | 2023 | 2023 | |
-| езКлауд | ПМС | Канал | 2023 | 2023 | |
-| езиин | ПМС | Канал | 2023 | 2023 | |
-| Финер | ПМС | Канал | 2023 | 2023 | |
-| Фајерфлај | ПМС | Канал | 2023 | 2023 | |
-| ФитсХотел | ПМС | Канал | 2023 | 2023 | |
-| ФронтДеск Експрес | ПМС | Канал | 2023 | 2023 | |
-| ФронтДеск Мастер | ПМС | Канал | 2023 | 2023 | |
-| Гетабед | ПМС | Канал | 2023 | 2023 | |
-| Гуру за госте | ПМС | Канал | 2023 | 2023 | |
-| ГестПоинт | ПМС | Канал | 2023 | 2023 | |
-| ГестПро | ПМС | Канал | 2023 | 2023 | |
-| ГестСмарт | ПМС | Канал | 2023 | 2023 | |
-| Помагање хотелима | ПМС | Канал | 2023 | 2023 | |
-| Хостинг-Ит | ПМС | Канал | 2023 | 2023 | |
-| Хотелмајстер | ПМС | Канал | 2023 | 2023 | |
-| Хотелму | ПМС | Канал | 2023 | 2023 | |
-| ОнеПлејс | ПМС | Канал | 2023 | 2023 | |
-| ХотелПоинт | ПМС | Канал | 2023 | 2023 | |
-| Хотелгест | ПМС | Канал | 2023 | 2023 | |
-| Хотелијер 101 | ПМС | Канал | 2023 | 2023 | |
-| Хотелсмајндер | ПМС | Канал | 2023 | 2023 | |
-| Хотелзифај | ПМС | Канал | 2023 | 2023 | |
-| иглурумс | ПМС | Канал | 2023 | 2023 | |
-| Јохку | ПМС | Канал | 2023 | 2023 | |
-| КАО Хотелес | ПМС | Канал | 2023 | 2023 | |
-| ЛодгингСистем | ПМС | Канал | 2023 | 2023 | |
-| Лоџи | ПМС | Канал | 2023 | 2023 | |
-| Машвизор | ПМС | Канал | 2023 | 2023 | |
-| Мастерјиелд | ПМС | Канал | 2023 | 2023 | |
-| Мсул | ПМС | Канал | 2023 | 2023 | |
-| МајРент | ПМС | Канал | 2023 | 2023 | |
-| Њузсофт | ПМС | Канал | 2023 | 2023 | |
-| Нокумо | ПМС | Канал | 2023 | 2023 | |
-| ОТА Синхронизација | ПМС | Канал | 2023 | 2023 | |
-| ПАН Хоспиталити | ПМС | Канал | 2023 | 2023 | |
-| Паспарту | ПМС | Канал | 2023 | 2023 | |
-| Питаја | ПМС | Канал | 2023 | 2023 | |
-| Престиж | ПМС | Канал | 2023 | 2023 | |
-| Пксол | ПМС | Канал | 2023 | 2023 | |
-| Куоваи | ПМС | Канал | 2023 | 2023 | |
-| РесБук | ПМС | Канал | 2023 | 2023 | |
-| РесКлик | ПМС | Канал | 2023 | 2023 | |
-| Кључ за резервацију | ПМС | Канал | 2023 | 2023 | |
-| РесМастер | ПМС | Канал | 2023 | 2023 | |
-| Ретрит Гуру | ПМС | Канал | 2023 | 2023 | |
-| Ревенатиум | ПМС | Канал | 2023 | 2023 | |
-| Ревиво | ПМС | Канал | 2023 | 2023 | |
-| резСтрим | ПМС | Канал | 2023 | 2023 | |
-| Румси | ПМС | Канал | 2023 | 2023 | |
-| Роверпас | ПМС | Канал | 2023 | 2023 | |
-| Серво | ПМС | Канал | 2023 | 2023 | |
-
+| Hoteliers Guru | CM |  | 2017 | 2017 | |
+| Travelclick | CM |  | 2016 | 2016 | |
+| Yield Planet | CM |  | 2016 | 2016 | |
+| Siteminder | CM |  | 2016 | 2016 | |
+| Cloudbeds | CM |  | 2016 | 2016 | |
+| MyAllocator | CM |  | 2016 | 2016 | |
+| ResAvenue | CM |  | 2017 | 2017 | |
+| Fastbooking | CM |  | 2016 | 2016 | Sada d-edge |
+| Omnibees | CM |  | 2019 | 2019 | |
+| Hotel Link | CM |  | 2017 | 2017 | |
+| RateGain | CM |  | 2016 | 2018 | |
+| Allotz | CM |  | 2019 | 2019 | |
+| d-edge | CM |  | 2018 | 2018 | |
+| Comanche | PMS |  | 2017 | 2017 | |
+| Synxis | PMS |  | 2019 | 2019 | |
+| Channex | PMS |  | 2023 | 2023 | |
+| A Perfect Stay | PMS | Channex | 2023 | 2023 | |
+| Mews | PMS | Channex | 2023 | 2023 | |
+| Opera | PMS | Channex | 2023 | 2023 | |
+| Apaleo | PMS | Channex | 2023 | 2023 | |
+| Abode Booking | PMS | Channex | 2023 | 2023 | |
+| AIOSELL | PMS | Channex | 2023 | 2023 | |
+| Ajjir | PMS | Channex | 2023 | 2023 | |
+| All Booked | PMS | Channex | 2023 | 2023 | |
+| Alojate | PMS | Channex | 2023 | 2023 | |
+| Atlantis | PMS | Channex | 2023 | 2023 | |
+| ATM | PMS | Channex | 2023 | 2023 | |
+| Ayenda Hoteles | PMS | Channex | 2023 | 2023 | |
+| Ayrton | PMS | Channex | 2023 | 2023 | |
+| Bali Zen Den | PMS | Channex | 2023 | 2023 | |
+| Banana Desk | PMS | Channex | 2023 | 2023 | |
+| Be Better Hotels | PMS | Channex | 2023 | 2023 | |
+| Bidrento | PMS | Channex | 2023 | 2023 | |
+| Big Solutions | PMS | Channex | 2023 | 2023 | |
+| Bitz | PMS | Channex | 2023 | 2023 | |
+| Blue Jay PMS | PMS | Channex | 2023 | 2023 | |
+| BookandLink | PMS | Channex | 2023 | 2023 | |
+| Book World | PMS | Channex | 2023 | 2023 | |
+| Bookelier | PMS | Channex | 2023 | 2023 | |
+| Booking Factory | PMS | Channex | 2023 | 2023 | |
+| Bookipro | PMS | Channex | 2023 | 2023 | |
+| Booktech | PMS | Channex | 2023 | 2023 | |
+| Bouk | PMS | Channex | 2023 | 2023 | |
+| Cakra | PMS | Channex | 2023 | 2023 | |
+| Callista | PMS | Channex | 2023 | 2023 | |
+| Citrus | PMS | Channex | 2023 | 2023 | |
+| Comando | PMS | Channex | 2023 | 2023 | |
+| Condly | PMS | Channex | 2023 | 2023 | |
+| Cortec | PMS | Channex | 2023 | 2023 | |
+| Counter | PMS | Channex | 2023 | 2023 | |
+| Desbravador | PMS | Channex | 2023 | 2023 | |
+| dtravel | PMS | Channex | 2023 | 2023 | |
+| Easy Front Desk | PMS | Channex | 2023 | 2023 | |
+| Easy Rez | PMS | Channex | 2023 | 2023 | |
+| Ecobooking | PMS | Channex | 2023 | 2023 | |
+| ehotelspace | PMS | Channex | 2023 | 2023 | |
+| Eksenia | PMS | Channex | 2023 | 2023 | |
+| Ermeshotels | PMS | Channex | 2023 | 2023 | |
+| ezCloud | PMS | Channex | 2023 | 2023 | |
+| ezyinn | PMS | Channex | 2023 | 2023 | |
+| Finner | PMS | Channex | 2023 | 2023 | |
+| Firefly | PMS | Channex | 2023 | 2023 | |
+| FitsHotel | PMS | Channex | 2023 | 2023 | |
+| FrontDesk Express | PMS | Channex | 2023 | 2023 | |
+| FrontDesk Master | PMS | Channex | 2023 | 2023 | |
+| Getabed | PMS | Channex | 2023 | 2023 | |
+| Guest Guru | PMS | Channex | 2023 | 2023 | |
+| GuestPoint | PMS | Channex | 2023 | 2023 | |
+| GuestPro | PMS | Channex | 2023 | 2023 | |
+| GuestSmart | PMS | Channex | 2023 | 2023 | |
+| Helping Hotels | PMS | Channex | 2023 | 2023 | |
+| Host-It | PMS | Channex | 2023 | 2023 | |
+| Hotelmeister | PMS | Channex | 2023 | 2023 | |
+| Hotelmu | PMS | Channex | 2023 | 2023 | |
+| OnePlace | PMS | Channex | 2023 | 2023 | |
+| HotelPoint | PMS | Channex | 2023 | 2023 | |
+| Hotelgest | PMS | Channex | 2023 | 2023 | |
+| Hotelier 101 | PMS | Channex | 2023 | 2023 | |
+| Hotelsminder | PMS | Channex | 2023 | 2023 | |
+| Hotelzify | PMS | Channex | 2023 | 2023 | |
+| igloorooms | PMS | Channex | 2023 | 2023 | |
+| Johku | PMS | Channex | 2023 | 2023 | |
+| KAO Hoteles | PMS | Channex | 2023 | 2023 | |
+| LodgingSystem | PMS | Channex | 2023 | 2023 | |
+| Lodgy | PMS | Channex | 2023 | 2023 | |
+| Mashvisor | PMS | Channex | 2023 | 2023 | |
+| Masteryield | PMS | Channex | 2023 | 2023 | |
+| Msool | PMS | Channex | 2023 | 2023 | |
+| MyRent | PMS | Channex | 2023 | 2023 | |
+| Newsoft | PMS | Channex | 2023 | 2023 | |
+| Nokumo | PMS | Channex | 2023 | 2023 | |
+| OTA Sync | PMS | Channex | 2023 | 2023 | |
+| PAN Hospitality | PMS | Channex | 2023 | 2023 | |
+| Passepartout | PMS | Channex | 2023 | 2023 | |
+| Pitaya | PMS | Channex | 2023 | 2023 | |
+| Prestige | PMS | Channex | 2023 | 2023 | |
+| Pxsol | PMS | Channex | 2023 | 2023 | |
+| Quovai | PMS | Channex | 2023 | 2023 | |
+| ResBook | PMS | Channex | 2023 | 2023 | |
+| ResClick | PMS | Channex | 2023 | 2023 | |
+| Reservation Key | PMS | Channex | 2023 | 2023 | |
+| ResMaster | PMS | Channex | 2023 | 2023 | |
+| Retreat Guru | PMS | Channex | 2023 | 2023 | |
+| Revenatium | PMS | Channex | 2023 | 2023 | |
+| Revivo | PMS | Channex | 2023 | 2023 | |
+| rezStream | PMS | Channex | 2023 | 2023 | |
+| Roomsy | PMS | Channex | 2023 | 2023 | |
+| Roverpass | PMS | Channex | 2023 | 2023 | |
+| Servo | PMS | Channex | 2023 | 2023 | |

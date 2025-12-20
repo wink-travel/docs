@@ -1,100 +1,99 @@
 ---
 title: Mokėjimo sąlygos
-description: >-
-  Šiame dokumente aptariamas lėšų prieinamumas ir kaip „Wink“ palaiko kelionių
-  agentų modelį.
+description: Šiame dokumente aptariama lėšų prieinamumas ir kaip Wink palaiko agentų modelį kelionių agentams.
 sidebar:
   order: 5
 ---
-:::pastaba
+
+:::note
 Paskutinį kartą atnaujinta 2024-10-30
 :::
 
-:::atsargiai\[Pranešimas]
-Žemiau pateiktos mokėjimo sąlygos taikomos kelionių agentams, kurie nori patys gauti ir išmokėti lėšas.
-Tai galima padaryti tik per mūsų API ir tik tiems kelionių agentams, kurie nurodė, kad nori tai padaryti registracijos metu.
+:::caution[Pranešimas]
+Žemiau pateiktos mokėjimo sąlygos taikomos kelionių agentams, kurie nori patys įsigyti ir paskirstyti lėšas.  
+Tai galima atlikti tik per mūsų API ir tik kelionių agentams, kurie registracijos metu nurodė, kad nori tai daryti.
 
-Visi kelionių agentai vis dar gali užsisakyti per mūsų kelionių agentų portalą, naudodamiesi „Wink“ mokėjimo vartais, savo arba keliautojo kreditine kortele. Todėl visi kelionių agentai taip pat turi sutikti su mokėjimo sąlygomis, kai „Wink“ mokėjimo vartai yra registruotas prekybininkas.
+Visi kelionių agentai vis tiek gali rezervuoti per mūsų kelionių agentų portalą, naudodami Wink mokėjimo šliuzą su savo arba keliautojo kreditine kortele. Todėl visi kelionių agentai taip pat turi sutikti su mokėjimo sąlygomis, kuriose Wink mokėjimo šliuzas yra prekybininkas įraše.
 
-Šios sąlygos yra prieinamos pagal[Partnerių portalas > Mokėjimo sąlygos](/studio/payment-terms).
+Šios sąlygos yra prieinamos [Affiliate Portal > Payment Terms](/lt/studio/payment-terms).
 :::
 
-**„WINK“ MOKĖJIMO SĄLYGOS**\
-**KELIONIŲ AGENTŪROMS (registruotas prekybininkas)**
+**WINK MOKĖJIMO SĄLYGOS**  
+**KELIONIŲ AGENTAMS (Prekybininkas įraše)**
 
-Šios mokėjimo paslaugų teikimo sąlygos („Mokėjimo sąlygos“) yra privalomas teisinis susitarimas, kuris yra sutartinių santykių, nustatytų pagal „KELIONIŲ AGENTŲ SĄLYGAS IR NUOSTATAS“ („Pagrindinė sutartis“), dalis.
+Šios Mokėjimo paslaugų sąlygos („Mokėjimo sąlygos“) yra privalomas teisinis susitarimas, kuris yra sutartinės santykių dalis pagal „KELIONIŲ AGENTŲ SĄLYGOS IR NUOSTATOS“ („Pagrindinė sutartis“).
 
 **TARP:**
 
-1. **„TRAVELIKO SINGAPORE PTE. LTD.“**&#x62;endrovė, įsteigta pagal Singapūro įstatymus, kurios registruotos buveinės adresas yra #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, PVM mokėtojo kodas 201437335D (toliau – „Wink“), ir
+1. **TRAVELIKO SINGAPORE PTE. LTD.**, įmonė, įregistruota pagal Singapūro įstatymus, kurios registruota buveinė yra \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, PVM registracijos numeris 201437335D (toliau – „Wink“) ir  
+     
+2. **KELIONIŲ AGENTAS**, kurio duomenys pateikti Kelionių agento registracijos formoje arba pateikti internetu („Kelionių agentas“).
 
-2. **KELIONIŲ AGENTAS**kurio duomenys pateikti kelionių agento registracijos formoje arba pateikti internetu („Kelionių agentas“).
+Pagrindinėje sutartyje nustatytos apibrėžtys ir terminai taikomi šioms Mokėjimo sąlygoms, jei čia nenurodyta kitaip.
 
-Šioms Mokėjimo sąlygoms taikomos Pagrindinėje sutartyje nustatytos apibrėžtys ir terminai, nebent čia būtų apibrėžta kitaip.
+**1\. Apibrėžimai**
 
-**1. Apibrėžtys**
+Kaip apibrėžta pagrindinėje sutartyje „KELIONIŲ AGENTŲ SĄLYGOS IR NUOSTATOS“ („Pagrindinė sutartis“), šie terminai šiose Mokėjimo sąlygose turi tą pačią reikšmę:
 
-Kaip apibrėžta pagrindinėje sutartyje „KELIONIŲ AGENTŪRŲ SĄLYGOS IR NUOSTATOS“ („Pagrindinė sutartis“), šiose Mokėjimo sąlygose toliau nurodytos sąvokos turi tą pačią reikšmę:
+* „Apgyvendinimo paslaugų teikėjas(-jai)“  
+* „Rezervacija“  
+* „Rezervacijos mokestis“  
+* „Rezervacijos vertė“  
+* „Komisinis atlyginimas“  
+* „Grynasis mokėjimas“  
+* „Atskira sutartis“
 
-* "Apgyvendinimo paslaugų teikėjas(-ai)"
-* "Užsakymas"
-* „Rezervavimo mokestis“
-* „Užsakymo vertė“
-* „Komisija“
-* „Grynasis mokėjimas“
-* „Atskiras susitarimas“
 
-**2. Mokėjimų surinkimas ir paskirstymas**
+**2\. Mokėjimų surinkimas ir paskirstymas**
 
-2.1**Mokėjimų surinkimas:**&#x4B;elionių agentas yra atsakingas už mokėjimo surinkimą iš svečio užsakymo metu. Tai užtikrina greitą apdorojimą ir finansinį aiškumą.
+2.1 **Mokėjimų surinkimas:** Kelionių agentas yra atsakingas už mokėjimo surinkimą iš Svečio rezervacijos metu. Tai užtikrina greitą apdorojimą ir finansinį aiškumą.
 
-2.2**Mokesčio atskaitymas:**&#x4B;elionių agentas pirmiausia išskaičiuoja paslaugų teikėjo mokestį, o tada savo komisinį mokestį už paantraštę, kaip parodyta toliau pateiktame pavyzdyje:
+2.2 **Mokesčių atskaitymas:** Kelionių agentas pirmiausia atskaičiuoja paslaugų teikėjo mokestį, o po to savo komisinį atlyginimą pagal žemiau pateiktą pavyzdį:
 
-* 1,5 % užsakymo mokestis už „Wink“.
-* Kelionių agento komisiniai, kaip nurodyta atskiroje sutartyje (šiame pavyzdyje naudosime 10 %)
+* 1,5 % rezervacijos mokestis Wink.  
+* Kelionių agento komisinis atlyginimas, nurodytas Atskiroje sutartyje (šiame pavyzdyje naudosime 10 %)
 
-Užsakymo vertė 1 000 USD\
-Mirksėjimo mokestis (1,5 %) = 15 USD\
-Tarpinė suma = 1 000 - 15 = 985
+Rezervacijos vertė 1 000 USD  
+Wink mokestis (1,5 %) = 15 USD  
+Tarpinė suma = 1 000 – 15 = 985 USD
 
-2.3**Grynasis mokėjimas apgyvendinimo paslaugų teikėjams:**&#x4B;elionių agentas yra atsakingas už grynojo mokėjimo išmokėjimą apgyvendinimo paslaugų teikėjui pagal Atskiros sutarties tarp kelionių agento ir apgyvendinimo paslaugų teikėjo sąlygas. „Wink“ neatsako už jokių mokėjimų apgyvendinimo paslaugų teikėjui atlikimą.
+2.3 **Grynasis mokėjimas apgyvendinimo paslaugų teikėjams:** Kelionių agentas yra atsakingas už grynojo mokėjimo pervedimą apgyvendinimo paslaugų teikėjui pagal Atskirą sutartį tarp Kelionių agento ir Apgyvendinimo paslaugų teikėjo. Wink nėra atsakingas už jokius mokėjimus apgyvendinimo paslaugų teikėjui.
 
-**3**.**Sąskaitų faktūrų išrašymas ir mokėjimas**
+**3\. Sąskaitų faktūrų išrašymas ir mokėjimas**
 
-3.1**Mėnesinis sąskaitų faktūrų išrašymas:**„Wink“ kas mėnesį išrašys kelionių agentui teisingą ir tikslią sąskaitą faktūrą už praėjusį mėnesį sukauptus užsakymo mokesčius. Kelionių agentas privalo apmokėti šią sąskaitą per sąskaitoje faktūroje nurodytus mokėjimo terminus.
+3.1 **Mėnesinės sąskaitos faktūros:** Wink išrašys teisingą ir tikslią mėnesinę sąskaitą faktūrą Kelionių agentui už rezervacijos mokesčius, sukauptus per praėjusį mėnesį. Kelionių agentas privalo atsiskaityti už šią sąskaitą pagal sąlygas, nurodytas sąskaitoje.
 
-3.2**Mokėjimo būdas:**&#x4D;okėjimai „Wink“ atliekami sąskaitoje faktūroje nurodytu mokėjimo būdu. Visas su mokėjimo pervedimu susijusias išlaidas padengia kelionių agentas.
+3.2 **Mokėjimo būdas:** Mokėjimai Wink turi būti atliekami pagal sąskaitoje nurodytą mokėjimo būdą. Bet kokios su mokėjimo pervedimu susijusios išlaidos tenka Kelionių agentui.
 
-3.3**Pavėluoti mokėjimai:**&#x50;avėluoto mokėjimo atveju „Wink“ pasilieka teisę skaičiuoti 5 % mėnesinius palūkanas už neapmokėtą sumą arba maksimalią įstatymų leidžiamą palūkanų normą, atsižvelgiant į tai, kuri palūkanų norma yra mažesnė. Be to, jei kelionių agentas vėluoja sumokėti Apgyvendinimo paslaugų teikėjui pagal Atskiros sutarties sąlygas, „Wink“ pasilieka teisę sustabdyti prieigą prie Paslaugos, kol bus sumokėti visi neapmokėti mokėjimai tiek „Wink“, tiek Apgyvendinimo paslaugų teikėjui. Tačiau jei „Wink“ pateiktoje sąskaitoje faktūroje yra klaidų ar netikslumų, kelionių agentas privalo sumokėti tik teisingą ir tikslią sąskaitos faktūros dalį ir jam netaikomi jokie delspinigiai ar bauda už neteisingos sąskaitos faktūros dalies neapmokėjimą.
+3.3 **Vėluojantys mokėjimai:** Vėluojant mokėti, Wink pasilieka teisę taikyti palūkanas už pavėluotą sumą 5 % per mėnesį arba didžiausią pagal įstatymus leidžiamą normą, kuri yra mažesnė. Be to, jei Kelionių agentas vėluoja sumokėti Apgyvendinimo paslaugų teikėjui pagal Atskirą sutartį, Wink pasilieka teisę sustabdyti prieigą prie Paslaugos, kol bus išspręsti visi neapmokėti mokėjimai tiek Wink, tiek Apgyvendinimo paslaugų teikėjui. Tačiau jei sąskaitoje, kurią pateikė Wink, yra klaidų ar netikslumų, Kelionių agentas privalo sumokėti tik teisingą ir tikslią sąskaitos dalį ir nebus taikomos palūkanos ar baudos už neteisingą sąskaitos dalį.
 
-**4. Pareigos ir atsakomybė**
+**4\. Vaidmenys ir atsakomybės**
 
-4.1**Kelionių agento pareigos:**
+4.1 **Kelionių agento atsakomybės:**
 
-* Užtikrinti savalaikį mokėjimų surinkimą iš svečių, laikantis 2.1 skyriuje nurodytų sąlygų.
-* Prieš pervedant grynąjį mokėjimą apgyvendinimo paslaugų teikėjams pagal Atskirą sutartį, išskaičiuoti atitinkamą užsakymo mokestį ir komisinį mokestį.
-* Nedelsdami apmokėti „Wink“ sąskaitas faktūras už Rezervacijos mokesčius, laikantis 3.1 skyriuje nurodytų terminų.
-* Aktyviai valdyti ir spręsti bet kokius ginčus, susijusius su užsakymais ar mokėjimais, užtikrinant, kad būtų palaikomas bendravimas su „Wink“, siekiant efektyviai išspręsti problemas.
+* Užtikrinti laiku surinkti mokėjimus iš Svečio, laikantis 2.1 skyriaus sąlygų.  
+* Atlikti tinkamą rezervacijos mokesčio ir komisinio atlyginimo atskaitymą prieš pervedant grynąjį mokėjimą apgyvendinimo paslaugų teikėjams pagal Atskirą sutartį.  
+* Laiku atsiskaityti su Wink už rezervacijos mokesčius pagal 3.1 skyriaus sąlygas.  
+* Aktyviai valdyti ir spręsti ginčus, susijusius su rezervacijomis ar mokėjimais, užtikrinant ryšį su Wink efektyviam problemų sprendimui.
 
-4.&#x32;**„Wink“ pareigos:**
+4.2 **Wink atsakomybės:**
 
-* Išrašyti tikslias ir savalaikes mėnesines sąskaitas faktūras už Rezervacijos mokesčius, kaip išsamiai aprašyta 3.1 skyriuje.
-* Suteikti kelionių agentui nuolatinę prieigą prie „Wink“ platformos užsakymams apdoroti ir mokėjimams valdyti.
-* Padėti kelionių agentui spręsti su mokėjimais susijusius ginčus, teikiant reikiamus operacijų duomenis ir teikiant pagalbą.
+* Išrašyti tikslias ir laiku pateiktas mėnesines sąskaitas faktūras už rezervacijos mokesčius, kaip nurodyta 3.1 skyriuje.  
+* Užtikrinti Kelionių agentui nuolatinę prieigą prie Wink platformos rezervacijų apdorojimui ir mokėjimų valdymui.  
+* Padėti Kelionių agentui spręsti ginčus, susijusius su mokėjimais, teikiant reikalingus sandorių duomenis ir pagalbą.
 
-**5. Valiutos konvertavimas**
+**5\. Valiutos keitimas**
 
-Jei reikės konvertuoti valiutą, jis bus apdorojamas pagal mokėjimų apdorojimo paslaugos pateiktą kursą. Kelionių agentas yra atsakingas už visas su valiutos konvertavimu susijusias išlaidas.
+Jei reikalingas valiutos keitimas, jis bus atliekamas pagal mokėjimų apdorojimo paslaugos nustatytą kursą. Valiutos keitimo išlaidos tenka Kelionių agentui.
 
-**6. Ginčų sprendimas**
+**6\. Ginčų sprendimas**
 
-Bet kokie ginčai, kylantys iš šių Mokėjimo sąlygų arba susiję su jomis, sprendžiami vadovaujantis Pagrindinėje sutartyje nustatyta ginčų sprendimo tvarka, užtikrinant nuoseklų ir vieningą požiūrį į konfliktų tarp „Wink“ ir kelionių agento sprendimą.
+Bet kokie ginčai, kylantys iš arba susiję su šiomis Mokėjimo sąlygomis, bus sprendžiami pagal ginčų sprendimo procedūras, nustatytas Pagrindinėje sutartyje, užtikrinant nuoseklų ir vieningą požiūrį į ginčų sprendimą tarp Wink ir Kelionių agento.
 
-**7. Sąlygų keitimas**\
-„Wink“ pasilieka teisę bet kuriuo metu keisti šias Mokėjimo sąlygas. Apie visus pakeitimus kelionių agentas bus informuotas bent 30 dienų iki jų įsigaliojimo. Tolesnis „Wink“ platformos naudojimas po įsigaliojimo datos reiškia pakeistų sąlygų sutikimą.
+**7\. Sąlygų keitimas**  
+Wink pasilieka teisę bet kada keisti šias Mokėjimo sąlygas. Bet kokie pakeitimai bus pranešti Kelionių agentui ne vėliau kaip prieš 30 dienų iki jų įsigaliojimo. Tolimesnis Wink platformos naudojimas po įsigaliojimo datos reiškia, kad pakeistos sąlygos yra priimtos.
 
-**8. Taikoma teisė ir jurisdikcija**\
-Šioms Mokėjimo sąlygoms taikoma Singapūro teisė. Bet kokie ginčai, kylantys iš šių sąlygų ar susiję su jomis, sprendžiami Singapūro teismuose.
+**8\. Taikytina teisė ir jurisdikcija**  
+Šios Mokėjimo sąlygos yra reglamentuojamos Singapūro įstatymų. Bet kokie ginčai, kylantys iš arba susiję su šiomis sąlygomis, bus sprendžiami Singapūro teismuose.
 
-Šios mokėjimo sąlygos yra neatsiejama Pagrindinėje sutartyje „KELIONIŲ AGENTŪRŲ SĄLYGOS IR NUOSTATOS\_220924“, sudarytoje tarp „Wink“ ir kelionių agento, išdėstytų mokėjimo nuostatų dalis ir jas papildo.
-
+Šios Mokėjimo sąlygos yra neatskiriama ir išplėstinė Pagrindinėje sutartyje „KELIONIŲ AGENTŲ SĄLYGOS IR NUOSTATOS_220924“ tarp Wink ir Kelionių agento nustatytų mokėjimo nuostatų dalis.

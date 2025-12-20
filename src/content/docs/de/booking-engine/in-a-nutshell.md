@@ -1,49 +1,47 @@
 ---
-title: Kurzgesagt
-description: >-
-  Dieser Artikel führt Sie durch alles, was Sie über die Buchungsmaschine wissen
-  wollten.
+title: Kurz gesagt
+description: Dieser Artikel führt Sie durch alles, was Sie über die Buchungsmaschine wissen wollten.
 sidebar:
   order: 0
 ---
-So segmentieren wir die Verantwortung bei Wink:
 
-* [Extranet](/extranet/what-is-extranet) befasst sich mit der Bestandsverwaltung der Lieferanten.
-* [Studio](/studio/what-is-studio) befasst sich mit der Verwaltung von Inhalten durch verbundene Unternehmen.
-* `Booking Engine`befasst sich mit der Erstellung von Inhalten, die in`Studio`, das auf dem in`Extranet`und buchbar zu machen.
-* [Zahlung](/payment/what-is-trip-pay) befasst sich mit der Abrechnung/Rückerstattung von Reisenden, die \[über Plattformen wie Wink] buchen, und der Bezahlung von Anbietern.
+So segmentieren wir die Zuständigkeiten bei Wink:
 
-Die Buchungsmaschine ist das Herzstück unserer Plattform.
+- [Extranet](/de/extranet/what-is-extranet) kümmert sich um Lieferanten, die das Inventar verwalten.
+- [Studio](/de/studio/what-is-studio) kümmert sich um Affiliates, die Inhalte verwalten.
+- `Booking Engine` kümmert sich darum, die im `Studio` erstellten Inhalte, die auf dem im `Extranet` erstellten Inventar basieren, buchbar zu machen.
+- [Payment](/de/payment/what-is-trip-pay) kümmert sich um das Abbuchen / Erstatten von Reisenden, die [über Plattformen wie Wink] buchen, und um die Bezahlung der Anbieter.
 
-Zu seinen Aufgaben gehören:
+Die Buchungsmaschine steht im Zentrum unserer Plattform.
 
-* Währungen verwalten und Wechselkurse aktuell halten.
-* Geben Sie Tarifanbietern die Möglichkeit, uns Tarifdaten zu senden.
-* Verwalten von Nachschlagedaten.*z.B. Regionen, Länder, Reiseziele, Immobilien etc.*
-* Sprachen verwalten.
-* Generieren von Analysen basierend auf Benutzerinteraktionen, Ereignissen und API-Aufrufen.
-* Bereitstellung von buchbarem Inventar im gewünschten Format, in der gewünschten Sprache und Währung, beispielsweise:
-  * A [teilbarer Link](/studio/shareable-links) auf Facebook.
-  * Eine Hotel-Landingpage auf https://ota.wink.travel mit Inventar für dieses Hotel.
-  * A [Karte](/studio/cards) mit Affiliate-Inventar.
-  * A [Karte](/studio/maps) auf Ihrem[WinkLinks](/link-manager/wink-links) Konto.
-  * Ein [API-Aufruf](/developers/apis) von einem entfernten Reisebürosystem.
-* Reisenden eine Möglichkeit bieten:
-  * Suche nach Reiseinventar.
-  * Buchen Sie den verfügbaren Bestand.
-  * Verwalten Sie ihre[Buchungen und Bewertungen](/booking-engine/bookings).
-  * Verwalten Sie ihre [Bucket List](/booking-engine/bucket-list) von Dingen, die in Zukunft gebucht werden sollen.
-  * Verwalten Sie ihre[Reiseprofil](/booking-engine/travel-preferences).*zB Allergien, Notfallkontakt etc.*
+Zu ihren Aufgaben gehören:
 
-Die Buchungsmaschine ist eine Sammlung wiederverwendbarer Funktionen, die wir über https://ota.wink.travel bereitstellen; eine hochgradig anpassbare Website für Hotels und Partner, um ihre Waren an Reisende zu verkaufen.
+- Verwaltung von Währungen und Aktualisierung der Wechselkurse.
+- Bereitstellung einer Möglichkeit für Tarifanbieter, uns Tarifdaten zu senden.
+- Verwaltung von Nachschlage-Daten. *z. B. Regionen, Länder, Reiseziele, Unterkünfte usw.*
+- Verwaltung von Sprachen.
+- Erstellung von Analysen basierend auf Nutzerinteraktionen, Ereignissen und API-Aufrufen.
+- Bereitstellung buchbarer Inventare im gewünschten Format, in der gewünschten Sprache und Währung, wie z. B.:
+    - Ein [teilbarer Link](/de/studio/shareable-links) auf Facebook.
+    - Eine Hotel-Landingpage auf https://ota.wink.travel mit Inventar für dieses Hotel.
+    - Eine [Karte](/de/studio/cards) mit Affiliate-Inventar.
+    - Eine [Karte](/de/studio/maps) in Ihrem [WinkLinks](/de/link-manager/wink-links) Konto.
+    - Ein [API-Aufruf](/de/developers/apis) von einem externen Reisebürosystem.
+- Bereitstellung von Möglichkeiten für Reisende, um:
+    - Nach Reiseinventar zu suchen.
+    - Verfügbares Inventar zu buchen.
+    - Ihre [Buchungen und Bewertungen](/de/booking-engine/bookings) zu verwalten.
+    - Ihre [Bucket List](/de/booking-engine/bucket-list) mit Dingen zu verwalten, die sie in Zukunft buchen möchten.
+    - Ihr [Reiseprofil](/de/booking-engine/travel-preferences) zu verwalten. *z. B. Allergien, Notfallkontakt usw.*
 
-Integratoren, die noch mehr Freiheit wünschen, haben Zugriff auf dieselben Funktionen über unsere [WordPress-Plugin](/developers/wordpress/),[Webkomponenten](/developers/web-components) Und [APIs](/developers/apis).
+Die Buchungsmaschine ist eine Sammlung wiederverwendbarer Funktionen, die wir über https://ota.wink.travel bereitstellen; eine hochgradig anpassbare Website für Hotels und Affiliates, um ihre Angebote an Reisende zu verkaufen.
 
-Lesen Sie in den nächsten Abschnitten mehr über die Möglichkeiten der Buchungsmaschine.
+Integratoren, die noch mehr Freiheit wünschen, haben über unser [WordPress-Plugin](/de/developers/wordpress/), [Web Components](/de/developers/web-components) und [APIs](/de/developers/apis) Zugriff auf alle dieselben Funktionen.
 
-## Weiterführende Literatur
+Lesen Sie in den nächsten Abschnitten weiter, um mehr darüber zu erfahren, was die Buchungsmaschine zu bieten hat.
 
-* Lesen Sie mehr über unsere[WordPress-Plugin](/developers/wordpress/).
-* Lesen Sie mehr über unsere[Webkomponenten](/developers/web-components).
-* Lesen Sie mehr über unsere[APIs](/developers/apis).
+## Weiterführende Lektüre
 
+- Lesen Sie über unser [WordPress-Plugin](/de/developers/wordpress/).
+- Lesen Sie über unsere [Web Components](/de/developers/web-components).
+- Lesen Sie über unsere [APIs](/de/developers/apis).

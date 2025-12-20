@@ -1,26 +1,24 @@
 ---
-title: Mikä on ekstranet?
-description: >-
-  Tässä artikkelissa kerrotaan, mitä sinun tulee tietää aloittaaksesi Winkin
-  käytön hotellina.
+title: Mikä on Extranet?
+description: Tässä artikkelissa kerrotaan, mitä sinun tulee tietää aloittaaksesi Winkissä hotellina.
 sidebar:
   order: 0
 ---
-[Wink-ekstranet](https://extranet.wink.travel) on kiinteistöportaalimme. Se on tarkoitettu hotelleille, ketjuille, tuotemerkeille ja hotelliyhtiöille kiinteistöjensä digitaalisen profiilin luomiseen ja hallintaan Wink-alustalla.
 
-Extranetimme on suunniteltu mahdollisimman yksinkertaiseksi, mutta silti tukemaan kaikkia ominaisuuksia, joita tehokäyttäjät odottavat edistyneeltä kiinteistöportaalilta. Tässä pari esimerkkiä:
+[Wink Extranet](https://extranet.wink.travel) on kiinteistöportaalimme. Se on tarkoitettu hotelleille, ketjuille, brändeille ja hotellien hallintayhtiöille kiinteistöjensä digitaalisen profiilin luomiseen ja hallintaan Wink-alustalla.
 
-1. Yksinkertaisuus: Käytä älykästä käyttöönottoprosessiamme kiinteistösi käyttöönottoon ja käyttöönottoon alle tunnissa.
-2. Edistynyt: Wink tukee 8500 erilaista peruutusehtoa
-3. Hienoa: Anna yhdelle ihmiselle maapallolla 10 % alennusta ilman, että käyttäjän tarvitsee kirjautua sisään tai kirjoittaa tarjouskoodia.
+Extranetimme on suunniteltu huolellisesti mahdollisimman yksinkertaiseksi, mutta tukemaan silti kaikkia niitä ominaisuuksia, joita vaativat käyttäjät odottavat kehittyneeltä kiinteistöportaalilta. Tässä pari esimerkkiä:
 
-Anna velhojemme opastaa sinua koko prosessin läpi. Kun tunnet olosi tarpeeksi mukavaksi... tee se itse.
+1. Yksinkertaisuus: Käytä älykästä käyttöönotto-työnkulkua ottaaksesi kiinteistösi käyttöön ja päästäksesi LIVE-tilaan alle tunnissa.
+2. Kehittynyt: Wink tukee 8500 erilaista peruutuskäytäntöjen variaatiota.
+3. Siistiä: Anna yhdelle henkilölle maapallolla 10 % alennus ilman, että käyttäjän tarvitsee kirjautua sisään tai syöttää kampanjakoodia.
 
-Wink on edistynyt sisällönhallintajärjestelmä kiinteistöille ja kokemusten tarjoajille. Kaiken, mitä voit tehdä sovelluksissamme, voit tehdä API:n kautta. Tämä mahdollistaa syvän integraation Winkin kanssa niin laajasti, että voit myydä Winkin kautta kirjautumatta koskaan sovelluksiimme.
+Anna velhojemme opastaa sinua koko prosessin läpi. Kun tunnet olosi tarpeeksi varmaksi... kokeile itse.
 
-:::tip\[Ammattilaisvinkki]
-Maksatko kalliista mediaresurssien ylläpidosta Leonardo Internationalin kautta? Voit tehdä täsmälleen saman asian Winkin kautta JA saat paljon enemmän vaihtoehtoja kuvien ja videoiden muokkaamiseen ja hienosäätöön.
+Wink on kehittynyt sisällönhallintajärjestelmä kiinteistöille ja elämyspalveluntarjoajille. Kaiken, mitä voit tehdä yhdessä sovelluksistamme, voit tehdä myös API:n kautta. Tämä mahdollistaa syvän integraation Winkin kanssa niin, että voit myydä Winkissä ilman, että sinun tarvitsee koskaan kirjautua mihinkään sovellukseemme.
+
+:::tip[Pro Vinkki]
+Maksatko kalliista mediatiedostojen isännöinnistä Leonardo Internationalin kautta? Voit tehdä täsmälleen saman asian Winkissä JA saat paljon enemmän vaihtoehtoja kuviesi ja videoidesi muokkaamiseen ja hienosäätöön.
 :::
 
-Kaikki nämä ominaisuudet ovat sinulle maksuttomia. Vasta varauksen yhteydessä veloitamme pienen maksun. Ei mitään menetettävää - kaikki voitettavaa.
-
+Kaikki nämä ominaisuudet ovat sinulle maksuttomia. Vain varauksen tekemisen yhteydessä perimme pienen maksun. Ei hävittävää – kaikki voitettavaa.
