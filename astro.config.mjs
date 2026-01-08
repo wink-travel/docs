@@ -1,10 +1,12 @@
+import tailwindcss from "@tailwindcss/vite";
 import starlight from '@astrojs/starlight';
 import starlightDocSearch from '@astrojs/starlight-docsearch';
 import { defineConfig } from 'astro/config';
+import starlightBlog from 'starlight-blog'
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://academy.wink.travel',
+  site: 'https://wink.travel',
   integrations: [
     starlight({
       head: [
@@ -33,60 +35,16 @@ export default defineConfig({
       ],
       favicon: 'favicon.ico',
       logo: {
-        src: './src/assets/logo.png'
+        src: './src/assets/logo.png',
+        replacesTitle: true
       },
       title: 'Academy',
       description: 'Everything you need to learn the ins and outs of the Wink Travel Platform and become a master at creating and selling travel inventory.',
+      customCss: [
+        // Path to your Tailwind global CSS — must be first!
+        './src/styles/starwind.css',
+      ],
       defaultLocale: 'root',
-      locales: {
-        root: {
-          label: 'English',
-          lang: 'en', // lang is required for root locales
-        },
-        'id': { label: 'Bahasa Indonesia', lang: 'id' },
-        'ms': { label: 'Bahasa Malaysia', lang: 'ms' },
-        'bg': { label: 'Български', lang: 'bg' },
-        'ca': { label: 'Català', lang: 'ca' },
-        'cs': { label: 'Čeština', lang: 'cs' },
-        'da': { label: 'Dansk', lang: 'da' },
-        'de': { label: 'Deutsch', lang: 'de' },
-        'et': { label: 'Eesti', lang: 'et' },
-        'es': { label: 'Español', lang: 'es' },
-        'es-AR': { label: 'Español (AR)', lang: 'es-AR' },
-        'es-MX': { label: 'Español (MX)', lang: 'es-MX' },
-        'tl': { label: 'Filipino', lang: 'tl' },
-        'fi': { label: 'Suomi', lang: 'fi' },
-        'fr': { label: 'Français', lang: 'fr' },
-        'el': { label: 'Ελληνικά', lang: 'el' },
-        'he': { label: 'עברית', lang: 'he' },
-        'hi': { label: 'हिन्दी', lang: 'hi' },
-        'hr': { label: 'Hrvatski', lang: 'hr' },
-        'hu': { label: 'Magyar', lang: 'hu' },
-        'is': { label: 'Íslenska', lang: 'is' },
-        'it': { label: 'Italiano', lang: 'it' },
-        'ja': { label: '日本語', lang: 'ja' },
-        'ko': { label: '한국어', lang: 'ko' },
-        'lv': { label: 'Latviski', lang: 'lv' },
-        'lt': { label: 'Lietuvių', lang: 'lt' },
-        'nl': { label: 'Nederlands', lang: 'nl' },
-        'no': { label: 'Norsk', lang: 'no' },
-        'pl': { label: 'Polski', lang: 'pl' },
-        'pt-BR': { label: 'Português (BR)', lang: 'pt-BR' },
-        'pt-PT': { label: 'Português (PT)', lang: 'pt-PT' },
-        'ro': { label: 'Română', lang: 'ro' },
-        'ru': { label: 'Русский', lang: 'ru' },
-        'sk': { label: 'Slovenčina', lang: 'sk' },
-        'sl': { label: 'Slovenščina', lang: 'sl' },
-        'sr': { label: 'Srpski', lang: 'sr' },
-        'sv': { label: 'Svenska', lang: 'sv' },
-        'th': { label: 'ภาษาไทย', lang: 'th' },
-        'tr': { label: 'Türkçe', lang: 'tr' },
-        'uk': { label: 'Українська', lang: 'uk' },
-        'vi': { label: 'Tiếng Việt', lang: 'vi' },
-        'ar': { label: 'العربية', lang: 'ar' },
-        'zh-CN': { label: '简体中文', lang: 'zh-CN' },
-        'zh-TW': { label: '繁體中文', lang: 'zh-TW' },
-      },
       lastUpdated: true,
       titleDelimiter: '|',
       editLink: {
@@ -98,6 +56,7 @@ export default defineConfig({
           apiKey: '4035733f1e7c70ad7858be57ee1d0c6a',
           indexName: 'wink'
         }),
+        starlightBlog(),
       ],
       social: [
         { icon: 'github', label: 'Github', href: 'https://github.com/wink-travel' },
@@ -180,7 +139,59 @@ export default defineConfig({
           directory: 'developers'
         }
       },
-      ]
+      ],
+      locales: {
+        root: {
+          label: 'English',
+          lang: 'en', // lang is required for root locales
+        },
+        'id': { label: 'Bahasa Indonesia', lang: 'id' },
+        'ms': { label: 'Bahasa Malaysia', lang: 'ms' },
+        'bg': { label: 'Български', lang: 'bg' },
+        'ca': { label: 'Català', lang: 'ca' },
+        'cs': { label: 'Čeština', lang: 'cs' },
+        'da': { label: 'Dansk', lang: 'da' },
+        'de': { label: 'Deutsch', lang: 'de' },
+        'et': { label: 'Eesti', lang: 'et' },
+        'es': { label: 'Español', lang: 'es' },
+        'es-AR': { label: 'Español (AR)', lang: 'es-AR' },
+        'es-MX': { label: 'Español (MX)', lang: 'es-MX' },
+        'tl': { label: 'Filipino', lang: 'tl' },
+        'fi': { label: 'Suomi', lang: 'fi' },
+        'fr': { label: 'Français', lang: 'fr' },
+        'el': { label: 'Ελληνικά', lang: 'el' },
+        'he': { label: 'עברית', lang: 'he' },
+        'hi': { label: 'हिन्दी', lang: 'hi' },
+        'hr': { label: 'Hrvatski', lang: 'hr' },
+        'hu': { label: 'Magyar', lang: 'hu' },
+        'is': { label: 'Íslenska', lang: 'is' },
+        'it': { label: 'Italiano', lang: 'it' },
+        'ja': { label: '日本語', lang: 'ja' },
+        'ko': { label: '한국어', lang: 'ko' },
+        'lv': { label: 'Latviski', lang: 'lv' },
+        'lt': { label: 'Lietuvių', lang: 'lt' },
+        'nl': { label: 'Nederlands', lang: 'nl' },
+        'no': { label: 'Norsk', lang: 'no' },
+        'pl': { label: 'Polski', lang: 'pl' },
+        'pt-BR': { label: 'Português (BR)', lang: 'pt-BR' },
+        'pt-PT': { label: 'Português (PT)', lang: 'pt-PT' },
+        'ro': { label: 'Română', lang: 'ro' },
+        'ru': { label: 'Русский', lang: 'ru' },
+        'sk': { label: 'Slovenčina', lang: 'sk' },
+        'sl': { label: 'Slovenščina', lang: 'sl' },
+        'sr': { label: 'Srpski', lang: 'sr' },
+        'sv': { label: 'Svenska', lang: 'sv' },
+        'th': { label: 'ภาษาไทย', lang: 'th' },
+        'tr': { label: 'Türkçe', lang: 'tr' },
+        'uk': { label: 'Українська', lang: 'uk' },
+        'vi': { label: 'Tiếng Việt', lang: 'vi' },
+        'ar': { label: 'العربية', lang: 'ar' },
+        'zh-CN': { label: '简体中文', lang: 'zh-CN' },
+        'zh-TW': { label: '繁體中文', lang: 'zh-TW' },
+      },
     })
-  ]
+  ],
+  vite: {
+    plugins: [tailwindcss()]
+  }
 });

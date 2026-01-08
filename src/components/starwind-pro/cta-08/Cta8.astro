@@ -1,0 +1,112 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+import { Button } from "@/components/starwind/button";
+
+export interface ButtonConfig {
+  text: string;
+  href: string;
+}
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Main heading text */
+  title?: string;
+  /** Description text */
+  description?: string;
+  /** Primary button configuration */
+  primaryButton?: ButtonConfig;
+  /** Secondary button configuration (optional) */
+  secondaryButton?: ButtonConfig;
+}
+
+const cta8Styles = tv({
+  base: "@container mx-auto w-full max-w-7xl px-4 py-24",
+});
+
+const {
+  title = "Transform your workflow",
+  description = "Join thousands of teams already using our platform to streamline their processes and boost productivity. Start your free trial today—no credit card required.",
+  primaryButton = { text: "Start Free Trial", href: "/signup" },
+  secondaryButton,
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<section class={cta8Styles({ class: className })} {...rest}>
+  <div class="rotate-gradient-border bg-card rounded-2xl px-6 py-8 @xl:py-16 @3xl:py-28">
+    <div class="mx-auto max-w-3xl text-center">
+      <h2
+        class="font-heading mb-4 text-3xl font-semibold tracking-tight @lg:text-4xl @2xl:text-5xl"
+      >
+        {title}
+      </h2>
+      <p class="text-muted-foreground mb-8 text-pretty @lg:text-lg">
+        {description}
+      </p>
+      <div class="flex flex-col items-center justify-center gap-4 @sm:flex-row">
+        <Button variant="default" href={primaryButton.href}>
+          {primaryButton.text}
+        </Button>
+        {
+          secondaryButton && (
+            <Button variant="outline" href={secondaryButton.href}>
+              {secondaryButton.text}
+            </Button>
+          )
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Rotating Gradient Border Effect Styles */
+  .rotate-gradient-border {
+    --border-width: 2px;
+    --gradient-color-1: var(--color-blue-600);
+    --gradient-color-2: var(--color-purple-600);
+    --gradient-color-3: var(--color-pink-600);
+
+    position: relative;
+    isolation: isolate;
+  }
+
+  .rotate-gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: var(--border-width);
+    background: conic-gradient(
+      from var(--gradient-angle, 0deg),
+      var(--gradient-color-1),
+      var(--gradient-color-2),
+      var(--gradient-color-3),
+      var(--gradient-color-2),
+      var(--gradient-color-1)
+    );
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask-composite: exclude;
+    z-index: -1;
+    animation: rotate-gradient 7s linear infinite;
+  }
+
+  @keyframes rotate-gradient {
+    0% {
+      --gradient-angle: 0deg;
+    }
+    100% {
+      --gradient-angle: 360deg;
+    }
+  }
+
+  @property --gradient-angle {
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+  }
+</style>
