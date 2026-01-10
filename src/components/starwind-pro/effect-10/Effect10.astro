@@ -1,0 +1,147 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+interface Props extends HTMLAttributes<"div"> {
+  /**
+   * Number of particles to render
+   * @default 50
+   */
+  particleCount?: number;
+  /**
+   * Minimum particle size in pixels
+   * @default 2
+   */
+  minSize?: number;
+  /**
+   * Maximum particle size in pixels
+   * @default 6
+   */
+  maxSize?: number;
+  /**
+   * Minimum rise duration in seconds (slower particles)
+   * @default 8
+   */
+  minDuration?: number;
+  /**
+   * Maximum rise duration in seconds (faster particles)
+   * @default 20
+   */
+  maxDuration?: number;
+  /**
+   * Particle color (CSS color value)
+   * @default "currentColor"
+   */
+  particleColor?: string;
+  /**
+   * Minimum particle opacity (0-1)
+   * @default 0.1
+   */
+  minOpacity?: number;
+  /**
+   * Maximum particle opacity (0-1)
+   * @default 0.6
+   */
+  maxOpacity?: number;
+}
+
+const risingParticlesEffect = tv({
+  base: "rising-particles relative overflow-hidden",
+});
+
+const {
+  particleCount = 50,
+  minSize = 2,
+  maxSize = 6,
+  minDuration = 8,
+  maxDuration = 20,
+  particleColor = "currentColor",
+  minOpacity = 0.1,
+  maxOpacity = 0.6,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const uniqueId = `rising-particles-${Math.random().toString(36).slice(2, 9)}`;
+
+const particles = Array.from({ length: particleCount }, (_, i) => {
+  const size = minSize + Math.random() * (maxSize - minSize);
+  const left = Math.random() * 100;
+  const delay = Math.random() * maxDuration;
+  const duration = minDuration + Math.random() * (maxDuration - minDuration);
+  const opacity = minOpacity + Math.random() * (maxOpacity - minOpacity);
+  const drift = (Math.random() - 0.5) * 100;
+
+  return {
+    id: i,
+    size,
+    left,
+    delay,
+    duration,
+    opacity,
+    drift,
+  };
+});
+---
+
+<div
+  id={uniqueId}
+  class={risingParticlesEffect({ class: className })}
+  style={{
+    "--particle-color": particleColor,
+  }}
+  {...rest}
+>
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    {
+      particles.map((particle) => (
+        <span
+          class="rising-particle absolute bottom-0 rounded-full"
+          style={{
+            width: `${particle.size}px`,
+            height: `${particle.size}px`,
+            left: `${particle.left}%`,
+            "--particle-opacity": particle.opacity,
+            "--drift": `${particle.drift}px`,
+            "--duration": `${particle.duration}s`,
+            "--delay": `${particle.delay}s`,
+          }}
+        />
+      ))
+    }
+  </div>
+  <div class="relative z-10">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .rising-particles {
+    --particle-color: currentColor;
+  }
+
+  .rising-particle {
+    background-color: var(--particle-color);
+    opacity: 0;
+    animation: rise var(--duration) linear var(--delay) infinite;
+    animation-fill-mode: backwards;
+    will-change: transform, opacity;
+  }
+
+  @keyframes rise {
+    0% {
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: var(--particle-opacity, 0.4);
+    }
+    90% {
+      opacity: var(--particle-opacity, 0.4);
+    }
+    100% {
+      transform: translateY(-100vh) translateX(var(--drift));
+      opacity: 0;
+    }
+  }
+</style>

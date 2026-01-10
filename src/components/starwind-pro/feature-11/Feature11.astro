@@ -1,0 +1,171 @@
+---
+import IconZap from "@tabler/icons/outline/bolt.svg";
+import IconRocket from "@tabler/icons/outline/rocket.svg";
+import IconShield from "@tabler/icons/outline/shield-check.svg";
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+import { Badge } from "@/components/starwind/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/starwind/card";
+
+export interface FeatureCard {
+  icon: any;
+  title: string;
+  description: string;
+  badge: string;
+}
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Badge/tagline text */
+  tagline?: string;
+  /** Main heading */
+  heading?: string;
+  /** Array of feature cards */
+  features?: FeatureCard[];
+}
+
+const feature11Styles = tv({
+  base: "@container mx-auto w-full max-w-7xl px-4 py-24",
+});
+
+const {
+  tagline = "Why Choose Us",
+  heading = "Built for modern teams who move fast",
+  features = [
+    {
+      icon: IconRocket,
+      title: "Lightning Fast",
+      description:
+        "Experience blazing fast performance with our optimized infrastructure. Built to handle millions of requests without breaking a sweat.",
+      badge: "Performance",
+    },
+    {
+      icon: IconShield,
+      title: "Enterprise Security",
+      description:
+        "Bank-level security with end-to-end encryption, SOC 2 compliance, and advanced threat protection to keep your data safe.",
+      badge: "Security",
+    },
+    {
+      icon: IconZap,
+      title: "Instant Deploy",
+      description:
+        "Deploy in seconds with our one-click deployment system. No complex configuration, no waiting. Just push and go live instantly.",
+      badge: "Developer Experience",
+    },
+  ],
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<section class={feature11Styles({ class: className })} {...rest}>
+  <div class="mx-auto max-w-3xl text-center">
+    {/* Tagline */}
+    <div class="mb-6 flex justify-center">
+      <Badge size="lg" class="bg-primary-accent/10 text-primary-accent text-sm @2xl:text-base">
+        {tagline}
+      </Badge>
+    </div>
+
+    {/* Heading */}
+    <h2
+      class="font-heading mb-16 text-4xl font-semibold tracking-tight @2xl:text-5xl @3xl:text-6xl"
+    >
+      {heading}
+    </h2>
+  </div>
+
+  {/* Feature Cards Grid */}
+  <div class="grid gap-8 @xl:grid-cols-2 @4xl:grid-cols-3">
+    {
+      features.map((feature) => (
+        <Card class="tilt-card overflow-hidden border-2">
+          <CardHeader>
+            <div class="mb-4 flex items-start justify-between">
+              <div class="bg-muted inline-flex rounded-xl p-3">
+                <feature.icon class="text-primary-accent size-8" aria-hidden="true" />
+              </div>
+              <Badge variant="outline" class="text-xs">
+                {feature.badge}
+              </Badge>
+            </div>
+            <CardTitle class="text-2xl">{feature.title}</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <CardDescription class="text-base leading-relaxed">
+              {feature.description}
+            </CardDescription>
+          </CardContent>
+        </Card>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  /* Tilt Card Effect Styles */
+  .tilt-card {
+    --rotate-x: 0deg;
+    --rotate-y: 0deg;
+    --scale: 1;
+
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(var(--rotate-x)) rotateY(var(--rotate-y))
+      scale3d(var(--scale), var(--scale), var(--scale));
+    transition: transform 500ms ease-out;
+    will-change: transform;
+  }
+</style>
+
+<script>
+  /* Tilt Card Effect Script */
+
+  function handleTiltMove(event: MouseEvent) {
+    const card = event.currentTarget as HTMLElement;
+    const rect = card.getBoundingClientRect();
+
+    // Calculate mouse position relative to card center
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    // Calculate rotation angles (max 10 degrees)
+    const rotateX = ((y - centerY) / centerY) * -10;
+    const rotateY = ((x - centerX) / centerX) * 10;
+
+    // Set CSS variables for tilt effect
+    card.style.setProperty("--rotate-x", `${rotateX}deg`);
+    card.style.setProperty("--rotate-y", `${rotateY}deg`);
+    card.style.setProperty("--scale", "1.02");
+  }
+
+  function handleTiltLeave(event: MouseEvent) {
+    const card = event.currentTarget as HTMLElement;
+    // Reset CSS variables when mouse leaves
+    card.style.setProperty("--rotate-x", "0deg");
+    card.style.setProperty("--rotate-y", "0deg");
+    card.style.setProperty("--scale", "1");
+  }
+
+  const setupTiltCards = () => {
+    document.querySelectorAll(".tilt-card").forEach((card) => {
+      card.addEventListener("mousemove", handleTiltMove, { passive: true });
+      card.addEventListener("mouseleave", handleTiltLeave, { passive: true });
+    });
+  };
+
+  // Initialize on page load
+  setupTiltCards();
+
+  // Re-initialize after Astro view transitions (if using view transitions)
+  document.addEventListener("astro:after-swap", setupTiltCards);
+</script>

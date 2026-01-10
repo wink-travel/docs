@@ -1,0 +1,84 @@
+---
+import IconBolt from "@tabler/icons/outline/bolt.svg";
+import IconCloud from "@tabler/icons/outline/cloud.svg";
+import IconLock from "@tabler/icons/outline/lock.svg";
+import IconUsers from "@tabler/icons/outline/users.svg";
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+import { Card, CardContent } from "@/components/starwind/card";
+
+export interface FeatureCard {
+  icon: any;
+  title: string;
+  description: string;
+}
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Section heading label */
+  heading?: string;
+  /** Section subheading */
+  subheading?: string;
+  /** Array of feature cards */
+  features?: FeatureCard[];
+}
+
+const feature4Styles = tv({
+  base: "@container mx-auto w-full max-w-7xl px-4 py-24",
+});
+
+const {
+  heading = "Features",
+  subheading = "Everything you need in one platform",
+  features = [
+    {
+      icon: IconBolt,
+      title: "Lightning Fast",
+      description:
+        "Optimized for speed and performance. Experience blazing fast load times and smooth interactions.",
+    },
+    {
+      icon: IconCloud,
+      title: "Cloud Sync",
+      description: "Access your data anywhere, anytime. Automatic syncing across all your devices.",
+    },
+    {
+      icon: IconLock,
+      title: "Secure by Default",
+      description: "Enterprise-grade security with end-to-end encryption to keep your data safe.",
+    },
+    {
+      icon: IconUsers,
+      title: "Team Collaboration",
+      description: "Work together seamlessly with real-time collaboration and shared workspaces.",
+    },
+  ],
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<section class={feature4Styles({ class: className })} {...rest}>
+  <div class="mb-16 text-center">
+    <p class="text-primary-accent mb-3 text-sm font-medium">{heading}</p>
+    <h2 class="font-heading text-3xl font-semibold tracking-tight @lg:text-4xl @2xl:text-5xl">
+      {subheading}
+    </h2>
+  </div>
+
+  <div class="grid gap-8 @md:grid-cols-2 @3xl:grid-cols-4">
+    {
+      features.map((feature) => (
+        <Card class="hover:border-primary-accent transition-colors">
+          <CardContent class="p-6">
+            <div class="bg-primary-accent/10 mb-4 inline-flex rounded-lg p-3">
+              <feature.icon class="text-primary-accent size-6" aria-hidden="true" />
+            </div>
+            <h3 class="font-heading mb-2 text-lg font-semibold">{feature.title}</h3>
+            <p class="text-muted-foreground text-sm">{feature.description}</p>
+          </CardContent>
+        </Card>
+      ))
+    }
+  </div>
+</section>

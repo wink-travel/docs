@@ -1,0 +1,114 @@
+---
+import IconBrandLinkedin from "@tabler/icons/outline/brand-linkedin.svg";
+import IconBrandTwitter from "@tabler/icons/outline/brand-x.svg";
+import IconMail from "@tabler/icons/outline/mail.svg";
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+import { Button } from "@/components/starwind/button";
+import { Card, CardContent } from "@/components/starwind/card";
+
+/** Social link data */
+export interface SocialLink {
+  /** Social platform name */
+  name: string;
+  /** Icon component */
+  icon: any;
+  /** Link URL */
+  href: string;
+}
+
+/** Team member data */
+export interface TeamMember {
+  /** Member name */
+  name: string;
+  /** Job title/role */
+  role: string;
+  /** Short biography */
+  bio: string;
+  /** Profile image URL */
+  image: string;
+  /** Social media links */
+  socials: SocialLink[];
+}
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Section heading */
+  heading?: string;
+  /** Section description */
+  description?: string;
+  /** Array of team members */
+  members?: TeamMember[];
+}
+
+const team1Styles = tv({
+  base: "@container w-full py-24",
+});
+
+const {
+  heading = "Meet Our Team",
+  description = "Talented individuals working together to build exceptional products and deliver outstanding results.",
+  members = [],
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<section id="team-01" class={team1Styles({ class: className })} {...rest}>
+  <div class="mx-auto w-full max-w-7xl px-4">
+    <!-- Header -->
+    <div class="mb-16 text-center">
+      <h2
+        class="font-heading mb-4 text-3xl font-semibold tracking-tight @xl:text-4xl @3xl:text-5xl"
+      >
+        {heading}
+      </h2>
+      <p class="text-muted-foreground mx-auto max-w-2xl text-pretty @2xl:text-lg">
+        {description}
+      </p>
+    </div>
+
+    <!-- Team Grid -->
+    <div class="grid gap-8 @xl:grid-cols-2 @3xl:grid-cols-3">
+      {
+        members.map((member) => (
+          <Card class="hover:border-muted-foreground/50 overflow-hidden transition-colors duration-300">
+            <CardContent class="p-0">
+              {/* Member Image */}
+              <div class="aspect-square overflow-hidden">
+                <img src={member.image} alt={member.name} class="h-full w-full object-cover" />
+              </div>
+
+              {/* Member Info */}
+              <div class="p-6">
+                <h3 class="font-heading text-foreground text-xl font-semibold">{member.name}</h3>
+                <p class="text-primary-accent mb-3 text-sm font-medium">{member.role}</p>
+                <p class="text-muted-foreground mb-4 text-sm">{member.bio}</p>
+
+                {/* Social Links */}
+                <div class="flex gap-2">
+                  {member.socials.map((social) => (
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      class="size-9"
+                      aria-label={`${member.name}'s ${social.name}`}
+                    >
+                      <a
+                        href={social.href}
+                        target={social.href.startsWith("mailto:") ? undefined : "_blank"}
+                        rel={social.href.startsWith("mailto:") ? undefined : "noopener noreferrer"}
+                      >
+                        <social.icon class="size-5" />
+                      </a>
+                    </Button>
+                  ))}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        ))
+      }
+    </div>
+  </div>
+</section>

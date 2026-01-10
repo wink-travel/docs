@@ -1,0 +1,129 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+import { Button } from "@/components/starwind/button";
+import { Card, CardContent } from "@/components/starwind/card";
+import { Input } from "@/components/starwind/input";
+import { Label } from "@/components/starwind/label";
+import { Textarea } from "@/components/starwind/textarea";
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Badge/eyebrow text */
+  badge?: string;
+  /** Section heading */
+  heading?: string;
+  /** Section description */
+  description?: string;
+}
+
+const sectionStyles = tv({
+  base: "@container mx-auto w-full max-w-3xl px-4 py-24",
+});
+
+const { badge = "Contact", heading = "Send Us a Message", description = "Fill out the form below and we'll get back to you as soon as possible.", class: className, ...rest } = Astro.props;
+---
+
+<section class={sectionStyles({ class: className })} {...rest}>
+  <div class="text-center">
+    <span class="bg-primary/10 text-primary-accent inline-block rounded-full px-4 py-1.5 text-sm font-medium">
+      {badge}
+    </span>
+    <h2 class="font-heading mt-6 text-3xl font-bold tracking-tight @xl:text-4xl @3xl:text-5xl">
+      {heading}
+    </h2>
+    <p class="text-muted-foreground mx-auto mt-4 max-w-xl text-lg">
+      {description}
+    </p>
+  </div>
+
+  <Card class="mt-10">
+    <CardContent class="p-6 @xl:p-8">
+      <form class="space-y-6" id="contact-form-02" name="contact-form" action="/api/actions/email" novalidate>
+        <div class="grid gap-6 @xl:grid-cols-2">
+          <div class="flex flex-col gap-1">
+            <Label for="contact-name-02">Full Name</Label>
+            <Input id="contact-name-02" name="name" type="text" placeholder="Your name" required />
+          </div>
+          <div class="flex flex-col gap-1">
+            <Label for="contact-email-02">Email Address</Label>
+            <Input id="contact-email-02" name="email" type="email" placeholder="you@example.com" required />
+          </div>
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <Label for="contact-subject-02">Subject</Label>
+          <Input id="contact-subject-02" name="subject" type="text" placeholder="How can we help?" required />
+        </div>
+
+        <div class="flex flex-col gap-1">
+          <Label for="contact-message-02">Message</Label>
+          <Textarea id="contact-message-02" name="message" placeholder="Tell us more about your inquiry..." rows={5} required />
+        </div>
+
+        <!-- Honeypot Field (hidden from real users, traps bots) -->
+        <div style="position: absolute; left: -9999px; opacity: 0;">
+          <input type="text" name="honeypot" tabindex="-1" autocomplete="off" />
+        </div>
+
+        <div class="flex flex-row gap-1">
+          <div>
+            <Button variant="primary" type="submit" class="w-full @xl:w-auto"> Send Message </Button>
+          </div>
+          <div>
+            <!-- Status Message -->
+            <p id="form-message" class="text-center font-medium mt-2 min-h-[1.5em]" aria-live="polite"></p>
+          </div>
+        </div>
+      </form>
+    </CardContent>
+  </Card>
+
+  <p class="text-muted-foreground mt-6 text-center text-sm">We typically respond within 1-2 business days.</p>
+</section>
+
+<script>
+
+
+  async function handleFormSubmit() {
+    const form = document.querySelector("#contact-form-02") as HTMLFormElement;
+    const messageEl = document.getElementById("form-message");
+
+    if (form && messageEl) {
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        messageEl.textContent = "Sending...";
+        messageEl.style.color = "#2563eb"; // blue-600
+
+        try {
+          const formData = new FormData(form);
+
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: formData,
+          });
+
+          const result = await response.json();
+
+          if (result.success) {
+            messageEl.textContent = "Thank you! Your message has been sent.";
+            messageEl.style.color = "#16a34a"; // green-600
+            form.reset();
+          } else {
+            const errorMsg = result.errors ? Object.values(result.errors).filter(Boolean).join(". ") : result.error || "Something went wrong. Please try again.";
+
+            messageEl.textContent = errorMsg;
+            messageEl.style.color = "#dc2626"; // red-600
+          }
+        } catch (err) {
+          messageEl.textContent = "Network error. Please check your connection and try again.";
+          messageEl.style.color = "#dc2626";
+        }
+      });
+    }
+  }
+
+  handleFormSubmit();
+
+  document.addEventListener("astro:after-swap", handleFormSubmit);
+</script>

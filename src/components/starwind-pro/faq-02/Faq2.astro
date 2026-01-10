@@ -1,0 +1,91 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/starwind/accordion";
+
+export interface FaqItem {
+  title: string;
+  content: string;
+}
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Section heading */
+  heading?: string;
+  /** Section description */
+  description?: string;
+  /** Array of FAQ items */
+  items?: FaqItem[];
+}
+
+const faq2Styles = tv({
+  base: "@container mx-auto w-full max-w-5xl px-4 py-24",
+});
+
+const {
+  heading = "Frequently Asked Questions",
+  description = "A clean and modern FAQ section using the accordion component.",
+  items = [
+    {
+      title: "What is Astro?",
+      content: "Astro is an web framework for building fast, scalable, and secure websites.",
+    },
+    {
+      title: "Why should I use Astro?",
+      content:
+        "Astro provides a set of features that make it an ideal choice for building fast, scalable, and secure websites.",
+    },
+    {
+      title: "How do I get started with Astro?",
+      content: "To get started with Astro, follow the instructions in the documentation.",
+    },
+    {
+      title: "Does Astro support Markdown and MDX?",
+      content: "Yes. Astro has first-class support for Markdown and MDX for content-driven sites.",
+    },
+    {
+      title: "Can I use React, Vue, or Svelte with Astro?",
+      content:
+        "Yes. Astro supports multiple UI frameworks so you can bring your own components as islands.",
+    },
+    {
+      title: "What is Astro's Islands architecture?",
+      content:
+        "Astro ships zero JS by default and hydrates individual interactive components on the page as needed.",
+    },
+    {
+      title: "How do I deploy an Astro site?",
+      content:
+        "Export static files or use adapters for platforms like Vercel, Netlify, and Cloudflare to deploy easily.",
+    },
+  ],
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<section class={faq2Styles({ class: className })} {...rest}>
+  <div class="grid gap-8 @lg:grid-cols-2 @lg:items-start">
+    <div class="flex flex-col items-center justify-between @lg:items-start">
+      <h2 class="font-heading text-center text-4xl font-semibold @lg:text-left">{heading}</h2>
+      <p class="text-muted-foreground mt-2 text-center @lg:text-left">
+        {description}
+      </p>
+    </div>
+    <Accordion defaultValue="item-1" class="mt-10 space-y-2 lg:mt-0">
+      {
+        items.map((item, idx) => (
+          <AccordionItem value={`item-${idx + 1}`} class="rounded-lg border last:border">
+            <AccordionTrigger class="hover:text-primary-accent px-4">{item.title}</AccordionTrigger>
+            <AccordionContent class="text-muted-foreground px-4">{item.content}</AccordionContent>
+          </AccordionItem>
+        ))
+      }
+    </Accordion>
+  </div>
+</section>

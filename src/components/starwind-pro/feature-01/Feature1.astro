@@ -1,0 +1,75 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+import { Badge } from "@/components/starwind/badge";
+import { Video } from "@/components/starwind/video";
+
+export interface VideoSource {
+  /** Video URL or imported asset path */
+  url: string;
+  /** Video title for accessibility */
+  title?: string;
+}
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Badge/tagline text */
+  tagline?: string;
+  /** Main heading */
+  heading?: string;
+  /** Video configuration (URL string or VideoSource object) */
+  video?: string | VideoSource;
+}
+
+const feature1Styles = tv({
+  base: "from-background to-primary-accent/10 @container mx-auto w-full bg-linear-to-b px-4 py-24",
+});
+
+const {
+  tagline,
+  heading = "Watch how our platform transforms your workflow",
+  video = "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+  class: className,
+  ...rest
+} = Astro.props;
+
+const videoSrc = typeof video === "string" ? video : video.url;
+const videoTitle = typeof video === "string" ? "Video player" : video.title || "Video player";
+---
+
+<section class={feature1Styles({ class: className })} {...rest}>
+  <div class="mx-auto max-w-4xl text-center">
+    {/* Tagline */}
+    {
+      tagline && (
+        <div class="mb-6 flex justify-center">
+          <Badge size="lg" class="bg-primary-accent/10 text-primary-accent text-sm @2xl:text-base">
+            {tagline}
+          </Badge>
+        </div>
+      )
+    }
+
+    {/* Heading */}
+    <h2
+      class="font-heading mb-12 text-4xl font-semibold tracking-tight @2xl:text-5xl @3xl:text-6xl"
+    >
+      {heading}
+    </h2>
+
+    {/* Video Player */}
+    <div
+      class="glass-shadow rounded-2xl border border-white/50 bg-white/5 p-1 backdrop-blur-xs @2xl:rounded-3xl @2xl:p-2 dark:border-white/10"
+    >
+      <div class="overflow-hidden rounded-xl border @2xl:rounded-2xl">
+        <Video src={videoSrc} title={videoTitle} />
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .glass-shadow {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+</style>

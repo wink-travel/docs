@@ -5,7 +5,9 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., operating under the name Wink (the “Company”),  would like to inform you who contacts the Company that it is necessary to collect, compile and use your personal data for the Company’s service in accordance with this Privacy Policy. By contacting and disclosing your personal data to the Company for the purposes of communication, coordination, and/or provision of the Company’s services to you, it deems that you agree and accept to be bound by and comply with this Privacy Policy.
+## Privacy Policy
+
+Winkfluence, operating under the name Wink (the “Company”),  would like to inform you who contacts the Company that it is necessary to collect, compile and use your personal data for the Company’s service in accordance with this Privacy Policy. By contacting and disclosing your personal data to the Company for the purposes of communication, coordination, and/or provision of the Company’s services to you, it deems that you agree and accept to be bound by and comply with this Privacy Policy.
 
 Personal data being processed, the Company may obtain your personal data from various channels as follows:
 
@@ -62,10 +64,7 @@ Data subject rights, the Company respects your rights as the data subject under 
 Company contact information
 
 Data Protection Officer
-
-Name: Yann Gouriou
-
-Address: #03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095
-
-Email: dataprotectionofficer@wink.travel
+Name: Yann Gouriou,
+Address: 30 N Gould St, Ste. 22578,  Sheridan, WY 82801, USA, 
+Email: dataprotectionofficer@wink.travel, 
 Phone number: +66 (0) 854891301

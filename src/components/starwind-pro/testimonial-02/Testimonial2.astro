@@ -1,0 +1,189 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/starwind/avatar";
+import { Badge } from "@/components/starwind/badge";
+import { Card, CardContent } from "@/components/starwind/card";
+
+/** Testimonial data */
+export interface Testimonial {
+  /** Person's name */
+  name: string;
+  /** Job title/role */
+  role: string;
+  /** Testimonial content */
+  content: string;
+  /** Profile image URL */
+  image: string;
+}
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Badge/eyebrow text */
+  badge?: string;
+  /** Section heading */
+  heading?: string;
+  /** Section description */
+  description?: string;
+  /** Array of testimonials */
+  testimonials?: Testimonial[];
+}
+
+const testimonial2Styles = tv({
+  base: "@container mx-auto w-full max-w-7xl px-4 py-24",
+});
+
+const {
+  badge = "Testimonials",
+  heading = "Loved by Developers Worldwide",
+  description = "Join thousands of developers who are building faster and shipping better products with Starwind Pro.",
+  testimonials = [],
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<section class={testimonial2Styles({ class: className })} {...rest}>
+  <!-- Centered Header -->
+  <div class="mx-auto max-w-3xl text-center">
+    <Badge>{badge}</Badge>
+    <h2
+      class="font-heading mt-6 text-3xl font-semibold tracking-tight text-pretty @xl:text-4xl @3xl:text-5xl"
+    >
+      {heading}
+    </h2>
+    <p class="text-muted-foreground mt-4 text-pretty">
+      {description}
+    </p>
+  </div>
+
+  <!-- Marquee Container -->
+  <div class="relative mt-12 overflow-x-clip">
+    <!-- Gradient overlays for fade effect -->
+    <div
+      class="from-background pointer-events-none absolute inset-y-0 left-0 z-10 w-20 bg-linear-to-r to-transparent"
+    >
+    </div>
+    <div
+      class="from-background pointer-events-none absolute inset-y-0 right-0 z-10 w-20 bg-linear-to-l to-transparent"
+    >
+    </div>
+
+    <!-- CSS variables determine marquee item gap and duration (speed of animation) -->
+    <div
+      class="flex gap-(--gap)"
+      id="testimonial-02-marquee"
+      style={{ "--gap": "1.5rem", "--marquee-duration": "60s" }}
+    >
+      <!-- First set of testimonials -->
+      <div class="animate-marquee flex min-w-full shrink-0 gap-(--gap)">
+        {
+          testimonials.map((testimonial) => (
+            <Card class="hover:border-primary-accent w-[280px] shrink-0 transition-colors @2xl:w-[320px] @4xl:w-[380px]">
+              <CardContent class="flex flex-col gap-4 p-6">
+                {/* Testimonial Content */}
+                <blockquote class="text-foreground text-base leading-relaxed text-pretty">
+                  "{testimonial.content}"
+                </blockquote>
+
+                {/* Author Info */}
+                <div class="mt-2 flex items-center gap-3">
+                  <Avatar>
+                    <AvatarImage src={testimonial.image} alt={testimonial.name} />
+                    <AvatarFallback>
+                      {testimonial.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div class="flex flex-col">
+                    <cite class="text-foreground font-medium not-italic">{testimonial.name}</cite>
+                    <span class="text-muted-foreground text-sm">{testimonial.role}</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))
+        }
+      </div>
+
+      <!-- Duplicate set for seamless loop -->
+      <div class="animate-marquee flex min-w-full shrink-0 gap-(--gap)">
+        {
+          testimonials.map((testimonial) => (
+            <Card class="hover:border-primary-accent w-[280px] shrink-0 transition-colors @2xl:w-[320px] @4xl:w-[380px]">
+              <CardContent class="flex flex-col gap-4 p-6">
+                {/* Testimonial Content */}
+                <blockquote class="text-foreground text-base leading-relaxed text-pretty">
+                  "{testimonial.content}"
+                </blockquote>
+
+                {/* Author Info */}
+                <div class="mt-2 flex items-center gap-3">
+                  <Avatar>
+                    <AvatarImage src={testimonial.image} alt={testimonial.name} />
+                    <AvatarFallback>
+                      {testimonial.name
+                        .split(" ")
+                        .map((n) => n[0])
+                        .join("")}
+                    </AvatarFallback>
+                  </Avatar>
+                  <div class="flex flex-col">
+                    <cite class="text-foreground font-medium not-italic">{testimonial.name}</cite>
+                    <span class="text-muted-foreground text-sm">{testimonial.role}</span>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function initMarquee() {
+    const marqueeContainer = document.getElementById("testimonial-02-marquee");
+    if (!marqueeContainer) return;
+
+    // Pause animation on hover
+    marqueeContainer.addEventListener("mouseenter", () => {
+      const animatedElements = marqueeContainer.querySelectorAll(".animate-marquee");
+      animatedElements.forEach((el) => {
+        (el as HTMLElement).style.animationPlayState = "paused";
+      });
+    });
+
+    // Resume animation on mouse leave
+    marqueeContainer.addEventListener("mouseleave", () => {
+      const animatedElements = marqueeContainer.querySelectorAll(".animate-marquee");
+      animatedElements.forEach((el) => {
+        (el as HTMLElement).style.animationPlayState = "running";
+      });
+    });
+  }
+
+  // Initialize on page load
+  initMarquee();
+
+  // Re-initialize on page navigation (for SPAs)
+  document.addEventListener("astro:after-swap", initMarquee);
+</script>
+
+<style>
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee var(--marquee-duration) linear infinite;
+  }
+</style>

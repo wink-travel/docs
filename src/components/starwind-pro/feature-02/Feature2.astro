@@ -1,0 +1,84 @@
+---
+import IconCheck from "@tabler/icons/outline/check.svg";
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+import { Image } from "@/components/starwind/image";
+
+export interface FeatureItem {
+  text: string;
+}
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Section title */
+  title?: string;
+  /** Section description */
+  description?: string;
+  /** List of features */
+  features?: FeatureItem[];
+  /** Image configuration */
+  image?: {
+    src: string;
+    alt: string;
+  };
+}
+
+const feature2Styles = tv({
+  base: "@container mx-auto w-full max-w-7xl px-4 py-24",
+});
+
+const {
+  title = "Everything you need to succeed",
+  description = "Our platform provides all the tools and features you need to streamline your workflow and boost productivity.",
+  features = [
+    { text: "Real-time collaboration with your team" },
+    { text: "Advanced analytics and reporting" },
+    { text: "Seamless integrations with your favorite tools" },
+    { text: "Enterprise-grade security and compliance" },
+    { text: "24/7 customer support" },
+  ],
+  image = {
+    src: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop",
+    alt: "Dashboard analytics",
+  },
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<section class={feature2Styles({ class: className })} {...rest}>
+  <div class="grid gap-12 @lg:grid-cols-2 @lg:gap-16">
+    <!-- Left Content -->
+    <div class="flex flex-col justify-center">
+      <h2
+        class="font-heading mb-4 text-3xl font-semibold tracking-tight @xl:text-4xl @3xl:text-5xl"
+      >
+        {title}
+      </h2>
+      <p class="text-muted-foreground mb-8 text-pretty @lg:text-lg">
+        {description}
+      </p>
+
+      <!-- Features List -->
+      <ul class="space-y-4">
+        {
+          features.map((feature) => (
+            <li class="flex items-start gap-3">
+              <div class="bg-primary-accent/10 flex size-8 shrink-0 items-center justify-center rounded-full">
+                <IconCheck class="text-primary-accent size-4" aria-hidden="true" />
+              </div>
+              <span class="mt-1.5 text-sm font-medium">{feature.text}</span>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <!-- Right Image -->
+    <div class="order-first @lg:order-last">
+      <div class="overflow-hidden rounded-2xl">
+        <Image src={image.src} alt={image.alt} class="size-full object-cover" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>

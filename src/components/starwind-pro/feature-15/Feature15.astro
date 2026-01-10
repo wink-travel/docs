@@ -1,0 +1,243 @@
+---
+import IconBrain from "@tabler/icons/outline/brain.svg";
+import IconChartLine from "@tabler/icons/outline/chart-line.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconShieldCheck from "@tabler/icons/outline/shield-check.svg";
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+import { Badge } from "@/components/starwind/badge";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/starwind/card";
+import { Image } from "@/components/starwind/image";
+
+export interface BentoFeature {
+  type: "large" | "small";
+  icon?: any;
+  badge?: string;
+  title: string;
+  description: string;
+  image?: {
+    src: string;
+    alt: string;
+  };
+}
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Section tagline */
+  tagline?: string;
+  /** Section heading */
+  heading?: string;
+  /** Section description */
+  description?: string;
+  /** Array of bento features (ordering: large, small, small, large, small, small) */
+  features?: BentoFeature[];
+}
+
+const feature15Styles = tv({
+  base: "@container mx-auto w-full max-w-5xl px-4 py-24",
+});
+
+const {
+  tagline = "Platform Overview",
+  heading = "A complete solution for modern teams",
+  description = "Everything you need to build, ship, and scale your products. From development to deployment, we've got you covered.",
+  features = [
+    {
+      type: "large",
+      badge: "AI Powered",
+      title: "Intelligent Automation",
+      description:
+        "Leverage AI to automate repetitive tasks, optimize workflows, and make smarter decisions. Our machine learning models continuously improve based on your usage patterns.",
+      image: {
+        src: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&h=600&fit=crop",
+        alt: "AI automation",
+      },
+    },
+    {
+      type: "small",
+      icon: IconCode,
+      title: "Developer Tools",
+      description: "Modern APIs, SDKs, and CLI tools for seamless integration.",
+    },
+    {
+      type: "small",
+      icon: IconShieldCheck,
+      title: "Enterprise Security",
+      description: "SOC 2 compliant with end-to-end encryption and audit logs.",
+    },
+    {
+      type: "large",
+      badge: "Analytics",
+      title: "Real-time Insights",
+      description:
+        "Track every metric that matters with our comprehensive analytics dashboard. Visualize trends, monitor performance, and make data-driven decisions with confidence.",
+      image: {
+        src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop",
+        alt: "Analytics dashboard",
+      },
+    },
+    {
+      type: "small",
+      icon: IconChartLine,
+      title: "Performance",
+      description: "Lightning-fast infrastructure with 99.99% uptime guarantee.",
+    },
+    {
+      type: "small",
+      icon: IconBrain,
+      title: "Smart Workflows",
+      description: "Automate complex processes with intelligent workflow builder.",
+    },
+  ],
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<section id="feature-15" class={feature15Styles({ class: className })} {...rest}>
+  <div class="mb-16 text-center">
+    <div class="mb-6 flex justify-center">
+      <Badge size="lg" class="bg-primary-accent/10 text-primary-accent text-sm @2xl:text-base">
+        {tagline}
+      </Badge>
+    </div>
+    <h2 class="font-heading mb-4 text-3xl font-semibold tracking-tight @xl:text-4xl @3xl:text-5xl">
+      {heading}
+    </h2>
+    <p class="text-muted-foreground mx-auto max-w-2xl text-pretty @lg:text-lg">
+      {description}
+    </p>
+  </div>
+
+  <div class="grid gap-8 @md:grid-cols-2 @4xl:grid-cols-3">
+    {
+      features.map((feature, index) =>
+        feature.type === "large" ? (
+          <Card
+            class:list={[
+              "group dark spotlight relative overflow-hidden border-2 transition-colors",
+              "@md:col-span-2",
+              { "@4xl:row-span-2": index === 0 },
+              { "@4xl:col-start-2 @4xl:row-span-2 @4xl:row-start-3": index === 3 },
+            ]}
+          >
+            {feature.image && (
+              <>
+                <div class="absolute inset-0 z-0">
+                  <Image
+                    src={feature.image.src}
+                    alt={feature.image.alt}
+                    class="size-full object-cover opacity-50"
+                    loading="lazy"
+                  />
+                </div>
+                <div class="relative z-10 flex min-h-[300px] flex-col @md:min-h-[500px]">
+                  <CardHeader>
+                    {feature.badge && (
+                      <Badge variant="default" class="mb-3 w-fit">
+                        {feature.badge}
+                      </Badge>
+                    )}
+                    <CardTitle class="text-xl @md:text-2xl">{feature.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent class="mt-auto translate-y-1/4 opacity-0 transition-all duration-400 ease-out group-hover:translate-y-0 group-hover:opacity-100">
+                    <CardDescription class="text-foreground/90 text-sm leading-relaxed @md:text-base">
+                      {feature.description}
+                    </CardDescription>
+                  </CardContent>
+                </div>
+              </>
+            )}
+          </Card>
+        ) : (
+          <Card
+            class:list={[
+              "spotlight group border-2 transition-colors",
+              { "@4xl:col-start-1 @4xl:row-start-3": index === 4 },
+              { "@4xl:col-start-1 @4xl:row-start-4": index === 5 },
+            ]}
+          >
+            <CardHeader>
+              {feature.icon && (
+                <div class="bg-muted mr-auto mb-3 inline-flex rounded-lg p-2.5">
+                  <feature.icon class="text-primary-accent size-5" aria-hidden="true" />
+                </div>
+              )}
+              <CardTitle class="text-lg">{feature.title}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <CardDescription class="text-sm leading-relaxed">
+                {feature.description}
+              </CardDescription>
+            </CardContent>
+          </Card>
+        ),
+      )
+    }
+  </div>
+</section>
+
+<style>
+  /* Spotlight Effect Styles */
+  .spotlight {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: var(--mouse-y);
+      left: var(--mouse-x);
+      width: 350px;
+      height: 350px;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(
+        circle closest-side,
+        color-mix(in oklch, var(--color-foreground) 6%, transparent) 0%,
+        transparent 100%
+      );
+      opacity: 0;
+      transition: opacity 300ms;
+      pointer-events: none;
+    }
+
+    &:hover::before {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  /* Spotlight Effect Script */
+
+  function handleMouseMove(event: MouseEvent) {
+    const card = event.currentTarget as HTMLElement;
+    const rect = card.getBoundingClientRect();
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+
+    // Set CSS variables for spotlight position
+    card.style.setProperty("--mouse-x", `${x}px`);
+    card.style.setProperty("--mouse-y", `${y}px`);
+  }
+
+  const setupSpotlight = () => {
+    const section = document.getElementById("feature-15");
+    if (!section) return;
+    section.querySelectorAll(".spotlight").forEach((card) => {
+      card.addEventListener("mousemove", handleMouseMove, { passive: true });
+    });
+  };
+
+  // Initialize on page load
+  setupSpotlight();
+
+  // Re-initialize after Astro view transitions (if using view transitions)
+  document.addEventListener("astro:after-swap", setupSpotlight);
+</script>

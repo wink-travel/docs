@@ -1,0 +1,158 @@
+---
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconPalette from "@tabler/icons/outline/palette.svg";
+import IconRocket from "@tabler/icons/outline/rocket.svg";
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+import { Image } from "@/components/starwind/image";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/starwind/tabs";
+
+export interface FeatureTab {
+  id: string;
+  label: string;
+  icon: any;
+  title: string;
+  description: string;
+  features: string[];
+  image: {
+    src: string;
+    alt: string;
+  };
+}
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Section tagline */
+  tagline?: string;
+  /** Section heading */
+  heading?: string;
+  /** Array of feature tabs */
+  tabs?: FeatureTab[];
+}
+
+const feature12Styles = tv({
+  base: "@container mx-auto w-full max-w-6xl px-4 py-24",
+});
+
+const {
+  tagline = "Powerful Features",
+  heading = "Everything you need to build amazing products",
+  tabs = [
+    {
+      id: "development",
+      label: "Develop",
+      icon: IconCode,
+      title: "Built for developers",
+      description:
+        "A complete development toolkit with everything you need to build, test, and deploy your applications with confidence.",
+      features: [
+        "Modern API with TypeScript support",
+        "Hot module replacement for instant feedback",
+        "Built-in testing and debugging tools",
+        "Comprehensive documentation and examples",
+      ],
+      image: {
+        src: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=600&fit=crop",
+        alt: "Development environment",
+      },
+    },
+    {
+      id: "design",
+      label: "Design",
+      icon: IconPalette,
+      title: "Design system included",
+      description:
+        "A beautiful, accessible design system that helps you create consistent user experiences across your entire application.",
+      features: [
+        "Pre-built components and patterns",
+        "Customizable theme system",
+        "Dark mode support out of the box",
+        "Responsive design utilities",
+      ],
+      image: {
+        src: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop",
+        alt: "Design system",
+      },
+    },
+    {
+      id: "deployment",
+      label: "Deploy",
+      icon: IconRocket,
+      title: "Deploy with confidence",
+      description:
+        "Streamlined deployment process with automatic optimization, zero-downtime updates, and built-in monitoring.",
+      features: [
+        "One-click deployment to production",
+        "Automatic performance optimization",
+        "Built-in CDN and edge caching",
+        "Real-time monitoring and analytics",
+      ],
+      image: {
+        src: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&h=600&fit=crop",
+        alt: "Deployment dashboard",
+      },
+    },
+  ],
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<section class={feature12Styles({ class: className })} {...rest}>
+  <div class="mb-16 text-center">
+    <div class="text-primary-accent mb-4 text-sm font-medium">
+      {tagline}
+    </div>
+    <h2
+      class="font-heading mx-auto max-w-3xl text-3xl font-semibold tracking-tight @xl:text-4xl @3xl:text-5xl"
+    >
+      {heading}
+    </h2>
+  </div>
+
+  <Tabs defaultValue={tabs[0].id} class="w-full">
+    <TabsList class="bg-muted/50 mb-12 grid @xs:w-full @xs:grid-cols-3">
+      {
+        tabs.map((tab) => (
+          <TabsTrigger value={tab.id} class="gap-2">
+            <tab.icon class="size-4" aria-hidden="true" />
+            <span>{tab.label}</span>
+          </TabsTrigger>
+        ))
+      }
+    </TabsList>
+
+    {
+      tabs.map((tab) => (
+        <TabsContent value={tab.id}>
+          <div class="grid gap-12 @2xl:grid-cols-2 @2xl:items-center">
+            <div>
+              <h3 class="font-heading mb-4 text-2xl font-semibold @xl:text-3xl">{tab.title}</h3>
+              <p class="text-muted-foreground mb-8 text-pretty @lg:text-lg">{tab.description}</p>
+              <ul class="space-y-3">
+                {tab.features.map((feature) => (
+                  <li class="flex items-start gap-3">
+                    <div class="bg-primary-accent/10 mt-0.5 flex size-4 shrink-0 items-center justify-center rounded-full">
+                      <div class="bg-primary-accent size-1.5 rounded-full" />
+                    </div>
+                    <span class="text-sm font-medium">{feature}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="order-first @2xl:order-last">
+              <div class="overflow-hidden rounded-2xl border shadow-lg">
+                <Image
+                  src={tab.image.src}
+                  alt={tab.image.alt}
+                  class="size-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </div>
+        </TabsContent>
+      ))
+    }
+  </Tabs>
+</section>

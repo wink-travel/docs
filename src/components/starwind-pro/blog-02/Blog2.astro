@@ -1,0 +1,205 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+import { AspectRatio } from "@/components/starwind/aspect-ratio";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/starwind/avatar";
+import { Badge } from "@/components/starwind/badge";
+
+export interface Category {
+  name: string;
+  href?: string;
+}
+
+export interface Author {
+  name: string;
+  image?: string;
+  href?: string;
+}
+
+export interface BlogPost {
+  title: string;
+  description?: string;
+  pubDate: string;
+  author: Author;
+  categories: Category[];
+  heroImage: string;
+  href: string;
+}
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Label text above heading */
+  label?: string;
+  /** Section heading */
+  heading?: string;
+  /** Array of blog posts (first is featured) */
+  posts: BlogPost[];
+}
+
+const blog2Styles = tv({
+  base: "@container mx-auto w-full max-w-7xl px-4",
+});
+
+const {
+  label = "Our blog",
+  heading = "Blog posts to help you on your journey",
+  posts,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const [heroPost, ...otherPosts] = posts;
+---
+
+<section class={blog2Styles({ class: className })} {...rest}>
+  <div>
+    <p class="text-primary-accent text-sm font-medium tracking-wider uppercase">{label}</p>
+    <h2 class="font-heading mt-2 text-3xl font-semibold tracking-tight @xl:text-4xl @3xl:text-5xl">
+      {heading}
+    </h2>
+  </div>
+
+  <div class="mt-12 grid gap-x-6 gap-y-16 @3xl:grid-cols-3">
+    <!-- Hero Post - Full Row on Large Screens -->
+    <article class="@3xl:col-span-3">
+      <div class="grid gap-x-6 @3xl:grid-cols-3">
+        <!-- Hero Image -->
+        <div class="relative isolate overflow-hidden rounded-lg border @3xl:col-span-2">
+          <div class="group relative">
+            <a href={heroPost.href} class="absolute inset-0 z-1">
+              <span class="sr-only">{heroPost.title}</span>
+            </a>
+            <AspectRatio ratio={16 / 9}>
+              <img
+                src={heroPost.heroImage}
+                alt={heroPost.title}
+                class="size-full object-cover transition-transform duration-500 will-change-transform group-hover:scale-102"
+              />
+            </AspectRatio>
+          </div>
+          {
+            heroPost.categories[0] && (
+              <div class="absolute top-3 right-3 z-10">
+                {heroPost.categories[0].href ? (
+                  <Badge variant="default" size="sm" href={heroPost.categories[0].href}>
+                    {heroPost.categories[0].name}
+                  </Badge>
+                ) : (
+                  <Badge variant="default" size="sm">
+                    {heroPost.categories[0].name}
+                  </Badge>
+                )}
+              </div>
+            )
+          }
+        </div>
+
+        <!-- Hero Content -->
+        <div class="flex flex-col">
+          <div class="mt-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              {
+                heroPost.author.image && (
+                  <Avatar size="sm">
+                    <AvatarImage src={heroPost.author.image} alt={heroPost.author.name} />
+                    <AvatarFallback>{heroPost.author.name.charAt(0)}</AvatarFallback>
+                  </Avatar>
+                )
+              }
+              {
+                heroPost.author.href ? (
+                  <a
+                    href={heroPost.author.href}
+                    class="relative z-10 text-sm font-medium hover:underline"
+                  >
+                    {heroPost.author.name}
+                  </a>
+                ) : (
+                  <span class="text-sm font-medium">{heroPost.author.name}</span>
+                )
+              }
+            </div>
+            <time datetime={heroPost.pubDate} class="text-muted-foreground text-sm">
+              {heroPost.pubDate}
+            </time>
+          </div>
+
+          <h3
+            class="hover:text-primary-accent font-heading mt-2 text-2xl leading-tight font-medium tracking-tight transition-colors @xl:text-3xl"
+          >
+            <a href={heroPost.href}>{heroPost.title}</a>
+          </h3>
+
+          {
+            heroPost.description && (
+              <p class="text-muted-foreground mt-3 leading-relaxed">{heroPost.description}</p>
+            )
+          }
+        </div>
+      </div>
+    </article>
+
+    <!-- Other Posts - 3 Column Grid -->
+    {
+      otherPosts.map((post) => (
+        <article class="isolate">
+          <div class="group relative overflow-hidden rounded-lg border">
+            <AspectRatio ratio={16 / 9}>
+              <img
+                src={post.heroImage}
+                alt={post.title}
+                class="size-full object-cover transition-transform duration-500 will-change-transform group-hover:scale-102"
+              />
+            </AspectRatio>
+            <a href={post.href} class="absolute inset-0 z-1">
+              <span class="sr-only">{post.title}</span>
+            </a>
+            {post.categories[0] && (
+              <div class="absolute top-3 right-3 z-10">
+                {post.categories[0].href ? (
+                  <Badge variant="default" size="sm" href={post.categories[0].href}>
+                    {post.categories[0].name}
+                  </Badge>
+                ) : (
+                  <Badge variant="default" size="sm">
+                    {post.categories[0].name}
+                  </Badge>
+                )}
+              </div>
+            )}
+          </div>
+
+          <div class="mt-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              {post.author.image && (
+                <Avatar size="sm">
+                  <AvatarImage src={post.author.image} alt={post.author.name} />
+                  <AvatarFallback>{post.author.name.charAt(0)}</AvatarFallback>
+                </Avatar>
+              )}
+              {post.author.href ? (
+                <a
+                  href={post.author.href}
+                  class="text-foreground/80 relative z-10 text-sm font-medium hover:underline"
+                >
+                  {post.author.name}
+                </a>
+              ) : (
+                <span class="text-sm font-medium">{post.author.name}</span>
+              )}
+            </div>
+            <time datetime={post.pubDate} class="text-muted-foreground text-sm">
+              {post.pubDate}
+            </time>
+          </div>
+
+          <h3 class="hover:text-primary-accent font-heading mt-2 text-xl leading-tight font-medium tracking-tight transition-colors">
+            <a href={post.href}>{post.title}</a>
+          </h3>
+
+          {post.description && <p class="text-muted-foreground text-sm">{post.description}</p>}
+        </article>
+      ))
+    }
+  </div>
+</section>
