@@ -24,7 +24,7 @@ export default defineConfig({
       {
         tag: 'script',
         attrs: {
-          src: 'https://www.googletagmanager.com/gtag/js?id=G-3PPY571GZT',
+          src: 'https://www.googletagmanager.com/gtag/js?id=G-688LY2TNNR',
           async: true,
         },
       },
@@ -34,7 +34,7 @@ export default defineConfig({
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'G-3PPY571GZT');`
+        gtag('config', 'G-688LY2TNNR');`
       },
     ],
     favicon: 'favicon.ico',
