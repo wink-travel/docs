@@ -68,7 +68,7 @@ export default defineConfig({
             name: 'May Rawddon',
             title: 'Marketing & Media',
             url: 'https://i.trvl.as/starringmay',
-            picture: '/assets/may.webp'
+            picture: './src/assets/may.webp'
           }
         }
       }),
