@@ -3,7 +3,7 @@ title: Terms and Conditions
 description: Terms and Conditions for all Wink users and entities.
 ---
 
-## Terms and Conditions
+# Terms and Conditions
 
 Each portal may have different terms and conditions. Please go to the section below that applies to you and look for the sub-section calle Terms of Service and Payment Terms.
 
