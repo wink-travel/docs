@@ -3,7 +3,7 @@ import starlightDocSearch from '@astrojs/starlight-docsearch';
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from 'astro/config';
 import starlightBlog from 'starlight-blog';
-// import starlightUiTweaks from 'starlight-ui-tweaks';
+import starlightChangelogs, { makeChangelogsSidebarLinks } from 'starlight-changelogs';
 
 import icon from 'astro-icon';
 
@@ -43,7 +43,7 @@ export default defineConfig({
       replacesTitle: true
     },
     title: 'Wink',
-    description: 'Everything you need to learn the ins and outs of the Wink Travel Platform and become a master at creating and selling travel inventory.',
+    description: 'A travel booking platform for those in the know.',
     customCss: [
       // Path to your Tailwind global CSS — must be first!
       './src/styles/starwind.css',
@@ -68,10 +68,11 @@ export default defineConfig({
             name: 'May Rawddon',
             title: 'Marketing & Media',
             url: 'https://i.trvl.as/starringmay',
-            picture: './src/assets/may.webp'
+            picture: '/src/assets/may.webp'
           }
         }
       }),
+      starlightChangelogs(),
     ],
     components: {
       ThemeSelect: './src/components/custom-theme-select.astro', // to remove the default Astro Blog icon in menu
@@ -149,6 +150,32 @@ export default defineConfig({
       autogenerate: {
         directory: 'developers'
       }
+    },
+    {
+      label: 'Overview',
+      items: [
+        'changelog/overview',
+        {
+          label: 'Application',
+          items: [...makeChangelogsSidebarLinks([
+            {
+              type: 'recent',
+              base: 'changelog/application',
+              count: 5
+            },
+          ])],
+        },
+        // {
+        //   label: 'Platform',
+        //   items: [...makeChangelogsSidebarLinks([
+        //     {
+        //       type: 'recent',
+        //       base: 'changelog/platform',
+        //       count: 5
+        //     },
+        //   ])],
+        // },
+      ]
     },
     ],
     locales: {
