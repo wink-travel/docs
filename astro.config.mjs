@@ -68,7 +68,7 @@ export default defineConfig({
             name: 'May Rawddon',
             title: 'Marketing & Media',
             url: 'https://i.trvl.as/starringmay',
-            picture: 'https://res.cloudinary.com/traveliko/image/upload/f_auto,dpr_auto,q_auto,w_150/profilepics/essbpdjqjbbb67agtaaf'
+            picture: '/assets/may.webp'
           }
         }
       }),

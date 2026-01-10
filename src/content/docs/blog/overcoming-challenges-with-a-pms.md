@@ -9,7 +9,7 @@ authors:
 tags:
   - hotel tech
   - operations
-excerpt: The hospitality industry is a dynamic world filled with both challenges and opportunities. From fluctuating occupancy rates and rising operational costs to fierce competition and ever-evolving guest expectations, hoteliers face a constant balancing act to ensure profitability and success.
+#excerpt: The hospitality industry is a dynamic world filled with both challenges and opportunities. From fluctuating occupancy rates and rising operational costs to fierce competition and ever-evolving guest expectations, hoteliers face a constant balancing act to ensure profitability and success.
 ---
 
 # Overcoming Challenges with a Property Management System
