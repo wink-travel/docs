@@ -373,12 +373,60 @@ async function translateDocs() {
 
     // we start by translating the index.mdx file located in the root folder
     const indexFile = join(docsBaseDir, "index.mdx");
-    const targetFile = join(languageDirectory, "index.mdx");
+    const indexTargetFile = join(languageDirectory, "index.mdx");
     await translateFile(
       indexFile,
       lang.id,
-      targetFile,
+      indexTargetFile,
       "index.mdx",
+      langHashMap
+    );
+    bar.increment();
+
+    // then the team.mdx file located in the root folder
+    const teamFile = join(docsBaseDir, "team.mdx");
+    const teamTargetFile = join(languageDirectory, "team.mdx");
+    await translateFile(
+      teamFile,
+      lang.id,
+      teamTargetFile,
+      "team.mdx",
+      langHashMap
+    );
+    bar.increment();
+
+    // then the contact.mdx file located in the root folder
+    const contactFile = join(docsBaseDir, "contact.mdx");
+    const contactTargetFile = join(languageDirectory, "contact.mdx");
+    await translateFile(
+      contactFile,
+      lang.id,
+      contactTargetFile,
+      "contact.mdx",
+      langHashMap
+    );
+    bar.increment();
+
+    // then the privacy.md file located in the root folder
+    const privacyFile = join(docsBaseDir, "privacy.md");
+    const privacyTargetFile = join(languageDirectory, "privacy.md");
+    await translateFile(
+      privacyFile,
+      lang.id,
+      privacyTargetFile,
+      "privacy.md",
+      langHashMap
+    );
+    bar.increment();
+
+    // then the terms.md file located in the root folder
+    const termsFile = join(docsBaseDir, "terms.md");
+    const termsTargetFile = join(languageDirectory, "terms.md");
+    await translateFile(
+      termsFile,
+      lang.id,
+      termsTargetFile,
+      "terms.md",
       langHashMap
     );
     bar.increment();

@@ -1,438 +1,442 @@
 ---
-title: Pakalpojumu sniegšanas noteikumi
-description: Viegli pieejami un aktuāli noteikumi visiem mūsu partneru lietotājiem.
+title: Pakalpojumu noteikumi
+description: Viegli pieejami un aktuāli noteikumi visiem mūsu filiāļu lietotājiem.
 sidebar:
   order: 12
 ---
-:::piezīme
-Pēdējoreiz atjaunināts 2024-06-12
+
+:::note
+Pēdējoreiz atjaunots 2024-06-12
 :::
 
-**WINK VISPĀRĪGIE NOTEIKUMI UN NOSACĪJUMI PARTNERIEM**
+**WINK VISPĀRĪGIE NOTEIKUMI UN NOSACĪJUMI FILIĀĻU PARTNERIEM**
 
-Reģistrējoties un piesakoties Wink partneru programmā kā filiāles partneris, filiāle ar šo ir pārskatījusi, sapratusi, atzinusi un piekrīt šī filiāles līguma ("līgums") noteikumiem un nosacījumiem.\
+Reģistrējoties un piesakoties Wink partneru programmā kā filiāļu partnerim, filiāle ar šo ir izlasījusi, saprot, apstiprina un piekrīt šī filiāļu līguma noteikumiem un nosacījumiem (turpmāk – "līgums").  
 STARP:
 
-1. **TRAVELIKO SINGAPORE PTE. LTD**., uzņēmums, kas dibināts saskaņā ar Singapūras likumiem un kura juridiskā adrese ir #03-01 Wilkie Edge, 8 Wilkie Road, Singapūra 228095, ar PVN reģistrācijas numuru 201437335D (turpmāk tekstā saukts par "Wink"), un
-2. **PARTNERU**, kura informācija ir norādīta saistītā partnera reģistrācijas veidlapā vai iesniegta tiešsaistē (“Partneris”).
+1. **TRAVELIKO SINGAPORE PTE. LTD**., uzņēmums, kas dibināts saskaņā ar Singapūras likumiem un kura reģistrētā adrese ir \#03-01 Wilkie Edge, 8 Wilkie Road, Singapūra 228095, ar PVN reģistrācijas numuru 201437335D (turpmāk saukts par "Wink"), un  
+2. **FILIĀLE**, kuras dati ir norādīti Filiāļu partneru reģistrācijas veidlapā vai iesniegti tiešsaistē (turpmāk – "Filiāle").
 
-Wink un Filiāle ir šī Līguma “Puse”, un abi kopā tiek saukti par “Pusēm”.
+Wink un Filiāle ir šī līguma “Puses” un kopā tiek sauktas par “Pusēm”.
 
-**TĀ KĀ:**\
-(i) Wink pārvalda tiešsaistes sistēmu (“Sistēma”), ar kuras palīdzību iesaistītās Naktsmītnes (kopā sauktas par “Naktsmītņu pakalpojumu sniedzējiem”, katrs “Naktsmītņu pakalpojumu sniedzējs”) var piedāvāt savu inventāru rezervēšanai un ar kuras palīdzību Viesi var veikt rezervācijas pie šādiem Naktsmītnes pakalpojumu sniedzējiem (“Pakalpojums”);\
-(ii) Wink nepieder, nekontrolē, nepiedāvā un nepārvalda nevienu sludinājumu. Wink nav puse līgumos, kas noslēgti tieši starp Izmitināšanas pakalpojumu sniedzējiem un viesiem. Wink nedarbojas kā Izmitināšanas pakalpojumu sniedzēju aģents nekādā statusā;\
-(iii) Wink uztur un izmanto savas tīmekļa vietnes (“Wink tīmekļa vietnes”), kā arī nodrošina Pakalpojumu un saites uz Pakalpojumu trešo pušu tīmekļa vietnēs;\
-(iv) Filiālei pieder, tā kontrolē, mitina un/vai pārvalda vienu vai vairākus interneta domēnus, tīmekļa vietnes un lietojumprogrammas;\
-(v) Partneris un Wink vēlas, lai Partneris Pakalpojumu (tieši vai netieši) padarītu pieejamu saviem klientiem un Partnera tīmekļa vietnes(-ņu) un lietotnes(-ņu) apmeklētājiem tādā formā un ar tādiem noteikumiem (turpmāk tekstā — “Noteikumi”), kā noteikts šajā Līgumā.
+**ŅEMOT VĒRĀ, KA:**  
+(i) Wink pārvalda tiešsaistes sistēmu (turpmāk – "Sistēma"), caur kuru piedalījušās Naktsmītnes (kopā "Naktsmītņu sniedzēji", katrs “Naktsmītņu sniedzējs”) var padarīt savu inventāru pieejamu rezervācijām, un caur kuru Viesi var veikt rezervācijas pie šādiem Naktsmītņu sniedzējiem (turpmāk – "Pakalpojums");  
+(ii) Wink nepieder, nekontrolē, nepiedāvā un nevada nevienu sarakstu. Wink nav puse līgumos, kas noslēgti tieši starp Naktsmītņu sniedzējiem un Viesiem. Wink nekādā veidā nedarbojas kā aģents Naktsmītņu sniedzējiem;  
+(iii) Wink uztur un izmanto savas tīmekļa vietnes (turpmāk – "Wink tīmekļa vietnes"), kā arī nodrošina Pakalpojumu un saites uz Pakalpojumu trešo pušu tīmekļa vietnēs;  
+(iv) Filiāle pieder, kontrolē, mitina un/vai pārvalda vienu vai vairākus interneta domēnus, tīmekļa vietnes un lietotnes;  
+(v) Filiāle un Wink vēlas, lai Filiāle padara Pakalpojumu (tieši vai netieši) pieejamu saviem klientiem un Filiāles tīmekļa vietņu un lietotņu apmeklētājiem tādā formā un saskaņā ar šajā līgumā noteiktajiem noteikumiem un nosacījumiem (turpmāk – ”Noteikumi”).
 
-**Tāpēc tagad Puses ir vienojušās par sekojošo:**
+**Tādēļ Puses ir vienojušās par sekojošo:**
 
 **1. Definīcijas**
 
-1.1 Papildus terminiem, kas definēti citur šajā Līgumā, visā šajā Līgumā tiek piemērotas šādas definīcijas, ja vien nav norādīts pretējais:
+1.1 Papildus citur šajā līgumā definētajiem terminiem, šādas definīcijas attiecas uz visu līgumu, ja vien nav norādīts citādi:
 
-**"Izmitināšana"**&#x6E;ozīmē jebkāda veida izmitināšanu, tostarp, bet ne tikai, izmitināšanas pakalpojumu sniedzējus, moteļus, viesu mājas, naktsmītnes ar brokastīm, hosteļus, villas, dzīvokļus (ar apkalpošanu vai bez tās), namiņus, viesnīcas, viesu mītnes, kūrortu, dzīvokļu kompleksus, kempingus un jebkuru citu (veidu) izmitināšanas vai naktsmītņu pakalpojumu sniedzēju (neatkarīgi no tā, vai tas ir pieejams Wink tīmekļa vietnēs).\
-**“Izmitināšanas pakalpojumu sniedzējs(-i)”**&#x6E;ozīmē jebkuru Pusi, kas izveido kontu Wink platformā ar nolūku pārdot savu**pieder**istabu un palīgpakalpojumu inventārs, izmantojot Wink platformu.\
-**"Naktsmītņu pakalpojumu sniedzēju zīmoli"**&#x6E;ozīmē jebkuru terminu vai atslēgvārdu, kas ir tāds pats vai maldinoši līdzīgs (ieskaitot visas variācijas, tulkojumus, pareizrakstības kļūdas un vienskaitļa/daudzskaitļa formas) jebkurai preču zīmei vai tirdzniecības nosaukumam (reģistrētam vai nereģistrētam), kas pieder jebkuram Izmitināšanas pakalpojumu sniedzējam vai ir tā īpašumā.\
-**"Filiāle"**&#x6E;ozīmē Pusi, kuras attiecīgā (kontakt)informācija ir norādīta Sadarbības partnera reģistrācijas veidlapā.\
-**“Partneruzņēmumu aizbraukšana”**&#x69;r tāda nozīme, kā noteikts 5.4. punktā.\
-**"Partneru grupa"**&#x6E;ozīmē Filiāli un Filiāles galveno holdinga sabiedrību (tostarp uzņēmumu vai vienību grupu, kas atrodas Filiāles (galvenās holdinga sabiedrības vai akcionāra(-u)) (tiešā vai netiešā) kontrolē).\
-**"Partnera reģistrācijas veidlapa"**&#x6E;ozīmē tiešsaistes reģistrācijas veidlapu, kas jāaizpilda Filiālei.\
-**"Partneru tīmekļa vietne(-es)"**&#x6E;ozīmē tīmekļa vietni(-es) un lietotni(-es), kuras pieder, kuras kontrolē, mitina un pārvalda Filiāle un kurās Pakalpojums tiks darīts pieejams.\
-**“Lietotne(-es)”**&#x6E;ozīmē vietējo lietojumprogrammu mobilajām ierīcēm.\
-**"Vienošanās"**&#x6E;ozīmē šo vienošanos.\
-**“Rezervācija”**&#x6E;ozīmē veiksmīgu darījumu, ko Wink reģistrējis no viesa Izmitināšanas Pakalpojuma sniedzēja rezervācijai.\
-**"Rezervācijas maksa"**&#x69;r 1,5 %, ko Wink atskaita no partnera komisijas maksas kā apstrādes maksu.\
-**“Rezervācijas vērtība”**&#x69;r kopējā summa, ko Maksājumu starpnieks iekasējis no viesa par rezervāciju.\
-**"Klauzula"**&#x6E;ozīmē šī Līguma klauzulu.\
-**"Komisija"**&#x6E;ozīmē summu, kas jāmaksā Partnerim pirms Maksājumu pakalpojuma maksas un Rezervēšanas maksas atskaitīšanas par katru Materializēto darījumu saskaņā ar šo Līgumu.\
-**"Savienojumi"**&#x6E;ozīmē visus tīmekļa komponentus, saites, galvenās lapas un/vai JSON plūsmas un/vai dziļās saites un/vai hipersaites, ko izveido, mitina un uztur Wink.\
-**"Saturs"**&#x6E;ozīmē visu (aprakstošo) informāciju par Izmitināšanas Pakalpojumu sniedzējiem, kas pieejama Wink tīmekļa vietnē, tostarp, bet ne tikai, Izmitināšanas Pakalpojumu sniedzēju informāciju un aprakstus, viesu atsauksmes, metadatus, informāciju par ērtībām un (atcelšanas/neierašanās) politiku un Izmitināšanas Pakalpojumu sniedzēju vispārīgos noteikumus (tostarp visus to tulkojumus), kā arī fotoattēlus, video, attēlus, bet neietverot cenas un pieejamību (tostarp visus atjauninājumus, izmaiņas, aizstāšanu, papildinājumus vai grozījumus).\
-**"Kontrole"**&#x6E;ozīmē pilnvaru vai spēju (tieši vai netieši, vienatnē vai sadarbībā ar citiem, vai nu ar balsstiesīgu vērtspapīru vai citu īpašumtiesību daļu, partnerības vai cita veida starpniecību) (i) izmantot vai likt izmantot vairāk nekā pusi balsstiesību uzņēmuma akcionāru sapulcē, (ii) iecelt vairāk nekā pusi no uzņēmuma ((ne)izpilddirektoriem) vai uzraudzības direktoriem vai (iii) vadīt vai likt noteikt ar uzņēmumu saistītu vadības virzienu.\
-**"Klientu dati"**&#x6E;ozīmē viesa personu identificējošu informāciju (“PII”), tostarp, bet ne tikai, viesa vārdu, uzvārdu, adresi (tostarp e-pasta adresi), kredītkartes datus un citu viesa konfidenciālu un privātu informāciju.\
-**"Divkārša porcija"**&#x6E;ozīmē vairākas reklāmas vienā un tajā pašā meklētājprogrammas rezultātu lapā ar mērķi novirzīt trafiku uz līdzīgām tīmekļa vietnēm vai lapām ar līdzīgu saturu.\
-**"Viesis"**&#x6E;ozīmē tīmekļa vietņu vai lietotņu apmeklētāju, kurš, izmantojot pakalpojumu, ir veicis Izmitināšanas pakalpojumu sniedzēja rezervāciju.\
-**"Intelektuālā īpašuma tiesības"**&#x6E;ozīmē jebkuru patentu, autortiesības, izgudrojumus, datubāzes tiesības, dizaina tiesības, reģistrētu dizainu, preču zīmi, tirdzniecības nosaukumu, zīmolu, logotipus, pakalpojumu zīmi, zinātību, lietderīgo modeli, nereģistrētu dizainu vai, attiecīgā gadījumā, jebkuru šādu tiesību, zinātības, tirdzniecības vai uzņēmuma nosaukuma, domēna vārda (ar jebkuru (valsts kodu) augstākā līmeņa domēnu, piemēram, .com, .net., co.th, .de, .fr, eu, co.uk. utt.) vai citu līdzīgu tiesību vai pienākumu, neatkarīgi no tā, vai tas ir reģistrēts vai nereģistrēts, vai citas rūpnieciskā vai intelektuālā īpašuma tiesības, kas pastāv jebkurā pasaules teritorijā vai jurisdikcijā.\
-**"JSON"**&#x6E;ozīmē JSON savienojumu starp Wink datubāzi un Filiāles datubāzi, ko Wink var nodrošināt saskaņā ar nosacījumiem, par kuriem jāvienojas.\
-**"Saite"**&#x6E;ozīmē tīmekļa lapā vai e-pastā iegultu ikonu, objektu, grafiku vai tekstu, kas sastāv no hiperteksta rādītāja uz Wink URL adresi saistītā(-ajās) tīmekļa vietnē(-ēs).\
-**"Tirgotāja darījums"**&#x6E;ozīmē materializētu darījumu, kurā Maksājumu starpnieks ir reģistrētais tirgotājs un kurā Maksājumu starpnieks iekasē līdzekļus par rezervāciju tieši no viesa.\
-**“Materializēts(-i) darījums(-i)”**&#x6E;ozīmē rezervāciju, ko veic Saistītās(-o) vietnes(-ņu) un/vai lietotnes(-ņu) apmeklētājs, kurš, izmantojot Savienojumu, ir veicis rezervāciju pie Izmitināšanas pakalpojumu sniedzēja, un šī rezervācija ir novedusi pie faktiskas izmitināšanas nodrošināšanas, ko Izmitināšanas pakalpojumu sniedzējs ir apstiprinājis Wink. Materializētās transakcijas vienmēr tiks koriģētas atbilstoši grozījumiem (piemēram, saīsinātai uzturēšanās laikam), atmaksas pieprasījumiem, kredītkaršu krāpšanai, sliktiem parādiem vai citiem iemesliem. Lai izvairītos no šaubām, atcelšana, neierašanās utt. nekad nevar tikt uzskatīta par Materializētām transakcijām.\
-**"Mikro vietne"**&#x6E;ozīmē visas Wink galvenās tīmekļa vietnes baltās etiķetes versijas, kuru īpašnieks, izveidotājs, mitinātājs un uzturētājs ir Wink. Mikrovietne var būt apzīmēta ar logotipu “darbojas ar Wink” vai līdzvērtīgu.\
-**"Neto komisija"**&#x69;r summa, kas jāmaksā Partnerim par materializēto(-ajiem) darījumu(-iem) pēc Maksājumu pakalpojuma maksas un Rezervēšanas maksas atskaitīšanas.\
-**"Apmaksāta meklēšana"**&#x6E;ozīmē jebkāda veida tiešsaistes reklāmu, kas saista reklāmas rādīšanu ar konkrētu atslēgvārdu meklēšanas pieprasījumu.\
-**"Maksājumu veicinātājs"**&#x70;ilnībā piederošs Traveliko Singapore Pte. Ltd. meitasuzņēmums, kas pārvalda Maksājumu pakalpojumus, iekasējot maksājumus no viesiem (“Iemaksa”), norēķinoties ar pirkumu saistīto maksājuma metodi, piemēram, kredītkarti, debetkarti, bankas pārskaitījumu, kriptovalūtām vai PayPal utt., un izmaksājot parādu (“Neto komisija”) uz saistīto personu vietējo bankas kontu.\
-**"Iemaksa"**&#x6E;ozīmē viesa veiktā maksājuma iegūšanu, ko veic Maksājumu veicinātājs.\
-**"Izmaksa"**&#x6E;ozīmē Neto komisijas izmaksu Partnerim, ko veic Maksājumu veicinātājs.\
-**"Maksājumu pakalpojuma maksa"**&#x69;r 4%, ko Maksājumu starpnieks atskaita no Partnera komisijas kā maksājumu pieņemšanas maksu.\
-**"Cenu salīdzinājums"**&#x6E;ozīmē Izmitināšanas pakalpojumu sniedzēju cenu un/vai pieejamības salīdzinājumu, kas ir pieejams no divām vai vairākām Izmitināšanas pakalpojumu sniedzēju tiešsaistes rezervēšanas platformām.\
-**"Pārpārdošana"**&#x69;r tāda nozīme, kā noteikts 4.1.7. punktā.\
-**"Pārdevēju portāls"**&#x69;r tāda nozīme, kā noteikts 4.1.8. punktā.\
-**"SEM"**&#x6E;ozīmē meklētājprogrammu mārketingu un ietver jebkāda veida tiešsaistes mārketingu, kura mērķis ir reklamēt tīmekļa vietnes, palielinot to redzamību meklētājprogrammu rezultātu lapās, izmantojot meklētājprogrammu optimizāciju, apmaksātu izvietojumu, kontekstuālo reklāmu vai apmaksātu iekļaušanu.\
-**"SEO"**&#x6E;ozīmē meklētājprogrammu optimizāciju un ietver procesu, kurā (i) tiek uzlabots tīmekļa vietnes vai tīmekļa lapas datplūsmas apjoms vai kvalitāte no meklētājprogrammām, izmantojot "dabiskus" vai neapmaksātus ("organiskus" vai "algoritmiskus") meklēšanas rezultātus, vai (ii) tiek panākts vai izveidots uzlabots vai labāks rangs meklētājprogrammu rezultātos konkrētam atslēgvārdam vai atslēgvārdiem.\
-**“Līdzīgs domēna vārds”**&#x69;r tāda nozīme, kā noteikts 4.7.1. punktā.\
-**"Surogātpasta izplatīšanas noteikumi"**&#x6E;ozīmē jebkādas politikas, noteikumus, ierobežojumus vai saistības, ko laiku pa laikam nosaka, pasludina par piemērojamiem vai paziņo Trešo pušu platformas, kas (i) aizliedz vai novērš dubulto rādīšanu, maskēšanu vai jebkuru līdzīgu paņēmienu vai metodi, vai (ii) ietver šādus papildu ierobežojumus vai noteikumus attiecībā uz surogātpasta izplatīšanu vai unikālas lietotāja pieredzes saglabāšanu.\
-**"Trešo pušu platformas"**&#x6E;ozīmē jebkuru (trešās puses) meklētājprogrammu (mārketinga pakalpojumu sniedzēju), metameklētājprogrammu, meklētājprogrammu zirnekļus, ceļojumu meklēšanas vietnes, cenu salīdzināšanas vietnes, sociālo tīklu kopienas, pārlūkprogrammas, satura koplietošanas un mitināšanas pakalpojumus un multimediju emuāru pakalpojumus vai citus (līdzīgus) kanālus vai citas (datplūsmas mitināšanas) multivides formas gan tiešsaistē, gan bezsaistē.\
-**"Tīmekļa vietnes"**&#x6E;ozīmē Wink un tā saistīto uzņēmumu un saistīto partneru tīmekļa vietni(-es) (tostarp saistīto tīmekļa vietni(-es)), kurā(-ās) ir pieejams(-i) Wink produkts(-i) un pakalpojums.\
-**"Acs mirkšķināšanas konkurents"**&#x6E;ozīmē jebkuru tiešu vai netiešu Wink konkurentu (izņemot, lai izvairītos no šaubām, Wink uzņēmumu grupas uzņēmumus).\
-**"Wink dati"**&#x6E;ozīmē Wink intelektuālā īpašuma tiesības un Saturu, kas saskaņā ar šo Līgumu tiek sniegts Partnerim, un citu informāciju, kas laiku pa laikam pieder Wink vai ko izmanto Wink, vai kas ir ietverta vai iekļauta Wink tīmekļa vietnēs, vai ko Wink padara pieejamu Partnerim (piemēram, cenas un pieejamība).\
-**"Wink tīmekļa vietnes"**&#x6E;ozīmē Wink tīmekļa vietni(-es), tostarp, bet ne tikai, Wink, traveliko.com un visas to lokālās vai alternatīvās versijas (ar jebkuru augstākā līmeņa domēnu), kā arī jebkuras to variācijas, tostarp, bet ne tikai, mobilo tīmekļa vietni, mobilās lietojumprogrammas utt.
+**"Naktsmītne"** nozīmē jebkuru naktsmītnes veidu, tostarp, bet ne tikai, Naktsmītņu sniedzējus, moteļus, viesu mājas, brokastu viesnīcas, hosteļus, villas, dzīvokļus (ar pakalpojumiem vai bez), lauku mājas, krogu, viesu mītni, kūrortu, kondominiumu, kempinga naktsmītnes un jebkuru citu naktsmītnes vai izmitināšanas pakalpojumu sniedzēju (neatkarīgi no tā, vai tas ir pieejams Wink tīmekļa vietnēs).  
+**“Naktsmītņu sniedzējs(-i)”** nozīmē jebkuru Pusi, kas izveido kontu Wink ar nodomu pārdot savu **pašu** numuru un papildu pakalpojumu inventāru caur Wink platformu.  
+**"Naktsmītņu sniedzēju zīmoli"** nozīmē jebkuru terminu vai atslēgvārdu, kas ir identisks vai mulsinoši līdzīgs (ieskaitot jebkādas variācijas, tulkojumus, pareizrakstības kļūdas un vienskaitļa/daudzskaitļa formas) jebkuram Naktsmītņu sniedzēja preču zīmei vai tirdzniecības nosaukumam (reģistrētam vai nereģistrētam).  
+**"Filiāle"** nozīmē Pusi, kuras attiecīgie (kontakta) dati ir norādīti Filiāļu partneru reģistrācijas veidlapā.  
+**“Filiāļu izbraukumi”** nozīmē, kā noteikts 5.4 punktā.  
+**"Filiāļu grupa"** nozīmē Filiāli un Filiāles galveno mātesuzņēmumu (ieskaitot uzņēmumu grupu vai vienības, kas atrodas Filiāles (tiešā vai netiešā) kontroles pakļautībā).  
+**"Filiāļu partneru reģistrācijas veidlapa"** nozīmē tiešsaistes reģistrācijas veidlapu, ko aizpilda Filiāle.  
+**"Filiāļu tīmekļa vietne(s)"** nozīmē tīmekļa vietni(-es) un lietotnes, kas pieder, tiek kontrolētas, mitinātas un pārvaldītas Filiāles, kurās Pakalpojums tiek nodrošināts.  
+**“Lietotne(s)”** nozīmē vietējo mobilo ierīču lietotni.  
+**“Līgums”** nozīmē šo līgumu.  
+**“Rezervācija”** nozīmē veiksmīgu darījumu, ko Wink reģistrē no Viesa par Naktsmītņu sniedzēja rezervāciju.  
+**“Rezervācijas maksa”** ir 1,5% noņemta no Filiāles komisijas kā apstrādes maksa, ko iekasē Wink.  
+**“Rezervācijas vērtība”** ir kopējā summa, ko maksājumu starpnieks iekasē no viesiem par rezervāciju.  
+**“Pants”** nozīmē šī līguma pantu.  
+**"Komisija"** nozīmē summu, kas pienākas Filiālei pirms maksājumu pakalpojuma un rezervācijas maksas atskaitīšanas par katru realizēto darījumu saskaņā ar šo līgumu.  
+**"Savienojumi"** nozīmē visus tīmekļa komponentus, saites, nolaišanās lapas un/vai JSON plūsmas un/vai dziļās saites un/vai hipersaites, ko izveido, mitina un uztur Wink.  
+**"Saturs"** nozīmē visu (aprakstošo) informāciju par Naktsmītņu sniedzējiem, kas pieejama Wink tīmekļa vietnē, tostarp, bet ne tikai, Naktsmītņu sniedzēju informāciju un aprakstus, viesu atsauksmes, meta datus, aprīkojuma detaļas un (atcelšanas/neieradīšanās) politikas un vispārīgos noteikumus par Naktsmītņu sniedzējiem (ieskaitot jebkādus to tulkojumus) un fotogrāfijas, video, attēlus, izņemot cenas un pieejamību (ieskaitot jebkādas atjaunināšanas, izmaiņas, aizvietojumus, papildinājumus vai grozījumus).  
+**"Kontrole"** nozīmē varu vai spēju (tieši vai netieši, vienatnē vai kopā ar citiem, neatkarīgi no tā, vai caur balsstiesību akciju vai citu īpašumtiesību, partnerību vai citādi) (i) izmantot vai likt izmantot vairāk nekā pusi balsstiesību uzņēmuma akcionāru sapulcē, (ii) iecelt vairāk nekā pusi (ne)izpilddirektoru vai uzraudzības direktoru, vai (iii) vadīt vai likt vadīt uzņēmuma pārvaldību.  
+**"Klientu dati"** nozīmē Viesa personiski identificējamu informāciju (“PII”), tostarp, bet ne tikai, Viesa vārdu, adresi (ieskaitot e-pasta adresi), kredītkartes datus un citu konfidenciālu un privātu informāciju par Viesi.  
+**"Dubultā apkalpošana"** nozīmē vairāku reklāmu izvietošanu vienā meklēšanas rezultātu lapā ar mērķi novirzīt trafiku uz līdzīgām tīmekļa vietnēm vai lapām ar līdzīgu saturu.  
+**"Viesis"** nozīmē tīmekļa vietņu vai lietotņu apmeklētāju, kurš veicis Naktsmītņu sniedzēja rezervāciju caur Pakalpojumu.  
+**"Intelektuālā īpašuma tiesības"** nozīmē jebkuru patentu, autortiesības, izgudrojumus, datubāzu tiesības, dizaina tiesības, reģistrētu dizainu, preču zīmi, tirdzniecības nosaukumu, zīmolus, pakalpojumu zīmi, know-how, lietderības modeli, nereģistrētu dizainu vai, ja attiecināms, jebkuru pieteikumu šādām tiesībām, know-how, tirdzniecības vai uzņēmuma nosaukumu, domēna vārdu (ar jebkādu augstākā līmeņa domēnu, piemēram, .com, .net, .co.th, .de, .fr, eu, .co.uk utt.) vai citas līdzīgas tiesības vai pienākumus, neatkarīgi no tā, vai tās ir reģistrētas vai nereģistrētas, vai citas rūpnieciskās vai intelektuālā īpašuma tiesības, kas pastāv jebkurā pasaules teritorijā vai jurisdikcijā.  
+**"JSON"** nozīmē JSON savienojumu starp Wink datubāzi un Filiāles datubāzi, ko Wink var nodrošināt pēc vienošanās noteikumiem.  
+**"Saites"** nozīmē iegultu ikonu, objektu, grafiku vai tekstu tīmekļa lapā vai e-pastā, kas satur hiperteksta norādi uz Wink URL adresi Filiāļu tīmekļa vietnē(-ēs).  
+**“Tirdzniecības darījums”** nozīmē realizētu darījumu, kurā Maksājumu starpnieks ir reģistrētais tirgotājs, un Maksājumu starpnieks tieši iekasē līdzekļus no Viesa par rezervāciju.  
+**“Realizēti darījumi"** nozīmē rezervāciju, ko veicis Filiāļu tīmekļa vietņu un/vai lietotņu apmeklētājs, kurš, izmantojot Savienojumu, ir veicis rezervāciju pie Naktsmītņu sniedzēja, un kura rezultātā ir faktiski nodrošināta naktsmītne, kā apstiprinājis Naktsmītņu sniedzējs Wink. Realizētie darījumi vienmēr tiks koriģēti par izmaiņām (piemēram, saīsinātām uzturēšanās reizēm), chargeback, kredītkartes krāpšanu, sliktu parādu vai citādi. Lai izvairītos no pārpratumiem, atcelšanas, neieradīšanās utt. nekad nevar tikt uzskatītas par realizētiem darījumiem.  
+**"Mikro vietne"** nozīmē visas Wink galvenās tīmekļa vietnes baltās etiķetes versijas, kas pieder, ir izveidotas, mitinātas un uzturētas Wink. Mikro vietne var būt marķēta ar 'powered by Wink' logotipu vai tamlīdzīgu.  
+**“Neto komisija”** ir summa, kas pienākas Filiālei par realizētiem darījumiem pēc maksājumu pakalpojuma un rezervācijas maksas atskaitīšanas.  
+**"Maksas meklēšana"** nozīmē jebkuru tiešsaistes reklāmas veidu, kas saista reklāmas rādīšanu ar konkrētu atslēgvārdu meklēšanas pieprasījumu.  
+**“Maksājumu starpnieks”** ir Traveliko Singapore Pte. Ltd. pilnībā piederoša meitasuzņēmuma, kas pārvalda maksājumu pakalpojumus, kas iekasē maksājumus no viesiem (“Pay-in”), iekasējot maksājuma metodi, kas saistīta ar pirkumu, piemēram, kredītkarti, debetkarti, bankas pārskaitījumu, kriptovalūtas vai PayPal utt., un izmaksā summu, kas pienākas (“Neto komisija”) Filiāles vietējā bankas kontā.  
+**“Pay-in”** nozīmē maksājuma saņemšanu, ko veicis viesis caur Maksājumu starpnieku.  
+**“Pay-out”** nozīmē Neto komisijas izmaksu Filiālei, ko veic Maksājumu starpnieks.  
+**“Maksājumu pakalpojuma maksa”** ir 4% noņemta no Filiāles komisijas kā maksājuma iegūšanas maksa, ko iekasē Maksājumu starpnieks.  
+**"Cenu salīdzināšana"** nozīmē Naktsmītņu sniedzēju cenu un/vai pieejamības salīdzināšanu, ko nodrošina divas vai vairākas tiešsaistes Naktsmītņu sniedzēju rezervēšanas platformas.  
+**"Pārdale"** nozīmē, kā noteikts 4.1.7 pantā.  
+**“Pārdevēja portāls”** nozīmē, kā noteikts 4.1.8 pantā.  
+**"SEM"** nozīmē meklētājprogrammu mārketingu un ietver jebkādu tiešsaistes mārketinga veidu, kas cenšas veicināt tīmekļa vietņu redzamību meklētājprogrammu rezultātu lapās, izmantojot meklētājprogrammu optimizāciju, maksas izvietojumu, kontekstuālo reklāmu vai maksas iekļaušanu.  
+**"SEO"** nozīmē meklētājprogrammu optimizāciju un ietver procesu, kas (i) uzlabo trafika apjomu vai kvalitāti uz tīmekļa vietni vai lapu no meklētājprogrammām, izmantojot "dabiskos" vai nemaksātos ("organiskos" vai "algoritmiskos") meklēšanas rezultātus, vai (ii) nodrošina vai izveido uzlabotu vai labāku pozīciju meklētājprogrammu rezultātos konkrētam atslēgvārdam vai atslēgvārdiem.  
+**“Līdzīgs domēna vārds”** nozīmē, kā noteikts 4.7.1 pantā.  
+**"Spama noteikumi"** nozīmē jebkādas politikas, noteikumus, ierobežojumus vai saistības, ko laiku pa laikam nosaka, piemēro vai paziņo trešo pušu platformas, kas (i) aizliedz vai novērš Dubulto apkalpošanu, Maskēšanu vai jebkādu līdzīgu tehniku vai metodi, vai (ii) satur papildu ierobežojumus vai noteikumus attiecībā uz spamu vai unikālas lietotāja pieredzes saglabāšanu.  
+**"Trešo pušu platformas"** nozīmē jebkuru (trešo pušu) meklētājprogrammu (mārketinga pakalpojumu sniedzēju), meta-meklētājprogrammu, meklētājprogrammu robotus, ceļojumu meklēšanas vietnes, cenu salīdzināšanas vietnes, sociālo tīklu kopienas, pārlūkprogrammas, satura koplietošanas un mitināšanas pakalpojumus un multimediju blogošanas pakalpojumus vai citus (līdzīgus) kanālus vai medijus, tiešsaistē vai bezsaistē.  
+**"Tīmekļa vietnes"** nozīmē Wink un tā saistīto uzņēmumu un partneru tīmekļa vietnes (ieskaitot Filiāļu tīmekļa vietnes), kur pieejams Wink produkts un pakalpojums.  
+**"Wink konkurents"** nozīmē jebkuru tiešu vai netiešu Wink konkurentu (izņemot, lai izvairītos no pārpratumiem, uzņēmumus Wink grupā).  
+**"Wink dati"** nozīmē Wink intelektuālā īpašuma tiesības un saturu, ko Wink nodrošina Filiālei saskaņā ar šo līgumu, kā arī citu informāciju, ko Wink laiku pa laikam izmanto vai ir īpašumā vai kas ir iekļauta Wink tīmekļa vietnēs vai ko Wink nodrošina Filiālei (piemēram, cenas un pieejamība).  
+**"Wink tīmekļa vietnes"** nozīmē Wink tīmekļa vietnes, tostarp, bet ne tikai, Wink, traveliko.com un visas vietējās vai alternatīvās versijas (ar jebkādu augstākā līmeņa domēnu), kā arī jebkādas to variācijas, tostarp, bet ne tikai, mobilo tīmekļa vietni, mobilās lietotnes utt.
 
-**1.2 Nav partnerības**
+**1.2 Nav partnerattiecību**
 
-1.2.1 Šis Līgums nav paredzēts, un nekas no tā vai jebkuras no šeit paredzētajām vienošanām nav jāinterpretē kā kopuzņēmuma vai partneru, partnerības vai pilnvarotāja un pārstāvja attiecību izveide starp Pusēm.
+1.2.1 Šis līgums nav paredzēts un nekas šeit vai jebkurā no šeit paredzētajiem pasākumiem nedrīkst tikt interpretēts kā kopuzņēmuma vai partnerattiecību vai pilnvarotā aģenta attiecību izveide starp Pusēm.
 
-1.2.2 Ja vien Wink rakstiski nav vienojusies citādi vai šajā Līgumā nav noteikts citādi, Partneris nekur Partnera tīmekļa vietnē(-ēs) nedrīkst publicēt nekādus tiešus vai netiešus apgalvojumus, ka tīmekļa vietne ir daļa no Wink, to apstiprina vai ir Wink oficiāla tīmekļa vietne.
+1.2.2 Ja vien Wink rakstiski nav vienojies citādi vai nav noteikts citādi šajā līgumā, Filiāle nedrīkst publicēt Filiāļu tīmekļa vietnē jebkādu paziņojumu, tiešu vai netiešu, ka tīmekļa vietne ir daļa no Wink, to apstiprina vai tā ir oficiāla Wink tīmekļa vietne.
 
-1.2.3 Partneris var tieši sazināties ar Izmitināšanas pakalpojumu sniedzējiem, lai noteiktu ekskluzīvas vai vēlamās cenas, noteikumus, akcijas, pakotņu papildinājumus un tamlīdzīgi.
+1.2.3 Filiāle var tieši sadarboties ar Naktsmītņu sniedzējiem, lai noteiktu ekskluzīvas vai priekšrocību cenas, nosacījumus, akcijas, paketes, papildinājumus un tamlīdzīgi.
 
-**2. Šī Līguma darbības joma**
+**2. Šī līguma darbības joma**
 
-**2.1 Neekskluzivitāte**\
-Saskaņā ar šī Līguma noteikumiem un nosacījumiem Filiāle darbojas kā Wink neekskluzīvs izplatītājs (filiāle).
+**2.1 Neekskluzivitāte**  
+Pamatojoties uz šī līguma noteikumiem un nosacījumiem, Filiāle darbojas kā neekskluzīvs Wink izplatītājs (filiāle).
 
 **2.2 Pakalpojums**
 
-2.2.1 Šī Līguma darbības laikā Puses ir vienojušās, ka Wink nodrošinās Pakalpojuma pieejamību Partnerim, kā norādīts Partnera Partnera reģistrācijas veidlapā (t. i., Saite vai Mikrovietne) un tīmekļa vietnē(-ēs), kā norādīts Partnera Partnera reģistrācijas veidlapā (t. i., Partnera tīmekļa vietnē(-ēs)).
+2.2.1 Līguma darbības laikā Puses ir vienojušās, ka Pakalpojums tiks nodrošināts Filiālei, kā norādīts Filiāļu partneru reģistrācijas veidlapā (piemēram, saite vai Mikro vietne) un tīmekļa vietnē(-ēs), kā norādīts Filiāļu partneru reģistrācijas veidlapā (piemēram, Filiāļu tīmekļa vietne(-es)).
 
-2.2.2 Kad apmeklētājs veic rezervāciju saistīto tīmekļa vietņu ietvaros, izmantojot Sistēmu, Wink ir atbildīgs par attiecīgo rezervācijas datu nosūtīšanu no apmeklētāja, kurš veica rezervāciju, Izmitināšanas pakalpojumu sniedzējam (piemēram, ierašanās datums, nakšu skaits, istabas tips, viesa vārds) un sekojošā (e-pasta) apstiprinājuma un/vai apstiprinājuma kupona (nosūtīšanu) Viesim.
+2.2.2 Kad rezervācija tiek veikta apmeklētāja vārdā vai caur Filiāļu tīmekļa vietnēm, izmantojot Sistēmu, Wink ir atbildīgs par attiecīgo rezervācijas datu nodošanu no apmeklētāja, kurš veicis rezervāciju, Naktsmītņu sniedzējam (piemēram, ierašanās datums, nakšu skaits, numura veids, viesu vārds) un (e-pasta) apstiprinājuma un/vai apstiprinājuma kupona nosūtīšanu Viesim.
 
-2.2.3 Pakalpojums ietver klientu apkalpošanu Viesu labā. Partnerim nekavējoties jānodod un/vai jāpārsūta visi ar klientu apkalpošanu saistītie jautājumi un problēmas attiecībā uz Pakalpojumu, (tā izpildi) rezervāciju (tostarp jebkādas rezervācijas izmaiņas vai atcelšanu), Izmitināšanas pakalpojumu sniedzēju un visi citi attiecīgie (maksājumu) jautājumi, sūdzības un jautājumi tieši (Wink klientu apkalpošanas centram) un šajā sakarā vairs nesniedz nekādus citus pakalpojumus.
+2.2.3 Pakalpojums ietver klientu apkalpošanu Viesiem. Filiāle nekavējoties nodos un/vai pārsūtīs visus ar klientu apkalpošanu saistītos jautājumus un sūdzības par Pakalpojumu, rezervācijas veikšanu (ieskaitot jebkādas izmaiņas vai atcelšanu), Naktsmītņu sniedzēju un citus saistītos (maksājumu) jautājumus tieši Wink klientu apkalpošanas centram un nesniegs papildu pakalpojumus šajā jomā.
 
-**2.3 Saite vai mikrovietne**
+**2.3 Saite vai Mikro vietne**
 
-2.3.1 Gadījumā, ja Pakalpojums tiek darīts pieejams, izmantojot Saiti, Partnerim par saviem līdzekļiem jāintegrē un jādara pieejama Saite tādā(-s) redzamā(-s) vietā(-s), tīmekļa lapās un tādā vietā, izmērā un formā Partnera tīmekļa vietnē(-s), kā norādījis Wink vai par ko savstarpēji vienojušās Puses.
+2.3.1 Ja Pakalpojums tiek nodrošināts caur Saiti, Filiāle par saviem līdzekļiem integrēs un padarīs Saiti pieejamu tādās redzamās vietās, tīmekļa lapās un tādā vietā, izmērā un formā Filiāļu tīmekļa vietnē(-ēs), kā norādījis Wink vai kā vienojušās Puses.
 
-2.3.2 Gadījumā, ja Pakalpojums tiek darīts pieejams, izmantojot Mikrovietni, Partnerim par saviem līdzekļiem jāintegrē un jānodrošina Savienojumu un/vai Mikrovietnes pieejamība tādā(-s) redzamā(-s) vietā(-s), tīmekļa lapās un tādā vietā, izmērā un formā Partnera(-u) tīmekļa vietnē(-s), kā norādījis Wink vai kā par to savstarpēji vienojušās Puses.
+2.3.2 Ja Pakalpojums tiek nodrošināts caur Mikro vietni, Filiāle par saviem līdzekļiem integrēs un padarīs Savienojumus un/vai Mikro vietni pieejamu tādās redzamās vietās, tīmekļa lapās un tādā vietā, izmērā un formā Filiāļu tīmekļa vietnē(-ēs), kā norādījis Wink vai kā vienojušās Puses.
 
 **3. Licence**
 
-**3.1 Savstarpēja licence**
+**3.1 Savstarpējā licence**
 
-3.1.1 Saskaņā ar 4.4. punktu Wink ar šo piešķir Partnerim neekskluzīvas, atsaucamas, ierobežotas, bezatlīdzības un visā pasaulē spēkā esošas tiesības un licenci:
+3.1.1 Pamatojoties uz 4.4 pantu, Wink piešķir Filiālei neekskluzīvas, atsaucamas, ierobežotas, bezatlīdzības un vispasaules tiesības un licenci:
 
-1. lai attēlotu šādus Wink datu elementus un šādu papildu informāciju par Izmitināšanas pakalpojumu sniedzējiem Partnera tīmekļa vietnē(-ēs), visu tādu, kādu Wink to ir nodrošinājis vai padarījis pieejamu Partnerim;
-2. reklamēt un tirgot Pakalpojumu saskaņā ar šajā Līgumā izklāstītajiem noteikumiem.
+1) rādīt tādus Wink datu elementus un tādu papildu Naktsmītņu sniedzēju informāciju Filiāļu tīmekļa vietnē(-ēs), kā to nodrošina vai padara pieejamu Wink;  
+2) veicināt un tirgot Pakalpojumu saskaņā ar šajā līgumā noteiktajiem nosacījumiem.
 
-3.1.2 Ar šo Filiāle piešķir Wink bezatlīdzības un visā pasaulē spēkā esošas tiesības un licenci:
+3.1.2 Filiāle piešķir Wink bezatlīdzības un vispasaules tiesības un licenci:
 
-1. iekļaut, integrēt, iekļaut un attēlot Saiti, Mikrovietni un/vai Savienojumu (attiecīgā gadījumā) Saistītajā(-ajās) Tīmekļa vietnē(-ēs), un
-2. lai Pakalpojums būtu pieejams Saistītajā(-ajās) tīmekļa vietnē(-ēs).
+1) iekļaut, integrēt, rādīt Saiti, Mikro vietni un/vai Savienojumu (atkarībā no situācijas) Filiāļu tīmekļa vietnē(-ēs), un  
+2) padarīt Pakalpojumu pieejamu Filiāļu tīmekļa vietnē(-ēs).
 
-**3.2 Sublicences tiesību neesamība un neizpaušana**
+**3.2 Nav apakšlicences tiesību un konfidencialitāte**
 
-3.2.1 Ja vien Wink rakstiski nav vienojies citādi, Partnerim nav tiesību (i) izsniegt apakšlicenci tiesībām, kas tam piešķirtas saskaņā ar 3.1.1. punktu, vai (ii) izsniegt apakšlicenci Saitei vai Savienojumam jebkurai trešajai personai, vai (iii) izveidot hipersaiti uz Wink tīmekļa vietni, izmantojot vai sadarbojoties ar (tīmekļa vietnēm) Partneru grupas uzņēmumiem un/vai trešajām personām.
+3.2.1 Ja vien Wink rakstiski nav vienojies citādi, Filiāle nedrīkst (i) piešķirt apakšlicenci tiesībām, kas tai piešķirtas 3.1.1 pantā, vai (ii) apakšlicencēt Saiti vai Savienojumu trešajām pusēm, vai (iii) veidot hipersaites uz Wink tīmekļa vietni, sadarbojoties ar Filiāļu grupas uzņēmumiem un/vai trešajām pusēm.
 
-3.2.2 Ja vien Wink rakstiski nav vienojusies citādi vai šajā Līgumā nav noteikts citādi, Partnerim nav tiesību tieši vai netieši pārdot, izmantot, nodot, (apakš)licencēt, paziņot, atklāt, padarīt pieejamus, atļaut piekļuvi, izpaust vai citādi izplatīt Wink datus vai saturu (i) jebkurai trešajai personai, (ii) cenu/pieejamības salīdzināšanas nolūkos, vietnēs, pārskatos vai izmeklēšanā, (iii) jebkādiem citiem mērķiem, izņemot (Izmitināšanas pakalpojumu sniedzēja rezervāciju ģenerēšanu, izmantojot) Pakalpojumu, vai (iv) citādi.
+3.2.2 Ja vien Wink rakstiski nav vienojies citādi vai nav noteikts citādi šajā līgumā, Filiāle nedrīkst tieši vai netieši pārdot, izmantot, nodot, (apakš)licencēt, izpaust, padarīt pieejamu, atļaut piekļuvi, atklāt vai izplatīt Wink datus vai saturu (i) jebkurai trešajai pusei, (ii) cenu/pieejamības salīdzināšanas nolūkos, vietnēm, atsauksmēm vai izmeklēšanām, (iii) jebkuram citam mērķim, izņemot (naktsmītņu rezervāciju ģenerēšanu caur) Pakalpojumu, vai (iv) citādi.
 
-**4. Līgumi un saistības**
+**4. Saistības un pienākumi**
 
-**4.1 Vispārīgie līgumi, saistības un pienākumi**
+**4.1 Vispārējās saistības, pienākumi un apņemšanās**
 
-4.1.1 Saskaņā ar šī Līguma noteikumiem Partneris piekrīt pielikt komerciāli pamatotas pūles, lai (i) pielāgotu Partnera tīmekļa vietni(-es) un integrētu Saiti, Savienojumus un/vai Mikrovietni tā, lai ģenerētu pēc iespējas lielāku datplūsmu Wink tīmekļa vietnei vai Partnera tīmekļa vietnei(-ēm), un (ii) reklamētu un tirgotu Izmitināšanas pakalpojumu sniedzējus un iespēju rezervēt Izmitināšanas pakalpojumu sniedzējus Partnera tīmekļa vietnē(-ēs) savā komerciālajā un iekšējā tīklā, un šim nolūkam padarīs pieejamu savu izplatīšanas tīklu un kanālus (piemēram, internetu un intranetu).
+4.1.1 Pamatojoties uz šī līguma noteikumiem, Filiāle apņemas komerciāli saprātīgi censties (i) pielāgot Filiāļu tīmekļa vietni(-es) un integrēt Saiti, Savienojumus un/vai Mikro vietni tā, lai radītu pēc iespējas lielāku trafiku uz Wink tīmekļa vietni vai Filiāļu tīmekļa vietni(-ēm), un (ii) veicināt un tirgot Naktsmītņu sniedzējus un iespēju rezervēt Naktsmītņu sniedzējus Filiāļu tīmekļa vietnē(-ēs) savā komerciālajā un iekšējā tīklā, nodrošinot savu izplatīšanas tīklu un kanālus (piemēram, internetu un intranetu).
 
-4.1.2 Partneris piekrīt neveikt vai neatstāt bezdarbību, kas varētu ietekmēt Wink attiecības ar Wink tīmekļa vietnēs pieejamajiem Izmitināšanas pakalpojumu sniedzējiem. Partneris piekrīt neizraisīt vai nepieļaut neko tādu, kas varētu izraisīt Wink izslēgšanu no rezervācijas procesa pie jebkura Izmitināšanas pakalpojumu sniedzēja.
+4.1.2 Filiāle apņemas neveikt vai neļaut veikt nekādas darbības, kas varētu ietekmēt Wink attiecības ar Naktsmītņu sniedzējiem, kas pieejami Wink tīmekļa vietnēs. Filiāle apņemas neveicināt vai neļaut veikt nekādas darbības, kas varētu novest pie Wink izslēgšanas no rezervēšanas procesa ar jebkuru Naktsmītņu sniedzēju.
 
-4.1.3 Partneris piekrīt nesazināties ar nevienu Izmitināšanas Pakalpojumu sniedzēju, izņemot 1.2.3. punktā minēto, attiecībā uz (patērētajām) rezervācijām, kas veiktas, izmantojot Sistēmu, vai attiecībā uz jebkādu klientu apkalpošanu attiecībā uz šādām rezervācijām, kas veiktas, izmantojot Sistēmu, vai patērētas.
+4.1.3 Filiāle apņemas neveikt saziņu ar Naktsmītņu sniedzējiem, izņemot 1.2.3 punktā minēto, attiecībā uz (izmantotajām) rezervācijām, kas veiktas caur Sistēmu, vai klientu apkalpošanu saistībā ar šādām rezervācijām.
 
-4.1.4 Partnerim pienācīgi un rūpīgi jāuztur un jāpielāgo Partneru tīmekļa vietņu saturs, kā arī jānodrošina, lai Partneru tīmekļa vietne(-es) būtu aktuāla un precīza. Partnerim nekavējoties jāizlabo jebkādas kļūdas vai nepilnības Partneru tīmekļa vietnē(-ēs) un informācijā par Izmitināšanas pakalpojumu sniedzējiem pēc tam, kad tas ir uzzinājis par šādām kļūdām vai saņēmis paziņojumu no Wink.
+4.1.4 Filiāle pienācīgi uzturēs un koriģēs Filiāļu tīmekļa vietnes saturu un uzturēs Filiāļu tīmekļa vietni(-es) aktuālu un precīzu. Filiāle nekavējoties labos jebkādas kļūdas vai trūkumus Filiāļu tīmekļa vietnē(-ēs) un Naktsmītņu sniedzēju informācijā pēc kļūdu atklāšanas vai saņemot paziņojumu no Wink.
 
-4.1.5 Partneris nedrīkst (a) programmatiski izvērtēt un iegūt informāciju (tostarp viesu atsauksmes) no jebkuras Wink vietnes daļas (piemēram, nokasīt ekrānuzņēmumus) vai mēģināt to darīt, un nedrīkst nekādā veidā, tostarp, bet ne tikai, mehāniski, elektroniski, fotokopējot, ierakstot vai citādi, kopēt, reproducēt, modificēt, mainīt, pielāgot, izjaukt, veikt reverso inženieriju, nokasīt vai citādi noteikt saišu vai jebkura Wink vietnē ietvertā satura vai tās sniegto pakalpojumu pirmkodu (vai to pamatā esošās idejas, algoritmus, struktūru vai organizāciju) vai mēģināt to darīt; (b) augšupielādēt (i) jebkuru vīrusu, Trojas zirgu, tārpu, laika bumbu, robotu komandas vai citas datorprogrammēšanas rutīnas, kas paredzētas, lai bojātu, kaitētu, slepeni pārtvertu vai atsavinātu jebkuru sistēmu, datus vai personisko informāciju; (c) sniegt jebkādus apgalvojumus apmeklētājiem, plašai sabiedrībai vai jebkurai citai personai, kas jebkādā veidā ir saistīta ar Sabiedrību, pakalpojumiem, saitēm vai Wink vietni; (d) (mēģināt) iegūt kredītu vai komisijas maksu no Wink, sniedzot nepatiesus apgalvojumus, krāpnieciski rīkojoties vai izmantojot jebkādu citu shēmu vai viltību, lai maldinātu Wink; vai (e) citādi (mēģināt) nodarīt kaitējumu Wink un Wink tīmekļa vietnei. Jebkurš iepriekš minēto noteikumu pārkāpums novedīs pie Partnera izslēgšanas no programmas un visu nesamaksāto maksājumu zaudēšanas.
+4.1.5 Filiāle nedrīkst (a) programmatiski novērtēt un izvilkt informāciju (ieskaitot viesu atsauksmes) no jebkuras Wink tīmekļa vietnes daļas (piemēram, ekrāna skreipošana) vai mēģināt to darīt, un nedrīkst ar jebkādiem līdzekļiem, tostarp mehāniskajiem, elektroniskajiem, fotokopēšanas, ierakstīšanas vai citiem līdzekļiem, kopēt, reproducēt, modificēt, mainīt, pielāgot, izjaukt, atpakaļinženierēt, skreipot vai citādi noteikt Wink tīmekļa vietnes saites vai saturu vai mēģināt to darīt; (b) augšupielādēt jebkādu vīrusu, Trojas zirgu, tārpu, laika bumbu, robotu komandas vai citas datorprogrammas, kas paredzētas sistēmas, datu vai personiskās informācijas bojāšanai, traucēšanai, slepenai pārtveršanai vai izņemšanai; (c) sniegt apmeklētājiem, sabiedrībai vai citām pusēm jebkādus nepatiesus paziņojumus saistībā ar uzņēmumu, pakalpojumiem, saitēm vai Wink tīmekļa vietni; (d) mēģināt iegūt kredītu vai komisijas no Wink, izmantojot maldināšanu, nepatiesus paziņojumus, krāpniecisku rīcību vai citus trikus; vai (e) citādi mēģināt kaitēt Wink un Wink tīmekļa vietnei. Šādu noteikumu pārkāpums var novest pie Filiāles izslēgšanas no programmas un neizmaksāto maksājumu zaudēšanas.
 
-4.1.6 Partneris nedrīkst veidot nekādas statiskas Wink vietnes Satura vai tās daļas kopijas (tostarp viesu atsauksmes).
+4.1.6 Filiāle nedrīkst veidot statisku kopiju no satura vai jebkuras Wink tīmekļa vietnes daļas (ieskaitot viesu atsauksmes).
 
-4.1.7 Saskaņā ar šo Līgumu Partneris negūst peļņu no rezervācijām vai rezervējumiem papildus Komisijas maksas saņemšanai no Wink saskaņā ar šī Līguma noteikumiem. Partneris (ieskaitot tā darbinieku un personu, kas ir tā pilnvarota) nedrīkst veikt nekādas rezervācijas vai veikt rezervācijas pie jebkura Izmitināšanas pakalpojumu sniedzēja Wink tīmekļa vietnē vai Partnera tīmekļa vietnē ar mērķi pārdot šādu rezervāciju vai tālākpārdošanu trešajai personai vai tās labā (“Tālākpārdošana”). Lai izvairītos no šaubām, Wink ir vienpersoniska izvēle uzskatīt jebkuru rezervāciju vai tālākpārdošanu, ja šādas rezervācijas vai rezervējuma apmaksa nav tieši no personas, kuras vārdā(-os) šāda rezervācija vai rezervējums ir veikts.\
-Tālākpārdošana tiek uzskatīta par būtisku šī Līguma pārkāpumu. Partneris atzīst, ka Tālākpārdošana ir pretrunā ar šī Līguma pamatmērķi. Tālākpārdošanas gadījumā Wink patur tiesības noraidīt rezervācijas un/vai atcelt apstiprinātas rezervācijas bez iepriekšēja brīdinājuma vai atmaksas. Wink var arī nekavējoties pārtraukt Partnera dalību programmā pēc saviem ieskatiem, neskarot citus šajā Līgumā noteiktos tiesiskās aizsardzības līdzekļus, tostarp Komisijas maksas zaudēšanu un kompensācijas pieprasījumu.
+4.1.7 Saskaņā ar šo līgumu Filiāle nedrīkst gūt peļņu no rezervācijām papildus komisijas saņemšanai no Wink saskaņā ar šī līguma noteikumiem. Filiāle (ieskaitot darbiniekus un pilnvarotās personas) nedrīkst veikt rezervācijas pie Naktsmītņu sniedzējiem Wink tīmekļa vietnē vai Filiāļu tīmekļa vietnē ar mērķi pārdot šādas rezervācijas trešajām pusēm (turpmāk – “Pārdale”). Lai izvairītos no pārpratumiem, Wink patur tiesības uzskatīt jebkuru rezervāciju vai rezervāciju par Pārdali, ja maksājums par šo rezervāciju nav tieši no personas, kuras vārdā rezervācija veikta. Pārdale tiek uzskatīta par būtisku šī līguma pārkāpumu. Filiāle apzinās, ka Pārdale ir pretrunā ar šī līguma pamatmērķi. Pārdales gadījumā Wink patur tiesības noraidīt rezervācijas un/vai atcelt apstiprinātās rezervācijas bez iepriekšēja paziņojuma vai atmaksas. Wink var arī nekavējoties izbeigt Filiāles dalību programmā pēc saviem ieskatiem, neietekmējot citus tiesiskos līdzekļus, tostarp komisijas zaudēšanu un kompensācijas pieprasīšanu.
 
-4.1.8 Wink nodrošina Partnerim piekļuvi noteiktai Wink tīmekļa vietnei ("Partnera portāls"), lietotāja ID un paroli, kas ļauj Partnerim uzraudzīt naktsmītņu rezervēšanu, izmantojot Partnera tīmekļa vietni(-es), un visu attiecīgo pārvaldības informāciju, ko Wink nodrošina tiešsaistē. Partneris aizsargā un uztur lietotāja ID un paroli konfidenciālus un droši glabā tos, un neizpauž tos nevienai personai, izņemot tās personas, kurām nepieciešama piekļuve Pārdevēja portālam. Partneris nekavējoties paziņo Wink par jebkuru (aizdomām par) drošības pārkāpumu vai nepareizu izmantošanu.
+4.1.8 Wink nodrošina Filiālei piekļuvi īpašai Wink tīmekļa vietnei (turpmāk – "Filiāļu portāls"), lietotāja ID un paroli, kas ļauj Filiālei uzraudzīt naktsmītņu rezervācijas caur Filiāļu tīmekļa vietni(-ēm) un saņemt visu attiecīgo pārvaldības informāciju, ko Wink nodrošina tiešsaistē. Filiāle glabās lietotāja ID un paroli konfidenciāli un droši un neizpaudīs to nevienai personai, izņemot tās, kurām nepieciešama piekļuve Pārdevēja portālam. Filiāle nekavējoties paziņos Wink par jebkādu (aizdomīgu) drošības pārkāpumu vai nepareizu izmantošanu.
 
-4.1.9 Jebkura rezervācija vai rezervācija pie jebkura Izmitināšanas Pakalpojumu sniedzēja, ko Partneris veic Wink Tīmekļa vietnē vai Partnera Tīmekļa vietnē, ir pakļauta Wink Lietošanas noteikumiem, kas laiku pa laikam var tikt atjaunināti. Lai izvairītos no šaubām, Partneris nedrīkst izmantot Wink Tīmekļa vietni vai tās saturu nekādiem komerciāliem mērķiem, izņemot Komisijas maksas saņemšanai saskaņā ar šī Līguma noteikumiem.
+4.1.9 Jebkura rezervācija vai rezervācija pie Naktsmītņu sniedzēja, ko veic Filiāle Wink tīmekļa vietnē vai Filiāļu tīmekļa vietnē, ir pakļauta Wink lietošanas noteikumiem, kas var tikt laiku pa laikam atjaunināti. Lai izvairītos no pārpratumiem, Filiāle nedrīkst izmantot Wink tīmekļa vietni vai tās saturu komerciāliem mērķiem, izņemot komisijas saņemšanu saskaņā ar šī līguma noteikumiem.
 
-4.1.10 Partneris piekrīt un atzīst, ka šajā 4. punktā izklāstītie ierobežojošie nosacījumi, apņemšanās, saistības, pienākumi un ierobežojumi ir pamatoti un būtiski svarīgi Wink, jo īpaši (i) tā vēlmei noslēgt šo Līgumu ar Partneri un padarīt Pakalpojumu, Saturu un Wink intelektuālā īpašuma tiesības (tieši vai netieši) pieejamas Partnerim, un (ii) Wink nemateriālās vērtības, produkta, pakalpojuma un (tirgus) reputācijas aizsardzībai. Turklāt Partneris piekrīt un atzīst, ka visi šajā 4. punktā izklāstītie nosacījumi, apņemšanās, saistības, garantijas, pienākumi un ierobežojumi (a) Partnerim ir jāievēro nekavējoties, pienācīgi un rūpīgi, un (b) tie attiecas arī uz jebkuru personu, kurai ir piekļuve Pārdevēja portālam, izmantojot Partnera lietotāja ID, jebkuru personu, par kuru ir pamatots iemesls uzskatīt, ka tā pārstāv Partneri, un uzņēmumiem Partneru grupā. Partneris nodrošinās, garantēs un apņemsies, ka jebkura persona, kurai ir piekļuve Pārdevēja portālam, izmantojot Partnera lietotāja ID, jebkura persona, par kuru ir pamatots iemesls uzskatīt, ka tā pārstāv Partneri, un Partneru grupas uzņēmumi ievēros, pildīs un rīkosies saskaņā ar šajā 4. punktā izklāstītajiem noteikumiem un nosacījumiem.
+4.1.10 Filiāle piekrīt un apstiprina, ka šajā 4. pantā noteiktie ierobežojošie noteikumi, apņemšanās, saistības un ierobežojumi ir saprātīgi un būtiski Wink, īpaši attiecībā uz (i) tās vēlmi noslēgt šo līgumu ar Filiāli un padarīt Pakalpojumu, Saturu un Wink intelektuālā īpašuma tiesības (tieši vai netieši) pieejamas Filiālei, un (ii) Wink labas gribas, produkta, pakalpojuma un (tirgus) reputācijas aizsardzību. Turklāt Filiāle apņemas, ka visi šī 4. panta noteikumi tiks (a) nekavējoties, pienācīgi un rūpīgi ievēroti, un (b) attieksies arī uz jebkuru personu, kurai ir piekļuve Pārdevēja portālam, izmantojot Filiāles lietotāja ID, jebkuru personu, kas saprātīgi tiek uzskatīta par Filiāles pārstāvi, un uzņēmumiem Filiāļu grupā. Filiāle nodrošinās, ka šīs personas ievēro, ievēro un rīkojas saskaņā ar šī 4. panta noteikumiem.
 
-**4.2 Labdarības vērtība, zīmola aizsardzība un datplūsma**
+**4.2 Labas gribas, zīmola aizsardzība un trafiks**
 
-4.2.1 Lai aizsargātu Wink produktu, pakalpojumu, zīmolu un nemateriālo vērtību, Partneris ar šo vienojas, apņemas un garantē, ka Partnera tīmekļa vietne(-es) (tostarp visas citas tīmekļa vietnes (tieši vai netieši), kas pieder, kuras kontrolē vai mitina Partneris vai uzņēmumi Partneru grupā), izņemot Mikrovietni, ir (un paliks) pietiekami un būtiski atšķirīga un atšķirīga no Wink tīmekļa vietnes (ko nosaka Wink pēc saviem ieskatiem). Partneris ar šo piekrīt un atzīst, ka šī Līguma darbības laikā un turpmāk:\
-(a) Partnera tīmekļa vietnes(-ņu) izskats un darbība (tostarp visas pārējās tīmekļa vietnes (tieši vai netieši), kas pieder Partnerim, kuras tas kontrolē vai mitina) ir skaidri un būtiski atšķirīgas no Wink tīmekļa vietnes, tostarp attiecībā uz krāsu shēmu, kompozīciju, burtveidoliem, dizainu un izkārtojumu (tostarp zīmolu), (klikšķināšanas) pogām, lodziņiem un baneriem, kā arī pieejamajām funkcijām (izņemot tās funkcijas, kas ir pamatoti nepieciešamas Partnera pienākumu izpildei saskaņā ar šo Līgumu);\
-(b) jebkurš(-i) logotips(-i), kas izmantots(-i) Partnera tīmekļa vietnē(-ēs) (tostarp visās citās tīmekļa vietnēs, kas pieder Partnerim, kuras tas pārvalda vai mitina), ir ievērojami atšķirīgs no Wink logotipa (izņemot jebkuru logotipu, ko Wink var nodrošināt Partnera lietošanai saskaņā ar šo Līgumu);\
-(c) Partneris nekādā veidā nedrīkst imitēt vai kopēt Wink tīmekļa vietnes (vispārīgi vai attiecībā uz noteiktām (jaunām) funkcijām, lapām, formu, sastāvu vai aspektiem), un\
-(d) Partnerim nekavējoties un par saviem līdzekļiem jāizpilda visi Wink pamatotie pieprasījumi veikt šādas (turpmākas) izmaiņas, grozījumus vai labojumus jebkurā Partnera tīmekļa vietnes(-u) aspektā, kas ir vai var tikt uzskatīts par maldinošu vai būtiski līdzīgu jebkuram Wink tīmekļa vietnes elementam.
+4.2.1 Lai aizsargātu Wink produktu, pakalpojumu, zīmolu un labu gribu, Filiāle apņemas, ka Filiāļu tīmekļa vietne(-es) (ieskaitot visas citas tīmekļa vietnes, kas tieši vai netieši pieder, tiek kontrolētas vai mitinātas Filiālei vai Filiāļu grupas uzņēmumiem), izņemot Mikro vietni, ir un paliks pietiekami un būtiski atšķirīga no Wink tīmekļa vietnes (to noteiks Wink pēc saviem ieskatiem). Filiāle piekrīt un apstiprina, ka līguma darbības laikā un pēc tam:
+
+(a) Filiāļu tīmekļa vietnes izskats un sajūta (ieskaitot visas citas tīmekļa vietnes, kas tieši vai netieši pieder, tiek kontrolētas vai mitinātas Filiālei) būtiski atšķirsies no Wink tīmekļa vietnes, tostarp krāsu shēma, kompozīcija, fonti, dizains un izkārtojums (ieskaitot zīmolu), pogas, lodziņi un baneri un pieejamās funkcijas (izņemot funkcijas, kas saprātīgi nepieciešamas Filiāles saistību izpildei saskaņā ar šo līgumu);
+
+(b) jebkuri logotipi, kas tiek izmantoti Filiāļu tīmekļa vietnē(-ēs) (ieskaitot citas tīmekļa vietnes, kas pieder, tiek kontrolētas vai mitinātas Filiālei), būtiski atšķirsies no Wink logotipa (izņemot logotipus, ko Wink nodrošina Filiālei saskaņā ar šo līgumu);
+
+(c) Filiāle nekādā veidā neatkārtos vai nekopēs Wink tīmekļa vietnes (kopumā vai attiecībā uz noteiktām (jaunām) funkcijām, lapām, formām, kompozīciju vai aspektiem);
+
+(d) Filiāle nekavējoties par saviem līdzekļiem izpildīs jebkādus saprātīgus Wink pieprasījumus veikt šādas (papildu) izmaiņas, grozījumus vai papildinājumus jebkurā Filiāļu tīmekļa vietnes aspektā, kas ir vai var tikt uzskatīts par mulsinoši vai būtiski līdzīgu jebkuram Wink tīmekļa vietnes elementam.
 
 **4.3 Intelektuālā īpašuma tiesības**
 
-4.3.1 Partneris atzīst, ka Wink un/vai tā licences devēji saglabā visas tiesības, īpašumtiesības un intereses uz visām Wink intelektuālā īpašuma tiesībām vai Wink tīmekļa vietnē ietvertajām tiesībām, tostarp (bet ne tikai) Wink logotipu, saturu un Wink datus. Nekas šajā Līgumā nekādā veidā netiek uzskatīts par šādu tiesību, īpašumtiesību vai interešu nodošanu Partnerim.
+4.3.1 Filiāle apzinās, ka Wink un/vai tā licencētāji saglabā visas tiesības, īpašumtiesības un intereses uz visām Wink intelektuālā īpašuma tiesībām vai tām, kas ir iekļautas Wink tīmekļa vietnē, tostarp (bet ne tikai) Wink logotipu, saturu un Wink datus. Nekas šajā līgumā netiek uzskatīts par tiesību, īpašumtiesību vai interešu nodošanu Filiālei.
 
-4.3.2 Partneris nedrīkst atklāt, integrēt, iekļaut, izmantot, apvienot, izmantot, iekļaut vai citādi padarīt Saturu un Wink datus (vai jebkuru to daļu) pieejamu (a) ar savu saturu un/vai jebkura Wink konkurenta (tostarp Izmitināšanas pakalpojumu sniedzēju) saturu, vai (b) (i) sev vai viņa labā (izņemot Pakalpojuma un Sistēmas iespējošanu saskaņā ar šī Līguma noteikumiem), vai (ii) jebkuram Wink konkurentam (tostarp Izmitināšanas pakalpojumu sniedzējiem) (neatkarīgi no tā, vai tas ir paredzēts šādas puses reklamēšanai, mārketingam, atsaucei, reklamēšanai, reklamēšanai vai citādi šādas puses interesēs), vai (c) jebkādiem citiem mērķiem vai jebkādā citā veidā un/vai Trešo pušu platformās vai ar to starpniecību, izņemot gadījumus, kad tas ir skaidri noteikts šajā Līgumā. Partneris nedrīkst grozīt, pārveidot, pārveidot, sagrozīt, radīt atvasinātus un/vai jaunus darbus, kuru pamatā ir un/vai kurināmi no Satura, un Saturā nedrīkst būt (tieša vai netieša) saite, atsauce, klikšķis vai atsauce uz (Wink konkurenta (tostarp Izmitināšanas pakalpojumu sniedzēju) tīmekļa vietni).
+4.3.2 Filiāle nedrīkst izpaust, integrēt, iekļaut, izmantot, apvienot, izmantot, iekļaut vai citādi padarīt pieejamu saturu un Wink datus (vai to daļu) (a) kopā ar savu saturu un/vai jebkura Wink konkurenta saturu (ieskaitot Naktsmītņu sniedzējus), vai (b) sev (izņemot Pakalpojuma un Sistēmas nodrošināšanu saskaņā ar šo līgumu), vai (c) jebkuram Wink konkurentam (ieskaitot Naktsmītņu sniedzējus) (neatkarīgi no tā, vai tas ir reklāmas, mārketinga, atsauces vai citiem nolūkiem), vai (d) jebkuram citam mērķim vai jebkurā citā veidā un/vai caur trešo pušu platformām, izņemot, ja tas ir skaidri paredzēts šajā līgumā. Filiāle nedrīkst mainīt, grozīt, modificēt, izkropļot, radīt atvasinātus vai jaunus darbus, kas balstīti uz saturu, un saturs nedrīkst ietvert (tiešu vai netiešu) saiti, atsauci, klikšķināmu saiti vai atsauci uz Wink konkurenta (ieskaitot Naktsmītņu sniedzējus) tīmekļa vietni.
 
-4.3.3 Partnerim nav tiesību (un jānodrošina, ka Partneru grupas uzņēmumi to nedara) (tieši vai netieši) reģistrēt, iegūt, izmantot, pirkt vai iegūt interneta domēna vārdu, kas ietver jebkuru vārdu vai vārdus, kas ir identiski, mulsinoši vai būtiski līdzīgi vārdam "Wink" vai jebkādām tā variācijām, tulkojumiem vai pareizrakstības kļūdām, kas iekļautas kā daļa no adreses.
+4.3.3 Filiāle nedrīkst (tieši vai netieši) reģistrēt, iegūt, izmantot, pirkt vai iegūt interneta domēna vārdu, kas satur jebkuru vārdu vai vārdus, kas ir identiski vai mulsinoši līdzīgi "Wink" vai tā variācijām, tulkojumiem vai pareizrakstības kļūdām, kas iekļauti adresē.
 
-4.3.4 Noslēdzot šo Līgumu, Wink (tieši vai netieši) neatsakās no savām tiesībām, kas tai pienākas saskaņā ar jebkuru likumu, līgumu vai citādi (tagad vai nākotnē) attiecībā uz Wink intelektuālā īpašuma tiesībām pret Filiāli vai citām trešajām personām.
+4.3.4 Ienākot šajā līgumā, Wink nepārtrauc un nezaudē nekādas tiesības, ko tai piešķir likums, līgums vai citādi (tagad vai nākotnē) attiecībā uz Wink intelektuālā īpašuma tiesībām pret Filiāli vai citām trešajām pusēm.
 
 **4.4 Veicināšana un mārketings**
 
-4.4.1 Līguma darbības laikā Partneris piekrīt un garantē, ka tas neveiks (un nodrošinās, ka Partneru grupas uzņēmumi neveiks) (vai neļaus vai nepilnvaros trešās personas veikt, uzņemties, izmantot, veikt vai īstenot) (a) Apmaksātas meklēšanas, SEM vai SEO darbības, (b) jebkādas darbības, kas negodīgi ietekmē Trešo pušu platformu rezultātus, vai (c) jebkādu citu tiešsaistes mērķreklāmas veidu (tieši, netieši vai ar Trešo pušu platformu starpniecību) attiecībā uz:
+4.4.1 Līguma darbības laikā Filiāle apņemas, ka tā (un Filiāļu grupas uzņēmumi) neveiks, neizmantos, nepildīs vai neļaus trešajām pusēm veikt (a) maksas meklēšanu, SEM vai SEO aktivitātes, (b) jebkādas darbības, lai negodīgi ietekmētu trešo pušu platformu rezultātus, vai (c) jebkādu citu tiešsaistes mērķtiecīgu reklāmu (tieši, netieši vai caur trešo pušu platformām) attiecībā uz:
 
-1. Pakalpojums;
-2. Wink tīmekļa vietne;
-3. Saturs;
-4. Wink dati;
-5. Wink zīmoli;
-6. Naktsmītnes pakalpojumu sniedzēju zīmoli (ja vien šāda Naktsmītnes pakalpojumu sniedzēja zīmola īpašnieks nav devis iepriekšēju rakstisku piekrišanu Filiālei par šī konkrētā Naktsmītnes pakalpojumu sniedzēja zīmola izmantošanu), vai
-7. Saistīto tīmekļa vietni tiktāl, ciktāl maksas meklēšana, meklētājprogrammu optimizācija (SEM), meklētājprogrammu optimizācija (SEO) vai citas tiešsaistes mērķtiecīgas reklāmas aktivitātes ir saistītas ar (a) Naktsmītnes piedāvāšanu, rezervēšanu vai rezervāciju (izmantojot Pakalpojumu vai citādi) vai (b) informāciju par Naktsmītnes.
+1. Pakalpojumu;  
+2. Wink tīmekļa vietni;  
+3. Saturu;  
+4. Wink datus;  
+5. Wink zīmolus;  
+6. Naktsmītņu sniedzēju zīmolus (izņemot gadījumus, kad attiecīgā Naktsmītņu sniedzēja zīmola īpašnieks ir rakstiski devis Filiālei iepriekšēju atļauju izmantot šo konkrēto zīmolu); vai  
+7. Filiāļu tīmekļa vietni, ja maksas meklēšana, SEM, SEO vai cita tiešsaistes mērķtiecīga reklāma ir saistīta ar (a) naktsmītņu piedāvājumu, rezervēšanu vai rezervāciju (caur Pakalpojumu vai citādi), vai (b) informāciju par naktsmītnēm.
 
-4.4.1. punkta noteikumi attiecībā uz (i) punktu līdz (v) punktam (ieskaitot) paliek spēkā arī pēc šī Līguma izbeigšanas.
+4.4.1 punkts attiecībā uz apakšpunktiem (i) līdz (v) saglabā spēku arī pēc šī līguma izbeigšanas.
 
-4.4.2 Partneris nedrīkst tieši vai netieši izmantot, ekspluatēt vai citādi nodarbināt T Platformas, lai mēģinātu izvairīties no vai apiet savus līgumus, saistības vai ierobežojumus saskaņā ar šo Līgumu vai tos ierobežojumus vai līgumus, par kuriem Partneris pamatoti varētu sagaidīt, ka šādas darbības ietilpst šī Līguma darbības jomā.
+4.4.2 Filiāle nedrīkst izmantot, ekspluatēt vai citādi izmantot jebkādas T platformas, lai izvairītos vai apietu savas saistības, pienākumus vai ierobežojumus saskaņā ar šo līgumu vai citus ierobežojumus vai saistības, par kurām Filiāle saprātīgi varētu sagaidīt, ka tās ietilpst šī līguma darbības jomā.
 
-4.4.3 Partneris nedrīkst izmantot vai izmantot Saturu nekādiem mērķiem vai jebkādā veidā un/vai Trešo pušu platformās vai ar to starpniecību, izņemot gadījumus, kad tas ir skaidri noteikts šajā Līgumā.
+4.4.3 Filiāle nedrīkst izmantot saturu jebkādā citā veidā vai caur trešo pušu platformām, izņemot, ja tas ir skaidri paredzēts šajā līgumā.
 
-4.4.4 Šī Līguma darbības laikā (un pēc tam attiecībā uz Wink zīmoliem un Wink datiem) Filiālei nekavējoties jāizpilda jebkurš Wink pieprasījums ievērot un izpildīt šo 4.4. punktu, pretējā gadījumā Wink var izbeigt Līgumu ar tūlītēju spēku un neskarot savus juridiskos un līgumiskos tiesiskās aizsardzības līdzekļus.
+4.4.4 Līguma darbības laikā (un turpinot attiecībā uz Wink zīmoliem un Wink datiem) Filiāle nekavējoties izpildīs jebkuru Wink pieprasījumu ievērot un pildīt šo 4.4 pantu, pretējā gadījumā Wink var nekavējoties izbeigt līgumu bez ierobežojuma attiecībā uz savām tiesiskajām un līgumiskajām tiesībām.
 
-**4.5 Dubultas rādīšanas vai maskēšanas aizliegums**
+**4.5 Nav dubultas apkalpošanas vai maskēšanas**
 
-4.5.1 Saistīto uzņēmumu tīmekļa vietnes nedrīkst būt (tieši vai netieši) saistītas ar Wink tīmekļa vietnēm, izmantojot dubulto apkalpošanu vai līdzīgu tehniku ​​vai metodi, vai citus ierobežojumus, kas noteikti jebkuros surogātpasta izplatīšanas noteikumos.
+4.5.1 Filiāļu tīmekļa vietnes nedrīkst būt (tieši vai netieši) saistītas ar Wink tīmekļa vietnēm dubultas apkalpošanas vai jebkādas līdzīgas tehnikas vai metodes dēļ vai citu ierobežojumu dēļ, kā noteikts jebkādos spama noteikumos.
 
-4.5.2 Gadījumā, ja Pakalpojums tiek darīts pieejams, izmantojot Saiti vai Mikrovietni, Partneris nedrīkst (tieši vai netieši) padarīt Pakalpojumu pieejamu, izmantojot vai izmantojot šim nolūkam ceļojumu meklēšanas vietnes vai cenu salīdzināšanas vietnes, ja vien Wink nav rakstiski vienojies citādi.
+4.5.2 Ja Pakalpojums tiek nodrošināts caur Saiti vai Mikro vietni, Filiāle nedrīkst padarīt Pakalpojumu (tieši vai netieši) pieejamu vai izmantot ceļojumu meklēšanas vietnes vai cenu salīdzināšanas vietnes, ja vien Wink rakstiski nav vienojies citādi.
 
-4.5.3 Partneris nedrīkst (tieši vai netieši) padarīt pieejamu Partnera tīmekļa vietni(-es), Saturu vai Pakalpojumu vai prezentēt Saturu Trešo pušu platformām ar nolūku vai nolūku (mēģinot) maldināt, krāpt, apmānīt vai apmānīt Trešo pušu platformu cilvēku redaktorus, datoru meklētājprogrammu zirnekļus, tīmekļa robotus vai (meta)meklētājprogrammas (tostarp jebkurus līdzīgus rīkus vai dzinējus), lai piešķirtu Partnera tīmekļa vietnei(-ēm) augstāku rangu vai attēlojumu, ja tā(-as) citādi netiktu attēlota vai ieņemtu augstāku rangu, ja tā nebūtu izmantota maskēšanai vai jebkurai līdzīgai tehnikai vai metodei.
+4.5.3 Filiāle nedrīkst (tieši vai netieši) padarīt Filiāļu tīmekļa vietni(-es), saturu vai Pakalpojumu pieejamu vai rādīt saturu trešo pušu platformām ar nodomu vai mērķi maldināt, apmānīt, apkrāpt vai apmuļķot cilvēku redaktorus, datoru meklētājprogrammu robotus, tīmekļa pārlūkus vai (meta) meklētājus (ieskaitot jebkādus līdzīgus rīkus vai dzinējus) trešo pušu platformās, lai nodrošinātu Filiāļu tīmekļa vietnei(-ēm) augstāku rangu vai rādīšanu, kas citādi netiktu rādīta vai būtu zemākā pozīcijā, ja netiktu izmantota maskēšana vai līdzīga tehnika vai metode.
 
-4.5.4 Partneris apņemas un garantē nekavējoties ievērot, novērot un izpildīt Surogātpasta izplatīšanas noteikumus (un visus Wink pamatotos pieprasījumus šajā sakarā), lai novērstu Wink vai Partnera tīmekļa vietnes(-u) šādu politiku pārkāpumus Partnera tīmekļa vietnes(-u) dēļ vai attiecībā uz to. Lai izvairītos no šaubām, Partneris nevar īstenot nekādas tiesības šajā sakarā pret Wink un ar šo atsakās no jebkādām (tiesībām uz) aizstāvību vai prasībām pret Wink šajā sakarā.
+4.5.4 Filiāle apņemas nekavējoties ievērot, pildīt un ievērot spama noteikumus (un visus saprātīgos Wink pieprasījumus šajā sakarā), lai izvairītos no Wink vai Filiāļu tīmekļa vietnes pārkāpumiem attiecībā uz šīm politikām. Lai izvairītos no pārpratumiem, Filiāle nevar īstenot nekādas tiesības pret Wink šajā sakarā un ar šo atsakās no jebkādas aizstāvības vai prasībām pret Wink.
 
-**4.6 Nepieprasīšana**
+**4.6 Nekonkurēšana**
 
-Partneris piekrīt nesazināties, nepieprasīt un nepieņemt nevienu Izmitināšanas pakalpojumu sniedzēju (i) kā savu biznesa partneri rezervāciju veikšanai vai rezervēšanai (tieši vai netieši) Partnera tīmekļa vietnē(-ēs) vai ar tās starpniecību, (ii) reklāmas vietas pārdošanai vai citiem (tiešsaistes) reklāmas vai mārketinga mērķiem (izmantojot reklāmkarogus, klikšķināšanas saites, (teksta) saites, uznirstošos logus vai citādi) Partnera tīmekļa vietnē(-ēs) vai (iii) jebkāda cita iemesla dēļ.
+Filiāle apņemas nekontaktēt, nelūgt vai nepieņemt nevienu Naktsmītņu sniedzēju (i) kā savu biznesa partneri rezervācijām vai rezervācijām (tieši vai netieši) caur Filiāļu tīmekļa vietni(-ēm), (ii) reklāmas vietu pārdošanai vai citām (tiešsaistes) reklāmas vai mārketinga vajadzībām (piemēram, baneri, klikšķināmas saites, uznirstošās logi utt.) Filiāļu tīmekļa vietnē(-ēs), vai (iii) jebkādu citu iemeslu dēļ.
 
 **4.7 Līdzīgi domēna vārdi**
 
-4.7.1 Gadījumā, ja Partnerim ir vai viņš/viņa izmanto domēna vārdu, kas (mulsinoši) ir līdzīgs Wink zīmoliem ("Līdzīgs domēna vārds") Partnera tīmekļa vietnei(-ēm) (ko nosaka pēc Wink ieskatiem), vai gadījumā, ja Partneris vēlas reģistrēt, iegūt, lietot, iegādāties vai iegūt Līdzīgu domēna vārdu (saskaņā ar Wink iepriekšēju rakstisku apstiprinājumu), piemērojami šādi noteikumi. Partnerim (un jānodrošina, ka uzņēmumi, kurus tas kontrolē) tieši vai netieši nedrīkst:
+4.7.1 Ja Filiālei ir vai tā izmanto domēna vārdu, kas mulsinoši līdzinās Wink zīmoliem (turpmāk – "Līdzīgais domēna vārds") Filiāļu tīmekļa vietnē(-ēs) (to noteiks Wink pēc saviem ieskatiem) vai ja Filiāle vēlas reģistrēt, iegūt, izmantot, pirkt vai iegūt Līdzīgo domēna vārdu (ar Wink iepriekšēju rakstisku atļauju), attiecībā uz to attiecas šādi noteikumi. Filiāle (un tās kontrolētie uzņēmumi) nedrīkst tieši vai netieši:
 
-1. piedāvāt vai iegādāties līdzīga domēna vārda vai jebkuras tā daļas vai līdzību izvietošanas tiesības internetā jebkādā veidā jebkurā savā reklāmā, tostarp, bet ne tikai, interneta un tīmekļa reklāmā.\
-   2\. iekļaut līdzīgu domēna vārdu vai jebkuru tā daļu, vai līdzīgas variācijas, tulkojumus vai pareizrakstības kļūdas jebkuras tīmekļa vietnes koda meta tagos. Tas ietver meta virsrakstu, meta atslēgvārdus vai meta aprakstu.\
-   3\. tieši vai netieši iegādāties, iegūt vai izmantot jebkādus atslēgvārdus no trešo pušu platformām, lai novirzītu trafiku uz līdzīgu domēna vārdu, un\
-   4\. iegādāties līdzīgu domēna vārdu vai jebkuru tā daļu, vai jebkādas tā variācijas, tulkojumus vai pareizrakstības kļūdas, lai izmantotu teksta saitēs, reklāmkarogos, uznirstošajās reklāmās vai jebkura cita veida reklāmās, kas varētu būt saistītas ar atslēgvārdu kampaņu.
+1. piedalīties vai iegādāties interneta izvietošanas tiesības Līdzīgajam domēna vārdam vai tā daļai vai līdzībām jebkādā veidā savā reklāmā, tostarp, bet ne tikai, interneta un tīmekļa reklāmā;  
+2. iekļaut Līdzīgo domēna vārdu vai tā daļu, vai līdzīgas variācijas, tulkojumus vai pareizrakstības kļūdas meta tagos jebkuras tīmekļa vietnes kodā, tostarp meta virsrakstā, meta atslēgvārdos vai meta aprakstā;  
+3. iegādāties, iegūt vai izmantot tieši vai netieši jebkādus atslēgvārdus no trešo pušu platformām, lai novirzītu trafiku uz Līdzīgo domēna vārdu; un  
+4. iegādāties Līdzīgo domēna vārdu vai tā daļu, vai jebkādas tā variācijas, tulkojumus vai pareizrakstības kļūdas, lai izmantotu tekstu saitēs, baneru reklāmās, uznirstošajās reklāmās vai jebkādā citā reklāmas veidā, kas varētu būt saistīts ar atslēgvārdu kampaņu.
 
-4.7.2 Attiecībā uz Līdzīgiem Domēna Vārdiem, kas nav Saistītā Tīmekļa Vietne, Puses ir vienojušās, ka (i) visi šādi Līdzīgi Domēna Vārdi būs tieši saistīti ar Saistīto Tīmekļa Vietni, izmantojot tiešu novirzīšanu, un nebūs aktīvi pieejami tiešsaistē nekādā nolūkā, un (ii) Saistītais Uzņēmums (nedz arī kāds no Saistītās Grupas) nekādā veidā (tiešsaistē vai bezsaistē) netirgos, neveicinās, neatbrīvosies, nepārdos, nepiedāvās, nereklāmēs, neapakš)licencēs, nepadarīs pieejamus, neļaus piekļūt, neatsaucēs uz tiem, nepublicēs un neizplatīs Līdzīgus Domēna Vārdus.
+4.7.2 Attiecībā uz Līdzīgajiem domēna vārdiem, kas nav Filiāļu tīmekļa vietne, Puses ir vienojušās, ka (i) visi šādi Līdzīgie domēna vārdi tiks tieši saistīti ar Filiāļu tīmekļa vietni, izmantojot tiešu pāradresāciju, un nebūs aktīvi pieejami vai tiešsaistē jebkādiem mērķiem, un (ii) Filiāle (un Filiāļu grupa) nekādā veidā (tiešsaistē vai bezsaistē) nemārketingos, nepārdos, nepiedāvās, nereklamēs, neizplatīs vai neļaus piekļuvi Līdzīgajiem domēna vārdiem.
 
-**4.8 Cenu salīdzinājums**
+**4.8 Cenu salīdzināšana**
 
-4.8.1 Gadījumā, ja Partneris piedāvā Cenu salīdzinājumu attiecīgajā(-ās) Partnera tīmekļa vietnē(-ēs), kā norādīts Partnera partnera reģistrācijas veidlapā, Partnerim šajā attiecīgajā(-ajās) Partnera tīmekļa vietnē(-ēs) tiek piešķirta tikai piekļuve attiecīgo Izmitināšanas pakalpojumu sniedzēju cenu un pieejamības datiem, kas ir pieejami Wink tīmekļa vietnē (kopā saukti par "Cenu un pieejamības datiem"), izmantojot tiešu savienojumu ar Wink tīmekļa serveriem (t. i., izmantojot JSON savienojumu). Cenu un pieejamības dati tiks darīti pieejami saskaņā ar Wink sniegtajiem papildu noteikumiem un nosacījumiem.
+4.8.1 Ja Filiāle piedāvā cenu salīdzināšanu attiecīgā Filiāļu tīmekļa vietnē(-ēs), kā norādīts Filiāļu partneru reģistrācijas veidlapā, Filiālei šai attiecīgajai Filiāļu tīmekļa vietnei(-ēm) tiks piešķirta piekļuve attiecīgo Naktsmītņu sniedzēju tarifiem un pieejamības datiem, kas pieejami Wink tīmekļa vietnē (kopā – "Tarifi un pieejamības dati") tiešas savienojuma ar Wink tīmekļa serveriem (piemēram, caur JSON savienojumu) veidā. Tarifi un pieejamības dati tiks nodrošināti saskaņā ar papildu noteikumiem, ko nodrošina Wink.
 
-4.8.2 Cenu un pieejamības dati neietver, un Partnerim nav tiesību izmantot, kopēt, atsaukties vai iekļaut savās tīmekļa vietnēs, kur ir pieejama Cenu salīdzināšana, Wink datus un saturu no Wink tīmekļa vietnes vai tīmekļa serveriem vai trešās puses (tīmekļa vietnes), ar kuru Wink ir līgumattiecības par Satura nodrošināšanu.
+4.8.2 Tarifi un pieejamības dati neietver un Filiālei nav tiesību izmantot, kopēt, atsaukties vai iekļaut savās tīmekļa vietnēs, kur pieejama cenu salīdzināšana, Wink datus un saturu no Wink tīmekļa vietnes vai tīmekļa serveriem vai trešās puses (tīmekļa vietnes), ar kuru Wink ir līgumattiecības par satura nodrošināšanu.
 
-4.8.3 Gadījumā, ja Partneris piedāvā Cenu salīdzinājumu, Partnerim ir jānodrošina, ka visu Wink konkurentu (tostarp visu Izmitināšanas pakalpojumu sniedzēju vai rezervēšanas centru, starpnieku vai aģentu (kopā saukti par "Trešo pušu pakalpojumu sniedzējiem")) Partnera tīmekļa vietnē pieejamās numuru cenas ir precīzas, pareizas un nav maldinošas vai krāpnieciskas, salīdzinot ar faktisko cenu(-ām), kas pieejama(-as) Trešo pušu pakalpojumu sniedzēju tīmekļa vietnē(-ēs).
+4.8.3 Ja Filiāle piedāvā cenu salīdzināšanu, tā nodrošinās, ka visu Wink konkurentu (ieskaitot visus Naktsmītņu sniedzējus vai rezervēšanas vai starpnieku centrus, starpniekus vai aģentus) cenas, kas pieejamas Filiāļu tīmekļa vietnē, ir precīzas, pareizas un nemaldinošas salīdzinājumā ar faktiskajām cenām, kas pieejamas trešo pušu vietnēs.
 
-4.8.4 Partnera Cenu salīdzināšanas tīmekļa vietnē Wink tiks uzskatīts par vismaz tikpat labvēlīgu (attiecībā uz rangu, attēlošanas un konversijas iespējām) kā vislabāk konvertējošs (x) Wink konkurents, (y) Izmitināšanas pakalpojumu sniedzējs vai (z) jebkurš rezervēšanas centrs, aģents vai starpnieks, ko pārvalda, pieder vai kontrolē Wink konkurents vai Izmitināšanas pakalpojumu sniedzēji, kas pieejami Partnera Cenu salīdzināšanas tīmekļa vietnē.
+4.8.4 Wink tiks izturēts vismaz tikpat labvēlīgi Filiāļu cenu salīdzināšanas vietnē (attiecībā uz pozicionēšanu, rādīšanu un konvertēšanas iespējām) kā labākie konvertējošie (x) Wink konkurenti, (y) Naktsmītņu sniedzēji vai (z) jebkuri rezervēšanas vai starpnieku centri, aģenti vai starpnieki, kas pieder vai tiek kontrolēti Wink konkurentiem vai Naktsmītņu sniedzējiem un ir pieejami Filiāļu cenu salīdzināšanas vietnē.
 
-**4.9 Pierādīšanas pienākums, atbilstība, tiesas aizliegums un papildu tiesiskās aizsardzības līdzekļi**
+**4.9 Pierādījumu slogs, atbilstība, aizlieguma līdzekļi un citi līdzekļi**
 
-4.9.1 Puses vienojas un atzīst, ka Partnera pienākumu saskaņā ar šo 4. punktu (iespējamu vai draudošu) pārkāpuma vai neizpildes gadījumā pierādīšanas pienākums gulstas uz Partneri. Citiem vārdiem sakot, Wink gūst pieņēmuma priekšrocības, un Partnerim ir jāsniedz un jāiesniedz pietiekami un apmierinoši pierādījumi (t. i., pārliecinoši un neapgāžami), lai aizstāvētu vai noraidītu prasību.
+4.9.1 Puses piekrīt un apstiprina, ka gadījumā, ja Filiāle (apgalvoti vai draudot) pārkāpj savas saistības saskaņā ar šo 4. pantu, pierādījumu slogs gulstas uz Filiāli. Citiem vārdiem sakot, Wink ir pieņēmuma labums, un Filiālei jāsniedz pietiekami un pārliecinoši pierādījumi (t.i., galīgi un nepārprotami), lai aizstāvētos vai noraidītu prasību.
 
-4.9.2 Gadījumā, ja Wink vietne, kampaņa vai reklāma ir saistīta ar Partnera vietni(-ēm) vai Partnera kampaņu vai reklāmu (vai otrādi), vai ja Partneris (draudoši) pārkāpj Surogātpasta noteikumus, Partnerim (i) nekavējoties jāpaziņo Wink par šādu (draudošu) pārkāpumu pēc tam, kad tas ir kļuvis zināms, un (ii) pēc Wink pirmā pieprasījuma nekavējoties jāievieš, jāievēro un jāpilda visi šajā Līgumā noteiktie vai Wink pieprasītie noteikumi, ierobežojumi un aizliegumi. Partnerim nekavējoties jāsazinās ar katru Trešās puses platformu vai trešās puses aģentūru un jāpārskata Partnera vietne(-es) un visi reklāmas teksti, nosaukumi, apraksti, atslēgvārdi, URL, teksta saites, reklāmas, tostarp visas meta birkas (meta nosaukumus, meta atslēgvārdus un meta aprakstus), lai tie atbilstu šī Līguma noteikumiem vai Wink pieprasījumam.
+4.9.2 Gadījumā, ja Wink tīmekļa vietne, kampaņa vai reklāma ir saistīta ar Filiāļu tīmekļa vietni(-ēm) vai Filiāles kampaņu vai reklāmu (vai otrādi), vai gadījumā, ja Filiāle pārkāpj spama noteikumus, Filiāle (i) nekavējoties paziņos Wink par šādu pārkāpumu pēc tā atklāšanas, un (ii) pēc Wink pirmā pieprasījuma nekavējoties īstenos, ievēros un pildīs visus šī līguma noteikumus, ierobežojumus un aizliegumus vai Wink pieprasījumus. Filiāle nekavējoties sazināsies ar katru trešo pušu platformu vai aģentūru un pārskatīs Filiāļu tīmekļa vietni(-es) un visu reklāmas tekstu, virsrakstus, aprakstus, atslēgvārdus, URL, teksta saites, reklāmas, tostarp meta tagus (meta virsrakstus, meta atslēgvārdus un meta aprakstus), lai nodrošinātu atbilstību šim līgumam vai Wink pieprasījumiem.
 
-4.9.3 Partneris piekrīt un atzīst, ka, kamēr nav izpildīti vai īstenoti Wink pamatotie pieprasījumi, vai gadījumā, ja Partneris nekavējoties neizpilda vai neievēro visus šādus Wink pieprasījumus saskaņā ar šo 4. punktu, Wink ir tiesības atlikt vai apturēt savas saistības saskaņā ar šo Līgumu (tostarp Pakalpojuma, Sistēmas un Wink datu piedāvāšanu) vai nekavējoties izbeigt šo Līgumu, neskarot Wink tiesības saskaņā ar šo Līgumu vai citādi.
+4.9.3 Filiāle piekrīt un apstiprina, ka, ja Filiāle nekavējoties nepildīs vai neievēros visus Wink saprātīgos pieprasījumus saskaņā ar šo 4. pantu, Wink ir tiesības atlikt vai apturēt savas saistības saskaņā ar šo līgumu (ieskaitot Pakalpojuma, Sistēmas un Wink datu piedāvājumu) vai nekavējoties izbeigt šo līgumu, neietekmējot Wink tiesības saskaņā ar šo līgumu vai citādi.
 
-4.9.4 Ja Filiāle pārkāpj šajā 4. punktā noteiktās vienošanās, saistības, ierobežojumus, pienākumus un/vai garantijas vai ja tas ir attiecināms uz Filiāli, Wink ir tiesības īstenot šādas darbības un tiesības, neņemot vērā likumā vai līgumā paredzētos tiesiskās aizsardzības līdzekļus un prasības attiecībā uz konkrētu izpildi, zaudējumu kompensāciju vai aizlieguma vai taisnīguma aizsardzību:\
-(a) apturēt savas (maksājumu) saistības saskaņā ar šo Līgumu vai izbeigt to ar tūlītēju spēku bez iepriekšēja brīdinājuma Partnerim un neskarot Wink tiesības saskaņā ar šo Līgumu vai citādi;\
-(b) Wink ir tiesības samazināt Komisijas maksu līdz 0% par visām veiktajām rezervācijām un/vai katru Materializēto darījumu periodā, kurā Partneris pārkāpj attiecīgos 4. punktā noteiktos pienākumus vai nav pilnībā novērsis attiecīgo 4. punktā noteikto pienākumu pārkāpumu;\
-(c) Wink patur tiesības pieprasīt Partnerim atmaksāt Komisijas maksu, ko Wink samaksājusi saskaņā ar šo Līgumu; un\
-(d) Līdzīga Domēna Vārda lietošanas gadījumā (vai Partnera īpašumā vai reģistrācijā ir tīmekļa vietne ar (mulsinoši) līdzīgu domēna vārdu, kāds pieder Wink vai ko izmanto) un atkārtota un/vai būtiska 4. punkta pārkāpuma gadījumā, Partnerim ir jānodod, jāpiešķir un jāreģistrē Līdzīgs Domēna Vārds (tostarp tīmekļa vietne(-es) ar (mulsinoši) līdzīgu domēna vārdu) Wink vārdā, izmantojot Wink izvēlētu domēna vārdu reģistratoru uzņēmumu, un šis process jāpabeidz 20 darba dienu laikā pēc pārkāpuma notikuma. Gadījumā, ja Partneris nesadarbojas un neveic attiecīgo domēna vārdu nodošanu, piešķiršanu un nodošanu, Partneris ar šo neatsaucami un bez nosacījumiem pilnvaro un piešķir pilnvaru Wink parakstīt un/vai parakstīt visus dokumentus, kas ir nepieciešami vai noderīgi saistībā ar domēna vārdu piešķiršanu, reģistrēšanu, iestatīšanu un nodošanu Wink vārdā.
+4.9.4 Gadījumā, ja Filiāle pārkāpj šī 4. panta saistības, ierobežojumus, pienākumus vai garantijas, Wink ir tiesības veikt šādas darbības un izmantot šādas tiesības, neietekmējot tiesiskos līdzekļus, tostarp prasības par izpildi, zaudējumu atlīdzību vai aizlieguma vai taisnīguma līdzekļiem:
+
+(a) nekavējoties apturēt savas (maksājumu) saistības vai izbeigt šo līgumu bez iepriekšēja paziņojuma Filiālei;  
+(b) samazināt komisiju līdz 0% par visām rezervācijām un/vai katru realizēto darījumu līguma darbības laikā, kad Filiāle pārkāpj attiecīgās saistības;  
+(c) pieprasīt Filiālei atgriezt Wink izmaksāto komisiju saskaņā ar šo līgumu; un  
+(d) ja Filiāle izmanto Līdzīgu domēna vārdu (vai pieder vai reģistrē tīmekļa vietni ar mulsinoši līdzīgu domēna vārdu kā Wink) un atkārtoti vai būtiski pārkāpj 4. pantu, Filiāle nodos, pārreģistrēs un reģistrēs Līdzīgo domēna vārdu Wink vārdā caur Wink izvēlētu domēna reģistrācijas uzņēmumu 20 darba dienu laikā pēc pārkāpuma konstatēšanas. Ja Filiāle nesadarbojas vai neveic šo nododšanu, pārreģistrēšanu un pārrakstīšanu, Filiāle ar šo bezierunu pilnvaro Wink parakstīt un izpildīt visus nepieciešamos dokumentus saistībā ar domēna vārdu nodošanu Wink vārdā.
 
 **5. Komisija**
 
-5.1 Wink maksās Partnerim komisijas maksu, kas ir Izmitināšanas Pakalpojumu sniedzēja noteikta procentuālā daļa no Materializētā Darījuma radītās rezervācijas vērtības. Wink izmanto Trešās Puses Maksājumu Starpnieka pakalpojumus iemaksu un izmaksu darījumiem. Maksājumu noteikumi ir noteikti atsevišķā līgumā.
+5.1 Wink maksās Filiālei komisiju, kas ir Naktsmītņu sniedzēja noteiktais procents no rezervācijas vērtības, ko ģenerē realizēti darījumi. Wink izmanto trešās puses maksājumu starpnieka pakalpojumus Pay-in un Pay-out darījumiem. Maksājumu noteikumi ir noteikti atsevišķā līgumā.
 
-5.2 Partneru komisijas procentuālo daļu jeb ACP nosaka Izmitināšanas pakalpojumu sniedzējs. Noklusējuma ACP ir 10%, bet puses var vienoties par citu procentuālo daļu, kā noteikts 1.2.3. punktā.
+5.2 Filiāles komisijas procents (ACP) tiek noteikts Naktsmītņu sniedzēja. Noklusējuma ACP ir 10%, bet puses var vienoties par citu procentu, kā noteikts 1.2.3 pantā.
 
-5.3 Komisijas maksa tiks aprēķināta saskaņā ar šādu formulu:
+5.3 Komisija tiks aprēķināta pēc formulas:
 
-Komisija = BV \* ACP\
-Neto samaksātā komisija (izmaksa) = Komisija - PSF - BF
+Komisija = BV * ACP  
+Neto komisija (Pay-out) = Komisija - PSF - BF
 
-**"BV"**&#x6E;ozīmē rezervācijas vērtību\
-**“ĀKK”**&#x6E;ozīmē filiāles komisijas procentuālo daļu\
-**"BF"**&#x6E;ozīmē rezervācijas maksu (1,5 %)\
-**"PSŠ"**&#x6E;ozīmē Maksājumu pakalpojumu komisijas maksu (4%)
+**“BV”** nozīmē Rezervācijas vērtību  
+**“ACP”** nozīmē Filiāles komisijas procentu  
+**“BF”** nozīmē Rezervācijas maksu (1,5%)  
+**“PSF”** nozīmē Maksājumu pakalpojuma maksu (4%)
 
-5.4 Wink izseko visus darījumus un veiks komerciāli pamatotus pasākumus, lai nodrošinātu, ka visi materializētie darījumi tiek izsekoti, ziņoti un apmaksāti. Tomēr Wink ieraksti būs galīgi, un Partnerim nebūs nekādas tiesības pieprasīt kompensāciju par zaudētajiem ieņēmumiem vai zaudējumiem gadījumā, ja Wink precīzi neizseko vai neziņo par Partnera aiziešanu, izņemot Wink rupjas pārkāpuma vai krāpnieciskas rīcības gadījumus. Izņemot pēdējos gadījumus, Partnera vienīgā iespēja ir izbeigt šo Līgumu un pārtraukt dalību programmā.
+5.4 Wink seko visiem darījumiem un komerciāli saprātīgi centīsies nodrošināt, ka visi realizētie darījumi tiek izsekoti, ziņoti un apmaksāti. Tomēr Wink ieraksti ir galīgi, un Filiālei nav tiesību prasīt zaudējumus vai kompensāciju, ja Wink neprecīzi izseko vai ziņo par Filiāļu izbraukumiem, izņemot gadījumus, kad ir konstatēta smaga ļaunprātība vai krāpšana no Wink puses. Šādos gadījumos Filiāles vienīgais līdzeklis ir izbeigt šo līgumu un pārtraukt dalību programmā.
 
-5.5 Norādītā Neto Komisijas maksa ir vienīgā kompensācija, ko Partnerim ir tiesības saņemt saskaņā ar šo Līgumu. Partnerim nav tiesību uz citām priekšrocībām. Wink pienākums ir pārbaudīt Neto Komisijas maksājumu precizitāti pirms maksājuma veikšanas, un Partnera pienākums ir pārbaudīt visus Neto Komisijas maksājumus pēc to saņemšanas un nekavējoties ziņot par iespējamām kļūdām. Neviena no pusēm nevar iesniegt pretenzijas par pārmaksu vai nepietiekamu samaksu deviņdesmit (90) kalendāro dienu laikā pēc maksājuma termiņa. Visi pasūtījumi ir pakļauti Wink apstiprināšanai saskaņā ar tās politiku rezervācijas pieprasījuma brīdī. Wink politika var tikt mainīta bez iepriekšēja brīdinājuma.
+5.5 Norādītā Neto komisija ir vienīgā atlīdzība, ko Filiāle ir tiesīga saņemt saskaņā ar šo līgumu. Filiāle nav tiesīga uz citiem labumiem. Wink ir atbildīgs par Neto komisijas maksājumu precizitātes pārbaudi pirms maksājuma veikšanas, un Filiāle ir atbildīga par visu Neto komisijas maksājumu pārbaudi pēc saņemšanas un nekavējošu kļūdu paziņošanu. Prasības par pārmaksu vai nepietiekamu maksājumu nevar iesniegt pēc 90 kalendāra dienām no maksājuma termiņa. Visas rezervācijas ir pakļautas Wink pieņemšanai saskaņā ar tās politiku rezervācijas brīdī. Wink politika var tikt mainīta bez iepriekšēja brīdinājuma.
 
-5.6 Wink veiks komerciāli pamatotus pasākumus, lai veiktu visu šajā Līgumā paredzēto darījumu auditu. Wink nodrošinās Partnerim piekļuvi analītikai un informācijas panelim, kurā apkopoti visi gaidāmie un termiņu beigušajiem rezervējumiem. Partnerim būs arī piekļuve maksājumu pārskatiem, kuros būs redzami prognozētie ieņēmumi un maksājumu vēsture. Ja Wink neuzglabā precīzu uzskaiti vai neveic auditu, Partnera vienīgā iespēja ir izbeigt šo Līgumu un pārtraukt dalību programmā.
+5.6 Wink komerciāli saprātīgi centīsies veikt visu darījumu auditu saskaņā ar šo līgumu. Wink nodrošinās Filiālei piekļuvi analītikai un informācijas panelim, kas apkopo visus gaidāmos un beigušos rezervācijas. Filiālei būs piekļuve arī maksājumu pārskatiem, kuros tiks parādīti prognozētie ienākumi un maksājumu vēsture. Ja Wink neuzturēs precīzus ierakstus vai neveiks auditu, Filiāles vienīgais līdzeklis būs izbeigt šo līgumu un pārtraukt dalību programmā.
 
-**6. Apgalvojumi un garantijas.**
+**6. Apliecinājumi un garantijas**
 
-**6.1 Filiāļu garantijas**
+**6.1 Filiāles garantijas**
 
-Ar šo Filiāle apliecina un garantē Wink, ka šī Līguma darbības laikā:\
-(i) Partnerim ir visas nepieciešamās tiesības, īpašumtiesības, pilnvaras un pilnvaras piederēt, pārvaldīt un izmantot Partnera tīmekļa vietni(-es) (tostarp attiecīgo(-os) domēna vārdu(-us)) un iekļaut Saiti, Mikrovietni vai Savienojumu (attiecīgā gadījumā) Partnera tīmekļa vietnē(-ēs);\
-(ii) Saistītā(-o) vietne(-es) nedrīkst (a) izmantot “Black Hat” taktiku, pārkāpt surogātpasta noteikumus, sabiedrisko kārtību un morāli vai (b) saturēt vai attēlot jebkādu nepiemērotu, nepareizu vai nelikumīgu saturu, atsauces, materiālus, informāciju, saites vai reklāmkarogus (piemēram, attiecībā uz pornogrāfiju, rasismu un tamlīdzīgi), apmelojošus apgalvojumus, elementus, kas pārkāpj trešo personu privātumu vai ir aizskaroši, aizskaroši vai neķītri, (c) kopēt vai līdzināties Wink vietnes vai jebkuras Wink filiāles vai meitasuzņēmuma vietnes dizainam, domēna nosaukumiem (tostarp apakšdomēniem), izskatam un sajūtai vai radīt iespaidu, ka tā ir daļa no Wink vietnes vai jebkuras Wink filiāles vai meitasuzņēmuma vietnes; (d) atbalstīt diskrimināciju rases, dzimuma, reliģijas, tautības, invaliditātes, seksuālās orientācijas vai vecuma dēļ; (e) veicināt vai iesaistīties nelikumīgās darbībās; (f) pārkāpt trešo personu intelektuālā īpašuma tiesības; (g) saturēt vai veicināt maldinošu informāciju vai veicināt azartspēles; vai (h) citādi būt nepiedienīgas. Jebkurš iepriekš minēto noteikumu pārkāpums var izraisīt Partnera tūlītēju izslēgšanu no programmas un visu nesamaksāto maksājumu zaudēšanu.\
-(iii) Partneris nedrīkst izmantot nekādas plēsonīgas reklāmas metodes, kas paredzētas, lai ģenerētu trafiku prom no jebkuras tīmekļa vietnes, kas pieder Wink vai kādai no ar to saistītajām kompānijām vai ko pārvalda Wink vai kāda no tās saistītajām kompānijām, tostarp, bet ne tikai, Wink.com (un visas tā vietējās versijas ar jebkuru augstākā līmeņa domēnu), priceline.com, rentalcars.com (un visas tā vietējās versijas ar jebkuru augstākā līmeņa domēnu), www.booking.com, www.kayak.com, Wink (un visas tā vietējās versijas ar jebkuru augstākā līmeņa domēnu), www.opentable.com (un visas tā vietējās versijas ar jebkuru augstākā līmeņa domēnu), kā arī jebkuras citas tīmekļa vietnes, par kurām Wink laiku pa laikam var paziņot. Turklāt Partneris aizliedz tīmekļa vietnēm, kuras Partneris kontrolē, izmantot šādas plēsonīgas reklāmas metodes. Plēsonīga reklāma ir definēta kā jebkura metode, kas izveido vai pārklāj saites vai reklāmkarogus tīmekļa vietnēs, atver pārlūkprogrammas logus vai jebkuru metodi, kas izgudrota, lai ģenerētu trafiku no tīmekļa vietnes bez šīs tīmekļa vietnes īpašnieka ziņas, atļaujas un līdzdalības. Piemēri ietver, bet neaprobežojas ar, atslēgvārdu parsēšanas pārlūkprogrammas spraudņiem, piemēram, Text Enhance, TopText un +Surf, reklāmkarogu aizstāšanas tehnoloģiju, piemēram, Gator, pārlūkprogrammas nārsta tehnoloģiju, kas nav atkarīga no vietnes, kā arī Wink Marks izmantošanu meklētājprogrammu reklāmu tekstos (piemēram, Google AdWords, Yahoo! Search Marketing u.c.) vai līdzvērtīgās programmās, un kopumā jebkuras citas metodes, kas varētu maldinoši likt potenciālajiem klientiem domāt, ka viņi tiks novirzīti uz Wink vietni. Jebkurš iepriekš minēto noteikumu pārkāpums var izraisīt Partnera tūlītēju izslēgšanu no programmas un visu nesamaksāto maksājumu zaudēšanu.\
-(iv) Filiālei ir un tā ir ievērojusi visas atļaujas, licences un citas valdības atļaujas, kas nepieciešamas tās darbības un uzņēmējdarbības veikšanai, veikšanai un turpināšanai, un\
-(v) Filiāle visos gadījumos ir neatkarīgs darbuzņēmējs un būs atbildīga par saviem nodokļiem, sociālajām iemaksām un visiem citiem ar nodokļiem saistītajiem jautājumiem.
+Filiāle apliecina un garantē Wink, ka līguma darbības laikā:  
+(i) Filiālei ir visas nepieciešamās tiesības, īpašumtiesības, pilnvaras un pilnvarojums piederēt, darbināt un izmantot Filiāļu tīmekļa vietni(-es) (ieskaitot attiecīgos domēna vārdus) un iekļaut Saiti, Mikro vietni vai Savienojumu (atkarībā no situācijas) Filiāļu tīmekļa vietnē(-ēs);  
+(ii) Filiāļu tīmekļa vietne(-es) nedrīkst (a) izmantot melnās cepures taktikas, pārkāpt spama noteikumus, sabiedrības kārtību un morāli, vai (b) saturēt vai rādīt neatbilstošu, nepareizu vai nelikumīgu saturu, atsauces, materiālus, informāciju, saites vai banerus (piemēram, pornogrāfijas, rasismu utt.), apmelojošus paziņojumus, elementus, kas pārkāpj trešo personu privātumu vai ir aizskaroši, rupji vai neķītri, (c) kopēt vai līdzināties Wink tīmekļa vietnes dizainam, domēna vārdiem (ieskaitot apakšdomēnus), izskatam un sajūtai vai radīt iespaidu, ka tā ir daļa no Wink tīmekļa vietnes vai Wink saistīto uzņēmumu vai meitasuzņēmumu tīmekļa vietnēm; (d) veicināt diskrimināciju pēc rases, dzimuma, reliģijas, tautības, invaliditātes, seksuālās orientācijas vai vecuma; (e) veicināt vai iesaistīties nelikumīgās darbībās; (f) pārkāpt trešo pušu intelektuālā īpašuma tiesības; (g) saturēt vai veicināt maldinošu informāciju vai azartspēles; vai (h) būt citādi neatbilstošai. Šādu noteikumu pārkāpums var novest pie Filiāles nekavējošas izslēgšanas no programmas un neizmaksāto maksājumu zaudēšanas.  
+(iii) Filiāle nedrīkst izmantot nekādus plēsīgu reklāmas paņēmienus, kas paredzēti, lai novirzītu trafiku no Wink vai tā saistīto uzņēmumu tīmekļa vietnēm, tostarp, bet ne tikai, Wink.com (un visām vietējām versijām ar jebkādu augstākā līmeņa domēnu), priceline.com, rentalcars.com (un visām vietējām versijām ar jebkādu augstākā līmeņa domēnu), www.booking.com, www.kayak.com, Wink (un visām vietējām versijām ar jebkādu augstākā līmeņa domēnu), www.opentable.com (un visām vietējām versijām ar jebkādu augstākā līmeņa domēnu) un citām Wink norādītām vietnēm. Turklāt Filiāle aizliedz savām kontrolētajām tīmekļa vietnēm izmantot šādus plēsīgos reklāmas paņēmienus. Plēsīgā reklāma ir definēta kā jebkura metode, kas izveido vai pārklāj saites vai banerus tīmekļa vietnēs, atver pārlūkprogrammas logus vai jebkuru citu metodi, lai ģenerētu trafiku no tīmekļa vietnes bez tās īpašnieka zināšanām, atļaujas un līdzdalības. Piemēri ietver, bet neaprobežojas ar, atslēgvārdu parsēšanas pārlūkprogrammu spraudņiem, piemēram, Text Enhance, TopText un +Surf, baneru aizvietošanas tehnoloģiju, piemēram, Gator, pārlūkprogrammu atvēršanas tehnoloģiju, kas nav atkarīga no tīmekļa vietnes, kā arī Wink zīmolu izmantošanu meklētājprogrammu reklāmas tekstos (piemēram, Google AdWords, Yahoo! Search Marketing) vai līdzīgi, un vispārīgi jebkuras citas metodes, kas var maldināt potenciālos klientus, liekot domāt, ka viņi tiks novirzīti uz Wink tīmekļa vietni. Šādu noteikumu pārkāpums var novest pie Filiāles nekavējošas izslēgšanas no programmas un neizmaksāto maksājumu zaudēšanas.  
+(iv) Filiālei ir visas nepieciešamās atļaujas, licences un citas valsts iestāžu pilnvaras, lai veiktu, īstenotu un turpinātu savu darbību un uzņēmējdarbību, un  
+(v) Filiāle ir neatkarīgs līgumslēdzējs visos nolūkos un ir atbildīgs par saviem nodokļiem, sociālajām iemaksām un visiem citiem ar nodokļiem saistītiem jautājumiem.
 
-**6.2 Pušu garantijas un saistības**
+**6.2 Pušu garantijas un apņemšanās**
 
-6.2.1 Katra Puse apliecina un garantē otrai Pusei, ka šī Līguma darbības laikā:\
-(i) tai ir visas korporatīvās pilnvaras un pilnvaras noslēgt un izpildīt savas saistības saskaņā ar šo Līgumu;\
-(ii) tā ir veikusi visas korporatīvās darbības, kas tai nepieciešamas, lai autorizētu šī Līguma parakstīšanu un izpildi;\
-(iii) šis Līgums rada attiecīgajai Pusei juridiski spēkā esošas un saistošas ​​saistības saskaņā ar tā noteikumiem.
+6.2.1 Katra puse apliecina un garantē otrai pusei, ka līguma darbības laikā:  
+(i) tai ir pilnīga korporatīvā vara un pilnvaras noslēgt un izpildīt savas saistības saskaņā ar šo līgumu;  
+(ii) tā ir veikusi visas nepieciešamās korporatīvās darbības, lai pilnvarotu šī līguma parakstīšanu un izpildi;  
+(iii) šis līgums ir likumīgs, derīgs un saistošs šīs puses saistības saskaņā ar tā noteikumiem.
 
-6.2.2 Katra Puse veiks komerciāli pamatotus pasākumus, lai aizsargātu un nodrošinātu savu(-ās) tīmekļa vietni(-es).
+6.2.2 Katra puse komerciāli saprātīgi centīsies aizsargāt un nodrošināt savas tīmekļa vietnes.
 
-6.2.3 Partneris apliecina un garantē, ka tas neveiks un nepiedāvās veikt nekādus maksājumus, dāvanas vai jebkādas vērtīgas lietas nodošanu: (i) jebkurai valdības amatpersonai vai valdības darbiniekam (tostarp valdības iestāžu vai korporāciju darbiniekiem) vai to lietošanai vai labā; vai (ii) jebkurai politiskajai partijai (tostarp tās amatpersonām vai kandidātiem); (iii) jebkurai komerciālai pusei, personai vai struktūrai; vai (iv) starpniekam, lai veiktu maksājumu jebkurai no iepriekšminētajām personām, lai mudinātu saņēmēju veikt vai neveikt darbību, kas pārkāpj šāda saņēmēja likumīgo pienākumu, iegūt vai saglabāt uzņēmējdarbību vai nodrošināt jebkādu nepienācīgu priekšrocību; vai lai mudinātu uz attiecīgās funkcijas vai darbības nepienācīgu veikšanu attiecībā uz jebkādām darbībām Wink vārdā vai Wink interesēs, kā paredzēts šajā Līgumā. Ja Partneris pārkāpj šo noteikumu, Wink ir tiesības izbeigt šo Līgumu ar tūlītēju spēku.
+6.2.3 Filiāle apliecina un garantē, ka tā neveiks un nepiedāvās maksājumus, dāvanas vai vērtīgas lietas: (i) valdības amatpersonām vai darbiniekiem (ieskaitot valsts uzņēmumu darbiniekus); (ii) politiskajām partijām (ieskaitot amatpersonas vai kandidātus); (iii) komerciālām personām vai vienībām; vai (iv) starpniekiem, lai panāktu nelikumīgu rīcību vai negodīgu priekšrocību Wink interesēs. Šāds pārkāpums dod Wink tiesības nekavējoties izbeigt šo līgumu.
 
-6.2.4 Lai noteiktu atbilstību iepriekš minētajam 6.2.3. punktam, Wink ir tiesības uz sava rēķina veikt visu attiecīgo Partnera grāmatvedības un pārdošanas grāmatu, ierakstu, līgumu, iekārtu, datorsistēmu, līgumu un dokumentu pārbaudi un auditu uz vietas parastajā darba laikā Partnera birojā un tādā veidā, lai nepamatoti netraucētu Partnera parasto uzņēmējdarbību. Šādas audita darbības saskaņā ar šo līgumu netiek veiktas biežāk kā divas reizes ik pēc divpadsmit (12) mēnešiem.
+6.2.4 Lai pārbaudītu atbilstību 6.2.3 pantam, Wink par saviem līdzekļiem var veikt Filiāles grāmatvedības un pārdošanas grāmatu, līgumu, datoru sistēmu un citu dokumentu auditu Filiāles birojos darba laikā, neierobežojot Filiāles ikdienas darbību. Audits netiks veikts biežāk kā divas reizes 12 mēnešos.
 
 **6.3 Atruna**
 
-6.3.1 Izņemot gadījumus, kad šajā Līgumā ir skaidri noteikts citādi, neviena no Pusēm nesniedz nekādas tiešas vai netiešas garantijas saistībā ar šī Līguma priekšmetu un ar šo atsakās no jebkādām un visām netiešām garantijām, tostarp visām netiešajām garantijām par piemērotību pārdošanai vai piemērotību noteiktam mērķim attiecībā uz šādu priekšmetu. Wink sniedz Pakalpojumu “tādā stāvoklī, kādā tas ir” un “tādā veidā, kā tas ir pieejams”, un negarantē darbības laiku.
+6.3.1 Izņemot, ja šajā līgumā ir noteikts citādi, neviena puse nesniedz nekādas izteiktas vai netiešas garantijas saistībā ar šī līguma priekšmetu un atsakās no visām netiešajām garantijām, tostarp par tirgojamību vai piemērotību konkrētam mērķim. Wink nodrošina Pakalpojumu "kā ir" un "kā pieejams" un negarantē pieejamību.
 
-6.3.2 Katra Puse atzīst grūtības, kas raksturīgas interneta lietošanai, jo īpaši mainīgs ātrums un tīkla pārslodze var izraisīt pārtraukumus un grūtības piekļūt tīmekļa vietnei. Katra Puse neuzņemas nekādu atbildību pret otru Pusi, kas saistīta ar jebkādu (īslaicīgu (plānotu vai neplānotu) un/vai daļēju vai pilnīgu) Tīmekļa vietņu, Pārdevēja portāla, Sistēmas un/vai Pakalpojuma darbības pārtraukumu vai dīkstāvi (apkopes, atjauninājumu vai cita iemesla dēļ).
+6.3.2 Katra puse apzinās, ka interneta lietošana var būt sarežģīta, tostarp tīkla ātruma svārstības un pārslodze var radīt pārtraukumus un grūtības piekļūt tīmekļa vietnei. Katra puse izslēdz jebkādu atbildību pret otru pusi par jebkādiem (pagaidu (plānotiem vai neplānotiem) un/vai daļējiem vai pilnīgiem) pārtraukumiem vai dīkstāvi (uzturēšanas, atjaunināšanas vai citu iemeslu dēļ) tīmekļa vietnēs, Pārdevēja portālā, Sistēmā un/vai Pakalpojumā.
 
-**7. Atlīdzināšana un atbildība**
+**7. Atlīdzība un atbildība**
 
-**7.1 Atlīdzināšana**
+**7.1 Atlīdzība**
 
-Ciktāl to atļauj piemērojamie tiesību akti, jūs piekrītat atbrīvot, aizstāvēt (pēc Wink izvēles), atlīdzināt un pasargāt Wink un visus tā Izmitināšanas pakalpojumu sniedzējus un meitasuzņēmumus, kā arī to amatpersonas, direktorus, darbiniekus un pārstāvjus no jebkādām prasībām, saistībām, zaudējumiem un izdevumiem, tostarp, bet ne tikai, saprātīgām juridiskām un grāmatvedības izmaksām, kas izriet no vai jebkādā veidā ir saistītas ar (i) jūsu šo Noteikumu pārkāpumu; (ii) jūsu nepareizu Pakalpojumu izmantošanu; (iii) jūsu vai mūsu nespēju pēc jūsu norādījumiem precīzi ziņot, iekasēt vai pārskaitīt nodokļus; vai (iv) jūsu jebkuru likumu, noteikumu vai trešo personu tiesību pārkāpumu.
+Cik atļauj piemērojamie likumi, jūs piekrītat atbrīvot, aizstāvēt (pēc Wink izvēles), atlīdzināt un pasargāt Wink un visus tā Naktsmītņu sniedzējus un meitasuzņēmumus, kā arī to amatpersonas, direktorus, darbiniekus un aģentus no jebkādām prasībām, atbildībām, zaudējumiem un izdevumiem, tostarp saprātīgām juridiskām un grāmatvedības izmaksām, kas rodas vai ir saistītas ar (i) jūsu šādu noteikumu pārkāpumu; (ii) jūsu nepareizu Pakalpojumu izmantošanu; (iii) jūsu vai mūsu neprecīzu nodokļu ziņošanu, iekasēšanu vai pārskaitīšanu; vai (iv) jūsu likumu, noteikumu vai trešo pušu tiesību pārkāpumu.
 
 **7.2 Maksimālā atbildība**
 
-Izņemot gadījumus, kad šajā Līgumā ir noteikts citādi, vienas Puses maksimālā atbildība par visām prasībām, ko pret šo Pusi cēlusi otra Puse saskaņā ar šo Līgumu vai saistībā ar to gada laikā, nepārsniedz kopējo komisijas maksu, ko šāda Puse saņēmusi vai samaksājusi iepriekšējo 6 mēnešu laikā, vai 10 000 USD (atkarībā no tā, kura summa ir lielāka), izņemot gadījumus, kad Atlīdzinošā Puse ir rīkojusies krāpšanas vai tīšas rīcības dēļ, tādā gadījumā atbildības ierobežojums nav piemērojams šādai atbildīgajai Pusei.
+Izņemot gadījumus, kas noteikti šajā līgumā, puses maksimālā atbildība par visām prasībām, kas pret to izvirzītas no otras puses saistībā ar šo līgumu gada laikā, nepārsniegs kopējo komisiju, ko puse ir saņēmusi vai samaksājusi iepriekšējo 6 mēnešu laikā, vai 10 000 USD (atkarībā no tā, kura summa ir lielāka), izņemot krāpšanas vai tīšas prettiesiskas rīcības gadījumus, kad atbildības ierobežojums neattiecas.
 
-**7.3 Trešās personas prasība**
+**7.3 Trešās puses prasība**
 
-Trešās personas prasības gadījumā atlīdzināmajai Pusei nekavējoties jāpaziņo otrai Pusei, un Pusēm jārīkojas labticīgi un jāpieliek visas komerciāli pamatotās pūles, lai konsultētos, sadarbotos un palīdzētu viena otrai šādas prasības aizstāvībā un/vai izlīgumā, savukārt atlīdzinošajai Pusei ir tiesības pārņemt prasību un uzņemties aizstāvību un izlīgumu (konsultējoties un vienojoties ar atlīdzināmo Pusi un pienācīgi ievērojot abu Pušu intereses), un neviena no Pusēm nedrīkst atzīt, iesniegt dokumentus, piekrist sprieduma stāšanai spēkā vai slēgt kompromisu vai izlīgumu bez otras Puses iepriekšējas rakstiskas piekrišanas (kuru nedrīkst nepamatoti liegt, aizkavēt vai nosacīti noteikt).
+Trešās puses prasības gadījumā atlīdzinātā puse nekavējoties paziņos otrai pusei, un puses labticīgi sadarbojas aizstāvībā un/vai izlīguma panākšanā, kur atlīdzinātā puse var pārņemt prasību un aizstāvību, ievērojot abu pušu intereses, un neviena puse nesniegs atzīšanos, neiesniegs dokumentus, nepiekritīs sprieduma pieņemšanai vai izlīgumam bez otras puses rakstiskas piekrišanas.
 
-**7.4 Atteikšanās no atbildības par izrietošiem zaudējumiem u.c.**
+**7.4 Atteikšanās no netiešiem zaudējumiem**
 
-Nekādā gadījumā neviena Puse nav atbildīga otras Puses priekšā par jebkādiem ražošanas zaudējumiem, peļņas zaudējumiem, ieņēmumu zaudējumiem, līguma zaudējumiem, nemateriālās vērtības vai reputācijas zaudējumiem vai bojājumiem, prasījuma tiesību zaudējumiem vai jebkādiem netiešiem, īpašiem, soda, nejaušiem vai izrietošiem zaudējumiem vai bojājumiem neatkarīgi no tā, vai šādi zaudējumi tiek apgalvoti līguma pārkāpuma, delikta vai cita iemesla dēļ. Visi šādi zaudējumi un bojājumi ar šo tiek skaidri atcelti un noraidīti.
+Neviena puse nav atbildīga pret otru pusi par ražošanas zudumu, peļņas zudumu, ieņēmumu zudumu, līguma zudumu, labas gribas vai reputācijas zudumu, prasību zudumu vai jebkādiem netiešiem, īpašiem, soda, nejaušiem vai sekmīgiem zaudējumiem neatkarīgi no tā, vai tie ir līguma, delikta vai citādi. Visi šādi zaudējumi tiek izslēgti un noraidīti.
 
-**7.5 Līgumsods**
+**7.5 Līguma soda nauda**
 
-Neskarot šajā Līgumā citur noteikto, gan Partneris, gan Wink vienojas, ka var būt nepraktiski un grūti noteikt faktisko zaudējumu apmēru, kas radušies šī Līguma 4. un 10. punktā izklāstīto intelektuālā īpašuma un konfidencialitātes noteikumu būtiska pārkāpuma rezultātā. Tādēļ puses vienojas, ka gadījumā, ja tiek konstatēts, ka Partneris ir pārkāpis šos noteikumus, Partneris samaksās Wink kā līgumsodu divdesmit piecu tūkstošu Amerikas Savienoto Valstu dolāru (25 000 USD) apmērā par katru pārkāpumu. Partneris un Wink tālāk vienojas, ka šis līgumsoda noteikums ir saprātīga kompensācija par sākotnējiem zaudējumiem, ko Wink ciestu šāda pārkāpuma dēļ. Partneris arī piekrīt, ka nekas šajā noteikumā neierobežo Wink tiesības saņemt aizlieguma rīkojumu un citus atbilstošus tiesiskās aizsardzības līdzekļus. Šis noteikums arī neierobežo Wink tiesības pieprasīt papildu un/vai kumulatīvu zaudējumu atlīdzību par šī (ja zaudējumi nepārprotami pārsniedz līgumsoda apmēru) vai jebkura cita šī Līguma noteikuma pārkāpumu.
+Bez ierobežojumiem, kas noteikti citur šajā līgumā, Filiāle un Wink piekrīt, ka intelektuālā īpašuma un konfidencialitātes noteikumu pārkāpuma gadījumā, kas noteikti 4. un 10. pantā, Filiāle samaksās Wink 25 000 ASV dolāru sodu par katru pārkāpumu. Puses uzskata, ka šī soda nauda ir saprātīga kompensācija Wink par zaudējumiem. Filiāle arī piekrīt, ka šis noteikums neierobežo Wink tiesības pieprasīt aizlieguma vai citus līdzekļus. Šis noteikums neietekmē Wink tiesības pieprasīt papildu vai kumulatīvus zaudējumus, ja tie pārsniedz soda naudas summu.
 
-8. **Grozījumi, termiņš un izbeigšana**
+**8. Grozījumi, termiņš un izbeigšana**
 
-**8.1 Modifikācija.**
+**8.1 Grozījumi**
 
-Izņemot gadījumus, kad piemērojamie tiesību akti nosaka citādi, Wink jebkurā laikā var grozīt šos Noteikumus. Ja mēs veiksim būtiskas izmaiņas šajos Noteikumos, mēs publicēsim pārskatītos Noteikumus Wink platformā un atjaunināsim datumu “Pēdējoreiz atjaunināts” šo Noteikumu augšpusē. Ja grozījumi jūs ietekmēs, mēs jūs par tiem informēsim vismaz trīsdesmit (30) dienas pirms to spēkā stāšanās datuma. Ja jūs nepārtraucat savu līgumu pirms pārskatīto Noteikumu spēkā stāšanās datuma, jūsu turpmāka Pakalpojumu lietošana nozīmēs visu pārskatīto Noteikumu izmaiņu pieņemšanu.
+Izņemot gadījumus, ko prasa likums, Wink var jebkurā laikā grozīt šos noteikumus. Ja tiek veiktas būtiskas izmaiņas, mēs publicēsim grozītos noteikumus Wink platformā un atjaunināsim "Pēdējoreiz atjaunots" datumu. Ja izmaiņas ietekmē jūs, mēs sniegsim paziņojumu vismaz 30 dienas pirms to stāšanās spēkā. Ja jūs neizbeigsiet līgumu pirms grozījumu stāšanās spēkā, turpmāka Pakalpojumu izmantošana nozīmēs piekrišanu grozījumiem.
 
-**8.2 Termins.**
+**8.2 Termiņš**
 
-Ja vien nav panākta cita vienošanās, šis Līgums stājas spēkā ar tā parakstīšanas dienu uz nenoteiktu laiku.
+Ja nav rakstiski vienojies citādi, šis līgums stājas spēkā no šī datuma un ir spēkā uz nenoteiktu laiku.
 
-8.3.1 Katra Puse var izbeigt šo Līgumu ar tūlītēju spēku jebkurā laikā un jebkura iemesla dēļ, par to rakstiski paziņojot otrai Pusei.
+8.3.1 Katra puse var nekavējoties izbeigt šo līgumu jebkurā laikā un jebkādu iemeslu dēļ, rakstiski paziņojot otrai pusei.
 
-8.3.2 Katra Puse var izbeigt šo Līgumu vai apturēt tā darbību attiecībā uz otru Pusi ar tūlītēju spēku un bez nepieciešamības iesniegt paziņojumu par saistību neizpildi šādos gadījumos:\
-(a) otras Puses būtisks jebkura šī Līguma noteikuma pārkāpums;\
-(b) (pieprasījuma iesniegšana par) bankrotu vai maksājumu apturēšanu (vai līdzīgu darbību) attiecībā uz otru Pusi, vai\
-(c) (tieša vai netieša) kontroles maiņa attiecībā uz otru Pusi.
+8.3.2 Katra puse var izbeigt vai apturēt šo līgumu attiecībā uz otru pusi nekavējoties un bez nokavējuma paziņojuma, ja:  
+(a) otra puse būtiski pārkāpj jebkuru šī līguma noteikumu;  
+(b) (tiek iesniegts maksātnespējas pieteikums vai tiek apturēta maksāšana) vai līdzīga rīcība attiecībā uz otru pusi; vai  
+(c) notiek (tieša vai netieša) kontroles maiņa attiecībā uz otru pusi.
 
-8.3.3 Wink patur tiesības izbeigt šo Līgumu bez iepriekšēja brīdinājuma, ja 6 secīgu mēnešu laikā nav notikušas materializētas transakcijas.
+8.3.3 Wink patur tiesības izbeigt šo līgumu bez paziņojuma, ja 6 mēnešu laikā nav notikuši realizēti darījumi.
 
-8.3.4 Pēc šī Līguma izbeigšanas Wink turpinās maksāt Partnerim jebkuru nesamaksāto Komisijas maksu 3 mēnešus pēc Līguma izbeigšanas datuma, ar nosacījumu, ka Wink šajā periodā ir pareiza Partnera kontaktinformācija un bankas informācija. Ja Partneris 3 mēnešu laikā nepieprasa nesamaksāto Komisijas maksu, šāda nepieprasīšana tiek uzskatīta par Partnera atteikšanos no tiesībām pieprasīt šādu Komisijas maksu. Neierobežojot šī Līguma citur noteikto attiecībā uz Komisijas maksas samazināšanu, apturēšanu vai konfiskāciju, jebkura nesamaksātā Komisijas maksa tiks konfiscēta, ja Partneris ir izdarījis tīšu pārkāpumu, rupju nolaidību, krāpšanu vai būtisku šī Līguma pārkāpumu.
+8.3.4 Pēc līguma izbeigšanas Wink turpinās maksāt Filiālei jebkuru neatmaksāto komisiju 3 mēnešus pēc izbeigšanas datuma, ja vien Wink ir pareizi Filiāles kontaktinformācija un bankas dati. Ja Filiāle neizvirza prasību par komisiju šajā termiņā, tā zaudē tiesības to pieprasīt. Bez ierobežojumiem attiecībā uz komisijas samazināšanu, apturēšanu vai zaudēšanu, jebkura neatmaksātā komisija tiks zaudēta, ja Filiāle ir izdarījusi tīšu prettiesisku rīcību, smagu nolaidību, krāpšanu vai būtisku līguma pārkāpumu.
 
-8.3.5 Pēc šī Līguma izbeigšanas, ja vien nav noteikts citādi, šis Līgums absolūti un pilnībā izbeidzas un zaudē spēku, neskarot Puses tiesības un tiesiskās aizsardzības līdzekļus attiecībā uz otras Puses atlīdzību vai šī Līguma pārkāpumu. 4.1.2., 4.1.5., 4.1.6., 4.1.7., 4.2., 4.3., 4.4.1., 4.9.4.(c), 9. un 10. punkts paliek spēkā arī pēc šī Līguma izbeigšanas.
+8.3.5 Pēc izbeigšanas un, ja nav noteikts citādi, šis līgums pilnībā beidzas, neietekmējot pušu tiesības un līdzekļus attiecībā uz atlīdzību vai līguma pārkāpumu. 4.1.2, 4.1.5, 4.1.6, 4.1.7, 4.2, 4.3, 4.4.1, 4.9.4(c), 9 un 10 panti saglabā spēku pēc līguma izbeigšanas.
 
-8.3.6 Nekavējoties pēc Līguma izbeigšanas stāšanās spēkā Partneris noņems visas saites uz Wink tīmekļa vietnēm, visu ar Wink saistīto saturu, saites, banerus, logotipus un citas atsauces uz Wink.
+8.3.6 Nekavējoties pēc līguma izbeigšanas Filiāle noņems visas saites uz Wink tīmekļa vietnēm, visu ar Wink saistīto saturu, saites, banerus, logotipus un citus atsauces uz Wink.
 
-**9. Grāmatvedība, ieraksti un revīzijas tiesības**
+**9. Grāmatas, ieraksti un audita tiesības**
 
 **9.1 Sistēmas**
 
-Wink grāmatvedības un ieraksti (tostarp Extranet un/vai e-pasti) tiek uzskatīti par pārliecinošiem pierādījumiem attiecībā uz Komisijas maksas apmēru, kas saskaņā ar šo Līgumu pienākas Partnerim.
+Wink grāmatas un ieraksti (ieskaitot Extranet un/vai e-pastus) tiks uzskatīti par galīgu pierādījumu attiecībā uz komisijas summu, kas pienākas Filiālei saskaņā ar šo līgumu.
 
-**9.2 Revīzijas tiesības**
+**9.2 Audita tiesības**
 
-Ja Wink labticīgi ir pamats uzskatīt, ka Partneris ir pārkāpis savas saistības saskaņā ar 4. punktu, Wink var veikt šādu Partnera ierakstu un grāmatvedības uzskaites dokumentu revīziju, lai pārbaudītu, pārskatītu un izmeklētu (attiecīgā gadījumā) Partnera saistības saskaņā ar 4. punktu, saskaņā ar sekojošo:\
-(a) Puses nekavējoties ieceļ neatkarīgu sertificētu auditoru (“Auditors”), kas ir pamatoti pieņemams abām Pusēm un kuram ir atļauts veikt auditu attiecībā uz Apakšfiliālei(-ēm) izmaksājamās komisijas maksas (metodi un aprēķinu).\
-(b) Puses sniedz Auditoram visu tādu informāciju, datus, sadarbību, palīdzību un piekļuvi grāmatvedības uzskaites grāmatām un grāmatvedības ierakstiem, dokumentiem, failiem un dokumentiem, kā arī elektroniski glabātai informācijai, ko Auditors var pamatoti pieprasīt, lai savlaicīgi izpildītu sava uzdevuma apjomu.\
-(c) Auditors abām Pusēm iesniegs sava ziņojuma (“Ziņojums”) kopiju, kurā būs sniegti audita rezultāti un konstatējumi.\
-(d) Revīzijas tiks veiktas darba dienās parastajā darba laikā.\
-(e) Wink sedz auditora izmaksas un izdevumus, ja vien auditors, pamatojoties uz saprātīgumu un taisnīgumu, nenosaka citādi.
+Ja Wink pamatoti uzskata, ka Filiāle ir pārkāpusi savas saistības saskaņā ar 4. pantu, Wink var veikt Filiāles grāmatvedības un kontu auditu, lai pārbaudītu komisijas aprēķinu un maksāšanu Filiāļu apakšfiliālēm, saskaņā ar šādiem noteikumiem:  
+(a) Puses nekavējoties iecels neatkarīgu sertificētu auditoru (turpmāk – "Auditors"), kas ir pieņemams abām pusēm un kuram būs tiesības veikt auditu komisijas aprēķina un maksājumu metodē;  
+(b) Puses nodrošinās Auditoram visu nepieciešamo informāciju, datus, sadarbību, palīdzību un piekļuvi grāmatvedības dokumentiem, failiem un elektroniskajiem datiem, ko Auditors pieprasīs, lai savlaicīgi pabeigtu uzdevumu;  
+(c) Auditors sniegs abām pusēm savu ziņojumu (turpmāk – "Ziņojums"), kurā būs audita rezultāti un secinājumi;  
+(d) Auditi tiks veikti darba dienās darba laikā;  
+(e) Wink sedz Auditoru izmaksas, izņemot gadījumus, kad Auditors nosaka citādi, pamatojoties uz saprātīgumu un taisnīgumu.
 
-10. **Kukuļdošanas apkarošana, tirdzniecības ierobežojumi un uzņēmējdarbības ētika.**
+**10. Pretkorupcijas, tirdzniecības ierobežojumi un biznesa ētika**
 
-Wink īsteno nulles tolerances pieeju starptautisko tirdzniecības normu, kukuļdošanas un korupcijas novēršanas tiesību aktu un piemērojamo tirdzniecības, līdzekļu plūsmas un terorisma finansēšanas ierobežojumu pārkāpumiem.\
-Filiāle garantē, ka tā ievēro un ievēros, un tās Saistītās puses ievēro un ievēros Wink piegādātāju rīcības kodeksu.\
-Filiāle apliecina, garantē un apņemas, ka tā visos aspektos ievēro un ievēros visas starptautiskās tirdzniecības normas, piemērojamos tirdzniecības, līdzekļu plūsmas un terorisma finansēšanas, kā arī kukuļošanas un korupcijas novēršanas tiesību aktus, tostarp, bet ne tikai, Apvienotās Karalistes 2010. gada Kukuļošanas apkarošanas likumu un Singapūras Korupcijas novēršanas likumu.\
-Filiāle garantē, ka, ciktāl tai zināms, ne tā, ne tās Saistītās puses nav notiesātas par kukuļošanu vai korupciju saistītu noziegumu, kā arī nav pakļautas valdības, administratīvo vai regulatīvo iestāžu veiktai izmeklēšanai.
+Wink piemēro nulles tolerances politiku starptautisko tirdzniecības normu, kukuļošanas un korupcijas novēršanas likumu un piemērojamo tirdzniecības, līdzekļu plūsmas un terorisma finansēšanas ierobežojumu pārkāpumiem.  
+Filiāle garantē, ka tā un tās saistītās puses ievēro Wink piegādātāju uzvedības kodeksu.  
+Filiāle apliecina, garantē un apņemas pilnībā ievērot visas starptautiskās tirdzniecības normas, piemērojamos tirdzniecības, līdzekļu plūsmas un terorisma finansēšanas ierobežojumus un kukuļošanas un korupcijas novēršanas likumus, tostarp, bet ne tikai, Apvienotās Karalistes Bribery Act 2010 un Singapūras Prevention of Corruption Act.  
+Filiāle garantē, ka pēc labākās zināšanas ne viņa, ne tās saistītās puses nav sodītas par kukuļošanas vai korupcijas noziegumiem un nav pakļautas izmeklēšanai no valdības, administratīvajām vai regulējošajām iestādēm.
 
 **11. Konfidencialitāte**
 
 **11.1 Konfidenciāla informācija**
 
-Puses saprot un vienojas, ka, izpildot šo Līgumu, katrai Pusei var būt piekļuve vai tā var tikt tieši vai netieši pakļauta otras Puses konfidenciālai un sensitīvai informācijai (“Konfidenciāla informācija”). Konfidenciāla informācija ietver Klienta datus, darījumu apjomu, mārketinga un biznesa plānus, biznesa, finanšu, tehnisko un operatīvo informāciju, lietošanas statistiku, rangu datus, informāciju par likmju, produktu un pieejamības paritāti, cenu politiku, konversijas datus un klikšķu skaitu, kā arī citu saistītu statistiku, Viesu personas datus, jebkādu programmatūru vai informāciju par programmatūru, ko Wink nodrošina vai izmanto saistībā ar šo Līgumu, šī Līguma noteikumus un citu tādu nepublisko informāciju, ko izpaužošā Puse norāda kā privātu vai konfidenciālu vai par ko saņēmējai Pusei būtu pamatoti jāzina, ka tā ir jāuzskata par privātu un konfidenciālu.
+Puses saprot un piekrīt, ka šī līguma izpildes laikā katrai pusei var būt piekļuve vai tā var tikt tieši vai netieši pakļauta otras puses konfidenciālai un sensitīvai informācijai (turpmāk – “Konfidenciāla informācija”). Konfidenciāla informācija ietver Klientu datus, darījumu apjomus, mārketinga un biznesa plānus, biznesa, finanšu, tehnisko un operacionālo informāciju, lietošanas statistiku, reitingu datus, informāciju par tarifiem, produktu un pieejamības paritāti, cenu politiku, konvertēšanas datus un klikšķu apjomus, viesu personas datus, jebkādu programmatūru vai informāciju par programmatūru, ko Wink nodrošina vai izmanto saistībā ar šo līgumu, šī līguma noteikumus un citu nepublisku informāciju, ko izpaužoša puse atzīmē par privātu vai konfidenciālu vai ko saņēmēja puse saprātīgi zina, ka jāuztver kā privātu un konfidenciālu.
 
-**11.2 Konfidenciālas informācijas aizsardzība un aizsardzība**
+**11.2 Konfidenciālas informācijas aizsardzība**
 
-Katra Puse vienojas, ka: (a) visa Konfidenciālā informācija paliek izpaužošās Puses ekskluzīvā īpašumā, un saņēmēja Puse neizmantos nekādu Konfidenciālu informāciju nekādiem mērķiem, izņemot šī Līguma izpildes nodrošināšanai, (b) tā saglabās un izmantos piesardzīgas metodes, lai panāktu, ka tās darbinieki, amatpersonas, pārstāvji, līgumslēdzējas puses un aģenti ("Atļautās personas") saglabā Konfidenciālās informācijas konfidencialitāti un slepenību, (c) tā izpauž Konfidenciālo informāciju tikai tām Atļautajām personām un tām, kurām šāda informācija ir jāzina šī Līguma izpildes nodrošināšanai, (d) tā nedarīs un izmantos piesardzīgas metodes, lai nodrošinātu, ka Atļautās personas (i) nekopē, nepublicē, nepārraida, nereproducē, neizpauž, neizpauž un nepadara Konfidenciālo informāciju pieejamu trešajām personām vai (ii) neizmanto un neglabā to neaizsargātā izguves sistēmā vai datubāzē (izņemot saskaņā ar šī Līguma noteikumiem), un (e) tā atgriezīs vai iznīcinās visas ((cietās un elektroniskās) kopijas) Konfidenciālo informāciju pēc otras Puses rakstiska pieprasījuma. Gadījumā, ja kāda no Pusēm apstrādā personas datus otras Puses vārdā, sniedzot pakalpojumus saskaņā ar šo Līgumu, Puses regulē šādu apstrādi ar Datu apstrādes līgumu (DPA), un tas ir daļa no šī Līguma noteikumiem un nosacījumiem.
+Katra puse piekrīt, ka: (a) visa konfidenciālā informācija paliek izpaužošās puses īpašums un saņēmēja puse to neizmantos citam mērķim kā šī līguma izpildei, (b) tā uzturēs un nodrošinās, ka tās darbinieki, amatpersonas, pārstāvji, līgumslēdzēji un aģenti (turpmāk – "Atļautās personas") uztur konfidencialitāti, (c) izpaudīs konfidenciālu informāciju tikai Atļautajām personām, kurām tā nepieciešama šī līguma izpildei, (d) neizplatīs, nekopēs, nepublicēs, neizpaudīs vai nepadarīs pieejamu konfidenciālo informāciju trešajām pusēm un neglabās to neaizsargātā datu bāzē (izņemot šī līguma noteikumus), un (e) pēc rakstiska pieprasījuma atdos vai iznīcinās visu konfidenciālo informāciju (gan papīra, gan elektroniskās kopijas). Ja kāda puse apstrādā personas datus otras puses vārdā, puses regulēs šo apstrādi ar datu apstrādes līgumu (DPA), kas būs šī līguma daļa.
 
-**11.3 Atļautā izpaušana**
+**11.3 Atļauta izpaušana**
 
-Neatkarīgi no iepriekš minētā, Konfidenciāla informācija neietver nekādu informāciju tādā apmērā, kādā tā (i) ir vai kļūst par publiski pieejamu informāciju bez saņēmējas Puses darbības vai bezdarbības, (ii) ir bijusi saņēmējas Puses rīcībā pirms šī Līguma datuma, (iii) ir izpausta saņēmējai Pusei trešās personas, kurai nav konfidencialitātes pienākuma attiecībā uz to, vai (iv) ir jāizpauž saskaņā ar likumu, tiesas rīkojumu, pavēsti vai valdības pilnvarām. Wink ir tiesības konfidenciāli izpaust šo Līgumu saviem saistītajiem uzņēmumiem.
+Neskatoties uz iepriekš minēto, konfidenciāla informācija neietver informāciju, kas (i) kļūst publiski pieejama bez saņēmēja vainas, (ii) bija saņēmēja rīcībā pirms šī līguma, (iii) tiek izpausta saņēmējam no trešās puses bez konfidencialitātes saistībām, vai (iv) ir jāizpauž likuma, tiesas rīkojuma, zvērināta tiesas izsaukuma vai valsts iestādes prasības dēļ. Wink ir tiesības šo līgumu konfidenciāli izpaust saviem saistītajiem uzņēmumiem.
 
 **11.4 Klientu dati**
 
-Puses veiks komerciāli pamatotus pasākumus, lai aizsargātu Klienta datu konfidencialitāti un privātumu, kā arī aizsargātu tos no neatļautas izmantošanas vai izpaušanas. Puses vienojas ievērot piemērojamos tiesību aktus par personas datu apstrādi un privātuma aizsardzību. Puses vienmēr izmantos saprātīgus un atbilstošus drošības pasākumus, lai novērstu Klienta datu bojāšanu un neatļautu piekļuvi tiem. Šādi pasākumi cita starpā ietvers datu šifrēšanu un kanālu šifrēšanu. Attiecīgā gadījumā Filiālei pēc iespējas ātrāk (ne vēlāk kā 1 dienas laikā pēc pārkāpuma atklāšanas) jāpaziņo Wink par jebkuru drošības pārkāpumu. Katrai Pusei ir jābūt pieejamai klientiem privātuma politikai, kurā aprakstīts veids, kā tā aizsargā un izmanto Klienta datus.
+Puses komerciāli saprātīgi centīsies aizsargāt Klientu datu konfidencialitāti un privātumu un pasargāt tos no neatļautas izmantošanas vai izpaušanas. Puses ievēros piemērojamos personas datu apstrādes un privātuma aizsardzības likumus. Puses vienmēr izmantos saprātīgus un atbilstošus drošības pasākumus, lai novērstu datu bojāšanu un neatļautu piekļuvi Klientu datiem, tostarp datu šifrēšanu un kanālu šifrēšanu. Ja nepieciešams, Filiāle nekavējoties (ne vēlāk kā 1 dienu pēc pārkāpuma atklāšanas) paziņos Wink par jebkādu drošības pārkāpumu. Katrai pusei jābūt pieejamai privātuma politikai, kas apraksta, kā tā aizsargā un izmanto Klientu datus.
 
 **11.5 Paziņojumi**
 
-Neviena no Pusēm nedrīkst veidot, publicēt, izplatīt vai atļaut jebkādus rakstiskus materiālus, kuros ir atsauce uz otru Pusi, iepriekš neiesniedzot šādu materiālu otrai Pusei un nesaņemot iepriekšēju rakstisku piekrišanu no puses, kas neiesniedz materiālus. Šo piekrišanu nedrīkst nepamatoti liegt vai aizkavēt.
+Neviena puse nedrīkst izveidot, publicēt vai izplatīt rakstiskus materiālus, kas atsaucas uz otru pusi, bez iepriekšējas rakstiskas piekrišanas no otras puses. Šāda piekrišana nedrīkst tikt nepamatoti atteikta vai aizkavēta.
 
-11.6 Katra Puse var sazināties ar otras Puses datu aizsardzības speciālistu (DPO), izmantojot šādas e-pasta un/vai pasta adreses: dataprotectionofficer@Wink.travel
+11.6 Katra puse var sazināties ar otras puses Datu aizsardzības speciālistu (DPO) pa e-pastu vai pasta adresēm: dataprotectionofficer@Wink.travel
 
-12. **Parakstīšanas pilnvaras — filiāles pārstāvniecība un paraksts.**
+**12. Pilnvaras parakstīšanai – Filiāles pārstāvība un paraksts**
 
-Partneris garantē, ka tam, personai, kas paraksta šo Līgumu, un/vai jebkurai citai personai, kas sniedz informāciju (tostarp, lai izvairītos no šaubām, jebkādus Maksājumu noteikumus) Wink saistībā ar šo Līgumu vai saskaņā ar to, ir tiesības, tiesībspēja un nepieciešamās pilnvaras parakstīt šo Līgumu, un ka šādai personai ir tiesības, tiesībspēja un nepieciešamās pilnvaras saistīt Partneri ar šo Līgumu, un visā Līguma darbības laikā tā ievēros, pildīs un nodrošinās, ka Partneris ievēro un pilda savas saistības saskaņā ar šo Līgumu.\
-Filiāle nepārprotami piekrīt, ka šī Līguma un tā Noteikumu un nosacījumu, tostarp to, kas attiecas uz grozījumiem, elektroniska pieņemšana ir derīga, saistoša un izpildāma.
+Filiāle garantē, ka tā, persona, kas paraksta šo līgumu un/vai jebkura cita persona, kas sniedz informāciju (ieskaitot maksājumu noteikumus) Wink saistībā ar šo līgumu, ir pilnvarota, kompetenta un tiesīga parakstīt šo līgumu un saistīt Filiāli ar šo līgumu, un līguma darbības laikā ievēros un nodrošinās, ka Filiāle ievēro un izpilda savas saistības.  
+Filiāle skaidri piekrīt, ka elektroniska šī līguma un tā noteikumu, tostarp grozījumu, pieņemšana ir derīga, saistoša un izpildāma.
 
-13. **Valoda**
+**13. Valoda**
 
-Šī Līguma angļu valodas versija ir noteicošā visos aspektos un ir noteicošā jebkādu neatbilstību gadījumā ar tulkotajām versijām, ja tādas ir.
+Šī līguma angļu valodas versija ir saistoša un pārspēj jebkādas tulkotas versijas, ja rodas pretrunas.
 
-14. **Atbrīvojumi**
+**14. Atteikšanās**
 
-Neviena atteikšanās no šī Līguma pārkāpuma vai nosacījuma netiek uzskatīta par atteikšanos no jebkura cita vai turpmāka pārkāpuma vai nosacījuma, neatkarīgi no tā, vai tas ir līdzīgs vai atšķirīgs.
+Neviens līguma pārkāpums vai nosacījums netiek uzskatīts par atteikšanos no citiem vai turpmākiem pārkāpumiem vai nosacījumiem, neatkarīgi no to rakstura.
 
-**15. Atdalāmība**
+**15. Atsevišķība**
 
-Ja valdības tiesībaizsardzības iestāde, tiesa vai kompetentas jurisdikcijas tribunāls kādu šī Līguma noteikumu atzīst par nelikumīgu, spēkā neesošu vai citādi neizpildāmu saskaņā ar valsts likumiem, tad šāds noteikums tiks interpretēts, grozīts vai dzēsts tādā apmērā, kādā tas nepieciešams, lai padarītu šādu noteikumu un/vai šo Līgumu likumīgu, derīgu vai citādi izpildāmu, un atlikušā šāda noteikuma daļa un pārējie tā noteikumi paliks spēkā, paliks pilnā spēkā un turpinās būt saistoši, un tiks interpretēti tā, lai pēc iespējas pilnīgāk īstenotu Pušu nodomu.
+Ja kāds šī līguma noteikums tiek atzīts par nelikumīgu, nederīgu vai neizpildāmu, tas tiks attiecīgi grozīts vai dzēsts, lai nodrošinātu tā likumību un spēkā esamību, un pārējie noteikumi paliks spēkā un saistoši.
 
 **16. Pušu attiecības**
 
-Puses ir un rīkosies kā neatkarīgi darbuzņēmēji šī Līguma izpildē. Neviena no Pusēm nerīkosies un netiks uzskatīta par otras Puses pārstāvi vai partneri nekādos nolūkos, un nevienai no Pusēm nav tiesību saistīt otru Pusi jebkādā ziņā.
+Puses ir neatkarīgi līgumslēdzēji un nedrīkst rīkoties kā otra puses aģents vai partneris un nav tiesīgas saistīt otru pusi.
 
-**17. Uzdevums**
+**17. Pāreja**
 
-Nevienai no Pusēm nav tiesību cedēt, nodot, apgrūtināt jebkādas savas tiesības un/vai pienākumus saskaņā ar šo Līgumu bez otras Puses iepriekšējas rakstiskas piekrišanas, ar nosacījumu, ka Wink var cedēt, nodot, apgrūtināt jebkādas savas tiesības un/vai pienākumus saskaņā ar šo Līgumu (pilnībā vai daļēji vai laiku pa laikam) saistītam uzņēmumam bez iepriekšējas Filiāles rakstiskas piekrišanas.\
-Šis Līgums ir noslēgts Pušu un to attiecīgo tiesību pārņēmēju un atļauto cesionāru labā, un nekas šeit nav paredzēts un nepiešķirs netieši nevienai citai personai jebkādas juridiskas vai taisnīgas tiesības, priekšrocības vai jebkāda veida tiesiskās aizsardzības līdzekļus saskaņā ar šo Līgumu vai tā dēļ, izņemot gadījumus, kad šajā Līgumā ir skaidri noteikts citādi.
+Neviena puse nedrīkst nodot, pārsūtīt vai apgrūtināt savas tiesības vai pienākumus bez otras puses rakstiskas piekrišanas, izņemot Wink, kas var nodot savas tiesības vai pienākumus saistītam uzņēmumam bez Filiāles piekrišanas.  
+Šis līgums ir noslēgts pušu un to tiesisko pēctecību un pilnvaroto pārņēmēju labā, un tas nepievieno nekādas tiesības vai labumus citām personām, izņemot, ja tas ir skaidri noteikts.
 
-18. **Nepārvarama vara.**
+**18. Force Majeure**
 
-Wink.travel neatbild par jebkādu kavēšanos vai nespēju izpildīt jebkādas saistības saskaņā ar šiem Noteikumiem, kas radušās tādu iemeslu dēļ, kas nav Wink vai Wink Payments saprātīgas kontroles robežās, tostarp, bet ne tikai, dabas stihijas, dabas katastrofas, karš, terorisms, nemieri, embargo, civilo vai militāro iestāžu darbības, ugunsgrēki, plūdi, negadījumi, pandēmijas, epidēmijas vai slimības, streiki vai transporta līdzekļu, degvielas, enerģijas, darbaspēka vai materiālu trūkums (“**Nepārvaramas varas apstāklis**").
+Wink.travel nav atbildīgs par kavējumiem vai neizpildi šo noteikumu dēļ, ja tie radušies ārpus Wink vai Wink maksājumu saprātīgas kontroles, tostarp dabas katastrofas, karš, terorisms, nemieri, embargo, ugunsgrēki, plūdi, pandēmijas, streiki vai transporta, degvielas, enerģijas, darbaspēka vai materiālu trūkums (“**Force Majeure notikums**”).
 
-19. **Piemērojamie tiesību akti un jurisdikcija**
+**19. Piemērojamais likums un jurisdikcija**
 
-Šo Līgumu regulē un interpretē tikai saskaņā ar Singapūras likumiem. Uz šo Līgumu neattiecas 2001. gada Līgumu (trešo pušu tiesību) likums (53B. nodaļa). Puses jebkurā gadījumā centīsies atrisināt savus strīdus draudzīgā ceļā ārpustiesas ceļā, vispirms labticīgi veicot diskusijas un sarunas.\
-Jebkuri strīdi, kas izriet no šī līguma vai ir saistīti ar to, ir jānodod izskatīšanai tikai un vienīgi kompetentajā Singapūras tiesā, neņemot vērā tiesību normu kolīzijas normas.\
-neatsaucami atsakās no jebkādām tiesībām iebilst pret prasības celšanu šādās tiesās, apgalvot, ka prasība ir celta neizdevīgā tiesā, vai apgalvot, ka šādām tiesām nav jurisdikcijas.
+Šo līgumu izslēgti regulē un interpretē Singapūras likumi. Trešo pušu tiesību likums 2001 (Cap 53B) neattiecas uz šo līgumu. Puses centīsies risināt strīdus draudzīgā ceļā, veicot labticīgas sarunas un pārrunas.  
+Jebkuri strīdi, kas rodas no vai saistībā ar šo līgumu, tiks izskatīti tikai kompetentajā Singapūras tiesā, neņemot vērā likumu konfliktu noteikumus.  
+Puses bezierunu atsakās no tiesībām iebilst pret tiesvedību šādās tiesās, apgalvot, ka tiesvedība ir nepiemērotā forumā vai ka tiesām nav jurisdikcijas.
 
-20. **Līdzinieki.**
+**20. Eksemplāri**
 
-Šo Līgumu var parakstīt, izmantojot divus eksemplārus, no kuriem katrs (pēc parakstīšanas) tiek uzskatīts par oriģinālu, un visi kopā veido vienu un to pašu dokumentu. Turklāt jebkurai skenētai/elektroniskai Wink rakstiskā paraksta kopijai ir tāds pats spēks kā Wink oriģinālam ar roku rakstītam parakstam, un tā neietekmē šī Līguma spēkā esamību.
+Šo līgumu var parakstīt vairākos eksemplāros, no kuriem katrs ir oriģināls, un kopā tie veido vienu un to pašu dokumentu. Turklāt jebkura skenēta vai elektroniska Wink paraksta kopija ir tikpat derīga kā oriģināls rokraksta paraksts.
 
-21. **Pilnīgs līgums**
+**21. Pilnīgs līgums**
 
-Šis Līgums (tostarp Sadarbības partnera reģistrācijas veidlapa, grafiki, pielikumi un papildinājumi, kas ir šī Līguma neatņemama sastāvdaļa) veido pilnīgu Pušu vienošanos un izpratni attiecībā uz tā priekšmetu un aizstāj visas iepriekšējās vienošanās, vienošanās, ((ne)saistošos) piedāvājumus, saistības vai paziņojumus attiecībā uz šo priekšmetu.\
-Ja kāds šī Līguma noteikums ir vai kļūst spēkā neesošs vai nesaistošs, Puses joprojām ir saistītas ar visiem pārējiem šī Līguma noteikumiem. Šādā gadījumā Puses aizstāj spēkā neesošo vai nesaistošo noteikumu ar noteikumiem, kas ir spēkā esoši un saistoši un kuriem ir pēc iespējas līdzīga ietekme kā spēkā neesošajam vai nesaistošajam noteikumam, ņemot vērā šī Līguma saturu un mērķi.
+Šis līgums (ieskaitot Filiāļu partneru reģistrācijas veidlapu, pielikumus un aneksus) veido pilnīgu pušu vienošanos un aizstāj visus iepriekšējos līgumus, piedāvājumus, apņemšanās vai paziņojumus par šo tēmu.  
+Ja kāds šī līguma noteikums ir vai kļūst nederīgs vai nesaistošs, puses paliek saistītas ar pārējiem noteikumiem, kas tiks aizvietoti ar derīgiem un saistošiem noteikumiem ar līdzīgu efektu, ņemot vērā līguma saturu un mērķi.
 
-22. **Izpilde**
+**22. Līguma stāšanās spēkā**
 
-Līgums stājas spēkā tikai pēc tam, kad Wink rakstiski apstiprina Partnera pieņemšanu un akceptēšanu. Reģistrējoties un reģistrējoties Wink partneru programmā kā partnera partneris, Partneris piekrīt, atzīst un pieņem šī Līguma noteikumus un nosacījumus, tostarp noteikumus, kas attiecas uz šī Līguma grozījumiem.\
-Partneris ir izlasījis līgumu, un visi noteikumi un nosacījumi ir pieņemti. Partneris saprot, ka Wink jebkurā laikā (tieši vai netieši) var lūgt klientu ieteikumus ar noteikumiem, kas var atšķirties no šajā līgumā ietvertajiem, vai pārvaldīt tīmekļa vietnes, kas ir līdzīgas vai konkurē ar partnera tīmekļa vietni. Partneris ir neatkarīgi izvērtējis dalības programmā vēlamību un nepaļaujas uz nekādiem citiem apgalvojumiem, garantijām vai paziņojumiem, izņemot tos, kas noteikti šajā līgumā. Partneris nepārprotami piekrīt, ka šī līguma un tā noteikumu un nosacījumu, tostarp to, kas attiecas uz grozījumiem, elektroniska pieņemšana ir derīga, saistoša un izpildāma.
+Līgums stājas spēkā tikai pēc Filiāles rakstiskas piekrišanas un apstiprināšanas no Wink puses. Reģistrējoties un piesakoties Wink partneru programmā kā filiāļu partnerim, Filiāle piekrīt, apstiprina un pieņem šī līguma noteikumus, tostarp grozījumus.  
+Filiāle ir izlasījusi un piekritusi visiem noteikumiem un apzinās, ka Wink jebkurā laikā var tieši vai netieši piesaistīt klientus uz atšķirīgiem noteikumiem vai darboties tīmekļa vietnēs, kas ir līdzīgas vai konkurē ar Filiāles vietni. Filiāle neatkarīgi ir izvērtējusi dalības vērtību un nepaļaujas uz citiem solījumiem vai garantijām, izņemot šajā līgumā noteikto. Filiāle skaidri piekrīt, ka elektroniska šī līguma un tā noteikumu pieņemšana ir derīga, saistoša un izpildāma.
 
-23. **Paziņojumi**
+**23. Paziņojumi**
 
-Visiem Puses paziņojumiem saskaņā ar šo Līgumu jābūt angļu valodā, rakstiskiem, un tie jāpiegādā personīgi, pa apmaksātu un ierakstītu vēstuli vai ar starptautiski atzīta ekspreskurjera (piemēram, FedEx, UPS, DHL) starpniecību uz juridisko adresi vai pa e-pastu kontaktpersonai.\
-Jebkurš paziņojums saskaņā ar šo Līgumu tiek uzskatīts par saņemtu, (i) ja tas ir piegādāts personīgi, pēc piegādes kvīts parakstīšanas vai, (ii) ja tas ir apmaksāta ierakstīta pasta sūtījuma sūtījums, pēc piegādes apliecinājuma; vai (iii) ja tas ir nosūtīts ar ekspreskurjeru, pēc šāda kurjera reģistrētā piegādes datuma; (iv) ja tas ir nosūtīts pa e-pastu, ar nosacījumu, ka tiek iesniegts saņemšanas apstiprinājums.
-
+Visi paziņojumi saskaņā ar šo līgumu jāsniedz angļu valodā, rakstiski un jānodod personīgi, ar apmaksātu un reģistrētu pastu vai starptautiski atzītu eksprespasta pakalpojumu (piemēram, FedEx, UPS, DHL) uz reģistrēto biroju vai e-pastā kontaktpersonai.  
+Jebkurš paziņojums tiek uzskatīts par saņemtu (i) ja tas ir nodots personīgi, parakstot piegādes kvīti, vai (ii) ja tas ir nosūtīts ar apmaksātu reģistrētu pastu, pēc piegādes pierādījuma, vai (iii) ja tas ir nosūtīts ar eksprespastu, pēc piegādes datuma, vai (iv) ja tas ir nosūtīts e-pastā, pēc saņemšanas apstiprinājuma.
