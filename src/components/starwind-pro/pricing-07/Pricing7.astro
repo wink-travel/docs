@@ -1,0 +1,274 @@
+---
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconInfoCircle from "@tabler/icons/outline/info-circle.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+import { Button } from "@/components/starwind/button";
+import { Switch } from "@/components/starwind/switch";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/starwind/tooltip";
+
+/** Pricing plan data for comparison table */
+export interface PricingPlan {
+  /** Plan name */
+  name: string;
+  /** Monthly price display string */
+  monthlyPrice: string;
+  /** Yearly price display string */
+  yearlyPrice: string;
+  /** Plan description */
+  description: string;
+  /** CTA button text */
+  buttonText: string;
+  /** CTA button href */
+  buttonHref: string;
+  /** Whether this plan is highlighted */
+  highlighted?: boolean;
+  /** Badge text for highlighted plans */
+  badge?: string;
+}
+
+/** Feature comparison row data */
+export interface PricingFeature {
+  /** Feature name */
+  name: string;
+  /** Tooltip description */
+  tooltip?: string;
+  /** Starter plan value (boolean or string) */
+  starter: boolean | string;
+  /** Professional plan value (boolean or string) */
+  professional: boolean | string;
+  /** Enterprise plan value (boolean or string) */
+  enterprise: boolean | string;
+}
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Section heading */
+  heading?: string;
+  /** Section description */
+  description?: string;
+  /** Array of pricing plans */
+  plans?: PricingPlan[];
+  /** Array of feature comparisons */
+  features?: PricingFeature[];
+}
+
+const pricing7Styles = tv({
+  base: "@container mx-auto w-full max-w-7xl px-4 py-24",
+});
+
+const {
+  heading = "Compare Pricing Plans",
+  description:
+    sectionDescription = "Choose the perfect plan for your needs. All plans include a 14-day free trial.",
+  plans = [],
+  features = [],
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<section id="pricing-07" class={pricing7Styles({ class: className })} {...rest}>
+  <div class="mb-12 text-center">
+    <h2 class="font-heading mb-3 text-3xl font-semibold tracking-tight @lg:text-5xl @3xl:text-6xl">
+      {heading}
+    </h2>
+    <p class="text-muted-foreground mx-auto max-w-2xl text-pretty">
+      {sectionDescription}
+    </p>
+
+    <!-- Billing Period Toggle -->
+    <div class="mt-6 flex items-center justify-center gap-3">
+      <span class="text-sm font-medium">Monthly</span>
+      <Switch id="pricing-toggle-07" variant="primary" />
+      <span class="text-sm font-medium">Yearly</span>
+      <span
+        class="text-primary-accent bg-primary-accent/10 ml-2 rounded-full px-2 py-1 text-xs font-semibold"
+      >
+        Save 20%
+      </span>
+    </div>
+  </div>
+
+  <div class="bg-card overflow-x-auto rounded-2xl border">
+    <div
+      class="grid min-w-full grid-cols-[200px_repeat(3,1fr)] @3xl:grid-cols-[250px_repeat(3,1fr)]"
+    >
+      <!-- Header Row -->
+      <div class="col-span-full grid grid-cols-subgrid border-b">
+        <div class="w-[200px]"></div>
+        {
+          plans.map((plan, index) => (
+            <div
+              class:list={[
+                "flex items-stretch p-4 text-center @3xl:p-5",
+                { "border-l": index > 0 },
+                { "bg-muted": plan.highlighted },
+              ]}
+            >
+              <div class="flex h-full w-full flex-col items-center justify-center py-6 @3xl:px-2">
+                <div class="mb-1 text-xl font-semibold @2xl:text-2xl @4xl:text-3xl">
+                  {plan.name}
+                </div>
+                <div class="text-muted-foreground mb-4 text-sm">{plan.description}</div>
+                <div class="mt-auto mb-4 flex items-baseline gap-1">
+                  <span class="flex items-baseline text-3xl font-semibold @2xl:text-4xl @4xl:text-5xl">
+                    <span aria-hidden="true">$</span>
+                    <span
+                      class="pricing-number tabular-nums"
+                      data-monthly={plan.monthlyPrice.replace("$", "")}
+                      data-yearly={plan.yearlyPrice.replace("$", "")}
+                    />
+                  </span>
+                  <span
+                    class="pricing-period text-muted-foreground text-sm"
+                    data-monthly="/mo"
+                    data-yearly="/yr"
+                  />
+                </div>
+                <Button
+                  variant={plan.highlighted ? "primary" : "outline"}
+                  size="sm"
+                  href={plan.buttonHref}
+                  class="mt-2 w-full"
+                >
+                  {plan.buttonText}
+                </Button>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+
+      <!-- Feature Rows -->
+      {
+        features.map((feature, rowIndex) => {
+          const renderCell = (value: boolean | string) => {
+            if (typeof value === "string") {
+              return (
+                <span class="text-foreground/90 text-sm font-medium @3xl:text-base">{value}</span>
+              );
+            }
+            if (value === true) {
+              return <IconCheck class="text-primary-accent mx-auto size-5" aria-label="Included" />;
+            }
+            return <IconX class="text-muted-foreground mx-auto size-5" aria-label="Not included" />;
+          };
+
+          return (
+            <div
+              class:list={[
+                "border-border col-span-full grid grid-cols-subgrid",
+                { "border-b": rowIndex < features.length - 1 },
+              ]}
+            >
+              <div class="text-foreground/90 flex items-center gap-2 p-4 text-sm font-medium @3xl:p-5 @3xl:text-base">
+                {feature.name}
+                {feature.tooltip && (
+                  <Tooltip class="hidden @2xl:inline-block">
+                    <TooltipTrigger>
+                      <IconInfoCircle class="text-muted-foreground size-4 shrink-0" />
+                    </TooltipTrigger>
+                    <TooltipContent side="right" class="text-xs whitespace-nowrap">
+                      {feature.tooltip}
+                    </TooltipContent>
+                  </Tooltip>
+                )}
+              </div>
+              <div class="border-border flex items-center justify-center border-l p-4 text-center @3xl:p-5">
+                {renderCell(feature.starter)}
+              </div>
+              <div class="border-border bg-muted flex items-center justify-center border-l p-4 text-center @3xl:p-5">
+                {renderCell(feature.professional)}
+              </div>
+              <div class="border-border flex items-center justify-center border-l p-4 text-center @3xl:p-5">
+                {renderCell(feature.enterprise)}
+              </div>
+            </div>
+          );
+        })
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  import type { SwitchChangeEvent } from "@/components/starwind/switch";
+
+  function initPricingToggle() {
+    const pricingSection = document.querySelector("#pricing-07");
+
+    if (!pricingSection) {
+      return;
+    }
+
+    const pricingToggle = pricingSection.querySelector("#pricing-toggle-07") as HTMLElement;
+    const pricingNumbers = pricingSection.querySelectorAll(
+      ".pricing-number",
+    ) as NodeListOf<HTMLElement>;
+    const pricingPeriods = pricingSection.querySelectorAll(
+      ".pricing-period",
+    ) as NodeListOf<HTMLElement>;
+
+    // Initialize with monthly prices
+    pricingNumbers.forEach((el) => {
+      const monthlyPrice = parseInt(el.dataset.monthly || "0", 10);
+      el.style.setProperty("--price-num", monthlyPrice.toString());
+    });
+
+    if (pricingToggle) {
+      pricingToggle.addEventListener("starwind-switch:change", (e: Event) => {
+        const event = e as SwitchChangeEvent;
+        const isYearly = event.detail.checked;
+
+        pricingNumbers.forEach((el) => {
+          const monthlyPrice = parseInt(el.dataset.monthly || "0", 10);
+          const yearlyPrice = parseInt(el.dataset.yearly || "0", 10);
+          const targetPrice = isYearly ? yearlyPrice : monthlyPrice;
+
+          el.style.setProperty("--price-num", targetPrice.toString());
+        });
+
+        pricingPeriods.forEach((el) => {
+          if (isYearly) {
+            el.classList.add("yearly");
+          } else {
+            el.classList.remove("yearly");
+          }
+        });
+      });
+    }
+  }
+
+  initPricingToggle();
+
+  document.addEventListener("astro:after-swap", initPricingToggle);
+</script>
+
+<style>
+  @property --price-num {
+    syntax: "<integer>";
+    initial-value: 0;
+    inherits: false;
+  }
+
+  .pricing-number {
+    --price-num: 0;
+    counter-reset: price var(--price-num);
+    transition: --price-num 0.6s ease-out;
+  }
+
+  .pricing-number::before {
+    content: counter(price);
+  }
+
+  .pricing-period::before {
+    content: attr(data-monthly);
+    transition: opacity 0.3s ease-out;
+  }
+
+  .pricing-period.yearly::before {
+    content: attr(data-yearly);
+  }
+</style>
