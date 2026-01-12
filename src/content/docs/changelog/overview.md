@@ -10,4 +10,4 @@ sidebar:
 Shows the releases that have been made for both our Apps as well as our Platform.
 
 - [Applications](/changelog/application) are front-end releases.
-- [Platform](/changelog.platform) are back-end releases.
+- [Platform](/changelog/platform) are back-end releases.

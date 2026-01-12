@@ -1,0 +1,50 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+/** Logo item data */
+export interface LogoData {
+  /** Logo name for alt text */
+  name: string;
+  /** Logo image source */
+  src: string;
+}
+
+interface Props extends HTMLAttributes<"section"> {
+  /** Section heading */
+  heading?: string;
+  /** Array of logos to display */
+  logos?: LogoData[];
+}
+
+const logoCloud1Styles = tv({
+  base: "@container mx-auto w-full max-w-5xl px-4 py-24",
+});
+
+const {
+  heading = "Trusted by industry leaders",
+  logos = [],
+  class: className,
+  ...rest
+} = Astro.props;
+---
+
+<section class={logoCloud1Styles({ class: className })} {...rest}>
+  <div class="space-y-12">
+    <!-- Heading -->
+    <h2 class="font-heading text-center text-3xl font-semibold tracking-tight @2xl:text-4xl">
+      {heading}
+    </h2>
+
+    <!-- Logo Grid -->
+    <div class="flex flex-wrap items-center justify-center gap-8 @xl:gap-x-12 @3xl:gap-x-16">
+      {
+        logos.map((logo) => (
+          <div class="flex h-10 w-28 items-center justify-center opacity-70 grayscale transition-opacity hover:opacity-100 @xl:h-12 @xl:w-32 dark:invert">
+            <img src={logo.src} alt={logo.name} class="h-full w-full object-contain" />
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

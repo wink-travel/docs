@@ -28,13 +28,13 @@ export const collections = {
         repo: 'monorepo-typescript',
         token: import.meta.env.GH_API_TOKEN ?? process.env.GH_API_TOKEN,
       },
-      // {
-      //   provider: 'github',
-      //   base: 'changelog/platform',
-      //   owner: 'wink-travel',
-      //   repo: 'monorepo-java',
-      //   token: import.meta.env.GH_API_TOKEN ?? process.env.GH_API_TOKEN,
-      // },
+      {
+        provider: 'github',
+        base: 'changelog/platform',
+        owner: 'wink-travel',
+        repo: 'monorepo-java',
+        token: import.meta.env.GH_API_TOKEN ?? process.env.GH_API_TOKEN,
+      },
     ]),
   }),
 };

@@ -165,16 +165,16 @@ export default defineConfig({
             },
           ])],
         },
-        // {
-        //   label: 'Platform',
-        //   items: [...makeChangelogsSidebarLinks([
-        //     {
-        //       type: 'recent',
-        //       base: 'changelog/platform',
-        //       count: 5
-        //     },
-        //   ])],
-        // },
+        {
+          label: 'Platform',
+          items: [...makeChangelogsSidebarLinks([
+            {
+              type: 'recent',
+              base: 'changelog/platform',
+              count: 5
+            },
+          ])],
+        },
       ]
     },
     ],
