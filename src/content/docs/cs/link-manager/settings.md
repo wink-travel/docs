@@ -17,7 +17,14 @@ Zde jsou způsoby, jak můžete konfigurovat chování WinkLinks pomocí `Nastav
 - **Profilový obrázek** V horní části každé stránky WinkLinks je profilový obrázek vašeho účtu spolu s popisem účtu. Profilový obrázek můžete zobrazit dvěma způsoby:
     - `Kruh` Doporučujeme používat kruhový styl, pokud je váš obrázek vás samotných nebo cokoli, co se vejde do kulatého rámečku.
     - `Obdélník` Doporučujeme používat obdélníkový styl, pokud je vaším profilovým obrázkem logo firmy, protože většina firemních log má obdélníkový tvar.
-- **Přizpůsobení** Vyberte, jaké přizpůsobení chcete použít pro svou stránku WinkLinks. Toto ovlivňuje barvy motivu i váš itinerář při zobrazování karet inventáře Wink, map nebo mřížek.
+- **Přizpůsobení** Personalizujte vzhled a dojem vaší stránky WinkLinks. Můžete si přizpůsobit barevnou paletu podle svých představ, aby perfektně ladila s vaší značkou. Toto nastavení také ovlivňuje, jak se zobrazují karty inventáře Wink, mapy a mřížky.  
+  
+Další možnosti ovládání zahrnují:  
+
+- Chování zobrazení příspěvků (režim banneru, chytrý banner/interaktivní, automatické přizpůsobení podle rozvržení)  
+- Vlastní QR kódy s brandingem (tvar, barvy, tečky, rohy)  
+- Organizace obsahu pomocí štítků (kategorizace odkazů jako „Hotely“, „Cestování“, „Slevy“)  
+- Plná kontrola nad uspořádáním odkazů, nahráváním souborů a obsahovými bloky
 
 ## API
 

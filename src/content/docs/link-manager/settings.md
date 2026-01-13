@@ -17,7 +17,14 @@ Here are the ways you can configure your WinkLinks behavior with `Settings`:
 - **Profile picture** At the top of every WinkLinks page is your account profile picture along with your account description. You can display your profile picture in twos ways:
     - `Circle` We recommend using a circular style if your picture is of yourself or anything else that fits inside a round container.
     - `Rectangle` We recommend using a rectangular stype if your company logo is your profile picture as most company logos are rectangular in nature. 
-- **Customization** Choose which customization you want to use for your WinkLinks page. This affects your theme colors as well as your itinerary when displaying Wink inventory cards, maps or grids.
+- **Customization** Personalize the look and feel of your WinkLinks page. You can customize your color palette to your heart's content to perfectly match your brand. This setting also influences how Wink inventory cards, maps, and grids are displayed.  
+  
+Additional controls include:  
+
+- Post display behavior (Banner Mode, Smart Banner/Interactive, Layout-Aware auto-adjust)  
+- Custom branded QR codes (shape, colors, dots, corners)  
+- Content organization with tags (categorize links like "Hotels", "Travel", "Sales")  
+- Full control over link arrangement, file uploads, and content blocks
 
 ## API
 
