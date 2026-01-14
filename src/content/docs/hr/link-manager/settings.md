@@ -5,7 +5,7 @@ sidebar:
   order: 4
 ---
 
-Za upravljanje svojim WinkLinks postavkama, idite na `WinkLinks` u glavnoj navigacijskoj traci i kliknite na karticu `Settings`.
+Za upravljanje postavkama WinkLinks, idite na `WinkLinks` u glavnoj navigacijskoj traci i kliknite na karticu `Settings`.
 
 Evo načina na koje možete konfigurirati ponašanje WinkLinks pomoću `Settings`:
 
@@ -16,12 +16,19 @@ Evo načina na koje možete konfigurirati ponašanje WinkLinks pomoću `Settings
     - `List-based` dizajn. Većina drugih upravitelja linkova prikazuje jednostavnu listu s URL-om i minimalnim sadržajem. Odaberite ovaj način prikaza ako imate puno sadržaja i želite ga prikazati što brže.
 - **Profile picture** Na vrhu svake WinkLinks stranice nalazi se profilna slika vašeg računa zajedno s opisom računa. Profilnu sliku možete prikazati na dva načina:
     - `Circle` Preporučujemo korištenje kružnog stila ako je vaša slika vas ili bilo čega drugog što pristaje u okrugli okvir.
-    - `Rectangle` Preporučujemo korištenje pravokutnog stila ako je vaš logo tvrtke profilna slika jer su većina logotipa tvrtki pravokutnog oblika.
-- **Customization** Odaberite koju prilagodbu želite koristiti za svoju WinkLinks stranicu. Ovo utječe na boje teme kao i na vaš itinerar prilikom prikaza Wink inventarnih kartica, karata ili mreža.
+    - `Rectangle` Preporučujemo korištenje pravokutnog stila ako je vaš profilni logo tvrtke jer su većina logotipa tvrtki pravokutnog oblika.
+- **Customization** Personalizirajte izgled i dojam svoje WinkLinks stranice. Možete prilagoditi paletu boja do mile volje kako biste savršeno uskladili svoj brend. Ova postavka također utječe na način prikaza Wink inventarnih kartica, karata i mreža.  
+  
+Dodatne kontrole uključuju:  
+
+- Ponašanje prikaza objava (Banner Mode, Smart Banner/Interactive, Layout-Aware automatsko prilagođavanje)  
+- Prilagođeni QR kodovi s brendom (oblik, boje, točkice, kutovi)  
+- Organizacija sadržaja pomoću oznaka (kategorizacija linkova poput "Hotels", "Travel", "Sales")  
+- Potpuna kontrola nad rasporedom linkova, prijenosom datoteka i blokovima sadržaja
 
 ## API
 
-Programeri koji žele upravljati `WinkLinks` mogu otići na [Developers > API > WinkLinks](/hr/developers/apis/#winklinks-api).
+Razvojni programeri koji žele upravljati `WinkLinks` mogu otići na [Developers > API > WinkLinks](/hr/developers/apis/#winklinks-api).
 
 ## Daljnje čitanje
 
