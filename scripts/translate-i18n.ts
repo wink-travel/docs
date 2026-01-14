@@ -45,6 +45,48 @@ const rewriteLinksOnContent = (content: string, lang: string): string => {
   return updated;
 };
 
+// Generic rewrites for common hrefs that must always be locale-prefixed:
+// - Props: badgeHref, secondaryButtonHref
+// - Frontmatter banner.content HTML <a href="/...">
+// Skips if already locale-prefixed.
+const rewriteCommonHrefPrefixes = (content: string, lang: string): string => {
+  let updated = content;
+
+  const withLang = (path: string): string => {
+    if (!path || path[0] !== "/") return path; // only root-relative
+    if (path.startsWith(`/${lang}/`) || hasAnyLocalePrefix(path)) return path;
+    return `/${lang}${path}`;
+  };
+
+  // 1) Props across MDX: badgeHref and secondaryButtonHref
+  const propNames = ["badgeHref", "secondaryButtonHref"];
+  for (const propName of propNames) {
+    const r = new RegExp(`(\\b${propName}=([\"\']))(\/[^\"']*)(\\2)`, "g");
+    updated = updated.replace(r, (full, pre, quote, href, post) => {
+      const newHref = withLang(href);
+      if (newHref === href) return full;
+      return `${pre}${newHref}${quote}`;
+    });
+  }
+
+  // 2) Frontmatter banner.content: prefix any <a href="/..."> inside frontmatter only
+  const fmMatch = updated.match(/^---\n([\s\S]*?)\n---/);
+  if (fmMatch) {
+    const fmFull = fmMatch[0];
+    const fmBody = fmMatch[1];
+    const fmUpdated = fmBody.replace(/(<a\b[^>]*?\bhref=(['\"]))(\/[^'\"]*)(\2)/g, (full, pre, quote, href, post) => {
+      const newHref = withLang(href);
+      if (newHref === href) return full;
+      return `${pre}${newHref}${quote}`;
+    });
+    if (fmUpdated !== fmBody) {
+      updated = updated.replace(fmFull, `---\n${fmUpdated}\n---`);
+    }
+  }
+
+  return updated;
+};
+
 // Helper filesystem utilities
 const createDirectory = (filePath: string): void => mkdirSync(filePath);
 const readFiles = (filePath: string): Array<string> => readdirSync(filePath);
@@ -54,7 +96,10 @@ const readFile = (filePath: string): any =>
     : new Error(`Unable to find file ${filePath}`);
 const writeFile = (filePath: string, content: string): void => {
   mkdirSync(dirname(filePath), { recursive: true });
-  writeFileSync(filePath, content + "\n", { encoding: "utf8" });
+  // Ensure at most one trailing newline; do not add duplicates
+  const endsWithNewline = /\r?\n$/.test(content);
+  const output = endsWithNewline ? content : content + "\n";
+  writeFileSync(filePath, output, { encoding: "utf8" });
 };
 const calculateFileHash = (content: string): string => {
   return createHash(HASH_ALGO).update(content).digest("hex");
@@ -273,7 +318,10 @@ async function translateFile(
     const ext = extname(relativePath).toLowerCase();
     if (ext === ".md" || ext === ".mdx") {
       const existingContent = readFile(fileName);
-      const rewritten = rewriteLinksOnContent(existingContent, targetLang);
+      let rewritten = rewriteLinksOnContent(existingContent, targetLang);
+      if (relativePath === "index.mdx") {
+        rewritten = rewriteCommonHrefPrefixes(rewritten, targetLang);
+      }
       if (rewritten !== existingContent) {
         console.log(`🔧 Rewriting links in ${targetLang}/${relativePath} to add locale prefix...`);
         writeFile(fileName, rewritten);
@@ -294,6 +342,9 @@ async function translateFile(
   const outExt = extname(relativePath).toLowerCase();
   if (outExt === ".md" || outExt === ".mdx") {
     output = rewriteLinksOnContent(output, targetLang);
+    if (relativePath === "index.mdx") {
+      output = rewriteCommonHrefPrefixes(output, targetLang);
+    }
   }
 
   console.log(`✍️ Writing translated file: ${fileName}`);
