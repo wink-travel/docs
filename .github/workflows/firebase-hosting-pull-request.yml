@@ -11,7 +11,9 @@ jobs:
       GH_API_TOKEN: ${{ secrets.GH_API_TOKEN }}
     steps:
       - uses: actions/checkout@v4
+
       - run: npm install && npm run build
+
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
@@ -19,3 +21,9 @@ jobs:
             ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WINK_ACADEMY
             }}
           projectId: wink-academy
+
+      - name: Cloudflare Purge Cache
+        uses: cssnr/cloudflare-purge-cache-action@v2
+        with:
+          token: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          zones: wink.travel
