@@ -1,0 +1,187 @@
+---
+import type { ImageMetadata } from "astro";
+import type { HTMLAttributes } from "astro/types";
+import { tv } from "tailwind-variants";
+
+import { Image } from "@/components/starwind/image";
+
+type ImageSource = ImageMetadata | string;
+
+interface Props extends HTMLAttributes<"div"> {
+  /**
+   * Source for the "before" image (left side) - can be an imported image or URL string
+   */
+  beforeSrc: ImageSource;
+  /**
+   * Source for the "after" image (right side) - can be an imported image or URL string
+   */
+  afterSrc: ImageSource;
+  /**
+   * Alt text for the before image
+   * @default "Before"
+   */
+  beforeAlt?: string;
+  /**
+   * Alt text for the after image
+   * @default "After"
+   */
+  afterAlt?: string;
+  /**
+   * Initial position of the slider (0-100)
+   * @default 50
+   */
+  initialPosition?: number;
+}
+
+const imageCompareEffect = tv({
+  base: "image-compare @container dark relative isolate select-none overflow-hidden",
+});
+
+const {
+  beforeSrc,
+  afterSrc,
+  beforeAlt = "Before",
+  afterAlt = "After",
+  initialPosition = 50,
+  class: className,
+  ...rest
+} = Astro.props;
+
+const isImageMetadata = (src: ImageSource): src is ImageMetadata => {
+  return typeof src === "object" && "src" in src;
+};
+---
+
+<div
+  class={imageCompareEffect({ class: className })}
+  style={{ "--slider-position": `${initialPosition}%` }}
+  data-initial-position={initialPosition}
+  {...rest}
+>
+  <!-- After image (right/bottom layer) -->
+  {
+    isImageMetadata(afterSrc) ? (
+      <Image
+        src={afterSrc}
+        alt={afterAlt}
+        class="pointer-events-none block h-auto w-full"
+        draggable={false}
+      />
+    ) : (
+      <img
+        src={afterSrc}
+        alt={afterAlt}
+        class="pointer-events-none block h-auto w-full"
+        draggable="false"
+      />
+    )
+  }
+
+  <!-- Before image (left/top layer, clipped) -->
+  <div class="image-compare-before pointer-events-none absolute inset-0 overflow-hidden">
+    {
+      isImageMetadata(beforeSrc) ? (
+        <Image
+          src={beforeSrc}
+          alt={beforeAlt}
+          class="block h-full w-auto min-w-[100cqw] object-cover object-left"
+          draggable={false}
+        />
+      ) : (
+        <img
+          src={beforeSrc}
+          alt={beforeAlt}
+          class="block h-full w-auto min-w-[100cqw] object-cover object-left"
+          draggable="false"
+        />
+      )
+    }
+  </div>
+
+  <!-- Slider handle -->
+  <div
+    class="image-compare-slider absolute inset-y-0 w-0.5 -translate-x-1/2 bg-white"
+    aria-hidden="true"
+  >
+    <div
+      class="bg-foreground text-background absolute top-1/2 left-1/2 flex size-11 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full ring-2 ring-white/30"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="m9 18-6-6 6-6"></path>
+        <path d="m15 6 6 6-6 6"></path>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<style>
+  .image-compare {
+    --slider-position: 50%;
+    cursor: ew-resize;
+  }
+
+  .image-compare-before {
+    width: var(--slider-position);
+  }
+
+  .image-compare-slider {
+    left: var(--slider-position);
+  }
+</style>
+
+<script>
+  function initImageCompare() {
+    const containers = document.querySelectorAll<HTMLElement>(".image-compare");
+
+    containers.forEach((container) => {
+      if (container.dataset.initialized) return;
+      container.dataset.initialized = "true";
+
+      let isDragging = false;
+
+      const updatePosition = (clientX: number) => {
+        const rect = container.getBoundingClientRect();
+        const x = clientX - rect.left;
+        const percentage = Math.max(0, Math.min(100, (x / rect.width) * 100));
+        container.style.setProperty("--slider-position", `${percentage}%`);
+      };
+
+      const onStart = (clientX: number) => {
+        isDragging = true;
+        updatePosition(clientX);
+      };
+
+      const onMove = (clientX: number) => {
+        if (!isDragging) return;
+        updatePosition(clientX);
+      };
+
+      const onEnd = () => {
+        isDragging = false;
+      };
+
+      // Mouse events
+      container.addEventListener("mousedown", (e) => onStart(e.clientX));
+      document.addEventListener("mousemove", (e) => onMove(e.clientX));
+      document.addEventListener("mouseup", onEnd);
+
+      // Touch events
+      container.addEventListener("touchstart", (e) => onStart(e.touches[0].clientX));
+      document.addEventListener("touchmove", (e) => onMove(e.touches[0].clientX));
+      document.addEventListener("touchend", onEnd);
+    });
+  }
+
+  initImageCompare();
+  document.addEventListener("astro:after-swap", initImageCompare);
+</script>
