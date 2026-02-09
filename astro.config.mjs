@@ -86,14 +86,19 @@ export default defineConfig({
         directory: 'getting-started'
       }
     }, {
-      label: 'User Features',
+      label: 'My Account',
       autogenerate: {
-        directory: 'user'
+        directory: 'my-account'
       }
     }, {
-      label: 'Managed Social',
+      label: 'Link Manager',
       autogenerate: {
-        directory: 'managed-social'
+        directory: 'link-manager'
+      }
+    }, {
+      label: 'Automated Social',
+      autogenerate: {
+        directory: 'social'
       }
     }, {
       label: 'Agency',
@@ -111,19 +116,9 @@ export default defineConfig({
         directory: 'booking-engine'
       }
     }, {
-      label: 'Corporate Portal',
-      autogenerate: {
-        directory: 'corporate'
-      }
-    }, {
       label: 'Property Portal',
       autogenerate: {
         directory: 'extranet'
-      }
-    }, {
-      label: 'Link Manager',
-      autogenerate: {
-        directory: 'link-manager'
       }
     }, {
       label: 'Travel Agent Portal',

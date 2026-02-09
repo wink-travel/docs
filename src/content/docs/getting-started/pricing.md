@@ -31,7 +31,6 @@ TripPay charges a 4.0% payment fee / booking. This covers acquiring the payment 
 :::note[Funds disbursement]
 There are fees associated with sending funds to your account. This depends on the disbursement method you choose. We currently support:
 
-- **Virtual credit card** (hotels only) ~2.0%
 - **Bank transfer** Cost depends on the country you are located in and where the funds are sent from. We include a quote calculator you can use when you have available funds in your account.
 
 If you want us to support another pay-out method, send us an e-mail.
@@ -49,11 +48,9 @@ Wink charges a 1.5% processing fee / booking. This enables us to offer all our s
 
 Using this model, travel agents only pay Wink's processing fee and Wink will invoice the travel agent on a monthly basis.
 
-## Future services
+## Subscriptions
 
-We will offer optional subscription-based services in the future that make it even easier to sell for everyone or offer managed affiliate accounts that do the selling for you. If that interests you, get your voice heard by emailing us at [hi@wink.travel](mailto:hi@wink.travel).
-
-Stay tuned.
+We do offer an optional subscription service (see [Social](/social/what-is-social)) to help properties augment their sales and marketing teams.
 
 ## Platform effect
 

@@ -2,7 +2,7 @@
 title: Rate Providers
 description: Here is the up-to-date list of rate providers we support directly on Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Set rate provider

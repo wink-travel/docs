@@ -5,8 +5,6 @@ sidebar:
   order: 6
 ---
 
-# Wink Security Overview Document
-
 *Last Updated: September 7, 2024*
 
 *Version 1.0*
