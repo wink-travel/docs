@@ -2,7 +2,7 @@
 title: Avbokningsregler
 description: Den här artikeln visar hur du hanterar avbokningsregler på Wink.
 sidebar:
-  order: 12
+  order: 7
 ---
 
 För att hantera dina avbokningsregler, klicka på `Monetize > Cancellation policies` i huvudnavigeringsfältet.
@@ -12,7 +12,7 @@ Avbokningsregler bestämmer hur bokarens medel hanteras om gästen inte kan komm
 1. Återbetalningsbara
 2. Icke återbetalningsbara
 
-De flesta gånger räcker dessa två alternativ. Men båda ger dig stor möjlighet att anpassa din avbokningsregel ytterligare.
+I de flesta fall räcker dessa två alternativ. Men båda ger dig stor möjlighet att anpassa din avbokningsregel ytterligare.
 
 :::tip[Rolig fakta]
 Wink stödjer totalt 8500 variationer av avbokningsregler.
@@ -29,7 +29,7 @@ För att skapa en icke återbetalningsbar avbokningsregel, ställ in reglaget p�
 Du kan valfritt konfigurera din `icke återbetalningsbara` regel ytterligare för större kontroll.
 
 - **Hur mycket debiteras gästen vid en avbokning?** Som standard är en icke återbetalningsbar regel 100% icke återbetalningsbar. Du kan finjustera beloppet här. *t.ex. 50% av totalpriset*
-- **Har debiteringen en tidsgräns?** Om du finjusterade beloppet kan du finjustera det ytterligare genom att ange hur länge beloppet gäller. *t.ex. Fram till 3 dagar före ankomst*
+- **Har debiteringen en tidsgräns?** Om du finjusterade beloppet kan du finjustera det ytterligare genom att ange hur länge det beloppet gäller. *t.ex. Fram till 3 dagar före ankomst*
 - **Hur mycket debiteras gästen vid avbokning efter tidsgränsen?** Om gästen avbokar efter den angivna tidsgränsen kan du ange hur mycket gästen ska betala efter tidsgränsen. *t.ex. 70% av totalpriset*
 
 ## Återbetalningsbar

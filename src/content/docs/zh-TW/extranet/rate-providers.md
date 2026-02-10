@@ -1,8 +1,8 @@
 ---
 title: 價格供應商
-description: 這是我們在 Wink 上直接支援的最新價格供應商清單。
+description: 這是我們在 Wink 直接支援的最新價格供應商清單。
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## 設定價格供應商
@@ -14,10 +14,10 @@ sidebar:
 
 ### SynXis
 
-如果您的物業使用 SynXis 頻道管理系統，還需要完成一個步驟才能與 Wink 連接。
+如果您的物業使用 SynXis 頻道管理系統，連接 Wink 前還需要完成一個步驟。
 
 - 請聯繫您的 SynXis 客戶代表或客服 (SHSCustomerCare@sabre.com)。
-- 告知他們您想透過 Channel Connect Express (***CCX***) 連接到 Wink。
+- 告知他們您想透過 Channel Connect Express (***CCX***) 連接 Wink。
 - 他們會請您填寫 ***PRS*** 表格。
   - 您需要填寫您的 Wink 使用者憑證。
   - 以及您想使用的貨幣。

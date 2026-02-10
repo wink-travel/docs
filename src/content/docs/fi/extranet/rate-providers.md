@@ -1,15 +1,15 @@
 ---
-title: Hintatoimittajat
-description: Tässä on ajantasainen lista hintatoimittajista, joita tuemme suoraan Winkissä.
+title: Hintatarjoajat
+description: Tässä on ajantasainen lista hintatarjoajista, joita tuemme suoraan Winkissä.
 sidebar:
-  order: 18
+  order: 24
 ---
 
-## Aseta hintatoimittaja
+## Aseta hintatarjoaja
 
-Aseta hintatoimittajasi napsauttamalla päävalikosta `Distribution > Channel manager`.
+Asettaaksesi hintatarjoajan, klikkaa päävalikosta `Distribution > Channel manager`.
 
-Valitse hintatoimittajasi avattavasta valikosta ja napsauta `Save`-painiketta. Tämä mahdollistaa hintatoimittajan lähettää meille hintoja, ja ilmoitamme heille, kun Winkissä tehdään varaus jollekin kiinteistöistäsi.
+Valitse hintatarjoajasi pudotusvalikosta ja klikkaa `Save`-painiketta. Tämä mahdollistaa hintatarjoajan lähettää meille hintoja, ja ilmoitamme heille, kun Winkissä tehdään varaus jollekin kiinteistöistäsi.
 
 
 ### SynXis

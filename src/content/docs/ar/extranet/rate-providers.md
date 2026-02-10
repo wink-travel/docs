@@ -2,7 +2,7 @@
 title: مزودو الأسعار
 description: إليك قائمة محدثة بمزودي الأسعار الذين ندعمهم مباشرة على Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## تعيين مزود الأسعار
@@ -14,7 +14,7 @@ sidebar:
 
 ### SynXis
 
-إذا كان عقارك يستخدم مدير القنوات SynXis، هناك خطوة إضافية مطلوبة قبل أن تكون جاهزًا للاتصال بـ Wink.
+إذا كان عقارك يستخدم مدير القنوات SynXis، هناك خطوة إضافية واحدة مطلوبة قبل أن تكون جاهزًا للاتصال بـ Wink.
 
 - يرجى التواصل مع ممثل حساب SynXis الخاص بك أو خدمة العملاء (SHSCustomerCare@sabre.com).
 - أخبرهم بأنك تريد الاتصال بـ Wink عبر Channel Connect Express (***CCX***).
@@ -44,7 +44,7 @@ sidebar:
 | Cloudbeds | CM |  | 2016 | 2016 | |
 | MyAllocator | CM |  | 2016 | 2016 | |
 | ResAvenue | CM |  | 2017 | 2017 | |
-| Fastbooking | CM |  | 2016 | 2016 | الآن d-edge |
+| Fastbooking | CM |  | 2016 | 2016 | Now d-edge |
 | Omnibees | CM |  | 2019 | 2019 | |
 | Hotel Link | CM |  | 2017 | 2017 | |
 | RateGain | CM |  | 2016 | 2018 | |

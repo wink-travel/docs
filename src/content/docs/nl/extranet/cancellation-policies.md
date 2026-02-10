@@ -2,7 +2,7 @@
 title: Annuleringsvoorwaarden
 description: Dit artikel laat zien hoe je annuleringsvoorwaarden beheert op Wink.
 sidebar:
-  order: 12
+  order: 7
 ---
 
 Om je annuleringsvoorwaarden te beheren, klik je op `Monetize > Cancellation policies` in de hoofd navigatiebalk.
@@ -30,7 +30,7 @@ Je kunt je `niet-restitueerbare` voorwaarde optioneel verder configureren voor m
 
 - **Hoeveel wordt de gast in rekening gebracht bij een annulering?** Standaard is een niet-restitueerbare voorwaarde 100% niet-restitueerbaar. Je kunt het bedrag hier verfijnen. *bijv. 50% van de totale prijs*
 - **Heeft de kosten een deadline?** Als je het bedrag hebt verfijnd, kun je het verder afstemmen door in te stellen hoe lang dat bedrag van kracht blijft. *bijv. Tot 3 dagen voor aankomst*
-- **Hoeveel wordt de gast in rekening gebracht bij een annulering na de deadline?** Als de gast na de hierboven ingestelde deadline annuleert, kun je het bedrag instellen dat de gast na de deadline betaalt. *bijv. 70% van de totale prijs*
+- **Hoeveel wordt de gast in rekening gebracht bij een annulering na de deadline?** Als de gast de hierboven ingestelde deadline overschrijdt, kun je het bedrag instellen dat de gast na de deadline betaalt. *bijv. 70% van de totale prijs*
 
 ## Restitueerbaar
 
@@ -41,5 +41,5 @@ Om een restitueerbare annuleringsvoorwaarde aan te maken, zet je de schakelaar o
 Je kunt je `restitueerbare` voorwaarde optioneel verder configureren voor meer controle.
 
 - **Hoe lang voor aankomst kan de gast kosteloos annuleren?** Standaard is een restitueerbare voorwaarde altijd 100% restitueerbaar. Je kunt de deadline hier verfijnen. *bijv. 3 dagen voor aankomst*
-- **Wat wordt de gast in rekening gebracht als de annulering na bovenstaande deadline plaatsvindt?** Als je de deadline hebt verfijnd, kun je het bedrag instellen dat de gast na de deadline betaalt. *bijv. 50% van de totale prijs*
-- **Hoeveel wordt de gast in rekening gebracht bij een 'No show'?** Als de gast niet verschijnt, kun je het bedrag instellen dat de gast wordt aangerekend voor een `No show`. *bijv. 100% van de totale prijs*
+- **Wat moet de gast betalen als de annulering na bovenstaande deadline plaatsvindt?** Als je de deadline hebt verfijnd, kun je het bedrag instellen dat de gast na de deadline betaalt. *bijv. 50% van de totale prijs*
+- **Hoeveel moet de gast betalen bij een 'No show'?** Als de gast niet verschijnt, kun je het bedrag instellen dat de gast wordt aangerekend voor een `No show`. *bijv. 100% van de totale prijs*

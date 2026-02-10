@@ -2,7 +2,7 @@
 title: Penyedia Kadar
 description: Berikut adalah senarai terkini penyedia kadar yang kami sokong secara langsung di Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Tetapkan penyedia kadar

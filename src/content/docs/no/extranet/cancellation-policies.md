@@ -2,7 +2,7 @@
 title: Avbestillingsregler
 description: Denne artikkelen viser deg hvordan du administrerer avbestillingsregler på Wink.
 sidebar:
-  order: 12
+  order: 7
 ---
 
 For å administrere dine avbestillingsregler, klikk på `Monetize > Cancellation policies` i hovedmenyen.
@@ -12,7 +12,7 @@ Avbestillingsregler bestemmer hvordan booker-midler håndteres dersom gjesten ik
 1. Refunderbar
 2. Ikke-refunderbar
 
-De fleste ganger er disse to alternativene tilstrekkelige. Begge gir deg imidlertid mye rom for å tilpasse avbestillingsreglene ytterligere.
+Som regel er disse to alternativene tilstrekkelige. Begge gir deg imidlertid mye rom til å tilpasse avbestillingsreglene ytterligere.
 
 :::tip[Fun fact]
 Wink støtter totalt 8500 varianter av avbestillingsregler.
@@ -24,7 +24,7 @@ For å opprette en avbestillingsregel, klikk på knappen `Create a new cancellat
 
 For å opprette en ikke-refunderbar avbestillingsregel, sett bryteren til 🛑 av når du blir spurt om regelen er refunderbar.
 
-### Valg
+### Valgmuligheter
 
 Du kan valgfritt konfigurere din `ikke-refunderbare` regel videre for større kontroll.
 
@@ -36,7 +36,7 @@ Du kan valgfritt konfigurere din `ikke-refunderbare` regel videre for større ko
 
 For å opprette en refunderbar avbestillingsregel, sett bryteren til ✅ på når du blir spurt om regelen er refunderbar.
 
-### Valg
+### Valgmuligheter
 
 Du kan valgfritt konfigurere din `refunderbare` regel videre for større kontroll.
 

@@ -21,4 +21,4 @@ Wink est un système avancé de gestion de contenu pour les établissements et l
 Payez-vous un hébergement coûteux pour vos médias via Leonardo International ? Vous pouvez faire exactement la même chose via Wink ET vous bénéficiez de bien plus d’options pour manipuler et affiner vos images et vidéos.
 :::
 
-Toutes ces fonctionnalités vous sont offertes sans frais. Ce n’est que lorsque vous réalisez une réservation que nous prélevons une petite commission. Rien à perdre - Tout à gagner.
+Toutes ces fonctionnalités vous sont offertes gratuitement. Ce n’est que lorsque vous réalisez une réservation que nous prélevons une petite commission. Rien à perdre - Tout à gagner.

@@ -21,4 +21,4 @@ Wink es un sistema avanzado de gestión de contenido para propiedades y proveedo
 ¿Estás pagando por un alojamiento costoso de activos multimedia a través de Leonardo International? Puedes hacer exactamente lo mismo a través de Wink Y además obtienes muchas más opciones para manipular y ajustar finamente tus imágenes y videos.
 :::
 
-Todas estas funciones no tienen costo para ti. Solo cobramos una pequeña comisión cuando realizas una reserva. No tienes nada que perder - Todo que ganar.
+Todas estas funciones no tienen ningún costo para ti. Solo cobramos una pequeña comisión cuando realizas una reserva. No tienes nada que perder - Todo que ganar.

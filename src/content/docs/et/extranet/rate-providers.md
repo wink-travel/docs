@@ -2,7 +2,7 @@
 title: Hinnapakkujad
 description: Siin on ajakohane nimekiri hinnapakkujatest, keda me Winkis otseselt toetame.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Määra hinnapakkuja
@@ -16,7 +16,7 @@ Valige rippmenüüst oma hinnapakkuja ja klõpsake nuppu `Save`. See võimaldab 
 
 Kui teie kinnisvara kasutab SynXis kanalihaldurit, on enne Winkiga ühenduse loomist vaja veel üks samm.
 
-- Palun võtke ühendust oma SynXis konto esindaja või klienditoega (SHSCustomerCare@sabre.com).
+- Palun võtke ühendust oma SynXis konto esindajaga või klienditoega (SHSCustomerCare@sabre.com).
 - Teatage neile, et soovite ühendada Winkiga Channel Connect Expressi (***CCX***) kaudu.
 - Nad paluvad teil täita vormi ***PRS***.
   - Teil palutakse sisestada oma Wink kasutajatunnused.

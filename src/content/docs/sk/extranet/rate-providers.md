@@ -2,14 +2,14 @@
 title: Poskytovatelia cien
 description: Tu je aktuálny zoznam poskytovateľov cien, ktorých priamo podporujeme na Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Nastavenie poskytovateľa cien
 
-Ak chcete nastaviť svojho poskytovateľa cien, kliknite na `Distribution > Channel manager` v hlavnom navigačnom paneli.
+Ak chcete nastaviť svojho poskytovateľa cien, kliknite v hlavnom navigačnom paneli na `Distribution > Channel manager`.
 
-Vyberte svojho poskytovateľa cien zo zoznamu a kliknite na tlačidlo `Save`. Tým umožníte poskytovateľovi cien zasielať nám ceny a budeme ich informovať, keď dôjde k rezervácii na Wink pre jednu z vašich nehnuteľností.
+Vyberte svojho poskytovateľa cien zo zoznamu a kliknite na tlačidlo `Save`. Tým umožníte poskytovateľovi cien zasielať nám ceny a my ich budeme informovať, keď dôjde k rezervácii na Wink pre jednu z vašich nehnuteľností.
 
 
 ### SynXis

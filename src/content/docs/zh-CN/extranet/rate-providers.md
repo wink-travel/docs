@@ -2,14 +2,14 @@
 title: 费率供应商
 description: 这是我们在 Wink 上直接支持的最新费率供应商列表。
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## 设置费率供应商
 
 要设置您的费率供应商，请点击主导航栏中的 `Distribution > Channel manager`。
 
-从下拉列表中选择您的费率供应商，然后点击 `Save` 按钮。这样费率供应商就可以向我们发送费率，当您的某个物业在 Wink 上发生预订时，我们会通知他们。
+从下拉列表中选择您的费率供应商，然后点击 `Save` 按钮。这样费率供应商就可以向我们发送费率，当 Wink 上您的某个物业发生预订时，我们会通知他们。
 
 
 ### SynXis
@@ -17,7 +17,7 @@ sidebar:
 如果您的物业使用 SynXis 渠道管理器，连接 Wink 之前还需完成一步操作。
 
 - 请联系您的 SynXis 客户代表或客户服务（SHSCustomerCare@sabre.com）。
-- 告诉他们您想通过 Channel Connect Express (***CCX***) 连接到 Wink。
+- 告诉他们您想通过 Channel Connect Express (***CCX***) 连接 Wink。
 - 他们会让您填写 ***PRS*** 表格。
   - 您需要填写您的 Wink 用户凭证。
   - 以及您希望使用的货币。

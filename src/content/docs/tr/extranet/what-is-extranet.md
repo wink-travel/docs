@@ -1,6 +1,6 @@
 ---
 title: Extranet Nedir?
-description: Bu makale, bir otel olarak Wink'e başlamanız için bilmeniz gerekenleri anlatıyor.
+description: Bu makale, bir otel olarak Wink üzerinde başlamanız için bilmeniz gerekenleri anlatıyor.
 sidebar:
   order: 0
 ---
@@ -9,7 +9,7 @@ sidebar:
 
 Extranet'imiz, mümkün olduğunca basit olacak şekilde özenle tasarlanmıştır, ancak gelişmiş bir mülk portalından beklenen tüm özellikleri desteklemeye devam eder. Size birkaç örnek vermek gerekirse:
 
-1. Basitlik: Akıllı onboarding iş akışımızı kullanarak mülkünüzü kaydedin ve bir saatten kısa sürede CANLI yayına geçin.
+1. Basitlik: Mülkünüzü kaydetmek ve 1 saatten kısa sürede CANLI yayına almak için akıllı onboarding iş akışımızı kullanın.
 2. Gelişmiş: Wink, 8500 farklı iptal politikası varyasyonunu destekler.
 3. Harika: Dünyadaki tek bir kişiye, kullanıcının giriş yapmasına veya promosyon kodu girmesine gerek kalmadan %10 indirim verin.
 

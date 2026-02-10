@@ -2,7 +2,7 @@
 title: Kainų tiekėjai
 description: Čia pateikiamas atnaujintas kainų tiekėjų, kuriuos tiesiogiai palaikome Wink, sąrašas.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Nustatyti kainų tiekėją
@@ -14,14 +14,14 @@ Iš išskleidžiamojo sąrašo pasirinkite savo kainų tiekėją ir spustelėkit
 
 ### SynXis
 
-Jei jūsų objektas naudoja SynXis channel manager, prieš prisijungiant prie Wink reikia atlikti dar vieną žingsnį.
+Jei jūsų objektas naudoja SynXis kanalų valdymo sistemą, prieš prisijungiant prie Wink reikia atlikti dar vieną žingsnį.
 
-- Susisiekite su savo SynXis paskyros atstovu arba klientų aptarnavimo tarnyba (SHSCustomerCare@sabre.com).
+- Susisiekite su savo SynXis paskyros atstovu arba klientų aptarnavimo skyriumi (SHSCustomerCare@sabre.com).
 - Praneškite, kad norite prisijungti prie Wink per Channel Connect Express (***CCX***).
 - Jie paprašys užpildyti formą ***PRS***.
   - Jums reikės įvesti savo Wink vartotojo duomenis.
   - ...ir pageidaujamą valiutą.
-- Užpildykite formą ir grąžinkite ją SynXis.
+- Užpildykite formą ir pateikite ją atgal SynXis.
 
 ## Tiekėjai
 
@@ -29,13 +29,13 @@ Jei jūsų objektas naudoja SynXis channel manager, prieš prisijungiant prie Wi
 
 Galimi tipai:
 
-- Channel Manager (CM)
-- Property Management System (PMS)
-- Central Reservation System (CRS)
+- Kanalų valdymo sistema (CM)
+- Nekilnojamojo turto valdymo sistema (PMS)
+- Centrinė rezervavimo sistema (CRS)
 
 *Jei tiekėjas turi tarpininką, tai reiškia, kad mes netiesiogiai gauname kainas iš tiekėjo per tarpininką.*
 
-| Vendor | Type | Proxy | Since | Last modified | Comment
+| Tiekėjas | Tipas | Tarpininkas | Nuo | Paskutinį kartą keista | Komentaras
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

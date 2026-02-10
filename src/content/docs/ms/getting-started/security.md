@@ -5,17 +5,15 @@ sidebar:
   order: 6
 ---
 
-# Dokumen Gambaran Keselamatan Wink
-
-*Terakhir Dikemas Kini: 7 September 2024*
+*Kemaskini Terakhir: 7 September 2024*
 
 *Versi 1.0*
 
 ## Tujuan dan Skop
 
-Sebagai sebahagian daripada komitmen berterusan kami terhadap keselamatan dan melindungi data pengguna, kami menjalankan ujian penembusan secara berkala ke atas aplikasi web kami. Dokumen ini menggariskan metodologi ujian kami, menyediakan ringkasan penemuan, dan menyorot pendekatan kami untuk penambahbaikan keselamatan berterusan.
+Sebagai sebahagian daripada komitmen berterusan kami terhadap keselamatan dan perlindungan data pengguna, kami menjalankan ujian penembusan secara berkala ke atas aplikasi web kami. Dokumen ini menggariskan metodologi ujian kami, menyediakan ringkasan penemuan, dan menyorot pendekatan kami untuk penambahbaikan keselamatan berterusan.
 
-Dokumen ini akan dikemas kini apabila laporan baru dihasilkan atau apabila berlaku perubahan ketara.
+Dokumen ini akan dikemas kini apabila laporan baru dihasilkan atau apabila perubahan ketara berlaku.
 
 Domain dalam skop:  
 \*.wink.travel  
@@ -27,7 +25,7 @@ Ujian penembusan kami dijalankan setiap tahun, dengan ujian tambahan dijadualkan
 
 ## Metodologi Ujian
 
-Ujian penembusan kami menyeluruh dan merangkumi pelbagai aspek keselamatan, termasuk tetapi tidak terhad kepada:
+Ujian penembusan kami adalah menyeluruh dan merangkumi pelbagai aspek keselamatan, termasuk tetapi tidak terhad kepada:
 
 * **OWASP Top 10:** Ujian kami secara khusus menyasarkan risiko keselamatan paling kritikal, seperti Injection, Broken Authentication, dan Cross-Site Scripting (XSS).  
 * **Ujian Black Box dan Grey Box:** Bergantung pada skop, pasukan kami menggunakan metodologi ini untuk mensimulasikan senario serangan luaran dan dalaman.  
@@ -50,7 +48,7 @@ Untuk penemuan terperinci, sila rujuk laporan penuh.
 
 Kedua-dua kerentanan yang ditemui dinilai sebagai kritikal kerana kedua-duanya boleh memberi impak kewangan yang serius. Yang pertama membenarkan pengguna yang disahkan berniat jahat mengawal akaun pembayaran Trippay syarikat lain. Kerentanan kedua membenarkan pengguna berniat jahat mengubah jumlah pembayaran yang diperlukan untuk tempahan.
 
-### Usaha Pembetulan dan Mitigasi
+### Usaha Pemulihan dan Mitigasi
 
 Kami telah mengambil langkah berikut untuk menangani kerentanan yang dikenal pasti:
 
@@ -63,14 +61,14 @@ Ujian penembusan adalah sebahagian daripada strategi lebih luas kami untuk penam
 
 ## Kepakaran Pasukan
 
-Ujian penembusan kami dijalankan oleh seorang profesional dalaman yang berpengalaman luas dalam pelbagai projek dan industri. Menggunakan alat dan kaedah terkemuka, pakar kami memastikan aplikasi kami diuji dengan teliti terhadap ancaman keselamatan terkini.
+Ujian penembusan kami dijalankan oleh profesional dalaman yang berpengalaman luas dalam pelbagai projek dan industri. Menggunakan alat dan kaedah terkemuka, pakar kami memastikan aplikasi kami diuji dengan teliti terhadap ancaman keselamatan terkini.
 
 ## Komitmen terhadap Keselamatan
 
-Kami berdedikasi untuk mengekalkan persekitaran aplikasi yang selamat untuk pengguna dan pihak berkepentingan kami. Usaha berterusan kami dalam ujian dan penambahbaikan keselamatan menunjukkan komitmen kami untuk melindungi daripada ancaman yang berkembang.
+Kami komited untuk mengekalkan persekitaran aplikasi yang selamat untuk pengguna dan pihak berkepentingan kami. Usaha berterusan kami dalam ujian dan penambahbaikan keselamatan menunjukkan komitmen kami untuk melindungi daripada ancaman yang berkembang.
 
 ## Akses Laporan dan Kemas Kini
 
-Dokumen ini akan dikemas kini secara berterusan apabila laporan ujian penembusan baru dikeluarkan. Untuk mengakses laporan penuh, sila hubungi kami melalui emel di bawah. Kemas kini akan datang akan merangkumi kerentanan yang baru dikenal pasti, usaha pembetulan, dan penyesuaian kepada metodologi ujian kami.
+Dokumen ini akan dikemas kini secara berterusan apabila laporan ujian penembusan baru dikeluarkan. Untuk mengakses laporan penuh, sila hubungi kami melalui emel di bawah. Kemas kini akan datang akan merangkumi kerentanan yang baru dikenal pasti, usaha pemulihan, dan penyesuaian metodologi ujian kami.
 
 Untuk pertanyaan lanjut, sila hubungi security@wink.travel.

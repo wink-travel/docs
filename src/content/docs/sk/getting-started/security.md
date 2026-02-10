@@ -5,8 +5,6 @@ sidebar:
   order: 6
 ---
 
-# Prehľad bezpečnosti Wink
-
 *Posledná aktualizácia: 7. september 2024*
 
 *Verzia 1.0*
@@ -41,18 +39,18 @@ Nižšie je uvedené vysokú úroveň zhrnutia našej najnovšej správy z penet
 * **Rozdelenie závažnosti:**  
   * Kritické: 2  
 * **Typy zraniteľností zistených:**  
-  * Porušenie kontroly prístupu  
-  * Nezabezpečený dizajn
+  * Broken Access Control  
+  * Insecure Design
 
-Pre podrobné zistenia si prosím prečítajte celú správu.
+Pre podrobné zistenia si prosím pozrite celú správu.
 
 ### Hodnotenie rizík a dopad
 
-Obe zistené zraniteľnosti sú hodnotené ako kritické, pretože obe mohli mať vážne finančné dopady. Prvá umožnila škodlivému autentifikovanému používateľovi získať kontrolu nad platobným účtom inej spoločnosti v Trippay. Druhá zraniteľnosť umožnila škodlivému používateľovi upraviť sumu platby požadovanej za rezerváciu.
+Obe zistené zraniteľnosti sú hodnotené ako kritické, pretože obe mohli mať vážne finančné dopady. Prvá umožnila škodlivému autentifikovanému používateľovi získať kontrolu nad Trippay platobným účtom inej spoločnosti. Druhá zraniteľnosť umožnila škodlivému používateľovi upraviť sumu platby požadovanej za rezerváciu.
 
 ### Opatrenia na nápravu a zmiernenie
 
-Prijali sme nasledujúce kroky na riešenie identifikovaných zraniteľností:
+Podnikli sme nasledujúce kroky na riešenie identifikovaných zraniteľností:
 
 * **Okamžité záplaty:** Kritické zraniteľnosti boli opravené do 48 hodín od ich zistenia.  
 * **Kontrola kódu a spevnenie:** Vývojový tím implementoval ďalšie bezpečnostné kontroly na základe našich odporúčaní.
@@ -63,14 +61,14 @@ Penetračné testovanie je súčasťou našej širšej stratégie neustáleho zl
 
 ## Odbornosť tímu
 
-Naše penetračné testovanie vykonáva interný odborník s rozsiahlymi skúsenosťami z rôznych projektov a odvetví. Použitím popredných nástrojov a metód náš expert zabezpečuje, že naša aplikácia je dôkladne testovaná proti najnovším bezpečnostným hrozbám.
+Naše penetračné testovanie vykonáva interný odborník s rozsiahlymi skúsenosťami naprieč rôznymi projektmi a odvetviami. Použitím popredných nástrojov a metód náš expert zabezpečuje, že naša aplikácia je dôkladne testovaná proti najnovším bezpečnostným hrozbám.
 
 ## Záväzok k bezpečnosti
 
-Sme odhodlaní udržiavať bezpečné prostredie aplikácie pre našich používateľov a zainteresované strany. Naše neustále úsilie v oblasti testovania a zlepšovania bezpečnosti preukazuje náš záväzok chrániť pred vyvíjajúcimi sa hrozbami.
+Sme odhodlaní udržiavať bezpečné prostredie aplikácie pre našich používateľov a zainteresované strany. Naše neustále úsilie v oblasti testovania a zlepšovania bezpečnosti demonštruje náš záväzok chrániť pred vyvíjajúcimi sa hrozbami.
 
 ## Prístup k správe a aktualizácie
 
 Tento dokument bude priebežne aktualizovaný, keď budú vydané nové správy z penetračných testov. Pre prístup k plnej správe nás prosím kontaktujte na nižšie uvedenom e-maile. Budúce aktualizácie budú obsahovať novo identifikované zraniteľnosti, opatrenia na nápravu a úpravy našich testovacích metodík.
 
-Pre ďalšie otázky nás kontaktujte na security@wink.travel.
+Pre ďalšie otázky nás prosím kontaktujte na security@wink.travel.

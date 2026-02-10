@@ -24,14 +24,13 @@ Queremos ser completamente transparentes con los precios desde ahora para ahorra
 Wink cobra una comisión por procesamiento del 1.5% por reserva. Esto nos permite ofrecer todos nuestros servicios gratis y cubre el mantenimiento de la plataforma.
 :::
 
-:::note[Comisión por pago]
-TripPay cobra una comisión por pago del 4.0% por reserva. Esto cubre la adquisición del pago del viajero.
+:::note[Comisión de pago]
+TripPay cobra una comisión de pago del 4.0% por reserva. Esto cubre la adquisición del pago del viajero.
 :::
 
 :::note[Desembolso de fondos]
 Hay comisiones asociadas con el envío de fondos a tu cuenta. Esto depende del método de desembolso que elijas. Actualmente soportamos:
 
-- **Tarjeta de crédito virtual** (solo hoteles) ~2.0%
 - **Transferencia bancaria** El costo depende del país en el que te encuentres y de dónde se envíen los fondos. Incluimos un calculador de cotizaciones que puedes usar cuando tengas fondos disponibles en tu cuenta.
 
 Si quieres que soportemos otro método de pago, envíanos un correo electrónico.
@@ -49,13 +48,11 @@ Wink cobra una comisión por procesamiento del 1.5% por reserva. Esto nos permit
 
 Con este modelo, los agentes de viajes solo pagan la comisión por procesamiento de Wink y Wink facturará al agente de viajes mensualmente.
 
-## Servicios futuros
+## Suscripciones
 
-En el futuro ofreceremos servicios opcionales basados en suscripción que harán que vender sea aún más fácil para todos o cuentas afiliadas gestionadas que hagan la venta por ti. Si te interesa, hazte escuchar enviándonos un correo a [hi@wink.travel](mailto:hi@wink.travel).
+Ofrecemos un servicio de suscripción opcional (ver [Social](/es-MX/social/what-is-social)) para ayudar a los alojamientos a aumentar sus equipos de ventas y marketing.
 
-Mantente atento.
-
-## Efecto de la plataforma
+## Efecto plataforma
 
 Finalmente, a medida que seguimos creciendo en tamaño y reservas, queremos poder compartir algunos de los efectos de la plataforma contigo. Más reservas traen oportunidades para descuentos por volumen de nuestro gateway de pago, lo que nos permitiría reducir nuestra comisión por procesamiento para todos.
 

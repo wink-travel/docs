@@ -2,7 +2,7 @@
 title: Fournisseurs de tarifs
 description: Voici la liste à jour des fournisseurs de tarifs que nous supportons directement sur Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Définir le fournisseur de tarifs
@@ -18,7 +18,7 @@ Si votre propriété utilise le channel manager SynXis, une étape supplémentai
 
 - Veuillez contacter votre représentant de compte SynXis ou le service client (SHSCustomerCare@sabre.com).
 - Informez-les que vous souhaitez vous connecter à Wink via Channel Connect Express (***CCX***).
-- Ils vous demanderont de remplir le formulaire ***PRS***.
+- Ils vous feront remplir le formulaire ***PRS***.
   - Vous devrez renseigner vos identifiants utilisateur Wink.
   - ...et la devise souhaitée.
 - Complétez le formulaire et renvoyez-le à SynXis.

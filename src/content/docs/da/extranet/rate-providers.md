@@ -2,14 +2,14 @@
 title: Pristilbydere
 description: Her er den opdaterede liste over pristilbydere, vi understøtter direkte på Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Indstil pristilbyder
 
 For at indstille din pristilbyder skal du klikke på `Distribution > Channel manager` i hovednavigationslinjen.
 
-Vælg din pristilbyder fra dropdown-listen, og klik på `Gem`-knappen. Dette vil give pristilbyderen mulighed for at sende os priser, og vi vil underrette dem, når der sker en booking på Wink for en af dine ejendomme.
+Vælg din pristilbyder fra dropdown-listen og klik på `Gem`-knappen. Dette vil give pristilbyderen mulighed for at sende os priser, og vi vil underrette dem, når der sker en booking på Wink for en af dine ejendomme.
 
 
 ### SynXis

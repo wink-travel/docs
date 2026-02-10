@@ -125,11 +125,11 @@ const directories = [
   "getting-started",
   "guides",
   "link-manager",
-  "managed-social",
+  "my-account",
+  "social",
   "payment",
   "studio",
   "travel-agent",
-  "user",
   "webinars",
 ];
 

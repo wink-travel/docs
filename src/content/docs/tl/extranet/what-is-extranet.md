@@ -5,7 +5,7 @@ sidebar:
   order: 0
 ---
 
-[Wink Extranet](https://extranet.wink.travel) ay ang aming property portal. Ito ay para sa mga hotel, chain, brand, at mga kumpanya ng pamamahala ng hotel upang lumikha at pamahalaan ang digital na profile ng kanilang mga property sa Wink platform.
+[Wink Extranet](https://extranet.wink.travel) ang aming property portal. Ito ay para sa mga hotel, chain, brand, at mga kumpanya ng pamamahala ng hotel upang lumikha at pamahalaan ang digital na profile ng kanilang mga property sa Wink platform.
 
 Ang aming Extranet ay maingat na idinisenyo upang maging kasing simple hangga't maaari, ngunit sinusuportahan pa rin ang lahat ng mga tampok na inaasahan ng mga power user mula sa isang advanced na property portal. Para bigyan ka ng ilang halimbawa:
 

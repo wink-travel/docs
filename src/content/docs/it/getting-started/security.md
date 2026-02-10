@@ -5,15 +5,13 @@ sidebar:
   order: 6
 ---
 
-# Documento di Panoramica sulla Sicurezza di Wink
-
 *Ultimo aggiornamento: 7 settembre 2024*
 
 *Versione 1.0*
 
 ## Scopo e Ambito
 
-Come parte del nostro impegno continuo per la sicurezza e la protezione dei dati degli utenti, conduciamo regolarmente test di penetrazione sulla nostra applicazione web. Questo documento descrive le nostre metodologie di test, fornisce un riepilogo dei risultati e illustra il nostro approccio al miglioramento continuo della sicurezza.
+Come parte del nostro impegno continuo per la sicurezza e la protezione dei dati degli utenti, conduciamo regolarmente test di penetrazione sulla nostra applicazione web. Questo documento illustra le nostre metodologie di test, fornisce un riepilogo dei risultati e mette in evidenza il nostro approccio al miglioramento continuo della sicurezza.
 
 Questo documento sarà aggiornato man mano che verranno prodotti nuovi report o quando si verificheranno cambiamenti significativi.
 
@@ -23,7 +21,7 @@ Domini in ambito:
 
 ## Frequenza e Programma dei Test
 
-I nostri test di penetrazione vengono effettuati su base annuale, con test aggiuntivi programmati secondo necessità dopo aggiornamenti significativi dell’applicazione o dell’infrastruttura. Questa cadenza regolare di test ci consente di anticipare le minacce in evoluzione e mantenere un ambiente sicuro.
+I nostri test di penetrazione vengono effettuati su base annuale, con test aggiuntivi programmati secondo necessità dopo aggiornamenti significativi dell’applicazione o dell’infrastruttura. Questa cadenza regolare di test ci assicura di anticipare le minacce in evoluzione e mantenere un ambiente sicuro.
 
 ## Metodologie di Test
 
@@ -41,20 +39,20 @@ Di seguito un riepilogo ad alto livello del nostro report più recente sui test 
 * **Distribuzione della Gravità:**  
   * Critiche: 2  
 * **Tipologie di Vulnerabilità Rilevate:**  
-  * Controllo Accessi Compromesso  
+  * Controllo Accessi compromesso  
   * Progettazione Insicura
 
-Per i dettagli completi, si prega di fare riferimento al report integrale.
+Per i dettagli completi, si prega di consultare il report integrale.
 
-### Valutazione del Rischio e Impatto
+### Valutazioni del Rischio e Impatto
 
-Entrambe le vulnerabilità riscontrate sono state classificate come critiche poiché entrambe avrebbero potuto avere gravi impatti finanziari. La prima ha permesso a un utente autenticato malevolo di ottenere il controllo dell’account di pagamento Trippay di un’altra azienda. La seconda vulnerabilità ha consentito a un utente malevolo di modificare l’importo del pagamento richiesto per una prenotazione.
+Entrambe le vulnerabilità riscontrate sono classificate come critiche poiché entrambe avrebbero potuto avere gravi impatti finanziari. La prima ha permesso a un utente autenticato malevolo di ottenere il controllo dell’account di pagamento Trippay di un’altra azienda. La seconda vulnerabilità ha consentito a un utente malevolo di modificare l’importo del pagamento richiesto per una prenotazione.
 
 ### Interventi di Remediation e Mitigazione
 
 Abbiamo adottato i seguenti provvedimenti per affrontare le vulnerabilità identificate:
 
-* **Patch Immediati:** Le vulnerabilità critiche sono state corrette entro 48 ore dalla scoperta.  
+* **Patch Immediate:** Le vulnerabilità critiche sono state corrette entro 48 ore dalla scoperta.  
 * **Revisione del Codice e Rafforzamento:** Il team di sviluppo ha implementato controlli di sicurezza aggiuntivi basati sulle nostre raccomandazioni.
 
 ## Miglioramento Continuo

@@ -2,7 +2,7 @@
 title: Tarifanbieter
 description: Hier ist die aktuelle Liste der Tarifanbieter, die wir direkt auf Wink unterstützen.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Tarifanbieter festlegen
@@ -18,8 +18,8 @@ Wenn Ihre Unterkunft den SynXis Channel Manager verwendet, ist vor der Verbindun
 
 - Bitte nehmen Sie Kontakt mit Ihrem SynXis-Kundenbetreuer oder dem Kundenservice (SHSCustomerCare@sabre.com) auf.
 - Teilen Sie ihnen mit, dass Sie die Verbindung zu Wink über Channel Connect Express (***CCX***) herstellen möchten.
-- Sie werden Sie das Formular ***PRS*** ausfüllen lassen.
-  - Sie werden gebeten, Ihre Wink-Benutzerdaten einzugeben.
+- Sie werden gebeten, das Formular ***PRS*** auszufüllen.
+  - Sie müssen Ihre Wink-Benutzerdaten eingeben.
   - ...und Ihre gewünschte Währung.
 - Füllen Sie das Formular aus und senden Sie es an SynXis zurück.
 

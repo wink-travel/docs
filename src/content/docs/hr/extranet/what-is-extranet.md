@@ -15,10 +15,10 @@ Naš Extranet je pažljivo dizajniran da bude što jednostavniji, ali da i dalje
 
 Neka vas naši čarobnjaci vode kroz cijeli proces. Kad se osjećate dovoljno sigurno... krenite sami.
 
-Wink je napredni sustav za upravljanje sadržajem za objekte i pružatelje iskustava. Sve što možete učiniti u jednoj od naših aplikacija, možete učiniti i putem API-ja. To vam omogućuje duboku integraciju s Winkom do te mjere da možete prodavati putem Winka bez da se ikada morate prijaviti u bilo koju od naših aplikacija.
+Wink je napredni sustav za upravljanje sadržajem za objekte i pružatelje iskustava. Sve što možete učiniti u jednoj od naših aplikacija, možete učiniti i putem API-ja. To vam omogućuje duboku integraciju s Winkom do te mjere da možete prodavati putem Winka bez potrebe da se ikada prijavljujete u bilo koju od naših aplikacija.
 
 :::tip[Pro savjet]
-Plaćate li skupo hostanje medijskih sadržaja preko Leonardo International? Možete napraviti potpuno isto preko Winka I dobivate mnogo više opcija za manipulaciju i fino podešavanje vaših slika i videa.
-:::
+Plaćate li skupo hostanje medijskih sadržaja preko Leonardo International? Možete napraviti potpuno isto preko Winka I dobiti mnogo više opcija za manipulaciju i fino podešavanje vaših slika i videa.
+::: 
 
-Sve ove značajke dolaze bez ikakvih troškova za vas. Naknadu uzimamo samo kada napravite rezervaciju. Nema gubitka - Sve za dobiti.
+Sve ove značajke su vam dostupne bez ikakvih troškova. Naknadu uzimamo samo kada napravite rezervaciju. Nema gubitka - Sve za dobiti.

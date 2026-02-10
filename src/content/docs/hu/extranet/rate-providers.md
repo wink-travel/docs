@@ -2,7 +2,7 @@
 title: Ár szolgáltatók
 description: Itt található a Wink által közvetlenül támogatott ár szolgáltatók naprakész listája.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Ár szolgáltató beállítása
@@ -14,12 +14,12 @@ Válassza ki az ár szolgáltatót a legördülő listából, majd kattintson a 
 
 ### SynXis
 
-Ha az ingatlana a SynXis channel managert használja, még egy lépés szükséges, mielőtt készen áll a Wink-kel való kapcsolódásra.
+Ha az ingatlana a SynXis channel managert használja, még egy lépés szükséges, mielőtt készen állna a Wink-kel való kapcsolódásra.
 
 - Kérjük, vegye fel a kapcsolatot SynXis fiókkezelőjével vagy ügyfélszolgálatával (SHSCustomerCare@sabre.com).
-- Jelezze nekik, hogy a Wink-hez szeretne csatlakozni a Channel Connect Express (***CCX***) segítségével.
+- Jelezze nekik, hogy a Wink-hez szeretne kapcsolódni a Channel Connect Express (***CCX***) segítségével.
 - Ki fogják tölteni Önnel a ***PRS*** űrlapot.
-  - Kérni fogják, hogy adja meg Wink felhasználói adatait.
+  - Kérni fogják, hogy adja meg Wink felhasználói hitelesítő adatait.
   - ...valamint a kívánt pénznemet.
 - Töltse ki az űrlapot, és küldje vissza a SynXisnek.
 

@@ -5,19 +5,17 @@ sidebar:
   order: 6
 ---
 
-# Dokumen Ikhtisar Keamanan Wink
-
 *Terakhir Diperbarui: 7 September 2024*
 
 *Versi 1.0*
 
 ## Tujuan dan Ruang Lingkup
 
-Sebagai bagian dari komitmen berkelanjutan kami terhadap keamanan dan perlindungan data pengguna, kami melakukan pengujian penetrasi secara rutin pada aplikasi web kami. Dokumen ini menguraikan metodologi pengujian kami, memberikan ringkasan temuan, dan menyoroti pendekatan kami untuk peningkatan keamanan secara berkelanjutan.
+Sebagai bagian dari komitmen berkelanjutan kami terhadap keamanan dan perlindungan data pengguna, kami melakukan pengujian penetrasi secara rutin pada aplikasi web kami. Dokumen ini menjelaskan metodologi pengujian kami, memberikan ringkasan temuan, dan menyoroti pendekatan kami untuk peningkatan keamanan secara berkelanjutan.
 
 Dokumen ini akan diperbarui saat laporan baru dibuat atau ketika terjadi perubahan signifikan.
 
-Domain yang termasuk dalam ruang lingkup:  
+Domain dalam ruang lingkup:  
 \*.wink.travel  
 \*.trippay.io
 
@@ -42,13 +40,13 @@ Berikut adalah ringkasan tingkat tinggi dari laporan pengujian penetrasi terbaru
   * Kritis: 2  
 * **Jenis Kerentanan yang Terdeteksi:**  
   * Broken Access Control  
-  * Desain Tidak Aman
+  * Insecure Design
 
-Untuk temuan lebih rinci, silakan merujuk ke laporan lengkap.
+Untuk temuan lebih rinci, silakan merujuk pada laporan lengkap.
 
 ### Penilaian Risiko dan Dampak
 
-Kedua kerentanan yang ditemukan dinilai kritis karena keduanya dapat memiliki dampak finansial yang parah. Yang pertama memungkinkan pengguna terautentikasi yang berniat jahat untuk mengendalikan akun pembayaran Trippay perusahaan lain. Kerentanan kedua memungkinkan pengguna berniat jahat untuk memodifikasi jumlah pembayaran yang diperlukan untuk sebuah pemesanan.
+Kedua kerentanan yang ditemukan dinilai kritis karena keduanya dapat memiliki dampak finansial yang parah. Yang pertama memungkinkan pengguna terautentikasi yang berbahaya untuk mengendalikan akun pembayaran Trippay perusahaan lain. Kerentanan kedua memungkinkan pengguna berbahaya memodifikasi jumlah pembayaran yang diperlukan untuk sebuah pemesanan.
 
 ### Upaya Perbaikan dan Mitigasi
 

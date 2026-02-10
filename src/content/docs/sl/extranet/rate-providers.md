@@ -2,7 +2,7 @@
 title: Ponudniki cen
 description: Tukaj je posodobljen seznam ponudnikov cen, ki jih neposredno podpiramo na Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Nastavite ponudnika cen
@@ -14,10 +14,10 @@ Izberite svojega ponudnika cen iz spustnega seznama in kliknite gumb `Save`. To 
 
 ### SynXis
 
-Če vaša nepremičnina uporablja kanalnega upravljavca SynXis, je pred povezavo z Wink potreben še en korak.
+Če vaša nepremičnina uporablja kanalnega upravitelja SynXis, je pred povezavo z Wink potreben še en korak.
 
 - Prosimo, obrnite se na svojega predstavnika za SynXis ali službo za pomoč strankam (SHSCustomerCare@sabre.com).
-- Sporočite jim, da želite povezavo z Wink preko Channel Connect Express (***CCX***).
+- Sporočite jim, da se želite povezati z Wink preko Channel Connect Express (***CCX***).
 - Zahtevali bodo, da izpolnite obrazec ***PRS***.
   - Vprašani boste za svoje uporabniške podatke za Wink.
   - ...in za želeno valuto.

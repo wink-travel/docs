@@ -2,14 +2,14 @@
 title: Dostawcy stawek
 description: Oto aktualna lista dostawców stawek, których obsługujemy bezpośrednio na Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Ustaw dostawcę stawek
 
-Aby ustawić dostawcę stawek, kliknij `Distribution > Channel manager` w głównym pasku nawigacyjnym.
+Aby ustawić dostawcę stawek, kliknij `Dystrybucja > Channel manager` w głównym pasku nawigacyjnym.
 
-Wybierz swojego dostawcę stawek z listy rozwijanej i kliknij przycisk `Save`. Pozwoli to dostawcy stawek przesyłać nam stawki, a my powiadomimy go, gdy na Wink zostanie dokonana rezerwacja dla jednej z Twoich nieruchomości.
+Wybierz swojego dostawcę stawek z listy rozwijanej i kliknij przycisk `Zapisz`. Pozwoli to dostawcy stawek na przesyłanie nam stawek, a my powiadomimy go, gdy na Wink zostanie dokonana rezerwacja dla jednej z Twoich nieruchomości.
 
 
 ### SynXis
@@ -35,7 +35,7 @@ Dostępne typy:
 
 *Jeśli dostawca ma proxy, oznacza to, że pośrednio otrzymujemy stawki od dostawcy przez proxy.*
 
-| Vendor | Type | Proxy | Since | Last modified | Comment
+| Dostawca | Typ | Proxy | Od | Ostatnia modyfikacja | Komentarz
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |
@@ -44,7 +44,7 @@ Dostępne typy:
 | Cloudbeds | CM |  | 2016 | 2016 | |
 | MyAllocator | CM |  | 2016 | 2016 | |
 | ResAvenue | CM |  | 2017 | 2017 | |
-| Fastbooking | CM |  | 2016 | 2016 | Teraz d-edge |
+| Fastbooking | CM |  | 2016 | 2016 | Obecnie d-edge |
 | Omnibees | CM |  | 2019 | 2019 | |
 | Hotel Link | CM |  | 2017 | 2017 | |
 | RateGain | CM |  | 2016 | 2018 | |

@@ -2,7 +2,7 @@
 title: ผู้ให้บริการอัตราค่าห้อง
 description: นี่คือรายชื่อผู้ให้บริการอัตราค่าห้องที่อัปเดตล่าสุดซึ่งเราสนับสนุนโดยตรงบน Wink
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## ตั้งค่าผู้ให้บริการอัตราค่าห้อง
@@ -44,7 +44,7 @@ sidebar:
 | Cloudbeds | CM |  | 2016 | 2016 | |
 | MyAllocator | CM |  | 2016 | 2016 | |
 | ResAvenue | CM |  | 2017 | 2017 | |
-| Fastbooking | CM |  | 2016 | 2016 | ปัจจุบันคือ d-edge |
+| Fastbooking | CM |  | 2016 | 2016 | Now d-edge |
 | Omnibees | CM |  | 2019 | 2019 | |
 | Hotel Link | CM |  | 2017 | 2017 | |
 | RateGain | CM |  | 2016 | 2018 | |

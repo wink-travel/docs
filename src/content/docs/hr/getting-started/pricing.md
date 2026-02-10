@@ -21,18 +21,17 @@ Većina toga ide platnoj mreži (Visa, MasterCard itd.). Prosječna rezervacija 
 ### Raspodjela
 
 :::note[Naknada za obradu]
-Wink naplaćuje naknadu za obradu od 1,5% po rezervaciji. To nam omogućuje da sve naše usluge nudimo besplatno i pokriva održavanje platforme.
+Wink naplaćuje 1,5% naknade za obradu po rezervaciji. To nam omogućuje da sve naše usluge nudimo besplatno i pokriva održavanje platforme.
 :::
 
 :::note[Naknada za plaćanje]
-TripPay naplaćuje naknadu za plaćanje od 4,0% po rezervaciji. To pokriva stjecanje plaćanja od putnika.
+TripPay naplaćuje 4,0% naknade za plaćanje po rezervaciji. To pokriva stjecanje plaćanja od putnika.
 :::
 
 :::note[Isplata sredstava]
 Postoje naknade povezane s isplatom sredstava na vaš račun. To ovisi o metodi isplate koju odaberete. Trenutno podržavamo:
 
-- **Virtualnu kreditnu karticu** (samo hoteli) ~2,0%
-- **Bankovni transfer** Trošak ovisi o zemlji u kojoj se nalazite i odakle se sredstva šalju. Uključili smo kalkulator ponuda koji možete koristiti kada imate dostupna sredstva na računu.
+- **Banka transfer** Trošak ovisi o zemlji u kojoj se nalazite i odakle se sredstva šalju. Uključili smo kalkulator ponuda koji možete koristiti kada imate dostupna sredstva na računu.
 
 Ako želite da podržimo drugu metodu isplate, pošaljite nam e-mail.
 :::
@@ -44,19 +43,17 @@ Ovaj model je dostupan samo putničkim agencijama koje posjeduju licencu za putn
 ### Raspodjela
 
 :::note[Naknada za obradu]
-Wink naplaćuje naknadu za obradu od 1,5% po rezervaciji. To nam omogućuje da sve naše usluge nudimo besplatno i pokriva održavanje platforme.
+Wink naplaćuje 1,5% naknade za obradu po rezervaciji. To nam omogućuje da sve naše usluge nudimo besplatno i pokriva održavanje platforme.
 :::
 
 Koristeći ovaj model, putnički agenti plaćaju samo Winkovu naknadu za obradu, a Wink će putničkom agentu fakturirati mjesečno.
 
-## Buduće usluge
+## Pretplate
 
-U budućnosti ćemo nuditi opcionalne usluge temeljene na pretplati koje će svima olakšati prodaju ili nuditi upravljane affiliate račune koji prodaju umjesto vas. Ako vas to zanima, dajte svoj glas slanjem e-maila na [hi@wink.travel](mailto:hi@wink.travel).
-
-Ostanite s nama.
+Nudimo i opcionalnu uslugu pretplate (pogledajte [Social](/hr/social/what-is-social)) kako bismo pomogli objektima u jačanju njihovih prodajnih i marketinških timova.
 
 ## Učinak platforme
 
-Na kraju, kako nastavljamo rasti i po veličini i po broju rezervacija, želimo moći podijeliti neke od učinaka platforme s vama. Više rezervacija donosi prilike za količinske popuste od naše platne mreže što bi nam omogućilo da smanjimo naknadu za obradu za sve.
+Na kraju, kako nastavljamo rasti i u veličini i u broju rezervacija, želimo moći podijeliti neke od učinaka platforme s vama. Više rezervacija donosi prilike za količinske popuste od naše platne mreže što bi nam omogućilo da smanjimo našu naknadu za obradu za sve.
 
 Pridružite se Winku danas i otkrijte novi, unosan način poslovanja u industriji ugostiteljstva!

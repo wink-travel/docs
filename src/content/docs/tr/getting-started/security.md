@@ -5,8 +5,6 @@ sidebar:
   order: 6
 ---
 
-# Wink Güvenlik Genel Bakış Belgesi
-
 *Son Güncelleme: 7 Eylül 2024*
 
 *Sürüm 1.0*
@@ -15,7 +13,7 @@ sidebar:
 
 Güvenlik ve kullanıcı verilerinin korunmasına yönelik sürekli taahhüdümüzün bir parçası olarak, web uygulamamızda düzenli penetrasyon testleri yapmaktayız. Bu belge, test metodolojilerimizi özetler, bulguların bir özetini sunar ve sürekli güvenlik iyileştirmesine yönelik yaklaşımımızı vurgular.
 
-Yeni raporlar üretildikçe veya önemli değişiklikler meydana geldikçe bu belge güncellenecektir.
+Bu belge, yeni raporlar üretildikçe veya önemli değişiklikler meydana geldikçe güncellenecektir.
 
 Kapsamdaki alan adları:  
 \*.wink.travel  
@@ -23,7 +21,7 @@ Kapsamdaki alan adları:
 
 ## Test Sıklığı ve Takvimi
 
-Penetrasyon testlerimiz yıllık olarak gerçekleştirilmekte olup, uygulama veya altyapıda önemli güncellemeler sonrası gerektiğinde ek testler planlanmaktadır. Bu düzenli test takvimi, gelişen tehditlerin önünde olmamızı ve güvenli bir ortam sağlamamızı garanti eder.
+Penetrasyon testlerimiz yıllık olarak yapılmakta olup, uygulama veya altyapıda önemli güncellemeler sonrası gerektiğinde ek testler planlanmaktadır. Bu düzenli test takvimi, gelişen tehditlerin önünde olmamızı ve güvenli bir ortam sağlamamızı garanti eder.
 
 ## Test Metodolojileri
 
@@ -31,16 +29,16 @@ Penetrasyon testlerimiz kapsamlıdır ve aşağıdakiler dahil ancak bunlarla s�
 
 * **OWASP Top 10:** Testlerimiz özellikle Enjeksiyon, Kırık Kimlik Doğrulama ve Cross-Site Scripting (XSS) gibi en kritik güvenlik risklerine odaklanır.  
 * **Black Box ve Grey Box Testleri:** Kapsama bağlı olarak, ekibimiz hem dış hem de iç saldırı senaryolarını simüle etmek için bu metodolojileri kullanır.  
-* **Otomatik ve Manuel Testler:** Burp Suite Pro gibi önde gelen güvenlik test araç setlerini kullanarak otomatik güvenlik taramaları yapar ve karmaşık zafiyetleri tespit etmek için manuel test tekniklerine destek veririz. Daha spesifik zafiyet tespiti için SQLmap gibi bazı özel araçlar da kullanılmaktadır.
+* **Otomatik ve Manuel Testler:** Burp Suite Pro gibi önde gelen güvenlik test araç setlerini kullanarak otomatik güvenlik taramaları yapar ve karmaşık güvenlik açıklarını tespit etmek için manuel test tekniklerine destek veririz. Daha spesifik açık tespiti için SQLmap gibi bazı özel araçlar da kullanılmaktadır.
 
 ## Bulguların Özeti
 
-Aşağıda en son penetrasyon testi raporumuzun yüksek seviyede bir özeti yer almaktadır:
+Aşağıda en son penetrasyon testi raporumuzun üst düzey özeti yer almaktadır:
 
-* **Tespit Edilen Toplam Zafiyet Sayısı:** 2  
-* **Şiddet Dağılımı:**  
+* **Tespit Edilen Toplam Güvenlik Açığı:** 2  
+* **Ciddiyet Dağılımı:**  
   * Kritik: 2  
-* **Tespit Edilen Zafiyet Türleri:**  
+* **Tespit Edilen Güvenlik Açığı Türleri:**  
   * Kırık Erişim Kontrolü  
   * Güvensiz Tasarım
 
@@ -48,13 +46,13 @@ Detaylı bulgular için lütfen tam rapora bakınız.
 
 ### Risk Değerlendirmeleri ve Etkisi
 
-Bulunan her iki zafiyet de kritik olarak derecelendirilmiştir çünkü her ikisi de ciddi finansal etkiler yaratabilirdi. İlk zafiyet, kötü niyetli doğrulanmış bir kullanıcının başka bir şirketin Trippay ödeme hesabını kontrol etmesine izin vermiştir. İkinci zafiyet ise kötü niyetli bir kullanıcının rezervasyon için gereken ödeme tutarını değiştirmesine olanak sağlamıştır.
+Bulunan her iki güvenlik açığı da kritik olarak derecelendirilmiştir çünkü her ikisi de ciddi finansal etkiler yaratabilirdi. İlk açık, kötü niyetli doğrulanmış bir kullanıcının başka bir şirketin Trippay ödeme hesabını kontrol etmesine izin vermiştir. İkinci açık ise kötü niyetli bir kullanıcının rezervasyon için gereken ödeme tutarını değiştirmesine olanak sağlamıştır.
 
 ### Düzeltme ve Azaltma Çalışmaları
 
-Tespit edilen zafiyetleri gidermek için aşağıdaki adımlar atılmıştır:
+Tespit edilen güvenlik açıklarını gidermek için aşağıdaki adımlar atılmıştır:
 
-* **Hızlı Yama Uygulamaları:** Kritik zafiyetler keşfedildikten sonraki 48 saat içinde yamalanmıştır.  
+* **Hızlı Yama Uygulamaları:** Kritik güvenlik açıkları keşfedildikten sonraki 48 saat içinde yamalanmıştır.  
 * **Kod İncelemesi ve Güçlendirme:** Geliştirme ekibi, önerilerimiz doğrultusunda ek güvenlik kontrolleri uygulamıştır.
 
 ## Sürekli İyileştirme
@@ -71,6 +69,6 @@ Kullanıcılarımız ve paydaşlarımız için güvenli bir uygulama ortamı sa�
 
 ## Rapor Erişimi ve Güncellemeler
 
-Bu belge, yeni penetrasyon testi raporları yayımlandıkça sürekli güncellenecektir. Tam rapora erişmek için lütfen aşağıdaki e-posta adresi üzerinden bizimle iletişime geçin. Gelecekteki güncellemeler, yeni tespit edilen zafiyetleri, düzeltme çalışmalarını ve test metodolojilerimizdeki ayarlamaları içerecektir.
+Bu belge, yeni penetrasyon testi raporları yayımlandıkça sürekli güncellenecektir. Tam rapora erişmek için lütfen aşağıdaki e-posta adresi üzerinden bizimle iletişime geçin. Gelecekteki güncellemeler, yeni tespit edilen güvenlik açıklarını, düzeltme çalışmalarını ve test metodolojilerimizdeki ayarlamaları içerecektir.
 
-Daha fazla bilgi için lütfen security@wink.travel adresiyle iletişime geçiniz.
+Daha fazla bilgi için lütfen security@wink.travel adresiyle iletişime geçin.

@@ -1,11 +1,9 @@
 ---
 title: Drošība
-description: Šajā rakstā ir informācija par drošības pasākumiem, ko mēs īstenojam, un kas tiek publicēti ikgadēji mūsu trešās puses drošības uzņēmuma.
+description: Šajā rakstā ir informācija par drošības pasākumiem, ko mēs īstenojam, un kas tiek ikgadēji publicēti mūsu trešās puses drošības uzņēmuma.
 sidebar:
   order: 6
 ---
-
-# Wink drošības pārskata dokuments
 
 *Pēdējā atjaunināšana: 2024. gada 7. septembris*
 
@@ -13,7 +11,7 @@ sidebar:
 
 ## Mērķis un darbības joma
 
-Kā daļa no mūsu pastāvīgās apņemšanās nodrošināt drošību un aizsargāt lietotāju datus, mēs regulāri veicam iekļūšanas testēšanu mūsu tīmekļa lietotnē. Šis dokuments apraksta mūsu testēšanas metodoloģijas, sniedz kopsavilkumu par atklājumiem un izceļ mūsu pieeju nepārtrauktai drošības uzlabošanai.
+Kā daļa no mūsu pastāvīgās apņemšanās nodrošināt drošību un aizsargāt lietotāju datus, mēs regulāri veicam iekļūšanas testēšanu mūsu tīmekļa lietotnē. Šajā dokumentā ir aprakstītas mūsu testēšanas metodoloģijas, sniegts kopsavilkums par atklājumiem un izcelta mūsu pieeja nepārtrauktai drošības uzlabošanai.
 
 Šis dokuments tiks atjaunināts, kad tiks sagatavoti jauni ziņojumi vai notiks būtiskas izmaiņas.
 
@@ -42,7 +40,7 @@ Zemāk ir augsta līmeņa kopsavilkums par mūsu nesenāko iekļūšanas testē�
   * Kritiskas: 2  
 * **Atklāto ievainojamību veidi:**  
   * Bojāta piekļuves kontrole  
-  * Nedroša dizaina risinājums
+  * Nedrošs dizains
 
 Detalizētai informācijai lūdzu skatīt pilno ziņojumu.
 
@@ -73,4 +71,4 @@ Mēs esam apņēmušies uzturēt drošu lietotnes vidi mūsu lietotājiem un iei
 
 Šis dokuments tiks nepārtraukti atjaunināts, kad tiks izlaisti jauni iekļūšanas testu ziņojumi. Lai piekļūtu pilnam ziņojumam, lūdzu, sazinieties ar mums, izmantojot zemāk norādīto e-pastu. Nākamajos atjauninājumos tiks iekļautas jaunatklātās ievainojamības, novēršanas pasākumi un izmaiņas mūsu testēšanas metodoloģijās.
 
-Papildu jautājumu gadījumā lūdzu rakstiet uz security@wink.travel.
+Papildu jautājumu gadījumā lūdzu sazinieties ar security@wink.travel.

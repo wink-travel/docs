@@ -1,20 +1,20 @@
 ---
 title: Tariefaanbieders
-description: Hier is de actuele lijst van tariefaanbieders die we direct op Wink ondersteunen.
+description: Hier is de meest actuele lijst van tariefaanbieders die we rechtstreeks op Wink ondersteunen.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Tariefaanbieder instellen
 
-Om je tariefaanbieder in te stellen, klik je op `Distribution > Channel manager` in de hoofd navigatiebalk.
+Om je tariefaanbieder in te stellen, klik je in de hoofd-navigatiebalk op `Distribution > Channel manager`.
 
 Selecteer je tariefaanbieder uit de dropdownlijst en klik op de knop `Save`. Hierdoor kan de tariefaanbieder tarieven naar ons sturen en zullen wij hen op de hoogte stellen wanneer er een boeking plaatsvindt op Wink voor een van jouw accommodaties.
 
 
 ### SynXis
 
-Als je accommodatie de SynXis channel manager gebruikt, is er nog één stap vereist voordat je klaar bent om verbinding te maken met Wink.
+Als je accommodatie de SynXis channel manager gebruikt, is er nog een stap vereist voordat je klaar bent om verbinding te maken met Wink.
 
 - Neem contact op met je SynXis accountvertegenwoordiger of klantenservice (SHSCustomerCare@sabre.com).
 - Laat hen weten dat je wilt verbinden met Wink via Channel Connect Express (***CCX***).
@@ -35,7 +35,7 @@ Beschikbare types:
 
 *Als de leverancier een proxy heeft, betekent dit dat we indirect tarieven ontvangen van de leverancier via de proxy.*
 
-| Leverancier | Type | Proxy | Sinds | Laatst gewijzigd | Opmerking
+| Vendor | Type | Proxy | Since | Last modified | Comment
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

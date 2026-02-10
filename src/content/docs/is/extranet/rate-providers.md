@@ -1,20 +1,20 @@
 ---
-title: Gjalddagatilboðsaðilar
-description: Hér er uppfærður listi yfir gjalddagatilboðsaðila sem við styðjum beint á Wink.
+title: Gjalddagaðilar
+description: Hér er uppfærður listi yfir gjalddagaðila sem við styðjum beint á Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
-## Stilla gjalddagatilboðsaðila
+## Stilla gjalddagaðila
 
-Til að stilla gjalddagatilboðsaðilann þinn, smelltu á `Distribution > Channel manager` í aðalvalmyndinni.
+Til að stilla gjalddagaðilann þinn, smelltu á `Distribution > Channel manager` í aðalvalmyndinni.
 
-Veldu gjalddagatilboðsaðilann þinn úr fellilistanum og smelltu á `Save` hnappinn. Þetta gerir gjalddagatilboðsaðilanum kleift að senda okkur gjalddaga og við munum láta þá vita þegar bókun hefur átt sér stað á Wink fyrir einn af eignum þínum.
+Veldu gjalddagaðilann þinn úr fellilistanum og smelltu á `Save` hnappinn. Þetta gerir gjalddagaðilanum kleift að senda okkur gjöld og við munum láta þá vita þegar bókun hefur átt sér stað á Wink fyrir einn af eignum þínum.
 
 
 ### SynXis
 
-Ef eignin þín notar SynXis channel manager, er eitt skref í viðbót nauðsynlegt áður en þú ert tilbúinn að tengjast Wink.
+Ef eignin þín notar SynXis rásarstjóra, þarf einn skref í viðbót áður en þú ert tilbúinn að tengjast Wink.
 
 - Vinsamlegast hafðu samband við SynXis reikningsfulltrúa þinn eða þjónustudeild (SHSCustomerCare@sabre.com).
 - Láttu þá vita að þú viljir tengjast Wink í gegnum Channel Connect Express (***CCX***).
@@ -33,9 +33,9 @@ Tiltækar tegundir:
 - Property Management System (PMS)
 - Central Reservation System (CRS)
 
-*Ef seljandi hefur umboðsaðila, þýðir það að við fáum óbeint gjalddaga frá seljandanum í gegnum umboðsaðilann.*
+*Ef seljandi hefur umboðsmann, þýðir það að við fáum óbeint gjöld frá seljandanum í gegnum umboðsmanninn.*
 
-| Seljandi | Tegund | Umboðsmaður | Frá | Síðast breytt | Athugasemd
+| Seljandi | Tegund | Umboðsmaður | Síðan | Síðast breytt | Athugasemd
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

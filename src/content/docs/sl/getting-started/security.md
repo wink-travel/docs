@@ -5,8 +5,6 @@ sidebar:
   order: 6
 ---
 
-# Dokument o varnosti Wink
-
 *Zadnja posodobitev: 7. september 2024*
 
 *Različica 1.0*
@@ -21,15 +19,15 @@ Domena v obsegu:
 \*.wink.travel  
 \*.trippay.io
 
-## Pogostost in razpored testiranj
+## Pogostost in razpored testiranja
 
-Naša penetracijska testiranja izvajamo letno, dodatna testiranja pa so načrtovana po potrebi, predvsem po pomembnih posodobitvah aplikacije ali infrastrukture. Ta redni ritem testiranj zagotavlja, da smo korak pred spreminjajočimi se grožnjami in ohranjamo varno okolje.
+Naše penetracijsko testiranje poteka letno, dodatni testi pa so načrtovani po potrebi, zlasti po pomembnih posodobitvah aplikacije ali infrastrukture. Ta redni ritem testiranja zagotavlja, da smo korak pred spreminjajočimi se grožnjami in ohranjamo varno okolje.
 
 ## Metode testiranja
 
 Naše penetracijsko testiranje je celovito in zajema širok spekter varnostnih vidikov, vključno, a ne omejeno na:
 
-* **OWASP Top 10:** Naša testiranja so posebej usmerjena na najpomembnejša varnostna tveganja, kot so Injection, Broken Authentication in Cross-Site Scripting (XSS).  
+* **OWASP Top 10:** Naši testi so posebej usmerjeni na najpomembnejša varnostna tveganja, kot so Injection, Broken Authentication in Cross-Site Scripting (XSS).  
 * **Black Box in Grey Box testiranje:** Glede na obseg naš tim uporablja ti metodi za simulacijo zunanjih in notranjih napadov.  
 * **Avtomatizirano in ročno testiranje:** Uporabljamo Burp Suite Pro, vodilno orodje za varnostno testiranje, za izvajanje avtomatiziranih varnostnih pregledov in podporo ročnim tehnikam za odkrivanje zapletenih ranljivosti ter doseganje najboljše možne pokritosti. Za specifično identifikacijo ranljivosti uporabljamo tudi specializirana orodja, npr. SQLmap.
 
@@ -42,15 +40,15 @@ Spodaj je visok nivo povzetka našega najnovejšega poročila o penetracijskem t
   * Kritične: 2  
 * **Vrste odkritih ranljivosti:**  
   * Prekinjena kontrola dostopa  
-  * Nevaren dizajn
+  * Nevarna zasnova
 
-Za podrobnejše ugotovitve si oglejte celotno poročilo.
+Za podrobne ugotovitve si oglejte celotno poročilo.
 
 ### Ocene tveganj in vpliv
 
 Obe najdeni ranljivosti sta ocenjeni kot kritični, saj bi obe lahko imeli hude finančne posledice. Prva je omogočila zlonamernemu avtenticiranemu uporabniku prevzem nadzora nad Trippay plačilnim računom drugega podjetja. Druga ranljivost je omogočila zlonamernemu uporabniku spreminjanje zneska plačila, potrebnega za rezervacijo.
 
-### Ukrepi za odpravo in omilitev
+### Ukrepi za odpravo in ublažitev
 
 Sprejeli smo naslednje ukrepe za odpravo odkritih ranljivosti:
 
@@ -59,7 +57,7 @@ Sprejeli smo naslednje ukrepe za odpravo odkritih ranljivosti:
 
 ## Nenehno izboljševanje
 
-Penetracijsko testiranje je del naše širše strategije za nenehno izboljševanje varnosti. Ugotovitve vsakega testiranja usmerjajo naše varnostne politike, vplivajo na razvojne prakse in spodbujajo izboljšave v naši varnostni arhitekturi.
+Penetracijsko testiranje je del naše širše strategije za nenehno izboljševanje varnosti. Ugotovitve vsakega testa usmerjajo naše varnostne politike, vplivajo na razvojne prakse in spodbujajo izboljšave v naši varnostni arhitekturi.
 
 ## Strokovnost ekipe
 
@@ -67,10 +65,10 @@ Naše penetracijsko testiranje izvaja notranji strokovnjak z obsežnimi izkušnj
 
 ## Zavezanost varnosti
 
-Zavezani smo k vzdrževanju varnega aplikacijskega okolja za naše uporabnike in deležnike. Naša stalna prizadevanja pri varnostnem testiranju in izboljšavah dokazujejo našo zavezanost zaščiti pred spreminjajočimi se grožnjami.
+Zavezani smo k vzdrževanju varnega okolja aplikacije za naše uporabnike in deležnike. Naša stalna prizadevanja pri varnostnem testiranju in izboljšavah dokazujejo našo zavezanost zaščiti pred spreminjajočimi se grožnjami.
 
 ## Dostop do poročila in posodobitve
 
-Ta dokument bo nenehno posodabljan z izdajo novih poročil o penetracijskem testiranju. Za dostop do celotnega poročila nas kontaktirajte preko spodnjega elektronskega naslova. Prihodnje posodobitve bodo vključevale novo odkrite ranljivosti, ukrepe za odpravo in prilagoditve naših metod testiranja.
+Ta dokument bo nenehno posodabljan z izdajo novih poročil o penetracijskem testiranju. Za dostop do celotnega poročila nas kontaktirajte na spodnji e-poštni naslov. Prihodnje posodobitve bodo vključevale novo odkrite ranljivosti, ukrepe za odpravo in prilagoditve naših metod testiranja.
 
 Za dodatna vprašanja nas kontaktirajte na security@wink.travel.

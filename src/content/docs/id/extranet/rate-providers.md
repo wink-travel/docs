@@ -2,7 +2,7 @@
 title: Penyedia Tarif
 description: Berikut adalah daftar penyedia tarif terbaru yang kami dukung langsung di Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Atur penyedia tarif
@@ -27,7 +27,7 @@ Jika properti Anda menggunakan channel manager SynXis, ada satu langkah lagi yan
 
 Berikut adalah daftar vendor yang kami dukung:
 
-Tipe yang tersedia:
+Jenis yang tersedia:
 
 - Channel Manager (CM)
 - Property Management System (PMS)
@@ -35,7 +35,7 @@ Tipe yang tersedia:
 
 *Jika vendor memiliki proxy, itu berarti kami menerima tarif secara tidak langsung dari vendor melalui proxy tersebut.*
 
-| Vendor | Tipe | Proxy | Sejak | Terakhir diubah | Komentar
+| Vendor | Jenis | Proxy | Sejak | Terakhir diubah | Komentar
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

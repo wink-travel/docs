@@ -2,7 +2,7 @@
 title: Pružaoci cena
 description: Ovde je ažurirana lista pružalaca cena koje direktno podržavamo na Wink-u.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Podesite pružaoca cena
@@ -14,11 +14,11 @@ Izaberite svog pružaoca cena iz padajuće liste i kliknite na dugme `Save`. Ovo
 
 ### SynXis
 
-Ako vaša nekretnina koristi SynXis channel manager, postoji još jedan korak pre nego što budete spremni da se povežete sa Wink-om.
+Ako vaša nekretnina koristi SynXis channel manager, postoji još jedan korak pre nego što budete spremni za povezivanje sa Wink-om.
 
 - Molimo kontaktirajte svog SynXis predstavnika ili korisničku podršku (SHSCustomerCare@sabre.com).
 - Obavestite ih da želite da se povežete sa Wink-om putem Channel Connect Express (***CCX***).
-- Oni će vam dati da popunite obrazac ***PRS***.
+- Oni će vam poslati obrazac ***PRS*** za popunjavanje.
   - Bićete zamoljeni da unesete svoje Wink korisničke podatke.
   - ...i željenu valutu.
 - Popunite obrazac i pošaljite ga nazad SynXis-u.
@@ -33,9 +33,9 @@ Dostupni tipovi:
 - Property Management System (PMS)
 - Central Reservation System (CRS)
 
-*Ako dobavljač ima proxy, to znači da indirektno primamo cene od dobavljača preko proxy-ja.*
+*Ako dobavljač ima posrednika, to znači da indirektno primamo cene od dobavljača preko posrednika.*
 
-| Dobavljač | Tip | Proxy | Od | Poslednja izmena | Komentar
+| Dobavljač | Tip | Posrednik | Od | Poslednja izmena | Komentar
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

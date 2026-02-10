@@ -13,9 +13,9 @@ Nasz Extranet został starannie zaprojektowany tak, aby był jak najprostszy, a 
 2. Zaawansowanie: Wink obsługuje 8500 różnych wariantów polityk anulowania rezerwacji.
 3. Fajne: Przyznaj jednej osobie na świecie 10% zniżki bez konieczności logowania się lub wpisywania kodu promocyjnego.
 
-Niech nasi przewodnicy przeprowadzą Cię przez cały proces. Gdy poczujesz się na siłach... działaj samodzielnie.
+Niech nasi czarodzieje przeprowadzą Cię przez cały proces. Gdy poczujesz się wystarczająco pewnie... działaj samodzielnie.
 
-Wink to zaawansowany system zarządzania treścią dla obiektów i dostawców doświadczeń. Wszystko, co możesz zrobić w jednej z naszych aplikacji, możesz zrobić również przez API. Pozwala to na głęboką integrację z Wink do tego stopnia, że możesz sprzedawać przez Wink, nie logując się nigdy do żadnej z naszych aplikacji.
+Wink to zaawansowany system zarządzania treścią dla obiektów i dostawców doświadczeń. Wszystko, co możesz zrobić w jednej z naszych aplikacji, możesz zrobić przez API. Pozwala to na głęboką integrację z Wink do tego stopnia, że możesz sprzedawać przez Wink, nie logując się nigdy do żadnej z naszych aplikacji.
 
 :::tip[Pro Tip]
 Czy płacisz za drogie hostowanie zasobów multimedialnych przez Leonardo International? Możesz zrobić dokładnie to samo przez Wink I zyskujesz wiele więcej opcji manipulacji i precyzyjnej regulacji swoich zdjęć i filmów.

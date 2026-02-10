@@ -1,11 +1,9 @@
 ---
 title: Sicherheit
-description: Dieser Artikel enthält Informationen über die von uns implementierten Sicherheitsmaßnahmen, die jährlich von unserer externen Sicherheitsfirma veröffentlicht werden.
+description: Dieser Artikel enthält Informationen über die von uns umgesetzten Sicherheitsmaßnahmen, die jährlich von unserer externen Sicherheitsfirma veröffentlicht werden.
 sidebar:
   order: 6
 ---
-
-# Wink Sicherheitsübersichts-Dokument
 
 *Zuletzt aktualisiert: 7. September 2024*
 
@@ -31,11 +29,11 @@ Unsere Penetrationstests sind umfassend und decken eine Vielzahl von Sicherheits
 
 * **OWASP Top 10:** Unsere Tests zielen gezielt auf die kritischsten Sicherheitsrisiken ab, wie Injection, Broken Authentication und Cross-Site Scripting (XSS).  
 * **Black Box und Grey Box Testing:** Je nach Umfang nutzt unser Team diese Methoden, um sowohl externe als auch interne Angriffsszenarien zu simulieren.  
-* **Automatisierte und manuelle Tests:** Wir verwenden Burp Suite Pro, ein führendes Sicherheitstest-Toolset, um automatisierte Sicherheitsscans durchzuführen und manuelle Testtechniken zu unterstützen, um komplexe Schwachstellen zu identifizieren und die bestmögliche Abdeckung zu erreichen. Für spezifischere Schwachstellenidentifikation kommen auch spezialisierte Tools wie SQLmap zum Einsatz.
+* **Automatisierte und manuelle Tests:** Wir verwenden Burp Suite Pro, ein führendes Sicherheitstest-Toolset, um automatisierte Sicherheitsscans durchzuführen und manuelle Testtechniken zu unterstützen, um komplexe Schwachstellen zu identifizieren und die bestmögliche Abdeckung zu erreichen. Für spezifischere Schwachstellenanalysen kommen auch spezialisierte Tools wie SQLmap zum Einsatz.
 
 ## Zusammenfassung der Ergebnisse
 
-Im Folgenden eine Zusammenfassung unseres aktuellsten Penetrationstestberichts:
+Im Folgenden finden Sie eine Zusammenfassung unseres aktuellsten Penetrationstestberichts:
 
 * **Insgesamt identifizierte Schwachstellen:** 2  
 * **Verteilung der Schweregrade:**  
@@ -44,11 +42,11 @@ Im Folgenden eine Zusammenfassung unseres aktuellsten Penetrationstestberichts:
   * Broken Access Control  
   * Unsicheres Design
 
-Für detaillierte Ergebnisse siehe den vollständigen Bericht.
+Für detaillierte Ergebnisse lesen Sie bitte den vollständigen Bericht.
 
 ### Risikobewertung und Auswirkungen
 
-Beide gefundenen Schwachstellen werden als kritisch eingestuft, da sie jeweils erhebliche finanzielle Auswirkungen hätten haben können. Die erste ermöglichte einem böswilligen authentifizierten Benutzer die Kontrolle über das Trippay-Zahlungskonto eines anderen Unternehmens. Die zweite Schwachstelle erlaubte einem böswilligen Benutzer, den für eine Buchung erforderlichen Zahlungsbetrag zu ändern.
+Beide gefundenen Schwachstellen werden als kritisch eingestuft, da sie erhebliche finanzielle Auswirkungen haben könnten. Die erste ermöglichte einem böswilligen authentifizierten Benutzer die Kontrolle über das Trippay-Zahlungskonto eines anderen Unternehmens. Die zweite Schwachstelle erlaubte es einem böswilligen Benutzer, den für eine Buchung erforderlichen Zahlungsbetrag zu ändern.
 
 ### Behebungs- und Minderungsmaßnahmen
 
@@ -63,13 +61,13 @@ Penetrationstests sind Teil unserer umfassenderen Strategie zur kontinuierlichen
 
 ## Team-Expertise
 
-Unsere Penetrationstests werden von einem internen Experten mit umfangreicher Erfahrung in verschiedenen Projekten und Branchen durchgeführt. Mit führenden Tools und Methoden stellt unser Experte sicher, dass unsere Anwendung gründlich gegen die neuesten Sicherheitsbedrohungen getestet wird.
+Unsere Penetrationstests werden von einem internen Experten mit umfangreicher Erfahrung in verschiedenen Projekten und Branchen durchgeführt. Mit führenden Werkzeugen und Methoden stellt unser Experte sicher, dass unsere Anwendung gründlich gegen die neuesten Sicherheitsbedrohungen getestet wird.
 
 ## Engagement für Sicherheit
 
 Wir sind bestrebt, eine sichere Anwendungsumgebung für unsere Nutzer und Stakeholder zu gewährleisten. Unsere fortlaufenden Bemühungen im Bereich Sicherheitstests und -verbesserungen zeigen unser Engagement zum Schutz vor sich entwickelnden Bedrohungen.
 
-## Berichtszugriff und Updates
+## Berichtszugriff und Aktualisierungen
 
 Dieses Dokument wird kontinuierlich aktualisiert, sobald neue Penetrationstestberichte vorliegen. Um den vollständigen Bericht zu erhalten, kontaktieren Sie uns bitte über die untenstehende E-Mail-Adresse. Zukünftige Updates werden neu identifizierte Schwachstellen, Behebungsmaßnahmen und Anpassungen unserer Testmethoden enthalten.
 

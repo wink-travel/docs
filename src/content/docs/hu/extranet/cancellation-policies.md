@@ -2,12 +2,12 @@
 title: Lemondási feltételek
 description: Ez a cikk megmutatja, hogyan kezelheti a lemondási feltételeket a Winkben.
 sidebar:
-  order: 12
+  order: 7
 ---
 
 A lemondási feltételek kezeléséhez kattintson a fő navigációs sávban a `Monetize > Cancellation policies` menüpontra.
 
-A lemondási feltételek meghatározzák, hogyan kezeljük a foglaló pénzét, ha a vendég nem tud megjelenni. A lemondási feltételek két különböző típusa létezik:
+A lemondási feltételek meghatározzák, hogyan kezeljük a foglaló pénzét, ha a vendég nem tud megjelenni. A lemondási feltételek két különböző típusba sorolhatók:
 
 1. Visszatéríthető
 2. Nem visszatéríthető
@@ -26,7 +26,7 @@ Nem visszatéríthető lemondási feltétel létrehozásához állítsa a kapcso
 
 ### Opciók
 
-Lehetőség van a `nem visszatéríthető` feltétel további finomhangolására a nagyobb kontroll érdekében.
+Lehetőség van a `nem visszatéríthető` feltétel további finomhangolására is a nagyobb kontroll érdekében.
 
 - **Mennyit számítanak fel a vendégnek a lemondásért?** Alapértelmezés szerint a nem visszatéríthető feltétel 100%-ban nem visszatéríthető. Itt finomhangolhatja az összeget. *pl. az összeg 50%-a*
 - **Van-e határidő a díj felszámítására?** Ha finomhangolta az összeget, tovább pontosíthatja azt azzal, hogy beállítja, meddig érvényes ez az összeg. *pl. érkezés előtt 3 napig*
@@ -38,7 +38,7 @@ Visszatéríthető lemondási feltétel létrehozásához állítsa a kapcsolót
 
 ### Opciók
 
-Lehetőség van a `visszatéríthető` feltétel további finomhangolására a nagyobb kontroll érdekében.
+Lehetőség van a `visszatéríthető` feltétel további finomhangolására is a nagyobb kontroll érdekében.
 
 - **Meddig, az érkezés előtt, mondhatja le a vendég ingyenesen?** Alapértelmezés szerint a visszatéríthető feltétel mindig 100%-ban visszatéríthető. Itt finomhangolhatja a határidőt. *pl. érkezés előtt 3 nappal*
 - **Mennyit számítanak fel a vendégnek, ha a lemondás a fenti határidő után történik?** Ha finomhangolta a határidőt, megadhatja, mennyit kell fizetnie a vendégnek a határidő után. *pl. az összeg 50%-a*

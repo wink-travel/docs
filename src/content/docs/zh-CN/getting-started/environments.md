@@ -25,7 +25,7 @@ sidebar:
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | 库存 | https://staging-api.wink.travel | https://api.wink.travel | 
 | 集成 | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
-| 支付 | https://staging-api.trippay.io | https://api.trippay.io | 
+<!-- | 支付 | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## 应用程序
 
@@ -33,9 +33,10 @@ sidebar:
 
 | 应用程序 | 预发布 | 生产
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Corporate | https://staging-group.wink.travel | https://group.wink.travel | 
+| 代理 | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| 预订引擎 | https://staging-ota.wink.travel | https://ota.wink.travel | 
 | Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
+| 我的账户 | https://staging-my.wink.travel | https://my.wink.travel | 
+| 支付 | https://staging-pay.wink.travel | https://pay.wink.travel | 
 | Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |

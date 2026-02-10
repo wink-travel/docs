@@ -5,8 +5,6 @@ sidebar:
   order: 6
 ---
 
-# Wink saugumo apžvalgos dokumentas
-
 *Paskutinį kartą atnaujinta: 2024 m. rugsėjo 7 d.*
 
 *Versija 1.0*
@@ -29,9 +27,9 @@ Mūsų įsiskverbimo testai atliekami kasmet, o papildomi testai planuojami paga
 
 Mūsų įsiskverbimo testavimas yra išsamus ir apima platų saugumo aspektų spektrą, įskaitant, bet neapsiribojant:
 
-* **OWASP Top 10:** Mūsų testai specialiai taikomi svarbiausioms saugumo rizikoms, tokioms kaip injekcija, pažeista autentifikacija ir kryžminis svetainių skriptavimas (XSS).  
-* **Juodojo ir pilkojo lango testavimas:** Priklausomai nuo apimties, mūsų komanda naudoja šias metodikas, kad simuliuotų tiek išorinius, tiek vidinius atakų scenarijus.  
-* **Automatizuotas ir rankinis testavimas:** Naudojame Burp Suite Pro – pirmaujančią saugumo testavimo įrankių rinkinį, kad atliktume automatizuotus saugumo skenavimus ir padėtume rankiniams testavimo metodams identifikuoti sudėtingas spragas bei užtikrinti kuo geresnį aprėptį. Dėl specifinių pažeidžiamumų identifikavimo naudojami kai kurie specializuoti įrankiai, pvz., SQLmap.
+* **OWASP Top 10:** Mūsų testai specialiai taikomi svarbiausioms saugumo rizikoms, tokioms kaip injekcijos, pažeista autentifikacija ir kryžminis svetainių skriptavimas (XSS).  
+* **Juodojo ir pilkojo lango testavimas:** Priklausomai nuo apimties, mūsų komanda naudoja šias metodikas, kad imituotų tiek išorinius, tiek vidinius atakų scenarijus.  
+* **Automatizuotas ir rankinis testavimas:** Naudojame Burp Suite Pro, pirmaujančią saugumo testavimo įrankių rinkinį, automatiniams saugumo skenavimams atlikti ir rankiniams testavimo metodams, siekiant identifikuoti sudėtingas spragas ir užtikrinti kuo geresnį aprėptį. Dėl specifinio pažeidžiamumų nustatymo naudojami kai kurie specializuoti įrankiai, pvz., SQLmap.
 
 ## Rezultatų santrauka
 
@@ -48,22 +46,22 @@ Išsamesniems rezultatams žr. visą ataskaitą.
 
 ### Rizikos įvertinimai ir poveikis
 
-Abu rastieji pažeidžiamumai įvertinti kaip kritiniai, nes abu galėjo turėti rimtų finansinių pasekmių. Pirmasis leido piktavaliui autentifikuotam naudotojui perimti kitos įmonės Trippay mokėjimo paskyros kontrolę. Antrasis pažeidžiamumas leido piktavaliui naudotojui pakeisti užsakymo mokėjimo sumą.
+Abu rastieji pažeidžiamumai įvertinti kaip kritiniai, nes abu galėjo turėti rimtų finansinių pasekmių. Pirmasis leido piktavališkam autentifikuotam naudotojui perimti kitos įmonės Trippay mokėjimo paskyros kontrolę. Antrasis pažeidžiamumas leido piktavališkam naudotojui pakeisti užsakymo mokėjimo sumą.
 
-### Šalinimo ir mažinimo priemonės
+### Taisymo ir mažinimo veiksmai
 
 Imtasi šių veiksmų, siekiant pašalinti nustatytus pažeidžiamumus:
 
 * **Skubūs pataisymai:** Kritiniai pažeidžiamumai buvo ištaisyti per 48 valandas nuo jų nustatymo.  
-* **Kodo peržiūra ir stiprinimas:** Kūrėjų komanda įdiegė papildomas saugumo priemones pagal mūsų rekomendacijas.
+* **Kodo peržiūra ir stiprinimas:** Kūrėjų komanda įgyvendino papildomas saugumo priemones pagal mūsų rekomendacijas.
 
 ## Nuolatinis tobulinimas
 
-Įsiskverbimo testavimas yra mūsų platesnės nuolatinio saugumo tobulinimo strategijos dalis. Kiekvieno testo rezultatai formuoja mūsų saugumo politiką, daro įtaką kūrimo praktikoms ir skatina patobulinimus mūsų saugumo architektūroje.
+Įsiskverbimo testavimas yra mūsų platesnės strategijos dalis, skirta nuolatiniam saugumo gerinimui. Kiekvieno testo rezultatai formuoja mūsų saugumo politiką, daro įtaką kūrimo praktikoms ir skatina patobulinimus mūsų saugumo architektūroje.
 
 ## Komandos kompetencija
 
-Mūsų įsiskverbimo testavimą atlieka vidinis specialistas, turintis didelę patirtį įvairiuose projektuose ir pramonės šakose. Naudodamas pirmaujančius įrankius ir metodus, mūsų ekspertas užtikrina, kad mūsų programa būtų kruopščiai patikrinta prieš naujausias saugumo grėsmes.
+Mūsų įsiskverbimo testavimą atlieka vidinis specialistas, turintis didelę patirtį įvairiuose projektuose ir pramonės šakose. Naudodamas pirmaujančius įrankius ir metodus, mūsų ekspertas užtikrina, kad mūsų programa būtų kruopščiai ištestuota prieš naujausias saugumo grėsmes.
 
 ## Įsipareigojimas saugumui
 
@@ -71,6 +69,6 @@ Esame pasiryžę palaikyti saugią programos aplinką mūsų naudotojams ir suin
 
 ## Ataskaitos prieiga ir atnaujinimai
 
-Šis dokumentas bus nuolat atnaujinamas, kai bus išleistos naujos įsiskverbimo testų ataskaitos. Norėdami gauti visą ataskaitą, susisiekite su mumis per žemiau nurodytą el. paštą. Būsimi atnaujinimai apims naujai nustatytus pažeidžiamumus, šalinimo veiksmus ir mūsų testavimo metodikų koregavimus.
+Šis dokumentas bus nuolat atnaujinamas, kai bus išleistos naujos įsiskverbimo testų ataskaitos. Norėdami gauti visą ataskaitą, susisiekite su mumis per žemiau nurodytą el. paštą. Būsimi atnaujinimai apims naujai nustatytus pažeidžiamumus, taisymo veiksmus ir mūsų testavimo metodikų koregavimus.
 
 Dėl papildomų klausimų prašome kreiptis el. paštu security@wink.travel.

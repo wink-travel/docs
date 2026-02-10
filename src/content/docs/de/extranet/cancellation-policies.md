@@ -2,7 +2,7 @@
 title: Stornierungsbedingungen
 description: Dieser Artikel zeigt Ihnen, wie Sie Stornierungsbedingungen in Wink verwalten.
 sidebar:
-  order: 12
+  order: 7
 ---
 
 Um Ihre Stornierungsbedingungen zu verwalten, klicken Sie in der Hauptnavigationsleiste auf `Monetize > Cancellation policies`.
@@ -42,4 +42,4 @@ Sie können Ihre `erstattbare` Bedingung optional weiter konfigurieren, um mehr 
 
 - **Wie lange vor der Anreise kann der Gast kostenfrei stornieren?** Standardmäßig ist eine erstattbare Bedingung immer zu 100 % erstattbar. Sie können die Frist hier feinjustieren. *z. B. 3 Tage vor Anreise*
 - **Was wird dem Gast berechnet, wenn die Stornierung nach der oben genannten Frist erfolgt?** Wenn Sie die Frist feinjustiert haben, können Sie den Betrag festlegen, den der Gast nach Ablauf der Frist zahlt. *z. B. 50 % des Gesamtpreises*
-- **Wie viel wird dem Gast bei einem 'No show' berechnet?** Falls der Gast nicht erscheint, können Sie den Betrag festlegen, der dem Gast für einen `No show` berechnet wird. *z. B. 100 % des Gesamtpreises*
+- **Wie viel wird dem Gast bei einem 'No show' berechnet?** Falls der Gast nicht erscheint, können Sie den Betrag festlegen, der dem Gast für ein `No show` berechnet wird. *z. B. 100 % des Gesamtpreises*

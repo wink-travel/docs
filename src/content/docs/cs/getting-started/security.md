@@ -1,11 +1,9 @@
 ---
-title: Zabezpečení
-description: Tento článek obsahuje informace o bezpečnostních opatřeních, která implementujeme, a jsou každoročně zveřejňována naší externí bezpečnostní firmou.
+title: Bezpečnost
+description: Tento článek obsahuje informace o bezpečnostních opatřeních, která implementujeme, a která jsou každoročně zveřejňována naší externí bezpečnostní firmou.
 sidebar:
   order: 6
 ---
-
-# Přehledový dokument zabezpečení Wink
 
 *Poslední aktualizace: 7. září 2024*
 
@@ -13,7 +11,7 @@ sidebar:
 
 ## Účel a rozsah
 
-V rámci našeho trvalého závazku k bezpečnosti a ochraně uživatelských dat provádíme pravidelné penetrační testy naší webové aplikace. Tento dokument popisuje naše testovací metodiky, poskytuje shrnutí zjištění a zdůrazňuje náš přístup k neustálému zlepšování bezpečnosti.
+V rámci našeho trvalého závazku k bezpečnosti a ochraně uživatelských dat provádíme pravidelné penetrační testování naší webové aplikace. Tento dokument popisuje naše testovací metodiky, poskytuje shrnutí zjištění a zdůrazňuje náš přístup k neustálému zlepšování bezpečnosti.
 
 Tento dokument bude aktualizován, jakmile budou vypracovány nové zprávy nebo dojde k významným změnám.
 
@@ -23,7 +21,7 @@ Domény v rozsahu:
 
 ## Frekvence a harmonogram testování
 
-Naše penetrační testy provádíme jednou ročně, s dalšími testy plánovanými podle potřeby po významných aktualizacích aplikace nebo infrastruktury. Tento pravidelný testovací cyklus nám umožňuje předcházet vyvíjejícím se hrozbám a udržovat bezpečné prostředí.
+Naše penetrační testy se provádějí jednou ročně, s dalšími testy plánovanými podle potřeby po významných aktualizacích aplikace nebo infrastruktury. Tento pravidelný testovací cyklus nám umožňuje předcházet vyvíjejícím se hrozbám a udržovat bezpečné prostředí.
 
 ## Testovací metodiky
 
@@ -41,8 +39,8 @@ Následuje přehled nejnovější zprávy z penetračního testování:
 * **Rozdělení závažnosti:**  
   * Kritické: 2  
 * **Typy zjištěných zranitelností:**  
-  * Porušená kontrola přístupu  
-  * Nezabezpečený návrh
+  * Broken Access Control  
+  * Insecure Design
 
 Pro podrobné výsledky prosím nahlédněte do úplné zprávy.
 
@@ -59,11 +57,11 @@ Pro řešení zjištěných zranitelností jsme podnikli následující kroky:
 
 ## Neustálé zlepšování
 
-Penetrační testování je součástí naší širší strategie pro neustálé zlepšování bezpečnosti. Zjištění z každého testu ovlivňují naše bezpečnostní politiky, vývojové postupy a vedou k vylepšením v naší bezpečnostní architektuře.
+Penetrační testování je součástí naší širší strategie neustálého zlepšování bezpečnosti. Zjištění z každého testu ovlivňují naše bezpečnostní politiky, vývojové postupy a vedou k vylepšením v naší bezpečnostní architektuře.
 
 ## Odbornost týmu
 
-Naše penetrační testování provádí interní odborník s rozsáhlými zkušenostmi z různých projektů a odvětví. Používáním předních nástrojů a metod náš expert zajišťuje, že naše aplikace je důkladně testována proti nejnovějším bezpečnostním hrozbám.
+Naše penetrační testování provádí interní odborník s rozsáhlými zkušenostmi napříč různými projekty a odvětvími. Používáním předních nástrojů a metod zajišťuje, že naše aplikace je důkladně testována proti nejnovějším bezpečnostním hrozbám.
 
 ## Závazek k bezpečnosti
 
@@ -71,6 +69,6 @@ Jsme odhodláni udržovat bezpečné prostředí aplikace pro naše uživatele a
 
 ## Přístup ke zprávám a aktualizace
 
-Tento dokument bude průběžně aktualizován s vydáváním nových zpráv z penetračních testů. Pro přístup k úplné zprávě nás prosím kontaktujte na níže uvedeném e-mailu. Budoucí aktualizace budou zahrnovat nově identifikované zranitelnosti, nápravná opatření a úpravy našich testovacích metodik.
+Tento dokument bude průběžně aktualizován s vydáváním nových zpráv z penetračního testování. Pro přístup k úplné zprávě nás prosím kontaktujte na níže uvedeném e-mailu. Budoucí aktualizace budou zahrnovat nově identifikované zranitelnosti, nápravná opatření a úpravy našich testovacích metodik.
 
 Pro další dotazy kontaktujte security@wink.travel.

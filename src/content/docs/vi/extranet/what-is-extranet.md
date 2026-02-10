@@ -21,4 +21,4 @@ Wink là một hệ thống quản lý nội dung tiên tiến dành cho các c�
 Bạn có đang trả tiền cho việc lưu trữ tài sản truyền thông đắt đỏ qua Leonardo International không? Bạn có thể làm chính xác điều đó qua Wink VÀ bạn còn có nhiều tùy chọn hơn để thao tác và tinh chỉnh hình ảnh và video của mình.
 ::: 
 
-Tất cả các tính năng này đều miễn phí cho bạn. Chỉ khi bạn thực hiện một đặt phòng, chúng tôi mới thu một khoản phí nhỏ. Không mất gì - Có được tất cả.
+Tất cả các tính năng này đều không mất phí. Chỉ khi bạn thực hiện một đặt phòng, chúng tôi mới thu một khoản phí nhỏ. Không mất gì - Có được tất cả.

@@ -2,7 +2,7 @@
 title: Nhà cung cấp giá
 description: Dưới đây là danh sách nhà cung cấp giá cập nhật mà chúng tôi hỗ trợ trực tiếp trên Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Thiết lập nhà cung cấp giá
@@ -17,7 +17,7 @@ Chọn nhà cung cấp giá của bạn từ danh sách thả xuống và nhấp
 Nếu cơ sở của bạn sử dụng channel manager SynXis, còn một bước nữa trước khi bạn sẵn sàng kết nối với Wink.
 
 - Vui lòng liên hệ với đại diện tài khoản SynXis hoặc bộ phận chăm sóc khách hàng (SHSCustomerCare@sabre.com).
-- Cho họ biết bạn muốn kết nối với Wink qua Channel Connect Express (***CCX***).
+- Thông báo cho họ rằng bạn muốn kết nối với Wink qua Channel Connect Express (***CCX***).
 - Họ sẽ yêu cầu bạn hoàn thành mẫu ***PRS***.
   - Bạn sẽ được yêu cầu điền thông tin đăng nhập người dùng Wink của bạn.
   - ...và loại tiền tệ bạn mong muốn.
@@ -44,7 +44,7 @@ Các loại có sẵn:
 | Cloudbeds | CM |  | 2016 | 2016 | |
 | MyAllocator | CM |  | 2016 | 2016 | |
 | ResAvenue | CM |  | 2017 | 2017 | |
-| Fastbooking | CM |  | 2016 | 2016 | Hiện là d-edge |
+| Fastbooking | CM |  | 2016 | 2016 | Now d-edge |
 | Omnibees | CM |  | 2019 | 2019 | |
 | Hotel Link | CM |  | 2017 | 2017 | |
 | RateGain | CM |  | 2016 | 2018 | |

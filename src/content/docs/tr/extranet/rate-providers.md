@@ -2,7 +2,7 @@
 title: Fiyat Sağlayıcıları
 description: İşte Wink üzerinde doğrudan desteklediğimiz güncel fiyat sağlayıcıları listesi.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Fiyat sağlayıcısını ayarla
@@ -20,7 +20,7 @@ Mülkünüz SynXis channel manager kullanıyorsa, Wink ile bağlantı kurmaya ha
 - Wink ile Channel Connect Express (***CCX***) üzerinden bağlanmak istediğinizi bildirin.
 - Size ***PRS*** formunu doldurtacaklar.
   - Wink kullanıcı kimlik bilgilerinizi girmeniz istenecek.
-  - ...ve istediğiniz para birimini belirtmeniz istenecek.
+  - ...ve istediğiniz para birimini belirtmeniz gerekecek.
 - Formu tamamlayıp SynXis'e geri gönderin.
 
 ## Sağlayıcılar

@@ -15,13 +15,13 @@ Wink es el comerciante registrado en el momento en que se realiza la reserva. Wi
 Este modelo aplica al 95% de todas las reservas.
 
 Wink cobra `5.5% por reserva` para mantener la plataforma.  
-La mayor parte va al gateway de pago (Visa, MasterCard, etc.). Una reserva promedio nos cuesta `2.95%` adquirir; a veces hasta `3.6%`. Los reembolsos parciales nos afectan aún más ya que el gateway de pago los considera como un nuevo cargo.  
-Queremos ser completamente transparentes con los precios ahora para ahorrar tiempo a todos antes de intentar negociar descuentos adicionales sin haber usado Wink. Nuestro modelo de precios es más que justo y nosotros también necesitamos ganarnos la vida.
+La mayor parte va al gateway de pago (Visa, MasterCard, etc.). Una reserva promedio nos cuesta `2.95%` adquirir; a veces hasta `3.6%`. Los reembolsos parciales nos afectan aún más ya que el gateway de pago lo considera un nuevo cargo.  
+Queremos ser completamente transparentes con los precios ahora para ahorrar tiempo a todos antes de intentar negociar descuentos adicionales sin haber usado Wink. Nuestro modelo de precios es más que justo y también necesitamos ganarnos la vida.
 
 ### Desglose
 
 :::note[Comisión de procesamiento]
-Wink cobra una comisión de procesamiento del 1.5% por reserva. Esto nos permite ofrecer todos nuestros servicios de forma gratuita y cubre el mantenimiento de la plataforma.
+Wink cobra una comisión de procesamiento del 1.5% por reserva. Esto nos permite ofrecer todos nuestros servicios gratis y cubre el mantenimiento de la plataforma.
 :::
 
 :::note[Comisión de pago]
@@ -31,8 +31,7 @@ TripPay cobra una comisión de pago del 4.0% por reserva. Esto cubre la adquisic
 :::note[Desembolso de fondos]
 Hay comisiones asociadas con el envío de fondos a tu cuenta. Esto depende del método de desembolso que elijas. Actualmente soportamos:
 
-- **Tarjeta de crédito virtual** (solo hoteles) ~2.0%
-- **Transferencia bancaria** El costo depende del país en el que te encuentres y de dónde se envíen los fondos. Incluimos una calculadora de cotizaciones que puedes usar cuando tengas fondos disponibles en tu cuenta.
+- **Transferencia bancaria** El costo depende del país en el que te encuentres y de dónde se envíen los fondos. Incluimos un calculador de cotizaciones que puedes usar cuando tengas fondos disponibles en tu cuenta.
 
 Si quieres que soportemos otro método de pago, envíanos un correo electrónico.
 :::
@@ -44,19 +43,17 @@ Este modelo está disponible solo para agencias de viajes que posean licencia de
 ### Desglose
 
 :::note[Comisión de procesamiento]
-Wink cobra una comisión de procesamiento del 1.5% por reserva. Esto nos permite ofrecer todos nuestros servicios de forma gratuita y cubre el mantenimiento de la plataforma.
+Wink cobra una comisión de procesamiento del 1.5% por reserva. Esto nos permite ofrecer todos nuestros servicios gratis y cubre el mantenimiento de la plataforma.
 :::
 
 Usando este modelo, los agentes de viajes solo pagan la comisión de procesamiento de Wink y Wink facturará al agente de viajes mensualmente.
 
-## Servicios futuros
+## Suscripciones
 
-En el futuro ofreceremos servicios opcionales basados en suscripción que harán que vender sea aún más fácil para todos o que ofrecerán cuentas afiliadas gestionadas que venden por ti. Si te interesa, hazte escuchar enviándonos un correo a [hi@wink.travel](mailto:hi@wink.travel).
+Ofrecemos un servicio de suscripción opcional (ver [Social](/es/social/what-is-social)) para ayudar a los alojamientos a aumentar sus equipos de ventas y marketing.
 
-Mantente atento.
+## Efecto plataforma
 
-## Efecto de la plataforma
-
-Finalmente, a medida que seguimos creciendo en tamaño y reservas, queremos poder compartir algunos de los efectos de la plataforma contigo. Más reservas traen oportunidades para descuentos por volumen de nuestro gateway de pago, lo que nos permitiría reducir nuestra comisión de procesamiento para todos.
+Finalmente, a medida que seguimos creciendo en tamaño y reservas, queremos poder compartir algunos de los efectos de la plataforma contigo. Más reservas traen oportunidades de descuentos por volumen de nuestro gateway de pago, lo que nos permitiría reducir nuestra comisión de procesamiento para todos.
 
 ¡Únete a Wink hoy y descubre una forma nueva y lucrativa de hacer negocios en la industria hotelera!

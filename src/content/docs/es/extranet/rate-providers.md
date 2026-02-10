@@ -2,7 +2,7 @@
 title: Proveedores de tarifas
 description: Aquí está la lista actualizada de proveedores de tarifas que soportamos directamente en Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Configurar proveedor de tarifas

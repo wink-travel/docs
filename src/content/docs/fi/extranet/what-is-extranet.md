@@ -5,13 +5,13 @@ sidebar:
   order: 0
 ---
 
-[Wink Extranet](https://extranet.wink.travel) on kiinteistöportaalimme. Se on tarkoitettu hotelleille, ketjuille, brändeille ja hotellien hallintayhtiöille kiinteistöjensä digitaalisen profiilin luomiseen ja hallintaan Wink-alustalla.
+[Wink Extranet](https://extranet.wink.travel) on kiinteistöportaalimme. Se on tarkoitettu hotelleille, ketjuille, brändeille ja hotellien hallintayrityksille, jotka haluavat luoda ja hallita kiinteistöjensä digitaalista profiilia Wink-alustalla.
 
 Extranetimme on suunniteltu huolellisesti mahdollisimman yksinkertaiseksi, mutta tukemaan silti kaikkia niitä ominaisuuksia, joita vaativat käyttäjät odottavat kehittyneeltä kiinteistöportaalilta. Tässä pari esimerkkiä:
 
 1. Yksinkertaisuus: Käytä älykästä käyttöönotto-työnkulkua ottaaksesi kiinteistösi käyttöön ja päästäksesi LIVE-tilaan alle tunnissa.
 2. Kehittynyt: Wink tukee 8500 erilaista peruutuskäytäntöjen variaatiota.
-3. Siistiä: Anna yhdelle henkilölle maapallolla 10 % alennus ilman, että käyttäjän tarvitsee kirjautua sisään tai syöttää kampanjakoodia.
+3. Siistiä: Anna yhdelle henkilölle maapallolla 10 % alennus ilman, että käyttäjän tarvitsee kirjautua sisään tai kirjoittaa kampanjakoodia.
 
 Anna velhojemme opastaa sinua koko prosessin läpi. Kun tunnet olosi tarpeeksi varmaksi... kokeile itse.
 

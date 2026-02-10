@@ -5,15 +5,13 @@ sidebar:
   order: 6
 ---
 
-# Documento de Resumen de Seguridad de Wink
-
 *Última actualización: 7 de septiembre de 2024*
 
 *Versión 1.0*
 
 ## Propósito y Alcance
 
-Como parte de nuestro compromiso continuo con la seguridad y la protección de los datos de los usuarios, realizamos pruebas de penetración regulares en nuestra aplicación web. Este documento describe nuestras metodologías de prueba, proporciona un resumen de los hallazgos y destaca nuestro enfoque para la mejora continua de la seguridad.
+Como parte de nuestro compromiso continuo con la seguridad y la protección de los datos de los usuarios, realizamos pruebas de penetración regulares en nuestra aplicación web. Este documento describe nuestras metodologías de prueba, ofrece un resumen de los hallazgos y destaca nuestro enfoque para la mejora continua de la seguridad.
 
 Este documento se actualizará a medida que se produzcan nuevos informes o cuando ocurran cambios significativos.
 
@@ -38,7 +36,7 @@ Nuestras pruebas de penetración son exhaustivas y cubren una amplia gama de asp
 A continuación, un resumen de alto nivel del informe más reciente de pruebas de penetración:
 
 * **Total de Vulnerabilidades Identificadas:** 2  
-* **Distribución de Severidad:**  
+* **Distribución por Severidad:**  
   * Críticas: 2  
 * **Tipos de Vulnerabilidades Detectadas:**  
   * Control de Acceso Roto  
@@ -48,7 +46,7 @@ Para hallazgos detallados, por favor consulte el informe completo.
 
 ### Calificación de Riesgos e Impacto
 
-Ambas vulnerabilidades encontradas están calificadas como críticas, ya que podrían haber tenido impactos financieros severos. La primera permitió que un usuario autenticado malicioso obtuviera control de la cuenta de pago Trippay de otra empresa. La segunda vulnerabilidad permitió que un usuario malicioso modificara el monto del pago requerido para una reserva.
+Ambas vulnerabilidades encontradas están calificadas como críticas, ya que podrían haber tenido impactos financieros severos. La primera permitió que un usuario autenticado malicioso tomara control de la cuenta de pago Trippay de otra empresa. La segunda vulnerabilidad permitió que un usuario malicioso modificara el monto del pago requerido para una reserva.
 
 ### Esfuerzos de Remediación y Mitigación
 
@@ -71,6 +69,6 @@ Estamos dedicados a mantener un entorno de aplicación seguro para nuestros usua
 
 ## Acceso al Informe y Actualizaciones
 
-Este documento se actualizará continuamente a medida que se emitan nuevos informes de pruebas de penetración. Para acceder al informe completo, por favor contáctenos a través del correo electrónico abajo. Las futuras actualizaciones incluirán vulnerabilidades recién identificadas, esfuerzos de remediación y ajustes en nuestras metodologías de prueba.
+Este documento se actualizará continuamente a medida que se emitan nuevos informes de pruebas de penetración. Para acceder al informe completo, por favor contáctenos a través del correo electrónico a continuación. Las futuras actualizaciones incluirán vulnerabilidades recién identificadas, esfuerzos de remediación y ajustes en nuestras metodologías de prueba.
 
 Para consultas adicionales, por favor contacte a security@wink.travel.

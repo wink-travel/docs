@@ -2,14 +2,14 @@
 title: Furnizori de tarife
 description: Iată lista actualizată a furnizorilor de tarife pe care îi susținem direct pe Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Setează furnizorul de tarife
 
 Pentru a seta furnizorul de tarife, fă clic pe `Distribution > Channel manager` din bara principală de navigare.
 
-Selectează furnizorul de tarife din lista derulantă și apasă butonul `Save`. Acest lucru va permite furnizorului de tarife să ne trimită tarifele, iar noi îi vom notifica când are loc o rezervare pe Wink pentru una dintre proprietățile tale.
+Selectează furnizorul de tarife din lista derulantă și apasă butonul `Save`. Acest lucru va permite furnizorului de tarife să ne trimită tarife și îi vom notifica când există o rezervare realizată pe Wink pentru una dintre proprietățile tale.
 
 
 ### SynXis
@@ -19,7 +19,7 @@ Dacă proprietatea ta folosește channel manager-ul SynXis, mai este necesar un 
 - Te rugăm să iei legătura cu reprezentantul tău de cont SynXis sau cu serviciul de asistență clienți (SHSCustomerCare@sabre.com).
 - Informează-i că dorești să te conectezi la Wink prin Channel Connect Express (***CCX***).
 - Ei îți vor cere să completezi formularul ***PRS***.
-  - Vei fi rugat să introduci datele tale de utilizator Wink.
+  - Ți se va cere să introduci datele tale de utilizator Wink.
   - ...și moneda dorită.
 - Completează formularul și trimite-l înapoi către SynXis.
 
@@ -33,7 +33,7 @@ Tipuri disponibile:
 - Property Management System (PMS)
 - Central Reservation System (CRS)
 
-*Dacă furnizorul are un proxy, înseamnă că primim indirect tarife de la furnizor prin intermediul proxy-ului.*
+*Dacă furnizorul are un proxy, înseamnă că primim indirect tarifele de la furnizor prin intermediul proxy-ului.*
 
 | Furnizor | Tip | Proxy | Din | Ultima modificare | Comentariu
 | -- | -- | -- | -- | -- | -- |

@@ -2,7 +2,7 @@
 title: Pružatelji cijena
 description: Ovo je ažurirani popis pružatelja cijena koje izravno podržavamo na Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Postavljanje pružatelja cijena
@@ -14,7 +14,7 @@ Odaberite svog pružatelja cijena s padajućeg popisa i kliknite gumb `Save`. To
 
 ### SynXis
 
-Ako vaša nekretnina koristi SynXis channel manager, potrebno je još jedan korak prije nego što budete spremni za povezivanje s Wink.
+Ako vaša nekretnina koristi SynXis channel manager, postoji još jedan korak prije nego što budete spremni za povezivanje s Wink.
 
 - Molimo kontaktirajte svog SynXis predstavnika za račun ili korisničku podršku (SHSCustomerCare@sabre.com).
 - Obavijestite ih da želite povezati Wink putem Channel Connect Express (***CCX***).
@@ -33,7 +33,7 @@ Dostupne vrste:
 - Property Management System (PMS)
 - Central Reservation System (CRS)
 
-*Ako dobavljač ima proxy, to znači da neizravno primamo cijene od dobavljača preko proxyja.*
+*Ako dobavljač ima proxy, to znači da neizravno primamo cijene od dobavljača putem proxyja.*
 
 | Dobavljač | Vrsta | Proxy | Od | Zadnja izmjena | Komentar
 | -- | -- | -- | -- | -- | -- |

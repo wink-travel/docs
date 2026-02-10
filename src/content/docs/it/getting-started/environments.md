@@ -5,7 +5,7 @@ sidebar:
   order: 8
 ---
 
-Da Wink, gestiamo 2 ambienti per tutto ciò che facciamo in ogni momento:
+In Wink, gestiamo 2 ambienti per tutto ciò che facciamo in ogni momento:
 
 - Production è il nostro ambiente stabile.
 - Staging è il nostro ambiente di certificazione e test.
@@ -25,17 +25,18 @@ Di seguito una matrice contenente i nomi dei nostri server e il loro utilizzo.
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
-| Payment | https://staging-api.trippay.io | https://api.trippay.io | 
+<!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Applicazioni
 
-Anche le nostre applicazioni hanno ambienti di test e di produzione per i nostri clienti.
+Anche le nostre applicazioni hanno ambienti di test e produzione per i nostri clienti.
 
 | Application | Staging | Production
 | ------- | ------- | ---------- |
 | Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Corporate | https://staging-group.wink.travel | https://group.wink.travel | 
+| Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
 | Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| My Account | https://staging-my.wink.travel | https://my.wink.travel | 
 | Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
 | Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |

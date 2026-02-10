@@ -11,14 +11,14 @@ Wink obsługuje zarówno model sprzedawcy, jak i agenta.
 
 ## Model 1
 
-Wink jest sprzedawcą rejestrującym w momencie dokonania rezerwacji. Wink odpowiada za środki i posiada wszelkie niezbędne licencje do prowadzenia biura podróży.  
+Wink jest sprzedawcą rejestrującym w momencie dokonania rezerwacji. Wink odpowiada za środki oraz posiada wszelkie niezbędne licencje do prowadzenia biura podróży.
 Ten model dotyczy 95% wszystkich rezerwacji.
 
-Wink pobiera `5,5% za rezerwację` za utrzymanie platformy.  
-Większość tej kwoty trafia do bramki płatniczej (Visa, MasterCard itp.). Średni koszt pozyskania rezerwacji to `2,95%`; czasem nawet do `3,6%`. Zwroty częściowe generują dodatkowe koszty, ponieważ bramka płatnicza traktuje je jako nowe obciążenie.  
+Wink pobiera `5,5% za rezerwację` na utrzymanie platformy. 
+Większość tej kwoty trafia do bramki płatniczej (Visa, MasterCard itp.). Średni koszt pozyskania rezerwacji to `2,95%`; czasem nawet do `3,6%`. Zwroty częściowe generują dodatkowe koszty, ponieważ bramka płatnicza traktuje je jako nowe obciążenie. 
 Chcemy być całkowicie transparentni w kwestii cen, aby zaoszczędzić wszystkim czas przed próbą negocjacji dalszych rabatów, zanim zaczną korzystać z Wink. Nasz model cenowy jest więcej niż uczciwy, a my również musimy na tym zarabiać.
 
-### Rozbicie
+### Szczegóły
 
 :::note[Opłata za przetwarzanie]
 Wink pobiera 1,5% opłaty za przetwarzanie / rezerwację. Pozwala to nam oferować wszystkie usługi za darmo i pokrywa koszty utrzymania platformy.
@@ -31,7 +31,6 @@ TripPay pobiera 4,0% opłaty płatniczej / rezerwację. Pokrywa to koszt pozyska
 :::note[Wypłata środków]
 Istnieją opłaty związane z wysyłaniem środków na Twoje konto. Zależą one od wybranej metody wypłaty. Obecnie obsługujemy:
 
-- **Wirtualna karta kredytowa** (tylko hotele) ~2,0%
 - **Przelew bankowy** Koszt zależy od kraju, w którym się znajdujesz, oraz miejsca, z którego wysyłane są środki. Udostępniamy kalkulator wyceny, którego możesz użyć, gdy masz dostępne środki na koncie.
 
 Jeśli chcesz, abyśmy obsługiwali inną metodę wypłaty, wyślij do nas e-mail.
@@ -39,9 +38,9 @@ Jeśli chcesz, abyśmy obsługiwali inną metodę wypłaty, wyślij do nas e-mai
 
 ## Model 2
 
-Ten model jest dostępny tylko dla biur podróży posiadających licencję na prowadzenie działalności w swoim regionie i chcących być sprzedawcą rejestrującym. Niektórzy z naszych zarejestrowanych agentów turystycznych chcą samodzielnie obsługiwać płatności i wypłaty środków do hoteli. W tym modelu odpowiadają za środki i posiadają niezbędne licencje do działania w swoim kraju.
+Ten model jest dostępny tylko dla biur podróży posiadających licencję na prowadzenie działalności w swoim regionie i chcących być sprzedawcą rejestrującym. Niektórzy z naszych zarejestrowanych agentów turystycznych chcą odpowiadać za obsługę płatności i wypłatę środków do hoteli. W tym modelu to oni odpowiadają za środki i posiadają niezbędne licencje do działania w swoim kraju.
 
-### Rozbicie
+### Szczegóły
 
 :::note[Opłata za przetwarzanie]
 Wink pobiera 1,5% opłaty za przetwarzanie / rezerwację. Pozwala to nam oferować wszystkie usługi za darmo i pokrywa koszty utrzymania platformy.
@@ -49,14 +48,12 @@ Wink pobiera 1,5% opłaty za przetwarzanie / rezerwację. Pozwala to nam oferowa
 
 W tym modelu agenci turystyczni płacą tylko opłatę za przetwarzanie Wink, a Wink wystawia agentowi fakturę miesięczną.
 
-## Przyszłe usługi
+## Subskrypcje
 
-W przyszłości zaoferujemy opcjonalne usługi subskrypcyjne, które jeszcze bardziej ułatwią sprzedaż dla wszystkich lub umożliwią zarządzane konta afiliacyjne, które będą sprzedawać za Ciebie. Jeśli Cię to interesuje, daj nam znać, wysyłając e-mail na [hi@wink.travel](mailto:hi@wink.travel).
-
-Bądź na bieżąco.
+Oferujemy opcjonalną usługę subskrypcji (zobacz [Social](/pl/social/what-is-social)), która pomaga obiektom zwiększyć ich zespoły sprzedaży i marketingu.
 
 ## Efekt platformy
 
-Na koniec, w miarę jak będziemy się rozwijać pod względem wielkości i liczby rezerwacji, chcemy dzielić się z Tobą efektami platformy. Większa liczba rezerwacji to większe możliwości uzyskania rabatów ilościowych od naszej bramki płatniczej, co pozwoli nam obniżyć opłatę za przetwarzanie dla wszystkich.
+W miarę jak rośniemy pod względem wielkości i liczby rezerwacji, chcemy dzielić się z Wami efektami platformy. Większa liczba rezerwacji to szansa na rabaty ilościowe od naszej bramki płatniczej, co pozwoli nam obniżyć opłatę za przetwarzanie dla wszystkich.
 
 Dołącz do Wink już dziś i odkryj nowy, dochodowy sposób prowadzenia biznesu w branży hotelarskiej!

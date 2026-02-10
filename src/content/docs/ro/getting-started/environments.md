@@ -25,7 +25,7 @@ Mai jos este o matrice care conține numele serverelor noastre și utilizarea lo
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventar | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrări | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
-| Plăți | https://staging-api.trippay.io | https://api.trippay.io | 
+<!-- | Plăți | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Aplicații
 
@@ -34,8 +34,9 @@ Aplicațiile noastre au, de asemenea, medii de test și producție pentru clien�
 | Aplicație | Staging | Producție
 | ------- | ------- | ---------- |
 | Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Corporate | https://staging-group.wink.travel | https://group.wink.travel | 
+| Motor de rezervări | https://staging-ota.wink.travel | https://ota.wink.travel | 
 | Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| Contul meu | https://staging-my.wink.travel | https://my.wink.travel | 
 | Plăți | https://staging-pay.wink.travel | https://pay.wink.travel | 
 | Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |

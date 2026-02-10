@@ -2,21 +2,21 @@
 title: Tarifu nodrošinātāji
 description: Šeit ir aktuālais saraksts ar tarifu nodrošinātājiem, kurus mēs tieši atbalstām Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Iestatīt tarifu nodrošinātāju
 
 Lai iestatītu savu tarifu nodrošinātāju, galvenajā navigācijas joslā noklikšķiniet uz `Distribution > Channel manager`.
 
-Izvēlieties savu tarifu nodrošinātāju no nolaižamās izvēlnes un noklikšķiniet uz pogas `Save`. Tas ļaus tarifu nodrošinātājam sūtīt mums tarifus, un mēs viņiem paziņosim, kad Wink tiks veikta rezervācija kādai no jūsu īpašumiem.
+Izvēlieties savu tarifu nodrošinātāju no nolaižamās izvēlnes un noklikšķiniet uz pogas `Save`. Tas ļaus tarifu nodrošinātājam nosūtīt mums tarifus, un mēs viņiem paziņosim, kad Wink tiks veikta rezervācija kādai no jūsu īpašumiem.
 
 
 ### SynXis
 
 Ja jūsu īpašums izmanto SynXis kanālu pārvaldnieku, pirms savienojuma izveides ar Wink ir jāveic vēl viens solis.
 
-- Lūdzu, sazinieties ar savu SynXis konta pārstāvi vai klientu apkalpošanu (SHSCustomerCare@sabre.com).
+- Lūdzu, sazinieties ar savu SynXis konta pārstāvi vai klientu atbalstu (SHSCustomerCare@sabre.com).
 - Informējiet viņus, ka vēlaties savienoties ar Wink, izmantojot Channel Connect Express (***CCX***).
 - Viņi lūgs jums aizpildīt veidlapu ***PRS***.
   - Jums būs jāievada savi Wink lietotāja dati.
@@ -35,7 +35,7 @@ Pieejamie veidi:
 
 *Ja pārdevējam ir starpnieks, tas nozīmē, ka mēs netieši saņemam tarifus no pārdevēja caur starpnieku.*
 
-| Pārdevējs | Veids | Starpnieks | Kopš | Pēdējā izmaiņa | Komentārs
+| Vendor | Type | Proxy | Since | Last modified | Comment
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

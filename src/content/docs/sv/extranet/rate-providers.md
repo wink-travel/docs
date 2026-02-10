@@ -2,7 +2,7 @@
 title: Pristillhandahållare
 description: Här är den uppdaterade listan över pristillhandahållare som vi stöder direkt på Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Ställ in pristillhandahållare
@@ -14,10 +14,10 @@ Välj din pristillhandahållare från rullgardinsmenyn och klicka på knappen `S
 
 ### SynXis
 
-Om din fastighet använder SynXis channel manager krävs ett steg till innan du är redo att ansluta till Wink.
+Om din fastighet använder SynXis channel manager krävs ett steg till innan du är redo att koppla upp dig mot Wink.
 
 - Vänligen kontakta din SynXis-kontorepresentant eller kundtjänst (SHSCustomerCare@sabre.com).
-- Informera dem om att du vill ansluta till Wink via Channel Connect Express (***CCX***).
+- Informera dem om att du vill koppla upp dig till Wink via Channel Connect Express (***CCX***).
 - De kommer att be dig fylla i formuläret ***PRS***.
   - Du kommer att ombes fylla i dina Wink-användaruppgifter.
   - ...och din önskade valuta.
@@ -35,7 +35,7 @@ Tillgängliga typer:
 
 *Om leverantören har en proxy betyder det att vi indirekt tar emot priser från leverantören via proxyn.*
 
-| Vendor | Type | Proxy | Since | Last modified | Comment
+| Leverantör | Typ | Proxy | Sedan | Senast ändrad | Kommentar
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

@@ -31,7 +31,6 @@ A TripPay cobra uma taxa de pagamento de 4,0% por reserva. Isto cobre a aquisiç
 :::note[Transferência de fundos]
 Existem taxas associadas ao envio de fundos para a sua conta. Isto depende do método de pagamento que escolher. Atualmente suportamos:
 
-- **Cartão de crédito virtual** (apenas hotéis) ~2,0%
 - **Transferência bancária** O custo depende do país onde se encontra e de onde os fundos são enviados. Incluímos um calculador de orçamento que pode usar quando tiver fundos disponíveis na sua conta.
 
 Se desejar que suportemos outro método de pagamento, envie-nos um e-mail.
@@ -39,7 +38,7 @@ Se desejar que suportemos outro método de pagamento, envie-nos um e-mail.
 
 ## Modelo 2
 
-Este modelo está disponível apenas para agências de viagens que possuam licença de agência de viagens na sua região e que desejem ser o comerciante registado. Alguns dos nossos agentes de viagens registados querem ser responsáveis pelo processamento do pagamento e pela transferência dos fundos para os hotéis. Neste modelo, eles são responsáveis pelos fundos e detêm as licenças necessárias para operar no seu país.
+Este modelo está disponível apenas para agências de viagens que possuam licença para operar na sua região e que desejem ser o comerciante registado. Alguns dos nossos agentes de viagens registados querem ser responsáveis pelo processamento do pagamento e pela transferência dos fundos para os hotéis. Neste modelo, eles são responsáveis pelos fundos e detêm as licenças necessárias para operar no seu país.
 
 ### Desdobramento
 
@@ -49,14 +48,12 @@ A Wink cobra uma taxa de processamento de 1,5% por reserva. Isto permite-nos ofe
 
 Neste modelo, os agentes de viagens pagam apenas a taxa de processamento da Wink e a Wink faturará o agente de viagens mensalmente.
 
-## Serviços futuros
+## Subscrições
 
-No futuro, iremos oferecer serviços opcionais baseados em subscrição que tornam ainda mais fácil vender para todos ou oferecer contas afiliadas geridas que fazem as vendas por si. Se isso lhe interessar, faça-se ouvir enviando um e-mail para [hi@wink.travel](mailto:hi@wink.travel).
-
-Fique atento.
+Oferecemos um serviço de subscrição opcional (veja [Social](/pt-PT/social/what-is-social)) para ajudar os estabelecimentos a reforçar as suas equipas de vendas e marketing.
 
 ## Efeito da plataforma
 
-Por fim, à medida que continuamos a crescer em tamanho e número de reservas, queremos poder partilhar consigo alguns dos efeitos da plataforma. Mais reservas trazem oportunidades para descontos por volume do nosso gateway de pagamento, o que nos permitiria reduzir a nossa taxa de processamento para todos.
+Por fim, à medida que continuamos a crescer em tamanho e número de reservas, queremos poder partilhar consigo alguns dos efeitos da plataforma. Mais reservas trazem oportunidades para descontos por volume junto do nosso gateway de pagamento, o que nos permitiria reduzir a nossa taxa de processamento para todos.
 
 Junte-se à Wink hoje e descubra uma nova forma lucrativa de fazer negócios na indústria da hospitalidade!

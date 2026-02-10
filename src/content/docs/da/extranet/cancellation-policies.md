@@ -2,10 +2,10 @@
 title: Afbestillingsregler
 description: Denne artikel viser dig, hvordan du administrerer afbestillingsregler på Wink.
 sidebar:
-  order: 12
+  order: 7
 ---
 
-For at administrere dine afbestillingsregler skal du klikke på `Monetize > Cancellation policies` i hovednavigationslinjen.
+For at administrere dine afbestillingsregler skal du klikke på `Monetize > Cancellation policies` i hovednavigationsbjælken.
 
 Afbestillingsregler bestemmer, hvordan bookerens midler håndteres, hvis gæsten ikke kan komme. Afbestillingsregler findes i to forskellige varianter:
 
@@ -29,7 +29,7 @@ For at oprette en ikke-refunderbar afbestillingsregel skal du sætte kontakten t
 Du kan valgfrit konfigurere din `ikke-refunderbare` regel yderligere for større kontrol.
 
 - **Hvor meget opkræves gæsten ved en afbestilling?** Som standard er en ikke-refunderbar regel 100% ikke-refunderbar. Du kan finjustere beløbet her. *f.eks. 50% af den samlede pris*
-- **Har opkrævningen en deadline?** Hvis du har finjusteret beløbet, kan du finjustere det yderligere ved at angive, hvor længe beløbet gælder. *f.eks. Indtil 3 dage før ankomst*
+- **Har opkrævningen en deadline?** Hvis du har finjusteret beløbet, kan du finjustere det yderligere ved at angive, hvor længe dette beløb gælder. *f.eks. Indtil 3 dage før ankomst*
 - **Hvor meget opkræves gæsten ved afbestilling efter deadline?** Hvis gæsten overskrider den ovenfor angivne deadline, kan du angive, hvor meget gæsten skal betale efter deadline. *f.eks. 70% af den samlede pris*
 
 ## Refunderbar

@@ -29,10 +29,9 @@ TripPay erhebt eine Zahlungsgebühr von 4,0 % pro Buchung. Diese deckt die Akqui
 :::
 
 :::note[Auszahlung der Gelder]
-Für die Überweisung der Gelder auf dein Konto fallen Gebühren an. Diese hängen von der von dir gewählten Auszahlungsart ab. Wir unterstützen derzeit:
+Für die Überweisung der Gelder auf dein Konto fallen Gebühren an. Diese hängen von der gewählten Auszahlungsart ab. Wir unterstützen derzeit:
 
-- **Virtuelle Kreditkarte** (nur Hotels) ~2,0 %
-- **Banküberweisung** Die Kosten hängen vom Land ab, in dem du dich befindest, und von dem Land, aus dem die Gelder gesendet werden. Wir bieten einen Angebotsrechner an, den du nutzen kannst, wenn Guthaben auf deinem Konto verfügbar ist.
+- **Banküberweisung** Die Kosten hängen vom Land ab, in dem du dich befindest, und von dem Land, aus dem die Gelder gesendet werden. Wir bieten einen Angebotsrechner an, den du nutzen kannst, wenn Guthaben auf deinem Konto verfügbar sind.
 
 Wenn du möchtest, dass wir eine andere Auszahlungsart unterstützen, sende uns eine E-Mail.
 :::
@@ -49,11 +48,9 @@ Wink erhebt eine Bearbeitungsgebühr von 1,5 % pro Buchung. Dies ermöglicht es 
 
 Bei diesem Modell zahlen Reisebüros nur die Bearbeitungsgebühr an Wink, und Wink stellt dem Reisebüro monatlich eine Rechnung.
 
-## Zukünftige Dienste
+## Abonnements
 
-Wir werden in Zukunft optionale abonnementbasierte Dienste anbieten, die den Verkauf für alle noch einfacher machen oder verwaltete Affiliate-Konten, die den Verkauf für dich übernehmen. Wenn dich das interessiert, melde dich bei uns unter [hi@wink.travel](mailto:hi@wink.travel).
-
-Bleib dran.
+Wir bieten einen optionalen Abonnementservice an (siehe [Social](/de/social/what-is-social)), um Unterkünfte bei der Verstärkung ihrer Vertriebs- und Marketingteams zu unterstützen.
 
 ## Plattformeffekt
 

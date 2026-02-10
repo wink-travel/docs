@@ -2,14 +2,14 @@
 title: Mga Tagapagbigay ng Rate
 description: Narito ang pinakabagong listahan ng mga tagapagbigay ng rate na direktang sinusuportahan namin sa Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Itakda ang tagapagbigay ng rate
 
 Upang itakda ang iyong tagapagbigay ng rate, i-click ang `Distribution > Channel manager` mula sa pangunahing nav bar.
 
-Piliin ang iyong tagapagbigay ng rate mula sa dropdown list at i-click ang `Save` button. Papayagan nito ang tagapagbigay ng rate na magpadala sa amin ng mga rate at ipapaalam namin sa kanila kapag may booking na naganap sa Wink para sa isa sa iyong mga property.
+Piliin ang iyong tagapagbigay ng rate mula sa dropdown list at i-click ang `Save` button. Papayagan nito ang tagapagbigay ng rate na magpadala sa amin ng mga rate at ipapaalam namin sa kanila kapag may booking na nangyari sa Wink para sa isa sa iyong mga property.
 
 
 ### SynXis

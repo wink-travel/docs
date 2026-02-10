@@ -5,8 +5,6 @@ sidebar:
   order: 6
 ---
 
-# Documento de Resumen de Seguridad de Wink
-
 *Última actualización: 7 de septiembre de 2024*
 
 *Versión 1.0*
@@ -30,7 +28,7 @@ Nuestras pruebas de penetración se realizan anualmente, con pruebas adicionales
 Nuestras pruebas de penetración son exhaustivas y cubren una amplia gama de aspectos de seguridad, incluyendo pero no limitándose a:
 
 * **OWASP Top 10:** Nuestras pruebas se enfocan específicamente en los riesgos de seguridad más críticos, como Inyección, Autenticación Rota y Cross-Site Scripting (XSS).  
-* **Pruebas de Caja Negra y Caja Gris:** Dependiendo del alcance, nuestro equipo utiliza estas metodologías para simular escenarios de ataque tanto externos como internos.  
+* **Pruebas Black Box y Grey Box:** Dependiendo del alcance, nuestro equipo utiliza estas metodologías para simular escenarios de ataque tanto externos como internos.  
 * **Pruebas Automatizadas y Manuales:** Usamos Burp Suite Pro, un conjunto líder de herramientas de pruebas de seguridad, para realizar escaneos automatizados y apoyar técnicas manuales para identificar vulnerabilidades complejas y obtener la mejor cobertura posible. Para la identificación más específica de vulnerabilidades, se utilizan algunas herramientas especializadas, por ejemplo, SQLmap.
 
 ## Resumen de Hallazgos
@@ -48,7 +46,7 @@ Para hallazgos detallados, consulte el informe completo.
 
 ### Calificaciones de Riesgo e Impacto
 
-Ambas vulnerabilidades encontradas están calificadas como críticas, ya que podrían haber tenido impactos financieros severos. La primera permitió que un usuario autenticado malicioso obtuviera control de la cuenta de pago Trippay de otra empresa. La segunda vulnerabilidad permitió que un usuario malicioso modificara el monto del pago requerido para una reserva.
+Ambas vulnerabilidades encontradas están calificadas como críticas, ya que podrían haber tenido impactos financieros severos. La primera permitió que un usuario autenticado malicioso tomara control de la cuenta de pago Trippay de otra empresa. La segunda vulnerabilidad permitió que un usuario malicioso modificara el monto del pago requerido para una reserva.
 
 ### Esfuerzos de Remediación y Mitigación
 

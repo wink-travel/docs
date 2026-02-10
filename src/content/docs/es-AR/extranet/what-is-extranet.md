@@ -18,7 +18,7 @@ Deja que nuestros asistentes te guíen durante todo el proceso. Cuando te sienta
 Wink es un sistema avanzado de gestión de contenido para propiedades y proveedores de experiencias. Todo lo que puedes hacer en una de nuestras apps, puedes hacerlo vía API. Esto te permite hacer una integración profunda con Wink hasta el punto de que puedes vender a través de Wink sin tener que iniciar sesión en ninguna de nuestras apps.
 
 :::tip[Consejo Profesional]
-¿Estás pagando por un hosting costoso de activos multimedia a través de Leonardo International? Puedes hacer exactamente lo mismo a través de Wink Y además obtienes muchas más opciones para manipular y ajustar tus imágenes y videos.
+¿Estás pagando por un hosting costoso de activos multimedia a través de Leonardo International? Puedes hacer exactamente lo mismo a través de Wink Y además obtienes muchas más opciones para manipular y ajustar finamente tus imágenes y videos.
 :::
 
 Todas estas funciones no tienen costo para ti. Solo cobramos una pequeña comisión cuando realizas una reserva. No hay nada que perder - Todo por ganar.

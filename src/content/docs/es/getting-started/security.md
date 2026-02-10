@@ -5,8 +5,6 @@ sidebar:
   order: 6
 ---
 
-# Documento de Resumen de Seguridad de Wink
-
 *Última actualización: 7 de septiembre de 2024*
 
 *Versión 1.0*
@@ -35,7 +33,7 @@ Nuestras pruebas de penetración son exhaustivas y cubren una amplia gama de asp
 
 ## Resumen de Hallazgos
 
-A continuación, un resumen de alto nivel del informe más reciente de pruebas de penetración:
+A continuación, se presenta un resumen de alto nivel del informe más reciente de pruebas de penetración:
 
 * **Total de Vulnerabilidades Identificadas:** 2  
 * **Distribución por Severidad:**  
@@ -46,16 +44,16 @@ A continuación, un resumen de alto nivel del informe más reciente de pruebas d
 
 Para hallazgos detallados, consulte el informe completo.
 
-### Calificación de Riesgos e Impacto
+### Calificaciones de Riesgo e Impacto
 
-Ambas vulnerabilidades encontradas están calificadas como críticas, ya que podrían haber tenido impactos financieros severos. La primera permitió que un usuario autenticado malicioso tomara control de la cuenta de pago Trippay de otra empresa. La segunda vulnerabilidad permitió que un usuario malicioso modificara el monto del pago requerido para una reserva.
+Ambas vulnerabilidades encontradas se califican como críticas, ya que podrían haber tenido impactos financieros severos. La primera permitió que un usuario autenticado malicioso obtuviera control de la cuenta de pago Trippay de otra empresa. La segunda vulnerabilidad permitió que un usuario malicioso modificara el monto del pago requerido para una reserva.
 
 ### Esfuerzos de Remediación y Mitigación
 
 Hemos tomado las siguientes medidas para abordar las vulnerabilidades identificadas:
 
 * **Parcheo Inmediato:** Las vulnerabilidades críticas fueron parcheadas dentro de las 48 horas posteriores a su descubrimiento.  
-* **Revisión y Endurecimiento del Código:** El equipo de desarrollo ha implementado controles de seguridad adicionales basados en nuestras recomendaciones.
+* **Revisión y Fortalecimiento del Código:** El equipo de desarrollo ha implementado controles de seguridad adicionales basados en nuestras recomendaciones.
 
 ## Mejora Continua
 
@@ -71,6 +69,6 @@ Estamos dedicados a mantener un entorno de aplicación seguro para nuestros usua
 
 ## Acceso al Informe y Actualizaciones
 
-Este documento se actualizará continuamente a medida que se emitan nuevos informes de pruebas de penetración. Para acceder al informe completo, por favor contáctenos a través del correo electrónico abajo. Las futuras actualizaciones incluirán vulnerabilidades recién identificadas, esfuerzos de remediación y ajustes en nuestras metodologías de prueba.
+Este documento se actualizará continuamente a medida que se emitan nuevos informes de pruebas de penetración. Para acceder al informe completo, por favor contáctenos a través del correo electrónico que aparece a continuación. Las futuras actualizaciones incluirán vulnerabilidades recién identificadas, esfuerzos de remediación y ajustes en nuestras metodologías de prueba.
 
 Para más consultas, por favor contacte a security@wink.travel.

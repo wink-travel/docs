@@ -11,7 +11,7 @@ Extranet kami dirancang dengan cermat agar sesederhana mungkin, namun tetap mend
 
 1. Kesederhanaan: Gunakan alur kerja onboarding cerdas kami untuk mendaftarkan properti Anda dan langsung LIVE dalam waktu kurang dari satu jam.
 2. Canggih: Wink mendukung 8500 variasi kebijakan pembatalan yang berbeda
-3. Keren: Berikan diskon 10% kepada satu orang di planet bumi tanpa pengguna harus masuk atau mengetik kode promo.
+3. Keren: Berikan diskon 10% kepada satu orang di planet ini tanpa pengguna harus masuk atau mengetik kode promo.
 
 Biarkan panduan kami memandu Anda melalui seluruh proses. Ketika Anda merasa cukup nyaman... lakukan sendiri.
 
@@ -21,4 +21,4 @@ Wink adalah sistem manajemen konten canggih untuk properti dan penyedia pengalam
 Apakah Anda membayar hosting aset media yang mahal melalui Leonardo International? Anda dapat melakukan hal yang sama persis melalui Wink DAN Anda mendapatkan banyak opsi lebih untuk memanipulasi dan menyempurnakan gambar dan video Anda.
 :::
 
-Semua fitur ini tidak dikenakan biaya kepada Anda. Kami hanya mengambil biaya kecil saat Anda melakukan pemesanan. Tidak ada yang rugi - Semua untuk keuntungan.
+Semua fitur ini tidak dikenakan biaya kepada Anda. Kami hanya mengambil biaya kecil saat Anda melakukan pemesanan. Tidak ada yang rugi - Semua yang didapat.

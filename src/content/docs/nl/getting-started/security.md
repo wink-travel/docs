@@ -5,17 +5,15 @@ sidebar:
   order: 6
 ---
 
-# Wink Beveiligingsoverzicht Document
-
 *Laatst bijgewerkt: 7 september 2024*
 
 *Versie 1.0*
 
 ## Doel en Reikwijdte
 
-Als onderdeel van onze voortdurende inzet voor beveiliging en het beschermen van gebruikersgegevens, voeren wij regelmatig penetratietests uit op onze webapplicatie. Dit document beschrijft onze testmethodologieën, geeft een samenvatting van de bevindingen en belicht onze aanpak voor continue beveiligingsverbetering.
+Als onderdeel van onze voortdurende inzet voor beveiliging en het beschermen van gebruikersgegevens, voeren we regelmatig penetratietests uit op onze webapplicatie. Dit document beschrijft onze testmethodologieën, geeft een samenvatting van de bevindingen en belicht onze aanpak voor continue beveiligingsverbetering.
 
-Dit document wordt bijgewerkt zodra er nieuwe rapporten worden geproduceerd of wanneer er significante wijzigingen plaatsvinden.
+Dit document wordt bijgewerkt zodra er nieuwe rapporten worden opgesteld of wanneer er significante wijzigingen plaatsvinden.
 
 Domeinen binnen de scope:  
 \*.wink.travel  
@@ -31,7 +29,7 @@ Onze penetratietests zijn uitgebreid en bestrijken een breed scala aan beveiligi
 
 * **OWASP Top 10:** Onze tests richten zich specifiek op de meest kritieke beveiligingsrisico’s, zoals Injection, Broken Authentication en Cross-Site Scripting (XSS).  
 * **Black Box en Grey Box Testing:** Afhankelijk van de scope gebruikt ons team deze methodologieën om zowel externe als interne aanvalsscenario’s te simuleren.  
-* **Geautomatiseerd en Handmatig Testen:** We gebruiken Burp Suite Pro, een toonaangevende set beveiligingstools, om geautomatiseerde beveiligingsscans uit te voeren en handmatige testtechnieken te ondersteunen om complexe kwetsbaarheden te identificeren en de best mogelijke dekking te krijgen. Voor meer specifieke kwetsbaarheidsidentificatie worden enkele gespecialiseerde tools gebruikt, bijvoorbeeld SQLmap.
+* **Geautomatiseerd en Handmatig Testen:** We gebruiken Burp Suite Pro, een toonaangevende set beveiligingstools, om geautomatiseerde beveiligingsscans uit te voeren en handmatige testtechnieken te ondersteunen om complexe kwetsbaarheden te identificeren en de best mogelijke dekking te krijgen. Voor meer specifieke kwetsbaarheidsidentificatie worden ook gespecialiseerde tools gebruikt, bijvoorbeeld SQLmap.
 
 ## Samenvatting van Bevindingen
 
@@ -59,7 +57,7 @@ We hebben de volgende stappen ondernomen om de geïdentificeerde kwetsbaarheden 
 
 ## Continue Verbetering
 
-Penetratietesten maken deel uit van onze bredere strategie voor continue beveiligingsverbetering. Bevindingen uit elke test sturen onze beveiligingsbeleid, beïnvloeden ontwikkelpraktijken en stimuleren verbeteringen in onze beveiligingsarchitectuur.
+Penetratietesten maken deel uit van onze bredere strategie voor continue beveiligingsverbetering. Bevindingen uit elke test sturen ons beveiligingsbeleid, beïnvloeden ontwikkelpraktijken en stimuleren verbeteringen in onze beveiligingsarchitectuur.
 
 ## Team Expertise
 

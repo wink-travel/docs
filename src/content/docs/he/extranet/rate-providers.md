@@ -2,7 +2,7 @@
 title: ספקי תעריפים
 description: להלן רשימת ספקי התעריפים המעודכנת שאנו תומכים בהם ישירות ב-Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## הגדרת ספק תעריפים
@@ -29,9 +29,9 @@ sidebar:
 
 סוגים זמינים:
 
-- מנהל ערוצים (CM)
-- מערכת ניהול נכסים (PMS)
-- מערכת הזמנות מרכזית (CRS)
+- Channel Manager (CM)
+- Property Management System (PMS)
+- Central Reservation System (CRS)
 
 *אם לספק יש פרוקסי, זה אומר שאנו מקבלים תעריפים מהספק בעקיפין דרך הפרוקסי.*
 

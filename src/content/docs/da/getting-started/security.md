@@ -5,8 +5,6 @@ sidebar:
   order: 6
 ---
 
-# Wink Sikkerhedsoverblik Dokument
-
 *Sidst opdateret: 7. september 2024*
 
 *Version 1.0*
@@ -30,25 +28,25 @@ Vores penetrationstest udføres årligt, med yderligere tests planlagt efter beh
 Vores penetrationstest er omfattende og dækker en bred vifte af sikkerhedsaspekter, herunder men ikke begrænset til:
 
 * **OWASP Top 10:** Vores tests fokuserer specifikt på de mest kritiske sikkerhedsrisici, såsom Injection, Broken Authentication og Cross-Site Scripting (XSS).  
-* **Black Box og Grey Box Testning:** Afhængigt af omfanget anvender vores team disse metoder til at simulere både eksterne og interne angrebsscenarier.  
-* **Automatiseret og Manuel Testning:** Vi bruger Burp Suite Pro, et førende sikkerhedstestværktøj, til at udføre automatiserede sikkerhedsscanninger og understøtte manuelle testteknikker for at identificere komplekse sårbarheder og opnå den bedst mulige dækning. Til mere specifik sårbarhedsidentifikation anvendes specialiserede værktøjer som f.eks. SQLmap.
+* **Black Box og Grey Box Testing:** Afhængigt af omfanget anvender vores team disse metoder til at simulere både eksterne og interne angrebsscenarier.  
+* **Automatiseret og Manuel Test:** Vi bruger Burp Suite Pro, et førende sikkerhedstestværktøj, til at udføre automatiserede sikkerhedsscanninger og understøtte manuelle testteknikker for at identificere komplekse sårbarheder og opnå den bedst mulige dækning. Til mere specifik sårbarhedsidentifikation anvendes også specialiserede værktøjer, f.eks. SQLmap.
 
-## Resumé af Fund
+## Resumé af Resultater
 
 Følgende er et overordnet resumé af vores seneste penetrationstest-rapport:
 
-* **Samlede Identificerede Sårbarheder:** 2  
+* **Antal Identificerede Sårbarheder:** 2  
 * **Alvorlighedsfordeling:**  
   * Kritisk: 2  
 * **Typer af Opdagede Sårbarheder:**  
   * Broken Access Control  
   * Usikker Design
 
-For detaljerede fund henvises til den fulde rapport.
+For detaljerede resultater henvises til den fulde rapport.
 
-### Risikovurderinger og Indvirkning
+### Risikovurdering og Indvirkning
 
-Begge fundne sårbarheder er vurderet som kritiske, da begge kunne have haft alvorlige økonomiske konsekvenser. Den første tillod en ondsindet autentificeret bruger at få kontrol over en anden virksomheds Trippay betalingskonto. Den anden sårbarhed gjorde det muligt for en ondsindet bruger at ændre det betalingsbeløb, der kræves for en booking.
+Begge fundne sårbarheder er vurderet som kritiske, da begge kunne have haft alvorlige økonomiske konsekvenser. Den første gjorde det muligt for en ondsindet autentificeret bruger at få kontrol over en anden virksomheds Trippay betalingskonto. Den anden sårbarhed gjorde det muligt for en ondsindet bruger at ændre det betalingsbeløb, der kræves for en booking.
 
 ### Afhjælpning og Begrænsningstiltag
 
@@ -59,7 +57,7 @@ Vi har taget følgende skridt for at adressere de identificerede sårbarheder:
 
 ## Kontinuerlig Forbedring
 
-Penetrationstest er en del af vores bredere strategi for kontinuerlig sikkerhedsforbedring. Resultaterne fra hver test styrer vores sikkerhedspolitikker, påvirker udviklingspraksis og driver forbedringer i vores sikkerhedsarkitektur.
+Penetrationstest er en del af vores bredere strategi for kontinuerlig sikkerhedsforbedring. Resultater fra hver test styrer vores sikkerhedspolitikker, påvirker udviklingspraksis og driver forbedringer i vores sikkerhedsarkitektur.
 
 ## Teamets Ekspertise
 
@@ -69,7 +67,7 @@ Vores penetrationstest udføres af en intern professionel med omfattende erfarin
 
 Vi er dedikerede til at opretholde et sikkert applikationsmiljø for vores brugere og interessenter. Vores løbende indsats inden for sikkerhedstest og forbedring demonstrerer vores engagement i at beskytte mod udviklende trusler.
 
-## Rapportadgang og Opdateringer
+## Adgang til Rapport og Opdateringer
 
 Dette dokument opdateres løbende, efterhånden som nye penetrationstest-rapporter udgives. For at få adgang til den fulde rapport, kontakt os venligst via nedenstående e-mail. Fremtidige opdateringer vil inkludere nyligt identificerede sårbarheder, afhjælpningstiltag og justeringer af vores testmetoder.
 

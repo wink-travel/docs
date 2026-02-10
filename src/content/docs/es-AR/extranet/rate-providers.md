@@ -2,7 +2,7 @@
 title: Proveedores de tarifas
 description: Aquí está la lista actualizada de proveedores de tarifas que soportamos directamente en Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Configurar proveedor de tarifas
@@ -35,7 +35,7 @@ Tipos disponibles:
 
 *Si el proveedor tiene un proxy, significa que recibimos tarifas indirectamente del proveedor a través del proxy.*
 
-| Vendor | Type | Proxy | Since | Last modified | Comment
+| Proveedor | Tipo | Proxy | Desde | Última modificación | Comentario
 | -- | -- | -- | -- | -- | -- |
 | Hoteliers Guru | CM |  | 2017 | 2017 | |
 | Travelclick | CM |  | 2016 | 2016 | |

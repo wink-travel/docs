@@ -2,7 +2,7 @@
 title: Tühistamispoliitikad
 description: See artikkel näitab, kuidas hallata tühistamispoliitikaid Winkis.
 sidebar:
-  order: 12
+  order: 7
 ---
 
 Tühistamispoliitikate haldamiseks klõpsake põhimenüüst `Monetize > Cancellation policies`.
@@ -15,7 +15,7 @@ Tühistamispoliitikad määravad, kuidas broneerija raha käsitletakse juhul, ku
 Enamasti on need kaks valikut piisavad. Kuid mõlemad annavad teile palju võimalusi oma tühistamispoliitika täpsemaks kohandamiseks.
 
 :::tip[Huvitav fakt]
-Wink toetab kokku 8500 erinevat tühistamispoliitika variatsiooni.
+Wink toetab kokku 8500 erinevat tühistamispoliitika varianti.
 :::
 
 Tühistamispoliitika loomiseks klõpsake nuppu `Create a new cancellation policy`.
@@ -42,4 +42,4 @@ Võite oma `tagastatavat` poliitikat täiendavalt seadistada suurema kontrolli s
 
 - **Kui kaua enne saabumist võib külaline tasuta tühistada?** Vaikimisi on tagastatav poliitika alati 100% tagastatav. Siin saate tähtaega täpsustada. *nt 3 päeva enne saabumist*
 - **Kui palju külaline maksab, kui tühistamine toimub pärast ülaltoodud tähtaega?** Kui olete tähtaega täpsustanud, saate määrata summa, mida külaline pärast tähtaega maksab. *nt 50% koguhinnast*
-- **Kui palju peaks külaline maksma „Ei ilmu“ korral?** Kui külaline ei ilmu kohale, saate määrata summa, mida külaline `Ei ilmu` eest maksab. *nt 100% koguhinnast*
+- **Kui palju külaline maksab „Ei ilmu“ korral?** Kui külaline ei ilmu kohale, saate määrata summa, mida külaline `Ei ilmu` eest maksab. *nt 100% koguhinnast*

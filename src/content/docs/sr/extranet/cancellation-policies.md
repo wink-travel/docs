@@ -2,7 +2,7 @@
 title: Politike otkazivanja
 description: Ovaj članak vam pokazuje kako da upravljate politikama otkazivanja na Wink-u.
 sidebar:
-  order: 12
+  order: 7
 ---
 
 Da biste upravljali svojim politikama otkazivanja, kliknite na `Monetize > Cancellation policies` u glavnom navigacionom meniju.
@@ -28,7 +28,7 @@ Da biste kreirali politiku otkazivanja bez povrata novca, postavite prekidač na
 
 Opcionalno možete dodatno konfigurisati vašu `bez povrata novca` politiku za veću kontrolu.
 
-- **Koliko se gostu naplaćuje za otkazivanje?** Po defaultu, politika bez povrata novca znači 100% nepovratnu politiku. Ovde možete precizirati iznos. *npr. 50% od ukupne cene*
+- **Koliko se gostu naplaćuje za otkazivanje?** Po defaultu, politika bez povrata novca znači 100% nepovratnu naplatu. Ovde možete precizirati iznos. *npr. 50% od ukupne cene*
 - **Da li naplata ima rok?** Ako ste precizirali iznos, možete dodatno podesiti koliko dugo taj iznos važi. *npr. Do 3 dana pre dolaska*
 - **Koliko se gostu naplaćuje za otkazivanje nakon isteka roka?** U slučaju da gost prekorači gore navedeni rok, možete podesiti iznos koji gost plaća nakon roka. *npr. 70% od ukupne cene*
 

@@ -2,7 +2,7 @@
 title: Kebijakan Pembatalan
 description: Artikel ini menunjukkan cara mengelola kebijakan pembatalan di Wink.
 sidebar:
-  order: 12
+  order: 7
 ---
 
 Untuk mengelola Kebijakan Pembatalan Anda, klik `Monetize > Cancellation policies` dari bilah navigasi utama.
@@ -28,9 +28,9 @@ Untuk membuat kebijakan pembatalan yang tidak dapat dikembalikan, atur sakelar k
 
 Anda dapat mengonfigurasi kebijakan `tidak dapat dikembalikan` Anda lebih lanjut untuk kontrol yang lebih besar.
 
-- **Berapa biaya yang dikenakan kepada tamu untuk pembatalan?** Secara default, kebijakan tidak dapat dikembalikan adalah kebijakan 100% tidak dapat dikembalikan. Anda dapat menyetel jumlahnya di sini. *misalnya 50% dari total harga*
-- **Apakah biaya tersebut memiliki batas waktu?** Jika Anda menyetel jumlahnya, Anda dapat menyetel lebih lanjut berapa lama jumlah tersebut berlaku. *misalnya Hingga 3 hari sebelum kedatangan*
-- **Berapa biaya yang dikenakan kepada tamu untuk pembatalan setelah batas waktu?** Jika tamu melewati batas waktu yang ditetapkan di atas, Anda dapat mengatur jumlah yang harus dibayar tamu setelah batas waktu. *misalnya 70% dari total harga*
+- **Berapa banyak biaya yang dikenakan kepada tamu untuk pembatalan?** Secara default, kebijakan tidak dapat dikembalikan adalah kebijakan 100% tidak dapat dikembalikan. Anda dapat menyetel jumlahnya di sini. *misalnya 50% dari total harga*
+- **Apakah biaya tersebut memiliki batas waktu?** Jika Anda menyetel jumlahnya, Anda dapat menyetel lebih lanjut dengan menentukan berapa lama jumlah tersebut berlaku. *misalnya Hingga 3 hari sebelum kedatangan*
+- **Berapa banyak biaya yang dikenakan kepada tamu untuk pembatalan setelah batas waktu?** Jika tamu melewati batas waktu yang ditetapkan di atas, Anda dapat menentukan jumlah yang harus dibayar tamu setelah batas waktu. *misalnya 70% dari total harga*
 
 ## Dapat dikembalikan
 
@@ -41,5 +41,5 @@ Untuk membuat kebijakan pembatalan yang dapat dikembalikan, atur sakelar ke ✅ 
 Anda dapat mengonfigurasi kebijakan `dapat dikembalikan` Anda lebih lanjut untuk kontrol yang lebih besar.
 
 - **Berapa lama sebelum kedatangan tamu dapat membatalkan tanpa biaya?** Secara default, kebijakan dapat dikembalikan selalu 100% dapat dikembalikan. Anda dapat menyetel batas waktunya di sini. *misalnya 3 hari sebelum kedatangan*
-- **Berapa biaya yang harus dikenakan kepada tamu jika pembatalan terjadi setelah batas waktu di atas?** Jika Anda menyetel batas waktu, Anda dapat mengatur jumlah yang harus dibayar tamu setelah batas waktu. *misalnya 50% dari total harga*
-- **Berapa biaya yang harus dikenakan kepada tamu untuk 'No show'?** Jika tamu tidak datang, Anda dapat mengatur jumlah yang dikenakan kepada tamu untuk `No show`. *misalnya 100% dari total harga*
+- **Berapa biaya yang harus dikenakan kepada tamu jika pembatalan terjadi setelah batas waktu di atas?** Jika Anda menyetel batas waktu, Anda dapat menentukan jumlah yang harus dibayar tamu setelah batas waktu. *misalnya 50% dari total harga*
+- **Berapa biaya yang harus dikenakan kepada tamu untuk 'No show'?** Jika tamu tidak datang, Anda dapat menentukan jumlah yang dikenakan kepada tamu untuk `No show`. *misalnya 100% dari total harga*

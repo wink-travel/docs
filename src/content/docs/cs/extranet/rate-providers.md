@@ -2,7 +2,7 @@
 title: Poskytovatelé sazeb
 description: Zde je aktuální seznam poskytovatelů sazeb, které přímo podporujeme na Wink.
 sidebar:
-  order: 18
+  order: 24
 ---
 
 ## Nastavení poskytovatele sazeb
@@ -17,10 +17,10 @@ Vyberte svého poskytovatele sazeb ze seznamu a klikněte na tlačítko `Save`. 
 Pokud vaše nemovitost používá channel manager SynXis, je před připojením k Wink potřeba ještě jeden krok.
 
 - Kontaktujte svého zástupce SynXis nebo zákaznickou podporu (SHSCustomerCare@sabre.com).
-- Sdělte jim, že chcete připojit Wink přes Channel Connect Express (***CCX***).
-- Budou vás žádat o vyplnění formuláře ***PRS***.
-  - Budete požádáni o zadání přihlašovacích údajů do Wink.
-  - ...a o požadovanou měnu.
+- Informujte je, že chcete připojit Wink přes Channel Connect Express (***CCX***).
+- Budete požádáni o vyplnění formuláře ***PRS***.
+  - Budete muset zadat své přihlašovací údaje do Wink.
+  - ...a požadovanou měnu.
 - Vyplňte formulář a odešlete jej zpět do SynXis.
 
 ## Dodavatelé

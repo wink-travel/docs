@@ -25,17 +25,18 @@ Wink में, हम हमेशा हर काम के लिए 2 प�
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | इन्वेंटरी | https://staging-api.wink.travel | https://api.wink.travel | 
 | इंटीग्रेशन | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
-| पेमेंट | https://staging-api.trippay.io | https://api.trippay.io | 
+<!-- | पेमेंट | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## एप्लिकेशन
 
-हमारे एप्लिकेशन में भी हमारे ग्राहकों के लिए परीक्षण और प्रोडक्शन पर्यावरण होते हैं।
+हमारे ग्राहकों के लिए हमारे एप्लिकेशन के भी परीक्षण और प्रोडक्शन पर्यावरण हैं।
 
 | एप्लिकेशन | स्टेजिंग | प्रोडक्शन
 | ------- | ------- | ---------- |
 | एजेंट | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| कॉर्पोरेट | https://staging-group.wink.travel | https://group.wink.travel | 
+| बुकिंग इंजन | https://staging-ota.wink.travel | https://ota.wink.travel | 
 | एक्सट्रानेट | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| मेरा खाता | https://staging-my.wink.travel | https://my.wink.travel | 
 | पेमेंट | https://staging-pay.wink.travel | https://pay.wink.travel | 
 | स्टूडियो | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |

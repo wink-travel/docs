@@ -5,7 +5,7 @@ sidebar:
   order: 4
 ---
 
-Wink'in tüm hizmetleri herkesin kullanımına ücretsizdir. Rezervasyon yapıldığında, Wink platformu sürdürmek için küçük bir ücret alır.
+Wink'in tüm hizmetleri herkesin ücretsiz kullanımına açıktır. Rezervasyon yapıldığında, Wink platformu sürdürmek için küçük bir ücret alır.
 
 Wink hem satıcı hem de acente modellerini destekler.
 
@@ -31,15 +31,14 @@ TripPay, rezervasyon başına %4,0 ödeme ücreti alır. Bu, yolcudan ödemenin 
 :::note[Fon dağıtımı]
 Hesabınıza para gönderirken ücretler vardır. Bu, seçtiğiniz ödeme yöntemine bağlıdır. Şu anda desteklediğimiz yöntemler:
 
-- **Sanal kredi kartı** (sadece oteller) ~%2,0  
 - **Banka havalesi** Ücret, bulunduğunuz ülkeye ve fonların gönderildiği yere bağlıdır. Hesabınızda kullanılabilir fon olduğunda kullanabileceğiniz bir teklif hesaplayıcı sunuyoruz.
 
-Başka bir ödeme yöntemi desteklememizi isterseniz, bize e-posta gönderin.
+Başka bir ödeme yöntemini desteklememizi isterseniz, bize e-posta gönderin.
 :::
 
 ## Model 2
 
-Bu model sadece kendi bölgesinde seyahat acentesi lisansına sahip ve kayıtlı satıcı olmak isteyen seyahat acentelerine açıktır. Bazı kayıtlı seyahat acenteleri ödemeyi yönetmek ve fonları otellere dağıtmakla sorumlu olmak ister. Bu modelde, fonlardan sorumludurlar ve ülkelerinde faaliyet göstermek için gerekli lisanslara sahiptirler.
+Bu model yalnızca kendi bölgesinde seyahat acentesi lisansına sahip ve kayıtlı satıcı olmak isteyen seyahat acentelerine açıktır. Bazı kayıtlı seyahat acentelerimiz, ödemeyi yönetmek ve fonları otellere dağıtmakla sorumlu olmak ister. Bu modelde, fonlardan sorumludurlar ve ülkelerinde faaliyet göstermek için gerekli lisanslara sahiptirler.
 
 ### Dağılım
 
@@ -49,14 +48,12 @@ Wink, rezervasyon başına %1,5 işlem ücreti alır. Bu, tüm hizmetlerimizi ü
 
 Bu modeli kullanan seyahat acenteleri sadece Wink'in işlem ücretini öder ve Wink seyahat acentesine aylık fatura keser.
 
-## Gelecekteki hizmetler
+## Abonelikler
 
-Gelecekte, herkesin satış yapmasını daha da kolaylaştıran isteğe bağlı abonelik tabanlı hizmetler veya sizin için satış yapan yönetilen bağlı hesaplar sunacağız. İlginizi çekiyorsa, [hi@wink.travel](mailto:hi@wink.travel) adresine e-posta göndererek sesinizi duyurun.
-
-Takipte kalın.
+Mülklerin satış ve pazarlama ekiplerini güçlendirmelerine yardımcı olmak için isteğe bağlı bir abonelik hizmeti sunuyoruz (bkz. [Social](/tr/social/what-is-social)).
 
 ## Platform etkisi
 
 Son olarak, hem büyüklük hem de rezervasyon sayısı arttıkça, platform etkilerinden bir kısmını sizinle paylaşmak istiyoruz. Daha fazla rezervasyon, ödeme geçidimizden toplu indirim fırsatları getirir ve bu da işlem ücretimizi herkes için düşürmemize olanak sağlar.
 
-Bugün Wink'e katılın ve konaklama sektöründe yeni, kazançlı bir iş yapma yolunu keşfedin!
+Bugün Wink'e katılın ve konaklama sektöründe yeni, karlı bir iş yapma yolunu keşfedin!

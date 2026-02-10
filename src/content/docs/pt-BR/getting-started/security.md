@@ -5,13 +5,11 @@ sidebar:
   order: 6
 ---
 
-# Documento de Visão Geral de Segurança do Wink
-
 *Última Atualização: 7 de setembro de 2024*
 
 *Versão 1.0*
 
-## Propósito e Escopo
+## Objetivo e Escopo
 
 Como parte do nosso compromisso contínuo com a segurança e a proteção dos dados dos usuários, realizamos testes regulares de penetração em nossa aplicação web. Este documento descreve nossas metodologias de teste, fornece um resumo dos resultados e destaca nossa abordagem para a melhoria contínua da segurança.
 
@@ -31,7 +29,7 @@ Nossos testes de penetração são abrangentes e cobrem uma ampla gama de aspect
 
 * **OWASP Top 10:** Nossos testes focam especificamente nos riscos de segurança mais críticos, como Injeção, Autenticação Quebrada e Cross-Site Scripting (XSS).  
 * **Testes Black Box e Grey Box:** Dependendo do escopo, nossa equipe utiliza essas metodologias para simular cenários de ataque externos e internos.  
-* **Testes Automatizados e Manuais:** Usamos o Burp Suite Pro, um conjunto líder de ferramentas de teste de segurança, para realizar varreduras automatizadas e auxiliar técnicas manuais para identificar vulnerabilidades complexas e obter a melhor cobertura possível. Para identificação mais específica de vulnerabilidades, algumas ferramentas especializadas são usadas, por exemplo, SQLmap.
+* **Testes Automatizados e Manuais:** Utilizamos o Burp Suite Pro, um conjunto líder de ferramentas de teste de segurança, para realizar varreduras automatizadas e auxiliar técnicas manuais para identificar vulnerabilidades complexas e obter a melhor cobertura possível. Para identificação mais específica de vulnerabilidades, algumas ferramentas especializadas são usadas, por exemplo, SQLmap.
 
 ## Resumo dos Resultados
 
@@ -44,11 +42,11 @@ A seguir, um resumo de alto nível do nosso relatório mais recente de testes de
   * Controle de Acesso Quebrado  
   * Design Inseguro
 
-Para resultados detalhados, consulte o relatório completo.
+Para detalhes completos, consulte o relatório integral.
 
 ### Avaliação de Riscos e Impacto
 
-Ambas as vulnerabilidades encontradas foram classificadas como críticas, pois poderiam ter causado impactos financeiros severos. A primeira permitia que um usuário autenticado malicioso assumisse o controle da conta de pagamento Trippay de outra empresa. A segunda vulnerabilidade permitia que um usuário malicioso modificasse o valor do pagamento exigido para uma reserva.
+Ambas as vulnerabilidades encontradas foram classificadas como críticas, pois poderiam ter impactos financeiros severos. A primeira permitia que um usuário autenticado malicioso assumisse o controle da conta de pagamento Trippay de outra empresa. A segunda vulnerabilidade permitia que um usuário malicioso modificasse o valor do pagamento exigido para uma reserva.
 
 ### Esforços de Remediação e Mitigação
 

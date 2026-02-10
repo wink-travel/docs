@@ -5,8 +5,6 @@ sidebar:
   order: 6
 ---
 
-# Documento de Visão Geral da Segurança da Wink
-
 *Última Atualização: 7 de setembro de 2024*
 
 *Versão 1.0*
@@ -23,7 +21,7 @@ Domínios abrangidos:
 
 ## Frequência e Calendário dos Testes
 
-Os nossos testes de penetração são realizados anualmente, com testes adicionais agendados conforme necessário após atualizações significativas da aplicação ou da infraestrutura. Esta cadência regular de testes garante que nos mantenhamos à frente das ameaças em evolução e mantenhamos um ambiente seguro.
+Os nossos testes de penetração são realizados anualmente, com testes adicionais agendados conforme necessário após atualizações significativas na aplicação ou infraestrutura. Esta cadência regular de testes garante que nos mantenhamos à frente das ameaças em evolução e mantenhamos um ambiente seguro.
 
 ## Metodologias de Teste
 
@@ -31,7 +29,7 @@ Os nossos testes de penetração são abrangentes e cobrem uma ampla gama de asp
 
 * **OWASP Top 10:** Os nossos testes focam especificamente nos riscos de segurança mais críticos, como Injeção, Autenticação Quebrada e Cross-Site Scripting (XSS).  
 * **Testes Black Box e Grey Box:** Dependendo do âmbito, a nossa equipa utiliza estas metodologias para simular cenários de ataque externos e internos.  
-* **Testes Automatizados e Manuais:** Utilizamos o Burp Suite Pro, um conjunto líder de ferramentas de teste de segurança, para realizar varreduras automatizadas e apoiar técnicas manuais para identificar vulnerabilidades complexas e obter a melhor cobertura possível. Para identificação mais específica de vulnerabilidades, são usados alguns instrumentos especializados, por exemplo, SQLmap.
+* **Testes Automatizados e Manuais:** Utilizamos o Burp Suite Pro, um conjunto líder de ferramentas de teste de segurança, para realizar varreduras automatizadas e apoiar técnicas de teste manual para identificar vulnerabilidades complexas e obter a melhor cobertura possível. Para identificação mais específica de vulnerabilidades, são usados alguns instrumentos especializados, por exemplo, SQLmap.
 
 ## Resumo dos Resultados
 
@@ -48,7 +46,7 @@ Para resultados detalhados, consulte o relatório completo.
 
 ### Classificação de Riscos e Impacto
 
-Ambas as vulnerabilidades encontradas são classificadas como críticas, pois poderiam ter tido impactos financeiros severos. A primeira permitia a um utilizador autenticado malicioso controlar a conta de pagamento Trippay de outra empresa. A segunda vulnerabilidade permitia a um utilizador malicioso modificar o valor do pagamento exigido para uma reserva.
+Ambas as vulnerabilidades encontradas são classificadas como críticas, pois poderiam ter tido impactos financeiros graves. A primeira permitia a um utilizador autenticado malicioso controlar a conta de pagamento Trippay de outra empresa. A segunda vulnerabilidade permitia a um utilizador malicioso modificar o valor do pagamento exigido para uma reserva.
 
 ### Esforços de Remediação e Mitigação
 
@@ -71,6 +69,6 @@ Estamos dedicados a manter um ambiente de aplicação seguro para os nossos util
 
 ## Acesso ao Relatório e Atualizações
 
-Este documento será atualizado continuamente à medida que novos relatórios de testes de penetração forem emitidos. Para aceder ao relatório completo, por favor contacte-nos através do email abaixo. Atualizações futuras incluirão vulnerabilidades recém-identificadas, esforços de remediação e ajustes às nossas metodologias de teste.
+Este documento será atualizado continuamente à medida que novos relatórios de testes de penetração forem emitidos. Para aceder ao relatório completo, por favor contacte-nos através do email abaixo. Atualizações futuras incluirão vulnerabilidades recentemente identificadas, esforços de remediação e ajustes nas nossas metodologias de teste.
 
 Para mais informações, contacte security@wink.travel.

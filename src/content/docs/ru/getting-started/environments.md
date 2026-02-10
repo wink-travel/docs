@@ -10,7 +10,7 @@ sidebar:
 - Production — это наше стабильное окружение.
 - Staging — это наше окружение для сертификации и тестирования.
 
-Если вы интегратор, отель или туристический агент, который хочет подготовиться к сертификации или протестировать платформу Wink, создайте аккаунт в нашем staging-окружении, чтобы начать.
+Если вы интегратор, отель или туристическое агентство, желающие подготовиться к сертификации или протестировать платформу Wink, создайте аккаунт в нашем staging-окружении, чтобы начать работу.
 
 :::note
 Окружение staging доступно по запросу. Это означает, что оно уходит в спящий режим при отсутствии использования и автоматически включается при необходимости. Пожалуйста, будьте терпеливы, если вы его пробуждаете. Запуск всех серверов после первого подключения к одному из наших серверов или приложений занимает около минуты.
@@ -25,7 +25,7 @@ sidebar:
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
 | Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
-| Payment | https://staging-api.trippay.io | https://api.trippay.io | 
+<!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Приложения
 
@@ -34,8 +34,9 @@ sidebar:
 | Приложение | Staging | Production
 | ------- | ------- | ---------- |
 | Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Corporate | https://staging-group.wink.travel | https://group.wink.travel | 
+| Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
 | Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
+| My Account | https://staging-my.wink.travel | https://my.wink.travel | 
 | Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
 | Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |

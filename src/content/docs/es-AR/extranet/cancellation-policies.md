@@ -2,7 +2,7 @@
 title: Políticas de Cancelación
 description: Este artículo te muestra cómo gestionar las políticas de cancelación en Wink.
 sidebar:
-  order: 12
+  order: 7
 ---
 
 Para gestionar tus políticas de cancelación, haz clic en `Monetize > Cancellation policies` desde la barra de navegación principal.
