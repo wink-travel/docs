@@ -5,8 +5,6 @@ sidebar:
   order: 5
 ---
 
-# Privacy Policy
-
 Winkfluence, operating under the name Wink (the “Company”),  would like to inform you who contacts the Company that it is necessary to collect, compile and use your personal data for the Company’s service in accordance with this Privacy Policy. By contacting and disclosing your personal data to the Company for the purposes of communication, coordination, and/or provision of the Company’s services to you, it deems that you agree and accept to be bound by and comply with this Privacy Policy.
 
 Personal data being processed, the Company may obtain your personal data from various channels as follows:
