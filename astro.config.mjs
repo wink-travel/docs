@@ -12,6 +12,9 @@ import markdoc from '@astrojs/markdoc';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://wink.travel',
+  image: {
+    domains: ['res.cloudinary.com']
+  },
   integrations: [starlight({
     head: [
       {
