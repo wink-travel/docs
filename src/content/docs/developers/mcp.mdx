@@ -1,6 +1,6 @@
 ---
 title: MCP Server
-description: Quickly connect AI agents to Wink documentation & SDKs via the hosted MCP server.
+description: Quickly connect AI agents to Wink documentation and live OpenAPI specs via the hosted MCP server.
 sidebar:
   order: 10
 ---
@@ -16,8 +16,8 @@ https://docs.mcp.wink.travel/mcp
 
 Point compatible AI clients (VS Code, Cursor, others implementing MCP HTTP transport) at this endpoint to let them:
 - Browse product & platform docs (`wink://docs/...`)
-- Discover SDKs & drill into API classes / models (`wink://sdk/...` & `wink://sdk/.../docs`)
-- Perform lightweight semantic / keyword search over docs & SDK summaries
+- Browse live OpenAPI specs and operation docs (`wink://api/...`)
+- Perform lightweight semantic / keyword search over docs and live APIs
 
 ## Transport
 Use the primary streamable HTTP endpoint:
@@ -30,6 +30,26 @@ If your client only supports SSE, use:
 
 ```
 https://docs.mcp.wink.travel/sse
+```
+
+### Claude Code
+Official docs: [Connect Claude Code to tools via MCP](https://code.claude.com/docs/en/mcp)
+
+Anthropic recommends the remote HTTP transport for cloud-hosted MCP servers:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+Inside Claude Code, run `/mcp` to inspect server status. If you want to share the server with the whole repo, add `--scope project` so Claude Code writes the config to `.mcp.json`.
+
+### Codex
+Official docs: [Docs MCP quickstart for Codex](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI documents MCP setup through the Codex CLI, and notes that the configuration is shared with the IDE extension:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
 ```
 
 ### Cursor
@@ -61,7 +81,7 @@ Minimal remote config (user or workspace `mcp.json`):
 
 Tips:
 - Use Command Palette: “MCP: List Servers” to confirm connection & browse tools.
-- Tools picker lets you enable/disable `sdk_search` and `docs_search`.
+- Tools picker lets you enable/disable `api_search` and `docs_search`.
 - Add context: Chat view → Add Context → MCP Resources to attach docs pages.
 
 ## Core Resource URIs
@@ -70,36 +90,32 @@ Tips:
 |-----|-------------|
 | `wink://docs` | Documentation index (grouped by category) |
 | `wink://docs/{path}` | Specific documentation article (Markdown / MDX) |
-| `wink://sdk` | SDK overview (each SDK + doc counts) |
-| `wink://sdk/{sdkPath}` | SDK README / module docs folder / specific module doc |
-
-### Module Docs
-Opening a SDK docs folder (e.g. `wink://sdk/python/wink-sdk-booking/docs`) returns grouped:
-- **API Classes** (method count + sample method names)
-- **Models & Types** (data structures used by those APIs)
+| `wink://api` | Live OpenAPI catalog discovered from Wink's swagger config |
+| `wink://api/{apiName}` | Compact API summary with auth, tags, headers, and sample operations |
+| `wink://api/{apiName}/operations` | Full operation listing grouped by tag |
+| `wink://api/{apiName}/operation/{key}` | Individual operation detail (params, request body, responses) |
+| `wink://api/{apiName}/schema/{schemaName}` | Resolved component schema with nested fields, types, and examples |
+| `wink://api/{apiName}/operation/{key}/request` | Request-focused view with required inputs and minimal example payload |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Response-focused view for a specific status code |
+| `wink://api/{apiName}/operation/{key}/recipe` | Task-oriented flow for calling that operation correctly |
 
 ## Search Tools (Quick Reference)
 | Tool | Purpose | Typical Query Examples |
 |------|---------|-----------------------|
-| `sdk_search` | Find which SDK / API class to use | `cancel booking`, `list properties`, `affiliate inventory` |
+| `api_search` | Find the live API or operation to integrate against | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
 | `docs_search` | Find conceptual docs / guides | `authentication`, `webhooks`, `wordPress` |
 
 Leave `query` empty to receive suggestions. Every result includes the MCP URI you can open.
+For operation hits, `api_search` also returns linked request, response, schema, and recipe URIs so agents can jump directly into the most useful subresource.
 
 ## Typical Usage Pattern
-1. Run `sdk_search` with your intent (e.g. *"list properties"*).
-2. Open the returned SDK README or its `docs_uri` to inspect APIs / models.
-3. Use `docs_search` for supporting concepts (authentication, webhooks).
+1. Run `api_search` with your intent (e.g. *"create affiliate"* or *"payment receipt"*).
+2. Open the returned `wink://api/...` URI, or follow its linked `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris`, and `recipe_uri` fields.
+3. Use `docs_search` for supporting concepts (authentication, webhooks, workflows).
 
 ## Notes
 - Each returned URI can be opened by the agent for full content.
+- The `wink://api` tree is live and follows the current upstream OpenAPI catalog instead of a generated repo index.
 - Suggestions appear automatically when queries are empty.
-
-## Currently Supported SDKs
-- Wink Python SDKs
-
-## Roadmap (High-Level)
-- Additional language SDKs (Java, JS/TS)
-- Add TripPay SDKs
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink on GitHub</LinkButton>
