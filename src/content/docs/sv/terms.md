@@ -3,9 +3,7 @@ title: Villkor
 description: Villkor för alla Wink-användare och enheter.
 ---
 
-# Villkor
-
-Varje portal kan ha olika villkor. Gå till avsnittet nedan som gäller för dig och leta efter underrubriken Villkor för tjänster och betalningsvillkor.
+Varje portal kan ha olika villkor. Gå till avsnittet nedan som gäller för dig och leta efter underavsnittet som heter Villkor för tjänster och betalningsvillkor.
 
 ## Affiliateportal
 
@@ -34,7 +32,7 @@ Lär dig mer om Wink Extranet
 
 ## Resebyråportal
 
-För resebyråer som vill ta reda på vad Wink kan erbjuda dem i form av skräddarsydda priser, erbjudanden och inventarier, direkt från leverantörer.
+För resebyråer som vill ta reda på vad Wink kan erbjuda dem i form av skräddarsydda priser, erbjudanden och inventarier direkt från leverantörer.
 
 <LinkButton href="/sv/travel-agent/what-is-agent">
 Lär dig mer om Wink Agent

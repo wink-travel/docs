@@ -1,0 +1,66 @@
+---
+title: Integrasi Webhook
+description: Panduan ini menunjukkan kepada pengembang cara mengatur webhook untuk menerima notifikasi waktu nyata untuk pemesanan, pembayaran, dan acara lainnya.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhook memungkinkan sistem Anda menerima notifikasi waktu nyata saat terjadi acara di akun Wink Anda — pemesanan baru, pembatalan, pembaruan pembayaran, dan lainnya. Panduan ini memandu Anda melalui pengaturan dan praktik terbaik.
+
+## Audiens
+
+Panduan ini ditujukan untuk pengembang yang mengintegrasikan Wink dengan sistem eksternal seperti sistem manajemen properti (PMS), manajer saluran, CRM, atau dasbor kustom.
+
+## Cara kerja webhook
+
+1. Anda mendaftarkan URL webhook di Wink.
+2. Saat terjadi sebuah acara (misalnya, pemesanan baru), Wink mengirimkan HTTP POST ke URL Anda.
+3. Server Anda memproses payload dan merespons dengan `200 OK`.
+
+## Mengatur webhook
+
+<Steps>
+1. Masuk ke akun Anda (Extranet, Studio, atau TripPay — semuanya mendukung webhook).
+2. Arahkan ke `Applications` lalu `Webhooks`. Lihat [Webhooks](/id/my-account/webhooks).
+3. Klik `Create webhook`.
+4. Masukkan **nama** (misalnya, "Sinkronisasi Pemesanan PMS").
+5. Masukkan **URL webhook** Anda — endpoint HTTPS di server Anda.
+6. **Pilih acara** — Pilih acara spesifik untuk berlangganan, atau biarkan kosong untuk menerima semua acara.
+7. Aktifkan **Enabled**.
+8. Klik `Save`.
+</Steps>
+
+## Jenis acara
+
+Wink mendukung berbagai jenis acara. Acara umum meliputi:
+
+- **Pemesanan dibuat** — Pemesanan baru telah dikonfirmasi.
+- **Pemesanan dibatalkan** — Pemesanan telah dibatalkan.
+- **Pembayaran selesai** — Pembayaran telah diproses.
+- **Pemesanan diperbarui** — Detail pemesanan telah berubah.
+
+:::tip
+Mulailah dengan berlangganan semua acara. Setelah Anda memahami payload, Anda dapat mempersempit hanya ke acara yang dibutuhkan sistem Anda.
+:::
+
+## Praktik terbaik
+
+- **Gunakan HTTPS** — Wink hanya mengirim payload ke endpoint HTTPS.
+- **Respon cepat** — Kembalikan `200 OK` segera setelah menerima payload. Lakukan pemrosesan berat secara asinkron.
+- **Idempoten** — Handler Anda harus idempoten. Wink mungkin mencoba ulang pengiriman jika tidak menerima respons `200`.
+- **Validasi sumber** — Verifikasi bahwa permintaan masuk berasal dari Wink sebelum memproses.
+- **Logging** — Catat setiap payload webhook yang Anda terima. Ini memudahkan debugging masalah integrasi.
+
+## Menjeda dan menghapus
+
+Anda dapat **menonaktifkan** webhook tanpa menghapusnya. Ini menjeda pengiriman sehingga Anda dapat memecahkan masalah tanpa kehilangan konfigurasi. Saat siap, aktifkan kembali.
+
+Menghapus webhook akan menghapusnya secara permanen. Integrasi yang bergantung pada webhook tersebut akan berhenti menerima notifikasi.
+
+## Bacaan lebih lanjut
+
+- [Webhooks](/id/my-account/webhooks) — Referensi lengkap untuk manajemen webhook.
+- [Applications](/id/my-account/applications) — Kelola kredensial API Anda.
+- [Developers > APIs](/id/developers/apis) — Dokumentasi API lengkap.

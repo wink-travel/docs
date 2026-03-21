@@ -5,9 +5,7 @@ sidebar:
   order: 5
 ---
 
-# Pravila privatnosti
-
-Winkfluence, koja posluje pod imenom Wink (u daljnjem tekstu „Društvo“), želi vas obavijestiti kao osobu koja kontaktira Društvo da je potrebno prikupljati, sastavljati i koristiti vaše osobne podatke za usluge Društva u skladu s ovim Pravilima privatnosti. Kontaktiranjem i otkrivanjem vaših osobnih podataka Društvu u svrhu komunikacije, koordinacije i/ili pružanja usluga Društva vama, smatra se da pristajete i prihvaćate biti vezani i pridržavati se ovih Pravila privatnosti.
+Winkfluence, koja posluje pod imenom Wink (u daljnjem tekstu „Društvo“), želi vas obavijestiti kao osobu koja kontaktira Društvo da je potrebno prikupljati, sastavljati i koristiti vaše osobne podatke za usluge Društva u skladu s ovim Pravilima privatnosti. Kontaktiranjem i otkrivanjem vaših osobnih podataka Društvu u svrhu komunikacije, koordinacije i/ili pružanja usluga Društva vama, smatra se da pristajete i prihvaćate da budete vezani i da se pridržavate ovih Pravila privatnosti.
 
 Osobne podatke koji se obrađuju, Društvo može dobiti iz različitih kanala kako slijedi:
 
@@ -19,19 +17,19 @@ Osobne podatke koji se obrađuju, Društvo može dobiti iz različitih kanala ka
 
 Osobni podaci koje je Društvo potrebno prikupiti, sastaviti, koristiti i obrađivati prema ovim Pravilima privatnosti su sljedeći:
 
-(1) Vaše puno ime, uključujući povezane informacije ili informacije vašeg predstavnika (u slučaju da nas kontaktirate u ime pravne osobe) koje mogu uključivati vaš identifikacijski dokument.
+(1) Vaše puno ime, uključujući povezane informacije ili informacije o vašem predstavniku (u slučaju da nas kontaktirate u ime pravne osobe) što može uključivati vaš identifikacijski dokument.
 
 (2) Kontaktne informacije kao što su telefonski broj, e-mail ili informacije o računu na društvenim mrežama.
 
-(3) Ostali osobni podaci koje možete pružiti Društvu tijekom komunikacije, poput informacija o upitima, informacijama od interesa ili bilo kojih drugih osobno prepoznatljivih podataka koje izravno pružate Društvu putem različitih komunikacijskih kanala.
+(3) Ostali osobni podaci koje nam možete pružiti tijekom komunikacije, poput informacija o upitima, informacijama od interesa ili bilo kojih drugih osobno prepoznatljivih podataka koje nam izravno dostavite putem različitih komunikacijskih kanala.
 
-(4) U slučaju komunikacije putem web stranice, mogu uključivati vaše tehničke informacije kao što su IP adresa, kolačići, uključujući informacije o vašem ponašanju pri pregledavanju.
+(4) U slučaju komunikacije putem web stranice, mogu uključivati vaše tehničke informacije poput IP adrese, kolačića, uključujući informacije o vašem ponašanju pri pregledavanju.
 
-Svrha obrade i korištenja osobnih podataka, Društvu je potrebno prikupiti, sastaviti i koristiti osobne podatke kandidata za posao u sljedeće svrhe:
+Svrha obrade i korištenja osobnih podataka, Društvu je potrebno prikupiti, sastaviti i koristiti osobne podatke podnositelja zahtjeva za posao u sljedeće svrhe:
 
 (1) Za upravljanje komunikacijom koju ste ostvarili s Društvom, poput odgovaranja na pitanja, pružanja relevantnih informacija prema zahtjevu, upravljanja pritužbama ili odgovaranja na komentare koje izravno upućujete Društvu putem različitih komunikacijskih kanala, uključujući kontinuiranu koordinaciju, izvršenje ugovora o usluzi i/ili ostvarivanje prava i obveza na koje se Društvo i vi možete dogovoriti;
 
-(2) Za izvršenje zakonskih obveza kojima Društvo može biti podložno pod određenim uvjetima. To može uključivati, ali nije ograničeno na, obavljanje zadataka vezanih uz pripremu računovodstvene dokumentacije i poreza u vezi s bilo kojim uslugama koje Društvo pruža vama;
+(2) Za izvršavanje zakonskih obveza kojima Društvo može biti podložno pod određenim uvjetima. To može uključivati, ali nije ograničeno na, obavljanje zadataka vezanih uz pripremu računovodstvene dokumentacije i poreza u vezi s bilo kojim uslugama koje Društvo pruža vama;
 
 (3) U svrhu izgradnje i poboljšanja poslovnih odnosa, uključujući unapređenje usluge koju Društvo pruža za vašu korist, pri čemu Društvo može prikupljati i/ili koristiti vaše osobne podatke u svrhu kontrole, osiguranja usluge, analize upravljanja i rješavanja poslovnih pitanja, uključujući, ali ne ograničavajući se na, obuku zaposlenika i planiranje budućih poboljšanja usluge;
 
@@ -39,23 +37,23 @@ Svrha obrade i korištenja osobnih podataka, Društvu je potrebno prikupiti, sas
 
 (5) Uz izričitu suglasnost danu Društvu, poput marketinških i newsletter komunikacija, Društvo može obrađivati osobne podatke u svrhe definirane u toj suglasnosti.
 
-Razdoblje čuvanja osobnih podataka, kako bi se izvršile svrhe opisane gore, Društvu je potrebno prikupljati, sastavljati i obrađivati vaše osobne podatke prema sljedećim razdobljima:
+Razdoblje čuvanja osobnih podataka, kako bi se ispunile gore navedene svrhe, Društvo je potrebno prikupljati, sastavljati i obrađivati vaše osobne podatke u sljedećim razdobljima:
 
-(1) Za obradu osobnih podataka u svrhu pružanja usluga, izvršenja ugovora i/ili ostvarivanja prava i obveza prema ugovoru, Društvu je potrebno obrađivati vaše osobne podatke sve dok Društvo ima obvezu pružati vam usluge;
+(1) Za obradu osobnih podataka u svrhu pružanja usluga, izvršenja ugovora i/ili ostvarivanja prava i obveza prema ugovoru, Društvo je potrebno obrađivati vaše osobne podatke sve dok Društvo ima obvezu pružati vam usluge;
 
-(2) Za obradu osobnih podataka u svrhu izvršenja obveza prema važećim zakonima, Društvu je potrebno obrađivati vaše osobne podatke tijekom razdoblja propisanog važećim zakonima;
+(2) Za obradu osobnih podataka u svrhu izvršavanja obveza prema važećim zakonima, Društvo je potrebno obrađivati vaše osobne podatke u razdoblju propisanom važećim zakonima;
 
 (3) Za obradu osobnih podataka u svrhu izgradnje i poboljšanja poslovnih odnosa i/ili poboljšanja usluge, Društvo zadržava pravo čuvanja tih osobnih podataka u mjeri u kojoj Društvo ima poslovnu potrebu. Društvo jamči da čuvanje osobnih podataka neće nerazumno utjecati na prava ispitanika podataka;
 
 (4) Za obradu osobnih podataka u svrhu zaštite i borbe za legitimna prava Društva, Društvo ima potrebu čuvati takve osobne podatke u skladu s rokovima propisanim važećim zakonima; te
 
-(5) U slučaju da date suglasnost Društvu za obradu vaših osobnih podataka za određene svrhe, Društvo će obrađivati vaše osobne podatke dok ne povučete tu suglasnost.
+(5) U slučaju da nam date suglasnost za obradu vaših osobnih podataka za određene svrhe, Društvo će obrađivati vaše osobne podatke dok ne povučete tu suglasnost.
 
 Otkrivanje osobnih podataka, općenito, vaši osobni podaci neće biti otkriveni, osim u slučaju da Društvo mora otkriti sljedećim osobama:
 
 (1) Vanjskim pružateljima usluga Društva angažiranim za pružanje podrške Društvu u pružanju usluga vama, uključujući konzultante Društva. Takvo otkrivanje osobnih podataka tim trećim stranama vrši se u skladu sa svrhom i samo na osnovi potrebe za znanjem; ili
 
-(2) Vladinim, regulatornim tijelima ili sudovima kojima Društvo može biti podložno nalogu, zakonu ili presudi za otkrivanje osobnih podataka.
+(2) Vladinim, regulatornim tijelima ili sudovima kojima je Društvo podložno nalogu, zakonu ili presudi za otkrivanje osobnih podataka.
 
 Društvo se obvezuje provoditi odgovarajuće mjere sigurnosti osobnih podataka kako bi spriječilo bilo kakav neovlašteni i nezakoniti pristup, izmjenu, dopunu ili otkrivanje. Društvo se obvezuje redovito pregledavati te mjere kako bi osiguralo njihovu usklađenost sa standardima i važećim zakonima.
 

@@ -1,6 +1,6 @@
 ---
 title: MCP Server
-description: Rýchlo pripojte AI agentov k dokumentácii Wink a SDK cez hosťovaný MCP server.
+description: Rýchlo pripojte AI agentov k dokumentácii Wink a živým OpenAPI špecifikáciám cez hostovaný MCP server.
 sidebar:
   order: 10
 ---
@@ -8,16 +8,16 @@ sidebar:
 import { LinkButton } from '@astrojs/starlight/components';
 
 ## Prehľad
-Hosťovaný Wink MCP server je dostupný na:
+Hostovaný Wink MCP server je dostupný na:
 
 ```
 https://docs.mcp.wink.travel/mcp
 ```
 
 Nasmerujte kompatibilných AI klientov (VS Code, Cursor, ďalšie implementujúce MCP HTTP transport) na tento endpoint, aby mohli:
-- Prehliadať dokumentáciu produktov a platformy (`wink://docs/...`)
-- Objavovať SDK a prehľadávať API triedy / modely (`wink://sdk/...` & `wink://sdk/.../docs`)
-- Vykonávať ľahké sémantické / kľúčové vyhľadávanie v dokumentácii a súhrnoch SDK
+- Prezerať dokumentáciu produktov a platformy (`wink://docs/...`)
+- Prezerať živé OpenAPI špecifikácie a dokumentáciu operácií (`wink://api/...`)
+- Vykonávať ľahké sémantické / kľúčové vyhľadávanie v dokumentácii a živých API
 
 ## Transport
 Použite primárny streamovateľný HTTP endpoint:
@@ -30,6 +30,26 @@ Ak váš klient podporuje iba SSE, použite:
 
 ```
 https://docs.mcp.wink.travel/sse
+```
+
+### Claude Code
+Oficiálna dokumentácia: [Pripojenie Claude Code k nástrojom cez MCP](https://code.claude.com/docs/en/mcp)
+
+Anthropic odporúča vzdialený HTTP transport pre cloud-hostované MCP servery:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+V Claude Code spustite `/mcp` pre kontrolu stavu servera. Ak chcete zdieľať server s celým repozitárom, pridajte `--scope project`, aby Claude Code zapísal konfiguráciu do `.mcp.json`.
+
+### Codex
+Oficiálna dokumentácia: [Docs MCP quickstart pre Codex](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI dokumentuje nastavenie MCP cez Codex CLI a poznamenáva, že konfigurácia je zdieľaná s IDE rozšírením:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
 ```
 
 ### Cursor
@@ -61,45 +81,41 @@ Minimálna vzdialená konfigurácia (používateľský alebo pracovný priestor 
 
 Tipy:
 - Použite Command Palette: „MCP: List Servers“ na potvrdenie pripojenia a prehliadanie nástrojov.
-- Výber nástrojov umožňuje zapnúť/vypnúť `sdk_search` a `docs_search`.
+- Výber nástrojov umožňuje zapnúť/vypnúť `api_search` a `docs_search`.
 - Pridajte kontext: Zobrazenie chatu → Pridať kontext → MCP Resources na pripojenie stránok dokumentácie.
 
 ## Základné URI zdrojov
 
 | URI | Popis |
-|-----|-------|
+|-----|-------------|
 | `wink://docs` | Index dokumentácie (zoskupený podľa kategórie) |
 | `wink://docs/{path}` | Konkrétny článok dokumentácie (Markdown / MDX) |
-| `wink://sdk` | Prehľad SDK (každé SDK + počet dokumentov) |
-| `wink://sdk/{sdkPath}` | SDK README / priečinok s dokumentáciou modulu / konkrétny dokument modulu |
+| `wink://api` | Živý OpenAPI katalóg získaný z Wink swagger konfigurácie |
+| `wink://api/{apiName}` | Kompaktné zhrnutie API s autentifikáciou, tagmi, hlavičkami a ukážkovými operáciami |
+| `wink://api/{apiName}/operations` | Kompletný zoznam operácií zoskupený podľa tagu |
+| `wink://api/{apiName}/operation/{key}` | Detail jednotlivých operácií (parametre, telo požiadavky, odpovede) |
+| `wink://api/{apiName}/schema/{schemaName}` | Riešená schéma komponentu s vnorenými poľami, typmi a príkladmi |
+| `wink://api/{apiName}/operation/{key}/request` | Pohľad zameraný na požiadavku s povinnými vstupmi a minimálnym príkladom payloadu |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Pohľad zameraný na odpoveď pre konkrétny stavový kód |
+| `wink://api/{apiName}/operation/{key}/recipe` | Úlohový tok pre správne volanie danej operácie |
 
-### Dokumentácia modulu
-Otváranie priečinka dokumentácie SDK (napr. `wink://sdk/python/wink-sdk-booking/docs`) vráti zoskupené:
-- **API triedy** (počet metód + ukážkové názvy metód)
-- **Modely a typy** (dátové štruktúry používané týmito API)
-
-## Nástroje na vyhľadávanie (rýchla referencia)
+## Nástroje vyhľadávania (rýchla referencia)
 | Nástroj | Účel | Typické príklady dotazov |
-|---------|-------|--------------------------|
-| `sdk_search` | Nájsť, ktoré SDK / API triedy použiť | `cancel booking`, `list properties`, `affiliate inventory` |
+|------|---------|-----------------------|
+| `api_search` | Nájsť živé API alebo operáciu na integráciu | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
 | `docs_search` | Nájsť konceptuálnu dokumentáciu / návody | `authentication`, `webhooks`, `wordPress` |
 
-Nechajte `query` prázdne pre získanie návrhov. Každý výsledok obsahuje MCP URI, ktoré môžete otvoriť.
+Nechajte `query` prázdne pre zobrazenie návrhov. Každý výsledok obsahuje MCP URI, ktoré môžete otvoriť.
+Pri nájdení operácií `api_search` tiež vracia prepojené URI požiadaviek, odpovedí, schém a receptov, aby agenti mohli priamo prejsť na najpoužívanejšie podzdroje.
 
 ## Typický spôsob použitia
-1. Spustite `sdk_search` s vaším zámerom (napr. *"list properties"*).
-2. Otvorte vrátený SDK README alebo jeho `docs_uri` na preskúmanie API / modelov.
-3. Použite `docs_search` pre podporné koncepty (autentifikácia, webhooks).
+1. Spustite `api_search` s vaším zámerom (napr. *"create affiliate"* alebo *"payment receipt"*).
+2. Otvorte vrátené `wink://api/...` URI alebo nasledujte jeho prepojené polia `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` a `recipe_uri`.
+3. Použite `docs_search` pre podporné koncepty (autentifikácia, webhooks, workflowy).
 
 ## Poznámky
 - Každé vrátené URI môže agent otvoriť pre plný obsah.
+- Strom `wink://api` je živý a sleduje aktuálny upstream OpenAPI katalóg namiesto generovaného indexu repozitára.
 - Návrhy sa zobrazujú automaticky, keď sú dotazy prázdne.
-
-## Aktuálne podporované SDK
-- Wink Python SDKs
-
-## Plán vývoja (vysoká úroveň)
-- Ďalšie jazykové SDK (Java, JS/TS)
-- Pridať TripPay SDKs
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink na GitHub</LinkButton>

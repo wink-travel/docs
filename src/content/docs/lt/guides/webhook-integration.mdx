@@ -1,0 +1,66 @@
+---
+title: Webhook integracija
+description: Šiame vadove parodyta, kaip kūrėjai gali nustatyti webhook'us, kad gautų realaus laiko pranešimus apie užsakymus, mokėjimus ir kitus įvykius.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhook'ai leidžia jūsų sistemoms gauti realaus laiko pranešimus, kai jūsų Wink paskyroje įvyksta įvykiai — nauji užsakymai, atšaukimai, mokėjimų atnaujinimai ir daugiau. Šis vadovas padės jums juos nustatyti ir pateiks geriausias praktikas.
+
+## Auditorija
+
+Šis vadovas skirtas kūrėjams, integruojantiems Wink su išorinėmis sistemomis, tokiomis kaip turto valdymo sistemos (PMS), kanalų valdytojai, CRM ar individualios valdymo panelės.
+
+## Kaip veikia webhook'ai
+
+1. Užregistruojate webhook URL Wink sistemoje.
+2. Kai įvyksta įvykis (pvz., naujas užsakymas), Wink siunčia HTTP POST užklausą į jūsų URL.
+3. Jūsų serveris apdoroja duomenis ir atsako su `200 OK`.
+
+## Webhook'o nustatymas
+
+<Steps>
+1. Prisijunkite prie savo paskyros (Extranet, Studio arba TripPay — visi palaiko webhook'us).
+2. Eikite į `Applications`, tada `Webhooks`. Žr. [Webhooks](/lt/my-account/webhooks).
+3. Spustelėkite `Create webhook`.
+4. Įveskite **pavadinimą** (pvz., „PMS užsakymų sinchronizavimas“).
+5. Įveskite savo **webhook URL** — HTTPS galinį tašką jūsų serveryje.
+6. **Pasirinkite įvykius** — Pasirinkite konkrečius įvykius, kuriuos norite prenumeruoti, arba palikite tuščią, kad gautumėte visus įvykius.
+7. Įjunkite **Enabled**.
+8. Spustelėkite `Save`.
+</Steps>
+
+## Įvykių tipai
+
+Wink palaiko įvairius įvykių tipus. Dažniausi įvykiai:
+
+- **Užsakymas sukurtas** — Patvirtintas naujas užsakymas.
+- **Užsakymas atšauktas** — Užsakymas atšauktas.
+- **Mokėjimas atliktas** — Mokėjimas apdorotas.
+- **Užsakymas atnaujintas** — Užsakymo duomenys pasikeitė.
+
+:::tip
+Pradėkite prenumeruoti visus įvykius. Kai suprasite duomenų struktūrą, galėsite apriboti prenumeratą tik iki tų įvykių, kurių jūsų sistema tikrai reikia.
+:::
+
+## Geriausios praktikos
+
+- **Naudokite HTTPS** — Wink siunčia duomenis tik į HTTPS galinius taškus.
+- **Atsakykite greitai** — Grąžinkite `200 OK` iš karto gavę duomenis. Sunkesnį apdorojimą atlikite asinchroniškai.
+- **Idempotentiškumas** — Jūsų apdorojimo funkcija turėtų būti idempotentiška. Wink gali bandyti pakartotinai siųsti duomenis, jei negauna `200` atsakymo.
+- **Patikrinkite šaltinį** — Prieš apdorojant, įsitikinkite, kad užklausos ateina iš Wink.
+- **Registravimas** — Fiksuokite kiekvieną gautą webhook duomenų paketą. Tai labai palengvina integracijos klaidų paiešką.
+
+## Sustabdymas ir ištrynimas
+
+Galite **išjungti** webhook'ą, jo neištrindami. Tai sustabdo duomenų siuntimą, kad galėtumėte spręsti problemas neprarandant nustatymų. Kai būsite pasiruošę, vėl įjunkite.
+
+Webhook'o ištrynimas jį pašalina visam laikui. Bet kuri integracija, priklausanti nuo to webhook'o, nustos gauti pranešimus.
+
+## Tolimesnė informacija
+
+- [Webhooks](/lt/my-account/webhooks) — Pilnas webhook valdymo vadovas.
+- [Applications](/lt/my-account/applications) — Valdykite savo API kredencialus.
+- [Developers > APIs](/lt/developers/apis) — Pilna API dokumentacija.

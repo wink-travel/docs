@@ -1,6 +1,6 @@
 ---
 title: MCP Serveris
-description: Ātri savienojiet AI aģentus ar Wink dokumentāciju un SDK, izmantojot mitināto MCP serveri.
+description: Ātri savienojiet AI aģentus ar Wink dokumentāciju un tiešraides OpenAPI specifikācijām, izmantojot mitināto MCP serveri.
 sidebar:
   order: 10
 ---
@@ -16,11 +16,11 @@ https://docs.mcp.wink.travel/mcp
 
 Norādiet saderīgus AI klientus (VS Code, Cursor, citi, kas īsteno MCP HTTP transportu) uz šo galapunktu, lai tie varētu:
 - Pārlūkot produktu un platformas dokumentāciju (`wink://docs/...`)
-- Atklāt SDK un izpētīt API klases / modeļus (`wink://sdk/...` un `wink://sdk/.../docs`)
-- Veikt vieglu semantisko / atslēgvārdu meklēšanu dokumentācijā un SDK kopsavilkumos
+- Pārlūkot tiešraides OpenAPI specifikācijas un darbību dokumentus (`wink://api/...`)
+- Veikt vieglu semantisko / atslēgvārdu meklēšanu dokumentos un tiešraides API
 
 ## Transports
-Izmantojiet galveno straumējamo HTTP galapunktu:
+Izmantojiet primāro straumējamo HTTP galapunktu:
 
 ```
 https://docs.mcp.wink.travel/mcp
@@ -32,9 +32,29 @@ Ja jūsu klients atbalsta tikai SSE, izmantojiet:
 https://docs.mcp.wink.travel/sse
 ```
 
+### Claude Code
+Oficiālā dokumentācija: [Savienojiet Claude Code ar rīkiem, izmantojot MCP](https://code.claude.com/docs/en/mcp)
+
+Anthropic iesaka attālināto HTTP transportu mākoņos mitinātiem MCP serveriem:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+Claude Code iekšienē palaidiet `/mcp`, lai pārbaudītu servera statusu. Ja vēlaties koplietot serveri ar visu repozitoriju, pievienojiet `--scope project`, lai Claude Code ierakstītu konfigurāciju `.mcp.json`.
+
+### Codex
+Oficiālā dokumentācija: [Docs MCP ātrā sākšana Codex](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI dokumentē MCP iestatīšanu caur Codex CLI un norāda, ka konfigurācija tiek koplietota ar IDE paplašinājumu:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
+```
+
 ### Cursor
 Cursor MCP dokumentācija: https://cursor.com/docs/context/mcp
-Iestatīšana: Pievienojiet attālo serveri, izmantojot MCP iestatījumus.
+Iestatīšana: Pievienojiet attālināto serveri, izmantojot MCP iestatījumus.
 ```json
 {
   "mcpServers": {
@@ -47,7 +67,7 @@ Iestatīšana: Pievienojiet attālo serveri, izmantojot MCP iestatījumus.
 
 ### VS Code
 Oficiālā dokumentācija: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Minimāla attālā konfigurācija (lietotāja vai darba vietas `mcp.json`):
+Minimāla attālinātā konfigurācija (lietotāja vai darba vietas `mcp.json`):
 ```json
 {
   "servers": {
@@ -61,7 +81,7 @@ Minimāla attālā konfigurācija (lietotāja vai darba vietas `mcp.json`):
 
 Padomi:
 - Izmantojiet Komandu paleti: “MCP: List Servers”, lai apstiprinātu savienojumu un pārlūkotu rīkus.
-- Rīku izvēlne ļauj iespējot/atspējot `sdk_search` un `docs_search`.
+- Rīku izvēlne ļauj iespējot/atspējot `api_search` un `docs_search`.
 - Pievienojiet kontekstu: Čata skats → Pievienot kontekstu → MCP resursi, lai pievienotu dokumentu lapas.
 
 ## Galvenie resursu URI
@@ -70,36 +90,32 @@ Padomi:
 |-----|----------|
 | `wink://docs` | Dokumentācijas indekss (grupēts pēc kategorijas) |
 | `wink://docs/{path}` | Konkrēts dokumentācijas raksts (Markdown / MDX) |
-| `wink://sdk` | SDK pārskats (katrs SDK + dokumentācija) |
-| `wink://sdk/{sdkPath}` | SDK README / moduļa dokumentu mape / konkrēts moduļa dokuments |
+| `wink://api` | Tiešraides OpenAPI katalogs, atklāts no Wink swagger konfigurācijas |
+| `wink://api/{apiName}` | Kompakts API kopsavilkums ar autentifikāciju, tagiem, galvenēm un paraugu darbībām |
+| `wink://api/{apiName}/operations` | Pilns darbību saraksts, grupēts pēc taga |
+| `wink://api/{apiName}/operation/{key}` | Atsevišķas darbības detaļas (parametri, pieprasījuma saturs, atbildes) |
+| `wink://api/{apiName}/schema/{schemaName}` | Atrisināta komponentes shēma ar iegultiem laukiem, tipiem un piemēriem |
+| `wink://api/{apiName}/operation/{key}/request` | Pieprasījuma skats ar nepieciešamajiem ievades datiem un minimālu piemēru |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Atbildes skats konkrētam statusa kodam |
+| `wink://api/{apiName}/operation/{key}/recipe` | Uzdevuma orientēts plūsmas apraksts, kā pareizi izsaukt šo darbību |
 
-### Moduļu dokumentācija
-Atverot SDK dokumentu mapi (piemēram, `wink://sdk/python/wink-sdk-booking/docs`), tiek atgriezts grupēts saturs:
-- **API klases** (metožu skaits + piemēru metožu nosaukumi)
-- **Modeļi un tipi** (datu struktūras, ko izmanto šie API)
-
-## Meklēšanas rīki (ātra atsauce)
+## Meklēšanas rīki (ātrā atsauce)
 | Rīks | Mērķis | Tipiski vaicājumu piemēri |
-|------|--------|--------------------------|
-| `sdk_search` | Atrod, kuru SDK / API klasi izmantot | `cancel booking`, `list properties`, `affiliate inventory` |
+|------|---------|-------------------------|
+| `api_search` | Atrod tiešraides API vai darbību integrācijai | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
 | `docs_search` | Atrod konceptuālos dokumentus / ceļvežus | `authentication`, `webhooks`, `wordPress` |
 
 Atstājiet `query` tukšu, lai saņemtu ieteikumus. Katrs rezultāts ietver MCP URI, ko var atvērt.
+Darbību rezultātiem `api_search` arī atgriež saistītos pieprasījuma, atbildes, shēmas un receptes URI, lai aģenti varētu tieši pāriet uz visnoderīgāko apakšresursu.
 
 ## Tipiska lietošanas kārtība
-1. Izpildiet `sdk_search` ar savu nodomu (piemēram, *"list properties"*).
-2. Atveriet saņemto SDK README vai tā `docs_uri`, lai izpētītu API / modeļus.
-3. Izmantojiet `docs_search`, lai atrastu atbalstošos konceptus (autentifikācija, webhooks).
+1. Izpildiet `api_search` ar savu nodomu (piemēram, *"create affiliate"* vai *"payment receipt"*).
+2. Atveriet atgriezto `wink://api/...` URI vai sekojiet tā saistītajiem `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` un `recipe_uri` laukiem.
+3. Izmantojiet `docs_search`, lai atrastu atbalstošos konceptus (autentifikācija, webhooks, darbplūsmas).
 
 ## Piezīmes
-- Katru saņemto URI aģents var atvērt pilnai saturam.
-- Ieteikumi parādās automātiski, ja vaicājumi ir tukši.
-
-## Pašreiz atbalstītie SDK
-- Wink Python SDK
-
-## Ceļvedis (augsta līmeņa)
-- Papildu valodu SDK (Java, JS/TS)
-- Pievienot TripPay SDK
+- Katru atgriezto URI var atvērt aģents pilnai satura apskatei.
+- `wink://api` koks ir tiešraides un seko pašreizējam OpenAPI katalogam, nevis ģenerētam repozitorija indeksam.
+- Ieteikumi parādās automātiski, kad vaicājumi ir tukši.
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink GitHub</LinkButton>

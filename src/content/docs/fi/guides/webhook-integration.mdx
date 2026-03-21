@@ -1,0 +1,66 @@
+---
+title: Webhook-integraatio
+description: Tämä opas näyttää kehittäjille, miten webhooks-asetukset tehdään reaaliaikaisten ilmoitusten vastaanottamiseksi varauksista, maksuista ja muista tapahtumista.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhookit mahdollistavat järjestelmiesi vastaanottaa reaaliaikaisia ilmoituksia, kun tapahtumia tapahtuu Wink-tililläsi — uusia varauksia, peruutuksia, maksupäivityksiä ja muuta. Tämä opas ohjaa sinut asetusten ja parhaiden käytäntöjen läpi.
+
+## Kohdeyleisö
+
+Tämä opas on tarkoitettu kehittäjille, jotka integroivat Wink:iä ulkoisiin järjestelmiin, kuten kiinteistöhallintajärjestelmiin (PMS), kanavahallintaan, CRM-järjestelmiin tai räätälöityihin hallintapaneeleihin.
+
+## Miten webhookit toimivat
+
+1. Rekisteröit webhook-URL:n Winkissä.
+2. Kun tapahtuma tapahtuu (esim. uusi varaus), Wink lähettää HTTP POST -pyynnön URL-osoitteeseesi.
+3. Palvelimesi käsittelee tiedot ja vastaa `200 OK`.
+
+## Webhookin asettaminen
+
+<Steps>
+1. Kirjaudu tilillesi (Extranet, Studio tai TripPay — kaikki tukevat webhookeja).
+2. Siirry kohtaan `Applications` ja sitten `Webhooks`. Katso [Webhooks](/fi/my-account/webhooks).
+3. Klikkaa `Create webhook`.
+4. Anna **nimi** (esim. "PMS Booking Sync").
+5. Syötä **webhook-URL** — HTTPS-päätepiste palvelimellasi.
+6. **Valitse tapahtumat** — Valitse tilattavat tapahtumat tai jätä tyhjäksi vastaanottaaksesi kaikki tapahtumat.
+7. Kytke **Enabled** päälle.
+8. Klikkaa `Save`.
+</Steps>
+
+## Tapahtumatyypit
+
+Wink tukee monenlaisia tapahtumia. Yleisiä tapahtumia ovat:
+
+- **Varaus luotu** — Uusi varaus on vahvistettu.
+- **Varaus peruutettu** — Varaus on peruutettu.
+- **Maksu suoritettu** — Maksu on käsitelty.
+- **Varaus päivitetty** — Varaustietoja on muutettu.
+
+:::tip
+Aloita tilaamalla kaikki tapahtumat. Kun ymmärrät tiedot, voit rajata tilaukset vain järjestelmäsi tarvitsemiin tapahtumiin.
+:::
+
+## Parhaat käytännöt
+
+- **Käytä HTTPS:ää** — Wink lähettää tiedot vain HTTPS-päätepisteisiin.
+- **Vastaa nopeasti** — Palauta `200 OK` heti, kun vastaanotat tiedot. Tee raskas käsittely asynkronisesti.
+- **Idempotenssi** — Käsittelijäsi tulee olla idempotentti. Wink voi yrittää uudelleen, jos `200`-vastausta ei saada.
+- **Vahvista lähde** — Varmista, että saapuvat pyynnöt ovat Winkiltä ennen käsittelyä.
+- **Lokitus** — Kirjaa kaikki vastaanottamasi webhook-tiedot. Tämä helpottaa integrointiongelmien vianmääritystä.
+
+## Tauko ja poisto
+
+Voit **poistaa käytöstä** webhookin ilman, että poistat sitä. Tämä keskeyttää toimituksen, jotta voit vianmäärityksen aikana säilyttää asetukset. Kun olet valmis, kytke se takaisin päälle.
+
+Webhookin poistaminen poistaa sen pysyvästi. Kaikki integraatiot, jotka käyttävät kyseistä webhookia, lakkaavat vastaanottamasta ilmoituksia.
+
+## Lisälukemista
+
+- [Webhooks](/fi/my-account/webhooks) — Täydellinen viite webhookien hallintaan.
+- [Applications](/fi/my-account/applications) — Hallinnoi API-tunnuksiasi.
+- [Developers > APIs](/fi/developers/apis) — Täydellinen API-dokumentaatio.

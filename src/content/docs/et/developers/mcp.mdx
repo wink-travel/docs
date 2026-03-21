@@ -1,6 +1,6 @@
 ---
 title: MCP Server
-description: Ühenda kiiresti AI agendid Wink dokumentatsiooni ja SDK-dega majutatud MCP serveri kaudu.
+description: Ühenda kiiresti AI-agendid Wink dokumentatsiooni ja reaalajas OpenAPI spetsifikatsioonidega majutatud MCP serveri kaudu.
 sidebar:
   order: 10
 ---
@@ -15,9 +15,9 @@ https://docs.mcp.wink.travel/mcp
 ```
 
 Suuna ühilduvad AI kliendid (VS Code, Cursor, teised, mis kasutavad MCP HTTP transporti) sellele lõpp-punktile, et nad saaksid:
-- Sirvida toote- ja platvormidokumentatsiooni (`wink://docs/...`)
-- Avastada SDK-sid ja uurida API klasse / mudeleid (`wink://sdk/...` & `wink://sdk/.../docs`)
-- Teha kerget semantilist / märksõnapõhist otsingut dokumentide ja SDK kokkuvõtete üle
+- Sirvida toote- ja platvormidokumente (`wink://docs/...`)
+- Sirvida reaalajas OpenAPI spetsifikatsioone ja operatsioonidokumente (`wink://api/...`)
+- Teostada kerget semantilist / märksõnapõhist otsingut dokumentide ja reaalajas API-de üle
 
 ## Transport
 Kasuta peamist voogedastatavat HTTP lõpp-punkti:
@@ -32,9 +32,29 @@ Kui sinu klient toetab ainult SSE-d, kasuta:
 https://docs.mcp.wink.travel/sse
 ```
 
+### Claude Code
+Ametlik dokumentatsioon: [Ühenda Claude Code tööriistadega MCP kaudu](https://code.claude.com/docs/en/mcp)
+
+Anthropic soovitab pilves majutatud MCP serverite puhul kaug-HTTP transporti:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+Claude Code sees käivita `/mcp`, et kontrollida serveri olekut. Kui soovid jagada serverit kogu repositooriumiga, lisa `--scope project`, nii kirjutab Claude Code konfiguratsiooni faili `.mcp.json`.
+
+### Codex
+Ametlik dokumentatsioon: [Docs MCP kiire algus Codex jaoks](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI dokumenteerib MCP seadistust Codex CLI kaudu ning märgib, et konfiguratsioon jagatakse IDE laiendusega:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
+```
+
 ### Cursor
 Cursor MCP dokumentatsioon: https://cursor.com/docs/context/mcp
-Seadistamine: Lisa kaugrežiimi server MCP seadete kaudu.
+Seadistamine: Lisa kaugserver MCP seadete kaudu.
 ```json
 {
   "mcpServers": {
@@ -47,7 +67,7 @@ Seadistamine: Lisa kaugrežiimi server MCP seadete kaudu.
 
 ### VS Code
 Ametlik dokumentatsioon: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Minimaalne kaugrežiimi konfiguratsioon (kasutaja või tööruumi `mcp.json`):
+Minimaalne kaugkonfiguratsioon (kasutaja või tööruumi `mcp.json`):
 ```json
 {
   "servers": {
@@ -61,45 +81,41 @@ Minimaalne kaugrežiimi konfiguratsioon (kasutaja või tööruumi `mcp.json`):
 
 Nõuanded:
 - Kasuta Command Palette’i: “MCP: List Servers”, et kinnitada ühendus ja sirvida tööriistu.
-- Tööriistade valija võimaldab lubada/keelata `sdk_search` ja `docs_search`.
-- Lisa kontekst: Chat vaade → Add Context → MCP Resources, et lisada dokumentide lehti.
+- Tööriistade valija võimaldab lubada/keelata `api_search` ja `docs_search`.
+- Lisa kontekst: Vestluse vaade → Lisa kontekst → MCP ressursid, et lisada dokumendilehti.
 
 ## Põhivara URI-d
 
 | URI | Kirjeldus |
 |-----|-----------|
-| `wink://docs` | Dokumentatsiooni indeks (kategooriate kaupa rühmitatud) |
+| `wink://docs` | Dokumentatsiooni indeks (rühmitatud kategooria järgi) |
 | `wink://docs/{path}` | Konkreetne dokumentatsiooni artikkel (Markdown / MDX) |
-| `wink://sdk` | SDK ülevaade (iga SDK + dokumendi loend) |
-| `wink://sdk/{sdkPath}` | SDK README / mooduli dokumentide kaust / konkreetse mooduli dokument |
+| `wink://api` | Reaalajas OpenAPI kataloog, mis on avastatud Wink swagger konfiguratsioonist |
+| `wink://api/{apiName}` | Kompaktne API kokkuvõte koos autentimise, siltide, päiste ja näidistega |
+| `wink://api/{apiName}/operations` | Täielik operatsioonide nimekiri rühmitatuna siltide järgi |
+| `wink://api/{apiName}/operation/{key}` | Üksiku operatsiooni detailid (parameetrid, päringu keha, vastused) |
+| `wink://api/{apiName}/schema/{schemaName}` | Lahendatud komponendi skeem koos pesastatud väljade, tüüpide ja näidetega |
+| `wink://api/{apiName}/operation/{key}/request` | Päringule keskenduv vaade koos nõutavate sisendite ja minimaalse näidispayloadiga |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Vastusele keskenduv vaade konkreetse staatuse koodi jaoks |
+| `wink://api/{apiName}/operation/{key}/recipe` | Ülesandepõhine voog selle operatsiooni korrektseks kutsumiseks |
 
-### Mooduli dokumendid
-SDK dokumentide kausta avamine (nt `wink://sdk/python/wink-sdk-booking/docs`) tagastab rühmitatult:
-- **API klassid** (meetodite arv + näidismeetodite nimed)
-- **Mudelid ja tüübid** (andmestruktuurid, mida need API-d kasutavad)
-
-## Otsingutööriistad (Kiire viide)
+## Otsingutööriistad (Kiirviide)
 | Tööriist | Eesmärk | Tüüpilised päringu näited |
 |----------|---------|---------------------------|
-| `sdk_search` | Leia, millist SDK-d / API klassi kasutada | `tühista broneering`, `kinnistute nimekiri`, `affiliate inventar` |
-| `docs_search` | Leia kontseptuaalsed dokumendid / juhendid | `autentimine`, `veebikonksud`, `wordPress` |
+| `api_search` | Leia reaalajas API või operatsioon, millega integreeruda | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
+| `docs_search` | Leia kontseptuaalsed dokumendid / juhendid | `authentication`, `webhooks`, `wordPress` |
 
 Jäta `query` tühi, et saada soovitusi. Iga tulemus sisaldab MCP URI-d, mida saad avada.
+Operatsioonide tabamuste puhul tagastab `api_search` ka seotud päringu, vastuse, skeemi ja retsepti URI-d, et agendid saaksid otse kõige kasulikuma alamressursi juurde hüpata.
 
 ## Tüüpiline kasutusmuster
-1. Käivita `sdk_search` oma kavatsusega (nt *"kinnistute nimekiri"*).
-2. Ava tagastatud SDK README või selle `docs_uri`, et uurida API-sid / mudeleid.
-3. Kasuta `docs_search` toetavate kontseptsioonide (autentimine, veebikonksud) jaoks.
+1. Käivita `api_search` oma eesmärgiga (nt *"create affiliate"* või *"payment receipt"*).
+2. Ava tagastatud `wink://api/...` URI või järgi selle seotud `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` ja `recipe_uri` välju.
+3. Kasuta `docs_search` toetavate kontseptsioonide (autentimine, webhookid, töövood) leidmiseks.
 
 ## Märkused
-- Iga tagastatud URI saab agendi poolt avada kogu sisu nägemiseks.
+- Iga tagastatud URI saab agent avada täieliku sisu saamiseks.
+- `wink://api` puu on reaalajas ja järgib praegust ülemvoolu OpenAPI kataloogi, mitte genereeritud repositooriumi indeksit.
 - Soovitused ilmuvad automaatselt, kui päringud on tühjad.
-
-## Praegu toetatud SDK-d
-- Wink Python SDK-d
-
-## Teekaart (Üldine)
-- Täiendavad keele SDK-d (Java, JS/TS)
-- TripPay SDK-de lisamine
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink GitHubis</LinkButton>

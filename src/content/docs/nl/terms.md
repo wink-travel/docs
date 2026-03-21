@@ -3,8 +3,6 @@ title: Algemene voorwaarden
 description: Algemene voorwaarden voor alle Wink-gebruikers en entiteiten.
 ---
 
-# Algemene voorwaarden
-
 Elk portaal kan verschillende algemene voorwaarden hebben. Ga naar de onderstaande sectie die op jou van toepassing is en zoek naar de subsectie genaamd Servicevoorwaarden en Betalingsvoorwaarden.
 
 ## Affiliate portaal

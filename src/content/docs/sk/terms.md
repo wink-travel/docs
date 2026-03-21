@@ -1,15 +1,13 @@
 ---
-title: Podmienky používania
-description: Podmienky používania pre všetkých používateľov a subjekty Wink.
+title: Obchodné podmienky
+description: Obchodné podmienky pre všetkých používateľov a subjekty Wink.
 ---
 
-# Podmienky používania
-
-Každý portál môže mať odlišné podmienky používania. Prejdite prosím do sekcie nižšie, ktorá sa vás týka, a vyhľadajte podsekciu nazvanú Podmienky služby a Platobné podmienky.
+Každý portál môže mať odlišné obchodné podmienky. Prejdite prosím do sekcie nižšie, ktorá sa vás týka, a vyhľadajte podsekciu nazvanú Podmienky služby a Platobné podmienky.
 
 ## Affiliate portál
 
-Pre affiliate partnerov, ktorí sa chcú naučiť, ako si pasívne zarábať zpeněžovaním svojich sociálnych účtov cez Wink.  
+Pre affiliate partnerov, ktorí sa chcú naučiť, ako si pasívne zarobiť zpenením svojich sociálnych účtov pomocou Wink.
 [Wink Studio](https://studio.wink.travel) má všetky nástroje, ktoré potrebujete na predaj ako profesionál.
 
 <LinkButton href="/sk/studio/what-is-studio">
@@ -26,7 +24,7 @@ Zistite viac o našom rezervačnom engine
 
 ## Portál pre ubytovacie zariadenia
 
-Pre ubytovacie zariadenia, ktoré chcú začať predávať cez Wink. Použite naše nástroje na efektívny predaj a marketing online a získajte armádu affiliate partnerov z celého sveta, ktorí vám pomôžu získať zákazníkov a rezervácie.
+Pre ubytovacie zariadenia, ktoré chcú začať predávať na Wink. Použite naše nástroje na efektívny predaj a marketing online a získajte armádu affiliate partnerov z celého sveta, ktorí vám pomôžu získať zákazníkov a rezervácie.
 
 <LinkButton href="/sk/extranet/what-is-extranet">
 Zistite viac o Wink Extranet

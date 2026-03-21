@@ -1,6 +1,6 @@
 ---
 title: MCP Server
-description: Verbind snel AI-agents met Wink-documentatie en SDK's via de gehoste MCP-server.
+description: Verbind snel AI-agents met Wink-documentatie en live OpenAPI-specificaties via de gehoste MCP-server.
 sidebar:
   order: 10
 ---
@@ -16,8 +16,8 @@ https://docs.mcp.wink.travel/mcp
 
 Richt compatibele AI-clients (VS Code, Cursor, anderen die MCP HTTP-transport implementeren) op dit eindpunt om ze te laten:
 - Bladeren door product- en platformdocumentatie (`wink://docs/...`)
-- SDK's ontdekken en API-klassen / modellen verkennen (`wink://sdk/...` & `wink://sdk/.../docs`)
-- Lichtgewicht semantische / trefwoordzoekopdrachten uitvoeren over documentatie en SDK-samenvattingen
+- Bladeren door live OpenAPI-specificaties en operationele documentatie (`wink://api/...`)
+- Uitvoeren van lichte semantische / trefwoordzoekopdrachten over documentatie en live API's
 
 ## Transport
 Gebruik het primaire streambare HTTP-eindpunt:
@@ -32,9 +32,29 @@ Als je client alleen SSE ondersteunt, gebruik dan:
 https://docs.mcp.wink.travel/sse
 ```
 
+### Claude Code
+Officiële documentatie: [Verbind Claude Code met tools via MCP](https://code.claude.com/docs/en/mcp)
+
+Anthropic raadt de remote HTTP-transport aan voor cloud-gehoste MCP-servers:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+Binnen Claude Code, voer `/mcp` uit om de serverstatus te controleren. Als je de server met het hele repo wilt delen, voeg dan `--scope project` toe zodat Claude Code de configuratie schrijft naar `.mcp.json`.
+
+### Codex
+Officiële documentatie: [Docs MCP quickstart voor Codex](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI documenteert MCP-configuratie via de Codex CLI, en vermeldt dat de configuratie gedeeld wordt met de IDE-extensie:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
+```
+
 ### Cursor
 Cursor MCP-documentatie: https://cursor.com/docs/context/mcp
-Setup: Voeg een externe server toe via MCP-instellingen.
+Installatie: Voeg remote server toe via MCP-instellingen.
 ```json
 {
   "mcpServers": {
@@ -47,7 +67,7 @@ Setup: Voeg een externe server toe via MCP-instellingen.
 
 ### VS Code
 Officiële documentatie: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Minimale externe configuratie (gebruikers- of werkruimte `mcp.json`):
+Minimale remote configuratie (user of workspace `mcp.json`):
 ```json
 {
   "servers": {
@@ -61,7 +81,7 @@ Minimale externe configuratie (gebruikers- of werkruimte `mcp.json`):
 
 Tips:
 - Gebruik Command Palette: “MCP: List Servers” om verbinding te bevestigen en tools te bekijken.
-- Tools-picker laat je `sdk_search` en `docs_search` in- of uitschakelen.
+- Tools-picker laat je `api_search` en `docs_search` in- of uitschakelen.
 - Voeg context toe: Chat-weergave → Add Context → MCP Resources om documentatiepagina’s toe te voegen.
 
 ## Kern Resource URI's
@@ -70,36 +90,32 @@ Tips:
 |-----|--------------|
 | `wink://docs` | Documentatie-index (gegroepeerd per categorie) |
 | `wink://docs/{path}` | Specifiek documentatieartikel (Markdown / MDX) |
-| `wink://sdk` | SDK-overzicht (elke SDK + documentatie telt mee) |
-| `wink://sdk/{sdkPath}` | SDK README / module documentatiefolder / specifiek module-document |
-
-### Module Documentatie
-Het openen van een SDK-documentatiefolder (bijv. `wink://sdk/python/wink-sdk-booking/docs`) geeft gegroepeerd:
-- **API Klassen** (aantal methoden + voorbeeld methodenamen)
-- **Modellen & Types** (datastructuren gebruikt door die API's)
+| `wink://api` | Live OpenAPI-catalogus ontdekt vanuit Wink's swagger-configuratie |
+| `wink://api/{apiName}` | Compact API-overzicht met authenticatie, tags, headers en voorbeeldoperaties |
+| `wink://api/{apiName}/operations` | Volledige lijst van operaties gegroepeerd per tag |
+| `wink://api/{apiName}/operation/{key}` | Detail van individuele operatie (parameters, request body, responses) |
+| `wink://api/{apiName}/schema/{schemaName}` | Opgeloste component-schema met geneste velden, types en voorbeelden |
+| `wink://api/{apiName}/operation/{key}/request` | Request-georiënteerde weergave met vereiste inputs en minimaal voorbeeldpayload |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Response-georiënteerde weergave voor een specifieke statuscode |
+| `wink://api/{apiName}/operation/{key}/recipe` | Taakgerichte flow om die operatie correct aan te roepen |
 
 ## Zoektools (Snelle Referentie)
 | Tool | Doel | Typische Zoekvoorbeelden |
-|------|------|--------------------------|
-| `sdk_search` | Vind welke SDK / API-klasse te gebruiken | `annuleer boeking`, `lijst accommodaties`, `affiliate inventaris` |
-| `docs_search` | Vind conceptuele documentatie / handleidingen | `authenticatie`, `webhooks`, `wordPress` |
+|------|------|-------------------------|
+| `api_search` | Vind de live API of operatie om tegen te integreren | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
+| `docs_search` | Vind conceptuele documentatie / handleidingen | `authentication`, `webhooks`, `wordPress` |
 
 Laat `query` leeg om suggesties te ontvangen. Elk resultaat bevat de MCP URI die je kunt openen.
+Voor operatie-resultaten retourneert `api_search` ook gekoppelde request-, response-, schema- en recipe-URI's zodat agents direct naar de meest bruikbare subresource kunnen springen.
 
 ## Typisch Gebruikspatroon
-1. Voer `sdk_search` uit met je intentie (bijv. *"lijst accommodaties"*).
-2. Open de teruggegeven SDK README of de `docs_uri` om API's / modellen te inspecteren.
-3. Gebruik `docs_search` voor ondersteunende concepten (authenticatie, webhooks).
+1. Voer `api_search` uit met je intentie (bijv. *"create affiliate"* of *"payment receipt"*).
+2. Open de geretourneerde `wink://api/...` URI, of volg de gekoppelde `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` en `recipe_uri` velden.
+3. Gebruik `docs_search` voor ondersteunende concepten (authenticatie, webhooks, workflows).
 
 ## Notities
-- Elke teruggegeven URI kan door de agent worden geopend voor volledige inhoud.
+- Elke geretourneerde URI kan door de agent worden geopend voor volledige inhoud.
+- De `wink://api` boom is live en volgt de actuele upstream OpenAPI-catalogus in plaats van een gegenereerde repo-index.
 - Suggesties verschijnen automatisch wanneer zoekopdrachten leeg zijn.
-
-## Momenteel Ondersteunde SDK's
-- Wink Python SDK's
-
-## Roadmap (Hoog Niveau)
-- Extra taal-SDK's (Java, JS/TS)
-- Toevoegen van TripPay SDK's
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink op GitHub</LinkButton>

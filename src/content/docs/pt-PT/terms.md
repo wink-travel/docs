@@ -3,8 +3,6 @@ title: Termos e Condições
 description: Termos e Condições para todos os utilizadores e entidades Wink.
 ---
 
-# Termos e Condições
-
 Cada portal pode ter termos e condições diferentes. Por favor, vá para a secção abaixo que se aplica a si e procure a subsecção chamada Termos de Serviço e Condições de Pagamento.
 
 ## Portal de afiliados
@@ -34,7 +32,7 @@ Saiba mais sobre o Wink Extranet
 
 ## Portal de agentes de viagens
 
-Para agentes de viagens que querem descobrir o que a Wink pode oferecer-lhes em termos de tarifas personalizadas, ofertas e inventário, diretamente dos fornecedores.
+Para agentes de viagens que querem descobrir o que a Wink pode oferecer em termos de tarifas personalizadas, ofertas e inventário, diretamente dos fornecedores.
 
 <LinkButton href="/pt-PT/travel-agent/what-is-agent">
 Saiba mais sobre o Wink Agent

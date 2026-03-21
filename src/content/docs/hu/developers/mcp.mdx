@@ -1,6 +1,6 @@
 ---
 title: MCP szerver
-description: Gyorsan csatlakoztassa az AI ügynököket a Wink dokumentációhoz és SDK-khoz a hosztolt MCP szerveren keresztül.
+description: Gyorsan csatlakoztass AI ügynököket a Wink dokumentációhoz és élő OpenAPI specifikációkhoz a hosztolt MCP szerveren keresztül.
 sidebar:
   order: 10
 ---
@@ -14,27 +14,47 @@ A hosztolt Wink MCP szerver elérhető a következő címen:
 https://docs.mcp.wink.travel/mcp
 ```
 
-Irányítsa a kompatibilis AI klienseket (VS Code, Cursor, mások, amelyek MCP HTTP transportot valósítanak meg) erre a végpontra, hogy:
+Irányítsd a kompatibilis AI klienseket (VS Code, Cursor, és mások, amelyek MCP HTTP transportot valósítanak meg) erre a végpontra, hogy:
 - Böngészhessék a termék- és platformdokumentációkat (`wink://docs/...`)
-- Felfedezhessék az SDK-kat és mélyebben megismerhessék az API osztályokat / modelleket (`wink://sdk/...` és `wink://sdk/.../docs`)
-- Könnyű szemantikus / kulcsszavas keresést végezzenek a dokumentációk és SDK összefoglalók között
+- Böngészhessék az élő OpenAPI specifikációkat és műveleti dokumentációkat (`wink://api/...`)
+- Könnyű szemantikus / kulcsszavas keresést végezzenek a dokumentációk és élő API-k között
 
 ## Transport
-Használja az elsődleges streamelhető HTTP végpontot:
+Használd az elsődleges streamelhető HTTP végpontot:
 
 ```
 https://docs.mcp.wink.travel/mcp
 ```
 
-Ha az Ön kliense csak SSE-t támogat, használja a következőt:
+Ha az ügyfeled csak SSE-t támogat, használd:
 
 ```
 https://docs.mcp.wink.travel/sse
 ```
 
+### Claude Code
+Hivatalos dokumentáció: [Csatlakoztasd a Claude Code-ot eszközökhöz MCP-n keresztül](https://code.claude.com/docs/en/mcp)
+
+Az Anthropic a távoli HTTP transportot ajánlja a felhőben hosztolt MCP szerverekhez:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+A Claude Code-ban futtasd a `/mcp` parancsot a szerver állapotának megtekintéséhez. Ha a szervert az egész repóval meg szeretnéd osztani, add hozzá a `--scope project` opciót, így a Claude Code a konfigurációt a `.mcp.json` fájlba írja.
+
+### Codex
+Hivatalos dokumentáció: [Docs MCP gyorsindítás Codex-hez](https://developers.openai.com/resources/docs-mcp)
+
+Az OpenAI a Codex CLI-n keresztül dokumentálja az MCP beállítást, és megjegyzi, hogy a konfiguráció megosztott az IDE kiterjesztéssel:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
+```
+
 ### Cursor
 Cursor MCP dokumentáció: https://cursor.com/docs/context/mcp
-Beállítás: Távoli szerver hozzáadása az MCP beállításoknál.
+Beállítás: Távoli szerver hozzáadása az MCP beállításokban.
 ```json
 {
   "mcpServers": {
@@ -60,9 +80,9 @@ Minimális távoli konfiguráció (felhasználói vagy munkaterületi `mcp.json`
 ```
 
 Tippek:
-- Használja a Parancspalettát: „MCP: List Servers” a kapcsolat megerősítéséhez és az eszközök böngészéséhez.
-- Az eszközválasztóval engedélyezheti/tilthatja a `sdk_search` és `docs_search` funkciókat.
-- Kontextus hozzáadása: Chat nézet → Kontextus hozzáadása → MCP erőforrások a dokumentációs oldalak csatolásához.
+- Használd a Parancspalettát: „MCP: List Servers” a kapcsolat megerősítéséhez és az eszközök böngészéséhez.
+- Az eszközválasztóval engedélyezheted/tilthatod az `api_search` és `docs_search` funkciókat.
+- Kontextus hozzáadása: Csevegő nézet → Kontextus hozzáadása → MCP erőforrások a dokumentációs oldalak csatolásához.
 
 ## Alapvető erőforrás URI-k
 
@@ -70,36 +90,32 @@ Tippek:
 |-----|-------------|
 | `wink://docs` | Dokumentáció index (kategóriák szerint csoportosítva) |
 | `wink://docs/{path}` | Egy adott dokumentációs cikk (Markdown / MDX) |
-| `wink://sdk` | SDK áttekintés (minden SDK + dokumentáció számolva) |
-| `wink://sdk/{sdkPath}` | SDK README / modul dokumentációs mappa / adott modul dokumentáció |
+| `wink://api` | Élő OpenAPI katalógus, amely a Wink swagger konfigurációjából származik |
+| `wink://api/{apiName}` | Kompakt API összefoglaló hitelesítéssel, címkékkel, fejlécekkel és mintaműveletekkel |
+| `wink://api/{apiName}/operations` | Teljes műveletlista címkék szerint csoportosítva |
+| `wink://api/{apiName}/operation/{key}` | Egyedi művelet részletei (paraméterek, kérés törzse, válaszok) |
+| `wink://api/{apiName}/schema/{schemaName}` | Feloldott komponens séma beágyazott mezőkkel, típusokkal és példákkal |
+| `wink://api/{apiName}/operation/{key}/request` | Kérés-központú nézet a szükséges bemenetekkel és minimális példa payloaddal |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Válasz-központú nézet egy adott státuszkódhoz |
+| `wink://api/{apiName}/operation/{key}/recipe` | Feladatorientált folyamat a művelet helyes meghívásához |
 
-### Modul dokumentációk
-Egy SDK dokumentációs mappa megnyitása (pl. `wink://sdk/python/wink-sdk-booking/docs`) csoportosítva adja vissza:
-- **API osztályok** (metódusok száma + minta metódusnevek)
-- **Modellek és típusok** (az API-k által használt adatstruktúrák)
-
-## Keresőeszközök (gyors referencia)
+## Keresőeszközök (Gyors referencia)
 | Eszköz | Cél | Tipikus lekérdezési példák |
 |------|---------|-----------------------|
-| `sdk_search` | Megtalálni, melyik SDK / API osztály használható | `foglalás törlése`, `ingatlanok listázása`, `partnerkészlet` |
-| `docs_search` | Megtalálni koncepcionális dokumentációkat / útmutatókat | `hitelesítés`, `webhookok`, `wordPress` |
+| `api_search` | Megtalálni az élő API-t vagy műveletet az integrációhoz | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
+| `docs_search` | Megtalálni koncepcionális dokumentációkat / útmutatókat | `authentication`, `webhooks`, `wordPress` |
 
-Hagyja üresen a `query` mezőt javaslatok fogadásához. Minden eredmény tartalmazza az MCP URI-t, amely megnyitható.
+Hagyd üresen a `query` mezőt, hogy javaslatokat kapj. Minden találat tartalmazza az MCP URI-t, amit megnyithatsz.
+Művelet találatok esetén az `api_search` visszaadja a kapcsolódó kérés, válasz, séma és recept URI-kat is, így az ügynökök közvetlenül a legfontosabb al-erőforrásokra ugorhatnak.
 
 ## Tipikus használati minta
-1. Futtassa a `sdk_search`-t a szándékával (pl. *"ingatlanok listázása"*).
-2. Nyissa meg a visszakapott SDK README-t vagy annak `docs_uri`-ját az API-k / modellek megtekintéséhez.
-3. Használja a `docs_search`-t a támogató fogalmakhoz (hitelesítés, webhookok).
+1. Futtasd az `api_search`-t a szándékoddal (pl. *"create affiliate"* vagy *"payment receipt"*).
+2. Nyisd meg a visszakapott `wink://api/...` URI-t, vagy kövesd a hozzá kapcsolódó `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` és `recipe_uri` mezőket.
+3. Használd a `docs_search`-t a támogató fogalmakhoz (hitelesítés, webhookok, munkafolyamatok).
 
 ## Megjegyzések
 - Minden visszakapott URI megnyitható az ügynök által a teljes tartalom eléréséhez.
+- A `wink://api` fa élő, és a jelenlegi upstream OpenAPI katalógust követi, nem egy generált repó indexet.
 - A javaslatok automatikusan megjelennek, ha a lekérdezés üres.
-
-## Jelenleg támogatott SDK-k
-- Wink Python SDK-k
-
-## Fejlesztési terv (magas szinten)
-- További nyelvi SDK-k (Java, JS/TS)
-- TripPay SDK-k hozzáadása
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink a GitHubon</LinkButton>

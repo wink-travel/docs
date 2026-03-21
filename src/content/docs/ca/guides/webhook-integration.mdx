@@ -1,0 +1,66 @@
+---
+title: Integració de Webhooks
+description: Aquesta guia mostra als desenvolupadors com configurar webhooks per rebre notificacions en temps real de reserves, pagaments i altres esdeveniments.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Els webhooks permeten que els vostres sistemes rebin notificacions en temps real quan passen esdeveniments al vostre compte Wink — noves reserves, cancel·lacions, actualitzacions de pagaments i més. Aquesta guia us acompanya en la configuració i les millors pràctiques.
+
+## Públic
+
+Aquesta guia és per a desenvolupadors que integren Wink amb sistemes externs com sistemes de gestió de propietats (PMS), gestors de canals, CRM o panells personalitzats.
+
+## Com funcionen els webhooks
+
+1. Registreu una URL de webhook a Wink.
+2. Quan es produeix un esdeveniment (per exemple, una nova reserva), Wink envia un HTTP POST a la vostra URL.
+3. El vostre servidor processa la càrrega útil i respon amb un `200 OK`.
+
+## Configuració d’un webhook
+
+<Steps>
+1. Inicieu sessió al vostre compte (Extranet, Studio o TripPay — tots suporten webhooks).
+2. Navegueu a `Applications` i després a `Webhooks`. Vegeu [Webhooks](/ca/my-account/webhooks).
+3. Feu clic a `Create webhook`.
+4. Introduïu un **nom** (per exemple, "Sincronització de reserves PMS").
+5. Introduïu la vostra **URL de webhook** — el punt final HTTPS al vostre servidor.
+6. **Seleccioneu esdeveniments** — Trieu esdeveniments específics als quals subscriure-us, o deixeu-ho buit per rebre tots els esdeveniments.
+7. Activeu **Enabled**.
+8. Feu clic a `Save`.
+</Steps>
+
+## Tipus d’esdeveniments
+
+Wink suporta una varietat de tipus d’esdeveniments. Els esdeveniments més comuns inclouen:
+
+- **Reserva creada** — S’ha confirmat una nova reserva.
+- **Reserva cancel·lada** — S’ha cancel·lat una reserva.
+- **Pagament completat** — El pagament ha estat processat.
+- **Reserva actualitzada** — Han canviat els detalls d’una reserva.
+
+:::tip
+Comenceu subscrivint-vos a tots els esdeveniments. Un cop entengueu les càrregues útils, podeu restringir-vos només als esdeveniments que el vostre sistema necessita.
+:::
+
+## Millors pràctiques
+
+- **Utilitzeu HTTPS** — Wink envia càrregues útils només a punts finals HTTPS.
+- **Responeu ràpidament** — Retorneu un `200 OK` tan aviat com rebeu la càrrega útil. Feu qualsevol processament pesat de manera asíncrona.
+- **Idempotència** — El vostre gestor ha de ser idempotent. Wink pot tornar a intentar l’enviament si no rep una resposta `200`.
+- **Valideu la font** — Verifiqueu que les sol·licituds entrants provenen de Wink abans de processar-les.
+- **Registre** — Registreu cada càrrega útil de webhook que rebeu. Això facilita molt la depuració de problemes d’integració.
+
+## Pausar i eliminar
+
+Podeu **desactivar** un webhook sense eliminar-lo. Això pausa l’entrega perquè pugueu solucionar problemes sense perdre la configuració. Quan estigueu preparats, torneu a activar-lo.
+
+Eliminar un webhook el suprimeix permanentment. Qualsevol integració que depengui d’aquest webhook deixarà de rebre notificacions.
+
+## Lectures addicionals
+
+- [Webhooks](/ca/my-account/webhooks) — Referència completa per a la gestió de webhooks.
+- [Applications](/ca/my-account/applications) — Gestioneu les vostres credencials API.
+- [Developers > APIs](/ca/developers/apis) — Documentació completa de l’API.

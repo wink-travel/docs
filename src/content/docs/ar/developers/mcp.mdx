@@ -1,6 +1,6 @@
 ---
 title: خادم MCP
-description: قم بتوصيل وكلاء الذكاء الاصطناعي بسرعة إلى وثائق Wink وSDKs عبر خادم MCP المستضاف.
+description: قم بتوصيل وكلاء الذكاء الاصطناعي بسرعة إلى وثائق Wink ومواصفات OpenAPI الحية عبر خادم MCP المستضاف.
 sidebar:
   order: 10
 ---
@@ -16,8 +16,8 @@ https://docs.mcp.wink.travel/mcp
 
 وجه عملاء الذكاء الاصطناعي المتوافقين (VS Code، Cursor، وغيرهم الذين ينفذون نقل MCP عبر HTTP) إلى هذه النقطة النهائية للسماح لهم بـ:
 - تصفح وثائق المنتج والمنصة (`wink://docs/...`)
-- اكتشاف SDKs والتعمق في فئات / نماذج API (`wink://sdk/...` و `wink://sdk/.../docs`)
-- إجراء بحث دلالي / بالكلمات المفتاحية خفيف الوزن عبر ملخصات الوثائق وSDKs
+- تصفح مواصفات OpenAPI الحية ووثائق العمليات (`wink://api/...`)
+- إجراء بحث دلالي / بالكلمات المفتاحية خفيف الوزن عبر الوثائق وواجهات برمجة التطبيقات الحية
 
 ## النقل
 استخدم نقطة النهاية الأساسية القابلة للبث عبر HTTP:
@@ -32,8 +32,28 @@ https://docs.mcp.wink.travel/mcp
 https://docs.mcp.wink.travel/sse
 ```
 
+### Claude Code
+الوثائق الرسمية: [ربط Claude Code بالأدوات عبر MCP](https://code.claude.com/docs/en/mcp)
+
+توصي Anthropic باستخدام نقل HTTP عن بُعد لخوادم MCP المستضافة سحابياً:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+داخل Claude Code، شغّل `/mcp` لفحص حالة الخادم. إذا أردت مشاركة الخادم مع كامل المستودع، أضف `--scope project` ليكتب Claude Code الإعداد في `.mcp.json`.
+
+### Codex
+الوثائق الرسمية: [بدء سريع لوثائق MCP لـ Codex](https://developers.openai.com/resources/docs-mcp)
+
+توثق OpenAI إعداد MCP عبر واجهة سطر أوامر Codex، وتذكر أن التكوين مشترك مع امتداد IDE:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
+```
+
 ### Cursor
-وثائق MCP لـ Cursor: https://cursor.com/docs/context/mcp
+وثائق Cursor MCP: https://cursor.com/docs/context/mcp
 الإعداد: أضف الخادم البعيد عبر إعدادات MCP.
 ```json
 {
@@ -61,45 +81,41 @@ https://docs.mcp.wink.travel/sse
 
 نصائح:
 - استخدم لوحة الأوامر: "MCP: List Servers" لتأكيد الاتصال وتصفح الأدوات.
-- يتيح لك محدد الأدوات تمكين/تعطيل `sdk_search` و `docs_search`.
-- أضف السياق: عرض الدردشة → إضافة سياق → موارد MCP لإرفاق صفحات الوثائق.
+- يتيح لك محدد الأدوات تمكين/تعطيل `api_search` و `docs_search`.
+- أضف سياقًا: عرض الدردشة → إضافة سياق → موارد MCP لإرفاق صفحات الوثائق.
 
 ## عناوين URI الأساسية للموارد
 
 | URI | الوصف |
 |-----|-------------|
-| `wink://docs` | فهرس الوثائق (مجمعة حسب الفئة) |
+| `wink://docs` | فهرس الوثائق (مجمّع حسب الفئة) |
 | `wink://docs/{path}` | مقالة وثائق محددة (Markdown / MDX) |
-| `wink://sdk` | نظرة عامة على SDK (كل SDK + عدد الوثائق) |
-| `wink://sdk/{sdkPath}` | ملف README الخاص بـ SDK / مجلد وثائق الوحدة / وثيقة وحدة محددة |
-
-### وثائق الوحدة
-فتح مجلد وثائق SDK (مثلاً `wink://sdk/python/wink-sdk-booking/docs`) يعرض مجموعات:
-- **فئات API** (عدد الطرق + أسماء طرق نموذجية)
-- **النماذج والأنواع** (هياكل البيانات المستخدمة من قبل تلك APIs)
+| `wink://api` | كتالوج OpenAPI الحي المكتشف من تكوين swagger الخاص بـ Wink |
+| `wink://api/{apiName}` | ملخص API مضغوط مع المصادقة، العلامات، الرؤوس، وعينات العمليات |
+| `wink://api/{apiName}/operations` | قائمة العمليات الكاملة مجمعة حسب العلامة |
+| `wink://api/{apiName}/operation/{key}` | تفاصيل عملية فردية (المعلمات، جسم الطلب، الاستجابات) |
+| `wink://api/{apiName}/schema/{schemaName}` | مخطط مكون محلل مع حقول متداخلة وأنواع وأمثلة |
+| `wink://api/{apiName}/operation/{key}/request` | عرض مركز على الطلب مع المدخلات المطلوبة وحمولة مثال بسيطة |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | عرض مركز على الاستجابة لحالة رمز محددة |
+| `wink://api/{apiName}/operation/{key}/recipe` | تدفق مهام لاستدعاء تلك العملية بشكل صحيح |
 
 ## أدوات البحث (مرجع سريع)
 | الأداة | الغرض | أمثلة استعلام نموذجية |
 |------|---------|-----------------------|
-| `sdk_search` | العثور على SDK / فئة API لاستخدامها | `إلغاء الحجز`، `قائمة العقارات`، `مخزون الشركاء` |
-| `docs_search` | العثور على الوثائق المفاهيمية / الأدلة | `المصادقة`، `webhooks`، `ووردبريس` |
+| `api_search` | العثور على API الحي أو العملية للاندماج معها | `create affiliate`، `payment receipt`، `lookup inventory`، `invite manager` |
+| `docs_search` | العثور على الوثائق المفاهيمية / الأدلة | `authentication`، `webhooks`، `wordPress` |
 
 اترك `query` فارغًا لتلقي اقتراحات. كل نتيجة تتضمن URI MCP يمكنك فتحه.
+بالنسبة لنتائج العمليات، يعيد `api_search` أيضًا روابط URI للطلب، الاستجابة، المخطط، والوصفة حتى يتمكن الوكلاء من القفز مباشرة إلى المورد الفرعي الأكثر فائدة.
 
 ## نمط الاستخدام النموذجي
-1. شغّل `sdk_search` مع نيتك (مثلاً *"قائمة العقارات"*).
-2. افتح ملف README الخاص بـ SDK أو `docs_uri` الخاص به لفحص APIs / النماذج.
-3. استخدم `docs_search` للمفاهيم الداعمة (المصادقة، webhooks).
+1. شغّل `api_search` مع نيتك (مثلاً *"create affiliate"* أو *"payment receipt"*).
+2. افتح URI `wink://api/...` المعاد، أو اتبع حقول `request_uri`، `response_uris`، `request_schema_uris`، `response_schema_uris`، و `recipe_uri` المرتبطة به.
+3. استخدم `docs_search` للمفاهيم الداعمة (المصادقة، webhooks، سير العمل).
 
 ## ملاحظات
-- يمكن للوكيل فتح كل URI معاد للحصول على المحتوى الكامل.
-- تظهر الاقتراحات تلقائيًا عندما تكون الاستعلامات فارغة.
-
-## SDKs المدعومة حاليًا
-- Wink Python SDKs
-
-## خارطة الطريق (على مستوى عالٍ)
-- SDKs بلغات إضافية (Java، JS/TS)
-- إضافة TripPay SDKs
+- يمكن للوكلاء فتح كل URI معاد للحصول على المحتوى الكامل.
+- شجرة `wink://api` حية وتتبع كتالوج OpenAPI الحالي بدلاً من فهرس مستودع مولد.
+- تظهر الاقتراحات تلقائيًا عند ترك الاستعلامات فارغة.
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink على GitHub</LinkButton>

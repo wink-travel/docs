@@ -1,6 +1,6 @@
 ---
 title: Server MCP
-description: Conectează rapid agenții AI la documentația și SDK-urile Wink prin serverul MCP găzduit.
+description: Conectează rapid agenții AI la documentația Wink și specificațiile OpenAPI live prin serverul MCP găzduit.
 sidebar:
   order: 10
 ---
@@ -14,27 +14,47 @@ Serverul MCP găzduit Wink este disponibil la:
 https://docs.mcp.wink.travel/mcp
 ```
 
-Direcționați clienții AI compatibili (VS Code, Cursor, alții care implementează transportul MCP HTTP) către acest punct final pentru a le permite să:
-- Răsfoiască documentația produsului și platformei (`wink://docs/...`)
-- Descopere SDK-uri și să exploreze clasele / modelele API (`wink://sdk/...` & `wink://sdk/.../docs`)
-- Efectueze căutări semantice / pe cuvinte cheie ușoare în documentație și rezumatele SDK-urilor
+Indică clienților AI compatibili (VS Code, Cursor, alții care implementează transportul MCP HTTP) acestui punct final pentru a le permite să:
+- Răsfoiască documentația produsului și a platformei (`wink://docs/...`)
+- Răsfoiască specificațiile OpenAPI live și documentația operațiunilor (`wink://api/...`)
+- Efectueze căutări semantice / pe cuvinte cheie ușoare în documentații și API-uri live
 
 ## Transport
-Folosiți punctul final HTTP principal, streamabil:
+Folosește punctul final HTTP principal, streamabil:
 
 ```
 https://docs.mcp.wink.travel/mcp
 ```
 
-Dacă clientul dvs. suportă doar SSE, folosiți:
+Dacă clientul tău suportă doar SSE, folosește:
 
 ```
 https://docs.mcp.wink.travel/sse
 ```
 
+### Claude Code
+Documentație oficială: [Conectează Claude Code la unelte prin MCP](https://code.claude.com/docs/en/mcp)
+
+Anthropic recomandă transportul HTTP la distanță pentru serverele MCP găzduite în cloud:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+În Claude Code, rulează `/mcp` pentru a inspecta starea serverului. Dacă vrei să partajezi serverul cu întregul depozit, adaugă `--scope project` astfel încât Claude Code să scrie configurația în `.mcp.json`.
+
+### Codex
+Documentație oficială: [Docs MCP quickstart pentru Codex](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI documentează configurarea MCP prin CLI-ul Codex și menționează că configurația este partajată cu extensia IDE:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
+```
+
 ### Cursor
-Documentația MCP pentru Cursor: https://cursor.com/docs/context/mcp
-Configurare: Adăugați serverul la distanță prin setările MCP.
+Documentație Cursor MCP: https://cursor.com/docs/context/mcp
+Configurare: Adaugă serverul la distanță prin setările MCP.
 ```json
 {
   "mcpServers": {
@@ -46,8 +66,8 @@ Configurare: Adăugați serverul la distanță prin setările MCP.
 ```
 
 ### VS Code
-Documentația oficială: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Configurație minimă la distanță (fișierul `mcp.json` utilizator sau workspace):
+Documentație oficială: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Configurație minimă la distanță (utilizator sau spațiu de lucru `mcp.json`):
 ```json
 {
   "servers": {
@@ -60,9 +80,9 @@ Configurație minimă la distanță (fișierul `mcp.json` utilizator sau workspa
 ```
 
 Sfaturi:
-- Folosiți Command Palette: „MCP: List Servers” pentru a confirma conexiunea și a răsfoi uneltele.
-- Selectorul de unelte vă permite să activați/dezactivați `sdk_search` și `docs_search`.
-- Adăugați context: Vizualizare Chat → Add Context → MCP Resources pentru a atașa pagini de documentație.
+- Folosește Command Palette: „MCP: List Servers” pentru a confirma conexiunea și a răsfoi uneltele.
+- Selectorul de unelte îți permite să activezi/dezactivezi `api_search` și `docs_search`.
+- Adaugă context: Vizualizare Chat → Add Context → MCP Resources pentru a atașa pagini de documentație.
 
 ## URI-uri principale ale resurselor
 
@@ -70,36 +90,32 @@ Sfaturi:
 |-----|-------------|
 | `wink://docs` | Indexul documentației (grupat pe categorii) |
 | `wink://docs/{path}` | Articol specific de documentație (Markdown / MDX) |
-| `wink://sdk` | Prezentare generală SDK (fiecare SDK + număr de documente) |
-| `wink://sdk/{sdkPath}` | README SDK / folder documentație modul / document specific modul |
-
-### Documentația modulului
-Deschiderea unui folder de documentație SDK (ex. `wink://sdk/python/wink-sdk-booking/docs`) returnează grupat:
-- **Clase API** (număr metode + exemple de nume metode)
-- **Modele & Tipuri** (structuri de date folosite de acele API-uri)
+| `wink://api` | Catalog OpenAPI live descoperit din configurația swagger a Wink |
+| `wink://api/{apiName}` | Rezumat compact API cu autentificare, etichete, antete și operațiuni exemplu |
+| `wink://api/{apiName}/operations` | Listare completă a operațiunilor grupate pe etichete |
+| `wink://api/{apiName}/operation/{key}` | Detaliu operațiune individuală (parametri, corp cerere, răspunsuri) |
+| `wink://api/{apiName}/schema/{schemaName}` | Schema componentă rezolvată cu câmpuri, tipuri și exemple imbricate |
+| `wink://api/{apiName}/operation/{key}/request` | Vizualizare axată pe cerere cu intrări obligatorii și exemplu minim de payload |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Vizualizare axată pe răspuns pentru un cod de stare specific |
+| `wink://api/{apiName}/operation/{key}/recipe` | Flux orientat pe sarcină pentru apelarea corectă a acelei operațiuni |
 
 ## Unelte de căutare (Referință rapidă)
 | Unealtă | Scop | Exemple tipice de interogări |
 |------|---------|-----------------------|
-| `sdk_search` | Găsește ce SDK / clasă API să folosești | `cancel booking`, `list properties`, `affiliate inventory` |
-| `docs_search` | Găsește documentație conceptuală / ghiduri | `authentication`, `webhooks`, `wordPress` |
+| `api_search` | Găsește API-ul live sau operațiunea pentru integrare | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
+| `docs_search` | Găsește documentații conceptuale / ghiduri | `authentication`, `webhooks`, `wordPress` |
 
-Lăsați `query` gol pentru a primi sugestii. Fiecare rezultat include URI MCP pe care îl puteți deschide.
+Lasă `query` gol pentru a primi sugestii. Fiecare rezultat include URI-ul MCP pe care îl poți deschide.
+Pentru rezultate operațiuni, `api_search` returnează și URI-uri legate de cerere, răspuns, schemă și rețetă astfel încât agenții să poată accesa direct subresursa cea mai utilă.
 
 ## Model tipic de utilizare
-1. Rulați `sdk_search` cu intenția dvs. (ex. *„list properties”*).
-2. Deschideți README-ul SDK returnat sau `docs_uri` pentru a inspecta API-urile / modelele.
-3. Folosiți `docs_search` pentru concepte suport (autentificare, webhooks).
+1. Rulează `api_search` cu intenția ta (ex. *"create affiliate"* sau *"payment receipt"*).
+2. Deschide URI-ul `wink://api/...` returnat sau urmează câmpurile legate `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` și `recipe_uri`.
+3. Folosește `docs_search` pentru concepte suport (autentificare, webhooks, fluxuri de lucru).
 
 ## Note
 - Fiecare URI returnat poate fi deschis de agent pentru conținut complet.
+- Arborele `wink://api` este live și urmează catalogul OpenAPI upstream curent în loc de un index generat al depozitului.
 - Sugestiile apar automat când interogările sunt goale.
-
-## SDK-uri suportate în prezent
-- SDK-urile Python Wink
-
-## Plan de dezvoltare (nivel înalt)
-- SDK-uri pentru alte limbaje (Java, JS/TS)
-- Adăugarea SDK-urilor TripPay
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink pe GitHub</LinkButton>

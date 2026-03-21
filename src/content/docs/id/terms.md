@@ -3,8 +3,6 @@ title: Syarat dan Ketentuan
 description: Syarat dan Ketentuan untuk semua pengguna dan entitas Wink.
 ---
 
-# Syarat dan Ketentuan
-
 Setiap portal mungkin memiliki syarat dan ketentuan yang berbeda. Silakan pergi ke bagian di bawah yang berlaku untuk Anda dan cari sub-bagian yang disebut Ketentuan Layanan dan Ketentuan Pembayaran.
 
 ## Portal afiliasi
@@ -18,7 +16,7 @@ Pelajari lebih lanjut tentang Wink Studio
 
 ## Mesin pemesanan
 
-Semua jalan mengarah ke mesin pemesanan kami! Pelajari apa yang dapat Anda lakukan dengan mesin pemesanan yang paling dapat disesuaikan dan berfokus pada perjalanan di pasar.
+Semua jalan mengarah ke mesin pemesanan kami! Pelajari apa yang bisa Anda lakukan dengan mesin pemesanan yang paling dapat disesuaikan dan berfokus pada perjalanan di pasar.
 
 <LinkButton href="/id/booking-engine/in-a-nutshell">
 Pelajari lebih lanjut tentang mesin pemesanan kami

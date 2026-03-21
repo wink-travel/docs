@@ -3,9 +3,7 @@ title: Termini e Condizioni
 description: Termini e Condizioni per tutti gli utenti e le entità di Wink.
 ---
 
-# Termini e Condizioni
-
-Ogni portale può avere termini e condizioni differenti. Per favore, vai alla sezione sottostante che ti riguarda e cerca la sotto-sezione chiamata Termini di Servizio e Condizioni di Pagamento.
+Ogni portale può avere termini e condizioni differenti. Per favore, vai alla sezione sottostante che si applica a te e cerca la sotto-sezione chiamata Termini di Servizio e Condizioni di Pagamento.
 
 ## Portale affiliati
 
@@ -26,7 +24,7 @@ Scopri di più sul nostro motore di prenotazione
 
 ## Portale proprietà
 
-Per le strutture che vogliono iniziare a vendere su Wink. Usa i nostri strumenti per vendere e promuoverti efficacemente online e ottenere un esercito di affiliati da tutto il mondo che ti aiutino a ottenere clienti e prenotazioni.
+Per le proprietà che vogliono iniziare a vendere su Wink. Usa i nostri strumenti per vendere e promuoverti efficacemente online e ottenere un esercito di affiliati da tutto il mondo che ti aiutino a ottenere clienti e prenotazioni.
 
 <LinkButton href="/it/extranet/what-is-extranet">
 Scopri di più su Wink Extranet

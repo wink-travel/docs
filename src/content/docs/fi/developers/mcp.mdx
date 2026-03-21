@@ -1,6 +1,6 @@
 ---
 title: MCP-palvelin
-description: Yhdistä nopeasti tekoälyagentit Wink-dokumentaatioon ja SDK:ihin isännöidyn MCP-palvelimen kautta.
+description: Yhdistä nopeasti tekoälyagentit Wink-dokumentaatioon ja reaaliaikaisiin OpenAPI-määritelmiin isännöidyn MCP-palvelimen kautta.
 sidebar:
   order: 10
 ---
@@ -15,12 +15,12 @@ https://docs.mcp.wink.travel/mcp
 ```
 
 Ohjaa yhteensopivat tekoälyasiakkaat (VS Code, Cursor, muut MCP HTTP -kuljetuksen toteuttavat) tähän päätepisteeseen, jotta ne voivat:
-- Selailla tuote- ja alustan dokumentaatiota (`wink://docs/...`)
-- Löytää SDK:t ja tutkia API-luokkia / malleja (`wink://sdk/...` & `wink://sdk/.../docs`)
-- Suorittaa kevyitä semanttisia / avainsanahakuja dokumentaatiossa ja SDK-yhteenvedoissa
+- Selailla tuotteen ja alustan dokumentaatiota (`wink://docs/...`)
+- Selailla reaaliaikaisia OpenAPI-määritelmiä ja toimintadokumentteja (`wink://api/...`)
+- Suorittaa kevyttä semanttista / avainsanahakua dokumentaatiossa ja reaaliaikaisissa API:ssa
 
 ## Kuljetus
-Käytä ensisijaista striimattavaa HTTP-päätepistettä:
+Käytä ensisijaista suoratoistettavaa HTTP-päätepistettä:
 
 ```
 https://docs.mcp.wink.travel/mcp
@@ -30,6 +30,26 @@ Jos asiakkaasi tukee vain SSE:tä, käytä:
 
 ```
 https://docs.mcp.wink.travel/sse
+```
+
+### Claude Code
+Viralliset ohjeet: [Yhdistä Claude Code työkaluihin MCP:n kautta](https://code.claude.com/docs/en/mcp)
+
+Anthropic suosittelee etä-HTTP-kuljetusta pilvipalvelimilla isännöidyille MCP-palvelimille:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+Claude Codessa suorita `/mcp` tarkistaaksesi palvelimen tilan. Jos haluat jakaa palvelimen koko repositorion kanssa, lisää `--scope project`, jolloin Claude Code kirjoittaa konfiguraation tiedostoon `.mcp.json`.
+
+### Codex
+Viralliset ohjeet: [Docs MCP pika-aloitus Codexille](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI dokumentoi MCP:n asetuksen Codex CLI:n kautta ja mainitsee, että konfiguraatio jaetaan IDE-laajennuksen kanssa:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
 ```
 
 ### Cursor
@@ -61,45 +81,41 @@ Minimaalinen etäkonfiguraatio (käyttäjä- tai työtilan `mcp.json`):
 
 Vinkkejä:
 - Käytä komentopalettia: “MCP: List Servers” vahvistaaksesi yhteyden ja selataksesi työkaluja.
-- Työkalujen valitsin antaa mahdollisuuden ottaa käyttöön/pois päältä `sdk_search` ja `docs_search`.
+- Työkalujen valitsin antaa mahdollisuuden ottaa käyttöön/poistaa käytöstä `api_search` ja `docs_search`.
 - Lisää konteksti: Keskustelunäkymä → Lisää konteksti → MCP-resurssit liittääksesi dokumenttisivut.
 
-## Ydint resurssi-URI:t
+## Keskeiset resurssi-URI:t
 
 | URI | Kuvaus |
 |-----|-------------|
 | `wink://docs` | Dokumentaation indeksi (ryhmitelty kategorian mukaan) |
 | `wink://docs/{path}` | Tietty dokumentaatioartikkeli (Markdown / MDX) |
-| `wink://sdk` | SDK:n yleiskatsaus (jokainen SDK + dokumenttilaskuri) |
-| `wink://sdk/{sdkPath}` | SDK:n README / moduulien dokumentaatiokansio / tietty moduulin dokumentaatio |
-
-### Moduulidokumentaatio
-SDK-dokumentaatiokansion avaaminen (esim. `wink://sdk/python/wink-sdk-booking/docs`) palauttaa ryhmiteltynä:
-- **API-luokat** (metodien määrä + esimerkkimetodien nimet)
-- **Mallit ja tyypit** (näiden API:en käyttämät tietorakenteet)
+| `wink://api` | Reaaliaikainen OpenAPI-katalogi, joka löydetty Wink:n swagger-konfiguraatiosta |
+| `wink://api/{apiName}` | Tiivis API-yhteenveto autentikoinnilla, tageilla, otsikoilla ja esimerkkitoiminnoilla |
+| `wink://api/{apiName}/operations` | Täydellinen toimintojen lista tagin mukaan ryhmiteltynä |
+| `wink://api/{apiName}/operation/{key}` | Yksittäisen toiminnon tiedot (parametrit, pyyntörunko, vastaukset) |
+| `wink://api/{apiName}/schema/{schemaName}` | Ratkaistu komponenttiskaema, jossa on sisäkkäiset kentät, tyypit ja esimerkit |
+| `wink://api/{apiName}/operation/{key}/request` | Pyyntöön keskittyvä näkymä vaadituilla syötteillä ja minimiesimerkkipayloadilla |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Vastausnäkymä tietylle tilakoodille |
+| `wink://api/{apiName}/operation/{key}/recipe` | Tehtäväkeskeinen työnkulku kyseisen toiminnon oikeaan kutsumiseen |
 
 ## Hakutyökalut (Pikaviite)
 | Työkalu | Tarkoitus | Tyypillisiä hakuesimerkkejä |
 |------|---------|-----------------------|
-| `sdk_search` | Löytää käytettävän SDK:n / API-luokan | `peruuta varaus`, `listaa kohteet`, `kumppanivarasto` |
-| `docs_search` | Löytää käsitteellisiä dokumentteja / oppaita | `todennus`, `webhookit`, `wordPress` |
+| `api_search` | Löytää reaaliaikaisen API:n tai toiminnon integraatiota varten | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
+| `docs_search` | Löytää käsitteellisiä dokumentteja / oppaita | `authentication`, `webhooks`, `wordPress` |
 
 Jätä `query` tyhjäksi saadaksesi ehdotuksia. Jokainen tulos sisältää MCP-URI:n, jonka voit avata.
+Toimintohauissa `api_search` palauttaa myös linkitetyt pyyntö-, vastaus-, skeema- ja resepti-URI:t, jotta agentit voivat hypätä suoraan hyödyllisimpään aliresurssiin.
 
-## Tyypillinen käyttötapaus
-1. Suorita `sdk_search` aikomuksellasi (esim. *"listaa kohteet"*).
-2. Avaa palautettu SDK README tai sen `docs_uri` tarkastellaksesi API:ita / malleja.
-3. Käytä `docs_search` tukevien käsitteiden (todennus, webhookit) löytämiseen.
+## Tyypillinen käyttötapa
+1. Suorita `api_search` aikomuksellasi (esim. *"create affiliate"* tai *"payment receipt"*).
+2. Avaa palautettu `wink://api/...` URI tai seuraa sen linkitettyjä `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` ja `recipe_uri` kenttiä.
+3. Käytä `docs_search` tukevien käsitteiden (autentikointi, webhookit, työnkulut) löytämiseen.
 
 ## Huomautuksia
-- Jokainen palautettu URI voidaan avata agentin toimesta koko sisällön saamiseksi.
-- Ehdotukset ilmestyvät automaattisesti, kun haut ovat tyhjiä.
-
-## Tällä hetkellä tuetut SDK:t
-- Wink Python SDK:t
-
-## Tulevaisuuden suunnitelma (korkean tason)
-- Lisäkieliset SDK:t (Java, JS/TS)
-- TripPay SDK:iden lisääminen
+- Jokainen palautettu URI voidaan avata agentin toimesta täydellisen sisällön saamiseksi.
+- `wink://api` -puu on reaaliaikainen ja seuraa nykyistä ylävirran OpenAPI-katalogia eikä generoituja repo-indeksejä.
+- Ehdotukset ilmestyvät automaattisesti, kun hakukyselyt ovat tyhjiä.
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink GitHubissa</LinkButton>

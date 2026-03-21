@@ -1,0 +1,66 @@
+---
+title: Webhook integrācija
+description: Šī rokasgrāmata parāda izstrādātājiem, kā iestatīt webhookus, lai saņemtu reāllaika paziņojumus par rezervācijām, maksājumiem un citiem notikumiem.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhooki ļauj jūsu sistēmām saņemt reāllaika paziņojumus, kad jūsu Wink kontā notiek notikumi — jaunas rezervācijas, atcelšanas, maksājumu atjauninājumi un citi. Šī rokasgrāmata ved jūs cauri iestatīšanai un labākajām praksēm.
+
+## Auditorija
+
+Šī rokasgrāmata ir paredzēta izstrādātājiem, kas integrē Wink ar ārējām sistēmām, piemēram, īpašumu pārvaldības sistēmām (PMS), kanālu pārvaldniekiem, CRM vai pielāgotām informācijas paneļiem.
+
+## Kā darbojas webhooki
+
+1. Jūs reģistrējat webhook URL Wink.
+2. Kad notiek notikums (piemēram, jauna rezervācija), Wink nosūta HTTP POST uz jūsu URL.
+3. Jūsu serveris apstrādā datus un atbild ar `200 OK`.
+
+## Webhook iestatīšana
+
+<Steps>
+1. Piesakieties savā kontā (Extranet, Studio vai TripPay — visi atbalsta webhookus).
+2. Dodieties uz `Applications` un pēc tam `Webhooks`. Skatīt [Webhooks](/lv/my-account/webhooks).
+3. Noklikšķiniet uz `Create webhook`.
+4. Ievadiet **nosaukumu** (piemēram, "PMS Booking Sync").
+5. Ievadiet savu **webhook URL** — HTTPS galapunktu jūsu serverī.
+6. **Izvēlieties notikumus** — izvēlieties konkrētus notikumus, uz kuriem abonēties, vai atstājiet tukšu, lai saņemtu visus notikumus.
+7. Ieslēdziet **Enabled**.
+8. Noklikšķiniet uz `Save`.
+</Steps>
+
+## Notikumu veidi
+
+Wink atbalsta dažādus notikumu veidus. Biežākie notikumi ir:
+
+- **Rezervācija izveidota** — jauna rezervācija ir apstiprināta.
+- **Rezervācija atcelta** — rezervācija ir atcelta.
+- **Maksājums pabeigts** — maksājums ir apstrādāts.
+- **Rezervācija atjaunināta** — rezervācijas dati ir mainīti.
+
+:::tip
+Sāciet, abonējot visus notikumus. Kad sapratīsiet datu saturu, varat sašaurināt tikai uz tiem notikumiem, kas nepieciešami jūsu sistēmai.
+:::
+
+## Labākās prakses
+
+- **Izmantojiet HTTPS** — Wink nosūta datus tikai uz HTTPS galapunktiem.
+- **Atbildiet ātri** — atgrieziet `200 OK` tiklīdz saņemat datus. Smagu apstrādi veiciet asinhroni.
+- **Idempotence** — jūsu apstrādātājam jābūt idempotentam. Wink var mēģināt piegādāt datus atkārtoti, ja nesaņem `200` atbildi.
+- **Avota pārbaude** — pārbaudiet, ka ienākošie pieprasījumi ir no Wink, pirms tos apstrādājat.
+- **Žurnālu veidošana** — reģistrējiet katru saņemto webhook datu. Tas ievērojami atvieglo integrācijas problēmu novēršanu.
+
+## Pauzēšana un dzēšana
+
+Jūs varat **atspējot** webhooku, neizdzēšot to. Tas pauzē piegādi, lai varētu veikt problēmu novēršanu, nezaudējot konfigurāciju. Kad esat gatavs, ieslēdziet to atpakaļ.
+
+Webhook dzēšana to neatgriezeniski noņem. Jebkura integrācija, kas paļaujas uz šo webhooku, pārstās saņemt paziņojumus.
+
+## Papildu lasāmviela
+
+- [Webhooks](/lv/my-account/webhooks) — pilna webhook pārvaldības atsauce.
+- [Applications](/lv/my-account/applications) — pārvaldiet savas API akreditācijas.
+- [Developers > APIs](/lv/developers/apis) — pilna API dokumentācija.

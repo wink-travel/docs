@@ -3,13 +3,11 @@ title: Điều khoản và Điều kiện
 description: Điều khoản và Điều kiện dành cho tất cả người dùng và tổ chức của Wink.
 ---
 
-# Điều khoản và Điều kiện
-
 Mỗi cổng thông tin có thể có các điều khoản và điều kiện khác nhau. Vui lòng truy cập phần bên dưới phù hợp với bạn và tìm phần phụ có tên Điều khoản Dịch vụ và Điều khoản Thanh toán.
 
-## Cổng thông tin liên kết
+## Cổng thông tin đối tác
 
-Dành cho các đối tác liên kết muốn tìm hiểu cách kiếm thu nhập thụ động bằng cách kiếm tiền từ các tài khoản mạng xã hội của bạn với Wink.  
+Dành cho các đối tác muốn tìm hiểu cách kiếm thu nhập thụ động bằng cách kiếm tiền từ các tài khoản mạng xã hội của bạn với Wink.  
 [Wink Studio](https://studio.wink.travel) có tất cả các công cụ bạn cần để bán hàng như một chuyên gia.
 
 <LinkButton href="/vi/studio/what-is-studio">
@@ -26,7 +24,7 @@ Tìm hiểu thêm về công cụ đặt phòng của chúng tôi
 
 ## Cổng thông tin bất động sản
 
-Dành cho các bất động sản muốn bắt đầu bán hàng trên Wink. Sử dụng các công cụ của chúng tôi để bán hàng và tiếp thị hiệu quả trực tuyến và có được một đội ngũ đối tác liên kết từ khắp nơi trên thế giới giúp bạn có khách hàng và đặt phòng.
+Dành cho các bất động sản muốn bắt đầu bán hàng trên Wink. Sử dụng các công cụ của chúng tôi để bán và tiếp thị hiệu quả trực tuyến và có được một đội ngũ đối tác từ khắp nơi trên thế giới giúp bạn thu hút khách hàng và đặt phòng.
 
 <LinkButton href="/vi/extranet/what-is-extranet">
 Tìm hiểu thêm về Wink Extranet

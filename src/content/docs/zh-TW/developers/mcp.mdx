@@ -1,6 +1,6 @@
 ---
 title: MCP 伺服器
-description: 透過託管的 MCP 伺服器快速連接 AI 代理至 Wink 文件與 SDK。
+description: 透過託管的 MCP 伺服器，快速將 AI 代理連接到 Wink 文件和即時 OpenAPI 規格。
 sidebar:
   order: 10
 ---
@@ -15,12 +15,12 @@ https://docs.mcp.wink.travel/mcp
 ```
 
 將相容的 AI 用戶端（VS Code、Cursor、其他實作 MCP HTTP 傳輸的工具）指向此端點，可讓它們：
-- 瀏覽產品與平台文件 (`wink://docs/...`)
-- 探索 SDK 並深入 API 類別 / 模型 (`wink://sdk/...` 與 `wink://sdk/.../docs`)
-- 對文件與 SDK 摘要執行輕量語意 / 關鍵字搜尋
+- 瀏覽產品與平台文件（`wink://docs/...`）
+- 瀏覽即時 OpenAPI 規格與操作文件（`wink://api/...`）
+- 對文件與即時 API 執行輕量語意／關鍵字搜尋
 
 ## 傳輸
-使用主要的可串流 HTTP 端點：
+使用主要可串流的 HTTP 端點：
 
 ```
 https://docs.mcp.wink.travel/mcp
@@ -32,8 +32,28 @@ https://docs.mcp.wink.travel/mcp
 https://docs.mcp.wink.travel/sse
 ```
 
+### Claude Code
+官方文件：[透過 MCP 連接 Claude Code 至工具](https://code.claude.com/docs/en/mcp)
+
+Anthropic 建議對雲端託管的 MCP 伺服器使用遠端 HTTP 傳輸：
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+在 Claude Code 中，執行 `/mcp` 以檢查伺服器狀態。若想與整個專案共用伺服器，請加上 `--scope project`，讓 Claude Code 將設定寫入 `.mcp.json`。
+
+### Codex
+官方文件：[Codex 的 Docs MCP 快速入門](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI 透過 Codex CLI 文件說明 MCP 設定，並指出此設定會與 IDE 擴充功能共用：
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
+```
+
 ### Cursor
-Cursor MCP 文件：https://cursor.com/docs/context/mcp  
+Cursor MCP 文件：https://cursor.com/docs/context/mcp
 設定：透過 MCP 設定新增遠端伺服器。
 ```json
 {
@@ -46,8 +66,8 @@ Cursor MCP 文件：https://cursor.com/docs/context/mcp
 ```
 
 ### VS Code
-官方文件：https://code.visualstudio.com/docs/copilot/customization/mcp-servers  
-最簡遠端設定（使用者或工作區 `mcp.json`）：
+官方文件：https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+最簡遠端設定（使用者或工作區的 `mcp.json`）：
 ```json
 {
   "servers": {
@@ -61,45 +81,41 @@ Cursor MCP 文件：https://cursor.com/docs/context/mcp
 
 提示：
 - 使用指令面板：「MCP: List Servers」確認連線並瀏覽工具。
-- 工具選擇器可啟用/停用 `sdk_search` 與 `docs_search`。
+- 工具選擇器可啟用／停用 `api_search` 和 `docs_search`。
 - 新增上下文：聊天視圖 → 新增上下文 → MCP 資源，附加文件頁面。
 
 ## 核心資源 URI
 
 | URI | 說明 |
-|-----|------|
+|-----|-------------|
 | `wink://docs` | 文件索引（依類別分組） |
 | `wink://docs/{path}` | 特定文件文章（Markdown / MDX） |
-| `wink://sdk` | SDK 概覽（每個 SDK + 文件計數） |
-| `wink://sdk/{sdkPath}` | SDK README / 模組文件資料夾 / 特定模組文件 |
-
-### 模組文件
-開啟 SDK 文件資料夾（例如 `wink://sdk/python/wink-sdk-booking/docs`）會回傳分組的：
-- **API 類別**（方法數量 + 範例方法名稱）
-- **模型與類型**（API 使用的資料結構）
+| `wink://api` | 從 Wink swagger 設定發現的即時 OpenAPI 目錄 |
+| `wink://api/{apiName}` | 含認證、標籤、標頭及範例操作的精簡 API 摘要 |
+| `wink://api/{apiName}/operations` | 依標籤分組的完整操作列表 |
+| `wink://api/{apiName}/operation/{key}` | 單一操作細節（參數、請求主體、回應） |
+| `wink://api/{apiName}/schema/{schemaName}` | 已解析的元件結構，含巢狀欄位、類型與範例 |
+| `wink://api/{apiName}/operation/{key}/request` | 以請求為主的檢視，含必要輸入與最小範例負載 |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | 針對特定狀態碼的回應檢視 |
+| `wink://api/{apiName}/operation/{key}/recipe` | 呼叫該操作的任務導向流程 |
 
 ## 搜尋工具（快速參考）
 | 工具 | 目的 | 典型查詢範例 |
-|------|------|--------------|
-| `sdk_search` | 找出要使用的 SDK / API 類別 | `cancel booking`、`list properties`、`affiliate inventory` |
-| `docs_search` | 找出概念性文件 / 指南 | `authentication`、`webhooks`、`wordPress` |
+|------|---------|-----------------------|
+| `api_search` | 尋找可整合的即時 API 或操作 | `create affiliate`、`payment receipt`、`lookup inventory`、`invite manager` |
+| `docs_search` | 尋找概念性文件／指南 | `authentication`、`webhooks`、`wordPress` |
 
-留空 `query` 可接收建議。每個結果都包含可開啟的 MCP URI。
+留空 `query` 可獲得建議。每個結果都包含可開啟的 MCP URI。
+對於操作命中，`api_search` 也會回傳連結的請求、回應、結構與流程 URI，讓代理能直接跳轉至最有用的子資源。
 
-## 典型使用流程
-1. 使用您的意圖執行 `sdk_search`（例如 *「list properties」*）。
-2. 開啟回傳的 SDK README 或其 `docs_uri`，檢視 API / 模型。
-3. 使用 `docs_search` 查找支援概念（認證、Webhook）。
+## 典型使用模式
+1. 使用您的意圖執行 `api_search`（例如 *「create affiliate」* 或 *「payment receipt」*）。
+2. 開啟回傳的 `wink://api/...` URI，或依其連結的 `request_uri`、`response_uris`、`request_schema_uris`、`response_schema_uris` 和 `recipe_uri` 欄位操作。
+3. 使用 `docs_search` 查找支援概念（認證、Webhook、工作流程）。
 
 ## 注意事項
 - 每個回傳的 URI 代理都能開啟以取得完整內容。
+- `wink://api` 樹狀結構為即時，依據目前上游 OpenAPI 目錄，而非產生的 repo 索引。
 - 查詢為空時會自動顯示建議。
-
-## 目前支援的 SDK
-- Wink Python SDKs
-
-## 路線圖（高階）
-- 其他語言 SDK（Java、JS/TS）
-- 新增 TripPay SDKs
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink 在 GitHub</LinkButton>

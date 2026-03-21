@@ -1,0 +1,66 @@
+---
+title: Tích hợp Webhook
+description: Hướng dẫn này chỉ cho các nhà phát triển cách thiết lập webhook để nhận thông báo thời gian thực về đặt phòng, thanh toán và các sự kiện khác.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhook cho phép hệ thống của bạn nhận thông báo thời gian thực khi có sự kiện xảy ra trên tài khoản Wink của bạn — đặt phòng mới, hủy phòng, cập nhật thanh toán và nhiều hơn nữa. Hướng dẫn này sẽ dẫn bạn qua các bước thiết lập và các thực hành tốt nhất.
+
+## Đối tượng
+
+Hướng dẫn này dành cho các nhà phát triển tích hợp Wink với các hệ thống bên ngoài như hệ thống quản lý bất động sản (PMS), trình quản lý kênh, CRM hoặc bảng điều khiển tùy chỉnh.
+
+## Cách webhook hoạt động
+
+1. Bạn đăng ký một URL webhook trên Wink.
+2. Khi có sự kiện xảy ra (ví dụ: một đặt phòng mới), Wink sẽ gửi một HTTP POST đến URL của bạn.
+3. Máy chủ của bạn xử lý payload và phản hồi với `200 OK`.
+
+## Thiết lập webhook
+
+<Steps>
+1. Đăng nhập vào tài khoản của bạn (Extranet, Studio hoặc TripPay — tất cả đều hỗ trợ webhook).
+2. Điều hướng đến `Applications` rồi đến `Webhooks`. Xem [Webhooks](/vi/my-account/webhooks).
+3. Nhấn `Create webhook`.
+4. Nhập **tên** (ví dụ: "Đồng bộ Đặt phòng PMS").
+5. Nhập **URL webhook** của bạn — điểm cuối HTTPS trên máy chủ của bạn.
+6. **Chọn sự kiện** — Chọn các sự kiện cụ thể để đăng ký, hoặc để trống để nhận tất cả các sự kiện.
+7. Bật **Enabled**.
+8. Nhấn `Save`.
+</Steps>
+
+## Các loại sự kiện
+
+Wink hỗ trợ nhiều loại sự kiện khác nhau. Các sự kiện phổ biến bao gồm:
+
+- **Đặt phòng được tạo** — Một đặt phòng mới đã được xác nhận.
+- **Đặt phòng bị hủy** — Một đặt phòng đã bị hủy.
+- **Thanh toán hoàn tất** — Thanh toán đã được xử lý.
+- **Đặt phòng được cập nhật** — Thông tin về đặt phòng đã thay đổi.
+
+:::tip
+Bắt đầu bằng cách đăng ký tất cả các sự kiện. Khi bạn hiểu payload, bạn có thể thu hẹp chỉ nhận các sự kiện mà hệ thống của bạn cần.
+:::
+
+## Thực hành tốt nhất
+
+- **Sử dụng HTTPS** — Wink chỉ gửi payload đến các điểm cuối HTTPS.
+- **Phản hồi nhanh** — Trả về `200 OK` ngay khi nhận payload. Thực hiện các xử lý nặng một cách bất đồng bộ.
+- **Tính idempotent** — Bộ xử lý của bạn nên có tính idempotent. Wink có thể thử gửi lại nếu không nhận được phản hồi `200`.
+- **Xác thực nguồn** — Xác minh rằng các yêu cầu đến là từ Wink trước khi xử lý.
+- **Ghi nhật ký** — Ghi lại mọi payload webhook bạn nhận được. Điều này giúp việc gỡ lỗi tích hợp dễ dàng hơn nhiều.
+
+## Tạm dừng và xóa
+
+Bạn có thể **vô hiệu hóa** một webhook mà không cần xóa nó. Điều này tạm dừng việc gửi thông báo để bạn có thể khắc phục sự cố mà không mất cấu hình. Khi sẵn sàng, bật lại.
+
+Xóa webhook sẽ loại bỏ nó vĩnh viễn. Bất kỳ tích hợp nào dựa vào webhook đó sẽ ngừng nhận thông báo.
+
+## Đọc thêm
+
+- [Webhooks](/vi/my-account/webhooks) — Tham khảo đầy đủ về quản lý webhook.
+- [Applications](/vi/my-account/applications) — Quản lý thông tin xác thực API của bạn.
+- [Developers > APIs](/vi/developers/apis) — Tài liệu API đầy đủ.

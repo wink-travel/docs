@@ -3,8 +3,6 @@ title: Termos e Condições
 description: Termos e Condições para todos os usuários e entidades Wink.
 ---
 
-# Termos e Condições
-
 Cada portal pode ter termos e condições diferentes. Por favor, vá para a seção abaixo que se aplica a você e procure a subseção chamada Termos de Serviço e Condições de Pagamento.
 
 ## Portal de afiliados

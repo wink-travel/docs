@@ -1,6 +1,6 @@
 ---
 title: MCP 서버
-description: 호스팅된 MCP 서버를 통해 AI 에이전트를 Wink 문서 및 SDK에 빠르게 연결하세요.
+description: 호스팅된 MCP 서버를 통해 AI 에이전트를 Wink 문서 및 실시간 OpenAPI 사양에 빠르게 연결하세요.
 sidebar:
   order: 10
 ---
@@ -14,10 +14,10 @@ import { LinkButton } from '@astrojs/starlight/components';
 https://docs.mcp.wink.travel/mcp
 ```
 
-호환되는 AI 클라이언트(VS Code, Cursor, MCP HTTP 전송을 구현한 기타 클라이언트)를 이 엔드포인트에 연결하여 다음을 수행할 수 있습니다:
+호환되는 AI 클라이언트(VS Code, Cursor, MCP HTTP 전송을 구현한 기타 클라이언트)를 이 엔드포인트로 지정하여 다음을 수행할 수 있습니다:
 - 제품 및 플랫폼 문서 탐색 (`wink://docs/...`)
-- SDK 발견 및 API 클래스 / 모델 상세 탐색 (`wink://sdk/...` 및 `wink://sdk/.../docs`)
-- 문서 및 SDK 요약에 대한 경량 의미론적 / 키워드 검색 수행
+- 실시간 OpenAPI 사양 및 작업 문서 탐색 (`wink://api/...`)
+- 문서 및 실시간 API에 대한 경량 의미론적 / 키워드 검색 수행
 
 ## 전송
 기본 스트리밍 가능한 HTTP 엔드포인트를 사용하세요:
@@ -32,8 +32,28 @@ https://docs.mcp.wink.travel/mcp
 https://docs.mcp.wink.travel/sse
 ```
 
+### Claude Code
+공식 문서: [MCP를 통해 Claude Code를 도구에 연결하기](https://code.claude.com/docs/en/mcp)
+
+Anthropic은 클라우드 호스팅 MCP 서버에 대해 원격 HTTP 전송을 권장합니다:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+Claude Code 내에서 `/mcp`를 실행하여 서버 상태를 확인하세요. 전체 저장소와 서버를 공유하려면 `--scope project`를 추가하여 Claude Code가 설정을 `.mcp.json`에 기록하도록 하세요.
+
+### Codex
+공식 문서: [Codex용 Docs MCP 빠른 시작](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI는 Codex CLI를 통해 MCP 설정을 문서화하며, 이 구성이 IDE 확장과 공유된다고 명시합니다:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
+```
+
 ### Cursor
-Cursor MCP 문서: https://cursor.com/docs/context/mcp  
+Cursor MCP 문서: https://cursor.com/docs/context/mcp
 설정: MCP 설정을 통해 원격 서버 추가.
 ```json
 {
@@ -46,8 +66,8 @@ Cursor MCP 문서: https://cursor.com/docs/context/mcp
 ```
 
 ### VS Code
-공식 문서: https://code.visualstudio.com/docs/copilot/customization/mcp-servers  
-최소 원격 구성 (사용자 또는 작업공간 `mcp.json`):
+공식 문서: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+최소 원격 구성(사용자 또는 작업공간 `mcp.json`):
 ```json
 {
   "servers": {
@@ -60,9 +80,9 @@ Cursor MCP 문서: https://cursor.com/docs/context/mcp
 ```
 
 팁:
-- 명령 팔레트에서 “MCP: List Servers”를 사용해 연결 확인 및 도구 탐색.
-- 도구 선택기에서 `sdk_search` 및 `docs_search` 활성화/비활성화 가능.
-- 컨텍스트 추가: 채팅 뷰 → 컨텍스트 추가 → MCP 리소스에서 문서 페이지 첨부.
+- 명령 팔레트에서 “MCP: List Servers”를 사용하여 연결 확인 및 도구 탐색.
+- 도구 선택기에서 `api_search` 및 `docs_search` 활성화/비활성화 가능.
+- 컨텍스트 추가: 채팅 뷰 → 컨텍스트 추가 → MCP 리소스를 선택하여 문서 페이지 첨부.
 
 ## 핵심 리소스 URI
 
@@ -70,36 +90,32 @@ Cursor MCP 문서: https://cursor.com/docs/context/mcp
 |-----|-------------|
 | `wink://docs` | 문서 인덱스 (카테고리별 그룹화) |
 | `wink://docs/{path}` | 특정 문서 항목 (Markdown / MDX) |
-| `wink://sdk` | SDK 개요 (각 SDK 및 문서 수 포함) |
-| `wink://sdk/{sdkPath}` | SDK README / 모듈 문서 폴더 / 특정 모듈 문서 |
-
-### 모듈 문서
-SDK 문서 폴더를 열면 (예: `wink://sdk/python/wink-sdk-booking/docs`) 다음이 그룹화되어 반환됩니다:
-- **API 클래스** (메서드 수 및 샘플 메서드 이름)
-- **모델 및 타입** (해당 API에서 사용하는 데이터 구조)
+| `wink://api` | Wink의 swagger 구성에서 발견된 실시간 OpenAPI 카탈로그 |
+| `wink://api/{apiName}` | 인증, 태그, 헤더, 샘플 작업이 포함된 간략 API 요약 |
+| `wink://api/{apiName}/operations` | 태그별 그룹화된 전체 작업 목록 |
+| `wink://api/{apiName}/operation/{key}` | 개별 작업 상세 (매개변수, 요청 본문, 응답) |
+| `wink://api/{apiName}/schema/{schemaName}` | 중첩 필드, 타입, 예제가 포함된 해석된 컴포넌트 스키마 |
+| `wink://api/{apiName}/operation/{key}/request` | 필수 입력 및 최소 예제 페이로드가 포함된 요청 중심 뷰 |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | 특정 상태 코드에 대한 응답 중심 뷰 |
+| `wink://api/{apiName}/operation/{key}/recipe` | 해당 작업을 올바르게 호출하기 위한 작업 지향 흐름 |
 
 ## 검색 도구 (간단 참조)
 | 도구 | 용도 | 일반 쿼리 예시 |
 |------|---------|-----------------------|
-| `sdk_search` | 사용할 SDK / API 클래스 찾기 | `예약 취소`, `숙소 목록`, `제휴 인벤토리` |
-| `docs_search` | 개념 문서 / 가이드 찾기 | `인증`, `웹훅`, `워드프레스` |
+| `api_search` | 통합할 실시간 API 또는 작업 찾기 | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
+| `docs_search` | 개념 문서 / 가이드 찾기 | `authentication`, `webhooks`, `wordPress` |
 
-`query`를 비워두면 제안이 제공됩니다. 모든 결과에는 열 수 있는 MCP URI가 포함됩니다.
+`query`를 비워두면 제안을 받을 수 있습니다. 모든 결과에는 열 수 있는 MCP URI가 포함됩니다.
+작업 결과의 경우, `api_search`는 연결된 요청, 응답, 스키마, 레시피 URI도 반환하여 에이전트가 가장 유용한 하위 리소스로 바로 이동할 수 있습니다.
 
 ## 일반 사용 패턴
-1. 의도에 맞는 `sdk_search` 실행 (예: *"숙소 목록"*).
-2. 반환된 SDK README 또는 `docs_uri`를 열어 API / 모델 확인.
-3. 지원 개념(인증, 웹훅)을 위해 `docs_search` 사용.
+1. 의도에 맞는 `api_search` 실행 (예: *"create affiliate"* 또는 *"payment receipt"*).
+2. 반환된 `wink://api/...` URI를 열거나 연결된 `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris`, `recipe_uri` 필드를 따라가세요.
+3. 지원 개념(인증, 웹훅, 워크플로우)을 위해 `docs_search` 사용.
 
-## 참고
-- 반환된 각 URI는 에이전트가 전체 콘텐츠를 열 수 있습니다.
-- 쿼리가 비어 있으면 제안이 자동으로 표시됩니다.
-
-## 현재 지원되는 SDK
-- Wink Python SDK
-
-## 로드맵 (고수준)
-- 추가 언어 SDK (Java, JS/TS)
-- TripPay SDK 추가
+## 참고 사항
+- 반환된 각 URI는 에이전트가 전체 내용을 열 수 있습니다.
+- `wink://api` 트리는 실시간이며 생성된 저장소 인덱스 대신 현재 상위 OpenAPI 카탈로그를 따릅니다.
+- 쿼리가 비어 있을 때 자동으로 제안이 표시됩니다.
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">GitHub의 Wink</LinkButton>

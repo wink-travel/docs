@@ -1,0 +1,66 @@
+---
+title: Integrasyon ng Webhook
+description: Ipinapakita ng gabay na ito sa mga developer kung paano mag-set up ng mga webhook upang makatanggap ng real-time na mga notification para sa mga booking, bayad, at iba pang mga kaganapan.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Pinapayagan ng mga webhook ang iyong mga sistema na makatanggap ng real-time na mga notification kapag may mga kaganapan sa iyong Wink account — mga bagong booking, pagkansela, mga update sa bayad, at iba pa. Ginagabayan ka ng gabay na ito sa pag-setup at mga pinakamahusay na kasanayan.
+
+## Audience
+
+Ang gabay na ito ay para sa mga developer na nag-iintegrate ng Wink sa mga panlabas na sistema tulad ng property management systems (PMS), channel managers, CRMs, o mga custom dashboard.
+
+## Paano gumagana ang mga webhook
+
+1. Magrehistro ka ng webhook URL sa Wink.
+2. Kapag may nangyaring kaganapan (hal., bagong booking), magpapadala ang Wink ng HTTP POST sa iyong URL.
+3. Pinoproseso ng iyong server ang payload at sumasagot ng `200 OK`.
+
+## Pag-set up ng webhook
+
+<Steps>
+1. Mag-log in sa iyong account (Extranet, Studio, o TripPay — lahat ay sumusuporta sa mga webhook).
+2. Pumunta sa `Applications` at pagkatapos ay `Webhooks`. Tingnan ang [Webhooks](/tl/my-account/webhooks).
+3. I-click ang `Create webhook`.
+4. Ilagay ang isang **pangalan** (hal., "PMS Booking Sync").
+5. Ilagay ang iyong **webhook URL** — ang HTTPS endpoint sa iyong server.
+6. **Pumili ng mga kaganapan** — Piliin ang mga partikular na kaganapan na nais mong subaybayan, o iwanang walang laman upang makatanggap ng lahat ng kaganapan.
+7. I-toggle ang **Enabled** sa on.
+8. I-click ang `Save`.
+</Steps>
+
+## Mga uri ng kaganapan
+
+Sinusuportahan ng Wink ang iba't ibang uri ng mga kaganapan. Kabilang sa mga karaniwang kaganapan ang:
+
+- **Booking created** — Nakumpirma ang isang bagong booking.
+- **Booking cancelled** — Nakansela ang isang booking.
+- **Payment completed** — Naproseso na ang bayad.
+- **Booking updated** — Nagbago ang mga detalye ng booking.
+
+:::tip
+Magsimula sa pamamagitan ng pagsubscribe sa lahat ng mga kaganapan. Kapag naunawaan mo na ang mga payload, maaari mong paliitin ito sa mga kaganapan lamang na kailangan ng iyong sistema.
+:::
+
+## Mga pinakamahusay na kasanayan
+
+- **Gumamit ng HTTPS** — Nagpapadala ang Wink ng mga payload sa mga HTTPS endpoint lamang.
+- **Mabilis na tumugon** — Ibalik agad ang `200 OK` kapag natanggap mo ang payload. Gawin ang mabibigat na proseso nang asynchronous.
+- **Idempotency** — Dapat idempotent ang iyong handler. Maaaring subukang muli ng Wink ang paghahatid kung hindi makatanggap ng `200` na tugon.
+- **I-validate ang pinagmulan** — Siguraduhing ang mga papasok na request ay mula sa Wink bago iproseso.
+- **Pag-log** — I-log ang bawat webhook payload na natatanggap mo. Pinapadali nito ang pag-debug ng mga isyu sa integrasyon.
+
+## Pag-pause at pagtanggal
+
+Maaari mong **i-disable** ang isang webhook nang hindi ito tinatanggal. Pinapahinto nito ang paghahatid upang makapag-troubleshoot ka nang hindi nawawala ang iyong configuration. Kapag handa ka na, i-toggle ito pabalik sa on.
+
+Ang pagtanggal ng webhook ay permanente itong tinatanggal. Titigil sa pagtanggap ng mga notification ang anumang integrasyon na umaasa sa webhook na iyon.
+
+## Karagdagang babasahin
+
+- [Webhooks](/tl/my-account/webhooks) — Buong sanggunian para sa pamamahala ng webhook.
+- [Applications](/tl/my-account/applications) — Pamahalaan ang iyong mga API credentials.
+- [Developers > APIs](/tl/developers/apis) — Buong dokumentasyon ng API.

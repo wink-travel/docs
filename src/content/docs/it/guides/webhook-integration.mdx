@@ -1,0 +1,66 @@
+---
+title: Integrazione Webhook
+description: Questa guida mostra agli sviluppatori come configurare i webhook per ricevere notifiche in tempo reale per prenotazioni, pagamenti e altri eventi.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+I webhook permettono ai tuoi sistemi di ricevere notifiche in tempo reale quando si verificano eventi sul tuo account Wink — nuove prenotazioni, cancellazioni, aggiornamenti di pagamento e altro. Questa guida ti accompagna nella configurazione e nelle migliori pratiche.
+
+## Pubblico
+
+Questa guida è rivolta agli sviluppatori che integrano Wink con sistemi esterni come property management system (PMS), channel manager, CRM o dashboard personalizzate.
+
+## Come funzionano i webhook
+
+1. Registri un URL webhook su Wink.
+2. Quando si verifica un evento (es. una nuova prenotazione), Wink invia un HTTP POST al tuo URL.
+3. Il tuo server elabora il payload e risponde con un `200 OK`.
+
+## Configurare un webhook
+
+<Steps>
+1. Accedi al tuo account (Extranet, Studio o TripPay — tutti supportano i webhook).
+2. Vai su `Applications` e poi su `Webhooks`. Vedi [Webhooks](/it/my-account/webhooks).
+3. Clicca su `Create webhook`.
+4. Inserisci un **nome** (es. "Sincronizzazione Prenotazioni PMS").
+5. Inserisci il tuo **URL webhook** — l’endpoint HTTPS sul tuo server.
+6. **Seleziona eventi** — scegli eventi specifici a cui iscriverti, oppure lascia vuoto per ricevere tutti gli eventi.
+7. Attiva l’opzione **Enabled**.
+8. Clicca su `Save`.
+</Steps>
+
+## Tipi di eventi
+
+Wink supporta diversi tipi di eventi. Gli eventi più comuni includono:
+
+- **Prenotazione creata** — È stata confermata una nuova prenotazione.
+- **Prenotazione cancellata** — Una prenotazione è stata cancellata.
+- **Pagamento completato** — Il pagamento è stato elaborato.
+- **Prenotazione aggiornata** — Sono state modificate le informazioni di una prenotazione.
+
+:::tip
+Inizia iscrivendoti a tutti gli eventi. Una volta compresi i payload, puoi restringere la selezione solo agli eventi di cui il tuo sistema ha bisogno.
+:::
+
+## Migliori pratiche
+
+- **Usa HTTPS** — Wink invia i payload solo a endpoint HTTPS.
+- **Rispondi rapidamente** — Restituisci un `200 OK` non appena ricevi il payload. Eventuali elaborazioni pesanti eseguili in modo asincrono.
+- **Idempotenza** — Il tuo handler deve essere idempotente. Wink può ritentare la consegna se non riceve una risposta `200`.
+- **Valida la fonte** — Verifica che le richieste in arrivo provengano da Wink prima di elaborarle.
+- **Logging** — Registra ogni payload webhook ricevuto. Questo facilita molto il debug delle integrazioni.
+
+## Mettere in pausa e cancellare
+
+Puoi **disabilitare** un webhook senza cancellarlo. Questo mette in pausa la consegna così puoi risolvere problemi senza perdere la configurazione. Quando sei pronto, riattivalo.
+
+Cancellare un webhook lo rimuove definitivamente. Qualsiasi integrazione che si basa su quel webhook smetterà di ricevere notifiche.
+
+## Ulteriori letture
+
+- [Webhooks](/it/my-account/webhooks) — Riferimento completo per la gestione dei webhook.
+- [Applications](/it/my-account/applications) — Gestisci le tue credenziali API.
+- [Developers > APIs](/it/developers/apis) — Documentazione completa delle API.

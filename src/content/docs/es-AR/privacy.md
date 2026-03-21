@@ -5,15 +5,13 @@ sidebar:
   order: 5
 ---
 
-# Política de Privacidad
-
 Winkfluence, operando bajo el nombre Wink (la “Compañía”), desea informar a quienes contacten a la Compañía que es necesario recopilar, compilar y usar sus datos personales para el servicio de la Compañía de acuerdo con esta Política de Privacidad. Al contactar y revelar sus datos personales a la Compañía con fines de comunicación, coordinación y/o provisión de los servicios de la Compañía para usted, se considera que usted acepta y se compromete a cumplir con esta Política de Privacidad.
 
-Datos personales que se procesan, la Compañía puede obtener sus datos personales de varios canales como los siguientes:
+Datos personales que se procesan, la Compañía puede obtener sus datos personales a través de varios canales como los siguientes:
 
-(1) Directamente de usted a través de las comunicaciones de la Compañía con usted;
+(1) Directamente de usted mediante las comunicaciones de la Compañía con usted;
 
-(2) Indirectamente, mediante una referencia de un tercero a quien usted pueda otorgar consentimiento para revelar sus datos personales a la Compañía; o
+(2) Indirectamente, a través de una referencia de un tercero a quien usted pueda otorgar consentimiento para divulgar sus datos personales a la Compañía; o
 
 (3) Recopilados automáticamente a través del sistema cuando usted accede al sitio web de la Compañía y/o utiliza los servicios.
 
@@ -35,31 +33,31 @@ Propósito del procesamiento y uso de los datos personales, la Compañía necesi
 
 (3) Para el propósito de construir y mejorar las relaciones comerciales, incluyendo mejorar el servicio que la Compañía le brinda, para lo cual la Compañía puede recopilar y/o usar sus datos personales con fines de control, aseguramiento del servicio, análisis de gestión y resolución de problemas relacionados con el negocio, incluyendo, pero no limitado a, capacitación de empleados y planificación de mejoras futuras del servicio;
 
-(4) Para el propósito de proteger y defender los derechos legales de la Compañía en caso de que usted y la Compañía tengan una disputa; y
+(4) Para proteger y defender los derechos legales de la Compañía en caso de que usted y la Compañía tengan una disputa; y
 
-(5) Sujeto a un consentimiento explícito otorgado a la Compañía, como comunicaciones de marketing y boletines informativos, la Compañía puede procesar los datos personales para los fines definidos en el consentimiento.
+(5) Sujeto a un consentimiento explícito otorgado a la Compañía, como comunicaciones de marketing y boletines informativos, la Compañía puede procesar los datos personales para los fines definidos en dicho consentimiento.
 
-Periodo de retención de los datos personales, para cumplir con los fines descritos anteriormente, la Compañía necesita recopilar, compilar y procesar sus datos personales según el siguiente período:
+Periodo de retención de los datos personales, para cumplir con los fines descritos anteriormente, la Compañía necesita recopilar, compilar y procesar sus datos personales durante el siguiente período:
 
-(1) Para el procesamiento de datos personales con el fin de proporcionar servicios, ejecutar un acuerdo y/o cumplir con derechos y deberes bajo el acuerdo, la Compañía necesita procesar sus datos personales mientras la Compañía tenga el deber de brindarle servicios;
+(1) Para el procesamiento de datos personales con el fin de proveer servicios, ejecutar un acuerdo y/o cumplir con derechos y obligaciones bajo el acuerdo, la Compañía necesita procesar sus datos personales mientras la Compañía tenga el deber de proveerle servicios;
 
-(2) Para el procesamiento de datos personales con el fin de cumplir con deberes según las leyes aplicables, la Compañía necesita procesar sus datos personales por un período de tiempo especificado por las leyes aplicables;
+(2) Para el procesamiento de datos personales con el fin de cumplir con deberes según las leyes aplicables, la Compañía necesita procesar sus datos personales por el período de tiempo especificado por dichas leyes;
 
-(3) Para el procesamiento de datos personales con el fin de construir y mejorar relaciones comerciales y/o mejorar el servicio, la Compañía se reserva el derecho de conservar esos datos personales en la medida en que la Compañía pueda tener una necesidad comercial. La Compañía garantiza que la retención de los datos personales no afectará de manera irrazonable los derechos del titular de los datos;
+(3) Para el procesamiento de datos personales con el fin de construir y mejorar relaciones comerciales y/o mejorar el servicio, la Compañía se reserva el derecho de conservar esos datos personales en la medida en que la Compañía tenga una necesidad comercial. La Compañía garantiza que la retención de los datos personales no afectará de manera irrazonable los derechos del titular de los datos;
 
 (4) Para el procesamiento de datos personales con el fin de proteger y defender los derechos legítimos de la Compañía, la Compañía necesita conservar dichos datos personales según lo prescrito por las leyes aplicables; y
 
 (5) En caso de que usted otorgue consentimiento a la Compañía para procesar sus datos personales para fines específicos, la Compañía procesará sus datos personales hasta que usted retire dicho consentimiento.
 
-Divulgación de los datos personales, en general, sus datos personales no serán divulgados, excepto en circunstancias en las que la Compañía necesite divulgar a las siguientes personas:
+Divulgación de los datos personales, en general, sus datos personales no serán divulgados, excepto en circunstancias en las que la Compañía necesite divulgarlos a las siguientes personas:
 
-(1) Proveedores de servicios externos de la Compañía contratados para brindar servicios de apoyo a la Compañía en la prestación de servicios para usted, incluyendo consultores de la Compañía. Dicha divulgación de datos personales a estos terceros se realizará de acuerdo con los fines y solo en base a la necesidad de conocer; o
+(1) Proveedores externos de servicios de la Compañía contratados para brindar servicios de apoyo a la Compañía en la prestación de servicios para usted, incluyendo consultores de la Compañía. Dicha divulgación de datos personales a estos terceros se realizará de acuerdo con los fines y solo en base a la necesidad de conocer; o
 
-(2) Autoridades gubernamentales, reguladoras o tribunales a los que la Compañía pueda estar sujeta a una orden, ley o sentencia para divulgar los datos personales.
+(2) Autoridades gubernamentales, reguladoras o tribunales a los que la Compañía pueda estar sujeta por orden, ley o sentencia para divulgar los datos personales.
 
 La Compañía se compromete a implementar medidas adecuadas de seguridad de datos personales para prevenir cualquier acceso, modificación, alteración o divulgación no autorizada e ilegal. La Compañía se compromete a revisar estas medidas regularmente para asegurar su compatibilidad con los estándares y las leyes aplicables.
 
-Derechos del titular de los datos, la Compañía respeta sus derechos como titular de los datos bajo las leyes aplicables. Usted puede contactar a la Compañía para ejercer los derechos que son (1) el derecho a retirar el consentimiento, (2) el derecho de acceso, (3) el derecho a solicitar una copia de los datos personales, (4) el derecho a corregir los datos personales, (5) el derecho a oponerse a cualquier procesamiento de los datos personales, (6) el derecho a solicitar la portabilidad de los datos en caso de que la Compañía almacene los datos personales en un formato legible o comúnmente utilizado por herramientas o equipos automatizados, incluyendo el derecho a transferir dichos datos personales a otros controladores de datos, (7) el derecho a solicitar la eliminación o desidentificación de los datos personales cuando no exista necesidad de procesarlos, (8) el derecho a solicitar la suspensión del uso de los datos personales, y (9) el derecho a presentar una queja.
+Derechos del titular de los datos, la Compañía respeta sus derechos como titular de los datos bajo las leyes aplicables. Usted puede contactar a la Compañía para ejercer los derechos que son (1) el derecho a retirar el consentimiento, (2) el derecho de acceso, (3) el derecho a solicitar una copia de los datos personales, (4) el derecho a corregir los datos personales, (5) el derecho a oponerse a cualquier procesamiento de los datos personales, (6) el derecho a solicitar la portabilidad de los datos en caso de que la Compañía almacene los datos personales en un formato legible o comúnmente usado por herramientas o equipos automatizados, incluyendo el derecho a transferir dichos datos personales a otros controladores de datos, (7) el derecho a solicitar la eliminación o desidentificación de los datos personales cuando no exista necesidad de procesarlos, (8) el derecho a solicitar la suspensión del uso de los datos personales, y (9) el derecho a presentar una queja.
 
 Información de contacto de la Compañía
 

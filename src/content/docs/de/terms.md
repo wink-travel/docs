@@ -3,8 +3,6 @@ title: Allgemeine Geschäftsbedingungen
 description: Allgemeine Geschäftsbedingungen für alle Wink-Nutzer und -Einheiten.
 ---
 
-# Allgemeine Geschäftsbedingungen
-
 Jedes Portal kann unterschiedliche Geschäftsbedingungen haben. Bitte gehen Sie zu dem für Sie zutreffenden Abschnitt unten und suchen Sie den Unterabschnitt mit dem Titel Nutzungsbedingungen und Zahlungsbedingungen.
 
 ## Affiliate-Portal
@@ -18,7 +16,7 @@ Erfahren Sie mehr über Wink Studio
 
 ## Buchungsmaschine
 
-Alle Wege führen zu unserer Buchungsmaschine! Erfahren Sie, was Sie mit der anpassbarsten, reiseorientierten Buchungsmaschine auf dem Markt tun können.
+Alle Wege führen zu unserer Buchungsmaschine! Erfahren Sie, was Sie mit der anpassbarsten, auf Reisen fokussierten Buchungsmaschine auf dem Markt alles machen können.
 
 <LinkButton href="/de/booking-engine/in-a-nutshell">
 Erfahren Sie mehr über unsere Buchungsmaschine
@@ -26,7 +24,7 @@ Erfahren Sie mehr über unsere Buchungsmaschine
 
 ## Unterkunftsportal
 
-Für Unterkünfte, die mit dem Verkauf auf Wink beginnen möchten. Nutzen Sie unsere Werkzeuge, um sich online effektiv zu verkaufen und zu vermarkten und eine Armee von Affiliates aus aller Welt zu gewinnen, die Ihnen helfen, Kunden und Buchungen zu erhalten.
+Für Unterkünfte, die mit dem Verkauf auf Wink beginnen möchten. Nutzen Sie unsere Werkzeuge, um sich online effektiv zu verkaufen und zu vermarkten, und gewinnen Sie ein Netzwerk von Affiliates aus aller Welt, die Ihnen helfen, Kunden und Buchungen zu erhalten.
 
 <LinkButton href="/de/extranet/what-is-extranet">
 Erfahren Sie mehr über Wink Extranet
@@ -34,7 +32,7 @@ Erfahren Sie mehr über Wink Extranet
 
 ## Reisebüro-Portal
 
-Für Reisebüros, die herausfinden möchten, was Wink ihnen in Bezug auf maßgeschneiderte Tarife, Angebote und Inventar direkt von Lieferanten bieten kann.
+Für Reisebüros, die herausfinden möchten, was Wink ihnen in Bezug auf maßgeschneiderte Tarife, Angebote und Inventar direkt von Anbietern bieten kann.
 
 <LinkButton href="/de/travel-agent/what-is-agent">
 Erfahren Sie mehr über Wink Agent

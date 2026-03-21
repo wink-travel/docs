@@ -1,6 +1,6 @@
 ---
 title: MCP Server
-description: Forbind hurtigt AI-agenter til Wink-dokumentation og SDK'er via den hostede MCP-server.
+description: Forbind hurtigt AI-agenter til Wink-dokumentation og live OpenAPI-specifikationer via den hostede MCP-server.
 sidebar:
   order: 10
 ---
@@ -16,8 +16,8 @@ https://docs.mcp.wink.travel/mcp
 
 Peg kompatible AI-klienter (VS Code, Cursor, andre der implementerer MCP HTTP-transport) mod dette endepunkt for at lade dem:
 - Gennemse produkt- og platformdokumentation (`wink://docs/...`)
-- Opdage SDK'er og dykke ned i API-klasser / modeller (`wink://sdk/...` & `wink://sdk/.../docs`)
-- Udføre letvægts semantisk / søgeordsbaseret søgning i dokumentation og SDK-resuméer
+- Gennemse live OpenAPI-specifikationer og operation-dokumenter (`wink://api/...`)
+- Udføre letvægts semantisk / søgeordsbaseret søgning i dokumenter og live API’er
 
 ## Transport
 Brug det primære streambare HTTP-endepunkt:
@@ -32,8 +32,28 @@ Hvis din klient kun understøtter SSE, brug:
 https://docs.mcp.wink.travel/sse
 ```
 
+### Claude Code
+Officielle dokumenter: [Connect Claude Code to tools via MCP](https://code.claude.com/docs/en/mcp)
+
+Anthropic anbefaler den fjernede HTTP-transport til cloud-hostede MCP-servere:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+Inde i Claude Code, kør `/mcp` for at inspicere serverstatus. Hvis du vil dele serveren med hele repoet, tilføj `--scope project` så Claude Code skriver konfigurationen til `.mcp.json`.
+
+### Codex
+Officielle dokumenter: [Docs MCP quickstart for Codex](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI dokumenterer MCP-opsætning gennem Codex CLI og bemærker, at konfigurationen deles med IDE-udvidelsen:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
+```
+
 ### Cursor
-Cursor MCP-dokumentation: https://cursor.com/docs/context/mcp
+Cursor MCP-dokumenter: https://cursor.com/docs/context/mcp
 Opsætning: Tilføj fjernserver via MCP-indstillinger.
 ```json
 {
@@ -46,7 +66,7 @@ Opsætning: Tilføj fjernserver via MCP-indstillinger.
 ```
 
 ### VS Code
-Officiel dokumentation: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Officielle dokumenter: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
 Minimal fjernkonfiguration (bruger- eller arbejdsområde `mcp.json`):
 ```json
 {
@@ -61,45 +81,41 @@ Minimal fjernkonfiguration (bruger- eller arbejdsområde `mcp.json`):
 
 Tips:
 - Brug Command Palette: “MCP: List Servers” for at bekræfte forbindelse og gennemse værktøjer.
-- Værktøjsvælgeren lader dig aktivere/deaktivere `sdk_search` og `docs_search`.
-- Tilføj kontekst: Chat-visning → Tilføj kontekst → MCP Resources for at vedhæfte dokumentationssider.
+- Værktøjsvælgeren lader dig aktivere/deaktivere `api_search` og `docs_search`.
+- Tilføj kontekst: Chat-visning → Tilføj kontekst → MCP Resources for at vedhæfte dokumentsider.
 
-## Kerne Resource URI'er
+## Kerne Resource URIs
 
 | URI | Beskrivelse |
 |-----|-------------|
 | `wink://docs` | Dokumentationsindeks (grupperet efter kategori) |
 | `wink://docs/{path}` | Specifik dokumentationsartikel (Markdown / MDX) |
-| `wink://sdk` | SDK-oversigt (hver SDK + dokumentation tælles) |
-| `wink://sdk/{sdkPath}` | SDK README / modul-dokumentationsmappe / specifik modul-dokumentation |
-
-### Modul-dokumentation
-Åbning af en SDK-dokumentationsmappe (f.eks. `wink://sdk/python/wink-sdk-booking/docs`) returnerer grupperet:
-- **API-klasser** (metodeantal + eksempler på metodenavne)
-- **Modeller & Typer** (datastrukturer brugt af disse API'er)
+| `wink://api` | Live OpenAPI-katalog opdaget fra Winks swagger-konfiguration |
+| `wink://api/{apiName}` | Kompakt API-oversigt med autentificering, tags, headers og eksempeloperationer |
+| `wink://api/{apiName}/operations` | Fuld operationsliste grupperet efter tag |
+| `wink://api/{apiName}/operation/{key}` | Detaljer om individuel operation (parametre, anmodningskrop, svar) |
+| `wink://api/{apiName}/schema/{schemaName}` | Løst komponent-skema med indlejrede felter, typer og eksempler |
+| `wink://api/{apiName}/operation/{key}/request` | Anmodningsfokuseret visning med nødvendige input og minimal eksempelpayload |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Svarfokuseret visning for en specifik statuskode |
+| `wink://api/{apiName}/operation/{key}/recipe` | Opgaveorienteret flow for korrekt kald af den operation |
 
 ## Søgeværktøjer (Hurtig reference)
 | Værktøj | Formål | Typiske forespørgselseksempler |
 |---------|--------|-------------------------------|
-| `sdk_search` | Find hvilken SDK / API-klasse der skal bruges | `cancel booking`, `list properties`, `affiliate inventory` |
+| `api_search` | Find live API eller operation til integration | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
 | `docs_search` | Find konceptuelle dokumenter / vejledninger | `authentication`, `webhooks`, `wordPress` |
 
 Efterlad `query` tom for at modtage forslag. Hvert resultat inkluderer MCP URI, som du kan åbne.
+For operationstræffere returnerer `api_search` også tilknyttede anmodnings-, svar-, skema- og opskrifts-URIs, så agenter kan hoppe direkte til den mest nyttige underressource.
 
 ## Typisk brugsmønster
-1. Kør `sdk_search` med din hensigt (f.eks. *"list properties"*).
-2. Åbn den returnerede SDK README eller dens `docs_uri` for at undersøge API'er / modeller.
-3. Brug `docs_search` til understøttende koncepter (autentificering, webhooks).
+1. Kør `api_search` med din hensigt (f.eks. *"create affiliate"* eller *"payment receipt"*).
+2. Åbn den returnerede `wink://api/...` URI, eller følg dens tilknyttede `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` og `recipe_uri` felter.
+3. Brug `docs_search` til understøttende koncepter (autentificering, webhooks, workflows).
 
 ## Noter
 - Hver returneret URI kan åbnes af agenten for fuldt indhold.
+- `wink://api` træet er live og følger det aktuelle upstream OpenAPI-katalog i stedet for et genereret repo-indeks.
 - Forslag vises automatisk, når forespørgsler er tomme.
-
-## Aktuelt understøttede SDK'er
-- Wink Python SDK'er
-
-## Roadmap (Overordnet)
-- Yderligere sprog-SDK'er (Java, JS/TS)
-- Tilføj TripPay SDK'er
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink på GitHub</LinkButton>

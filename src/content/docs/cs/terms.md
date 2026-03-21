@@ -3,13 +3,11 @@ title: Podmínky a ujednání
 description: Podmínky a ujednání pro všechny uživatele a subjekty Wink.
 ---
 
-# Podmínky a ujednání
-
 Každý portál může mít odlišné podmínky a ujednání. Přejděte prosím do sekce níže, která se vás týká, a vyhledejte podsekci nazvanou Podmínky služby a Platební podmínky.
 
 ## Affiliate portál
 
-Pro affiliate partnery, kteří chtějí zjistit, jak si vydělat pasivní příjem monetizací svých sociálních účtů pomocí Wink.  
+Pro affiliate partnery, kteří chtějí zjistit, jak si vydělat pasivní příjem monetizací svých sociálních účtů pomocí Wink.
 [Wink Studio](https://studio.wink.travel) nabízí všechny nástroje, které potřebujete k profesionálnímu prodeji.
 
 <LinkButton href="/cs/studio/what-is-studio">
