@@ -1,6 +1,6 @@
 ---
 title: MCP Server
-description: Tengdu fljótt AI-umboðsmönnum við Wink skjöl og SDK með hýsta MCP þjóninum.
+description: Tengdu fljótt AI-umboð við Wink skjöl og lifandi OpenAPI forskriftir í gegnum hýsta MCP þjóninn.
 sidebar:
   order: 10
 ---
@@ -16,11 +16,11 @@ https://docs.mcp.wink.travel/mcp
 
 Bendið samhæfum AI viðskiptavinum (VS Code, Cursor, aðrir sem innleiða MCP HTTP flutning) á þennan enda til að leyfa þeim að:
 - Skoða vörur & pallskjöl (`wink://docs/...`)
-- Uppgötva SDK og kafa í API klasa / módel (`wink://sdk/...` & `wink://sdk/.../docs`)
-- Framkvæma létta merkingar- / lykilorðaleit yfir skjöl & SDK samantektir
+- Skoða lifandi OpenAPI forskriftir og aðgerðarskjöl (`wink://api/...`)
+- Framkvæma létta merkingar- / lykilorðaleit yfir skjöl og lifandi API
 
 ## Flutningur
-Notið aðal straumvæna HTTP endapunktinn:
+Notið aðal straumhæfan HTTP enda:
 
 ```
 https://docs.mcp.wink.travel/mcp
@@ -32,9 +32,29 @@ Ef viðskiptavinur styður aðeins SSE, notið:
 https://docs.mcp.wink.travel/sse
 ```
 
+### Claude Code
+Opinber skjöl: [Tengdu Claude Code við verkfæri í gegnum MCP](https://code.claude.com/docs/en/mcp)
+
+Anthropic mælir með fjarflutningi HTTP fyrir skýhýsta MCP þjóninn:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+Innan Claude Code, keyrðu `/mcp` til að skoða stöðu þjónsins. Ef þú vilt deila þjóninum með öllu verkefninu, bættu við `--scope project` svo Claude Code skrifi stillingarnar í `.mcp.json`.
+
+### Codex
+Opinber skjöl: [Docs MCP fljótstart fyrir Codex](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI lýsir MCP uppsetningu í gegnum Codex CLI og bendir á að stillingarnar séu deilt með IDE viðbótinni:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
+```
+
 ### Cursor
 Cursor MCP skjöl: https://cursor.com/docs/context/mcp
-Uppsetning: Bætið við fjarþjóni í gegnum MCP stillingar.
+Uppsetning: Bættu við fjarþjóni í gegnum MCP stillingar.
 ```json
 {
   "mcpServers": {
@@ -47,7 +67,7 @@ Uppsetning: Bætið við fjarþjóni í gegnum MCP stillingar.
 
 ### VS Code
 Opinber skjöl: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Lágmarks fjarstilling (notanda- eða vinnusvæðisskrá `mcp.json`):
+Lágmarks fjarstilling (notandi eða vinnusvæði `mcp.json`):
 ```json
 {
   "servers": {
@@ -60,46 +80,42 @@ Lágmarks fjarstilling (notanda- eða vinnusvæðisskrá `mcp.json`):
 ```
 
 Ábendingar:
-- Notið Command Palette: „MCP: List Servers“ til að staðfesta tengingu & skoða verkfæri.
-- Verkfæravali leyfir ykkur að virkja/óvirkja `sdk_search` og `docs_search`.
-- Bætið við samhengi: Spjallgluggi → Bæta við samhengi → MCP auðlindir til að tengja skjalsíður.
+- Notaðu Command Palette: „MCP: List Servers“ til að staðfesta tengingu & skoða verkfæri.
+- Verkfæraval leyfir þér að virkja/óvirkja `api_search` og `docs_search`.
+- Bættu við samhengi: Spjallgluggi → Bæta við samhengi → MCP Resources til að tengja skjalsíður.
 
-## Kjarnauppspretta URI
+## Kjarnauppsprettu URI
 
 | URI | Lýsing |
-|-----|---------|
-| `wink://docs` | Skjölaskrá (flokkað eftir flokkum) |
+|-----|-------------|
+| `wink://docs` | Skjalskráning (flokkað eftir flokkum) |
 | `wink://docs/{path}` | Sérstakur skjalsgrein (Markdown / MDX) |
-| `wink://sdk` | Yfirlit SDK (hvert SDK + fjöldi skjala) |
-| `wink://sdk/{sdkPath}` | SDK README / möppu skjala / sérstakt skjal |
-
-### Módulefni skjöl
-Að opna SDK skjalamöppu (t.d. `wink://sdk/python/wink-sdk-booking/docs`) skilar flokkað:
-- **API klasa** (fjöldi aðferða + dæmi um aðferðanöfn)
-- **Módel & Tegundir** (gagnauppbyggingar sem API notar)
+| `wink://api` | Lifandi OpenAPI skrá sem finnst úr Wink swagger stillingum |
+| `wink://api/{apiName}` | Þétt API yfirlit með auðkenningu, merkjum, hausum og dæmaaðgerðum |
+| `wink://api/{apiName}/operations` | Fullt aðgerðarskráning flokkað eftir merkjum |
+| `wink://api/{apiName}/operation/{key}` | Einstök aðgerðarskýring (breytur, beiðnibolur, svör) |
+| `wink://api/{apiName}/schema/{schemaName}` | Útfært hlutaform með innfelldum reitum, gerðum og dæmum |
+| `wink://api/{apiName}/operation/{key}/request` | Skoðun á beiðni með nauðsynlegum inntökum og lágmarks dæmi um gagnapakka |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Skoðun á svari fyrir ákveðinn stöðukóða |
+| `wink://api/{apiName}/operation/{key}/recipe` | Verkferill fyrir rétta notkun þeirrar aðgerðar |
 
 ## Leitartól (Fljótleg yfirlit)
-| Tól | Tilgangur | Dæmi um fyrirspurnir |
+| Tól | Tilgangur | Dæmi um algengar fyrirspurnir |
 |------|---------|-----------------------|
-| `sdk_search` | Finna hvaða SDK / API klasa á að nota | `hætta við bókun`, `lista eignir`, `affiliate inventory` |
-| `docs_search` | Finna huglægar leiðbeiningar / skjöl | `auðkenning`, `vefkranar`, `wordPress` |
+| `api_search` | Finna lifandi API eða aðgerð til að samþætta | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
+| `docs_search` | Finna hugmyndafræðileg skjöl / leiðbeiningar | `authentication`, `webhooks`, `wordPress` |
 
-Látið `query` vera tómt til að fá tillögur. Hvert niðurstaða inniheldur MCP URI sem hægt er að opna.
+Láttu `query` vera tómt til að fá tillögur. Hvert niðurstaða inniheldur MCP URI sem þú getur opnað.
+Fyrir aðgerðarniðurstöður skilar `api_search` einnig tengdum beiðni, svari, formi og uppskrift URI svo umboð geti hoppað beint í gagnlegustu undirkosti.
 
-## Dæmigerð notkunarmynstur
-1. Keyrið `sdk_search` með ykkar tilgangi (t.d. *„lista eignir“*).
-2. Opnið skilaða SDK README eða `docs_uri` til að skoða API / módel.
-3. Notið `docs_search` fyrir stuðningshugmyndir (auðkenning, vefkranar).
+## Venjuleg notkunarmynstur
+1. Keyrðu `api_search` með þínum tilgangi (t.d. *„create affiliate“* eða *„payment receipt“*).
+2. Opnaðu skilaða `wink://api/...` URI, eða fylgdu tengdum `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` og `recipe_uri` reitum.
+3. Notaðu `docs_search` fyrir stuðningshugmyndir (auðkenning, webhooks, vinnuflæði).
 
 ## Athugasemdir
-- Hver skilaður URI má opna af umboðsmanni til að fá fullan aðgang.
+- Hvert skilað URI má opna af umboðinu til að fá fullan aðgang.
+- `wink://api` tréð er lifandi og fylgir núverandi OpenAPI skrá frá uppsprettu frekar en framleiddri skrá í geymslu.
 - Tillögur birtast sjálfkrafa þegar fyrirspurnir eru tómar.
-
-## Núverandi studd SDK
-- Wink Python SDKs
-
-## Vegakort (Yfirlit)
-- Viðbótar tungumála SDK (Java, JS/TS)
-- Bæta við TripPay SDK
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink á GitHub</LinkButton>

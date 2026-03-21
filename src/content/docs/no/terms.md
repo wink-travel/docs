@@ -3,8 +3,6 @@ title: Vilkår og betingelser
 description: Vilkår og betingelser for alle Wink-brukere og enheter.
 ---
 
-# Vilkår og betingelser
-
 Hver portal kan ha forskjellige vilkår og betingelser. Vennligst gå til seksjonen nedenfor som gjelder for deg, og se etter underseksjonen kalt Vilkår for tjenesten og betalingsbetingelser.
 
 ## Affiliateportal
@@ -18,7 +16,7 @@ Lær mer om Wink Studio
 
 ## Bookingmotor
 
-Alle veier fører til vår bookingmotor! Lær hva du kan gjøre med den mest tilpassbare, reiseorienterte bookingmotoren på markedet.
+Alle veier fører til vår bookingmotor! Lær hva du kan gjøre med den mest tilpassbare, reisefokuserte bookingmotoren på markedet.
 
 <LinkButton href="/no/booking-engine/in-a-nutshell">
 Lær mer om vår bookingmotor

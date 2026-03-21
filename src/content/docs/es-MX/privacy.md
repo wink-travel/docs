@@ -5,21 +5,19 @@ sidebar:
   order: 5
 ---
 
-# Política de Privacidad
-
 Winkfluence, operando bajo el nombre Wink (la “Compañía”), desea informar a quienes contacten a la Compañía que es necesario recopilar, compilar y usar sus datos personales para el servicio de la Compañía de acuerdo con esta Política de Privacidad. Al contactar y divulgar sus datos personales a la Compañía con fines de comunicación, coordinación y/o prestación de los servicios de la Compañía para usted, se considera que usted acepta y está de acuerdo en estar sujeto y cumplir con esta Política de Privacidad.
 
-Datos personales que se procesan, la Compañía puede obtener sus datos personales de varios canales como los siguientes:
+Datos personales que se procesan, la Compañía puede obtener sus datos personales a través de varios canales como los siguientes:
 
-(1) Directamente de usted a través de las comunicaciones de la Compañía con usted;
+(1) Directamente de usted mediante las comunicaciones de la Compañía con usted;
 
-(2) Indirectamente, mediante una referencia de un tercero a quien usted puede otorgar consentimiento para divulgar sus datos personales a la Compañía; o
+(2) Indirectamente, a través de una referencia de un tercero a quien usted pueda otorgar consentimiento para divulgar sus datos personales a la Compañía; o
 
 (3) Recopilados automáticamente a través del sistema cuando usted accede al sitio web de la Compañía y/o utiliza los servicios.
 
 Los datos personales que la Compañía necesita recopilar, compilar, usar y procesar bajo esta Política de Privacidad son los siguientes:
 
-(1) Su nombre completo, incluyendo su información relacionada o la información de su representante (en caso de que nos contacte en nombre de una persona jurídica) que puede incluir su documento de identidad.
+(1) Su nombre completo, incluyendo su información relacionada o la información de su representante (en caso de que nos contacte en nombre de una persona moral) que puede incluir su documento de identidad.
 
 (2) Información de contacto como número telefónico, correo electrónico o información de cuenta en redes sociales.
 
@@ -39,7 +37,7 @@ Propósito del procesamiento y uso de los datos personales, la Compañía necesi
 
 (5) Sujeto a un consentimiento explícito otorgado a la Compañía, como comunicaciones de marketing y boletines informativos, la Compañía puede procesar los datos personales para los fines definidos en el consentimiento.
 
-Periodo de retención de datos personales, para cumplir con los fines descritos anteriormente, la Compañía necesita recopilar, compilar y procesar sus datos personales según el siguiente periodo:
+Periodo de retención de los datos personales, para cumplir con los fines descritos anteriormente, la Compañía necesita recopilar, compilar y procesar sus datos personales durante el siguiente periodo:
 
 (1) Para el procesamiento de datos personales con el fin de proporcionar servicios, ejecutar un acuerdo y/o cumplir con derechos y obligaciones bajo el acuerdo, la Compañía necesita procesar sus datos personales mientras la Compañía tenga el deber de proporcionarle servicios;
 
@@ -47,15 +45,15 @@ Periodo de retención de datos personales, para cumplir con los fines descritos 
 
 (3) Para el procesamiento de datos personales con el fin de construir y mejorar relaciones comerciales y/o mejorar el servicio, la Compañía se reserva el derecho de conservar esos datos personales en la medida en que la Compañía pueda tener una necesidad comercial. La Compañía garantiza que la retención de los datos personales no afectará de manera irrazonable los derechos del titular de los datos;
 
-(4) Para el procesamiento de datos personales con el fin de proteger y defender los derechos legítimos de la Compañía, la Compañía tiene la necesidad de conservar dichos datos personales según la prescripción definida por las leyes aplicables; y
+(4) Para el procesamiento de datos personales con el fin de proteger y defender los derechos legítimos de la Compañía, la Compañía necesita conservar dichos datos personales conforme a la prescripción definida por las leyes aplicables; y
 
 (5) En caso de que usted otorgue consentimiento a la Compañía para procesar sus datos personales para fines específicos, la Compañía procesará sus datos personales hasta que usted retire dicho consentimiento.
 
-Divulgación de los datos personales, en general, sus datos personales no serán divulgados, excepto en circunstancias en las que la Compañía necesite divulgar a las siguientes personas:
+Divulgación de los datos personales, en general, sus datos personales no serán divulgados, excepto en circunstancias en las que la Compañía necesite divulgarlos a las siguientes personas:
 
 (1) Proveedores de servicios externos de la Compañía contratados para proporcionar servicios de apoyo a la Compañía en la prestación de servicios para usted, incluyendo consultores de la Compañía. Dicha divulgación de datos personales a estos terceros se realizará de acuerdo con los fines y solo en base a la necesidad de saber; o
 
-(2) Autoridades gubernamentales, reguladoras o tribunales a los que la Compañía pueda estar sujeta a una orden, ley o sentencia para divulgar los datos personales.
+(2) Autoridades gubernamentales, reguladoras o tribunales a los que la Compañía pueda estar sujeta por orden, ley o sentencia para divulgar los datos personales.
 
 La Compañía se compromete a implementar medidas adecuadas de seguridad de datos personales para prevenir cualquier acceso no autorizado e ilegal, modificación, enmienda o divulgación. La Compañía se compromete a revisar estas medidas regularmente para asegurar su compatibilidad con los estándares y las leyes aplicables.
 

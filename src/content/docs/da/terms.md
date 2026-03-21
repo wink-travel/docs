@@ -3,11 +3,9 @@ title: Vilkår og betingelser
 description: Vilkår og betingelser for alle Wink-brugere og enheder.
 ---
 
-# Vilkår og betingelser
-
 Hver portal kan have forskellige vilkår og betingelser. Gå venligst til det afsnit nedenfor, der gælder for dig, og find underafsnittet kaldet Vilkår for service og betalingsbetingelser.
 
-## Affiliate-portal
+## Affiliateportal
 
 For affiliates, der ønsker at lære, hvordan man tjener en passiv indkomst ved at tjene penge på dine sociale konti med Wink.  
 [Wink Studio](https://studio.wink.travel) har alle de værktøjer, du har brug for, for at sælge som en professionel.

@@ -1,0 +1,66 @@
+---
+title: Webhook-integration
+description: Denne guide viser udviklere, hvordan man opsætter webhooks for at modtage realtidsnotifikationer for bookinger, betalinger og andre begivenheder.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhooks lader dine systemer modtage realtidsnotifikationer, når der sker begivenheder på din Wink-konto — nye bookinger, aflysninger, betalingsopdateringer og mere. Denne guide fører dig gennem opsætning og bedste praksis.
+
+## Målgruppe
+
+Denne guide er til udviklere, der integrerer Wink med eksterne systemer som ejendomsadministrationssystemer (PMS), channel managers, CRM’er eller brugerdefinerede dashboards.
+
+## Sådan fungerer webhooks
+
+1. Du registrerer en webhook-URL på Wink.
+2. Når en begivenhed opstår (f.eks. en ny booking), sender Wink en HTTP POST til din URL.
+3. Din server behandler payloaden og svarer med en `200 OK`.
+
+## Opsætning af en webhook
+
+<Steps>
+1. Log ind på din konto (Extranet, Studio eller TripPay — alle understøtter webhooks).
+2. Gå til `Applications` og derefter `Webhooks`. Se [Webhooks](/da/my-account/webhooks).
+3. Klik på `Create webhook`.
+4. Indtast et **navn** (f.eks. "PMS Booking Sync").
+5. Indtast din **webhook URL** — HTTPS-endpointet på din server.
+6. **Vælg begivenheder** — Vælg specifikke begivenheder at abonnere på, eller lad det stå tomt for at modtage alle begivenheder.
+7. Skift **Enabled** til til.
+8. Klik på `Save`.
+</Steps>
+
+## Begivenhedstyper
+
+Wink understøtter en række begivenhedstyper. Almindelige begivenheder inkluderer:
+
+- **Booking oprettet** — En ny booking er bekræftet.
+- **Booking annulleret** — En booking er blevet annulleret.
+- **Betaling gennemført** — Betaling er blevet behandlet.
+- **Booking opdateret** — Oplysninger om en booking er ændret.
+
+:::tip
+Start med at abonnere på alle begivenheder. Når du forstår payloads, kan du indsnævre til kun de begivenheder, dit system har brug for.
+:::
+
+## Bedste praksis
+
+- **Brug HTTPS** — Wink sender kun payloads til HTTPS-endpoints.
+- **Svar hurtigt** — Returner en `200 OK`, så snart du modtager payloaden. Udfør tung behandling asynkront.
+- **Idempotens** — Din handler bør være idempotent. Wink kan forsøge at sende igen, hvis den ikke modtager et `200` svar.
+- **Valider kilden** — Bekræft, at indkommende forespørgsler kommer fra Wink, før du behandler dem.
+- **Logning** — Log hver webhook-payload, du modtager. Det gør fejlfinding af integrationsproblemer meget nemmere.
+
+## Pause og sletning
+
+Du kan **deaktivere** en webhook uden at slette den. Dette pauser leveringen, så du kan fejlfinde uden at miste din konfiguration. Når du er klar, kan du slå den til igen.
+
+Sletning af en webhook fjerner den permanent. Enhver integration, der er afhængig af den webhook, vil stoppe med at modtage notifikationer.
+
+## Yderligere læsning
+
+- [Webhooks](/da/my-account/webhooks) — Fuld reference for webhook-administration.
+- [Applications](/da/my-account/applications) — Administrer dine API-legitimationsoplysninger.
+- [Developers > APIs](/da/developers/apis) — Fuld API-dokumentation.

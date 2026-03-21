@@ -1,0 +1,66 @@
+---
+title: Integrácia webhookov
+description: Tento návod ukazuje vývojárom, ako nastaviť webhooky na prijímanie notifikácií v reálnom čase o rezerváciách, platbách a ďalších udalostiach.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhooky umožňujú vašim systémom prijímať notifikácie v reálnom čase, keď sa na vašom účte Wink vyskytnú udalosti — nové rezervácie, zrušenia, aktualizácie platieb a ďalšie. Tento návod vás prevedie nastavením a najlepšími postupmi.
+
+## Publikum
+
+Tento návod je určený pre vývojárov integrujúcich Wink s externými systémami, ako sú systémy správy nehnuteľností (PMS), manažéri kanálov, CRM alebo vlastné dashboardy.
+
+## Ako fungujú webhooky
+
+1. Zaregistrujete URL webhooku vo Winku.
+2. Keď nastane udalosť (napr. nová rezervácia), Wink pošle HTTP POST na vašu URL.
+3. Váš server spracuje payload a odpovie s `200 OK`.
+
+## Nastavenie webhooku
+
+<Steps>
+1. Prihláste sa do svojho účtu (Extranet, Studio alebo TripPay — všetky podporujú webhooky).
+2. Prejdite do `Applications` a potom `Webhooks`. Pozrite si [Webhooks](/sk/my-account/webhooks).
+3. Kliknite na `Create webhook`.
+4. Zadajte **názov** (napr. "PMS Booking Sync").
+5. Zadajte svoju **webhook URL** — HTTPS endpoint na vašom serveri.
+6. **Vyberte udalosti** — Vyberte konkrétne udalosti, na ktoré sa chcete prihlásiť, alebo nechajte prázdne, aby ste dostávali všetky udalosti.
+7. Prepnite **Enabled** na zapnuté.
+8. Kliknite na `Save`.
+</Steps>
+
+## Typy udalostí
+
+Wink podporuje rôzne typy udalostí. Bežné udalosti zahŕňajú:
+
+- **Rezervácia vytvorená** — Bola potvrdená nová rezervácia.
+- **Rezervácia zrušená** — Rezervácia bola zrušená.
+- **Platba dokončená** — Platba bola spracovaná.
+- **Rezervácia aktualizovaná** — Zmenili sa detaily rezervácie.
+
+:::tip
+Začnite prihlásením na všetky udalosti. Keď pochopíte payloady, môžete zúžiť výber len na udalosti, ktoré váš systém potrebuje.
+:::
+
+## Najlepšie postupy
+
+- **Používajte HTTPS** — Wink posiela payloady iba na HTTPS endpointy.
+- **Reagujte rýchlo** — Vráťte `200 OK` hneď, ako prijmete payload. Náročné spracovanie robte asynchrónne.
+- **Idempotentnosť** — Váš handler by mal byť idempotentný. Wink môže opakovane posielať doručenie, ak nedostane odpoveď `200`.
+- **Overte zdroj** — Pred spracovaním overte, že prichádzajúce požiadavky sú od Winku.
+- **Logovanie** — Logujte každý prijatý webhook payload. Uľahčuje to ladenie problémov s integráciou.
+
+## Pozastavenie a vymazanie
+
+Webhook môžete **zakázať** bez jeho vymazania. Tým pozastavíte doručovanie, aby ste mohli riešiť problémy bez straty konfigurácie. Keď budete pripravení, opäť ho zapnite.
+
+Vymazanie webhooku ho trvalo odstráni. Akákoľvek integrácia, ktorá na ňom závisí, prestane prijímať notifikácie.
+
+## Ďalšie čítanie
+
+- [Webhooks](/sk/my-account/webhooks) — Kompletná referencia pre správu webhookov.
+- [Applications](/sk/my-account/applications) — Spravujte svoje API poverenia.
+- [Developers > APIs](/sk/developers/apis) — Kompletná dokumentácia API.

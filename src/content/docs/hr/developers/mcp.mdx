@@ -1,6 +1,6 @@
 ---
 title: MCP poslužitelj
-description: Brzo povežite AI agente s Wink dokumentacijom i SDK-ovima putem hostanog MCP poslužitelja.
+description: Brzo povežite AI agente s Wink dokumentacijom i aktivnim OpenAPI specifikacijama putem hostanog MCP poslužitelja.
 sidebar:
   order: 10
 ---
@@ -14,10 +14,10 @@ Hostani Wink MCP poslužitelj dostupan je na:
 https://docs.mcp.wink.travel/mcp
 ```
 
-Usmjerite kompatibilne AI klijente (VS Code, Cursor, druge koje implementiraju MCP HTTP transport) na ovu krajnju točku kako bi mogli:
+Usmjerite kompatibilne AI klijente (VS Code, Cursor, ostale koje implementiraju MCP HTTP transport) na ovu krajnju točku kako bi mogli:
 - Pregledavati dokumentaciju proizvoda i platforme (`wink://docs/...`)
-- Otkriti SDK-ove i detaljno istražiti API klase / modele (`wink://sdk/...` i `wink://sdk/.../docs`)
-- Izvesti laganu semantičku / ključnu pretragu kroz dokumente i sažetke SDK-a
+- Pregledavati aktivne OpenAPI specifikacije i dokumentaciju operacija (`wink://api/...`)
+- Izvoditi laganu semantičku / ključnu pretragu kroz dokumente i aktivne API-je
 
 ## Transport
 Koristite primarnu streamabilnu HTTP krajnju točku:
@@ -30,6 +30,26 @@ Ako vaš klijent podržava samo SSE, koristite:
 
 ```
 https://docs.mcp.wink.travel/sse
+```
+
+### Claude Code
+Službena dokumentacija: [Povežite Claude Code s alatima putem MCP](https://code.claude.com/docs/en/mcp)
+
+Anthropic preporučuje udaljeni HTTP transport za cloud-hostane MCP poslužitelje:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+Unutar Claude Code pokrenite `/mcp` za pregled statusa poslužitelja. Ako želite podijeliti poslužitelj s cijelim repozitorijem, dodajte `--scope project` kako bi Claude Code zapisao konfiguraciju u `.mcp.json`.
+
+### Codex
+Službena dokumentacija: [Docs MCP brzi početak za Codex](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI dokumentira postavljanje MCP-a putem Codex CLI-ja, te napominje da se konfiguracija dijeli s IDE ekstenzijom:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
 ```
 
 ### Cursor
@@ -47,7 +67,7 @@ Postavljanje: Dodajte udaljeni poslužitelj putem MCP postavki.
 
 ### VS Code
 Službena dokumentacija: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Minimalna udaljena konfiguracija (korisnička ili radna mapa `mcp.json`):
+Minimalna udaljena konfiguracija (korisnička ili radna `mcp.json`):
 ```json
 {
   "servers": {
@@ -61,8 +81,8 @@ Minimalna udaljena konfiguracija (korisnička ili radna mapa `mcp.json`):
 
 Savjeti:
 - Koristite Command Palette: “MCP: List Servers” za potvrdu veze i pregled alata.
-- Izbornik alata omogućuje uključivanje/isključivanje `sdk_search` i `docs_search`.
-- Dodajte kontekst: Chat prikaz → Add Context → MCP Resources za pridruživanje stranica dokumentacije.
+- Alat za odabir omogućuje uključivanje/isključivanje `api_search` i `docs_search`.
+- Dodajte kontekst: Prikaz chata → Dodaj kontekst → MCP resursi za pridruživanje stranica dokumentacije.
 
 ## Osnovni URI resursa
 
@@ -70,36 +90,32 @@ Savjeti:
 |-----|-------------|
 | `wink://docs` | Indeks dokumentacije (grupiran po kategorijama) |
 | `wink://docs/{path}` | Specifični članak dokumentacije (Markdown / MDX) |
-| `wink://sdk` | Pregled SDK-a (svaki SDK + broj dokumenata) |
-| `wink://sdk/{sdkPath}` | SDK README / mapa s dokumentacijom modula / specifični dokument modula |
-
-### Dokumentacija modula
-Otvaranje mape s dokumentacijom SDK-a (npr. `wink://sdk/python/wink-sdk-booking/docs`) vraća grupirano:
-- **API klase** (broj metoda + primjeri naziva metoda)
-- **Modeli i tipovi** (strukture podataka koje koriste ti API-ji)
+| `wink://api` | Aktivni OpenAPI katalog otkriven iz Wink swagger konfiguracije |
+| `wink://api/{apiName}` | Sažetak API-ja s autentifikacijom, oznakama, zaglavljima i primjerima operacija |
+| `wink://api/{apiName}/operations` | Potpuni popis operacija grupiran po oznakama |
+| `wink://api/{apiName}/operation/{key}` | Detalji pojedinačne operacije (parametri, tijelo zahtjeva, odgovori) |
+| `wink://api/{apiName}/schema/{schemaName}` | Riješena komponenta sheme s ugniježđenim poljima, tipovima i primjerima |
+| `wink://api/{apiName}/operation/{key}/request` | Prikaz usmjeren na zahtjev s potrebnim unosima i minimalnim primjerom podataka |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Prikaz usmjeren na odgovor za određeni statusni kod |
+| `wink://api/{apiName}/operation/{key}/recipe` | Tok zadatka za ispravan poziv te operacije |
 
 ## Alati za pretraživanje (brzi pregled)
-| Alat | Svrha | Primjeri tipičnih upita |
+| Alat | Svrha | Tipični primjeri upita |
 |------|---------|-----------------------|
-| `sdk_search` | Pronađite koji SDK / API klasu koristiti | `otkaži rezervaciju`, `popis objekata`, `affiliate inventar` |
-| `docs_search` | Pronađite konceptualnu dokumentaciju / vodiče | `autentikacija`, `webhooks`, `wordPress` |
+| `api_search` | Pronađite aktivni API ili operaciju za integraciju | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
+| `docs_search` | Pronađite konceptualnu dokumentaciju / vodiče | `authentication`, `webhooks`, `wordPress` |
 
 Ostavite `query` praznim za primanje prijedloga. Svaki rezultat uključuje MCP URI koji možete otvoriti.
+Za rezultate operacija, `api_search` također vraća povezane URI-je zahtjeva, odgovora, sheme i recepata kako bi agenti mogli izravno pristupiti najkorisnijim podresursima.
 
 ## Tipični obrazac korištenja
-1. Pokrenite `sdk_search` s vašom namjerom (npr. *"popis objekata"*).
-2. Otvorite vraćeni SDK README ili njegov `docs_uri` za pregled API-ja / modela.
-3. Koristite `docs_search` za podržavajuće koncepte (autentikacija, webhooks).
+1. Pokrenite `api_search` s vašom namjerom (npr. *"create affiliate"* ili *"payment receipt"*).
+2. Otvorite vraćeni `wink://api/...` URI ili slijedite njegove povezane `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` i `recipe_uri` polja.
+3. Koristite `docs_search` za podržavajuće koncepte (autentifikacija, webhooks, tijekovi rada).
 
 ## Napomene
 - Svaki vraćeni URI agent može otvoriti za puni sadržaj.
+- Stablo `wink://api` je aktivno i prati trenutni upstream OpenAPI katalog umjesto generiranog indeksa repozitorija.
 - Prijedlozi se automatski pojavljuju kada su upiti prazni.
-
-## Trenutno podržani SDK-ovi
-- Wink Python SDK-ovi
-
-## Plan razvoja (visoka razina)
-- Dodatni jezični SDK-ovi (Java, JS/TS)
-- Dodavanje TripPay SDK-ova
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink na GitHubu</LinkButton>

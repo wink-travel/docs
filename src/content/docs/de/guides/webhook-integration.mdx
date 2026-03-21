@@ -1,0 +1,66 @@
+---
+title: Webhook-Integration
+description: Diese Anleitung zeigt Entwicklern, wie sie Webhooks einrichten, um Echtzeit-Benachrichtigungen für Buchungen, Zahlungen und andere Ereignisse zu erhalten.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhooks ermöglichen es Ihren Systemen, Echtzeit-Benachrichtigungen zu erhalten, wenn Ereignisse in Ihrem Wink-Konto stattfinden — neue Buchungen, Stornierungen, Zahlungsaktualisierungen und mehr. Diese Anleitung führt Sie durch die Einrichtung und Best Practices.
+
+## Zielgruppe
+
+Diese Anleitung richtet sich an Entwickler, die Wink mit externen Systemen wie Property-Management-Systemen (PMS), Channel Managern, CRMs oder benutzerdefinierten Dashboards integrieren.
+
+## Funktionsweise von Webhooks
+
+1. Sie registrieren eine Webhook-URL bei Wink.
+2. Wenn ein Ereignis eintritt (z. B. eine neue Buchung), sendet Wink eine HTTP POST-Anfrage an Ihre URL.
+3. Ihr Server verarbeitet die Nutzlast und antwortet mit einem `200 OK`.
+
+## Einrichtung eines Webhooks
+
+<Steps>
+1. Melden Sie sich in Ihrem Konto an (Extranet, Studio oder TripPay — alle unterstützen Webhooks).
+2. Navigieren Sie zu `Applications` und dann zu `Webhooks`. Siehe [Webhooks](/de/my-account/webhooks).
+3. Klicken Sie auf `Create webhook`.
+4. Geben Sie einen **Namen** ein (z. B. "PMS Booking Sync").
+5. Geben Sie Ihre **Webhook-URL** ein — den HTTPS-Endpunkt auf Ihrem Server.
+6. **Wählen Sie Ereignisse aus** — Wählen Sie bestimmte Ereignisse zum Abonnieren aus oder lassen Sie das Feld leer, um alle Ereignisse zu erhalten.
+7. Schalten Sie **Enabled** ein.
+8. Klicken Sie auf `Save`.
+</Steps>
+
+## Ereignistypen
+
+Wink unterstützt verschiedene Ereignistypen. Häufige Ereignisse sind:
+
+- **Booking created** — Eine neue Buchung wurde bestätigt.
+- **Booking cancelled** — Eine Buchung wurde storniert.
+- **Payment completed** — Die Zahlung wurde verarbeitet.
+- **Booking updated** — Details zu einer Buchung wurden geändert.
+
+:::tip
+Beginnen Sie mit dem Abonnieren aller Ereignisse. Sobald Sie die Nutzlasten verstehen, können Sie die Auswahl auf die für Ihr System relevanten Ereignisse einschränken.
+:::
+
+## Best Practices
+
+- **Verwenden Sie HTTPS** — Wink sendet Nutzlasten nur an HTTPS-Endpunkte.
+- **Reagieren Sie schnell** — Geben Sie ein `200 OK` zurück, sobald Sie die Nutzlast erhalten. Führen Sie aufwändige Verarbeitung asynchron durch.
+- **Idempotenz** — Ihr Handler sollte idempotent sein. Wink kann die Zustellung erneut versuchen, wenn keine `200`-Antwort empfangen wird.
+- **Quelle validieren** — Verifizieren Sie, dass eingehende Anfragen von Wink stammen, bevor Sie sie verarbeiten.
+- **Protokollierung** — Protokollieren Sie jede empfangene Webhook-Nutzlast. Das erleichtert die Fehlersuche bei Integrationsproblemen erheblich.
+
+## Pausieren und Löschen
+
+Sie können einen Webhook **deaktivieren**, ohne ihn zu löschen. Dadurch wird die Zustellung pausiert, sodass Sie Fehler beheben können, ohne Ihre Konfiguration zu verlieren. Wenn Sie bereit sind, schalten Sie ihn wieder ein.
+
+Das Löschen eines Webhooks entfernt ihn dauerhaft. Jede Integration, die auf diesen Webhook angewiesen ist, erhält keine Benachrichtigungen mehr.
+
+## Weiterführende Informationen
+
+- [Webhooks](/de/my-account/webhooks) — Vollständige Referenz zur Webhook-Verwaltung.
+- [Applications](/de/my-account/applications) — Verwalten Sie Ihre API-Zugangsdaten.
+- [Developers > APIs](/de/developers/apis) — Vollständige API-Dokumentation.

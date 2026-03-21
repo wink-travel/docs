@@ -3,13 +3,11 @@ title: Käyttöehdot
 description: Käyttöehdot kaikille Wink-käyttäjille ja -yksiköille.
 ---
 
-# Käyttöehdot
-
 Jokaisella portaalilla voi olla erilaiset käyttöehdot. Siirry alla olevaan sinua koskevaan osioon ja etsi alakohta nimeltä Palveluehdot ja Maksuehdot.
 
-## Kumppaniverkostoportaali
+## Kumppaniverkosto
 
-Kumppaneille, jotka haluavat oppia ansaitsemaan passiivista tuloa rahallistamalla sosiaalisen median tilejään Winkillä.  
+Kumppaneille, jotka haluavat oppia ansaitsemaan passiivista tuloa hyödyntämällä sosiaalitilejään Winkillä.
 [Wink Studio](https://studio.wink.travel) tarjoaa kaikki työkalut, joita tarvitset myydäksesi kuin ammattilainen.
 
 <LinkButton href="/fi/studio/what-is-studio">
@@ -26,7 +24,7 @@ Lue lisää varauskoneestamme
 
 ## Kohdeportaali
 
-Kohteille, jotka haluavat aloittaa myynnin Winkissä. Käytä työkaluamme myydäksesi ja markkinoidaksesi tehokkaasti verkossa ja saadaksesi armeijan kumppaneita ympäri maailmaa auttamaan sinua saamaan asiakkaita ja varauksia.
+Kohteille, jotka haluavat aloittaa myynnin Winkissä. Käytä työkaluja myydäksesi ja markkinoidaksesi tehokkaasti verkossa ja saadaksesi armeijan kumppaneita ympäri maailmaa auttamaan sinua saamaan asiakkaita ja varauksia.
 
 <LinkButton href="/fi/extranet/what-is-extranet">
 Lue lisää Wink Extranetista
@@ -34,7 +32,7 @@ Lue lisää Wink Extranetista
 
 ## Matkatoimistoportaali
 
-Matkatoimistoille, jotka haluavat selvittää, mitä Wink voi tarjota heille räätälöityjen hintojen, tarjousten ja varaston osalta suoraan toimittajilta.
+Matkatoimistoille, jotka haluavat selvittää, mitä Wink voi tarjota räätälöityjen hintojen, tarjousten ja varaston osalta suoraan toimittajilta.
 
 <LinkButton href="/fi/travel-agent/what-is-agent">
 Lue lisää Wink Agentista

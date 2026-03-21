@@ -1,6 +1,6 @@
 ---
 title: Serwer MCP
-description: Szybko połącz agentów AI z dokumentacją Wink i SDK za pomocą hostowanego serwera MCP.
+description: Szybko połącz agentów AI z dokumentacją Wink i aktywnymi specyfikacjami OpenAPI za pomocą hostowanego serwera MCP.
 sidebar:
   order: 10
 ---
@@ -16,8 +16,8 @@ https://docs.mcp.wink.travel/mcp
 
 Wskaż kompatybilnych klientów AI (VS Code, Cursor, inne implementujące transport MCP HTTP) na ten punkt końcowy, aby mogli:
 - Przeglądać dokumentację produktów i platformy (`wink://docs/...`)
-- Odkrywać SDK i zagłębiać się w klasy API / modele (`wink://sdk/...` oraz `wink://sdk/.../docs`)
-- Wykonywać lekkie wyszukiwanie semantyczne / słów kluczowych w dokumentacji i podsumowaniach SDK
+- Przeglądać aktywne specyfikacje OpenAPI i dokumentację operacji (`wink://api/...`)
+- Wykonywać lekkie wyszukiwanie semantyczne / słów kluczowych w dokumentacji i aktywnych API
 
 ## Transport
 Użyj głównego strumieniowego punktu końcowego HTTP:
@@ -30,6 +30,26 @@ Jeśli twój klient obsługuje tylko SSE, użyj:
 
 ```
 https://docs.mcp.wink.travel/sse
+```
+
+### Claude Code
+Oficjalna dokumentacja: [Połącz Claude Code z narzędziami przez MCP](https://code.claude.com/docs/en/mcp)
+
+Anthropic zaleca zdalny transport HTTP dla hostowanych w chmurze serwerów MCP:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+W Claude Code uruchom `/mcp`, aby sprawdzić status serwera. Jeśli chcesz udostępnić serwer całemu repozytorium, dodaj `--scope project`, aby Claude Code zapisał konfigurację w `.mcp.json`.
+
+### Codex
+Oficjalna dokumentacja: [Szybki start MCP dla Codex](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI dokumentuje konfigurację MCP przez CLI Codex i zaznacza, że konfiguracja jest współdzielona z rozszerzeniem IDE:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
 ```
 
 ### Cursor
@@ -47,7 +67,7 @@ Konfiguracja: Dodaj zdalny serwer przez ustawienia MCP.
 
 ### VS Code
 Oficjalna dokumentacja: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Minimalna konfiguracja zdalna (plik `mcp.json` użytkownika lub workspace):
+Minimalna zdalna konfiguracja (użytkownika lub workspace `mcp.json`):
 ```json
 {
   "servers": {
@@ -60,46 +80,42 @@ Minimalna konfiguracja zdalna (plik `mcp.json` użytkownika lub workspace):
 ```
 
 Wskazówki:
-- Użyj Command Palette: „MCP: List Servers”, aby potwierdzić połączenie i przeglądać narzędzia.
-- Wybieracz narzędzi pozwala włączać/wyłączać `sdk_search` i `docs_search`.
+- Użyj palety poleceń: „MCP: List Servers”, aby potwierdzić połączenie i przeglądać narzędzia.
+- Wybór narzędzi pozwala włączać/wyłączać `api_search` i `docs_search`.
 - Dodaj kontekst: Widok czatu → Dodaj kontekst → Zasoby MCP, aby dołączyć strony dokumentacji.
 
 ## Podstawowe URI zasobów
 
 | URI | Opis |
 |-----|-------------|
-| `wink://docs` | Indeks dokumentacji (pogroupowany według kategorii) |
+| `wink://docs` | Indeks dokumentacji (grupowany według kategorii) |
 | `wink://docs/{path}` | Konkretna artykuł dokumentacji (Markdown / MDX) |
-| `wink://sdk` | Przegląd SDK (każde SDK + liczba dokumentów) |
-| `wink://sdk/{sdkPath}` | README SDK / folder dokumentacji modułu / konkretny dokument modułu |
-
-### Dokumentacja modułów
-Otwarcie folderu dokumentacji SDK (np. `wink://sdk/python/wink-sdk-booking/docs`) zwraca pogrupowane:
-- **Klasy API** (liczba metod + przykładowe nazwy metod)
-- **Modele i typy** (struktury danych używane przez te API)
+| `wink://api` | Aktywny katalog OpenAPI odkryty z konfiguracji swagger Wink |
+| `wink://api/{apiName}` | Zwięzłe podsumowanie API z autoryzacją, tagami, nagłówkami i przykładowymi operacjami |
+| `wink://api/{apiName}/operations` | Pełna lista operacji pogrupowana według tagów |
+| `wink://api/{apiName}/operation/{key}` | Szczegóły pojedynczej operacji (parametry, ciało żądania, odpowiedzi) |
+| `wink://api/{apiName}/schema/{schemaName}` | Rozwiązany schemat komponentu z zagnieżdżonymi polami, typami i przykładami |
+| `wink://api/{apiName}/operation/{key}/request` | Widok skoncentrowany na żądaniu z wymaganymi danymi i minimalnym przykładowym payloadem |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Widok skoncentrowany na odpowiedzi dla konkretnego kodu statusu |
+| `wink://api/{apiName}/operation/{key}/recipe` | Przepływ zadaniowy do poprawnego wywołania tej operacji |
 
 ## Narzędzia wyszukiwania (Szybkie odniesienie)
 | Narzędzie | Cel | Typowe przykłady zapytań |
 |------|---------|-----------------------|
-| `sdk_search` | Znajdź, którego SDK / klasy API użyć | `cancel booking`, `list properties`, `affiliate inventory` |
+| `api_search` | Znajdź aktywne API lub operację do integracji | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
 | `docs_search` | Znajdź dokumentację koncepcyjną / przewodniki | `authentication`, `webhooks`, `wordPress` |
 
 Pozostaw `query` puste, aby otrzymać sugestie. Każdy wynik zawiera URI MCP, które możesz otworzyć.
+Dla trafień w operacjach, `api_search` zwraca również powiązane URI żądania, odpowiedzi, schematu i przepisu, aby agenci mogli bezpośrednio przejść do najbardziej przydatnego podzasobu.
 
 ## Typowy wzorzec użycia
-1. Uruchom `sdk_search` z twoim zamiarem (np. *"list properties"*).
-2. Otwórz zwrócony README SDK lub jego `docs_uri`, aby przejrzeć API / modele.
-3. Użyj `docs_search` dla wspierających koncepcji (uwierzytelnianie, webhooki).
+1. Uruchom `api_search` z twoim zamiarem (np. *"create affiliate"* lub *"payment receipt"*).
+2. Otwórz zwrócone URI `wink://api/...` lub podążaj za powiązanymi polami `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` i `recipe_uri`.
+3. Użyj `docs_search` dla wspierających koncepcji (autoryzacja, webhooks, workflowy).
 
 ## Uwagi
-- Każde zwrócone URI może być otwarte przez agenta, aby uzyskać pełną zawartość.
+- Każde zwrócone URI może być otwarte przez agenta dla pełnej zawartości.
+- Drzewo `wink://api` jest aktywne i podąża za aktualnym katalogiem OpenAPI zamiast generowanego indeksu repozytorium.
 - Sugestie pojawiają się automatycznie, gdy zapytania są puste.
-
-## Obecnie obsługiwane SDK
-- Wink Python SDKs
-
-## Plan rozwoju (wysoki poziom)
-- Dodatkowe SDK dla języków (Java, JS/TS)
-- Dodanie SDK TripPay
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink na GitHub</LinkButton>

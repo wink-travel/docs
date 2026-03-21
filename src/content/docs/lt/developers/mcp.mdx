@@ -1,6 +1,6 @@
 ---
 title: MCP serveris
-description: Greitai prijunkite AI agentus prie Wink dokumentacijos ir SDK per talpinamą MCP serverį.
+description: Greitai prijunkite AI agentus prie Wink dokumentacijos ir tiesioginių OpenAPI specifikacijų per talpinamą MCP serverį.
 sidebar:
   order: 10
 ---
@@ -8,7 +8,7 @@ sidebar:
 import { LinkButton } from '@astrojs/starlight/components';
 
 ## Apžvalga
-Talpinamas Wink MCP serveris pasiekiamas adresu:
+Talpinamas Wink MCP serveris yra pasiekiamas adresu:
 
 ```
 https://docs.mcp.wink.travel/mcp
@@ -16,8 +16,8 @@ https://docs.mcp.wink.travel/mcp
 
 Nukreipkite suderinamus AI klientus (VS Code, Cursor, kiti, įgyvendinantys MCP HTTP transportą) į šį galinį tašką, kad jie galėtų:
 - Naršyti produkto ir platformos dokumentaciją (`wink://docs/...`)
-- Atrasti SDK ir gilintis į API klases / modelius (`wink://sdk/...` ir `wink://sdk/.../docs`)
-- Atlikti lengvą semantinę / raktinių žodžių paiešką dokumentacijoje ir SDK santraukoje
+- Naršyti tiesiogines OpenAPI specifikacijas ir operacijų dokumentus (`wink://api/...`)
+- Atlikti lengvą semantinę / raktinių žodžių paiešką dokumentuose ir tiesioginiuose API
 
 ## Transportas
 Naudokite pagrindinį srautinį HTTP galinį tašką:
@@ -30,6 +30,26 @@ Jei jūsų klientas palaiko tik SSE, naudokite:
 
 ```
 https://docs.mcp.wink.travel/sse
+```
+
+### Claude Code
+Oficiali dokumentacija: [Prijunkite Claude Code prie įrankių per MCP](https://code.claude.com/docs/en/mcp)
+
+Anthropic rekomenduoja nuotolinį HTTP transportą debesyje talpinamiems MCP serveriams:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+Claude Code viduje paleiskite `/mcp`, kad patikrintumėte serverio būseną. Jei norite bendrinti serverį su visa saugykla, pridėkite `--scope project`, kad Claude Code įrašytų konfigūraciją į `.mcp.json`.
+
+### Codex
+Oficiali dokumentacija: [Docs MCP greitas startas Codex](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI dokumentuoja MCP nustatymą per Codex CLI ir pažymi, kad konfigūracija dalijamasi su IDE plėtiniu:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
 ```
 
 ### Cursor
@@ -61,8 +81,8 @@ Minimalus nuotolinis konfigūravimas (vartotojo arba darbo srities `mcp.json`):
 
 Patarimai:
 - Naudokite komandų paletę: „MCP: List Servers“, kad patvirtintumėte ryšį ir naršytumėte įrankius.
-- Įrankių pasirinkiklis leidžia įjungti/išjungti `sdk_search` ir `docs_search`.
-- Pridėkite kontekstą: Pokalbių vaizdas → Pridėti kontekstą → MCP ištekliai, kad pridėtumėte dokumentacijos puslapius.
+- Įrankių pasirinkiklis leidžia įjungti/išjungti `api_search` ir `docs_search`.
+- Pridėkite kontekstą: Pokalbio vaizdas → Pridėti kontekstą → MCP ištekliai, kad pridėtumėte dokumentų puslapius.
 
 ## Pagrindiniai išteklių URI
 
@@ -70,36 +90,32 @@ Patarimai:
 |-----|-----------|
 | `wink://docs` | Dokumentacijos indeksas (grupuotas pagal kategoriją) |
 | `wink://docs/{path}` | Konkretus dokumentacijos straipsnis (Markdown / MDX) |
-| `wink://sdk` | SDK apžvalga (kiekvienas SDK + dokumentacijos skaičius) |
-| `wink://sdk/{sdkPath}` | SDK README / modulio dokumentacijos aplankas / konkretus modulio dokumentas |
-
-### Modulinių dokumentų aplankas
-Atidarius SDK dokumentacijos aplanką (pvz., `wink://sdk/python/wink-sdk-booking/docs`) grąžinami grupuoti:
-- **API klasės** (metodų skaičius + pavyzdiniai metodų pavadinimai)
-- **Modeliai ir tipai** (duomenų struktūros, naudojamos šiose API)
+| `wink://api` | Tiesioginis OpenAPI katalogas, rastas iš Wink swagger konfigūracijos |
+| `wink://api/{apiName}` | Kompaktiška API santrauka su autentifikacija, žymomis, antraštėmis ir pavyzdinėmis operacijomis |
+| `wink://api/{apiName}/operations` | Pilnas operacijų sąrašas, grupuotas pagal žymą |
+| `wink://api/{apiName}/operation/{key}` | Atitinkamos operacijos detalės (parametrai, užklausos turinys, atsakymai) |
+| `wink://api/{apiName}/schema/{schemaName}` | Išspręsta komponento schema su įdėtiniais laukais, tipais ir pavyzdžiais |
+| `wink://api/{apiName}/operation/{key}/request` | Užklausai skirta peržiūra su privalomais įvesties duomenimis ir minimalia pavyzdine apkrova |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Atsakymui skirta peržiūra konkrečiam būsenos kodui |
+| `wink://api/{apiName}/operation/{key}/recipe` | Užduoties orientuotas srautas, kaip teisingai iškviesti tą operaciją |
 
 ## Paieškos įrankiai (greita nuoroda)
 | Įrankis | Paskirtis | Tipiniai užklausų pavyzdžiai |
-|---------|-----------|------------------------------|
-| `sdk_search` | Rasti, kurį SDK / API klasę naudoti | `cancel booking`, `list properties`, `affiliate inventory` |
+|---------|-----------|-------------------------------|
+| `api_search` | Rasti tiesioginį API arba operaciją integracijai | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
 | `docs_search` | Rasti konceptualią dokumentaciją / gaires | `authentication`, `webhooks`, `wordPress` |
 
 Palikite `query` tuščią, kad gautumėte pasiūlymus. Kiekvienas rezultatas apima MCP URI, kurį galite atidaryti.
+Operacijų atvejais `api_search` taip pat pateikia susietus užklausos, atsakymo, schemos ir recepto URI, kad agentai galėtų tiesiogiai pereiti prie naudingiausių posistemų.
 
 ## Tipinis naudojimo modelis
-1. Vykdykite `sdk_search` su savo ketinimu (pvz., *„list properties“*).
-2. Atidarykite grąžintą SDK README arba jo `docs_uri`, kad peržiūrėtumėte API / modelius.
-3. Naudokite `docs_search` papildomoms sąvokoms (autentifikacija, webhooks).
+1. Paleiskite `api_search` su savo ketinimu (pvz., *„create affiliate“* arba *„payment receipt“*).
+2. Atidarykite grąžintą `wink://api/...` URI arba sekite susietus laukus `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` ir `recipe_uri`.
+3. Naudokite `docs_search` papildomoms sąvokoms (autentifikacija, webhooks, darbo eiga).
 
 ## Pastabos
-- Kiekvienas grąžintas URI gali būti atidarytas agento pilnam turiniui.
+- Kiekvieną grąžintą URI agentas gali atidaryti pilnam turiniui.
+- `wink://api` medis yra tiesioginis ir seka dabartinį aukštesnio lygio OpenAPI katalogą, o ne sugeneruotą saugyklos indeksą.
 - Pasiūlymai rodomi automatiškai, kai užklausos yra tuščios.
 
-## Šiuo metu palaikomi SDK
-- Wink Python SDK
-
-## Kelių žemėlapis (aukšto lygio)
-- Papildomi programavimo kalbų SDK (Java, JS/TS)
-- Pridėti TripPay SDK
-
-<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink GitHub</LinkButton>
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink GitHub platformoje</LinkButton>

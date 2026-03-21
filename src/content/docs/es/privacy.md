@@ -5,8 +5,6 @@ sidebar:
   order: 5
 ---
 
-# Política de Privacidad
-
 Winkfluence, operando bajo el nombre Wink (la “Compañía”), desea informar a quienes contacten a la Compañía que es necesario recopilar, compilar y usar sus datos personales para el servicio de la Compañía de acuerdo con esta Política de Privacidad. Al contactar y divulgar sus datos personales a la Compañía con fines de comunicación, coordinación y/o prestación de los servicios de la Compañía para usted, se considera que usted acepta y se compromete a cumplir con esta Política de Privacidad.
 
 Datos personales que se procesan, la Compañía puede obtener sus datos personales a través de varios canales como los siguientes:
@@ -51,11 +49,11 @@ Periodo de retención de los datos personales, para cumplir con los fines descri
 
 (5) En caso de que usted otorgue consentimiento a la Compañía para procesar sus datos personales para fines específicos, la Compañía procesará sus datos personales hasta que usted retire dicho consentimiento.
 
-Divulgación de los datos personales, en general, sus datos personales no serán divulgados, excepto en circunstancias en las que la Compañía necesite divulgar a las siguientes personas:
+Divulgación de los datos personales, en general, sus datos personales no serán divulgados, excepto en circunstancias en que la Compañía necesite divulgar a las siguientes personas:
 
-(1) Proveedores de servicios externos de la Compañía contratados para proporcionar servicios de apoyo a la Compañía en la prestación de servicios para usted, incluyendo consultores de la Compañía. Dicha divulgación de datos personales a estos terceros se realizará de acuerdo con los fines y solo en base a la necesidad de saber; o
+(1) Proveedores de servicios externos de la Compañía contratados para proporcionar servicios de apoyo a la Compañía en la prestación de servicios para usted, incluyendo consultores de la Compañía. Dicha divulgación de datos personales a estos terceros se realizará de acuerdo con los fines y solo en base a la necesidad de conocer; o
 
-(2) Autoridades gubernamentales, reguladoras o tribunales a los que la Compañía pueda estar sujeta por orden, ley o sentencia para divulgar los datos personales.
+(2) Autoridades gubernamentales, reguladoras o tribunales a los que la Compañía pueda estar sujeta a una orden, ley o sentencia para divulgar los datos personales.
 
 La Compañía se compromete a implementar medidas adecuadas de seguridad de datos personales para prevenir cualquier acceso no autorizado e ilegal, modificación, enmienda o divulgación. La Compañía se compromete a revisar estas medidas regularmente para asegurar su compatibilidad con los estándares y las leyes aplicables.
 

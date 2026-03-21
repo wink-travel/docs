@@ -1,0 +1,66 @@
+---
+title: Integrare Webhook
+description: Acest ghid arată dezvoltatorilor cum să configureze webhooks pentru a primi notificări în timp real pentru rezervări, plăți și alte evenimente.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhooks permit sistemelor tale să primească notificări în timp real când apar evenimente în contul tău Wink — rezervări noi, anulări, actualizări de plată și altele. Acest ghid te ghidează prin configurare și bune practici.
+
+## Public țintă
+
+Acest ghid este destinat dezvoltatorilor care integrează Wink cu sisteme externe precum sisteme de management al proprietăților (PMS), manageri de canale, CRM-uri sau panouri personalizate.
+
+## Cum funcționează webhooks
+
+1. Înregistrezi o adresă URL webhook pe Wink.
+2. Când apare un eveniment (de ex., o rezervare nouă), Wink trimite un HTTP POST către URL-ul tău.
+3. Serverul tău procesează payload-ul și răspunde cu un `200 OK`.
+
+## Configurarea unui webhook
+
+<Steps>
+1. Autentifică-te în contul tău (Extranet, Studio sau TripPay — toate suportă webhooks).
+2. Navighează la `Applications` și apoi `Webhooks`. Vezi [Webhooks](/ro/my-account/webhooks).
+3. Apasă pe `Create webhook`.
+4. Introdu un **nume** (de ex., "Sincronizare rezervări PMS").
+5. Introdu **URL-ul webhook-ului** — endpoint-ul HTTPS de pe serverul tău.
+6. **Selectează evenimentele** — Alege evenimente specifice la care să te abonezi sau lasă gol pentru a primi toate evenimentele.
+7. Activează comutatorul **Enabled**.
+8. Apasă `Save`.
+</Steps>
+
+## Tipuri de evenimente
+
+Wink suportă o varietate de tipuri de evenimente. Evenimente comune includ:
+
+- **Rezervare creată** — O rezervare nouă a fost confirmată.
+- **Rezervare anulată** — O rezervare a fost anulată.
+- **Plată finalizată** — Plata a fost procesată.
+- **Rezervare actualizată** — Detalii despre o rezervare s-au schimbat.
+
+:::tip
+Începe prin a te abona la toate evenimentele. Odată ce înțelegi payload-urile, poți restrânge la doar evenimentele de care sistemul tău are nevoie.
+:::
+
+## Bune practici
+
+- **Folosește HTTPS** — Wink trimite payload-uri doar către endpoint-uri HTTPS.
+- **Răspunde rapid** — Returnează un `200 OK` imediat ce primești payload-ul. Procesează orice sarcină grea asincron.
+- **Idempotentă** — Handler-ul tău trebuie să fie idempotent. Wink poate retrimite dacă nu primește un răspuns `200`.
+- **Validează sursa** — Verifică că cererile primite provin de la Wink înainte de procesare.
+- **Logare** — Înregistrează fiecare payload webhook primit. Acest lucru face mult mai ușoară depanarea problemelor de integrare.
+
+## Pauză și ștergere
+
+Poți **dezactiva** un webhook fără să-l ștergi. Aceasta oprește livrarea pentru a putea depana fără să pierzi configurația. Când ești gata, activează-l din nou.
+
+Ștergerea unui webhook îl elimină permanent. Orice integrare care depinde de acel webhook va înceta să mai primească notificări.
+
+## Lecturi suplimentare
+
+- [Webhooks](/ro/my-account/webhooks) — Referință completă pentru gestionarea webhook-urilor.
+- [Applications](/ro/my-account/applications) — Gestionează-ți acreditările API.
+- [Developers > APIs](/ro/developers/apis) — Documentație completă API.

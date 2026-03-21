@@ -3,8 +3,6 @@ title: Terma dan Syarat
 description: Terma dan Syarat untuk semua pengguna dan entiti Wink.
 ---
 
-# Terma dan Syarat
-
 Setiap portal mungkin mempunyai terma dan syarat yang berbeza. Sila pergi ke bahagian di bawah yang berkaitan dengan anda dan cari sub-bahagian yang dipanggil Terma Perkhidmatan dan Terma Pembayaran.
 
 ## Portal affiliate

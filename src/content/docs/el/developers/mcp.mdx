@@ -1,6 +1,6 @@
 ---
 title: MCP Server
-description: Συνδέστε γρήγορα τους AI agents με την τεκμηρίωση & τα SDKs του Wink μέσω του φιλοξενούμενου MCP server.
+description: Συνδέστε γρήγορα τους AI agents με την τεκμηρίωση Wink και τα ζωντανά OpenAPI specs μέσω του φιλοξενούμενου MCP server.
 sidebar:
   order: 10
 ---
@@ -8,16 +8,16 @@ sidebar:
 import { LinkButton } from '@astrojs/starlight/components';
 
 ## Επισκόπηση
-Ο φιλοξενούμενος MCP server του Wink είναι διαθέσιμος στο:
+Ο φιλοξενούμενος MCP server της Wink είναι διαθέσιμος στο:
 
 ```
 https://docs.mcp.wink.travel/mcp
 ```
 
-Δείξτε συμβατούς AI clients (VS Code, Cursor, άλλοι που υλοποιούν MCP HTTP transport) σε αυτό το endpoint για να τους επιτρέψετε να:
+Διευθύνετε συμβατούς AI clients (VS Code, Cursor, άλλους που υλοποιούν MCP HTTP transport) σε αυτό το endpoint για να τους επιτρέψετε να:
 - Περιηγηθούν στην τεκμηρίωση προϊόντων & πλατφόρμας (`wink://docs/...`)
-- Ανακαλύψουν SDKs & εξερευνήσουν κλάσεις API / μοντέλα (`wink://sdk/...` & `wink://sdk/.../docs`)
-- Εκτελέσουν ελαφριά σημασιολογική / αναζήτηση με λέξεις-κλειδιά πάνω σε τεκμηρίωση & περιλήψεις SDK
+- Περιηγηθούν σε ζωντανά OpenAPI specs και τεκμηρίωση λειτουργιών (`wink://api/...`)
+- Εκτελέσουν ελαφριά σημασιολογική / αναζήτηση με λέξεις-κλειδιά πάνω σε docs και ζωντανά APIs
 
 ## Μεταφορά
 Χρησιμοποιήστε το κύριο streamable HTTP endpoint:
@@ -32,8 +32,28 @@ https://docs.mcp.wink.travel/mcp
 https://docs.mcp.wink.travel/sse
 ```
 
+### Claude Code
+Επίσημη τεκμηρίωση: [Connect Claude Code to tools via MCP](https://code.claude.com/docs/en/mcp)
+
+Η Anthropic προτείνει τη χρήση του απομακρυσμένου HTTP transport για cloud-hosted MCP servers:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+Μέσα στο Claude Code, εκτελέστε `/mcp` για να ελέγξετε την κατάσταση του server. Αν θέλετε να μοιραστείτε τον server με ολόκληρο το repo, προσθέστε `--scope project` ώστε το Claude Code να γράψει τη ρύθμιση στο `.mcp.json`.
+
+### Codex
+Επίσημη τεκμηρίωση: [Docs MCP quickstart for Codex](https://developers.openai.com/resources/docs-mcp)
+
+Η OpenAI τεκμηριώνει τη ρύθμιση MCP μέσω του Codex CLI, και σημειώνει ότι η διαμόρφωση μοιράζεται με την επέκταση IDE:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
+```
+
 ### Cursor
-Τεκμηρίωση MCP για Cursor: https://cursor.com/docs/context/mcp  
+Cursor MCP docs: https://cursor.com/docs/context/mcp
 Ρύθμιση: Προσθέστε απομακρυσμένο server μέσω των ρυθμίσεων MCP.
 ```json
 {
@@ -46,7 +66,7 @@ https://docs.mcp.wink.travel/sse
 ```
 
 ### VS Code
-Επίσημη τεκμηρίωση: https://code.visualstudio.com/docs/copilot/customization/mcp-servers  
+Επίσημη τεκμηρίωση: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
 Ελάχιστη απομακρυσμένη ρύθμιση (user ή workspace `mcp.json`):
 ```json
 {
@@ -61,8 +81,8 @@ https://docs.mcp.wink.travel/sse
 
 Συμβουλές:
 - Χρησιμοποιήστε το Command Palette: “MCP: List Servers” για να επιβεβαιώσετε τη σύνδεση & να περιηγηθείτε στα εργαλεία.
-- Ο επιλογέας εργαλείων σας επιτρέπει να ενεργοποιήσετε/απενεργοποιήσετε τα `sdk_search` και `docs_search`.
-- Προσθέστε context: Προβολή συνομιλίας → Προσθήκη Context → Πόροι MCP για να επισυνάψετε σελίδες τεκμηρίωσης.
+- Ο επιλογέας εργαλείων σας επιτρέπει να ενεργοποιήσετε/απενεργοποιήσετε το `api_search` και το `docs_search`.
+- Προσθέστε context: Προβολή συνομιλίας → Προσθήκη Context → MCP Resources για να επισυνάψετε σελίδες τεκμηρίωσης.
 
 ## Βασικά URIs Πόρων
 
@@ -70,36 +90,32 @@ https://docs.mcp.wink.travel/sse
 |-----|-------------|
 | `wink://docs` | Ευρετήριο τεκμηρίωσης (ομαδοποιημένο κατά κατηγορία) |
 | `wink://docs/{path}` | Συγκεκριμένο άρθρο τεκμηρίωσης (Markdown / MDX) |
-| `wink://sdk` | Επισκόπηση SDK (κάθε SDK + μετρήσεις τεκμηρίωσης) |
-| `wink://sdk/{sdkPath}` | README SDK / φάκελος τεκμηρίωσης module / συγκεκριμένο έγγραφο module |
-
-### Τεκμηρίωση Module
-Το άνοιγμα φακέλου τεκμηρίωσης SDK (π.χ. `wink://sdk/python/wink-sdk-booking/docs`) επιστρέφει ομαδοποιημένα:
-- **Κλάσεις API** (αριθμός μεθόδων + δείγματα ονομάτων μεθόδων)
-- **Μοντέλα & Τύποι** (δομές δεδομένων που χρησιμοποιούν αυτά τα APIs)
+| `wink://api` | Ζωντανός κατάλογος OpenAPI που ανακαλύπτεται από τη ρύθμιση swagger της Wink |
+| `wink://api/{apiName}` | Συνοπτική περίληψη API με auth, tags, headers και δείγματα λειτουργιών |
+| `wink://api/{apiName}/operations` | Πλήρης λίστα λειτουργιών ομαδοποιημένη κατά tag |
+| `wink://api/{apiName}/operation/{key}` | Λεπτομέρειες μεμονωμένης λειτουργίας (παράμετροι, σώμα αιτήματος, απαντήσεις) |
+| `wink://api/{apiName}/schema/{schemaName}` | Επιλυμένο σχήμα component με εμφωλευμένα πεδία, τύπους και παραδείγματα |
+| `wink://api/{apiName}/operation/{key}/request` | Προβολή εστιασμένη στο αίτημα με απαιτούμενες εισόδους και ελάχιστο παράδειγμα payload |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Προβολή εστιασμένη στην απάντηση για συγκεκριμένο κωδικό κατάστασης |
+| `wink://api/{apiName}/operation/{key}/recipe` | Ροή εργασίας για την ορθή κλήση της λειτουργίας |
 
 ## Εργαλεία Αναζήτησης (Σύντομη Αναφορά)
 | Εργαλείο | Σκοπός | Τυπικά Παραδείγματα Ερωτημάτων |
 |------|---------|-----------------------|
-| `sdk_search` | Βρείτε ποιο SDK / κλάση API να χρησιμοποιήσετε | `cancel booking`, `list properties`, `affiliate inventory` |
-| `docs_search` | Βρείτε εννοιολογική τεκμηρίωση / οδηγούς | `authentication`, `webhooks`, `wordPress` |
+| `api_search` | Εύρεση ζωντανού API ή λειτουργίας για ενσωμάτωση | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
+| `docs_search` | Εύρεση εννοιολογικών docs / οδηγών | `authentication`, `webhooks`, `wordPress` |
 
 Αφήστε το `query` κενό για να λάβετε προτάσεις. Κάθε αποτέλεσμα περιλαμβάνει το MCP URI που μπορείτε να ανοίξετε.
+Για αποτελέσματα λειτουργιών, το `api_search` επιστρέφει επίσης συνδεδεμένα URIs για αίτημα, απάντηση, σχήμα και συνταγή ώστε οι agents να πηγαίνουν απευθείας στον πιο χρήσιμο υποπόρο.
 
 ## Τυπικό Πρότυπο Χρήσης
-1. Εκτελέστε `sdk_search` με την πρόθεσή σας (π.χ. *"list properties"*).
-2. Ανοίξτε το επιστρεφόμενο README SDK ή το `docs_uri` του για να εξετάσετε APIs / μοντέλα.
-3. Χρησιμοποιήστε `docs_search` για υποστηρικτικές έννοιες (authentication, webhooks).
+1. Εκτελέστε `api_search` με την πρόθεσή σας (π.χ. *"create affiliate"* ή *"payment receipt"*).
+2. Ανοίξτε το επιστρεφόμενο `wink://api/...` URI, ή ακολουθήστε τα συνδεδεμένα πεδία `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris`, και `recipe_uri`.
+3. Χρησιμοποιήστε `docs_search` για υποστηρικτικές έννοιες (authentication, webhooks, workflows).
 
 ## Σημειώσεις
 - Κάθε επιστρεφόμενο URI μπορεί να ανοιχτεί από τον agent για πλήρες περιεχόμενο.
+- Το δέντρο `wink://api` είναι ζωντανό και ακολουθεί τον τρέχοντα upstream κατάλογο OpenAPI αντί για ευρετήριο που δημιουργείται από το repo.
 - Οι προτάσεις εμφανίζονται αυτόματα όταν τα ερωτήματα είναι κενά.
-
-## Υποστηριζόμενα SDKs προς το παρόν
-- Wink Python SDKs
-
-## Οδικός Χάρτης (Υψηλού Επιπέδου)
-- Πρόσθετα SDKs γλωσσών (Java, JS/TS)
-- Προσθήκη TripPay SDKs
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink στο GitHub</LinkButton>

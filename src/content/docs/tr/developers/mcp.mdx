@@ -1,6 +1,6 @@
 ---
 title: MCP Sunucusu
-description: Barındırılan MCP sunucusu aracılığıyla AI ajanlarını hızlıca Wink dokümantasyonuna ve SDK'lara bağlayın.
+description: Barındırılan MCP sunucusu aracılığıyla AI ajanlarını Wink dokümantasyonuna ve canlı OpenAPI spesifikasyonlarına hızlıca bağlayın.
 sidebar:
   order: 10
 ---
@@ -14,10 +14,10 @@ Barındırılan Wink MCP sunucusu şu adreste mevcuttur:
 https://docs.mcp.wink.travel/mcp
 ```
 
-Uyumlu AI istemcilerini (VS Code, Cursor, MCP HTTP taşıma uygulayan diğerleri) bu uç noktaya yönlendirerek şunları yapmalarını sağlayın:
-- Ürün ve platform dokümanlarında gezinme (`wink://docs/...`)
-- SDK'ları keşfetme ve API sınıfları / modeller üzerinde derinlemesine inceleme (`wink://sdk/...` & `wink://sdk/.../docs`)
-- Dokümanlar ve SDK özetleri üzerinde hafif semantik / anahtar kelime araması yapma
+Uyumlu AI istemcilerini (VS Code, Cursor, MCP HTTP taşımasını uygulayan diğerleri) bu uç noktaya yönlendirerek şunları yapmalarını sağlayabilirsiniz:
+- Ürün ve platform dokümanlarını gezmek (`wink://docs/...`)
+- Canlı OpenAPI spesifikasyonları ve işlem dokümanlarını gezmek (`wink://api/...`)
+- Dokümanlar ve canlı API’ler üzerinde hafif semantik / anahtar kelime araması yapmak
 
 ## Taşıma
 Birincil akış destekli HTTP uç noktasını kullanın:
@@ -26,10 +26,30 @@ Birincil akış destekli HTTP uç noktasını kullanın:
 https://docs.mcp.wink.travel/mcp
 ```
 
-İstemciniz yalnızca SSE destekliyorsa, şunu kullanın:
+İstemciniz yalnızca SSE destekliyorsa, şu adresi kullanın:
 
 ```
 https://docs.mcp.wink.travel/sse
+```
+
+### Claude Code
+Resmi dokümanlar: [Claude Code’u MCP aracılığıyla araçlara bağlayın](https://code.claude.com/docs/en/mcp)
+
+Anthropic, bulut barındırılan MCP sunucuları için uzak HTTP taşımasını önerir:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+Claude Code içinde, sunucu durumunu incelemek için `/mcp` komutunu çalıştırın. Sunucuyu tüm depo ile paylaşmak isterseniz, yapılandırmayı `.mcp.json` dosyasına yazması için `--scope project` ekleyin.
+
+### Codex
+Resmi dokümanlar: [Codex için Docs MCP hızlı başlangıç](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI, MCP kurulumunu Codex CLI üzerinden belgeler ve yapılandırmanın IDE uzantısıyla paylaşıldığını belirtir:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
 ```
 
 ### Cursor
@@ -60,46 +80,42 @@ Minimal uzak yapılandırma (kullanıcı veya çalışma alanı `mcp.json`):
 ```
 
 İpuçları:
-- Bağlantıyı doğrulamak ve araçlarda gezinmek için Komut Paletini kullanın: “MCP: List Servers”.
-- Araç seçici ile `sdk_search` ve `docs_search` özelliklerini etkinleştirebilir/devre dışı bırakabilirsiniz.
+- Bağlantıyı doğrulamak ve araçları gezmek için Komut Paletini kullanın: “MCP: List Servers”.
+- Araç seçici ile `api_search` ve `docs_search` özelliklerini etkinleştirebilir/devre dışı bırakabilirsiniz.
 - Bağlam ekleyin: Sohbet görünümü → Bağlam Ekle → MCP Kaynakları ile doküman sayfalarını iliştirin.
 
-## Temel Kaynak URI'leri
+## Temel Kaynak URI’leri
 
 | URI | Açıklama |
 |-----|-------------|
 | `wink://docs` | Dokümantasyon dizini (kategoriye göre gruplanmış) |
 | `wink://docs/{path}` | Belirli dokümantasyon makalesi (Markdown / MDX) |
-| `wink://sdk` | SDK genel bakışı (her SDK + doküman sayısı) |
-| `wink://sdk/{sdkPath}` | SDK README / modül doküman klasörü / belirli modül dokümanı |
-
-### Modül Dokümanları
-Bir SDK doküman klasörü açmak (örneğin `wink://sdk/python/wink-sdk-booking/docs`) şunları döner:
-- **API Sınıfları** (metot sayısı + örnek metot isimleri)
-- **Modeller & Türler** (bu API'ler tarafından kullanılan veri yapıları)
+| `wink://api` | Wink’in swagger yapılandırmasından keşfedilen canlı OpenAPI kataloğu |
+| `wink://api/{apiName}` | Kimlik doğrulama, etiketler, başlıklar ve örnek işlemlerle kompakt API özeti |
+| `wink://api/{apiName}/operations` | Etikete göre gruplanmış tam işlem listesi |
+| `wink://api/{apiName}/operation/{key}` | Bireysel işlem detayı (parametreler, istek gövdesi, yanıtlar) |
+| `wink://api/{apiName}/schema/{schemaName}` | İç içe alanlar, türler ve örneklerle çözülmüş bileşen şeması |
+| `wink://api/{apiName}/operation/{key}/request` | Gerekli girdiler ve minimal örnek yüklemesi ile istek odaklı görünüm |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | Belirli bir durum kodu için yanıt odaklı görünüm |
+| `wink://api/{apiName}/operation/{key}/recipe` | O işlemin doğru şekilde çağrılması için görev odaklı akış |
 
 ## Arama Araçları (Hızlı Referans)
 | Araç | Amaç | Tipik Sorgu Örnekleri |
 |------|---------|-----------------------|
-| `sdk_search` | Hangi SDK / API sınıfının kullanılacağını bulma | `rezervasyon iptali`, `mülkleri listele`, `bayi envanteri` |
-| `docs_search` | Kavramsal dokümanlar / rehberler bulma | `kimlik doğrulama`, `webhooklar`, `wordPress` |
+| `api_search` | Entegre edilecek canlı API veya işlemi bulun | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
+| `docs_search` | Kavramsal dokümanlar / rehberler bulun | `authentication`, `webhooks`, `wordPress` |
 
-Öneri almak için `query` alanını boş bırakın. Her sonuç açabileceğiniz MCP URI'si içerir.
+Öneri almak için `query` alanını boş bırakın. Her sonuç, açabileceğiniz MCP URI’sini içerir.
+İşlem sonuçlarında, `api_search` ayrıca bağlı istek, yanıt, şema ve tarif URI’lerini döner; böylece ajanlar en faydalı alt kaynağa doğrudan atlayabilir.
 
 ## Tipik Kullanım Deseni
-1. Amacınızla `sdk_search` çalıştırın (örneğin *"mülkleri listele"*).
-2. Dönen SDK README dosyasını veya `docs_uri`'sini açarak API'leri / modelleri inceleyin.
-3. Destekleyici kavramlar için `docs_search` kullanın (kimlik doğrulama, webhooklar).
+1. Amacınızla `api_search` çalıştırın (örneğin *"create affiliate"* veya *"payment receipt"*).
+2. Dönen `wink://api/...` URI’sini açın veya bağlı `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` ve `recipe_uri` alanlarını takip edin.
+3. Destekleyici kavramlar için `docs_search` kullanın (kimlik doğrulama, webhooks, iş akışları).
 
 ## Notlar
 - Dönen her URI, ajan tarafından tam içerik için açılabilir.
-- Sorgular boş olduğunda öneriler otomatik olarak görünür.
+- `wink://api` ağacı canlıdır ve oluşturulmuş depo dizini yerine mevcut üst akış OpenAPI kataloğunu takip eder.
+- Sorgular boş bırakıldığında öneriler otomatik olarak görünür.
 
-## Şu Anda Desteklenen SDK'lar
-- Wink Python SDK'ları
-
-## Yol Haritası (Yüksek Seviyede)
-- Ek dil SDK'ları (Java, JS/TS)
-- TripPay SDK'larının eklenmesi
-
-<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">GitHub'da Wink</LinkButton>
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">GitHub’da Wink</LinkButton>

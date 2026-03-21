@@ -3,9 +3,7 @@ title: Mga Tuntunin at Kundisyon
 description: Mga Tuntunin at Kundisyon para sa lahat ng mga gumagamit at entidad ng Wink.
 ---
 
-# Mga Tuntunin at Kundisyon
-
-Bawat portal ay maaaring may iba't ibang mga tuntunin at kundisyon. Mangyaring pumunta sa seksyon sa ibaba na naaangkop sa iyo at hanapin ang sub-seksyon na tinatawag na Terms of Service at Payment Terms.
+Maaaring may iba't ibang mga tuntunin at kundisyon ang bawat portal. Mangyaring pumunta sa seksyon sa ibaba na naaangkop sa iyo at hanapin ang sub-seksyon na tinatawag na Terms of Service at Payment Terms.
 
 ## Affiliate portal
 
@@ -34,7 +32,7 @@ Matuto nang higit pa tungkol sa Wink Extranet
 
 ## Travel agent portal
 
-Para sa mga travel agent na nais malaman kung ano ang maiaalok ng Wink sa kanila sa mga tuntunin ng bespoke rates, deals, at inventory, direkta mula sa mga supplier.
+Para sa mga travel agent na nais malaman kung ano ang maiaalok ng Wink sa kanila sa mga bespoke na rate, deal, at imbentaryo, direkta mula sa mga supplier.
 
 <LinkButton href="/tl/travel-agent/what-is-agent">
 Matuto nang higit pa tungkol sa Wink Agent

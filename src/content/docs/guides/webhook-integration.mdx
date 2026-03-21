@@ -1,0 +1,66 @@
+---
+title: Webhook Integration
+description: This guide shows developers how to set up webhooks to receive real-time notifications for bookings, payments, and other events.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhooks let your systems receive real-time notifications when events happen on your Wink account — new bookings, cancellations, payment updates, and more. This guide walks you through setup and best practices.
+
+## Audience
+
+This guide is for developers integrating Wink with external systems such as property management systems (PMS), channel managers, CRMs, or custom dashboards.
+
+## How webhooks work
+
+1. You register a webhook URL on Wink.
+2. When an event occurs (e.g., a new booking), Wink sends an HTTP POST to your URL.
+3. Your server processes the payload and responds with a `200 OK`.
+
+## Setting up a webhook
+
+<Steps>
+1. Log in to your account (Extranet, Studio, or TripPay — all support webhooks).
+2. Navigate to `Applications` and then `Webhooks`. See [Webhooks](/my-account/webhooks).
+3. Click `Create webhook`.
+4. Enter a **name** (e.g., "PMS Booking Sync").
+5. Enter your **webhook URL** — the HTTPS endpoint on your server.
+6. **Select events** — Choose specific events to subscribe to, or leave empty to receive all events.
+7. Toggle **Enabled** to on.
+8. Click `Save`.
+</Steps>
+
+## Event types
+
+Wink supports a variety of event types. Common events include:
+
+- **Booking created** — A new booking has been confirmed.
+- **Booking cancelled** — A booking has been cancelled.
+- **Payment completed** — Payment has been processed.
+- **Booking updated** — Details on a booking have changed.
+
+:::tip
+Start by subscribing to all events. Once you understand the payloads, you can narrow down to only the events your system needs.
+:::
+
+## Best practices
+
+- **Use HTTPS** — Wink sends payloads to HTTPS endpoints only.
+- **Respond quickly** — Return a `200 OK` as soon as you receive the payload. Do any heavy processing asynchronously.
+- **Idempotency** — Your handler should be idempotent. Wink may retry delivery if it does not receive a `200` response.
+- **Validate the source** — Verify that incoming requests are from Wink before processing.
+- **Logging** — Log every webhook payload you receive. This makes debugging integration issues much easier.
+
+## Pausing and deleting
+
+You can **disable** a webhook without deleting it. This pauses delivery so you can troubleshoot without losing your configuration. When you're ready, toggle it back on.
+
+Deleting a webhook permanently removes it. Any integration relying on that webhook will stop receiving notifications.
+
+## Further reading
+
+- [Webhooks](/my-account/webhooks) — Full reference for webhook management.
+- [Applications](/my-account/applications) — Manage your API credentials.
+- [Developers > APIs](/developers/apis) — Full API documentation.

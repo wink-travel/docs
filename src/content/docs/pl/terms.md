@@ -3,9 +3,7 @@ title: Warunki i zasady
 description: Warunki i zasady dla wszystkich użytkowników i podmiotów Wink.
 ---
 
-# Warunki i zasady
-
-Każdy portal może mieć inne warunki i zasady. Prosimy przejść do sekcji poniżej, która dotyczy Ciebie, i poszukać podsekcji o nazwie Warunki świadczenia usług i Warunki płatności.
+Każdy portal może mieć inne warunki i zasady. Prosimy przejść do odpowiedniej sekcji poniżej i poszukać podsekcji o nazwie Warunki świadczenia usług i Warunki płatności.
 
 ## Portal afiliacyjny
 

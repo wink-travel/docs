@@ -1,0 +1,66 @@
+---
+title: Webhooki integratsioon
+description: See juhend näitab arendajatele, kuidas seadistada webhooke, et saada reaalajas teavitusi broneeringute, maksete ja muude sündmuste kohta.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhookid võimaldavad teie süsteemidel saada reaalajas teavitusi, kui teie Wink kontol toimuvad sündmused — uued broneeringud, tühistamised, maksete uuendused ja palju muud. See juhend juhendab teid seadistamise ja parimate tavade osas.
+
+## Sihtgrupp
+
+See juhend on mõeldud arendajatele, kes integreerivad Winki väliste süsteemidega, nagu kinnisvarahaldussüsteemid (PMS), kanalihaldurid, CRM-id või kohandatud juhtpaneelid.
+
+## Kuidas webhookid töötavad
+
+1. Registreerite Winkis webhooki URL-i.
+2. Kui toimub sündmus (nt uus broneering), saadab Wink teie URL-ile HTTP POST päringu.
+3. Teie server töötleb andmepaketi ja vastab `200 OK`-ga.
+
+## Webhooki seadistamine
+
+<Steps>
+1. Logige sisse oma kontole (Extranet, Studio või TripPay — kõik toetavad webhooke).
+2. Minge jaotisse `Applications` ja seejärel `Webhooks`. Vaadake [Webhooks](/et/my-account/webhooks).
+3. Klõpsake `Create webhook`.
+4. Sisestage **nimi** (nt "PMS Broneeringu sünkroonimine").
+5. Sisestage oma **webhooki URL** — HTTPS lõpp-punkt teie serveris.
+6. **Valige sündmused** — valige konkreetsed sündmused, millele tellida, või jätke tühjaks, et saada kõik sündmused.
+7. Lülitage **Enabled** sisse.
+8. Klõpsake `Save`.
+</Steps>
+
+## Sündmuste tüübid
+
+Wink toetab mitmesuguseid sündmuste tüüpe. Levinumad sündmused on:
+
+- **Broneering loodud** — uus broneering on kinnitatud.
+- **Broneering tühistatud** — broneering on tühistatud.
+- **Makse lõpetatud** — makse on töödeldud.
+- **Broneering uuendatud** — broneeringu andmed on muutunud.
+
+:::tip
+Alustage kõigi sündmuste tellimisest. Kui mõistate andmepakette, saate kitsendada ainult teie süsteemile vajalikele sündmustele.
+:::
+
+## Parimad tavad
+
+- **Kasutage HTTPS-i** — Wink saadab andmepakette ainult HTTPS lõpp-punktidele.
+- **Vastake kiiresti** — tagastage `200 OK` kohe, kui saate andmepaketi. Kõik raskemad protsessid tehke asünkroonselt.
+- **Idempotentsus** — teie töötleja peaks olema idempotentne. Wink võib proovida edastust uuesti, kui ei saa `200` vastust.
+- **Allika valideerimine** — kontrollige, et sissetulevad päringud pärineksid Winkist, enne kui neid töötlete.
+- **Logimine** — logige iga vastu võetud webhooki andmepakett. See teeb integreerimisprobleemide silumise palju lihtsamaks.
+
+## Peatamine ja kustutamine
+
+Saate webhooki **keelata** ilma seda kustutamata. See peatab edastuse, et saaksite tõrkeotsingut teha ilma konfiguratsiooni kaotamata. Kui olete valmis, lülitage see uuesti sisse.
+
+Webhooki kustutamine eemaldab selle jäädavalt. Kõik integreerimised, mis sõltuvad sellest webhookist, lõpetavad teavituste saamise.
+
+## Lisalugemine
+
+- [Webhooks](/et/my-account/webhooks) — webhooki halduse täielik viide.
+- [Applications](/et/my-account/applications) — haldage oma API mandaate.
+- [Developers > APIs](/et/developers/apis) — täielik API dokumentatsioon.

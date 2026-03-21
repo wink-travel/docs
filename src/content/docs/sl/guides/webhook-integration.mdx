@@ -1,0 +1,66 @@
+---
+title: Integracija Webhookov
+description: Ta vodič razvijalcem pokaže, kako nastaviti webhooke za prejemanje obvestil v realnem času o rezervacijah, plačilih in drugih dogodkih.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhooki omogočajo vašim sistemom prejemanje obvestil v realnem času, ko se na vašem Wink računu zgodijo dogodki — nove rezervacije, odpovedi, posodobitve plačil in še več. Ta vodič vas vodi skozi nastavitev in najboljše prakse.
+
+## Ciljna publika
+
+Ta vodič je namenjen razvijalcem, ki integrirajo Wink z zunanjimi sistemi, kot so sistemi za upravljanje nepremičnin (PMS), upravljalci kanalov, CRM-ji ali prilagojene nadzorne plošče.
+
+## Kako webhooki delujejo
+
+1. Registrirate URL webhooka na Wink.
+2. Ko se zgodi dogodek (npr. nova rezervacija), Wink pošlje HTTP POST na vaš URL.
+3. Vaš strežnik obdela podatke in odgovori z `200 OK`.
+
+## Nastavitev webhooka
+
+<Steps>
+1. Prijavite se v svoj račun (Extranet, Studio ali TripPay — vsi podpirajo webhooke).
+2. Pojdite na `Applications` in nato `Webhooks`. Oglejte si [Webhooki](/sl/my-account/webhooks).
+3. Kliknite `Create webhook`.
+4. Vnesite **ime** (npr. "PMS sinhronizacija rezervacij").
+5. Vnesite svoj **webhook URL** — HTTPS končno točko na vašem strežniku.
+6. **Izberite dogodke** — Izberite specifične dogodke, na katere se želite naročiti, ali pustite prazno, da prejmete vse dogodke.
+7. Vklopite **Enabled**.
+8. Kliknite `Save`.
+</Steps>
+
+## Vrste dogodkov
+
+Wink podpira različne vrste dogodkov. Pogosti dogodki vključujejo:
+
+- **Rezervacija ustvarjena** — Potrjena je nova rezervacija.
+- **Rezervacija odpovedana** — Rezervacija je bila odpovedana.
+- **Plačilo zaključeno** — Plačilo je bilo obdelano.
+- **Rezervacija posodobljena** — Podatki o rezervaciji so se spremenili.
+
+:::tip
+Začnite z naročanjem na vse dogodke. Ko boste razumeli podatke, lahko omejite na dogodke, ki jih vaš sistem potrebuje.
+:::
+
+## Najboljše prakse
+
+- **Uporabljajte HTTPS** — Wink pošilja podatke samo na HTTPS končne točke.
+- **Odgovarjajte hitro** — Takoj po prejemu podatkov vrnite `200 OK`. Vse zahtevnejše obdelave izvajajte asinhrono.
+- **Idempotentnost** — Vaš obdelovalec naj bo idempotenten. Wink lahko poskuša ponovno dostavo, če ne prejme odgovora `200`.
+- **Preverite vir** — Pred obdelavo preverite, da so dohodni zahtevki iz Wink.
+- **Zapisovanje** — Beležite vsak prejeti webhook payload. To olajša odpravljanje težav pri integraciji.
+
+## Zaustavitev in brisanje
+
+Webhook lahko **onemogočite** brez brisanja. To začasno ustavi dostavo, da lahko odpravljate težave brez izgube nastavitve. Ko ste pripravljeni, ga ponovno vklopite.
+
+Brisanje webhooka ga trajno odstrani. Vsaka integracija, ki je odvisna od tega webhooka, bo prenehala prejemati obvestila.
+
+## Dodatno branje
+
+- [Webhooki](/sl/my-account/webhooks) — Celoten referenčni vodič za upravljanje webhookov.
+- [Applications](/sl/my-account/applications) — Upravljanje vaših API poverilnic.
+- [Developers > APIs](/sl/developers/apis) — Celotna API dokumentacija.

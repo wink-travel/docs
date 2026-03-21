@@ -1,6 +1,6 @@
 ---
 title: MCP Server
-description: Mabilis na ikonekta ang mga AI agent sa Wink documentation at SDKs sa pamamagitan ng hosted MCP server.
+description: Mabilis na ikonekta ang mga AI agent sa Wink documentation at live OpenAPI specs sa pamamagitan ng hosted MCP server.
 sidebar:
   order: 10
 ---
@@ -8,16 +8,16 @@ sidebar:
 import { LinkButton } from '@astrojs/starlight/components';
 
 ## Overview
-Ang hosted Wink MCP server ay makukuha sa:
+Ang hosted Wink MCP server ay makikita sa:
 
 ```
 https://docs.mcp.wink.travel/mcp
 ```
 
-Ituro ang mga compatible na AI client (VS Code, Cursor, iba pang nag-iimplement ng MCP HTTP transport) sa endpoint na ito upang payagan silang:
+Ituro ang mga compatible na AI client (VS Code, Cursor, iba pa na nagpapatupad ng MCP HTTP transport) sa endpoint na ito upang payagan silang:
 - Mag-browse ng mga dokumento ng produkto at platform (`wink://docs/...`)
-- Matuklasan ang mga SDK at mag-drill down sa mga API classes / models (`wink://sdk/...` at `wink://sdk/.../docs`)
-- Magsagawa ng magaan na semantic / keyword search sa mga dokumento at SDK summaries
+- Mag-browse ng live OpenAPI specs at mga dokumento ng operasyon (`wink://api/...`)
+- Magsagawa ng magaan na semantic / keyword search sa mga dokumento at live APIs
 
 ## Transport
 Gamitin ang pangunahing streamable HTTP endpoint:
@@ -30,6 +30,26 @@ Kung ang iyong client ay sumusuporta lamang sa SSE, gamitin ang:
 
 ```
 https://docs.mcp.wink.travel/sse
+```
+
+### Claude Code
+Opisyal na dokumentasyon: [Connect Claude Code to tools via MCP](https://code.claude.com/docs/en/mcp)
+
+Inirerekomenda ng Anthropic ang remote HTTP transport para sa cloud-hosted MCP servers:
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+Sa loob ng Claude Code, patakbuhin ang `/mcp` upang suriin ang status ng server. Kung nais mong ibahagi ang server sa buong repo, idagdag ang `--scope project` upang isulat ng Claude Code ang config sa `.mcp.json`.
+
+### Codex
+Opisyal na dokumentasyon: [Docs MCP quickstart for Codex](https://developers.openai.com/resources/docs-mcp)
+
+Idinedetalye ng OpenAI ang MCP setup sa pamamagitan ng Codex CLI, at binabanggit na ang configuration ay ibinabahagi sa IDE extension:
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
 ```
 
 ### Cursor
@@ -46,7 +66,7 @@ Setup: Magdagdag ng remote server sa pamamagitan ng MCP settings.
 ```
 
 ### VS Code
-Opisyal na docs: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
+Opisyal na dokumentasyon: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
 Minimal na remote config (user o workspace `mcp.json`):
 ```json
 {
@@ -61,8 +81,8 @@ Minimal na remote config (user o workspace `mcp.json`):
 
 Mga Tip:
 - Gamitin ang Command Palette: “MCP: List Servers” upang kumpirmahin ang koneksyon at mag-browse ng mga tool.
-- Pinapayagan ng tools picker na i-enable/i-disable ang `sdk_search` at `docs_search`.
-- Magdagdag ng konteksto: Chat view → Add Context → MCP Resources upang ikabit ang mga pahina ng docs.
+- Pinapayagan ng tools picker na i-enable/disable ang `api_search` at `docs_search`.
+- Magdagdag ng konteksto: Chat view → Add Context → MCP Resources upang ikabit ang mga pahina ng dokumento.
 
 ## Core Resource URIs
 
@@ -70,36 +90,32 @@ Mga Tip:
 |-----|--------------|
 | `wink://docs` | Index ng dokumentasyon (nakagrupo ayon sa kategorya) |
 | `wink://docs/{path}` | Tiyak na artikulo ng dokumentasyon (Markdown / MDX) |
-| `wink://sdk` | Pangkalahatang-ideya ng SDK (bawat SDK + bilang ng docs) |
-| `wink://sdk/{sdkPath}` | SDK README / folder ng module docs / tiyak na module doc |
-
-### Module Docs
-Ang pagbubukas ng SDK docs folder (hal. `wink://sdk/python/wink-sdk-booking/docs`) ay nagbabalik ng mga nakagrupong:
-- **API Classes** (bilang ng mga method + mga halimbawa ng pangalan ng method)
-- **Models & Types** (mga istruktura ng data na ginagamit ng mga API na iyon)
+| `wink://api` | Live OpenAPI catalog na natuklasan mula sa swagger config ng Wink |
+| `wink://api/{apiName}` | Compact na buod ng API na may auth, tags, headers, at mga sample na operasyon |
+| `wink://api/{apiName}/operations` | Buong listahan ng operasyon na nakagrupo ayon sa tag |
+| `wink://api/{apiName}/operation/{key}` | Detalye ng indibidwal na operasyon (params, request body, responses) |
+| `wink://api/{apiName}/schema/{schemaName}` | Naresolbang component schema na may nested fields, types, at mga halimbawa |
+| `wink://api/{apiName}/operation/{key}/request` | View na nakatuon sa request na may kinakailangang inputs at minimal na halimbawa ng payload |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | View na nakatuon sa response para sa isang partikular na status code |
+| `wink://api/{apiName}/operation/{key}/recipe` | Task-oriented na daloy para sa tamang pagtawag ng operasyon |
 
 ## Search Tools (Quick Reference)
-| Tool | Layunin | Mga Karaniwang Halimbawa ng Query |
-|------|---------|----------------------------------|
-| `sdk_search` | Hanapin kung aling SDK / API class ang gagamitin | `cancel booking`, `list properties`, `affiliate inventory` |
-| `docs_search` | Hanapin ang mga konseptwal na docs / gabay | `authentication`, `webhooks`, `wordPress` |
+| Tool | Layunin | Karaniwang Halimbawa ng Query |
+|------|---------|-------------------------------|
+| `api_search` | Hanapin ang live API o operasyon para i-integrate | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
+| `docs_search` | Hanapin ang mga konseptwal na dokumento / gabay | `authentication`, `webhooks`, `wordPress` |
 
 Iwanang walang laman ang `query` upang makatanggap ng mga suhestiyon. Kasama sa bawat resulta ang MCP URI na maaari mong buksan.
+Para sa mga operation hits, nagbabalik din ang `api_search` ng mga naka-link na request, response, schema, at recipe URIs upang makalundag ang mga agent nang direkta sa pinaka-kapaki-pakinabang na subresource.
 
 ## Typical Usage Pattern
-1. Patakbuhin ang `sdk_search` gamit ang iyong layunin (hal. *"list properties"*).
-2. Buksan ang naibalik na SDK README o ang `docs_uri` nito upang suriin ang mga API / modelo.
-3. Gamitin ang `docs_search` para sa mga sumusuportang konsepto (authentication, webhooks).
+1. Patakbuhin ang `api_search` gamit ang iyong layunin (hal. *"create affiliate"* o *"payment receipt"*).
+2. Buksan ang ibinalik na `wink://api/...` URI, o sundan ang mga naka-link na `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris`, at `recipe_uri` na mga field.
+3. Gamitin ang `docs_search` para sa mga sumusuportang konsepto (authentication, webhooks, workflows).
 
 ## Notes
-- Ang bawat naibalik na URI ay maaaring buksan ng agent para sa buong nilalaman.
+- Ang bawat ibinalik na URI ay maaaring buksan ng agent para sa buong nilalaman.
+- Ang `wink://api` tree ay live at sumusunod sa kasalukuyang upstream OpenAPI catalog sa halip na isang generated repo index.
 - Awtomatikong lumalabas ang mga suhestiyon kapag walang laman ang mga query.
-
-## Currently Supported SDKs
-- Wink Python SDKs
-
-## Roadmap (High-Level)
-- Karagdagang language SDKs (Java, JS/TS)
-- Magdagdag ng TripPay SDKs
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink on GitHub</LinkButton>

@@ -3,9 +3,7 @@ title: Pogoji poslovanja
 description: Pogoji poslovanja za vse uporabnike in entitete Wink.
 ---
 
-# Pogoji poslovanja
-
-Vsak portal ima lahko različne pogoje poslovanja. Prosimo, pojdite na spodnji odsek, ki velja za vas, in poiščite pododsek z naslovom Pogoji storitve in plačilni pogoji.
+Vsak portal ima lahko različne pogoje poslovanja. Prosimo, pojdite v spodnji odsek, ki velja za vas, in poiščite pododsek z naslovom Pogoji storitve in Plačilni pogoji.
 
 ## Partnerski portal
 
@@ -26,7 +24,7 @@ Izvedite več o našem rezervacijskem sistemu
 
 ## Portal za nastanitve
 
-Za nastanitve, ki želijo začeti prodajati na Wink. Uporabite naša orodja za učinkovito prodajo in trženje na spletu ter pridobite vojsko partnerjev z vsega sveta, ki vam bodo pomagali pridobiti goste in rezervacije.
+Za nastanitve, ki želijo začeti prodajati na Wink. Uporabite naša orodja za učinkovito prodajo in trženje na spletu ter pridobite vojsko partnerjev z vsega sveta, ki vam bodo pomagali pridobiti stranke in rezervacije.
 
 <LinkButton href="/sl/extranet/what-is-extranet">
 Izvedite več o Wink Extranet

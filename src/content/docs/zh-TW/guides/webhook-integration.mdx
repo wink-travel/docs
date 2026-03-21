@@ -1,0 +1,66 @@
+---
+title: Webhook 整合
+description: 本指南示範開發人員如何設定 webhook，以接收訂單、付款及其他事件的即時通知。
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhook 讓您的系統能在 Wink 帳戶發生事件時接收即時通知 — 新訂單、取消、付款更新等。此指南將引導您完成設定及最佳實踐。
+
+## 目標讀者
+
+本指南適用於將 Wink 與外部系統整合的開發人員，例如物業管理系統 (PMS)、渠道管理器、CRM 或自訂儀表板。
+
+## Webhook 運作方式
+
+1. 您在 Wink 上註冊 webhook URL。
+2. 當事件發生（例如新訂單），Wink 會向您的 URL 發送 HTTP POST。
+3. 您的伺服器處理負載並回應 `200 OK`。
+
+## 設定 webhook
+
+<Steps>
+1. 登入您的帳戶（Extranet、Studio 或 TripPay — 均支援 webhook）。
+2. 前往 `Applications`，然後點選 `Webhooks`。參見 [Webhooks](/zh-TW/my-account/webhooks)。
+3. 點擊 `Create webhook`。
+4. 輸入 **名稱**（例如「PMS 訂單同步」）。
+5. 輸入您的 **webhook URL** — 您伺服器上的 HTTPS 端點。
+6. **選擇事件** — 選擇要訂閱的特定事件，或留空以接收所有事件。
+7. 切換 **Enabled** 為開啟。
+8. 點擊 `Save`。
+</Steps>
+
+## 事件類型
+
+Wink 支援多種事件類型。常見事件包括：
+
+- **訂單已建立** — 新訂單已確認。
+- **訂單已取消** — 訂單已被取消。
+- **付款已完成** — 付款已處理。
+- **訂單已更新** — 訂單細節已變更。
+
+:::tip
+建議先訂閱所有事件。了解負載內容後，再縮小範圍只接收系統需要的事件。
+:::
+
+## 最佳實踐
+
+- **使用 HTTPS** — Wink 僅向 HTTPS 端點傳送負載。
+- **快速回應** — 收到負載後立即回傳 `200 OK`。任何繁重處理請非同步進行。
+- **冪等性** — 您的處理程序應具備冪等性。若未收到 `200` 回應，Wink 可能會重試傳送。
+- **驗證來源** — 處理前請確認請求確實來自 Wink。
+- **記錄** — 記錄每個收到的 webhook 負載，有助於除錯整合問題。
+
+## 暫停與刪除
+
+您可以 **停用** webhook 而不刪除它。這會暫停通知傳送，方便您在不失去設定的情況下進行故障排除。準備好時，再切換回啟用。
+
+刪除 webhook 則會永久移除。任何依賴該 webhook 的整合將停止接收通知。
+
+## 延伸閱讀
+
+- [Webhooks](/zh-TW/my-account/webhooks) — webhook 管理完整參考。
+- [Applications](/zh-TW/my-account/applications) — 管理您的 API 憑證。
+- [Developers > APIs](/zh-TW/developers/apis) — 完整 API 文件。

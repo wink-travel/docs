@@ -3,13 +3,11 @@ title: Termeni și Condiții
 description: Termeni și Condiții pentru toți utilizatorii și entitățile Wink.
 ---
 
-# Termeni și Condiții
-
-Fiecare portal poate avea termeni și condiții diferite. Vă rugăm să accesați secțiunea de mai jos care se aplică pentru dumneavoastră și să căutați subsecțiunea numită Termeni de Serviciu și Condiții de Plată.
+Fiecare portal poate avea termeni și condiții diferite. Vă rugăm să accesați secțiunea de mai jos care se aplică pentru dumneavoastră și să căutați sub-secțiunea numită Termeni de Serviciu și Condiții de Plată.
 
 ## Portal afiliat
 
-Pentru afiliații care doresc să învețe cum să câștige un venit pasiv prin monetizarea conturilor sociale cu Wink.  
+Pentru afiliați care doresc să învețe cum să câștige un venit pasiv monetizând conturile lor sociale cu Wink.  
 [Wink Studio](https://studio.wink.travel) are toate instrumentele de care aveți nevoie pentru a vinde ca un profesionist.
 
 <LinkButton href="/ro/studio/what-is-studio">

@@ -3,8 +3,6 @@ title: Termes i Condicions
 description: Termes i Condicions per a tots els usuaris i entitats de Wink.
 ---
 
-# Termes i Condicions
-
 Cada portal pot tenir diferents termes i condicions. Si us plau, ves a la secció següent que t'aplica i busca la subsecció anomenada Termes de Servei i Condicions de Pagament.
 
 ## Portal d'afiliats
@@ -26,7 +24,7 @@ Aprèn més sobre el nostre motor de reserves
 
 ## Portal de propietats
 
-Per a propietats que volen començar a vendre a Wink. Utilitza les nostres eines per vendre i promocionar-te eficaçment en línia i aconsegueix un exèrcit d’afiliats d’arreu del món que t’ajudaran a obtenir clients i reserves.
+Per a propietats que volen començar a vendre a Wink. Utilitza les nostres eines per vendre i promocionar-te eficaçment en línia i aconsegueix un exèrcit d’afiliats d’arreu del món que t’ajudin a obtenir clients i reserves.
 
 <LinkButton href="/ca/extranet/what-is-extranet">
 Aprèn més sobre Wink Extranet

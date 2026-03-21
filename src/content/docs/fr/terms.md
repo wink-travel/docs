@@ -3,9 +3,7 @@ title: Conditions générales
 description: Conditions générales pour tous les utilisateurs et entités Wink.
 ---
 
-# Conditions générales
-
-Chaque portail peut avoir des conditions générales différentes. Veuillez consulter la section ci-dessous qui vous concerne et chercher le sous-titre intitulé Conditions d'utilisation et Modalités de paiement.
+Chaque portail peut avoir des conditions générales différentes. Veuillez consulter la section ci-dessous qui vous concerne et chercher le sous-ensemble intitulé Conditions d'utilisation et Modalités de paiement.
 
 ## Portail affilié
 
@@ -24,17 +22,17 @@ Tous les chemins mènent à notre moteur de réservation ! Découvrez ce que vou
 En savoir plus sur notre moteur de réservation
 </LinkButton>
 
-## Portail des établissements
+## Portail propriété
 
-Pour les établissements qui souhaitent commencer à vendre sur Wink. Utilisez nos outils pour vous vendre et vous promouvoir efficacement en ligne et bénéficiez d’une armée d’affiliés du monde entier pour vous aider à obtenir des clients et des réservations.
+Pour les propriétés qui souhaitent commencer à vendre sur Wink. Utilisez nos outils pour vous vendre et vous commercialiser efficacement en ligne et bénéficiez d’une armée d’affiliés du monde entier pour vous aider à obtenir des clients et des réservations.
 
 <LinkButton href="/fr/extranet/what-is-extranet">
 En savoir plus sur Wink Extranet
 </LinkButton>
 
-## Portail des agents de voyage
+## Portail agent de voyage
 
-Pour les agents de voyage qui veulent découvrir ce que Wink peut leur offrir en termes de tarifs sur mesure, offres et inventaire, directement auprès des fournisseurs.
+Pour les agents de voyage qui souhaitent découvrir ce que Wink peut leur offrir en termes de tarifs sur mesure, offres et inventaire, directement auprès des fournisseurs.
 
 <LinkButton href="/fr/travel-agent/what-is-agent">
 En savoir plus sur Wink Agent

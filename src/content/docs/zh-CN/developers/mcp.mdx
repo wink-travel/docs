@@ -1,6 +1,6 @@
 ---
 title: MCP 服务器
-description: 通过托管的 MCP 服务器快速将 AI 代理连接到 Wink 文档和 SDK。
+description: 通过托管的 MCP 服务器快速将 AI 代理连接到 Wink 文档和实时 OpenAPI 规范。
 sidebar:
   order: 10
 ---
@@ -16,8 +16,8 @@ https://docs.mcp.wink.travel/mcp
 
 将兼容的 AI 客户端（VS Code、Cursor 及其他实现 MCP HTTP 传输的客户端）指向此端点，以便它们能够：
 - 浏览产品和平台文档（`wink://docs/...`）
-- 发现 SDK 并深入查看 API 类 / 模型（`wink://sdk/...` 和 `wink://sdk/.../docs`）
-- 对文档和 SDK 摘要执行轻量级语义 / 关键词搜索
+- 浏览实时 OpenAPI 规范和操作文档（`wink://api/...`）
+- 对文档和实时 API 进行轻量级语义/关键词搜索
 
 ## 传输
 使用主要的可流式 HTTP 端点：
@@ -32,8 +32,28 @@ https://docs.mcp.wink.travel/mcp
 https://docs.mcp.wink.travel/sse
 ```
 
+### Claude Code
+官方文档：[通过 MCP 连接 Claude Code 到工具](https://code.claude.com/docs/en/mcp)
+
+Anthropic 推荐对云托管的 MCP 服务器使用远程 HTTP 传输：
+```bash
+claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
+claude mcp list
+```
+
+在 Claude Code 中，运行 `/mcp` 查看服务器状态。如果想与整个仓库共享服务器，添加 `--scope project`，这样 Claude Code 会将配置写入 `.mcp.json`。
+
+### Codex
+官方文档：[Codex 的 Docs MCP 快速入门](https://developers.openai.com/resources/docs-mcp)
+
+OpenAI 通过 Codex CLI 记录了 MCP 的设置，并指出配置与 IDE 扩展共享：
+```bash
+codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
+codex mcp list
+```
+
 ### Cursor
-Cursor MCP 文档：https://cursor.com/docs/context/mcp  
+Cursor MCP 文档：https://cursor.com/docs/context/mcp
 设置：通过 MCP 设置添加远程服务器。
 ```json
 {
@@ -46,7 +66,7 @@ Cursor MCP 文档：https://cursor.com/docs/context/mcp
 ```
 
 ### VS Code
-官方文档：https://code.visualstudio.com/docs/copilot/customization/mcp-servers  
+官方文档：https://code.visualstudio.com/docs/copilot/customization/mcp-servers
 最简远程配置（用户或工作区的 `mcp.json`）：
 ```json
 {
@@ -61,45 +81,41 @@ Cursor MCP 文档：https://cursor.com/docs/context/mcp
 
 提示：
 - 使用命令面板：“MCP: List Servers” 确认连接并浏览工具。
-- 工具选择器允许启用/禁用 `sdk_search` 和 `docs_search`。
+- 工具选择器允许启用/禁用 `api_search` 和 `docs_search`。
 - 添加上下文：聊天视图 → 添加上下文 → MCP 资源，附加文档页面。
 
 ## 核心资源 URI
 
 | URI | 描述 |
-|-----|------|
+|-----|-------------|
 | `wink://docs` | 文档索引（按类别分组） |
 | `wink://docs/{path}` | 具体文档文章（Markdown / MDX） |
-| `wink://sdk` | SDK 概览（每个 SDK + 文档计数） |
-| `wink://sdk/{sdkPath}` | SDK README / 模块文档文件夹 / 具体模块文档 |
-
-### 模块文档
-打开 SDK 文档文件夹（例如 `wink://sdk/python/wink-sdk-booking/docs`）返回分组的：
-- **API 类**（方法数量 + 示例方法名）
-- **模型与类型**（这些 API 使用的数据结构）
+| `wink://api` | 从 Wink 的 swagger 配置发现的实时 OpenAPI 目录 |
+| `wink://api/{apiName}` | 带有认证、标签、头信息和示例操作的简洁 API 概览 |
+| `wink://api/{apiName}/operations` | 按标签分组的完整操作列表 |
+| `wink://api/{apiName}/operation/{key}` | 单个操作详情（参数、请求体、响应） |
+| `wink://api/{apiName}/schema/{schemaName}` | 解析后的组件模式，包含嵌套字段、类型和示例 |
+| `wink://api/{apiName}/operation/{key}/request` | 以请求为中心的视图，包含必填输入和最小示例负载 |
+| `wink://api/{apiName}/operation/{key}/response/{status}` | 针对特定状态码的响应视图 |
+| `wink://api/{apiName}/operation/{key}/recipe` | 调用该操作的任务导向流程 |
 
 ## 搜索工具（快速参考）
 | 工具 | 目的 | 典型查询示例 |
-|------|------|--------------|
-| `sdk_search` | 查找使用哪个 SDK / API 类 | `cancel booking`，`list properties`，`affiliate inventory` |
-| `docs_search` | 查找概念文档 / 指南 | `authentication`，`webhooks`，`wordPress` |
+|------|---------|-----------------------|
+| `api_search` | 查找要集成的实时 API 或操作 | `create affiliate`，`payment receipt`，`lookup inventory`，`invite manager` |
+| `docs_search` | 查找概念性文档/指南 | `authentication`，`webhooks`，`wordPress` |
 
-留空 `query` 可接收建议。每个结果都包含可打开的 MCP URI。
+留空 `query` 可获得建议。每个结果都包含可打开的 MCP URI。
+对于操作命中，`api_search` 还返回关联的请求、响应、模式和流程 URI，方便代理直接跳转到最有用的子资源。
 
 ## 典型使用流程
-1. 使用您的意图运行 `sdk_search`（例如 *“list properties”*）。
-2. 打开返回的 SDK README 或其 `docs_uri`，查看 API / 模型。
-3. 使用 `docs_search` 查找支持性概念（认证、webhooks）。
+1. 使用您的意图运行 `api_search`（例如 *“create affiliate”* 或 *“payment receipt”*）。
+2. 打开返回的 `wink://api/...` URI，或跟随其关联的 `request_uri`、`response_uris`、`request_schema_uris`、`response_schema_uris` 和 `recipe_uri` 字段。
+3. 使用 `docs_search` 查找支持性概念（认证、webhooks、工作流）。
 
 ## 注意事项
-- 每个返回的 URI 都可由代理打开以获取完整内容。
+- 每个返回的 URI 都可以由代理打开以获取完整内容。
+- `wink://api` 树是实时的，跟随当前上游 OpenAPI 目录，而非生成的仓库索引。
 - 查询为空时会自动显示建议。
-
-## 当前支持的 SDK
-- Wink Python SDK
-
-## 路线图（高层）
-- 额外语言 SDK（Java、JS/TS）
-- 添加 TripPay SDK
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink 在 GitHub</LinkButton>

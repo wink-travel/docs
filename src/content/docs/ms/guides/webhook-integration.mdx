@@ -1,0 +1,66 @@
+---
+title: Integrasi Webhook
+description: Panduan ini menunjukkan kepada pembangun cara menyediakan webhook untuk menerima pemberitahuan masa nyata bagi tempahan, pembayaran, dan acara lain.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhook membolehkan sistem anda menerima pemberitahuan masa nyata apabila acara berlaku pada akaun Wink anda — tempahan baru, pembatalan, kemas kini pembayaran, dan banyak lagi. Panduan ini membimbing anda melalui penyediaan dan amalan terbaik.
+
+## Audiens
+
+Panduan ini untuk pembangun yang mengintegrasikan Wink dengan sistem luaran seperti sistem pengurusan hartanah (PMS), pengurus saluran, CRM, atau papan pemuka tersuai.
+
+## Cara webhook berfungsi
+
+1. Anda mendaftar URL webhook pada Wink.
+2. Apabila acara berlaku (contohnya, tempahan baru), Wink menghantar HTTP POST ke URL anda.
+3. Pelayan anda memproses muatan dan membalas dengan `200 OK`.
+
+## Menyediakan webhook
+
+<Steps>
+1. Log masuk ke akaun anda (Extranet, Studio, atau TripPay — semua menyokong webhook).
+2. Pergi ke `Applications` dan kemudian `Webhooks`. Lihat [Webhooks](/ms/my-account/webhooks).
+3. Klik `Create webhook`.
+4. Masukkan **nama** (contohnya, "Penyelarasan Tempahan PMS").
+5. Masukkan **URL webhook** anda — titik akhir HTTPS pada pelayan anda.
+6. **Pilih acara** — Pilih acara tertentu untuk dilanggan, atau biarkan kosong untuk menerima semua acara.
+7. Togol **Enabled** ke hidup.
+8. Klik `Save`.
+</Steps>
+
+## Jenis acara
+
+Wink menyokong pelbagai jenis acara. Acara biasa termasuk:
+
+- **Tempahan dibuat** — Tempahan baru telah disahkan.
+- **Tempahan dibatalkan** — Tempahan telah dibatalkan.
+- **Pembayaran selesai** — Pembayaran telah diproses.
+- **Tempahan dikemas kini** — Butiran tempahan telah berubah.
+
+:::tip
+Mulakan dengan melanggan semua acara. Setelah anda memahami muatan, anda boleh mengecilkan kepada hanya acara yang diperlukan oleh sistem anda.
+:::
+
+## Amalan terbaik
+
+- **Gunakan HTTPS** — Wink hanya menghantar muatan ke titik akhir HTTPS.
+- **Balas dengan cepat** — Kembalikan `200 OK` sebaik sahaja anda menerima muatan. Lakukan pemprosesan berat secara tak segerak.
+- **Idempotensi** — Pengendali anda harus idempotent. Wink mungkin cuba semula penghantaran jika tidak menerima balasan `200`.
+- **Sahkan sumber** — Sahkan bahawa permintaan masuk adalah dari Wink sebelum memproses.
+- **Log** — Log setiap muatan webhook yang anda terima. Ini memudahkan penyahpepijatan isu integrasi.
+
+## Menjeda dan memadam
+
+Anda boleh **nyahaktifkan** webhook tanpa memadamnya. Ini menjeda penghantaran supaya anda boleh menyelesaikan masalah tanpa kehilangan konfigurasi anda. Apabila sudah bersedia, togol semula ke hidup.
+
+Memadam webhook akan menghapuskannya secara kekal. Sebarang integrasi yang bergantung pada webhook itu akan berhenti menerima pemberitahuan.
+
+## Bacaan lanjut
+
+- [Webhooks](/ms/my-account/webhooks) — Rujukan penuh untuk pengurusan webhook.
+- [Applications](/ms/my-account/applications) — Urus kelayakan API anda.
+- [Developers > APIs](/ms/developers/apis) — Dokumentasi API penuh.

@@ -1,0 +1,66 @@
+---
+title: Vefkrokar Samþætting
+description: Þessi leiðarvísir sýnir forriturum hvernig á að setja upp vefkroka til að fá rauntímatilkynningar um bókanir, greiðslur og önnur atvik.
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Vefkrokar leyfa kerfum þínum að fá rauntímatilkynningar þegar atvik eiga sér stað á Wink reikningnum þínum — nýjar bókanir, afbókanir, uppfærslur á greiðslum og fleira. Þessi leiðarvísir leiðir þig í gegnum uppsetningu og bestu vinnubrögð.
+
+## Áhorfendur
+
+Þessi leiðarvísir er fyrir forritara sem samþætta Wink við ytri kerfi eins og eignastýringarkerfi (PMS), rásastjóra, CRM kerfi eða sérsniðnar mælaborð.
+
+## Hvernig vefkrokar virka
+
+1. Þú skráir vefkroka slóð á Wink.
+2. Þegar atvik á sér stað (t.d. ný bókun) sendir Wink HTTP POST á slóðina þína.
+3. Þinn netþjónn vinnur úr gögnum og svarar með `200 OK`.
+
+## Uppsetning vefkroka
+
+<Steps>
+1. Skráðu þig inn á reikninginn þinn (Extranet, Studio eða TripPay — allir styðja vefkroka).
+2. Farðu í `Applications` og síðan `Webhooks`. Sjá [Webhooks](/is/my-account/webhooks).
+3. Smelltu á `Create webhook`.
+4. Sláðu inn **nafn** (t.d. "PMS Booking Sync").
+5. Sláðu inn **vefkroka slóðina** þína — HTTPS endapunkt á netþjóninum þínum.
+6. **Veldu atvik** — Veldu tiltekna atburði til að gerast áskrifandi að, eða skildu tómt til að fá öll atvik.
+7. Kveiktu á **Enabled**.
+8. Smelltu á `Save`.
+</Steps>
+
+## Tegundir atvika
+
+Wink styður fjölbreytt úrval atvika. Algeng atvik eru meðal annars:
+
+- **Bókun búin til** — Ný bókun hefur verið staðfest.
+- **Bókun aflýst** — Bókun hefur verið aflýst.
+- **Greiðsla lokið** — Greiðsla hefur verið unnin.
+- **Bókun uppfærð** — Upplýsingar um bókun hafa breyst.
+
+:::tip
+Byrjaðu á að gerast áskrifandi að öllum atvikum. Þegar þú skilur gögnin geturðu þrengt úrvalið að þeim atvikum sem kerfið þitt þarf.
+:::
+
+## Bestu vinnubrögð
+
+- **Notaðu HTTPS** — Wink sendir gögn aðeins á HTTPS endapunkta.
+- **Svaraðu fljótt** — Skilaðu `200 OK` um leið og þú færð gögnin. Gerðu þung vinnsla utan um leið.
+- **Endurtekningarábyrgð** — Meðhöndlun þín ætti að vera endurtekningarábyrg. Wink gæti reynt að senda aftur ef það fær ekki `200` svar.
+- **Staðfestu uppruna** — Staðfestu að beiðnir séu frá Wink áður en þú vinnur úr þeim.
+- **Skráning** — Skráðu hvert vefkroka gögn sem þú færð. Þetta auðveldar bilanaleit á samþættingu.
+
+## Stöðvun og eyðing
+
+Þú getur **slökkt á** vefkroka án þess að eyða honum. Þetta stöðvar sendingar svo þú getir leyst úr vandamálum án þess að tapa stillingum þínum. Þegar þú ert tilbúinn, kveiktu aftur á honum.
+
+Eyðing vefkroka fjarlægir hann varanlega. Öll samþætting sem byggir á þeim mun hætta að fá tilkynningar.
+
+## Frekari lesning
+
+- [Webhooks](/is/my-account/webhooks) — Fullt yfirlit yfir stjórnun vefkroka.
+- [Applications](/is/my-account/applications) — Stjórnaðu API auðkennum þínum.
+- [Developers > APIs](/is/developers/apis) — Full API skjölun.

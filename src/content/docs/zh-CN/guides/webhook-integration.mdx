@@ -1,0 +1,66 @@
+---
+title: Webhook 集成
+description: 本指南向开发者展示如何设置 webhook，以接收预订、支付及其他事件的实时通知。
+sidebar:
+  order: 11
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Webhook 让您的系统在 Wink 账户发生事件时接收实时通知——新预订、取消、支付更新等。本文将引导您完成设置及最佳实践。
+
+## 受众
+
+本指南适用于将 Wink 与外部系统（如物业管理系统（PMS）、渠道管理器、CRM 或自定义仪表盘）集成的开发者。
+
+## webhook 工作原理
+
+1. 您在 Wink 上注册 webhook URL。
+2. 当事件发生（例如新预订），Wink 会向您的 URL 发送 HTTP POST 请求。
+3. 您的服务器处理负载并返回 `200 OK`。
+
+## 设置 webhook
+
+<Steps>
+1. 登录您的账户（Extranet、Studio 或 TripPay 均支持 webhook）。
+2. 进入 `Applications`，然后选择 `Webhooks`。参见 [Webhooks](/zh-CN/my-account/webhooks)。
+3. 点击 `Create webhook`。
+4. 输入 **名称**（例如 “PMS Booking Sync”）。
+5. 输入您的 **webhook URL** —— 您服务器上的 HTTPS 端点。
+6. **选择事件** —— 选择要订阅的特定事件，或留空以接收所有事件。
+7. 切换 **Enabled** 为开启状态。
+8. 点击 `Save`。
+</Steps>
+
+## 事件类型
+
+Wink 支持多种事件类型。常见事件包括：
+
+- **Booking created** — 新预订已确认。
+- **Booking cancelled** — 预订已取消。
+- **Payment completed** — 支付已处理。
+- **Booking updated** — 预订详情已更改。
+
+:::tip
+建议先订阅所有事件。了解负载内容后，您可以缩小范围，仅订阅系统所需事件。
+:::
+
+## 最佳实践
+
+- **使用 HTTPS** — Wink 仅向 HTTPS 端点发送负载。
+- **快速响应** — 收到负载后尽快返回 `200 OK`。任何耗时处理应异步进行。
+- **幂等性** — 您的处理程序应具备幂等性。若未收到 `200` 响应，Wink 可能会重试发送。
+- **验证来源** — 处理前请验证请求确实来自 Wink。
+- **日志记录** — 记录每个收到的 webhook 负载，便于调试集成问题。
+
+## 暂停与删除
+
+您可以 **禁用** webhook 而不删除它。这样可暂停通知发送，方便排查问题且不丢失配置。准备好后可重新启用。
+
+删除 webhook 会永久移除它。依赖该 webhook 的集成将停止接收通知。
+
+## 进一步阅读
+
+- [Webhooks](/zh-CN/my-account/webhooks) — webhook 管理完整参考。
+- [Applications](/zh-CN/my-account/applications) — 管理您的 API 凭证。
+- [Developers > APIs](/zh-CN/developers/apis) — 完整 API 文档。

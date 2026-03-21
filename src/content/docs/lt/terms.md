@@ -3,14 +3,12 @@ title: Sąlygos ir nuostatos
 description: Sąlygos ir nuostatos visiems Wink vartotojams ir subjektams.
 ---
 
-# Sąlygos ir nuostatos
-
 Kiekvienas portalas gali turėti skirtingas sąlygas ir nuostatas. Prašome eiti į žemiau pateiktą skyrių, kuris taikomas jums, ir ieškoti poskyrio pavadinimu Paslaugų teikimo sąlygos ir Mokėjimo sąlygos.
 
 ## Partnerių portalas
 
 Partneriams, kurie nori sužinoti, kaip uždirbti pasyvias pajamas monetizuodami savo socialinius paskyras su Wink.
-[Wink Studio](https://studio.wink.travel) turi visus įrankius, kurių reikia parduoti kaip profesionalui.
+[Wink Studio](https://studio.wink.travel) turi visus įrankius, kurių reikia profesionaliam pardavimui.
 
 <LinkButton href="/lt/studio/what-is-studio">
 Sužinokite daugiau apie Wink Studio
@@ -18,7 +16,7 @@ Sužinokite daugiau apie Wink Studio
 
 ## Rezervavimo sistema
 
-Visi keliai veda į mūsų rezervavimo sistemą! Sužinokite, ką galite daryti su labiausiai pritaikoma, kelionėms skirtą rezervavimo sistema rinkoje.
+Visi keliai veda į mūsų rezervavimo sistemą! Sužinokite, ką galite daryti su labiausiai pritaikoma, kelionėms skirta rezervavimo sistema rinkoje.
 
 <LinkButton href="/lt/booking-engine/in-a-nutshell">
 Sužinokite daugiau apie mūsų rezervavimo sistemą
@@ -34,7 +32,7 @@ Sužinokite daugiau apie Wink Extranet
 
 ## Kelionių agentų portalas
 
-Kelionių agentams, kurie nori sužinoti, ką Wink gali jiems pasiūlyti pagal specialias kainas, pasiūlymus ir inventorių tiesiogiai iš tiekėjų.
+Kelionių agentams, kurie nori sužinoti, ką Wink gali jiems pasiūlyti pagal užsakymą sudarytas kainas, pasiūlymus ir inventorių tiesiogiai iš tiekėjų.
 
 <LinkButton href="/lt/travel-agent/what-is-agent">
 Sužinokite daugiau apie Wink Agent
