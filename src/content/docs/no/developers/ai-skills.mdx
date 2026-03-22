@@ -1,0 +1,78 @@
+---
+title: AI-ferdigheter
+description: Ferdigbygde agentferdigheter som lærer AI-kodeassistenter hvordan de skal jobbe med Wink-APIer ved å bruke MCP-serveren som sannhetskilde.
+sidebar:
+  "order: 11"
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+AI-ferdigheter er bærbare instruksjonspakker som lærer kodeagenter hvordan de skal jobbe med Wink. I stedet for å stole på treningsdata eller foreldet dokumentasjon, instruerer hver ferdighet agenten til å bruke [Wink MCP-serveren](/no/developers/mcp) som den levende sannhetskilden for API-kontrakter og plattformsdokumentasjon.
+
+Ferdigheter fungerer med alle agentklienter som støtter dem — Claude Code, Codex, Cursor og andre.
+
+## Tilgjengelige ferdigheter
+
+### wink-api-builder
+
+Implementer, gjennomgå eller feilsøk Wink API-integrasjoner. Ferdigheten leder agenten gjennom en strukturert arbeidsflyt:
+
+1. Søk etter riktig API-operasjon via `api_search`
+2. Åpne de levende forespørsels-/responskontraktene fra MCP-serveren
+3. Hent autentiseringsoppsett fra dokumentasjonen
+4. Skriv kode mot den verifiserte kontrakten
+5. Marker eventuelle avvik mellom eksisterende kode og gjeldende API
+
+Nyttig for:
+- Å bygge nye klientmetoder for alle Wink APIer
+- Feilsøking av kontraktsavvik (f.eks. en forespørsel som returnerer HTTP 400)
+- Gjennomgang av eksisterende integrasjoner mot den levende spesifikasjonen
+
+## Installering
+
+Kopier ferdighetsmappen til agentens ferdighetskatalog.
+
+:::tip
+Wink MCP-serveren må være tilkoblet i samme miljø. Se [MCP Server](/no/developers/mcp) for oppsettsinstruksjoner.
+:::
+
+**Claude Code**
+
+```bash
+# repo-lokalt
+cp -r skills/wink-api-builder .claude/skills/
+
+# eller bruker-nivå
+cp -r skills/wink-api-builder ~/.claude/skills/
+```
+
+Kall opp med:
+```
+/wink-api-builder add a TypeScript client for the Wink affiliate create flow
+```
+
+**Codex**
+
+```bash
+# repo-lokalt
+cp -r skills/wink-api-builder .agents/skills/
+
+# eller bruker-nivå
+cp -r skills/wink-api-builder $CODEX_HOME/skills/
+```
+
+Kall opp med:
+```
+Use $wink-api-builder to add a TypeScript client for the Wink affiliate create flow.
+```
+
+**Andre agenter**
+
+Plasser ferdighetsmappen der agenten din henter ferdigheter fra. Inngangspunktet er `SKILL.md`.
+
+## Krav
+
+- En tilkoblet [Wink MCP-server](/no/developers/mcp)
+- En agentklient med MCP- og ferdighetsstøtte
+
+<LinkButton href="https://github.com/wink-travel/wink-skills" variant="secondary" icon="external">Ferdigheter på GitHub</LinkButton>

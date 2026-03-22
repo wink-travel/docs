@@ -1,8 +1,8 @@
 ---
 title: Server MCP
-description: Conectează rapid agenții AI la documentația Wink și specificațiile OpenAPI live prin serverul MCP găzduit.
+description: Conectează rapid agenții AI la documentația Wink și la specificațiile OpenAPI live prin serverul MCP găzduit.
 sidebar:
-  order: 10
+  "order: 10"
 ---
 
 import { LinkButton } from '@astrojs/starlight/components';
@@ -17,7 +17,7 @@ https://docs.mcp.wink.travel/mcp
 Indică clienților AI compatibili (VS Code, Cursor, alții care implementează transportul MCP HTTP) acestui punct final pentru a le permite să:
 - Răsfoiască documentația produsului și a platformei (`wink://docs/...`)
 - Răsfoiască specificațiile OpenAPI live și documentația operațiunilor (`wink://api/...`)
-- Efectueze căutări semantice / pe cuvinte cheie ușoare în documentații și API-uri live
+- Efectueze căutări semantice / pe cuvinte cheie ușoare în documentație și API-uri live
 
 ## Transport
 Folosește punctul final HTTP principal, streamabil:
@@ -67,7 +67,7 @@ Configurare: Adaugă serverul la distanță prin setările MCP.
 
 ### VS Code
 Documentație oficială: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Configurație minimă la distanță (utilizator sau spațiu de lucru `mcp.json`):
+Configurație minimă la distanță (fișier `mcp.json` utilizator sau workspace):
 ```json
 {
   "servers": {
@@ -91,7 +91,7 @@ Sfaturi:
 | `wink://docs` | Indexul documentației (grupat pe categorii) |
 | `wink://docs/{path}` | Articol specific de documentație (Markdown / MDX) |
 | `wink://api` | Catalog OpenAPI live descoperit din configurația swagger a Wink |
-| `wink://api/{apiName}` | Rezumat compact API cu autentificare, etichete, antete și operațiuni exemplu |
+| `wink://api/{apiName}` | Rezumat compact API cu autentificare, etichete, headere și operațiuni exemplu |
 | `wink://api/{apiName}/operations` | Listare completă a operațiunilor grupate pe etichete |
 | `wink://api/{apiName}/operation/{key}` | Detaliu operațiune individuală (parametri, corp cerere, răspunsuri) |
 | `wink://api/{apiName}/schema/{schemaName}` | Schema componentă rezolvată cu câmpuri, tipuri și exemple imbricate |
@@ -103,19 +103,25 @@ Sfaturi:
 | Unealtă | Scop | Exemple tipice de interogări |
 |------|---------|-----------------------|
 | `api_search` | Găsește API-ul live sau operațiunea pentru integrare | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
-| `docs_search` | Găsește documentații conceptuale / ghiduri | `authentication`, `webhooks`, `wordPress` |
+| `docs_search` | Găsește documentație conceptuală / ghiduri | `authentication`, `webhooks`, `wordPress` |
 
 Lasă `query` gol pentru a primi sugestii. Fiecare rezultat include URI-ul MCP pe care îl poți deschide.
-Pentru rezultate operațiuni, `api_search` returnează și URI-uri legate de cerere, răspuns, schemă și rețetă astfel încât agenții să poată accesa direct subresursa cea mai utilă.
+Pentru rezultate operațiuni, `api_search` returnează și URI-uri legate de cerere, răspuns, schemă și rețetă astfel încât agenții să poată accesa direct subresursele cele mai utile.
 
 ## Model tipic de utilizare
 1. Rulează `api_search` cu intenția ta (ex. *"create affiliate"* sau *"payment receipt"*).
 2. Deschide URI-ul `wink://api/...` returnat sau urmează câmpurile legate `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` și `recipe_uri`.
 3. Folosește `docs_search` pentru concepte suport (autentificare, webhooks, fluxuri de lucru).
 
+## Abilități AI
+
+Abilitățile predefinite ale agenților folosesc acest server MCP ca sursă de adevăr. Abilitățile oferă agentului tău de codare un flux de lucru structurat pentru a construi pe baza API-urilor Wink — în loc să ghicească endpoint-urile, agentul citește contractele live direct de pe serverul MCP.
+
+Vezi [AI Skills](/ro/developers/ai-skills) pentru abilitățile disponibile și instrucțiuni de instalare.
+
 ## Note
 - Fiecare URI returnat poate fi deschis de agent pentru conținut complet.
-- Arborele `wink://api` este live și urmează catalogul OpenAPI upstream curent în loc de un index generat al depozitului.
+- Arborele `wink://api` este live și urmează catalogul OpenAPI upstream curent, nu un index generat al depozitului.
 - Sugestiile apar automat când interogările sunt goale.
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink pe GitHub</LinkButton>
