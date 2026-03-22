@@ -22,6 +22,28 @@ const HASH_FILE_NAME = ".file.hashes.json";
 
 type HashMap = Record<string, string>;
 
+// Fix YAML frontmatter scalar values that contain `: ` (colon + space) but are
+// not already quoted. The YAML parser treats `: ` as a key-value separator, so
+// unquoted values like `description: Some text: more text` cause a parse error.
+const fixFrontmatterColons = (content: string): string => {
+  const fmMatch = content.match(/^(---\n)([\s\S]*?)(\n---)/);
+  if (!fmMatch) return content;
+
+  const [fullFm, open, fmBody, close] = fmMatch;
+
+  const fixedBody = fmBody.replace(
+    /^(\s*[\w-]+:\s+)(?!["'|>~])(.+)$/gm,
+    (line, keyPart, value) => {
+      if (!value.includes(": ")) return line;
+      const escaped = value.replace(/"/g, '\\"');
+      return `${keyPart}"${escaped}"`;
+    }
+  );
+
+  if (fixedBody === fmBody) return content;
+  return content.replace(fullFm, `${open}${fixedBody}${close}`);
+};
+
 // Minimal link rewriter for docs content (md/mdx):
 // - Markdown links only: [text](/path) -> [text](/<lang>/path)
 // Skips if already has any locale prefix (/xx/ or /xx-YY/)
@@ -337,7 +359,7 @@ async function translateFile(
     return;
   }
 
-  let output = translatedFile;
+  let output = fixFrontmatterColons(translatedFile);
   // Post-process all doc files: add locale prefixes to root-relative links
   const outExt = extname(relativePath).toLowerCase();
   if (outExt === ".md" || outExt === ".mdx") {
