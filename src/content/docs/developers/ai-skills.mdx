@@ -1,0 +1,78 @@
+---
+title: AI Skills
+description: Pre-built agent skills that teach AI coding assistants how to work with Wink APIs using the MCP server as source of truth.
+sidebar:
+  order: 11
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+AI skills are portable instruction packages that teach coding agents how to work with Wink. Instead of relying on training data or stale documentation, each skill directs the agent to use the [Wink MCP server](/developers/mcp) as the live source of truth for API contracts and platform docs.
+
+Skills work with any agent client that supports them — Claude Code, Codex, Cursor, and others.
+
+## Available Skills
+
+### wink-api-builder
+
+Implement, review, or debug Wink API integrations. The skill walks the agent through a structured workflow:
+
+1. Search for the right API operation via `api_search`
+2. Open the live request/response contracts from the MCP server
+3. Pull authentication setup from the docs
+4. Write code against the verified contract
+5. Flag any mismatches between existing code and the current API
+
+Useful for:
+- Building new client methods for any Wink API
+- Debugging contract mismatches (e.g. a request returning HTTP 400)
+- Reviewing existing integrations against the live spec
+
+## Install
+
+Copy the skill folder into your agent's skill directory.
+
+:::tip
+The Wink MCP server must be connected in the same environment. See [MCP Server](/developers/mcp) for setup instructions.
+:::
+
+**Claude Code**
+
+```bash
+# repo-local
+cp -r skills/wink-api-builder .claude/skills/
+
+# or user-level
+cp -r skills/wink-api-builder ~/.claude/skills/
+```
+
+Invoke with:
+```
+/wink-api-builder add a TypeScript client for the Wink affiliate create flow
+```
+
+**Codex**
+
+```bash
+# repo-local
+cp -r skills/wink-api-builder .agents/skills/
+
+# or user-level
+cp -r skills/wink-api-builder $CODEX_HOME/skills/
+```
+
+Invoke with:
+```
+Use $wink-api-builder to add a TypeScript client for the Wink affiliate create flow.
+```
+
+**Other agents**
+
+Place the skill folder wherever your agent resolves skills from. The entry point is `SKILL.md`.
+
+## Requirements
+
+- A connected [Wink MCP server](/developers/mcp)
+- An agent client with MCP and skill support
+
+<LinkButton href="https://github.com/wink-travel/wink-skills" variant="secondary" icon="external">Skills on GitHub</LinkButton>
