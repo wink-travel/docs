@@ -1,0 +1,78 @@
+---
+title: Veštine veštačke inteligencije
+description: Unapred izrađene veštine agenata koje uče AI asistente za kodiranje kako da rade sa Wink API-jima koristeći MCP server kao izvor istine.
+sidebar:
+  "order: 11"
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+Veštine veštačke inteligencije su prenosivi paketi instrukcija koji uče agente za kodiranje kako da rade sa Wink-om. Umesto oslanjanja na podatke za obuku ili zastarelu dokumentaciju, svaka veština usmerava agenta da koristi [Wink MCP server](/sr/developers/mcp) kao aktuelni izvor istine za API ugovore i dokumentaciju platforme.
+
+Veštine rade sa bilo kojim agent klijentom koji ih podržava — Claude Code, Codex, Cursor i drugi.
+
+## Dostupne veštine
+
+### wink-api-builder
+
+Implementirajte, pregledajte ili otklonite greške u Wink API integracijama. Veština vodi agenta kroz strukturirani tok rada:
+
+1. Pretražite odgovarajuću API operaciju putem `api_search`
+2. Otvorite aktuelne ugovore zahteva/odgovora sa MCP servera
+3. Preuzmite podešavanje autentifikacije iz dokumentacije
+4. Napišite kod prema verifikovanom ugovoru
+5. Obeležite bilo kakve neusaglašenosti između postojećeg koda i aktuelnog API-ja
+
+Koristan za:
+- Izgradnju novih metoda klijenta za bilo koji Wink API
+- Otklanjanje grešaka u neusaglašenostima ugovora (npr. zahtev koji vraća HTTP 400)
+- Pregled postojećih integracija u odnosu na aktuelnu specifikaciju
+
+## Instalacija
+
+Kopirajte fasciklu veštine u direktorijum veština vašeg agenta.
+
+:::tip
+Wink MCP server mora biti povezan u istom okruženju. Pogledajte [MCP Server](/sr/developers/mcp) za uputstva o podešavanju.
+:::
+
+**Claude Code**
+
+```bash
+# lokalno u repozitorijumu
+cp -r skills/wink-api-builder .claude/skills/
+
+# ili na nivou korisnika
+cp -r skills/wink-api-builder ~/.claude/skills/
+```
+
+Pozivanje sa:
+```
+/wink-api-builder add a TypeScript client for the Wink affiliate create flow
+```
+
+**Codex**
+
+```bash
+# lokalno u repozitorijumu
+cp -r skills/wink-api-builder .agents/skills/
+
+# ili na nivou korisnika
+cp -r skills/wink-api-builder $CODEX_HOME/skills/
+```
+
+Pozivanje sa:
+```
+Use $wink-api-builder to add a TypeScript client for the Wink affiliate create flow.
+```
+
+**Ostali agenti**
+
+Postavite fasciklu veštine gde god vaš agent učitava veštine. Ulazna tačka je `SKILL.md`.
+
+## Zahtevi
+
+- Povezan [Wink MCP server](/sr/developers/mcp)
+- Agent klijent sa podrškom za MCP i veštine
+
+<LinkButton href="https://github.com/wink-travel/wink-skills" variant="secondary" icon="external">Veštine na GitHub-u</LinkButton>
