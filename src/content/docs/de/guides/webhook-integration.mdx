@@ -5,7 +5,7 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 Webhooks ermöglichen es Ihren Systemen, Echtzeit-Benachrichtigungen zu erhalten, wenn Ereignisse in Ihrem Wink-Konto stattfinden — neue Buchungen, Stornierungen, Zahlungsaktualisierungen und mehr. Diese Anleitung führt Sie durch die Einrichtung und Best Practices.
 
@@ -17,7 +17,7 @@ Diese Anleitung richtet sich an Entwickler, die Wink mit externen Systemen wie P
 
 1. Sie registrieren eine Webhook-URL bei Wink.
 2. Wenn ein Ereignis eintritt (z. B. eine neue Buchung), sendet Wink eine HTTP POST-Anfrage an Ihre URL.
-3. Ihr Server verarbeitet die Nutzlast und antwortet mit einem `200 OK`.
+3. Ihr Server verarbeitet die Nutzlast und antwortet mit `200 OK`.
 
 ## Einrichtung eines Webhooks
 
@@ -34,21 +34,31 @@ Diese Anleitung richtet sich an Entwickler, die Wink mit externen Systemen wie P
 
 ## Ereignistypen
 
-Wink unterstützt verschiedene Ereignistypen. Häufige Ereignisse sind:
+Wink unterstützt **über 64 Webhook-Ereignistypen** in Kategorien wie Kontoverwaltung, Buchungsverträge, Zahlungen, Channel-Manager-Updates und Verwaltung von Entitäten. Häufige Ereignisse sind:
 
-- **Booking created** — Eine neue Buchung wurde bestätigt.
-- **Booking cancelled** — Eine Buchung wurde storniert.
-- **Payment completed** — Die Zahlung wurde verarbeitet.
-- **Booking updated** — Details zu einer Buchung wurden geändert.
+| Kategorie | Beispiele |
+|---|---|
+| **Buchung** | `booking.create`, `booking.cancelled` |
+| **Buchungsvertrag** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Zahlung** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Rückerstattungen** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Channel Manager** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Konto** | `account.create`, `account.status.updated` |
+
+Für eine vollständige Liste aller Ereignistypen mit Beschreibungen siehe den **Webhook Events Catalog**.
+
+<LinkButton href="/de/developers/webhook-events">
+  Alle 64+ Ereignistypen anzeigen
+</LinkButton>
 
 :::tip
-Beginnen Sie mit dem Abonnieren aller Ereignisse. Sobald Sie die Nutzlasten verstehen, können Sie die Auswahl auf die für Ihr System relevanten Ereignisse einschränken.
+Abonnieren Sie während der Entwicklung zunächst alle Ereignisse. Sobald Sie die Nutzlasten verstehen, beschränken Sie sich auf die Ereignisse, die Ihr System benötigt.
 :::
 
 ## Best Practices
 
 - **Verwenden Sie HTTPS** — Wink sendet Nutzlasten nur an HTTPS-Endpunkte.
-- **Reagieren Sie schnell** — Geben Sie ein `200 OK` zurück, sobald Sie die Nutzlast erhalten. Führen Sie aufwändige Verarbeitung asynchron durch.
+- **Schnelle Antwort** — Geben Sie so schnell wie möglich ein `200 OK` zurück, sobald Sie die Nutzlast erhalten. Führen Sie aufwändige Verarbeitung asynchron durch.
 - **Idempotenz** — Ihr Handler sollte idempotent sein. Wink kann die Zustellung erneut versuchen, wenn keine `200`-Antwort empfangen wird.
 - **Quelle validieren** — Verifizieren Sie, dass eingehende Anfragen von Wink stammen, bevor Sie sie verarbeiten.
 - **Protokollierung** — Protokollieren Sie jede empfangene Webhook-Nutzlast. Das erleichtert die Fehlersuche bei Integrationsproblemen erheblich.
@@ -61,6 +71,7 @@ Das Löschen eines Webhooks entfernt ihn dauerhaft. Jede Integration, die auf di
 
 ## Weiterführende Informationen
 
+- [Webhook Events Catalog](/de/developers/webhook-events) — Vollständige Liste aller 64+ Ereignistypen.
 - [Webhooks](/de/my-account/webhooks) — Vollständige Referenz zur Webhook-Verwaltung.
 - [Applications](/de/my-account/applications) — Verwalten Sie Ihre API-Zugangsdaten.
 - [Developers > APIs](/de/developers/apis) — Vollständige API-Dokumentation.

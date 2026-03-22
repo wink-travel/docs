@@ -1,0 +1,107 @@
+---
+title: Paikannus
+description: Opi, miten Wink käyttää paikannusta ja spatiaalikyselyjä sijaintipohjaisen varaston haun, GeoIP-tunnistuksen ja maantieteellisen suodatuksen tehostamiseen.
+sidebar:
+  order: 11
+---
+
+Wink käyttää laajasti paikannusta sijaintipohjaisen haun, automaattisen valuutan ja kielen tunnistuksen sekä maantieteellisen varastosuodatuksen mahdollistamiseen.
+
+## GeoIP-tunnistus
+
+Kun käyttäjä vierailee alustalla, Wink tunnistaa automaattisesti hänen sijaintinsa IP-osoitteen perusteella. Tämä mahdollistaa:
+
+- **Automaattinen valuutan valinta** — Näytä hinnat käyttäjän paikallisessa valuutassa.
+- **Kieliasetukset** — Ehdota sisältöä käyttäjän todennäköisellä kielellä.
+- **Lähellä olevat tulokset** — Priorisoi varastoa, joka on lähellä käyttäjän sijaintia.
+
+## Spatiaalinen haku
+
+Wink tukee maantieteellistä hakua neljällä spatiaalikyselytyypillä. Nämä mahdollistavat karttapohjaisen haun, sädehaun ja aluepohjaisen suodatuksen koko alustalla.
+
+### Piste
+
+Yksi maantieteellinen koordinaatti (leveysaste, pituusaste). Käytetään tietyn sijainnin merkitsemiseen — esimerkiksi kiinteistön osoite tai käyttäjän nykyinen sijainti.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Ympyrä
+
+Keskipiste ja säde. Käytetään "etsi lähelläni" tai säteeseen perustuvissa hauissa — esimerkiksi "hotellit 10 km säteellä Times Squarelta."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Suorakulmio
+
+Rajaava laatikko, joka määritellään lounaan ja koillisen kulman koordinaateilla. Käytetään karttapohjaisessa haussa — kun käyttäjä siirtää ja zoomaa karttaa, näkyvä alue määrittää suorakulmion.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Monikulmio
+
+Mukautettu muoto, joka määritellään pisteiden sarjalla. Käytetään epäsäännöllisten maantieteellisten rajojen sisällä hakemiseen — esimerkiksi kaupunginosa, kaupunginosa tai kartalle piirretty alue.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Monikulmion on oltava suljettu — viimeisen pisteen on vastattava ensimmäistä pistettä.
+:::
+
+## Käyttötapaukset
+
+| Käyttötapaus | Muototyyppi | Esimerkki |
+|---|---|---|
+| Haku lähellä minua | Ympyrä | Hotellit 5 km säteellä sijainnistani |
+| Karttanäkymän haku | Suorakulmio | Kartalla näkyvät kiinteistöt |
+| Naapuruston haku | Monikulmio | Hotellit tietyssä kaupunginosassa |
+| Kiinteistön sijainti | Piste | Kiinteistön tarkka sijainti |
+
+## Kehittäjille
+
+Spatiaalikyselyn parametrit hyväksytään Lookup API- ja Inventory API -päätepisteissä. Lähetä hakupyyntöön sopiva GeoJSON-muoto suodattaaksesi tuloksia sijainnin mukaan.
+
+Katso [APIs documentation](/fi/developers/apis) päätepistekohtaisia tietoja varten.
+
+## Lisälukemista
+
+- [Search (Booking Engine)](/fi/booking-engine/search) — Miten matkustajat hakevat varastoa.
+- [Maps (Studio)](/fi/studio/maps) — Karttapohjainen varaston löytäminen.
+- [APIs](/fi/developers/apis) — Täydellinen API-viite.

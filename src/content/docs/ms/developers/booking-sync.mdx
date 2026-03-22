@@ -1,0 +1,61 @@
+---
+title: Penyegerakan Tempahan
+description: Ketahui bagaimana Wink menyegerakkan tempahan dengan sistem luaran seperti PMS dan pengurus saluran, termasuk kitar hayat penyegerakan dan penyelesaian masalah.
+sidebar:
+  order: 9
+---
+
+Apabila tempahan dibuat, dikemas kini, atau dibatalkan di Wink, platform akan menyegerakkan perubahan tersebut dengan sistem luaran yang disambungkan — sistem pengurusan hartanah (PMS), pengurus saluran, dan sistem tempahan pusat (CRS).
+
+## Cara ia berfungsi
+
+Setiap perubahan tempahan mencipta **entri penyegerakan** yang menjejaki keadaan penyegerakan. Platform memproses entri penyegerakan secara tak segerak, mencuba semula jika gagal untuk memastikan penghantaran yang boleh dipercayai.
+
+## Kitar hayat penyegerakan
+
+Setiap entri penyegerakan mengikuti mesin keadaan:
+
+```
+┌─────────────┐     berjaya     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ gagal
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Corak yang sama digunakan untuk kemas kini dan pembatalan:
+
+| Tindakan | Keadaan menunggu | Keadaan berjaya | Keadaan gagal |
+|---|---|---|---|
+| Tempahan baru | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Kemas kini tempahan | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Pembatalan | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Apa yang mencetuskan penyegerakan
+
+- **Tempahan baru** — Pelancong membuat tempahan melalui Wink atau saluran gabungan.
+- **Kemas kini tempahan** — Butiran tempahan berubah (tarikh, maklumat tetamu, penugasan bilik).
+- **Pembatalan** — Tempahan dibatalkan oleh pelancong atau hartanah.
+
+## Pemantauan
+
+Anda boleh memantau status penyegerakan melalui papan pemuka pengurus saluran atau PMS yang disambungkan. Entri penyegerakan yang gagal akan dicuba semula secara automatik. Jika penyegerakan terus gagal, ia kekal dalam keadaan `*_FAILED` untuk siasatan.
+
+## Penyelesaian masalah
+
+Jika tempahan tidak muncul dalam PMS anda:
+
+1. **Periksa sambungan pengurus saluran anda** — Pastikan integrasi PMS atau pengurus saluran anda aktif dan dikonfigurasikan dengan betul.
+2. **Sahkan penghantaran webhook** — Jika anda menggunakan webhook, periksa bahawa titik akhir anda menerima acara `booking.create` dan `booking.cancelled`. Lihat [Katalog Acara Webhook](/ms/developers/webhook-events#booking-events).
+3. **Semak entri yang gagal** — Entri penyegerakan yang gagal menunjukkan masalah sambungan atau data dengan sistem sasaran.
+4. **Hubungi sokongan** — Jika masalah berterusan, pasukan Wink boleh menyiasat entri penyegerakan yang gagal bagi pihak anda.
+
+## Bacaan lanjut
+
+- [Integrasi Pengurus Saluran](/ms/developers/channel-managers) — Cara Wink menyambung dengan PMS dan pengurus saluran.
+- [Katalog Acara Webhook](/ms/developers/webhook-events) — Langgan acara tempahan.
+- [Tempahan (Extranet)](/ms/extranet/bookings) — Mengurus tempahan dari portal hartanah.

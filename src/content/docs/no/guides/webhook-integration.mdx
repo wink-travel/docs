@@ -1,30 +1,30 @@
 ---
 title: Webhook-integrasjon
-description: Denne veiledningen viser utviklere hvordan de setter opp webhooks for å motta sanntidsvarsler for bestillinger, betalinger og andre hendelser.
+description: Denne guiden viser utviklere hvordan de setter opp webhooks for å motta sanntidsvarsler for bestillinger, betalinger og andre hendelser.
 sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Webhooks lar systemene dine motta sanntidsvarsler når hendelser skjer på Wink-kontoen din — nye bestillinger, avbestillinger, betalingsoppdateringer og mer. Denne veiledningen tar deg gjennom oppsett og beste praksis.
+Webhooks lar systemene dine motta sanntidsvarsler når hendelser skjer på Wink-kontoen din — nye bestillinger, avbestillinger, betalingsoppdateringer og mer. Denne guiden tar deg gjennom oppsett og beste praksis.
 
 ## Målgruppe
 
-Denne veiledningen er for utviklere som integrerer Wink med eksterne systemer som eiendomsforvaltningssystemer (PMS), kanaladministratorer, CRM-er eller tilpassede dashbord.
+Denne guiden er for utviklere som integrerer Wink med eksterne systemer som eiendomsadministrasjonssystemer (PMS), kanaladministratorer, CRM-er eller tilpassede dashbord.
 
 ## Hvordan webhooks fungerer
 
 1. Du registrerer en webhook-URL på Wink.
 2. Når en hendelse inntreffer (f.eks. en ny bestilling), sender Wink en HTTP POST til URL-en din.
-3. Serveren din behandler nyttelasten og svarer med en `200 OK`.
+3. Serveren din behandler innholdet og svarer med en `200 OK`.
 
 ## Sette opp en webhook
 
 <Steps>
 1. Logg inn på kontoen din (Extranet, Studio eller TripPay — alle støtter webhooks).
 2. Gå til `Applications` og deretter `Webhooks`. Se [Webhooks](/no/my-account/webhooks).
-3. Klikk `Create webhook`.
+3. Klikk på `Create webhook`.
 4. Skriv inn et **navn** (f.eks. "PMS Booking Sync").
 5. Skriv inn din **webhook-URL** — HTTPS-endepunktet på serveren din.
 6. **Velg hendelser** — Velg spesifikke hendelser å abonnere på, eller la stå tomt for å motta alle hendelser.
@@ -34,24 +34,34 @@ Denne veiledningen er for utviklere som integrerer Wink med eksterne systemer so
 
 ## Hendelsestyper
 
-Wink støtter en rekke hendelsestyper. Vanlige hendelser inkluderer:
+Wink støtter **64+ webhook-hendelsestyper** innen kategorier som kontoadministrasjon, bookingkontrakter, betalinger, kanaladministratoroppdateringer og administrasjon av enheter. Vanlige hendelser inkluderer:
 
-- **Booking created** — En ny bestilling er bekreftet.
-- **Booking cancelled** — En bestilling er avbestilt.
-- **Payment completed** — Betaling er behandlet.
-- **Booking updated** — Detaljer om en bestilling er endret.
+| Kategori | Eksempler |
+|---|---|
+| **Booking** | `booking.create`, `booking.cancelled` |
+| **Bookingkontrakt** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Betaling** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Refusjoner** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Kanaladministrator** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Konto** | `account.create`, `account.status.updated` |
+
+For en komplett liste over alle hendelsestyper med beskrivelser, se **Webhook Events Catalog**.
+
+<LinkButton href="/no/developers/webhook-events">
+  Se alle 64+ hendelsestyper
+</LinkButton>
 
 :::tip
-Start med å abonnere på alle hendelser. Når du forstår nyttelastene, kan du begrense til bare de hendelsene systemet ditt trenger.
+Start med å abonnere på alle hendelser under utvikling. Når du forstår innholdet, kan du begrense til kun de hendelsene systemet ditt trenger.
 :::
 
 ## Beste praksis
 
-- **Bruk HTTPS** — Wink sender nyttelaster kun til HTTPS-endepunkter.
-- **Svar raskt** — Returner en `200 OK` så snart du mottar nyttelasten. Gjør tung behandling asynkront.
-- **Idempotens** — Håndtereren din bør være idempotent. Wink kan prøve å sende på nytt hvis den ikke mottar et `200`-svar.
-- **Valider kilden** — Verifiser at innkommende forespørsler kommer fra Wink før behandling.
-- **Logging** — Logg hver webhook-nyttelast du mottar. Dette gjør feilsøking av integrasjonsproblemer mye enklere.
+- **Bruk HTTPS** — Wink sender innhold kun til HTTPS-endepunkter.
+- **Svar raskt** — Returner en `200 OK` så snart du mottar innholdet. Gjør tung prosessering asynkront.
+- **Idempotens** — Håndtereren din bør være idempotent. Wink kan prøve å sende på nytt hvis den ikke mottar `200`.
+- **Valider kilden** — Bekreft at innkommende forespørsler kommer fra Wink før behandling.
+- **Logging** — Logg alle webhook-innhold du mottar. Dette gjør feilsøking av integrasjonsproblemer mye enklere.
 
 ## Pause og sletting
 
@@ -61,6 +71,7 @@ Du kan **deaktivere** en webhook uten å slette den. Dette pauser leveringen sli
 
 ## Videre lesning
 
+- [Webhook Events Catalog](/no/developers/webhook-events) — Komplett liste over alle 64+ hendelsestyper.
 - [Webhooks](/no/my-account/webhooks) — Full referanse for webhook-administrasjon.
 - [Applications](/no/my-account/applications) — Administrer API-legitimasjonen din.
 - [Developers > APIs](/no/developers/apis) — Full API-dokumentasjon.

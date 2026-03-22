@@ -1,0 +1,107 @@
+---
+title: Geolokáció
+description: Ismerje meg, hogyan használja a Wink a geolokációt és a térbeli lekérdezéseket helyalapú készletkereséshez, GeoIP-észleléshez és földrajzi szűréshez.
+sidebar:
+  order: 11
+---
+
+A Wink széles körben használja a geolokációt helyalapú kereséshez, automatikus pénznem- és nyelvészleléshez, valamint földrajzi készletszűréshez.
+
+## GeoIP-észlelés
+
+Amikor egy felhasználó meglátogatja a platformot, a Wink automatikusan észleli a helyzetét az IP-címe alapján. Ez lehetővé teszi:
+
+- **Automatikus pénznemválasztás** — Az árak megjelenítése a felhasználó helyi pénznemében.
+- **Nyelvi preferencia** — Tartalom javaslata a felhasználó valószínű nyelvén.
+- **Közeli találatok** — Az adott helyhez közeli készlet előnyben részesítése.
+
+## Térbeli keresés
+
+A Wink négy térbeli lekérdezéstípust támogat a földrajzi kereséshez. Ezek működtetik a térképes keresést, a sugár alapú keresést és a terület alapú szűrést a platformon.
+
+### Pont
+
+Egyetlen földrajzi koordináta (szélesség, hosszúság). Egy adott hely megjelölésére használatos — például egy ingatlan címe vagy egy felhasználó aktuális helyzete.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Kör
+
+Egy középpont és egy sugár. „Keresés a közelemben” vagy sugár alapú lekérdezésekhez használatos — például „szállodák 10 km-en belül a Times Square-től”.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Téglalap
+
+Egy határoló doboz, amelyet a délnyugati és északkeleti sarkok határoznak meg. Térképes kereséshez használatos — amikor a felhasználó mozgatja és nagyítja a térképet, a látható terület egy téglalap lekérdezést definiál.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Sokszög
+
+Egy egyedi alakzat, amelyet pontsorozat határoz meg. Szabálytalan földrajzi határokon belüli kereséshez használatos — például egy városrész, kerület vagy egy térképen egyéni rajzolt terület.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+A sokszögeknek zártnak kell lenniük — az utolsó pontnak meg kell egyeznie az első ponttal.
+:::
+
+## Használati esetek
+
+| Használati eset | Alakzat típusa | Példa |
+|---|---|---|
+| Keresés a közelemben | Kör | Szállodák 5 km-en belül a helyzetemtől |
+| Térkép nézet keresés | Téglalap | Az aktuális térképnél látható ingatlanok |
+| Városrész keresés | Sokszög | Szállodák egy adott városrészben |
+| Ingatlan helye | Pont | Egy ingatlan pontos helye |
+
+## Fejlesztőknek
+
+A térbeli lekérdezési paramétereket a Lookup API és az Inventory API végpontok fogadják. Adja át a megfelelő GeoJSON alakzatot a keresési kérésben, hogy hely szerint szűrje az eredményeket.
+
+Lásd az [APIs dokumentációt](/hu/developers/apis) a végpont-specifikus részletekért.
+
+## További olvasnivaló
+
+- [Keresés (Booking Engine)](/hu/booking-engine/search) — Hogyan keresnek az utazók készletet.
+- [Térképek (Studio)](/hu/studio/maps) — Térképes készletfelfedezés.
+- [APIs](/hu/developers/apis) — Teljes API referencia.

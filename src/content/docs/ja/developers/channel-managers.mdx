@@ -1,0 +1,71 @@
+---
+title: チャネルマネージャー連携
+description: Winkが連携する13のチャネルマネージャーの概要、料金と空室状況の同期方法、およびPMSの接続方法について。
+sidebar:
+  order: 4
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+Winkは主要なチャネルマネージャー、プロパティマネジメントシステム（PMS）、およびセントラル予約システム（CRS）と連携し、すべての販売チャネルで料金と空室状況を同期します。
+
+## 仕組み
+
+チャネルマネージャー連携は、あなたのプロパティマネジメントシステムとWink間で双方向のデータフローを可能にします：
+
+1. **料金プッシュ** — チャネルマネージャーが料金の更新をWinkに送信します。PMSで価格を更新すると、その変更が自動的にWinkに反映されます。
+2. **空室状況同期** — チャネルマネージャーが空室状況の更新をWinkに送信します。PMSで部屋が予約または解放されると、Winkの在庫がリアルタイムで更新されます。
+3. **予約通知** — Winkで予約が行われると、チャネルマネージャーに通知され、予約がPMSに反映されます。
+
+## 対応チャネルマネージャー
+
+Winkは現在、以下のシステムと連携しています：
+
+| チャネルマネージャー | 説明 |
+|---|---|
+| **Channex** | グローバルな流通およびチャネル管理プラットフォーム。 |
+| **TravelClick** | ホテル向けソリューションおよびチャネル管理（Amadeus）。 |
+| **Omnibees** | ホテル向けの流通および収益管理。 |
+| **D-Edge** | ホスピタリティ技術およびセントラル予約ソリューション。 |
+| **Allotz** | 在庫配分およびチャネル管理。 |
+| **Ezee / Yanolja** | アジア市場に特化したクラウドPMSおよびチャネル管理。 |
+| **RateGain** | 料金インテリジェンスおよび流通技術。 |
+| **RateTiger** | リアルタイムの料金および空室状況配信。 |
+| **CloudBeds** | クラウドベースのPMS、チャネルマネージャー、予約エンジン。 |
+| **SiteMinder** | 主要なホテルチャネルマネージャーおよび流通プラットフォーム。 |
+| **Exely** | ホテル向けの料金および空室状況同期。 |
+
+:::note
+チャネルマネージャーがリストにない場合は、Winkチームにお問い合わせください。WinkがサポートするOTA（Open Travel Alliance）プロトコル標準に基づき、新しい連携を追加できます。
+:::
+
+## 開発者向け
+
+WinkとのチャネルマネージャーまたはPMS連携を構築する場合は、Channel Manager APIエンドポイントを使用してください：
+
+- **料金更新** — 料金変更をWinkにプッシュします。
+- **空室状況更新** — 空室状況の変更をWinkにプッシュします。
+- **予約取得** — Winkから予約情報をシステムに取得します。
+
+Channel Manager APIは既存のホスピタリティシステムとの互換性のためにOTAプロトコル標準（SOAP/XML）に準拠しています。
+
+<LinkButton href="/ja/developers/apis/#channel-manager-api">
+  Channel Manager APIリファレンス
+</LinkButton>
+
+## Webhook通知
+
+チャネルマネージャーのWebhookイベントを購読してリアルタイム通知を受け取ることができます：
+
+- `channel-manager.update.rate` — 料金更新を受信。
+- `channel-manager.update.availability` — 空室状況更新を受信。
+- `channel-manager.update` — 一般的なチャネルマネージャー更新。
+
+詳細は[Webhook Events Catalog](/ja/developers/webhook-events#channel-manager-events)をご覧ください。
+
+## さらに読む
+
+- [Channel Manager API](/ja/developers/apis/#channel-manager-api) — APIエンドポイントのドキュメント。
+- [Rate Providers](/ja/extranet/rate-providers) — Extranetでの料金プロバイダー管理。
+- [Webhook Events Catalog](/ja/developers/webhook-events) — 購読可能なすべてのイベント。
+- [Build on Wink](/ja/developers/build-on-wink) — 開発者向けプラットフォーム概要。

@@ -1,17 +1,17 @@
 ---
 title: Integracja Webhooków
-description: Ten przewodnik pokazuje deweloperom, jak skonfigurować webhooki, aby otrzymywać powiadomienia w czasie rzeczywistym o rezerwacjach, płatnościach i innych zdarzeniach.
+description: Ten przewodnik pokazuje programistom, jak skonfigurować webhooki, aby otrzymywać powiadomienia w czasie rzeczywistym o rezerwacjach, płatnościach i innych zdarzeniach.
 sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 Webhooki pozwalają Twoim systemom otrzymywać powiadomienia w czasie rzeczywistym, gdy na Twoim koncie Wink zachodzą zdarzenia — nowe rezerwacje, anulacje, aktualizacje płatności i inne. Ten przewodnik przeprowadzi Cię przez konfigurację i najlepsze praktyki.
 
 ## Odbiorcy
 
-Ten przewodnik jest przeznaczony dla deweloperów integrujących Wink z zewnętrznymi systemami, takimi jak systemy zarządzania nieruchomościami (PMS), channel managerowie, CRM-y lub niestandardowe pulpity nawigacyjne.
+Ten przewodnik jest przeznaczony dla programistów integrujących Wink z zewnętrznymi systemami, takimi jak systemy zarządzania nieruchomościami (PMS), channel managerowie, CRM-y lub niestandardowe pulpity nawigacyjne.
 
 ## Jak działają webhooki
 
@@ -23,7 +23,7 @@ Ten przewodnik jest przeznaczony dla deweloperów integrujących Wink z zewnętr
 
 <Steps>
 1. Zaloguj się na swoje konto (Extranet, Studio lub TripPay — wszystkie obsługują webhooki).
-2. Przejdź do `Applications`, a następnie `Webhooks`. Zobacz [Webhooki](/pl/my-account/webhooks).
+2. Przejdź do `Applications`, a następnie `Webhooks`. Zobacz [Webhooks](/pl/my-account/webhooks).
 3. Kliknij `Create webhook`.
 4. Wprowadź **nazwę** (np. "Synchronizacja rezerwacji PMS").
 5. Wprowadź swój **URL webhooka** — punkt końcowy HTTPS na Twoim serwerze.
@@ -34,22 +34,32 @@ Ten przewodnik jest przeznaczony dla deweloperów integrujących Wink z zewnętr
 
 ## Typy zdarzeń
 
-Wink obsługuje różne typy zdarzeń. Najczęstsze zdarzenia to:
+Wink obsługuje **ponad 64 typy zdarzeń webhooków** w kategoriach takich jak zarządzanie kontem, umowy rezerwacyjne, płatności, aktualizacje channel managera oraz zarządzanie administracją podmiotów. Do najczęstszych zdarzeń należą:
 
-- **Rezerwacja utworzona** — Nowa rezerwacja została potwierdzona.
-- **Rezerwacja anulowana** — Rezerwacja została anulowana.
-- **Płatność zakończona** — Płatność została przetworzona.
-- **Rezerwacja zaktualizowana** — Szczegóły rezerwacji uległy zmianie.
+| Kategoria | Przykłady |
+|---|---|
+| **Rezerwacja** | `booking.create`, `booking.cancelled` |
+| **Umowa rezerwacyjna** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Płatność** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Zwroty** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Channel manager** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Konto** | `account.create`, `account.status.updated` |
+
+Pełną listę wszystkich typów zdarzeń wraz z opisami znajdziesz w **Katalogu Zdarzeń Webhook**.
+
+<LinkButton href="/pl/developers/webhook-events">
+  Zobacz wszystkie 64+ typy zdarzeń
+</LinkButton>
 
 :::tip
-Zacznij od subskrypcji wszystkich zdarzeń. Gdy poznasz strukturę danych, możesz ograniczyć się tylko do zdarzeń potrzebnych Twojemu systemowi.
+Na początku subskrybuj wszystkie zdarzenia podczas fazy rozwoju. Gdy poznasz strukturę danych, zawęź listę do tych zdarzeń, które są potrzebne Twojemu systemowi.
 :::
 
 ## Najlepsze praktyki
 
-- **Używaj HTTPS** — Wink wysyła dane tylko do punktów końcowych HTTPS.
+- **Używaj HTTPS** — Wink wysyła dane tylko na punkty końcowe HTTPS.
 - **Odpowiadaj szybko** — Zwróć `200 OK` zaraz po otrzymaniu danych. Ciężkie przetwarzanie wykonuj asynchronicznie.
-- **Idempotencja** — Twój handler powinien być idempotentny. Wink może ponawiać dostarczanie, jeśli nie otrzyma odpowiedzi `200`.
+- **Idempotencja** — Twój handler powinien być idempotentny. Wink może ponawiać dostarczenie, jeśli nie otrzyma odpowiedzi `200`.
 - **Weryfikuj źródło** — Sprawdzaj, czy przychodzące żądania pochodzą od Wink przed ich przetworzeniem.
 - **Logowanie** — Zapisuj każdy otrzymany payload webhooka. Ułatwia to debugowanie problemów z integracją.
 
@@ -61,6 +71,7 @@ Usunięcie webhooka powoduje jego trwałe usunięcie. Każda integracja korzysta
 
 ## Dalsza lektura
 
-- [Webhooki](/pl/my-account/webhooks) — Pełna dokumentacja zarządzania webhookami.
+- [Katalog Zdarzeń Webhook](/pl/developers/webhook-events) — Pełna lista wszystkich 64+ typów zdarzeń.
+- [Webhooks](/pl/my-account/webhooks) — Pełna dokumentacja zarządzania webhookami.
 - [Applications](/pl/my-account/applications) — Zarządzaj swoimi danymi API.
 - [Developers > APIs](/pl/developers/apis) — Pełna dokumentacja API.

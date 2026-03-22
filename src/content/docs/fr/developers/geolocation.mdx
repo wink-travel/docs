@@ -1,0 +1,107 @@
+---
+title: Géolocalisation
+description: Découvrez comment Wink utilise la géolocalisation et les requêtes spatiales pour alimenter la recherche d'inventaire basée sur la localisation, la détection GeoIP et le filtrage géographique.
+sidebar:
+  order: 11
+---
+
+Wink utilise largement la géolocalisation pour alimenter la recherche basée sur la localisation, la détection automatique de la devise et de la langue, ainsi que le filtrage géographique de l'inventaire.
+
+## Détection GeoIP
+
+Lorsqu'un utilisateur visite la plateforme, Wink détecte automatiquement sa localisation à partir de son adresse IP. Cela permet :
+
+- **Sélection automatique de la devise** — Afficher les prix dans la devise locale de l'utilisateur.
+- **Préférence de langue** — Suggérer du contenu dans la langue probable de l'utilisateur.
+- **Résultats à proximité** — Prioriser l'inventaire proche de la localisation de l'utilisateur.
+
+## Recherche spatiale
+
+Wink prend en charge la recherche géographique en utilisant quatre types de requêtes spatiales. Ceux-ci alimentent la recherche basée sur la carte, la recherche par rayon et le filtrage par zone sur toute la plateforme.
+
+### Point
+
+Une coordonnée géographique unique (latitude, longitude). Utilisée pour marquer un emplacement spécifique — par exemple, l'adresse d'un bien ou la position actuelle d'un utilisateur.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Cercle
+
+Un point central avec un rayon. Utilisé pour les requêtes « rechercher près de moi » ou basées sur un rayon — par exemple, « hôtels dans un rayon de 10 km de Times Square ».
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Rectangle
+
+Une boîte englobante définie par les coins sud-ouest et nord-est. Utilisée pour la recherche basée sur la carte — lorsqu'un utilisateur déplace et zoome sur une carte, la zone visible définit une requête rectangulaire.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Polygone
+
+Une forme personnalisée définie par une série de points. Utilisée pour rechercher à l'intérieur de limites géographiques irrégulières — par exemple, un quartier, un arrondissement ou une zone dessinée manuellement sur une carte.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Les polygones doivent être fermés — le dernier point doit correspondre au premier point.
+:::
+
+## Cas d'utilisation
+
+| Cas d'utilisation | Type de forme | Exemple |
+|---|---|---|
+| Recherche près de moi | Cercle | Hôtels dans un rayon de 5 km de ma position |
+| Recherche dans la zone visible de la carte | Rectangle | Biens visibles dans la vue actuelle de la carte |
+| Recherche dans un quartier | Polygone | Hôtels dans un arrondissement spécifique |
+| Localisation d'un bien | Point | Emplacement exact d'une annonce immobilière |
+
+## Pour les développeurs
+
+Les paramètres de requête spatiale sont acceptés par les points de terminaison Lookup API et Inventory API. Passez la forme GeoJSON appropriée dans votre requête de recherche pour filtrer les résultats par localisation.
+
+Consultez la [documentation des APIs](/fr/developers/apis) pour les détails spécifiques à chaque point de terminaison.
+
+## Lectures complémentaires
+
+- [Recherche (Booking Engine)](/fr/booking-engine/search) — Comment les voyageurs recherchent l'inventaire.
+- [Cartes (Studio)](/fr/studio/maps) — Découverte d'inventaire basée sur la carte.
+- [APIs](/fr/developers/apis) — Référence complète des API.

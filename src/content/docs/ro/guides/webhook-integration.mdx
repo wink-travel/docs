@@ -5,13 +5,13 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 Webhooks permit sistemelor tale să primească notificări în timp real când apar evenimente în contul tău Wink — rezervări noi, anulări, actualizări de plată și altele. Acest ghid te ghidează prin configurare și bune practici.
 
 ## Public țintă
 
-Acest ghid este destinat dezvoltatorilor care integrează Wink cu sisteme externe precum sisteme de management al proprietăților (PMS), manageri de canale, CRM-uri sau panouri personalizate.
+Acest ghid este destinat dezvoltatorilor care integrează Wink cu sisteme externe precum sisteme de management al proprietăților (PMS), channel manageri, CRM-uri sau dashboard-uri personalizate.
 
 ## Cum funcționează webhooks
 
@@ -34,15 +34,25 @@ Acest ghid este destinat dezvoltatorilor care integrează Wink cu sisteme extern
 
 ## Tipuri de evenimente
 
-Wink suportă o varietate de tipuri de evenimente. Evenimente comune includ:
+Wink suportă **peste 64 de tipuri de evenimente webhook** în categorii precum managementul contului, contracte de rezervare, plăți, actualizări channel manager și administrarea entităților. Evenimente comune includ:
 
-- **Rezervare creată** — O rezervare nouă a fost confirmată.
-- **Rezervare anulată** — O rezervare a fost anulată.
-- **Plată finalizată** — Plata a fost procesată.
-- **Rezervare actualizată** — Detalii despre o rezervare s-au schimbat.
+| Categorie | Exemple |
+|---|---|
+| **Rezervare** | `booking.create`, `booking.cancelled` |
+| **Contract rezervare** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Plată** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Rambursări** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Channel manager** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Cont** | `account.create`, `account.status.updated` |
+
+Pentru o listă completă cu toate tipurile de evenimente și descrierile lor, vezi **Catalogul Evenimentelor Webhook**.
+
+<LinkButton href="/ro/developers/webhook-events">
+  Vezi toate cele 64+ tipuri de evenimente
+</LinkButton>
 
 :::tip
-Începe prin a te abona la toate evenimentele. Odată ce înțelegi payload-urile, poți restrânge la doar evenimentele de care sistemul tău are nevoie.
+Începe prin a te abona la toate evenimentele în timpul dezvoltării. Odată ce înțelegi payload-urile, restrânge la doar evenimentele de care sistemul tău are nevoie.
 :::
 
 ## Bune practici
@@ -51,16 +61,17 @@ Wink suportă o varietate de tipuri de evenimente. Evenimente comune includ:
 - **Răspunde rapid** — Returnează un `200 OK` imediat ce primești payload-ul. Procesează orice sarcină grea asincron.
 - **Idempotentă** — Handler-ul tău trebuie să fie idempotent. Wink poate retrimite dacă nu primește un răspuns `200`.
 - **Validează sursa** — Verifică că cererile primite provin de la Wink înainte de procesare.
-- **Logare** — Înregistrează fiecare payload webhook primit. Acest lucru face mult mai ușoară depanarea problemelor de integrare.
+- **Logare** — Înregistrează fiecare payload webhook primit. Acest lucru facilitează mult depanarea problemelor de integrare.
 
 ## Pauză și ștergere
 
 Poți **dezactiva** un webhook fără să-l ștergi. Aceasta oprește livrarea pentru a putea depana fără să pierzi configurația. Când ești gata, activează-l din nou.
 
-Ștergerea unui webhook îl elimină permanent. Orice integrare care depinde de acel webhook va înceta să mai primească notificări.
+Ștergerea unui webhook îl elimină definitiv. Orice integrare care depinde de acel webhook va înceta să primească notificări.
 
 ## Lecturi suplimentare
 
+- [Catalogul Evenimentelor Webhook](/ro/developers/webhook-events) — Listă completă cu toate cele 64+ tipuri de evenimente.
 - [Webhooks](/ro/my-account/webhooks) — Referință completă pentru gestionarea webhook-urilor.
 - [Applications](/ro/my-account/applications) — Gestionează-ți acreditările API.
 - [Developers > APIs](/ro/developers/apis) — Documentație completă API.

@@ -1,0 +1,61 @@
+---
+title: Broneeringute sünkroonimine
+description: Õpi, kuidas Wink sünkroonib broneeringuid väliste süsteemidega nagu PMS ja kanalihaldurid, sealhulgas sünkroonimise elutsükkel ja tõrkeotsing.
+sidebar:
+  order: 9
+---
+
+Kui Winkis luuakse, uuendatakse või tühistatakse broneering, sünkroonib platvorm selle muudatuse sinu ühendatud väliste süsteemidega — kinnisvarahaldussüsteemide (PMS), kanalihaldurite ja kesksete broneerimissüsteemidega (CRS).
+
+## Kuidas see töötab
+
+Iga broneeringu muudatus loob **sünkroonimiskande**, mis jälgib sünkroonimise olekut. Platvorm töötleb sünkroonimiskandeid asünkroonselt, proovides ebaõnnestumise korral uuesti, et tagada usaldusväärne edastamine.
+
+## Sünkroonimise elutsükkel
+
+Iga sünkroonimiskanne järgib olekumasinat:
+
+```
+┌─────────────┐     success     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ failure
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Sama muster kehtib uuenduste ja tühistuste puhul:
+
+| Tegevus | Ootel olek | Eduka olek | Ebaõnnestunud olek |
+|---|---|---|---|
+| Uus broneering | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Broneeringu uuendus | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Tühistamine | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Mis käivitab sünkroonimise
+
+- **Uus broneering** — Reisija broneerib Wink või siduskanali kaudu.
+- **Broneeringu uuendus** — Broneeringu andmed muutuvad (kuupäevad, külalise info, toa määramine).
+- **Tühistamine** — Broneering tühistatakse reisija või kinnisvara poolt.
+
+## Jälgimine
+
+Saad jälgida sünkroonimise olekut oma ühendatud kanalihalduri või PMS-i juhtpaneeli kaudu. Ebaõnnestunud sünkroonimiskanded proovib süsteem automaatselt uuesti. Kui sünkroonimine jätkuvalt ebaõnnestub, jääb see `*_FAILED` olekusse uurimiseks.
+
+## Tõrkeotsing
+
+Kui broneeringud ei ilmu sinu PMS-is:
+
+1. **Kontrolli oma kanalihalduri ühendust** — Veendu, et sinu PMS või kanalihalduri integratsioon on aktiivne ja õigesti seadistatud.
+2. **Kontrolli webhooki edastust** — Kui kasutad webhooke, veendu, et sinu lõpp-punkt saab `booking.create` ja `booking.cancelled` sündmusi. Vaata [Webhook Events Catalog](/et/developers/webhook-events#booking-events).
+3. **Vaata üle ebaõnnestunud kanded** — Ebaõnnestunud sünkroonimiskanded viitavad ühenduvuse või andmete probleemile sihtsüsteemis.
+4. **Võta ühendust toega** — Kui probleemid püsivad, saab Wink'i meeskond uurida ebaõnnestunud sünkroonimiskandeid sinu eest.
+
+## Lisalugemine
+
+- [Channel Manager Integrations](/et/developers/channel-managers) — Kuidas Wink ühendub PMS-ide ja kanalihalduritega.
+- [Webhook Events Catalog](/et/developers/webhook-events) — Tellimine broneeringusündmustele.
+- [Bookings (Extranet)](/et/extranet/bookings) — Broneeringute haldamine kinnisvara portaalist.

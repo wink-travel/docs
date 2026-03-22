@@ -1,0 +1,61 @@
+---
+title: Booking Sync
+description: Learn how Wink synchronizes bookings with external systems like PMS and channel managers, including the sync lifecycle and troubleshooting.
+sidebar:
+  order: 9
+---
+
+When a booking is created, updated, or cancelled on Wink, the platform synchronizes that change with your connected external systems — property management systems (PMS), channel managers, and central reservation systems (CRS).
+
+## How it works
+
+Each booking change creates a **sync entry** that tracks the synchronization state. The platform processes sync entries asynchronously, retrying on failure to ensure reliable delivery.
+
+## Sync lifecycle
+
+Every sync entry follows a state machine:
+
+```
+┌─────────────┐     success     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ failure
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+The same pattern applies to updates and cancellations:
+
+| Action | Pending state | Success state | Failure state |
+|---|---|---|---|
+| New booking | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Booking update | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Cancellation | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## What triggers a sync
+
+- **New booking** — A traveler books through Wink or an affiliate channel.
+- **Booking update** — Booking details change (dates, guest info, room assignment).
+- **Cancellation** — A booking is cancelled by the traveler or property.
+
+## Monitoring
+
+You can monitor sync status through your connected channel manager or PMS dashboard. Failed sync entries are retried automatically. If a sync continues to fail, it remains in the `*_FAILED` state for investigation.
+
+## Troubleshooting
+
+If bookings are not appearing in your PMS:
+
+1. **Check your channel manager connection** — Ensure your PMS or channel manager integration is active and properly configured.
+2. **Verify webhook delivery** — If you use webhooks, check that your endpoint is receiving `booking.create` and `booking.cancelled` events. See [Webhook Events Catalog](/developers/webhook-events#booking-events).
+3. **Review failed entries** — Failed sync entries indicate a connectivity or data issue with the target system.
+4. **Contact support** — If issues persist, the Wink team can investigate failed sync entries on your behalf.
+
+## Further reading
+
+- [Channel Manager Integrations](/developers/channel-managers) — How Wink connects with PMS and channel managers.
+- [Webhook Events Catalog](/developers/webhook-events) — Subscribe to booking events.
+- [Bookings (Extranet)](/extranet/bookings) — Managing bookings from the property portal.

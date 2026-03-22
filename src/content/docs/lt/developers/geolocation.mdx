@@ -1,0 +1,107 @@
+---
+title: Geografinė vieta
+description: Sužinokite, kaip Wink naudoja geografinę vietą ir erdvines užklausas vietos pagrindu veikiančiam inventoriaus paieškai, GeoIP aptikimui ir geografiniam filtravimui.
+sidebar:
+  order: 11
+---
+
+Wink plačiai naudoja geografinę vietą vietos pagrindu veikiančiai paieškai, automatinio valiutos ir kalbos aptikimui bei geografiniam inventoriaus filtravimui.
+
+## GeoIP aptikimas
+
+Kai vartotojas apsilanko platformoje, Wink automatiškai nustato jo vietą pagal IP adresą. Tai leidžia:
+
+- **Automatinį valiutos pasirinkimą** — Rodyti kainas vartotojo vietine valiuta.
+- **Kalbos pageidavimą** — Siūlyti turinį vartotojo tikėtina kalba.
+- **Artimus rezultatus** — Prioritetą teikti inventoriui, esančiam netoli vartotojo vietos.
+
+## Erdvinė paieška
+
+Wink palaiko geografines paieškas naudojant keturis erdvinių užklausų tipus. Jie palaiko žemėlapio pagrindu veikiančią paiešką, spindulio paiešką ir teritorinį filtravimą visoje platformoje.
+
+### Taškas
+
+Vienas geografinis koordinatės taškas (platuma, ilguma). Naudojamas pažymėti konkrečią vietą — pavyzdžiui, objekto adresą arba vartotojo esamą vietą.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Apskritimas
+
+Centras su spinduliu. Naudojamas „paieškai šalia manęs“ arba spindulio pagrindu veikiančioms užklausoms — pavyzdžiui, „viešbučiai per 10 km nuo Times Square“.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Stačiakampis
+
+Apribojantis langas, apibrėžtas pietvakarių ir šiaurės rytų kampais. Naudojamas žemėlapio pagrindu veikiančiai paieškai — kai vartotojas perkelia ir priartina žemėlapį, matoma sritis apibrėžia stačiakampio užklausą.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Daugiakampis
+
+Individuali forma, apibrėžta taškų seka. Naudojama paieškai netaisyklingose geografinių ribų teritorijose — pavyzdžiui, rajone, miesto dalyje arba žemėlapyje nupieštoje pasirinktinėje zonoje.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Daugiakampiai turi būti uždaryti — paskutinis taškas turi sutapti su pirmuoju tašku.
+:::
+
+## Naudojimo atvejai
+
+| Naudojimo atvejis | Formos tipas | Pavyzdys |
+|---|---|---|
+| Paieška šalia manęs | Apskritimas | Viešbučiai per 5 km nuo mano vietos |
+| Žemėlapio vaizdo paieška | Stačiakampis | Objektai matomi dabartiniame žemėlapio vaizde |
+| Rajono paieška | Daugiakampis | Viešbučiai konkrečiame miesto rajone |
+| Objekto vieta | Taškas | Tiksli objekto skelbimo vieta |
+
+## Kūrėjams
+
+Erdvinių užklausų parametrus priima Lookup API ir Inventory API galiniai taškai. Pateikite tinkamą GeoJSON formą savo paieškos užklausoje, kad filtruotumėte rezultatus pagal vietą.
+
+Žr. [API dokumentaciją](/lt/developers/apis) dėl galinių taškų specifikos.
+
+## Tolimesnė literatūra
+
+- [Paieška (Booking Engine)](/lt/booking-engine/search) — Kaip keliautojai ieško inventoriaus.
+- [Žemėlapiai (Studio)](/lt/studio/maps) — Inventoriaus atradimas žemėlapio pagrindu.
+- [API](/lt/developers/apis) — Pilnas API nuorodų sąrašas.

@@ -1,0 +1,61 @@
+---
+title: Sinkronisasi Booking
+description: Pelajari bagaimana Wink menyinkronkan booking dengan sistem eksternal seperti PMS dan channel manager, termasuk siklus hidup sinkronisasi dan pemecahan masalah.
+sidebar:
+  order: 9
+---
+
+Ketika sebuah booking dibuat, diperbarui, atau dibatalkan di Wink, platform akan menyinkronkan perubahan tersebut dengan sistem eksternal yang terhubung — sistem manajemen properti (PMS), channel manager, dan sistem reservasi pusat (CRS).
+
+## Cara kerjanya
+
+Setiap perubahan booking membuat sebuah **entri sinkronisasi** yang melacak status sinkronisasi. Platform memproses entri sinkronisasi secara asinkron, mencoba ulang jika gagal untuk memastikan pengiriman yang andal.
+
+## Siklus hidup sinkronisasi
+
+Setiap entri sinkronisasi mengikuti mesin status:
+
+```
+┌─────────────┐     success     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ failure
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Pola yang sama berlaku untuk pembaruan dan pembatalan:
+
+| Aksi | Status menunggu | Status berhasil | Status gagal |
+|---|---|---|---|
+| Booking baru | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Pembaruan booking | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Pembatalan | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Apa yang memicu sinkronisasi
+
+- **Booking baru** — Seorang pelancong memesan melalui Wink atau saluran afiliasi.
+- **Pembaruan booking** — Detail booking berubah (tanggal, info tamu, penugasan kamar).
+- **Pembatalan** — Booking dibatalkan oleh pelancong atau properti.
+
+## Pemantauan
+
+Anda dapat memantau status sinkronisasi melalui dashboard channel manager atau PMS yang terhubung. Entri sinkronisasi yang gagal akan dicoba ulang secara otomatis. Jika sinkronisasi terus gagal, entri tersebut tetap berada di status `*_FAILED` untuk penyelidikan.
+
+## Pemecahan masalah
+
+Jika booking tidak muncul di PMS Anda:
+
+1. **Periksa koneksi channel manager Anda** — Pastikan integrasi PMS atau channel manager Anda aktif dan dikonfigurasi dengan benar.
+2. **Verifikasi pengiriman webhook** — Jika Anda menggunakan webhook, periksa bahwa endpoint Anda menerima event `booking.create` dan `booking.cancelled`. Lihat [Katalog Event Webhook](/id/developers/webhook-events#booking-events).
+3. **Tinjau entri yang gagal** — Entri sinkronisasi yang gagal menunjukkan masalah konektivitas atau data dengan sistem target.
+4. **Hubungi dukungan** — Jika masalah berlanjut, tim Wink dapat menyelidiki entri sinkronisasi yang gagal atas nama Anda.
+
+## Bacaan lebih lanjut
+
+- [Integrasi Channel Manager](/id/developers/channel-managers) — Cara Wink terhubung dengan PMS dan channel manager.
+- [Katalog Event Webhook](/id/developers/webhook-events) — Berlangganan event booking.
+- [Booking (Extranet)](/id/extranet/bookings) — Mengelola booking dari portal properti.

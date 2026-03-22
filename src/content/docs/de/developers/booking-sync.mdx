@@ -1,0 +1,61 @@
+---
+title: Buchungssynchronisation
+description: Erfahren Sie, wie Wink Buchungen mit externen Systemen wie PMS und Channel Managern synchronisiert, einschließlich des Synchronisationszyklus und der Fehlerbehebung.
+sidebar:
+  order: 9
+---
+
+Wenn eine Buchung in Wink erstellt, aktualisiert oder storniert wird, synchronisiert die Plattform diese Änderung mit Ihren verbundenen externen Systemen — Property Management Systemen (PMS), Channel Managern und zentralen Reservierungssystemen (CRS).
+
+## So funktioniert es
+
+Jede Buchungsänderung erzeugt einen **Sync-Eintrag**, der den Synchronisationsstatus verfolgt. Die Plattform verarbeitet Sync-Einträge asynchron und versucht bei Fehlern erneut, um eine zuverlässige Übermittlung sicherzustellen.
+
+## Synchronisationszyklus
+
+Jeder Sync-Eintrag folgt einer Zustandsmaschine:
+
+```
+┌─────────────┐     Erfolg      ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ Fehler
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Dasselbe Muster gilt für Updates und Stornierungen:
+
+| Aktion | Ausstehender Zustand | Erfolgszustand | Fehlerzustand |
+|---|---|---|---|
+| Neue Buchung | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Buchungsupdate | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Stornierung | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Was eine Synchronisation auslöst
+
+- **Neue Buchung** — Ein Reisender bucht über Wink oder einen Partnerkanal.
+- **Buchungsupdate** — Buchungsdetails ändern sich (Daten, Gästeinformationen, Zimmerzuweisung).
+- **Stornierung** — Eine Buchung wird vom Reisenden oder der Unterkunft storniert.
+
+## Überwachung
+
+Sie können den Synchronisationsstatus über Ihr verbundenes Channel Manager- oder PMS-Dashboard überwachen. Fehlgeschlagene Sync-Einträge werden automatisch erneut versucht. Wenn eine Synchronisation weiterhin fehlschlägt, verbleibt sie im `*_FAILED`-Status zur weiteren Untersuchung.
+
+## Fehlerbehebung
+
+Wenn Buchungen in Ihrem PMS nicht angezeigt werden:
+
+1. **Überprüfen Sie Ihre Channel Manager-Verbindung** — Stellen Sie sicher, dass Ihre PMS- oder Channel Manager-Integration aktiv und korrekt konfiguriert ist.
+2. **Verifizieren Sie die Webhook-Zustellung** — Wenn Sie Webhooks verwenden, prüfen Sie, ob Ihr Endpunkt `booking.create`- und `booking.cancelled`-Events empfängt. Siehe [Webhook Events Catalog](/de/developers/webhook-events#booking-events).
+3. **Überprüfen Sie fehlgeschlagene Einträge** — Fehlgeschlagene Sync-Einträge weisen auf ein Verbindungs- oder Datenproblem mit dem Zielsystem hin.
+4. **Kontaktieren Sie den Support** — Wenn Probleme weiterhin bestehen, kann das Wink-Team fehlgeschlagene Sync-Einträge in Ihrem Auftrag untersuchen.
+
+## Weiterführende Informationen
+
+- [Channel Manager Integrations](/de/developers/channel-managers) — Wie Wink mit PMS und Channel Managern verbunden ist.
+- [Webhook Events Catalog](/de/developers/webhook-events) — Abonnieren von Buchungsereignissen.
+- [Bookings (Extranet)](/de/extranet/bookings) — Verwaltung von Buchungen über das Unterkunftsportal.

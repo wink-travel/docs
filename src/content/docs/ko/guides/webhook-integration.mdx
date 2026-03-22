@@ -5,13 +5,13 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 웹훅은 Wink 계정에서 이벤트가 발생할 때 실시간 알림을 받을 수 있도록 시스템에 전달합니다 — 새 예약, 취소, 결제 업데이트 등. 이 가이드는 설정 방법과 모범 사례를 안내합니다.
 
 ## 대상
 
-이 가이드는 Wink를 외부 시스템(예: PMS, 채널 관리자, CRM 또는 맞춤 대시보드)과 통합하는 개발자를 위한 것입니다.
+이 가이드는 Wink를 부동산 관리 시스템(PMS), 채널 매니저, CRM 또는 맞춤 대시보드와 같은 외부 시스템과 통합하는 개발자를 위한 것입니다.
 
 ## 웹훅 작동 방식
 
@@ -22,10 +22,10 @@ import { Steps } from '@astrojs/starlight/components';
 ## 웹훅 설정하기
 
 <Steps>
-1. 계정에 로그인합니다(Extranet, Studio 또는 TripPay — 모두 웹훅을 지원합니다).
-2. `Applications`로 이동한 후 `Webhooks`를 선택합니다. [Webhooks](/ko/my-account/webhooks)를 참조하세요.
+1. 계정에 로그인합니다 (Extranet, Studio, 또는 TripPay — 모두 웹훅을 지원합니다).
+2. `Applications`로 이동한 다음 `Webhooks`를 선택합니다. [Webhooks](/ko/my-account/webhooks)를 참조하세요.
 3. `Create webhook`을 클릭합니다.
-4. **이름**을 입력합니다(예: "PMS 예약 동기화").
+4. **이름**을 입력합니다 (예: "PMS 예약 동기화").
 5. **웹훅 URL**을 입력합니다 — 서버의 HTTPS 엔드포인트입니다.
 6. **이벤트 선택** — 구독할 특정 이벤트를 선택하거나 모두 받으려면 비워 둡니다.
 7. **Enabled**를 켭니다.
@@ -34,15 +34,25 @@ import { Steps } from '@astrojs/starlight/components';
 
 ## 이벤트 유형
 
-Wink는 다양한 이벤트 유형을 지원합니다. 일반적인 이벤트는 다음과 같습니다:
+Wink는 계정 관리, 예약 계약, 결제, 채널 매니저 업데이트, 엔터티 관리 등 다양한 카테고리에서 **64개 이상의 웹훅 이벤트 유형**을 지원합니다. 일반적인 이벤트는 다음과 같습니다:
 
-- **예약 생성됨** — 새 예약이 확정되었습니다.
-- **예약 취소됨** — 예약이 취소되었습니다.
-- **결제 완료됨** — 결제가 처리되었습니다.
-- **예약 업데이트됨** — 예약 세부 정보가 변경되었습니다.
+| 카테고리 | 예시 |
+|---|---|
+| **예약** | `booking.create`, `booking.cancelled` |
+| **예약 계약** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **결제** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **환불** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **채널 매니저** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **계정** | `account.create`, `account.status.updated` |
+
+모든 이벤트 유형과 설명이 포함된 전체 목록은 **Webhook Events Catalog**를 참조하세요.
+
+<LinkButton href="/ko/developers/webhook-events">
+  64개 이상의 모든 이벤트 유형 보기
+</LinkButton>
 
 :::tip
-처음에는 모든 이벤트를 구독하는 것부터 시작하세요. 페이로드를 이해한 후에는 시스템에 필요한 이벤트만 선택할 수 있습니다.
+개발 중에는 모든 이벤트를 구독하는 것부터 시작하세요. 페이로드를 이해한 후에는 시스템에 필요한 이벤트만 좁혀서 구독하세요.
 :::
 
 ## 모범 사례
@@ -55,12 +65,13 @@ Wink는 다양한 이벤트 유형을 지원합니다. 일반적인 이벤트는
 
 ## 일시 중지 및 삭제
 
-웹훅을 삭제하지 않고 **비활성화**할 수 있습니다. 이렇게 하면 구성을 유지한 채 알림 전송을 일시 중지하여 문제를 해결할 수 있습니다. 준비가 되면 다시 활성화하세요.
+웹훅을 삭제하지 않고 **비활성화**할 수 있습니다. 이렇게 하면 구성을 잃지 않고 문제를 해결하는 동안 알림 전송이 일시 중지됩니다. 준비가 되면 다시 활성화하세요.
 
 웹훅을 삭제하면 영구적으로 제거됩니다. 해당 웹훅에 의존하는 통합은 알림을 더 이상 받지 못합니다.
 
 ## 추가 자료
 
+- [Webhook Events Catalog](/ko/developers/webhook-events) — 64개 이상의 모든 이벤트 유형 전체 목록.
 - [Webhooks](/ko/my-account/webhooks) — 웹훅 관리에 대한 전체 참조.
 - [Applications](/ko/my-account/applications) — API 자격 증명 관리.
 - [Developers > APIs](/ko/developers/apis) — 전체 API 문서.

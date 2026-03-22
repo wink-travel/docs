@@ -1,0 +1,107 @@
+---
+title: Ģeolokācija
+description: Uzziniet, kā Wink izmanto ģeolokāciju un telpiskos vaicājumus, lai nodrošinātu atrašanās vietai pielāgotu inventāra meklēšanu, GeoIP noteikšanu un ģeogrāfisko filtrēšanu.
+sidebar:
+  order: 11
+---
+
+Wink plaši izmanto ģeolokāciju, lai nodrošinātu atrašanās vietai pielāgotu meklēšanu, automātisku valūtas un valodas noteikšanu, kā arī ģeogrāfisko inventāra filtrēšanu.
+
+## GeoIP noteikšana
+
+Kad lietotājs apmeklē platformu, Wink automātiski nosaka viņa atrašanās vietu, pamatojoties uz IP adresi. Tas ļauj:
+
+- **Automātiska valūtas izvēle** — Rādīt cenas lietotāja vietējā valūtā.
+- **Valodas preferences** — Piedāvāt saturu lietotāja iespējami piemērotajā valodā.
+- **Tuvumā esošie rezultāti** — Prioritizēt inventāru, kas atrodas tuvu lietotāja atrašanās vietai.
+
+## Telpiska meklēšana
+
+Wink atbalsta ģeogrāfisko meklēšanu, izmantojot četrus telpisko vaicājumu tipus. Tie nodrošina kartes meklēšanu, meklēšanu pēc rādiusa un teritorijas filtrēšanu visā platformā.
+
+### Punkts
+
+Viens ģeogrāfisks koordināts (platums, garums). Izmanto, lai atzīmētu konkrētu vietu — piemēram, īpašuma adresi vai lietotāja pašreizējo atrašanās vietu.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Aplis
+
+Centra punkts ar rādiusu. Izmanto "meklēt man tuvumā" vai meklēšanai pēc rādiusa — piemēram, "viesnīcas 10 km rādiusā no Times Square."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Taisnstūris
+
+Ierobežojošs taisnstūris, ko definē dienvidrietumu un ziemeļaustrumu stūri. Izmanto kartes meklēšanai — kad lietotājs pārvieto un pietuvina karti, redzamā teritorija definē taisnstūra vaicājumu.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Daudzstūris
+
+Pielāgota forma, ko definē vairāki punkti. Izmanto meklēšanai neregulārās ģeogrāfiskās robežās — piemēram, rajonā, pilsētas daļā vai kartē uzzīmētā pielāgotā teritorijā.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Daudzstūrim jābūt slēgtam — pēdējam punktam jāatbilst pirmajam punktam.
+:::
+
+## Lietošanas gadījumi
+
+| Lietošanas gadījums | Formas tips | Piemērs |
+|---|---|---|
+| Meklēšana man tuvumā | Aplis | Viesnīcas 5 km rādiusā no manas atrašanās vietas |
+| Kartes skatījuma meklēšana | Taisnstūris | Īpašumi, kas redzami pašreizējā kartes skatā |
+| Rajona meklēšana | Daudzstūris | Viesnīcas konkrētā pilsētas daļā |
+| Īpašuma atrašanās vieta | Punkts | Īpašuma precīza atrašanās vieta |
+
+## Izstrādātājiem
+
+Telpisko vaicājumu parametrus pieņem Lookup API un Inventory API galapunkti. Iekļaujiet atbilstošo GeoJSON formu meklēšanas pieprasījumā, lai filtrētu rezultātus pēc atrašanās vietas.
+
+Skatiet [API dokumentāciju](/lv/developers/apis) par galapunktu specifiskām detaļām.
+
+## Papildu lasāmviela
+
+- [Meklēšana (Booking Engine)](/lv/booking-engine/search) — Kā ceļotāji meklē inventāru.
+- [Kartes (Studio)](/lv/studio/maps) — Inventāra atklāšana, izmantojot kartes.
+- [API](/lv/developers/apis) — Pilns API atsauces materiāls.

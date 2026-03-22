@@ -1,0 +1,61 @@
+---
+title: Đồng bộ Đặt phòng
+description: Tìm hiểu cách Wink đồng bộ các đặt phòng với các hệ thống bên ngoài như PMS và channel manager, bao gồm vòng đời đồng bộ và khắc phục sự cố.
+sidebar:
+  order: 9
+---
+
+Khi một đặt phòng được tạo, cập nhật hoặc hủy trên Wink, nền tảng sẽ đồng bộ thay đổi đó với các hệ thống bên ngoài đã kết nối — hệ thống quản lý bất động sản (PMS), channel manager và hệ thống đặt phòng trung tâm (CRS).
+
+## Cách hoạt động
+
+Mỗi thay đổi đặt phòng tạo ra một **mục đồng bộ** theo dõi trạng thái đồng bộ. Nền tảng xử lý các mục đồng bộ một cách không đồng bộ, thử lại khi thất bại để đảm bảo giao hàng đáng tin cậy.
+
+## Vòng đời đồng bộ
+
+Mỗi mục đồng bộ tuân theo một máy trạng thái:
+
+```
+┌─────────────┐     success     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ failure
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Mẫu tương tự áp dụng cho cập nhật và hủy:
+
+| Hành động | Trạng thái chờ | Trạng thái thành công | Trạng thái thất bại |
+|---|---|---|---|
+| Đặt phòng mới | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Cập nhật đặt phòng | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Hủy đặt phòng | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Những gì kích hoạt đồng bộ
+
+- **Đặt phòng mới** — Khách du lịch đặt phòng qua Wink hoặc kênh liên kết.
+- **Cập nhật đặt phòng** — Thông tin đặt phòng thay đổi (ngày, thông tin khách, phân phòng).
+- **Hủy đặt phòng** — Đặt phòng bị hủy bởi khách hoặc bất động sản.
+
+## Giám sát
+
+Bạn có thể giám sát trạng thái đồng bộ qua bảng điều khiển channel manager hoặc PMS đã kết nối. Các mục đồng bộ thất bại sẽ được thử lại tự động. Nếu đồng bộ tiếp tục thất bại, nó sẽ giữ trạng thái `*_FAILED` để điều tra.
+
+## Khắc phục sự cố
+
+Nếu các đặt phòng không xuất hiện trong PMS của bạn:
+
+1. **Kiểm tra kết nối channel manager** — Đảm bảo tích hợp PMS hoặc channel manager của bạn đang hoạt động và được cấu hình đúng.
+2. **Xác minh việc gửi webhook** — Nếu bạn sử dụng webhook, kiểm tra điểm cuối của bạn có nhận được các sự kiện `booking.create` và `booking.cancelled` không. Xem [Danh mục Sự kiện Webhook](/vi/developers/webhook-events#booking-events).
+3. **Xem lại các mục thất bại** — Các mục đồng bộ thất bại cho thấy có vấn đề về kết nối hoặc dữ liệu với hệ thống đích.
+4. **Liên hệ hỗ trợ** — Nếu sự cố vẫn tiếp diễn, đội ngũ Wink có thể điều tra các mục đồng bộ thất bại thay bạn.
+
+## Đọc thêm
+
+- [Tích hợp Channel Manager](/vi/developers/channel-managers) — Cách Wink kết nối với PMS và channel manager.
+- [Danh mục Sự kiện Webhook](/vi/developers/webhook-events) — Đăng ký các sự kiện đặt phòng.
+- [Đặt phòng (Extranet)](/vi/extranet/bookings) — Quản lý đặt phòng từ cổng bất động sản.

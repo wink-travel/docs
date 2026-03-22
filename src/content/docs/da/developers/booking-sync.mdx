@@ -1,0 +1,61 @@
+---
+title: Booking Sync
+description: Lær, hvordan Wink synkroniserer bookinger med eksterne systemer som PMS og channel managers, inklusive synkroniseringslivscyklus og fejlfinding.
+sidebar:
+  order: 9
+---
+
+Når en booking oprettes, opdateres eller annulleres på Wink, synkroniserer platformen denne ændring med dine tilkoblede eksterne systemer — property management systemer (PMS), channel managers og centrale reservationssystemer (CRS).
+
+## Sådan fungerer det
+
+Hver bookingændring opretter en **sync entry**, der sporer synkroniseringstilstanden. Platformen behandler sync entries asynkront og forsøger igen ved fejl for at sikre pålidelig levering.
+
+## Synkroniseringslivscyklus
+
+Hver sync entry følger en tilstandsmaskine:
+
+```
+┌─────────────┐     success     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ failure
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Det samme mønster gælder for opdateringer og annulleringer:
+
+| Handling | Ventende tilstand | Succes tilstand | Fejltilstand |
+|---|---|---|---|
+| Ny booking | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Bookingopdatering | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Annullering | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Hvad udløser en synkronisering
+
+- **Ny booking** — En rejsende booker gennem Wink eller en affiliate-kanal.
+- **Bookingopdatering** — Bookingdetaljer ændres (datoer, gæsteinfo, værelsestildeling).
+- **Annullering** — En booking annulleres af den rejsende eller ejendommen.
+
+## Overvågning
+
+Du kan overvåge synkroniseringsstatus via dit tilkoblede channel manager- eller PMS-dashboard. Fejlede sync entries forsøges automatisk igen. Hvis en synkronisering fortsætter med at fejle, forbliver den i `*_FAILED`-tilstanden til undersøgelse.
+
+## Fejlfinding
+
+Hvis bookinger ikke vises i dit PMS:
+
+1. **Tjek din channel manager-forbindelse** — Sørg for, at din PMS- eller channel manager-integration er aktiv og korrekt konfigureret.
+2. **Bekræft webhook-levering** — Hvis du bruger webhooks, skal du kontrollere, at dit endpoint modtager `booking.create` og `booking.cancelled` events. Se [Webhook Events Catalog](/da/developers/webhook-events#booking-events).
+3. **Gennemgå fejlede entries** — Fejlede sync entries indikerer et forbindelses- eller dataproblem med målssystemet.
+4. **Kontakt support** — Hvis problemerne fortsætter, kan Wink-teamet undersøge fejlede sync entries på dine vegne.
+
+## Yderligere læsning
+
+- [Channel Manager Integrations](/da/developers/channel-managers) — Hvordan Wink forbinder med PMS og channel managers.
+- [Webhook Events Catalog](/da/developers/webhook-events) — Abonner på bookingevents.
+- [Bookings (Extranet)](/da/extranet/bookings) — Administration af bookinger fra ejendomsportalen.

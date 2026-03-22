@@ -1,0 +1,107 @@
+---
+title: Coğrafi Konum
+description: Wink'in konuma dayalı envanter araması, GeoIP tespiti ve coğrafi filtreleme için coğrafi konum ve mekansal sorguları nasıl kullandığını öğrenin.
+sidebar:
+  order: 11
+---
+
+Wink, konuma dayalı arama, otomatik para birimi ve dil tespiti ile coğrafi envanter filtrelemesini sağlamak için coğrafi konumu yaygın şekilde kullanır.
+
+## GeoIP tespiti
+
+Bir kullanıcı platformu ziyaret ettiğinde, Wink IP adresine dayanarak konumunu otomatik olarak tespit eder. Bu şunları sağlar:
+
+- **Otomatik para birimi seçimi** — Fiyatları kullanıcının yerel para biriminde gösterir.
+- **Dil tercihi** — Kullanıcının muhtemel dilinde içerik önerir.
+- **Yakındaki sonuçlar** — Kullanıcının konumuna yakın envanteri önceliklendirir.
+
+## Mekansal arama
+
+Wink, dört mekansal sorgu türünü kullanarak coğrafi aramayı destekler. Bunlar, platform genelinde harita tabanlı arama, yarıçap araması ve alan bazlı filtrelemeyi sağlar.
+
+### Nokta
+
+Tek bir coğrafi koordinat (enlem, boylam). Belirli bir konumu işaretlemek için kullanılır — örneğin, bir mülkün adresi veya kullanıcının mevcut konumu.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Daire
+
+Bir merkez noktası ve yarıçap. "Bana yakın ara" veya yarıçap bazlı sorgular için kullanılır — örneğin, "Times Square'den 10 km içinde oteller."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Dikdörtgen
+
+Güneybatı ve kuzeydoğu köşeleriyle tanımlanan bir sınır kutusu. Harita tabanlı arama için kullanılır — kullanıcı haritayı kaydırıp yakınlaştırdığında, görünen alan bir dikdörtgen sorgusu tanımlar.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Çokgen
+
+Bir dizi noktayla tanımlanan özel şekil. Düzensiz coğrafi sınırlar içinde arama yapmak için kullanılır — örneğin, bir mahalle, şehir bölgesi veya harita üzerinde özel çizilmiş bir alan.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Çokgenler kapalı olmalıdır — son nokta ilk noktayla eşleşmelidir.
+:::
+
+## Kullanım durumları
+
+| Kullanım durumu | Şekil türü | Örnek |
+|---|---|---|
+| Bana yakın ara | Daire | Konumuma 5 km içinde oteller |
+| Harita görünüm alanı araması | Dikdörtgen | Mevcut harita görünümünde görünen mülkler |
+| Mahalle araması | Çokgen | Belirli bir şehir bölgesindeki oteller |
+| Mülk konumu | Nokta | Bir mülk ilanının tam konumu |
+
+## Geliştiriciler için
+
+Mekansal sorgu parametreleri Lookup API ve Inventory API uç noktaları tarafından kabul edilir. Arama isteğinizde uygun GeoJSON şeklini ileterek sonuçları konuma göre filtreleyin.
+
+Uç nokta özel detaylar için [APIs dokümantasyonuna](/tr/developers/apis) bakın.
+
+## Daha fazla okuma
+
+- [Arama (Booking Engine)](/tr/booking-engine/search) — Seyahat edenlerin envanteri nasıl aradığı.
+- [Haritalar (Studio)](/tr/studio/maps) — Harita tabanlı envanter keşfi.
+- [APIs](/tr/developers/apis) — Tam API referansı.

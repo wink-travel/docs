@@ -1,0 +1,61 @@
+---
+title: Užsakymų sinchronizavimas
+description: Sužinokite, kaip Wink sinchronizuoja užsakymus su išorinėmis sistemomis, tokiomis kaip PMS ir kanalų valdytojai, įskaitant sinchronizavimo ciklą ir trikčių šalinimą.
+sidebar:
+  order: 9
+---
+
+Kai užsakymas sukuriamas, atnaujinamas arba atšaukiamas Wink platformoje, ši pakeitimą sinchronizuoja su jūsų prijungtomis išorinėmis sistemomis – nekilnojamojo turto valdymo sistemomis (PMS), kanalų valdytojais ir centrinėmis rezervavimo sistemomis (CRS).
+
+## Kaip tai veikia
+
+Kiekvienas užsakymo pakeitimas sukuria **sinchronizavimo įrašą**, kuris seka sinchronizavimo būseną. Platforma apdoroja sinchronizavimo įrašus asinchroniškai, bandydama pakartotinai prireikus, kad užtikrintų patikimą pristatymą.
+
+## Sinchronizavimo ciklas
+
+Kiekvienas sinchronizavimo įrašas seka būsenų mašiną:
+
+```
+┌─────────────┐     sėkmė      ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ nesėkmė
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Tas pats modelis taikomas atnaujinimams ir atšaukimams:
+
+| Veiksmas | Laukianti būsena | Sėkmės būsena | Nesėkmės būsena |
+|---|---|---|---|
+| Naujas užsakymas | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Užsakymo atnaujinimas | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Atšaukimas | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Kas sukelia sinchronizavimą
+
+- **Naujas užsakymas** — Keliautojas užsako per Wink arba partnerių kanalą.
+- **Užsakymo atnaujinimas** — Keičiasi užsakymo duomenys (datos, svečio informacija, kambario paskyrimas).
+- **Atšaukimas** — Užsakymas atšaukiamas keliautojo arba objekto.
+
+## Stebėjimas
+
+Galite stebėti sinchronizavimo būseną per savo prijungto kanalų valdytojo arba PMS valdymo skydelį. Nepavykę sinchronizavimo įrašai automatiškai bandomi pakartotinai. Jei sinchronizavimas vis tiek nepavyksta, įrašas lieka `*_FAILED` būsenoje tol, kol bus ištirtas.
+
+## Trikčių šalinimas
+
+Jei užsakymai nepasirodo jūsų PMS:
+
+1. **Patikrinkite kanalų valdytojo ryšį** — Įsitikinkite, kad jūsų PMS arba kanalų valdytojo integracija yra aktyvi ir tinkamai sukonfigūruota.
+2. **Patikrinkite webhook pristatymą** — Jei naudojate webhook'us, įsitikinkite, kad jūsų galinis taškas gauna `booking.create` ir `booking.cancelled` įvykius. Žr. [Webhook Events Catalog](/lt/developers/webhook-events#booking-events).
+3. **Peržiūrėkite nepavykusius įrašus** — Nepavykę sinchronizavimo įrašai rodo ryšio ar duomenų problemą su tiksline sistema.
+4. **Susisiekite su palaikymu** — Jei problemos išlieka, Wink komanda gali ištirti nepavykusius sinchronizavimo įrašus jūsų vardu.
+
+## Papildoma informacija
+
+- [Channel Manager Integrations](/lt/developers/channel-managers) — Kaip Wink jungiasi su PMS ir kanalų valdytojais.
+- [Webhook Events Catalog](/lt/developers/webhook-events) — Prenumeruokite užsakymų įvykius.
+- [Bookings (Extranet)](/lt/extranet/bookings) — Užsakymų valdymas per objekto portalą.

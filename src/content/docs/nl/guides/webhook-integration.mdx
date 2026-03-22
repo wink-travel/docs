@@ -5,7 +5,7 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 Webhooks laten je systemen realtime meldingen ontvangen wanneer er gebeurtenissen plaatsvinden op je Wink-account — nieuwe boekingen, annuleringen, betalingsupdates en meer. Deze gids begeleidt je bij de setup en beste praktijken.
 
@@ -16,7 +16,7 @@ Deze gids is bedoeld voor ontwikkelaars die Wink integreren met externe systemen
 ## Hoe webhooks werken
 
 1. Je registreert een webhook-URL op Wink.
-2. Wanneer er een gebeurtenis plaatsvindt (bijv. een nieuwe boeking), stuurt Wink een HTTP POST naar jouw URL.
+2. Wanneer een gebeurtenis plaatsvindt (bijv. een nieuwe boeking), stuurt Wink een HTTP POST naar jouw URL.
 3. Je server verwerkt de payload en reageert met een `200 OK`.
 
 ## Een webhook instellen
@@ -32,35 +32,46 @@ Deze gids is bedoeld voor ontwikkelaars die Wink integreren met externe systemen
 8. Klik op `Save`.
 </Steps>
 
-## Soorten gebeurtenissen
+## Gebeurtenistypen
 
-Wink ondersteunt verschillende soorten gebeurtenissen. Veelvoorkomende gebeurtenissen zijn:
+Wink ondersteunt **64+ webhook-gebeurtenistypen** in categorieën zoals accountbeheer, boekingscontracten, betalingen, channel manager-updates en beheer van entiteitenadministratie. Veelvoorkomende gebeurtenissen zijn:
 
-- **Boeking aangemaakt** — Er is een nieuwe boeking bevestigd.
-- **Boeking geannuleerd** — Een boeking is geannuleerd.
-- **Betaling voltooid** — Betaling is verwerkt.
-- **Boeking bijgewerkt** — Details van een boeking zijn gewijzigd.
+| Categorie | Voorbeelden |
+|---|---|
+| **Boeking** | `booking.create`, `booking.cancelled` |
+| **Boekingscontract** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Betaling** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Terugbetalingen** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Channel manager** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Account** | `account.create`, `account.status.updated` |
+
+Voor een volledige lijst van alle gebeurtenistypen met beschrijvingen, zie de **Webhook Events Catalog**.
+
+<LinkButton href="/nl/developers/webhook-events">
+  Bekijk alle 64+ gebeurtenistypen
+</LinkButton>
 
 :::tip
-Begin met het abonneren op alle gebeurtenissen. Zodra je de payloads begrijpt, kun je beperken tot alleen de gebeurtenissen die je systeem nodig heeft.
+Begin tijdens de ontwikkeling met het abonneren op alle gebeurtenissen. Zodra je de payloads begrijpt, beperk je je tot alleen de gebeurtenissen die je systeem nodig heeft.
 :::
 
 ## Beste praktijken
 
 - **Gebruik HTTPS** — Wink stuurt payloads alleen naar HTTPS-eindpunten.
 - **Reageer snel** — Geef zo snel mogelijk een `200 OK` terug zodra je de payload ontvangt. Voer zware verwerking asynchroon uit.
-- **Idempotentie** — Je handler moet idempotent zijn. Wink kan de levering opnieuw proberen als het geen `200`-antwoord ontvangt.
-- **Valideer de bron** — Verifieer dat binnenkomende verzoeken van Wink komen voordat je ze verwerkt.
+- **Idempotentie** — Je handler moet idempotent zijn. Wink kan de levering opnieuw proberen als er geen `200`-antwoord wordt ontvangen.
+- **Valideer de bron** — Verifieer dat binnenkomende verzoeken van Wink afkomstig zijn voordat je ze verwerkt.
 - **Logging** — Log elke webhook-payload die je ontvangt. Dit maakt het debuggen van integratieproblemen veel eenvoudiger.
 
 ## Pauzeren en verwijderen
 
 Je kunt een webhook **uitschakelen** zonder deze te verwijderen. Dit pauzeert de levering zodat je kunt troubleshooten zonder je configuratie te verliezen. Wanneer je klaar bent, zet je hem weer aan.
 
-Het verwijderen van een webhook verwijdert deze permanent. Elke integratie die op die webhook vertrouwt, ontvangt dan geen meldingen meer.
+Het verwijderen van een webhook verwijdert deze permanent. Elke integratie die afhankelijk is van die webhook ontvangt dan geen meldingen meer.
 
 ## Verdere lectuur
 
+- [Webhook Events Catalog](/nl/developers/webhook-events) — Volledige lijst van alle 64+ gebeurtenistypen.
 - [Webhooks](/nl/my-account/webhooks) — Volledige referentie voor webhookbeheer.
 - [Applications](/nl/my-account/applications) — Beheer je API-gegevens.
 - [Developers > APIs](/nl/developers/apis) — Volledige API-documentatie.

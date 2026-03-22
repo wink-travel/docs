@@ -1,0 +1,61 @@
+---
+title: Pag-sync ng Booking
+description: Alamin kung paano nagsi-sync ang Wink ng mga booking sa mga external na sistema tulad ng PMS at channel managers, kabilang ang lifecycle ng sync at pag-troubleshoot.
+sidebar:
+  order: 9
+---
+
+Kapag ang isang booking ay nilikha, na-update, o kinansela sa Wink, ang platform ay nagsi-sync ng pagbabagong iyon sa iyong mga nakakonektang external na sistema — mga property management system (PMS), channel managers, at central reservation systems (CRS).
+
+## Paano ito gumagana
+
+Bawat pagbabago sa booking ay lumilikha ng isang **sync entry** na nagtatala ng estado ng pagsi-sync. Ang platform ay nagpoproseso ng mga sync entry nang asynchronous, inuulit kapag nabigo upang matiyak ang maaasahang paghahatid.
+
+## Lifecycle ng Sync
+
+Bawat sync entry ay sumusunod sa isang state machine:
+
+```
+┌─────────────┐     success     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ failure
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Parehong pattern ang ginagamit para sa mga update at pagkansela:
+
+| Aksyon | Pending na estado | Tagumpay na estado | Estado ng pagkabigo |
+|---|---|---|---|
+| Bagong booking | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Pag-update ng booking | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Pagkansela | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Ano ang nagpapasimula ng sync
+
+- **Bagong booking** — Isang manlalakbay ang nag-book sa pamamagitan ng Wink o isang affiliate channel.
+- **Pag-update ng booking** — Nagbago ang mga detalye ng booking (mga petsa, impormasyon ng bisita, asignasyon ng kuwarto).
+- **Pagkansela** — Kinansela ang booking ng manlalakbay o ng property.
+
+## Pagmamanman
+
+Maaari mong subaybayan ang status ng sync sa pamamagitan ng iyong nakakonektang channel manager o dashboard ng PMS. Ang mga nabigong sync entry ay awtomatikong inuulit. Kung patuloy na nabibigo ang sync, mananatili ito sa estado na `*_FAILED` para sa pagsisiyasat.
+
+## Pag-troubleshoot
+
+Kung hindi lumalabas ang mga booking sa iyong PMS:
+
+1. **Suriin ang koneksyon ng iyong channel manager** — Tiyaking aktibo at maayos ang pagkaka-configure ng iyong PMS o channel manager integration.
+2. **Beripikahin ang paghahatid ng webhook** — Kung gumagamit ka ng webhooks, tiyaking natatanggap ng iyong endpoint ang mga event na `booking.create` at `booking.cancelled`. Tingnan ang [Webhook Events Catalog](/tl/developers/webhook-events#booking-events).
+3. **Suriin ang mga nabigong entry** — Ang mga nabigong sync entry ay nagpapahiwatig ng problema sa koneksyon o datos sa target na sistema.
+4. **Makipag-ugnayan sa suporta** — Kung nagpapatuloy ang mga isyu, maaaring imbestigahan ng koponan ng Wink ang mga nabigong sync entry para sa iyo.
+
+## Karagdagang babasahin
+
+- [Channel Manager Integrations](/tl/developers/channel-managers) — Paano kumokonekta ang Wink sa PMS at channel managers.
+- [Webhook Events Catalog](/tl/developers/webhook-events) — Mag-subscribe sa mga booking event.
+- [Bookings (Extranet)](/tl/extranet/bookings) — Pamamahala ng mga booking mula sa property portal.

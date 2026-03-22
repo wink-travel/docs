@@ -1,0 +1,107 @@
+---
+title: Geolokacija
+description: Spoznajte, kako Wink uporablja geolokacijo in prostorske poizvedbe za iskanje inventarja glede na lokacijo, zaznavanje GeoIP in geografsko filtriranje.
+sidebar:
+  order: 11
+---
+
+Wink obsežno uporablja geolokacijo za omogočanje iskanja glede na lokacijo, samodejno zaznavanje valute in jezika ter geografsko filtriranje inventarja.
+
+## Zaznavanje GeoIP
+
+Ko uporabnik obišče platformo, Wink samodejno zazna njegovo lokacijo na podlagi IP naslova. To omogoča:
+
+- **Samodejno izbiro valute** — Prikaz cen v lokalni valuti uporabnika.
+- **Jezične preference** — Predlaganje vsebine v verjetnem jeziku uporabnika.
+- **Rezultate v bližini** — Prednostno prikazovanje inventarja blizu uporabnikove lokacije.
+
+## Prostorsko iskanje
+
+Wink podpira geografsko iskanje z uporabo štirih vrst prostorskih poizvedb. Te poganjajo iskanje na zemljevidu, iskanje po radiju in filtriranje po območju po celotni platformi.
+
+### Točka
+
+En koordinatni par (zemljepisna širina, dolžina). Uporablja se za označitev določene lokacije — na primer naslova nepremičnine ali trenutne lokacije uporabnika.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Krog
+
+Središčna točka z radijem. Uporablja se za poizvedbe "išči v moji bližini" ali po radiju — na primer "hoteli v 10 km od Times Square."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Pravokotnik
+
+Omejitvena škatla, določena z jugozahodnim in severovzhodnim kotom. Uporablja se za iskanje na zemljevidu — ko uporabnik premika in povečuje zemljevid, vidno območje določa pravokotno poizvedbo.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Poligon
+
+Poljubna oblika, določena z vrsto točk. Uporablja se za iskanje znotraj nepravilnih geografskih meja — na primer soseske, mestne četrti ali poljubno narisanega območja na zemljevidu.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Poligoni morajo biti zaprti — zadnja točka mora biti enaka prvi točki.
+:::
+
+## Primeri uporabe
+
+| Primer uporabe | Vrsta oblike | Primer |
+|---|---|---|
+| Iskanje v moji bližini | Krog | Hoteli v 5 km od moje lokacije |
+| Iskanje v pogledu zemljevida | Pravokotnik | Nepremičnine vidne v trenutnem pogledu zemljevida |
+| Iskanje po soseski | Poligon | Hoteli v določeni mestni četrti |
+| Lokacija nepremičnine | Točka | Natančna lokacija nepremičnine |
+
+## Za razvijalce
+
+Parametri prostorskih poizvedb so sprejeti na končnih točkah Lookup API in Inventory API. V iskalni zahtevek vključite ustrezno GeoJSON obliko, da filtrirate rezultate glede na lokacijo.
+
+Podrobnosti za posamezne končne točke najdete v [dokumentaciji API-jev](/sl/developers/apis).
+
+## Dodatno branje
+
+- [Iskanje (Booking Engine)](/sl/booking-engine/search) — Kako potniki iščejo inventar.
+- [Zemljevidi (Studio)](/sl/studio/maps) — Odkritje inventarja na zemljevidu.
+- [API-ji](/sl/developers/apis) — Celoten API referenčni vodič.

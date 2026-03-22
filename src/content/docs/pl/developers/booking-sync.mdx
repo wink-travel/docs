@@ -1,0 +1,61 @@
+---
+title: Synchronizacja rezerwacji
+description: Dowiedz się, jak Wink synchronizuje rezerwacje z zewnętrznymi systemami, takimi jak PMS i channel managerowie, w tym cykl życia synchronizacji i rozwiązywanie problemów.
+sidebar:
+  order: 9
+---
+
+Gdy rezerwacja jest tworzona, aktualizowana lub anulowana w Wink, platforma synchronizuje tę zmianę z podłączonymi zewnętrznymi systemami — systemami zarządzania obiektami (PMS), channel managerami oraz centralnymi systemami rezerwacji (CRS).
+
+## Jak to działa
+
+Każda zmiana rezerwacji tworzy **wpis synchronizacji**, który śledzi stan synchronizacji. Platforma przetwarza wpisy synchronizacji asynchronicznie, ponawiając próby w przypadku niepowodzenia, aby zapewnić niezawodną dostawę.
+
+## Cykl życia synchronizacji
+
+Każdy wpis synchronizacji podlega maszynie stanów:
+
+```
+┌─────────────┐     success     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ failure
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Ten sam schemat dotyczy aktualizacji i anulowań:
+
+| Akcja | Stan oczekujący | Stan sukcesu | Stan niepowodzenia |
+|---|---|---|---|
+| Nowa rezerwacja | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Aktualizacja rezerwacji | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Anulowanie | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Co wyzwala synchronizację
+
+- **Nowa rezerwacja** — Podróżny dokonuje rezerwacji przez Wink lub kanał afiliacyjny.
+- **Aktualizacja rezerwacji** — Zmieniają się szczegóły rezerwacji (daty, dane gościa, przydział pokoju).
+- **Anulowanie** — Rezerwacja zostaje anulowana przez podróżnego lub obiekt.
+
+## Monitorowanie
+
+Możesz monitorować status synchronizacji przez panel swojego channel managera lub PMS. Nieudane wpisy synchronizacji są automatycznie ponawiane. Jeśli synchronizacja nadal się nie powiodła, pozostaje w stanie `*_FAILED` do dalszej analizy.
+
+## Rozwiązywanie problemów
+
+Jeśli rezerwacje nie pojawiają się w Twoim PMS:
+
+1. **Sprawdź połączenie z channel managerem** — Upewnij się, że integracja z PMS lub channel managerem jest aktywna i poprawnie skonfigurowana.
+2. **Zweryfikuj dostarczanie webhooków** — Jeśli korzystasz z webhooków, sprawdź, czy Twój endpoint odbiera zdarzenia `booking.create` i `booking.cancelled`. Zobacz [Webhook Events Catalog](/pl/developers/webhook-events#booking-events).
+3. **Przejrzyj nieudane wpisy** — Nieudane wpisy synchronizacji wskazują na problem z łącznością lub danymi w systemie docelowym.
+4. **Skontaktuj się z pomocą techniczną** — Jeśli problemy się utrzymują, zespół Wink może zbadać nieudane wpisy synchronizacji w Twoim imieniu.
+
+## Dalsza lektura
+
+- [Integracje Channel Managerów](/pl/developers/channel-managers) — Jak Wink łączy się z PMS i channel managerami.
+- [Webhook Events Catalog](/pl/developers/webhook-events) — Subskrybuj zdarzenia rezerwacji.
+- [Rezerwacje (Extranet)](/pl/extranet/bookings) — Zarządzanie rezerwacjami z portalu obiektu.

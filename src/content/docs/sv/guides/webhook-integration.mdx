@@ -5,9 +5,9 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Webhooks låter dina system ta emot realtidsnotiser när händelser sker på ditt Wink-konto — nya bokningar, avbokningar, betalningsuppdateringar med mera. Den här guiden går igenom hur du ställer in och bästa praxis.
+Webhooks låter dina system ta emot realtidsnotiser när händelser sker på ditt Wink-konto — nya bokningar, avbokningar, betalningsuppdateringar med mera. Den här guiden leder dig genom installation och bästa praxis.
 
 ## Målgrupp
 
@@ -34,33 +34,44 @@ Den här guiden är för utvecklare som integrerar Wink med externa system som f
 
 ## Händelsetyper
 
-Wink stödjer olika typer av händelser. Vanliga händelser inkluderar:
+Wink stödjer **64+ webhook-händelsetyper** inom kategorier som kontohantering, bokningskontrakt, betalningar, kanalhanteraruppdateringar och hantering av enhetsadministration. Vanliga händelser inkluderar:
 
-- **Booking created** — En ny bokning har bekräftats.
-- **Booking cancelled** — En bokning har avbokats.
-- **Payment completed** — Betalning har genomförts.
-- **Booking updated** — Detaljer om en bokning har ändrats.
+| Kategori | Exempel |
+|---|---|
+| **Bokning** | `booking.create`, `booking.cancelled` |
+| **Bokningskontrakt** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Betalning** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Återbetalningar** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Kanalhanterare** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Konto** | `account.create`, `account.status.updated` |
+
+För en komplett lista över alla händelsetyper med beskrivningar, se **Webhook Events Catalog**.
+
+<LinkButton href="/sv/developers/webhook-events">
+  Visa alla 64+ händelsetyper
+</LinkButton>
 
 :::tip
-Börja med att prenumerera på alla händelser. När du förstår payloads kan du begränsa till endast de händelser ditt system behöver.
+Börja med att prenumerera på alla händelser under utveckling. När du förstår payloads, begränsa till endast de händelser ditt system behöver.
 :::
 
 ## Bästa praxis
 
 - **Använd HTTPS** — Wink skickar payloads endast till HTTPS-endpoints.
 - **Svara snabbt** — Returnera en `200 OK` så snart du tar emot payloaden. Gör tyngre bearbetning asynkront.
-- **Idempotens** — Din hanterare bör vara idempotent. Wink kan försöka skicka om om den inte får ett `200`-svar.
+- **Idempotens** — Din hanterare bör vara idempotent. Wink kan försöka leverera igen om den inte får ett `200`-svar.
 - **Verifiera källan** — Kontrollera att inkommande förfrågningar kommer från Wink innan du bearbetar dem.
-- **Loggning** — Logga varje webhook-payload du tar emot. Det underlättar felsökning av integrationsproblem.
+- **Loggning** — Logga varje webhook-payload du tar emot. Det gör felsökning av integrationsproblem mycket enklare.
 
 ## Pausa och ta bort
 
-Du kan **inaktivera** en webhook utan att ta bort den. Detta pausar leveransen så att du kan felsöka utan att förlora din konfiguration. När du är redo slår du på den igen.
+Du kan **inaktivera** en webhook utan att ta bort den. Detta pausar leveransen så att du kan felsöka utan att förlora din konfiguration. När du är redo, slå på den igen.
 
-Att ta bort en webhook tar bort den permanent. Alla integrationer som är beroende av den webhooken slutar ta emot notiser.
+Att ta bort en webhook tar bort den permanent. Alla integrationer som förlitar sig på den webhooken slutar ta emot notiser.
 
 ## Vidare läsning
 
+- [Webhook Events Catalog](/sv/developers/webhook-events) — Komplett lista över alla 64+ händelsetyper.
 - [Webhooks](/sv/my-account/webhooks) — Fullständig referens för webhook-hantering.
 - [Applications](/sv/my-account/applications) — Hantera dina API-uppgifter.
 - [Developers > APIs](/sv/developers/apis) — Fullständig API-dokumentation.

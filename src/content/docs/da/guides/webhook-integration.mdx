@@ -5,13 +5,13 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 Webhooks lader dine systemer modtage realtidsnotifikationer, når der sker begivenheder på din Wink-konto — nye bookinger, aflysninger, betalingsopdateringer og mere. Denne guide fører dig gennem opsætning og bedste praksis.
 
 ## Målgruppe
 
-Denne guide er til udviklere, der integrerer Wink med eksterne systemer som ejendomsadministrationssystemer (PMS), channel managers, CRM’er eller brugerdefinerede dashboards.
+Denne guide er til udviklere, der integrerer Wink med eksterne systemer såsom ejendomsadministrationssystemer (PMS), channel managers, CRM’er eller brugerdefinerede dashboards.
 
 ## Sådan fungerer webhooks
 
@@ -27,27 +27,37 @@ Denne guide er til udviklere, der integrerer Wink med eksterne systemer som ejen
 3. Klik på `Create webhook`.
 4. Indtast et **navn** (f.eks. "PMS Booking Sync").
 5. Indtast din **webhook URL** — HTTPS-endpointet på din server.
-6. **Vælg begivenheder** — Vælg specifikke begivenheder at abonnere på, eller lad det stå tomt for at modtage alle begivenheder.
+6. **Vælg begivenheder** — Vælg specifikke begivenheder at abonnere på, eller lad det være tomt for at modtage alle begivenheder.
 7. Skift **Enabled** til til.
 8. Klik på `Save`.
 </Steps>
 
 ## Begivenhedstyper
 
-Wink understøtter en række begivenhedstyper. Almindelige begivenheder inkluderer:
+Wink understøtter **64+ webhook-begivenhedstyper** inden for kategorier som kontoadministration, bookingkontrakter, betalinger, channel manager-opdateringer og administration af enheder. Almindelige begivenheder inkluderer:
 
-- **Booking oprettet** — En ny booking er bekræftet.
-- **Booking annulleret** — En booking er blevet annulleret.
-- **Betaling gennemført** — Betaling er blevet behandlet.
-- **Booking opdateret** — Oplysninger om en booking er ændret.
+| Kategori | Eksempler |
+|---|---|
+| **Booking** | `booking.create`, `booking.cancelled` |
+| **Bookingkontrakt** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Betaling** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Refunderinger** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Channel manager** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Konto** | `account.create`, `account.status.updated` |
+
+For en komplet liste over alle begivenhedstyper med beskrivelser, se **Webhook Events Catalog**.
+
+<LinkButton href="/da/developers/webhook-events">
+  Se alle 64+ begivenhedstyper
+</LinkButton>
 
 :::tip
-Start med at abonnere på alle begivenheder. Når du forstår payloads, kan du indsnævre til kun de begivenheder, dit system har brug for.
+Start med at abonnere på alle begivenheder under udvikling. Når du forstår payloads, kan du indsnævre til kun de begivenheder, dit system har brug for.
 :::
 
 ## Bedste praksis
 
-- **Brug HTTPS** — Wink sender kun payloads til HTTPS-endpoints.
+- **Brug HTTPS** — Wink sender payloads kun til HTTPS-endpoints.
 - **Svar hurtigt** — Returner en `200 OK`, så snart du modtager payloaden. Udfør tung behandling asynkront.
 - **Idempotens** — Din handler bør være idempotent. Wink kan forsøge at sende igen, hvis den ikke modtager et `200` svar.
 - **Valider kilden** — Bekræft, at indkommende forespørgsler kommer fra Wink, før du behandler dem.
@@ -61,6 +71,7 @@ Sletning af en webhook fjerner den permanent. Enhver integration, der er afhæng
 
 ## Yderligere læsning
 
+- [Webhook Events Catalog](/da/developers/webhook-events) — Komplet liste over alle 64+ begivenhedstyper.
 - [Webhooks](/da/my-account/webhooks) — Fuld reference for webhook-administration.
 - [Applications](/da/my-account/applications) — Administrer dine API-legitimationsoplysninger.
 - [Developers > APIs](/da/developers/apis) — Fuld API-dokumentation.

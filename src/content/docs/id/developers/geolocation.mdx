@@ -1,0 +1,107 @@
+---
+title: Geolokasi
+description: Pelajari bagaimana Wink menggunakan geolokasi dan kueri spasial untuk mendukung pencarian inventaris berbasis lokasi, deteksi GeoIP, dan penyaringan geografis.
+sidebar:
+  order: 11
+---
+
+Wink menggunakan geolokasi secara luas untuk mendukung pencarian berbasis lokasi, deteksi otomatis mata uang dan bahasa, serta penyaringan inventaris berdasarkan geografis.
+
+## Deteksi GeoIP
+
+Ketika pengguna mengunjungi platform, Wink secara otomatis mendeteksi lokasi mereka berdasarkan alamat IP. Ini memungkinkan:
+
+- **Pemilihan mata uang otomatis** — Menampilkan harga dalam mata uang lokal pengguna.
+- **Preferensi bahasa** — Menyarankan konten dalam bahasa yang kemungkinan digunakan pengguna.
+- **Hasil terdekat** — Memprioritaskan inventaris yang dekat dengan lokasi pengguna.
+
+## Pencarian spasial
+
+Wink mendukung pencarian geografis menggunakan empat jenis kueri spasial. Ini mendukung pencarian berbasis peta, pencarian radius, dan penyaringan area di seluruh platform.
+
+### Titik
+
+Satu koordinat geografis (lintang, bujur). Digunakan untuk menandai lokasi spesifik — misalnya, alamat properti atau lokasi pengguna saat ini.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Lingkaran
+
+Titik pusat dengan radius. Digunakan untuk kueri "cari di dekat saya" atau berbasis radius — misalnya, "hotel dalam radius 10 km dari Times Square."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Persegi panjang
+
+Kotak pembatas yang didefinisikan oleh sudut barat daya dan timur laut. Digunakan untuk pencarian berbasis peta — saat pengguna menggeser dan memperbesar peta, area yang terlihat mendefinisikan kueri persegi panjang.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Poligon
+
+Bentuk khusus yang didefinisikan oleh serangkaian titik. Digunakan untuk pencarian dalam batas geografis yang tidak beraturan — misalnya, lingkungan, distrik kota, atau area yang digambar khusus di peta.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Poligon harus tertutup — titik terakhir harus sama dengan titik pertama.
+:::
+
+## Kasus penggunaan
+
+| Kasus penggunaan | Jenis bentuk | Contoh |
+|---|---|---|
+| Cari di dekat saya | Lingkaran | Hotel dalam radius 5 km dari lokasi saya |
+| Pencarian tampilan peta | Persegi panjang | Properti yang terlihat pada tampilan peta saat ini |
+| Pencarian lingkungan | Poligon | Hotel di distrik kota tertentu |
+| Lokasi properti | Titik | Lokasi tepat dari daftar properti |
+
+## Untuk pengembang
+
+Parameter kueri spasial diterima oleh endpoint Lookup API dan Inventory API. Kirim bentuk GeoJSON yang sesuai dalam permintaan pencarian Anda untuk memfilter hasil berdasarkan lokasi.
+
+Lihat [dokumentasi APIs](/id/developers/apis) untuk detail spesifik endpoint.
+
+## Bacaan lebih lanjut
+
+- [Pencarian (Booking Engine)](/id/booking-engine/search) — Cara pelancong mencari inventaris.
+- [Peta (Studio)](/id/studio/maps) — Penemuan inventaris berbasis peta.
+- [APIs](/id/developers/apis) — Referensi API lengkap.

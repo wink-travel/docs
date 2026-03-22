@@ -1,0 +1,61 @@
+---
+title: 预订同步
+description: 了解 Wink 如何与外部系统（如 PMS 和渠道管理器）同步预订，包括同步生命周期和故障排除。
+sidebar:
+  order: 9
+---
+
+当在 Wink 上创建、更新或取消预订时，平台会将该变更同步到您连接的外部系统——物业管理系统（PMS）、渠道管理器和中央预订系统（CRS）。
+
+## 工作原理
+
+每次预订变更都会创建一个**同步条目**，用于跟踪同步状态。平台异步处理同步条目，失败时会重试以确保可靠传递。
+
+## 同步生命周期
+
+每个同步条目遵循状态机：
+
+```
+┌─────────────┐     success     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ failure
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+相同模式适用于更新和取消：
+
+| 操作 | 待处理状态 | 成功状态 | 失败状态 |
+|---|---|---|---|
+| 新预订 | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| 预订更新 | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| 取消 | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## 触发同步的情况
+
+- **新预订** — 旅客通过 Wink 或关联渠道预订。
+- **预订更新** — 预订详情变更（日期、客人信息、房间分配）。
+- **取消** — 旅客或物业取消预订。
+
+## 监控
+
+您可以通过连接的渠道管理器或 PMS 仪表盘监控同步状态。失败的同步条目会自动重试。如果同步持续失败，则保持在 `*_FAILED` 状态以便调查。
+
+## 故障排除
+
+如果预订未出现在您的 PMS 中：
+
+1. **检查渠道管理器连接** — 确保您的 PMS 或渠道管理器集成处于激活且配置正确状态。
+2. **验证 webhook 传递** — 如果使用 webhook，检查您的端点是否接收到 `booking.create` 和 `booking.cancelled` 事件。详见 [Webhook Events Catalog](/zh-CN/developers/webhook-events#booking-events)。
+3. **查看失败条目** — 失败的同步条目表明目标系统存在连接或数据问题。
+4. **联系支持** — 如果问题持续，Wink 团队可代表您调查失败的同步条目。
+
+## 进一步阅读
+
+- [渠道管理器集成](/zh-CN/developers/channel-managers) — Wink 如何连接 PMS 和渠道管理器。
+- [Webhook 事件目录](/zh-CN/developers/webhook-events) — 订阅预订事件。
+- [预订（Extranet）](/zh-CN/extranet/bookings) — 从物业门户管理预订。

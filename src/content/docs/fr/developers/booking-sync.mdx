@@ -1,0 +1,61 @@
+---
+title: Synchronisation des réservations
+description: Découvrez comment Wink synchronise les réservations avec des systèmes externes tels que les PMS et les channel managers, y compris le cycle de vie de la synchronisation et le dépannage.
+sidebar:
+  order: 9
+---
+
+Lorsqu'une réservation est créée, mise à jour ou annulée sur Wink, la plateforme synchronise ce changement avec vos systèmes externes connectés — systèmes de gestion de propriété (PMS), channel managers et systèmes centraux de réservation (CRS).
+
+## Comment ça fonctionne
+
+Chaque modification de réservation crée une **entrée de synchronisation** qui suit l'état de la synchronisation. La plateforme traite les entrées de synchronisation de manière asynchrone, en réessayant en cas d’échec pour garantir une livraison fiable.
+
+## Cycle de vie de la synchronisation
+
+Chaque entrée de synchronisation suit une machine à états :
+
+```
+┌─────────────┐     succès     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ échec
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Le même schéma s’applique aux mises à jour et aux annulations :
+
+| Action | État en attente | État de succès | État d’échec |
+|---|---|---|---|
+| Nouvelle réservation | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Mise à jour de réservation | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Annulation | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Ce qui déclenche une synchronisation
+
+- **Nouvelle réservation** — Un voyageur réserve via Wink ou un canal affilié.
+- **Mise à jour de réservation** — Les détails de la réservation changent (dates, informations sur le client, attribution de chambre).
+- **Annulation** — Une réservation est annulée par le voyageur ou la propriété.
+
+## Surveillance
+
+Vous pouvez suivre le statut de la synchronisation via le tableau de bord de votre channel manager ou PMS connecté. Les entrées de synchronisation échouées sont automatiquement réessayées. Si une synchronisation continue d’échouer, elle reste dans l’état `*_FAILED` pour investigation.
+
+## Dépannage
+
+Si les réservations n’apparaissent pas dans votre PMS :
+
+1. **Vérifiez votre connexion au channel manager** — Assurez-vous que votre intégration PMS ou channel manager est active et correctement configurée.
+2. **Vérifiez la livraison des webhooks** — Si vous utilisez des webhooks, vérifiez que votre point de terminaison reçoit les événements `booking.create` et `booking.cancelled`. Voir [Catalogue des événements Webhook](/fr/developers/webhook-events#booking-events).
+3. **Examinez les entrées échouées** — Les entrées de synchronisation échouées indiquent un problème de connectivité ou de données avec le système cible.
+4. **Contactez le support** — Si les problèmes persistent, l’équipe Wink peut enquêter sur les entrées de synchronisation échouées pour vous.
+
+## Pour en savoir plus
+
+- [Intégrations Channel Manager](/fr/developers/channel-managers) — Comment Wink se connecte aux PMS et channel managers.
+- [Catalogue des événements Webhook](/fr/developers/webhook-events) — Abonnez-vous aux événements de réservation.
+- [Réservations (Extranet)](/fr/extranet/bookings) — Gestion des réservations depuis le portail de la propriété.

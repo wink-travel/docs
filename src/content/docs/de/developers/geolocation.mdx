@@ -1,0 +1,107 @@
+---
+title: Geolokalisierung
+description: Erfahren Sie, wie Wink Geolokalisierung und räumliche Abfragen nutzt, um standortbasierte Inventarsuche, GeoIP-Erkennung und geografische Filterung zu ermöglichen.
+sidebar:
+  order: 11
+---
+
+Wink verwendet Geolokalisierung umfangreich, um standortbasierte Suche, automatische Währungs- und Spracherkennung sowie geografische Inventarfilterung zu ermöglichen.
+
+## GeoIP-Erkennung
+
+Wenn ein Nutzer die Plattform besucht, erkennt Wink automatisch seinen Standort basierend auf der IP-Adresse. Dies ermöglicht:
+
+- **Automatische Währungsauswahl** — Preise in der lokalen Währung des Nutzers anzeigen.
+- **Sprachpräferenz** — Inhalte in der wahrscheinlich bevorzugten Sprache des Nutzers vorschlagen.
+- **Nahe Ergebnisse** — Inventar in der Nähe des Nutzerstandorts priorisieren.
+
+## Räumliche Suche
+
+Wink unterstützt geografische Suche mit vier Typen räumlicher Abfragen. Diese ermöglichen die kartenbasierte Suche, Radius-Suche und flächenbasierte Filterung auf der gesamten Plattform.
+
+### Punkt
+
+Ein einzelner geografischer Koordinate (Breitengrad, Längengrad). Wird verwendet, um einen spezifischen Ort zu markieren — zum Beispiel die Adresse einer Unterkunft oder den aktuellen Standort eines Nutzers.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Kreis
+
+Ein Mittelpunkt mit einem Radius. Wird für „Suche in meiner Nähe“ oder radiusbasierte Abfragen verwendet — zum Beispiel „Hotels innerhalb von 10 km um den Times Square“.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Rechteck
+
+Eine Begrenzungsbox definiert durch Südwest- und Nordost-Ecken. Wird für kartenbasierte Suche verwendet — wenn ein Nutzer eine Karte verschiebt und zoomt, definiert der sichtbare Bereich eine Rechteckabfrage.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Polygon
+
+Eine benutzerdefinierte Form, definiert durch eine Reihe von Punkten. Wird verwendet, um innerhalb unregelmäßiger geografischer Grenzen zu suchen — zum Beispiel ein Stadtviertel, ein Stadtbezirk oder ein frei gezeichnetes Gebiet auf einer Karte.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Polygone müssen geschlossen sein — der letzte Punkt muss mit dem ersten Punkt übereinstimmen.
+:::
+
+## Anwendungsfälle
+
+| Anwendungsfall | Formtyp | Beispiel |
+|---|---|---|
+| Suche in meiner Nähe | Kreis | Hotels innerhalb von 5 km um meinen Standort |
+| Kartenausschnitt-Suche | Rechteck | Unterkünfte, die im aktuellen Kartenbereich sichtbar sind |
+| Stadtviertelsuche | Polygon | Hotels in einem bestimmten Stadtbezirk |
+| Unterkunftsstandort | Punkt | Exakter Standort eines Unterkunftseintrags |
+
+## Für Entwickler
+
+Parameter für räumliche Abfragen werden von den Lookup API- und Inventory API-Endpunkten akzeptiert. Übergeben Sie die passende GeoJSON-Form in Ihrer Suchanfrage, um Ergebnisse nach Standort zu filtern.
+
+Siehe die [APIs-Dokumentation](/de/developers/apis) für endpunktspezifische Details.
+
+## Weiterführende Literatur
+
+- [Suche (Booking Engine)](/de/booking-engine/search) — Wie Reisende nach Inventar suchen.
+- [Karten (Studio)](/de/studio/maps) — Kartenbasierte Inventarentdeckung.
+- [APIs](/de/developers/apis) — Vollständige API-Referenz.

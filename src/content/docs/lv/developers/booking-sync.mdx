@@ -1,0 +1,61 @@
+---
+title: Rezervāciju sinhronizācija
+description: Uzziniet, kā Wink sinhronizē rezervācijas ar ārējām sistēmām, piemēram, PMS un kanālu pārvaldniekiem, tostarp sinhronizācijas dzīves ciklu un problēmu novēršanu.
+sidebar:
+  order: 9
+---
+
+Kad Wink tiek izveidota, atjaunināta vai atcelta rezervācija, platforma sinhronizē šo izmaiņu ar jūsu savienotajām ārējām sistēmām — īpašuma pārvaldības sistēmām (PMS), kanālu pārvaldniekiem un centrālajām rezervāciju sistēmām (CRS).
+
+## Kā tas darbojas
+
+Katras rezervācijas izmaiņas izveido **sinhronizācijas ierakstu**, kas seko sinhronizācijas stāvoklim. Platforma apstrādā sinhronizācijas ierakstus asinhroni, neveiksmju gadījumā mēģinot atkārtoti, lai nodrošinātu uzticamu piegādi.
+
+## Sinhronizācijas dzīves cikls
+
+Katrs sinhronizācijas ieraksts seko stāvokļu mašīnai:
+
+```
+┌─────────────┐     veiksmīgi     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ neveiksme
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Tāds pats modelis attiecas uz atjauninājumiem un atcelšanām:
+
+| Darbība | Gaidošais stāvoklis | Veiksmīgais stāvoklis | Neveiksmīgais stāvoklis |
+|---|---|---|---|
+| Jauna rezervācija | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Rezervācijas atjauninājums | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Atcelšana | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Kas izsauc sinhronizāciju
+
+- **Jauna rezervācija** — Ceļotājs veic rezervāciju caur Wink vai filiāles kanālu.
+- **Rezervācijas atjauninājums** — Mainās rezervācijas dati (datumi, viesu informācija, numura piešķīrums).
+- **Atcelšana** — Rezervācija tiek atcelta ceļotāja vai īpašuma.
+
+## Uzraudzība
+
+Jūs varat uzraudzīt sinhronizācijas statusu caur savienotā kanālu pārvaldnieka vai PMS informācijas paneli. Neveiksmīgie sinhronizācijas ieraksti tiek automātiski mēģināti atkārtoti. Ja sinhronizācija turpina neizdoties, tā paliek `*_FAILED` stāvoklī izmeklēšanai.
+
+## Problēmu novēršana
+
+Ja rezervācijas neparādās jūsu PMS:
+
+1. **Pārbaudiet kanālu pārvaldnieka savienojumu** — Pārliecinieties, ka jūsu PMS vai kanālu pārvaldnieka integrācija ir aktīva un pareizi konfigurēta.
+2. **Pārbaudiet webhook piegādi** — Ja izmantojat webhook, pārliecinieties, ka jūsu galapunkts saņem `booking.create` un `booking.cancelled` notikumus. Skatīt [Webhook Events Catalog](/lv/developers/webhook-events#booking-events).
+3. **Pārskatiet neveiksmīgos ierakstus** — Neveiksmīgie sinhronizācijas ieraksti norāda uz savienojamības vai datu problēmu mērķa sistēmā.
+4. **Sazinieties ar atbalstu** — Ja problēmas saglabājas, Wink komanda var izmeklēt neveiksmīgos sinhronizācijas ierakstus jūsu vietā.
+
+## Papildu lasāmviela
+
+- [Channel Manager Integrations](/lv/developers/channel-managers) — Kā Wink savienojas ar PMS un kanālu pārvaldniekiem.
+- [Webhook Events Catalog](/lv/developers/webhook-events) — Abonējiet rezervāciju notikumus.
+- [Bookings (Extranet)](/lv/extranet/bookings) — Rezervāciju pārvaldība no īpašuma portāla.

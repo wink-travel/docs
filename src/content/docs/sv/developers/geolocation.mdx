@@ -1,0 +1,107 @@
+---
+title: Geolokalisering
+description: Lär dig hur Wink använder geolokalisering och rumsliga frågor för att driva platsbaserad inventariesökning, GeoIP-detektering och geografisk filtrering.
+sidebar:
+  order: 11
+---
+
+Wink använder geolokalisering i stor utsträckning för att driva platsbaserad sökning, automatisk val av valuta och språk samt geografisk filtrering av inventarier.
+
+## GeoIP-detektering
+
+När en användare besöker plattformen upptäcker Wink automatiskt deras plats baserat på deras IP-adress. Detta möjliggör:
+
+- **Automatisk val av valuta** — Visa priser i användarens lokala valuta.
+- **Språkpreferens** — Föreslå innehåll på användarens troliga språk.
+- **Resultat i närheten** — Prioritera inventarier nära användarens plats.
+
+## Rumslig sökning
+
+Wink stödjer geografisk sökning med fyra typer av rumsliga frågor. Dessa driver kartbaserad sökning, radiesökning och områdesbaserad filtrering över hela plattformen.
+
+### Punkt
+
+En enskild geografisk koordinat (latitud, longitud). Används för att markera en specifik plats — till exempel en fastighets adress eller en användares aktuella plats.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Cirkel
+
+En mittpunkt med en radie. Används för "sök nära mig" eller radiebaserade frågor — till exempel "hotell inom 10 km från Times Square."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Rektangel
+
+En avgränsningsruta definierad av sydvästra och nordöstra hörn. Används för kartbaserad sökning — när en användare panorera och zoomar en karta definierar det synliga området en rektangelfråga.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Polygon
+
+En anpassad form definierad av en serie punkter. Används för att söka inom oregelbundna geografiska gränser — till exempel ett kvarter, en stadsdel eller ett anpassat ritat område på en karta.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Polygoner måste vara slutna — den sista punkten måste matcha den första punkten.
+:::
+
+## Användningsfall
+
+| Användningsfall | Formtyp | Exempel |
+|---|---|---|
+| Sök nära mig | Cirkel | Hotell inom 5 km från min plats |
+| Kartvynsökning | Rektangel | Fastigheter synliga i den aktuella kartvyn |
+| Kvartersökning | Polygon | Hotell i en specifik stadsdel |
+| Fastighetsplats | Punkt | Exakt plats för en fastighetsannons |
+
+## För utvecklare
+
+Parametrar för rumsliga frågor accepteras av Lookup API och Inventory API-endpoints. Skicka den lämpliga GeoJSON-formen i din sökförfrågan för att filtrera resultat efter plats.
+
+Se [API-dokumentationen](/sv/developers/apis) för endpoint-specifika detaljer.
+
+## Vidare läsning
+
+- [Sökning (Booking Engine)](/sv/booking-engine/search) — Hur resenärer söker efter inventarier.
+- [Kartor (Studio)](/sv/studio/maps) — Kartbaserad inventariesökning.
+- [API:er](/sv/developers/apis) — Fullständig API-referens.

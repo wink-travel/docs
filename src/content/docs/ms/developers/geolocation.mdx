@@ -1,0 +1,107 @@
+---
+title: Geolokasi
+description: Pelajari bagaimana Wink menggunakan geolokasi dan pertanyaan spatial untuk menggerakkan pencarian inventori berasaskan lokasi, pengesanan GeoIP, dan penapisan geografi.
+sidebar:
+  order: 11
+---
+
+Wink menggunakan geolokasi secara meluas untuk menggerakkan pencarian berasaskan lokasi, pengesanan mata wang dan bahasa secara automatik, serta penapisan inventori geografi.
+
+## Pengesanan GeoIP
+
+Apabila pengguna melawat platform, Wink secara automatik mengesan lokasi mereka berdasarkan alamat IP mereka. Ini membolehkan:
+
+- **Pemilihan mata wang automatik** — Memaparkan harga dalam mata wang tempatan pengguna.
+- **Keutamaan bahasa** — Mencadangkan kandungan dalam bahasa yang mungkin digunakan oleh pengguna.
+- **Keputusan berdekatan** — Mengutamakan inventori yang dekat dengan lokasi pengguna.
+
+## Pencarian spatial
+
+Wink menyokong pencarian geografi menggunakan empat jenis pertanyaan spatial. Ini menggerakkan pencarian berasaskan peta, pencarian radius, dan penapisan berasaskan kawasan di seluruh platform.
+
+### Titik
+
+Satu koordinat geografi tunggal (latitud, longitud). Digunakan untuk menandakan lokasi tertentu — contohnya, alamat hartanah atau lokasi semasa pengguna.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Bulatan
+
+Satu titik pusat dengan radius. Digunakan untuk pertanyaan "cari berhampiran saya" atau berasaskan radius — contohnya, "hotel dalam 10 km dari Times Square."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Segi empat tepat
+
+Satu kotak sempadan yang ditakrifkan oleh sudut barat daya dan timur laut. Digunakan untuk pencarian berasaskan peta — apabila pengguna menggerakkan dan mengezum peta, kawasan yang kelihatan menentukan pertanyaan segi empat tepat.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Poligon
+
+Satu bentuk tersuai yang ditakrifkan oleh siri titik. Digunakan untuk pencarian dalam sempadan geografi yang tidak teratur — contohnya, kejiranan, daerah bandar, atau kawasan yang dilukis secara tersuai pada peta.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Poligon mesti ditutup — titik terakhir mesti sama dengan titik pertama.
+:::
+
+## Kes penggunaan
+
+| Kes penggunaan | Jenis bentuk | Contoh |
+|---|---|---|
+| Cari berhampiran saya | Bulatan | Hotel dalam 5 km dari lokasi saya |
+| Pencarian pandangan peta | Segi empat tepat | Hartanah yang kelihatan pada pandangan peta semasa |
+| Pencarian kejiranan | Poligon | Hotel dalam daerah bandar tertentu |
+| Lokasi hartanah | Titik | Lokasi tepat senarai hartanah |
+
+## Untuk pembangun
+
+Parameter pertanyaan spatial diterima oleh titik akhir Lookup API dan Inventory API. Hantar bentuk GeoJSON yang sesuai dalam permintaan pencarian anda untuk menapis keputusan mengikut lokasi.
+
+Lihat [dokumentasi APIs](/ms/developers/apis) untuk butiran khusus titik akhir.
+
+## Bacaan lanjut
+
+- [Pencarian (Booking Engine)](/ms/booking-engine/search) — Bagaimana pengembara mencari inventori.
+- [Peta (Studio)](/ms/studio/maps) — Penemuan inventori berasaskan peta.
+- [APIs](/ms/developers/apis) — Rujukan API penuh.

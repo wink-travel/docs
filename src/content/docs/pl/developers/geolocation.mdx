@@ -1,0 +1,107 @@
+---
+title: Geolokalizacja
+description: Dowiedz się, jak Wink wykorzystuje geolokalizację i zapytania przestrzenne do obsługi wyszukiwania zasobów na podstawie lokalizacji, wykrywania GeoIP oraz filtrowania geograficznego.
+sidebar:
+  order: 11
+---
+
+Wink szeroko wykorzystuje geolokalizację do obsługi wyszukiwania opartego na lokalizacji, automatycznego wykrywania waluty i języka oraz geograficznego filtrowania zasobów.
+
+## Wykrywanie GeoIP
+
+Gdy użytkownik odwiedza platformę, Wink automatycznie wykrywa jego lokalizację na podstawie adresu IP. Umożliwia to:
+
+- **Automatyczny wybór waluty** — Wyświetlanie cen w lokalnej walucie użytkownika.
+- **Preferencje językowe** — Proponowanie treści w prawdopodobnym języku użytkownika.
+- **Wyniki w pobliżu** — Priorytetowe wyświetlanie zasobów blisko lokalizacji użytkownika.
+
+## Wyszukiwanie przestrzenne
+
+Wink obsługuje wyszukiwanie geograficzne za pomocą czterech typów zapytań przestrzennych. Napędzają one wyszukiwanie oparte na mapie, wyszukiwanie w promieniu oraz filtrowanie obszarowe na całej platformie.
+
+### Punkt
+
+Pojedynczy współrzędny geograficzny (szerokość, długość geograficzna). Używany do oznaczenia konkretnej lokalizacji — na przykład adresu nieruchomości lub aktualnej lokalizacji użytkownika.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Koło
+
+Punkt centralny z promieniem. Używane do zapytań „szukaj w pobliżu mnie” lub opartych na promieniu — na przykład „hotele w promieniu 10 km od Times Square”.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Prostokąt
+
+Pole ograniczające zdefiniowane przez narożniki południowo-zachodni i północno-wschodni. Używane do wyszukiwania opartego na mapie — gdy użytkownik przesuwa i powiększa mapę, widoczny obszar definiuje zapytanie prostokątne.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Wielokąt
+
+Niestandardowy kształt zdefiniowany przez serię punktów. Używany do wyszukiwania w nieregularnych granicach geograficznych — na przykład dzielnicy, obszaru miasta lub niestandardowo narysowanego obszaru na mapie.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Wielokąty muszą być zamknięte — ostatni punkt musi odpowiadać pierwszemu punktowi.
+:::
+
+## Przypadki użycia
+
+| Przypadek użycia | Typ kształtu | Przykład |
+|---|---|---|
+| Szukaj w pobliżu mnie | Koło | Hotele w promieniu 5 km od mojej lokalizacji |
+| Wyszukiwanie w widoku mapy | Prostokąt | Nieruchomości widoczne na aktualnym widoku mapy |
+| Wyszukiwanie w dzielnicy | Wielokąt | Hotele w konkretnej dzielnicy miasta |
+| Lokalizacja nieruchomości | Punkt | Dokładna lokalizacja oferty nieruchomości |
+
+## Dla programistów
+
+Parametry zapytań przestrzennych są akceptowane przez endpointy Lookup API i Inventory API. Przekaż odpowiedni kształt GeoJSON w swoim żądaniu wyszukiwania, aby filtrować wyniki według lokalizacji.
+
+Zobacz [dokumentację API](/pl/developers/apis) dla szczegółów dotyczących poszczególnych endpointów.
+
+## Dalsza lektura
+
+- [Wyszukiwanie (Booking Engine)](/pl/booking-engine/search) — Jak podróżni wyszukują zasoby.
+- [Mapy (Studio)](/pl/studio/maps) — Odkrywanie zasobów na mapie.
+- [API](/pl/developers/apis) — Pełna referencja API.

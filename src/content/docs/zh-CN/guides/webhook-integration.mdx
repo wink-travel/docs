@@ -5,9 +5,9 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Webhook 让您的系统在 Wink 账户发生事件时接收实时通知——新预订、取消、支付更新等。本文将引导您完成设置及最佳实践。
+Webhook 让您的系统能够在 Wink 账户发生事件时接收实时通知——新预订、取消、支付更新等。本文将引导您完成设置及最佳实践。
 
 ## 受众
 
@@ -25,7 +25,7 @@ Webhook 让您的系统在 Wink 账户发生事件时接收实时通知——新
 1. 登录您的账户（Extranet、Studio 或 TripPay 均支持 webhook）。
 2. 进入 `Applications`，然后选择 `Webhooks`。参见 [Webhooks](/zh-CN/my-account/webhooks)。
 3. 点击 `Create webhook`。
-4. 输入 **名称**（例如 “PMS Booking Sync”）。
+4. 输入 **名称**（例如 “PMS 预订同步”）。
 5. 输入您的 **webhook URL** —— 您服务器上的 HTTPS 端点。
 6. **选择事件** —— 选择要订阅的特定事件，或留空以接收所有事件。
 7. 切换 **Enabled** 为开启状态。
@@ -34,33 +34,44 @@ Webhook 让您的系统在 Wink 账户发生事件时接收实时通知——新
 
 ## 事件类型
 
-Wink 支持多种事件类型。常见事件包括：
+Wink 支持 **64+ 种 webhook 事件类型**，涵盖账户管理、预订合同、支付、渠道管理器更新及实体管理等类别。常见事件包括：
 
-- **Booking created** — 新预订已确认。
-- **Booking cancelled** — 预订已取消。
-- **Payment completed** — 支付已处理。
-- **Booking updated** — 预订详情已更改。
+| 类别 | 示例 |
+|---|---|
+| **预订** | `booking.create`，`booking.cancelled` |
+| **预订合同** | `booking.contract.created`，`booking.contract.processing`，`booking.contract.cancelled` |
+| **支付** | `internal.payment.succeeded`，`internal.payment.failed` |
+| **退款** | `booking.contract.refund.partial`，`booking.contract.refund.full` |
+| **渠道管理器** | `channel-manager.update.rate`，`channel-manager.update.availability` |
+| **账户** | `account.create`，`account.status.updated` |
+
+完整的事件类型及描述列表，请参见 **Webhook 事件目录**。
+
+<LinkButton href="/zh-CN/developers/webhook-events">
+  查看全部 64+ 事件类型
+</LinkButton>
 
 :::tip
-建议先订阅所有事件。了解负载内容后，您可以缩小范围，仅订阅系统所需事件。
+开发阶段建议先订阅所有事件。了解负载内容后，再缩小到系统实际需要的事件。
 :::
 
 ## 最佳实践
 
-- **使用 HTTPS** — Wink 仅向 HTTPS 端点发送负载。
-- **快速响应** — 收到负载后尽快返回 `200 OK`。任何耗时处理应异步进行。
-- **幂等性** — 您的处理程序应具备幂等性。若未收到 `200` 响应，Wink 可能会重试发送。
-- **验证来源** — 处理前请验证请求确实来自 Wink。
-- **日志记录** — 记录每个收到的 webhook 负载，便于调试集成问题。
+- **使用 HTTPS** —— Wink 仅向 HTTPS 端点发送负载。
+- **快速响应** —— 收到负载后尽快返回 `200 OK`，重负载处理请异步进行。
+- **幂等性** —— 处理程序应保持幂等。若未收到 `200` 响应，Wink 可能会重试发送。
+- **验证来源** —— 处理前请验证请求确实来自 Wink。
+- **日志记录** —— 记录每个接收到的 webhook 负载，便于调试集成问题。
 
 ## 暂停与删除
 
-您可以 **禁用** webhook 而不删除它。这样可暂停通知发送，方便排查问题且不丢失配置。准备好后可重新启用。
+您可以 **禁用** webhook 而不删除它。这样可以暂停通知发送，方便排查问题且不丢失配置。准备好后可重新启用。
 
 删除 webhook 会永久移除它。依赖该 webhook 的集成将停止接收通知。
 
 ## 进一步阅读
 
-- [Webhooks](/zh-CN/my-account/webhooks) — webhook 管理完整参考。
-- [Applications](/zh-CN/my-account/applications) — 管理您的 API 凭证。
-- [Developers > APIs](/zh-CN/developers/apis) — 完整 API 文档。
+- [Webhook 事件目录](/zh-CN/developers/webhook-events) —— 全部 64+ 事件类型完整列表。
+- [Webhooks](/zh-CN/my-account/webhooks) —— webhook 管理完整参考。
+- [Applications](/zh-CN/my-account/applications) —— 管理您的 API 凭证。
+- [Developers > APIs](/zh-CN/developers/apis) —— 完整 API 文档。

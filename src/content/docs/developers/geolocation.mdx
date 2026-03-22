@@ -1,0 +1,107 @@
+---
+title: Geolocation
+description: Learn how Wink uses geolocation and spatial queries to power location-based inventory search, GeoIP detection, and geographic filtering.
+sidebar:
+  order: 11
+---
+
+Wink uses geolocation extensively to power location-based search, automatic currency and language detection, and geographic inventory filtering.
+
+## GeoIP detection
+
+When a user visits the platform, Wink automatically detects their location based on their IP address. This enables:
+
+- **Automatic currency selection** — Display prices in the user's local currency.
+- **Language preference** — Suggest content in the user's likely language.
+- **Nearby results** — Prioritize inventory close to the user's location.
+
+## Spatial search
+
+Wink supports geographic search using four spatial query types. These power the map-based search, radius search, and area-based filtering across the platform.
+
+### Point
+
+A single geographic coordinate (latitude, longitude). Used to mark a specific location — for example, a property's address or a user's current location.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Circle
+
+A center point with a radius. Used for "search near me" or radius-based queries — for example, "hotels within 10 km of Times Square."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Rectangle
+
+A bounding box defined by southwest and northeast corners. Used for map-based search — when a user pans and zooms a map, the visible area defines a rectangle query.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Polygon
+
+A custom shape defined by a series of points. Used for searching within irregular geographic boundaries — for example, a neighborhood, a city district, or a custom-drawn area on a map.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Polygons must be closed — the last point must match the first point.
+:::
+
+## Use cases
+
+| Use case | Shape type | Example |
+|---|---|---|
+| Search near me | Circle | Hotels within 5 km of my location |
+| Map viewport search | Rectangle | Properties visible on the current map view |
+| Neighborhood search | Polygon | Hotels in a specific city district |
+| Property location | Point | Exact location of a property listing |
+
+## For developers
+
+Spatial query parameters are accepted by the Lookup API and Inventory API endpoints. Pass the appropriate GeoJSON shape in your search request to filter results by location.
+
+See the [APIs documentation](/developers/apis) for endpoint-specific details.
+
+## Further reading
+
+- [Search (Booking Engine)](/booking-engine/search) — How travelers search for inventory.
+- [Maps (Studio)](/studio/maps) — Map-based inventory discovery.
+- [APIs](/developers/apis) — Full API reference.

@@ -1,0 +1,107 @@
+---
+title: Geolokace
+description: Naučte se, jak Wink využívá geolokaci a prostorové dotazy k podpoře vyhledávání inventáře podle polohy, detekce GeoIP a geografického filtrování.
+sidebar:
+  order: 11
+---
+
+Wink rozsáhle využívá geolokaci k podpoře vyhledávání podle polohy, automatické detekci měny a jazyka a geografickému filtrování inventáře.
+
+## Detekce GeoIP
+
+Když uživatel navštíví platformu, Wink automaticky detekuje jeho polohu na základě IP adresy. To umožňuje:
+
+- **Automatický výběr měny** — Zobrazovat ceny v místní měně uživatele.
+- **Preferovaný jazyk** — Navrhnout obsah v pravděpodobném jazyce uživatele.
+- **Výsledky v okolí** — Upřednostnit inventář blízko uživatelovy polohy.
+
+## Prostorové vyhledávání
+
+Wink podporuje geografické vyhledávání pomocí čtyř typů prostorových dotazů. Tyto typy pohánějí vyhledávání na mapě, vyhledávání v okruhu a filtrování podle oblasti napříč platformou.
+
+### Bod
+
+Jedna geografická souřadnice (zeměpisná šířka, délka). Používá se k označení konkrétního místa — například adresy nemovitosti nebo aktuální polohy uživatele.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Kruh
+
+Středový bod s poloměrem. Používá se pro dotazy „vyhledat poblíž mě“ nebo vyhledávání v okruhu — například „hotely do 10 km od Times Square.“
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Obdélník
+
+Ohraničující rámeček definovaný jihozápadním a severovýchodním rohem. Používá se pro vyhledávání na mapě — když uživatel posouvá a přibližuje mapu, viditelná oblast definuje dotaz obdélníku.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Polygon
+
+Vlastní tvar definovaný řadou bodů. Používá se pro vyhledávání v nepravidelných geografických hranicích — například čtvrť, městská část nebo vlastní nakreslená oblast na mapě.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Polygony musí být uzavřené — poslední bod musí odpovídat prvnímu bodu.
+:::
+
+## Použití
+
+| Použití | Typ tvaru | Příklad |
+|---|---|---|
+| Vyhledávání poblíž mě | Kruh | Hotely do 5 km od mé polohy |
+| Vyhledávání v zobrazení mapy | Obdélník | Nemovitosti viditelné v aktuálním zobrazení mapy |
+| Vyhledávání v čtvrti | Polygon | Hotely v konkrétní městské části |
+| Poloha nemovitosti | Bod | Přesná poloha nabídky nemovitosti |
+
+## Pro vývojáře
+
+Parametry prostorových dotazů jsou akceptovány koncovými body Lookup API a Inventory API. Předávejte odpovídající GeoJSON tvar ve vašem vyhledávacím požadavku pro filtrování výsledků podle polohy.
+
+Podívejte se na [dokumentaci API](/cs/developers/apis) pro podrobnosti specifické pro jednotlivé koncové body.
+
+## Další čtení
+
+- [Vyhledávání (Booking Engine)](/cs/booking-engine/search) — Jak cestovatelé vyhledávají inventář.
+- [Mapy (Studio)](/cs/studio/maps) — Objevování inventáře na mapě.
+- [API](/cs/developers/apis) — Kompletní reference API.

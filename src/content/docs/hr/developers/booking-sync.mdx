@@ -1,0 +1,61 @@
+---
+title: Sinkronizacija rezervacija
+description: Saznajte kako Wink sinkronizira rezervacije s vanjskim sustavima poput PMS-a i channel managera, uključujući životni ciklus sinkronizacije i rješavanje problema.
+sidebar:
+  order: 9
+---
+
+Kada se rezervacija kreira, ažurira ili otkaže na Wink platformi, platforma sinkronizira tu promjenu s vašim povezanim vanjskim sustavima — sustavima za upravljanje nekretninama (PMS), channel managerima i centralnim rezervacijskim sustavima (CRS).
+
+## Kako to funkcionira
+
+Svaka promjena rezervacije stvara **unos sinkronizacije** koji prati stanje sinkronizacije. Platforma obrađuje unose sinkronizacije asinkrono, ponavljajući pokušaje u slučaju neuspjeha kako bi osigurala pouzdanu dostavu.
+
+## Životni ciklus sinkronizacije
+
+Svaki unos sinkronizacije slijedi stroj stanja:
+
+```
+┌─────────────┐     uspjeh     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ neuspjeh
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Isti obrazac vrijedi za ažuriranja i otkazivanja:
+
+| Akcija | Stanje na čekanju | Stanje uspjeha | Stanje neuspjeha |
+|---|---|---|---|
+| Nova rezervacija | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Ažuriranje rezervacije | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Otkazivanje | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Što pokreće sinkronizaciju
+
+- **Nova rezervacija** — Putnik rezervira putem Wink-a ili partnerskog kanala.
+- **Ažuriranje rezervacije** — Mijenjaju se detalji rezervacije (datumi, podaci o gostu, dodjela sobe).
+- **Otkazivanje** — Rezervaciju otkazuje putnik ili nekretnina.
+
+## Praćenje
+
+Status sinkronizacije možete pratiti putem nadzorne ploče vašeg povezanog channel managera ili PMS-a. Neuspjeli unosi sinkronizacije automatski se ponovo pokušavaju. Ako sinkronizacija i dalje ne uspijeva, ostaje u stanju `*_FAILED` radi daljnje istrage.
+
+## Rješavanje problema
+
+Ako rezervacije nisu vidljive u vašem PMS-u:
+
+1. **Provjerite vezu s channel managerom** — Provjerite je li vaša integracija s PMS-om ili channel managerom aktivna i pravilno konfigurirana.
+2. **Provjerite isporuku webhookova** — Ako koristite webhookove, provjerite prima li vaša krajnja točka događaje `booking.create` i `booking.cancelled`. Pogledajte [Katalog webhook događaja](/hr/developers/webhook-events#booking-events).
+3. **Pregledajte neuspjele unose** — Neuspjeli unosi sinkronizacije ukazuju na problem s povezivošću ili podacima u ciljanom sustavu.
+4. **Kontaktirajte podršku** — Ako problemi traju, Wink tim može istražiti neuspjele unose sinkronizacije u vaše ime.
+
+## Dodatno čitanje
+
+- [Integracije channel managera](/hr/developers/channel-managers) — Kako Wink povezuje PMS i channel managere.
+- [Katalog webhook događaja](/hr/developers/webhook-events) — Pretplatite se na događaje rezervacija.
+- [Rezervacije (Extranet)](/hr/extranet/bookings) — Upravljanje rezervacijama putem portala nekretnine.

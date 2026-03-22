@@ -5,7 +5,7 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 Webhooki omogočajo vašim sistemom prejemanje obvestil v realnem času, ko se na vašem Wink računu zgodijo dogodki — nove rezervacije, odpovedi, posodobitve plačil in še več. Ta vodič vas vodi skozi nastavitev in najboljše prakse.
 
@@ -23,9 +23,9 @@ Ta vodič je namenjen razvijalcem, ki integrirajo Wink z zunanjimi sistemi, kot 
 
 <Steps>
 1. Prijavite se v svoj račun (Extranet, Studio ali TripPay — vsi podpirajo webhooke).
-2. Pojdite na `Applications` in nato `Webhooks`. Oglejte si [Webhooki](/sl/my-account/webhooks).
+2. Pojdite na `Applications` in nato `Webhooks`. Oglejte si [Webhooke](/sl/my-account/webhooks).
 3. Kliknite `Create webhook`.
-4. Vnesite **ime** (npr. "PMS sinhronizacija rezervacij").
+4. Vnesite **ime** (npr. "PMS Sinhronizacija rezervacij").
 5. Vnesite svoj **webhook URL** — HTTPS končno točko na vašem strežniku.
 6. **Izberite dogodke** — Izberite specifične dogodke, na katere se želite naročiti, ali pustite prazno, da prejmete vse dogodke.
 7. Vklopite **Enabled**.
@@ -34,24 +34,34 @@ Ta vodič je namenjen razvijalcem, ki integrirajo Wink z zunanjimi sistemi, kot 
 
 ## Vrste dogodkov
 
-Wink podpira različne vrste dogodkov. Pogosti dogodki vključujejo:
+Wink podpira **več kot 64 vrst webhook dogodkov** v kategorijah, kot so upravljanje računa, pogodbe o rezervacijah, plačila, posodobitve upravljalca kanalov in upravljanje entitet. Pogosti dogodki vključujejo:
 
-- **Rezervacija ustvarjena** — Potrjena je nova rezervacija.
-- **Rezervacija odpovedana** — Rezervacija je bila odpovedana.
-- **Plačilo zaključeno** — Plačilo je bilo obdelano.
-- **Rezervacija posodobljena** — Podatki o rezervaciji so se spremenili.
+| Kategorija | Primeri |
+|---|---|
+| **Rezervacija** | `booking.create`, `booking.cancelled` |
+| **Pogodba o rezervaciji** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Plačilo** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Povračila** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Upravljalec kanalov** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Račun** | `account.create`, `account.status.updated` |
+
+Za popoln seznam vseh vrst dogodkov z opisi si oglejte **Katalog webhook dogodkov**.
+
+<LinkButton href="/sl/developers/webhook-events">
+  Ogled vseh več kot 64 vrst dogodkov
+</LinkButton>
 
 :::tip
-Začnite z naročanjem na vse dogodke. Ko boste razumeli podatke, lahko omejite na dogodke, ki jih vaš sistem potrebuje.
+Začnite z naročanjem na vse dogodke med razvojem. Ko boste razumeli podatke, zožite na dogodke, ki jih vaš sistem dejansko potrebuje.
 :::
 
 ## Najboljše prakse
 
 - **Uporabljajte HTTPS** — Wink pošilja podatke samo na HTTPS končne točke.
-- **Odgovarjajte hitro** — Takoj po prejemu podatkov vrnite `200 OK`. Vse zahtevnejše obdelave izvajajte asinhrono.
+- **Odgovarjajte hitro** — Vrnete `200 OK` takoj, ko prejmete podatke. Vse zahtevnejše obdelave izvajajte asinhrono.
 - **Idempotentnost** — Vaš obdelovalec naj bo idempotenten. Wink lahko poskuša ponovno dostavo, če ne prejme odgovora `200`.
 - **Preverite vir** — Pred obdelavo preverite, da so dohodni zahtevki iz Wink.
-- **Zapisovanje** — Beležite vsak prejeti webhook payload. To olajša odpravljanje težav pri integraciji.
+- **Zapisovanje** — Beležite vsak prejeti webhook payload. To močno olajša odpravljanje težav pri integraciji.
 
 ## Zaustavitev in brisanje
 
@@ -61,6 +71,7 @@ Brisanje webhooka ga trajno odstrani. Vsaka integracija, ki je odvisna od tega w
 
 ## Dodatno branje
 
+- [Katalog webhook dogodkov](/sl/developers/webhook-events) — Popoln seznam vseh več kot 64 vrst dogodkov.
 - [Webhooki](/sl/my-account/webhooks) — Celoten referenčni vodič za upravljanje webhookov.
 - [Applications](/sl/my-account/applications) — Upravljanje vaših API poverilnic.
 - [Developers > APIs](/sl/developers/apis) — Celotna API dokumentacija.

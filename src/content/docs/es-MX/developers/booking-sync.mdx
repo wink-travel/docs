@@ -1,0 +1,61 @@
+---
+title: Sincronización de Reservas
+description: Aprende cómo Wink sincroniza las reservas con sistemas externos como PMS y gestores de canales, incluyendo el ciclo de vida de la sincronización y solución de problemas.
+sidebar:
+  order: 9
+---
+
+Cuando se crea, actualiza o cancela una reserva en Wink, la plataforma sincroniza ese cambio con tus sistemas externos conectados — sistemas de gestión de propiedades (PMS), gestores de canales y sistemas centrales de reservas (CRS).
+
+## Cómo funciona
+
+Cada cambio en una reserva crea una **entrada de sincronización** que rastrea el estado de la sincronización. La plataforma procesa las entradas de sincronización de forma asíncrona, reintentando en caso de fallo para asegurar una entrega confiable.
+
+## Ciclo de vida de la sincronización
+
+Cada entrada de sincronización sigue una máquina de estados:
+
+```
+┌─────────────┐     éxito       ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ fallo
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+El mismo patrón se aplica a actualizaciones y cancelaciones:
+
+| Acción | Estado pendiente | Estado de éxito | Estado de fallo |
+|---|---|---|---|
+| Nueva reserva | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Actualización de reserva | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Cancelación | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Qué desencadena una sincronización
+
+- **Nueva reserva** — Un viajero reserva a través de Wink o un canal afiliado.
+- **Actualización de reserva** — Cambian los detalles de la reserva (fechas, información del huésped, asignación de habitación).
+- **Cancelación** — Una reserva es cancelada por el viajero o la propiedad.
+
+## Monitoreo
+
+Puedes monitorear el estado de la sincronización a través del panel de tu gestor de canales o PMS conectado. Las entradas de sincronización fallidas se reintentan automáticamente. Si una sincronización sigue fallando, permanece en el estado `*_FAILED` para su investigación.
+
+## Solución de problemas
+
+Si las reservas no aparecen en tu PMS:
+
+1. **Verifica la conexión con tu gestor de canales** — Asegúrate de que la integración con tu PMS o gestor de canales esté activa y configurada correctamente.
+2. **Verifica la entrega de webhooks** — Si usas webhooks, revisa que tu endpoint esté recibiendo los eventos `booking.create` y `booking.cancelled`. Consulta [Catálogo de Eventos Webhook](/es-MX/developers/webhook-events#booking-events).
+3. **Revisa las entradas fallidas** — Las entradas de sincronización fallidas indican un problema de conectividad o de datos con el sistema destino.
+4. **Contacta soporte** — Si los problemas persisten, el equipo de Wink puede investigar las entradas de sincronización fallidas por ti.
+
+## Lectura adicional
+
+- [Integraciones con Gestores de Canales](/es-MX/developers/channel-managers) — Cómo Wink se conecta con PMS y gestores de canales.
+- [Catálogo de Eventos Webhook](/es-MX/developers/webhook-events) — Suscríbete a eventos de reservas.
+- [Reservas (Extranet)](/es-MX/extranet/bookings) — Gestión de reservas desde el portal de la propiedad.

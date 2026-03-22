@@ -1,0 +1,107 @@
+---
+title: Geolocalització
+description: Apreneu com Wink utilitza la geolocalització i les consultes espacials per potenciar la cerca d'inventari basada en la ubicació, la detecció GeoIP i el filtratge geogràfic.
+sidebar:
+  order: 11
+---
+
+Wink utilitza àmpliament la geolocalització per potenciar la cerca basada en la ubicació, la detecció automàtica de moneda i idioma, i el filtratge geogràfic de l'inventari.
+
+## Detecció GeoIP
+
+Quan un usuari visita la plataforma, Wink detecta automàticament la seva ubicació basada en la seva adreça IP. Això permet:
+
+- **Selecció automàtica de moneda** — Mostrar preus en la moneda local de l'usuari.
+- **Preferència d'idioma** — Sugerir contingut en l'idioma probable de l'usuari.
+- **Resultats propers** — Prioritzar l'inventari proper a la ubicació de l'usuari.
+
+## Cerca espacial
+
+Wink admet la cerca geogràfica utilitzant quatre tipus de consultes espacials. Aquestes impulsen la cerca basada en mapes, la cerca per radi i el filtratge per àrea a tota la plataforma.
+
+### Punt
+
+Una única coordenada geogràfica (latitud, longitud). S'utilitza per marcar una ubicació específica — per exemple, l'adreça d'una propietat o la ubicació actual d'un usuari.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Cercle
+
+Un punt central amb un radi. S'utilitza per a consultes de "cerca a prop meu" o basades en radi — per exemple, "hotels dins de 10 km de Times Square."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Rectangle
+
+Una caixa delimitadora definida pels punts sud-oest i nord-est. S'utilitza per a la cerca basada en mapes — quan un usuari desplaça i fa zoom en un mapa, l'àrea visible defineix una consulta rectangular.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Polígon
+
+Una forma personalitzada definida per una sèrie de punts. S'utilitza per cercar dins de límits geogràfics irregulars — per exemple, un barri, un districte de la ciutat o una àrea dibuixada a mida en un mapa.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Els polígons han d'estar tancats — l'últim punt ha de coincidir amb el primer punt.
+:::
+
+## Casos d'ús
+
+| Cas d'ús | Tipus de forma | Exemple |
+|---|---|---|
+| Cerca a prop meu | Cercle | Hotels dins de 5 km de la meva ubicació |
+| Cerca a la vista del mapa | Rectangle | Propietats visibles a la vista actual del mapa |
+| Cerca per barri | Polígon | Hotels en un districte específic de la ciutat |
+| Ubicació de la propietat | Punt | Ubicació exacta d'una propietat anunciada |
+
+## Per a desenvolupadors
+
+Els paràmetres de consulta espacial són acceptats pels endpoints de Lookup API i Inventory API. Passeu la forma GeoJSON adequada a la vostra sol·licitud de cerca per filtrar resultats per ubicació.
+
+Consulteu la [documentació d'APIs](/ca/developers/apis) per a detalls específics de cada endpoint.
+
+## Lectures complementàries
+
+- [Cerca (Booking Engine)](/ca/booking-engine/search) — Com els viatgers cerquen inventari.
+- [Mapes (Studio)](/ca/studio/maps) — Descobriment d'inventari basat en mapes.
+- [APIs](/ca/developers/apis) — Referència completa d'API.

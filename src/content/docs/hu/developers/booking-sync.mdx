@@ -1,0 +1,61 @@
+---
+title: Foglalás szinkronizálás
+description: Tudja meg, hogyan szinkronizálja a Wink a foglalásokat külső rendszerekkel, például PMS-sel és csatornakezelőkkel, beleértve a szinkronizálás életciklusát és a hibakeresést.
+sidebar:
+  order: 9
+---
+
+Amikor egy foglalás létrejön, frissül vagy törlődik a Winkben, a platform szinkronizálja ezt a változást a csatlakoztatott külső rendszerekkel — ingatlankezelő rendszerekkel (PMS), csatornakezelőkkel és központi foglalási rendszerekkel (CRS).
+
+## Hogyan működik
+
+Minden foglalásváltozás létrehoz egy **szinkronizálási bejegyzést**, amely nyomon követi a szinkronizálás állapotát. A platform aszinkron módon dolgozza fel a szinkronizálási bejegyzéseket, sikertelenség esetén újrapróbálkozva a megbízható kézbesítés érdekében.
+
+## Szinkronizálás életciklusa
+
+Minden szinkronizálási bejegyzés egy állapotgépet követ:
+
+```
+┌─────────────┐     siker     ┌───────────┐
+│  TO_CREATE   │ ───────────→ │ PROCESSED │
+└─────────────┘               └───────────┘
+       │
+       │ hiba
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Ugyanez a minta érvényes a frissítésekre és törlésekre is:
+
+| Művelet | Függő állapot | Sikeres állapot | Sikertelen állapot |
+|---|---|---|---|
+| Új foglalás | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Foglalás frissítés | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Lemondás | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Mi indítja el a szinkronizálást
+
+- **Új foglalás** — Egy utazó a Wink vagy egy partner csatorna révén foglal.
+- **Foglalás frissítés** — A foglalás adatai megváltoznak (dátumok, vendégadatok, szobakiosztás).
+- **Lemondás** — Egy foglalást az utazó vagy az ingatlan töröl.
+
+## Megfigyelés
+
+A szinkronizálás állapotát a csatlakoztatott csatornakezelő vagy PMS irányítópultján keresztül követheti nyomon. A sikertelen szinkronizálási bejegyzéseket a rendszer automatikusan újrapróbálja. Ha egy szinkronizálás továbbra is sikertelen, az `*_FAILED` állapotban marad kivizsgálás céljából.
+
+## Hibakeresés
+
+Ha a foglalások nem jelennek meg a PMS-ben:
+
+1. **Ellenőrizze a csatornakezelő kapcsolatát** — Győződjön meg róla, hogy a PMS vagy csatornakezelő integráció aktív és megfelelően konfigurált.
+2. **Ellenőrizze a webhook kézbesítést** — Ha webhookokat használ, ellenőrizze, hogy az Ön végpontja fogadja-e a `booking.create` és `booking.cancelled` eseményeket. Lásd a [Webhook Események Katalógusa](/hu/developers/webhook-events#booking-events) részt.
+3. **Nézze át a sikertelen bejegyzéseket** — A sikertelen szinkronizálási bejegyzések kapcsolat- vagy adatproblémára utalnak a célrendszerrel.
+4. **Lépjen kapcsolatba a támogatással** — Ha a problémák fennállnak, a Wink csapata segíthet a sikertelen szinkronizálási bejegyzések kivizsgálásában.
+
+## További olvasnivaló
+
+- [Csatornakezelő Integrációk](/hu/developers/channel-managers) — Hogyan kapcsolódik a Wink a PMS-hez és csatornakezelőkhöz.
+- [Webhook Események Katalógusa](/hu/developers/webhook-events) — Foglalási eseményekre való feliratkozás.
+- [Foglalások (Extranet)](/hu/extranet/bookings) — Foglalások kezelése az ingatlan portálján keresztül.

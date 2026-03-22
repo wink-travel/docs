@@ -1,0 +1,71 @@
+---
+title: การรวมระบบ Channel Manager
+description: ภาพรวมของ 13 channel manager ที่ Wink รวมระบบด้วย วิธีการซิงค์ราคาและความพร้อมใช้งาน และวิธีเชื่อมต่อ PMS ของคุณ
+sidebar:
+  order: 4
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+Wink รวมระบบกับ channel manager ชั้นนำ ระบบจัดการทรัพย์สิน (PMS) และระบบสำรองห้องพักส่วนกลาง (CRS) เพื่อให้ราคาห้องและความพร้อมใช้งานของคุณซิงค์กันในทุกช่องทางการขาย
+
+## วิธีการทำงาน
+
+การรวมระบบ channel manager ช่วยให้ข้อมูลไหลไปมาแบบสองทางระหว่างระบบจัดการทรัพย์สินของคุณกับ Wink:
+
+1. **การส่งราคาห้อง** — channel manager ของคุณส่งการอัปเดตราคาห้องไปยัง Wink เมื่อคุณอัปเดตราคาห้องใน PMS การเปลี่ยนแปลงเหล่านั้นจะสะท้อนโดยอัตโนมัติบน Wink
+2. **การซิงค์ความพร้อมใช้งาน** — channel manager ของคุณส่งการอัปเดตความพร้อมใช้งานไปยัง Wink เมื่อมีการจองหรือปล่อยห้องใน PMS สต็อกของ Wink จะอัปเดตแบบเรียลไทม์
+3. **การแจ้งเตือนการจอง** — เมื่อมีการจองผ่าน Wink channel manager ของคุณจะได้รับแจ้งเพื่อให้การจองนั้นแสดงใน PMS
+
+## Channel manager ที่รองรับ
+
+Wink รวมระบบกับระบบต่อไปนี้ในปัจจุบัน:
+
+| Channel Manager | คำอธิบาย |
+|---|---|
+| **Channex** | แพลตฟอร์มการจัดจำหน่ายและการจัดการช่องทางทั่วโลก |
+| **TravelClick** | โซลูชันโรงแรมและการจัดการช่องทาง (Amadeus) |
+| **Omnibees** | การจัดจำหน่ายและการจัดการรายได้สำหรับโรงแรม |
+| **D-Edge** | เทคโนโลยีด้านการบริการและโซลูชันการสำรองห้องพักส่วนกลาง |
+| **Allotz** | การจัดสรรสต็อกและการจัดการช่องทาง |
+| **Ezee / Yanolja** | PMS บนคลาวด์และการจัดการช่องทางที่เน้นตลาดเอเชีย |
+| **RateGain** | เทคโนโลยีวิเคราะห์ราคาและการจัดจำหน่าย |
+| **RateTiger** | การจัดจำหน่ายราคาและความพร้อมใช้งานแบบเรียลไทม์ |
+| **CloudBeds** | PMS บนคลาวด์, channel manager และระบบจองห้องพัก |
+| **SiteMinder** | channel manager โรงแรมชั้นนำและแพลตฟอร์มการจัดจำหน่าย |
+| **Exely** | การซิงค์ราคาและความพร้อมใช้งานสำหรับโรงแรม |
+
+:::note
+หาก channel manager ของคุณไม่อยู่ในรายการ ติดต่อทีม Wink ได้เลย การรวมระบบใหม่สามารถเพิ่มได้ตามมาตรฐานโปรโตคอล OTA (Open Travel Alliance) ที่ Wink รองรับ
+:::
+
+## สำหรับนักพัฒนา
+
+หากคุณกำลังสร้างการรวมระบบ channel manager หรือ PMS กับ Wink ให้ใช้ Channel Manager API endpoints:
+
+- **อัปเดตราคา** — ส่งการเปลี่ยนแปลงราคาห้องไปยัง Wink
+- **อัปเดตความพร้อมใช้งาน** — ส่งการเปลี่ยนแปลงความพร้อมใช้งานไปยัง Wink
+- **ดึงข้อมูลการจอง** — ดึงข้อมูลการจองจาก Wink เข้าสู่ระบบของคุณ
+
+Channel Manager API ใช้มาตรฐานโปรโตคอล OTA (SOAP/XML) เพื่อความเข้ากันได้กับระบบบริการที่มีอยู่
+
+<LinkButton href="/th/developers/apis/#channel-manager-api">
+  เอกสารอ้างอิง Channel Manager API
+</LinkButton>
+
+## การแจ้งเตือน Webhook
+
+คุณสามารถสมัครรับเหตุการณ์ webhook ของ channel manager เพื่อรับการแจ้งเตือนแบบเรียลไทม์ได้:
+
+- `channel-manager.update.rate` — ได้รับการอัปเดตราคา
+- `channel-manager.update.availability` — ได้รับการอัปเดตความพร้อมใช้งาน
+- `channel-manager.update` — การอัปเดตทั่วไปของ channel manager
+
+ดูรายละเอียดได้ที่ [Webhook Events Catalog](/th/developers/webhook-events#channel-manager-events)
+
+## อ่านเพิ่มเติม
+
+- [Channel Manager API](/th/developers/apis/#channel-manager-api) — เอกสาร endpoint API
+- [Rate Providers](/th/extranet/rate-providers) — การจัดการผู้ให้บริการราคาใน Extranet
+- [Webhook Events Catalog](/th/developers/webhook-events) — เหตุการณ์ที่สามารถสมัครรับทั้งหมด
+- [Build on Wink](/th/developers/build-on-wink) — ภาพรวมแพลตฟอร์มสำหรับนักพัฒนา

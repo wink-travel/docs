@@ -1,0 +1,107 @@
+---
+title: Geolocation
+description: Alamin kung paano ginagamit ng Wink ang geolocation at spatial queries upang paganahin ang location-based na paghahanap ng imbentaryo, GeoIP detection, at geographic filtering.
+sidebar:
+  order: 11
+---
+
+Malawakang ginagamit ng Wink ang geolocation upang paganahin ang location-based na paghahanap, awtomatikong pagtukoy ng pera at wika, at geographic na pag-filter ng imbentaryo.
+
+## GeoIP detection
+
+Kapag bumisita ang isang user sa platform, awtomatikong tinutukoy ng Wink ang kanilang lokasyon base sa kanilang IP address. Ito ay nagpapahintulot sa:
+
+- **Awtomatikong pagpili ng pera** — Ipakita ang mga presyo sa lokal na pera ng user.
+- **Paboritong wika** — Magmungkahi ng nilalaman sa posibleng wika ng user.
+- **Mga kalapit na resulta** — Bigyang-priyoridad ang imbentaryo na malapit sa lokasyon ng user.
+
+## Spatial search
+
+Sinusuportahan ng Wink ang geographic search gamit ang apat na uri ng spatial query. Ito ang nagpapatakbo sa map-based na paghahanap, radius search, at area-based filtering sa buong platform.
+
+### Point
+
+Isang solong geographic coordinate (latitude, longitude). Ginagamit upang markahan ang isang tiyak na lokasyon — halimbawa, ang address ng isang property o kasalukuyang lokasyon ng user.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Circle
+
+Isang sentrong punto na may radius. Ginagamit para sa "search near me" o radius-based na mga query — halimbawa, "mga hotel sa loob ng 10 km mula sa Times Square."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Rectangle
+
+Isang bounding box na tinutukoy ng southwest at northeast na mga sulok. Ginagamit para sa map-based na paghahanap — kapag nag-pan at nag-zoom ang user sa mapa, ang nakikitang lugar ang nagtatakda ng rectangle query.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Polygon
+
+Isang custom na hugis na tinutukoy ng serye ng mga punto. Ginagamit para sa paghahanap sa loob ng mga hindi regular na geographic na hangganan — halimbawa, isang kapitbahayan, distrito ng lungsod, o isang custom na iginuhit na lugar sa mapa.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Dapat nakasarado ang mga polygon — ang huling punto ay dapat tumugma sa unang punto.
+:::
+
+## Mga gamit
+
+| Gamit | Uri ng hugis | Halimbawa |
+|---|---|---|
+| Search near me | Circle | Mga hotel sa loob ng 5 km mula sa aking lokasyon |
+| Map viewport search | Rectangle | Mga property na nakikita sa kasalukuyang view ng mapa |
+| Neighborhood search | Polygon | Mga hotel sa isang partikular na distrito ng lungsod |
+| Lokasyon ng property | Point | Eksaktong lokasyon ng isang property listing |
+
+## Para sa mga developer
+
+Tinatanggap ng Lookup API at Inventory API endpoints ang mga spatial query parameter. Ipadala ang angkop na GeoJSON na hugis sa iyong search request upang i-filter ang mga resulta ayon sa lokasyon.
+
+Tingnan ang [APIs documentation](/tl/developers/apis) para sa mga detalye ng bawat endpoint.
+
+## Karagdagang babasahin
+
+- [Search (Booking Engine)](/tl/booking-engine/search) — Paano naghahanap ang mga biyahero ng imbentaryo.
+- [Maps (Studio)](/tl/studio/maps) — Map-based na pagtuklas ng imbentaryo.
+- [APIs](/tl/developers/apis) — Kumpletong API reference.

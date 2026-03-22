@@ -1,0 +1,107 @@
+---
+title: Geolocație
+description: Aflați cum folosește Wink geolocația și interogările spațiale pentru a alimenta căutarea inventarului bazată pe locație, detectarea GeoIP și filtrarea geografică.
+sidebar:
+  order: 11
+---
+
+Wink folosește extensiv geolocația pentru a alimenta căutarea bazată pe locație, detectarea automată a monedei și limbii, precum și filtrarea geografică a inventarului.
+
+## Detectarea GeoIP
+
+Când un utilizator vizitează platforma, Wink detectează automat locația acestuia pe baza adresei IP. Acest lucru permite:
+
+- **Selectarea automată a monedei** — Afișarea prețurilor în moneda locală a utilizatorului.
+- **Preferința de limbă** — Sugestii de conținut în limba probabilă a utilizatorului.
+- **Rezultate din apropiere** — Prioritizarea inventarului aproape de locația utilizatorului.
+
+## Căutare spațială
+
+Wink suportă căutarea geografică folosind patru tipuri de interogări spațiale. Acestea alimentează căutarea pe hartă, căutarea după rază și filtrarea pe bază de zonă în întreaga platformă.
+
+### Punct
+
+O singură coordonată geografică (latitudine, longitudine). Folosită pentru a marca o locație specifică — de exemplu, adresa unei proprietăți sau locația curentă a unui utilizator.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Cerc
+
+Un punct central cu o rază. Folosit pentru interogări de tip „căutare în apropiere” sau bazate pe rază — de exemplu, „hoteluri în raza de 10 km de Times Square.”
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Dreptunghi
+
+O cutie delimitatoare definită de colțurile sud-vest și nord-est. Folosită pentru căutarea pe hartă — când un utilizator deplasează și mărește harta, zona vizibilă definește o interogare dreptunghiulară.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Poligon
+
+O formă personalizată definită printr-o serie de puncte. Folosit pentru căutarea în limite geografice neregulate — de exemplu, un cartier, un district al orașului sau o zonă trasată manual pe hartă.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Poligoanele trebuie să fie închise — ultimul punct trebuie să coincidă cu primul punct.
+:::
+
+## Cazuri de utilizare
+
+| Caz de utilizare | Tip formă | Exemplu |
+|---|---|---|
+| Căutare în apropiere | Cerc | Hoteluri în raza de 5 km de locația mea |
+| Căutare în zona vizibilă pe hartă | Dreptunghi | Proprietăți vizibile în vederea curentă a hărții |
+| Căutare în cartier | Poligon | Hoteluri într-un district specific al orașului |
+| Locația proprietății | Punct | Locația exactă a unei oferte de proprietate |
+
+## Pentru dezvoltatori
+
+Parametrii interogărilor spațiale sunt acceptați de endpoint-urile Lookup API și Inventory API. Trimiteți forma GeoJSON corespunzătoare în cererea de căutare pentru a filtra rezultatele după locație.
+
+Consultați [documentația API-urilor](/ro/developers/apis) pentru detalii specifice fiecărui endpoint.
+
+## Lecturi suplimentare
+
+- [Căutare (Booking Engine)](/ro/booking-engine/search) — Cum caută călătorii inventarul.
+- [Hărți (Studio)](/ro/studio/maps) — Descoperirea inventarului pe bază de hartă.
+- [API-uri](/ro/developers/apis) — Referință completă API.

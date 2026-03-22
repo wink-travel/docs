@@ -1,0 +1,61 @@
+---
+title: Synchronizace rezervací
+description: Naučte se, jak Wink synchronizuje rezervace s externími systémy jako PMS a channel managery, včetně životního cyklu synchronizace a řešení problémů.
+sidebar:
+  order: 9
+---
+
+Když je na Wink vytvořena, aktualizována nebo zrušena rezervace, platforma synchronizuje tuto změnu s vašimi připojenými externími systémy — systémy pro správu nemovitostí (PMS), channel managery a centrální rezervační systémy (CRS).
+
+## Jak to funguje
+
+Každá změna rezervace vytvoří **záznam synchronizace**, který sleduje stav synchronizace. Platforma zpracovává záznamy synchronizace asynchronně a při selhání opakovaně zkouší zajistit spolehlivé doručení.
+
+## Životní cyklus synchronizace
+
+Každý záznam synchronizace prochází stavovým automatem:
+
+```
+┌─────────────┐     úspěch     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ selhání
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Stejný vzor platí pro aktualizace a zrušení:
+
+| Akce | Stav čekající | Stav úspěchu | Stav selhání |
+|---|---|---|---|
+| Nová rezervace | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Aktualizace rezervace | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Zrušení | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Co spouští synchronizaci
+
+- **Nová rezervace** — Cestovatel provede rezervaci přes Wink nebo partnerský kanál.
+- **Aktualizace rezervace** — Změní se detaily rezervace (data, informace o hostu, přidělení pokoje).
+- **Zrušení** — Rezervace je zrušena cestovatelem nebo nemovitostí.
+
+## Monitorování
+
+Stav synchronizace můžete sledovat přes váš připojený channel manager nebo PMS dashboard. Selhané záznamy synchronizace jsou automaticky opakovaně zpracovávány. Pokud synchronizace stále selhává, zůstává ve stavu `*_FAILED` k dalšímu vyšetření.
+
+## Řešení problémů
+
+Pokud se rezervace nezobrazují ve vašem PMS:
+
+1. **Zkontrolujte připojení channel managera** — Ujistěte se, že integrace PMS nebo channel managera je aktivní a správně nakonfigurovaná.
+2. **Ověřte doručení webhooků** — Pokud používáte webhooky, zkontrolujte, zda váš endpoint přijímá události `booking.create` a `booking.cancelled`. Viz [Webhook Events Catalog](/cs/developers/webhook-events#booking-events).
+3. **Prohlédněte selhané záznamy** — Selhané záznamy synchronizace indikují problém s konektivitou nebo daty v cílovém systému.
+4. **Kontaktujte podporu** — Pokud problémy přetrvávají, tým Wink může za vás vyšetřit selhané záznamy synchronizace.
+
+## Další čtení
+
+- [Integrace channel managerů](/cs/developers/channel-managers) — Jak Wink propojuje PMS a channel managery.
+- [Webhook Events Catalog](/cs/developers/webhook-events) — Přihlaste se k odběru událostí rezervací.
+- [Rezervace (Extranet)](/cs/extranet/bookings) — Správa rezervací z portálu nemovitosti.

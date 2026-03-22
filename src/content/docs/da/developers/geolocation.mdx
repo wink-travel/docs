@@ -1,0 +1,107 @@
+---
+title: Geolokalisering
+description: Lær hvordan Wink bruger geolokalisering og rumlige forespørgsler til at drive lokationsbaseret søgning i inventar, GeoIP-detektion og geografisk filtrering.
+sidebar:
+  order: 11
+---
+
+Wink bruger geolokalisering i vid udstrækning til at drive lokationsbaseret søgning, automatisk valuta- og sprogdetection samt geografisk filtrering af inventar.
+
+## GeoIP-detektion
+
+Når en bruger besøger platformen, registrerer Wink automatisk deres placering baseret på deres IP-adresse. Dette muliggør:
+
+- **Automatisk valutasøgning** — Vis priser i brugerens lokale valuta.
+- **Sprogpræference** — Foreslå indhold på brugerens sandsynlige sprog.
+- **Nærliggende resultater** — Prioriter inventar tæt på brugerens placering.
+
+## Rumlig søgning
+
+Wink understøtter geografisk søgning ved hjælp af fire typer rumlige forespørgsler. Disse driver kortbaseret søgning, radius-søgning og områdefiltrering på tværs af platformen.
+
+### Punkt
+
+En enkelt geografisk koordinat (breddegrad, længdegrad). Bruges til at markere en specifik placering — for eksempel en ejendoms adresse eller en brugers aktuelle placering.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Cirkel
+
+Et centrumspunkt med en radius. Bruges til "søg nær mig" eller radiusbaserede forespørgsler — for eksempel "hoteller inden for 10 km fra Times Square."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Rektangel
+
+En afgrænsningsboks defineret af sydvestlige og nordøstlige hjørner. Bruges til kortbaseret søgning — når en bruger panorerer og zoomer på et kort, definerer det synlige område en rektangel-forespørgsel.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Polygon
+
+En brugerdefineret form defineret af en række punkter. Bruges til søgning inden for uregelmæssige geografiske grænser — for eksempel et kvarter, en bydel eller et brugerdefineret område tegnet på et kort.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Polygoner skal være lukkede — det sidste punkt skal matche det første punkt.
+:::
+
+## Anvendelsestilfælde
+
+| Anvendelsestilfælde | Formtype | Eksempel |
+|---|---|---|
+| Søg nær mig | Cirkel | Hoteller inden for 5 km fra min placering |
+| Kortvisningssøgning | Rektangel | Ejendomme synlige på det aktuelle kortudsigt |
+| Kvartersøgning | Polygon | Hoteller i en specifik bydel |
+| Ejendomsplacering | Punkt | Præcis placering af en ejendomsannonce |
+
+## For udviklere
+
+Parametre for rumlige forespørgsler accepteres af Lookup API og Inventory API endpoints. Send den passende GeoJSON-form i din søgeforespørgsel for at filtrere resultater efter placering.
+
+Se [API-dokumentationen](/da/developers/apis) for endpoint-specifikke detaljer.
+
+## Yderligere læsning
+
+- [Søgning (Booking Engine)](/da/booking-engine/search) — Hvordan rejsende søger efter inventar.
+- [Kort (Studio)](/da/studio/maps) — Kortbaseret opdagelse af inventar.
+- [API'er](/da/developers/apis) — Fuld API-reference.

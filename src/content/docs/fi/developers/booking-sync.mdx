@@ -1,0 +1,61 @@
+---
+title: Varausten synkronointi
+description: Opi, miten Wink synkronoi varaukset ulkoisten järjestelmien, kuten PMS:n ja kanavahallinnan, kanssa, mukaan lukien synkronoinnin elinkaari ja vianmääritys.
+sidebar:
+  order: 9
+---
+
+Kun varaus luodaan, päivitetään tai peruutetaan Winkissä, alusta synkronoi muutoksen yhdistettyjen ulkoisten järjestelmiesi — kiinteistönhallintajärjestelmien (PMS), kanavahallinnan ja keskitettyjen varausjärjestelmien (CRS) — kanssa.
+
+## Miten se toimii
+
+Jokainen varauksen muutos luo **synkronointimerkinnän**, joka seuraa synkronoinnin tilaa. Alusta käsittelee synkronointimerkintöjä asynkronisesti ja yrittää uudelleen epäonnistuessaan varmistaakseen luotettavan toimituksen.
+
+## Synkronoinnin elinkaari
+
+Jokainen synkronointimerkintä noudattaa tilakoneen logiikkaa:
+
+```
+┌─────────────┐     success     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ failure
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Sama kaava pätee päivityksiin ja peruutuksiin:
+
+| Toiminto | Odottava tila | Onnistunut tila | Epäonnistunut tila |
+|---|---|---|---|
+| Uusi varaus | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Varauksen päivitys | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Peruutus | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Mikä laukaisee synkronoinnin
+
+- **Uusi varaus** — Matkustaja tekee varauksen Winkissä tai kumppanikanavassa.
+- **Varauksen päivitys** — Varaustiedot muuttuvat (päivät, vierastiedot, huoneen määritys).
+- **Peruutus** — Varaus peruutetaan matkustajan tai kiinteistön toimesta.
+
+## Seuranta
+
+Voit seurata synkronoinnin tilaa yhdistetyn kanavahallinnan tai PMS:n hallintapaneelin kautta. Epäonnistuneet synkronointimerkinnät yritetään automaattisesti uudelleen. Jos synkronointi epäonnistuu jatkuvasti, merkintä pysyy `*_FAILED`-tilassa tutkintaa varten.
+
+## Vianmääritys
+
+Jos varaukset eivät näy PMS:ssäsi:
+
+1. **Tarkista kanavahallinnan yhteys** — Varmista, että PMS- tai kanavahallintaintegraatiosi on aktiivinen ja oikein konfiguroitu.
+2. **Varmista webhook-toimitus** — Jos käytät webhookkeja, tarkista, että päätepisteesi vastaanottaa `booking.create` ja `booking.cancelled` -tapahtumat. Katso [Webhook Events Catalog](/fi/developers/webhook-events#booking-events).
+3. **Tarkista epäonnistuneet merkinnät** — Epäonnistuneet synkronointimerkinnät viittaavat yhteys- tai tietovirheeseen kohdejärjestelmässä.
+4. **Ota yhteyttä tukeen** — Jos ongelmat jatkuvat, Wink-tiimi voi tutkia epäonnistuneita synkronointimerkintöjä puolestasi.
+
+## Lisälukemista
+
+- [Channel Manager Integrations](/fi/developers/channel-managers) — Miten Wink yhdistyy PMS:ään ja kanavahallintaan.
+- [Webhook Events Catalog](/fi/developers/webhook-events) — Tilaa varaukseen liittyvät tapahtumat.
+- [Bookings (Extranet)](/fi/extranet/bookings) — Varausten hallinta kiinteistön portaalista.

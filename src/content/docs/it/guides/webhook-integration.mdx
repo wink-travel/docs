@@ -5,7 +5,7 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 I webhook permettono ai tuoi sistemi di ricevere notifiche in tempo reale quando si verificano eventi sul tuo account Wink — nuove prenotazioni, cancellazioni, aggiornamenti di pagamento e altro. Questa guida ti accompagna nella configurazione e nelle migliori pratiche.
 
@@ -16,7 +16,7 @@ Questa guida è rivolta agli sviluppatori che integrano Wink con sistemi esterni
 ## Come funzionano i webhook
 
 1. Registri un URL webhook su Wink.
-2. Quando si verifica un evento (es. una nuova prenotazione), Wink invia un HTTP POST al tuo URL.
+2. Quando si verifica un evento (es. una nuova prenotazione), Wink invia una richiesta HTTP POST al tuo URL.
 3. Il tuo server elabora il payload e risponde con un `200 OK`.
 
 ## Configurare un webhook
@@ -26,30 +26,40 @@ Questa guida è rivolta agli sviluppatori che integrano Wink con sistemi esterni
 2. Vai su `Applications` e poi su `Webhooks`. Vedi [Webhooks](/it/my-account/webhooks).
 3. Clicca su `Create webhook`.
 4. Inserisci un **nome** (es. "Sincronizzazione Prenotazioni PMS").
-5. Inserisci il tuo **URL webhook** — l’endpoint HTTPS sul tuo server.
-6. **Seleziona eventi** — scegli eventi specifici a cui iscriverti, oppure lascia vuoto per ricevere tutti gli eventi.
-7. Attiva l’opzione **Enabled**.
+5. Inserisci il tuo **webhook URL** — l’endpoint HTTPS sul tuo server.
+6. **Seleziona gli eventi** — scegli eventi specifici a cui iscriverti, oppure lascia vuoto per ricevere tutti gli eventi.
+7. Attiva l’interruttore **Enabled**.
 8. Clicca su `Save`.
 </Steps>
 
 ## Tipi di eventi
 
-Wink supporta diversi tipi di eventi. Gli eventi più comuni includono:
+Wink supporta **oltre 64 tipi di eventi webhook** in categorie che includono gestione account, contratti di prenotazione, pagamenti, aggiornamenti channel manager e gestione amministrativa delle entità. Eventi comuni includono:
 
-- **Prenotazione creata** — È stata confermata una nuova prenotazione.
-- **Prenotazione cancellata** — Una prenotazione è stata cancellata.
-- **Pagamento completato** — Il pagamento è stato elaborato.
-- **Prenotazione aggiornata** — Sono state modificate le informazioni di una prenotazione.
+| Categoria | Esempi |
+|---|---|
+| **Prenotazione** | `booking.create`, `booking.cancelled` |
+| **Contratto di prenotazione** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Pagamento** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Rimborsi** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Channel manager** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Account** | `account.create`, `account.status.updated` |
+
+Per un elenco completo di tutti i tipi di eventi con descrizioni, consulta il **Catalogo Eventi Webhook**.
+
+<LinkButton href="/it/developers/webhook-events">
+  Visualizza tutti i 64+ tipi di eventi
+</LinkButton>
 
 :::tip
-Inizia iscrivendoti a tutti gli eventi. Una volta compresi i payload, puoi restringere la selezione solo agli eventi di cui il tuo sistema ha bisogno.
+Inizia iscrivendoti a tutti gli eventi durante lo sviluppo. Una volta compresi i payload, restringi la selezione solo agli eventi di cui il tuo sistema ha bisogno.
 :::
 
 ## Migliori pratiche
 
 - **Usa HTTPS** — Wink invia i payload solo a endpoint HTTPS.
 - **Rispondi rapidamente** — Restituisci un `200 OK` non appena ricevi il payload. Eventuali elaborazioni pesanti eseguili in modo asincrono.
-- **Idempotenza** — Il tuo handler deve essere idempotente. Wink può ritentare la consegna se non riceve una risposta `200`.
+- **Idempotenza** — Il tuo handler dovrebbe essere idempotente. Wink potrebbe ritentare la consegna se non riceve una risposta `200`.
 - **Valida la fonte** — Verifica che le richieste in arrivo provengano da Wink prima di elaborarle.
 - **Logging** — Registra ogni payload webhook ricevuto. Questo facilita molto il debug delle integrazioni.
 
@@ -61,6 +71,7 @@ Cancellare un webhook lo rimuove definitivamente. Qualsiasi integrazione che si 
 
 ## Ulteriori letture
 
+- [Catalogo Eventi Webhook](/it/developers/webhook-events) — Elenco completo di tutti i 64+ tipi di eventi.
 - [Webhooks](/it/my-account/webhooks) — Riferimento completo per la gestione dei webhook.
 - [Applications](/it/my-account/applications) — Gestisci le tue credenziali API.
 - [Developers > APIs](/it/developers/apis) — Documentazione completa delle API.

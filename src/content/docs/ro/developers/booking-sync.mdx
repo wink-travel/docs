@@ -1,0 +1,61 @@
+---
+title: Sincronizarea rezervărilor
+description: Aflați cum Wink sincronizează rezervările cu sisteme externe precum PMS și channel manageri, inclusiv ciclul de viață al sincronizării și depanarea.
+sidebar:
+  order: 9
+---
+
+Când o rezervare este creată, actualizată sau anulată pe Wink, platforma sincronizează această modificare cu sistemele externe conectate — sisteme de management al proprietății (PMS), channel manageri și sisteme centrale de rezervare (CRS).
+
+## Cum funcționează
+
+Fiecare modificare a unei rezervări creează o **înregistrare de sincronizare** care urmărește starea sincronizării. Platforma procesează înregistrările de sincronizare asincron, încercând din nou în caz de eșec pentru a asigura livrarea fiabilă.
+
+## Ciclul de viață al sincronizării
+
+Fiecare înregistrare de sincronizare urmează o mașină de stări:
+
+```
+┌─────────────┐     succes     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ eșec
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Același model se aplică pentru actualizări și anulări:
+
+| Acțiune | Stare în așteptare | Stare de succes | Stare de eșec |
+|---|---|---|---|
+| Rezervare nouă | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Actualizare rezervare | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Anulare | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Ce declanșează o sincronizare
+
+- **Rezervare nouă** — Un călător face o rezervare prin Wink sau un canal afiliat.
+- **Actualizare rezervare** — Se modifică detaliile rezervării (date, informații despre oaspeți, alocarea camerei).
+- **Anulare** — O rezervare este anulată de către călător sau proprietate.
+
+## Monitorizare
+
+Puteți monitoriza starea sincronizării prin intermediul dashboard-ului channel managerului sau PMS-ului conectat. Înregistrările de sincronizare eșuate sunt reîncercate automat. Dacă o sincronizare continuă să eșueze, rămâne în starea `*_FAILED` pentru investigații.
+
+## Depanare
+
+Dacă rezervările nu apar în PMS-ul dvs.:
+
+1. **Verificați conexiunea channel managerului** — Asigurați-vă că integrarea PMS-ului sau channel managerului este activă și configurată corect.
+2. **Verificați livrarea webhook-urilor** — Dacă folosiți webhook-uri, verificați că endpoint-ul dvs. primește evenimentele `booking.create` și `booking.cancelled`. Consultați [Catalogul de evenimente webhook](/ro/developers/webhook-events#booking-events).
+3. **Revizuiți înregistrările eșuate** — Înregistrările de sincronizare eșuate indică o problemă de conectivitate sau de date cu sistemul țintă.
+4. **Contactați suportul** — Dacă problemele persistă, echipa Wink poate investiga înregistrările de sincronizare eșuate în numele dvs.
+
+## Lecturi suplimentare
+
+- [Integrări Channel Manager](/ro/developers/channel-managers) — Cum se conectează Wink cu PMS și channel manageri.
+- [Catalogul de evenimente webhook](/ro/developers/webhook-events) — Abonare la evenimente de rezervare.
+- [Rezervări (Extranet)](/ro/extranet/bookings) — Gestionarea rezervărilor din portalul proprietății.

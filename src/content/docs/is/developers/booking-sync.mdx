@@ -1,0 +1,61 @@
+---
+title: Samstilling bókana
+description: Lærðu hvernig Wink samstillir bókanir við ytri kerfi eins og PMS og rásarstjóra, þar á meðal samstillingarlífsferilinn og bilanaleit.
+sidebar:
+  order: 9
+---
+
+Þegar bókun er stofnuð, uppfærð eða felld niður í Wink, samstillir vettvangurinn þá breytingu við tengd ytri kerfi þín — eignastjórnunarkerfi (PMS), rásarstjóra og miðlægt bókunarkerfi (CRS).
+
+## Hvernig það virkar
+
+Hver breyting á bókun býr til **samstillingarfærslu** sem fylgist með samstillingarstöðu. Vettvangurinn vinnur úr samstillingarfærslum óháð öðrum ferlum og reynir aftur ef mistök verða til að tryggja áreiðanlega sendingu.
+
+## Samstillingarlífsferill
+
+Hver samstillingarfærsla fylgir stöðuvél:
+
+```
+┌─────────────┐     success     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ failure
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Sama mynstur gildir um uppfærslur og niðurfellingar:
+
+| Aðgerð | Biðstaða | Árangursstaða | Bilanastaða |
+|---|---|---|---|
+| Ný bókun | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Uppfærsla bókunar | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Niðurfelling | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Hvað kallar á samstillingu
+
+- **Ný bókun** — Ferðamaður bókar í gegnum Wink eða tengda rás.
+- **Uppfærsla bókunar** — Breytingar á bókunarupplýsingum (dagsetningar, upplýsingar um gest, herbergisúthlutun).
+- **Niðurfelling** — Bókun er felld niður af ferðamanni eða eign.
+
+## Eftirlit
+
+Þú getur fylgst með stöðu samstillingar í gegnum tengdan rásarstjóra eða PMS mælaborð. Misheppnaðar samstillingarfærslur eru reyndar aftur sjálfkrafa. Ef samstilling heldur áfram að mistakast, verður hún eftir í `*_FAILED` stöðu til frekari skoðunar.
+
+## Bilanaleit
+
+Ef bókanir birtast ekki í PMS þínu:
+
+1. **Athugaðu tengingu rásarstjóra** — Gakktu úr skugga um að PMS eða rásarstjóratenging þín sé virk og rétt stillt.
+2. **Staðfestu sendingu webhook** — Ef þú notar webhooks, athugaðu að endapunkturinn þinn fái `booking.create` og `booking.cancelled` atburði. Sjá [Webhook Events Catalog](/is/developers/webhook-events#booking-events).
+3. **Skoðaðu misheppnaðar færslur** — Misheppnaðar samstillingarfærslur benda til tengingar- eða gagnaörðugleika með markkerfið.
+4. **Hafðu samband við stuðning** — Ef vandamál halda áfram getur Wink teymið rannsakað misheppnaðar samstillingarfærslur fyrir þig.
+
+## Frekari lesning
+
+- [Channel Manager Integrations](/is/developers/channel-managers) — Hvernig Wink tengist PMS og rásarstjórum.
+- [Webhook Events Catalog](/is/developers/webhook-events) — Skráðu þig fyrir bókunaratburði.
+- [Bookings (Extranet)](/is/extranet/bookings) — Stjórnun bókana úr eignarvef.

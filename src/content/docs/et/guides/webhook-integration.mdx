@@ -5,7 +5,7 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 Webhookid võimaldavad teie süsteemidel saada reaalajas teavitusi, kui teie Wink kontol toimuvad sündmused — uued broneeringud, tühistamised, maksete uuendused ja palju muud. See juhend juhendab teid seadistamise ja parimate tavade osas.
 
@@ -34,33 +34,44 @@ See juhend on mõeldud arendajatele, kes integreerivad Winki väliste süsteemid
 
 ## Sündmuste tüübid
 
-Wink toetab mitmesuguseid sündmuste tüüpe. Levinumad sündmused on:
+Wink toetab **üle 64 webhooki sündmuse tüübi** erinevates kategooriates, sealhulgas konto haldus, broneeringulepingud, maksed, kanalihalduri uuendused ja haldusüksuste juhtimine. Levinumad sündmused on:
 
-- **Broneering loodud** — uus broneering on kinnitatud.
-- **Broneering tühistatud** — broneering on tühistatud.
-- **Makse lõpetatud** — makse on töödeldud.
-- **Broneering uuendatud** — broneeringu andmed on muutunud.
+| Kategooria | Näited |
+|---|---|
+| **Broneering** | `booking.create`, `booking.cancelled` |
+| **Broneeringuleping** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Makse** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Tagasimaksed** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Kanalihaldur** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Konto** | `account.create`, `account.status.updated` |
+
+Kõigi sündmuste tüüpideta ja kirjeldustega leiate **Webhook Events Catalog**-ist.
+
+<LinkButton href="/et/developers/webhook-events">
+  Vaata kõiki 64+ sündmuse tüüpi
+</LinkButton>
 
 :::tip
-Alustage kõigi sündmuste tellimisest. Kui mõistate andmepakette, saate kitsendada ainult teie süsteemile vajalikele sündmustele.
+Alustage arendamise ajal kõigi sündmuste tellimisest. Kui olete andmepakette mõistnud, kitsendage valikut ainult teie süsteemile vajalikele sündmustele.
 :::
 
 ## Parimad tavad
 
 - **Kasutage HTTPS-i** — Wink saadab andmepakette ainult HTTPS lõpp-punktidele.
-- **Vastake kiiresti** — tagastage `200 OK` kohe, kui saate andmepaketi. Kõik raskemad protsessid tehke asünkroonselt.
-- **Idempotentsus** — teie töötleja peaks olema idempotentne. Wink võib proovida edastust uuesti, kui ei saa `200` vastust.
-- **Allika valideerimine** — kontrollige, et sissetulevad päringud pärineksid Winkist, enne kui neid töötlete.
-- **Logimine** — logige iga vastu võetud webhooki andmepakett. See teeb integreerimisprobleemide silumise palju lihtsamaks.
+- **Vastake kiiresti** — Tagastage `200 OK` kohe, kui andmepakett on vastu võetud. Kõik mahukad protsessid tehke asünkroonselt.
+- **Idempotentsus** — Teie töötleja peaks olema idempotentne. Wink võib proovida andmepaketti uuesti saata, kui `200` vastust ei saa.
+- **Allika valideerimine** — Kontrollige, et sissetulevad päringud pärineksid Winkist, enne kui neid töödeldakse.
+- **Logimine** — Logige iga vastu võetud webhooki andmepakett. See teeb integreerimisvigade silumise palju lihtsamaks.
 
 ## Peatamine ja kustutamine
 
-Saate webhooki **keelata** ilma seda kustutamata. See peatab edastuse, et saaksite tõrkeotsingut teha ilma konfiguratsiooni kaotamata. Kui olete valmis, lülitage see uuesti sisse.
+Webhooki saab **keelata** ilma seda kustutamata. See peatab andmete edastamise, et saaksite tõrkeotsingut teha ilma konfiguratsiooni kaotamata. Kui olete valmis, lülitage see uuesti sisse.
 
 Webhooki kustutamine eemaldab selle jäädavalt. Kõik integreerimised, mis sõltuvad sellest webhookist, lõpetavad teavituste saamise.
 
-## Lisalugemine
+## Täiendav lugemine
 
-- [Webhooks](/et/my-account/webhooks) — webhooki halduse täielik viide.
-- [Applications](/et/my-account/applications) — haldage oma API mandaate.
-- [Developers > APIs](/et/developers/apis) — täielik API dokumentatsioon.
+- [Webhook Events Catalog](/et/developers/webhook-events) — Kõigi 64+ sündmuse tüübi täielik nimekiri.
+- [Webhooks](/et/my-account/webhooks) — Täielik viide webhookide haldamiseks.
+- [Applications](/et/my-account/applications) — Halda oma API volitusi.
+- [Developers > APIs](/et/developers/apis) — Täielik API dokumentatsioon.

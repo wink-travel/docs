@@ -5,13 +5,13 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 Webhook'ai leidžia jūsų sistemoms gauti realaus laiko pranešimus, kai jūsų Wink paskyroje įvyksta įvykiai — nauji užsakymai, atšaukimai, mokėjimų atnaujinimai ir daugiau. Šis vadovas padės jums juos nustatyti ir pateiks geriausias praktikas.
 
 ## Auditorija
 
-Šis vadovas skirtas kūrėjams, integruojantiems Wink su išorinėmis sistemomis, tokiomis kaip turto valdymo sistemos (PMS), kanalų valdytojai, CRM ar individualios valdymo panelės.
+Šis vadovas skirtas kūrėjams, integruojantiems Wink su išorinėmis sistemomis, tokiomis kaip nekilnojamojo turto valdymo sistemos (PMS), kanalų valdytojai, CRM ar individualios valdymo skydeliai.
 
 ## Kaip veikia webhook'ai
 
@@ -23,7 +23,7 @@ Webhook'ai leidžia jūsų sistemoms gauti realaus laiko pranešimus, kai jūsų
 
 <Steps>
 1. Prisijunkite prie savo paskyros (Extranet, Studio arba TripPay — visi palaiko webhook'us).
-2. Eikite į `Applications`, tada `Webhooks`. Žr. [Webhooks](/lt/my-account/webhooks).
+2. Eikite į `Applications`, tada `Webhooks`. Žr. [Webhook'ai](/lt/my-account/webhooks).
 3. Spustelėkite `Create webhook`.
 4. Įveskite **pavadinimą** (pvz., „PMS užsakymų sinchronizavimas“).
 5. Įveskite savo **webhook URL** — HTTPS galinį tašką jūsų serveryje.
@@ -34,33 +34,44 @@ Webhook'ai leidžia jūsų sistemoms gauti realaus laiko pranešimus, kai jūsų
 
 ## Įvykių tipai
 
-Wink palaiko įvairius įvykių tipus. Dažniausi įvykiai:
+Wink palaiko **daugiau nei 64 webhook įvykių tipus** įvairiose kategorijose, įskaitant paskyros valdymą, užsakymų sutartis, mokėjimus, kanalų valdytojų atnaujinimus ir valdymo subjektų administravimą. Dažniausi įvykiai:
 
-- **Užsakymas sukurtas** — Patvirtintas naujas užsakymas.
-- **Užsakymas atšauktas** — Užsakymas atšauktas.
-- **Mokėjimas atliktas** — Mokėjimas apdorotas.
-- **Užsakymas atnaujintas** — Užsakymo duomenys pasikeitė.
+| Kategorija | Pavyzdžiai |
+|---|---|
+| **Užsakymas** | `booking.create`, `booking.cancelled` |
+| **Užsakymo sutartis** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Mokėjimas** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Grąžinimai** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Kanalų valdytojas** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Paskyra** | `account.create`, `account.status.updated` |
+
+Visą įvykių tipų sąrašą su aprašymais rasite **Webhook įvykių kataloge**.
+
+<LinkButton href="/lt/developers/webhook-events">
+  Peržiūrėti visus daugiau nei 64 įvykių tipus
+</LinkButton>
 
 :::tip
-Pradėkite prenumeruoti visus įvykius. Kai suprasite duomenų struktūrą, galėsite apriboti prenumeratą tik iki tų įvykių, kurių jūsų sistema tikrai reikia.
+Pradėkite nuo prenumeratos visų įvykių kūrimo metu. Kai suprasite duomenų struktūrą, susiaurinkite prenumeratą tik iki tų įvykių, kurių jūsų sistema tikrai reikia.
 :::
 
 ## Geriausios praktikos
 
 - **Naudokite HTTPS** — Wink siunčia duomenis tik į HTTPS galinius taškus.
-- **Atsakykite greitai** — Grąžinkite `200 OK` iš karto gavę duomenis. Sunkesnį apdorojimą atlikite asinchroniškai.
-- **Idempotentiškumas** — Jūsų apdorojimo funkcija turėtų būti idempotentiška. Wink gali bandyti pakartotinai siųsti duomenis, jei negauna `200` atsakymo.
-- **Patikrinkite šaltinį** — Prieš apdorojant, įsitikinkite, kad užklausos ateina iš Wink.
+- **Atsakykite greitai** — Grąžinkite `200 OK` iš karto gavę duomenis. Sunkų apdorojimą atlikite asinchroniškai.
+- **Idempotentiškumas** — Jūsų apdorojimo funkcija turėtų būti idempotentiška. Wink gali bandyti pakartotinai pristatyti, jei negauna `200` atsakymo.
+- **Patikrinkite šaltinį** — Patikrinkite, ar gaunami užklausimai tikrai iš Wink prieš juos apdorojant.
 - **Registravimas** — Fiksuokite kiekvieną gautą webhook duomenų paketą. Tai labai palengvina integracijos klaidų paiešką.
 
 ## Sustabdymas ir ištrynimas
 
-Galite **išjungti** webhook'ą, jo neištrindami. Tai sustabdo duomenų siuntimą, kad galėtumėte spręsti problemas neprarandant nustatymų. Kai būsite pasiruošę, vėl įjunkite.
+Galite **išjungti** webhook'ą, jo neištrindami. Tai sustabdo pranešimų siuntimą, kad galėtumėte spręsti problemas neprarandant nustatymų. Kai būsite pasiruošę, vėl įjunkite.
 
-Webhook'o ištrynimas jį pašalina visam laikui. Bet kuri integracija, priklausanti nuo to webhook'o, nustos gauti pranešimus.
+Ištrynus webhook'ą, jis pašalinamas visam laikui. Bet kokia integracija, priklausanti nuo to webhook'o, nustos gauti pranešimus.
 
 ## Tolimesnė informacija
 
-- [Webhooks](/lt/my-account/webhooks) — Pilnas webhook valdymo vadovas.
+- [Webhook įvykių katalogas](/lt/developers/webhook-events) — Pilnas daugiau nei 64 įvykių tipų sąrašas.
+- [Webhook'ai](/lt/my-account/webhooks) — Pilnas webhook valdymo vadovas.
 - [Applications](/lt/my-account/applications) — Valdykite savo API kredencialus.
-- [Developers > APIs](/lt/developers/apis) — Pilna API dokumentacija.
+- [Kūrėjai > API](/lt/developers/apis) — Pilna API dokumentacija.

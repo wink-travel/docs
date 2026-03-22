@@ -5,7 +5,7 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 Webhook membolehkan sistem anda menerima pemberitahuan masa nyata apabila acara berlaku pada akaun Wink anda — tempahan baru, pembatalan, kemas kini pembayaran, dan banyak lagi. Panduan ini membimbing anda melalui penyediaan dan amalan terbaik.
 
@@ -23,44 +23,55 @@ Panduan ini untuk pembangun yang mengintegrasikan Wink dengan sistem luaran sepe
 
 <Steps>
 1. Log masuk ke akaun anda (Extranet, Studio, atau TripPay — semua menyokong webhook).
-2. Pergi ke `Applications` dan kemudian `Webhooks`. Lihat [Webhooks](/ms/my-account/webhooks).
+2. Navigasi ke `Applications` kemudian `Webhooks`. Lihat [Webhooks](/ms/my-account/webhooks).
 3. Klik `Create webhook`.
-4. Masukkan **nama** (contohnya, "Penyelarasan Tempahan PMS").
+4. Masukkan **nama** (contoh, "PMS Booking Sync").
 5. Masukkan **URL webhook** anda — titik akhir HTTPS pada pelayan anda.
 6. **Pilih acara** — Pilih acara tertentu untuk dilanggan, atau biarkan kosong untuk menerima semua acara.
-7. Togol **Enabled** ke hidup.
+7. Togol **Enabled** ke aktif.
 8. Klik `Save`.
 </Steps>
 
 ## Jenis acara
 
-Wink menyokong pelbagai jenis acara. Acara biasa termasuk:
+Wink menyokong **64+ jenis acara webhook** merangkumi kategori termasuk pengurusan akaun, kontrak tempahan, pembayaran, kemas kini pengurus saluran, dan pentadbiran entiti pengurusan. Acara biasa termasuk:
 
-- **Tempahan dibuat** — Tempahan baru telah disahkan.
-- **Tempahan dibatalkan** — Tempahan telah dibatalkan.
-- **Pembayaran selesai** — Pembayaran telah diproses.
-- **Tempahan dikemas kini** — Butiran tempahan telah berubah.
+| Kategori | Contoh |
+|---|---|
+| **Tempahan** | `booking.create`, `booking.cancelled` |
+| **Kontrak tempahan** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Pembayaran** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Bayaran balik** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Pengurus saluran** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Akaun** | `account.create`, `account.status.updated` |
+
+Untuk senarai lengkap setiap jenis acara dengan penerangan, lihat **Katalog Acara Webhook**.
+
+<LinkButton href="/ms/developers/webhook-events">
+  Lihat semua 64+ jenis acara
+</LinkButton>
 
 :::tip
-Mulakan dengan melanggan semua acara. Setelah anda memahami muatan, anda boleh mengecilkan kepada hanya acara yang diperlukan oleh sistem anda.
+Mulakan dengan melanggan semua acara semasa pembangunan. Setelah anda memahami muatan, hadkan hanya kepada acara yang sistem anda perlukan.
 :::
 
 ## Amalan terbaik
 
 - **Gunakan HTTPS** — Wink hanya menghantar muatan ke titik akhir HTTPS.
-- **Balas dengan cepat** — Kembalikan `200 OK` sebaik sahaja anda menerima muatan. Lakukan pemprosesan berat secara tak segerak.
+- **Balas dengan cepat** — Pulangkan `200 OK` sebaik sahaja anda menerima muatan. Lakukan pemprosesan berat secara tak segerak.
 - **Idempotensi** — Pengendali anda harus idempotent. Wink mungkin cuba semula penghantaran jika tidak menerima balasan `200`.
 - **Sahkan sumber** — Sahkan bahawa permintaan masuk adalah dari Wink sebelum memproses.
 - **Log** — Log setiap muatan webhook yang anda terima. Ini memudahkan penyahpepijatan isu integrasi.
 
 ## Menjeda dan memadam
 
-Anda boleh **nyahaktifkan** webhook tanpa memadamnya. Ini menjeda penghantaran supaya anda boleh menyelesaikan masalah tanpa kehilangan konfigurasi anda. Apabila sudah bersedia, togol semula ke hidup.
+Anda boleh **nyahaktifkan** webhook tanpa memadamnya. Ini menjeda penghantaran supaya anda boleh menyelesaikan masalah tanpa kehilangan konfigurasi. Apabila bersedia, togol semula ke aktif.
 
 Memadam webhook akan menghapuskannya secara kekal. Sebarang integrasi yang bergantung pada webhook itu akan berhenti menerima pemberitahuan.
 
 ## Bacaan lanjut
 
+- [Katalog Acara Webhook](/ms/developers/webhook-events) — Senarai lengkap semua 64+ jenis acara.
 - [Webhooks](/ms/my-account/webhooks) — Rujukan penuh untuk pengurusan webhook.
 - [Applications](/ms/my-account/applications) — Urus kelayakan API anda.
 - [Developers > APIs](/ms/developers/apis) — Dokumentasi API penuh.

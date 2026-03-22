@@ -1,0 +1,107 @@
+---
+title: Staðsetning
+description: Lærðu hvernig Wink notar staðsetningu og rúmfræðilegar fyrirspurnir til að knýja leit að birgðum byggðum á staðsetningu, GeoIP greiningu og landfræðilega síun.
+sidebar:
+  order: 11
+---
+
+Wink notar staðsetningu mikið til að knýja leit byggða á staðsetningu, sjálfvirka gjaldmiðla- og tungumálagreiningu og landfræðilega síun birgða.
+
+## GeoIP greining
+
+Þegar notandi heimsækir vettvanginn greinir Wink sjálfkrafa staðsetningu hans út frá IP-tölu. Þetta gerir mögulegt:
+
+- **Sjálfvirk val á gjaldmiðli** — Sýna verð í gjaldmiðli notandans.
+- **Tungumálakjör** — Stinga upp á efni á líklegu tungumáli notandans.
+- **Nálæg niðurstaða** — Forgangsraða birgðum nálægt staðsetningu notandans.
+
+## Rúmfræðileg leit
+
+Wink styður landfræðilega leit með fjórum tegundum rúmfræðilegra fyrirspurna. Þær knýja leit byggða á korti, leit með radíus og svæðissíun um allt kerfið.
+
+### Punktur
+
+Einn landfræðilegur hnútpunktur (breiddar- og lengdargráða). Notaður til að merkja ákveðinn stað — til dæmis heimilisfang eignar eða núverandi staðsetningu notanda.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Hringur
+
+Miðpunktur með radíus. Notaður fyrir „leita nálægt mér“ eða radíus-fyrirspurnir — til dæmis „hótel innan 10 km frá Times Square.“
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Ferhyrningur
+
+Afmörkuð kassalaga svæði skilgreint með suðvestur- og norðausturhornum. Notaður fyrir leit byggða á korti — þegar notandi hreyfir og stækkar kort, skilgreinir sýnilegt svæði ferhyrningsfyrirspurn.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Marghyrningur
+
+Sérsniðin lögun skilgreind með röð punkta. Notaður til að leita innan óreglulegra landfræðilegra marka — til dæmis hverfi, borgarhluti eða sérteiknað svæði á korti.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Marghyrningar verða að vera lokaðir — síðasti punkturinn verður að vera sami og fyrsti punkturinn.
+:::
+
+## Notkunartilvik
+
+| Notkunartilvik | Tegund lögunar | Dæmi |
+|---|---|---|
+| Leita nálægt mér | Hringur | Hótel innan 5 km frá staðsetningu minni |
+| Leit í kortasýn | Ferhyrningur | Eignir sýnilegar í núverandi kortasýn |
+| Leita í hverfi | Marghyrningur | Hótel í tilteknum borgarhluta |
+| Staðsetning eignar | Punktur | Nákvæm staðsetning eignar |
+
+## Fyrir forritara
+
+Rúmfræðilegir fyrirspurnarparametrar eru samþykktir af Lookup API og Inventory API endapunktum. Sendu viðeigandi GeoJSON lögun í leitarbeiðni til að sía niðurstöður eftir staðsetningu.
+
+Sjá [APIs skjölunina](/is/developers/apis) fyrir endapunkta sértækar upplýsingar.
+
+## Frekari lesning
+
+- [Leit (Booking Engine)](/is/booking-engine/search) — Hvernig ferðalangar leita að birgðum.
+- [Kort (Studio)](/is/studio/maps) — Kortbyggð birgðaleit.
+- [APIs](/is/developers/apis) — Full API tilvísun.

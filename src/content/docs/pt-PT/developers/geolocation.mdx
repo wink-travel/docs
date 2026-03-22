@@ -1,0 +1,107 @@
+---
+title: Geolocalização
+description: Saiba como o Wink utiliza geolocalização e consultas espaciais para potenciar a pesquisa de inventário baseada na localização, deteção GeoIP e filtragem geográfica.
+sidebar:
+  order: 11
+---
+
+O Wink utiliza geolocalização extensivamente para potenciar a pesquisa baseada na localização, deteção automática de moeda e idioma, e filtragem geográfica do inventário.
+
+## Deteção GeoIP
+
+Quando um utilizador visita a plataforma, o Wink deteta automaticamente a sua localização com base no endereço IP. Isto permite:
+
+- **Seleção automática de moeda** — Exibir preços na moeda local do utilizador.
+- **Preferência de idioma** — Sugerir conteúdo no idioma provável do utilizador.
+- **Resultados próximos** — Priorizar inventário próximo da localização do utilizador.
+
+## Pesquisa espacial
+
+O Wink suporta pesquisa geográfica usando quatro tipos de consultas espaciais. Estas alimentam a pesquisa baseada em mapas, pesquisa por raio e filtragem por área em toda a plataforma.
+
+### Ponto
+
+Uma coordenada geográfica única (latitude, longitude). Usada para marcar uma localização específica — por exemplo, o endereço de uma propriedade ou a localização atual de um utilizador.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Círculo
+
+Um ponto central com um raio. Usado para consultas "pesquisar perto de mim" ou baseadas em raio — por exemplo, "hotéis a menos de 10 km da Times Square."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Retângulo
+
+Uma caixa delimitadora definida pelos cantos sudoeste e nordeste. Usado para pesquisa baseada em mapas — quando um utilizador move e amplia um mapa, a área visível define uma consulta retangular.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Polígono
+
+Uma forma personalizada definida por uma série de pontos. Usado para pesquisar dentro de limites geográficos irregulares — por exemplo, um bairro, um distrito da cidade ou uma área desenhada manualmente num mapa.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Os polígonos devem estar fechados — o último ponto deve coincidir com o primeiro ponto.
+:::
+
+## Casos de uso
+
+| Caso de uso | Tipo de forma | Exemplo |
+|---|---|---|
+| Pesquisar perto de mim | Círculo | Hotéis a menos de 5 km da minha localização |
+| Pesquisa na área visível do mapa | Retângulo | Propriedades visíveis na vista atual do mapa |
+| Pesquisa por bairro | Polígono | Hotéis num distrito específico da cidade |
+| Localização da propriedade | Ponto | Localização exata de um anúncio de propriedade |
+
+## Para desenvolvedores
+
+Os parâmetros de consulta espacial são aceites pelos endpoints da Lookup API e Inventory API. Envie a forma GeoJSON apropriada na sua requisição de pesquisa para filtrar resultados por localização.
+
+Consulte a [documentação das APIs](/pt-PT/developers/apis) para detalhes específicos de cada endpoint.
+
+## Leitura adicional
+
+- [Pesquisa (Booking Engine)](/pt-PT/booking-engine/search) — Como os viajantes pesquisam inventário.
+- [Mapas (Studio)](/pt-PT/studio/maps) — Descoberta de inventário baseada em mapas.
+- [APIs](/pt-PT/developers/apis) — Referência completa da API.

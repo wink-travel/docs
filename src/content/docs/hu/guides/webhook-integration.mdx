@@ -1,13 +1,13 @@
 ---
 title: Webhook integráció
-description: Ez az útmutató megmutatja a fejlesztőknek, hogyan állítsanak be webhookokat, hogy valós idejű értesítéseket kapjanak foglalásokról, fizetésekről és egyéb eseményekről.
+description: Ez az útmutató fejlesztőknek mutatja be, hogyan állítsanak be webhookokat valós idejű értesítések fogadásához foglalásokról, fizetésekről és egyéb eseményekről.
 sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-A webhookok lehetővé teszik, hogy rendszereid valós idejű értesítéseket kapjanak, amikor események történnek a Wink fiókodban — új foglalások, lemondások, fizetési frissítések és még sok más. Ez az útmutató végigvezet a beállításon és a legjobb gyakorlatokon.
+A webhookok lehetővé teszik, hogy rendszereid valós idejű értesítéseket kapjanak, amikor események történnek a Wink fiókodban — új foglalások, lemondások, fizetésfrissítések és még sok más. Ez az útmutató végigvezet a beállításon és a legjobb gyakorlatokon.
 
 ## Célközönség
 
@@ -26,7 +26,7 @@ Ez az útmutató fejlesztőknek szól, akik a Wink-et külső rendszerekkel, pé
 2. Navigálj az `Applications` menüponthoz, majd a `Webhooks`-hoz. Lásd: [Webhooks](/hu/my-account/webhooks).
 3. Kattints a `Create webhook` gombra.
 4. Add meg a **nevet** (pl. "PMS Foglalás szinkron").
-5. Add meg a **webhook URL-t** — a szervered HTTPS végpontját.
+5. Írd be a **webhook URL-t** — a szervered HTTPS végpontját.
 6. **Válaszd ki az eseményeket** — Válassz ki konkrét eseményeket, vagy hagyd üresen, hogy az összes eseményt megkapd.
 7. Kapcsold be az **Enabled** opciót.
 8. Kattints a `Save` gombra.
@@ -34,33 +34,44 @@ Ez az útmutató fejlesztőknek szól, akik a Wink-et külső rendszerekkel, pé
 
 ## Eseménytípusok
 
-A Wink számos eseménytípust támogat. Gyakori események:
+A Wink több mint **64 webhook eseménytípust** támogat különböző kategóriákban, beleértve a fiókkezelést, foglalási szerződéseket, fizetéseket, csatornakezelő frissítéseket és entitáskezelést. Gyakori események:
 
-- **Foglalás létrehozva** — Egy új foglalás megerősítésre került.
-- **Foglalás lemondva** — Egy foglalást lemondtak.
-- **Fizetés teljesítve** — A fizetés feldolgozásra került.
-- **Foglalás frissítve** — Egy foglalás részletei megváltoztak.
+| Kategória | Példák |
+|---|---|
+| **Foglalás** | `booking.create`, `booking.cancelled` |
+| **Foglalási szerződés** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Fizetés** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Visszatérítések** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Csatornakezelő** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Fiók** | `account.create`, `account.status.updated` |
+
+A teljes eseménytípus-listát leírásokkal a **Webhook Események Katalógusában** találod.
+
+<LinkButton href="/hu/developers/webhook-events">
+  Az összes 64+ eseménytípus megtekintése
+</LinkButton>
 
 :::tip
-Kezdd azzal, hogy az összes eseményre feliratkozol. Miután megérted a payloadokat, szűkítheted a listát csak azokra az eseményekre, amelyekre a rendszerednek szüksége van.
+Fejlesztés közben először iratkozz fel az összes eseményre. Miután megérted a payloadokat, szűkítsd le csak azokra az eseményekre, amelyekre a rendszerednek ténylegesen szüksége van.
 :::
 
 ## Legjobb gyakorlatok
 
-- **Használj HTTPS-t** — A Wink csak HTTPS végpontokra küldi a payloadokat.
-- **Válaszolj gyorsan** — Küldj `200 OK` választ, amint megkaptad a payloadot. A nehéz feldolgozást végezd aszinkron módon.
-- **Idempotencia** — A kezelőd legyen idempotens. A Wink újrapróbálhatja a kézbesítést, ha nem kap `200` választ.
-- **Forrás ellenőrzése** — Ellenőrizd, hogy a bejövő kérések valóban a Wink-től származnak, mielőtt feldolgoznád őket.
-- **Naplózás** — Naplózz minden webhook payloadot, amit kapsz. Ez megkönnyíti az integrációs hibák hibakeresését.
+- **Használj HTTPS-t** — a Wink csak HTTPS végpontokra küldi a payloadokat.
+- **Válaszolj gyorsan** — küldj `200 OK` választ, amint megkapod a payloadot. A nehéz feldolgozást végezd aszinkron módon.
+- **Idempotencia** — a kezelőd legyen idempotens. A Wink újrapróbálhatja a kézbesítést, ha nem kap `200` választ.
+- **Forrás ellenőrzése** — ellenőrizd, hogy a bejövő kérések valóban a Wink-től származnak, mielőtt feldolgozod őket.
+- **Naplózás** — naplózz minden webhook payloadot, amit kapsz. Ez megkönnyíti az integrációs hibák hibakeresését.
 
 ## Szüneteltetés és törlés
 
-Egy webhookot **letilthatsz** anélkül, hogy törölnéd. Ez szünetelteti a kézbesítést, így hibakeresés közben megőrizheted a beállításokat. Ha készen állsz, kapcsold vissza.
+Egy webhookot **letilthatsz** anélkül, hogy törölnéd. Ez szünetelteti a kézbesítést, így hibakeresés közben nem veszíted el a beállításokat. Ha készen állsz, kapcsold vissza.
 
 A webhook törlése véglegesen eltávolítja azt. Az az integráció, amely erre a webhookra támaszkodik, nem fog több értesítést kapni.
 
 ## További olvasnivaló
 
+- [Webhook Események Katalógusa](/hu/developers/webhook-events) — Az összes 64+ eseménytípus teljes listája.
 - [Webhooks](/hu/my-account/webhooks) — Teljes referencia a webhook kezeléséhez.
 - [Applications](/hu/my-account/applications) — API hitelesítő adatok kezelése.
-- [Developers > APIs](/hu/developers/apis) — Teljes API dokumentáció.
+- [Fejlesztők > API-k](/hu/developers/apis) — Teljes API dokumentáció.

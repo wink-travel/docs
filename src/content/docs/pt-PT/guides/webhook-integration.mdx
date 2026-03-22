@@ -1,11 +1,11 @@
 ---
-title: Integração de Webhook
-description: Este guia mostra aos desenvolvedores como configurar webhooks para receber notificações em tempo real de reservas, pagamentos e outros eventos.
+title: Integração de Webhooks
+description: Este guia mostra aos desenvolvedores como configurar webhooks para receber notificações em tempo real sobre reservas, pagamentos e outros eventos.
 sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 Os webhooks permitem que os seus sistemas recebam notificações em tempo real quando eventos acontecem na sua conta Wink — novas reservas, cancelamentos, atualizações de pagamento e muito mais. Este guia orienta-o na configuração e nas melhores práticas.
 
@@ -34,15 +34,25 @@ Este guia destina-se a desenvolvedores que integram o Wink com sistemas externos
 
 ## Tipos de eventos
 
-O Wink suporta vários tipos de eventos. Os eventos mais comuns incluem:
+O Wink suporta **mais de 64 tipos de eventos de webhook** em categorias que incluem gestão de conta, contratos de reserva, pagamentos, atualizações do gestor de canais e administração de entidades. Eventos comuns incluem:
 
-- **Reserva criada** — Uma nova reserva foi confirmada.
-- **Reserva cancelada** — Uma reserva foi cancelada.
-- **Pagamento concluído** — O pagamento foi processado.
-- **Reserva atualizada** — Os detalhes de uma reserva foram alterados.
+| Categoria | Exemplos |
+|---|---|
+| **Reserva** | `booking.create`, `booking.cancelled` |
+| **Contrato de reserva** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Pagamento** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Reembolsos** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Gestor de canais** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Conta** | `account.create`, `account.status.updated` |
+
+Para uma lista completa de todos os tipos de eventos com descrições, consulte o **Catálogo de Eventos de Webhook**.
+
+<LinkButton href="/pt-PT/developers/webhook-events">
+  Ver todos os mais de 64 tipos de eventos
+</LinkButton>
 
 :::tip
-Comece por subscrever todos os eventos. Depois de compreender os payloads, pode restringir apenas aos eventos que o seu sistema necessita.
+Comece por subscrever todos os eventos durante o desenvolvimento. Depois de compreender os payloads, restrinja apenas aos eventos que o seu sistema necessita.
 :::
 
 ## Melhores práticas
@@ -50,7 +60,7 @@ Comece por subscrever todos os eventos. Depois de compreender os payloads, pode 
 - **Use HTTPS** — O Wink envia payloads apenas para endpoints HTTPS.
 - **Responda rapidamente** — Retorne um `200 OK` assim que receber o payload. Faça qualquer processamento pesado de forma assíncrona.
 - **Idempotência** — O seu handler deve ser idempotente. O Wink pode tentar reenviar se não receber uma resposta `200`.
-- **Valide a origem** — Verifique se os pedidos recebidos são do Wink antes de processar.
+- **Valide a origem** — Verifique que os pedidos recebidos são do Wink antes de processar.
 - **Registo** — Registe todos os payloads de webhook que receber. Isto facilita muito a depuração de problemas de integração.
 
 ## Pausar e eliminar
@@ -61,6 +71,7 @@ Eliminar um webhook remove-o permanentemente. Qualquer integração que dependa 
 
 ## Leitura adicional
 
+- [Catálogo de Eventos de Webhook](/pt-PT/developers/webhook-events) — Lista completa de todos os mais de 64 tipos de eventos.
 - [Webhooks](/pt-PT/my-account/webhooks) — Referência completa para gestão de webhooks.
 - [Applications](/pt-PT/my-account/applications) — Gerir as suas credenciais API.
 - [Developers > APIs](/pt-PT/developers/apis) — Documentação completa da API.

@@ -5,17 +5,17 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 Webhook-ovi omogućavaju vašim sistemima da primaju obaveštenja u realnom vremenu kada se dogode događaji na vašem Wink nalogu — nove rezervacije, otkazivanja, ažuriranja plaćanja i još mnogo toga. Ovaj vodič vas vodi kroz postavljanje i najbolje prakse.
 
 ## Publika
 
-Ovaj vodič je namenjen programerima koji integrišu Wink sa eksternim sistemima kao što su sistemi za upravljanje nekretninama (PMS), menadžeri kanala, CRM-ovi ili prilagođene kontrolne table.
+Ovaj vodič je namenjen programerima koji integrišu Wink sa eksternim sistemima kao što su sistemi za upravljanje nekretninama (PMS), channel manager-i, CRM-ovi ili prilagođene kontrolne table.
 
 ## Kako webhook-ovi funkcionišu
 
-1. Registrujete URL webhook-a na Wink-u.
+1. Registrujete webhook URL na Wink-u.
 2. Kada se dogodi događaj (npr. nova rezervacija), Wink šalje HTTP POST na vaš URL.
 3. Vaš server obrađuje podatke i odgovara sa `200 OK`.
 
@@ -25,8 +25,8 @@ Ovaj vodič je namenjen programerima koji integrišu Wink sa eksternim sistemima
 1. Prijavite se na svoj nalog (Extranet, Studio ili TripPay — svi podržavaju webhook-ove).
 2. Idite na `Applications`, zatim `Webhooks`. Pogledajte [Webhooks](/sr/my-account/webhooks).
 3. Kliknite na `Create webhook`.
-4. Unesite **ime** (npr. "PMS Sinhronizacija rezervacija").
-5. Unesite svoj **webhook URL** — HTTPS krajnju tačku na vašem serveru.
+4. Unesite **ime** (npr. "PMS Booking Sync").
+5. Unesite svoj **webhook URL** — HTTPS endpoint na vašem serveru.
 6. **Izaberite događaje** — Odaberite specifične događaje na koje želite da se pretplatite, ili ostavite prazno da primate sve događaje.
 7. Uključite **Enabled**.
 8. Kliknite na `Save`.
@@ -34,33 +34,44 @@ Ovaj vodič je namenjen programerima koji integrišu Wink sa eksternim sistemima
 
 ## Tipovi događaja
 
-Wink podržava različite tipove događaja. Uobičajeni događaji uključuju:
+Wink podržava **64+ tipova webhook događaja** u kategorijama kao što su upravljanje nalogom, ugovori o rezervacijama, plaćanja, ažuriranja channel manager-a i upravljanje entitetima. Uobičajeni događaji uključuju:
 
-- **Rezervacija kreirana** — Nova rezervacija je potvrđena.
-- **Rezervacija otkazana** — Rezervacija je otkazana.
-- **Plaćanje završeno** — Plaćanje je obrađeno.
-- **Rezervacija ažurirana** — Detalji rezervacije su promenjeni.
+| Kategorija | Primeri |
+|---|---|
+| **Rezervacija** | `booking.create`, `booking.cancelled` |
+| **Ugovor o rezervaciji** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Plaćanje** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Refundacije** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Channel manager** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Nalog** | `account.create`, `account.status.updated` |
+
+Za kompletan spisak svih tipova događaja sa opisima, pogledajte **Katalog Webhook Događaja**.
+
+<LinkButton href="/sr/developers/webhook-events">
+  Pogledajte svih 64+ tipova događaja
+</LinkButton>
 
 :::tip
-Počnite tako što ćete se pretplatiti na sve događaje. Kada razumete podatke, možete suziti izbor samo na one događaje koji su vašem sistemu potrebni.
+Počnite tako što ćete se pretplatiti na sve događaje tokom razvoja. Kada razumete podatke, suzite izbor samo na događaje koji su vašem sistemu potrebni.
 :::
 
 ## Najbolje prakse
 
-- **Koristite HTTPS** — Wink šalje podatke samo na HTTPS krajnje tačke.
+- **Koristite HTTPS** — Wink šalje podatke samo na HTTPS endpoint-e.
 - **Odgovarajte brzo** — Vratite `200 OK` čim primite podatke. Sve zahtevnije obrade radite asinhrono.
-- **Idempotentnost** — Vaš handler treba da bude idempotentan. Wink može ponovo pokušati isporuku ako ne dobije `200` odgovor.
-- **Validirajte izvor** — Proverite da li su dolazni zahtevi sa Wink-a pre nego što ih obradite.
+- **Idempotentnost** — Vaš handler treba da bude idempotentan. Wink može pokušati ponovnu isporuku ako ne dobije `200` odgovor.
+- **Validirajte izvor** — Proverite da su dolazni zahtevi zaista sa Wink-a pre obrade.
 - **Logovanje** — Beležite svaki webhook payload koji primite. Ovo znatno olakšava rešavanje problema sa integracijom.
 
 ## Pauziranje i brisanje
 
-Možete **onemogućiti** webhook bez brisanja. Ovo pauzira isporuku kako biste mogli da rešavate probleme bez gubitka konfiguracije. Kada budete spremni, ponovo ga uključite.
+Možete **onemogućiti** webhook bez brisanja. Ovo pauzira isporuku da biste mogli da rešavate probleme bez gubitka konfiguracije. Kada budete spremni, ponovo ga uključite.
 
 Brisanje webhook-a trajno ga uklanja. Svaka integracija koja zavisi od tog webhook-a prestaje da prima obaveštenja.
 
 ## Dalje čitanje
 
-- [Webhooks](/sr/my-account/webhooks) — Kompletna referenca za upravljanje webhook-ovima.
+- [Katalog Webhook Događaja](/sr/developers/webhook-events) — Kompletan spisak svih 64+ tipova događaja.
+- [Webhooks](/sr/my-account/webhooks) — Potpuna referenca za upravljanje webhook-ovima.
 - [Applications](/sr/my-account/applications) — Upravljajte svojim API akreditivima.
-- [Developers > APIs](/sr/developers/apis) — Kompletna API dokumentacija.
+- [Developers > APIs](/sr/developers/apis) — Potpuna API dokumentacija.

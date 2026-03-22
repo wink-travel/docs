@@ -1,0 +1,61 @@
+---
+title: Rezervasyon Senkronizasyonu
+description: Wink'in rezervasyonları PMS ve kanal yöneticileri gibi harici sistemlerle nasıl senkronize ettiğini, senkronizasyon yaşam döngüsünü ve sorun giderme adımlarını öğrenin.
+sidebar:
+  order: 9
+---
+
+Bir rezervasyon Wink üzerinde oluşturulduğunda, güncellendiğinde veya iptal edildiğinde, platform bu değişikliği bağlı harici sistemlerinizle — mülk yönetim sistemleri (PMS), kanal yöneticileri ve merkezi rezervasyon sistemleri (CRS) — senkronize eder.
+
+## Nasıl çalışır
+
+Her rezervasyon değişikliği, senkronizasyon durumunu takip eden bir **senkronizasyon girdisi** oluşturur. Platform, senkronizasyon girdilerini eşzamansız olarak işler ve teslimatın güvenilir olması için başarısızlıklarda yeniden dener.
+
+## Senkronizasyon yaşam döngüsü
+
+Her senkronizasyon girdisi bir durum makinesini takip eder:
+
+```
+┌─────────────┐     başarı     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ başarısızlık
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Aynı desen güncellemeler ve iptaller için de geçerlidir:
+
+| İşlem | Bekleyen durum | Başarı durumu | Başarısızlık durumu |
+|---|---|---|---|
+| Yeni rezervasyon | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Rezervasyon güncelleme | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| İptal | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Senkronizasyonu tetikleyenler
+
+- **Yeni rezervasyon** — Bir gezgin Wink veya bağlı bir kanal üzerinden rezervasyon yapar.
+- **Rezervasyon güncelleme** — Rezervasyon detayları değişir (tarih, misafir bilgisi, oda ataması).
+- **İptal** — Rezervasyon gezgin veya mülk tarafından iptal edilir.
+
+## İzleme
+
+Senkronizasyon durumunu bağlı kanal yöneticiniz veya PMS kontrol paneliniz üzerinden izleyebilirsiniz. Başarısız senkronizasyon girdileri otomatik olarak yeniden denenir. Eğer bir senkronizasyon sürekli başarısız olursa, inceleme için `*_FAILED` durumunda kalır.
+
+## Sorun giderme
+
+Rezervasyonlar PMS'nizde görünmüyorsa:
+
+1. **Kanal yöneticisi bağlantınızı kontrol edin** — PMS veya kanal yöneticisi entegrasyonunuzun aktif ve doğru yapılandırılmış olduğundan emin olun.
+2. **Webhook teslimatını doğrulayın** — Webhook kullanıyorsanız, uç noktanızın `booking.create` ve `booking.cancelled` olaylarını aldığını kontrol edin. Bkz. [Webhook Events Catalog](/tr/developers/webhook-events#booking-events).
+3. **Başarısız girdileri inceleyin** — Başarısız senkronizasyon girdileri hedef sistemle bağlantı veya veri sorununa işaret eder.
+4. **Destek ile iletişime geçin** — Sorun devam ederse, Wink ekibi başarısız senkronizasyon girdilerini sizin adınıza inceleyebilir.
+
+## Daha fazla bilgi
+
+- [Kanal Yöneticisi Entegrasyonları](/tr/developers/channel-managers) — Wink'in PMS ve kanal yöneticileri ile bağlantısı.
+- [Webhook Events Catalog](/tr/developers/webhook-events) — Rezervasyon olaylarına abone olun.
+- [Rezervasyonlar (Extranet)](/tr/extranet/bookings) — Mülk portalından rezervasyon yönetimi.

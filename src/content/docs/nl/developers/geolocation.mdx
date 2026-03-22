@@ -1,0 +1,107 @@
+---
+title: Geolocatie
+description: Leer hoe Wink geolocatie en ruimtelijke zoekopdrachten gebruikt voor locatiegebaseerde inventariszoekopdrachten, GeoIP-detectie en geografische filtering.
+sidebar:
+  order: 11
+---
+
+Wink gebruikt geolocatie uitgebreid om locatiegebaseerde zoekopdrachten, automatische valuta- en taalherkenning en geografische inventarisfiltering mogelijk te maken.
+
+## GeoIP-detectie
+
+Wanneer een gebruiker het platform bezoekt, detecteert Wink automatisch zijn locatie op basis van het IP-adres. Dit maakt het mogelijk om:
+
+- **Automatische valutakeuze** — Prijzen weergeven in de lokale valuta van de gebruiker.
+- **Taalvoorkeur** — Inhoud voorstellen in de waarschijnlijke taal van de gebruiker.
+- **Resultaten in de buurt** — Inventaris prioriteren die dicht bij de locatie van de gebruiker is.
+
+## Ruimtelijke zoekopdracht
+
+Wink ondersteunt geografisch zoeken met vier typen ruimtelijke zoekopdrachten. Deze vormen de basis voor kaartgebaseerd zoeken, radiuszoekopdrachten en gebiedsgebaseerde filtering op het platform.
+
+### Punt
+
+Een enkele geografische coördinaat (breedtegraad, lengtegraad). Wordt gebruikt om een specifieke locatie aan te geven — bijvoorbeeld het adres van een accommodatie of de huidige locatie van een gebruiker.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Cirkel
+
+Een middelpunt met een straal. Wordt gebruikt voor "zoek in mijn buurt" of radiusgebaseerde zoekopdrachten — bijvoorbeeld "hotels binnen 10 km van Times Square."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Rechthoek
+
+Een begrenzingsvak gedefinieerd door zuidwestelijke en noordoostelijke hoeken. Wordt gebruikt voor kaartgebaseerd zoeken — wanneer een gebruiker een kaart verschuift en inzoomt, definieert het zichtbare gebied een rechthoekige zoekopdracht.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Veelhoek
+
+Een aangepaste vorm gedefinieerd door een reeks punten. Wordt gebruikt voor zoeken binnen onregelmatige geografische grenzen — bijvoorbeeld een buurt, een stadsdeel of een zelfgetekend gebied op een kaart.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Veelhoeken moeten gesloten zijn — het laatste punt moet overeenkomen met het eerste punt.
+:::
+
+## Gebruikssituaties
+
+| Gebruikssituatie | Vormtype | Voorbeeld |
+|---|---|---|
+| Zoek in mijn buurt | Cirkel | Hotels binnen 5 km van mijn locatie |
+| Kaartweergave zoeken | Rechthoek | Accommodaties zichtbaar in het huidige kaartvenster |
+| Buurtzoekopdracht | Veelhoek | Hotels in een specifiek stadsdeel |
+| Locatie van accommodatie | Punt | Exacte locatie van een accommodatievermelding |
+
+## Voor ontwikkelaars
+
+Parameters voor ruimtelijke zoekopdrachten worden geaccepteerd door de Lookup API en Inventory API endpoints. Geef de juiste GeoJSON-vorm mee in je zoekopdracht om resultaten op locatie te filteren.
+
+Zie de [APIs-documentatie](/nl/developers/apis) voor endpoint-specifieke details.
+
+## Verdere lectuur
+
+- [Zoeken (Booking Engine)](/nl/booking-engine/search) — Hoe reizigers zoeken naar inventaris.
+- [Kaarten (Studio)](/nl/studio/maps) — Kaartgebaseerde inventarisontdekking.
+- [APIs](/nl/developers/apis) — Volledige API-referentie.

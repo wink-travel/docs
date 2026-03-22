@@ -19,10 +19,10 @@ Ko ste pripravljeni za zagon v živo, bomo potrdili vaš račun in vašo aplikac
 Sledite tem korakom:
 
 <Steps>
-1. [Registrirajte](/sl/user/register) svoj uporabniški račun na Wink
-2. Ustvarite [račun potovalne agencije](/sl/travel-agent/what-is-agent) ali [partnerski račun](/sl/studio/what-is-studio).
-3. [Ustvarite aplikacijo](/sl/developer/applications), ki jo povežete z računom, ki ste ga ustvarili v koraku 2.
-4. Ko ustvarite svojo `Application`, shranite client-id in client secret na varno mesto.
+1. [Registrirajte](/sl/my-account/register) svoj uporabniški račun na Wink.
+2. [Ustvarite partnerski račun](/sl/my-account/create-account). Ta je potreben za povezavo vaše aplikacije. Za več informacij glejte [kaj je Studio](/sl/studio/what-is-studio).
+3. [Ustvarite aplikacijo](/sl/my-account/applications) in jo povežite s partnerskim računom, ki ste ga ustvarili v koraku 2. Za API integracije strežnik-strežnik izberite **MACHINE_2_MACHINE** kot tip odjemalca.
+4. Ko ustvarite svojo `Application`, takoj kopirajte in shranite client-id in skrivni ključ — skrivni ključ je prikazan samo enkrat in ga ni mogoče več pridobiti.
 </Steps>
 
 ## CDN
@@ -33,14 +33,14 @@ Naš `cloud_name` je `traveliko`.
 
 ### Cloudinary
 
-- [Začetek](https://cloudinary.com/documentation/dev_kickstart)
+- [Začetek uporabe](https://cloudinary.com/documentation/dev_kickstart)
 - [SDK-ji](https://cloudinary.com/documentation/cloudinary_sdks)
 - [Cloudinary na GitHubu](https://github.com/cloudinary)
 -	[Video vodiči](https://cloudinary.com/documentation/cloudinary_sdks_tutorials)
 
 ### Primer
 
-Za vsak tip potovalne ponudbe, ki ga podpiramo, bo obstajala gnezdena JSON tabela z imenom `multimedias`. JSON za vnos multimedije izgleda takole:
+Za vsak tip potovalne ponudbe, ki ga podpiramo, obstaja gnezden JSON niz z imenom `multimedias`. JSON za vnos multimedije izgleda takole:
 
 ```json {3}
 {
@@ -67,28 +67,28 @@ Za vsak tip potovalne ponudbe, ki ga podpiramo, bo obstajala gnezdena JSON tabel
 }
 ```
 
-Označena vrstica zgoraj prikazuje edinstveni ID Cloudinary `partners/radisson_blu_logo`. To je vse, kar potrebujete, da pridobite sliko v katerem koli formatu, kakovosti in velikosti, ki jo želite.
+Označena vrstica zgoraj prikazuje edinstveni ID Cloudinary `partners/radisson_blu_logo`. To je vse, kar potrebujete za pridobitev slike v katerikoli obliki, kakovosti in velikosti.
 
 ## Testiranje
 
-Pojdite v našo sekcijo [API-ji](/sl/developer/apis) in izberite API, s katerim želite delati.
+Pojdite v našo sekcijo [API-ji](/sl/developers/apis) in izberite API, s katerim želite delati.
 
 ### Dokumentacija API-jev
 
-Naša dokumentacijska stran je nastavljena tako, da lahko izvajate API ukaze neposredno znotraj strani.
+Naša dokumentacijska stran je nastavljena tako, da lahko API ukaze izvajate neposredno znotraj strani.
 
 V tem primeru želite uporabiti klic API-ja `Search Lookups (OAuth2)`.
 
 :::tip[Pro nasvet]
-Za lažjo uporabo priporočamo, da integratorji uporabljajo končne točke, ki jih označimo kot `OAuth2`. Te končne točke vedo, da pričakujejo klice API-ja in že vedo, na katerem računu ste, zato vam ni treba navajati `companyIdentifier` v URL-jih.
+Za lažjo uporabo priporočamo, da integratorji uporabljajo končne točke, ki jih označimo kot `OAuth2`. Te končne točke že vedo, da pričakujejo klice API-ja in poznajo vaš račun, zato vam ni treba posebej navajati `companyIdentifier` v URL-jih.
 :::
 
 <Steps>
 1. Uporabite [Lookup API](https://developer.wink.travel/lookup) za pridobivanje destinacij ali hotelov.
 2. V levem meniju kliknite na `Authentication`.
-3. Vnesite svoj client-id in client secret ter kliknite gumb `Get TOKEN`.
+3. Vnesite svoj client-id in skrivni ključ ter kliknite gumb `Get TOKEN`.
 4. Če so vaše poverilnice veljavne, boste videli, da je vaš API ključ uporabljen.
-5. Zdaj lahko testirate lookup endpoint.
+5. Zdaj lahko testirate lookup končno točko.
 </Steps>
 
 <figure>
@@ -115,17 +115,17 @@ Enako lahko naredite tudi s Postmanom.
 5. V zavihku `Authorization` nastavite `Auth type` na OAuth2.
 6. Nastavite polje `Add auth data to` na `Request headers`.
 7. Nastavite polje `Header prefix` na `Bearer`.
-8. Nastavite polje `Token Name` na poljubno ime, s katerim želite shraniti žeton v Postmanu, npr. Wink Staging.
+8. Nastavite polje `Token Name` na poljubno ime za vaš shranjeni žeton v Postmanu, npr. Wink Staging.
 9. Nastavite polje `Grant type` na `Client Credentials`.
 10. Nastavite polje `Access token URL` na https://staging-iam.wink.travel/oauth2/token.
 11. Nastavite polje `Client ID` na Client ID, ki ga je vaša aplikacija ustvarila.
-12. Nastavite polje `Client Secret` na Client Secret, ki ga je vaša aplikacija ustvarila.
+12. Nastavite polje `Client Secret` na skrivni ključ, ki ga je vaša aplikacija ustvarila.
 13. Nastavite polje `Scope` na `inventory.read inventory.write inventory.remove`. To so vsi obsegi, ki jih boste potrebovali za Wink.
 14. Nastavite polje `Client Authentication` na `Send as Basic Auth header`.
-15. Kliknite gumb `Get New Access Token`, da pridobite žeton in ga shranite.
+15. Kliknite gumb `Get New Access Token`, da pridobite in shranite svoj žeton.
 16. Za vse klice API-jev v zbirki Wink API poskrbite, da zavihek za avtentikacijo pravi `Inherit auth from parent`, da se vaš žeton vključi pri vsakem klicu.
 </Steps>
 
 :::tip[Pro nasvet]
-Priporočamo, da strežniško domeno, client ID in client secret nastavite kot okoljske spremenljivke. Tako lahko enostavno preklapljate med staging in produkcijskim okoljem ter ponovno uporabljate vse ustvarjene operacije.
+Priporočamo, da strežniško domeno, client ID in skrivni ključ nastavite kot okoljske spremenljivke. Tako lahko enostavno preklapljate med staging in produkcijskim okoljem ter ponovno uporabljate vse ustvarjene operacije.
 :::

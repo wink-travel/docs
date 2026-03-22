@@ -5,9 +5,9 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Webhooky umožňují vašim systémům přijímat oznámení v reálném čase, když se na vašem účtu Wink stanou události — nové rezervace, zrušení, aktualizace plateb a další. Tento průvodce vás provede nastavením a nejlepšími postupy.
+Webhooky umožňují vašim systémům přijímat oznámení v reálném čase, když se na vašem účtu Wink stane nějaká událost — nové rezervace, zrušení, aktualizace plateb a další. Tento průvodce vás provede nastavením a nejlepšími postupy.
 
 ## Publikum
 
@@ -27,22 +27,32 @@ Tento průvodce je určen vývojářům integrujícím Wink s externími systém
 3. Klikněte na `Create webhook`.
 4. Zadejte **název** (např. "PMS synchronizace rezervací").
 5. Zadejte svou **webhook URL** — HTTPS endpoint na vašem serveru.
-6. **Vyberte události** — Vyberte konkrétní události, na které se chcete přihlásit, nebo nechte prázdné pro příjem všech událostí.
+6. **Vyberte události** — Zvolte konkrétní události, na které se chcete přihlásit, nebo nechte prázdné pro příjem všech událostí.
 7. Přepněte **Enabled** na zapnuto.
 8. Klikněte na `Save`.
 </Steps>
 
 ## Typy událostí
 
-Wink podporuje různé typy událostí. Běžné události zahrnují:
+Wink podporuje **64+ typů webhook událostí** v kategoriích jako správa účtu, smlouvy o rezervacích, platby, aktualizace channel managera a správa entit. Běžné události zahrnují:
 
-- **Rezervace vytvořena** — Byla potvrzena nová rezervace.
-- **Rezervace zrušena** — Rezervace byla zrušena.
-- **Platba dokončena** — Platba byla zpracována.
-- **Rezervace aktualizována** — Detaily rezervace se změnily.
+| Kategorie | Příklady |
+|---|---|
+| **Rezervace** | `booking.create`, `booking.cancelled` |
+| **Smlouva o rezervaci** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Platba** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Vrácení peněz** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Channel manager** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Účet** | `account.create`, `account.status.updated` |
+
+Pro úplný seznam všech typů událostí s popisy viz **Katalog webhook událostí**.
+
+<LinkButton href="/cs/developers/webhook-events">
+  Zobrazit všech 64+ typů událostí
+</LinkButton>
 
 :::tip
-Začněte přihlášením ke všem událostem. Jakmile pochopíte data, můžete se zaměřit pouze na události, které váš systém potřebuje.
+Začněte během vývoje přihlášením ke všem událostem. Jakmile pochopíte data, zúžte výběr pouze na události, které váš systém skutečně potřebuje.
 :::
 
 ## Nejlepší postupy
@@ -51,16 +61,17 @@ Začněte přihlášením ke všem událostem. Jakmile pochopíte data, můžete
 - **Odpovídejte rychle** — Vraťte `200 OK` hned po přijetí dat. Náročné zpracování provádějte asynchronně.
 - **Idempotentnost** — Váš handler by měl být idempotentní. Wink může opakovat doručení, pokud neobdrží odpověď `200`.
 - **Ověřte zdroj** — Před zpracováním ověřte, že příchozí požadavky jsou od Wink.
-- **Logování** — Logujte každá přijatá data webhooku. To výrazně usnadní ladění integrace.
+- **Logování** — Logujte každý přijatý webhook payload. Usnadní to ladění integrace.
 
-## Pozastavení a smazání
+## Pozastavení a mazání
 
 Webhook můžete **zakázat** bez jeho smazání. Tím pozastavíte doručování, abyste mohli řešit problémy, aniž byste přišli o konfiguraci. Až budete připraveni, opět jej zapněte.
 
-Smazání webhooku jej trvale odstraní. Jakákoli integrace, která na něj spoléhá, přestane přijímat oznámení.
+Smazání webhooku jej trvale odstraní. Jakákoli integrace, která na něj spoléhá, přestane dostávat oznámení.
 
 ## Další čtení
 
+- [Katalog webhook událostí](/cs/developers/webhook-events) — Kompletní seznam všech 64+ typů událostí.
 - [Webhooks](/cs/my-account/webhooks) — Kompletní reference pro správu webhooků.
 - [Applications](/cs/my-account/applications) — Správa vašich API přístupů.
 - [Developers > APIs](/cs/developers/apis) — Kompletní dokumentace API.

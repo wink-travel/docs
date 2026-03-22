@@ -1,0 +1,107 @@
+---
+title: Geolokácia
+description: Naučte sa, ako Wink využíva geolokáciu a priestorové dotazy na vyhľadávanie inventára podľa polohy, detekciu GeoIP a geografické filtrovanie.
+sidebar:
+  order: 11
+---
+
+Wink rozsiahlo využíva geolokáciu na vyhľadávanie podľa polohy, automatickú detekciu meny a jazyka a geografické filtrovanie inventára.
+
+## Detekcia GeoIP
+
+Keď používateľ navštívi platformu, Wink automaticky zistí jeho polohu na základe IP adresy. To umožňuje:
+
+- **Automatický výber meny** — Zobrazenie cien v miestnej mene používateľa.
+- **Preferencia jazyka** — Návrh obsahu v pravdepodobnom jazyku používateľa.
+- **Výsledky v blízkosti** — Prioritizovanie inventára blízko polohy používateľa.
+
+## Priestorové vyhľadávanie
+
+Wink podporuje geografické vyhľadávanie pomocou štyroch typov priestorových dotazov. Tieto poháňajú vyhľadávanie na mape, vyhľadávanie v rádiuse a filtrovanie podľa oblasti na celej platforme.
+
+### Bod
+
+Jeden geografický súradnicový bod (zemepisná šírka, dĺžka). Používa sa na označenie konkrétnej polohy — napríklad adresy nehnuteľnosti alebo aktuálnej polohy používateľa.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Kruh
+
+Stredový bod s polomerom. Používa sa na dotazy „vyhľadaj v mojej blízkosti“ alebo vyhľadávanie v rádiuse — napríklad „hotely do 10 km od Times Square.“
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Obdĺžnik
+
+Ohraničujúci rámec definovaný juhozápadným a severovýchodným rohom. Používa sa na vyhľadávanie na mape — keď používateľ posúva a približuje mapu, viditeľná oblasť definuje obdĺžnikový dotaz.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Mnohouholník
+
+Vlastný tvar definovaný sériou bodov. Používa sa na vyhľadávanie v nepravidelných geografických hraniciach — napríklad v susedstve, mestskej časti alebo vlastnoručne nakreslenej oblasti na mape.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Mnohouholníky musia byť uzavreté — posledný bod musí zodpovedať prvému bodu.
+:::
+
+## Príklady použitia
+
+| Prípad použitia | Typ tvaru | Príklad |
+|---|---|---|
+| Vyhľadávanie v mojej blízkosti | Kruh | Hotely do 5 km od mojej polohy |
+| Vyhľadávanie v zobrazení mapy | Obdĺžnik | Nehnuteľnosti viditeľné v aktuálnom zobrazení mapy |
+| Vyhľadávanie v susedstve | Mnohouholník | Hotely v konkrétnej mestskej časti |
+| Poloha nehnuteľnosti | Bod | Presná poloha ponuky nehnuteľnosti |
+
+## Pre vývojárov
+
+Parametre priestorových dotazov sú akceptované koncovými bodmi Lookup API a Inventory API. Do vyhľadávacieho dopytu odovzdajte príslušný GeoJSON tvar na filtrovanie výsledkov podľa polohy.
+
+Pozrite si [dokumentáciu API](/sk/developers/apis) pre podrobnosti o jednotlivých koncových bodoch.
+
+## Ďalšie čítanie
+
+- [Vyhľadávanie (Booking Engine)](/sk/booking-engine/search) — Ako cestujúci vyhľadávajú inventár.
+- [Mapy (Studio)](/sk/studio/maps) — Objevovanie inventára na mape.
+- [API](/sk/developers/apis) — Kompletná referencia API.

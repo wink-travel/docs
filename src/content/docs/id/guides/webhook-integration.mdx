@@ -5,44 +5,54 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 Webhook memungkinkan sistem Anda menerima notifikasi waktu nyata saat terjadi acara di akun Wink Anda — pemesanan baru, pembatalan, pembaruan pembayaran, dan lainnya. Panduan ini memandu Anda melalui pengaturan dan praktik terbaik.
 
 ## Audiens
 
-Panduan ini ditujukan untuk pengembang yang mengintegrasikan Wink dengan sistem eksternal seperti sistem manajemen properti (PMS), manajer saluran, CRM, atau dasbor kustom.
+Panduan ini ditujukan untuk pengembang yang mengintegrasikan Wink dengan sistem eksternal seperti sistem manajemen properti (PMS), channel manager, CRM, atau dasbor kustom.
 
 ## Cara kerja webhook
 
 1. Anda mendaftarkan URL webhook di Wink.
-2. Saat terjadi sebuah acara (misalnya, pemesanan baru), Wink mengirimkan HTTP POST ke URL Anda.
+2. Saat sebuah acara terjadi (misalnya, pemesanan baru), Wink mengirim HTTP POST ke URL Anda.
 3. Server Anda memproses payload dan merespons dengan `200 OK`.
 
 ## Mengatur webhook
 
 <Steps>
 1. Masuk ke akun Anda (Extranet, Studio, atau TripPay — semuanya mendukung webhook).
-2. Arahkan ke `Applications` lalu `Webhooks`. Lihat [Webhooks](/id/my-account/webhooks).
+2. Navigasikan ke `Applications` lalu `Webhooks`. Lihat [Webhooks](/id/my-account/webhooks).
 3. Klik `Create webhook`.
 4. Masukkan **nama** (misalnya, "Sinkronisasi Pemesanan PMS").
 5. Masukkan **URL webhook** Anda — endpoint HTTPS di server Anda.
 6. **Pilih acara** — Pilih acara spesifik untuk berlangganan, atau biarkan kosong untuk menerima semua acara.
-7. Aktifkan **Enabled**.
+7. Aktifkan toggle **Enabled**.
 8. Klik `Save`.
 </Steps>
 
 ## Jenis acara
 
-Wink mendukung berbagai jenis acara. Acara umum meliputi:
+Wink mendukung **lebih dari 64 jenis acara webhook** di berbagai kategori termasuk manajemen akun, kontrak pemesanan, pembayaran, pembaruan channel manager, dan pengelolaan entitas administrasi. Acara umum meliputi:
 
-- **Pemesanan dibuat** — Pemesanan baru telah dikonfirmasi.
-- **Pemesanan dibatalkan** — Pemesanan telah dibatalkan.
-- **Pembayaran selesai** — Pembayaran telah diproses.
-- **Pemesanan diperbarui** — Detail pemesanan telah berubah.
+| Kategori | Contoh |
+|---|---|
+| **Pemesanan** | `booking.create`, `booking.cancelled` |
+| **Kontrak pemesanan** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Pembayaran** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Pengembalian dana** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Channel manager** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Akun** | `account.create`, `account.status.updated` |
+
+Untuk daftar lengkap setiap jenis acara beserta deskripsinya, lihat **Katalog Acara Webhook**.
+
+<LinkButton href="/id/developers/webhook-events">
+  Lihat semua lebih dari 64 jenis acara
+</LinkButton>
 
 :::tip
-Mulailah dengan berlangganan semua acara. Setelah Anda memahami payload, Anda dapat mempersempit hanya ke acara yang dibutuhkan sistem Anda.
+Mulailah dengan berlangganan semua acara selama pengembangan. Setelah Anda memahami payload, batasi hanya ke acara yang dibutuhkan sistem Anda.
 :::
 
 ## Praktik terbaik
@@ -59,8 +69,9 @@ Anda dapat **menonaktifkan** webhook tanpa menghapusnya. Ini menjeda pengiriman 
 
 Menghapus webhook akan menghapusnya secara permanen. Integrasi yang bergantung pada webhook tersebut akan berhenti menerima notifikasi.
 
-## Bacaan lebih lanjut
+## Bacaan lanjutan
 
+- [Katalog Acara Webhook](/id/developers/webhook-events) — Daftar lengkap semua lebih dari 64 jenis acara.
 - [Webhooks](/id/my-account/webhooks) — Referensi lengkap untuk manajemen webhook.
 - [Applications](/id/my-account/applications) — Kelola kredensial API Anda.
 - [Developers > APIs](/id/developers/apis) — Dokumentasi API lengkap.

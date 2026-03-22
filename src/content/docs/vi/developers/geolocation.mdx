@@ -1,0 +1,107 @@
+---
+title: Định vị địa lý
+description: Tìm hiểu cách Wink sử dụng định vị địa lý và truy vấn không gian để hỗ trợ tìm kiếm kho hàng dựa trên vị trí, phát hiện GeoIP và lọc theo địa lý.
+sidebar:
+  order: 11
+---
+
+Wink sử dụng định vị địa lý rộng rãi để hỗ trợ tìm kiếm dựa trên vị trí, phát hiện tự động tiền tệ và ngôn ngữ, cũng như lọc kho hàng theo địa lý.
+
+## Phát hiện GeoIP
+
+Khi người dùng truy cập nền tảng, Wink tự động phát hiện vị trí của họ dựa trên địa chỉ IP. Điều này cho phép:
+
+- **Chọn tiền tệ tự động** — Hiển thị giá theo tiền tệ địa phương của người dùng.
+- **Ưu tiên ngôn ngữ** — Gợi ý nội dung theo ngôn ngữ có khả năng người dùng sử dụng.
+- **Kết quả gần đó** — Ưu tiên kho hàng gần vị trí người dùng.
+
+## Tìm kiếm không gian
+
+Wink hỗ trợ tìm kiếm địa lý sử dụng bốn loại truy vấn không gian. Chúng hỗ trợ tìm kiếm dựa trên bản đồ, tìm kiếm theo bán kính và lọc theo khu vực trên toàn nền tảng.
+
+### Điểm
+
+Một tọa độ địa lý đơn lẻ (vĩ độ, kinh độ). Dùng để đánh dấu một vị trí cụ thể — ví dụ, địa chỉ của một bất động sản hoặc vị trí hiện tại của người dùng.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Vòng tròn
+
+Một điểm trung tâm với bán kính. Dùng cho truy vấn "tìm gần tôi" hoặc theo bán kính — ví dụ, "khách sạn trong vòng 10 km từ Times Square."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Hình chữ nhật
+
+Một hộp giới hạn được xác định bởi các góc tây nam và đông bắc. Dùng cho tìm kiếm dựa trên bản đồ — khi người dùng di chuyển và phóng to bản đồ, khu vực hiển thị xác định truy vấn hình chữ nhật.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Đa giác
+
+Một hình dạng tùy chỉnh được xác định bởi một chuỗi các điểm. Dùng để tìm kiếm trong các ranh giới địa lý không đều — ví dụ, một khu phố, một quận thành phố hoặc một khu vực vẽ tùy chỉnh trên bản đồ.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Đa giác phải được đóng kín — điểm cuối cùng phải trùng với điểm đầu tiên.
+:::
+
+## Các trường hợp sử dụng
+
+| Trường hợp sử dụng | Loại hình | Ví dụ |
+|---|---|---|
+| Tìm gần tôi | Vòng tròn | Khách sạn trong vòng 5 km từ vị trí của tôi |
+| Tìm kiếm trong khung nhìn bản đồ | Hình chữ nhật | Bất động sản hiển thị trên khung nhìn bản đồ hiện tại |
+| Tìm kiếm khu phố | Đa giác | Khách sạn trong một quận thành phố cụ thể |
+| Vị trí bất động sản | Điểm | Vị trí chính xác của một danh sách bất động sản |
+
+## Dành cho nhà phát triển
+
+Tham số truy vấn không gian được chấp nhận bởi các điểm cuối Lookup API và Inventory API. Truyền hình GeoJSON phù hợp trong yêu cầu tìm kiếm của bạn để lọc kết quả theo vị trí.
+
+Xem [tài liệu APIs](/vi/developers/apis) để biết chi tiết theo từng điểm cuối.
+
+## Đọc thêm
+
+- [Tìm kiếm (Booking Engine)](/vi/booking-engine/search) — Cách khách du lịch tìm kiếm kho hàng.
+- [Bản đồ (Studio)](/vi/studio/maps) — Khám phá kho hàng dựa trên bản đồ.
+- [APIs](/vi/developers/apis) — Tham khảo API đầy đủ.

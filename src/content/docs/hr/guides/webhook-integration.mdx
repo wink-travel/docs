@@ -5,7 +5,7 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
 Webhookovi omogućuju vašim sustavima primanje obavijesti u stvarnom vremenu kada se dogode događaji na vašem Wink računu — nove rezervacije, otkazivanja, ažuriranja plaćanja i još mnogo toga. Ovaj vodič vodi vas kroz postavljanje i najbolje prakse.
 
@@ -23,7 +23,7 @@ Ovaj vodič je namijenjen developerima koji integriraju Wink s vanjskim sustavim
 
 <Steps>
 1. Prijavite se na svoj račun (Extranet, Studio ili TripPay — svi podržavaju webhookove).
-2. Idite na `Applications`, zatim `Webhooks`. Pogledajte [Webhooks](/hr/my-account/webhooks).
+2. Idite na `Applications` pa zatim `Webhooks`. Pogledajte [Webhooks](/hr/my-account/webhooks).
 3. Kliknite `Create webhook`.
 4. Unesite **ime** (npr. "PMS Booking Sync").
 5. Unesite svoj **webhook URL** — HTTPS endpoint na vašem serveru.
@@ -34,33 +34,44 @@ Ovaj vodič je namijenjen developerima koji integriraju Wink s vanjskim sustavim
 
 ## Vrste događaja
 
-Wink podržava različite vrste događaja. Uobičajeni događaji uključuju:
+Wink podržava **64+ vrsta webhook događaja** u kategorijama uključujući upravljanje računom, ugovore o rezervacijama, plaćanja, ažuriranja channel managera i upravljanje entitetima. Uobičajeni događaji uključuju:
 
-- **Booking created** — Potvrđena je nova rezervacija.
-- **Booking cancelled** — Rezervacija je otkazana.
-- **Payment completed** — Plaćanje je obrađeno.
-- **Booking updated** — Detalji rezervacije su promijenjeni.
+| Kategorija | Primjeri |
+|---|---|
+| **Rezervacija** | `booking.create`, `booking.cancelled` |
+| **Ugovor o rezervaciji** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Plaćanje** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Povrati** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Channel manager** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Račun** | `account.create`, `account.status.updated` |
+
+Za potpuni popis svih vrsta događaja s opisima, pogledajte **Katalog Webhook Događaja**.
+
+<LinkButton href="/hr/developers/webhook-events">
+  Pogledajte svih 64+ vrsta događaja
+</LinkButton>
 
 :::tip
-Počnite s pretplatom na sve događaje. Kad razumijete podatke, možete suziti na samo one događaje koji su vašem sustavu potrebni.
+Počnite s pretplatom na sve događaje tijekom razvoja. Kad razumijete podatke, suzite na samo one događaje koji su vašem sustavu potrebni.
 :::
 
 ## Najbolje prakse
 
 - **Koristite HTTPS** — Wink šalje podatke samo na HTTPS endpointove.
 - **Odgovarajte brzo** — Vratite `200 OK` čim primite podatke. Teže obrade radite asinhrono.
-- **Idempotentnost** — Vaš handler treba biti idempotentan. Wink može pokušati ponovno poslati ako ne primi `200` odgovor.
-- **Provjerite izvor** — Potvrdite da dolazni zahtjevi dolaze od Wink-a prije obrade.
-- **Evidencija** — Zabilježite svaki webhook payload koji primite. To olakšava otklanjanje problema s integracijom.
+- **Idempotentnost** — Vaš handler treba biti idempotentan. Wink može pokušati ponovo poslati ako ne primi `200` odgovor.
+- **Provjerite izvor** — Potvrdite da dolazni zahtjevi dolaze od Winka prije obrade.
+- **Evidencija** — Zabilježite svaki webhook payload koji primite. To znatno olakšava otklanjanje problema s integracijom.
 
 ## Pauziranje i brisanje
 
-Možete **onemogućiti** webhook bez brisanja. Time se zaustavlja dostava kako biste mogli riješiti probleme bez gubitka konfiguracije. Kad ste spremni, ponovno ga uključite.
+Možete **onemogućiti** webhook bez brisanja. Time se pauzira dostava kako biste mogli rješavati probleme bez gubitka konfiguracije. Kad ste spremni, ponovno ga uključite.
 
-Brisanje webhooka trajno ga uklanja. Svaka integracija koja ovisi o tom webhooku prestat će primati obavijesti.
+Brisanje webhooka trajno ga uklanja. Svaka integracija koja se oslanja na taj webhook prestat će primati obavijesti.
 
 ## Dodatno čitanje
 
+- [Katalog Webhook Događaja](/hr/developers/webhook-events) — Potpuni popis svih 64+ vrsta događaja.
 - [Webhooks](/hr/my-account/webhooks) — Potpuni referentni vodič za upravljanje webhookovima.
 - [Applications](/hr/my-account/applications) — Upravljajte svojim API vjerodajnicama.
 - [Developers > APIs](/hr/developers/apis) — Potpuna API dokumentacija.

@@ -1,0 +1,107 @@
+---
+title: Geolokatsioon
+description: Õpi, kuidas Wink kasutab geolokatsiooni ja ruumipäringuid asukohapõhise varude otsingu, GeoIP tuvastuse ja geograafilise filtreerimise võimaldamiseks.
+sidebar:
+  order: 11
+---
+
+Wink kasutab geolokatsiooni laialdaselt asukohapõhise otsingu, automaatse valuuta- ja keele tuvastamise ning geograafilise varude filtreerimise võimaldamiseks.
+
+## GeoIP tuvastus
+
+Kui kasutaja platvormi külastab, tuvastab Wink automaatselt tema asukoha IP-aadressi alusel. See võimaldab:
+
+- **Automaatne valuuta valik** — Näita hindu kasutaja kohalikus valuutas.
+- **Keele-eelistus** — Paku sisu tõenäolises kasutaja keeles.
+- **Lähedal asuvad tulemused** — Eelista varusid, mis asuvad kasutaja lähedal.
+
+## Ruumiline otsing
+
+Wink toetab geograafilist otsingut nelja ruumipäringu tüübi abil. Need võimaldavad kaardipõhist otsingut, raadiuse otsingut ja piirkonnapõhist filtreerimist kogu platvormil.
+
+### Punkt
+
+Üks geograafiline koordinaat (laiuskraad, pikkuskraad). Kasutatakse konkreetse asukoha märkimiseks — näiteks objekti aadress või kasutaja praegune asukoht.
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  }
+}
+```
+
+### Ring
+
+Keskpunkt koos raadiusega. Kasutatakse "otsi minu lähedalt" või raadiusepõhiste päringute puhul — näiteks "hotellid 10 km raadiuses Times Square’ist."
+
+```json
+{
+  "point": {
+    "x": -73.9857,
+    "y": 40.7484
+  },
+  "radius": 10000
+}
+```
+
+### Ristkülik
+
+Piiritlev kast, mida määravad edela- ja kirdepunktid. Kasutatakse kaardipõhise otsingu puhul — kui kasutaja kaarti nihutab ja suumib, määrab nähtav ala ristküliku päringu.
+
+```json
+{
+  "southWest": {
+    "x": -74.0060,
+    "y": 40.7128
+  },
+  "northEast": {
+    "x": -73.9350,
+    "y": 40.7831
+  }
+}
+```
+
+### Polügoon
+
+Kohandatud kuju, mis on määratletud punktide jada abil. Kasutatakse otsinguks ebaregulaarsete geograafiliste piiride sees — näiteks linnaosa, linna kvartal või kaardil vabalt joonistatud ala.
+
+```json
+{
+  "polygon": {
+    "points": [
+      { "x": -74.0060, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7128 },
+      { "x": -73.9350, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7831 },
+      { "x": -74.0060, "y": 40.7128 }
+    ]
+  }
+}
+```
+
+:::note
+Polügoonid peavad olema suletud — viimane punkt peab kattuma esimese punktiga.
+:::
+
+## Kasutusjuhtumid
+
+| Kasutusjuhtum | Kuju tüüp | Näide |
+|---|---|---|
+| Otsi minu lähedalt | Ring | Hotellid 5 km raadiuses minu asukohast |
+| Kaardi vaateala otsing | Ristkülik | Objektid, mis on nähtavad praegusel kaardivaate alal |
+| Naabruskonna otsing | Polügoon | Hotellid konkreetses linnaosas |
+| Objekti asukoht | Punkt | Objekti täpne asukoht kuulutuses |
+
+## Arendajatele
+
+Ruumipäringu parameetreid aktsepteerivad Lookup API ja Inventory API lõpp-punktid. Sisesta sobiv GeoJSON kuju oma otsingupäringusse, et filtreerida tulemusi asukoha järgi.
+
+Vaata [APIdokumentatsiooni](/et/developers/apis) lõpp-punktide spetsiifiliste detailide jaoks.
+
+## Täiendav lugemine
+
+- [Otsing (Booking Engine)](/et/booking-engine/search) — Kuidas reisijad varusid otsivad.
+- [Kaardid (Studio)](/et/studio/maps) — Kaardipõhine varade avastamine.
+- [APId](/et/developers/apis) — Täielik API viide.

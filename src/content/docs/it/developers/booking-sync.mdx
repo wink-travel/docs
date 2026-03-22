@@ -1,0 +1,61 @@
+---
+title: Sincronizzazione Prenotazioni
+description: Scopri come Wink sincronizza le prenotazioni con sistemi esterni come PMS e channel manager, incluso il ciclo di vita della sincronizzazione e la risoluzione dei problemi.
+sidebar:
+  order: 9
+---
+
+Quando una prenotazione viene creata, aggiornata o cancellata su Wink, la piattaforma sincronizza questa modifica con i tuoi sistemi esterni collegati — property management system (PMS), channel manager e central reservation system (CRS).
+
+## Come funziona
+
+Ogni modifica di prenotazione crea una **voce di sincronizzazione** che traccia lo stato della sincronizzazione. La piattaforma elabora le voci di sincronizzazione in modo asincrono, ritentando in caso di errore per garantire una consegna affidabile.
+
+## Ciclo di vita della sincronizzazione
+
+Ogni voce di sincronizzazione segue una macchina a stati:
+
+```
+┌─────────────┐     successo     ┌───────────┐
+│  TO_CREATE   │ ──────────────→ │ PROCESSED │
+└─────────────┘                  └───────────┘
+       │
+       │ fallimento
+       ▼
+┌──────────────────┐
+│ TO_CREATE_FAILED │
+└──────────────────┘
+```
+
+Lo stesso schema si applica ad aggiornamenti e cancellazioni:
+
+| Azione | Stato in sospeso | Stato di successo | Stato di fallimento |
+|---|---|---|---|
+| Nuova prenotazione | `TO_CREATE` | `PROCESSED` | `TO_CREATE_FAILED` |
+| Aggiornamento prenotazione | `TO_UPDATE` | `PROCESSED` | `TO_UPDATE_FAILED` |
+| Cancellazione | `TO_CANCEL` | `PROCESSED` | `TO_CANCEL_FAILED` |
+
+## Cosa attiva una sincronizzazione
+
+- **Nuova prenotazione** — Un viaggiatore prenota tramite Wink o un canale affiliato.
+- **Aggiornamento prenotazione** — Cambiano i dettagli della prenotazione (date, informazioni ospite, assegnazione camera).
+- **Cancellazione** — Una prenotazione viene cancellata dal viaggiatore o dalla struttura.
+
+## Monitoraggio
+
+Puoi monitorare lo stato della sincronizzazione tramite il tuo channel manager o la dashboard del PMS collegato. Le voci di sincronizzazione fallite vengono ritentate automaticamente. Se una sincronizzazione continua a fallire, rimane nello stato `*_FAILED` per l’indagine.
+
+## Risoluzione dei problemi
+
+Se le prenotazioni non compaiono nel tuo PMS:
+
+1. **Controlla la connessione del channel manager** — Assicurati che l’integrazione con il PMS o channel manager sia attiva e configurata correttamente.
+2. **Verifica la consegna dei webhook** — Se usi webhook, controlla che il tuo endpoint riceva gli eventi `booking.create` e `booking.cancelled`. Vedi [Catalogo Eventi Webhook](/it/developers/webhook-events#booking-events).
+3. **Esamina le voci fallite** — Le voci di sincronizzazione fallite indicano un problema di connettività o dati con il sistema di destinazione.
+4. **Contatta il supporto** — Se i problemi persistono, il team Wink può investigare le voci di sincronizzazione fallite per tuo conto.
+
+## Ulteriori letture
+
+- [Integrazioni Channel Manager](/it/developers/channel-managers) — Come Wink si collega a PMS e channel manager.
+- [Catalogo Eventi Webhook](/it/developers/webhook-events) — Iscriviti agli eventi di prenotazione.
+- [Prenotazioni (Extranet)](/it/extranet/bookings) — Gestione delle prenotazioni dal portale della struttura.

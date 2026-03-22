@@ -5,9 +5,9 @@ sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Webhooki ļauj jūsu sistēmām saņemt reāllaika paziņojumus, kad jūsu Wink kontā notiek notikumi — jaunas rezervācijas, atcelšanas, maksājumu atjauninājumi un citi. Šī rokasgrāmata ved jūs cauri iestatīšanai un labākajām praksēm.
+Webhooki ļauj jūsu sistēmām saņemt reāllaika paziņojumus, kad jūsu Wink kontā notiek notikumi — jaunas rezervācijas, atcelšanas, maksājumu atjauninājumi un citi. Šī rokasgrāmata soli pa solim ved cauri iestatīšanai un labākajām praksēm.
 
 ## Auditorija
 
@@ -34,33 +34,44 @@ Webhooki ļauj jūsu sistēmām saņemt reāllaika paziņojumus, kad jūsu Wink 
 
 ## Notikumu veidi
 
-Wink atbalsta dažādus notikumu veidus. Biežākie notikumi ir:
+Wink atbalsta **64+ webhook notikumu veidus** dažādās kategorijās, tostarp konta pārvaldība, rezervāciju līgumi, maksājumi, kanālu pārvaldnieka atjauninājumi un vienību administrēšana. Biežākie notikumi ir:
 
-- **Rezervācija izveidota** — jauna rezervācija ir apstiprināta.
-- **Rezervācija atcelta** — rezervācija ir atcelta.
-- **Maksājums pabeigts** — maksājums ir apstrādāts.
-- **Rezervācija atjaunināta** — rezervācijas dati ir mainīti.
+| Kategorija | Piemēri |
+|---|---|
+| **Rezervācija** | `booking.create`, `booking.cancelled` |
+| **Rezervācijas līgums** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Maksājums** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Atmaksas** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Kanālu pārvaldnieks** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Konts** | `account.create`, `account.status.updated` |
+
+Pilnu notikumu veidu sarakstu ar aprakstiem skatiet **Webhook Events Catalog**.
+
+<LinkButton href="/lv/developers/webhook-events">
+  Skatīt visus 64+ notikumu veidus
+</LinkButton>
 
 :::tip
-Sāciet, abonējot visus notikumus. Kad sapratīsiet datu saturu, varat sašaurināt tikai uz tiem notikumiem, kas nepieciešami jūsu sistēmai.
+Sākumā abonējiet visus notikumus izstrādes laikā. Kad sapratīsiet datu saturu, sašauriniet abonementu tikai uz tiem notikumiem, kas nepieciešami jūsu sistēmai.
 :::
 
 ## Labākās prakses
 
 - **Izmantojiet HTTPS** — Wink nosūta datus tikai uz HTTPS galapunktiem.
-- **Atbildiet ātri** — atgrieziet `200 OK` tiklīdz saņemat datus. Smagu apstrādi veiciet asinhroni.
-- **Idempotence** — jūsu apstrādātājam jābūt idempotentam. Wink var mēģināt piegādāt datus atkārtoti, ja nesaņem `200` atbildi.
-- **Avota pārbaude** — pārbaudiet, ka ienākošie pieprasījumi ir no Wink, pirms tos apstrādājat.
-- **Žurnālu veidošana** — reģistrējiet katru saņemto webhook datu. Tas ievērojami atvieglo integrācijas problēmu novēršanu.
+- **Atbildiet ātri** — Atgrieziet `200 OK` tiklīdz saņemat datus. Smagu apstrādi veiciet asinhroni.
+- **Idempotentums** — Jūsu apstrādātājam jābūt idempotentam. Wink var mēģināt piegādāt datus atkārtoti, ja nesaņem `200` atbildi.
+- **Avota pārbaude** — Pārbaudiet, ka ienākošie pieprasījumi ir no Wink, pirms tos apstrādājat.
+- **Žurnālu veidošana** — Reģistrējiet katru saņemto webhook datu kopu. Tas atvieglo integrācijas problēmu novēršanu.
 
 ## Pauzēšana un dzēšana
 
-Jūs varat **atspējot** webhooku, neizdzēšot to. Tas pauzē piegādi, lai varētu veikt problēmu novēršanu, nezaudējot konfigurāciju. Kad esat gatavs, ieslēdziet to atpakaļ.
+Jūs varat **atspējot** webhooku, neizdzēšot to. Tas aptur piegādi, lai varētu veikt problēmu novēršanu, nezaudējot konfigurāciju. Kad esat gatavs, ieslēdziet to atpakaļ.
 
 Webhook dzēšana to neatgriezeniski noņem. Jebkura integrācija, kas paļaujas uz šo webhooku, pārstās saņemt paziņojumus.
 
 ## Papildu lasāmviela
 
-- [Webhooks](/lv/my-account/webhooks) — pilna webhook pārvaldības atsauce.
-- [Applications](/lv/my-account/applications) — pārvaldiet savas API akreditācijas.
-- [Developers > APIs](/lv/developers/apis) — pilna API dokumentācija.
+- [Webhook Events Catalog](/lv/developers/webhook-events) — Pilns visu 64+ notikumu veidu saraksts.
+- [Webhooks](/lv/my-account/webhooks) — Pilna webhook pārvaldības atsauce.
+- [Applications](/lv/my-account/applications) — Pārvaldiet savas API akreditācijas.
+- [Developers > APIs](/lv/developers/apis) — Pilna API dokumentācija.

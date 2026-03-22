@@ -1,19 +1,19 @@
 ---
 title: Webhook Entegrasyonu
-description: Bu rehber, geliştiricilere rezervasyonlar, ödemeler ve diğer olaylar için gerçek zamanlı bildirimler almak üzere webhookların nasıl kurulacağını gösterir.
+description: Bu rehber, geliştiricilere rezervasyonlar, ödemeler ve diğer olaylar için gerçek zamanlı bildirimler almak üzere webhook'ların nasıl kurulacağını gösterir.
 sidebar:
   order: 11
 ---
 
-import { Steps } from '@astrojs/starlight/components';
+import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Webhooklar, Wink hesabınızda gerçekleşen olaylar — yeni rezervasyonlar, iptaller, ödeme güncellemeleri ve daha fazlası — için sistemlerinizin gerçek zamanlı bildirim almasını sağlar. Bu rehber, kurulum ve en iyi uygulamalar konusunda sizi yönlendirir.
+Webhook'lar, Wink hesabınızda gerçekleşen olaylar — yeni rezervasyonlar, iptaller, ödeme güncellemeleri ve daha fazlası — için sistemlerinizin gerçek zamanlı bildirim almasını sağlar. Bu rehber, kurulum ve en iyi uygulamalar konusunda sizi yönlendirir.
 
 ## Hedef Kitle
 
 Bu rehber, Wink'i mülk yönetim sistemleri (PMS), kanal yöneticileri, CRM'ler veya özel panolar gibi harici sistemlerle entegre eden geliştiriciler içindir.
 
-## Webhooklar nasıl çalışır
+## Webhook'lar nasıl çalışır
 
 1. Wink üzerinde bir webhook URL'si kaydedersiniz.
 2. Bir olay gerçekleştiğinde (örneğin, yeni bir rezervasyon), Wink URL'nize bir HTTP POST gönderir.
@@ -22,7 +22,7 @@ Bu rehber, Wink'i mülk yönetim sistemleri (PMS), kanal yöneticileri, CRM'ler 
 ## Webhook kurulumu
 
 <Steps>
-1. Hesabınıza giriş yapın (Extranet, Studio veya TripPay — hepsi webhookları destekler).
+1. Hesabınıza giriş yapın (Extranet, Studio veya TripPay — hepsi webhook desteği sunar).
 2. `Applications` bölümüne, ardından `Webhooks` sekmesine gidin. Bkz. [Webhooks](/tr/my-account/webhooks).
 3. `Create webhook` butonuna tıklayın.
 4. Bir **isim** girin (örneğin, "PMS Rezervasyon Senkronizasyonu").
@@ -34,33 +34,44 @@ Bu rehber, Wink'i mülk yönetim sistemleri (PMS), kanal yöneticileri, CRM'ler 
 
 ## Olay türleri
 
-Wink çeşitli olay türlerini destekler. Yaygın olaylar şunlardır:
+Wink, hesap yönetimi, rezervasyon sözleşmeleri, ödemeler, kanal yöneticisi güncellemeleri ve yönetim varlıkları dahil olmak üzere kategorilerde **64+ webhook olay türü** destekler. Yaygın olaylar şunlardır:
 
-- **Rezervasyon oluşturuldu** — Yeni bir rezervasyon onaylandı.
-- **Rezervasyon iptal edildi** — Bir rezervasyon iptal edildi.
-- **Ödeme tamamlandı** — Ödeme işlendi.
-- **Rezervasyon güncellendi** — Rezervasyon detayları değişti.
+| Kategori | Örnekler |
+|---|---|
+| **Rezervasyon** | `booking.create`, `booking.cancelled` |
+| **Rezervasyon sözleşmesi** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Ödeme** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **İadeler** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Kanal yöneticisi** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Hesap** | `account.create`, `account.status.updated` |
+
+Her olay türünün açıklamalarıyla tam listesi için **Webhook Olayları Kataloğu**na bakın.
+
+<LinkButton href="/tr/developers/webhook-events">
+  Tüm 64+ olay türünü görüntüle
+</LinkButton>
 
 :::tip
-Tüm olaylara abone olarak başlayın. Yükleri anladıktan sonra, sisteminizin ihtiyaç duyduğu olaylara indirgemek için daraltabilirsiniz.
+Geliştirme sırasında tüm olaylara abone olarak başlayın. Yükleri anladıktan sonra, sisteminizin ihtiyaç duyduğu olaylarla sınırlandırın.
 :::
 
 ## En iyi uygulamalar
 
-- **HTTPS kullanın** — Wink yükleri yalnızca HTTPS uç noktalarına gönderir.
+- **HTTPS kullanın** — Wink, yükleri yalnızca HTTPS uç noktalarına gönderir.
 - **Hızlı yanıt verin** — Yükü aldığınızda hemen `200 OK` döndürün. Ağır işlemleri asenkron yapın.
-- **İdempotentlik** — İşleyiciniz idempotent olmalıdır. Wink, `200` yanıtı almazsa teslimatı yeniden deneyebilir.
-- **Kaynağı doğrulayın** — Gelen isteklerin Wink'ten geldiğini işlemden önce doğrulayın.
-- **Kayıt tutma** — Aldığınız her webhook yükünü kaydedin. Bu, entegrasyon sorunlarını çözmeyi çok kolaylaştırır.
+- **İdempotentlik** — İşleyiciniz idempotent olmalıdır. Wink, `200` yanıtı alamazsa teslimatı yeniden deneyebilir.
+- **Kaynağı doğrulayın** — İşlem yapmadan önce gelen isteklerin Wink'ten geldiğini doğrulayın.
+- **Kayıt tutma** — Aldığınız her webhook yükünü kaydedin. Bu, entegrasyon sorunlarını çözmeyi kolaylaştırır.
 
 ## Duraklatma ve silme
 
 Bir webhook'u silmeden **devre dışı bırakabilirsiniz**. Bu, teslimatı duraklatır ve yapılandırmanızı kaybetmeden sorun gidermenize olanak tanır. Hazır olduğunuzda tekrar açabilirsiniz.
 
-Webhook'u silmek kalıcı olarak kaldırır. Bu webhook'a bağlı herhangi bir entegrasyon bildirim almamaya başlar.
+Webhook'u silmek, onu kalıcı olarak kaldırır. Bu webhook'a bağlı herhangi bir entegrasyon bildirim almaya devam edemez.
 
 ## Daha fazla okuma
 
+- [Webhook Olayları Kataloğu](/tr/developers/webhook-events) — Tüm 64+ olay türünün tam listesi.
 - [Webhooks](/tr/my-account/webhooks) — Webhook yönetimi için tam referans.
 - [Applications](/tr/my-account/applications) — API kimlik bilgilerinizi yönetin.
 - [Developers > APIs](/tr/developers/apis) — Tam API dokümantasyonu.
