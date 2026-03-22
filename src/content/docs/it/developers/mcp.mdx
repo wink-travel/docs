@@ -2,13 +2,13 @@
 title: Server MCP
 description: Collega rapidamente agenti AI alla documentazione Wink e alle specifiche OpenAPI live tramite il server MCP ospitato.
 sidebar:
-  order: 10
+  "order: 10"
 ---
 
 import { LinkButton } from '@astrojs/starlight/components';
 
 ## Panoramica
-Il server MCP Wink ospitato è disponibile all’indirizzo:
+Il server MCP Wink ospitato è disponibile all'indirizzo:
 
 ```
 https://docs.mcp.wink.travel/mcp
@@ -20,7 +20,7 @@ Indirizza i client AI compatibili (VS Code, Cursor, altri che implementano il tr
 - Eseguire ricerche semantiche / per parola chiave leggere su documenti e API live
 
 ## Trasporto
-Usa l’endpoint HTTP principale e streamabile:
+Usa l'endpoint HTTP principale e streamable:
 
 ```
 https://docs.mcp.wink.travel/mcp
@@ -35,18 +35,18 @@ https://docs.mcp.wink.travel/sse
 ### Claude Code
 Documentazione ufficiale: [Collega Claude Code agli strumenti tramite MCP](https://code.claude.com/docs/en/mcp)
 
-Anthropic consiglia il trasporto HTTP remoto per server MCP ospitati in cloud:
+Anthropic raccomanda il trasporto HTTP remoto per server MCP ospitati in cloud:
 ```bash
 claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
 claude mcp list
 ```
 
-All’interno di Claude Code, esegui `/mcp` per controllare lo stato del server. Se vuoi condividere il server con tutto il repository, aggiungi `--scope project` così Claude Code scrive la configurazione in `.mcp.json`.
+All'interno di Claude Code, esegui `/mcp` per ispezionare lo stato del server. Se vuoi condividere il server con tutto il repository, aggiungi `--scope project` così Claude Code scrive la configurazione in `.mcp.json`.
 
 ### Codex
 Documentazione ufficiale: [Quickstart Docs MCP per Codex](https://developers.openai.com/resources/docs-mcp)
 
-OpenAI documenta la configurazione MCP tramite la CLI Codex, e segnala che la configurazione è condivisa con l’estensione IDE:
+OpenAI documenta la configurazione MCP tramite la CLI Codex, e nota che la configurazione è condivisa con l’estensione IDE:
 ```bash
 codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
 codex mcp list
@@ -54,7 +54,7 @@ codex mcp list
 
 ### Cursor
 Documentazione MCP Cursor: https://cursor.com/docs/context/mcp
-Configurazione: aggiungi il server remoto tramite le impostazioni MCP.
+Configurazione: Aggiungi server remoto tramite le impostazioni MCP.
 ```json
 {
   "mcpServers": {
@@ -67,7 +67,7 @@ Configurazione: aggiungi il server remoto tramite le impostazioni MCP.
 
 ### VS Code
 Documentazione ufficiale: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Configurazione remota minima (file `mcp.json` utente o workspace):
+Configurazione remota minima (utente o workspace `mcp.json`):
 ```json
 {
   "servers": {
@@ -82,40 +82,46 @@ Configurazione remota minima (file `mcp.json` utente o workspace):
 Suggerimenti:
 - Usa la Command Palette: “MCP: List Servers” per confermare la connessione e navigare tra gli strumenti.
 - Il selettore degli strumenti ti permette di abilitare/disabilitare `api_search` e `docs_search`.
-- Aggiungi contesto: vista Chat → Aggiungi Contesto → Risorse MCP per allegare pagine di documentazione.
+- Aggiungi contesto: Vista Chat → Aggiungi Contesto → Risorse MCP per allegare pagine di documentazione.
 
-## URI delle Risorse Core
+## URI Risorse Core
 
 | URI | Descrizione |
 |-----|-------------|
 | `wink://docs` | Indice della documentazione (raggruppato per categoria) |
 | `wink://docs/{path}` | Articolo specifico della documentazione (Markdown / MDX) |
 | `wink://api` | Catalogo OpenAPI live scoperto dalla configurazione swagger di Wink |
-| `wink://api/{apiName}` | Sommario compatto dell’API con autenticazione, tag, header e operazioni di esempio |
+| `wink://api/{apiName}` | Sommario compatto API con autenticazione, tag, header e operazioni di esempio |
 | `wink://api/{apiName}/operations` | Elenco completo delle operazioni raggruppate per tag |
-| `wink://api/{apiName}/operation/{key}` | Dettaglio di una singola operazione (parametri, corpo richiesta, risposte) |
+| `wink://api/{apiName}/operation/{key}` | Dettaglio singola operazione (parametri, corpo richiesta, risposte) |
 | `wink://api/{apiName}/schema/{schemaName}` | Schema componente risolto con campi annidati, tipi ed esempi |
-| `wink://api/{apiName}/operation/{key}/request` | Vista focalizzata sulla richiesta con input obbligatori ed esempio minimo di payload |
+| `wink://api/{apiName}/operation/{key}/request` | Vista focalizzata sulla richiesta con input obbligatori ed esempio minimo payload |
 | `wink://api/{apiName}/operation/{key}/response/{status}` | Vista focalizzata sulla risposta per un codice di stato specifico |
 | `wink://api/{apiName}/operation/{key}/recipe` | Flusso orientato al compito per chiamare correttamente quell’operazione |
 
 ## Strumenti di Ricerca (Riferimento Rapido)
 | Strumento | Scopo | Esempi Tipici di Query |
 |-----------|-------|-----------------------|
-| `api_search` | Trova l’API live o l’operazione da integrare | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
+| `api_search` | Trova l’API live o l’operazione con cui integrare | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
 | `docs_search` | Trova documenti concettuali / guide | `authentication`, `webhooks`, `wordPress` |
 
 Lascia `query` vuoto per ricevere suggerimenti. Ogni risultato include l’URI MCP che puoi aprire.
 Per i risultati sulle operazioni, `api_search` restituisce anche URI collegati di richiesta, risposta, schema e ricetta così gli agenti possono saltare direttamente alla sotto-risorsa più utile.
 
-## Modalità d’Uso Tipica
+## Schema di Utilizzo Tipico
 1. Esegui `api_search` con la tua intenzione (es. *"create affiliate"* o *"payment receipt"*).
 2. Apri l’URI `wink://api/...` restituito, o segui i suoi campi collegati `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` e `recipe_uri`.
 3. Usa `docs_search` per concetti di supporto (autenticazione, webhook, workflow).
 
+## Competenze AI
+
+Le competenze agent predefinite usano questo server MCP come fonte di verità. Le competenze forniscono al tuo agente di coding un flusso di lavoro strutturato per sviluppare contro le API Wink — invece di indovinare gli endpoint, l’agente legge i contratti live direttamente dal server MCP.
+
+Consulta [AI Skills](/it/developers/ai-skills) per le competenze disponibili e le istruzioni di installazione.
+
 ## Note
 - Ogni URI restituito può essere aperto dall’agente per il contenuto completo.
-- L’albero `wink://api` è live e segue il catalogo OpenAPI corrente a monte invece di un indice generato dal repository.
+- L’albero `wink://api` è live e segue il catalogo OpenAPI upstream corrente invece di un indice generato dal repository.
 - I suggerimenti appaiono automaticamente quando le query sono vuote.
 
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink su GitHub</LinkButton>

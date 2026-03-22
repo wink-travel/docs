@@ -1,0 +1,78 @@
+---
+title: AIスキル
+description: MCPサーバーを真実の情報源として使用し、Wink APIと連携する方法をAIコーディングアシスタントに教える事前構築済みのエージェントスキル。
+sidebar:
+  "order: 11"
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+AIスキルは、コーディングエージェントにWinkとの連携方法を教える持ち運び可能な指示パッケージです。トレーニングデータや古いドキュメントに依存する代わりに、各スキルはエージェントに対してAPI契約やプラットフォームドキュメントのライブの真実の情報源として[Wink MCPサーバー](/ja/developers/mcp)を使用するよう指示します。
+
+スキルは、それらをサポートする任意のエージェントクライアント（Claude Code、Codex、Cursorなど）で動作します。
+
+## 利用可能なスキル
+
+### wink-api-builder
+
+Wink API統合の実装、レビュー、またはデバッグを行います。このスキルはエージェントに構造化されたワークフローを案内します：
+
+1. `api_search`を使って適切なAPI操作を検索
+2. MCPサーバーからライブのリクエスト/レスポンス契約を開く
+3. ドキュメントから認証設定を取得
+4. 検証済みの契約に基づいてコードを書く
+5. 既存のコードと現在のAPI間の不一致をフラグ付け
+
+以下に便利です：
+- 任意のWink APIの新しいクライアントメソッドの構築
+- 契約不一致のデバッグ（例：HTTP 400を返すリクエスト）
+- ライブ仕様に対する既存統合のレビュー
+
+## インストール
+
+スキルフォルダをエージェントのスキルディレクトリにコピーしてください。
+
+:::tip
+Wink MCPサーバーは同じ環境で接続されている必要があります。セットアップ手順は[MCPサーバー](/ja/developers/mcp)をご覧ください。
+:::
+
+**Claude Code**
+
+```bash
+# リポジトリローカル
+cp -r skills/wink-api-builder .claude/skills/
+
+# またはユーザーレベル
+cp -r skills/wink-api-builder ~/.claude/skills/
+```
+
+以下で呼び出します：
+```
+/wink-api-builder add a TypeScript client for the Wink affiliate create flow
+```
+
+**Codex**
+
+```bash
+# リポジトリローカル
+cp -r skills/wink-api-builder .agents/skills/
+
+# またはユーザーレベル
+cp -r skills/wink-api-builder $CODEX_HOME/skills/
+```
+
+以下で呼び出します：
+```
+Use $wink-api-builder to add a TypeScript client for the Wink affiliate create flow.
+```
+
+**その他のエージェント**
+
+スキルフォルダをエージェントがスキルを解決する場所に配置してください。エントリーポイントは`SKILL.md`です。
+
+## 要件
+
+- 接続された[Wink MCPサーバー](/ja/developers/mcp)
+- MCPおよびスキルをサポートするエージェントクライアント
+
+<LinkButton href="https://github.com/wink-travel/wink-skills" variant="secondary" icon="external">GitHubのSkills</LinkButton>

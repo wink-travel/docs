@@ -1,0 +1,78 @@
+---
+title: AI dovednosti
+description: Předpřipravené dovednosti agenta, které učí AI kódovací asistenty, jak pracovat s Wink API pomocí MCP serveru jako zdroje pravdy.
+sidebar:
+  "order: 11"
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+AI dovednosti jsou přenosné balíčky instrukcí, které učí kódovací agenty, jak pracovat s Wink. Místo spoléhání se na tréninková data nebo zastaralou dokumentaci, každá dovednost nasměruje agenta k použití [Wink MCP serveru](/cs/developers/mcp) jako živého zdroje pravdy pro API kontrakty a dokumentaci platformy.
+
+Dovednosti fungují s jakýmkoli agentem, který je podporuje — Claude Code, Codex, Cursor a dalšími.
+
+## Dostupné dovednosti
+
+### wink-api-builder
+
+Implementujte, kontrolujte nebo ladte integrace Wink API. Dovednost provede agenta strukturovaným pracovním postupem:
+
+1. Vyhledání správné API operace pomocí `api_search`
+2. Otevření živých požadavků/odpovědí z MCP serveru
+3. Stažení nastavení autentizace z dokumentace
+4. Napsání kódu podle ověřeného kontraktu
+5. Označení jakýchkoli nesouladů mezi existujícím kódem a aktuálním API
+
+Užitečné pro:
+- Vytváření nových klientských metod pro jakékoli Wink API
+- Ladění nesouladů kontraktů (např. požadavek vracející HTTP 400)
+- Kontrolu stávajících integrací vůči živé specifikaci
+
+## Instalace
+
+Zkopírujte složku dovednosti do adresáře dovedností vašeho agenta.
+
+:::tip
+Wink MCP server musí být připojen ve stejném prostředí. Viz [MCP Server](/cs/developers/mcp) pro instrukce nastavení.
+:::
+
+**Claude Code**
+
+```bash
+# lokálně v repozitáři
+cp -r skills/wink-api-builder .claude/skills/
+
+# nebo na úrovni uživatele
+cp -r skills/wink-api-builder ~/.claude/skills/
+```
+
+Spusťte příkazem:
+```
+/wink-api-builder add a TypeScript client for the Wink affiliate create flow
+```
+
+**Codex**
+
+```bash
+# lokálně v repozitáři
+cp -r skills/wink-api-builder .agents/skills/
+
+# nebo na úrovni uživatele
+cp -r skills/wink-api-builder $CODEX_HOME/skills/
+```
+
+Spusťte příkazem:
+```
+Use $wink-api-builder to add a TypeScript client for the Wink affiliate create flow.
+```
+
+**Jiní agenti**
+
+Umístěte složku dovednosti kamkoli, odkud váš agent načítá dovednosti. Vstupním bodem je `SKILL.md`.
+
+## Požadavky
+
+- Připojený [Wink MCP server](/cs/developers/mcp)
+- Agent klient s podporou MCP a dovedností
+
+<LinkButton href="https://github.com/wink-travel/wink-skills" variant="secondary" icon="external">Dovednosti na GitHubu</LinkButton>

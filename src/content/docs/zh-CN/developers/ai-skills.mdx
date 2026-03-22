@@ -1,0 +1,78 @@
+---
+title: AI 技能
+description: 预构建的代理技能，教 AI 编码助手如何使用 MCP 服务器作为真实来源来操作 Wink API。
+sidebar:
+  "order: 11"
+---
+
+import { LinkButton } from '@astrojs/starlight/components';
+
+AI 技能是可移植的指令包，教编码代理如何与 Wink 协作。每个技能都指导代理使用 [Wink MCP 服务器](/zh-CN/developers/mcp) 作为 API 合约和平台文档的实时真实来源，而不是依赖训练数据或过时的文档。
+
+技能适用于支持它们的任何代理客户端——Claude Code、Codex、Cursor 等。
+
+## 可用技能
+
+### wink-api-builder
+
+实现、审查或调试 Wink API 集成。该技能引导代理完成结构化工作流程：
+
+1. 通过 `api_search` 搜索正确的 API 操作
+2. 打开 MCP 服务器上的实时请求/响应合约
+3. 从文档中获取身份验证设置
+4. 根据已验证的合约编写代码
+5. 标记现有代码与当前 API 之间的任何不匹配
+
+适用场景：
+- 为任何 Wink API 构建新的客户端方法
+- 调试合约不匹配（例如请求返回 HTTP 400）
+- 根据实时规范审查现有集成
+
+## 安装
+
+将技能文件夹复制到代理的技能目录中。
+
+:::tip
+Wink MCP 服务器必须在相同环境中连接。请参阅 [MCP 服务器](/zh-CN/developers/mcp) 获取设置说明。
+:::
+
+**Claude Code**
+
+```bash
+# 仓库本地
+cp -r skills/wink-api-builder .claude/skills/
+
+# 或用户级别
+cp -r skills/wink-api-builder ~/.claude/skills/
+```
+
+调用方式：
+```
+/wink-api-builder add a TypeScript client for the Wink affiliate create flow
+```
+
+**Codex**
+
+```bash
+# 仓库本地
+cp -r skills/wink-api-builder .agents/skills/
+
+# 或用户级别
+cp -r skills/wink-api-builder $CODEX_HOME/skills/
+```
+
+调用方式：
+```
+Use $wink-api-builder to add a TypeScript client for the Wink affiliate create flow.
+```
+
+**其他代理**
+
+将技能文件夹放置在代理解析技能的位置。入口文件为 `SKILL.md`。
+
+## 要求
+
+- 已连接的 [Wink MCP 服务器](/zh-CN/developers/mcp)
+- 支持 MCP 和技能的代理客户端
+
+<LinkButton href="https://github.com/wink-travel/wink-skills" variant="secondary" icon="external">GitHub 上的技能</LinkButton>
