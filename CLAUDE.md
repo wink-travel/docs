@@ -24,6 +24,9 @@ npm run dev
 # or
 npm start
 
+# Run schema and frontmatter validation
+npm run check
+
 # Build for production
 npm run build
 
