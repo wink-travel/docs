@@ -23,6 +23,12 @@ Run dev server:
 npm run dev
 ```
 
+Validate content schemas and types (lighter than a full build):
+
+```bash
+npm run check
+```
+
 Build production artifacts:
 
 ```bash
