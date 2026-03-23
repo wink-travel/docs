@@ -28,3 +28,16 @@ Build production artifacts:
 ```bash
 npm run build
 ```
+
+## Environment Variables
+
+| Variable | Required | Description |
+| -------- | -------- | ----------- |
+| `GH_API_TOKEN` | Yes (for build) | GitHub personal access token used by `starlight-changelogs` to fetch release data from `wink-travel` repos. The build will fail without it. |
+
+Create a `.env` file in the project root or export the variable before running `npm run build`:
+
+```bash
+export GH_API_TOKEN=ghp_...
+npm run build
+```
