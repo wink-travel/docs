@@ -17,7 +17,7 @@ Wink ने एक दशक पहले होटलों को ऑनबो
 
 - एक ही खाते के तहत कई संपत्तियों का प्रबंधन करें।
 - संपत्तियों को प्रबंधक असाइन करें।
-- एक ही स्थान पर कई संपत्तियों का विपणन और बिक्री करने के लिए [WinkLinks](/hi/link-manager/wink-links), [WordPress](/hi/developers/wordpress) और हमारे [Web Components](/hi/developers/web-components) का उपयोग करें।
+- एक ही स्थान पर कई संपत्तियों का विपणन और बिक्री करने के लिए [WinkLinks](/hi/link-manager/wink-links), [WordPress](/hi/developers/integrations/wordpress) और हमारे [Web Components](/hi/developers/integrations/web-components) का उपयोग करें।
 
 ## प्रबंधन कंपनियाँ
 

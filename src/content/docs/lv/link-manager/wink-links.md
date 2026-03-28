@@ -50,7 +50,7 @@ WinkLinks ir arī lielisks veids, kā parādīt ceļojumu inventāru, ko atradā
 Izmantojiet WinkLinks, lai pārdotu savus:
 
 - [Kopīgojamās saites](/lv/studio/shareable-links) — izvēlieties, kā parādīt:
-    - [Reklāmas baneri](/lv/developers/web-components/#content-loader).
+    - [Reklāmas baneri](/lv/developers/integrations/web-components/#content-loader).
     - Parastu saiti ar reāllaika cenu atjauninājumiem.
 - [Kartītes](/lv/studio/cards) — Rezervējamas kartītes ar reāllaika cenām un pieejamību.
 - [Režģus](/lv/studio/grids) — Režģis ar rezervējamām kartītēm.

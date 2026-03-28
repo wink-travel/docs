@@ -17,7 +17,7 @@ Brandurile și lanțurile au nevoi ușor diferite față de o singură proprieta
 
 - Gestiona mai multe proprietăți sub un singur cont.
 - Atribui manageri proprietăților.
-- Folosi [WinkLinks](/ro/link-manager/wink-links), [WordPress](/ro/developers/wordpress) și [Web Components](/ro/developers/web-components) pentru a promova și vinde mai multe proprietăți într-un singur loc.
+- Folosi [WinkLinks](/ro/link-manager/wink-links), [WordPress](/ro/developers/integrations/wordpress) și [Web Components](/ro/developers/integrations/web-components) pentru a promova și vinde mai multe proprietăți într-un singur loc.
 
 ## Companii de management
 

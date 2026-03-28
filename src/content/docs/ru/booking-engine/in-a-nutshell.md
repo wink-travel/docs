@@ -36,12 +36,12 @@ Booking engine — это ядро нашей платформы.
 
 Booking engine — это набор повторно используемых функций, которые мы предоставляем через https://ota.wink.travel; высоко настраиваемый сайт для отелей и аффилиатов, чтобы продавать свои услуги путешественникам.
 
-Интеграторы, желающие ещё больше свободы, имеют доступ ко всем тем же функциям через наш [плагин для WordPress](/ru/developers/wordpress/), [Web Components](/ru/developers/web-components) и [API](/ru/developers/apis).
+Интеграторы, желающие ещё больше свободы, имеют доступ ко всем тем же функциям через наш [плагин для WordPress](/ru/developers/integrations/wordpress/), [Web Components](/ru/developers/integrations/web-components) и [API](/ru/developers/apis).
 
 Продолжайте читать следующие разделы, чтобы узнать больше о возможностях booking engine.
 
 ## Дополнительное чтение
 
-- Узнайте о нашем [плагине для WordPress](/ru/developers/wordpress/).
-- Узнайте о наших [Web Components](/ru/developers/web-components).
+- Узнайте о нашем [плагине для WordPress](/ru/developers/integrations/wordpress/).
+- Узнайте о наших [Web Components](/ru/developers/integrations/web-components).
 - Узнайте о наших [API](/ru/developers/apis).

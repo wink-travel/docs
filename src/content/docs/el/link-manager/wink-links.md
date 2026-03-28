@@ -50,7 +50,7 @@ sidebar:
 Χρησιμοποιήστε το WinkLinks για να πουλήσετε τα:
 
 - [Μοιράσιμους συνδέσμους](/el/studio/shareable-links) - Επιλέξτε να εμφανίζονται ως:
-    - [Διαφημιστικό banner](/el/developers/web-components/#content-loader).
+    - [Διαφημιστικό banner](/el/developers/integrations/web-components/#content-loader).
     - Κανονικός σύνδεσμος με ενημερώσεις τιμών σε πραγματικό χρόνο.
 - [Κάρτες](/el/studio/cards) - Κάρτες με δυνατότητα κράτησης με τιμές & διαθεσιμότητα σε πραγματικό χρόνο.
 - [Πλέγματα](/el/studio/grids) - Πλέγμα με κάρτες που μπορούν να κλειστούν.

@@ -36,12 +36,12 @@ Jego obowiązki obejmują:
 
 Silnik rezerwacji to zbiór wielokrotnego użytku funkcji, które udostępniamy przez https://ota.wink.travel; wysoce konfigurowalną stronę internetową dla hoteli i afiliantów do sprzedaży ich ofert podróżnym.
 
-Integratorzy, którzy chcą jeszcze większej swobody, mają dostęp do tych samych funkcji poprzez naszą [wtyczkę WordPress](/pl/developers/wordpress/), [Web Components](/pl/developers/web-components) oraz [API](/pl/developers/apis).
+Integratorzy, którzy chcą jeszcze większej swobody, mają dostęp do tych samych funkcji poprzez naszą [wtyczkę WordPress](/pl/developers/integrations/wordpress/), [Web Components](/pl/developers/integrations/web-components) oraz [API](/pl/developers/apis).
 
 Przejdź do kolejnych sekcji, aby dowiedzieć się więcej o tym, co oferuje silnik rezerwacji.
 
 ## Dalsza lektura
 
-- Przeczytaj o naszej [wtyczce WordPress](/pl/developers/wordpress/).
-- Przeczytaj o naszych [Web Components](/pl/developers/web-components).
+- Przeczytaj o naszej [wtyczce WordPress](/pl/developers/integrations/wordpress/).
+- Przeczytaj o naszych [Web Components](/pl/developers/integrations/web-components).
 - Przeczytaj o naszych [API](/pl/developers/apis).

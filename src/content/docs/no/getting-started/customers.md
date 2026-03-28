@@ -17,7 +17,7 @@ Merker og kjeder har litt andre behov enn en enkelt eiendom. På Wink kan de:
 
 - Administrere flere eiendommer under én konto.
 - Tilordne ledere til eiendommer
-- Bruke [WinkLinks](/no/link-manager/wink-links), [WordPress](/no/developers/wordpress) og våre [Web Components](/no/developers/web-components) for å markedsføre og selge flere eiendommer på ett sted.
+- Bruke [WinkLinks](/no/link-manager/wink-links), [WordPress](/no/developers/integrations/wordpress) og våre [Web Components](/no/developers/integrations/web-components) for å markedsføre og selge flere eiendommer på ett sted.
 
 ## Forvaltningsselskaper
 

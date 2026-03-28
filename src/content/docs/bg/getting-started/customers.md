@@ -17,7 +17,7 @@ Wink започна да въвежда хотели преди десетиле
 
 - Да управляват множество хотели под един акаунт.
 - Да назначават мениджъри на хотели.
-- Да използват [WinkLinks](/bg/link-manager/wink-links), [WordPress](/bg/developers/wordpress) и нашите [Web Components](/bg/developers/web-components), за да рекламират и продават множество хотели на едно място.
+- Да използват [WinkLinks](/bg/link-manager/wink-links), [WordPress](/bg/developers/integrations/wordpress) и нашите [Web Components](/bg/developers/integrations/web-components), за да рекламират и продават множество хотели на едно място.
 
 ## Управляващи компании
 

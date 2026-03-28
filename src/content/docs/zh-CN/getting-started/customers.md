@@ -17,7 +17,7 @@ Wink十年前开始为酒店提供接入服务。酒店使用Wink有效管理其
 
 - 在一个账户下管理多个酒店。
 - 为酒店分配管理人员。
-- 使用[WinkLinks](/zh-CN/link-manager/wink-links)、[WordPress](/zh-CN/developers/wordpress)和我们的[Web Components](/zh-CN/developers/web-components)在一个平台上推广和销售多个酒店。
+- 使用[WinkLinks](/zh-CN/link-manager/wink-links)、[WordPress](/zh-CN/developers/integrations/wordpress)和我们的[Web Components](/zh-CN/developers/integrations/web-components)在一个平台上推广和销售多个酒店。
 
 ## 管理公司
 

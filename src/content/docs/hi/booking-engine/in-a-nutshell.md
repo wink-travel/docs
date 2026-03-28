@@ -36,12 +36,12 @@ sidebar:
 
 बुकिंग इंजन पुन: उपयोग योग्य कार्यक्षमता का एक संग्रह है जिसे हम https://ota.wink.travel के माध्यम से प्रस्तुत करते हैं; यह होटलों और सहायक को यात्रियों को अपने उत्पाद बेचने के लिए अत्यधिक अनुकूलन योग्य वेबसाइट है।
 
-इंटीग्रेटर्स, जो और भी अधिक स्वतंत्रता चाहते हैं, हमारे [WordPress प्लगइन](/hi/developers/wordpress/), [Web Components](/hi/developers/web-components) और [APIs](/hi/developers/apis) के माध्यम से सभी समान सुविधाओं तक पहुंच रखते हैं।
+इंटीग्रेटर्स, जो और भी अधिक स्वतंत्रता चाहते हैं, हमारे [WordPress प्लगइन](/hi/developers/integrations/wordpress/), [Web Components](/hi/developers/integrations/web-components) और [APIs](/hi/developers/apis) के माध्यम से सभी समान सुविधाओं तक पहुंच रखते हैं।
 
 अगले अनुभागों में पढ़ना जारी रखें ताकि आप जान सकें कि बुकिंग इंजन क्या-क्या प्रदान करता है।
 
 ## आगे पढ़ें
 
-- हमारे [WordPress प्लगइन](/hi/developers/wordpress/) के बारे में पढ़ें।
-- हमारे [Web Components](/hi/developers/web-components) के बारे में पढ़ें।
+- हमारे [WordPress प्लगइन](/hi/developers/integrations/wordpress/) के बारे में पढ़ें।
+- हमारे [Web Components](/hi/developers/integrations/web-components) के बारे में पढ़ें।
 - हमारे [APIs](/hi/developers/apis) के बारे में पढ़ें।

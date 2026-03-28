@@ -50,7 +50,7 @@ WinkLinksは、[Wink Studio](https://studio.wink.travel)を通じて見つけた
 WinkLinksを使って販売できるもの：
 
 - [共有可能なリンク](/ja/studio/shareable-links) - 表示方法を選択可能：
-    - [広告バナー](/ja/developers/web-components/#content-loader)。
+    - [広告バナー](/ja/developers/integrations/web-components/#content-loader)。
     - リアルタイム価格更新付きの通常リンク。
 - [カード](/ja/studio/cards) - リアルタイム価格・空室状況付きの予約可能なカード。
 - [グリッド](/ja/studio/grids) - 予約可能なカードを並べたグリッド。

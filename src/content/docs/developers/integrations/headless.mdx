@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Embed Wink travel inventory into any headless CMS (Contentful, Strapi, Sanity, etc.) or custom-built site.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wink web components are framework-agnostic custom HTML elements. If your headless CMS renders HTML — whether through Next.js, Nuxt, Astro, SvelteKit, or any other framework — you can embed Wink components without any special integration.
+
+## The three-step embed
+
+Every Wink integration, regardless of platform, follows the same three steps.
+
+### 1. Include the stylesheet
+
+Add this to your document `<head>` (or equivalent global layout):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Include the JavaScript
+
+Add this before your closing `</body>` tag (or in your layout's script section):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Add the application loader
+
+Place this **once per page**, anywhere in the body (typically in your global layout footer):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Your Client ID is available in your Wink account under [Applications](/my-account/applications).
+:::
+
+## Framework examples
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+TypeScript users: add a `global.d.ts` that declares the custom element types, or use the [`@wink/elements`](https://github.com/wink2travel/wink-elements) npm package which ships type declarations.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Placing components in content
+
+In your CMS's rich text or custom field types, embed component tags directly in the HTML output:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+For Contentful, Strapi, Sanity, or similar headless platforms, use a **Rich Text** field or a **Custom Block** that renders raw HTML, and paste the component tag there.
+
+## npm package
+
+For TypeScript projects, the [`@wink/elements`](https://github.com/wink2travel/wink-elements) package provides:
+- A `load()` function that injects the CDN scripts programmatically
+- Full TypeScript type declarations for all component attributes
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Call once at app startup
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Available components
+
+| Component | HTML tag | Purpose |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Display hotel cards, grids, maps |
+| Lookup | `<wink-lookup>` | Search bar for destinations |
+| Search button | `<wink-search-button>` | Open itinerary picker |
+| Account button | `<wink-account-button>` | Sign in / user menu |
+| Itinerary button | `<wink-itinerary-button>` | Show current itinerary |
+| Itinerary picker | `<wink-itinerary-picker>` | Full itinerary form |
+| Shopping cart | `<wink-shopping-cart-button>` | Cart summary button |
+
+See [Web Components](/developers/integrations/web-components) for the full attribute reference.

@@ -17,7 +17,7 @@ Wink เริ่มต้นการรับโรงแรมเข้าร
 
 - จัดการที่พักหลายแห่งภายใต้บัญชีเดียว
 - มอบหมายผู้จัดการให้กับที่พักแต่ละแห่ง
-- ใช้ [WinkLinks](/th/link-manager/wink-links), [WordPress](/th/developers/wordpress) และ [Web Components](/th/developers/web-components) ของเราเพื่อทำการตลาดและขายที่พักหลายแห่งในที่เดียวกัน
+- ใช้ [WinkLinks](/th/link-manager/wink-links), [WordPress](/th/developers/integrations/wordpress) และ [Web Components](/th/developers/integrations/web-components) ของเราเพื่อทำการตลาดและขายที่พักหลายแห่งในที่เดียวกัน
 
 ## บริษัทบริหารจัดการ
 

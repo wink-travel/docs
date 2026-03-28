@@ -17,7 +17,7 @@ Brendovi i lance imaju nešto drugačije potrebe od pojedinačnih objekata. Na W
 
 - Upravljati više objekata pod jednim nalogom.
 - Dodeljivati menadžere objektima
-- Koristiti [WinkLinks](/sr/link-manager/wink-links), [WordPress](/sr/developers/wordpress) i naše [Web komponente](/sr/developers/web-components) za marketing i prodaju više objekata na jednom mestu.
+- Koristiti [WinkLinks](/sr/link-manager/wink-links), [WordPress](/sr/developers/integrations/wordpress) i naše [Web komponente](/sr/developers/integrations/web-components) za marketing i prodaju više objekata na jednom mestu.
 
 ## Menadžerske kompanije
 

@@ -36,12 +36,12 @@ Jeho odpovědnosti zahrnují:
 
 Rezervační systém je soubor znovupoužitelné funkčnosti, kterou zpřístupňujeme prostřednictvím https://ota.wink.travel; vysoce přizpůsobitelné webové stránky pro hotely a partnery, aby mohli prodávat své služby cestovatelům.
 
-Integrátoři, kteří chtějí ještě větší svobodu, mají přístup ke všem stejným funkcím prostřednictvím našeho [WordPress pluginu](/cs/developers/wordpress/), [Web Components](/cs/developers/web-components) a [API](/cs/developers/apis).
+Integrátoři, kteří chtějí ještě větší svobodu, mají přístup ke všem stejným funkcím prostřednictvím našeho [WordPress pluginu](/cs/developers/integrations/wordpress/), [Web Components](/cs/developers/integrations/web-components) a [API](/cs/developers/apis).
 
 Pokračujte do dalších sekcí a přečtěte si více o tom, co rezervační systém nabízí.
 
 ## Další čtení
 
-- Přečtěte si o našem [WordPress pluginu](/cs/developers/wordpress/).
-- Přečtěte si o našich [Web Components](/cs/developers/web-components).
+- Přečtěte si o našem [WordPress pluginu](/cs/developers/integrations/wordpress/).
+- Přečtěte si o našich [Web Components](/cs/developers/integrations/web-components).
 - Přečtěte si o našich [API](/cs/developers/apis).

@@ -50,7 +50,7 @@ WinkLinks is ook een geweldige manier om de reisvoorraad die je hebt gevonden vi
 Gebruik WinkLinks om je:
 
 - [Deelbare links](/nl/studio/shareable-links) te verkopen - Kies om weer te geven als:
-    - [Advertentiebanner](/nl/developers/web-components/#content-loader).
+    - [Advertentiebanner](/nl/developers/integrations/web-components/#content-loader).
     - Normale link met realtime prijsupdates.
 - [Kaarten](/nl/studio/cards) - Boekbare kaarten met realtime prijzen & beschikbaarheid.
 - [Rasters](/nl/studio/grids) - Raster met boekbare kaarten.

@@ -50,7 +50,7 @@ WinkLinks taip pat yra puikus būdas parodyti kelionių inventorių, kurį radot
 Naudokite WinkLinks parduoti savo:
 
 - [Dalijamąsias nuorodas](/lt/studio/shareable-links) – Pasirinkite, kaip jas rodyti:
-    - [Reklaminį banerį](/lt/developers/web-components/#content-loader).
+    - [Reklaminį banerį](/lt/developers/integrations/web-components/#content-loader).
     - Įprastą nuorodą su realaus laiko kainų atnaujinimais.
 - [Korteles](/lt/studio/cards) – Užsakomas korteles su realaus laiko kainomis ir prieinamumu.
 - [Tinklelius](/lt/studio/grids) – Tinklelis su užsakomomis kortelėmis.

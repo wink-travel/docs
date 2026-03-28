@@ -17,7 +17,7 @@ Prekės ženklai ir tinklai turi šiek tiek kitokius poreikius nei atskiras vie�
 
 - Valdyti kelis viešbučius viename paskyroje.
 - Paskirti vadybininkus viešbučiams.
-- Naudoti [WinkLinks](/lt/link-manager/wink-links), [WordPress](/lt/developers/wordpress) ir mūsų [Web Components](/lt/developers/web-components), kad rinkodaros ir pardavimų veikla būtų vykdoma keliuose viešbučiuose vienoje vietoje.
+- Naudoti [WinkLinks](/lt/link-manager/wink-links), [WordPress](/lt/developers/integrations/wordpress) ir mūsų [Web Components](/lt/developers/integrations/web-components), kad rinkodaros ir pardavimų veikla būtų vykdoma keliuose viešbučiuose vienoje vietoje.
 
 ## Valdymo įmonės
 

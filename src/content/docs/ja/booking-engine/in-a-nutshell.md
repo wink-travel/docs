@@ -36,12 +36,12 @@ Winkにおける責任分担は以下の通りです：
 
 予約エンジンは https://ota.wink.travel を通じて提供する再利用可能な機能の集合体であり、ホテルやアフィリエイトが旅行者に商品を販売するための高度にカスタマイズ可能なウェブサイトです。
 
-さらに自由度を求める統合者は、当社の[WordPressプラグイン](/ja/developers/wordpress/)、[Web Components](/ja/developers/web-components)、[API](/ja/developers/apis)を通じて同じ機能すべてにアクセスできます。
+さらに自由度を求める統合者は、当社の[WordPressプラグイン](/ja/developers/integrations/wordpress/)、[Web Components](/ja/developers/integrations/web-components)、[API](/ja/developers/apis)を通じて同じ機能すべてにアクセスできます。
 
 次のセクションに進み、予約エンジンの提供内容についてさらにお読みください。
 
 ## さらに読む
 
-- 当社の[WordPressプラグイン](/ja/developers/wordpress/)について読む。
-- 当社の[Web Components](/ja/developers/web-components)について読む。
+- 当社の[WordPressプラグイン](/ja/developers/integrations/wordpress/)について読む。
+- 当社の[Web Components](/ja/developers/integrations/web-components)について読む。
 - 当社の[API](/ja/developers/apis)について読む。

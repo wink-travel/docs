@@ -36,12 +36,12 @@ Sus responsabilidades incluyen:
 
 El motor de reservas es una colección de funcionalidades reutilizables que exponemos a través de https://ota.wink.travel; un sitio web altamente personalizable para que hoteles y afiliados vendan sus productos a los viajeros.
 
-Los integradores, que quieren aún más libertad, tienen acceso a todas las mismas funciones a través de nuestro [plugin de WordPress](/es-AR/developers/wordpress/), [Web Components](/es-AR/developers/web-components) y [APIs](/es-AR/developers/apis).
+Los integradores, que quieren aún más libertad, tienen acceso a todas las mismas funciones a través de nuestro [plugin de WordPress](/es-AR/developers/integrations/wordpress/), [Web Components](/es-AR/developers/integrations/web-components) y [APIs](/es-AR/developers/apis).
 
 Continúa con las siguientes secciones para leer más sobre lo que el motor de reservas tiene para ofrecer.
 
 ## Lecturas adicionales
 
-- Lee sobre nuestro [plugin de WordPress](/es-AR/developers/wordpress/).
-- Lee sobre nuestros [Web Components](/es-AR/developers/web-components).
+- Lee sobre nuestro [plugin de WordPress](/es-AR/developers/integrations/wordpress/).
+- Lee sobre nuestros [Web Components](/es-AR/developers/integrations/web-components).
 - Lee sobre nuestras [APIs](/es-AR/developers/apis).

@@ -36,12 +36,12 @@ Selle vastutusaladeks on:
 
 Broneerimismootor on korduvkasutatavate funktsioonide kogum, mida me pakume aadressil https://ota.wink.travel; väga kohandatav veebisait hotellidele ja sidusettevõtetele, et müüa oma teenuseid reisijatele.
 
-Integraatoritel, kes soovivad veelgi rohkem vabadust, on juurdepääs kõigile samadele funktsioonidele meie [WordPressi pluginas](/et/developers/wordpress/), [Veebikomponentides](/et/developers/web-components) ja [API-des](/et/developers/apis).
+Integraatoritel, kes soovivad veelgi rohkem vabadust, on juurdepääs kõigile samadele funktsioonidele meie [WordPressi pluginas](/et/developers/integrations/wordpress/), [Veebikomponentides](/et/developers/integrations/web-components) ja [API-des](/et/developers/apis).
 
 Jätka järgmiste osadega, et lugeda rohkem sellest, mida broneerimismootor pakub.
 
 ## Täiendav lugemine
 
-- Loe meie [WordPressi pluginast](/et/developers/wordpress/).
-- Loe meie [Veebikomponentidest](/et/developers/web-components).
+- Loe meie [WordPressi pluginast](/et/developers/integrations/wordpress/).
+- Loe meie [Veebikomponentidest](/et/developers/integrations/web-components).
 - Loe meie [API-dest](/et/developers/apis).

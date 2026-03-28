@@ -50,7 +50,7 @@ WinkLinks to także świetny sposób na udostępnienie znalezionego przez Ciebie
 Użyj WinkLinks, aby sprzedawać swoje:
 
 - [Linki do udostępniania](/pl/studio/shareable-links) - Wybierz sposób wyświetlania:
-    - [Baner reklamowy](/pl/developers/web-components/#content-loader).
+    - [Baner reklamowy](/pl/developers/integrations/web-components/#content-loader).
     - Zwykły link z aktualizacjami cen w czasie rzeczywistym.
 - [Karty](/pl/studio/cards) - Karty z możliwością rezerwacji z aktualizacjami cen i dostępności w czasie rzeczywistym.
 - [Siatki](/pl/studio/grids) - Siatka z kartami do rezerwacji.

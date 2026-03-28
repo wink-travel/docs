@@ -36,12 +36,12 @@ Jeho zodpovednosti zahŕňajú:
 
 Booking engine je zbierka znovupoužiteľnej funkcionality, ktorú sprístupňujeme cez https://ota.wink.travel; vysoko prispôsobiteľnú webovú stránku pre hotely a pridružených partnerov na predaj ich ponúk cestujúcim.
 
-Integrátori, ktorí chcú ešte väčšiu slobodu, majú prístup ku všetkým rovnakým funkciám cez náš [WordPress plugin](/sk/developers/wordpress/), [Web Components](/sk/developers/web-components) a [APIs](/sk/developers/apis).
+Integrátori, ktorí chcú ešte väčšiu slobodu, majú prístup ku všetkým rovnakým funkciám cez náš [WordPress plugin](/sk/developers/integrations/wordpress/), [Web Components](/sk/developers/integrations/web-components) a [APIs](/sk/developers/apis).
 
 Pokračujte do ďalších sekcií, aby ste sa dozvedeli viac o tom, čo booking engine ponúka.
 
 ## Ďalšie čítanie
 
-- Prečítajte si o našom [WordPress plugine](/sk/developers/wordpress/).
-- Prečítajte si o našich [Web Components](/sk/developers/web-components).
+- Prečítajte si o našom [WordPress plugine](/sk/developers/integrations/wordpress/).
+- Prečítajte si o našich [Web Components](/sk/developers/integrations/web-components).
 - Prečítajte si o našich [APIs](/sk/developers/apis).
