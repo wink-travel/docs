@@ -1,0 +1,128 @@
+---
+title: Svelte / SvelteKit
+description: Use Wink web components in Svelte and SvelteKit applications with onMount and browser guards.
+sidebar:
+  order: 20
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Svelte passes attributes directly to the DOM without a virtual DOM layer, making custom elements a natural fit. For SvelteKit (SSR), load the CDN inside `onMount` or guard with the `browser` check.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/developers/integrations/npm"
+  description="Install and load the CDN bundle with TypeScript types."
+/>
+
+## Install
+
+```bash
+npm install @wink/elements
+```
+
+## SvelteKit — root layout
+
+```ts
+// src/routes/+layout.ts
+import { browser } from '$app/environment';
+import { load as loadWink } from '@wink/elements';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+Alternatively, load inside `onMount` in `+layout.svelte`:
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<slot />
+```
+
+## Use in components
+
+Svelte passes all unknown attributes directly to the DOM, so no extra configuration is needed:
+
+```svelte
+<script>
+  export let layoutId = 'YOUR_LAYOUT_ID';
+</script>
+
+<main>
+  <wink-content-loader layout="HOTEL" id={layoutId} />
+  <wink-lookup />
+</main>
+```
+
+## Svelte 5 (runes syntax)
+
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  let { layoutId }: { layoutId: string } = $props();
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id={layoutId} />
+```
+
+## Environment variables
+
+SvelteKit exposes only variables prefixed with `PUBLIC_` to the browser:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="SSR rendering">
+Never render `<wink-*>` elements during server-side rendering — custom elements are registered in the browser's `customElements` registry which does not exist on the server. Wrap in `{#if browser}` or call `load()` only inside `onMount`.
+</Aside>
+
+```svelte
+<script>
+  import { browser } from '$app/environment';
+</script>
+
+{#if browser}
+  <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+{/if}
+```
+
+## Bare Svelte (Vite, no SvelteKit)
+
+```svelte
+<!-- src/App.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+```
+
+## Further reading
+
+- [Web Components reference](/developers/integrations/web-components)
+- [@wink/elements npm package](/developers/integrations/npm)

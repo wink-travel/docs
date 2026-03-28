@@ -1,0 +1,101 @@
+---
+title: Astro
+description: Add Wink web components to Astro sites using client-side scripts and island architecture.
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Astro ships zero JavaScript by default and renders all components to static HTML on the server. Wink web components must be loaded via a client-side `<script>` tag. Astro's island architecture makes this straightforward.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/developers/integrations/npm"
+  description="Install and load the CDN bundle with TypeScript types."
+/>
+
+## Install
+
+```bash
+npm install @wink/elements
+```
+
+## Load in a shared layout
+
+Add the loader script to your base layout so it runs on every page:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline vs bundled scripts">
+Without `is:inline`, Astro bundles and deduplicates the script — `load()` is called once even if the layout is used on many pages. This is the preferred approach. Use `is:inline` only when you need the script inlined as raw text (e.g. to avoid the module bundler).
+</Aside>
+
+## Use on a page
+
+Because Astro components are server-rendered, the `<wink-*>` tags are output as static HTML. The CDN script registers the custom elements when the page loads in the browser:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## Inside a framework component (island)
+
+If you're using React, Vue, or Svelte islands alongside Wink, load `@wink/elements` in the layout (as above) and use `<wink-*>` tags inside your island components normally — the custom elements will be registered by the time the island hydrates.
+
+```tsx
+// src/components/HotelCard.tsx (React island)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() already called by layout — safe to render here
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## Environment variables
+
+Astro exposes only variables prefixed with `PUBLIC_` to the browser:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Further reading
+
+- [Web Components reference](/developers/integrations/web-components)
+- [@wink/elements npm package](/developers/integrations/npm)

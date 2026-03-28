@@ -1,0 +1,111 @@
+---
+title: React
+description: Use Wink web components in any React application with full TypeScript support via @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ has first-class support for custom elements. React 18 and earlier only passes string attributes — use the typed helper pattern below to stay safe across versions.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/developers/integrations/npm"
+  description="Install and load the CDN bundle with TypeScript types."
+/>
+
+## Install
+
+```bash
+npm install @wink/elements
+```
+
+## Load once at app root
+
+Call `load()` in your top-level component. It is idempotent — safe to call multiple times.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Use components in JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — declare JSX intrinsics
+
+React does not know about custom element names by default. Add a declaration file once to silence type errors:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="React 18 attribute limitation">
+React 18 and earlier serialises all JSX props to strings before passing them to the DOM. Boolean and object props must be converted manually. React 19 passes non-string props directly to custom elements — no workaround needed.
+</Aside>
+
+## Passing typed attributes (React 18 safe)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread works in React 19; for React 18 all values are strings anyway
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Further reading
+
+- [Web Components reference](/developers/integrations/web-components)
+- [@wink/elements npm package](/developers/integrations/npm)
+- [Next.js integration](/developers/integrations/nextjs)

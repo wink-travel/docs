@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: Add Wink web components to Gatsby sites using gatsby-browser.js for client-side loading.
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby generates static HTML at build time and rehydrates on the client. CDN scripts must be loaded in browser APIs only — `gatsby-browser.js` is the right place.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/developers/integrations/npm"
+  description="Install and load the CDN bundle with TypeScript types."
+/>
+
+## Install
+
+```bash
+npm install @wink/elements
+```
+
+## Load via gatsby-browser.js
+
+The `onClientEntry` API runs once as soon as Gatsby's runtime initialises in the browser:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## Environment variables
+
+Gatsby exposes only variables prefixed with `GATSBY_` to the browser bundle:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## Use in pages and components
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby uses React, so add the same JSX intrinsic declarations as the React integration:
+
+```ts
+// src/wink-elements.d.ts
+// See /developers/integrations/react for the full declaration file
+```
+
+<Aside type="caution" title="SSR build errors">
+During `gatsby build`, Gatsby renders pages to static HTML in a Node.js environment where `window` and `document` are unavailable. If you import `@wink/elements` at the top level of a page component (outside of `onClientEntry`), the build will fail.
+
+Always use `gatsby-browser.js` / `onClientEntry` — never import `load` directly in a page or component module scope.
+</Aside>
+
+## gatsby-ssr.js — no changes needed
+
+You do not need to modify `gatsby-ssr.js`. The `<wink-*>` tags render as plain HTML elements in the static output, and the CDN script upgrades them when the browser loads the page.
+
+## Further reading
+
+- [Web Components reference](/developers/integrations/web-components)
+- [@wink/elements npm package](/developers/integrations/npm)
+- [React integration](/developers/integrations/react)
