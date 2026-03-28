@@ -50,7 +50,7 @@ WinkLinks 也是展示您通过 [Wink Studio](https://studio.wink.travel) 发现
 使用 WinkLinks 销售您的：
 
 - [可分享链接](/zh-CN/studio/shareable-links) - 可选择显示为：
-    - [广告横幅](/zh-CN/developers/web-components/#content-loader)。
+    - [广告横幅](/zh-CN/developers/integrations/web-components/#content-loader)。
     - 带实时价格更新的普通链接。
 - [卡片](/zh-CN/studio/cards) - 可预订的卡片，带实时价格和可用性。
 - [网格](/zh-CN/studio/grids) - 带可预订卡片的网格。

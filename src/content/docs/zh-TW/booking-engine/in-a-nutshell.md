@@ -36,12 +36,12 @@ sidebar:
 
 訂位引擎是一組可重複使用的功能，我們透過 https://ota.wink.travel 提供；這是一個高度可自訂的網站，供飯店和聯盟向旅客銷售商品。
 
-想要更多自由度的整合者，可以透過我們的 [WordPress 外掛](/zh-TW/developers/wordpress/)、[Web Components](/zh-TW/developers/web-components) 和 [APIs](/zh-TW/developers/apis) 使用所有相同功能。
+想要更多自由度的整合者，可以透過我們的 [WordPress 外掛](/zh-TW/developers/integrations/wordpress/)、[Web Components](/zh-TW/developers/integrations/web-components) 和 [APIs](/zh-TW/developers/apis) 使用所有相同功能。
 
 請繼續閱讀下一節，了解訂位引擎的更多功能。
 
 ## 延伸閱讀
 
-- 閱讀關於我們的 [WordPress 外掛](/zh-TW/developers/wordpress/)。
-- 閱讀關於我們的 [Web Components](/zh-TW/developers/web-components)。
+- 閱讀關於我們的 [WordPress 外掛](/zh-TW/developers/integrations/wordpress/)。
+- 閱讀關於我們的 [Web Components](/zh-TW/developers/integrations/web-components)。
 - 閱讀關於我們的 [APIs](/zh-TW/developers/apis)。

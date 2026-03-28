@@ -17,7 +17,7 @@ Vörumerki og keðjur hafa aðeins aðrar þarfir en einstök eign. Á Wink geta
 
 - Stjórnað mörgum eignum undir einum reikningi.
 - Úthlutað stjórnendum að eignum
-- Notað [WinkLinks](/is/link-manager/wink-links), [WordPress](/is/developers/wordpress) og okkar [Web Components](/is/developers/web-components) til að markaðssetja og selja margar eignir á einum stað.
+- Notað [WinkLinks](/is/link-manager/wink-links), [WordPress](/is/developers/integrations/wordpress) og okkar [Web Components](/is/developers/integrations/web-components) til að markaðssetja og selja margar eignir á einum stað.
 
 ## Stjórnunarfyrirtæki
 

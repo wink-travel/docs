@@ -17,7 +17,7 @@ Les marques i cadenes tenen necessitats lleugerament diferents que una sola prop
 
 - Gestionar múltiples propietats sota un únic compte.
 - Assignar gestors a les propietats.
-- Utilitzar [WinkLinks](/ca/link-manager/wink-links), [WordPress](/ca/developers/wordpress) i els nostres [Web Components](/ca/developers/web-components) per comercialitzar i vendre diverses propietats en un sol lloc.
+- Utilitzar [WinkLinks](/ca/link-manager/wink-links), [WordPress](/ca/developers/integrations/wordpress) i els nostres [Web Components](/ca/developers/integrations/web-components) per comercialitzar i vendre diverses propietats en un sol lloc.
 
 ## Empreses de gestió
 

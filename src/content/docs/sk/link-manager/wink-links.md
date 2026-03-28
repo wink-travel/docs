@@ -50,7 +50,7 @@ WinkLinks je tiež skvelý spôsob, ako sprístupniť cestovný inventár, ktor�
 Použite WinkLinks na predaj svojich:
 
 - [Zdieľateľných odkazov](/sk/studio/shareable-links) - Vyberte si zobrazenie ako:
-    - [Reklamný banner](/sk/developers/web-components/#content-loader).
+    - [Reklamný banner](/sk/developers/integrations/web-components/#content-loader).
     - Bežný odkaz s aktualizáciami cien v reálnom čase.
 - [Kariet](/sk/studio/cards) - Rezervovateľné karty s cenami a dostupnosťou v reálnom čase.
 - [Mriežok](/sk/studio/grids) - Mriežka s rezervovateľnými kartami.

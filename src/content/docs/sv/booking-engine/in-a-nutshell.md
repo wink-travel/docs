@@ -36,12 +36,12 @@ Dess ansvarsområden inkluderar:
 
 Bokningsmotorn är en samling återanvändbar funktionalitet som vi exponerar via https://ota.wink.travel; en mycket anpassningsbar webbplats för hotell och affiliates att sälja sina tjänster till resenärer.
 
-Integratörer som vill ha ännu mer frihet har tillgång till alla samma funktioner via vår [WordPress-plugin](/sv/developers/wordpress/), [Web Components](/sv/developers/web-components) och [APIs](/sv/developers/apis).
+Integratörer som vill ha ännu mer frihet har tillgång till alla samma funktioner via vår [WordPress-plugin](/sv/developers/integrations/wordpress/), [Web Components](/sv/developers/integrations/web-components) och [APIs](/sv/developers/apis).
 
 Fortsätt till nästa avsnitt för att läsa mer om vad bokningsmotorn har att erbjuda.
 
 ## Vidare läsning
 
-- Läs om vår [WordPress-plugin](/sv/developers/wordpress/).
-- Läs om våra [Web Components](/sv/developers/web-components).
+- Läs om vår [WordPress-plugin](/sv/developers/integrations/wordpress/).
+- Läs om våra [Web Components](/sv/developers/integrations/web-components).
 - Läs om våra [APIs](/sv/developers/apis).

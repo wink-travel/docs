@@ -17,7 +17,7 @@ Marcas e cadeias têm necessidades ligeiramente diferentes das de uma única pro
 
 - Gerir múltiplas propriedades numa única conta.
 - Atribuir gestores às propriedades.
-- Usar [WinkLinks](/pt-PT/link-manager/wink-links), [WordPress](/pt-PT/developers/wordpress) e os nossos [Web Components](/pt-PT/developers/web-components) para promover e vender várias propriedades num só lugar.
+- Usar [WinkLinks](/pt-PT/link-manager/wink-links), [WordPress](/pt-PT/developers/integrations/wordpress) e os nossos [Web Components](/pt-PT/developers/integrations/web-components) para promover e vender várias propriedades num só lugar.
 
 ## Empresas de gestão
 

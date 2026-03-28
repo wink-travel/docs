@@ -50,7 +50,7 @@ WinkLinks on myös loistava tapa näyttää löytämäsi matkailuvarasto, jonka 
 Käytä WinkLinksia myymään:
 
 - [Jaa-linkkejä](/fi/studio/shareable-links) - Valitse näyttötapa:
-    - [Mainosbanneri](/fi/developers/web-components/#content-loader).
+    - [Mainosbanneri](/fi/developers/integrations/web-components/#content-loader).
     - Tavallinen linkki reaaliaikaisilla hintapäivityksillä.
 - [Kortteja](/fi/studio/cards) - Varattavat kortit reaaliaikaisilla hinnoilla ja saatavuudella.
 - [Ruudukkoja](/fi/studio/grids) - Ruudukko varattavilla korteilla.

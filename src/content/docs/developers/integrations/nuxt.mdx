@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: Add Wink web components to Nuxt 3 applications using a client-side plugin.
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 renders pages on the server by default. CDN scripts and custom elements must be loaded client-side only. A Nuxt client plugin is the cleanest place to do this.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/developers/integrations/npm"
+  description="Install and load the CDN bundle with TypeScript types."
+/>
+
+## Install
+
+```bash
+npm install @wink/elements
+```
+
+## Create a client plugin
+
+The `.client.ts` suffix tells Nuxt to run this plugin only in the browser:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## Configure the runtime variable
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+Add to `.env`:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Configure Vue for custom elements
+
+Add the `isCustomElement` compiler option so Vue does not warn about unknown `<wink-*>` tags:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## Use in templates
+
+Wrap Wink components in `<ClientOnly>` to prevent SSR hydration mismatches:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` renders a placeholder on the server and mounts the real element on the client — this is the recommended pattern for all browser-only third-party embeds in Nuxt.
+</Aside>
+
+## TypeScript types
+
+Extend the global `HTMLElementTagNameMap` (same as Vue 3) to get attribute autocompletion. See the [Vue 3 integration page](/developers/integrations/vue#typescript--augment-global-element-types) for the full declaration file.
+
+## Further reading
+
+- [Web Components reference](/developers/integrations/web-components)
+- [@wink/elements npm package](/developers/integrations/npm)
+- [Vue 3 integration](/developers/integrations/vue)

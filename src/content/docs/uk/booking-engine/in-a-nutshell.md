@@ -36,12 +36,12 @@ sidebar:
 
 Система бронювання — це набір багаторазових функцій, які ми надаємо через https://ota.wink.travel; це високо налаштовуваний вебсайт для готелів та афілійованих осіб, щоб продавати свої послуги мандрівникам.
 
-Інтегратори, які хочуть ще більше свободи, мають доступ до всіх тих самих функцій через наш [плагін для WordPress](/uk/developers/wordpress/), [веб-компоненти](/uk/developers/web-components) та [API](/uk/developers/apis).
+Інтегратори, які хочуть ще більше свободи, мають доступ до всіх тих самих функцій через наш [плагін для WordPress](/uk/developers/integrations/wordpress/), [веб-компоненти](/uk/developers/integrations/web-components) та [API](/uk/developers/apis).
 
 Продовжуйте читати наступні розділи, щоб дізнатися більше про можливості системи бронювання.
 
 ## Подальше читання
 
-- Читайте про наш [плагін для WordPress](/uk/developers/wordpress/).
-- Читайте про наші [веб-компоненти](/uk/developers/web-components).
+- Читайте про наш [плагін для WordPress](/uk/developers/integrations/wordpress/).
+- Читайте про наші [веб-компоненти](/uk/developers/integrations/web-components).
 - Читайте про наші [API](/uk/developers/apis).

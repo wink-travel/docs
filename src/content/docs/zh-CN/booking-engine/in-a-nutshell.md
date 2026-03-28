@@ -36,12 +36,12 @@ sidebar:
 
 预订引擎是一组可重用功能，我们通过 https://ota.wink.travel 提供；这是一个高度可定制的网站，供酒店和加盟商向旅客销售产品。
 
-需要更多自由度的集成商，可以通过我们的 [WordPress 插件](/zh-CN/developers/wordpress/)、[Web 组件](/zh-CN/developers/web-components) 和 [API](/zh-CN/developers/apis) 访问所有相同功能。
+需要更多自由度的集成商，可以通过我们的 [WordPress 插件](/zh-CN/developers/integrations/wordpress/)、[Web 组件](/zh-CN/developers/integrations/web-components) 和 [API](/zh-CN/developers/apis) 访问所有相同功能。
 
 请继续阅读下一部分，了解预订引擎的更多功能。
 
 ## 进一步阅读
 
-- 阅读关于我们的 [WordPress 插件](/zh-CN/developers/wordpress/)。
-- 阅读关于我们的 [Web 组件](/zh-CN/developers/web-components)。
+- 阅读关于我们的 [WordPress 插件](/zh-CN/developers/integrations/wordpress/)。
+- 阅读关于我们的 [Web 组件](/zh-CN/developers/integrations/web-components)。
 - 阅读关于我们的 [API](/zh-CN/developers/apis)。

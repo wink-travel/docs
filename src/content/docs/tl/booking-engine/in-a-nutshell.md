@@ -36,12 +36,12 @@ Kabilang sa mga responsibilidad nito ang:
 
 Ang booking engine ay isang koleksyon ng mga reusable na functionality na aming inilalantad sa pamamagitan ng https://ota.wink.travel; isang lubos na nako-customize na website para sa mga hotel at affiliate upang ibenta ang kanilang mga produkto sa mga biyahero.
 
-Ang mga integrator, na nais ng mas malawak na kalayaan, ay may access sa lahat ng parehong mga tampok sa pamamagitan ng aming [WordPress plugin](/tl/developers/wordpress/), [Web Components](/tl/developers/web-components) at [APIs](/tl/developers/apis).
+Ang mga integrator, na nais ng mas malawak na kalayaan, ay may access sa lahat ng parehong mga tampok sa pamamagitan ng aming [WordPress plugin](/tl/developers/integrations/wordpress/), [Web Components](/tl/developers/integrations/web-components) at [APIs](/tl/developers/apis).
 
 Magpatuloy sa mga susunod na seksyon upang basahin pa ang tungkol sa mga inaalok ng booking engine.
 
 ## Karagdagang babasahin
 
-- Basahin ang tungkol sa aming [WordPress plugin](/tl/developers/wordpress/).
-- Basahin ang tungkol sa aming [Web Components](/tl/developers/web-components).
+- Basahin ang tungkol sa aming [WordPress plugin](/tl/developers/integrations/wordpress/).
+- Basahin ang tungkol sa aming [Web Components](/tl/developers/integrations/web-components).
 - Basahin ang tungkol sa aming [APIs](/tl/developers/apis).

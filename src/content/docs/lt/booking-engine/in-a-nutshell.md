@@ -36,12 +36,12 @@ Jo atsakomybės apima:
 
 Užsakymų variklis yra pakartotinai naudojamų funkcijų rinkinys, kurį mes pateikiame per https://ota.wink.travel; tai labai pritaikoma svetainė viešbučiams ir filialams parduoti savo paslaugas keliautojams.
 
-Integratoriai, norintys dar daugiau laisvės, turi prieigą prie tų pačių funkcijų per mūsų [WordPress įskiepį](/lt/developers/wordpress/), [Web Components](/lt/developers/web-components) ir [API](/lt/developers/apis).
+Integratoriai, norintys dar daugiau laisvės, turi prieigą prie tų pačių funkcijų per mūsų [WordPress įskiepį](/lt/developers/integrations/wordpress/), [Web Components](/lt/developers/integrations/web-components) ir [API](/lt/developers/apis).
 
 Tęskite skaitymą tolesnėse skiltyse, kad sužinotumėte daugiau apie tai, ką siūlo užsakymų variklis.
 
 ## Tolimesnis skaitymas
 
-- Skaitykite apie mūsų [WordPress įskiepį](/lt/developers/wordpress/).
-- Skaitykite apie mūsų [Web Components](/lt/developers/web-components).
+- Skaitykite apie mūsų [WordPress įskiepį](/lt/developers/integrations/wordpress/).
+- Skaitykite apie mūsų [Web Components](/lt/developers/integrations/web-components).
 - Skaitykite apie mūsų [API](/lt/developers/apis).

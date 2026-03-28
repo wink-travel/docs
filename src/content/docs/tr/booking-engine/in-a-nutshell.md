@@ -36,12 +36,12 @@ Sorumlulukları şunlardır:
 
 Rezervasyon motoru, https://ota.wink.travel üzerinden sunduğumuz, otellerin ve bağlı kuruluşların ürünlerini gezginlere satmaları için yüksek derecede özelleştirilebilir bir web sitesi olan yeniden kullanılabilir işlevsellikler koleksiyonudur.
 
-Daha fazla özgürlük isteyen entegratörler, aynı özelliklere [WordPress eklentimiz](/tr/developers/wordpress/), [Web Bileşenlerimiz](/tr/developers/web-components) ve [API'lerimiz](/tr/developers/apis) aracılığıyla erişebilirler.
+Daha fazla özgürlük isteyen entegratörler, aynı özelliklere [WordPress eklentimiz](/tr/developers/integrations/wordpress/), [Web Bileşenlerimiz](/tr/developers/integrations/web-components) ve [API'lerimiz](/tr/developers/apis) aracılığıyla erişebilirler.
 
 Rezervasyon motorunun sundukları hakkında daha fazla bilgi için sonraki bölümlere devam edin.
 
 ## Daha fazla okuma
 
-- [WordPress eklentimiz](/tr/developers/wordpress/) hakkında bilgi edinin.
-- [Web Bileşenlerimiz](/tr/developers/web-components) hakkında bilgi edinin.
+- [WordPress eklentimiz](/tr/developers/integrations/wordpress/) hakkında bilgi edinin.
+- [Web Bileşenlerimiz](/tr/developers/integrations/web-components) hakkında bilgi edinin.
 - [API'lerimiz](/tr/developers/apis) hakkında bilgi edinin.

@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Embed Wink travel inventory into your Webflow site using custom code embeds.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow supports custom HTML and JavaScript in three places: the site-wide `<head>`, the site-wide `</body>`, and per-element code embeds. This makes integrating Wink web components straightforward.
+
+:::note
+Custom code is available on **Webflow's Basic plan and above**. The site-wide `</body>` injection requires a paid hosting plan.
+:::
+
+## Load Wink scripts site-wide
+
+<Steps>
+1. In the Webflow Designer, open **Project Settings → Custom Code**.
+2. In the **Head Code** section, add the stylesheet:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. In the **Footer Code** section, add the script and application loader (replace `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Click **Save Changes**.
+</Steps>
+
+:::tip
+Your Client ID is available in your Wink account under [Applications](/my-account/applications).
+:::
+
+## Add a component to a specific element
+
+<Steps>
+1. In the Designer, select the **Div** or **Section** where you want the component.
+2. In the right panel, click the **`</>` Embed** icon (or add an **HTML Embed** element from the Add panel).
+3. Paste the component HTML, for example:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Click **Save & Close**.
+</Steps>
+
+## Per-page custom code
+
+If you only need Wink on specific pages, use per-page code injection instead of site-wide:
+
+<Steps>
+1. Open the **Page Settings** for the target page (gear icon in the Pages panel).
+2. Scroll to **Custom Code → Before `</body>` tag**.
+3. Paste the same script and app loader as above.
+4. Save the page settings.
+</Steps>
+
+## Available components
+
+| Component | HTML tag | Purpose |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Display hotel cards, grids, maps |
+| Lookup | `<wink-lookup>` | Search bar for destinations |
+| Search button | `<wink-search-button>` | Open itinerary picker |
+| Account button | `<wink-account-button>` | Sign in / user menu |
+| Itinerary button | `<wink-itinerary-button>` | Show current itinerary |
+| Itinerary picker | `<wink-itinerary-picker>` | Full itinerary form |
+| Shopping cart | `<wink-shopping-cart-button>` | Cart summary button |
+
+See [Web Components](/developers/integrations/web-components) for the full attribute reference.
+
+## Further reading
+
+- [Web Components reference](/developers/integrations/web-components)
+- [Get your Client ID](/my-account/applications)
+- [Webflow custom code docs](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

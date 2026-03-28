@@ -36,12 +36,12 @@ Njegove odgovornosti vključujejo:
 
 Rezervacijski sistem je zbirka ponovno uporabnih funkcionalnosti, ki jih ponujamo preko https://ota.wink.travel; zelo prilagodljive spletne strani za hotele in podružnice, da prodajajo svoje storitve popotnikom.
 
-Integratorji, ki želijo še več svobode, imajo dostop do vseh istih funkcij preko našega [WordPress vtičnika](/sl/developers/wordpress/), [Web Components](/sl/developers/web-components) in [API-jev](/sl/developers/apis).
+Integratorji, ki želijo še več svobode, imajo dostop do vseh istih funkcij preko našega [WordPress vtičnika](/sl/developers/integrations/wordpress/), [Web Components](/sl/developers/integrations/web-components) in [API-jev](/sl/developers/apis).
 
 Nadaljujte z branjem naslednjih poglavij, da izveste več o tem, kaj rezervacijski sistem ponuja.
 
 ## Nadaljnje branje
 
-- Preberite o našem [WordPress vtičniku](/sl/developers/wordpress/).
-- Preberite o naših [Web Components](/sl/developers/web-components).
+- Preberite o našem [WordPress vtičniku](/sl/developers/integrations/wordpress/).
+- Preberite o naših [Web Components](/sl/developers/integrations/web-components).
 - Preberite o naših [API-jih](/sl/developers/apis).

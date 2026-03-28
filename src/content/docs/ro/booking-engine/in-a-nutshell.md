@@ -36,12 +36,12 @@ Responsabilitățile sale includ:
 
 Motorul de rezervări este o colecție de funcționalități reutilizabile pe care le expunem prin https://ota.wink.travel; un site web foarte personalizabil pentru hoteluri și afiliați pentru a-și vinde serviciile călătorilor.
 
-Integratorii, care doresc și mai multă libertate, au acces la aceleași funcții prin intermediul [pluginului nostru WordPress](/ro/developers/wordpress/), [Web Components](/ro/developers/web-components) și [API-urilor](/ro/developers/apis).
+Integratorii, care doresc și mai multă libertate, au acces la aceleași funcții prin intermediul [pluginului nostru WordPress](/ro/developers/integrations/wordpress/), [Web Components](/ro/developers/integrations/web-components) și [API-urilor](/ro/developers/apis).
 
 Continuă cu secțiunile următoare pentru a citi mai multe despre ce oferă motorul de rezervări.
 
 ## Lecturi suplimentare
 
-- Citește despre [pluginul nostru WordPress](/ro/developers/wordpress/).
-- Citește despre [Web Components](/ro/developers/web-components).
+- Citește despre [pluginul nostru WordPress](/ro/developers/integrations/wordpress/).
+- Citește despre [Web Components](/ro/developers/integrations/web-components).
 - Citește despre [API-urile noastre](/ro/developers/apis).

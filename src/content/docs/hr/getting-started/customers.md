@@ -17,7 +17,7 @@ Brendovi i lancevi imaju nešto drugačije potrebe od pojedinačnih nekretnina. 
 
 - Upravljati više nekretnina unutar jednog računa.
 - Dodijeliti menadžere nekretninama.
-- Koristiti [WinkLinks](/hr/link-manager/wink-links), [WordPress](/hr/developers/wordpress) i naše [Web Components](/hr/developers/web-components) za marketing i prodaju više nekretnina na jednom mjestu.
+- Koristiti [WinkLinks](/hr/link-manager/wink-links), [WordPress](/hr/developers/integrations/wordpress) i naše [Web Components](/hr/developers/integrations/web-components) za marketing i prodaju više nekretnina na jednom mjestu.
 
 ## Upravljajuće tvrtke
 
