@@ -50,7 +50,7 @@ A WinkLinks remek eszköz arra is, hogy megjelenítsd az általad talált utazá
 Használd a WinkLinks-et az alábbiak értékesítésére:
 
 - [Megosztható linkek](/hu/studio/shareable-links) - Válaszd ki a megjelenítési módot:
-    - [Hirdetési banner](/hu/developers/integrations/web-components/#content-loader).
+    - [Hirdetési banner](/hu/integrations/web-components/#content-loader).
     - Normál link valós idejű árinformációkkal.
 - [Kártyák](/hu/studio/cards) - Foglalható kártyák valós idejű árazással és elérhetőséggel.
 - [Rácsok](/hu/studio/grids) - Rács foglalható kártyákkal.

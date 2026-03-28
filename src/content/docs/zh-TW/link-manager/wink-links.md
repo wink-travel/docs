@@ -50,7 +50,7 @@ WinkLinks 也是展示你透過 [Wink Studio](https://studio.wink.travel) 找到
 使用 WinkLinks 銷售你的：
 
 - [可分享連結](/zh-TW/studio/shareable-links) - 可選擇顯示為：
-    - [廣告橫幅](/zh-TW/developers/integrations/web-components/#content-loader)。
+    - [廣告橫幅](/zh-TW/integrations/web-components/#content-loader)。
     - 帶有即時價格更新的普通連結。
 - [卡片](/zh-TW/studio/cards) - 可訂房的卡片，帶有即時價格與可用性。
 - [網格](/zh-TW/studio/grids) - 含可訂房卡片的網格。

@@ -144,6 +144,12 @@ export default defineConfig({
         directory: 'webinars'
       }
     }, {
+      label: 'Integrations',
+      autogenerate: {
+        directory: 'integrations'
+      }
+    },
+     {
       label: 'Developers',
       autogenerate: {
         directory: 'developers'

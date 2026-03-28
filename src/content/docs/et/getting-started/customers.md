@@ -17,7 +17,7 @@ Brändidel ja kettidel on veidi erinevad vajadused kui üksikul kinnistul. Winki
 
 - Hallata mitut kinnistut ühe konto all.
 - Määrata kinnistutele juhid
-- Kasutada [WinkLinks](/et/link-manager/wink-links), [WordPressi](/et/developers/integrations/wordpress) ja meie [veebikomponente](/et/developers/integrations/web-components), et turundada ja müüa mitut kinnistut ühes kohas.
+- Kasutada [WinkLinks](/et/link-manager/wink-links), [WordPressi](/et/integrations/wordpress) ja meie [veebikomponente](/et/integrations/web-components), et turundada ja müüa mitut kinnistut ühes kohas.
 
 ## Juhtimisettevõtted
 

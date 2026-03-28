@@ -36,12 +36,12 @@ Tanggung jawabnya meliputi:
 
 Mesin pemesanan adalah kumpulan fungsi yang dapat digunakan kembali yang kami sediakan melalui https://ota.wink.travel; sebuah situs web yang sangat dapat disesuaikan untuk hotel dan afiliasi menjual produk mereka kepada pelancong.
 
-Integrator, yang menginginkan kebebasan lebih, memiliki akses ke semua fitur yang sama melalui [plugin WordPress](/id/developers/integrations/wordpress/), [Web Components](/id/developers/integrations/web-components), dan [API](/id/developers/apis) kami.
+Integrator, yang menginginkan kebebasan lebih, memiliki akses ke semua fitur yang sama melalui [plugin WordPress](/id/integrations/wordpress/), [Web Components](/id/integrations/web-components), dan [API](/id/developers/apis) kami.
 
 Lanjutkan ke bagian berikutnya untuk membaca lebih lanjut tentang apa yang ditawarkan mesin pemesanan.
 
 ## Bacaan lanjutan
 
-- Baca tentang [plugin WordPress](/id/developers/integrations/wordpress/) kami.
-- Baca tentang [Web Components](/id/developers/integrations/web-components) kami.
+- Baca tentang [plugin WordPress](/id/integrations/wordpress/) kami.
+- Baca tentang [Web Components](/id/integrations/web-components) kami.
 - Baca tentang [API](/id/developers/apis) kami.

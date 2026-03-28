@@ -36,12 +36,12 @@ Tā atbildības jomas ietver:
 
 Rezervēšanas dzinējs ir atkārtoti izmantojamu funkciju kopums, ko mēs nodrošinām caur https://ota.wink.travel; ļoti pielāgojama vietne viesnīcām un filiālēm, lai pārdotu savus pakalpojumus ceļotājiem.
 
-Integratori, kas vēlas vēl lielāku brīvību, var izmantot visas tās pašas funkcijas caur mūsu [WordPress spraudni](/lv/developers/integrations/wordpress/), [Web Components](/lv/developers/integrations/web-components) un [API](/lv/developers/apis).
+Integratori, kas vēlas vēl lielāku brīvību, var izmantot visas tās pašas funkcijas caur mūsu [WordPress spraudni](/lv/integrations/wordpress/), [Web Components](/lv/integrations/web-components) un [API](/lv/developers/apis).
 
 Turpiniet uz nākamajām sadaļām, lai uzzinātu vairāk par to, ko rezervēšanas dzinējs piedāvā.
 
 ## Papildu lasāmviela
 
-- Lasiet par mūsu [WordPress spraudni](/lv/developers/integrations/wordpress/).
-- Lasiet par mūsu [Web Components](/lv/developers/integrations/web-components).
+- Lasiet par mūsu [WordPress spraudni](/lv/integrations/wordpress/).
+- Lasiet par mūsu [Web Components](/lv/integrations/web-components).
 - Lasiet par mūsu [API](/lv/developers/apis).

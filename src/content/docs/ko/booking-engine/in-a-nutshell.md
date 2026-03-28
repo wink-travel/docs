@@ -36,12 +36,12 @@ Wink에서 책임 분담 방식은 다음과 같습니다:
 
 예약 엔진은 https://ota.wink.travel을 통해 제공하는 재사용 가능한 기능 모음으로, 호텔과 제휴사가 여행자에게 상품을 판매할 수 있는 매우 맞춤화된 웹사이트입니다.
 
-더 많은 자유를 원하는 통합자는 [WordPress 플러그인](/ko/developers/integrations/wordpress/), [웹 컴포넌트](/ko/developers/integrations/web-components), [API](/ko/developers/apis)를 통해 동일한 기능에 접근할 수 있습니다.
+더 많은 자유를 원하는 통합자는 [WordPress 플러그인](/ko/integrations/wordpress/), [웹 컴포넌트](/ko/integrations/web-components), [API](/ko/developers/apis)를 통해 동일한 기능에 접근할 수 있습니다.
 
 다음 섹션으로 계속 진행하여 예약 엔진이 제공하는 기능에 대해 더 읽어보세요.
 
 ## 추가 읽을거리
 
-- [WordPress 플러그인](/ko/developers/integrations/wordpress/)에 대해 읽어보세요.
-- [웹 컴포넌트](/ko/developers/integrations/web-components)에 대해 읽어보세요.
+- [WordPress 플러그인](/ko/integrations/wordpress/)에 대해 읽어보세요.
+- [웹 컴포넌트](/ko/integrations/web-components)에 대해 읽어보세요.
 - [API](/ko/developers/apis)에 대해 읽어보세요.

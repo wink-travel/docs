@@ -17,7 +17,7 @@ Wink 十年前開始為飯店提供上架服務。飯店使用 Wink 有效管理
 
 - 在單一帳戶下管理多個物業。
 - 指派管理者負責各物業。
-- 使用 [WinkLinks](/zh-TW/link-manager/wink-links)、[WordPress](/zh-TW/developers/integrations/wordpress) 及我們的 [Web Components](/zh-TW/developers/integrations/web-components) 在同一平台行銷及銷售多個物業。
+- 使用 [WinkLinks](/zh-TW/link-manager/wink-links)、[WordPress](/zh-TW/integrations/wordpress) 及我們的 [Web Components](/zh-TW/integrations/web-components) 在同一平台行銷及銷售多個物業。
 
 ## 管理公司
 

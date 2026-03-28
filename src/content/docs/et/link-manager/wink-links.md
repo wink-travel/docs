@@ -50,7 +50,7 @@ WinkLinks on ka suurepärane viis näidata reisiinventari, mille leidsid [Wink S
 Kasuta WinkLinksit, et müüa oma:
 
 - [Jagatavad lingid](/et/studio/shareable-links) - vali kuvamisviis:
-    - [Reklaambänner](/et/developers/integrations/web-components/#content-loader).
+    - [Reklaambänner](/et/integrations/web-components/#content-loader).
     - Tavaline link reaalajas hinnauuendustega.
 - [Kaardid](/et/studio/cards) - Broneeritavad kaardid reaalajas hindade ja saadavusega.
 - [Võrgustikud](/et/studio/grids) - Võrgustik broneeritavate kaartidega.

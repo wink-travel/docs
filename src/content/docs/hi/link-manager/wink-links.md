@@ -50,7 +50,7 @@ WinkLinks एक शानदार तरीका भी है कि आप 
 WinkLinks का उपयोग करके बेचें:
 
 - [Shareable links](/hi/studio/shareable-links) - प्रदर्शित करने के लिए चुनें:
-    - [Ad banner](/hi/developers/integrations/web-components/#content-loader)।
+    - [Ad banner](/hi/integrations/web-components/#content-loader)।
     - वास्तविक समय मूल्य अपडेट के साथ सामान्य लिंक।
 - [Cards](/hi/studio/cards) - वास्तविक समय मूल्य और उपलब्धता के साथ बुक करने योग्य कार्ड।
 - [Grids](/hi/studio/grids) - बुक करने योग्य कार्ड के साथ ग्रिड।

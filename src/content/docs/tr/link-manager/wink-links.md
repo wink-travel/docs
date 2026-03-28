@@ -50,7 +50,7 @@ WinkLinks, [Wink Studio](https://studio.wink.travel) aracılığıyla bulduğunu
 WinkLinks'i şu amaçlarla kullanın:
 
 - [Paylaşılabilir linkler](/tr/studio/shareable-links) - Şu şekilde görüntülemeyi seçin:
-    - [Reklam bannerı](/tr/developers/integrations/web-components/#content-loader).
+    - [Reklam bannerı](/tr/integrations/web-components/#content-loader).
     - Gerçek zamanlı fiyat güncellemeleri ile normal link.
 - [Kartlar](/tr/studio/cards) - Gerçek zamanlı fiyat ve müsaitlik ile rezervasyon yapılabilir kartlar.
 - [Izgaralar](/tr/studio/grids) - Rezervasyon yapılabilir kartlarla ızgara.

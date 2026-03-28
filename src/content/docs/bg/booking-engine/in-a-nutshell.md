@@ -36,12 +36,12 @@ sidebar:
 
 Резервационният двигател е колекция от многократно използваеми функционалности, които предоставяме чрез https://ota.wink.travel; силно персонализиран уебсайт за хотели и филиали, които продават своите услуги на пътешественици.
 
-Интеграторите, които искат още повече свобода, имат достъп до всички същите функции чрез нашия [WordPress плъгин](/bg/developers/integrations/wordpress/), [Web Components](/bg/developers/integrations/web-components) и [APIs](/bg/developers/apis).
+Интеграторите, които искат още повече свобода, имат достъп до всички същите функции чрез нашия [WordPress плъгин](/bg/integrations/wordpress/), [Web Components](/bg/integrations/web-components) и [APIs](/bg/developers/apis).
 
 Продължете към следващите секции, за да научите повече за това, което резервационният двигател предлага.
 
 ## Допълнително четиво
 
-- Прочетете за нашия [WordPress плъгин](/bg/developers/integrations/wordpress/).
-- Прочетете за нашите [Web Components](/bg/developers/integrations/web-components).
+- Прочетете за нашия [WordPress плъгин](/bg/integrations/wordpress/).
+- Прочетете за нашите [Web Components](/bg/integrations/web-components).
 - Прочетете за нашите [APIs](/bg/developers/apis).

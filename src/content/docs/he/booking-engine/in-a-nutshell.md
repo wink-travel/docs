@@ -36,12 +36,12 @@ sidebar:
 
 מנוע ההזמנות הוא אוסף של פונקציות שניתן להשתמש בהן חוזר, שאנו מציגים דרך https://ota.wink.travel; אתר אינטרנט שניתן להתאמה אישית גבוהה עבור מלונות ושותפים למכירת מוצריהם למטיילים.
 
-משלבים, שרוצים חופש רב יותר, יכולים לגשת לכל אותם הפיצ'רים דרך [תוסף ה-WordPress שלנו](/he/developers/integrations/wordpress/), [רכיבי ווב](/he/developers/integrations/web-components) ו-[APIs](/he/developers/apis).
+משלבים, שרוצים חופש רב יותר, יכולים לגשת לכל אותם הפיצ'רים דרך [תוסף ה-WordPress שלנו](/he/integrations/wordpress/), [רכיבי ווב](/he/integrations/web-components) ו-[APIs](/he/developers/apis).
 
 המשך לקרוא בסעיפים הבאים כדי ללמוד עוד על מה שמנוע ההזמנות מציע.
 
 ## קריאה נוספת
 
-- קרא על [תוסף ה-WordPress שלנו](/he/developers/integrations/wordpress/).
-- קרא על [רכיבי הווב שלנו](/he/developers/integrations/web-components).
+- קרא על [תוסף ה-WordPress שלנו](/he/integrations/wordpress/).
+- קרא על [רכיבי הווב שלנו](/he/integrations/web-components).
 - קרא על [APIs שלנו](/he/developers/apis).

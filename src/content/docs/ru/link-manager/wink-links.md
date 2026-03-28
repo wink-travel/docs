@@ -50,7 +50,7 @@ WinkLinks также отличный способ показать турист
 Используйте WinkLinks для продажи ваших:
 
 - [Shareable links](/ru/studio/shareable-links) — Выбирайте отображение в виде:
-    - [Рекламного баннера](/ru/developers/integrations/web-components/#content-loader).
+    - [Рекламного баннера](/ru/integrations/web-components/#content-loader).
     - Обычной ссылки с обновлениями цен в реальном времени.
 - [Cards](/ru/studio/cards) — Бронированные карточки с актуальными ценами и доступностью.
 - [Grids](/ru/studio/grids) — Сетка с бронируемыми карточками.

@@ -17,7 +17,7 @@ Brands and chains have slightly different needs than a single property. On Wink,
 
 - Manage multiple properties under a single account.
 - Assign managers to properties
-- Use [WinkLinks](/link-manager/wink-links), [WordPress](/developers/integrations/wordpress) and our [Web Components](/developers/integrations/web-components) to market and sell multiple properties in the one place.
+- Use [WinkLinks](/link-manager/wink-links), [WordPress](/integrations/wordpress) and our [Web Components](/integrations/web-components) to market and sell multiple properties in the one place.
 
 ## Management companies
 

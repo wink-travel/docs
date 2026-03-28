@@ -36,12 +36,12 @@ Felelősségi körei:
 
 A foglalási motor egy újrahasznosítható funkciók gyűjteménye, amelyet a https://ota.wink.travel oldalon keresztül teszünk elérhetővé; egy rendkívül testreszabható weboldal szállodák és affiliate partnerek számára, hogy termékeiket utazóknak értékesítsék.
 
-Az integrátorok, akik még nagyobb szabadságot szeretnének, ugyanazokat a funkciókat érhetik el a [WordPress pluginunk](/hu/developers/integrations/wordpress/), [Web Components](/hu/developers/integrations/web-components) és [API-k](/hu/developers/apis) segítségével.
+Az integrátorok, akik még nagyobb szabadságot szeretnének, ugyanazokat a funkciókat érhetik el a [WordPress pluginunk](/hu/integrations/wordpress/), [Web Components](/hu/integrations/web-components) és [API-k](/hu/developers/apis) segítségével.
 
 Folytasd a következő szakaszokkal, hogy többet megtudj arról, mit kínál a foglalási motor.
 
 ## További olvasnivaló
 
-- Olvass a [WordPress pluginunkról](/hu/developers/integrations/wordpress/).
-- Olvass a [Web Components-ről](/hu/developers/integrations/web-components).
+- Olvass a [WordPress pluginunkról](/hu/integrations/wordpress/).
+- Olvass a [Web Components-ről](/hu/integrations/web-components).
 - Olvass az [API-inkról](/hu/developers/apis).

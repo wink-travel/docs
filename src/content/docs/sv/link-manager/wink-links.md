@@ -50,7 +50,7 @@ WinkLinks är också ett utmärkt sätt att exponera det reseutbud du hittat via
 Använd WinkLinks för att sälja dina:
 
 - [Delbara länkar](/sv/studio/shareable-links) - Välj att visa som:
-    - [Annonsbanner](/sv/developers/integrations/web-components/#content-loader).
+    - [Annonsbanner](/sv/integrations/web-components/#content-loader).
     - Vanlig länk med realtidsuppdateringar av priser.
 - [Kort](/sv/studio/cards) - Bokningsbara kort med realtidspriser och tillgänglighet.
 - [Rutnät](/sv/studio/grids) - Rutnät med bokningsbara kort.

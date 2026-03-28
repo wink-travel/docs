@@ -36,12 +36,12 @@ Tanggungjawabnya termasuk:
 
 Enjin tempahan adalah koleksi fungsi yang boleh digunakan semula yang kami dedahkan melalui https://ota.wink.travel; sebuah laman web yang sangat boleh disesuaikan untuk hotel dan afiliasi menjual produk mereka kepada pelancong.
 
-Integrasi, yang mahukan lebih kebebasan, mempunyai akses kepada semua ciri yang sama melalui [plugin WordPress](/ms/developers/integrations/wordpress/), [Komponen Web](/ms/developers/integrations/web-components) dan [API](/ms/developers/apis) kami.
+Integrasi, yang mahukan lebih kebebasan, mempunyai akses kepada semua ciri yang sama melalui [plugin WordPress](/ms/integrations/wordpress/), [Komponen Web](/ms/integrations/web-components) dan [API](/ms/developers/apis) kami.
 
 Teruskan ke bahagian seterusnya untuk membaca lebih lanjut tentang apa yang ditawarkan oleh enjin tempahan.
 
 ## Bacaan lanjut
 
-- Baca tentang [plugin WordPress](/ms/developers/integrations/wordpress/) kami.
-- Baca tentang [Komponen Web](/ms/developers/integrations/web-components) kami.
+- Baca tentang [plugin WordPress](/ms/integrations/wordpress/) kami.
+- Baca tentang [Komponen Web](/ms/integrations/web-components) kami.
 - Baca tentang [API](/ms/developers/apis) kami.

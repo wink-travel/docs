@@ -36,12 +36,12 @@ Các trách nhiệm của nó bao gồm:
 
 Booking engine là tập hợp các chức năng có thể tái sử dụng mà chúng tôi cung cấp qua https://ota.wink.travel; một trang web có thể tùy chỉnh cao dành cho khách sạn và đối tác để bán sản phẩm của họ cho khách du lịch.
 
-Các nhà tích hợp, muốn có nhiều tự do hơn nữa, có quyền truy cập tất cả các tính năng tương tự thông qua [plugin WordPress](/vi/developers/integrations/wordpress/), [Web Components](/vi/developers/integrations/web-components) và [APIs](/vi/developers/apis) của chúng tôi.
+Các nhà tích hợp, muốn có nhiều tự do hơn nữa, có quyền truy cập tất cả các tính năng tương tự thông qua [plugin WordPress](/vi/integrations/wordpress/), [Web Components](/vi/integrations/web-components) và [APIs](/vi/developers/apis) của chúng tôi.
 
 Tiếp tục đến các phần tiếp theo để đọc thêm về những gì booking engine cung cấp.
 
 ## Đọc thêm
 
-- Đọc về [plugin WordPress](/vi/developers/integrations/wordpress/) của chúng tôi.
-- Đọc về [Web Components](/vi/developers/integrations/web-components) của chúng tôi.
+- Đọc về [plugin WordPress](/vi/integrations/wordpress/) của chúng tôi.
+- Đọc về [Web Components](/vi/integrations/web-components) của chúng tôi.
 - Đọc về [APIs](/vi/developers/apis) của chúng tôi.

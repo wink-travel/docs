@@ -17,7 +17,7 @@ Marcas e redes têm necessidades um pouco diferentes de uma única propriedade. 
 
 - Gerenciar múltiplas propriedades sob uma única conta.
 - Designar gerentes para as propriedades
-- Usar [WinkLinks](/pt-BR/link-manager/wink-links), [WordPress](/pt-BR/developers/integrations/wordpress) e nossos [Web Components](/pt-BR/developers/integrations/web-components) para divulgar e vender múltiplas propriedades em um só lugar.
+- Usar [WinkLinks](/pt-BR/link-manager/wink-links), [WordPress](/pt-BR/integrations/wordpress) e nossos [Web Components](/pt-BR/integrations/web-components) para divulgar e vender múltiplas propriedades em um só lugar.
 
 ## Empresas de gestão
 

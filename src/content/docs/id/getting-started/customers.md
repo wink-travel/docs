@@ -17,7 +17,7 @@ Merek dan rantai memiliki kebutuhan yang sedikit berbeda dibandingkan dengan pro
 
 - Mengelola beberapa properti di bawah satu akun.
 - Menugaskan manajer ke properti
-- Menggunakan [WinkLinks](/id/link-manager/wink-links), [WordPress](/id/developers/integrations/wordpress) dan [Web Components](/id/developers/integrations/web-components) kami untuk memasarkan dan menjual beberapa properti dalam satu tempat.
+- Menggunakan [WinkLinks](/id/link-manager/wink-links), [WordPress](/id/integrations/wordpress) dan [Web Components](/id/integrations/web-components) kami untuk memasarkan dan menjual beberapa properti dalam satu tempat.
 
 ## Perusahaan Manajemen
 

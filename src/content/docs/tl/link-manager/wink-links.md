@@ -50,7 +50,7 @@ Ang WinkLinks ay isang mahusay ding paraan upang ipakita ang travel inventory na
 Gamitin ang WinkLinks upang ibenta ang iyong:
 
 - [Shareable links](/tl/studio/shareable-links) - Piliin kung paano ipapakita:
-    - [Ad banner](/tl/developers/integrations/web-components/#content-loader).
+    - [Ad banner](/tl/integrations/web-components/#content-loader).
     - Normal na link na may realtime pricing updates.
 - [Cards](/tl/studio/cards) - Mga bookable card na may realtime pricing at availability.
 - [Grids](/tl/studio/grids) - Grid na may mga bookable card.

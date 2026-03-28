@@ -50,7 +50,7 @@ WinkLinks juga merupakan cara yang hebat untuk mendedahkan inventori perjalanan 
 Gunakan WinkLinks untuk menjual:
 
 - [Pautan boleh dikongsi](/ms/studio/shareable-links) - Pilih untuk dipaparkan sebagai:
-    - [Sepanduk iklan](/ms/developers/integrations/web-components/#content-loader).
+    - [Sepanduk iklan](/ms/integrations/web-components/#content-loader).
     - Pautan biasa dengan kemas kini harga masa nyata.
 - [Kad](/ms/studio/cards) - Kad boleh ditempah dengan harga & ketersediaan masa nyata.
 - [Grid](/ms/studio/grids) - Grid dengan kad boleh ditempah.

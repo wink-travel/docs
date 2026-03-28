@@ -36,12 +36,12 @@ Sen vastuualueisiin kuuluu:
 
 Varausmoottori on kokoelma uudelleenkäytettäviä toimintoja, joita tarjoamme osoitteessa https://ota.wink.travel; erittäin muokattava verkkosivusto hotelleille ja kumppaneille myydä tuotteitaan matkustajille.
 
-Integraattoreilla, jotka haluavat vielä enemmän vapautta, on pääsy samoihin ominaisuuksiin [WordPress-laajennuksemme](/fi/developers/integrations/wordpress/), [Web Components](/fi/developers/integrations/web-components) ja [API:t](/fi/developers/apis) kautta.
+Integraattoreilla, jotka haluavat vielä enemmän vapautta, on pääsy samoihin ominaisuuksiin [WordPress-laajennuksemme](/fi/integrations/wordpress/), [Web Components](/fi/integrations/web-components) ja [API:t](/fi/developers/apis) kautta.
 
 Jatka seuraaviin osioihin lukeaksesi lisää siitä, mitä varausmoottori tarjoaa.
 
 ## Lisälukemista
 
-- Lue lisää [WordPress-laajennuksestamme](/fi/developers/integrations/wordpress/).
-- Lue lisää [Web Components](/fi/developers/integrations/web-components).
+- Lue lisää [WordPress-laajennuksestamme](/fi/integrations/wordpress/).
+- Lue lisää [Web Components](/fi/integrations/web-components).
 - Lue lisää [API:stamme](/fi/developers/apis).

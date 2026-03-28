@@ -17,7 +17,7 @@ Thương hiệu và chuỗi có nhu cầu hơi khác so với một cơ sở lư
 
 - Quản lý nhiều cơ sở lưu trú dưới một tài khoản duy nhất.
 - Phân công quản lý cho các cơ sở lưu trú
-- Sử dụng [WinkLinks](/vi/link-manager/wink-links), [WordPress](/vi/developers/integrations/wordpress) và [Web Components](/vi/developers/integrations/web-components) của chúng tôi để tiếp thị và bán nhiều cơ sở lưu trú tại cùng một nơi.
+- Sử dụng [WinkLinks](/vi/link-manager/wink-links), [WordPress](/vi/integrations/wordpress) và [Web Components](/vi/integrations/web-components) của chúng tôi để tiếp thị và bán nhiều cơ sở lưu trú tại cùng một nơi.
 
 ## Công ty quản lý
 

@@ -17,7 +17,7 @@ Značky a řetězce mají mírně odlišné potřeby než jednotlivé nemovitost
 
 - Spravovat více nemovitostí pod jedním účtem.
 - Přiřazovat manažery k nemovitostem.
-- Používat [WinkLinks](/cs/link-manager/wink-links), [WordPress](/cs/developers/integrations/wordpress) a naše [Web Components](/cs/developers/integrations/web-components) k marketingu a prodeji více nemovitostí na jednom místě.
+- Používat [WinkLinks](/cs/link-manager/wink-links), [WordPress](/cs/integrations/wordpress) a naše [Web Components](/cs/integrations/web-components) k marketingu a prodeji více nemovitostí na jednom místě.
 
 ## Správcovské společnosti
 

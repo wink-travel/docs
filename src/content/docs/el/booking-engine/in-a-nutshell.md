@@ -36,12 +36,12 @@ sidebar:
 
 Το booking engine είναι μια συλλογή επαναχρησιμοποιήσιμων λειτουργιών που εκθέτουμε μέσω του https://ota.wink.travel· μια εξαιρετικά προσαρμόσιμη ιστοσελίδα για ξενοδοχεία και συνεργάτες να πουλήσουν τα προϊόντα τους στους ταξιδιώτες.
 
-Οι ενσωματωτές, που θέλουν ακόμα περισσότερη ελευθερία, έχουν πρόσβαση σε όλες τις ίδιες λειτουργίες μέσω του [WordPress plugin](/el/developers/integrations/wordpress/), των [Web Components](/el/developers/integrations/web-components) και των [APIs](/el/developers/apis).
+Οι ενσωματωτές, που θέλουν ακόμα περισσότερη ελευθερία, έχουν πρόσβαση σε όλες τις ίδιες λειτουργίες μέσω του [WordPress plugin](/el/integrations/wordpress/), των [Web Components](/el/integrations/web-components) και των [APIs](/el/developers/apis).
 
 Συνεχίστε στις επόμενες ενότητες για να διαβάσετε περισσότερα σχετικά με όσα προσφέρει το booking engine.
 
 ## Περισσότερη ανάγνωση
 
-- Διαβάστε για το [WordPress plugin](/el/developers/integrations/wordpress/).
-- Διαβάστε για τα [Web Components](/el/developers/integrations/web-components).
+- Διαβάστε για το [WordPress plugin](/el/integrations/wordpress/).
+- Διαβάστε για τα [Web Components](/el/integrations/web-components).
 - Διαβάστε για τα [APIs](/el/developers/apis).

@@ -17,7 +17,7 @@ Brändeillä ja ketjuilla on hieman erilaiset tarpeet kuin yksittäisellä kiint
 
 - Hallita useita kiinteistöjä yhden tilin alla.
 - Määrittää kiinteistöille vastuuhenkilöitä.
-- Käyttää [WinkLinks](/fi/link-manager/wink-links), [WordPress](/fi/developers/integrations/wordpress) ja meidän [Web Components](/fi/developers/integrations/web-components) -komponenttejamme markkinoidakseen ja myydäkseen useita kiinteistöjä yhdessä paikassa.
+- Käyttää [WinkLinks](/fi/link-manager/wink-links), [WordPress](/fi/integrations/wordpress) ja meidän [Web Components](/fi/integrations/web-components) -komponenttejamme markkinoidakseen ja myydäkseen useita kiinteistöjä yhdessä paikassa.
 
 ## Hallintayhtiöt
 

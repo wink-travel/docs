@@ -17,7 +17,7 @@ Wink почав підключати готелі десять років том
 
 - Керувати кількома об’єктами нерухомості в межах одного акаунта.
 - Призначати менеджерів для об’єктів.
-- Використовувати [WinkLinks](/uk/link-manager/wink-links), [WordPress](/uk/developers/integrations/wordpress) та наші [Web Components](/uk/developers/integrations/web-components) для маркетингу та продажу кількох об’єктів в одному місці.
+- Використовувати [WinkLinks](/uk/link-manager/wink-links), [WordPress](/uk/integrations/wordpress) та наші [Web Components](/uk/integrations/web-components) для маркетингу та продажу кількох об’єктів в одному місці.
 
 ## Управлінські компанії
 

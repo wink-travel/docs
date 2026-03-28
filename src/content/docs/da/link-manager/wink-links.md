@@ -50,7 +50,7 @@ WinkLinks er også en fantastisk måde at eksponere det rejseinventar, du har fu
 Brug WinkLinks til at sælge dine:
 
 - [Delbare links](/da/studio/shareable-links) - Vælg at vise som:
-    - [Annoncebanner](/da/developers/integrations/web-components/#content-loader).
+    - [Annoncebanner](/da/integrations/web-components/#content-loader).
     - Normalt link med realtime prisopdateringer.
 - [Kort](/da/studio/cards) - Bookbare kort med realtime priser og tilgængelighed.
 - [Gitter](/da/studio/grids) - Gitter med bookbare kort.

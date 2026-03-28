@@ -36,12 +36,12 @@ Bókunarvélin er kjarninn í vettvangi okkar.
 
 Bókunarvélin er safn af endurnýtanlegum virkni sem við bjóðum upp á í gegnum https://ota.wink.travel; mjög sérhannaða vefsíðu fyrir hótel og samstarfsaðila til að selja vörur sínar til ferðalanga.
 
-Þeir sem vilja enn meiri frelsi hafa aðgang að öllum sömu eiginleikum í gegnum okkar [WordPress viðbót](/is/developers/integrations/wordpress/), [Web Components](/is/developers/integrations/web-components) og [API](/is/developers/apis).
+Þeir sem vilja enn meiri frelsi hafa aðgang að öllum sömu eiginleikum í gegnum okkar [WordPress viðbót](/is/integrations/wordpress/), [Web Components](/is/integrations/web-components) og [API](/is/developers/apis).
 
 Haltu áfram í næstu köflum til að lesa meira um hvað bókunarvélin hefur upp á að bjóða.
 
 ## Frekari lestur
 
-- Lestu um okkar [WordPress viðbót](/is/developers/integrations/wordpress/).
-- Lestu um okkar [Web Components](/is/developers/integrations/web-components).
+- Lestu um okkar [WordPress viðbót](/is/integrations/wordpress/).
+- Lestu um okkar [Web Components](/is/integrations/web-components).
 - Lestu um okkar [API](/is/developers/apis).

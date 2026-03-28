@@ -17,7 +17,7 @@ Merken en ketens hebben iets andere behoeften dan een enkele accommodatie. Op Wi
 
 - Meerdere accommodaties beheren onder één account.
 - Managers toewijzen aan accommodaties.
-- Gebruikmaken van [WinkLinks](/nl/link-manager/wink-links), [WordPress](/nl/developers/integrations/wordpress) en onze [Web Components](/nl/developers/integrations/web-components) om meerdere accommodaties op één plek te promoten en verkopen.
+- Gebruikmaken van [WinkLinks](/nl/link-manager/wink-links), [WordPress](/nl/integrations/wordpress) en onze [Web Components](/nl/integrations/web-components) om meerdere accommodaties op één plek te promoten en verkopen.
 
 ## Beheerbedrijven
 

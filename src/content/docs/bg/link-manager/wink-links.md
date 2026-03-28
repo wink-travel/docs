@@ -50,7 +50,7 @@ WinkLinks е също отличен начин да покажете пътни
 Използвайте WinkLinks, за да продавате вашите:
 
 - [Споделими линкове](/bg/studio/shareable-links) - Изберете да се показват като:
-    - [Рекламен банер](/bg/developers/integrations/web-components/#content-loader).
+    - [Рекламен банер](/bg/integrations/web-components/#content-loader).
     - Обикновен линк с актуализации на цените в реално време.
 - [Карти](/bg/studio/cards) - Резервируеми карти с цени и наличности в реално време.
 - [Мрежи](/bg/studio/grids) - Мрежа с резервируеми карти.

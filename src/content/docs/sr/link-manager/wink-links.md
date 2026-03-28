@@ -50,7 +50,7 @@ WinkLinks je takođe odličan način da izložite putnički inventar koji ste pr
 Koristite WinkLinks da prodate vaše:
 
 - [Deljive linkove](/sr/studio/shareable-links) - Izaberite prikaz kao:
-    - [Ad banner](/sr/developers/integrations/web-components/#content-loader).
+    - [Ad banner](/sr/integrations/web-components/#content-loader).
     - Normalan link sa ažuriranjima cena u realnom vremenu.
 - [Kartice](/sr/studio/cards) - Rezervabilne kartice sa cenama i dostupnošću u realnom vremenu.
 - [Mreže](/sr/studio/grids) - Mreža sa rezervabilnim karticama.

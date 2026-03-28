@@ -17,7 +17,7 @@ Wink начал подключать отели десять лет назад. 
 
 - Управлять несколькими объектами под одной учетной записью.
 - Назначать менеджеров на объекты.
-- Использовать [WinkLinks](/ru/link-manager/wink-links), [WordPress](/ru/developers/integrations/wordpress) и наши [Web Components](/ru/developers/integrations/web-components) для маркетинга и продажи нескольких объектов в одном месте.
+- Использовать [WinkLinks](/ru/link-manager/wink-links), [WordPress](/ru/integrations/wordpress) и наши [Web Components](/ru/integrations/web-components) для маркетинга и продажи нескольких объектов в одном месте.
 
 ## Управляющие компании
 

@@ -17,7 +17,7 @@ Značky a reťazce majú mierne odlišné potreby ako jednotlivé hotely. Na Win
 
 - Spravovať viacero nehnuteľností pod jedným účtom.
 - Priraďovať manažérov k nehnuteľnostiam.
-- Používať [WinkLinks](/sk/link-manager/wink-links), [WordPress](/sk/developers/integrations/wordpress) a naše [Web Components](/sk/developers/integrations/web-components) na marketing a predaj viacerých nehnuteľností na jednom mieste.
+- Používať [WinkLinks](/sk/link-manager/wink-links), [WordPress](/sk/integrations/wordpress) a naše [Web Components](/sk/integrations/web-components) na marketing a predaj viacerých nehnuteľností na jednom mieste.
 
 ## Správcovské spoločnosti
 

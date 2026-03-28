@@ -50,7 +50,7 @@ WinkLinks je tudi odličen način za izpostavitev potovalnega inventarja, ki ste
 Uporabite WinkLinks za prodajo vaših:
 
 - [Deljivih povezav](/sl/studio/shareable-links) - Izberite prikaz kot:
-    - [Oglasni pas](/sl/developers/integrations/web-components/#content-loader).
+    - [Oglasni pas](/sl/integrations/web-components/#content-loader).
     - Navadna povezava z realnočasovnimi posodobitvami cen.
 - [Kartic](/sl/studio/cards) - Rezervabilne kartice z realnočasovno ceno in razpoložljivostjo.
 - [Mrež](/sl/studio/grids) - Mreža z rezervabilnimi karticami.

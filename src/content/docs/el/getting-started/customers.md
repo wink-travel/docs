@@ -17,7 +17,7 @@ sidebar:
 
 - Να διαχειρίζονται πολλαπλά ξενοδοχεία κάτω από έναν λογαριασμό.
 - Να αναθέτουν διαχειριστές σε ξενοδοχεία.
-- Να χρησιμοποιούν τα [WinkLinks](/el/link-manager/wink-links), το [WordPress](/el/developers/integrations/wordpress) και τα [Web Components](/el/developers/integrations/web-components) για να προωθούν και να πωλούν πολλαπλά ξενοδοχεία σε ένα μέρος.
+- Να χρησιμοποιούν τα [WinkLinks](/el/link-manager/wink-links), το [WordPress](/el/integrations/wordpress) και τα [Web Components](/el/integrations/web-components) για να προωθούν και να πωλούν πολλαπλά ξενοδοχεία σε ένα μέρος.
 
 ## Διαχειριστικές εταιρείες
 

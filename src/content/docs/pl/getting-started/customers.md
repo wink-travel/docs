@@ -17,7 +17,7 @@ Marki i sieci mają nieco inne potrzeby niż pojedynczy obiekt. Na Wink mogą:
 
 - Zarządzać wieloma obiektami w ramach jednego konta.
 - Przypisywać menedżerów do obiektów.
-- Korzystać z [WinkLinks](/pl/link-manager/wink-links), [WordPress](/pl/developers/integrations/wordpress) oraz naszych [Web Components](/pl/developers/integrations/web-components), aby promować i sprzedawać wiele obiektów w jednym miejscu.
+- Korzystać z [WinkLinks](/pl/link-manager/wink-links), [WordPress](/pl/integrations/wordpress) oraz naszych [Web Components](/pl/integrations/web-components), aby promować i sprzedawać wiele obiektów w jednym miejscu.
 
 ## Firmy zarządzające
 

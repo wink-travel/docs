@@ -50,7 +50,7 @@ WinkLinks també és una gran manera d’exposar l’inventari de viatges que ha
 Utilitza WinkLinks per vendre els teus:
 
 - [Enllaços compartibles](/ca/studio/shareable-links) - Tria mostrar com a:
-    - [Banner publicitari](/ca/developers/integrations/web-components/#content-loader).
+    - [Banner publicitari](/ca/integrations/web-components/#content-loader).
     - Enllaç normal amb actualitzacions de preus en temps real.
 - [Targetes](/ca/studio/cards) - Targetes reservables amb preus i disponibilitat en temps real.
 - [Graelles](/ca/studio/grids) - Graella amb targetes reservables.

@@ -36,12 +36,12 @@ Zu ihren Aufgaben gehören:
 
 Die Buchungsmaschine ist eine Sammlung wiederverwendbarer Funktionen, die wir über https://ota.wink.travel bereitstellen; eine hochgradig anpassbare Website für Hotels und Affiliates, um ihre Angebote an Reisende zu verkaufen.
 
-Integratoren, die noch mehr Freiheit wünschen, haben über unser [WordPress-Plugin](/de/developers/integrations/wordpress/), [Web Components](/de/developers/integrations/web-components) und [APIs](/de/developers/apis) Zugriff auf alle dieselben Funktionen.
+Integratoren, die noch mehr Freiheit wünschen, haben über unser [WordPress-Plugin](/de/integrations/wordpress/), [Web Components](/de/integrations/web-components) und [APIs](/de/developers/apis) Zugriff auf alle dieselben Funktionen.
 
 Lesen Sie in den nächsten Abschnitten weiter, um mehr darüber zu erfahren, was die Buchungsmaschine zu bieten hat.
 
 ## Weiterführende Lektüre
 
-- Lesen Sie über unser [WordPress-Plugin](/de/developers/integrations/wordpress/).
-- Lesen Sie über unsere [Web Components](/de/developers/integrations/web-components).
+- Lesen Sie über unser [WordPress-Plugin](/de/integrations/wordpress/).
+- Lesen Sie über unsere [Web Components](/de/integrations/web-components).
 - Lesen Sie über unsere [APIs](/de/developers/apis).

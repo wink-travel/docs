@@ -36,12 +36,12 @@ Le sue responsabilità includono:
 
 Il motore di prenotazione è una raccolta di funzionalità riutilizzabili che esponiamo tramite https://ota.wink.travel; un sito altamente personalizzabile per hotel e affiliati per vendere i loro servizi ai viaggiatori.
 
-Gli integratori, che vogliono ancora più libertà, hanno accesso a tutte le stesse funzionalità tramite il nostro [plugin WordPress](/it/developers/integrations/wordpress/), [Web Components](/it/developers/integrations/web-components) e [API](/it/developers/apis).
+Gli integratori, che vogliono ancora più libertà, hanno accesso a tutte le stesse funzionalità tramite il nostro [plugin WordPress](/it/integrations/wordpress/), [Web Components](/it/integrations/web-components) e [API](/it/developers/apis).
 
 Continua con le sezioni successive per leggere di più su cosa offre il motore di prenotazione.
 
 ## Ulteriori letture
 
-- Leggi del nostro [plugin WordPress](/it/developers/integrations/wordpress/).
-- Leggi dei nostri [Web Components](/it/developers/integrations/web-components).
+- Leggi del nostro [plugin WordPress](/it/integrations/wordpress/).
+- Leggi dei nostri [Web Components](/it/integrations/web-components).
 - Leggi delle nostre [API](/it/developers/apis).

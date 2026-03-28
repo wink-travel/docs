@@ -17,7 +17,7 @@ Zīmoliem un ķēdēm ir nedaudz atšķirīgas vajadzības nekā vienai naktsmī
 
 - Pārvaldīt vairākas naktsmītnes vienā kontā.
 - Piešķirt pārvaldniekus naktsmītnēm.
-- Izmantot [WinkLinks](/lv/link-manager/wink-links), [WordPress](/lv/developers/integrations/wordpress) un mūsu [Web Components](/lv/developers/integrations/web-components), lai tirgotu un pārdotu vairākas naktsmītnes vienuviet.
+- Izmantot [WinkLinks](/lv/link-manager/wink-links), [WordPress](/lv/integrations/wordpress) un mūsu [Web Components](/lv/integrations/web-components), lai tirgotu un pārdotu vairākas naktsmītnes vienuviet.
 
 ## Pārvaldības uzņēmumi
 

@@ -36,12 +36,12 @@ De verantwoordelijkheden omvatten:
 
 De booking engine is een verzameling herbruikbare functionaliteiten die we aanbieden via https://ota.wink.travel; een zeer aanpasbare website voor hotels en affiliates om hun aanbod aan reizigers te verkopen.
 
-Integrators die nog meer vrijheid willen, hebben toegang tot alle dezelfde functies via onze [WordPress plugin](/nl/developers/integrations/wordpress/), [Web Components](/nl/developers/integrations/web-components) en [APIs](/nl/developers/apis).
+Integrators die nog meer vrijheid willen, hebben toegang tot alle dezelfde functies via onze [WordPress plugin](/nl/integrations/wordpress/), [Web Components](/nl/integrations/web-components) en [APIs](/nl/developers/apis).
 
 Ga verder naar de volgende secties om meer te lezen over wat de booking engine te bieden heeft.
 
 ## Verder lezen
 
-- Lees over onze [WordPress plugin](/nl/developers/integrations/wordpress/).
-- Lees over onze [Web Components](/nl/developers/integrations/web-components).
+- Lees over onze [WordPress plugin](/nl/integrations/wordpress/).
+- Lees over onze [Web Components](/nl/integrations/web-components).
 - Lees over onze [APIs](/nl/developers/apis).

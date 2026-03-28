@@ -17,7 +17,7 @@ Brands og kæder har lidt andre behov end en enkelt ejendom. På Wink kan de:
 
 - Administrere flere ejendomme under en enkelt konto.
 - Tildele ledere til ejendomme
-- Bruge [WinkLinks](/da/link-manager/wink-links), [WordPress](/da/developers/integrations/wordpress) og vores [Web Components](/da/developers/integrations/web-components) til at markedsføre og sælge flere ejendomme samlet.
+- Bruge [WinkLinks](/da/link-manager/wink-links), [WordPress](/da/integrations/wordpress) og vores [Web Components](/da/integrations/web-components) til at markedsføre og sælge flere ejendomme samlet.
 
 ## Managementselskaber
 
