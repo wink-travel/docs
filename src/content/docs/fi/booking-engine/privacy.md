@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., joka toimii nimellä Wink (”Yhtiö”), haluaa tiedottaa sinulle, joka otat yhteyttä Yhtiöön, että on tarpeen kerätä, koota ja käyttää henkilötietojasi Yhtiön palvelua varten tämän tietosuojakäytännön mukaisesti. Ottamalla yhteyttä ja luovuttamalla henkilötietosi Yhtiölle viestintää, koordinointia ja/tai Yhtiön palvelujen tarjoamista varten, katsotaan, että hyväksyt ja sitoudut noudattamaan tätä tietosuojakäytäntöä.
+Winkfluence, joka toimii nimellä Wink (”Yhtiö”), haluaa tiedottaa sinulle, joka otat yhteyttä Yhtiöön, että on tarpeen kerätä, koota ja käyttää henkilötietojasi Yhtiön palvelua varten tämän tietosuojakäytännön mukaisesti. Ottamalla yhteyttä ja luovuttamalla henkilötietosi Yhtiölle viestintää, koordinointia ja/tai Yhtiön palvelujen tarjoamista varten, katsotaan, että hyväksyt ja sitoudut noudattamaan tätä tietosuojakäytäntöä.
 
 Henkilötiedot, joita käsitellään, Yhtiö voi saada henkilötietosi eri kanavista seuraavasti:
 

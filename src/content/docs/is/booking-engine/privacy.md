@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., sem starfar undir nafninu Wink („Fyrirtækið“), vill upplýsa þig sem hefur samband við Fyrirtækið að nauðsynlegt er að safna, vinna úr og nota persónuupplýsingar þínar fyrir þjónustu Fyrirtækisins í samræmi við þessa Persónuverndarstefnu. Með því að hafa samband og veita Fyrirtækinu persónuupplýsingar þínar í þeim tilgangi að eiga samskipti, samræma og/eða veita þér þjónustu Fyrirtækisins, telst þú samþykkja og samþykkja að vera bundinn af og fara eftir þessari Persónuverndarstefnu.
+Winkfluence, sem starfar undir nafninu Wink („Fyrirtækið“), vill upplýsa þig sem hefur samband við Fyrirtækið að nauðsynlegt er að safna, vinna úr og nota persónuupplýsingar þínar fyrir þjónustu Fyrirtækisins í samræmi við þessa Persónuverndarstefnu. Með því að hafa samband og veita Fyrirtækinu persónuupplýsingar þínar í þeim tilgangi að eiga samskipti, samræma og/eða veita þér þjónustu Fyrirtækisins, telst þú samþykkja og samþykkja að vera bundinn af og fara eftir þessari Persónuverndarstefnu.
 
 Persónuupplýsingar sem eru unnar, getur Fyrirtækið fengið persónuupplýsingar þínar frá ýmsum rásum sem hér segir:
 

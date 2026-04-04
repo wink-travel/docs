@@ -15,7 +15,7 @@ Dengan mendaftar dan bergabung dalam program Wink sebagai penyedia akomodasi, pe
 
 **ANTARA:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, sebuah perusahaan yang didirikan berdasarkan hukum Singapura dan berkantor terdaftar di \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 dengan nomor registrasi VAT 201437335D ("Wink"), dan
+**Winkfluence**, sebuah perusahaan yang didirikan berdasarkan hukum Singapura dan berkantor terdaftar di \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 dengan nomor registrasi VAT 201437335D ("Wink"), dan
 
 **PENYEDIA AKOMODASI**, yang rinciannya tercantum dalam Formulir Pendaftaran Penyedia Akomodasi atau telah diserahkan secara online (selanjutnya disebut "Penyedia Akomodasi").
 
@@ -70,7 +70,7 @@ Selain istilah yang didefinisikan di tempat lain dalam Perjanjian ini, definisi 
 
 **“Partner”** berarti bisnis atau individu yang menghubungkan atau menggunakan platform Wink untuk mempromosikan dan menjual inventaris Penyedia Akomodasi kepada audiens dan/atau pelanggannya untuk komisi.
 
-**“Payment Facilitator”** anak perusahaan milik penuh Traveliko Singapore Pte. Ltd. (“TripPay”), yang mengelola Layanan Pembayaran, mengumpulkan pembayaran dari tamu (“Pay-in”), dengan membebankan metode pembayaran yang terkait dengan pembelian mereka, seperti kartu kredit, kartu debit, transfer bank, mata uang kripto atau PayPal, dll., dan menyalurkan dana yang terhutang (“Net Rate”) kepada Penyedia Akomodasi.
+**“Payment Facilitator”** anak perusahaan milik penuh Winkfluence (“TripPay”), yang mengelola Layanan Pembayaran, mengumpulkan pembayaran dari tamu (“Pay-in”), dengan membebankan metode pembayaran yang terkait dengan pembelian mereka, seperti kartu kredit, kartu debit, transfer bank, mata uang kripto atau PayPal, dll., dan menyalurkan dana yang terhutang (“Net Rate”) kepada Penyedia Akomodasi.
 
 **“Pay-in”** berarti penerimaan pembayaran yang dilakukan oleh tamu melalui Payment Facilitator.
 

@@ -11,7 +11,7 @@ Dernière mise à jour 2024-06-12
 
 **CONDITIONS DE PAIEMENT POUR LES FOURNISSEURS D’HÉBERGEMENT**
 
-Ces Conditions de Service de Paiement (« **Conditions de Paiement** ») constituent un accord juridique contraignant entre le Fournisseur d’Hébergement et TripPay (ci-après dénommé **« Facilitateur de Paiement »**), une filiale à 100 % de Traveliko Singapore Pte. Ltd., qui régit les Services de Paiement (définis ci-dessous) effectués via ou en lien avec la plateforme Wink (ci-après dénommée **« Wink »**). Lorsque ces Conditions de Paiement mentionnent « **Facilitateur de Paiement** », « **nous** », « **notre** » ou « **nos** », cela fait référence à la société TripPay avec laquelle vous contractez pour les Services de Paiement.
+Ces Conditions de Service de Paiement (« **Conditions de Paiement** ») constituent un accord juridique contraignant entre le Fournisseur d’Hébergement et TripPay (ci-après dénommé **« Facilitateur de Paiement »**), une filiale à 100 % de Winkfluence, qui régit les Services de Paiement (définis ci-dessous) effectués via ou en lien avec la plateforme Wink (ci-après dénommée **« Wink »**). Lorsque ces Conditions de Paiement mentionnent « **Facilitateur de Paiement** », « **nous** », « **notre** » ou « **nos** », cela fait référence à la société TripPay avec laquelle vous contractez pour les Services de Paiement.
 
 Le Facilitateur de Paiement fournit des services de paiement aux Fournisseurs d’Hébergement qui vendent des inventaires via la plateforme Wink. Ces services de paiement peuvent inclure (si disponibles) les éléments suivants (collectivement, les « **Services de Paiement** ») :
 
@@ -27,7 +27,7 @@ Le Contrat a été lu, et toutes les Conditions Générales ont été acceptées
 Les Services de Paiement seront fournis par l’entité contractante selon le pays dans lequel se trouve l’Hébergement comme suit :
 
 * États-Unis : TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Reste du monde : TripPay Slovakia
+* Reste du monde : TripPay Corporation
 
 **1. Votre Utilisation des Services de Paiement**
 

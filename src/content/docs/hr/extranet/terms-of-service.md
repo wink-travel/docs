@@ -15,7 +15,7 @@ Registracijom i prijavom u Wink program kao pružatelj smještaja, pružatelj sm
 
 **IZMEĐU:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, tvrtke osnovane prema zakonima Singapura sa sjedištem na adresi \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, s PDV brojem 201437335D ("Wink"), i
+**Winkfluence**, tvrtke osnovane prema zakonima Singapura sa sjedištem na adresi \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, s PDV brojem 201437335D ("Wink"), i
 
 **PRUŽATELJA SMJEŠTAJA**, čiji su podaci navedeni u obrascu za registraciju pružatelja smještaja ili su dostavljeni online (dalje u tekstu "Pružatelj smještaja").
 
@@ -70,7 +70,7 @@ Osim termina definiranih drugdje u ovom Ugovoru, sljedeće definicije vrijede kr
 
 **“Partner”** znači bilo koje poslovno ili fizičko lice koje se povezuje ili koristi Wink platformu za promociju i prodaju inventara Pružatelja smještaja svojoj publici i/ili kupcima za proviziju.
 
-**“Payment Facilitator”** u potpunom vlasništvu Traveliko Singapore Pte. Ltd. (“TripPay”), koji upravlja uslugama plaćanja, prikuplja uplate od gostiju (“Pay-in”) naplaćujući povezanu metodu plaćanja kao što su kreditna kartica, debitna kartica, bankovni transfer, kriptovalute ili PayPal itd. i isplaćuje sredstva Pružatelju smještaja (“Neto cijena”).
+**“Payment Facilitator”** u potpunom vlasništvu Winkfluence (“TripPay”), koji upravlja uslugama plaćanja, prikuplja uplate od gostiju (“Pay-in”) naplaćujući povezanu metodu plaćanja kao što su kreditna kartica, debitna kartica, bankovni transfer, kriptovalute ili PayPal itd. i isplaćuje sredstva Pružatelju smještaja (“Neto cijena”).
 
 **“Pay-in”** znači primitak uplate od gosta od strane Payment Facilitatora.
 

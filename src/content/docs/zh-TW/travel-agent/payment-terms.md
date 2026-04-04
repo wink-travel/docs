@@ -26,7 +26,7 @@ sidebar:
 
 **雙方：**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**，依新加坡法律成立，註冊辦公室位於 \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095，增值稅註冊號碼 201437335D（以下稱「Wink」）；及  
+1. **Winkfluence**，依新加坡法律成立，註冊辦公室位於 \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095，增值稅註冊號碼 201437335D（以下稱「Wink」）；及  
      
 2. **旅行社**，其詳細資料載於旅行社註冊表格或已線上提交（以下稱「旅行社」）。
 

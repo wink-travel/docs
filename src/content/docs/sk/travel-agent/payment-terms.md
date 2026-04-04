@@ -25,7 +25,7 @@ Tieto Podmienky platby služieb („Podmienky platby“) sú záväznou právnou
 
 **MEDZI:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, spoločnosť založená podľa zákonov Singapuru so sídlom na adrese \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, s daňovým identifikačným číslom 201437335D (ďalej len „Wink“) a  
+1. **Winkfluence**, spoločnosť založená podľa zákonov Singapuru so sídlom na adrese \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, s daňovým identifikačným číslom 201437335D (ďalej len „Wink“) a  
      
 2. **CESTOVNÁ KANCELÁRIA**, ktorej údaje sú uvedené v registračnom formulári cestovnej kancelárie alebo boli zaslané online („Cestovná kancelária“).
 

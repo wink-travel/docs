@@ -11,7 +11,7 @@ Ultimo aggiornamento 2024-06-12
 
 **TERMINI DI PAGAMENTO PER GLI AFFILIATI**
 
-Questi Termini di Servizio di Pagamento (“**Termini di Pagamento**”) costituiscono un accordo legale vincolante tra te e TripPay (di seguito denominato **“Payment Facilitator”**), una controllata interamente posseduta da Traveliko Singapore Pte. Ltd., che regola i Servizi di Pagamento (definiti di seguito) effettuati tramite o in connessione con la piattaforma Wink (di seguito denominata **“Wink”**). Quando questi Termini di Pagamento menzionano “**Payment Facilitator**,” “**noi**,” “**ci**,” o “**nostro**,” si riferiscono alla società TripPay con cui stai stipulando il contratto per i Servizi di Pagamento.
+Questi Termini di Servizio di Pagamento (“**Termini di Pagamento**”) costituiscono un accordo legale vincolante tra te e TripPay (di seguito denominato **“Payment Facilitator”**), una controllata interamente posseduta da Winkfluence, che regola i Servizi di Pagamento (definiti di seguito) effettuati tramite o in connessione con la piattaforma Wink (di seguito denominata **“Wink”**). Quando questi Termini di Pagamento menzionano “**Payment Facilitator**,” “**noi**,” “**ci**,” o “**nostro**,” si riferiscono alla società TripPay con cui stai stipulando il contratto per i Servizi di Pagamento.
 
 Il Payment Facilitator fornisce servizi di pagamento agli Affiliati che vendono l’inventario dei Fornitori di Alloggi tramite Wink. Questi servizi di pagamento possono includere (se disponibili) quanto segue (collettivamente, “**Servizi di Pagamento**”):
 
@@ -27,7 +27,7 @@ L’Accordo è stato letto e tutti i Termini e Condizioni sono stati accettati d
 I Servizi di Pagamento saranno forniti dall’entità contraente a seconda del paese in cui si trova l’Affiliato come indicato di seguito:
 
 * Stati Uniti: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Resto del mondo: TripPay Slovakia
+* Resto del mondo: TripPay Corporation
 
 **1. Il tuo utilizzo dei Servizi di Pagamento**
 

@@ -25,7 +25,7 @@ Ketentuan Layanan Pembayaran ini (“Ketentuan Pembayaran”) adalah perjanjian 
 
 **ANTARA:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, sebuah perusahaan yang didirikan berdasarkan hukum Singapura dan berkantor terdaftar di \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 dengan nomor registrasi VAT 201437335D (selanjutnya disebut "Wink") dan  
+1. **Winkfluence**, sebuah perusahaan yang didirikan berdasarkan hukum Singapura dan berkantor terdaftar di \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 dengan nomor registrasi VAT 201437335D (selanjutnya disebut "Wink") dan  
      
 2. **AGEN PERJALANAN** yang datanya tercantum dalam Formulir Pendaftaran Agen Perjalanan atau telah diserahkan secara online (selanjutnya disebut "Agen Perjalanan").
 

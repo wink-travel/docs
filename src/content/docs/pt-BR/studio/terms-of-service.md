@@ -61,7 +61,7 @@ Wink e o Afiliado são uma “Parte” deste Contrato e são coletivamente refer
 **"Micro Site"** significa todas as versões white label do site principal da Wink, que são de propriedade, criadas, hospedadas e mantidas pela Wink. O Micro Site pode ser marcado com o logo 'powered by Wink' ou equivalente.  
 **“Comissão Líquida”** é o valor devido ao Afiliado pelas Transações Materializadas após a dedução da Taxa de Serviço de Pagamento e da Taxa de Reserva.  
 **"Pesquisa Paga"** significa qualquer forma de publicidade online que vincula a apresentação de um anúncio a uma busca específica baseada em palavra-chave.  
-**“Facilitador de Pagamento”** é uma subsidiária integral da Traveliko Singapore Pte. Ltd., que governa os Serviços de Pagamento, coletando pagamentos dos hóspedes (“Pay-in”), cobrando o método de pagamento associado à compra, como cartão de crédito, débito, transferência bancária, criptomoedas ou PayPal etc., e repassando os fundos devidos (“Comissão Líquida”) para a conta bancária local do Afiliado.  
+**“Facilitador de Pagamento”** é uma subsidiária integral da Winkfluence, que governa os Serviços de Pagamento, coletando pagamentos dos hóspedes (“Pay-in”), cobrando o método de pagamento associado à compra, como cartão de crédito, débito, transferência bancária, criptomoedas ou PayPal etc., e repassando os fundos devidos (“Comissão Líquida”) para a conta bancária local do Afiliado.  
 **“Pay-in”** significa a aquisição de um pagamento feito por um hóspede pelo Facilitador de Pagamento.  
 **“Pay-out”** significa o repasse da Comissão Líquida ao Afiliado pelo Facilitador de Pagamento.  
 **“Taxa de Serviço de Pagamento”** é a taxa de 4% deduzida da comissão do Afiliado como taxa de aquisição de pagamento pelo Facilitador de Pagamento.  

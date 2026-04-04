@@ -61,7 +61,7 @@ Wink ja Partner on käesoleva lepingu "Osapooled" ja neid nimetatakse ühiselt "
 **"Mikroveeb"** tähendab kõiki Wink põhiveebisaidi valge sildi versioone, mida Wink omab, loob, majutab ja haldab. Mikroveeb võib olla märgistatud "powered by Wink" logoga või sellega võrdväärselt.  
 **“Netokomisjon”** on summa, mis Partnerile võlgnetakse Realiseeritud tehingute eest pärast makseteenuse tasu ja broneerimistasu mahaarvamist.  
 **"Tasuline otsing"** tähendab mistahes veebireklaami vormi, mis seob reklaami kuvamise konkreetse märksõnapõhise otsingupäringuga.  
-**“Makseteenuse pakkuja”** on Traveliko Singapore Pte. Ltd. täielikult omanduses olev tütarettevõte, mis haldab makseteenuseid, kogudes külalistelt makseid ("Pay-in") nende ostuga seotud makseviisi kaudu, nagu krediitkaart, deebetkaart, pangaülekanne, krüptovaluutad või PayPal jne, ning kannab välja Partneri kohalikule pangakontole võlgniku summa ("Netokomisjon").  
+**“Makseteenuse pakkuja”** on Winkfluence täielikult omanduses olev tütarettevõte, mis haldab makseteenuseid, kogudes külalistelt makseid ("Pay-in") nende ostuga seotud makseviisi kaudu, nagu krediitkaart, deebetkaart, pangaülekanne, krüptovaluutad või PayPal jne, ning kannab välja Partneri kohalikule pangakontole võlgniku summa ("Netokomisjon").  
 **“Pay-in”** tähendab makse vastuvõtmist külaliselt Makseteenuse pakkuja poolt.  
 **“Pay-out”** tähendab Netokomisjoni väljamaksmist Partnerile Makseteenuse pakkuja poolt.  
 **“Makseteenuse tasu”** on 4% tasu, mis võetakse Partneri komisjonist makseteenuse pakkuja poolt maksete töötlemise eest.  

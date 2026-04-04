@@ -23,7 +23,7 @@ Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](
 
 **GIỮA:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, một công ty được thành lập theo luật pháp Singapore và có văn phòng đăng ký tại \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 với mã số đăng ký VAT 201437335D (sau đây gọi là "Wink") và  
+1. **Winkfluence**, một công ty được thành lập theo luật pháp Singapore và có văn phòng đăng ký tại \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 với mã số đăng ký VAT 201437335D (sau đây gọi là "Wink") và  
      
 2. **ĐẠI LÝ DU LỊCH** có thông tin được ghi trong Mẫu Đăng Ký Đại Lý Du Lịch hoặc đã được gửi trực tuyến (gọi chung là "Đại Lý Du Lịch").
 
@@ -67,7 +67,7 @@ Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](
     
 * **“Thanh Toán”** có nghĩa là các nghĩa vụ tài chính phát sinh theo Thỏa Thuận này, bao gồm hoa hồng, phí hoặc các khoản phí khác, phải trả bởi một bên cho bên kia.
 
-* **"Đơn Vị Thanh Toán"** là công ty con thuộc sở hữu hoàn toàn của Traveliko Singapore Pte. Ltd. quản lý Dịch Vụ Thanh Toán, thu tiền từ khách bằng cách trừ vào phương thức thanh toán liên kết với giao dịch mua của họ như thẻ tín dụng, thẻ ghi nợ, chuyển khoản ngân hàng, tiền điện tử hoặc PayPal, v.v.  
+* **"Đơn Vị Thanh Toán"** là công ty con thuộc sở hữu hoàn toàn của Winkfluence quản lý Dịch Vụ Thanh Toán, thu tiền từ khách bằng cách trừ vào phương thức thanh toán liên kết với giao dịch mua của họ như thẻ tín dụng, thẻ ghi nợ, chuyển khoản ngân hàng, tiền điện tử hoặc PayPal, v.v.  
     
 * **“Nền Tảng”** có nghĩa là hệ thống trực tuyến do Nhà Cung Cấp Dịch Vụ vận hành qua đó Đại Lý Du Lịch có thể thực hiện hoặc quản lý các Đặt Phòng cho Khách.
 

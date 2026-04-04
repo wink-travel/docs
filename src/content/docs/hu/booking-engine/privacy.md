@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-A TRAVELIKO SINGAPORE PTE. LTD., amely Wink néven működik (a „Társaság”), tájékoztatni kívánja Önt, aki kapcsolatba lép a Társasággal, hogy szükséges az Ön személyes adatainak gyűjtése, összeállítása és felhasználása a Társaság szolgáltatásai érdekében a jelen Adatvédelmi Szabályzatnak megfelelően. Amennyiben kapcsolatba lép a Társasággal és megadja személyes adatait a kommunikáció, koordináció és/vagy a Társaság szolgáltatásainak nyújtása céljából, úgy azt tekintjük, hogy Ön elfogadja és vállalja a jelen Adatvédelmi Szabályzat betartását.
+A Winkfluence, amely Wink néven működik (a „Társaság”), tájékoztatni kívánja Önt, aki kapcsolatba lép a Társasággal, hogy szükséges az Ön személyes adatainak gyűjtése, összeállítása és felhasználása a Társaság szolgáltatásai érdekében a jelen Adatvédelmi Szabályzatnak megfelelően. Amennyiben kapcsolatba lép a Társasággal és megadja személyes adatait a kommunikáció, koordináció és/vagy a Társaság szolgáltatásainak nyújtása céljából, úgy azt tekintjük, hogy Ön elfogadja és vállalja a jelen Adatvédelmi Szabályzat betartását.
 
 A feldolgozott személyes adatokat a Társaság különböző csatornákon keresztül szerezheti be az alábbiak szerint:
 

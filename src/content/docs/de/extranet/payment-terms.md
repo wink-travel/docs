@@ -11,7 +11,7 @@ Zuletzt aktualisiert am 12.06.2024
 
 **ZAHLUNGSBEDINGUNGEN FÜR UNTERKUNFTSANBIETER**
 
-Diese Zahlungsbedingungen („**Zahlungsbedingungen**“) sind eine verbindliche rechtliche Vereinbarung zwischen dem Unterkunftsanbieter und TripPay (im Folgenden als **„Zahlungsdienstleister“** bezeichnet), einer hundertprozentigen Tochtergesellschaft der Traveliko Singapore Pte. Ltd., die die Zahlungsdienste (nachstehend definiert) regelt, die über oder in Verbindung mit der Wink-Plattform (im Folgenden als **„Wink“** bezeichnet) durchgeführt werden. Wenn in diesen Zahlungsbedingungen von „**Zahlungsdienstleister**“, „**wir**“, „**uns**“ oder „**unser**“ die Rede ist, bezieht sich dies auf das TripPay-Unternehmen, mit dem Sie für Zahlungsdienste einen Vertrag abschließen.
+Diese Zahlungsbedingungen („**Zahlungsbedingungen**“) sind eine verbindliche rechtliche Vereinbarung zwischen dem Unterkunftsanbieter und TripPay (im Folgenden als **„Zahlungsdienstleister“** bezeichnet), einer hundertprozentigen Tochtergesellschaft der Winkfluence, die die Zahlungsdienste (nachstehend definiert) regelt, die über oder in Verbindung mit der Wink-Plattform (im Folgenden als **„Wink“** bezeichnet) durchgeführt werden. Wenn in diesen Zahlungsbedingungen von „**Zahlungsdienstleister**“, „**wir**“, „**uns**“ oder „**unser**“ die Rede ist, bezieht sich dies auf das TripPay-Unternehmen, mit dem Sie für Zahlungsdienste einen Vertrag abschließen.
 
 Der Zahlungsdienstleister bietet Unterkunftsanbietern, die Inventar über die Wink-Plattform verkaufen, Zahlungsdienste an. Diese Zahlungsdienste können (sofern verfügbar) Folgendes umfassen (zusammen „**Zahlungsdienste**“):
 
@@ -27,7 +27,7 @@ Die Vereinbarung wurde gelesen und alle Geschäftsbedingungen wurden vom Unterku
 Die Zahlungsdienste werden von der Vertragspartei bereitgestellt, die vom Land abhängt, in dem sich die Unterkunft befindet, wie folgt:
 
 * Vereinigte Staaten: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Rest der Welt: TripPay Slovakia
+* Rest der Welt: TripPay Corporation
 
 **1. Ihre Nutzung der Zahlungsdienste**
 

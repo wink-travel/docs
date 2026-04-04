@@ -15,7 +15,7 @@ Al registrarse y suscribirse al programa Wink como proveedor de alojamiento, el 
 
 **ENTRE:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, una empresa constituida bajo las leyes de Singapur y con oficina registrada en \#03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095 con número de registro de IVA 201437335D ("Wink"), y
+**Winkfluence**, una empresa constituida bajo las leyes de Singapur y con oficina registrada en \#03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095 con número de registro de IVA 201437335D ("Wink"), y
 
 **EL PROVEEDOR DE ALOJAMIENTO**, cuyos datos se establecen en el Formulario de Registro de Proveedor de Alojamiento o han sido enviados en línea (el "Proveedor de Alojamiento").
 
@@ -70,7 +70,7 @@ Además de los términos definidos en otras partes de este Acuerdo, las siguient
 
 **“Socio”** significa cualquier negocio o individuo que se conecta o utiliza la plataforma Wink para promover y vender el inventario de Proveedores de Alojamiento a su audiencia y/o clientes a cambio de una comisión.
 
-**“Facilitador de Pagos”** una subsidiaria de Traveliko Singapore Pte. Ltd. (“TripPay”), que gestiona los Servicios de Pago, recolectando pagos de huéspedes (“Pay-in”), cobrando el método de pago asociado a su compra, como tarjeta de crédito, débito, transferencia bancaria, criptomonedas o PayPal, etc., y desembolsando los fondos adeudados (“Tarifa Neta”) al Proveedor de Alojamiento.
+**“Facilitador de Pagos”** una subsidiaria de Winkfluence (“TripPay”), que gestiona los Servicios de Pago, recolectando pagos de huéspedes (“Pay-in”), cobrando el método de pago asociado a su compra, como tarjeta de crédito, débito, transferencia bancaria, criptomonedas o PayPal, etc., y desembolsando los fondos adeudados (“Tarifa Neta”) al Proveedor de Alojamiento.
 
 **“Pay-in”** significa la adquisición de un pago realizado por un huésped por parte del Facilitador de Pagos.
 

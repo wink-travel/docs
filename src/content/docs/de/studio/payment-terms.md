@@ -11,7 +11,7 @@ Zuletzt aktualisiert am 12.06.2024
 
 **ZAHLUNGSBEDINGUNGEN FÜR PARTNER**
 
-Diese Zahlungsbedingungen („**Zahlungsbedingungen**“) sind eine verbindliche rechtliche Vereinbarung zwischen Ihnen und TripPay (im Folgenden als **„Zahlungsdienstleister“** bezeichnet), einer hundertprozentigen Tochtergesellschaft der Traveliko Singapore Pte. Ltd., die die Zahlungsdienste (nachfolgend definiert) regelt, die über oder in Verbindung mit der Wink-Plattform (im Folgenden als **„Wink“** bezeichnet) durchgeführt werden. Wenn in diesen Zahlungsbedingungen von „**Zahlungsdienstleister**“, „**wir**“, „**uns**“ oder „**unser**“ die Rede ist, bezieht sich dies auf das TripPay-Unternehmen, mit dem Sie für Zahlungsdienste einen Vertrag abschließen.
+Diese Zahlungsbedingungen („**Zahlungsbedingungen**“) sind eine verbindliche rechtliche Vereinbarung zwischen Ihnen und TripPay (im Folgenden als **„Zahlungsdienstleister“** bezeichnet), einer hundertprozentigen Tochtergesellschaft der Winkfluence, die die Zahlungsdienste (nachfolgend definiert) regelt, die über oder in Verbindung mit der Wink-Plattform (im Folgenden als **„Wink“** bezeichnet) durchgeführt werden. Wenn in diesen Zahlungsbedingungen von „**Zahlungsdienstleister**“, „**wir**“, „**uns**“ oder „**unser**“ die Rede ist, bezieht sich dies auf das TripPay-Unternehmen, mit dem Sie für Zahlungsdienste einen Vertrag abschließen.
 
 Der Zahlungsdienstleister bietet Zahlungsdienste für Partner an, die das Inventar von Unterkunftsanbietern über Wink verkaufen. Diese Zahlungsdienste können (sofern verfügbar) Folgendes umfassen (zusammen „**Zahlungsdienste**“):
 
@@ -27,7 +27,7 @@ Die Vereinbarung wurde gelesen und alle Bedingungen wurden vom Partner akzeptier
 Die Zahlungsdienste werden von der vertraglich zuständigen Einheit bereitgestellt, abhängig vom Land, in dem sich der Partner befindet, wie unten angegeben:
 
 * Vereinigte Staaten: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Rest der Welt: TripPay Slovakia
+* Rest der Welt: TripPay Corporation
 
 **1. Ihre Nutzung der Zahlungsdienste**
 

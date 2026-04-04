@@ -25,7 +25,7 @@ sidebar:
 
 **当事者：**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.** シンガポール法に基づき設立され、登録事務所を#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095に有し、VAT登録番号201437335Dを持つ会社（以下「Wink」といいます）  
+1. **Winkfluence** シンガポール法に基づき設立され、登録事務所を#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095に有し、VAT登録番号201437335Dを持つ会社（以下「Wink」といいます）  
      
 2. **旅行代理店** 旅行代理店登録フォームに記載されているかオンラインで提出された情報を基にする（以下「旅行代理店」）
 

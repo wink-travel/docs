@@ -11,7 +11,7 @@ Last updated 2024-06-12
 
 **PAYMENT TERMS FOR AFFILIATES**
 
-These Payment Terms of Service (“**Payment Terms**”) are a binding legal agreement between you and TripPay (herein after referred to as **“Payment Facilitator”**), a fully owned subsidiary of Traveliko Singapore Pte. Ltd., that governs the Payment Services (defined below) conducted through or in connection with Wink Platform (herein after referred to as **“Wink”**). When these Payment Terms mention “**Payment Facilitator**,” “**we**,” “**us**,” or “**our**,” it refers to the TripPay company you are contracting with for Payment Services.
+These Payment Terms of Service (“**Payment Terms**”) are a binding legal agreement between you and TripPay (herein after referred to as **“Payment Facilitator”**), a fully owned subsidiary of Winkfluence, that governs the Payment Services (defined below) conducted through or in connection with Wink Platform (herein after referred to as **“Wink”**). When these Payment Terms mention “**Payment Facilitator**,” “**we**,” “**us**,” or “**our**,” it refers to the TripPay company you are contracting with for Payment Services.
 
 Payment Facilitator provides payments services to Affiliates who are selling Accommodation Providers’ inventory through the Wink. These payment services may include (if available) the following (collectively, “**Payment Services**”):
 
@@ -27,7 +27,7 @@ The Agreement has been read and all the Terms and Conditions have been agreed by
 The Payment Services will be provided by the contracting entity depending on the country in which the Affiliate is located as per below:
 
 * United States: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Rest of the world: TripPay Slovakia
+* Rest of the world: TripPay Corporation
 
 **1. Your use of the Payment Services**
 

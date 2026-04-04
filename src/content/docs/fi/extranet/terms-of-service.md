@@ -15,7 +15,7 @@ Rekisteröitymällä ja liittymällä Wink-ohjelmaan majoituspalveluiden tarjoaj
 
 **OSAPUOLINA:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, Singaporen lakien mukaisesti perustettu yhtiö, jonka rekisteröity toimipaikka on osoitteessa \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, ALV-rekisterinumero 201437335D ("Wink"), ja
+**Winkfluence**, Singaporen lakien mukaisesti perustettu yhtiö, jonka rekisteröity toimipaikka on osoitteessa \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, ALV-rekisterinumero 201437335D ("Wink"), ja
 
 **MAJOITUSPALVELUIDEN TARJOAJA**, jonka tiedot on ilmoitettu Majoituspalveluiden tarjoajan rekisteröintilomakkeessa tai lähetetty verkossa (”Majoituspalveluiden tarjoaja”).
 

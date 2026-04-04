@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., yang beroperasi dengan nama Wink (selanjutnya disebut “Perusahaan”), ingin memberitahukan kepada Anda yang menghubungi Perusahaan bahwa pengumpulan, pengompilan, dan penggunaan data pribadi Anda diperlukan untuk layanan Perusahaan sesuai dengan Kebijakan Privasi ini. Dengan menghubungi dan mengungkapkan data pribadi Anda kepada Perusahaan untuk tujuan komunikasi, koordinasi, dan/atau penyediaan layanan Perusahaan kepada Anda, dianggap bahwa Anda setuju dan menerima untuk terikat serta mematuhi Kebijakan Privasi ini.
+Winkfluence, yang beroperasi dengan nama Wink (selanjutnya disebut “Perusahaan”), ingin memberitahukan kepada Anda yang menghubungi Perusahaan bahwa pengumpulan, pengompilan, dan penggunaan data pribadi Anda diperlukan untuk layanan Perusahaan sesuai dengan Kebijakan Privasi ini. Dengan menghubungi dan mengungkapkan data pribadi Anda kepada Perusahaan untuk tujuan komunikasi, koordinasi, dan/atau penyediaan layanan Perusahaan kepada Anda, dianggap bahwa Anda setuju dan menerima untuk terikat serta mematuhi Kebijakan Privasi ini.
 
 Data pribadi yang diproses, Perusahaan dapat memperoleh data pribadi Anda dari berbagai saluran sebagai berikut:
 

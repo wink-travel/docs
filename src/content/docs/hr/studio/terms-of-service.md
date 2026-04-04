@@ -61,7 +61,7 @@ Wink i Affiliate su "Strana" ovog Ugovora i zajednički se nazivaju "Strane".
 **"Mikro stranica"** znači sve white label verzije primarne Wink web stranice, koje su u vlasništvu, kreirane, hostane i održavane od strane Wink-a. Mikro stranica može biti označena logotipom 'powered by Wink' ili ekvivalentom.  
 **“Neto provizija”** je iznos koji pripada Affiliateu za realizirane transakcije nakon odbitka Naknade za uslugu plaćanja i Naknade za rezervaciju.  
 **"Plaćeno pretraživanje"** znači bilo koji oblik online oglašavanja koji povezuje prikaz oglasa s određenim ključnim pojmom u pretraživanju.  
-**“Payment Facilitator”** je u potpunom vlasništvu Traveliko Singapore Pte. Ltd., koji upravlja uslugama plaćanja, prikupljanjem uplata od gostiju ("Pay-in"), naplatom putem povezanih načina plaćanja kao što su kreditne kartice, debitne kartice, bankovni transferi, kriptovalute ili PayPal itd., te isplatom sredstava ("Neto provizija") na lokalni bankovni račun Affiliatea.  
+**“Payment Facilitator”** je u potpunom vlasništvu Winkfluence, koji upravlja uslugama plaćanja, prikupljanjem uplata od gostiju ("Pay-in"), naplatom putem povezanih načina plaćanja kao što su kreditne kartice, debitne kartice, bankovni transferi, kriptovalute ili PayPal itd., te isplatom sredstava ("Neto provizija") na lokalni bankovni račun Affiliatea.  
 **“Pay-in”** znači primitak uplate od gosta od strane Payment Facilitatora.  
 **“Pay-out”** znači isplatu Neto provizije Affiliateu od strane Payment Facilitatora.  
 **“Naknada za uslugu plaćanja”** je 4% odbijeno od provizije Affiliatea kao naknada za obradu plaćanja od strane Payment Facilitatora.  

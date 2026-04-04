@@ -11,7 +11,7 @@ sidebar:
 
 **TERMES DE PAGAMENT PER A PROVEÏDORS D’ALLOTJAMENT**
 
-Aquests Termes de Servei de Pagament (“**Termes de Pagament**”) són un acord legal vinculant entre el Proveïdor d’Allotjament i TripPay (d’ara endavant anomenat **“Facilitador de Pagaments”**), una filial de propietat total de Traveliko Singapore Pte. Ltd., que regula els Serveis de Pagament (definits a continuació) realitzats a través o en connexió amb la plataforma Wink (d’ara endavant anomenada **“Wink”**). Quan aquests Termes de Pagament esmenten “**Facilitador de Pagaments**,” “**nosaltres**,” “**ens**,” o “**nostre**,” es refereixen a l’empresa TripPay amb la qual esteu contractant per als Serveis de Pagament.
+Aquests Termes de Servei de Pagament (“**Termes de Pagament**”) són un acord legal vinculant entre el Proveïdor d’Allotjament i TripPay (d’ara endavant anomenat **“Facilitador de Pagaments”**), una filial de propietat total de Winkfluence, que regula els Serveis de Pagament (definits a continuació) realitzats a través o en connexió amb la plataforma Wink (d’ara endavant anomenada **“Wink”**). Quan aquests Termes de Pagament esmenten “**Facilitador de Pagaments**,” “**nosaltres**,” “**ens**,” o “**nostre**,” es refereixen a l’empresa TripPay amb la qual esteu contractant per als Serveis de Pagament.
 
 El Facilitador de Pagaments proporciona serveis de pagament als Proveïdors d’Allotjament que venen inventari a través de la plataforma Wink. Aquests serveis de pagament poden incloure (si estan disponibles) els següents (col·lectivament, “**Serveis de Pagament**”):
 
@@ -27,7 +27,7 @@ L’Acord ha estat llegit i tots els Termes i Condicions han estat acceptats pel
 Els Serveis de Pagament seran proporcionats per l’entitat contractant segons el país on es trobi l’Allotjament, de la manera següent:
 
 * Estats Units: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Resta del món: TripPay Slovakia
+* Resta del món: TripPay Corporation
 
 **1. El vostre ús dels Serveis de Pagament**
 

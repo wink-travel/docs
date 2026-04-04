@@ -23,7 +23,7 @@ Ezek a feltételek elérhetők az [Affiliate Portal > Terms of Service](/hu/stud
 
 **A FELEK KÖZÖTT:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, egy Szingapúr törvényei szerint bejegyzett társaság, székhelye: #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, adószám: 201437335D (a továbbiakban: "Wink"), és  
+1. **Winkfluence**, egy Szingapúr törvényei szerint bejegyzett társaság, székhelye: #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, adószám: 201437335D (a továbbiakban: "Wink"), és  
      
 2. **AZ UTAZÁSI ÜGYNÖK**, akinek adatai az Utazási Ügynök Regisztrációs Űrlapon szerepelnek vagy online lettek benyújtva (a továbbiakban: "Utazási Ügynök").
 
@@ -67,7 +67,7 @@ Ezek a feltételek elérhetők az [Affiliate Portal > Terms of Service](/hu/stud
     
 * **„Fizetések”** a jelen Megállapodás alapján felmerülő pénzügyi kötelezettségeket jelentik, beleértve a jutalékokat, díjakat vagy egyéb terheket, amelyeket az egyik fél a másiknak fizet.
 
-* **"Fizetési közvetítő"** a Traveliko Singapore Pte. Ltd. teljes tulajdonú leányvállalata, amely a Fizetési Szolgáltatásokat irányítja, és a vendégektől a vásárlásukhoz kapcsolódó fizetési módok (pl. hitelkártya, bankkártya, banki átutalás, kriptovaluták vagy PayPal stb.) terhelésével szedi be a fizetéseket.  
+* **"Fizetési közvetítő"** a Winkfluence teljes tulajdonú leányvállalata, amely a Fizetési Szolgáltatásokat irányítja, és a vendégektől a vásárlásukhoz kapcsolódó fizetési módok (pl. hitelkártya, bankkártya, banki átutalás, kriptovaluták vagy PayPal stb.) terhelésével szedi be a fizetéseket.  
     
 * **„Platform”** az a online rendszer, amelyet a Szolgáltató üzemeltet, és amelyen keresztül az Utazási Ügynök foglalásokat tehet vagy kezelhet a Vendégek számára.
 

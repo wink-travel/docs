@@ -15,7 +15,7 @@ Sa pamamagitan ng pagrerehistro at pag-sign up sa Wink program bilang isang taga
 
 **SA PAGITAN NG:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, isang kumpanya na itinatag alinsunod sa mga batas ng Singapore at may rehistradong opisina sa \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 na may VAT register number 201437335D ("Wink"), at
+**Winkfluence**, isang kumpanya na itinatag alinsunod sa mga batas ng Singapore at may rehistradong opisina sa \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 na may VAT register number 201437335D ("Wink"), at
 
 **ANG TAGAPAGBIGAY NG AKOMODASYON**, na ang mga detalye ay nakasaad sa Accommodation Provider Registration Form o naipasa online (ang "Tagapagbigay ng Akomodasyon").
 
@@ -70,7 +70,7 @@ Bilang karagdagan sa mga terminong tinukoy sa ibang bahagi ng Kasunduang ito, an
 
 **“Partner”** ay tumutukoy sa anumang negosyo o indibidwal na kumokonekta o gumagamit ng Wink platform upang i-promote at ibenta ang imbentaryo ng mga Tagapagbigay ng Akomodasyon sa kanilang mga audience at/o customer para sa komisyon.
 
-**“Payment Facilitator”** ay isang ganap na pag-aari ng Traveliko Singapore Pte. Ltd. (“TripPay”), na namamahala sa Payment Services, nangongolekta ng mga bayad mula sa mga guest (“Pay-in”), sa pamamagitan ng pagsingil sa paraan ng pagbabayad na kaugnay ng kanilang pagbili, tulad ng credit card, debit card, bank transfer, crypto currencies o PayPal atbp… at naglalabas ng pondo na utang (“Net Rate”) sa Tagapagbigay ng Akomodasyon.
+**“Payment Facilitator”** ay isang ganap na pag-aari ng Winkfluence (“TripPay”), na namamahala sa Payment Services, nangongolekta ng mga bayad mula sa mga guest (“Pay-in”), sa pamamagitan ng pagsingil sa paraan ng pagbabayad na kaugnay ng kanilang pagbili, tulad ng credit card, debit card, bank transfer, crypto currencies o PayPal atbp… at naglalabas ng pondo na utang (“Net Rate”) sa Tagapagbigay ng Akomodasyon.
 
 **“Pay-in”** ay nangangahulugang ang pagtanggap ng bayad na ginawa ng isang guest ng Payment Facilitator.
 

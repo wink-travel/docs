@@ -25,7 +25,7 @@ Ces Conditions de Service de Paiement (« Conditions de Paiement ») constituent
 
 **ENTRE :**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, une société constituée selon les lois de Singapour et ayant son siège social au \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, immatriculée sous le numéro de TVA 201437335D (ci-après dénommée « Wink ») et  
+1. **Winkfluence**, une société constituée selon les lois de Singapour et ayant son siège social au \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, immatriculée sous le numéro de TVA 201437335D (ci-après dénommée « Wink ») et  
      
 2. **L’AGENT DE VOYAGE** dont les coordonnées sont indiquées dans le formulaire d’inscription de l’agent de voyage ou ont été soumises en ligne (l’« Agent de Voyage »).
 

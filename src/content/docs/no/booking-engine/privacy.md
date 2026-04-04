@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., som opererer under navnet Wink (heretter «Selskapet»), ønsker å informere deg som kontakter Selskapet om at det er nødvendig å samle inn, sammenstille og bruke dine personopplysninger for Selskapets tjenester i samsvar med denne personvernreglen. Ved å kontakte og oppgi dine personopplysninger til Selskapet for formålene kommunikasjon, koordinering og/eller levering av Selskapets tjenester til deg, anses det at du samtykker til og aksepterer å være bundet av og overholde denne personvernreglen.
+Winkfluence, som opererer under navnet Wink (heretter «Selskapet»), ønsker å informere deg som kontakter Selskapet om at det er nødvendig å samle inn, sammenstille og bruke dine personopplysninger for Selskapets tjenester i samsvar med denne personvernreglen. Ved å kontakte og oppgi dine personopplysninger til Selskapet for formålene kommunikasjon, koordinering og/eller levering av Selskapets tjenester til deg, anses det at du samtykker til og aksepterer å være bundet av og overholde denne personvernreglen.
 
 Personopplysninger som behandles, kan Selskapet innhente dine personopplysninger fra ulike kanaler som følger:
 

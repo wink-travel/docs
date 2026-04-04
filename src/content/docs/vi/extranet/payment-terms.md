@@ -11,7 +11,7 @@ Cập nhật lần cuối 2024-06-12
 
 **ĐIỀU KHOẢN THANH TOÁN CHO NHÀ CUNG CẤP CHỖ Ở**
 
-Các Điều Khoản Dịch Vụ Thanh Toán này (“**Điều Khoản Thanh Toán**”) là thỏa thuận pháp lý ràng buộc giữa Nhà Cung Cấp Chỗ Ở và TripPay (sau đây gọi là **“Đơn Vị Thanh Toán”**), một công ty con thuộc sở hữu hoàn toàn của Traveliko Singapore Pte. Ltd., điều chỉnh các Dịch Vụ Thanh Toán (được định nghĩa bên dưới) được thực hiện thông qua hoặc liên quan đến Nền Tảng Wink (sau đây gọi là **“Wink”**). Khi các Điều Khoản Thanh Toán này đề cập đến “**Đơn Vị Thanh Toán**,” “**chúng tôi**,” “**chúng tôi**,” hoặc “**của chúng tôi**,” thì đó là chỉ công ty TripPay mà bạn đang ký hợp đồng để sử dụng Dịch Vụ Thanh Toán.
+Các Điều Khoản Dịch Vụ Thanh Toán này (“**Điều Khoản Thanh Toán**”) là thỏa thuận pháp lý ràng buộc giữa Nhà Cung Cấp Chỗ Ở và TripPay (sau đây gọi là **“Đơn Vị Thanh Toán”**), một công ty con thuộc sở hữu hoàn toàn của Winkfluence, điều chỉnh các Dịch Vụ Thanh Toán (được định nghĩa bên dưới) được thực hiện thông qua hoặc liên quan đến Nền Tảng Wink (sau đây gọi là **“Wink”**). Khi các Điều Khoản Thanh Toán này đề cập đến “**Đơn Vị Thanh Toán**,” “**chúng tôi**,” “**chúng tôi**,” hoặc “**của chúng tôi**,” thì đó là chỉ công ty TripPay mà bạn đang ký hợp đồng để sử dụng Dịch Vụ Thanh Toán.
 
 Đơn Vị Thanh Toán cung cấp dịch vụ thanh toán cho các Nhà Cung Cấp Chỗ Ở đang bán hàng tồn kho qua nền tảng Wink. Các dịch vụ thanh toán này có thể bao gồm (nếu có) các dịch vụ sau (gọi chung là “**Dịch Vụ Thanh Toán**”):
 
@@ -27,7 +27,7 @@ Thỏa thuận này đã được đọc và tất cả các Điều Khoản và
 Dịch Vụ Thanh Toán sẽ được cung cấp bởi thực thể ký hợp đồng tùy theo quốc gia nơi Chỗ Ở tọa lạc như sau:
 
 * Hoa Kỳ: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Phần còn lại của thế giới: TripPay Slovakia
+* Phần còn lại của thế giới: TripPay Corporation
 
 **1. Việc Sử Dụng Dịch Vụ Thanh Toán Của Bạn**
 

@@ -23,7 +23,7 @@ Ang mga tuntuning iyon ay makikita sa ilalim ng [Affiliate Portal > Terms of Ser
 
 **SA PAGITAN NG:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.** isang kumpanya na itinatag alinsunod sa mga batas ng Singapore at may rehistradong opisina sa \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 na may VAT register number 201437335D (na tinutukoy dito bilang "Wink") at  
+1. **Winkfluence** isang kumpanya na itinatag alinsunod sa mga batas ng Singapore at may rehistradong opisina sa \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 na may VAT register number 201437335D (na tinutukoy dito bilang "Wink") at  
      
 2. **ANG TRAVEL AGENT** na ang mga detalye ay nakasaad sa Travel Agent Registration Form o naipasa online (ang "Travel Agent").
 
@@ -67,7 +67,7 @@ Ang mga tuntuning iyon ay makikita sa ilalim ng [Affiliate Portal > Terms of Ser
     
 * **“Payments”** ay nangangahulugang mga obligasyong pinansyal na nagmumula sa ilalim ng Kasunduang ito, kabilang ang mga komisyon, bayarin, o iba pang singil, na babayaran ng isang partido sa isa pa.
 
-* **"Payment Facilitator"** ay isang ganap na pag-aari ng Traveliko Singapore Pte. Ltd. na namamahala sa Payment Services, nangongolekta ng mga bayad mula sa mga bisita sa pamamagitan ng pagsingil sa paraan ng pagbabayad na kaugnay ng kanilang pagbili tulad ng credit card, debit card, bank transfer, cryptocurrencies, o PayPal, atbp.  
+* **"Payment Facilitator"** ay isang ganap na pag-aari ng Winkfluence na namamahala sa Payment Services, nangongolekta ng mga bayad mula sa mga bisita sa pamamagitan ng pagsingil sa paraan ng pagbabayad na kaugnay ng kanilang pagbili tulad ng credit card, debit card, bank transfer, cryptocurrencies, o PayPal, atbp.  
     
 * **“Platform”** ay nangangahulugang online system na pinapatakbo ng Service Provider kung saan maaaring gumawa o pamahalaan ng mga Booking ang Travel Agent para sa mga Bisita.
 

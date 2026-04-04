@@ -11,7 +11,7 @@ sidebar:
 
 **TÉRMINOS DE PAGO PARA PROVEEDORES DE ALOJAMIENTO**
 
-Estos Términos de Servicio de Pago (“**Términos de Pago**”) son un acuerdo legal vinculante entre el Proveedor de Alojamiento y TripPay (en adelante referido como **“Facilitador de Pago”**), una subsidiaria de propiedad total de Traveliko Singapore Pte. Ltd., que regula los Servicios de Pago (definidos más abajo) realizados a través o en conexión con la Plataforma Wink (en adelante referido como **“Wink”**). Cuando estos Términos de Pago mencionan “**Facilitador de Pago**,” “**nosotros**,” “**nos**,” o “**nuestro**,” se refiere a la empresa TripPay con la que usted está contratando para los Servicios de Pago.
+Estos Términos de Servicio de Pago (“**Términos de Pago**”) son un acuerdo legal vinculante entre el Proveedor de Alojamiento y TripPay (en adelante referido como **“Facilitador de Pago”**), una subsidiaria de propiedad total de Winkfluence, que regula los Servicios de Pago (definidos más abajo) realizados a través o en conexión con la Plataforma Wink (en adelante referido como **“Wink”**). Cuando estos Términos de Pago mencionan “**Facilitador de Pago**,” “**nosotros**,” “**nos**,” o “**nuestro**,” se refiere a la empresa TripPay con la que usted está contratando para los Servicios de Pago.
 
 El Facilitador de Pago provee servicios de pago a Proveedores de Alojamiento que venden inventario a través de la plataforma Wink. Estos servicios de pago pueden incluir (si están disponibles) lo siguiente (colectivamente, “**Servicios de Pago**”):
 
@@ -27,7 +27,7 @@ El Acuerdo ha sido leído y todos los Términos y Condiciones han sido aceptados
 Los Servicios de Pago serán provistos por la entidad contratante según el país en el que se encuentre el Alojamiento, como sigue:
 
 * Estados Unidos: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Resto del mundo: TripPay Slovakia
+* Resto del mundo: TripPay Corporation
 
 **1. Su Uso de los Servicios de Pago**
 

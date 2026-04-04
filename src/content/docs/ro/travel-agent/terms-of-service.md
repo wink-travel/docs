@@ -23,7 +23,7 @@ Acești termeni sunt disponibili în [Affiliate Portal > Terms of Service](/ro/s
 
 **ÎNTRE:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, o companie înființată conform legilor din Singapore, cu sediul înregistrat la \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, cu număr de înregistrare TVA 201437335D (denumită în continuare „Wink”) și  
+1. **Winkfluence**, o companie înființată conform legilor din Singapore, cu sediul înregistrat la \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, cu număr de înregistrare TVA 201437335D (denumită în continuare „Wink”) și  
      
 2. **AGENTUL DE TURISM** ale cărui detalii sunt specificate în Formularul de Înregistrare al Agentului de Turism sau au fost trimise online („Agentul de Turism”).
 
@@ -67,7 +67,7 @@ Acești termeni sunt disponibili în [Affiliate Portal > Terms of Service](/ro/s
     
 * **„Plăți”** înseamnă obligațiile financiare care decurg din acest Acord, inclusiv comisioane, taxe sau alte sume datorate de o parte celeilalte.
 
-* **„Facilitator de Plăți”** este o filială deținută integral de Traveliko Singapore Pte. Ltd. care guvernează Serviciile de Plată, colectând plăți de la oaspeți prin încărcarea metodei de plată asociate achiziției lor, cum ar fi card de credit, card de debit, transfer bancar, criptomonede sau PayPal etc.  
+* **„Facilitator de Plăți”** este o filială deținută integral de Winkfluence care guvernează Serviciile de Plată, colectând plăți de la oaspeți prin încărcarea metodei de plată asociate achiziției lor, cum ar fi card de credit, card de debit, transfer bancar, criptomonede sau PayPal etc.  
     
 * **„Platforma”** înseamnă sistemul online operat de Service Provider prin care Agentul de Turism poate face sau gestiona Rezervări pentru Oaspeți.
 

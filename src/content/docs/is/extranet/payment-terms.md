@@ -11,7 +11,7 @@ Síðast uppfært 2024-06-12
 
 **GREIÐSLUSKILMÁL FYRIR GISTINGARAÐILA**
 
-Þessir greiðsluskilmálar þjónustu (“**Greiðsluskilmálar**”) eru bindandi löglegt samkomulag milli Gistingaraðila og TripPay (hér eftir nefndur **„Greiðslumiðlari“**), sem er í eigu Traveliko Singapore Pte. Ltd., og gilda um greiðslumiðlun (skilgreint hér að neðan) sem fer fram í gegnum eða í tengslum við Wink vettvanginn (hér eftir nefndur **„Wink“**). Þegar í þessum greiðsluskilmálum er vísað til „**Greiðslumiðlari**,“ „**við**,“ „**okkur**,“ eða „**okkar**,“ þá er átt við TripPay fyrirtækið sem þú ert í samningi við um greiðslumiðlun.
+Þessir greiðsluskilmálar þjónustu (“**Greiðsluskilmálar**”) eru bindandi löglegt samkomulag milli Gistingaraðila og TripPay (hér eftir nefndur **„Greiðslumiðlari“**), sem er í eigu Winkfluence, og gilda um greiðslumiðlun (skilgreint hér að neðan) sem fer fram í gegnum eða í tengslum við Wink vettvanginn (hér eftir nefndur **„Wink“**). Þegar í þessum greiðsluskilmálum er vísað til „**Greiðslumiðlari**,“ „**við**,“ „**okkur**,“ eða „**okkar**,“ þá er átt við TripPay fyrirtækið sem þú ert í samningi við um greiðslumiðlun.
 
 Greiðslumiðlari veitir greiðslumiðlun til Gistingaraðila sem selja birgðir í gegnum Wink vettvanginn. Þessar greiðslumiðlunarþjónustur geta falið í sér (ef í boði) eftirfarandi (saman kallað „**Greiðslumiðlunarþjónustur**“):
 
@@ -27,7 +27,7 @@ Samningurinn hefur verið lesinn og allar skilmála- og reglur hafa verið samþ
 Greiðslumiðlunarþjónustan verður veitt af samningsaðila eftir því í hvaða landi Gistingin er staðsett, eins og hér segir:
 
 * Bandaríkin: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Restin af heiminum: TripPay Slovakia
+* Restin af heiminum: TripPay Corporation
 
 **1. Notkun þín á Greiðslumiðlunarþjónustunni**
 

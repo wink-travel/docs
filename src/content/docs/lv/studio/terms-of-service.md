@@ -61,7 +61,7 @@ Wink un Filiāle ir šī līguma “Puses” un kopā tiek sauktas par “Pusēm
 **"Mikro vietne"** nozīmē visas Wink galvenās tīmekļa vietnes baltās etiķetes versijas, kas pieder, ir izveidotas, mitinātas un uzturētas Wink. Mikro vietne var būt marķēta ar 'powered by Wink' logotipu vai tamlīdzīgu.  
 **“Neto komisija”** ir summa, kas pienākas Filiālei par realizētiem darījumiem pēc maksājumu pakalpojuma un rezervācijas maksas atskaitīšanas.  
 **"Maksas meklēšana"** nozīmē jebkuru tiešsaistes reklāmas veidu, kas saista reklāmas rādīšanu ar konkrētu atslēgvārdu meklēšanas pieprasījumu.  
-**“Maksājumu starpnieks”** ir Traveliko Singapore Pte. Ltd. pilnībā piederoša meitasuzņēmuma, kas pārvalda maksājumu pakalpojumus, kas iekasē maksājumus no viesiem (“Pay-in”), iekasējot maksājuma metodi, kas saistīta ar pirkumu, piemēram, kredītkarti, debetkarti, bankas pārskaitījumu, kriptovalūtas vai PayPal utt., un izmaksā summu, kas pienākas (“Neto komisija”) Filiāles vietējā bankas kontā.  
+**“Maksājumu starpnieks”** ir Winkfluence pilnībā piederoša meitasuzņēmuma, kas pārvalda maksājumu pakalpojumus, kas iekasē maksājumus no viesiem (“Pay-in”), iekasējot maksājuma metodi, kas saistīta ar pirkumu, piemēram, kredītkarti, debetkarti, bankas pārskaitījumu, kriptovalūtas vai PayPal utt., un izmaksā summu, kas pienākas (“Neto komisija”) Filiāles vietējā bankas kontā.  
 **“Pay-in”** nozīmē maksājuma saņemšanu, ko veicis viesis caur Maksājumu starpnieku.  
 **“Pay-out”** nozīmē Neto komisijas izmaksu Filiālei, ko veic Maksājumu starpnieks.  
 **“Maksājumu pakalpojuma maksa”** ir 4% noņemta no Filiāles komisijas kā maksājuma iegūšanas maksa, ko iekasē Maksājumu starpnieks.  

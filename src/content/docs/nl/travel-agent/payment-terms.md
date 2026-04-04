@@ -25,7 +25,7 @@ Deze Betalingsvoorwaarden (“Betalingsvoorwaarden”) vormen een bindende jurid
 
 **TUSSEN:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, een bedrijf opgericht volgens de wetten van Singapore en met statutaire zetel op \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, met btw-nummer 201437335D (hierna "Wink" genoemd) en  
+1. **Winkfluence**, een bedrijf opgericht volgens de wetten van Singapore en met statutaire zetel op \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, met btw-nummer 201437335D (hierna "Wink" genoemd) en  
      
 2. **DE REISAGENT** waarvan de gegevens zijn opgenomen in het registratieformulier voor reisagenten of online zijn ingediend (de "Reisagent").
 

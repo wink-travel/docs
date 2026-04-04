@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., ki deluje pod imenom Wink (v nadaljevanju »Družba«), vas želi obvestiti, ki stopate v stik z Družbo, da je potrebno zbirati, sestavljati in uporabljati vaše osebne podatke za storitve Družbe v skladu s to Politiko zasebnosti. S tem, ko stopite v stik in razkrijete svoje osebne podatke Družbi za namene komunikacije, usklajevanja in/ali zagotavljanja storitev Družbe vam, se šteje, da se strinjate in sprejemate, da boste vezani na to Politiko zasebnosti ter jo spoštovali.
+Winkfluence, ki deluje pod imenom Wink (v nadaljevanju »Družba«), vas želi obvestiti, ki stopate v stik z Družbo, da je potrebno zbirati, sestavljati in uporabljati vaše osebne podatke za storitve Družbe v skladu s to Politiko zasebnosti. S tem, ko stopite v stik in razkrijete svoje osebne podatke Družbi za namene komunikacije, usklajevanja in/ali zagotavljanja storitev Družbe vam, se šteje, da se strinjate in sprejemate, da boste vezani na to Politiko zasebnosti ter jo spoštovali.
 
 Osebne podatke, ki jih Družba obdeluje, lahko pridobi iz različnih kanalov, in sicer:
 

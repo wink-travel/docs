@@ -11,7 +11,7 @@ sidebar:
 
 **TERMOS DE PAGAMENTO PARA FORNECEDORES DE ACOMODAÇÃO**
 
-Estes Termos de Serviço de Pagamento (“**Termos de Pagamento**”) são um acordo legal vinculativo entre o Fornecedor de Acomodação e a TripPay (doravante denominada **“Facilitadora de Pagamento”**), uma subsidiária integral da Traveliko Singapore Pte. Ltd., que rege os Serviços de Pagamento (definidos abaixo) realizados por meio ou em conexão com a Plataforma Wink (doravante denominada **“Wink”**). Quando estes Termos de Pagamento mencionam “**Facilitadora de Pagamento**,” “**nós**,” “**nos**,” ou “**nosso**,” referem-se à empresa TripPay com a qual você está contratando para os Serviços de Pagamento.
+Estes Termos de Serviço de Pagamento (“**Termos de Pagamento**”) são um acordo legal vinculativo entre o Fornecedor de Acomodação e a TripPay (doravante denominada **“Facilitadora de Pagamento”**), uma subsidiária integral da Winkfluence, que rege os Serviços de Pagamento (definidos abaixo) realizados por meio ou em conexão com a Plataforma Wink (doravante denominada **“Wink”**). Quando estes Termos de Pagamento mencionam “**Facilitadora de Pagamento**,” “**nós**,” “**nos**,” ou “**nosso**,” referem-se à empresa TripPay com a qual você está contratando para os Serviços de Pagamento.
 
 A Facilitadora de Pagamento oferece serviços de pagamento aos Fornecedores de Acomodação que vendem inventário através da plataforma Wink. Esses serviços de pagamento podem incluir (se disponíveis) os seguintes (coletivamente, “**Serviços de Pagamento**”):
 
@@ -27,7 +27,7 @@ O Acordo foi lido, e todos os Termos e Condições foram aceitos pelo Fornecedor
 Os Serviços de Pagamento serão fornecidos pela entidade contratante dependendo do país onde a Acomodação está localizada, conforme segue:
 
 * Estados Unidos: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Resto do mundo: TripPay Slovakia
+* Resto do mundo: TripPay Corporation
 
 **1. Seu Uso dos Serviços de Pagamento**
 

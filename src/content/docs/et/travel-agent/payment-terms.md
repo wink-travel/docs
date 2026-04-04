@@ -25,7 +25,7 @@ Need teenuse maksetingimused (“Maksetingimused”) on siduv juriidiline leping
 
 **LEPINGUPOOLTEKS ON:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, Singapuri seaduste alusel asutatud ettevõte, mille registreeritud aadress on \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 ja käibemaksukohustuslase number 201437335D (edaspidi "Wink") ning  
+1. **Winkfluence**, Singapuri seaduste alusel asutatud ettevõte, mille registreeritud aadress on \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 ja käibemaksukohustuslase number 201437335D (edaspidi "Wink") ning  
      
 2. **REISIBÜROO**, kelle andmed on esitatud reisibüroo registreerimisvormil või on esitatud veebis (edaspidi "Reisibüroo").
 

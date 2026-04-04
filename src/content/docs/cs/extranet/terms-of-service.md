@@ -15,7 +15,7 @@ Registrací a přihlášením do programu Wink jako poskytovatel ubytování pos
 
 **MEZI:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, společností založenou podle zákonů Singapuru se sídlem na adrese \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, s daňovým identifikačním číslem 201437335D („Wink“), a
+**Winkfluence**, společností založenou podle zákonů Singapuru se sídlem na adrese \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, s daňovým identifikačním číslem 201437335D („Wink“), a
 
 **POSKYTOVATELEM UBYTOVÁNÍ**, jehož údaje jsou uvedeny v registračním formuláři poskytovatele ubytování nebo byly odeslány online (dále jen „Poskytovatel ubytování“).
 
@@ -70,7 +70,7 @@ Kromě termínů definovaných jinde v této Smlouvě platí následující defi
 
 **„Partner“** znamená jakýkoli podnik nebo jednotlivce, který se připojuje k platformě Wink nebo ji používá k propagaci a prodeji inventáře Poskytovatelů ubytování svému publiku a/nebo zákazníkům za provizi.
 
-**„Platební zprostředkovatel“** plně vlastněná dceřiná společnost Traveliko Singapore Pte. Ltd. („TripPay“), která spravuje platební služby, vybírá platby od hostů („Pay-in“) tím, že účtuje platební metodu spojenou s jejich nákupem, jako jsou kreditní karta, debetní karta, bankovní převod, kryptoměny nebo PayPal apod., a vyplácí dlužné prostředky („Čistá sazba“) Poskytovateli ubytování.
+**„Platební zprostředkovatel“** plně vlastněná dceřiná společnost Winkfluence („TripPay“), která spravuje platební služby, vybírá platby od hostů („Pay-in“) tím, že účtuje platební metodu spojenou s jejich nákupem, jako jsou kreditní karta, debetní karta, bankovní převod, kryptoměny nebo PayPal apod., a vyplácí dlužné prostředky („Čistá sazba“) Poskytovateli ubytování.
 
 **„Pay-in“** znamená přijetí platby od hosta platebním zprostředkovatelem.
 

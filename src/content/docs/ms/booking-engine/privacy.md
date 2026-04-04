@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., yang beroperasi di bawah nama Wink (selepas ini dirujuk sebagai “Syarikat”), ingin memaklumkan kepada anda yang menghubungi Syarikat bahawa adalah perlu untuk mengumpul, menyusun dan menggunakan data peribadi anda bagi perkhidmatan Syarikat selaras dengan Polisi Privasi ini. Dengan menghubungi dan mendedahkan data peribadi anda kepada Syarikat untuk tujuan komunikasi, penyelarasan, dan/atau penyediaan perkhidmatan Syarikat kepada anda, anda dianggap bersetuju dan menerima untuk terikat serta mematuhi Polisi Privasi ini.
+Winkfluence, yang beroperasi di bawah nama Wink (selepas ini dirujuk sebagai “Syarikat”), ingin memaklumkan kepada anda yang menghubungi Syarikat bahawa adalah perlu untuk mengumpul, menyusun dan menggunakan data peribadi anda bagi perkhidmatan Syarikat selaras dengan Polisi Privasi ini. Dengan menghubungi dan mendedahkan data peribadi anda kepada Syarikat untuk tujuan komunikasi, penyelarasan, dan/atau penyediaan perkhidmatan Syarikat kepada anda, anda dianggap bersetuju dan menerima untuk terikat serta mematuhi Polisi Privasi ini.
 
 Data peribadi yang diproses, Syarikat mungkin memperoleh data peribadi anda dari pelbagai saluran seperti berikut:
 

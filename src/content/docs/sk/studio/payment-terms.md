@@ -11,7 +11,7 @@ Naposledy aktualizované 2024-06-12
 
 **PLATOBNÉ PODMIENKY PRE PARTNEROV**
 
-Tieto Podmienky platby služieb („**Platobné podmienky**“) sú záväznou právnou dohodou medzi vami a TripPay (ďalej len **„Platobný sprostredkovateľ“**), plne vlastnenou dcérskou spoločnosťou Traveliko Singapore Pte. Ltd., ktorá upravuje Platobné služby (ďalej definované) vykonávané prostredníctvom alebo v súvislosti s platformou Wink (ďalej len **„Wink“**). Keď tieto Platobné podmienky spomínajú „**Platobný sprostredkovateľ**“, „**my**“, „**nás**“ alebo „**naše**“, odkazujú na spoločnosť TripPay, s ktorou uzatvárate zmluvu o Platobných službách.
+Tieto Podmienky platby služieb („**Platobné podmienky**“) sú záväznou právnou dohodou medzi vami a TripPay (ďalej len **„Platobný sprostredkovateľ“**), plne vlastnenou dcérskou spoločnosťou Winkfluence, ktorá upravuje Platobné služby (ďalej definované) vykonávané prostredníctvom alebo v súvislosti s platformou Wink (ďalej len **„Wink“**). Keď tieto Platobné podmienky spomínajú „**Platobný sprostredkovateľ**“, „**my**“, „**nás**“ alebo „**naše**“, odkazujú na spoločnosť TripPay, s ktorou uzatvárate zmluvu o Platobných službách.
 
 Platobný sprostredkovateľ poskytuje platobné služby partnerom, ktorí predávajú inventár poskytovateľov ubytovania prostredníctvom Wink. Tieto platobné služby môžu zahŕňať (ak sú dostupné) nasledujúce (spoločne „**Platobné služby**“):
 
@@ -27,7 +27,7 @@ Zmluva bola prečítaná a všetky Podmienky boli partnerom akceptované. Partne
 Platobné služby budú poskytované zmluvnou entitou podľa krajiny, v ktorej sa partner nachádza, ako je uvedené nižšie:
 
 * Spojené štáty: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Zvyšok sveta: TripPay Slovakia
+* Zvyšok sveta: TripPay Corporation
 
 **1. Vaše používanie Platobných služieb**
 

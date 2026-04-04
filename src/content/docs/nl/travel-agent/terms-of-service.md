@@ -23,7 +23,7 @@ Deze voorwaarden zijn beschikbaar onder [Affiliate Portal > Terms of Service](/n
 
 **TUSSEN:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, een bedrijf opgericht volgens de wetten van Singapore en met geregistreerd kantoor op \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 met btw-registratienummer 201437335D (hierna "Wink" genoemd) en  
+1. **Winkfluence**, een bedrijf opgericht volgens de wetten van Singapore en met geregistreerd kantoor op \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 met btw-registratienummer 201437335D (hierna "Wink" genoemd) en  
      
 2. **DE REISAGENT** waarvan de gegevens zijn opgenomen in het registratieformulier voor reisagenten of online zijn ingediend (de "Reisagent").
 
@@ -67,7 +67,7 @@ Deze voorwaarden zijn beschikbaar onder [Affiliate Portal > Terms of Service](/n
     
 * **“Betalingen”** betekent de financiële verplichtingen die voortvloeien uit deze Overeenkomst, inclusief commissies, kosten of andere vergoedingen, verschuldigd door de ene partij aan de andere.
 
-* **"Payment Facilitator"** is een volledig dochteronderneming van Traveliko Singapore Pte. Ltd. die de betalingsdiensten beheert, betalingen van gasten incasseert door de betaalmethode te belasten die aan hun aankoop is gekoppeld, zoals creditcard, debetkaart, bankoverschrijving, cryptocurrencies of PayPal, enz.  
+* **"Payment Facilitator"** is een volledig dochteronderneming van Winkfluence die de betalingsdiensten beheert, betalingen van gasten incasseert door de betaalmethode te belasten die aan hun aankoop is gekoppeld, zoals creditcard, debetkaart, bankoverschrijving, cryptocurrencies of PayPal, enz.  
     
 * **“Platform”** betekent het online systeem dat door de Service Provider wordt geëxploiteerd waarmee de Reisagent boekingen kan maken of beheren voor gasten.
 

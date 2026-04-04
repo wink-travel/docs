@@ -15,7 +15,7 @@ Registreerudes ja liitudes Wink programmiga majutusteenuse pakkujana, on majutus
 
 **LEPINGU OSAPOOLED:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, Singapuri seaduste alusel asutatud ettevõte, mille registreeritud aadress on \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, käibemaksukohustuslase registrinumber 201437335D ("Wink"), ning
+**Winkfluence**, Singapuri seaduste alusel asutatud ettevõte, mille registreeritud aadress on \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, käibemaksukohustuslase registrinumber 201437335D ("Wink"), ning
 
 **MAJUTUSTEENUSE PAKKUJA**, kelle andmed on esitatud Majutusteenuse Pakkuja registreerimisvormis või esitatud veebis (edaspidi "Majutusteenuse Pakkuja").
 
@@ -70,7 +70,7 @@ Lisaks mujal käesolevas Lepingus määratletud mõistetele kehtivad kogu leping
 
 **“Partner”** tähendab ettevõtet või isikut, kes kasutab Wink platvormi, et edendada ja müüa Majutusteenuse Pakkujate inventari oma publikule ja/või klientidele komisjonitasu eest.
 
-**“Maksete Vahendaja”** on Traveliko Singapore Pte. Ltd. täielikult omanduses olev tütarettevõte (“TripPay”), kes haldab makseteenuseid, kogudes külalistelt makseid (“Pay-in”) ning kannab Majutusteenuse Pakkujale välja võlgnetava summa (“Net Rate”).
+**“Maksete Vahendaja”** on Winkfluence täielikult omanduses olev tütarettevõte (“TripPay”), kes haldab makseteenuseid, kogudes külalistelt makseid (“Pay-in”) ning kannab Majutusteenuse Pakkujale välja võlgnetava summa (“Net Rate”).
 
 **“Pay-in”** tähendab makse vastuvõtmist külaliselt Maksete Vahendaja poolt.
 

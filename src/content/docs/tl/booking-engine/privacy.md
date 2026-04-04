@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., na nagpapatakbo sa ilalim ng pangalang Wink (ang “Kumpanya”), ay nais ipabatid sa iyo na nakikipag-ugnayan sa Kumpanya na kinakailangan ang pagkolekta, pagbuo, at paggamit ng iyong personal na datos para sa serbisyo ng Kumpanya alinsunod sa Patakarang ito sa Privacy. Sa pamamagitan ng pakikipag-ugnayan at pagsisiwalat ng iyong personal na datos sa Kumpanya para sa mga layunin ng komunikasyon, koordinasyon, at/o pagbibigay ng mga serbisyo ng Kumpanya sa iyo, itinuturing na sumasang-ayon ka at tinatanggap na masunod ang Patakarang ito sa Privacy.
+Winkfluence, na nagpapatakbo sa ilalim ng pangalang Wink (ang “Kumpanya”), ay nais ipabatid sa iyo na nakikipag-ugnayan sa Kumpanya na kinakailangan ang pagkolekta, pagbuo, at paggamit ng iyong personal na datos para sa serbisyo ng Kumpanya alinsunod sa Patakarang ito sa Privacy. Sa pamamagitan ng pakikipag-ugnayan at pagsisiwalat ng iyong personal na datos sa Kumpanya para sa mga layunin ng komunikasyon, koordinasyon, at/o pagbibigay ng mga serbisyo ng Kumpanya sa iyo, itinuturing na sumasang-ayon ka at tinatanggap na masunod ang Patakarang ito sa Privacy.
 
 Mga personal na datos na pinoproseso, maaaring makuha ng Kumpanya ang iyong personal na datos mula sa iba't ibang mga channel tulad ng mga sumusunod:
 

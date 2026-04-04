@@ -11,7 +11,7 @@ Pēdējā atjaunināšana 2024-06-12
 
 **MAKSĀJUMU NOTEIKUMI PARTNERIEM**
 
-Šie Maksājumu pakalpojumu noteikumi (“**Maksājumu noteikumi**”) ir saistošs juridisks līgums starp jums un TripPay (turpmāk tekstā saukts par **“Maksājumu nodrošinātāju”**), kas ir Traveliko Singapore Pte. Ltd. pilnībā piederoša meitasuzņēmuma, un regulē Maksājumu pakalpojumus (turpmāk definēti) veikšanu caur vai saistībā ar Wink platformu (turpmāk tekstā saukts par **“Wink”**). Kad šajos Maksājumu noteikumos tiek minēts “**Maksājumu nodrošinātājs**,” “**mēs**,” “**mums**” vai “**mūsu**,” tas attiecas uz TripPay uzņēmumu, ar kuru jūs slēdzat līgumu par Maksājumu pakalpojumiem.
+Šie Maksājumu pakalpojumu noteikumi (“**Maksājumu noteikumi**”) ir saistošs juridisks līgums starp jums un TripPay (turpmāk tekstā saukts par **“Maksājumu nodrošinātāju”**), kas ir Winkfluence pilnībā piederoša meitasuzņēmuma, un regulē Maksājumu pakalpojumus (turpmāk definēti) veikšanu caur vai saistībā ar Wink platformu (turpmāk tekstā saukts par **“Wink”**). Kad šajos Maksājumu noteikumos tiek minēts “**Maksājumu nodrošinātājs**,” “**mēs**,” “**mums**” vai “**mūsu**,” tas attiecas uz TripPay uzņēmumu, ar kuru jūs slēdzat līgumu par Maksājumu pakalpojumiem.
 
 Maksājumu nodrošinātājs sniedz maksājumu pakalpojumus partneriem, kas pārdod Naktsmītņu sniedzēju krājumus caur Wink. Šie maksājumu pakalpojumi var ietvert (ja pieejams) sekojošo (kopā “**Maksājumu pakalpojumi**”):
 
@@ -27,7 +27,7 @@ Līgums ir izlasīts un visi noteikumi un nosacījumi ir pieņemti no partnera p
 Maksājumu pakalpojumus nodrošinās līgumslēdzējs atkarībā no valsts, kurā atrodas partneris, kā norādīts zemāk:
 
 * Amerikas Savienotās Valstis: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Pārējā pasaule: TripPay Slovakia
+* Pārējā pasaule: TripPay Corporation
 
 **1. Jūsu Maksājumu pakalpojumu izmantošana**
 

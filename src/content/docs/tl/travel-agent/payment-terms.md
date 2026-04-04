@@ -25,7 +25,7 @@ Ang mga Tuntunin sa Serbisyo sa Pagbabayad na ito (“Mga Tuntunin sa Pagbabayad
 
 **SA PAGITAN NG:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.** isang kumpanya na itinatag sa ilalim ng mga batas ng Singapore at may rehistradong opisina sa \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 na may VAT register number 201437335D (na tinutukoy dito bilang "Wink") at  
+1. **Winkfluence** isang kumpanya na itinatag sa ilalim ng mga batas ng Singapore at may rehistradong opisina sa \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 na may VAT register number 201437335D (na tinutukoy dito bilang "Wink") at  
      
 2. **ANG TRAVEL AGENT** na ang mga detalye ay nakasaad sa Travel Agent Registration Form o naipasa online (ang "Travel Agent").
 

@@ -25,7 +25,7 @@ Visi kelionių agentai vis tiek gali rezervuoti per mūsų kelionių agentų por
 
 **TARP:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, įmonė, įregistruota pagal Singapūro įstatymus, kurios registruota buveinė yra \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, PVM registracijos numeris 201437335D (toliau – „Wink“) ir  
+1. **Winkfluence**, įmonė, įregistruota pagal Singapūro įstatymus, kurios registruota buveinė yra \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, PVM registracijos numeris 201437335D (toliau – „Wink“) ir  
      
 2. **KELIONIŲ AGENTAS**, kurio duomenys pateikti Kelionių agento registracijos formoje arba pateikti internetu („Kelionių agentas“).
 

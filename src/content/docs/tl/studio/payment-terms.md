@@ -11,7 +11,7 @@ Huling na-update noong 2024-06-12
 
 **MGA TUNTUNIN SA PAGBABAYAD PARA SA MGA AFFILIATE**
 
-Ang mga Tuntunin sa Serbisyo ng Pagbabayad na ito (“**Mga Tuntunin sa Pagbabayad**”) ay isang legal na kasunduan sa pagitan mo at ng TripPay (na tinutukoy dito bilang **“Payment Facilitator”**), isang ganap na pag-aari ng Traveliko Singapore Pte. Ltd., na namamahala sa Mga Serbisyo sa Pagbabayad (na tinukoy sa ibaba) na isinasagawa sa pamamagitan o kaugnay ng Wink Platform (na tinutukoy dito bilang **“Wink”**). Kapag binanggit sa Mga Tuntunin sa Pagbabayad ang “**Payment Facilitator**,” “**kami**,” “**amin**,” o “**ating**,” ito ay tumutukoy sa kumpanyang TripPay na iyong kinokontrata para sa Mga Serbisyo sa Pagbabayad.
+Ang mga Tuntunin sa Serbisyo ng Pagbabayad na ito (“**Mga Tuntunin sa Pagbabayad**”) ay isang legal na kasunduan sa pagitan mo at ng TripPay (na tinutukoy dito bilang **“Payment Facilitator”**), isang ganap na pag-aari ng Winkfluence, na namamahala sa Mga Serbisyo sa Pagbabayad (na tinukoy sa ibaba) na isinasagawa sa pamamagitan o kaugnay ng Wink Platform (na tinutukoy dito bilang **“Wink”**). Kapag binanggit sa Mga Tuntunin sa Pagbabayad ang “**Payment Facilitator**,” “**kami**,” “**amin**,” o “**ating**,” ito ay tumutukoy sa kumpanyang TripPay na iyong kinokontrata para sa Mga Serbisyo sa Pagbabayad.
 
 Nagbibigay ang Payment Facilitator ng mga serbisyo sa pagbabayad sa mga Affiliate na nagbebenta ng imbentaryo ng mga Accommodation Provider sa pamamagitan ng Wink. Ang mga serbisyong ito sa pagbabayad ay maaaring kabilang (kung magagamit) ang mga sumusunod (sama-samang, “**Mga Serbisyo sa Pagbabayad**”):
 
@@ -27,7 +27,7 @@ Nabasa na ang Kasunduan at lahat ng Mga Tuntunin at Kondisyon ay napagkasunduan 
 Ang Mga Serbisyo sa Pagbabayad ay ibibigay ng entity na nakakontrata depende sa bansa kung saan matatagpuan ang Affiliate ayon sa mga sumusunod:
 
 * Estados Unidos: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Iba pang bahagi ng mundo: TripPay Slovakia
+* Iba pang bahagi ng mundo: TripPay Corporation
 
 **1. Ang iyong paggamit ng Mga Serbisyo sa Pagbabayad**
 

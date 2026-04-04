@@ -15,7 +15,7 @@ Bir konaklama sağlayıcısı olarak Wink programına kayıt olup üye olarak, k
 
 **TARAFLAR:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, Singapur yasalarına göre kurulmuş ve kayıtlı ofisi \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 adresinde bulunan, KDV kayıt numarası 201437335D olan şirket ("Wink"), ve
+**Winkfluence**, Singapur yasalarına göre kurulmuş ve kayıtlı ofisi \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 adresinde bulunan, KDV kayıt numarası 201437335D olan şirket ("Wink"), ve
 
 **KONAKLAMA SAĞLAYICI**, bilgileri Konaklama Sağlayıcı Kayıt Formunda belirtilmiş veya çevrimiçi olarak iletilmiş olan taraf ("Konaklama Sağlayıcı").
 
@@ -70,7 +70,7 @@ Bu Sözleşmede başka yerlerde tanımlanmamışsa, aşağıdaki tanımlar geçe
 
 **“Ortak”** Wink platformunu kullanarak Konaklama Sağlayıcıların envanterini komisyon karşılığı tanıtan ve satan işletme veya birey.
 
-**“Ödeme Kolaylaştırıcı”** Traveliko Singapore Pte. Ltd.'nin tam sahip olduğu yan kuruluş (“TripPay”), ödeme hizmetlerini yöneten, konuktan ödeme tahsil eden ve Konaklama Sağlayıcıya ödemeleri yapan kuruluş.
+**“Ödeme Kolaylaştırıcı”** Winkfluence'nin tam sahip olduğu yan kuruluş (“TripPay”), ödeme hizmetlerini yöneten, konuktan ödeme tahsil eden ve Konaklama Sağlayıcıya ödemeleri yapan kuruluş.
 
 **“Pay-in”** Ödeme Kolaylaştırıcı tarafından konuktan tahsil edilen ödeme.
 

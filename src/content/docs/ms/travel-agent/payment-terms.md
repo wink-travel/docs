@@ -25,7 +25,7 @@ Terma Perkhidmatan Pembayaran ini (“Terma Pembayaran”) adalah perjanjian und
 
 **ANTARA:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.** sebuah syarikat yang diperbadankan di bawah undang-undang Singapura dan mempunyai pejabat berdaftar di \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 dengan nombor pendaftaran VAT 201437335D (selepas ini dikenali sebagai "Wink") dan  
+1. **Winkfluence** sebuah syarikat yang diperbadankan di bawah undang-undang Singapura dan mempunyai pejabat berdaftar di \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 dengan nombor pendaftaran VAT 201437335D (selepas ini dikenali sebagai "Wink") dan  
      
 2. **EJEN PELANCONGAN** yang butirannya dinyatakan dalam Borang Pendaftaran Ejen Pelancongan atau telah dihantar secara dalam talian (disebut sebagai "Ejen Pelancongan").
 

@@ -23,7 +23,7 @@ Ti uslovi su dostupni pod [Affiliate Portal > Terms of Service](/sr/studio/terms
 
 **IZMEĐU:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, kompanije registrovane po zakonima Singapura sa sedištem na adresi \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 i poreskim brojem 201437335D (u daljem tekstu "Wink") i  
+1. **Winkfluence**, kompanije registrovane po zakonima Singapura sa sedištem na adresi \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 i poreskim brojem 201437335D (u daljem tekstu "Wink") i  
      
 2. **TURISTIČKOG AGENTA** čiji su podaci navedeni u obrascu za registraciju turističkog agenta ili su dostavljeni online (u daljem tekstu "Turistički agent").
 
@@ -67,7 +67,7 @@ Ti uslovi su dostupni pod [Affiliate Portal > Terms of Service](/sr/studio/terms
     
 * **“Uplate”** označavaju finansijske obaveze koje proizilaze iz ovog Ugovora, uključujući provizije, naknade ili druge troškove, koje jedna strana duguje drugoj.
 
-* **"Posrednik u plaćanju"** je u potpunosti u vlasništvu Traveliko Singapore Pte. Ltd. i upravlja uslugama plaćanja, prikupljajući uplate od gostiju naplaćujući način plaćanja povezan sa njihovom kupovinom kao što su kreditna kartica, debitna kartica, bankovni transfer, kriptovalute ili PayPal itd.  
+* **"Posrednik u plaćanju"** je u potpunosti u vlasništvu Winkfluence i upravlja uslugama plaćanja, prikupljajući uplate od gostiju naplaćujući način plaćanja povezan sa njihovom kupovinom kao što su kreditna kartica, debitna kartica, bankovni transfer, kriptovalute ili PayPal itd.  
     
 * **“Platforma”** označava online sistem kojim upravlja Pružaoc usluge preko kojeg Turistički agent može praviti ili upravljati rezervacijama za goste.
 

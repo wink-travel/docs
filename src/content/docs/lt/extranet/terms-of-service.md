@@ -15,7 +15,7 @@ Registruodamasis ir prisijungdamas prie Wink programos kaip apgyvendinimo paslau
 
 **TARP:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, pagal Singapūro įstatymus įsteigta įmonė, kurios registruota buveinė yra \#03-01 Wilkie Edge, 8 Wilkie Road, Singapūras 228095, PVM registracijos numeris 201437335D („Wink“), ir
+**Winkfluence**, pagal Singapūro įstatymus įsteigta įmonė, kurios registruota buveinė yra \#03-01 Wilkie Edge, 8 Wilkie Road, Singapūras 228095, PVM registracijos numeris 201437335D („Wink“), ir
 
 **APGYVENDINIMO PASLAUGŲ TEIKĖJAS**, kurio duomenys pateikti Apgyvendinimo paslaugų teikėjo registracijos formoje arba pateikti internetu (toliau – „Apgyvendinimo paslaugų teikėjas“).
 
@@ -70,7 +70,7 @@ Be kitų šioje Sutartyje apibrėžtų terminų, taikomi šie apibrėžimai, jei
 
 **„Partneris“** reiškia bet kokį verslą ar asmenį, kuris jungiasi prie Wink platformos ar ją naudoja, kad reklamuotų ir parduotų Apgyvendinimo paslaugų teikėjų inventorių savo auditorijai ir/ar klientams už komisinį mokestį.
 
-**„Mokėjimų tarpininkas“** yra Traveliko Singapore Pte. Ltd. visiškai valdoma dukterinė įmonė („TripPay“), valdanti mokėjimų paslaugas, surenkanti svečių mokėjimus („Pay-in“) ir išmokanti Apgyvendinimo paslaugų teikėjui („Grynoji kaina“).
+**„Mokėjimų tarpininkas“** yra Winkfluence visiškai valdoma dukterinė įmonė („TripPay“), valdanti mokėjimų paslaugas, surenkanti svečių mokėjimus („Pay-in“) ir išmokanti Apgyvendinimo paslaugų teikėjui („Grynoji kaina“).
 
 **„Pay-in“** reiškia mokėjimo gavimą iš svečio per Mokėjimų tarpininką.
 

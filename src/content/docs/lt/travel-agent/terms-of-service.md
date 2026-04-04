@@ -23,7 +23,7 @@ Visi kelionių agentai vis tiek gali rezervuoti per mūsų kelionių agentų por
 
 **TARP:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, įmonės, įsteigtos pagal Singapūro įstatymus, kurios registruota buveinė yra \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, PVM registracijos numeris 201437335D (toliau – „Wink“) ir  
+1. **Winkfluence**, įmonės, įsteigtos pagal Singapūro įstatymus, kurios registruota buveinė yra \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, PVM registracijos numeris 201437335D (toliau – „Wink“) ir  
      
 2. **KELIONIŲ AGENTAS**, kurio duomenys pateikti Kelionių agento registracijos formoje arba pateikti internetu (toliau – „Kelionių agentas“).
 
@@ -67,7 +67,7 @@ Visi kelionių agentai vis tiek gali rezervuoti per mūsų kelionių agentų por
     
 * **„Mokėjimai“** reiškia finansinius įsipareigojimus pagal šią Sutartį, įskaitant komisinius, mokesčius ar kitus mokesčius, kuriuos viena šalis turi sumokėti kitai.
 
-* **„Mokėjimų tarpininkas“** yra visiškai priklausoma Traveliko Singapore Pte. Ltd. dukterinė įmonė, valdanti mokėjimų paslaugas, surenkanti mokėjimus iš svečių, apmokestindama mokėjimo būdą, susietą su jų pirkimu, pvz., kreditine kortele, debetine kortele, banko pavedimu, kriptovaliutomis ar PayPal ir kt.  
+* **„Mokėjimų tarpininkas“** yra visiškai priklausoma Winkfluence dukterinė įmonė, valdanti mokėjimų paslaugas, surenkanti mokėjimus iš svečių, apmokestindama mokėjimo būdą, susietą su jų pirkimu, pvz., kreditine kortele, debetine kortele, banko pavedimu, kriptovaliutomis ar PayPal ir kt.  
     
 * **„Platforma“** reiškia internetinę sistemą, kurią valdo Paslaugų teikėjas, per kurią Kelionių agentas gali atlikti arba valdyti rezervacijas svečiams.
 

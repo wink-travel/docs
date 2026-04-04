@@ -61,7 +61,7 @@ Wink ve Bağlı Ortak bu Sözleşmenin birer “Tarafı” olup birlikte “Tara
 **"Mikro Site"** Wink’in sahip olduğu, oluşturduğu, barındırdığı ve yönettiği ana web sitesinin tüm beyaz etiketli versiyonları. Mikro Site, 'powered by Wink' logosu veya eşdeğeri ile işaretlenebilir.  
 **“Net Komisyon”** Ödeme Hizmeti Ücreti ve Rezervasyon Ücreti kesintisi sonrası Bağlı Ortağa ödenecek tutar.  
 **"Ücretli Arama"** reklamın belirli anahtar kelime tabanlı arama isteğine bağlı olarak sunulduğu her türlü çevrimiçi reklamcılık.  
-**“Ödeme Kolaylaştırıcısı”** Traveliko Singapore Pte. Ltd.'nin tamamen sahip olduğu, ödeme hizmetlerini yöneten, misafirlerden ödeme tahsil eden ve Bağlı Ortağın yerel banka hesabına Net Komisyonu ödeyen kuruluş.  
+**“Ödeme Kolaylaştırıcısı”** Winkfluence'nin tamamen sahip olduğu, ödeme hizmetlerini yöneten, misafirlerden ödeme tahsil eden ve Bağlı Ortağın yerel banka hesabına Net Komisyonu ödeyen kuruluş.  
 **“Pay-in”** Ödeme Kolaylaştırıcısı tarafından misafirden alınan ödeme.  
 **“Pay-out”** Ödeme Kolaylaştırıcısı tarafından Bağlı Ortağa yapılan Net Komisyon ödemesi.  
 **“Ödeme Hizmeti Ücreti”** Ödeme Kolaylaştırıcısı tarafından Bağlı Ortak komisyonundan kesilen %4 ödeme tahsilat ücreti.  

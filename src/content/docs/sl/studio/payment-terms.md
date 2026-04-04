@@ -11,7 +11,7 @@ Zadnja posodobitev 2024-06-12
 
 **Pogoji plačila za partnerje**
 
-Ti Pogoji storitve plačila (“**Pogoji plačila**”) so zavezujoča pravna pogodba med vami in TripPay (v nadaljevanju imenovanim **“posrednik plačil”**), v celoti v lasti družbe Traveliko Singapore Pte. Ltd., ki ureja plačilne storitve (opredeljene spodaj), opravljene prek ali v povezavi s platformo Wink (v nadaljevanju imenovano **“Wink”**). Ko ti Pogoji plačila omenjajo “**posrednik plačil**,” “**mi**,” “**nas**” ali “**naš**,” se nanašajo na družbo TripPay, s katero sklepate pogodbo za plačilne storitve.
+Ti Pogoji storitve plačila (“**Pogoji plačila**”) so zavezujoča pravna pogodba med vami in TripPay (v nadaljevanju imenovanim **“posrednik plačil”**), v celoti v lasti družbe Winkfluence, ki ureja plačilne storitve (opredeljene spodaj), opravljene prek ali v povezavi s platformo Wink (v nadaljevanju imenovano **“Wink”**). Ko ti Pogoji plačila omenjajo “**posrednik plačil**,” “**mi**,” “**nas**” ali “**naš**,” se nanašajo na družbo TripPay, s katero sklepate pogodbo za plačilne storitve.
 
 Posrednik plačil zagotavlja plačilne storitve partnerjem, ki prodajajo zalogo ponudnikov nastanitev prek Wink. Te plačilne storitve lahko vključujejo (če so na voljo) naslednje (skupaj “**plačilne storitve**”):
 
@@ -27,7 +27,7 @@ Pogodbo je prebral in z vsemi pogoji soglašal partner. Partner izrecno soglaša
 Plačilne storitve bo zagotavljal pogodbeni subjekt glede na državo, v kateri se partner nahaja, kot je navedeno spodaj:
 
 * Združene države Amerike: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Preostali svet: TripPay Slovakia
+* Preostali svet: TripPay Corporation
 
 **1. Vaša uporaba plačilnih storitev**
 

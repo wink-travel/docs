@@ -23,7 +23,7 @@ Bu şartlar [Affiliate Portal > Terms of Service](/tr/studio/terms-of-service) a
 
 **TARAFLAR:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, Singapur yasalarına göre kurulmuş ve kayıtlı ofisi \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 adresinde bulunan, KDV kayıt numarası 201437335D olan şirket (bundan sonra "Wink" olarak anılacaktır) ve  
+1. **Winkfluence**, Singapur yasalarına göre kurulmuş ve kayıtlı ofisi \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 adresinde bulunan, KDV kayıt numarası 201437335D olan şirket (bundan sonra "Wink" olarak anılacaktır) ve  
      
 2. **SEYAHAT ACENTESİ**, Seyahat Acentesi Kayıt Formunda belirtilen veya çevrimiçi olarak gönderilmiş bilgileri içeren taraf ("Seyahat Acentesi").
 
@@ -67,7 +67,7 @@ Bu şartlar [Affiliate Portal > Terms of Service](/tr/studio/terms-of-service) a
     
 * **“Ödemeler”**, bu Sözleşme kapsamında taraflardan birinin diğerine ödemesi gereken komisyonlar, ücretler veya diğer mali yükümlülükleri ifade eder.
 
-* **"Ödeme Kolaylaştırıcısı"**, Traveliko Singapore Pte. Ltd.'nin tamamen sahip olduğu ve ödeme hizmetlerini yöneten, misafirlerden kredi kartı, banka transferi, kripto para veya PayPal gibi ödeme yöntemleriyle tahsilat yapan yan kuruluşudur.  
+* **"Ödeme Kolaylaştırıcısı"**, Winkfluence'nin tamamen sahip olduğu ve ödeme hizmetlerini yöneten, misafirlerden kredi kartı, banka transferi, kripto para veya PayPal gibi ödeme yöntemleriyle tahsilat yapan yan kuruluşudur.  
     
 * **“Platform”**, Seyahat Acentesinin Misafirler için Rezervasyon yapabileceği veya yönetebileceği Hizmet Sağlayıcı tarafından işletilen çevrimiçi sistemi ifade eder.
 

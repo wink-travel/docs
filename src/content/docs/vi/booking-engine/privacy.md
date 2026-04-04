@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., hoạt động dưới tên Wink (gọi là “Công ty”), xin thông báo đến bạn khi liên hệ với Công ty rằng việc thu thập, tổng hợp và sử dụng dữ liệu cá nhân của bạn là cần thiết cho dịch vụ của Công ty theo Chính sách bảo mật này. Bằng việc liên hệ và cung cấp dữ liệu cá nhân cho Công ty nhằm mục đích giao tiếp, phối hợp và/hoặc cung cấp dịch vụ của Công ty cho bạn, bạn được coi là đồng ý và chấp nhận bị ràng buộc và tuân thủ Chính sách bảo mật này.
+Winkfluence, hoạt động dưới tên Wink (gọi là “Công ty”), xin thông báo đến bạn khi liên hệ với Công ty rằng việc thu thập, tổng hợp và sử dụng dữ liệu cá nhân của bạn là cần thiết cho dịch vụ của Công ty theo Chính sách bảo mật này. Bằng việc liên hệ và cung cấp dữ liệu cá nhân cho Công ty nhằm mục đích giao tiếp, phối hợp và/hoặc cung cấp dịch vụ của Công ty cho bạn, bạn được coi là đồng ý và chấp nhận bị ràng buộc và tuân thủ Chính sách bảo mật này.
 
 Dữ liệu cá nhân được xử lý, Công ty có thể thu thập dữ liệu cá nhân của bạn từ các kênh khác nhau như sau:
 

@@ -15,7 +15,7 @@ Bằng việc đăng ký và tham gia chương trình Wink với tư cách là n
 
 **GIỮA:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, một công ty được thành lập theo luật pháp Singapore và có văn phòng đăng ký tại \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 với mã số đăng ký VAT 201437335D ("Wink"), và
+**Winkfluence**, một công ty được thành lập theo luật pháp Singapore và có văn phòng đăng ký tại \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 với mã số đăng ký VAT 201437335D ("Wink"), và
 
 **NHÀ CUNG CẤP CHỖ Ở**, với thông tin được ghi trong Mẫu Đăng Ký Nhà Cung Cấp Chỗ Ở hoặc đã được gửi trực tuyến (gọi là "Nhà Cung Cấp Chỗ Ở").
 
@@ -70,7 +70,7 @@ Ngoài các thuật ngữ được định nghĩa ở nơi khác trong Thỏa Th
 
 **“Đối Tác”** có nghĩa là bất kỳ doanh nghiệp hoặc cá nhân nào kết nối hoặc sử dụng nền tảng Wink để quảng bá và bán hàng tồn kho của Nhà Cung Cấp Chỗ Ở cho khán giả và/hoặc khách hàng của họ để nhận hoa hồng.
 
-**“Nhà Cung Cấp Thanh Toán”** là công ty con thuộc sở hữu hoàn toàn của Traveliko Singapore Pte. Ltd. (“TripPay”), quản lý Dịch Vụ Thanh Toán, thu tiền từ khách (“Pay-in”), bằng cách trừ tiền từ phương thức thanh toán liên kết với giao dịch mua của họ, như thẻ tín dụng, thẻ ghi nợ, chuyển khoản ngân hàng, tiền điện tử hoặc PayPal v.v... và chi trả số tiền nợ (“Giá Ròng”) cho Nhà Cung Cấp Chỗ Ở.
+**“Nhà Cung Cấp Thanh Toán”** là công ty con thuộc sở hữu hoàn toàn của Winkfluence (“TripPay”), quản lý Dịch Vụ Thanh Toán, thu tiền từ khách (“Pay-in”), bằng cách trừ tiền từ phương thức thanh toán liên kết với giao dịch mua của họ, như thẻ tín dụng, thẻ ghi nợ, chuyển khoản ngân hàng, tiền điện tử hoặc PayPal v.v... và chi trả số tiền nợ (“Giá Ròng”) cho Nhà Cung Cấp Chỗ Ở.
 
 **“Pay-in”** có nghĩa là việc thu nhận thanh toán do khách thực hiện bởi Nhà Cung Cấp Thanh Toán.
 

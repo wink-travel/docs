@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., kas darbojas zem nosaukuma Wink (turpmāk – “Uzņēmums”), vēlas informēt jūs, kas sazinās ar Uzņēmumu, ka ir nepieciešams vākt, apkopot un izmantot jūsu personas datus Uzņēmuma pakalpojumu nodrošināšanai saskaņā ar šo Privātuma politiku. Sazinoties un atklājot savus personas datus Uzņēmumam saziņas, koordinācijas un/vai Uzņēmuma pakalpojumu sniegšanas nolūkos, tiek uzskatīts, ka jūs piekrītat un apņematies ievērot un izpildīt šo Privātuma politiku.
+Winkfluence, kas darbojas zem nosaukuma Wink (turpmāk – “Uzņēmums”), vēlas informēt jūs, kas sazinās ar Uzņēmumu, ka ir nepieciešams vākt, apkopot un izmantot jūsu personas datus Uzņēmuma pakalpojumu nodrošināšanai saskaņā ar šo Privātuma politiku. Sazinoties un atklājot savus personas datus Uzņēmumam saziņas, koordinācijas un/vai Uzņēmuma pakalpojumu sniegšanas nolūkos, tiek uzskatīts, ka jūs piekrītat un apņematies ievērot un izpildīt šo Privātuma politiku.
 
 Apstrādājamie personas dati, Uzņēmums var iegūt jūsu personas datus no dažādiem kanāliem šādi:
 

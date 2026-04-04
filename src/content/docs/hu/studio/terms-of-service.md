@@ -61,7 +61,7 @@ A Wink és az Affiliate a jelen Megállapodás „Felek”-e, együttesen „Fel
 **„Mikrooldal”** a Wink elsődleges weboldalának minden fehér címkés változata, amelyet a Wink birtokol, hoz létre, üzemeltet és tart fenn. A Mikrooldal megjelölhető a „powered by Wink” logóval vagy annak megfelelővel.  
 **„Nettó Jutalék”** az az összeg, amely az Affiliate-nek jár a Megvalósult Tranzakció(k) után a Fizetési Szolgáltatási Díj és a Foglalási Díj levonása után.  
 **„Fizetett Keresés”** bármilyen online hirdetés, amely egy adott kulcsszavas keresési lekérdezéshez köti a hirdetés megjelenítését.  
-**„Fizetési Közvetítő”** a Traveliko Singapore Pte. Ltd. teljes tulajdonú leányvállalata, amely a Fizetési Szolgáltatásokat irányítja, a vendégektől beszedett fizetéseket („Pay-in”) kezeli, a vásárláshoz kapcsolódó fizetési módokat (pl. hitelkártya, bankkártya, banki átutalás, kriptovaluták vagy PayPal stb.) terheli, és kifizeti a Nettó Jutalékot az Affiliate helyi bankszámlájára.  
+**„Fizetési Közvetítő”** a Winkfluence teljes tulajdonú leányvállalata, amely a Fizetési Szolgáltatásokat irányítja, a vendégektől beszedett fizetéseket („Pay-in”) kezeli, a vásárláshoz kapcsolódó fizetési módokat (pl. hitelkártya, bankkártya, banki átutalás, kriptovaluták vagy PayPal stb.) terheli, és kifizeti a Nettó Jutalékot az Affiliate helyi bankszámlájára.  
 **„Pay-in”** a Fizetési Közvetítő által a vendégtől beszedett fizetés.  
 **„Pay-out”** a Fizetési Közvetítő által az Affiliate részére kifizetett Nettó Jutalék.  
 **„Fizetési Szolgáltatási Díj”** a Fizetési Közvetítő által az Affiliate jutalékából levont 4%-os díj.  

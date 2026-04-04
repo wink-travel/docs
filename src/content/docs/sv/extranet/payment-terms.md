@@ -11,7 +11,7 @@ Senast uppdaterad 2024-06-12
 
 **BETALNINGSVILLKOR FÖR BOENDELEVERANTÖRER**
 
-Dessa Betalningsvillkor för tjänster (“**Betalningsvillkor**”) är ett bindande juridiskt avtal mellan Boendeleverantören och TripPay (hädanefter kallad **”Betalningsförmedlare”**), ett helägt dotterbolag till Traveliko Singapore Pte. Ltd., som reglerar Betalningstjänsterna (definierade nedan) som utförs genom eller i samband med Wink-plattformen (hädanefter kallad **”Wink”**). När dessa Betalningsvillkor nämner “**Betalningsförmedlare**,” “**vi**,” “**oss**,” eller “**vår**,” avses det TripPay-företag som du ingår avtal med för Betalningstjänster.
+Dessa Betalningsvillkor för tjänster (“**Betalningsvillkor**”) är ett bindande juridiskt avtal mellan Boendeleverantören och TripPay (hädanefter kallad **”Betalningsförmedlare”**), ett helägt dotterbolag till Winkfluence, som reglerar Betalningstjänsterna (definierade nedan) som utförs genom eller i samband med Wink-plattformen (hädanefter kallad **”Wink”**). När dessa Betalningsvillkor nämner “**Betalningsförmedlare**,” “**vi**,” “**oss**,” eller “**vår**,” avses det TripPay-företag som du ingår avtal med för Betalningstjänster.
 
 Betalningsförmedlare tillhandahåller betalningstjänster till Boendeleverantörer som säljer inventarier via Wink-plattformen. Dessa betalningstjänster kan inkludera (om tillgängligt) följande (sammanfattningsvis, “**Betalningstjänster**”):
 
@@ -27,7 +27,7 @@ Avtalet har lästs och alla villkor har godkänts av Boendeleverantören. Boende
 Betalningstjänsterna kommer att tillhandahållas av den avtalsslutande enheten beroende på i vilket land Boendet är beläget enligt följande:
 
 * USA: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Övriga världen: TripPay Slovakia
+* Övriga världen: TripPay Corporation
 
 **1. Din användning av Betalningstjänsterna**
 

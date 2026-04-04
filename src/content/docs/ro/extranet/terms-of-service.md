@@ -15,7 +15,7 @@ Prin înregistrarea și înscrierea în programul Wink ca furnizor de cazare, fu
 
 **ÎNTRE:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, o companie înființată conform legilor din Singapore, cu sediul social la \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, având numărul de înregistrare TVA 201437335D („Wink”), și
+**Winkfluence**, o companie înființată conform legilor din Singapore, cu sediul social la \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095, având numărul de înregistrare TVA 201437335D („Wink”), și
 
 **FURNIZORUL DE CAZARE**, ale cărui detalii sunt specificate în Formularul de Înregistrare al Furnizorului de Cazare sau au fost transmise online (denumit în continuare „Furnizorul de Cazare”).
 
@@ -70,7 +70,7 @@ Pe lângă termenii definiți în alte părți ale acestui Acord, următoarele d
 
 **„Partener”** înseamnă orice afacere sau persoană care se conectează sau folosește platforma Wink pentru a promova și vinde inventarul Furnizorilor de Cazare către audiența și/sau clienții săi pentru un comision.
 
-**„Facilitator de Plăți”** o filială deținută integral de Traveliko Singapore Pte. Ltd. („TripPay”), care guvernează serviciile de plată, colectând plățile de la oaspeți („Pay-in”), prin încărcarea metodei de plată asociate achiziției lor, cum ar fi card de credit, card de debit, transfer bancar, criptomonede sau PayPal etc., și distribuie fondurile datorate („Tariful Net”) furnizorului de cazare.
+**„Facilitator de Plăți”** o filială deținută integral de Winkfluence („TripPay”), care guvernează serviciile de plată, colectând plățile de la oaspeți („Pay-in”), prin încărcarea metodei de plată asociate achiziției lor, cum ar fi card de credit, card de debit, transfer bancar, criptomonede sau PayPal etc., și distribuie fondurile datorate („Tariful Net”) furnizorului de cazare.
 
 **„Pay-in”** înseamnă achiziția unei plăți efectuate de un oaspete de către Facilitatorul de Plăți.
 

@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., działająca pod nazwą Wink (dalej „Spółka”), pragnie poinformować osoby kontaktujące się ze Spółką, że konieczne jest zbieranie, gromadzenie i wykorzystywanie Państwa danych osobowych w celu świadczenia usług Spółki zgodnie z niniejszą Polityką prywatności. Kontaktując się i ujawniając swoje dane osobowe Spółce w celach komunikacji, koordynacji i/lub świadczenia usług Spółki, uznaje się, że wyrażają Państwo zgodę i akceptują obowiązywanie oraz przestrzeganie niniejszej Polityki prywatności.
+Winkfluence, działająca pod nazwą Wink (dalej „Spółka”), pragnie poinformować osoby kontaktujące się ze Spółką, że konieczne jest zbieranie, gromadzenie i wykorzystywanie Państwa danych osobowych w celu świadczenia usług Spółki zgodnie z niniejszą Polityką prywatności. Kontaktując się i ujawniając swoje dane osobowe Spółce w celach komunikacji, koordynacji i/lub świadczenia usług Spółki, uznaje się, że wyrażają Państwo zgodę i akceptują obowiązywanie oraz przestrzeganie niniejszej Polityki prywatności.
 
 Dane osobowe przetwarzane przez Spółkę mogą pochodzić z różnych źródeł, w tym:
 

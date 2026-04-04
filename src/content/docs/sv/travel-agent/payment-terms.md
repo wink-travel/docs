@@ -25,7 +25,7 @@ Dessa Betalningsvillkor (“Betalningsvillkor”) är ett bindande juridiskt avt
 
 **MELLAN:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, ett företag registrerat enligt Singapores lagar med registrerat kontor på \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 och momsregistreringsnummer 201437335D (hädanefter kallat "Wink") och  
+1. **Winkfluence**, ett företag registrerat enligt Singapores lagar med registrerat kontor på \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 och momsregistreringsnummer 201437335D (hädanefter kallat "Wink") och  
      
 2. **RESEBYRÅN** vars uppgifter anges i resebyråns registreringsformulär eller har skickats in online (”Resebyrån”).
 

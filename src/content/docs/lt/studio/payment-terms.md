@@ -11,7 +11,7 @@ Paskutinį kartą atnaujinta 2024-06-12
 
 **MOKĖJIMO SĄLYGOS PARTNERIAMS**
 
-Šios Mokėjimo paslaugų sąlygos („**Mokėjimo sąlygos**“) yra teisiškai privalomas susitarimas tarp jūsų ir TripPay (toliau – **„Mokėjimo tarpininkas“**), visiškai priklausančios Traveliko Singapore Pte. Ltd., kuris reglamentuoja Mokėjimo paslaugas (toliau apibrėžtas) teikiamas per arba susijusias su Wink platforma (toliau – **„Wink“**). Kai šiose Mokėjimo sąlygose minima „**Mokėjimo tarpininkas**“, „**mes**“, „**mums**“ arba „**mūsų**“, tai reiškia TripPay įmonę, su kuria sudarote sutartį dėl Mokėjimo paslaugų.
+Šios Mokėjimo paslaugų sąlygos („**Mokėjimo sąlygos**“) yra teisiškai privalomas susitarimas tarp jūsų ir TripPay (toliau – **„Mokėjimo tarpininkas“**), visiškai priklausančios Winkfluence, kuris reglamentuoja Mokėjimo paslaugas (toliau apibrėžtas) teikiamas per arba susijusias su Wink platforma (toliau – **„Wink“**). Kai šiose Mokėjimo sąlygose minima „**Mokėjimo tarpininkas**“, „**mes**“, „**mums**“ arba „**mūsų**“, tai reiškia TripPay įmonę, su kuria sudarote sutartį dėl Mokėjimo paslaugų.
 
 Mokėjimo tarpininkas teikia mokėjimo paslaugas partneriams, kurie parduoda apgyvendinimo paslaugų tiekėjų inventorių per Wink. Šios mokėjimo paslaugos gali apimti (jei prieinama) šias paslaugas (kartu – „**Mokėjimo paslaugos**“):
 
@@ -27,7 +27,7 @@ Sutartis buvo perskaityta ir visos sąlygos bei nuostatos buvo priimtos partneri
 Mokėjimo paslaugas teiks sutarties šalis, priklausomai nuo šalies, kurioje yra partneris, kaip nurodyta žemiau:
 
 * Jungtinės Valstijos: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Likusios pasaulio šalys: TripPay Slovakia
+* Likusios pasaulio šalys: TripPay Corporation
 
 **1. Jūsų Mokėjimo paslaugų naudojimas**
 

@@ -25,7 +25,7 @@ Các Điều Khoản Dịch Vụ Thanh Toán (“Điều Khoản Thanh Toán”)
 
 **GIỮA:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, một công ty được thành lập theo luật pháp Singapore và có văn phòng đăng ký tại \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 với mã số đăng ký VAT 201437335D (sau đây gọi là "Wink") và  
+1. **Winkfluence**, một công ty được thành lập theo luật pháp Singapore và có văn phòng đăng ký tại \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 với mã số đăng ký VAT 201437335D (sau đây gọi là "Wink") và  
      
 2. **ĐẠI LÝ DU LỊCH** có thông tin được ghi trong Mẫu Đăng Ký Đại Lý Du Lịch hoặc đã được gửi trực tuyến (gọi là "Đại Lý Du Lịch").
 

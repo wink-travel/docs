@@ -11,7 +11,7 @@ Ultima actualizare 2024-06-12
 
 **TERMENI DE PLATĂ PENTRU FURNIZORII DE CAZARE**
 
-Acești Termeni de Serviciu pentru Plăți („**Termeni de plată**”) reprezintă un acord legal obligatoriu între Furnizorul de Cazare și TripPay (denumit în continuare **„Facilitator de Plăți”**), o filială deținută integral de Traveliko Singapore Pte. Ltd., care reglementează Serviciile de Plată (definite mai jos) efectuate prin sau în legătură cu Platforma Wink (denumită în continuare **„Wink”**). Când acești Termeni de plată menționează „**Facilitator de Plăți**,” „**noi**,” „**nouă**” sau „**al nostru**,” se referă la compania TripPay cu care încheiați contractul pentru Serviciile de Plată.
+Acești Termeni de Serviciu pentru Plăți („**Termeni de plată**”) reprezintă un acord legal obligatoriu între Furnizorul de Cazare și TripPay (denumit în continuare **„Facilitator de Plăți”**), o filială deținută integral de Winkfluence, care reglementează Serviciile de Plată (definite mai jos) efectuate prin sau în legătură cu Platforma Wink (denumită în continuare **„Wink”**). Când acești Termeni de plată menționează „**Facilitator de Plăți**,” „**noi**,” „**nouă**” sau „**al nostru**,” se referă la compania TripPay cu care încheiați contractul pentru Serviciile de Plată.
 
 Facilitatorul de Plăți oferă servicii de plată Furnizorilor de Cazare care vând inventar prin platforma Wink. Aceste servicii de plată pot include (dacă sunt disponibile) următoarele (împreună, „**Servicii de Plată**”):
 
@@ -27,7 +27,7 @@ Acordul a fost citit, iar toți Termenii și Condițiile au fost acceptați de F
 Serviciile de Plată vor fi furnizate de entitatea contractantă în funcție de țara în care se află Cazarea, după cum urmează:
 
 * Statele Unite: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Restul lumii: TripPay Slovakia
+* Restul lumii: TripPay Corporation
 
 **1. Utilizarea Serviciilor de Plată**
 

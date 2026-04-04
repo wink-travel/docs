@@ -61,7 +61,7 @@ Wink and the Affiliate are a “Party” to this Agreement and are collectively 
 **"Micro Site"** means all white label versions of the primary website of Wink, which are owned, created, hosted and maintained by Wink. The Micro Site may be marked with a 'powered by Wink' logo or equivalent.   
 **“Net Commission”** is the amount owed to the Affiliate for Materialized Transaction(s) after the deduction of the Payment Service Fee and Booking Fee.  
 **"Paid Search"** means any form of online advertising that ties the presentation of an ad to a specific keyword-based search request.   
-**“Payment Facilitator”** a fully owned subsidiary of Traveliko Singapore Pte. Ltd., that governs the Payment Services, collecting payments from guests (“Pay-in”), by charging the payment method associated with their purchase, such as credit card, debit card, bank transfer, crypto currencies or PayPal etc… and disburse the fund owed (“Net Commission”) to the Affiliate local bank account.   
+**“Payment Facilitator”** a fully owned subsidiary of Winkfluence, that governs the Payment Services, collecting payments from guests (“Pay-in”), by charging the payment method associated with their purchase, such as credit card, debit card, bank transfer, crypto currencies or PayPal etc… and disburse the fund owed (“Net Commission”) to the Affiliate local bank account.   
 **“Pay-in”** means the acquisition of a payment made by a guest by the Payment Facilitator.  
 **“Pay-out”** means the disbursement of the Net Commission to the Affiliate by Payment Facilitator.  
 **“Payment Service Fee”** is the 4% deducted from the Affiliate commission as payment acquisition fee by the Payment Facilitator.  

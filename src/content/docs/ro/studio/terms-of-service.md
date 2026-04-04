@@ -61,7 +61,7 @@ Wink și Afiliatul sunt o „Parte” a acestui Acord și sunt denumiți colecti
 **„Micro Site”** înseamnă toate versiunile white label ale site-ului principal Wink, care sunt deținute, create, găzduite și întreținute de Wink. Micro Site-ul poate fi marcat cu un logo „powered by Wink” sau echivalent.  
 **„Comision Net”** este suma datorată Afiliatului pentru Tranzacțiile Materializate după deducerea Taxei de Serviciu de Plată și a Taxei de Rezervare.  
 **„Căutare Plătită”** înseamnă orice formă de publicitate online care leagă afișarea unei reclame de o cerere de căutare bazată pe cuvinte cheie.  
-**„Facilitator de Plăți”** este o subsidiară deținută integral de Traveliko Singapore Pte. Ltd., care guvernează Serviciile de Plată, colectând plăți de la oaspeți („Pay-in”), prin taxarea metodei de plată asociate achiziției lor, cum ar fi card de credit, card de debit, transfer bancar, criptomonede sau PayPal etc., și distribuie fondurile datorate („Comisionul Net”) în contul bancar local al Afiliatului.  
+**„Facilitator de Plăți”** este o subsidiară deținută integral de Winkfluence, care guvernează Serviciile de Plată, colectând plăți de la oaspeți („Pay-in”), prin taxarea metodei de plată asociate achiziției lor, cum ar fi card de credit, card de debit, transfer bancar, criptomonede sau PayPal etc., și distribuie fondurile datorate („Comisionul Net”) în contul bancar local al Afiliatului.  
 **„Pay-in”** înseamnă achiziția unei plăți efectuate de un oaspete prin Facilitatorul de Plăți.  
 **„Pay-out”** înseamnă distribuirea Comisionului Net către Afiliat de către Facilitatorul de Plăți.  
 **„Taxa de Serviciu de Plată”** este 4% dedusă din comisionul Afiliatului ca taxă de achiziție a plății de către Facilitatorul de Plăți.  

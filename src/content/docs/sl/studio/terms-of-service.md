@@ -61,7 +61,7 @@ Wink in Affiliate sta "Stranki" te pogodbe in skupaj se imenujeta "Stranki".
 **"Mikro stran"** pomeni vse različice osnovne Wink spletne strani z belo etiketo, ki jih poseduje, ustvarja, gosti in vzdržuje Wink. Mikro stran je lahko označena z logotipom 'powered by Wink' ali ekvivalentom.  
 **"Neto provizija"** je znesek, ki pripada Affiliate za realizirane transakcije po odbitku stroškov plačilne storitve in provizije za rezervacijo.  
 **"Plačano iskanje"** pomeni katerokoli obliko spletnega oglaševanja, ki povezuje prikaz oglasa s specifično iskalno zahtevo na podlagi ključnih besed.  
-**"Plačilni posrednik"** je v celoti v lasti Traveliko Singapore Pte. Ltd., ki upravlja plačilne storitve, zbira plačila od gostov ("Pay-in") z zaračunavanjem plačilne metode, povezane z nakupom, kot so kreditna kartica, debetna kartica, bančno nakazilo, kriptovalute ali PayPal itd., in izplačuje sredstva ("Neto provizijo") na lokalni bančni račun Affiliate.  
+**"Plačilni posrednik"** je v celoti v lasti Winkfluence, ki upravlja plačilne storitve, zbira plačila od gostov ("Pay-in") z zaračunavanjem plačilne metode, povezane z nakupom, kot so kreditna kartica, debetna kartica, bančno nakazilo, kriptovalute ali PayPal itd., in izplačuje sredstva ("Neto provizijo") na lokalni bančni račun Affiliate.  
 **"Pay-in"** pomeni pridobitev plačila, ki ga izvede plačilni posrednik od gosta.  
 **"Pay-out"** pomeni izplačilo Neto provizije Affiliate s strani plačilnega posrednika.  
 **"Strošek plačilne storitve"** je 4 % strošek, ki ga plačilni posrednik odšteje od affiliate provizije kot strošek pridobivanja plačila.  

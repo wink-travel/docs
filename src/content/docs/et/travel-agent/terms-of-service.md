@@ -23,7 +23,7 @@ Need tingimused on kättesaadavad [Affiliate Portal > Terms of Service](/et/stud
 
 **LEPINGUOSALISED:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, Singapuri seaduste alusel asutatud ettevõte, mille registreeritud aadress on \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 ja käibemaksukohustuslase number 201437335D (edaspidi "Wink") ning  
+1. **Winkfluence**, Singapuri seaduste alusel asutatud ettevõte, mille registreeritud aadress on \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 ja käibemaksukohustuslase number 201437335D (edaspidi "Wink") ning  
      
 2. **REISIBÜROO**, kelle andmed on esitatud Reisibüroo registreerimisvormis või on esitatud veebis (edaspidi "Reisibüroo").
 
@@ -67,7 +67,7 @@ Need tingimused on kättesaadavad [Affiliate Portal > Terms of Service](/et/stud
     
 * **“Maksed”** tähendab rahalisi kohustusi, mis tulenevad käesolevast lepingust, sealhulgas komisjonitasud, tasud või muud kulud, mida üks osapool peab teisele maksma.
 
-* **"Maksete vahendaja"** on Traveliko Singapore Pte. Ltd. täielikult omanduses olev tütarettevõte, mis haldab makseteenuseid, kogudes külalistelt makseid, võttes tasu nende ostuga seotud makseviisilt, nagu krediitkaart, deebetkaart, pangaülekanne, krüptovaluutad või PayPal jne.  
+* **"Maksete vahendaja"** on Winkfluence täielikult omanduses olev tütarettevõte, mis haldab makseteenuseid, kogudes külalistelt makseid, võttes tasu nende ostuga seotud makseviisilt, nagu krediitkaart, deebetkaart, pangaülekanne, krüptovaluutad või PayPal jne.  
     
 * **“Platvorm”** tähendab teenusepakkuja hallatavat veebipõhist süsteemi, mille kaudu Reisibüroo saab teha või hallata broneeringuid külalistele.
 

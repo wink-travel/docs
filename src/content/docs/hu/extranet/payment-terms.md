@@ -11,7 +11,7 @@ Utolsó frissítés: 2024-06-12
 
 **FIZETÉSI FELTÉTELEK SZÁLLÁSHELY SZOLGÁLTATÓK SZÁMÁRA**
 
-Ezek a Szolgáltatási Fizetési Feltételek („**Fizetési Feltételek**”) kötelező érvényű jogi megállapodást jelentenek a Szálláshely Szolgáltató és a TripPay (a továbbiakban: **„Fizetési Közvetítő”**), a Traveliko Singapore Pte. Ltd. teljes tulajdonú leányvállalata között, amely szabályozza a Fizetési Szolgáltatásokat (az alábbiakban meghatározottakat), amelyeket a Wink Platformon keresztül vagy azzal kapcsolatban végeznek (a továbbiakban: **„Wink”**). Amikor a Fizetési Feltételek a „**Fizetési Közvetítő**”, „**mi**”, „**minket**” vagy „**miénk**” kifejezéseket használják, az a TripPay céget jelenti, amellyel Ön a Fizetési Szolgáltatásokra vonatkozóan szerződést köt.
+Ezek a Szolgáltatási Fizetési Feltételek („**Fizetési Feltételek**”) kötelező érvényű jogi megállapodást jelentenek a Szálláshely Szolgáltató és a TripPay (a továbbiakban: **„Fizetési Közvetítő”**), a Winkfluence teljes tulajdonú leányvállalata között, amely szabályozza a Fizetési Szolgáltatásokat (az alábbiakban meghatározottakat), amelyeket a Wink Platformon keresztül vagy azzal kapcsolatban végeznek (a továbbiakban: **„Wink”**). Amikor a Fizetési Feltételek a „**Fizetési Közvetítő**”, „**mi**”, „**minket**” vagy „**miénk**” kifejezéseket használják, az a TripPay céget jelenti, amellyel Ön a Fizetési Szolgáltatásokra vonatkozóan szerződést köt.
 
 A Fizetési Közvetítő fizetési szolgáltatásokat nyújt a Szálláshely Szolgáltatóknak, akik a Wink platformon keresztül értékesítik készletüket. Ezek a fizetési szolgáltatások magukban foglalhatják (ha elérhetőek) a következőket (együttesen: „**Fizetési Szolgáltatások**”):
 
@@ -27,7 +27,7 @@ A megállapodást a Szálláshely Szolgáltató elolvasta, és minden feltételt
 A Fizetési Szolgáltatásokat a szerződő fél nyújtja az adott ország szerint, ahol a Szálláshely található:
 
 * Egyesült Államok: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Világ többi része: TripPay Slovakia
+* Világ többi része: TripPay Corporation
 
 **1. A Fizetési Szolgáltatások Használata**
 

@@ -25,7 +25,7 @@ Ti pogoji storitve plačila ("Pogoji plačila") so zavezujoč pravni dogovor, ki
 
 **MED:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, družba, ustanovljena po zakonih Singapurja, s sedežem na naslovu \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 in davčno številko 201437335D (v nadaljevanju "Wink") in  
+1. **Winkfluence**, družba, ustanovljena po zakonih Singapurja, s sedežem na naslovu \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 in davčno številko 201437335D (v nadaljevanju "Wink") in  
      
 2. **POTOVALNIM AGENTOM**, katerega podatki so navedeni v obrazcu za registracijo potovalnega agenta ali so bili oddani prek spleta ("Potovalni agent").
 

@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., působící pod názvem Wink (dále jen „Společnost“), vás, kdo kontaktujete Společnost, informuje, že je nezbytné shromažďovat, zpracovávat a používat vaše osobní údaje pro služby Společnosti v souladu s těmito Zásadami ochrany osobních údajů. Kontaktem a poskytnutím vašich osobních údajů Společnosti za účelem komunikace, koordinace a/nebo poskytování služeb Společnosti vám se považuje, že souhlasíte a přijímáte být vázáni a dodržovat tyto Zásady ochrany osobních údajů.
+Winkfluence, působící pod názvem Wink (dále jen „Společnost“), vás, kdo kontaktujete Společnost, informuje, že je nezbytné shromažďovat, zpracovávat a používat vaše osobní údaje pro služby Společnosti v souladu s těmito Zásadami ochrany osobních údajů. Kontaktem a poskytnutím vašich osobních údajů Společnosti za účelem komunikace, koordinace a/nebo poskytování služeb Společnosti vám se považuje, že souhlasíte a přijímáte být vázáni a dodržovat tyto Zásady ochrany osobních údajů.
 
 Osobní údaje, které jsou zpracovávány, může Společnost získat z různých kanálů takto:
 

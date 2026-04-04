@@ -11,7 +11,7 @@ Dernière mise à jour 2024-06-12
 
 **CONDITIONS DE PAIEMENT POUR LES AFFILIÉS**
 
-Ces Conditions de Service de Paiement (« **Conditions de Paiement** ») constituent un accord juridique contraignant entre vous et TripPay (ci-après dénommé **« Facilitateur de Paiement »**), une filiale à part entière de Traveliko Singapore Pte. Ltd., qui régit les Services de Paiement (définis ci-dessous) effectués via ou en lien avec la plateforme Wink (ci-après dénommée **« Wink »**). Lorsque ces Conditions de Paiement mentionnent « **Facilitateur de Paiement** », « **nous** », « **notre** » ou « **nos** », cela fait référence à la société TripPay avec laquelle vous contractez pour les Services de Paiement.
+Ces Conditions de Service de Paiement (« **Conditions de Paiement** ») constituent un accord juridique contraignant entre vous et TripPay (ci-après dénommé **« Facilitateur de Paiement »**), une filiale à part entière de Winkfluence, qui régit les Services de Paiement (définis ci-dessous) effectués via ou en lien avec la plateforme Wink (ci-après dénommée **« Wink »**). Lorsque ces Conditions de Paiement mentionnent « **Facilitateur de Paiement** », « **nous** », « **notre** » ou « **nos** », cela fait référence à la société TripPay avec laquelle vous contractez pour les Services de Paiement.
 
 Le Facilitateur de Paiement fournit des services de paiement aux Affiliés qui vendent l’inventaire des Fournisseurs d’Hébergement via Wink. Ces services de paiement peuvent inclure (si disponibles) les éléments suivants (collectivement, les « **Services de Paiement** ») :
 

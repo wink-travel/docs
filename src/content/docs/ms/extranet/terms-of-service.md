@@ -15,7 +15,7 @@ Dengan mendaftar dan menyertai program Wink sebagai penyedia penginapan, penyedi
 
 **ANTARA:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, sebuah syarikat yang diperbadankan di bawah undang-undang Singapura dan mempunyai pejabat berdaftar di \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 dengan nombor pendaftaran VAT 201437335D ("Wink"), dan
+**Winkfluence**, sebuah syarikat yang diperbadankan di bawah undang-undang Singapura dan mempunyai pejabat berdaftar di \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 dengan nombor pendaftaran VAT 201437335D ("Wink"), dan
 
 **PENYEDIA PENGINAPAN**, yang butirannya dinyatakan dalam Borang Pendaftaran Penyedia Penginapan atau telah dihantar secara dalam talian ("Penyedia Penginapan").
 
@@ -70,7 +70,7 @@ Selain daripada istilah yang ditakrifkan di tempat lain dalam Perjanjian ini, de
 
 **“Rakan Kongsi”** bermaksud mana-mana perniagaan atau individu yang menyambung atau menggunakan platform Wink untuk mempromosikan dan menjual inventori Penyedia Penginapan kepada audiens dan/atau pelanggan mereka untuk komisen.
 
-**“Fasilitator Pembayaran”** anak syarikat milik penuh Traveliko Singapore Pte. Ltd. (“TripPay”), yang menguruskan Perkhidmatan Pembayaran, mengutip pembayaran daripada tetamu (“Pay-in”), dengan mengenakan kaedah pembayaran yang berkaitan dengan pembelian mereka, seperti kad kredit, kad debit, pemindahan bank, mata wang kripto atau PayPal dan sebagainya… dan mengagihkan dana yang terhutang (“Kadar Bersih”) kepada penyedia penginapan.
+**“Fasilitator Pembayaran”** anak syarikat milik penuh Winkfluence (“TripPay”), yang menguruskan Perkhidmatan Pembayaran, mengutip pembayaran daripada tetamu (“Pay-in”), dengan mengenakan kaedah pembayaran yang berkaitan dengan pembelian mereka, seperti kad kredit, kad debit, pemindahan bank, mata wang kripto atau PayPal dan sebagainya… dan mengagihkan dana yang terhutang (“Kadar Bersih”) kepada penyedia penginapan.
 
 **“Pay-in”** bermaksud penerimaan pembayaran yang dibuat oleh tetamu oleh Fasilitator Pembayaran.
 

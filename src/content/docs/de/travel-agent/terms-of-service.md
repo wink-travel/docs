@@ -23,7 +23,7 @@ Diese Bedingungen sind unter [Affiliate Portal > Nutzungsbedingungen](/de/studio
 
 **ZWISCHEN:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, ein nach den Gesetzen Singapurs gegründetes Unternehmen mit eingetragenem Sitz in \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 und der Mehrwertsteuernummer 201437335D (im Folgenden „Wink“ genannt) und  
+1. **Winkfluence**, ein nach den Gesetzen Singapurs gegründetes Unternehmen mit eingetragenem Sitz in \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 und der Mehrwertsteuernummer 201437335D (im Folgenden „Wink“ genannt) und  
      
 2. **DEM REISEBÜRO**, dessen Daten im Reisebüro-Registrierungsformular angegeben oder online übermittelt wurden (das „Reisebüro“).
 
@@ -67,7 +67,7 @@ Diese Bedingungen sind unter [Affiliate Portal > Nutzungsbedingungen](/de/studio
     
 * **„Zahlungen“** bezeichnet die finanziellen Verpflichtungen aus diesem Vertrag, einschließlich Provisionen, Gebühren oder sonstiger Kosten, die von einer Partei an die andere zu zahlen sind.
 
-* **„Payment Facilitator“** ist eine hundertprozentige Tochtergesellschaft von Traveliko Singapore Pte. Ltd., die die Zahlungsdienste verwaltet und Zahlungen von Gästen durch Belastung der mit ihrem Kauf verbundenen Zahlungsmethode wie Kreditkarte, Debitkarte, Banküberweisung, Kryptowährungen oder PayPal usw. einzieht.  
+* **„Payment Facilitator“** ist eine hundertprozentige Tochtergesellschaft von Winkfluence, die die Zahlungsdienste verwaltet und Zahlungen von Gästen durch Belastung der mit ihrem Kauf verbundenen Zahlungsmethode wie Kreditkarte, Debitkarte, Banküberweisung, Kryptowährungen oder PayPal usw. einzieht.  
     
 * **„Plattform“** bezeichnet das vom Service Provider betriebene Online-System, über das das Reisebüro Buchungen für Gäste vornehmen oder verwalten kann.
 

@@ -23,7 +23,7 @@ Allar ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofuvettvanginn o
 
 **MILLI:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, félag stofnað samkvæmt lögum Singapúr og með skráð skrifstofu í \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 með VSK-númer 201437335D (hér eftir nefnt „Wink“) og  
+1. **Winkfluence**, félag stofnað samkvæmt lögum Singapúr og með skráð skrifstofu í \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 með VSK-númer 201437335D (hér eftir nefnt „Wink“) og  
      
 2. **FERÐASKRIFSTOFAN**, sem upplýsingar hennar eru skráðar í skráningarformi ferðaskrifstofu eða hafa verið sendar inn rafrænt (hér eftir nefnd „Ferðaskrifstofan“).
 
@@ -67,7 +67,7 @@ Allar ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofuvettvanginn o
     
 * **„Greiðslur“** merkja fjárhagslegar skuldbindingar sem leiða af þessum samningi, þar með talið þóknanir, gjöld eða aðrar greiðslur sem annar aðili greiðir til annars.
 
-* **„Greiðslumiðlari“** er dótturfélag Traveliko Singapore Pte. Ltd. sem stjórnar greiðslum, safnar greiðslum frá gestum með því að rukka greiðslumáta sem tengist kaupum þeirra, svo sem kreditkort, debetkort, millifærslur, rafmyntir eða PayPal o.fl.  
+* **„Greiðslumiðlari“** er dótturfélag Winkfluence sem stjórnar greiðslum, safnar greiðslum frá gestum með því að rukka greiðslumáta sem tengist kaupum þeirra, svo sem kreditkort, debetkort, millifærslur, rafmyntir eða PayPal o.fl.  
     
 * **„Vettvangur“** merkir netkerfi sem þjónustuveitandi rekur þar sem Ferðaskrifstofan getur gert eða stjórnað bókunum fyrir gesti.
 

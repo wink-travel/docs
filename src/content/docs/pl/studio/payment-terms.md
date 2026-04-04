@@ -11,7 +11,7 @@ Ostatnia aktualizacja 2024-06-12
 
 **WARUNKI PŁATNOŚCI DLA PARTNERÓW**
 
-Niniejsze Warunki Świadczenia Usług Płatniczych („**Warunki Płatności**”) stanowią wiążącą umowę prawną pomiędzy Tobą a TripPay (dalej zwanym **„Płatnikiem”**), w pełni zależną spółką Traveliko Singapore Pte. Ltd., regulującą Usługi Płatnicze (zdefiniowane poniżej) realizowane za pośrednictwem lub w związku z platformą Wink (dalej zwanej **„Wink”**). Gdy w Warunkach Płatności pojawia się określenie „**Płatnik**”, „**my**”, „**nas**” lub „**nasz**”, odnosi się ono do firmy TripPay, z którą zawierasz umowę na Usługi Płatnicze.
+Niniejsze Warunki Świadczenia Usług Płatniczych („**Warunki Płatności**”) stanowią wiążącą umowę prawną pomiędzy Tobą a TripPay (dalej zwanym **„Płatnikiem”**), w pełni zależną spółką Winkfluence, regulującą Usługi Płatnicze (zdefiniowane poniżej) realizowane za pośrednictwem lub w związku z platformą Wink (dalej zwanej **„Wink”**). Gdy w Warunkach Płatności pojawia się określenie „**Płatnik**”, „**my**”, „**nas**” lub „**nasz**”, odnosi się ono do firmy TripPay, z którą zawierasz umowę na Usługi Płatnicze.
 
 Płatnik świadczy usługi płatnicze Partnerom sprzedającym zasoby Dostawców Zakwaterowania za pośrednictwem Wink. Usługi te mogą obejmować (jeśli dostępne) następujące elementy (łącznie „**Usługi Płatnicze**”):
 
@@ -27,7 +27,7 @@ Umowa została przeczytana, a wszystkie Warunki zostały zaakceptowane przez Par
 Usługi Płatnicze będą świadczone przez podmiot kontraktujący w zależności od kraju, w którym znajduje się Partner, zgodnie z poniższym:
 
 * Stany Zjednoczone: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Reszta świata: TripPay Slovakia
+* Reszta świata: TripPay Corporation
 
 **1. Korzystanie z Usług Płatniczych**
 

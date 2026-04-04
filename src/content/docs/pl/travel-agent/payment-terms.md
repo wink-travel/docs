@@ -25,7 +25,7 @@ Niniejsze Warunki Świadczenia Usług Płatniczych („Warunki Płatności”) s
 
 **POMIĘDZY:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, spółką zarejestrowaną zgodnie z prawem Singapuru, z siedzibą pod adresem \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, z numerem rejestracji VAT 201437335D (dalej „Wink”) oraz  
+1. **Winkfluence**, spółką zarejestrowaną zgodnie z prawem Singapuru, z siedzibą pod adresem \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, z numerem rejestracji VAT 201437335D (dalej „Wink”) oraz  
      
 2. **AGENTEM TURYSTYCZNYM**, którego dane zostały podane w Formularzu Rejestracyjnym Agenta Turystycznego lub przesłane online („Agent Turystyczny”).
 

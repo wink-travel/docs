@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., som verkar under namnet Wink (”Företaget”), vill informera dig som kontaktar Företaget att det är nödvändigt att samla in, sammanställa och använda dina personuppgifter för Företagets tjänst i enlighet med denna integritetspolicy. Genom att kontakta och lämna ut dina personuppgifter till Företaget för kommunikation, samordning och/eller tillhandahållande av Företagets tjänster till dig, anses du samtycka till och acceptera att vara bunden av och följa denna integritetspolicy.
+Winkfluence, som verkar under namnet Wink (”Företaget”), vill informera dig som kontaktar Företaget att det är nödvändigt att samla in, sammanställa och använda dina personuppgifter för Företagets tjänst i enlighet med denna integritetspolicy. Genom att kontakta och lämna ut dina personuppgifter till Företaget för kommunikation, samordning och/eller tillhandahållande av Företagets tjänster till dig, anses du samtycka till och acceptera att vara bunden av och följa denna integritetspolicy.
 
 Personuppgifter som behandlas kan Företaget erhålla från olika kanaler enligt följande:
 

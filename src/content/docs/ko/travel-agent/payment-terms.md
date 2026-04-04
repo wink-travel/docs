@@ -25,7 +25,7 @@ sidebar:
 
 **당사자:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.** 싱가포르 법에 따라 설립된 회사로, 등록 사무소는 \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095에 위치하며 VAT 등록 번호는 201437335D입니다(이하 "Wink"라 칭함)  
+1. **Winkfluence** 싱가포르 법에 따라 설립된 회사로, 등록 사무소는 \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095에 위치하며 VAT 등록 번호는 201437335D입니다(이하 "Wink"라 칭함)  
      
 2. **여행사** 여행사 등록 양식에 기재되었거나 온라인으로 제출된 여행사(이하 "여행사"라 칭함).
 

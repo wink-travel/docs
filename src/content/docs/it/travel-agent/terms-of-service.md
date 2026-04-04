@@ -23,7 +23,7 @@ Questi termini sono disponibili sotto [Affiliate Portal > Terms of Service](/it/
 
 **TRA:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, una società costituita secondo le leggi di Singapore con sede legale in \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 e numero di registrazione IVA 201437335D (di seguito denominata "Wink") e  
+1. **Winkfluence**, una società costituita secondo le leggi di Singapore con sede legale in \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 e numero di registrazione IVA 201437335D (di seguito denominata "Wink") e  
      
 2. **L'AGENTE DI VIAGGIO** i cui dati sono indicati nel modulo di registrazione dell'agente di viaggio o sono stati inviati online (l'"Agente di Viaggio").
 
@@ -67,7 +67,7 @@ Questi termini sono disponibili sotto [Affiliate Portal > Terms of Service](/it/
     
 * **“Pagamenti”** indica gli obblighi finanziari derivanti dal presente Accordo, inclusi commissioni, tariffe o altri oneri, dovuti da una parte all'altra.
 
-* **"Payment Facilitator"** è una controllata interamente posseduta da Traveliko Singapore Pte. Ltd. che gestisce i Servizi di Pagamento, raccogliendo pagamenti dagli ospiti addebitando il metodo di pagamento associato all'acquisto come carta di credito, carta di debito, bonifico bancario, criptovalute o PayPal, ecc.  
+* **"Payment Facilitator"** è una controllata interamente posseduta da Winkfluence che gestisce i Servizi di Pagamento, raccogliendo pagamenti dagli ospiti addebitando il metodo di pagamento associato all'acquisto come carta di credito, carta di debito, bonifico bancario, criptovalute o PayPal, ecc.  
     
 * **“Piattaforma”** indica il sistema online gestito dal Service Provider tramite il quale l'Agente di Viaggio può effettuare o gestire Prenotazioni per gli Ospiti.
 

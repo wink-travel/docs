@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., tätig unter dem Namen Wink (das „Unternehmen“), möchte Sie, die das Unternehmen kontaktieren, darüber informieren, dass es notwendig ist, Ihre personenbezogenen Daten für die Dienstleistungen des Unternehmens gemäß dieser Datenschutzrichtlinie zu erheben, zu erfassen und zu verwenden. Indem Sie das Unternehmen kontaktieren und Ihre personenbezogenen Daten für Zwecke der Kommunikation, Koordination und/oder Bereitstellung der Dienstleistungen des Unternehmens offenlegen, gilt dies als Ihre Zustimmung und Akzeptanz, an diese Datenschutzrichtlinie gebunden zu sein und diese einzuhalten.
+Winkfluence, tätig unter dem Namen Wink (das „Unternehmen“), möchte Sie, die das Unternehmen kontaktieren, darüber informieren, dass es notwendig ist, Ihre personenbezogenen Daten für die Dienstleistungen des Unternehmens gemäß dieser Datenschutzrichtlinie zu erheben, zu erfassen und zu verwenden. Indem Sie das Unternehmen kontaktieren und Ihre personenbezogenen Daten für Zwecke der Kommunikation, Koordination und/oder Bereitstellung der Dienstleistungen des Unternehmens offenlegen, gilt dies als Ihre Zustimmung und Akzeptanz, an diese Datenschutzrichtlinie gebunden zu sein und diese einzuhalten.
 
 Personenbezogene Daten, die verarbeitet werden, kann das Unternehmen aus verschiedenen Quellen erhalten:
 

@@ -11,7 +11,7 @@ Terakhir dikemas kini 2024-06-12
 
 **TERMA PEMBAYARAN UNTUK AFILIASI**
 
-Terma Perkhidmatan Pembayaran ini (“**Terma Pembayaran**”) adalah perjanjian undang-undang yang mengikat antara anda dan TripPay (selepas ini dirujuk sebagai **“Fasilitator Pembayaran”**), anak syarikat milik penuh Traveliko Singapore Pte. Ltd., yang mengawal Perkhidmatan Pembayaran (sebagaimana yang ditakrifkan di bawah) yang dijalankan melalui atau berkaitan dengan Platform Wink (selepas ini dirujuk sebagai **“Wink”**). Apabila Terma Pembayaran ini menyebut “**Fasilitator Pembayaran**,” “**kami**,” “**kita**,” atau “**milik kami**,” ia merujuk kepada syarikat TripPay yang anda kontrak untuk Perkhidmatan Pembayaran.
+Terma Perkhidmatan Pembayaran ini (“**Terma Pembayaran**”) adalah perjanjian undang-undang yang mengikat antara anda dan TripPay (selepas ini dirujuk sebagai **“Fasilitator Pembayaran”**), anak syarikat milik penuh Winkfluence, yang mengawal Perkhidmatan Pembayaran (sebagaimana yang ditakrifkan di bawah) yang dijalankan melalui atau berkaitan dengan Platform Wink (selepas ini dirujuk sebagai **“Wink”**). Apabila Terma Pembayaran ini menyebut “**Fasilitator Pembayaran**,” “**kami**,” “**kita**,” atau “**milik kami**,” ia merujuk kepada syarikat TripPay yang anda kontrak untuk Perkhidmatan Pembayaran.
 
 Fasilitator Pembayaran menyediakan perkhidmatan pembayaran kepada Afiliasi yang menjual inventori Penyedia Penginapan melalui Wink. Perkhidmatan pembayaran ini mungkin termasuk (jika tersedia) perkara berikut (secara kolektif, “**Perkhidmatan Pembayaran**”):
 
@@ -27,7 +27,7 @@ Perjanjian ini telah dibaca dan semua Terma dan Syarat telah dipersetujui oleh A
 Perkhidmatan Pembayaran akan disediakan oleh entiti kontrak bergantung pada negara di mana Afiliasi berada seperti berikut:
 
 * Amerika Syarikat: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Seluruh dunia: TripPay Slovakia
+* Seluruh dunia: TripPay Corporation
 
 **1. Penggunaan Perkhidmatan Pembayaran Anda**
 

@@ -15,7 +15,7 @@ Reģistrējoties un piesakoties Wink programmā kā naktsmītnes sniedzējam, na
 
 **STARP:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, uzņēmums, kas dibināts saskaņā ar Singapūras likumiem un kura reģistrētā adrese ir \#03-01 Wilkie Edge, 8 Wilkie Road, Singapūra 228095, ar PVN reģistrācijas numuru 201437335D ("Wink"), un
+**Winkfluence**, uzņēmums, kas dibināts saskaņā ar Singapūras likumiem un kura reģistrētā adrese ir \#03-01 Wilkie Edge, 8 Wilkie Road, Singapūra 228095, ar PVN reģistrācijas numuru 201437335D ("Wink"), un
 
 **NAKTSMĪTNES SNIEDZĒJS**, kura dati ir norādīti Naktsmītnes sniedzēja reģistrācijas veidlapā vai iesniegti tiešsaistē (turpmāk – "Naktsmītnes sniedzējs").
 
@@ -70,7 +70,7 @@ Papildus citur šajā Līgumā definētajiem terminiem, šādas definīcijas att
 
 **“Partneris”** nozīmē jebkuru uzņēmumu vai personu, kas savieno vai izmanto Wink platformu, lai reklamētu un pārdotu Naktsmītnes sniedzēju krājumus saviem klientiem un/vai auditorijai par komisiju.
 
-**“Maksājumu starpnieks”** ir Traveliko Singapore Pte. Ltd. pilnībā piederoša meitasuzņēmuma (“TripPay”) daļa, kas pārvalda maksājumu pakalpojumus, iekasējot maksājumus no viesiem (“Pay-in”), izmantojot maksājumu metodes, piemēram, kredītkarti, debetkarti, bankas pārskaitījumu, kriptovalūtas vai PayPal utt., un izmaksā Naktsmītnes sniedzējam summu (“Neto cena”).
+**“Maksājumu starpnieks”** ir Winkfluence pilnībā piederoša meitasuzņēmuma (“TripPay”) daļa, kas pārvalda maksājumu pakalpojumus, iekasējot maksājumus no viesiem (“Pay-in”), izmantojot maksājumu metodes, piemēram, kredītkarti, debetkarti, bankas pārskaitījumu, kriptovalūtas vai PayPal utt., un izmaksā Naktsmītnes sniedzējam summu (“Neto cena”).
 
 **“Pay-in”** nozīmē maksājuma saņemšanu no viesiem, ko veic Maksājumu starpnieks.
 

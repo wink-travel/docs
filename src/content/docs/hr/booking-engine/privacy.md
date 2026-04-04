@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., koja posluje pod imenom Wink (u daljnjem tekstu „Društvo“), želi vas obavijestiti kao osobu koja kontaktira Društvo da je potrebno prikupljati, sastavljati i koristiti vaše osobne podatke za usluge Društva u skladu s ovim Pravilima privatnosti. Kontaktiranjem i otkrivanjem vaših osobnih podataka Društvu u svrhu komunikacije, koordinacije i/ili pružanja usluga Društva vama, smatra se da pristajete i prihvaćate biti vezani i pridržavati se ovih Pravila privatnosti.
+Winkfluence, koja posluje pod imenom Wink (u daljnjem tekstu „Društvo“), želi vas obavijestiti kao osobu koja kontaktira Društvo da je potrebno prikupljati, sastavljati i koristiti vaše osobne podatke za usluge Društva u skladu s ovim Pravilima privatnosti. Kontaktiranjem i otkrivanjem vaših osobnih podataka Društvu u svrhu komunikacije, koordinacije i/ili pružanja usluga Društva vama, smatra se da pristajete i prihvaćate biti vezani i pridržavati se ovih Pravila privatnosti.
 
 Osobne podatke koji se obrađuju, Društvo može dobiti iz različitih kanala kako slijedi:
 

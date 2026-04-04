@@ -15,7 +15,7 @@ Genom att registrera sig och anmäla sig till Wink-programmet som boendeleverant
 
 **MELLAN:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, ett företag registrerat enligt Singapores lagar med sitt registrerade kontor på \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 med momsregistreringsnummer 201437335D ("Wink"), och
+**Winkfluence**, ett företag registrerat enligt Singapores lagar med sitt registrerade kontor på \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 med momsregistreringsnummer 201437335D ("Wink"), och
 
 **BOENDELEVERANTÖREN**, vars uppgifter anges i registreringsformuläret för boendeleverantörer eller har lämnats in online (”Boendeleverantören”).
 
@@ -70,7 +70,7 @@ Utöver termer definierade på andra ställen i detta Avtal gäller följande de
 
 **”Partner”** betyder varje företag eller individ som ansluter sig till eller använder Wink-plattformen för att marknadsföra och sälja Boendeleverantörers inventarier till sin publik och/eller kunder mot provision.
 
-**”Betalningsförmedlare”** är ett helägt dotterbolag till Traveliko Singapore Pte. Ltd. (“TripPay”), som hanterar betalningstjänster, samlar in betalningar från gäster (“Pay-in”) genom att debitera betalningsmetoden kopplad till deras köp, såsom kreditkort, betalkort, banköverföring, kryptovalutor eller PayPal etc., och utbetalar det belopp som är skyldigt (“Nettopris”) till Boendeleverantören.
+**”Betalningsförmedlare”** är ett helägt dotterbolag till Winkfluence (“TripPay”), som hanterar betalningstjänster, samlar in betalningar från gäster (“Pay-in”) genom att debitera betalningsmetoden kopplad till deras köp, såsom kreditkort, betalkort, banköverföring, kryptovalutor eller PayPal etc., och utbetalar det belopp som är skyldigt (“Nettopris”) till Boendeleverantören.
 
 **”Pay-in”** betyder mottagandet av en betalning gjord av en gäst via Betalningsförmedlaren.
 

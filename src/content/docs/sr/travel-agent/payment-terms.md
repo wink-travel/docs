@@ -25,7 +25,7 @@ Ovi Uslovi pružanja usluge plaćanja („Uslovi plaćanja“) predstavljaju oba
 
 **IZMEĐU:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, kompanija registrovana po zakonima Singapura sa sedištem na adresi \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, sa PDV brojem 201437335D (u daljem tekstu "Wink") i  
+1. **Winkfluence**, kompanija registrovana po zakonima Singapura sa sedištem na adresi \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, sa PDV brojem 201437335D (u daljem tekstu "Wink") i  
      
 2. **TURISTIČKOG AGENTA** čiji su podaci navedeni u obrascu za registraciju turističkog agenta ili su poslati online (u daljem tekstu "Turistički agent").
 

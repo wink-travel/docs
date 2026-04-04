@@ -11,7 +11,7 @@ Terakhir diperbarui 2024-06-12
 
 **KETENTUAN PEMBAYARAN UNTUK AFILIASI**
 
-Ketentuan Layanan Pembayaran ini (“**Ketentuan Pembayaran**”) adalah perjanjian hukum yang mengikat antara Anda dan TripPay (selanjutnya disebut sebagai **“Fasilitator Pembayaran”**), anak perusahaan yang sepenuhnya dimiliki oleh Traveliko Singapore Pte. Ltd., yang mengatur Layanan Pembayaran (didefinisikan di bawah) yang dilakukan melalui atau sehubungan dengan Platform Wink (selanjutnya disebut sebagai **“Wink”**). Ketika Ketentuan Pembayaran ini menyebut “**Fasilitator Pembayaran**,” “**kami**,” “**kita**,” atau “**milik kami**,” itu merujuk pada perusahaan TripPay yang Anda kontrak untuk Layanan Pembayaran.
+Ketentuan Layanan Pembayaran ini (“**Ketentuan Pembayaran**”) adalah perjanjian hukum yang mengikat antara Anda dan TripPay (selanjutnya disebut sebagai **“Fasilitator Pembayaran”**), anak perusahaan yang sepenuhnya dimiliki oleh Winkfluence, yang mengatur Layanan Pembayaran (didefinisikan di bawah) yang dilakukan melalui atau sehubungan dengan Platform Wink (selanjutnya disebut sebagai **“Wink”**). Ketika Ketentuan Pembayaran ini menyebut “**Fasilitator Pembayaran**,” “**kami**,” “**kita**,” atau “**milik kami**,” itu merujuk pada perusahaan TripPay yang Anda kontrak untuk Layanan Pembayaran.
 
 Fasilitator Pembayaran menyediakan layanan pembayaran kepada Afiliasi yang menjual inventaris Penyedia Akomodasi melalui Wink. Layanan pembayaran ini dapat mencakup (jika tersedia) hal-hal berikut (secara kolektif, “**Layanan Pembayaran**”):
 
@@ -27,7 +27,7 @@ Perjanjian ini telah dibaca dan semua Syarat dan Ketentuan telah disetujui oleh 
 Layanan Pembayaran akan disediakan oleh entitas kontrak tergantung pada negara tempat Afiliasi berada seperti berikut:
 
 * Amerika Serikat: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Seluruh dunia: TripPay Slovakia
+* Seluruh dunia: TripPay Corporation
 
 **1. Penggunaan Layanan Pembayaran Anda**
 

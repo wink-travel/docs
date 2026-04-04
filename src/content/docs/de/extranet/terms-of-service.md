@@ -15,7 +15,7 @@ Durch die Registrierung und Anmeldung zum Wink-Programm als Unterkunftsanbieter 
 
 **ZWISCHEN:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, einem nach den Gesetzen Singapurs gegründeten Unternehmen mit Sitz in \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 und der Mehrwertsteuernummer 201437335D („Wink“), und
+**Winkfluence**, einem nach den Gesetzen Singapurs gegründeten Unternehmen mit Sitz in \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 und der Mehrwertsteuernummer 201437335D („Wink“), und
 
 **DEM UNTERKUNFTSANBIETER**, dessen Daten im Unterkunftsanbieter-Registrierungsformular angegeben oder online übermittelt wurden (der „Unterkunftsanbieter“).
 
@@ -70,7 +70,7 @@ Zusätzlich zu anderswo in diesem Abkommen definierten Begriffen gelten die folg
 
 **„Partner“** bezeichnet jedes Unternehmen oder jede Einzelperson, die die Wink-Plattform nutzt, um das Inventar von Unterkunftsanbietern an ihr Publikum und/oder ihre Kunden gegen Provision zu vermarkten und zu verkaufen.
 
-**„Payment Facilitator“** ist eine hundertprozentige Tochtergesellschaft von Traveliko Singapore Pte. Ltd. („TripPay“), die die Zahlungsdienste verwaltet, Zahlungen von Gästen („Pay-in“) entgegennimmt, indem sie die mit dem Kauf verbundene Zahlungsmethode belastet (z. B. Kreditkarte, Debitkarte, Banküberweisung, Kryptowährungen oder PayPal) und die geschuldeten Beträge („Nettotarif“) an den Unterkunftsanbieter auszahlt.
+**„Payment Facilitator“** ist eine hundertprozentige Tochtergesellschaft von Winkfluence („TripPay“), die die Zahlungsdienste verwaltet, Zahlungen von Gästen („Pay-in“) entgegennimmt, indem sie die mit dem Kauf verbundene Zahlungsmethode belastet (z. B. Kreditkarte, Debitkarte, Banküberweisung, Kryptowährungen oder PayPal) und die geschuldeten Beträge („Nettotarif“) an den Unterkunftsanbieter auszahlt.
 
 **„Pay-in“** bezeichnet den Zahlungseingang eines Gastes durch den Payment Facilitator.
 

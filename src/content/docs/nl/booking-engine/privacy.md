@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., opererend onder de naam Wink (de “Vennootschap”), wil u die contact opneemt met de Vennootschap informeren dat het noodzakelijk is uw persoonsgegevens te verzamelen, samen te stellen en te gebruiken voor de diensten van de Vennootschap in overeenstemming met dit Privacybeleid. Door contact op te nemen en uw persoonsgegevens aan de Vennootschap te verstrekken voor communicatie, coördinatie en/of het leveren van de diensten van de Vennootschap aan u, wordt geacht dat u akkoord gaat met en zich bindt aan dit Privacybeleid.
+Winkfluence, opererend onder de naam Wink (de “Vennootschap”), wil u die contact opneemt met de Vennootschap informeren dat het noodzakelijk is uw persoonsgegevens te verzamelen, samen te stellen en te gebruiken voor de diensten van de Vennootschap in overeenstemming met dit Privacybeleid. Door contact op te nemen en uw persoonsgegevens aan de Vennootschap te verstrekken voor communicatie, coördinatie en/of het leveren van de diensten van de Vennootschap aan u, wordt geacht dat u akkoord gaat met en zich bindt aan dit Privacybeleid.
 
 Persoonsgegevens die worden verwerkt, kan de Vennootschap verkrijgen via verschillende kanalen als volgt:
 

@@ -61,7 +61,7 @@ Wink ir Filialas yra šios Sutarties „Šalis“ ir kartu vadinamos „Šalimis
 **„Mikrosvetainė“** reiškia visas Wink pagrindinės svetainės baltos etiketės versijas, kurias valdo, kuria, talpina ir prižiūri Wink. Mikrosvetainė gali būti pažymėta „powered by Wink“ logotipu ar ekvivalentu.  
 **„Grynoji komisija“** yra suma, kurią Filialui reikia sumokėti už įvykdytas operacijas po Mokėjimo paslaugos mokesčio ir Rezervacijos mokesčio atskaitymo.  
 **„Mokama paieška“** reiškia bet kokią internetinę reklamą, susietą su konkrečiu raktiniu žodžiu pagrįstu paieškos užklausa.  
-**„Mokėjimų tarpininkas“** yra Traveliko Singapore Pte. Ltd. visiškai valdoma dukterinė įmonė, valdanti Mokėjimų paslaugas, surenkanti mokėjimus iš svečių („Pay-in“), apmokestindama mokėjimo būdą, susietą su jų pirkimu, pvz., kredito kortelę, debeto kortelę, banko pavedimą, kriptovaliutas ar PayPal ir kt., ir išmokanti „Grynąją komisiją“ į Filialo vietinę banko sąskaitą.  
+**„Mokėjimų tarpininkas“** yra Winkfluence visiškai valdoma dukterinė įmonė, valdanti Mokėjimų paslaugas, surenkanti mokėjimus iš svečių („Pay-in“), apmokestindama mokėjimo būdą, susietą su jų pirkimu, pvz., kredito kortelę, debeto kortelę, banko pavedimą, kriptovaliutas ar PayPal ir kt., ir išmokanti „Grynąją komisiją“ į Filialo vietinę banko sąskaitą.  
 **„Pay-in“** reiškia mokėjimo gavimą iš svečio per Mokėjimų tarpininką.  
 **„Pay-out“** reiškia Grynosios komisijos išmokėjimą Filialui per Mokėjimų tarpininką.  
 **„Mokėjimo paslaugos mokestis“** yra 4 % suma, kurią Mokėjimų tarpininkas atskaičiuoja iš Filialo komisijos kaip mokėjimo įsigijimo mokestį.  

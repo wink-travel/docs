@@ -23,7 +23,7 @@ Those terms are available under [Affiliate Portal > Terms of Service](/studio/te
 
 **BETWEEN:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.** a company incorporated under the laws of Singapore and having its registered office at \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 with VAT register number 201437335D (hereinafter known as "Wink") and  
+1. **Winkfluence** a company incorporated under the laws of Singapore and having its registered office at \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 with VAT register number 201437335D (hereinafter known as "Wink") and  
      
 2. **THE TRAVEL AGENT** whose details are set out in the Travel Agent Registration Form or have been submitted online (the "Travel Agent").
 
@@ -67,7 +67,7 @@ Those terms are available under [Affiliate Portal > Terms of Service](/studio/te
     
 * **“Payments”** shall mean the financial obligations arising under this Agreement, including commissions, fees, or other charges, payable by one party to the other.
 
-* **"Payment Facilitator"** is a fully owned subsidiary of Traveliko Singapore Pte. Ltd. that governs the Payment Services, collecting payments from guests by charging the payment method associated with their purchase such as credit card, debit card, bank transfer, cryptocurrencies, or PayPal, etc.  
+* **"Payment Facilitator"** is a fully owned subsidiary of Winkfluence that governs the Payment Services, collecting payments from guests by charging the payment method associated with their purchase such as credit card, debit card, bank transfer, cryptocurrencies, or PayPal, etc.  
     
 * **“Platform”** shall mean the online system operated by the Service Provider through which the Travel Agent can make or manage Bookings for Guests.
 

@@ -11,7 +11,7 @@ Zadnje ažuriranje 2024-06-12
 
 **UVJETI PLAĆANJA ZA PRUŽATELJE SMJEŠTAJA**
 
-Ovi Uvjeti pružanja usluge plaćanja („**Uvjeti plaćanja**“) predstavljaju pravno obvezujući ugovor između Pružaoca smještaja i TripPay (u daljnjem tekstu „**Posrednik u plaćanju**“), u potpunom vlasništvu tvrtke Traveliko Singapore Pte. Ltd., koji uređuje Usluge plaćanja (definirane u nastavku) obavljene putem ili u vezi s Wink platformom (u daljnjem tekstu „**Wink**“). Kada ovi Uvjeti plaćanja spominju „**Posrednik u plaćanju**“, „**mi**“, „**nas**“ ili „**naš**“, odnosi se na tvrtku TripPay s kojom sklapate ugovor o Uslugama plaćanja.
+Ovi Uvjeti pružanja usluge plaćanja („**Uvjeti plaćanja**“) predstavljaju pravno obvezujući ugovor između Pružaoca smještaja i TripPay (u daljnjem tekstu „**Posrednik u plaćanju**“), u potpunom vlasništvu tvrtke Winkfluence, koji uređuje Usluge plaćanja (definirane u nastavku) obavljene putem ili u vezi s Wink platformom (u daljnjem tekstu „**Wink**“). Kada ovi Uvjeti plaćanja spominju „**Posrednik u plaćanju**“, „**mi**“, „**nas**“ ili „**naš**“, odnosi se na tvrtku TripPay s kojom sklapate ugovor o Uslugama plaćanja.
 
 Posrednik u plaćanju pruža usluge plaćanja Pružaocima smještaja koji prodaju inventar putem Wink platforme. Te usluge plaćanja mogu uključivati (ako su dostupne) sljedeće (zajedno, „**Usluge plaćanja**“):
 
@@ -27,7 +27,7 @@ Ugovor je pročitan, a svi Uvjeti i odredbe su prihvaćeni od strane Pružaoca s
 Usluge plaćanja pružat će ugovorna tvrtka ovisno o zemlji u kojoj se smještaj nalazi, kako slijedi:
 
 * Sjedinjene Američke Države: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Ostatak svijeta: TripPay Slovakia
+* Ostatak svijeta: TripPay Corporation
 
 **1. Vaša upotreba Usluga plaćanja**
 

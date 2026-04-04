@@ -61,7 +61,7 @@ Wink og Affiliaten er hver en "Part" i denne Aftale og omtales samlet som "Parte
 **"Mikrosite"** betyder alle white label-versioner af Wink's primære hjemmeside, som ejes, oprettes, hostes og vedligeholdes af Wink. Mikrositet kan være mærket med et 'powered by Wink'-logo eller tilsvarende.  
 **"Netto Kommission"** er det beløb, der skyldes Affiliaten for Realiserede Transaktion(er) efter fradrag af Betalingsservicegebyr og Bookinggebyr.  
 **"Betalt Søgemarkedsføring"** betyder enhver form for online annoncering, der knytter præsentationen af en annonce til en specifik søgeforespørgsel baseret på nøgleord.  
-**"Betalingsformidler"** er et helejet datterselskab af Traveliko Singapore Pte. Ltd., som styrer Betalingsservice, indsamler betalinger fra gæster ("Pay-in") ved at opkræve betalingsmetoden tilknyttet deres køb, såsom kreditkort, betalingskort, bankoverførsel, kryptovalutaer eller PayPal mv., og udbetaler det skyldige beløb ("Netto Kommission") til Affiliatens lokale bankkonto.  
+**"Betalingsformidler"** er et helejet datterselskab af Winkfluence, som styrer Betalingsservice, indsamler betalinger fra gæster ("Pay-in") ved at opkræve betalingsmetoden tilknyttet deres køb, såsom kreditkort, betalingskort, bankoverførsel, kryptovalutaer eller PayPal mv., og udbetaler det skyldige beløb ("Netto Kommission") til Affiliatens lokale bankkonto.  
 **"Pay-in"** betyder erhvervelse af en betaling foretaget af en gæst via Betalingsformidler.  
 **"Pay-out"** betyder udbetalingen af Netto Kommission til Affiliaten af Betalingsformidler.  
 **"Betalingsservicegebyr"** er de 4 %, der trækkes fra Affiliate-kommissionen som betalingsanskaffelsesgebyr af Betalingsformidler.  

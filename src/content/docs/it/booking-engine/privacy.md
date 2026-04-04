@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., operante con il nome Wink (la “Società”), desidera informare chi contatta la Società che è necessario raccogliere, compilare e utilizzare i suoi dati personali per il servizio della Società in conformità con questa Informativa sulla Privacy. Contattando e divulgando i suoi dati personali alla Società per scopi di comunicazione, coordinamento e/o fornitura dei servizi della Società, si ritiene che lei accetti e si impegni a rispettare questa Informativa sulla Privacy.
+Winkfluence, operante con il nome Wink (la “Società”), desidera informare chi contatta la Società che è necessario raccogliere, compilare e utilizzare i suoi dati personali per il servizio della Società in conformità con questa Informativa sulla Privacy. Contattando e divulgando i suoi dati personali alla Società per scopi di comunicazione, coordinamento e/o fornitura dei servizi della Società, si ritiene che lei accetti e si impegni a rispettare questa Informativa sulla Privacy.
 
 I dati personali trattati, la Società può ottenere i suoi dati personali da vari canali come segue:
 

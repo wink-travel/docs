@@ -25,7 +25,7 @@ Allar ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofuvettvanginn o
 
 **MILDI:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, félag stofnað samkvæmt lögum Singapúr og með skráð skrifstofu í \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 með VSK-númer 201437335D (hér eftir nefnt „Wink“) og  
+1. **Winkfluence**, félag stofnað samkvæmt lögum Singapúr og með skráð skrifstofu í \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 með VSK-númer 201437335D (hér eftir nefnt „Wink“) og  
      
 2. **FERÐASKRIFSTOFAN** sem upplýsingar um eru í skráningarformi ferðaskrifstofu eða hafa verið sendar inn á netinu („Ferðaskrifstofan“).
 

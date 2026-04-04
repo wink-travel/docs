@@ -11,7 +11,7 @@ Senast uppdaterad 2024-06-12
 
 **BETALNINGSVILLKOR FÖR AFFILIATES**
 
-Dessa Betalningsvillkor (“**Betalningsvillkor**”) är ett bindande juridiskt avtal mellan dig och TripPay (hädanefter kallad **”Betalningsförmedlare”**), ett helägt dotterbolag till Traveliko Singapore Pte. Ltd., som reglerar Betalningstjänsterna (definierade nedan) som utförs genom eller i samband med Wink-plattformen (hädanefter kallad **”Wink”**). När dessa Betalningsvillkor nämner “**Betalningsförmedlare**,” “**vi**,” “**oss**,” eller “**vår**,” avses det TripPay-företaget som du ingår avtal med för Betalningstjänster.
+Dessa Betalningsvillkor (“**Betalningsvillkor**”) är ett bindande juridiskt avtal mellan dig och TripPay (hädanefter kallad **”Betalningsförmedlare”**), ett helägt dotterbolag till Winkfluence, som reglerar Betalningstjänsterna (definierade nedan) som utförs genom eller i samband med Wink-plattformen (hädanefter kallad **”Wink”**). När dessa Betalningsvillkor nämner “**Betalningsförmedlare**,” “**vi**,” “**oss**,” eller “**vår**,” avses det TripPay-företaget som du ingår avtal med för Betalningstjänster.
 
 Betalningsförmedlare tillhandahåller betalningstjänster till Affiliates som säljer boendeleverantörers inventarier via Wink. Dessa betalningstjänster kan inkludera (om tillgängligt) följande (sammanfattningsvis, “**Betalningstjänster**”):
 
@@ -27,7 +27,7 @@ Avtalet har lästs och alla villkor har godkänts av Affiliate. Affiliate godkä
 Betalningstjänsterna tillhandahålls av den avtalsslutande enheten beroende på vilket land Affiliate är verksam i enligt nedan:
 
 * USA: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Övriga världen: TripPay Slovakia
+* Övriga världen: TripPay Corporation
 
 **1. Din användning av Betalningstjänsterna**
 

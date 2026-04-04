@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-TRAVELIKO SINGAPORE PTE. LTD., Wink adı altında faaliyet gösteren (“Şirket”), Şirket ile iletişime geçen kişilere, bu Gizlilik Politikası doğrultusunda Şirket hizmetleri için kişisel verilerinizin toplanması, derlenmesi ve kullanılması gerektiğini bildirmek ister. Şirket ile iletişime geçerek ve kişisel verilerinizi iletişim, koordinasyon ve/veya Şirket’in size sunduğu hizmetlerin sağlanması amacıyla Şirket’e açıklayarak, bu Gizlilik Politikası’na bağlı kalmayı ve uyum sağlamayı kabul etmiş sayılırsınız.
+Winkfluence, Wink adı altında faaliyet gösteren (“Şirket”), Şirket ile iletişime geçen kişilere, bu Gizlilik Politikası doğrultusunda Şirket hizmetleri için kişisel verilerinizin toplanması, derlenmesi ve kullanılması gerektiğini bildirmek ister. Şirket ile iletişime geçerek ve kişisel verilerinizi iletişim, koordinasyon ve/veya Şirket’in size sunduğu hizmetlerin sağlanması amacıyla Şirket’e açıklayarak, bu Gizlilik Politikası’na bağlı kalmayı ve uyum sağlamayı kabul etmiş sayılırsınız.
 
 İşlenen kişisel veriler, Şirket aşağıdaki kanallardan kişisel verilerinizi elde edebilir:
 

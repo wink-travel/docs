@@ -25,7 +25,7 @@ Acești Termeni de Serviciu pentru Plată („Termenii de Plată”) reprezintă
 
 **ÎNTRE:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, o companie înființată conform legilor din Singapore, cu sediul social la \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, având numărul de înregistrare TVA 201437335D (denumită în continuare „Wink”) și  
+1. **Winkfluence**, o companie înființată conform legilor din Singapore, cu sediul social la \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, având numărul de înregistrare TVA 201437335D (denumită în continuare „Wink”) și  
      
 2. **AGENTUL DE TURISM** ale cărui detalii sunt specificate în Formularul de Înregistrare al Agentului de Turism sau au fost transmise online („Agentul de Turism”).
 

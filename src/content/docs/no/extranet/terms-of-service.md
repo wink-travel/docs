@@ -15,7 +15,7 @@ Ved å registrere seg og melde seg på Wink-programmet som overnattingsleverand�
 
 **MELLOM:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, et selskap registrert under lovene i Singapore med registrert kontor på \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 med MVA-registreringsnummer 201437335D ("Wink"), og
+**Winkfluence**, et selskap registrert under lovene i Singapore med registrert kontor på \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 med MVA-registreringsnummer 201437335D ("Wink"), og
 
 **OVERNATTINGSLEVERANDØREN**, hvis opplysninger er angitt i registreringsskjemaet for overnattingsleverandør eller er sendt inn online (heretter "Overnattingsleverandøren").
 
@@ -70,7 +70,7 @@ I tillegg til vilkår definert andre steder i denne Avtalen, gjelder følgende d
 
 **“Partner”** betyr enhver virksomhet eller person som kobler seg til eller bruker Wink-plattformen for å promotere og selge Overnattingsleverandørers inventar til sitt publikum og/eller kunder mot kommisjon.
 
-**“Payment Facilitator”** et heleid datterselskap av Traveliko Singapore Pte. Ltd. (“TripPay”), som styrer betalingstjenestene, samler inn betalinger fra gjester (“Pay-in”) ved å belaste betalingsmetoden knyttet til kjøpet, som kredittkort, debetkort, bankoverføring, kryptovaluta eller PayPal osv., og utbetaler det skyldige beløpet (“Netto pris”) til Overnattingsleverandøren.
+**“Payment Facilitator”** et heleid datterselskap av Winkfluence (“TripPay”), som styrer betalingstjenestene, samler inn betalinger fra gjester (“Pay-in”) ved å belaste betalingsmetoden knyttet til kjøpet, som kredittkort, debetkort, bankoverføring, kryptovaluta eller PayPal osv., og utbetaler det skyldige beløpet (“Netto pris”) til Overnattingsleverandøren.
 
 **“Pay-in”** betyr mottak av betaling gjort av en gjest via Payment Facilitator.
 

@@ -25,7 +25,7 @@ Estes Termos de Serviço de Pagamento (“Termos de Pagamento”) são um acordo
 
 **ENTRE:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, uma empresa constituída sob as leis de Singapura e com escritório registrado no \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, com número de registro de IVA 201437335D (doravante denominada "Wink") e  
+1. **Winkfluence**, uma empresa constituída sob as leis de Singapura e com escritório registrado no \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, com número de registro de IVA 201437335D (doravante denominada "Wink") e  
      
 2. **O AGENTE DE VIAGEM** cujos dados estão descritos no Formulário de Registro do Agente de Viagem ou foram submetidos online (o "Agente de Viagem").
 

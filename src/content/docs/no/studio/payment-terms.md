@@ -11,7 +11,7 @@ Sist oppdatert 2024-06-12
 
 **BETALINGSBETINGELSER FOR TILKNYTTEDE SELSKAPER**
 
-Disse betalingsbetingelsene for tjenesten («**Betalingsbetingelser**») er en bindende juridisk avtale mellom deg og TripPay (heretter kalt **«Betalingsformidler»**), et heleid datterselskap av Traveliko Singapore Pte. Ltd., som regulerer betalingstjenestene (definert nedenfor) utført gjennom eller i forbindelse med Wink-plattformen (heretter kalt **«Wink»**). Når disse betalingsbetingelsene nevner «**Betalingsformidler**», «**vi**», «**oss**» eller «**vår**», refererer det til TripPay-selskapet du inngår kontrakt med for betalingstjenester.
+Disse betalingsbetingelsene for tjenesten («**Betalingsbetingelser**») er en bindende juridisk avtale mellom deg og TripPay (heretter kalt **«Betalingsformidler»**), et heleid datterselskap av Winkfluence, som regulerer betalingstjenestene (definert nedenfor) utført gjennom eller i forbindelse med Wink-plattformen (heretter kalt **«Wink»**). Når disse betalingsbetingelsene nevner «**Betalingsformidler**», «**vi**», «**oss**» eller «**vår**», refererer det til TripPay-selskapet du inngår kontrakt med for betalingstjenester.
 
 Betalingsformidler tilbyr betalingstjenester til tilknyttede selskaper som selger overnattingsleverandørers inventar gjennom Wink. Disse betalingstjenestene kan inkludere (hvis tilgjengelig) følgende (samlet kalt «**Betalingstjenester**»):
 
@@ -27,7 +27,7 @@ Avtalen er lest og alle vilkår og betingelser er akseptert av det tilknyttede s
 Betalingstjenestene vil bli levert av den kontraherende enheten avhengig av landet der det tilknyttede selskapet befinner seg, som angitt nedenfor:
 
 * USA: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Resten av verden: TripPay Slovakia
+* Resten av verden: TripPay Corporation
 
 **1. Din bruk av betalingstjenestene**
 

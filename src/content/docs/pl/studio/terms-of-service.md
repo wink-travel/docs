@@ -61,7 +61,7 @@ Wink i Partner Afiliacyjny są „Stroną” niniejszej Umowy i łącznie zwani 
 **„Mikrostrona”** oznacza wszystkie wersje white label głównej strony Wink, które są własnością, tworzone, hostowane i utrzymywane przez Wink. Mikrostrona może być oznaczona logo „powered by Wink” lub równoważnym.  
 **„Prowizja Netto”** to kwota należna Partnerowi Afiliacyjnemu za Zmaterializowane Transakcje po potrąceniu Opłaty za Usługę Płatniczą i Opłaty za Rezerwację.  
 **„Płatne Wyszukiwanie”** oznacza dowolną formę reklamy online powiązaną z prezentacją reklamy na podstawie konkretnego zapytania wyszukiwania opartego na słowach kluczowych.  
-**„Pośrednik Płatności”** to w pełni zależna spółka Traveliko Singapore Pte. Ltd., która zarządza Usługami Płatniczymi, pobierając płatności od gości („Pay-in”) poprzez obciążenie metody płatności powiązanej z zakupem, takiej jak karta kredytowa, debetowa, przelew bankowy, kryptowaluty lub PayPal itp., oraz wypłaca należną kwotę („Prowizja Netto”) na lokalne konto bankowe Partnera Afiliacyjnego.  
+**„Pośrednik Płatności”** to w pełni zależna spółka Winkfluence, która zarządza Usługami Płatniczymi, pobierając płatności od gości („Pay-in”) poprzez obciążenie metody płatności powiązanej z zakupem, takiej jak karta kredytowa, debetowa, przelew bankowy, kryptowaluty lub PayPal itp., oraz wypłaca należną kwotę („Prowizja Netto”) na lokalne konto bankowe Partnera Afiliacyjnego.  
 **„Pay-in”** oznacza pozyskanie płatności dokonanej przez gościa przez Pośrednika Płatności.  
 **„Pay-out”** oznacza wypłatę Prowizji Netto Partnerowi Afiliacyjnemu przez Pośrednika Płatności.  
 **„Opłata za Usługę Płatniczą”** to 4% potrącane z prowizji Partnera Afiliacyjnego jako opłata za pozyskanie płatności przez Pośrednika Płatności.  

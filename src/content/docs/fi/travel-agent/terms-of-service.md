@@ -23,7 +23,7 @@ Nämä ehdot löytyvät kohdasta [Affiliate Portal > Terms of Service](/fi/studi
 
 **OSAPUOLINA:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, Singaporen lakien mukaan perustettu yhtiö, jonka rekisteröity toimipaikka on osoitteessa \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 ja ALV-rekisterinumero 201437335D (jäljempänä "Wink") ja  
+1. **Winkfluence**, Singaporen lakien mukaan perustettu yhtiö, jonka rekisteröity toimipaikka on osoitteessa \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 ja ALV-rekisterinumero 201437335D (jäljempänä "Wink") ja  
      
 2. **MATKATOIMISTO**, jonka tiedot on annettu Matkatoimiston rekisteröintilomakkeessa tai toimitettu verkossa (jäljempänä "Matkatoimisto").
 

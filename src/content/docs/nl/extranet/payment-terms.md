@@ -11,7 +11,7 @@ Laatst bijgewerkt 2024-06-12
 
 **BETALINGSVOORWAARDEN VOOR ACCOMMODATIEVERLENERS**
 
-Deze Betalingsvoorwaarden (“**Betalingsvoorwaarden**”) vormen een bindende juridische overeenkomst tussen de Accommodatieverlener en TripPay (hierna aangeduid als **“Betalingsfacilitator”**), een volledig dochterbedrijf van Traveliko Singapore Pte. Ltd., die de Betalingsdiensten (hieronder gedefinieerd) regelt die worden uitgevoerd via of in verband met het Wink-platform (hierna aangeduid als **“Wink”**). Wanneer deze Betalingsvoorwaarden verwijzen naar “**Betalingsfacilitator**,” “**wij**,” “**ons**,” of “**onze**,” verwijst dit naar het TripPay-bedrijf waarmee u een contract sluit voor Betalingsdiensten.
+Deze Betalingsvoorwaarden (“**Betalingsvoorwaarden**”) vormen een bindende juridische overeenkomst tussen de Accommodatieverlener en TripPay (hierna aangeduid als **“Betalingsfacilitator”**), een volledig dochterbedrijf van Winkfluence, die de Betalingsdiensten (hieronder gedefinieerd) regelt die worden uitgevoerd via of in verband met het Wink-platform (hierna aangeduid als **“Wink”**). Wanneer deze Betalingsvoorwaarden verwijzen naar “**Betalingsfacilitator**,” “**wij**,” “**ons**,” of “**onze**,” verwijst dit naar het TripPay-bedrijf waarmee u een contract sluit voor Betalingsdiensten.
 
 Betalingsfacilitator levert betalingsdiensten aan Accommodatieverleners die voorraad verkopen via het Wink-platform. Deze betalingsdiensten kunnen (indien beschikbaar) de volgende omvatten (gezamenlijk, “**Betalingsdiensten**”):
 
@@ -27,7 +27,7 @@ De Overeenkomst is gelezen en alle Voorwaarden zijn door de Accommodatieverlener
 De Betalingsdiensten worden geleverd door de contracterende entiteit afhankelijk van het land waar de Accommodatie zich bevindt, als volgt:
 
 * Verenigde Staten: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Rest van de wereld: TripPay Slovakia
+* Rest van de wereld: TripPay Corporation
 
 **1. Uw Gebruik van de Betalingsdiensten**
 

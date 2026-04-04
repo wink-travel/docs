@@ -25,7 +25,7 @@ Ezek a Szolgáltatási Fizetési Feltételek („Fizetési Feltételek”) köte
 
 **FELEK:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, egy Szingapúr törvényei szerint bejegyzett társaság, székhelye: #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, adószám: 201437335D (a továbbiakban: "Wink") és  
+1. **Winkfluence**, egy Szingapúr törvényei szerint bejegyzett társaság, székhelye: #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, adószám: 201437335D (a továbbiakban: "Wink") és  
      
 2. **AZ UTAZÁSI ÜGYNÖK**, akinek adatai az Utazási Ügynök Regisztrációs Űrlapon szerepelnek vagy online lettek benyújtva (a „Utazási Ügynök”).
 

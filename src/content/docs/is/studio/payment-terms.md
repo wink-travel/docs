@@ -11,7 +11,7 @@ Síðast uppfært 2024-06-12
 
 **GREIÐSLUSKILMÁL FYRIR TENGDA AÐILA**
 
-Þessir greiðsluskilmálar þjónustu (“**Greiðsluskilmálar**”) eru bindandi löglegt samkomulag milli þín og TripPay (hér eftir nefndur **„Greiðslumiðlari“**), sem er fullkomlega eignuð dótturfyrirtæki Traveliko Singapore Pte. Ltd., og stjórnar greiðslum sem framkvæmdar eru í gegnum eða í tengslum við Wink Platform (hér eftir nefnt **„Wink“**). Þegar þessir greiðsluskilmálar nefna „**Greiðslumiðlari**,“ „**við**,“ „**okkur**,“ eða „**okkar**,“ þá vísar það til TripPay-fyrirtækisins sem þú ert að semja við um greiðslur.
+Þessir greiðsluskilmálar þjónustu (“**Greiðsluskilmálar**”) eru bindandi löglegt samkomulag milli þín og TripPay (hér eftir nefndur **„Greiðslumiðlari“**), sem er fullkomlega eignuð dótturfyrirtæki Winkfluence, og stjórnar greiðslum sem framkvæmdar eru í gegnum eða í tengslum við Wink Platform (hér eftir nefnt **„Wink“**). Þegar þessir greiðsluskilmálar nefna „**Greiðslumiðlari**,“ „**við**,“ „**okkur**,“ eða „**okkar**,“ þá vísar það til TripPay-fyrirtækisins sem þú ert að semja við um greiðslur.
 
 Greiðslumiðlari veitir greiðslumiðlun til tengdra aðila sem selja birgðir gistiveitenda í gegnum Wink. Þessar greiðslur geta falið í sér (ef í boði) eftirfarandi (saman „**Greiðslumiðlun**“):
 
@@ -27,7 +27,7 @@ Samningurinn hefur verið lesinn og öll skilmála- og skilyrði samþykkt af te
 Greiðslumiðlun verður veitt af samningsaðila eftir því í hvaða landi tengdi aðilinn er staðsettur, eins og hér segir:
 
 * Bandaríkin: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Restin af heiminum: TripPay Slovakia
+* Restin af heiminum: TripPay Corporation
 
 **1. Notkun þín á greiðslumiðlun**
 

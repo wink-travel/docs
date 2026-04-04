@@ -14,7 +14,7 @@ Síðast uppfært 2024-06-12
 Með því að skrá sig og gerast þátttakandi í samstarfsáætlun Wink sem samstarfsaðili, hefur samstarfsaðilinn hér með yfirfarið, skilið, viðurkennt og samþykkt skilmála þessa samstarfssamnings (hér eftir „samningurinn“).  
 MILDI: 
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, félag stofnað samkvæmt lögum Singapúr og með skráð skrifstofu í \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 með VSK-númer 201437335D (hér eftir „Wink“), og  
+1. **Winkfluence**, félag stofnað samkvæmt lögum Singapúr og með skráð skrifstofu í \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 með VSK-númer 201437335D (hér eftir „Wink“), og  
 2. **SAMSTARFSAÐILINN**, sem upplýsingar hans eru skráðar í skráningarformi samstarfsaðila eða hafa verið sendar inn rafrænt (hér eftir „Samstarfsaðilinn“). 
 
 Wink og Samstarfsaðilinn eru „aðilar“ að þessum samningi og eru sameiginlega nefndir „aðilar“. 
@@ -61,7 +61,7 @@ Wink og Samstarfsaðilinn eru „aðilar“ að þessum samningi og eru sameigin
 **„Örvefur“** merkir allar hvítmerkiútgáfur af aðalvefsíðu Wink, sem Wink á, býr til, hýsir og viðheldur. Örvefurinn getur merktur með „powered by Wink“ merki eða sambærilegu.  
 **„Hrein þóknun“** er sú fjárhæð sem Samstarfsaðili á rétt á fyrir viðskipti sem urðu að veruleika eftir frádrátt greiðslumiðlunar- og bókunargjalds.  
 **„Greidd leit“** merkir hvaða tegund netauglýsingar sem tengir birtingu auglýsingar við ákveðið lykilorðaleitarfyrirspurn.  
-**„Greiðslumiðlari“** er dótturfélag Traveliko Singapore Pte. Ltd. sem sér um greiðslumiðlun, innheimtir greiðslur frá gestum („Pay-in“) með því að rukka greiðslumáta sem tengist kaupum þeirra, svo sem kreditkort, debetkort, millifærslu, rafmyntir eða PayPal o.s.frv., og greiðir út þá fjárhæð sem tilheyrir Samstarfsaðila („Hrein þóknun“) á bankareikning Samstarfsaðila.  
+**„Greiðslumiðlari“** er dótturfélag Winkfluence sem sér um greiðslumiðlun, innheimtir greiðslur frá gestum („Pay-in“) með því að rukka greiðslumáta sem tengist kaupum þeirra, svo sem kreditkort, debetkort, millifærslu, rafmyntir eða PayPal o.s.frv., og greiðir út þá fjárhæð sem tilheyrir Samstarfsaðila („Hrein þóknun“) á bankareikning Samstarfsaðila.  
 **„Pay-in“** merkir innheimtu greiðslu frá gesti af hálfu greiðslumiðlara.  
 **„Pay-out“** merkir útborgun hreinnar þóknunar til Samstarfsaðila af hálfu greiðslumiðlara.  
 **„Greiðslugjald“** er 4% sem dregið er frá þóknun Samstarfsaðila sem greiðslugjald af hálfu greiðslumiðlara.  

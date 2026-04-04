@@ -27,7 +27,7 @@ Sopimus on luettu ja kaikki ehdot on hyväksytty kumppanin toimesta. Kumppani hy
 Maksupalvelut tarjotaan sopimusosapuolen toimesta kumppanin sijaintimaan mukaan seuraavasti:
 
 * Yhdysvallat: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Muut maat: TripPay Slovakia
+* Muut maat: TripPay Corporation
 
 **1. Maksupalveluiden käyttö**
 

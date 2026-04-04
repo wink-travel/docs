@@ -23,7 +23,7 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 **MELLOM:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, et selskap registrert under lovene i Singapore med registrert adresse \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 og med MVA-registreringsnummer 201437335D (heretter kalt "Wink") og  
+1. **Winkfluence**, et selskap registrert under lovene i Singapore med registrert adresse \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 og med MVA-registreringsnummer 201437335D (heretter kalt "Wink") og  
      
 2. **REISEBYRÅET** med opplysninger angitt i registreringsskjemaet for reisebyrå eller som er sendt inn online (heretter kalt "Reisebyrået").
 
@@ -67,7 +67,7 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
     
 * **“Betalinger”** betyr de økonomiske forpliktelsene som oppstår under denne avtalen, inkludert provisjoner, gebyrer eller andre kostnader som skal betales av en part til den andre.
 
-* **"Betalingsformidler"** er et heleid datterselskap av Traveliko Singapore Pte. Ltd. som styrer betalingstjenestene, og som innkrever betalinger fra gjester ved å belaste betalingsmetoden knyttet til kjøpet, slik som kredittkort, debetkort, bankoverføring, kryptovaluta eller PayPal, osv.  
+* **"Betalingsformidler"** er et heleid datterselskap av Winkfluence som styrer betalingstjenestene, og som innkrever betalinger fra gjester ved å belaste betalingsmetoden knyttet til kjøpet, slik som kredittkort, debetkort, bankoverføring, kryptovaluta eller PayPal, osv.  
     
 * **“Plattform”** betyr det nettbaserte systemet som drives av Tjenesteleverandøren hvor Reisebyrået kan foreta eller administrere bookinger for gjester.
 

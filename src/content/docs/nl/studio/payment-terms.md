@@ -11,7 +11,7 @@ Laatst bijgewerkt 2024-06-12
 
 **BETALINGSVOORWAARDEN VOOR AFFILIATES**
 
-Deze Betalingsvoorwaarden (“**Betalingsvoorwaarden**”) vormen een bindende juridische overeenkomst tussen u en TripPay (hierna aangeduid als **“Payment Facilitator”**), een volledig dochterbedrijf van Traveliko Singapore Pte. Ltd., die de Betalingsdiensten (hieronder gedefinieerd) regelt die worden uitgevoerd via of in verband met het Wink Platform (hierna aangeduid als **“Wink”**). Wanneer deze Betalingsvoorwaarden verwijzen naar “**Payment Facilitator**,” “**wij**,” “**ons**,” of “**onze**,” verwijst dit naar het TripPay-bedrijf waarmee u een contract sluit voor Betalingsdiensten.
+Deze Betalingsvoorwaarden (“**Betalingsvoorwaarden**”) vormen een bindende juridische overeenkomst tussen u en TripPay (hierna aangeduid als **“Payment Facilitator”**), een volledig dochterbedrijf van Winkfluence, die de Betalingsdiensten (hieronder gedefinieerd) regelt die worden uitgevoerd via of in verband met het Wink Platform (hierna aangeduid als **“Wink”**). Wanneer deze Betalingsvoorwaarden verwijzen naar “**Payment Facilitator**,” “**wij**,” “**ons**,” of “**onze**,” verwijst dit naar het TripPay-bedrijf waarmee u een contract sluit voor Betalingsdiensten.
 
 Payment Facilitator biedt betalingsdiensten aan Affiliates die de inventaris van Accommodatieaanbieders verkopen via Wink. Deze betalingsdiensten kunnen (indien beschikbaar) de volgende omvatten (gezamenlijk, “**Betalingsdiensten**”):
 
@@ -27,7 +27,7 @@ De Overeenkomst is gelezen en alle Voorwaarden zijn door de Affiliate geacceptee
 De Betalingsdiensten worden geleverd door de contracterende entiteit afhankelijk van het land waarin de Affiliate zich bevindt, zoals hieronder:
 
 * Verenigde Staten: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Rest van de wereld: TripPay Slovakia
+* Rest van de wereld: TripPay Corporation
 
 **1. Uw gebruik van de Betalingsdiensten**
 

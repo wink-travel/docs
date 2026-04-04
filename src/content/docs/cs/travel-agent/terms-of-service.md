@@ -23,7 +23,7 @@ Tyto podmínky jsou k dispozici v [Affiliate Portál > Podmínky služby](/cs/st
 
 **MEZI:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.**, společností založenou podle zákonů Singapuru se sídlem na adrese \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, s daňovým identifikačním číslem 201437335D (dále jen „Wink“) a  
+1. **Winkfluence**, společností založenou podle zákonů Singapuru se sídlem na adrese \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, s daňovým identifikačním číslem 201437335D (dále jen „Wink“) a  
      
 2. **CESTOVNÍ KANCELÁŘÍ**, jejíž údaje jsou uvedeny v registračním formuláři cestovní kanceláře nebo byly odeslány online (dále jen „Cestovní kancelář“).
 
@@ -67,7 +67,7 @@ Tyto podmínky jsou k dispozici v [Affiliate Portál > Podmínky služby](/cs/st
     
 * **„Platby“** znamenají finanční závazky vyplývající z této smlouvy, včetně provizí, poplatků nebo jiných nákladů, splatných jednou stranou druhé.
 
-* **„Poskytovatel plateb“** je plně vlastněná dceřiná společnost Traveliko Singapore Pte. Ltd., která spravuje platební služby, vybírá platby od hostů prostřednictvím platebních metod spojených s jejich nákupem, jako jsou kreditní karta, debetní karta, bankovní převod, kryptoměny nebo PayPal atd.  
+* **„Poskytovatel plateb“** je plně vlastněná dceřiná společnost Winkfluence, která spravuje platební služby, vybírá platby od hostů prostřednictvím platebních metod spojených s jejich nákupem, jako jsou kreditní karta, debetní karta, bankovní převod, kryptoměny nebo PayPal atd.  
     
 * **„Platforma“** znamená online systém provozovaný Poskytovatelem služby, prostřednictvím kterého může Cestovní kancelář provádět nebo spravovat rezervace pro hosty.
 

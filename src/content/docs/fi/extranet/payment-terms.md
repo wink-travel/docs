@@ -11,7 +11,7 @@ Viimeksi päivitetty 12.6.2024
 
 **MAKSUEHDOT MAJOITUSPALVELUIDEN TARJOAJILLE**
 
-Nämä Maksuehdot (“**Maksuehdot**”) ovat sitova oikeudellinen sopimus Majoituspalvelun Tarjoajan ja TripPayn (jäljempänä **”Maksunvälittäjä”**), Traveliko Singapore Pte. Ltd.:n kokonaan omistaman tytäryhtiön, välillä, joka säätelee Maksupalveluita (määritelty alla), joita toteutetaan Wink-alustan (jäljempänä **”Wink”**) kautta tai siihen liittyen. Kun näissä Maksuehdoissa mainitaan ”**Maksunvälittäjä**”, ”**me**”, ”**meitä**” tai ”**meidän**”, tarkoitetaan TripPay-yhtiötä, jonka kanssa teette sopimuksen Maksupalveluista.
+Nämä Maksuehdot (“**Maksuehdot**”) ovat sitova oikeudellinen sopimus Majoituspalvelun Tarjoajan ja TripPayn (jäljempänä **”Maksunvälittäjä”**), Winkfluence:n kokonaan omistaman tytäryhtiön, välillä, joka säätelee Maksupalveluita (määritelty alla), joita toteutetaan Wink-alustan (jäljempänä **”Wink”**) kautta tai siihen liittyen. Kun näissä Maksuehdoissa mainitaan ”**Maksunvälittäjä**”, ”**me**”, ”**meitä**” tai ”**meidän**”, tarkoitetaan TripPay-yhtiötä, jonka kanssa teette sopimuksen Maksupalveluista.
 
 Maksunvälittäjä tarjoaa maksupalveluita Majoituspalvelun Tarjoajille, jotka myyvät varastoaan Wink-alustan kautta. Nämä maksupalvelut voivat sisältää (jos saatavilla) seuraavat palvelut (yhteisesti ”**Maksupalvelut**”):
 
@@ -27,7 +27,7 @@ Sopimus on luettu, ja kaikki ehdot on hyväksytty Majoituspalvelun Tarjoajan toi
 Maksupalvelut tarjotaan sopimusosapuolen toimesta maasta riippuen, jossa Majoitus sijaitsee, seuraavasti:
 
 * Yhdysvallat: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Muut maat: TripPay Slovakia
+* Muut maat: TripPay Corporation
 
 **1. Maksupalveluiden käyttö**
 

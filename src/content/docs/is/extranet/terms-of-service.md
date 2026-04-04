@@ -15,7 +15,7 @@ Með því að skrá sig og gerast þátttakandi í Wink-forritinu sem gistiaði
 
 **MILLI:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, félag stofnað samkvæmt lögum Singapúr og með skráð skrifstofu í \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 með VSK-númer 201437335D („Wink“), og
+**Winkfluence**, félag stofnað samkvæmt lögum Singapúr og með skráð skrifstofu í \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 með VSK-númer 201437335D („Wink“), og
 
 **GISTINGARAÐILINN**, sem upplýsingar um eru í skráningarformi gistiaðila eða hafa verið sendar inn rafrænt (hér eftir „Gistiaðilinn“).
 
@@ -70,7 +70,7 @@ Auk skilgreininga annars staðar í þessum samningi gilda eftirfarandi skilgrei
 
 **„Samskiptavinur“** merkir hvaða fyrirtæki eða einstakling sem tengist eða notar Wink vettvanginn til að kynna og selja gistiaðila vörur til áhorfenda og/eða viðskiptavina gegn þóknun.
 
-**„Greiðslumiðlari“** er dótturfélag Traveliko Singapore Pte. Ltd. („TripPay“) sem sér um greiðslur, innheimtir greiðslur frá gestum („Pay-in“) með því að rukka greiðslumáta eins og kreditkort, debetkort, millifærslur, rafmyntir eða PayPal o.fl. og greiðir út fjárhæðina („Nettóverð“) til Gistiaðila.
+**„Greiðslumiðlari“** er dótturfélag Winkfluence („TripPay“) sem sér um greiðslur, innheimtir greiðslur frá gestum („Pay-in“) með því að rukka greiðslumáta eins og kreditkort, debetkort, millifærslur, rafmyntir eða PayPal o.fl. og greiðir út fjárhæðina („Nettóverð“) til Gistiaðila.
 
 **„Pay-in“** merkir innheimtu greiðslu frá gesti af hálfu greiðslumiðlara.
 
@@ -88,7 +88,7 @@ Auk skilgreininga annars staðar í þessum samningi gilda eftirfarandi skilgrei
 
 **„Skattar“** merkir alla staðbundna, ríkis-, alríkis- og þjóðarskatta og/eða þjónustugjöld, þar með talið virðisaukaskatt (VSK), sölu-, notkunar-, vörugjöld, gistigjöld, leigu-, borgar-, ferðamannagjöld og aðra sambærilega skatta og gjöld.
 
-**„TripPay“** merkir dótturfélag Traveliko Singapore Pte. Ltd. sem sér um innheimtu og útgreiðslu fyrir Wink, þ.e. greiðslumiðlari.
+**„TripPay“** merkir dótturfélag Winkfluence sem sér um innheimtu og útgreiðslu fyrir Wink, þ.e. greiðslumiðlari.
 
 **„Sölurásir“** merkir (i) vefsíður sem Wink rekur eða stjórnar fyrir önnur fyrirtæki til að gera bókanir og eru aðgengilegar með lykilorði frá Wink; (ii) API tengingar milli Wink og ferðavefsíðna viðskiptavina; eða (iii) önnur dreifingaraðferð þar sem Wink afhendir herbergi til viðskiptavina sinna til frekari dreifingar eða sölu, hvort sem það er á vefsíðum eða annars staðar.
 

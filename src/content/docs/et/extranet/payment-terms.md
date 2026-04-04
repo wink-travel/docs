@@ -11,7 +11,7 @@ Viimati uuendatud 2024-06-12
 
 **MAKSETINGIMUSED MAJUTUSTE PAKKUJATELE**
 
-Need teenuse maksetingimused (“**Maksetingimused**”) on siduv juriidiline leping Majutusteenuse Pakkuja ja TripPay vahel (edaspidi nimetatud kui **„Maksevahendaja“**), mis on Traveliko Singapore Pte. Ltd. täielikult kuuluv tütarettevõte, ja reguleerib makseteenuseid (allpool määratletud), mida teostatakse Wink platvormi kaudu või sellega seoses (edaspidi nimetatud kui **„Wink“**). Kui käesolevates Maksetingimustes mainitakse “**Maksevahendajat**,” “**meid**,” “**meile**” või “**meie**,” viidatakse TripPay ettevõttele, kellega te sõlmite lepingu makseteenuste osutamiseks.
+Need teenuse maksetingimused (“**Maksetingimused**”) on siduv juriidiline leping Majutusteenuse Pakkuja ja TripPay vahel (edaspidi nimetatud kui **„Maksevahendaja“**), mis on Winkfluence täielikult kuuluv tütarettevõte, ja reguleerib makseteenuseid (allpool määratletud), mida teostatakse Wink platvormi kaudu või sellega seoses (edaspidi nimetatud kui **„Wink“**). Kui käesolevates Maksetingimustes mainitakse “**Maksevahendajat**,” “**meid**,” “**meile**” või “**meie**,” viidatakse TripPay ettevõttele, kellega te sõlmite lepingu makseteenuste osutamiseks.
 
 Maksevahendaja pakub makseteenuseid Majutusteenuse Pakkujatele, kes müüvad inventari Wink platvormi kaudu. Need makseteenused võivad hõlmata (kui saadaval) järgmisi teenuseid (kokku “**Makseteenused**”):
 
@@ -27,7 +27,7 @@ Leping on läbi loetud ning kõik tingimused on Majutusteenuse Pakkuja poolt akt
 Makseteenuseid osutab lepinguline üksus sõltuvalt riigist, kus majutus asub, järgmiselt:
 
 * Ameerika Ühendriigid: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Ülejäänud maailm: TripPay Slovakia
+* Ülejäänud maailm: TripPay Corporation
 
 **1. Teie Makseteenuste Kasutamine**
 

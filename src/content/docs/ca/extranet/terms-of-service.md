@@ -15,7 +15,7 @@ En registrar-se i inscriure’s al programa Wink com a proveïdor d’allotjamen
 
 **ENTRE:**
 
-**TRAVELIKO SINGAPORE PTE. LTD.**, una empresa constituïda segons les lleis de Singapur i amb domicili social a \#03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095 amb número de registre d’IVA 201437335D ("Wink"), i
+**Winkfluence**, una empresa constituïda segons les lleis de Singapur i amb domicili social a \#03-01 Wilkie Edge, 8 Wilkie Road, Singapur 228095 amb número de registre d’IVA 201437335D ("Wink"), i
 
 **EL PROVEÏDOR D’ALLOTJAMENT**, amb les dades indicades al Formulari de Registre de Proveïdor d’Allotjament o enviades en línia (el "Proveïdor d’Allotjament").
 
@@ -70,7 +70,7 @@ A més dels termes definits en altres parts d’aquest Acord, s’apliquen les s
 
 **“Soci”** significa qualsevol empresa o individu que es connecta o utilitza la plataforma Wink per promocionar i vendre l’inventari dels Proveïdors d’Allotjament al seu públic i/o clients a canvi d’una comissió.
 
-**“Facilitador de Pagaments”** una filial totalment propietat de Traveliko Singapore Pte. Ltd. (“TripPay”), que gestiona els Serveis de Pagament, recollint pagaments dels hostes (“Pay-in”), carregant el mètode de pagament associat a la seva compra, com targeta de crèdit, dèbit, transferència bancària, criptomonedes o PayPal, etc., i distribuint els fons deguts (“Tarifa Neta”) al Proveïdor d’Allotjament.
+**“Facilitador de Pagaments”** una filial totalment propietat de Winkfluence (“TripPay”), que gestiona els Serveis de Pagament, recollint pagaments dels hostes (“Pay-in”), carregant el mètode de pagament associat a la seva compra, com targeta de crèdit, dèbit, transferència bancària, criptomonedes o PayPal, etc., i distribuint els fons deguts (“Tarifa Neta”) al Proveïdor d’Allotjament.
 
 **“Pay-in”** significa l’adquisició d’un pagament fet per un hoste pel Facilitador de Pagaments.
 

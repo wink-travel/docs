@@ -11,7 +11,7 @@ Son güncelleme 2024-06-12
 
 **KONAKLAMA SAĞLAYICILARI İÇİN ÖDEME KOŞULLARI**
 
-Bu Hizmet Ödeme Koşulları (“**Ödeme Koşulları**”), Konaklama Sağlayıcı ile TripPay (bundan sonra **“Ödeme Kolaylaştırıcısı”** olarak anılacaktır) arasında bağlayıcı yasal bir anlaşmadır. TripPay, Traveliko Singapore Pte. Ltd.'nin tamamen sahip olduğu bir yan kuruluştur ve Wink Platformu (bundan sonra **“Wink”** olarak anılacaktır) aracılığıyla veya bağlantılı olarak yürütülen Ödeme Hizmetlerini (aşağıda tanımlandığı şekilde) düzenler. Bu Ödeme Koşullarında “**Ödeme Kolaylaştırıcısı**,” “**biz**,” “**bize**” veya “**bizim**” ifadeleri, Ödeme Hizmetleri için sözleşme yaptığınız TripPay şirketini ifade eder.
+Bu Hizmet Ödeme Koşulları (“**Ödeme Koşulları**”), Konaklama Sağlayıcı ile TripPay (bundan sonra **“Ödeme Kolaylaştırıcısı”** olarak anılacaktır) arasında bağlayıcı yasal bir anlaşmadır. TripPay, Winkfluence'nin tamamen sahip olduğu bir yan kuruluştur ve Wink Platformu (bundan sonra **“Wink”** olarak anılacaktır) aracılığıyla veya bağlantılı olarak yürütülen Ödeme Hizmetlerini (aşağıda tanımlandığı şekilde) düzenler. Bu Ödeme Koşullarında “**Ödeme Kolaylaştırıcısı**,” “**biz**,” “**bize**” veya “**bizim**” ifadeleri, Ödeme Hizmetleri için sözleşme yaptığınız TripPay şirketini ifade eder.
 
 Ödeme Kolaylaştırıcısı, Wink platformu üzerinden envanter satan Konaklama Sağlayıcılara ödeme hizmetleri sağlar. Bu ödeme hizmetleri (varsa) aşağıdakileri içerebilir (toplu olarak “**Ödeme Hizmetleri**”):
 
@@ -27,7 +27,7 @@ Anlaşma okunmuş ve tüm Hüküm ve Koşullar Konaklama Sağlayıcı tarafında
 Ödeme Hizmetleri, Konaklamanın bulunduğu ülkeye bağlı olarak sözleşme yapılan kuruluş tarafından sağlanacaktır:
 
 * Amerika Birleşik Devletleri: TripPay Corporation, 30 N. Gould St, Suite 22578, Sheridan, WY 82801.  
-* Dünyanın geri kalanı: TripPay Slovakia
+* Dünyanın geri kalanı: TripPay Corporation
 
 **1. Ödeme Hizmetlerini Kullanmanız**
 

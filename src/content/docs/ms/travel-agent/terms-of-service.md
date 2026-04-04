@@ -23,7 +23,7 @@ Terma tersebut boleh didapati di bawah [Affiliate Portal > Terms of Service](/ms
 
 **ANTARA:**
 
-1. **TRAVELIKO SINGAPORE PTE. LTD.** sebuah syarikat yang diperbadankan di bawah undang-undang Singapura dan mempunyai pejabat berdaftar di \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 dengan nombor pendaftaran VAT 201437335D (selepas ini dikenali sebagai "Wink") dan  
+1. **Winkfluence** sebuah syarikat yang diperbadankan di bawah undang-undang Singapura dan mempunyai pejabat berdaftar di \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 dengan nombor pendaftaran VAT 201437335D (selepas ini dikenali sebagai "Wink") dan  
      
 2. **EJEN PELANCONGAN** yang butirannya dinyatakan dalam Borang Pendaftaran Ejen Pelancongan atau telah dihantar secara dalam talian ("Ejen Pelancongan").
 
@@ -67,7 +67,7 @@ Terma tersebut boleh didapati di bawah [Affiliate Portal > Terms of Service](/ms
     
 * **“Bayaran”** bermaksud kewajipan kewangan yang timbul di bawah Perjanjian ini, termasuk komisen, yuran, atau caj lain, yang perlu dibayar oleh satu pihak kepada pihak yang lain.
 
-* **"Fasilitator Pembayaran"** adalah anak syarikat milik penuh Traveliko Singapore Pte. Ltd. yang menguruskan Perkhidmatan Pembayaran, mengutip bayaran daripada tetamu dengan mengenakan caj pada kaedah pembayaran yang dikaitkan dengan pembelian mereka seperti kad kredit, kad debit, pemindahan bank, mata wang kripto, atau PayPal, dan lain-lain.  
+* **"Fasilitator Pembayaran"** adalah anak syarikat milik penuh Winkfluence yang menguruskan Perkhidmatan Pembayaran, mengutip bayaran daripada tetamu dengan mengenakan caj pada kaedah pembayaran yang dikaitkan dengan pembelian mereka seperti kad kredit, kad debit, pemindahan bank, mata wang kripto, atau PayPal, dan lain-lain.  
     
 * **“Platform”** bermaksud sistem dalam talian yang dikendalikan oleh Penyedia Perkhidmatan melalui mana Ejen Pelancongan boleh membuat atau mengurus Tempahan untuk Tetamu.
 

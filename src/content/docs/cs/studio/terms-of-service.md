@@ -61,7 +61,7 @@ Wink a Affiliate jsou „Stranou“ této smlouvy a společně jsou označovány
 **„Mikrostránka“** znamená všechny white label verze primární webové stránky Wink, které jsou vlastněny, vytvořeny, hostovány a udržovány Wink. Mikrostránka může být označena logem „powered by Wink“ nebo obdobným.  
 **„Čistá provize“** je částka dlužná Affiliate za realizované transakce po odečtení poplatku za platební službu a rezervačního poplatku.  
 **„Placené vyhledávání“** znamená jakoukoli formu online reklamy, která váže zobrazení reklamy na konkrétní vyhledávací dotaz založený na klíčových slovech.  
-**„Platební zprostředkovatel“** je plně vlastněná dceřiná společnost Traveliko Singapore Pte. Ltd., která spravuje platební služby, vybírá platby od hostů („Pay-in“) tím, že účtuje platební metodu spojenou s jejich nákupem, jako jsou kreditní karta, debetní karta, bankovní převod, kryptoměny nebo PayPal atd., a vyplácí dlužnou částku („Čistá provize“) na místní bankovní účet Affiliate.  
+**„Platební zprostředkovatel“** je plně vlastněná dceřiná společnost Winkfluence, která spravuje platební služby, vybírá platby od hostů („Pay-in“) tím, že účtuje platební metodu spojenou s jejich nákupem, jako jsou kreditní karta, debetní karta, bankovní převod, kryptoměny nebo PayPal atd., a vyplácí dlužnou částku („Čistá provize“) na místní bankovní účet Affiliate.  
 **„Pay-in“** znamená přijetí platby provedené hostem platebním zprostředkovatelem.  
 **„Pay-out“** znamená vyplacení Čisté provize Affiliate platebním zprostředkovatelem.  
 **„Poplatek za platební službu“** je 4 % odečtených z provize Affiliate jako poplatek za získání platby platebním zprostředkovatelem.  
