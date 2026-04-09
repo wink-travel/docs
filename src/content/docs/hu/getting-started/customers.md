@@ -9,15 +9,15 @@ Ez a cikk bemutatja az általunk kiszolgált ügyféltípusokat és hogy hogyan 
 
 ## Szálláshelyek
 
-A Wink egy évtizede kezdte meg a szállodák onboardolását. A szállodák a Winket használják, hogy hatékonyan kezeljék készletüket több ezer értékesítési csatornán, beleértve a saját brand.com oldalukat is, és hogy minden foglalással többet keressenek, miközben közvetlen csatornáikat növelik vendéglátásra fókuszáló eszközeink segítségével, amelyek erősítik a márkaidentitást és a jövedelmezőséget​.
+A Wink egy évtizede kezdte meg a szállodák bekapcsolását. A szállodák a Winket használják, hogy hatékonyan kezeljék készletüket több ezer értékesítési csatornán keresztül, beleértve saját brand.com oldalukat is, és hogy minden foglalással többet keressenek, miközben közvetlen csatornáikat növelik vendéglátásra fókuszáló eszközeink segítségével, amelyek erősítik a márkaidentitást és a jövedelmezőséget​.
 
 ## Márkák és láncok
 
 A márkáknak és láncoknak kissé eltérő igényeik vannak egyetlen szálláshelyhez képest. A Wink-en ők képesek:
 
 - Több szálláshelyet kezelni egyetlen fiók alatt.
-- Menedzsereket hozzárendelni a szálláshelyekhez.
-- Használni a [WinkLinks](/hu/link-manager/wink-links), [WordPress](/hu/integrations/wordpress) és a [Web Components](/hu/integrations/web-components) eszközöket, hogy több szálláshelyet egy helyen marketingeljenek és értékesítsenek.
+- Menedzsereket kijelölni a szálláshelyekhez.
+- Használni a [WinkLinks](/hu/link-manager/wink-links), [WordPress](/hu/integrations/wordpress) és a [Web Components](/hu/integrations/web-components) eszközeinket, hogy több szálláshelyet egy helyen marketingeljenek és értékesítsenek.
 
 ## Menedzsment cégek
 
@@ -29,16 +29,16 @@ Az influencerek a Winket használják, hogy jobban monetizálják közönségük
 
 ## Utazási ügynökök
 
-Az utazási ügynökök világszerte hozzáférnek utazási készlethez kiváló árakon a dedikált [utazási ügynök portálunkon](https://agent.wink.travel). Foglalásokat tehetnek portálunkon keresztül, API-nkon keresztül, vagy engedhetik, hogy felhasználóik maguk foglaljanak az utazási ügynök weboldalán, amely a mi technológiánkat használja.
+Az utazási ügynökök világszerte hozzáférnek utazási készlethez kiváló árakon a dedikált [utazási ügynök portálunkon](https://agent.wink.travel). Foglalásokat tehetnek portálunkon keresztül, API-n keresztül, vagy engedhetik, hogy felhasználóik maguk foglaljanak az utazási ügynök weboldalán, amely a mi technológiánkat használja.
 
 ## Vállalatok
 
 A vállalatoknak több kell egy utazási platformtól:
 
-- Jól szervezett útitervre van szükségük, amely támogatja a rugalmasságot és az utolsó pillanatban történő változtatásokat.
+- Jól szervezett útitervet igényelnek, amely támogatja a rugalmasságot és az utolsó pillanatban történő változtatásokat.
 - Megbízható kommunikációs eszközökre van szükségük, például internetre.
 - Beszállítói preferenciáik vannak tagságokkal.
-- Gyakran rendelkeznek vállalati hitelkártyával és költési limitet állítanak be.
+- Gyakran rendelkeznek vállalati hitelkártyával és költési keretekkel.
 - Költségkezelésre és jelentéskészítés integrációra van szükségük.
 - Konzorciumi támogatásra, valamint MICE szolgáltatásokra van szükségük rendezvényeken.
 
@@ -46,7 +46,7 @@ A vállalati utazók saját fiókjaikat kezelhetik a [vállalati portálunkon](/
 
 ## Fejlesztők
 
-Bár ezt a platformot szállodások számára és által építettük... Minden kódsor újrafelhasználhatóság céljából készült. Fejlesztői csapatunk a Winket azzal a reménnyel építette, hogy a következő 🦄 utazási alkalmazás a mi kódbázisunkra épül majd. Látogass el a [Fejlesztő](/hu/developers/build-on-wink) oldalra, hogy megtudd, hogyan támogathat a Wink a következő vállalkozásodban.
+Bár ezt a platformot szállodások számára és által építettük... Minden kódsor újrahasznosíthatóság céljából készült. Fejlesztőcsapatunk a Winket azzal a reménnyel építette, hogy a következő 🦄 utazási alkalmazás a mi kódbázisunkra épül majd. Látogass el a [Fejlesztő](/hu/developers/build-on-wink) oldalra, hogy megtudd, hogyan támogathat a Wink a következő vállalkozásodban.
 
 ## Egyéb
 

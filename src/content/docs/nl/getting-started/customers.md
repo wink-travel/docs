@@ -21,11 +21,11 @@ Merken en ketens hebben iets andere behoeften dan een enkele accommodatie. Op Wi
 
 ## Beheerbedrijven
 
-Hospitality managementbedrijven en destination management companies kunnen hun vastgoedportefeuilles beheren namens de eigenaren. Er is een duidelijk voordeel om online-georiënteerde, digitaal bewuste bureaus de verkoop aan het online segment te laten verzorgen, terwijl hotels zich kunnen richten op het managen van klanttevredenheid zodra gasten op locatie zijn.
+Hospitality managementbedrijven en destination managementbedrijven kunnen hun vastgoedportefeuilles beheren namens de eigenaren. Er is een duidelijk voordeel om online-georiënteerde, digitaal bewuste bureaus de verkoop aan het online segment te laten verzorgen, terwijl hotels zich kunnen richten op het managen van klanttevredenheid zodra gasten op locatie zijn.
 
 ## Influencers
 
-Influencers gebruiken Wink om hun publiek beter te gelde te maken. Ze doen dit door samen te werken met hotels, aangepaste deals te creëren en gebruik te maken van Winks social-vriendelijke tools en krachtige analytics om te volgen welke producten het beste verkopen​.
+Influencers gebruiken Wink om hun publiek beter te gelde te maken. Ze doen dit door samen te werken met hotels, aangepaste deals te creëren en gebruik te maken van Winks social-vriendelijke tools en krachtige analyses om te volgen welke producten het beste verkopen​.
 
 ## Reisagenten
 
@@ -50,4 +50,4 @@ Hoewel we dit platform hebben gebouwd door en voor hoteliers... is elke regel co
 
 ## Overig
 
-Iedereen die reisvoorraad wil vinden en verkopen, kan profiteren van het gebruik van Wink. Zet je passie voor hospitality om in actie door een mooie commissie te verdienen op elke boeking.
+Iedereen die reisvoorraad wil vinden en verkopen kan profiteren van het gebruik van Wink. Zet je passie voor hospitality om in actie door een mooie commissie te verdienen op elke boeking.

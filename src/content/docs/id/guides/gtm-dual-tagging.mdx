@@ -1,0 +1,676 @@
+---
+title: Integrasi Sojern Pixel
+description: Cara menghubungkan akun Sojern Anda ke Wink agar Sojern dapat melacak perjalanan pemesanan tamu Anda dan mendukung kampanye retargeting serta iklan Anda.
+sidebar:
+  label: Integrasi Sojern Pixel
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Jika Anda menjalankan kampanye iklan melalui Sojern, Anda dapat menghubungkan akun Sojern Anda ke Wink dengan memasukkan ID Kontainer GTM Sojern Anda di portal Wink. Setelah terhubung, pixel pelacakan Sojern akan aktif secara otomatis untuk properti Anda — mencakup seluruh perjalanan tamu dari pencarian hingga pemesanan selesai.
+
+<Aside type="tip">
+Ini mengasumsikan Anda sudah memiliki akun Sojern aktif dan telah menerima ID Kontainer GTM dari manajer akun Sojern Anda. Jika Anda belum memiliki akun Sojern, kunjungi [sojern.com/contact](https://www.sojern.com/contact) untuk memulai.
+</Aside>
+
+---
+
+## Apa yang Perlu Anda Lakukan
+
+<Steps>
+
+1. **Dapatkan ID Kontainer GTM dari Sojern**
+
+   Hubungi manajer akun Sojern Anda dan minta **ID Kontainer GTM** Anda. Formatnya adalah `GTM-XXXXXXX`. Ini berbeda dari ID Pixel Sojern Anda — pastikan Anda meminta secara spesifik ID Kontainer GTM.
+
+2. **Masukkan di Portal Wink**
+
+   Masuk ke [my.wink.travel](https://my.wink.travel), pilih akun Anda, dan buka tab **Customizations**. Tempelkan ID Kontainer GTM Sojern Anda ke dalam kolom Sojern dan simpan. Integrasi Anda sekarang aktif.
+
+3. **Konfirmasi dengan Manajer Akun Sojern Anda**
+
+   Beri tahu manajer akun Sojern Anda bahwa integrasi sudah aktif. Mereka dapat memverifikasi dari sisi mereka bahwa pixel berfungsi dengan benar di `wink.travel` untuk properti Anda dan data mengalir ke akun Sojern Anda.
+
+</Steps>
+
+<Aside type="note">
+Anda tidak perlu menempatkan kode pixel apa pun di situs web Anda untuk integrasi ini. Wink memuat kontainer Sojern Anda secara otomatis di semua halaman tempat properti Anda aktif.
+
+Konfigurasi ini bekerja untuk ID Kontainer GTM kustom apa pun. Kami hanya menggunakan Sojern sebagai contoh karena ini adalah integrasi yang sangat umum.
+</Aside>
+
+---
+
+## Apa yang Dilakukan Wink di Sisi Kami
+
+Untuk transparansi, berikut yang dikonfigurasi Wink agar integrasi ini berfungsi:
+
+- **Kolom ID Kontainer GTM Sojern** tersedia di tab Customizations portal Wink Anda. Saat Anda memasukkan ID Kontainer, Wink memvalidasi formatnya dan menyimpannya dengan aman terkait properti Anda.
+- **Di setiap halaman tempat properti Anda aktif** di Wink, ID Kontainer GTM Sojern Anda dirender ke halaman dan sistem manajemen tag Wink memuat kontainer Sojern Anda secara dinamis bersama dengan miliknya sendiri. Ini terjadi secara otomatis — tidak ada langkah manual yang diperlukan dari tim Wink per properti.
+- **Kontainer Sojern Anda dimuat secara asinkron**, artinya tidak memengaruhi performa pemuatan halaman untuk tamu Anda.
+- **Pelacakan Wink sendiri dan pixel Sojern Anda berjalan paralel**, membaca dari data event bersama yang sama. Setiap event pemesanan yang dilacak Wink juga tersedia secara simultan untuk kontainer Sojern Anda.
+- **Saat properti Anda tidak sedang dilihat** — misalnya, saat tamu menjelajahi hotel lain di Wink — kontainer Sojern Anda tidak dimuat. Ini memastikan Sojern hanya menerima data yang relevan dengan properti Anda.
+
+---
+
+## Referensi DataLayer
+
+Wink mendorong event kompatibel GA4 ke `dataLayer` sepanjang perjalanan tamu. Kontainer GTM Anda membaca dari `dataLayer` bersama yang sama ini, sehingga setiap trigger atau variabel yang Anda konfigurasi memiliki akses ke semua properti yang dijelaskan di bawah.
+
+Setiap event mengikuti struktur GA4 Enhanced Ecommerce standar: string `event` tingkat atas dan objek `ecommerce`. Sebelum setiap push, Wink mengosongkan payload ecommerce sebelumnya untuk mencegah data lama masuk ke trigger baru.
+
+<Aside type="note">
+**Pola reset dataLayer**
+
+Wink mereset objek ecommerce sebelum setiap push event:
+
+```js
+dataLayer.push({ ecommerce: null });   // hapus event sebelumnya
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Jangan mengandalkan properti ecommerce yang bertahan antar event. Selalu baca pada saat trigger dalam event yang sama.
+</Aside>
+
+---
+
+### Event Perjalanan Pemesanan
+
+Event-event ini aktif secara otomatis saat tamu bergerak melalui funnel pemesanan. Konfigurasikan trigger GTM Anda sebagai trigger **Custom Event** yang cocok dengan nama event di bawah.
+
+| Langkah | Event | Kapan Aktif |
+|------|-------|---------------|
+| 1 | `view_item_list` | Grid atau daftar inventaris hotel dimuat |
+| 2 | `view_item` | Tamu melihat halaman properti tertentu |
+| 3 | `add_to_cart` | Tamu menambahkan kamar ke keranjang belanja |
+| 4 | `begin_checkout` | Halaman checkout / pembayaran dimuat |
+| 5 | `add_payment_info` | Tamu memilih metode pembayaran |
+| 6 | `login` | Tamu melakukan autentikasi via SSO |
+| 7 | `purchase` | Pemesanan dikonfirmasi |
+| 8 | `refund` | Pemesanan dibatalkan |
+
+---
+
+#### `view_item_list`
+
+Aktif saat grid atau daftar inventaris hotel dirender.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Aktif saat tamu melihat properti tertentu.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Aktif saat tamu menambahkan kamar ke keranjang.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Aktif saat halaman checkout / pembayaran dimuat.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` hanya ada saat kode diskon diterapkan.
+
+---
+
+#### `add_payment_info`
+
+Aktif saat tamu memilih atau mengonfirmasi metode pembayaran.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` diisi dari tipe pengakuisisi pembayaran. `coupon` hanya ada saat kode diskon diterapkan.
+
+---
+
+#### `login`
+
+Aktif saat tamu melakukan autentikasi melalui single sign-on.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Aktif saat pemesanan dikonfirmasi.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` adalah pengenal unik kontrak pemesanan. `coupon`, `shipping`, dan `tax` hanya ada jika berlaku.
+
+---
+
+#### `refund`
+
+Aktif saat pemesanan dibatalkan.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` sama dengan event `purchase` untuk pemesanan yang sama. `coupon`, `shipping`, dan `tax` hanya ada jika berlaku.
+
+---
+
+### Properti Item
+
+Semua event yang menyertakan array `items` menggunakan skema item yang sama. Setiap properti bersifat opsional kecuali yang ditandai wajib.
+
+#### Field GA4 Standar
+
+Field ini dikenali secara native oleh GA4 dan muncul di laporan ecommerce standar tanpa konfigurasi tambahan.
+
+| Properti | Tipe | Wajib | Deskripsi |
+|----------|------|----------|-------------|
+| `item_id` | string | Ya | Pengenal unik untuk kamar atau produk |
+| `item_name` | string | — | Nama kamar atau produk |
+| `affiliation` | string | — | Nama afiliasi atau penjual |
+| `coupon` | string | — | Kode kupon yang diterapkan pada item |
+| `currency` | string | — | Kode mata uang ISO 4217 (misal `USD`) |
+| `creative_name` | string | — | Nama kreatif yang digunakan dalam promosi |
+| `creative_slot` | string | — | Posisi slot dari kreatif promosi |
+| `discount` | number | — | Jumlah diskon yang diterapkan |
+| `index` | number | — | Posisi dalam daftar (berbasis 1) |
+| `item_brand` | string | — | Nama hotel atau merek |
+| `item_category` | string | — | Jenis produk — misal `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | Pengenal daftar tempat item ini berada |
+| `item_list_name` | string | — | Nama tampilan daftar |
+| `location_id` | string | — | Koordinat geo properti |
+| `price` | number | — | Harga satuan |
+| `promotion_id` | string | — | Pengenal promosi |
+| `promotion_name` | string | — | Nama tampilan promosi |
+| `quantity` | number | — | Kuantitas (default `1`) |
+
+#### Parameter item khusus
+
+Parameter ini membawa konteks pemesanan spesifik Wink. GA4 tidak otomatis menampilkan di laporan — Anda harus mendaftarkan masing-masing sebagai **dimensi kustom item-scoped** di properti GA4 Anda sebelum muncul di eksplorasi atau laporan standar. Lihat [Dimensi Kustom di GA4](#custom-dimensions-in-ga4) di bawah untuk instruksi setup.
+
+| Properti | Tipe | Deskripsi |
+|----------|------|-------------|
+| `property_id` | string | Pengenal properti Wink |
+| `property_name` | string | Nama tampilan properti |
+| `property_brand` | string | Merek tempat properti berada |
+| `property_chain` | string | Rantai tempat properti berada |
+| `city_name` | string | Kota tempat properti berada |
+| `country_code` | string | Kode negara ISO 3166-1 alpha-2 |
+| `start_date` | string | Tanggal check-in dalam format `YYYY-MM-DD` |
+| `end_date` | string | Tanggal check-out dalam format `YYYY-MM-DD` |
+| `num_adults` | number | Jumlah dewasa dalam pemesanan |
+| `num_children` | number | Jumlah anak dalam pemesanan |
+| `cancellation_policy` | string | Salah satu: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Pengenal rencana tarif |
+| `room_rate_id` | string | Pengenal tarif kamar spesifik |
+| `room_rate_name` | string | Nama tampilan tarif kamar |
+| `num_perks` | number | Jumlah keuntungan yang termasuk dengan tarif |
+| `room_location` | string | Deskripsi lokasi kamar (misal `Overwater`, `Garden`) |
+| `room_view` | string | Deskripsi pemandangan kamar (misal `Ocean`, `City`) |
+| `room_classification` | string | Klasifikasi atau tingkat kamar (misal `Suite`, `Standard`) |
+
+---
+
+### Dimensi Kustom di GA4
+
+GA4 mengabaikan parameter item kustom di laporan sampai Anda secara eksplisit mendaftarkannya sebagai dimensi kustom item-scoped. Anda hanya perlu mendaftarkan parameter yang ingin Anda gunakan di laporan — tidak perlu mendaftarkan semua 18 parameter.
+
+<Steps>
+
+1. **Buka Definisi Kustom**
+
+   Di GA4, buka **Admin** (ikon roda gigi kiri bawah) → pilih properti Anda → **Data display** → **Custom definitions**.
+
+2. **Buat dimensi kustom baru**
+
+   Klik **Create custom dimensions**.
+
+3. **Isi detail dimensi**
+
+   - **Dimension name** — label yang mudah dibaca yang muncul di laporan GA4 (lihat tabel di bawah)
+   - **Scope** — pilih **Item**
+   - **Event parameter** — nama parameter persis seperti di dataLayer (lihat tabel di bawah)
+   - **Description** — opsional tapi disarankan
+
+4. **Simpan dan ulangi**
+
+   Klik **Save**, lalu ulangi untuk setiap parameter yang ingin Anda lacak.
+
+</Steps>
+
+<Aside type="note">
+Dimensi kustom bisa memerlukan waktu hingga 24 jam untuk mulai muncul di laporan GA4 setelah pendaftaran. Data historis yang dikumpulkan sebelum pendaftaran tidak diisi ulang.
+
+GA4 mengizinkan hingga 50 dimensi kustom item-scoped per properti pada properti standar (properti 360 mengizinkan lebih banyak).
+</Aside>
+
+Gunakan tabel berikut sebagai referensi saat membuat dimensi kustom. Nilai **Event parameter** harus cocok persis — GA4 peka huruf besar/kecil.
+
+| Nama dimensi | Event parameter | Tipe |
+|----------------|-----------------|------|
+| Property ID | `property_id` | Teks |
+| Property name | `property_name` | Teks |
+| Property brand | `property_brand` | Teks |
+| Property chain | `property_chain` | Teks |
+| City name | `city_name` | Teks |
+| Country code | `country_code` | Teks |
+| Check-in date | `start_date` | Teks |
+| Check-out date | `end_date` | Teks |
+| Number of adults | `num_adults` | Angka |
+| Number of children | `num_children` | Angka |
+| Cancellation policy | `cancellation_policy` | Teks |
+| Rate plan ID | `rate_plan_id` | Teks |
+| Room rate ID | `room_rate_id` | Teks |
+| Room rate name | `room_rate_name` | Teks |
+| Number of perks | `num_perks` | Angka |
+| Room location | `room_location` | Teks |
+| Room view | `room_view` | Teks |
+| Room classification | `room_classification` | Teks |
+
+---
+
+### Event Tambahan yang Tersedia
+
+Event berikut tersedia di dataLayer Wink tetapi bukan bagian dari funnel pemesanan standar. Mereka mungkin aktif oleh interaksi lain di platform.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Tidak ada payload `ecommerce` yang disertakan dengan event ini.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Ini adalah event kustom Wink — bukan bagian dari set event GA4 standar. Event ini didorong pada setiap navigasi halaman dan membawa konteks perangkat serta sesi. Tidak menyertakan objek `ecommerce`.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Properti | Deskripsi |
+|----------|-------------|
+| `device` | Jenis perangkat terdeteksi — `Desktop`, `Android`, `iPhone`, `iPad`, atau serupa |
+| `deviceAgent` | String user agent mentah |
+| `os` | Sistem operasi terdeteksi — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Jalur halaman saat ini |
+| `title` | Judul halaman saat ini |
+| `userId` | Pengenal pengguna yang terautentikasi (dihilangkan jika tidak login) |
+| `startDate` | Tanggal check-in dari sesi pencarian saat ini |
+| `endDate` | Tanggal check-out dari sesi pencarian saat ini |
+| `guests` | Jumlah tamu dari sesi pencarian saat ini |
+| `rooms` | Jumlah kamar dari sesi pencarian saat ini |

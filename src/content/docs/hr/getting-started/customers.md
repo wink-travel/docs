@@ -9,11 +9,11 @@ Ovaj članak objašnjava vrste kupaca kojima služimo i kako im najbolje možemo
 
 ## Nekretnine
 
-Wink je započeo s onboardanjem hotela prije deset godina. Hoteli koriste Wink za učinkovito upravljanje svojim inventarom preko tisuća prodajnih kanala, uključujući vlastitu brand.com stranicu, te za zaradu više s svakom rezervacijom dok istovremeno jačaju direktne kanale uz pomoć naših alata fokusiranih na ugostiteljstvo koji poboljšavaju identitet brenda i profitabilnost​.
+Wink je započeo s uključivanjem hotela prije deset godina. Hoteli koriste Wink za učinkovito upravljanje svojim inventarom preko tisuća prodajnih kanala, uključujući vlastitu brand.com stranicu, te za ostvarivanje većeg prihoda od svake rezervacije uz poticanje direktnih kanala pomoću naših alata usmjerenih na ugostiteljstvo koji poboljšavaju identitet brenda i profitabilnost​.
 
-## Brendovi i lancevi
+## Brendovi i lance
 
-Brendovi i lancevi imaju nešto drugačije potrebe od pojedinačnih nekretnina. Na Wink-u mogu:
+Brendovi i lance imaju nešto drugačije potrebe od pojedinačnih nekretnina. Na Wink-u mogu:
 
 - Upravljati više nekretnina unutar jednog računa.
 - Dodijeliti menadžere nekretninama.
@@ -25,11 +25,11 @@ Tvrtke za upravljanje ugostiteljstvom i tvrtke za upravljanje destinacijama mogu
 
 ## Influenceri
 
-Influenceri koriste Wink za bolju monetizaciju svoje publike. To čine partnerstvom s hotelima, kreiranjem prilagođenih ponuda i iskorištavanjem Winkovih društveno prilagođenih alata i moćne analitike za praćenje koji se proizvodi najbolje prodaju​.
+Influenceri koriste Wink za bolju monetizaciju svoje publike. To čine partnerstvom s hotelima, kreiranjem prilagođenih ponuda i iskorištavanjem Winkovih alata prilagođenih društvenim mrežama te moćne analitike za praćenje koji se proizvodi najbolje prodaju​.
 
 ## Putničke agencije
 
-Putničke agencije dobivaju pristup putničkom inventaru širom svijeta po izvrsnim cijenama putem našeg namjenskog [portala za putničke agente](https://agent.wink.travel). Mogu obavljati rezervacije putem našeg portala, preko našeg API-ja ili dopuštanjem svojim korisnicima da sami rezerviraju na web stranici putničke agencije koja koristi naše tehnologije.
+Putničke agencije dobivaju pristup putničkom inventaru širom svijeta po izvrsnim cijenama putem našeg namjenskog [putničkog agent portala](https://agent.wink.travel). Mogu obavljati rezervacije putem našeg portala, preko API-ja ili dopuštanjem svojim korisnicima da sami rezerviraju na web stranici putničke agencije koja koristi naše tehnologije.
 
 ## Korporacije
 
@@ -46,8 +46,8 @@ Korporativni putnici mogu upravljati vlastitim računima na našem [korporativno
 
 ## Programeri
 
-Iako smo ovu platformu izgradili za i od strane hotelijera... Svaka linija koda je napravljena s ciljem ponovne upotrebljivosti. Naš tim programera izgradio je Wink u nadi da će sljedeća 🦄 putnička aplikacija biti izgrađena na temelju naše baze koda. Posjetite [Developer](/hr/developers/build-on-wink) stranicu da vidite kako vam Wink može pomoći u vašem sljedećem projektu.
+Iako smo ovu platformu izgradili za i od strane hotelijera... Svaki redak koda izrađen je s ciljem ponovne upotrebljivosti. Naš tim programera izgradio je Wink u nadi da će sljedeća 🦄 putnička aplikacija biti izgrađena na temelju naše baze koda. Posjetite [Developer](/hr/developers/build-on-wink) stranicu da vidite kako vam Wink može pomoći u vašem sljedećem pothvatu.
 
 ## Ostalo
 
-Svatko tko želi pronaći i prodavati putnički inventar može imati koristi od korištenja Wink-a. Pretvorite svoju strast prema ugostiteljstvu u djelo zarađujući odličnu proviziju na svakoj rezervaciji.
+Svatko tko želi pronaći i prodavati putnički inventar može imati koristi od korištenja Wink-a. Pretvorite svoju strast prema ugostiteljstvu u djelo i zaradite odličnu proviziju na svakoj rezervaciji.

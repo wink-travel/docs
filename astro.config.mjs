@@ -1,5 +1,5 @@
 import starlight from '@astrojs/starlight';
-import starlightDocSearch from '@astrojs/starlight-docsearch';
+// import starlightDocSearch from '@astrojs/starlight-docsearch';
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from 'astro/config';
 import starlightBlog from 'starlight-blog';
@@ -59,11 +59,11 @@ export default defineConfig({
     //   baseUrl: 'https://github.com/wink-travel/docs/edit/master/',
     // },
     plugins: [
-      starlightDocSearch({
-        appId: 'PHYEPKXSV0',
-        apiKey: '4035733f1e7c70ad7858be57ee1d0c6a',
-        indexName: 'wink'
-      }),
+      // starlightDocSearch({
+      //   appId: 'PHYEPKXSV0',
+      //   apiKey: '4035733f1e7c70ad7858be57ee1d0c6a',
+      //   indexName: 'wink'
+      // }),
       starlightBlog({
         title: "Wink updates",
         authors: {

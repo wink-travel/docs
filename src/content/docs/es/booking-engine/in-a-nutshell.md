@@ -7,8 +7,8 @@ sidebar:
 
 Así es como segmentamos la responsabilidad en Wink:
 
-- [Extranet](/es/extranet/what-is-extranet) se ocupa de que los proveedores gestionen el inventario.
-- [Studio](/es/studio/what-is-studio) se ocupa de que los afiliados gestionen el contenido.
+- [Extranet](/es/extranet/what-is-extranet) se ocupa de los proveedores que gestionan el inventario.
+- [Studio](/es/studio/what-is-studio) se ocupa de los afiliados que gestionan el contenido.
 - `Booking Engine` se ocupa de hacer que el contenido, creado en `Studio`, que se basó en el inventario creado en `Extranet`, sea reservable.
 - [Payment](/es/payment/what-is-trip-pay) se ocupa de cobrar / reembolsar a los viajeros que reservan [a través de plataformas como Wink], y de pagar a los proveedores.
 
@@ -17,13 +17,13 @@ El motor de reservas está en el núcleo de nuestra plataforma.
 Sus responsabilidades incluyen:
 
 - Gestionar monedas y mantener las tasas de cambio actualizadas.
-- Dar a los proveedores de tarifas una forma de enviarnos datos de tarifas.
-- Gestionar datos de consulta. *p. ej. regiones, países, destinos, propiedades, etc.*
+- Proporcionar a los proveedores de tarifas una forma de enviarnos datos de tarifas.
+- Gestionar datos de consulta. *por ejemplo, regiones, países, destinos, propiedades, etc.*
 - Gestionar idiomas.
 - Generar análisis basados en interacciones de usuarios, eventos y llamadas API.
-- Ofrecer inventario reservable en el formato, idioma y moneda deseados, tales como:
+- Servir inventario reservable en el formato, idioma y moneda deseados, tales como:
     - Un [enlace compartible](/es/studio/shareable-links) en Facebook.
-    - Una página de destino de hotel en https://ota.wink.travel con inventario para ese hotel.
+    - Una página de aterrizaje de hotel en https://ota.wink.travel con inventario para ese hotel.
     - Una [tarjeta](/es/studio/cards) que contiene inventario afiliado.
     - Un [mapa](/es/studio/maps) en tu cuenta de [WinkLinks](/es/link-manager/wink-links).
     - Una [llamada API](/es/developers/apis) desde un sistema remoto de agencia de viajes.
@@ -32,7 +32,7 @@ Sus responsabilidades incluyen:
     - Reservar inventario disponible.
     - Gestionar sus [reservas y reseñas](/es/booking-engine/bookings).
     - Gestionar su [lista de deseos](/es/booking-engine/bucket-list) de cosas para reservar en el futuro.
-    - Gestionar su [perfil de viaje](/es/booking-engine/travel-preferences). *p. ej. alergias, contacto de emergencia, etc.*
+    - Gestionar su [perfil de viaje](/es/booking-engine/travel-preferences). *por ejemplo, alergias, contacto de emergencia, etc.*
 
 El motor de reservas es una colección de funcionalidades reutilizables que exponemos a través de https://ota.wink.travel; un sitio web altamente personalizable para que hoteles y afiliados vendan sus productos a los viajeros.
 

@@ -32,7 +32,7 @@ Le sue responsabilità includono:
     - Prenotare l'inventario disponibile.
     - Gestire le loro [prenotazioni e recensioni](/it/booking-engine/bookings).
     - Gestire la loro [bucket list](/it/booking-engine/bucket-list) di cose da prenotare in futuro.
-    - Gestire il loro [profilo di viaggio](/it/booking-engine/travel-preferences). *es. allergie, contatto di emergenza ecc.*
+    - Gestire il loro [profilo di viaggio](/it/booking-engine/travel-preferences). *es. Allergie, contatto di emergenza ecc.*
 
 Il motore di prenotazione è una raccolta di funzionalità riutilizzabili che esponiamo tramite https://ota.wink.travel; un sito altamente personalizzabile per hotel e affiliati per vendere i loro servizi ai viaggiatori.
 

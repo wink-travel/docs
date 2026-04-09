@@ -1,0 +1,140 @@
+---
+title: Integracja GA4 Analytics
+description: Jak połączyć własną usługę Google Analytics 4 z Wink, aby śledzić rezerwacje, przychody i ścieżkę gościa bezpośrednio na własnym pulpicie GA4.
+sidebar:
+  label: Integracja GA4 Analytics
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Łącząc swoją usługę Google Analytics 4 z Wink, Twoje zdarzenia rezerwacji — od wyświetleń pokoi aż po zakończone zakupy — są automatycznie przesyłane do Twojego pulpitu GA4 obok własnych analiz Wink. Bez kodu, bez technicznej konfiguracji z Twojej strony.
+
+<Aside type="tip">
+Wystarczy, że masz identyfikator pomiaru GA4. Po wpisaniu go w portalu Wink, Twoje analizy są aktywne od razu.
+</Aside>
+
+---
+
+## Jak to działa
+
+```
+Wpisujesz swój G-XXXXXXXXXX w portalu Wink
+       ↓
+Wink przesyła Twoje zdarzenia rezerwacji do Twojej usługi GA4
+       ↓
+Logujesz się na analytics.google.com i widzisz swoje rezerwacje
+```
+
+---
+
+## Co musisz zrobić
+
+<Steps>
+
+1. **Utwórz usługę GA4**
+
+   Przejdź do [analytics.google.com](https://analytics.google.com): Administrator → Utwórz usługę. Ustaw swoją strefę czasową i walutę zgodnie z rynkiem.
+
+2. **Utwórz strumień danych internetowych**
+
+   Administrator → Strumienie danych → Dodaj strumień → Internet. Wpisz `wink.travel` jako URL. To wygeneruje Twój **identyfikator pomiaru** (`G-XXXXXXXXXX`). Skopiuj go.
+
+3. **Wpisz swój identyfikator pomiaru w portalu Wink**
+
+   Zaloguj się na [my.wink.travel](https://my.wink.travel), wybierz swoje konto i przejdź do zakładki **Dostosowania**. Wklej tam swój identyfikator pomiaru i zapisz. To wszystko — integracja GA4 jest aktywna.
+
+4. **Oznacz `purchase` jako zdarzenie kluczowe**
+
+   W swojej usłudze GA4: Administrator → Zdarzenia → znajdź `purchase` → włącz **Oznacz jako zdarzenie kluczowe**. Dzięki temu zakończone rezerwacje pojawią się w raporcie Konwersji.
+
+5. **Przeglądaj swoje dane**
+
+   Zaloguj się na [analytics.google.com](https://analytics.google.com), aby zobaczyć swoje rezerwacje, przychody i lejek gościa — wszystko śledzone automatycznie przez Wink.
+
+</Steps>
+
+<Aside type="note">
+Nie musisz instalować żadnego kodu śledzącego na swojej stronie internetowej dla tej integracji. Wink zajmuje się wszystkim. Twój identyfikator pomiaru to po prostu miejsce docelowe, do którego wysyłane są dane rezerwacji.
+</Aside>
+
+---
+
+## Co możesz śledzić
+
+Po połączeniu Twoja usługa GA4 otrzymuje pełen zestaw zdarzeń Enhanced E-commerce dla Twojej nieruchomości:
+
+### Odkrywanie
+
+| Zdarzenie | Co oznacza |
+|---|---|
+| `view_item_list` | Gość zobaczył Twoją nieruchomość w wynikach wyszukiwania lub w kategorii |
+| `select_item` | Gość kliknął na Twoją nieruchomość z listy |
+| `view_item` | Gość obejrzał stronę szczegółów hotelu |
+
+### Rozważanie
+
+| Zdarzenie | Co oznacza |
+|---|---|
+| `view_promotion` | Gość zobaczył ofertę promocyjną Twojej nieruchomości |
+| `select_promotion` | Gość kliknął na ofertę promocyjną |
+| `add_to_wishlist` | Gość dodał Twoją nieruchomość do listy życzeń |
+
+### Lejek rezerwacji
+
+| Zdarzenie | Co oznacza |
+|---|---|
+| `add_to_cart` | Gość wybrał pokój lub pakiet |
+| `view_cart` | Gość obejrzał podsumowanie rezerwacji |
+| `remove_from_cart` | Gość usunął pokój lub pakiet |
+| `begin_checkout` | Gość rozpoczął proces finalizacji rezerwacji |
+| `add_payment_info` | Gość wprowadził dane płatności |
+| `add_shipping_info` | Gość wprowadził dane gościa |
+| `purchase` | Gość zakończył rezerwację |
+| `refund` | Rezerwacja została anulowana i zwrócona |
+
+Wszystkie zdarzenia zawierają odpowiednie wymiary, takie jak przychód, waluta, typ pokoju i wartość rezerwacji — dając pełny obraz ścieżki gościa od pierwszego kontaktu do zakończonej rezerwacji.
+
+---
+
+## Śledzenie międzydomenowe (zaawansowane)
+
+Standardowa integracja powyżej śledzi wszystko, co dzieje się w Wink. Jeśli jednak chcesz śledzić gości od Twojej własnej strony internetowej aż do zakończenia rezerwacji na Wink — i poprawnie przypisać oryginalne źródło ruchu (Google Ads, kampanie e-mail, wyszukiwanie organiczne itd.) — wymagana jest dodatkowa konfiguracja po obu stronach.
+
+<Aside type="caution">
+Ta sekcja dotyczy tylko sytuacji, gdy masz zainstalowane GA4 na własnej stronie. Jeśli nie korzystasz z GA4 na swojej stronie, standardowa integracja powyżej jest wystarczająca.
+</Aside>
+
+### Dlaczego to ważne
+
+Bez śledzenia międzydomenowego gość, który najpierw odwiedzi Twoją stronę, a potem dokona rezerwacji na Wink, będzie w GA4 widoczny jako sesja **Direct** bez powiązania z wcześniejszą wizytą. Kliknięcia Google Ads, kampanie e-mailowe czy wizyty z wyszukiwania organicznego, które doprowadziły do rezerwacji, nie zostaną uwzględnione.
+
+Po skonfigurowaniu śledzenia międzydomenowego widzisz pełną ścieżkę gościa:
+
+```
+google.com (reklama płatna)
+       ↓
+Twoja strona (gość przegląda pokoje)
+       ↓
+wink.travel (gość wybiera pokój i rezerwuje)
+       ↓
+zakup poprawnie przypisany do oryginalnego kliknięcia Google Ads
+```
+
+### Co musisz zrobić: Ty
+
+Skonfiguruj swoją usługę GA4, aby rozpoznawała `wink.travel` jako część Twojej domeny, a nie jako zewnętrzne źródło odsyłające. Dzięki temu GA4 połączy dwie sesje w jedną ciągłą ścieżkę gościa.
+
+<Steps>
+1. GA4 Administrator → Strumienie danych → Twój strumień
+2. Konfiguracja ustawień tagu → **Konfiguruj swoje domeny**
+3. Dodaj `wink.travel` jako domenę powiązaną
+4. Zapisz
+</Steps>
+
+### Co musi zrobić Wink
+
+Skontaktuj się z [Wink Support](https://my.wink.travel) i podaj domenę swojej strony (np. `twojhotel.com`). Wink doda Twoją domenę do listy wykluczeń odsyłaczy w usłudze GA4 Wink. Zapobiegnie to rejestrowaniu Twojej strony jako źródła odsyłającego, co mogłoby nadpisać oryginalne przypisanie gościa i rozpocząć nową sesję.
+
+<Aside type="tip">
+Standardowa integracja powyżej jest wystarczająca dla większości nieruchomości i daje natychmiastowy wgląd w rezerwacje i przychody na Wink. Śledzenie międzydomenowe to zaawansowana opcja, którą warto skonfigurować, gdy dobrze poznasz dane GA4 i chcesz uzyskać głębsze informacje o przypisaniu.
+</Aside>

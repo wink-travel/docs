@@ -11,7 +11,7 @@ Ostatnia aktualizacja 2024-10-30
 
 :::caution[Uwaga]
 Poniższe warunki płatności dotyczą agentów turystycznych, którzy chcą samodzielnie pozyskiwać i rozdzielać środki.  
-Można to zrobić wyłącznie za pośrednictwem naszego API i tylko przez agentów turystycznych, którzy zaznaczyli chęć takiego działania podczas rejestracji.
+Można to zrobić wyłącznie za pośrednictwem naszego API i tylko przez agentów turystycznych, którzy zaznaczyli taką chęć podczas procesu rejestracji.
 
 Wszyscy agenci turystyczni nadal mogą dokonywać rezerwacji przez nasz portal dla agentów turystycznych, korzystając z bramki płatności Wink za pomocą własnej lub karty kredytowej podróżnego. Dlatego wszyscy agenci turystyczni muszą również zaakceptować warunki płatności, w których bramka płatności Wink jest sprzedawcą zarejestrowanym.
 
@@ -25,15 +25,15 @@ Niniejsze Warunki Świadczenia Usług Płatniczych („Warunki Płatności”) s
 
 **POMIĘDZY:**
 
-1. **Winkfluence**, spółką zarejestrowaną zgodnie z prawem Singapuru, z siedzibą pod adresem \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, z numerem rejestracji VAT 201437335D (dalej „Wink”) oraz  
+1. **Winkfluence**, spółką zarejestrowaną zgodnie z prawem Singapuru, z siedzibą pod adresem \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, z numerem VAT 201437335D (dalej „Wink”) oraz  
      
-2. **AGENTEM TURYSTYCZNYM**, którego dane zostały podane w Formularzu Rejestracyjnym Agenta Turystycznego lub przesłane online („Agent Turystyczny”).
+2. **AGENTEM TURYSTYCZNYM**, którego dane zostały podane w formularzu rejestracyjnym agenta turystycznego lub przesłane online („Agent Turystyczny”).
 
 Definicje i warunki określone w Umowie Głównej mają zastosowanie do niniejszych Warunków Płatności, chyba że określono inaczej.
 
 **1\. Definicje**
 
-Zgodnie z definicjami w umowie głównej "WARUNKI I ZASADY DLA AGENTÓW TURYSTYCZNYCH" („Umowa Główna”), następujące terminy mają takie samo znaczenie w niniejszych Warunkach Płatności:
+Zgodnie z definicjami w Umowie Głównej "WARUNKI I ZASADY DLA AGENTÓW TURYSTYCZNYCH" („Umowa Główna”), następujące terminy mają takie samo znaczenie w niniejszych Warunkach Płatności:
 
 * „Dostawca Zakwaterowania”  
 * „Rezerwacja”  
@@ -46,7 +46,7 @@ Zgodnie z definicjami w umowie głównej "WARUNKI I ZASADY DLA AGENTÓW TURYSTYC
 
 **2\. Pobieranie i Rozdzielanie Płatności**
 
-2.1 **Pobieranie Płatności:** Agent Turystyczny jest odpowiedzialny za pobranie płatności od Gościa w momencie dokonywania rezerwacji. Zapewnia to natychmiastowe przetwarzanie i przejrzystość finansową.
+2.1 **Pobieranie Płatności:** Agent Turystyczny jest odpowiedzialny za pobranie płatności od Gościa w momencie rezerwacji. Zapewnia to natychmiastowe przetwarzanie i przejrzystość finansową.
 
 2.2 **Potrącenie Opłat:** Agent Turystyczny najpierw potrąca opłatę Dostawcy Usług, a następnie swoją prowizję od sumy częściowej, zgodnie z poniższym przykładem:
 
@@ -61,11 +61,11 @@ Suma częściowa = 1,000 - 15 = 985
 
 **3\. Faktury i Płatności**
 
-3.1 **Fakturowanie Miesięczne:** Wink wystawi Agentowi Turystycznemu poprawną i dokładną fakturę miesięczną za Opłaty za Rezerwacje zgromadzone w poprzednim miesiącu. Agent Turystyczny zobowiązany jest do uregulowania tej faktury w terminie określonym na fakturze.
+3.1 **Fakturowanie Miesięczne:** Wink wystawi Agentowi Turystycznemu poprawną i dokładną fakturę miesięczną za Opłaty za Rezerwacje zgromadzone w poprzednim miesiącu. Agent Turystyczny zobowiązany jest do uregulowania tej faktury w terminie płatności określonym na fakturze.
 
-3.2 **Metoda Płatności:** Płatności na rzecz Wink należy dokonywać za pomocą metody płatności określonej na fakturze. Wszelkie koszty związane z przelewem płatności ponosi Agent Turystyczny.
+3.2 **Metoda Płatności:** Płatności na rzecz Wink będą dokonywane za pomocą metody płatności określonej na fakturze. Wszelkie koszty związane z przelewem płatności ponosi Agent Turystyczny.
 
-3.3 **Opóźnienia w Płatnościach:** W przypadku opóźnienia w płatności, Wink zastrzega sobie prawo do naliczenia odsetek od zaległej kwoty w wysokości 5% miesięcznie lub maksymalnej stawki dozwolonej prawem, w zależności od tego, która jest niższa. Ponadto, jeśli Agent Turystyczny opóźnia się z płatnością na rzecz Dostawcy Zakwaterowania zgodnie z warunkami Umowy Oddzielnej, Wink zastrzega sobie prawo do zawieszenia dostępu do Usługi do czasu uregulowania wszystkich zaległych płatności zarówno wobec Wink, jak i Dostawcy Zakwaterowania. Jednakże, jeśli na fakturze wystąpią błędy lub pomyłki, Agent Turystyczny jest zobowiązany do zapłaty jedynie poprawnej i dokładnej części faktury i nie będzie podlegał żadnym odsetkom ani karom za nieuregulowanie błędnej części faktury.
+3.3 **Opóźnienia w Płatnościach:** W przypadku opóźnienia w płatności, Wink zastrzega sobie prawo do naliczenia odsetek od zaległej kwoty w wysokości 5% miesięcznie lub maksymalnej stawki dozwolonej przez prawo, w zależności od tego, która jest niższa. Ponadto, jeśli Agent Turystyczny opóźnia się z płatnością na rzecz Dostawcy Zakwaterowania zgodnie z warunkami Umowy Oddzielnej, Wink zastrzega sobie prawo do zawieszenia dostępu do Usługi do czasu uregulowania wszystkich zaległych płatności zarówno wobec Wink, jak i Dostawcy Zakwaterowania. Jednakże, jeśli na fakturze wystąpią błędy lub pomyłki, Agent Turystyczny jest zobowiązany do zapłaty jedynie poprawnej i dokładnej części faktury i nie będzie podlegał żadnym odsetkom ani karom za nieuregulowaną błędną część faktury.
 
 **4\. Role i Obowiązki**
 
@@ -84,7 +84,7 @@ Suma częściowa = 1,000 - 15 = 985
 
 **5\. Konwersja Walut**
 
-W przypadku konieczności konwersji walut, zostanie ona przeprowadzona po kursie udostępnionym przez usługę przetwarzania płatności. Agent Turystyczny ponosi odpowiedzialność za wszelkie koszty związane z konwersją walut.
+W przypadku konieczności konwersji walut, zostanie ona przeprowadzona po kursie udostępnionym przez usługę przetwarzania płatności. Agent Turystyczny ponosi wszelkie koszty związane z konwersją walut.
 
 **6\. Rozstrzyganie Sporów**
 
@@ -96,4 +96,4 @@ Wink zastrzega sobie prawo do zmiany niniejszych Warunków Płatności w dowolny
 **8\. Prawo Właściwe i Jurysdykcja**  
 Niniejsze Warunki Płatności podlegają prawu Singapuru. Wszelkie spory wynikające z lub związane z tymi warunkami będą rozstrzygane przez sądy Singapuru.
 
-Niniejsze Warunki Płatności są integralną częścią i rozszerzają postanowienia dotyczące płatności zawarte w Umowie Głównej, "WARUNKI I ZASADY DLA AGENTÓW TURYSTYCZNYCH_220924", zawartej między Wink a Agentem Turystycznym.
+Niniejsze Warunki Płatności są integralną częścią i rozszerzają postanowienia dotyczące płatności zawarte w Umowie Głównej, "WARUNKI I ZASADY DLA AGENTÓW TURYSTYCZNYCH_220924," pomiędzy Wink a Agentem Turystycznym.

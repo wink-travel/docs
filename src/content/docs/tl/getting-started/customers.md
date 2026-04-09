@@ -29,7 +29,7 @@ Ginagamit ng mga influencer ang Wink upang mas mahusay na pagkakitaan ang kanila
 
 ## Mga Ahente ng Paglalakbay
 
-Nakakakuha ang mga ahente ng paglalakbay ng access sa imbentaryo ng paglalakbay sa buong mundo sa magagandang presyo sa pamamagitan ng aming dedikadong [travel agent portal](https://agent.wink.travel). Maaari silang gumawa ng mga booking sa pamamagitan ng aming portal, gamit ang aming API, o hayaan ang kanilang mga user na mag-book mismo sa travel agent website na gumagamit ng aming mga teknolohiya.
+Nakakakuha ang mga ahente ng paglalakbay ng access sa imbentaryo ng paglalakbay sa buong mundo sa magagandang presyo sa pamamagitan ng aming dedikadong [travel agent portal](https://agent.wink.travel). Maaari silang gumawa ng mga booking sa pamamagitan ng aming portal, gamit ang aming API o sa pagpapahintulot sa kanilang mga user na mag-book nang sarili sa travel agent website na gumagamit ng aming mga teknolohiya.
 
 ## Mga Kumpanya
 
@@ -38,15 +38,15 @@ Mas marami ang kailangan ng mga kumpanya mula sa isang travel platform:
 - Nangangailangan sila ng maayos na organisadong mga itinerary na sumusuporta sa flexibility at mga last-minute na pagbabago.
 - Nangangailangan sila ng maaasahang mga tool sa komunikasyon, tulad ng internet.
 - Mayroon silang mga vendor preference na may mga membership.
-- Madalas silang may corporate credit card at nagtatakda ng mga limitasyon sa paggastos.
+- Kadalasan ay may corporate credit card sila at nagtatakda ng mga limitasyon sa paggastos.
 - Nangangailangan sila ng pamamahala ng gastusin at integrasyon ng pag-uulat.
 - Kailangan nila ng concierge support, pati na rin ng mga serbisyo ng MICE sa mga kaganapan.
 
-Maaaring pamahalaan ng mga corporate traveler ang kanilang sariling mga account sa aming [corporate portal](/tl/corporate/what-is-group) o gamitin ang aming opisyal na suportadong [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin at integrasyon ng [Concur](https://www.concur.com/).
+Maaaring pamahalaan ng mga corporate traveler ang kanilang sariling mga account sa aming [corporate portal](/tl/corporate/what-is-group) o gamitin ang aming opisyal na suportadong [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin at [Concur](https://www.concur.com/) integration.
 
 ## Mga Developer
 
-Bagaman ginawa namin ang platform na ito para at ng mga hoteliers... Bawat linya ng code ay ginawa para sa partikular na layunin ng muling paggamit. Ang aming koponan ng mga developer ay bumuo ng Wink sa pag-asang ang susunod na 🦄 travel app ay mabubuo sa ibabaw ng aming code base. Pumunta sa [Developer](/tl/developers/build-on-wink) na pahina upang makita kung paano ka matutulungan ng Wink sa iyong susunod na proyekto.
+Habang ginawa namin ang platform na ito para at ng mga hoteliers... Bawat linya ng code ay ginawa para sa partikular na layunin ng muling paggamit. Ang aming koponan ng mga developer ay bumuo ng Wink sa pag-asang ang susunod na 🦄 travel app ay mabubuo sa ibabaw ng aming code base. Pumunta sa [Developer](/tl/developers/build-on-wink) na pahina upang makita kung paano ka matutulungan ng Wink sa iyong susunod na proyekto.
 
 ## Iba Pa
 

@@ -1,0 +1,676 @@
+---
+title: אינטגרציית Sojern Pixel
+description: כיצד לחבר את חשבון Sojern שלך ל-Wink כדי ש-Sojern יוכל לעקוב אחר מסע ההזמנה של האורחים שלך ולהפעיל את קמפייני הריטרגטינג והפרסום שלך.
+sidebar:
+  label: אינטגרציית Sojern Pixel
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+אם אתה מנהל קמפייני פרסום דרך Sojern, תוכל לחבר את חשבון Sojern שלך ל-Wink על ידי הזנת מזהה מכולת GTM של Sojern בפורטל Wink. לאחר החיבור, פיקסל המעקב של Sojern יופעל אוטומטית עבור הנכס שלך — ומכסה את כל מסע האורח מחיפוש ועד להשלמת ההזמנה.
+
+<Aside type="tip">
+הנחה זו מניחה שכבר יש לך חשבון Sojern פעיל וקיבלת את מזהה מכולת ה-GTM שלך ממנהל החשבון של Sojern. אם עדיין אין לך חשבון Sojern, בקר ב-[sojern.com/contact](https://www.sojern.com/contact) כדי להתחיל.
+</Aside>
+
+---
+
+## מה עליך לעשות
+
+<Steps>
+
+1. **קבל את מזהה מכולת ה-GTM שלך מ-Sojern**
+
+   פנה למנהל החשבון שלך ב-Sojern ובקש את **מזהה מכולת ה-GTM** שלך. הוא בפורמט `GTM-XXXXXXX`. זה שונה ממזהה הפיקסל של Sojern — ודא שאתה מבקש במפורש את מזהה מכולת ה-GTM.
+
+2. **הזן אותו בפורטל Wink**
+
+   היכנס ל-[my.wink.travel](https://my.wink.travel), בחר את החשבון שלך ועבור ללשונית **התאמות אישיות**. הדבק את מזהה מכולת ה-GTM של Sojern בשדה Sojern ושמור. האינטגרציה שלך כעת פעילה.
+
+3. **אשר עם מנהל החשבון שלך ב-Sojern**
+
+   הודע למנהל החשבון שלך ב-Sojern שהאינטגרציה פעילה. הם יוכלו לוודא מצידם שהפיקסל מופעל כראוי ב-`wink.travel` עבור הנכס שלך ושהנתונים זורמים לחשבון Sojern שלך.
+
+</Steps>
+
+<Aside type="note">
+אין צורך למקם קוד פיקסל באתר שלך עבור אינטגרציה זו. Wink טוען את מכולת Sojern שלך אוטומטית בכל הדפים שבהם הנכס שלך פעיל.
+
+תצורה זו עובדת עם כל מזהה מכולת GTM מותאם אישית. השתמשנו ב-Sojern כדוגמה מכיוון שזו אינטגרציה נפוצה מאוד.
+</Aside>
+
+---
+
+## מה Wink עושה בצד שלנו
+
+למען השקיפות, הנה מה ש-Wink מגדיר כדי שהאינטגרציה הזו תעבוד:
+
+- **שדה מזהה מכולת GTM של Sojern** זמין בלשונית ההתאמות האישיות בפורטל Wink שלך. כשאתה מזין את מזהה המכולה, Wink מאמת את הפורמט ושומר אותו בצורה מאובטחת כנגד הנכס שלך.
+- **בכל דף שבו הנכס שלך פעיל** ב-Wink, מזהה מכולת ה-GTM של Sojern שלך מוטמע בדף ומערכת ניהול התגים של Wink טוענת דינמית את מכולת Sojern לצד המכולה שלה. זה קורה אוטומטית — ללא צעדים ידניים מצוות Wink עבור כל נכס.
+- **מכולת Sojern שלך נטענת באופן אסינכרוני**, כלומר היא אינה משפיעה על ביצועי טעינת הדף עבור האורחים שלך.
+- **מעקב Wink והפיקסל של Sojern פועלים במקביל**, וקוראים מאותו מאגר נתוני אירועים משותף. כל אירוע הזמנה ש-Wink עוקב אחריו זמין במקביל למכולת Sojern שלך.
+- **כאשר הנכס שלך אינו מוצג** — למשל, כאשר אורח גולש במלון אחר ב-Wink — מכולת Sojern שלך אינה נטענת. זה מבטיח ש-Sojern מקבל רק נתונים הרלוונטיים לנכס שלך.
+
+---
+
+## הפניה ל-DataLayer
+
+Wink דוחף אירועים תואמי GA4 ל-`dataLayer` לאורך כל מסע האורח. מכולת ה-GTM שלך קוראת מאותו `dataLayer` משותף, כך שכל טריגר או משתנה שתגדיר יקבלו גישה לכל התכונות המתוארות למטה.
+
+כל אירוע עוקב אחרי מבנה GA4 Enhanced Ecommerce סטנדרטי: מחרוזת `event` ברמה העליונה ואובייקט `ecommerce`. לפני כל דחיפה, Wink מנקה את מטען ה-ecommerce הקודם כדי למנוע דליפת נתונים ישנים לטריגרים חדשים.
+
+<Aside type="note">
+**תבנית איפוס dataLayer**
+
+Wink מאפס את אובייקט ה-ecommerce לפני כל דחיפת אירוע:
+
+```js
+dataLayer.push({ ecommerce: null });   // מנקה אירוע קודם
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+אל תסתמך על המשכיות תכונות ה-ecommerce בין אירועים. קרא אותן תמיד בזמן הטריגר באותו אירוע.
+</Aside>
+
+---
+
+### אירועי מסע ההזמנה
+
+אירועים אלה מופעלים אוטומטית כאשר אורח מתקדם במשפך ההזמנה. הגדר את טריגרי ה-GTM שלך כטריגרי **אירוע מותאם אישית** התואמים לשמות האירועים למטה.
+
+| שלב | אירוע | מתי הוא מופעל |
+|------|-------|---------------|
+| 1 | `view_item_list` | טען רשת או רשימת מלאי מלונות |
+| 2 | `view_item` | אורח צופה בדף נכס ספציפי |
+| 3 | `add_to_cart` | אורח מוסיף חדר לעגלת הקניות |
+| 4 | `begin_checkout` | טען דף תשלום / קופה |
+| 5 | `add_payment_info` | אורח בוחר שיטת תשלום |
+| 6 | `login` | אורח מאמת באמצעות SSO |
+| 7 | `purchase` | ההזמנה אושרה |
+| 8 | `refund` | ההזמנה בוטלה |
+
+---
+
+#### `view_item_list`
+
+מופעל כאשר רשת או רשימת מלאי מלונות מוצגת.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+מופעל כאשר אורח צופה בנכס ספציפי.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+מופעל כאשר אורח מוסיף חדר לעגלת הקניות.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+מופעל כאשר דף התשלום / הקופה נטען.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` מופיע רק כאשר הוחל קוד הנחה.
+
+---
+
+#### `add_payment_info`
+
+מופעל כאשר האורח בוחר או מאשר שיטת תשלום.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` מתמלא מסוג רוכש התשלום. `coupon` מופיע רק כאשר הוחל קוד הנחה.
+
+---
+
+#### `login`
+
+מופעל כאשר אורח מאמת באמצעות כניסה יחידה (SSO).
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+מופעל כאשר הזמנה מאושרת.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` הוא מזהה ייחודי של חוזה ההזמנה. `coupon`, `shipping` ו-`tax` מופיעים רק כאשר רלוונטי.
+
+---
+
+#### `refund`
+
+מופעל כאשר הזמנה מבוטלת.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` תואם לאירוע `purchase` עבור אותה הזמנה. `coupon`, `shipping` ו-`tax` מופיעים רק כאשר רלוונטי.
+
+---
+
+### תכונות פריט
+
+כל האירועים הכוללים מערך `items` חולקים את אותו סכמת פריט. כל תכונה היא אופציונלית אלא אם צוין אחרת.
+
+#### שדות GA4 סטנדרטיים
+
+שדות אלה מובנים באופן טבעי על ידי GA4 ומופיעים בדוחות ecommerce סטנדרטיים ללא הגדרות נוספות.
+
+| תכונה | סוג | חובה | תיאור |
+|----------|------|----------|-------------|
+| `item_id` | מחרוזת | כן | מזהה ייחודי לחדר או מוצר |
+| `item_name` | מחרוזת | — | שם החדר או המוצר |
+| `affiliation` | מחרוזת | — | שם שותף או מוכר |
+| `coupon` | מחרוזת | — | קוד קופון שהוחל על הפריט |
+| `currency` | מחרוזת | — | קוד מטבע ISO 4217 (למשל `USD`) |
+| `creative_name` | מחרוזת | — | שם קריאייטיב בקמפיין |
+| `creative_slot` | מחרוזת | — | מיקום הקריאייטיב בקמפיין |
+| `discount` | מספר | — | סכום הנחה שהוחל |
+| `index` | מספר | — | מיקום ברשימה (מתחיל ב-1) |
+| `item_brand` | מחרוזת | — | שם המלון או המותג |
+| `item_category` | מחרוזת | — | סוג מוצר — למשל `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | מחרוזת | — | מזהה הרשימה שהפריט שייך אליה |
+| `item_list_name` | מחרוזת | — | שם התצוגה של הרשימה |
+| `location_id` | מחרוזת | — | קואורדינטות גאוגרפיות של הנכס |
+| `price` | מספר | — | מחיר יחידה |
+| `promotion_id` | מחרוזת | — | מזהה הקידום |
+| `promotion_name` | מחרוזת | — | שם התצוגה של הקידום |
+| `quantity` | מספר | — | כמות (ברירת מחדל `1`) |
+
+#### פרמטרים מותאמים אישית ברמת פריט
+
+פרמטרים אלה נושאים הקשר הזמנה ספציפי ל-Wink. GA4 לא מציג אותם אוטומטית בדוחות — יש לרשום כל אחד מהם כמידה מותאמת אישית ברמת פריט בנכס GA4 שלך לפני שיופיע בדוחות או בחקירות. ראה [מידות מותאמות אישית ב-GA4](#custom-dimensions-in-ga4) למטה להוראות הגדרה.
+
+| תכונה | סוג | תיאור |
+|----------|------|-------------|
+| `property_id` | מחרוזת | מזהה נכס ב-Wink |
+| `property_name` | מחרוזת | שם תצוגה של הנכס |
+| `property_brand` | מחרוזת | מותג שהנכס שייך לו |
+| `property_chain` | מחרוזת | רשת שהנכס שייך לה |
+| `city_name` | מחרוזת | שם העיר שבה נמצא הנכס |
+| `country_code` | מחרוזת | קוד מדינה ISO 3166-1 alpha-2 |
+| `start_date` | מחרוזת | תאריך צ'ק-אין בפורמט `YYYY-MM-DD` |
+| `end_date` | מחרוזת | תאריך צ'ק-אאוט בפורמט `YYYY-MM-DD` |
+| `num_adults` | מספר | מספר מבוגרים בהזמנה |
+| `num_children` | מספר | מספר ילדים בהזמנה |
+| `cancellation_policy` | מחרוזת | אחד מהבאים: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | מחרוזת | מזהה תוכנית תעריפים |
+| `room_rate_id` | מחרוזת | מזהה תעריף חדר ספציפי |
+| `room_rate_name` | מחרוזת | שם תצוגה של תעריף החדר |
+| `num_perks` | מספר | מספר הטבות כלולות בתעריף |
+| `room_location` | מחרוזת | תיאור מיקום החדר (למשל `Overwater`, `Garden`) |
+| `room_view` | מחרוזת | תיאור נוף החדר (למשל `Ocean`, `City`) |
+| `room_classification` | מחרוזת | סיווג או דרגה של החדר (למשל `Suite`, `Standard`) |
+
+---
+
+### מידות מותאמות אישית ב-GA4
+
+GA4 מתעלם מפרמטרים מותאמים אישית ברמת פריט בדוחות עד שתירשם אותם במפורש כמידות מותאמות אישית ברמת פריט. יש לרשום רק את הפרמטרים שאתה מתכוון להשתמש בהם בדוחות — אין צורך לרשום את כל 18.
+
+<Steps>
+
+1. **פתח הגדרות מותאמות אישית**
+
+   ב-GA4, עבור ל-**Admin** (סמל גלגל שיניים בתחתית שמאל) → בחר את הנכס שלך → **Data display** → **Custom definitions**.
+
+2. **צור מידה מותאמת אישית חדשה**
+
+   לחץ על **Create custom dimensions**.
+
+3. **מלא את פרטי המידה**
+
+   - **שם המידה** — התווית הקריאה לבן אדם שמופיעה בדוחות GA4 (ראה טבלה למטה)
+   - **Scope** — בחר **Item**
+   - **Event parameter** — שם הפרמטר המדויק כפי שמופיע ב-dataLayer (ראה טבלה למטה)
+   - **Description** — אופציונלי אך מומלץ
+
+4. **שמור וחזור על הפעולה**
+
+   לחץ על **Save**, ואז חזור על הפעולה עבור כל פרמטר שברצונך לעקוב אחריו.
+
+</Steps>
+
+<Aside type="note">
+מידות מותאמות אישית עשויות להופיע בדוחות GA4 עד 24 שעות לאחר הרישום. נתונים היסטוריים שנאספו לפני הרישום אינם מתווספים בדיעבד.
+
+GA4 מאפשר עד 50 מידות מותאמות אישית ברמת פריט לנכס סטנדרטי (נכסי 360 מאפשרים יותר).
+</Aside>
+
+השתמש בטבלה הבאה כהפניה בעת יצירת מידות מותאמות אישית. ערך **Event parameter** חייב להתאים במדויק — GA4 רגיש לאותיות גדולות וקטנות.
+
+| שם המידה | Event parameter | סוג |
+|----------------|-----------------|------|
+| מזהה נכס | `property_id` | טקסט |
+| שם נכס | `property_name` | טקסט |
+| מותג נכס | `property_brand` | טקסט |
+| רשת נכס | `property_chain` | טקסט |
+| שם עיר | `city_name` | טקסט |
+| קוד מדינה | `country_code` | טקסט |
+| תאריך צ'ק-אין | `start_date` | טקסט |
+| תאריך צ'ק-אאוט | `end_date` | טקסט |
+| מספר מבוגרים | `num_adults` | מספר |
+| מספר ילדים | `num_children` | מספר |
+| מדיניות ביטול | `cancellation_policy` | טקסט |
+| מזהה תוכנית תעריפים | `rate_plan_id` | טקסט |
+| מזהה תעריף חדר | `room_rate_id` | טקסט |
+| שם תעריף חדר | `room_rate_name` | טקסט |
+| מספר הטבות | `num_perks` | מספר |
+| מיקום חדר | `room_location` | טקסט |
+| נוף חדר | `room_view` | טקסט |
+| סיווג חדר | `room_classification` | טקסט |
+
+---
+
+### אירועים זמינים נוספים
+
+האירועים הבאים זמינים ב-dataLayer של Wink אך אינם חלק ממשפך ההזמנה הסטנדרטי. הם עשויים להיות מופעלים על ידי אינטראקציות אחרות בפלטפורמה.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+לא מצורף מטען `ecommerce` לאירוע זה.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+זהו אירוע מותאם אישית של Wink — לא חלק מסט אירועי GA4 הסטנדרטי. הוא נדחף בכל ניווט דף ונושא הקשר של מכשיר ומפגש. הוא אינו כולל אובייקט `ecommerce`.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| תכונה | תיאור |
+|----------|-------------|
+| `device` | סוג המכשיר שזוהה — `Desktop`, `Android`, `iPhone`, `iPad` או דומה |
+| `deviceAgent` | מחרוזת סוכן משתמש גולמית |
+| `os` | מערכת הפעלה שזוהתה — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | נתיב הדף הנוכחי |
+| `title` | כותרת הדף הנוכחי |
+| `userId` | מזהה משתמש מאומת (נמחק כאשר לא מחובר) |
+| `startDate` | תאריך צ'ק-אין מהמפגש הנוכחי בחיפוש |
+| `endDate` | תאריך צ'ק-אאוט מהמפגש הנוכחי בחיפוש |
+| `guests` | מספר האורחים מהמפגש הנוכחי בחיפוש |
+| `rooms` | מספר החדרים מהמפגש הנוכחי בחיפוש |

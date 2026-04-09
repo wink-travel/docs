@@ -16,14 +16,14 @@ Booking engine je jadrom našej platformy.
 
 Jeho zodpovednosti zahŕňajú:
 
-- Spravovanie mien a udržiavanie aktuálnych výmenných kurzov.
-- Poskytnutie spôsobu pre poskytovateľov cien, ako nám posielať cenové údaje.
-- Spravovanie vyhľadávacích údajov. *napr. regióny, krajiny, destinácie, objekty atď.*
-- Spravovanie jazykov.
+- Správu mien a udržiavanie aktuálnych výmenných kurzov.
+- Poskytnutie spôsobu pre poskytovateľov cien, ako nám zasielať cenové údaje.
+- Správu vyhľadávacích údajov. *napr. regióny, krajiny, destinácie, ubytovacie zariadenia atď.*
+- Správu jazykov.
 - Generovanie analytiky na základe interakcií používateľov, udalostí a API volaní.
 - Poskytovanie rezervovateľného inventára v požadovanom formáte, jazyku a mene, ako napríklad:
     - [zdieľateľný odkaz](/sk/studio/shareable-links) na Facebooku.
-    - Hotelová vstupná stránka na https://ota.wink.travel s inventárom pre daný hotel.
+    - vstupná stránka hotela na https://ota.wink.travel s inventárom pre daný hotel.
     - [karta](/sk/studio/cards) obsahujúca inventár pridružených partnerov.
     - [mapa](/sk/studio/maps) vo vašom účte [WinkLinks](/sk/link-manager/wink-links).
     - [API volanie](/sk/developers/apis) z diaľkového systému cestovnej agentúry.
@@ -34,7 +34,7 @@ Jeho zodpovednosti zahŕňajú:
     - Spravovať svoj [bucket list](/sk/booking-engine/bucket-list) vecí na rezervovanie v budúcnosti.
     - Spravovať svoj [cestovný profil](/sk/booking-engine/travel-preferences). *napr. alergie, kontaktná osoba pre núdzové situácie atď.*
 
-Booking engine je zbierka znovupoužiteľnej funkcionality, ktorú sprístupňujeme cez https://ota.wink.travel; vysoko prispôsobiteľnú webovú stránku pre hotely a pridružených partnerov na predaj ich ponúk cestujúcim.
+Booking engine je zbierka opakovane použiteľnej funkcionality, ktorú sprístupňujeme cez https://ota.wink.travel; vysoko prispôsobiteľnú webovú stránku pre hotely a pridružených partnerov na predaj ich ponúk cestujúcim.
 
 Integrátori, ktorí chcú ešte väčšiu slobodu, majú prístup ku všetkým rovnakým funkciám cez náš [WordPress plugin](/sk/integrations/wordpress/), [Web Components](/sk/integrations/web-components) a [APIs](/sk/developers/apis).
 

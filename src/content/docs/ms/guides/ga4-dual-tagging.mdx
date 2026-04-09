@@ -1,0 +1,140 @@
+---
+title: Integrasi GA4 Analytics
+description: Cara menghubungkan properti Google Analytics 4 anda sendiri ke Wink supaya anda dapat menjejak tempahan, pendapatan, dan perjalanan tetamu secara langsung dalam papan pemuka GA4 anda sendiri.
+sidebar:
+  label: Integrasi GA4 Analytics
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Dengan menghubungkan properti Google Analytics 4 anda ke Wink, acara tempahan anda — dari paparan bilik hingga pembelian yang lengkap — akan dihantar secara automatik ke papan pemuka GA4 anda bersama dengan analitik Wink sendiri. Tiada kod, tiada persediaan teknikal di pihak anda.
+
+<Aside type="tip">
+Apa yang anda perlukan hanyalah ID Pengukuran GA4. Setelah dimasukkan dalam portal Wink, analitik anda akan aktif serta-merta.
+</Aside>
+
+---
+
+## Cara Ia Berfungsi
+
+```
+Anda masukkan G-XXXXXXXXXX dalam portal Wink
+       ↓
+Wink menghantar acara tempahan anda ke properti GA4 anda
+       ↓
+Anda log masuk ke analytics.google.com dan melihat tempahan anda
+```
+
+---
+
+## Apa Yang Perlu Anda Lakukan
+
+<Steps>
+
+1. **Cipta Properti GA4**
+
+   Pergi ke [analytics.google.com](https://analytics.google.com): Admin → Cipta Properti. Tetapkan zon waktu dan mata wang anda mengikut pasaran anda.
+
+2. **Cipta Aliran Data Web**
+
+   Admin → Aliran Data → Tambah Aliran → Web. Masukkan `wink.travel` sebagai URL. Ini akan menjana **ID Pengukuran** anda (`G-XXXXXXXXXX`). Salin ID tersebut.
+
+3. **Masukkan ID Pengukuran Anda dalam Portal Wink**
+
+   Log masuk ke [my.wink.travel](https://my.wink.travel), pilih akaun anda, dan pergi ke tab **Penyesuaian**. Tampal ID Pengukuran anda di situ dan simpan. Itu sahaja — integrasi GA4 anda kini aktif.
+
+4. **Tandakan `purchase` sebagai Acara Utama**
+
+   Kembali ke properti GA4 anda: Admin → Acara → cari `purchase` → togol **Tandakan sebagai acara utama**. Ini menjadikan tempahan yang lengkap muncul dalam laporan Penukaran anda.
+
+5. **Lihat Data Anda**
+
+   Log masuk ke [analytics.google.com](https://analytics.google.com) dan anda akan melihat tempahan, pendapatan, dan corong tetamu anda — semua dijejak secara automatik melalui Wink.
+
+</Steps>
+
+<Aside type="note">
+Anda tidak perlu memasang sebarang kod penjejakan di laman web anda sendiri untuk integrasi ini. Wink mengendalikan semuanya. ID Pengukuran anda hanyalah destinasi di mana data tempahan anda dihantar.
+</Aside>
+
+---
+
+## Apa Yang Boleh Anda Jejak
+
+Setelah disambungkan, properti GA4 anda menerima suite penuh acara E-dagang Dipertingkatkan untuk properti anda:
+
+### Penemuan
+
+| Acara | Maksudnya |
+|---|---|
+| `view_item_list` | Tetamu melihat properti anda dalam carian atau senarai kategori |
+| `select_item` | Tetamu mengklik pada properti anda dari senarai |
+| `view_item` | Tetamu melihat halaman butiran hotel anda |
+
+### Pertimbangan
+
+| Acara | Maksudnya |
+|---|---|
+| `view_promotion` | Tetamu melihat tawaran promosi untuk properti anda |
+| `select_promotion` | Tetamu mengklik tawaran promosi |
+| `add_to_wishlist` | Tetamu menyimpan properti anda ke dalam senarai keinginan mereka |
+
+### Corong Tempahan
+
+| Acara | Maksudnya |
+|---|---|
+| `add_to_cart` | Tetamu memilih bilik atau pakej |
+| `view_cart` | Tetamu melihat ringkasan tempahan mereka |
+| `remove_from_cart` | Tetamu mengeluarkan bilik atau pakej |
+| `begin_checkout` | Tetamu memulakan proses pembayaran |
+| `add_payment_info` | Tetamu memasukkan butiran pembayaran mereka |
+| `add_shipping_info` | Tetamu memasukkan butiran tetamu mereka |
+| `purchase` | Tetamu melengkapkan tempahan |
+| `refund` | Tempahan dibatalkan dan dikembalikan wang |
+
+Semua acara termasuk dimensi berkaitan seperti pendapatan, mata wang, jenis bilik, dan nilai tempahan — memberikan anda gambaran penuh perjalanan tetamu dari impresi pertama hingga tempahan lengkap.
+
+---
+
+## Penjejakan Rentas-Domain (Lanjutan)
+
+Integrasi standard di atas menjejak segala yang berlaku dalam Wink. Namun, jika anda mahu menjejak tetamu dari laman web anda sendiri hingga ke penyelesaian tempahan di Wink — dan mengaitkan dengan betul sumber trafik asal (Google Ads, kempen emel, carian organik, dan lain-lain) — satu langkah tambahan diperlukan di setiap pihak.
+
+<Aside type="caution">
+Bahagian ini hanya terpakai jika anda memasang GA4 di laman web anda sendiri. Jika anda tidak menjalankan GA4 di laman anda, integrasi standard di atas sudah mencukupi.
+</Aside>
+
+### Kenapa Ini Penting
+
+Tanpa penjejakan rentas-domain, tetamu yang melawat laman web anda dahulu dan kemudian membuat tempahan di Wink akan muncul dalam GA4 anda sebagai sesi **Direct** tanpa kaitan dengan lawatan mereka sebelum ini. Sebarang klik Google Ads, kempen emel, atau lawatan carian organik yang membawa kepada tempahan tidak akan mendapat pengiktirafan.
+
+Dengan penjejakan rentas-domain dikonfigurasikan, anda dapat melihat perjalanan tetamu secara lengkap:
+
+```
+google.com (iklan berbayar)
+       ↓
+laman web anda (tetamu melayari bilik)
+       ↓
+wink.travel (tetamu memilih bilik dan membuat tempahan)
+       ↓
+pembelian dikaitkan dengan betul kepada klik Google Ads asal
+```
+
+### Tindakan Diperlukan: Anda
+
+Konfigurasikan properti GA4 anda untuk mengenal pasti `wink.travel` sebagai sebahagian daripada domain anda sendiri, bukan sebagai rujukan luaran. Ini memberitahu GA4 untuk menggabungkan dua sesi tersebut menjadi satu perjalanan tetamu yang berterusan.
+
+<Steps>
+1. GA4 Admin → Aliran Data → aliran anda
+2. Konfigurasikan tetapan tag → **Konfigurasikan domain anda**
+3. Tambah `wink.travel` sebagai domain yang dipautkan
+4. Simpan
+</Steps>
+
+### Tindakan Diperlukan: Wink
+
+Hubungi [Sokongan Wink](https://my.wink.travel) dan berikan domain laman web anda (contoh: `yourhotel.com`). Wink akan menambah domain anda ke senarai pengecualian rujukan dalam properti GA4 Wink. Ini menghalang laman web anda direkodkan sebagai sumber rujukan, yang jika tidak akan menulis semula atribusi asal tetamu dan memulakan sesi baru.
+
+<Aside type="tip">
+Integrasi standard di atas sudah mencukupi untuk kebanyakan properti dan memberikan anda visibiliti segera ke atas tempahan dan pendapatan di Wink. Penjejakan rentas-domain adalah pilihan lanjutan yang patut disediakan apabila anda sudah selesa dengan data GA4 anda dan mahukan wawasan atribusi yang lebih mendalam.
+</Aside>

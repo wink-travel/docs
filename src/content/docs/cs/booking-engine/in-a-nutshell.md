@@ -5,7 +5,7 @@ sidebar:
   order: 0
 ---
 
-Zde je, jak rozdělujeme odpovědnost ve Wink:
+Takto rozdělujeme odpovědnost ve Wink:
 
 - [Extranet](/cs/extranet/what-is-extranet) se zabývá dodavateli spravujícími inventář.
 - [Studio](/cs/studio/what-is-studio) se zabývá partnery spravujícími obsah.
@@ -20,10 +20,10 @@ Jeho odpovědnosti zahrnují:
 - Poskytnutí způsobu pro poskytovatele sazeb, jak nám zasílat data o sazbách.
 - Správu vyhledávacích dat. *např. regiony, země, destinace, objekty atd.*
 - Správu jazyků.
-- Generování analýz na základě uživatelských interakcí, událostí a API volání.
+- Generování analytiky na základě uživatelských interakcí, událostí a API volání.
 - Poskytování rezervovatelného inventáře ve požadovaném formátu, jazyce a měně, například:
     - [sdílitelný odkaz](/cs/studio/shareable-links) na Facebooku.
-    - Hotelová vstupní stránka na https://ota.wink.travel s inventářem pro daný hotel.
+    - vstupní stránku hotelu na https://ota.wink.travel s inventářem pro daný hotel.
     - [kartu](/cs/studio/cards) obsahující inventář partnera.
     - [mapu](/cs/studio/maps) ve vašem účtu [WinkLinks](/cs/link-manager/wink-links).
     - [API volání](/cs/developers/apis) z externího systému cestovní agentury.

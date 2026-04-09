@@ -11,31 +11,31 @@ sidebar:
 
 :::caution[Aviso]
 Os termos de serviço abaixo se aplicam a agentes de viagem que desejam adquirir e distribuir fundos por conta própria.  
-Isso só pode ser feito através da nossa API e apenas por agentes de viagem que indicaram que desejam fazer isso durante o processo de cadastro.
+Isso só pode ser feito por meio da nossa API e apenas por agentes de viagem que indicaram que desejam fazer isso durante o processo de cadastro.
 
 Todos os agentes de viagem ainda podem reservar através do nosso portal para agentes de viagem usando a gateway de pagamento da Wink com seu próprio cartão de crédito ou o do viajante. Portanto, todos os agentes de viagem também precisam concordar com os termos de serviço onde a gateway de pagamento da Wink é o comerciante registrado.
 
 Esses termos estão disponíveis em [Affiliate Portal > Terms of Service](/pt-BR/studio/terms-of-service).
 :::
 
-**TERMOS E CONDIÇÕES GERAIS WINK**  
+**TERMOS E CONDIÇÕES GERAIS DA WINK**  
 **PARA AGENTES DE VIAGEM (Comerciante Registrado)**
 
 **ENTRE:**
 
-1. **Winkfluence**, uma empresa constituída sob as leis de Singapura e com escritório registrado no \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, com número de registro de IVA 201437335D (doravante denominada "Wink") e  
+1. **Winkfluence**, uma empresa constituída sob as leis de Singapura e com sede registrada em \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, com número de registro de IVA 201437335D (doravante denominada "Wink") e  
      
-2. **O AGENTE DE VIAGEM** cujos dados estão descritos no Formulário de Registro do Agente de Viagem ou foram submetidos online (o "Agente de Viagem").
+2. **O AGENTE DE VIAGEM** cujos dados estão descritos no Formulário de Registro do Agente de Viagem ou foram enviados online (o "Agente de Viagem").
 
 **CONSIDERANDO QUE:**
 
-(i) A Wink opera um sistema online (o "Sistema") através do qual acomodações participantes (coletivamente os "Fornecedores de Acomodação") podem disponibilizar seu inventário para reserva e através do qual o Agente de Viagem pode fazer reservas nesses Fornecedores de Acomodação em nome de seus hóspedes (o "Serviço");
+(i) A Wink opera um sistema online (o "Sistema") através do qual acomodações participantes (coletivamente os "Fornecedores de Acomodação") podem disponibilizar seu inventário para reserva e através do qual o Agente de Viagem pode fazer reservas nessas acomodações em nome de seus hóspedes (o "Serviço");
 
-(ii) A Wink não possui, controla, oferece ou gerencia quaisquer listagens. A Wink não é parte dos contratos celebrados diretamente entre os Fornecedores de Acomodação e os hóspedes. A Wink não atua como agente em qualquer capacidade para os Fornecedores de Acomodação;
+(ii) A Wink não possui, controla, oferece ou gerencia quaisquer listagens. A Wink não é parte dos contratos celebrados diretamente entre os Fornecedores de Acomodação e os hóspedes. A Wink não atua como agente em nenhuma capacidade para os Fornecedores de Acomodação;
 
-(iii) A Wink mantém e explora seus próprios sites (os "Sites Wink") e também fornece o Serviço e links para o Serviço nos sites de terceiros;
+(iii) A Wink mantém e explora seus próprios sites (os "Sites da Wink") e também fornece o Serviço e links para o Serviço nos sites de terceiros;
 
-(iv) O Agente de Viagem possui, controla, hospeda e/ou opera um ou mais domínios de Internet, sites ou aplicativos e deseja ser o comerciante registrado enquanto utiliza o Serviço.
+(iv) O Agente de Viagem possui, controla, hospeda e/ou opera um ou mais domínios de Internet, sites ou aplicativos e deseja ser o comerciante registrado ao usar o Serviço.
 
 (v) O Agente de Viagem e a Wink desejam que o Agente de Viagem disponibilize o Serviço (direta ou indiretamente) para seus clientes e visitantes dos sites e aplicativos do Agente de Viagem, e em tal forma e sob tais termos e condições (doravante denominados "Termos") conforme estabelecido neste Contrato.
 
@@ -45,7 +45,7 @@ Esses termos estão disponíveis em [Affiliate Portal > Terms of Service](/pt-BR
 
 1. Além dos termos definidos em outras partes deste Contrato, as seguintes definições aplicam-se em todo este Contrato, salvo indicação em contrário:
 
-* **"Acomodação"** significa qualquer forma de acomodação, incluindo, mas não se limitando a hotéis, motéis, pousadas, bed & breakfasts, hostels, vilas, apartamentos, lodges, estalagens, resorts e qualquer outro tipo de provedor de acomodação ou hospedagem (disponível ou não nos Sites Wink).  
+* **"Acomodação"** significa qualquer forma de acomodação, incluindo, mas não se limitando a hotéis, motéis, pousadas, bed & breakfasts, hostels, vilas, apartamentos, lodges, estalagens, resorts e qualquer outro tipo de provedor de acomodação ou hospedagem (independentemente de estar disponível nos Sites da Wink).  
     
 * **"Fornecedor(es) de Acomodação"** significa qualquer Parte que cria uma conta no Provedor de Serviço com a intenção de vender seu próprio inventário de quartos e serviços auxiliares através da plataforma Wink.  
     
@@ -61,13 +61,13 @@ Esses termos estão disponíveis em [Affiliate Portal > Terms of Service](/pt-BR
     
 * **“Hóspede”** significa um indivíduo ou grupo que faz uma reserva através do Agente de Viagem para serviços de acomodação.  
     
-* **"Comerciante Registrado"** refere-se à entidade legalmente autorizada e responsável por processar pagamentos dos hóspedes, incluindo o manuseio de transações de pagamento, reembolsos, estornos e garantindo conformidade com regulamentos de pagamento. O Comerciante Registrado é a entidade cujo nome aparece na fatura do cartão de crédito do hóspede para cobranças relacionadas à Reserva.
+* **"Comerciante Registrado"** refere-se à entidade legalmente autorizada e responsável por processar pagamentos dos hóspedes, incluindo o manuseio de transações de pagamento, reembolsos, estornos e garantindo conformidade com regulamentos de pagamento. O Comerciante Registrado é a entidade cujo nome aparece no extrato do cartão de crédito do hóspede para cobranças relacionadas à Reserva.
 
 * **"Pagamento Líquido"** significa o valor a ser pago ao Fornecedor de Acomodação após deduzir a Taxa de Reserva da Wink e a Comissão do Agente de Viagem do Valor da Reserva.  
     
 * **“Pagamentos”** significa as obrigações financeiras decorrentes deste Contrato, incluindo comissões, taxas ou outros encargos, pagáveis por uma parte à outra.
 
-* **"Facilitador de Pagamento"** é uma subsidiária integral da Winkfluence que gerencia os Serviços de Pagamento, coletando pagamentos dos hóspedes ao cobrar o método de pagamento associado à compra, como cartão de crédito, cartão de débito, transferência bancária, criptomoedas ou PayPal, etc.  
+* **"Facilitador de Pagamento"** é uma subsidiária integral da Winkfluence que gerencia os Serviços de Pagamento, coletando pagamentos dos hóspedes cobrando o método de pagamento associado à compra, como cartão de crédito, cartão de débito, transferência bancária, criptomoedas ou PayPal, etc.  
     
 * **“Plataforma”** significa o sistema online operado pelo Provedor de Serviço através do qual o Agente de Viagem pode fazer ou gerenciar Reservas para hóspedes.
 
@@ -75,7 +75,7 @@ Esses termos estão disponíveis em [Affiliate Portal > Terms of Service](/pt-BR
     
 * **“Serviços”** significa os serviços fornecidos pelo Provedor de Serviço ao Agente de Viagem sob este Contrato, incluindo, mas não se limitando a acesso à Plataforma, facilitação de reservas e suporte ao cliente.  
     
-* **“Provedor de Serviço”** significa Wink, **TRAVELIKO SINGAPORE PTE. LTD** registrada em Singapura.  
+* **“Provedor de Serviço”** significa a Wink, **TRAVELIKO SINGAPORE PTE. LTD** registrada em Singapura.  
     
 * **“Agente de Viagem”** significa a entidade que celebra este Contrato com o Provedor de Serviço para promover e vender reservas de viagem através da Plataforma do Provedor de Serviço.
 
@@ -83,7 +83,7 @@ Esses termos estão disponíveis em [Affiliate Portal > Terms of Service](/pt-BR
 
 2.1 O Agente de Viagem atuará como distribuidor não exclusivo da Wink.
 
-2.2 O Serviço será disponibilizado pela Wink ao Agente de Viagem conforme estabelecido no Formulário de Registro do Agente de Viagem e nos sites indicados no referido formulário.
+2.2 O Serviço será disponibilizado pela Wink ao Agente de Viagem conforme estabelecido no Formulário de Registro do Agente de Viagem e nos sites indicados no Formulário de Registro do Agente de Viagem.
 
 **3\. Coleta e Distribuição de Pagamentos**
 
@@ -94,11 +94,11 @@ Esses termos estão disponíveis em [Affiliate Portal > Terms of Service](/pt-BR
 * 1,5% de Taxa de Reserva para a Wink.  
 * Comissão do Agente de Viagem.
 
-3.3 **Pagamento Líquido:** O Pagamento Líquido restante deverá ser repassado pelo Agente de Viagem ao respectivo Fornecedor de Acomodação conforme os termos de um contrato separado entre o Agente de Viagem e o Fornecedor de Acomodação. A Wink não será responsável por realizar quaisquer pagamentos ao Fornecedor de Acomodação.
+3.3 **Pagamento Líquido:** O Pagamento Líquido restante deverá ser distribuído pelo Agente de Viagem ao respectivo Fornecedor de Acomodação conforme os termos de um contrato separado entre o Agente de Viagem e o Fornecedor de Acomodação. A Wink não será responsável por realizar quaisquer pagamentos ao Fornecedor de Acomodação.
 
 3.4 **Contrato Separado:** O Agente de Viagem deve possuir um contrato separado com cada Fornecedor de Acomodação detalhando os termos e condições de pagamento. Este Contrato entre a Wink e o Agente de Viagem não rege a relação entre o Agente de Viagem e os Fornecedores de Acomodação.
 
-3.5 **Faturamento da Wink:** A Wink emitirá uma fatura mensal ao Agente de Viagem referente à Taxa de Reserva de 1,5% acumulada durante o mês. O Agente de Viagem é responsável por quitar essa fatura dentro dos prazos de pagamento especificados.
+3.5 **Faturamento da Wink:** A Wink emitirá uma fatura mensal ao Agente de Viagem pela Taxa de Reserva de 1,5% acumulada durante o mês. O Agente de Viagem é responsável por quitar essa fatura dentro dos prazos de pagamento especificados.
 
 **4\. Papéis e Responsabilidades**
 
@@ -116,7 +116,7 @@ Esses termos estão disponíveis em [Affiliate Portal > Terms of Service](/pt-BR
 
 **5\. Direitos de Propriedade Intelectual**
 
-5.1 **Licenças:** Cada Parte concede à outra uma licença limitada, não exclusiva, isenta de royalties e mundial para usar sua propriedade intelectual exclusivamente para cumprir as obrigações deste Contrato.
+5.1 **Licenças:** Cada Parte concede à outra uma licença limitada, não exclusiva, isenta de royalties e mundial para usar sua propriedade intelectual exclusivamente para cumprir as obrigações sob este Contrato.
 
 5.2 **Restrições:** O Agente de Viagem não deve sublicenciar, transferir ou divulgar qualquer propriedade intelectual ou conteúdo fornecido pela Wink.
 
@@ -129,7 +129,7 @@ Esses termos estão disponíveis em [Affiliate Portal > Terms of Service](/pt-BR
 
 6.2 **Pagamentos Atrasados:**
 
-* Se qualquer pagamento devido sob este Contrato não for recebido na data de vencimento, a Wink reserva-se o direito de cobrar juros à taxa de 5% ao mês ou a taxa máxima permitida por lei, o que for menor, sobre o valor em aberto, calculados desde a data de vencimento até a data do pagamento. Além disso, a Wink poderá suspender os serviços até o recebimento do pagamento. Contudo, se houver erros ou equívocos na fatura enviada pela Wink, o Agente de Viagem deverá pagar apenas a parte correta e precisa da fatura, não estando sujeito a juros ou penalidades pelo não pagamento da parte incorreta da fatura.
+* Se qualquer pagamento devido sob este Contrato não for recebido na data de vencimento, a Wink reserva-se o direito de cobrar juros à taxa de 5% ao mês ou a taxa máxima permitida por lei, o que for menor, sobre o valor em aberto, calculados desde a data de vencimento até a data do pagamento. Além disso, a Wink poderá suspender os serviços até o recebimento do pagamento. No entanto, se houver erros ou equívocos na fatura enviada pela Wink, o Agente de Viagem deverá pagar apenas a parte correta e precisa da fatura e não estará sujeito a cobrança de juros ou penalidades pelo não pagamento da parte incorreta da fatura.
 
 6.3 **Reembolsos e Créditos:**
 
@@ -141,11 +141,11 @@ Esses termos estão disponíveis em [Affiliate Portal > Terms of Service](/pt-BR
 
 6.5 **Métodos de Pagamento:**
 
-* O Agente de Viagem deverá realizar os pagamentos via transferência bancária, cartão de crédito ou PayPal, e quaisquer taxas associadas ao método de pagamento escolhido serão de responsabilidade do Agente de Viagem.
+* O Agente de Viagem deverá realizar os pagamentos via transferência bancária, cartão de crédito ou PayPal, e quaisquer taxas associadas ao método de pagamento escolhido pelo Agente de Viagem serão de responsabilidade do Agente de Viagem.
 
 6.6 **Disputas de Pagamento:**
 
-* Em caso de disputa sobre qualquer fatura, o Agente de Viagem deverá notificar a Wink em até 10 dias a partir da data da fatura, fornecendo razões detalhadas para a disputa. Ambas as partes negociarão de boa fé para resolver a disputa prontamente. A parte não contestada da fatura deverá ser paga na data de vencimento.
+* Em caso de disputa sobre qualquer fatura, o Agente de Viagem deverá notificar a Wink em até 10 dias a partir da data da fatura, fornecendo razões detalhadas para a disputa. Ambas as partes negociarão de boa-fé para resolver a disputa prontamente. A parte não contestada da fatura deverá ser paga na data de vencimento.
 
 **7\. Responsabilidades do Agente de Viagem**
 
@@ -160,15 +160,15 @@ Esses termos estão disponíveis em [Affiliate Portal > Terms of Service](/pt-BR
 
 7.3 **Promoção dos Serviços:**
 
-* O Agente de Viagem deverá promover ativamente os serviços oferecidos através da Plataforma conforme as diretrizes fornecidas pelo Provedor de Serviço. Isso inclui, mas não se limita a, atividades de marketing, manutenção de materiais promocionais atualizados e garantia de que todo conteúdo promocional seja preciso e cumpra os padrões publicitários aplicáveis.
+* O Agente de Viagem deverá promover ativamente os serviços oferecidos através da Plataforma de acordo com as diretrizes fornecidas pelo Provedor de Serviço. Isso inclui, mas não se limita a, atividades de marketing, manutenção de materiais promocionais atualizados e garantia de que todo conteúdo promocional seja preciso e cumpra os padrões publicitários aplicáveis.
 
 7.4 **Gestão de Reservas:**
 
-* O Agente de Viagem deverá gerenciar todas as Reservas feitas através da Plataforma, incluindo processamento de reservas, cancelamentos e alterações. O Agente de Viagem será responsável pela comunicação com hóspedes e Fornecedores de Acomodação para garantir que todas as Reservas sejam processadas e confirmadas corretamente.
+* O Agente de Viagem deverá gerenciar todas as Reservas feitas através da Plataforma, incluindo processamento de reservas, cancelamentos e alterações. O Agente de Viagem será responsável por comunicar-se com hóspedes e Fornecedores de Acomodação para garantir que todas as Reservas sejam processadas e confirmadas corretamente.
 
 7.5 **Coleta e Remessa de Pagamentos:**
 
-* O Agente de Viagem será responsável por coletar pagamentos dos hóspedes para Reservas feitas através da Plataforma e remeter os pagamentos acordados aos Fornecedores de Acomodação e ao Provedor de Serviço, conforme especificado nos Termos de Pagamento. O Agente de Viagem deverá garantir que todos os pagamentos sejam processados de forma segura e em conformidade com as regulamentações financeiras aplicáveis.
+* O Agente de Viagem será responsável por coletar pagamentos dos hóspedes pelas Reservas feitas através da Plataforma e remeter os pagamentos acordados aos Fornecedores de Acomodação e ao Provedor de Serviço, conforme especificado nos Termos de Pagamento. O Agente de Viagem deverá garantir que todos os pagamentos sejam processados de forma segura e em conformidade com as regulamentações financeiras aplicáveis.
 
 7.6 **Tratamento de Reclamações e Disputas dos Hóspedes:**
 
@@ -194,7 +194,7 @@ Esses termos estão disponíveis em [Affiliate Portal > Terms of Service](/pt-BR
 
 8.1 **Cálculo da Comissão:** A Comissão devida ao Agente de Viagem será uma porcentagem (definida no acordo entre o Agente de Viagem e o Fornecedor de Acomodação) do Valor da Reserva após deduzir a Taxa de Reserva da Wink.
 
-8.2 **Taxa de Reserva da Wink:** A Wink emitirá uma fatura mensal referente à Taxa de Reserva de 1,5%. O Agente de Viagem é responsável por quitar essa fatura dentro dos prazos de pagamento especificados pela Wink.
+8.2 **Taxa de Reserva da Wink:** A Wink emitirá uma fatura mensal pela Taxa de Reserva de 1,5%. O Agente de Viagem é responsável por quitar essa fatura dentro dos prazos de pagamento especificados pela Wink.
 
 **9\. Disposições Legais**
 
@@ -202,7 +202,7 @@ Esses termos estão disponíveis em [Affiliate Portal > Terms of Service](/pt-BR
 
 9.2 **Indenização:** Cada Parte concorda em indenizar e isentar a outra de quaisquer reivindicações decorrentes de violação deste Contrato ou negligência da Parte indenizadora.
 
-9.3 **Força Maior:** Nenhuma das Partes será responsável por atrasos ou falhas no cumprimento devido a causas além do seu controle razoável, incluindo atos de Deus, desastres naturais, guerra, terrorismo, greves, etc.
+9.3 **Força Maior:** Nenhuma das Partes será responsável por atrasos ou falhas no cumprimento devido a causas além de seu controle razoável, incluindo atos de Deus, desastres naturais, guerra, terrorismo, greves, etc.
 
 **10\. Prazo e Rescisão**
 
@@ -218,9 +218,9 @@ Esses termos estão disponíveis em [Affiliate Portal > Terms of Service](/pt-BR
 
 11.2 **Resolução de Disputas:** 
 
-11.2.1 **Negociação:** Em caso de qualquer disputa, reclamação, questão ou desacordo decorrente ou relacionado a este Contrato, as partes tentarão primeiro resolver a disputa por meio de negociações de boa fé. Essas negociações começarão mediante notificação por escrito de uma parte à outra.
+11.2.1 **Negociação:** Em caso de qualquer disputa, reclamação, questão ou desacordo decorrente ou relacionado a este Contrato, as partes deverão primeiro tentar resolver a disputa por meio de negociações de boa-fé. Essas negociações deverão começar mediante notificação por escrito de uma parte à outra.
 
-11.2.2 **Arbitragem:** Se a disputa não puder ser resolvida por negociações em até trinta (30) dias, a disputa será submetida e finalmente resolvida por arbitragem sob as Regras do Singapore International Arbitration Centre (SIAC), que são incorporadas por referência a esta cláusula. O número de árbitros será um, e o local legal da arbitragem será Singapura. O idioma a ser usado na arbitragem será o inglês.
+11.2.2 **Arbitragem:** Se a disputa não puder ser resolvida por negociações dentro de trinta (30) dias, a disputa será submetida e finalmente resolvida por arbitragem sob as Regras do Centro Internacional de Arbitragem de Singapura (SIAC), que são consideradas incorporadas por referência nesta cláusula. O número de árbitros será um, e o local legal da arbitragem será Singapura. O idioma a ser usado nos procedimentos de arbitragem será o inglês.
 
 11.2.3 **Jurisdição:** Não obstante o acima, qualquer das partes mantém o direito de buscar medidas provisórias ou injuntivas nos tribunais de Singapura para proteger seus direitos ou propriedade enquanto aguarda a nomeação de um árbitro, e qualquer tribunal terá jurisdição exclusiva para conceder tais medidas.
 
@@ -233,9 +233,9 @@ Esses termos estão disponíveis em [Affiliate Portal > Terms of Service](/pt-BR
 12.3 **Impacto nos Serviços**:
 
 * Suspensão dos Serviços: Se um Evento de Força Maior afetar a capacidade do seu negócio de fornecer serviços ao Agente de Viagem, esses serviços serão suspensos durante a duração do evento sem penalidade. As obrigações de pagamento do Agente de Viagem relacionadas aos serviços afetados também serão suspensas durante esse período.  
-* Obrigações do Agente de Viagem: O Agente de Viagem não será responsabilizado por quaisquer obrigações que sejam impossíveis de cumprir devido ao Evento de Força Maior. No entanto, o Agente de Viagem deve continuar a cumprir todas as outras obrigações não diretamente afetadas pelo evento.
+* Obrigações do Agente de Viagem: O Agente de Viagem não será responsabilizado por quaisquer obrigações para com seu negócio que sejam impossíveis de cumprir devido ao Evento de Força Maior. No entanto, o Agente de Viagem deve continuar a cumprir todas as outras obrigações não diretamente afetadas pelo evento.
 
-12.4 **Duração e Rescisão:** Se o Evento de Força Maior continuar por mais de sessenta (60) dias, qualquer das partes poderá rescindir este Contrato mediante notificação por escrito à outra parte. Em caso de tal rescisão, nenhuma das partes terá qualquer responsabilidade perante a outra, exceto pelas obrigações acumuladas antes do Evento de Força Maior.
+12.4 **Duração e Rescisão:** Se o Evento de Força Maior continuar por mais de sessenta (60) dias, qualquer das partes poderá rescindir este Contrato mediante notificação por escrito à outra parte. Em caso de tal rescisão, nenhuma das partes terá qualquer responsabilidade perante a outra, exceto pelas obrigações que tenham surgido antes do Evento de Força Maior.
 
 12.5 **Retomada das Obrigações:** Uma vez cessado o Evento de Força Maior, ambas as partes deverão retomar prontamente suas obrigações sob este Contrato na medida do razoavelmente praticável.
 

@@ -9,15 +9,15 @@ Den här artikeln förklarar vilka typer av kunder vi betjänar och hur vi bäst
 
 ## Fastigheter
 
-Wink började onboarda hotell för ett decennium sedan. Hotell använder Wink för att effektivt hantera sin inventering över tusentals försäljningskanaler, inklusive deras egen brand.com-sida, och för att tjäna mer på varje bokning samtidigt som de stärker direkta kanaler med hjälp av våra gästfrihetsfokuserade verktyg som förbättrar varumärkesidentitet och lönsamhet​.
+Wink började onboarda hotell för ett decennium sedan. Hotell använder Wink för att effektivt hantera sin inventarie över tusentals försäljningskanaler, inklusive deras egen brand.com-sida, och för att tjäna mer på varje bokning samtidigt som de stärker direkta kanaler med hjälp av våra gästfrihetsfokuserade verktyg som förbättrar varumärkesidentitet och lönsamhet​.
 
 ## Varumärken & Kedjor
 
-Varumärken och kedjor har något annorlunda behov än enskilda fastigheter. På Wink kan de:
+Varumärken och kedjor har något annorlunda behov än en enskild fastighet. På Wink kan de:
 
 - Hantera flera fastigheter under ett enda konto.
 - Tilldela chefer till fastigheter
-- Använda [WinkLinks](/sv/link-manager/wink-links), [WordPress](/sv/integrations/wordpress) och våra [Web Components](/sv/integrations/web-components) för att marknadsföra och sälja flera fastigheter på samma plats.
+- Använda [WinkLinks](/sv/link-manager/wink-links), [WordPress](/sv/integrations/wordpress) och våra [Web Components](/sv/integrations/web-components) för att marknadsföra och sälja flera fastigheter på ett och samma ställe.
 
 ## Förvaltningsbolag
 
@@ -25,11 +25,11 @@ Gästfrihetsförvaltningsbolag och destination management-bolag kan hantera sina
 
 ## Influencers
 
-Influencers använder Wink för att bättre tjäna pengar på sin publik. De gör detta genom att samarbeta med hotell, skapa skräddarsydda erbjudanden och utnyttja Winks sociala verktyg och kraftfulla analysverktyg för att följa vilka produkter som säljer bäst​.
+Influencers använder Wink för att bättre tjäna pengar på sin publik. De gör detta genom att samarbeta med hotell, skapa skräddarsydda erbjudanden och utnyttja Winks sociala och användarvänliga verktyg samt kraftfulla analysverktyg för att följa vilka produkter som säljer bäst​.
 
 ## Resebyråer
 
-Resebyråer får tillgång till reseinventarier världen över till bra priser via vår dedikerade [resebyråportal](https://agent.wink.travel). De kan göra bokningar via vår portal, via vårt API eller låta sina användare boka själva på resebyråns webbplats som använder våra teknologier.
+Resebyråer får tillgång till reseinventarier världen över till bra priser via vår dedikerade [resebyråportal](https://agent.wink.travel). De kan göra bokningar via vår portal, via vårt API eller genom att låta sina användare boka själva på resebyråns webbplats som använder våra teknologier.
 
 ## Företag
 
@@ -46,7 +46,7 @@ Företagsresenärer kan hantera sina egna konton på vår [företagsportal](/sv/
 
 ## Utvecklare
 
-Även om vi byggde denna plattform av och för hotellägare... Varje kodrad är skapad med syftet att kunna återanvändas. Vårt team av utvecklare byggde Wink i hopp om att nästa 🦄 reseapp ska byggas ovanpå vår kodbas. Navigera till sidan [Developer](/sv/developers/build-on-wink) för att se hur Wink kan stödja dig i ditt nästa projekt.
+Även om vi byggde denna plattform av och för hotellägare... Varje kodrad är skapad med syftet att vara återanvändbar. Vårt team av utvecklare byggde Wink i hopp om att nästa 🦄 reseapp ska byggas ovanpå vår kodbas. Navigera till sidan [Developer](/sv/developers/build-on-wink) för att se hur Wink kan stödja dig i ditt nästa projekt.
 
 ## Övrigt
 

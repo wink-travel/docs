@@ -25,7 +25,7 @@ Estes Termos de Serviço de Pagamento (“Termos de Pagamento”) são um acordo
 
 **ENTRE:**
 
-1. **Winkfluence**, uma empresa constituída sob as leis de Singapura e com escritório registrado no \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, com número de registro de IVA 201437335D (doravante denominada "Wink") e  
+1. **Winkfluence**, uma empresa constituída sob as leis de Singapura e com sede registrada em \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, com número de registro de IVA 201437335D (doravante denominada "Wink") e  
      
 2. **O AGENTE DE VIAGEM** cujos dados estão descritos no Formulário de Registro do Agente de Viagem ou foram submetidos online (o "Agente de Viagem").
 
@@ -59,13 +59,13 @@ Subtotal = 1.000 - 15 = 985
 
 2.3 **Pagamento Líquido aos Fornecedores de Acomodação:** O Agente de Viagem é responsável por repassar o Pagamento Líquido ao Fornecedor de Acomodação conforme os termos do Contrato Separado entre o Agente de Viagem e o Fornecedor de Acomodação. A Wink não é responsável por realizar quaisquer pagamentos ao Fornecedor de Acomodação.
 
-**3\. Faturamento e Pagamento**
+**3**. **Faturamento e Pagamento** 
 
-3.1 **Faturamento Mensal:** A Wink emitirá uma fatura mensal correta e precisa ao Agente de Viagem pelas Taxas de Reserva acumuladas durante o mês anterior. O Agente de Viagem deve liquidar essa fatura dentro dos prazos de pagamento especificados na fatura.
+3.1 **Faturamento Mensal:** A Wink emitirá uma fatura mensal correta e precisa ao Agente de Viagem pelas Taxas de Reserva acumuladas durante o mês anterior. O Agente de Viagem deve liquidar essa fatura dentro dos termos de pagamento especificados na fatura.
 
 3.2 **Método de Pagamento:** Os pagamentos à Wink deverão ser feitos pelo método de pagamento especificado na fatura. Quaisquer custos associados à transferência do pagamento são de responsabilidade do Agente de Viagem.
 
-3.3 **Pagamentos Atrasados:** Em caso de atraso no pagamento, a Wink reserva-se o direito de cobrar juros sobre o valor em atraso à taxa de 5% ao mês ou a taxa máxima permitida por lei, o que for menor. Além disso, se o Agente de Viagem atrasar o pagamento ao Fornecedor de Acomodação conforme os termos do Contrato Separado, a Wink reserva-se o direito de suspender o acesso ao Serviço até que todos os pagamentos pendentes tanto para a Wink quanto para o Fornecedor de Acomodação sejam regularizados. Contudo, se houver erros ou equívocos na fatura emitida pela Wink, o Agente de Viagem deverá pagar apenas a parte correta e precisa da fatura, não estando sujeito a cobrança de juros ou penalidades pelo não pagamento da parte incorreta da fatura.
+3.3 **Pagamentos Atrasados:** Em caso de atraso no pagamento, a Wink reserva-se o direito de cobrar juros sobre o valor em atraso à taxa de 5% ao mês ou a taxa máxima permitida por lei, o que for menor. Além disso, se o Agente de Viagem atrasar o pagamento ao Fornecedor de Acomodação conforme os termos do Contrato Separado, a Wink reserva-se o direito de suspender o acesso ao Serviço até que todos os pagamentos pendentes tanto para a Wink quanto para o Fornecedor de Acomodação sejam regularizados. No entanto, se houver quaisquer erros ou equívocos na fatura emitida pela Wink, o Agente de Viagem deverá pagar apenas a parte correta e precisa da fatura, não estando sujeito a qualquer cobrança de juros ou penalidade pelo não pagamento da parte incorreta da fatura.
 
 **4\. Papéis e Responsabilidades**
 
@@ -73,7 +73,7 @@ Subtotal = 1.000 - 15 = 985
 
 * Garantir a coleta pontual dos pagamentos dos Hóspedes, conforme os termos descritos na Seção 2.1.  
 * Deduzir a Taxa de Reserva e a Comissão apropriadas antes de repassar o Pagamento Líquido aos Fornecedores de Acomodação conforme o Contrato Separado.  
-* Liquidar as faturas da Wink pelas Taxas de Reserva prontamente dentro dos prazos especificados na Seção 3.1.  
+* Quitar as faturas da Wink pelas Taxas de Reserva prontamente dentro dos termos especificados na Seção 3.1.  
 * Gerenciar ativamente e resolver quaisquer disputas relacionadas a reservas ou pagamentos, garantindo comunicação com a Wink para resolver questões de forma eficiente.
 
 4.2 **Responsabilidades da Wink:**

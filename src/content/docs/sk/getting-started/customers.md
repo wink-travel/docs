@@ -7,13 +7,13 @@ sidebar:
 
 Tento článok vysvetľuje typy zákazníkov, ktorým slúžime, a ako im vieme najlepšie pomôcť.
 
-## Hotely
+## Nehnuteľnosti
 
 Wink začal s onboardovaním hotelov pred desiatimi rokmi. Hotely používajú Wink na efektívne riadenie svojho inventára naprieč tisíckami predajných kanálov, vrátane ich vlastnej brand.com stránky, a na zarábanie viac s každou rezerváciou, pričom podporujú priame kanály pomocou našich nástrojov zameraných na pohostinnosť, ktoré zlepšujú identitu značky a ziskovosť​.
 
 ## Značky a reťazce
 
-Značky a reťazce majú mierne odlišné potreby ako jednotlivé hotely. Na Wink môžu:
+Značky a reťazce majú mierne odlišné potreby ako jednotlivé nehnuteľnosti. Na Wink môžu:
 
 - Spravovať viacero nehnuteľností pod jedným účtom.
 - Priraďovať manažérov k nehnuteľnostiam.
@@ -29,7 +29,7 @@ Influenceri používajú Wink na lepšiu monetizáciu svojho publika. Robia to p
 
 ## Cestovné kancelárie
 
-Cestovné kancelárie získavajú prístup k cestovnému inventáru po celom svete za výhodné ceny prostredníctvom nášho špecializovaného [portálu pre cestovné kancelárie](https://agent.wink.travel). Môžu robiť rezervácie cez náš portál, cez naše API alebo nechať svojich používateľov rezervovať si sami na webovej stránke cestovnej kancelárie, ktorá používa naše technológie.
+Cestovné kancelárie získavajú prístup k cestovnému inventáru po celom svete za skvelé ceny prostredníctvom nášho špecializovaného [portálu pre cestovné kancelárie](https://agent.wink.travel). Môžu robiť rezervácie cez náš portál, cez naše API alebo nechať svojich používateľov rezervovať si sami na webovej stránke cestovnej kancelárie, ktorá používa naše technológie.
 
 ## Korporácie
 
@@ -46,8 +46,8 @@ Korporátni cestujúci môžu spravovať svoje účty na našom [korporátnom po
 
 ## Vývojári
 
-Hoci sme túto platformu vytvorili pre hotelierov a hoteliérov... Každý riadok kódu bol napísaný s cieľom opätovnej použiteľnosti. Náš tím vývojárov vytvoril Wink v nádeji, že ďalšia 🦄 cestovná aplikácia bude postavená na našej kódovej báze. Prejdite na stránku [Developer](/sk/developers/build-on-wink) a zistite, ako vám Wink môže pomôcť vo vašom ďalšom projekte.
+Hoci sme túto platformu vytvorili pre hotelierov a hoteliérov... Každý riadok kódu bol vytvorený s cieľom opätovnej použiteľnosti. Náš tím vývojárov vytvoril Wink v nádeji, že ďalšia 🦄 cestovná aplikácia bude postavená na našej kódovej báze. Prejdite na stránku [Developer](/sk/developers/build-on-wink), aby ste videli, ako vám Wink môže pomôcť vo vašom ďalšom projekte.
 
-## Iní
+## Iné
 
 Každý, kto chce nájsť a predávať cestovný inventár, môže mať úžitok z používania Wink. Premeňte svoju vášeň pre pohostinnosť na čin tým, že zarobíte skvelú províziu z každej rezervácie.

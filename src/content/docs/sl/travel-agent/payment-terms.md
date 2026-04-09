@@ -25,7 +25,7 @@ Ti pogoji storitve plačila ("Pogoji plačila") so zavezujoč pravni dogovor, ki
 
 **MED:**
 
-1. **Winkfluence**, družba, ustanovljena po zakonih Singapurja, s sedežem na naslovu \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 in davčno številko 201437335D (v nadaljevanju "Wink") in  
+1. **Winkfluence**, podjetjem, ustanovljenim po zakonih Singapurja s sedežem na naslovu \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 z davčno številko 201437335D (v nadaljevanju "Wink") in  
      
 2. **POTOVALNIM AGENTOM**, katerega podatki so navedeni v obrazcu za registracijo potovalnega agenta ali so bili oddani prek spleta ("Potovalni agent").
 
@@ -46,33 +46,33 @@ Kot je določeno v glavni pogodbi "Pogoji in določila za potovalne agente" ("Gl
 
 **2\. Zbiranje in razdeljevanje plačil**
 
-2.1 **Zbiranje plačila:** Potovalni agent je odgovoren za zbiranje plačila od gosta ob rezervaciji. To zagotavlja takojšnjo obdelavo in finančno preglednost.
+2.1 **Zbiranje plačil:** Potovalni agent je odgovoren za zbiranje plačila od gosta ob rezervaciji. To zagotavlja takojšnjo obdelavo in finančno jasnost.
 
-2.2 **Odbitek provizije:** Potovalni agent najprej odšteje provizijo ponudnika storitev, nato pa svojo provizijo za podnaslov, kot je prikazano v spodnjem primeru:
+2.2 **Odbitek provizije:** Potovalni agent najprej odšteje provizijo ponudnika storitev, nato svojo provizijo za podnaslov, kot je prikazano v spodnjem primeru:
 
-* 1,5 % provizije za rezervacijo za Wink.  
-* Provizija potovalnega agenta, določena v Ločeni pogodbi (v tem primeru uporabimo 10 %)
+* 1,5 % provizija za rezervacijo za Wink.  
+* Provizija potovalnega agenta, določena v Ločeni pogodbi (za ta primer uporabimo 10 %)
 
 Vrednost rezervacije USD 1.000  
 Winkova provizija (1,5 %) = USD 15  
-Vmesni seštevek = 1.000 - 15 = 985
+Vmesni znesek = 1.000 - 15 = 985
 
 2.3 **Neto plačilo ponudnikom nastanitve:** Potovalni agent je odgovoren za izplačilo neto plačila ponudniku nastanitve v skladu s pogoji Ločene pogodbe med potovalnim agentom in ponudnikom nastanitve. Wink ni odgovoren za kakršnakoli plačila ponudniku nastanitve.
 
-**3\. Izstavljanje računov in plačila**
+**3\. Izstavitev računov in plačilo**
 
-3.1 **Mesečno izstavljanje računov:** Wink bo potovalnemu agentu izdal pravilen in natančen mesečni račun za provizije za rezervacije, zbrane v preteklem mesecu. Potovalni agent mora ta račun poravnati v roku, določenem na računu.
+3.1 **Mesečna izstavitev računov:** Wink bo potovalnemu agentu izdal pravilen in natančen mesečni račun za provizije za rezervacije, zbrane v preteklem mesecu. Potovalni agent mora ta račun poravnati v roku, določenem na računu.
 
-3.2 **Način plačila:** Plačila Wink-u se izvedejo z načinom plačila, določenim na računu. Vse stroške, povezane s prenosom plačila, krije potovalni agent.
+3.2 **Način plačila:** Plačila Wink-u se izvedejo preko načina plačila, določenega na računu. Vse stroške, povezane s prenosom plačila, krije potovalni agent.
 
-3.3 **Zamuda pri plačilu:** V primeru zamude pri plačilu si Wink pridržuje pravico zaračunati obresti na zapadli znesek po stopnji 5 % na mesec ali najvišji dovoljeni zakoniti stopnji, kar je nižje. Poleg tega, če potovalni agent zamudi s plačilom ponudniku nastanitve v skladu s pogoji Ločene pogodbe, si Wink pridržuje pravico začasno onemogočiti dostop do storitve, dokler niso poravnana vsa zapadla plačila tako Wink-u kot ponudniku nastanitve. Če pa so v računu, ki ga je izdal Wink, napake ali nepravilnosti, je potovalni agent dolžan plačati le pravilen in natančen del računa ter ne bo obremenjen z obrestmi ali kaznimi za neplačilo napačnega dela računa.
+3.3 **Zamuda pri plačilu:** V primeru zamude pri plačilu si Wink pridržuje pravico zaračunati obresti na zapadli znesek po stopnji 5 % na mesec ali najvišji dovoljeni zakoniti stopnji, kar je nižje. Poleg tega, če potovalni agent zamudi s plačilom ponudniku nastanitve v skladu s pogoji Ločene pogodbe, si Wink pridržuje pravico začasno onemogočiti dostop do storitve, dokler niso poravnana vsa zapadla plačila tako Wink-u kot ponudniku nastanitve. Če pa so v računu, ki ga je izdal Wink, napake, mora potovalni agent plačati le pravilen in natančen del računa ter ne bo obremenjen z obrestmi ali kaznimi za neplačilo napačnega dela računa.
 
 **4\. Vloge in odgovornosti**
 
 4.1 **Odgovornosti potovalnega agenta:**
 
 * Zagotoviti pravočasno zbiranje plačil od gostov v skladu s pogoji iz točke 2.1.  
-* Pred izplačilom neto plačila ponudnikom nastanitve v skladu z Ločeno pogodbo odšteti ustrezno provizijo za rezervacijo in provizijo.  
+* Pred izplačilom neto plačila ponudnikom nastanitve po Ločeni pogodbi odšteti ustrezno provizijo za rezervacijo in provizijo.  
 * Pravočasno poravnati Winkove račune za provizije za rezervacije v skladu s pogoji iz točke 3.1.  
 * Aktivno upravljati in reševati morebitne spore v zvezi z rezervacijami ali plačili ter vzdrževati komunikacijo z Winkom za učinkovito reševanje težav.
 
@@ -88,12 +88,12 @@ Vmesni seštevek = 1.000 - 15 = 985
 
 **6\. Reševanje sporov**
 
-Morebitni spori, ki izhajajo iz ali so povezani s temi Pogoji plačila, se rešujejo v skladu s postopki reševanja sporov, določenimi v Glavni pogodbi, s čimer se zagotovi dosleden in enoten pristop k reševanju konfliktov med Winkom in potovalnim agentom.
+Morebitni spori, ki izhajajo iz ali so povezani s temi Pogoji plačila, se rešujejo v skladu s postopki reševanja sporov, določenimi v Glavni pogodbi, kar zagotavlja dosleden in enoten pristop k reševanju konfliktov med Winkom in potovalnim agentom.
 
 **7\. Sprememba pogojev**  
-Wink si pridržuje pravico do spremembe teh Pogojev plačila kadarkoli. Vsaka sprememba bo potovalnemu agentu sporočena vsaj 30 dni pred uveljavitvijo. Nadaljnja uporaba Wink platforme po datumu uveljavitve pomeni sprejem spremenjenih pogojev.
+Wink si pridržuje pravico do spremembe teh Pogojev plačila kadarkoli. Vsake spremembe bodo potovalnemu agentu sporočene vsaj 30 dni pred začetkom veljavnosti. Nadaljnja uporaba Wink platforme po datumu uveljavitve pomeni sprejem spremenjenih pogojev.
 
-**8\. Pravo in pristojnost**  
+**8\. Uveljavljanje prava in pristojnost**  
 Ti Pogoji plačila so urejeni po zakonih Singapurja. Morebitni spori, ki izhajajo iz ali so povezani s temi pogoji, se rešujejo na sodiščih v Singapurju.
 
 Ti Pogoji plačila so sestavni del in dopolnjujejo določila o plačilih, določena v Glavni pogodbi "TERMS & CONDITIONS TRAVEL AGENTS_220924" med Winkom in potovalnim agentom.

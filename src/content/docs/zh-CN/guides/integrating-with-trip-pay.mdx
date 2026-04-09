@@ -21,7 +21,7 @@ import { Steps } from '@astrojs/starlight/components';
 <Steps>
 1. 确保您在预订合同中提到的受益人已完成映射。
 2. 让旅客选择他们想预订的库存，并准备付款。
-3. 使用 TripPay 创建包含要预订项目的 `应付合同`。
+3. 使用 TripPay 创建包含要预订项目的 `payable contract`。
 4. 让旅客使用 TripPay Web 组件进行支付。
 </Steps>
 
@@ -34,7 +34,7 @@ import { Steps } from '@astrojs/starlight/components';
 :::
 
 ### 请求
-以下是一个 JSON 示例请求，包含创建首个应付合同所需的所有内容。
+以下是一个 JSON 示例请求，包含创建第一个应付合同所需的所有内容。
 
 ```json {3-6, 8-9}
 {
@@ -136,28 +136,28 @@ import { Steps } from '@astrojs/starlight/components';
     - 旅行社。
 - 行：**8 - 9** 是促成预订的 TripPay 账户。它可以是：
     - 您的 TripPay 集成账户。
-    - 如果您运营联盟网络，则可以是您的联盟账户。
+    - 如果您运营一个联盟网络，也可以是您的联盟账户。
 - 使用 `traceId` 来将多个供应商的多个预订分组。这样您可以取消一组预订。
 - `redirectUrl` 告诉 TripPay 支付完成后重定向到哪个页面。
-- `sourceUrl` 是发生预订的网站/应用。
+- `sourceUrl` 是预订发生的网站/应用。
 
 `contractList` 数组包含旅客想从多个供应商购买的项目。每个项目包含：
 
 - `identifier` 是您生成的有效 UUID。
-- 您想从中预订库存的供应商。
-- 您想从该供应商预订的库存。这些都在嵌套数组 `contractItemList` 中指定。
-- `contractItemList` 下的每个条目包含：
-    - **客人用户** 这是将入住场所的用户。
+- 您想从哪个供应商预订库存。
+- 您想从该供应商预订的库存，这些都在嵌套数组 `contractItemList` 中指定。
+- `contractItemList` 中的每个条目包含：
+    - **客人用户** 这是将入住的用户。
     - **英文名称** 库存的英文名称。
-    - **英文描述** 库存的英文详细描述。
+    - **英文描述** 库存的详细英文描述。
     - **价格** 该项目的价格。
     - **行程** 该项目应预订的时间。
     - **定价类型** 价格的计算方式。
     - **库存类型** 该库存的类型。
-    - **应付时间** 旅客应被收费的时间。*我们目前仅支持即时付款选项。*
+    - **应付时间** 旅客应被收费的时间。*目前仅支持即时付款选项。*
     - **政策** 包含取消政策规则。
     - **每日价格列表** 如果预订的是房间，您可以选择包含客人每晚住宿的房价。
-    - **受益人** 包含应分配给哪些 TripPay 账户及其对应金额。*支持固定金额/百分比。*
+    - **受益人** 包含哪些 TripPay 账户应分配该项目价格的金额。*支持固定金额/百分比。*
 
 :::note
 在上述 JSON 示例中，我们有 3 个受益人：
@@ -166,12 +166,12 @@ import { Steps } from '@astrojs/starlight/components';
 - 9.85% 分配给联盟作为佣金。*例如 Kim Kardashian*
 - 88.65% 分配给供应商，用于房间预订。*例如 Hilton*
 
-当 TripPay 响应应付合同时，您会注意到它注入了自己的受益人，比例为 4.0%。
+当 TripPay 响应应付合同时，您会注意到它注入了一个 4.0% 的自身受益人。
 :::
 
 ### 响应
 
-当 TripPay 响应您的请求时，格式大致如下：
+当 TripPay 响应您的请求时，内容大致如下：
 
 ```json {3}
 [
@@ -213,7 +213,7 @@ import { Steps } from '@astrojs/starlight/components';
 请确保您已预先加载我们的样式和 Javascript。
 :::
 
-此时，您已准备好将 `Payment Web Component` 嵌入您的网站并向用户展示。
+此时，您已准备好将 `Payment Web Component` 嵌入您的网站并展示给用户。
 
 ```html
 <trip-pay id="contract-1"></trip-pay>

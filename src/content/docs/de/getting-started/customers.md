@@ -9,11 +9,11 @@ Dieser Artikel erklärt die Kundentypen, die wir bedienen, und wie wir am besten
 
 ## Unterkünfte
 
-Wink begann vor einem Jahrzehnt mit der Integration von Hotels. Hotels nutzen Wink, um ihr Inventar effektiv über 1000e Vertriebskanäle hinweg zu verwalten, einschließlich ihrer eigenen brand.com-Seite, und um mit jeder Buchung mehr zu verdienen, während sie direkte Kanäle mit unseren auf die Hotellerie ausgerichteten Tools stärken, die Markenidentität und Rentabilität verbessern​.
+Wink begann vor einem Jahrzehnt mit der Anbindung von Hotels. Hotels nutzen Wink, um ihr Inventar effektiv über Tausende von Vertriebskanälen hinweg zu verwalten, einschließlich ihrer eigenen brand.com-Seite, und mit jeder Buchung mehr zu verdienen, während sie direkte Kanäle mit unseren auf die Hotellerie ausgerichteten Tools stärken, die Markenidentität und Rentabilität verbessern​.
 
 ## Marken & Ketten
 
-Marken und Ketten haben leicht unterschiedliche Bedürfnisse als eine einzelne Unterkunft. Auf Wink können sie:
+Marken und Ketten haben etwas andere Bedürfnisse als einzelne Unterkünfte. Auf Wink können sie:
 
 - Mehrere Unterkünfte unter einem einzigen Konto verwalten.
 - Manager für Unterkünfte zuweisen.
@@ -38,15 +38,15 @@ Unternehmen benötigen mehr von einer Reiseplattform:
 - Sie benötigen gut organisierte Reisepläne, die Flexibilität und Last-Minute-Änderungen unterstützen.
 - Sie benötigen zuverlässige Kommunikationsmittel, wie Internet.
 - Sie haben bevorzugte Anbieter mit Mitgliedschaften.
-- Sie verfügen oft über eine Firmenkreditkarte und setzen Ausgabelimits.
+- Sie verfügen oft über eine Firmenkreditkarte und setzen Ausgabenlimits.
 - Sie benötigen Ausgabenmanagement und Reporting-Integration.
-- Sie brauchen Concierge-Support sowie MICE-Dienstleistungen bei Veranstaltungen.
+- Sie brauchen Concierge-Unterstützung sowie MICE-Dienstleistungen bei Veranstaltungen.
 
 Geschäftsreisende können ihre eigenen Konten auf unserem [Corporate-Portal](/de/corporate/what-is-group) verwalten oder unser offiziell unterstütztes [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) Plugin und die [Concur](https://www.concur.com/) Integration nutzen.
 
 ## Entwickler
 
-Obwohl wir diese Plattform von und für Hoteliers gebaut haben... Jede Codezeile wurde mit dem spezifischen Ziel der Wiederverwendbarkeit entwickelt. Unser Entwicklerteam hat Wink in der Hoffnung gebaut, dass die nächste 🦄 Reise-App auf unserer Codebasis aufbaut. Besuchen Sie die [Developer](/de/developers/build-on-wink) Seite, um zu sehen, wie Wink Sie bei Ihrem nächsten Projekt unterstützen kann.
+Obwohl wir diese Plattform von und für Hoteliers entwickelt haben... wurde jede Codezeile mit dem spezifischen Ziel der Wiederverwendbarkeit geschrieben. Unser Entwicklerteam hat Wink in der Hoffnung gebaut, dass die nächste 🦄 Reise-App auf unserer Codebasis aufbaut. Besuchen Sie die [Developer](/de/developers/build-on-wink) Seite, um zu sehen, wie Wink Sie bei Ihrem nächsten Projekt unterstützen kann.
 
 ## Sonstige
 

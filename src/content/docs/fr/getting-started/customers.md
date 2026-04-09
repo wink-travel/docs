@@ -5,7 +5,7 @@ sidebar:
   order: 2
 ---
 
-Cet article explique les types de clients que nous servons et comment nous sommes les mieux placés pour les aider.
+Cet article explique les types de clients que nous servons et comment nous sommes les mieux placés pour aider.
 
 ## Propriétés
 
@@ -21,11 +21,11 @@ Les marques et chaînes ont des besoins légèrement différents d’une propri�
 
 ## Sociétés de gestion
 
-Les sociétés de gestion hôtelière et les sociétés de gestion de destination peuvent gérer leurs portefeuilles de propriétés pour le compte des propriétaires. Il y a un avantage certain à laisser des agences en ligne, conscientes du numérique, gérer la vente au segment en ligne pendant que les hôtels peuvent se concentrer sur la satisfaction client une fois que les clients sont sur place.
+Les sociétés de gestion hôtelière et les sociétés de gestion de destination peuvent gérer leurs portefeuilles de propriétés pour le compte des propriétaires. Il y a un avantage certain à laisser des agences en ligne, conscientes du numérique, gérer la vente au segment en ligne pendant que les hôtels peuvent se concentrer sur la gestion de la satisfaction client une fois que les clients sont sur place.
 
 ## Influenceurs
 
-Les influenceurs utilisent Wink pour mieux monétiser leur audience. Ils le font en s’associant avec des hôtels, en créant des offres personnalisées et en tirant parti des outils sociaux de Wink et des puissantes analyses pour suivre quels produits se vendent le mieux​.
+Les influenceurs utilisent Wink pour mieux monétiser leur audience. Ils le font en s’associant avec des hôtels, en créant des offres personnalisées, et en tirant parti des outils sociaux de Wink et des puissantes analyses pour suivre quels produits se vendent le mieux​.
 
 ## Agents de voyage
 
@@ -46,7 +46,7 @@ Les voyageurs d’affaires peuvent gérer leurs propres comptes sur notre [porta
 
 ## Développeurs
 
-Bien que nous ayons construit cette plateforme par et pour les hôteliers... Chaque ligne de code a été conçue dans un but spécifique de réutilisabilité. Notre équipe de développeurs a créé Wink dans l’espoir que la prochaine application de voyage 🦄 soit construite sur notre base de code. Rendez-vous sur la page [Developer](/fr/developers/build-on-wink) pour voir comment Wink peut vous accompagner dans votre prochaine aventure.
+Bien que nous ayons construit cette plateforme par et pour les hôteliers... Chaque ligne de code a été conçue dans un but spécifique de réutilisabilité. Notre équipe de développeurs a créé Wink dans l’espoir que la prochaine application de voyage 🦄 soit construite sur notre base de code. Rendez-vous sur la page [Developer](/fr/developers/build-on-wink) pour voir comment Wink peut vous soutenir dans votre prochaine aventure.
 
 ## Autres
 

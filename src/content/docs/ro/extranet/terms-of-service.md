@@ -1,5 +1,5 @@
 ---
-title: Termeni și Condiții
+title: Termeni și Condiții de Utilizare
 description: Termeni ușor accesibili și actualizați pentru toți utilizatorii noștri afiliați.
 sidebar:
   order: 32
@@ -11,7 +11,7 @@ Ultima actualizare 2024-06-12
   
 **TERMENI ȘI CONDIȚII GENERALE PENTRU FURNIZORII DE CAZARE**
 
-Prin înregistrarea și înscrierea în programul Wink ca furnizor de cazare, furnizorul de cazare declară că a revizuit, înțelege, recunoaște și acceptă termenii și condițiile acestui acord pentru furnizorii de cazare (denumit în continuare „Acordul”).
+Prin înregistrarea și înscrierea în programul Wink ca furnizor de cazare, furnizorul de cazare declară că a revizuit, înțelege, recunoaște și acceptă termenii și condițiile acestui acord pentru furnizorul de cazare (denumit în continuare „Acordul”).
 
 **ÎNTRE:**
 
@@ -23,7 +23,7 @@ Wink și Furnizorul de Cazare sunt fiecare o „Parte” a acestui Acord și sun
 
 Acest document stabilește Termenii și Condițiile pentru:
 
-1. Furnizarea serviciilor de distribuție a cazării prin Wink sau orice alt mijloc folosit de Furnizorul de Cazare pentru a-și distribui produsele (denumit în continuare „Furnizor de Cazare”), pentru care detaliile sunt specificate în Termenii de Plată, iar prețul, condițiile și disponibilitatea au fost convenite; și  
+1. Furnizarea serviciilor de distribuție a cazării prin Wink sau orice alte mijloace pe care Furnizorul de Cazare le utilizează pentru a-și distribui produsele (denumit în continuare „Furnizor de Cazare”), pentru care detaliile sunt specificate în Termenii de Plată, iar prețul, condițiile și disponibilitatea au fost convenite; și  
 2. Furnizarea serviciilor de cazare de către Furnizorul de Cazare către consumatorul/ oaspetele final, care a fost rezervată prin Wink.
 
 Wink nu deține, nu controlează, nu oferă și nu gestionează niciun anunț. Wink nu este parte în contractele încheiate direct între Furnizorii de Cazare și oaspeți. Wink nu acționează ca agent în niciun fel pentru Furnizorii de Cazare, cu excepția celor specificate în termenii de plată ai serviciilor („Termenii de Plată”).
@@ -40,7 +40,7 @@ Pe lângă termenii definiți în alte părți ale acestui Acord, următoarele d
 
 **„Acord”** înseamnă acest acord.
 
-**„Cel Mai Bun Tarif Disponibil” sau „BAR”** înseamnă cel mai mic tarif comisionabil, înainte de aplicarea reducerilor, pentru camere, inclusiv TVA, oferit publicului larg de către Hotelul Participant, Furnizorul de Cazare sau în numele acestuia de orice distribuitor terț. Pentru evitarea dubiilor, tarifele promoționale, tarifele de sărbători și orice alte tarife publice nelimitate vor fi incluse ca Cel Mai Bun Tarif Disponibil.
+**„Cel Mai Bun Tarif Disponibil” sau „BAR”** înseamnă cel mai mic tarif comisionabil, înainte de aplicarea reducerilor, pentru camere, inclusiv TVA, oferit publicului larg de către Hotelul Participant, Furnizorul de Cazare sau în numele acestuia de orice distribuitor terț. Pentru evitarea dubiului, tarifele promoționale, tarifele de sărbători și orice alte tarife publice nelimitate vor fi incluse ca Cel Mai Bun Tarif Disponibil.
 
 **„Rezervare(i)”** înseamnă o cerere de rezervare pentru o cameră făcută prin Wink sau un client Wink, comunicată și acceptată de Furnizorul de Cazare.
 
@@ -54,23 +54,23 @@ Pe lângă termenii definiți în alte părți ale acestui Acord, următoarele d
 
 **„Facilități și Servicii”** înseamnă orice facilități, mese, dotări și/sau alte servicii oferite de un Hotel Participant.
 
-**„Oaspete(i)”** înseamnă utilizatorul final care a folosit, folosește sau este rezervat să folosească în final camera (și alte facilități și servicii aplicabile) ca rezultat al unei rezervări directe sau indirecte prin Wink.
+**„Oaspete(i)”** înseamnă utilizatorul final care a folosit, folosește sau este rezervat să folosească în final camera (și alte facilități și servicii, după caz) ca urmare a unei rezervări directe sau indirecte prin Wink.
 
 **„Hotel(uri)”** înseamnă orice cazare disponibilă pe sau prin site-urile Wink.
 
 **„Platforma Wink”** înseamnă rețeaua privată sau soluția tehnică folosită de Părți pentru a partaja în siguranță informații conform Acordului.
 
-**„Proprietate Intelectuală”** înseamnă toate drepturile de proprietate intelectuală de orice natură (indiferent dacă sunt sau nu înregistrate în formă documentară sau stocate pe orice suport magnetic sau optic) oriunde în lume, fie înregistrate, înregistrabile sau nu, inclusiv brevete, modele de utilitate, mărci comerciale, desene înregistrate și nume de domenii, cereri pentru oricare dintre acestea, denumiri comerciale, goodwill, drepturi de autor și drepturi de natură similară, drepturi asupra designului, drepturi asupra bazelor de date, drepturi morale, know-how și orice alte drepturi de proprietate intelectuală care există în software, programe informatice, site-uri web, documente, informații, tehnici, metode de afaceri, desene, logo-uri, manuale de instrucțiuni, liste și proceduri și detalii ale clienților, metode și proceduri de marketing și literatură publicitară, inclusiv „look and feel” al oricărui site web.
+**„Proprietate Intelectuală”** înseamnă orice drepturi de proprietate intelectuală de orice natură (indiferent dacă sunt înregistrate în formă documentară sau stocate pe orice suport magnetic sau optic) oriunde în lume, fie înregistrate, înregistrabile sau nu, inclusiv brevete, modele de utilitate, mărci comerciale, desene înregistrate și nume de domenii, cereri pentru oricare dintre acestea, denumiri comerciale, goodwill, drepturi de autor și drepturi de natură similară, drepturi asupra bazelor de date, drepturi morale, know-how și orice alte drepturi de proprietate intelectuală care există în software, programe informatice, site-uri web, documente, informații, tehnici, metode de afaceri, desene, logo-uri, manuale de instrucțiuni, liste și proceduri și detalii ale clienților, metode și proceduri de marketing și literatură publicitară, inclusiv „look and feel” al oricărui site web.
 
-**„Tranzacție Materializată”** înseamnă rezervarea făcută de un oaspete la un Furnizor de Cazare, iar această rezervare a dus la furnizarea efectivă a cazării, confirmată către Wink de către Furnizorul de Cazare. Tranzacțiile materializate vor fi ajustate întotdeauna pentru modificări (ex. sejururi scurtate), chargeback-uri, fraudă cu cardul de credit, datorii neîncasate sau altele. Pentru evitarea dubiilor, anulările, neprezentările etc. nu pot fi considerate Tranzacții Materializate.
+**„Tranzacție Materializată”** înseamnă rezervarea făcută de un oaspete la un Furnizor de Cazare, iar această rezervare a dus la furnizarea efectivă a cazării, confirmată către Wink de către Furnizorul de Cazare. Tranzacțiile materializate vor fi ajustate pentru modificări (ex. șederi scurtate), chargeback-uri, fraudă cu cardul de credit, datorii neîncasate sau altele. Pentru evitarea dubiului, anulările, neprezentările etc. nu pot fi considerate Tranzacții Materializate.
 
-**„Tarif Net”** înseamnă tariful specific pe care Wink îl va plăti fiecărui Hotel Participant pentru camere, convenit în scris de Părți.
+**„Tarif Net”** înseamnă tariful pe care Wink îl va plăti fiecărui Hotel Participant pentru camere, convenit în scris de Părți.
 
 **„Neprezentare”** înseamnă orice situație în care un oaspete nu se prezintă la timp la un Hotel Participant conform unei rezervări.
 
-**„Partener”** înseamnă orice afacere sau persoană care se conectează sau folosește platforma Wink pentru a promova și vinde inventarul Furnizorilor de Cazare către audiența și/sau clienții săi pentru un comision.
+**„Partener”** înseamnă orice afacere sau persoană care se conectează sau utilizează platforma Wink pentru a promova și vinde inventarul Furnizorilor de Cazare către audiența și/sau clienții săi pentru un comision.
 
-**„Facilitator de Plăți”** o filială deținută integral de Winkfluence („TripPay”), care guvernează serviciile de plată, colectând plățile de la oaspeți („Pay-in”), prin încărcarea metodei de plată asociate achiziției lor, cum ar fi card de credit, card de debit, transfer bancar, criptomonede sau PayPal etc., și distribuie fondurile datorate („Tariful Net”) furnizorului de cazare.
+**„Facilitator de Plăți”** o subsidiară deținută integral de Winkfluence („TripPay”), care guvernează serviciile de plată, colectând plățile de la oaspeți („Pay-in”), prin încărcarea metodei de plată asociate achiziției, cum ar fi card de credit, card de debit, transfer bancar, criptomonede sau PayPal etc., și distribuie fondurile datorate („Tariful Net”) Furnizorului de Cazare.
 
 **„Pay-in”** înseamnă achiziția unei plăți efectuate de un oaspete de către Facilitatorul de Plăți.
 
@@ -82,35 +82,35 @@ Pe lângă termenii definiți în alte părți ale acestui Acord, următoarele d
 
 **„Rezervare Potențial Frauduloasă”** înseamnă (i) o rezervare care rezultă din informații invalide sau incorecte furnizate către Wink la momentul rezervării, sau ca urmare a unui litigiu cu cardul de credit, sau ca urmare a unui raport de taxe neautorizate; sau (ii) orice rezervare care poate fi asociată cu tranzacții anterioare cu risc ridicat sau frauduloase.
 
-**„Tarif(e)”** înseamnă tariful camerei de hotel pus la dispoziție Wink de către Furnizorul de Cazare pentru orice tip de cameră sau tip de tarif aplicabil în cadrul Acordului pentru a fi distribuit pe toate canalele Wink.
+**„Tarif(e)”** înseamnă tariful camerei de hotel pus la dispoziție Wink de către Furnizorul de Cazare pentru orice tip de cameră sau tarif aplicabil în baza Acordului pentru a fi distribuit pe toate canalele Wink.
 
 **„Cameră(i)”** înseamnă cazarea situată la orice Hotel Participant sau unitate de cazare.
 
-**„Taxe”** înseamnă toate taxele locale, de stat, federale și naționale și/sau taxele de serviciu, inclusiv, pentru evitarea dubiilor, orice taxă pe valoarea adăugată (TVA), taxe de vânzare, utilizare, accize, taxe de cazare, taxe pentru turiști, taxe de închiriere, taxe municipale, taxe de resort și alte tipuri similare de taxe, taxe guvernamentale sau alte taxe.
+**„Taxe”** înseamnă toate taxele locale, de stat, federale și naționale și/sau taxele de serviciu, inclusiv, pentru evitarea dubiului, orice taxă pe valoarea adăugată (TVA), taxe de vânzare, utilizare, accize, cazare, tranzit, închiriere, oraș, stațiune și alte tipuri similare de taxe, taxe guvernamentale sau alte taxe.
 
-**„TripPay”** înseamnă compania filială deținută integral care colectează plățile (Pay-in) și distribuțiile (Pay-out) pentru Wink, denumită Facilitator de Plăți.
+**„TripPay”** înseamnă subsidiara deținută integral care colectează plățile (Pay-in) și distribuțiile (Pay-out) pentru Wink, denumită Facilitator de Plăți.
 
-**„Canale de Vânzare”** înseamnă (i) site-uri web operate, gestionate sau deținute de Wink pentru alte afaceri care le folosesc pentru a face rezervări și care sunt accesibile doar cu parole emise de Wink; (ii) conexiuni API între Wink și site-urile de călătorii ale clienților săi; sau (iii) orice altă metodă de distribuție prin care Wink furnizează camere clienților săi pentru distribuția sau vânzarea ulterioară, fie pe site-uri web sau altfel.
+**„Canale de Vânzare”** înseamnă (i) site-uri operate, gestionate sau deținute de Wink pentru alte afaceri care le folosesc pentru a face rezervări și care sunt accesibile doar cu parole emise de Wink; (ii) conexiuni API între Wink și site-urile de călătorie ale clienților săi; sau (iii) orice altă metodă de distribuție prin care Wink furnizează camere clienților săi pentru distribuția sau vânzarea ulterioară, fie pe site-uri web sau altfel.
 
 **1.1 Fără Parteneriat**
 
-1.1.1 Acest Acord nu este destinat, și nimic din prezentul document sau din aranjamentele prevăzute aici nu trebuie interpretat ca fiind o asociere în participațiune sau relația de parteneri, societate sau principal și agent între sau printre Părți. Cu excepția cazului în care Părțile convin altfel în scris, niciuna dintre ele nu va (i) încheia vreun contract sau angajament cu terți ca agent pentru sau în numele celeilalte Părți, (ii) se va descrie sau prezenta ca un astfel de agent sau în orice mod se va prezenta ca fiind un astfel de agent, sau (iii) va acționa în numele sau va reprezenta cealaltă Parte în orice mod sau pentru orice scop.
+1.1.1 Acest Acord nu este destinat, și nimic din prezentul document sau din aranjamentele prevăzute aici nu trebuie interpretat ca fiind o asociere în participațiune sau o relație de parteneriat, societate sau principal-agent între Părți. Cu excepția cazului în care Părțile convin altfel în scris, niciuna dintre ele nu va (i) încheia vreun contract sau angajament cu terți ca agent pentru sau în numele celeilalte Părți, (ii) se va prezenta sau descrie ca atare, sau (iii) va acționa în numele sau va reprezenta cealaltă Parte în orice mod sau scop.
 
-1.1.2 Cu excepția cazului în care Wink este de acord altfel în scris sau cu excepția celor prevăzute în acest Acord, Furnizorul de Cazare nu va publica nicăieri pe site-urile sale nicio declarație, fie expresă sau implicită, că site-ul face parte din, este susținut de sau este un site oficial al Wink.
+1.1.2 Cu excepția cazului în care Wink este de acord altfel în scris sau dacă nu este prevăzut altfel în acest Acord, Furnizorul de Cazare nu va publica nicăieri pe site-urile sale nicio declarație, explicită sau implicită, că site-ul face parte din, este susținut de sau este un site oficial Wink.
 
 **2. Contractarea cu oaspeții**
 
-Când primiți o confirmare de rezervare prin platforma Wink, încheiați un contract direct cu oaspetele și sunteți responsabil pentru furnizarea serviciilor conform termenilor și prețului specificat în confirmarea rezervării. De asemenea, sunteți de acord să plătiți taxele aferente, dacă și când sunt aplicabile, conform Termenilor de Plată.
+Când primiți o confirmare de rezervare prin platforma Wink, intrați într-un contract direct cu oaspetele și sunteți responsabil pentru furnizarea serviciilor conform termenilor și prețului specificat în confirmarea rezervării. De asemenea, sunteți de acord să plătiți taxele aferente, dacă este cazul, conform Termenilor de Plată.
 
 **3. Independența Furnizorilor de Cazare**
 
-Relația dvs. cu Wink este cea a unei entități juridice independente, cu excepția faptului că TripPay acționează ca facilitator de plăți, așa cum este descris în Termenii de Plată. Wink nu direcționează sau controlează serviciile pe care le furnizați și sunteți de acord că aveți deplină discreție dacă și când să furnizați aceste servicii, la ce preț și în ce condiții să le oferiți.
+Relația dvs. cu Wink este cea a unei entități juridice independente, cu excepția faptului că TripPay acționează ca facilitator de plăți conform Termenilor de Plată. Wink nu direcționează sau controlează serviciile pe care le furnizați și sunteți de acord că aveți deplină libertate de a decide dacă și când să furnizați aceste servicii, la ce preț și în ce condiții.
 
 **4. Gestionarea anunțului dvs.**
 
 Ca Furnizor de Cazare, Wink vă oferă instrumentele necesare pentru a vă vinde inventarul online prin canalele noastre proprietare de vânzare.
 
-Furnizorii de Cazare sunt responsabili să mențină informațiile și conținutul anunțului lor actualizate și corecte în orice moment. Aceștia trebuie să respecte disponibilitatea, prețurile și orice alte angajamente convenite aici. Furnizorii de Cazare sunt exclusiv responsabili pentru actualizarea și menținerea actualizată în orice moment a disponibilității, tarifelor și taxelor locale aplicabile, dacă există, prin extranetul Wink. Furnizorii de Cazare permit prin prezenta Wink să promoveze camerele pe toate piețele. Wink recomandă cu tărie Furnizorilor de Cazare să ofere cele mai competitive tarife, promoții și oferte în orice moment.
+Furnizorii de Cazare sunt responsabili să mențină informațiile și conținutul anunțului actualizate și corecte în orice moment. Aceștia trebuie să respecte disponibilitatea, prețurile și orice alte angajamente convenite aici. Furnizorii de Cazare sunt exclusiv responsabili pentru actualizarea și menținerea actualizată a disponibilității, tarifelor și taxelor locale aplicabile, dacă există, prin extranetul Wink. Furnizorii de Cazare permit prin prezenta ca Wink să promoveze camerele pe toate piețele. Wink recomandă cu tărie Furnizorilor de Cazare să ofere cele mai competitive tarife, promoții și oferte în orice moment.
 
 **5. Obligații legale**
 
@@ -161,251 +161,249 @@ Plătibil hotelului („Tarif Net”) => 85,1 USD
 
 7.1 Furnizorul de Cazare este responsabil să se asigure că tariful include toate taxele aplicabile. Este responsabilitatea Furnizorului de Cazare să se asigure că taxele incluse în tarife sunt corecte și actualizate. Dacă Furnizorul de Cazare nu indică existența taxelor locale, taxe de turism sau alte taxe locale de plată, se va înțelege că acestea sunt incluse în tarif.
 
-7.2 Fiecare Furnizor de Cazare este responsabil pentru plata oricăror taxe către agențiile guvernamentale și/sau instituțiile competente.
+7.2 Fiecare Furnizor de Cazare este responsabil pentru plata oricăror taxe către agențiile și/sau instituțiile guvernamentale competente.
 
-7.3 Furnizorul de Cazare va fi răspunzător și va despăgubi Wink pentru orice pierderi, costuri, penalități și/sau daune cauzate de neincluzerea corectă și actualizată a taxelor în tarifele sale și/sau de orice neinformare sau informare incorectă a Wink cu privire la taxele aplicabile.
+7.3 Furnizorul de Cazare va fi răspunzător și va despăgubi Wink pentru orice pierderi, costuri, penalități și/sau daune cauzate de neincluzerea corectă și actualizată a taxelor în tarifele sale și/sau de neinformarea sau informarea incorectă a Wink cu privire la taxele aplicabile.
 
-7.4 Wink, oferind camerele partenerilor săi, va include toate taxele aplicabile (sub rezerva Subsecțiunii (a) din această Secțiune). Toate sumele plătibile în baza acestui Acord, cu excepția cazului în care se indică altfel, vor include TVA sau alte taxe sau impozite aplicabile (cu excepția impozitului pe profit sau alte taxe pe profit). Dacă orice sumă de TVA este evaluată și impusă de o autoritate relevantă responsabilă cu TVA în țara în care sunt furnizate serviciile, atunci Wink va plăti către Furnizorul de Cazare suma TVA inclusă în sumele plătibile conform acestui Acord, pe baza unei facturi fiscale valide primite de la Furnizor.
+7.4 Wink, oferind camerele partenerilor săi, va include toate taxele aplicabile (sub rezerva Subsecțiunii (a) din această Secțiune). Toate sumele plătibile în baza acestui Acord, cu excepția cazului în care se indică altfel, vor include TVA sau alte taxe aplicabile (cu excepția impozitului pe profit sau alte taxe pe profit). Dacă o autoritate competentă aplică TVA în țara în care sunt furnizate serviciile, Wink va plăti Furnizorului de Cazare suma TVA inclusă în sumele plătibile, pe baza unei facturi fiscale valide.
 
-7.5 Orice cerere a autorității relevante pentru penalități sau dobânzi rezultate din plata întârziată sau orice TVA facturat va fi în sarcina Furnizorului de Cazare. Mai mult, dacă orice sumă de TVA este evaluată și impusă de o autoritate relevantă responsabilă cu TVA în țara în care serviciile sunt primite în baza unui mecanism de auto-contabilizare, atunci Wink va declara acest TVA în declarația sa de TVA conform legislației din țară. Orice cerere a autorității relevante pentru penalități sau dobânzi rezultate din plata întârziată a oricărui TVA auto-contabilizat va fi în sarcina Wink.
+7.5 Orice cerere a autorității competente pentru penalități sau dobânzi rezultate din plata întârziată sau TVA facturat va fi în sarcina Furnizorului de Cazare. În plus, dacă TVA este autoevaluat de către o autoritate competentă în țara în care serviciile sunt primite, Wink va declara acest TVA în declarația sa fiscală conform legislației locale. Orice cerere pentru penalități sau dobânzi pentru plata întârziată a TVA autoevaluat va fi în sarcina Wink.
 
 **8. Detalii bancare și reprezentant desemnat al Furnizorului de Cazare**
 
-Furnizorul de Cazare va asigura că detaliile contului bancar furnizate către Wink sunt corecte în orice moment și va notifica fără întârziere orice modificare a acestora.
+Furnizorul de Cazare va asigura că detaliile contului bancar furnizate către Wink sunt corecte în orice moment și va notifica imediat orice modificare.
 
-Doar persoana care semnează acest acord va fi singurul reprezentant desemnat al Furnizorului de Cazare care are autoritatea de a solicita modificări ale contului bancar și/sau informațiilor despre beneficiar. Nicio altă persoană nu va avea această autoritate în numele Furnizorului de Cazare. Orice schimbare a acestei persoane desemnate va fi comunicată în scris către Wink și va fi implementată doar printr-un act adițional scris la acest Acord, semnat de ambele Părți.
+Doar persoana care semnează acest acord va fi reprezentantul desemnat unic al Furnizorului de Cazare, având autoritatea de a solicita modificări ale contului bancar și/sau informațiilor despre beneficiar. Nicio altă persoană nu va avea această autoritate în numele Furnizorului de Cazare. Orice schimbare a persoanei desemnate va fi notificată în scris către Wink și va fi implementată doar printr-un act adițional scris semnat de ambele Părți.
 
 **9. Modificări ale rezervărilor**
 
 9.1 Furnizorii de Cazare sunt responsabili pentru orice modificare a rezervării în afara politicii de anulare specificate în confirmarea rezervării acceptată prin comunicare directă cu oaspetele.
 
-9.2 Dacă Furnizorul de Cazare a făcut o eroare și a încărcat un tarif incorect, iar o rezervare este făcută la acest tarif incorect, rezervarea trebuie onorată de Furnizorul de Cazare la acel tarif incorect.
+9.2 Dacă Furnizorul de Cazare a făcut o eroare și a încărcat un tarif incorect, iar o rezervare a fost făcută la acel tarif, rezervarea trebuie onorată la acel tarif incorect.
 
 9.3 Wink nu va avea nicio răspundere față de Furnizorul de Cazare pentru erorile de tarif comise de Furnizor.
 
 **10. Identificarea rezervărilor / Cooperare anti-fraudă**
 
-10.1 Furnizorul de Cazare va asigura că detaliile complete și corecte ale clienților Wink sunt introduse corect în sistemele sale, astfel încât fiecare rezervare să fie clar identificabilă ca fiind făcută în baza acestui Acord.
+10.1 Furnizorul de Cazare va asigura că detaliile complete și corecte ale clienților Wink sunt introduse corect în sistemele sale pentru ca fiecare rezervare să fie clar identificabilă ca fiind făcută în baza acestui Acord.
 
-10.2 Fiecare Furnizor de Cazare Participant trebuie să depună eforturi comerciale rezonabile pentru a se asigura că, la check-in, identificarea prezentată de oaspete corespunde informațiilor din rezervare. Dacă o rezervare este potențial frauduloasă sau anumite date furnizate de oaspete nu pot fi verificate de Wink, Furnizorul de Cazare și Wink vor colabora pentru a gestiona rezervarea potențial frauduloasă, inclusiv prin anularea acesteia în orice moment. Furnizorul de Cazare este de acord să coopereze pe deplin cu Wink și să furnizeze orice informații solicitate în legătură cu rezervarea potențial frauduloasă.
+10.2 Fiecare Furnizor de Cazare Participant trebuie să depună eforturi comerciale rezonabile pentru a se asigura că, la check-in, identificarea prezentată de oaspete corespunde informațiilor din rezervare. Dacă o rezervare este potențial frauduloasă sau anumite date nu pot fi verificate de Wink, Furnizorul de Cazare și Wink vor colabora pentru a gestiona situația, inclusiv posibilitatea anulării rezervării în orice moment. Furnizorul de Cazare se angajează să coopereze pe deplin cu Wink și să furnizeze orice informații solicitate în legătură cu rezervarea potențial frauduloasă.
 
 10.3 Părțile sunt de acord că, în cazul în care Furnizorul de Cazare nu respectă această clauză și rezervarea este ulterior considerată potențial frauduloasă, Wink nu va fi răspunzător.
 
 **11. Indisponibilitate / Neîndeplinire**
 
-11.1 În cazul oricărei situații de indisponibilitate (fie din cauza overbooking-ului sau altfel) care necesită relocarea unui oaspete la o altă cazare, Furnizorul de Cazare se angajează să depună toate eforturile pentru a menține oaspeții și rezervările astfel încât oaspeții să poată rămâne la cazarea inițială cât mai mult posibil. Dacă relocarea este inevitabilă, Furnizorul de Cazare este de acord să:
+11.1 În cazul oricărei situații de indisponibilitate (inclusiv overbooking) care necesită relocarea unui oaspete, Furnizorul de Cazare va depune toate eforturile pentru a menține oaspeții și rezervările astfel încât oaspeții să poată rămâne în cazare cât mai mult posibil. Dacă relocarea este inevitabilă, Furnizorul de Cazare va:
 
-* Notifice imediat Wink înainte de relocarea oaspetelui;  
-* Relocheze oaspetele într-o proprietate alternativă de categorie/ rating egal sau superior în aceeași zonă, în aceleași condiții rezervate, iar relocarea va fi suportată de Furnizorul de Cazare fără costuri suplimentare pentru oaspetele afectat, inclusiv, fără limitare:  
-* Orice costuri legate de transport și alte cheltuieli de relocare pentru oaspetele afectat.  
-* Permită Wink să deducă toate costurile directe cauzate de indisponibilitate și/sau relocare din soldurile de plată ale Furnizorului de Cazare în cazul în care Wink suportă penalități financiare, compensații sau alte costuri asociate.
+* Notifica imediat Wink înainte de relocare;  
+* Mută oaspetele într-o proprietate alternativă de categorie egală sau superioară în aceeași zonă, în aceleași condiții rezervate, fără costuri suplimentare pentru oaspete, inclusiv:  
+* Costurile de transport și alte cheltuieli legate de relocare pentru oaspete;  
+* Permite Wink să deducă toate costurile directe cauzate de indisponibilitate și/sau relocare din soldurile datorate Furnizorului de Cazare, în cazul în care Wink suportă penalități, compensații sau alte costuri.
 
-11.2 În cazul neîndeplinirii oricărei condiții a acestui Acord de către Furnizor, inclusiv condiții inacceptabile ale locației și/sau facilităților și serviciilor deficitare, Wink are dreptul să oprească plățile și să solicite îndeplinirea corectă a termenilor rezervării. Furnizorul de Cazare va suporta în orice caz costul integral al oricărei compensații plătibile oaspetelui afectat, menținând Wink nevinovat de orice răspundere cauzată de neîndeplinirea obligațiilor sale.
+11.2 În cazul neîndeplinirii oricărei condiții a acestui Acord de către Furnizor, inclusiv condiții inacceptabile ale locației și/sau facilităților și serviciilor deficitare, Wink poate opri plățile și solicita respectarea corectă a termenilor rezervării. Furnizorul va suporta costul integral al oricărei compensații plătibile oaspetelui afectat, menținând Wink nevinovat de orice răspundere.
 
 **12. Condițiile proprietății hotelului participant**
 
-Cât mai curând posibil, Furnizorul de Cazare va notifica prin secțiunea „Anunțuri” din extranetul Wink orice construcții, renovări, reamenajări, actualizări sau alte lucrări care pot afecta capacitatea Furnizorului de a oferi camere, facilități și servicii și/sau care pot afecta negativ șederea oaspetelui. Pentru evitarea dubiilor, ori de câte ori indisponibilitatea sau neîndeplinirea rezultă din astfel de circumstanțe, se va aplica Secțiunea 11 din Termenii Generali Wink („Indisponibilitate / Neîndeplinire”) și Furnizorul va suporta costul integral al compensațiilor plătibile oaspeților afectați, menținând Wink nevinovat.
+Cât mai curând posibil, Furnizorul va notifica prin secțiunea „Anunțuri” din extranetul Wink orice construcții, renovări, reamenajări, actualizări sau alte lucrări care pot afecta capacitatea de a furniza camere, facilități și servicii sau pot afecta negativ șederea oaspeților. În astfel de cazuri, se aplică Secțiunea 11 („Indisponibilitate / Neîndeplinire”) și Furnizorul va suporta costul integral al compensațiilor, menținând Wink nevinovat.
 
-**13. Modificare, Durată și Reziliere**
+**13. Modificare, Durată și Încetare**
 
-13.1 Modificare. Cu excepția cazului în care legea aplicabilă prevede altfel, Wink poate modifica acești Termeni în orice moment. Dacă facem modificări substanțiale, vom posta Termenii revizuiți pe Platforma Wink și vom actualiza data „Ultimei actualizări” din partea de sus a Termenilor. Dacă sunteți afectat de modificare, vă vom notifica cu cel puțin treizeci (30) de zile înainte ca modificările să intre în vigoare. Dacă nu reziliați acordul înainte de data intrării în vigoare a noilor Termeni, utilizarea continuă a Serviciilor va constitui acceptarea modificărilor.
+13.1 Modificare. Cu excepția cazului în care legea aplicabilă prevede altfel, Wink poate modifica acești Termeni în orice moment. Dacă facem modificări semnificative, vom posta Termenii revizuiți pe Platforma Wink și vom actualiza data „Ultimei actualizări” din partea de sus. Dacă sunteți afectat, vă vom notifica cu cel puțin treizeci (30) de zile înainte ca modificările să intre în vigoare. Dacă nu reziliați acordul înainte de data intrării în vigoare, utilizarea continuă a serviciilor va constitui acceptarea modificărilor.
 
 13.2 Durată. Cu excepția cazului în care se convine altfel, acest Acord începe la data semnării și este valabil pe o perioadă nedeterminată.
 
-13.3 Acest Acord este valabil până la rezilierea de către Părți astfel:
+13.3 Acordul continuă până la încetarea de către Părți astfel:
 
-* De către Wink, oricând și fără motiv, cu un preaviz scris de treizeci (30) de zile calendaristice către cealaltă Parte;  
-* De către Furnizorul de Cazare, fără motiv, oricând, fără notificare, prin dezactivarea proprietății în panoul extranet Wink.  
+* De către Wink, oricând și fără motiv, cu notificare scrisă prealabilă de treizeci (30) de zile calendaristice;  
+* De către Furnizorul de Cazare, oricând și fără motiv, fără notificare, prin dezactivarea proprietății în extranet;  
 * În orice alt mod prevăzut expres în acest Acord.
 
-13.4 De asemenea, Wink își rezervă dreptul, la discreția sa, de a rezilia imediat acest Acord prin notificare scrisă către Furnizorul de Cazare dacă:
+13.4 Wink își rezervă dreptul de a înceta imediat Acordul prin notificare scrisă dacă:
 
-* Furnizorul de Cazare intră în insolvență, faliment, administrare judiciară, lichidare sau alte proceduri similare (indiferent dacă sunt inițiate de Furnizor sau de creditorii săi), care nu sunt soluționate în favoarea Furnizorului în termen de șaizeci (60) de zile;  
+* Furnizorul intră în insolvență, faliment, lichidare, administrare judiciară sau alte proceduri similare care nu sunt soluționate în favoarea sa în 60 de zile;  
 * Un creditor execută sau încearcă să execute o ipotecă asupra Hotelului Participant;  
-* Furnizorul de Cazare încetează să desfășoare activitatea în mod obișnuit;  
-* Furnizorul pierde dreptul de a opera Hotelul Participant sub brandul actual;  
-* Există o schimbare în caracteristicile cazării, inclusiv construcții, lucrări și renovări;  
+* Furnizorul încetează activitatea în mod obișnuit;  
+* Furnizorul pierde dreptul de a opera Hotelul sub brandul actual;  
+* Există modificări ale caracteristicilor cazării, inclusiv construcții sau renovări;  
 * Sau din cauza unui eveniment de forță majoră.
 
-13.5 La rezilierea anticipată sau expirarea Acordului din orice motiv, Furnizorul de Cazare va:
+13.5 La încetarea anticipată sau expirarea Acordului, Furnizorul va:
 
-* Onora toate rezervările făcute înainte de data efectivă a rezilierii sau expirării, la tarifele inițiale, inclusiv rezervările cu date de check-in ulterioare perioadei de notificare, sau va oferi servicii alternative adecvate și  
+* Onora toate rezervările făcute anterior datei de încetare la tarifele rezervate inițial, inclusiv cele cu check-in după încetare, sau va oferi servicii alternative adecvate;  
 * Va închide contul corespunzător.
 
 **14. Declarații și garanții**
 
-Furnizorul de Cazare garantează și declară că va respecta pe deplin următoarele:
+Furnizorul garantează că va respecta următoarele:
 
-14.1 Că toate camerele și facilitățile și serviciile vor fi furnizate în conformitate cu bunele practici din industrie, cu toată priceperea, atenția și diligența necesare;
+14.1 Toate camerele și facilitățile vor fi furnizate conform practicilor bune din industrie, cu profesionalism și diligență;
 
-14.2 Că tot personalul Hotelului Participant va fi calificat și instruit corespunzător pentru a-și îndeplini obligațiile;
+14.2 Personalul hotelului va fi calificat și instruit corespunzător;
 
-14.3 Că Furnizorul va respecta toate legile, standardele și cerințele autorităților relevante privind camerele, facilitățile și serviciile și obligațiile sale;
+14.3 Furnizorul va respecta toate legile și reglementările aplicabile privind camerele, facilitățile și serviciile;
 
-14.4 Că fiecare Hotel Participant a citit și acceptat termenii acestui Acord;
+14.4 Fiecare hotel participant a citit și acceptat termenii acestui Acord;
 
-14.5 Că toate camerele și facilitățile oferite sunt sigure și respectă toate legile locale, de stat, federale și naționale. Furnizorul garantează că niciuna dintre camere nu are încălzitoare individuale pe gaz;
+14.5 Camerele și facilitățile sunt sigure și conforme cu toate legile locale, naționale și federale; nu există încălzitoare individuale pe gaz instalate;
 
-14.6 Că toate informațiile furnizate direct sau indirect către Wink sunt actualizate și corecte;
+14.6 Toate informațiile furnizate către Wink sunt corecte și actualizate;
 
-14.7 Că Furnizorul nu este înregistrat sau rezident într-o țară supusă sancțiunilor economice sau comerciale;
+14.7 Furnizorul nu este înregistrat sau rezident într-o țară supusă sancțiunilor economice sau comerciale;
 
-14.8 Să efectueze pe cheltuiala sa orice lucrări necesare pentru eliminarea deficiențelor notificate de autorități cu efect imediat și să notifice Wink fără întârziere. Va lua în considerare orice recomandare rezonabilă de îmbunătățire făcută de Wink.
+14.8 Va efectua la propriul cost orice lucrări necesare pentru eliminarea deficiențelor notificate de autorități și va informa Wink fără întârziere.
 
 **15. Incidente și reclamații ale oaspeților**
 
-15.1 În cazul unui incident cu un oaspete, Furnizorul trebuie să informeze Wink cât mai curând posibil și să coopereze pe deplin pentru gestionarea incidentului.
+15.1 În cazul unui incident cu un oaspete, Furnizorul va informa Wink cât mai curând posibil și va coopera pe deplin.
 
-15.2 Furnizorul va coopera pe deplin cu Wink în tratarea reclamațiilor oaspeților și va răspunde detaliat oricărei solicitări Wink în termen de șapte (7) zile calendaristice sau conform acordului de nivel de serviciu.
+15.2 Furnizorul va coopera cu Wink în gestionarea reclamațiilor și va răspunde în termen de 7 zile calendaristice sau conform acordului de nivel de serviciu.
 
-15.3 Dacă Wink trebuie să compenseze un oaspete din cauza unui incident cauzat de Furnizor, acesta va despăgubi Wink integral și prompt, conform Secțiunii 33 („Despăgubiri”).
+15.3 Dacă Wink trebuie să compenseze un oaspete din cauza unui incident cauzat de Furnizor, acesta va despăgubi Wink integral și prompt.
 
-15.4 Furnizorul permite Wink să deducă toate costurile și compensațiile rezultate din incidente și reclamații ale oaspeților din soldurile sale.
+15.4 Furnizorul permite Wink să deducă toate costurile și compensațiile legate de incidente și reclamații din soldul său.
 
 **16. Drepturi de audit**
 
-16.1 Pe durata Acordului, Wink poate audita orice înregistrări relevante ale Furnizorului și/sau Hotelurilor pentru verificarea performanței rezervărilor, plăților primite și plăților efectuate.
+16.1 Pe durata Acordului, Wink poate audita înregistrările relevante ale Furnizorului și hotelurilor participante pentru verificarea performanței rezervărilor și plăților.
 
-16.2 Fiecare Parte suportă propriile costuri de audit, cu excepția cazului în care auditul arată că Furnizorul nu respectă obligațiile, caz în care acesta va suporta integral costurile și va remedia situația.
+16.2 Fiecare Parte suportă costurile proprii ale auditului, cu excepția cazului în care auditul relevă neconformități ale Furnizorului, caz în care acesta va suporta integral costurile.
 
 **17. Asigurare**
 
-Furnizorul va menține o asigurare adecvată cu asigurători reputați, licențiați, pentru toate riscurile terților legate de furnizarea cazării și/sau acest Acord, inclusiv răspunderea pentru pierderi, vătămări, daune sau alte obligații față de terți.
+Furnizorul va menține o asigurare adecvată cu asigurători reputați, acoperind riscurile terților legate de furnizarea cazării și a serviciilor, inclusiv răspunderea pentru daune materiale, vătămări corporale sau alte daune.
 
 **18. Anti-mită, restricții comerciale și etică în afaceri**
 
-Wink are o politică de toleranță zero față de încălcările normelor comerciale internaționale, legislației anti-mită și corupție și restricțiilor aplicabile privind comerțul, fluxurile financiare și finanțarea terorismului.
+Wink are o politică de toleranță zero față de încălcările normelor comerciale internaționale, legislației anti-mită și corupție și restricțiilor aplicabile.
 
-Furnizorul garantează că respectă și va respecta Codul de Conduită al Furnizorilor Wink.
+Furnizorul garantează că respectă Codul de Conduită al Furnizorilor Wink și toate legile relevante privind comerțul internațional, finanțarea terorismului și prevenirea mitei, inclusiv UK Bribery Act 2010 și Singapore Prevention of Corruption Act.
 
-Furnizorul declară că respectă toate normele internaționale de comerț, restricțiile aplicabile și legislația anti-mită și corupție, inclusiv Legea britanică anti-mită 2010 și Legea din Singapore privind prevenirea corupției.
-
-Furnizorul garantează că nici el, nici părțile asociate nu au fost condamnați pentru infracțiuni legate de mită sau corupție și nu sunt sub investigație guvernamentală.
+Furnizorul declară că nici el, nici părțile asociate nu au fost condamnate pentru infracțiuni legate de mită sau corupție și nu sunt sub investigație.
 
 **19. Confidențialitate**
 
-19.1 Informații Confidențiale. Părțile înțeleg că în executarea acestui Acord pot avea acces la informații confidențiale și sensibile ale celeilalte Părți („Informații Confidențiale”), inclusiv date despre clienți, volume de tranzacții, planuri de marketing, informații financiare, statistici, date personale ale oaspeților, software și alte informații non-publice.
+19.1 Informații Confidențiale. Părțile recunosc că pot avea acces la informații confidențiale și sensibile ale celeilalte Părți („Informații Confidențiale”), inclusiv date despre clienți, volume de tranzacții, planuri de marketing, date personale ale oaspeților, software și alte informații non-publice.
 
-19.2 Protejarea Informațiilor Confidențiale. Fiecare Parte este de acord să păstreze confidențialitatea informațiilor, să le folosească doar în scopul Acordului, să le dezvăluie doar persoanelor autorizate și să returneze sau distrugă toate copiile la cererea celeilalte Părți. Dacă se prelucrează date personale, se va încheia un acord de prelucrare a datelor (DPA).
+19.2 Protejarea Informațiilor Confidențiale. Fiecare Parte se angajează să păstreze confidențialitatea, să nu folosească informațiile în alte scopuri decât cele prevăzute în Acord, să le dezvăluie doar persoanelor autorizate și să le returneze sau distrugă la cerere.
 
-19.3 Excepții de la confidențialitate. Informațiile nu sunt confidențiale dacă devin publice fără vinovăția părții primitoare, erau deja deținute, sunt dezvăluite de terți fără obligație de confidențialitate sau sunt cerute prin lege.
+19.3 Excepții. Informațiile nu sunt confidențiale dacă devin publice fără vinovăția Părții primitoare, erau deja deținute, sunt dezvăluite de terți fără obligații de confidențialitate sau sunt cerute prin lege.
 
-19.4 Datele Clienților. Părțile vor depune eforturi rezonabile pentru a proteja confidențialitatea și securitatea datelor clienților și vor respecta legislația aplicabilă privind protecția datelor. Furnizorul trebuie să notifice Wink despre orice breșă de securitate în termen de 1 zi. Fiecare Parte va avea o politică de confidențialitate accesibilă clienților.
+19.4 Datele Clienților. Părțile vor proteja datele personale ale clienților conform legilor aplicabile și vor notifica Wink în caz de breșă de securitate în termen de 1 zi.
 
-19.5 Anunțuri. Nicio Parte nu va publica materiale referitoare la cealaltă Parte fără consimțământul scris prealabil.
+19.5 Anunțuri. Niciuna dintre Părți nu va publica materiale referitoare la cealaltă Parte fără consimțământul scris prealabil.
 
-19.6 Fiecare Parte poate contacta responsabilul cu protecția datelor al celeilalte la adresa: dataprotectionofficer@Wink.
+19.6 Fiecare Parte poate contacta Ofițerul de Protecție a Datelor al celeilalte la adresa dataprotectionofficer@Wink.
 
-**20. Drepturi de proprietate intelectuală**
+**20. Drepturi de Proprietate Intelectuală**
 
-20.1 Furnizorul recunoaște că Wink și/sau licențiatorii săi dețin toate drepturile asupra proprietății intelectuale Wink, inclusiv logo-ul, conținutul și datele Wink. Nimic din acest Acord nu transferă aceste drepturi către Furnizor.
+20.1 Furnizorul recunoaște că Wink și/sau licențiatorii săi dețin toate drepturile asupra Proprietății Intelectuale Wink, inclusiv logo-ul, conținutul și datele Wink. Nimic din Acord nu transferă aceste drepturi către Furnizor.
 
-20.2 Furnizorul nu va dezvălui, integra, folosi sau combina conținutul și datele Wink cu conținut propriu sau al concurenților Wink, cu excepția cazului prevăzut în Acord. Nu va modifica conținutul sau nu va include linkuri către concurenți Wink.
+20.2 Furnizorul nu va dezvălui, integra, folosi sau combina conținutul și datele Wink cu conținut propriu sau al concurenților Wink, cu excepția cazului prevăzut în Acord.
 
 20.3 Furnizorul nu va înregistra sau folosi nume de domenii care includ cuvântul „Wink” sau variații ale acestuia.
 
-20.4 Prin semnarea acestui Acord, Wink nu renunță la niciun drept asupra proprietății intelectuale.
+20.4 Prin semnarea Acordului, Wink nu renunță la niciun drept asupra Proprietății Intelectuale.
 
 **21. Schimbarea proprietății**
 
-21.1 Furnizorul (și, după caz, fiecare Hotel Participant) nu va vinde, închiria sau dispune de interesul său în proprietate fără notificare scrisă cu cel puțin trei (3) luni înainte. În cazul unei astfel de tranzacții, Acordul va fi cesionat sau novat către noua entitate, sub rezerva Subsecțiunii (b).
+21.1 Furnizorul (și hotelurile participante) nu vor vinde, închiria sau dispune de proprietate fără notificare scrisă prealabilă de cel puțin 3 luni. În cazul unei astfel de tranzacții, Acordul va fi cesionat sau novat către noua entitate, cu excepția cazului în care Wink decide altfel.
 
-21.2 Dacă Wink nu dorește să continue Acordul cu noua entitate, Părțile pot conveni rezilierea imediată fără a afecta rezervările existente sau alte drepturi.
+21.2 Dacă Wink nu dorește să continue cu noua entitate, Părțile pot conveni încetarea imediată a Acordului fără a afecta rezervările existente.
 
 **22. Conținutul anunțului**
 
-22.1 Wink va oferi acces la extranet. Furnizorul se angajează să încarce toate informațiile și conținutul legat de produs (fotografii, texte, descrieri, facilități) pentru o distribuție optimă și să mențină conținutul actualizat. Dacă Furnizorul nu furnizează conținutul, autorizează Wink să îl descarce de pe site-ul său și își asumă responsabilitatea pentru orice probleme. De asemenea, acordă Wink dreptul de a modifica dimensiunea și rezoluția conținutului pentru marketing.
+22.1 Wink va oferi acces la extranet. Furnizorul se angajează să încarce toate informațiile și conținutul legat de produs (fotografii, texte, descrieri, facilități etc.) și să le mențină actualizate. Dacă Furnizorul nu furnizează conținutul, autorizează Wink să îl descarce de pe site-ul său și își asumă responsabilitatea pentru eventualele probleme.
 
-22.2 Dacă Furnizorul nu poate accesa extranetul din motive independente de voința sa, va notifica prompt Wink.
+22.2 Dacă Furnizorul nu poate accesa extranetul din motive independente, va notifica Wink prompt.
 
-22.3 Furnizorul garantează că deține toate drepturile necesare pentru a furniza conținutul și acordă Wink un drept neexclusiv, gratuit, irevocabil, mondial și sublicențiabil de a folosi, modifica și publica conținutul și proprietatea intelectuală pentru îndeplinirea Acordului. Garantează că aceste drepturi nu încalcă drepturile terților și este responsabil pentru orice informații defăimătoare sau imorale.
+22.3 Furnizorul garantează că deține toate drepturile necesare pentru a furniza conținutul și acordă Wink drepturi non-exclusive, gratuite, irevocabile și sublicențiabile pentru utilizarea acestuia în scopuri de marketing și distribuție.
 
-22.4 Furnizorul va despăgubi Wink și partenerii săi pentru orice pierderi cauzate de revendicări privind drepturile de proprietate intelectuală.
+22.4 Furnizorul va despăgubi Wink și partenerii săi pentru orice revendicare legată de drepturile de proprietate intelectuală.
 
-22.5 Furnizorul va furniza actualizări privind progresul revendicărilor și, dacă nu respectă această clauză sau Wink nu este mulțumit, Wink poate prelua controlul revendicării pe cheltuiala Furnizorului și poate compensa costurile din sumele datorate Furnizorului.
+22.5 Furnizorul va furniza actualizări privind revendicările de drepturi de proprietate intelectuală și, dacă nu respectă această clauză, Wink poate prelua controlul asupra revendicării pe cheltuiala Furnizorului.
 
 **23. Publicitate / Comunicare externă**
 
-23.1 Furnizorul nu va publica nicio comunicare legată de Wink sau acest Acord fără consimțământul scris prealabil al Wink și va fi responsabil pentru orice daune cauzate Wink.
+23.1 Furnizorul nu va publica materiale legate de Wink sau acest Acord fără consimțământul scris prealabil al Wink și va fi responsabil pentru orice prejudiciu cauzat Wink.
 
-23.2 Furnizorul va consulta Wink cu privire la conținutul oricărei comunicări propuse și va furniza o copie a materialului publicat.
+23.2 Furnizorul va consulta Wink înainte de orice comunicare și va furniza o copie a materialelor publicate.
 
 **24. Prioritate**
 
-24.1 Acest Acord permite încheierea unor acorduri comerciale individuale între Wink și Furnizori. În caz de contradicție, termenii acestui Acord se aplică Furnizorilor, cu următoarele excepții:
+24.1 Acest Acord permite încheierea unor acorduri comerciale individuale între Wink și Furnizori. În caz de conflict, se aplică următoarele:
 
-24.2 În ceea ce privește Termenii de Plată privind anulările, neprezentările, politicile de plată, eliberările și disponibilitatea camerelor, se aplică termenii acestui Acord;
+24.2 Pentru Termenii de Plată privind anulările, neprezentările, politicile de plată și disponibilitatea camerelor, se aplică acest Acord;
 
-24.3 În ceea ce privește tarifele, ocuparea minimă, reducerile pentru persoane suplimentare și piețele aplicabile, se aplică condițiile din acordul comercial individual.
+24.3 Pentru tarife, ocupări minime, reduceri și piețe aplicabile, se aplică acordurile comerciale individuale.
 
 **25. Autoritatea de semnare – Reprezentare și semnătură Furnizor**
 
-25.1 Furnizorul garantează că persoana care semnează acest Acord are autoritatea de a-l semna în numele fiecărui Hotel Participant și că va asigura respectarea obligațiilor pe durata Acordului.
+25.1 Furnizorul garantează că persoana care semnează are autoritatea de a angaja fiecare hotel participant în acest Acord și va asigura respectarea obligațiilor pe durata Acordului.
 
-25.2 Furnizorul este de acord că acceptarea electronică a acestui Acord și a termenilor săi, inclusiv modificările, este valabilă, obligatorie și executorie.
+25.2 Furnizorul acceptă că acceptarea electronică a Acordului și a modificărilor este valabilă și obligatorie.
 
-**26. Limbaj**
+**26. Limbă**
 
-Versiunea în limba engleză a acestui Acord va fi cea de referință și va prevala în caz de neconcordanțe cu versiunile traduse.
+Versiunea în limba engleză a Acordului este cea oficială și prevalează în caz de neconcordanțe cu traducerile.
 
 **27. Renunțări**
 
-Nicio renunțare la o încălcare sau condiție a acestui Acord nu va fi considerată renunțare la alte încălcări sau condiții, indiferent de natura lor.
+Nicio renunțare la o încălcare sau condiție nu va fi considerată renunțare la alte încălcări sau condiții.
 
 **28. Separabilitate**
 
-Dacă o prevedere a acestui Acord este considerată ilegală, invalidă sau inaplicabilă, aceasta va fi modificată sau eliminată pentru a face Acordul legal și aplicabil, iar restul prevederilor vor rămâne în vigoare.
+Dacă o prevedere este considerată ilegală sau inaplicabilă, aceasta va fi modificată sau eliminată pentru a face Acordul valabil, iar restul prevederilor vor rămâne în vigoare.
 
 **29. Relația Părților**
 
-Părțile sunt contractori independenți și nu vor acționa ca agenți sau parteneri unul pentru celălalt și nu au autoritatea de a angaja cealaltă Parte.
+Părțile sunt contractori independenți și nu vor acționa ca agenți sau parteneri unul pentru celălalt.
 
 **30. Cesionare**
 
-30.1 Niciuna dintre Părți nu poate cesiona drepturile sau obligațiile fără consimțământul scris al celeilalte, cu excepția Wink care poate cesiona către o companie afiliată fără consimțământul Furnizorului.
+30.1 Niciuna dintre Părți nu poate cesiona drepturile sau obligațiile fără consimțământul scris al celeilalte, cu excepția Wink care poate cesiona către o companie afiliată fără consimțământ.
 
-30.2 Acest Acord este în beneficiul Părților și succesorilor lor și nu conferă drepturi altor persoane.
+30.2 Acordul este în beneficiul Părților și succesorilor lor, fără a conferi drepturi altor terți.
 
-**31. Forță Majoră**
+**31. Forță majoră**
 
-Wink nu este răspunzător pentru întârzieri sau neîndepliniri cauzate de evenimente în afara controlului rezonabil, inclusiv dezastre naturale, război, terorism, greve, pandemii etc.
+Wink nu este răspunzător pentru întârzieri sau neîndepliniri cauzate de evenimente în afara controlului rezonabil, inclusiv dezastre naturale, război, terorism, greve etc.
 
 **32. Limitarea răspunderii**
 
-32.1 În măsura maximă permisă de lege, niciuna dintre Părți nu va fi răspunzătoare pentru daune indirecte, accidentale, speciale sau punitive, cu excepția încălcărilor privind confidențialitatea sau drepturile de proprietate intelectuală.
+32.1 Niciuna dintre Părți nu va fi răspunzătoare pentru daune indirecte, accidentale sau punitive, cu excepția încălcărilor privind confidențialitatea sau drepturile de proprietate intelectuală.
 
-32.2 Niciuna dintre Părți nu poate exclude răspunderea pentru moarte sau vătămare corporală cauzată de neglijența sa, fraudă sau alte situații prevăzute de lege.
+32.2 Nu se exclude răspunderea pentru moarte sau vătămare corporală cauzată de neglijență, fraudă sau alte cazuri prevăzute de lege.
 
-32.3 Părțile recunosc că aceste limitări sunt echitabile și rezonabile.
+32.3 Părțile consideră aceste limitări echitabile și rezonabile.
 
-**33. Despăgubiri**
+**33. Despăgubire**
 
-În măsura maximă permisă de lege, sunteți de acord să eliberați, apărați, despăgubiți și să țineți Wink și afiliații săi nevinovați pentru orice pretenții, daune, pierderi și cheltuieli legate de încălcarea acestor Termeni, utilizarea necorespunzătoare a Serviciilor, neplata corectă a taxelor sau încălcarea legilor.
+În măsura permisă de lege, sunteți de acord să eliberați, apărați și despăgubiți Wink și afiliații săi pentru orice revendicări sau pierderi cauzate de încălcarea acestor Termeni, utilizarea necorespunzătoare a serviciilor, neplata taxelor sau încălcarea legilor.
 
 **34. Legea aplicabilă și jurisdicția**
 
-34.1 Acest Acord este guvernat exclusiv de legile din Singapore. Legea privind drepturile terților (Cap 53B) nu se aplică. Părțile vor încerca să rezolve litigiile pe cale amiabilă.
+34.1 Acordul este guvernat exclusiv de legile din Singapore. Legea privind drepturile terților nu se aplică. Părțile vor încerca soluționarea amiabilă a disputelor.
 
-34.2 Orice litigiu va fi soluționat exclusiv de instanțele competente din Singapore, fără a ține cont de conflictele de legi.
+34.2 Orice litigiu va fi soluționat exclusiv de instanțele competente din Singapore.
 
 **35. Exemplare**
 
-Acest Acord poate fi semnat în mai multe exemplare, fiecare considerat original, iar împreună constituie un singur document. Copiile scanate sau electronice ale semnăturii Wink au aceeași valoare ca semnătura originală.
+Acordul poate fi semnat în mai multe exemplare, fiecare considerat original. Copiile scanate sau electronice ale semnăturii Wink au aceeași valoare ca semnătura originală.
 
 **36. Acordul complet**
 
-36.1 Acest Acord (inclusiv formularele de înregistrare, anexe și apendice) constituie întregul acord între Părți și înlocuiește orice alte înțelegeri anterioare.
+36.1 Acest Acord (inclusiv formularele și anexele) constituie întregul acord între Părți și înlocuiește orice înțelegeri anterioare.
 
-36.2 Dacă o prevedere devine invalidă, restul Acordului rămâne valabil, iar Părțile vor înlocui prevederea invalidă cu una valabilă și echivalentă.
+36.2 Dacă o prevedere devine invalidă, Părțile vor înlocui cu o prevedere validă cu efect similar.
 
 **37. Executare**
 
-Acordul intră în vigoare numai după confirmarea scrisă a acceptării Furnizorului de către Wink. Prin înregistrarea în programul Wink, Furnizorul acceptă termenii și condițiile, inclusiv modificările.
+Acordul intră în vigoare la confirmarea scrisă a acceptării Furnizorului de către Wink. Prin înregistrarea în programul Wink, Furnizorul acceptă termenii și condițiile, inclusiv modificările.
 
-Acordul a fost citit și acceptat de Furnizor. Acceptarea electronică este valabilă și obligatorie.
+Furnizorul confirmă că a citit și acceptat toate condițiile. Acceptarea electronică este valabilă și obligatorie.
 
 **38. Notificări**
 
-Toate notificările vor fi în limba engleză, în scris, și vor fi livrate personal, prin poștă recomandată, curier internațional recunoscut sau prin e-mail către persoana de contact.
+Toate notificările vor fi în limba engleză, în scris, și vor fi livrate personal, prin poștă recomandată, curier internațional recunoscut sau e-mail către persoana de contact.
 
-Notificările se consideră primite: (i) la semnarea confirmării de primire dacă sunt livrate personal, (ii) la dovada livrării dacă sunt prin poștă recomandată, (iii) la data înregistrată a curierului, (iv) la confirmarea primirii prin e-mail.
+Notificările se consideră primite: (i) la semnarea confirmării de primire dacă sunt livrate personal; (ii) la dovada livrării dacă sunt prin poștă recomandată; (iii) la data înregistrată a curierului; (iv) la confirmarea primirii prin e-mail.

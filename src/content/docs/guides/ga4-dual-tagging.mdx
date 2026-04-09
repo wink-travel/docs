@@ -1,0 +1,140 @@
+---
+title: GA4 Analytics Integration
+description: How to connect your own Google Analytics 4 property to Wink so you can track your bookings, revenue, and guest journey directly in your own GA4 dashboard.
+sidebar:
+  label: GA4 Analytics Integration
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+By connecting your Google Analytics 4 property to Wink, your booking events — from room views through to completed purchases — are automatically forwarded to your own GA4 dashboard alongside Wink's own analytics. No code, no technical setup on your end.
+
+<Aside type="tip">
+All you need is a GA4 Measurement ID. Once entered in the Wink portal, your analytics are live immediately.
+</Aside>
+
+---
+
+## How It Works
+
+```
+You enter your G-XXXXXXXXXX in the Wink portal
+       ↓
+Wink forwards your booking events to your GA4 property
+       ↓
+You log into analytics.google.com and see your bookings
+```
+
+---
+
+## What You Need to Do
+
+<Steps>
+
+1. **Create a GA4 Property**
+
+   Go to [analytics.google.com](https://analytics.google.com): Admin → Create Property. Set your timezone and currency to match your market.
+
+2. **Create a Web Data Stream**
+
+   Admin → Data Streams → Add Stream → Web. Enter `wink.travel` as the URL. This generates your **Measurement ID** (`G-XXXXXXXXXX`). Copy it.
+
+3. **Enter Your Measurement ID in the Wink Portal**
+
+   Log into [my.wink.travel](https://my.wink.travel), select your account, and go to the **Customizations** tab. Paste your Measurement ID there and save. That's all — your GA4 integration is now active.
+
+4. **Mark `purchase` as a Key Event**
+
+   Back in your GA4 property: Admin → Events → find `purchase` → toggle **Mark as key event**. This makes completed bookings appear in your Conversions report.
+
+5. **View Your Data**
+
+   Log into [analytics.google.com](https://analytics.google.com) and you will see your bookings, revenue, and guest funnel — all tracked automatically through Wink.
+
+</Steps>
+
+<Aside type="note">
+You do not need to install any tracking code on your own website for this integration. Wink handles everything. Your Measurement ID is simply the destination where your booking data is sent.
+</Aside>
+
+---
+
+## What You Can Track
+
+Once connected, your GA4 property receives the full suite of Enhanced E-commerce events for your property:
+
+### Discovery
+
+| Event | What It Means |
+|---|---|
+| `view_item_list` | A guest saw your property in a search or category listing |
+| `select_item` | A guest clicked on your property from a listing |
+| `view_item` | A guest viewed your hotel detail page |
+
+### Consideration
+
+| Event | What It Means |
+|---|---|
+| `view_promotion` | A guest saw a promotional offer for your property |
+| `select_promotion` | A guest clicked on a promotional offer |
+| `add_to_wishlist` | A guest saved your property to their wishlist |
+
+### Booking Funnel
+
+| Event | What It Means |
+|---|---|
+| `add_to_cart` | A guest selected a room or package |
+| `view_cart` | A guest viewed their booking summary |
+| `remove_from_cart` | A guest removed a room or package |
+| `begin_checkout` | A guest started the checkout process |
+| `add_payment_info` | A guest entered their payment details |
+| `add_shipping_info` | A guest entered their guest details |
+| `purchase` | A guest completed a booking |
+| `refund` | A booking was cancelled and refunded |
+
+All events include relevant dimensions such as revenue, currency, room type, and booking value — giving you a full picture of the guest journey from first impression to completed booking.
+
+---
+
+## Cross-Domain Tracking (Advanced)
+
+The standard integration above tracks everything that happens within Wink. However, if you want to track guests all the way from your own website through to booking completion on Wink — and correctly attribute the original traffic source (Google Ads, email campaigns, organic search, etc.) — one additional step is required on each side.
+
+<Aside type="caution">
+This section only applies if you have GA4 installed on your own website. If you do not run GA4 on your site, the standard integration above is all you need.
+</Aside>
+
+### Why This Matters
+
+Without cross-domain tracking, a guest who visits your website first and then books on Wink will appear in your GA4 as a **Direct** session with no connection to their earlier visit. Any Google Ads clicks, email campaigns, or organic search visits that led to the booking will receive no credit.
+
+With cross-domain tracking configured, you see the complete guest journey:
+
+```
+google.com (paid ad)
+       ↓
+your website (guest browses rooms)
+       ↓
+wink.travel (guest selects room and books)
+       ↓
+purchase attributed correctly to the original Google Ads click
+```
+
+### Action Required: You
+
+Configure your GA4 property to recognise `wink.travel` as part of your own domain, not as an external referral. This tells GA4 to stitch the two sessions together into one continuous guest journey.
+
+<Steps>
+1. GA4 Admin → Data Streams → your stream
+2. Configure tag settings → **Configure your domains**
+3. Add `wink.travel` as a linked domain
+4. Save
+</Steps>
+
+### Action Required: Wink
+
+Contact [Wink Support](https://my.wink.travel) and provide your website domain (e.g. `yourhotel.com`). Wink will add your domain to the referral exclusion list in the Wink GA4 property. This prevents your website from being recorded as a referral source, which would otherwise overwrite the guest's original attribution and start a new session.
+
+<Aside type="tip">
+The standard integration above is sufficient for most properties and gives you immediate visibility into bookings and revenue on Wink. Cross-domain tracking is an advanced option worth setting up once you are comfortable with your GA4 data and want deeper attribution insight.
+</Aside>

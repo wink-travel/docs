@@ -19,9 +19,9 @@ Blagovne znamke in verige imajo nekoliko drugačne potrebe kot posamezna nepremi
 - Dodelijo upravitelje nepremičninam.
 - Uporabljajo [WinkLinks](/sl/link-manager/wink-links), [WordPress](/sl/integrations/wordpress) in naše [Web Components](/sl/integrations/web-components) za trženje in prodajo več nepremičnin na enem mestu.
 
-## Upravljavska podjetja
+## Upravljavske družbe
 
-Gostinska upravljavska podjetja in podjetja za upravljanje destinacij lahko upravljajo svoje portfelje nepremičnin v imenu lastnikov. Obstaja jasna prednost, če prodajo na spletu prepustijo spletnim, digitalno ozaveščenim agencijam, medtem ko se hoteli lahko osredotočijo na upravljanje zadovoljstva strank, ko ti prispejo na lokacijo.
+Gostinske upravljavske družbe in družbe za upravljanje destinacij lahko upravljajo svoje portfelje nepremičnin v imenu lastnikov. Obstaja jasna prednost, če prodajo na spletu prepustijo spletnim, digitalno ozaveščenim agencijam, medtem ko se hoteli lahko osredotočijo na upravljanje zadovoljstva strank, ko ti prispejo na lokacijo.
 
 ## Influencerji
 

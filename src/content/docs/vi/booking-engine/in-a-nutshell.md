@@ -30,9 +30,9 @@ Các trách nhiệm của nó bao gồm:
 - Cung cấp cho khách du lịch cách để:
     - Tìm kiếm tồn kho du lịch.
     - Đặt tồn kho có sẵn.
-    - Quản lý [đặt chỗ và đánh giá](/vi/booking-engine/bookings).
+    - Quản lý [đặt chỗ và đánh giá](/vi/booking-engine/bookings) của họ.
     - Quản lý [danh sách mong muốn](/vi/booking-engine/bucket-list) những thứ muốn đặt trong tương lai.
-    - Quản lý [hồ sơ du lịch](/vi/booking-engine/travel-preferences). *ví dụ: Dị ứng, liên hệ khẩn cấp, v.v.*
+    - Quản lý [hồ sơ du lịch](/vi/booking-engine/travel-preferences) của họ. *ví dụ: Dị ứng, liên hệ khẩn cấp, v.v.*
 
 Booking engine là tập hợp các chức năng có thể tái sử dụng mà chúng tôi cung cấp qua https://ota.wink.travel; một trang web có thể tùy chỉnh cao dành cho khách sạn và đối tác để bán sản phẩm của họ cho khách du lịch.
 

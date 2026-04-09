@@ -9,7 +9,7 @@ Bu makale, hizmet verdiğimiz müşteri türlerini ve en iyi nasıl yardımcı o
 
 ## Tesisler
 
-Wink, otelleri on yıl önce sisteme dahil etmeye başladı. Oteller, kendi brand.com siteleri de dahil olmak üzere binlerce satış kanalında envanterlerini etkili bir şekilde yönetmek ve her rezervasyondan daha fazla kazanç sağlamak için Wink'i kullanır; ayrıca, marka kimliğini ve kârlılığı artıran konaklama odaklı araçlarımız sayesinde doğrudan kanalları güçlendirirler.
+Wink, on yıl önce otellerin sisteme dahil edilmesiyle başladı. Oteller, kendi brand.com siteleri de dahil olmak üzere binlerce satış kanalında envanterlerini etkili bir şekilde yönetmek ve her rezervasyondan daha fazla kazanç sağlamak için Wink'i kullanır; ayrıca, marka kimliğini ve kârlılığı artıran konaklama odaklı araçlarımız sayesinde doğrudan kanalları güçlendirirler.
 
 ## Markalar ve Zincirler
 
@@ -21,7 +21,7 @@ Markalar ve zincirlerin, tek bir tesisten biraz farklı ihtiyaçları vardır. W
 
 ## Yönetim Şirketleri
 
-Konaklama yönetim şirketleri ve destinasyon yönetim şirketleri, mülk sahipleri adına portföylerini yönetebilirler. Online odaklı, dijital farkındalığı yüksek ajansların online segmentte satış yapmasına izin vermek, otellerin misafir memnuniyetini tesislerde odaklanarak yönetmelerine olanak tanıyarak kesin bir avantaj sağlar.
+Konaklama yönetim şirketleri ve destinasyon yönetim şirketleri, mülk sahipleri adına portföylerini yönetebilirler. Online odaklı, dijital farkındalığı yüksek ajansların online segmentte satış yapmasına izin vermek büyük bir avantaj sağlar; oteller ise müşterilerin tesislere geldiklerinde memnuniyetlerini yönetmeye odaklanabilir.
 
 ## Influencerlar
 
@@ -29,7 +29,7 @@ Influencerlar, kitlelerini daha iyi paraya dönüştürmek için Wink'i kullanı
 
 ## Seyahat Acenteleri
 
-Seyahat acenteleri, özel [seyahat acentesi portalımız](https://agent.wink.travel) aracılığıyla dünya çapında seyahat envanterine uygun fiyatlarla erişim sağlar. Portalımız üzerinden, API'mizle veya kullanıcılarının bizim teknolojilerimizi kullanan seyahat acentesi web sitesinde kendi rezervasyonlarını yapmalarına izin vererek rezervasyon yapabilirler.
+Seyahat acenteleri, özel [seyahat acentesi portalımız](https://agent.wink.travel) aracılığıyla dünya çapında seyahat envanterine uygun fiyatlarla erişim sağlar. Portalımız üzerinden, API aracılığıyla veya kullanıcılarının bizim teknolojilerimizi kullanan seyahat acentesi web sitesinde kendi rezervasyonlarını yapmalarına izin vererek rezervasyon yapabilirler.
 
 ## Kurumsal Şirketler
 
@@ -46,8 +46,8 @@ Kurumsal seyahatçiler, kendi hesaplarını [kurumsal portalımızda](/tr/corpor
 
 ## Geliştiriciler
 
-Bu platformu otelciler için ve otelcilerle birlikte inşa ettik... Her satır kod, yeniden kullanılabilirlik amacıyla yazıldı. Geliştirici ekibimiz, bir sonraki 🦄 seyahat uygulamasının kod tabanımız üzerine inşa edilmesi umuduyla Wink'i geliştirdi. Wink'in bir sonraki girişiminizde size nasıl destek olabileceğini görmek için [Geliştirici](/tr/developers/build-on-wink) sayfasına göz atın.
+Bu platformu otelciler için ve otelcilerle birlikte inşa ettik... Her satır kod, yeniden kullanılabilirlik amacıyla yazıldı. Geliştirici ekibimiz, bir sonraki 🦄 seyahat uygulamasının kod tabanımız üzerine inşa edilmesi umuduyla Wink'i geliştirdi. Wink'in bir sonraki girişiminizde size nasıl destek olabileceğini görmek için [Developer](/tr/developers/build-on-wink) sayfasına göz atın.
 
 ## Diğer
 
-Seyahat envanteri bulmak ve satmak isteyen herkes Wink'ten faydalanabilir. Konaklama tutkunuzu harekete dönüştürerek her rezervasyondan harika bir komisyon kazanın.
+Seyahat envanteri bulmak ve satmak isteyen herkes Wink'ten faydalanabilir. Konaklama tutkunuzu harekete dönüştürün ve her rezervasyondan harika bir komisyon kazanın.

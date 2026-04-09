@@ -11,9 +11,9 @@ Artikel ini menerangkan jenis pelanggan yang kami layani dan bagaimana kami dapa
 
 Wink mula menerima hotel sepuluh tahun yang lalu. Hotel menggunakan Wink untuk mengurus inventori mereka dengan berkesan merentasi ribuan saluran jualan, termasuk laman web brand.com mereka sendiri, dan untuk memperoleh lebih banyak dengan setiap tempahan sambil meningkatkan saluran langsung dengan bantuan alat berfokuskan hospitaliti kami yang meningkatkan identiti jenama dan keuntungan​.
 
-## Jenama & Rangkaian
+## Jenama & Rantaian
 
-Jenama dan rangkaian mempunyai keperluan yang sedikit berbeza daripada hartanah tunggal. Di Wink, mereka boleh:
+Jenama dan rantaian mempunyai keperluan yang sedikit berbeza daripada satu hartanah sahaja. Di Wink, mereka boleh:
 
 - Mengurus pelbagai hartanah di bawah satu akaun.
 - Menugaskan pengurus kepada hartanah
@@ -21,7 +21,7 @@ Jenama dan rangkaian mempunyai keperluan yang sedikit berbeza daripada hartanah 
 
 ## Syarikat pengurusan
 
-Syarikat pengurusan hospitaliti dan syarikat pengurusan destinasi boleh mengurus portfolio hartanah mereka bagi pihak pemilik. Terdapat kelebihan yang jelas dengan membiarkan agensi yang berfokuskan dalam talian dan sedar digital mengendalikan jualan kepada segmen dalam talian sementara hotel boleh menumpukan pada pengurusan kepuasan pelanggan setelah mereka tiba di premis.
+Syarikat pengurusan hospitaliti dan syarikat pengurusan destinasi boleh mengurus portfolio hartanah mereka bagi pihak pemilik. Terdapat kelebihan yang jelas dengan membiarkan agensi yang berfokuskan dalam talian dan sedar digital mengendalikan jualan kepada segmen dalam talian sementara hotel boleh menumpukan pada pengurusan kepuasan pelanggan apabila mereka tiba di premis.
 
 ## Influencer
 
@@ -29,7 +29,7 @@ Influencer menggunakan Wink untuk memonetkan audiens mereka dengan lebih baik. M
 
 ## Ejen pelancongan
 
-Ejen pelancongan mendapat akses kepada inventori pelancongan di seluruh dunia pada harga hebat melalui [portal ejen pelancongan] khusus kami (https://agent.wink.travel). Mereka boleh membuat tempahan melalui portal kami, melalui API kami atau membenarkan pengguna mereka membuat tempahan sendiri di laman web ejen pelancongan yang menggunakan teknologi kami.
+Ejen pelancongan mendapat akses kepada inventori pelancongan di seluruh dunia pada harga hebat melalui [portal ejen pelancongan] kami yang berdedikasi (https://agent.wink.travel). Mereka boleh membuat tempahan melalui portal kami, melalui API kami atau membenarkan pengguna mereka membuat tempahan sendiri di laman web ejen pelancongan yang menggunakan teknologi kami.
 
 ## Korporat
 
@@ -50,4 +50,4 @@ Walaupun kami membina platform ini oleh dan untuk pengusaha hotel... Setiap bari
 
 ## Lain-lain
 
-Sesiapa yang ingin mencari dan menjual inventori pelancongan boleh mendapat manfaat daripada menggunakan Wink. Ubah minat anda dalam hospitaliti menjadi tindakan dengan memperoleh komisen hebat pada setiap tempahan.
+Sesiapa sahaja yang ingin mencari dan menjual inventori pelancongan boleh mendapat manfaat daripada menggunakan Wink. Ubah minat anda dalam hospitaliti menjadi tindakan dengan memperoleh komisen hebat pada setiap tempahan.

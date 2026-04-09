@@ -1,0 +1,140 @@
+---
+title: GA4 Analytics Integráció
+description: Hogyan csatlakoztathatod saját Google Analytics 4 tulajdonodat a Winkhez, hogy közvetlenül a saját GA4 irányítópultodon követhesd foglalásaidat, bevételeidet és vendégútjaidat.
+sidebar:
+  label: GA4 Analytics Integráció
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+A Google Analytics 4 tulajdonod Winkhez való csatlakoztatásával a foglalási eseményeid — a szobamegtekintésektől a befejezett vásárlásokig — automatikusan továbbításra kerülnek a saját GA4 irányítópultodra a Wink saját elemzései mellett. Nincs szükség kódolásra vagy technikai beállításra a te oldaladon.
+
+<Aside type="tip">
+Csak egy GA4 Mérési azonosítóra van szükséged. Miután beírtad a Wink portálon, az elemzéseid azonnal élővé válnak.
+</Aside>
+
+---
+
+## Hogyan Működik
+
+```
+Beírod a G-XXXXXXXXXX azonosítód a Wink portálon
+       ↓
+A Wink továbbítja a foglalási eseményeidet a GA4 tulajdonodba
+       ↓
+Bejelentkezel az analytics.google.com oldalra, és látod a foglalásaidat
+```
+
+---
+
+## Mit Kell Tenned
+
+<Steps>
+
+1. **Hozz létre egy GA4 tulajdont**
+
+   Látogass el a [analytics.google.com](https://analytics.google.com) oldalra: Admin → Tulajdon létrehozása. Állítsd be az időzónádat és a pénznemet a piacodnak megfelelően.
+
+2. **Hozz létre egy Webes adatfolyamot**
+
+   Admin → Adatfolyamok → Adatfolyam hozzáadása → Web. Írd be a `wink.travel` URL-t. Ez létrehozza a **Mérési azonosítódat** (`G-XXXXXXXXXX`). Másold ki.
+
+3. **Írd be a Mérési azonosítódat a Wink portálon**
+
+   Jelentkezz be a [my.wink.travel](https://my.wink.travel) oldalra, válaszd ki a fiókodat, és menj a **Testreszabások** fülre. Illeszd be a Mérési azonosítót, majd mentsd el. Ennyi az egész — a GA4 integrációd most aktív.
+
+4. **Jelöld meg a `purchase` eseményt kulcsfontosságú eseményként**
+
+   Térj vissza a GA4 tulajdonodba: Admin → Események → keresd meg a `purchase` eseményt → kapcsold be a **Kulcsfontosságú eseményként jelölés** opciót. Ezáltal a befejezett foglalások megjelennek a Konverziók jelentésben.
+
+5. **Tekintsd meg az adataidat**
+
+   Jelentkezz be az [analytics.google.com](https://analytics.google.com) oldalra, és látni fogod a foglalásaidat, bevételeidet és a vendégút folyamatát — mindezt automatikusan a Wink által követve.
+
+</Steps>
+
+<Aside type="note">
+Ehhez az integrációhoz nem kell semmilyen követőkódot telepítened a saját weboldaladra. A Wink mindent kezel. A Mérési azonosítód egyszerűen az a célpont, ahová a foglalási adataid érkeznek.
+</Aside>
+
+---
+
+## Mit Követhetsz Nyomon
+
+A csatlakozás után a GA4 tulajdonod megkapja a teljes Enhanced E-commerce eseménykészletet a szálláshelyedhez:
+
+### Felfedezés
+
+| Esemény | Jelentése |
+|---|---|
+| `view_item_list` | Egy vendég látta a szálláshelyed keresési vagy kategória listában |
+| `select_item` | Egy vendég rákattintott a szálláshelyedre a listából |
+| `view_item` | Egy vendég megtekintette a szállodád részletes oldalát |
+
+### Mérlegelés
+
+| Esemény | Jelentése |
+|---|---|
+| `view_promotion` | Egy vendég látta a szálláshelyed promóciós ajánlatát |
+| `select_promotion` | Egy vendég rákattintott egy promóciós ajánlatra |
+| `add_to_wishlist` | Egy vendég elmentette a szálláshelyed a kívánságlistájára |
+
+### Foglalási folyamat
+
+| Esemény | Jelentése |
+|---|---|
+| `add_to_cart` | Egy vendég kiválasztott egy szobát vagy csomagot |
+| `view_cart` | Egy vendég megtekintette a foglalási összefoglalót |
+| `remove_from_cart` | Egy vendég eltávolított egy szobát vagy csomagot |
+| `begin_checkout` | Egy vendég elkezdte a fizetési folyamatot |
+| `add_payment_info` | Egy vendég megadta a fizetési adatait |
+| `add_shipping_info` | Egy vendég megadta a vendégadatait |
+| `purchase` | Egy vendég befejezte a foglalást |
+| `refund` | Egy foglalást töröltek és visszatérítettek |
+
+Minden esemény tartalmazza a releváns dimenziókat, mint például bevétel, pénznem, szobatípus és foglalás értéke — így teljes képet kapsz a vendégút első benyomásától a befejezett foglalásig.
+
+---
+
+## Kereszt-domain követés (Haladó)
+
+A fentiekben ismertetett alap integráció mindent követ, ami a Wink platformon történik. Ha azonban azt szeretnéd, hogy a vendégek a saját weboldaladról indulva egészen a Wink foglalás befejezéséig követhetők legyenek — és helyesen legyen attribuálva az eredeti forgalmi forrás (Google Ads, e-mail kampányok, organikus keresés stb.) — akkor mindkét oldalon egy további lépés szükséges.
+
+<Aside type="caution">
+Ez a rész csak akkor vonatkozik rád, ha GA4-et használsz a saját weboldaladon. Ha nem futtatod a GA4-et a weboldaladon, a fent ismertetett alap integráció elegendő.
+</Aside>
+
+### Miért Fontos Ez
+
+Kereszt-domain követés nélkül egy vendég, aki először a weboldaladat látogatja meg, majd a Wink-en foglal, a GA4-ben **Közvetlen** munkamenetként jelenik meg, amely nem kapcsolódik az előző látogatáshoz. A foglaláshoz vezető Google Ads kattintások, e-mail kampányok vagy organikus keresések nem kapnak elismerést.
+
+A kereszt-domain követés beállításával a teljes vendégút láthatóvá válik:
+
+```
+google.com (fizetett hirdetés)
+       ↓
+a te weboldalad (vendég böngészi a szobákat)
+       ↓
+wink.travel (vendég kiválasztja a szobát és foglal)
+       ↓
+a vásárlás helyesen a Google Ads kattintáshoz van rendelve
+```
+
+### Teendő: Te
+
+Állítsd be a GA4 tulajdonod, hogy a `wink.travel` a saját domainjeid része legyen, ne pedig külső hivatkozás. Ez megmondja a GA4-nek, hogy a két munkamenetet egy folyamatos vendégúttá fűzze össze.
+
+<Steps>
+1. GA4 Admin → Adatfolyamok → a te adatfolyamod
+2. Címke beállítások konfigurálása → **Domainjeid konfigurálása**
+3. Add hozzá a `wink.travel`-t mint összekapcsolt domaint
+4. Mentsd el
+</Steps>
+
+### Teendő: Wink
+
+Lépj kapcsolatba a [Wink Support](https://my.wink.travel) csapatával, és add meg a weboldalad domainjét (pl. `yourhotel.com`). A Wink hozzáadja a domainedet a hivatkozás kizárási listához a Wink GA4 tulajdonban. Ez megakadályozza, hogy a weboldalad hivatkozási forrásként legyen rögzítve, ami egyébként felülírná a vendég eredeti attribúcióját és új munkamenetet indítana.
+
+<Aside type="tip">
+A fent ismertetett alap integráció a legtöbb szálláshely számára elegendő, és azonnali betekintést nyújt a Wink foglalásokba és bevételekbe. A kereszt-domain követés egy haladó opció, amelyet érdemes beállítani, ha már kényelmesen kezeled a GA4 adataidat, és mélyebb attribúciós betekintést szeretnél.
+</Aside>

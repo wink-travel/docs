@@ -1,0 +1,676 @@
+---
+title: Sojern Pixel Entegrasyonu
+description: Sojern hesabınızı Wink ile nasıl bağlayacağınız, böylece Sojern'in misafirlerinizin rezervasyon yolculuğunu takip edebilmesi ve yeniden hedefleme ile reklam kampanyalarınızı güçlendirebilmesi.
+sidebar:
+  label: Sojern Pixel Entegrasyonu
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Sojern üzerinden reklam kampanyaları yürütüyorsanız, Sojern GTM Container ID'nizi Wink portalına girerek Sojern hesabınızı Wink ile bağlayabilirsiniz. Bağlandıktan sonra, Sojern'in takip pikseli mülkünüz için otomatik olarak tetiklenir — aramadan tamamlanmış rezervasyona kadar tüm misafir yolculuğunu kapsar.
+
+<Aside type="tip">
+Bu, zaten aktif bir Sojern hesabınızın olduğu ve Sojern hesap yöneticinizden GTM Container ID'nizi aldığınız varsayımıyla yapılır. Henüz bir Sojern hesabınız yoksa, başlamak için [sojern.com/contact](https://www.sojern.com/contact) adresini ziyaret edin.
+</Aside>
+
+---
+
+## Yapmanız Gerekenler
+
+<Steps>
+
+1. **Sojern'den GTM Container ID'nizi Alın**
+
+   Sojern hesap yöneticinizle iletişime geçin ve **GTM Container ID** talep edin. Formatı `GTM-XXXXXXX` şeklindedir. Bu, Sojern Pixel ID'nizden farklıdır — özellikle GTM Container ID istediğinizden emin olun.
+
+2. **Bunu Wink Portalına Girin**
+
+   [my.wink.travel](https://my.wink.travel) adresine giriş yapın, hesabınızı seçin ve **Customizations** sekmesine gidin. Sojern alanına Sojern GTM Container ID'nizi yapıştırın ve kaydedin. Entegrasyonunuz artık aktif.
+
+3. **Sojern Hesap Yöneticinizle Onaylayın**
+
+   Entegrasyonun aktif olduğunu Sojern hesap yöneticinize bildirin. Onlar, mülkünüz için `wink.travel` üzerinde pikselin doğru şekilde tetiklendiğini ve verilerin Sojern hesabınıza aktığını kendi taraflarından doğrulayabilirler.
+
+</Steps>
+
+<Aside type="note">
+Bu entegrasyon için kendi web sitenize herhangi bir piksel kodu yerleştirmenize gerek yoktur. Wink, mülkünüzün aktif olduğu tüm sayfalarda Sojern konteynerinizi otomatik olarak yükler.
+
+Bu yapılandırma herhangi bir özel GTM Container ID için çalışır. Örnek olarak Sojern kullanıldı çünkü çok yaygın bir entegrasyondur.
+</Aside>
+
+---
+
+## Wink Tarafında Neler Yapılır
+
+Şeffaflık için, bu entegrasyonun çalışması için Wink'in yapılandırdıkları:
+
+- **Sojern GTM Container ID alanı** Wink portalınızın Customizations sekmesinde mevcuttur. Container ID'nizi girdiğinizde, Wink formatı doğrular ve mülkünüze güvenli şekilde kaydeder.
+- **Mülkünüzün aktif olduğu her sayfada** Wink, Sojern GTM Container ID'nizi sayfaya yerleştirir ve kendi etiket yönetim sistemiyle birlikte Sojern konteynerinizi dinamik olarak yükler. Bu otomatik gerçekleşir — Wink ekibinden mülk başına manuel bir işlem gerekmez.
+- **Sojern konteyneriniz asenkron olarak yüklenir**, yani misafirleriniz için sayfa yükleme performansını etkilemez.
+- **Wink'in kendi takibi ile Sojern pikseli paralel çalışır**, aynı paylaşılan etkinlik verisini okur. Wink'in takip ettiği her rezervasyon etkinliği aynı anda Sojern konteynerinizde de kullanılabilir.
+- **Mülkünüz görüntülenmediğinde** — örneğin, misafir Wink'te başka bir oteli incelerken — Sojern konteyneri yüklenmez. Bu, Sojern'in sadece mülkünüze ait ilgili verileri almasını sağlar.
+
+---
+
+## DataLayer Referansı
+
+Wink, misafir yolculuğu boyunca GA4 uyumlu etkinlikleri `dataLayer`'a iter. GTM konteyneriniz bu aynı paylaşılan `dataLayer`'ı okur, böylece yapılandırdığınız herhangi bir tetikleyici veya değişken aşağıda açıklanan tüm özelliklere erişebilir.
+
+Her etkinlik standart GA4 Gelişmiş E-Ticaret yapısını takip eder: üst düzey bir `event` stringi ve bir `ecommerce` nesnesi. Her push öncesinde, Wink eski e-ticaret yükünü temizler, böylece eski veriler yeni tetikleyicilere sızmaz.
+
+<Aside type="note">
+**dataLayer sıfırlama deseni**
+
+Wink her etkinlik push'undan önce ecommerce nesnesini sıfırlar:
+
+```js
+dataLayer.push({ ecommerce: null });   // önceki etkinliği temizle
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+E-ticaret özelliklerinin etkinlikler arasında kalıcı olduğunu varsaymayın. Her zaman tetikleme anında aynı etkinlik içinde okuyun.
+</Aside>
+
+---
+
+### Rezervasyon Yolculuğu Etkinlikleri
+
+Misafir rezervasyon hunisinde ilerledikçe bu etkinlikler otomatik tetiklenir. GTM tetikleyicilerinizi aşağıdaki etkinlik isimleriyle eşleşen **Custom Event** tetikleyicileri olarak yapılandırın.
+
+| Adım | Etkinlik | Ne Zaman Tetiklenir |
+|------|----------|---------------------|
+| 1 | `view_item_list` | Otel envanter ızgarası veya listesi yüklendiğinde |
+| 2 | `view_item` | Misafir belirli bir mülk sayfasını görüntülediğinde |
+| 3 | `add_to_cart` | Misafir sepete bir oda eklediğinde |
+| 4 | `begin_checkout` | Ödeme / checkout sayfası yüklendiğinde |
+| 5 | `add_payment_info` | Misafir bir ödeme yöntemi seçtiğinde |
+| 6 | `login` | Misafir SSO ile kimlik doğrulaması yaptığında |
+| 7 | `purchase` | Rezervasyon onaylandığında |
+| 8 | `refund` | Rezervasyon iptal edildiğinde |
+
+---
+
+#### `view_item_list`
+
+Otel envanter ızgarası veya listesi render edildiğinde tetiklenir.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Misafir belirli bir mülkü görüntülediğinde tetiklenir.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Misafir sepete bir oda eklediğinde tetiklenir.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Ödeme / checkout sayfası yüklendiğinde tetiklenir.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` sadece indirim kodu uygulandığında bulunur.
+
+---
+
+#### `add_payment_info`
+
+Misafir bir ödeme yöntemi seçtiğinde veya onayladığında tetiklenir.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` ödeme sağlayıcı türünden doldurulur. `coupon` sadece indirim kodu uygulandığında bulunur.
+
+---
+
+#### `login`
+
+Misafir tek oturum açma (SSO) ile kimlik doğrulaması yaptığında tetiklenir.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Rezervasyon onaylandığında tetiklenir.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` benzersiz rezervasyon sözleşme kimliğidir. `coupon`, `shipping` ve `tax` sadece geçerliyse bulunur.
+
+---
+
+#### `refund`
+
+Rezervasyon iptal edildiğinde tetiklenir.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` aynı rezervasyon için `purchase` etkinliğiyle eşleşir. `coupon`, `shipping` ve `tax` sadece geçerliyse bulunur.
+
+---
+
+### Ürün Özellikleri
+
+`items` dizisi içeren tüm etkinlikler aynı ürün şemasını paylaşır. Her özellik isteğe bağlıdır, zorunlu olanlar belirtilmiştir.
+
+#### Standart GA4 alanları
+
+Bu alanlar GA4 tarafından doğal olarak anlaşılır ve ek yapılandırma olmadan standart e-ticaret raporlarında görünür.
+
+| Özellik | Tür | Zorunlu | Açıklama |
+|----------|------|----------|-------------|
+| `item_id` | string | Evet | Oda veya ürün için benzersiz tanımlayıcı |
+| `item_name` | string | — | Oda veya ürünün adı |
+| `affiliation` | string | — | Satıcı veya bağlı kuruluş adı |
+| `coupon` | string | — | Ürüne uygulanan kupon kodu |
+| `currency` | string | — | ISO 4217 para birimi kodu (ör. `USD`) |
+| `creative_name` | string | — | Promosyonda kullanılan yaratıcı adı |
+| `creative_slot` | string | — | Promosyon yaratıcı slot pozisyonu |
+| `discount` | number | — | Uygulanan indirim miktarı |
+| `index` | number | — | Listede pozisyon (1 tabanlı) |
+| `item_brand` | string | — | Otel veya marka adı |
+| `item_category` | string | — | Ürün türü — örn. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | Bu öğenin ait olduğu liste kimliği |
+| `item_list_name` | string | — | Listenin görüntülenen adı |
+| `location_id` | string | — | Mülkün coğrafi koordinatları |
+| `price` | number | — | Birim fiyat |
+| `promotion_id` | string | — | Promosyon kimliği |
+| `promotion_name` | string | — | Promosyonun görüntülenen adı |
+| `quantity` | number | — | Miktar (varsayılan `1`) |
+
+#### Özel ürün kapsamlı parametreler
+
+Bu parametreler Wink'e özgü rezervasyon bağlamını taşır. GA4 bunları raporlarda otomatik göstermez — görünmeleri için her birini GA4 mülkünüzde **ürün kapsamlı özel boyut** olarak kaydetmeniz gerekir. Kurulum için aşağıdaki [GA4'te Özel Boyutlar](#custom-dimensions-in-ga4) bölümüne bakın.
+
+| Özellik | Tür | Açıklama |
+|----------|------|-------------|
+| `property_id` | string | Wink mülk tanımlayıcısı |
+| `property_name` | string | Mülkün görüntülenen adı |
+| `property_brand` | string | Mülkün ait olduğu marka |
+| `property_chain` | string | Mülkün ait olduğu zincir |
+| `city_name` | string | Mülkün bulunduğu şehir |
+| `country_code` | string | ISO 3166-1 alfa-2 ülke kodu |
+| `start_date` | string | Giriş tarihi, `YYYY-MM-DD` formatında |
+| `end_date` | string | Çıkış tarihi, `YYYY-MM-DD` formatında |
+| `num_adults` | number | Rezervasyondaki yetişkin sayısı |
+| `num_children` | number | Rezervasyondaki çocuk sayısı |
+| `cancellation_policy` | string | Şunlardan biri: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Fiyat planı kimliği |
+| `room_rate_id` | string | Belirli oda fiyatı kimliği |
+| `room_rate_name` | string | Oda fiyatının görüntülenen adı |
+| `num_perks` | number | Fiyata dahil avantaj sayısı |
+| `room_location` | string | Oda konumu açıklaması (örn. `Overwater`, `Garden`) |
+| `room_view` | string | Oda manzarası açıklaması (örn. `Ocean`, `City`) |
+| `room_classification` | string | Oda sınıflandırması veya seviyesi (örn. `Suite`, `Standard`) |
+
+---
+
+### GA4'te Özel Boyutlar
+
+GA4, özel ürün parametrelerini raporlarda görmezden gelir; bunları açıkça ürün kapsamlı özel boyut olarak kaydetmeniz gerekir. Raporlarda kullanmayı planladığınız parametreleri kaydetmeniz yeterlidir — tüm 18 parametreyi kaydetmeniz gerekmez.
+
+<Steps>
+
+1. **Özel Tanımları Açın**
+
+   GA4'te, **Admin** (sol alt dişli simgesi) → mülkünüzü seçin → **Data display** → **Custom definitions**.
+
+2. **Yeni özel boyut oluşturun**
+
+   **Create custom dimensions** butonuna tıklayın.
+
+3. **Boyut detaylarını doldurun**
+
+   - **Dimension name** — GA4 raporlarında görünen okunabilir etiket (aşağıdaki tabloya bakın)
+   - **Scope** — **Item** seçin
+   - **Event parameter** — dataLayer'da göründüğü tam parametre adı (aşağıdaki tabloya bakın)
+   - **Description** — isteğe bağlı ama önerilir
+
+4. **Kaydedin ve tekrarlayın**
+
+   **Save** tıklayın, ardından takip etmek istediğiniz her parametre için tekrarlayın.
+
+</Steps>
+
+<Aside type="note">
+Özel boyutların GA4 raporlarında görünmeye başlaması kayıt işleminden sonra 24 saate kadar sürebilir. Kayıttan önce toplanan geçmiş veriler geriye dönük olarak eklenmez.
+
+GA4, standart mülklerde mülk başına 50 ürün kapsamlı özel boyuta izin verir (360 mülklerde daha fazlası mümkündür).
+</Aside>
+
+Aşağıdaki tablo, özel boyut oluştururken referansınız olsun. **Event parameter** değeri tam olarak eşleşmelidir — GA4 büyük/küçük harfe duyarlıdır.
+
+| Boyut adı | Event parameter | Tür |
+|----------------|-----------------|------|
+| Property ID | `property_id` | Metin |
+| Property name | `property_name` | Metin |
+| Property brand | `property_brand` | Metin |
+| Property chain | `property_chain` | Metin |
+| City name | `city_name` | Metin |
+| Country code | `country_code` | Metin |
+| Check-in date | `start_date` | Metin |
+| Check-out date | `end_date` | Metin |
+| Number of adults | `num_adults` | Sayı |
+| Number of children | `num_children` | Sayı |
+| Cancellation policy | `cancellation_policy` | Metin |
+| Rate plan ID | `rate_plan_id` | Metin |
+| Room rate ID | `room_rate_id` | Metin |
+| Room rate name | `room_rate_name` | Metin |
+| Number of perks | `num_perks` | Sayı |
+| Room location | `room_location` | Metin |
+| Room view | `room_view` | Metin |
+| Room classification | `room_classification` | Metin |
+
+---
+
+### Ek Mevcut Etkinlikler
+
+Aşağıdaki etkinlikler Wink dataLayer'ında mevcuttur ancak standart rezervasyon hunisinin parçası değildir. Platformdaki diğer etkileşimlerle tetiklenebilirler.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Bu etkinlikle birlikte `ecommerce` yükü yoktur.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Bu özel bir Wink etkinliğidir — standart GA4 etkinlik setinin parçası değildir. Her sayfa gezinmesinde itilir ve cihaz ile oturum bağlamını taşır. `ecommerce` nesnesi içermez.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Özellik | Açıklama |
+|----------|-------------|
+| `device` | Algılanan cihaz türü — `Desktop`, `Android`, `iPhone`, `iPad` veya benzeri |
+| `deviceAgent` | Ham kullanıcı ajanı dizisi |
+| `os` | Algılanan işletim sistemi — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Geçerli sayfa yolu |
+| `title` | Geçerli sayfa başlığı |
+| `userId` | Kimliği doğrulanmış kullanıcı tanımlayıcısı (giriş yapılmadıysa yok) |
+| `startDate` | Geçerli arama oturumundan giriş tarihi |
+| `endDate` | Geçerli arama oturumundan çıkış tarihi |
+| `guests` | Geçerli arama oturumundan misafir sayısı |
+| `rooms` | Geçerli arama oturumundan oda sayısı |

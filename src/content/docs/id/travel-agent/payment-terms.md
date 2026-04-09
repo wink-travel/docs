@@ -15,7 +15,7 @@ Hal ini hanya dapat dilakukan melalui API kami dan hanya oleh agen perjalanan ya
 
 Semua agen perjalanan tetap dapat melakukan pemesanan melalui portal agen perjalanan kami menggunakan gateway pembayaran Wink dengan kartu kredit mereka sendiri atau kartu kredit pelancong. Oleh karena itu, semua agen perjalanan juga harus menyetujui ketentuan pembayaran di mana gateway pembayaran Wink adalah merchant of record.
 
-Ketentuan tersebut tersedia di [Affiliate Portal > Payment Terms](/id/studio/payment-terms).
+Ketentuan tersebut tersedia di bawah [Affiliate Portal > Payment Terms](/id/studio/payment-terms).
 :::
 
 **KETENTUAN PEMBAYARAN WINK**  
@@ -25,7 +25,7 @@ Ketentuan Layanan Pembayaran ini (“Ketentuan Pembayaran”) adalah perjanjian 
 
 **ANTARA:**
 
-1. **Winkfluence**, sebuah perusahaan yang didirikan berdasarkan hukum Singapura dan berkantor terdaftar di \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 dengan nomor registrasi VAT 201437335D (selanjutnya disebut "Wink") dan  
+1. **Winkfluence** sebuah perusahaan yang didirikan berdasarkan hukum Singapura dan berkantor terdaftar di \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 dengan nomor registrasi VAT 201437335D (selanjutnya disebut "Wink") dan  
      
 2. **AGEN PERJALANAN** yang datanya tercantum dalam Formulir Pendaftaran Agen Perjalanan atau telah diserahkan secara online (selanjutnya disebut "Agen Perjalanan").
 
@@ -46,7 +46,7 @@ Seperti yang didefinisikan dalam perjanjian utama "SYARAT & KETENTUAN AGEN PERJA
 
 **2\. Pengumpulan dan Distribusi Pembayaran**
 
-2.1 **Pengumpulan Pembayaran:** Agen Perjalanan bertanggung jawab untuk mengumpulkan pembayaran dari Tamu pada saat pemesanan. Hal ini memastikan pemrosesan segera dan kejelasan finansial.
+2.1 **Pengumpulan Pembayaran:** Agen Perjalanan bertanggung jawab untuk mengumpulkan pembayaran dari Tamu pada saat pemesanan. Ini memastikan pemrosesan segera dan kejelasan keuangan.
 
 2.2 **Pemotongan Biaya:** Agen Perjalanan harus memotong biaya Penyedia Layanan terlebih dahulu kemudian memotong komisinya untuk subtotal seperti contoh di bawah ini:
 
@@ -57,28 +57,28 @@ Nilai Pemesanan USD 1.000
 Biaya Wink (1,5%) = USD 15  
 Subtotal = 1.000 - 15 = 985
 
-2.3 **Pembayaran Bersih ke Penyedia Akomodasi:** Agen Perjalanan bertanggung jawab untuk menyalurkan Pembayaran Bersih kepada Penyedia Akomodasi sesuai dengan ketentuan Perjanjian Terpisah antara Agen Perjalanan dan Penyedia Akomodasi. Wink tidak bertanggung jawab melakukan pembayaran apa pun kepada Penyedia Akomodasi.
+2.3 **Pembayaran Bersih ke Penyedia Akomodasi:** Agen Perjalanan bertanggung jawab untuk menyalurkan Pembayaran Bersih kepada Penyedia Akomodasi sesuai dengan ketentuan Perjanjian Terpisah antara Agen Perjalanan dan Penyedia Akomodasi. Wink tidak bertanggung jawab melakukan pembayaran apapun kepada Penyedia Akomodasi.
 
 **3**. **Penagihan dan Pembayaran** 
 
-3.1 **Penagihan Bulanan:** Wink akan mengeluarkan faktur bulanan yang benar dan akurat kepada Agen Perjalanan untuk Biaya Pemesanan yang terkumpul selama bulan sebelumnya. Agen Perjalanan wajib melunasi faktur ini sesuai dengan ketentuan pembayaran yang tercantum pada faktur.
+3.1 **Penagihan Bulanan:** Wink akan mengeluarkan faktur bulanan yang benar dan akurat kepada Agen Perjalanan untuk Biaya Pemesanan yang terkumpul selama bulan sebelumnya. Agen Perjalanan wajib menyelesaikan pembayaran faktur ini dalam jangka waktu yang ditentukan pada faktur.
 
 3.2 **Metode Pembayaran:** Pembayaran kepada Wink harus dilakukan melalui metode pembayaran yang tercantum pada faktur. Biaya yang terkait dengan transfer pembayaran menjadi tanggung jawab Agen Perjalanan.
 
-3.3 **Pembayaran Terlambat:** Jika terjadi keterlambatan pembayaran, Wink berhak mengenakan bunga atas jumlah yang terlambat dibayar sebesar 5% per bulan atau tingkat maksimum yang diizinkan oleh hukum, mana yang lebih rendah. Selain itu, jika Agen Perjalanan terlambat membayar Penyedia Akomodasi sesuai ketentuan Perjanjian Terpisah, Wink berhak menangguhkan akses ke Layanan sampai semua pembayaran tertunggak kepada Wink dan Penyedia Akomodasi diselesaikan. Namun, jika terdapat kesalahan atau kekeliruan dalam faktur yang diajukan oleh Wink, Agen Perjalanan hanya diwajibkan membayar bagian faktur yang benar dan akurat dan tidak dikenakan bunga atau denda atas kegagalan membayar bagian faktur yang salah.
+3.3 **Pembayaran Terlambat:** Jika terjadi keterlambatan pembayaran, Wink berhak mengenakan bunga atas jumlah yang terlambat dibayar sebesar 5% per bulan atau tingkat maksimum yang diizinkan oleh hukum, mana yang lebih rendah. Selain itu, jika Agen Perjalanan terlambat membayar Penyedia Akomodasi sesuai ketentuan Perjanjian Terpisah, Wink berhak menangguhkan akses ke Layanan sampai semua pembayaran tertunggak kepada Wink dan Penyedia Akomodasi diselesaikan. Namun, jika terdapat kesalahan atau kekeliruan dalam faktur yang diajukan oleh Wink, Agen Perjalanan hanya diwajibkan membayar bagian faktur yang benar dan akurat dan tidak dikenakan bunga atau denda atas bagian faktur yang salah.
 
 **4\. Peran dan Tanggung Jawab**
 
 4.1 **Tanggung Jawab Agen Perjalanan:**
 
-* Memastikan pengumpulan pembayaran dari Tamu tepat waktu, sesuai dengan ketentuan yang dijelaskan di Bagian 2.1.  
+* Memastikan pengumpulan pembayaran dari Tamu tepat waktu sesuai ketentuan pada Bagian 2.1.  
 * Memotong Biaya Pemesanan dan Komisi yang sesuai sebelum menyalurkan Pembayaran Bersih kepada Penyedia Akomodasi sesuai Perjanjian Terpisah.  
-* Melunasi faktur Wink untuk Biaya Pemesanan dengan segera sesuai ketentuan di Bagian 3.1.  
+* Menyelesaikan faktur Wink untuk Biaya Pemesanan dengan cepat sesuai ketentuan pada Bagian 3.1.  
 * Mengelola dan menyelesaikan sengketa terkait pemesanan atau pembayaran secara aktif, memastikan komunikasi dengan Wink untuk menyelesaikan masalah secara efisien.
 
 4.2 **Tanggung Jawab Wink:**
 
-* Mengeluarkan faktur bulanan yang akurat dan tepat waktu untuk Biaya Pemesanan seperti dijelaskan di Bagian 3.1.  
+* Mengeluarkan faktur bulanan yang akurat dan tepat waktu untuk Biaya Pemesanan seperti dijelaskan pada Bagian 3.1.  
 * Memberikan akses berkelanjutan kepada Agen Perjalanan ke platform Wink untuk memproses pemesanan dan mengelola pembayaran.  
 * Membantu Agen Perjalanan dalam menyelesaikan sengketa terkait pembayaran dengan menyediakan data transaksi dan dukungan yang diperlukan.
 
@@ -91,7 +91,7 @@ Jika diperlukan konversi mata uang, akan diproses dengan kurs yang diberikan ole
 Setiap sengketa yang timbul dari atau terkait dengan Ketentuan Pembayaran ini akan ditangani sesuai prosedur penyelesaian sengketa dalam Perjanjian Utama, memastikan pendekatan yang konsisten dan terpadu untuk menyelesaikan konflik antara Wink dan Agen Perjalanan.
 
 **7\. Perubahan Ketentuan**  
-Wink berhak mengubah Ketentuan Pembayaran ini kapan saja. Setiap perubahan akan diberitahukan kepada Agen Perjalanan setidaknya 30 hari sebelum berlaku. Penggunaan platform Wink yang berkelanjutan setelah tanggal berlaku merupakan penerimaan atas ketentuan yang diubah.
+Wink berhak mengubah Ketentuan Pembayaran ini kapan saja. Setiap perubahan akan diberitahukan kepada Agen Perjalanan setidaknya 30 hari sebelum berlaku. Penggunaan platform Wink setelah tanggal efektif merupakan penerimaan atas ketentuan yang diubah.
 
 **8\. Hukum yang Mengatur dan Yurisdiksi**  
 Ketentuan Pembayaran ini diatur oleh hukum Singapura. Setiap sengketa yang timbul dari atau terkait dengan ketentuan ini akan diselesaikan di pengadilan Singapura.

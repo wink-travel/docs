@@ -23,21 +23,21 @@ Questi termini sono disponibili sotto [Affiliate Portal > Terms of Service](/it/
 
 **TRA:**
 
-1. **Winkfluence**, una società costituita secondo le leggi di Singapore con sede legale in \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 e numero di registrazione IVA 201437335D (di seguito denominata "Wink") e  
+1. **Winkfluence**, una società costituita secondo le leggi di Singapore con sede legale al \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 e numero di registrazione IVA 201437335D (di seguito denominata "Wink") e  
      
-2. **L'AGENTE DI VIAGGIO** i cui dati sono indicati nel modulo di registrazione dell'agente di viaggio o sono stati inviati online (l'"Agente di Viaggio").
+2. **L'AGENTE DI VIAGGIO** i cui dati sono indicati nel modulo di registrazione agente di viaggio o sono stati inviati online (l'"Agente di Viaggio").
 
 **CONSIDERANDO CHE:**
 
-(i) Wink gestisce un sistema online (il "Sistema") tramite il quale le strutture ricettive partecipanti (collettivamente i "Fornitori di Alloggio") possono rendere disponibile il loro inventario per la prenotazione e tramite il quale l'Agente di Viaggio può effettuare prenotazioni presso tali Fornitori di Alloggio per conto dei loro Ospiti (il "Servizio");
+(i) Wink gestisce un sistema online (il "Sistema") attraverso il quale le strutture ricettive partecipanti (collettivamente i "Fornitori di Alloggio") possono rendere disponibile il loro inventario per la prenotazione e attraverso il quale l'Agente di Viaggio può effettuare prenotazioni presso tali Fornitori di Alloggio per conto dei loro Ospiti (il "Servizio");
 
 (ii) Wink non possiede, controlla, offre o gestisce alcun annuncio. Wink non è parte dei contratti conclusi direttamente tra i Fornitori di Alloggio e gli Ospiti. Wink non agisce come agente in alcuna veste per i Fornitori di Alloggio;
 
-(iii) Wink mantiene e sfrutta i propri siti web (i "Siti Wink") e fornisce inoltre il Servizio e link al Servizio sui siti web di terzi;
+(iii) Wink mantiene e sfrutta i propri siti web (i "Siti Wink") e fornisce anche il Servizio e link al Servizio sui siti web di terzi;
 
 (iv) L'Agente di Viaggio possiede, controlla, ospita e/o gestisce uno o più domini Internet, siti web o applicazioni e desidera essere il merchant of record durante l'utilizzo del Servizio.
 
-(v) L'Agente di Viaggio e Wink desiderano che l'Agente di Viaggio renda il Servizio (direttamente o indirettamente) disponibile ai propri clienti e visitatori dei siti web e delle app dell'Agente di Viaggio e in tale forma e con tali termini e condizioni (di seguito denominati i "Termini") come stabilito nel presente Accordo.
+(v) L'Agente di Viaggio e Wink desiderano che l'Agente di Viaggio renda disponibile il Servizio (direttamente o indirettamente) ai propri clienti e visitatori del/dei sito/i web e app dell'Agente di Viaggio e in tale forma e con tali termini e condizioni (di seguito denominati i "Termini") come stabilito nel presente Accordo.
 
 **PERTANTO, LE PARTI CONVENGONO QUANTO SEGUE:**
 
@@ -63,13 +63,13 @@ Questi termini sono disponibili sotto [Affiliate Portal > Terms of Service](/it/
     
 * **"Merchant of Record"** si riferisce all'entità legalmente autorizzata e responsabile dell'elaborazione dei pagamenti dagli Ospiti, inclusa la gestione delle transazioni di pagamento, rimborsi, chargeback e il rispetto delle normative sui pagamenti. Il Merchant of Record è l'entità il cui nome appare sull'estratto conto della carta di credito dell'Ospite per gli addebiti relativi alla Prenotazione.
 
-* **"Pagamento Netto"** indica l'importo da pagare al Fornitore di Alloggio dopo aver detratto la Commissione di Prenotazione di Wink e la Commissione dell'Agente di Viaggio dal Valore della Prenotazione.  
+* **"Pagamento Netto"** indica l'importo da corrispondere al Fornitore di Alloggio dopo aver detratto la Commissione di Prenotazione di Wink e la Commissione dell'Agente di Viaggio dal Valore della Prenotazione.  
     
-* **“Pagamenti”** indica gli obblighi finanziari derivanti dal presente Accordo, inclusi commissioni, tariffe o altri oneri, dovuti da una parte all'altra.
+* **“Pagamenti”** indica gli obblighi finanziari derivanti dal presente Accordo, incluse commissioni, tariffe o altri oneri, dovuti da una parte all'altra.
 
-* **"Payment Facilitator"** è una controllata interamente posseduta da Winkfluence che gestisce i Servizi di Pagamento, raccogliendo pagamenti dagli ospiti addebitando il metodo di pagamento associato all'acquisto come carta di credito, carta di debito, bonifico bancario, criptovalute o PayPal, ecc.  
+* **"Payment Facilitator"** è una controllata interamente posseduta da Winkfluence che gestisce i Servizi di Pagamento, raccogliendo i pagamenti dagli ospiti addebitando il metodo di pagamento associato all'acquisto come carta di credito, carta di debito, bonifico bancario, criptovalute o PayPal, ecc.  
     
-* **“Piattaforma”** indica il sistema online gestito dal Service Provider tramite il quale l'Agente di Viaggio può effettuare o gestire Prenotazioni per gli Ospiti.
+* **“Piattaforma”** indica il sistema online gestito dal Service Provider attraverso il quale l'Agente di Viaggio può effettuare o gestire Prenotazioni per gli Ospiti.
 
 * **"Separate Agreement"** indica il contratto indipendente tra l'Agente di Viaggio e il Fornitore di Alloggio che dettaglia i termini di pagamento specifici, inclusa la Commissione e il calendario dei pagamenti.  
     
@@ -83,7 +83,7 @@ Questi termini sono disponibili sotto [Affiliate Portal > Terms of Service](/it/
 
 2.1 L'Agente di Viaggio opererà come distributore non esclusivo di Wink.
 
-2.2 Il Servizio sarà reso disponibile da Wink all'Agente di Viaggio come indicato nel modulo di registrazione dell'Agente di Viaggio e sul/i sito/i web indicato/i nel modulo di registrazione.
+2.2 Il Servizio sarà reso disponibile da Wink all'Agente di Viaggio come indicato nel modulo di registrazione agente di viaggio e sul/i sito/i web indicato/i nel modulo di registrazione agente di viaggio.
 
 **3\. Raccolta e Distribuzione dei Pagamenti**
 
@@ -106,7 +106,7 @@ Questi termini sono disponibili sotto [Affiliate Portal > Terms of Service](/it/
 
 * L'Agente di Viaggio è responsabile della raccolta dei pagamenti dagli Ospiti.  
 * L'Agente di Viaggio deve garantire la distribuzione tempestiva e accurata del Pagamento Netto ai Fornitori di Alloggio in conformità con i loro accordi separati.  
-* L'Agente di Viaggio è responsabile di eventuali errori o discrepanze nell'elaborazione dei pagamenti e deve correggerli prontamente.  
+* L'Agente di Viaggio è responsabile per eventuali errori o discrepanze nell'elaborazione dei pagamenti e deve correggerli prontamente.  
 * L'Agente di Viaggio è responsabile del pagamento della fattura mensile di Wink per le Commissioni di Prenotazione.
 
 4.2 **Responsabilità di Wink:**
@@ -124,7 +124,7 @@ Questi termini sono disponibili sotto [Affiliate Portal > Terms of Service](/it/
 
 6.1 **Piano di Pagamento:**
 
-* Tutti i pagamenti dovuti a Wink dall'Agente di Viaggio ai sensi del presente Accordo devono essere effettuati entro 15 giorni dal ricevimento della fattura corretta e accurata da parte di Wink, salvo diverso accordo scritto. I pagamenti devono essere effettuati in USD, senza alcuna detrazione o ritenuta, salvo quanto richiesto dalla legge.  
+* Tutti i pagamenti dovuti a Wink dall'Agente di Viaggio ai sensi del presente Accordo devono essere effettuati entro 15 giorni dal ricevimento della fattura corretta e accurata da parte di Wink, salvo diverso accordo scritto. I pagamenti devono essere effettuati in USD, senza alcuna detrazione o ritenuta salvo quanto richiesto dalla legge.  
   
 
 6.2 **Pagamenti in Ritardo:**
@@ -139,7 +139,7 @@ Questi termini sono disponibili sotto [Affiliate Portal > Terms of Service](/it/
 
 6.4 **Valuta e Tasse:**
 
-* I pagamenti devono essere effettuati in USD. L'Agente di Viaggio è responsabile di eventuali tasse, imposte o altri oneri applicabili alle transazioni ai sensi del presente Accordo, inclusi i costi di conversione valuta se i pagamenti sono effettuati in una valuta diversa dall'USD.
+* I pagamenti devono essere effettuati in USD. L'Agente di Viaggio è responsabile per eventuali tasse, imposte o altri oneri applicabili alle transazioni ai sensi del presente Accordo, inclusi i costi di conversione valuta se i pagamenti sono effettuati in una valuta diversa dall'USD.
 
 
 6.5 **Metodi di Pagamento:**
@@ -178,9 +178,9 @@ Questi termini sono disponibili sotto [Affiliate Portal > Terms of Service](/it/
 * L'Agente di Viaggio è responsabile della raccolta dei pagamenti dagli Ospiti per le Prenotazioni effettuate tramite la Piattaforma e del versamento dei pagamenti concordati ai Fornitori di Alloggio e al Service Provider, come specificato nei Termini di Pagamento. L'Agente di Viaggio deve garantire che tutti i pagamenti siano elaborati in modo sicuro e in conformità con le normative finanziarie applicabili.
 
 
-7.6 **Gestione dei Reclami e Controversie degli Ospiti:**
+7.6 **Gestione di Reclami e Controversie degli Ospiti:**
 
-* L'Agente di Viaggio è il punto di contatto principale per gli Ospiti riguardo a eventuali reclami, controversie o problemi relativi ai servizi forniti tramite la Piattaforma. L'Agente di Viaggio deve fare ragionevoli sforzi per risolvere tali reclami e controversie tempestivamente e in modo da mantenere un rapporto positivo sia con gli Ospiti che con i Fornitori di Alloggio.
+* L'Agente di Viaggio è il punto di contatto principale per gli Ospiti riguardo a reclami, controversie o problemi relativi ai servizi forniti tramite la Piattaforma. L'Agente di Viaggio deve fare ragionevoli sforzi per risolvere tali reclami e controversie tempestivamente e in modo da mantenere un rapporto positivo sia con gli Ospiti che con i Fornitori di Alloggio.
 
 
 7.7 **Reportistica e Responsabilità:**
@@ -234,7 +234,7 @@ Questi termini sono disponibili sotto [Affiliate Portal > Terms of Service](/it/
 
 11.2.2 **Arbitrato:** Se la controversia non può essere risolta tramite negoziazioni entro trenta (30) giorni, la controversia sarà sottoposta e risolta definitivamente mediante arbitrato secondo il Regolamento del Singapore International Arbitration Centre (SIAC), che si considera incorporato per riferimento in questa clausola. Il numero di arbitri sarà uno, e la sede legale dell'arbitrato sarà Singapore. La lingua utilizzata nel procedimento arbitrale sarà l'inglese.
 
-11.2.3 **Giurisdizione:** Nonostante quanto sopra, ciascuna parte mantiene il diritto di richiedere misure cautelari o ingiuntive presso i tribunali di Singapore per proteggere i propri diritti o proprietà in attesa della nomina di un arbitro, e tali tribunali avranno giurisdizione esclusiva per concedere tali misure.
+11.2.3 **Giurisdizione:** Nonostante quanto sopra, ciascuna parte si riserva il diritto di richiedere misure cautelari o ingiuntive presso i tribunali di Singapore per proteggere i propri diritti o proprietà in attesa della nomina di un arbitro, e tali tribunali avranno giurisdizione esclusiva per concedere tali misure.
 
 **12\. Forza Maggiore**
 
@@ -242,13 +242,13 @@ Questi termini sono disponibili sotto [Affiliate Portal > Terms of Service](/it/
 
 12.2 **Notifica:** La parte interessata deve notificare l'altra parte per iscritto non appena ragionevolmente possibile dopo il verificarsi di un Evento di Forza Maggiore. Tale notifica deve includere una descrizione dell'Evento di Forza Maggiore, la sua durata prevista e gli obblighi interessati.
 
-12.3 **Impatto sui Servizi**:
+12.3 **Impatto sui Servizi:**
 
 * Sospensione dei Servizi: Se un Evento di Forza Maggiore influisce sulla capacità della tua attività di fornire servizi all'Agente di Viaggio, tali servizi saranno sospesi per la durata dell'evento senza penalità. Gli obblighi di pagamento dell'Agente di Viaggio relativi ai servizi interessati saranno anch'essi sospesi durante questo periodo.  
 * Obblighi dell'Agente di Viaggio: L'Agente di Viaggio non sarà ritenuto responsabile per obblighi verso la tua attività che risultino impossibili da adempiere a causa dell'Evento di Forza Maggiore. Tuttavia, l'Agente di Viaggio deve continuare a soddisfare tutti gli altri obblighi non direttamente interessati dall'evento.
 
 
-12.4 **Durata e Risoluzione:** Se l'Evento di Forza Maggiore continua per più di sessanta (60) giorni, ciascuna parte può risolvere il presente Accordo con comunicazione scritta all'altra parte. In caso di tale risoluzione, nessuna delle parti avrà alcuna responsabilità verso l'altra, salvo per gli obblighi maturati prima dell'Evento di Forza Maggiore.
+12.4 **Durata e Risoluzione:** Se l'Evento di Forza Maggiore continua per più di sessanta (60) giorni, ciascuna parte può risolvere il presente Accordo con comunicazione scritta all'altra parte. In caso di tale risoluzione, nessuna delle parti avrà responsabilità verso l'altra, salvo per gli obblighi maturati prima dell'Evento di Forza Maggiore.
 
 12.5 **Ripresa degli Obblighi:** Una volta cessato l'Evento di Forza Maggiore, entrambe le parti riprenderanno prontamente i propri obblighi ai sensi del presente Accordo nella misura ragionevolmente praticabile.
 

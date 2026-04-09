@@ -10,7 +10,7 @@ Tako razdeljujemo odgovornosti na Wink:
 - [Extranet](/sl/extranet/what-is-extranet) skrbi za dobavitelje, ki upravljajo z zalogami.
 - [Studio](/sl/studio/what-is-studio) skrbi za podružnice, ki upravljajo z vsebinami.
 - `Booking Engine` skrbi za to, da je vsebina, ustvarjena v `Studio`, ki temelji na zalogah, ustvarjenih v `Extranet`, na voljo za rezervacijo.
-- [Payment](/sl/payment/what-is-trip-pay) skrbi za zaračunavanje / vračila popotnikom, ki rezervirajo [prek platform, kot je Wink], in plačila dobaviteljem.
+- [Payment](/sl/payment/what-is-trip-pay) skrbi za zaračunavanje / vračila popotnikom, ki rezervirajo [prek platform, kot je Wink], in plačevanje ponudnikom.
 
 Rezervacijski sistem je jedro naše platforme.
 

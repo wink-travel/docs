@@ -13,9 +13,9 @@ Cập nhật lần cuối 2024-10-30
 Các điều khoản dịch vụ dưới đây áp dụng cho các đại lý du lịch muốn tự mình thu và chi trả quỹ.
 Điều này chỉ có thể thực hiện thông qua API của chúng tôi và chỉ dành cho các đại lý du lịch đã xác nhận muốn làm điều này trong quá trình đăng ký.
 
-Tất cả đại lý du lịch vẫn có thể đặt phòng qua cổng đại lý du lịch sử dụng cổng thanh toán của Wink với thẻ tín dụng của chính họ hoặc của khách du lịch. Do đó, tất cả đại lý du lịch cũng cần đồng ý với các điều khoản dịch vụ trong đó cổng thanh toán của Wink là người bán ghi nhận.
+Tất cả đại lý du lịch vẫn có thể đặt phòng qua cổng đại lý du lịch sử dụng cổng thanh toán của Wink với thẻ tín dụng của chính họ hoặc của khách du lịch. Do đó, tất cả đại lý du lịch cũng cần đồng ý với các điều khoản dịch vụ mà trong đó cổng thanh toán của Wink là người bán ghi nhận.
 
-Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](/vi/studio/terms-of-service).
+Các điều khoản đó có thể xem tại [Affiliate Portal > Terms of Service](/vi/studio/terms-of-service).
 :::
 
 **ĐIỀU KHOẢN VÀ ĐIỀU KIỆN CHUNG CỦA WINK**  
@@ -23,21 +23,21 @@ Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](
 
 **GIỮA:**
 
-1. **Winkfluence**, một công ty được thành lập theo luật pháp Singapore và có văn phòng đăng ký tại \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 với mã số đăng ký VAT 201437335D (sau đây gọi là "Wink") và  
+1. **Winkfluence** là công ty được thành lập theo luật pháp Singapore và có văn phòng đăng ký tại \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 với mã số đăng ký VAT 201437335D (sau đây gọi là "Wink") và  
      
 2. **ĐẠI LÝ DU LỊCH** có thông tin được ghi trong Mẫu Đăng Ký Đại Lý Du Lịch hoặc đã được gửi trực tuyến (gọi chung là "Đại Lý Du Lịch").
 
 **XÉT RẰNG:**
 
-(i) Wink vận hành một hệ thống trực tuyến (gọi là "Hệ Thống") qua đó các Cơ Sở Lưu Trú tham gia (gọi chung là "Nhà Cung Cấp Lưu Trú") có thể cung cấp kho phòng để đặt chỗ và qua đó Đại Lý Du Lịch có thể đặt chỗ tại các Nhà Cung Cấp Lưu Trú thay mặt cho Khách (gọi là "Dịch Vụ");
+(i) Wink vận hành một hệ thống trực tuyến (gọi là "Hệ Thống") qua đó các Cơ Sở Lưu Trú tham gia (gọi chung là "Nhà Cung Cấp Lưu Trú") có thể cung cấp kho phòng để đặt chỗ và qua đó Đại Lý Du Lịch có thể đặt chỗ tại các Nhà Cung Cấp Lưu Trú thay mặt cho Khách của họ (gọi là "Dịch Vụ");
 
-(ii) Wink không sở hữu, kiểm soát, cung cấp hoặc quản lý bất kỳ danh sách nào. Wink không phải là bên trong các hợp đồng được ký kết trực tiếp giữa Nhà Cung Cấp Lưu Trú và Khách. Wink không hoạt động với tư cách đại lý cho Nhà Cung Cấp Lưu Trú dưới bất kỳ hình thức nào;
+(ii) Wink không sở hữu, kiểm soát, cung cấp hoặc quản lý bất kỳ danh sách nào. Wink không phải là bên trong các hợp đồng được ký kết trực tiếp giữa Nhà Cung Cấp Lưu Trú và Khách. Wink không hành động với tư cách đại lý cho Nhà Cung Cấp Lưu Trú dưới bất kỳ hình thức nào;
 
 (iii) Wink duy trì và khai thác các trang web của riêng mình (gọi là "Trang Web Wink") và cũng cung cấp Dịch Vụ và liên kết đến Dịch Vụ trên các trang web của bên thứ ba;
 
 (iv) Đại Lý Du Lịch sở hữu, kiểm soát, lưu trữ và/hoặc vận hành một hoặc nhiều tên miền Internet, trang web hoặc ứng dụng và mong muốn trở thành người bán ghi nhận khi sử dụng Dịch Vụ.
 
-(v) Đại Lý Du Lịch và Wink mong muốn Đại Lý Du Lịch cung cấp Dịch Vụ (trực tiếp hoặc gián tiếp) cho khách hàng và người truy cập Trang Web và Ứng Dụng của Đại Lý Du Lịch theo hình thức và các điều khoản và điều kiện (gọi chung là "Điều Khoản") được quy định trong Thỏa Thuận này.
+(v) Đại Lý Du Lịch và Wink mong muốn Đại Lý Du Lịch cung cấp Dịch Vụ (trực tiếp hoặc gián tiếp) cho khách hàng và người truy cập Trang Web và Ứng Dụng của Đại Lý Du Lịch theo hình thức và các điều khoản và điều kiện (sau đây gọi là "Điều Khoản") được quy định trong Thỏa Thuận này.
 
 **VÌ VẬY, CÁC BÊN ĐỒNG Ý NHƯ SAU:**
 
@@ -45,9 +45,9 @@ Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](
 
 1. Ngoài các thuật ngữ được định nghĩa ở các phần khác trong Thỏa Thuận này, các định nghĩa sau đây được áp dụng xuyên suốt Thỏa Thuận này trừ khi có ý định ngược lại:
 
-* **"Lưu Trú"** có nghĩa là bất kỳ hình thức lưu trú nào bao gồm nhưng không giới hạn ở khách sạn, nhà nghỉ, nhà khách, nhà trọ, nhà nghỉ có bữa sáng, ký túc xá, biệt thự, căn hộ, nhà nghỉ, quán trọ, khu nghỉ dưỡng và bất kỳ loại hình lưu trú hoặc nhà cung cấp chỗ ở nào khác (dù có hay không có trên Trang Web Wink).  
+* **"Lưu Trú"** có nghĩa là bất kỳ hình thức lưu trú nào bao gồm nhưng không giới hạn ở khách sạn, nhà nghỉ, nhà khách, nhà trọ, ký túc xá, biệt thự, căn hộ, nhà nghỉ dưỡng, nhà trọ, khu nghỉ dưỡng và bất kỳ loại hình lưu trú hoặc nhà cung cấp chỗ ở nào khác (dù có hay không có trên Trang Web Wink).  
     
-* **"Nhà Cung Cấp Lưu Trú"** có nghĩa là bất kỳ Bên nào tạo tài khoản trên Nhà Cung Cấp Dịch Vụ với mục đích bán phòng và dịch vụ phụ trợ của mình qua nền tảng Wink.  
+* **"Nhà Cung Cấp Lưu Trú"** có nghĩa là bất kỳ Bên nào tạo tài khoản trên Nhà Cung Cấp Dịch Vụ với mục đích bán kho phòng và dịch vụ phụ trợ của mình qua nền tảng Wink.  
     
 * **"Đặt Phòng"** có nghĩa là một đặt chỗ hoặc đơn hàng được Khách thực hiện qua Đại Lý Du Lịch cho các dịch vụ lưu trú do Nhà Cung Cấp Lưu Trú cung cấp.
 
@@ -61,7 +61,7 @@ Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](
     
 * **“Khách”** có nghĩa là cá nhân hoặc nhóm thực hiện đặt phòng qua Đại Lý Du Lịch cho các dịch vụ lưu trú.  
     
-* **"Người Bán Ghi Nhận"** chỉ thực thể được pháp luật ủy quyền và chịu trách nhiệm xử lý thanh toán từ Khách, bao gồm xử lý giao dịch thanh toán, hoàn tiền, khiếu nại và đảm bảo tuân thủ các quy định thanh toán. Người Bán Ghi Nhận là thực thể có tên xuất hiện trên sao kê thẻ tín dụng của Khách cho các khoản phí liên quan đến Đặt Phòng.
+* **"Người Bán Ghi Nhận"** là thực thể được pháp luật ủy quyền và chịu trách nhiệm xử lý thanh toán từ Khách, bao gồm xử lý giao dịch thanh toán, hoàn tiền, khiếu nại và đảm bảo tuân thủ các quy định thanh toán. Người Bán Ghi Nhận là thực thể có tên xuất hiện trên sao kê thẻ tín dụng của Khách cho các khoản phí liên quan đến Đặt Phòng.
 
 * **"Thanh Toán Ròng"** là số tiền phải trả cho Nhà Cung Cấp Lưu Trú sau khi trừ Phí Đặt Phòng của Wink và Hoa Hồng của Đại Lý Du Lịch từ Giá Trị Đặt Phòng.  
     
@@ -112,7 +112,7 @@ Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](
 4.2 **Trách nhiệm của Wink:**
 
 * Wink không chịu trách nhiệm thanh toán cho Nhà Cung Cấp Lưu Trú. Đại Lý Du Lịch chịu toàn bộ trách nhiệm về các giao dịch tài chính với Nhà Cung Cấp Lưu Trú.  
-* Wink sẽ cung cấp quyền truy cập vào Hệ Thống và đảm bảo Dịch Vụ luôn sẵn có cho Đại Lý Du Lịch.
+* Wink sẽ cung cấp quyền truy cập vào Hệ Thống và đảm bảo Dịch Vụ có sẵn cho Đại Lý Du Lịch.
 
 **5\. Quyền sở hữu trí tuệ**
 
@@ -124,7 +124,7 @@ Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](
 
 6.1 **Lịch thanh toán:**
 
-* Tất cả khoản thanh toán phải trả cho Wink bởi Đại Lý Du Lịch theo Thỏa Thuận này phải được thực hiện trong vòng 15 ngày kể từ khi nhận được hóa đơn chính xác và đầy đủ từ Wink, trừ khi có thỏa thuận khác bằng văn bản. Thanh toán sẽ được thực hiện bằng USD, không bị khấu trừ hoặc giữ lại trừ khi luật pháp yêu cầu.  
+* Tất cả khoản thanh toán đến Wink bởi Đại Lý Du Lịch theo Thỏa Thuận này phải được thực hiện trong vòng 15 ngày kể từ khi nhận được hóa đơn chính xác và đầy đủ từ Wink, trừ khi có thỏa thuận khác bằng văn bản. Thanh toán sẽ được thực hiện bằng USD, không bị khấu trừ hoặc giữ lại trừ khi luật pháp yêu cầu.  
   
 
 6.2 **Thanh toán trễ:**
@@ -151,7 +151,7 @@ Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](
 
 7.1 **Tuân thủ pháp luật và quy định:**
 
-* Đại Lý Du Lịch phải tuân thủ tất cả các luật, quy định và tiêu chuẩn ngành áp dụng ở địa phương, quốc gia và quốc tế trong hoạt động kinh doanh, bao gồm nhưng không giới hạn các quy định về bảo vệ người tiêu dùng, bảo vệ dữ liệu và chống rửa tiền.  
+* Đại Lý Du Lịch phải tuân thủ tất cả các luật, quy định và tiêu chuẩn ngành áp dụng ở cấp địa phương, quốc gia và quốc tế trong hoạt động kinh doanh, bao gồm nhưng không giới hạn các quy định về bảo vệ người tiêu dùng, bảo vệ dữ liệu và chống rửa tiền.  
   
 
 7.2 **Trình bày chính xác dịch vụ:**
@@ -172,7 +172,7 @@ Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](
 
 7.6 **Xử lý khiếu nại và tranh chấp của Khách:**
 
-* Đại Lý Du Lịch là điểm liên hệ chính cho Khách về mọi khiếu nại, tranh chấp hoặc vấn đề liên quan đến dịch vụ qua Nền Tảng. Đại Lý Du Lịch phải nỗ lực hợp lý để giải quyết các khiếu nại và tranh chấp kịp thời và duy trì mối quan hệ tích cực với cả Khách và Nhà Cung Cấp Lưu Trú.
+* Đại Lý Du Lịch là điểm liên hệ chính cho Khách về mọi khiếu nại, tranh chấp hoặc vấn đề liên quan đến dịch vụ qua Nền Tảng. Đại Lý Du Lịch phải nỗ lực hợp lý để giải quyết các khiếu nại và tranh chấp đó kịp thời và duy trì mối quan hệ tích cực với cả Khách và Nhà Cung Cấp Lưu Trú.
 
 7.7 **Báo cáo và trách nhiệm:**
 
@@ -180,7 +180,7 @@ Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](
 
 7.8 **Bảo mật:**
 
-* Đại Lý Du Lịch phải giữ bí mật tất cả thông tin sở hữu và bí mật kinh doanh của Nhà Cung Cấp Dịch Vụ, bao gồm nhưng không giới hạn dữ liệu khách hàng, thông tin giá cả và chiến lược kinh doanh. Đại Lý Du Lịch không được tiết lộ thông tin này cho bên thứ ba nào nếu không có sự đồng ý bằng văn bản trước của Nhà Cung Cấp Dịch Vụ.
+* Đại Lý Du Lịch phải giữ bí mật tất cả thông tin sở hữu và bí mật thương mại của Nhà Cung Cấp Dịch Vụ, bao gồm nhưng không giới hạn dữ liệu khách hàng, thông tin giá cả và chiến lược kinh doanh. Đại Lý Du Lịch không được tiết lộ thông tin này cho bên thứ ba nào nếu không có sự đồng ý bằng văn bản trước của Nhà Cung Cấp Dịch Vụ.
 
 7.9 **Tuân thủ Điều Khoản Nền Tảng:**
 
@@ -192,7 +192,7 @@ Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](
 
 **8\. Hoa hồng và phí**
 
-8.1 **Tính hoa hồng:** Hoa Hồng phải trả cho Đại Lý Du Lịch là một tỷ lệ phần trăm (được quy định trong thỏa thuận giữa Đại Lý Du Lịch và Nhà Cung Cấp Lưu Trú) của Giá Trị Đặt Phòng sau khi trừ Phí Đặt Phòng của Wink.
+8.1 **Tính hoa hồng:** Hoa Hồng phải trả cho Đại Lý Du Lịch là một tỷ lệ phần trăm (được thiết lập trong thỏa thuận giữa Đại Lý Du Lịch và Nhà Cung Cấp Lưu Trú) của Giá Trị Đặt Phòng sau khi trừ Phí Đặt Phòng của Wink.
 
 8.2 **Phí Đặt Phòng của Wink:** Wink sẽ phát hành hóa đơn hàng tháng cho Phí Đặt Phòng 1,5%. Đại Lý Du Lịch chịu trách nhiệm thanh toán hóa đơn này trong thời hạn thanh toán do Wink quy định.
 
@@ -200,7 +200,7 @@ Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](
 
 9.1 **Giới hạn trách nhiệm:** Không bên nào chịu trách nhiệm đối với bất kỳ thiệt hại gián tiếp, ngẫu nhiên, hậu quả, đặc biệt hoặc trừng phạt phát sinh từ Thỏa Thuận này.
 
-9.2 **Bồi thường:** Mỗi bên đồng ý bồi thường và giữ cho bên kia không bị thiệt hại từ bất kỳ khiếu nại nào phát sinh do vi phạm Thỏa Thuận này hoặc sự sơ suất của bên bồi thường.
+9.2 **Bồi thường:** Mỗi bên đồng ý bồi thường và giữ bên kia không bị thiệt hại từ bất kỳ khiếu nại nào phát sinh do vi phạm Thỏa Thuận này hoặc sự sơ suất của bên bồi thường.
 
 9.3 **Bất khả kháng:** Không bên nào chịu trách nhiệm về việc chậm trễ hoặc không thực hiện do các nguyên nhân ngoài tầm kiểm soát hợp lý, bao gồm thiên tai, chiến tranh, khủng bố, đình công, v.v.
 
@@ -210,15 +210,15 @@ Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](
 
 10.2 **Chấm dứt:** Mỗi bên có thể chấm dứt Thỏa Thuận này theo quyết định của mình.
 
-10.3 **Sau khi chấm dứt:** Khi chấm dứt, Đại Lý Du Lịch phải thanh toán tất cả các khoản còn nợ và ngừng sử dụng bất kỳ tài sản trí tuệ hoặc nội dung liên quan đến Wink.
+10.3 **Sau chấm dứt:** Khi chấm dứt, Đại Lý Du Lịch phải thanh toán tất cả các khoản còn nợ và ngừng sử dụng bất kỳ tài sản trí tuệ hoặc nội dung liên quan đến Wink.
 
 **11\. Luật áp dụng và giải quyết tranh chấp**
 
-11.1 **Luật áp dụng:** Thỏa Thuận này được điều chỉnh và giải thích theo luật pháp Singapore, không tính đến các nguyên tắc xung đột pháp luật.
+11.1 **Luật áp dụng:** Thỏa Thuận này được điều chỉnh và giải thích theo luật pháp Singapore, không xét đến xung đột pháp luật.
 
 11.2 **Giải quyết tranh chấp:** 
 
-11.2.1 **Đàm phán:** Trong trường hợp có tranh chấp, khiếu nại, câu hỏi hoặc bất đồng phát sinh từ hoặc liên quan đến Thỏa Thuận này, các bên sẽ cố gắng giải quyết tranh chấp thông qua đàm phán thiện chí. Việc đàm phán sẽ bắt đầu khi một bên gửi thông báo bằng văn bản cho bên kia.
+11.2.1 **Đàm phán:** Trong trường hợp có tranh chấp, khiếu nại, câu hỏi hoặc bất đồng phát sinh từ hoặc liên quan đến Thỏa Thuận này, các bên sẽ cố gắng giải quyết tranh chấp thông qua đàm phán thiện chí. Việc đàm phán bắt đầu khi một bên gửi thông báo bằng văn bản cho bên kia.
 
 11.2.2 **Trọng tài:** Nếu tranh chấp không thể giải quyết qua đàm phán trong vòng ba mươi (30) ngày, tranh chấp sẽ được đưa ra và giải quyết cuối cùng bằng trọng tài theo Quy tắc của Trung tâm Trọng tài Quốc tế Singapore (SIAC), được coi là được nhập vào điều khoản này. Số lượng trọng tài viên là một người, địa điểm trọng tài là Singapore. Ngôn ngữ sử dụng trong thủ tục trọng tài là tiếng Anh.
 
@@ -232,16 +232,16 @@ Các điều khoản đó có sẵn tại [Affiliate Portal > Terms of Service](
 
 12.3 **Ảnh hưởng đến Dịch Vụ:**
 
-* Tạm ngưng Dịch Vụ: Nếu Sự Kiện Bất Khả Kháng ảnh hưởng đến khả năng cung cấp dịch vụ của doanh nghiệp bạn cho Đại Lý Du Lịch, các dịch vụ đó sẽ bị tạm ngưng trong thời gian sự kiện mà không bị phạt. Nghĩa vụ thanh toán của Đại Lý Du Lịch liên quan đến các dịch vụ bị ảnh hưởng cũng sẽ bị tạm ngưng trong thời gian này.  
-* Nghĩa vụ của Đại Lý Du Lịch: Đại Lý Du Lịch sẽ không chịu trách nhiệm về bất kỳ nghĩa vụ nào đối với doanh nghiệp bạn mà không thể thực hiện do Sự Kiện Bất Khả Kháng. Tuy nhiên, Đại Lý Du Lịch phải tiếp tục thực hiện tất cả các nghĩa vụ khác không bị ảnh hưởng trực tiếp bởi sự kiện.
+* Tạm ngưng Dịch Vụ: Nếu Sự Kiện Bất Khả Kháng ảnh hưởng đến khả năng cung cấp dịch vụ của bạn cho Đại Lý Du Lịch, các dịch vụ đó sẽ bị tạm ngưng trong thời gian sự kiện mà không bị phạt. Nghĩa vụ thanh toán của Đại Lý Du Lịch liên quan đến các dịch vụ bị ảnh hưởng cũng sẽ bị tạm ngưng trong thời gian này.  
+* Nghĩa vụ của Đại Lý Du Lịch: Đại Lý Du Lịch sẽ không chịu trách nhiệm về bất kỳ nghĩa vụ nào đối với doanh nghiệp của bạn mà không thể thực hiện do Sự Kiện Bất Khả Kháng. Tuy nhiên, Đại Lý Du Lịch phải tiếp tục thực hiện tất cả các nghĩa vụ khác không bị ảnh hưởng trực tiếp bởi sự kiện.
 
-12.4 **Thời hạn và chấm dứt:** Nếu Sự Kiện Bất Khả Kháng kéo dài hơn sáu mươi (60) ngày, mỗi bên có thể chấm dứt Thỏa Thuận này bằng thông báo bằng văn bản cho bên kia. Trong trường hợp chấm dứt như vậy, không bên nào chịu trách nhiệm với bên kia ngoại trừ các nghĩa vụ phát sinh trước khi xảy ra Sự Kiện Bất Khả Kháng.
+12.4 **Thời hạn và chấm dứt:** Nếu Sự Kiện Bất Khả Kháng kéo dài hơn sáu mươi (60) ngày, mỗi bên có thể chấm dứt Thỏa Thuận này bằng thông báo bằng văn bản cho bên kia. Trong trường hợp chấm dứt như vậy, không bên nào chịu trách nhiệm với bên kia ngoại trừ các nghĩa vụ phát sinh trước Sự Kiện Bất Khả Kháng.
 
 12.5 **Tiếp tục thực hiện nghĩa vụ:** Khi Sự Kiện Bất Khả Kháng kết thúc, cả hai bên sẽ nhanh chóng tiếp tục thực hiện các nghĩa vụ theo Thỏa Thuận này trong phạm vi có thể thực hiện được một cách hợp lý.
 
 **13\. Bảo mật**
 
-13.1 Cả hai Bên phải giữ bí mật tất cả thông tin sở hữu và không được tiết lộ cho bên thứ ba nếu không có sự đồng ý bằng văn bản trước.
+13.1 Cả hai bên phải giữ bí mật tất cả thông tin sở hữu và không được tiết lộ cho bên thứ ba nếu không có sự đồng ý bằng văn bản trước.
 
 **14\. Các điều khoản khác**
 

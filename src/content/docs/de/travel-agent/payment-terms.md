@@ -1,6 +1,6 @@
 ---
 title: Zahlungsbedingungen
-description: Dieses Dokument behandelt die Verfügbarkeit von Geldern und wie Wink das Agenturmodell für Reisebüros unterstützt.
+description: Dieses Dokument behandelt die Verfügbarkeit von Mitteln und wie Wink das Agenturmodell für Reisebüros unterstützt.
 sidebar:
   order: 5
 ---
@@ -10,10 +10,10 @@ Zuletzt aktualisiert am 30.10.2024
 :::
 
 :::caution[Hinweis]
-Die untenstehenden Zahlungsbedingungen gelten für Reisebüros, die Gelder eigenständig erhalten und auszahlen möchten.  
+Die untenstehenden Zahlungsbedingungen gelten für Reisebüros, die Gelder eigenständig erwerben und auszahlen möchten.  
 Dies ist nur über unsere API möglich und ausschließlich für Reisebüros, die dies während des Anmeldeprozesses angegeben haben.
 
-Alle Reisebüros können weiterhin über unser Reisebüro-Portal mit der Zahlungsabwicklung von Wink unter Verwendung ihrer eigenen oder der Kreditkarte des Reisenden buchen. Daher müssen alle Reisebüros auch den Zahlungsbedingungen zustimmen, bei denen die Zahlungsabwicklung von Wink als Händler des Zahlungsvorgangs fungiert.
+Alle Reisebüros können weiterhin über unser Reisebüroportal mit der Zahlungsabwicklung von Wink buchen, entweder mit ihrer eigenen oder der Kreditkarte des Reisenden. Daher müssen alle Reisebüros auch den Zahlungsbedingungen zustimmen, bei denen die Zahlungsabwicklung von Wink als Händler des Zahlungsvorgangs fungiert.
 
 Diese Bedingungen sind unter [Affiliate Portal > Zahlungsbedingungen](/de/studio/payment-terms) verfügbar.
 :::
@@ -48,7 +48,7 @@ Wie in der Hauptvereinbarung "ALLGEMEINE GESCHÄFTSBEDINGUNGEN FÜR REISEBÜROS"
 
 2.1 **Zahlungseingang:** Das Reisebüro ist verantwortlich für die Einziehung der Zahlung vom Gast zum Zeitpunkt der Buchung. Dies gewährleistet eine sofortige Verarbeitung und finanzielle Klarheit.
 
-2.2 **Gebührenabzug:** Das Reisebüro zieht zunächst die Gebühr des Dienstleisters ab und anschließend seine Provision vom Zwischensumme-Betrag, wie im folgenden Beispiel:
+2.2 **Gebührenabzug:** Das Reisebüro zieht zunächst die Gebühr des Dienstleisters ab und anschließend seine Provision vom Zwischensumme wie im folgenden Beispiel:
 
 * 1,5 % Buchungsgebühr für Wink.  
 * Die Provision des Reisebüros gemäß der Separaten Vereinbarung (für dieses Beispiel verwenden wir 10 %)
@@ -61,26 +61,26 @@ Zwischensumme = 1.000 – 15 = 985
 
 **3\. Rechnungsstellung und Zahlung**
 
-3.1 **Monatliche Rechnungsstellung:** Wink stellt dem Reisebüro eine korrekte und genaue Monatsrechnung für die im Vormonat angefallenen Buchungsgebühren aus. Das Reisebüro ist verpflichtet, diese Rechnung innerhalb der auf der Rechnung angegebenen Zahlungsfrist zu begleichen.
+3.1 **Monatliche Rechnungsstellung:** Wink stellt dem Reisebüro eine korrekte und genaue Monatsrechnung für die im Vormonat angefallenen Buchungsgebühren aus. Das Reisebüro ist verpflichtet, diese Rechnung innerhalb der auf der Rechnung angegebenen Zahlungsbedingungen zu begleichen.
 
 3.2 **Zahlungsmethode:** Zahlungen an Wink erfolgen über die auf der Rechnung angegebene Zahlungsmethode. Alle mit der Zahlungsüberweisung verbundenen Kosten trägt das Reisebüro.
 
-3.3 **Zahlungsverzug:** Bei verspäteter Zahlung behält sich Wink das Recht vor, Zinsen auf den ausstehenden Betrag in Höhe von 5 % pro Monat oder dem gesetzlich zulässigen Höchstsatz, je nachdem welcher niedriger ist, zu berechnen. Sollte das Reisebüro zudem die Zahlung an den Unterkunftsanbieter gemäß der Separaten Vereinbarung verzögern, behält sich Wink das Recht vor, den Zugang zum Service zu sperren, bis alle ausstehenden Zahlungen an Wink und den Unterkunftsanbieter beglichen sind. Sollte die von Wink ausgestellte Rechnung Fehler enthalten, ist das Reisebüro nur verpflichtet, den korrekten und genauen Teil der Rechnung zu bezahlen und wird für den nicht korrekten Teil weder mit Zinsen noch mit Strafen belastet.
+3.3 **Zahlungsverzug:** Bei verspäteter Zahlung behält sich Wink das Recht vor, Zinsen auf den überfälligen Betrag in Höhe von 5 % pro Monat oder dem gesetzlich zulässigen Höchstsatz, je nachdem welcher niedriger ist, zu berechnen. Sollte das Reisebüro zudem die Zahlung an den Unterkunftsanbieter gemäß der Separaten Vereinbarung verzögern, behält sich Wink das Recht vor, den Zugang zum Service zu sperren, bis alle ausstehenden Zahlungen an Wink und den Unterkunftsanbieter beglichen sind. Sollte die von Wink ausgestellte Rechnung Fehler enthalten, ist das Reisebüro nur verpflichtet, den korrekten und genauen Teil der Rechnung zu bezahlen und wird für den fehlerhaften Teil weder mit Zinsen noch mit Strafen belastet.
 
 **4\. Rollen und Verantwortlichkeiten**
 
 4.1 **Verantwortlichkeiten des Reisebüros:**
 
-* Sicherstellung der rechtzeitigen Einziehung der Zahlungen von Gästen gemäß Abschnitt 2.1.  
+* Sicherstellung der rechtzeitigen Zahlungseinziehung von Gästen gemäß Abschnitt 2.1.  
 * Abzug der entsprechenden Buchungsgebühr und Provision vor der Überweisung der Nettozahlung an die Unterkunftsanbieter gemäß der Separaten Vereinbarung.  
-* Fristgerechte Begleichung der Rechnungen von Wink für Buchungsgebühren gemäß Abschnitt 3.1.  
-* Aktives Management und Klärung von Streitigkeiten im Zusammenhang mit Buchungen oder Zahlungen, wobei die Kommunikation mit Wink zur effizienten Problemlösung aufrechterhalten wird.
+* Pünktliche Begleichung der Rechnungen von Wink für Buchungsgebühren innerhalb der in Abschnitt 3.1 genannten Fristen.  
+* Aktives Management und Lösung von Streitigkeiten im Zusammenhang mit Buchungen oder Zahlungen, wobei die Kommunikation mit Wink aufrechterhalten wird, um Probleme effizient zu klären.
 
 4.2 **Verantwortlichkeiten von Wink:**
 
-* Ausstellung korrekter und zeitnaher Monatsrechnungen für die Buchungsgebühren gemäß Abschnitt 3.1.  
+* Ausstellung korrekter und rechtzeitiger Monatsrechnungen für Buchungsgebühren gemäß Abschnitt 3.1.  
 * Bereitstellung eines kontinuierlichen Zugangs zur Wink-Plattform für das Reisebüro zur Bearbeitung von Buchungen und Zahlungsabwicklungen.  
-* Unterstützung des Reisebüros bei der Klärung von Zahlungsstreitigkeiten durch Bereitstellung notwendiger Transaktionsdaten und Support nach Bedarf.
+* Unterstützung des Reisebüros bei der Lösung von Zahlungsstreitigkeiten durch Bereitstellung notwendiger Transaktionsdaten und Unterstützung nach Bedarf.
 
 **5\. Währungsumrechnung**
 
@@ -88,7 +88,7 @@ Falls eine Währungsumrechnung erforderlich ist, erfolgt diese zum Kurs des Zahl
 
 **6\. Streitbeilegung**
 
-Alle Streitigkeiten, die sich aus oder im Zusammenhang mit diesen Zahlungsbedingungen ergeben, werden gemäß den Streitbeilegungsverfahren der Hauptvereinbarung behandelt, um eine einheitliche und konsistente Lösung zwischen Wink und dem Reisebüro sicherzustellen.
+Alle Streitigkeiten, die sich aus oder im Zusammenhang mit diesen Zahlungsbedingungen ergeben, werden gemäß den Streitbeilegungsverfahren der Hauptvereinbarung behandelt, um eine einheitliche und konsistente Konfliktlösung zwischen Wink und dem Reisebüro sicherzustellen.
 
 **7\. Änderung der Bedingungen**  
 Wink behält sich das Recht vor, diese Zahlungsbedingungen jederzeit zu ändern. Änderungen werden dem Reisebüro mindestens 30 Tage vor Inkrafttreten mitgeteilt. Die weitere Nutzung der Wink-Plattform nach dem Inkrafttreten gilt als Zustimmung zu den geänderten Bedingungen.

@@ -1,0 +1,676 @@
+---
+title: Sojern Pixel-integratie
+description: Hoe u uw Sojern-account kunt koppelen aan Wink zodat Sojern de boekingsreis van uw gasten kan volgen en uw retargeting- en advertentiecampagnes kan ondersteunen.
+sidebar:
+  label: Sojern Pixel-integratie
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Als u advertentiecampagnes via Sojern uitvoert, kunt u uw Sojern-account koppelen aan Wink door uw Sojern GTM Container ID in te voeren in het Wink-portaal. Zodra de koppeling is gemaakt, wordt de trackingpixel van Sojern automatisch geactiveerd voor uw accommodatie — en volgt deze de volledige gastreis van zoeken tot voltooide boeking.
+
+<Aside type="tip">
+Dit gaat ervan uit dat u al een actief Sojern-account heeft en uw GTM Container ID van uw Sojern-accountmanager heeft ontvangen. Als u nog geen Sojern-account heeft, bezoek dan [sojern.com/contact](https://www.sojern.com/contact) om te beginnen.
+</Aside>
+
+---
+
+## Wat u moet doen
+
+<Steps>
+
+1. **Vraag uw GTM Container ID op bij Sojern**
+
+   Neem contact op met uw Sojern-accountmanager en vraag om uw **GTM Container ID**. Dit heeft het formaat `GTM-XXXXXXX`. Dit is anders dan uw Sojern Pixel ID — zorg dat u specifiek om de GTM Container ID vraagt.
+
+2. **Voer deze in het Wink-portaal in**
+
+   Log in op [my.wink.travel](https://my.wink.travel), selecteer uw account en ga naar het tabblad **Aanpassingen**. Plak uw Sojern GTM Container ID in het Sojern-veld en sla op. Uw integratie is nu actief.
+
+3. **Bevestig bij uw Sojern-accountmanager**
+
+   Laat uw Sojern-accountmanager weten dat de integratie actief is. Zij kunnen aan hun kant verifiëren dat de pixel correct wordt geactiveerd op `wink.travel` voor uw accommodatie en dat de gegevens binnenkomen in uw Sojern-account.
+
+</Steps>
+
+<Aside type="note">
+U hoeft geen pixelcode op uw eigen website te plaatsen voor deze integratie. Wink laadt uw Sojern-container automatisch op alle pagina's waar uw accommodatie actief is.
+
+Deze configuratie werkt voor elke aangepaste GTM Container ID. We gebruiken Sojern hier als voorbeeld omdat het een veelvoorkomende integratie is.
+</Aside>
+
+---
+
+## Wat Wink aan onze kant doet
+
+Voor transparantie, dit is wat Wink configureert om deze integratie te laten werken:
+
+- **Een Sojern GTM Container ID-veld** is beschikbaar in het tabblad Aanpassingen van uw Wink-portaal. Wanneer u uw Container ID invoert, valideert Wink het formaat en slaat het veilig op bij uw accommodatie.
+- **Op elke pagina waar uw accommodatie actief is** op Wink, wordt uw Sojern GTM Container ID in de pagina weergegeven en laadt het tagmanagementsysteem van Wink dynamisch uw Sojern-container naast de eigen container. Dit gebeurt automatisch — er zijn geen handmatige stappen nodig van het Wink-team per accommodatie.
+- **Uw Sojern-container wordt asynchroon geladen**, wat betekent dat dit de laadsnelheid van de pagina voor uw gasten niet beïnvloedt.
+- **De tracking van Wink en uw Sojern-pixel draaien parallel**, waarbij ze dezelfde gedeelde gebeurtenisgegevens gebruiken. Elk boekingsevenement dat Wink volgt, is tegelijkertijd beschikbaar voor uw Sojern-container.
+- **Wanneer uw accommodatie niet wordt bekeken** — bijvoorbeeld wanneer een gast een ander hotel op Wink bekijkt — wordt uw Sojern-container niet geladen. Dit zorgt ervoor dat Sojern alleen gegevens ontvangt die relevant zijn voor uw accommodatie.
+
+---
+
+## DataLayer-referentie
+
+Wink pusht GA4-compatibele events naar de `dataLayer` gedurende de hele gastreis. Uw GTM-container leest uit dezezelfde gedeelde `dataLayer`, dus elke trigger of variabele die u configureert heeft toegang tot alle hieronder beschreven eigenschappen.
+
+Elk event volgt de standaard GA4 Enhanced Ecommerce-structuur: een top-level `event` string en een `ecommerce` object. Voor elke push wist Wink de vorige ecommerce-payload om te voorkomen dat verouderde data in nieuwe triggers terechtkomt.
+
+<Aside type="note">
+**dataLayer reset-patroon**
+
+Wink reset het ecommerce-object voor elke event-push:
+
+```js
+dataLayer.push({ ecommerce: null });   // wis vorige event
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Vertrouw er niet op dat ecommerce-eigenschappen tussen events blijven bestaan. Lees ze altijd op het moment van trigger binnen hetzelfde event.
+</Aside>
+
+---
+
+### Boekingsreis-events
+
+Deze events worden automatisch geactiveerd terwijl een gast door de boekingsfunnel beweegt. Configureer uw GTM-triggers als **Custom Event** triggers die overeenkomen met de onderstaande eventnamen.
+
+| Stap | Event | Wanneer het afgaat |
+|------|-------|--------------------|
+| 1 | `view_item_list` | Hotelinventarislijst of raster wordt geladen |
+| 2 | `view_item` | Gast bekijkt een specifieke accommodatiepagina |
+| 3 | `add_to_cart` | Gast voegt een kamer toe aan de winkelwagen |
+| 4 | `begin_checkout` | Checkout-/betalingspagina wordt geladen |
+| 5 | `add_payment_info` | Gast selecteert een betaalmethode |
+| 6 | `login` | Gast logt in via SSO |
+| 7 | `purchase` | Boeking is bevestigd |
+| 8 | `refund` | Boeking is geannuleerd |
+
+---
+
+#### `view_item_list`
+
+Wordt geactiveerd wanneer een hotelinventarislijst of raster wordt weergegeven.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Wordt geactiveerd wanneer een gast een specifieke accommodatie bekijkt.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Wordt geactiveerd wanneer een gast een kamer aan de winkelwagen toevoegt.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Wordt geactiveerd wanneer de checkout-/betalingspagina wordt geladen.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` is alleen aanwezig wanneer een kortingscode is toegepast.
+
+---
+
+#### `add_payment_info`
+
+Wordt geactiveerd wanneer de gast een betaalmethode selecteert of bevestigt.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` wordt gevuld met het type betaalacquirer. `coupon` is alleen aanwezig wanneer een kortingscode is toegepast.
+
+---
+
+#### `login`
+
+Wordt geactiveerd wanneer een gast zich authenticieert via single sign-on.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Wordt geactiveerd wanneer een boeking is bevestigd.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` is de unieke boekingscontractidentificatie. `coupon`, `shipping` en `tax` zijn alleen aanwezig indien van toepassing.
+
+---
+
+#### `refund`
+
+Wordt geactiveerd wanneer een boeking wordt geannuleerd.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` komt overeen met het `purchase` event voor dezelfde boeking. `coupon`, `shipping` en `tax` zijn alleen aanwezig indien van toepassing.
+
+---
+
+### Item-eigenschappen
+
+Alle events die een `items` array bevatten, gebruiken hetzelfde itemschema. Elke eigenschap is optioneel tenzij als verplicht gemarkeerd.
+
+#### Standaard GA4-velden
+
+Deze velden worden native herkend door GA4 en verschijnen in standaard ecommerce-rapporten zonder extra configuratie.
+
+| Eigenschap | Type | Verplicht | Beschrijving |
+|------------|------|-----------|--------------|
+| `item_id` | string | Ja | Unieke identificatie voor de kamer of het product |
+| `item_name` | string | — | Naam van de kamer of het product |
+| `affiliation` | string | — | Affiliate- of verkopersnaam |
+| `coupon` | string | — | Toegepaste kortingscode op het item |
+| `currency` | string | — | ISO 4217 valutacode (bijv. `USD`) |
+| `creative_name` | string | — | Creatieve naam gebruikt in een promotie |
+| `creative_slot` | string | — | Positie van de promotiecreatie |
+| `discount` | number | — | Toegepaste korting |
+| `index` | number | — | Positie in de lijst (1-gebaseerd) |
+| `item_brand` | string | — | Hotel- of merknaam |
+| `item_category` | string | — | Producttype — bijv. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | Identificatie van de lijst waartoe dit item behoort |
+| `item_list_name` | string | — | Weergavenaam van de lijst |
+| `location_id` | string | — | Geocoördinaten van de accommodatie |
+| `price` | number | — | Eenheidsprijs |
+| `promotion_id` | string | — | Identificatie van de promotie |
+| `promotion_name` | string | — | Weergavenaam van de promotie |
+| `quantity` | number | — | Aantal (standaard `1`) |
+
+#### Aangepaste item-parameters
+
+Deze parameters bevatten Wink-specifieke boekingscontext. GA4 toont ze niet automatisch in rapporten — u moet elk van deze registreren als een **item-gescopeerde aangepaste dimensie** in uw GA4-property voordat ze verschijnen in exploraties of standaardrapporten. Zie [Aangepaste dimensies in GA4](#custom-dimensions-in-ga4) hieronder voor instructies.
+
+| Eigenschap | Type | Beschrijving |
+|------------|------|--------------|
+| `property_id` | string | Wink-accommodatie-identificatie |
+| `property_name` | string | Weergavenaam van de accommodatie |
+| `property_brand` | string | Merk waartoe de accommodatie behoort |
+| `property_chain` | string | Ketens waartoe de accommodatie behoort |
+| `city_name` | string | Stad waar de accommodatie zich bevindt |
+| `country_code` | string | ISO 3166-1 alpha-2 landcode |
+| `start_date` | string | Incheckdatum in `YYYY-MM-DD` formaat |
+| `end_date` | string | Uitcheckdatum in `YYYY-MM-DD` formaat |
+| `num_adults` | number | Aantal volwassenen in de boeking |
+| `num_children` | number | Aantal kinderen in de boeking |
+| `cancellation_policy` | string | Eén van: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Identificatie van het tariefplan |
+| `room_rate_id` | string | Identificatie van het specifieke kamertarief |
+| `room_rate_name` | string | Weergavenaam van het kamertarief |
+| `num_perks` | number | Aantal extra's inbegrepen bij het tarief |
+| `room_location` | string | Locatiebeschrijving van de kamer (bijv. `Overwater`, `Garden`) |
+| `room_view` | string | Uitzichtbeschrijving van de kamer (bijv. `Ocean`, `City`) |
+| `room_classification` | string | Kamerclassificatie of -niveau (bijv. `Suite`, `Standard`) |
+
+---
+
+### Aangepaste dimensies in GA4
+
+GA4 negeert aangepaste itemparameters in rapporten totdat u ze expliciet registreert als item-gescopeerde aangepaste dimensies. U hoeft alleen de parameters te registreren die u in rapporten wilt gebruiken — niet alle 18.
+
+<Steps>
+
+1. **Open Aangepaste definities**
+
+   Ga in GA4 naar **Beheer** (tandwiel-icoon linksonder) → selecteer uw property → **Gegevensweergave** → **Aangepaste definities**.
+
+2. **Maak een nieuwe aangepaste dimensie**
+
+   Klik op **Aangepaste dimensies maken**.
+
+3. **Vul de dimensiedetails in**
+
+   - **Dimensienaam** — de leesbare naam die in GA4-rapporten verschijnt (zie onderstaande tabel)
+   - **Scope** — selecteer **Item**
+   - **Eventparameter** — de exacte parameternaam zoals die in de dataLayer voorkomt (zie tabel)
+   - **Beschrijving** — optioneel maar aanbevolen
+
+4. **Opslaan en herhalen**
+
+   Klik op **Opslaan** en herhaal dit voor elke parameter die u wilt volgen.
+
+</Steps>
+
+<Aside type="note">
+Aangepaste dimensies kunnen tot 24 uur nodig hebben om te verschijnen in GA4-rapporten na registratie. Historische data die vóór registratie is verzameld, wordt niet achteraf toegevoegd.
+
+GA4 staat maximaal 50 item-gescopeerde aangepaste dimensies toe per standaardproperty (360-properties staan er meer toe).
+</Aside>
+
+Gebruik de volgende tabel als referentie bij het aanmaken van aangepaste dimensies. De waarde van **Eventparameter** moet exact overeenkomen — GA4 is hoofdlettergevoelig.
+
+| Dimensienaam | Eventparameter | Type |
+|--------------|----------------|------|
+| Property ID | `property_id` | Tekst |
+| Property naam | `property_name` | Tekst |
+| Property merk | `property_brand` | Tekst |
+| Property keten | `property_chain` | Tekst |
+| Stadnaam | `city_name` | Tekst |
+| Landcode | `country_code` | Tekst |
+| Incheckdatum | `start_date` | Tekst |
+| Uitcheckdatum | `end_date` | Tekst |
+| Aantal volwassenen | `num_adults` | Nummer |
+| Aantal kinderen | `num_children` | Nummer |
+| Annuleringsbeleid | `cancellation_policy` | Tekst |
+| Tariefplan ID | `rate_plan_id` | Tekst |
+| Kamertarief ID | `room_rate_id` | Tekst |
+| Kamertarief naam | `room_rate_name` | Tekst |
+| Aantal extra's | `num_perks` | Nummer |
+| Kamerlocatie | `room_location` | Tekst |
+| Kameruitzicht | `room_view` | Tekst |
+| Kamerclassificatie | `room_classification` | Tekst |
+
+---
+
+### Extra beschikbare events
+
+De volgende events zijn beschikbaar in de Wink dataLayer maar maken geen deel uit van de standaard boekingsfunnel. Ze kunnen worden geactiveerd door andere interacties op het platform.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Bij dit event wordt geen `ecommerce` payload meegegeven.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Dit is een aangepast Wink-event — geen onderdeel van de standaard GA4-eventset. Het wordt gepusht bij elke paginanavigatie en bevat apparaat- en sessiecontext. Het bevat geen `ecommerce` object.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Eigenschap | Beschrijving |
+|------------|-------------|
+| `device` | Gedetecteerd apparaattype — `Desktop`, `Android`, `iPhone`, `iPad` of vergelijkbaar |
+| `deviceAgent` | Raw user agent string |
+| `os` | Gedetecteerd besturingssysteem — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Huidige paginapad |
+| `title` | Huidige paginatitel |
+| `userId` | Geauthentificeerde gebruikersidentificatie (weggelaten als niet ingelogd) |
+| `startDate` | Incheckdatum van de huidige zoeksessie |
+| `endDate` | Uitcheckdatum van de huidige zoeksessie |
+| `guests` | Aantal gasten van de huidige zoeksessie |
+| `rooms` | Aantal kamers van de huidige zoeksessie |

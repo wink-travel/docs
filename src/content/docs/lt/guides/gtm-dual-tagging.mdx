@@ -1,0 +1,676 @@
+---
+title: Sojern Pixel integracija
+description: Kaip prijungti savo Sojern paskyrą prie Wink, kad Sojern galėtų sekti jūsų svečių užsakymo kelionę ir palaikyti jūsų pakartotinio taikymo bei reklamos kampanijas.
+sidebar:
+  label: Sojern Pixel integracija
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Jei vykdote reklamos kampanijas per Sojern, galite prijungti savo Sojern paskyrą prie Wink įvesdami savo Sojern GTM konteinerio ID Wink portale. Prisijungus, Sojern sekimo pikselis automatiškai aktyvuojamas jūsų nuosavybei – apimdamas visą svečio kelionę nuo paieškos iki užsakymo užbaigimo.
+
+<Aside type="tip">
+Tai reiškia, kad jau turite aktyvią Sojern paskyrą ir gavote savo GTM konteinerio ID iš savo Sojern paskyros vadybininko. Jei dar neturite Sojern paskyros, apsilankykite [sojern.com/contact](https://www.sojern.com/contact), kad pradėtumėte.
+</Aside>
+
+---
+
+## Ką turite padaryti
+
+<Steps>
+
+1. **Gaukite savo GTM konteinerio ID iš Sojern**
+
+   Susisiekite su savo Sojern paskyros vadybininku ir paprašykite savo **GTM konteinerio ID**. Jis atrodo kaip `GTM-XXXXXXX`. Tai skiriasi nuo jūsų Sojern pikselio ID – būtinai prašykite būtent GTM konteinerio ID.
+
+2. **Įveskite jį Wink portale**
+
+   Prisijunkite prie [my.wink.travel](https://my.wink.travel), pasirinkite savo paskyrą ir eikite į skirtuką **Customizations**. Įklijuokite savo Sojern GTM konteinerio ID į Sojern laukelį ir išsaugokite. Jūsų integracija dabar veikia.
+
+3. **Patvirtinkite su savo Sojern paskyros vadybininku**
+
+   Praneškite savo Sojern paskyros vadybininkui, kad integracija aktyvi. Jie gali patikrinti iš savo pusės, ar pikselis tinkamai veikia `wink.travel` jūsų nuosavybei ir ar duomenys teka į jūsų Sojern paskyrą.
+
+</Steps>
+
+<Aside type="note">
+Jums nereikia įdėti jokio pikselio kodo į savo svetainę šiai integracijai. Wink automatiškai įkelia jūsų Sojern konteinerį visuose puslapiuose, kuriuose aktyvi jūsų nuosavybė.
+
+Ši konfigūracija veikia su bet kokiu pasirinktu GTM konteinerio ID. Sojern pateiktas tik kaip pavyzdys, nes tai labai dažna integracija.
+</Aside>
+
+---
+
+## Ką Wink daro savo pusėje
+
+Skaidrumui, štai ką Wink konfigūruoja, kad ši integracija veiktų:
+
+- **Sojern GTM konteinerio ID laukas** yra prieinamas Wink portalo Customizations skirtuke. Įvedus konteinerio ID, Wink patikrina formato teisingumą ir saugiai saugo jį jūsų nuosavybei.
+- **Kiekviename puslapyje, kuriame aktyvi jūsų nuosavybė** Wink įterpia jūsų Sojern GTM konteinerio ID į puslapį ir Wink žymių valdymo sistema dinamiškai įkelia jūsų Sojern konteinerį kartu su savo. Tai vyksta automatiškai – Wink komandai nereikia jokių rankinių veiksmų kiekvienai nuosavybei.
+- **Jūsų Sojern konteineris įkeliamas asinchroniškai**, todėl tai nepaveikia puslapio įkėlimo greičio jūsų svečiams.
+- **Wink sekimas ir jūsų Sojern pikselis veikia lygiagrečiai**, naudodami tą patį bendrą įvykių duomenų srautą. Kiekvienas Wink sekamas užsakymo įvykis tuo pačiu metu yra prieinamas jūsų Sojern konteineriui.
+- **Kai jūsų nuosavybė nėra peržiūrima** – pavyzdžiui, kai svečias naršo kitą viešbutį Wink – jūsų Sojern konteineris neįkeliamas. Tai užtikrina, kad Sojern gauna tik jūsų nuosavybei aktualius duomenis.
+
+---
+
+## DataLayer nuoroda
+
+Wink siunčia GA4 suderinamus įvykius į `dataLayer` visos svečio kelionės metu. Jūsų GTM konteineris skaito iš to paties bendro `dataLayer`, todėl bet kuris jūsų sukonfigūruotas trigeris ar kintamasis turi prieigą prie visų žemiau aprašytų savybių.
+
+Kiekvienas įvykis atitinka standartinę GA4 Enhanced Ecommerce struktūrą: viršutinio lygio `event` eilutę ir `ecommerce` objektą. Prieš kiekvieną push, Wink išvalo ankstesnį ecommerce duomenų paketą, kad išvengtų pasenusių duomenų įsiskverbimo į naujus trigerius.
+
+<Aside type="note">
+**dataLayer atstatymo modelis**
+
+Wink atstato ecommerce objektą prieš kiekvieną įvykio push:
+
+```js
+dataLayer.push({ ecommerce: null });   // išvalo ankstesnį įvykį
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Nesitikėkite, kad ecommerce savybės išliks tarp įvykių. Visada skaitykite jas trigerio metu tame pačiame įvykyje.
+</Aside>
+
+---
+
+### Užsakymo kelionės įvykiai
+
+Šie įvykiai automatiškai aktyvuojami, kai svečias juda užsakymo piltuvo etapuose. Konfigūruokite savo GTM trigerius kaip **Custom Event** trigerius, atitinkančius žemiau pateiktus įvykių pavadinimus.
+
+| Žingsnis | Įvykis | Kada aktyvuojamas |
+|------|-------|---------------|
+| 1 | `view_item_list` | Įkeliama viešbučių inventoriaus tinklelio arba sąrašo peržiūra |
+| 2 | `view_item` | Svečias peržiūri konkretaus objekto puslapį |
+| 3 | `add_to_cart` | Svečias prideda kambarį į krepšelį |
+| 4 | `begin_checkout` | Įkeliama atsiskaitymo / mokėjimo puslapis |
+| 5 | `add_payment_info` | Svečias pasirenka mokėjimo būdą |
+| 6 | `login` | Svečias autentifikuojasi per SSO |
+| 7 | `purchase` | Užsakymas patvirtinamas |
+| 8 | `refund` | Užsakymas atšaukiamas |
+
+---
+
+#### `view_item_list`
+
+Aktyvuojamas, kai įkeliama viešbučių inventoriaus tinklelio arba sąrašo peržiūra.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Aktyvuojamas, kai svečias peržiūri konkretų objektą.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Aktyvuojamas, kai svečias prideda kambarį į krepšelį.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Aktyvuojamas, kai įkeliama atsiskaitymo / mokėjimo puslapis.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` yra pateikiamas tik tada, kai buvo pritaikytas nuolaidos kodas.
+
+---
+
+#### `add_payment_info`
+
+Aktyvuojamas, kai svečias pasirenka arba patvirtina mokėjimo būdą.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` užpildomas pagal mokėjimo gavėjo tipą. `coupon` yra pateikiamas tik tada, kai buvo pritaikytas nuolaidos kodas.
+
+---
+
+#### `login`
+
+Aktyvuojamas, kai svečias autentifikuojasi per vieno prisijungimo sistemą.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Aktyvuojamas, kai užsakymas patvirtinamas.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` yra unikalus užsakymo sutarties identifikatorius. `coupon`, `shipping` ir `tax` pateikiami tik jei taikoma.
+
+---
+
+#### `refund`
+
+Aktyvuojamas, kai užsakymas atšaukiamas.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` sutampa su `purchase` įvykiu tam pačiam užsakymui. `coupon`, `shipping` ir `tax` pateikiami tik jei taikoma.
+
+---
+
+### Prekės savybės
+
+Visi įvykiai, kuriuose yra `items` masyvas, naudoja tą pačią prekės schemą. Kiekviena savybė yra neprivaloma, nebent pažymėta kaip privaloma.
+
+#### Standartiniai GA4 laukai
+
+Šie laukai yra natūraliai suprantami GA4 ir rodomi standartinėse ecommerce ataskaitose be papildomos konfigūracijos.
+
+| Savybė | Tipas | Privaloma | Aprašymas |
+|----------|------|----------|-------------|
+| `item_id` | string | Taip | Unikalus kambario ar produkto identifikatorius |
+| `item_name` | string | – | Kambario ar produkto pavadinimas |
+| `affiliation` | string | – | Partnerio arba pardavėjo pavadinimas |
+| `coupon` | string | – | Pridėtas kupono kodas |
+| `currency` | string | – | ISO 4217 valiutos kodas (pvz., `USD`) |
+| `creative_name` | string | – | Reklamos kūrinio pavadinimas |
+| `creative_slot` | string | – | Reklamos kūrinio pozicija |
+| `discount` | number | – | Taikoma nuolaida |
+| `index` | number | – | Pozicija sąraše (pradedant nuo 1) |
+| `item_brand` | string | – | Viešbučio ar prekės ženklas |
+| `item_category` | string | – | Produkto tipas – pvz., `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | – | Sąrašo, kuriam priklauso prekė, identifikatorius |
+| `item_list_name` | string | – | Sąrašo pavadinimas |
+| `location_id` | string | – | Nuosavybės geografinės koordinatės |
+| `price` | number | – | Vieneto kaina |
+| `promotion_id` | string | – | Akcijos identifikatorius |
+| `promotion_name` | string | – | Akcijos pavadinimas |
+| `quantity` | number | – | Kiekis (numatytoji reikšmė `1`) |
+
+#### Pasirinktini prekės lygmens parametrai
+
+Šie parametrai perteikia Wink specifinį užsakymo kontekstą. GA4 jų automatiškai nerodo ataskaitose – kiekvieną iš jų turite užregistruoti kaip **prekės lygmens pasirinktinius matmenis** savo GA4 paskyroje, kad jie atsirastų ataskaitose ar analizėse. Žr. [Pasirinktinius matmenis GA4](#custom-dimensions-in-ga4) žemiau dėl nustatymo instrukcijų.
+
+| Savybė | Tipas | Aprašymas |
+|----------|------|-------------|
+| `property_id` | string | Wink nuosavybės identifikatorius |
+| `property_name` | string | Nuosavybės pavadinimas |
+| `property_brand` | string | Prekės ženklas, kuriam priklauso nuosavybė |
+| `property_chain` | string | Tinklas, kuriam priklauso nuosavybė |
+| `city_name` | string | Miestas, kuriame yra nuosavybė |
+| `country_code` | string | ISO 3166-1 alpha-2 šalies kodas |
+| `start_date` | string | Atvykimo data formatu `YYYY-MM-DD` |
+| `end_date` | string | Išvykimo data formatu `YYYY-MM-DD` |
+| `num_adults` | number | Suaugusiųjų skaičius užsakyme |
+| `num_children` | number | Vaikų skaičius užsakyme |
+| `cancellation_policy` | string | Viena iš: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Kainų plano identifikatorius |
+| `room_rate_id` | string | Konkretios kambario kainos identifikatorius |
+| `room_rate_name` | string | Kambario kainos pavadinimas |
+| `num_perks` | number | Privalumų skaičius, įtrauktas į kainą |
+| `room_location` | string | Kambario vietos aprašymas (pvz., `Overwater`, `Garden`) |
+| `room_view` | string | Kambario vaizdo aprašymas (pvz., `Ocean`, `City`) |
+| `room_classification` | string | Kambario klasifikacija ar kategorija (pvz., `Suite`, `Standard`) |
+
+---
+
+### Pasirinktiniai matmenys GA4
+
+GA4 ignoruoja pasirinktinius prekės parametrus ataskaitose, kol jų aiškiai neužregistruojate kaip prekės lygmens pasirinktinius matmenis. Registruoti reikia tik tuos parametrus, kuriuos ketinate naudoti ataskaitose – visų 18 registruoti nebūtina.
+
+<Steps>
+
+1. **Atidarykite Custom Definitions**
+
+   GA4 eikite į **Admin** (apatiniame kairiajame kampe pavaros piktograma) → pasirinkite savo nuosavybę → **Data display** → **Custom definitions**.
+
+2. **Sukurkite naują pasirinktinių matmenų įrašą**
+
+   Spauskite **Create custom dimensions**.
+
+3. **Užpildykite matmens duomenis**
+
+   - **Dimension name** — žmogui suprantamas pavadinimas, kuris bus matomas GA4 ataskaitose (žr. lentelę žemiau)
+   - **Scope** — pasirinkite **Item**
+   - **Event parameter** — tikslus parametro pavadinimas, kaip jis yra dataLayer (žr. lentelę žemiau)
+   - **Description** — neprivaloma, bet rekomenduojama
+
+4. **Išsaugokite ir kartokite**
+
+   Spauskite **Save**, tada pakartokite kiekvienam parametrui, kurį norite sekti.
+
+</Steps>
+
+<Aside type="note">
+Pasirinktini matmenys gali pradėti rodyti duomenis GA4 ataskaitose per 24 valandas po registracijos. Istoriniai duomenys, surinkti prieš registraciją, nėra papildomai įtraukiami.
+
+GA4 leidžia iki 50 prekės lygmens pasirinktinių matmenų standartinėse nuosavybėse (360 nuosavybėse leidžiama daugiau).
+</Aside>
+
+Naudokite šią lentelę kaip nuorodą kuriant pasirinktinius matmenis. **Event parameter** reikšmė turi tiksliai sutapti – GA4 atsižvelgia į didžiąsias ir mažąsias raides.
+
+| Matmens pavadinimas | Event parameter | Tipas |
+|----------------|-----------------|------|
+| Nuosavybės ID | `property_id` | Tekstas |
+| Nuosavybės pavadinimas | `property_name` | Tekstas |
+| Nuosavybės prekės ženklas | `property_brand` | Tekstas |
+| Nuosavybės tinklas | `property_chain` | Tekstas |
+| Miesto pavadinimas | `city_name` | Tekstas |
+| Šalies kodas | `country_code` | Tekstas |
+| Atvykimo data | `start_date` | Tekstas |
+| Išvykimo data | `end_date` | Tekstas |
+| Suaugusiųjų skaičius | `num_adults` | Skaičius |
+| Vaikų skaičius | `num_children` | Skaičius |
+| Atšaukimo politika | `cancellation_policy` | Tekstas |
+| Kainų plano ID | `rate_plan_id` | Tekstas |
+| Kambario kainos ID | `room_rate_id` | Tekstas |
+| Kambario kainos pavadinimas | `room_rate_name` | Tekstas |
+| Privalumų skaičius | `num_perks` | Skaičius |
+| Kambario vieta | `room_location` | Tekstas |
+| Kambario vaizdas | `room_view` | Tekstas |
+| Kambario klasifikacija | `room_classification` | Tekstas |
+
+---
+
+### Papildomi galimi įvykiai
+
+Toliau pateikti įvykiai yra prieinami Wink dataLayer, bet nėra standartinio užsakymo piltuvo dalis. Juos gali sukelti kitos platformos sąveikos.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Šis įvykis neturi `ecommerce` duomenų paketo.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Tai yra pasirinktinė Wink įvykis – nepriklauso standartiniam GA4 įvykių rinkiniui. Jis siunčiamas kiekvieną kartą keičiant puslapį ir perduoda įrenginio bei sesijos kontekstą. Jame nėra `ecommerce` objekto.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Savybė | Aprašymas |
+|----------|-------------|
+| `device` | Aptiktas įrenginio tipas – `Desktop`, `Android`, `iPhone`, `iPad` ar panašiai |
+| `deviceAgent` | Žaliavos naudotojo agento eilutė |
+| `os` | Aptikta operacinė sistema – `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Dabartinio puslapio kelias |
+| `title` | Dabartinio puslapio pavadinimas |
+| `userId` | Autentifikuoto naudotojo identifikatorius (praleidžiamas, jei neprisijungta) |
+| `startDate` | Atvykimo data iš dabartinės paieškos sesijos |
+| `endDate` | Išvykimo data iš dabartinės paieškos sesijos |
+| `guests` | Svečio skaičius iš dabartinės paieškos sesijos |
+| `rooms` | Kambarių skaičius iš dabartinės paieškos sesijos |

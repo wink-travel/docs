@@ -9,7 +9,7 @@ Denne artikkelen forklarer hvilke typer kunder vi betjener og hvordan vi best ka
 
 ## Eiendommer
 
-Wink begynte å onboarde hoteller for ti år siden. Hoteller bruker Wink for å effektivt administrere sin inventar på tvers av tusenvis av salgskanaler, inkludert deres egen brand.com-side, og for å tjene mer på hver booking samtidig som de styrker direktekanaler med hjelp av våre gjestfrihetsfokuserte verktøy som forbedrer merkevareidentitet og lønnsomhet​.
+Wink begynte å onboarde hoteller for ti år siden. Hoteller bruker Wink for å effektivt administrere sin inventar på tvers av tusenvis av salgskanaler, inkludert deres egen brand.com-side, og for å tjene mer på hver booking samtidig som de styrker direkte kanaler med hjelp av våre gjestfrihetsfokuserte verktøy som forbedrer merkevareidentitet og lønnsomhet​.
 
 ## Merker og kjeder
 
@@ -38,8 +38,8 @@ Bedrifter krever mer av en reiseplattform:
 - De krever godt organiserte reiseruter som støtter fleksibilitet og endringer i siste liten.
 - De krever pålitelige kommunikasjonsverktøy, som internett.
 - De har leverandørpreferanser med medlemskap.
-- De har ofte et firmakredittkort og setter utgiftsgrenser.
-- De krever utgiftsstyring og integrasjon for rapportering.
+- De har ofte bedriftskredittkort og setter utgiftsgrenser.
+- De krever integrasjon for utgiftsstyring og rapportering.
 - De trenger concierge-støtte, samt MICE-tjenester ved arrangementer.
 
 Forretningsreisende kan administrere sine egne kontoer på vår [bedriftsportal](/no/corporate/what-is-group) eller bruke vår offisielt støttede [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)-plugin og [Concur](https://www.concur.com/) integrasjon.
@@ -50,4 +50,4 @@ Selv om vi bygde denne plattformen av og for hotelleiere... Hver linje med kode 
 
 ## Andre
 
-Alle som ønsker å finne og selge reiseinventar kan ha nytte av å bruke Wink. Gjør din lidenskap for gjestfrihet om til handling ved å tjene en god provisjon på hver booking.
+Alle som ønsker å finne og selge reiseinventar kan dra nytte av å bruke Wink. Gjør din lidenskap for gjestfrihet om til handling ved å tjene en god provisjon på hver booking.

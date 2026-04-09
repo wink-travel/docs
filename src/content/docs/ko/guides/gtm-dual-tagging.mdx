@@ -1,0 +1,676 @@
+---
+title: Sojern 픽셀 통합
+description: Sojern 계정을 Wink에 연결하여 Sojern이 고객의 예약 여정을 추적하고 리타겟팅 및 광고 캠페인을 지원하는 방법.
+sidebar:
+  label: Sojern 픽셀 통합
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Sojern을 통해 광고 캠페인을 운영 중이라면, Wink 포털에 Sojern GTM 컨테이너 ID를 입력하여 Sojern 계정을 Wink에 연결할 수 있습니다. 연결되면 Sojern의 추적 픽셀이 자동으로 귀하의 숙소에 대해 작동하여 검색부터 예약 완료까지 전체 고객 여정을 포괄합니다.
+
+<Aside type="tip">
+이 가이드는 이미 활성화된 Sojern 계정이 있고 Sojern 계정 관리자에게서 GTM 컨테이너 ID를 받은 상태를 전제로 합니다. 아직 Sojern 계정이 없다면 [sojern.com/contact](https://www.sojern.com/contact)에서 시작하세요.
+</Aside>
+
+---
+
+## 해야 할 일
+
+<Steps>
+
+1. **Sojern에서 GTM 컨테이너 ID 받기**
+
+   Sojern 계정 관리자에게 연락하여 **GTM 컨테이너 ID**를 요청하세요. 형식은 `GTM-XXXXXXX`입니다. Sojern 픽셀 ID와 다르니 반드시 GTM 컨테이너 ID를 요청해야 합니다.
+
+2. **Wink 포털에 입력하기**
+
+   [my.wink.travel](https://my.wink.travel)에 로그인하여 계정을 선택한 후 **Customizations** 탭으로 이동하세요. Sojern 필드에 Sojern GTM 컨테이너 ID를 붙여넣고 저장하면 통합이 활성화됩니다.
+
+3. **Sojern 계정 관리자에게 확인 요청**
+
+   통합이 활성화되었음을 Sojern 계정 관리자에게 알려주세요. 관리자 측에서 귀하의 숙소에 대해 `wink.travel`에서 픽셀이 정상 작동하는지, 데이터가 Sojern 계정으로 흐르는지 확인할 수 있습니다.
+
+</Steps>
+
+<Aside type="note">
+이 통합을 위해 귀하의 웹사이트에 별도의 픽셀 코드를 삽입할 필요가 없습니다. Wink가 귀하의 숙소가 활성화된 모든 페이지에서 Sojern 컨테이너를 자동으로 로드합니다.
+
+이 구성은 모든 맞춤형 GTM 컨테이너 ID에 적용됩니다. Sojern은 매우 일반적인 통합 사례로 예시로 사용되었습니다.
+</Aside>
+
+---
+
+## Wink가 처리하는 내용
+
+투명성을 위해 Wink가 이 통합을 위해 구성하는 내용을 안내합니다:
+
+- **Sojern GTM 컨테이너 ID 필드**가 Wink 포털의 Customizations 탭에 제공됩니다. 컨테이너 ID를 입력하면 Wink가 형식을 검증하고 안전하게 숙소에 저장합니다.
+- **숙소가 활성화된 모든 Wink 페이지에서** Sojern GTM 컨테이너 ID가 페이지에 렌더링되고 Wink의 태그 관리 시스템이 자체 태그와 함께 Sojern 컨테이너를 동적으로 로드합니다. 이 과정은 자동으로 진행되며 Wink 팀이 숙소별로 수동 작업할 필요가 없습니다.
+- **Sojern 컨테이너는 비동기적으로 로드**되어 고객의 페이지 로드 성능에 영향을 주지 않습니다.
+- **Wink 자체 추적과 Sojern 픽셀이 병행 실행**되며 동일한 공유 이벤트 데이터를 읽습니다. Wink가 추적하는 모든 예약 이벤트가 Sojern 컨테이너에도 동시에 전달됩니다.
+- **숙소가 조회되지 않을 때** — 예를 들어 고객이 Wink에서 다른 호텔을 탐색할 때 — Sojern 컨테이너는 로드되지 않습니다. 이를 통해 Sojern은 숙소 관련 데이터만 수신합니다.
+
+---
+
+## DataLayer 참조
+
+Wink는 고객 여정 전반에 걸쳐 GA4 호환 이벤트를 `dataLayer`에 푸시합니다. 귀하의 GTM 컨테이너는 동일한 공유 `dataLayer`를 읽으므로, 구성하는 모든 트리거나 변수는 아래 설명된 모든 속성에 접근할 수 있습니다.
+
+각 이벤트는 표준 GA4 향상된 전자상거래 구조를 따릅니다: 최상위 `event` 문자열과 `ecommerce` 객체. Wink는 이전 전자상거래 페이로드가 새 트리거에 영향을 주지 않도록 이벤트 푸시 전마다 전자상거래 객체를 초기화합니다.
+
+<Aside type="note">
+**dataLayer 초기화 패턴**
+
+Wink는 이벤트 푸시 전마다 전자상거래 객체를 초기화합니다:
+
+```js
+dataLayer.push({ ecommerce: null });   // 이전 이벤트 초기화
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+이벤트 간 전자상거래 속성 유지에 의존하지 마세요. 항상 동일 이벤트 내 트리거 시점에 읽어야 합니다.
+</Aside>
+
+---
+
+### 예약 여정 이벤트
+
+고객이 예약 퍼널을 진행할 때 자동으로 발생하는 이벤트입니다. GTM 트리거를 아래 이벤트 이름과 일치하는 **Custom Event** 트리거로 구성하세요.
+
+| 단계 | 이벤트 | 발생 시점 |
+|------|-------|-----------|
+| 1 | `view_item_list` | 호텔 인벤토리 그리드 또는 목록 로드 시 |
+| 2 | `view_item` | 고객이 특정 숙소 페이지 조회 시 |
+| 3 | `add_to_cart` | 고객이 객실을 장바구니에 추가 시 |
+| 4 | `begin_checkout` | 결제 페이지 로드 시 |
+| 5 | `add_payment_info` | 고객이 결제 수단 선택 시 |
+| 6 | `login` | 고객이 SSO로 인증 시 |
+| 7 | `purchase` | 예약 확정 시 |
+| 8 | `refund` | 예약 취소 시 |
+
+---
+
+#### `view_item_list`
+
+호텔 인벤토리 그리드 또는 목록이 렌더링될 때 발생합니다.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+고객이 특정 숙소를 조회할 때 발생합니다.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+고객이 객실을 장바구니에 추가할 때 발생합니다.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+결제 페이지가 로드될 때 발생합니다.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon`은 할인 코드가 적용된 경우에만 포함됩니다.
+
+---
+
+#### `add_payment_info`
+
+고객이 결제 수단을 선택하거나 확인할 때 발생합니다.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type`은 결제 수단 유형에서 채워집니다. `coupon`은 할인 코드가 적용된 경우에만 포함됩니다.
+
+---
+
+#### `login`
+
+고객이 싱글 사인온(SSO)으로 인증할 때 발생합니다.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+예약이 확정될 때 발생합니다.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id`는 고유 예약 계약 식별자입니다. `coupon`, `shipping`, `tax`는 해당 시에만 포함됩니다.
+
+---
+
+#### `refund`
+
+예약이 취소될 때 발생합니다.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id`는 동일 예약의 `purchase` 이벤트와 일치합니다. `coupon`, `shipping`, `tax`는 해당 시에만 포함됩니다.
+
+---
+
+### 아이템 속성
+
+`items` 배열을 포함하는 모든 이벤트는 동일한 아이템 스키마를 공유합니다. 모든 속성은 선택 사항이며, 필수는 별도 표시된 경우에 한합니다.
+
+#### 표준 GA4 필드
+
+이 필드들은 GA4에서 기본적으로 인식되며 추가 설정 없이 표준 전자상거래 보고서에 나타납니다.
+
+| 속성 | 타입 | 필수 | 설명 |
+|----------|------|----------|-------------|
+| `item_id` | string | 예 | 객실 또는 상품의 고유 식별자 |
+| `item_name` | string | — | 객실 또는 상품 이름 |
+| `affiliation` | string | — | 제휴사 또는 판매자 이름 |
+| `coupon` | string | — | 아이템에 적용된 쿠폰 코드 |
+| `currency` | string | — | ISO 4217 통화 코드 (예: `USD`) |
+| `creative_name` | string | — | 프로모션에 사용된 크리에이티브 이름 |
+| `creative_slot` | string | — | 프로모션 크리에이티브의 슬롯 위치 |
+| `discount` | number | — | 적용된 할인 금액 |
+| `index` | number | — | 목록 내 위치 (1부터 시작) |
+| `item_brand` | string | — | 호텔 또는 브랜드 이름 |
+| `item_category` | string | — | 상품 유형 — 예: `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | 이 아이템이 속한 목록 식별자 |
+| `item_list_name` | string | — | 목록 표시 이름 |
+| `location_id` | string | — | 숙소의 지리 좌표 |
+| `price` | number | — | 단가 |
+| `promotion_id` | string | — | 프로모션 식별자 |
+| `promotion_name` | string | — | 프로모션 표시 이름 |
+| `quantity` | number | — | 수량 (기본값 `1`) |
+
+#### 맞춤 아이템 범위 매개변수
+
+이 매개변수들은 Wink 고유의 예약 컨텍스트를 담고 있습니다. GA4는 보고서에 자동으로 표시하지 않으므로, 탐색 또는 표준 보고서에 나타나려면 GA4 속성에서 **아이템 범위 맞춤 측정기준**으로 등록해야 합니다. 설정 방법은 아래 [GA4 맞춤 측정기준](#custom-dimensions-in-ga4) 참조.
+
+| 속성 | 타입 | 설명 |
+|----------|------|-------------|
+| `property_id` | string | Wink 숙소 식별자 |
+| `property_name` | string | 숙소 표시 이름 |
+| `property_brand` | string | 숙소가 속한 브랜드 |
+| `property_chain` | string | 숙소가 속한 체인 |
+| `city_name` | string | 숙소 소재 도시 |
+| `country_code` | string | ISO 3166-1 alpha-2 국가 코드 |
+| `start_date` | string | 체크인 날짜 (`YYYY-MM-DD` 형식) |
+| `end_date` | string | 체크아웃 날짜 (`YYYY-MM-DD` 형식) |
+| `num_adults` | number | 예약 성인 수 |
+| `num_children` | number | 예약 아동 수 |
+| `cancellation_policy` | string | 다음 중 하나: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | 요금제 식별자 |
+| `room_rate_id` | string | 특정 객실 요금 식별자 |
+| `room_rate_name` | string | 객실 요금 표시 이름 |
+| `num_perks` | number | 요금에 포함된 혜택 수 |
+| `room_location` | string | 객실 위치 설명 (예: `Overwater`, `Garden`) |
+| `room_view` | string | 객실 전망 설명 (예: `Ocean`, `City`) |
+| `room_classification` | string | 객실 등급 또는 분류 (예: `Suite`, `Standard`) |
+
+---
+
+### GA4 맞춤 측정기준
+
+GA4는 맞춤 아이템 매개변수를 보고서에 자동으로 반영하지 않습니다. 보고서에 나타나려면 해당 매개변수를 아이템 범위 맞춤 측정기준으로 명시적으로 등록해야 합니다. 모든 18개를 등록할 필요는 없으며, 보고서에 사용할 매개변수만 등록하면 됩니다.
+
+<Steps>
+
+1. **맞춤 정의 열기**
+
+   GA4에서 **관리자** (왼쪽 하단 톱니바퀴 아이콘) → 속성 선택 → **데이터 표시** → **맞춤 정의**로 이동합니다.
+
+2. **새 맞춤 측정기준 생성**
+
+   **맞춤 측정기준 생성**을 클릭합니다.
+
+3. **측정기준 세부정보 입력**
+
+   - **측정기준 이름** — GA4 보고서에 표시될 사람이 읽기 쉬운 이름 (아래 표 참조)
+   - **범위** — **아이템(Item)** 선택
+   - **이벤트 매개변수** — dataLayer에 나타나는 정확한 매개변수 이름 (아래 표 참조)
+   - **설명** — 선택 사항이지만 권장
+
+4. **저장 및 반복**
+
+   **저장**을 클릭한 후 추적할 매개변수마다 반복합니다.
+
+</Steps>
+
+<Aside type="note">
+맞춤 측정기준은 등록 후 GA4 보고서에 반영되기까지 최대 24시간이 걸릴 수 있습니다. 등록 전 수집된 과거 데이터는 소급 적용되지 않습니다.
+
+표준 속성은 최대 50개의 아이템 범위 맞춤 측정기준을 지원합니다 (360 속성은 더 많음).
+</Aside>
+
+아래 표를 참조하여 맞춤 측정기준을 생성하세요. **이벤트 매개변수** 값은 대소문자까지 정확히 일치해야 합니다.
+
+| 측정기준 이름 | 이벤트 매개변수 | 타입 |
+|----------------|-----------------|------|
+| 숙소 ID | `property_id` | 텍스트 |
+| 숙소 이름 | `property_name` | 텍스트 |
+| 숙소 브랜드 | `property_brand` | 텍스트 |
+| 숙소 체인 | `property_chain` | 텍스트 |
+| 도시 이름 | `city_name` | 텍스트 |
+| 국가 코드 | `country_code` | 텍스트 |
+| 체크인 날짜 | `start_date` | 텍스트 |
+| 체크아웃 날짜 | `end_date` | 텍스트 |
+| 성인 수 | `num_adults` | 숫자 |
+| 아동 수 | `num_children` | 숫자 |
+| 취소 정책 | `cancellation_policy` | 텍스트 |
+| 요금제 ID | `rate_plan_id` | 텍스트 |
+| 객실 요금 ID | `room_rate_id` | 텍스트 |
+| 객실 요금 이름 | `room_rate_name` | 텍스트 |
+| 혜택 수 | `num_perks` | 숫자 |
+| 객실 위치 | `room_location` | 텍스트 |
+| 객실 전망 | `room_view` | 텍스트 |
+| 객실 분류 | `room_classification` | 텍스트 |
+
+---
+
+### 추가 사용 가능한 이벤트
+
+아래 이벤트들은 Wink dataLayer에 존재하지만 표준 예약 퍼널에는 포함되지 않습니다. 플랫폼 내 다른 상호작용에서 발생할 수 있습니다.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+이 이벤트에는 `ecommerce` 페이로드가 포함되지 않습니다.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+이 이벤트는 Wink 고유 맞춤 이벤트로, 표준 GA4 이벤트 세트에 포함되지 않습니다. 모든 페이지 이동 시 푸시되며 기기 및 세션 컨텍스트를 포함합니다. `ecommerce` 객체는 포함하지 않습니다.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| 속성 | 설명 |
+|----------|-------------|
+| `device` | 감지된 기기 유형 — `Desktop`, `Android`, `iPhone`, `iPad` 등 |
+| `deviceAgent` | 원시 사용자 에이전트 문자열 |
+| `os` | 감지된 운영체제 — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | 현재 페이지 경로 |
+| `title` | 현재 페이지 제목 |
+| `userId` | 인증된 사용자 식별자 (로그인하지 않은 경우 생략) |
+| `startDate` | 현재 검색 세션의 체크인 날짜 |
+| `endDate` | 현재 검색 세션의 체크아웃 날짜 |
+| `guests` | 현재 검색 세션의 투숙객 수 |
+| `rooms` | 현재 검색 세션의 객실 수 |

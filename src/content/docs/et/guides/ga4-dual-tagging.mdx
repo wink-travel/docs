@@ -1,0 +1,140 @@
+---
+title: GA4 analüütika integratsioon
+description: Kuidas ühendada oma Google Analytics 4 konto Winkiga, et saaksite oma broneeringuid, tulu ja külaliste teekonda jälgida otse oma GA4 juhtpaneelil.
+sidebar:
+  label: GA4 analüütika integratsioon
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Ühendades oma Google Analytics 4 konto Winkiga, edastatakse teie broneeringusündmused — alates toa vaatamistest kuni ostude lõpuleviimiseni — automaatselt teie GA4 juhtpaneelile koos Winki enda analüütikaga. Koodi ega tehnilist seadistust teie poolt ei nõuta.
+
+<Aside type="tip">
+Kõik, mida vajate, on GA4 mõõte-ID. Kui see on sisestatud Wink portaali, on teie analüütika kohe aktiivne.
+</Aside>
+
+---
+
+## Kuidas see töötab
+
+```
+Sisestate oma G-XXXXXXXXXX Wink portaali
+       ↓
+Wink edastab teie broneeringusündmused teie GA4 kontole
+       ↓
+Logite sisse analytics.google.com ja näete oma broneeringuid
+```
+
+---
+
+## Mida peate tegema
+
+<Steps>
+
+1. **Loo GA4 konto**
+
+   Minge aadressile [analytics.google.com](https://analytics.google.com): Admin → Loo konto. Määrake oma ajavöönd ja valuuta vastavalt oma turule.
+
+2. **Loo veebivoog**
+
+   Admin → Andmevood → Lisa voog → Veeb. Sisestage URL-iks `wink.travel`. See genereerib teie **Mõõte-ID** (`G-XXXXXXXXXX`). Kopeerige see.
+
+3. **Sisestage oma mõõte-ID Wink portaali**
+
+   Logige sisse [my.wink.travel](https://my.wink.travel), valige oma konto ja minge vahekaardile **Kohandused**. Kleepige sinna oma mõõte-ID ja salvestage. See on kõik — teie GA4 integratsioon on nüüd aktiivne.
+
+4. **Märgistage `purchase` võtmesündmuseks**
+
+   Tagasi oma GA4 kontol: Admin → Sündmused → leidke `purchase` → lülitage sisse **Märgista võtmesündmusena**. See tagab, et lõpetatud broneeringud kuvatakse teie konversioonide aruandes.
+
+5. **Vaadake oma andmeid**
+
+   Logige sisse [analytics.google.com](https://analytics.google.com) ja näete oma broneeringuid, tulu ja külaliste teekonda — kõik automaatselt Winki kaudu jälgitud.
+
+</Steps>
+
+<Aside type="note">
+Selle integratsiooni jaoks ei pea te oma veebisaidile paigaldama ühtegi jälgimiskoodi. Kõik haldab Wink. Teie mõõte-ID on lihtsalt sihtkoht, kuhu teie broneeringuandmed saadetakse.
+</Aside>
+
+---
+
+## Mida saate jälgida
+
+Kui ühendus on loodud, saab teie GA4 konto täieliku komplekti täiustatud e-kaubanduse sündmusi teie kinnisvara kohta:
+
+### Avastamine
+
+| Sündmus | Tähendus |
+|---|---|
+| `view_item_list` | Külaline nägi teie kinnisvara otsingus või kategooria nimekirjas |
+| `select_item` | Külaline klõpsas teie kinnisvaral nimekirjas |
+| `view_item` | Külaline vaatas teie hotelli detaillehte |
+
+### Hinnang
+
+| Sündmus | Tähendus |
+|---|---|
+| `view_promotion` | Külaline nägi teie kinnisvara reklaampakkumist |
+| `select_promotion` | Külaline klõpsas reklaampakkumisel |
+| `add_to_wishlist` | Külaline lisas teie kinnisvara soovinimekirja |
+
+### Broneerimisprotsess
+
+| Sündmus | Tähendus |
+|---|---|
+| `add_to_cart` | Külaline valis toa või paketi |
+| `view_cart` | Külaline vaatas oma broneeringu kokkuvõtet |
+| `remove_from_cart` | Külaline eemaldas toa või paketi |
+| `begin_checkout` | Külaline alustas väljaregistreerimist |
+| `add_payment_info` | Külaline sisestas makseandmed |
+| `add_shipping_info` | Külaline sisestas külalise andmed |
+| `purchase` | Külaline lõpetas broneeringu |
+| `refund` | Broneering tühistati ja tagastati raha |
+
+Kõik sündmused sisaldavad asjakohaseid mõõtmeid nagu tulu, valuuta, toaliik ja broneeringu väärtus — andes teile täieliku ülevaate külalise teekonnast esimesest muljest kuni broneeringu lõpuleviimiseni.
+
+---
+
+## Ristdomeeni jälgimine (edasijõudnutele)
+
+Ülaltoodud standardne integratsioon jälgib kõike, mis toimub Winkis. Kui soovite aga jälgida külalisi kogu tee läbi oma veebisaidi kuni broneeringu lõpuleviimiseni Winki platvormil — ja õigesti omistada algne liikluse allikas (Google Ads, e-posti kampaaniad, orgaaniline otsing jne) — on vaja teha veel üks samm mõlemal poolel.
+
+<Aside type="caution">
+See jaotis kehtib ainult siis, kui teil on GA4 paigaldatud oma veebisaidile. Kui te ei kasuta GA4 oma saidil, piisab ülaltoodud standardintegratsioonist.
+</Aside>
+
+### Miks see oluline on
+
+Ilma ristdomeeni jälgimiseta kuvatakse GA4-s külaline, kes esmalt külastab teie veebisaiti ja seejärel broneerib Winkis, kui **Otse** seanss, millel puudub seos varasema külastusega. Kõik Google Adsi klõpsud, e-posti kampaaniad või orgaanilised otsingud, mis broneeringuni viisid, ei saa krediiti.
+
+Ristdomeeni jälgimisega näete kogu külalise teekonda:
+
+```
+google.com (tasuline reklaam)
+       ↓
+teie veebisait (külaline sirvib tube)
+       ↓
+wink.travel (külaline valib toa ja broneerib)
+       ↓
+ost omistatakse õigesti algsele Google Adsi klõpsule
+```
+
+### Tegevus: Teie
+
+Seadistage oma GA4 konto nii, et `wink.travel` oleks osa teie domeenist, mitte väline viide. See ütleb GA4-le, et ühendada kaks seanssi üheks pidevaks külalisteekonnaks.
+
+<Steps>
+1. GA4 Admin → Andmevood → teie voog
+2. Konfigureeri sildiseaded → **Seadista oma domeenid**
+3. Lisage `wink.travel` lingitud domeenina
+4. Salvestage
+</Steps>
+
+### Tegevus: Wink
+
+Võtke ühendust [Wink Support](https://my.wink.travel) ja andke oma veebisaidi domeen (nt `yourhotel.com`). Wink lisab teie domeeni viidete välistamise nimekirja oma GA4 kontol. See takistab teie veebisaiti viitena registreerimast, mis muidu kirjutaks külalise algse omistuse üle ja alustaks uut seanssi.
+
+<Aside type="tip">
+Ülaltoodud standardintegratsioon on enamiku kinnisvarade jaoks piisav ja annab teile kohese ülevaate broneeringutest ja tulust Winkis. Ristdomeeni jälgimine on edasijõudnutele mõeldud võimalus, mida tasub seadistada, kui olete oma GA4 andmetega mugav ja soovite sügavamat omistuse ülevaadet.
+</Aside>

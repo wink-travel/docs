@@ -11,7 +11,7 @@ Terakhir dikemas kini 2024-10-30
 
 :::caution[Notis]
 Terma pembayaran di bawah terpakai kepada ejen pelancongan yang ingin memperoleh dan mengagihkan dana sendiri.  
-Ini hanya boleh dilakukan melalui API kami dan hanya oleh ejen pelancongan yang telah menyatakan bahawa mereka ingin melakukan ini semasa proses pendaftaran.
+Ini hanya boleh dilakukan melalui API kami dan hanya oleh ejen pelancongan yang telah menyatakan bahawa mereka ingin berbuat demikian semasa proses pendaftaran.
 
 Semua ejen pelancongan masih boleh membuat tempahan melalui portal ejen pelancongan kami menggunakan gerbang pembayaran Wink dengan kad kredit mereka sendiri atau kad kredit pengembara. Oleh itu, semua ejen pelancongan juga perlu bersetuju dengan terma pembayaran di mana gerbang pembayaran Wink adalah pedagang rekod.
 
@@ -91,9 +91,9 @@ Jika sebarang penukaran mata wang diperlukan, ia akan diproses pada kadar yang d
 Sebarang pertikaian yang timbul daripada atau berkaitan dengan Terma Pembayaran ini akan dikendalikan seperti yang ditetapkan di bawah prosedur penyelesaian pertikaian dalam Perjanjian Utama, memastikan pendekatan yang konsisten dan bersatu untuk menyelesaikan konflik antara Wink dan Ejen Pelancongan.
 
 **7\. Pengubahsuaian Terma**  
-Wink berhak untuk mengubah Terma Pembayaran ini pada bila-bila masa. Sebarang perubahan akan dimaklumkan kepada Ejen Pelancongan sekurang-kurangnya 30 hari sebelum ia berkuat kuasa. Penggunaan berterusan platform Wink selepas tarikh berkuat kuasa dianggap sebagai penerimaan terma yang diubah suai.
+Wink berhak untuk mengubah Terma Pembayaran ini pada bila-bila masa. Sebarang perubahan akan dimaklumkan kepada Ejen Pelancongan sekurang-kurangnya 30 hari sebelum ia berkuat kuasa. Penggunaan berterusan platform Wink selepas tarikh berkuat kuasa dianggap sebagai penerimaan terma yang diubah.
 
 **8\. Undang-undang dan Bidang Kuasa**  
 Terma Pembayaran ini tertakluk kepada undang-undang Singapura. Sebarang pertikaian yang timbul daripada atau berkaitan dengan terma ini akan diselesaikan di mahkamah Singapura.
 
-Terma Pembayaran ini adalah sebahagian penting dan memperluaskan peruntukan pembayaran yang ditetapkan dalam Perjanjian Utama, "TERMA & SYARAT EJEN PELANCONGAN_220924," antara Wink dan Ejen Pelancongan.
+Terma Pembayaran ini adalah sebahagian penting dan meluaskan peruntukan pembayaran yang ditetapkan dalam Perjanjian Utama, "TERMA & SYARAT EJEN PELANCONGAN\_220924," antara Wink dan Ejen Pelancongan.

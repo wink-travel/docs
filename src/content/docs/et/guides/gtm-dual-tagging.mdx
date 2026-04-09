@@ -1,0 +1,676 @@
+---
+title: Sojern Pixli integratsioon
+description: Kuidas ühendada oma Sojern konto Winkiga, et Sojern saaks jälgida teie külaliste broneerimisteekonda ning toetada teie sihtreklaami ja reklaamikampaaniaid.
+sidebar:
+  label: Sojern Pixli integratsioon
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Kui te viite läbi reklaamikampaaniaid Sojerniga, saate oma Sojern konto ühendada Winkiga, sisestades Wink portaali oma Sojern GTM konteineri ID. Kui ühendus on loodud, aktiveerub Sojerni jälgimispiksel automaatselt teie objekti jaoks — hõlmates kogu külaliste teekonda otsingust kuni broneeringu lõpuleviimiseni.
+
+<Aside type="tip">
+See eeldab, et teil on juba aktiivne Sojern konto ja olete saanud oma GTM konteineri ID Sojerni kontohaldurilt. Kui teil veel Sojern kontot ei ole, külastage [sojern.com/contact](https://www.sojern.com/contact), et alustada.
+</Aside>
+
+---
+
+## Mida peate tegema
+
+<Steps>
+
+1. **Hankige oma GTM konteineri ID Sojernist**
+
+   Võtke ühendust oma Sojerni kontohalduriga ja küsige oma **GTM konteineri ID-d**. See on vormingus `GTM-XXXXXXX`. See erineb teie Sojern Pixli ID-st — veenduge, et küsiksite just GTM konteineri ID-d.
+
+2. **Sisestage see Wink portaali**
+
+   Logige sisse [my.wink.travel](https://my.wink.travel), valige oma konto ja minge vahekaardile **Kohandused**. Kleepige oma Sojern GTM konteineri ID Sojern väljale ja salvestage. Teie integratsioon on nüüd aktiivne.
+
+3. **Kinnitage oma Sojerni kontohalduriga**
+
+   Teavitage oma Sojerni kontohaldurit, et integratsioon on aktiivne. Nad saavad oma poolt kontrollida, et piksel töötab korrektselt aadressil `wink.travel` teie objekti jaoks ja et andmed voolavad teie Sojern kontole.
+
+</Steps>
+
+<Aside type="note">
+Selle integratsiooni jaoks ei ole vaja oma veebisaidile paigaldada ühtegi pikselikoodi. Wink laadib teie Sojern konteineri automaatselt kõigil lehtedel, kus teie objekt on aktiivne.
+
+See konfiguratsioon töötab mis tahes kohandatud GTM konteineri ID-ga. Me kasutasime Sojerni näitena, kuna see on väga levinud integratsioon.
+</Aside>
+
+---
+
+## Mida Wink meie pool teeb
+
+Läbipaistvuse huvides on siin, mida Wink seadistab selle integratsiooni toimimiseks:
+
+- **Sojern GTM konteineri ID väli** on saadaval Wink portaali Kohandused vahekaardil. Kui sisestate konteineri ID, kontrollib Wink selle vormingut ja salvestab selle turvaliselt teie objekti andmetesse.
+- **Igal lehel, kus teie objekt on Winkis aktiivne**, renderdatakse teie Sojern GTM konteineri ID lehele ja Wink'i sildihaldussüsteem laadib dünaamiliselt teie Sojern konteineri koos oma omaga. See toimub automaatselt — Wink meeskonnal ei ole vaja objekti kohta käsitsi sekkuda.
+- **Teie Sojern konteiner laaditakse asünkroonselt**, mis tähendab, et see ei mõjuta teie külaliste lehe laadimise kiirust.
+- **Wink'i enda jälgimine ja teie Sojern piksel töötavad paralleelselt**, kasutades sama jagatud sündmuse andmeid. Iga broneerimissündmus, mida Wink jälgib, on samaaegselt kättesaadav teie Sojern konteinerile.
+- **Kui teie objekti ei vaadata** — näiteks kui külaline sirvib Winkis mõnda teist hotelli — ei laadita teie Sojern konteinerit. See tagab, et Sojern saab ainult teie objekti jaoks asjakohaseid andmeid.
+
+---
+
+## DataLayer viide
+
+Wink saadab GA4-ga ühilduvaid sündmusi `dataLayer`-isse kogu külaliste teekonna vältel. Teie GTM konteiner loeb samast jagatud `dataLayer`-ist, nii et iga teie seadistatud käivitaja või muutuja pääseb ligi kõigile allpool kirjeldatud omadustele.
+
+Iga sündmus järgib standardset GA4 täiustatud e-kaubanduse struktuuri: ülemise taseme `event` stringi ja `ecommerce` objekti. Enne iga pushi tühjendab Wink eelmise e-kaubanduse koormuse, et vältida aegunud andmete kandumist uutesse käivitajatesse.
+
+<Aside type="note">
+**dataLayer lähtestamise muster**
+
+Wink lähtestab e-kaubanduse objekti enne iga sündmuse pushi:
+
+```js
+dataLayer.push({ ecommerce: null });   // eelmine sündmus tühjendatud
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Ärge eeldage, et e-kaubanduse omadused püsivad sündmuste vahel. Lugege neid alati käivitamise ajal samas sündmuses.
+</Aside>
+
+---
+
+### Broneerimisteekonna sündmused
+
+Need sündmused käivituvad automaatselt, kui külaline liigub broneerimislehtris. Seadistage oma GTM käivitajad kui **Kohandatud sündmuse** käivitajad, mis vastavad allpool toodud sündmuste nimedele.
+
+| Samm | Sündmus | Millal käivitub |
+|------|---------|-----------------|
+| 1 | `view_item_list` | Hotelli inventari ruudustik või nimekiri laetakse |
+| 2 | `view_item` | Külaline vaatab konkreetset objekti lehte |
+| 3 | `add_to_cart` | Külaline lisab toa ostukorvi |
+| 4 | `begin_checkout` | Kassa / makse leht laetakse |
+| 5 | `add_payment_info` | Külaline valib makseviisi |
+| 6 | `login` | Külaline autentib end SSO kaudu |
+| 7 | `purchase` | Broneering kinnitatakse |
+| 8 | `refund` | Broneering tühistatakse |
+
+---
+
+#### `view_item_list`
+
+Käivitub, kui hotelli inventari ruudustik või nimekiri kuvatakse.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Esiletõstetud hotellid",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Käivitub, kui külaline vaatab konkreetset objekti.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Käivitub, kui külaline lisab toa ostukorvi.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Käivitub, kui kassa / makse leht laetakse.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` on olemas ainult siis, kui kasutati sooduskoodi.
+
+---
+
+#### `add_payment_info`
+
+Käivitub, kui külaline valib või kinnitab makseviisi.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` täidetakse makse vahendaja tüübi alusel. `coupon` on olemas ainult siis, kui kasutati sooduskoodi.
+
+---
+
+#### `login`
+
+Käivitub, kui külaline autentib end ühe sisselogimise kaudu.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Käivitub, kui broneering on kinnitatud.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` on unikaalne broneerimislepingu identifikaator. `coupon`, `shipping` ja `tax` on olemas ainult vajadusel.
+
+---
+
+#### `refund`
+
+Käivitub, kui broneering tühistatakse.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` vastab sama broneeringu `purchase` sündmusele. `coupon`, `shipping` ja `tax` on olemas ainult vajadusel.
+
+---
+
+### Toote omadused
+
+Kõik sündmused, mis sisaldavad `items` massiivi, kasutavad sama toote skeemi. Iga omadus on valikuline, välja arvatud juhul, kui on märgitud kohustuslikuks.
+
+#### Standard GA4 väljad
+
+Need väljad on GA4 poolt natiivsed ja ilmuvad standardsetes e-kaubanduse aruannetes ilma täiendava seadistuseta.
+
+| Omadus | Tüüp | Kohustuslik | Kirjeldus |
+|--------|------|------------|-----------|
+| `item_id` | string | Jah | Unikaalne identifikaator toa või toote jaoks |
+| `item_name` | string | — | Toa või toote nimi |
+| `affiliation` | string | — | Partneri või müüja nimi |
+| `coupon` | string | — | Tootele rakendatud sooduskoodi kood |
+| `currency` | string | — | ISO 4217 valuutakood (nt `USD`) |
+| `creative_name` | string | — | Kampaania loominguline nimi |
+| `creative_slot` | string | — | Kampaania loominguline positsioon |
+| `discount` | number | — | Rakendatud allahindluse summa |
+| `index` | number | — | Positsioon nimekirjas (1-põhine) |
+| `item_brand` | string | — | Hotelli või brändi nimi |
+| `item_category` | string | — | Toote tüüp — nt `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | Nimekirja identifikaator, kuhu toode kuulub |
+| `item_list_name` | string | — | Nimekirja kuvamise nimi |
+| `location_id` | string | — | Objekti geokoordinaadid |
+| `price` | number | — | Ühiku hind |
+| `promotion_id` | string | — | Kampaania identifikaator |
+| `promotion_name` | string | — | Kampaania kuvamise nimi |
+| `quantity` | number | — | Kogus (vaikimisi `1`) |
+
+#### Kohandatud tooteparameetrid
+
+Need parameetrid kannavad Wink-spetsiifilist broneerimiskonteksti. GA4 ei kuva neid aruannetes automaatselt — peate igaühe registreerima kui **tooteulatuses kohandatud mõõdiku** oma GA4 omaduses, enne kui need ilmuvad uurimistes või standardsetes aruannetes. Vaadake allpool [Kohandatud mõõdikud GA4-s](#custom-dimensions-in-ga4) seadistamise juhiseid.
+
+| Omadus | Tüüp | Kirjeldus |
+|--------|------|-----------|
+| `property_id` | string | Wink objekti identifikaator |
+| `property_name` | string | Objekti kuvamise nimi |
+| `property_brand` | string | Bränd, millele objekt kuulub |
+| `property_chain` | string | Kett, millele objekt kuulub |
+| `city_name` | string | Linn, kus objekt asub |
+| `country_code` | string | ISO 3166-1 alfa-2 riigikood |
+| `start_date` | string | Sisseregistreerimise kuupäev vormingus `AAAA-KK-PP` |
+| `end_date` | string | Väljaregistreerimise kuupäev vormingus `AAAA-KK-PP` |
+| `num_adults` | number | Täiskasvanute arv broneeringus |
+| `num_children` | number | Laste arv broneeringus |
+| `cancellation_policy` | string | Üks järgmistest: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Hinnaplaani identifikaator |
+| `room_rate_id` | string | Konkreetse toa hinna identifikaator |
+| `room_rate_name` | string | Toa hinna kuvamise nimi |
+| `num_perks` | number | Hinnaplaaniga kaasnevate lisade arv |
+| `room_location` | string | Toa asukoha kirjeldus (nt `Overwater`, `Garden`) |
+| `room_view` | string | Toa vaate kirjeldus (nt `Ocean`, `City`) |
+| `room_classification` | string | Toa klassifikatsioon või tase (nt `Suite`, `Standard`) |
+
+---
+
+### Kohandatud mõõdikud GA4-s
+
+GA4 ignoreerib kohandatud tooteparameetreid aruannetes, kuni te need registreerite kui tooteulatuses kohandatud mõõdikud. Registreerima peate ainult need parameetrid, mida soovite aruannetes kasutada — kõiki 18 ei ole vaja registreerida.
+
+<Steps>
+
+1. **Avage Kohandatud määratlused**
+
+   GA4-s minge **Administraator** (vasak all hammasratta ikoon) → valige oma omadus → **Andmete kuvamine** → **Kohandatud määratlused**.
+
+2. **Looge uus kohandatud mõõdik**
+
+   Klõpsake **Loo kohandatud mõõdikud**.
+
+3. **Täida mõõdiku andmed**
+
+   - **Mõõdiku nimi** — inimloetav silt, mis kuvatakse GA4 aruannetes (vt allolevat tabelit)
+   - **Ulatus** — valige **Item**
+   - **Sündmuse parameeter** — täpne parameetri nimi, nagu see on dataLayer’is (vt allolevat tabelit)
+   - **Kirjeldus** — valikuline, kuid soovitatav
+
+4. **Salvesta ja korda**
+
+   Klõpsake **Salvesta** ja korrake iga jälgitava parameetri puhul.
+
+</Steps>
+
+<Aside type="note">
+Kohandatud mõõdikud võivad GA4 aruannetes ilmuda kuni 24 tunni jooksul pärast registreerimist. Enne registreerimist kogutud ajaloolisi andmeid ei täideta tagantjärele.
+
+GA4 lubab standardsetel omadustel kuni 50 tooteulatuses kohandatud mõõdikut (360 omadused lubavad rohkem).
+</Aside>
+
+Kasutage allolevat tabelit viitena kohandatud mõõdikute loomisel. **Sündmuse parameetri** väärtus peab olema täpselt sama — GA4 on tõstutundlik.
+
+| Mõõdiku nimi | Sündmuse parameeter | Tüüp |
+|--------------|---------------------|------|
+| Objekti ID | `property_id` | Tekst |
+| Objekti nimi | `property_name` | Tekst |
+| Objekti bränd | `property_brand` | Tekst |
+| Objekti kett | `property_chain` | Tekst |
+| Linna nimi | `city_name` | Tekst |
+| Riigi kood | `country_code` | Tekst |
+| Sisseregistreerimise kuupäev | `start_date` | Tekst |
+| Väljaregistreerimise kuupäev | `end_date` | Tekst |
+| Täiskasvanute arv | `num_adults` | Number |
+| Laste arv | `num_children` | Number |
+| Tühistamispoliitika | `cancellation_policy` | Tekst |
+| Hinnaplaani ID | `rate_plan_id` | Tekst |
+| Toa hinna ID | `room_rate_id` | Tekst |
+| Toa hinna nimi | `room_rate_name` | Tekst |
+| Lisade arv | `num_perks` | Number |
+| Toa asukoht | `room_location` | Tekst |
+| Toa vaade | `room_view` | Tekst |
+| Toa klassifikatsioon | `room_classification` | Tekst |
+
+---
+
+### Täiendavad saadaval olevad sündmused
+
+Järgnevad sündmused on saadaval Wink dataLayer’is, kuid ei ole osa standardisest broneerimislehtrist. Neid võivad käivitada platvormi muud kasutajaliidese tegevused.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Esiletõstetud hotellid",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Selle sündmusega ei kaasne `ecommerce` objekti.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Suve bänner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Suve soodustus",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Suve bänner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Suve soodustus",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "rannikuäärne kuurort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Toa uuendus"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Kuld"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Kuld",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "reisija"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "reisija"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "esimene_broneering"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+See on kohandatud Wink sündmus — ei kuulu standardsete GA4 sündmuste hulka. See käivitub iga lehe navigeerimisel ja kannab seadme ning sessiooni konteksti. See ei sisalda `ecommerce` objekti.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Omadus | Kirjeldus |
+|--------|-----------|
+| `device` | Tuvastatud seadme tüüp — `Desktop`, `Android`, `iPhone`, `iPad` või sarnane |
+| `deviceAgent` | Kasutajaagendi string |
+| `os` | Tuvastatud operatsioonisüsteem — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Praeguse lehe rada |
+| `title` | Praeguse lehe pealkiri |
+| `userId` | Autentitud kasutaja identifikaator (puudub, kui pole sisse logitud) |
+| `startDate` | Sisseregistreerimise kuupäev praegusest otsingusessioonist |
+| `endDate` | Väljaregistreerimise kuupäev praegusest otsingusessioonist |
+| `guests` | Külaliste arv praegusest otsingusessioonist |
+| `rooms` | Tubade arv praegusest otsingusessioonist |

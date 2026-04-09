@@ -9,12 +9,12 @@ sidebar:
 
 - [Extranet](/zh-CN/extranet/what-is-extranet) 负责供应商管理库存。
 - [Studio](/zh-CN/studio/what-is-studio) 负责加盟商管理内容。
-- `Booking Engine` 负责将 `Studio` 中创建的、基于 `Extranet` 中创建的库存的内容变为可预订。
+- `Booking Engine` 负责将 `Studio` 中创建的基于 `Extranet` 中库存的内容变为可预订。
 - [Payment](/zh-CN/payment/what-is-trip-pay) 负责向通过 [Wink 等平台] 预订的旅客收费/退款，并向供应商付款。
 
 预订引擎是我们平台的核心。
 
-其职责包括：
+它的职责包括：
 
 - 管理货币并保持汇率最新。
 - 为价格提供者提供发送价格数据的方式。

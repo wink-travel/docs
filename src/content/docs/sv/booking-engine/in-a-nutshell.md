@@ -1,5 +1,5 @@
 ---
-title: Kortfattat
+title: Sammanfattning
 description: Den här artikeln guidar dig genom allt du ville veta om bokningsmotorn.
 sidebar:
   order: 0
@@ -9,15 +9,15 @@ Så här delar vi upp ansvaret på Wink:
 
 - [Extranet](/sv/extranet/what-is-extranet) hanterar leverantörer som sköter inventarier.
 - [Studio](/sv/studio/what-is-studio) hanterar affiliates som sköter innehåll.
-- `Booking Engine` ansvarar för att göra innehållet, skapat i `Studio`, som baserades på inventariet skapat i `Extranet`, bokningsbart.
-- [Payment](/sv/payment/what-is-trip-pay) ansvarar för att debitera / återbetala resenärer som bokar [genom plattformar som Wink], och betala leverantörer.
+- `Booking Engine` hanterar att göra innehållet, skapat i `Studio`, som baserades på inventariet skapat i `Extranet`, bokningsbart.
+- [Payment](/sv/payment/what-is-trip-pay) hanterar debitering / återbetalning av resenärer som bokar [genom plattformar som Wink], och betalning till leverantörer.
 
 Bokningsmotorn är kärnan i vår plattform.
 
 Dess ansvarsområden inkluderar:
 
 - Hantera valutor och hålla växelkurser uppdaterade.
-- Ge prisleverantörer ett sätt att skicka oss prisdata.
+- Ge prisleverantörer ett sätt att skicka prisdata till oss.
 - Hantera uppslagsdata. *t.ex. regioner, länder, destinationer, boenden etc.*
 - Hantera språk.
 - Generera analyser baserat på användarinteraktioner, händelser och API-anrop.

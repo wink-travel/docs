@@ -1,6 +1,6 @@
 ---
 title: Ödeme Koşulları
-description: Bu belge, fon kullanılabilirliğini ve Wink'in seyahat acenteleri için acente modelini nasıl desteklediğini kapsar.
+description: Bu belge, fon kullanılabilirliği ve Wink'in seyahat acenteleri için acente modelini nasıl desteklediğini kapsar.
 sidebar:
   order: 5
 ---
@@ -13,7 +13,7 @@ Son güncelleme 2024-10-30
 Aşağıdaki ödeme koşulları, fonları kendi adına tahsil etmek ve dağıtmak isteyen seyahat acenteleri için geçerlidir.  
 Bu yalnızca API'miz aracılığıyla ve kayıt sürecinde bunu yapmak istediklerini belirten seyahat acenteleri tarafından yapılabilir.
 
-Tüm seyahat acenteleri, kendi veya yolcunun kredi kartı ile Wink'in ödeme altyapısını kullanarak seyahat acente portalımız üzerinden rezervasyon yapmaya devam edebilir. Bu nedenle, tüm seyahat acentelerinin Wink'in ödeme altyapısının kayıtlı satıcı olduğu ödeme koşullarını kabul etmesi gerekmektedir.
+Tüm seyahat acenteleri, kendi veya yolcunun kredi kartı ile Wink'in ödeme altyapısını kullanarak seyahat acentesi portalımız üzerinden rezervasyon yapmaya devam edebilir. Bu nedenle, tüm seyahat acentelerinin Wink'in ödeme altyapısının kayıtlı satıcı olduğu ödeme koşullarını da kabul etmesi gerekmektedir.
 
 Bu koşullar [Affiliate Portal > Payment Terms](/tr/studio/payment-terms) altında mevcuttur.
 :::
@@ -21,11 +21,11 @@ Bu koşullar [Affiliate Portal > Payment Terms](/tr/studio/payment-terms) altın
 **WINK ÖDEME KOŞULLARI**  
 **SEYAHAT ACENTELERİ İÇİN (Kayıtlı Satıcı)**
 
-Bu Hizmet Ödeme Koşulları (“Ödeme Koşulları”), "TERMS & CONDITIONS TRAVEL AGENTS" (“Ana Sözleşme”) kapsamında kurulan sözleşmesel ilişkinin bağlayıcı yasal bir parçasıdır.
+Bu Hizmet Ödeme Koşulları (“Ödeme Koşulları”), "SEYAHAT ACENTELERİ ŞARTLARI & KOŞULLARI" (“Ana Sözleşme”) kapsamında kurulan sözleşmesel ilişkinin bağlayıcı yasal bir parçasıdır.
 
 **TARAFLAR:**
 
-1. **Winkfluence**, Singapur yasalarına göre kurulmuş ve kayıtlı ofisi \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 adresinde bulunan, KDV kayıt numarası 201437335D olan şirket (bundan sonra "Wink" olarak anılacaktır) ve  
+1. **Winkfluence**, Singapur yasalarına göre kurulmuş ve kayıtlı ofisi \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 adresinde bulunan, KDV kayıt numarası 201437335D olan bir şirket (bundan sonra "Wink" olarak anılacaktır) ve  
      
 2. **SEYAHAT ACENTESİ**, Seyahat Acentesi Kayıt Formunda belirtilen veya çevrimiçi olarak gönderilmiş bilgileri içeren taraf ("Seyahat Acentesi").
 
@@ -33,7 +33,7 @@ Ana Sözleşmede tanımlanan terimler ve tanımlar, aksi belirtilmedikçe bu Öd
 
 **1\. Tanımlar**
 
-Ana sözleşme "TERMS & CONDITIONS TRAVEL AGENTS" ("Ana Sözleşme") kapsamında tanımlandığı şekilde, aşağıdaki terimler bu Ödeme Koşullarında da aynı anlamlara sahiptir:
+Ana sözleşme "SEYAHAT ACENTELERİ ŞARTLARI & KOŞULLARI" ("Ana Sözleşme") kapsamında tanımlandığı gibi, aşağıdaki terimler bu Ödeme Koşullarında aynı anlamlara sahiptir:
 
 * "Konaklama Sağlayıcı(lar)"  
 * "Rezervasyon"  
@@ -48,22 +48,22 @@ Ana sözleşme "TERMS & CONDITIONS TRAVEL AGENTS" ("Ana Sözleşme") kapsamında
 
 2.1 **Ödeme Tahsilatı:** Seyahat Acentesi, rezervasyon sırasında Misafirden ödeme tahsil etmekle sorumludur. Bu, anında işlem yapılmasını ve finansal şeffaflığı sağlar.
 
-2.2 **Ücret Kesintisi:** Seyahat Acentesi, önce Hizmet Sağlayıcı ücretini, ardından aşağıdaki örneğe göre alt toplam için kendi komisyonunu kesecektir:
+2.2 **Ücret Kesintisi:** Seyahat Acentesi, önce Hizmet Sağlayıcı ücretini, ardından aşağıdaki örneğe göre alt toplam üzerinden kendi komisyonunu kesecektir:
 
 * Wink için %1,5 Rezervasyon Ücreti.  
-* Seyahat Acentesi Komisyonu, Ayrı Sözleşmede belirtilen oran (bu örnek için %10 kullanılacaktır)
+* Seyahat Acentesinin Ayrı Sözleşmede belirtilen Komisyonu (bu örnek için %10 kullanacağız)
 
 Rezervasyon Değeri USD 1,000  
 Wink Ücreti (%1,5) = USD 15  
 Alt Toplam = 1,000 - 15 = 985
 
-2.3 **Konaklama Sağlayıcılarına Net Ödeme:** Seyahat Acentesi, Ayrı Sözleşme koşullarına göre Net Ödemeyi Konaklama Sağlayıcısına dağıtmakla sorumludur. Wink, Konaklama Sağlayıcısına herhangi bir ödeme yapmakla yükümlü değildir.
+2.3 **Konaklama Sağlayıcılarına Net Ödeme:** Seyahat Acentesi, Net Ödemeyi Seyahat Acentesi ile Konaklama Sağlayıcı arasında imzalanan Ayrı Sözleşme koşullarına göre Konaklama Sağlayıcısına dağıtmakla sorumludur. Wink, Konaklama Sağlayıcısına herhangi bir ödeme yapmakla yükümlü değildir.
 
-**3\. Faturalandırma ve Ödeme**
+**3\. Faturalandırma ve Ödeme** 
 
 3.1 **Aylık Faturalandırma:** Wink, önceki ay boyunca biriken Rezervasyon Ücretleri için Seyahat Acentesine doğru ve eksiksiz aylık fatura düzenleyecektir. Seyahat Acentesi, faturada belirtilen ödeme koşulları içinde bu faturayı ödemekle yükümlüdür.
 
-3.2 **Ödeme Yöntemi:** Wink'e yapılacak ödemeler, faturada belirtilen ödeme yöntemiyle yapılacaktır. Ödeme transferi ile ilgili tüm masraflar Seyahat Acentesine aittir.
+3.2 **Ödeme Yöntemi:** Wink'e yapılacak ödemeler faturada belirtilen ödeme yöntemiyle yapılacaktır. Ödeme transferi ile ilgili tüm masraflar Seyahat Acentesine aittir.
 
 3.3 **Gecikmiş Ödemeler:** Gecikme durumunda, Wink, gecikmiş tutar üzerinden aylık %5 veya yasal olarak izin verilen en yüksek oran (hangisi düşükse) oranında faiz talep etme hakkını saklı tutar. Ayrıca, Seyahat Acentesi Ayrı Sözleşme koşullarına göre Konaklama Sağlayıcısına geç ödeme yaparsa, Wink, hem Wink hem de Konaklama Sağlayıcıya olan tüm ödenmemiş tutarlar çözülene kadar Hizmete erişimi askıya alma hakkını saklı tutar. Ancak, Wink tarafından gönderilen faturada herhangi bir hata veya yanlışlık varsa, Seyahat Acentesi yalnızca doğru ve eksiksiz fatura tutarını ödemekle yükümlüdür ve yanlış kısım için faiz veya ceza uygulanmaz.
 
@@ -88,12 +88,12 @@ Herhangi bir döviz kuru dönüşümü gerekiyorsa, ödeme işleme hizmeti taraf
 
 **6\. Anlaşmazlık Çözümü**
 
-Bu Ödeme Koşullarından kaynaklanan veya bunlarla ilgili herhangi bir anlaşmazlık, Ana Sözleşmedeki anlaşmazlık çözüm prosedürlerine uygun olarak ele alınacak ve Wink ile Seyahat Acentesi arasındaki uyuşmazlıkların tutarlı ve birleşik bir şekilde çözülmesi sağlanacaktır.
+Bu Ödeme Koşullarından kaynaklanan veya bunlarla ilgili herhangi bir anlaşmazlık, Ana Sözleşmedeki anlaşmazlık çözüm prosedürleri uyarınca ele alınacak ve Wink ile Seyahat Acentesi arasındaki uyuşmazlıkların tutarlı ve birleşik bir şekilde çözülmesi sağlanacaktır.
 
 **7\. Koşulların Değiştirilmesi**  
 Wink, bu Ödeme Koşullarını herhangi bir zamanda değiştirme hakkını saklı tutar. Herhangi bir değişiklik, yürürlüğe girmeden en az 30 gün önce Seyahat Acentesine bildirilecektir. Değişikliklerin yürürlük tarihinden sonra Wink platformunun kullanılması, değiştirilen koşulların kabulü anlamına gelir.
 
 **8\. Geçerli Hukuk ve Yetki**  
-Bu Ödeme Koşulları Singapur yasalarına tabidir. Bu koşullardan kaynaklanan veya bunlarla ilgili herhangi bir uyuşmazlık Singapur mahkemelerinde çözülecektir.
+Bu Ödeme Koşulları Singapur yasalarına tabidir. Bu koşullardan kaynaklanan veya bunlarla ilgili herhangi bir anlaşmazlık Singapur mahkemelerinde çözülecektir.
 
-Bu Ödeme Koşulları, Wink ile Seyahat Acentesi arasında imzalanan Ana Sözleşme "TERMS & CONDITIONS TRAVEL AGENTS_220924" kapsamındaki ödeme hükümlerinin ayrılmaz bir parçası olup, bunları genişletmektedir.
+Bu Ödeme Koşulları, Wink ile Seyahat Acentesi arasında imzalanan Ana Sözleşme "SEYAHAT ACENTELERİ ŞARTLARI & KOŞULLARI_220924" içindeki ödeme hükümlerinin ayrılmaz bir parçası olup, bunları genişletir.

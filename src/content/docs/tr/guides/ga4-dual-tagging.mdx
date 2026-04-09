@@ -1,0 +1,140 @@
+---
+title: GA4 Analytics Entegrasyonu
+description: Kendi Google Analytics 4 mülkünüzü Wink'e nasıl bağlayacağınızı, böylece rezervasyonlarınızı, gelirlerinizi ve misafir yolculuğunu doğrudan kendi GA4 kontrol panelinizde nasıl takip edebileceğinizi öğrenin.
+sidebar:
+  label: GA4 Analytics Entegrasyonu
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Google Analytics 4 mülkünüzü Wink'e bağlayarak, oda görüntülemelerinden tamamlanan satın almalara kadar olan rezervasyon etkinlikleriniz, Wink'in kendi analizleriyle birlikte otomatik olarak kendi GA4 kontrol panelinize iletilir. Kod yazmaya veya teknik kurulum yapmaya gerek yok.
+
+<Aside type="tip">
+Tek ihtiyacınız olan bir GA4 Ölçüm Kimliği. Wink portalına girdikten sonra analizleriniz hemen aktif olur.
+</Aside>
+
+---
+
+## Nasıl Çalışır
+
+```
+Wink portalına G-XXXXXXXXXX kodunuzu girersiniz
+       ↓
+Wink, rezervasyon etkinliklerinizi GA4 mülkünüze iletir
+       ↓
+analytics.google.com adresine giriş yapar ve rezervasyonlarınızı görürsünüz
+```
+
+---
+
+## Yapmanız Gerekenler
+
+<Steps>
+
+1. **Bir GA4 Mülkü Oluşturun**
+
+   [analytics.google.com](https://analytics.google.com) adresine gidin: Yönetici → Mülk Oluştur. Zaman diliminizi ve para biriminizi pazarınıza uygun şekilde ayarlayın.
+
+2. **Bir Web Veri Akışı Oluşturun**
+
+   Yönetici → Veri Akışları → Akış Ekle → Web. URL olarak `wink.travel` girin. Bu, **Ölçüm Kimliğinizi** (`G-XXXXXXXXXX`) oluşturur. Kopyalayın.
+
+3. **Ölçüm Kimliğinizi Wink Portalına Girin**
+
+   [my.wink.travel](https://my.wink.travel) adresine giriş yapın, hesabınızı seçin ve **Özelleştirmeler** sekmesine gidin. Ölçüm Kimliğinizi buraya yapıştırın ve kaydedin. Hepsi bu kadar — GA4 entegrasyonunuz artık aktif.
+
+4. **`purchase` Etkinliğini Anahtar Etkinlik Olarak İşaretleyin**
+
+   GA4 mülkünüzde: Yönetici → Etkinlikler → `purchase` etkinliğini bulun → **Anahtar etkinlik olarak işaretle** seçeneğini açın. Bu, tamamlanan rezervasyonların Dönüşümler raporunda görünmesini sağlar.
+
+5. **Verilerinizi Görüntüleyin**
+
+   [analytics.google.com](https://analytics.google.com) adresine giriş yapın; rezervasyonlarınızı, gelirlerinizi ve misafir yolculuğunu — hepsi Wink üzerinden otomatik olarak takip edilen — göreceksiniz.
+
+</Steps>
+
+<Aside type="note">
+Bu entegrasyon için kendi web sitenize herhangi bir takip kodu yüklemenize gerek yoktur. Wink her şeyi halleder. Ölçüm Kimliğiniz, rezervasyon verilerinizin gönderildiği hedef adresinizdir.
+</Aside>
+
+---
+
+## Neleri Takip Edebilirsiniz
+
+Bağlandıktan sonra, GA4 mülkünüz mülkünüz için Gelişmiş E-ticaret etkinliklerinin tamamını alır:
+
+### Keşif
+
+| Etkinlik | Anlamı |
+|---|---|
+| `view_item_list` | Bir misafir mülkünüzü arama veya kategori listesinde gördü |
+| `select_item` | Bir misafir listeden mülkünüze tıkladı |
+| `view_item` | Bir misafir otel detay sayfanızı görüntüledi |
+
+### Değerlendirme
+
+| Etkinlik | Anlamı |
+|---|---|
+| `view_promotion` | Bir misafir mülkünüz için promosyon teklifini gördü |
+| `select_promotion` | Bir misafir promosyon teklifine tıkladı |
+| `add_to_wishlist` | Bir misafir mülkünüzü istek listesine ekledi |
+
+### Rezervasyon Hunisi
+
+| Etkinlik | Anlamı |
+|---|---|
+| `add_to_cart` | Bir misafir oda veya paket seçti |
+| `view_cart` | Bir misafir rezervasyon özetini görüntüledi |
+| `remove_from_cart` | Bir misafir oda veya paketi sepetten çıkardı |
+| `begin_checkout` | Bir misafir ödeme sürecini başlattı |
+| `add_payment_info` | Bir misafir ödeme bilgilerini girdi |
+| `add_shipping_info` | Bir misafir misafir bilgilerini girdi |
+| `purchase` | Bir misafir rezervasyonu tamamladı |
+| `refund` | Bir rezervasyon iptal edilip iade edildi |
+
+Tüm etkinlikler, gelir, para birimi, oda tipi ve rezervasyon değeri gibi ilgili boyutları içerir — böylece misafir yolculuğunun ilk izlenimden tamamlanan rezervasyona kadar tam bir resmini elde edersiniz.
+
+---
+
+## Alanlar Arası Takip (Gelişmiş)
+
+Yukarıdaki standart entegrasyon, Wink içindeki tüm etkinlikleri takip eder. Ancak, misafirlerin kendi web sitenizden başlayıp Wink'te rezervasyon tamamlamasına kadar olan süreci ve orijinal trafik kaynağını (Google Ads, e-posta kampanyaları, organik arama vb.) doğru şekilde izlemek istiyorsanız, her iki tarafta da ek bir adım gereklidir.
+
+<Aside type="caution">
+Bu bölüm yalnızca kendi web sitenizde GA4 kuruluysa geçerlidir. Sitenizde GA4 kullanmıyorsanız, yukarıdaki standart entegrasyon sizin için yeterlidir.
+</Aside>
+
+### Neden Önemli?
+
+Alanlar arası takip olmadan, önce web sitenizi ziyaret eden ve sonra Wink'te rezervasyon yapan bir misafir, GA4'te önceki ziyaretle bağlantısı olmayan **Doğrudan** oturum olarak görünür. Rezervasyona yol açan Google Ads tıklamaları, e-posta kampanyaları veya organik arama ziyaretleri hiçbir kredi alamaz.
+
+Alanlar arası takip yapılandırıldığında, tam misafir yolculuğunu görürsünüz:
+
+```
+google.com (ücretli reklam)
+       ↓
+web siteniz (misafir odalara göz atar)
+       ↓
+wink.travel (misafir oda seçer ve rezervasyon yapar)
+       ↓
+satın alma, orijinal Google Ads tıklamasına doğru şekilde bağlanır
+```
+
+### Yapmanız Gerekenler: Siz
+
+GA4 mülkünüzü, `wink.travel` adresini kendi alan adınızın bir parçası olarak tanıyacak şekilde yapılandırın, harici bir yönlendirme olarak değil. Bu, GA4'ün iki oturumu tek bir kesintisiz misafir yolculuğu olarak birleştirmesini sağlar.
+
+<Steps>
+1. GA4 Yönetici → Veri Akışları → akışınız
+2. Etiket ayarlarını yapılandır → **Alan adlarınızı yapılandırın**
+3. `wink.travel` adresini bağlı alan olarak ekleyin
+4. Kaydedin
+</Steps>
+
+### Yapmanız Gerekenler: Wink
+
+[Wink Destek](https://my.wink.travel) ile iletişime geçin ve web sitenizin alan adını (örneğin `yourhotel.com`) sağlayın. Wink, alan adınızı Wink GA4 mülkündeki yönlendirme hariç tutma listesine ekleyecektir. Bu, web sitenizin yönlendirme kaynağı olarak kaydedilmesini engeller; aksi takdirde misafirin orijinal ataması üzerine yazılır ve yeni bir oturum başlatılır.
+
+<Aside type="tip">
+Yukarıdaki standart entegrasyon çoğu mülk için yeterlidir ve Wink'teki rezervasyonlar ile gelirler hakkında anında görünürlük sağlar. Alanlar arası takip, GA4 verilerinizle rahat olduğunuzda ve daha derin atama içgörüsü istediğinizde kurulması gereken gelişmiş bir seçenektir.
+</Aside>

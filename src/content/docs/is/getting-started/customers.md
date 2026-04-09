@@ -21,23 +21,23 @@ Vörumerki og keðjur hafa aðeins aðrar þarfir en einstök eign. Á Wink geta
 
 ## Stjórnunarfyrirtæki
 
-Stjórnunarfyrirtæki í hótelgeiranum og áfangastaðastjórnunarfyrirtæki geta stjórnað eignasöfnum fyrir hönd eigenda. Það er afgerandi kostur að láta netmiðaðar, stafrænt meðvitaðar stofnanir sjá um sölu til netmarkaðarins á meðan hótelin geta einbeitt sér að því að stjórna ánægju viðskiptavina þegar þeir koma á staðinn.
+Stjórnunarfyrirtæki í hótel- og áfangastaðastjórnun geta stjórnað eignasöfnum fyrir hönd eigenda. Það er skýr ávinningur af því að láta netmiðaðar, stafrænt meðvitaðar stofnanir sjá um sölu til netnotenda á meðan hótelin geta einbeitt sér að því að stjórna ánægju viðskiptavina þegar þeir koma á staðinn.
 
 ## Áhrifavaldar
 
-Áhrifavaldar nota Wink til að nýta áhorfendur sína betur. Þeir gera það með því að vinna með hótelum, búa til sérsniðin tilboð og nýta samfélagsvæn verkfæri Wink og öfluga greiningartól til að fylgjast með hvaða vörur seljast best​.
+Áhrifavaldar nota Wink til að nýta áhorfendur sína betur. Þeir gera það með því að vinna með hótelum, búa til sérsniðin tilboð og nýta samfélagsvæn verkfæri Wink og öfluga greiningu til að fylgjast með hvaða vörur seljast best​.
 
 ## Ferðaskrifstofur
 
-Ferðaskrifstofur fá aðgang að ferðabirgðum um allan heim á góðu verði í gegnum okkar sérstaka [ferðaskrifstofu vefsvæði](https://agent.wink.travel). Þær geta gert bókanir í gegnum vefsvæðið okkar, með API eða látið notendur bóka sjálfir á ferðaskrifstofuvef sem notar tækni okkar.
+Ferðaskrifstofur fá aðgang að ferðabirgðum um allan heim á góðu verði í gegnum okkar sérstaka [ferðaskrifstofu vef](https://agent.wink.travel). Þær geta gert bókanir í gegnum vefinn okkar, með API eða látið notendur bóka sjálfir á ferðaskrifstofuvef sem notar tækni okkar.
 
 ## Fyrirtæki
 
 Fyrirtæki þurfa meira af ferðavettvangi:
 
 - Þau þurfa vel skipulagðar ferðir sem styðja sveigjanleika og breytingar í síðustu stundu.
-- Þau þurfa áreiðanleg samskiptatól, svo sem internet.
-- Þau hafa birgja sem þau kjósa með aðild.
+- Þau þurfa áreiðanleg samskiptatæki, svo sem internet.
+- Þau hafa birgja sem þau kjósa með aðildum.
 - Þau hafa oft fyrirtækjakort og setja útgjaldamörk.
 - Þau þurfa útgjaldastjórnun og samþættingu skýrslugerðar.
 - Þau þurfa þjónustu við móttöku, auk MICE þjónustu við viðburði.
@@ -50,4 +50,4 @@ Fyrirtækjafarar geta stjórnað eigin reikningum á okkar [fyrirtækjavettvangi
 
 ## Aðrir
 
-Allir sem vilja finna og selja ferðabirgðir geta haft gagn af að nota Wink. Breyttu ástríðu þinni fyrir gestrisni í aðgerð með því að þéna góðan þóknun fyrir hverja bókun.
+Allir sem vilja finna og selja ferðabirgðir geta haft gagn af því að nota Wink. Breyttu ástríðu þinni fyrir gestrisni í aðgerð með því að þéna góðan þóknun fyrir hverja bókun.

@@ -7,10 +7,10 @@ sidebar:
 
 Aqui está como segmentamos a responsabilidade no Wink:
 
-- [Extranet](/pt-BR/extranet/what-is-extranet) cuida dos fornecedores que gerenciam o inventário.
-- [Studio](/pt-BR/studio/what-is-studio) cuida dos afiliados que gerenciam o conteúdo.
-- `Booking Engine` cuida de tornar o conteúdo, criado no `Studio`, que foi baseado no inventário criado na `Extranet`, reservável.
-- [Payment](/pt-BR/payment/what-is-trip-pay) cuida de cobrar / reembolsar os viajantes que reservam [através de plataformas como o Wink], e pagar os fornecedores.
+- [Extranet](/pt-BR/extranet/what-is-extranet) se ocupa dos fornecedores que gerenciam o inventário.
+- [Studio](/pt-BR/studio/what-is-studio) se ocupa dos afiliados que gerenciam o conteúdo.
+- `Booking Engine` se ocupa de tornar o conteúdo, criado no `Studio`, que foi baseado no inventário criado na `Extranet`, reservável.
+- [Payment](/pt-BR/payment/what-is-trip-pay) se ocupa de cobrar / reembolsar os viajantes que reservam [através de plataformas como o Wink], e pagar os fornecedores.
 
 O motor de reservas está no centro da nossa plataforma.
 
@@ -21,7 +21,7 @@ Suas responsabilidades incluem:
 - Gerenciar dados de consulta. *ex.: regiões, países, destinos, propriedades etc.*
 - Gerenciar idiomas.
 - Gerar análises baseadas em interações de usuários, eventos e chamadas de API.
-- Fornecer inventário reservável no formato, idioma e moeda desejados, como:
+- Fornecer inventário reservável no formato, idioma e moeda desejados, tais como:
     - Um [link compartilhável](/pt-BR/studio/shareable-links) no Facebook.
     - Uma página de destino de hotel em https://ota.wink.travel com inventário para esse hotel.
     - Um [card](/pt-BR/studio/cards) contendo inventário de afiliados.

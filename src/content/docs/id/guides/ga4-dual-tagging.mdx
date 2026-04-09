@@ -1,0 +1,140 @@
+---
+title: Integrasi GA4 Analytics
+description: Cara menghubungkan properti Google Analytics 4 Anda sendiri ke Wink sehingga Anda dapat melacak pemesanan, pendapatan, dan perjalanan tamu langsung di dashboard GA4 Anda sendiri.
+sidebar:
+  label: Integrasi GA4 Analytics
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Dengan menghubungkan properti Google Analytics 4 Anda ke Wink, event pemesanan Anda — mulai dari tampilan kamar hingga pembelian yang selesai — secara otomatis diteruskan ke dashboard GA4 Anda sendiri bersamaan dengan analitik Wink. Tanpa kode, tanpa pengaturan teknis dari pihak Anda.
+
+<Aside type="tip">
+Yang Anda butuhkan hanyalah ID Pengukuran GA4. Setelah dimasukkan di portal Wink, analitik Anda langsung aktif.
+</Aside>
+
+---
+
+## Cara Kerjanya
+
+```
+Anda memasukkan G-XXXXXXXXXX di portal Wink
+       ↓
+Wink meneruskan event pemesanan Anda ke properti GA4 Anda
+       ↓
+Anda masuk ke analytics.google.com dan melihat pemesanan Anda
+```
+
+---
+
+## Yang Perlu Anda Lakukan
+
+<Steps>
+
+1. **Buat Properti GA4**
+
+   Buka [analytics.google.com](https://analytics.google.com): Admin → Buat Properti. Atur zona waktu dan mata uang sesuai dengan pasar Anda.
+
+2. **Buat Aliran Data Web**
+
+   Admin → Data Streams → Tambah Stream → Web. Masukkan `wink.travel` sebagai URL. Ini akan menghasilkan **ID Pengukuran** Anda (`G-XXXXXXXXXX`). Salin ID tersebut.
+
+3. **Masukkan ID Pengukuran Anda di Portal Wink**
+
+   Masuk ke [my.wink.travel](https://my.wink.travel), pilih akun Anda, dan buka tab **Customizations**. Tempelkan ID Pengukuran Anda di sana dan simpan. Selesai — integrasi GA4 Anda sekarang aktif.
+
+4. **Tandai `purchase` sebagai Event Kunci**
+
+   Kembali ke properti GA4 Anda: Admin → Events → cari `purchase` → aktifkan **Mark as key event**. Ini membuat pemesanan yang selesai muncul di laporan Konversi Anda.
+
+5. **Lihat Data Anda**
+
+   Masuk ke [analytics.google.com](https://analytics.google.com) dan Anda akan melihat pemesanan, pendapatan, dan funnel tamu Anda — semua dilacak secara otomatis melalui Wink.
+
+</Steps>
+
+<Aside type="note">
+Anda tidak perlu memasang kode pelacakan apa pun di situs web Anda untuk integrasi ini. Wink menangani semuanya. ID Pengukuran Anda hanyalah tujuan tempat data pemesanan Anda dikirim.
+</Aside>
+
+---
+
+## Apa yang Bisa Anda Lacak
+
+Setelah terhubung, properti GA4 Anda menerima rangkaian lengkap event Enhanced E-commerce untuk properti Anda:
+
+### Penemuan
+
+| Event | Artinya |
+|---|---|
+| `view_item_list` | Tamu melihat properti Anda dalam pencarian atau daftar kategori |
+| `select_item` | Tamu mengklik properti Anda dari daftar |
+| `view_item` | Tamu melihat halaman detail hotel Anda |
+
+### Pertimbangan
+
+| Event | Artinya |
+|---|---|
+| `view_promotion` | Tamu melihat penawaran promosi untuk properti Anda |
+| `select_promotion` | Tamu mengklik penawaran promosi |
+| `add_to_wishlist` | Tamu menyimpan properti Anda ke daftar keinginan mereka |
+
+### Funnel Pemesanan
+
+| Event | Artinya |
+|---|---|
+| `add_to_cart` | Tamu memilih kamar atau paket |
+| `view_cart` | Tamu melihat ringkasan pemesanan mereka |
+| `remove_from_cart` | Tamu menghapus kamar atau paket |
+| `begin_checkout` | Tamu memulai proses checkout |
+| `add_payment_info` | Tamu memasukkan detail pembayaran mereka |
+| `add_shipping_info` | Tamu memasukkan detail tamu mereka |
+| `purchase` | Tamu menyelesaikan pemesanan |
+| `refund` | Pemesanan dibatalkan dan dikembalikan dana |
+
+Semua event mencakup dimensi relevan seperti pendapatan, mata uang, tipe kamar, dan nilai pemesanan — memberi Anda gambaran lengkap perjalanan tamu dari kesan pertama hingga pemesanan selesai.
+
+---
+
+## Pelacakan Lintas Domain (Lanjutan)
+
+Integrasi standar di atas melacak semua yang terjadi dalam Wink. Namun, jika Anda ingin melacak tamu dari situs web Anda sendiri hingga penyelesaian pemesanan di Wink — dan mengatribusikan sumber lalu lintas asli dengan benar (Google Ads, kampanye email, pencarian organik, dll.) — satu langkah tambahan diperlukan di masing-masing sisi.
+
+<Aside type="caution">
+Bagian ini hanya berlaku jika Anda memasang GA4 di situs web Anda sendiri. Jika Anda tidak menjalankan GA4 di situs Anda, integrasi standar di atas sudah cukup.
+</Aside>
+
+### Mengapa Ini Penting
+
+Tanpa pelacakan lintas domain, tamu yang mengunjungi situs web Anda terlebih dahulu lalu memesan di Wink akan muncul di GA4 Anda sebagai sesi **Direct** tanpa kaitan dengan kunjungan sebelumnya. Klik Google Ads, kampanye email, atau kunjungan pencarian organik yang mengarah ke pemesanan tidak akan mendapatkan kredit.
+
+Dengan pelacakan lintas domain yang dikonfigurasi, Anda melihat perjalanan tamu secara lengkap:
+
+```
+google.com (iklan berbayar)
+       ↓
+situs web Anda (tamu melihat kamar)
+       ↓
+wink.travel (tamu memilih kamar dan memesan)
+       ↓
+pembelian diatribusikan dengan benar ke klik Google Ads asli
+```
+
+### Tindakan yang Diperlukan: Anda
+
+Konfigurasikan properti GA4 Anda untuk mengenali `wink.travel` sebagai bagian dari domain Anda sendiri, bukan sebagai rujukan eksternal. Ini memberi tahu GA4 untuk menggabungkan dua sesi menjadi satu perjalanan tamu yang berkelanjutan.
+
+<Steps>
+1. GA4 Admin → Data Streams → aliran Anda
+2. Konfigurasi pengaturan tag → **Konfigurasikan domain Anda**
+3. Tambahkan `wink.travel` sebagai domain yang terhubung
+4. Simpan
+</Steps>
+
+### Tindakan yang Diperlukan: Wink
+
+Hubungi [Wink Support](https://my.wink.travel) dan berikan domain situs web Anda (misal `yourhotel.com`). Wink akan menambahkan domain Anda ke daftar pengecualian rujukan di properti GA4 Wink. Ini mencegah situs web Anda tercatat sebagai sumber rujukan, yang jika tidak akan menimpa atribusi asli tamu dan memulai sesi baru.
+
+<Aside type="tip">
+Integrasi standar di atas sudah cukup untuk sebagian besar properti dan memberi Anda visibilitas langsung ke pemesanan dan pendapatan di Wink. Pelacakan lintas domain adalah opsi lanjutan yang layak disiapkan setelah Anda nyaman dengan data GA4 Anda dan menginginkan wawasan atribusi yang lebih mendalam.
+</Aside>

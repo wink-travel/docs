@@ -21,15 +21,15 @@ Las marcas y cadenas tienen necesidades ligeramente diferentes a una propiedad i
 
 ## Empresas de gestión
 
-Las empresas de gestión hotelera y las empresas de gestión de destinos pueden administrar sus carteras de propiedades en nombre de los propietarios. Existe una ventaja definitiva al permitir que agencias enfocadas en lo digital y con conocimiento online manejen la venta al segmento en línea, mientras los hoteles pueden concentrarse en gestionar la satisfacción del cliente una vez que llegan a las instalaciones.
+Las empresas de gestión hotelera y las empresas de gestión de destinos pueden administrar sus carteras de propiedades en nombre de los propietarios. Existe una ventaja definitiva al permitir que agencias enfocadas en lo digital y con experiencia en línea manejen la venta al segmento online, mientras los hoteles pueden concentrarse en gestionar la satisfacción del cliente una vez que llegan a las instalaciones.
 
 ## Influencers
 
-Los influencers usan Wink para monetizar mejor a su audiencia. Lo hacen asociándose con hoteles, creando ofertas personalizadas y aprovechando las herramientas sociales amigables de Wink y sus potentes análisis para rastrear qué productos se venden mejor​.
+Los influencers usan Wink para monetizar mejor a su audiencia. Lo hacen asociándose con hoteles, creando ofertas personalizadas y aprovechando las herramientas sociales de Wink y sus potentes análisis para rastrear qué productos se venden mejor​.
 
 ## Agentes de viajes
 
-Los agentes de viajes tienen acceso a inventario de viajes en todo el mundo a excelentes precios a través de nuestro portal dedicado para [agentes de viajes](https://agent.wink.travel). Pueden hacer reservas a través de nuestro portal, vía nuestra API o permitiendo que sus usuarios reserven por sí mismos en el sitio web de agentes de viajes que utiliza nuestras tecnologías.
+Los agentes de viajes tienen acceso a inventario de viajes en todo el mundo a excelentes precios a través de nuestro portal dedicado para [agentes de viajes](https://agent.wink.travel). Pueden hacer reservas a través de nuestro portal, mediante nuestra API o permitiendo que sus usuarios reserven por sí mismos en el sitio web de agentes de viajes que utiliza nuestras tecnologías.
 
 ## Corporativos
 

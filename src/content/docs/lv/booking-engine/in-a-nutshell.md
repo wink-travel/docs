@@ -16,7 +16,7 @@ Rezervēšanas dzinējs ir mūsu platformas kodols.
 
 Tā atbildības jomas ietver:
 
-- Valūtu pārvaldību un valūtas kursu atjaunināšanu.
+- Valūtu pārvaldību un valūtas kursu atjaunošanu.
 - Cenu sniedzēju nodrošināšanu ar veidu, kā mums nosūtīt cenu datus.
 - Meklēšanas datu pārvaldību. *piemēram, reģioni, valstis, galamērķi, objekti utt.*
 - Valodu pārvaldību.
@@ -24,19 +24,19 @@ Tā atbildības jomas ietver:
 - Rezervējama krājuma nodrošināšanu vēlamajā formātā, valodā un valūtā, piemēram:
     - [kopīgojams saite](/lv/studio/shareable-links) Facebook.
     - Viesnīcas galvenā lapa vietnē https://ota.wink.travel ar šīs viesnīcas krājumu.
-    - [karti](/lv/studio/cards), kas satur filiāļu krājumus.
-    - [kartes](/lv/studio/maps) jūsu [WinkLinks](/lv/link-manager/wink-links) kontā.
-    - [API izsaukumu](/lv/developers/apis) no attālinātas ceļojumu aģenta sistēmas.
-- Ceļotāju nodrošināšanu ar veidiem, kā:
+    - [karte](/lv/studio/cards) ar filiāļu krājumu.
+    - [karte](/lv/studio/maps) jūsu [WinkLinks](/lv/link-manager/wink-links) kontā.
+    - [API izsaukums](/lv/developers/apis) no attālinātas ceļojumu aģenta sistēmas.
+- Ceļotāju nodrošināšanu ar iespēju:
     - Meklēt ceļojumu krājumus.
     - Rezervēt pieejamos krājumus.
     - Pārvaldīt savas [rezervācijas un atsauksmes](/lv/booking-engine/bookings).
     - Pārvaldīt savu [nākotnes rezervējumu sarakstu](/lv/booking-engine/bucket-list).
     - Pārvaldīt savu [ceļojumu profilu](/lv/booking-engine/travel-preferences). *piemēram, alerģijas, ārkārtas kontakti utt.*
 
-Rezervēšanas dzinējs ir atkārtoti izmantojamu funkciju kopums, ko mēs nodrošinām caur https://ota.wink.travel; ļoti pielāgojama vietne viesnīcām un filiālēm, lai pārdotu savus pakalpojumus ceļotājiem.
+Rezervēšanas dzinējs ir atkārtoti izmantojamu funkciju kopums, ko mēs piedāvājam caur https://ota.wink.travel; ļoti pielāgojama vietne viesnīcām un filiālēm, lai pārdotu savus pakalpojumus ceļotājiem.
 
-Integratori, kas vēlas vēl lielāku brīvību, var izmantot visas tās pašas funkcijas caur mūsu [WordPress spraudni](/lv/integrations/wordpress/), [Web Components](/lv/integrations/web-components) un [API](/lv/developers/apis).
+Integrētāji, kas vēlas vēl lielāku brīvību, var izmantot visas tās pašas funkcijas caur mūsu [WordPress spraudni](/lv/integrations/wordpress/), [Web Components](/lv/integrations/web-components) un [API](/lv/developers/apis).
 
 Turpiniet uz nākamajām sadaļām, lai uzzinātu vairāk par to, ko rezervēšanas dzinējs piedāvā.
 

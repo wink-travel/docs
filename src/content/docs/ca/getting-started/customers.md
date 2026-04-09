@@ -13,7 +13,7 @@ Wink va començar a incorporar hotels fa una dècada. Els hotels utilitzen Wink 
 
 ## Marques i cadenes
 
-Les marques i cadenes tenen necessitats lleugerament diferents que una sola propietat. A Wink, poden:
+Les marques i cadenes tenen necessitats lleugerament diferents d’una sola propietat. A Wink, poden:
 
 - Gestionar múltiples propietats sota un únic compte.
 - Assignar gestors a les propietats.
@@ -25,7 +25,7 @@ Les empreses de gestió hotelera i les empreses de gestió de destinacions poden
 
 ## Influencers
 
-Els influencers utilitzen Wink per monetitzar millor la seva audiència. Ho fan col·laborant amb hotels, creant ofertes personalitzades i aprofitant les eines socials amigables de Wink i l’analítica potent per fer un seguiment dels productes que es venen millor​.
+Els influencers utilitzen Wink per monetitzar millor la seva audiència. Ho fan col·laborant amb hotels, creant ofertes personalitzades i aprofitant les eines socials de Wink i les potents analítiques per fer un seguiment dels productes que es venen millor​.
 
 ## Agents de viatge
 

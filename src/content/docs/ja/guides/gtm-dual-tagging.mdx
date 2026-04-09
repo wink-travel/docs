@@ -1,0 +1,676 @@
+---
+title: Sojernピクセル統合
+description: SojernアカウントをWinkに接続し、Sojernがゲストの予約経路を追跡してリターゲティングや広告キャンペーンを強化する方法。
+sidebar:
+  label: Sojernピクセル統合
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Sojernを通じて広告キャンペーンを実施している場合、WinkポータルにSojernのGTMコンテナIDを入力することで、SojernアカウントをWinkに接続できます。接続後、Sojernのトラッキングピクセルが自動的にあなたの施設で発火し、検索から予約完了までのゲストの全旅程をカバーします。
+
+<Aside type="tip">
+これは、すでに有効なSojernアカウントをお持ちで、SojernのアカウントマネージャーからGTMコンテナIDを受け取っていることが前提です。まだSojernアカウントをお持ちでない場合は、[sojern.com/contact](https://www.sojern.com/contact)から開始してください。
+</Aside>
+
+---
+
+## 必要な手順
+
+<Steps>
+
+1. **SojernからGTMコンテナIDを取得する**
+
+   Sojernのアカウントマネージャーに連絡し、**GTMコンテナID**をリクエストしてください。形式は `GTM-XXXXXXX` です。SojernピクセルIDとは異なるため、必ずGTMコンテナIDを指定して依頼してください。
+
+2. **Winkポータルに入力する**
+
+   [my.wink.travel](https://my.wink.travel)にログインし、アカウントを選択して**カスタマイズ**タブに移動します。SojernのフィールドにGTMコンテナIDを貼り付けて保存してください。これで統合が有効になります。
+
+3. **Sojernのアカウントマネージャーに確認する**
+
+   統合が有効になったことをSojernのアカウントマネージャーに伝えてください。彼らは自社側で、`wink.travel`上のあなたの施設でピクセルが正しく発火し、データがSojernアカウントに流れていることを確認できます。
+
+</Steps>
+
+<Aside type="note">
+この統合のために、ご自身のウェブサイトにピクセルコードを設置する必要はありません。Winkはあなたの施設がアクティブなすべてのページでSojernコンテナを自動的に読み込みます。
+
+この設定は任意のカスタムGTMコンテナIDで機能します。Sojernは非常に一般的な統合例として使用しています。
+</Aside>
+
+---
+
+## Wink側で行うこと
+
+透明性のために、この統合を機能させるためにWinkが設定する内容を説明します：
+
+- **Sojern GTMコンテナIDフィールド**がWinkポータルのカスタマイズタブに用意されています。コンテナIDを入力すると、Winkは形式を検証し、施設に安全に保存します。
+- **施設がアクティブなすべてのWinkページで**、Sojern GTMコンテナIDがページに埋め込まれ、Winkのタグ管理システムが自動的にSojernコンテナを自身のものと並行して動的に読み込みます。これは自動で行われ、施設ごとにWinkチームの手動操作は不要です。
+- **Sojernコンテナは非同期で読み込まれ**、ゲストのページ読み込みパフォーマンスに影響を与えません。
+- **WinkのトラッキングとSojernピクセルは並行して動作し**、同じ共有イベントデータを読み取ります。Winkが追跡するすべての予約イベントは同時にSojernコンテナでも利用可能です。
+- **施設が閲覧されていない場合**（例：ゲストが別のホテルを閲覧している場合）、Sojernコンテナは読み込まれません。これにより、Sojernは施設に関連するデータのみを受信します。
+
+---
+
+## DataLayerリファレンス
+
+Winkはゲストの旅程全体でGA4互換のイベントを`dataLayer`にプッシュします。あなたのGTMコンテナはこの共有`dataLayer`を読み取るため、設定したトリガーや変数は以下に示すすべてのプロパティにアクセスできます。
+
+各イベントは標準のGA4拡張Eコマース構造に従い、トップレベルに`event`文字列と`ecommerce`オブジェクトがあります。Winkは新しいトリガーに古いデータが混入しないよう、プッシュ前に前回のecommerceペイロードをクリアします。
+
+<Aside type="note">
+**dataLayerリセットパターン**
+
+Winkはイベントプッシュ前にecommerceオブジェクトをリセットします：
+
+```js
+dataLayer.push({ ecommerce: null });   // 前回のイベントをクリア
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+イベント間でecommerceプロパティが持続することは期待せず、必ず同一イベント内のトリガー時に読み取ってください。
+</Aside>
+
+---
+
+### 予約経路イベント
+
+これらのイベントはゲストが予約ファネルを進む際に自動的に発火します。GTMトリガーは以下のイベント名に一致する**カスタムイベント**トリガーとして設定してください。
+
+| ステップ | イベント | 発火タイミング |
+|------|-------|---------------|
+| 1 | `view_item_list` | ホテルの在庫グリッドまたはリストが読み込まれた時 |
+| 2 | `view_item` | ゲストが特定の施設ページを閲覧した時 |
+| 3 | `add_to_cart` | ゲストが部屋をカートに追加した時 |
+| 4 | `begin_checkout` | チェックアウト／支払いページが読み込まれた時 |
+| 5 | `add_payment_info` | ゲストが支払い方法を選択した時 |
+| 6 | `login` | ゲストがSSOで認証した時 |
+| 7 | `purchase` | 予約が確定した時 |
+| 8 | `refund` | 予約がキャンセルされた時 |
+
+---
+
+#### `view_item_list`
+
+ホテルの在庫グリッドまたはリストが表示された時に発火。
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+ゲストが特定の施設を閲覧した時に発火。
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+ゲストが部屋をカートに追加した時に発火。
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+チェックアウト／支払いページが読み込まれた時に発火。
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon`は割引コードが適用された場合のみ含まれます。
+
+---
+
+#### `add_payment_info`
+
+ゲストが支払い方法を選択または確認した時に発火。
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type`は支払い取得者のタイプから設定されます。`coupon`は割引コードが適用された場合のみ含まれます。
+
+---
+
+#### `login`
+
+ゲストがシングルサインオンで認証した時に発火。
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+予約が確定した時に発火。
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id`は予約契約の一意識別子です。`coupon`、`shipping`、`tax`は該当時のみ含まれます。
+
+---
+
+#### `refund`
+
+予約がキャンセルされた時に発火。
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id`は同一予約の`purchase`イベントと一致します。`coupon`、`shipping`、`tax`は該当時のみ含まれます。
+
+---
+
+### アイテムプロパティ
+
+`items`配列を含むすべてのイベントは同じアイテムスキーマを共有します。すべてのプロパティは任意ですが、必須と明記されたものは必須です。
+
+#### 標準GA4フィールド
+
+これらのフィールドはGA4にネイティブに認識され、追加設定なしに標準Eコマースレポートに表示されます。
+
+| プロパティ | 型 | 必須 | 説明 |
+|----------|------|----------|-------------|
+| `item_id` | string | はい | 部屋または商品の一意識別子 |
+| `item_name` | string | — | 部屋または商品の名称 |
+| `affiliation` | string | — | アフィリエイトまたは販売者名 |
+| `coupon` | string | — | アイテムに適用されたクーポンコード |
+| `currency` | string | — | ISO 4217通貨コード（例：`USD`） |
+| `creative_name` | string | — | プロモーションで使用されたクリエイティブ名 |
+| `creative_slot` | string | — | プロモーションクリエイティブのスロット位置 |
+| `discount` | number | — | 適用された割引額 |
+| `index` | number | — | リスト内の位置（1始まり） |
+| `item_brand` | string | — | ホテルまたはブランド名 |
+| `item_category` | string | — | 商品タイプ（例：`GUEST_ROOM`、`ACTIVITY`、`ATTRACTION`、`MEETING_ROOM`、`RESTAURANT`、`SPA`） |
+| `item_list_id` | string | — | このアイテムが属するリストの識別子 |
+| `item_list_name` | string | — | リストの表示名 |
+| `location_id` | string | — | 施設の地理座標 |
+| `price` | number | — | 単価 |
+| `promotion_id` | string | — | プロモーションの識別子 |
+| `promotion_name` | string | — | プロモーションの表示名 |
+| `quantity` | number | — | 数量（デフォルトは`1`） |
+
+#### カスタムアイテムスコープパラメータ
+
+これらのパラメータはWink固有の予約コンテキストを持ちます。GA4はこれらを自動的にレポートに表示しないため、探索や標準レポートに表示するにはGA4プロパティで**アイテムスコープのカスタムディメンション**として登録する必要があります。設定方法は以下の[GA4のカスタムディメンション](#custom-dimensions-in-ga4)を参照してください。
+
+| プロパティ | 型 | 説明 |
+|----------|------|-------------|
+| `property_id` | string | Wink施設識別子 |
+| `property_name` | string | 施設表示名 |
+| `property_brand` | string | 施設が属するブランド |
+| `property_chain` | string | 施設が属するチェーン |
+| `city_name` | string | 施設所在地の都市名 |
+| `country_code` | string | ISO 3166-1 alpha-2国コード |
+| `start_date` | string | チェックイン日（`YYYY-MM-DD`形式） |
+| `end_date` | string | チェックアウト日（`YYYY-MM-DD`形式） |
+| `num_adults` | number | 予約の大人人数 |
+| `num_children` | number | 予約の子供人数 |
+| `cancellation_policy` | string | 以下のいずれか：`Refundable`、`Non-Refundable`、`Refundable-With-Restrictions`、`Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | レートプラン識別子 |
+| `room_rate_id` | string | 特定の部屋レート識別子 |
+| `room_rate_name` | string | 部屋レートの表示名 |
+| `num_perks` | number | レートに含まれる特典数 |
+| `room_location` | string | 部屋の位置説明（例：`Overwater`、`Garden`） |
+| `room_view` | string | 部屋の眺望説明（例：`Ocean`、`City`） |
+| `room_classification` | string | 部屋の分類またはランク（例：`Suite`、`Standard`） |
+
+---
+
+### GA4のカスタムディメンション
+
+GA4はカスタムアイテムパラメータを、明示的にアイテムスコープのカスタムディメンションとして登録しない限りレポートに反映しません。使用したいパラメータのみ登録すればよく、18個すべてを登録する必要はありません。
+
+<Steps>
+
+1. **カスタム定義を開く**
+
+   GA4で、**管理**（左下の歯車アイコン）→対象プロパティを選択→**データ表示**→**カスタム定義**に進みます。
+
+2. **新しいカスタムディメンションを作成**
+
+   **カスタムディメンションを作成**をクリックします。
+
+3. **ディメンションの詳細を入力**
+
+   - **ディメンション名** — GA4レポートに表示される人間が読めるラベル（下表参照）
+   - **スコープ** — **アイテム**を選択
+   - **イベントパラメータ** — dataLayerに現れる正確なパラメータ名（下表参照）
+   - **説明** — 任意ですが推奨
+
+4. **保存して繰り返す**
+
+   **保存**をクリックし、追跡したいパラメータごとに繰り返します。
+
+</Steps>
+
+<Aside type="note">
+カスタムディメンションは登録後、GA4レポートに反映されるまで最大24時間かかる場合があります。登録前に収集された履歴データは遡って反映されません。
+
+GA4の標準プロパティでは1プロパティあたり最大50個のアイテムスコープカスタムディメンションを設定可能です（360プロパティはさらに多く設定可能）。
+</Aside>
+
+カスタムディメンション作成時の参照用テーブルです。**イベントパラメータ**は大文字小文字を区別し、正確に一致させてください。
+
+| ディメンション名 | イベントパラメータ | 型 |
+|----------------|-----------------|------|
+| 施設ID | `property_id` | テキスト |
+| 施設名 | `property_name` | テキスト |
+| 施設ブランド | `property_brand` | テキスト |
+| 施設チェーン | `property_chain` | テキスト |
+| 都市名 | `city_name` | テキスト |
+| 国コード | `country_code` | テキスト |
+| チェックイン日 | `start_date` | テキスト |
+| チェックアウト日 | `end_date` | テキスト |
+| 大人の人数 | `num_adults` | 数値 |
+| 子供の人数 | `num_children` | 数値 |
+| キャンセルポリシー | `cancellation_policy` | テキスト |
+| レートプランID | `rate_plan_id` | テキスト |
+| 部屋レートID | `room_rate_id` | テキスト |
+| 部屋レート名 | `room_rate_name` | テキスト |
+| 特典数 | `num_perks` | 数値 |
+| 部屋の位置 | `room_location` | テキスト |
+| 部屋の眺望 | `room_view` | テキスト |
+| 部屋の分類 | `room_classification` | テキスト |
+
+---
+
+### 利用可能な追加イベント
+
+以下のイベントはWinkのdataLayerに存在しますが、標準の予約ファネルには含まれません。プラットフォーム上の他の操作で発火する可能性があります。
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+このイベントには`ecommerce`ペイロードは含まれません。
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+これはWink独自のカスタムイベントで、標準のGA4イベントセットには含まれません。すべてのページ遷移でプッシュされ、デバイスやセッションのコンテキストを持ちます。`ecommerce`オブジェクトは含みません。
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| プロパティ | 説明 |
+|----------|-------------|
+| `device` | 検出されたデバイスタイプ — `Desktop`、`Android`、`iPhone`、`iPad`など |
+| `deviceAgent` | 生のユーザーエージェント文字列 |
+| `os` | 検出されたOS — `Windows`、`MacOS`、`Linux`、`UNIX` |
+| `path` | 現在のページパス |
+| `title` | 現在のページタイトル |
+| `userId` | 認証済みユーザー識別子（未ログイン時は省略） |
+| `startDate` | 現在の検索セッションのチェックイン日 |
+| `endDate` | 現在の検索セッションのチェックアウト日 |
+| `guests` | 現在の検索セッションのゲスト数 |
+| `rooms` | 現在の検索セッションの部屋数 |

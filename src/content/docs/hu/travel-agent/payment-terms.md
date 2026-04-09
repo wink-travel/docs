@@ -10,24 +10,24 @@ Utolsó frissítés: 2024-10-30
 :::
 
 :::caution[Figyelem]
-Az alábbi fizetési feltételek azoknak az utazási ügynököknek érvényesek, akik saját maguk kívánják megszerezni és kifizetni a pénzeszközöket.  
-Ez csak az API-nkon keresztül lehetséges, és csak azok az utazási ügynökök használhatják, akik a regisztráció során jelezték ezt a szándékukat.
+Az alábbi fizetési feltételek azokra az utazási ügynökökre vonatkoznak, akik saját maguk kívánják megszerezni és kifizetni a pénzeszközöket.  
+Ez csak az API-nkon keresztül lehetséges, és csak azok az utazási ügynökök használhatják, akik a regisztráció során jelezték, hogy ezt szeretnék.
 
-Minden utazási ügynök továbbra is foglalhat a Wink utazási ügynök portálján keresztül, a Wink fizetési átjáróját használva saját vagy az utazó hitelkártyájával. Ezért minden utazási ügynöknek el kell fogadnia azokat a fizetési feltételeket, ahol a Wink fizetési átjáró a kereskedői nyilvántartásban szereplő fél.
+Minden utazási ügynök továbbra is foglalhat a Wink utazási ügynök portálján keresztül, a Wink fizetési átjáróját használva saját vagy az utazó hitelkártyájával. Ezért minden utazási ügynöknek el kell fogadnia azokat a fizetési feltételeket is, ahol a Wink fizetési átjáró a kereskedői nyilvántartásban szerepel.
 
 Ezek a feltételek elérhetők az [Affiliate Portal > Payment Terms](/hu/studio/payment-terms) alatt.
 :::
 
 **WINK FIZETÉSI FELTÉTELEK**  
-**UTAZÁSI ÜGYNÖKÖK SZÁMÁRA (Kereskedői Nyilvántartásban Szereplő Fél)**
+**UTAZÁSI ÜGYNÖKÖK SZÁMÁRA (Kereskedői Nyilvántartás)**
 
 Ezek a Szolgáltatási Fizetési Feltételek („Fizetési Feltételek”) kötelező érvényű jogi megállapodást képeznek, amely a "UTAZÁSI ÜGYNÖKÖK ÁLTALÁNOS SZERZŐDÉSI FELTÉTELEI" („Fő Megállapodás”) keretében létrejött szerződéses viszony részét képezik.
 
 **FELEK:**
 
-1. **Winkfluence**, egy Szingapúr törvényei szerint bejegyzett társaság, székhelye: #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, adószám: 201437335D (a továbbiakban: "Wink") és  
+1. **Winkfluence**, egy Szingapúr törvényei szerint bejegyzett vállalat, székhelye: #03-01 Wilkie Edge 8 Wilkie Road Singapore 228095, adószám: 201437335D (a továbbiakban: „Wink”), és  
      
-2. **AZ UTAZÁSI ÜGYNÖK**, akinek adatai az Utazási Ügynök Regisztrációs Űrlapon szerepelnek vagy online lettek benyújtva (a „Utazási Ügynök”).
+2. **AZ UTAZÁSI ÜGYNÖK**, akinek adatai az Utazási Ügynök Regisztrációs Űrlapon szerepelnek vagy online lettek benyújtva („Utazási Ügynök”).
 
 A Fő Megállapodásban meghatározott definíciók és feltételek érvényesek ezekre a Fizetési Feltételekre, hacsak itt másként nincs meghatározva.
 
@@ -80,18 +80,18 @@ Részösszeg = 1,000 - 15 = 985
 
 * Pontos és időben történő havi számlák kiállítása a Foglalási Díjakról a 3.1 pont szerint.  
 * Folyamatos hozzáférést biztosítani az Utazási Ügynök számára a Wink platformhoz a foglalások feldolgozásához és a fizetések kezeléséhez.  
-* Segíteni az Utazási Ügynököt a fizetésekkel kapcsolatos viták rendezésében, szükség esetén biztosítva a tranzakciós adatokat és támogatást.
+* Segíteni az Utazási Ügynököt a fizetésekkel kapcsolatos viták rendezésében a szükséges tranzakciós adatok és támogatás biztosításával.
 
 **5\. Devizaátváltás**
 
-Amennyiben devizaátváltásra van szükség, azt a fizetési feldolgozó szolgáltatás által biztosított árfolyamon hajtják végre. A devizaátváltással kapcsolatos költségek az Utazási Ügynököt terhelik.
+Amennyiben devizaátváltásra van szükség, az a fizetési feldolgozó szolgáltatás által biztosított árfolyamon történik. A devizaátváltással kapcsolatos költségek az Utazási Ügynököt terhelik.
 
 **6\. Viták Rendezése**
 
 Az ebből a Fizetési Feltételekből eredő vagy azzal kapcsolatos vitákat a Fő Megállapodásban meghatározott vitakezelési eljárások szerint kell rendezni, biztosítva a Wink és az Utazási Ügynök közötti egységes és következetes konfliktuskezelést.
 
 **7\. Feltételek Módosítása**  
-A Wink jogosult ezen Fizetési Feltételeket bármikor módosítani. A változásokat legalább 30 nappal a hatálybalépés előtt közli az Utazási Ügynökkel. A Wink platform használatának folytatása a hatálybalépés után a módosított feltételek elfogadását jelenti.
+A Wink fenntartja a jogot ezen Fizetési Feltételek bármikor történő módosítására. A változásokat legalább 30 nappal a hatálybalépés előtt közli az Utazási Ügynökkel. A Wink platform további használata a módosított feltételek elfogadását jelenti.
 
 **8\. Irányadó Jog és Joghatóság**  
 Ezek a Fizetési Feltételek Szingapúr jogszabályai szerint értelmezendők. Az ebből eredő vagy azzal kapcsolatos vitákat Szingapúr bíróságai előtt kell rendezni.

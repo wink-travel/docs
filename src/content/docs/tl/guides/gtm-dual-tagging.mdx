@@ -1,0 +1,676 @@
+---
+title: Sojern Pixel Integration
+description: Paano ikonekta ang iyong Sojern account sa Wink upang masubaybayan ng Sojern ang booking journey ng iyong mga bisita at mapagana ang iyong mga retargeting at advertising campaign.
+sidebar:
+  label: Sojern Pixel Integration
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Kung nagpapatakbo ka ng mga advertising campaign sa pamamagitan ng Sojern, maaari mong ikonekta ang iyong Sojern account sa Wink sa pamamagitan ng pagpasok ng iyong Sojern GTM Container ID sa Wink portal. Kapag nakakonekta na, awtomatikong magfi-fire ang tracking pixel ng Sojern para sa iyong property — na sumasaklaw sa buong guest journey mula sa paghahanap hanggang sa kumpletong booking.
+
+<Aside type="tip">
+Ipinapalagay nito na mayroon ka nang aktibong Sojern account at natanggap mo na ang iyong GTM Container ID mula sa iyong Sojern account manager. Kung wala ka pang Sojern account, bisitahin ang [sojern.com/contact](https://www.sojern.com/contact) upang makapagsimula.
+</Aside>
+
+---
+
+## Ano ang Kailangan Mong Gawin
+
+<Steps>
+
+1. **Kunin ang Iyong GTM Container ID mula sa Sojern**
+
+   Makipag-ugnayan sa iyong Sojern account manager at hilingin ang iyong **GTM Container ID**. Ito ay sumusunod sa format na `GTM-XXXXXXX`. Iba ito sa iyong Sojern Pixel ID — siguraduhing hilingin nang partikular ang GTM Container ID.
+
+2. **Ilagay Ito sa Wink Portal**
+
+   Mag-log in sa [my.wink.travel](https://my.wink.travel), piliin ang iyong account, at pumunta sa tab na **Customizations**. I-paste ang iyong Sojern GTM Container ID sa field ng Sojern at i-save. Live na ang iyong integration.
+
+3. **Kumpirmahin sa Iyong Sojern Account Manager**
+
+   Ipabatid sa iyong Sojern account manager na aktibo na ang integration. Maaari nilang beripikahin mula sa kanilang panig na tama ang pag-fire ng pixel sa `wink.travel` para sa iyong property at na dumadaloy ang data sa iyong Sojern account.
+
+</Steps>
+
+<Aside type="note">
+Hindi mo kailangang maglagay ng anumang pixel code sa iyong sariling website para sa integration na ito. Awtomatikong niloload ng Wink ang iyong Sojern container sa lahat ng pahina kung saan aktibo ang iyong property.
+
+Gumagana ang konfigurasyong ito para sa anumang custom GTM Container ID. Ginamit lang namin ang Sojern bilang halimbawa dahil ito ay isang karaniwang integration.
+</Aside>
+
+---
+
+## Ano ang Ginagawa ng Wink sa Aming Panig
+
+Para sa transparency, narito ang mga kinokontrol ng Wink upang gumana ang integration na ito:
+
+- **Isang Sojern GTM Container ID field** ang makikita sa tab na Customizations ng iyong Wink portal. Kapag inilagay mo ang iyong Container ID, sine-secure ng Wink ang format at iniimbak ito nang ligtas para sa iyong property.
+- **Sa bawat pahina kung saan aktibo ang iyong property** sa Wink, inilalagay ang iyong Sojern GTM Container ID sa pahina at awtomatikong niloload ng tag management system ng Wink ang iyong Sojern container kasabay ng sarili nitong mga tag. Nangyayari ito nang awtomatiko — walang manu-manong hakbang na kailangan mula sa koponan ng Wink para sa bawat property.
+- **Ang iyong Sojern container ay niloload nang asynchronous**, ibig sabihin hindi nito naaapektuhan ang performance ng pag-load ng pahina para sa iyong mga bisita.
+- **Ang sariling tracking ng Wink at ang Sojern pixel mo ay tumatakbo nang sabay**, na nagbabasa mula sa parehong shared event data. Ang bawat booking event na sinusubaybayan ng Wink ay sabay na available sa iyong Sojern container.
+- **Kapag hindi tinitingnan ang iyong property** — halimbawa, kapag nagba-browse ang bisita sa ibang hotel sa Wink — hindi niloload ang iyong Sojern container. Tinitiyak nito na ang Sojern ay tumatanggap lamang ng data na may kaugnayan sa iyong property.
+
+---
+
+## DataLayer Reference
+
+Nagpu-push ang Wink ng mga GA4-compatible na event sa `dataLayer` sa buong guest journey. Binabasa ng iyong GTM container ang parehong shared `dataLayer`, kaya anumang trigger o variable na i-configure mo ay may access sa lahat ng properties na inilalarawan sa ibaba.
+
+Ang bawat event ay sumusunod sa standard GA4 Enhanced Ecommerce structure: isang top-level na string na `event` at isang `ecommerce` object. Bago ang bawat push, nililinis ng Wink ang naunang ecommerce payload upang maiwasan ang lumang data na mapasok sa mga bagong trigger.
+
+<Aside type="note">
+**pattern ng dataLayer reset**
+
+Irinereset ng Wink ang ecommerce object bago ang bawat event push:
+
+```js
+dataLayer.push({ ecommerce: null });   // linisin ang naunang event
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Huwag umasa na mananatili ang ecommerce properties sa pagitan ng mga event. Laging basahin ang mga ito sa oras ng trigger sa loob ng parehong event.
+</Aside>
+
+---
+
+### Mga Booking Journey Events
+
+Awtomatikong nagfi-fire ang mga event na ito habang gumagalaw ang bisita sa booking funnel. I-configure ang iyong mga GTM trigger bilang **Custom Event** triggers na tumutugma sa mga pangalan ng event sa ibaba.
+
+| Hakbang | Event | Kailan Ito Nagfi-fire |
+|------|-------|---------------|
+| 1 | `view_item_list` | Naglo-load ang hotel inventory grid o listahan |
+| 2 | `view_item` | Tinitingnan ng bisita ang isang partikular na pahina ng property |
+| 3 | `add_to_cart` | Nagdagdag ang bisita ng kuwarto sa shopping cart |
+| 4 | `begin_checkout` | Naglo-load ang checkout / payment page |
+| 5 | `add_payment_info` | Pinipili ng bisita ang paraan ng pagbabayad |
+| 6 | `login` | Nag-authenticate ang bisita gamit ang SSO |
+| 7 | `purchase` | Nakumpirma ang booking |
+| 8 | `refund` | Nakansela ang booking |
+
+---
+
+#### `view_item_list`
+
+Nagfi-fire kapag na-render ang hotel inventory grid o listahan.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Nagfi-fire kapag tinitingnan ng bisita ang isang partikular na property.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Nagfi-fire kapag nagdagdag ang bisita ng kuwarto sa kanilang cart.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Nagfi-fire kapag naglo-load ang checkout / payment page.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` ay naroroon lamang kapag may inilapat na discount code.
+
+---
+
+#### `add_payment_info`
+
+Nagfi-fire kapag pinili o kinumpirma ng bisita ang paraan ng pagbabayad.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+Ang `payment_type` ay pinupuno mula sa uri ng payment acquirer. Ang `coupon` ay naroroon lamang kapag may inilapat na discount code.
+
+---
+
+#### `login`
+
+Nagfi-fire kapag nag-authenticate ang bisita gamit ang single sign-on.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Nagfi-fire kapag nakumpirma ang booking.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+Ang `transaction_id` ay ang natatanging booking contract identifier. Ang `coupon`, `shipping`, at `tax` ay naroroon lamang kapag naaangkop.
+
+---
+
+#### `refund`
+
+Nagfi-fire kapag nakansela ang booking.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+Ang `transaction_id` ay tumutugma sa `purchase` event para sa parehong booking. Ang `coupon`, `shipping`, at `tax` ay naroroon lamang kapag naaangkop.
+
+---
+
+### Mga Katangian ng Item
+
+Lahat ng event na may kasamang `items` array ay gumagamit ng parehong item schema. Ang bawat property ay opsyonal maliban kung nakasaad na required.
+
+#### Standard GA4 fields
+
+Ang mga field na ito ay natural na nauunawaan ng GA4 at lumalabas sa mga standard ecommerce report nang walang karagdagang konfigurasyon.
+
+| Property | Uri | Required | Paglalarawan |
+|----------|------|----------|-------------|
+| `item_id` | string | Oo | Natatanging identifier para sa kuwarto o produkto |
+| `item_name` | string | — | Pangalan ng kuwarto o produkto |
+| `affiliation` | string | — | Pangalan ng affiliate o nagbebenta |
+| `coupon` | string | — | Coupon code na inilapat sa item |
+| `currency` | string | — | ISO 4217 currency code (hal. `USD`) |
+| `creative_name` | string | — | Pangalan ng creative na ginamit sa promosyon |
+| `creative_slot` | string | — | Posisyon ng slot ng creative sa promosyon |
+| `discount` | number | — | Halaga ng diskwento na inilapat |
+| `index` | number | — | Posisyon sa listahan (1-based) |
+| `item_brand` | string | — | Pangalan ng hotel o brand |
+| `item_category` | string | — | Uri ng produkto — hal. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | Identifier ng listahan kung saan kabilang ang item |
+| `item_list_name` | string | — | Pangalan ng listahan na ipinapakita |
+| `location_id` | string | — | Geo-coordinates ng property |
+| `price` | number | — | Presyo ng unit |
+| `promotion_id` | string | — | Identifier ng promosyon |
+| `promotion_name` | string | — | Pangalan ng promosyon na ipinapakita |
+| `quantity` | number | — | Dami (default ay `1`) |
+
+#### Custom item-scoped parameters
+
+Ang mga parameter na ito ay nagdadala ng Wink-specific booking context. Hindi awtomatikong lumalabas ang mga ito sa GA4 reports — kailangan mong irehistro ang bawat isa bilang isang **item-scoped custom dimension** sa iyong GA4 property bago ito lumabas sa explorations o standard reports. Tingnan ang [Custom Dimensions in GA4](#custom-dimensions-in-ga4) sa ibaba para sa mga tagubilin sa setup.
+
+| Property | Uri | Paglalarawan |
+|----------|------|-------------|
+| `property_id` | string | Wink property identifier |
+| `property_name` | string | Pangalan ng property na ipinapakita |
+| `property_brand` | string | Brand kung saan kabilang ang property |
+| `property_chain` | string | Chain kung saan kabilang ang property |
+| `city_name` | string | Lungsod kung saan matatagpuan ang property |
+| `country_code` | string | ISO 3166-1 alpha-2 country code |
+| `start_date` | string | Petsa ng check-in sa format na `YYYY-MM-DD` |
+| `end_date` | string | Petsa ng check-out sa format na `YYYY-MM-DD` |
+| `num_adults` | number | Bilang ng mga adulto sa booking |
+| `num_children` | number | Bilang ng mga bata sa booking |
+| `cancellation_policy` | string | Isa sa: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Identifier ng rate plan |
+| `room_rate_id` | string | Identifier ng partikular na room rate |
+| `room_rate_name` | string | Pangalan ng room rate na ipinapakita |
+| `num_perks` | number | Bilang ng perks na kasama sa rate |
+| `room_location` | string | Deskripsyon ng lokasyon ng kuwarto (hal. `Overwater`, `Garden`) |
+| `room_view` | string | Deskripsyon ng view ng kuwarto (hal. `Ocean`, `City`) |
+| `room_classification` | string | Klasipikasyon o tier ng kuwarto (hal. `Suite`, `Standard`) |
+
+---
+
+### Custom Dimensions sa GA4
+
+Hindi pinapansin ng GA4 ang custom item parameters sa mga report hangga't hindi mo ito inirehistro bilang item-scoped custom dimensions. Kailangan mo lang irehistro ang mga parameter na balak mong gamitin sa mga report — hindi mo kailangang irehistro lahat ng 18.
+
+<Steps>
+
+1. **Buksan ang Custom Definitions**
+
+   Sa GA4, pumunta sa **Admin** (gear icon sa ibaba-kaliwa) → piliin ang iyong property → **Data display** → **Custom definitions**.
+
+2. **Gumawa ng bagong custom dimension**
+
+   I-click ang **Create custom dimensions**.
+
+3. **Punan ang detalye ng dimension**
+
+   - **Dimension name** — ang madaling basahin na label na lalabas sa GA4 reports (tingnan ang talahanayan sa ibaba)
+   - **Scope** — piliin ang **Item**
+   - **Event parameter** — ang eksaktong pangalan ng parameter gaya ng lumalabas sa dataLayer (tingnan ang talahanayan sa ibaba)
+   - **Description** — opsyonal ngunit inirerekomenda
+
+4. **I-save at ulitin**
+
+   I-click ang **Save**, pagkatapos ay ulitin para sa bawat parameter na nais mong subaybayan.
+
+</Steps>
+
+<Aside type="note">
+Maaaring tumagal ng hanggang 24 na oras bago lumabas ang custom dimensions sa GA4 reports pagkatapos ng pagrehistro. Hindi naibabalik ang historical data na nakolekta bago ang pagrehistro.
+
+Pinapayagan ng GA4 hanggang 50 item-scoped custom dimensions bawat property sa standard properties (mas marami para sa 360 properties).
+</Aside>
+
+Gamitin ang sumusunod na talahanayan bilang sanggunian kapag gumagawa ng custom dimensions. Dapat eksaktong tumugma ang **Event parameter** value — case-sensitive ang GA4.
+
+| Pangalan ng Dimension | Event parameter | Uri |
+|----------------|-----------------|------|
+| Property ID | `property_id` | Text |
+| Pangalan ng Property | `property_name` | Text |
+| Brand ng Property | `property_brand` | Text |
+| Chain ng Property | `property_chain` | Text |
+| Pangalan ng Lungsod | `city_name` | Text |
+| Country code | `country_code` | Text |
+| Petsa ng Check-in | `start_date` | Text |
+| Petsa ng Check-out | `end_date` | Text |
+| Bilang ng mga Adulto | `num_adults` | Number |
+| Bilang ng mga Bata | `num_children` | Number |
+| Patakaran sa Kanselasyon | `cancellation_policy` | Text |
+| Rate plan ID | `rate_plan_id` | Text |
+| Room rate ID | `room_rate_id` | Text |
+| Pangalan ng Room rate | `room_rate_name` | Text |
+| Bilang ng mga Perks | `num_perks` | Number |
+| Lokasyon ng Kwarto | `room_location` | Text |
+| View ng Kwarto | `room_view` | Text |
+| Klasipikasyon ng Kwarto | `room_classification` | Text |
+
+---
+
+### Karagdagang Available na Mga Event
+
+Ang mga sumusunod na event ay available sa Wink dataLayer ngunit hindi bahagi ng standard booking funnel. Maaaring mag-fire ang mga ito mula sa iba pang interaksyon sa platform.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Walang `ecommerce` payload na kasama sa event na ito.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Ito ay isang custom Wink event — hindi bahagi ng standard GA4 event set. Pinupush ito sa bawat page navigation at nagdadala ng device at session context. Hindi ito naglalaman ng `ecommerce` object.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Property | Paglalarawan |
+|----------|-------------|
+| `device` | Natukoy na uri ng device — `Desktop`, `Android`, `iPhone`, `iPad`, o katulad |
+| `deviceAgent` | Raw user agent string |
+| `os` | Natukoy na operating system — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Kasalukuyang path ng pahina |
+| `title` | Kasalukuyang pamagat ng pahina |
+| `userId` | Identifier ng authenticated user (hindi kasama kapag hindi naka-log in) |
+| `startDate` | Petsa ng check-in mula sa kasalukuyang search session |
+| `endDate` | Petsa ng check-out mula sa kasalukuyang search session |
+| `guests` | Bilang ng mga bisita mula sa kasalukuyang search session |
+| `rooms` | Bilang ng mga kuwarto mula sa kasalukuyang search session |

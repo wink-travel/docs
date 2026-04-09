@@ -21,15 +21,15 @@ Dessa villkor finns tillgängliga under [Affiliate Portal > Payment Terms](/sv/s
 **WINK BETALNINGSVILLKOR**  
 **FÖR RESEBYRÅER (Registrerad säljare)**
 
-Dessa Betalningsvillkor (“Betalningsvillkor”) är ett bindande juridiskt avtal som utgör en del av det kontraktsförhållande som upprättas enligt "TERMS & CONDITIONS TRAVEL AGENTS" (“Huvudavtalet”).
+Dessa Betalningsvillkor (“Betalningsvillkor”) är ett bindande juridiskt avtal som utgör en del av det kontraktsförhållande som upprättats enligt "TERMS & CONDITIONS TRAVEL AGENTS" (“Huvudavtalet”).
 
 **MELLAN:**
 
-1. **Winkfluence**, ett företag registrerat enligt Singapores lagar med registrerat kontor på \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 och momsregistreringsnummer 201437335D (hädanefter kallat "Wink") och  
+1. **Winkfluence**, ett företag registrerat enligt Singapores lagar med sitt registrerade kontor på \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 och med VAT-registreringsnummer 201437335D (hädanefter kallat "Wink") och  
      
 2. **RESEBYRÅN** vars uppgifter anges i resebyråns registreringsformulär eller har skickats in online (”Resebyrån”).
 
-Definitioner och villkor som fastställs i Huvudavtalet gäller för dessa Betalningsvillkor om inte annat anges här.
+Definitionerna och villkoren i Huvudavtalet gäller för dessa Betalningsvillkor om inte annat anges här.
 
 **1\. Definitioner**
 
@@ -41,46 +41,46 @@ Som definierat i huvudavtalet "TERMS & CONDITIONS TRAVEL AGENTS" ("Huvudavtalet"
 * "Bokningsvärde"  
 * "Provision"  
 * "Nettobetalning"  
-* "Separat Avtal"
+* "Separat avtal"
 
 
-**2\. Betalningsinsamling och -fördelning**
+**2\. Betalningsinsamling och distribution**
 
 2.1 **Betalningsinsamling:** Resebyrån ansvarar för att samla in betalning från Gästen vid bokningstillfället. Detta säkerställer omedelbar hantering och ekonomisk tydlighet.
 
 2.2 **Avgiftsavdrag:** Resebyrån ska först dra av Serviceleverantörens avgift och sedan dra av sin provision för delbeloppet enligt exemplet nedan:
 
 * 1,5 % bokningsavgift för Wink.  
-* Resebyråns provision enligt det Separata Avtalet (vi använder 10 % i detta exempel)
+* Resebyråns provision enligt det Separata avtalet (vi använder 10 % i detta exempel)
 
 Bokningsvärde USD 1 000  
 Wink-avgift (1,5 %) = USD 15  
-Delsumma = 1 000 – 15 = 985
+Delbelopp = 1 000 – 15 = 985
 
-2.3 **Nettobetalning till boendeleverantörer:** Resebyrån ansvarar för att betala Nettobetalningen till Boendeleverantören enligt villkoren i det Separata Avtalet mellan Resebyrån och Boendeleverantören. Wink är inte ansvarigt för att göra några betalningar till Boendeleverantören.
+2.3 **Nettobetalning till boendeleverantörer:** Resebyrån ansvarar för att betala Nettobetalningen till Boendeleverantören enligt villkoren i det Separata avtalet mellan Resebyrån och Boendeleverantören. Wink är inte ansvarigt för att göra några betalningar till Boendeleverantören.
 
 **3\. Fakturering och betalning**
 
-3.1 **Månadsfakturering:** Wink kommer att utfärda en korrekt och noggrann månadsfaktura till Resebyrån för de bokningsavgifter som ackumulerats under föregående månad. Resebyrån är skyldig att reglera denna faktura inom de betalningsvillkor som anges på fakturan.
+3.1 **Månadsfakturering:** Wink kommer att utfärda en korrekt och noggrann månadsfaktura till Resebyrån för de bokningsavgifter som ackumulerats under föregående månad. Resebyrån är skyldig att betala denna faktura inom de betalningsvillkor som anges på fakturan.
 
 3.2 **Betalningsmetod:** Betalningar till Wink ska göras via den betalningsmetod som anges på fakturan. Eventuella kostnader förknippade med betalningstransaktionen är Resebyråns ansvar.
 
-3.3 **Försenade betalningar:** Vid försenad betalning förbehåller sig Wink rätten att ta ut ränta på det förfallna beloppet med en räntesats på 5 % per månad eller den högsta räntesats som lagen tillåter, beroende på vilken som är lägre. Om Resebyrån dessutom är sen med betalning till Boendeleverantören enligt villkoren i det Separata Avtalet, förbehåller sig Wink rätten att stänga av tillgången till tjänsten tills alla utestående betalningar till både Wink och Boendeleverantören är reglerade. Om det däremot finns fel eller misstag i fakturan från Wink, ska Resebyrån endast betala den korrekta och riktiga delen av fakturan och ska inte belastas med någon ränta eller påföljd för att inte ha betalat den felaktiga delen av fakturan.
+3.3 **Försenade betalningar:** Vid försenad betalning förbehåller sig Wink rätten att ta ut ränta på det förfallna beloppet med en räntesats på 5 % per månad eller den högsta räntesats som lagen tillåter, beroende på vilken som är lägre. Om Resebyrån dessutom är sen med betalning till Boendeleverantören enligt villkoren i det Separata avtalet, förbehåller sig Wink rätten att stänga av tillgången till tjänsten tills alla utestående betalningar till både Wink och Boendeleverantören är reglerade. Om det finns fel eller misstag i fakturan från Wink, ska Resebyrån endast betala den korrekta och riktiga delen av fakturan och ska inte belastas med någon ränta eller påföljd för att inte ha betalat den felaktiga delen.
 
 **4\. Roller och ansvar**
 
 4.1 **Resebyråns ansvar:**
 
 * Säkerställa att betalningar från Gäster samlas in i tid enligt villkoren i avsnitt 2.1.  
-* Dra av korrekt bokningsavgift och provision innan Nettobetalningen överförs till Boendeleverantörer enligt det Separata Avtalet.  
-* Betala Wink’s fakturor för bokningsavgifter snabbt inom de villkor som anges i avsnitt 3.1.  
-* Aktivt hantera och lösa eventuella tvister relaterade till bokningar eller betalningar, och säkerställa kommunikation med Wink för att effektivt lösa problem.
+* Dra av korrekt bokningsavgift och provision innan Nettobetalningen överförs till Boendeleverantörer enligt det Separata avtalet.  
+* Betala Winks fakturor för bokningsavgifter snabbt inom de villkor som anges i avsnitt 3.1.  
+* Aktivt hantera och lösa eventuella tvister relaterade till bokningar eller betalningar, och säkerställa att kommunikationen med Wink upprätthålls för att lösa problem effektivt.
 
 4.2 **Winks ansvar:**
 
 * Utfärda korrekta och tidsenliga månadsfakturor för bokningsavgifter enligt avsnitt 3.1.  
 * Ge Resebyrån kontinuerlig tillgång till Wink-plattformen för att hantera bokningar och betalningar.  
-* Assistera Resebyrån vid tvister relaterade till betalningar genom att tillhandahålla nödvändiga transaktionsdata och stöd vid behov.
+* Assistera Resebyrån med att lösa tvister relaterade till betalningar genom att tillhandahålla nödvändiga transaktionsdata och stöd vid behov.
 
 **5\. Valutakonvertering**
 

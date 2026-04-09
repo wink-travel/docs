@@ -1,6 +1,6 @@
 ---
 title: Integracija su TripPay
-description: Šiame straipsnyje pateikiamas pilnas pavyzdys, kaip integruotis su TripPay ir leisti jam tvarkyti mokėjimą už jus.
+description: Šiame straipsnyje pateikiamas pilnas pavyzdys, kaip integruotis ir leisti TripPay tvarkyti mokėjimą už jus.
 sidebar:
   order: 4
 ---
@@ -11,30 +11,30 @@ import { Steps } from '@astrojs/starlight/components';
 
 Rekomenduojama, kad jau būtumėte perskaitę:
 
-- [Payment > Mapping](/lt/payment/mapping).
-- [Payment > Integration](/lt/payment/integration).
-- [Payment Web Component](/lt/integrations/web-components/#payment).
-- [Payment API](/lt/developers/apis/#payment-api). *Perskaitykite skyrių apie `Create payable contracts`*
+- [Mokėjimas > Susiejimas](/lt/payment/mapping).
+- [Mokėjimas > Integracija](/lt/payment/integration).
+- [Mokėjimo internetinis komponentas](/lt/integrations/web-components/#payment).
+- [Mokėjimo API](/lt/developers/apis/#payment-api). *Perskaitykite skyrių apie `Sukurti apmokėtinus kontraktus`*
 
 Štai žingsniai, kaip sėkmingai naudoti TripPay mokėjimui už rezervaciją:
 
 <Steps>
-1. Įsitikinkite, kad naudotojai, kuriuos nurodote rezervacijos sutartyje, yra susieti.
+1. Įsitikinkite, kad rezervacijos kontrakte nurodyti gavėjai yra susieti.
 2. Leiskite keliautojui pasirinkti norimą rezervuoti inventorių ir pasiruošti mokėjimui.
-3. Sukurkite `payable contract` su TripPay, kuriame būtų įtraukti rezervuojami elementai.
-4. Leiskite keliautojui sumokėti naudodami TripPay Web Component.
+3. Sukurkite `apmokėtiną kontraktą` su TripPay, kuriame yra rezervuojami elementai.
+4. Leiskite keliautojui sumokėti naudodami TripPay internetinį komponentą.
 </Steps>
 
 Darome prielaidą, kad jau atlikote `1 žingsnį` ir `2 žingsnį` ir esate pasiruošę pranešti TripPay apie rezervaciją.
 
-## Sukurkite payable contract
+## Sukurti apmokėtiną kontraktą
 
 :::note
-Daugiau apie reikalavimus payable contract kūrimui sužinokite Payment API dokumentacijoje.
+Daugiau apie apmokėtino kontrakto kūrimo reikalavimus sužinokite Mokėjimo API.
 :::
 
 ### Užklausa
-Čia pateikiamas JSON pavyzdys, kuriame yra viskas, ko reikia pirmajam payable contract sukūrimui.
+Čia pateikiamas JSON pavyzdys, kuriame yra viskas, ko reikia pirmajam apmokėtinam kontraktui sukurti.
 
 ```json {3-6, 8-9}
 {
@@ -131,7 +131,7 @@ Paaiškinimas:
 
 Čia nebus aiškinama kiekviena duomenų reikšmė, nes jos jau aprašytos API dokumentacijoje.
 
-- Eilutės: **2 - 7** nurodo naudotoją, atsakingą už rezervaciją. Yra du rezervacijos tipai:
+- Eilutės: **2 - 7** nurodo vartotoją, atsakingą už rezervaciją. Yra du rezervacijos tipai:
     - Keliautojas.
     - Kelionių agentas.
 - Eilutės: **8 - 9** nurodo TripPay paskyrą, kuri vykdo rezervaciją. Tai gali būti:
@@ -147,26 +147,26 @@ Paaiškinimas:
 - Tiekėją, iš kurio norite rezervuoti inventorių.
 - Inventorių, kurį norite rezervuoti iš to tiekėjo. Visi jie nurodyti vidiniame masyve `contractItemList`.
 - Kiekvienas įrašas `contractItemList` turi:
-    - **Svečio naudotoją** – tai naudotojas, kuris atvyks į vietą.
+    - **Svečio vartotoją** – tai vartotojas, kuris atvyks į vietą.
     - **Pavadinimą anglų kalba** – inventoriaus pavadinimas anglų kalba.
     - **Aprašymą anglų kalba** – ilgesnis inventoriaus aprašymas anglų kalba.
     - **Kainą** – elemento kainą.
-    - **Kelionės planą** – kada šis elementas turi būti rezervuotas.
+    - **Maršrutą** – kada šis elementas turi būti rezervuotas.
     - **Kainodaros tipą** – kaip buvo apskaičiuota kaina.
     - **Inventoriaus tipą** – kokio tipo inventorius tai yra.
-    - **Mokėjimo laiką** – kada keliautojas turi būti apmokestintas. *Šiuo metu palaikome tik momentinius mokėjimus.*
+    - **Apmokėjimo laiką** – kada keliautojui turi būti nuskaičiuota suma. *Šiuo metu palaikome tik momentinius mokėjimus.*
     - **Politiką** – įtraukite atšaukimo politikos taisykles.
-    - **Dienos kainų sąrašą** – jei rezervuojamas kambarys, galite nurodyti, kiek kainuoja kambarys kiekvienai nakčiai.
-    - **Naudos gavėjus** – nurodykite, kurioms TripPay paskyroms turi būti paskirstytos tam tikros kainos dalys. *Palaikomos fiksuotos ir procentinės sumos.*
+    - **Dienos kainų sąrašą** – jei rezervuojamas kambarys, galite nurodyti, kiek kainuoja kiekviena nakvynė.
+    - **Gavėjus** – nurodykite, kurioms TripPay paskyroms turi būti paskirstytos tam tikros sumos iš elemento kainos. *Palaikomos fiksuotos ir procentinės sumos.*
 
 :::note
-Aukščiau pateiktame JSON pavyzdyje yra 3 naudos gavėjai:
+Aukščiau pateiktame JSON pavyzdyje yra 3 gavėjai:
 
 - 1,5% paskirta platformai, kuri vykdė rezervaciją. *pvz., Wink*
 - 9,85% paskirta filialui kaip komisiniai. *pvz., Kim Kardashian*
 - 88,65% paskirta tiekėjui už kambario rezervaciją. *pvz., Hilton*
 
-Kai TripPay atsako su payable contract, pastebėsite, kad jis įtraukė savo naudos gavėją su 4,0% dalimi.
+Kai TripPay atsako su apmokėtinu kontraktu, pastebėsite, kad jis įtraukė savo gavėją su 4,0% dalimi.
 :::
 
 ### Atsakymas
@@ -205,18 +205,18 @@ Kai TripPay atsakys į jūsų užklausą, atsakymas atrodys maždaug taip:
 ]
 ```
 
-Išsaugokite `id` 3 eilutėje. Jį naudosite įterpdami į TripPay web komponentą.
+Išsaugokite `id` 3 eilutėje. Jį naudosite įterpdami į TripPay internetinį komponentą.
 
-## Įterpkite TripPay
+## Įterpti TripPay
 
 :::note
-Įsitikinkite, kad iš anksto įkrovėte mūsų stilius ir Javascript.
+Įsitikinkite, kad iš anksto įkėlėte mūsų stilius ir Javascript.
 :::
 
-Dabar esate pasiruošę įterpti `Payment Web Component` į savo svetainę ir parodyti jį naudotojui.
+Dabar esate pasiruošę įterpti `Mokėjimo internetinį komponentą` į savo svetainę ir parodyti jį vartotojui.
 
 ```html
 <trip-pay id="contract-1"></trip-pay>
 ```
 
-Kalbant apie integraciją, tai viskas, ką reikia padaryti. Visa sudėtinga dalis nuo šiol atliekama TripPay.
+Kalbant apie integraciją, tai viskas, ką reikia padaryti. Visa sunki darbą nuo šiol atlieka TripPay.

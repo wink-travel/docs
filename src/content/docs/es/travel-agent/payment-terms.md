@@ -44,9 +44,9 @@ Como se define en el acuerdo principal "TÉRMINOS Y CONDICIONES PARA AGENTES DE 
 * "Acuerdo Separado"
 
 
-**2\. Recaudación y Distribución de Pagos**
+**2\. Cobro y Distribución de Pagos**
 
-2.1 **Recaudación de Pago:** El Agente de Viajes es responsable de recaudar el pago del Huésped en el momento de la reserva. Esto asegura un procesamiento inmediato y claridad financiera.
+2.1 **Cobro de Pago:** El Agente de Viajes es responsable de cobrar el pago al Huésped en el momento de la reserva. Esto asegura un procesamiento inmediato y claridad financiera.
 
 2.2 **Deducción de Tarifas:** El Agente de Viajes deberá deducir primero la tarifa del Proveedor de Servicios y luego deducir su comisión para el subtotal según el ejemplo a continuación:
 
@@ -59,21 +59,21 @@ Subtotal = 1,000 - 15 = 985
 
 2.3 **Pago Neto a Proveedores de Alojamiento:** El Agente de Viajes es responsable de distribuir el Pago Neto al Proveedor de Alojamiento según los términos del Acuerdo Separado entre el Agente de Viajes y el Proveedor de Alojamiento. Wink no es responsable de realizar ningún pago al Proveedor de Alojamiento.
 
-**3**. **Facturación y Pago** 
+**3\. Facturación y Pago**
 
 3.1 **Facturación Mensual:** Wink emitirá una factura mensual correcta y precisa al Agente de Viajes por las Tarifas de Reserva acumuladas durante el mes anterior. El Agente de Viajes debe saldar esta factura dentro de los términos de pago especificados en la factura.
 
 3.2 **Método de Pago:** Los pagos a Wink se realizarán mediante el método de pago especificado en la factura. Cualquier costo asociado con la transferencia del pago es responsabilidad del Agente de Viajes.
 
-3.3 **Pagos Tardíos:** En caso de pago tardío, Wink se reserva el derecho de cobrar intereses sobre el monto vencido a una tasa del 5% mensual o la tasa máxima permitida por la ley, la que sea menor. Además, si el Agente de Viajes se retrasa en pagar al Proveedor de Alojamiento según los términos del Acuerdo Separado, Wink se reserva el derecho de suspender el acceso al Servicio hasta que se resuelvan todos los pagos pendientes tanto con Wink como con el Proveedor de Alojamiento. Sin embargo, si hay errores o equivocaciones en la factura emitida por Wink, el Agente de Viajes solo estará obligado a pagar la parte correcta y precisa de la factura y no estará sujeto a ningún cargo por intereses o penalización por no pagar la parte incorrecta de la factura.
+3.3 **Pagos Tardíos:** En caso de pago tardío, Wink se reserva el derecho de cobrar intereses sobre el monto vencido a una tasa del 5% mensual o la tasa máxima permitida por la ley, la que sea menor. Además, si el Agente de Viajes se retrasa en pagar al Proveedor de Alojamiento según los términos del Acuerdo Separado, Wink se reserva el derecho de suspender el acceso al Servicio hasta que se resuelvan todos los pagos pendientes tanto a Wink como al Proveedor de Alojamiento. Sin embargo, si hay errores o equivocaciones en la factura emitida por Wink, el Agente de Viajes solo estará obligado a pagar la parte correcta y precisa de la factura y no estará sujeto a ningún cargo por intereses o penalización por no pagar la parte incorrecta de la factura.
 
 **4\. Roles y Responsabilidades**
 
 4.1 **Responsabilidades del Agente de Viajes:**
 
-* Asegurar la recaudación oportuna de pagos de los Huéspedes, conforme a los términos descritos en la Sección 2.1.  
-* Deducir la Tarifa de Reserva y la Comisión apropiadas antes de remitir el Pago Neto a los Proveedores de Alojamiento según el Acuerdo Separado.  
-* Saldar las facturas de Wink por las Tarifas de Reserva puntualmente dentro de los términos especificados en la Sección 3.1.  
+* Asegurar la cobranza oportuna de pagos de los Huéspedes, conforme a los términos descritos en la Sección 2.1.  
+* Deducir la Tarifa de Reserva y la Comisión correspondientes antes de remitir el Pago Neto a los Proveedores de Alojamiento según el Acuerdo Separado.  
+* Saldar las facturas de Wink por Tarifas de Reserva puntualmente dentro de los términos especificados en la Sección 3.1.  
 * Gestionar y resolver activamente cualquier disputa relacionada con reservas o pagos, asegurando mantener comunicación con Wink para resolver los problemas eficientemente.
 
 4.2 **Responsabilidades de Wink:**
@@ -88,12 +88,12 @@ Si se requiere alguna conversión de moneda, se procesará a la tasa proporciona
 
 **6\. Resolución de Disputas**
 
-Cualquier disputa que surja de o esté relacionada con estos Términos de Pago será manejada según lo estipulado en los procedimientos de resolución de disputas del Acuerdo Principal, asegurando un enfoque consistente y unificado para resolver conflictos entre Wink y el Agente de Viajes.
+Cualquier disputa que surja o esté relacionada con estos Términos de Pago será manejada según los procedimientos de resolución de disputas estipulados en el Acuerdo Principal, asegurando un enfoque consistente y unificado para resolver conflictos entre Wink y el Agente de Viajes.
 
 **7\. Modificación de Términos**  
-Wink se reserva el derecho de modificar estos Términos de Pago en cualquier momento. Cualquier cambio será comunicado al Agente de Viajes al menos 30 días antes de que entre en vigor. El uso continuado de la plataforma Wink después de la fecha de vigencia constituye aceptación de los términos modificados.
+Wink se reserva el derecho de modificar estos Términos de Pago en cualquier momento. Cualquier cambio será comunicado al Agente de Viajes al menos 30 días antes de que entren en vigor. El uso continuado de la plataforma Wink después de la fecha de vigencia constituye aceptación de los términos modificados.
 
 **8\. Ley Aplicable y Jurisdicción**  
-Estos Términos de Pago se rigen por las leyes de Singapur. Cualquier disputa que surja de o esté relacionada con estos términos será resuelta en los tribunales de Singapur.
+Estos Términos de Pago se rigen por las leyes de Singapur. Cualquier disputa que surja o esté relacionada con estos términos será resuelta en los tribunales de Singapur.
 
 Estos Términos de Pago son parte integral y amplían las disposiciones de pago establecidas en el Acuerdo Principal, "TÉRMINOS Y CONDICIONES PARA AGENTES DE VIAJES\_220924," entre Wink y el Agente de Viajes.

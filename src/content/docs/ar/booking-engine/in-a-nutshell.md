@@ -36,12 +36,12 @@ sidebar:
 
 محرك الحجز هو مجموعة من الوظائف القابلة لإعادة الاستخدام التي نعرضها من خلال https://ota.wink.travel؛ وهو موقع ويب قابل للتخصيص بدرجة عالية للفنادق والشركاء لبيع منتجاتهم للمسافرين.
 
-للمندمجين الذين يرغبون في حرية أكبر، تتوفر جميع الميزات نفسها عبر [إضافة ووردبريس](/ar/integrations/wordpress/)، و[مكونات الويب](/ar/integrations/web-components)، و[واجهات برمجة التطبيقات](/ar/developers/apis).
+للمندمجين الذين يرغبون في حرية أكبر، تتوفر جميع الميزات نفسها عبر [إضافة WordPress](/ar/integrations/wordpress/)، و[مكونات الويب](/ar/integrations/web-components)، و[واجهات برمجة التطبيقات](/ar/developers/apis).
 
 تابع الأقسام التالية لقراءة المزيد عما يقدمه محرك الحجز.
 
 ## قراءة إضافية
 
-- اقرأ عن [إضافة ووردبريس](/ar/integrations/wordpress/).
+- اقرأ عن [إضافة WordPress](/ar/integrations/wordpress/).
 - اقرأ عن [مكونات الويب](/ar/integrations/web-components).
 - اقرأ عن [واجهات برمجة التطبيقات](/ar/developers/apis).

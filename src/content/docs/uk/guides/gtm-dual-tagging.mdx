@@ -1,0 +1,676 @@
+---
+title: Інтеграція Sojern Pixel
+description: Як підключити свій обліковий запис Sojern до Wink, щоб Sojern міг відстежувати шлях бронювання ваших гостей і підтримувати ваші кампанії ретаргетингу та реклами.
+sidebar:
+  label: Інтеграція Sojern Pixel
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Якщо ви запускаєте рекламні кампанії через Sojern, ви можете підключити свій обліковий запис Sojern до Wink, ввівши свій Sojern GTM Container ID у порталі Wink. Після підключення піксель відстеження Sojern автоматично активується для вашої власності — охоплюючи повний шлях гостя від пошуку до завершеного бронювання.
+
+<Aside type="tip">
+Це припускає, що у вас вже є активний обліковий запис Sojern і ви отримали свій GTM Container ID від менеджера вашого облікового запису Sojern. Якщо у вас ще немає облікового запису Sojern, відвідайте [sojern.com/contact](https://www.sojern.com/contact), щоб почати.
+</Aside>
+
+---
+
+## Що потрібно зробити
+
+<Steps>
+
+1. **Отримайте свій GTM Container ID від Sojern**
+
+   Зв’яжіться зі своїм менеджером облікового запису Sojern і запросіть свій **GTM Container ID**. Він має формат `GTM-XXXXXXX`. Це відрізняється від вашого Sojern Pixel ID — переконайтеся, що ви просите саме GTM Container ID.
+
+2. **Введіть його в порталі Wink**
+
+   Увійдіть на [my.wink.travel](https://my.wink.travel), виберіть свій обліковий запис і перейдіть на вкладку **Customizations**. Вставте свій Sojern GTM Container ID у поле Sojern і збережіть. Ваша інтеграція тепер активна.
+
+3. **Підтвердіть з менеджером облікового запису Sojern**
+
+   Повідомте менеджера облікового запису Sojern, що інтеграція активна. Вони можуть перевірити зі свого боку, що піксель коректно спрацьовує на `wink.travel` для вашої власності і що дані надходять у ваш обліковий запис Sojern.
+
+</Steps>
+
+<Aside type="note">
+Вам не потрібно розміщувати жоден код пікселя на власному сайті для цієї інтеграції. Wink автоматично завантажує ваш контейнер Sojern на всіх сторінках, де активна ваша власність.
+
+Ця конфігурація працює для будь-якого кастомного GTM Container ID. Ми використали Sojern як приклад, оскільки це дуже поширена інтеграція.
+</Aside>
+
+---
+
+## Що Wink робить зі свого боку
+
+Для прозорості ось що Wink налаштовує, щоб ця інтеграція працювала:
+
+- **Поле Sojern GTM Container ID** доступне на вкладці Customizations у вашому порталі Wink. Коли ви вводите свій Container ID, Wink перевіряє формат і безпечно зберігає його для вашої власності.
+- **На кожній сторінці, де активна ваша власність** у Wink, ваш Sojern GTM Container ID вставляється у сторінку, і система керування тегами Wink динамічно завантажує ваш контейнер Sojern разом зі своїм. Це відбувається автоматично — Wink не потрібно виконувати жодних ручних дій для кожної власності.
+- **Ваш контейнер Sojern завантажується асинхронно**, тобто не впливає на швидкість завантаження сторінки для ваших гостей.
+- **Власне відстеження Wink і піксель Sojern працюють паралельно**, читаючи з одних і тих же спільних даних подій. Кожна подія бронювання, яку відстежує Wink, одночасно доступна вашому контейнеру Sojern.
+- **Коли ваша власність не переглядається** — наприклад, коли гість переглядає інший готель у Wink — ваш контейнер Sojern не завантажується. Це гарантує, що Sojern отримує лише релевантні дані про вашу власність.
+
+---
+
+## Посилання на DataLayer
+
+Wink надсилає події, сумісні з GA4, у `dataLayer` протягом усього шляху гостя. Ваш GTM контейнер читає з того самого спільного `dataLayer`, тому будь-який тригер або змінна, які ви налаштовуєте, мають доступ до всіх описаних нижче властивостей.
+
+Кожна подія відповідає стандартній структурі GA4 Enhanced Ecommerce: рядок верхнього рівня `event` і об’єкт `ecommerce`. Перед кожним пушем Wink очищає попередній ecommerce-пейлоад, щоб уникнути застарілих даних у нових тригерах.
+
+<Aside type="note">
+**Шаблон скидання dataLayer**
+
+Wink скидає об’єкт ecommerce перед кожним пушем події:
+
+```js
+dataLayer.push({ ecommerce: null });   // очищення попередньої події
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Не покладайтеся на збереження властивостей ecommerce між подіями. Завжди читайте їх під час спрацьовування тригера в межах однієї події.
+</Aside>
+
+---
+
+### Події шляху бронювання
+
+Ці події спрацьовують автоматично, коли гість проходить через воронку бронювання. Налаштуйте свої тригери GTM як **Custom Event** тригери, що відповідають назвам подій нижче.
+
+| Крок | Подія | Коли спрацьовує |
+|------|-------|-----------------|
+| 1 | `view_item_list` | Завантажується сітка або список готельного інвентарю |
+| 2 | `view_item` | Гість переглядає сторінку конкретної власності |
+| 3 | `add_to_cart` | Гість додає номер у кошик |
+| 4 | `begin_checkout` | Завантажується сторінка оформлення / оплати |
+| 5 | `add_payment_info` | Гість обирає спосіб оплати |
+| 6 | `login` | Гість автентифікується через SSO |
+| 7 | `purchase` | Бронювання підтверджено |
+| 8 | `refund` | Бронювання скасовано |
+
+---
+
+#### `view_item_list`
+
+Спрацьовує, коли відображається сітка або список готельного інвентарю.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Спрацьовує, коли гість переглядає конкретну власність.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Спрацьовує, коли гість додає номер у кошик.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Спрацьовує, коли завантажується сторінка оформлення / оплати.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` присутній лише, якщо застосовано код знижки.
+
+---
+
+#### `add_payment_info`
+
+Спрацьовує, коли гість обирає або підтверджує спосіб оплати.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` заповнюється типом платіжного аквайра. `coupon` присутній лише, якщо застосовано код знижки.
+
+---
+
+#### `login`
+
+Спрацьовує, коли гість автентифікується через єдиний вхід (SSO).
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Спрацьовує, коли бронювання підтверджено.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` — унікальний ідентифікатор контракту бронювання. `coupon`, `shipping` і `tax` присутні лише за наявності.
+
+---
+
+#### `refund`
+
+Спрацьовує, коли бронювання скасовано.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` співпадає з подією `purchase` для того самого бронювання. `coupon`, `shipping` і `tax` присутні лише за наявності.
+
+---
+
+### Властивості елементів
+
+Усі події, що містять масив `items`, мають однакову схему елемента. Кожна властивість є необов’язковою, якщо не позначена як обов’язкова.
+
+#### Стандартні поля GA4
+
+Ці поля розпізнаються GA4 і відображаються у стандартних звітах ecommerce без додаткових налаштувань.
+
+| Властивість | Тип | Обов’язково | Опис |
+|-------------|-----|-------------|------|
+| `item_id` | string | Так | Унікальний ідентифікатор номера або продукту |
+| `item_name` | string | — | Назва номера або продукту |
+| `affiliation` | string | — | Назва афіліата або продавця |
+| `coupon` | string | — | Застосований купон |
+| `currency` | string | — | Код валюти ISO 4217 (наприклад, `USD`) |
+| `creative_name` | string | — | Назва креативу в промоакції |
+| `creative_slot` | string | — | Позиція креативу в слоті промоакції |
+| `discount` | number | — | Сума знижки |
+| `index` | number | — | Позиція в списку (починається з 1) |
+| `item_brand` | string | — | Назва готелю або бренду |
+| `item_category` | string | — | Тип продукту — наприклад, `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | Ідентифікатор списку, до якого належить елемент |
+| `item_list_name` | string | — | Відображувана назва списку |
+| `location_id` | string | — | Геокоординати власності |
+| `price` | number | — | Ціна за одиницю |
+| `promotion_id` | string | — | Ідентифікатор промоакції |
+| `promotion_name` | string | — | Відображувана назва промоакції |
+| `quantity` | number | — | Кількість (за замовчуванням `1`) |
+
+#### Користувацькі параметри на рівні елемента
+
+Ці параметри несуть контекст бронювання, специфічний для Wink. GA4 не відображає їх у звітах автоматично — потрібно зареєструвати кожен як **користувацький вимір на рівні елемента** у вашій властивості GA4, щоб вони з’явилися в дослідженнях або стандартних звітах. Інструкції див. у розділі [Custom Dimensions in GA4](#custom-dimensions-in-ga4) нижче.
+
+| Властивість | Тип | Опис |
+|-------------|-----|------|
+| `property_id` | string | Ідентифікатор власності Wink |
+| `property_name` | string | Відображувана назва власності |
+| `property_brand` | string | Бренд, до якого належить власність |
+| `property_chain` | string | Готельна мережа, до якої належить власність |
+| `city_name` | string | Місто, де розташована власність |
+| `country_code` | string | Код країни ISO 3166-1 alpha-2 |
+| `start_date` | string | Дата заїзду у форматі `YYYY-MM-DD` |
+| `end_date` | string | Дата виїзду у форматі `YYYY-MM-DD` |
+| `num_adults` | number | Кількість дорослих у бронюванні |
+| `num_children` | number | Кількість дітей у бронюванні |
+| `cancellation_policy` | string | Один із: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Ідентифікатор тарифного плану |
+| `room_rate_id` | string | Ідентифікатор конкретного тарифу номера |
+| `room_rate_name` | string | Відображувана назва тарифу номера |
+| `num_perks` | number | Кількість бонусів, включених у тариф |
+| `room_location` | string | Опис розташування номера (наприклад, `Overwater`, `Garden`) |
+| `room_view` | string | Опис виду з номера (наприклад, `Ocean`, `City`) |
+| `room_classification` | string | Класифікація або категорія номера (наприклад, `Suite`, `Standard`) |
+
+---
+
+### Користувацькі виміри в GA4
+
+GA4 ігнорує користувацькі параметри елементів у звітах, доки ви явно не зареєструєте їх як користувацькі виміри на рівні елемента. Реєструвати потрібно лише ті параметри, які ви плануєте використовувати у звітах — не обов’язково всі 18.
+
+<Steps>
+
+1. **Відкрийте Custom Definitions**
+
+   У GA4 перейдіть у **Admin** (піктограма шестерні внизу зліва) → виберіть свою властивість → **Data display** → **Custom definitions**.
+
+2. **Створіть новий користувацький вимір**
+
+   Натисніть **Create custom dimensions**.
+
+3. **Заповніть деталі виміру**
+
+   - **Dimension name** — зрозуміла людиною назва, що відображатиметься у звітах GA4 (див. таблицю нижче)
+   - **Scope** — виберіть **Item**
+   - **Event parameter** — точна назва параметра, як у dataLayer (див. таблицю нижче)
+   - **Description** — необов’язково, але рекомендовано
+
+4. **Збережіть і повторіть**
+
+   Натисніть **Save**, потім повторіть для кожного параметра, який хочете відстежувати.
+
+</Steps>
+
+<Aside type="note">
+Користувацькі виміри можуть з’являтися у звітах GA4 до 24 годин після реєстрації. Історичні дані, зібрані до реєстрації, не заповнюються заднім числом.
+
+GA4 дозволяє до 50 користувацьких вимірів на рівні елемента для стандартних властивостей (360 властивості дозволяють більше).
+</Aside>
+
+Використовуйте цю таблицю як довідник при створенні користувацьких вимірів. Значення **Event parameter** має точно співпадати — GA4 чутливий до регістру.
+
+| Назва виміру | Event parameter | Тип |
+|--------------|-----------------|-----|
+| Property ID | `property_id` | Текст |
+| Property name | `property_name` | Текст |
+| Property brand | `property_brand` | Текст |
+| Property chain | `property_chain` | Текст |
+| City name | `city_name` | Текст |
+| Country code | `country_code` | Текст |
+| Check-in date | `start_date` | Текст |
+| Check-out date | `end_date` | Текст |
+| Number of adults | `num_adults` | Число |
+| Number of children | `num_children` | Число |
+| Cancellation policy | `cancellation_policy` | Текст |
+| Rate plan ID | `rate_plan_id` | Текст |
+| Room rate ID | `room_rate_id` | Текст |
+| Room rate name | `room_rate_name` | Текст |
+| Number of perks | `num_perks` | Число |
+| Room location | `room_location` | Текст |
+| Room view | `room_view` | Текст |
+| Room classification | `room_classification` | Текст |
+
+---
+
+### Додаткові доступні події
+
+Наступні події доступні у dataLayer Wink, але не є частиною стандартної воронки бронювання. Вони можуть спрацьовувати внаслідок інших взаємодій на платформі.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Ця подія не містить пейлоаду `ecommerce`.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Це користувацька подія Wink — не входить до стандартного набору подій GA4. Вона пушиться при кожній навігації сторінкою і містить контекст пристрою та сесії. Об’єкт `ecommerce` не включається.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Властивість | Опис |
+|-------------|------|
+| `device` | Виявлений тип пристрою — `Desktop`, `Android`, `iPhone`, `iPad` або подібний |
+| `deviceAgent` | Сировий рядок user agent |
+| `os` | Виявлена операційна система — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Поточний шлях сторінки |
+| `title` | Поточна назва сторінки |
+| `userId` | Ідентифікатор автентифікованого користувача (відсутній, якщо не увійшли) |
+| `startDate` | Дата заїзду з поточної сесії пошуку |
+| `endDate` | Дата виїзду з поточної сесії пошуку |
+| `guests` | Кількість гостей з поточної сесії пошуку |
+| `rooms` | Кількість номерів з поточної сесії пошуку |

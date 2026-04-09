@@ -1,0 +1,140 @@
+---
+title: GA4 analītikas integrācija
+description: Kā savienot savu Google Analytics 4 īpašumu ar Wink, lai tieši savā GA4 informācijas panelī varētu izsekot rezervācijām, ieņēmumiem un viesu ceļojumam.
+sidebar:
+  label: GA4 analītikas integrācija
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Savienojot savu Google Analytics 4 īpašumu ar Wink, jūsu rezervācijas notikumi — no istabu skatījumiem līdz pabeigtām pirkšanām — tiek automātiski nosūtīti uz jūsu GA4 informācijas paneli kopā ar Wink analītiku. Nav nepieciešams kods vai tehniska iestatīšana no jūsu puses.
+
+<Aside type="tip">
+Viss, kas jums nepieciešams, ir GA4 mērījumu ID. Kad tas ievadīts Wink portālā, jūsu analītika uzreiz darbojas.
+</Aside>
+
+---
+
+## Kā tas darbojas
+
+```
+Jūs ievadāt savu G-XXXXXXXXXX Wink portālā
+       ↓
+Wink pārsūta jūsu rezervācijas notikumus uz jūsu GA4 īpašumu
+       ↓
+Jūs piesakāties analytics.google.com un redzat savas rezervācijas
+```
+
+---
+
+## Ko jums jāizdara
+
+<Steps>
+
+1. **Izveidojiet GA4 īpašumu**
+
+   Dodieties uz [analytics.google.com](https://analytics.google.com): Admin → Izveidot īpašumu. Iestatiet savu laika joslu un valūtu atbilstoši jūsu tirgum.
+
+2. **Izveidojiet tīmekļa datu plūsmu**
+
+   Admin → Datu plūsmas → Pievienot plūsmu → Tīkls. Ievadiet `wink.travel` kā URL. Tas ģenerēs jūsu **Mērījumu ID** (`G-XXXXXXXXXX`). Nokopējiet to.
+
+3. **Ievadiet savu Mērījumu ID Wink portālā**
+
+   Piesakieties [my.wink.travel](https://my.wink.travel), izvēlieties savu kontu un dodieties uz cilni **Pielāgojumi**. Ielīmējiet tur savu Mērījumu ID un saglabājiet. Tas arī viss — jūsu GA4 integrācija tagad ir aktīva.
+
+4. **Atzīmējiet `purchase` kā galveno notikumu**
+
+   Atgriezieties savā GA4 īpašumā: Admin → Notikumi → atrodiet `purchase` → ieslēdziet **Atzīmēt kā galveno notikumu**. Tas nodrošina, ka pabeigtās rezervācijas parādās jūsu Konversiju pārskatā.
+
+5. **Skatiet savus datus**
+
+   Piesakieties [analytics.google.com](https://analytics.google.com) un redzēsiet savas rezervācijas, ieņēmumus un viesu piltuvi — viss tiek automātiski izsekots caur Wink.
+
+</Steps>
+
+<Aside type="note">
+Jums nav jāinstalē nekāda izsekošanas koda savā mājaslapā šai integrācijai. Wink par visu parūpējas. Jūsu Mērījumu ID ir vienkārši galamērķis, kur tiek nosūtīti jūsu rezervāciju dati.
+</Aside>
+
+---
+
+## Ko jūs varat izsekot
+
+Kad savienots, jūsu GA4 īpašums saņem pilnu uzlabotās e-komercijas notikumu komplektu jūsu īpašumam:
+
+### Atklāšana
+
+| Notikums | Ko tas nozīmē |
+|---|---|
+| `view_item_list` | Viesis redzēja jūsu īpašumu meklēšanas vai kategoriju sarakstā |
+| `select_item` | Viesis noklikšķināja uz jūsu īpašuma no saraksta |
+| `view_item` | Viesis apskatīja jūsu viesnīcas detaļu lapu |
+
+### Apsvērums
+
+| Notikums | Ko tas nozīmē |
+|---|---|
+| `view_promotion` | Viesis redzēja jūsu īpašuma reklāmas piedāvājumu |
+| `select_promotion` | Viesis noklikšķināja uz reklāmas piedāvājuma |
+| `add_to_wishlist` | Viesis saglabāja jūsu īpašumu vēlmju sarakstā |
+
+### Rezervācijas piltuve
+
+| Notikums | Ko tas nozīmē |
+|---|---|
+| `add_to_cart` | Viesis izvēlējās istabu vai paketi |
+| `view_cart` | Viesis apskatīja savu rezervācijas kopsavilkumu |
+| `remove_from_cart` | Viesis noņēma istabu vai paketi |
+| `begin_checkout` | Viesis sāka norēķinu procesu |
+| `add_payment_info` | Viesis ievadīja maksājuma datus |
+| `add_shipping_info` | Viesis ievadīja viesu datus |
+| `purchase` | Viesis pabeidza rezervāciju |
+| `refund` | Rezervācija tika atcelta un atmaksāta |
+
+Visi notikumi ietver atbilstošas dimensijas, piemēram, ieņēmumus, valūtu, istabas veidu un rezervācijas vērtību — sniedzot pilnīgu viesu ceļojuma ainu no pirmā iespaida līdz pabeigtai rezervācijai.
+
+---
+
+## Starpdomēnu izsekošana (papildu)
+
+Iepriekšējā standarta integrācija izseko visu, kas notiek Wink ietvaros. Tomēr, ja vēlaties izsekot viesiem no jūsu pašu mājaslapas līdz rezervācijas pabeigšanai Wink — un pareizi piešķirt sākotnējo trafika avotu (Google Ads, e-pasta kampaņas, organiskā meklēšana utt.) — katrā pusē ir nepieciešama vēl viena darbība.
+
+<Aside type="caution">
+Šī sadaļa attiecas tikai uz gadījumiem, ja GA4 ir uzstādīts jūsu mājaslapā. Ja jūsu vietnē GA4 netiek izmantots, iepriekšējā standarta integrācija ir viss, kas jums nepieciešams.
+</Aside>
+
+### Kāpēc tas ir svarīgi
+
+Bez starpdomēnu izsekošanas viesis, kurš vispirms apmeklē jūsu mājaslapu un pēc tam veic rezervāciju Wink, jūsu GA4 tiks reģistrēts kā **Tiešs** sesijas apmeklējums bez saistības ar iepriekšējo apmeklējumu. Jebkuri Google Ads klikšķi, e-pasta kampaņas vai organiskās meklēšanas apmeklējumi, kas noveda pie rezervācijas, netiks pienācīgi atzīti.
+
+Ar starpdomēnu izsekošanu konfigurētu, jūs redzat pilnu viesu ceļojumu:
+
+```
+google.com (maksas reklāma)
+       ↓
+jūsu mājaslapa (viesis pārlūko istabas)
+       ↓
+wink.travel (viesis izvēlas istabu un veic rezervāciju)
+       ↓
+pirkums pareizi piešķirts sākotnējam Google Ads klikšķim
+```
+
+### Jūsu veicamā darbība
+
+Konfigurējiet savu GA4 īpašumu, lai atpazītu `wink.travel` kā daļu no jūsu pašu domēna, nevis kā ārēju atsauces avotu. Tas liek GA4 apvienot abas sesijas vienā nepārtrauktā viesu ceļojumā.
+
+<Steps>
+1. GA4 Admin → Datu plūsmas → jūsu plūsma
+2. Konfigurēt tagu iestatījumus → **Konfigurēt savus domēnus**
+3. Pievienot `wink.travel` kā saistīto domēnu
+4. Saglabāt
+</Steps>
+
+### Wink veicamā darbība
+
+Sazinieties ar [Wink atbalstu](https://my.wink.travel) un sniedziet savu mājaslapas domēnu (piemēram, `yourhotel.com`). Wink pievienos jūsu domēnu atsauces izslēgšanas sarakstam Wink GA4 īpašumā. Tas novērsīs jūsu mājaslapas reģistrēšanu kā atsauces avotu, kas citādi pārrakstītu viesu sākotnējo atribūciju un sāktu jaunu sesiju.
+
+<Aside type="tip">
+Iepriekšējā standarta integrācija ir pietiekama lielākajai daļai īpašumu un nodrošina tūlītēju pārredzamību par rezervācijām un ieņēmumiem Wink. Starpdomēnu izsekošana ir papildu iespēja, ko vērts iestatīt, kad esat pārliecināts par saviem GA4 datiem un vēlaties dziļāku atribūcijas ieskatu.
+</Aside>

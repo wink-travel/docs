@@ -1,0 +1,676 @@
+---
+title: Sojern Pixel-integrasjon
+description: Hvordan koble Sojern-kontoen din til Wink slik at Sojern kan spore gjestenes bestillingsreise og drive dine retargeting- og reklamekampanjer.
+sidebar:
+  label: Sojern Pixel-integrasjon
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Hvis du kjører reklamekampanjer gjennom Sojern, kan du koble Sojern-kontoen din til Wink ved å legge inn din Sojern GTM Container ID i Wink-portalen. Når den er koblet til, aktiveres Sojerns sporingspixel automatisk for din eiendom — og dekker hele gjestereisen fra søk til fullført bestilling.
+
+<Aside type="tip">
+Dette forutsetter at du allerede har en aktiv Sojern-konto og har mottatt din GTM Container ID fra din Sojern-kontoadministrator. Hvis du ikke har en Sojern-konto ennå, besøk [sojern.com/contact](https://www.sojern.com/contact) for å komme i gang.
+</Aside>
+
+---
+
+## Hva du må gjøre
+
+<Steps>
+
+1. **Få din GTM Container ID fra Sojern**
+
+   Kontakt din Sojern-kontoadministrator og be om din **GTM Container ID**. Den følger formatet `GTM-XXXXXXX`. Dette er forskjellig fra din Sojern Pixel ID — sørg for å be spesifikt om GTM Container ID.
+
+2. **Legg den inn i Wink-portalen**
+
+   Logg inn på [my.wink.travel](https://my.wink.travel), velg kontoen din, og gå til fanen **Customizations**. Lim inn din Sojern GTM Container ID i Sojern-feltet og lagre. Integrasjonen er nå aktiv.
+
+3. **Bekreft med din Sojern-kontoadministrator**
+
+   Gi beskjed til din Sojern-kontoadministrator om at integrasjonen er aktiv. De kan verifisere fra sin side at pixelen aktiveres korrekt på `wink.travel` for din eiendom, og at data flyter inn i din Sojern-konto.
+
+</Steps>
+
+<Aside type="note">
+Du trenger ikke å plassere noen pixel-kode på ditt eget nettsted for denne integrasjonen. Wink laster automatisk din Sojern-container på alle sider hvor din eiendom er aktiv.
+
+Denne konfigurasjonen fungerer for hvilken som helst tilpasset GTM Container ID. Vi brukte bare Sojern som et eksempel siden det er en veldig vanlig integrasjon.
+</Aside>
+
+---
+
+## Hva Wink gjør på vår side
+
+For å være tydelige, her er hva Wink konfigurerer for å få denne integrasjonen til å fungere:
+
+- **Et Sojern GTM Container ID-felt** er tilgjengelig i fanen Customizations i Wink-portalen din. Når du legger inn Container ID, validerer Wink formatet og lagrer det sikkert knyttet til din eiendom.
+- **På hver side hvor din eiendom er aktiv** på Wink, rendres din Sojern GTM Container ID inn i siden, og Winks tagg-administrasjonssystem laster dynamisk din Sojern-container sammen med sin egen. Dette skjer automatisk — ingen manuelle steg kreves fra Wink-teamet per eiendom.
+- **Din Sojern-container lastes asynkront**, noe som betyr at det ikke påvirker sideinnlastingshastigheten for dine gjester.
+- **Winks egen sporing og din Sojern-pixel kjører parallelt**, og leser fra samme delte hendelsesdata. Hver bestillingshendelse som Wink sporer, er samtidig tilgjengelig for din Sojern-container.
+- **Når din eiendom ikke vises** — for eksempel når en gjest ser på et annet hotell på Wink — lastes ikke din Sojern-container. Dette sikrer at Sojern kun mottar data som er relevante for din eiendom.
+
+---
+
+## DataLayer-referanse
+
+Wink sender GA4-kompatible hendelser til `dataLayer` gjennom hele gjestereisen. Din GTM-container leser fra denne samme delte `dataLayer`, så enhver trigger eller variabel du konfigurerer har tilgang til alle egenskapene beskrevet nedenfor.
+
+Hver hendelse følger standard GA4 Enhanced Ecommerce-struktur: en øverste `event`-streng og et `ecommerce`-objekt. Før hver push tømmer Wink forrige ecommerce-payload for å forhindre at utdaterte data påvirker nye triggere.
+
+<Aside type="note">
+**dataLayer reset-mønster**
+
+Wink nullstiller ecommerce-objektet før hver hendelsespush:
+
+```js
+dataLayer.push({ ecommerce: null });   // tøm forrige hendelse
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Ikke stol på at ecommerce-egenskaper vedvarer mellom hendelser. Les dem alltid ved trigger-tidspunktet i samme hendelse.
+</Aside>
+
+---
+
+### Bookingreisehendelser
+
+Disse hendelsene aktiveres automatisk når en gjest beveger seg gjennom bestillingsprosessen. Konfigurer dine GTM-triggere som **Custom Event**-triggere som matcher hendelsesnavnene nedenfor.
+
+| Steg | Hendelse | Når den aktiveres |
+|------|----------|-------------------|
+| 1 | `view_item_list` | Hotellinventar-rutenett eller liste lastes |
+| 2 | `view_item` | Gjest ser på en spesifikk eiendomsside |
+| 3 | `add_to_cart` | Gjest legger et rom i handlekurven |
+| 4 | `begin_checkout` | Betalings-/utsjekkingsside lastes |
+| 5 | `add_payment_info` | Gjest velger betalingsmetode |
+| 6 | `login` | Gjest autentiserer via SSO |
+| 7 | `purchase` | Bestilling bekreftes |
+| 8 | `refund` | Bestilling kanselleres |
+
+---
+
+#### `view_item_list`
+
+Aktiveres når et hotellinventar-rutenett eller liste vises.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Aktiveres når en gjest ser på en spesifikk eiendom.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Aktiveres når en gjest legger et rom i handlekurven.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Aktiveres når betalings-/utsjekkingsside lastes.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` er kun til stede når en rabattkode er brukt.
+
+---
+
+#### `add_payment_info`
+
+Aktiveres når gjesten velger eller bekrefter betalingsmetode.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` fylles ut fra betalingsinnkrever-typen. `coupon` er kun til stede når en rabattkode er brukt.
+
+---
+
+#### `login`
+
+Aktiveres når en gjest autentiserer via single sign-on.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Aktiveres når en bestilling bekreftes.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` er den unike bestillingskontraktsidentifikatoren. `coupon`, `shipping` og `tax` er kun til stede når relevant.
+
+---
+
+#### `refund`
+
+Aktiveres når en bestilling kanselleres.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` samsvarer med `purchase`-hendelsen for samme bestilling. `coupon`, `shipping` og `tax` er kun til stede når relevant.
+
+---
+
+### Egenskaper for elementer
+
+Alle hendelser som inkluderer en `items`-array deler samme elementskjema. Hver egenskap er valgfri med mindre den er merket som påkrevd.
+
+#### Standard GA4-felt
+
+Disse feltene forstås nativt av GA4 og vises i standard ecommerce-rapporter uten ekstra konfigurasjon.
+
+| Egenskap | Type | Påkrevd | Beskrivelse |
+|----------|------|---------|-------------|
+| `item_id` | string | Ja | Unik identifikator for rom eller produkt |
+| `item_name` | string | — | Navn på rom eller produkt |
+| `affiliation` | string | — | Affiliate- eller selgernavn |
+| `coupon` | string | — | Rabattkode brukt på elementet |
+| `currency` | string | — | ISO 4217 valutakode (f.eks. `USD`) |
+| `creative_name` | string | — | Kreativt navn brukt i en kampanje |
+| `creative_slot` | string | — | Plassering av kampanjekreativ |
+| `discount` | number | — | Rabattbeløp brukt |
+| `index` | number | — | Posisjon i listen (1-basert) |
+| `item_brand` | string | — | Hotell- eller merkenavn |
+| `item_category` | string | — | Produkttype — f.eks. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | Identifikator for listen elementet tilhører |
+| `item_list_name` | string | — | Visningsnavn på listen |
+| `location_id` | string | — | Geokoordinater for eiendommen |
+| `price` | number | — | Enhetspris |
+| `promotion_id` | string | — | Identifikator for kampanjen |
+| `promotion_name` | string | — | Visningsnavn på kampanjen |
+| `quantity` | number | — | Antall (standard er `1`) |
+
+#### Tilpassede element-spesifikke parametere
+
+Disse parameterne bærer Wink-spesifikk bestillingskontekst. GA4 viser dem ikke automatisk i rapporter — du må registrere hver enkelt som en **element-spesifikk egendefinert dimensjon** i din GA4-eiendom før de vises i utforskninger eller standardrapporter. Se [Custom Dimensions in GA4](#custom-dimensions-in-ga4) nedenfor for oppsett.
+
+| Egenskap | Type | Beskrivelse |
+|----------|------|-------------|
+| `property_id` | string | Wink-eiendomsidentifikator |
+| `property_name` | string | Eiendommens visningsnavn |
+| `property_brand` | string | Merke eiendommen tilhører |
+| `property_chain` | string | Kjede eiendommen tilhører |
+| `city_name` | string | By der eiendommen ligger |
+| `country_code` | string | ISO 3166-1 alpha-2 landkode |
+| `start_date` | string | Innsjekkingsdato i `YYYY-MM-DD` format |
+| `end_date` | string | Utsjekkingsdato i `YYYY-MM-DD` format |
+| `num_adults` | number | Antall voksne i bestillingen |
+| `num_children` | number | Antall barn i bestillingen |
+| `cancellation_policy` | string | En av: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Identifikator for prisplan |
+| `room_rate_id` | string | Identifikator for spesifikk rompris |
+| `room_rate_name` | string | Visningsnavn på romprisen |
+| `num_perks` | number | Antall fordeler inkludert i prisen |
+| `room_location` | string | Lokasjonsbeskrivelse for rommet (f.eks. `Overwater`, `Garden`) |
+| `room_view` | string | Utsiktsbeskrivelse for rommet (f.eks. `Ocean`, `City`) |
+| `room_classification` | string | Romklassifisering eller nivå (f.eks. `Suite`, `Standard`) |
+
+---
+
+### Egendefinerte dimensjoner i GA4
+
+GA4 ignorerer tilpassede elementparametere i rapporter inntil du eksplisitt registrerer dem som element-spesifikke egendefinerte dimensjoner. Du trenger kun å registrere de parameterne du har tenkt å bruke i rapporter — ikke alle 18.
+
+<Steps>
+
+1. **Åpne Custom Definitions**
+
+   I GA4, gå til **Admin** (tannhjul nederst til venstre) → velg din eiendom → **Data display** → **Custom definitions**.
+
+2. **Opprett en ny egendefinert dimensjon**
+
+   Klikk **Create custom dimensions**.
+
+3. **Fyll ut dimensjonsdetaljer**
+
+   - **Dimension name** — det lesbare navnet som vises i GA4-rapporter (se tabell nedenfor)
+   - **Scope** — velg **Item**
+   - **Event parameter** — nøyaktig parameter-navn som det vises i dataLayer (se tabell nedenfor)
+   - **Description** — valgfritt, men anbefalt
+
+4. **Lagre og gjenta**
+
+   Klikk **Save**, og gjenta for hver parameter du vil spore.
+
+</Steps>
+
+<Aside type="note">
+Egendefinerte dimensjoner kan ta opptil 24 timer før de begynner å vises i GA4-rapporter etter registrering. Historiske data samlet før registrering blir ikke etterfylt.
+
+GA4 tillater opptil 50 element-spesifikke egendefinerte dimensjoner per eiendom på standard eiendommer (360-eiendommer tillater flere).
+</Aside>
+
+Bruk følgende tabell som referanse når du oppretter egendefinerte dimensjoner. **Event parameter**-verdien må stemme nøyaktig — GA4 er store/små bokstav-sensitiv.
+
+| Dimensjonsnavn | Event parameter | Type |
+|----------------|-----------------|------|
+| Property ID | `property_id` | Tekst |
+| Property name | `property_name` | Tekst |
+| Property brand | `property_brand` | Tekst |
+| Property chain | `property_chain` | Tekst |
+| City name | `city_name` | Tekst |
+| Country code | `country_code` | Tekst |
+| Check-in date | `start_date` | Tekst |
+| Check-out date | `end_date` | Tekst |
+| Number of adults | `num_adults` | Nummer |
+| Number of children | `num_children` | Nummer |
+| Cancellation policy | `cancellation_policy` | Tekst |
+| Rate plan ID | `rate_plan_id` | Tekst |
+| Room rate ID | `room_rate_id` | Tekst |
+| Room rate name | `room_rate_name` | Tekst |
+| Number of perks | `num_perks` | Nummer |
+| Room location | `room_location` | Tekst |
+| Room view | `room_view` | Tekst |
+| Room classification | `room_classification` | Tekst |
+
+---
+
+### Ytterligere tilgjengelige hendelser
+
+Følgende hendelser er tilgjengelige i Wink dataLayer, men er ikke en del av standard bestillingsprosess. De kan aktiveres av andre interaksjoner på plattformen.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Ingen `ecommerce`-payload er inkludert med denne hendelsen.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Dette er en tilpasset Wink-hendelse — ikke en del av standard GA4-hendelsessett. Den sendes ved hver sidetrafikk og inneholder enhets- og sesjonskontekst. Den inkluderer ikke et `ecommerce`-objekt.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Egenskap | Beskrivelse |
+|----------|-------------|
+| `device` | Oppdaget enhetstype — `Desktop`, `Android`, `iPhone`, `iPad` eller lignende |
+| `deviceAgent` | Rå brukeragent-streng |
+| `os` | Oppdaget operativsystem — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Nåværende sidebane |
+| `title` | Nåværende sidetittel |
+| `userId` | Autentisert brukeridentifikator (utelatt når ikke logget inn) |
+| `startDate` | Innsjekkingsdato fra gjeldende søkesesjon |
+| `endDate` | Utsjekkingsdato fra gjeldende søkesesjon |
+| `guests` | Antall gjester fra gjeldende søkesesjon |
+| `rooms` | Antall rom fra gjeldende søkesesjon |

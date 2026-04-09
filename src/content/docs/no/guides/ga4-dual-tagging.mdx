@@ -1,0 +1,140 @@
+---
+title: GA4 Analytics-integrasjon
+description: Hvordan koble din egen Google Analytics 4-eiendom til Wink slik at du kan spore dine bestillinger, inntekter og gjestereise direkte i ditt eget GA4-dashboard.
+sidebar:
+  label: GA4 Analytics-integrasjon
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Ved å koble din Google Analytics 4-eiendom til Wink, blir dine bestillingshendelser — fra romvisninger til fullførte kjøp — automatisk sendt til ditt eget GA4-dashboard sammen med Winks egne analyser. Ingen koding, ingen teknisk oppsett på din side.
+
+<Aside type="tip">
+Alt du trenger er en GA4 Measurement ID. Når den er lagt inn i Wink-portalen, er analysene dine aktive umiddelbart.
+</Aside>
+
+---
+
+## Slik fungerer det
+
+```
+Du legger inn din G-XXXXXXXXXX i Wink-portalen
+       ↓
+Wink sender dine bestillingshendelser til din GA4-eiendom
+       ↓
+Du logger inn på analytics.google.com og ser dine bestillinger
+```
+
+---
+
+## Hva du må gjøre
+
+<Steps>
+
+1. **Opprett en GA4-eiendom**
+
+   Gå til [analytics.google.com](https://analytics.google.com): Admin → Opprett eiendom. Sett tidssone og valuta til å matche ditt marked.
+
+2. **Opprett en webdatastream**
+
+   Admin → Data Streams → Legg til stream → Web. Skriv inn `wink.travel` som URL. Dette genererer din **Measurement ID** (`G-XXXXXXXXXX`). Kopier den.
+
+3. **Legg inn Measurement ID i Wink-portalen**
+
+   Logg inn på [my.wink.travel](https://my.wink.travel), velg kontoen din, og gå til fanen **Tilpasninger**. Lim inn Measurement ID der og lagre. Det er alt — din GA4-integrasjon er nå aktiv.
+
+4. **Marker `purchase` som en nøkkelhendelse**
+
+   Gå tilbake til din GA4-eiendom: Admin → Hendelser → finn `purchase` → slå på **Marker som nøkkelhendelse**. Dette gjør at fullførte bestillinger vises i rapporten for konverteringer.
+
+5. **Se dine data**
+
+   Logg inn på [analytics.google.com](https://analytics.google.com) og du vil se dine bestillinger, inntekter og gjestetrakt — alt sporet automatisk gjennom Wink.
+
+</Steps>
+
+<Aside type="note">
+Du trenger ikke å installere noen sporingskode på ditt eget nettsted for denne integrasjonen. Wink håndterer alt. Din Measurement ID er bare destinasjonen hvor bestillingsdataene dine sendes.
+</Aside>
+
+---
+
+## Hva du kan spore
+
+Når tilkoblet mottar din GA4-eiendom hele settet med Enhanced E-commerce-hendelser for din eiendom:
+
+### Oppdagelse
+
+| Hendelse | Hva det betyr |
+|---|---|
+| `view_item_list` | En gjest så din eiendom i et søk eller kategoriliste |
+| `select_item` | En gjest klikket på din eiendom fra en liste |
+| `view_item` | En gjest så på din hotells detaljside |
+
+### Vurdering
+
+| Hendelse | Hva det betyr |
+|---|---|
+| `view_promotion` | En gjest så et kampanjetilbud for din eiendom |
+| `select_promotion` | En gjest klikket på et kampanjetilbud |
+| `add_to_wishlist` | En gjest lagret din eiendom i ønskelisten sin |
+
+### Bestillingstrakt
+
+| Hendelse | Hva det betyr |
+|---|---|
+| `add_to_cart` | En gjest valgte et rom eller pakke |
+| `view_cart` | En gjest så på sin bestillingsoppsummering |
+| `remove_from_cart` | En gjest fjernet et rom eller pakke |
+| `begin_checkout` | En gjest startet utsjekkingsprosessen |
+| `add_payment_info` | En gjest la inn betalingsinformasjon |
+| `add_shipping_info` | En gjest la inn gjestedetaljer |
+| `purchase` | En gjest fullførte en bestilling |
+| `refund` | En bestilling ble kansellert og refundert |
+
+Alle hendelser inkluderer relevante dimensjoner som inntekt, valuta, romtype og bestillingsverdi — som gir deg et komplett bilde av gjestereisen fra første inntrykk til fullført bestilling.
+
+---
+
+## Kryss-domene-sporing (avansert)
+
+Standardintegrasjonen over sporer alt som skjer innenfor Wink. Men hvis du vil spore gjester helt fra ditt eget nettsted til fullført bestilling på Wink — og korrekt tilskrive den opprinnelige trafikkilden (Google Ads, e-postkampanjer, organisk søk osv.) — kreves ett ekstra steg på hver side.
+
+<Aside type="caution">
+Denne delen gjelder kun hvis du har GA4 installert på ditt eget nettsted. Hvis du ikke bruker GA4 på ditt nettsted, er standardintegrasjonen over alt du trenger.
+</Aside>
+
+### Hvorfor dette er viktig
+
+Uten kryss-domene-sporing vil en gjest som først besøker ditt nettsted og deretter bestiller på Wink, vises i GA4 som en **Direkte** økt uten tilknytning til det tidligere besøket. Eventuelle Google Ads-klikk, e-postkampanjer eller organiske søk som ledet til bestillingen vil ikke få kreditt.
+
+Med kryss-domene-sporing konfigurert ser du hele gjestereisen:
+
+```
+google.com (betalt annonse)
+       ↓
+ditt nettsted (gjest blar i rom)
+       ↓
+wink.travel (gjest velger rom og bestiller)
+       ↓
+kjøp tilskrives korrekt til det opprinnelige Google Ads-klikket
+```
+
+### Handling påkrevd: Du
+
+Konfigurer din GA4-eiendom til å gjenkjenne `wink.travel` som en del av ditt eget domene, ikke som en ekstern henvisning. Dette forteller GA4 å sy sammen de to øktene til én kontinuerlig gjestereise.
+
+<Steps>
+1. GA4 Admin → Data Streams → din stream
+2. Konfigurer tag-innstillinger → **Konfigurer dine domener**
+3. Legg til `wink.travel` som et koblet domene
+4. Lagre
+</Steps>
+
+### Handling påkrevd: Wink
+
+Kontakt [Wink Support](https://my.wink.travel) og oppgi ditt nettsteddomene (f.eks. `ditthotell.com`). Wink vil legge til ditt domene i eksklusjonslisten for henvisninger i Wink GA4-eiendom. Dette forhindrer at ditt nettsted blir registrert som en henvisningskilde, noe som ellers ville overskrevet gjestens opprinnelige tilskrivning og startet en ny økt.
+
+<Aside type="tip">
+Standardintegrasjonen over er tilstrekkelig for de fleste eiendommer og gir deg umiddelbar innsikt i bestillinger og inntekter på Wink. Kryss-domene-sporing er et avansert alternativ som er verdt å sette opp når du er komfortabel med GA4-dataene dine og ønsker dypere tilskrivningsinnsikt.
+</Aside>

@@ -1,0 +1,676 @@
+---
+title: Integracija Sojern Pixel-a
+description: Kako povezati vaš Sojern nalog sa Wink-om kako bi Sojern mogao pratiti putanju rezervacije vaših gostiju i podržati vaše kampanje za retargeting i oglašavanje.
+sidebar:
+  label: Integracija Sojern Pixel-a
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Ako vodite oglasne kampanje preko Sojern-a, možete povezati vaš Sojern nalog sa Wink-om unošenjem vašeg Sojern GTM Container ID u Wink portal. Kada je povezano, Sojern-ov praćenje piksela se automatski aktivira za vašu nekretninu — pokrivajući ceo put gosta od pretrage do završene rezervacije.
+
+<Aside type="tip">
+Ovo podrazumeva da već imate aktivan Sojern nalog i da ste dobili vaš GTM Container ID od vašeg Sojern menadžera naloga. Ako još nemate Sojern nalog, posetite [sojern.com/contact](https://www.sojern.com/contact) da započnete.
+</Aside>
+
+---
+
+## Šta treba da uradite
+
+<Steps>
+
+1. **Preuzmite vaš GTM Container ID od Sojern-a**
+
+   Kontaktirajte vašeg Sojern menadžera naloga i zatražite vaš **GTM Container ID**. On ima format `GTM-XXXXXXX`. Ovo se razlikuje od vašeg Sojern Pixel ID — obavezno tražite baš GTM Container ID.
+
+2. **Unesite ga u Wink portal**
+
+   Prijavite se na [my.wink.travel](https://my.wink.travel), izaberite vaš nalog i idite na karticu **Customizations**. Nalepite vaš Sojern GTM Container ID u polje za Sojern i sačuvajte. Vaša integracija je sada aktivna.
+
+3. **Potvrdite sa vašim Sojern menadžerom naloga**
+
+   Obavestite vašeg Sojern menadžera naloga da je integracija aktivna. Oni mogu sa svoje strane proveriti da li se piksel ispravno aktivira na `wink.travel` za vašu nekretninu i da li podaci stižu u vaš Sojern nalog.
+
+</Steps>
+
+<Aside type="note">
+Ne morate postavljati nikakav kod piksela na vašem sajtu za ovu integraciju. Wink automatski učitava vaš Sojern kontejner na svim stranicama gde je vaša nekretnina aktivna.
+
+Ova konfiguracija radi za bilo koji prilagođeni GTM Container ID. Sojern smo koristili samo kao primer jer je to vrlo česta integracija.
+</Aside>
+
+---
+
+## Šta Wink radi sa naše strane
+
+Za transparentnost, evo šta Wink konfiguriše da bi ova integracija funkcionisala:
+
+- **Polje za Sojern GTM Container ID** dostupno je u kartici Customizations u vašem Wink portalu. Kada unesete vaš Container ID, Wink proverava format i sigurno ga čuva povezano sa vašom nekretninom.
+- **Na svakoj stranici gde je vaša nekretnina aktivna** na Wink-u, vaš Sojern GTM Container ID se ubacuje u stranicu i Wink-ov sistem za upravljanje tagovima dinamički učitava vaš Sojern kontejner zajedno sa svojim. Ovo se dešava automatski — nisu potrebni ručni koraci od Wink tima po nekretnini.
+- **Vaš Sojern kontejner se učitava asinhrono**, što znači da ne utiče na performanse učitavanja stranice za vaše goste.
+- **Wink-ovo sopstveno praćenje i vaš Sojern piksel rade paralelno**, čitajući iz istih zajedničkih podataka o događajima. Svaki događaj rezervacije koji Wink prati je istovremeno dostupan vašem Sojern kontejneru.
+- **Kada vaša nekretnina nije pregledana** — na primer, kada gost pregleda drugi hotel na Wink-u — vaš Sojern kontejner se ne učitava. Ovo osigurava da Sojern prima samo podatke relevantne za vašu nekretninu.
+
+---
+
+## Referenca DataLayer-a
+
+Wink šalje GA4-kompatibilne događaje u `dataLayer` tokom celog puta gosta. Vaš GTM kontejner čita iz istog zajedničkog `dataLayer`-a, tako da svaki okidač ili promenljiva koju konfigurišete ima pristup svim svojstvima opisanima ispod.
+
+Svaki događaj prati standardnu GA4 Enhanced Ecommerce strukturu: string `event` na vrhu i objekat `ecommerce`. Pre svakog slanja, Wink briše prethodni ecommerce sadržaj da spreči zastarele podatke da utiču na nove okidače.
+
+<Aside type="note">
+**Šablon resetovanja dataLayer-a**
+
+Wink resetuje ecommerce objekat pre svakog slanja događaja:
+
+```js
+dataLayer.push({ ecommerce: null });   // briše prethodni događaj
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Nemojte se oslanjati na to da ecommerce svojstva ostaju između događaja. Uvek ih čitajte u trenutku okidača unutar istog događaja.
+</Aside>
+
+---
+
+### Događaji tokom puta rezervacije
+
+Ovi događaji se automatski aktiviraju dok gost prolazi kroz tok rezervacije. Konfigurišite vaše GTM okidače kao **Custom Event** okidače koji odgovaraju imenima događaja ispod.
+
+| Korak | Događaj | Kada se aktivira |
+|-------|---------|------------------|
+| 1 | `view_item_list` | Učitava se mreža ili lista hotela |
+| 2 | `view_item` | Gost pregleda stranicu određene nekretnine |
+| 3 | `add_to_cart` | Gost dodaje sobu u korpu |
+| 4 | `begin_checkout` | Učitava se stranica za plaćanje / naplatu |
+| 5 | `add_payment_info` | Gost bira način plaćanja |
+| 6 | `login` | Gost se autentifikuje putem SSO |
+| 7 | `purchase` | Rezervacija je potvrđena |
+| 8 | `refund` | Rezervacija je otkazana |
+
+---
+
+#### `view_item_list`
+
+Aktivira se kada se prikaže mreža ili lista hotela.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Aktivira se kada gost pregleda određenu nekretninu.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Aktivira se kada gost doda sobu u korpu.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Aktivira se kada se učita stranica za plaćanje / naplatu.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` je prisutan samo kada je primenjen kod za popust.
+
+---
+
+#### `add_payment_info`
+
+Aktivira se kada gost izabere ili potvrdi način plaćanja.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` se popunjava iz tipa platnog procesora. `coupon` je prisutan samo kada je primenjen kod za popust.
+
+---
+
+#### `login`
+
+Aktivira se kada se gost autentifikuje putem jedinstvene prijave (SSO).
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Aktivira se kada je rezervacija potvrđena.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` je jedinstveni identifikator ugovora o rezervaciji. `coupon`, `shipping` i `tax` su prisutni samo kada su primenjivi.
+
+---
+
+#### `refund`
+
+Aktivira se kada je rezervacija otkazana.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` odgovara `purchase` događaju za istu rezervaciju. `coupon`, `shipping` i `tax` su prisutni samo kada su primenjivi.
+
+---
+
+### Svojstva stavki
+
+Svi događaji koji uključuju niz `items` dele isti šablon stavke. Svako svojstvo je opciono osim ako nije označeno kao obavezno.
+
+#### Standardna GA4 polja
+
+Ova polja GA4 nativno prepoznaje i pojavljuju se u standardnim ecommerce izveštajima bez dodatne konfiguracije.
+
+| Svojstvo | Tip | Obavezno | Opis |
+|----------|-----|----------|------|
+| `item_id` | string | Da | Jedinstveni identifikator sobe ili proizvoda |
+| `item_name` | string | — | Naziv sobe ili proizvoda |
+| `affiliation` | string | — | Ime partnera ili prodavca |
+| `coupon` | string | — | Primenjeni kupon kod na stavku |
+| `currency` | string | — | ISO 4217 kod valute (npr. `USD`) |
+| `creative_name` | string | — | Naziv kreativnog materijala u promociji |
+| `creative_slot` | string | — | Pozicija kreativnog materijala u promociji |
+| `discount` | number | — | Iznos popusta |
+| `index` | number | — | Pozicija u listi (počinjajući od 1) |
+| `item_brand` | string | — | Naziv hotela ili brenda |
+| `item_category` | string | — | Tip proizvoda — npr. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | Identifikator liste kojoj stavka pripada |
+| `item_list_name` | string | — | Prikazni naziv liste |
+| `location_id` | string | — | Geografske koordinate nekretnine |
+| `price` | number | — | Jedinična cena |
+| `promotion_id` | string | — | Identifikator promocije |
+| `promotion_name` | string | — | Prikazni naziv promocije |
+| `quantity` | number | — | Količina (podrazumevano `1`) |
+
+#### Prilagođeni parametri vezani za stavku
+
+Ovi parametri nose Wink-specifičan kontekst rezervacije. GA4 ih ne prikazuje automatski u izveštajima — morate svaki registrovati kao **prilagođenu dimenziju vezanu za stavku** u vašem GA4 nalogu pre nego što se pojave u izveštajima ili istraživanjima. Pogledajte [Prilagođene dimenzije u GA4](#custom-dimensions-in-ga4) ispod za uputstva.
+
+| Svojstvo | Tip | Opis |
+|----------|-----|------|
+| `property_id` | string | Identifikator Wink nekretnine |
+| `property_name` | string | Prikazni naziv nekretnine |
+| `property_brand` | string | Brend kojem nekretnina pripada |
+| `property_chain` | string | Lanac kojem nekretnina pripada |
+| `city_name` | string | Grad u kome se nekretnina nalazi |
+| `country_code` | string | ISO 3166-1 alpha-2 kod države |
+| `start_date` | string | Datum prijave u formatu `YYYY-MM-DD` |
+| `end_date` | string | Datum odjave u formatu `YYYY-MM-DD` |
+| `num_adults` | number | Broj odraslih u rezervaciji |
+| `num_children` | number | Broj dece u rezervaciji |
+| `cancellation_policy` | string | Jedna od vrednosti: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Identifikator cenovnog plana |
+| `room_rate_id` | string | Identifikator specifične cene sobe |
+| `room_rate_name` | string | Prikazni naziv cene sobe |
+| `num_perks` | number | Broj pogodnosti uključenih u cenu |
+| `room_location` | string | Opis lokacije sobe (npr. `Overwater`, `Garden`) |
+| `room_view` | string | Opis pogleda iz sobe (npr. `Ocean`, `City`) |
+| `room_classification` | string | Klasifikacija ili kategorija sobe (npr. `Suite`, `Standard`) |
+
+---
+
+### Prilagođene dimenzije u GA4
+
+GA4 ignoriše prilagođene parametre vezane za stavku u izveštajima dok ih eksplicitno ne registrujete kao dimenzije vezane za stavku. Potrebno je registrovati samo one parametre koje planirate da koristite u izveštajima — nije potrebno registrovati svih 18.
+
+<Steps>
+
+1. **Otvorite Custom Definitions**
+
+   U GA4, idite na **Admin** (ikona zupčanika dole levo) → izaberite vašu nekretninu → **Data display** → **Custom definitions**.
+
+2. **Kreirajte novu prilagođenu dimenziju**
+
+   Kliknite na **Create custom dimensions**.
+
+3. **Popunite detalje dimenzije**
+
+   - **Dimension name** — čitljiv naziv koji se pojavljuje u GA4 izveštajima (pogledajte tabelu ispod)
+   - **Scope** — izaberite **Item**
+   - **Event parameter** — tačan naziv parametra kako se pojavljuje u dataLayer-u (pogledajte tabelu ispod)
+   - **Description** — opciono, ali preporučeno
+
+4. **Sačuvajte i ponovite**
+
+   Kliknite **Save**, zatim ponovite za svaki parametar koji želite da pratite.
+
+</Steps>
+
+<Aside type="note">
+Prilagođene dimenzije mogu početi da se pojavljuju u GA4 izveštajima do 24 sata nakon registracije. Istorijski podaci prikupljeni pre registracije se ne popunjavaju naknadno.
+
+GA4 dozvoljava do 50 prilagođenih dimenzija vezanih za stavku po nekretnini na standardnim nekretninama (360 nekretnine dozvoljavaju više).
+</Aside>
+
+Koristite sledeću tabelu kao referencu prilikom kreiranja prilagođenih dimenzija. Vrednost **Event parameter** mora biti tačna — GA4 razlikuje velika i mala slova.
+
+| Naziv dimenzije | Event parameter | Tip |
+|-----------------|-----------------|-----|
+| Property ID | `property_id` | Tekst |
+| Property name | `property_name` | Tekst |
+| Property brand | `property_brand` | Tekst |
+| Property chain | `property_chain` | Tekst |
+| City name | `city_name` | Tekst |
+| Country code | `country_code` | Tekst |
+| Check-in date | `start_date` | Tekst |
+| Check-out date | `end_date` | Tekst |
+| Number of adults | `num_adults` | Broj |
+| Number of children | `num_children` | Broj |
+| Cancellation policy | `cancellation_policy` | Tekst |
+| Rate plan ID | `rate_plan_id` | Tekst |
+| Room rate ID | `room_rate_id` | Tekst |
+| Room rate name | `room_rate_name` | Tekst |
+| Number of perks | `num_perks` | Broj |
+| Room location | `room_location` | Tekst |
+| Room view | `room_view` | Tekst |
+| Room classification | `room_classification` | Tekst |
+
+---
+
+### Dodatni dostupni događaji
+
+Sledeći događaji su dostupni u Wink dataLayer-u, ali nisu deo standardnog toka rezervacije. Mogu biti aktivirani drugim interakcijama na platformi.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Ovaj događaj ne sadrži `ecommerce` objekat.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Ovo je prilagođeni Wink događaj — nije deo standardnog GA4 seta događaja. Aktivira se pri svakoj navigaciji stranice i nosi kontekst uređaja i sesije. Ne uključuje `ecommerce` objekat.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Svojstvo | Opis |
+|----------|------|
+| `device` | Detektovani tip uređaja — `Desktop`, `Android`, `iPhone`, `iPad` ili slično |
+| `deviceAgent` | Originalni user agent string |
+| `os` | Detektovani operativni sistem — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Trenutna putanja stranice |
+| `title` | Trenutni naslov stranice |
+| `userId` | Identifikator autentifikovanog korisnika (izostavljen ako nije prijavljen) |
+| `startDate` | Datum prijave iz trenutne sesije pretrage |
+| `endDate` | Datum odjave iz trenutne sesije pretrage |
+| `guests` | Broj gostiju iz trenutne sesije pretrage |
+| `rooms` | Broj soba iz trenutne sesije pretrage |

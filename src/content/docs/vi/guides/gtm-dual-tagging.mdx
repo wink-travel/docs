@@ -1,0 +1,676 @@
+---
+title: Tích Hợp Sojern Pixel
+description: Cách kết nối tài khoản Sojern của bạn với Wink để Sojern có thể theo dõi hành trình đặt phòng của khách và hỗ trợ các chiến dịch tiếp thị lại và quảng cáo của bạn.
+sidebar:
+  label: Tích Hợp Sojern Pixel
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Nếu bạn đang chạy các chiến dịch quảng cáo qua Sojern, bạn có thể kết nối tài khoản Sojern của mình với Wink bằng cách nhập ID Container GTM của Sojern vào cổng thông tin Wink. Khi đã kết nối, pixel theo dõi của Sojern sẽ tự động kích hoạt cho cơ sở lưu trú của bạn — bao phủ toàn bộ hành trình của khách từ tìm kiếm đến khi hoàn tất đặt phòng.
+
+<Aside type="tip">
+Điều này giả định bạn đã có tài khoản Sojern hoạt động và đã nhận được ID Container GTM từ quản lý tài khoản Sojern của bạn. Nếu bạn chưa có tài khoản Sojern, hãy truy cập [sojern.com/contact](https://www.sojern.com/contact) để bắt đầu.
+</Aside>
+
+---
+
+## Những Việc Bạn Cần Làm
+
+<Steps>
+
+1. **Lấy ID Container GTM từ Sojern**
+
+   Liên hệ với quản lý tài khoản Sojern của bạn và yêu cầu **ID Container GTM**. Nó có định dạng `GTM-XXXXXXX`. Đây khác với ID Pixel Sojern — hãy chắc chắn bạn yêu cầu đúng ID Container GTM.
+
+2. **Nhập ID vào Cổng Thông Tin Wink**
+
+   Đăng nhập vào [my.wink.travel](https://my.wink.travel), chọn tài khoản của bạn, và vào tab **Tùy chỉnh**. Dán ID Container GTM của Sojern vào trường Sojern và lưu lại. Việc tích hợp của bạn giờ đã hoạt động.
+
+3. **Xác Nhận với Quản Lý Tài Khoản Sojern**
+
+   Thông báo cho quản lý tài khoản Sojern biết tích hợp đã kích hoạt. Họ có thể kiểm tra từ phía họ rằng pixel đang hoạt động chính xác trên `wink.travel` cho cơ sở lưu trú của bạn và dữ liệu đang chảy vào tài khoản Sojern của bạn.
+
+</Steps>
+
+<Aside type="note">
+Bạn không cần đặt bất kỳ mã pixel nào trên trang web của riêng bạn cho tích hợp này. Wink tự động tải container Sojern của bạn trên tất cả các trang mà cơ sở lưu trú của bạn hoạt động.
+
+Cấu hình này hoạt động với bất kỳ ID Container GTM tùy chỉnh nào. Chúng tôi chỉ dùng Sojern làm ví dụ vì đây là một tích hợp rất phổ biến.
+</Aside>
+
+---
+
+## Wink Làm Gì Ở Phía Chúng Tôi
+
+Để minh bạch, đây là những gì Wink cấu hình để tích hợp này hoạt động:
+
+- **Có một trường ID Container GTM Sojern** trong tab Tùy chỉnh của cổng thông tin Wink. Khi bạn nhập ID Container, Wink kiểm tra định dạng và lưu trữ an toàn theo cơ sở lưu trú của bạn.
+- **Trên mỗi trang mà cơ sở lưu trú của bạn hoạt động** trên Wink, ID Container GTM Sojern của bạn được chèn vào trang và hệ thống quản lý thẻ của Wink sẽ tải container Sojern của bạn cùng với container của mình. Việc này diễn ra tự động — không cần bước thủ công nào từ đội Wink cho từng cơ sở lưu trú.
+- **Container Sojern của bạn được tải không đồng bộ**, nghĩa là không ảnh hưởng đến hiệu suất tải trang cho khách.
+- **Pixel theo dõi của Wink và pixel Sojern chạy song song**, cùng đọc dữ liệu sự kiện chia sẻ. Mỗi sự kiện đặt phòng mà Wink theo dõi đều có sẵn đồng thời cho container Sojern của bạn.
+- **Khi cơ sở lưu trú của bạn không được xem** — ví dụ khi khách đang duyệt một khách sạn khác trên Wink — container Sojern của bạn sẽ không được tải. Điều này đảm bảo Sojern chỉ nhận dữ liệu liên quan đến cơ sở lưu trú của bạn.
+
+---
+
+## Tham Chiếu DataLayer
+
+Wink đẩy các sự kiện tương thích GA4 vào `dataLayer` xuyên suốt hành trình khách. Container GTM của bạn đọc từ cùng một `dataLayer` chia sẻ này, nên bất kỳ trigger hoặc biến nào bạn cấu hình đều có thể truy cập tất cả các thuộc tính mô tả bên dưới.
+
+Mỗi sự kiện tuân theo cấu trúc GA4 Enhanced Ecommerce tiêu chuẩn: một chuỗi `event` cấp cao và một đối tượng `ecommerce`. Trước mỗi lần đẩy, Wink xóa payload ecommerce trước đó để tránh dữ liệu cũ bị rò rỉ vào các trigger mới.
+
+<Aside type="note">
+**Mẫu reset dataLayer**
+
+Wink đặt lại đối tượng ecommerce trước mỗi lần đẩy sự kiện:
+
+```js
+dataLayer.push({ ecommerce: null });   // xóa sự kiện trước
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Không dựa vào việc các thuộc tính ecommerce tồn tại giữa các sự kiện. Luôn đọc chúng tại thời điểm trigger trong cùng một sự kiện.
+</Aside>
+
+---
+
+### Các Sự Kiện Hành Trình Đặt Phòng
+
+Các sự kiện này tự động kích hoạt khi khách di chuyển qua phễu đặt phòng. Cấu hình trigger GTM của bạn là trigger **Sự kiện Tùy chỉnh** khớp với tên sự kiện bên dưới.
+
+| Bước | Sự kiện | Khi nào kích hoạt |
+|------|---------|-------------------|
+| 1 | `view_item_list` | Lưới hoặc danh sách kho khách sạn được tải |
+| 2 | `view_item` | Khách xem trang cơ sở lưu trú cụ thể |
+| 3 | `add_to_cart` | Khách thêm phòng vào giỏ hàng |
+| 4 | `begin_checkout` | Trang thanh toán / thanh toán được tải |
+| 5 | `add_payment_info` | Khách chọn phương thức thanh toán |
+| 6 | `login` | Khách xác thực qua SSO |
+| 7 | `purchase` | Đặt phòng được xác nhận |
+| 8 | `refund` | Đặt phòng bị hủy |
+
+---
+
+#### `view_item_list`
+
+Kích hoạt khi lưới hoặc danh sách kho khách sạn được hiển thị.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Kích hoạt khi khách xem một cơ sở lưu trú cụ thể.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Kích hoạt khi khách thêm phòng vào giỏ hàng.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Kích hoạt khi trang thanh toán được tải.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` chỉ xuất hiện khi mã giảm giá được áp dụng.
+
+---
+
+#### `add_payment_info`
+
+Kích hoạt khi khách chọn hoặc xác nhận phương thức thanh toán.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` được lấy từ loại nhà cung cấp thanh toán. `coupon` chỉ xuất hiện khi mã giảm giá được áp dụng.
+
+---
+
+#### `login`
+
+Kích hoạt khi khách xác thực qua đăng nhập một lần (SSO).
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Kích hoạt khi đặt phòng được xác nhận.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` là mã định danh hợp đồng đặt phòng duy nhất. `coupon`, `shipping`, và `tax` chỉ xuất hiện khi có áp dụng.
+
+---
+
+#### `refund`
+
+Kích hoạt khi đặt phòng bị hủy.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` trùng với sự kiện `purchase` của cùng một đặt phòng. `coupon`, `shipping`, và `tax` chỉ xuất hiện khi có áp dụng.
+
+---
+
+### Thuộc Tính Mục
+
+Tất cả các sự kiện có mảng `items` đều dùng chung cấu trúc mục. Mỗi thuộc tính là tùy chọn trừ khi được đánh dấu bắt buộc.
+
+#### Các trường GA4 tiêu chuẩn
+
+Các trường này được GA4 hiểu mặc định và xuất hiện trong báo cáo ecommerce tiêu chuẩn mà không cần cấu hình thêm.
+
+| Thuộc tính | Kiểu | Bắt buộc | Mô tả |
+|------------|------|----------|-------|
+| `item_id` | chuỗi | Có | Mã định danh duy nhất cho phòng hoặc sản phẩm |
+| `item_name` | chuỗi | — | Tên phòng hoặc sản phẩm |
+| `affiliation` | chuỗi | — | Tên đối tác hoặc người bán |
+| `coupon` | chuỗi | — | Mã giảm giá áp dụng cho mục |
+| `currency` | chuỗi | — | Mã tiền tệ ISO 4217 (ví dụ `USD`) |
+| `creative_name` | chuỗi | — | Tên sáng tạo dùng trong khuyến mãi |
+| `creative_slot` | chuỗi | — | Vị trí hiển thị của sáng tạo khuyến mãi |
+| `discount` | số | — | Số tiền giảm giá áp dụng |
+| `index` | số | — | Vị trí trong danh sách (bắt đầu từ 1) |
+| `item_brand` | chuỗi | — | Tên khách sạn hoặc thương hiệu |
+| `item_category` | chuỗi | — | Loại sản phẩm — ví dụ `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | chuỗi | — | Mã định danh danh sách chứa mục này |
+| `item_list_name` | chuỗi | — | Tên hiển thị của danh sách |
+| `location_id` | chuỗi | — | Tọa độ địa lý của cơ sở lưu trú |
+| `price` | số | — | Giá đơn vị |
+| `promotion_id` | chuỗi | — | Mã định danh khuyến mãi |
+| `promotion_name` | chuỗi | — | Tên hiển thị khuyến mãi |
+| `quantity` | số | — | Số lượng (mặc định `1`) |
+
+#### Tham số tùy chỉnh theo mục
+
+Các tham số này mang ngữ cảnh đặt phòng đặc thù của Wink. GA4 không tự động hiển thị trong báo cáo — bạn phải đăng ký từng tham số này làm **thuộc tính tùy chỉnh theo mục** trong tài sản GA4 của bạn trước khi nó xuất hiện trong báo cáo hoặc phân tích. Xem phần [Thuộc tính Tùy chỉnh trong GA4](#custom-dimensions-in-ga4) bên dưới để biết hướng dẫn.
+
+| Thuộc tính | Kiểu | Mô tả |
+|------------|------|-------|
+| `property_id` | chuỗi | Mã định danh cơ sở lưu trú Wink |
+| `property_name` | chuỗi | Tên hiển thị cơ sở lưu trú |
+| `property_brand` | chuỗi | Thương hiệu cơ sở lưu trú thuộc về |
+| `property_chain` | chuỗi | Chuỗi khách sạn cơ sở lưu trú thuộc về |
+| `city_name` | chuỗi | Thành phố nơi cơ sở lưu trú tọa lạc |
+| `country_code` | chuỗi | Mã quốc gia ISO 3166-1 alpha-2 |
+| `start_date` | chuỗi | Ngày nhận phòng theo định dạng `YYYY-MM-DD` |
+| `end_date` | chuỗi | Ngày trả phòng theo định dạng `YYYY-MM-DD` |
+| `num_adults` | số | Số người lớn trong đặt phòng |
+| `num_children` | số | Số trẻ em trong đặt phòng |
+| `cancellation_policy` | chuỗi | Một trong các giá trị: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | chuỗi | Mã định danh kế hoạch giá |
+| `room_rate_id` | chuỗi | Mã định danh mức giá phòng cụ thể |
+| `room_rate_name` | chuỗi | Tên hiển thị mức giá phòng |
+| `num_perks` | số | Số ưu đãi kèm theo mức giá |
+| `room_location` | chuỗi | Mô tả vị trí phòng (ví dụ `Overwater`, `Garden`) |
+| `room_view` | chuỗi | Mô tả tầm nhìn phòng (ví dụ `Ocean`, `City`) |
+| `room_classification` | chuỗi | Phân loại hoặc hạng phòng (ví dụ `Suite`, `Standard`) |
+
+---
+
+### Thuộc Tính Tùy Chỉnh trong GA4
+
+GA4 bỏ qua các tham số tùy chỉnh theo mục trong báo cáo cho đến khi bạn đăng ký chúng rõ ràng là thuộc tính tùy chỉnh theo mục. Bạn chỉ cần đăng ký các tham số bạn dự định dùng trong báo cáo — không cần đăng ký tất cả 18 tham số.
+
+<Steps>
+
+1. **Mở Định nghĩa Tùy chỉnh**
+
+   Trong GA4, vào **Admin** (biểu tượng bánh răng dưới cùng bên trái) → chọn tài sản của bạn → **Hiển thị dữ liệu** → **Định nghĩa tùy chỉnh**.
+
+2. **Tạo thuộc tính tùy chỉnh mới**
+
+   Nhấn **Tạo thuộc tính tùy chỉnh**.
+
+3. **Điền thông tin thuộc tính**
+
+   - **Tên thuộc tính** — nhãn dễ hiểu hiển thị trong báo cáo GA4 (xem bảng bên dưới)
+   - **Phạm vi** — chọn **Mục**
+   - **Tham số sự kiện** — tên tham số chính xác như trong dataLayer (xem bảng bên dưới)
+   - **Mô tả** — tùy chọn nhưng nên có
+
+4. **Lưu và lặp lại**
+
+   Nhấn **Lưu**, sau đó lặp lại cho từng tham số bạn muốn theo dõi.
+
+</Steps>
+
+<Aside type="note">
+Thuộc tính tùy chỉnh có thể mất đến 24 giờ để bắt đầu xuất hiện trong báo cáo GA4 sau khi đăng ký. Dữ liệu lịch sử thu thập trước khi đăng ký sẽ không được bổ sung.
+
+GA4 cho phép tối đa 50 thuộc tính tùy chỉnh theo mục trên tài sản tiêu chuẩn (tài sản 360 cho phép nhiều hơn).
+</Aside>
+
+Dùng bảng sau làm tham khảo khi tạo thuộc tính tùy chỉnh. Giá trị **Tham số sự kiện** phải chính xác — GA4 phân biệt chữ hoa chữ thường.
+
+| Tên thuộc tính | Tham số sự kiện | Kiểu |
+|----------------|-----------------|------|
+| Property ID | `property_id` | Văn bản |
+| Property name | `property_name` | Văn bản |
+| Property brand | `property_brand` | Văn bản |
+| Property chain | `property_chain` | Văn bản |
+| City name | `city_name` | Văn bản |
+| Country code | `country_code` | Văn bản |
+| Check-in date | `start_date` | Văn bản |
+| Check-out date | `end_date` | Văn bản |
+| Number of adults | `num_adults` | Số |
+| Number of children | `num_children` | Số |
+| Cancellation policy | `cancellation_policy` | Văn bản |
+| Rate plan ID | `rate_plan_id` | Văn bản |
+| Room rate ID | `room_rate_id` | Văn bản |
+| Room rate name | `room_rate_name` | Văn bản |
+| Number of perks | `num_perks` | Số |
+| Room location | `room_location` | Văn bản |
+| Room view | `room_view` | Văn bản |
+| Room classification | `room_classification` | Văn bản |
+
+---
+
+### Các Sự Kiện Có Sẵn Bổ Sung
+
+Các sự kiện sau có trong dataLayer của Wink nhưng không thuộc phễu đặt phòng tiêu chuẩn. Chúng có thể được kích hoạt bởi các tương tác khác trên nền tảng.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Sự kiện này không kèm theo payload `ecommerce`.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Đây là sự kiện tùy chỉnh của Wink — không thuộc bộ sự kiện GA4 tiêu chuẩn. Nó được đẩy mỗi khi chuyển trang và mang theo ngữ cảnh thiết bị và phiên. Nó không bao gồm đối tượng `ecommerce`.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Thuộc tính | Mô tả |
+|------------|-------|
+| `device` | Loại thiết bị phát hiện — `Desktop`, `Android`, `iPhone`, `iPad`, hoặc tương tự |
+| `deviceAgent` | Chuỗi user agent thô |
+| `os` | Hệ điều hành phát hiện — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Đường dẫn trang hiện tại |
+| `title` | Tiêu đề trang hiện tại |
+| `userId` | Mã định danh người dùng đã xác thực (bỏ qua nếu chưa đăng nhập) |
+| `startDate` | Ngày nhận phòng từ phiên tìm kiếm hiện tại |
+| `endDate` | Ngày trả phòng từ phiên tìm kiếm hiện tại |
+| `guests` | Số khách từ phiên tìm kiếm hiện tại |
+| `rooms` | Số phòng từ phiên tìm kiếm hiện tại |

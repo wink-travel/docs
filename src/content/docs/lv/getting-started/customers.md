@@ -25,7 +25,7 @@ Viesmīlības pārvaldības uzņēmumi un galamērķu pārvaldības uzņēmumi v
 
 ## Ietekmētāji
 
-Ietekmētāji izmanto Wink, lai labāk monetizētu savu auditoriju. Viņi sadarbojas ar viesnīcām, veido pielāgotus piedāvājumus un izmanto Wink sociālajiem tīkliem draudzīgos rīkus un spēcīgo analītiku, lai izsekotu, kuri produkti pārdodas vislabāk​.
+Ietekmētāji izmanto Wink, lai labāk monetizētu savu auditoriju. Viņi to dara, sadarbojoties ar viesnīcām, veidojot pielāgotus piedāvājumus un izmantojot Wink sociālajiem tīkliem draudzīgos rīkus un spēcīgo analītiku, lai izsekotu, kuri produkti pārdodas vislabāk​.
 
 ## Ceļojumu aģenti
 
@@ -46,7 +46,7 @@ Korporatīvie ceļotāji var pārvaldīt savus kontus mūsu [korporatīvajā por
 
 ## Izstrādātāji
 
-Lai gan šo platformu izveidojām viesnīcu nozarei... Katrs koda rindiņa tika veidota ar mērķi to atkārtoti izmantot. Mūsu izstrādātāju komanda izveidoja Wink ar cerību, ka nākamā 🦄 ceļojumu lietotne tiks veidota uz mūsu koda bāzes. Dodieties uz [Developer](/lv/developers/build-on-wink) lapu, lai redzētu, kā Wink var jūs atbalstīt jūsu nākamajā projektā.
+Lai gan šo platformu izveidojām viesnīcu nozarei... Katrs koda rindiņa tika veidota ar mērķi to atkārtoti izmantot. Mūsu izstrādātāju komanda izveidoja Wink ar cerību, ka nākamā 🦄 ceļojumu lietotne tiks būvēta uz mūsu koda bāzes. Dodieties uz [Izstrādātāju](/lv/developers/build-on-wink) lapu, lai redzētu, kā Wink var jūs atbalstīt jūsu nākamajā projektā.
 
 ## Citi
 

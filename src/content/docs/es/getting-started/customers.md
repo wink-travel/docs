@@ -29,13 +29,13 @@ Los influencers usan Wink para monetizar mejor su audiencia. Lo hacen asociándo
 
 ## Agentes de viajes
 
-Los agentes de viajes tienen acceso a inventario de viajes en todo el mundo a excelentes precios a través de nuestro dedicado [portal para agentes de viajes](https://agent.wink.travel). Pueden hacer reservas a través de nuestro portal, mediante nuestra API o permitiendo que sus usuarios reserven por sí mismos en el sitio web para agentes de viajes que utiliza nuestras tecnologías.
+Los agentes de viajes tienen acceso a inventario de viajes en todo el mundo a excelentes precios a través de nuestro portal dedicado para [agentes de viajes](https://agent.wink.travel). Pueden hacer reservas a través de nuestro portal, mediante nuestra API o permitiendo que sus usuarios reserven por sí mismos en el sitio web de agentes de viajes que utiliza nuestras tecnologías.
 
 ## Corporaciones
 
 Las corporaciones requieren más de una plataforma de viajes:
 
-- Necesitan itinerarios bien organizados que soporten flexibilidad y cambios de último minuto.
+- Necesitan itinerarios bien organizados que soporten flexibilidad y cambios de última hora.
 - Requieren herramientas de comunicación confiables, como internet.
 - Tienen preferencias de proveedores con membresías.
 - A menudo cuentan con tarjeta corporativa y establecen límites de gasto.

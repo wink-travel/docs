@@ -7,34 +7,34 @@ sidebar:
 
 import { Steps } from '@astrojs/starlight/components';
 
-Tento článok obsahuje príklad od začiatku do konca, ako sa integrovať s TripPay.
+Tento článok obsahuje príklad integrácie s TripPay od začiatku do konca.
 
 Odporúča sa, aby ste už prečítali:
 
 - [Platba > Mapovanie](/sk/payment/mapping).
 - [Platba > Integrácia](/sk/payment/integration).
 - [Platobný webový komponent](/sk/integrations/web-components/#payment).
-- [Platobné API](/sk/developers/apis/#payment-api). *Prečítajte si časť o `Vytváraní platných zmlúv`*
+- [Platobné API](/sk/developers/apis/#payment-api). *Prečítajte si časť o `Vytváraní platobných zmlúv`*
 
 Tu sú kroky, ako úspešne použiť TripPay na zaplatenie rezervácie:
 
 <Steps>
 1. Uistite sa, že príjemcovia, ktorých uvádzate v zmluve o rezervácii, boli namapovaní.
 2. Nechajte cestujúceho vybrať si inventár, ktorý chce rezervovať, a pripraviť sa na platbu.
-3. Vytvorte s TripPay `platnú zmluvu`, ktorá obsahuje položky na rezerváciu.
+3. Vytvorte s TripPay `platobnú zmluvu`, ktorá obsahuje položky na rezerváciu.
 4. Nechajte cestujúceho zaplatiť pomocou TripPay Web Component.
 </Steps>
 
 Predpokladáme, že ste už dokončili `Krok 1` a `Krok 2` a ste pripravení informovať TripPay o rezervácii.
 
-## Vytvorenie platnej zmluvy
+## Vytvorenie platobnej zmluvy
 
 :::note
-Pre viac informácií o požiadavkách na vytvorenie platnej zmluvy navštívte Platobné API.
+Pre viac informácií o požiadavkách na vytvorenie platobnej zmluvy navštívte Platobné API.
 :::
 
-### Žiadosť
-Tu je príklad JSON požiadavky, ktorá obsahuje všetko potrebné na vytvorenie vašej prvej platnej zmluvy.
+### Požiadavka
+Tu je príklad JSON požiadavky, ktorá obsahuje všetko potrebné na vytvorenie vašej prvej platobnej zmluvy.
 
 ```json {3-6, 8-9}
 {
@@ -65,7 +65,7 @@ Tu je príklad JSON požiadavky, ktorá obsahuje všetko potrebné na vytvorenie
             "telephone": "+1 212 555 1212",
           },
           "nameInEnglish": "Deluxe King",
-          "descriptionInEnglish": "Toto je najlepší deluxe king, aký si môžete kúpiť.",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
           "price": {
             "amount": 100,
             "currency": "USD"
@@ -145,7 +145,7 @@ Pole `contractList` obsahuje položku(y), ktoré chce cestujúci zakúpiť od vi
 
 - `identifier` je platné UUID, ktoré vygenerujete.
 - Dodávateľa, od ktorého chcete rezervovať inventár.
-- Inventár, ktorý chcete rezervovať od tohto dodávateľa. Všetky sú špecifikované v zanořeném poli `contractItemList`.
+- Inventár, ktorý chcete rezervovať od daného dodávateľa. Všetky sú špecifikované v zanořeném poli `contractItemList`.
 - Každý záznam v `contractItemList` obsahuje:
     - **Používateľ hosťa** Toto je používateľ, ktorý príde na miesto.
     - **Názov v angličtine** Názov inventára v anglickom jazyku.
@@ -154,9 +154,9 @@ Pole `contractList` obsahuje položku(y), ktoré chce cestujúci zakúpiť od vi
     - **Itinerár** Kedy má byť položka rezervovaná.
     - **Typ ceny** Ako bola cena vypočítaná.
     - **Typ inventára** Aký typ inventára to je.
-    - **Platba** Kedy má byť cestujúcemu účtovaná platba. *Momentálne podporujeme iba možnosti okamžitej platby.*
+    - **Platiteľné** Kedy má byť cestujúcemu účtovaná platba. *Momentálne podporujeme len možnosti okamžitej platby.*
     - **Politika** Zahrňte pravidlá storno podmienok.
-    - **Zoznam denných cien** Ak je rezervovanou položkou izba, môžete uviesť cenu za každú noc pobytu hosťa.
+    - **Zoznam denných cien** Ak je rezervovaná položka izba, môžete uviesť cenu za každú noc pobytu hosťa.
     - **Príjemcovia** Uveďte, ktorému TripPay účtu sa má priradiť aká časť ceny položky. *Podporované sú fixné aj percentuálne sumy.*
 
 :::note
@@ -166,7 +166,7 @@ V uvedenom JSON príklade máme 3 príjemcov:
 - 9,85 % bolo pridelených affiliate partnerovi ako provízia. *napr. Kim Kardashian*
 - 88,65 % bolo pridelených dodávateľovi za rezerváciu izby. *napr. Hilton*
 
-Keď TripPay odpovie platnou zmluvou, všimnete si, že pridal svojho vlastného príjemcu s 4,0 %.
+Keď TripPay odpovie platobnou zmluvou, všimnete si, že si pridal vlastného príjemcu s 4,0 %.
 :::
 
 ### Odpoveď

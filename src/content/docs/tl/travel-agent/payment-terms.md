@@ -18,10 +18,10 @@ Lahat ng travel agent ay maaari pa ring mag-book sa pamamagitan ng aming travel 
 Ang mga tuntuning iyon ay makikita sa ilalim ng [Affiliate Portal > Payment Terms](/tl/studio/payment-terms).
 :::
 
-**WINK MGA TUNTUNIN SA PAGBABAYAD**  
+**MGA TUNTUNIN SA PAGBAYAD NG WINK**  
 **PARA SA MGA TRAVEL AGENT (Merchant of Record)**
 
-Ang mga Tuntunin sa Serbisyo sa Pagbabayad na ito (“Mga Tuntunin sa Pagbabayad”) ay isang legal na kasunduan na bahagi ng kontraktwal na ugnayan na itinatag sa ilalim ng "TERMS & CONDITIONS TRAVEL AGENTS" (“Pangunahing Kasunduan”)
+Ang Mga Tuntunin sa Serbisyo ng Pagbabayad na ito (“Mga Tuntunin sa Pagbabayad”) ay isang nakatali na legal na kasunduan na bahagi ng kontraktwal na ugnayan na itinatag sa ilalim ng "TERMS & CONDITIONS TRAVEL AGENTS" (“Pangunahing Kasunduan”)
 
 **SA PAGITAN NG:**
 
@@ -33,7 +33,7 @@ Ang mga depinisyon at tuntunin na itinatag sa Pangunahing Kasunduan ay nalalapat
 
 **1\. Mga Depinisyon**
 
-Gaya ng nakasaad sa pangunahing kasunduan "TERMS & CONDITIONS TRAVEL AGENTS" ("Pangunahing Kasunduan"), ang mga sumusunod na termino ay magkakaroon ng parehong kahulugan sa Mga Tuntunin sa Pagbabayad:
+Gaya ng nakasaad sa pangunahing kasunduan "TERMS & CONDITIONS TRAVEL AGENTS" ("Pangunahing Kasunduan"), ang mga sumusunod na termino ay magkakaroon ng parehong kahulugan sa Mga Tuntunin sa Pagbabayad na ito:
 
 * "Accommodation Provider(s)"  
 * "Booking"  
@@ -48,52 +48,52 @@ Gaya ng nakasaad sa pangunahing kasunduan "TERMS & CONDITIONS TRAVEL AGENTS" ("P
 
 2.1 **Pangongolekta ng Bayad:** Ang Travel Agent ang responsable sa pangongolekta ng bayad mula sa Guest sa oras ng booking. Tinitiyak nito ang agarang pagproseso at kalinawan sa pananalapi.
 
-2.2 **Pagbawas ng Bayad:** Ang Travel Agent ay magbabawas muna ng bayad para sa Service Provider pagkatapos ay ang kanyang komisyon para sa subtotal gaya ng halimbawa sa ibaba:
+2.2 **Pagbawas ng Bayad:** Ang Travel Agent ay magbabawas muna ng bayad para sa Service Provider pagkatapos ay ang kanyang komisyon para sa subtotal ayon sa halimbawa sa ibaba:
 
 * 1.5% Booking Fee para sa Wink.  
 * Komisyon ng Travel Agent ayon sa tinukoy sa Separate Agreement (gagamitin namin ang 10% para sa halimbawang ito)
 
 Booking Value USD 1,000  
-Wink Fee (1.5%) \= USD 15  
+Bayad sa Wink (1.5%) \= USD 15  
 Subtotal \= 1,000 \- 15 \= 985
 
-2.3 **Net Payment sa Accommodation Providers:** Ang Travel Agent ang responsable sa pagdisburse ng Net Payment sa Accommodation Provider alinsunod sa mga tuntunin ng Separate Agreement sa pagitan ng Travel Agent at Accommodation Provider. Hindi mananagot ang Wink sa paggawa ng anumang bayad sa Accommodation Provider.
+2.3 **Net Payment sa Accommodation Providers:** Ang Travel Agent ang responsable sa pagdisburse ng Net Payment sa Accommodation Provider ayon sa mga tuntunin ng Separate Agreement sa pagitan ng Travel Agent at Accommodation Provider. Hindi mananagot ang Wink sa paggawa ng anumang bayad sa Accommodation Provider.
 
-**3**. **Pag-invoice at Pagbabayad** 
+**3**. **Pag-iinvoice at Pagbabayad** 
 
-3.1 **Buwanang Pag-invoice:** Magbibigay ang Wink ng tamang at wastong buwanang invoice sa Travel Agent para sa mga Booking Fees na naipon noong nakaraang buwan. Kailangang bayaran ng Travel Agent ang invoice na ito sa loob ng mga tuntunin sa pagbabayad na nakasaad sa invoice.
+3.1 **Buwanang Pag-iinvoice:** Magbibigay ang Wink ng tamang at wastong buwanang invoice sa Travel Agent para sa mga Booking Fees na naipon noong nakaraang buwan. Kailangang bayaran ng Travel Agent ang invoice na ito sa loob ng mga tuntunin sa pagbabayad na nakasaad sa invoice.
 
-3.2 **Paraan ng Pagbabayad:** Ang mga bayad sa Wink ay gagawin gamit ang paraan ng pagbabayad na nakasaad sa invoice. Anumang gastos na may kaugnayan sa paglilipat ng bayad ay responsibilidad ng Travel Agent.
+3.2 **Paraan ng Pagbabayad:** Ang mga bayad sa Wink ay gagawin sa pamamagitan ng paraan ng pagbabayad na nakasaad sa invoice. Anumang gastos na may kaugnayan sa paglilipat ng bayad ay responsibilidad ng Travel Agent.
 
-3.3 **Late Payments:** Sa kaso ng late payment, may karapatan ang Wink na maningil ng interes sa overdue na halaga sa rate na 5% kada buwan o ang pinakamataas na rate na pinapayagan ng batas, alin man ang mas mababa. Bukod dito, kung ang Travel Agent ay huli sa pagbabayad sa Accommodation Provider ayon sa mga tuntunin ng Separate Agreement, may karapatan ang Wink na suspindihin ang access sa Serbisyo hanggang sa malutas ang lahat ng outstanding na bayad sa parehong Wink at Accommodation Provider. Gayunpaman, kung may mga pagkakamali o error sa invoice na isinumite ng Wink, ang Travel Agent ay kailangang magbayad lamang ng tamang bahagi ng invoice at hindi papatawan ng anumang interes o parusa para sa hindi pagbabayad ng maling bahagi ng invoice.
+3.3 **Huling Pagbabayad:** Sa kaso ng huling pagbabayad, may karapatan ang Wink na maningil ng interes sa overdue na halaga sa rate na 5% bawat buwan o ang pinakamataas na rate na pinapayagan ng batas, alin man ang mas mababa. Bukod dito, kung ang Travel Agent ay nahuli sa pagbabayad sa Accommodation Provider ayon sa mga tuntunin ng Separate Agreement, may karapatan ang Wink na suspindihin ang access sa Serbisyo hanggang sa malutas ang lahat ng outstanding na bayad sa parehong Wink at Accommodation Provider. Gayunpaman, kung may mga pagkakamali o error sa invoice na isinumite ng Wink, ang Travel Agent ay kailangang magbayad lamang ng tamang bahagi ng invoice at hindi papatawan ng anumang interes o parusa para sa hindi pagbabayad ng maling bahagi ng invoice.
 
 **4\. Mga Papel at Responsibilidad**
 
 4.1 **Mga Responsibilidad ng Travel Agent:**
 
-* Siguraduhing maagap ang pangongolekta ng mga bayad mula sa mga Guest, alinsunod sa mga tuntunin sa Seksyon 2.1.  
+* Siguraduhing maagap ang pangongolekta ng mga bayad mula sa mga Guest, alinsunod sa mga tuntunin na nakasaad sa Seksyon 2.1.  
 * Bawasan ang angkop na Booking Fee at Komisyon bago ipadala ang Net Payment sa Accommodation Providers ayon sa Separate Agreement.  
 * Bayaran nang maagap ang mga invoice ng Wink para sa Booking Fees sa loob ng mga tuntunin na nakasaad sa Seksyon 3.1.  
-* Aktibong pamahalaan at lutasin ang anumang alitan na may kaugnayan sa mga booking o bayad, tinitiyak ang komunikasyon sa Wink upang mabilis na maresolba ang mga isyu.
+* Aktibong pamahalaan at lutasin ang anumang mga pagtatalo na may kaugnayan sa mga booking o bayad, tinitiyak ang komunikasyon sa Wink upang mabilis na maresolba ang mga isyu.
 
 4.2 **Mga Responsibilidad ng Wink:**
 
-* Magbigay ng tumpak at napapanahong buwanang mga invoice para sa Booking Fees gaya ng detalyado sa Seksyon 3.1.  
+* Magbigay ng tumpak at maagap na buwanang mga invoice para sa Booking Fees gaya ng detalyado sa Seksyon 3.1.  
 * Bigyan ang Travel Agent ng tuloy-tuloy na access sa Wink platform para sa pagproseso ng mga booking at pamamahala ng mga bayad.  
-* Tumulong sa Travel Agent sa paglutas ng mga alitan na may kaugnayan sa mga bayad sa pamamagitan ng pagbibigay ng kinakailangang data ng transaksyon at suporta kung kinakailangan.
+* Tumulong sa Travel Agent sa paglutas ng mga pagtatalo na may kaugnayan sa mga bayad sa pamamagitan ng pagbibigay ng kinakailangang datos ng transaksyon at suporta kung kinakailangan.
 
 **5\. Pagpapalit ng Pera**
 
 Kung kinakailangan ang pagpapalit ng pera, ito ay ipoproseso sa rate na ibinigay ng payment processing service. Ang Travel Agent ang responsable sa anumang gastos na may kaugnayan sa pagpapalit ng pera.
 
-**6\. Paglutas ng Alitan**
+**6\. Paglutas ng Pagtatalo**
 
-Anumang alitan na lumitaw mula o may kaugnayan sa Mga Tuntunin sa Pagbabayad na ito ay hahawakan ayon sa mga pamamaraan ng paglutas ng alitan sa Pangunahing Kasunduan, na tinitiyak ang pare-pareho at pinag-isang paraan sa paglutas ng mga hindi pagkakaunawaan sa pagitan ng Wink at Travel Agent.
+Anumang pagtatalo na lumitaw mula o may kaugnayan sa Mga Tuntunin sa Pagbabayad na ito ay hahawakan ayon sa mga pamamaraan ng paglutas ng pagtatalo sa Pangunahing Kasunduan, na tinitiyak ang pare-pareho at pinag-isang paraan sa paglutas ng mga alitan sa pagitan ng Wink at Travel Agent.
 
 **7\. Pagbabago ng Mga Tuntunin**  
-May karapatan ang Wink na baguhin ang Mga Tuntunin sa Pagbabayad anumang oras. Anumang pagbabago ay ipapaalam sa Travel Agent nang hindi bababa sa 30 araw bago ito ipatupad. Ang patuloy na paggamit ng Wink platform pagkatapos ng petsa ng bisa ay nangangahulugang pagtanggap sa binagong mga tuntunin.
+May karapatan ang Wink na baguhin ang Mga Tuntunin sa Pagbabayad anumang oras. Anumang pagbabago ay ipapaalam sa Travel Agent hindi bababa sa 30 araw bago ito ipatupad. Ang patuloy na paggamit ng Wink platform pagkatapos ng petsa ng bisa ay nangangahulugang pagtanggap sa binagong mga tuntunin.
 
 **8\. Namamahalang Batas at Hurisdiksyon**  
-Ang Mga Tuntunin sa Pagbabayad na ito ay pinamamahalaan ng mga batas ng Singapore. Anumang alitan na lumitaw mula o may kaugnayan sa mga tuntuning ito ay lulutasin sa mga korte ng Singapore.
+Ang Mga Tuntunin sa Pagbabayad na ito ay pinamamahalaan ng mga batas ng Singapore. Anumang pagtatalo na lumitaw mula o may kaugnayan sa mga tuntuning ito ay lulutasin sa mga korte ng Singapore.
 
-Ang Mga Tuntunin sa Pagbabayad na ito ay mahalagang bahagi at nagpapalawak sa mga probisyon sa pagbabayad na nakasaad sa Pangunahing Kasunduan, "TERMS & CONDITIONS TRAVEL AGENTS\_220924," sa pagitan ng Wink at Travel Agent.
+Ang Mga Tuntunin sa Pagbabayad na ito ay mahalagang bahagi at nagpapalawak sa mga probisyon sa pagbabayad na nakasaad sa Pangunahing Kasunduan, "TERMS & CONDITIONS TRAVEL AGENTS\_220924," sa pagitan ng Wink at ng Travel Agent.

@@ -25,7 +25,7 @@ Responsabilitățile sale includ:
     - Un [link partajabil](/ro/studio/shareable-links) pe Facebook.
     - O pagină de destinație pentru hotel pe https://ota.wink.travel cu inventarul pentru acel hotel.
     - Un [card](/ro/studio/cards) care conține inventarul afiliat.
-    - O [hartă](/ro/studio/maps) pe contul tău de [WinkLinks](/ro/link-manager/wink-links).
+    - O [hartă](/ro/studio/maps) în contul tău de [WinkLinks](/ro/link-manager/wink-links).
     - Un [apel API](/ro/developers/apis) dintr-un sistem de agenție de turism la distanță.
 - Oferirea călătorilor a unei modalități de a:
     - Căuta inventar de călătorie.

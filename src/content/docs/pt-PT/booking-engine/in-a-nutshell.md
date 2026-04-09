@@ -26,7 +26,7 @@ As suas responsabilidades incluem:
     - Uma página de destino de hotel em https://ota.wink.travel com inventário para esse hotel.
     - Um [cartão](/pt-PT/studio/cards) contendo inventário de afiliados.
     - Um [mapa](/pt-PT/studio/maps) na sua conta [WinkLinks](/pt-PT/link-manager/wink-links).
-    - Uma [chamada API](/pt-PT/developers/apis) a partir de um sistema remoto de agentes de viagem.
+    - Uma [chamada API](/pt-PT/developers/apis) a partir de um sistema remoto de agentes de viagens.
 - Proporcionar aos viajantes uma forma de: 
     - Pesquisar inventário de viagens.
     - Reservar inventário disponível.

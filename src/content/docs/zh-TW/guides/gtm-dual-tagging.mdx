@@ -1,0 +1,676 @@
+---
+title: Sojern 像素整合
+description: 如何將您的 Sojern 帳戶連接到 Wink，使 Sojern 能追蹤您的客人訂房旅程並推動您的再行銷及廣告活動。
+sidebar:
+  label: Sojern 像素整合
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+如果您正在透過 Sojern 執行廣告活動，您可以在 Wink 入口網站中輸入您的 Sojern GTM 容器 ID，將您的 Sojern 帳戶連接到 Wink。連接後，Sojern 的追蹤像素會自動在您的物業上觸發，涵蓋從搜尋到完成訂房的完整客人旅程。
+
+<Aside type="tip">
+這假設您已擁有有效的 Sojern 帳戶，並已從您的 Sojern 客戶經理那裡取得 GTM 容器 ID。如果您尚未擁有 Sojern 帳戶，請造訪 [sojern.com/contact](https://www.sojern.com/contact) 開始使用。
+</Aside>
+
+---
+
+## 您需要做的事
+
+<Steps>
+
+1. **從 Sojern 取得您的 GTM 容器 ID**
+
+   聯絡您的 Sojern 客戶經理，並索取您的 **GTM 容器 ID**。格式為 `GTM-XXXXXXX`。這與您的 Sojern 像素 ID 不同，請務必特別要求 GTM 容器 ID。
+
+2. **在 Wink 入口網站輸入**
+
+   登入 [my.wink.travel](https://my.wink.travel)，選擇您的帳戶，並前往 **自訂設定** 分頁。將您的 Sojern GTM 容器 ID 貼入 Sojern 欄位並儲存。您的整合即刻生效。
+
+3. **與您的 Sojern 客戶經理確認**
+
+   告知您的 Sojern 客戶經理整合已啟用。他們可以從他們端確認像素是否在 `wink.travel` 上正確觸發，並且資料是否流入您的 Sojern 帳戶。
+
+</Steps>
+
+<Aside type="note">
+此整合不需要您在自己網站上放置任何像素程式碼。Wink 會自動在所有您的物業啟用頁面載入您的 Sojern 容器。
+
+此設定適用於任何自訂的 GTM 容器 ID。我們以 Sojern 為例，因為它是非常常見的整合。
+</Aside>
+
+---
+
+## Wink 端的作法
+
+為了透明度，以下是 Wink 為使此整合運作所做的設定：
+
+- **在 Wink 入口網站的自訂設定分頁中提供 Sojern GTM 容器 ID 欄位**。當您輸入容器 ID 時，Wink 會驗證格式並安全地將其儲存於您的物業資料中。
+- **在 Wink 上您的物業啟用的每個頁面**，您的 Sojern GTM 容器 ID 會被渲染到頁面中，Wink 的標籤管理系統會動態載入您的 Sojern 容器與自身容器同時運作。這是自動完成的，Wink 團隊不需為每個物業手動操作。
+- **您的 Sojern 容器是非同步載入**，不會影響客人的頁面載入效能。
+- **Wink 自身的追蹤與您的 Sojern 像素並行運作**，共用相同的事件資料。Wink 追蹤的每個訂房事件同時可供您的 Sojern 容器使用。
+- **當您的物業未被瀏覽時** — 例如客人在 Wink 瀏覽其他飯店時 — 您的 Sojern 容器不會被載入。確保 Sojern 僅接收與您的物業相關的資料。
+
+---
+
+## DataLayer 參考
+
+Wink 在整個客人旅程中會將 GA4 相容事件推送到 `dataLayer`。您的 GTM 容器會從相同的共享 `dataLayer` 讀取，因此您設定的任何觸發器或變數都能存取下述所有屬性。
+
+每個事件遵循標準 GA4 強化電子商務結構：頂層有 `event` 字串和 `ecommerce` 物件。每次推送前，Wink 會清除先前的 ecommerce 載荷，以防止舊資料影響新觸發器。
+
+<Aside type="note">
+**dataLayer 重置模式**
+
+Wink 在每次事件推送前重置 ecommerce 物件：
+
+```js
+dataLayer.push({ ecommerce: null });   // 清除先前事件
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+請勿依賴 ecommerce 屬性在事件間持續存在。請在同一事件的觸發時讀取它們。
+</Aside>
+
+---
+
+### 訂房旅程事件
+
+當客人通過訂房漏斗時，這些事件會自動觸發。請將您的 GTM 觸發器設定為 **自訂事件**，並匹配以下事件名稱。
+
+| 步驟 | 事件 | 觸發時機 |
+|------|-------|---------------|
+| 1 | `view_item_list` | 飯店庫存格或列表載入 |
+| 2 | `view_item` | 客人瀏覽特定物業頁面 |
+| 3 | `add_to_cart` | 客人將房間加入購物車 |
+| 4 | `begin_checkout` | 結帳／付款頁面載入 |
+| 5 | `add_payment_info` | 客人選擇付款方式 |
+| 6 | `login` | 客人透過單一登入認證 |
+| 7 | `purchase` | 訂房確認 |
+| 8 | `refund` | 訂房取消 |
+
+---
+
+#### `view_item_list`
+
+當飯店庫存格或列表呈現時觸發。
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+當客人瀏覽特定物業時觸發。
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+當客人將房間加入購物車時觸發。
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+當結帳／付款頁面載入時觸發。
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` 僅在使用折扣碼時出現。
+
+---
+
+#### `add_payment_info`
+
+當客人選擇或確認付款方式時觸發。
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` 由付款收單類型填入。`coupon` 僅在使用折扣碼時出現。
+
+---
+
+#### `login`
+
+當客人透過單一登入認證時觸發。
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+當訂房確認時觸發。
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` 是唯一訂房合約識別碼。`coupon`、`shipping` 和 `tax` 僅在適用時出現。
+
+---
+
+#### `refund`
+
+當訂房取消時觸發。
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` 與相同訂房的 `purchase` 事件相符。`coupon`、`shipping` 和 `tax` 僅在適用時出現。
+
+---
+
+### 物品屬性
+
+所有包含 `items` 陣列的事件共用相同的物品結構。每個屬性皆為選填，除非標示為必填。
+
+#### 標準 GA4 欄位
+
+這些欄位為 GA4 原生識別，且在標準電子商務報告中無需額外設定即會顯示。
+
+| 屬性 | 類型 | 必填 | 說明 |
+|----------|------|----------|-------------|
+| `item_id` | string | 是 | 房間或產品的唯一識別碼 |
+| `item_name` | string | — | 房間或產品名稱 |
+| `affiliation` | string | — | 聯盟或賣方名稱 |
+| `coupon` | string | — | 套用於物品的折扣碼 |
+| `currency` | string | — | ISO 4217 貨幣代碼（例如 `USD`） |
+| `creative_name` | string | — | 推廣中使用的創意名稱 |
+| `creative_slot` | string | — | 推廣創意的版位位置 |
+| `discount` | number | — | 套用的折扣金額 |
+| `index` | number | — | 列表中的位置（從 1 開始） |
+| `item_brand` | string | — | 飯店或品牌名稱 |
+| `item_category` | string | — | 產品類型 — 例如 `GUEST_ROOM`、`ACTIVITY`、`ATTRACTION`、`MEETING_ROOM`、`RESTAURANT`、`SPA` |
+| `item_list_id` | string | — | 此物品所屬列表的識別碼 |
+| `item_list_name` | string | — | 列表的顯示名稱 |
+| `location_id` | string | — | 物業的地理座標 |
+| `price` | number | — | 單價 |
+| `promotion_id` | string | — | 推廣識別碼 |
+| `promotion_name` | string | — | 推廣顯示名稱 |
+| `quantity` | number | — | 數量（預設為 `1`） |
+
+#### 自訂物品範圍參數
+
+這些參數攜帶 Wink 特定的訂房上下文。GA4 不會自動在報告中顯示它們 — 您必須在 GA4 物業中將每個參數註冊為 **物品範圍自訂維度**，它們才會出現在探索或標準報告中。請參閱下方 [GA4 中的自訂維度](#custom-dimensions-in-ga4) 了解設定說明。
+
+| 屬性 | 類型 | 說明 |
+|----------|------|-------------|
+| `property_id` | string | Wink 物業識別碼 |
+| `property_name` | string | 物業顯示名稱 |
+| `property_brand` | string | 物業所屬品牌 |
+| `property_chain` | string | 物業所屬連鎖 |
+| `city_name` | string | 物業所在城市 |
+| `country_code` | string | ISO 3166-1 alpha-2 國家代碼 |
+| `start_date` | string | 入住日期，格式為 `YYYY-MM-DD` |
+| `end_date` | string | 退房日期，格式為 `YYYY-MM-DD` |
+| `num_adults` | number | 訂房成人數 |
+| `num_children` | number | 訂房兒童數 |
+| `cancellation_policy` | string | 下列之一：`Refundable`、`Non-Refundable`、`Refundable-With-Restrictions`、`Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | 房價方案識別碼 |
+| `room_rate_id` | string | 特定房價識別碼 |
+| `room_rate_name` | string | 房價顯示名稱 |
+| `num_perks` | number | 房價包含的優惠數量 |
+| `room_location` | string | 房間位置描述（例如 `Overwater`、`Garden`） |
+| `room_view` | string | 房間景觀描述（例如 `Ocean`、`City`） |
+| `room_classification` | string | 房間分類或等級（例如 `Suite`、`Standard`） |
+
+---
+
+### GA4 中的自訂維度
+
+GA4 在報告中會忽略自訂物品參數，除非您明確將它們註冊為物品範圍的自訂維度。您只需註冊您打算在報告中使用的參數 — 不必全部 18 個都註冊。
+
+<Steps>
+
+1. **開啟自訂定義**
+
+   在 GA4 中，前往 **管理員**（左下齒輪圖示）→ 選擇您的物業 → **資料顯示** → **自訂定義**。
+
+2. **建立新的自訂維度**
+
+   點擊 **建立自訂維度**。
+
+3. **填寫維度詳細資料**
+
+   - **維度名稱** — GA4 報告中顯示的人類可讀標籤（請參考下表）
+   - **範圍** — 選擇 **物品**
+   - **事件參數** — 與 dataLayer 中參數名稱完全相符（請參考下表）
+   - **說明** — 選填，但建議填寫
+
+4. **儲存並重複**
+
+   點擊 **儲存**，然後對每個您想追蹤的參數重複此步驟。
+
+</Steps>
+
+<Aside type="note">
+自訂維度註冊後，GA4 報告中可能需要最多 24 小時才會開始顯示。註冊前收集的歷史資料不會回填。
+
+GA4 標準物業最多允許 50 個物品範圍自訂維度（360 物業允許更多）。
+</Aside>
+
+建立自訂維度時，請參考下表。**事件參數**值必須完全匹配 — GA4 對大小寫敏感。
+
+| 維度名稱 | 事件參數 | 類型 |
+|----------------|-----------------|------|
+| 物業 ID | `property_id` | 文字 |
+| 物業名稱 | `property_name` | 文字 |
+| 物業品牌 | `property_brand` | 文字 |
+| 物業連鎖 | `property_chain` | 文字 |
+| 城市名稱 | `city_name` | 文字 |
+| 國家代碼 | `country_code` | 文字 |
+| 入住日期 | `start_date` | 文字 |
+| 退房日期 | `end_date` | 文字 |
+| 成人數 | `num_adults` | 數字 |
+| 兒童數 | `num_children` | 數字 |
+| 取消政策 | `cancellation_policy` | 文字 |
+| 房價方案 ID | `rate_plan_id` | 文字 |
+| 房價 ID | `room_rate_id` | 文字 |
+| 房價名稱 | `room_rate_name` | 文字 |
+| 優惠數量 | `num_perks` | 數字 |
+| 房間位置 | `room_location` | 文字 |
+| 房間景觀 | `room_view` | 文字 |
+| 房間分類 | `room_classification` | 文字 |
+
+---
+
+### 其他可用事件
+
+以下事件存在於 Wink 的 dataLayer 中，但不屬於標準訂房漏斗。它們可能由平台上的其他互動觸發。
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+此事件不包含 `ecommerce` 載荷。
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+這是 Wink 的自訂事件 — 不屬於標準 GA4 事件集。它在每次頁面導航時推送，攜帶裝置與會話上下文。它不包含 `ecommerce` 物件。
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| 屬性 | 說明 |
+|----------|-------------|
+| `device` | 偵測到的裝置類型 — `Desktop`、`Android`、`iPhone`、`iPad` 或類似 |
+| `deviceAgent` | 原始使用者代理字串 |
+| `os` | 偵測到的作業系統 — `Windows`、`MacOS`、`Linux`、`UNIX` |
+| `path` | 目前頁面路徑 |
+| `title` | 目前頁面標題 |
+| `userId` | 已認證使用者識別碼（未登入時省略） |
+| `startDate` | 目前搜尋會話的入住日期 |
+| `endDate` | 目前搜尋會話的退房日期 |
+| `guests` | 目前搜尋會話的客人人數 |
+| `rooms` | 目前搜尋會話的房間數量 |

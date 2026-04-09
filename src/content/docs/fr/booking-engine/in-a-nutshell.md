@@ -1,5 +1,5 @@
 ---
-title: En Bref
+title: En résumé
 description: Cet article vous guide à travers tout ce que vous vouliez savoir sur le moteur de réservation.
 sidebar:
   order: 0

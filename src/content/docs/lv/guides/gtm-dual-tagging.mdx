@@ -1,0 +1,676 @@
+---
+title: Sojern Pixel integrācija
+description: Kā savienot savu Sojern kontu ar Wink, lai Sojern varētu izsekot jūsu viesu rezervācijas ceļojumu un atbalstīt jūsu atkārtotās mārketinga un reklāmas kampaņas.
+sidebar:
+  label: Sojern Pixel integrācija
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Ja jūs vadāt reklāmas kampaņas caur Sojern, varat savienot savu Sojern kontu ar Wink, ievadot savu Sojern GTM konteineru ID Wink portālā. Kad tas ir savienots, Sojern izsekošanas pikselis automātiski aktivizējas jūsu īpašumam — aptverot pilnu viesu ceļojumu no meklēšanas līdz pabeigtai rezervācijai.
+
+<Aside type="tip">
+Tas pieņem, ka jums jau ir aktīvs Sojern konts un esat saņēmis savu GTM konteineru ID no sava Sojern konta menedžera. Ja jums vēl nav Sojern konta, apmeklējiet [sojern.com/contact](https://www.sojern.com/contact), lai sāktu.
+</Aside>
+
+---
+
+## Kas jums jādara
+
+<Steps>
+
+1. **Saņemiet savu GTM konteineru ID no Sojern**
+
+   Sazinieties ar savu Sojern konta menedžeri un pieprasiet savu **GTM konteineru ID**. Tas ir formātā `GTM-XXXXXXX`. Tas atšķiras no jūsu Sojern pikseļa ID — pārliecinieties, ka pieprasāt tieši GTM konteineru ID.
+
+2. **Ievadiet to Wink portālā**
+
+   Piesakieties [my.wink.travel](https://my.wink.travel), izvēlieties savu kontu un dodieties uz cilni **Pielāgojumi**. Ielīmējiet savu Sojern GTM konteineru ID Sojern laukā un saglabājiet. Jūsu integrācija tagad ir aktīva.
+
+3. **Apstipriniet ar savu Sojern konta menedžeri**
+
+   Informējiet savu Sojern konta menedžeri, ka integrācija ir aktīva. Viņi var pārbaudīt no savas puses, ka pikselis darbojas pareizi vietnē `wink.travel` jūsu īpašumam un ka dati plūst jūsu Sojern kontā.
+
+</Steps>
+
+<Aside type="note">
+Jums nav nepieciešams ievietot nevienu pikseļa kodu savā mājaslapā šai integrācijai. Wink automātiski ielādē jūsu Sojern konteineru visās lapās, kur jūsu īpašums ir aktīvs.
+
+Šī konfigurācija darbojas ar jebkuru pielāgotu GTM konteineru ID. Mēs izmantojām Sojern kā piemēru, jo tā ir ļoti izplatīta integrācija.
+</Aside>
+
+---
+
+## Ko Wink dara no savas puses
+
+Lai nodrošinātu caurspīdīgumu, šeit ir tas, ko Wink konfigurē, lai šī integrācija darbotos:
+
+- **Sojern GTM konteineru ID lauks** ir pieejams cilnē Pielāgojumi jūsu Wink portālā. Kad ievadāt savu konteineru ID, Wink pārbauda formātu un droši saglabā to pret jūsu īpašumu.
+- **Katru reizi, kad jūsu īpašums ir aktīvs** Wink lapā, jūsu Sojern GTM konteineru ID tiek ievietots lapā, un Wink tagu pārvaldības sistēma dinamiski ielādē jūsu Sojern konteineru kopā ar savu. Tas notiek automātiski — nav nepieciešamas manuālas darbības no Wink komandas katram īpašumam.
+- **Jūsu Sojern konteiners tiek ielādēts asinhroni**, kas nozīmē, ka tas neietekmē lapas ielādes ātrumu jūsu viesiem.
+- **Wink sava izsekošana un jūsu Sojern pikselis darbojas paralēli**, izmantojot vienus un tos pašus kopīgos notikumu datus. Katrs rezervācijas notikums, ko Wink izseko, vienlaikus ir pieejams jūsu Sojern konteineram.
+- **Kad jūsu īpašums netiek skatīts** — piemēram, kad viesis pārlūko citu viesnīcu Wink — jūsu Sojern konteiners netiek ielādēts. Tas nodrošina, ka Sojern saņem tikai datus, kas attiecas uz jūsu īpašumu.
+
+---
+
+## DataLayer atsauce
+
+Wink nosūta GA4 saderīgus notikumus uz `dataLayer` visā viesu ceļojuma laikā. Jūsu GTM konteiners lasa no tā paša kopīgā `dataLayer`, tāpēc jebkuram trigerim vai mainīgajam, ko konfigurējat, ir piekļuve visām zemāk aprakstītajām īpašībām.
+
+Katrs notikums seko standarta GA4 Enhanced Ecommerce struktūrai: augstākā līmeņa `event` virkne un `ecommerce` objekts. Pirms katra push, Wink notīra iepriekšējo ecommerce saturu, lai novērstu novecojušu datu ietekmi uz jauniem trigeriem.
+
+<Aside type="note">
+**dataLayer atiestatīšanas modelis**
+
+Wink atiestata ecommerce objektu pirms katra notikuma push:
+
+```js
+dataLayer.push({ ecommerce: null });   // notīra iepriekšējo notikumu
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Neuzticieties, ka ecommerce īpašības saglabājas starp notikumiem. Vienmēr nolasiet tās trigerēšanas brīdī tajā pašā notikumā.
+</Aside>
+
+---
+
+### Rezervācijas ceļojuma notikumi
+
+Šie notikumi automātiski aktivizējas, kad viesis pārvietojas rezervācijas piltuvē. Konfigurējiet savus GTM trigerus kā **Pielāgotus notikumu** trigerus, kas atbilst zemāk norādītajiem notikumu nosaukumiem.
+
+| Solis | Notikums | Kad tas aktivizējas |
+|-------|----------|---------------------|
+| 1 | `view_item_list` | Kad tiek ielādēts viesnīcu inventāra režģis vai saraksts |
+| 2 | `view_item` | Kad viesis apskata konkrētu īpašuma lapu |
+| 3 | `add_to_cart` | Kad viesis pievieno istabu iepirkumu grozam |
+| 4 | `begin_checkout` | Kad tiek ielādēta norēķinu / maksājumu lapa |
+| 5 | `add_payment_info` | Kad viesis izvēlas maksājuma veidu |
+| 6 | `login` | Kad viesis autentificējas ar SSO |
+| 7 | `purchase` | Kad rezervācija ir apstiprināta |
+| 8 | `refund` | Kad rezervācija tiek atcelta |
+
+---
+
+#### `view_item_list`
+
+Aktivizējas, kad tiek attēlots viesnīcu inventāra režģis vai saraksts.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Aktivizējas, kad viesis apskata konkrētu īpašumu.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Aktivizējas, kad viesis pievieno istabu grozam.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Aktivizējas, kad tiek ielādēta norēķinu / maksājumu lapa.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` ir pieejams tikai tad, ja tika piemērots atlaides kods.
+
+---
+
+#### `add_payment_info`
+
+Aktivizējas, kad viesis izvēlas vai apstiprina maksājuma veidu.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` tiek aizpildīts no maksājuma pieņēmēja veida. `coupon` ir pieejams tikai tad, ja tika piemērots atlaides kods.
+
+---
+
+#### `login`
+
+Aktivizējas, kad viesis autentificējas ar vienoto pierakstīšanos.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Aktivizējas, kad rezervācija ir apstiprināta.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` ir unikāls rezervācijas līguma identifikators. `coupon`, `shipping` un `tax` ir pieejami tikai, ja attiecas.
+
+---
+
+#### `refund`
+
+Aktivizējas, kad rezervācija tiek atcelta.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` atbilst `purchase` notikumam tai pašai rezervācijai. `coupon`, `shipping` un `tax` ir pieejami tikai, ja attiecas.
+
+---
+
+### Preces īpašības
+
+Visi notikumi, kas ietver `items` masīvu, izmanto vienu un to pašu preces shēmu. Katra īpašība ir izvēles, ja vien nav norādīts kā obligāta.
+
+#### Standarta GA4 lauki
+
+Šie lauki ir GA4 natively saprotami un parādās standarta ecommerce atskaitēs bez papildu konfigurācijas.
+
+| Īpašība | Tips | Obligāts | Apraksts |
+|---------|------|----------|----------|
+| `item_id` | string | Jā | Unikāls istabas vai produkta identifikators |
+| `item_name` | string | — | Istabas vai produkta nosaukums |
+| `affiliation` | string | — | Filiāles vai pārdevēja nosaukums |
+| `coupon` | string | — | Precei piemērots kupona kods |
+| `currency` | string | — | ISO 4217 valūtas kods (piemēram, `USD`) |
+| `creative_name` | string | — | Reklāmas nosaukums, kas izmantots akcijā |
+| `creative_slot` | string | — | Reklāmas pozīcija akcijā |
+| `discount` | number | — | Piemērotā atlaide |
+| `index` | number | — | Pozīcija sarakstā (no 1) |
+| `item_brand` | string | — | Viesnīcas vai zīmola nosaukums |
+| `item_category` | string | — | Produkta veids — piemēram, `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | Saraksta identifikators, kuram prece pieder |
+| `item_list_name` | string | — | Saraksta nosaukums |
+| `location_id` | string | — | Ģeokoordinātas īpašumam |
+| `price` | number | — | Vienības cena |
+| `promotion_id` | string | — | Akcijas identifikators |
+| `promotion_name` | string | — | Akcijas nosaukums |
+| `quantity` | number | — | Daudzums (noklusēti `1`) |
+
+#### Pielāgoti preces mēroga parametri
+
+Šie parametri nes Wink specifisku rezervācijas kontekstu. GA4 tos automātiski neparāda atskaitēs — jums katru no tiem jāreģistrē kā **preces mēroga pielāgota dimensija** savā GA4 īpašumā, pirms tie parādās izpētēs vai standarta atskaitēs. Skatiet sadaļu [Pielāgotas dimensijas GA4](#custom-dimensions-in-ga4) zemāk, lai uzzinātu iestatīšanu.
+
+| Īpašība | Tips | Apraksts |
+|---------|------|----------|
+| `property_id` | string | Wink īpašuma identifikators |
+| `property_name` | string | Īpašuma nosaukums |
+| `property_brand` | string | Zīmols, kam īpašums pieder |
+| `property_chain` | string | Ķēde, kam īpašums pieder |
+| `city_name` | string | Pilsēta, kur atrodas īpašums |
+| `country_code` | string | ISO 3166-1 alpha-2 valsts kods |
+| `start_date` | string | Iekārtošanās datums formātā `YYYY-MM-DD` |
+| `end_date` | string | Izrakstīšanās datums formātā `YYYY-MM-DD` |
+| `num_adults` | number | Pieaugušo skaits rezervācijā |
+| `num_children` | number | Bērnu skaits rezervācijā |
+| `cancellation_policy` | string | Viens no: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Tarifa plāna identifikators |
+| `room_rate_id` | string | Konkrētā istabas tarifa identifikators |
+| `room_rate_name` | string | Istabas tarifa nosaukums |
+| `num_perks` | number | Iekļauto priekšrocību skaits tarifā |
+| `room_location` | string | Istabas atrašanās vietas apraksts (piemēram, `Overwater`, `Garden`) |
+| `room_view` | string | Istabas skata apraksts (piemēram, `Ocean`, `City`) |
+| `room_classification` | string | Istabas klasifikācija vai līmenis (piemēram, `Suite`, `Standard`) |
+
+---
+
+### Pielāgotas dimensijas GA4
+
+GA4 ignorē pielāgotos preces parametrus atskaitēs, līdz jūs tos skaidri nereģistrējat kā preces mēroga pielāgotas dimensijas. Jums jāreģistrē tikai tie parametri, kurus plānojat izmantot atskaitēs — nav nepieciešams reģistrēt visus 18.
+
+<Steps>
+
+1. **Atveriet Pielāgotās definīcijas**
+
+   GA4 dodieties uz **Admin** (apakšējais kreisais zobrata ikona) → izvēlieties savu īpašumu → **Datu attēlošana** → **Pielāgotās definīcijas**.
+
+2. **Izveidojiet jaunu pielāgotu dimensiju**
+
+   Noklikšķiniet uz **Izveidot pielāgotas dimensijas**.
+
+3. **Aizpildiet dimensijas detaļas**
+
+   - **Dimensijas nosaukums** — cilvēkam saprotams nosaukums, kas parādās GA4 atskaitēs (skatiet tabulu zemāk)
+   - **Mērogs** — izvēlieties **Prece**
+   - **Notikuma parametrs** — precīzs parametra nosaukums, kāds tas ir dataLayer (skatiet tabulu zemāk)
+   - **Apraksts** — izvēles, bet ieteicams
+
+4. **Saglabājiet un atkārtojiet**
+
+   Noklikšķiniet uz **Saglabāt**, pēc tam atkārtojiet katram parametram, ko vēlaties izsekot.
+
+</Steps>
+
+<Aside type="note">
+Pielāgotas dimensijas var sākt parādīties GA4 atskaitēs līdz 24 stundām pēc reģistrācijas. Vēsturiskie dati, kas savākti pirms reģistrācijas, netiek aizpildīti.
+
+GA4 atļauj līdz 50 preces mēroga pielāgotām dimensijām uz īpašumu standarta īpašumos (360 īpašumos ir vairāk).
+</Aside>
+
+Izmantojiet šo tabulu kā atsauci, veidojot pielāgotas dimensijas. **Notikuma parametra** vērtībai jāatbilst precīzi — GA4 ir reģistrjutīgs.
+
+| Dimensijas nosaukums | Notikuma parametrs | Tips |
+|----------------------|--------------------|------|
+| Īpašuma ID | `property_id` | Teksts |
+| Īpašuma nosaukums | `property_name` | Teksts |
+| Īpašuma zīmols | `property_brand` | Teksts |
+| Ķēde | `property_chain` | Teksts |
+| Pilsētas nosaukums | `city_name` | Teksts |
+| Valsts kods | `country_code` | Teksts |
+| Iekārtošanās datums | `start_date` | Teksts |
+| Izrakstīšanās datums | `end_date` | Teksts |
+| Pieaugušo skaits | `num_adults` | Skaitlis |
+| Bērnu skaits | `num_children` | Skaitlis |
+| Atcelšanas politika | `cancellation_policy` | Teksts |
+| Tarifa plāna ID | `rate_plan_id` | Teksts |
+| Istabas tarifa ID | `room_rate_id` | Teksts |
+| Istabas tarifa nosaukums | `room_rate_name` | Teksts |
+| Priekšrocību skaits | `num_perks` | Skaitlis |
+| Istabas atrašanās vieta | `room_location` | Teksts |
+| Istabas skats | `room_view` | Teksts |
+| Istabas klasifikācija | `room_classification` | Teksts |
+
+---
+
+### Papildu pieejamie notikumi
+
+Šie notikumi ir pieejami Wink dataLayer, bet nav daļa no standarta rezervācijas piltuves. Tos var aktivizēt citas platformas mijiedarbības.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Šim notikumam nav pievienots `ecommerce` saturs.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Šis ir pielāgots Wink notikums — nav daļa no standarta GA4 notikumu kopas. Tas tiek nosūtīts katrā lapas pārejā un satur ierīces un sesijas kontekstu. Tas nesatur `ecommerce` objektu.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Īpašība | Apraksts |
+|---------|----------|
+| `device` | Atklātā ierīces veids — `Desktop`, `Android`, `iPhone`, `iPad` vai līdzīgi |
+| `deviceAgent` | Lietotāja aģenta virkne |
+| `os` | Atklātā operētājsistēma — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Pašreizējās lapas ceļš |
+| `title` | Pašreizējās lapas nosaukums |
+| `userId` | Autentificēta lietotāja identifikators (izlaists, ja nav pieslēdzies) |
+| `startDate` | Iekārtošanās datums no pašreizējās meklēšanas sesijas |
+| `endDate` | Izrakstīšanās datums no pašreizējās meklēšanas sesijas |
+| `guests` | Viesu skaits no pašreizējās meklēšanas sesijas |
+| `rooms` | Istabu skaits no pašreizējās meklēšanas sesijas |

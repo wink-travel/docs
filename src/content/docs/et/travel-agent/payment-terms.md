@@ -1,6 +1,6 @@
 ---
 title: Maksetingimused
-description: See dokument käsitleb rahaliste vahendite kättesaadavust ja seda, kuidas Wink toetab agentuurimudelit reisibüroode jaoks.
+description: See dokument käsitleb rahaliste vahendite kättesaadavust ja seda, kuidas Wink toetab agentuurimudelit reisibüroodele.
 sidebar:
   order: 5
 ---
@@ -13,13 +13,13 @@ Viimati uuendatud 2024-10-30
 Alljärgnevad maksetingimused kehtivad reisibüroodele, kes soovivad vahendeid ise koguda ja jaotada.  
 See on võimalik ainult meie API kaudu ja ainult reisibüroodele, kes on registreerimisprotsessi käigus märkinud, et soovivad seda teha.
 
-Kõik reisibürood saavad endiselt broneerida meie reisibüroo portaali kaudu, kasutades Wink'i makselahendust oma või reisija krediitkaardiga. Seetõttu peavad kõik reisibürood nõustuma ka maksetingimustega, kus Wink on maksekorraldaja.
+Kõik reisibürood saavad endiselt broneerida meie reisibüroo portaali kaudu, kasutades Wink'i makselahendust oma või reisija krediitkaardiga. Seetõttu peavad kõik reisibürood nõustuma ka maksetingimustega, kus Wink'i makselahendus on kaupmehe registris.
 
 Need tingimused on kättesaadavad [Affiliate Portal > Payment Terms](/et/studio/payment-terms).
 :::
 
 **WINK MAKSETINGIMUSED**  
-**REISIBÜROODELE (Maksekorraldaja)**
+**REISIBÜROODELE (Kaupmehe registris)**
 
 Need teenuse maksetingimused (“Maksetingimused”) on siduv juriidiline leping, mis on osa lepingulisest suhtest, mis on sõlmitud "TERMS & CONDITIONS TRAVEL AGENTS" (“Põhileping”) alusel.
 
@@ -27,9 +27,9 @@ Need teenuse maksetingimused (“Maksetingimused”) on siduv juriidiline leping
 
 1. **Winkfluence**, Singapuri seaduste alusel asutatud ettevõte, mille registreeritud aadress on \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 ja käibemaksukohustuslase number 201437335D (edaspidi "Wink") ning  
      
-2. **REISIBÜROO**, kelle andmed on esitatud reisibüroo registreerimisvormil või on esitatud veebis (edaspidi "Reisibüroo").
+2. **REISIBÜROO**, kelle andmed on esitatud Reisibüroo registreerimisvormil või on esitatud veebis (edaspidi "Reisibüroo").
 
-Põhilepingus kehtestatud määratlused ja tingimused kehtivad ka nendele Maksetingimustele, välja arvatud juhul, kui siin on teisiti määratletud.
+Põhilepingus kehtestatud määratlused ja tingimused kehtivad ka nendele Maksetingimustele, kui siin ei ole teisiti määratletud.
 
 **1\. Mõisted**
 
@@ -46,37 +46,37 @@ Nagu on määratletud põhilepingus "TERMS & CONDITIONS TRAVEL AGENTS" ("Põhile
 
 **2\. Maksete kogumine ja jaotamine**
 
-2.1 **Maksete kogumine:** Reisibüroo vastutab makse kogumise eest Külaliselt broneerimise hetkel. See tagab kohese töötlemise ja finantsilise selguse.
+2.1 **Maksete kogumine:** Reisibüroo vastutab maksete kogumise eest Külaliselt broneerimise hetkel. See tagab kohese töötlemise ja finantsilise selguse.
 
 2.2 **Tasu mahaarvamine:** Reisibüroo arvestab esmalt maha Teenusepakkuja tasu ja seejärel oma komisjonitasu alljärgneva näite kohaselt:
 
 * 1,5% Wink'i broneerimistasu.  
-* Reisibüroo komisjonitasu vastavalt Eraldi lepingule (näites kasutame 10%).
+* Reisibüroo komisjonitasu vastavalt Eraldi lepingule (selle näite puhul kasutame 10%).
 
 Broneeringu väärtus USD 1,000  
 Wink'i tasu (1,5%) = USD 15  
 Vahekokkuvõte = 1,000 - 15 = 985
 
-2.3 **Netomakse majutusteenuse pakkujatele:** Reisibüroo vastutab Netomakse edastamise eest Majutusteenuse pakkujale vastavalt Eraldi lepingule Reisibüroo ja Majutusteenuse pakkuja vahel. Wink ei vastuta ühegi makse tegemise eest Majutusteenuse pakkujale.
+2.3 **Netomakse majutusteenuse pakkujatele:** Reisibüroo vastutab Netomakse maksmise eest Majutusteenuse pakkujale vastavalt Eraldi lepingule Reisibüroo ja Majutusteenuse pakkuja vahel. Wink ei vastuta ühegi makse tegemise eest Majutusteenuse pakkujale.
 
 **3\. Arveldamine ja maksmine**
 
-3.1 **Kuuarved:** Wink väljastab Reisibüroole korrektsed ja täpsed kuuarved eelneva kuu jooksul kogunenud broneerimistasude eest. Reisibüroo peab selle arve tasuma arvel märgitud maksetingimuste piires.
+3.1 **Kuuarve esitamine:** Wink väljastab Reisibüroole korrektsed ja täpsed kuuarved eelneva kuu jooksul kogunenud broneerimistasude eest. Reisibüroo peab selle arve tasuma arvel märgitud maksetingimuste piires.
 
 3.2 **Makseviis:** Maksmine Wink'ile toimub arvel märgitud makseviisi kaudu. Kõik makseülekandega seotud kulud kannab Reisibüroo.
 
-3.3 **Hilinenud maksed:** Hilinenud makse korral jätab Wink endale õiguse arvutada viivist viivisesummalt 5% kuus või seadusega lubatud maksimaalse määraga, kumb on madalam. Lisaks, kui Reisibüroo hilineb maksega Majutusteenuse pakkujale vastavalt Eraldi lepingule, jätab Wink endale õiguse peatada teenuse kasutus kuni kõik võlgnevused nii Wink'i kui ka Majutusteenuse pakkuja ees on tasutud. Kui aga Wink'i esitatud arvel on vigu või eksimusi, peab Reisibüroo tasuma ainult arve korrektse ja täpse osa ning ei ole kohustatud maksma viivist ega trahvi vale osa eest.
+3.3 **Hilinenud maksed:** Hilinenud makse korral jätab Wink endale õiguse arvutada viivist viivisesummalt 5% kuus või seadusega lubatud maksimaalse määrani, kumb on madalam. Lisaks, kui Reisibüroo hilineb maksega Majutusteenuse pakkujale vastavalt Eraldi lepingule, jätab Wink endale õiguse peatada teenuse kasutus kuni kõik võlgnevused nii Wink'i kui ka Majutusteenuse pakkuja ees on tasutud. Kui aga Wink'i esitatud arvel on vigu või eksimusi, peab Reisibüroo tasuma ainult arve korrektse ja täpse osa ning ei ole kohustatud maksma viivist ega trahvi arve valesti esitatud osa eest.
 
 **4\. Rollid ja vastutused**
 
-4.1 **Reisibüroo kohustused:**
+4.1 **Reisibüroo vastutused:**
 
 * Tagada maksete õigeaegne kogumine Külalistelt, järgides punktis 2.1 sätestatut.  
 * Arvestada maha sobiv broneerimistasu ja komisjonitasu enne Netomakse edastamist Majutusteenuse pakkujatele vastavalt Eraldi lepingule.  
 * Tasuda Wink'i broneerimistasude arved õigeaegselt vastavalt punktile 3.1.  
 * Aktiivselt hallata ja lahendada broneeringute või maksetega seotud vaidlusi, hoides Wink'iga suhtlust probleemide tõhusaks lahendamiseks.
 
-4.2 **Wink'i kohustused:**
+4.2 **Wink'i vastutused:**
 
 * Väljastada täpsed ja õigeaegsed kuuarved broneerimistasude kohta vastavalt punktile 3.1.  
 * Tagada Reisibüroole pidev ligipääs Wink'i platvormile broneeringute töötlemiseks ja maksete haldamiseks.  
@@ -91,9 +91,9 @@ Kui on vajalik valuutavahetus, toimub see makseteenuse pakkuja määratud kursi 
 Kõik vaidlused, mis tulenevad või on seotud nende Maksetingimustega, lahendatakse vastavalt Põhilepingus sätestatud vaidluste lahendamise protseduuridele, tagades Wink'i ja Reisibüroo vahel ühtse ja järjepideva lähenemise.
 
 **7\. Tingimuste muutmine**  
-Wink jätab endale õiguse neid Maksetingimusi igal ajal muuta. Kõik muudatused teatatakse Reisibüroole vähemalt 30 päeva enne nende jõustumist. Wink'i platvormi jätkuv kasutamine pärast muudatuste jõustumist tähendab muudetud tingimuste aktsepteerimist.
+Wink jätab endale õiguse neid Maksetingimusi igal ajal muuta. Kõik muudatused teatatakse Reisibüroole vähemalt 30 päeva enne nende jõustumist. Wink'i platvormi jätkuv kasutamine pärast muudatuste jõustumiskuupäeva tähendab muudetud tingimuste aktsepteerimist.
 
 **8\. Kohaldatav õigus ja jurisdiktsioon**  
-Need Maksetingimused alluvad Singapuri seadustele. Kõik nende tingimustega seotud vaidlused lahendatakse Singapuri kohtutes.
+Neid Maksetingimusi reguleerivad Singapuri seadused. Kõik nende tingimustega seotud vaidlused lahendatakse Singapuri kohtutes.
 
-Need Maksetingimused on lahutamatu osa ja täiendavad Põhilepingus "TERMS & CONDITIONS TRAVEL AGENTS_220924" Wink'i ja Reisibüroo vahel sätestatud maksetingimusi.
+Need Maksetingimused on lahutamatu osa ja täiendavad Põhilepingus "TERMS & CONDITIONS TRAVEL AGENTS_220924" sätestatud maksetingimusi Wink'i ja Reisibüroo vahel.

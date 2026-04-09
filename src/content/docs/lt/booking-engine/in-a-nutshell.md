@@ -1,6 +1,6 @@
 ---
-title: Trumpai apžvelgiant
-description: Šiame straipsnyje rasite viską, ką norėjote sužinoti apie užsakymų variklį.
+title: Trumpai
+description: Šiame straipsnyje sužinosite viską, ką norėjote žinoti apie užsakymų variklį.
 sidebar:
   order: 0
 ---
@@ -9,10 +9,10 @@ sidebar:
 
 - [Extranet](/lt/extranet/what-is-extranet) rūpinasi tiekėjais, valdžiusiais inventorių.
 - [Studio](/lt/studio/what-is-studio) rūpinasi filialais, valdžiusiais turinį.
-- `Booking Engine` rūpinasi turinio, sukurto `Studio`, kuris buvo pagrįstas inventoriumi, sukurtu `Extranet`, ir padaro jį užsakomu.
-- [Payment](/lt/payment/what-is-trip-pay) rūpinasi keliautojų, kurie užsako [per platformas kaip Wink], apmokestinimu / grąžinimu ir tiekėjų apmokėjimu.
+- `Booking Engine` rūpinasi turinio, sukurto `Studio`, kuris buvo pagrįstas inventoriaus duomenimis iš `Extranet`, padarymu užsakomu.
+- [Payment](/lt/payment/what-is-trip-pay) rūpinasi keliautojų, kurie užsako [per platformas kaip Wink], apmokestinimu / pinigų grąžinimu ir tiekėjų apmokėjimu.
 
-Užsakymų variklis yra mūsų platformos šerdis.
+Užsakymų variklis yra mūsų platformos širdis.
 
 Jo atsakomybės apima:
 
@@ -20,25 +20,25 @@ Jo atsakomybės apima:
 - Suteikti kainų tiekėjams galimybę siųsti mums kainų duomenis.
 - Valdyti paieškos duomenis. *pvz., regionus, šalis, kelionių tikslus, apgyvendinimo vietas ir pan.*
 - Valdyti kalbas.
-- Generuoti analizę, remiantis vartotojų sąveikomis, įvykiais ir API užklausomis.
-- Pateikti užsakomu inventorių norimu formatu, kalba ir valiuta, pavyzdžiui:
-    - [dalinamą nuorodą](/lt/studio/shareable-links) Facebook platformoje.
-    - Viešbučio nukreipimo puslapį https://ota.wink.travel su tuo viešbučiu susijusiu inventoriu.
-    - [kortelę](/lt/studio/cards), kurioje yra filialų inventorius.
-    - [žemėlapį](/lt/studio/maps) jūsų [WinkLinks](/lt/link-manager/wink-links) paskyroje.
+- Generuoti analizę pagal vartotojų sąveikas, įvykius ir API užklausas.
+- Pateikti užsakymui tinkamą inventorių norimu formatu, kalba ir valiuta, pavyzdžiui:
+    - [Dalijamą nuorodą](/lt/studio/shareable-links) Facebook platformoje.
+    - Viešbučio pristatymo puslapį https://ota.wink.travel su to viešbučio inventoriu.
+    - [Kortelę](/lt/studio/cards), kurioje yra filialų inventorius.
+    - [Žemėlapį](/lt/studio/maps) jūsų [WinkLinks](/lt/link-manager/wink-links) paskyroje.
     - [API užklausą](/lt/developers/apis) iš nuotolinės kelionių agentūros sistemos.
 - Suteikti keliautojams galimybę:
     - Ieškoti kelionių inventoriaus.
     - Užsakyti prieinamą inventorių.
     - Valdyti savo [užsakymus ir atsiliepimus](/lt/booking-engine/bookings).
-    - Valdyti savo [norų sąrašą](/lt/booking-engine/bucket-list) dalykų, kuriuos planuoja užsakyti ateityje.
+    - Valdyti savo [norų sąrašą](/lt/booking-engine/bucket-list) dalykų, kuriuos nori užsakyti ateityje.
     - Valdyti savo [kelionių profilį](/lt/booking-engine/travel-preferences). *pvz., alergijas, skubios pagalbos kontaktą ir pan.*
 
-Užsakymų variklis yra pakartotinai naudojamų funkcijų rinkinys, kurį mes pateikiame per https://ota.wink.travel; tai labai pritaikoma svetainė viešbučiams ir filialams parduoti savo paslaugas keliautojams.
+Užsakymų variklis yra pakartotinai naudojamų funkcijų rinkinys, kurį pateikiame per https://ota.wink.travel; tai labai pritaikoma svetainė viešbučiams ir filialams parduoti savo paslaugas keliautojams.
 
 Integratoriai, norintys dar daugiau laisvės, turi prieigą prie tų pačių funkcijų per mūsų [WordPress įskiepį](/lt/integrations/wordpress/), [Web Components](/lt/integrations/web-components) ir [API](/lt/developers/apis).
 
-Tęskite skaitymą tolesnėse skiltyse, kad sužinotumėte daugiau apie tai, ką siūlo užsakymų variklis.
+Tęskite skaitymą kitose skiltyse, kad sužinotumėte daugiau apie tai, ką siūlo užsakymų variklis.
 
 ## Tolimesnis skaitymas
 

@@ -25,11 +25,11 @@ Companiile de management în ospitalitate și cele de management al destinațiil
 
 ## Influenceri
 
-Influencerii folosesc Wink pentru a-și monetiza mai bine audiența. Ei fac acest lucru prin parteneriate cu hoteluri, crearea de oferte personalizate și valorificarea instrumentelor prietenoase cu social media și a analizelor puternice oferite de Wink pentru a urmări care produse se vând cel mai bine​.
+Influencerii folosesc Wink pentru a-și monetiza mai bine audiența. Fac acest lucru prin parteneriate cu hoteluri, crearea de oferte personalizate și valorificarea instrumentelor sociale prietenoase și a analiticelor puternice oferite de Wink pentru a urmări care produse se vând cel mai bine​.
 
 ## Agenți de turism
 
-Agenții de turism au acces la inventar de călătorie la nivel mondial, la prețuri excelente, prin intermediul portalului nostru dedicat pentru agenți de turism [travel agent portal](https://agent.wink.travel). Ei pot face rezervări prin portalul nostru, prin API-ul nostru sau lăsând utilizatorii să-și facă singuri rezervările pe site-ul agenției de turism care folosește tehnologiile noastre.
+Agenții de turism au acces la inventar de călătorie la nivel mondial, la prețuri excelente, prin intermediul portalului nostru dedicat pentru [agenți de turism](https://agent.wink.travel). Ei pot face rezervări prin portalul nostru, prin API-ul nostru sau lăsând utilizatorii să-și facă singuri rezervările pe site-ul agenției de turism care folosește tehnologiile noastre.
 
 ## Companii
 
@@ -38,16 +38,16 @@ Companiile au nevoie de o platformă de călătorii mai complexă:
 - Au nevoie de itinerarii bine organizate care să susțină flexibilitatea și modificările de ultim moment.
 - Au nevoie de instrumente de comunicare fiabile, cum ar fi internetul.
 - Au preferințe pentru furnizori cu abonamente.
-- Adesea dispun de carduri de credit corporative și stabilesc limite de cheltuieli.
-- Necesită gestionarea cheltuielilor și integrarea rapoartelor.
+- Adesea au carduri de credit corporative și limite de cheltuieli stabilite.
+- Au nevoie de gestionarea cheltuielilor și integrare pentru raportare.
 - Au nevoie de suport concierge, precum și de servicii MICE la evenimente.
 
-Călătorii corporativi își pot gestiona propriile conturi pe [portalul corporativ](/ro/corporate/what-is-group) sau pot folosi pluginul oficial suportat [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) și integrarea [Concur](https://www.concur.com/).
+Călătorii corporativi își pot gestiona propriile conturi pe portalul nostru [corporativ](/ro/corporate/what-is-group) sau pot folosi pluginul oficial suportat [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) și integrarea [Concur](https://www.concur.com/).
 
 ## Dezvoltatori
 
-Deși am construit această platformă de și pentru hotelieri... Fiecare linie de cod a fost creată cu scopul specific de a fi reutilizabilă. Echipa noastră de dezvoltatori a construit Wink în speranța că următoarea aplicație 🦄 de călătorii va fi construită pe baza codului nostru. Navigați la pagina [Developer](/ro/developers/build-on-wink) pentru a vedea cum vă poate susține Wink în următorul vostru proiect.
+Deși am construit această platformă de și pentru hotelieri... Fiecare linie de cod a fost creată cu scopul specific de a fi reutilizabilă. Echipa noastră de dezvoltatori a construit Wink cu speranța că următoarea aplicație 🦄 de călătorii va fi construită pe baza codului nostru. Accesează pagina [Developer](/ro/developers/build-on-wink) pentru a vedea cum te poate susține Wink în următorul tău proiect.
 
 ## Alții
 
-Oricine dorește să găsească și să vândă inventar de călătorie poate beneficia de utilizarea Wink. Transformă-ți pasiunea pentru ospitalitate în acțiune câștigând un comision excelent la fiecare rezervare.
+Oricine dorește să găsească și să vândă inventar de călătorii poate beneficia de utilizarea Wink. Transformă-ți pasiunea pentru ospitalitate în acțiune câștigând un comision excelent la fiecare rezervare.

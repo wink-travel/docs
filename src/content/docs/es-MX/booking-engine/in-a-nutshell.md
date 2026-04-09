@@ -1,16 +1,16 @@
 ---
 title: En resumen
-description: Este artículo te guía a través de todo lo que querías saber sobre el motor de reservas.
+description: Este artículo te guía por todo lo que querías saber sobre el motor de reservas.
 sidebar:
   order: 0
 ---
 
 Así es como segmentamos la responsabilidad en Wink:
 
-- [Extranet](/es-MX/extranet/what-is-extranet) se encarga de que los proveedores gestionen el inventario.
-- [Studio](/es-MX/studio/what-is-studio) se encarga de que los afiliados gestionen el contenido.
-- `Booking Engine` se encarga de hacer que el contenido, creado en `Studio`, que se basó en el inventario creado en `Extranet`, sea reservable.
-- [Payment](/es-MX/payment/what-is-trip-pay) se encarga de cobrar / reembolsar a los viajeros que reservan [a través de plataformas como Wink], y de pagar a los proveedores.
+- [Extranet](/es-MX/extranet/what-is-extranet) se ocupa de los proveedores que gestionan el inventario.
+- [Studio](/es-MX/studio/what-is-studio) se ocupa de los afiliados que gestionan el contenido.
+- `Booking Engine` se ocupa de hacer que el contenido, creado en `Studio`, que se basó en el inventario creado en `Extranet`, sea reservable.
+- [Payment](/es-MX/payment/what-is-trip-pay) se ocupa de cobrar / reembolsar a los viajeros que reservan [a través de plataformas como Wink], y de pagar a los proveedores.
 
 El motor de reservas está en el núcleo de nuestra plataforma.
 

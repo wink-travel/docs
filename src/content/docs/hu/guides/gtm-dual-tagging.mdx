@@ -1,0 +1,676 @@
+---
+title: Sojern Pixel Integráció
+description: Hogyan csatlakoztathatod Sojern fiókodat a Winkhez, hogy a Sojern nyomon követhesse vendégeid foglalási útját, és támogathassa a retargeting és hirdetési kampányaidat.
+sidebar:
+  label: Sojern Pixel Integráció
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Ha Sojern hirdetési kampányokat futtatsz, csatlakoztathatod Sojern fiókodat a Winkhez úgy, hogy megadod a Sojern GTM Container ID-dat a Wink portálon. A csatlakozás után a Sojern követő pixel automatikusan aktiválódik a szálláshelyednél — lefedve a teljes vendégútvonalat a kereséstől a foglalás befejezéséig.
+
+<Aside type="tip">
+Ez feltételezi, hogy már rendelkezel aktív Sojern fiókkal, és megkaptad a GTM Container ID-dat a Sojern fiókkezelődtől. Ha még nincs Sojern fiókod, látogass el a [sojern.com/contact](https://www.sojern.com/contact) oldalra a kezdéshez.
+</Aside>
+
+---
+
+## Mit Kell Tenned
+
+<Steps>
+
+1. **Szerezd be a GTM Container ID-dat a Sojern-től**
+
+   Vedd fel a kapcsolatot Sojern fiókkezelőddel, és kérd el a **GTM Container ID**-dat. Ez a `GTM-XXXXXXX` formátumot követi. Ez eltér a Sojern Pixel ID-tól — győződj meg róla, hogy kifejezetten a GTM Container ID-t kéred.
+
+2. **Add meg a Wink portálon**
+
+   Jelentkezz be a [my.wink.travel](https://my.wink.travel) oldalra, válaszd ki a fiókodat, és lépj a **Testreszabások** fülre. Illeszd be a Sojern GTM Container ID-dat a Sojern mezőbe, majd mentsd el. Az integráció most aktív.
+
+3. **Erősítsd meg Sojern fiókkezelőddel**
+
+   Tájékoztasd Sojern fiókkezelődet, hogy az integráció aktív. Ők ellenőrizhetik, hogy a pixel helyesen működik-e a `wink.travel` oldalon a szálláshelyednél, és hogy az adatok beérkeznek-e a Sojern fiókodba.
+
+</Steps>
+
+<Aside type="note">
+Ehhez az integrációhoz nem kell saját weboldaladon pixel kódot elhelyezned. A Wink automatikusan betölti a Sojern konténeredet minden olyan oldalon, ahol a szálláshelyed aktív.
+
+Ez a beállítás bármilyen egyedi GTM Container ID-val működik. A Sojern csak példaként szerepel, mivel ez egy nagyon gyakori integráció.
+</Aside>
+
+---
+
+## Mit Tesz a Wink a Saját Oldalán
+
+Átláthatóság kedvéért, íme, mit konfigurál a Wink az integráció működéséhez:
+
+- **Egy Sojern GTM Container ID mező** elérhető a Wink portál Testreszabások fülén. Amikor megadod a Container ID-t, a Wink ellenőrzi a formátumot, és biztonságosan tárolja a szálláshelyedhez kötve.
+- **Minden olyan oldalon, ahol a szálláshelyed aktív** a Wink-en, a Sojern GTM Container ID beillesztésre kerül az oldalba, és a Wink címke kezelő rendszere dinamikusan betölti a Sojern konténert a sajátja mellett. Ez automatikusan történik — nincs szükség manuális lépésekre a Wink csapat részéről szállásonként.
+- **A Sojern konténer aszinkron módon töltődik be**, ami azt jelenti, hogy nem befolyásolja az oldal betöltési sebességét a vendégek számára.
+- **A Wink saját követése és a Sojern pixel párhuzamosan futnak**, ugyanabból a megosztott eseményadatból olvasva. Minden foglalási esemény, amit a Wink követ, egyszerre elérhető a Sojern konténer számára is.
+- **Amikor a szálláshelyed nincs megtekintve** — például, ha a vendég egy másik hotelt böngész a Wink-en — a Sojern konténer nem töltődik be. Ez biztosítja, hogy a Sojern csak a szálláshelyedhez kapcsolódó releváns adatokat kapja meg.
+
+---
+
+## DataLayer Referencia
+
+A Wink GA4-kompatibilis eseményeket tol a `dataLayer`-be a vendégút során. A GTM konténered ebből a megosztott `dataLayer`-ből olvas, így bármely trigger vagy változó, amit konfigurálsz, hozzáfér az alábbi tulajdonságokhoz.
+
+Minden esemény a standard GA4 Enhanced Ecommerce struktúrát követi: egy felső szintű `event` stringet és egy `ecommerce` objektumot. Minden push előtt a Wink törli az előző ecommerce adatot, hogy elkerülje az elavult adatok átszivárgását az új triggerekbe.
+
+<Aside type="note">
+**dataLayer reset minta**
+
+A Wink minden esemény push előtt nullázza az ecommerce objektumot:
+
+```js
+dataLayer.push({ ecommerce: null });   // előző esemény törlése
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Ne számíts arra, hogy az ecommerce tulajdonságok megmaradnak események között. Mindig az esemény triggerelésekor olvasd őket ugyanabban az eseményben.
+</Aside>
+
+---
+
+### Foglalási Útvonal Események
+
+Ezek az események automatikusan aktiválódnak, ahogy a vendég halad a foglalási folyamatban. Állítsd be a GTM triggereként **Egyedi Esemény** triggerként, az alábbi eseménynévvel.
+
+| Lépés | Esemény | Mikor Aktiválódik |
+|-------|---------|-------------------|
+| 1 | `view_item_list` | Szálláshely lista vagy rács betöltődik |
+| 2 | `view_item` | Vendég megtekint egy adott szálláshely oldalt |
+| 3 | `add_to_cart` | Vendég hozzáad egy szobát a kosárhoz |
+| 4 | `begin_checkout` | Fizetési oldal betöltődik |
+| 5 | `add_payment_info` | Vendég kiválaszt vagy megerősít egy fizetési módot |
+| 6 | `login` | Vendég bejelentkezik SSO-val |
+| 7 | `purchase` | Foglalás megerősítve |
+| 8 | `refund` | Foglalás törölve |
+
+---
+
+#### `view_item_list`
+
+Aktiválódik, amikor egy szálláshely lista vagy rács megjelenik.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Kiemelt Szállodák",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Aktiválódik, amikor a vendég megtekint egy adott szálláshelyet.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Aktiválódik, amikor a vendég hozzáad egy szobát a kosarához.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Aktiválódik, amikor a fizetési oldal betöltődik.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+A `coupon` csak akkor jelenik meg, ha kedvezménykódot alkalmaztak.
+
+---
+
+#### `add_payment_info`
+
+Aktiválódik, amikor a vendég kiválaszt vagy megerősít egy fizetési módot.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+A `payment_type` a fizetési szolgáltató típusából töltődik. A `coupon` csak akkor jelenik meg, ha kedvezménykódot alkalmaztak.
+
+---
+
+#### `login`
+
+Aktiválódik, amikor a vendég egyetlen bejelentkezéssel (SSO) hitelesíti magát.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Aktiválódik, amikor a foglalás megerősítésre kerül.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+A `transaction_id` az egyedi foglalási szerződés azonosítója. A `coupon`, `shipping` és `tax` csak akkor jelenik meg, ha alkalmazható.
+
+---
+
+#### `refund`
+
+Aktiválódik, amikor egy foglalást törölnek.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+A `transaction_id` megegyezik a `purchase` eseményével ugyanarra a foglalásra. A `coupon`, `shipping` és `tax` csak akkor jelenik meg, ha alkalmazható.
+
+---
+
+### Elem Tulajdonságok
+
+Minden esemény, amely tartalmaz `items` tömböt, ugyanazt az elem sémát használja. Minden tulajdonság opcionális, kivéve, ha kötelezőként van megjelölve.
+
+#### Standard GA4 mezők
+
+Ezeket a mezőket a GA4 natívan kezeli, és megjelennek a standard ecommerce jelentésekben további konfiguráció nélkül.
+
+| Tulajdonság | Típus | Kötelező | Leírás |
+|-------------|-------|----------|--------|
+| `item_id` | string | Igen | Egyedi azonosító a szobához vagy termékhez |
+| `item_name` | string | — | A szoba vagy termék neve |
+| `affiliation` | string | — | Partner vagy eladó neve |
+| `coupon` | string | — | Az elemre alkalmazott kuponkód |
+| `currency` | string | — | ISO 4217 pénznemkód (pl. `USD`) |
+| `creative_name` | string | — | A promóció kreatív neve |
+| `creative_slot` | string | — | A promóció kreatív pozíciója |
+| `discount` | number | — | Alkalmazott kedvezmény összege |
+| `index` | number | — | Pozíció a listában (1-től kezdve) |
+| `item_brand` | string | — | Szálloda vagy márkanév |
+| `item_category` | string | — | Terméktípus — pl. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | A lista azonosítója, amelyhez az elem tartozik |
+| `item_list_name` | string | — | A lista megjelenítendő neve |
+| `location_id` | string | — | A szálláshely földrajzi koordinátái |
+| `price` | number | — | Egységár |
+| `promotion_id` | string | — | A promóció azonosítója |
+| `promotion_name` | string | — | A promóció megjelenítendő neve |
+| `quantity` | number | — | Mennyiség (alapértelmezett: `1`) |
+
+#### Egyedi elemhez kötött paraméterek
+
+Ezek a paraméterek Wink-specifikus foglalási kontextust hordoznak. A GA4 nem jeleníti meg automatikusan a jelentésekben — minden egyes paramétert regisztrálnod kell **elemhez kötött egyedi dimenzióként** a GA4 tulajdonodban, mielőtt megjelenik a jelentésekben vagy elemzésekben. Lásd a [Custom Dimensions in GA4](#custom-dimensions-in-ga4) részt a beállítási útmutatóért.
+
+| Tulajdonság | Típus | Leírás |
+|-------------|-------|--------|
+| `property_id` | string | Wink szálláshely azonosító |
+| `property_name` | string | Szálláshely megjelenítendő neve |
+| `property_brand` | string | A szálláshelyhez tartozó márka |
+| `property_chain` | string | A szálláshelyhez tartozó lánc |
+| `city_name` | string | A szálláshely városa |
+| `country_code` | string | ISO 3166-1 alpha-2 országkód |
+| `start_date` | string | Érkezési dátum `YYYY-MM-DD` formátumban |
+| `end_date` | string | Távozási dátum `YYYY-MM-DD` formátumban |
+| `num_adults` | number | Felnőttek száma a foglalásban |
+| `num_children` | number | Gyermekek száma a foglalásban |
+| `cancellation_policy` | string | Egyike: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Árterv azonosítója |
+| `room_rate_id` | string | Egyedi szobaár azonosító |
+| `room_rate_name` | string | Szobaár megjelenítendő neve |
+| `num_perks` | number | Az árhoz tartozó kedvezmények száma |
+| `room_location` | string | Szoba elhelyezkedésének leírása (pl. `Overwater`, `Garden`) |
+| `room_view` | string | Szoba kilátásának leírása (pl. `Ocean`, `City`) |
+| `room_classification` | string | Szoba besorolása vagy kategóriája (pl. `Suite`, `Standard`) |
+
+---
+
+### Egyedi Dimenziók a GA4-ben
+
+A GA4 figyelmen kívül hagyja az egyedi elem paramétereket a jelentésekben, amíg kifejezetten nem regisztrálod őket elemhez kötött egyedi dimenzióként. Csak azokat a paramétereket kell regisztrálnod, amelyeket használni szeretnél a jelentésekben — nem szükséges mind a 18-at regisztrálni.
+
+<Steps>
+
+1. **Nyisd meg az Egyedi Definíciókat**
+
+   A GA4-ben menj az **Adminisztráció** (bal alsó fogaskerék ikon) → válaszd ki a tulajdonodat → **Adatmegjelenítés** → **Egyedi definíciók**.
+
+2. **Hozz létre új egyedi dimenziót**
+
+   Kattints a **Egyedi dimenzió létrehozása** gombra.
+
+3. **Töltsd ki a dimenzió adatait**
+
+   - **Dimenzió neve** — az emberi olvasásra alkalmas címke, ami megjelenik a GA4 jelentésekben (lásd az alábbi táblázatot)
+   - **Hatókör** — válaszd az **Elem** opciót
+   - **Esemény paraméter** — a pontos paraméternév, ahogy a dataLayer-ben szerepel (lásd az alábbi táblázatot)
+   - **Leírás** — opcionális, de ajánlott
+
+4. **Mentés és ismétlés**
+
+   Kattints a **Mentés** gombra, majd ismételd meg minden követni kívánt paraméter esetén.
+
+</Steps>
+
+<Aside type="note">
+Az egyedi dimenziók megjelenése a GA4 jelentésekben regisztráció után akár 24 órát is igénybe vehet. A regisztráció előtti történeti adatok nem kerülnek visszamenőlegesen feltöltésre.
+
+A GA4 szabványos tulajdonok esetén legfeljebb 50 elemhez kötött egyedi dimenziót engedélyez, a 360-as tulajdonok ennél többet is.
+</Aside>
+
+Használd az alábbi táblázatot referenciaként az egyedi dimenziók létrehozásához. Az **Esemény paraméter** értéknek pontosan meg kell egyeznie — a GA4 kis- és nagybetű érzékeny.
+
+| Dimenzió neve | Esemény paraméter | Típus |
+|---------------|-------------------|-------|
+| Szálláshely azonosító | `property_id` | Szöveg |
+| Szálláshely neve | `property_name` | Szöveg |
+| Szálláshely márkája | `property_brand` | Szöveg |
+| Szálláshely lánca | `property_chain` | Szöveg |
+| Város neve | `city_name` | Szöveg |
+| Országkód | `country_code` | Szöveg |
+| Érkezési dátum | `start_date` | Szöveg |
+| Távozási dátum | `end_date` | Szöveg |
+| Felnőttek száma | `num_adults` | Szám |
+| Gyermekek száma | `num_children` | Szám |
+| Lemondási feltétel | `cancellation_policy` | Szöveg |
+| Árterv azonosító | `rate_plan_id` | Szöveg |
+| Szobaár azonosító | `room_rate_id` | Szöveg |
+| Szobaár neve | `room_rate_name` | Szöveg |
+| Kedvezmények száma | `num_perks` | Szám |
+| Szoba elhelyezkedése | `room_location` | Szöveg |
+| Szoba kilátása | `room_view` | Szöveg |
+| Szoba besorolása | `room_classification` | Szöveg |
+
+---
+
+### További Elérhető Események
+
+Az alábbi események elérhetők a Wink dataLayer-ben, de nem részei a standard foglalási folyamatnak. Ezeket más platform interakciók is aktiválhatják.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Kiemelt Szállodák",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Ehhez az eseményhez nem tartozik `ecommerce` adat.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Nyári Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Nyári Akció",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Nyári Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Nyári Akció",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "tengerparti üdülőhely"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Szoba Frissítés"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Arany"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Arany",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Ez egy egyedi Wink esemény — nem része a standard GA4 eseménykészletnek. Minden oldal navigációnál push-olódik, és eszköz- valamint munkamenet kontextust hordoz. Nem tartalmaz `ecommerce` objektumot.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Tulajdonság | Leírás |
+|-------------|--------|
+| `device` | Felismert eszköz típus — `Desktop`, `Android`, `iPhone`, `iPad` vagy hasonló |
+| `deviceAgent` | Nyers user agent string |
+| `os` | Felismert operációs rendszer — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Aktuális oldal útvonala |
+| `title` | Aktuális oldal címe |
+| `userId` | Hitelesített felhasználó azonosítója (be nem jelentkezett esetén elhagyva) |
+| `startDate` | Érkezési dátum az aktuális keresési munkamenetből |
+| `endDate` | Távozási dátum az aktuális keresési munkamenetből |
+| `guests` | Vendégek száma az aktuális keresési munkamenetből |
+| `rooms` | Szobák száma az aktuális keresési munkamenetből |

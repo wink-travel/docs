@@ -1,0 +1,676 @@
+---
+title: Integrasi Sojern Pixel
+description: Cara menghubungkan akaun Sojern anda ke Wink supaya Sojern dapat mengesan perjalanan tempahan tetamu anda dan menggerakkan kempen penargetan semula dan pengiklanan anda.
+sidebar:
+  label: Integrasi Sojern Pixel
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Jika anda menjalankan kempen pengiklanan melalui Sojern, anda boleh menghubungkan akaun Sojern anda ke Wink dengan memasukkan ID Kontena GTM Sojern anda di portal Wink. Setelah disambungkan, pixel penjejakan Sojern akan berfungsi secara automatik untuk hartanah anda — merangkumi keseluruhan perjalanan tetamu dari carian hingga tempahan selesai.
+
+<Aside type="tip">
+Ini mengandaikan anda sudah mempunyai akaun Sojern yang aktif dan telah menerima ID Kontena GTM anda daripada pengurus akaun Sojern anda. Jika anda belum mempunyai akaun Sojern, lawati [sojern.com/contact](https://www.sojern.com/contact) untuk memulakan.
+</Aside>
+
+---
+
+## Apa Yang Perlu Anda Lakukan
+
+<Steps>
+
+1. **Dapatkan ID Kontena GTM Anda dari Sojern**
+
+   Hubungi pengurus akaun Sojern anda dan minta **ID Kontena GTM** anda. Ia mengikuti format `GTM-XXXXXXX`. Ini berbeza daripada ID Pixel Sojern anda — pastikan anda meminta secara khusus ID Kontena GTM.
+
+2. **Masukkan Ia di Portal Wink**
+
+   Log masuk ke [my.wink.travel](https://my.wink.travel), pilih akaun anda, dan pergi ke tab **Customizations**. Tampal ID Kontena GTM Sojern anda ke dalam medan Sojern dan simpan. Integrasi anda kini aktif.
+
+3. **Sahkan dengan Pengurus Akaun Sojern Anda**
+
+   Beritahu pengurus akaun Sojern anda bahawa integrasi sudah aktif. Mereka boleh mengesahkan dari pihak mereka bahawa pixel berfungsi dengan betul di `wink.travel` untuk hartanah anda dan data mengalir ke akaun Sojern anda.
+
+</Steps>
+
+<Aside type="note">
+Anda tidak perlu meletakkan sebarang kod pixel di laman web anda sendiri untuk integrasi ini. Wink memuatkan kontena Sojern anda secara automatik di semua halaman di mana hartanah anda aktif.
+
+Konfigurasi ini berfungsi untuk mana-mana ID Kontena GTM tersuai. Kami hanya menggunakan Sojern sebagai contoh kerana ia adalah integrasi yang sangat biasa.
+</Aside>
+
+---
+
+## Apa Yang Wink Lakukan di Pihak Kami
+
+Untuk ketelusan, berikut adalah apa yang Wink konfigurasikan untuk menjadikan integrasi ini berfungsi:
+
+- **Medan ID Kontena GTM Sojern** tersedia di tab Customizations portal Wink anda. Apabila anda memasukkan ID Kontena, Wink mengesahkan format dan menyimpannya dengan selamat untuk hartanah anda.
+- **Di setiap halaman di mana hartanah anda aktif** di Wink, ID Kontena GTM Sojern anda dimasukkan ke dalam halaman dan sistem pengurusan tag Wink memuatkan kontena Sojern anda secara dinamik bersama-sama dengan miliknya. Ini berlaku secara automatik — tiada langkah manual diperlukan dari pasukan Wink untuk setiap hartanah.
+- **Kontena Sojern anda dimuatkan secara tak segerak (asynchronously)**, bermakna ia tidak menjejaskan prestasi muat halaman untuk tetamu anda.
+- **Penjejakan Wink sendiri dan pixel Sojern anda berjalan serentak**, membaca dari data acara yang dikongsi sama. Setiap acara tempahan yang Wink jejak tersedia serentak untuk kontena Sojern anda.
+- **Apabila hartanah anda tidak dilihat** — contohnya, apabila tetamu melayari hotel lain di Wink — kontena Sojern anda tidak dimuatkan. Ini memastikan Sojern hanya menerima data yang berkaitan dengan hartanah anda.
+
+---
+
+## Rujukan DataLayer
+
+Wink menolak acara yang serasi GA4 ke `dataLayer` sepanjang perjalanan tetamu. Kontena GTM anda membaca dari `dataLayer` yang sama ini, jadi mana-mana pencetus atau pembolehubah yang anda konfigurasikan mempunyai akses kepada semua sifat yang diterangkan di bawah.
+
+Setiap acara mengikuti struktur GA4 Enhanced Ecommerce standard: satu rentetan `event` peringkat atas dan objek `ecommerce`. Sebelum setiap tolakan, Wink membersihkan muatan ecommerce sebelumnya untuk mengelakkan data lama tercampur ke dalam pencetus baru.
+
+<Aside type="note">
+**Corak reset dataLayer**
+
+Wink menetapkan semula objek ecommerce sebelum setiap tolakan acara:
+
+```js
+dataLayer.push({ ecommerce: null });   // kosongkan acara sebelumnya
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Jangan bergantung pada sifat ecommerce yang kekal antara acara. Sentiasa baca pada masa pencetus dalam acara yang sama.
+</Aside>
+
+---
+
+### Acara Perjalanan Tempahan
+
+Acara ini berlaku secara automatik apabila tetamu bergerak melalui corong tempahan. Konfigurasikan pencetus GTM anda sebagai pencetus **Custom Event** yang sepadan dengan nama acara di bawah.
+
+| Langkah | Acara | Bila Ia Berlaku |
+|------|-------|---------------|
+| 1 | `view_item_list` | Grid atau senarai inventori hotel dimuatkan |
+| 2 | `view_item` | Tetamu melihat halaman hartanah tertentu |
+| 3 | `add_to_cart` | Tetamu menambah bilik ke troli beli-belah |
+| 4 | `begin_checkout` | Halaman pembayaran / checkout dimuatkan |
+| 5 | `add_payment_info` | Tetamu memilih kaedah pembayaran |
+| 6 | `login` | Tetamu mengesahkan identiti melalui SSO |
+| 7 | `purchase` | Tempahan disahkan |
+| 8 | `refund` | Tempahan dibatalkan |
+
+---
+
+#### `view_item_list`
+
+Berlaku apabila grid atau senarai inventori hotel dipaparkan.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Berlaku apabila tetamu melihat hartanah tertentu.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Berlaku apabila tetamu menambah bilik ke troli mereka.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Berlaku apabila halaman checkout / pembayaran dimuatkan.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` hanya hadir apabila kod diskaun digunakan.
+
+---
+
+#### `add_payment_info`
+
+Berlaku apabila tetamu memilih atau mengesahkan kaedah pembayaran.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` diisi dari jenis pemeroleh pembayaran. `coupon` hanya hadir apabila kod diskaun digunakan.
+
+---
+
+#### `login`
+
+Berlaku apabila tetamu mengesahkan identiti melalui single sign-on.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Berlaku apabila tempahan disahkan.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` adalah pengecam kontrak tempahan unik. `coupon`, `shipping`, dan `tax` hanya hadir apabila berkenaan.
+
+---
+
+#### `refund`
+
+Berlaku apabila tempahan dibatalkan.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` sepadan dengan acara `purchase` untuk tempahan yang sama. `coupon`, `shipping`, dan `tax` hanya hadir apabila berkenaan.
+
+---
+
+### Sifat Item
+
+Semua acara yang termasuk array `items` berkongsi skema item yang sama. Setiap sifat adalah pilihan kecuali ditandakan wajib.
+
+#### Medan GA4 Standard
+
+Medan ini difahami secara asli oleh GA4 dan muncul dalam laporan ecommerce standard tanpa konfigurasi tambahan.
+
+| Sifat | Jenis | Wajib | Penerangan |
+|----------|------|----------|-------------|
+| `item_id` | string | Ya | Pengecam unik untuk bilik atau produk |
+| `item_name` | string | — | Nama bilik atau produk |
+| `affiliation` | string | — | Nama afiliasi atau penjual |
+| `coupon` | string | — | Kod kupon yang digunakan pada item |
+| `currency` | string | — | Kod mata wang ISO 4217 (contoh `USD`) |
+| `creative_name` | string | — | Nama kreatif yang digunakan dalam promosi |
+| `creative_slot` | string | — | Posisi slot kreatif promosi |
+| `discount` | number | — | Jumlah diskaun yang digunakan |
+| `index` | number | — | Posisi dalam senarai (bermula dari 1) |
+| `item_brand` | string | — | Nama hotel atau jenama |
+| `item_category` | string | — | Jenis produk — contohnya `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | Pengecam senarai yang item ini miliki |
+| `item_list_name` | string | — | Nama paparan senarai |
+| `location_id` | string | — | Koordinat geo hartanah |
+| `price` | number | — | Harga unit |
+| `promotion_id` | string | — | Pengecam promosi |
+| `promotion_name` | string | — | Nama paparan promosi |
+| `quantity` | number | — | Kuantiti (lalai ke `1`) |
+
+#### Parameter item khusus tersuai
+
+Parameter ini membawa konteks tempahan khusus Wink. GA4 tidak secara automatik memaparkannya dalam laporan — anda mesti mendaftar setiap satu sebagai **dimensi tersuai berjangka item** dalam harta GA4 anda sebelum ia muncul dalam eksplorasi atau laporan standard. Lihat [Dimensi Tersuai dalam GA4](#custom-dimensions-in-ga4) di bawah untuk arahan penyediaan.
+
+| Sifat | Jenis | Penerangan |
+|----------|------|-------------|
+| `property_id` | string | Pengecam hartanah Wink |
+| `property_name` | string | Nama paparan hartanah |
+| `property_brand` | string | Jenama yang dimiliki hartanah |
+| `property_chain` | string | Rangkaian yang dimiliki hartanah |
+| `city_name` | string | Bandar di mana hartanah terletak |
+| `country_code` | string | Kod negara ISO 3166-1 alpha-2 |
+| `start_date` | string | Tarikh daftar masuk dalam format `YYYY-MM-DD` |
+| `end_date` | string | Tarikh daftar keluar dalam format `YYYY-MM-DD` |
+| `num_adults` | number | Bilangan dewasa dalam tempahan |
+| `num_children` | number | Bilangan kanak-kanak dalam tempahan |
+| `cancellation_policy` | string | Salah satu: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Pengecam pelan kadar |
+| `room_rate_id` | string | Pengecam kadar bilik tertentu |
+| `room_rate_name` | string | Nama paparan kadar bilik |
+| `num_perks` | number | Bilangan keistimewaan yang termasuk dengan kadar |
+| `room_location` | string | Penerangan lokasi bilik (contoh `Overwater`, `Garden`) |
+| `room_view` | string | Penerangan pemandangan bilik (contoh `Ocean`, `City`) |
+| `room_classification` | string | Klasifikasi atau tahap bilik (contoh `Suite`, `Standard`) |
+
+---
+
+### Dimensi Tersuai dalam GA4
+
+GA4 mengabaikan parameter item tersuai dalam laporan sehingga anda mendaftarkannya secara eksplisit sebagai dimensi tersuai berjangka item. Anda hanya perlu mendaftar parameter yang anda ingin gunakan dalam laporan — anda tidak perlu mendaftar kesemua 18.
+
+<Steps>
+
+1. **Buka Definisi Tersuai**
+
+   Dalam GA4, pergi ke **Admin** (ikon gear bawah kiri) → pilih harta anda → **Data display** → **Custom definitions**.
+
+2. **Cipta dimensi tersuai baru**
+
+   Klik **Create custom dimensions**.
+
+3. **Isikan butiran dimensi**
+
+   - **Dimension name** — label yang boleh dibaca manusia yang muncul dalam laporan GA4 (lihat jadual di bawah)
+   - **Scope** — pilih **Item**
+   - **Event parameter** — nama parameter tepat seperti yang muncul dalam dataLayer (lihat jadual di bawah)
+   - **Description** — pilihan tetapi disyorkan
+
+4. **Simpan dan ulang**
+
+   Klik **Save**, kemudian ulang untuk setiap parameter yang anda ingin jejak.
+
+</Steps>
+
+<Aside type="note">
+Dimensi tersuai boleh mengambil masa sehingga 24 jam untuk mula muncul dalam laporan GA4 selepas pendaftaran. Data sejarah yang dikumpul sebelum pendaftaran tidak diisi semula.
+
+GA4 membenarkan sehingga 50 dimensi tersuai berjangka item bagi setiap harta standard (harta 360 membenarkan lebih banyak).
+</Aside>
+
+Gunakan jadual berikut sebagai rujukan anda semasa mencipta dimensi tersuai. Nilai **Event parameter** mesti sepadan tepat — GA4 peka huruf besar kecil.
+
+| Nama dimensi | Event parameter | Jenis |
+|----------------|-----------------|------|
+| Property ID | `property_id` | Teks |
+| Property name | `property_name` | Teks |
+| Property brand | `property_brand` | Teks |
+| Property chain | `property_chain` | Teks |
+| City name | `city_name` | Teks |
+| Country code | `country_code` | Teks |
+| Check-in date | `start_date` | Teks |
+| Check-out date | `end_date` | Teks |
+| Number of adults | `num_adults` | Nombor |
+| Number of children | `num_children` | Nombor |
+| Cancellation policy | `cancellation_policy` | Teks |
+| Rate plan ID | `rate_plan_id` | Teks |
+| Room rate ID | `room_rate_id` | Teks |
+| Room rate name | `room_rate_name` | Teks |
+| Number of perks | `num_perks` | Nombor |
+| Room location | `room_location` | Teks |
+| Room view | `room_view` | Teks |
+| Room classification | `room_classification` | Teks |
+
+---
+
+### Acara Tambahan Tersedia
+
+Acara berikut tersedia dalam dataLayer Wink tetapi bukan sebahagian daripada corong tempahan standard. Ia mungkin dipicu oleh interaksi lain di platform.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Tiada muatan `ecommerce` disertakan dengan acara ini.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Ini adalah acara tersuai Wink — bukan sebahagian daripada set acara GA4 standard. Ia ditolak pada setiap navigasi halaman dan membawa konteks peranti dan sesi. Ia tidak termasuk objek `ecommerce`.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Sifat | Penerangan |
+|----------|-------------|
+| `device` | Jenis peranti yang dikesan — `Desktop`, `Android`, `iPhone`, `iPad`, atau serupa |
+| `deviceAgent` | Rentetan agen pengguna mentah |
+| `os` | Sistem operasi yang dikesan — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Laluan halaman semasa |
+| `title` | Tajuk halaman semasa |
+| `userId` | Pengecam pengguna yang disahkan (tidak disertakan apabila tidak log masuk) |
+| `startDate` | Tarikh daftar masuk dari sesi carian semasa |
+| `endDate` | Tarikh daftar keluar dari sesi carian semasa |
+| `guests` | Bilangan tetamu dari sesi carian semasa |
+| `rooms` | Bilangan bilik dari sesi carian semasa |

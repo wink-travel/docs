@@ -1,5 +1,5 @@
 ---
-title: Sa Buod
+title: Sa Maikling Salita
 description: Tinuturuan ka ng artikulong ito tungkol sa lahat ng nais mong malaman tungkol sa booking engine.
 sidebar:
   order: 0
@@ -9,8 +9,8 @@ Ganito namin hinahati ang responsibilidad sa Wink:
 
 - Ang [Extranet](/tl/extranet/what-is-extranet) ay tumutok sa mga supplier na nagma-manage ng imbentaryo.
 - Ang [Studio](/tl/studio/what-is-studio) ay tumutok sa mga affiliate na nagma-manage ng nilalaman.
-- Ang `Booking Engine` ay tumutok sa paggawa ng nilalaman, na nilikha sa `Studio`, na nakabase sa imbentaryong nilikha sa `Extranet` at ginagawa itong ma-book.
-- Ang [Payment](/tl/payment/what-is-trip-pay) ay tumutok sa pagsingil / pag-refund sa mga biyahero na nag-book [sa pamamagitan ng mga platform tulad ng Wink], at pagbabayad sa mga vendor.
+- Ang `Booking Engine` ay tumutok sa paggawa ng nilalaman, na nilikha sa `Studio`, na batay sa imbentaryo na nilikha sa `Extranet` at ginagawa itong maibook.
+- Ang [Payment](/tl/payment/what-is-trip-pay) ay tumutok sa pagsingil / pag-refund sa mga biyahero na nagbu-book [sa pamamagitan ng mga platform tulad ng Wink], at pagbabayad sa mga vendor.
 
 Ang booking engine ang nasa puso ng aming platform.
 
@@ -20,7 +20,7 @@ Kabilang sa mga responsibilidad nito ang:
 - Pagbibigay ng paraan sa mga rate provider para ipadala sa amin ang data ng rate.
 - Pamamahala ng lookup data. *hal. mga rehiyon, bansa, destinasyon, mga property, atbp.*
 - Pamamahala ng mga wika.
-- Pagbuo ng analytics base sa mga interaksyon ng user, mga kaganapan, at mga tawag sa API.
+- Pagbuo ng analytics batay sa mga interaksyon ng user, mga kaganapan, at mga tawag sa API.
 - Pagseserbisyo ng bookable na imbentaryo sa nais na format, wika, at pera, tulad ng:
     - Isang [shareable link](/tl/studio/shareable-links) sa Facebook.
     - Isang hotel landing page sa https://ota.wink.travel na may imbentaryo para sa hotel na iyon.

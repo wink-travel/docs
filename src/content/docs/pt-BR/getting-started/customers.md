@@ -25,7 +25,7 @@ Empresas de gestão hoteleira e empresas de gestão de destinos podem administra
 
 ## Influenciadores
 
-Influenciadores usam o Wink para monetizar melhor seu público. Eles fazem isso ao se associar a hotéis, criar ofertas personalizadas e aproveitar as ferramentas sociais do Wink e análises poderosas para acompanhar quais produtos vendem melhor​.
+Influenciadores usam o Wink para monetizar melhor seu público. Eles fazem isso ao se associar com hotéis, criar ofertas personalizadas e aproveitar as ferramentas sociais do Wink e análises poderosas para acompanhar quais produtos vendem melhor​.
 
 ## Agentes de viagem
 

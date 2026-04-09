@@ -1,0 +1,140 @@
+---
+title: Integração GA4 Analytics
+description: Como ligar a sua própria propriedade Google Analytics 4 ao Wink para poder acompanhar as suas reservas, receitas e percurso do hóspede diretamente no seu próprio painel GA4.
+sidebar:
+  label: Integração GA4 Analytics
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Ao ligar a sua propriedade Google Analytics 4 ao Wink, os seus eventos de reserva — desde visualizações de quartos até compras concluídas — são automaticamente enviados para o seu próprio painel GA4 juntamente com as análises do Wink. Sem código, sem configuração técnica da sua parte.
+
+<Aside type="tip">
+Tudo o que precisa é de um ID de Medição GA4. Uma vez inserido no portal Wink, as suas análises ficam ativas imediatamente.
+</Aside>
+
+---
+
+## Como Funciona
+
+```
+Insere o seu G-XXXXXXXXXX no portal Wink
+       ↓
+O Wink encaminha os seus eventos de reserva para a sua propriedade GA4
+       ↓
+Inicia sessão em analytics.google.com e vê as suas reservas
+```
+
+---
+
+## O Que Precisa de Fazer
+
+<Steps>
+
+1. **Crie uma Propriedade GA4**
+
+   Vá a [analytics.google.com](https://analytics.google.com): Admin → Criar Propriedade. Defina o seu fuso horário e moeda para corresponder ao seu mercado.
+
+2. **Crie um Fluxo de Dados Web**
+
+   Admin → Fluxos de Dados → Adicionar Fluxo → Web. Insira `wink.travel` como URL. Isto gera o seu **ID de Medição** (`G-XXXXXXXXXX`). Copie-o.
+
+3. **Insira o Seu ID de Medição no Portal Wink**
+
+   Inicie sessão em [my.wink.travel](https://my.wink.travel), selecione a sua conta e vá ao separador **Personalizações**. Cole aí o seu ID de Medição e guarde. Está feito — a sua integração GA4 está agora ativa.
+
+4. **Marque `purchase` como Evento Principal**
+
+   Volte à sua propriedade GA4: Admin → Eventos → encontre `purchase` → ative **Marcar como evento principal**. Isto faz com que as reservas concluídas apareçam no seu relatório de Conversões.
+
+5. **Veja os Seus Dados**
+
+   Inicie sessão em [analytics.google.com](https://analytics.google.com) e verá as suas reservas, receitas e funil do hóspede — tudo acompanhado automaticamente através do Wink.
+
+</Steps>
+
+<Aside type="note">
+Não precisa de instalar qualquer código de rastreamento no seu próprio website para esta integração. O Wink trata de tudo. O seu ID de Medição é simplesmente o destino para onde os seus dados de reserva são enviados.
+</Aside>
+
+---
+
+## O Que Pode Acompanhar
+
+Uma vez ligado, a sua propriedade GA4 recebe o conjunto completo de eventos de Comércio Eletrónico Avançado para a sua propriedade:
+
+### Descoberta
+
+| Evento | O Que Significa |
+|---|---|
+| `view_item_list` | Um hóspede viu a sua propriedade numa pesquisa ou lista de categorias |
+| `select_item` | Um hóspede clicou na sua propriedade a partir de uma lista |
+| `view_item` | Um hóspede visualizou a página de detalhes do seu hotel |
+
+### Consideração
+
+| Evento | O Que Significa |
+|---|---|
+| `view_promotion` | Um hóspede viu uma oferta promocional para a sua propriedade |
+| `select_promotion` | Um hóspede clicou numa oferta promocional |
+| `add_to_wishlist` | Um hóspede guardou a sua propriedade na lista de desejos |
+
+### Funil de Reserva
+
+| Evento | O Que Significa |
+|---|---|
+| `add_to_cart` | Um hóspede selecionou um quarto ou pacote |
+| `view_cart` | Um hóspede visualizou o resumo da sua reserva |
+| `remove_from_cart` | Um hóspede removeu um quarto ou pacote |
+| `begin_checkout` | Um hóspede iniciou o processo de pagamento |
+| `add_payment_info` | Um hóspede inseriu os seus dados de pagamento |
+| `add_shipping_info` | Um hóspede inseriu os seus dados pessoais |
+| `purchase` | Um hóspede completou uma reserva |
+| `refund` | Uma reserva foi cancelada e reembolsada |
+
+Todos os eventos incluem dimensões relevantes como receita, moeda, tipo de quarto e valor da reserva — dando-lhe uma visão completa do percurso do hóspede desde a primeira impressão até à reserva concluída.
+
+---
+
+## Rastreamento Cross-Domain (Avançado)
+
+A integração padrão acima acompanha tudo o que acontece dentro do Wink. No entanto, se quiser acompanhar os hóspedes desde o seu próprio website até à conclusão da reserva no Wink — e atribuir corretamente a fonte original do tráfego (Google Ads, campanhas de email, pesquisa orgânica, etc.) — é necessário um passo adicional em cada lado.
+
+<Aside type="caution">
+Esta secção aplica-se apenas se tiver o GA4 instalado no seu próprio website. Se não usar GA4 no seu site, a integração padrão acima é tudo o que precisa.
+</Aside>
+
+### Por Que Isto É Importante
+
+Sem rastreamento cross-domain, um hóspede que visita primeiro o seu website e depois reserva no Wink aparecerá no seu GA4 como uma sessão **Direta** sem ligação à visita anterior. Quaisquer cliques do Google Ads, campanhas de email ou visitas de pesquisa orgânica que levaram à reserva não receberão crédito.
+
+Com o rastreamento cross-domain configurado, vê o percurso completo do hóspede:
+
+```
+google.com (anúncio pago)
+       ↓
+o seu website (hóspede navega pelos quartos)
+       ↓
+wink.travel (hóspede seleciona quarto e reserva)
+       ↓
+compra atribuída corretamente ao clique original do Google Ads
+```
+
+### Ação Necessária: Você
+
+Configure a sua propriedade GA4 para reconhecer `wink.travel` como parte do seu próprio domínio, e não como uma referência externa. Isto indica ao GA4 para unir as duas sessões numa única jornada contínua do hóspede.
+
+<Steps>
+1. Admin GA4 → Fluxos de Dados → o seu fluxo
+2. Configurar definições da tag → **Configurar os seus domínios**
+3. Adicione `wink.travel` como domínio ligado
+4. Guarde
+</Steps>
+
+### Ação Necessária: Wink
+
+Contacte o [Suporte Wink](https://my.wink.travel) e forneça o domínio do seu website (ex.: `seuhotel.com`). O Wink adicionará o seu domínio à lista de exclusão de referências na propriedade GA4 do Wink. Isto evita que o seu website seja registado como fonte de referência, o que de outra forma sobrescreveria a atribuição original do hóspede e iniciaria uma nova sessão.
+
+<Aside type="tip">
+A integração padrão acima é suficiente para a maioria das propriedades e oferece visibilidade imediata das reservas e receitas no Wink. O rastreamento cross-domain é uma opção avançada que vale a pena configurar quando estiver confortável com os seus dados GA4 e quiser uma análise de atribuição mais profunda.
+</Aside>

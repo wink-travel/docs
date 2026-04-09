@@ -16,7 +16,7 @@ Wink aloitti hotellien käyttöönoton kymmenen vuotta sitten. Hotellit käyttä
 Brändeillä ja ketjuilla on hieman erilaiset tarpeet kuin yksittäisellä kiinteistöllä. Winkissä he voivat:
 
 - Hallita useita kiinteistöjä yhden tilin alla.
-- Määrittää kiinteistöille vastuuhenkilöitä.
+- Määrittää kiinteistöille johtajat
 - Käyttää [WinkLinks](/fi/link-manager/wink-links), [WordPress](/fi/integrations/wordpress) ja meidän [Web Components](/fi/integrations/web-components) -komponenttejamme markkinoidakseen ja myydäkseen useita kiinteistöjä yhdessä paikassa.
 
 ## Hallintayhtiöt
@@ -25,28 +25,28 @@ Vieraanvaraisuuden hallintayhtiöt ja matkakohteiden hallintayhtiöt voivat hall
 
 ## Vaikuttajat
 
-Vaikuttajat käyttävät Winkia ansaitakseen paremmin yleisöstään. He tekevät yhteistyötä hotellien kanssa, luovat räätälöityjä tarjouksia ja hyödyntävät Wink:n sosiaaliseen mediaan sopivia työkaluja sekä tehokkaita analytiikkatyökaluja seuratakseen, mitkä tuotteet myyvät parhaiten​.
+Vaikuttajat käyttävät Winkia ansaitakseen paremmin yleisöltään. He tekevät yhteistyötä hotellien kanssa, luovat räätälöityjä tarjouksia ja hyödyntävät Wink:n sosiaaliseen mediaan sopivia työkaluja sekä tehokkaita analytiikkatyökaluja seuratakseen, mitkä tuotteet myyvät parhaiten​.
 
 ## Matkatoimistot
 
-Matkatoimistot saavat pääsyn matkavarastoihin maailmanlaajuisesti erinomaisin hinnoin omien [matkatoimistoportaalimme](https://agent.wink.travel) kautta. He voivat tehdä varauksia portaalimme kautta, API:n avulla tai antaa käyttäjiensä tehdä varauksia itse matkatoimiston verkkosivustolla, joka käyttää teknologioitamme.
+Matkatoimistot saavat pääsyn matkavarastoihin maailmanlaajuisesti erinomaisin hinnoin omien [matkatoimistoportaalimme](https://agent.wink.travel) kautta. He voivat tehdä varauksia portaalimme kautta, API:n kautta tai antaa käyttäjiensä tehdä varauksia itse matkatoimiston verkkosivustolla, joka käyttää teknologioitamme.
 
 ## Yritykset
 
 Yritykset tarvitsevat enemmän matkailualustan ominaisuuksia:
 
 - He tarvitsevat hyvin järjestettyjä matkasuunnitelmia, jotka tukevat joustavuutta ja viime hetken muutoksia.
-- He tarvitsevat luotettavia viestintävälineitä, kuten internetyhteyden.
+- He tarvitsevat luotettavia viestintävälineitä, kuten internet-yhteyden.
 - Heillä on toimittajapreferenssejä jäsenyyksineen.
-- Heillä on usein yritysluottokortti ja kulurajoitukset.
-- He tarvitsevat kulujen hallintaa ja raportointiin integroitumista.
+- Heillä on usein yritysluottokortti ja asetetut kulurajat.
+- He tarvitsevat kulujen hallinnan ja raportointiin integroitumisen.
 - He tarvitsevat concierge-palvelua sekä MICE-palveluita tapahtumissa.
 
 Yritysasiakkaat voivat hallita omia tilejään meidän [yritysportaalissamme](/fi/corporate/what-is-group) tai käyttää virallisesti tuettua [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) -lisäosaa ja [Concur](https://www.concur.com/) -integraatiota.
 
 ## Kehittäjät
 
-Vaikka rakensimme tämän alustan hotelleille ja hotelleiden tarpeisiin... Jokainen koodirivi on rakennettu uudelleenkäytettävyyttä varten. Kehittäjätiimimme loi Wink:n toiveena, että seuraava 🦄 matkailusovellus rakennetaan meidän koodipohjamme päälle. Siirry [Kehittäjä](/fi/developers/build-on-wink) -sivulle nähdäksesi, miten Wink voi tukea sinua seuraavassa hankkeessasi.
+Vaikka rakensimme tämän alustan hotelleille ja hotelleiden tarpeisiin... Jokainen koodirivi on rakennettu uudelleenkäytettävyyttä varten. Kehittäjätiimimme rakensi Wink:n toiveena, että seuraava 🦄 matkailusovellus rakennetaan meidän koodipohjamme päälle. Siirry [Kehittäjä](/fi/developers/build-on-wink) -sivulle nähdäksesi, miten Wink voi tukea sinua seuraavassa hankkeessasi.
 
 ## Muut
 

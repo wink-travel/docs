@@ -5,12 +5,12 @@ sidebar:
   order: 0
 ---
 
-Winkにおける責任分担は以下の通りです：
+Winkでの責任分担は以下の通りです：
 
 - [Extranet](/ja/extranet/what-is-extranet) はサプライヤーが在庫を管理することに関わります。
 - [Studio](/ja/studio/what-is-studio) はアフィリエイトがコンテンツを管理することに関わります。
-- `Booking Engine` は、`Extranet` で作成された在庫を元に `Studio` で作成されたコンテンツを予約可能にすることに関わります。
-- [Payment](/ja/payment/what-is-trip-pay) は、[Winkのようなプラットフォームを通じて]予約した旅行者からの課金・返金やベンダーへの支払いに関わります。
+- `Booking Engine` は、`Extranet` で作成された在庫に基づき `Studio` で作成されたコンテンツを予約可能にすることに関わります。
+- [Payment](/ja/payment/what-is-trip-pay) は、[Winkのようなプラットフォームを通じて]予約した旅行者からの課金・返金や、ベンダーへの支払いに関わります。
 
 予約エンジンは当プラットフォームの中核です。
 
@@ -25,7 +25,7 @@ Winkにおける責任分担は以下の通りです：
     - Facebook上の[共有可能なリンク](/ja/studio/shareable-links)。
     - https://ota.wink.travel のホテルランディングページにそのホテルの在庫を表示。
     - アフィリエイト在庫を含む[カード](/ja/studio/cards)。
-    - [WinkLinks](/ja/link-manager/wink-links)アカウント上の[マップ](/ja/studio/maps)。
+    - あなたの[WinkLinks](/ja/link-manager/wink-links)アカウント上の[マップ](/ja/studio/maps)。
     - リモートの旅行代理店システムからの[APIコール](/ja/developers/apis)。
 - 旅行者に以下の手段を提供：
     - 旅行在庫の検索。
@@ -36,7 +36,7 @@ Winkにおける責任分担は以下の通りです：
 
 予約エンジンは https://ota.wink.travel を通じて提供する再利用可能な機能の集合体であり、ホテルやアフィリエイトが旅行者に商品を販売するための高度にカスタマイズ可能なウェブサイトです。
 
-さらに自由度を求める統合者は、当社の[WordPressプラグイン](/ja/integrations/wordpress/)、[Web Components](/ja/integrations/web-components)、[API](/ja/developers/apis)を通じて同じ機能すべてにアクセスできます。
+さらに自由度を求める統合者は、当社の[WordPressプラグイン](/ja/integrations/wordpress/)、[Web Components](/ja/integrations/web-components)、および[API](/ja/developers/apis)を通じて同じ機能すべてにアクセスできます。
 
 次のセクションに進み、予約エンジンの提供内容についてさらにお読みください。
 

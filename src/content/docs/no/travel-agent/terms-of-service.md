@@ -9,21 +9,21 @@ sidebar:
 Sist oppdatert 2024-10-30
 :::
 
-:::caution[Varsel]
+:::caution[Merknad]
 Vilkårene for bruk nedenfor gjelder for reisebyråer som ønsker å innkreve og utbetale midler på egen hånd.  
 Dette kan kun gjøres gjennom vårt API og kun av reisebyråer som har indikert at de ønsker dette under registreringsprosessen.
 
-Alle reisebyråer kan fortsatt booke via vårt reisebyråportal ved bruk av Wink sin betalingsløsning med sitt eget eller reisendes kredittkort. Derfor må alle reisebyråer også godta vilkårene for bruk der Wink sin betalingsløsning er registrert som selger.
+Alle reisebyråer kan fortsatt booke gjennom vårt reisebyråportal ved bruk av Wink sin betalingsløsning med sitt eget eller reisendes kredittkort. Derfor må alle reisebyråer også godta vilkårene for bruk der Wink sin betalingsløsning er registrert som betalingsmottaker.
 
 Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/no/studio/terms-of-service).
 :::
 
 **WINK GENERELLE VILKÅR OG BETINGELSER**  
-**FOR REISEBYRÅER (Selger av tjenesten)**
+**FOR REISEBYRÅER (Betalingsmottaker)**
 
 **MELLOM:**
 
-1. **Winkfluence**, et selskap registrert under lovene i Singapore med registrert adresse \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 og med MVA-registreringsnummer 201437335D (heretter kalt "Wink") og  
+1. **Winkfluence**, et selskap registrert under lovene i Singapore med registrert adresse \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 og MVA-nummer 201437335D (heretter kalt "Wink") og  
      
 2. **REISEBYRÅET** med opplysninger angitt i registreringsskjemaet for reisebyrå eller som er sendt inn online (heretter kalt "Reisebyrået").
 
@@ -33,11 +33,11 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 (ii) Wink eier, kontrollerer, tilbyr eller administrerer ikke noen oppføringer. Wink er ikke part i kontraktene som inngås direkte mellom Overnattingsleverandørene og gjestene. Wink fungerer ikke som agent for Overnattingsleverandørene;
 
-(iii) Wink vedlikeholder og utnytter sine egne nettsider (heretter kalt "Wink-nettsidene") og tilbyr også Tjenesten og lenker til Tjenesten på tredjeparts nettsider;
+(iii) Wink vedlikeholder og utnytter egne nettsider (heretter kalt "Wink-nettsidene") og tilbyr også Tjenesten og lenker til Tjenesten på tredjeparts nettsider;
 
-(iv) Reisebyrået eier, kontrollerer, drifter og/eller opererer ett eller flere internett-domener, nettsider eller applikasjoner og ønsker å være selger av tjenesten ved bruk av Tjenesten.
+(iv) Reisebyrået eier, kontrollerer, drifter og/eller opererer ett eller flere internettdomener, nettsider eller applikasjoner og ønsker å være betalingsmottaker ved bruk av Tjenesten.
 
-(v) Reisebyrået og Wink ønsker at Reisebyrået gjør Tjenesten (direkte eller indirekte) tilgjengelig for sine kunder og besøkende på Reisebyråets nettside(r) og app(er) i den form og på de vilkår som er angitt i denne avtalen (heretter kalt "Vilkårene").
+(v) Reisebyrået og Wink ønsker at Reisebyrået gjør Tjenesten (direkte eller indirekte) tilgjengelig for sine kunder og besøkende på Reisebyråets nettside(r) og app(er) i slik form og på slike vilkår (heretter kalt "Vilkårene") som angitt i denne avtalen.
 
 **DERFOR ENES PARTENE OM FØLGENDE:**
 
@@ -45,33 +45,33 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 1. I tillegg til vilkår definert andre steder i denne avtalen, gjelder følgende definisjoner gjennom hele avtalen med mindre annet fremgår:
 
-* **"Overnatting"** betyr enhver form for overnatting, inkludert men ikke begrenset til hoteller, moteller, gjestehus, bed & breakfasts, hosteller, villaer, leiligheter, hytter, herberger, feriesteder og enhver annen (type) overnattings- eller logi-leverandør (uavhengig av om de er tilgjengelige på Wink-nettsidene).  
+* **"Overnatting"** betyr enhver form for overnatting, inkludert men ikke begrenset til hoteller, moteller, gjestehus, bed & breakfasts, hosteller, villaer, leiligheter, hytter, vertshus, feriesteder og enhver annen (type) overnattings- eller logi-leverandør (uavhengig av om de er tilgjengelige på Wink-nettsidene).  
     
-* **"Overnattingsleverandør(er)"** betyr enhver part som oppretter en konto hos Tjenesteleverandøren med hensikt å selge sitt eget rom- og tilleggstjenesteinventar gjennom Wink-plattformen.  
+* **"Overnattingsleverandør(er)"** betyr enhver part som oppretter en konto hos Tjenesteleverandøren med intensjon om å selge eget rom- og tilleggstjenesteinventar gjennom Wink-plattformen.  
     
 * **"Booking"** betyr en reservasjon eller bestilling gjort av en gjest gjennom Reisebyrået for overnattingsytelser tilbudt av en Overnattingsleverandør.
 
-* **"Bookinggebyr"** betyr 1,5 % som trekkes fra det totale beløpet Reisebyrået har innkrevd fra gjesten, og som skal betales til Wink som et behandlingsgebyr.
+* **"Bookinggebyr"** betyr 1,5 % som trekkes fra totalbeløpet innkrevd av Reisebyrået fra gjesten, og som skal betales til Wink som et behandlingsgebyr.
 
-* **"Bookingverdi"** betyr det totale beløpet Reisebyrået har innkrevd fra gjesten for en booking.
+* **"Bookingverdi"** betyr totalbeløpet innkrevd av Reisebyrået fra gjesten for en booking.
 
-* **"Provisjon"** betyr beløpet som Overnattingsleverandøren skylder Reisebyrået, beregnet som en avtalt prosentandel i henhold til "Separat avtale" av bookingverdien.  
+* **"Provisjon"** betyr beløpet som Overnattingsleverandøren skylder Reisebyrået, beregnet som avtalt prosentandel i "Separat avtale" av bookingverdien.  
     
 * **“Force Majeure”** betyr enhver hendelse utenfor rimelig kontroll for en part, inkludert men ikke begrenset til naturkatastrofer, krigshandlinger, terrorisme, borgerlige uroligheter, pandemier og myndighetstiltak, som forhindrer en part i å oppfylle sine forpliktelser under denne avtalen.  
     
 * **“Gjest”** betyr en person eller gruppe som foretar en booking gjennom Reisebyrået for overnattingsytelser.  
     
-* **"Selger av tjenesten"** refererer til den enheten som er juridisk autorisert og ansvarlig for å behandle betalinger fra gjester, inkludert håndtering av betalingstransaksjoner, refusjoner, chargebacks og sikring av overholdelse av betalingsregler. Selger av tjenesten er den enheten hvis navn vises på gjestens kredittkortutskrift for kostnader knyttet til bookingen.
+* **"Betalingsmottaker"** refererer til den enheten som er juridisk autorisert og ansvarlig for å behandle betalinger fra gjester, inkludert håndtering av betalingstransaksjoner, refusjoner, chargebacks og sikring av overholdelse av betalingsregler. Betalingsmottakeren er den enheten hvis navn vises på gjestens kredittkortutskrift for kostnader knyttet til bookingen.
 
-* **"Netto betaling"** betyr beløpet som skal betales til Overnattingsleverandøren etter fradrag av Wink bookinggebyr og Reisebyråets provisjon fra bookingverdien.  
+* **"Netto betaling"** betyr beløpet som skal betales til Overnattingsleverandøren etter fradrag av Wink Bookinggebyr og Reisebyråets provisjon fra bookingverdien.  
     
 * **“Betalinger”** betyr de økonomiske forpliktelsene som oppstår under denne avtalen, inkludert provisjoner, gebyrer eller andre kostnader som skal betales av en part til den andre.
 
-* **"Betalingsformidler"** er et heleid datterselskap av Winkfluence som styrer betalingstjenestene, og som innkrever betalinger fra gjester ved å belaste betalingsmetoden knyttet til kjøpet, slik som kredittkort, debetkort, bankoverføring, kryptovaluta eller PayPal, osv.  
+* **"Betalingsformidler"** er et heleid datterselskap av Winkfluence som styrer betalingstjenestene, og som innkrever betalinger fra gjester ved å belaste betalingsmetoden knyttet til deres kjøp, slik som kredittkort, debetkort, bankoverføring, kryptovaluta eller PayPal, osv.  
     
 * **“Plattform”** betyr det nettbaserte systemet som drives av Tjenesteleverandøren hvor Reisebyrået kan foreta eller administrere bookinger for gjester.
 
-* **"Separat avtale"** betyr den uavhengige kontrakten mellom Reisebyrået og Overnattingsleverandøren som beskriver de spesifikke betalingsvilkårene, inkludert provisjon og betalingsplan.  
+* **"Separat avtale"** betyr den uavhengige kontrakten mellom Reisebyrået og Overnattingsleverandøren som beskriver spesifikke betalingsvilkår, inkludert provisjon og betalingsplan.  
     
 * **“Tjenester”** betyr tjenestene som leveres av Tjenesteleverandøren til Reisebyrået under denne avtalen, inkludert men ikke begrenset til tilgang til Plattformen, bookingformidling og kundestøtte.  
     
@@ -94,11 +94,11 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 * 1,5 % bookinggebyr til Wink.  
 * Reisebyråets provisjon.
 
-3.3 **Netto betaling:** Det resterende netto beløpet skal utbetales av Reisebyrået til den respektive Overnattingsleverandøren i henhold til vilkårene i en separat avtale mellom Reisebyrået og Overnattingsleverandøren. Wink er ikke ansvarlig for å foreta noen betalinger til Overnattingsleverandøren.
+3.3 **Netto betaling:** Den gjenværende netto betalingen skal utbetales av Reisebyrået til den respektive Overnattingsleverandøren i henhold til vilkårene i en separat avtale mellom Reisebyrået og Overnattingsleverandøren. Wink er ikke ansvarlig for å foreta noen betalinger til Overnattingsleverandøren.
 
 3.4 **Separat avtale:** Reisebyrået må ha en separat avtale med hver Overnattingsleverandør som beskriver betalingsvilkår og betingelser. Denne avtalen mellom Wink og Reisebyrået regulerer ikke forholdet mellom Reisebyrået og Overnattingsleverandørene.
 
-3.5 **Winks fakturering:** Wink vil sende en månedlig faktura til Reisebyrået for det akkumulerte 1,5 % bookinggebyret for måneden. Reisebyrået er ansvarlig for å betale denne fakturaen innen de angitte betalingsbetingelsene.
+3.5 **Winks fakturering:** Wink vil utstede en månedlig faktura til Reisebyrået for det akkumulerte 1,5 % bookinggebyret i løpet av måneden. Reisebyrået er ansvarlig for å betale denne fakturaen innen de angitte betalingsbetingelsene.
 
 **4\. Roller og ansvar**
 
@@ -106,7 +106,7 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 * Reisebyrået er ansvarlig for innkreving av betalinger fra gjester.  
 * Reisebyrået må sikre rettidig og korrekt utbetaling av netto betaling til Overnattingsleverandørene i henhold til deres separate avtaler.  
-* Reisebyrået er ansvarlig for eventuelle feil eller avvik i betalingsbehandlingen og må rette opp disse raskt.  
+* Reisebyrået er ansvarlig for eventuelle feil eller uoverensstemmelser i betalingsbehandlingen og må rette opp disse raskt.  
 * Reisebyrået er ansvarlig for å betale Winks månedlige faktura for bookinggebyrene.
 
 4.2 **Winks ansvar:**
@@ -124,20 +124,20 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 6.1 **Betalingsplan:**
 
-* Alle betalinger som skal betales til Wink av Reisebyrået under denne avtalen skal skje innen 15 dager etter mottak av korrekt og nøyaktig faktura fra Wink, med mindre annet er skriftlig avtalt. Betalinger skal skje i USD, uten fradrag eller tilbakeholdelser, med mindre lov krever det.  
+* Alle betalinger som skal betales til Wink av Reisebyrået under denne avtalen skal skje innen 15 dager etter mottak av korrekt og nøyaktig faktura fra Wink, med mindre annet er skriftlig avtalt. Betalinger skal skje i USD, uten fradrag eller tilbakeholdelser med mindre loven krever det.  
   
 
 6.2 **Forsinkede betalinger:**
 
-* Dersom noen betaling under denne avtalen ikke mottas innen forfallsdato, forbeholder Wink seg retten til å belaste renter med 5 % per måned eller den høyeste lovlige satsen, avhengig av hva som er lavest, på det utestående beløpet, beregnet fra forfallsdato til betalingsdato. I tillegg kan Wink suspendere tjenester inntil betaling er mottatt. Dersom det er feil i fakturaen fra Wink, skal Reisebyrået kun betale den korrekte delen av fakturaen og skal ikke pålegges renter eller gebyrer for den feilaktige delen.
+* Dersom noen betaling under denne avtalen ikke mottas innen forfallsdato, forbeholder Wink seg retten til å belaste renter med 5 % per måned eller den høyeste lovlige satsen, avhengig av hva som er lavest, på det utestående beløpet, beregnet fra forfallsdato til betalingsdato. I tillegg kan Wink suspendere tjenester inntil betaling er mottatt. Dersom det er feil i fakturaen fra Wink, skal Reisebyrået kun betale den korrekte delen av fakturaen og skal ikke pålegges renter eller gebyrer for manglende betaling av feilaktig del.
 
 6.3 **Refusjoner og kreditter:**
 
-* Dersom en tjeneste ikke leveres eller avbestilles på grunn av forhold som ikke skyldes Reisebyrået, skal Wink refundere eller kreditere Reisebyrået innen 30 dager etter mottak av avbestillingsvarsel, forutsatt at tjenestegebyret allerede er betalt.
+* Dersom en tjeneste ikke leveres eller avbestilles på grunn av forhold utenfor Reisebyråets kontroll, skal Wink refundere eller kreditere Reisebyrået innen 30 dager etter mottak av avbestillingsvarsel, forutsatt at tjenestegebyret allerede er betalt.
 
 6.4 **Valuta og skatter:**
 
-* Betalinger skal skje i USD. Reisebyrået er ansvarlig for eventuelle skatter, avgifter eller andre kostnader som kan påløpe i forbindelse med transaksjonene under denne avtalen, inkludert valutakonverteringskostnader dersom betaling skjer i annen valuta enn USD.
+* Betalinger skal skje i USD. Reisebyrået er ansvarlig for eventuelle skatter, avgifter eller andre kostnader som kan påløpe i forbindelse med transaksjoner under denne avtalen, inkludert valutakonverteringskostnader dersom betaling skjer i annen valuta enn USD.
 
 6.5 **Betalingsmetoder:**
 
@@ -160,7 +160,7 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 7.3 **Markedsføring av tjenester:**
 
-* Reisebyrået skal aktivt promotere tjenestene som tilbys gjennom Plattformen i samsvar med retningslinjene fra Tjenesteleverandøren. Dette inkluderer, men er ikke begrenset til, markedsføringsaktiviteter, vedlikehold av oppdatert markedsføringsmateriell og sikring av at alt markedsføringsinnhold er korrekt og følger gjeldende reklamebestemmelser.
+* Reisebyrået skal aktivt promotere tjenestene som tilbys gjennom Plattformen i henhold til retningslinjer gitt av Tjenesteleverandøren. Dette inkluderer, men er ikke begrenset til, markedsføringsaktiviteter, vedlikehold av oppdatert markedsføringsmateriell og sikring av at alt markedsføringsinnhold er korrekt og i samsvar med gjeldende reklamebestemmelser.
 
 7.4 **Bookingadministrasjon:**
 
@@ -168,7 +168,7 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 7.5 **Inndrivelse og overføring av betalinger:**
 
-* Reisebyrået er ansvarlig for å innkreve betalinger fra gjester for bookinger gjort gjennom Plattformen og overføre avtalte betalinger til Overnattingsleverandørene og Tjenesteleverandøren i henhold til betalingsvilkårene. Reisebyrået skal sikre at alle betalinger behandles sikkert og i samsvar med gjeldende finansielle regler.
+* Reisebyrået er ansvarlig for å innkreve betalinger fra gjester for bookinger gjort gjennom Plattformen og overføre avtalte betalinger til Overnattingsleverandørene og Tjenesteleverandøren, som spesifisert i betalingsvilkårene. Reisebyrået skal sikre at alle betalinger behandles sikkert og i samsvar med gjeldende finansielle regler.
 
 7.6 **Håndtering av klager og tvister fra gjester:**
 
@@ -176,7 +176,7 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 7.7 **Rapportering og ansvarlighet:**
 
-* Reisebyrået skal gi Tjenesteleverandøren regelmessige rapporter som beskriver oppfyllelsen av sine forpliktelser under denne avtalen, inkludert salgstall, bookingstatistikk og kundetilbakemeldinger. Reisebyrået er ansvarlig for nøyaktigheten av disse rapportene og skal samarbeide med Tjenesteleverandøren ved eventuelle revisjoner eller gjennomganger.
+* Reisebyrået skal gi Tjenesteleverandøren regelmessige rapporter som beskriver oppfyllelsen av sine forpliktelser under denne avtalen, inkludert men ikke begrenset til salgsdata, bookingstatistikk og kundetilbakemeldinger. Reisebyrået er ansvarlig for nøyaktigheten av disse rapportene og skal samarbeide med Tjenesteleverandøren ved eventuelle revisjoner eller gjennomganger av sin virksomhet.
 
 7.8 **Konfidensialitet:**
 
@@ -184,7 +184,7 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 7.9 **Overholdelse av plattformvilkår:**
 
-* Reisebyrået skal følge alle vilkår og betingelser knyttet til bruk av Tjenesteleverandørens plattform, inkludert eventuelle oppdateringer eller endringer. Reisebyrået er ansvarlig for at sine ansatte og agenter er kjent med og overholder disse vilkårene.
+* Reisebyrået skal overholde alle vilkår knyttet til bruk av Tjenesteleverandørens Plattform, inkludert eventuelle oppdateringer eller endringer i slike vilkår. Reisebyrået er ansvarlig for at sine ansatte og agenter er kjent med og følger disse vilkårene.
 
 7.10 **Skadesløsholdelse:**
 
@@ -192,9 +192,9 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 **8\. Provisjoner og gebyrer**
 
-8.1 **Beregning av provisjon:** Provisjonen som skal betales til Reisebyrået skal være en prosentandel (fastsatt i avtalen mellom Reisebyrået og Overnattingsleverandøren) av bookingverdien etter fradrag av Wink bookinggebyr.
+8.1 **Beregning av provisjon:** Provisjonen som skal betales til Reisebyrået skal være en prosentandel (fastsatt i avtalen mellom Reisebyrået og Overnattingsleverandøren) av bookingverdien etter fradrag av Wink Bookinggebyr.
 
-8.2 **Winks bookinggebyr:** Wink vil sende en månedlig faktura for 1,5 % bookinggebyr. Reisebyrået er ansvarlig for å betale denne fakturaen innen betalingsbetingelsene som er angitt av Wink.
+8.2 **Winks bookinggebyr:** Wink vil utstede en månedlig faktura for 1,5 % bookinggebyr. Reisebyrået er ansvarlig for å betale denne fakturaen innen betalingsbetingelsene angitt av Wink.
 
 **9\. Juridiske bestemmelser**
 
@@ -202,11 +202,11 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 9.2 **Skadesløsholdelse:** Hver part forplikter seg til å holde den andre parten skadesløs for krav som oppstår som følge av brudd på denne avtalen eller uaktsomhet fra den skadesløsholdende part.
 
-9.3 **Force Majeure:** Ingen av partene skal holdes ansvarlig for forsinkelser eller manglende oppfyllelse på grunn av årsaker utenfor deres rimelige kontroll, inkludert naturkatastrofer, krig, terrorisme, streik osv.
+9.3 **Force Majeure:** Ingen av partene skal holdes ansvarlig for forsinkelser eller manglende oppfyllelse på grunn av årsaker utenfor deres rimelige kontroll, inkludert naturkatastrofer, krig, terrorisme, streiker osv.
 
 **10\. Varighet og oppsigelse**
 
-10.1 **Varighet:** Denne avtalen trer i kraft på signeringsdato og gjelder til den sies opp av en av partene.
+10.1 **Varighet:** Denne avtalen trer i kraft på signeringsdato og varer til den sies opp av en av partene.
 
 10.2 **Oppsigelse:** Hver av partene kan si opp denne avtalen etter eget skjønn.
 
@@ -214,13 +214,13 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 **11\. Lovvalg og tvisteløsning**
 
-11.1 **Lovvalg:** Denne avtalen skal reguleres av og tolkes i samsvar med lovene i Singapore, uten hensyn til lovkonfliktsprinsipper.
+11.1 **Lovvalg:** Denne avtalen skal reguleres av og tolkes i samsvar med lovene i Singapore, uten hensyn til lovkonfliktprinsipper.
 
 11.2 **Tvisteløsning:** 
 
-11.2.1 **Forhandling:** Ved tvist, krav, spørsmål eller uenighet knyttet til denne avtalen skal partene først forsøke å løse tvisten gjennom forhandlinger i god tro. Forhandlingene starter ved skriftlig varsel fra en part til den andre.
+11.2.1 **Forhandling:** Ved tvist, krav, spørsmål eller uenighet knyttet til denne avtalen, skal partene først forsøke å løse tvisten gjennom forhandlinger i god tro. Slike forhandlinger skal starte ved skriftlig varsel fra en part til den andre.
 
-11.2.2 **Voldgift:** Dersom tvisten ikke løses gjennom forhandlinger innen tretti (30) dager, skal tvisten avgjøres endelig ved voldgift i henhold til reglene til Singapore International Arbitration Centre (SIAC), som anses innlemmet i denne klausulen. Antall voldgiftsdommere skal være én, og voldgiftsstedet skal være Singapore. Språket i voldgiftsprosessen skal være engelsk.
+11.2.2 **Voldgift:** Dersom tvisten ikke kan løses gjennom forhandlinger innen tretti (30) dager, skal tvisten avgjøres endelig ved voldgift i henhold til reglene til Singapore International Arbitration Centre (SIAC), som anses innlemmet i denne klausulen. Antall voldgiftsdommere skal være én, og voldgiftsstedet skal være Singapore. Språket i voldgiftsprosessen skal være engelsk.
 
 11.2.3 **Jurisdiksjon:** Uavhengig av ovenstående, har hver part rett til å søke midlertidige eller foreløpige rettslige tiltak i domstolene i Singapore for å beskytte sine rettigheter eller eiendom mens voldgiftsdommer utnevnes, og slike domstoler har eksklusiv jurisdiksjon til å gi slike tiltak.
 
@@ -228,7 +228,7 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 12.1 **Definisjon:** Ingen av partene skal holdes ansvarlig for manglende eller forsinket oppfyllelse av sine forpliktelser under denne avtalen dersom dette skyldes en Force Majeure-hendelse. En "Force Majeure-hendelse" betyr enhver hendelse utenfor rimelig kontroll for en part, inkludert men ikke begrenset til naturkatastrofer (som jordskjelv, flom eller orkaner), krig, terrorisme, borgerlige uroligheter, pandemier, myndighetstiltak eller andre hendelser som ikke kunne vært rimelig forutsett eller unngått.
 
-12.2 **Varsling:** Den berørte parten må varsle den andre parten skriftlig så snart som rimelig mulig etter at en Force Majeure-hendelse inntreffer. Varslet skal inneholde en beskrivelse av hendelsen, forventet varighet og hvilke forpliktelser som påvirkes.
+12.2 **Varsling:** Den berørte part må varsle den andre parten skriftlig så snart som rimelig mulig etter at en Force Majeure-hendelse inntreffer. Varslet skal inneholde en beskrivelse av hendelsen, forventet varighet og hvilke forpliktelser som påvirkes.
 
 12.3 **Innvirkning på tjenester:**
 
@@ -241,7 +241,7 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 **13\. Konfidensialitet**
 
-13.1 Begge parter skal opprettholde konfidensialiteten til all proprietær informasjon og ikke avsløre denne til tredjepart uten forhåndsskriftlig samtykke.
+13.1 Begge parter skal opprettholde konfidensialitet om all proprietær informasjon og ikke avsløre denne til tredjepart uten forhåndsskriftlig samtykke.
 
 **14\. Diverse**
 
@@ -249,4 +249,4 @@ Disse vilkårene er tilgjengelige under [Affiliate Portal > Terms of Service](/n
 
 14.2 **Endringer:** Endringer i denne avtalen må være skriftlige og signert av begge parter.
 
-14.3 **Delbarhet:** Dersom noen bestemmelse i denne avtalen anses ugyldig eller ikke kan håndheves, skal de resterende bestemmelsene fortsatt gjelde fullt ut.
+14.3 **Delbarhet:** Dersom noen bestemmelse i denne avtalen anses ugyldig eller ikke kan håndheves, skal de gjenværende bestemmelsene fortsatt gjelde fullt ut.

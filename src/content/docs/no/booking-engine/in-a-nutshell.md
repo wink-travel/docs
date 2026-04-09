@@ -5,7 +5,7 @@ sidebar:
   order: 0
 ---
 
-Slik deler vi ansvaret i Wink:
+Slik deler vi ansvarsområdene i Wink:
 
 - [Extranet](/no/extranet/what-is-extranet) handler om leverandører som administrerer inventar.
 - [Studio](/no/studio/what-is-studio) handler om tilknyttede partnere som administrerer innhold.
@@ -16,7 +16,7 @@ Bookingmotoren er kjernen i plattformen vår.
 
 Dens ansvarsområder inkluderer:
 
-- Administrere valutaer og holde valutakurser oppdatert.
+- Administrere valutaer og holde valutakurser oppdaterte.
 - Gi prisleverandører en måte å sende oss prisdata på.
 - Administrere oppslagsdata. *f.eks. regioner, land, destinasjoner, eiendommer osv.*
 - Administrere språk.
@@ -31,10 +31,10 @@ Dens ansvarsområder inkluderer:
     - Søke etter reiseinventar.
     - Booke tilgjengelig inventar.
     - Administrere sine [bookinger og anmeldelser](/no/booking-engine/bookings).
-    - Administrere sin [bucket list](/no/booking-engine/bucket-list) over ting å booke i fremtiden.
+    - Administrere sin [ønskeliste](/no/booking-engine/bucket-list) over ting å booke i fremtiden.
     - Administrere sin [reiseprofil](/no/booking-engine/travel-preferences). *f.eks. allergier, nød-kontakt osv.*
 
-Bookingmotoren er en samling av gjenbrukbar funksjonalitet som vi eksponerer gjennom https://ota.wink.travel; et svært tilpassbart nettsted for hoteller og tilknyttede partnere for å selge sine tjenester til reisende.
+Bookingmotoren er en samling av gjenbrukbar funksjonalitet som vi eksponerer gjennom https://ota.wink.travel; et svært tilpassbart nettsted for hoteller og tilknyttede partnere å selge sine tjenester til reisende.
 
 Integratører som ønsker enda mer frihet, har tilgang til alle de samme funksjonene via vår [WordPress-plugin](/no/integrations/wordpress/), [Web Components](/no/integrations/web-components) og [API-er](/no/developers/apis).
 

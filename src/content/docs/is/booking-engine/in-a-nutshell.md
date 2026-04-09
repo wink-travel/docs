@@ -9,7 +9,7 @@ Svona skiptum við ábyrgðinni á Wink:
 
 - [Extranet](/is/extranet/what-is-extranet) snýr að birgjum sem stjórna birgðastöðu.
 - [Studio](/is/studio/what-is-studio) snýr að samstarfsaðilum sem stjórna efni.
-- `Booking Engine` snýr að því að gera efnið, sem búið var til í `Studio` og byggði á birgðastöðu sem búin var til í `Extranet`, bókanlegt.
+- `Booking Engine` snýr að því að gera efnið, sem búið var til í `Studio` og byggt á birgðastöðu sem búin var til í `Extranet`, bókanlegt.
 - [Payment](/is/payment/what-is-trip-pay) snýr að því að rukka / endurgreiða ferðalanga sem bóka [í gegnum vettvang eins og Wink], og greiða birgjum.
 
 Bókunarvélin er kjarninn í vettvangi okkar.

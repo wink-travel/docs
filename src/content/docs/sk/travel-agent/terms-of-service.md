@@ -13,7 +13,7 @@ Naposledy aktualizované 2024-10-30
 Nižšie uvedené podmienky služby sa vzťahujú na cestovné kancelárie, ktoré si želajú samostatne získavať a vyplácať finančné prostriedky.  
 To je možné iba prostredníctvom nášho API a len pre cestovné kancelárie, ktoré počas registračného procesu uviedli, že to chcú robiť.
 
-Všetky cestovné kancelárie môžu naďalej rezervovať cez náš portál pre cestovné kancelárie pomocou platobnej brány Wink s vlastnou alebo kreditnou kartou cestujúceho. Preto všetky cestovné kancelárie musia tiež súhlasiť s podmienkami služby, kde je platobná brána Wink obchodníkom záznamu.
+Všetky cestovné kancelárie môžu naďalej rezervovať cez náš portál pre cestovné kancelárie s použitím platobnej brány Wink s vlastnou alebo kreditnou kartou cestujúceho. Preto všetky cestovné kancelárie musia tiež súhlasiť s podmienkami služby, kde je platobná brána Wink obchodníkom záznamu.
 
 Tieto podmienky sú dostupné v sekcii [Affiliate Portal > Terms of Service](/sk/studio/terms-of-service).
 :::
@@ -29,11 +29,11 @@ Tieto podmienky sú dostupné v sekcii [Affiliate Portal > Terms of Service](/sk
 
 **KEĎŽE:**
 
-(i) Wink prevádzkuje online systém (ďalej len „Systém“), prostredníctvom ktorého môžu zúčastnené ubytovacie zariadenia (spoločne „Poskytovatelia ubytovania“) sprístupniť svoj inventár na rezerváciu a prostredníctvom ktorého môže Cestovná kancelária vykonávať rezervácie u týchto Poskytovateľov ubytovania v mene svojich hostí (ďalej len „Služba“);
+(i) Wink prevádzkuje online systém (ďalej len „Systém“), prostredníctvom ktorého môžu zúčastnené ubytovacie zariadenia (spoločne „Poskytovatelia ubytovania“) sprístupniť svoj inventár na rezervácie a prostredníctvom ktorého môže Cestovná kancelária vykonávať rezervácie u týchto Poskytovateľov ubytovania v mene svojich hostí (ďalej len „Služba“);
 
-(ii) Wink nevlastní, nekontroluje, neponúka ani nespravuje žiadne zoznamy. Wink nie je zmluvnou stranou zmlúv uzatvorených priamo medzi Poskytovateľmi ubytovania a hosťami. Wink nejedná ako zástupca v žiadnej kapacite pre Poskytovateľov ubytovania;
+(ii) Wink nevlastní, nekontroluje, neponúka ani nespravuje žiadne zoznamy. Wink nie je stranou zmlúv uzatvorených priamo medzi Poskytovateľmi ubytovania a hosťami. Wink nejedná ako zástupca v žiadnej kapacite pre Poskytovateľov ubytovania;
 
-(iii) Wink spravuje a využíva vlastné webové stránky (ďalej len „Wink Webové stránky“) a tiež poskytuje Službu a odkazy na Službu na webových stránkach tretích strán;
+(iii) Wink prevádzkuje a využíva vlastné webové stránky (ďalej len „Wink Webové stránky“) a tiež poskytuje Službu a odkazy na Službu na webových stránkach tretích strán;
 
 (iv) Cestovná kancelária vlastní, kontroluje, hostuje a/alebo prevádzkuje jednu alebo viac internetových domén, webových stránok alebo aplikácií a želá si byť obchodníkom záznamu pri používaní Služby.
 
@@ -43,7 +43,7 @@ Tieto podmienky sú dostupné v sekcii [Affiliate Portal > Terms of Service](/sk
 
 **1\. Definície**
 
-1. Okrem termínov definovaných inde v tejto Zmluve platia nasledujúce definície počas celej Zmluvy, pokiaľ nie je uvedené inak:
+1. Okrem termínov definovaných inde v tejto Zmluve platia nasledujúce definície počas celej Zmluvy, pokiaľ nevyplýva opakujúci sa zámer:
 
 * **„Ubytovanie“** znamená akýkoľvek druh ubytovania vrátane, ale nie výlučne, hotelov, motelov, penziónov, bed & breakfast, hostelov, víl, apartmánov, chát, hostincov, rezortov a akéhokoľvek iného (druhu) poskytovateľa ubytovania alebo nocľahu (či už dostupného na Wink Webových stránkach alebo nie).  
     
@@ -55,13 +55,13 @@ Tieto podmienky sú dostupné v sekcii [Affiliate Portal > Terms of Service](/sk
 
 * **„Hodnota rezervácie“** znamená celkovú sumu vybranú Cestovnou kanceláriou od hosťa za rezerváciu.
 
-* **„Provízia“** znamená sumu, ktorú je Poskytovateľ ubytovania povinný zaplatiť Cestovnej kancelárii, vypočítanú podľa dohodnutého percenta z „Samostatnej zmluvy“ z hodnoty rezervácie.  
+* **„Provízia“** znamená sumu dlžnú Cestovnej kancelárii od Poskytovateľa ubytovania, vypočítanú podľa dohodnutého percenta zo „Samostatnej zmluvy“ z hodnoty rezervácie.  
     
 * **„Vyššia moc“** znamená akúkoľvek udalosť mimo primeranej kontroly strany, vrátane, ale nie výlučne, prírodných katastrof, vojnových činov, terorizmu, občianskych nepokojov, pandémií a vládnych opatrení, ktoré bránia strane plniť svoje povinnosti podľa tejto Zmluvy.  
     
 * **„Hosť“** znamená jednotlivca alebo skupinu, ktorá vykoná rezerváciu prostredníctvom Cestovnej kancelárie na ubytovacie služby.  
     
-* **„Obchodník záznamu“** označuje subjekt, ktorý je právne oprávnený a zodpovedný za spracovanie platieb od hostí, vrátane správy platobných transakcií, vrátení peňazí, reklamácií a zabezpečenia súladu s platobnými predpismi. Obchodníkom záznamu je subjekt, ktorého meno sa zobrazuje na výpise kreditnej karty hosťa za poplatky súvisiace s rezerváciou.
+* **„Obchodník záznamu“** označuje subjekt, ktorý je právne oprávnený a zodpovedný za spracovanie platieb od hostí, vrátane spracovania platobných transakcií, vrátení peňazí, reklamácií a zabezpečenia súladu s platobnými predpismi. Obchodník záznamu je subjekt, ktorého meno sa zobrazuje na výpise kreditnej karty hosťa za poplatky súvisiace s rezerváciou.
 
 * **„Čistá platba“** znamená sumu, ktorá má byť vyplatená Poskytovateľovi ubytovania po odpočítaní rezervačného poplatku Wink a provízie Cestovnej kancelárie z hodnoty rezervácie.  
     
@@ -83,7 +83,7 @@ Tieto podmienky sú dostupné v sekcii [Affiliate Portal > Terms of Service](/sk
 
 2.1 Cestovná kancelária bude pôsobiť ako neexkluzívny distribútor Wink.
 
-2.2 Služba bude sprístupnená Wink Cestovnej kancelárii podľa údajov uvedených v registračnom formulári Cestovnej kancelárie a na webových stránkach uvedených v tomto formulári.
+2.2 Služba bude sprístupnená Wink Cestovnej kancelárii podľa podmienok uvedených v registračnom formulári Cestovnej kancelárie a na webových stránkach uvedených v registračnom formulári.
 
 **3\. Zber a distribúcia platieb**
 
@@ -94,11 +94,11 @@ Tieto podmienky sú dostupné v sekcii [Affiliate Portal > Terms of Service](/sk
 * 1,5 % rezervačný poplatok pre Wink.  
 * Províziu Cestovnej kancelárie.
 
-3.3 **Čistá platba:** Zvyšná čistá platba bude vyplatená Cestovnou kanceláriou príslušnému Poskytovateľovi ubytovania podľa podmienok samostatnej zmluvy medzi Cestovnou kanceláriou a Poskytovateľom ubytovania. Wink nezodpovedá za žiadne platby Poskytovateľovi ubytovania.
+3.3 **Čistá platba:** Zvyšná čistá platba bude vyplatená Cestovnou kanceláriou príslušnému Poskytovateľovi ubytovania podľa podmienok samostatnej zmluvy medzi Cestovnou kanceláriou a Poskytovateľom ubytovania. Wink nezodpovedá za vyplácanie platieb Poskytovateľovi ubytovania.
 
 3.4 **Samostatná zmluva:** Cestovná kancelária musí mať samostatnú zmluvu s každým Poskytovateľom ubytovania, ktorá upravuje platobné podmienky. Táto Zmluva medzi Wink a Cestovnou kanceláriou neupravuje vzťah medzi Cestovnou kanceláriou a Poskytovateľmi ubytovania.
 
-3.5 **Fakturácia Wink:** Wink vystaví Cestovnej kancelárii mesačnú faktúru za 1,5 % rezervačný poplatok za daný mesiac. Cestovná kancelária je zodpovedná za úhradu tejto faktúry v stanovených platobných podmienkach.
+3.5 **Fakturovanie Wink:** Wink vystaví Cestovnej kancelárii mesačnú faktúru za 1,5 % rezervačný poplatok za daný mesiac. Cestovná kancelária je zodpovedná za úhradu tejto faktúry v stanovených platobných podmienkach.
 
 **4\. Úlohy a zodpovednosti**
 
@@ -112,15 +112,15 @@ Tieto podmienky sú dostupné v sekcii [Affiliate Portal > Terms of Service](/sk
 4.2 **Zodpovednosti Wink:**
 
 * Wink nezodpovedá za platby Poskytovateľom ubytovania. Cestovná kancelária nesie výlučnú zodpovednosť za všetky finančné transakcie s Poskytovateľmi ubytovania.  
-* Wink poskytne prístup k Systému a zabezpečí, že Služba bude dostupná Cestovnej kancelárii.
+* Wink poskytne prístup k Systému a zabezpečí, že Služba bude pre Cestovnú kanceláriu dostupná.
 
 **5\. Práva duševného vlastníctva**
 
-5.1 **Licencie:** Každá strana udeľuje druhej obmedzenú, neexkluzívnu, bezplatnú, celosvetovú licenciu na použitie svojho duševného vlastníctva výlučne na účely plnenia povinností podľa tejto Zmluvy.
+5.1 **Licencie:** Každá strana udeľuje druhej obmedzenú, neexkluzívnu, bezplatnú, celosvetovú licenciu na používanie svojho duševného vlastníctva výlučne na účely plnenia povinností podľa tejto Zmluvy.
 
 5.2 **Obmedzenia:** Cestovná kancelária nesmie sublicencovať, prevádzať ani zverejňovať žiadne duševné vlastníctvo alebo obsah poskytnutý Wink.
 
-**6\. Platby Wink**
+**6\. Platby pre Wink**
 
 6.1 **Platobný harmonogram:**
 
@@ -129,15 +129,15 @@ Tieto podmienky sú dostupné v sekcii [Affiliate Portal > Terms of Service](/sk
 
 6.2 **Meškanie platieb:**
 
-* Ak nie je platba podľa tejto Zmluvy prijatá v termíne, Wink si vyhradzuje právo účtovať úrok vo výške 5 % mesačne alebo maximálnu zákonom povolenú sadzbu, podľa toho, ktorá je nižšia, z nesplatenej sumy, počítaný od dátumu splatnosti do dátumu úhrady. Okrem toho môže Wink pozastaviť poskytovanie služieb až do prijatia platby. Ak však existujú chyby vo faktúre vystavenej Wink, Cestovná kancelária je povinná uhradiť iba správnu a presnú časť faktúry a nebude podliehať žiadnym úrokom alebo sankciám za neuhradenie nesprávnej časti faktúry.
+* Ak nie je platba podľa tejto Zmluvy prijatá v termíne splatnosti, Wink si vyhradzuje právo účtovať úrok vo výške 5 % mesačne alebo maximálnu zákonom povolenú sadzbu, podľa toho, ktorá je nižšia, z nesplatenej sumy, počítaný od dátumu splatnosti do dátumu úhrady. Okrem toho môže Wink pozastaviť služby až do prijatia platby. Ak však existujú chyby vo faktúre vystavenej Wink, Cestovná kancelária je povinná uhradiť iba správnu a presnú časť faktúry a nebude podliehať žiadnym úrokom alebo sankciám za neuhradenie nesprávnej časti faktúry.
 
 6.3 **Vrátenie peňazí a kredity:**
 
-* V prípade, že služba nie je poskytnutá alebo je zrušená z dôvodov, ktoré nemožno pripísať Cestovnej kancelárii, Wink vráti alebo pripíše Cestovnej kancelárii sumu do 30 dní od oznámenia zrušenia, za predpokladu, že poplatok za službu bol už zaplatený.
+* V prípade, že služba nie je poskytnutá alebo je zrušená z dôvodov, ktoré nemožno pripísať Cestovnej kancelárii, Wink vráti alebo pripíše Cestovnej kancelárii sumu do 30 dní od oznámenia o zrušení, za predpokladu, že poplatok za službu bol už zaplatený.
 
 6.4 **Mena a dane:**
 
-* Platby sa uskutočňujú v USD. Cestovná kancelária je zodpovedná za všetky dane, clá alebo iné poplatky, ktoré môžu byť uplatniteľné na transakcie podľa tejto Zmluvy, vrátane nákladov na konverziu meny, ak sú platby uskutočnené v inej mene ako USD.
+* Platby sa uskutočňujú v USD. Cestovná kancelária je zodpovedná za všetky dane, poplatky alebo iné náklady, ktoré môžu byť uplatnené na transakcie podľa tejto Zmluvy, vrátane nákladov na konverziu meny, ak sú platby uskutočnené v inej mene ako USD.
 
 6.5 **Spôsoby platby:**
 
@@ -145,7 +145,7 @@ Tieto podmienky sú dostupné v sekcii [Affiliate Portal > Terms of Service](/sk
 
 6.6 **Spory o platby:**
 
-* V prípade sporu o faktúru musí Cestovná kancelária oznámiť Wink do 10 dní od dátumu faktúry a uviesť podrobné dôvody sporu. Obe strany budú rokovať v dobrej viere, aby spor promptne vyriešili. Nespochybnená časť faktúry bude uhradená v termíne splatnosti.
+* V prípade sporu o faktúru musí Cestovná kancelária oznámiť Wink do 10 dní od dátumu faktúry a uviesť podrobné dôvody sporu. Obe strany budú rokovať v dobrej viere, aby spor čo najrýchlejšie vyriešili. Nespochybnená časť faktúry bude uhradená v termíne splatnosti.
 
 **7\. Povinnosti Cestovnej kancelárie**
 
@@ -172,7 +172,7 @@ Tieto podmienky sú dostupné v sekcii [Affiliate Portal > Terms of Service](/sk
 
 7.6 **Riešenie sťažností a sporov hostí:**
 
-* Cestovná kancelária bude hlavným kontaktným miestom pre hostí v súvislosti s akýmikoľvek sťažnosťami, sporami alebo problémami týkajúcimi sa služieb poskytovaných prostredníctvom Platformy. Cestovná kancelária vynaloží primerané úsilie na rýchle vyriešenie takýchto sťažností a sporov spôsobom, ktorý udržiava pozitívny vzťah s hosťami aj Poskytovateľmi ubytovania.
+* Cestovná kancelária bude hlavným kontaktným miestom pre hostí v súvislosti s akýmikoľvek sťažnosťami, sporami alebo problémami týkajúcimi sa služieb poskytovaných prostredníctvom Platformy. Cestovná kancelária vynaloží primerané úsilie na rýchle a efektívne vyriešenie takýchto sťažností a sporov spôsobom, ktorý udržiava pozitívny vzťah s hosťami aj Poskytovateľmi ubytovania.
 
 7.7 **Reportovanie a zodpovednosť:**
 
@@ -188,11 +188,11 @@ Tieto podmienky sú dostupné v sekcii [Affiliate Portal > Terms of Service](/sk
 
 7.10 **Odsúdenie na náhradu škody:**
 
-* Cestovná kancelária odškodní a udrží poskytovateľa služieb bez poškodenia od akýchkoľvek nárokov, škôd, zodpovedností a výdavkov vyplývajúcich z porušenia tejto Zmluvy zo strany Cestovnej kancelárie, vrátane, ale nie výlučne, nedodržania platných zákonov, nesprávneho zastupovania služieb alebo nesplnenia svojich povinností voči hosťom alebo Poskytovateľom ubytovania.
+* Cestovná kancelária odškodní a udrží poskytovateľa služieb bez poškodenia voči akýmkoľvek nárokom, škodám, záväzkom a nákladom vyplývajúcim z porušenia tejto Zmluvy zo strany Cestovnej kancelárie, vrátane, ale nie výlučne, nedodržania platných zákonov, nesprávneho zastupovania služieb alebo nesplnenia povinností voči hosťom alebo Poskytovateľom ubytovania.
 
 **8\. Provízie a poplatky**
 
-8.1 **Výpočet provízie:** Provízia splatná Cestovnej kancelárii bude percento (stanovené v dohode medzi Cestovnou kanceláriou a Poskytovateľom ubytovania) z hodnoty rezervácie po odpočítaní rezervačného poplatku Wink.
+8.1 **Výpočet provízie:** Provízia splatná Cestovnej kancelárii bude percento (nastavené v dohode medzi Cestovnou kanceláriou a Poskytovateľom ubytovania) z hodnoty rezervácie po odpočítaní rezervačného poplatku Wink.
 
 8.2 **Rezervačný poplatok Wink:** Wink vystaví mesačnú faktúru za 1,5 % rezervačný poplatok. Cestovná kancelária je zodpovedná za úhradu tejto faktúry v platobných podmienkach stanovených Wink.
 
@@ -200,9 +200,9 @@ Tieto podmienky sú dostupné v sekcii [Affiliate Portal > Terms of Service](/sk
 
 9.1 **Obmedzenie zodpovednosti:** Žiadna zo strán nezodpovedá za žiadne nepriame, náhodné, následné, špeciálne alebo trestné škody vyplývajúce z tejto Zmluvy.
 
-9.2 **Odsúdenie na náhradu škody:** Každá strana súhlasí, že odškodní a udrží druhú stranu bez poškodenia od akýchkoľvek nárokov vyplývajúcich z porušenia tejto Zmluvy alebo nedbanlivosti odškodzujúcej strany.
+9.2 **Odsúdenie na náhradu škody:** Každá strana súhlasí, že odškodní a udrží druhú stranu bez poškodenia voči akýmkoľvek nárokom vyplývajúcim z porušenia tejto Zmluvy alebo nedbanlivosti odškodňujúcej strany.
 
-9.3 **Vyššia moc:** Žiadna zo strán nezodpovedá za oneskorenia alebo nesplnenie povinností z dôvodov mimo ich primeranej kontroly, vrátane prírodných katastrof, vojny, terorizmu, štrajkov atď.
+9.3 **Vyššia moc:** Žiadna zo strán nezodpovedá za omeškania alebo nesplnenie povinností z dôvodov mimo ich primeranej kontroly, vrátane prírodných katastrof, vojny, terorizmu, štrajkov atď.
 
 **10\. Doba platnosti a ukončenie**
 
@@ -220,24 +220,24 @@ Tieto podmienky sú dostupné v sekcii [Affiliate Portal > Terms of Service](/sk
 
 11.2.1 **Rokovania:** V prípade akéhokoľvek sporu, nároku, otázky alebo nezhody vyplývajúcej z tejto Zmluvy sa strany najprv pokúsia spor vyriešiť prostredníctvom rokovaní v dobrej viere. Rokovania začnú písomným oznámením jednej strany druhej.
 
-11.2.2 **Arbitráž:** Ak spor nebude možné vyriešiť rokovaniami do tridsiatich (30) dní, spor sa postúpi a definitívne vyrieši arbitrážou podľa pravidiel Singapurského medzinárodného arbitrážneho centra (SIAC), ktoré sa považujú za súčasť tejto klauzuly. Počet arbitrátorov bude jeden, sídlo arbitráže bude v Singapure. Jazyk arbitrážneho konania bude angličtina.
+11.2.2 **Arbitráž:** Ak spor nebude možné vyriešiť rokovaniami do tridsiatich (30) dní, spor sa postúpi a definitívne vyrieši arbitrážou podľa pravidiel Singapurského medzinárodného arbitrážneho centra (SIAC), ktoré sa považujú za súčasť tejto klauzuly. Počet arbitrátorov bude jeden, sídlo arbitráže bude Singapur. Jazyk arbitrážneho konania bude angličtina.
 
-11.2.3 **Jurisdikcia:** Napriek vyššie uvedenému si každá strana vyhradzuje právo žiadať dočasné alebo predbežné opatrenia na súdoch v Singapure na ochranu svojich práv alebo majetku počas čakania na vymenovanie arbitra, pričom tieto súdy majú výlučnú právomoc takéto opatrenia udeliť.
+11.2.3 **Jurisdikcia:** Napriek vyššie uvedenému si každá strana vyhradzuje právo žiadať dočasné alebo predbežné opatrenia na súdoch v Singapure na ochranu svojich práv alebo majetku počas čakania na vymenovanie arbitra, pričom takéto súdy majú výlučnú právomoc takéto opatrenia udeliť.
 
 **12\. Vyššia moc**
 
-12.1 **Definícia:** Žiadna zo strán nezodpovedá za nesplnenie alebo omeškanie plnenia svojich povinností podľa tejto Zmluvy, ak je to spôsobené udalosťou vyššej moci. „Udalosť vyššej moci“ znamená akúkoľvek udalosť mimo primeranej kontroly strany, vrátane, ale nie výlučne, prírodných katastrof (ako zemetrasenia, záplavy alebo hurikány), vojny, terorizmu, občianskych nepokojov, pandémií, vládnych opatrení alebo iných udalostí, ktoré nebolo možné primerane predvídať alebo sa im vyhnúť.
+12.1 **Definícia:** Žiadna zo strán nezodpovedá za nesplnenie alebo omeškanie plnenia svojich povinností podľa tejto Zmluvy, ak je takéto nesplnenie alebo omeškanie spôsobené udalosťou vyššej moci. „Udalosť vyššej moci“ znamená akúkoľvek udalosť mimo primeranej kontroly strany, vrátane, ale nie výlučne, prírodných katastrof (ako zemetrasenia, záplavy alebo hurikány), vojny, terorizmu, občianskych nepokojov, pandémií, vládnych opatrení alebo akejkoľvek inej udalosti, ktorú nebolo možné primerane predvídať alebo sa jej vyhnúť.
 
-12.2 **Oznámenie:** Postihnutá strana musí písomne oznámiť druhej strane čo najskôr po vzniku udalosti vyššej moci. Oznámenie musí obsahovať popis udalosti, očakávanú dĺžku trvania a ovplyvnené povinnosti.
+12.2 **Oznámenie:** Postihnutá strana musí druhú stranu písomne informovať čo najskôr po vzniku udalosti vyššej moci. Oznámenie musí obsahovať popis udalosti vyššej moci, jej očakávanú dĺžku trvania a ovplyvnené povinnosti.
 
 12.3 **Dopad na služby:**
 
-* Pozastavenie služieb: Ak udalosť vyššej moci ovplyvní schopnosť vášho podniku poskytovať služby Cestovnej kancelárii, tieto služby budú počas trvania udalosti pozastavené bez sankcií. Platobné povinnosti Cestovnej kancelárie súvisiace s ovplyvnenými službami budú tiež pozastavené počas tohto obdobia.  
-* Povinnosti Cestovnej kancelárie: Cestovná kancelária nebude zodpovedná za žiadne povinnosti voči vášmu podniku, ktoré je nemožné splniť z dôvodu udalosti vyššej moci. Avšak Cestovná kancelária musí naďalej plniť všetky ostatné povinnosti, ktoré nie sú priamo ovplyvnené touto udalosťou.
+* Pozastavenie služieb: Ak udalosť vyššej moci ovplyvní schopnosť vášho podniku poskytovať služby Cestovnej kancelárii, tieto služby budú počas trvania udalosti pozastavené bez sankcií. Platobné povinnosti Cestovnej kancelárie súvisiace s ovplyvnenými službami budú počas tohto obdobia tiež pozastavené.  
+* Povinnosti Cestovnej kancelárie: Cestovná kancelária nebude zodpovedná za žiadne povinnosti voči vášmu podniku, ktoré je nemožné splniť z dôvodu udalosti vyššej moci. Cestovná kancelária však musí naďalej plniť všetky ostatné povinnosti, ktoré nie sú priamo ovplyvnené udalosťou.
 
-12.4 **Dĺžka trvania a ukončenie:** Ak udalosť vyššej moci trvá dlhšie ako šesťdesiat (60) dní, ktorákoľvek zo strán môže túto Zmluvu ukončiť písomným oznámením druhej strane. V prípade takéhoto ukončenia žiadna zo strán nenesie zodpovednosť voči druhej okrem povinností vzniknutých pred udalosťou vyššej moci.
+12.4 **Dĺžka trvania a ukončenie:** Ak udalosť vyššej moci trvá dlhšie ako šesťdesiat (60) dní, ktorákoľvek strana môže túto Zmluvu ukončiť písomným oznámením druhej strane. V prípade takéhoto ukončenia žiadna zo strán nenesie zodpovednosť voči druhej okrem povinností, ktoré vznikli pred udalosťou vyššej moci.
 
-12.5 **Obnovenie povinností:** Po ukončení udalosti vyššej moci obidve strany promptne obnovia svoje povinnosti podľa tejto Zmluvy v rozsahu, ktorý je primerane možný.
+12.5 **Obnovenie povinností:** Po ukončení udalosti vyššej moci obidve strany čo najskôr obnovia svoje povinnosti podľa tejto Zmluvy v primeranej miere.
 
 **13\. Dôvernosť**
 

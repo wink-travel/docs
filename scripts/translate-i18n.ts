@@ -22,6 +22,31 @@ const HASH_FILE_NAME = ".file.hashes.json";
 
 type HashMap = Record<string, string>;
 
+// Fix YAML frontmatter nested key-value pairs that the LLM incorrectly quoted
+// as a single string. E.g. `sidebar:\n  "order: 5"` should be `sidebar:\n  order: 5`.
+// Matches indented lines of the form `  "key: value"` and unquotes them to `  key: value`,
+// re-quoting only the value if it contains `: ` (which YAML would misparse).
+const fixQuotedFrontmatterNestedValues = (content: string): string => {
+  const fmMatch = content.match(/^(---\n)([\s\S]*?)(\n---)/);
+  if (!fmMatch) return content;
+
+  const [fullFm, open, fmBody, close] = fmMatch;
+
+  const fixedBody = fmBody.replace(
+    /^(\s+)"([\w-]+):\s+(.+)"$/gm,
+    (_line, indent, key, value) => {
+      if (value.includes(": ")) {
+        const escaped = value.replace(/"/g, '\\"');
+        return `${indent}${key}: "${escaped}"`;
+      }
+      return `${indent}${key}: ${value}`;
+    }
+  );
+
+  if (fixedBody === fmBody) return content;
+  return content.replace(fullFm, `${open}${fixedBody}${close}`);
+};
+
 // Fix YAML frontmatter scalar values that contain `: ` (colon + space) but are
 // not already quoted. The YAML parser treats `: ` as a key-value separator, so
 // unquoted values like `description: Some text: more text` cause a parse error.
@@ -255,7 +280,7 @@ async function translateWholeFile(
     "- Headings: translate text but keep markers (#, ##, ###).",
     "- Emphasis titles: translate '**...**' or '*...*'; keep emphasis.",
     "- Lists: translate item text; keep bullets/numbering/indentation.",
-    "- Frontmatter: translate 'title' and 'description' values only; keep YAML keys/shape.",
+    "- Frontmatter: translate 'title' and 'description' values only; keep YAML keys/shape. NEVER quote a nested key-value pair as a single string (e.g. do NOT turn `order: 5` into `\"order: 5\"`).",
     "- Banners: translate multiline 'banner.content' prose fully.",
     "- Links: translate anchor text inside [ ]; NEVER change href inside ( ).",
     "- Product names: DO NOT translate brand/product names (e.g., 'Wink', 'WinkLinks', 'Wink Studio', 'Wink Extranet', 'Wink Agency'), even when they appear in headings, emphasized text, or link anchor text.",
@@ -359,7 +384,7 @@ async function translateFile(
     return;
   }
 
-  let output = fixFrontmatterColons(translatedFile);
+  let output = fixQuotedFrontmatterNestedValues(fixFrontmatterColons(translatedFile));
   // Post-process all doc files: add locale prefixes to root-relative links
   const outExt = extname(relativePath).toLowerCase();
   if (outExt === ".md" || outExt === ".mdx") {

@@ -1,0 +1,676 @@
+---
+title: Integrace Sojern Pixelu
+description: Jak propojit svůj účet Sojern s Winkem, aby Sojern mohl sledovat cestu vašich hostů při rezervaci a podpořit vaše kampaně retargetingu a reklamy.
+sidebar:
+  label: Integrace Sojern Pixelu
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+Pokud provozujete reklamní kampaně přes Sojern, můžete propojit svůj účet Sojern s Winkem zadáním svého Sojern GTM Container ID v portálu Wink. Po propojení se Sojernův sledovací pixel automaticky spustí pro vaši nemovitost — pokrývá celou cestu hosta od vyhledávání až po dokončenou rezervaci.
+
+<Aside type="tip">
+Předpokládá se, že již máte aktivní účet Sojern a obdrželi jste své GTM Container ID od svého manažera účtu Sojern. Pokud účet Sojern ještě nemáte, navštivte [sojern.com/contact](https://www.sojern.com/contact) a začněte.
+</Aside>
+
+---
+
+## Co je potřeba udělat
+
+<Steps>
+
+1. **Získejte své GTM Container ID od Sojern**
+
+   Kontaktujte svého manažera účtu Sojern a požádejte o **GTM Container ID**. Má formát `GTM-XXXXXXX`. Toto se liší od vašeho Sojern Pixel ID — ujistěte se, že žádáte konkrétně o GTM Container ID.
+
+2. **Zadejte ho do portálu Wink**
+
+   Přihlaste se na [my.wink.travel](https://my.wink.travel), vyberte svůj účet a přejděte na záložku **Customizations**. Vložte své Sojern GTM Container ID do pole Sojern a uložte. Vaše integrace je nyní aktivní.
+
+3. **Potvrďte se svým manažerem účtu Sojern**
+
+   Informujte svého manažera účtu Sojern, že je integrace aktivní. Může zkontrolovat na své straně, že pixel správně funguje na `wink.travel` pro vaši nemovitost a že data proudí do vašeho účtu Sojern.
+
+</Steps>
+
+<Aside type="note">
+Pro tuto integraci nemusíte na svých webových stránkách umisťovat žádný pixelový kód. Wink automaticky načítá váš Sojern kontejner na všech stránkách, kde je vaše nemovitost aktivní.
+
+Tato konfigurace funguje pro jakékoli vlastní GTM Container ID. Sojern jsme použili pouze jako příklad, protože jde o velmi běžnou integraci.
+</Aside>
+
+---
+
+## Co Wink dělá na naší straně
+
+Pro transparentnost zde uvádíme, co Wink nastavuje, aby tato integrace fungovala:
+
+- **Pole Sojern GTM Container ID** je dostupné v záložce Customizations ve vašem portálu Wink. Po zadání Container ID Wink ověří formát a bezpečně ho uloží k vaší nemovitosti.
+- **Na každé stránce, kde je vaše nemovitost aktivní** na Wink, je vaše Sojern GTM Container ID vloženo do stránky a Winkův systém správy tagů dynamicky načítá váš Sojern kontejner společně s vlastním. To probíhá automaticky — tým Wink nemusí pro každou nemovitost provádět žádné manuální kroky.
+- **Váš Sojern kontejner je načítán asynchronně**, což znamená, že neovlivňuje výkon načítání stránky pro vaše hosty.
+- **Winkovo vlastní sledování a váš Sojern pixel běží paralelně**, čtou ze stejných sdílených dat o událostech. Každá událost rezervace, kterou Wink sleduje, je zároveň dostupná vašemu Sojern kontejneru.
+- **Když vaše nemovitost není zobrazena** — například když host prohlíží jiný hotel na Wink — váš Sojern kontejner se nenačítá. To zajišťuje, že Sojern přijímá pouze data relevantní pro vaši nemovitost.
+
+---
+
+## Reference DataLayer
+
+Wink posílá události kompatibilní s GA4 do `dataLayer` během celé cesty hosta. Váš GTM kontejner čte ze stejného sdíleného `dataLayer`, takže jakýkoli trigger nebo proměnná, kterou nastavíte, má přístup ke všem níže popsaným vlastnostem.
+
+Každá událost odpovídá standardní struktuře GA4 Enhanced Ecommerce: řetězec `event` na nejvyšší úrovni a objekt `ecommerce`. Před každým push Wink vymaže předchozí ecommerce data, aby zabránil přenosu zastaralých dat do nových triggerů.
+
+<Aside type="note">
+**Vzor resetování dataLayer**
+
+Wink resetuje objekt ecommerce před každým push:
+
+```js
+dataLayer.push({ ecommerce: null });   // vyčistí předchozí událost
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+Nespoléhejte na to, že vlastnosti ecommerce přetrvají mezi událostmi. Vždy je čtěte v době spuštění triggeru v rámci téže události.
+</Aside>
+
+---
+
+### Události cesty rezervace
+
+Tyto události se spouští automaticky, jak host postupuje rezervačním procesem. Nastavte své GTM triggery jako **Custom Event** triggery odpovídající níže uvedeným názvům událostí.
+
+| Krok | Událost | Kdy se spouští |
+|------|---------|----------------|
+| 1 | `view_item_list` | Načtení mřížky nebo seznamu hotelů |
+| 2 | `view_item` | Host si prohlíží konkrétní stránku nemovitosti |
+| 3 | `add_to_cart` | Host přidá pokoj do košíku |
+| 4 | `begin_checkout` | Načtení stránky pokladny / platby |
+| 5 | `add_payment_info` | Host vybere platební metodu |
+| 6 | `login` | Host se autentizuje přes SSO |
+| 7 | `purchase` | Rezervace je potvrzena |
+| 8 | `refund` | Rezervace je zrušena |
+
+---
+
+#### `view_item_list`
+
+Spouští se při vykreslení mřížky nebo seznamu hotelů.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+Spouští se, když host prohlíží konkrétní nemovitost.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+Spouští se, když host přidá pokoj do košíku.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+Spouští se při načtení stránky pokladny / platby.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` je přítomen pouze, pokud byl použit slevový kód.
+
+---
+
+#### `add_payment_info`
+
+Spouští se, když host vybere nebo potvrdí platební metodu.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` je vyplněno podle typu platebního akvizitora. `coupon` je přítomen pouze, pokud byl použit slevový kód.
+
+---
+
+#### `login`
+
+Spouští se, když se host autentizuje přes single sign-on.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+Spouští se, když je rezervace potvrzena.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` je jedinečný identifikátor rezervační smlouvy. `coupon`, `shipping` a `tax` jsou přítomny pouze pokud jsou relevantní.
+
+---
+
+#### `refund`
+
+Spouští se, když je rezervace zrušena.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` odpovídá události `purchase` pro stejnou rezervaci. `coupon`, `shipping` a `tax` jsou přítomny pouze pokud jsou relevantní.
+
+---
+
+### Vlastnosti položek
+
+Všechny události obsahující pole `items` sdílejí stejnou strukturu položky. Každá vlastnost je nepovinná, pokud není označena jako povinná.
+
+#### Standardní pole GA4
+
+Tato pole jsou nativně rozpoznávána GA4 a zobrazují se ve standardních ecommerce reportech bez další konfigurace.
+
+| Vlastnost | Typ | Povinné | Popis |
+|-----------|-----|---------|-------|
+| `item_id` | string | Ano | Jedinečný identifikátor pokoje nebo produktu |
+| `item_name` | string | — | Název pokoje nebo produktu |
+| `affiliation` | string | — | Název affiliate nebo prodejce |
+| `coupon` | string | — | Použitý slevový kód na položku |
+| `currency` | string | — | ISO 4217 kód měny (např. `USD`) |
+| `creative_name` | string | — | Název kreativní kampaně |
+| `creative_slot` | string | — | Pozice kreativní kampaně |
+| `discount` | number | — | Výše slevy |
+| `index` | number | — | Pozice v seznamu (1-based) |
+| `item_brand` | string | — | Název hotelu nebo značky |
+| `item_category` | string | — | Typ produktu — např. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | Identifikátor seznamu, do kterého položka patří |
+| `item_list_name` | string | — | Zobrazovaný název seznamu |
+| `location_id` | string | — | Geokoordináty nemovitosti |
+| `price` | number | — | Jednotková cena |
+| `promotion_id` | string | — | Identifikátor propagace |
+| `promotion_name` | string | — | Zobrazovaný název propagace |
+| `quantity` | number | — | Množství (výchozí hodnota `1`) |
+
+#### Vlastní parametry na úrovni položky
+
+Tyto parametry nesou kontext rezervace specifický pro Wink. GA4 je automaticky nezobrazuje v reportech — musíte je zaregistrovat jako **vlastní dimenze na úrovni položky** ve své GA4 vlastnosti, aby se zobrazily v přehledech nebo standardních reportech. Viz níže [Vlastní dimenze v GA4](#custom-dimensions-in-ga4) pro instrukce nastavení.
+
+| Vlastnost | Typ | Popis |
+|-----------|-----|-------|
+| `property_id` | string | Identifikátor nemovitosti ve Winku |
+| `property_name` | string | Zobrazovaný název nemovitosti |
+| `property_brand` | string | Značka, ke které nemovitost patří |
+| `property_chain` | string | Řetězec, ke kterému nemovitost patří |
+| `city_name` | string | Město, kde se nemovitost nachází |
+| `country_code` | string | ISO 3166-1 alpha-2 kód země |
+| `start_date` | string | Datum příjezdu ve formátu `YYYY-MM-DD` |
+| `end_date` | string | Datum odjezdu ve formátu `YYYY-MM-DD` |
+| `num_adults` | number | Počet dospělých v rezervaci |
+| `num_children` | number | Počet dětí v rezervaci |
+| `cancellation_policy` | string | Jeden z: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Identifikátor sazebního plánu |
+| `room_rate_id` | string | Identifikátor konkrétní sazby pokoje |
+| `room_rate_name` | string | Zobrazovaný název sazby pokoje |
+| `num_perks` | number | Počet výhod zahrnutých v sazbě |
+| `room_location` | string | Popis umístění pokoje (např. `Overwater`, `Garden`) |
+| `room_view` | string | Popis výhledu z pokoje (např. `Ocean`, `City`) |
+| `room_classification` | string | Klasifikace nebo kategorie pokoje (např. `Suite`, `Standard`) |
+
+---
+
+### Vlastní dimenze v GA4
+
+GA4 ignoruje vlastní parametry položek v reportech, dokud je výslovně nezaregistrujete jako vlastní dimenze na úrovni položky. Registrovat musíte pouze ty parametry, které chcete v reportech používat — není nutné registrovat všech 18.
+
+<Steps>
+
+1. **Otevřete Vlastní definice**
+
+   V GA4 přejděte do **Admin** (ikona ozubeného kola vlevo dole) → vyberte svou vlastnost → **Data display** → **Custom definitions**.
+
+2. **Vytvořte novou vlastní dimenzi**
+
+   Klikněte na **Create custom dimensions**.
+
+3. **Vyplňte detaily dimenze**
+
+   - **Dimension name** — čitelný název, který se zobrazí v reportech GA4 (viz tabulka níže)
+   - **Scope** — vyberte **Item**
+   - **Event parameter** — přesný název parametru, jak je uveden v dataLayer (viz tabulka níže)
+   - **Description** — volitelné, ale doporučené
+
+4. **Uložte a opakujte**
+
+   Klikněte na **Save** a opakujte pro každý parametr, který chcete sledovat.
+
+</Steps>
+
+<Aside type="note">
+Vlastní dimenze se mohou v reportech GA4 začít zobrazovat až do 24 hodin po registraci. Historická data před registrací nejsou doplněna zpětně.
+
+GA4 umožňuje až 50 vlastních dimenzí na úrovni položky na standardní vlastnost (vlastnosti 360 umožňují více).
+</Aside>
+
+Použijte následující tabulku jako referenci při vytváření vlastních dimenzí. Hodnota **Event parameter** musí přesně odpovídat — GA4 rozlišuje velká a malá písmena.
+
+| Název dimenze | Event parameter | Typ |
+|---------------|-----------------|-----|
+| Property ID | `property_id` | Text |
+| Property name | `property_name` | Text |
+| Property brand | `property_brand` | Text |
+| Property chain | `property_chain` | Text |
+| City name | `city_name` | Text |
+| Country code | `country_code` | Text |
+| Check-in date | `start_date` | Text |
+| Check-out date | `end_date` | Text |
+| Number of adults | `num_adults` | Number |
+| Number of children | `num_children` | Number |
+| Cancellation policy | `cancellation_policy` | Text |
+| Rate plan ID | `rate_plan_id` | Text |
+| Room rate ID | `room_rate_id` | Text |
+| Room rate name | `room_rate_name` | Text |
+| Number of perks | `num_perks` | Number |
+| Room location | `room_location` | Text |
+| Room view | `room_view` | Text |
+| Room classification | `room_classification` | Text |
+
+---
+
+### Další dostupné události
+
+Následující události jsou dostupné v Wink dataLayer, ale nejsou součástí standardního rezervačního trychtýře. Mohou být spuštěny jinými interakcemi na platformě.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+Tato událost neobsahuje žádný `ecommerce` payload.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+Toto je vlastní událost Wink — není součástí standardní sady událostí GA4. Je posílána při každé navigaci na stránce a nese kontext zařízení a relace. Neobsahuje objekt `ecommerce`.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| Vlastnost | Popis |
+|-----------|-------|
+| `device` | Detekovaný typ zařízení — `Desktop`, `Android`, `iPhone`, `iPad` nebo podobné |
+| `deviceAgent` | Surový user agent string |
+| `os` | Detekovaný operační systém — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | Aktuální cesta stránky |
+| `title` | Aktuální název stránky |
+| `userId` | Identifikátor autentizovaného uživatele (vynecháno, pokud není přihlášen) |
+| `startDate` | Datum příjezdu z aktuální vyhledávací relace |
+| `endDate` | Datum odjezdu z aktuální vyhledávací relace |
+| `guests` | Počet hostů z aktuální vyhledávací relace |
+| `rooms` | Počet pokojů z aktuální vyhledávací relace |

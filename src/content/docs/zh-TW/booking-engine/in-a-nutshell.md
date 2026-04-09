@@ -9,7 +9,7 @@ sidebar:
 
 - [Extranet](/zh-TW/extranet/what-is-extranet) 負責供應商管理庫存。
 - [Studio](/zh-TW/studio/what-is-studio) 負責聯盟管理內容。
-- `Booking Engine` 負責將在 `Studio` 中建立、基於 `Extranet` 中建立的庫存內容，轉化為可預訂的形式。
+- `Booking Engine` 負責將在 `Studio` 中建立、基於 `Extranet` 中建立的庫存內容，轉化為可預訂的服務。
 - [Payment](/zh-TW/payment/what-is-trip-pay) 負責向透過 [像 Wink 這樣的平台] 預訂的旅客收費/退款，並支付給供應商。
 
 訂位引擎是我們平台的核心。
@@ -23,11 +23,11 @@ sidebar:
 - 根據用戶互動、事件和 API 呼叫產生分析數據。
 - 以所需格式、語言和貨幣提供可預訂的庫存，例如：
     - Facebook 上的[可分享連結](/zh-TW/studio/shareable-links)。
-    - https://ota.wink.travel 上該飯店的飯店登陸頁面。
-    - 含有聯盟庫存的[卡片](/zh-TW/studio/cards)。
+    - https://ota.wink.travel 上的飯店登陸頁面，展示該飯店的庫存。
+    - 包含聯盟庫存的[卡片](/zh-TW/studio/cards)。
     - 您的 [WinkLinks](/zh-TW/link-manager/wink-links) 帳戶上的[地圖](/zh-TW/studio/maps)。
     - 來自遠端旅行社系統的[API 呼叫](/zh-TW/developers/apis)。
-- 提供旅客以下功能：
+- 為旅客提供以下功能：
     - 搜尋旅遊庫存。
     - 預訂可用庫存。
     - 管理他們的[訂單與評論](/zh-TW/booking-engine/bookings)。

@@ -5,7 +5,7 @@ sidebar:
   order: 0
 ---
 
-Evo kako delimo odgovornosti na Wink-u:
+Ovako delimo odgovornosti na Wink-u:
 
 - [Extranet](/sr/extranet/what-is-extranet) se bavi dobavljačima koji upravljaju inventarom.
 - [Studio](/sr/studio/what-is-studio) se bavi afilijatima koji upravljaju sadržajem.
@@ -26,7 +26,7 @@ Njegove odgovornosti uključuju:
     - Landing stranica hotela na https://ota.wink.travel sa inventarom za taj hotel.
     - [kartica](/sr/studio/cards) koja sadrži afilijatski inventar.
     - [mapa](/sr/studio/maps) na vašem [WinkLinks](/sr/link-manager/wink-links) nalogu.
-    - [API poziv](/sr/developers/apis) iz udaljenog sistema turističke agencije.
+    - [API poziv](/sr/developers/apis) sa udaljenog sistema turističke agencije.
 - Omogućavanje putnicima da:
     - Pretražuju turistički inventar.
     - Rezervišu dostupan inventar.
@@ -36,7 +36,7 @@ Njegove odgovornosti uključuju:
 
 Booking engine je skup ponovo upotrebljivih funkcionalnosti koje izlažemo preko https://ota.wink.travel; visoko prilagodljivog sajta za hotele i afilijate da prodaju svoje usluge putnicima.
 
-Integratori, koji žele još veću slobodu, imaju pristup svim istim funkcijama putem našeg [WordPress plugina](/sr/integrations/wordpress/), [Web Components](/sr/integrations/web-components) i [API-ja](/sr/developers/apis).
+Integratori, koji žele još veću slobodu, imaju pristup svim istim funkcijama preko našeg [WordPress plugina](/sr/integrations/wordpress/), [Web Components](/sr/integrations/web-components) i [API-ja](/sr/developers/apis).
 
 Nastavite na sledeće sekcije da biste saznali više o tome šta booking engine nudi.
 

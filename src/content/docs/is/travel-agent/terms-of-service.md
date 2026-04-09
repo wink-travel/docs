@@ -25,55 +25,55 @@ Allar ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofuvettvanginn o
 
 1. **Winkfluence**, félag stofnað samkvæmt lögum Singapúr og með skráð skrifstofu í \#03-01 Wilkie Edge 8 Wilkie Road Singapore 228095 með VSK-númer 201437335D (hér eftir nefnt „Wink“) og  
      
-2. **FERÐASKRIFSTOFAN**, sem upplýsingar hennar eru skráðar í skráningarformi ferðaskrifstofu eða hafa verið sendar inn rafrænt (hér eftir nefnd „Ferðaskrifstofan“).
+2. **FERÐASKRIFSTOFA** sem upplýsingar um eru í skráningarformi ferðaskrifstofu eða hafa verið sendar inn rafrænt (hér eftir nefnd „Ferðaskrifstofa“).
 
 **MEÐ TILVÍSUN TIL:**
 
-(i) Wink rekur netkerfi (hér eftir nefnt „Kerfið“) þar sem gististaðir sem taka þátt (samkvæmt samantekt „Gististaðaveitendur“) geta gert birgðir sínar aðgengilegar til bókunar og þar sem Ferðaskrifstofan getur gert bókanir fyrir hönd gesta sinna (hér eftir nefnt „Þjónustan“);
+(i) Wink rekur netkerfi (hér eftir nefnt „Kerfið“) þar sem gististaðir sem taka þátt (saman „Gististaðaveitendur“) geta gert birgðir sínar aðgengilegar til bókunar og þar sem Ferðaskrifstofan getur gert bókanir fyrir hönd gesta sinna (hér eftir nefnt „Þjónustan“);
 
 (ii) Wink á ekki, stjórnar ekki, býður ekki upp á né rekur neinar skráningar. Wink er ekki aðili að samningum sem gerðir eru beint milli Gististaðaveitenda og gesta. Wink starfar ekki sem umboðsmaður fyrir Gististaðaveitendur;
 
 (iii) Wink heldur úti og nýtir eigin vefsíður (hér eftir nefndar „Wink vefsíður“) og veitir einnig Þjónustuna og tengla á Þjónustuna á vefsíðum þriðja aðila;
 
-(iv) Ferðaskrifstofan á, stjórnar, hýsir og/eða rekur einn eða fleiri internetlén, vefsíður eða öpp og vill vera kaupmaður skráður meðan hún notar Þjónustuna.
+(iv) Ferðaskrifstofan á, stjórnar, hýsir og/eða rekur einn eða fleiri internetlén, vefsíður eða öpp og vill vera kaupmaður skráður við notkun Þjónustunnar.
 
-(v) Ferðaskrifstofan og Wink vilja að Ferðaskrifstofan geri Þjónustuna (beint eða óbeint) aðgengilega viðskiptavinum sínum og gestum Ferðaskrifstofuvefsíðna og forrita og á þeim forsendum og skilmálum (hér eftir nefndir „Skilmálar“) sem settir eru fram í þessum samningi.
+(v) Ferðaskrifstofan og Wink vilja að Ferðaskrifstofan geri Þjónustuna (beint eða óbeint) aðgengilega viðskiptavinum sínum og gestum Ferðaskrifstofuvefsíðna og forrita og á þeim formi og skilmálum (hér eftir nefndir „Skilmálar“) sem settir eru fram í þessum samningi.
 
-**ÞVÍ ERU PARTAR SAMMÁLA UM EFTIRFARANDI:**
+**ÞVÍ ERU PARTAR ÞESSIR SAMMÁLAÐIR UM EFTIRFARANDI:**
 
 **1\. Skilgreiningar**
 
 1. Að auki þeim skilmálum sem skilgreindir eru annars staðar í þessum samningi gilda eftirfarandi skilgreiningar um allan samninginn nema annað sé tekið fram:
 
-* **„Gisting“** merkir hvaða tegund gististaðar sem er, þar með talið en ekki takmarkað við hótel, motell, gestahús, bed & breakfast, farfuglaheimili, villur, íbúðir, skála, gistihús, áfangastaði og aðra (tegund) gistiveitendur (hvort sem þeir eru aðgengilegir á Wink vefsíðum eða ekki).  
+* **„Gisting“** merkir hvaða tegund gististaðar sem er, þar með talið en ekki takmarkað við hótel, motell, gistiheimili, bed & breakfast, farfuglaheimili, villur, íbúðir, skála, gistihús, áfangastaði og aðra (tegund) gistiveitendur (hvort sem þeir eru aðgengilegir á Wink vefsíðum eða ekki).  
     
-* **„Gististaðaveitandi“** merkir hvaða aðila sem stofnar aðgang á þjónustuveitanda með það fyrir augum að selja eigin herbergi og aukahluti í gegnum Wink vettvanginn.  
+* **„Gististaðaveitandi“** merkir hvaða aðila sem stofnar aðgang á þjónustuveitanda með það að markmiði að selja eigin herbergi og aukahluti í gegnum Wink vettvanginn.  
     
-* **„Bókun“** merkir pöntun eða bókun sem gestur gerir í gegnum Ferðaskrifstofuna fyrir gistingu sem Gististaðaveitandi býður upp á.
+* **„Bókun“** merkir pöntun eða bókun sem gestur gerir í gegnum Ferðaskrifstofu fyrir gistingu sem Gististaðaveitandi býður upp á.
 
 * **„Bókunargjald“** merkir 1,5% sem dregið er frá heildarfjárhæð sem Ferðaskrifstofan innheimtir frá gesti og greiðist til Wink sem vinnslugjald.
 
 * **„Bókunargildi“** merkir heildarfjárhæð sem Ferðaskrifstofan innheimtir frá gesti fyrir bókun.
 
-* **„Þóknun“** merkir þá fjárhæð sem Gististaðaveitandi skuldar Ferðaskrifstofunni, reiknuð sem samkomulagshlutfall samkvæmt „Sérstöku samkomulagi“ af bókunargildi.  
+* **„Þóknun“** merkir þá fjárhæð sem Ferðaskrifstofan á rétt á frá Gististaðaveitanda, reiknuð sem samkomulagshlutfall samkvæmt „Sérstöku samkomulagi“ af bókunargildi.  
     
-* **„Force Majeure“** merkir atburð sem er utan viðráðanlegra stjórnunar aðila, þar með talið en ekki takmarkað við náttúruhamfarir, stríðsaðgerðir, hryðjuverk, borgaralegar óeirðir, farsóttir og stjórnsýsluaðgerðir, sem koma í veg fyrir að aðili geti uppfyllt skuldbindingar sínar samkvæmt þessum samningi.  
+* **„Force Majeure“** merkir atburð sem er utan viðráðanlegra stjórnvalda aðila, þar með talið en ekki takmarkað við náttúruhamfarir, stríðsátök, hryðjuverk, borgaralegar óeirðir, farsóttir og stjórnsýsluaðgerðir, sem koma í veg fyrir að aðili geti uppfyllt skuldbindingar sínar samkvæmt þessum samningi.  
     
-* **„Gestur“** merkir einstakling eða hóp sem gerir bókun í gegnum Ferðaskrifstofuna fyrir gistingu.  
+* **„Gestur“** merkir einstakling eða hóp sem gerir bókun í gegnum Ferðaskrifstofu fyrir gistingu.  
     
-* **„Kaupmaður skráður“** vísar til þess aðila sem er löglega heimilt og ábyrgur fyrir að vinna úr greiðslum frá gestum, þar með talið meðhöndlun greiðslumiðlana, endurgreiðslna, tilkalla og að tryggja að reglur um greiðslur séu uppfylltar. Kaupmaður skráður er sá aðili sem nafn hans birtist á kreditkortayfirliti gestsins fyrir gjöld tengd bókuninni.
+* **„Kaupmaður skráður“** vísar til þess aðila sem er löglega heimilt og ábyrgur fyrir að vinna úr greiðslum frá gestum, þar með talið meðhöndlun greiðslumiðlana, endurgreiðslum, tilkynningum um greiðslur og tryggingu á samræmi við greiðslureglur. Kaupmaður skráður er sá aðili sem nafn hans birtist á yfirliti kreditkorts gesta vegna gjalda tengdum bókun.  
 
-* **„Nettógreiðsla“** merkir þá fjárhæð sem greiðist til Gististaðaveitanda eftir að bókunargjald Wink og þóknun Ferðaskrifstofu hafa verið dregin frá bókunargildi.  
+* **„Nettó greiðsla“** merkir þá fjárhæð sem greiðist til Gististaðaveitanda eftir að bókunargjald Wink og þóknun Ferðaskrifstofu hafa verið dregin frá bókunargildi.  
     
-* **„Greiðslur“** merkja fjárhagslegar skuldbindingar sem leiða af þessum samningi, þar með talið þóknanir, gjöld eða aðrar greiðslur sem annar aðili greiðir til annars.
+* **„Greiðslur“** merkja fjárhagslegar skuldbindingar samkvæmt þessum samningi, þar með talið þóknanir, gjöld eða aðrar greiðslur sem annar aðili greiðir til annars.
 
-* **„Greiðslumiðlari“** er dótturfélag Winkfluence sem stjórnar greiðslum, safnar greiðslum frá gestum með því að rukka greiðslumáta sem tengist kaupum þeirra, svo sem kreditkort, debetkort, millifærslur, rafmyntir eða PayPal o.fl.  
+* **„Greiðslumiðlari“** er dótturfélag í fullri eigu Winkfluence sem stýrir greiðslum, innheimtir greiðslur frá gestum með því að rukka greiðslumáta sem tengist kaupum þeirra, svo sem kreditkort, debetkort, millifærslur, rafmyntir eða PayPal o.fl.  
     
 * **„Vettvangur“** merkir netkerfi sem þjónustuveitandi rekur þar sem Ferðaskrifstofan getur gert eða stjórnað bókunum fyrir gesti.
 
 * **„Sérstakt samkomulag“** merkir sjálfstæðan samning milli Ferðaskrifstofu og Gististaðaveitanda sem tilgreinir greiðsluskilmála, þar með talið þóknun og greiðslutíma.  
     
-* **„Þjónusta“** merkir þá þjónustu sem þjónustuveitandi veitir Ferðaskrifstofunni samkvæmt þessum samningi, þar með talið aðgang að vettvangi, bókunaraðstoð og þjónustuver.  
+* **„Þjónusta“** merkir þá þjónustu sem þjónustuveitandi veitir Ferðaskrifstofu samkvæmt þessum samningi, þar með talið aðgang að vettvangi, bókunaraðstoð og þjónustuver.  
     
 * **„Þjónustuveitandi“** merkir Wink, **TRAVELIKO SINGAPORE PTE. LTD** skráð í Singapúr.  
     
@@ -94,19 +94,19 @@ Allar ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofuvettvanginn o
 * 1,5% bókunargjald fyrir Wink.  
 * Þóknun Ferðaskrifstofu.
 
-3.3 **Nettógreiðsla:** Eftir stendur nettógreiðsla sem Ferðaskrifstofan greiðir til viðkomandi Gististaðaveitanda samkvæmt skilmálum í sérstöku samkomulagi milli Ferðaskrifstofu og Gististaðaveitanda. Wink ber ekki ábyrgð á greiðslum til Gististaðaveitanda.
+3.3 **Nettó greiðsla:** Eftir stendur nettó greiðsla sem Ferðaskrifstofan greiðir til viðkomandi Gististaðaveitanda samkvæmt skilmálum í sérstöku samkomulagi milli Ferðaskrifstofu og Gististaðaveitanda. Wink ber ekki ábyrgð á greiðslum til Gististaðaveitanda.
 
 3.4 **Sérstakt samkomulag:** Ferðaskrifstofan þarf að hafa sértakan samning við hvern Gististaðaveitanda sem tilgreinir greiðsluskilmála. Þessi samningur milli Wink og Ferðaskrifstofu stjórnar ekki samskiptum Ferðaskrifstofu og Gististaðaveitenda.
 
-3.5 **Reikningagjöf Wink:** Wink sendir Ferðaskrifstofu mánaðarlegan reikning fyrir 1,5% bókunargjaldi sem safnast hefur upp yfir mánuðinn. Ferðaskrifstofan ber ábyrgð á að greiða þennan reikning innan tilgreindra greiðsluskilmála.
+3.5 **Reikningagerð Wink:** Wink sendir Ferðaskrifstofu mánaðarlega reikning fyrir 1,5% bókunargjaldi sem safnast hefur upp yfir mánuðinn. Ferðaskrifstofan ber ábyrgð á að greiða þennan reikning innan tilgreindra greiðsluskilmála.
 
 **4\. Hlutverk og ábyrgð**
 
 4.1 **Ábyrgð Ferðaskrifstofu:**
 
 * Ferðaskrifstofan ber ábyrgð á innheimtu greiðslna frá gestum.  
-* Ferðaskrifstofan þarf að tryggja tímanlega og rétta úthlutun nettógreiðslu til Gististaðaveitenda samkvæmt sérstöku samkomulagi.  
-* Ferðaskrifstofan ber ábyrgð á öllum villum eða misræmi í greiðsluferli og þarf að leiðrétta þau tafarlaust.  
+* Ferðaskrifstofan þarf að tryggja tímanlega og rétta dreifingu nettó greiðslu til Gististaðaveitenda samkvæmt sérstöku samkomulagi.  
+* Ferðaskrifstofan ber ábyrgð á villum eða misræmi í greiðslumeðferð og þarf að leiðrétta þau tafarlaust.  
 * Ferðaskrifstofan ber ábyrgð á að greiða mánaðarlegan reikning Wink fyrir bókunargjöld.
 
 4.2 **Ábyrgð Wink:**
@@ -116,7 +116,7 @@ Allar ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofuvettvanginn o
 
 **5\. Hugverkaréttindi**
 
-5.1 **Leyfi:** Hvor aðili veitir hinum takmarkað, óeinkarétt, gjaldfrjálst og alþjóðlegt leyfi til að nota hugverk sín eingöngu til að uppfylla skuldbindingar samkvæmt þessum samningi.
+5.1 **Leyfi:** Hvor aðili veitir hinum takmarkað, óeinkarétt, gjaldfrjálst og alþjóðlegt leyfi til að nota hugverk sitt eingöngu til að uppfylla skuldbindingar samkvæmt þessum samningi.
 
 5.2 **Takmarkanir:** Ferðaskrifstofan má ekki veita undirleyfi, flytja eða birta neitt hugverk eða efni frá Wink.
 
@@ -129,23 +129,23 @@ Allar ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofuvettvanginn o
 
 6.2 **Sein greiðsla:**
 
-* Ef greiðsla berst ekki á réttum tíma áskilur Wink sér rétt til að rukka vexti að upphæð 5% á mánuði eða hámarksvexti samkvæmt lögum, lægri upphæðin gildir, af vangreiddri fjárhæð frá gjalddaga til greiðsludags. Einnig getur Wink stöðvað þjónustu þar til greiðsla berst. Ef villur eru í reikningi frá Wink þarf Ferðaskrifstofan aðeins að greiða réttan hluta reikningsins og ber ekki ábyrgð á vöxtum eða sektum vegna rangrar greiðslu.
+* Ef greiðsla berst ekki á réttum tíma áskilur Wink sér rétt til að rukka vexti að 5% á mánuði eða hámarksvexti samkvæmt lögum, lægri upphæð, af vangreiddri fjárhæð frá gjalddaga til greiðsludags. Einnig getur Wink stöðvað þjónustu þar til greiðsla berst. Ef villur eru í reikningi frá Wink þarf Ferðaskrifstofan aðeins að greiða réttan hluta reikningsins og ber ekki ábyrgð á vöxtum eða sektum vegna rangrar upphæðar.
 
 6.3 **Endurgreiðslur og inneignir:**
 
-* Ef þjónusta er ekki veitt eða aflýst vegna aðstæðna sem ekki má rekja til Ferðaskrifstofu skal Wink endurgreiða eða veita inneign innan 30 daga frá tilkynningu um aflýsingu, að því gefnu að þjónustugjald hafi þegar verið greitt.
+* Ef þjónusta er ekki veitt eða aflýst vegna aðstæðna sem ekki má rekja til Ferðaskrifstofu skal Wink endurgreiða eða veita inneign innan 30 daga frá tilkynningu um aflýsingu, að þjónustugjald hafi þegar verið greitt.
 
 6.4 **Gjaldmiðill og skattar:**
 
-* Greiðslur skulu vera í USD. Ferðaskrifstofan ber ábyrgð á öllum sköttum, gjöldum eða öðrum kostnaði sem kunna að falla til vegna viðskipta samkvæmt þessum samningi, þar með talið gjaldmiðlaskiptikostnaði ef greiðslur eru í öðrum gjaldmiðli en USD.
+* Greiðslur skulu vera í USD. Ferðaskrifstofan ber ábyrgð á öllum sköttum, gjöldum eða öðrum kostnaði sem kunna að falla til vegna viðskipta samkvæmt þessum samningi, þar með talið gjaldeyrisbreytingarkostnaði ef greiðslur eru í öðrum gjaldmiðli en USD.
 
 6.5 **Greiðslumáti:**
 
-* Ferðaskrifstofan greiðir með millifærslu, kreditkorti eða PayPal og ber allar gjöld sem tengjast valinni greiðslumáta.
+* Ferðaskrifstofan greiðir með millifærslu, kreditkorti eða PayPal og ber sjálf kostnað sem tengist valinni greiðslumáta.
 
 6.6 **Ágreiningur um greiðslur:**
 
-* Ef ágreiningur kemur upp um reikning skal Ferðaskrifstofan tilkynna Wink innan 10 daga frá reikningsdegi með nákvæmum ástæðum. Aðilar skulu semja í góðri trú til að leysa ágreininginn fljótt. Óumdeildur hluti reiknings skal greiðast á gjalddaga.
+* Ef ágreiningur kemur upp um reikning skal Ferðaskrifstofan tilkynna Wink innan 10 daga frá reikningsdegi með nákvæmum ástæðum. Aðilar skulu semja í góðri trú til að leysa ágreininginn fljótt. Óumdeildur hluti reiknings skal greiddur á gjalddaga.
 
 **7\. Ábyrgð Ferðaskrifstofu**
 
@@ -164,19 +164,19 @@ Allar ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofuvettvanginn o
 
 7.4 **Stjórnun bókana:**
 
-* Ferðaskrifstofan skal stjórna öllum bókunum í gegnum vettvanginn, þar með talið meðhöndlun pöntunar, aflýsinga og breytinga. Ferðaskrifstofan ber ábyrgð á samskiptum við gesti og Gististaðaveitendur til að tryggja rétta meðhöndlun og staðfestingu bókana.
+* Ferðaskrifstofan skal stjórna öllum bókunum í gegnum vettvanginn, þar með talið meðhöndlun pöntunar, afpöntunar og breytinga. Ferðaskrifstofan ber ábyrgð á samskiptum við gesti og Gististaðaveitendur til að tryggja rétta meðhöndlun og staðfestingu bókana.
 
-7.5 **Innheimta og úthlutun greiðslna:**
+7.5 **Innheimta og framsending greiðslna:**
 
-* Ferðaskrifstofan ber ábyrgð á innheimtu greiðslna frá gestum fyrir bókanir í gegnum vettvanginn og að greiða samningsbundnar greiðslur til Gististaðaveitenda og þjónustuveitanda samkvæmt greiðsluskilmálum. Ferðaskrifstofan skal tryggja örugga meðhöndlun greiðslna í samræmi við fjármálareglur.
+* Ferðaskrifstofan ber ábyrgð á innheimtu greiðslna frá gestum fyrir bókanir í gegnum vettvanginn og að greiða samningsbundnar greiðslur til Gististaðaveitenda og þjónustuveitanda samkvæmt greiðsluskilmálum. Ferðaskrifstofan skal tryggja örugga meðhöndlun greiðslna og samræmi við fjármálareglur.
 
 7.6 **Meðhöndlun kvarta og ágreinings:**
 
-* Ferðaskrifstofan er aðal tengiliður við gesti varðandi kvartanir, ágreining eða mál tengd þjónustu í gegnum vettvanginn. Ferðaskrifstofan skal leitast við að leysa kvartanir og ágreining fljótt og viðhalda góðu sambandi við gesti og Gististaðaveitendur.
+* Ferðaskrifstofan er aðal tengiliður við gesti varðandi kvartanir, ágreining eða önnur mál tengd þjónustu í gegnum vettvanginn. Ferðaskrifstofan skal leitast við að leysa kvartanir og ágreining fljótt og á þann hátt að viðhalda góðu sambandi við gesti og Gististaðaveitendur.
 
 7.7 **Skýrslugjöf og ábyrgð:**
 
-* Ferðaskrifstofan skal veita þjónustuveitanda reglulegar skýrslur um frammistöðu samkvæmt samningi, þar með talið söluupplýsingar, bókunartölfræði og viðbrögð viðskiptavina. Ferðaskrifstofan ber ábyrgð á nákvæmni skýrslna og skal vinna með þjónustuveitanda við endurskoðun eða úttekt.
+* Ferðaskrifstofan skal veita þjónustuveitanda reglulegar skýrslur um frammistöðu samkvæmt þessum samningi, þar með talið söluupplýsingar, bókunartölfræði og viðbrögð viðskiptavina. Ferðaskrifstofan ber ábyrgð á nákvæmni skýrslna og skal vinna með þjónustuveitanda við endurskoðun eða úttekt.
 
 7.8 **Trúnaður:**
 
@@ -184,25 +184,25 @@ Allar ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofuvettvanginn o
 
 7.9 **Fylgni við skilmála vettvangs:**
 
-* Ferðaskrifstofan skal fylgja öllum skilmálum sem tengjast notkun vettvangs þjónustuveitanda, þar með talið uppfærslum eða breytingum. Ferðaskrifstofan ber ábyrgð á að starfsmenn og umboðsmenn þekki og fylgi þessum skilmálum.
+* Ferðaskrifstofan skal fylgja öllum skilmálum sem tengjast notkun vettvangs þjónustuveitanda, þar með talið uppfærslum eða breytingum á skilmálum. Ferðaskrifstofan ber ábyrgð á að starfsmenn og umboðsmenn þekki og fylgi þessum skilmálum.
 
 7.10 **Bótakrafa:**
 
-* Ferðaskrifstofan skal bæta og halda þjónustuveitanda skaðlausum fyrir öllum kröfum, tjóni, ábyrgðum og kostnaði sem stafa af brotum Ferðaskrifstofu á þessum samningi, þar með talið brotum á lögum, rangri framsetningu þjónustu eða vanefndum gagnvart gestum eða Gististaðaveitendum.
+* Ferðaskrifstofan skal bæta þjónustuveitanda tjón sem kann að hljótast af brotum á þessum samningi, þar með talið brotum á lögum, rangri framsetningu þjónustu eða vanefndum gagnvart gestum eða Gististaðaveitendum.
 
 **8\. Þóknanir og gjöld**
 
 8.1 **Útreikningur þóknunar:** Þóknun til Ferðaskrifstofu er hlutfall (samkvæmt samningi Ferðaskrifstofu og Gististaðaveitanda) af bókunargildi eftir frádrátt bókunargjalds Wink.
 
-8.2 **Bókunargjald Wink:** Wink sendir mánaðarlegan reikning fyrir 1,5% bókunargjaldi. Ferðaskrifstofan ber ábyrgð á að greiða reikninginn innan tilgreindra greiðsluskilmála.
+8.2 **Bókunargjald Wink:** Wink sendir mánaðarlega reikning fyrir 1,5% bókunargjaldi. Ferðaskrifstofan ber ábyrgð á að greiða reikninginn innan tilgreindra greiðsluskilmála.
 
 **9\. Lögfræðilegar ráðstafanir**
 
-9.1 **Takmörkun ábyrgðar:** Enginn aðili ber ábyrgð á óbeinum, tilviljanakenndum, afleiðingum, sérstökum eða refsiviðurlögum sem stafa af þessum samningi.
+9.1 **Takmörkun ábyrgðar:** Enginn aðili ber ábyrgð á óbeinum, tilviljanakenndum, afleiðingum, sérstökum eða refsiviðurlögum vegna þessa samnings.
 
-9.2 **Bótakrafa:** Hvor aðili samþykkir að bæta hinn skaðlausan fyrir kröfum sem stafa af brotum á samningi eða gáleysi.
+9.2 **Bótakrafa:** Hvor aðili skal bæta hinum tjón sem stafar af brotum á samningi eða gáleysi.
 
-9.3 **Force Majeure:** Enginn aðili ber ábyrgð á töfum eða vanefndum vegna orsaka utan viðráðanlegra stjórnunar, þar með talið náttúruhamfarir, stríð, hryðjuverk, verkföll o.fl.
+9.3 **Force Majeure:** Enginn aðili ber ábyrgð á töfum eða vanefndum vegna atvika utan viðráðanlegra stjórnvalda, svo sem náttúruhamfara, stríðs, hryðjuverka, verkfalla o.fl.
 
 **10\. Gildistími og uppsögn**
 
@@ -210,34 +210,34 @@ Allar ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofuvettvanginn o
 
 10.2 **Uppsögn:** Hvor aðili getur sagt samningnum upp að eigin vild.
 
-10.3 **Eftir uppsögn:** Við uppsögn skal Ferðaskrifstofan greiða allar skuldir og hætta að nota hugverk eða efni tengt Wink.
+10.3 **Eftir uppsögn:** Við uppsögn skal Ferðaskrifstofan greiða allar skuldir og hætta notkun hugverka eða efnis tengdu Wink.
 
 **11\. Lögsaga og úrlausn ágreinings**
 
-11.1 **Lögsaga:** Samningur er stjórnað af lögum Singapúr, án tillits til árekstra laga.
+11.1 **Lögsaga:** Samningur er stjórnaður af lögum Singapúr, án tillits til árekstra laga.
 
 11.2 **Úrlausn ágreinings:** 
 
-11.2.1 **Samningaviðræður:** Ef ágreiningur kemur upp skal reynt að leysa hann með góðri trú í samningaviðræðum. Viðræður hefjast við skriflega tilkynningu annars aðila.
+11.2.1 **Samningaviðræður:** Við ágreining skulu aðilar reyna að leysa hann með góðri trú í samningaviðræðum. Viðræður hefjast við skriflega tilkynningu annars aðila.
 
-11.2.2 **Gerðardómur:** Ef ekki tekst að leysa ágreining innan 30 daga skal vísa honum til gerðardóms samkvæmt reglum Singapore International Arbitration Centre (SIAC). Gerðardómari verður einn, dómstaður er Singapúr og málflutningsmál er enska.
+11.2.2 **Gerðardómur:** Ef ekki tekst að leysa ágreining innan 30 daga skal vísa honum til gerðardóms samkvæmt reglum Singapore International Arbitration Centre (SIAC). Gerðardómari er einn, staðsetning gerðardóms er Singapúr og málflutningur fer fram á ensku.
 
-11.2.3 **Dómstólar:** Hvor aðili áskilur sér rétt til að leita bráðabirgðaverndar eða lögbanns hjá dómstólum í Singapúr meðan beðið er eftir gerðardómi. Slíkir dómstólar hafa einkarétt til að veita slíka vernd.
+11.2.3 **Dómstólar:** Hvor aðili áskilur sér rétt til að leita bráðabirgðaverndar eða lögbanns hjá dómstólum Singapúr meðan beðið er eftir gerðardómi. Slíkir dómstólar hafa einkarétt til að veita slíka vernd.
 
 **12\. Force Majeure**
 
-12.1 **Skilgreining:** Enginn aðili ber ábyrgð á vanefndum eða töfum vegna Force Majeure atburðar, sem er atburður utan viðráðanlegra stjórnunar, svo sem náttúruhamfarir, stríð, hryðjuverk, borgaralegar óeirðir, farsóttir eða stjórnsýsluaðgerðir.
+12.1 **Skilgreining:** Enginn aðili ber ábyrgð á vanefndum eða töfum vegna atvika utan viðráðanlegra stjórnvalda, svo sem náttúruhamfara (jarðskjálftar, flóð, fellibylir), stríðs, hryðjuverka, borgaralegra óeirða, farsótta eða stjórnsýslu.
 
-12.2 **Tilkynning:** Áhrifaður aðili skal tilkynna hinn aðilanum skriflega eins fljótt og unnt er eftir að Force Majeure atburður á sér stað. Tilkynning skal innihalda lýsingu á atburðinum, væntanlegan varaktíma og hvaða skuldbindingar eru fyrir áhrifum.
+12.2 **Tilkynning:** Áhrifaður aðili skal tilkynna hinn skriflega eins fljótt og unnt er eftir atburð. Tilkynning skal innihalda lýsingu á atburði, væntanlegan varaktíma og áhrif á skuldbindingar.
 
 12.3 **Áhrif á þjónustu:**
 
-* Þjónustan stöðvuð: Ef Force Majeure atburður hefur áhrif á getu fyrirtækisins til að veita þjónustu til Ferðaskrifstofu skal þjónustan stöðvuð á meðan á atburðinum stendur án sektar. Greiðsluskylda Ferðaskrifstofu vegna þjónustunnar skal einnig vera í biðstöðu á þessum tíma.  
-* Skyldur Ferðaskrifstofu: Ferðaskrifstofan ber ekki ábyrgð á skyldum sem verða óframkvæmanlegar vegna Force Majeure atburðar. Ferðaskrifstofan skal þó halda áfram að uppfylla aðrar skyldur sem ekki eru beint fyrir áhrifum.
+* Þjónustustöðvun: Ef Force Majeure atburður hefur áhrif á getu fyrirtækis til að veita þjónustu til Ferðaskrifstofu skal þjónustan stöðvuð á meðan á atburði stendur án sektar. Greiðsluskylda Ferðaskrifstofu vegna þjónustunnar skal einnig vera í biðstöðu á þessum tíma.  
+* Skyldur Ferðaskrifstofu: Ferðaskrifstofan ber ekki ábyrgð á skyldum sem verða óframkvæmanlegar vegna Force Majeure atburðar. Ferðaskrifstofan skal þó halda áfram að uppfylla aðrar skyldur sem ekki eru beint áhrifa af atburðinum.
 
-12.4 **Varðveisla og uppsögn:** Ef Force Majeure atburður varir lengur en sextíu (60) daga getur hvor aðili sagt samningnum upp með skriflegri tilkynningu. Við slíka uppsögn ber hvorugur aðili ábyrgð á skyldum sem myndast hafa eftir atburðinn.
+12.4 **Varðveisla og uppsögn:** Ef Force Majeure atburður varir lengur en sextíu (60) daga getur hvor aðili sagt samningnum upp með skriflegri tilkynningu. Við slíka uppsögn ber hvorugur aðili ábyrgð nema fyrir skuldbindingum sem urðu fyrir atburðinn.
 
-12.5 **Endurupptaka skuldbindinga:** Þegar Force Majeure atburður lýkur skulu báðir aðilar fljótt hefja uppfyllingu skuldbindinga samkvæmt samningi að því marki sem unnt er.
+12.5 **Endurupptaka skuldbindinga:** Þegar Force Majeure atburður lýkur skulu aðilar fljótt hefja uppfyllingu skuldbindinga eftir því sem unnt er.
 
 **13\. Trúnaður**
 
@@ -245,7 +245,7 @@ Allar ferðaskrifstofur geta enn bókað í gegnum ferðaskrifstofuvettvanginn o
 
 **14\. Ýmislegt**
 
-14.1 **Heildarsamningur:** Þessi samningur er heildarsamningur aðila og felur í sér öll fyrri samkomulög eða skilning.
+14.1 **Heildarsamningur:** Þessi samningur er heildarsamningur aðila og felur í sér allar fyrri samninga eða skilning.
 
 14.2 **Breytingar:** Breytingar á samningi skulu vera skriflegar og undirritaðar af báðum aðilum.
 

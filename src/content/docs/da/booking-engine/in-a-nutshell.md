@@ -23,7 +23,7 @@ Dens ansvarsområder inkluderer:
 - At generere analyser baseret på brugerinteraktioner, begivenheder og API-kald.
 - At levere bookbart lager i det ønskede format, sprog og valuta, såsom:
     - Et [delbart link](/da/studio/shareable-links) på Facebook.
-    - En hotel-landingsside på https://ota.wink.travel med lager for det pågældende hotel.
+    - En hotel-landingsside på https://ota.wink.travel med lager for det hotel.
     - Et [kort](/da/studio/cards) indeholdende affiliate-lager.
     - Et [kort](/da/studio/maps) på din [WinkLinks](/da/link-manager/wink-links) konto.
     - Et [API-kald](/da/developers/apis) fra et eksternt rejsebureau-system.

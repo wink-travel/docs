@@ -17,7 +17,7 @@ Varausmoottori on alustamme ytimessä.
 Sen vastuualueisiin kuuluu:
 
 - Valuuttahallinta ja valuuttakurssien ajantasaisena pitäminen.
-- Hintatietojen toimittajille tapa lähettää hintadataa.
+- Hintatietojen toimittajille tapa lähettää hintadataa meille.
 - Hakutietojen hallinta. *esim. alueet, maat, kohteet, majoituspaikat jne.*
 - Kielten hallinta.
 - Analytiikan tuottaminen käyttäjävuorovaikutusten, tapahtumien ja API-kutsujen perusteella.
@@ -44,4 +44,4 @@ Jatka seuraaviin osioihin lukeaksesi lisää siitä, mitä varausmoottori tarjoa
 
 - Lue lisää [WordPress-laajennuksestamme](/fi/integrations/wordpress/).
 - Lue lisää [Web Components](/fi/integrations/web-components).
-- Lue lisää [API:stamme](/fi/developers/apis).
+- Lue lisää [API:istamme](/fi/developers/apis).

@@ -1,11 +1,11 @@
 ---
 title: Kupci
-description: Ovaj članak objašnjava vrste kupaca koje služimo i kako im Wink može pomoći.
+description: Ovaj članak objašnjava vrste kupaca kojima služimo i kako im Wink može pomoći.
 sidebar:
   order: 2
 ---
 
-Ovaj članak objašnjava vrste kupaca koje služimo i kako im najbolje možemo pomoći.
+Ovaj članak objašnjava vrste kupaca kojima služimo i kako im najbolje možemo pomoći.
 
 ## Nekretnine
 
@@ -17,7 +17,7 @@ Brendovi i lance imaju nešto drugačije potrebe od pojedinačnih objekata. Na W
 
 - Upravljati više objekata pod jednim nalogom.
 - Dodeljivati menadžere objektima
-- Koristiti [WinkLinks](/sr/link-manager/wink-links), [WordPress](/sr/integrations/wordpress) i naše [Web komponente](/sr/integrations/web-components) za marketing i prodaju više objekata na jednom mestu.
+- Koristiti [WinkLinks](/sr/link-manager/wink-links), [WordPress](/sr/integrations/wordpress) i naše [Web Components](/sr/integrations/web-components) za marketing i prodaju više objekata na jednom mestu.
 
 ## Menadžerske kompanije
 
@@ -46,7 +46,7 @@ Korporativni putnici mogu upravljati svojim nalozima na našem [korporativnom po
 
 ## Programeri
 
-Iako smo ovu platformu izgradili za i od strane hotelijera... Svaka linija koda je napravljena sa ciljem ponovne upotrebljivosti. Naš tim programera je izgradio Wink u nadi da će sledeća 🦄 aplikacija za putovanja biti izgrađena na osnovu naše baze koda. Posetite [Developer](/sr/developers/build-on-wink) stranicu da vidite kako vam Wink može pomoći u vašem sledećem poduhvatu.
+Iako smo ovu platformu izgradili za i od strane hotelijera... Svaka linija koda je napravljena sa ciljem ponovne upotrebljivosti. Naš tim programera je izgradio Wink u nadi da će sledeća 🦄 aplikacija za putovanja biti izgrađena na vrhu naše baze koda. Posetite [Developer](/sr/developers/build-on-wink) stranicu da vidite kako vam Wink može pomoći u vašem sledećem poduhvatu.
 
 ## Ostalo
 

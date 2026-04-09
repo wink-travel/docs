@@ -17,15 +17,15 @@ Brands og kæder har lidt andre behov end en enkelt ejendom. På Wink kan de:
 
 - Administrere flere ejendomme under en enkelt konto.
 - Tildele ledere til ejendomme
-- Bruge [WinkLinks](/da/link-manager/wink-links), [WordPress](/da/integrations/wordpress) og vores [Web Components](/da/integrations/web-components) til at markedsføre og sælge flere ejendomme samlet.
+- Bruge [WinkLinks](/da/link-manager/wink-links), [WordPress](/da/integrations/wordpress) og vores [Web Components](/da/integrations/web-components) til at markedsføre og sælge flere ejendomme samlet ét sted.
 
 ## Managementselskaber
 
-Hospitality managementselskaber og destination managementselskaber kan administrere deres ejendomsporteføljer på vegne af ejerne. Der er en klar fordel ved at lade online-fokuserede, digitalt bevidste bureauer håndtere salget til online-segmentet, mens hoteller kan fokusere på at sikre kundetilfredshed, når gæsterne ankommer.
+Gæstfrihedsledelsesselskaber og destination management selskaber kan administrere deres ejendomsporteføljer på vegne af ejerne. Der er en klar fordel ved at lade online-fokuserede, digitalt bevidste bureauer håndtere salget til online-segmentet, mens hoteller kan fokusere på at sikre kundetilfredshed, når gæsterne ankommer til stedet.
 
 ## Influencers
 
-Influencers bruger Wink til bedre at tjene penge på deres publikum. De gør det ved at indgå partnerskaber med hoteller, skabe skræddersyede tilbud og udnytte Winks sociale-venlige værktøjer og kraftfulde analyser til at spore, hvilke produkter der sælger bedst​.
+Influencers bruger Wink til bedre at tjene penge på deres publikum. Det gør de ved at indgå partnerskaber med hoteller, skabe skræddersyede tilbud og udnytte Winks sociale-vendte værktøjer og kraftfulde analyser til at spore, hvilke produkter der sælger bedst​.
 
 ## Rejsebureauer
 
@@ -40,13 +40,13 @@ Virksomheder kræver mere af en rejseplatform:
 - De har leverandørpræferencer med medlemskaber.
 - De har ofte et firmakreditkort og fastsatte udgiftsgrænser.
 - De kræver udgiftsstyring og rapporteringsintegration.
-- De har brug for concierge-support samt MICE-tjenester ved events.
+- De har behov for concierge-support samt MICE-tjenester ved arrangementer.
 
 Forretningsrejsende kan administrere deres egne konti på vores [virksomhedsportal](/da/corporate/what-is-group) eller bruge vores officielt understøttede [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin og [Concur](https://www.concur.com/) integration.
 
 ## Udviklere
 
-Selvom vi byggede denne platform af og for hoteller... blev hver eneste kode linje skrevet med henblik på genanvendelighed. Vores team af udviklere byggede Wink i håbet om, at den næste 🦄 rejseapp bliver bygget oven på vores kodebase. Gå til [Developer](/da/developers/build-on-wink) siden for at se, hvordan Wink kan støtte dig i dit næste projekt.
+Selvom vi byggede denne platform af og for hoteller... blev hver eneste kode linje skrevet med det specifikke formål at kunne genbruges. Vores team af udviklere byggede Wink i håbet om, at den næste 🦄 rejseapp bliver bygget oven på vores kodebase. Gå til [Developer](/da/developers/build-on-wink) siden for at se, hvordan Wink kan støtte dig i dit næste projekt.
 
 ## Andre
 

@@ -16,12 +16,12 @@ O Wink começou a integrar hotéis há uma década. Os hotéis usam o Wink para 
 Marcas e cadeias têm necessidades ligeiramente diferentes das de uma única propriedade. No Wink, podem:
 
 - Gerir múltiplas propriedades numa única conta.
-- Atribuir gestores às propriedades.
+- Atribuir gestores às propriedades
 - Usar [WinkLinks](/pt-PT/link-manager/wink-links), [WordPress](/pt-PT/integrations/wordpress) e os nossos [Web Components](/pt-PT/integrations/web-components) para promover e vender várias propriedades num só lugar.
 
 ## Empresas de gestão
 
-As empresas de gestão hoteleira e as empresas de gestão de destinos podem gerir os seus portfólios de propriedades em nome dos proprietários. Existe uma vantagem clara em deixar que agências focadas no online e digitalmente conscientes tratem da venda ao segmento online, enquanto os hotéis se concentram em gerir a satisfação dos clientes quando estes chegam às instalações.
+As empresas de gestão hoteleira e as empresas de gestão de destinos podem gerir os seus portfólios de propriedades em nome dos proprietários. Existe uma vantagem definitiva em deixar que agências focadas no online e digitalmente conscientes tratem da venda ao segmento online, enquanto os hotéis se concentram em gerir a satisfação do cliente quando este chega às instalações.
 
 ## Influenciadores
 
@@ -37,12 +37,12 @@ As empresas exigem mais de uma plataforma de viagens:
 
 - Precisam de itinerários bem organizados que suportem flexibilidade e alterações de última hora.
 - Precisam de ferramentas de comunicação fiáveis, como internet.
-- Têm preferências por fornecedores com associações.
+- Têm preferências de fornecedores com associações.
 - Muitas vezes têm cartão de crédito corporativo e definem limites de despesas.
 - Precisam de gestão de despesas e integração de relatórios.
 - Necessitam de apoio de concierge, bem como serviços MICE em eventos.
 
-Os viajantes corporativos podem gerir as suas próprias contas no nosso [portal corporativo](/pt-PT/corporate/what-is-group) ou usar o nosso plugin oficialmente suportado [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) e a integração com [Concur](https://www.concur.com/).
+Os viajantes corporativos podem gerir as suas próprias contas no nosso [portal corporativo](/pt-PT/corporate/what-is-group) ou usar o nosso plugin oficialmente suportado [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) e a integração [Concur](https://www.concur.com/).
 
 ## Desenvolvedores
 

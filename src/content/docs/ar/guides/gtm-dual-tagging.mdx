@@ -1,0 +1,676 @@
+---
+title: تكامل بكسل Sojern
+description: كيفية ربط حساب Sojern الخاص بك بـ Wink حتى يتمكن Sojern من تتبع رحلة حجز ضيوفك ودعم حملات إعادة الاستهداف والإعلانات الخاصة بك.
+sidebar:
+  label: تكامل بكسل Sojern
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+إذا كنت تدير حملات إعلانية عبر Sojern، يمكنك ربط حساب Sojern الخاص بك بـ Wink عن طريق إدخال معرف حاوية GTM الخاص بـ Sojern في بوابة Wink. بمجرد الربط، يتم تفعيل بكسل التتبع الخاص بـ Sojern تلقائيًا لممتلكاتك — مما يغطي رحلة الضيف الكاملة من البحث حتى إتمام الحجز.
+
+<Aside type="tip">
+يفترض هذا أن لديك حساب Sojern نشط بالفعل وقد استلمت معرف حاوية GTM من مدير حساب Sojern الخاص بك. إذا لم يكن لديك حساب Sojern بعد، قم بزيارة [sojern.com/contact](https://www.sojern.com/contact) للبدء.
+</Aside>
+
+---
+
+## ما الذي تحتاج إلى فعله
+
+<Steps>
+
+1. **احصل على معرف حاوية GTM الخاص بك من Sojern**
+
+   تواصل مع مدير حساب Sojern الخاص بك واطلب **معرف حاوية GTM**. يتبع التنسيق `GTM-XXXXXXX`. هذا يختلف عن معرف بكسل Sojern — تأكد من طلب معرف حاوية GTM تحديدًا.
+
+2. **أدخله في بوابة Wink**
+
+   سجّل الدخول إلى [my.wink.travel](https://my.wink.travel)، اختر حسابك، واذهب إلى تبويب **التخصيصات**. الصق معرف حاوية GTM الخاص بـ Sojern في حقل Sojern واحفظ. أصبح التكامل الآن نشطًا.
+
+3. **أكد مع مدير حساب Sojern الخاص بك**
+
+   أخبر مدير حساب Sojern الخاص بك أن التكامل نشط. يمكنهم التحقق من جانبهم أن البكسل يعمل بشكل صحيح على `wink.travel` لممتلكاتك وأن البيانات تتدفق إلى حساب Sojern الخاص بك.
+
+</Steps>
+
+<Aside type="note">
+لا تحتاج إلى وضع أي كود بكسل على موقعك الخاص لهذا التكامل. يقوم Wink بتحميل حاوية Sojern تلقائيًا على جميع الصفحات التي تكون فيها ممتلكاتك نشطة.
+
+يعمل هذا الإعداد مع أي معرف حاوية GTM مخصص. استخدمنا Sojern كمثال لأنه تكامل شائع جدًا.
+</Aside>
+
+---
+
+## ما الذي يفعله Wink من جانبنا
+
+لأجل الشفافية، إليك ما يقوم Wink بتكوينه لجعل هذا التكامل يعمل:
+
+- **يوجد حقل معرف حاوية GTM الخاص بـ Sojern** في تبويب التخصيصات في بوابة Wink الخاصة بك. عند إدخال معرف الحاوية، يتحقق Wink من صحة التنسيق ويخزنه بأمان مقابل ممتلكاتك.
+- **في كل صفحة تكون ممتلكاتك نشطة فيها** على Wink، يتم تضمين معرف حاوية GTM الخاص بـ Sojern في الصفحة ويقوم نظام إدارة العلامات الخاص بـ Wink بتحميل حاوية Sojern الخاصة بك ديناميكيًا إلى جانب حاويته الخاصة. يحدث هذا تلقائيًا — لا خطوات يدوية مطلوبة من فريق Wink لكل ممتلك.
+- **يتم تحميل حاوية Sojern الخاصة بك بشكل غير متزامن**، مما يعني أنها لا تؤثر على أداء تحميل الصفحة لضيوفك.
+- **يعمل تتبع Wink الخاص وبكسل Sojern الخاص بك بالتوازي**، حيث يقرأان من نفس بيانات الحدث المشتركة. كل حدث حجز يتتبعه Wink متاح في نفس الوقت لحاوية Sojern الخاصة بك.
+- **عندما لا يتم عرض ممتلكاتك** — على سبيل المثال، عندما يتصفح الضيف فندقًا مختلفًا على Wink — لا يتم تحميل حاوية Sojern الخاصة بك. هذا يضمن أن Sojern يتلقى فقط البيانات ذات الصلة بممتلكاتك.
+
+---
+
+## مرجع DataLayer
+
+يدفع Wink أحداثًا متوافقة مع GA4 إلى `dataLayer` طوال رحلة الضيف. تقرأ حاوية GTM الخاصة بك من نفس `dataLayer` المشترك، لذا أي مشغل أو متغير تقوم بتكوينه يمكنه الوصول إلى جميع الخصائص الموضحة أدناه.
+
+يتبع كل حدث هيكل التجارة الإلكترونية المحسنة القياسي لـ GA4: سلسلة `event` على المستوى الأعلى وكائن `ecommerce`. قبل كل دفع، يقوم Wink بمسح حمولة التجارة الإلكترونية السابقة لمنع تسرب البيانات القديمة إلى المشغلات الجديدة.
+
+<Aside type="note">
+**نمط إعادة تعيين dataLayer**
+
+يقوم Wink بإعادة تعيين كائن التجارة الإلكترونية قبل كل دفع حدث:
+
+```js
+dataLayer.push({ ecommerce: null });   // مسح الحدث السابق
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+لا تعتمد على استمرار خصائص التجارة الإلكترونية بين الأحداث. اقرأها دائمًا عند وقت المشغل ضمن نفس الحدث.
+</Aside>
+
+---
+
+### أحداث رحلة الحجز
+
+تُطلق هذه الأحداث تلقائيًا مع تحرك الضيف خلال مسار الحجز. قم بتكوين مشغلات GTM الخاصة بك كمشغلات **حدث مخصص** تطابق أسماء الأحداث أدناه.
+
+| الخطوة | الحدث | متى يُطلق |
+|------|-------|---------------|
+| 1 | `view_item_list` | تحميل شبكة أو قائمة مخزون الفنادق |
+| 2 | `view_item` | عرض الضيف لصفحة ممتلك محددة |
+| 3 | `add_to_cart` | إضافة الضيف لغرفة إلى عربة التسوق |
+| 4 | `begin_checkout` | تحميل صفحة الدفع / الخروج |
+| 5 | `add_payment_info` | اختيار الضيف لطريقة الدفع |
+| 6 | `login` | توثيق الضيف عبر تسجيل الدخول الموحد |
+| 7 | `purchase` | تأكيد الحجز |
+| 8 | `refund` | إلغاء الحجز |
+
+---
+
+#### `view_item_list`
+
+يُطلق عند عرض شبكة أو قائمة مخزون الفنادق.
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+يُطلق عند عرض الضيف لممتلك محدد.
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+يُطلق عند إضافة الضيف لغرفة إلى عربة التسوق.
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+يُطلق عند تحميل صفحة الدفع / الخروج.
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` موجود فقط عند تطبيق رمز خصم.
+
+---
+
+#### `add_payment_info`
+
+يُطلق عند اختيار أو تأكيد الضيف لطريقة الدفع.
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` يتم تعبئته من نوع مستحوذ الدفع. `coupon` موجود فقط عند تطبيق رمز خصم.
+
+---
+
+#### `login`
+
+يُطلق عند توثيق الضيف عبر تسجيل الدخول الموحد.
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+يُطلق عند تأكيد الحجز.
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` هو معرف عقد الحجز الفريد. `coupon` و`shipping` و`tax` موجودة فقط عند الاقتضاء.
+
+---
+
+#### `refund`
+
+يُطلق عند إلغاء الحجز.
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` يطابق حدث `purchase` لنفس الحجز. `coupon` و`shipping` و`tax` موجودة فقط عند الاقتضاء.
+
+---
+
+### خصائص العنصر
+
+جميع الأحداث التي تتضمن مصفوفة `items` تشترك في نفس مخطط العنصر. كل خاصية اختيارية ما لم تُذكر كـ مطلوبة.
+
+#### حقول GA4 القياسية
+
+هذه الحقول مفهومة أصلاً من GA4 وتظهر في تقارير التجارة الإلكترونية القياسية بدون أي تكوين إضافي.
+
+| الخاصية | النوع | مطلوب | الوصف |
+|----------|------|----------|-------------|
+| `item_id` | نص | نعم | معرف فريد للغرفة أو المنتج |
+| `item_name` | نص | — | اسم الغرفة أو المنتج |
+| `affiliation` | نص | — | اسم الشريك أو البائع |
+| `coupon` | نص | — | رمز القسيمة المطبق على العنصر |
+| `currency` | نص | — | رمز العملة ISO 4217 (مثلاً `USD`) |
+| `creative_name` | نص | — | اسم الإبداع المستخدم في الترويج |
+| `creative_slot` | نص | — | موقع الإبداع في الترويج |
+| `discount` | رقم | — | مبلغ الخصم المطبق |
+| `index` | رقم | — | الموقع في القائمة (مبني على 1) |
+| `item_brand` | نص | — | اسم الفندق أو العلامة التجارية |
+| `item_category` | نص | — | نوع المنتج — مثل `GUEST_ROOM`، `ACTIVITY`، `ATTRACTION`، `MEETING_ROOM`، `RESTAURANT`، `SPA` |
+| `item_list_id` | نص | — | معرف القائمة التي ينتمي إليها العنصر |
+| `item_list_name` | نص | — | اسم العرض للقائمة |
+| `location_id` | نص | — | إحداثيات جغرافية للممتلك |
+| `price` | رقم | — | سعر الوحدة |
+| `promotion_id` | نص | — | معرف الترويج |
+| `promotion_name` | نص | — | اسم العرض للترويج |
+| `quantity` | رقم | — | الكمية (الافتراضي `1`) |
+
+#### معلمات مخصصة على مستوى العنصر
+
+تحمل هذه المعلمات سياق الحجز الخاص بـ Wink. لا تظهر تلقائيًا في تقارير GA4 — يجب تسجيل كل منها كبُعد مخصص على مستوى العنصر في خاصية GA4 الخاصة بك قبل أن تظهر في الاستكشافات أو التقارير القياسية. راجع [الأبعاد المخصصة في GA4](#custom-dimensions-in-ga4) أدناه لتعليمات الإعداد.
+
+| الخاصية | النوع | الوصف |
+|----------|------|-------------|
+| `property_id` | نص | معرف ممتلك Wink |
+| `property_name` | نص | اسم العرض للممتلك |
+| `property_brand` | نص | العلامة التجارية التي ينتمي إليها الممتلك |
+| `property_chain` | نص | السلسلة التي ينتمي إليها الممتلك |
+| `city_name` | نص | المدينة التي يقع فيها الممتلك |
+| `country_code` | نص | رمز البلد ISO 3166-1 alpha-2 |
+| `start_date` | نص | تاريخ الوصول بصيغة `YYYY-MM-DD` |
+| `end_date` | نص | تاريخ المغادرة بصيغة `YYYY-MM-DD` |
+| `num_adults` | رقم | عدد البالغين في الحجز |
+| `num_children` | رقم | عدد الأطفال في الحجز |
+| `cancellation_policy` | نص | أحد: `Refundable`، `Non-Refundable`، `Refundable-With-Restrictions`، `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | نص | معرف خطة السعر |
+| `room_rate_id` | نص | معرف سعر الغرفة المحدد |
+| `room_rate_name` | نص | اسم العرض لسعر الغرفة |
+| `num_perks` | رقم | عدد المزايا المشمولة مع السعر |
+| `room_location` | نص | وصف موقع الغرفة (مثلاً `Overwater`، `Garden`) |
+| `room_view` | نص | وصف منظر الغرفة (مثلاً `Ocean`، `City`) |
+| `room_classification` | نص | تصنيف الغرفة أو الدرجة (مثلاً `Suite`، `Standard`) |
+
+---
+
+### الأبعاد المخصصة في GA4
+
+يتجاهل GA4 معلمات العنصر المخصصة في التقارير حتى تقوم بتسجيلها صراحة كبُعد مخصص على مستوى العنصر. تحتاج فقط إلى تسجيل المعلمات التي تنوي استخدامها في التقارير — لا تحتاج إلى تسجيل جميع الـ 18.
+
+<Steps>
+
+1. **افتح التعريفات المخصصة**
+
+   في GA4، اذهب إلى **الإدارة** (أيقونة الترس أسفل اليسار) → اختر خاصيتك → **عرض البيانات** → **التعريفات المخصصة**.
+
+2. **إنشاء بُعد مخصص جديد**
+
+   انقر على **إنشاء أبعاد مخصصة**.
+
+3. **املأ تفاصيل البُعد**
+
+   - **اسم البُعد** — التسمية المقروءة التي تظهر في تقارير GA4 (انظر الجدول أدناه)
+   - **النطاق** — اختر **عنصر**
+   - **معامل الحدث** — اسم المعامل بالضبط كما يظهر في dataLayer (انظر الجدول أدناه)
+   - **الوصف** — اختياري لكن يُنصح به
+
+4. **احفظ وكرر**
+
+   انقر على **حفظ**، ثم كرر لكل معامل تريد تتبعه.
+
+</Steps>
+
+<Aside type="note">
+قد تستغرق الأبعاد المخصصة حتى 24 ساعة لتبدأ بالظهور في تقارير GA4 بعد التسجيل. لا يتم ملء البيانات التاريخية التي تم جمعها قبل التسجيل.
+
+يسمح GA4 بما يصل إلى 50 بُعدًا مخصصًا على مستوى العنصر لكل خاصية على الخصائص القياسية (خصائص 360 تسمح بالمزيد).
+</Aside>
+
+استخدم الجدول التالي كمرجع عند إنشاء الأبعاد المخصصة. يجب أن يتطابق قيمة **معامل الحدث** بالضبط — GA4 حساس لحالة الأحرف.
+
+| اسم البُعد | معامل الحدث | النوع |
+|----------------|-----------------|------|
+| معرف الممتلك | `property_id` | نص |
+| اسم الممتلك | `property_name` | نص |
+| علامة الممتلك | `property_brand` | نص |
+| سلسلة الممتلك | `property_chain` | نص |
+| اسم المدينة | `city_name` | نص |
+| رمز البلد | `country_code` | نص |
+| تاريخ الوصول | `start_date` | نص |
+| تاريخ المغادرة | `end_date` | نص |
+| عدد البالغين | `num_adults` | رقم |
+| عدد الأطفال | `num_children` | رقم |
+| سياسة الإلغاء | `cancellation_policy` | نص |
+| معرف خطة السعر | `rate_plan_id` | نص |
+| معرف سعر الغرفة | `room_rate_id` | نص |
+| اسم سعر الغرفة | `room_rate_name` | نص |
+| عدد المزايا | `num_perks` | رقم |
+| موقع الغرفة | `room_location` | نص |
+| منظر الغرفة | `room_view` | نص |
+| تصنيف الغرفة | `room_classification` | نص |
+
+---
+
+### أحداث إضافية متاحة
+
+الأحداث التالية متاحة في dataLayer الخاص بـ Wink لكنها ليست جزءًا من مسار الحجز القياسي. قد يتم إطلاقها بواسطة تفاعلات أخرى على المنصة.
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+لا تتضمن حمولة `ecommerce` مع هذا الحدث.
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+هذا حدث مخصص من Wink — ليس جزءًا من مجموعة أحداث GA4 القياسية. يتم دفعه عند كل تنقل صفحة ويحمل سياق الجهاز والجلسة. لا يتضمن كائن `ecommerce`.
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| الخاصية | الوصف |
+|----------|-------------|
+| `device` | نوع الجهاز المكتشف — `Desktop`، `Android`، `iPhone`، `iPad`، أو ما شابه |
+| `deviceAgent` | سلسلة وكيل المستخدم الخام |
+| `os` | نظام التشغيل المكتشف — `Windows`، `MacOS`، `Linux`، `UNIX` |
+| `path` | مسار الصفحة الحالي |
+| `title` | عنوان الصفحة الحالي |
+| `userId` | معرف المستخدم المصادق عليه (يُحذف عند عدم تسجيل الدخول) |
+| `startDate` | تاريخ الوصول من جلسة البحث الحالية |
+| `endDate` | تاريخ المغادرة من جلسة البحث الحالية |
+| `guests` | عدد الضيوف من جلسة البحث الحالية |
+| `rooms` | عدد الغرف من جلسة البحث الحالية |

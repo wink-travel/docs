@@ -1,11 +1,11 @@
 ---
 title: Klienci
-description: Ten artykuł wyjaśnia rodzaje klientów, którym służymy, oraz jak Wink może pomóc.
+description: Ten artykuł wyjaśnia, jakich klientów obsługujemy i jak Wink może pomóc.
 sidebar:
   order: 2
 ---
 
-Ten artykuł wyjaśnia rodzaje klientów, którym służymy, oraz jak najlepiej możemy pomóc.
+Ten artykuł wyjaśnia, jakich klientów obsługujemy i jak najlepiej możemy pomóc.
 
 ## Obiekty
 
@@ -21,15 +21,15 @@ Marki i sieci mają nieco inne potrzeby niż pojedynczy obiekt. Na Wink mogą:
 
 ## Firmy zarządzające
 
-Firmy zarządzające w branży hotelarskiej oraz firmy zarządzające destynacjami mogą zarządzać swoimi portfelami obiektów w imieniu właścicieli. Istnieje wyraźna korzyść z powierzenia sprzedaży segmentowi online agencjom skoncentrowanym na internecie i świadomym cyfrowo, podczas gdy hotele mogą skupić się na zarządzaniu satysfakcją klientów po ich przybyciu na miejsce.
+Firmy zarządzające w branży hotelarskiej oraz firmy zarządzające destynacjami mogą zarządzać swoimi portfelami obiektów w imieniu właścicieli. Istnieje wyraźna korzyść z powierzenia sprzedaży segmentowi online, obsługiwanemu przez agencje świadome cyfrowo, podczas gdy hotele mogą skupić się na zarządzaniu satysfakcją klientów po ich przybyciu na miejsce.
 
 ## Influencerzy
 
-Influencerzy korzystają z Wink, aby lepiej monetyzować swoją publiczność. Robią to, współpracując z hotelami, tworząc niestandardowe oferty oraz wykorzystując przyjazne dla mediów społecznościowych narzędzia Wink i potężną analitykę do śledzenia, które produkty sprzedają się najlepiej​.
+Influencerzy korzystają z Wink, aby lepiej monetyzować swoją publiczność. Robią to, współpracując z hotelami, tworząc niestandardowe oferty i wykorzystując przyjazne dla mediów społecznościowych narzędzia Wink oraz potężną analitykę do śledzenia, które produkty sprzedają się najlepiej​.
 
 ## Agenci turystyczni
 
-Agenci turystyczni mają dostęp do światowego inwentarza turystycznego w atrakcyjnych cenach poprzez nasz dedykowany [portal dla agentów turystycznych](https://agent.wink.travel). Mogą dokonywać rezerwacji przez nasz portal, za pomocą naszego API lub pozwalając swoim użytkownikom na samodzielne rezerwacje na stronie agenta turystycznego korzystającej z naszych technologii.
+Agenci turystyczni mają dostęp do światowego inwentarza podróży w atrakcyjnych cenach za pośrednictwem naszego dedykowanego [portalu dla agentów turystycznych](https://agent.wink.travel). Mogą dokonywać rezerwacji przez nasz portal, za pomocą naszego API lub pozwalając swoim użytkownikom na samodzielne rezerwacje na stronie agenta turystycznego korzystającej z naszych technologii.
 
 ## Korporacje
 
@@ -46,8 +46,8 @@ Podróżujący służbowo mogą zarządzać własnymi kontami na naszym [portalu
 
 ## Deweloperzy
 
-Chociaż stworzyliśmy tę platformę z myślą o hotelarzach... Każda linia kodu została napisana z myślą o ponownym wykorzystaniu. Nasz zespół deweloperów zbudował Wink z nadzieją, że następna 🦄 aplikacja podróżnicza powstanie na bazie naszego kodu. Przejdź do strony [Developer](/pl/developers/build-on-wink), aby zobaczyć, jak Wink może Cię wspierać w Twoim kolejnym przedsięwzięciu.
+Chociaż stworzyliśmy tę platformę przez i dla hotelarzy... Każda linia kodu została napisana z myślą o ponownym wykorzystaniu. Nasz zespół deweloperów zbudował Wink z nadzieją, że następna 🦄 aplikacja podróżnicza powstanie na bazie naszego kodu. Przejdź do strony [Developer](/pl/developers/build-on-wink), aby zobaczyć, jak Wink może Cię wspierać w Twoim kolejnym przedsięwzięciu.
 
 ## Inni
 
-Każdy, kto chce znaleźć i sprzedawać inwentarz turystyczny, może skorzystać z Wink. Zamień swoją pasję do hotelarstwa w działanie, zarabiając świetną prowizję na każdej rezerwacji.
+Każdy, kto chce znaleźć i sprzedawać inwentarz podróżniczy, może skorzystać z Wink. Zamień swoją pasję do hotelarstwa w działanie, zarabiając świetną prowizję na każdej rezerwacji.

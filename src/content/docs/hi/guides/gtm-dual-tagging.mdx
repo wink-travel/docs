@@ -1,0 +1,676 @@
+---
+title: Sojern पिक्सेल एकीकरण
+description: अपने Sojern खाते को Wink से कैसे कनेक्ट करें ताकि Sojern आपके मेहमानों की बुकिंग यात्रा को ट्रैक कर सके और आपके रिटारगेटिंग और विज्ञापन अभियानों को सशक्त बना सके।
+sidebar:
+  label: Sojern पिक्सेल एकीकरण
+---
+
+import { Aside, Steps } from '@astrojs/starlight/components';
+
+यदि आप Sojern के माध्यम से विज्ञापन अभियान चला रहे हैं, तो आप अपने Sojern खाते को Wink से कनेक्ट कर सकते हैं, अपने Sojern GTM कंटेनर आईडी को Wink पोर्टल में दर्ज करके। कनेक्ट होने के बाद, Sojern का ट्रैकिंग पिक्सेल स्वचालित रूप से आपके संपत्ति के लिए सक्रिय हो जाता है — खोज से लेकर पूरी बुकिंग तक की पूरी मेहमान यात्रा को कवर करता है।
+
+<Aside type="tip">
+यह मानता है कि आपके पास पहले से एक सक्रिय Sojern खाता है और आपको अपने Sojern खाता प्रबंधक से आपका GTM कंटेनर आईडी प्राप्त हो चुका है। यदि आपके पास अभी तक Sojern खाता नहीं है, तो शुरू करने के लिए [sojern.com/contact](https://www.sojern.com/contact) पर जाएं।
+</Aside>
+
+---
+
+## आपको क्या करना है
+
+<Steps>
+
+1. **Sojern से अपना GTM कंटेनर आईडी प्राप्त करें**
+
+   अपने Sojern खाता प्रबंधक से संपर्क करें और अपना **GTM कंटेनर आईडी** मांगें। इसका प्रारूप `GTM-XXXXXXX` होता है। यह आपके Sojern पिक्सेल आईडी से अलग है — सुनिश्चित करें कि आप विशेष रूप से GTM कंटेनर आईडी के लिए पूछें।
+
+2. **इसे Wink पोर्टल में दर्ज करें**
+
+   [my.wink.travel](https://my.wink.travel) में लॉग इन करें, अपना खाता चुनें, और **Customizations** टैब पर जाएं। अपने Sojern GTM कंटेनर आईडी को Sojern फ़ील्ड में पेस्ट करें और सहेजें। आपकी एकीकरण अब सक्रिय है।
+
+3. **अपने Sojern खाता प्रबंधक से पुष्टि करें**
+
+   अपने Sojern खाता प्रबंधक को बताएं कि एकीकरण सक्रिय है। वे अपनी ओर से सत्यापित कर सकते हैं कि पिक्सेल आपके संपत्ति के लिए `wink.travel` पर सही ढंग से सक्रिय हो रहा है और डेटा आपके Sojern खाते में प्रवाहित हो रहा है।
+
+</Steps>
+
+<Aside type="note">
+इस एकीकरण के लिए आपको अपनी वेबसाइट पर कोई पिक्सेल कोड लगाने की आवश्यकता नहीं है। Wink आपके Sojern कंटेनर को स्वचालित रूप से उन सभी पृष्ठों पर लोड करता है जहां आपकी संपत्ति सक्रिय है।
+
+यह कॉन्फ़िगरेशन किसी भी कस्टम GTM कंटेनर आईडी के लिए काम करता है। हमने Sojern को उदाहरण के रूप में इस्तेमाल किया है क्योंकि यह एक बहुत सामान्य एकीकरण है।
+</Aside>
+
+---
+
+## Wink हमारी ओर से क्या करता है
+
+पारदर्शिता के लिए, यहां बताया गया है कि Wink इस एकीकरण को काम करने के लिए क्या कॉन्फ़िगर करता है:
+
+- **एक Sojern GTM कंटेनर आईडी फ़ील्ड** आपके Wink पोर्टल के Customizations टैब में उपलब्ध है। जब आप अपना कंटेनर आईडी दर्ज करते हैं, तो Wink प्रारूप को मान्य करता है और इसे सुरक्षित रूप से आपकी संपत्ति के खिलाफ संग्रहीत करता है।
+- **Wink पर आपकी संपत्ति के सक्रिय होने वाले हर पृष्ठ पर**, आपका Sojern GTM कंटेनर आईडी पृष्ठ में रेंडर होता है और Wink का टैग प्रबंधन सिस्टम अपने साथ-साथ आपके Sojern कंटेनर को गतिशील रूप से लोड करता है। यह स्वचालित रूप से होता है — Wink टीम को प्रति संपत्ति कोई मैनुअल कदम उठाने की आवश्यकता नहीं है।
+- **आपका Sojern कंटेनर असिंक्रोनस रूप से लोड होता है**, जिसका अर्थ है कि यह आपके मेहमानों के लिए पृष्ठ लोड प्रदर्शन को प्रभावित नहीं करता।
+- **Wink का अपना ट्रैकिंग और आपका Sojern पिक्सेल समानांतर में चलते हैं**, जो एक ही साझा इवेंट डेटा से पढ़ते हैं। Wink द्वारा ट्रैक किया गया हर बुकिंग इवेंट एक साथ आपके Sojern कंटेनर के लिए उपलब्ध होता है।
+- **जब आपकी संपत्ति देखी नहीं जा रही होती है** — उदाहरण के लिए, जब कोई मेहमान Wink पर किसी अन्य होटल को ब्राउज़ कर रहा होता है — तो आपका Sojern कंटेनर लोड नहीं होता। यह सुनिश्चित करता है कि Sojern केवल आपकी संपत्ति से संबंधित डेटा प्राप्त करे।
+
+---
+
+## DataLayer संदर्भ
+
+Wink पूरे मेहमान यात्रा के दौरान GA4-संगत इवेंट्स को `dataLayer` में पुश करता है। आपका GTM कंटेनर इसी साझा `dataLayer` से पढ़ता है, इसलिए आप जो भी ट्रिगर या वेरिएबल कॉन्फ़िगर करते हैं, उसे नीचे वर्णित सभी गुणों तक पहुंच होती है।
+
+प्रत्येक इवेंट मानक GA4 एन्हांस्ड ईकॉमर्स संरचना का पालन करता है: एक शीर्ष-स्तरीय `event` स्ट्रिंग और एक `ecommerce` ऑब्जेक्ट। हर पुश से पहले, Wink पिछले ईकॉमर्स पेलोड को साफ़ करता है ताकि पुराना डेटा नए ट्रिगर में न घुले।
+
+<Aside type="note">
+**dataLayer रीसेट पैटर्न**
+
+Wink हर इवेंट पुश से पहले ईकॉमर्स ऑब्जेक्ट को रीसेट करता है:
+
+```js
+dataLayer.push({ ecommerce: null });   // पिछले इवेंट को साफ़ करें
+dataLayer.push({ event: '...', ecommerce: { ... } });
+```
+
+इवेंट्स के बीच ईकॉमर्स गुणों के बने रहने पर भरोसा न करें। हमेशा उन्हें उसी इवेंट के ट्रिगर समय पर पढ़ें।
+</Aside>
+
+---
+
+### बुकिंग यात्रा इवेंट्स
+
+ये इवेंट्स स्वचालित रूप से तब फायर होते हैं जब कोई मेहमान बुकिंग फ़नल में आगे बढ़ता है। अपने GTM ट्रिगर्स को नीचे दिए गए इवेंट नामों से मेल खाते **Custom Event** ट्रिगर के रूप में कॉन्फ़िगर करें।
+
+| चरण | इवेंट | कब फायर होता है |
+|------|-------|-----------------|
+| 1 | `view_item_list` | होटल इन्वेंटरी ग्रिड या सूची लोड होती है |
+| 2 | `view_item` | मेहमान किसी विशिष्ट संपत्ति पृष्ठ को देखता है |
+| 3 | `add_to_cart` | मेहमान शॉपिंग कार्ट में एक कमरा जोड़ता है |
+| 4 | `begin_checkout` | चेकआउट / भुगतान पृष्ठ लोड होता है |
+| 5 | `add_payment_info` | मेहमान भुगतान विधि चुनता है |
+| 6 | `login` | मेहमान SSO के माध्यम से प्रमाणित होता है |
+| 7 | `purchase` | बुकिंग पुष्टि हो जाती है |
+| 8 | `refund` | बुकिंग रद्द कर दी जाती है |
+
+---
+
+#### `view_item_list`
+
+जब होटल इन्वेंटरी ग्रिड या सूची रेंडर होती है तब फायर होता है।
+
+```json
+{
+  "event": "view_item_list",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `view_item`
+
+जब मेहमान किसी विशिष्ट संपत्ति को देखता है तब फायर होता है।
+
+```json
+{
+  "event": "view_item",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `add_to_cart`
+
+जब मेहमान अपने कार्ट में एक कमरा जोड़ता है तब फायर होता है।
+
+```json
+{
+  "event": "add_to_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+---
+
+#### `begin_checkout`
+
+जब चेकआउट / भुगतान पृष्ठ लोड होता है तब फायर होता है।
+
+```json
+{
+  "event": "begin_checkout",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "items": [ ]
+  }
+}
+```
+
+`coupon` केवल तब मौजूद होता है जब कोई डिस्काउंट कोड लागू किया गया हो।
+
+---
+
+#### `add_payment_info`
+
+जब मेहमान भुगतान विधि चुनता या पुष्टि करता है तब फायर होता है।
+
+```json
+{
+  "event": "add_payment_info",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "payment_type": "STRIPE",
+    "items": [ ]
+  }
+}
+```
+
+`payment_type` भुगतान अधिग्रहक प्रकार से भरा जाता है। `coupon` केवल तब मौजूद होता है जब कोई डिस्काउंट कोड लागू किया गया हो।
+
+---
+
+#### `login`
+
+जब मेहमान सिंगल साइन-ऑन के माध्यम से प्रमाणित होता है तब फायर होता है।
+
+```json
+{
+  "event": "login",
+  "ecommerce": {
+    "method": "IAM"
+  }
+}
+```
+
+---
+
+#### `purchase`
+
+जब बुकिंग पुष्टि हो जाती है तब फायर होता है।
+
+```json
+{
+  "event": "purchase",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [
+      {
+        "item_id": "rr-xyz789",
+        "item_name": "Deluxe Ocean Suite",
+        "item_brand": "Grand Resort",
+        "item_category": "GUEST_ROOM",
+        "price": 299.00,
+        "quantity": 1,
+        "property_id": "prop-abc123",
+        "property_name": "Grand Resort Maldives",
+        "property_brand": "Grand Collection",
+        "property_chain": "Luxury Hotels International",
+        "city_name": "Malé",
+        "country_code": "MV",
+        "start_date": "2026-06-01",
+        "end_date": "2026-06-05",
+        "num_adults": 2,
+        "num_children": 0,
+        "cancellation_policy": "Refundable",
+        "rate_plan_id": "rp-summer2026",
+        "room_rate_id": "rr-xyz789",
+        "room_rate_name": "Summer Escape — Bed & Breakfast",
+        "num_perks": 2,
+        "room_location": "Overwater",
+        "room_view": "Ocean",
+        "room_classification": "Suite"
+      }
+    ]
+  }
+}
+```
+
+`transaction_id` अद्वितीय बुकिंग अनुबंध पहचानकर्ता है। `coupon`, `shipping`, और `tax` केवल लागू होने पर मौजूद होते हैं।
+
+---
+
+#### `refund`
+
+जब बुकिंग रद्द कर दी जाती है तब फायर होता है।
+
+```json
+{
+  "event": "refund",
+  "ecommerce": {
+    "currency": "USD",
+    "transaction_id": "bc-a1b2c3d4",
+    "value": 299.00,
+    "coupon": "SUMMER10",
+    "shipping": 0.00,
+    "tax": 0.00,
+    "items": [ ]
+  }
+}
+```
+
+`transaction_id` उसी बुकिंग के `purchase` इवेंट से मेल खाता है। `coupon`, `shipping`, और `tax` केवल लागू होने पर मौजूद होते हैं।
+
+---
+
+### आइटम गुण
+
+सभी इवेंट्स जिनमें `items` एरे शामिल है, एक ही आइटम स्कीमा साझा करते हैं। हर गुण वैकल्पिक है जब तक कि आवश्यक के रूप में चिह्नित न हो।
+
+#### मानक GA4 फ़ील्ड
+
+ये फ़ील्ड GA4 द्वारा स्वाभाविक रूप से समझे जाते हैं और मानक ईकॉमर्स रिपोर्टों में बिना किसी अतिरिक्त कॉन्फ़िगरेशन के दिखाई देते हैं।
+
+| गुण | प्रकार | आवश्यक | विवरण |
+|----------|------|----------|-------------|
+| `item_id` | string | हाँ | कमरे या उत्पाद के लिए अद्वितीय पहचानकर्ता |
+| `item_name` | string | — | कमरे या उत्पाद का नाम |
+| `affiliation` | string | — | संबद्ध या विक्रेता का नाम |
+| `coupon` | string | — | आइटम पर लागू कूपन कोड |
+| `currency` | string | — | ISO 4217 मुद्रा कोड (जैसे `USD`) |
+| `creative_name` | string | — | प्रचार में उपयोग किया गया क्रिएटिव नाम |
+| `creative_slot` | string | — | प्रचार क्रिएटिव की स्लॉट स्थिति |
+| `discount` | number | — | लागू छूट राशि |
+| `index` | number | — | सूची में स्थिति (1-आधारित) |
+| `item_brand` | string | — | होटल या ब्रांड का नाम |
+| `item_category` | string | — | उत्पाद प्रकार — जैसे `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | उस सूची का पहचानकर्ता जिसमें यह आइटम है |
+| `item_list_name` | string | — | सूची का प्रदर्शन नाम |
+| `location_id` | string | — | संपत्ति के भौगोलिक निर्देशांक |
+| `price` | number | — | इकाई मूल्य |
+| `promotion_id` | string | — | प्रचार का पहचानकर्ता |
+| `promotion_name` | string | — | प्रचार का प्रदर्शन नाम |
+| `quantity` | number | — | मात्रा (डिफ़ॉल्ट `1`) |
+
+#### कस्टम आइटम-स्कोप्ड पैरामीटर
+
+ये पैरामीटर Wink-विशिष्ट बुकिंग संदर्भ रखते हैं। GA4 उन्हें रिपोर्टों में स्वचालित रूप से प्रदर्शित नहीं करता — आपको प्रत्येक को अपनी GA4 संपत्ति में **आइटम-स्कोप्ड कस्टम डाइमेंशन** के रूप में पंजीकृत करना होगा ताकि वे एक्सप्लोरेशन या मानक रिपोर्टों में दिखाई दें। सेटअप निर्देशों के लिए नीचे [Custom Dimensions in GA4](#custom-dimensions-in-ga4) देखें।
+
+| गुण | प्रकार | विवरण |
+|----------|------|-------------|
+| `property_id` | string | Wink संपत्ति पहचानकर्ता |
+| `property_name` | string | संपत्ति प्रदर्शन नाम |
+| `property_brand` | string | ब्रांड जिसके अंतर्गत संपत्ति आती है |
+| `property_chain` | string | चेन जिसके अंतर्गत संपत्ति आती है |
+| `city_name` | string | शहर जहां संपत्ति स्थित है |
+| `country_code` | string | ISO 3166-1 alpha-2 देश कोड |
+| `start_date` | string | चेक-इन तिथि `YYYY-MM-DD` प्रारूप में |
+| `end_date` | string | चेक-आउट तिथि `YYYY-MM-DD` प्रारूप में |
+| `num_adults` | number | बुकिंग में वयस्कों की संख्या |
+| `num_children` | number | बुकिंग में बच्चों की संख्या |
+| `cancellation_policy` | string | इनमें से एक: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | दर योजना का पहचानकर्ता |
+| `room_rate_id` | string | विशिष्ट कमरे की दर का पहचानकर्ता |
+| `room_rate_name` | string | कमरे की दर का प्रदर्शन नाम |
+| `num_perks` | number | दर के साथ शामिल लाभों की संख्या |
+| `room_location` | string | कमरे का स्थान विवरण (जैसे `Overwater`, `Garden`) |
+| `room_view` | string | कमरे का दृश्य विवरण (जैसे `Ocean`, `City`) |
+| `room_classification` | string | कमरे का वर्गीकरण या स्तर (जैसे `Suite`, `Standard`) |
+
+---
+
+### GA4 में कस्टम डाइमेंशन्स
+
+GA4 रिपोर्टों में कस्टम आइटम पैरामीटर को तब तक नजरअंदाज करता है जब तक आप उन्हें स्पष्ट रूप से आइटम-स्कोप्ड कस्टम डाइमेंशन्स के रूप में पंजीकृत न करें। आपको केवल उन पैरामीटरों को पंजीकृत करना है जिन्हें आप रिपोर्टों में उपयोग करना चाहते हैं — आपको सभी 18 को पंजीकृत करने की आवश्यकता नहीं है।
+
+<Steps>
+
+1. **कस्टम परिभाषाएँ खोलें**
+
+   GA4 में, **Admin** (नीचे-बाएँ गियर आइकन) → अपनी संपत्ति चुनें → **Data display** → **Custom definitions** पर जाएं।
+
+2. **नई कस्टम डाइमेंशन बनाएं**
+
+   **Create custom dimensions** पर क्लिक करें।
+
+3. **डाइमेंशन विवरण भरें**
+
+   - **Dimension name** — GA4 रिपोर्टों में दिखाई देने वाला मानव-पठनीय लेबल (नीचे तालिका देखें)
+   - **Scope** — **Item** चुनें
+   - **Event parameter** — dataLayer में जैसा दिखता है वैसा ही पैरामीटर नाम (नीचे तालिका देखें)
+   - **Description** — वैकल्पिक लेकिन अनुशंसित
+
+4. **सहेजें और दोहराएं**
+
+   **Save** पर क्लिक करें, फिर प्रत्येक पैरामीटर के लिए दोहराएं जिसे आप ट्रैक करना चाहते हैं।
+
+</Steps>
+
+<Aside type="note">
+कस्टम डाइमेंशन्स GA4 रिपोर्टों में पंजीकरण के बाद 24 घंटे तक दिखाई नहीं दे सकते। पंजीकरण से पहले एकत्रित ऐतिहासिक डेटा वापस नहीं भरा जाता।
+
+GA4 मानक संपत्तियों पर प्रति संपत्ति 50 आइटम-स्कोप्ड कस्टम डाइमेंशन्स की अनुमति देता है (360 संपत्तियों पर अधिक अनुमति है)।
+</Aside>
+
+कस्टम डाइमेंशन्स बनाते समय नीचे दी गई तालिका का संदर्भ लें। **Event parameter** मान बिल्कुल मेल खाना चाहिए — GA4 केस-सेंसिटिव है।
+
+| डाइमेंशन नाम | इवेंट पैरामीटर | प्रकार |
+|----------------|-----------------|------|
+| Property ID | `property_id` | टेक्स्ट |
+| Property name | `property_name` | टेक्स्ट |
+| Property brand | `property_brand` | टेक्स्ट |
+| Property chain | `property_chain` | टेक्स्ट |
+| City name | `city_name` | टेक्स्ट |
+| Country code | `country_code` | टेक्स्ट |
+| Check-in date | `start_date` | टेक्स्ट |
+| Check-out date | `end_date` | टेक्स्ट |
+| Number of adults | `num_adults` | संख्या |
+| Number of children | `num_children` | संख्या |
+| Cancellation policy | `cancellation_policy` | टेक्स्ट |
+| Rate plan ID | `rate_plan_id` | टेक्स्ट |
+| Room rate ID | `room_rate_id` | टेक्स्ट |
+| Room rate name | `room_rate_name` | टेक्स्ट |
+| Number of perks | `num_perks` | संख्या |
+| Room location | `room_location` | टेक्स्ट |
+| Room view | `room_view` | टेक्स्ट |
+| Room classification | `room_classification` | टेक्स्ट |
+
+---
+
+### अतिरिक्त उपलब्ध इवेंट्स
+
+निम्नलिखित इवेंट्स Wink के dataLayer में उपलब्ध हैं लेकिन मानक बुकिंग फ़नल का हिस्सा नहीं हैं। इन्हें प्लेटफ़ॉर्म पर अन्य इंटरैक्शन द्वारा फायर किया जा सकता है।
+
+#### `add_to_wishlist`
+
+```json
+{
+  "event": "add_to_wishlist",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `remove_from_cart`
+
+```json
+{
+  "event": "remove_from_cart",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 299.00,
+    "items": [ ]
+  }
+}
+```
+
+#### `select_item`
+
+```json
+{
+  "event": "select_item",
+  "ecommerce": {
+    "item_list_id": "featured_hotels",
+    "item_list_name": "Featured Hotels",
+    "items": [ ]
+  }
+}
+```
+
+#### `view_cart`
+
+```json
+{
+  "event": "view_cart"
+}
+```
+
+इस इवेंट के साथ कोई `ecommerce` पेलोड शामिल नहीं है।
+
+#### `view_promotion`
+
+```json
+{
+  "event": "view_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `select_promotion`
+
+```json
+{
+  "event": "select_promotion",
+  "ecommerce": {
+    "creative_name": "Summer Banner",
+    "creative_slot": "hero",
+    "promotion_id": "promo_001",
+    "promotion_name": "Summer Sale",
+    "items": [ ]
+  }
+}
+```
+
+#### `search`
+
+```json
+{
+  "event": "search",
+  "ecommerce": {
+    "search_term": "beachfront resort"
+  }
+}
+```
+
+#### `select_content`
+
+```json
+{
+  "event": "select_content",
+  "ecommerce": {
+    "content_type": "hotel",
+    "content_id": "prop_12345"
+  }
+}
+```
+
+#### `share`
+
+```json
+{
+  "event": "share",
+  "ecommerce": {
+    "method": "copy_link",
+    "content_type": "hotel",
+    "item_id": "prop_12345"
+  }
+}
+```
+
+#### `sign_up`
+
+```json
+{
+  "event": "sign_up",
+  "ecommerce": {
+    "method": "email"
+  }
+}
+```
+
+#### `generate_lead`
+
+```json
+{
+  "event": "generate_lead",
+  "ecommerce": {
+    "currency": "USD",
+    "value": 0.00
+  }
+}
+```
+
+#### `join_group`
+
+```json
+{
+  "event": "join_group",
+  "ecommerce": {
+    "group_id": "group_abc"
+  }
+}
+```
+
+#### `earn_virtual_currency`
+
+```json
+{
+  "event": "earn_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 100
+  }
+}
+```
+
+#### `spend_virtual_currency`
+
+```json
+{
+  "event": "spend_virtual_currency",
+  "ecommerce": {
+    "virtual_currency_name": "WinkPoints",
+    "value": 50,
+    "item_name": "Room Upgrade"
+  }
+}
+```
+
+#### `level_start`
+
+```json
+{
+  "event": "level_start",
+  "ecommerce": {
+    "level_name": "Gold"
+  }
+}
+```
+
+#### `level_end`
+
+```json
+{
+  "event": "level_end",
+  "ecommerce": {
+    "level_name": "Gold",
+    "success": true
+  }
+}
+```
+
+#### `level_up`
+
+```json
+{
+  "event": "level_up",
+  "ecommerce": {
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `post_score`
+
+```json
+{
+  "event": "post_score",
+  "ecommerce": {
+    "score": 980,
+    "level": 2,
+    "character": "traveler"
+  }
+}
+```
+
+#### `unlock_achievement`
+
+```json
+{
+  "event": "unlock_achievement",
+  "ecommerce": {
+    "achievement_id": "first_booking"
+  }
+}
+```
+
+#### `tutorial_begin`
+
+```json
+{
+  "event": "tutorial_begin",
+  "ecommerce": {}
+}
+```
+
+#### `tutorial_complete`
+
+```json
+{
+  "event": "tutorial_complete",
+  "ecommerce": {}
+}
+```
+
+---
+
+### `virtualPageView`
+
+यह एक कस्टम Wink इवेंट है — मानक GA4 इवेंट सेट का हिस्सा नहीं। यह हर पृष्ठ नेविगेशन पर पुश होता है और डिवाइस और सेशन संदर्भ ले जाता है। इसमें कोई `ecommerce` ऑब्जेक्ट शामिल नहीं होता।
+
+```json
+{
+  "event": "virtualPageView",
+  "device": "Desktop",
+  "deviceAgent": "Mozilla/5.0 ...",
+  "os": "MacOS",
+  "path": "/hotels/grand-resort",
+  "title": "Grand Resort — Wink",
+  "userId": "user_abc123",
+  "startDate": "2026-06-01",
+  "endDate": "2026-06-05",
+  "guests": "2",
+  "rooms": "1"
+}
+```
+
+| गुण | विवरण |
+|----------|-------------|
+| `device` | पता लगाया गया डिवाइस प्रकार — `Desktop`, `Android`, `iPhone`, `iPad`, या समान |
+| `deviceAgent` | कच्चा उपयोगकर्ता एजेंट स्ट्रिंग |
+| `os` | पता लगाया गया ऑपरेटिंग सिस्टम — `Windows`, `MacOS`, `Linux`, `UNIX` |
+| `path` | वर्तमान पृष्ठ पथ |
+| `title` | वर्तमान पृष्ठ शीर्षक |
+| `userId` | प्रमाणीकृत उपयोगकर्ता पहचानकर्ता (लॉग इन न होने पर छोड़ा जाता है) |
+| `startDate` | वर्तमान खोज सत्र से चेक-इन तिथि |
+| `endDate` | वर्तमान खोज सत्र से चेक-आउट तिथि |
+| `guests` | वर्तमान खोज सत्र से मेहमानों की संख्या |
+| `rooms` | वर्तमान खोज सत्र से कमरों की संख्या |
