@@ -1,6 +1,6 @@
 ---
 title: Integrasi Sojern Pixel
-description: Cara menghubungkan akaun Sojern anda ke Wink supaya Sojern dapat mengesan perjalanan tempahan tetamu anda dan menggerakkan kempen penargetan semula dan pengiklanan anda.
+description: Cara menghubungkan akaun Sojern anda ke Wink supaya Sojern dapat mengesan perjalanan tempahan tetamu anda dan menyokong kempen penargetan semula dan pengiklanan anda.
 sidebar:
   label: Integrasi Sojern Pixel
 ---
@@ -46,10 +46,10 @@ Konfigurasi ini berfungsi untuk mana-mana ID Kontena GTM tersuai. Kami hanya men
 Untuk ketelusan, berikut adalah apa yang Wink konfigurasikan untuk menjadikan integrasi ini berfungsi:
 
 - **Medan ID Kontena GTM Sojern** tersedia di tab Customizations portal Wink anda. Apabila anda memasukkan ID Kontena, Wink mengesahkan format dan menyimpannya dengan selamat untuk hartanah anda.
-- **Di setiap halaman di mana hartanah anda aktif** di Wink, ID Kontena GTM Sojern anda dimasukkan ke dalam halaman dan sistem pengurusan tag Wink memuatkan kontena Sojern anda secara dinamik bersama-sama dengan miliknya. Ini berlaku secara automatik — tiada langkah manual diperlukan dari pasukan Wink untuk setiap hartanah.
+- **Pada setiap halaman di mana hartanah anda aktif** di Wink, ID Kontena GTM Sojern anda dimasukkan ke dalam halaman dan sistem pengurusan tag Wink memuatkan kontena Sojern anda secara dinamik bersama-sama dengan kontena sendiri. Ini berlaku secara automatik — tiada langkah manual diperlukan dari pasukan Wink untuk setiap hartanah.
 - **Kontena Sojern anda dimuatkan secara tak segerak (asynchronously)**, bermakna ia tidak menjejaskan prestasi muat halaman untuk tetamu anda.
-- **Penjejakan Wink sendiri dan pixel Sojern anda berjalan serentak**, membaca dari data acara yang dikongsi sama. Setiap acara tempahan yang Wink jejak tersedia serentak untuk kontena Sojern anda.
-- **Apabila hartanah anda tidak dilihat** — contohnya, apabila tetamu melayari hotel lain di Wink — kontena Sojern anda tidak dimuatkan. Ini memastikan Sojern hanya menerima data yang berkaitan dengan hartanah anda.
+- **Penjejakan Wink sendiri dan pixel Sojern anda berjalan secara selari**, membaca dari data acara yang dikongsi sama. Setiap acara tempahan yang Wink jejak tersedia serentak untuk kontena Sojern anda.
+- **Apabila hartanah anda tidak sedang dilihat** — contohnya, apabila tetamu melayari hotel lain di Wink — kontena Sojern anda tidak dimuatkan. Ini memastikan Sojern hanya menerima data yang berkaitan dengan hartanah anda.
 
 ---
 
@@ -57,12 +57,12 @@ Untuk ketelusan, berikut adalah apa yang Wink konfigurasikan untuk menjadikan in
 
 Wink menolak acara yang serasi GA4 ke `dataLayer` sepanjang perjalanan tetamu. Kontena GTM anda membaca dari `dataLayer` yang sama ini, jadi mana-mana pencetus atau pembolehubah yang anda konfigurasikan mempunyai akses kepada semua sifat yang diterangkan di bawah.
 
-Setiap acara mengikuti struktur GA4 Enhanced Ecommerce standard: satu rentetan `event` peringkat atas dan objek `ecommerce`. Sebelum setiap tolakan, Wink membersihkan muatan ecommerce sebelumnya untuk mengelakkan data lama tercampur ke dalam pencetus baru.
+Setiap acara mengikuti struktur GA4 Enhanced Ecommerce standard: satu rentetan `event` peringkat atas dan objek `ecommerce`. Sebelum setiap tolak, Wink membersihkan muatan ecommerce sebelumnya untuk mengelakkan data lama tercampur ke dalam pencetus baru.
 
 <Aside type="note">
 **Corak reset dataLayer**
 
-Wink menetapkan semula objek ecommerce sebelum setiap tolakan acara:
+Wink menetapkan semula objek ecommerce sebelum setiap tolak acara:
 
 ```js
 dataLayer.push({ ecommerce: null });   // kosongkan acara sebelumnya
@@ -244,7 +244,7 @@ Berlaku apabila tempahan disahkan.
 }
 ```
 
-`transaction_id` adalah pengecam kontrak tempahan unik. `coupon`, `shipping`, dan `tax` hanya hadir apabila berkenaan.
+`transaction_id` adalah pengecam unik kontrak tempahan. `coupon`, `shipping`, dan `tax` hanya hadir apabila berkenaan.
 
 ---
 
@@ -273,7 +273,7 @@ Berlaku apabila tempahan dibatalkan.
 
 ### Sifat Item
 
-Semua acara yang termasuk array `items` berkongsi skema item yang sama. Setiap sifat adalah pilihan kecuali ditandakan wajib.
+Semua acara yang termasuk tatasusunan `items` berkongsi skema item yang sama. Setiap sifat adalah pilihan kecuali ditandakan wajib.
 
 #### Medan GA4 Standard
 
@@ -285,7 +285,7 @@ Medan ini difahami secara asli oleh GA4 dan muncul dalam laporan ecommerce stand
 | `item_name` | string | — | Nama bilik atau produk |
 | `affiliation` | string | — | Nama afiliasi atau penjual |
 | `coupon` | string | — | Kod kupon yang digunakan pada item |
-| `currency` | string | — | Kod mata wang ISO 4217 (contoh `USD`) |
+| `currency` | string | — | Kod mata wang ISO 4217 (contoh: `USD`) |
 | `creative_name` | string | — | Nama kreatif yang digunakan dalam promosi |
 | `creative_slot` | string | — | Posisi slot kreatif promosi |
 | `discount` | number | — | Jumlah diskaun yang digunakan |
@@ -298,7 +298,7 @@ Medan ini difahami secara asli oleh GA4 dan muncul dalam laporan ecommerce stand
 | `price` | number | — | Harga unit |
 | `promotion_id` | string | — | Pengecam promosi |
 | `promotion_name` | string | — | Nama paparan promosi |
-| `quantity` | number | — | Kuantiti (lalai ke `1`) |
+| `quantity` | number | — | Kuantiti (lalai kepada `1`) |
 
 #### Parameter item khusus tersuai
 
@@ -308,8 +308,9 @@ Parameter ini membawa konteks tempahan khusus Wink. GA4 tidak secara automatik m
 |----------|------|-------------|
 | `property_id` | string | Pengecam hartanah Wink |
 | `property_name` | string | Nama paparan hartanah |
-| `property_brand` | string | Jenama yang dimiliki hartanah |
-| `property_chain` | string | Rangkaian yang dimiliki hartanah |
+| `property_brand` | string | Jenama yang hartanah miliki |
+| `property_chain` | string | Rangkaian yang hartanah miliki |
+| `property_url_name` | string | Slug mesra URL untuk hartanah |
 | `city_name` | string | Bandar di mana hartanah terletak |
 | `country_code` | string | Kod negara ISO 3166-1 alpha-2 |
 | `start_date` | string | Tarikh daftar masuk dalam format `YYYY-MM-DD` |
@@ -321,15 +322,16 @@ Parameter ini membawa konteks tempahan khusus Wink. GA4 tidak secara automatik m
 | `room_rate_id` | string | Pengecam kadar bilik tertentu |
 | `room_rate_name` | string | Nama paparan kadar bilik |
 | `num_perks` | number | Bilangan keistimewaan yang termasuk dengan kadar |
-| `room_location` | string | Penerangan lokasi bilik (contoh `Overwater`, `Garden`) |
-| `room_view` | string | Penerangan pemandangan bilik (contoh `Ocean`, `City`) |
-| `room_classification` | string | Klasifikasi atau tahap bilik (contoh `Suite`, `Standard`) |
+| `room_location` | string | Penerangan lokasi bilik (contoh: `Overwater`, `Garden`) |
+| `room_view` | string | Penerangan pemandangan bilik (contoh: `Ocean`, `City`) |
+| `room_classification` | string | Klasifikasi atau tahap bilik (contoh: `Suite`, `Standard`) |
+| `bed_type` | string | Konfigurasi katil untuk bilik (contoh: `King`, `Twin`) |
 
 ---
 
 ### Dimensi Tersuai dalam GA4
 
-GA4 mengabaikan parameter item tersuai dalam laporan sehingga anda mendaftarkannya secara eksplisit sebagai dimensi tersuai berjangka item. Anda hanya perlu mendaftar parameter yang anda ingin gunakan dalam laporan — anda tidak perlu mendaftar kesemua 18.
+GA4 mengabaikan parameter item tersuai dalam laporan sehingga anda mendaftarkannya secara eksplisit sebagai dimensi tersuai berjangka item. Anda hanya perlu mendaftar parameter yang anda ingin gunakan dalam laporan — anda tidak perlu mendaftar kesemua 20.
 
 <Steps>
 
@@ -343,7 +345,7 @@ GA4 mengabaikan parameter item tersuai dalam laporan sehingga anda mendaftarkann
 
 3. **Isikan butiran dimensi**
 
-   - **Dimension name** — label yang boleh dibaca manusia yang muncul dalam laporan GA4 (lihat jadual di bawah)
+   - **Dimension name** — label mesra manusia yang muncul dalam laporan GA4 (lihat jadual di bawah)
    - **Scope** — pilih **Item**
    - **Event parameter** — nama parameter tepat seperti yang muncul dalam dataLayer (lihat jadual di bawah)
    - **Description** — pilihan tetapi disyorkan
@@ -357,7 +359,7 @@ GA4 mengabaikan parameter item tersuai dalam laporan sehingga anda mendaftarkann
 <Aside type="note">
 Dimensi tersuai boleh mengambil masa sehingga 24 jam untuk mula muncul dalam laporan GA4 selepas pendaftaran. Data sejarah yang dikumpul sebelum pendaftaran tidak diisi semula.
 
-GA4 membenarkan sehingga 50 dimensi tersuai berjangka item bagi setiap harta standard (harta 360 membenarkan lebih banyak).
+GA4 membenarkan sehingga 50 dimensi tersuai berjangka item per harta pada harta standard (harta 360 membenarkan lebih banyak).
 </Aside>
 
 Gunakan jadual berikut sebagai rujukan anda semasa mencipta dimensi tersuai. Nilai **Event parameter** mesti sepadan tepat — GA4 peka huruf besar kecil.
@@ -368,6 +370,7 @@ Gunakan jadual berikut sebagai rujukan anda semasa mencipta dimensi tersuai. Nil
 | Property name | `property_name` | Teks |
 | Property brand | `property_brand` | Teks |
 | Property chain | `property_chain` | Teks |
+| Property URL name | `property_url_name` | Teks |
 | City name | `city_name` | Teks |
 | Country code | `country_code` | Teks |
 | Check-in date | `start_date` | Teks |
@@ -382,6 +385,7 @@ Gunakan jadual berikut sebagai rujukan anda semasa mencipta dimensi tersuai. Nil
 | Room location | `room_location` | Teks |
 | Room view | `room_view` | Teks |
 | Room classification | `room_classification` | Teks |
+| Bed type | `bed_type` | Teks |
 
 ---
 
@@ -669,7 +673,7 @@ Ini adalah acara tersuai Wink — bukan sebahagian daripada set acara GA4 standa
 | `os` | Sistem operasi yang dikesan — `Windows`, `MacOS`, `Linux`, `UNIX` |
 | `path` | Laluan halaman semasa |
 | `title` | Tajuk halaman semasa |
-| `userId` | Pengecam pengguna yang disahkan (tidak disertakan apabila tidak log masuk) |
+| `userId` | Pengecam pengguna yang disahkan (dikecualikan apabila tidak log masuk) |
 | `startDate` | Tarikh daftar masuk dari sesi carian semasa |
 | `endDate` | Tarikh daftar keluar dari sesi carian semasa |
 | `guests` | Bilangan tetamu dari sesi carian semasa |

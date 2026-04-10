@@ -1,6 +1,6 @@
 ---
 title: Intégration du Pixel Sojern
-description: Comment connecter votre compte Sojern à Wink afin que Sojern puisse suivre le parcours de réservation de vos clients et alimenter vos campagnes de retargeting et de publicité.
+description: Comment connecter votre compte Sojern à Wink afin que Sojern puisse suivre le parcours de réservation de vos clients et alimenter vos campagnes de reciblage et de publicité.
 sidebar:
   label: Intégration du Pixel Sojern
 ---
@@ -21,7 +21,7 @@ Cela suppose que vous disposez déjà d’un compte Sojern actif et que vous ave
 
 1. **Obtenez votre ID de conteneur GTM auprès de Sojern**
 
-   Contactez votre gestionnaire de compte Sojern et demandez votre **ID de conteneur GTM**. Il suit le format `GTM-XXXXXXX`. Il est différent de votre ID de pixel Sojern — assurez-vous de demander spécifiquement l’ID de conteneur GTM.
+   Contactez votre gestionnaire de compte Sojern et demandez votre **ID de conteneur GTM**. Il suit le format `GTM-XXXXXXX`. Ceci est différent de votre ID de pixel Sojern — assurez-vous de demander spécifiquement l’ID de conteneur GTM.
 
 2. **Saisissez-le dans le portail Wink**
 
@@ -36,12 +36,12 @@ Cela suppose que vous disposez déjà d’un compte Sojern actif et que vous ave
 <Aside type="note">
 Vous n’avez pas besoin d’ajouter de code pixel sur votre propre site web pour cette intégration. Wink charge automatiquement votre conteneur Sojern sur toutes les pages où votre établissement est actif.
 
-Cette configuration fonctionne avec n’importe quel ID de conteneur GTM personnalisé. Nous avons utilisé Sojern comme exemple car c’est une intégration très courante.
+Cette configuration fonctionne avec n’importe quel ID de conteneur GTM personnalisé. Nous avons simplement utilisé Sojern comme exemple car c’est une intégration très courante.
 </Aside>
 
 ---
 
-## Ce que fait Wink de notre côté
+## Ce que fait Wink de son côté
 
 Pour plus de transparence, voici ce que Wink configure pour que cette intégration fonctionne :
 
@@ -57,7 +57,7 @@ Pour plus de transparence, voici ce que Wink configure pour que cette intégrati
 
 Wink pousse des événements compatibles GA4 dans le `dataLayer` tout au long du parcours client. Votre conteneur GTM lit ce même `dataLayer` partagé, donc tout déclencheur ou variable que vous configurez a accès à toutes les propriétés décrites ci-dessous.
 
-Chaque événement suit la structure standard GA4 Enhanced Ecommerce : une chaîne `event` au niveau supérieur et un objet `ecommerce`. Avant chaque push, Wink vide la charge utile ecommerce précédente pour éviter que des données obsolètes ne contaminent de nouveaux déclencheurs.
+Chaque événement suit la structure standard GA4 Enhanced Ecommerce : une chaîne `event` au niveau supérieur et un objet `ecommerce`. Avant chaque push, Wink vide la charge utile ecommerce précédente pour éviter que des données obsolètes ne contaminent les nouveaux déclencheurs.
 
 <Aside type="note">
 **Modèle de réinitialisation du dataLayer**
@@ -84,7 +84,7 @@ Ces événements se déclenchent automatiquement au fur et à mesure que le clie
 | 2 | `view_item` | Le client consulte une page d’établissement spécifique |
 | 3 | `add_to_cart` | Le client ajoute une chambre au panier |
 | 4 | `begin_checkout` | Chargement de la page de paiement / checkout |
-| 5 | `add_payment_info` | Le client sélectionne un moyen de paiement |
+| 5 | `add_payment_info` | Le client sélectionne un mode de paiement |
 | 6 | `login` | Le client s’authentifie via SSO |
 | 7 | `purchase` | La réservation est confirmée |
 | 8 | `refund` | La réservation est annulée |
@@ -164,7 +164,7 @@ Se déclenche lors du chargement de la page de paiement / checkout.
 
 #### `add_payment_info`
 
-Se déclenche lorsque le client sélectionne ou confirme un moyen de paiement.
+Se déclenche lorsque le client sélectionne ou confirme un mode de paiement.
 
 ```json
 {
@@ -310,6 +310,7 @@ Ces paramètres portent le contexte de réservation spécifique à Wink. GA4 ne 
 | `property_name` | string | Nom affiché de l’établissement |
 | `property_brand` | string | Marque à laquelle appartient l’établissement |
 | `property_chain` | string | Chaîne à laquelle appartient l’établissement |
+| `property_url_name` | string | Slug URL-friendly de l’établissement |
 | `city_name` | string | Ville où se situe l’établissement |
 | `country_code` | string | Code pays ISO 3166-1 alpha-2 |
 | `start_date` | string | Date d’arrivée au format `YYYY-MM-DD` |
@@ -324,12 +325,13 @@ Ces paramètres portent le contexte de réservation spécifique à Wink. GA4 ne 
 | `room_location` | string | Description de l’emplacement de la chambre (ex. `Overwater`, `Garden`) |
 | `room_view` | string | Description de la vue de la chambre (ex. `Ocean`, `City`) |
 | `room_classification` | string | Classification ou catégorie de la chambre (ex. `Suite`, `Standard`) |
+| `bed_type` | string | Configuration du lit dans la chambre (ex. `King`, `Twin`) |
 
 ---
 
 ### Dimensions personnalisées dans GA4
 
-GA4 ignore les paramètres personnalisés d’article dans les rapports tant que vous ne les avez pas explicitement enregistrés comme dimensions personnalisées à l’échelle de l’article. Vous n’avez besoin d’enregistrer que les paramètres que vous souhaitez utiliser dans les rapports — pas la totalité des 18.
+GA4 ignore les paramètres personnalisés d’article dans les rapports tant que vous ne les avez pas explicitement enregistrés comme dimensions personnalisées à l’échelle de l’article. Vous n’avez besoin d’enregistrer que les paramètres que vous souhaitez utiliser dans les rapports — pas la totalité des 20.
 
 <Steps>
 
@@ -339,7 +341,7 @@ GA4 ignore les paramètres personnalisés d’article dans les rapports tant que
 
 2. **Créez une nouvelle dimension personnalisée**
 
-   Cliquez sur **Créer des dimensions personnalisées**.
+   Cliquez sur **Créer une dimension personnalisée**.
 
 3. **Remplissez les détails de la dimension**
 
@@ -355,7 +357,7 @@ GA4 ignore les paramètres personnalisés d’article dans les rapports tant que
 </Steps>
 
 <Aside type="note">
-Les dimensions personnalisées peuvent mettre jusqu’à 24 heures avant d’apparaître dans les rapports GA4 après leur enregistrement. Les données historiques collectées avant l’enregistrement ne sont pas rétroactivement ajoutées.
+Les dimensions personnalisées peuvent mettre jusqu’à 24 heures avant d’apparaître dans les rapports GA4 après leur enregistrement. Les données historiques collectées avant l’enregistrement ne sont pas rétroactivement intégrées.
 
 GA4 autorise jusqu’à 50 dimensions personnalisées à l’échelle de l’article par propriété sur les propriétés standards (les propriétés 360 en autorisent davantage).
 </Aside>
@@ -368,6 +370,7 @@ Utilisez le tableau suivant comme référence lors de la création des dimension
 | Nom de l’établissement | `property_name` | Texte |
 | Marque de l’établissement | `property_brand` | Texte |
 | Chaîne de l’établissement | `property_chain` | Texte |
+| Nom URL de l’établissement | `property_url_name` | Texte |
 | Nom de la ville | `city_name` | Texte |
 | Code pays | `country_code` | Texte |
 | Date d’arrivée | `start_date` | Texte |
@@ -382,6 +385,7 @@ Utilisez le tableau suivant comme référence lors de la création des dimension
 | Emplacement de la chambre | `room_location` | Texte |
 | Vue de la chambre | `room_view` | Texte |
 | Classification de la chambre | `room_classification` | Texte |
+| Type de lit | `bed_type` | Texte |
 
 ---
 
@@ -644,7 +648,7 @@ Aucune charge utile `ecommerce` n’est incluse avec cet événement.
 
 ### `virtualPageView`
 
-C’est un événement personnalisé Wink — il ne fait pas partie de l’ensemble standard d’événements GA4. Il est poussé à chaque navigation de page et porte le contexte appareil et session. Il n’inclut pas d’objet `ecommerce`.
+C’est un événement personnalisé Wink — non inclus dans l’ensemble standard d’événements GA4. Il est poussé à chaque navigation de page et porte le contexte appareil et session. Il n’inclut pas d’objet `ecommerce`.
 
 ```json
 {

@@ -69,7 +69,7 @@ dataLayer.push({ ecommerce: null });   // limpia evento previo
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
-No confíes en que las propiedades ecommerce persistan entre eventos. Siempre léelas en el momento del disparador dentro del mismo evento.
+No confíes en que las propiedades ecommerce persistan entre eventos. Siempre léelas al momento del disparo dentro del mismo evento.
 </Aside>
 
 ---
@@ -267,7 +267,7 @@ Se activa cuando se cancela una reserva.
 }
 ```
 
-`transaction_id` coincide con el evento `purchase` de la misma reserva. `coupon`, `shipping` y `tax` solo están presentes cuando aplican.
+`transaction_id` coincide con el evento `purchase` para la misma reserva. `coupon`, `shipping` y `tax` solo están presentes cuando aplican.
 
 ---
 
@@ -277,7 +277,7 @@ Todos los eventos que incluyen un arreglo `items` comparten el mismo esquema de 
 
 #### Campos estándar de GA4
 
-Estos campos son entendidos nativamente por GA4 y aparecen en los reportes estándar de ecommerce sin configuración adicional.
+Estos campos son entendidos nativamente por GA4 y aparecen en reportes estándar de ecommerce sin configuración adicional.
 
 | Propiedad | Tipo | Requerido | Descripción |
 |----------|------|----------|-------------|
@@ -287,7 +287,7 @@ Estos campos son entendidos nativamente por GA4 y aparecen en los reportes está
 | `coupon` | string | — | Código de cupón aplicado al ítem |
 | `currency` | string | — | Código de moneda ISO 4217 (ej. `USD`) |
 | `creative_name` | string | — | Nombre creativo usado en una promoción |
-| `creative_slot` | string | — | Posición del espacio de la promoción creativa |
+| `creative_slot` | string | — | Posición del slot de la creatividad promocional |
 | `discount` | number | — | Monto de descuento aplicado |
 | `index` | number | — | Posición en la lista (base 1) |
 | `item_brand` | string | — | Nombre del hotel o marca |
@@ -310,6 +310,7 @@ Estos parámetros llevan contexto específico de reserva de Wink. GA4 no los mue
 | `property_name` | string | Nombre visible de la propiedad |
 | `property_brand` | string | Marca a la que pertenece la propiedad |
 | `property_chain` | string | Cadena a la que pertenece la propiedad |
+| `property_url_name` | string | Slug amigable para URL de la propiedad |
 | `city_name` | string | Ciudad donde está ubicada la propiedad |
 | `country_code` | string | Código de país ISO 3166-1 alfa-2 |
 | `start_date` | string | Fecha de check-in en formato `YYYY-MM-DD` |
@@ -324,12 +325,13 @@ Estos parámetros llevan contexto específico de reserva de Wink. GA4 no los mue
 | `room_location` | string | Descripción de la ubicación de la habitación (ej. `Overwater`, `Garden`) |
 | `room_view` | string | Descripción de la vista de la habitación (ej. `Ocean`, `City`) |
 | `room_classification` | string | Clasificación o categoría de la habitación (ej. `Suite`, `Standard`) |
+| `bed_type` | string | Configuración de camas de la habitación (ej. `King`, `Twin`) |
 
 ---
 
 ### Dimensiones Personalizadas en GA4
 
-GA4 ignora los parámetros personalizados a nivel ítem en los reportes hasta que los registras explícitamente como dimensiones personalizadas a nivel ítem. Solo necesitas registrar los parámetros que planeas usar en reportes — no es necesario registrar los 18.
+GA4 ignora los parámetros personalizados a nivel ítem en reportes hasta que los registras explícitamente como dimensiones personalizadas a nivel ítem. Solo necesitas registrar los parámetros que planeas usar en reportes — no es necesario registrar los 20.
 
 <Steps>
 
@@ -345,7 +347,7 @@ GA4 ignora los parámetros personalizados a nivel ítem en los reportes hasta qu
 
    - **Nombre de la dimensión** — la etiqueta legible que aparece en los reportes GA4 (ver tabla abajo)
    - **Ámbito** — selecciona **Ítem**
-   - **Parámetro de evento** — el nombre exacto del parámetro tal como aparece en el dataLayer (ver tabla abajo)
+   - **Parámetro del evento** — el nombre exacto del parámetro tal como aparece en el dataLayer (ver tabla abajo)
    - **Descripción** — opcional pero recomendado
 
 4. **Guarda y repite**
@@ -360,14 +362,15 @@ Las dimensiones personalizadas pueden tardar hasta 24 horas en comenzar a aparec
 GA4 permite hasta 50 dimensiones personalizadas a nivel ítem por propiedad en propiedades estándar (las propiedades 360 permiten más).
 </Aside>
 
-Usa la siguiente tabla como referencia al crear dimensiones personalizadas. El valor de **Parámetro de evento** debe coincidir exactamente — GA4 distingue mayúsculas y minúsculas.
+Usa la siguiente tabla como referencia al crear dimensiones personalizadas. El valor de **Parámetro del evento** debe coincidir exactamente — GA4 distingue mayúsculas y minúsculas.
 
-| Nombre de dimensión | Parámetro de evento | Tipo |
-|---------------------|---------------------|------|
+| Nombre de la dimensión | Parámetro del evento | Tipo |
+|------------------------|---------------------|------|
 | ID de propiedad | `property_id` | Texto |
 | Nombre de propiedad | `property_name` | Texto |
 | Marca de propiedad | `property_brand` | Texto |
 | Cadena de propiedad | `property_chain` | Texto |
+| Nombre URL de propiedad | `property_url_name` | Texto |
 | Nombre de ciudad | `city_name` | Texto |
 | Código de país | `country_code` | Texto |
 | Fecha de check-in | `start_date` | Texto |
@@ -379,9 +382,10 @@ Usa la siguiente tabla como referencia al crear dimensiones personalizadas. El v
 | ID de tarifa de habitación | `room_rate_id` | Texto |
 | Nombre de tarifa de habitación | `room_rate_name` | Texto |
 | Cantidad de beneficios | `num_perks` | Número |
-| Ubicación de habitación | `room_location` | Texto |
-| Vista de habitación | `room_view` | Texto |
-| Clasificación de habitación | `room_classification` | Texto |
+| Ubicación de la habitación | `room_location` | Texto |
+| Vista de la habitación | `room_view` | Texto |
+| Clasificación de la habitación | `room_classification` | Texto |
+| Tipo de cama | `bed_type` | Texto |
 
 ---
 
@@ -436,7 +440,7 @@ Los siguientes eventos están disponibles en el dataLayer de Wink pero no forman
 }
 ```
 
-Este evento no incluye carga útil `ecommerce`.
+No se incluye carga útil `ecommerce` con este evento.
 
 #### `view_promotion`
 
@@ -667,9 +671,9 @@ Este es un evento personalizado de Wink — no forma parte del conjunto estánda
 | `device` | Tipo de dispositivo detectado — `Desktop`, `Android`, `iPhone`, `iPad` o similar |
 | `deviceAgent` | Cadena cruda del agente de usuario |
 | `os` | Sistema operativo detectado — `Windows`, `MacOS`, `Linux`, `UNIX` |
-| `path` | Ruta actual de la página |
-| `title` | Título actual de la página |
-| `userId` | Identificador de usuario autenticado (omitido si no está logueado) |
+| `path` | Ruta de la página actual |
+| `title` | Título de la página actual |
+| `userId` | Identificador del usuario autenticado (omitido si no está logueado) |
 | `startDate` | Fecha de check-in de la sesión de búsqueda actual |
 | `endDate` | Fecha de check-out de la sesión de búsqueda actual |
 | `guests` | Cantidad de huéspedes de la sesión de búsqueda actual |

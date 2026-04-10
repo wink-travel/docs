@@ -46,9 +46,9 @@ Ta konfiguracija deluje za kateri koli po meri določen GTM Container ID. Sojern
 Za preglednost, tukaj je, kaj Wink konfigurira, da ta integracija deluje:
 
 - **Polje za Sojern GTM Container ID** je na voljo v zavihku Prilagoditve v vašem Wink portalu. Ko vnesete svoj Container ID, Wink preveri format in ga varno shrani za vašo nastanitev.
-- **Na vsaki strani, kjer je vaša nastanitev aktivna** na Wink, se vaš Sojern GTM Container ID vključi v stran in Winkov sistem za upravljanje oznak dinamično naloži vaš Sojern container skupaj s svojim. To se zgodi samodejno — brez ročnih korakov s strani Wink ekipe za vsako nastanitev.
+- **Na vsaki strani, kjer je vaša nastanitev aktivna** na Wink, se vaš Sojern GTM Container ID vključi v stran, Winkov sistem za upravljanje oznak pa dinamično naloži vaš Sojern container skupaj s svojim. To se zgodi samodejno — ekipa Wink ne potrebuje nobenih ročnih korakov za posamezno nastanitev.
 - **Vaš Sojern container se naloži asinhrono**, kar pomeni, da ne vpliva na hitrost nalaganja strani za vaše goste.
-- **Winkovo lastno sledenje in vaš Sojern pixel delujeta vzporedno**, bereta iz istih skupnih podatkov dogodkov. Vsak dogodek rezervacije, ki ga Wink spremlja, je hkrati na voljo vašemu Sojern containerju.
+- **Winkovo lastno sledenje in vaš Sojern pixel delujeta vzporedno**, brata iz istega skupnega podatkovnega sloja dogodkov. Vsak dogodek rezervacije, ki ga Wink spremlja, je hkrati na voljo vašemu Sojern containerju.
 - **Ko vaša nastanitev ni prikazana** — na primer, ko gost brska po drugem hotelu na Wink — vaš Sojern container ni naložen. To zagotavlja, da Sojern prejema le podatke, ki se nanašajo na vašo nastanitev.
 
 ---
@@ -57,12 +57,12 @@ Za preglednost, tukaj je, kaj Wink konfigurira, da ta integracija deluje:
 
 Wink pošilja dogodke, združljive z GA4, v `dataLayer` skozi celotno pot gosta. Vaš GTM container bere iz istega skupnega `dataLayer`, zato ima vsak sprožilec ali spremenljivka, ki jo konfigurirate, dostop do vseh spodaj opisanih lastnosti.
 
-Vsak dogodek sledi standardni GA4 strukturi Enhanced Ecommerce: vrhnji niz `event` in objekt `ecommerce`. Pred vsakim pushom Wink počisti prejšnjo ecommerce vsebino, da prepreči, da bi zastareli podatki vplivali na nove sprožilce.
+Vsak dogodek sledi standardni GA4 strukturi Enhanced Ecommerce: vrhnji niz `event` in objekt `ecommerce`. Pred vsakim potiskom Wink počisti prejšnjo ecommerce vsebino, da prepreči, da bi zastareli podatki vplivali na nove sprožilce.
 
 <Aside type="note">
 **Vzorec ponastavitve dataLayer**
 
-Wink pred vsakim pushom dogodka ponastavi ecommerce objekt:
+Wink pred vsakim potiskom dogodka ponastavi ecommerce objekt:
 
 ```js
 dataLayer.push({ ecommerce: null });   // počisti prejšnji dogodek
@@ -110,7 +110,7 @@ Sproži se, ko se prikaže mreža ali seznam hotelskih kapacitet.
 
 #### `view_item`
 
-Sproži se, ko gost ogleda določeno nastanitev.
+Sproži se, ko si gost ogleda določeno nastanitev.
 
 ```json
 {
@@ -273,14 +273,14 @@ Sproži se, ko je rezervacija preklicana.
 
 ### Lastnosti elementov
 
-Vsi dogodki, ki vključujejo polje `items`, uporabljajo enako shemo elementov. Vsaka lastnost je neobvezna, razen če je označena kot zahtevana.
+Vsi dogodki, ki vključujejo polje `items`, uporabljajo enako shemo elementov. Vsaka lastnost je neobvezna, razen če je označena kot obvezna.
 
 #### Standardna polja GA4
 
 Ta polja GA4 nativno razume in se pojavijo v standardnih poročilih ecommerce brez dodatne konfiguracije.
 
-| Lastnost | Tip | Zahtevano | Opis |
-|----------|-----|----------|------|
+| Lastnost | Tip | Obvezno | Opis |
+|----------|-----|---------|------|
 | `item_id` | string | Da | Edinstveni identifikator sobe ali produkta |
 | `item_name` | string | — | Ime sobe ali produkta |
 | `affiliation` | string | — | Ime partnerja ali prodajalca |
@@ -302,14 +302,15 @@ Ta polja GA4 nativno razume in se pojavijo v standardnih poročilih ecommerce br
 
 #### Po meri določeni parametri na ravni elementa
 
-Ti parametri nosijo Wink-specifičen kontekst rezervacije. GA4 jih ne prikaže samodejno v poročilih — morate jih registrirati kot **po meri določene dimenzije na ravni elementa** v svoji GA4 lastnini, preden se pojavijo v analizah ali standardnih poročilih. Navodila za nastavitev so v poglavju [Custom Dimensions in GA4](#custom-dimensions-in-ga4).
+Ti parametri nosijo Wink-specifičen kontekst rezervacije. GA4 jih ne prikaže samodejno v poročilih — morate jih registrirati kot **po meri določene dimenzije na ravni elementa** v svoji GA4 lastnini, preden se pojavijo v analizah ali standardnih poročilih. Navodila za nastavitev so v poglavju [Po meri določene dimenzije v GA4](#custom-dimensions-in-ga4).
 
 | Lastnost | Tip | Opis |
 |----------|-----|------|
-| `property_id` | string | Identifikator Wink nastanitve |
+| `property_id` | string | Identifikator nastanitve Wink |
 | `property_name` | string | Prikazno ime nastanitve |
 | `property_brand` | string | Blagovna znamka, ki ji nastanitev pripada |
 | `property_chain` | string | Veriga, ki ji nastanitev pripada |
+| `property_url_name` | string | URL-prijazen slug nastanitve |
 | `city_name` | string | Mesto, kjer se nastanitev nahaja |
 | `country_code` | string | ISO 3166-1 alpha-2 koda države |
 | `start_date` | string | Datum prijave v formatu `YYYY-MM-DD` |
@@ -324,12 +325,13 @@ Ti parametri nosijo Wink-specifičen kontekst rezervacije. GA4 jih ne prikaže s
 | `room_location` | string | Opis lokacije sobe (npr. `Overwater`, `Garden`) |
 | `room_view` | string | Opis razgleda iz sobe (npr. `Ocean`, `City`) |
 | `room_classification` | string | Klasifikacija ali kategorija sobe (npr. `Suite`, `Standard`) |
+| `bed_type` | string | Konfiguracija postelje v sobi (npr. `King`, `Twin`) |
 
 ---
 
 ### Po meri določene dimenzije v GA4
 
-GA4 v poročilih ignorira po meri določene parametre elementov, dokler jih ne registrirate kot dimenzije na ravni elementa. Registrirati morate le tiste parametre, ki jih nameravate uporabljati v poročilih — ni potrebno registrirati vseh 18.
+GA4 ignorira po meri določene parametre elementov v poročilih, dokler jih ne registrirate kot dimenzije na ravni elementa. Registrirati morate le tiste parametre, ki jih želite uporabljati v poročilih — ni potrebno registrirati vseh 20.
 
 <Steps>
 
@@ -341,11 +343,11 @@ GA4 v poročilih ignorira po meri določene parametre elementov, dokler jih ne r
 
    Kliknite **Ustvari po meri določene dimenzije**.
 
-3. **Izpolnite podatke o dimenziji**
+3. **Izpolnite podrobnosti dimenzije**
 
-   - **Ime dimenzije** — berljivo ime, ki se prikaže v GA4 poročilih (glejte spodnjo tabelo)
+   - **Ime dimenzije** — berljiv naziv, ki se prikaže v GA4 poročilih (glejte spodnjo tabelo)
    - **Obseg** — izberite **Element**
-   - **Parameter dogodka** — natančno ime parametra, kot se pojavi v dataLayer (glejte spodnjo tabelo)
+   - **Parameter dogodka** — natančno ime parametra, kot se pojavi v dataLayer (glejte tabelo)
    - **Opis** — neobvezno, a priporočljivo
 
 4. **Shrani in ponovi**
@@ -357,31 +359,33 @@ GA4 v poročilih ignorira po meri določene parametre elementov, dokler jih ne r
 <Aside type="note">
 Po meri določene dimenzije se lahko v GA4 poročilih začnejo prikazovati do 24 ur po registraciji. Zgodovinski podatki, zbrani pred registracijo, niso dopolnjeni.
 
-GA4 omogoča do 50 po meri določenih dimenzij na ravni elementa na standardno lastnino (360 lastnine omogočajo več).
+GA4 omogoča do 50 po meri določenih dimenzij na ravni elementa na standardnih lastnostih (360 lastnosti omogočajo več).
 </Aside>
 
-Uporabite spodnjo tabelo kot referenco pri ustvarjanju po meri določenih dimenzij. Vrednost **Event parameter** mora biti natančno enaka — GA4 je občutljiv na velike in male črke.
+Uporabite spodnjo tabelo kot referenco pri ustvarjanju po meri določenih dimenzij. Vrednost **Parameter dogodka** mora biti natančno enaka — GA4 je občutljiv na velike in male črke.
 
 | Ime dimenzije | Parameter dogodka | Tip |
 |---------------|-------------------|-----|
-| Property ID | `property_id` | Besedilo |
-| Property name | `property_name` | Besedilo |
-| Property brand | `property_brand` | Besedilo |
-| Property chain | `property_chain` | Besedilo |
-| City name | `city_name` | Besedilo |
-| Country code | `country_code` | Besedilo |
-| Check-in date | `start_date` | Besedilo |
-| Check-out date | `end_date` | Besedilo |
-| Number of adults | `num_adults` | Število |
-| Number of children | `num_children` | Število |
-| Cancellation policy | `cancellation_policy` | Besedilo |
-| Rate plan ID | `rate_plan_id` | Besedilo |
-| Room rate ID | `room_rate_id` | Besedilo |
-| Room rate name | `room_rate_name` | Besedilo |
-| Number of perks | `num_perks` | Število |
-| Room location | `room_location` | Besedilo |
-| Room view | `room_view` | Besedilo |
-| Room classification | `room_classification` | Besedilo |
+| ID nastanitve | `property_id` | Besedilo |
+| Ime nastanitve | `property_name` | Besedilo |
+| Blagovna znamka nastanitve | `property_brand` | Besedilo |
+| Veriga nastanitve | `property_chain` | Besedilo |
+| URL ime nastanitve | `property_url_name` | Besedilo |
+| Ime mesta | `city_name` | Besedilo |
+| Koda države | `country_code` | Besedilo |
+| Datum prijave | `start_date` | Besedilo |
+| Datum odjave | `end_date` | Besedilo |
+| Število odraslih | `num_adults` | Število |
+| Število otrok | `num_children` | Število |
+| Politika odpovedi | `cancellation_policy` | Besedilo |
+| ID cenovnega načrta | `rate_plan_id` | Besedilo |
+| ID cene sobe | `room_rate_id` | Besedilo |
+| Ime cene sobe | `room_rate_name` | Besedilo |
+| Število ugodnosti | `num_perks` | Število |
+| Lokacija sobe | `room_location` | Besedilo |
+| Razgled sobe | `room_view` | Besedilo |
+| Klasifikacija sobe | `room_classification` | Besedilo |
+| Tip postelje | `bed_type` | Besedilo |
 
 ---
 
@@ -644,7 +648,7 @@ Ta dogodek ne vsebuje `ecommerce` objekta.
 
 ### `virtualPageView`
 
-To je po meri določen Wink dogodek — ni del standardnega nabora GA4 dogodkov. Sproži se ob vsakem premiku med stranmi in nosi kontekst naprave in seje. Ne vključuje objekta `ecommerce`.
+To je po meri določen Wink dogodek — ni del standardnega nabora GA4 dogodkov. Sproži se ob vsakem premiku med stranmi in nosi kontekst naprave in seje. Ne vsebuje objekta `ecommerce`.
 
 ```json
 {
@@ -669,7 +673,7 @@ To je po meri določen Wink dogodek — ni del standardnega nabora GA4 dogodkov.
 | `os` | Zaznan operacijski sistem — `Windows`, `MacOS`, `Linux`, `UNIX` |
 | `path` | Trenutna pot strani |
 | `title` | Trenutni naslov strani |
-| `userId` | Identifikator prijavljenega uporabnika (izpuščen, če ni prijave) |
+| `userId` | Identifikator prijavljenega uporabnika (izpuščen, če ni prijavljen) |
 | `startDate` | Datum prijave iz trenutne iskalne seje |
 | `endDate` | Datum odjave iz trenutne iskalne seje |
 | `guests` | Število gostov iz trenutne iskalne seje |

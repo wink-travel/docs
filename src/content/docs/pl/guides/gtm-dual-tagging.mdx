@@ -45,17 +45,17 @@ Ta konfiguracja działa dla dowolnego niestandardowego identyfikatora kontenera 
 
 Dla przejrzystości, oto co Wink konfiguruje, aby ta integracja działała:
 
-- **Pole identyfikatora kontenera GTM Sojern** jest dostępne w zakładce Dostosowania w portalu Wink. Po wprowadzeniu identyfikatora kontenera, Wink weryfikuje jego format i bezpiecznie przechowuje go powiązanego z Twoją nieruchomością.
+- **Pole identyfikatora kontenera GTM Sojern** jest dostępne w zakładce Dostosowania w portalu Wink. Po wpisaniu identyfikatora kontenera, Wink weryfikuje format i bezpiecznie go przechowuje powiązanego z Twoją nieruchomością.
 - **Na każdej stronie, gdzie Twoja nieruchomość jest aktywna** w Wink, identyfikator kontenera GTM Sojern jest renderowany na stronie, a system zarządzania tagami Wink dynamicznie ładuje Twój kontener Sojern obok własnego. Dzieje się to automatycznie — nie są wymagane żadne ręczne działania ze strony zespołu Wink dla każdej nieruchomości.
 - **Twój kontener Sojern jest ładowany asynchronicznie**, co oznacza, że nie wpływa na wydajność ładowania strony dla Twoich gości.
 - **Własne śledzenie Wink i piksel Sojern działają równolegle**, korzystając z tych samych współdzielonych danych zdarzeń. Każde zdarzenie rezerwacji śledzone przez Wink jest jednocześnie dostępne dla Twojego kontenera Sojern.
-- **Gdy Twoja nieruchomość nie jest wyświetlana** — na przykład, gdy gość przegląda inny hotel na Wink — Twój kontener Sojern nie jest ładowany. Zapewnia to, że Sojern otrzymuje tylko dane istotne dla Twojej nieruchomości.
+- **Gdy Twoja nieruchomość nie jest wyświetlana** — na przykład gdy gość przegląda inny hotel w Wink — Twój kontener Sojern nie jest ładowany. Zapewnia to, że Sojern otrzymuje tylko dane istotne dla Twojej nieruchomości.
 
 ---
 
 ## Odwołanie do DataLayer
 
-Wink wysyła zdarzenia kompatybilne z GA4 do `dataLayer` przez całą podróż gościa. Twój kontener GTM odczytuje z tego samego współdzielonego `dataLayer`, więc każdy wyzwalacz lub zmienna, którą skonfigurujesz, ma dostęp do wszystkich właściwości opisanych poniżej.
+Wink wysyła zdarzenia kompatybilne z GA4 do `dataLayer` przez całą podróż gościa. Twój kontener GTM odczytuje z tego samego współdzielonego `dataLayer`, więc każdy wyzwalacz lub zmienna, które skonfigurujesz, mają dostęp do wszystkich właściwości opisanych poniżej.
 
 Każde zdarzenie ma standardową strukturę GA4 Enhanced Ecommerce: ciąg znaków `event` na najwyższym poziomie oraz obiekt `ecommerce`. Przed każdym wysłaniem Wink czyści poprzedni ładunek ecommerce, aby zapobiec przenikaniu przestarzałych danych do nowych wyzwalaczy.
 
@@ -310,8 +310,9 @@ Te parametry zawierają kontekst rezerwacji specyficzny dla Wink. GA4 nie wyświ
 | `property_name` | string | Nazwa wyświetlana nieruchomości |
 | `property_brand` | string | Marka, do której należy nieruchomość |
 | `property_chain` | string | Sieć, do której należy nieruchomość |
+| `property_url_name` | string | Przyjazny dla URL slug nieruchomości |
 | `city_name` | string | Miasto, w którym znajduje się nieruchomość |
-| `country_code` | string | Kod kraju ISO 3166-1 alpha-2 |
+| `country_code` | string | Kod kraju ISO 3166-1 alfa-2 |
 | `start_date` | string | Data zameldowania w formacie `YYYY-MM-DD` |
 | `end_date` | string | Data wymeldowania w formacie `YYYY-MM-DD` |
 | `num_adults` | number | Liczba dorosłych w rezerwacji |
@@ -320,16 +321,17 @@ Te parametry zawierają kontekst rezerwacji specyficzny dla Wink. GA4 nie wyświ
 | `rate_plan_id` | string | Identyfikator planu taryfowego |
 | `room_rate_id` | string | Identyfikator konkretnej stawki pokoju |
 | `room_rate_name` | string | Nazwa wyświetlana stawki pokoju |
-| `num_perks` | number | Liczba dodatków wliczonych w stawkę |
+| `num_perks` | number | Liczba korzyści zawartych w stawce |
 | `room_location` | string | Opis lokalizacji pokoju (np. `Overwater`, `Garden`) |
 | `room_view` | string | Opis widoku z pokoju (np. `Ocean`, `City`) |
 | `room_classification` | string | Klasyfikacja lub kategoria pokoju (np. `Suite`, `Standard`) |
+| `bed_type` | string | Konfiguracja łóżka w pokoju (np. `King`, `Twin`) |
 
 ---
 
 ### Niestandardowe wymiary w GA4
 
-GA4 ignoruje niestandardowe parametry przedmiotów w raportach, dopóki nie zarejestrujesz ich wyraźnie jako niestandardowe wymiary na poziomie przedmiotu. Musisz zarejestrować tylko te parametry, które zamierzasz używać w raportach — nie musisz rejestrować wszystkich 18.
+GA4 ignoruje niestandardowe parametry przedmiotów w raportach, dopóki nie zarejestrujesz ich wyraźnie jako niestandardowe wymiary na poziomie przedmiotu. Musisz zarejestrować tylko te parametry, które zamierzasz używać w raportach — nie musisz rejestrować wszystkich 20.
 
 <Steps>
 
@@ -355,12 +357,12 @@ GA4 ignoruje niestandardowe parametry przedmiotów w raportach, dopóki nie zare
 </Steps>
 
 <Aside type="note">
-Niestandardowe wymiary mogą zacząć pojawiać się w raportach GA4 do 24 godzin po rejestracji. Dane historyczne zebrane przed rejestracją nie są uzupełniane.
+Niestandardowe wymiary mogą zacząć pojawiać się w raportach GA4 do 24 godzin po rejestracji. Dane historyczne zebrane przed rejestracją nie są uzupełniane wstecz.
 
-GA4 pozwala na maksymalnie 50 niestandardowych wymiarów na poziomie przedmiotu na standardową właściwość (właściwości 360 mają wyższy limit).
+GA4 pozwala na maksymalnie 50 niestandardowych wymiarów na poziomie przedmiotu na standardową właściwość (właściwości 360 mają większy limit).
 </Aside>
 
-Użyj poniższej tabeli jako odniesienia podczas tworzenia niestandardowych wymiarów. Wartość **Parametru zdarzenia** musi być dokładnie zgodna — GA4 rozróżnia wielkość liter.
+Użyj poniższej tabeli jako odniesienia podczas tworzenia niestandardowych wymiarów. Wartość **Parametru zdarzenia** musi być dokładna — GA4 rozróżnia wielkość liter.
 
 | Nazwa wymiaru | Parametr zdarzenia | Typ |
 |---------------|--------------------|-----|
@@ -368,6 +370,7 @@ Użyj poniższej tabeli jako odniesienia podczas tworzenia niestandardowych wymi
 | Nazwa nieruchomości | `property_name` | Tekst |
 | Marka nieruchomości | `property_brand` | Tekst |
 | Sieć nieruchomości | `property_chain` | Tekst |
+| Nazwa URL nieruchomości | `property_url_name` | Tekst |
 | Nazwa miasta | `city_name` | Tekst |
 | Kod kraju | `country_code` | Tekst |
 | Data zameldowania | `start_date` | Tekst |
@@ -378,10 +381,11 @@ Użyj poniższej tabeli jako odniesienia podczas tworzenia niestandardowych wymi
 | Identyfikator planu taryfowego | `rate_plan_id` | Tekst |
 | Identyfikator stawki pokoju | `room_rate_id` | Tekst |
 | Nazwa stawki pokoju | `room_rate_name` | Tekst |
-| Liczba dodatków | `num_perks` | Liczba |
+| Liczba korzyści | `num_perks` | Liczba |
 | Lokalizacja pokoju | `room_location` | Tekst |
 | Widok pokoju | `room_view` | Tekst |
 | Klasyfikacja pokoju | `room_classification` | Tekst |
+| Typ łóżka | `bed_type` | Tekst |
 
 ---
 
@@ -644,7 +648,7 @@ To zdarzenie nie zawiera ładunku `ecommerce`.
 
 ### `virtualPageView`
 
-To jest niestandardowe zdarzenie Wink — nie jest częścią standardowego zestawu zdarzeń GA4. Jest wysyłane przy każdej nawigacji strony i zawiera kontekst urządzenia oraz sesji. Nie zawiera obiektu `ecommerce`.
+To niestandardowe zdarzenie Wink — nie jest częścią standardowego zestawu zdarzeń GA4. Jest wysyłane przy każdej nawigacji strony i zawiera kontekst urządzenia oraz sesji. Nie zawiera obiektu `ecommerce`.
 
 ```json
 {
@@ -665,7 +669,7 @@ To jest niestandardowe zdarzenie Wink — nie jest częścią standardowego zest
 | Właściwość | Opis |
 |------------|------|
 | `device` | Wykryty typ urządzenia — `Desktop`, `Android`, `iPhone`, `iPad` lub podobny |
-| `deviceAgent` | Surowy ciąg user agent |
+| `deviceAgent` | Surowy ciąg user agenta |
 | `os` | Wykryty system operacyjny — `Windows`, `MacOS`, `Linux`, `UNIX` |
 | `path` | Aktualna ścieżka strony |
 | `title` | Aktualny tytuł strony |

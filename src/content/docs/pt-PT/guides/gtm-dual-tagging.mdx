@@ -7,7 +7,7 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Se estiver a executar campanhas publicitárias através do Sojern, pode ligar a sua conta Sojern ao Wink introduzindo o seu ID do Contentor GTM Sojern no portal Wink. Uma vez ligado, o pixel de rastreio do Sojern dispara automaticamente para a sua propriedade — cobrindo toda a jornada do hóspede desde a pesquisa até à reserva concluída.
+Se estiver a executar campanhas publicitárias através do Sojern, pode ligar a sua conta Sojern ao Wink introduzindo o seu ID do Contentor GTM Sojern no portal Wink. Uma vez ligado, o pixel de rastreamento do Sojern dispara automaticamente para a sua propriedade — cobrindo toda a jornada do hóspede desde a pesquisa até à reserva concluída.
 
 <Aside type="tip">
 Isto pressupõe que já tem uma conta Sojern ativa e que recebeu o seu ID do Contentor GTM do seu gestor de conta Sojern. Se ainda não tem uma conta Sojern, visite [sojern.com/contact](https://www.sojern.com/contact) para começar.
@@ -48,16 +48,16 @@ Para transparência, aqui está o que o Wink configura para fazer esta integraç
 - **Um campo para o ID do Contentor GTM Sojern** está disponível no separador Personalizações do seu portal Wink. Quando introduz o seu ID do Contentor, o Wink valida o formato e armazena-o de forma segura associado à sua propriedade.
 - **Em cada página onde a sua propriedade está ativa** no Wink, o seu ID do Contentor GTM Sojern é inserido na página e o sistema de gestão de tags do Wink carrega dinamicamente o seu contentor Sojern juntamente com o seu próprio. Isto acontece automaticamente — não são necessários passos manuais da equipa Wink por propriedade.
 - **O seu contentor Sojern é carregado de forma assíncrona**, o que significa que não afeta o desempenho do carregamento da página para os seus hóspedes.
-- **O rastreio próprio do Wink e o seu pixel Sojern funcionam em paralelo**, lendo a partir dos mesmos dados de eventos partilhados. Cada evento de reserva que o Wink rastreia está simultaneamente disponível para o seu contentor Sojern.
+- **O rastreamento próprio do Wink e o seu pixel Sojern funcionam em paralelo**, lendo a partir dos mesmos dados de eventos partilhados. Cada evento de reserva que o Wink rastreia está simultaneamente disponível para o seu contentor Sojern.
 - **Quando a sua propriedade não está a ser visualizada** — por exemplo, quando um hóspede está a navegar por outro hotel no Wink — o seu contentor Sojern não é carregado. Isto garante que o Sojern só recebe dados relevantes para a sua propriedade.
 
 ---
 
-## Referência do DataLayer
+## Referência DataLayer
 
-O Wink envia eventos compatíveis com GA4 para o `dataLayer` ao longo da jornada do hóspede. O seu contentor GTM lê a partir deste mesmo `dataLayer` partilhado, pelo que qualquer trigger ou variável que configure tem acesso a todas as propriedades descritas abaixo.
+O Wink envia eventos compatíveis com GA4 para o `dataLayer` ao longo de toda a jornada do hóspede. O seu contentor GTM lê a partir deste mesmo `dataLayer` partilhado, pelo que qualquer trigger ou variável que configure tem acesso a todas as propriedades descritas abaixo.
 
-Cada evento segue a estrutura padrão GA4 Enhanced Ecommerce: uma string `event` ao nível superior e um objeto `ecommerce`. Antes de cada push, o Wink limpa o payload ecommerce anterior para evitar que dados antigos interfiram em novos triggers.
+Cada evento segue a estrutura padrão GA4 Enhanced Ecommerce: uma string `event` ao nível superior e um objeto `ecommerce`. Antes de cada push, o Wink limpa o payload ecommerce anterior para evitar que dados antigos interfiram nos novos triggers.
 
 <Aside type="note">
 **Padrão de reset do dataLayer**
@@ -277,7 +277,7 @@ Todos os eventos que incluem um array `items` partilham o mesmo esquema de item.
 
 #### Campos padrão GA4
 
-Estes campos são nativamente compreendidos pelo GA4 e aparecem em relatórios ecommerce padrão sem configuração adicional.
+Estes campos são nativamente compreendidos pelo GA4 e aparecem nos relatórios padrão de ecommerce sem qualquer configuração adicional.
 
 | Propriedade | Tipo | Obrigatório | Descrição |
 |-------------|------|-------------|-----------|
@@ -298,11 +298,11 @@ Estes campos são nativamente compreendidos pelo GA4 e aparecem em relatórios e
 | `price` | number | — | Preço unitário |
 | `promotion_id` | string | — | Identificador da promoção |
 | `promotion_name` | string | — | Nome exibido da promoção |
-| `quantity` | number | — | Quantidade (padrão `1`) |
+| `quantity` | number | — | Quantidade (padrão é `1`) |
 
 #### Parâmetros personalizados ao nível do item
 
-Estes parâmetros transportam contexto de reserva específico do Wink. O GA4 não os apresenta automaticamente em relatórios — deve registar cada um como uma **dimensão personalizada ao nível do item** na sua propriedade GA4 antes de aparecerem em explorações ou relatórios padrão. Veja [Dimensões Personalizadas no GA4](#custom-dimensions-in-ga4) abaixo para instruções de configuração.
+Estes parâmetros transportam contexto de reserva específico do Wink. O GA4 não os apresenta automaticamente nos relatórios — deve registar cada um como uma **dimensão personalizada ao nível do item** na sua propriedade GA4 antes de aparecerem em explorações ou relatórios padrão. Veja [Dimensões Personalizadas no GA4](#custom-dimensions-in-ga4) abaixo para instruções de configuração.
 
 | Propriedade | Tipo | Descrição |
 |-------------|------|-----------|
@@ -310,8 +310,9 @@ Estes parâmetros transportam contexto de reserva específico do Wink. O GA4 nã
 | `property_name` | string | Nome exibido da propriedade |
 | `property_brand` | string | Marca a que a propriedade pertence |
 | `property_chain` | string | Cadeia a que a propriedade pertence |
+| `property_url_name` | string | Slug amigável para URL da propriedade |
 | `city_name` | string | Cidade onde a propriedade está localizada |
-| `country_code` | string | Código do país ISO 3166-1 alpha-2 |
+| `country_code` | string | Código do país ISO 3166-1 alfa-2 |
 | `start_date` | string | Data de check-in no formato `YYYY-MM-DD` |
 | `end_date` | string | Data de check-out no formato `YYYY-MM-DD` |
 | `num_adults` | number | Número de adultos na reserva |
@@ -324,12 +325,13 @@ Estes parâmetros transportam contexto de reserva específico do Wink. O GA4 nã
 | `room_location` | string | Descrição da localização do quarto (ex.: `Overwater`, `Garden`) |
 | `room_view` | string | Descrição da vista do quarto (ex.: `Ocean`, `City`) |
 | `room_classification` | string | Classificação ou categoria do quarto (ex.: `Suite`, `Standard`) |
+| `bed_type` | string | Configuração da cama do quarto (ex.: `King`, `Twin`) |
 
 ---
 
 ### Dimensões Personalizadas no GA4
 
-O GA4 ignora parâmetros personalizados ao nível do item em relatórios até que os registe explicitamente como dimensões personalizadas ao nível do item. Só precisa de registar os parâmetros que pretende usar em relatórios — não é necessário registar todos os 18.
+O GA4 ignora parâmetros personalizados ao nível do item nos relatórios até que os registe explicitamente como dimensões personalizadas ao nível do item. Só precisa de registar os parâmetros que pretende usar nos relatórios — não é necessário registar todos os 20.
 
 <Steps>
 
@@ -346,7 +348,7 @@ O GA4 ignora parâmetros personalizados ao nível do item em relatórios até qu
    - **Nome da dimensão** — o rótulo legível que aparece nos relatórios GA4 (veja a tabela abaixo)
    - **Âmbito** — selecione **Item**
    - **Parâmetro do evento** — o nome exato do parâmetro conforme aparece no dataLayer (veja a tabela abaixo)
-   - **Descrição** — opcional, mas recomendado
+   - **Descrição** — opcional, mas recomendada
 
 4. **Guarde e repita**
 
@@ -355,7 +357,7 @@ O GA4 ignora parâmetros personalizados ao nível do item em relatórios até qu
 </Steps>
 
 <Aside type="note">
-As dimensões personalizadas podem demorar até 24 horas a começar a aparecer nos relatórios GA4 após o registo. Dados históricos recolhidos antes do registo não são preenchidos retroativamente.
+As dimensões personalizadas podem demorar até 24 horas a começar a aparecer nos relatórios GA4 após o registo. Os dados históricos recolhidos antes do registo não são preenchidos retroativamente.
 
 O GA4 permite até 50 dimensões personalizadas ao nível do item por propriedade em propriedades padrão (propriedades 360 permitem mais).
 </Aside>
@@ -364,24 +366,26 @@ Use a tabela seguinte como referência ao criar dimensões personalizadas. O val
 
 | Nome da dimensão | Parâmetro do evento | Tipo |
 |------------------|--------------------|------|
-| Property ID | `property_id` | Texto |
-| Property name | `property_name` | Texto |
-| Property brand | `property_brand` | Texto |
-| Property chain | `property_chain` | Texto |
-| City name | `city_name` | Texto |
-| Country code | `country_code` | Texto |
-| Check-in date | `start_date` | Texto |
-| Check-out date | `end_date` | Texto |
-| Number of adults | `num_adults` | Número |
-| Number of children | `num_children` | Número |
-| Cancellation policy | `cancellation_policy` | Texto |
-| Rate plan ID | `rate_plan_id` | Texto |
-| Room rate ID | `room_rate_id` | Texto |
-| Room rate name | `room_rate_name` | Texto |
-| Number of perks | `num_perks` | Número |
-| Room location | `room_location` | Texto |
-| Room view | `room_view` | Texto |
-| Room classification | `room_classification` | Texto |
+| ID da propriedade | `property_id` | Texto |
+| Nome da propriedade | `property_name` | Texto |
+| Marca da propriedade | `property_brand` | Texto |
+| Cadeia da propriedade | `property_chain` | Texto |
+| Nome URL da propriedade | `property_url_name` | Texto |
+| Nome da cidade | `city_name` | Texto |
+| Código do país | `country_code` | Texto |
+| Data de check-in | `start_date` | Texto |
+| Data de check-out | `end_date` | Texto |
+| Número de adultos | `num_adults` | Número |
+| Número de crianças | `num_children` | Número |
+| Política de cancelamento | `cancellation_policy` | Texto |
+| ID do plano tarifário | `rate_plan_id` | Texto |
+| ID da tarifa do quarto | `room_rate_id` | Texto |
+| Nome da tarifa do quarto | `room_rate_name` | Texto |
+| Número de benefícios | `num_perks` | Número |
+| Localização do quarto | `room_location` | Texto |
+| Vista do quarto | `room_view` | Texto |
+| Classificação do quarto | `room_classification` | Texto |
+| Tipo de cama | `bed_type` | Texto |
 
 ---
 

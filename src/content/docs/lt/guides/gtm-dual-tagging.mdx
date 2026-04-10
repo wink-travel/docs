@@ -7,7 +7,7 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Jei vykdote reklamos kampanijas per Sojern, galite prijungti savo Sojern paskyrą prie Wink įvesdami savo Sojern GTM konteinerio ID Wink portale. Prisijungus, Sojern sekimo pikselis automatiškai aktyvuojamas jūsų nuosavybei – apimdamas visą svečio kelionę nuo paieškos iki užsakymo užbaigimo.
+Jei vykdote reklamos kampanijas per Sojern, galite prijungti savo Sojern paskyrą prie Wink įvedę savo Sojern GTM konteinerio ID Wink portale. Prisijungus, Sojern sekimo pikselis automatiškai aktyvuojamas jūsų nuosavybei – apimdamas visą svečio kelionę nuo paieškos iki užsakymo užbaigimo.
 
 <Aside type="tip">
 Tai reiškia, kad jau turite aktyvią Sojern paskyrą ir gavote savo GTM konteinerio ID iš savo Sojern paskyros vadybininko. Jei dar neturite Sojern paskyros, apsilankykite [sojern.com/contact](https://www.sojern.com/contact), kad pradėtumėte.
@@ -48,7 +48,7 @@ Skaidrumui, štai ką Wink konfigūruoja, kad ši integracija veiktų:
 - **Sojern GTM konteinerio ID laukas** yra prieinamas Wink portalo Customizations skirtuke. Įvedus konteinerio ID, Wink patikrina formato teisingumą ir saugiai saugo jį jūsų nuosavybei.
 - **Kiekviename puslapyje, kuriame aktyvi jūsų nuosavybė** Wink įterpia jūsų Sojern GTM konteinerio ID į puslapį ir Wink žymių valdymo sistema dinamiškai įkelia jūsų Sojern konteinerį kartu su savo. Tai vyksta automatiškai – Wink komandai nereikia jokių rankinių veiksmų kiekvienai nuosavybei.
 - **Jūsų Sojern konteineris įkeliamas asinchroniškai**, todėl tai nepaveikia puslapio įkėlimo greičio jūsų svečiams.
-- **Wink sekimas ir jūsų Sojern pikselis veikia lygiagrečiai**, naudodami tą patį bendrą įvykių duomenų srautą. Kiekvienas Wink sekamas užsakymo įvykis tuo pačiu metu yra prieinamas jūsų Sojern konteineriui.
+- **Wink sekimas ir jūsų Sojern pikselis veikia lygiagrečiai**, naudodami tą patį bendrą įvykių duomenų sluoksnį. Kiekvienas Wink sekamas užsakymo įvykis tuo pačiu metu yra prieinamas jūsų Sojern konteineriui.
 - **Kai jūsų nuosavybė nėra peržiūrima** – pavyzdžiui, kai svečias naršo kitą viešbutį Wink – jūsų Sojern konteineris neįkeliamas. Tai užtikrina, kad Sojern gauna tik jūsų nuosavybei aktualius duomenis.
 
 ---
@@ -76,18 +76,18 @@ Nesitikėkite, kad ecommerce savybės išliks tarp įvykių. Visada skaitykite j
 
 ### Užsakymo kelionės įvykiai
 
-Šie įvykiai automatiškai aktyvuojami, kai svečias juda užsakymo piltuvo etapuose. Konfigūruokite savo GTM trigerius kaip **Custom Event** trigerius, atitinkančius žemiau pateiktus įvykių pavadinimus.
+Šie įvykiai automatiškai aktyvuojami, kai svečias juda per užsakymo piltuvėlį. Konfigūruokite savo GTM trigerius kaip **Custom Event** trigerius, atitinkančius žemiau pateiktus įvykių pavadinimus.
 
 | Žingsnis | Įvykis | Kada aktyvuojamas |
-|------|-------|---------------|
+|----------|--------|-------------------|
 | 1 | `view_item_list` | Įkeliama viešbučių inventoriaus tinklelio arba sąrašo peržiūra |
 | 2 | `view_item` | Svečias peržiūri konkretaus objekto puslapį |
 | 3 | `add_to_cart` | Svečias prideda kambarį į krepšelį |
 | 4 | `begin_checkout` | Įkeliama atsiskaitymo / mokėjimo puslapis |
 | 5 | `add_payment_info` | Svečias pasirenka mokėjimo būdą |
 | 6 | `login` | Svečias autentifikuojasi per SSO |
-| 7 | `purchase` | Užsakymas patvirtinamas |
-| 8 | `refund` | Užsakymas atšaukiamas |
+| 7 | `purchase` | Užsakymas patvirtintas |
+| 8 | `refund` | Užsakymas atšauktas |
 
 ---
 
@@ -179,7 +179,7 @@ Aktyvuojamas, kai svečias pasirenka arba patvirtina mokėjimo būdą.
 }
 ```
 
-`payment_type` užpildomas pagal mokėjimo gavėjo tipą. `coupon` yra pateikiamas tik tada, kai buvo pritaikytas nuolaidos kodas.
+`payment_type` užpildomas pagal mokėjimo gavėjo tipą. `coupon` pateikiamas tik tada, kai buvo pritaikytas nuolaidos kodas.
 
 ---
 
@@ -244,7 +244,7 @@ Aktyvuojamas, kai užsakymas patvirtinamas.
 }
 ```
 
-`transaction_id` yra unikalus užsakymo sutarties identifikatorius. `coupon`, `shipping` ir `tax` pateikiami tik jei taikoma.
+`transaction_id` yra unikalus užsakymo sutarties identifikatorius. `coupon`, `shipping` ir `tax` pateikiami tik jei taikomi.
 
 ---
 
@@ -267,7 +267,7 @@ Aktyvuojamas, kai užsakymas atšaukiamas.
 }
 ```
 
-`transaction_id` sutampa su `purchase` įvykiu tam pačiam užsakymui. `coupon`, `shipping` ir `tax` pateikiami tik jei taikoma.
+`transaction_id` sutampa su `purchase` įvykiu tam pačiam užsakymui. `coupon`, `shipping` ir `tax` pateikiami tik jei taikomi.
 
 ---
 
@@ -280,15 +280,15 @@ Visi įvykiai, kuriuose yra `items` masyvas, naudoja tą pačią prekės schemą
 Šie laukai yra natūraliai suprantami GA4 ir rodomi standartinėse ecommerce ataskaitose be papildomos konfigūracijos.
 
 | Savybė | Tipas | Privaloma | Aprašymas |
-|----------|------|----------|-------------|
+|--------|-------|-----------|-----------|
 | `item_id` | string | Taip | Unikalus kambario ar produkto identifikatorius |
 | `item_name` | string | – | Kambario ar produkto pavadinimas |
 | `affiliation` | string | – | Partnerio arba pardavėjo pavadinimas |
-| `coupon` | string | – | Pridėtas kupono kodas |
+| `coupon` | string | – | Pritaikytas kupono kodas |
 | `currency` | string | – | ISO 4217 valiutos kodas (pvz., `USD`) |
 | `creative_name` | string | – | Reklamos kūrinio pavadinimas |
 | `creative_slot` | string | – | Reklamos kūrinio pozicija |
-| `discount` | number | – | Taikoma nuolaida |
+| `discount` | number | – | Pritaikyta nuolaida |
 | `index` | number | – | Pozicija sąraše (pradedant nuo 1) |
 | `item_brand` | string | – | Viešbučio ar prekės ženklas |
 | `item_category` | string | – | Produkto tipas – pvz., `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
@@ -302,14 +302,15 @@ Visi įvykiai, kuriuose yra `items` masyvas, naudoja tą pačią prekės schemą
 
 #### Pasirinktini prekės lygmens parametrai
 
-Šie parametrai perteikia Wink specifinį užsakymo kontekstą. GA4 jų automatiškai nerodo ataskaitose – kiekvieną iš jų turite užregistruoti kaip **prekės lygmens pasirinktinius matmenis** savo GA4 paskyroje, kad jie atsirastų ataskaitose ar analizėse. Žr. [Pasirinktinius matmenis GA4](#custom-dimensions-in-ga4) žemiau dėl nustatymo instrukcijų.
+Šie parametrai perteikia Wink specifinį užsakymo kontekstą. GA4 jų automatiškai nerodo ataskaitose – turite kiekvieną registruoti kaip **prekės lygmens pasirinktinius matmenis** savo GA4 paskyroje, kad jie atsirastų tyrimuose ar standartinėse ataskaitose. Žr. [Pasirinktinius matmenis GA4](#custom-dimensions-in-ga4) žemiau dėl nustatymo instrukcijų.
 
 | Savybė | Tipas | Aprašymas |
-|----------|------|-------------|
+|--------|-------|-----------|
 | `property_id` | string | Wink nuosavybės identifikatorius |
 | `property_name` | string | Nuosavybės pavadinimas |
 | `property_brand` | string | Prekės ženklas, kuriam priklauso nuosavybė |
 | `property_chain` | string | Tinklas, kuriam priklauso nuosavybė |
+| `property_url_name` | string | URL draugiškas nuosavybės slapyvardis |
 | `city_name` | string | Miestas, kuriame yra nuosavybė |
 | `country_code` | string | ISO 3166-1 alpha-2 šalies kodas |
 | `start_date` | string | Atvykimo data formatu `YYYY-MM-DD` |
@@ -324,12 +325,13 @@ Visi įvykiai, kuriuose yra `items` masyvas, naudoja tą pačią prekės schemą
 | `room_location` | string | Kambario vietos aprašymas (pvz., `Overwater`, `Garden`) |
 | `room_view` | string | Kambario vaizdo aprašymas (pvz., `Ocean`, `City`) |
 | `room_classification` | string | Kambario klasifikacija ar kategorija (pvz., `Suite`, `Standard`) |
+| `bed_type` | string | Kambario lovos konfigūracija (pvz., `King`, `Twin`) |
 
 ---
 
-### Pasirinktiniai matmenys GA4
+### Pasirinktini matmenys GA4
 
-GA4 ignoruoja pasirinktinius prekės parametrus ataskaitose, kol jų aiškiai neužregistruojate kaip prekės lygmens pasirinktinius matmenis. Registruoti reikia tik tuos parametrus, kuriuos ketinate naudoti ataskaitose – visų 18 registruoti nebūtina.
+GA4 ignoruoja pasirinktinius prekės parametrus ataskaitose, kol jų aiškiai neužregistruojate kaip prekės lygmens pasirinktinius matmenis. Registruoti reikia tik tuos parametrus, kuriuos ketinate naudoti ataskaitose – visų 20 registruoti nebūtina.
 
 <Steps>
 
@@ -337,7 +339,7 @@ GA4 ignoruoja pasirinktinius prekės parametrus ataskaitose, kol jų aiškiai ne
 
    GA4 eikite į **Admin** (apatiniame kairiajame kampe pavaros piktograma) → pasirinkite savo nuosavybę → **Data display** → **Custom definitions**.
 
-2. **Sukurkite naują pasirinktinių matmenų įrašą**
+2. **Sukurkite naują pasirinktą matmenį**
 
    Spauskite **Create custom dimensions**.
 
@@ -355,7 +357,7 @@ GA4 ignoruoja pasirinktinius prekės parametrus ataskaitose, kol jų aiškiai ne
 </Steps>
 
 <Aside type="note">
-Pasirinktini matmenys gali pradėti rodyti duomenis GA4 ataskaitose per 24 valandas po registracijos. Istoriniai duomenys, surinkti prieš registraciją, nėra papildomai įtraukiami.
+Pasirinktini matmenys gali pradėti rodyti duomenis GA4 ataskaitose per 24 valandas po registracijos. Istoriniai duomenys, surinkti prieš registraciją, nebus papildyti.
 
 GA4 leidžia iki 50 prekės lygmens pasirinktinių matmenų standartinėse nuosavybėse (360 nuosavybėse leidžiama daugiau).
 </Aside>
@@ -363,11 +365,12 @@ GA4 leidžia iki 50 prekės lygmens pasirinktinių matmenų standartinėse nuosa
 Naudokite šią lentelę kaip nuorodą kuriant pasirinktinius matmenis. **Event parameter** reikšmė turi tiksliai sutapti – GA4 atsižvelgia į didžiąsias ir mažąsias raides.
 
 | Matmens pavadinimas | Event parameter | Tipas |
-|----------------|-----------------|------|
+|---------------------|-----------------|-------|
 | Nuosavybės ID | `property_id` | Tekstas |
 | Nuosavybės pavadinimas | `property_name` | Tekstas |
 | Nuosavybės prekės ženklas | `property_brand` | Tekstas |
 | Nuosavybės tinklas | `property_chain` | Tekstas |
+| Nuosavybės URL pavadinimas | `property_url_name` | Tekstas |
 | Miesto pavadinimas | `city_name` | Tekstas |
 | Šalies kodas | `country_code` | Tekstas |
 | Atvykimo data | `start_date` | Tekstas |
@@ -382,12 +385,13 @@ Naudokite šią lentelę kaip nuorodą kuriant pasirinktinius matmenis. **Event 
 | Kambario vieta | `room_location` | Tekstas |
 | Kambario vaizdas | `room_view` | Tekstas |
 | Kambario klasifikacija | `room_classification` | Tekstas |
+| Lovo tipas | `bed_type` | Tekstas |
 
 ---
 
 ### Papildomi galimi įvykiai
 
-Toliau pateikti įvykiai yra prieinami Wink dataLayer, bet nėra standartinio užsakymo piltuvo dalis. Juos gali sukelti kitos platformos sąveikos.
+Toliau pateikti įvykiai yra prieinami Wink dataLayer, bet nėra standartinio užsakymo piltuvėlio dalis. Juos gali sukelti kitos platformos sąveikos.
 
 #### `add_to_wishlist`
 
@@ -644,7 +648,7 @@ Toliau pateikti įvykiai yra prieinami Wink dataLayer, bet nėra standartinio u�
 
 ### `virtualPageView`
 
-Tai yra pasirinktinė Wink įvykis – nepriklauso standartiniam GA4 įvykių rinkiniui. Jis siunčiamas kiekvieną kartą keičiant puslapį ir perduoda įrenginio bei sesijos kontekstą. Jame nėra `ecommerce` objekto.
+Tai yra pasirinktinė Wink įvykio rūšis – nepriklauso standartiniam GA4 įvykių rinkiniui. Jis siunčiamas kiekvieną kartą keičiant puslapį ir perduoda įrenginio bei sesijos kontekstą. Neįtraukiamas `ecommerce` objektas.
 
 ```json
 {
@@ -663,13 +667,13 @@ Tai yra pasirinktinė Wink įvykis – nepriklauso standartiniam GA4 įvykių ri
 ```
 
 | Savybė | Aprašymas |
-|----------|-------------|
+|--------|-----------|
 | `device` | Aptiktas įrenginio tipas – `Desktop`, `Android`, `iPhone`, `iPad` ar panašiai |
 | `deviceAgent` | Žaliavos naudotojo agento eilutė |
 | `os` | Aptikta operacinė sistema – `Windows`, `MacOS`, `Linux`, `UNIX` |
 | `path` | Dabartinio puslapio kelias |
 | `title` | Dabartinio puslapio pavadinimas |
-| `userId` | Autentifikuoto naudotojo identifikatorius (praleidžiamas, jei neprisijungta) |
+| `userId` | Autentifikuoto vartotojo identifikatorius (praleidžiamas, jei neprisijungta) |
 | `startDate` | Atvykimo data iš dabartinės paieškos sesijos |
 | `endDate` | Išvykimo data iš dabartinės paieškos sesijos |
 | `guests` | Svečio skaičius iš dabartinės paieškos sesijos |

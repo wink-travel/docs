@@ -36,7 +36,7 @@ Dette forutsetter at du allerede har en aktiv Sojern-konto og har mottatt din GT
 <Aside type="note">
 Du trenger ikke å plassere noen pixel-kode på ditt eget nettsted for denne integrasjonen. Wink laster automatisk din Sojern-container på alle sider hvor din eiendom er aktiv.
 
-Denne konfigurasjonen fungerer for hvilken som helst tilpasset GTM Container ID. Vi brukte bare Sojern som et eksempel siden det er en veldig vanlig integrasjon.
+Denne konfigurasjonen fungerer for hvilken som helst tilpasset GTM Container ID. Vi brukte bare Sojern som et eksempel siden det er en svært vanlig integrasjon.
 </Aside>
 
 ---
@@ -55,9 +55,9 @@ For å være tydelige, her er hva Wink konfigurerer for å få denne integrasjon
 
 ## DataLayer-referanse
 
-Wink sender GA4-kompatible hendelser til `dataLayer` gjennom hele gjestereisen. Din GTM-container leser fra denne samme delte `dataLayer`, så enhver trigger eller variabel du konfigurerer har tilgang til alle egenskapene beskrevet nedenfor.
+Wink pusher GA4-kompatible hendelser til `dataLayer` gjennom hele gjestereisen. Din GTM-container leser fra denne samme delte `dataLayer`, så enhver trigger eller variabel du konfigurerer har tilgang til alle egenskapene beskrevet nedenfor.
 
-Hver hendelse følger standard GA4 Enhanced Ecommerce-struktur: en øverste `event`-streng og et `ecommerce`-objekt. Før hver push tømmer Wink forrige ecommerce-payload for å forhindre at utdaterte data påvirker nye triggere.
+Hver hendelse følger standard GA4 Enhanced Ecommerce-struktur: en øverste `event`-streng og et `ecommerce`-objekt. Før hver push nullstiller Wink det forrige ecommerce-payloadet for å forhindre at utdaterte data påvirker nye triggere.
 
 <Aside type="note">
 **dataLayer reset-mønster**
@@ -69,7 +69,7 @@ dataLayer.push({ ecommerce: null });   // tøm forrige hendelse
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
-Ikke stol på at ecommerce-egenskaper vedvarer mellom hendelser. Les dem alltid ved trigger-tidspunktet i samme hendelse.
+Ikke stol på at ecommerce-egenskaper vedvarer mellom hendelser. Les dem alltid ved trigger-tidspunktet innen samme hendelse.
 </Aside>
 
 ---
@@ -300,20 +300,21 @@ Disse feltene forstås nativt av GA4 og vises i standard ecommerce-rapporter ute
 | `promotion_name` | string | — | Visningsnavn på kampanjen |
 | `quantity` | number | — | Antall (standard er `1`) |
 
-#### Tilpassede element-spesifikke parametere
+#### Tilpassede elementspesifikke parametere
 
-Disse parameterne bærer Wink-spesifikk bestillingskontekst. GA4 viser dem ikke automatisk i rapporter — du må registrere hver enkelt som en **element-spesifikk egendefinert dimensjon** i din GA4-eiendom før de vises i utforskninger eller standardrapporter. Se [Custom Dimensions in GA4](#custom-dimensions-in-ga4) nedenfor for oppsett.
+Disse parameterne bærer Wink-spesifikk bestillingskontekst. GA4 viser dem ikke automatisk i rapporter — du må registrere hver enkelt som en **elementspesifikk egendefinert dimensjon** i din GA4-eiendom før de vises i utforskninger eller standardrapporter. Se [Custom Dimensions in GA4](#custom-dimensions-in-ga4) nedenfor for oppsett.
 
 | Egenskap | Type | Beskrivelse |
 |----------|------|-------------|
-| `property_id` | string | Wink-eiendomsidentifikator |
-| `property_name` | string | Eiendommens visningsnavn |
+| `property_id` | string | Wink-eiendom-identifikator |
+| `property_name` | string | Visningsnavn for eiendommen |
 | `property_brand` | string | Merke eiendommen tilhører |
 | `property_chain` | string | Kjede eiendommen tilhører |
+| `property_url_name` | string | URL-vennlig slug for eiendommen |
 | `city_name` | string | By der eiendommen ligger |
 | `country_code` | string | ISO 3166-1 alpha-2 landkode |
-| `start_date` | string | Innsjekkingsdato i `YYYY-MM-DD` format |
-| `end_date` | string | Utsjekkingsdato i `YYYY-MM-DD` format |
+| `start_date` | string | Innsjekkingsdato i `YYYY-MM-DD`-format |
+| `end_date` | string | Utsjekkingsdato i `YYYY-MM-DD`-format |
 | `num_adults` | number | Antall voksne i bestillingen |
 | `num_children` | number | Antall barn i bestillingen |
 | `cancellation_policy` | string | En av: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
@@ -324,24 +325,25 @@ Disse parameterne bærer Wink-spesifikk bestillingskontekst. GA4 viser dem ikke 
 | `room_location` | string | Lokasjonsbeskrivelse for rommet (f.eks. `Overwater`, `Garden`) |
 | `room_view` | string | Utsiktsbeskrivelse for rommet (f.eks. `Ocean`, `City`) |
 | `room_classification` | string | Romklassifisering eller nivå (f.eks. `Suite`, `Standard`) |
+| `bed_type` | string | Sengkonfigurasjon for rommet (f.eks. `King`, `Twin`) |
 
 ---
 
 ### Egendefinerte dimensjoner i GA4
 
-GA4 ignorerer tilpassede elementparametere i rapporter inntil du eksplisitt registrerer dem som element-spesifikke egendefinerte dimensjoner. Du trenger kun å registrere de parameterne du har tenkt å bruke i rapporter — ikke alle 18.
+GA4 ignorerer tilpassede elementparametere i rapporter inntil du eksplisitt registrerer dem som elementspesifikke egendefinerte dimensjoner. Du trenger bare å registrere de parameterne du har tenkt å bruke i rapporter — du trenger ikke registrere alle 20.
 
 <Steps>
 
 1. **Åpne Custom Definitions**
 
-   I GA4, gå til **Admin** (tannhjul nederst til venstre) → velg din eiendom → **Data display** → **Custom definitions**.
+   I GA4, gå til **Admin** (tannhjul-ikon nederst til venstre) → velg din eiendom → **Data display** → **Custom definitions**.
 
 2. **Opprett en ny egendefinert dimensjon**
 
    Klikk **Create custom dimensions**.
 
-3. **Fyll ut dimensjonsdetaljer**
+3. **Fyll inn dimensjonsdetaljer**
 
    - **Dimension name** — det lesbare navnet som vises i GA4-rapporter (se tabell nedenfor)
    - **Scope** — velg **Item**
@@ -355,12 +357,12 @@ GA4 ignorerer tilpassede elementparametere i rapporter inntil du eksplisitt regi
 </Steps>
 
 <Aside type="note">
-Egendefinerte dimensjoner kan ta opptil 24 timer før de begynner å vises i GA4-rapporter etter registrering. Historiske data samlet før registrering blir ikke etterfylt.
+Egendefinerte dimensjoner kan ta opptil 24 timer før de begynner å vises i GA4-rapporter etter registrering. Historiske data samlet inn før registrering blir ikke etterfylt.
 
-GA4 tillater opptil 50 element-spesifikke egendefinerte dimensjoner per eiendom på standard eiendommer (360-eiendommer tillater flere).
+GA4 tillater opptil 50 elementspesifikke egendefinerte dimensjoner per eiendom på standard eiendommer (360-eiendommer tillater flere).
 </Aside>
 
-Bruk følgende tabell som referanse når du oppretter egendefinerte dimensjoner. **Event parameter**-verdien må stemme nøyaktig — GA4 er store/små bokstav-sensitiv.
+Bruk følgende tabell som referanse når du oppretter egendefinerte dimensjoner. Verdien for **Event parameter** må stemme nøyaktig — GA4 er store/små-bokstav-sensitiv.
 
 | Dimensjonsnavn | Event parameter | Type |
 |----------------|-----------------|------|
@@ -368,6 +370,7 @@ Bruk følgende tabell som referanse når du oppretter egendefinerte dimensjoner.
 | Property name | `property_name` | Tekst |
 | Property brand | `property_brand` | Tekst |
 | Property chain | `property_chain` | Tekst |
+| Property URL name | `property_url_name` | Tekst |
 | City name | `city_name` | Tekst |
 | Country code | `country_code` | Tekst |
 | Check-in date | `start_date` | Tekst |
@@ -382,6 +385,7 @@ Bruk følgende tabell som referanse når du oppretter egendefinerte dimensjoner.
 | Room location | `room_location` | Tekst |
 | Room view | `room_view` | Tekst |
 | Room classification | `room_classification` | Tekst |
+| Bed type | `bed_type` | Tekst |
 
 ---
 
@@ -644,7 +648,7 @@ Ingen `ecommerce`-payload er inkludert med denne hendelsen.
 
 ### `virtualPageView`
 
-Dette er en tilpasset Wink-hendelse — ikke en del av standard GA4-hendelsessett. Den sendes ved hver sidetrafikk og inneholder enhets- og sesjonskontekst. Den inkluderer ikke et `ecommerce`-objekt.
+Dette er en tilpasset Wink-hendelse — ikke en del av standard GA4-hendelsessett. Den pushes ved hver sidnavigasjon og bærer enhets- og sesjonskontekst. Den inkluderer ikke et `ecommerce`-objekt.
 
 ```json
 {
@@ -669,8 +673,8 @@ Dette er en tilpasset Wink-hendelse — ikke en del av standard GA4-hendelsesset
 | `os` | Oppdaget operativsystem — `Windows`, `MacOS`, `Linux`, `UNIX` |
 | `path` | Nåværende sidebane |
 | `title` | Nåværende sidetittel |
-| `userId` | Autentisert brukeridentifikator (utelatt når ikke logget inn) |
-| `startDate` | Innsjekkingsdato fra gjeldende søkesesjon |
-| `endDate` | Utsjekkingsdato fra gjeldende søkesesjon |
-| `guests` | Antall gjester fra gjeldende søkesesjon |
-| `rooms` | Antall rom fra gjeldende søkesesjon |
+| `userId` | Autentisert brukeridentifikator (utelatt når ikke innlogget) |
+| `startDate` | Innsjekkingsdato fra gjeldende søkeøkt |
+| `endDate` | Utsjekkingsdato fra gjeldende søkeøkt |
+| `guests` | Antall gjester fra gjeldende søkeøkt |
+| `rooms` | Antall rom fra gjeldende søkeøkt |

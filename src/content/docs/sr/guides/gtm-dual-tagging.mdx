@@ -1,8 +1,8 @@
 ---
-title: Integracija Sojern Pixel-a
+title: Integracija Sojern Pixela
 description: Kako povezati vaš Sojern nalog sa Wink-om kako bi Sojern mogao pratiti putanju rezervacije vaših gostiju i podržati vaše kampanje za retargeting i oglašavanje.
 sidebar:
-  label: Integracija Sojern Pixel-a
+  label: Integracija Sojern Pixela
 ---
 
 import { Aside, Steps } from '@astrojs/starlight/components';
@@ -19,7 +19,7 @@ Ovo podrazumeva da već imate aktivan Sojern nalog i da ste dobili vaš GTM Cont
 
 <Steps>
 
-1. **Preuzmite vaš GTM Container ID od Sojern-a**
+1. **Nabavite vaš GTM Container ID od Sojern-a**
 
    Kontaktirajte vašeg Sojern menadžera naloga i zatražite vaš **GTM Container ID**. On ima format `GTM-XXXXXXX`. Ovo se razlikuje od vašeg Sojern Pixel ID — obavezno tražite baš GTM Container ID.
 
@@ -34,7 +34,7 @@ Ovo podrazumeva da već imate aktivan Sojern nalog i da ste dobili vaš GTM Cont
 </Steps>
 
 <Aside type="note">
-Ne morate postavljati nikakav kod piksela na vašem sajtu za ovu integraciju. Wink automatski učitava vaš Sojern kontejner na svim stranicama gde je vaša nekretnina aktivna.
+Za ovu integraciju nije potrebno da postavljate bilo kakav kod piksela na vašem sajtu. Wink automatski učitava vaš Sojern kontejner na svim stranicama gde je vaša nekretnina aktivna.
 
 Ova konfiguracija radi za bilo koji prilagođeni GTM Container ID. Sojern smo koristili samo kao primer jer je to vrlo česta integracija.
 </Aside>
@@ -45,7 +45,7 @@ Ova konfiguracija radi za bilo koji prilagođeni GTM Container ID. Sojern smo ko
 
 Za transparentnost, evo šta Wink konfiguriše da bi ova integracija funkcionisala:
 
-- **Polje za Sojern GTM Container ID** dostupno je u kartici Customizations u vašem Wink portalu. Kada unesete vaš Container ID, Wink proverava format i sigurno ga čuva povezano sa vašom nekretninom.
+- **Polje za Sojern GTM Container ID** dostupno je u kartici Customizations u vašem Wink portalu. Kada unesete vaš Container ID, Wink proverava format i sigurno ga čuva vezano za vašu nekretninu.
 - **Na svakoj stranici gde je vaša nekretnina aktivna** na Wink-u, vaš Sojern GTM Container ID se ubacuje u stranicu i Wink-ov sistem za upravljanje tagovima dinamički učitava vaš Sojern kontejner zajedno sa svojim. Ovo se dešava automatski — nisu potrebni ručni koraci od Wink tima po nekretnini.
 - **Vaš Sojern kontejner se učitava asinhrono**, što znači da ne utiče na performanse učitavanja stranice za vaše goste.
 - **Wink-ovo sopstveno praćenje i vaš Sojern piksel rade paralelno**, čitajući iz istih zajedničkih podataka o događajima. Svaki događaj rezervacije koji Wink prati je istovremeno dostupan vašem Sojern kontejneru.
@@ -57,7 +57,7 @@ Za transparentnost, evo šta Wink konfiguriše da bi ova integracija funkcionisa
 
 Wink šalje GA4-kompatibilne događaje u `dataLayer` tokom celog puta gosta. Vaš GTM kontejner čita iz istog zajedničkog `dataLayer`-a, tako da svaki okidač ili promenljiva koju konfigurišete ima pristup svim svojstvima opisanima ispod.
 
-Svaki događaj prati standardnu GA4 Enhanced Ecommerce strukturu: string `event` na vrhu i objekat `ecommerce`. Pre svakog slanja, Wink briše prethodni ecommerce sadržaj da spreči zastarele podatke da utiču na nove okidače.
+Svaki događaj prati standardnu GA4 Enhanced Ecommerce strukturu: vrhovni string `event` i objekat `ecommerce`. Pre svakog slanja, Wink briše prethodni ecommerce sadržaj da spreči zastarele podatke da utiču na nove okidače.
 
 <Aside type="note">
 **Šablon resetovanja dataLayer-a**
@@ -79,11 +79,11 @@ Nemojte se oslanjati na to da ecommerce svojstva ostaju između događaja. Uvek 
 Ovi događaji se automatski aktiviraju dok gost prolazi kroz tok rezervacije. Konfigurišite vaše GTM okidače kao **Custom Event** okidače koji odgovaraju imenima događaja ispod.
 
 | Korak | Događaj | Kada se aktivira |
-|-------|---------|------------------|
+|------|---------|------------------|
 | 1 | `view_item_list` | Učitava se mreža ili lista hotela |
 | 2 | `view_item` | Gost pregleda stranicu određene nekretnine |
 | 3 | `add_to_cart` | Gost dodaje sobu u korpu |
-| 4 | `begin_checkout` | Učitava se stranica za plaćanje / naplatu |
+| 4 | `begin_checkout` | Učitava se stranica za plaćanje/naplatu |
 | 5 | `add_payment_info` | Gost bira način plaćanja |
 | 6 | `login` | Gost se autentifikuje putem SSO |
 | 7 | `purchase` | Rezervacija je potvrđena |
@@ -144,7 +144,7 @@ Aktivira se kada gost doda sobu u korpu.
 
 #### `begin_checkout`
 
-Aktivira se kada se učita stranica za plaćanje / naplatu.
+Aktivira se kada se učita stranica za plaćanje/naplatu.
 
 ```json
 {
@@ -284,7 +284,7 @@ Ova polja GA4 nativno prepoznaje i pojavljuju se u standardnim ecommerce izvešt
 | `item_id` | string | Da | Jedinstveni identifikator sobe ili proizvoda |
 | `item_name` | string | — | Naziv sobe ili proizvoda |
 | `affiliation` | string | — | Ime partnera ili prodavca |
-| `coupon` | string | — | Primenjeni kupon kod na stavku |
+| `coupon` | string | — | Kod kupona primenjen na stavku |
 | `currency` | string | — | ISO 4217 kod valute (npr. `USD`) |
 | `creative_name` | string | — | Naziv kreativnog materijala u promociji |
 | `creative_slot` | string | — | Pozicija kreativnog materijala u promociji |
@@ -310,26 +310,28 @@ Ovi parametri nose Wink-specifičan kontekst rezervacije. GA4 ih ne prikazuje au
 | `property_name` | string | Prikazni naziv nekretnine |
 | `property_brand` | string | Brend kojem nekretnina pripada |
 | `property_chain` | string | Lanac kojem nekretnina pripada |
+| `property_url_name` | string | URL-prijateljski slug nekretnine |
 | `city_name` | string | Grad u kome se nekretnina nalazi |
 | `country_code` | string | ISO 3166-1 alpha-2 kod države |
 | `start_date` | string | Datum prijave u formatu `YYYY-MM-DD` |
 | `end_date` | string | Datum odjave u formatu `YYYY-MM-DD` |
 | `num_adults` | number | Broj odraslih u rezervaciji |
 | `num_children` | number | Broj dece u rezervaciji |
-| `cancellation_policy` | string | Jedna od vrednosti: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
-| `rate_plan_id` | string | Identifikator cenovnog plana |
+| `cancellation_policy` | string | Jedan od: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Identifikator tarifnog plana |
 | `room_rate_id` | string | Identifikator specifične cene sobe |
 | `room_rate_name` | string | Prikazni naziv cene sobe |
 | `num_perks` | number | Broj pogodnosti uključenih u cenu |
 | `room_location` | string | Opis lokacije sobe (npr. `Overwater`, `Garden`) |
 | `room_view` | string | Opis pogleda iz sobe (npr. `Ocean`, `City`) |
-| `room_classification` | string | Klasifikacija ili kategorija sobe (npr. `Suite`, `Standard`) |
+| `room_classification` | string | Klasifikacija ili nivo sobe (npr. `Suite`, `Standard`) |
+| `bed_type` | string | Konfiguracija kreveta u sobi (npr. `King`, `Twin`) |
 
 ---
 
 ### Prilagođene dimenzije u GA4
 
-GA4 ignoriše prilagođene parametre vezane za stavku u izveštajima dok ih eksplicitno ne registrujete kao dimenzije vezane za stavku. Potrebno je registrovati samo one parametre koje planirate da koristite u izveštajima — nije potrebno registrovati svih 18.
+GA4 ignoriše prilagođene parametre vezane za stavku u izveštajima dok ih eksplicitno ne registrujete kao dimenzije vezane za stavku. Potrebno je registrovati samo one parametre koje planirate da koristite u izveštajima — nije potrebno registrovati svih 20.
 
 <Steps>
 
@@ -357,7 +359,7 @@ GA4 ignoriše prilagođene parametre vezane za stavku u izveštajima dok ih eksp
 <Aside type="note">
 Prilagođene dimenzije mogu početi da se pojavljuju u GA4 izveštajima do 24 sata nakon registracije. Istorijski podaci prikupljeni pre registracije se ne popunjavaju naknadno.
 
-GA4 dozvoljava do 50 prilagođenih dimenzija vezanih za stavku po nekretnini na standardnim nekretninama (360 nekretnine dozvoljavaju više).
+GA4 dozvoljava do 50 prilagođenih dimenzija vezanih za stavku po standardnoj nekretnini (360 nekretnine dozvoljavaju više).
 </Aside>
 
 Koristite sledeću tabelu kao referencu prilikom kreiranja prilagođenih dimenzija. Vrednost **Event parameter** mora biti tačna — GA4 razlikuje velika i mala slova.
@@ -368,6 +370,7 @@ Koristite sledeću tabelu kao referencu prilikom kreiranja prilagođenih dimenzi
 | Property name | `property_name` | Tekst |
 | Property brand | `property_brand` | Tekst |
 | Property chain | `property_chain` | Tekst |
+| Property URL name | `property_url_name` | Tekst |
 | City name | `city_name` | Tekst |
 | Country code | `country_code` | Tekst |
 | Check-in date | `start_date` | Tekst |
@@ -382,6 +385,7 @@ Koristite sledeću tabelu kao referencu prilikom kreiranja prilagođenih dimenzi
 | Room location | `room_location` | Tekst |
 | Room view | `room_view` | Tekst |
 | Room classification | `room_classification` | Tekst |
+| Bed type | `bed_type` | Tekst |
 
 ---
 
@@ -436,7 +440,7 @@ Sledeći događaji su dostupni u Wink dataLayer-u, ali nisu deo standardnog toka
 }
 ```
 
-Ovaj događaj ne sadrži `ecommerce` objekat.
+Ovaj događaj ne uključuje `ecommerce` objekat.
 
 #### `view_promotion`
 
@@ -644,7 +648,7 @@ Ovaj događaj ne sadrži `ecommerce` objekat.
 
 ### `virtualPageView`
 
-Ovo je prilagođeni Wink događaj — nije deo standardnog GA4 seta događaja. Aktivira se pri svakoj navigaciji stranice i nosi kontekst uređaja i sesije. Ne uključuje `ecommerce` objekat.
+Ovo je prilagođeni Wink događaj — nije deo standardnog GA4 seta događaja. Pritiskuje se pri svakoj navigaciji stranice i nosi kontekst uređaja i sesije. Ne uključuje `ecommerce` objekat.
 
 ```json
 {

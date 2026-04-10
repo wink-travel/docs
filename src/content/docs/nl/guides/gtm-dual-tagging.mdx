@@ -46,7 +46,7 @@ Deze configuratie werkt voor elke aangepaste GTM Container ID. We gebruiken Soje
 Voor transparantie, dit is wat Wink configureert om deze integratie te laten werken:
 
 - **Een Sojern GTM Container ID-veld** is beschikbaar in het tabblad Aanpassingen van uw Wink-portaal. Wanneer u uw Container ID invoert, valideert Wink het formaat en slaat het veilig op bij uw accommodatie.
-- **Op elke pagina waar uw accommodatie actief is** op Wink, wordt uw Sojern GTM Container ID in de pagina weergegeven en laadt het tagmanagementsysteem van Wink dynamisch uw Sojern-container naast de eigen container. Dit gebeurt automatisch — er zijn geen handmatige stappen nodig van het Wink-team per accommodatie.
+- **Op elke pagina waar uw accommodatie actief is** op Wink, wordt uw Sojern GTM Container ID in de pagina weergegeven en laadt het tagmanagementsysteem van Wink uw Sojern-container dynamisch naast de eigen container. Dit gebeurt automatisch — er zijn geen handmatige stappen nodig van het Wink-team per accommodatie.
 - **Uw Sojern-container wordt asynchroon geladen**, wat betekent dat dit de laadsnelheid van de pagina voor uw gasten niet beïnvloedt.
 - **De tracking van Wink en uw Sojern-pixel draaien parallel**, waarbij ze dezelfde gedeelde gebeurtenisgegevens gebruiken. Elk boekingsevenement dat Wink volgt, is tegelijkertijd beschikbaar voor uw Sojern-container.
 - **Wanneer uw accommodatie niet wordt bekeken** — bijvoorbeeld wanneer een gast een ander hotel op Wink bekijkt — wordt uw Sojern-container niet geladen. Dit zorgt ervoor dat Sojern alleen gegevens ontvangt die relevant zijn voor uw accommodatie.
@@ -100,7 +100,7 @@ Wordt geactiveerd wanneer een hotelinventarislijst of raster wordt weergegeven.
   "event": "view_item_list",
   "ecommerce": {
     "item_list_id": "featured_hotels",
-    "item_list_name": "Featured Hotels",
+    "item_list_name": "Uitgelichte Hotels",
     "items": [ ]
   }
 }
@@ -273,7 +273,7 @@ Wordt geactiveerd wanneer een boeking wordt geannuleerd.
 
 ### Item-eigenschappen
 
-Alle events die een `items` array bevatten, gebruiken hetzelfde itemschema. Elke eigenschap is optioneel tenzij als verplicht gemarkeerd.
+Alle events die een `items` array bevatten, gebruiken hetzelfde item-schema. Elke eigenschap is optioneel tenzij als verplicht gemarkeerd.
 
 #### Standaard GA4-velden
 
@@ -310,6 +310,7 @@ Deze parameters bevatten Wink-specifieke boekingscontext. GA4 toont ze niet auto
 | `property_name` | string | Weergavenaam van de accommodatie |
 | `property_brand` | string | Merk waartoe de accommodatie behoort |
 | `property_chain` | string | Ketens waartoe de accommodatie behoort |
+| `property_url_name` | string | URL-vriendelijke slug voor de accommodatie |
 | `city_name` | string | Stad waar de accommodatie zich bevindt |
 | `country_code` | string | ISO 3166-1 alpha-2 landcode |
 | `start_date` | string | Incheckdatum in `YYYY-MM-DD` formaat |
@@ -324,12 +325,13 @@ Deze parameters bevatten Wink-specifieke boekingscontext. GA4 toont ze niet auto
 | `room_location` | string | Locatiebeschrijving van de kamer (bijv. `Overwater`, `Garden`) |
 | `room_view` | string | Uitzichtbeschrijving van de kamer (bijv. `Ocean`, `City`) |
 | `room_classification` | string | Kamerclassificatie of -niveau (bijv. `Suite`, `Standard`) |
+| `bed_type` | string | Bedconfiguratie van de kamer (bijv. `King`, `Twin`) |
 
 ---
 
 ### Aangepaste dimensies in GA4
 
-GA4 negeert aangepaste itemparameters in rapporten totdat u ze expliciet registreert als item-gescopeerde aangepaste dimensies. U hoeft alleen de parameters te registreren die u in rapporten wilt gebruiken — niet alle 18.
+GA4 negeert aangepaste item-parameters in rapporten totdat u ze expliciet registreert als item-gescopeerde aangepaste dimensies. U hoeft alleen de parameters te registreren die u in rapporten wilt gebruiken — niet alle 20.
 
 <Steps>
 
@@ -360,14 +362,15 @@ Aangepaste dimensies kunnen tot 24 uur nodig hebben om te verschijnen in GA4-rap
 GA4 staat maximaal 50 item-gescopeerde aangepaste dimensies toe per standaardproperty (360-properties staan er meer toe).
 </Aside>
 
-Gebruik de volgende tabel als referentie bij het aanmaken van aangepaste dimensies. De waarde van **Eventparameter** moet exact overeenkomen — GA4 is hoofdlettergevoelig.
+Gebruik onderstaande tabel als referentie bij het aanmaken van aangepaste dimensies. De waarde van **Eventparameter** moet exact overeenkomen — GA4 is hoofdlettergevoelig.
 
 | Dimensienaam | Eventparameter | Type |
 |--------------|----------------|------|
-| Property ID | `property_id` | Tekst |
-| Property naam | `property_name` | Tekst |
-| Property merk | `property_brand` | Tekst |
-| Property keten | `property_chain` | Tekst |
+| Accommodatie-ID | `property_id` | Tekst |
+| Accommodatienaam | `property_name` | Tekst |
+| Accommodatiemerk | `property_brand` | Tekst |
+| Accommodatieketen | `property_chain` | Tekst |
+| Accommodatie URL-naam | `property_url_name` | Tekst |
 | Stadnaam | `city_name` | Tekst |
 | Landcode | `country_code` | Tekst |
 | Incheckdatum | `start_date` | Tekst |
@@ -375,13 +378,14 @@ Gebruik de volgende tabel als referentie bij het aanmaken van aangepaste dimensi
 | Aantal volwassenen | `num_adults` | Nummer |
 | Aantal kinderen | `num_children` | Nummer |
 | Annuleringsbeleid | `cancellation_policy` | Tekst |
-| Tariefplan ID | `rate_plan_id` | Tekst |
-| Kamertarief ID | `room_rate_id` | Tekst |
-| Kamertarief naam | `room_rate_name` | Tekst |
+| Tariefplan-ID | `rate_plan_id` | Tekst |
+| Kamertarief-ID | `room_rate_id` | Tekst |
+| Kamertariefnaam | `room_rate_name` | Tekst |
 | Aantal extra's | `num_perks` | Nummer |
 | Kamerlocatie | `room_location` | Tekst |
 | Kameruitzicht | `room_view` | Tekst |
 | Kamerclassificatie | `room_classification` | Tekst |
+| Bedtype | `bed_type` | Tekst |
 
 ---
 
@@ -422,7 +426,7 @@ De volgende events zijn beschikbaar in de Wink dataLayer maar maken geen deel ui
   "event": "select_item",
   "ecommerce": {
     "item_list_id": "featured_hotels",
-    "item_list_name": "Featured Hotels",
+    "item_list_name": "Uitgelichte Hotels",
     "items": [ ]
   }
 }
@@ -436,7 +440,7 @@ De volgende events zijn beschikbaar in de Wink dataLayer maar maken geen deel ui
 }
 ```
 
-Bij dit event wordt geen `ecommerce` payload meegegeven.
+Bij dit event wordt geen `ecommerce` payload meegeleverd.
 
 #### `view_promotion`
 
@@ -444,10 +448,10 @@ Bij dit event wordt geen `ecommerce` payload meegegeven.
 {
   "event": "view_promotion",
   "ecommerce": {
-    "creative_name": "Summer Banner",
+    "creative_name": "Zomerbanner",
     "creative_slot": "hero",
     "promotion_id": "promo_001",
-    "promotion_name": "Summer Sale",
+    "promotion_name": "Zomeruitverkoop",
     "items": [ ]
   }
 }
@@ -459,10 +463,10 @@ Bij dit event wordt geen `ecommerce` payload meegegeven.
 {
   "event": "select_promotion",
   "ecommerce": {
-    "creative_name": "Summer Banner",
+    "creative_name": "Zomerbanner",
     "creative_slot": "hero",
     "promotion_id": "promo_001",
-    "promotion_name": "Summer Sale",
+    "promotion_name": "Zomeruitverkoop",
     "items": [ ]
   }
 }
@@ -474,7 +478,7 @@ Bij dit event wordt geen `ecommerce` payload meegegeven.
 {
   "event": "search",
   "ecommerce": {
-    "search_term": "beachfront resort"
+    "search_term": "strandresort"
   }
 }
 ```
@@ -558,7 +562,7 @@ Bij dit event wordt geen `ecommerce` payload meegegeven.
   "ecommerce": {
     "virtual_currency_name": "WinkPoints",
     "value": 50,
-    "item_name": "Room Upgrade"
+    "item_name": "Kamerupgrade"
   }
 }
 ```
@@ -569,7 +573,7 @@ Bij dit event wordt geen `ecommerce` payload meegegeven.
 {
   "event": "level_start",
   "ecommerce": {
-    "level_name": "Gold"
+    "level_name": "Goud"
   }
 }
 ```
@@ -580,7 +584,7 @@ Bij dit event wordt geen `ecommerce` payload meegegeven.
 {
   "event": "level_end",
   "ecommerce": {
-    "level_name": "Gold",
+    "level_name": "Goud",
     "success": true
   }
 }
@@ -593,7 +597,7 @@ Bij dit event wordt geen `ecommerce` payload meegegeven.
   "event": "level_up",
   "ecommerce": {
     "level": 2,
-    "character": "traveler"
+    "character": "reiziger"
   }
 }
 ```
@@ -606,7 +610,7 @@ Bij dit event wordt geen `ecommerce` payload meegegeven.
   "ecommerce": {
     "score": 980,
     "level": 2,
-    "character": "traveler"
+    "character": "reiziger"
   }
 }
 ```
@@ -617,7 +621,7 @@ Bij dit event wordt geen `ecommerce` payload meegegeven.
 {
   "event": "unlock_achievement",
   "ecommerce": {
-    "achievement_id": "first_booking"
+    "achievement_id": "eerste_boeking"
   }
 }
 ```
@@ -663,7 +667,7 @@ Dit is een aangepast Wink-event — geen onderdeel van de standaard GA4-eventset
 ```
 
 | Eigenschap | Beschrijving |
-|------------|-------------|
+|------------|--------------|
 | `device` | Gedetecteerd apparaattype — `Desktop`, `Android`, `iPhone`, `iPad` of vergelijkbaar |
 | `deviceAgent` | Raw user agent string |
 | `os` | Gedetecteerd besturingssysteem — `Windows`, `MacOS`, `Linux`, `UNIX` |
