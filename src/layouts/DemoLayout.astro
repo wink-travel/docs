@@ -1,0 +1,84 @@
+---
+interface Props {
+  title?: string;
+}
+
+const { title = 'Web Component Demo' } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+    <style>
+      *, *::before, *::after { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body { padding: 16px; }
+    </style>
+  </head>
+  <body>
+    <slot />
+    <script is:inline src="https://elements.wink.travel/elements.js" type="module" defer></script>
+    <script is:inline>
+      (function applyThemeFromQueryParams() {
+        const params = new URLSearchParams(window.location.search);
+
+        // Map Wink theme color keys to daisyUI CSS custom properties
+        const DAISY_MAP = {
+          primary:   '--color-primary',
+          secondary: '--color-secondary',
+          success:   '--color-success',
+          info:      '--color-accent',
+          danger:    '--color-error',
+          warning:   '--color-warning',
+          dark:      '--color-neutral',
+        };
+
+        const BASE_MAP = {
+          white: '--color-base-100',
+          light: '--color-base-200',
+          body:  '--color-base-content',
+        };
+
+        const ALL_KEYS = [
+          'primary', 'secondary', 'success', 'info', 'danger',
+          'warning', 'light', 'dark', 'body', 'muted', 'white',
+        ];
+
+        const root = document.documentElement;
+        let hasTheme = false;
+
+        for (const key of ALL_KEYS) {
+          const raw = params.get(key);
+          if (!raw) continue;
+          hasTheme = true;
+
+          const hex = '#' + raw;
+          // Set the wink-prefixed variable
+          root.style.setProperty('--wink-color-' + key, hex);
+          root.style.setProperty('--wink-color-' + key + '-hex', hex);
+
+          // Set daisyUI semantic variable
+          if (DAISY_MAP[key]) {
+            root.style.setProperty(DAISY_MAP[key], hex);
+          }
+          if (BASE_MAP[key]) {
+            root.style.setProperty(BASE_MAP[key], hex);
+          }
+        }
+
+        if (hasTheme) {
+          // Set daisyUI design tokens
+          root.style.setProperty('--radius-selector', '0.5rem');
+          root.style.setProperty('--radius-field', '0.375rem');
+          root.style.setProperty('--radius-box', '0.75rem');
+          root.style.setProperty('--border', '1px');
+          root.style.setProperty('--depth', '1');
+          root.style.setProperty('--noise', '0');
+        }
+      })();
+    </script>
+  </body>
+</html>
