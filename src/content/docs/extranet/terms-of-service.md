@@ -15,7 +15,7 @@ By registering and signing up to the Wink program as an accommodation provider, 
 
 **BETWEEN:**
 
-**Winkfluence**, a company incorporated under the laws of Singapore and having its registered office at \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 with VAT register number 201437335D ("Wink"), and
+**Winkfluence**, a company incorporated under the laws of the state of Wyoming and having its registered office at 30 N Gould St, Ste. 22578, Sheridan, WY 82801 U.S.A.. Doing business as "Wink", and
 
 **THE ACCOMMODATION PROVIDER**, whose details are set out in the Accommodation Provider Registration Form or have been submitted online (the "Accommodation Provider").
 

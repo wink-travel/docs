@@ -14,7 +14,8 @@ Last updated 2024-06-12
 By registering and signing up to the Wink partner program as an affiliate partner, the affiliate hereby has reviewed and understands, acknowledges and accepts the terms and conditions of this affiliate agreement (the "agreement").   
 BETWEEN: 
 
-1. **TRAVELIKO SINGAPORE PTE. LTD**., a company incorporated under the laws of Singapore and having its registered office at, \#03-01 Wilkie Edge, 8 Wilkie Road, Singapore 228095 with VAT register number 201437335D (hereinafter known as "Wink"), and   
+**Winkfluence**, a company incorporated under the laws of the state of Wyoming and having its registered office at 30 N Gould St, Ste. 22578, Sheridan, WY 82801 U.S.A.. Doing business as "Wink", and
+
 2. **THE AFFILIATE**, whose details are set out in the Affiliate Partner Registration Form or have been submitted online (the "Affiliate"). 
 
 Wink and the Affiliate are a “Party” to this Agreement and are collectively referred to as the “Parties”. 

@@ -1,5 +1,5 @@
 ---
-title: Conditions Générales d'Utilisation
+title: Conditions Générales d’Utilisation
 description: Conditions facilement accessibles et à jour pour tous nos utilisateurs affiliés.
 sidebar:
   order: 32
@@ -15,7 +15,7 @@ En s’inscrivant et en adhérant au programme Wink en tant que fournisseur d’
 
 **ENTRE :**
 
-**Winkfluence**, une société constituée selon les lois de Singapour et ayant son siège social au \#03-01 Wilkie Edge, 8 Wilkie Road, Singapour 228095, immatriculée au registre de la TVA sous le numéro 201437335D (« Wink »), et
+**Winkfluence**, une société constituée selon les lois de l’État du Wyoming et ayant son siège social au 30 N Gould St, Ste. 22578, Sheridan, WY 82801 États-Unis, exerçant sous le nom commercial « Wink », et
 
 **LE FOURNISSEUR D’HÉBERGEMENT**, dont les coordonnées sont indiquées dans le formulaire d’inscription du fournisseur d’hébergement ou ont été soumises en ligne (le « Fournisseur d’Hébergement »).
 
@@ -48,27 +48,27 @@ En plus des termes définis ailleurs dans cet Accord, les définitions suivantes
 
 **« Valeur de Réservation »** désigne le montant total collecté par le Facilitateur de Paiement auprès du client pour une Réservation.
 
-**« Book-Out »** désigne le manquement d’un Fournisseur d’Hébergement à héberger un client en raison, entre autres, de l’indisponibilité de Chambre par l’Hôtel Participant ou en son nom par le Fournisseur d’Hébergement ou tout distributeur tiers.
+**« Refus d’Hébergement »** désigne le manquement d’un Fournisseur d’Hébergement à héberger un client en raison, entre autres, de l’indisponibilité de Chambre par l’Hôtel Participant ou en son nom par le Fournisseur d’Hébergement ou tout distributeur tiers.
 
 **« Commission »** désigne le montant dû à un Affilié pour chaque Transaction Matérialisée conformément au présent Accord.
 
-**« Installations & Services »** désigne toutes installations, repas, commodités et/ou autres services fournis par un Hôtel Participant.
+**« Équipements & Services »** désigne tous équipements, repas, commodités et/ou autres services fournis par un Hôtel Participant.
 
-**« Client(s) »** désigne l’utilisateur final qui a utilisé, utilise ou est réservé pour utiliser la Chambre (et autres Installations et Services le cas échéant) suite à une réservation directe ou indirecte via Wink.
+**« Client(s) »** désigne l’utilisateur final qui a utilisé, utilise ou est réservé pour utiliser la Chambre (et les autres Équipements et Services le cas échéant) à la suite d’une réservation directe ou indirecte via Wink.
 
 **« Hôtel(s) »** désigne tout hébergement disponible sur ou via les sites Wink.
 
 **« Plateforme Wink »** désigne le réseau privé ou la solution technique utilisée par les Parties pour partager des informations en toute sécurité conformément à l’Accord.
 
-**« Propriété Intellectuelle »** désigne tous droits de propriété intellectuelle de toute nature (qu’ils soient ou non enregistrés, enregistrables ou autres), y compris brevets, modèles d’utilité, marques, dessins enregistrés, noms de domaine, applications, noms commerciaux, goodwill, droits d’auteur, droits moraux, savoir-faire, droits sur bases de données, logiciels, sites web, documents, techniques, méthodes commerciales, logos, manuels, listes et procédures, méthodes marketing et littérature publicitaire, y compris le « look and feel » de tout site web.
+**« Propriété Intellectuelle »** désigne tous droits de propriété intellectuelle de toute nature (qu’ils soient ou non enregistrés, enregistrables ou autres), y compris brevets, modèles d’utilité, marques, dessins enregistrés, noms de domaine, applications, noms commerciaux, fonds de commerce, droits d’auteur, droits moraux, savoir-faire, droits sur bases de données, logiciels, sites web, documents, techniques, méthodes commerciales, logos, manuels, listes et procédures clients, méthodes marketing, littérature publicitaire, y compris le « look and feel » de tout site web.
 
-**« Transaction(s) Matérialisée(s) »** désigne la Réservation par un Client auprès d’un Fournisseur d’Hébergement, ayant abouti à la fourniture effective de l’hébergement, confirmée à Wink par le Fournisseur d’Hébergement. Les Transactions Matérialisées seront toujours ajustées pour modifications (ex. séjours raccourcis), rétrofacturations, fraudes par carte bancaire, créances douteuses ou autres. Pour éviter tout doute, annulations, non-présentations, etc. ne peuvent jamais être considérées comme Transactions Matérialisées.
+**« Transaction(s) Matérialisée(s) »** désigne la Réservation par un Client auprès d’un Fournisseur d’Hébergement, ayant abouti à la fourniture effective de l’hébergement, confirmée à Wink par le Fournisseur d’Hébergement. Les Transactions Matérialisées seront toujours ajustées pour modifications (ex. séjours raccourcis), rétrofacturations, fraudes par carte bancaire, créances douteuses ou autres. Pour éviter tout doute, les annulations, non-présentations, etc. ne peuvent jamais être considérées comme des Transactions Matérialisées.
 
-**« Tarif Net »** désigne le tarif particulier que Wink doit payer à chaque Hôtel Participant pour les Chambres, convenu mutuellement par écrit.
+**« Tarif Net »** désigne le tarif particulier que Wink doit payer à chaque Hôtel Participant pour les Chambres, convenu mutuellement par écrit entre les Parties.
 
-**« Non-Présentation(s) »** désigne toute occasion où un Client ne se présente pas à temps à un Hôtel Participant suite à une Réservation.
+**« Non-Présentation(s) »** désigne toute occasion où un Client ne se présente pas à temps à un Hôtel Participant conformément à une Réservation.
 
-**« Partenaire »** désigne toute entreprise ou individu utilisant la plateforme Wink pour promouvoir et vendre l’inventaire des Fournisseurs d’Hébergement à son audience et/ou clients contre commission.
+**« Partenaire »** désigne toute entreprise ou individu utilisant la plateforme Wink pour promouvoir et vendre l’inventaire des Fournisseurs d’Hébergement à son audience et/ou ses clients contre commission.
 
 **« Facilitateur de Paiement »** filiale à 100 % de Winkfluence (« TripPay »), qui gère les Services de Paiement, collecte les paiements des clients (« Pay-in ») en débitant le moyen de paiement associé à leur achat (carte de crédit, carte de débit, virement bancaire, cryptomonnaies, PayPal, etc.) et verse les fonds dus (« Tarif Net ») au Fournisseur d’Hébergement.
 
@@ -80,27 +80,27 @@ En plus des termes définis ailleurs dans cet Accord, les définitions suivantes
 
 **« Conditions de Paiement »** désigne les tarifs, disponibilités, offres, promotions, conditions de paiement et toute autre règle ou condition relative à la distribution des Chambres convenues mutuellement entre les Parties.
 
-**« Réservation Potentiellement Frauduleuse »** désigne (i) une Réservation résultant d’informations invalides ou incorrectes fournies à Wink au moment de la Réservation, ou suite à un litige de carte bancaire, ou à un signalement de charges non autorisées ; ou (ii) toute Réservation pouvant être associée à des transactions à haut risque ou frauduleuses antérieures.
+**« Réservation Potentiellement Frauduleuse »** désigne (i) une Réservation résultant d’informations invalides ou incorrectes fournies à Wink au moment de la Réservation, ou à la suite d’un litige de carte bancaire, ou d’un signalement de charges non autorisées ; ou (ii) toute Réservation pouvant être associée à des transactions antérieures à haut risque ou frauduleuses.
 
-**« Tarif(s) »** désigne le(s) tarif(s) de chambre d’hôtel mis à disposition de Wink par le Fournisseur d’Hébergement pour tout type de chambre ou tarif applicable dans le cadre de l’Accord à distribuer sur tous les Canaux Wink.
+**« Tarif(s) »** désigne le(s) tarif(s) de chambre d’hôtel mis à disposition de Wink par le Fournisseur d’Hébergement pour tout type de chambre ou type de tarif applicable dans le cadre de l’Accord à distribuer sur tous les Canaux Wink.
 
 **« Chambre(s) »** désigne l’hébergement situé dans tout Hôtel Participant ou logement.
 
-**« Taxes »** désigne toutes taxes locales, étatiques, fédérales et nationales et/ou frais de service, y compris, sans limitation, la TVA, taxes de vente, d’utilisation, d’accise, de séjour, de transit, de location, municipales, de station touristique et autres taxes similaires, frais ou charges gouvernementales.
+**« Taxes »** désigne toutes taxes locales, étatiques, fédérales et nationales et/ou frais de service, y compris, sans limitation, la TVA, taxes de vente, d’utilisation, d’accise, d’hébergement, de séjour, de location, municipales, de station touristique et autres taxes similaires, frais ou charges gouvernementales.
 
 **« TripPay »** désigne la filiale à 100 % collectant les paiements (Pay-in) et les versements (Pay-out) pour Wink, désignée comme Facilitateur de Paiement.
 
-**« Canaux de Vente »** désigne (i) les sites web exploités, gérés ou détenus par Wink pour d’autres entreprises afin de réaliser des Réservations accessibles uniquement par mot de passe délivré par Wink ; (ii) les connexions API entre Wink et les sites de voyage de ses clients ; ou (iii) tout autre mode de distribution par lequel Wink fournit des Chambres à ses clients pour leur distribution ou vente ultérieure, que ce soit sur des sites web ou autrement.
+**« Canaux de Vente »** désigne (i) les sites web exploités, gérés ou détenus par Wink pour d’autres entreprises afin de réaliser des Réservations accessibles uniquement par mot de passe délivré par Wink ; (ii) les connexions API entre Wink et les sites web de voyage de ses clients ; ou (iii) tout autre mode de distribution par lequel Wink fournit des Chambres à ses clients pour leur distribution ou vente ultérieure, que ce soit sur des sites web ou autrement.
 
 **1.1 Pas de Partenariat**
 
-1.1.1 Le présent Accord n’a pas pour objet, ni ne doit être interprété comme créant une coentreprise ou une relation de partenaires, de société ou de mandant et mandataire entre les Parties. Sauf accord écrit contraire, aucune Partie ne doit (i) conclure un contrat ou engagement avec des tiers en tant qu’agent de l’autre Partie, (ii) se présenter comme tel agent, ou (iii) agir ou représenter l’autre Partie de quelque manière que ce soit.
+1.1.1 Le présent Accord n’a pas pour objet, ni ne doit être interprété comme créant une coentreprise ou une relation de partenaires, de société ou de mandant et mandataire entre les Parties. Sauf accord écrit contraire, aucune Partie ne doit (i) conclure un contrat ou engagement avec des tiers en tant qu’agent de l’autre Partie, (ii) se présenter comme tel agent ou s’en prévaloir, ou (iii) agir ou représenter l’autre Partie de quelque manière que ce soit.
 
-1.1.2 Sauf accord écrit contraire de Wink ou disposition contraire dans cet Accord, le Fournisseur d’Hébergement ne doit pas publier sur ses sites web une déclaration, expresse ou implicite, indiquant que le site fait partie de Wink, est approuvé par Wink ou est un site officiel de Wink.
+1.1.2 Sauf accord écrit contraire de Wink ou disposition contraire dans cet Accord, le Fournisseur d’Hébergement ne doit publier nulle part sur son(ses) site(s) web une déclaration, expresse ou implicite, indiquant que le site fait partie de Wink, est approuvé par Wink ou est un site officiel de Wink.
 
 **2. Contrats avec les clients**
 
-Lorsque vous recevez une confirmation de réservation via la plateforme Wink, vous concluez un contrat directement avec le client et êtes responsable de fournir vos services selon les termes et au prix spécifiés dans la confirmation de réservation. Vous acceptez également de payer les frais associés, le cas échéant, tels que définis dans les Conditions de Paiement.
+Lorsque vous recevez une confirmation de réservation via la plateforme Wink, vous concluez un contrat directement avec le client et êtes responsable de fournir vos services selon les termes et au prix spécifiés sur la confirmation de réservation. Vous acceptez également de payer les frais associés, le cas échéant, tels que définis dans les Conditions de Paiement.
 
 **3. Indépendance des Fournisseurs d’Hébergement**
 
@@ -114,13 +114,13 @@ Les Fournisseurs d’Hébergement sont responsables de maintenir à jour et exac
 
 **5. Obligations légales**
 
-5.1 Les Fournisseurs d’Hébergement sont responsables de comprendre et de respecter toutes les lois, règles, règlements et contrats avec des tiers applicables à leur annonce.
+5.1 Les Fournisseurs d’Hébergement sont responsables de comprendre et de se conformer à toutes les lois, règles, règlements et contrats avec des tiers applicables à leur annonce.
 
 5.2 Les Fournisseurs d’Hébergement sont responsables du traitement et de l’utilisation des données personnelles des clients et autres conformément aux lois sur la protection de la vie privée applicables et aux présentes Conditions.
 
 **6. Frais de Réservation & Commissions**
 
-Wink fournit aux Fournisseurs d’Hébergement les outils numériques nécessaires pour distribuer et vendre leur inventaire en ligne via 5 canaux propriétaires. En activant votre établissement via la fonction d’auto-activation sur votre tableau de bord, votre établissement sera automatiquement réservable sur Traveliko.com et via le Réseau. Vous pouvez désactiver manuellement ces canaux dans l’extranet sous la section \- Distribution \- Canaux de vente.
+Wink fournit aux Fournisseurs d’Hébergement les outils numériques nécessaires pour distribuer et vendre leur inventaire en ligne via 5 canaux propriétaires. En activant votre établissement via la fonction d’auto-activation sur votre tableau de bord, votre établissement sera automatiquement réservable sur Traveliko.com et via le Réseau. Vous pouvez désactiver manuellement ces canaux dans l’extranet sous le menu \- Distribution \- Canaux de vente.
 
 * Traveliko.com – OTA sans commission (0 %)  
 * Winklinks \- Fonction lien dans la bio pour les réseaux sociaux comme Instagram.  
@@ -130,11 +130,11 @@ Wink fournit aux Fournisseurs d’Hébergement les outils numériques nécessair
 
 Les Frais de Réservation, Commissions et Frais de Paiement s’appliquent comme suit pour toute réservation confirmée :
 
-* Traveliko.com : Frais de Facilitateur de Paiement comme décrit dans les Conditions de Paiement (4 %) \+ Frais de Réservation Wink (1,5 %)  
-* WinkLinks : Frais de Facilitateur de Paiement (4 %) \+ Frais de Réservation Wink (1,5 %)  
-* Partage Social : Frais de Facilitateur de Paiement (4 %) \+ Frais de Réservation Wink (1,5 %)  
-* Moteur de Réservation : Frais de Facilitateur de Paiement (4 %) \+ Frais de Réservation Wink (1,5 %)  
-* Réseau Wink : Frais de Facilitateur de Paiement (4 %) \+ Frais de Réservation Wink (1,5 %) \+ Commission Affilié (commission négociée à la discrétion de l’hôtel)
+* Traveliko.com : Frais de Facilitateur de Paiement selon Conditions de Paiement (4 %) \+ Frais de Réservation Wink (1,5 %)  
+* WinkLinks : Frais de Facilitateur de Paiement selon Conditions de Paiement (4 %) \+ Frais de Réservation Wink (1,5 %)  
+* Partage Social : Frais de Facilitateur de Paiement selon Conditions de Paiement (4 %) \+ Frais de Réservation Wink (1,5 %)  
+* Moteur de Réservation : Frais de Facilitateur de Paiement selon Conditions de Paiement (4 %) \+ Frais de Réservation Wink (1,5 %)  
+* Réseau Wink : Frais de Facilitateur de Paiement selon Conditions de Paiement (4 %) \+ Frais de Réservation Wink (1,5 %) \+ Commission Affilié (commission négociée à la discrétion de l’hôtel)
 
 Exemple de calcul pour une réservation de 100 USD via Traveliko, Partage Social, Moteur de Réservation ou WinkLinks
 
@@ -173,124 +173,124 @@ Montant payable à l’hôtel (« Tarif Net ») \=\> 85,1 USD
 
 Le Fournisseur d’Hébergement doit s’assurer que ses coordonnées bancaires fournies à Wink sont exactes en permanence et doit notifier sans délai tout changement.
 
-Seule la personne signant cet accord est le représentant désigné unique du Fournisseur d’Hébergement, habilitée à demander des modifications des coordonnées bancaires et/ou informations de bénéficiaire. Aucune autre personne n’a cette autorité. Tout changement de représentant doit être notifié par écrit à Wink et ne sera effectif qu’après amendement écrit signé par les deux Parties.
+Seule la personne signant cet accord est le représentant désigné unique du Fournisseur d’Hébergement, habilitée à demander des modifications des coordonnées bancaires et/ou des informations de bénéficiaire. Aucune autre personne n’a cette autorité. Tout changement de représentant désigné doit être notifié par écrit à Wink et ne sera effectif qu’après amendement écrit signé par les deux Parties.
 
 **9. Modifications de réservation**
 
 9.1 Les Fournisseurs d’Hébergement sont responsables de toute modification de réservation en dehors de la politique d’annulation indiquée sur la confirmation de réservation acceptée via communication directe avec le Client.
 
-9.2 En cas d’erreur du Fournisseur d’Hébergement ayant entraîné la mise en ligne d’un Tarif incorrect, et qu’une Réservation est effectuée à ce Tarif erroné, la réservation doit être honorée au Tarif incorrect.
+9.2 En cas d’erreur du Fournisseur d’Hébergement ayant entraîné la mise en ligne d’un Tarif incorrect et d’une réservation au Tarif erroné, la réservation doit être honorée au Tarif incorrect.
 
 9.3 Wink ne sera pas responsable envers le Fournisseur d’Hébergement pour toute erreur de Tarif commise par ce dernier.
 
 **10. Identification des réservations / Coopération anti-fraude**
 
-10.1 Le Fournisseur d’Hébergement doit s’assurer que les coordonnées complètes et correctes des clients Wink sont correctement renseignées dans ses systèmes afin que chaque Réservation soit clairement identifiable comme une Réservation faite conformément à cet Accord.
+10.1 Le Fournisseur d’Hébergement doit s’assurer que les coordonnées complètes et correctes des clients Wink sont correctement renseignées dans ses systèmes afin que chaque Réservation soit clairement identifiable comme une Réservation faite conformément au présent Accord.
 
-10.2 Chaque Fournisseur d’Hébergement Participant doit faire des efforts commercialement raisonnables pour vérifier, lors du check-in, que l’identification présentée par un Client correspond aux informations de réservation. Si une réservation est une Réservation Potentiellement Frauduleuse, ou si certaines données fournies par un Client ne peuvent être vérifiées par Wink, le Fournisseur d’Hébergement et Wink collaboreront pour traiter la Réservation Potentiellement Frauduleuse, ce qui peut inclure l’annulation de la réservation à tout moment. Le Fournisseur d’Hébergement s’engage à coopérer pleinement avec Wink et à fournir toute information demandée concernant la Réservation Potentiellement Frauduleuse.
+10.2 Chaque Fournisseur d’Hébergement Participant doit faire des efforts commercialement raisonnables pour vérifier, lors du check-in, que l’identification présentée par un Client correspond aux informations de réservation. En cas de Réservation Potentiellement Frauduleuse ou si certaines données fournies par un Client ne peuvent être vérifiées par Wink, le Fournisseur d’Hébergement et Wink collaboreront pour traiter la Réservation Potentiellement Frauduleuse, ce qui peut inclure l’annulation de la réservation à tout moment. Le Fournisseur d’Hébergement s’engage à coopérer pleinement avec Wink et à fournir toute information demandée concernant la Réservation Potentiellement Frauduleuse.
 
 10.3 Les Parties conviennent que si un Fournisseur d’Hébergement ne respecte pas cette clause et que la Réservation est ultérieurement identifiée comme Potentiellement Frauduleuse, Wink ne pourra être tenu responsable.
 
 **11. Indisponibilité / Non-exécution**
 
-11.1 En cas d’indisponibilité (surbooking ou autre) nécessitant le relogement d’un Client, le Fournisseur d’Hébergement s’engage à faire tout son possible pour maintenir les Clients et Réservations afin de permettre aux Clients de rester dans l’hébergement autant que possible. Si un relogement est nécessaire, le Fournisseur d’Hébergement s’engage à :
+11.1 En cas d’indisponibilité (surbooking ou autre) nécessitant le relogement d’un Client, le Fournisseur d’Hébergement s’engage à faire tout son possible pour maintenir les Clients et Réservations afin de permettre aux Clients de rester dans l’hébergement autant que possible. Si un relogement est inévitable, le Fournisseur d’Hébergement s’engage à :
 
 * Informer immédiatement Wink avant le relogement ;  
-* Reloger le Client dans un établissement alternatif de catégorie égale ou supérieure dans la même zone, aux mêmes conditions réservées, sans frais supplémentaires pour le Client, incluant notamment :  
+* Reloger le Client dans un établissement de catégorie égale ou supérieure dans la même zone, aux mêmes conditions réservées, sans frais supplémentaires pour le Client, incluant notamment :  
 * Tous les frais de transport et autres dépenses liées au relogement à la charge du Fournisseur d’Hébergement.  
-* Autoriser Wink à déduire tous les coûts directs liés à l’indisponibilité et/ou au relogement du solde dû au Fournisseur d’Hébergement si Wink subit une pénalité financière, compensation ou coût lié à cette indisponibilité et/ou relogement.
+* Autoriser Wink à déduire tous les coûts directs liés à l’indisponibilité et/ou au relogement du solde dû au Fournisseur d’Hébergement si Wink subit une pénalité financière, compensation ou coût lié à cette situation.
 
-11.2 En cas de non-exécution par le Fournisseur d’Hébergement des conditions du présent Accord, y compris conditions inacceptables des locaux et/ou déficience des Installations & Services, Wink pourra suspendre les paiements et exiger l’exécution correcte des termes de la Réservation. Le Fournisseur d’Hébergement supportera intégralement le coût de toute compensation due au Client affecté, dégageant Wink de toute responsabilité liée à une exécution défectueuse.
+11.2 En cas de non-exécution par le Fournisseur d’Hébergement des conditions du présent Accord, y compris conditions inacceptables des locaux et/ou déficience des Équipements & Services, Wink pourra suspendre les paiements et exiger l’exécution correcte des termes de la Réservation. Le Fournisseur d’Hébergement supportera intégralement le coût de toute compensation due au Client affecté, dégageant Wink de toute responsabilité liée à une exécution défectueuse.
 
 **12. Conditions des établissements hôteliers participants**
 
-Dès que possible, le Fournisseur d’Hébergement doit notifier via la section « Annonces » de l’extranet Wink tout travaux de construction, rénovation, mise à jour ou autre pouvant affecter la capacité à fournir Chambres, Installations & Services ou pouvant nuire au séjour d’un Client. En cas d’indisponibilité ou non-exécution liée à ces circonstances, la Section 11 s’applique et le Fournisseur d’Hébergement supportera intégralement les compensations dues, dégageant Wink de toute responsabilité.
+Dès que possible, le Fournisseur d’Hébergement doit notifier via la section « Annonces » de l’extranet Wink tout travaux de construction, rénovation, mise à jour ou autre pouvant affecter la capacité à fournir Chambres, Équipements & Services ou pouvant nuire au séjour d’un Client. En cas d’indisponibilité ou non-exécution liée à ces circonstances, la Section 11 s’applique et le Fournisseur d’Hébergement supportera intégralement les compensations dues, dégageant Wink de toute responsabilité.
 
 **13. Modification, Durée et Résiliation**
 
-13.1 Modification. Sauf exigence légale, Wink peut modifier ces Conditions à tout moment. En cas de modifications importantes, les Conditions révisées seront publiées sur la Plateforme Wink avec mise à jour de la date « Dernière mise à jour ». Si vous êtes concerné, un préavis d’au moins trente (30) jours sera donné avant entrée en vigueur. Sans résiliation avant cette date, l’utilisation continue des Services vaut acceptation des modifications.
+13.1 Modification. Sauf exigence légale contraire, Wink peut modifier ces Conditions à tout moment. En cas de modifications importantes, les Conditions révisées seront publiées sur la Plateforme Wink avec mise à jour de la date « Dernière mise à jour ». Si vous êtes concerné, un préavis d’au moins trente (30) jours sera donné avant entrée en vigueur. En l’absence de résiliation avant cette date, l’utilisation continue des Services vaut acceptation des modifications.
 
 13.2 Durée. Sauf accord contraire, cet Accord débute à la date des présentes pour une durée indéterminée.
 
 13.3 Cet Accord est en vigueur jusqu’à résiliation par les Parties comme suit :
 
-* Par Wink, à tout moment et sans motif, avec un préavis écrit de trente (30) jours calendaires ;  
-* Par le Fournisseur d’Hébergement, sans motif, à tout moment, sans préavis, en désactivant la propriété sur le tableau de bord extranet Wink.  
+* Par Wink, à tout moment et sans motif, avec un préavis écrit de trente (30) jours calendaires à l’autre Partie ;  
+* Par le Fournisseur d’Hébergement, sans motif, à tout moment, sans préavis, en désactivant la propriété via le tableau de bord extranet Wink.  
 * Par tout autre moyen expressément prévu dans cet Accord.
 
-13.4 Wink se réserve le droit de résilier immédiatement cet Accord par écrit si :
+13.4 Wink se réserve également le droit, à sa seule discrétion, de résilier immédiatement cet Accord par écrit si :
 
-* Le Fournisseur d’Hébergement entre en insolvabilité, faillite, liquidation, administration judiciaire ou procédure similaire (qu’elle soit initiée par lui ou ses créanciers), non résolue favorablement dans les soixante (60) jours ;  
+* Le Fournisseur d’Hébergement entre en insolvabilité, faillite, liquidation, administration judiciaire ou procédure similaire (qu’elle soit initiée par lui ou ses créanciers), non résolue en sa faveur dans les soixante (60) jours ;  
 * Un créancier exécute ou tente d’exécuter une hypothèque sur l’Hôtel Participant ;  
-* Le Fournisseur d’Hébergement cesse son activité normale ;  
+* Le Fournisseur d’Hébergement cesse ses activités normales ;  
 * Le Fournisseur d’Hébergement perd son bail ou ses droits d’exploitation sous sa marque actuelle ;  
-* Changement des caractéristiques de l’hébergement, y compris travaux et rénovations ;  
+* Il y a un changement dans les caractéristiques de l’hébergement, y compris travaux et rénovations ;  
 * Ou en cas de Force Majeure.
 
 13.5 En cas de résiliation anticipée ou d’expiration, le Fournisseur d’Hébergement doit :
 
-* Honorer toutes les Réservations faites avant la date effective, aux tarifs initialement réservés, y compris celles avec date d’arrivée postérieure à la résiliation, ou fournir des services alternatifs adaptés ;  
-* Régler les comptes en conséquence.
+* Honorer toutes les Réservations faites avant la date de résiliation ou d’expiration, aux tarifs initialement réservés, y compris celles avec date d’arrivée postérieure à la résiliation, ou fournir des services alternatifs appropriés ;  
+* Régler le compte en conséquence.
 
 **14. Déclarations et Garanties**
 
-Le Fournisseur d’Hébergement garantit qu’il respectera pleinement :
+Le Fournisseur d’Hébergement garantit et déclare qu’il respectera pleinement :
 
-14.1 La fourniture de toutes Chambres, Installations & Services conformément aux bonnes pratiques du secteur, avec compétence, soin et diligence ;
+14.1 Que la fourniture de toutes les Chambres et Équipements & Services sera conforme aux bonnes pratiques du secteur, avec compétence, soin, attention et diligence ;
 
-14.2 Que tout le personnel de l’Hôtel Participant est qualifié et formé pour remplir ses obligations ;
+14.2 Que tout le personnel de l’Hôtel Participant sera qualifié et formé pour remplir ses obligations ;
 
-14.3 Le respect de toutes lois, normes et exigences des autorités compétentes concernant les Chambres, services et obligations ;
+14.3 Que le Fournisseur d’Hébergement respectera toutes les lois, normes et exigences des autorités compétentes relatives à la fourniture des Chambres, autres parties de l’Hôtel ou services associés ;
 
 14.4 Que chaque Hôtel Participant a lu et accepté les termes du présent Accord ;
 
-14.5 Que toutes les Chambres et Installations sont sûres et conformes aux lois locales, étatiques, fédérales et nationales. Le Fournisseur garantit qu’aucune Chambre ni partie de l’Hôtel Participant ne possède de chauffe-eau à gaz individuel ;
+14.5 Que toutes les Chambres et Équipements & Services fournis sont sûrs et conformes à toutes les lois locales, étatiques, fédérales et nationales. Le Fournisseur d’Hébergement garantit en outre qu’aucune Chambre (ni autre partie de l’Hôtel) ne dispose de chauffe-eau à gaz individuels ;
 
-14.6 Que toutes les informations fournies à Wink sont à jour et exactes ;
+14.6 Que toutes les informations fournies directement ou indirectement à Wink sont à jour et exactes ;
 
-14.7 Que le Fournisseur n’est pas incorporé ni résident d’un pays soumis à sanctions économiques ou commerciales ;
+14.7 Que le Fournisseur d’Hébergement n’est pas incorporé ni résident d’un pays soumis à des sanctions économiques ou commerciales ;
 
 14.8 De réaliser à ses frais tout travail nécessaire pour éliminer toute déficience ou défaut signalé par les autorités immédiatement, en informant Wink sans délai et en tenant compte des recommandations raisonnables de Wink.
 
 **15. Incidents et Réclamations des Clients**
 
-15.1 En cas d’incident affectant un Client, le Fournisseur doit en informer Wink dès que possible et coopérer pleinement pour la gestion appropriée.
+15.1 En cas d’incident affectant un Client, le Fournisseur d’Hébergement doit en informer Wink dès que possible et coopérer pleinement pour gérer l’incident.
 
-15.2 Le Fournisseur s’engage à coopérer avec Wink pour traiter toutes réclamations ou plaintes des Clients et à répondre dans un délai de sept (7) jours calendaires ou selon l’accord de niveau de service.
+15.2 Le Fournisseur d’Hébergement s’engage à coopérer avec Wink pour traiter toutes réclamations ou plaintes des Clients et à répondre en détail à toute demande de Wink dans un délai de sept (7) jours calendaires ou selon l’accord de niveau de service.
 
-15.3 Si Wink doit indemniser un Client suite à un incident lié au Fournisseur, ce dernier s’engage à rembourser Wink rapidement, conformément à la Section 33 (« Indemnisation »).
+15.3 Si Wink doit indemniser un Client suite à un incident, réclamation ou plainte causé par un acte ou omission du Fournisseur d’Hébergement, ce dernier s’engage à rembourser Wink rapidement, conformément à la Section 33 (« Indemnisation »).
 
-15.4 Le Fournisseur autorise Wink à déduire tous coûts, dépenses et compensations liés aux incidents et plaintes des Clients de son solde.
+15.4 Le Fournisseur d’Hébergement autorise Wink à déduire tous les coûts, dépenses et compensations liés aux incidents et plaintes des Clients de son solde.
 
 **16. Droits d’Audit**
 
-16.1 Pendant la durée, Wink peut auditer les registres pertinents du Fournisseur et/ou des Hôtels Participants pour vérifier (i) l’exécution des Réservations ; (ii) tous paiements reçus par Wink et/ou Clients ; (iii) tous paiements versés ou à verser par Wink et/ou Clients.
+16.1 Pendant la durée de l’Accord, Wink peut auditer les registres pertinents du Fournisseur d’Hébergement et/ou des Hôtels Participants pour vérifier (i) l’exécution des Réservations ; (ii) tous paiements reçus par Wink et/ou les Clients ; (iii) tous paiements versés ou à verser par Wink et/ou les Clients.
 
-16.2 Chaque Partie supporte ses frais d’audit, sauf si l’audit révèle un manquement du Fournisseur à ses obligations, auquel cas il supportera l’intégralité des frais et devra se conformer.
+16.2 Chaque Partie supporte ses propres frais d’audit, sauf si l’audit révèle un manquement du Fournisseur d’Hébergement à ses obligations, auquel cas il devra en supporter l’intégralité et prendre les mesures nécessaires pour se conformer.
 
 **17. Assurance**
 
-Le Fournisseur doit maintenir une assurance adéquate auprès d’assureurs réputés et agréés, couvrant tous risques tiers liés à la fourniture d’hébergement (ou services) et/ou au présent Accord, y compris la responsabilité de Wink pour (i) perte ou dommage matériel ; (ii) blessures ou décès ; (iii) perte ou dommage de tiers ; (iv) responsabilité envers tiers.
+Le Fournisseur d’Hébergement doit maintenir une assurance adéquate auprès d’assureurs réputés et agréés dans le pays concerné, couvrant tous risques tiers liés à la fourniture d’hébergement (ou d’équipements et services) et/ou au présent Accord, y compris la responsabilité de Wink pour (i) perte ou dommage à des biens ; (ii) blessures ou décès ; (iii) perte ou dommage à des biens tiers ; (iv) responsabilité envers des tiers.
 
 **18. Anti-corruption, restrictions commerciales et éthique**
 
-Wink applique une tolérance zéro aux violations des normes commerciales internationales, législations anti-corruption, restrictions commerciales, flux de fonds et financement du terrorisme.
+Wink applique une politique de tolérance zéro envers les violations des normes commerciales internationales, la prévention de la corruption et des restrictions applicables au commerce, aux flux financiers et au financement du terrorisme.
 
-Le Fournisseur garantit qu’il respecte et fera respecter par ses parties associées le Code de Conduite des Fournisseurs Wink.
+Le Fournisseur d’Hébergement garantit qu’il respecte et fera respecter par ses parties associées le Code de Conduite des Fournisseurs Wink.
 
-Le Fournisseur déclare et garantit qu’il respecte toutes les normes internationales, restrictions commerciales, législations anti-corruption, y compris la UK Bribery Act 2010 et la Singapore Prevention of Corruption Act.
+Il déclare et garantit qu’il respecte toutes les normes internationales, restrictions commerciales, législations anti-corruption, y compris la UK Bribery Act 2010 et la Singapore Prevention of Corruption Act.
 
-Le Fournisseur garantit qu’à sa connaissance, ni lui ni ses parties associées n’ont été condamnés pour corruption ni font l’objet d’enquête gouvernementale.
+Le Fournisseur d’Hébergement garantit qu’à sa connaissance, ni lui ni ses parties associées n’ont été condamnés pour corruption ou ne font l’objet d’enquête par des autorités gouvernementales ou réglementaires.
 
 **19. Confidentialité**
 
-19.1 Informations Confidentielles. Les Parties reconnaissent que dans l’exécution de cet Accord, elles peuvent avoir accès à des informations confidentielles (les « Informations Confidentielles »), incluant données clients, volumes de transactions, plans marketing, informations financières, techniques, statistiques, données personnelles, logiciels, termes de l’Accord, et autres informations non publiques désignées comme confidentielles.
+19.1 Informations Confidentielles. Les Parties conviennent que dans l’exécution du présent Accord, chacune peut avoir accès à des informations confidentielles de l’autre (les « Informations Confidentielles »), incluant données clients, volume de transactions, plans marketing, informations financières, techniques, statistiques, données personnelles, logiciels, termes de l’Accord, et autres informations non publiques désignées comme confidentielles.
 
-19.2 Protection des Informations Confidentielles. Chaque Partie s’engage à (a) conserver la propriété exclusive des Informations Confidentielles, (b) maintenir la confidentialité par des méthodes prudentes, (c) ne divulguer qu’aux personnes autorisées, (d) ne pas copier, publier ou divulguer à des tiers, (e) restituer ou détruire les Informations sur demande écrite. En cas de traitement de données personnelles, un accord de traitement des données (DPA) sera conclu.
+19.2 Protection des Informations Confidentielles. Chaque Partie s’engage à (a) considérer les Informations Confidentielles comme propriété exclusive de la Partie divulgatrice et à ne les utiliser que pour l’exécution de l’Accord, (b) maintenir la confidentialité par des méthodes prudentes, (c) ne divulguer qu’aux personnes autorisées, (d) ne pas copier, publier, transmettre ou rendre accessibles à des tiers, (e) retourner ou détruire les Informations sur demande écrite. En cas de traitement de données personnelles, un accord de traitement des données (DPA) sera conclu.
 
-19.3 Divulgation Permise. Les Informations Confidentielles n’incluent pas celles (i) devenues publiques sans faute, (ii) détenues avant l’Accord, (iii) reçues d’un tiers sans obligation de confidentialité, (iv) requises par la loi. Wink peut divulguer cet Accord en toute confidentialité à ses sociétés affiliées.
+19.3 Divulgation autorisée. Les Informations Confidentielles n’incluent pas les informations (i) devenues publiques sans faute de la Partie réceptrice, (ii) détenues avant l’Accord, (iii) reçues d’un tiers sans obligation de confidentialité, (iv) requises par la loi ou autorité. Wink peut divulguer cet Accord en toute confidentialité à ses sociétés affiliées.
 
-19.4 Données Clients. Les Parties s’efforceront de protéger la confidentialité et la vie privée des Données Clients, en conformité avec les lois applicables, en utilisant des mesures de sécurité appropriées. Le Fournisseur doit notifier Wink de toute violation de sécurité dans un délai d’un jour. Chaque Partie doit avoir une politique de confidentialité accessible aux clients. Les droits d’accès, rectification, effacement, opposition, portabilité et restriction peuvent être exercés par demande écrite.
+19.4 Données Clients. Les Parties s’efforceront de protéger la confidentialité et la vie privée des Données Clients, en conformité avec les lois applicables, en utilisant des mesures de sécurité appropriées. Le Fournisseur d’Hébergement doit notifier Wink de toute violation de sécurité dans un délai d’un jour. Chaque Partie doit avoir une politique de confidentialité accessible aux clients. Les droits d’accès, rectification, effacement, opposition, portabilité et restriction peuvent être exercés par demande écrite.
 
 19.5 Annonces. Aucune Partie ne doit publier de communication mentionnant l’autre sans consentement écrit préalable, qui ne sera pas refusé ou retardé de manière déraisonnable.
 
@@ -298,59 +298,59 @@ Le Fournisseur garantit qu’à sa connaissance, ni lui ni ses parties associée
 
 **20. Droits de Propriété Intellectuelle**
 
-20.1 Le Fournisseur reconnaît que Wink et/ou ses concédants conservent tous droits de propriété intellectuelle liés à Wink, y compris logo, contenu et données Wink. Rien dans cet Accord ne transfère ces droits au Fournisseur.
+20.1 Le Fournisseur d’Hébergement reconnaît que Wink et/ou ses concédants conservent tous droits de propriété intellectuelle sur la Plateforme Wink, y compris logo, contenu et données Wink. Rien dans cet Accord ne transfère ces droits au Fournisseur d’Hébergement.
 
-20.2 Le Fournisseur ne doit pas divulguer, intégrer, utiliser ou rendre disponible le contenu et les données Wink avec son propre contenu ou celui d’un concurrent Wink, sauf pour permettre le Service conformément à cet Accord. Le contenu ne doit pas inclure de lien ou référence à un concurrent Wink.
+20.2 Le Fournisseur d’Hébergement ne doit pas divulguer, intégrer, utiliser ou rendre disponible le contenu et les données Wink avec son propre contenu ou celui d’un concurrent Wink, sauf pour permettre le Service conformément à l’Accord. Il ne doit pas modifier ou créer d’œuvres dérivées ni inclure de liens vers un concurrent Wink.
 
-20.3 Le Fournisseur ne doit pas enregistrer ou utiliser de noms de domaine incorporant « Wink » ou ses variantes.
+20.3 Le Fournisseur d’Hébergement ne doit pas enregistrer ou utiliser de noms de domaine incorporant « Wink » ou ses variantes.
 
 20.4 En concluant cet Accord, Wink ne renonce à aucun droit lié à sa Propriété Intellectuelle.
 
 **21. Changement de Propriété**
 
-21.1 Le Fournisseur (et chaque Hôtel Participant) ne doit pas vendre, louer ou céder son intérêt dans un établissement sans préavis écrit de trois (3) mois. En cas de cession, l’Accord (y compris les Réservations) doit être transféré à la nouvelle entité, sous réserve des dispositions.
+21.1 Le Fournisseur d’Hébergement (et chaque Hôtel Participant) ne doit pas vendre, louer ou céder son intérêt dans un établissement sans préavis écrit de trois (3) mois. En cas de cession, le contrat doit prévoir la cession ou novation de cet Accord au nouvel entité.
 
-21.2 Si Wink ne souhaite pas poursuivre avec la nouvelle entité, les Parties peuvent convenir d’une résiliation immédiate sans préjudice des Réservations existantes.
+21.2 Si Wink ne souhaite pas poursuivre avec la nouvelle entité, les Parties peuvent convenir de résilier immédiatement l’Accord sans préjudice des réservations existantes.
 
-**22. Contenu de l’Annonce**
+**22. Contenu de l’annonce**
 
-22.1 Wink fournira l’accès à l’extranet. Le Fournisseur s’engage à télécharger toutes les informations et contenus relatifs au produit (photos, textes, descriptions, équipements, etc.) pour assurer une distribution optimale et à maintenir ces contenus à jour. En cas de non-fourniture, Wink est autorisé à les télécharger directement depuis le site du Fournisseur, qui assume toute responsabilité. Le Fournisseur autorise Wink à modifier la taille et résolution des contenus pour marketing.
+22.1 Wink fournira l’accès à l’extranet. Le Fournisseur d’Hébergement s’engage à télécharger toutes les informations et contenus relatifs au produit (photos, textes, descriptions, équipements, etc.) pour assurer une distribution optimale et à maintenir ces contenus à jour. En cas de non-fourniture, Wink est autorisé à les télécharger directement depuis le site du Fournisseur, qui assume toute responsabilité. Le Fournisseur autorise Wink à modifier la taille et résolution des contenus pour marketing.
 
-22.2 En cas d’impossibilité d’accès à l’extranet pour cause indépendante, le Fournisseur doit en informer Wink rapidement.
+22.2 En cas d’impossibilité d’accès à l’extranet pour des raisons indépendantes, le Fournisseur doit en informer Wink rapidement.
 
-22.3 Le Fournisseur garantit détenir tous droits nécessaires pour fournir le contenu à Wink, accorde à Wink une licence non exclusive, gratuite, irrévocable, mondiale et sous-licenciable pour utiliser, modifier, afficher, publier le contenu et la propriété intellectuelle à des fins d’exécution de l’Accord, garantit que ces droits ne portent pas atteinte à des tiers, et assume la responsabilité de tout contenu diffamatoire ou immoral.
+22.3 Le Fournisseur garantit détenir tous droits nécessaires pour fournir le contenu à Wink, lui accorde une licence non exclusive, gratuite, irrévocable, mondiale et sous-licenciable pour usage marketing et distribution, garantit que ces droits ne portent pas atteinte à des tiers, et assume la responsabilité de tout contenu diffamatoire ou immoral.
 
-22.4 Le Fournisseur indemnisera Wink et ses partenaires contre toute réclamation liée à la propriété intellectuelle.
+22.4 Le Fournisseur indemnisera Wink et ses partenaires contre toute réclamation liée aux droits de propriété intellectuelle.
 
-22.5 Le Fournisseur doit fournir des mises à jour sur l’état des réclamations IPR et Wink peut prendre le contrôle de la réclamation à ses frais si nécessaire.
+22.5 Le Fournisseur doit fournir des mises à jour sur l’état des réclamations IPR et Wink peut prendre le contrôle de la réclamation à ses frais en cas de non-respect.
 
 **23. Publicité / Communications externes**
 
 23.1 Le Fournisseur ne doit pas publier de communication relative à Wink ou cet Accord sans consentement écrit préalable, sous peine de responsabilité directe.
 
-23.2 Le Fournisseur doit consulter Wink sur le contenu de toute communication envisagée et fournir une copie de celle-ci.
+23.2 Le Fournisseur doit consulter Wink sur le contenu de toute communication envisagée et fournir une copie de celle effectivement publiée.
 
-**24. Prééminence**
+**24. Primauté**
 
-24.1 Cet Accord permet la conclusion d’accords commerciaux individuels entre Wink et les Fournisseurs. En cas de conflit, les termes de cet Accord s’appliquent sous réserve de ce qui suit :
+24.1 Cet Accord permet la conclusion d’accords commerciaux individuels entre Wink et chaque Fournisseur. En cas de conflit, les termes de cet Accord s’appliquent sous réserve de ce qui suit :
 
-24.2 Pour les Conditions de Paiement concernant annulations, non-présentations, politiques de paiement, libérations et disponibilités, les termes de cet Accord prévalent ;
+24.2 Pour les Conditions de Paiement concernant annulations, non-présentations, politiques de paiement, libérations et disponibilités standards, les termes de cet Accord prévalent ;
 
 24.3 Pour les tarifs, occupations minimales, réductions pour tiers et enfants, et marchés applicables, les conditions des accords commerciaux individuels prévalent.
 
-**25. Autorité de Signature – Représentation et Signature du Fournisseur**
+**25. Autorité de signature – Représentation et signature du Fournisseur**
 
-25.1 Le Fournisseur garantit que la personne signant cet Accord a le pouvoir de lier chaque Hôtel Participant et s’engage à respecter les obligations.
+25.1 Le Fournisseur garantit que la personne signant cet Accord a le pouvoir de l’engager pour chaque Hôtel Participant et que ces derniers respecteront leurs obligations.
 
-25.2 Le Fournisseur accepte que l’acceptation électronique de cet Accord et ses modifications soit valide et contraignante.
+25.2 Le Fournisseur accepte explicitement que l’acceptation électronique de cet Accord et de ses Conditions, y compris modifications, soit valide et contraignante.
 
 **26. Langue**
 
-La version anglaise de cet Accord prévaut en cas de divergence avec les traductions.
+La version anglaise de cet Accord prévaut en cas de divergence avec une traduction.
 
 **27. Renonciations**
 
-Aucune renonciation à une violation ou condition ne vaut renonciation à d’autres violations.
+Aucune renonciation à une violation ou condition ne vaut renonciation à d’autres violations ou conditions.
 
 **28. Divisibilité**
 
@@ -362,25 +362,25 @@ Les Parties sont des contractants indépendants et ne sont pas agents ou partena
 
 **30. Cession**
 
-30.1 Aucune Partie ne peut céder ses droits ou obligations sans consentement écrit, sauf Wink à une société affiliée.
+30.1 Aucune Partie ne peut céder ses droits ou obligations sans consentement écrit préalable, sauf Wink qui peut céder à une société affiliée sans consentement.
 
-30.2 Cet Accord bénéficie aux Parties et leurs successeurs, sans conférer de droits à des tiers.
+30.2 Cet Accord bénéficie aux Parties et leurs successeurs, sans conférer de droits à des tiers sauf disposition contraire.
 
 **31. Force Majeure**
 
-Wink n’est pas responsable des retards ou manquements dus à des causes hors de son contrôle raisonnable, y compris catastrophes naturelles, guerre, terrorisme, grèves, pandémies, etc.
+Wink n’est pas responsable des retards ou manquements dus à des causes hors de son contrôle raisonnable, incluant catastrophes naturelles, guerre, terrorisme, grèves, pandémies, etc.
 
-**32. Limitation de Responsabilité**
+**32. Limitation de responsabilité**
 
-32.1 Dans la limite permise par la loi, aucune Partie n’est responsable des dommages indirects, spéciaux ou punitifs, sauf en cas de violation de confidentialité ou propriété intellectuelle.
+32.1 Dans la limite permise par la loi, aucune Partie ne sera responsable des dommages indirects, spéciaux ou punitifs, sauf en cas de violation des droits de confidentialité ou propriété intellectuelle.
 
-32.2 La responsabilité ne peut être exclue en cas de décès, blessure, fraude ou autres obligations légales impératives.
+32.2 La responsabilité ne peut être exclue en cas de décès, blessure, fraude ou autres cas non limitables par la loi.
 
 32.3 Les Parties reconnaissent que ces limitations sont justes et raisonnables.
 
 **33. Indemnisation**
 
-Dans la limite permise par la loi, vous acceptez de dégager, défendre et indemniser Wink et ses affiliés contre toute réclamation liée à (i) votre violation des Conditions ; (ii) votre mauvaise utilisation des Services ; (iii) votre manquement à déclarer ou collecter les taxes ; (iv) votre violation de lois ou droits tiers.
+Dans la limite permise par la loi, vous acceptez de dégager, défendre et indemniser Wink, ses Fournisseurs et filiales contre toute réclamation liée à (i) votre violation des Conditions ; (ii) votre mauvaise utilisation des Services ; (iii) votre manquement à déclarer ou collecter les taxes ; (iv) votre violation de lois ou droits tiers.
 
 **34. Droit applicable et juridiction**
 
@@ -390,15 +390,15 @@ Dans la limite permise par la loi, vous acceptez de dégager, défendre et indem
 
 **35. Exemplaires**
 
-Cet Accord peut être signé en plusieurs exemplaires, chacun étant un original. Une copie scannée ou électronique de la signature de Wink a la même validité qu’une signature manuscrite.
+Cet Accord peut être signé en plusieurs exemplaires, chacun étant un original. Une copie scannée ou électronique de la signature de Wink a la même validité qu’un original.
 
 **36. Accord complet**
 
 36.1 Cet Accord (y compris formulaires, annexes) constitue l’intégralité de l’accord entre les Parties et remplace tout accord antérieur.
 
-36.2 Si une disposition devient invalide, les Parties remplaceront cette disposition par une valide ayant un effet similaire.
+36.2 Si une disposition devient invalide, les Parties resteront liées par les autres dispositions et remplaceront la disposition invalide par une disposition valide ayant un effet similaire.
 
-**37. Entrée en vigueur**
+**37. Exécution**
 
 L’Accord prend effet après confirmation écrite d’acceptation par Wink. En s’inscrivant au programme partenaire Wink, le Fournisseur accepte les termes, y compris les modifications.
 
@@ -408,4 +408,4 @@ Le Fournisseur déclare avoir lu et accepté toutes les conditions. L’acceptat
 
 Toutes notifications doivent être en anglais, écrites, et remises en main propre, par courrier recommandé, ou par coursier international reconnu (ex. FedEx, UPS, DHL) au siège social ou par e-mail à la personne de contact.
 
-Une notification est réputée reçue (i) à la signature d’un accusé de réception si remise en main propre, (ii) à la preuve de livraison si courrier recommandé, (iii) à la date enregistrée par le coursier, (iv) à la réception d’un accusé de réception par e-mail.
+Une notification est réputée reçue (i) à la remise contre signature, (ii) à la preuve de livraison par courrier recommandé, (iii) à la date enregistrée par le coursier, (iv) à la réception d’un accusé de réception par e-mail.
