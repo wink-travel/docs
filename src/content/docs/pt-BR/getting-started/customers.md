@@ -17,7 +17,7 @@ Marcas e redes têm necessidades um pouco diferentes de uma única propriedade. 
 
 - Gerenciar múltiplas propriedades sob uma única conta.
 - Designar gerentes para as propriedades
-- Usar [WinkLinks](/pt-BR/link-manager/wink-links), [WordPress](/pt-BR/integrations/wordpress) e nossos [Web Components](/pt-BR/integrations/web-components) para divulgar e vender múltiplas propriedades em um só lugar.
+- Usar [WinkLinks](/pt-BR/portal/link-manager/wink-links), [WordPress](/pt-BR/integrations/wordpress) e nossos [Web Components](/pt-BR/integrations/web-components) para divulgar e vender múltiplas propriedades em um só lugar.
 
 ## Empresas de gestão
 
@@ -42,7 +42,7 @@ Corporações exigem mais de uma plataforma de viagens:
 - Precisam de gestão de despesas e integração de relatórios.
 - Necessitam de suporte de concierge, assim como serviços MICE em eventos.
 
-Viajantes corporativos podem gerenciar suas próprias contas em nosso [portal corporativo](/pt-BR/corporate/what-is-group) ou usar nosso plugin oficialmente suportado [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) e integração com [Concur](https://www.concur.com/).
+Viajantes corporativos podem gerenciar suas próprias contas em nosso [portal corporativo](/pt-BR/portal/corporate/what-is-group) ou usar nosso plugin oficialmente suportado [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) e integração com [Concur](https://www.concur.com/).
 
 ## Desenvolvedores
 

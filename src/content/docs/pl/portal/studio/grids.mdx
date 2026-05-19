@@ -1,0 +1,315 @@
+---
+title: Siatki
+description: Ten artykuł przeprowadzi Cię przez proces tworzenia siatek z wyselekcjonowanych list i zapisanych wyszukiwań, a następnie promowania ich na Twojej stronie.
+sidebar:
+  order: 8
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '/src/components/cloudinary-image.astro';
+
+Siatka reprezentuje listę dostawców i zasobów oraz udostępnia szczegóły za pomocą interaktywnego, rezerwowanego interfejsu siatki.
+Siatka obsługuje wyświetlanie dowolnych zasobów z Twojej wyselekcjonowanej listy lub zapisanego wyszukiwania.
+Użytkownik wchodzi w interakcję z siatką w taki sam sposób, jak z pojedynczą [kartą](/pl/portal/studio/cards), z jedną dodatkową funkcją:
+
+1. Przeglądanie siatki przez kliknięcie przycisku `Pokaż więcej` (*gdy dostępne są kolejne elementy*).
+
+<figure>
+<CloudinaryImage
+      width="700"
+      height="319"
+      resize="scale"
+      quality="best"
+      alt="Podgląd siatki"
+      src="academy/grid-example"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Siatka pokazująca różne typy pokoi*</figcaption>
+</figure>
+
+Powyżej znajduje się przykład naszej siatki pokazującej listę kart typów pokoi.
+
+Reszta tego artykułu przeprowadzi Cię przez proces tworzenia, dostosowywania i udostępniania siatki Twoim użytkownikom.
+
+## Typy siatek
+
+Istnieją trzy typy siatek:
+
+1. Siatka oparta na [wyselekcjonowanej liście](/pl/portal/studio/curated-lists#list-actions).
+2. Siatka oparta na [zapisanym wyszukiwaniu](/pl/portal/studio/saved-searches#list-actions).
+3. Siatka oparta na lokalizacji i kryteriach sortowania (*tzw. siatka rankingowa*).
+
+## Siatka z wyselekcjonowanej listy
+
+To siatka, która wykorzystuje zasoby zgromadzone w jednej z Twoich wyselekcjonowanych list i przekształca tę listę w rezerwowane zasoby podróżne, które możesz pokazać swoim użytkownikom.
+
+### Tworzenie
+
+Przejdź do `Inventory > Curated Lists` z głównego paska nawigacji. W tym przykładzie użyjemy Twojej listy `Favorites`.
+Jeśli jeszcze nic nie dodałeś do `Favorites`, przejdź do [Search](/pl/portal/studio/search), aby dowiedzieć się jak.
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="394"
+      resize="scale"
+      quality="best"
+      alt="Tworzenie siatki z wyselekcjonowanej listy"
+      src="academy/create-curated-list-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Formularz tworzenia siatki z wyselekcjonowanej listy*</figcaption>
+</figure>
+
+<Steps>
+1. Kliknij przycisk `Actions` przy liście `Favorites`.
+2. Kliknij przycisk `Create a grid`.
+3. Pojawi się nowe okno, w którym możesz nadać nazwę swojej siatce. *Zobacz poniżej*.
+4. Kliknij przycisk `OK`, aby kontynuować.
+</Steps>
+
+Twoja siatka została utworzona. Przejdź do `Tools > Grids` z głównego paska nawigacji i kliknij zakładkę `Curated Grids`, aby zobaczyć swoją nową siatkę.
+
+### Dostosowywanie
+
+Formularz pozwala dostosować siatkę w następujący sposób:
+
+<Steps>
+ 1. Nadaj jej nazwę, abyś pamiętał, czego dotyczy siatka.
+ 2. Wybierz [Dostosowanie](/pl/portal/settings/branding), które chcesz zastosować do tej siatki.
+ 3. Wybierz początkową stronę karty, którą użytkownicy zobaczą jako pierwszą. Domyślnie jest to natywna strona tego zasobu.
+ 4. Wybierz odznakę, którą chcesz użyć na karcie. Odznaka pozwala użytkownikom porównywać zasoby według zbiorczego wskaźnika, takiego jak `eco-friendly`.
+ 5. Dodaj słowa kluczowe, oddzielone przecinkami, które będą używane przez [Web Crawlers](https://developer.mozilla.org/en-US/docs/Glossary/Crawler).
+ 6. Dodaj tytuły i opisy w językach, które chcesz, aby użytkownik widział.
+ 7. Kliknij przycisk `Save`, aby kontynuować.
+</Steps>
+
+### Udostępnianie
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="618"
+      resize="scale"
+      quality="best"
+      alt="Siatka z wyselekcjonowanej listy"
+      src="academy/curated-list-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Wpis siatki z wyselekcjonowanej listy z zwiniętym menu akcji*</figcaption>
+</figure>
+
+Powyżej widzisz obraz z wszystkimi dostępnymi akcjami dla Twojej siatki:
+
+- **Update** Aktualizuje konfigurację siatki.
+- **Add to WinkLinks** Dodaje siatkę do Twojego konta WinkLinks.
+- **Embed** Pokazuje, jak osadzić tę siatkę jako [Grid](/pl/integrations/web-components/#content-loader) na Twojej stronie.
+- **Use with WordPress** Pokazuje, jak użyć naszego [wtyczki WordPress](/pl/integrations/wordpress), aby osadzić tę siatkę na Twojej stronie.
+
+Niektóre z tych opcji omówimy szczegółowiej poniżej.
+
+### Osadzanie
+
+```html {3, 6-9, 11, 13-16}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+  <body>
+    <wink-content-loader
+       layout="LIST"
+       id="9a212b5e-62a7-11ef-ac3f-42004e494300"
+    ></wink-content-loader>
+
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+Oto jak osadzić swoją siatkę na stronie:
+
+- Linia 3 pokazuje, jak osadzić style Wink na stronie.
+- Linie 6 do 9 pokazują, jak użyć [wink-content-loader](/pl/integrations/web-components/#content-loader) Web Component i polecić mu pobranie siatki dla Twojego kodu.
+- Linia 11 pokazuje, jak osadzić nasz Javascript na stronie.
+- Linia 13 pokazuje, jak osadzić [wink-app-loader](/pl/integrations/web-components/#application-loader) Web Component i polecić mu pobranie preferencji konfiguracji na poziomie strony.
+
+## Siatka z zapisanego wyszukiwania
+
+To siatka, która wykorzystuje zasoby z Twojego zapisanego zapytania wyszukiwania i przekształca wyniki wyszukiwania w rezerwowane zasoby podróżne, które możesz pokazać swoim użytkownikom.
+
+### Tworzenie
+
+Przejdź do `Inventory > Saved searches` z głównego paska nawigacji.
+Jeśli jeszcze nie utworzyłeś zapisanego wyszukiwania, przejdź do [Search](/pl/portal/studio/search), aby dowiedzieć się jak.
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="394"
+      resize="scale"
+      quality="best"
+      alt="Tworzenie siatki z zapisanego wyszukiwania"
+      src="academy/create-saved-search-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Formularz tworzenia siatki z zapisanego wyszukiwania*</figcaption>
+</figure>
+
+<Steps>
+1. Kliknij przycisk `Actions` przy swoim zapisanym wyszukiwaniu.
+2. Kliknij przycisk `Create a grid`.
+3. Pojawi się nowe okno, w którym możesz nadać nazwę swojej siatce. *Zobacz poniżej*.
+</Steps>
+
+4. Kliknij przycisk `OK`, aby kontynuować.
+
+Twoja siatka została utworzona. Przejdź do `Tools > Grids` z głównego paska nawigacji i kliknij zakładkę `Saved Search Grids`, aby zobaczyć swoją nową siatkę.
+
+### Dostosowywanie
+
+Formularz pozwala dostosować siatkę w następujący sposób:
+
+<Steps>
+ 1. Nadaj jej nazwę, abyś pamiętał, czego dotyczy siatka.
+ 2. Wybierz [Dostosowanie](/pl/portal/settings/branding), które chcesz zastosować do tej siatki.
+ 3. Wybierz początkową stronę karty, którą użytkownicy zobaczą jako pierwszą. Domyślnie jest to natywna strona tego zasobu.
+ 4. Wybierz odznakę, którą chcesz użyć na karcie. Odznaka pozwala użytkownikom porównywać zasoby według zbiorczego wskaźnika, takiego jak `eco-friendly`.
+ 5. Dodaj słowa kluczowe, oddzielone przecinkami, które będą używane przez [Web Crawlers](https://developer.mozilla.org/en-US/docs/Glossary/Crawler).
+ 6. Dodaj tytuły i opisy w językach, które chcesz, aby użytkownik widział.
+ 7. Kliknij przycisk `Save`, aby kontynuować.
+</Steps>
+
+### Udostępnianie
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="617"
+      resize="scale"
+      quality="best"
+      alt="Siatka z zapisanego wyszukiwania"
+      src="academy/saved-search-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Wpis siatki z zapisanego wyszukiwania z zwiniętym menu akcji*</figcaption>
+</figure>
+
+### Osadzanie
+
+```html {3, 6-9, 11, 13-16}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+  <body>
+    <wink-content-loader
+       layout="LIST"
+       id="be3130d5-62a7-11ef-ac3f-42004e494300"
+    ></wink-content-loader>
+
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+Oto jak osadzić swoją siatkę na stronie:
+
+- Linia 3 pokazuje, jak osadzić style Wink na stronie.
+- Linie 6 do 9 pokazują, jak użyć [wink-content-loader](/pl/integrations/web-components/#content-loader) Web Component i polecić mu pobranie siatki dla Twojego kodu.
+- Linia 11 pokazuje, jak osadzić nasz Javascript na stronie.
+- Linia 13 pokazuje, jak osadzić [wink-app-loader](/pl/integrations/web-components/#application-loader) Web Component i polecić mu pobranie preferencji konfiguracji na poziomie strony.
+
+## Siatka rankingowa
+
+### Tworzenie
+
+Utwórz siatkę rankingową, przechodząc do `Tools > Grids` i klikając zakładkę `Ranked Grid`. Kliknij przycisk `Create ranked grid`.
+
+### Dostosowywanie
+Formularz pozwala dostosować siatkę rankingową w następujący sposób:
+
+<Steps>
+ 1. Wybierz cel podróży. *Np. Tokio*.
+ 1. Nadaj jej nazwę, abyś pamiętał, czego dotyczy siatka. *Np. Ekologiczne hotele w Tokio*
+ 2. Wybierz [Dostosowanie](/pl/portal/settings/branding), które chcesz zastosować do tej siatki.
+ 3. Wybierz początkową stronę karty, którą użytkownicy zobaczą jako pierwszą. Domyślnie jest to natywna strona tego zasobu.
+ 4. Wybierz cechę, według której chcesz sortować obiekty. *Np. Ekologiczność*.
+ 5. Dodaj słowa kluczowe, oddzielone przecinkami, które będą używane przez [Web Crawlers](https://developer.mozilla.org/en-US/docs/Glossary/Crawler).
+ 5. Dodaj tytuły i opisy w językach, które chcesz, aby użytkownik widział.
+ 7. Kliknij przycisk `Save`, aby kontynuować.
+</Steps>
+
+ Po zapisaniu siatki rankingowej zostaniesz przekierowany do strony z siatkami rankingowymi, a Twoja siatka jest gotowa do udostępnienia światu.
+
+### Udostępnianie
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="658"
+      resize="scale"
+      quality="best"
+      alt="Siatka rankingowa"
+      src="academy/ranked-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Siatka rankingowa z zwiniętym menu akcji*</figcaption>
+</figure>
+
+Powyżej widzisz obraz z wszystkimi dostępnymi akcjami dla Twojej siatki rankingowej:
+
+- **Update** Aktualizuje konfigurację siatki.
+- **Add to WinkLinks** Dodaje siatkę rankingową do Twojego konta WinkLinks.
+- **Embed** Pokazuje, jak osadzić tę siatkę jako [Grid](/pl/integrations/web-components/#content-loader) na Twojej stronie.
+- **Use with WordPress** Pokazuje, jak użyć naszego [wtyczki WordPress](/pl/integrations/wordpress), aby osadzić tę kartę na Twojej stronie.
+
+Niektóre z tych opcji omówimy szczegółowiej poniżej.
+
+### Osadzanie
+
+```html {3, 6-9, 11, 13-16}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+  <body>
+    <wink-content-loader
+       layout="RANKED"
+       id="2483d55e-62a5-11ef-ac3f-42004e494300"
+    ></wink-content-loader>
+
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+Oto jak osadzić swoją siatkę na stronie:
+
+- Linia 3 pokazuje, jak osadzić style Wink na stronie.
+- Linie 6 do 9 pokazują, jak użyć [wink-content-loader](/pl/integrations/web-components/#content-loader) Web Component i polecić mu pobranie siatki rankingowej dla Twojego kodu.
+- Linia 11 pokazuje, jak osadzić nasz Javascript na stronie.
+- Linia 13 pokazuje, jak osadzić [wink-app-loader](/pl/integrations/web-components/#application-loader) Web Component i polecić mu pobranie preferencji konfiguracji na poziomie strony.
+
+## API
+
+Deweloperzy, którzy chcą zarządzać siatkami, mogą przejść do [Developers > API > Inventory](/pl/api).
+
+## Dalsza lektura
+
+- Dowiedz się więcej o naszej kolekcji [Web Components](/pl/integrations/web-components).
+- Dowiedz się więcej o [Wink WordPress plugin](/pl/integrations/wordpress).

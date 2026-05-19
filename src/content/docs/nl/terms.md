@@ -10,7 +10,7 @@ Elk portaal kan verschillende algemene voorwaarden hebben. Ga naar de onderstaan
 Voor affiliates die willen leren hoe ze een passief inkomen kunnen verdienen door hun sociale accounts te gelde te maken met Wink.  
 [Wink Studio](https://studio.wink.travel) heeft alle tools die je nodig hebt om als een professional te verkopen.
 
-<LinkButton href="/nl/studio/what-is-studio">
+<LinkButton href="/nl/portal/studio/what-is-studio">
 Meer informatie over Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ Meer informatie over onze boekingsengine
 
 Voor accommodaties die willen beginnen met verkopen op Wink. Gebruik onze tools om jezelf effectief online te verkopen en te promoten en krijg een leger affiliates van over de hele wereld om je te helpen klanten en boekingen te krijgen.
 
-<LinkButton href="/nl/extranet/what-is-extranet">
+<LinkButton href="/nl/portal/extranet/what-is-extranet">
 Meer informatie over Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ Meer informatie over Wink Extranet
 
 Voor reisagenten die willen ontdekken wat Wink hen kan bieden op het gebied van op maat gemaakte tarieven, deals en inventaris, rechtstreeks van leveranciers.
 
-<LinkButton href="/nl/travel-agent/what-is-agent">
+<LinkButton href="/nl/portal/travel-agent/what-is-agent">
 Meer informatie over Wink Agent
 </LinkButton>

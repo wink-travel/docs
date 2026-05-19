@@ -7,8 +7,8 @@ sidebar:
 
 Tako razdeljujemo odgovornosti na Wink:
 
-- [Extranet](/sl/extranet/what-is-extranet) skrbi za dobavitelje, ki upravljajo z zalogami.
-- [Studio](/sl/studio/what-is-studio) skrbi za podružnice, ki upravljajo z vsebinami.
+- [Extranet](/sl/portal/extranet/what-is-extranet) skrbi za dobavitelje, ki upravljajo z zalogami.
+- [Studio](/sl/portal/studio/what-is-studio) skrbi za podružnice, ki upravljajo z vsebinami.
 - `Booking Engine` skrbi za to, da je vsebina, ustvarjena v `Studio`, ki temelji na zalogah, ustvarjenih v `Extranet`, na voljo za rezervacijo.
 - [Payment](/sl/payment/what-is-trip-pay) skrbi za zaračunavanje / vračila popotnikom, ki rezervirajo [prek platform, kot je Wink], in plačevanje ponudnikom.
 
@@ -22,11 +22,11 @@ Njegove odgovornosti vključujejo:
 - Upravljanje jezikov.
 - Generiranje analiz na podlagi uporabniških interakcij, dogodkov in API klicev.
 - Prikazovanje rezervabilnih zalog v želeni obliki, jeziku in valuti, kot so:
-    - [deljiva povezava](/sl/studio/shareable-links) na Facebooku.
+    - [deljiva povezava](/sl/portal/studio/shareable-links) na Facebooku.
     - Ciljna stran hotela na https://ota.wink.travel z zalogo za ta hotel.
-    - [kartica](/sl/studio/cards) z zalogo podružnic.
-    - [zemljevid](/sl/studio/maps) na vašem računu [WinkLinks](/sl/link-manager/wink-links).
-    - [API klic](/sl/developers/apis) iz oddaljenega sistema turističnega agenta.
+    - [kartica](/sl/portal/studio/cards) z zalogo podružnic.
+    - [zemljevid](/sl/portal/studio/maps) na vašem računu [WinkLinks](/sl/portal/link-manager/wink-links).
+    - [API klic](/sl/api) iz oddaljenega sistema turističnega agenta.
 - Omogočanje popotnikom, da:
     - iščejo turistično zalogo.
     - rezervirajo razpoložljivo zalogo.
@@ -36,7 +36,7 @@ Njegove odgovornosti vključujejo:
 
 Rezervacijski sistem je zbirka ponovno uporabnih funkcionalnosti, ki jih ponujamo preko https://ota.wink.travel; zelo prilagodljive spletne strani za hotele in podružnice, da prodajajo svoje storitve popotnikom.
 
-Integratorji, ki želijo še več svobode, imajo dostop do vseh istih funkcij preko našega [WordPress vtičnika](/sl/integrations/wordpress/), [Web Components](/sl/integrations/web-components) in [API-jev](/sl/developers/apis).
+Integratorji, ki želijo še več svobode, imajo dostop do vseh istih funkcij preko našega [WordPress vtičnika](/sl/integrations/wordpress/), [Web Components](/sl/integrations/web-components) in [API-jev](/sl/api).
 
 Nadaljujte z branjem naslednjih poglavij, da izveste več o tem, kaj rezervacijski sistem ponuja.
 
@@ -44,4 +44,4 @@ Nadaljujte z branjem naslednjih poglavij, da izveste več o tem, kaj rezervacijs
 
 - Preberite o našem [WordPress vtičniku](/sl/integrations/wordpress/).
 - Preberite o naših [Web Components](/sl/integrations/web-components).
-- Preberite o naših [API-jih](/sl/developers/apis).
+- Preberite o naših [API-jih](/sl/api).

@@ -50,7 +50,7 @@ Med denna modell betalar reseagenter endast Wink's behandlingsavgift och Wink fa
 
 ## Prenumerationer
 
-Vi erbjuder en valfri prenumerationstjänst (se [Social](/sv/social/what-is-social)) för att hjälpa boenden att förstärka sina försäljnings- och marknadsteam.
+Vi erbjuder en valfri prenumerationstjänst (se [Social](/sv/portal/social/what-is-social)) för att hjälpa boenden att förstärka sina försäljnings- och marknadsteam.
 
 ## Plattformseffekt
 

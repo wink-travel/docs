@@ -17,7 +17,7 @@ Marken und Ketten haben etwas andere Bedürfnisse als einzelne Unterkünfte. Auf
 
 - Mehrere Unterkünfte unter einem einzigen Konto verwalten.
 - Manager für Unterkünfte zuweisen.
-- [WinkLinks](/de/link-manager/wink-links), [WordPress](/de/integrations/wordpress) und unsere [Web Components](/de/integrations/web-components) nutzen, um mehrere Unterkünfte an einem Ort zu vermarkten und zu verkaufen.
+- [WinkLinks](/de/portal/link-manager/wink-links), [WordPress](/de/integrations/wordpress) und unsere [Web Components](/de/integrations/web-components) nutzen, um mehrere Unterkünfte an einem Ort zu vermarkten und zu verkaufen.
 
 ## Managementgesellschaften
 
@@ -42,7 +42,7 @@ Unternehmen benötigen mehr von einer Reiseplattform:
 - Sie benötigen Ausgabenmanagement und Reporting-Integration.
 - Sie brauchen Concierge-Unterstützung sowie MICE-Dienstleistungen bei Veranstaltungen.
 
-Geschäftsreisende können ihre eigenen Konten auf unserem [Corporate-Portal](/de/corporate/what-is-group) verwalten oder unser offiziell unterstütztes [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) Plugin und die [Concur](https://www.concur.com/) Integration nutzen.
+Geschäftsreisende können ihre eigenen Konten auf unserem [Corporate-Portal](/de/portal/corporate/what-is-group) verwalten oder unser offiziell unterstütztes [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) Plugin und die [Concur](https://www.concur.com/) Integration nutzen.
 
 ## Entwickler
 

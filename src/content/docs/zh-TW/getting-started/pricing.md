@@ -50,7 +50,7 @@ Wink 收取每筆訂單 1.5% 的處理費。此費用讓我們能免費提供所
 
 ## 訂閱服務
 
-我們提供選擇性訂閱服務（請參見 [Social](/zh-TW/social/what-is-social)），協助物業增強銷售與行銷團隊。
+我們提供選擇性訂閱服務（請參見 [Social](/zh-TW/portal/social/what-is-social)），協助物業增強銷售與行銷團隊。
 
 ## 平台效應
 

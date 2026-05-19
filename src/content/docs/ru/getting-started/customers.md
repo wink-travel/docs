@@ -17,7 +17,7 @@ Wink начал подключать отели десять лет назад. 
 
 - Управлять несколькими объектами под одной учётной записью.
 - Назначать менеджеров на объекты.
-- Использовать [WinkLinks](/ru/link-manager/wink-links), [WordPress](/ru/integrations/wordpress) и наши [Web Components](/ru/integrations/web-components) для маркетинга и продажи нескольких объектов в одном месте.
+- Использовать [WinkLinks](/ru/portal/link-manager/wink-links), [WordPress](/ru/integrations/wordpress) и наши [Web Components](/ru/integrations/web-components) для маркетинга и продажи нескольких объектов в одном месте.
 
 ## Управляющие компании
 
@@ -42,7 +42,7 @@ Wink начал подключать отели десять лет назад. 
 - Им необходимы управление расходами и интеграция с отчётностью.
 - Им нужна поддержка консьержа, а также услуги MICE на мероприятиях.
 
-Корпоративные путешественники могут управлять своими аккаунтами на нашем [корпоративном портале](/ru/corporate/what-is-group) или использовать официально поддерживаемый плагин [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) и интеграцию с [Concur](https://www.concur.com/).
+Корпоративные путешественники могут управлять своими аккаунтами на нашем [корпоративном портале](/ru/portal/corporate/what-is-group) или использовать официально поддерживаемый плагин [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) и интеграцию с [Concur](https://www.concur.com/).
 
 ## Разработчики
 

@@ -7,8 +7,8 @@ sidebar:
 
 Evo kako dijelimo odgovornosti na Wink:
 
-- [Extranet](/hr/extranet/what-is-extranet) se bavi dobavljačima koji upravljaju inventarom.
-- [Studio](/hr/studio/what-is-studio) se bavi partnerima koji upravljaju sadržajem.
+- [Extranet](/hr/portal/extranet/what-is-extranet) se bavi dobavljačima koji upravljaju inventarom.
+- [Studio](/hr/portal/studio/what-is-studio) se bavi partnerima koji upravljaju sadržajem.
 - `Booking Engine` se bavi stvaranjem sadržaja, kreiranog u `Studio`, koji je baziran na inventaru kreiranom u `Extranet` i omogućava njegovo rezerviranje.
 - [Payment](/hr/payment/what-is-trip-pay) se bavi naplatom / povratom novca putnicima koji rezerviraju [kroz platforme poput Wink], i plaćanjem dobavljačima.
 
@@ -22,11 +22,11 @@ Njegove odgovornosti uključuju:
 - Upravljanje jezicima.
 - Generiranje analitike na temelju korisničkih interakcija, događaja i API poziva.
 - Prikazivanje rezervabilnog inventara u željenom formatu, jeziku i valuti, kao što su:
-    - [dijeljivi link](/hr/studio/shareable-links) na Facebooku.
+    - [dijeljivi link](/hr/portal/studio/shareable-links) na Facebooku.
     - Početna stranica hotela na https://ota.wink.travel s inventarom za taj hotel.
-    - [kartica](/hr/studio/cards) koja sadrži inventar partnera.
-    - [karta](/hr/studio/maps) na vašem [WinkLinks](/hr/link-manager/wink-links) računu.
-    - [API poziv](/hr/developers/apis) iz udaljenog sustava turističke agencije.
+    - [kartica](/hr/portal/studio/cards) koja sadrži inventar partnera.
+    - [karta](/hr/portal/studio/maps) na vašem [WinkLinks](/hr/portal/link-manager/wink-links) računu.
+    - [API poziv](/hr/api) iz udaljenog sustava turističke agencije.
 - Omogućavanje putnicima da:
     - Pretražuju turistički inventar.
     - Rezerviraju dostupni inventar.
@@ -36,7 +36,7 @@ Njegove odgovornosti uključuju:
 
 Booking engine je skup ponovo upotrebljivih funkcionalnosti koje izlažemo putem https://ota.wink.travel; visoko prilagodljive web stranice za hotele i partnere za prodaju njihovih usluga putnicima.
 
-Integratori, koji žele još veću slobodu, imaju pristup svim istim značajkama putem našeg [WordPress plugina](/hr/integrations/wordpress/), [Web Components](/hr/integrations/web-components) i [API-ja](/hr/developers/apis).
+Integratori, koji žele još veću slobodu, imaju pristup svim istim značajkama putem našeg [WordPress plugina](/hr/integrations/wordpress/), [Web Components](/hr/integrations/web-components) i [API-ja](/hr/api).
 
 Nastavite na sljedeće odjeljke kako biste saznali više o tome što booking engine nudi.
 
@@ -44,4 +44,4 @@ Nastavite na sljedeće odjeljke kako biste saznali više o tome što booking eng
 
 - Pročitajte o našem [WordPress pluginu](/hr/integrations/wordpress/).
 - Pročitajte o našim [Web Components](/hr/integrations/web-components).
-- Pročitajte o našim [API-jima](/hr/developers/apis).
+- Pročitajte o našim [API-jima](/hr/api).

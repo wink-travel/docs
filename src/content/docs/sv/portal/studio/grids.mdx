@@ -1,0 +1,315 @@
+---
+title: Rutnät
+description: Den här artikeln visar hur du skapar rutnät från kuraterade listor och sparade sökningar och sedan marknadsför dem på din webbplats.
+sidebar:
+  order: 8
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '/src/components/cloudinary-image.astro';
+
+Ett rutnät representerar en lista över leverantörer och inventarier och visar detaljerna via ett interaktivt, bokningsbart rutnätsgränssnitt.
+Rutnätet stödjer visning av vilken inventarie som helst från din kuraterade lista eller sparade sökning.
+En användare interagerar med ett rutnät på samma sätt som med ett enskilt [kort](/sv/portal/studio/cards) med en extra funktion:
+
+1. Bläddra genom rutnätet genom att klicka på knappen `Visa mer` (*när fler objekt finns tillgängliga*).
+
+<figure>
+<CloudinaryImage
+      width="700"
+      height="319"
+      resize="scale"
+      quality="best"
+      alt="Förhandsvisning av rutnät"
+      src="academy/grid-example"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Rutnät som visar flera rumstyper*</figcaption>
+</figure>
+
+Ovan är ett exempel på vårt rutnät som visar en lista med rumstypkort.
+
+Resten av denna artikel guidar dig genom hur du skapar, anpassar och exponerar rutnätet för dina användare.
+
+## Rutnäts typer
+
+Det finns tre typer av rutnät:
+
+1. Rutnät baserat på en [kuraterad lista](/sv/portal/studio/curated-lists#list-actions).
+2. Rutnät baserat på en [sparad sökning](/sv/portal/studio/saved-searches#list-actions).
+3. Rankat rutnät baserat på en plats och sorteringskriterier (*dvs. Rankat rutnät*).
+
+## Kuraterat list-rutnät
+
+Detta är ett rutnät som använder inventariet du samlat i en av dina kuraterade listor och omvandlar listan till bokningsbar reseinventarie som du kan visa för dina användare.
+
+### Skapa
+
+Navigera till `Inventory > Curated Lists` från huvudnavigeringsfältet. För detta exempel använder vi din lista `Favorites`.
+Om du ännu inte har lagt till något i din `Favorites`, gå till [Sök](/sv/portal/studio/search) för att lära dig hur.
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="394"
+      resize="scale"
+      quality="best"
+      alt="Skapa kuraterat list-rutnät"
+      src="academy/create-curated-list-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Formulär för att skapa kuraterat list-rutnät*</figcaption>
+</figure>
+
+<Steps>
+1. Klicka på knappen `Actions` på listan `Favorites`.
+2. Klicka på knappen `Create a grid`.
+3. Ett nytt fönster visas där du kan namnge ditt rutnät. *Se nedan*.
+4. Klicka på knappen `OK` för att fortsätta.
+</Steps>
+
+Ditt rutnät har skapats. Navigera till `Tools > Grids` från huvudnavigeringsfältet och klicka på fliken `Curated Grids` för att se ditt nya rutnät.
+
+### Anpassa
+
+Formuläret låter dig anpassa ditt rutnät på följande sätt:
+
+<Steps>
+ 1. Ge det ett namn så att du kommer ihåg vad rutnätet handlar om.
+ 2. Välj den [anpassning](/sv/portal/settings/branding) du vill tillämpa på detta rutnät.
+ 3. Välj den initiala kortsidan du vill att användarna ska se först. Som standard är det den ursprungliga sidan för den inventarien.
+ 4. Välj den badge du vill använda på kortet. En badge låter användare jämföra inventarier på en aggregerad metrisk som `miljövänlig`.
+ 5. Lägg till nyckelord, separerade med kommatecken, som kommer att användas av [Web Crawlers](https://developer.mozilla.org/en-US/docs/Glossary/Crawler).
+ 6. Lägg till titlar och beskrivningar på de språk du vill att användaren ska se.
+ 7. Klicka på knappen `Save` för att fortsätta.
+</Steps>
+
+### Dela
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="618"
+      resize="scale"
+      quality="best"
+      alt="Kuraterat list-rutnät"
+      src="academy/curated-list-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Kuraterat list-rutnätsinmatning med kollapsad åtgärdsmeny*</figcaption>
+</figure>
+
+Ovan visas en bild med alla tillgängliga åtgärder för ditt rutnät:
+
+- **Update** Uppdaterar din rutnätskonfiguration.
+- **Add to WinkLinks** Lägger till rutnätet i ditt WinkLinks-konto.
+- **Embed** Visar hur du bäddar in detta rutnät som ett [Grid](/sv/integrations/web-components/#content-loader) på din webbplats.
+- **Use with WordPress** Visar hur du använder vårt [WordPress-plugin](/sv/integrations/wordpress) för att bädda in detta rutnät på din webbplats.
+
+Vi går igenom några av dessa alternativ mer i detalj nedan.
+
+### Bädda in
+
+```html {3, 6-9, 11, 13-16}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+  <body>
+    <wink-content-loader
+       layout="LIST"
+       id="9a212b5e-62a7-11ef-ac3f-42004e494300"
+    ></wink-content-loader>
+
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+Så här bäddar du in ditt rutnät på din webbplats:
+
+- Rad 3 visar hur du bäddar in Wink-stilarna på din webbplats.
+- Raderna 6 till 9 visar hur du använder [wink-content-loader](/sv/integrations/web-components/#content-loader) Web Component och ber den hämta ett rutnät för din kod.
+- Rad 11 visar hur du bäddar in vår Javascript på din webbplats.
+- Rad 13 visar hur du bäddar in [wink-app-loader](/sv/integrations/web-components/#application-loader) Web Component och ber den hämta dina konfigurationsinställningar på sidnivå.
+
+## Sparat söknings-rutnät
+
+Detta är ett rutnät som använder inventariet i din sparade sökfråga och omvandlar sökresultaten till bokningsbar reseinventarie som du kan visa för dina användare.
+
+### Skapa
+
+Navigera till `Inventory > Saved searches` från huvudnavigeringsfältet.
+Om du ännu inte har skapat en sparad sökning, gå till [Sök](/sv/portal/studio/search) för att lära dig hur.
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="394"
+      resize="scale"
+      quality="best"
+      alt="Skapa sparat söknings-rutnät"
+      src="academy/create-saved-search-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Formulär för att skapa sparat söknings-rutnät*</figcaption>
+</figure>
+
+<Steps>
+1. Klicka på knappen `Actions` på din sparade sökning.
+2. Klicka på knappen `Create a grid`.
+3. Ett nytt fönster visas där du kan namnge ditt rutnät. *Se nedan*.
+</Steps>
+
+4. Klicka på knappen `OK` för att fortsätta.
+
+Ditt rutnät har skapats. Navigera till `Tools > Grids` från huvudnavigeringsfältet och klicka på fliken `Saved Search Grids` för att se ditt nya rutnät.
+
+### Anpassa
+
+Formuläret låter dig anpassa ditt rutnät på följande sätt:
+
+<Steps>
+ 1. Ge det ett namn så att du kommer ihåg vad rutnätet handlar om.
+ 2. Välj den [anpassning](/sv/portal/settings/branding) du vill tillämpa på detta rutnät.
+ 3. Välj den initiala kortsidan du vill att användarna ska se först. Som standard är det den ursprungliga sidan för den inventarien.
+ 4. Välj den badge du vill använda på kortet. En badge låter användare jämföra inventarier på en aggregerad metrisk som `miljövänlig`.
+ 5. Lägg till nyckelord, separerade med kommatecken, som kommer att användas av [Web Crawlers](https://developer.mozilla.org/en-US/docs/Glossary/Crawler).
+ 6. Lägg till titlar och beskrivningar på de språk du vill att användaren ska se.
+ 7. Klicka på knappen `Save` för att fortsätta.
+</Steps>
+
+### Dela
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="617"
+      resize="scale"
+      quality="best"
+      alt="Sparat söknings-rutnät"
+      src="academy/saved-search-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Sparat söknings-rutnätsinmatning med kollapsad åtgärdsmeny*</figcaption>
+</figure>
+
+### Bädda in
+
+```html {3, 6-9, 11, 13-16}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+  <body>
+    <wink-content-loader
+       layout="LIST"
+       id="be3130d5-62a7-11ef-ac3f-42004e494300"
+    ></wink-content-loader>
+
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+Så här bäddar du in ditt rutnät på din webbplats:
+
+- Rad 3 visar hur du bäddar in Wink-stilarna på din webbplats.
+- Raderna 6 till 9 visar hur du använder [wink-content-loader](/sv/integrations/web-components/#content-loader) Web Component och ber den hämta ett rutnät för din kod.
+- Rad 11 visar hur du bäddar in vår Javascript på din webbplats.
+- Rad 13 visar hur du bäddar in [wink-app-loader](/sv/integrations/web-components/#application-loader) Web Component och ber den hämta dina konfigurationsinställningar på sidnivå.
+
+## Rankat rutnät
+
+### Skapa
+
+Skapa ett rankat rutnät genom att navigera till `Tools > Grids` och klicka på fliken `Ranked Grid`. Klicka på knappen `Create ranked grid`.
+
+### Anpassa
+Formuläret låter dig anpassa ditt rankade rutnät på följande sätt:
+
+<Steps>
+ 1. Välj en destination. *T.ex. Tokyo*.
+ 1. Ge det ett namn så att du kommer ihåg vad rutnätet handlar om. *T.ex. Miljövänliga hotell i Tokyo*
+ 2. Välj den [anpassning](/sv/portal/settings/branding) du vill tillämpa på detta rutnät.
+ 3. Välj den initiala kortsidan du vill att användarna ska se först. Som standard är det den ursprungliga sidan för den inventarien.
+ 4. Välj vilken egenskap du vill sortera fastigheterna efter. *T.ex. Miljövänlighet*.
+ 5. Lägg till nyckelord, separerade med kommatecken, som kommer att användas av [Web Crawlers](https://developer.mozilla.org/en-US/docs/Glossary/Crawler).
+ 5. Lägg till titlar och beskrivningar på de språk du vill att användaren ska se.
+ 7. Klicka på knappen `Save` för att fortsätta.
+</Steps>
+
+ Efter att du sparat ditt rankade rutnät omdirigeras du till sidan för dina rankade rutnät och ditt rutnät är nu redo att delas med världen.
+
+### Dela
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="658"
+      resize="scale"
+      quality="best"
+      alt="Rankat rutnät"
+      src="academy/ranked-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Ett rankat rutnät med kollapsad åtgärdsmeny*</figcaption>
+</figure>
+
+Ovan visas en bild med alla tillgängliga åtgärder för ditt rankade rutnät:
+
+- **Update** Uppdaterar din rutnätskonfiguration.
+- **Add to WinkLinks** Lägger till det rankade rutnätet i ditt WinkLinks-konto.
+- **Embed** Visar hur du bäddar in detta rutnät som ett [Grid](/sv/integrations/web-components/#content-loader) på din webbplats.
+- **Use with WordPress** Visar hur du använder vårt [WordPress-plugin](/sv/integrations/wordpress) för att bädda in detta kort på din webbplats.
+
+Vi går igenom några av dessa alternativ mer i detalj nedan.
+
+### Bädda in
+
+```html {3, 6-9, 11, 13-16}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+  <body>
+    <wink-content-loader
+       layout="RANKED"
+       id="2483d55e-62a5-11ef-ac3f-42004e494300"
+    ></wink-content-loader>
+
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+Så här bäddar du in ditt rutnät på din webbplats:
+
+- Rad 3 visar hur du bäddar in Wink-stilarna på din webbplats.
+- Raderna 6 till 9 visar hur du använder [wink-content-loader](/sv/integrations/web-components/#content-loader) Web Component och ber den hämta ett rankat rutnät för din kod.
+- Rad 11 visar hur du bäddar in vår Javascript på din webbplats.
+- Rad 13 visar hur du bäddar in [wink-app-loader](/sv/integrations/web-components/#application-loader) Web Component och ber den hämta dina konfigurationsinställningar på sidnivå.
+
+## API
+
+Utvecklare som vill hantera rutnät kan gå till [Developers > API > Inventory](/sv/api).
+
+## Vidare läsning
+
+- Läs mer om vår samling av [Web Components](/sv/integrations/web-components).
+- Läs mer om [Wink WordPress-plugin](/sv/integrations/wordpress).

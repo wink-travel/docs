@@ -17,7 +17,7 @@ Brands and chains have slightly different needs than a single property. On Wink,
 
 - Manage multiple properties under a single account.
 - Assign managers to properties
-- Use [WinkLinks](/link-manager/wink-links), [WordPress](/integrations/wordpress) and our [Web Components](/integrations/web-components) to market and sell multiple properties in the one place.
+- Use [WinkLinks](/portal/link-manager/wink-links), [WordPress](/integrations/wordpress) and our [Web Components](/integrations/web-components) to market and sell multiple properties in the one place.
 
 ## Management companies
 
@@ -42,7 +42,7 @@ Corporations require more of a travel platform:
 - The require expense management and reporting integration.
 - They need concierge support, as well as, MICE services at events.
 
-Corporate travelers can manage their own accounts on our [corporate portal](/corporate/what-is-group) or use our officially supported [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin and [Concur](https://www.concur.com/) integration.
+Corporate travelers can manage their own accounts on our [corporate portal](/portal/corporate/what-is-group) or use our officially supported [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin and [Concur](https://www.concur.com/) integration.
 
 ## Developers
 

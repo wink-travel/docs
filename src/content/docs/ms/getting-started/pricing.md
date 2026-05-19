@@ -50,7 +50,7 @@ Menggunakan model ini, ejen pelancongan hanya membayar yuran pemprosesan Wink da
 
 ## Langganan
 
-Kami menawarkan perkhidmatan langganan pilihan (lihat [Social](/ms/social/what-is-social)) untuk membantu hartanah meningkatkan pasukan jualan dan pemasaran mereka.
+Kami menawarkan perkhidmatan langganan pilihan (lihat [Social](/ms/portal/social/what-is-social)) untuk membantu hartanah meningkatkan pasukan jualan dan pemasaran mereka.
 
 ## Kesan platform
 

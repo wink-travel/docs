@@ -10,7 +10,7 @@ Setiap portal mungkin memiliki syarat dan ketentuan yang berbeda. Silakan pergi 
 Untuk afiliasi yang ingin belajar cara menghasilkan pendapatan pasif dengan memonetisasi akun sosial Anda menggunakan Wink.  
 [Wink Studio](https://studio.wink.travel) memiliki semua alat yang Anda butuhkan untuk menjual seperti seorang profesional.
 
-<LinkButton href="/id/studio/what-is-studio">
+<LinkButton href="/id/portal/studio/what-is-studio">
 Pelajari lebih lanjut tentang Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ Pelajari lebih lanjut tentang mesin pemesanan kami
 
 Untuk properti yang ingin mulai menjual di Wink. Gunakan alat kami untuk menjual dan memasarkan diri Anda secara efektif secara online dan dapatkan pasukan afiliasi dari seluruh dunia untuk membantu Anda mendapatkan pelanggan dan pemesanan.
 
-<LinkButton href="/id/extranet/what-is-extranet">
+<LinkButton href="/id/portal/extranet/what-is-extranet">
 Pelajari lebih lanjut tentang Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ Pelajari lebih lanjut tentang Wink Extranet
 
 Untuk agen perjalanan yang ingin mengetahui apa yang dapat Wink tawarkan kepada mereka dalam hal tarif khusus, penawaran, dan inventaris, langsung dari pemasok.
 
-<LinkButton href="/id/travel-agent/what-is-agent">
+<LinkButton href="/id/portal/travel-agent/what-is-agent">
 Pelajari lebih lanjut tentang Wink Agent
 </LinkButton>

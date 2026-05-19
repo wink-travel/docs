@@ -10,7 +10,7 @@ Svaki portal može imati različite uvjete i odredbe. Molimo idite na odjeljak u
 Za affiliate partnere koji žele naučiti kako zaraditi pasivni prihod monetiziranjem svojih društvenih računa putem Wink-a.
 [Wink Studio](https://studio.wink.travel) ima sve alate koji su vam potrebni da prodajete kao profesionalac.
 
-<LinkButton href="/hr/studio/what-is-studio">
+<LinkButton href="/hr/portal/studio/what-is-studio">
 Saznajte više o Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ Saznajte više o našem booking engine-u
 
 Za objekte koji žele početi prodavati na Wink-u. Koristite naše alate za učinkovitu prodaju i marketing na mreži te dobijte vojsku affiliate partnera iz cijelog svijeta koji će vam pomoći u pronalasku gostiju i rezervacija.
 
-<LinkButton href="/hr/extranet/what-is-extranet">
+<LinkButton href="/hr/portal/extranet/what-is-extranet">
 Saznajte više o Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ Saznajte više o Wink Extranet
 
 Za putničke agente koji žele saznati što im Wink može ponuditi u smislu prilagođenih cijena, ponuda i inventara, izravno od dobavljača.
 
-<LinkButton href="/hr/travel-agent/what-is-agent">
+<LinkButton href="/hr/portal/travel-agent/what-is-agent">
 Saznajte više o Wink Agent
 </LinkButton>

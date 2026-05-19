@@ -10,7 +10,7 @@ Fiecare portal poate avea termeni și condiții diferite. Vă rugăm să accesa�
 Pentru afiliați care doresc să învețe cum să câștige un venit pasiv monetizând conturile lor sociale cu Wink.  
 [Wink Studio](https://studio.wink.travel) are toate instrumentele de care aveți nevoie pentru a vinde ca un profesionist.
 
-<LinkButton href="/ro/studio/what-is-studio">
+<LinkButton href="/ro/portal/studio/what-is-studio">
 Aflați mai multe despre Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ Aflați mai multe despre motorul nostru de rezervări
 
 Pentru proprietățile care doresc să înceapă să vândă pe Wink. Folosiți instrumentele noastre pentru a vă vinde și promova eficient online și pentru a obține o armată de afiliați din întreaga lume care să vă ajute să obțineți clienți și rezervări.
 
-<LinkButton href="/ro/extranet/what-is-extranet">
+<LinkButton href="/ro/portal/extranet/what-is-extranet">
 Aflați mai multe despre Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ Aflați mai multe despre Wink Extranet
 
 Pentru agenții de turism care doresc să afle ce le poate oferi Wink în termeni de tarife personalizate, oferte și inventar, direct de la furnizori.
 
-<LinkButton href="/ro/travel-agent/what-is-agent">
+<LinkButton href="/ro/portal/travel-agent/what-is-agent">
 Aflați mai multe despre Wink Agent
 </LinkButton>

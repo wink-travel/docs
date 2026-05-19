@@ -50,7 +50,7 @@ Con questo modello, gli agenti di viaggio pagano solo la commissione di elaboraz
 
 ## Abbonamenti
 
-Offriamo un servizio di abbonamento opzionale (vedi [Social](/it/social/what-is-social)) per aiutare le strutture ad ampliare i loro team di vendita e marketing.
+Offriamo un servizio di abbonamento opzionale (vedi [Social](/it/portal/social/what-is-social)) per aiutare le strutture ad ampliare i loro team di vendita e marketing.
 
 ## Effetto piattaforma
 

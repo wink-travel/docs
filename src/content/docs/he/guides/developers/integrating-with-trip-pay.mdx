@@ -1,0 +1,222 @@
+---
+title: אינטגרציה עם TripPay
+description: מאמר זה מכיל דוגמה מלאה כיצד להתממשק עם TripPay ולתת לו לטפל בתשלום עבורך.
+sidebar:
+  order: 4
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+מאמר זה מכיל דוגמה מקצה לקצה כיצד להתממשק עם TripPay.
+
+מומלץ שקראת כבר:
+
+- [Payment > Mapping](/he/payment/mapping).
+- [Payment > Integration](/he/payment/integration).
+- [Payment Web Component](/he/integrations/web-components/#payment).
+- [Payment API](/he/api). *קרא את הסעיף על `Create payable contracts`*
+
+הנה השלבים לשימוש מוצלח ב-TripPay לתשלום עבור הזמנה:
+
+<Steps>
+1. ודא שהמוטבים שהזכרת בחוזה ההזמנה ממופים.
+2. אפשר למטייל לבחור את המלאי שהוא רוצה להזמין ולהתכונן לתשלום.
+3. צור `חוזה לתשלום` עם TripPay שמכיל את הפריטים להזמנה.
+4. אפשר למטייל לשלם באמצעות רכיב ה-Web של TripPay.
+</Steps>
+
+אנו מניחים שכבר השלמת את `שלב 1` ו-`שלב 2` ואתה מוכן ליידע את TripPay על ההזמנה.
+
+## יצירת חוזה לתשלום
+
+:::note
+גש ל-Payment API כדי ללמוד עוד על הדרישות ליצירת חוזה לתשלום.
+:::
+
+### בקשה
+להלן דוגמת בקשת JSON הכוללת את כל מה שצריך ליצירת חוזה לתשלום ראשון.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+הסבר:
+
+לא נסביר כאן כל נקודת נתונים כי הן כבר מכוסות בתיעוד ה-API.
+
+- שורות: **2 - 7** הן המשתמש האחראי על ההזמנה. יש שני סוגי מזמינים:
+    - מטייל.
+    - סוכן נסיעות.
+- שורות: **8 - 9** הן חשבון TripPay שמתווך את ההזמנה. זה יכול להיות:
+    - חשבון האינטגרטור שלך ב-TripPay.
+    - אם אתה מפעיל רשת שותפים, זה יכול להיות השותף שלך.
+- השתמש ב-`traceId` כדי לקבץ הזמנות מרובות מספקים שונים. כך תוכל לבטל הזמנה קבוצתית.
+- `redirectUrl` מודיע ל-TripPay לאיזו עמוד להפנות לאחר השלמת התשלום.
+- `sourceUrl` הוא האתר/האפליקציה שבה התבצעה ההזמנה.
+
+מערך `contractList` מכיל את הפריט(ים) שהמטייל רוצה לרכוש מספקים שונים. כל פריט מכיל:
+
+- ה-`identifier` הוא UUID תקין שאתה מייצר.
+- הספק שממנו אתה רוצה להזמין מלאי.
+- המלאי שאתה רוצה להזמין מהספק הזה. כל אלה מפורטים במערך המקונן `contractItemList`.
+- כל רשומה תחת `contractItemList` מכילה:
+    - **משתמש אורח** זה המשתמש שיגיע למקום.
+    - **שם באנגלית** שם המלאי בשפה האנגלית.
+    - **תיאור באנגלית** תיאור ארוך יותר של המלאי בשפה האנגלית.
+    - **מחיר** מחיר הפריט.
+    - **מסלול** מתי יש להזמין את הפריט.
+    - **סוג תמחור** כיצד המחיר חושב.
+    - **סוג מלאי** איזה סוג מלאי זה.
+    - **לתשלום** מתי המטייל יחויב. *כעת אנו תומכים רק באפשרויות תשלום מיידיות.*
+    - **מדיניות** כללי מדיניות ביטול.
+    - **רשימת תעריפים יומית** אם הפריט הוא חדר, ניתן לכלול כמה עלה החדר לכל לילה שהאורח שוהה.
+    - **מוטבים** כלול אילו חשבונות TripPay יקבלו איזה סכום(ים) ממחיר הפריט. *נתמכים סכומים קבועים ואחוזים.*
+
+:::note
+בדוגמת ה-JSON למעלה, יש לנו 3 מוטבים:
+
+- 1.5% הוקצה לפלטפורמה שהפעלה את ההזמנה. *למשל Wink*
+- 9.85% הוקצה לשותף כעמלה. *למשל Kim Kardashian*
+- 88.65% הוקצה לספק עבור הזמנת החדר. *למשל Hilton*
+
+כאשר TripPay מגיב עם חוזה לתשלום, תבחין שהוא הזריק מוטב משלו בשיעור 4.0%.
+:::
+
+### תגובה
+
+כאשר TripPay מגיב לבקשתך, זה ייראה כך:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+שמור את ה-`id` בשורה 3. תשתמש בו להזרקה לתוך רכיב ה-Web של TripPay.
+
+## הטמעת TripPay
+
+:::note
+ודא שטענת את הסגנונות וה-Javascript שלנו מראש.
+:::
+
+כעת, אתה מוכן להטמיע את ה-`Payment Web Component` באתר שלך ולהציגו למשתמש.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+לגבי האינטגרציה, זה כל מה שצריך לעשות. כל העבודה הכבדה נעשית על ידי TripPay מהשלב הזה ואילך.

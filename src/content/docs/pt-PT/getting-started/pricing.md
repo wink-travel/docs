@@ -50,7 +50,7 @@ Neste modelo, os agentes de viagens pagam apenas a taxa de processamento da Wink
 
 ## Subscrições
 
-Oferecemos um serviço de subscrição opcional (veja [Social](/pt-PT/social/what-is-social)) para ajudar os estabelecimentos a reforçar as suas equipas de vendas e marketing.
+Oferecemos um serviço de subscrição opcional (veja [Social](/pt-PT/portal/social/what-is-social)) para ajudar os estabelecimentos a reforçar as suas equipas de vendas e marketing.
 
 ## Efeito da plataforma
 

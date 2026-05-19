@@ -50,7 +50,7 @@ Selle mudeli kasutamisel maksavad reisibürood ainult Wink'i töötlemistasu nin
 
 ## Tellimused
 
-Pakume valikulist tellimusteenust (vt [Social](/et/social/what-is-social)), mis aitab majutusasutustel suurendada oma müügi- ja turundusmeeskondi.
+Pakume valikulist tellimusteenust (vt [Social](/et/portal/social/what-is-social)), mis aitab majutusasutustel suurendada oma müügi- ja turundusmeeskondi.
 
 ## Platvormi mõju
 

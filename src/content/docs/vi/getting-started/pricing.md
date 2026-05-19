@@ -50,7 +50,7 @@ Sử dụng mô hình này, đại lý du lịch chỉ trả phí xử lý của
 
 ## Đăng ký
 
-Chúng tôi có cung cấp dịch vụ đăng ký tùy chọn (xem [Social](/vi/social/what-is-social)) để giúp các cơ sở tăng cường đội ngũ bán hàng và marketing.
+Chúng tôi có cung cấp dịch vụ đăng ký tùy chọn (xem [Social](/vi/portal/social/what-is-social)) để giúp các cơ sở tăng cường đội ngũ bán hàng và marketing.
 
 ## Hiệu ứng nền tảng
 

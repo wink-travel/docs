@@ -7,8 +7,8 @@ sidebar:
 
 Així és com segmentem la responsabilitat a Wink: 
 
-- [Extranet](/ca/extranet/what-is-extranet) s'ocupa dels proveïdors que gestionen l'inventari.
-- [Studio](/ca/studio/what-is-studio) s'ocupa dels afiliats que gestionen el contingut.
+- [Extranet](/ca/portal/extranet/what-is-extranet) s'ocupa dels proveïdors que gestionen l'inventari.
+- [Studio](/ca/portal/studio/what-is-studio) s'ocupa dels afiliats que gestionen el contingut.
 - `Booking Engine` s'ocupa de fer que el contingut, creat a `Studio`, que es basa en l'inventari creat a `Extranet`, sigui reservable.
 - [Payment](/ca/payment/what-is-trip-pay) s'ocupa de cobrar / reemborsar els viatgers que reserven [a través de plataformes com Wink], i de pagar els proveïdors.
 
@@ -22,11 +22,11 @@ Les seves responsabilitats inclouen:
 - Gestionar idiomes.
 - Generar anàlisis basades en les interaccions d'usuaris, esdeveniments i crides API.
 - Oferir inventari reservable en el format, idioma i moneda desitjats, com ara:
-    - Un [enllaç compartible](/ca/studio/shareable-links) a Facebook.
+    - Un [enllaç compartible](/ca/portal/studio/shareable-links) a Facebook.
     - Una pàgina d'aterratge d'hotel a https://ota.wink.travel amb inventari per a aquest hotel.
-    - Una [targeta](/ca/studio/cards) que conté inventari d'afiliats.
-    - Un [mapa](/ca/studio/maps) al teu compte de [WinkLinks](/ca/link-manager/wink-links).
-    - Una [crida API](/ca/developers/apis) des d'un sistema remot d'agència de viatges.
+    - Una [targeta](/ca/portal/studio/cards) que conté inventari d'afiliats.
+    - Un [mapa](/ca/portal/studio/maps) al teu compte de [WinkLinks](/ca/portal/link-manager/wink-links).
+    - Una [crida API](/ca/api) des d'un sistema remot d'agència de viatges.
 - Proporcionar als viatgers una manera de: 
     - Cercar inventari de viatges.
     - Reservar inventari disponible.
@@ -36,7 +36,7 @@ Les seves responsabilitats inclouen:
 
 El motor de reserves és una col·lecció de funcionalitats reutilitzables que exposem a través de https://ota.wink.travel; un lloc web altament personalitzable perquè hotels i afiliats venguin els seus productes als viatgers.
 
-Els integradors, que volen encara més llibertat, tenen accés a totes les mateixes funcions a través del nostre [plugin de WordPress](/ca/integrations/wordpress/), [Web Components](/ca/integrations/web-components) i [APIs](/ca/developers/apis).
+Els integradors, que volen encara més llibertat, tenen accés a totes les mateixes funcions a través del nostre [plugin de WordPress](/ca/integrations/wordpress/), [Web Components](/ca/integrations/web-components) i [APIs](/ca/api).
 
 Continua a les següents seccions per llegir més sobre el que ofereix el motor de reserves.
 
@@ -44,4 +44,4 @@ Continua a les següents seccions per llegir més sobre el que ofereix el motor 
 
 - Llegeix sobre el nostre [plugin de WordPress](/ca/integrations/wordpress/).
 - Llegeix sobre els nostres [Web Components](/ca/integrations/web-components).
-- Llegeix sobre les nostres [APIs](/ca/developers/apis).
+- Llegeix sobre les nostres [APIs](/ca/api).

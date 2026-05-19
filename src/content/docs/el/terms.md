@@ -10,7 +10,7 @@ description: Όροι και Προϋποθέσεις για όλους τους
 Για συνεργάτες που θέλουν να μάθουν πώς να κερδίζουν παθητικό εισόδημα αξιοποιώντας τους λογαριασμούς τους στα social media με το Wink.  
 Το [Wink Studio](https://studio.wink.travel) διαθέτει όλα τα εργαλεία που χρειάζεστε για να πουλάτε σαν επαγγελματίας.
 
-<LinkButton href="/el/studio/what-is-studio">
+<LinkButton href="/el/portal/studio/what-is-studio">
 Μάθετε περισσότερα για το Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ description: Όροι και Προϋποθέσεις για όλους τους
 
 Για καταλύματα που θέλουν να ξεκινήσουν να πωλούν στο Wink. Χρησιμοποιήστε τα εργαλεία μας για να πουλάτε και να προωθείτε αποτελεσματικά τον εαυτό σας online και αποκτήστε έναν στρατό συνεργατών από όλο τον κόσμο που θα σας βοηθήσουν να αποκτήσετε πελάτες και κρατήσεις.
 
-<LinkButton href="/el/extranet/what-is-extranet">
+<LinkButton href="/el/portal/extranet/what-is-extranet">
 Μάθετε περισσότερα για το Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ description: Όροι και Προϋποθέσεις για όλους τους
 
 Για ταξιδιωτικούς πράκτορες που θέλουν να ανακαλύψουν τι μπορεί να τους προσφέρει το Wink όσον αφορά εξατομικευμένες τιμές, προσφορές και αποθέματα, απευθείας από προμηθευτές.
 
-<LinkButton href="/el/travel-agent/what-is-agent">
+<LinkButton href="/el/portal/travel-agent/what-is-agent">
 Μάθετε περισσότερα για το Wink Agent
 </LinkButton>

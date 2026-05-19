@@ -7,8 +7,8 @@ sidebar:
 
 Wink에서 책임 분담 방식은 다음과 같습니다:
 
-- [Extranet](/ko/extranet/what-is-extranet)은 공급자가 재고를 관리하는 부분입니다.
-- [Studio](/ko/studio/what-is-studio)은 제휴사가 콘텐츠를 관리하는 부분입니다.
+- [Extranet](/ko/portal/extranet/what-is-extranet)은 공급자가 재고를 관리하는 부분입니다.
+- [Studio](/ko/portal/studio/what-is-studio)은 제휴사가 콘텐츠를 관리하는 부분입니다.
 - `Booking Engine`은 `Extranet`에서 생성된 재고를 기반으로 `Studio`에서 만든 콘텐츠를 예약 가능하게 만드는 부분입니다.
 - [Payment](/ko/payment/what-is-trip-pay)은 [Wink와 같은 플랫폼을 통해] 예약한 여행자에게 요금을 청구/환불하고 공급자에게 지급하는 부분입니다.
 
@@ -22,11 +22,11 @@ Wink에서 책임 분담 방식은 다음과 같습니다:
 - 언어 관리.
 - 사용자 상호작용, 이벤트 및 API 호출을 기반으로 분석 생성.
 - 원하는 형식, 언어 및 통화로 예약 가능한 재고 제공, 예를 들어:
-    - Facebook에서 사용할 수 있는 [공유 가능한 링크](/ko/studio/shareable-links).
+    - Facebook에서 사용할 수 있는 [공유 가능한 링크](/ko/portal/studio/shareable-links).
     - 해당 호텔의 재고가 있는 https://ota.wink.travel의 호텔 랜딩 페이지.
-    - 제휴사 재고가 포함된 [카드](/ko/studio/cards).
-    - [WinkLinks](/ko/link-manager/wink-links) 계정의 [지도](/ko/studio/maps).
-    - 원격 여행사 시스템의 [API 호출](/ko/developers/apis).
+    - 제휴사 재고가 포함된 [카드](/ko/portal/studio/cards).
+    - [WinkLinks](/ko/portal/link-manager/wink-links) 계정의 [지도](/ko/portal/studio/maps).
+    - 원격 여행사 시스템의 [API 호출](/ko/api).
 - 여행자에게 다음과 같은 기능 제공:
     - 여행 재고 검색.
     - 이용 가능한 재고 예약.
@@ -36,7 +36,7 @@ Wink에서 책임 분담 방식은 다음과 같습니다:
 
 예약 엔진은 https://ota.wink.travel을 통해 제공하는 재사용 가능한 기능 모음으로, 호텔과 제휴사가 여행자에게 상품을 판매할 수 있는 고도로 맞춤화된 웹사이트입니다.
 
-더 많은 자유를 원하는 통합자는 [WordPress 플러그인](/ko/integrations/wordpress/), [웹 컴포넌트](/ko/integrations/web-components), [API](/ko/developers/apis)를 통해 동일한 기능에 접근할 수 있습니다.
+더 많은 자유를 원하는 통합자는 [WordPress 플러그인](/ko/integrations/wordpress/), [웹 컴포넌트](/ko/integrations/web-components), [API](/ko/api)를 통해 동일한 기능에 접근할 수 있습니다.
 
 다음 섹션으로 계속 진행하여 예약 엔진이 제공하는 기능에 대해 더 읽어보세요.
 
@@ -44,4 +44,4 @@ Wink에서 책임 분담 방식은 다음과 같습니다:
 
 - [WordPress 플러그인](/ko/integrations/wordpress/)에 대해 읽어보세요.
 - [웹 컴포넌트](/ko/integrations/web-components)에 대해 읽어보세요.
-- [API](/ko/developers/apis)에 대해 읽어보세요.
+- [API](/ko/api)에 대해 읽어보세요.

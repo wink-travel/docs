@@ -50,7 +50,7 @@ Bu modeli kullanan seyahat acenteleri sadece Wink'in işlem ücretini öder ve W
 
 ## Abonelikler
 
-Mülklerin satış ve pazarlama ekiplerini güçlendirmelerine yardımcı olmak için isteğe bağlı bir abonelik hizmeti sunuyoruz (bkz. [Social](/tr/social/what-is-social)).
+Mülklerin satış ve pazarlama ekiplerini güçlendirmelerine yardımcı olmak için isteğe bağlı bir abonelik hizmeti sunuyoruz (bkz. [Social](/tr/portal/social/what-is-social)).
 
 ## Platform etkisi
 

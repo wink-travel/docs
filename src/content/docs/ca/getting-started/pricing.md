@@ -50,7 +50,7 @@ Amb aquest model, els agents de viatges només paguen la comissió de processame
 
 ## Subscripcions
 
-Oferim un servei de subscripció opcional (vegeu [Social](/ca/social/what-is-social)) per ajudar les propietats a augmentar els seus equips de vendes i màrqueting.
+Oferim un servei de subscripció opcional (vegeu [Social](/ca/portal/social/what-is-social)) per ajudar les propietats a augmentar els seus equips de vendes i màrqueting.
 
 ## Efecte de la plataforma
 

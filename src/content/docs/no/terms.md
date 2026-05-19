@@ -10,7 +10,7 @@ Hver portal kan ha forskjellige vilkår og betingelser. Vennligst gå til seksjo
 For affiliates som ønsker å lære hvordan de kan tjene en passiv inntekt ved å tjene penger på sosiale kontoer med Wink.  
 [Wink Studio](https://studio.wink.travel) har alle verktøyene du trenger for å selge som en profesjonell.
 
-<LinkButton href="/no/studio/what-is-studio">
+<LinkButton href="/no/portal/studio/what-is-studio">
 Lær mer om Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ Lær mer om vår bookingmotor
 
 For eiendommer som ønsker å begynne å selge på Wink. Bruk våre verktøy for å effektivt selge og markedsføre deg selv på nettet, og få en hær av affiliates fra hele verden til å hjelpe deg med å få kunder og bestillinger.
 
-<LinkButton href="/no/extranet/what-is-extranet">
+<LinkButton href="/no/portal/extranet/what-is-extranet">
 Lær mer om Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ Lær mer om Wink Extranet
 
 For reisebyråer som ønsker å finne ut hva Wink kan tilby dem når det gjelder skreddersydde priser, tilbud og inventar, direkte fra leverandører.
 
-<LinkButton href="/no/travel-agent/what-is-agent">
+<LinkButton href="/no/portal/travel-agent/what-is-agent">
 Lær mer om Wink Agent
 </LinkButton>

@@ -17,7 +17,7 @@ Wink 十年前開始為飯店提供上架服務。飯店使用 Wink 有效管理
 
 - 在單一帳戶下管理多個物業。
 - 指派管理者負責各物業。
-- 使用 [WinkLinks](/zh-TW/link-manager/wink-links)、[WordPress](/zh-TW/integrations/wordpress) 及我們的 [Web Components](/zh-TW/integrations/web-components) 在同一平台行銷及銷售多個物業。
+- 使用 [WinkLinks](/zh-TW/portal/link-manager/wink-links)、[WordPress](/zh-TW/integrations/wordpress) 及我們的 [Web Components](/zh-TW/integrations/web-components) 在同一平台行銷及銷售多個物業。
 
 ## 管理公司
 
@@ -42,7 +42,7 @@ Wink 十年前開始為飯店提供上架服務。飯店使用 Wink 有效管理
 - 需要費用管理及報告整合。
 - 需要禮賓支援及活動的 MICE 服務。
 
-企業旅客可在我們的 [企業入口網站](/zh-TW/corporate/what-is-group) 自行管理帳戶，或使用我們官方支援的 [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) 外掛及 [Concur](https://www.concur.com/) 整合。
+企業旅客可在我們的 [企業入口網站](/zh-TW/portal/corporate/what-is-group) 自行管理帳戶，或使用我們官方支援的 [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) 外掛及 [Concur](https://www.concur.com/) 整合。
 
 ## 開發者
 

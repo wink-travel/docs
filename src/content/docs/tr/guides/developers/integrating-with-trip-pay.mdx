@@ -1,0 +1,222 @@
+---
+title: TripPay ile Entegrasyon
+description: Bu makale, TripPay ile nasıl entegre olunacağını ve TripPay'in ödemeyi sizin için nasıl yöneteceğini tam bir örnekle anlatmaktadır.
+sidebar:
+  order: 4
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Bu makale, TripPay ile nasıl uçtan uca entegrasyon yapılacağını içermektedir.
+
+Öncelikle aşağıdakileri okumanız önerilir:
+
+- [Ödeme > Eşleme](/tr/payment/mapping).
+- [Ödeme > Entegrasyon](/tr/payment/integration).
+- [Ödeme Web Bileşeni](/tr/integrations/web-components/#payment).
+- [Ödeme API](/tr/api). *`Ödenecek sözleşmeler oluşturma` bölümünü okuyun*
+
+TripPay'i kullanarak bir rezervasyonun ödemesini başarıyla yapmak için adımlar şunlardır:
+
+<Steps>
+1. Rezervasyon sözleşmesinde belirttiğiniz yararlanıcıların eşlendiğinden emin olun.
+2. Seyahatçinin rezervasyon yapmak istediği envanteri seçmesine izin verin ve ödemeye hazır hale getirin.
+3. Rezervasyon yapılacak öğeleri içeren bir `ödenecek sözleşme`yi TripPay ile oluşturun.
+4. Seyahatçinin TripPay Web Bileşeni'ni kullanarak ödeme yapmasını sağlayın.
+</Steps>
+
+`Adım 1` ve `Adım 2`'yi tamamladığınızı ve TripPay'e rezervasyon hakkında bilgi vermeye hazır olduğunuzu varsayıyoruz.
+
+## Ödenecek sözleşme oluşturma
+
+:::note
+Ödenecek sözleşme oluşturma gereksinimleri hakkında daha fazla bilgi için Ödeme API'sine bakın.
+:::
+
+### İstek
+İlk ödenecek sözleşmenizi oluşturmak için ihtiyacınız olan her şeyi içeren bir JSON örnek isteği aşağıdadır.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Açıklama:
+
+Buradaki her veri noktasını açıklamayacağız çünkü API dokümanlarında zaten detaylıca ele alınmıştır.
+
+- Satırlar: **2 - 7** rezervasyonu yapan kullanıcıdır. İki tür rezervasyon yapan vardır:
+    - Seyahatçi.
+    - Seyahat acentesi.
+- Satırlar: **8 - 9** rezervasyonu kolaylaştıran TripPay hesabıdır. Bu:
+    - Sizin TripPay entegratör hesabınız olabilir.
+    - Bir bağlı kuruluş ağı işletiyorsanız, bağlı kuruluşunuz olabilir.
+- Birden fazla tedarikçi arasında birden fazla rezervasyonu gruplayabilmek için `traceId` kullanın. Böylece grup rezervasyonunu iptal edebilirsiniz.
+- `redirectUrl` ödeme tamamlandıktan sonra TripPay'in yönlendireceği sayfayı belirtir.
+- `sourceUrl` rezervasyonun yapıldığı site / uygulamadır.
+
+`contractList` dizisi, seyahatçinin birden fazla tedarikçiden satın almak istediği öğeleri içerir. Her öğe şunları içerir:
+
+- `identifier` sizin oluşturduğunuz geçerli bir UUID'dir.
+- Rezervasyon yapmak istediğiniz tedarikçi.
+- O tedarikçiden rezervasyon yapmak istediğiniz envanter. Bunlar iç içe `contractItemList` dizisinde belirtilmiştir.
+- `contractItemList` altındaki her giriş şunları içerir:
+    - **Misafir kullanıcı** Tesislere gelecek kullanıcıdır.
+    - **İngilizce isim** Envanterin İngilizce dilindeki adıdır.
+    - **İngilizce açıklama** Envanterin İngilizce dilindeki daha uzun açıklamasıdır.
+    - **Fiyat** Öğenin fiyatıdır.
+    - **Güzergah** Bu öğenin ne zaman rezerve edileceğidir.
+    - **Fiyatlandırma türü** Fiyatın nasıl hesaplandığıdır.
+    - **Envanter türü** Bu envanterin türüdür.
+    - **Ödenecek** Seyahatçiden ne zaman ücret alınacağıdır. *Şu anda sadece anında ödeme seçeneklerini destekliyoruz.*
+    - **Politika** İptal politikası kurallarını içerir.
+    - **Günlük fiyat listesi** Rezervasyon yapılan öğe bir oda ise, misafirin kaldığı her gece için o odanın fiyatını dahil edebilirsiniz.
+    - **Yararlanıcılar** TripPay hesabının hangi kısmının öğe fiyatından ne kadar pay alacağını belirtir. *Sabit / Yüzde tutarlar desteklenir.*
+
+:::note
+Yukarıdaki JSON örneğinde 3 yararlanıcı vardır:
+
+- %1,5 rezervasyonu kolaylaştıran platforma ayrılmıştır. *örneğin Wink*
+- %9,85 bağlı kuruluşa komisyon olarak ayrılmıştır. *örneğin Kim Kardashian*
+- %88,65 oda rezervasyonu için tedarikçiye ayrılmıştır. *örneğin Hilton*
+
+TripPay ödenecek sözleşmeyle yanıt verdiğinde, kendi yararlanıcısını %4,0 olarak eklediğini göreceksiniz.
+:::
+
+### Yanıt
+
+TripPay isteğinize yanıt verdiğinde şöyle görünecektir:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+3. satırdaki `id` değerini kaydedin. Bunu TripPay web bileşenine enjekte etmek için kullanacaksınız.
+
+## TripPay'i Gömme
+
+:::note
+Önceden stil ve Javascript dosyalarımızı yüklediğinizden emin olun.
+:::
+
+Bu noktada, `Payment Web Component`'i web sitenize gömmeye ve kullanıcıya göstermeye hazırsınız.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+Entegrasyon açısından yapmanız gereken tek şey budur. Geri kalan tüm ağır işler TripPay tarafından yapılacaktır.

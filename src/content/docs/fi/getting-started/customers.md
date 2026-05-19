@@ -17,7 +17,7 @@ Brändeillä ja ketjuilla on hieman erilaiset tarpeet kuin yksittäisellä kiint
 
 - Hallita useita kiinteistöjä yhden tilin alla.
 - Määrittää kiinteistöille johtajat
-- Käyttää [WinkLinks](/fi/link-manager/wink-links), [WordPress](/fi/integrations/wordpress) ja meidän [Web Components](/fi/integrations/web-components) -komponenttejamme markkinoidakseen ja myydäkseen useita kiinteistöjä yhdessä paikassa.
+- Käyttää [WinkLinks](/fi/portal/link-manager/wink-links), [WordPress](/fi/integrations/wordpress) ja meidän [Web Components](/fi/integrations/web-components) -komponenttejamme markkinoidakseen ja myydäkseen useita kiinteistöjä yhdessä paikassa.
 
 ## Hallintayhtiöt
 
@@ -42,7 +42,7 @@ Yritykset tarvitsevat enemmän matkailualustan ominaisuuksia:
 - He tarvitsevat kulujen hallinnan ja raportointiin integroitumisen.
 - He tarvitsevat concierge-palvelua sekä MICE-palveluita tapahtumissa.
 
-Yritysasiakkaat voivat hallita omia tilejään meidän [yritysportaalissamme](/fi/corporate/what-is-group) tai käyttää virallisesti tuettua [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) -lisäosaa ja [Concur](https://www.concur.com/) -integraatiota.
+Yritysasiakkaat voivat hallita omia tilejään meidän [yritysportaalissamme](/fi/portal/corporate/what-is-group) tai käyttää virallisesti tuettua [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) -lisäosaa ja [Concur](https://www.concur.com/) -integraatiota.
 
 ## Kehittäjät
 

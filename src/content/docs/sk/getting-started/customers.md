@@ -17,7 +17,7 @@ Značky a reťazce majú mierne odlišné potreby ako jednotlivé nehnuteľnosti
 
 - Spravovať viacero nehnuteľností pod jedným účtom.
 - Priraďovať manažérov k nehnuteľnostiam.
-- Používať [WinkLinks](/sk/link-manager/wink-links), [WordPress](/sk/integrations/wordpress) a naše [Web Components](/sk/integrations/web-components) na marketing a predaj viacerých nehnuteľností na jednom mieste.
+- Používať [WinkLinks](/sk/portal/link-manager/wink-links), [WordPress](/sk/integrations/wordpress) a naše [Web Components](/sk/integrations/web-components) na marketing a predaj viacerých nehnuteľností na jednom mieste.
 
 ## Správcovské spoločnosti
 
@@ -42,7 +42,7 @@ Korporácie vyžadujú viac od cestovnej platformy:
 - Vyžadujú správu výdavkov a integráciu reportovania.
 - Potrebujú concierge podporu, ako aj MICE služby na podujatiach.
 
-Korporátni cestujúci môžu spravovať svoje účty na našom [korporátnom portáli](/sk/corporate/what-is-group) alebo používať náš oficiálne podporovaný [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin a integráciu [Concur](https://www.concur.com/).
+Korporátni cestujúci môžu spravovať svoje účty na našom [korporátnom portáli](/sk/portal/corporate/what-is-group) alebo používať náš oficiálne podporovaný [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin a integráciu [Concur](https://www.concur.com/).
 
 ## Vývojári
 

@@ -50,7 +50,7 @@ Wink percepe o taxă de procesare de 1,5% per rezervare. Aceasta ne permite să 
 
 ## Abonamente
 
-Oferim un serviciu opțional de abonament (vezi [Social](/ro/social/what-is-social)) pentru a ajuta proprietățile să-și extindă echipele de vânzări și marketing.
+Oferim un serviciu opțional de abonament (vezi [Social](/ro/portal/social/what-is-social)) pentru a ajuta proprietățile să-și extindă echipele de vânzări și marketing.
 
 ## Efectul platformei
 

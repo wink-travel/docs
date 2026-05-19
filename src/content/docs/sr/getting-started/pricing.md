@@ -50,7 +50,7 @@ Koristeći ovaj model, turistički agenti plaćaju samo Wink-ovu naknadu za obra
 
 ## Pretplate
 
-Nudimo i opcioni servis pretplate (pogledajte [Social](/sr/social/what-is-social)) koji pomaže objektima da unaprede svoje prodajne i marketinške timove.
+Nudimo i opcioni servis pretplate (pogledajte [Social](/sr/portal/social/what-is-social)) koji pomaže objektima da unaprede svoje prodajne i marketinške timove.
 
 ## Efekat platforme
 

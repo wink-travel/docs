@@ -7,8 +7,8 @@ sidebar:
 
 Berikut adalah bagaimana kami membahagikan tanggungjawab di Wink:
 
-- [Extranet](/ms/extranet/what-is-extranet) berkaitan dengan pembekal yang mengurus inventori.
-- [Studio](/ms/studio/what-is-studio) berkaitan dengan afiliasi yang mengurus kandungan.
+- [Extranet](/ms/portal/extranet/what-is-extranet) berkaitan dengan pembekal yang mengurus inventori.
+- [Studio](/ms/portal/studio/what-is-studio) berkaitan dengan afiliasi yang mengurus kandungan.
 - `Booking Engine` berkaitan dengan menjadikan kandungan, yang dibuat dalam `Studio`, yang berasaskan inventori yang dibuat dalam `Extranet` dan menjadikannya boleh ditempah.
 - [Payment](/ms/payment/what-is-trip-pay) berkaitan dengan mengenakan bayaran / memulangkan wang kepada pelancong yang menempah [melalui platform seperti Wink], dan membayar vendor.
 
@@ -22,11 +22,11 @@ Tanggungjawabnya termasuk:
 - Mengurus bahasa.
 - Menjana analitik berdasarkan interaksi pengguna, acara dan panggilan API.
 - Menyediakan inventori yang boleh ditempah dalam format, bahasa dan mata wang yang dikehendaki, seperti:
-    - [pautan boleh dikongsi](/ms/studio/shareable-links) di Facebook.
+    - [pautan boleh dikongsi](/ms/portal/studio/shareable-links) di Facebook.
     - Halaman pendaratan hotel di https://ota.wink.travel dengan inventori untuk hotel tersebut.
-    - [kad](/ms/studio/cards) yang mengandungi inventori afiliasi.
-    - [peta](/ms/studio/maps) pada akaun [WinkLinks](/ms/link-manager/wink-links) anda.
-    - [Panggilan API](/ms/developers/apis) dari sistem ejen pelancongan jauh.
+    - [kad](/ms/portal/studio/cards) yang mengandungi inventori afiliasi.
+    - [peta](/ms/portal/studio/maps) pada akaun [WinkLinks](/ms/portal/link-manager/wink-links) anda.
+    - [Panggilan API](/ms/api) dari sistem ejen pelancongan jauh.
 - Memberi pelancong cara untuk:
     - Mencari inventori pelancongan.
     - Menempah inventori yang tersedia.
@@ -36,7 +36,7 @@ Tanggungjawabnya termasuk:
 
 Enjin tempahan adalah koleksi fungsi yang boleh digunakan semula yang kami dedahkan melalui https://ota.wink.travel; sebuah laman web yang sangat boleh disesuaikan untuk hotel dan afiliasi menjual produk mereka kepada pelancong.
 
-Integrasi, yang mahukan lebih kebebasan, mempunyai akses kepada semua ciri yang sama melalui [plugin WordPress kami](/ms/integrations/wordpress/), [Komponen Web](/ms/integrations/web-components) dan [API](/ms/developers/apis).
+Integrasi, yang mahukan lebih kebebasan, mempunyai akses kepada semua ciri yang sama melalui [plugin WordPress kami](/ms/integrations/wordpress/), [Komponen Web](/ms/integrations/web-components) dan [API](/ms/api).
 
 Teruskan ke bahagian seterusnya untuk membaca lebih lanjut tentang apa yang ditawarkan oleh enjin tempahan.
 
@@ -44,4 +44,4 @@ Teruskan ke bahagian seterusnya untuk membaca lebih lanjut tentang apa yang dita
 
 - Baca tentang [plugin WordPress kami](/ms/integrations/wordpress/).
 - Baca tentang [Komponen Web kami](/ms/integrations/web-components).
-- Baca tentang [API kami](/ms/developers/apis).
+- Baca tentang [API kami](/ms/api).

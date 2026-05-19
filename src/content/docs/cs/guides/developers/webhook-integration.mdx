@@ -1,0 +1,77 @@
+---
+title: Integrace webhooků
+description: Tento průvodce ukazuje vývojářům, jak nastavit webhooky pro přijímání oznámení v reálném čase o rezervacích, platbách a dalších událostech.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Webhooky umožňují vašim systémům přijímat oznámení v reálném čase, když se na vašem účtu Wink stane nějaká událost — nové rezervace, zrušení, aktualizace plateb a další. Tento průvodce vás provede nastavením a nejlepšími postupy.
+
+## Publikum
+
+Tento průvodce je určen vývojářům integrujícím Wink s externími systémy, jako jsou systémy pro správu nemovitostí (PMS), channel manageři, CRM nebo vlastní dashboardy.
+
+## Jak webhooky fungují
+
+1. Zaregistrujete URL webhooku ve Wink.
+2. Když nastane událost (např. nová rezervace), Wink odešle HTTP POST na vaši URL.
+3. Váš server zpracuje data a odpoví s `200 OK`.
+
+## Nastavení webhooku
+
+<Steps>
+1. Přihlaste se do svého účtu (Extranet, Studio nebo TripPay — všechny podporují webhooky).
+2. Přejděte do `Applications` a poté `Webhooks`. Viz [Webhooks](/cs/portal/settings/webhooks).
+3. Klikněte na `Create webhook`.
+4. Zadejte **název** (např. "PMS synchronizace rezervací").
+5. Zadejte svou **webhook URL** — HTTPS endpoint na vašem serveru.
+6. **Vyberte události** — Zvolte konkrétní události, na které se chcete přihlásit, nebo nechte prázdné pro příjem všech událostí.
+7. Přepněte **Enabled** na zapnuto.
+8. Klikněte na `Save`.
+</Steps>
+
+## Typy událostí
+
+Wink podporuje **64+ typů webhook událostí** v kategoriích jako správa účtu, smlouvy o rezervacích, platby, aktualizace channel managera a správa entit. Běžné události zahrnují:
+
+| Kategorie | Příklady |
+|---|---|
+| **Rezervace** | `booking.create`, `booking.cancelled` |
+| **Smlouva o rezervaci** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Platba** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Vrácení peněz** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Channel manager** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Účet** | `account.create`, `account.status.updated` |
+
+Pro úplný seznam všech typů událostí s popisy viz **Katalog webhook událostí**.
+
+<LinkButton href="/cs/developers/webhook-events">
+  Zobrazit všech 64+ typů událostí
+</LinkButton>
+
+:::tip
+Začněte během vývoje přihlášením ke všem událostem. Jakmile pochopíte data, zúžte výběr pouze na události, které váš systém skutečně potřebuje.
+:::
+
+## Nejlepší postupy
+
+- **Používejte HTTPS** — Wink odesílá data pouze na HTTPS endpointy.
+- **Odpovídejte rychle** — Vraťte `200 OK` hned po přijetí dat. Náročné zpracování provádějte asynchronně.
+- **Idempotentnost** — Váš handler by měl být idempotentní. Wink může opakovat doručení, pokud neobdrží odpověď `200`.
+- **Ověřte zdroj** — Před zpracováním ověřte, že příchozí požadavky jsou od Wink.
+- **Logování** — Logujte každý přijatý webhook payload. Usnadní to ladění integrace.
+
+## Pozastavení a mazání
+
+Webhook můžete **zakázat** bez jeho smazání. Tím pozastavíte doručování, abyste mohli řešit problémy, aniž byste přišli o konfiguraci. Až budete připraveni, opět jej zapněte.
+
+Smazání webhooku jej trvale odstraní. Jakákoli integrace, která na něj spoléhá, přestane dostávat oznámení.
+
+## Další čtení
+
+- [Katalog webhook událostí](/cs/developers/webhook-events) — Kompletní seznam všech 64+ typů událostí.
+- [Webhooks](/cs/portal/settings/webhooks) — Kompletní reference pro správu webhooků.
+- [Applications](/cs/portal/settings/applications) — Správa vašich API přístupů.
+- [Developers > APIs](/cs/api) — Kompletní dokumentace API.

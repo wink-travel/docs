@@ -50,7 +50,7 @@ Usando este modelo, los agentes de viajes solo pagan la comisión por procesamie
 
 ## Suscripciones
 
-Ofrecemos un servicio de suscripción opcional (ver [Social](/es-AR/social/what-is-social)) para ayudar a los alojamientos a potenciar sus equipos de ventas y marketing.
+Ofrecemos un servicio de suscripción opcional (ver [Social](/es-AR/portal/social/what-is-social)) para ayudar a los alojamientos a potenciar sus equipos de ventas y marketing.
 
 ## Efecto plataforma
 

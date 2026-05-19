@@ -7,8 +7,8 @@ sidebar:
 
 Így osztjuk meg a felelősséget a Wink-ben:
 
-- Az [Extranet](/hu/extranet/what-is-extranet) a készletet kezelő beszállítókkal foglalkozik.
-- A [Studio](/hu/studio/what-is-studio) az affiliate partnerek tartalomkezelésével foglalkozik.
+- Az [Extranet](/hu/portal/extranet/what-is-extranet) a készletet kezelő beszállítókkal foglalkozik.
+- A [Studio](/hu/portal/studio/what-is-studio) az affiliate partnerek tartalomkezelésével foglalkozik.
 - A `Booking Engine` a `Studio` által létrehozott, az `Extranet` készletén alapuló tartalom foglalhatóvá tételével foglalkozik.
 - A [Payment](/hu/payment/what-is-trip-pay) a foglaló utasok díjazásával / visszatérítésével, valamint a beszállítók kifizetésével foglalkozik.
 
@@ -22,11 +22,11 @@ Felelősségi körei:
 - Nyelvek kezelése.
 - Elemzések generálása felhasználói interakciók, események és API hívások alapján.
 - Foglalható készlet szolgáltatása a kívánt formátumban, nyelven és pénznemben, például:
-    - Egy [megosztható link](/hu/studio/shareable-links) Facebookon.
+    - Egy [megosztható link](/hu/portal/studio/shareable-links) Facebookon.
     - Egy szállodai kezdőoldal a https://ota.wink.travel oldalon az adott szálloda készletével.
-    - Egy [kártya](/hu/studio/cards) affiliate készlettel.
-    - Egy [térkép](/hu/studio/maps) a [WinkLinks](/hu/link-manager/wink-links) fiókodban.
-    - Egy [API hívás](/hu/developers/apis) egy távoli utazási ügynökségi rendszertől.
+    - Egy [kártya](/hu/portal/studio/cards) affiliate készlettel.
+    - Egy [térkép](/hu/portal/studio/maps) a [WinkLinks](/hu/portal/link-manager/wink-links) fiókodban.
+    - Egy [API hívás](/hu/api) egy távoli utazási ügynökségi rendszertől.
 - Utasok számára lehetőség biztosítása, hogy:
     - Keresni tudjanak az utazási készletben.
     - Foglaljanak elérhető készletet.
@@ -36,7 +36,7 @@ Felelősségi körei:
 
 A foglalási motor egy újrahasznosítható funkciók gyűjteménye, amelyet a https://ota.wink.travel oldalon keresztül teszünk elérhetővé; egy rendkívül testreszabható weboldal szállodák és affiliate partnerek számára, hogy termékeiket utazóknak értékesítsék.
 
-Az integrátorok, akik még nagyobb szabadságot szeretnének, ugyanazokat a funkciókat érhetik el a [WordPress pluginunk](/hu/integrations/wordpress/), [Web Components](/hu/integrations/web-components) és [API-k](/hu/developers/apis) segítségével.
+Az integrátorok, akik még nagyobb szabadságot szeretnének, ugyanazokat a funkciókat érhetik el a [WordPress pluginunk](/hu/integrations/wordpress/), [Web Components](/hu/integrations/web-components) és [API-k](/hu/api) segítségével.
 
 Folytasd a következő szakaszokkal, hogy többet megtudj a foglalási motor kínálatáról.
 
@@ -44,4 +44,4 @@ Folytasd a következő szakaszokkal, hogy többet megtudj a foglalási motor kí
 
 - Olvass a [WordPress pluginunkról](/hu/integrations/wordpress/).
 - Olvass a [Web Components-ről](/hu/integrations/web-components).
-- Olvass az [API-inkról](/hu/developers/apis).
+- Olvass az [API-inkról](/hu/api).

@@ -4,6 +4,13 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from 'astro/config';
 import starlightBlog from 'starlight-blog';
 import starlightChangelogs, { makeChangelogsSidebarLinks } from 'starlight-changelogs';
+import starlightOpenAPI, { createOpenAPISidebarGroup } from 'starlight-openapi'
+import { buildRedirects } from './scripts/build-redirects.mjs';
+
+// Single parent slot for both OpenAPI reference docs. Each schema below sets
+// `sidebar.group` to this placeholder, and the sidebar entry near the bottom
+// wraps it under one "API" group.
+const apiSidebarGroup = createOpenAPISidebarGroup()
 
 import icon from 'astro-icon';
 
@@ -12,6 +19,7 @@ import markdoc from '@astrojs/markdoc';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://wink.travel',
+  redirects: buildRedirects(),
   image: {
     domains: ['res.cloudinary.com']
   },
@@ -59,13 +67,45 @@ export default defineConfig({
     //   baseUrl: 'https://github.com/wink-travel/docs/edit/master/',
     // },
     plugins: [
-      // starlightDocSearch({
-      //   appId: 'PHYEPKXSV0',
-      //   apiKey: '4035733f1e7c70ad7858be57ee1d0c6a',
-      //   indexName: 'wink'
-      // }),
+      // Generate the OpenAPI reference pages from local snapshots in ./schemas/.
+      // Refresh snapshots with `npm run schemas:sync`.
+      starlightOpenAPI([
+        {
+          base: 'api',
+          schema: './schemas/api.json',
+          sidebar: {
+            label: 'Platform',
+            collapsed: true,
+            group: apiSidebarGroup,
+            operations: { badges: true, labels: 'summary', sort: 'document' },
+          },
+          snippets: {
+            operation: {
+              clients: { javascript: ['fetch'], shell: ['curl'] },
+              default: { target: 'shell', client: 'curl' },
+            },
+          },
+        },
+        {
+          base: 'integrations-api',
+          schema: './schemas/integrations.json',
+          sidebar: {
+            label: 'Channel Manager',
+            collapsed: true,
+            group: apiSidebarGroup,
+            operations: { badges: true, labels: 'summary', sort: 'document' },
+          },
+          snippets: {
+            operation: {
+              clients: { javascript: ['fetch'], shell: ['curl'] },
+              default: { target: 'shell', client: 'curl' },
+            },
+          },
+        },
+      ]),
       starlightBlog({
         title: "Wink updates",
+        navigation: 'none',
         authors: {
           may: {
             name: 'May Rawddon',
@@ -78,83 +118,54 @@ export default defineConfig({
       starlightChangelogs(),
     ],
     components: {
-      ThemeSelect: './src/components/custom-theme-select.astro', // to remove the default Astro Blog icon in menu
       SocialIcons: './src/components/custom-social-icons.astro', // to remove the default RSS icon
       Footer: './src/components/custom-footer.astro',
       PageTitle: './src/components/custom-page-title.astro',  // Removes Page title from splash screens
     },
-    sidebar: [{
-      label: 'Getting Started',
-      autogenerate: {
-        directory: 'getting-started'
-      }
-    }, {
-      label: 'My Account',
-      autogenerate: {
-        directory: 'my-account'
-      }
-    }, {
-      label: 'Link Manager',
-      autogenerate: {
-        directory: 'link-manager'
-      }
-    }, {
-      label: 'Automated Social',
-      autogenerate: {
-        directory: 'social'
-      }
-    }, {
-      label: 'Agency',
-      autogenerate: {
-        directory: 'agency'
-      }
-    }, {
-      label: 'Affiliate Portal',
-      autogenerate: {
-        directory: 'studio'
-      }
-    }, {
-      label: 'Booking Engine',
-      autogenerate: {
-        directory: 'booking-engine'
-      }
-    }, {
-      label: 'Property Portal',
-      autogenerate: {
-        directory: 'extranet'
-      }
-    }, {
-      label: 'Travel Agent Portal',
-      autogenerate: {
-        directory: 'travel-agent'
-      }
-    }, {
-      label: 'Payment Portal',
-      autogenerate: {
-        directory: 'payment'
-      }
-    }, {
-      label: 'Guides',
-      autogenerate: {
-        directory: 'guides'
-      }
-    }, {
-      label: 'Webinars',
-      autogenerate: {
-        directory: 'webinars'
-      }
-    }, {
-      label: 'Integrations',
-      autogenerate: {
-        directory: 'integrations'
-      }
-    },
-     {
-      label: 'Developers',
-      autogenerate: {
-        directory: 'developers'
-      }
-    },
+    sidebar: [
+      { label: 'Getting Started', items: [{ autogenerate: { directory: 'getting-started' } }] },
+      {
+        label: 'Portal',
+        items: [
+          'portal/analytics',
+          'portal/claims',
+          'portal/create-account',
+          'portal/overview',
+          'portal/invite',
+          'portal/leaderboard',
+          'portal/plan',
+          { label: 'Corporate', items: [{ autogenerate: { directory: 'portal/corporate' } }] },
+          { label: 'Extranet', items: [{ autogenerate: { directory: 'portal/extranet' } }] },
+          { label: 'Link Manager', items: [{ autogenerate: { directory: 'portal/link-manager' } }] },
+          { label: 'Payment', items: [{ autogenerate: { directory: 'portal/payment' } }] },
+          { label: 'Settings', items: [{ autogenerate: { directory: 'portal/settings' } }] },
+          { label: 'Social', items: [{ autogenerate: { directory: 'portal/social' } }] },
+          { label: 'Studio', items: [{ autogenerate: { directory: 'portal/studio' } }] },
+          { label: 'Travel Agent', items: [{ autogenerate: { directory: 'portal/travel-agent' } }] },
+        ],
+      },
+      {
+        label: 'User Settings',
+        items: [
+          'account/overview',
+          { label: 'Profile', items: [{ autogenerate: { directory: 'account/profile' } }] },
+          'account/register',
+        ],
+      },
+      { label: 'Booking Engine', items: [{ autogenerate: { directory: 'booking-engine' } }] },
+      {
+        label: 'Guides',
+        items: [
+          { label: 'For Affiliates', items: [{ autogenerate: { directory: 'guides/affiliates' } }] },
+          { label: 'For Developers', items: [{ autogenerate: { directory: 'guides/developers' } }] },
+          { label: 'For Hoteliers', items: [{ autogenerate: { directory: 'guides/hoteliers' } }] },
+          { label: 'General', items: [{ autogenerate: { directory: 'guides/general' } }] },
+        ],
+      },
+      { label: 'Webinars', items: [{ autogenerate: { directory: 'webinars' } }] },
+      { label: 'Integrations', items: [{ autogenerate: { directory: 'integrations' } }] },
+      { label: 'Developers', items: [{ autogenerate: { directory: 'developers' } }] },
+      { label: 'API', collapsed: true, items: [apiSidebarGroup] },
     {
       label: 'Overview',
       items: [

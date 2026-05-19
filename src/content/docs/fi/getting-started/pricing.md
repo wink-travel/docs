@@ -50,7 +50,7 @@ Tässä mallissa matkatoimistot maksavat vain Winkille käsittelymaksun, ja Wink
 
 ## Tilaukset
 
-Tarjoamme myös valinnaisen tilauspalvelun (katso [Social](/fi/social/what-is-social)) auttamaan majoitusliikkeitä myynti- ja markkinointitiimiensä vahvistamisessa.
+Tarjoamme myös valinnaisen tilauspalvelun (katso [Social](/fi/portal/social/what-is-social)) auttamaan majoitusliikkeitä myynti- ja markkinointitiimiensä vahvistamisessa.
 
 ## Alustan vaikutus
 

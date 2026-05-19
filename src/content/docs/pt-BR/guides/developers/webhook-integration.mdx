@@ -1,0 +1,77 @@
+---
+title: Integração de Webhook
+description: Este guia mostra aos desenvolvedores como configurar webhooks para receber notificações em tempo real sobre reservas, pagamentos e outros eventos.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Webhooks permitem que seus sistemas recebam notificações em tempo real quando eventos acontecem na sua conta Wink — novas reservas, cancelamentos, atualizações de pagamento e muito mais. Este guia orienta você na configuração e nas melhores práticas.
+
+## Público-alvo
+
+Este guia é para desenvolvedores que integram o Wink com sistemas externos, como sistemas de gestão de propriedades (PMS), gerenciadores de canais, CRMs ou painéis personalizados.
+
+## Como os webhooks funcionam
+
+1. Você registra uma URL de webhook no Wink.
+2. Quando um evento ocorre (por exemplo, uma nova reserva), o Wink envia um HTTP POST para sua URL.
+3. Seu servidor processa o payload e responde com um `200 OK`.
+
+## Configurando um webhook
+
+<Steps>
+1. Faça login na sua conta (Extranet, Studio ou TripPay — todos suportam webhooks).
+2. Navegue até `Applications` e depois `Webhooks`. Veja [Webhooks](/pt-BR/portal/settings/webhooks).
+3. Clique em `Create webhook`.
+4. Insira um **nome** (por exemplo, "Sincronização de Reservas PMS").
+5. Insira sua **URL de webhook** — o endpoint HTTPS no seu servidor.
+6. **Selecione eventos** — Escolha eventos específicos para assinar ou deixe vazio para receber todos os eventos.
+7. Ative o botão **Enabled**.
+8. Clique em `Save`.
+</Steps>
+
+## Tipos de eventos
+
+O Wink suporta **mais de 64 tipos de eventos de webhook** em categorias que incluem gestão de conta, contratos de reserva, pagamentos, atualizações de gerenciadores de canais e administração de entidades. Eventos comuns incluem:
+
+| Categoria | Exemplos |
+|---|---|
+| **Reserva** | `booking.create`, `booking.cancelled` |
+| **Contrato de reserva** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Pagamento** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Reembolsos** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Gerenciador de canais** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Conta** | `account.create`, `account.status.updated` |
+
+Para uma lista completa de todos os tipos de eventos com descrições, veja o **Catálogo de Eventos de Webhook**.
+
+<LinkButton href="/pt-BR/developers/webhook-events">
+  Ver todos os mais de 64 tipos de eventos
+</LinkButton>
+
+:::tip
+Comece assinando todos os eventos durante o desenvolvimento. Depois que entender os payloads, restrinja para apenas os eventos que seu sistema precisa.
+:::
+
+## Melhores práticas
+
+- **Use HTTPS** — O Wink envia payloads apenas para endpoints HTTPS.
+- **Responda rapidamente** — Retorne um `200 OK` assim que receber o payload. Faça qualquer processamento pesado de forma assíncrona.
+- **Idempotência** — Seu handler deve ser idempotente. O Wink pode tentar reenviar se não receber uma resposta `200`.
+- **Valide a origem** — Verifique se as requisições recebidas são do Wink antes de processar.
+- **Registro de logs** — Registre todos os payloads de webhook que receber. Isso facilita muito a depuração de problemas de integração.
+
+## Pausar e excluir
+
+Você pode **desativar** um webhook sem excluí-lo. Isso pausa a entrega para que você possa solucionar problemas sem perder sua configuração. Quando estiver pronto, ative-o novamente.
+
+Excluir um webhook remove-o permanentemente. Qualquer integração que dependa desse webhook deixará de receber notificações.
+
+## Leitura adicional
+
+- [Catálogo de Eventos de Webhook](/pt-BR/developers/webhook-events) — Lista completa de todos os mais de 64 tipos de eventos.
+- [Webhooks](/pt-BR/portal/settings/webhooks) — Referência completa para gerenciamento de webhooks.
+- [Applications](/pt-BR/portal/settings/applications) — Gerencie suas credenciais de API.
+- [Developers > APIs](/pt-BR/api) — Documentação completa da API.

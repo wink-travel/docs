@@ -10,7 +10,7 @@ Igal portaalil võivad olla erinevad tingimused ja tingimused. Palun minge allpo
 Partneritele, kes soovivad õppida, kuidas teenida passiivset tulu, monetiseerides oma sotsiaalmeedia kontosid Winkiga.
 [Wink Studio](https://studio.wink.travel) pakub kõiki vajalikke tööriistu, et müüa nagu professionaal.
 
-<LinkButton href="/et/studio/what-is-studio">
+<LinkButton href="/et/portal/studio/what-is-studio">
 Lisateave Wink Studio kohta
 </LinkButton>
 
@@ -26,7 +26,7 @@ Lisateave meie broneerimismootori kohta
 
 Majutusasutustele, kes soovivad alustada müüki Winkis. Kasutage meie tööriistu, et tõhusalt müüa ja turundada end veebis ning saada üle kogu maailma partnerite armee, kes aitavad teil saada kliente ja broneeringuid.
 
-<LinkButton href="/et/extranet/what-is-extranet">
+<LinkButton href="/et/portal/extranet/what-is-extranet">
 Lisateave Wink Extranet kohta
 </LinkButton>
 
@@ -34,6 +34,6 @@ Lisateave Wink Extranet kohta
 
 Reisibüroodele, kes soovivad teada, mida Wink neile pakub kohandatud hindade, pakkumiste ja varude osas otse tarnijatelt.
 
-<LinkButton href="/et/travel-agent/what-is-agent">
+<LinkButton href="/et/portal/travel-agent/what-is-agent">
 Lisateave Wink Agent kohta
 </LinkButton>

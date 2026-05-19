@@ -50,7 +50,7 @@ Bij dit model betalen reisagenten alleen de verwerkingskosten van Wink en factur
 
 ## Abonnementen
 
-We bieden een optionele abonnementsdienst aan (zie [Social](/nl/social/what-is-social)) om accommodaties te helpen hun verkoop- en marketingteams te versterken.
+We bieden een optionele abonnementsdienst aan (zie [Social](/nl/portal/social/what-is-social)) om accommodaties te helpen hun verkoop- en marketingteams te versterken.
 
 ## Platformeffect
 

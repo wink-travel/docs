@@ -7,8 +7,8 @@ sidebar:
 
 Takto rozdělujeme odpovědnost ve Wink:
 
-- [Extranet](/cs/extranet/what-is-extranet) se zabývá dodavateli spravujícími inventář.
-- [Studio](/cs/studio/what-is-studio) se zabývá partnery spravujícími obsah.
+- [Extranet](/cs/portal/extranet/what-is-extranet) se zabývá dodavateli spravujícími inventář.
+- [Studio](/cs/portal/studio/what-is-studio) se zabývá partnery spravujícími obsah.
 - `Booking Engine` se zabývá tím, aby obsah vytvořený ve `Studio`, který vychází z inventáře vytvořeného v `Extranet`, byl rezervovatelný.
 - [Payment](/cs/payment/what-is-trip-pay) se zabývá účtováním / vracením peněz cestovatelům, kteří rezervují [přes platformy jako Wink], a platbami dodavatelům.
 
@@ -22,11 +22,11 @@ Jeho odpovědnosti zahrnují:
 - Správu jazyků.
 - Generování analytiky na základě uživatelských interakcí, událostí a API volání.
 - Poskytování rezervovatelného inventáře ve požadovaném formátu, jazyce a měně, například:
-    - [sdílitelný odkaz](/cs/studio/shareable-links) na Facebooku.
+    - [sdílitelný odkaz](/cs/portal/studio/shareable-links) na Facebooku.
     - vstupní stránku hotelu na https://ota.wink.travel s inventářem pro daný hotel.
-    - [kartu](/cs/studio/cards) obsahující inventář partnera.
-    - [mapu](/cs/studio/maps) ve vašem účtu [WinkLinks](/cs/link-manager/wink-links).
-    - [API volání](/cs/developers/apis) z externího systému cestovní agentury.
+    - [kartu](/cs/portal/studio/cards) obsahující inventář partnera.
+    - [mapu](/cs/portal/studio/maps) ve vašem účtu [WinkLinks](/cs/portal/link-manager/wink-links).
+    - [API volání](/cs/api) z externího systému cestovní agentury.
 - Poskytování cestovatelům možností:
     - Vyhledávat cestovní inventář.
     - Rezervovat dostupný inventář.
@@ -36,7 +36,7 @@ Jeho odpovědnosti zahrnují:
 
 Rezervační systém je soubor znovupoužitelné funkčnosti, kterou zpřístupňujeme prostřednictvím https://ota.wink.travel; vysoce přizpůsobitelné webové stránky pro hotely a partnery, aby mohli prodávat své služby cestovatelům.
 
-Integrátoři, kteří chtějí ještě větší svobodu, mají přístup ke všem stejným funkcím prostřednictvím našeho [WordPress pluginu](/cs/integrations/wordpress/), [Web Components](/cs/integrations/web-components) a [API](/cs/developers/apis).
+Integrátoři, kteří chtějí ještě větší svobodu, mají přístup ke všem stejným funkcím prostřednictvím našeho [WordPress pluginu](/cs/integrations/wordpress/), [Web Components](/cs/integrations/web-components) a [API](/cs/api).
 
 Pokračujte do dalších sekcí a přečtěte si více o tom, co rezervační systém nabízí.
 
@@ -44,4 +44,4 @@ Pokračujte do dalších sekcí a přečtěte si více o tom, co rezervační sy
 
 - Přečtěte si o našem [WordPress pluginu](/cs/integrations/wordpress/).
 - Přečtěte si o našich [Web Components](/cs/integrations/web-components).
-- Přečtěte si o našich [API](/cs/developers/apis).
+- Přečtěte si o našich [API](/cs/api).

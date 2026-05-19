@@ -7,8 +7,8 @@ sidebar:
 
 Oto jak dzielimy odpowiedzialność w Wink:
 
-- [Extranet](/pl/extranet/what-is-extranet) zajmuje się dostawcami zarządzającymi inwentarzem.
-- [Studio](/pl/studio/what-is-studio) zajmuje się afiliantami zarządzającymi treścią.
+- [Extranet](/pl/portal/extranet/what-is-extranet) zajmuje się dostawcami zarządzającymi inwentarzem.
+- [Studio](/pl/portal/studio/what-is-studio) zajmuje się afiliantami zarządzającymi treścią.
 - `Booking Engine` zajmuje się tworzeniem treści, stworzonych w `Studio`, które opierały się na inwentarzu stworzonym w `Extranet` i udostępnianiem ich do rezerwacji.
 - [Payment](/pl/payment/what-is-trip-pay) zajmuje się pobieraniem opłat / zwrotami dla podróżnych, którzy rezerwują [poprzez platformy takie jak Wink], oraz wypłatami dla dostawców.
 
@@ -22,11 +22,11 @@ Jego obowiązki obejmują:
 - Zarządzanie językami.
 - Generowanie analiz na podstawie interakcji użytkowników, zdarzeń i wywołań API.
 - Udostępnianie rezerwowanego inwentarza w pożądanym formacie, języku i walucie, takich jak:
-    - [link do udostępniania](/pl/studio/shareable-links) na Facebooku.
+    - [link do udostępniania](/pl/portal/studio/shareable-links) na Facebooku.
     - Strona docelowa hotelu na https://ota.wink.travel z inwentarzem dla tego hotelu.
-    - [karta](/pl/studio/cards) zawierająca inwentarz afilianta.
-    - [mapa](/pl/studio/maps) na Twoim koncie [WinkLinks](/pl/link-manager/wink-links).
-    - [wywołanie API](/pl/developers/apis) z zewnętrznego systemu agenta turystycznego.
+    - [karta](/pl/portal/studio/cards) zawierająca inwentarz afilianta.
+    - [mapa](/pl/portal/studio/maps) na Twoim koncie [WinkLinks](/pl/portal/link-manager/wink-links).
+    - [wywołanie API](/pl/api) z zewnętrznego systemu agenta turystycznego.
 - Zapewnianie podróżnym możliwości:
     - Wyszukiwania inwentarza podróży.
     - Rezerwacji dostępnego inwentarza.
@@ -36,7 +36,7 @@ Jego obowiązki obejmują:
 
 Silnik rezerwacji to zbiór wielokrotnego użytku funkcji, które udostępniamy przez https://ota.wink.travel; wysoce konfigurowalną stronę internetową dla hoteli i afiliantów do sprzedaży ich ofert podróżnym.
 
-Integratorzy, którzy chcą jeszcze większej swobody, mają dostęp do tych samych funkcji poprzez naszą [wtyczkę WordPress](/pl/integrations/wordpress/), [Web Components](/pl/integrations/web-components) oraz [API](/pl/developers/apis).
+Integratorzy, którzy chcą jeszcze większej swobody, mają dostęp do tych samych funkcji poprzez naszą [wtyczkę WordPress](/pl/integrations/wordpress/), [Web Components](/pl/integrations/web-components) oraz [API](/pl/api).
 
 Przejdź do kolejnych sekcji, aby dowiedzieć się więcej o tym, co oferuje silnik rezerwacji.
 
@@ -44,4 +44,4 @@ Przejdź do kolejnych sekcji, aby dowiedzieć się więcej o tym, co oferuje sil
 
 - Przeczytaj o naszej [wtyczce WordPress](/pl/integrations/wordpress/).
 - Przeczytaj o naszych [Web Components](/pl/integrations/web-components).
-- Przeczytaj o naszych [API](/pl/developers/apis).
+- Przeczytaj o naszych [API](/pl/api).

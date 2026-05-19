@@ -50,7 +50,7 @@ W tym modelu agenci turystyczni płacą tylko opłatę za przetwarzanie Wink, a 
 
 ## Subskrypcje
 
-Oferujemy opcjonalną usługę subskrypcji (zobacz [Social](/pl/social/what-is-social)), która pomaga obiektom zwiększyć ich zespoły sprzedaży i marketingu.
+Oferujemy opcjonalną usługę subskrypcji (zobacz [Social](/pl/portal/social/what-is-social)), która pomaga obiektom zwiększyć ich zespoły sprzedaży i marketingu.
 
 ## Efekt platformy
 

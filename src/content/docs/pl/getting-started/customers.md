@@ -17,7 +17,7 @@ Marki i sieci mają nieco inne potrzeby niż pojedynczy obiekt. Na Wink mogą:
 
 - Zarządzać wieloma obiektami w ramach jednego konta.
 - Przypisywać menedżerów do obiektów.
-- Korzystać z [WinkLinks](/pl/link-manager/wink-links), [WordPress](/pl/integrations/wordpress) oraz naszych [Web Components](/pl/integrations/web-components), aby promować i sprzedawać wiele obiektów w jednym miejscu.
+- Korzystać z [WinkLinks](/pl/portal/link-manager/wink-links), [WordPress](/pl/integrations/wordpress) oraz naszych [Web Components](/pl/integrations/web-components), aby promować i sprzedawać wiele obiektów w jednym miejscu.
 
 ## Firmy zarządzające
 
@@ -42,7 +42,7 @@ Korporacje wymagają bardziej rozbudowanej platformy podróżniczej:
 - Wymagają zarządzania wydatkami i integracji raportowania.
 - Potrzebują wsparcia konsjerża oraz usług MICE podczas wydarzeń.
 
-Podróżujący służbowo mogą zarządzać własnymi kontami na naszym [portalu korporacyjnym](/pl/corporate/what-is-group) lub korzystać z oficjalnie wspieranego wtyczki [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) oraz integracji z [Concur](https://www.concur.com/).
+Podróżujący służbowo mogą zarządzać własnymi kontami na naszym [portalu korporacyjnym](/pl/portal/corporate/what-is-group) lub korzystać z oficjalnie wspieranego wtyczki [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) oraz integracji z [Concur](https://www.concur.com/).
 
 ## Deweloperzy
 

@@ -17,7 +17,7 @@ Vörumerki og keðjur hafa aðeins aðrar þarfir en einstök eign. Á Wink geta
 
 - Stjórnað mörgum eignum undir einum reikningi.
 - Úthlutað stjórnendum að eignum
-- Notað [WinkLinks](/is/link-manager/wink-links), [WordPress](/is/integrations/wordpress) og okkar [Web Components](/is/integrations/web-components) til að markaðssetja og selja margar eignir á einum stað.
+- Notað [WinkLinks](/is/portal/link-manager/wink-links), [WordPress](/is/integrations/wordpress) og okkar [Web Components](/is/integrations/web-components) til að markaðssetja og selja margar eignir á einum stað.
 
 ## Stjórnunarfyrirtæki
 
@@ -42,7 +42,7 @@ Fyrirtæki þurfa meira af ferðavettvangi:
 - Þau þurfa útgjaldastjórnun og samþættingu skýrslugerðar.
 - Þau þurfa þjónustu við móttöku, auk MICE þjónustu við viðburði.
 
-Fyrirtækjafarar geta stjórnað eigin reikningum á okkar [fyrirtækjavettvangi](/is/corporate/what-is-group) eða notað opinberlega studdan [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) viðbót og [Concur](https://www.concur.com/) samþættingu.
+Fyrirtækjafarar geta stjórnað eigin reikningum á okkar [fyrirtækjavettvangi](/is/portal/corporate/what-is-group) eða notað opinberlega studdan [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) viðbót og [Concur](https://www.concur.com/) samþættingu.
 
 ## Forritarar
 

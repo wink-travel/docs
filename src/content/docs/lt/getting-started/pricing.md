@@ -50,7 +50,7 @@ Naudodamiesi šiuo modeliu, kelionių agentai moka tik Wink apdorojimo mokestį,
 
 ## Prenumeratos
 
-Siūlome pasirenkamą prenumeratos paslaugą (žr. [Social](/lt/social/what-is-social)), kuri padeda apgyvendinimo įstaigoms stiprinti savo pardavimų ir rinkodaros komandas.
+Siūlome pasirenkamą prenumeratos paslaugą (žr. [Social](/lt/portal/social/what-is-social)), kuri padeda apgyvendinimo įstaigoms stiprinti savo pardavimų ir rinkodaros komandas.
 
 ## Platformos poveikis
 

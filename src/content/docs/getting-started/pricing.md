@@ -50,7 +50,7 @@ Using this model, travel agents only pay Wink's processing fee and Wink will inv
 
 ## Subscriptions
 
-We do offer an optional subscription service (see [Social](/social/what-is-social)) to help properties augment their sales and marketing teams.
+We do offer an optional subscription service (see [Social](/portal/social/what-is-social)) to help properties augment their sales and marketing teams.
 
 ## Platform effect
 

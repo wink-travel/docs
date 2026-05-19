@@ -1,0 +1,315 @@
+---
+title: Grilles
+description: Cet article vous guide pour créer des grilles à partir de listes sélectionnées et de recherches enregistrées, puis les promouvoir sur votre site.
+sidebar:
+  order: 8
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '/src/components/cloudinary-image.astro';
+
+Une grille représente une liste de fournisseurs et d'inventaire et expose les détails via une interface interactive et réservable en grille.
+La grille prend en charge l'affichage de tout inventaire issu de votre liste sélectionnée ou de votre recherche enregistrée.
+Un utilisateur interagit avec une grille de la même manière qu'avec une [carte](/fr/portal/studio/cards) individuelle, avec une fonctionnalité supplémentaire :
+
+1. Paginer dans la grille en cliquant sur le bouton `Afficher plus` (*lorsque d'autres éléments sont disponibles*).
+
+<figure>
+<CloudinaryImage
+      width="700"
+      height="319"
+      resize="scale"
+      quality="best"
+      alt="Aperçu de la grille"
+      src="academy/grid-example"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Grille affichant plusieurs types de chambres*</figcaption>
+</figure>
+
+Ci-dessus un exemple de notre grille affichant une liste de cartes de types de chambres.
+
+Le reste de cet article vous guide pour créer, personnaliser et exposer la grille à vos utilisateurs.
+
+## Types de grilles
+
+Il existe trois types de grilles :
+
+1. Grille basée sur une [liste sélectionnée](/fr/portal/studio/curated-lists#list-actions).
+2. Grille basée sur une [recherche enregistrée](/fr/portal/studio/saved-searches#list-actions).
+3. Grille basée sur un lieu et des critères de tri (*c’est-à-dire une grille classée*).
+
+## Grille de liste sélectionnée
+
+C’est une grille qui utilise l’inventaire que vous avez collecté dans l’une de vos listes sélectionnées et convertit la liste en inventaire de voyage réservable que vous pouvez montrer à vos utilisateurs.
+
+### Créer
+
+Naviguez vers `Inventaire > Listes sélectionnées` depuis la barre de navigation principale. Pour cet exemple, nous utiliserons votre liste `Favoris`.
+Si vous n’avez pas encore ajouté d’éléments à vos `Favoris`, rendez-vous sur [Recherche](/fr/portal/studio/search) pour apprendre comment faire.
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="394"
+      resize="scale"
+      quality="best"
+      alt="Créer une grille de liste sélectionnée"
+      src="academy/create-curated-list-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Formulaire de création de grille de liste sélectionnée*</figcaption>
+</figure>
+
+<Steps>
+1. Cliquez sur le bouton `Actions` de la liste `Favoris`.
+2. Cliquez sur le bouton `Créer une grille`.
+3. Une nouvelle fenêtre s’affichera, vous permettant de nommer votre grille. *Voir ci-dessous*.
+4. Cliquez sur le bouton `OK` pour continuer.
+</Steps>
+
+Votre grille a été créée. Naviguez vers `Outils > Grilles` depuis la barre de navigation principale et cliquez sur l’onglet `Grilles sélectionnées` pour voir votre nouvelle grille.
+
+### Personnaliser
+
+Le formulaire vous permet de personnaliser votre grille de la manière suivante :
+
+<Steps>
+ 1. Donnez-lui un nom pour vous souvenir du sujet de la grille.
+ 2. Sélectionnez la [Personnalisation](/fr/portal/settings/branding) que vous souhaitez appliquer à cette grille.
+ 3. Sélectionnez la face initiale de la carte que vous voulez que les utilisateurs voient en premier. Par défaut, c’est la face native de cet inventaire.
+ 4. Sélectionnez le badge que vous souhaitez utiliser sur la carte. Un badge permet aux utilisateurs de comparer l’inventaire selon une métrique agrégée telle que `écologique`.
+ 5. Ajoutez des mots-clés, séparés par une virgule, qui seront utilisés par les [robots d’indexation](https://developer.mozilla.org/en-US/docs/Glossary/Crawler).
+ 6. Ajoutez des titres et descriptions dans les langues que vous souhaitez que l’utilisateur voie.
+ 7. Cliquez sur le bouton `Enregistrer` pour continuer.
+</Steps>
+
+### Partager
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="618"
+      resize="scale"
+      quality="best"
+      alt="Grille de liste sélectionnée"
+      src="academy/curated-list-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Entrée de grille de liste sélectionnée avec menu d’actions replié*</figcaption>
+</figure>
+
+L’image ci-dessus vous montre toutes les actions disponibles pour votre grille :
+
+- **Mettre à jour** Met à jour la configuration de votre grille.
+- **Ajouter à WinkLinks** Ajoute la grille à votre compte WinkLinks.
+- **Intégrer** Vous montre comment intégrer cette grille en tant que [Grille](/fr/integrations/web-components/#content-loader) dans votre site web.
+- **Utiliser avec WordPress** Vous montre comment utiliser notre [plugin WordPress](/fr/integrations/wordpress) pour intégrer cette grille dans votre site.
+
+Nous détaillons certaines de ces options ci-dessous.
+
+### Intégrer
+
+```html {3, 6-9, 11, 13-16}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+  <body>
+    <wink-content-loader
+       layout="LIST"
+       id="9a212b5e-62a7-11ef-ac3f-42004e494300"
+    ></wink-content-loader>
+
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+Voici comment intégrer votre grille dans votre site :
+
+- La ligne 3 montre comment intégrer les styles Wink dans votre site.
+- Les lignes 6 à 9 montrent comment utiliser le composant Web [wink-content-loader](/fr/integrations/web-components/#content-loader) et lui indiquer de récupérer une grille pour votre code.
+- La ligne 11 montre comment intégrer notre Javascript dans votre site.
+- La ligne 13 montre comment intégrer le composant Web [wink-app-loader](/fr/integrations/web-components/#application-loader) et lui indiquer de récupérer vos préférences de configuration au niveau de la page.
+
+## Grille de recherche enregistrée
+
+C’est une grille qui utilise l’inventaire de votre requête de recherche enregistrée et convertit les résultats de recherche en inventaire de voyage réservable que vous pouvez montrer à vos utilisateurs.
+
+### Créer
+
+Naviguez vers `Inventaire > Recherches enregistrées` depuis la barre de navigation principale.
+Si vous n’avez pas encore créé de recherche enregistrée, rendez-vous sur [Recherche](/fr/portal/studio/search) pour apprendre comment faire.
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="394"
+      resize="scale"
+      quality="best"
+      alt="Créer une grille de recherche enregistrée"
+      src="academy/create-saved-search-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Formulaire de création de grille de recherche enregistrée*</figcaption>
+</figure>
+
+<Steps>
+1. Cliquez sur le bouton `Actions` de votre recherche enregistrée.
+2. Cliquez sur le bouton `Créer une grille`.
+3. Une nouvelle fenêtre s’affichera, vous permettant de nommer votre grille. *Voir ci-dessous*.
+</Steps>
+
+4. Cliquez sur le bouton `OK` pour continuer.
+
+Votre grille a été créée. Naviguez vers `Outils > Grilles` depuis la barre de navigation principale et cliquez sur l’onglet `Grilles de recherche enregistrée` pour voir votre nouvelle grille.
+
+### Personnaliser
+
+Le formulaire vous permet de personnaliser votre grille de la manière suivante :
+
+<Steps>
+ 1. Donnez-lui un nom pour vous souvenir du sujet de la grille.
+ 2. Sélectionnez la [Personnalisation](/fr/portal/settings/branding) que vous souhaitez appliquer à cette grille.
+ 3. Sélectionnez la face initiale de la carte que vous voulez que les utilisateurs voient en premier. Par défaut, c’est la face native de cet inventaire.
+ 4. Sélectionnez le badge que vous souhaitez utiliser sur la carte. Un badge permet aux utilisateurs de comparer l’inventaire selon une métrique agrégée telle que `écologique`.
+ 5. Ajoutez des mots-clés, séparés par une virgule, qui seront utilisés par les [robots d’indexation](https://developer.mozilla.org/en-US/docs/Glossary/Crawler).
+ 6. Ajoutez des titres et descriptions dans les langues que vous souhaitez que l’utilisateur voie.
+ 7. Cliquez sur le bouton `Enregistrer` pour continuer.
+</Steps>
+
+### Partager
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="617"
+      resize="scale"
+      quality="best"
+      alt="Grille de recherche enregistrée"
+      src="academy/saved-search-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Entrée de grille de recherche enregistrée avec menu d’actions replié*</figcaption>
+</figure>
+
+### Intégrer
+
+```html {3, 6-9, 11, 13-16}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+  <body>
+    <wink-content-loader
+       layout="LIST"
+       id="be3130d5-62a7-11ef-ac3f-42004e494300"
+    ></wink-content-loader>
+
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+Voici comment intégrer votre grille dans votre site :
+
+- La ligne 3 montre comment intégrer les styles Wink dans votre site.
+- Les lignes 6 à 9 montrent comment utiliser le composant Web [wink-content-loader](/fr/integrations/web-components/#content-loader) et lui indiquer de récupérer une grille pour votre code.
+- La ligne 11 montre comment intégrer notre Javascript dans votre site.
+- La ligne 13 montre comment intégrer le composant Web [wink-app-loader](/fr/integrations/web-components/#application-loader) et lui indiquer de récupérer vos préférences de configuration au niveau de la page.
+
+## Grille classée
+
+### Créer
+
+Créez une grille classée en naviguant vers `Outils > Grilles` et cliquez sur l’onglet `Grille classée`. Cliquez sur le bouton `Créer une grille classée`.
+
+### Personnaliser
+Le formulaire vous permet de personnaliser votre grille classée de la manière suivante :
+
+<Steps>
+ 1. Choisissez une destination. *Ex. Tokyo*.
+ 1. Donnez-lui un nom pour vous souvenir du sujet de la grille. *Ex. Hôtels écologiques à Tokyo*
+ 2. Sélectionnez la [Personnalisation](/fr/portal/settings/branding) que vous souhaitez appliquer à cette grille.
+ 3. Sélectionnez la face initiale de la carte que vous voulez que les utilisateurs voient en premier. Par défaut, c’est la face native de cet inventaire.
+ 4. Choisissez la caractéristique selon laquelle trier les propriétés. *Ex. Écologie*.
+ 5. Ajoutez des mots-clés, séparés par une virgule, qui seront utilisés par les [robots d’indexation](https://developer.mozilla.org/en-US/docs/Glossary/Crawler).
+ 5. Ajoutez des titres et descriptions dans les langues que vous souhaitez que l’utilisateur voie.
+ 7. Cliquez sur le bouton `Enregistrer` pour continuer.
+</Steps>
+
+ Après avoir enregistré votre grille classée, vous êtes redirigé vers votre page de grilles classées et votre grille est maintenant prête à être partagée avec le monde.
+
+### Partager
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="658"
+      resize="scale"
+      quality="best"
+      alt="Grille classée"
+      src="academy/ranked-grid"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Une grille classée avec menu d’actions replié*</figcaption>
+</figure>
+
+L’image ci-dessus vous montre toutes les actions disponibles pour votre grille classée :
+
+- **Mettre à jour** Met à jour la configuration de votre grille.
+- **Ajouter à WinkLinks** Ajoute la grille classée à votre compte WinkLinks.
+- **Intégrer** Vous montre comment intégrer cette grille en tant que [Grille](/fr/integrations/web-components/#content-loader) dans votre site web.
+- **Utiliser avec WordPress** Vous montre comment utiliser notre [plugin WordPress](/fr/integrations/wordpress) pour intégrer cette carte dans votre site.
+
+Nous détaillons certaines de ces options ci-dessous.
+
+### Intégrer
+
+```html {3, 6-9, 11, 13-16}
+<html>
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css"></link>
+  </head>
+  <body>
+    <wink-content-loader
+       layout="RANKED"
+       id="2483d55e-62a5-11ef-ac3f-42004e494300"
+    ></wink-content-loader>
+
+    <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+
+    <wink-app-loader
+      client-id="YOUR CLIENT ID GOES HERE"
+      configuration-id="YOUR CUSTOMIZATION ID GOES HERE"
+    ></wink-app-loader>
+  </body>
+</html>
+```
+
+Voici comment intégrer votre grille dans votre site :
+
+- La ligne 3 montre comment intégrer les styles Wink dans votre site.
+- Les lignes 6 à 9 montrent comment utiliser le composant Web [wink-content-loader](/fr/integrations/web-components/#content-loader) et lui indiquer de récupérer une grille classée pour votre code.
+- La ligne 11 montre comment intégrer notre Javascript dans votre site.
+- La ligne 13 montre comment intégrer le composant Web [wink-app-loader](/fr/integrations/web-components/#application-loader) et lui indiquer de récupérer vos préférences de configuration au niveau de la page.
+
+## API
+
+Les développeurs qui souhaitent gérer les grilles peuvent se rendre sur [Développeurs > API > Inventaire](/fr/api).
+
+## Lectures complémentaires
+
+- En savoir plus sur notre collection de [composants Web](/fr/integrations/web-components).
+- En savoir plus sur le [plugin WordPress Wink](/fr/integrations/wordpress).

@@ -10,7 +10,7 @@ description: الشروط والأحكام لجميع مستخدمي Wink وال
 للشركاء الذين يرغبون في معرفة كيفية كسب دخل سلبي من خلال تحقيق الدخل من حساباتك الاجتماعية مع Wink.  
 يحتوي [Wink Studio](https://studio.wink.travel) على جميع الأدوات التي تحتاجها للبيع كمحترف.
 
-<LinkButton href="/ar/studio/what-is-studio">
+<LinkButton href="/ar/portal/studio/what-is-studio">
 تعرف على المزيد حول Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ description: الشروط والأحكام لجميع مستخدمي Wink وال
 
 للعقارات التي ترغب في البدء بالبيع على Wink. استخدم أدواتنا لبيع وتسويق نفسك بفعالية عبر الإنترنت واحصل على جيش من الشركاء من جميع أنحاء العالم لمساعدتك في الحصول على العملاء والحجوزات.
 
-<LinkButton href="/ar/extranet/what-is-extranet">
+<LinkButton href="/ar/portal/extranet/what-is-extranet">
 تعرف على المزيد حول Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ description: الشروط والأحكام لجميع مستخدمي Wink وال
 
 لوكلاء السفر الذين يرغبون في معرفة ما يمكن أن تقدمه لهم Wink من حيث الأسعار المخصصة، والعروض، والمخزون، مباشرة من الموردين.
 
-<LinkButton href="/ar/travel-agent/what-is-agent">
+<LinkButton href="/ar/portal/travel-agent/what-is-agent">
 تعرف على المزيد حول Wink Agent
 </LinkButton>

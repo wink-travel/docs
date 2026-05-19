@@ -50,7 +50,7 @@ Sa modelong ito, ang mga travel agent ay nagbabayad lamang ng bayad sa pagproses
 
 ## Mga Subscription
 
-Nag-aalok kami ng opsyonal na subscription service (tingnan ang [Social](/tl/social/what-is-social)) upang tulungan ang mga property na palakasin ang kanilang mga sales at marketing team.
+Nag-aalok kami ng opsyonal na subscription service (tingnan ang [Social](/tl/portal/social/what-is-social)) upang tulungan ang mga property na palakasin ang kanilang mga sales at marketing team.
 
 ## Epekto ng Platform
 

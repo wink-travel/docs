@@ -50,7 +50,7 @@ Ebben a modellben az utazási ügynökök csak Wink tranzakciós díját fizetik
 
 ## Előfizetések
 
-Opcionális előfizetési szolgáltatást is kínálunk (lásd [Social](/hu/social/what-is-social)), hogy segítsük a szálláshelyeket értékesítési és marketing csapataik bővítésében.
+Opcionális előfizetési szolgáltatást is kínálunk (lásd [Social](/hu/portal/social/what-is-social)), hogy segítsük a szálláshelyeket értékesítési és marketing csapataik bővítésében.
 
 ## Platform hatás
 

@@ -17,7 +17,7 @@ A márkáknak és láncoknak kissé eltérő igényeik vannak egyetlen szállás
 
 - Több szálláshelyet kezelni egyetlen fiók alatt.
 - Menedzsereket kijelölni a szálláshelyekhez.
-- Használni a [WinkLinks](/hu/link-manager/wink-links), [WordPress](/hu/integrations/wordpress) és a [Web Components](/hu/integrations/web-components) eszközeinket, hogy több szálláshelyet egy helyen marketingeljenek és értékesítsenek.
+- Használni a [WinkLinks](/hu/portal/link-manager/wink-links), [WordPress](/hu/integrations/wordpress) és a [Web Components](/hu/integrations/web-components) eszközeinket, hogy több szálláshelyet egy helyen marketingeljenek és értékesítsenek.
 
 ## Menedzsment cégek
 
@@ -42,7 +42,7 @@ A vállalatoknak több kell egy utazási platformtól:
 - Költségkezelésre és jelentéskészítés integrációra van szükségük.
 - Konzorciumi támogatásra, valamint MICE szolgáltatásokra van szükségük rendezvényeken.
 
-A vállalati utazók saját fiókjaikat kezelhetik a [vállalati portálunkon](/hu/corporate/what-is-group), vagy használhatják hivatalosan támogatott [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) bővítményünket és a [Concur](https://www.concur.com/) integrációt.
+A vállalati utazók saját fiókjaikat kezelhetik a [vállalati portálunkon](/hu/portal/corporate/what-is-group), vagy használhatják hivatalosan támogatott [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) bővítményünket és a [Concur](https://www.concur.com/) integrációt.
 
 ## Fejlesztők
 

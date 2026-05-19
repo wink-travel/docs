@@ -17,7 +17,7 @@ Brendovi i lance imaju nešto drugačije potrebe od pojedinačnih nekretnina. Na
 
 - Upravljati više nekretnina unutar jednog računa.
 - Dodijeliti menadžere nekretninama.
-- Koristiti [WinkLinks](/hr/link-manager/wink-links), [WordPress](/hr/integrations/wordpress) i naše [Web Components](/hr/integrations/web-components) za marketing i prodaju više nekretnina na jednom mjestu.
+- Koristiti [WinkLinks](/hr/portal/link-manager/wink-links), [WordPress](/hr/integrations/wordpress) i naše [Web Components](/hr/integrations/web-components) za marketing i prodaju više nekretnina na jednom mjestu.
 
 ## Upravljajuće tvrtke
 
@@ -42,7 +42,7 @@ Korporacije zahtijevaju više od same putničke platforme:
 - Potrebno im je upravljanje troškovima i integracija izvještavanja.
 - Trebaju podršku concierge usluge, kao i MICE usluge na događajima.
 
-Korporativni putnici mogu upravljati vlastitim računima na našem [korporativnom portalu](/hr/corporate/what-is-group) ili koristiti naš službeno podržani [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dodatak i [Concur](https://www.concur.com/) integraciju.
+Korporativni putnici mogu upravljati vlastitim računima na našem [korporativnom portalu](/hr/portal/corporate/what-is-group) ili koristiti naš službeno podržani [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dodatak i [Concur](https://www.concur.com/) integraciju.
 
 ## Programeri
 

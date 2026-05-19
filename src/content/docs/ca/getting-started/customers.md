@@ -17,7 +17,7 @@ Les marques i cadenes tenen necessitats lleugerament diferents d’una sola prop
 
 - Gestionar múltiples propietats sota un únic compte.
 - Assignar gestors a les propietats.
-- Utilitzar [WinkLinks](/ca/link-manager/wink-links), [WordPress](/ca/integrations/wordpress) i els nostres [Web Components](/ca/integrations/web-components) per comercialitzar i vendre diverses propietats en un sol lloc.
+- Utilitzar [WinkLinks](/ca/portal/link-manager/wink-links), [WordPress](/ca/integrations/wordpress) i els nostres [Web Components](/ca/integrations/web-components) per comercialitzar i vendre diverses propietats en un sol lloc.
 
 ## Empreses de gestió
 
@@ -42,7 +42,7 @@ Les empreses requereixen més d’una plataforma de viatges:
 - Requereixen gestió de despeses i integració d’informes.
 - Necessiten suport de consergeria, així com serveis MICE en esdeveniments.
 
-Els viatgers corporatius poden gestionar els seus propis comptes al nostre [portal corporatiu](/ca/corporate/what-is-group) o utilitzar el nostre connector oficialment suportat [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) i la integració amb [Concur](https://www.concur.com/).
+Els viatgers corporatius poden gestionar els seus propis comptes al nostre [portal corporatiu](/ca/portal/corporate/what-is-group) o utilitzar el nostre connector oficialment suportat [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) i la integració amb [Concur](https://www.concur.com/).
 
 ## Desenvolupadors
 

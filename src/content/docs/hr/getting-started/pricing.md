@@ -50,7 +50,7 @@ Koristeći ovaj model, putnički agenti plaćaju samo Winkovu naknadu za obradu,
 
 ## Pretplate
 
-Nudimo i opcionalnu uslugu pretplate (pogledajte [Social](/hr/social/what-is-social)) kako bismo pomogli objektima u jačanju njihovih prodajnih i marketinških timova.
+Nudimo i opcionalnu uslugu pretplate (pogledajte [Social](/hr/portal/social/what-is-social)) kako bismo pomogli objektima u jačanju njihovih prodajnih i marketinških timova.
 
 ## Učinak platforme
 

@@ -50,7 +50,7 @@ Bei diesem Modell zahlen Reisebüros nur die Bearbeitungsgebühr an Wink, und Wi
 
 ## Abonnements
 
-Wir bieten einen optionalen Abonnementservice an (siehe [Social](/de/social/what-is-social)), um Unterkünfte bei der Verstärkung ihrer Vertriebs- und Marketingteams zu unterstützen.
+Wir bieten einen optionalen Abonnementservice an (siehe [Social](/de/portal/social/what-is-social)), um Unterkünfte bei der Verstärkung ihrer Vertriebs- und Marketingteams zu unterstützen.
 
 ## Plattformeffekt
 
