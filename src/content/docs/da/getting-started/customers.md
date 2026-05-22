@@ -17,7 +17,7 @@ Brands og kæder har lidt andre behov end en enkelt ejendom. På Wink kan de:
 
 - Administrere flere ejendomme under en enkelt konto.
 - Tildele ledere til ejendomme
-- Bruge [WinkLinks](/da/link-manager/wink-links), [WordPress](/da/integrations/wordpress) og vores [Web Components](/da/integrations/web-components) til at markedsføre og sælge flere ejendomme samlet ét sted.
+- Bruge [WinkLinks](/da/portal/link-manager/wink-links), [WordPress](/da/integrations/wordpress) og vores [Web Components](/da/integrations/web-components) til at markedsføre og sælge flere ejendomme samlet ét sted.
 
 ## Managementselskaber
 
@@ -42,7 +42,7 @@ Virksomheder kræver mere af en rejseplatform:
 - De kræver udgiftsstyring og rapporteringsintegration.
 - De har behov for concierge-support samt MICE-tjenester ved arrangementer.
 
-Forretningsrejsende kan administrere deres egne konti på vores [virksomhedsportal](/da/corporate/what-is-group) eller bruge vores officielt understøttede [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin og [Concur](https://www.concur.com/) integration.
+Forretningsrejsende kan administrere deres egne konti på vores [virksomhedsportal](/da/portal/corporate/what-is-group) eller bruge vores officielt understøttede [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin og [Concur](https://www.concur.com/) integration.
 
 ## Udviklere
 

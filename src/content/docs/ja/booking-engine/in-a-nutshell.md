@@ -7,8 +7,8 @@ sidebar:
 
 Winkでの責任分担は以下の通りです：
 
-- [Extranet](/ja/extranet/what-is-extranet) はサプライヤーが在庫を管理することに関わります。
-- [Studio](/ja/studio/what-is-studio) はアフィリエイトがコンテンツを管理することに関わります。
+- [Extranet](/ja/portal/extranet/what-is-extranet) はサプライヤーが在庫を管理することに関わります。
+- [Studio](/ja/portal/studio/what-is-studio) はアフィリエイトがコンテンツを管理することに関わります。
 - `Booking Engine` は、`Extranet` で作成された在庫に基づき `Studio` で作成されたコンテンツを予約可能にすることに関わります。
 - [Payment](/ja/payment/what-is-trip-pay) は、[Winkのようなプラットフォームを通じて]予約した旅行者からの課金・返金や、ベンダーへの支払いに関わります。
 
@@ -22,11 +22,11 @@ Winkでの責任分担は以下の通りです：
 - 言語の管理。
 - ユーザーの操作、イベント、APIコールに基づく分析の生成。
 - 希望のフォーマット、言語、通貨で予約可能な在庫を提供。例えば：
-    - Facebook上の[共有可能なリンク](/ja/studio/shareable-links)。
+    - Facebook上の[共有可能なリンク](/ja/portal/studio/shareable-links)。
     - https://ota.wink.travel のホテルランディングページにそのホテルの在庫を表示。
-    - アフィリエイト在庫を含む[カード](/ja/studio/cards)。
-    - あなたの[WinkLinks](/ja/link-manager/wink-links)アカウント上の[マップ](/ja/studio/maps)。
-    - リモートの旅行代理店システムからの[APIコール](/ja/developers/apis)。
+    - アフィリエイト在庫を含む[カード](/ja/portal/studio/cards)。
+    - あなたの[WinkLinks](/ja/portal/link-manager/wink-links)アカウント上の[マップ](/ja/portal/studio/maps)。
+    - リモートの旅行代理店システムからの[APIコール](/ja/api)。
 - 旅行者に以下の手段を提供：
     - 旅行在庫の検索。
     - 利用可能な在庫の予約。
@@ -36,7 +36,7 @@ Winkでの責任分担は以下の通りです：
 
 予約エンジンは https://ota.wink.travel を通じて提供する再利用可能な機能の集合体であり、ホテルやアフィリエイトが旅行者に商品を販売するための高度にカスタマイズ可能なウェブサイトです。
 
-さらに自由度を求める統合者は、当社の[WordPressプラグイン](/ja/integrations/wordpress/)、[Web Components](/ja/integrations/web-components)、および[API](/ja/developers/apis)を通じて同じ機能すべてにアクセスできます。
+さらに自由度を求める統合者は、当社の[WordPressプラグイン](/ja/integrations/wordpress/)、[Web Components](/ja/integrations/web-components)、および[API](/ja/api)を通じて同じ機能すべてにアクセスできます。
 
 次のセクションに進み、予約エンジンの提供内容についてさらにお読みください。
 
@@ -44,4 +44,4 @@ Winkでの責任分担は以下の通りです：
 
 - 当社の[WordPressプラグイン](/ja/integrations/wordpress/)について読む。
 - 当社の[Web Components](/ja/integrations/web-components)について読む。
-- 当社の[API](/ja/developers/apis)について読む。
+- 当社の[API](/ja/api)について読む。

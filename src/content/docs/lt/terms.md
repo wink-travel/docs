@@ -10,7 +10,7 @@ Kiekvienas portalas gali turėti skirtingas sąlygas ir nuostatas. Prašome eiti
 Partneriams, kurie nori sužinoti, kaip uždirbti pasyvias pajamas monetizuodami savo socialinius paskyras su Wink.
 [Wink Studio](https://studio.wink.travel) turi visus įrankius, kurių reikia profesionaliam pardavimui.
 
-<LinkButton href="/lt/studio/what-is-studio">
+<LinkButton href="/lt/portal/studio/what-is-studio">
 Sužinokite daugiau apie Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ Sužinokite daugiau apie mūsų rezervavimo sistemą
 
 Nekilnojamojo turto savininkams, kurie nori pradėti pardavinėti per Wink. Naudokite mūsų įrankius efektyviai parduoti ir reklamuotis internete bei pritraukti partnerių armiją iš viso pasaulio, kurie padės jums gauti klientų ir rezervacijų.
 
-<LinkButton href="/lt/extranet/what-is-extranet">
+<LinkButton href="/lt/portal/extranet/what-is-extranet">
 Sužinokite daugiau apie Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ Sužinokite daugiau apie Wink Extranet
 
 Kelionių agentams, kurie nori sužinoti, ką Wink gali jiems pasiūlyti pagal užsakymą sudarytas kainas, pasiūlymus ir inventorių tiesiogiai iš tiekėjų.
 
-<LinkButton href="/lt/travel-agent/what-is-agent">
+<LinkButton href="/lt/portal/travel-agent/what-is-agent">
 Sužinokite daugiau apie Wink Agent
 </LinkButton>

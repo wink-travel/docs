@@ -17,7 +17,7 @@ Brendovi i lance imaju nešto drugačije potrebe od pojedinačnih objekata. Na W
 
 - Upravljati više objekata pod jednim nalogom.
 - Dodeljivati menadžere objektima
-- Koristiti [WinkLinks](/sr/link-manager/wink-links), [WordPress](/sr/integrations/wordpress) i naše [Web Components](/sr/integrations/web-components) za marketing i prodaju više objekata na jednom mestu.
+- Koristiti [WinkLinks](/sr/portal/link-manager/wink-links), [WordPress](/sr/integrations/wordpress) i naše [Web Components](/sr/integrations/web-components) za marketing i prodaju više objekata na jednom mestu.
 
 ## Menadžerske kompanije
 
@@ -42,7 +42,7 @@ Korporacije zahtevaju više od same platforme za putovanja:
 - Potrebno im je upravljanje troškovima i integracija izveštavanja.
 - Potrebna im je podrška konsijerža, kao i MICE usluge na događajima.
 
-Korporativni putnici mogu upravljati svojim nalozima na našem [korporativnom portalu](/sr/corporate/what-is-group) ili koristiti naš zvanično podržani [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dodatak i [Concur](https://www.concur.com/) integraciju.
+Korporativni putnici mogu upravljati svojim nalozima na našem [korporativnom portalu](/sr/portal/corporate/what-is-group) ili koristiti naš zvanično podržani [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dodatak i [Concur](https://www.concur.com/) integraciju.
 
 ## Programeri
 

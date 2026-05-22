@@ -17,7 +17,7 @@ Wink започна да въвежда хотели преди десетиле
 
 - Да управляват множество хотели под един акаунт.
 - Да назначават мениджъри на хотели.
-- Да използват [WinkLinks](/bg/link-manager/wink-links), [WordPress](/bg/integrations/wordpress) и нашите [Web Components](/bg/integrations/web-components), за да рекламират и продават множество хотели на едно място.
+- Да използват [WinkLinks](/bg/portal/link-manager/wink-links), [WordPress](/bg/integrations/wordpress) и нашите [Web Components](/bg/integrations/web-components), за да рекламират и продават множество хотели на едно място.
 
 ## Управляващи компании
 
@@ -42,7 +42,7 @@ Wink започна да въвежда хотели преди десетиле
 - Изискват управление на разходите и интеграция на отчетността.
 - Нуждаят се от консиерж услуги, както и MICE услуги на събития.
 
-Корпоративните пътници могат да управляват собствените си акаунти в нашия [корпоративен портал](/bg/corporate/what-is-group) или да използват официално поддържания [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) плъгин и интеграцията с [Concur](https://www.concur.com/).
+Корпоративните пътници могат да управляват собствените си акаунти в нашия [корпоративен портал](/bg/portal/corporate/what-is-group) или да използват официално поддържания [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) плъгин и интеграцията с [Concur](https://www.concur.com/).
 
 ## Разработчици
 

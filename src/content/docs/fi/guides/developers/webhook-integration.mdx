@@ -1,0 +1,77 @@
+---
+title: Webhook-integraatio
+description: Tämä opas näyttää kehittäjille, miten webhooks asetetaan vastaanottamaan reaaliaikaisia ilmoituksia varauksista, maksuista ja muista tapahtumista.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Webhookit mahdollistavat järjestelmiesi vastaanottaa reaaliaikaisia ilmoituksia, kun tapahtumia tapahtuu Wink-tililläsi — uusia varauksia, peruutuksia, maksupäivityksiä ja muuta. Tämä opas ohjaa sinut asennuksen ja parhaiden käytäntöjen läpi.
+
+## Kohdeyleisö
+
+Tämä opas on tarkoitettu kehittäjille, jotka integroivat Wink:iä ulkoisiin järjestelmiin, kuten kiinteistöhallintajärjestelmiin (PMS), kanavahallintaan, CRM-järjestelmiin tai räätälöityihin hallintapaneeleihin.
+
+## Miten webhookit toimivat
+
+1. Rekisteröit webhook-URL:n Winkissä.
+2. Kun tapahtuma tapahtuu (esim. uusi varaus), Wink lähettää HTTP POST -pyynnön URL-osoitteeseesi.
+3. Palvelimesi käsittelee tiedot ja vastaa `200 OK`.
+
+## Webhookin asennus
+
+<Steps>
+1. Kirjaudu tilillesi (Extranet, Studio tai TripPay — kaikki tukevat webhookeja).
+2. Siirry kohtaan `Applications` ja sitten `Webhooks`. Katso [Webhooks](/fi/portal/settings/webhooks).
+3. Klikkaa `Create webhook`.
+4. Anna **nimi** (esim. "PMS Booking Sync").
+5. Syötä **webhook-URL** — HTTPS-päätepiste palvelimellasi.
+6. **Valitse tapahtumat** — Valitse tilattavat tapahtumat tai jätä tyhjäksi vastaanottaaksesi kaikki tapahtumat.
+7. Kytke **Enabled** päälle.
+8. Klikkaa `Save`.
+</Steps>
+
+## Tapahtumatyypit
+
+Wink tukee **yli 64 webhook-tapahtumatyyppiä** eri kategorioissa, kuten tilinhallinta, varaus-sopimukset, maksut, kanavahallinnan päivitykset ja hallintoyksikön hallinta. Yleisiä tapahtumia ovat:
+
+| Kategoria | Esimerkkejä |
+|---|---|
+| **Varaus** | `booking.create`, `booking.cancelled` |
+| **Varaussopimus** | `booking.contract.created`, `booking.contract.processing`, `booking.contract.cancelled` |
+| **Maksu** | `internal.payment.succeeded`, `internal.payment.failed` |
+| **Hyvitykset** | `booking.contract.refund.partial`, `booking.contract.refund.full` |
+| **Kanavahallinta** | `channel-manager.update.rate`, `channel-manager.update.availability` |
+| **Tili** | `account.create`, `account.status.updated` |
+
+Täydellisen listan kaikista tapahtumatyypeistä ja kuvauksista löydät **Webhook Events Catalog** -osiosta.
+
+<LinkButton href="/fi/developers/webhook-events">
+  Näytä kaikki yli 64 tapahtumatyyppiä
+</LinkButton>
+
+:::tip
+Aloita tilaamalla kaikki tapahtumat kehitysvaiheessa. Kun ymmärrät tiedot, rajaa tilaukset vain järjestelmäsi tarvitsemiin tapahtumiin.
+:::
+
+## Parhaat käytännöt
+
+- **Käytä HTTPS:ää** — Wink lähettää tiedot vain HTTPS-päätepisteisiin.
+- **Vastaa nopeasti** — Palauta `200 OK` heti, kun vastaanotat tiedot. Tee raskaat käsittelyt asynkronisesti.
+- **Idempotenssi** — Käsittelijäsi tulee olla idempotentti. Wink voi yrittää uudelleen, jos `200`-vastausta ei saada.
+- **Vahvista lähde** — Varmista, että saapuvat pyynnöt ovat peräisin Winkistä ennen käsittelyä.
+- **Lokitus** — Kirjaa kaikki vastaanottamasi webhook-tiedot. Tämä helpottaa integrointiongelmien vianmääritystä.
+
+## Tauko ja poisto
+
+Voit **poistaa käytöstä** webhookin ilman, että poistat sitä. Tämä keskeyttää toimituksen, jotta voit vianmäärityksen aikana säilyttää asetukset. Kun olet valmis, kytke se takaisin päälle.
+
+Webhookin poistaminen poistaa sen pysyvästi. Kaikki integraatiot, jotka käyttävät kyseistä webhookia, lakkaavat vastaanottamasta ilmoituksia.
+
+## Lisälukemista
+
+- [Webhook Events Catalog](/fi/developers/webhook-events) — Täydellinen lista kaikista yli 64 tapahtumatyypistä.
+- [Webhooks](/fi/portal/settings/webhooks) — Täydellinen viite webhookien hallintaan.
+- [Applications](/fi/portal/settings/applications) — Hallitse API-tunnuksiasi.
+- [Developers > APIs](/fi/api) — Täydellinen API-dokumentaatio.

@@ -50,7 +50,7 @@ Wink 收取每笔预订 1.5% 的处理费。这使我们能够免费提供所有
 
 ## 订阅服务
 
-我们提供可选的订阅服务（参见 [Social](/zh-CN/social/what-is-social)），帮助物业增强其销售和营销团队。
+我们提供可选的订阅服务（参见 [Social](/zh-CN/portal/social/what-is-social)），帮助物业增强其销售和营销团队。
 
 ## 平台效应
 

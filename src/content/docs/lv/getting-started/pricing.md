@@ -50,7 +50,7 @@ Izmantojot šo modeli, ceļojumu aģenti maksā tikai Wink apstrādes maksu, un 
 
 ## Abonementi
 
-Mēs piedāvājam arī izvēles abonementa pakalpojumu (skatīt [Social](/lv/social/what-is-social)), lai palīdzētu īpašumiem paplašināt pārdošanas un mārketinga komandas.
+Mēs piedāvājam arī izvēles abonementa pakalpojumu (skatīt [Social](/lv/portal/social/what-is-social)), lai palīdzētu īpašumiem paplašināt pārdošanas un mārketinga komandas.
 
 ## Platformas ietekme
 

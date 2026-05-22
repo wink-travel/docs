@@ -7,8 +7,8 @@ sidebar:
 
 Šādi mēs sadalām atbildību Wink platformā:
 
-- [Extranet](/lv/extranet/what-is-extranet) nodarbojas ar piegādātājiem, kas pārvalda krājumus.
-- [Studio](/lv/studio/what-is-studio) nodarbojas ar filiālēm, kas pārvalda saturu.
+- [Extranet](/lv/portal/extranet/what-is-extranet) nodarbojas ar piegādātājiem, kas pārvalda krājumus.
+- [Studio](/lv/portal/studio/what-is-studio) nodarbojas ar filiālēm, kas pārvalda saturu.
 - `Booking Engine` nodarbojas ar satura veidošanu, kas radīts `Studio`, balstoties uz krājumiem, kas izveidoti `Extranet`, un padara to rezervējamu.
 - [Payment](/lv/payment/what-is-trip-pay) nodarbojas ar ceļotāju iekasēšanu / atmaksu, kas rezervē [caur platformām kā Wink], un maksā piegādātājiem.
 
@@ -22,11 +22,11 @@ Tā atbildības jomas ietver:
 - Valodu pārvaldību.
 - Analītikas ģenerēšanu, balstoties uz lietotāju mijiedarbībām, notikumiem un API izsaukumiem.
 - Rezervējama krājuma nodrošināšanu vēlamajā formātā, valodā un valūtā, piemēram:
-    - [kopīgojams saite](/lv/studio/shareable-links) Facebook.
+    - [kopīgojams saite](/lv/portal/studio/shareable-links) Facebook.
     - Viesnīcas galvenā lapa vietnē https://ota.wink.travel ar šīs viesnīcas krājumu.
-    - [karte](/lv/studio/cards) ar filiāļu krājumu.
-    - [karte](/lv/studio/maps) jūsu [WinkLinks](/lv/link-manager/wink-links) kontā.
-    - [API izsaukums](/lv/developers/apis) no attālinātas ceļojumu aģenta sistēmas.
+    - [karte](/lv/portal/studio/cards) ar filiāļu krājumu.
+    - [karte](/lv/portal/studio/maps) jūsu [WinkLinks](/lv/portal/link-manager/wink-links) kontā.
+    - [API izsaukums](/lv/api) no attālinātas ceļojumu aģenta sistēmas.
 - Ceļotāju nodrošināšanu ar iespēju:
     - Meklēt ceļojumu krājumus.
     - Rezervēt pieejamos krājumus.
@@ -36,7 +36,7 @@ Tā atbildības jomas ietver:
 
 Rezervēšanas dzinējs ir atkārtoti izmantojamu funkciju kopums, ko mēs piedāvājam caur https://ota.wink.travel; ļoti pielāgojama vietne viesnīcām un filiālēm, lai pārdotu savus pakalpojumus ceļotājiem.
 
-Integrētāji, kas vēlas vēl lielāku brīvību, var izmantot visas tās pašas funkcijas caur mūsu [WordPress spraudni](/lv/integrations/wordpress/), [Web Components](/lv/integrations/web-components) un [API](/lv/developers/apis).
+Integrētāji, kas vēlas vēl lielāku brīvību, var izmantot visas tās pašas funkcijas caur mūsu [WordPress spraudni](/lv/integrations/wordpress/), [Web Components](/lv/integrations/web-components) un [API](/lv/api).
 
 Turpiniet uz nākamajām sadaļām, lai uzzinātu vairāk par to, ko rezervēšanas dzinējs piedāvā.
 
@@ -44,4 +44,4 @@ Turpiniet uz nākamajām sadaļām, lai uzzinātu vairāk par to, ko rezervēša
 
 - Lasiet par mūsu [WordPress spraudni](/lv/integrations/wordpress/).
 - Lasiet par mūsu [Web Components](/lv/integrations/web-components).
-- Lasiet par mūsu [API](/lv/developers/apis).
+- Lasiet par mūsu [API](/lv/api).

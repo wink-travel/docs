@@ -17,7 +17,7 @@ Brändidel ja kettidel on veidi erinevad vajadused kui üksikul kinnistul. Winki
 
 - Hallata mitut kinnistut ühe konto all.
 - Määrata kinnistutele juhid
-- Kasutada [WinkLinks](/et/link-manager/wink-links), [WordPressi](/et/integrations/wordpress) ja meie [veebikomponente](/et/integrations/web-components), et turundada ja müüa mitut kinnistut ühes kohas.
+- Kasutada [WinkLinks](/et/portal/link-manager/wink-links), [WordPressi](/et/integrations/wordpress) ja meie [veebikomponente](/et/integrations/web-components), et turundada ja müüa mitut kinnistut ühes kohas.
 
 ## Juhtimisettevõtted
 
@@ -42,7 +42,7 @@ Ettevõtted vajavad rohkem kui lihtsalt reisiplatvormi:
 - Nad vajavad kulude haldamist ja aruandluse integratsiooni.
 - Nad vajavad konverentsiteenuseid ning MICE-teenuseid üritustel.
 
-Ettevõtte reisijad saavad hallata oma kontosid meie [ettevõtte portaalis](/et/corporate/what-is-group) või kasutada meie ametlikult toetatud [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) pistikprogrammi ja [Concur](https://www.concur.com/) integratsiooni.
+Ettevõtte reisijad saavad hallata oma kontosid meie [ettevõtte portaalis](/et/portal/corporate/what-is-group) või kasutada meie ametlikult toetatud [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) pistikprogrammi ja [Concur](https://www.concur.com/) integratsiooni.
 
 ## Arendajad
 

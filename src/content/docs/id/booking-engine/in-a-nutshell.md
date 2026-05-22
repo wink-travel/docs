@@ -7,8 +7,8 @@ sidebar:
 
 Berikut cara kami membagi tanggung jawab di Wink:
 
-- [Extranet](/id/extranet/what-is-extranet) berkaitan dengan pemasok yang mengelola inventaris.
-- [Studio](/id/studio/what-is-studio) berkaitan dengan afiliasi yang mengelola konten.
+- [Extranet](/id/portal/extranet/what-is-extranet) berkaitan dengan pemasok yang mengelola inventaris.
+- [Studio](/id/portal/studio/what-is-studio) berkaitan dengan afiliasi yang mengelola konten.
 - `Booking Engine` berkaitan dengan membuat konten, yang dibuat di `Studio`, yang didasarkan pada inventaris yang dibuat di `Extranet` dan membuatnya dapat dipesan.
 - [Payment](/id/payment/what-is-trip-pay) berkaitan dengan mengenakan biaya / mengembalikan dana kepada pelancong yang memesan [melalui platform seperti Wink], dan membayar vendor.
 
@@ -22,11 +22,11 @@ Tanggung jawabnya meliputi:
 - Mengelola bahasa.
 - Menghasilkan analitik berdasarkan interaksi pengguna, peristiwa, dan panggilan API.
 - Menyajikan inventaris yang dapat dipesan dalam format, bahasa, dan mata uang yang diinginkan, seperti:
-    - [tautan yang dapat dibagikan](/id/studio/shareable-links) di Facebook.
+    - [tautan yang dapat dibagikan](/id/portal/studio/shareable-links) di Facebook.
     - Halaman landing hotel di https://ota.wink.travel dengan inventaris untuk hotel tersebut.
-    - [kartu](/id/studio/cards) yang berisi inventaris afiliasi.
-    - [peta](/id/studio/maps) di akun [WinkLinks](/id/link-manager/wink-links) Anda.
-    - [panggilan API](/id/developers/apis) dari sistem agen perjalanan jarak jauh.
+    - [kartu](/id/portal/studio/cards) yang berisi inventaris afiliasi.
+    - [peta](/id/portal/studio/maps) di akun [WinkLinks](/id/portal/link-manager/wink-links) Anda.
+    - [panggilan API](/id/api) dari sistem agen perjalanan jarak jauh.
 - Memberikan pelancong cara untuk:
     - Mencari inventaris perjalanan.
     - Memesan inventaris yang tersedia.
@@ -36,7 +36,7 @@ Tanggung jawabnya meliputi:
 
 Mesin pemesanan adalah kumpulan fungsi yang dapat digunakan kembali yang kami sediakan melalui https://ota.wink.travel; sebuah situs web yang sangat dapat disesuaikan untuk hotel dan afiliasi menjual produk mereka kepada pelancong.
 
-Integrator, yang menginginkan kebebasan lebih, memiliki akses ke semua fitur yang sama melalui [plugin WordPress](/id/integrations/wordpress/), [Web Components](/id/integrations/web-components), dan [API](/id/developers/apis) kami.
+Integrator, yang menginginkan kebebasan lebih, memiliki akses ke semua fitur yang sama melalui [plugin WordPress](/id/integrations/wordpress/), [Web Components](/id/integrations/web-components), dan [API](/id/api) kami.
 
 Lanjutkan ke bagian berikutnya untuk membaca lebih lanjut tentang apa yang ditawarkan mesin pemesanan.
 
@@ -44,4 +44,4 @@ Lanjutkan ke bagian berikutnya untuk membaca lebih lanjut tentang apa yang ditaw
 
 - Baca tentang [plugin WordPress](/id/integrations/wordpress/) kami.
 - Baca tentang [Web Components](/id/integrations/web-components) kami.
-- Baca tentang [API](/id/developers/apis) kami.
+- Baca tentang [API](/id/api) kami.

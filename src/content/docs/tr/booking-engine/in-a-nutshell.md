@@ -7,8 +7,8 @@ sidebar:
 
 Wink'te sorumlulukları şu şekilde ayırıyoruz:
 
-- [Extranet](/tr/extranet/what-is-extranet), tedarikçilerin envanteri yönetmesiyle ilgilenir.
-- [Studio](/tr/studio/what-is-studio), bağlı kuruluşların içeriği yönetmesiyle ilgilenir.
+- [Extranet](/tr/portal/extranet/what-is-extranet), tedarikçilerin envanteri yönetmesiyle ilgilenir.
+- [Studio](/tr/portal/studio/what-is-studio), bağlı kuruluşların içeriği yönetmesiyle ilgilenir.
 - `Booking Engine`, `Extranet`'te oluşturulan envantere dayalı olarak `Studio`'da oluşturulan içeriği alır ve rezervasyona açar.
 - [Payment](/tr/payment/what-is-trip-pay), [Wink gibi platformlar üzerinden] rezervasyon yapan gezginlerden tahsilat / iade işlemleri yapar ve satıcılara ödeme yapar.
 
@@ -22,11 +22,11 @@ Sorumlulukları şunları içerir:
 - Dilleri yönetmek.
 - Kullanıcı etkileşimleri, olaylar ve API çağrıları temelinde analizler oluşturmak.
 - İstenen format, dil ve para biriminde rezervasyona açık envanteri sunmak, örneğin:
-    - Facebook'ta bir [paylaşılabilir bağlantı](/tr/studio/shareable-links).
+    - Facebook'ta bir [paylaşılabilir bağlantı](/tr/portal/studio/shareable-links).
     - Otele ait envanterle https://ota.wink.travel adresinde bir otel açılış sayfası.
-    - Bağlı kuruluş envanteri içeren bir [kart](/tr/studio/cards).
-    - [WinkLinks](/tr/link-manager/wink-links) hesabınızdaki bir [harita](/tr/studio/maps).
-    - Uzaktaki bir seyahat acentesi sisteminden bir [API çağrısı](/tr/developers/apis).
+    - Bağlı kuruluş envanteri içeren bir [kart](/tr/portal/studio/cards).
+    - [WinkLinks](/tr/portal/link-manager/wink-links) hesabınızdaki bir [harita](/tr/portal/studio/maps).
+    - Uzaktaki bir seyahat acentesi sisteminden bir [API çağrısı](/tr/api).
 - Gezginlere şu imkanları sağlamak:
     - Seyahat envanteri aramak.
     - Mevcut envanteri rezerve etmek.
@@ -36,7 +36,7 @@ Sorumlulukları şunları içerir:
 
 Rezervasyon motoru, https://ota.wink.travel üzerinden sunduğumuz, otellerin ve bağlı kuruluşların ürünlerini gezginlere satmaları için yüksek derecede özelleştirilebilir bir web sitesi olan yeniden kullanılabilir işlevsellikler koleksiyonudur.
 
-Daha fazla özgürlük isteyen entegratörler, aynı özelliklerin tamamına [WordPress eklentimiz](/tr/integrations/wordpress/), [Web Bileşenlerimiz](/tr/integrations/web-components) ve [API'lerimiz](/tr/developers/apis) aracılığıyla erişebilirler.
+Daha fazla özgürlük isteyen entegratörler, aynı özelliklerin tamamına [WordPress eklentimiz](/tr/integrations/wordpress/), [Web Bileşenlerimiz](/tr/integrations/web-components) ve [API'lerimiz](/tr/api) aracılığıyla erişebilirler.
 
 Rezervasyon motorunun sundukları hakkında daha fazla bilgi edinmek için sonraki bölümlere devam edin.
 
@@ -44,4 +44,4 @@ Rezervasyon motorunun sundukları hakkında daha fazla bilgi edinmek için sonra
 
 - [WordPress eklentimiz](/tr/integrations/wordpress/) hakkında bilgi edinin.
 - [Web Bileşenlerimiz](/tr/integrations/web-components) hakkında bilgi edinin.
-- [API'lerimiz](/tr/developers/apis) hakkında bilgi edinin.
+- [API'lerimiz](/tr/api) hakkında bilgi edinin.

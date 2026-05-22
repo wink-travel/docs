@@ -10,7 +10,7 @@ description: Общи условия за всички потребители и
 За партньори, които искат да научат как да печелят пасивен доход чрез монетизиране на своите социални акаунти с Wink.  
 [Wink Studio](https://studio.wink.travel) разполага с всички инструменти, от които се нуждаете, за да продавате като професионалист.
 
-<LinkButton href="/bg/studio/what-is-studio">
+<LinkButton href="/bg/portal/studio/what-is-studio">
 Научете повече за Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ description: Общи условия за всички потребители и
 
 За имоти, които искат да започнат да продават в Wink. Използвайте нашите инструменти, за да продавате и рекламирате ефективно онлайн и да привлечете армия от партньори от цял свят, които да ви помогнат да получите клиенти и резервации.
 
-<LinkButton href="/bg/extranet/what-is-extranet">
+<LinkButton href="/bg/portal/extranet/what-is-extranet">
 Научете повече за Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ description: Общи условия за всички потребители и
 
 За туристически агенти, които искат да разберат какво може да им предложи Wink по отношение на специални цени, оферти и наличности, директно от доставчици.
 
-<LinkButton href="/bg/travel-agent/what-is-agent">
+<LinkButton href="/bg/portal/travel-agent/what-is-agent">
 Научете повече за Wink Agent
 </LinkButton>

@@ -17,7 +17,7 @@ Jenama dan rantaian mempunyai keperluan yang sedikit berbeza daripada satu harta
 
 - Mengurus pelbagai hartanah di bawah satu akaun.
 - Menugaskan pengurus kepada hartanah
-- Menggunakan [WinkLinks](/ms/link-manager/wink-links), [WordPress](/ms/integrations/wordpress) dan [Komponen Web](/ms/integrations/web-components) kami untuk memasarkan dan menjual pelbagai hartanah di satu tempat.
+- Menggunakan [WinkLinks](/ms/portal/link-manager/wink-links), [WordPress](/ms/integrations/wordpress) dan [Komponen Web](/ms/integrations/web-components) kami untuk memasarkan dan menjual pelbagai hartanah di satu tempat.
 
 ## Syarikat pengurusan
 
@@ -42,7 +42,7 @@ Korporat memerlukan lebih daripada sekadar platform pelancongan:
 - Mereka memerlukan pengurusan perbelanjaan dan integrasi pelaporan.
 - Mereka memerlukan sokongan concierge, serta perkhidmatan MICE di acara.
 
-Pengembara korporat boleh mengurus akaun mereka sendiri di [portal korporat](/ms/corporate/what-is-group) kami atau menggunakan plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dan integrasi [Concur](https://www.concur.com/) yang disokong secara rasmi.
+Pengembara korporat boleh mengurus akaun mereka sendiri di [portal korporat](/ms/portal/corporate/what-is-group) kami atau menggunakan plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dan integrasi [Concur](https://www.concur.com/) yang disokong secara rasmi.
 
 ## Pembangun
 

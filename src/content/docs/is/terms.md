@@ -10,7 +10,7 @@ Hver gátt getur haft mismunandi skilmála og skilyrði. Vinsamlegast farðu í 
 Fyrir tengla sem vilja læra hvernig á að afla sér tekna með því að nýta samfélagsreikninga sína með Wink.
 [Wink Studio](https://studio.wink.travel) hefur öll þau verkfæri sem þú þarft til að selja eins og atvinnumaður.
 
-<LinkButton href="/is/studio/what-is-studio">
+<LinkButton href="/is/portal/studio/what-is-studio">
 Lærðu meira um Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ Lærðu meira um pöntunarkerfi okkar
 
 Fyrir eignir sem vilja byrja að selja á Wink. Notaðu verkfæri okkar til að selja og markaðssetja þig á áhrifaríkan hátt á netinu og fáðu her af tenglum alls staðar að úr heiminum til að hjálpa þér að fá viðskiptavini og pantanir.
 
-<LinkButton href="/is/extranet/what-is-extranet">
+<LinkButton href="/is/portal/extranet/what-is-extranet">
 Lærðu meira um Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ Lærðu meira um Wink Extranet
 
 Fyrir ferðaskrifstofur sem vilja komast að því hvað Wink getur boðið þeim í formi sérsniðinna verðs, tilboða og birgða, beint frá birgjum.
 
-<LinkButton href="/is/travel-agent/what-is-agent">
+<LinkButton href="/is/portal/travel-agent/what-is-agent">
 Lærðu meira um Wink Agent
 </LinkButton>

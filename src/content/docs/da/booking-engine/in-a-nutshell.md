@@ -7,8 +7,8 @@ sidebar:
 
 Sådan opdeler vi ansvaret på Wink:
 
-- [Extranet](/da/extranet/what-is-extranet) beskæftiger sig med leverandører, der administrerer lager.
-- [Studio](/da/studio/what-is-studio) beskæftiger sig med affiliates, der administrerer indhold.
+- [Extranet](/da/portal/extranet/what-is-extranet) beskæftiger sig med leverandører, der administrerer lager.
+- [Studio](/da/portal/studio/what-is-studio) beskæftiger sig med affiliates, der administrerer indhold.
 - `Booking Engine` beskæftiger sig med at gøre det indhold, der er oprettet i `Studio`, baseret på lageret oprettet i `Extranet`, bookbart.
 - [Payment](/da/payment/what-is-trip-pay) beskæftiger sig med at opkræve/refundere rejsende, der booker [gennem platforme som Wink], og betale leverandører.
 
@@ -22,11 +22,11 @@ Dens ansvarsområder inkluderer:
 - At administrere sprog.
 - At generere analyser baseret på brugerinteraktioner, begivenheder og API-kald.
 - At levere bookbart lager i det ønskede format, sprog og valuta, såsom:
-    - Et [delbart link](/da/studio/shareable-links) på Facebook.
+    - Et [delbart link](/da/portal/studio/shareable-links) på Facebook.
     - En hotel-landingsside på https://ota.wink.travel med lager for det hotel.
-    - Et [kort](/da/studio/cards) indeholdende affiliate-lager.
-    - Et [kort](/da/studio/maps) på din [WinkLinks](/da/link-manager/wink-links) konto.
-    - Et [API-kald](/da/developers/apis) fra et eksternt rejsebureau-system.
+    - Et [kort](/da/portal/studio/cards) indeholdende affiliate-lager.
+    - Et [kort](/da/portal/studio/maps) på din [WinkLinks](/da/portal/link-manager/wink-links) konto.
+    - Et [API-kald](/da/api) fra et eksternt rejsebureau-system.
 - At give rejsende en måde at:
     - Søge efter rejselager.
     - Booke tilgængeligt lager.
@@ -36,7 +36,7 @@ Dens ansvarsområder inkluderer:
 
 Bookingmotoren er en samling af genanvendelig funktionalitet, som vi eksponerer gennem https://ota.wink.travel; et højt tilpasseligt website for hoteller og affiliates til at sælge deres varer til rejsende.
 
-Integratører, der ønsker endnu mere frihed, har adgang til alle de samme funktioner via vores [WordPress plugin](/da/integrations/wordpress/), [Web Components](/da/integrations/web-components) og [APIs](/da/developers/apis).
+Integratører, der ønsker endnu mere frihed, har adgang til alle de samme funktioner via vores [WordPress plugin](/da/integrations/wordpress/), [Web Components](/da/integrations/web-components) og [APIs](/da/api).
 
 Fortsæt til de næste sektioner for at læse mere om, hvad bookingmotoren har at tilbyde.
 
@@ -44,4 +44,4 @@ Fortsæt til de næste sektioner for at læse mere om, hvad bookingmotoren har a
 
 - Læs om vores [WordPress plugin](/da/integrations/wordpress/).
 - Læs om vores [Web Components](/da/integrations/web-components).
-- Læs om vores [APIs](/da/developers/apis).
+- Læs om vores [APIs](/da/api).

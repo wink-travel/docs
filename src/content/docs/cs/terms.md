@@ -10,7 +10,7 @@ Každý portál může mít odlišné podmínky a ujednání. Přejděte prosím
 Pro affiliate partnery, kteří chtějí zjistit, jak si vydělat pasivní příjem monetizací svých sociálních účtů pomocí Wink.
 [Wink Studio](https://studio.wink.travel) nabízí všechny nástroje, které potřebujete k profesionálnímu prodeji.
 
-<LinkButton href="/cs/studio/what-is-studio">
+<LinkButton href="/cs/portal/studio/what-is-studio">
 Zjistěte více o Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ Zjistěte více o našem rezervačním enginu
 
 Pro nemovitosti, které chtějí začít prodávat na Wink. Využijte naše nástroje k efektivnímu prodeji a marketingu online a získejte armádu affiliate partnerů z celého světa, kteří vám pomohou získat zákazníky a rezervace.
 
-<LinkButton href="/cs/extranet/what-is-extranet">
+<LinkButton href="/cs/portal/extranet/what-is-extranet">
 Zjistěte více o Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ Zjistěte více o Wink Extranet
 
 Pro cestovní agenty, kteří chtějí zjistit, co jim Wink může nabídnout v podobě speciálních sazeb, nabídek a inventáře přímo od dodavatelů.
 
-<LinkButton href="/cs/travel-agent/what-is-agent">
+<LinkButton href="/cs/portal/travel-agent/what-is-agent">
 Zjistěte více o Wink Agent
 </LinkButton>

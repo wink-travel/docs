@@ -7,8 +7,8 @@ sidebar:
 
 כך אנו מחלקים את האחריות ב-Wink:
 
-- [Extranet](/he/extranet/what-is-extranet) עוסקת בספקים שמנהלים מלאי.
-- [Studio](/he/studio/what-is-studio) עוסקת בשותפים שמנהלים תוכן.
+- [Extranet](/he/portal/extranet/what-is-extranet) עוסקת בספקים שמנהלים מלאי.
+- [Studio](/he/portal/studio/what-is-studio) עוסקת בשותפים שמנהלים תוכן.
 - `Booking Engine` עוסקת ביצירת התוכן, שנוצר ב-`Studio`, שהתבסס על המלאי שנוצר ב-`Extranet` והופכת אותו להזמנה.
 - [Payment](/he/payment/what-is-trip-pay) עוסקת בחיוב / החזר כספי למטיילים שמזמינים [דרך פלטפורמות כמו Wink], ובתשלום לספקים.
 
@@ -22,11 +22,11 @@ sidebar:
 - ניהול שפות.
 - יצירת אנליטיקה על בסיס אינטראקציות משתמש, אירועים וקריאות API.
 - הצגת מלאי הזמין להזמנה בפורמט, שפה ומטבע הרצויים, כגון:
-    - [קישור לשיתוף](/he/studio/shareable-links) בפייסבוק.
+    - [קישור לשיתוף](/he/portal/studio/shareable-links) בפייסבוק.
     - דף נחיתה של מלון בכתובת https://ota.wink.travel עם מלאי עבור אותו מלון.
-    - [כרטיס](/he/studio/cards) המכיל מלאי שותפים.
-    - [מפה](/he/studio/maps) בחשבון [WinkLinks](/he/link-manager/wink-links) שלך.
-    - [קריאת API](/he/developers/apis) ממערכת סוכנות נסיעות מרוחקת.
+    - [כרטיס](/he/portal/studio/cards) המכיל מלאי שותפים.
+    - [מפה](/he/portal/studio/maps) בחשבון [WinkLinks](/he/portal/link-manager/wink-links) שלך.
+    - [קריאת API](/he/api) ממערכת סוכנות נסיעות מרוחקת.
 - מתן אפשרות למטיילים:
     - לחפש מלאי נסיעות.
     - להזמין מלאי זמין.
@@ -36,7 +36,7 @@ sidebar:
 
 מנוע ההזמנות הוא אוסף של פונקציות שניתן להשתמש בהן שוב, שאנו מציגים דרך https://ota.wink.travel; אתר אינטרנט שניתן להתאמה אישית גבוהה עבור מלונות ושותפים למכירת מוצריהם למטיילים.
 
-משלבים, שרוצים חופש רב יותר, יכולים לגשת לכל אותם הפיצ'רים דרך [תוסף ה-WordPress שלנו](/he/integrations/wordpress/), [רכיבי ווב](/he/integrations/web-components) ו-[APIs](/he/developers/apis).
+משלבים, שרוצים חופש רב יותר, יכולים לגשת לכל אותם הפיצ'רים דרך [תוסף ה-WordPress שלנו](/he/integrations/wordpress/), [רכיבי ווב](/he/integrations/web-components) ו-[APIs](/he/api).
 
 המשיכו לקרוא בסעיפים הבאים כדי ללמוד עוד על מה שמנוע ההזמנות מציע.
 
@@ -44,4 +44,4 @@ sidebar:
 
 - קראו על [תוסף ה-WordPress שלנו](/he/integrations/wordpress/).
 - קראו על [רכיבי הווב שלנו](/he/integrations/web-components).
-- קראו על [APIs שלנו](/he/developers/apis).
+- קראו על [APIs שלנו](/he/api).

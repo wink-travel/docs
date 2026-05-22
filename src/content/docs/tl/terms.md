@@ -10,7 +10,7 @@ Maaaring may iba't ibang mga tuntunin at kundisyon ang bawat portal. Mangyaring 
 Para sa mga affiliate na nais matutunan kung paano kumita ng passive income sa pamamagitan ng pag-monetize ng iyong mga social account gamit ang Wink.  
 Ang [Wink Studio](https://studio.wink.travel) ay may lahat ng mga kasangkapang kailangan mo upang magbenta tulad ng isang propesyonal.
 
-<LinkButton href="/tl/studio/what-is-studio">
+<LinkButton href="/tl/portal/studio/what-is-studio">
 Matuto nang higit pa tungkol sa Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ Matuto nang higit pa tungkol sa aming booking engine
 
 Para sa mga property na nais magsimulang magbenta sa Wink. Gamitin ang aming mga kasangkapan upang epektibong magbenta at mag-market ng iyong sarili online at magkaroon ng isang hukbo ng mga affiliate mula sa buong mundo upang tulungan kang makakuha ng mga customer at booking.
 
-<LinkButton href="/tl/extranet/what-is-extranet">
+<LinkButton href="/tl/portal/extranet/what-is-extranet">
 Matuto nang higit pa tungkol sa Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ Matuto nang higit pa tungkol sa Wink Extranet
 
 Para sa mga travel agent na nais malaman kung ano ang maiaalok ng Wink sa kanila sa mga bespoke na rate, deal, at imbentaryo, direkta mula sa mga supplier.
 
-<LinkButton href="/tl/travel-agent/what-is-agent">
+<LinkButton href="/tl/portal/travel-agent/what-is-agent">
 Matuto nang higit pa tungkol sa Wink Agent
 </LinkButton>

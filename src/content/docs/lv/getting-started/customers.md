@@ -17,7 +17,7 @@ Zīmoliem un ķēdēm ir nedaudz atšķirīgas vajadzības nekā vienai naktsmī
 
 - Pārvaldīt vairākas naktsmītnes vienā kontā.
 - Piešķirt pārvaldniekus naktsmītnēm.
-- Izmantot [WinkLinks](/lv/link-manager/wink-links), [WordPress](/lv/integrations/wordpress) un mūsu [Web Components](/lv/integrations/web-components), lai tirgotu un pārdotu vairākas naktsmītnes vienuviet.
+- Izmantot [WinkLinks](/lv/portal/link-manager/wink-links), [WordPress](/lv/integrations/wordpress) un mūsu [Web Components](/lv/integrations/web-components), lai tirgotu un pārdotu vairākas naktsmītnes vienuviet.
 
 ## Pārvaldības uzņēmumi
 
@@ -42,7 +42,7 @@ Korporācijām ir nepieciešama plašāka ceļojumu platforma:
 - Tām nepieciešama izdevumu pārvaldība un atskaišu integrācija.
 - Tām nepieciešama konsjerža atbalsts, kā arī MICE pakalpojumi pasākumos.
 
-Korporatīvie ceļotāji var pārvaldīt savus kontus mūsu [korporatīvajā portālā](/lv/corporate/what-is-group) vai izmantot mūsu oficiāli atbalstīto [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) spraudni un [Concur](https://www.concur.com/) integrāciju.
+Korporatīvie ceļotāji var pārvaldīt savus kontus mūsu [korporatīvajā portālā](/lv/portal/corporate/what-is-group) vai izmantot mūsu oficiāli atbalstīto [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) spraudni un [Concur](https://www.concur.com/) integrāciju.
 
 ## Izstrādātāji
 

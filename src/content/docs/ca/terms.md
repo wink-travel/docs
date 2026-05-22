@@ -10,7 +10,7 @@ Cada portal pot tenir diferents termes i condicions. Si us plau, ves a la secci�
 Per a afiliats que volen aprendre com guanyar un ingrés passiu monetitzant els teus comptes socials amb Wink.  
 [Wink Studio](https://studio.wink.travel) té totes les eines que necessites per vendre com un professional.
 
-<LinkButton href="/ca/studio/what-is-studio">
+<LinkButton href="/ca/portal/studio/what-is-studio">
 Aprèn més sobre Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ Aprèn més sobre el nostre motor de reserves
 
 Per a propietats que volen començar a vendre a Wink. Utilitza les nostres eines per vendre i promocionar-te eficaçment en línia i aconsegueix un exèrcit d’afiliats d’arreu del món que t’ajudin a obtenir clients i reserves.
 
-<LinkButton href="/ca/extranet/what-is-extranet">
+<LinkButton href="/ca/portal/extranet/what-is-extranet">
 Aprèn més sobre Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ Aprèn més sobre Wink Extranet
 
 Per a agents de viatge que volen descobrir què els pot oferir Wink en termes de tarifes personalitzades, ofertes i inventari, directament dels proveïdors.
 
-<LinkButton href="/ca/travel-agent/what-is-agent">
+<LinkButton href="/ca/portal/travel-agent/what-is-agent">
 Aprèn més sobre Wink Agent
 </LinkButton>

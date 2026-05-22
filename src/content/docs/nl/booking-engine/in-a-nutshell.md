@@ -7,8 +7,8 @@ sidebar:
 
 Hier is hoe we de verantwoordelijkheden op Wink segmenteren:
 
-- [Extranet](/nl/extranet/what-is-extranet) houdt zich bezig met leveranciers die de inventaris beheren.
-- [Studio](/nl/studio/what-is-studio) houdt zich bezig met affiliates die content beheren.
+- [Extranet](/nl/portal/extranet/what-is-extranet) houdt zich bezig met leveranciers die de inventaris beheren.
+- [Studio](/nl/portal/studio/what-is-studio) houdt zich bezig met affiliates die content beheren.
 - `Booking Engine` houdt zich bezig met het maken van de content, gecreëerd in `Studio`, die gebaseerd is op de inventaris gemaakt in `Extranet` en maakt deze boekbaar.
 - [Payment](/nl/payment/what-is-trip-pay) houdt zich bezig met het aanrekenen / terugbetalen van reizigers die boeken [via platforms zoals Wink], en het betalen van leveranciers.
 
@@ -22,11 +22,11 @@ De verantwoordelijkheden omvatten:
 - Het beheren van talen.
 - Het genereren van analyses op basis van gebruikersinteracties, gebeurtenissen en API-aanroepen.
 - Het aanbieden van boekbare inventaris in het gewenste formaat, taal en valuta, zoals:
-    - Een [deelbare link](/nl/studio/shareable-links) op Facebook.
+    - Een [deelbare link](/nl/portal/studio/shareable-links) op Facebook.
     - Een hotel landingspagina op https://ota.wink.travel met inventaris voor dat hotel.
-    - Een [card](/nl/studio/cards) met affiliate inventaris.
-    - Een [kaart](/nl/studio/maps) op je [WinkLinks](/nl/link-manager/wink-links) account.
-    - Een [API-aanroep](/nl/developers/apis) vanuit een extern reisagentensysteem.
+    - Een [card](/nl/portal/studio/cards) met affiliate inventaris.
+    - Een [kaart](/nl/portal/studio/maps) op je [WinkLinks](/nl/portal/link-manager/wink-links) account.
+    - Een [API-aanroep](/nl/api) vanuit een extern reisagentensysteem.
 - Het bieden van reizigers een manier om:
     - Te zoeken naar reisinventaris.
     - Beschikbare inventaris te boeken.
@@ -36,7 +36,7 @@ De verantwoordelijkheden omvatten:
 
 De booking engine is een verzameling herbruikbare functionaliteit die we beschikbaar stellen via https://ota.wink.travel; een zeer aanpasbare website voor hotels en affiliates om hun aanbod aan reizigers te verkopen.
 
-Integrators, die nog meer vrijheid willen, hebben toegang tot alle dezelfde functies via onze [WordPress plugin](/nl/integrations/wordpress/), [Web Components](/nl/integrations/web-components) en [APIs](/nl/developers/apis).
+Integrators, die nog meer vrijheid willen, hebben toegang tot alle dezelfde functies via onze [WordPress plugin](/nl/integrations/wordpress/), [Web Components](/nl/integrations/web-components) en [APIs](/nl/api).
 
 Ga verder naar de volgende secties om meer te lezen over wat de booking engine te bieden heeft.
 
@@ -44,4 +44,4 @@ Ga verder naar de volgende secties om meer te lezen over wat de booking engine t
 
 - Lees over onze [WordPress plugin](/nl/integrations/wordpress/).
 - Lees over onze [Web Components](/nl/integrations/web-components).
-- Lees over onze [APIs](/nl/developers/apis).
+- Lees over onze [APIs](/nl/api).

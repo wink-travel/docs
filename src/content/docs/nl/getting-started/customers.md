@@ -17,7 +17,7 @@ Merken en ketens hebben iets andere behoeften dan een enkele accommodatie. Op Wi
 
 - Meerdere accommodaties beheren onder één account.
 - Managers toewijzen aan accommodaties.
-- Gebruikmaken van [WinkLinks](/nl/link-manager/wink-links), [WordPress](/nl/integrations/wordpress) en onze [Web Components](/nl/integrations/web-components) om meerdere accommodaties op één plek te promoten en verkopen.
+- Gebruikmaken van [WinkLinks](/nl/portal/link-manager/wink-links), [WordPress](/nl/integrations/wordpress) en onze [Web Components](/nl/integrations/web-components) om meerdere accommodaties op één plek te promoten en verkopen.
 
 ## Beheerbedrijven
 
@@ -42,7 +42,7 @@ Bedrijven hebben meer nodig van een reisplatform:
 - Ze hebben behoefte aan onkostenbeheer en rapportage-integratie.
 - Ze hebben conciërgeservice nodig, evenals MICE-diensten bij evenementen.
 
-Zakelijke reizigers kunnen hun eigen accounts beheren via ons [bedrijfsportaal](/nl/corporate/what-is-group) of gebruikmaken van onze officieel ondersteunde [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin en [Concur](https://www.concur.com/) integratie.
+Zakelijke reizigers kunnen hun eigen accounts beheren via ons [bedrijfsportaal](/nl/portal/corporate/what-is-group) of gebruikmaken van onze officieel ondersteunde [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin en [Concur](https://www.concur.com/) integratie.
 
 ## Ontwikkelaars
 

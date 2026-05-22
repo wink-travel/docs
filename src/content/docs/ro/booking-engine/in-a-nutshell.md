@@ -7,8 +7,8 @@ sidebar:
 
 Iată cum segmentăm responsabilitățile pe Wink:
 
-- [Extranet](/ro/extranet/what-is-extranet) se ocupă de furnizorii care gestionează inventarul.
-- [Studio](/ro/studio/what-is-studio) se ocupă de afiliați care gestionează conținutul.
+- [Extranet](/ro/portal/extranet/what-is-extranet) se ocupă de furnizorii care gestionează inventarul.
+- [Studio](/ro/portal/studio/what-is-studio) se ocupă de afiliați care gestionează conținutul.
 - `Booking Engine` se ocupă cu transformarea conținutului creat în `Studio`, bazat pe inventarul creat în `Extranet`, în ceva ce poate fi rezervat.
 - [Payment](/ro/payment/what-is-trip-pay) se ocupă cu încasarea / rambursarea călătorilor care rezervă [prin platforme precum Wink], și cu plata furnizorilor.
 
@@ -22,11 +22,11 @@ Responsabilitățile sale includ:
 - Gestionarea limbilor.
 - Generarea de analize bazate pe interacțiunile utilizatorilor, evenimente și apeluri API.
 - Furnizarea inventarului rezervabil în formatul, limba și valuta dorită, cum ar fi:
-    - Un [link partajabil](/ro/studio/shareable-links) pe Facebook.
+    - Un [link partajabil](/ro/portal/studio/shareable-links) pe Facebook.
     - O pagină de destinație pentru hotel pe https://ota.wink.travel cu inventarul pentru acel hotel.
-    - Un [card](/ro/studio/cards) care conține inventarul afiliat.
-    - O [hartă](/ro/studio/maps) în contul tău de [WinkLinks](/ro/link-manager/wink-links).
-    - Un [apel API](/ro/developers/apis) dintr-un sistem de agenție de turism la distanță.
+    - Un [card](/ro/portal/studio/cards) care conține inventarul afiliat.
+    - O [hartă](/ro/portal/studio/maps) în contul tău de [WinkLinks](/ro/portal/link-manager/wink-links).
+    - Un [apel API](/ro/api) dintr-un sistem de agenție de turism la distanță.
 - Oferirea călătorilor a unei modalități de a:
     - Căuta inventar de călătorie.
     - Rezerva inventarul disponibil.
@@ -36,7 +36,7 @@ Responsabilitățile sale includ:
 
 Motorul de rezervări este o colecție de funcționalități reutilizabile pe care le expunem prin https://ota.wink.travel; un site web foarte personalizabil pentru hoteluri și afiliați pentru a-și vinde serviciile călătorilor.
 
-Integratorii, care doresc și mai multă libertate, au acces la aceleași funcții prin intermediul [pluginului nostru WordPress](/ro/integrations/wordpress/), [Web Components](/ro/integrations/web-components) și [API-urilor](/ro/developers/apis).
+Integratorii, care doresc și mai multă libertate, au acces la aceleași funcții prin intermediul [pluginului nostru WordPress](/ro/integrations/wordpress/), [Web Components](/ro/integrations/web-components) și [API-urilor](/ro/api).
 
 Continuă cu secțiunile următoare pentru a citi mai multe despre ce oferă motorul de rezervări.
 
@@ -44,4 +44,4 @@ Continuă cu secțiunile următoare pentru a citi mai multe despre ce oferă mot
 
 - Citește despre [pluginul nostru WordPress](/ro/integrations/wordpress/).
 - Citește despre [Web Components](/ro/integrations/web-components).
-- Citește despre [API-urile noastre](/ro/developers/apis).
+- Citește despre [API-urile noastre](/ro/api).

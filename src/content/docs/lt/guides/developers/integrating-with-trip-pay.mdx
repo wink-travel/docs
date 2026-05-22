@@ -1,0 +1,222 @@
+---
+title: Integracija su TripPay
+description: Šiame straipsnyje pateikiamas pilnas pavyzdys, kaip integruotis ir leisti TripPay tvarkyti mokėjimą už jus.
+sidebar:
+  order: 4
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Šiame straipsnyje pateikiamas pilnas pavyzdys, kaip integruotis su TripPay.
+
+Rekomenduojama, kad jau būtumėte perskaitę:
+
+- [Mokėjimas > Susiejimas](/lt/payment/mapping).
+- [Mokėjimas > Integracija](/lt/payment/integration).
+- [Mokėjimo internetinis komponentas](/lt/integrations/web-components/#payment).
+- [Mokėjimo API](/lt/api). *Perskaitykite skyrių apie `Sukurti apmokėtinus kontraktus`*
+
+Štai žingsniai, kaip sėkmingai naudoti TripPay mokėjimui už rezervaciją:
+
+<Steps>
+1. Įsitikinkite, kad rezervacijos kontrakte nurodyti gavėjai yra susieti.
+2. Leiskite keliautojui pasirinkti norimą rezervuoti inventorių ir pasiruošti mokėjimui.
+3. Sukurkite `apmokėtiną kontraktą` su TripPay, kuriame yra rezervuojami elementai.
+4. Leiskite keliautojui sumokėti naudodami TripPay internetinį komponentą.
+</Steps>
+
+Darome prielaidą, kad jau atlikote `1 žingsnį` ir `2 žingsnį` ir esate pasiruošę pranešti TripPay apie rezervaciją.
+
+## Sukurti apmokėtiną kontraktą
+
+:::note
+Daugiau apie apmokėtino kontrakto kūrimo reikalavimus sužinokite Mokėjimo API.
+:::
+
+### Užklausa
+Čia pateikiamas JSON pavyzdys, kuriame yra viskas, ko reikia pirmajam apmokėtinam kontraktui sukurti.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Paaiškinimas:
+
+Čia nebus aiškinama kiekviena duomenų reikšmė, nes jos jau aprašytos API dokumentacijoje.
+
+- Eilutės: **2 - 7** nurodo vartotoją, atsakingą už rezervaciją. Yra du rezervacijos tipai:
+    - Keliautojas.
+    - Kelionių agentas.
+- Eilutės: **8 - 9** nurodo TripPay paskyrą, kuri vykdo rezervaciją. Tai gali būti:
+    - Jūsų TripPay integratoriaus paskyra.
+    - Jei valdote filialų tinklą, tai gali būti jūsų filialas.
+- Naudokite `traceId`, kad sugrupuotumėte kelias rezervacijas iš skirtingų tiekėjų. Taip galėsite atšaukti grupinę rezervaciją.
+- `redirectUrl` nurodo TripPay, į kurią puslapį nukreipti po mokėjimo užbaigimo.
+- `sourceUrl` yra svetainė / programa, kurioje įvyko rezervacija.
+
+`contractList` masyvas talpina elementus, kuriuos keliautojas nori įsigyti iš kelių tiekėjų. Kiekvienas elementas turi:
+
+- `identifier` – galiojantis UUID, kurį sugeneruojate jūs.
+- Tiekėją, iš kurio norite rezervuoti inventorių.
+- Inventorių, kurį norite rezervuoti iš to tiekėjo. Visi jie nurodyti vidiniame masyve `contractItemList`.
+- Kiekvienas įrašas `contractItemList` turi:
+    - **Svečio vartotoją** – tai vartotojas, kuris atvyks į vietą.
+    - **Pavadinimą anglų kalba** – inventoriaus pavadinimas anglų kalba.
+    - **Aprašymą anglų kalba** – ilgesnis inventoriaus aprašymas anglų kalba.
+    - **Kainą** – elemento kainą.
+    - **Maršrutą** – kada šis elementas turi būti rezervuotas.
+    - **Kainodaros tipą** – kaip buvo apskaičiuota kaina.
+    - **Inventoriaus tipą** – kokio tipo inventorius tai yra.
+    - **Apmokėjimo laiką** – kada keliautojui turi būti nuskaičiuota suma. *Šiuo metu palaikome tik momentinius mokėjimus.*
+    - **Politiką** – įtraukite atšaukimo politikos taisykles.
+    - **Dienos kainų sąrašą** – jei rezervuojamas kambarys, galite nurodyti, kiek kainuoja kiekviena nakvynė.
+    - **Gavėjus** – nurodykite, kurioms TripPay paskyroms turi būti paskirstytos tam tikros sumos iš elemento kainos. *Palaikomos fiksuotos ir procentinės sumos.*
+
+:::note
+Aukščiau pateiktame JSON pavyzdyje yra 3 gavėjai:
+
+- 1,5% paskirta platformai, kuri vykdė rezervaciją. *pvz., Wink*
+- 9,85% paskirta filialui kaip komisiniai. *pvz., Kim Kardashian*
+- 88,65% paskirta tiekėjui už kambario rezervaciją. *pvz., Hilton*
+
+Kai TripPay atsako su apmokėtinu kontraktu, pastebėsite, kad jis įtraukė savo gavėją su 4,0% dalimi.
+:::
+
+### Atsakymas
+
+Kai TripPay atsakys į jūsų užklausą, atsakymas atrodys maždaug taip:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+Išsaugokite `id` 3 eilutėje. Jį naudosite įterpdami į TripPay internetinį komponentą.
+
+## Įterpti TripPay
+
+:::note
+Įsitikinkite, kad iš anksto įkėlėte mūsų stilius ir Javascript.
+:::
+
+Dabar esate pasiruošę įterpti `Mokėjimo internetinį komponentą` į savo svetainę ir parodyti jį vartotojui.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+Kalbant apie integraciją, tai viskas, ką reikia padaryti. Visa sunki darbą nuo šiol atlieka TripPay.

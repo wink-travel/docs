@@ -50,7 +50,7 @@ Með þessu módeli greiða ferðasalar aðeins úrvinnslugjaldið til Wink og W
 
 ## Áskriftir
 
-Við bjóðum upp á valfrjálsa áskriftarþjónustu (sjá [Social](/is/social/what-is-social)) til að hjálpa gististöðum að auka söluteymi og markaðssetningu.
+Við bjóðum upp á valfrjálsa áskriftarþjónustu (sjá [Social](/is/portal/social/what-is-social)) til að hjálpa gististöðum að auka söluteymi og markaðssetningu.
 
 ## Áhrif pallsins
 

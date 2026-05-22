@@ -162,21 +162,28 @@ const loadHashMap = (langDirectory: string): HashMap => {
   return {};
 };
 
-// here are all our apps that need translation and use JSON i18n resource bundles
+// Source directories to walk for translation. After the docs reorg, portal
+// docs live under app/, IAM docs under account/, managed services under
+// services/, and guides are split by audience.
 const directories = [
-  "agency",
+  "portal",
+  "portal/corporate",
+  "portal/extranet",
+  "portal/link-manager",
+  "portal/payment",
+  "portal/settings",
+  "portal/social",
+  "portal/studio",
+  "portal/travel-agent",
+  "account",
+  "account/profile",
   "booking-engine",
-  "corporate",
   "developers",
-  "extranet",
   "getting-started",
-  "guides",
-  "link-manager",
-  "my-account",
-  "social",
-  "payment",
-  "studio",
-  "travel-agent",
+  "guides/affiliates",
+  "guides/developers",
+  "guides/general",
+  "guides/hoteliers",
   "webinars",
 ];
 

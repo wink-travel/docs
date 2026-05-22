@@ -10,7 +10,7 @@ Każdy portal może mieć inne warunki i zasady. Prosimy przejść do odpowiedni
 Dla afiliantów, którzy chcą dowiedzieć się, jak zarabiać pasywny dochód, monetyzując swoje konta społecznościowe za pomocą Wink.  
 [Wink Studio](https://studio.wink.travel) oferuje wszystkie narzędzia potrzebne do sprzedaży jak profesjonalista.
 
-<LinkButton href="/pl/studio/what-is-studio">
+<LinkButton href="/pl/portal/studio/what-is-studio">
 Dowiedz się więcej o Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ Dowiedz się więcej o naszym silniku rezerwacji
 
 Dla nieruchomości, które chcą zacząć sprzedawać na Wink. Skorzystaj z naszych narzędzi, aby skutecznie sprzedawać i promować się online oraz zyskaj armię afiliantów z całego świata, którzy pomogą Ci zdobyć klientów i rezerwacje.
 
-<LinkButton href="/pl/extranet/what-is-extranet">
+<LinkButton href="/pl/portal/extranet/what-is-extranet">
 Dowiedz się więcej o Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ Dowiedz się więcej o Wink Extranet
 
 Dla agentów turystycznych, którzy chcą dowiedzieć się, co Wink może im zaoferować w zakresie indywidualnych stawek, ofert i zasobów bezpośrednio od dostawców.
 
-<LinkButton href="/pl/travel-agent/what-is-agent">
+<LinkButton href="/pl/portal/travel-agent/what-is-agent">
 Dowiedz się więcej o Wink Agent
 </LinkButton>

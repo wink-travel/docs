@@ -17,7 +17,7 @@ Varumärken och kedjor har något annorlunda behov än en enskild fastighet. På
 
 - Hantera flera fastigheter under ett enda konto.
 - Tilldela chefer till fastigheter
-- Använda [WinkLinks](/sv/link-manager/wink-links), [WordPress](/sv/integrations/wordpress) och våra [Web Components](/sv/integrations/web-components) för att marknadsföra och sälja flera fastigheter på ett och samma ställe.
+- Använda [WinkLinks](/sv/portal/link-manager/wink-links), [WordPress](/sv/integrations/wordpress) och våra [Web Components](/sv/integrations/web-components) för att marknadsföra och sälja flera fastigheter på ett och samma ställe.
 
 ## Förvaltningsbolag
 
@@ -42,7 +42,7 @@ Företag kräver mer av en reseplattform:
 - De kräver hantering av utgifter och rapporteringsintegration.
 - De behöver concierge-stöd samt MICE-tjänster vid evenemang.
 
-Företagsresenärer kan hantera sina egna konton på vår [företagsportal](/sv/corporate/what-is-group) eller använda vår officiellt stödda [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)-plugin och [Concur](https://www.concur.com/) integration.
+Företagsresenärer kan hantera sina egna konton på vår [företagsportal](/sv/portal/corporate/what-is-group) eller använda vår officiellt stödda [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)-plugin och [Concur](https://www.concur.com/) integration.
 
 ## Utvecklare
 

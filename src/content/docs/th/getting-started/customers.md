@@ -17,7 +17,7 @@ Wink เริ่มต้นการรับโรงแรมเข้าร
 
 - จัดการที่พักหลายแห่งภายใต้บัญชีเดียว
 - มอบหมายผู้จัดการให้กับที่พักแต่ละแห่ง
-- ใช้ [WinkLinks](/th/link-manager/wink-links), [WordPress](/th/integrations/wordpress) และ [Web Components](/th/integrations/web-components) ของเราเพื่อทำการตลาดและขายที่พักหลายแห่งในที่เดียวกัน
+- ใช้ [WinkLinks](/th/portal/link-manager/wink-links), [WordPress](/th/integrations/wordpress) และ [Web Components](/th/integrations/web-components) ของเราเพื่อทำการตลาดและขายที่พักหลายแห่งในที่เดียวกัน
 
 ## บริษัทบริหารจัดการ
 
@@ -42,7 +42,7 @@ Wink เริ่มต้นการรับโรงแรมเข้าร
 - ต้องการการจัดการค่าใช้จ่ายและการรวมรายงาน
 - ต้องการการสนับสนุนคอนเซียร์จ รวมถึงบริการ MICE ในงานอีเวนต์
 
-นักเดินทางของบริษัทสามารถจัดการบัญชีของตนเองได้บน [พอร์ทัลบริษัท](/th/corporate/what-is-group) หรือใช้ปลั๊กอิน [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) และการรวม [Concur](https://www.concur.com/) ที่ได้รับการสนับสนุนอย่างเป็นทางการของเรา
+นักเดินทางของบริษัทสามารถจัดการบัญชีของตนเองได้บน [พอร์ทัลบริษัท](/th/portal/corporate/what-is-group) หรือใช้ปลั๊กอิน [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) และการรวม [Concur](https://www.concur.com/) ที่ได้รับการสนับสนุนอย่างเป็นทางการของเรา
 
 ## นักพัฒนา
 

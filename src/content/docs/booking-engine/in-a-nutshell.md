@@ -7,8 +7,8 @@ sidebar:
 
 Here's how we segment responsibility on Wink: 
 
-- [Extranet](/extranet/what-is-extranet) concerns itself with suppliers managing inventory.
-- [Studio](/studio/what-is-studio) concerns itself with affiliates managing content.
+- [Extranet](/portal/extranet/what-is-extranet) concerns itself with suppliers managing inventory.
+- [Studio](/portal/studio/what-is-studio) concerns itself with affiliates managing content.
 - `Booking Engine` concerns itself with making the content, created in `Studio`, that was based on the inventory created in `Extranet` and making it bookable.
 - [Payment](/payment/what-is-trip-pay) concerns itself with charging / refunding travelers that book [through platforms like Wink], and paying vendors.
 
@@ -22,11 +22,11 @@ Its responsibilities include:
 - Managing languages.
 - Generating analytics based on user interactions, events and API calls.
 - Serving up bookable inventory in the desired format, language and currency, such as:
-    - A [shareable link](/studio/shareable-links) on Facebook.
+    - A [shareable link](/portal/studio/shareable-links) on Facebook.
     - A hotel landing page on https://ota.wink.travel with inventory for that hotel.
-    - A [card](/studio/cards) containing affiliate inventory.
-    - A [map](/studio/maps) on your [WinkLinks](/link-manager/wink-links) account.
-    - An [API call](/developers/apis) from a remote travel agent system.
+    - A [card](/portal/studio/cards) containing affiliate inventory.
+    - A [map](/portal/studio/maps) on your [WinkLinks](/portal/link-manager/wink-links) account.
+    - An [API call](/api) from a remote travel agent system.
 - Providing travelers with a way to: 
     - Search for travel inventory.
     - Book available inventory.
@@ -36,7 +36,7 @@ Its responsibilities include:
 
 The booking engine is a collection of re-usable functionality that we expose through https://ota.wink.travel; a highly customizable website for hotels and affiliates to sell their wares to travelers.
 
-Integrators, that want even more freedom, have access to all the same features via our [WordPress plugin](/integrations/wordpress/), [Web Components](/integrations/web-components) and [APIs](/developers/apis).
+Integrators, that want even more freedom, have access to all the same features via our [WordPress plugin](/integrations/wordpress/), [Web Components](/integrations/web-components) and [APIs](/api).
 
 Continue on to the next sections to read more about what the booking engine has to offer.
 
@@ -44,4 +44,4 @@ Continue on to the next sections to read more about what the booking engine has 
 
 - Read about our [WordPress plugin](/integrations/wordpress/).
 - Read about our [Web Components](/integrations/web-components).
-- Read about our [APIs](/developers/apis).
+- Read about our [APIs](/api).

@@ -1,0 +1,142 @@
+---
+title: Dugme Rezerviši Odmah
+description: Ovaj vodič vodi hotele kroz najjednostavniju integraciju sa Wink-om pomoću dugmeta 'Rezerviši Odmah'.
+sidebar:
+  order: 2
+---
+
+import { Steps } from '@astrojs/starlight/components';
+import CloudinaryImage from '/src/components/cloudinary-image.astro';
+
+Dugme **REZERVIŠI ODMAH** je uobičajen termin u ugostiteljskoj industriji koji se odnosi na hotelsku sopstvenu integraciju sa provajderom koji poznaje dostupnost i cene objekta i može omogućiti putnicima da rezervišu sobu. Dugme je najjednostavniji način da hoteli mogu prodavati sobe na sopstvenom sajtu i pod sopstvenim uslovima.
+
+*Mnogi hoteli koriste ugrađeni booking engine koji im nudi njihov channel manager. Preporučujemo da hoteli istraže i uporede različite native booking engine pre nego što se odluče za neki konkretan.*
+
+## Publika
+
+Ovaj članak je prvenstveno namenjen hotelima koji žele da instaliraju naš besplatan, visoko konvertujući booking engine na svom sajtu.
+Ali... koristan je i za sve koji žele da koriste naše tehnologije na svojim sajtovima.
+
+## putem Linka
+
+Za najjednostavniju integraciju, preporučujemo korišćenje [Shareable Link](/sr/portal/studio/shareable-links).
+
+Evo koraka kako to da uradite:
+
+<Steps>
+1. Idite na https://extranet.wink.travel
+2. Kliknite na `Sign-In / Register` u gornjem desnom uglu i prijavite se sa svojim korisničkim nalogom.
+3. Izaberite objekat sa kojim želite da radite iz padajućeg menija u gornjem levom uglu.
+4. Kliknite na `Booking engine` u navigacionom meniju.
+5. Stranica će vam prikazati vaš link.
+6. Prosledite ovaj link svom webmasteru i koristite ga za vaše dugme **REZERVIŠI ODMAH**.
+7. Gotovo ste ✅.
+</Steps>
+
+### Napredno
+
+Link već sadrži itinerer ugrađen u URL, koji potiče iz vaše izabrane `customization`.
+Možete dodatno prilagoditi vaš link tako što ćete:
+
+- Promeniti izabranu customization ILI
+- Prebrisati itinerer
+
+U ovom članku fokusiraćemo se na drugo jer vam daje veću slobodu da putnici na vašem sajtu izaberu itinerer i proslede ga Wink-ovom booking engine-u.
+
+Evo kako da prosledite sopstveni itinerer zajedno sa URL-om.
+
+Važeći parametri zahteva:
+
+- **sd** Za dodavanje datuma početka: *sd=2024-08-24*
+- **n** Za dodavanje broja noćenja: *n=1* ILI
+- **ed** Koristite datum završetka: *ed=2024-08-25*
+- **rc** Gosti: *rc=a2* (Odrasli: 2)
+- **l** Za zahtev jezika prikaza: *l=es*
+- **c** Za zahtev valute prikaza: *c=EUR*
+- **p** Dodajte promociju: *p=ABC123*
+
+URL bi izgledao ovako:
+
+https://trvl.as/abc123?sd=2024-08-24&n=1&rc=a2&l=es&c=EUR
+
+Za naprednije slučajeve korišćenja, možete takođe zahtevati više konfiguracija soba koristeći znak `+`:
+
+Primer:
+
+https://trvl.as/abc123?sd=2024-08-24&n=1&rc=a2-ca16q1-ca8q1+a2&l=es&c=EUR
+
+- Tip sobe 1 = Odrasli: 2, Deca: 2 = 16 godina + 8 godina.
+- Tip sobe 2 = Odrasli: 2.
+
+### Primer
+
+Primer HTML dugmeta **REZERVIŠI ODMAH**:
+
+*Ovaj primer pretpostavlja da koristite [Bootstrap](https://getbootstrap.com) kao primarnu CSS biblioteku.*
+
+```html
+<a
+  href="https://trvl.as/abc123"
+  target="_blank"
+  class="btn btn-lg btn-primary"
+  title="Rezerviši sobu"
+>
+REZERVIŠI ODMAH
+</a>
+```
+
+### Ostale prednosti
+
+Postoje i druge prednosti korišćenja jednog od naših linkova kao vašeg `rezerviši odmah` dugmeta.
+
+- **Prijateljski za društvene mreže** Link se lako deli na društvenim mrežama i prikazuje `dinamičke cene` preko slike koju ste izabrali.
+- **Kratak** URL je vrlo deljiv i možete ga koristiti na mestima kao što je vaš Instagram Bio URL.
+
+## putem Ugradnje
+
+Neki hoteli žele malo više funkcionalnosti i dublju integraciju za svoj sajt. Ovaj primer pokriva ugradnju [Card](/sr/portal/studio/cards) na njihov sajt.
+
+Evo koraka kako to da uradite:
+
+<Steps>
+1. Idite na https://studio.wink.travel
+2. Kliknite na `Sign-In / Register` u gornjem desnom uglu i prijavite se sa svojim korisničkim nalogom.
+3. Izaberite objekat sa kojim želite da radite iz gornjeg levog ugla.
+4. Kliknite na `Search` u glavnom navigacionom meniju.
+6. Ukucajte ime vašeg objekta i kliknite na dugme za pretragu.
+7. Kliknite na link `Actions` na kartici rezultata pretrage i izaberite `Create > Make a Card`.
+8. Ovo će kreirati `Card`.
+9. Poruka će se pojaviti u gornjem desnom uglu da je vaša kartica spremna i da li želite dodatno da je prilagodite.
+10. Kliknite na `Tools > Cards` u glavnom navigacionom meniju i videćete vašu novu karticu.
+11. Kliknite na link `Actions` na vašoj kartici i kliknite na `Embed`.
+12. Otvoriće se novi prozor sa primerom HTML koda koji možete kopirati.
+13. Da biste dobili vaš `Client-ID`, idite na [Applications](/sr/portal/settings/applications).
+14. Da biste dobili vaš `Configuration-ID`, idite na [Customization](/sr/portal/settings/branding)
+14. Gotovo ste ✅.
+</Steps>
+
+Primer ugrađene kartice u HTML:
+
+```html
+<wink-content-loader
+  layout="GUEST_ROOM"
+  id="09d7cca4-6ff6-11ef-949b-42004e494300"
+></wink-content-loader>
+```
+
+*Gornji HTML primer ne uključuje potrebni Wink CSS i Javascript; samo karticu.*
+
+<figure>
+<CloudinaryImage
+      width="350"
+      height="829"
+      resize="scale"
+      quality="best"
+      alt="Pregled kartice"
+      src="academy/card-example"
+      errorImage="noimage_opaque_nyrtl0.png"
+    />
+    <figcaption>*Kartica tipa sobe okrenuta napred sa dostupnošću*</figcaption>
+</figure>
+
+Rezervater sada vidi dinamičke cene, može menjati itinerer i kliknuti da rezerviše direktno na vašem sajtu. Dugme za rezervaciju vodi na vašu Wink landing stranicu objekta da finalizuje plaćanje.

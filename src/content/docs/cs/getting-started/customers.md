@@ -17,7 +17,7 @@ Značky a řetězce mají mírně odlišné potřeby než jednotlivé nemovitost
 
 - Spravovat více nemovitostí pod jedním účtem.
 - Přiřazovat manažery k nemovitostem.
-- Používat [WinkLinks](/cs/link-manager/wink-links), [WordPress](/cs/integrations/wordpress) a naše [Web Components](/cs/integrations/web-components) k marketingu a prodeji více nemovitostí na jednom místě.
+- Používat [WinkLinks](/cs/portal/link-manager/wink-links), [WordPress](/cs/integrations/wordpress) a naše [Web Components](/cs/integrations/web-components) k marketingu a prodeji více nemovitostí na jednom místě.
 
 ## Správcovské společnosti
 
@@ -42,7 +42,7 @@ Korporace vyžadují více než jen cestovní platformu:
 - Vyžadují správu výdajů a integraci reportingu.
 - Potřebují podporu concierge i služby MICE na akcích.
 
-Korporátní cestovatelé mohou spravovat své účty na našem [korporátním portálu](/cs/corporate/what-is-group) nebo používat náš oficiálně podporovaný [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin a integraci [Concur](https://www.concur.com/).
+Korporátní cestovatelé mohou spravovat své účty na našem [korporátním portálu](/cs/portal/corporate/what-is-group) nebo používat náš oficiálně podporovaný [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin a integraci [Concur](https://www.concur.com/).
 
 ## Vývojáři
 

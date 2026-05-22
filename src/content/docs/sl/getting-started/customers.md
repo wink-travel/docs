@@ -17,7 +17,7 @@ Blagovne znamke in verige imajo nekoliko drugačne potrebe kot posamezna nepremi
 
 - Upravljajo več nepremičnin pod enim računom.
 - Dodelijo upravitelje nepremičninam.
-- Uporabljajo [WinkLinks](/sl/link-manager/wink-links), [WordPress](/sl/integrations/wordpress) in naše [Web Components](/sl/integrations/web-components) za trženje in prodajo več nepremičnin na enem mestu.
+- Uporabljajo [WinkLinks](/sl/portal/link-manager/wink-links), [WordPress](/sl/integrations/wordpress) in naše [Web Components](/sl/integrations/web-components) za trženje in prodajo več nepremičnin na enem mestu.
 
 ## Upravljavske družbe
 
@@ -42,7 +42,7 @@ Podjetja potrebujejo več kot le potovalno platformo:
 - Potrebujejo upravljanje stroškov in integracijo poročanja.
 - Potrebujejo podporo concierge, kot tudi MICE storitve na dogodkih.
 
-Poslovni potniki lahko upravljajo svoje račune na našem [korporativnem portalu](/sl/corporate/what-is-group) ali uporabljajo naš uradno podprt [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) vtičnik in integracijo [Concur](https://www.concur.com/).
+Poslovni potniki lahko upravljajo svoje račune na našem [korporativnem portalu](/sl/portal/corporate/what-is-group) ali uporabljajo naš uradno podprt [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) vtičnik in integracijo [Concur](https://www.concur.com/).
 
 ## Razvijalci
 

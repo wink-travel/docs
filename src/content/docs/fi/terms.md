@@ -10,7 +10,7 @@ Jokaisella portaalilla voi olla erilaiset käyttöehdot. Siirry alla olevaan sin
 Kumppaneille, jotka haluavat oppia ansaitsemaan passiivista tuloa hyödyntämällä sosiaalitilejään Winkillä.
 [Wink Studio](https://studio.wink.travel) tarjoaa kaikki työkalut, joita tarvitset myydäksesi kuin ammattilainen.
 
-<LinkButton href="/fi/studio/what-is-studio">
+<LinkButton href="/fi/portal/studio/what-is-studio">
 Lue lisää Wink Studiosta
 </LinkButton>
 
@@ -26,7 +26,7 @@ Lue lisää varauskoneestamme
 
 Kohteille, jotka haluavat aloittaa myynnin Winkissä. Käytä työkaluja myydäksesi ja markkinoidaksesi tehokkaasti verkossa ja saadaksesi armeijan kumppaneita ympäri maailmaa auttamaan sinua saamaan asiakkaita ja varauksia.
 
-<LinkButton href="/fi/extranet/what-is-extranet">
+<LinkButton href="/fi/portal/extranet/what-is-extranet">
 Lue lisää Wink Extranetista
 </LinkButton>
 
@@ -34,6 +34,6 @@ Lue lisää Wink Extranetista
 
 Matkatoimistoille, jotka haluavat selvittää, mitä Wink voi tarjota räätälöityjen hintojen, tarjousten ja varaston osalta suoraan toimittajilta.
 
-<LinkButton href="/fi/travel-agent/what-is-agent">
+<LinkButton href="/fi/portal/travel-agent/what-is-agent">
 Lue lisää Wink Agentista
 </LinkButton>

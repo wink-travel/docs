@@ -17,7 +17,7 @@ Thương hiệu và chuỗi có nhu cầu hơi khác so với một cơ sở lư
 
 - Quản lý nhiều cơ sở lưu trú dưới một tài khoản duy nhất.
 - Phân công quản lý cho các cơ sở lưu trú
-- Sử dụng [WinkLinks](/vi/link-manager/wink-links), [WordPress](/vi/integrations/wordpress) và [Web Components](/vi/integrations/web-components) của chúng tôi để tiếp thị và bán nhiều cơ sở lưu trú tại một nơi.
+- Sử dụng [WinkLinks](/vi/portal/link-manager/wink-links), [WordPress](/vi/integrations/wordpress) và [Web Components](/vi/integrations/web-components) của chúng tôi để tiếp thị và bán nhiều cơ sở lưu trú tại một nơi.
 
 ## Công ty quản lý
 
@@ -42,7 +42,7 @@ Doanh nghiệp yêu cầu nhiều hơn một nền tảng du lịch:
 - Họ yêu cầu quản lý chi phí và tích hợp báo cáo.
 - Họ cần hỗ trợ concierge, cũng như dịch vụ MICE tại các sự kiện.
 
-Người đi công tác có thể quản lý tài khoản của mình trên [cổng doanh nghiệp](/vi/corporate/what-is-group) hoặc sử dụng plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) và tích hợp [Concur](https://www.concur.com/) được hỗ trợ chính thức của chúng tôi.
+Người đi công tác có thể quản lý tài khoản của mình trên [cổng doanh nghiệp](/vi/portal/corporate/what-is-group) hoặc sử dụng plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) và tích hợp [Concur](https://www.concur.com/) được hỗ trợ chính thức của chúng tôi.
 
 ## Nhà phát triển
 

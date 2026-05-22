@@ -10,7 +10,7 @@ description: 適用於所有 Wink 用戶及實體的條款與條件。
 適用於想了解如何透過 Wink 將您的社群帳號變現，賺取被動收入的聯盟夥伴。
 [Wink Studio](https://studio.wink.travel) 提供您所有專業銷售所需的工具。
 
-<LinkButton href="/zh-TW/studio/what-is-studio">
+<LinkButton href="/zh-TW/portal/studio/what-is-studio">
 了解更多關於 Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ description: 適用於所有 Wink 用戶及實體的條款與條件。
 
 適用於想開始在 Wink 銷售的物業。使用我們的工具有效地在線上銷售與行銷自己，並從全球招募大量聯盟夥伴，幫助您獲得客戶與訂單。
 
-<LinkButton href="/zh-TW/extranet/what-is-extranet">
+<LinkButton href="/zh-TW/portal/extranet/what-is-extranet">
 了解更多關於 Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ description: 適用於所有 Wink 用戶及實體的條款與條件。
 
 適用於想了解 Wink 能為他們提供哪些專屬價格、優惠及供應商直接庫存的旅行社。
 
-<LinkButton href="/zh-TW/travel-agent/what-is-agent">
+<LinkButton href="/zh-TW/portal/travel-agent/what-is-agent">
 了解更多關於 Wink Agent
 </LinkButton>

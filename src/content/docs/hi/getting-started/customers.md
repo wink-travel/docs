@@ -17,7 +17,7 @@ Wink ने एक दशक पहले होटलों को ऑनबो
 
 - एक ही खाते के तहत कई संपत्तियों का प्रबंधन करें।
 - संपत्तियों को प्रबंधक असाइन करें।
-- एक ही स्थान पर कई संपत्तियों का विपणन और बिक्री करने के लिए [WinkLinks](/hi/link-manager/wink-links), [WordPress](/hi/integrations/wordpress) और हमारे [Web Components](/hi/integrations/web-components) का उपयोग करें।
+- एक ही स्थान पर कई संपत्तियों का विपणन और बिक्री करने के लिए [WinkLinks](/hi/portal/link-manager/wink-links), [WordPress](/hi/integrations/wordpress) और हमारे [Web Components](/hi/integrations/web-components) का उपयोग करें।
 
 ## प्रबंधन कंपनियाँ
 
@@ -42,7 +42,7 @@ Wink ने एक दशक पहले होटलों को ऑनबो
 - उन्हें व्यय प्रबंधन और रिपोर्टिंग एकीकरण की आवश्यकता होती है।
 - उन्हें कंसीयर्ज़ समर्थन के साथ-साथ कार्यक्रमों में MICE सेवाओं की भी आवश्यकता होती है।
 
-कॉर्पोरेट यात्री हमारे [कॉर्पोरेट पोर्टल](/hi/corporate/what-is-group) पर अपने खाते प्रबंधित कर सकते हैं या हमारे आधिकारिक रूप से समर्थित [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) प्लगइन और [Concur](https://www.concur.com/) एकीकरण का उपयोग कर सकते हैं।
+कॉर्पोरेट यात्री हमारे [कॉर्पोरेट पोर्टल](/hi/portal/corporate/what-is-group) पर अपने खाते प्रबंधित कर सकते हैं या हमारे आधिकारिक रूप से समर्थित [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) प्लगइन और [Concur](https://www.concur.com/) एकीकरण का उपयोग कर सकते हैं।
 
 ## डेवलपर्स
 

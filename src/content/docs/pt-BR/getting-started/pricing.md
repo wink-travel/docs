@@ -50,7 +50,7 @@ Usando este modelo, os agentes de viagens pagam apenas a taxa de processamento d
 
 ## Assinaturas
 
-Oferecemos um serviço de assinatura opcional (veja [Social](/pt-BR/social/what-is-social)) para ajudar os estabelecimentos a ampliar suas equipes de vendas e marketing.
+Oferecemos um serviço de assinatura opcional (veja [Social](/pt-BR/portal/social/what-is-social)) para ajudar os estabelecimentos a ampliar suas equipes de vendas e marketing.
 
 ## Efeito da plataforma
 

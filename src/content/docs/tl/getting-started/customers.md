@@ -17,7 +17,7 @@ May bahagyang ibang pangangailangan ang mga brand at chain kumpara sa isang solo
 
 - Pamahalaan ang maraming ari-arian sa ilalim ng isang account.
 - Magtalaga ng mga manager sa mga ari-arian
-- Gamitin ang [WinkLinks](/tl/link-manager/wink-links), [WordPress](/tl/integrations/wordpress) at ang aming [Web Components](/tl/integrations/web-components) upang i-market at ibenta ang maraming ari-arian sa iisang lugar.
+- Gamitin ang [WinkLinks](/tl/portal/link-manager/wink-links), [WordPress](/tl/integrations/wordpress) at ang aming [Web Components](/tl/integrations/web-components) upang i-market at ibenta ang maraming ari-arian sa iisang lugar.
 
 ## Mga Kumpanya ng Pamamahala
 
@@ -42,7 +42,7 @@ Mas marami ang kailangan ng mga kumpanya mula sa isang travel platform:
 - Nangangailangan sila ng pamamahala ng gastusin at integrasyon ng pag-uulat.
 - Kailangan nila ng concierge support, pati na rin ng mga serbisyo ng MICE sa mga kaganapan.
 
-Maaaring pamahalaan ng mga corporate traveler ang kanilang sariling mga account sa aming [corporate portal](/tl/corporate/what-is-group) o gamitin ang aming opisyal na suportadong [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin at [Concur](https://www.concur.com/) integration.
+Maaaring pamahalaan ng mga corporate traveler ang kanilang sariling mga account sa aming [corporate portal](/tl/portal/corporate/what-is-group) o gamitin ang aming opisyal na suportadong [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin at [Concur](https://www.concur.com/) integration.
 
 ## Mga Developer
 

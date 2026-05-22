@@ -50,7 +50,7 @@ Ved bruk av denne modellen betaler reiseagentene kun Wink sitt behandlingsgebyr,
 
 ## Abonnementer
 
-Vi tilbyr en valgfri abonnementstjeneste (se [Social](/no/social/what-is-social)) for å hjelpe eiendommer med å styrke sine salgs- og markedsføringsteam.
+Vi tilbyr en valgfri abonnementstjeneste (se [Social](/no/portal/social/what-is-social)) for å hjelpe eiendommer med å styrke sine salgs- og markedsføringsteam.
 
 ## Plattform-effekt
 

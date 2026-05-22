@@ -50,7 +50,7 @@ Avec ce modèle, les agents de voyages ne paient que les frais de traitement de 
 
 ## Abonnements
 
-Nous proposons un service d’abonnement optionnel (voir [Social](/fr/social/what-is-social)) pour aider les établissements à renforcer leurs équipes de vente et de marketing.
+Nous proposons un service d’abonnement optionnel (voir [Social](/fr/portal/social/what-is-social)) pour aider les établissements à renforcer leurs équipes de vente et de marketing.
 
 ## Effet plateforme
 

@@ -50,7 +50,7 @@ Dengan model ini, agen perjalanan hanya membayar biaya pemrosesan Wink dan Wink 
 
 ## Langganan
 
-Kami menawarkan layanan langganan opsional (lihat [Social](/id/social/what-is-social)) untuk membantu properti meningkatkan tim penjualan dan pemasaran mereka.
+Kami menawarkan layanan langganan opsional (lihat [Social](/id/portal/social/what-is-social)) untuk membantu properti meningkatkan tim penjualan dan pemasaran mereka.
 
 ## Efek platform
 

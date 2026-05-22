@@ -10,7 +10,7 @@ Katram portālam var būt atšķirīgi noteikumi un nosacījumi. Lūdzu, dodieti
 Affiliate partneriem, kuri vēlas uzzināt, kā nopelnīt pasīvos ienākumus, monetizējot savus sociālos kontus ar Wink.
 [Wink Studio](https://studio.wink.travel) ir visi rīki, kas jums nepieciešami, lai pārdotu kā profesionālim.
 
-<LinkButton href="/lv/studio/what-is-studio">
+<LinkButton href="/lv/portal/studio/what-is-studio">
 Uzziniet vairāk par Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ Uzziniet vairāk par mūsu rezervēšanas dzinēju
 
 Īpašumiem, kas vēlas sākt pārdot ar Wink. Izmantojiet mūsu rīkus, lai efektīvi pārdotu un tirgotu sevi tiešsaistē un iegūtu armiju affiliate partneru no visas pasaules, kas palīdzēs jums piesaistīt klientus un rezervācijas.
 
-<LinkButton href="/lv/extranet/what-is-extranet">
+<LinkButton href="/lv/portal/extranet/what-is-extranet">
 Uzziniet vairāk par Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ Uzziniet vairāk par Wink Extranet
 
 Ceļojumu aģentiem, kuri vēlas uzzināt, ko Wink var piedāvāt viņiem attiecībā uz īpašām cenām, piedāvājumiem un inventāru tieši no piegādātājiem.
 
-<LinkButton href="/lv/travel-agent/what-is-agent">
+<LinkButton href="/lv/portal/travel-agent/what-is-agent">
 Uzziniet vairāk par Wink Agent
 </LinkButton>

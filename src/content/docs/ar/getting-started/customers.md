@@ -17,7 +17,7 @@ sidebar:
 
 - إدارة عدة عقارات تحت حساب واحد.
 - تعيين مدراء للعقارات.
-- استخدام [WinkLinks](/ar/link-manager/wink-links) و[WordPress](/ar/integrations/wordpress) و[مكونات الويب](/ar/integrations/web-components) الخاصة بنا لتسويق وبيع عدة عقارات في مكان واحد.
+- استخدام [WinkLinks](/ar/portal/link-manager/wink-links) و[WordPress](/ar/integrations/wordpress) و[مكونات الويب](/ar/integrations/web-components) الخاصة بنا لتسويق وبيع عدة عقارات في مكان واحد.
 
 ## شركات الإدارة
 
@@ -42,7 +42,7 @@ sidebar:
 - تحتاج إلى إدارة النفقات وتكامل التقارير.
 - تحتاج إلى دعم الكونسيرج، بالإضافة إلى خدمات MICE في الفعاليات.
 
-يمكن للمسافرين من الشركات إدارة حساباتهم الخاصة على [بوابتنا الخاصة بالشركات](/ar/corporate/what-is-group) أو استخدام الإضافة المدعومة رسميًا [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) والتكامل مع [Concur](https://www.concur.com/).
+يمكن للمسافرين من الشركات إدارة حساباتهم الخاصة على [بوابتنا الخاصة بالشركات](/ar/portal/corporate/what-is-group) أو استخدام الإضافة المدعومة رسميًا [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) والتكامل مع [Concur](https://www.concur.com/).
 
 ## المطورون
 

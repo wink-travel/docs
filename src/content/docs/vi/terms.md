@@ -10,7 +10,7 @@ Mỗi cổng thông tin có thể có các điều khoản và điều kiện kh
 Dành cho các đối tác muốn tìm hiểu cách kiếm thu nhập thụ động bằng cách kiếm tiền từ các tài khoản mạng xã hội của bạn với Wink.  
 [Wink Studio](https://studio.wink.travel) có tất cả các công cụ bạn cần để bán hàng như một chuyên gia.
 
-<LinkButton href="/vi/studio/what-is-studio">
+<LinkButton href="/vi/portal/studio/what-is-studio">
 Tìm hiểu thêm về Wink Studio
 </LinkButton>
 
@@ -26,7 +26,7 @@ Tìm hiểu thêm về công cụ đặt phòng của chúng tôi
 
 Dành cho các bất động sản muốn bắt đầu bán hàng trên Wink. Sử dụng các công cụ của chúng tôi để bán và tiếp thị hiệu quả trực tuyến và có được một đội ngũ đối tác từ khắp nơi trên thế giới giúp bạn thu hút khách hàng và đặt phòng.
 
-<LinkButton href="/vi/extranet/what-is-extranet">
+<LinkButton href="/vi/portal/extranet/what-is-extranet">
 Tìm hiểu thêm về Wink Extranet
 </LinkButton>
 
@@ -34,6 +34,6 @@ Tìm hiểu thêm về Wink Extranet
 
 Dành cho các đại lý du lịch muốn tìm hiểu Wink có thể cung cấp gì cho họ về các mức giá riêng biệt, ưu đãi và kho hàng, trực tiếp từ nhà cung cấp.
 
-<LinkButton href="/vi/travel-agent/what-is-agent">
+<LinkButton href="/vi/portal/travel-agent/what-is-agent">
 Tìm hiểu thêm về Wink Agent
 </LinkButton>

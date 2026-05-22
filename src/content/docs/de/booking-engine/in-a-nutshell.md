@@ -7,8 +7,8 @@ sidebar:
 
 So segmentieren wir die Zuständigkeiten bei Wink:
 
-- [Extranet](/de/extranet/what-is-extranet) kümmert sich um Lieferanten, die das Inventar verwalten.
-- [Studio](/de/studio/what-is-studio) kümmert sich um Affiliates, die Inhalte verwalten.
+- [Extranet](/de/portal/extranet/what-is-extranet) kümmert sich um Lieferanten, die das Inventar verwalten.
+- [Studio](/de/portal/studio/what-is-studio) kümmert sich um Affiliates, die Inhalte verwalten.
 - `Booking Engine` kümmert sich darum, die im `Studio` erstellten Inhalte, die auf dem im `Extranet` erstellten Inventar basieren, buchbar zu machen.
 - [Payment](/de/payment/what-is-trip-pay) kümmert sich um das Abbuchen / Erstatten von Reisenden, die [über Plattformen wie Wink] buchen, und um die Bezahlung der Anbieter.
 
@@ -22,11 +22,11 @@ Zu ihren Aufgaben gehören:
 - Verwaltung von Sprachen.
 - Erstellung von Analysen basierend auf Nutzerinteraktionen, Ereignissen und API-Aufrufen.
 - Bereitstellung buchbarer Inventare im gewünschten Format, in der gewünschten Sprache und Währung, wie z. B.:
-    - Ein [teilbarer Link](/de/studio/shareable-links) auf Facebook.
+    - Ein [teilbarer Link](/de/portal/studio/shareable-links) auf Facebook.
     - Eine Hotel-Landingpage auf https://ota.wink.travel mit Inventar für dieses Hotel.
-    - Eine [Karte](/de/studio/cards) mit Affiliate-Inventar.
-    - Eine [Karte](/de/studio/maps) in Ihrem [WinkLinks](/de/link-manager/wink-links) Konto.
-    - Ein [API-Aufruf](/de/developers/apis) von einem externen Reisebürosystem.
+    - Eine [Karte](/de/portal/studio/cards) mit Affiliate-Inventar.
+    - Eine [Karte](/de/portal/studio/maps) in Ihrem [WinkLinks](/de/portal/link-manager/wink-links) Konto.
+    - Ein [API-Aufruf](/de/api) von einem externen Reisebürosystem.
 - Bereitstellung von Möglichkeiten für Reisende, um:
     - Nach Reiseinventar zu suchen.
     - Verfügbares Inventar zu buchen.
@@ -36,7 +36,7 @@ Zu ihren Aufgaben gehören:
 
 Die Buchungsmaschine ist eine Sammlung wiederverwendbarer Funktionen, die wir über https://ota.wink.travel bereitstellen; eine hochgradig anpassbare Website für Hotels und Affiliates, um ihre Angebote an Reisende zu verkaufen.
 
-Integratoren, die noch mehr Freiheit wünschen, haben über unser [WordPress-Plugin](/de/integrations/wordpress/), [Web Components](/de/integrations/web-components) und [APIs](/de/developers/apis) Zugriff auf alle dieselben Funktionen.
+Integratoren, die noch mehr Freiheit wünschen, haben über unser [WordPress-Plugin](/de/integrations/wordpress/), [Web Components](/de/integrations/web-components) und [APIs](/de/api) Zugriff auf alle dieselben Funktionen.
 
 Lesen Sie in den nächsten Abschnitten weiter, um mehr darüber zu erfahren, was die Buchungsmaschine zu bieten hat.
 
@@ -44,4 +44,4 @@ Lesen Sie in den nächsten Abschnitten weiter, um mehr darüber zu erfahren, was
 
 - Lesen Sie über unser [WordPress-Plugin](/de/integrations/wordpress/).
 - Lesen Sie über unsere [Web Components](/de/integrations/web-components).
-- Lesen Sie über unsere [APIs](/de/developers/apis).
+- Lesen Sie über unsere [APIs](/de/api).

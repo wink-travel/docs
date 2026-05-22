@@ -7,8 +7,8 @@ sidebar:
 
 Takto rozdeľujeme zodpovednosti vo Wink:
 
-- [Extranet](/sk/extranet/what-is-extranet) sa zaoberá dodávateľmi spravujúcimi inventár.
-- [Studio](/sk/studio/what-is-studio) sa zaoberá pridruženými partnermi spravujúcimi obsah.
+- [Extranet](/sk/portal/extranet/what-is-extranet) sa zaoberá dodávateľmi spravujúcimi inventár.
+- [Studio](/sk/portal/studio/what-is-studio) sa zaoberá pridruženými partnermi spravujúcimi obsah.
 - `Booking Engine` sa zaoberá tým, aby obsah vytvorený v `Studio`, ktorý bol založený na inventári vytvorenom v `Extranet`, spravil rezervovateľným.
 - [Payment](/sk/payment/what-is-trip-pay) sa zaoberá účtovaním / vrátením peňazí cestujúcim, ktorí si rezervujú [prostredníctvom platforiem ako Wink], a platením dodávateľom.
 
@@ -22,11 +22,11 @@ Jeho zodpovednosti zahŕňajú:
 - Správu jazykov.
 - Generovanie analytiky na základe interakcií používateľov, udalostí a API volaní.
 - Poskytovanie rezervovateľného inventára v požadovanom formáte, jazyku a mene, ako napríklad:
-    - [zdieľateľný odkaz](/sk/studio/shareable-links) na Facebooku.
+    - [zdieľateľný odkaz](/sk/portal/studio/shareable-links) na Facebooku.
     - vstupná stránka hotela na https://ota.wink.travel s inventárom pre daný hotel.
-    - [karta](/sk/studio/cards) obsahujúca inventár pridružených partnerov.
-    - [mapa](/sk/studio/maps) vo vašom účte [WinkLinks](/sk/link-manager/wink-links).
-    - [API volanie](/sk/developers/apis) z diaľkového systému cestovnej agentúry.
+    - [karta](/sk/portal/studio/cards) obsahujúca inventár pridružených partnerov.
+    - [mapa](/sk/portal/studio/maps) vo vašom účte [WinkLinks](/sk/portal/link-manager/wink-links).
+    - [API volanie](/sk/api) z diaľkového systému cestovnej agentúry.
 - Poskytovanie cestujúcim spôsobu, ako:
     - Vyhľadávať cestovný inventár.
     - Rezervovať dostupný inventár.
@@ -36,7 +36,7 @@ Jeho zodpovednosti zahŕňajú:
 
 Booking engine je zbierka opakovane použiteľnej funkcionality, ktorú sprístupňujeme cez https://ota.wink.travel; vysoko prispôsobiteľnú webovú stránku pre hotely a pridružených partnerov na predaj ich ponúk cestujúcim.
 
-Integrátori, ktorí chcú ešte väčšiu slobodu, majú prístup ku všetkým rovnakým funkciám cez náš [WordPress plugin](/sk/integrations/wordpress/), [Web Components](/sk/integrations/web-components) a [APIs](/sk/developers/apis).
+Integrátori, ktorí chcú ešte väčšiu slobodu, majú prístup ku všetkým rovnakým funkciám cez náš [WordPress plugin](/sk/integrations/wordpress/), [Web Components](/sk/integrations/web-components) a [APIs](/sk/api).
 
 Pokračujte do ďalších sekcií, aby ste sa dozvedeli viac o tom, čo booking engine ponúka.
 
@@ -44,4 +44,4 @@ Pokračujte do ďalších sekcií, aby ste sa dozvedeli viac o tom, čo booking 
 
 - Prečítajte si o našom [WordPress plugine](/sk/integrations/wordpress/).
 - Prečítajte si o našich [Web Components](/sk/integrations/web-components).
-- Prečítajte si o našich [APIs](/sk/developers/apis).
+- Prečítajte si o našich [APIs](/sk/api).

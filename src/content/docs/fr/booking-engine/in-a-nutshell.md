@@ -7,8 +7,8 @@ sidebar:
 
 Voici comment nous segmentons les responsabilités sur Wink : 
 
-- [Extranet](/fr/extranet/what-is-extranet) concerne les fournisseurs qui gèrent l'inventaire.
-- [Studio](/fr/studio/what-is-studio) concerne les affiliés qui gèrent le contenu.
+- [Extranet](/fr/portal/extranet/what-is-extranet) concerne les fournisseurs qui gèrent l'inventaire.
+- [Studio](/fr/portal/studio/what-is-studio) concerne les affiliés qui gèrent le contenu.
 - `Booking Engine` concerne la création du contenu, réalisé dans `Studio`, basé sur l'inventaire créé dans `Extranet` et le rend bookable.
 - [Payment](/fr/payment/what-is-trip-pay) concerne la facturation / le remboursement des voyageurs qui réservent [via des plateformes comme Wink], et le paiement des fournisseurs.
 
@@ -22,11 +22,11 @@ Ses responsabilités incluent :
 - Gérer les langues.
 - Générer des analyses basées sur les interactions utilisateurs, événements et appels API.
 - Fournir l'inventaire bookable dans le format, la langue et la devise souhaités, tels que :
-    - Un [lien partageable](/fr/studio/shareable-links) sur Facebook.
+    - Un [lien partageable](/fr/portal/studio/shareable-links) sur Facebook.
     - Une page d’accueil d’hôtel sur https://ota.wink.travel avec l’inventaire de cet hôtel.
-    - Une [carte](/fr/studio/cards) contenant l’inventaire affilié.
-    - Une [carte](/fr/studio/maps) sur votre compte [WinkLinks](/fr/link-manager/wink-links).
-    - Un [appel API](/fr/developers/apis) depuis un système d’agence de voyage distant.
+    - Une [carte](/fr/portal/studio/cards) contenant l’inventaire affilié.
+    - Une [carte](/fr/portal/studio/maps) sur votre compte [WinkLinks](/fr/portal/link-manager/wink-links).
+    - Un [appel API](/fr/api) depuis un système d’agence de voyage distant.
 - Offrir aux voyageurs un moyen de : 
     - Rechercher de l’inventaire de voyage.
     - Réserver l’inventaire disponible.
@@ -36,7 +36,7 @@ Ses responsabilités incluent :
 
 Le moteur de réservation est un ensemble de fonctionnalités réutilisables que nous exposons via https://ota.wink.travel ; un site web hautement personnalisable pour que les hôtels et affiliés vendent leurs offres aux voyageurs.
 
-Les intégrateurs, qui souhaitent encore plus de liberté, ont accès à toutes les mêmes fonctionnalités via notre [plugin WordPress](/fr/integrations/wordpress/), [Web Components](/fr/integrations/web-components) et [APIs](/fr/developers/apis).
+Les intégrateurs, qui souhaitent encore plus de liberté, ont accès à toutes les mêmes fonctionnalités via notre [plugin WordPress](/fr/integrations/wordpress/), [Web Components](/fr/integrations/web-components) et [APIs](/fr/api).
 
 Continuez vers les sections suivantes pour en savoir plus sur ce que le moteur de réservation a à offrir.
 
@@ -44,4 +44,4 @@ Continuez vers les sections suivantes pour en savoir plus sur ce que le moteur d
 
 - Lisez à propos de notre [plugin WordPress](/fr/integrations/wordpress/).
 - Lisez à propos de nos [Web Components](/fr/integrations/web-components).
-- Lisez à propos de nos [APIs](/fr/developers/apis).
+- Lisez à propos de nos [APIs](/fr/api).

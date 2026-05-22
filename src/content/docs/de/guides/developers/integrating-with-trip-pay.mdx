@@ -1,0 +1,222 @@
+---
+title: Integration mit TripPay
+description: Dieser Artikel enthält ein vollständiges Beispiel, wie Sie TripPay integrieren und die Zahlung von TripPay abwickeln lassen.
+sidebar:
+  order: 4
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+Dieser Artikel enthält ein End-to-End-Beispiel, wie Sie TripPay integrieren.
+
+Es wird empfohlen, dass Sie bereits gelesen haben:
+
+- [Payment > Mapping](/de/payment/mapping).
+- [Payment > Integration](/de/payment/integration).
+- [Payment Web Component](/de/integrations/web-components/#payment).
+- [Payment API](/de/api). *Lesen Sie den Abschnitt zu `Create payable contracts`*
+
+Hier sind die Schritte, um TripPay erfolgreich für die Bezahlung einer Buchung zu verwenden:
+
+<Steps>
+1. Stellen Sie sicher, dass die Begünstigten, die Sie im Buchungsvertrag angeben, gemappt wurden.
+2. Lassen Sie den Reisenden die gewünschte Verfügbarkeit auswählen und sich auf die Zahlung vorbereiten.
+3. Erstellen Sie einen `payable contract` mit TripPay, der die zu buchenden Artikel enthält.
+4. Lassen Sie den Reisenden mit der TripPay Web Component bezahlen.
+</Steps>
+
+Wir gehen davon aus, dass Sie bereits `Schritt 1` und `Schritt 2` abgeschlossen haben und bereit sind, TripPay über die Buchung zu informieren.
+
+## Erstellen eines zahlbaren Vertrags
+
+:::note
+Besuchen Sie die Payment API, um mehr über die Anforderungen zum Erstellen eines zahlbaren Vertrags zu erfahren.
+:::
+
+### Anfrage
+Hier ist ein JSON-Beispiel für eine Anfrage, die alles enthält, was Sie für Ihren ersten zahlbaren Vertrag benötigen.
+
+```json {3-6, 8-9}
+{
+  "user": {
+    "userIdentifier": "191d5729-0b90-4000-85df-1bea7a6e9a01",
+    "firstName": "John",
+    "lastName": "Smith",
+    "email": "john.smith@email.com"
+  },
+  "affiliateAccountIdentifier": "291d5729-0b91-4001-95df-2bec7a6e9a01",
+  "affiliateAccountIdentifierType": "INTERNAL",
+  "displayCurrency": "USD",
+  "traceId": "trace-1",
+  "redirectUrl": "/thank-you",
+  "sourceUrl": "https://www.travel.com",
+  "contractList": [
+    {
+      "identifier": "191d5729-0b90-4000-8298-72431beb1701",
+      "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+      "supplierIdentifierType": "EXTERNAL",
+      "contractItemList": [
+        {
+          "user": {
+            "userIdentifier": "191d5729-0b90-4000-8596-ed18f9876801",
+            "firstName": "John",
+            "lastName": "Smith",
+            "email": "john.smith@email.com",
+            "telephone": "+1 212 555 1212",
+          },
+          "nameInEnglish": "Deluxe King",
+          "descriptionInEnglish": "This is the best deluxe king that money can buy.",
+          "price": {
+            "amount": 100,
+            "currency": "USD"
+          },
+          "itinerary": {
+            "startDate": "2024-12-24T00:00:00.000Z",
+            "endDate": "2024-12-25T00:00:00.000Z",
+            "adults": 2
+          },
+          "pricingType": "PER_STAY",
+          "type": "LODGING",
+          "payable": "PREPAY",
+          "policy": {
+            "refundable": true
+          },
+          "externalIdentifier": "room-type-1",
+          "dailyRateList": [
+            {
+              "date": "2024-12-24",
+              "price": {
+                "amount": 100,
+                "currency": "USD"
+              }
+            }
+          ],
+          "beneficiaryList": [
+            {
+              "identifier": "account-0",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.015
+              },
+              "type": "PLATFORM_FEE"
+            },
+            {
+              "identifier": "account-1",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.0985
+              },
+              "type": "COMMISSION"
+            },
+            {
+              "identifier": "account-2",
+              "identifierType": "INTERNAL",
+              "amountDue": {
+                "type": "PERCENTAGE",
+                "percent": 0.8865
+              },
+              "type": "SALE"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Erklärung:
+
+Wir werden hier nicht jeden Datenpunkt erklären, da diese bereits in der API-Dokumentation behandelt werden.
+
+- Zeilen: **2 - 7** sind der Benutzer, der für die Buchung verantwortlich ist. Es gibt zwei Arten von Buchern:
+    - Reisender.
+    - Reisebüro.
+- Zeilen: **8 - 9** sind das TripPay-Konto, das die Buchung abwickelt. Es kann sein:
+    - Ihr TripPay-Integrator-Konto.
+    - Wenn Sie ein Affiliate-Netzwerk betreiben, kann es Ihr Affiliate sein.
+- Verwenden Sie eine `traceId`, um mehrere Buchungen über mehrere Anbieter hinweg zu gruppieren. So können Sie eine Gruppenbuchung stornieren.
+- `redirectUrl` teilt TripPay mit, auf welche Seite nach Abschluss der Zahlung weitergeleitet werden soll.
+- `sourceUrl` ist die Website/App, auf der die Buchung stattgefunden hat.
+
+Das Array `contractList` enthält die Artikel, die der Reisende von mehreren Anbietern kaufen möchte. Jeder Artikel enthält:
+
+- Die `identifier` ist eine gültige UUID, die Sie generieren.
+- Den Anbieter, bei dem Sie Verfügbarkeiten buchen möchten.
+- Die Verfügbarkeiten, die Sie bei diesem Anbieter buchen möchten. Diese sind alle im verschachtelten Array `contractItemList` angegeben.
+- Jeder Eintrag unter `contractItemList` enthält:
+    - **Gastbenutzer** Dies ist der Benutzer, der vor Ort ankommen wird.
+    - **Name in Englisch** Der Name der Verfügbarkeit in englischer Sprache.
+    - **Beschreibung in Englisch** Eine längere Beschreibung der Verfügbarkeit in englischer Sprache.
+    - **Preis** Der Preis des Artikels.
+    - **Reiseplan** Wann dieser Artikel gebucht werden soll.
+    - **Preistyp** Wie der Preis berechnet wurde.
+    - **Verfügbarkeitstyp** Um welche Art von Verfügbarkeit es sich handelt.
+    - **Zahlbar** Wann der Reisende belastet werden soll. *Derzeit unterstützen wir nur sofortige Zahlungsoptionen.*
+    - **Richtlinie** Enthält Stornierungsbedingungen.
+    - **Tagespreisliste** Wenn der zu buchende Artikel ein Zimmer ist, können Sie angeben, wie viel dieses Zimmer für jede Nacht kostet, die der Gast bleibt.
+    - **Begünstigte** Geben Sie an, welche TripPay-Konten welchen Betrag des Preises des Artikels erhalten sollen. *Feste / Prozentuale Beträge werden unterstützt.*
+
+:::note
+Im obigen JSON-Beispiel haben wir 3 Begünstigte:
+
+- 1,5 % wurden der Plattform zugewiesen, die die Buchung ermöglicht hat. *z. B. Wink*
+- 9,85 % wurden dem Affiliate als Provision zugewiesen. *z. B. Kim Kardashian*
+- 88,65 % wurden dem Anbieter für die Buchung des Zimmers zugewiesen. *z. B. Hilton*
+
+Wenn TripPay mit einem zahlbaren Vertrag antwortet, werden Sie feststellen, dass es seinen eigenen Begünstigten mit 4,0 % eingefügt hat.
+:::
+
+### Antwort
+
+Wenn TripPay auf Ihre Anfrage antwortet, sieht die Antwort ungefähr so aus:
+
+```json {3}
+[
+  {
+    "id": "contract-1",
+    "traceId": "trace-1",
+    "supplierContractIdentifier": "191d5729-0b90-4000-8298-72431beb1701",
+    "supplierIdentifier": "191d5729-0b90-4000-8b72-58186a642401",
+    "supplierName": "Hilton",
+    "totalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalDisplayPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalSupplierPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalInternalPrice": {
+      "amount": 100,
+      "currency": "USD"
+    },
+    "totalCapturePrice": {
+      "amount": 100,
+      "currency": "USD"
+    }
+  }
+]
+```
+
+Speichern Sie die `id` in Zeile 3. Diese wird verwendet, um sie in die TripPay Web Component einzufügen.
+
+## TripPay einbetten
+
+:::note
+Stellen Sie sicher, dass Sie unsere Styles und Javascript vorher geladen haben.
+:::
+
+An diesem Punkt sind Sie bereit, die `Payment Web Component` in Ihre Website einzubetten und dem Benutzer anzuzeigen.
+
+```html
+<trip-pay id="contract-1"></trip-pay>
+```
+
+Was die Integration betrifft, ist das alles, was Sie tun müssen. Die gesamte schwere Arbeit übernimmt ab hier TripPay.

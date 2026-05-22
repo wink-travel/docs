@@ -50,7 +50,7 @@ Pri použití tohto modelu cestovní agenti platia len spracovateľský poplatok
 
 ## Predplatné
 
-Ponúkame aj voliteľnú službu predplatného (pozri [Social](/sk/social/what-is-social)), ktorá pomáha ubytovacím zariadeniam rozšíriť ich predajné a marketingové tímy.
+Ponúkame aj voliteľnú službu predplatného (pozri [Social](/sk/portal/social/what-is-social)), ktorá pomáha ubytovacím zariadeniam rozšíriť ich predajné a marketingové tímy.
 
 ## Efekt platformy
 

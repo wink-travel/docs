@@ -17,7 +17,7 @@ Brandurile și lanțurile au nevoi ușor diferite față de o singură proprieta
 
 - Gestiona mai multe proprietăți sub un singur cont.
 - Atribui manageri proprietăților.
-- Folosi [WinkLinks](/ro/link-manager/wink-links), [WordPress](/ro/integrations/wordpress) și [Web Components](/ro/integrations/web-components) pentru a promova și vinde mai multe proprietăți într-un singur loc.
+- Folosi [WinkLinks](/ro/portal/link-manager/wink-links), [WordPress](/ro/integrations/wordpress) și [Web Components](/ro/integrations/web-components) pentru a promova și vinde mai multe proprietăți într-un singur loc.
 
 ## Companii de management
 
@@ -42,7 +42,7 @@ Companiile au nevoie de o platformă de călătorii mai complexă:
 - Au nevoie de gestionarea cheltuielilor și integrare pentru raportare.
 - Au nevoie de suport concierge, precum și de servicii MICE la evenimente.
 
-Călătorii corporativi își pot gestiona propriile conturi pe portalul nostru [corporativ](/ro/corporate/what-is-group) sau pot folosi pluginul oficial suportat [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) și integrarea [Concur](https://www.concur.com/).
+Călătorii corporativi își pot gestiona propriile conturi pe portalul nostru [corporativ](/ro/portal/corporate/what-is-group) sau pot folosi pluginul oficial suportat [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) și integrarea [Concur](https://www.concur.com/).
 
 ## Dezvoltatori
 

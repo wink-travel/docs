@@ -7,11 +7,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 This is Wink's marketing website built with Astro and Starlight. It serves as a multilingual documentation and marketing platform for the Wink travel booking ecosystem.
 
 **Tech Stack:**
-- **Framework:** Astro 5.x with Starlight documentation framework
+- **Framework:** Astro 6.x with Starlight documentation framework
 - **Styling:** Tailwind CSS v4 with custom component library ("Starwind")
 - **Content:** MDX/Markdown with frontmatter for documentation
 - **i18n:** 40+ languages with AI-powered translation pipeline
-- **Integrations:** Cloudinary (images), MailerSend (contact forms), DocSearch, Firebase hosting
+- **Integrations:** Cloudinary (images), MailerSend (contact forms), DocSearch, Firebase hosting (`firebase.json` serves `dist/`)
 
 ## Development Commands
 
@@ -27,11 +27,14 @@ npm start
 # Run schema and frontmatter validation
 npm run check
 
-# Build for production
+# Build for production (runs with --max-old-space-size=8192; build is memory-heavy)
 npm run build
 
 # Preview production build
 npm preview
+
+# Refresh OpenAPI schema snapshots from prod (writes to ./schemas/)
+npm run schemas:sync
 
 # Translate all documentation to all languages
 npm run i18n:all
@@ -56,9 +59,9 @@ Documentation lives in `src/content/docs/` organized by feature area:
 - `travel-agent/` - Travel agent portal docs
 - Plus 40+ language directories (`ar/`, `fr/`, `de/`, etc.)
 
-The `src/content/config.ts` defines two collections:
-- `docs` - Main documentation (uses Starlight loader with custom ID generation)
-- `changelogs` - Auto-synced from GitHub repos (wink-travel/monorepo-typescript, wink-travel/monorepo-java)
+The `src/content.config.ts` file (Astro v6 top-level convention, not `src/content/config.ts`) defines two collections:
+- `docs` - Main documentation (uses Starlight loader; custom `generateId` strips file extensions but preserves casing, and collapses `/index` segments)
+- `changelogs` - Auto-synced from GitHub repos (`wink-travel/monorepo-typescript` → `changelog/application`, `wink-travel/monorepo-java` → `changelog/platform`). Loader needs `GH_API_TOKEN`; build fails without it.
 
 ### Component Architecture
 
@@ -112,11 +115,12 @@ TypeScript path aliases defined in `tsconfig.json`:
 ## Starlight Configuration
 
 The site uses these Starlight plugins (see `astro.config.mjs`):
-- `starlightDocSearch` - Algolia search integration
 - `starlightBlog` - Blog functionality
 - `starlightChangelogs` - GitHub-synced changelogs
+- `starlightOpenAPI` - Renders API reference pages from OpenAPI snapshots in the top-level `schemas/` directory. Two schemas wired up: `schemas/api.json` (route `/api/`, sidebar label "Platform") and `schemas/integrations.json` (route `/integrations-api/`, sidebar label "Channel Manager"). Both schemas nest under a single "API" sidebar group via `createOpenAPISidebarGroup()` — see the `apiSidebarGroup` constant in `astro.config.mjs`. Refresh snapshots via `npm run schemas:sync` (see `scripts/sync-schemas.ts`); the script preserves last-good snapshots when upstream returns non-2xx. `schemas/api.json` may currently be a stub if `https://api.wink.travel/v3/api-docs` was unreachable at last sync — see `schemas/README.md`.
+- `starlightDocSearch` is installed but currently commented out in `astro.config.mjs`.
 
-Sidebar is auto-generated from directory structure with custom sections for changelogs.
+Sidebar is explicitly listed in `astro.config.mjs` (not fully auto-generated): each top-level group is `autogenerate`'d from a directory under `src/content/docs/`, and a single "API" group (containing the `apiSidebarGroup` placeholder) appears immediately after Developers. Adding a new top-level docs section requires editing the `sidebar` array.
 
 ## Important Patterns
 
@@ -129,11 +133,14 @@ Sidebar is auto-generated from directory structure with custom sections for chan
 
 Create `.env.local` with:
 ```bash
-OPENAI_API_KEY=your_key_here
-MAILERSEND_API_KEY=your_key_here
-GH_API_TOKEN=your_github_token  # For changelog sync
+GH_API_TOKEN=your_github_token   # REQUIRED for `npm run build` (changelog loader)
+OPENAI_API_KEY=your_key_here     # Only needed for `npm run i18n:all`
+MAILERSEND_API_KEY=your_key_here # Only needed at runtime by the contact-form action
+OPENAI_TRANSLATION_MODEL=...     # Optional; defaults to gpt-4.1-mini-2025-04-14
 ```
+
+Only `GH_API_TOKEN` is required to build the site (`README.md` documents this). The OpenAI and MailerSend keys are needed only when you actually exercise translation or the contact form.
 
 ## Deployment
 
-Built artifacts go to `dist/` directory. The site is configured for `https://wink.travel`.
+Built artifacts go to `dist/`, which Firebase Hosting (`firebase.json`) serves. The site is configured for `https://wink.travel`. `releaseToMaster.bash` is the release helper script.

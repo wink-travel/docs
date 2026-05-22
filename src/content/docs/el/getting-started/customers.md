@@ -17,7 +17,7 @@ sidebar:
 
 - Να διαχειρίζονται πολλαπλές μονάδες κάτω από έναν λογαριασμό.
 - Να αναθέτουν διαχειριστές στις μονάδες.
-- Να χρησιμοποιούν τα [WinkLinks](/el/link-manager/wink-links), το [WordPress](/el/integrations/wordpress) και τα [Web Components](/el/integrations/web-components) για να προωθούν και να πωλούν πολλαπλές μονάδες σε ένα μέρος.
+- Να χρησιμοποιούν τα [WinkLinks](/el/portal/link-manager/wink-links), το [WordPress](/el/integrations/wordpress) και τα [Web Components](/el/integrations/web-components) για να προωθούν και να πωλούν πολλαπλές μονάδες σε ένα μέρος.
 
 ## Εταιρείες διαχείρισης
 
@@ -42,7 +42,7 @@ sidebar:
 - Απαιτούν διαχείριση εξόδων και ενσωμάτωση αναφορών.
 - Χρειάζονται υποστήριξη concierge, καθώς και υπηρεσίες MICE σε εκδηλώσεις.
 
-Οι εταιρικοί ταξιδιώτες μπορούν να διαχειρίζονται τους δικούς τους λογαριασμούς στην [εταιρική πύλη](/el/corporate/what-is-group) ή να χρησιμοποιούν το επίσημα υποστηριζόμενο [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin και την ενσωμάτωση [Concur](https://www.concur.com/).
+Οι εταιρικοί ταξιδιώτες μπορούν να διαχειρίζονται τους δικούς τους λογαριασμούς στην [εταιρική πύλη](/el/portal/corporate/what-is-group) ή να χρησιμοποιούν το επίσημα υποστηριζόμενο [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin και την ενσωμάτωση [Concur](https://www.concur.com/).
 
 ## Προγραμματιστές
 

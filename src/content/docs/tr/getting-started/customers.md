@@ -17,7 +17,7 @@ Markalar ve zincirlerin, tek bir tesisten biraz farklı ihtiyaçları vardır. W
 
 - Tek bir hesap altında birden fazla tesisi yönetmek.
 - Tesislere yöneticiler atamak.
-- Birden fazla tesisi tek bir yerde pazarlamak ve satmak için [WinkLinks](/tr/link-manager/wink-links), [WordPress](/tr/integrations/wordpress) ve [Web Components](/tr/integrations/web-components) kullanmak.
+- Birden fazla tesisi tek bir yerde pazarlamak ve satmak için [WinkLinks](/tr/portal/link-manager/wink-links), [WordPress](/tr/integrations/wordpress) ve [Web Components](/tr/integrations/web-components) kullanmak.
 
 ## Yönetim Şirketleri
 
@@ -42,7 +42,7 @@ Kurumsal şirketler seyahat platformundan daha fazlasını ister:
 - Gider yönetimi ve raporlama entegrasyonu isterler.
 - Konsiyerj desteği ve etkinliklerde MICE hizmetlerine ihtiyaç duyarlar.
 
-Kurumsal seyahatçiler, kendi hesaplarını [kurumsal portalımızda](/tr/corporate/what-is-group) yönetebilir veya resmi desteklenen [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) eklentisi ve [Concur](https://www.concur.com/) entegrasyonunu kullanabilirler.
+Kurumsal seyahatçiler, kendi hesaplarını [kurumsal portalımızda](/tr/portal/corporate/what-is-group) yönetebilir veya resmi desteklenen [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) eklentisi ve [Concur](https://www.concur.com/) entegrasyonunu kullanabilirler.
 
 ## Geliştiriciler
 

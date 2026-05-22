@@ -19,6 +19,9 @@ CURRENT_VERSION=$(npx git-changelog-command-line --print-next-version --major-ve
 
 npm version $CURRENT_VERSION
 
+# Refresh OpenAPI schema snapshots from prod (preserves last-good on fetch failure)
+npm run schemas:sync
+
 # Translate content
 npm run i18n:all
 

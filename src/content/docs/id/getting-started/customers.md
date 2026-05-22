@@ -17,7 +17,7 @@ Merek dan rantai memiliki kebutuhan yang sedikit berbeda dibandingkan dengan pro
 
 - Mengelola beberapa properti di bawah satu akun.
 - Menugaskan manajer ke properti
-- Menggunakan [WinkLinks](/id/link-manager/wink-links), [WordPress](/id/integrations/wordpress) dan [Web Components](/id/integrations/web-components) kami untuk memasarkan dan menjual beberapa properti dalam satu tempat.
+- Menggunakan [WinkLinks](/id/portal/link-manager/wink-links), [WordPress](/id/integrations/wordpress) dan [Web Components](/id/integrations/web-components) kami untuk memasarkan dan menjual beberapa properti dalam satu tempat.
 
 ## Perusahaan manajemen
 
@@ -42,7 +42,7 @@ Perusahaan membutuhkan lebih dari sekadar platform perjalanan:
 - Mereka membutuhkan manajemen pengeluaran dan integrasi pelaporan.
 - Mereka memerlukan dukungan concierge, serta layanan MICE di acara.
 
-Pelancong korporat dapat mengelola akun mereka sendiri di [portal korporat](/id/corporate/what-is-group) kami atau menggunakan plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dan integrasi [Concur](https://www.concur.com/) yang didukung resmi.
+Pelancong korporat dapat mengelola akun mereka sendiri di [portal korporat](/id/portal/corporate/what-is-group) kami atau menggunakan plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dan integrasi [Concur](https://www.concur.com/) yang didukung resmi.
 
 ## Pengembang
 

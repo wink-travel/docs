@@ -50,7 +50,7 @@ V tomto modelu cestovní agenti platí pouze zpracovatelský poplatek Wink a Win
 
 ## Předplatné
 
-Nabízíme také volitelnou službu předplatného (viz [Social](/cs/social/what-is-social)), která pomáhá ubytovacím zařízením rozšířit jejich prodejní a marketingové týmy.
+Nabízíme také volitelnou službu předplatného (viz [Social](/cs/portal/social/what-is-social)), která pomáhá ubytovacím zařízením rozšířit jejich prodejní a marketingové týmy.
 
 ## Efekt platformy
 

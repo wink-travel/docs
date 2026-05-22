@@ -17,7 +17,7 @@ Prekės ženklai ir tinklai turi šiek tiek kitokius poreikius nei atskiras vie�
 
 - Valdyti kelis viešbučius vienu paskyros valdymu.
 - Paskirti vadybininkus viešbučiams.
-- Naudoti [WinkLinks](/lt/link-manager/wink-links), [WordPress](/lt/integrations/wordpress) ir mūsų [Web Components](/lt/integrations/web-components), kad rinkodaros ir pardavimų veikla būtų vykdoma keliuose viešbučiuose vienoje vietoje.
+- Naudoti [WinkLinks](/lt/portal/link-manager/wink-links), [WordPress](/lt/integrations/wordpress) ir mūsų [Web Components](/lt/integrations/web-components), kad rinkodaros ir pardavimų veikla būtų vykdoma keliuose viešbučiuose vienoje vietoje.
 
 ## Valdymo įmonės
 
@@ -42,7 +42,7 @@ Kelionių agentai gauna prieigą prie kelionių inventoriaus visame pasaulyje u�
 - Reikalauja išlaidų valdymo ir ataskaitų integracijos.
 - Joms reikalinga konsjeržo pagalba bei MICE paslaugos renginiuose.
 
-Įmonių keliautojai gali valdyti savo paskyras mūsų [įmonių portale](/lt/corporate/what-is-group) arba naudoti oficialiai palaikomą [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) papildinį ir [Concur](https://www.concur.com/) integraciją.
+Įmonių keliautojai gali valdyti savo paskyras mūsų [įmonių portale](/lt/portal/corporate/what-is-group) arba naudoti oficialiai palaikomą [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) papildinį ir [Concur](https://www.concur.com/) integraciją.
 
 ## Kūrėjai
 

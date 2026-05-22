@@ -17,7 +17,7 @@ I marchi e le catene hanno esigenze leggermente diverse rispetto a una singola s
 
 - Gestire più strutture sotto un unico account.
 - Assegnare manager alle strutture.
-- Usare [WinkLinks](/it/link-manager/wink-links), [WordPress](/it/integrations/wordpress) e i nostri [Web Components](/it/integrations/web-components) per promuovere e vendere più strutture in un unico luogo.
+- Usare [WinkLinks](/it/portal/link-manager/wink-links), [WordPress](/it/integrations/wordpress) e i nostri [Web Components](/it/integrations/web-components) per promuovere e vendere più strutture in un unico luogo.
 
 ## Società di gestione
 
@@ -42,7 +42,7 @@ Le aziende richiedono una piattaforma di viaggio più completa:
 - Richiedono integrazione per la gestione delle spese e reportistica.
 - Hanno bisogno di supporto concierge e servizi MICE per eventi.
 
-I viaggiatori aziendali possono gestire i propri account sul nostro [portale aziendale](/it/corporate/what-is-group) o utilizzare il nostro plugin ufficiale [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) e l’integrazione con [Concur](https://www.concur.com/).
+I viaggiatori aziendali possono gestire i propri account sul nostro [portale aziendale](/it/portal/corporate/what-is-group) o utilizzare il nostro plugin ufficiale [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) e l’integrazione con [Concur](https://www.concur.com/).
 
 ## Sviluppatori
 

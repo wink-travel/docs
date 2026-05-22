@@ -7,8 +7,8 @@ sidebar:
 
 إليك كيف نقسم المسؤوليات في Wink:
 
-- [Extranet](/ar/extranet/what-is-extranet) تهتم بالموردين الذين يديرون المخزون.
-- [Studio](/ar/studio/what-is-studio) تهتم بالشركاء الذين يديرون المحتوى.
+- [Extranet](/ar/portal/extranet/what-is-extranet) تهتم بالموردين الذين يديرون المخزون.
+- [Studio](/ar/portal/studio/what-is-studio) تهتم بالشركاء الذين يديرون المحتوى.
 - `Booking Engine` تهتم بتحويل المحتوى، الذي تم إنشاؤه في `Studio` والذي استند إلى المخزون الذي تم إنشاؤه في `Extranet`، إلى محتوى قابل للحجز.
 - [Payment](/ar/payment/what-is-trip-pay) تهتم بتحصيل / استرداد الأموال من المسافرين الذين يحجزون [من خلال منصات مثل Wink]، ودفع الموردين.
 
@@ -22,11 +22,11 @@ sidebar:
 - إدارة اللغات.
 - توليد تحليلات بناءً على تفاعلات المستخدم، الأحداث، واستدعاءات API.
 - تقديم المخزون القابل للحجز بالتنسيق، اللغة، والعملة المطلوبة، مثل:
-    - [رابط قابل للمشاركة](/ar/studio/shareable-links) على فيسبوك.
+    - [رابط قابل للمشاركة](/ar/portal/studio/shareable-links) على فيسبوك.
     - صفحة هبوط فندق على https://ota.wink.travel تحتوي على مخزون ذلك الفندق.
-    - [بطاقة](/ar/studio/cards) تحتوي على مخزون الشركاء.
-    - [خريطة](/ar/studio/maps) على حساب [WinkLinks](/ar/link-manager/wink-links) الخاص بك.
-    - [استدعاء API](/ar/developers/apis) من نظام وكيل سفر عن بُعد.
+    - [بطاقة](/ar/portal/studio/cards) تحتوي على مخزون الشركاء.
+    - [خريطة](/ar/portal/studio/maps) على حساب [WinkLinks](/ar/portal/link-manager/wink-links) الخاص بك.
+    - [استدعاء API](/ar/api) من نظام وكيل سفر عن بُعد.
 - توفير وسيلة للمسافرين لـ:
     - البحث عن مخزون السفر.
     - حجز المخزون المتاح.
@@ -36,7 +36,7 @@ sidebar:
 
 محرك الحجز هو مجموعة من الوظائف القابلة لإعادة الاستخدام التي نعرضها من خلال https://ota.wink.travel؛ وهو موقع ويب قابل للتخصيص بدرجة عالية للفنادق والشركاء لبيع منتجاتهم للمسافرين.
 
-للمندمجين الذين يرغبون في حرية أكبر، تتوفر جميع الميزات نفسها عبر [إضافة WordPress](/ar/integrations/wordpress/)، و[مكونات الويب](/ar/integrations/web-components)، و[واجهات برمجة التطبيقات](/ar/developers/apis).
+للمندمجين الذين يرغبون في حرية أكبر، تتوفر جميع الميزات نفسها عبر [إضافة WordPress](/ar/integrations/wordpress/)، و[مكونات الويب](/ar/integrations/web-components)، و[واجهات برمجة التطبيقات](/ar/api).
 
 تابع الأقسام التالية لقراءة المزيد عما يقدمه محرك الحجز.
 
@@ -44,4 +44,4 @@ sidebar:
 
 - اقرأ عن [إضافة WordPress](/ar/integrations/wordpress/).
 - اقرأ عن [مكونات الويب](/ar/integrations/web-components).
-- اقرأ عن [واجهات برمجة التطبيقات](/ar/developers/apis).
+- اقرأ عن [واجهات برمجة التطبيقات](/ar/api).

@@ -17,7 +17,7 @@ Wink十年前开始为酒店提供接入服务。酒店使用Wink有效管理其
 
 - 在一个账户下管理多个酒店。
 - 为酒店分配管理人员。
-- 使用[WinkLinks](/zh-CN/link-manager/wink-links)、[WordPress](/zh-CN/integrations/wordpress)和我们的[Web Components](/zh-CN/integrations/web-components)在一个地方推广和销售多个酒店。
+- 使用[WinkLinks](/zh-CN/portal/link-manager/wink-links)、[WordPress](/zh-CN/integrations/wordpress)和我们的[Web Components](/zh-CN/integrations/web-components)在一个地方推广和销售多个酒店。
 
 ## 管理公司
 
@@ -42,7 +42,7 @@ Wink十年前开始为酒店提供接入服务。酒店使用Wink有效管理其
 - 需要费用管理和报表集成。
 - 需要礼宾支持以及活动中的MICE服务。
 
-企业差旅人员可以在我们的[企业门户](/zh-CN/corporate/what-is-group)自行管理账户，或使用我们官方支持的[MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)插件和[Concur](https://www.concur.com/)集成。
+企业差旅人员可以在我们的[企业门户](/zh-CN/portal/corporate/what-is-group)自行管理账户，或使用我们官方支持的[MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)插件和[Concur](https://www.concur.com/)集成。
 
 ## 开发者
 

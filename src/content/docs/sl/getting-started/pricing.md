@@ -50,7 +50,7 @@ Pri uporabi tega modela potovalni agenti plačajo le Winkovo obdelovalno provizi
 
 ## Naročnine
 
-Nudimo tudi neobvezno naročniško storitev (glej [Social](/sl/social/what-is-social)), ki pomaga nastanitvenim obratom okrepiti njihove prodajne in marketinške ekipe.
+Nudimo tudi neobvezno naročniško storitev (glej [Social](/sl/portal/social/what-is-social)), ki pomaga nastanitvenim obratom okrepiti njihove prodajne in marketinške ekipe.
 
 ## Učinek platforme
 
