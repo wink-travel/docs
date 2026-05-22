@@ -134,21 +134,21 @@ export default defineConfig({
           'portal/invite',
           'portal/leaderboard',
           'portal/plan',
-          { label: 'Corporate', items: [{ autogenerate: { directory: 'portal/corporate' } }] },
-          { label: 'Extranet', items: [{ autogenerate: { directory: 'portal/extranet' } }] },
-          { label: 'Link Manager', items: [{ autogenerate: { directory: 'portal/link-manager' } }] },
-          { label: 'Payment', items: [{ autogenerate: { directory: 'portal/payment' } }] },
-          { label: 'Settings', items: [{ autogenerate: { directory: 'portal/settings' } }] },
-          { label: 'Social', items: [{ autogenerate: { directory: 'portal/social' } }] },
-          { label: 'Studio', items: [{ autogenerate: { directory: 'portal/studio' } }] },
-          { label: 'Travel Agent', items: [{ autogenerate: { directory: 'portal/travel-agent' } }] },
+          { label: 'Corporate', collapsed: true, items: [{ autogenerate: { directory: 'portal/corporate' } }] },
+          { label: 'Extranet', collapsed: true, items: [{ autogenerate: { directory: 'portal/extranet' } }] },
+          { label: 'Link Manager', collapsed: true, items: [{ autogenerate: { directory: 'portal/link-manager' } }] },
+          { label: 'Payment', collapsed: true, items: [{ autogenerate: { directory: 'portal/payment' } }] },
+          { label: 'Settings', collapsed: true, items: [{ autogenerate: { directory: 'portal/settings' } }] },
+          { label: 'Social', collapsed: true, items: [{ autogenerate: { directory: 'portal/social' } }] },
+          { label: 'Studio', collapsed: true, items: [{ autogenerate: { directory: 'portal/studio' } }] },
+          { label: 'Travel Agent', collapsed: true, items: [{ autogenerate: { directory: 'portal/travel-agent' } }] },
         ],
       },
       {
         label: 'User Settings',
         items: [
           'account/overview',
-          { label: 'Profile', items: [{ autogenerate: { directory: 'account/profile' } }] },
+          { label: 'Profile', collapsed: true, items: [{ autogenerate: { directory: 'account/profile' } }] },
           'account/register',
         ],
       },
@@ -156,10 +156,10 @@ export default defineConfig({
       {
         label: 'Guides',
         items: [
-          { label: 'For Affiliates', items: [{ autogenerate: { directory: 'guides/affiliates' } }] },
-          { label: 'For Developers', items: [{ autogenerate: { directory: 'guides/developers' } }] },
-          { label: 'For Hoteliers', items: [{ autogenerate: { directory: 'guides/hoteliers' } }] },
-          { label: 'General', items: [{ autogenerate: { directory: 'guides/general' } }] },
+          { label: 'For Affiliates', collapsed: true, items: [{ autogenerate: { directory: 'guides/affiliates' } }] },
+          { label: 'For Developers', collapsed: true, items: [{ autogenerate: { directory: 'guides/developers' } }] },
+          { label: 'For Hoteliers', collapsed: true, items: [{ autogenerate: { directory: 'guides/hoteliers' } }] },
+          { label: 'General', collapsed: true, items: [{ autogenerate: { directory: 'guides/general' } }] },
         ],
       },
       { label: 'Webinars', items: [{ autogenerate: { directory: 'webinars' } }] },
@@ -172,6 +172,7 @@ export default defineConfig({
         'changelog/overview',
         {
           label: 'Application',
+          collapsed: true,
           items: [...makeChangelogsSidebarLinks([
             {
               type: 'recent',
@@ -182,6 +183,7 @@ export default defineConfig({
         },
         {
           label: 'Platform',
+          collapsed: true,
           items: [...makeChangelogsSidebarLinks([
             {
               type: 'recent',
