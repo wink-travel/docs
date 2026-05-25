@@ -7,7 +7,6 @@ import {
   readFileSync,
   writeFileSync,
   readdirSync,
-  statSync,
   mkdirSync,
 } from "fs";
 import { resolve, join, dirname, extname } from "path";
@@ -136,11 +135,16 @@ const rewriteCommonHrefPrefixes = (content: string, lang: string): string => {
 
 // Helper filesystem utilities
 const createDirectory = (filePath: string): void => mkdirSync(filePath);
-const readFiles = (filePath: string): Array<string> => readdirSync(filePath);
-const readFile = (filePath: string): any =>
-  existsSync(filePath)
-    ? readFileSync(filePath, "utf8")
-    : new Error(`Unable to find file ${filePath}`);
+const readFiles = (filePath: string): Array<string> =>
+  readdirSync(filePath).filter(
+    (f) => (f.endsWith(".md") || f.endsWith(".mdx")) && !f.startsWith(".")
+  );
+const readFile = (filePath: string): string => {
+  if (!existsSync(filePath)) {
+    throw new Error(`Unable to find file ${filePath}`);
+  }
+  return readFileSync(filePath, "utf8");
+};
 const writeFile = (filePath: string, content: string): void => {
   mkdirSync(dirname(filePath), { recursive: true });
   // Ensure at most one trailing newline; do not add duplicates
@@ -180,6 +184,7 @@ const directories = [
   "booking-engine",
   "developers",
   "getting-started",
+  "integrations",
   "guides/affiliates",
   "guides/developers",
   "guides/general",
@@ -349,17 +354,6 @@ async function translateFile(
   relativePath: string, // NEW: relative to docs base
   langHashMap: HashMap
 ) {
-  // console.log(`Translating source file to: ${targetLang}`);
-
-  const stat = statSync(fullPath);
-
-  if (!stat.isFile()) {
-    console.log(`${fullPath} is not a file`);
-    return;
-  }
-
-  // console.log(`Reading source file: ${fullPath}`);
-  // here is our english file content
   const rawContent = readFile(fullPath);
   const currentHash = calculateFileHash(rawContent);
 
@@ -448,11 +442,8 @@ async function translateDocs() {
     ? targetLanguages.filter((l) => l.id === ONLY_LANG)
     : targetLanguages;
 
-  // Pre-compute total files to process for accurate progress
-  let totalFiles = 0;
-  // index.mdx per language
-  totalFiles += langList.length;
-  // files in selected directories per language
+  const rootFileCount = 6;
+  let totalFiles = rootFileCount * langList.length;
   for (const directory of dirList) {
     const sourceDirectory = join(docsBaseDir, directory);
     const files = readFiles(sourceDirectory);
@@ -476,65 +467,20 @@ async function translateDocs() {
     // ✅ Load hash map for this language
     const langHashMap = loadHashMap(languageDirectory);
 
-    // we start by translating the index.mdx file located in the root folder
-    const indexFile = join(docsBaseDir, "index.mdx");
-    const indexTargetFile = join(languageDirectory, "index.mdx");
-    await translateFile(
-      indexFile,
-      lang.id,
-      indexTargetFile,
+    const rootFiles = [
       "index.mdx",
-      langHashMap
-    );
-    bar.increment();
-
-    // then the team.mdx file located in the root folder
-    const teamFile = join(docsBaseDir, "team.mdx");
-    const teamTargetFile = join(languageDirectory, "team.mdx");
-    await translateFile(
-      teamFile,
-      lang.id,
-      teamTargetFile,
       "team.mdx",
-      langHashMap
-    );
-    bar.increment();
-
-    // then the contact.mdx file located in the root folder
-    const contactFile = join(docsBaseDir, "contact.mdx");
-    const contactTargetFile = join(languageDirectory, "contact.mdx");
-    await translateFile(
-      contactFile,
-      lang.id,
-      contactTargetFile,
       "contact.mdx",
-      langHashMap
-    );
-    bar.increment();
-
-    // then the privacy.md file located in the root folder
-    const privacyFile = join(docsBaseDir, "privacy.md");
-    const privacyTargetFile = join(languageDirectory, "privacy.md");
-    await translateFile(
-      privacyFile,
-      lang.id,
-      privacyTargetFile,
       "privacy.md",
-      langHashMap
-    );
-    bar.increment();
-
-    // then the terms.md file located in the root folder
-    const termsFile = join(docsBaseDir, "terms.md");
-    const termsTargetFile = join(languageDirectory, "terms.md");
-    await translateFile(
-      termsFile,
-      lang.id,
-      termsTargetFile,
       "terms.md",
-      langHashMap
-    );
-    bar.increment();
+      "jobs.mdx",
+    ];
+    for (const rootFile of rootFiles) {
+      const sourceFile = join(docsBaseDir, rootFile);
+      const targetFile = join(languageDirectory, rootFile);
+      await translateFile(sourceFile, lang.id, targetFile, rootFile, langHashMap);
+      bar.increment();
+    }
 
     for (const directory of dirList) {
       console.log(`🔄 Translating files in directory: ${directory}...`);
