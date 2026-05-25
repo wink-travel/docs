@@ -3,7 +3,7 @@ title: Who Wants To Be A Hotel Affiliate Millionaire
 date: 2025-04-15
 cover:
   alt: Cover image
-  image: https://res.cloudinary.com/traveliko/image/upload/w_2069/v1767964486/blog/winkblog-Who-Wants-To-Be-A-Hotel-Affiliate-Millionaire-scaled.jpg
+  image: ../../../assets/blog/winkblog-Who-Wants-To-Be-A-Hotel-Affiliate-Millionaire-scaled.jpg
 authors:
   - may
 tags:

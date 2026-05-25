@@ -3,7 +3,7 @@ title: Avoid These Hotel Affiliate Mistakes
 date: 2025-03-14
 cover:
   alt: Cover image
-  image: https://res.cloudinary.com/traveliko/image/upload/w_2069/v1767938230/blog/winkblog-Select-Avoid-These-Hotel-Affiliate-Mistakes-scaled.jpg
+  image: ../../../assets/blog/winkblog-Select-Avoid-These-Hotel-Affiliate-Mistakes-scaled.jpg
 authors:
   - may
 tags:

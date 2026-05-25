@@ -3,7 +3,7 @@ title: Take to the Skies with Cloud-Based Hotel Management Systems
 date: 2025-06-15
 cover:
   alt: Cover image
-  image: https://res.cloudinary.com/traveliko/image/upload/w_2069/v1767966033/blog/winkblog-Take-to-the-Skies-with-Cloud-Based-Hotel-Management-Systems-scaled.jpg
+  image: ../../../assets/blog/winkblog-Take-to-the-Skies-with-Cloud-Based-Hotel-Management-Systems-scaled.jpg
 authors:
   - may
 tags:

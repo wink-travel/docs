@@ -3,7 +3,7 @@ title: Overcoming Challenges with a Property Management System
 date: 2025-08-14
 cover:
   alt: Cover image
-  image: https://res.cloudinary.com/traveliko/image/upload/w_2069/v1767967397/blog/winkblog-How-to-Thrive-in-Hospitality-scaled.jpg
+  image: ../../../assets/blog/winkblog-How-to-Thrive-in-Hospitality-scaled.jpg
 authors:
   - may
 tags:

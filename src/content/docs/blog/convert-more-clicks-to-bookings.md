@@ -3,7 +3,7 @@ title: Convert More Clicks to Bookings - Mastering Your Hotel Booking Engine
 date: 2025-09-15
 cover:
   alt: Cover image
-  image: https://res.cloudinary.com/traveliko/image/upload/w_2069/v1767967922/blog/winkblog-Convert-More-Clicks-to-Bookings-scaled.jpg
+  image: ../../../assets/blog/winkblog-Convert-More-Clicks-to-Bookings-scaled.jpg
 authors:
   - may
 tags:

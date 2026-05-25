@@ -3,7 +3,7 @@ title: Hotelier Software Integration
 date: 2025-05-15
 cover:
   alt: Cover image
-  image: https://res.cloudinary.com/traveliko/image/upload/w_2069/v1767965360/blog/winkblog-Hotelier-Software-Integration-scaled.jpg
+  image: ../../../assets/blog/winkblog-Hotelier-Software-Integration-scaled.jpg
 authors:
   - may
 tags:
