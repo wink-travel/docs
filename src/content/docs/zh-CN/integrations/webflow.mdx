@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: 使用自定义代码嵌入将 Wink 旅游库存嵌入到您的 Webflow 网站中。
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow 支持在三个位置使用自定义 HTML 和 JavaScript：全站 `<head>`、全站 `</body>` 以及每个元素的代码嵌入。这使得集成 Wink Web 组件变得非常简单。
+
+:::note
+自定义代码功能在 **Webflow 的基础计划及以上** 可用。全站 `</body>` 注入需要付费托管计划。
+:::
+
+## 全站加载 Wink 脚本
+
+<Steps>
+1. 在 Webflow Designer 中，打开 **项目设置 → 自定义代码**。
+2. 在 **Head 代码** 部分，添加样式表：
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. 在 **页脚代码** 部分，添加脚本和应用加载器（替换 `YOUR_CLIENT_ID`）：
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. 点击 **保存更改**。
+</Steps>
+
+:::tip
+您的 Client ID 可在 Wink 账户的 [应用程序](/zh-CN/portal/settings/applications) 中找到。
+:::
+
+## 向特定元素添加组件
+
+<Steps>
+1. 在 Designer 中，选择您想放置组件的 **Div** 或 **Section**。
+2. 在右侧面板，点击 **`</>` 嵌入** 图标（或从添加面板中添加 **HTML 嵌入** 元素）。
+3. 粘贴组件 HTML，例如：
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. 点击 **保存并关闭**。
+</Steps>
+
+## 单页自定义代码
+
+如果您只需要在特定页面使用 Wink，请使用单页代码注入，而非全站注入：
+
+<Steps>
+1. 打开目标页面的 **页面设置**（页面面板中的齿轮图标）。
+2. 滚动到 **自定义代码 → `</body>` 标签前**。
+3. 粘贴与上述相同的脚本和应用加载器。
+4. 保存页面设置。
+</Steps>
+
+## 可用组件
+
+| 组件 | HTML 标签 | 用途 |
+|---|---|---|
+| 内容加载器 | `<wink-content-loader>` | 显示酒店卡片、网格、地图 |
+| 查找 | `<wink-lookup>` | 目的地搜索栏 |
+| 搜索按钮 | `<wink-search-button>` | 打开行程选择器 |
+| 账户按钮 | `<wink-account-button>` | 登录 / 用户菜单 |
+| 行程按钮 | `<wink-itinerary-button>` | 显示当前行程 |
+| 行程选择器 | `<wink-itinerary-picker>` | 完整行程表单 |
+| 购物车 | `<wink-shopping-cart-button>` | 购物车摘要按钮 |
+
+完整属性参考请参见 [Web Components](/zh-CN/integrations/web-components)。
+
+## 进一步阅读
+
+- [Web Components 参考](/zh-CN/integrations/web-components)
+- [获取您的 Client ID](/zh-CN/portal/settings/applications)
+- [Webflow 自定义代码文档](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

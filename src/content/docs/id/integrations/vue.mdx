@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: Gunakan komponen web Wink dalam proyek Vue 3 dan Vite dengan opsi compiler isCustomElement.
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3 membutuhkan satu petunjuk compiler untuk memperlakukan tag `<wink-*>` sebagai elemen kustom asli, bukan komponen Vue yang belum terdefinisi. Setelah itu, mereka berfungsi seperti elemen HTML lainnya.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Pasang dan muat bundel CDN dengan tipe TypeScript."
+/>
+
+## Pasang
+
+```bash
+npm install @wink/elements
+```
+
+## Konfigurasikan compiler
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Perlakukan semua tag yang diawali dengan "wink-" sebagai elemen kustom
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## Muat CDN sekali saat aplikasi dijalankan
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## Gunakan dalam template
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — tambahkan tipe elemen global
+
+Vue 3 + TypeScript membaca tipe elemen kustom dari `HTMLElementTagNameMap` global. Tambahkan file deklarasi:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## Variabel lingkungan
+
+Tambahkan ke `.env.local`:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite hanya mengekspos variabel yang diawali dengan `VITE_` ke bundel klien.
+
+<Aside type="tip">
+Untuk Nuxt 3, lihat halaman integrasi khusus [Nuxt integration page](/id/integrations/nuxt) yang membahas pemuatan aman SSR.
+</Aside>
+
+## Bacaan lanjutan
+
+- [Referensi Web Components](/id/integrations/web-components)
+- [@wink/elements npm package](/id/integrations/npm)
+- [Integrasi Nuxt 3](/id/integrations/nuxt)

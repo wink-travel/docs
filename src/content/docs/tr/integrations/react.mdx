@@ -1,0 +1,111 @@
+---
+title: React
+description: @wink/elements aracılığıyla tam TypeScript desteğiyle herhangi bir React uygulamasında Wink web bileşenlerini kullanın.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ özel elementler için birinci sınıf destek sunar. React 18 ve öncesi yalnızca string öznitelikleri geçirir — sürümler arasında güvenli kalmak için aşağıdaki tipli yardımcı deseni kullanın.
+
+<LinkCard
+  title="@wink/elements npm paketi"
+  href="/integrations/npm"
+  description="TypeScript tipleriyle CDN paketini yükleyin ve kurun."
+/>
+
+## Kurulum
+
+```bash
+npm install @wink/elements
+```
+
+## Uygulama kökünde bir kez yükleyin
+
+`load()` fonksiyonunu en üst düzey bileşeninizde çağırın. İdempotenttir — birden çok kez çağırmak güvenlidir.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Bileşenleri JSX içinde kullanma
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — JSX intrinsics bildirimi
+
+React varsayılan olarak özel element isimlerini bilmez. Tip hatalarını önlemek için bir bildirim dosyası ekleyin:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="React 18 öznitelik sınırlaması">
+React 18 ve öncesi tüm JSX özelliklerini DOM’a geçirmeden önce stringe dönüştürür. Boolean ve nesne özellikler manuel olarak dönüştürülmelidir. React 19, string olmayan özellikleri doğrudan özel elementlere geçirir — herhangi bir çözümlemeye gerek yoktur.
+</Aside>
+
+## Tipli özniteliklerin geçirilmesi (React 18 için güvenli)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// React 19’da spread çalışır; React 18 için tüm değerler zaten stringtir
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Daha fazla okuma
+
+- [Web Components referansı](/tr/integrations/web-components)
+- [@wink/elements npm paketi](/tr/integrations/npm)
+- [Next.js entegrasyonu](/tr/integrations/nextjs)

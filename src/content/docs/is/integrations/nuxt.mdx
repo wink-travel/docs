@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: Bættu við Wink vefhlutum í Nuxt 3 forrit með viðskiptavinahluta viðbót.
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 renderar síður á þjóninum sjálfgefið. CDN skriptur og sérsniðin þættir verða að hlaðast aðeins á viðskiptavinahlið. Nuxt viðskiptavinaviðbót er hreinskilnasta staðsetningin til að gera þetta.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Settu upp og hlaðaðu CDN pakkanum með TypeScript týpum."
+/>
+
+## Setja upp
+
+```bash
+npm install @wink/elements
+```
+
+## Búa til viðskiptavinaviðbót
+
+Viðskeytið `.client.ts` segir Nuxt að keyra þessa viðbót aðeins í vafranum:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## Stilltu keyrslubreytu
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+Bættu við í `.env`:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Stilltu Vue fyrir sérsniðna þætti
+
+Bættu við `isCustomElement` þýðanda valkostinum svo Vue varar ekki við óþekktum `<wink-*>` merkjum:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## Nota í sniðmátum
+
+Pakktu Wink þáttum inn í `<ClientOnly>` til að koma í veg fyrir ósamræmi í SSR hydrerun:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` renderar staðgengil á þjóninum og setur raunverulegan þátt á viðskiptavininn — þetta er mælt með mynstrið fyrir öll vafra-einangruð þriðja aðila innbyggð í Nuxt.
+</Aside>
+
+## TypeScript týpur
+
+Framlengdu alþjóðlega `HTMLElementTagNameMap` (eins og í Vue 3) til að fá sjálfvirka útfyllingu á eiginleikum. Sjáðu [Vue 3 samþættingarsíðu](/is/integrations/vue#typescript--augment-global-element-types) fyrir fulla yfirlýsingu.
+
+## Frekari lesning
+
+- [Vefhlutarefnisskjal](/is/integrations/web-components)
+- [@wink/elements npm package](/is/integrations/npm)
+- [Vue 3 samþætting](/is/integrations/vue)

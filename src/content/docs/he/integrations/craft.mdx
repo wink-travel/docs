@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: הטמע את מלאי הנסיעות של Wink באתר Craft CMS 5 שלך באמצעות תוסף Wink.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+התוסף **Wink Craft CMS Plugin** משלב את מלאי הנסיעות של Wink ב-Craft 5 דרך פונקציות Twig ושדה מותאם לעורך התוכן. העורכים יכולים לבחור תבנית Wink ספציפית מתוך תפריט נפתח ישירות בעורך הערכים.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin on GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="קוד מקור, מדריך התקנה למפתחים והוראות לתרומה."
+/>
+
+## דרישות
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## התקנה
+
+<Steps>
+1. התקן דרך Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. הפעל את התוסף בלוח הבקרה תחת **Settings → Plugins**, או דרך שורת הפקודה:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. עבור אל **Settings → Wink** בלוח הבקרה.
+4. הזן את **Client ID** ו-**Client Secret** שלך, בחר את הסביבה ולחץ על **Save**.
+   עבור אל [Applications](/he/portal/settings/applications) כדי לקבל את האישורים שלך.
+</Steps>
+
+## שימוש בתבניות Twig
+
+לאחר ההגדרה, קרא לפונקציות Twig של Wink בכל מקום בתבניות שלך:
+
+```twig
+{# הצגת רשת מלונות #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# שורת חיפוש יעד #}
+{{ winkLookup() }}
+
+{# כפתור בחירת מסלול #}
+{{ winkSearch() }}
+
+{# כפתור חשבון משתמש #}
+{{ winkAccount() }}
+```
+
+הפונקציה `winkContent()` מזריקה אוטומטית את `<wink-app-loader>` בפעם הראשונה שהיא נקראת בדף.
+
+## פונקציות Twig זמינות
+
+| פונקציה | פלט | תיאור |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | כרטיסי מלונות, רשתות, מפות |
+| `winkLookup()` | `<wink-lookup>` | שורת חיפוש יעד |
+| `winkSearch()` | `<wink-search-button>` | כפתור בחירת מסלול |
+| `winkAccount()` | `<wink-account-button>` | כניסה / חשבון משתמש |
+| `winkItinerary()` | `<wink-itinerary-button>` | כפתור סטטוס מסלול |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | כפתור עגלת קניות |
+
+## סוג שדה Wink Layout
+
+הוסף שדה **Wink Layout** לכל סקשן כדי לאפשר לעורכים לבחור מתוך תפריט נפתח את כל התבניות הזמינות מחשבון Wink שלך:
+
+<Steps>
+1. עבור אל **Settings → Fields → New Field**.
+2. הגדר את **Field Type** ל-**Wink Layout**.
+3. הוסף את השדה לפריסת השדות של סוג הערך שלך.
+4. כעת העורכים יכולים לבחור תבנית ישירות בעורך הערכים — ללא צורך בהעתקה והדבקה של מזהים.
+</Steps>
+
+בתבנית שלך, העבר את ערך השדה ל-`winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## קריאה נוספת
+
+- [הפניות Web Components](/he/integrations/web-components)
+- [קבל את Client ID שלך](/he/portal/settings/applications)
+- [Wink Craft Plugin — קוד מקור ותיעוד למפתחים](https://github.com/wink-travel/wink-craft-plugin)

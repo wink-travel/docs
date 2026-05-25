@@ -1,0 +1,103 @@
+---
+title: Preact
+description: ใช้คอมโพเนนต์เว็บของ Wink ในแอป Preact — รูปแบบเดียวกับ React แต่มีขนาดเล็กกว่า
+sidebar:
+  order: 24
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+API ของ Preact เข้ากันได้กับ React การผสานรวมทำตามรูปแบบเดียวกัน — เรียกใช้ `load()` ครั้งเดียวตอนเริ่มแอป จากนั้นใช้แท็ก `<wink-*>` ใน JSX
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="ติดตั้งและโหลด CDN bundle พร้อมกับ TypeScript types."
+/>
+
+## ติดตั้ง
+
+```bash
+npm install @wink/elements
+```
+
+## โหลดครั้งเดียวตอนเริ่มแอป
+
+```tsx
+// src/app.tsx
+import { useEffect } from 'preact/hooks';
+import { load } from '@wink/elements';
+
+export function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## ใช้ใน JSX
+
+```tsx
+// src/pages/hotels.tsx
+export function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — ประกาศ JSX intrinsics
+
+namespace JSX ของ Preact แยกจาก React ให้เพิ่มใน `preact/src/jsx.d.ts`:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'preact' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## Preact กับ `preact/compat`
+
+ถ้าคุณตั้ง alias React เป็น `preact/compat` ให้ใช้การประกาศ JSX ของ React แทน:
+
+```ts
+// src/wink-elements.d.ts
+// ใช้การประกาศ JSX ของ React จาก /integrations/react
+// — preact/compat จะ re-export namespace JSX ของ React
+```
+
+<Aside type="tip">
+ขนาด bundle ที่เล็กกว่าของ Preact เหมาะสำหรับการฝังคอมโพเนนต์ Wink ใน storefront ที่ต้องการประสิทธิภาพสูง ฟังก์ชัน `load()` ของ `@wink/elements` เพิ่มขนาดประมาณ 500 ไบต์เมื่อบีบอัดด้วย gzip — น้ำหนักส่วนใหญ่เกิดจาก CDN bundle ที่โหลดแบบอะซิงโครนัส
+</Aside>
+
+## อ่านเพิ่มเติม
+
+- [Web Components reference](/th/integrations/web-components)
+- [@wink/elements npm package](/th/integrations/npm)
+- [React integration](/th/integrations/react)

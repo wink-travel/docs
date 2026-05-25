@@ -1,0 +1,73 @@
+---
+title: Squarespace
+description: Integrer Wink rejseinventar på dit Squarespace-websted ved hjælp af Code Injection og brugerdefinerede HTML-blokke.
+sidebar:
+  order: 3
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+:::note
+Squarespaces Code Injection-funktion er tilgængelig på **Business-planen og derover**. Brugerdefinerede HTML-blokke er tilgængelige på alle betalte planer.
+:::
+
+Squarespace understøtter brugerdefineret HTML og JavaScript, hvilket betyder, at du kan integrere enhver Wink webkomponent direkte på dit site uden en plugin. Denne vejledning viser dig, hvordan du indlæser Wink-scripts på hele sitet og derefter placerer komponenter på individuelle sider.
+
+## Indlæs Wink-scripts på hele sitet
+
+Ved at tilføje scripts til dit sites globale footer og header sikrer du, at Wink er tilgængelig på alle sider uden at gentage opsætningen.
+
+<Steps>
+1. I Squarespace-editoren, gå til **Settings → Advanced → Code Injection**.
+2. I feltet **Header** tilføj stylesheet:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. I feltet **Footer** tilføj scriptet og applikationsloaderen (erstat `YOUR_CLIENT_ID` med din Wink Client ID):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klik på **Save**.
+</Steps>
+
+:::tip
+Din Client ID findes i din Wink-konto under [Applications](/da/portal/settings/applications).
+:::
+
+## Tilføj en komponent til en side
+
+Når scripts er indlæst globalt, kan du indsætte enhver Wink-komponent på en hvilken som helst side ved hjælp af en **Code Block**.
+
+<Steps>
+1. Åbn den side, du vil redigere.
+2. Klik på **Edit** og tilføj en ny **Code**-blok, hvor du ønsker komponenten vist.
+3. Indsæt komponentens HTML, for eksempel en content loader:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klik på **Apply** og derefter **Save**.
+</Steps>
+
+## Tilgængelige komponenter
+
+| Komponent | HTML-tag | Formål |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Vis hotelkort, grids, kort |
+| Lookup | `<wink-lookup>` | Søgefelt til destinationer |
+| Search button | `<wink-search-button>` | Åbn rejseplanvælger |
+| Account button | `<wink-account-button>` | Log ind / brugermenu |
+| Itinerary button | `<wink-itinerary-button>` | Vis aktuel rejseplan |
+| Itinerary picker | `<wink-itinerary-picker>` | Fuld rejseplansformular |
+| Shopping cart | `<wink-shopping-cart-button>` | Oversigt over indkøbskurv |
+
+Se [Web Components](/da/integrations/web-components) for den fulde attributreference for hver komponent.
+
+## Yderligere læsning
+
+- [Web Components reference](/da/integrations/web-components)
+- [Få din Client ID](/da/portal/settings/applications)
+- [Squarespace Code Injection-dokumentation](https://support.squarespace.com/hc/en-us/articles/205815908)

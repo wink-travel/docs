@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: استخدم مكونات الويب Wink في مشاريع Vue 3 و Vite مع خيار المترجم isCustomElement.
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+تحتاج Vue 3 إلى تلميح واحد من المترجم للتعامل مع علامات `<wink-*>` كعناصر مخصصة أصلية بدلاً من مكونات Vue غير المعروفة. بعد ذلك، تعمل مثل أي عنصر HTML آخر.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="قم بتثبيت وتحميل حزمة CDN مع أنواع TypeScript."
+/>
+
+## التثبيت
+
+```bash
+npm install @wink/elements
+```
+
+## تكوين المترجم
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // اعتبر جميع العلامات التي تبدأ بـ "wink-" كعناصر مخصصة
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## تحميل CDN مرة واحدة عند بدء تشغيل التطبيق
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## الاستخدام في القوالب
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — توسيع أنواع العناصر العالمية
+
+تقرأ Vue 3 + TypeScript أنواع العناصر المخصصة من `HTMLElementTagNameMap` العالمية. أضف ملف إعلان:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## متغيرات البيئة
+
+أضف إلى `.env.local`:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+يكشف Vite فقط عن المتغيرات التي تبدأ بـ `VITE_` لحزمة العميل.
+
+<Aside type="tip">
+لـ Nuxt 3، راجع صفحة [التكامل الخاصة بـ Nuxt](/ar/integrations/nuxt) التي تغطي التحميل الآمن لـ SSR.
+</Aside>
+
+## قراءة إضافية
+
+- [مرجع مكونات الويب](/ar/integrations/web-components)
+- [حزمة npm @wink/elements](/ar/integrations/npm)
+- [تكامل Nuxt 3](/ar/integrations/nuxt)

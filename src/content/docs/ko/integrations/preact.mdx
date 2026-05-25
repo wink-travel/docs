@@ -1,0 +1,103 @@
+---
+title: Preact
+description: Preact 애플리케이션에서 Wink 웹 컴포넌트를 사용하세요 — React와 동일한 패턴에 더 작은 용량입니다.
+sidebar:
+  order: 24
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Preact의 API는 React와 호환됩니다. 통합은 동일한 패턴을 따릅니다 — 앱 시작 시 `load()`를 한 번 호출한 후 JSX에서 `<wink-*>` 태그를 사용하세요.
+
+<LinkCard
+  title="@wink/elements npm 패키지"
+  href="/integrations/npm"
+  description="TypeScript 타입과 함께 CDN 번들을 설치하고 로드하세요."
+/>
+
+## 설치
+
+```bash
+npm install @wink/elements
+```
+
+## 앱 시작 시 한 번 로드
+
+```tsx
+// src/app.tsx
+import { useEffect } from 'preact/hooks';
+import { load } from '@wink/elements';
+
+export function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## JSX에서 사용
+
+```tsx
+// src/pages/hotels.tsx
+export function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — JSX 내장 요소 선언
+
+Preact의 JSX 네임스페이스는 React와 별개입니다. `preact/src/jsx.d.ts`를 확장하세요:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'preact' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## `preact/compat`와 함께 Preact 사용
+
+React를 `preact/compat`로 별칭 처리하는 경우 React JSX 선언을 대신 사용하세요:
+
+```ts
+// src/wink-elements.d.ts
+// /integrations/react에서 React JSX 선언 사용
+// — preact/compat는 React의 JSX 네임스페이스를 재내보냅니다
+```
+
+<Aside type="tip">
+Preact의 더 작은 번들 크기는 성능에 민감한 스토어프론트에 Wink 컴포넌트를 임베드하기에 적합합니다. `@wink/elements`의 `load()` 함수는 gzip 기준 약 500바이트를 추가하며, 대부분의 용량은 비동기 로드되는 CDN 번들에서 발생합니다.
+</Aside>
+
+## 추가 자료
+
+- [웹 컴포넌트 참조](/ko/integrations/web-components)
+- [@wink/elements npm 패키지](/ko/integrations/npm)
+- [React 통합](/ko/integrations/react)

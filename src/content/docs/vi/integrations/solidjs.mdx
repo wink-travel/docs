@@ -1,0 +1,119 @@
+---
+title: SolidJS
+description: Sử dụng các thành phần web Wink trong ứng dụng SolidJS — hỗ trợ phần tử tùy chỉnh gốc với onMount.
+sidebar:
+  order: 25
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+SolidJS có hỗ trợ phần tử tùy chỉnh gốc — nó truyền thuộc tính trực tiếp đến DOM mà không qua lớp DOM ảo. Không cần cấu hình trình biên dịch thêm.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Cài đặt và tải gói CDN kèm kiểu TypeScript."
+/>
+
+## Cài đặt
+
+```bash
+npm install @wink/elements
+```
+
+## Tải một lần khi khởi động ứng dụng
+
+```tsx
+// src/App.tsx
+import { onMount } from 'solid-js';
+import { load } from '@wink/elements';
+
+export default function App() {
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+
+  return <YourRoutes />;
+}
+```
+
+`onMount` chỉ chạy trong trình duyệt sau lần render đầu tiên — nó tương đương với `useEffect(() => {}, [])` trong React.
+
+## Sử dụng trong JSX
+
+```tsx
+// src/pages/Hotels.tsx
+import { createSignal } from 'solid-js';
+
+export default function HotelsPage() {
+  const [layoutId] = createSignal('YOUR_LAYOUT_ID');
+
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id={layoutId()} />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — khai báo JSX intrinsics
+
+SolidJS sử dụng namespace JSX riêng. Mở rộng kiểu JSX của `solid-js`:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'solid-js' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## SolidStart (SSR)
+
+Đối với ứng dụng SolidStart có render phía máy chủ, bao bọc gọi `load()` bằng `isServer`:
+
+```tsx
+// src/app.tsx
+import { onMount } from 'solid-js';
+import { isServer } from 'solid-js/web';
+import { load } from '@wink/elements';
+
+export default function App() {
+  if (!isServer) {
+    onMount(() => {
+      load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+    });
+  }
+
+  return <YourRoutes />;
+}
+```
+
+<Aside type="tip">
+Phản ứng tinh vi của SolidJS có nghĩa là các cập nhật thuộc tính được truyền trực tiếp đến DOM — không có chi phí gộp hay hòa giải. Các thành phần Wink nhận thay đổi thuộc tính ngay khi giá trị tín hiệu của bạn cập nhật.
+</Aside>
+
+## Đọc thêm
+
+- [Tham khảo Web Components](/vi/integrations/web-components)
+- [@wink/elements npm package](/vi/integrations/npm)

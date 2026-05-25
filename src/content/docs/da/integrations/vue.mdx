@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: Brug Wink webkomponenter i Vue 3 og Vite projekter med isCustomElement compiler-indstillingen.
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3 kræver et compiler-hint for at behandle `<wink-*>` tags som native custom elements i stedet for uafklarede Vue-komponenter. Derefter fungerer de som ethvert andet HTML-element.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Installer og indlæs CDN-bundtet med TypeScript-typer."
+/>
+
+## Installér
+
+```bash
+npm install @wink/elements
+```
+
+## Konfigurer compileren
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Behandl alle tags, der starter med "wink-", som custom elements
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## Indlæs CDN én gang ved app-start
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## Brug i templates
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — udvid globale elementtyper
+
+Vue 3 + TypeScript læser custom element-typer fra den globale `HTMLElementTagNameMap`. Tilføj en deklarationsfil:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## Miljøvariabler
+
+Tilføj til `.env.local`:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite eksponerer kun variabler med præfikset `VITE_` til klient-bundtet.
+
+<Aside type="tip">
+For Nuxt 3, se den dedikerede [Nuxt integration side](/da/integrations/nuxt), som dækker SSR-sikker indlæsning.
+</Aside>
+
+## Yderligere læsning
+
+- [Web Components reference](/da/integrations/web-components)
+- [@wink/elements npm package](/da/integrations/npm)
+- [Nuxt 3 integration](/da/integrations/nuxt)

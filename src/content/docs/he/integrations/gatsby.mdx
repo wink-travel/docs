@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: הוסף רכיבי ווב של Wink לאתרים מבוססי Gatsby באמצעות gatsby-browser.js לטעינה בצד הלקוח.
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby מייצר HTML סטטי בזמן הבנייה ומבצע רה-הידרציה בצד הלקוח. סקריפטים מ-CDN חייבים להיטען רק ב-API של הדפדפן — `gatsby-browser.js` הוא המקום הנכון לכך.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="התקן וטעין את חבילת ה-CDN עם טיפוסי TypeScript."
+/>
+
+## התקנה
+
+```bash
+npm install @wink/elements
+```
+
+## טעינה דרך gatsby-browser.js
+
+ה-API `onClientEntry` רץ פעם אחת ברגע ש-runtime של Gatsby מאותחל בדפדפן:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## משתני סביבה
+
+Gatsby חושף רק משתנים שמתחילים ב-`GATSBY_` לחבילת הדפדפן:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## שימוש בעמודים וברכיבים
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby משתמש ב-React, לכן הוסף את אותן הכרזות JSX intrinsic כמו באינטגרציה של React:
+
+```ts
+// src/wink-elements.d.ts
+// ראה /integrations/react עבור קובץ ההכרזה המלא
+```
+
+<Aside type="caution" title="שגיאות בניית SSR">
+במהלך `gatsby build`, Gatsby מייצר עמודים ל-HTML סטטי בסביבת Node.js שבה `window` ו-`document` אינם זמינים. אם תייבא את `@wink/elements` ברמה העליונה של רכיב עמוד (מחוץ ל-`onClientEntry`), הבנייה תיכשל.
+
+תמיד השתמש ב-`gatsby-browser.js` / `onClientEntry` — לעולם אל תייבא את `load` ישירות במודול של עמוד או רכיב.
+</Aside>
+
+## gatsby-ssr.js — אין צורך בשינויים
+
+אין צורך לשנות את `gatsby-ssr.js`. תגיות `<wink-*>` מתורגמות לאלמנטים HTML רגילים ביציאה הסטטית, וסקריפט ה-CDN משדרג אותן כאשר הדפדפן טוען את העמוד.
+
+## קריאה נוספת
+
+- [Web Components reference](/he/integrations/web-components)
+- [@wink/elements npm package](/he/integrations/npm)
+- [React integration](/he/integrations/react)

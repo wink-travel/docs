@@ -1,0 +1,78 @@
+---
+title: घोस्ट
+description: कोड इंजेक्शन का उपयोग करके अपनी Ghost प्रकाशन में Wink ट्रैवल इन्वेंटरी एम्बेड करें।
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Ghost की अंतर्निहित **Code Injection** सुविधा आपको अपनी प्रकाशन के वैश्विक `<head>` और `</body>` में स्क्रिप्ट जोड़ने देती है। सभी Ghost योजनाएं कोड इंजेक्शन का समर्थन करती हैं, जिससे किसी भी पेज या पोस्ट पर Wink घटकों को एम्बेड करना आसान हो जाता है।
+
+## साइट-व्यापी Wink स्क्रिप्ट लोड करें
+
+<Steps>
+1. Ghost एडमिन पैनल में जाएं, फिर **Settings → Code Injection** पर क्लिक करें।
+2. **Site Header** बॉक्स में, स्टाइलशीट जोड़ें:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. **Site Footer** बॉक्स में, स्क्रिप्ट और एप्लिकेशन लोडर जोड़ें (यहाँ `YOUR_CLIENT_ID` बदलें):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. **Save** पर क्लिक करें।
+</Steps>
+
+:::tip
+आपका Client ID आपके Wink खाते में [Applications](/hi/portal/settings/applications) के अंतर्गत उपलब्ध है।
+:::
+
+## पोस्ट या पेज में एक घटक जोड़ें
+
+Ghost का संपादक एक **HTML कार्ड** का समर्थन करता है जो आपको अपनी सामग्री में कहीं भी कच्चा HTML डालने देता है।
+
+<Steps>
+1. Ghost संपादक में पोस्ट या पेज खोलें।
+2. कार्ड पिकर खोलने के लिए `/` टाइप करें और **HTML** चुनें।
+3. घटक HTML पेस्ट करें, उदाहरण के लिए:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. कार्ड के बाहर क्लिक करके पूर्वावलोकन करें, फिर प्रकाशित करें।
+</Steps>
+
+## प्रति-पेज कोड इंजेक्शन
+
+यदि कोई घटक केवल एक पेज पर दिखाना हो, तो Ghost प्रति-पेज कोड इंजेक्शन का भी समर्थन करता है:
+
+<Steps>
+1. पोस्ट या पेज सेटिंग्स (एडिटर में गियर आइकन) खोलें।
+2. **Code Injection** तक स्क्रॉल करें।
+3. घटक टैग **Footer** फ़ील्ड में जोड़ें (वैश्विक app-loader केवल साइट-व्यापी फुटर में होना चाहिए)।
+4. सेव करें।
+</Steps>
+
+## उपलब्ध घटक
+
+| घटक | HTML टैग | उद्देश्य |
+|---|---|---|
+| कंटेंट लोडर | `<wink-content-loader>` | होटल कार्ड, ग्रिड, मानचित्र दिखाएं |
+| लुकअप | `<wink-lookup>` | गंतव्य खोज बार |
+| खोज बटन | `<wink-search-button>` | यात्रा कार्यक्रम पिकर खोलें |
+| खाता बटन | `<wink-account-button>` | साइन इन / उपयोगकर्ता मेनू |
+| यात्रा कार्यक्रम बटन | `<wink-itinerary-button>` | वर्तमान यात्रा कार्यक्रम दिखाएं |
+| यात्रा कार्यक्रम पिकर | `<wink-itinerary-picker>` | पूर्ण यात्रा कार्यक्रम फॉर्म |
+| शॉपिंग कार्ट | `<wink-shopping-cart-button>` | कार्ट सारांश बटन |
+
+पूर्ण एट्रिब्यूट संदर्भ के लिए [Web Components](/hi/integrations/web-components) देखें।
+
+## आगे पढ़ें
+
+- [Web Components संदर्भ](/hi/integrations/web-components)
+- [अपना Client ID प्राप्त करें](/hi/portal/settings/applications)
+- [Ghost Code Injection दस्तावेज़](https://ghost.org/help/ghost-themes/#code-injection)

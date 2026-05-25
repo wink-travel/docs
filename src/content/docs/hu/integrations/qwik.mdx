@@ -1,0 +1,120 @@
+---
+title: Qwik
+description: Használd a Wink webkomponenseket Qwik és QwikCity alkalmazásokban a useVisibleTask$ segítségével, kizárólag kliensoldali futtatáshoz.
+sidebar:
+  order: 26
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+A Qwik újraindíthatósági modellje azt jelenti, hogy a JavaScript lustán fut le — csak akkor, amikor a felhasználó interakcióba lép. Használd a `useVisibleTask$`-t olyan kód futtatására, amelynek a böngészőben kell lefutnia, amikor a komponens láthatóvá válik.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Telepítsd és töltsd be a CDN csomagot TypeScript típusokkal."
+/>
+
+## Telepítés
+
+```bash
+npm install @wink/elements
+```
+
+## Betöltés useVisibleTask$-szel
+
+A `useVisibleTask$` a Qwik életciklus-horgonya kizárólag böngészőben futó, azonnal végrehajtandó kódhoz. Helyezd el a gyökér elrendezésedben:
+
+```tsx
+// src/routes/layout.tsx
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { load } from '@wink/elements';
+
+export default component$(() => {
+  useVisibleTask$(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+
+  return (
+    <main>
+      <Slot />
+    </main>
+  );
+});
+```
+
+<Aside type="tip" title="useVisibleTask$ stratégia">
+Alapértelmezés szerint a `useVisibleTask$` akkor fut le, amikor a komponens látható a nézetablakban. Egy mindig látható gyökér elrendezés esetén ez az oldal betöltésekor azonnal megtörténik — ez megfelel a más keretrendszerek `onMount` eseményének.
+
+Add át a `{ strategy: 'document-ready' }` opciót, ha azt szeretnéd, hogy a szkript a lehető legkorábban betöltődjön:
+```ts
+useVisibleTask$({ strategy: 'document-ready' }, () => {
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+});
+```
+</Aside>
+
+## Használat egy oldalon
+
+```tsx
+// src/routes/hotels/index.tsx
+import { component$ } from '@builder.io/qwik';
+
+export default component$(() => {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+});
+```
+
+## TypeScript — JSX intrinsics deklarálása
+
+A Qwik a saját JSX névterét használja. Bővítsd ki egy deklarációs fájlban:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module '@builder.io/qwik' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes;
+      'wink-lookup': WinkLookupAttributes;
+      'wink-search-button': WinkSearchButtonAttributes;
+      'wink-account-button': WinkAccountButtonAttributes;
+      'wink-itinerary-button': WinkItineraryButtonAttributes;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes;
+      'wink-app-loader': WinkAppLoaderAttributes;
+    }
+  }
+}
+```
+
+## Környezeti változók
+
+A Qwik (Vite alapú) a `PUBLIC_` előtaggal ellátott változókat teszi elérhetővé a böngésző számára:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="Szerveroldali renderelés">
+A Qwik szerveren HTML-t renderel. A `<wink-*>` tagek statikus jelölőként jelennek meg. A CDN szkript és az egyedi elem regisztrációja a kliensoldalon történik meg, miután a `useVisibleTask$` lefutott. Az elemek rövid ideig feloldatlan állapotban lesznek, amíg a CDN csomag betöltődik — ez várható viselkedés.
+</Aside>
+
+## További olvasnivaló
+
+- [Web Components referencia](/hu/integrations/web-components)
+- [@wink/elements npm package](/hu/integrations/npm)

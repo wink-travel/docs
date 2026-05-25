@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Winkプラグインを使って、Winkの旅行在庫をCraft CMS 5のウェブサイトに埋め込みます。
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMSプラグイン**は、Twigテンプレート関数とコンテンツエディター用のカスタムフィールドタイプを通じて、Winkの旅行在庫をCraft 5に統合します。編集者はエントリエディター内のドロップダウンから特定のWinkレイアウトを直接選択できます。
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin on GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="ソースコード、開発者セットアップガイド、貢献方法の説明。"
+/>
+
+## 必要条件
+
+- Craft CMS 5.x
+- PHP 8.1以上
+- Composer
+
+## インストール
+
+<Steps>
+1. Composerでインストール：
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. コントロールパネルの**設定 → プラグイン**でプラグインを有効化、またはCLIで：
+   ```bash
+   php craft plugin/install wink
+   ```
+3. コントロールパネルの**設定 → Wink**に移動。
+4. **Client ID**と**Client Secret**を入力し、環境を選択して**保存**をクリック。
+   資格情報は[Applications](/ja/portal/settings/applications)で取得できます。
+</Steps>
+
+## Twigテンプレートでの使用
+
+設定後、テンプレート内の任意の場所でWinkのTwig関数を呼び出せます：
+
+```twig
+{# ホテルグリッドを表示 #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# 目的地検索バー #}
+{{ winkLookup() }}
+
+{# 旅程ピッカーボタン #}
+{{ winkSearch() }}
+
+{# ユーザーアカウントボタン #}
+{{ winkAccount() }}
+```
+
+`winkContent()`関数は、ページで初めて呼び出された際に自動的に`<wink-app-loader>`を挿入します。
+
+## 利用可能なTwig関数
+
+| 関数 | 出力 | 説明 |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | ホテルカード、グリッド、地図 |
+| `winkLookup()` | `<wink-lookup>` | 目的地検索バー |
+| `winkSearch()` | `<wink-search-button>` | 旅程ピッカーボタン |
+| `winkAccount()` | `<wink-account-button>` | サインイン / ユーザーアカウント |
+| `winkItinerary()` | `<wink-itinerary-button>` | 旅程ステータスボタン |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | カートボタン |
+
+## Wink Layoutフィールドタイプ
+
+任意のセクションに**Wink Layout**フィールドを追加すると、編集者はWinkアカウントの利用可能なすべてのレイアウトをドロップダウンから選択できます：
+
+<Steps>
+1. **設定 → フィールド → 新規フィールド**に移動。
+2. **フィールドタイプ**を**Wink Layout**に設定。
+3. フィールドをエントリータイプのフィールドレイアウトに追加。
+4. 編集者はエントリエディター内で直接レイアウトを選択可能に — IDのコピー＆ペースト不要。
+</Steps>
+
+テンプレートでは、フィールドの値を`winkContent()`に渡します：
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## 参考資料
+
+- [Web Componentsリファレンス](/ja/integrations/web-components)
+- [Client IDの取得](/ja/portal/settings/applications)
+- [Wink Craft Plugin — ソースコード＆開発者ドキュメント](https://github.com/wink-travel/wink-craft-plugin)

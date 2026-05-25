@@ -1,0 +1,111 @@
+---
+title: React
+description: استخدم مكونات الويب من Wink في أي تطبيق React مع دعم كامل لـ TypeScript عبر @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+يدعم React 19+ مكونات العناصر المخصصة بشكل مباشر. أما React 18 والإصدارات الأقدم فيمرر فقط سمات نصية — استخدم نمط المساعد المكتوب أدناه لتظل آمناً عبر الإصدارات.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="قم بتثبيت وتحميل حزمة CDN مع أنواع TypeScript."
+/>
+
+## التثبيت
+
+```bash
+npm install @wink/elements
+```
+
+## التحميل مرة واحدة في جذر التطبيق
+
+استدعِ `load()` في مكونك الأعلى. هذه الدالة متكررة — آمنة للاستدعاء عدة مرات.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## استخدام المكونات في JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — إعلان عناصر JSX الأساسية
+
+لا يعرف React أسماء العناصر المخصصة بشكل افتراضي. أضف ملف إعلان مرة واحدة لإسكات أخطاء النوع:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="قيود سمات React 18">
+يقوم React 18 والإصدارات الأقدم بتحويل جميع خصائص JSX إلى نصوص قبل تمريرها إلى DOM. يجب تحويل الخصائص المنطقية والكائنية يدوياً. React 19 يمرر الخصائص غير النصية مباشرة إلى العناصر المخصصة — لا حاجة لحلول بديلة.
+</Aside>
+
+## تمرير السمات المكتوبة (آمن في React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// الانتشار يعمل في React 19؛ في React 18 كل القيم نصوص على أي حال
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## قراءة إضافية
+
+- [مرجع مكونات الويب](/ar/integrations/web-components)
+- [حزمة npm الخاصة بـ @wink/elements](/ar/integrations/npm)
+- [تكامل Next.js](/ar/integrations/nextjs)

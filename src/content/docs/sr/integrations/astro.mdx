@@ -1,0 +1,101 @@
+---
+title: Astro
+description: Dodajte Wink web komponente na Astro sajtove koristeći skripte na strani klijenta i island arhitekturu.
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Astro po defaultu ne šalje JavaScript i renderuje sve komponente u statički HTML na serveru. Wink web komponente moraju biti učitane putem `<script>` taga na strani klijenta. Astro-ova island arhitektura ovo čini jednostavnim.
+
+<LinkCard
+  title="@wink/elements npm paket"
+  href="/integrations/npm"
+  description="Instalirajte i učitajte CDN paket sa TypeScript tipovima."
+/>
+
+## Instalacija
+
+```bash
+npm install @wink/elements
+```
+
+## Učitavanje u zajedničkom layout-u
+
+Dodajte loader skriptu u osnovni layout da se izvršava na svakoj stranici:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline vs bundled skripte">
+Bez `is:inline`, Astro pakuje i deduplikuje skriptu — `load()` se poziva samo jednom čak i ako se layout koristi na mnogo stranica. Ovo je preporučeni pristup. Koristite `is:inline` samo kada vam je potrebna skripta uložena kao sirovi tekst (npr. da izbegnete module bundler).
+</Aside>
+
+## Korišćenje na stranici
+
+Pošto su Astro komponente renderovane na serveru, `<wink-*>` tagovi se ispisuju kao statički HTML. CDN skripta registruje prilagođene elemente kada se stranica učita u pregledaču:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## Unutar framework komponente (island)
+
+Ako koristite React, Vue ili Svelte islands zajedno sa Wink-om, učitajte `@wink/elements` u layout-u (kao gore) i koristite `<wink-*>` tagove unutar vaših island komponenti normalno — prilagođeni elementi će biti registrovani do trenutka kada se island hidrira.
+
+```tsx
+// src/components/HotelCard.tsx (React island)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() je već pozvan u layout-u — bezbedno je renderovati ovde
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## Environment promenljive
+
+Astro izlaže samo promenljive koje počinju sa `PUBLIC_` u pregledaču:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Dalje čitanje
+
+- [Web Components referenca](/sr/integrations/web-components)
+- [@wink/elements npm paket](/sr/integrations/npm)

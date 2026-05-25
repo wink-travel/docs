@@ -1,0 +1,111 @@
+---
+title: React
+description: Uporabite Wink spletne komponente v katerikoli React aplikaciji s popolno podporo za TypeScript prek @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ ima prvo razredno podporo za prilagojene elemente. React 18 in starejši prenaša samo nizovne atribute — uporabite spodnji tipizirani vzorec, da ostanete varni med različicami.
+
+<LinkCard
+  title="@wink/elements npm paket"
+  href="/integrations/npm"
+  description="Namestite in naložite CDN paket s tipi za TypeScript."
+/>
+
+## Namestitev
+
+```bash
+npm install @wink/elements
+```
+
+## Naložite enkrat na vrhu aplikacije
+
+Pokličite `load()` v vaši najvišji komponenti. Je idempotentna — varno jo je klicati večkrat.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Uporaba komponent v JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — deklarirajte JSX intrinseke
+
+React privzeto ne pozna imen prilagojenih elementov. Dodajte datoteko z deklaracijo enkrat, da odpravite napake tipov:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="Omejitev atributov v React 18">
+React 18 in starejši pretvori vse JSX lastnosti v nize, preden jih posreduje DOM-u. Boolean in objektne lastnosti je treba ročno pretvoriti. React 19 posreduje ne-nizovne lastnosti neposredno prilagojenim elementom — ni potrebnih zaobidnih rešitev.
+</Aside>
+
+## Posredovanje tipiziranih atributov (varno za React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Razširjanje deluje v React 19; za React 18 so vse vrednosti tako ali tako nizi
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Nadaljnje branje
+
+- [Referenca Web Components](/sl/integrations/web-components)
+- [@wink/elements npm paket](/sl/integrations/npm)
+- [Next.js integracija](/sl/integrations/nextjs)

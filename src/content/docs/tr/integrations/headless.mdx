@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Wink seyahat envanterini herhangi bir headless CMS'e (Contentful, Strapi, Sanity vb.) veya özel olarak geliştirilmiş siteye gömün.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wink web bileşenleri, çerçeveden bağımsız özel HTML öğeleridir. Headless CMS'niz HTML render ediyorsa — ister Next.js, Nuxt, Astro, SvelteKit veya başka bir çerçeve aracılığıyla olsun — Wink bileşenlerini özel bir entegrasyon olmadan gömebilirsiniz.
+
+## Üç adımlı gömme
+
+Her Wink entegrasyonu, platformdan bağımsız olarak aynı üç adımı izler.
+
+### 1. Stil sayfasını ekleyin
+
+Bunu belge `<head>` bölümüne (veya eşdeğer global düzeninize) ekleyin:
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. JavaScript'i ekleyin
+
+Bunu kapanış `</body>` etiketinden önce (veya düzeninizin script bölümünde) ekleyin:
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Uygulama yükleyicisini ekleyin
+
+Bunu **sayfa başına bir kez**, gövdenin herhangi bir yerine (genellikle global düzeninizin altbilgisinde) yerleştirin:
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Müşteri Kimliğiniz, Wink hesabınızda [Applications](/tr/portal/settings/applications) altında mevcuttur.
+:::
+
+## Çerçeve örnekleri
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+TypeScript kullanıcıları: özel öğe türlerini bildiren bir `global.d.ts` dosyası ekleyin veya tür bildirimleri içeren [`@wink/elements`](https://github.com/wink2travel/wink-elements) npm paketini kullanın.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## İçerikte bileşen yerleştirme
+
+CMS'nizin zengin metin veya özel alan türlerinde, bileşen etiketlerini doğrudan HTML çıktısına gömün:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Contentful, Strapi, Sanity veya benzeri headless platformlar için, ham HTML render eden bir **Rich Text** alanı veya **Custom Block** kullanın ve bileşen etiketini oraya yapıştırın.
+
+## npm paketi
+
+TypeScript projeleri için, [`@wink/elements`](https://github.com/wink2travel/wink-elements) paketi şunları sağlar:
+- CDN scriptlerini programlı olarak enjekte eden bir `load()` fonksiyonu
+- Tüm bileşen öznitelikleri için tam TypeScript tür bildirimleri
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Uygulama başlangıcında bir kez çağırın
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Mevcut bileşenler
+
+| Bileşen | HTML etiketi | Amaç |
+|---|---|---|
+| İçerik yükleyici | `<wink-content-loader>` | Otel kartları, ızgaralar, haritalar gösterir |
+| Arama | `<wink-lookup>` | Destinasyonlar için arama çubuğu |
+| Arama düğmesi | `<wink-search-button>` | Seyahat planlayıcıyı açar |
+| Hesap düğmesi | `<wink-account-button>` | Giriş / kullanıcı menüsü |
+| Seyahat düğmesi | `<wink-itinerary-button>` | Mevcut seyahat planını gösterir |
+| Seyahat seçici | `<wink-itinerary-picker>` | Tam seyahat formu |
+| Alışveriş sepeti | `<wink-shopping-cart-button>` | Sepet özeti düğmesi |
+
+Tam öznitelik referansı için [Web Components](/tr/integrations/web-components) sayfasına bakın.

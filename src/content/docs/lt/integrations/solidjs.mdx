@@ -1,0 +1,119 @@
+---
+title: SolidJS
+description: Naudokite Wink žiniatinklio komponentus SolidJS programose — natyvi pasirinktinių elementų palaikymas su onMount.
+sidebar:
+  order: 25
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+SolidJS turi natyvų pasirinktinių elementų palaikymą — jis perduoda atributus tiesiogiai į DOM be virtualaus DOM sluoksnio. Nereikia papildomos kompiliatoriaus konfigūracijos.
+
+<LinkCard
+  title="@wink/elements npm paketas"
+  href="/integrations/npm"
+  description="Įdiekite ir įkelkite CDN paketą su TypeScript tipais."
+/>
+
+## Įdiegimas
+
+```bash
+npm install @wink/elements
+```
+
+## Įkelkite vieną kartą programos paleidimo metu
+
+```tsx
+// src/App.tsx
+import { onMount } from 'solid-js';
+import { load } from '@wink/elements';
+
+export default function App() {
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+
+  return <YourRoutes />;
+}
+```
+
+`onMount` vykdomas tik naršyklėje po pradinio atvaizdavimo — tai SolidJS atitikmuo React `useEffect(() => {}, [])`.
+
+## Naudojimas JSX
+
+```tsx
+// src/pages/Hotels.tsx
+import { createSignal } from 'solid-js';
+
+export default function HotelsPage() {
+  const [layoutId] = createSignal('YOUR_LAYOUT_ID');
+
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id={layoutId()} />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — deklaruokite JSX intrinsics
+
+SolidJS naudoja savo JSX vardų sritį. Išplėskite `solid-js` JSX tipus:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'solid-js' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## SolidStart (SSR)
+
+SolidStart programoms su serverio pusės atvaizdavimu, apsaugokite `load()` kvietimą su `isServer`:
+
+```tsx
+// src/app.tsx
+import { onMount } from 'solid-js';
+import { isServer } from 'solid-js/web';
+import { load } from '@wink/elements';
+
+export default function App() {
+  if (!isServer) {
+    onMount(() => {
+      load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+    });
+  }
+
+  return <YourRoutes />;
+}
+```
+
+<Aside type="tip">
+SolidJS smulkios reaguojančiosios sistemos dėka atributų atnaujinimai tiesiogiai patenka į DOM — be grupavimo ar suderinimo papildomų išlaidų. Wink komponentai gauna atributų pakeitimus iš karto, kai atnaujinamos jūsų signalų reikšmės.
+</Aside>
+
+## Tolimesnė literatūra
+
+- [Žiniatinklio komponentų nuoroda](/lt/integrations/web-components)
+- [@wink/elements npm paketas](/lt/integrations/npm)

@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Upota Wink-matkavarasto Craft CMS 5 -verkkosivustollesi käyttämällä Wink-laajennusta.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS Plugin** integroi Wink-matkavaraston Craft 5:een Twig-mallifunktioiden ja sisällönmuokkaajan mukautetun kenttätyypin avulla. Muokkaajat voivat valita tietyn Wink-asettelun suoraan merkinnän muokkaajassa pudotusvalikosta.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin on GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Lähdekoodi, kehittäjän asennusopas ja ohjeet osallistumiseen."
+/>
+
+## Vaatimukset
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Asennus
+
+<Steps>
+1. Asenna Composerilla:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Aktivoi laajennus Ohjauspaneelissa kohdassa **Asetukset → Laajennukset** tai komentoriviltä:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Siirry Ohjauspaneelissa kohtaan **Asetukset → Wink**.
+4. Syötä **Client ID** ja **Client Secret**, valitse ympäristö ja klikkaa **Tallenna**.
+   Hae tunnukset [Sovellukset]-sivulta (/portal/settings/applications).
+</Steps>
+
+## Käyttö Twig-malleissa
+
+Kun asetukset on tehty, kutsu Wink Twig -funktioita missä tahansa malleissasi:
+
+```twig
+{# Näytä hotelliruudukko #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Kohteen hakupalkki #}
+{{ winkLookup() }}
+
+{# Matkaohjelman valintapainike #}
+{{ winkSearch() }}
+
+{# Käyttäjätilin painike #}
+{{ winkAccount() }}
+```
+
+`winkContent()`-funktio lisää automaattisesti `<wink-app-loader>` ensimmäisellä kutsukerralla sivulla.
+
+## Saatavilla olevat Twig-funktiot
+
+| Funktio | Tuloste | Kuvaus |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Hotellikortit, ruudukot, kartat |
+| `winkLookup()` | `<wink-lookup>` | Kohteen hakupalkki |
+| `winkSearch()` | `<wink-search-button>` | Matkaohjelman valintapainike |
+| `winkAccount()` | `<wink-account-button>` | Kirjautuminen / käyttäjätili |
+| `winkItinerary()` | `<wink-itinerary-button>` | Matkaohjelman tilapainike |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Ostoskoripainike |
+
+## Wink Layout -kenttätyyppi
+
+Lisää **Wink Layout** -kenttä mihin tahansa osioon, jotta muokkaajat saavat pudotusvalikon kaikista Wink-tilisi käytettävissä olevista asetteluista:
+
+<Steps>
+1. Siirry kohtaan **Asetukset → Kentät → Uusi kenttä**.
+2. Valitse **Kenttätyyppi**ksi **Wink Layout**.
+3. Lisää kenttä merkintätyypin kenttäasetteluun.
+4. Muokkaajat voivat nyt valita asettelun suoraan merkinnän muokkaajassa — ei tarvitse kopioida tunnuksia.
+</Steps>
+
+Mallissasi välitä kentän arvo `winkContent()`-funktiolle:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Lisälukemista
+
+- [Web Components -viite](/fi/integrations/web-components)
+- [Hanki Client ID](/fi/portal/settings/applications)
+- [Wink Craft Plugin — lähdekoodi & kehittäjädokumentaatio](https://github.com/wink-travel/wink-craft-plugin)

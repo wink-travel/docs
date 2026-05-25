@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: Bruk Wink webkomponenter i Vue 3 og Vite-prosjekter med isCustomElement-kompilatoralternativet.
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3 trenger ett kompilatorhint for å behandle `<wink-*>`-tagger som native egendefinerte elementer i stedet for uavklarte Vue-komponenter. Etter det fungerer de som alle andre HTML-elementer.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Installer og last inn CDN-bunten med TypeScript-typer."
+/>
+
+## Installer
+
+```bash
+npm install @wink/elements
+```
+
+## Konfigurer kompilatoren
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Behandle alle tagger som starter med "wink-" som egendefinerte elementer
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## Last inn CDN én gang ved app-start
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## Bruk i maler
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — utvid globale elementtyper
+
+Vue 3 + TypeScript leser egendefinerte elementtyper fra den globale `HTMLElementTagNameMap`. Legg til en deklarasjonsfil:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## Miljøvariabler
+
+Legg til i `.env.local`:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite eksponerer kun variabler med prefikset `VITE_` til klientbunten.
+
+<Aside type="tip">
+For Nuxt 3, se den dedikerte [Nuxt-integrasjonssiden](/no/integrations/nuxt) som dekker SSR-sikker lasting.
+</Aside>
+
+## Videre lesning
+
+- [Web Components referanse](/no/integrations/web-components)
+- [@wink/elements npm package](/no/integrations/npm)
+- [Nuxt 3 integrasjon](/no/integrations/nuxt)

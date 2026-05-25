@@ -1,0 +1,128 @@
+---
+title: Svelte / SvelteKit
+description: Használd a Wink webkomponenseket Svelte és SvelteKit alkalmazásokban onMount és böngészővédelmek segítségével.
+sidebar:
+  order: 20
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+A Svelte közvetlenül továbbítja az attribútumokat a DOM-nak virtuális DOM réteg nélkül, így a testreszabott elemek természetes választásnak számítanak. SvelteKit (SSR) esetén töltsd be a CDN-t `onMount` belsejében, vagy védd a `browser` ellenőrzéssel.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Telepítsd és töltsd be a CDN csomagot TypeScript típusokkal."
+/>
+
+## Telepítés
+
+```bash
+npm install @wink/elements
+```
+
+## SvelteKit — gyökér elrendezés
+
+```ts
+// src/routes/+layout.ts
+import { browser } from '$app/environment';
+import { load as loadWink } from '@wink/elements';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+Alternatívaként töltsd be `onMount` belsejében a `+layout.svelte` fájlban:
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<slot />
+```
+
+## Használat komponensekben
+
+A Svelte minden ismeretlen attribútumot közvetlenül továbbít a DOM-nak, így nincs szükség további konfigurációra:
+
+```svelte
+<script>
+  export let layoutId = 'YOUR_LAYOUT_ID';
+</script>
+
+<main>
+  <wink-content-loader layout="HOTEL" id={layoutId} />
+  <wink-lookup />
+</main>
+```
+
+## Svelte 5 (runes szintaxis)
+
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  let { layoutId }: { layoutId: string } = $props();
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id={layoutId} />
+```
+
+## Környezeti változók
+
+A SvelteKit csak a `PUBLIC_` előtaggal rendelkező változókat teszi elérhetővé a böngésző számára:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="SSR renderelés">
+Soha ne renderelj `<wink-*>` elemeket szerveroldali renderelés során — a testreszabott elemek a böngésző `customElements` regiszterében vannak regisztrálva, amely nem létezik a szerveren. Csomagold be `{#if browser}`-be, vagy hívd meg a `load()`-ot csak `onMount` belsejében.
+</Aside>
+
+```svelte
+<script>
+  import { browser } from '$app/environment';
+</script>
+
+{#if browser}
+  <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+{/if}
+```
+
+## Tiszta Svelte (Vite, SvelteKit nélkül)
+
+```svelte
+<!-- src/App.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+```
+
+## További olvasnivaló
+
+- [Web Components referencia](/hu/integrations/web-components)
+- [@wink/elements npm package](/hu/integrations/npm)

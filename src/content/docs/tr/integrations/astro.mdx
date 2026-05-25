@@ -1,0 +1,101 @@
+---
+title: Astro
+description: Wink web bileşenlerini Astro sitelerine istemci tarafı betikleri ve ada mimarisi kullanarak ekleyin.
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Astro varsayılan olarak sıfır JavaScript gönderir ve tüm bileşenleri sunucuda statik HTML olarak render eder. Wink web bileşenleri, istemci tarafı `<script>` etiketi ile yüklenmelidir. Astro'nun ada mimarisi bunu kolaylaştırır.
+
+<LinkCard
+  title="@wink/elements npm paketi"
+  href="/integrations/npm"
+  description="CDN paketini TypeScript tipleriyle birlikte yükleyin ve kurun."
+/>
+
+## Kurulum
+
+```bash
+npm install @wink/elements
+```
+
+## Paylaşılan bir düzen içinde yükleme
+
+Yükleyici betiğini temel düzeninize ekleyin, böylece her sayfada çalışır:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline ile paketlenmiş betikler arasındaki fark">
+`is:inline` olmadan, Astro betiği paketler ve çoğaltmayı önler — `load()` fonksiyonu, düzen birçok sayfada kullanılsa bile yalnızca bir kez çağrılır. Bu tercih edilen yaklaşımdır. `is:inline` yalnızca betiğin ham metin olarak satır içi olması gerektiğinde (örneğin modül paketleyiciden kaçınmak için) kullanın.
+</Aside>
+
+## Bir sayfada kullanma
+
+Astro bileşenleri sunucuda render edildiği için `<wink-*>` etiketleri statik HTML olarak çıktı verir. CDN betiği, sayfa tarayıcıda yüklendiğinde özel elementleri kaydeder:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## Bir framework bileşeni içinde (ada)
+
+React, Vue veya Svelte adalarını Wink ile birlikte kullanıyorsanız, `@wink/elements` paketini düzen içinde (yukarıdaki gibi) yükleyin ve ada bileşenlerinizde `<wink-*>` etiketlerini normal şekilde kullanın — özel elementler ada hidrasyonundan önce kaydedilmiş olur.
+
+```tsx
+// src/components/HotelCard.tsx (React ada)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() zaten düzen tarafından çağrıldı — burada render etmek güvenlidir
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## Ortam değişkenleri
+
+Astro, yalnızca `PUBLIC_` ile başlayan değişkenleri tarayıcıya açar:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Daha fazla okuma
+
+- [Web Components referansı](/tr/integrations/web-components)
+- [@wink/elements npm paketi](/tr/integrations/npm)

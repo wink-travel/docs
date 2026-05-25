@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: Notaðu Wink vefhluta í Vue 3 og Vite verkefnum með isCustomElement þýðanda valkostinum.
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3 þarf eina þýðanda vísbendingu til að meðhöndla `<wink-*>` merkimiða sem innfædda sérsniðna þætti í stað óleysanlegra Vue þátta. Eftir það virka þeir eins og aðrir HTML þættir.
+
+<LinkCard
+  title="@wink/elements npm pakki"
+  href="/integrations/npm"
+  description="Settu upp og hlaðaðu CDN pakkanum með TypeScript týpum."
+/>
+
+## Setja upp
+
+```bash
+npm install @wink/elements
+```
+
+## Stilltu þýðandann
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Meðhöndla alla merkimiða sem byrja á "wink-" sem sérsniðna þætti
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## Hlaða CDN einu sinni við upphaf appsins
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## Nota í sniðmátum
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — bæta við alþjóðlegum tegundum þátta
+
+Vue 3 + TypeScript les sérsniðnar tegundir þátta úr alþjóðlegu `HTMLElementTagNameMap`. Bættu við yfirlýsingu í skrá:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## Umhverfisbreytur
+
+Bættu við í `.env.local`:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite gerir aðeins breytur sem byrja á `VITE_` aðgengilegar í client pakkanum.
+
+<Aside type="tip">
+Fyrir Nuxt 3, skoðaðu sérstaka [Nuxt integration síðu](/is/integrations/nuxt) sem fjallar um örugga SSR hleðslu.
+</Aside>
+
+## Frekari lesning
+
+- [Web Components reference](/is/integrations/web-components)
+- [@wink/elements npm pakki](/is/integrations/npm)
+- [Nuxt 3 integration](/is/integrations/nuxt)

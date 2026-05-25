@@ -1,0 +1,134 @@
+---
+title: pachet npm
+description: Folosește pachetul npm @wink/elements pentru integrarea sigură în TypeScript a componentelor web Wink în orice framework JavaScript.
+sidebar:
+  order: 14
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+Pachetul npm **`@wink/elements`** este cea mai rapidă metodă de a adăuga componente web Wink în orice proiect JavaScript sau TypeScript. Oferă o funcție `load()` care injectează resursele CDN și declarații complete de tip TypeScript pentru toate atributele componentelor.
+
+<LinkCard
+  title="wink-travel/wink-elements pe GitHub"
+  href="https://github.com/wink-travel/wink-elements"
+  description="Cod sursă, referință API și instrucțiuni pentru contribuții."
+/>
+
+## Instalare
+
+```bash
+npm install @wink/elements
+```
+
+## Pornire rapidă
+
+Apelează `load()` o singură dată la pornirea aplicației. Este idempotent — sigur de apelat de mai multe ori.
+
+```ts
+import { load } from '@wink/elements';
+
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+Apoi folosește orice componentă Wink în HTML sau JSX:
+
+```html
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID"></wink-content-loader>
+```
+
+## Exemple pentru framework-uri
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <html><body>{children}</body></html>;
+}
+```
+
+### Nuxt 3
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+import { load } from '@wink/elements';
+---
+<script>
+  import { load } from '@wink/elements';
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+</script>
+```
+
+### SvelteKit
+
+```ts
+// src/routes/+layout.ts
+import { load as loadWink } from '@wink/elements';
+import { browser } from '$app/environment';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+## Tipuri TypeScript
+
+Toate interfețele atributelor componentelor sunt exportate pentru utilizare în JSX, template literals sau dicționare tipizate:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',    // TypeScript va detecta valorile invalide pentru layout
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+```
+
+## Utilizarea unui CDN de testare
+
+```ts
+load({
+  clientId: 'YOUR_CLIENT_ID',
+  cdnBaseUrl: 'https://staging-elements.wink.travel',
+});
+```
+
+## API
+
+### `load(options)`
+
+| Opțiune | Tip | Obligatoriu | Implicit | Descriere |
+|---|---|---|---|---|
+| `clientId` | `string` | Da | — | Client ID-ul tău Wink OAuth2 |
+| `configurationId` | `string` | Nu | — | ID opțional pentru personalizare |
+| `cdnBaseUrl` | `string` | Nu | `https://elements.wink.travel` | Suprascrie URL-ul CDN |
+
+## Lecturi suplimentare
+
+- [Referință Web Components](/ro/integrations/web-components)
+- [Obține Client ID-ul tău](/ro/portal/settings/applications)
+- [Ghid de integrare Headless CMS](/ro/integrations/headless)
+- [`@wink/elements` pe GitHub](https://github.com/wink-travel/wink-elements)

@@ -1,0 +1,119 @@
+---
+title: SolidJS
+description: Izmantojiet Wink tīmekļa komponentus SolidJS lietotnēs — vietējā pielāgoto elementu atbalsts ar onMount.
+sidebar:
+  order: 25
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+SolidJS nodrošina vietējo pielāgoto elementu atbalstu — tas nodod atribūtus tieši DOM bez virtuālā DOM slāņa. Nav nepieciešama papildu kompilatora konfigurācija.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Instalējiet un ielādējiet CDN pakotni ar TypeScript tipiem."
+/>
+
+## Instalēt
+
+```bash
+npm install @wink/elements
+```
+
+## Ielādēt vienreiz lietotnes startēšanas laikā
+
+```tsx
+// src/App.tsx
+import { onMount } from 'solid-js';
+import { load } from '@wink/elements';
+
+export default function App() {
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+
+  return <YourRoutes />;
+}
+```
+
+`onMount` izpildās tikai pārlūkprogrammā pēc sākotnējās renderēšanas — tas ir SolidJS ekvivalents React `useEffect(() => {}, [])`.
+
+## Lietošana JSX
+
+```tsx
+// src/pages/Hotels.tsx
+import { createSignal } from 'solid-js';
+
+export default function HotelsPage() {
+  const [layoutId] = createSignal('YOUR_LAYOUT_ID');
+
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id={layoutId()} />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — deklarēt JSX intrinsics
+
+SolidJS izmanto savu JSX nosaukumu telpu. Paplašiniet `solid-js` JSX tipus:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'solid-js' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## SolidStart (SSR)
+
+SolidStart lietotnēm ar servera puses renderēšanu, aizsargājiet `load()` izsaukumu ar `isServer`:
+
+```tsx
+// src/app.tsx
+import { onMount } from 'solid-js';
+import { isServer } from 'solid-js/web';
+import { load } from '@wink/elements';
+
+export default function App() {
+  if (!isServer) {
+    onMount(() => {
+      load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+    });
+  }
+
+  return <YourRoutes />;
+}
+```
+
+<Aside type="tip">
+SolidJS smalkās reaktivitātes dēļ atribūtu atjauninājumi plūst tieši uz DOM — nav nepieciešama partiju apstrāde vai saskaņošana. Wink komponentes saņem atribūtu izmaiņas nekavējoties, kad jūsu signālu vērtības tiek atjauninātas.
+</Aside>
+
+## Papildu lasāmviela
+
+- [Tīmekļa komponentu atsauce](/lv/integrations/web-components)
+- [@wink/elements npm package](/lv/integrations/npm)

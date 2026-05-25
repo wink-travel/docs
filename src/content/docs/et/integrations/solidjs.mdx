@@ -1,0 +1,119 @@
+---
+title: SolidJS
+description: Kasutage Wink veebikomponente SolidJS rakendustes — natiivne kohandatud elemendi tugi koos onMount-iga.
+sidebar:
+  order: 25
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+SolidJS-l on natiivne kohandatud elemendi tugi — see edastab atribuudid otse DOM-ile ilma virtuaalse DOM-kihita. Täiendavat kompilaatori konfiguratsiooni ei ole vaja.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Paigaldage ja laadige CDN-pakett koos TypeScripti tüüpidega."
+/>
+
+## Paigalda
+
+```bash
+npm install @wink/elements
+```
+
+## Laadi rakenduse käivitamisel üks kord
+
+```tsx
+// src/App.tsx
+import { onMount } from 'solid-js';
+import { load } from '@wink/elements';
+
+export default function App() {
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+
+  return <YourRoutes />;
+}
+```
+
+`onMount` käivitub ainult brauseris pärast esmast renderdamist — see on SolidJS vastendus Reacti `useEffect(() => {}, [])`-le.
+
+## Kasutamine JSX-is
+
+```tsx
+// src/pages/Hotels.tsx
+import { createSignal } from 'solid-js';
+
+export default function HotelsPage() {
+  const [layoutId] = createSignal('YOUR_LAYOUT_ID');
+
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id={layoutId()} />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — deklareeri JSX intrinsics
+
+SolidJS kasutab oma JSX nimeruumi. Laienda `solid-js` JSX tüüpe:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'solid-js' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## SolidStart (SSR)
+
+SolidStart rakenduste puhul, mis kasutavad serveripoolset renderdamist, kaitse `load()` kutsumist `isServer` abil:
+
+```tsx
+// src/app.tsx
+import { onMount } from 'solid-js';
+import { isServer } from 'solid-js/web';
+import { load } from '@wink/elements';
+
+export default function App() {
+  if (!isServer) {
+    onMount(() => {
+      load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+    });
+  }
+
+  return <YourRoutes />;
+}
+```
+
+<Aside type="tip">
+SolidJS peeneteraline reaktiivsus tähendab, et atribuudi uuendused jõuavad otse DOM-i — ei mingit partiideks kogumist ega kokkuleppimist. Wink komponendid saavad atribuudi muudatused koheselt, kui teie signaali väärtused uuenevad.
+</Aside>
+
+## Täiendav lugemine
+
+- [Web Components reference](/et/integrations/web-components)
+- [@wink/elements npm package](/et/integrations/npm)

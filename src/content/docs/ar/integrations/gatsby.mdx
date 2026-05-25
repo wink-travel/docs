@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: أضف مكونات ويب Wink إلى مواقع Gatsby باستخدام gatsby-browser.js للتحميل على جانب العميل.
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+يقوم Gatsby بإنشاء HTML ثابت أثناء وقت البناء ويعيد تهيئته على العميل. يجب تحميل سكربتات CDN فقط في واجهات برمجة التطبيقات الخاصة بالمتصفح — `gatsby-browser.js` هو المكان المناسب.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="قم بتثبيت وتحميل حزمة CDN مع أنواع TypeScript."
+/>
+
+## التثبيت
+
+```bash
+npm install @wink/elements
+```
+
+## التحميل عبر gatsby-browser.js
+
+تعمل واجهة برمجة التطبيقات `onClientEntry` مرة واحدة بمجرد تهيئة وقت تشغيل Gatsby في المتصفح:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## متغيرات البيئة
+
+يعرض Gatsby فقط المتغيرات التي تبدأ بـ `GATSBY_` إلى حزمة المتصفح:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## الاستخدام في الصفحات والمكونات
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+يستخدم Gatsby React، لذا أضف نفس إعلانات JSX الجوهرية كما في تكامل React:
+
+```ts
+// src/wink-elements.d.ts
+// انظر /integrations/react لملف الإعلان الكامل
+```
+
+<Aside type="caution" title="أخطاء بناء SSR">
+أثناء `gatsby build`، يقوم Gatsby برندر الصفحات إلى HTML ثابت في بيئة Node.js حيث لا يتوفر `window` و `document`. إذا قمت باستيراد `@wink/elements` في المستوى الأعلى لمكون الصفحة (خارج `onClientEntry`)، سيفشل البناء.
+
+استخدم دائمًا `gatsby-browser.js` / `onClientEntry` — لا تستورد `load` مباشرة في نطاق وحدة الصفحة أو المكون.
+</Aside>
+
+## gatsby-ssr.js — لا حاجة لتغييرات
+
+لا تحتاج إلى تعديل `gatsby-ssr.js`. تُعرض علامات `<wink-*>` كعناصر HTML عادية في المخرجات الثابتة، ويقوم سكربت CDN بترقيتها عند تحميل الصفحة في المتصفح.
+
+## قراءة إضافية
+
+- [مرجع مكونات الويب](/ar/integrations/web-components)
+- [حزمة npm @wink/elements](/ar/integrations/npm)
+- [تكامل React](/ar/integrations/react)

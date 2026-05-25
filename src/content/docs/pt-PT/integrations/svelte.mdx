@@ -1,0 +1,128 @@
+---
+title: Svelte / SvelteKit
+description: Utilize os componentes web Wink em aplicações Svelte e SvelteKit com onMount e verificações no browser.
+sidebar:
+  order: 20
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+O Svelte passa atributos diretamente para o DOM sem uma camada de DOM virtual, tornando os elementos personalizados uma escolha natural. Para SvelteKit (SSR), carregue o CDN dentro de `onMount` ou proteja com a verificação `browser`.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Instale e carregue o bundle CDN com tipos TypeScript."
+/>
+
+## Instalar
+
+```bash
+npm install @wink/elements
+```
+
+## SvelteKit — layout raiz
+
+```ts
+// src/routes/+layout.ts
+import { browser } from '$app/environment';
+import { load as loadWink } from '@wink/elements';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+Alternativamente, carregue dentro de `onMount` em `+layout.svelte`:
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<slot />
+```
+
+## Uso em componentes
+
+O Svelte passa todos os atributos desconhecidos diretamente para o DOM, por isso não é necessária configuração extra:
+
+```svelte
+<script>
+  export let layoutId = 'YOUR_LAYOUT_ID';
+</script>
+
+<main>
+  <wink-content-loader layout="HOTEL" id={layoutId} />
+  <wink-lookup />
+</main>
+```
+
+## Svelte 5 (sintaxe runes)
+
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  let { layoutId }: { layoutId: string } = $props();
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id={layoutId} />
+```
+
+## Variáveis de ambiente
+
+O SvelteKit expõe apenas variáveis prefixadas com `PUBLIC_` para o browser:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="Renderização SSR">
+Nunca renderize elementos `<wink-*>` durante a renderização do lado do servidor — os elementos personalizados são registados no registo `customElements` do browser, que não existe no servidor. Envolva em `{#if browser}` ou chame `load()` apenas dentro de `onMount`.
+</Aside>
+
+```svelte
+<script>
+  import { browser } from '$app/environment';
+</script>
+
+{#if browser}
+  <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+{/if}
+```
+
+## Svelte puro (Vite, sem SvelteKit)
+
+```svelte
+<!-- src/App.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+```
+
+## Leitura adicional
+
+- [Referência de Web Components](/pt-PT/integrations/web-components)
+- [@wink/elements npm package](/pt-PT/integrations/npm)

@@ -1,0 +1,112 @@
+---
+title: Angular
+description: Izmantojiet Wink tīmekļa komponentes Angular 14+ lietotnēs ar CUSTOM_ELEMENTS_SCHEMA un @wink/elements.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink komponentes pašas ir Angular Elements — tās dabiski integrējas Angular lietotnēs. Vienīgā nepieciešamā iestatīšana ir pateikt Angular kompilatoram atļaut nezināmus elementu nosaukumus.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Instalējiet un ielādējiet CDN pakotni ar TypeScript tipiem."
+/>
+
+## Instalēšana
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — ielādējiet CDN vienreiz
+
+Izsauciet `load()` pirms `bootstrapApplication` (vai iekš `APP_INITIALIZER`):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## Atļaut pielāgotus elementu nosaukumus
+
+Pievienojiet `CUSTOM_ELEMENTS_SCHEMA` katram standalone komponentam (vai modulim), kas renderē `<wink-*>` tagus:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="NgModule lietotnes">
+NgModule bāzētām lietotnēm pievienojiet `CUSTOM_ELEMENTS_SCHEMA` `schemas` masīvā `@NgModule` dekoratorā.
+</Aside>
+
+## Atribūtu sasaistīšana
+
+Angular šablona sintakse tieši strādā ar pielāgotu elementu virknes atribūtiem:
+
+```html
+<!-- Statiskie -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- Dinamiskā sasaistīšana -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+Izmantojiet sasaisti `[attr.name]`, ja vērtība ir dinamiska — Angular parastā sasaistīšana `[property]` mērķē uz DOM īpašībām, nevis HTML atribūtiem, uz kuriem paļaujas pielāgotie elementi.
+
+## Vides mainīgie
+
+`@angular/cli` 16+ projektos izmantojiet `environment.ts` vai `NG_APP_*` prefiksu ar `@ngx-env/builder`:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## TypeScript tipi
+
+`@wink/elements` pakotne eksportē tipizētas interfeisu definīcijas visiem komponentu atribūtiem:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## Papildu lasāmviela
+
+- [Web Components reference](/lv/integrations/web-components)
+- [@wink/elements npm package](/lv/integrations/npm)

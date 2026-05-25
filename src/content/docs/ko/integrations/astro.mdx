@@ -1,0 +1,101 @@
+---
+title: Astro
+description: 클라이언트 사이드 스크립트와 아일랜드 아키텍처를 사용하여 Astro 사이트에 Wink 웹 컴포넌트를 추가하세요.
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Astro는 기본적으로 JavaScript를 전혀 포함하지 않으며 모든 컴포넌트를 서버에서 정적 HTML로 렌더링합니다. Wink 웹 컴포넌트는 클라이언트 사이드 `<script>` 태그를 통해 로드되어야 합니다. Astro의 아일랜드 아키텍처 덕분에 이 작업이 간단해집니다.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="TypeScript 타입과 함께 CDN 번들을 설치하고 로드하세요."
+/>
+
+## 설치
+
+```bash
+npm install @wink/elements
+```
+
+## 공통 레이아웃에 로드하기
+
+기본 레이아웃에 로더 스크립트를 추가하여 모든 페이지에서 실행되도록 하세요:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline vs bundled scripts">
+`is:inline` 없이 Astro는 스크립트를 번들링하고 중복을 제거합니다 — 레이아웃이 여러 페이지에서 사용되더라도 `load()`는 한 번만 호출됩니다. 이것이 권장되는 방법입니다. 모듈 번들러를 피하기 위해 스크립트를 원시 텍스트로 인라인해야 할 때만 `is:inline`을 사용하세요.
+</Aside>
+
+## 페이지에서 사용하기
+
+Astro 컴포넌트는 서버에서 렌더링되므로 `<wink-*>` 태그는 정적 HTML로 출력됩니다. CDN 스크립트는 페이지가 브라우저에서 로드될 때 커스텀 요소를 등록합니다:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## 프레임워크 컴포넌트(아일랜드) 내부에서
+
+React, Vue, Svelte 아일랜드를 Wink와 함께 사용하는 경우, 위와 같이 레이아웃에서 `@wink/elements`를 로드하고 아일랜드 컴포넌트 내부에서 `<wink-*>` 태그를 정상적으로 사용하세요 — 아일랜드가 하이드레이션될 때쯤 커스텀 요소가 등록됩니다.
+
+```tsx
+// src/components/HotelCard.tsx (React island)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load()는 이미 레이아웃에서 호출됨 — 여기서 렌더링해도 안전합니다
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## 환경 변수
+
+Astro는 `PUBLIC_` 접두사가 붙은 변수만 브라우저에 노출합니다:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## 추가 자료
+
+- [웹 컴포넌트 참고 자료](/ko/integrations/web-components)
+- [@wink/elements npm 패키지](/ko/integrations/npm)

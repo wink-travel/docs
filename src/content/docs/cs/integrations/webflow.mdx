@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Vložte Wink cestovní inventář do svého webu Webflow pomocí vlastních kódových embedů.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow podporuje vlastní HTML a JavaScript na třech místech: v celosítovém `<head>`, v celosítovém `</body>` a v embed kódech jednotlivých prvků. To usnadňuje integraci Wink webových komponent.
+
+:::note
+Vlastní kód je dostupný v **plánu Webflow Basic a vyšších**. Vkládání do celosítového `</body>` vyžaduje placený hostingový plán.
+:::
+
+## Načtení Wink skriptů celosítově
+
+<Steps>
+1. Ve Webflow Designeru otevřete **Project Settings → Custom Code**.
+2. V sekci **Head Code** přidejte stylopis:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. V sekci **Footer Code** přidejte skript a načítač aplikace (nahraďte `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klikněte na **Save Changes**.
+</Steps>
+
+:::tip
+Vaše Client ID najdete ve svém Wink účtu v sekci [Applications](/cs/portal/settings/applications).
+:::
+
+## Přidání komponenty do konkrétního prvku
+
+<Steps>
+1. V Designeru vyberte **Div** nebo **Section**, kam chcete komponentu vložit.
+2. V pravém panelu klikněte na ikonu **`</>` Embed** (nebo přidejte prvek **HTML Embed** z panelu Přidat).
+3. Vložte HTML komponenty, například:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klikněte na **Save & Close**.
+</Steps>
+
+## Vlastní kód na jednotlivých stránkách
+
+Pokud potřebujete Wink pouze na konkrétních stránkách, použijte vkládání kódu na stránku místo celosítového:
+
+<Steps>
+1. Otevřete **Page Settings** pro cílovou stránku (ikona ozubeného kola v panelu Stránky).
+2. Sjeďte dolů do **Custom Code → Before `</body>` tag**.
+3. Vložte stejný skript a načítač aplikace jako výše.
+4. Uložte nastavení stránky.
+</Steps>
+
+## Dostupné komponenty
+
+| Komponenta | HTML tag | Účel |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Zobrazení hotelových karet, mřížek, map |
+| Lookup | `<wink-lookup>` | Vyhledávací lišta destinací |
+| Search button | `<wink-search-button>` | Otevření výběru itineráře |
+| Account button | `<wink-account-button>` | Přihlášení / uživatelské menu |
+| Itinerary button | `<wink-itinerary-button>` | Zobrazení aktuálního itineráře |
+| Itinerary picker | `<wink-itinerary-picker>` | Kompletní formulář itineráře |
+| Shopping cart | `<wink-shopping-cart-button>` | Tlačítko souhrnu košíku |
+
+Podívejte se na [Web Components](/cs/integrations/web-components) pro kompletní referenci atributů.
+
+## Další čtení
+
+- [Reference Web Components](/cs/integrations/web-components)
+- [Získejte své Client ID](/cs/portal/settings/applications)
+- [Dokumentace Webflow pro vlastní kód](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

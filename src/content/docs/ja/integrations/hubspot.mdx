@@ -1,0 +1,81 @@
+---
+title: HubSpot CMS
+description: カスタムモジュールとヘッダー/フッターHTMLを使って、Winkの旅行在庫をHubSpot CMSのウェブサイトに埋め込む方法。
+sidebar:
+  order: 6
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+HubSpot CMSはカスタムHTMLモジュールとサイト全体のヘッダー/フッターコードをサポートしており、マーケティングページやランディングページにWinkコンポーネントを簡単に埋め込むことができます。
+
+:::note
+サイト全体のコード挿入には**HubSpot CMS Hub**（Starter以上）のアクセス権が必要です。カスタムHTMLモジュールはすべてのCMSプランで利用可能です。
+:::
+
+## Winkスクリプトをサイト全体に読み込む
+
+<Steps>
+1. HubSpotで、**Marketing → Files and Templates → Design Tools** に移動します。
+2. アクティブな**テーマ**の `main.css` を開くか、グローバルコンテンツ設定を使用します。
+3. または、**Settings → Website → Pages → Custom Code** に移動します。
+4. **Head HTML** フィールドにスタイルシートを追加します：
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+5. **Footer HTML** フィールドにスクリプトとアプリケーションローダーを追加します（`YOUR_CLIENT_ID` を置き換えてください）：
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+6. 保存して公開します。
+</Steps>
+
+:::tip
+クライアントIDはWinkアカウントの[Applications](/ja/portal/settings/applications)で確認できます。
+:::
+
+## カスタムHTMLモジュールでコンポーネントを追加する
+
+<Steps>
+1. Design Toolsで、**Rich Text** または **HTML** タイプの新しい**モジュール**を作成します。
+2. モジュールのデフォルトコンテンツにコンポーネントのHTMLを貼り付けます：
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+3. モジュールを保存し、ページテンプレートやページエディターで任意のページにドラッグします。
+</Steps>
+
+## ページエディターで直接コンポーネントを追加する
+
+モジュールを作成せずに、ドラッグ＆ドロップエディターの**Custom HTML**セクションを使うこともできます：
+
+<Steps>
+1. HubSpotのページエディターでページを開きます。
+2. **Add** をクリックし、**Custom HTML** または **Embed** セクションを選択します。
+3. HTMLフィールドにコンポーネントタグを貼り付けます。
+4. **Apply** をクリックしてページを公開します。
+</Steps>
+
+## 利用可能なコンポーネント
+
+| コンポーネント | HTMLタグ | 用途 |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | ホテルカード、グリッド、地図の表示 |
+| Lookup | `<wink-lookup>` | 目的地検索バー |
+| Search button | `<wink-search-button>` | 旅程ピッカーを開くボタン |
+| Account button | `<wink-account-button>` | サインイン / ユーザーメニュー |
+| Itinerary button | `<wink-itinerary-button>` | 現在の旅程を表示 |
+| Itinerary picker | `<wink-itinerary-picker>` | 旅程フォーム全体 |
+| Shopping cart | `<wink-shopping-cart-button>` | カート概要ボタン |
+
+完全な属性リファレンスは[Web Components](/ja/integrations/web-components)をご覧ください。
+
+## 参考資料
+
+- [Web Componentsリファレンス](/ja/integrations/web-components)
+- [クライアントIDの取得](/ja/portal/settings/applications)
+- [HubSpotカスタムコードドキュメント](https://knowledge.hubspot.com/website-pages/add-custom-code-to-pages)

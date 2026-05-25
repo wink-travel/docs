@@ -1,0 +1,111 @@
+---
+title: React
+description: Izmantojiet Wink tīmekļa komponentes jebkurā React lietotnē ar pilnu TypeScript atbalstu, izmantojot @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ nodrošina pirmās klases atbalstu pielāgotām elementu komponentēm. React 18 un agrākās versijās tiek nodotas tikai virknes atribūti — lai saglabātu drošību starp versijām, izmantojiet zemāk norādīto tipizēto palīga modeli.
+
+<LinkCard
+  title="@wink/elements npm pakotne"
+  href="/integrations/npm"
+  description="Instalējiet un ielādējiet CDN pakotni ar TypeScript tipiem."
+/>
+
+## Instalēšana
+
+```bash
+npm install @wink/elements
+```
+
+## Ielādējiet vienreiz lietotnes saknē
+
+Izsauciet `load()` savā augstākā līmeņa komponentē. Tā ir idempotenta — droši izsaukt vairākas reizes.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Komponentu izmantošana JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — deklarējiet JSX intrinsics
+
+React pēc noklusējuma nezina par pielāgotu elementu nosaukumiem. Pievienojiet deklarācijas failu vienreiz, lai novērstu tipu kļūdas:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="React 18 atribūtu ierobežojums">
+React 18 un agrākās versijās visi JSX rekvizīti tiek serializēti uz virkni pirms nodošanas DOM. Loģiskie un objekta rekvizīti jākonvertē manuāli. React 19 nodod ne-virknes rekvizītus tieši pielāgotajiem elementiem — nav nepieciešams apiet šo ierobežojumu.
+</Aside>
+
+## Tipizētu atribūtu nodošana (React 18 droši)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Izkliede darbojas React 19; React 18 visus vērtības tāpat uztver kā virknes
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Papildu lasāmviela
+
+- [Tīmekļa komponentu atsauce](/lv/integrations/web-components)
+- [@wink/elements npm pakotne](/lv/integrations/npm)
+- [Next.js integrācija](/lv/integrations/nextjs)

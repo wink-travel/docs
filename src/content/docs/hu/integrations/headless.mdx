@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Ágyazza be a Wink utazási készletet bármely headless CMS-be (Contentful, Strapi, Sanity stb.) vagy egyedi fejlesztésű oldalba.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+A Wink webkomponensek keretrendszerfüggetlen egyedi HTML elemek. Ha a headless CMS-ed HTML-t renderel — akár Next.js, Nuxt, Astro, SvelteKit vagy bármely más keretrendszeren keresztül — beágyazhatod a Wink komponenseket különösebb integráció nélkül.
+
+## A háromlépéses beágyazás
+
+Minden Wink integráció, platformtól függetlenül, ugyanazt a három lépést követi.
+
+### 1. Illeszd be a stíluslapot
+
+Add hozzá ezt a dokumentumod `<head>` részéhez (vagy az egyenértékű globális elrendezéshez):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Illeszd be a JavaScriptet
+
+Add hozzá ezt a záró `</body>` tag előtt (vagy az elrendezésed script szekciójában):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Add hozzá az alkalmazás betöltőt
+
+Helyezd el ezt **oldalanként egyszer**, bárhol a body-ban (általában a globális elrendezés láblécében):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Az ügyfélazonosítódat megtalálod Wink fiókodban az [Applications](/hu/portal/settings/applications) menüpont alatt.
+:::
+
+## Keretrendszer példák
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+TypeScript felhasználóknak: adj hozzá egy `global.d.ts` fájlt, amely deklarálja az egyedi elem típusokat, vagy használd a [`@wink/elements`](https://github.com/wink2travel/wink-elements) npm csomagot, amely tartalmazza a típusdefiníciókat.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Komponensek elhelyezése a tartalomban
+
+A CMS-ed gazdag szöveg vagy egyedi mező típusain belül ágyazd be a komponens tageket közvetlenül a HTML kimenetbe:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Contentful, Strapi, Sanity vagy hasonló headless platformok esetén használj **Rich Text** mezőt vagy **Custom Block**-ot, amely nyers HTML-t renderel, és illeszd be oda a komponens taget.
+
+## npm csomag
+
+TypeScript projektekhez a [`@wink/elements`](https://github.com/wink2travel/wink-elements) csomag biztosítja:
+- Egy `load()` függvényt, amely programozottan injektálja a CDN szkripteket
+- Teljes TypeScript típusdefiníciókat az összes komponens attribútumhoz
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Egyszer hívd meg az alkalmazás indításakor
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Elérhető komponensek
+
+| Komponens | HTML tag | Cél |
+|---|---|---|
+| Tartalom betöltő | `<wink-content-loader>` | Szállodakártyák, rácsok, térképek megjelenítése |
+| Kereső | `<wink-lookup>` | Úticél kereső sáv |
+| Kereső gomb | `<wink-search-button>` | Útvonalválasztó megnyitása |
+| Fiók gomb | `<wink-account-button>` | Bejelentkezés / felhasználói menü |
+| Útvonal gomb | `<wink-itinerary-button>` | Aktuális útvonal megjelenítése |
+| Útvonal választó | `<wink-itinerary-picker>` | Teljes útvonal űrlap |
+| Bevásárlókosár | `<wink-shopping-cart-button>` | Kosár összefoglaló gomb |
+
+A teljes attribútum referenciáért lásd a [Web Components](/hu/integrations/web-components) oldalt.

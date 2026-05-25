@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: Vložte inventár Wink do svojej publikácie Ghost pomocou Code Injection.
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Vstavaná funkcia **Code Injection** v Ghost vám umožňuje pridávať skripty do globálneho `<head>` a `</body>` vašej publikácie. Všetky plány Ghost podporujú code injection, čo uľahčuje vloženie komponentov Wink na akúkoľvek stránku alebo príspevok.
+
+## Načítanie skriptov Wink na celej stránke
+
+<Steps>
+1. V administrácii Ghost prejdite do **Settings → Code Injection**.
+2. Do poľa **Site Header** pridajte štýly:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. Do poľa **Site Footer** pridajte skript a loader aplikácie (nahraďte `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Kliknite na **Save**.
+</Steps>
+
+:::tip
+Váš Client ID nájdete vo svojom účte Wink v sekcii [Applications](/sk/portal/settings/applications).
+:::
+
+## Pridanie komponentu do príspevku alebo stránky
+
+Editor Ghost podporuje **HTML kartu**, ktorá vám umožní vložiť surový HTML kdekoľvek do obsahu.
+
+<Steps>
+1. Otvorte príspevok alebo stránku v editore Ghost.
+2. Napíšte `/` pre otvorenie výberu kariet a vyberte **HTML**.
+3. Vložte HTML komponentu, napríklad:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Kliknite mimo karty pre náhľad a potom publikujte.
+</Steps>
+
+## Code injection pre jednotlivé stránky
+
+Pre komponent, ktorý má byť zobrazený iba na jednej stránke, Ghost podporuje aj code injection pre konkrétnu stránku:
+
+<Steps>
+1. Otvorte nastavenia príspevku alebo stránky (ikona ozubeného kolieska v editore).
+2. Prejdite na **Code Injection**.
+3. Pridajte tag komponentu do poľa **Footer** (globálny app-loader musí byť len v celostránkovom footeri).
+4. Uložte.
+</Steps>
+
+## Dostupné komponenty
+
+| Komponent | HTML tag | Účel |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Zobrazenie hotelových kariet, mriežok, máp |
+| Lookup | `<wink-lookup>` | Vyhľadávací panel pre destinácie |
+| Search button | `<wink-search-button>` | Otvorenie výberu itinerára |
+| Account button | `<wink-account-button>` | Prihlásenie / používateľské menu |
+| Itinerary button | `<wink-itinerary-button>` | Zobrazenie aktuálneho itinerára |
+| Itinerary picker | `<wink-itinerary-picker>` | Kompletný formulár itinerára |
+| Shopping cart | `<wink-shopping-cart-button>` | Tlačidlo so súhrnom košíka |
+
+Pozrite si [Web Components](/sk/integrations/web-components) pre kompletný zoznam atribútov.
+
+## Ďalšie čítanie
+
+- [Referenčné Web Components](/sk/integrations/web-components)
+- [Získajte svoj Client ID](/sk/portal/settings/applications)
+- [Dokumentácia Ghost Code Injection](https://ghost.org/help/ghost-themes/#code-injection)

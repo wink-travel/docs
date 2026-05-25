@@ -1,0 +1,111 @@
+---
+title: React
+description: Bruk Wink webkomponenter i hvilken som helst React-applikasjon med full TypeScript-støtte via @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ har førsteklasses støtte for egendefinerte elementer. React 18 og tidligere sender kun strengattributter — bruk det typede hjelpe-mønsteret nedenfor for å være trygg på tvers av versjoner.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Installer og last inn CDN-bunten med TypeScript-typer."
+/>
+
+## Installer
+
+```bash
+npm install @wink/elements
+```
+
+## Last inn én gang i app-roten
+
+Kall `load()` i din toppnivåkomponent. Den er idempotent — trygg å kalle flere ganger.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Bruk komponenter i JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — deklarer JSX intrinsics
+
+React kjenner ikke til egendefinerte elementnavn som standard. Legg til en deklarasjonsfil én gang for å fjerne typefeil:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="Begrensning i React 18 for attributter">
+React 18 og tidligere serialiserer alle JSX-props til strenger før de sendes til DOM. Boolean- og objekt-props må konverteres manuelt. React 19 sender ikke-streng props direkte til egendefinerte elementer — ingen omgåelse nødvendig.
+</Aside>
+
+## Sende typede attributter (trygt i React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread fungerer i React 19; for React 18 er alle verdier uansett strenger
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Videre lesning
+
+- [Web Components referanse](/no/integrations/web-components)
+- [@wink/elements npm package](/no/integrations/npm)
+- [Next.js integrasjon](/no/integrations/nextjs)

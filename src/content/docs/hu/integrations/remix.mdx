@@ -1,0 +1,115 @@
+---
+title: Remix
+description: Adj hozzá Wink webkomponenseket Remix alkalmazásokhoz csak kliensoldali betöltéssel a useEffect segítségével.
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+A Remix egy teljes körű keretrendszer, amely alapértelmezés szerint szerveroldalon renderel. A Wink CDN-t csak a kliensoldalon töltsd be a `useEffect` használatával a gyökér komponensben.
+
+<LinkCard
+  title="@wink/elements npm csomag"
+  href="/integrations/npm"
+  description="Telepítsd és töltsd be a CDN csomagot TypeScript típusokkal."
+/>
+
+## Telepítés
+
+```bash
+npm install @wink/elements
+```
+
+## Betöltés az app/root.tsx-ben
+
+A `useEffect` csak a böngészőben fut, soha nem a szerveroldali renderelés során:
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## Környezeti változók
+
+A Remix (Vite-alapú, v2.8+) támogatja az `import.meta.env` használatát böngészőben elérhető változókhoz. A böngészői csomag számára való kitettséghez előtagként használd a `VITE_`-t:
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Régebbi Remix beállításoknál, amelyek Node.js adaptert használnak, add vissza a kliensazonosítót egy root loaderből, és olvasd be a komponensben:
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## Használat az útvonalakon
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Hydratációs eltérés">
+A Remix a szerveroldalon renderelt HTML-t hidratálja a kliensoldalon. Ha egy `<wink-*>` elemet szerveroldalon renderelnek, a böngésző rövid ideig megjelenítheti a feloldatlan egyedi elemet, mielőtt a CDN szkript regisztrálná azt. Ez csak esztétikai kérdés — az elem helyesen frissül, amint a szkript betöltődik.
+</Aside>
+
+## TypeScript típusok
+
+Add hozzá a JSX intrinsic deklarációs fájlt a [React integráció oldaláról](/hu/integrations/react#typescript--declare-jsx-intrinsics) — a Remix React-et használ a háttérben.
+
+## További olvasnivaló
+
+- [Web Components referencia](/hu/integrations/web-components)
+- [@wink/elements npm csomag](/hu/integrations/npm)
+- [React integráció](/hu/integrations/react)

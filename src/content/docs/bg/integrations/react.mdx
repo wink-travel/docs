@@ -1,0 +1,111 @@
+---
+title: React
+description: Използвайте Wink уеб компоненти във всяко React приложение с пълна поддръжка на TypeScript чрез @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ има първокласна поддръжка за custom elements. React 18 и по-ранни версии предават само низови атрибути — използвайте типизирания помощник по-долу, за да сте сигурни при всички версии.
+
+<LinkCard
+  title="@wink/elements npm пакет"
+  href="/integrations/npm"
+  description="Инсталирайте и заредете CDN пакета с TypeScript типове."
+/>
+
+## Инсталиране
+
+```bash
+npm install @wink/elements
+```
+
+## Заредете веднъж в корена на приложението
+
+Извикайте `load()` в компонента от най-високо ниво. Той е идемпотентен — безопасно е да се извиква многократно.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Използване на компоненти в JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — деклариране на JSX intrinsics
+
+React по подразбиране не разпознава имената на custom elements. Добавете декларационен файл веднъж, за да премахнете грешките при типове:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="Ограничение на атрибутите в React 18">
+React 18 и по-ранни версии сериализират всички JSX пропъртита като низове преди да ги предадат на DOM. Булеви и обектни пропъртита трябва да се конвертират ръчно. React 19 предава непревърнати пропъртита директно към custom elements — не е необходима заобиколка.
+</Aside>
+
+## Предаване на типизирани атрибути (безопасно за React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread работи в React 19; за React 18 всички стойности са низове по подразбиране
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Допълнително четене
+
+- [Референция за Web Components](/bg/integrations/web-components)
+- [@wink/elements npm пакет](/bg/integrations/npm)
+- [Интеграция с Next.js](/bg/integrations/nextjs)

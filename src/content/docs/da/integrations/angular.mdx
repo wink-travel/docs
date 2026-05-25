@@ -1,0 +1,112 @@
+---
+title: Angular
+description: Brug Wink webkomponenter i Angular 14+ applikationer med CUSTOM_ELEMENTS_SCHEMA og @wink/elements.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink-komponenter er i sig selv Angular Elements — de integreres naturligt i Angular-applikationer. Den eneste opsætning, der kræves, er at fortælle Angulars compiler at tillade ukendte elementnavne.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Installer og indlæs CDN-bundtet med TypeScript-typer."
+/>
+
+## Installér
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — indlæs CDN én gang
+
+Kald `load()` før `bootstrapApplication` (eller inde i `APP_INITIALIZER`):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## Tillad brugerdefinerede elementnavne
+
+Tilføj `CUSTOM_ELEMENTS_SCHEMA` til hver standalone komponent (eller modul), der renderer `<wink-*>` tags:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="NgModule-applikationer">
+For NgModule-baserede apps, tilføj `CUSTOM_ELEMENTS_SCHEMA` til `schemas`-arrayet i `@NgModule`-dekorationen i stedet.
+</Aside>
+
+## Binding af attributter
+
+Angulars templatesyntaks fungerer direkte med brugerdefinerede elementers strengattributter:
+
+```html
+<!-- Statisk -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- Dynamisk binding -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+Brug `[attr.name]` binding, når værdien er dynamisk — Angulars almindelige `[property]` binding retter sig mod DOM-egenskaber, ikke HTML-attributter, som brugerdefinerede elementer er afhængige af.
+
+## Miljøvariabler
+
+For `@angular/cli` 16+ projekter, brug `environment.ts` eller `NG_APP_*` præfikset med `@ngx-env/builder`:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## TypeScript-typer
+
+`@wink/elements` pakken eksporterer typede interfaces for alle komponentattributter:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## Yderligere læsning
+
+- [Web Components reference](/da/integrations/web-components)
+- [@wink/elements npm package](/da/integrations/npm)

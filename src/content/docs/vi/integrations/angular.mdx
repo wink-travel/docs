@@ -1,0 +1,112 @@
+---
+title: Angular
+description: Sử dụng các thành phần web Wink trong ứng dụng Angular 14+ với CUSTOM_ELEMENTS_SCHEMA và @wink/elements.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Các thành phần Wink tự thân là Angular Elements — chúng tích hợp một cách tự nhiên trong các ứng dụng Angular. Thiết lập duy nhất cần là thông báo cho trình biên dịch Angular cho phép các tên phần tử không xác định.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Cài đặt và tải gói CDN kèm kiểu TypeScript."
+/>
+
+## Cài đặt
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — tải CDN một lần
+
+Gọi `load()` trước `bootstrapApplication` (hoặc bên trong `APP_INITIALIZER`):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## Cho phép tên phần tử tùy chỉnh
+
+Thêm `CUSTOM_ELEMENTS_SCHEMA` vào mỗi component độc lập (hoặc module) mà render các thẻ `<wink-*>`:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="Ứng dụng NgModule">
+Đối với các app dựa trên NgModule, thay vào đó hãy thêm `CUSTOM_ELEMENTS_SCHEMA` vào mảng `schemas` trong decorator `@NgModule`.
+</Aside>
+
+## Ràng buộc thuộc tính
+
+Cú pháp template của Angular hoạt động trực tiếp với các thuộc tính chuỗi của phần tử tùy chỉnh:
+
+```html
+<!-- Tĩnh -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- Ràng buộc động -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+Sử dụng ràng buộc `[attr.name]` khi giá trị là động — ràng buộc `[property]` thông thường của Angular nhắm vào thuộc tính DOM, không phải thuộc tính HTML, mà các phần tử tùy chỉnh dựa vào.
+
+## Biến môi trường
+
+Đối với dự án `@angular/cli` 16+, sử dụng `environment.ts` hoặc tiền tố `NG_APP_*` với `@ngx-env/builder`:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## Kiểu TypeScript
+
+Gói `@wink/elements` xuất các interface có kiểu cho tất cả thuộc tính component:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## Đọc thêm
+
+- [Tham khảo Web Components](/vi/integrations/web-components)
+- [@wink/elements npm package](/vi/integrations/npm)

@@ -1,0 +1,111 @@
+---
+title: React
+description: Naudokite Wink žiniatinklio komponentus bet kurioje React programoje su pilnu TypeScript palaikymu per @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ turi pirmos klasės palaikymą pasirinktiniams elementams. React 18 ir ankstesnės versijos perduoda tik eilutės atributus — naudokite žemiau pateiktą tipizuotą pagalbinį modelį, kad išliktumėte saugūs tarp versijų.
+
+<LinkCard
+  title="@wink/elements npm paketas"
+  href="/integrations/npm"
+  description="Įdiekite ir įkelkite CDN paketą su TypeScript tipais."
+/>
+
+## Įdiegimas
+
+```bash
+npm install @wink/elements
+```
+
+## Įkelkite vieną kartą programos šakniniame komponente
+
+Iškvieskite `load()` savo aukščiausio lygio komponente. Jis yra idempotentinis — saugu kviesti kelis kartus.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Naudokite komponentus JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — deklaruokite JSX intrinsics
+
+React pagal nutylėjimą nežino apie pasirinktinių elementų pavadinimus. Pridėkite deklaracijos failą vieną kartą, kad išvengtumėte tipų klaidų:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="React 18 atributų apribojimas">
+React 18 ir ankstesnės versijos serializuoja visus JSX props į eilutes prieš perduodant juos DOM. Boolean ir objektų props reikia konvertuoti rankiniu būdu. React 19 perduoda neeilutinius props tiesiogiai pasirinktiniams elementams — jokių apeiškojimų nereikia.
+</Aside>
+
+## Tipizuotų atributų perdavimas (saugus React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread veikia React 19; React 18 vis tiek visi reikšmės yra eilutės
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Tolimesnė literatūra
+
+- [Žiniatinklio komponentų nuoroda](/lt/integrations/web-components)
+- [@wink/elements npm paketas](/lt/integrations/npm)
+- [Next.js integracija](/lt/integrations/nextjs)

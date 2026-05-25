@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: 맞춤 코드 임베드를 사용하여 Wink 여행 인벤토리를 Webflow 사이트에 삽입하세요.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow는 사이트 전체의 `<head>`, 사이트 전체의 `</body>`, 그리고 개별 요소별 코드 임베드 세 곳에서 맞춤 HTML과 JavaScript를 지원합니다. 이를 통해 Wink 웹 컴포넌트 통합이 간단해집니다.
+
+:::note
+맞춤 코드는 **Webflow의 Basic 플랜 이상**에서 사용할 수 있습니다. 사이트 전체 `</body>` 삽입은 유료 호스팅 플랜이 필요합니다.
+:::
+
+## 사이트 전체에 Wink 스크립트 로드하기
+
+<Steps>
+1. Webflow 디자이너에서 **Project Settings → Custom Code**를 엽니다.
+2. **Head Code** 섹션에 스타일시트를 추가합니다:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. **Footer Code** 섹션에 스크립트와 애플리케이션 로더를 추가합니다 (`YOUR_CLIENT_ID`를 교체하세요):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. **Save Changes**를 클릭합니다.
+</Steps>
+
+:::tip
+클라이언트 ID는 Wink 계정 내 [Applications](/ko/portal/settings/applications)에서 확인할 수 있습니다.
+:::
+
+## 특정 요소에 컴포넌트 추가하기
+
+<Steps>
+1. 디자이너에서 컴포넌트를 넣을 **Div** 또는 **Section**을 선택합니다.
+2. 오른쪽 패널에서 **`</>` Embed** 아이콘을 클릭하거나, 추가 패널에서 **HTML Embed** 요소를 추가합니다.
+3. 컴포넌트 HTML을 붙여넣습니다. 예:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. **Save & Close**를 클릭합니다.
+</Steps>
+
+## 페이지별 맞춤 코드
+
+특정 페이지에만 Wink를 적용하려면 사이트 전체 대신 페이지별 코드 삽입을 사용하세요:
+
+<Steps>
+1. 대상 페이지의 **Page Settings**(페이지 패널의 톱니바퀴 아이콘)를 엽니다.
+2. **Custom Code → Before `</body>` tag**로 스크롤합니다.
+3. 위와 동일한 스크립트와 앱 로더를 붙여넣습니다.
+4. 페이지 설정을 저장합니다.
+</Steps>
+
+## 사용 가능한 컴포넌트
+
+| 컴포넌트 | HTML 태그 | 용도 |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | 호텔 카드, 그리드, 지도 표시 |
+| Lookup | `<wink-lookup>` | 목적지 검색 바 |
+| Search button | `<wink-search-button>` | 여행 일정 선택기 열기 |
+| Account button | `<wink-account-button>` | 로그인 / 사용자 메뉴 |
+| Itinerary button | `<wink-itinerary-button>` | 현재 여행 일정 표시 |
+| Itinerary picker | `<wink-itinerary-picker>` | 전체 여행 일정 폼 |
+| Shopping cart | `<wink-shopping-cart-button>` | 장바구니 요약 버튼 |
+
+전체 속성 참조는 [Web Components](/ko/integrations/web-components)에서 확인하세요.
+
+## 추가 자료
+
+- [Web Components reference](/ko/integrations/web-components)
+- [클라이언트 ID 받기](/ko/portal/settings/applications)
+- [Webflow 맞춤 코드 문서](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: ฝังสินค้าคงคลังการเดินทางของ Wink ลงในเว็บไซต์ Craft CMS 5 ของคุณโดยใช้ปลั๊กอิน Wink
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS Plugin** ผสานรวมสินค้าคงคลังการเดินทางของ Wink เข้ากับ Craft 5 ผ่านฟังก์ชัน Twig template และประเภทฟิลด์ที่กำหนดเองสำหรับบรรณาธิการเนื้อหา บรรณาธิการสามารถเลือกเลย์เอาต์ Wink ที่ต้องการจากเมนูแบบเลื่อนลงได้โดยตรงในตัวแก้ไขรายการ
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin บน GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="ซอร์สโค้ด คู่มือการตั้งค่าสำหรับนักพัฒนา และคำแนะนำการมีส่วนร่วม"
+/>
+
+## ความต้องการ
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## การติดตั้ง
+
+<Steps>
+1. ติดตั้งผ่าน Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. เปิดใช้งานปลั๊กอินใน Control Panel ที่ **Settings → Plugins** หรือผ่าน CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. ไปที่ **Settings → Wink** ใน Control Panel
+4. กรอก **Client ID** และ **Client Secret** ของคุณ เลือกสภาพแวดล้อม แล้วคลิก **Save**
+   ไปที่ [Applications](/th/portal/settings/applications) เพื่อดึงข้อมูลรับรองของคุณ
+</Steps>
+
+## การใช้งานใน Twig templates
+
+เมื่อกำหนดค่าแล้ว ให้เรียกใช้ฟังก์ชัน Twig ของ Wink ที่ใดก็ได้ในเทมเพลตของคุณ:
+
+```twig
+{# แสดงกริดโรงแรม #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# แถบค้นหาปลายทาง #}
+{{ winkLookup() }}
+
+{# ปุ่มเลือกแผนการเดินทาง #}
+{{ winkSearch() }}
+
+{# ปุ่มบัญชีผู้ใช้ #}
+{{ winkAccount() }}
+```
+
+ฟังก์ชัน `winkContent()` จะฝัง `<wink-app-loader>` อัตโนมัติในครั้งแรกที่เรียกใช้บนหน้า
+
+## ฟังก์ชัน Twig ที่มีให้ใช้งาน
+
+| ฟังก์ชัน | ผลลัพธ์ | คำอธิบาย |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | การ์ดโรงแรม, กริด, แผนที่ |
+| `winkLookup()` | `<wink-lookup>` | แถบค้นหาปลายทาง |
+| `winkSearch()` | `<wink-search-button>` | ปุ่มเลือกแผนการเดินทาง |
+| `winkAccount()` | `<wink-account-button>` | ลงชื่อเข้าใช้ / บัญชีผู้ใช้ |
+| `winkItinerary()` | `<wink-itinerary-button>` | ปุ่มสถานะแผนการเดินทาง |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | ปุ่มตะกร้าสินค้า |
+
+## ประเภทฟิลด์ Wink Layout
+
+เพิ่มฟิลด์ **Wink Layout** ในส่วนใดก็ได้เพื่อให้บรรณาธิการมีเมนูแบบเลื่อนลงของเลย์เอาต์ทั้งหมดที่มีในบัญชี Wink ของคุณ:
+
+<Steps>
+1. ไปที่ **Settings → Fields → New Field**
+2. ตั้งค่า **Field Type** เป็น **Wink Layout**
+3. เพิ่มฟิลด์นี้ในเลย์เอาต์ฟิลด์ของประเภทรายการของคุณ
+4. บรรณาธิการสามารถเลือกเลย์เอาต์ได้โดยตรงในตัวแก้ไขรายการ — ไม่ต้องคัดลอกและวาง ID อีกต่อไป
+</Steps>
+
+ในเทมเพลตของคุณ ส่งค่าฟิลด์ไปยัง `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## อ่านเพิ่มเติม
+
+- [เอกสารอ้างอิง Web Components](/th/integrations/web-components)
+- [รับ Client ID ของคุณ](/th/portal/settings/applications)
+- [Wink Craft Plugin — ซอร์สโค้ด & เอกสารสำหรับนักพัฒนา](https://github.com/wink-travel/wink-craft-plugin)

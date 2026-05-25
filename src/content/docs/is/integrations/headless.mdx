@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Innbyggðu Wink ferðainventar í hvaða headless CMS (Contentful, Strapi, Sanity o.s.frv.) eða sérsmíðaða síðu.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wink vefhlutir eru rammaóháðir sérsniðnir HTML þættir. Ef headless CMS þitt birtir HTML — hvort sem það er í gegnum Next.js, Nuxt, Astro, SvelteKit eða annan ramma — geturðu innbyggt Wink þætti án sérstakrar samþættingar.
+
+## Þrjú skref innbyggingar
+
+Öll Wink samþætting, óháð vettvangi, fylgir sömu þremur skrefum.
+
+### 1. Bættu við stílsniði
+
+Bættu þessu við `<head>` skjalsins þíns (eða sambærilegt alþjóðlegt útlit):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Bættu við JavaScript
+
+Bættu þessu við fyrir lokun `</body>` merkisins (eða í skriftuhluta útlitsins þíns):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Bættu við forritshleðslunni
+
+Settu þetta **einungis einu sinni á hverja síðu**, hvar sem er í body (venjulega í fóti alþjóðlegs útlits):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Client ID þitt er aðgengilegt í Wink reikningnum þínum undir [Applications](/is/portal/settings/applications).
+:::
+
+## Dæmi um ramma
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+TypeScript notendur: bætið við `global.d.ts` sem lýsir sérsniðnum þáttum, eða notið [`@wink/elements`](https://github.com/wink2travel/wink-elements) npm pakkann sem inniheldur tegundalýsingar.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Að setja þætti í efni
+
+Í ríkum texta eða sérsniðnum reitum CMS þíns, innbyggðu þáttamerki beint í HTML úttak:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Fyrir Contentful, Strapi, Sanity eða svipaða headless vettvanga, notaðu **Rich Text** reit eða **Custom Block** sem birtir hrátt HTML, og límdu þáttamerkið þar.
+
+## npm pakki
+
+Fyrir TypeScript verkefni býður [`@wink/elements`](https://github.com/wink2travel/wink-elements) pakkinn upp á:
+- `load()` fall sem hleður CDN skriftum á skipulagðan hátt
+- Fullar TypeScript tegundalýsingar fyrir alla þáttaeiginleika
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Kallað einu sinni við upphaf appsins
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Tiltækir þættir
+
+| Þáttur | HTML merki | Tilgangur |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Sýna hótelkort, grindur, kort |
+| Lookup | `<wink-lookup>` | Leitargluggi fyrir áfangastaði |
+| Search button | `<wink-search-button>` | Opna ferðaráætlunarkjara |
+| Account button | `<wink-account-button>` | Skrá inn / notendavalmynd |
+| Itinerary button | `<wink-itinerary-button>` | Sýna núverandi ferðaráætlun |
+| Itinerary picker | `<wink-itinerary-picker>` | Fullt ferðaráætlunarform |
+| Shopping cart | `<wink-shopping-cart-button>` | Yfirlitshnappur körfu |
+
+Sjá [Web Components](/is/integrations/web-components) fyrir fulla eiginleikaskrá.

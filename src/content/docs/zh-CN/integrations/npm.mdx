@@ -1,0 +1,134 @@
+---
+title: npm 包
+description: 使用 @wink/elements npm 包，在任何 JavaScript 框架中实现 TypeScript 安全的 Wink Web 组件集成。
+sidebar:
+  order: 14
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**`@wink/elements`** npm 包是将 Wink Web 组件添加到任何 JavaScript 或 TypeScript 项目的最快方式。它提供了一个 `load()` 函数，用于注入 CDN 资源，并为所有组件属性提供完整的 TypeScript 类型声明。
+
+<LinkCard
+  title="wink-travel/wink-elements 在 GitHub"
+  href="https://github.com/wink-travel/wink-elements"
+  description="源代码、API 参考和贡献说明。"
+/>
+
+## 安装
+
+```bash
+npm install @wink/elements
+```
+
+## 快速开始
+
+在应用启动时调用一次 `load()`。该函数是幂等的——多次调用也安全。
+
+```ts
+import { load } from '@wink/elements';
+
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+然后在你的 HTML 或 JSX 中使用任何 Wink 组件：
+
+```html
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID"></wink-content-loader>
+```
+
+## 框架示例
+
+### Next.js（App Router）
+
+```tsx
+// app/layout.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <html><body>{children}</body></html>;
+}
+```
+
+### Nuxt 3
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+import { load } from '@wink/elements';
+---
+<script>
+  import { load } from '@wink/elements';
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+</script>
+```
+
+### SvelteKit
+
+```ts
+// src/routes/+layout.ts
+import { load as loadWink } from '@wink/elements';
+import { browser } from '$app/environment';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+## TypeScript 类型
+
+所有组件属性接口均已导出，可用于 JSX、模板字符串或类型化字典：
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',    // TypeScript 会捕获无效的 layout 值
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+```
+
+## 使用预发布 CDN
+
+```ts
+load({
+  clientId: 'YOUR_CLIENT_ID',
+  cdnBaseUrl: 'https://staging-elements.wink.travel',
+});
+```
+
+## API
+
+### `load(options)`
+
+| 选项 | 类型 | 必填 | 默认值 | 说明 |
+|---|---|---|---|---|
+| `clientId` | `string` | 是 | — | 你的 Wink OAuth2 客户端 ID |
+| `configurationId` | `string` | 否 | — | 可选的自定义配置 ID |
+| `cdnBaseUrl` | `string` | 否 | `https://elements.wink.travel` | 覆盖 CDN URL |
+
+## 进一步阅读
+
+- [Web 组件参考](/zh-CN/integrations/web-components)
+- [获取你的客户端 ID](/zh-CN/portal/settings/applications)
+- [无头 CMS 集成指南](/zh-CN/integrations/headless)
+- [`@wink/elements` 在 GitHub](https://github.com/wink-travel/wink-elements)

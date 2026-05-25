@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Wink 플러그인을 사용하여 Wink 여행 인벤토리를 Craft CMS 5 웹사이트에 임베드하세요.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS Plugin**은 Twig 템플릿 함수와 콘텐츠 편집기를 위한 맞춤 필드 유형을 통해 Wink 여행 인벤토리를 Craft 5에 통합합니다. 편집자는 엔트리 편집기 내 드롭다운에서 특정 Wink 레이아웃을 직접 선택할 수 있습니다.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin on GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="소스 코드, 개발자 설정 가이드 및 기여 지침."
+/>
+
+## 요구 사항
+
+- Craft CMS 5.x
+- PHP 8.1 이상
+- Composer
+
+## 설치
+
+<Steps>
+1. Composer로 설치:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. 제어판에서 **설정 → 플러그인**으로 이동하여 플러그인을 활성화하거나 CLI에서 다음 명령 실행:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. 제어판에서 **설정 → Wink**로 이동합니다.
+4. **Client ID**와 **Client Secret**을 입력하고 환경을 선택한 후 **저장**을 클릭합니다.
+   자격 증명은 [Applications](/ko/portal/settings/applications)에서 확인할 수 있습니다.
+</Steps>
+
+## Twig 템플릿에서 사용하기
+
+설정이 완료되면 템플릿 어디서든 Wink Twig 함수를 호출하세요:
+
+```twig
+{# 호텔 그리드 렌더링 #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# 목적지 검색 바 #}
+{{ winkLookup() }}
+
+{# 여행 일정 선택 버튼 #}
+{{ winkSearch() }}
+
+{# 사용자 계정 버튼 #}
+{{ winkAccount() }}
+```
+
+`winkContent()` 함수는 페이지에서 처음 호출될 때 자동으로 `<wink-app-loader>`를 삽입합니다.
+
+## 사용 가능한 Twig 함수
+
+| 함수 | 출력 | 설명 |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | 호텔 카드, 그리드, 지도 |
+| `winkLookup()` | `<wink-lookup>` | 목적지 검색 바 |
+| `winkSearch()` | `<wink-search-button>` | 여행 일정 선택 버튼 |
+| `winkAccount()` | `<wink-account-button>` | 로그인 / 사용자 계정 |
+| `winkItinerary()` | `<wink-itinerary-button>` | 여행 일정 상태 버튼 |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | 장바구니 버튼 |
+
+## Wink Layout 필드 유형
+
+어떤 섹션에든 **Wink Layout** 필드를 추가하여 편집자가 Wink 계정의 모든 사용 가능한 레이아웃을 드롭다운에서 선택할 수 있게 하세요:
+
+<Steps>
+1. **설정 → 필드 → 새 필드**로 이동합니다.
+2. **필드 유형**을 **Wink Layout**으로 설정합니다.
+3. 필드를 엔트리 유형의 필드 레이아웃에 추가합니다.
+4. 이제 편집자는 엔트리 편집기에서 직접 레이아웃을 선택할 수 있습니다 — ID를 복사해서 붙여넣을 필요가 없습니다.
+</Steps>
+
+템플릿에서는 필드 값을 `winkContent()`에 전달하세요:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## 추가 자료
+
+- [웹 컴포넌트 참조](/ko/integrations/web-components)
+- [Client ID 받기](/ko/portal/settings/applications)
+- [Wink Craft Plugin — 소스 코드 및 개발자 문서](https://github.com/wink-travel/wink-craft-plugin)

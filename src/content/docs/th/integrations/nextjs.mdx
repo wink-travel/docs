@@ -1,0 +1,122 @@
+---
+title: Next.js
+description: เพิ่มคอมโพเนนต์เว็บ Wink ลงในแอป Next.js App Router และ Pages Router
+sidebar:
+  order: 16
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+คอมโพเนนต์ Wink เป็น custom elements ที่ทำงานเฉพาะบนเบราว์เซอร์ — สคริปต์ CDN ต้องโหลดฝั่งไคลเอนต์ รูปแบบด้านล่างครอบคลุมทั้ง **App Router** (Next.js 13+) และ **Pages Router** แบบเก่า
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="ติดตั้งและโหลด CDN bundle พร้อมกับ TypeScript types."
+/>
+
+## ติดตั้ง
+
+```bash
+npm install @wink/elements
+```
+
+## App Router (Next.js 13+)
+
+สร้าง client component ที่เรียกใช้ `load()` ครั้งเดียวและเรนเดอร์ภายใน root layout ของคุณ:
+
+```tsx
+// components/WinkLoader.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export function WinkLoader() {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return null;
+}
+```
+
+```tsx
+// app/layout.tsx
+import { WinkLoader } from '@/components/WinkLoader';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <WinkLoader />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+ใช้คอมโพเนนต์ Wink ใน **Client Component** ใดก็ได้:
+
+```tsx
+// app/hotels/page.tsx
+'use client';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Server Components">
+แท็ก `<wink-*>` ไม่สามารถเรนเดอร์ใน Server Components ได้เพราะ custom element registry ทำงานเฉพาะบนเบราว์เซอร์เท่านั้น ควรเพิ่ม `'use client'` ในทุกคอมโพเนนต์ที่เรนเดอร์คอมโพเนนต์ Wink เสมอ
+</Aside>
+
+## Pages Router
+
+โหลดครั้งเดียวใน `_app.tsx`:
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <Component {...pageProps} />;
+}
+```
+
+จากนั้นใช้คอมโพเนนต์ Wink ในหน้าใดก็ได้:
+
+```tsx
+// pages/hotels.tsx
+export default function HotelsPage() {
+  return <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />;
+}
+```
+
+## ตัวแปรสภาพแวดล้อม
+
+เพิ่มใน `.env.local`:
+
+```
+NEXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+คำนำหน้า `NEXT_PUBLIC_` จำเป็นเพื่อเปิดเผยตัวแปรให้กับ bundle ฝั่งเบราว์เซอร์
+
+## TypeScript types
+
+เพิ่มไฟล์ประกาศเพื่อให้ TypeScript รู้จักชื่อ custom element ใน JSX — ดูที่ [React integration page](/th/integrations/react#typescript--declare-jsx-intrinsics) สำหรับโค้ดตัวอย่างเต็มของ `wink-elements.d.ts`
+
+## อ่านเพิ่มเติม
+
+- [Web Components reference](/th/integrations/web-components)
+- [@wink/elements npm package](/th/integrations/npm)
+- [React integration](/th/integrations/react)

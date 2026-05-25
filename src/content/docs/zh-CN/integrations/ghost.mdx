@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: 使用代码注入将 Wink 旅游库存嵌入到您的 Ghost 出版物中。
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Ghost 内置的**代码注入**功能允许您向出版物的全局 `<head>` 和 `</body>` 添加脚本。所有 Ghost 计划均支持代码注入，使您可以轻松地在任何页面或文章中嵌入 Wink 组件。
+
+## 在全站范围内加载 Wink 脚本
+
+<Steps>
+1. 在 Ghost 管理面板中，进入 **设置 → 代码注入**。
+2. 在 **站点头部** 框中，添加样式表：
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. 在 **站点底部** 框中，添加脚本和应用加载器（替换 `YOUR_CLIENT_ID`）：
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. 点击 **保存**。
+</Steps>
+
+:::tip
+您的 Client ID 可在 Wink 账户的[应用程序](/zh-CN/portal/settings/applications)中找到。
+:::
+
+## 向文章或页面添加组件
+
+Ghost 编辑器支持一个**HTML 卡片**，允许您在内容中任意位置插入原始 HTML。
+
+<Steps>
+1. 在 Ghost 编辑器中打开文章或页面。
+2. 输入 `/` 打开卡片选择器，选择 **HTML**。
+3. 粘贴组件 HTML，例如：
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. 点击卡片外部预览，然后发布。
+</Steps>
+
+## 单页代码注入
+
+对于只应出现在某个页面的组件，Ghost 也支持单页代码注入：
+
+<Steps>
+1. 打开文章或页面设置（编辑器中的齿轮图标）。
+2. 滚动到 **代码注入**。
+3. 在 **底部** 字段中添加组件标签（全局的 app-loader 只需放在站点底部）。
+4. 保存。
+</Steps>
+
+## 可用组件
+
+| 组件 | HTML 标签 | 用途 |
+|---|---|---|
+| 内容加载器 | `<wink-content-loader>` | 显示酒店卡片、网格、地图 |
+| 查找 | `<wink-lookup>` | 目的地搜索栏 |
+| 搜索按钮 | `<wink-search-button>` | 打开行程选择器 |
+| 账户按钮 | `<wink-account-button>` | 登录 / 用户菜单 |
+| 行程按钮 | `<wink-itinerary-button>` | 显示当前行程 |
+| 行程选择器 | `<wink-itinerary-picker>` | 完整行程表单 |
+| 购物车 | `<wink-shopping-cart-button>` | 购物车摘要按钮 |
+
+请参阅[Web Components](/zh-CN/integrations/web-components)获取完整属性参考。
+
+## 进一步阅读
+
+- [Web Components 参考](/zh-CN/integrations/web-components)
+- [获取您的 Client ID](/zh-CN/portal/settings/applications)
+- [Ghost 代码注入文档](https://ghost.org/help/ghost-themes/#code-injection)

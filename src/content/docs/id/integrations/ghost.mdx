@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: Sematkan inventaris perjalanan Wink ke publikasi Ghost Anda menggunakan Code Injection.
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Fitur **Code Injection** bawaan Ghost memungkinkan Anda menambahkan skrip ke `<head>` global dan `</body>` publikasi Anda. Semua paket Ghost mendukung code injection, sehingga mudah untuk menyematkan komponen Wink di halaman atau postingan mana pun.
+
+## Muat skrip Wink di seluruh situs
+
+<Steps>
+1. Di panel Ghost Admin, buka **Settings → Code Injection**.
+2. Di kotak **Site Header**, tambahkan stylesheet:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. Di kotak **Site Footer**, tambahkan skrip dan pemuat aplikasi (ganti `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klik **Save**.
+</Steps>
+
+:::tip
+Client ID Anda tersedia di akun Wink Anda di bawah [Applications](/id/portal/settings/applications).
+:::
+
+## Tambahkan komponen ke postingan atau halaman
+
+Editor Ghost mendukung **HTML card** yang memungkinkan Anda menyisipkan HTML mentah di mana saja dalam konten Anda.
+
+<Steps>
+1. Buka postingan atau halaman di editor Ghost.
+2. Ketik `/` untuk membuka pemilih kartu dan pilih **HTML**.
+3. Tempelkan HTML komponen, misalnya:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klik di luar kartu untuk melihat pratinjau, lalu terbitkan.
+</Steps>
+
+## Code injection per halaman
+
+Untuk komponen yang hanya ingin ditampilkan di satu halaman, Ghost juga mendukung code injection per halaman:
+
+<Steps>
+1. Buka pengaturan postingan atau halaman (ikon roda gigi di editor).
+2. Gulir ke **Code Injection**.
+3. Tambahkan tag komponen di bidang **Footer** (pemuat aplikasi global hanya perlu ada di footer seluruh situs).
+4. Simpan.
+</Steps>
+
+## Komponen yang tersedia
+
+| Komponen | Tag HTML | Tujuan |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Menampilkan kartu hotel, grid, peta |
+| Lookup | `<wink-lookup>` | Bar pencarian destinasi |
+| Search button | `<wink-search-button>` | Membuka pemilih itinerary |
+| Account button | `<wink-account-button>` | Masuk / menu pengguna |
+| Itinerary button | `<wink-itinerary-button>` | Menampilkan itinerary saat ini |
+| Itinerary picker | `<wink-itinerary-picker>` | Formulir itinerary lengkap |
+| Shopping cart | `<wink-shopping-cart-button>` | Tombol ringkasan keranjang |
+
+Lihat [Web Components](/id/integrations/web-components) untuk referensi atribut lengkap.
+
+## Bacaan lanjutan
+
+- [Referensi Web Components](/id/integrations/web-components)
+- [Dapatkan Client ID Anda](/id/portal/settings/applications)
+- [Dokumentasi Ghost Code Injection](https://ghost.org/help/ghost-themes/#code-injection)

@@ -1,0 +1,81 @@
+---
+title: نظام إدارة المحتوى HubSpot
+description: تضمين مخزون السفر من Wink في موقعك على نظام إدارة المحتوى HubSpot باستخدام وحدات مخصصة ورؤوس/تذييلات HTML.
+sidebar:
+  order: 6
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+يدعم نظام إدارة المحتوى HubSpot وحدات HTML مخصصة ورمز رأس/تذييل على مستوى الموقع، مما يجعل من السهل تضمين مكونات Wink في صفحات التسويق وصفحات الهبوط.
+
+:::note
+يتطلب حقن الرمز على مستوى الموقع الوصول إلى **HubSpot CMS Hub** (النسخة Starter أو أعلى). وحدات HTML المخصصة متاحة في جميع مستويات CMS.
+:::
+
+## تحميل سكريبتات Wink على مستوى الموقع
+
+<Steps>
+1. في HubSpot، اذهب إلى **التسويق → الملفات والقوالب → أدوات التصميم**.
+2. افتح `main.css` الخاص بـ **الثيم** النشط أو استخدم إعدادات المحتوى العالمية.
+3. بدلاً من ذلك، اذهب إلى **الإعدادات → الموقع الإلكتروني → الصفحات → رمز مخصص**.
+4. في حقل **رأس HTML**، أضف ورقة الأنماط:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+5. في حقل **تذييل HTML**، أضف السكريبت ومحمل التطبيق (استبدل `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+6. احفظ وانشر.
+</Steps>
+
+:::tip
+معرف العميل الخاص بك متوفر في حساب Wink ضمن [التطبيقات](/ar/portal/settings/applications).
+:::
+
+## إضافة مكون عبر وحدة HTML مخصصة
+
+<Steps>
+1. في أدوات التصميم، أنشئ **وحدة** جديدة من نوع **نص منسق** أو **HTML**.
+2. في محتوى الوحدة الافتراضي، الصق HTML الخاص بالمكون:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+3. احفظ الوحدة واسحبها إلى أي قالب صفحة أو صفحة باستخدام محرر الصفحات.
+</Steps>
+
+## إضافة مكون مباشرة في محرر الصفحة
+
+إذا كنت تفضل عدم إنشاء وحدة، يمكنك استخدام قسم **HTML مخصص** في محرر السحب والإفلات:
+
+<Steps>
+1. افتح الصفحة في محرر صفحات HubSpot.
+2. انقر على **إضافة** واختر قسم **HTML مخصص** أو **تضمين**.
+3. الصق وسم المكون في حقل HTML.
+4. انقر على **تطبيق** وانشر الصفحة.
+</Steps>
+
+## المكونات المتاحة
+
+| المكون | وسم HTML | الغرض |
+|---|---|---|
+| محمل المحتوى | `<wink-content-loader>` | عرض بطاقات الفنادق، الشبكات، الخرائط |
+| البحث | `<wink-lookup>` | شريط بحث عن الوجهات |
+| زر البحث | `<wink-search-button>` | فتح منتقي خط الرحلة |
+| زر الحساب | `<wink-account-button>` | تسجيل الدخول / قائمة المستخدم |
+| زر خط الرحلة | `<wink-itinerary-button>` | عرض خط الرحلة الحالي |
+| منتقي خط الرحلة | `<wink-itinerary-picker>` | نموذج خط الرحلة الكامل |
+| عربة التسوق | `<wink-shopping-cart-button>` | زر ملخص العربة |
+
+راجع [مكونات الويب](/ar/integrations/web-components) للمرجع الكامل للسمات.
+
+## قراءة إضافية
+
+- [مرجع مكونات الويب](/ar/integrations/web-components)
+- [احصل على معرف العميل الخاص بك](/ar/portal/settings/applications)
+- [وثائق رمز HubSpot المخصص](https://knowledge.hubspot.com/website-pages/add-custom-code-to-pages)

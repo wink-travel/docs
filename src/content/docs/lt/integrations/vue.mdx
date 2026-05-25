@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: Naudokite Wink žiniatinklio komponentus Vue 3 ir Vite projektuose su isCustomElement kompiliatoriaus parinktimi.
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3 reikia vienos kompiliatoriaus užuominos, kad `<wink-*>` žymos būtų traktuojamos kaip natūralūs pasirinktinių elementų vietoje neišspręsti Vue komponentai. Po to jie veikia kaip bet kuris kitas HTML elementas.
+
+<LinkCard
+  title="@wink/elements npm paketas"
+  href="/integrations/npm"
+  description="Įdiekite ir įkelkite CDN paketą su TypeScript tipais."
+/>
+
+## Įdiegimas
+
+```bash
+npm install @wink/elements
+```
+
+## Kompiliatoriaus konfigūravimas
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Traktuokite visas žymas, prasidedančias "wink-", kaip pasirinktinius elementus
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## CDN įkėlimas vieną kartą programos paleidimo metu
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## Naudojimas šablonuose
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — globalių elementų tipų papildymas
+
+Vue 3 + TypeScript skaito pasirinktinių elementų tipus iš globalios `HTMLElementTagNameMap`. Pridėkite deklaracijos failą:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## Aplinkos kintamieji
+
+Pridėkite į `.env.local`:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite klientų paketui atskleidžia tik kintamuosius, prasidedančius `VITE_`.
+
+<Aside type="tip">
+Nuxt 3 atveju žr. specialią [Nuxt integracijos puslapį](/lt/integrations/nuxt), kuriame aprašytas SSR saugus įkėlimas.
+</Aside>
+
+## Tolimesnė literatūra
+
+- [Žiniatinklio komponentų nuoroda](/lt/integrations/web-components)
+- [@wink/elements npm paketas](/lt/integrations/npm)
+- [Nuxt 3 integracija](/lt/integrations/nuxt)

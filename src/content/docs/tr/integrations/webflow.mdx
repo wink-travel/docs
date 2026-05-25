@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Wink seyahat envanterini özel kod gömme kullanarak Webflow sitenize entegre edin.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow, özel HTML ve JavaScript'i üç yerde destekler: site genelinde `<head>`, site genelinde `</body>` ve her öğe için kod gömme. Bu, Wink web bileşenlerinin entegrasyonunu kolaylaştırır.
+
+:::note
+Özel kod **Webflow'nun Basic planı ve üzeri** için kullanılabilir. Site genelinde `</body>` enjeksiyonu ücretli bir barındırma planı gerektirir.
+:::
+
+## Wink scriptlerini site genelinde yükleyin
+
+<Steps>
+1. Webflow Designer'da **Project Settings → Custom Code** bölümünü açın.
+2. **Head Code** bölümüne stil sayfasını ekleyin:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. **Footer Code** bölümüne script ve uygulama yükleyicisini ekleyin (`YOUR_CLIENT_ID` ile değiştirin):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. **Save Changes** butonuna tıklayın.
+</Steps>
+
+:::tip
+Client ID'niz, Wink hesabınızda [Applications](/tr/portal/settings/applications) altında bulunabilir.
+:::
+
+## Belirli bir öğeye bileşen ekleyin
+
+<Steps>
+1. Designer'da bileşeni eklemek istediğiniz **Div** veya **Section** öğesini seçin.
+2. Sağ panelde **`</>` Embed** simgesine tıklayın (veya Add panelinden bir **HTML Embed** öğesi ekleyin).
+3. Bileşen HTML'sini yapıştırın, örneğin:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. **Save & Close** butonuna tıklayın.
+</Steps>
+
+## Sayfa bazında özel kod
+
+Sadece belirli sayfalarda Wink kullanmanız gerekiyorsa, site genelinde değil sayfa bazında kod enjeksiyonu yapın:
+
+<Steps>
+1. Hedef sayfanın **Page Settings** bölümünü açın (Pages panelindeki dişli simgesi).
+2. **Custom Code → Before `</body>` tag** kısmına gidin.
+3. Yukarıdaki script ve uygulama yükleyicisini yapıştırın.
+4. Sayfa ayarlarını kaydedin.
+</Steps>
+
+## Mevcut bileşenler
+
+| Bileşen | HTML etiketi | Amaç |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Otel kartları, ızgaralar, haritalar gösterir |
+| Lookup | `<wink-lookup>` | Varış noktaları için arama çubuğu |
+| Search button | `<wink-search-button>` | Seyahat planlayıcıyı açar |
+| Account button | `<wink-account-button>` | Giriş / kullanıcı menüsü |
+| Itinerary button | `<wink-itinerary-button>` | Mevcut seyahat planını gösterir |
+| Itinerary picker | `<wink-itinerary-picker>` | Tam seyahat planı formu |
+| Shopping cart | `<wink-shopping-cart-button>` | Sepet özeti butonu |
+
+Tam özellik referansı için [Web Components](/tr/integrations/web-components) sayfasına bakın.
+
+## Daha fazla okuma
+
+- [Web Components referansı](/tr/integrations/web-components)
+- [Client ID'nizi alın](/tr/portal/settings/applications)
+- [Webflow özel kod dokümanları](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

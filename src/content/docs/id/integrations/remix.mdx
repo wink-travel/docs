@@ -1,0 +1,115 @@
+---
+title: Remix
+description: Tambahkan komponen web Wink ke aplikasi Remix dengan pemuatan hanya di klien melalui useEffect.
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Remix adalah framework full-stack yang melakukan server-rendering secara default. Muat CDN Wink hanya di klien menggunakan `useEffect` di komponen root.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Pasang dan muat bundel CDN dengan tipe TypeScript."
+/>
+
+## Pasang
+
+```bash
+npm install @wink/elements
+```
+
+## Muat di app/root.tsx
+
+`useEffect` hanya berjalan di browser, tidak pernah saat server-side rendering:
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## Variabel lingkungan
+
+Remix (berbasis Vite, v2.8+) mendukung `import.meta.env` untuk variabel yang diekspos ke browser. Awali dengan `VITE_` agar dapat diakses di bundel browser:
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Untuk setup Remix lama yang menggunakan adapter Node.js, kembalikan client ID dari root loader dan baca di komponen:
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## Gunakan di routes
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Ketidaksesuaian hidrasi">
+Remix menghidrasi HTML yang dirender di server pada klien. Jika elemen `<wink-*>` dirender di server, browser mungkin sebentar menampilkan elemen kustom yang belum terdaftar sebelum skrip CDN mendaftarkannya. Ini hanya kosmetik — elemen akan ter-upgrade dengan benar setelah skrip dimuat.
+</Aside>
+
+## Tipe TypeScript
+
+Tambahkan file deklarasi JSX intrinsic dari [halaman integrasi React](/id/integrations/react#typescript--declare-jsx-intrinsics) — Remix menggunakan React di bawahnya.
+
+## Bacaan lebih lanjut
+
+- [Referensi Web Components](/id/integrations/web-components)
+- [@wink/elements npm package](/id/integrations/npm)
+- [Integrasi React](/id/integrations/react)

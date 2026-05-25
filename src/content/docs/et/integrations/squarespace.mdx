@@ -1,0 +1,73 @@
+---
+title: Squarespace
+description: Manusta Wink reisiinventar oma Squarespace'i veebisaidile, kasutades Code Injectionit ja kohandatud HTML-plokke.
+sidebar:
+  order: 3
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+:::note
+Squarespace'i Code Injection funktsioon on saadaval **Business plaanis ja kõrgemates plaanides**. Kohandatud HTML-plokid on saadaval kõigis tasulistes plaanides.
+:::
+
+Squarespace toetab kohandatud HTML-i ja JavaScripti, mis tähendab, et saad manustada mis tahes Wink veebikomponendi otse oma saidile ilma pluginata. See juhend näitab, kuidas laadida Wink skriptid kogu saidil ja seejärel paigutada komponente üksikutele lehtedele.
+
+## Laadi Wink skriptid kogu saidil
+
+Skriptide lisamine saidi globaalsesse jalusesse ja päisesse tähendab, et Wink on saadaval igal lehel ilma seadistust kordamata.
+
+<Steps>
+1. Squarespace'i redaktoris mine **Settings → Advanced → Code Injection**.
+2. Väljal **Header** lisa stiilileht:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. Väljal **Footer** lisa skript ja rakenduse laadija (asenda `YOUR_CLIENT_ID` oma Wink kliendi ID-ga):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klõpsa **Save**.
+</Steps>
+
+:::tip
+Sinu kliendi ID on saadaval sinu Wink kontol jaotises [Applications](/et/portal/settings/applications).
+:::
+
+## Lisa komponent lehele
+
+Kui skriptid on globaalselt laetud, saad lisada mis tahes Wink komponendi mis tahes lehele, kasutades **Code Blocki**.
+
+<Steps>
+1. Ava leht, mida soovid redigeerida.
+2. Klõpsa **Edit** ja lisa uus **Code** plokk sinna, kuhu soovid komponenti paigutada.
+3. Kleebi komponendi HTML, näiteks sisu laadija:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klõpsa **Apply** ja seejärel **Save**.
+</Steps>
+
+## Saadaval olevad komponendid
+
+| Komponent | HTML silt | Eesmärk |
+|---|---|---|
+| Sisu laadija | `<wink-content-loader>` | Kuvab hotellikaarte, võrgustikke, kaarte |
+| Otsing | `<wink-lookup>` | Sihtkohtade otsinguriba |
+| Otsingunupp | `<wink-search-button>` | Ava marsruudi valija |
+| Konto nupp | `<wink-account-button>` | Sisselogimine / kasutajamenüü |
+| Marsruudi nupp | `<wink-itinerary-button>` | Näita praegust marsruuti |
+| Marsruudi valija | `<wink-itinerary-picker>` | Täielik marsruudi vorm |
+| Ostukorvi nupp | `<wink-shopping-cart-button>` | Ostukorvi kokkuvõtte nupp |
+
+Vaata [Web Components](/et/integrations/web-components) täielikku atribuutide viidet iga komponendi kohta.
+
+## Täiendav lugemine
+
+- [Web Components viide](/et/integrations/web-components)
+- [Hangi oma kliendi ID](/et/portal/settings/applications)
+- [Squarespace Code Injection dokumentatsioon](https://support.squarespace.com/hc/en-us/articles/205815908)

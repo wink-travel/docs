@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Innbyggðu Wink ferðainventar í Craft CMS 5 vefsíðuna þína með Wink viðbótinni.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS viðbótin** samþættir Wink ferðainventar í Craft 5 með Twig sniðmátavirkjum og sérsniðnum reitategund fyrir efnisritstjóra. Ritstjórar geta valið ákveðið Wink útlit úr fellilista beint í færslu ritstjórans.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin on GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Upprunakóði, leiðbeiningar fyrir þróunaraðila og leiðbeiningar um framlag."
+/>
+
+## Kröfur
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Uppsetning
+
+<Steps>
+1. Settu upp með Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Virkjaðu viðbótina í Stjórnborðinu undir **Settings → Plugins**, eða í gegnum CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Farðu í **Settings → Wink** í Stjórnborðinu.
+4. Sláðu inn **Client ID** og **Client Secret**, veldu umhverfi þitt og smelltu á **Save**.
+   Farðu á [Applications](/is/portal/settings/applications) til að sækja auðkenni þitt.
+</Steps>
+
+## Notkun í Twig sniðmátum
+
+Þegar búið er að stilla, kallaðu á Wink Twig virkni hvar sem er í sniðmátunum þínum:
+
+```twig
+{# Sýna hótelgrind #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Leitarsvæði á áfangastað #}
+{{ winkLookup() }}
+
+{# Hnappur til að velja ferðalag #}
+{{ winkSearch() }}
+
+{# Notendareikningshnappur #}
+{{ winkAccount() }}
+```
+
+`winkContent()` virkni setur sjálfkrafa inn `<wink-app-loader>` í fyrsta sinn sem hún er kölluð á síðu.
+
+## Tiltækar Twig virkni
+
+| Virkni | Úttak | Lýsing |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Hótelkort, grindur, kort |
+| `winkLookup()` | `<wink-lookup>` | Leitarsvæði áfangastaðar |
+| `winkSearch()` | `<wink-search-button>` | Hnappur til að velja ferðalag |
+| `winkAccount()` | `<wink-account-button>` | Innskráning / notendareikningur |
+| `winkItinerary()` | `<wink-itinerary-button>` | Hnappur fyrir stöðu ferðalags |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Körfuhnappur |
+
+## Reitategund fyrir Wink Layout
+
+Bættu við **Wink Layout** reit í hvaða hluta sem er til að gefa ritstjórum fellilista yfir öll tiltæk útlit úr Wink reikningnum þínum:
+
+<Steps>
+1. Farðu í **Settings → Fields → New Field**.
+2. Stilltu **Field Type** á **Wink Layout**.
+3. Bættu reitnum við reitauppsetningu færslutegundar þinnar.
+4. Ritstjórar geta nú valið útlit beint í færslu ritstjórans — engin þörf á að afrita og líma auðkenni.
+</Steps>
+
+Í sniðmátinu þínu, sendu reitagildið til `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Frekari lesning
+
+- [Vefhlutarefnaskrá](/is/integrations/web-components)
+- [Sækja Client ID](/is/portal/settings/applications)
+- [Wink Craft Plugin — upprunakóði & skjöl fyrir þróunaraðila](https://github.com/wink-travel/wink-craft-plugin)

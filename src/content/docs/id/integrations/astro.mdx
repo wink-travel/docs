@@ -1,0 +1,101 @@
+---
+title: Astro
+description: Tambahkan komponen web Wink ke situs Astro menggunakan skrip sisi klien dan arsitektur island.
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Astro mengirimkan nol JavaScript secara default dan merender semua komponen ke HTML statis di server. Komponen web Wink harus dimuat melalui tag `<script>` sisi klien. Arsitektur island Astro membuat ini menjadi mudah.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Pasang dan muat bundel CDN dengan tipe TypeScript."
+/>
+
+## Pasang
+
+```bash
+npm install @wink/elements
+```
+
+## Muat di layout bersama
+
+Tambahkan skrip loader ke layout dasar Anda agar dijalankan di setiap halaman:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline vs bundled scripts">
+Tanpa `is:inline`, Astro menggabungkan dan menduplikasi skrip — `load()` dipanggil sekali meskipun layout digunakan di banyak halaman. Ini adalah pendekatan yang disarankan. Gunakan `is:inline` hanya jika Anda perlu menyisipkan skrip sebagai teks mentah (misalnya untuk menghindari bundler modul).
+</Aside>
+
+## Gunakan di halaman
+
+Karena komponen Astro dirender di server, tag `<wink-*>` akan dihasilkan sebagai HTML statis. Skrip CDN mendaftarkan elemen kustom saat halaman dimuat di browser:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## Di dalam komponen framework (island)
+
+Jika Anda menggunakan React, Vue, atau Svelte islands bersama Wink, muat `@wink/elements` di layout (seperti di atas) dan gunakan tag `<wink-*>` di dalam komponen island Anda secara normal — elemen kustom akan terdaftar saat island melakukan hidrasi.
+
+```tsx
+// src/components/HotelCard.tsx (React island)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() sudah dipanggil oleh layout — aman untuk dirender di sini
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## Variabel lingkungan
+
+Astro hanya mengekspos variabel yang diawali dengan `PUBLIC_` ke browser:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Bacaan lebih lanjut
+
+- [Referensi Web Components](/id/integrations/web-components)
+- [@wink/elements npm package](/id/integrations/npm)

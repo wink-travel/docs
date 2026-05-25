@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: Integrer Wink reiseinventar i din Ghost-publikasjon ved hjelp av Code Injection.
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Ghosts innebygde **Code Injection**-funksjon lar deg legge til skript i den globale `<head>` og `</body>` i publikasjonen din. Alle Ghost-planer støtter code injection, noe som gjør det enkelt å integrere Wink-komponenter på hvilken som helst side eller innlegg.
+
+## Last inn Wink-skript på hele nettstedet
+
+<Steps>
+1. I Ghost Admin-panelet, gå til **Settings → Code Injection**.
+2. I boksen **Site Header**, legg til stilarket:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. I boksen **Site Footer**, legg til skriptet og applikasjonslasteren (erstatt `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klikk **Save**.
+</Steps>
+
+:::tip
+Din Client ID finner du i Wink-kontoen din under [Applications](/no/portal/settings/applications).
+:::
+
+## Legg til en komponent i et innlegg eller en side
+
+Ghost-editoren støtter et **HTML-kort** som lar deg sette inn rå HTML hvor som helst i innholdet ditt.
+
+<Steps>
+1. Åpne innlegget eller siden i Ghost-editoren.
+2. Skriv `/` for å åpne kortvelgeren og velg **HTML**.
+3. Lim inn komponentens HTML, for eksempel:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klikk utenfor kortet for å forhåndsvise, og publiser deretter.
+</Steps>
+
+## Per-side code injection
+
+For en komponent som kun skal vises på én side, støtter Ghost også per-side code injection:
+
+<Steps>
+1. Åpne innstillingene for innlegget eller siden (tannhjulikonet i editoren).
+2. Bla ned til **Code Injection**.
+3. Legg til komponenttaggen i feltet **Footer** (den globale app-loaderen trenger kun å være i den globale footeren).
+4. Lagre.
+</Steps>
+
+## Tilgjengelige komponenter
+
+| Komponent | HTML-tag | Formål |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Vis hotellkort, rutenett, kart |
+| Lookup | `<wink-lookup>` | Søkelinje for destinasjoner |
+| Search button | `<wink-search-button>` | Åpne reiseplanlegger |
+| Account button | `<wink-account-button>` | Logg inn / brukermeny |
+| Itinerary button | `<wink-itinerary-button>` | Vis gjeldende reiserute |
+| Itinerary picker | `<wink-itinerary-picker>` | Fullstendig reiseruteskjema |
+| Shopping cart | `<wink-shopping-cart-button>` | Handlekurvsammendrag-knapp |
+
+Se [Web Components](/no/integrations/web-components) for fullstendig attributtreferanse.
+
+## Videre lesning
+
+- [Web Components reference](/no/integrations/web-components)
+- [Get your Client ID](/no/portal/settings/applications)
+- [Ghost Code Injection docs](https://ghost.org/help/ghost-themes/#code-injection)

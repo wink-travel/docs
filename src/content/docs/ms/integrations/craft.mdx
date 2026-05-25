@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Selitkan inventori perjalanan Wink ke dalam laman web Craft CMS 5 anda menggunakan plugin Wink.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Plugin Wink Craft CMS** mengintegrasikan inventori perjalanan Wink ke dalam Craft 5 melalui fungsi templat Twig dan jenis medan khusus untuk penyunting kandungan. Penyunting boleh memilih susun atur Wink tertentu dari menu lungsur terus dalam penyunting entri.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin on GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Kod sumber, panduan penyediaan pembangun, dan arahan sumbangan."
+/>
+
+## Keperluan
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Pasang
+
+<Steps>
+1. Pasang melalui Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Aktifkan plugin di Panel Kawalan di **Settings → Plugins**, atau melalui CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Pergi ke **Settings → Wink** dalam Panel Kawalan.
+4. Masukkan **Client ID** dan **Client Secret** anda, pilih persekitaran anda, dan klik **Save**.
+   Pergi ke [Applications](/ms/portal/settings/applications) untuk mendapatkan kelayakan anda.
+</Steps>
+
+## Gunakan dalam templat Twig
+
+Setelah dikonfigurasikan, panggil fungsi Twig Wink di mana-mana dalam templat anda:
+
+```twig
+{# Paparkan grid hotel #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Bar carian destinasi #}
+{{ winkLookup() }}
+
+{# Butang pemilih jadual perjalanan #}
+{{ winkSearch() }}
+
+{# Butang akaun pengguna #}
+{{ winkAccount() }}
+```
+
+Fungsi `winkContent()` secara automatik menyuntik `<wink-app-loader>` kali pertama ia dipanggil pada halaman.
+
+## Fungsi Twig tersedia
+
+| Fungsi | Output | Penerangan |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Kad hotel, grid, peta |
+| `winkLookup()` | `<wink-lookup>` | Bar carian destinasi |
+| `winkSearch()` | `<wink-search-button>` | Butang pemilih jadual perjalanan |
+| `winkAccount()` | `<wink-account-button>` | Log masuk / akaun pengguna |
+| `winkItinerary()` | `<wink-itinerary-button>` | Butang status jadual perjalanan |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Butang troli beli-belah |
+
+## Jenis medan Wink Layout
+
+Tambah medan **Wink Layout** ke mana-mana seksyen untuk memberi penyunting menu lungsur semua susun atur yang tersedia dari akaun Wink anda:
+
+<Steps>
+1. Pergi ke **Settings → Fields → New Field**.
+2. Tetapkan **Field Type** kepada **Wink Layout**.
+3. Tambah medan ke susun atur medan jenis entri anda.
+4. Penyunting kini boleh memilih susun atur terus dalam penyunting entri — tiada salin tampal ID.
+</Steps>
+
+Dalam templat anda, hantar nilai medan ke `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Bacaan lanjut
+
+- [Rujukan Komponen Web](/ms/integrations/web-components)
+- [Dapatkan Client ID anda](/ms/portal/settings/applications)
+- [Wink Craft Plugin — kod sumber & dokumen pembangun](https://github.com/wink-travel/wink-craft-plugin)

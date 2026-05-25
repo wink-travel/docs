@@ -1,0 +1,111 @@
+---
+title: React
+description: Używaj komponentów webowych Wink w dowolnej aplikacji React z pełnym wsparciem TypeScript dzięki @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ ma natywne wsparcie dla custom elements. React 18 i starsze wersje przekazują tylko atrybuty jako stringi — użyj poniższego wzorca z typami, aby zachować bezpieczeństwo między wersjami.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Zainstaluj i załaduj pakiet CDN z typami TypeScript."
+/>
+
+## Instalacja
+
+```bash
+npm install @wink/elements
+```
+
+## Załaduj raz w głównym komponencie aplikacji
+
+Wywołaj `load()` w komponencie najwyższego poziomu. Jest idempotentne — bezpieczne do wielokrotnego wywołania.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Używaj komponentów w JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — deklaracja JSX intrinsics
+
+React domyślnie nie zna nazw custom elements. Dodaj plik deklaracji, aby wyeliminować błędy typów:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="Ograniczenie atrybutów w React 18">
+React 18 i starsze serializują wszystkie propsy JSX do stringów przed przekazaniem ich do DOM. Props boolean i obiektowe muszą być konwertowane ręcznie. React 19 przekazuje propsy niebędące stringami bezpośrednio do custom elements — nie jest potrzebne obejście.
+</Aside>
+
+## Przekazywanie typowanych atrybutów (bezpieczne w React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread działa w React 19; w React 18 wszystkie wartości i tak są stringami
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Dalsza lektura
+
+- [Referencja Web Components](/pl/integrations/web-components)
+- [@wink/elements npm package](/pl/integrations/npm)
+- [Integracja Next.js](/pl/integrations/nextjs)

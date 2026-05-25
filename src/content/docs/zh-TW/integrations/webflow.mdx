@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: 使用自訂程式碼嵌入將 Wink 旅遊庫存整合到您的 Webflow 網站中。
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow 支援在三個位置使用自訂 HTML 和 JavaScript：全站 `<head>`、全站 `</body>`，以及每個元素的程式碼嵌入。這使得整合 Wink 網頁元件變得簡單。
+
+:::note
+自訂程式碼功能在 **Webflow 的 Basic 計劃及以上** 可用。全站 `</body>` 注入需要付費的主機方案。
+:::
+
+## 全站載入 Wink 腳本
+
+<Steps>
+1. 在 Webflow Designer 中，打開 **Project Settings → Custom Code**。
+2. 在 **Head Code** 區段，加入樣式表：
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. 在 **Footer Code** 區段，加入腳本和應用程式載入器（替換 `YOUR_CLIENT_ID`）：
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. 點擊 **Save Changes**。
+</Steps>
+
+:::tip
+您的 Client ID 可在 Wink 帳戶的 [Applications](/zh-TW/portal/settings/applications) 中取得。
+:::
+
+## 將元件加入特定元素
+
+<Steps>
+1. 在 Designer 中，選擇您想放置元件的 **Div** 或 **Section**。
+2. 在右側面板，點擊 **`</>` Embed** 圖示（或從新增面板加入 **HTML Embed** 元素）。
+3. 貼上元件 HTML，例如：
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. 點擊 **Save & Close**。
+</Steps>
+
+## 單頁自訂程式碼
+
+如果只需要在特定頁面使用 Wink，請使用單頁程式碼注入，而非全站注入：
+
+<Steps>
+1. 打開目標頁面的 **Page Settings**（頁面面板中的齒輪圖示）。
+2. 滾動至 **Custom Code → Before `</body>` tag**。
+3. 貼上與上述相同的腳本和應用程式載入器。
+4. 儲存頁面設定。
+</Steps>
+
+## 可用元件
+
+| 元件 | HTML 標籤 | 功能說明 |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | 顯示飯店卡片、格線、地圖 |
+| Lookup | `<wink-lookup>` | 目的地搜尋欄 |
+| Search button | `<wink-search-button>` | 開啟行程選擇器 |
+| Account button | `<wink-account-button>` | 登入 / 使用者選單 |
+| Itinerary button | `<wink-itinerary-button>` | 顯示目前行程 |
+| Itinerary picker | `<wink-itinerary-picker>` | 完整行程表單 |
+| Shopping cart | `<wink-shopping-cart-button>` | 購物車摘要按鈕 |
+
+請參考 [Web Components](/zh-TW/integrations/web-components) 取得完整屬性參考。
+
+## 延伸閱讀
+
+- [Web Components 參考](/zh-TW/integrations/web-components)
+- [取得您的 Client ID](/zh-TW/portal/settings/applications)
+- [Webflow 自訂程式碼文件](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

@@ -1,0 +1,103 @@
+---
+title: Preact
+description: Használd a Wink webkomponenseket Preact alkalmazásokban — ugyanaz a minta, mint a Reactnél, de kisebb lábnyommal.
+sidebar:
+  order: 24
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+A Preact API kompatibilis a Reacttel. Az integráció ugyanazt a mintát követi — hívd meg egyszer a `load()`-ot az alkalmazás indításakor, majd használd a `<wink-*>` tageket JSX-ben.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Telepítsd és töltsd be a CDN csomagot TypeScript típusokkal."
+/>
+
+## Telepítés
+
+```bash
+npm install @wink/elements
+```
+
+## Egyszeri betöltés az alkalmazás indításakor
+
+```tsx
+// src/app.tsx
+import { useEffect } from 'preact/hooks';
+import { load } from '@wink/elements';
+
+export function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Használat JSX-ben
+
+```tsx
+// src/pages/hotels.tsx
+export function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — JSX intrinsics deklarálása
+
+A Preact JSX névtere különálló a Reactétől. Egészítsd ki a `preact/src/jsx.d.ts` fájlt:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'preact' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## Preact a `preact/compat` használatával
+
+Ha a Reactet a `preact/compat`-re aliasolod, akkor a React JSX deklarációkat használd helyette:
+
+```ts
+// src/wink-elements.d.ts
+// Használd a React JSX deklarációt az /integrations/react-ből
+// — a preact/compat újraexportálja a React JSX névteret
+```
+
+<Aside type="tip">
+A Preact kisebb csomagmérete jól illik a Wink komponensek teljesítményérzékeny webáruházakba való beágyazásához. A `@wink/elements` `load()` függvénye kb. 500 bájttal növeli a méretet gzip tömörítéssel — a tömeg nagy részét a CDN csomag aszinkron betöltése adja.
+</Aside>
+
+## További olvasnivaló
+
+- [Web Components referencia](/hu/integrations/web-components)
+- [@wink/elements npm package](/hu/integrations/npm)
+- [React integráció](/hu/integrations/react)

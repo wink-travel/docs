@@ -1,0 +1,81 @@
+---
+title: HubSpot CMS
+description: Integrer Wink rejseinventar på dit HubSpot CMS-websted ved hjælp af brugerdefinerede moduler og header/footer HTML.
+sidebar:
+  order: 6
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+HubSpot CMS understøtter brugerdefinerede HTML-moduler og site-wide header/footer-kode, hvilket gør det nemt at integrere Wink-komponenter på marketing- og landingssider.
+
+:::note
+Site-wide kodeindsprøjtning kræver adgang til **HubSpot CMS Hub** (Starter eller højere). Brugerdefinerede HTML-moduler er tilgængelige i alle CMS-niveauer.
+:::
+
+## Indlæs Wink scripts site-wide
+
+<Steps>
+1. Gå i HubSpot til **Marketing → Files and Templates → Design Tools**.
+2. Åbn dit aktive **themes** `main.css` eller brug de globale indholdsindstillinger.
+3. Alternativt gå til **Settings → Website → Pages → Custom Code**.
+4. Tilføj i feltet **Head HTML** stylesheetet:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+5. Tilføj i feltet **Footer HTML** scriptet og applikationsloaderen (erstat `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+6. Gem og publicer.
+</Steps>
+
+:::tip
+Dit Client ID findes i din Wink-konto under [Applications](/da/portal/settings/applications).
+:::
+
+## Tilføj en komponent via et brugerdefineret HTML-modul
+
+<Steps>
+1. Opret i Design Tools et nyt **modul** af typen **Rich Text** eller **HTML**.
+2. Indsæt i modullets standardindhold komponentens HTML:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+3. Gem modulet og træk det ind i en hvilken som helst sidemal eller side via sideeditoren.
+</Steps>
+
+## Tilføj en komponent direkte i sideeditoren
+
+Hvis du foretrækker ikke at oprette et modul, kan du bruge en **Custom HTML** sektion i drag-and-drop editoren:
+
+<Steps>
+1. Åbn siden i HubSpot sideeditor.
+2. Klik på **Add** og vælg en **Custom HTML** eller **Embed** sektion.
+3. Indsæt komponent-tagget i HTML-feltet.
+4. Klik på **Apply** og publicer siden.
+</Steps>
+
+## Tilgængelige komponenter
+
+| Komponent | HTML-tag | Formål |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Vis hotelkort, grids, kort |
+| Lookup | `<wink-lookup>` | Søgefelt til destinationer |
+| Search button | `<wink-search-button>` | Åbn rejseplanvælger |
+| Account button | `<wink-account-button>` | Log ind / brugermenu |
+| Itinerary button | `<wink-itinerary-button>` | Vis aktuel rejseplan |
+| Itinerary picker | `<wink-itinerary-picker>` | Fuld rejseplansformular |
+| Shopping cart | `<wink-shopping-cart-button>` | Oversigt over indkøbskurv |
+
+Se [Web Components](/da/integrations/web-components) for den fulde attributreference.
+
+## Yderligere læsning
+
+- [Web Components reference](/da/integrations/web-components)
+- [Få dit Client ID](/da/portal/settings/applications)
+- [HubSpot custom code docs](https://knowledge.hubspot.com/website-pages/add-custom-code-to-pages)

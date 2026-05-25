@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: Lägg till Wink webkomponenter i Nuxt 3-applikationer med ett klientplugin.
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 renderar sidor på servern som standard. CDN-skript och anpassade element måste laddas endast på klientsidan. Ett Nuxt-klientplugin är det renaste sättet att göra detta.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Installera och ladda CDN-bunten med TypeScript-typer."
+/>
+
+## Installera
+
+```bash
+npm install @wink/elements
+```
+
+## Skapa ett klientplugin
+
+Suffixet `.client.ts` talar om för Nuxt att köra detta plugin endast i webbläsaren:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## Konfigurera runtime-variabeln
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+Lägg till i `.env`:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Konfigurera Vue för anpassade element
+
+Lägg till kompilatoralternativet `isCustomElement` så att Vue inte varnar för okända `<wink-*>`-taggar:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## Använd i mallar
+
+Omslut Wink-komponenter i `<ClientOnly>` för att förhindra SSR-hydreringsavvikelser:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` renderar en platshållare på servern och monterar det riktiga elementet på klienten — detta är det rekommenderade mönstret för alla webbläsarbaserade tredjepartsinbäddningar i Nuxt.
+</Aside>
+
+## TypeScript-typer
+
+Utöka den globala `HTMLElementTagNameMap` (samma som Vue 3) för att få attributautokomplettering. Se [Vue 3 integrationssidan](/sv/integrations/vue#typescript--augment-global-element-types) för hela deklarationsfilen.
+
+## Vidare läsning
+
+- [Web Components referens](/sv/integrations/web-components)
+- [@wink/elements npm package](/sv/integrations/npm)
+- [Vue 3 integration](/sv/integrations/vue)

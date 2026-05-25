@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: Lägg till Wink webbkomponenter på Gatsby-sajter med hjälp av gatsby-browser.js för klientladdning.
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby genererar statisk HTML vid byggtid och återaktiverar på klienten. CDN-skript måste laddas endast i webbläsar-API:er — `gatsby-browser.js` är rätt plats.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Installera och ladda CDN-bunten med TypeScript-typer."
+/>
+
+## Installera
+
+```bash
+npm install @wink/elements
+```
+
+## Ladda via gatsby-browser.js
+
+`onClientEntry` API körs en gång så snart Gatsbys runtime initieras i webbläsaren:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## Miljövariabler
+
+Gatsby exponerar endast variabler som börjar med `GATSBY_` till webbläsarpaketet:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## Använd i sidor och komponenter
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby använder React, så lägg till samma JSX-intrinsic-deklarationer som React-integrationen:
+
+```ts
+// src/wink-elements.d.ts
+// Se /integrations/react för hela deklarationsfilen
+```
+
+<Aside type="caution" title="SSR build-fel">
+Under `gatsby build` renderar Gatsby sidor till statisk HTML i en Node.js-miljö där `window` och `document` inte är tillgängliga. Om du importerar `@wink/elements` på toppnivå i en sidkomponent (utanför `onClientEntry`) kommer bygget att misslyckas.
+
+Använd alltid `gatsby-browser.js` / `onClientEntry` — importera aldrig `load` direkt i en sida eller komponentmodul.
+</Aside>
+
+## gatsby-ssr.js — inga ändringar behövs
+
+Du behöver inte ändra `gatsby-ssr.js`. `<wink-*>`-taggarna renderas som vanliga HTML-element i den statiska utdata, och CDN-skriptet uppgraderar dem när webbläsaren laddar sidan.
+
+## Vidare läsning
+
+- [Web Components referens](/sv/integrations/web-components)
+- [@wink/elements npm package](/sv/integrations/npm)
+- [React integration](/sv/integrations/react)

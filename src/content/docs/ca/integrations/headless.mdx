@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Integra l'inventari de viatges de Wink a qualsevol headless CMS (Contentful, Strapi, Sanity, etc.) o lloc personalitzat.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Els components web de Wink són elements HTML personalitzats agnòstics al framework. Si el teu headless CMS renderitza HTML — ja sigui amb Next.js, Nuxt, Astro, SvelteKit o qualsevol altre framework — pots integrar els components de Wink sense cap integració especial.
+
+## La integració en tres passos
+
+Cada integració de Wink, independentment de la plataforma, segueix els mateixos tres passos.
+
+### 1. Inclou la fulla d'estils
+
+Afegeix això al `<head>` del teu document (o l'equivalent en el layout global):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Inclou el JavaScript
+
+Afegeix això abans de la etiqueta de tancament `</body>` (o a la secció de scripts del teu layout):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Afegeix el carregador de l'aplicació
+
+Col·loca això **una vegada per pàgina**, en qualsevol lloc del cos (normalment al footer del layout global):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+El teu Client ID està disponible al teu compte Wink a [Applications](/ca/portal/settings/applications).
+:::
+
+## Exemples per framework
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+Usuaris de TypeScript: afegiu un `global.d.ts` que declari els tipus dels elements personalitzats, o utilitzeu el paquet npm [`@wink/elements`](https://github.com/wink2travel/wink-elements) que inclou declaracions de tipus.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Col·locar components en el contingut
+
+En el text enriquit o tipus de camps personalitzats del teu CMS, insereix les etiquetes dels components directament a la sortida HTML:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Per a Contentful, Strapi, Sanity o plataformes headless similars, utilitza un camp de **Rich Text** o un **Bloc Personalitzat** que renderitzi HTML brut, i enganxa-hi l’etiqueta del component.
+
+## Paquet npm
+
+Per a projectes TypeScript, el paquet [`@wink/elements`](https://github.com/wink2travel/wink-elements) proporciona:
+- Una funció `load()` que injecta els scripts CDN de forma programàtica
+- Declaracions completes de tipus TypeScript per a tots els atributs dels components
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Crida una vegada a l'inici de l'aplicació
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Components disponibles
+
+| Component | Etiqueta HTML | Propòsit |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Mostrar targetes d’hotels, graelles, mapes |
+| Lookup | `<wink-lookup>` | Barra de cerca per a destinacions |
+| Search button | `<wink-search-button>` | Obrir selector d’itinerari |
+| Account button | `<wink-account-button>` | Iniciar sessió / menú d’usuari |
+| Itinerary button | `<wink-itinerary-button>` | Mostrar l’itinerari actual |
+| Itinerary picker | `<wink-itinerary-picker>` | Formulari complet d’itinerari |
+| Shopping cart | `<wink-shopping-cart-button>` | Botó resum del carretó |
+
+Consulta [Web Components](/ca/integrations/web-components) per a la referència completa d’atributs.

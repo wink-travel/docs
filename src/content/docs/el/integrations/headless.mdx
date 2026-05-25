@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Ενσωματώστε το απόθεμα ταξιδιών Wink σε οποιοδήποτε headless CMS (Contentful, Strapi, Sanity, κ.ά.) ή σε προσαρμοσμένο ιστότοπο.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Τα web components του Wink είναι ανεξάρτητα από πλαίσια προγραμματισμού προσαρμοσμένα στοιχεία HTML. Εάν το headless CMS σας αποδίδει HTML — είτε μέσω Next.js, Nuxt, Astro, SvelteKit ή οποιουδήποτε άλλου πλαισίου — μπορείτε να ενσωματώσετε τα στοιχεία Wink χωρίς καμία ειδική ενσωμάτωση.
+
+## Η ενσωμάτωση σε τρία βήματα
+
+Κάθε ενσωμάτωση Wink, ανεξαρτήτως πλατφόρμας, ακολουθεί τα ίδια τρία βήματα.
+
+### 1. Συμπερίληψη του φύλλου στυλ
+
+Προσθέστε αυτό στο `<head>` του εγγράφου σας (ή στο αντίστοιχο παγκόσμιο layout):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Συμπερίληψη του JavaScript
+
+Προσθέστε αυτό πριν από το κλείσιμο της ετικέτας `</body>` (ή στην ενότητα script του layout σας):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Προσθήκη του φορτωτή εφαρμογής
+
+Τοποθετήστε αυτό **μία φορά ανά σελίδα**, οπουδήποτε στο σώμα (συνήθως στο footer του παγκόσμιου layout σας):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Το Client ID σας είναι διαθέσιμο στον λογαριασμό σας Wink στην ενότητα [Applications](/el/portal/settings/applications).
+:::
+
+## Παραδείγματα πλαισίων
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+Χρήστες TypeScript: προσθέστε ένα `global.d.ts` που δηλώνει τους τύπους των προσαρμοσμένων στοιχείων, ή χρησιμοποιήστε το πακέτο npm [`@wink/elements`](https://github.com/wink2travel/wink-elements) που περιλαμβάνει δηλώσεις τύπων.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Τοποθέτηση στοιχείων στο περιεχόμενο
+
+Στα πλούσια κείμενα ή στους προσαρμοσμένους τύπους πεδίων του CMS σας, ενσωματώστε απευθείας τις ετικέτες των στοιχείων στο HTML που παράγεται:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Για πλατφόρμες headless όπως Contentful, Strapi, Sanity ή παρόμοιες, χρησιμοποιήστε ένα πεδίο **Rich Text** ή ένα **Custom Block** που αποδίδει ακατέργαστο HTML και επικολλήστε εκεί την ετικέτα του στοιχείου.
+
+## Πακέτο npm
+
+Για έργα TypeScript, το πακέτο [`@wink/elements`](https://github.com/wink2travel/wink-elements) παρέχει:
+- Μια συνάρτηση `load()` που εισάγει προγραμματιστικά τα σκριπτ του CDN
+- Πλήρεις δηλώσεις τύπων TypeScript για όλα τα χαρακτηριστικά των στοιχείων
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Κλήση μία φορά κατά την εκκίνηση της εφαρμογής
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Διαθέσιμα στοιχεία
+
+| Στοιχείο | Ετικέτα HTML | Σκοπός |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Εμφάνιση καρτών ξενοδοχείων, πλεγμάτων, χαρτών |
+| Lookup | `<wink-lookup>` | Μπάρα αναζήτησης προορισμών |
+| Search button | `<wink-search-button>` | Άνοιγμα επιλογέα δρομολογίου |
+| Account button | `<wink-account-button>` | Σύνδεση / μενού χρήστη |
+| Itinerary button | `<wink-itinerary-button>` | Εμφάνιση τρέχοντος δρομολογίου |
+| Itinerary picker | `<wink-itinerary-picker>` | Πλήρης φόρμα δρομολογίου |
+| Shopping cart | `<wink-shopping-cart-button>` | Κουμπί σύνοψης καλαθιού |
+
+Δείτε τα [Web Components](/el/integrations/web-components) για την πλήρη αναφορά χαρακτηριστικών.

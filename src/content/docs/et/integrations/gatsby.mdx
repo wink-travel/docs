@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: Lisa Wink veebikomponendid Gatsby saitidele, kasutades gatsby-browser.js klientpoolseks laadimiseks.
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby genereerib staatilise HTML-i ehituse ajal ja taastab selle kliendipoolsel kasutamisel. CDN skriptid tuleb laadida ainult brauseri API-de kaudu — `gatsby-browser.js` on selleks õige koht.
+
+<LinkCard
+  title="@wink/elements npm pakett"
+  href="/integrations/npm"
+  description="Paigalda ja laadi CDN komplekt koos TypeScripti tüüpidega."
+/>
+
+## Paigalda
+
+```bash
+npm install @wink/elements
+```
+
+## Laadi gatsby-browser.js kaudu
+
+`onClientEntry` API käivitub üks kord kohe, kui Gatsby runtime brauseris initsialiseerub:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## Keskkonnamuutujad
+
+Gatsby avaldab brauseri komplektile ainult muutujad, mille eesliide on `GATSBY_`:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## Kasutamine lehtedel ja komponentides
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby kasutab Reacti, seega lisa samad JSX sisemised deklaratsioonid nagu Reacti integratsioonis:
+
+```ts
+// src/wink-elements.d.ts
+// Vaata /integrations/react täielikku deklaratsioonifaili
+```
+
+<Aside type="caution" title="SSR ehituse vead">
+`gatsby build` ajal renderdab Gatsby lehed staatiliseks HTML-iks Node.js keskkonnas, kus `window` ja `document` pole saadaval. Kui impordid `@wink/elements` lehe komponendi tippu (välja arvatud `onClientEntry`), siis ehitus ebaõnnestub.
+
+Kasuta alati `gatsby-browser.js` / `onClientEntry` — ära kunagi impordi `load` otse lehe või komponendi moodulis.
+</Aside>
+
+## gatsby-ssr.js — muudatusi pole vaja
+
+Sul ei ole vaja muuta `gatsby-ssr.js`. `<wink-*>` sildid renderduvad staatilises väljundis tavaliste HTML elementidena ja CDN skript uuendab neid, kui brauser lehe laadib.
+
+## Täiendav lugemine
+
+- [Veebikomponentide viide](/et/integrations/web-components)
+- [@wink/elements npm pakett](/et/integrations/npm)
+- [React integratsioon](/et/integrations/react)

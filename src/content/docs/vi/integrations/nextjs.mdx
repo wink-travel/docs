@@ -1,0 +1,122 @@
+---
+title: Next.js
+description: Thêm các thành phần web Wink vào ứng dụng Next.js App Router và Pages Router.
+sidebar:
+  order: 16
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Các thành phần Wink là các phần tử tùy chỉnh chỉ dành cho trình duyệt — các script CDN phải được tải ở phía client. Các mẫu dưới đây bao gồm cả **App Router** (Next.js 13+) và **Pages Router** cũ.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Cài đặt và tải gói CDN kèm kiểu TypeScript."
+/>
+
+## Cài đặt
+
+```bash
+npm install @wink/elements
+```
+
+## App Router (Next.js 13+)
+
+Tạo một client component gọi `load()` một lần và render nó trong root layout của bạn:
+
+```tsx
+// components/WinkLoader.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export function WinkLoader() {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return null;
+}
+```
+
+```tsx
+// app/layout.tsx
+import { WinkLoader } from '@/components/WinkLoader';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <WinkLoader />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+Sử dụng các thành phần Wink trong bất kỳ **Client Component** nào:
+
+```tsx
+// app/hotels/page.tsx
+'use client';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Server Components">
+Các thẻ `<wink-*>` không thể được render trong Server Components vì registry phần tử tùy chỉnh chỉ dành cho trình duyệt. Luôn thêm `'use client'` vào bất kỳ component nào render các phần tử Wink.
+</Aside>
+
+## Pages Router
+
+Tải một lần trong `_app.tsx`:
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <Component {...pageProps} />;
+}
+```
+
+Sau đó sử dụng các thành phần Wink trong bất kỳ trang nào:
+
+```tsx
+// pages/hotels.tsx
+export default function HotelsPage() {
+  return <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />;
+}
+```
+
+## Biến môi trường
+
+Thêm vào `.env.local`:
+
+```
+NEXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+Tiền tố `NEXT_PUBLIC_` là bắt buộc để biến được phơi bày cho bundle trình duyệt.
+
+## Kiểu TypeScript
+
+Thêm một file khai báo để TypeScript nhận diện tên phần tử tùy chỉnh trong JSX — xem trang [React integration](/vi/integrations/react#typescript--declare-jsx-intrinsics) để có đoạn mã đầy đủ `wink-elements.d.ts`.
+
+## Đọc thêm
+
+- [Tham khảo Web Components](/vi/integrations/web-components)
+- [@wink/elements npm package](/vi/integrations/npm)
+- [React integration](/vi/integrations/react)

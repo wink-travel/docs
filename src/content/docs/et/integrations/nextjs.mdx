@@ -1,0 +1,122 @@
+---
+title: Next.js
+description: Lisa Wink veebikomponendid Next.js App Router ja Pages Router rakendustesse.
+sidebar:
+  order: 16
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink komponendid on ainult brauseris kasutatavad kohandatud elemendid — CDN skriptid tuleb laadida kliendipoolsel küljel. Alljärgnevad mustrid hõlmavad nii **App Router**i (Next.js 13+) kui ka pärandilist **Pages Router**it.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Paigalda ja laadi CDN komplekt koos TypeScript tüüpidega."
+/>
+
+## Paigaldamine
+
+```bash
+npm install @wink/elements
+```
+
+## App Router (Next.js 13+)
+
+Loo kliendikomponent, mis kutsub `load()` funktsiooni korra ja kuva see oma juurpaigutuses:
+
+```tsx
+// components/WinkLoader.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export function WinkLoader() {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return null;
+}
+```
+
+```tsx
+// app/layout.tsx
+import { WinkLoader } from '@/components/WinkLoader';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <WinkLoader />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+Kasuta Wink komponente mis tahes **Client Component**is:
+
+```tsx
+// app/hotels/page.tsx
+'use client';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Server Components">
+`<wink-*>` silte ei saa kuvada Server Components, sest kohandatud elementide register on ainult brauseris. Lisa alati `'use client'` igale komponendile, mis kuvab Wink elemente.
+</Aside>
+
+## Pages Router
+
+Laadi korra `_app.tsx` failis:
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <Component {...pageProps} />;
+}
+```
+
+Seejärel kasuta Wink komponente mis tahes lehel:
+
+```tsx
+// pages/hotels.tsx
+export default function HotelsPage() {
+  return <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />;
+}
+```
+
+## Keskkonnamuutujad
+
+Lisa `.env.local` faili:
+
+```
+NEXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+`NEXT_PUBLIC_` prefiks on vajalik, et muutuja oleks brauseri komplektis nähtav.
+
+## TypeScript tüübid
+
+Lisa deklaratsioonifail, et TypeScript tunneks JSX-is ära kohandatud elementide nimed — vaata täielikku `wink-elements.d.ts` näidet [React integratsiooni lehel](/et/integrations/react#typescript--declare-jsx-intrinsics).
+
+## Täiendav lugemine
+
+- [Web Components viide](/et/integrations/web-components)
+- [@wink/elements npm package](/et/integrations/npm)
+- [React integratsioon](/et/integrations/react)

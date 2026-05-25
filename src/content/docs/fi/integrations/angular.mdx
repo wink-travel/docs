@@ -1,0 +1,112 @@
+---
+title: Angular
+description: Käytä Wink-web-komponentteja Angular 14+ -sovelluksissa CUSTOM_ELEMENTS_SCHEMA:n ja @wink/elementsin kanssa.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink-komponentit ovat itse asiassa Angular Elements -komponentteja — ne integroituvat luonnollisesti Angular-sovelluksiin. Ainoa tarvittava asetus on kertoa Angularin kääntäjälle, että tuntemattomat elementtinimet ovat sallittuja.
+
+<LinkCard
+  title="@wink/elements npm -paketti"
+  href="/integrations/npm"
+  description="Asenna ja lataa CDN-kimppu TypeScript-tyypeillä."
+/>
+
+## Asennus
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — lataa CDN kerran
+
+Kutsu `load()` ennen `bootstrapApplication`-funktiota (tai `APP_INITIALIZER`-sisällä):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## Salli mukautetut elementtinimet
+
+Lisää `CUSTOM_ELEMENTS_SCHEMA` jokaiseen standalone-komponenttiin (tai moduuliin), joka renderöi `<wink-*>`-tageja:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="NgModule-sovellukset">
+NgModule-pohjaisissa sovelluksissa lisää `CUSTOM_ELEMENTS_SCHEMA` `schemas`-taulukkoon `@NgModule`-koristelijassa.
+</Aside>
+
+## Ominaisuuksien sitominen
+
+Angularin template-syntaksi toimii suoraan mukautettujen elementtien merkkijono-ominaisuuksien kanssa:
+
+```html
+<!-- Staattinen -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- Dynaaminen sitominen -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+Käytä `[attr.name]`-sitomista, kun arvo on dynaaminen — Angularin tavallinen `[property]`-sitominen kohdistuu DOM-ominaisuuksiin, ei HTML-ominaisuuksiin, joihin mukautetut elementit perustuvat.
+
+## Ympäristömuuttujat
+
+`@angular/cli` 16+ -projekteissa käytä `environment.ts`-tiedostoa tai `NG_APP_*`-etuliitettä yhdessä `@ngx-env/builder`-kirjaston kanssa:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## TypeScript-tyypit
+
+`@wink/elements`-paketti vie tyypitetyt rajapinnat kaikille komponenttien ominaisuuksille:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## Lisälukemista
+
+- [Web Components -viite](/fi/integrations/web-components)
+- [@wink/elements npm -paketti](/fi/integrations/npm)

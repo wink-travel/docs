@@ -1,0 +1,112 @@
+---
+title: Angular
+description: استخدم مكونات Wink الويب في تطبيقات Angular 14+ مع CUSTOM_ELEMENTS_SCHEMA و @wink/elements.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+مكونات Wink هي في الأصل Angular Elements — تندمج بشكل طبيعي في تطبيقات Angular. الإعداد الوحيد المطلوب هو إخبار مترجم Angular بالسماح بأسماء العناصر غير المعروفة.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="قم بتثبيت وتحميل حزمة CDN مع أنواع TypeScript."
+/>
+
+## التثبيت
+
+```bash
+npm install @wink/elements
+```
+
+## التهيئة — تحميل CDN مرة واحدة
+
+استدعِ `load()` قبل `bootstrapApplication` (أو داخل `APP_INITIALIZER`):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## السماح بأسماء العناصر المخصصة
+
+أضف `CUSTOM_ELEMENTS_SCHEMA` إلى كل مكون مستقل (أو وحدة) يعرض علامات `<wink-*>`:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="تطبيقات NgModule">
+بالنسبة للتطبيقات المعتمدة على NgModule، أضف `CUSTOM_ELEMENTS_SCHEMA` إلى مصفوفة `schemas` في ديكور `@NgModule` بدلاً من ذلك.
+</Aside>
+
+## ربط السمات
+
+تعمل صياغة القوالب في Angular مباشرة مع سمات السلسلة في العناصر المخصصة:
+
+```html
+<!-- ثابت -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- ربط ديناميكي -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+استخدم ربط `[attr.name]` عندما تكون القيمة ديناميكية — ربط `[property]` العادي في Angular يستهدف خصائص DOM، وليس سمات HTML التي تعتمد عليها العناصر المخصصة.
+
+## متغيرات البيئة
+
+لمشاريع `@angular/cli` 16+، استخدم `environment.ts` أو بادئة `NG_APP_*` مع `@ngx-env/builder`:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## أنواع TypeScript
+
+تصدّر حزمة `@wink/elements` واجهات مكتوبة لجميع سمات المكونات:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## قراءة إضافية
+
+- [مرجع مكونات الويب](/ar/integrations/web-components)
+- [حزمة @wink/elements npm](/ar/integrations/npm)

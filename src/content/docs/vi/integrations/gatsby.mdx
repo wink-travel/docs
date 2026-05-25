@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: Thêm các thành phần web Wink vào các trang Gatsby bằng cách sử dụng gatsby-browser.js để tải phía client.
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby tạo ra HTML tĩnh khi build và tái kích hoạt trên client. Các script CDN phải được tải chỉ trong các API trình duyệt — `gatsby-browser.js` là nơi thích hợp.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Cài đặt và tải gói CDN kèm kiểu TypeScript."
+/>
+
+## Cài đặt
+
+```bash
+npm install @wink/elements
+```
+
+## Tải qua gatsby-browser.js
+
+API `onClientEntry` chạy một lần ngay khi runtime của Gatsby khởi tạo trong trình duyệt:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## Biến môi trường
+
+Gatsby chỉ cho phép các biến có tiền tố `GATSBY_` được truy cập trong gói trình duyệt:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## Sử dụng trong trang và thành phần
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby sử dụng React, vì vậy thêm các khai báo JSX intrinsic giống như tích hợp React:
+
+```ts
+// src/wink-elements.d.ts
+// Xem /integrations/react để biết file khai báo đầy đủ
+```
+
+<Aside type="caution" title="Lỗi build SSR">
+Trong quá trình `gatsby build`, Gatsby render các trang thành HTML tĩnh trong môi trường Node.js, nơi không có `window` và `document`. Nếu bạn import `@wink/elements` ở cấp cao nhất của một component trang (ngoài `onClientEntry`), quá trình build sẽ thất bại.
+
+Luôn sử dụng `gatsby-browser.js` / `onClientEntry` — không bao giờ import `load` trực tiếp trong phạm vi module của trang hoặc component.
+</Aside>
+
+## gatsby-ssr.js — không cần thay đổi
+
+Bạn không cần chỉnh sửa `gatsby-ssr.js`. Các thẻ `<wink-*>` sẽ được render như các phần tử HTML thuần túy trong output tĩnh, và script CDN sẽ nâng cấp chúng khi trình duyệt tải trang.
+
+## Đọc thêm
+
+- [Tham khảo Web Components](/vi/integrations/web-components)
+- [@wink/elements npm package](/vi/integrations/npm)
+- [Tích hợp React](/vi/integrations/react)

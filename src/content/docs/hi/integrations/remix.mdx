@@ -1,0 +1,115 @@
+---
+title: रिमिक्स
+description: useEffect के माध्यम से क्लाइंट-ओनली लोडिंग के साथ रिमिक्स एप्लिकेशन में Wink वेब कॉम्पोनेंट्स जोड़ें।
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+रिमिक्स एक फुल-स्टैक फ्रेमवर्क है जो डिफ़ॉल्ट रूप से सर्वर-रेंडर करता है। रूट कॉम्पोनेंट में `useEffect` का उपयोग करके केवल क्लाइंट पर Wink CDN लोड करें।
+
+<LinkCard
+  title="@wink/elements npm पैकेज"
+  href="/integrations/npm"
+  description="TypeScript टाइप्स के साथ CDN बंडल इंस्टॉल और लोड करें।"
+/>
+
+## इंस्टॉल करें
+
+```bash
+npm install @wink/elements
+```
+
+## app/root.tsx में लोड करें
+
+`useEffect` केवल ब्राउज़र में चलता है, सर्वर-साइड रेंडरिंग के दौरान कभी नहीं:
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## पर्यावरण चर
+
+रिमिक्स (Vite-आधारित, v2.8+) ब्राउज़र-एक्सपोज़्ड वेरिएबल्स के लिए `import.meta.env` का समर्थन करता है। ब्राउज़र बंडल में एक्सपोज़ करने के लिए `VITE_` से प्रीफिक्स करें:
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+पुराने रिमिक्स सेटअप के लिए जो Node.js एडाप्टर का उपयोग करते हैं, रूट लोडर से क्लाइंट ID लौटाएं और कॉम्पोनेंट में पढ़ें:
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## रूट्स में उपयोग करें
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="हाइड्रेशन असंगति">
+रिमिक्स क्लाइंट पर सर्वर-रेंडर किए गए HTML को हाइड्रेट करता है। यदि सर्वर पर `<wink-*>` एलिमेंट रेंडर होता है, तो ब्राउज़र CDN स्क्रिप्ट के रजिस्टर होने से पहले अस्थायी रूप से अनसुलझे कस्टम एलिमेंट को दिखा सकता है। यह केवल सौंदर्य संबंधी है — स्क्रिप्ट लोड होने के बाद एलिमेंट सही ढंग से अपग्रेड हो जाता है।
+</Aside>
+
+## TypeScript टाइप्स
+
+[React इंटीग्रेशन पेज](/hi/integrations/react#typescript--declare-jsx-intrinsics) से JSX इंट्रिंसिक डिक्लेरेशन फाइल जोड़ें — रिमिक्स के अंतर्गत React का उपयोग होता है।
+
+## आगे पढ़ें
+
+- [वेब कॉम्पोनेंट्स संदर्भ](/hi/integrations/web-components)
+- [@wink/elements npm पैकेज](/hi/integrations/npm)
+- [React इंटीग्रेशन](/hi/integrations/react)

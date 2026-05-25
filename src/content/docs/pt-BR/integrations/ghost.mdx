@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: Incorpore o inventário de viagens Wink na sua publicação Ghost usando Injeção de Código.
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+O recurso embutido de **Injeção de Código** do Ghost permite adicionar scripts ao `<head>` global e ao `</body>` da sua publicação. Todos os planos do Ghost suportam injeção de código, facilitando a incorporação dos componentes Wink em qualquer página ou post.
+
+## Carregar scripts Wink em todo o site
+
+<Steps>
+1. No painel do Ghost Admin, vá para **Configurações → Injeção de Código**.
+2. Na caixa **Cabeçalho do Site**, adicione a folha de estilos:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. Na caixa **Rodapé do Site**, adicione o script e o carregador da aplicação (substitua `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Clique em **Salvar**.
+</Steps>
+
+:::tip
+Seu Client ID está disponível na sua conta Wink em [Applications](/pt-BR/portal/settings/applications).
+:::
+
+## Adicionar um componente a um post ou página
+
+O editor do Ghost suporta um **cartão HTML** que permite inserir HTML bruto em qualquer lugar do seu conteúdo.
+
+<Steps>
+1. Abra o post ou página no editor do Ghost.
+2. Digite `/` para abrir o seletor de cartões e selecione **HTML**.
+3. Cole o HTML do componente, por exemplo:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Clique fora do cartão para visualizar, depois publique.
+</Steps>
+
+## Injeção de código por página
+
+Para um componente que deve aparecer apenas em uma página, o Ghost também suporta injeção de código por página:
+
+<Steps>
+1. Abra as configurações do post ou página (ícone de engrenagem no editor).
+2. Role até **Injeção de Código**.
+3. Adicione a tag do componente no campo **Rodapé** (o app-loader global precisa estar apenas no rodapé do site).
+4. Salve.
+</Steps>
+
+## Componentes disponíveis
+
+| Componente | Tag HTML | Propósito |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Exibir cartões de hotéis, grades, mapas |
+| Lookup | `<wink-lookup>` | Barra de busca para destinos |
+| Search button | `<wink-search-button>` | Abrir seletor de itinerário |
+| Account button | `<wink-account-button>` | Entrar / menu do usuário |
+| Itinerary button | `<wink-itinerary-button>` | Mostrar itinerário atual |
+| Itinerary picker | `<wink-itinerary-picker>` | Formulário completo de itinerário |
+| Shopping cart | `<wink-shopping-cart-button>` | Botão resumo do carrinho |
+
+Veja [Web Components](/pt-BR/integrations/web-components) para a referência completa de atributos.
+
+## Leitura adicional
+
+- [Referência de Web Components](/pt-BR/integrations/web-components)
+- [Obtenha seu Client ID](/pt-BR/portal/settings/applications)
+- [Documentação de Injeção de Código do Ghost](https://ghost.org/help/ghost-themes/#code-injection)

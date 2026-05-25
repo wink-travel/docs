@@ -1,0 +1,101 @@
+---
+title: एस्ट्रो
+description: क्लाइंट-साइड स्क्रिप्ट और आइलैंड आर्किटेक्चर का उपयोग करके एस्ट्रो साइटों में Wink वेब कॉम्पोनेंट्स जोड़ें।
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+एस्ट्रो डिफ़ॉल्ट रूप से कोई जावास्क्रिप्ट नहीं भेजता है और सभी कॉम्पोनेंट्स को सर्वर पर स्थैतिक HTML के रूप में रेंडर करता है। Wink वेब कॉम्पोनेंट्स को क्लाइंट-साइड `<script>` टैग के माध्यम से लोड किया जाना चाहिए। एस्ट्रो का आइलैंड आर्किटेक्चर इसे सरल बनाता है।
+
+<LinkCard
+  title="@wink/elements npm पैकेज"
+  href="/integrations/npm"
+  description="CDN बंडल को इंस्टॉल और लोड करें जिसमें TypeScript टाइप्स शामिल हैं।"
+/>
+
+## इंस्टॉल करें
+
+```bash
+npm install @wink/elements
+```
+
+## साझा लेआउट में लोड करें
+
+अपने बेस लेआउट में लोडर स्क्रिप्ट जोड़ें ताकि यह हर पेज पर चले:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline बनाम बंडल किए गए स्क्रिप्ट">
+`is:inline` के बिना, एस्ट्रो स्क्रिप्ट को बंडल और डुप्लिकेट से मुक्त करता है — `load()` केवल एक बार कॉल होता है भले ही लेआउट कई पेजों पर इस्तेमाल हो। यह पसंदीदा तरीका है। `is:inline` का उपयोग केवल तब करें जब आपको स्क्रिप्ट को कच्चे टेक्स्ट के रूप में इनलाइन करना हो (जैसे मॉड्यूल बंडलर से बचने के लिए)।
+</Aside>
+
+## किसी पेज पर उपयोग करें
+
+क्योंकि एस्ट्रो कॉम्पोनेंट्स सर्वर-रेंडर किए जाते हैं, `<wink-*>` टैग स्थैतिक HTML के रूप में आउटपुट होते हैं। CDN स्क्रिप्ट कस्टम एलिमेंट्स को पेज के ब्राउज़र में लोड होने पर रजिस्टर करता है:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## फ्रेमवर्क कॉम्पोनेंट (आइलैंड) के अंदर
+
+यदि आप React, Vue, या Svelte आइलैंड्स का उपयोग Wink के साथ कर रहे हैं, तो लेआउट में `@wink/elements` लोड करें (जैसा ऊपर बताया गया है) और अपने आइलैंड कॉम्पोनेंट्स के अंदर सामान्य रूप से `<wink-*>` टैग का उपयोग करें — कस्टम एलिमेंट्स तब तक रजिस्टर हो जाएंगे जब तक आइलैंड हाइड्रेट हो।
+
+```tsx
+// src/components/HotelCard.tsx (React आइलैंड)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() पहले ही लेआउट द्वारा कॉल किया जा चुका है — यहाँ रेंडर करना सुरक्षित है
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## पर्यावरण चर
+
+एस्ट्रो केवल उन वेरिएबल्स को ब्राउज़र को एक्सपोज़ करता है जिनका प्रीफिक्स `PUBLIC_` होता है:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## आगे पढ़ें
+
+- [वेब कॉम्पोनेंट्स संदर्भ](/hi/integrations/web-components)
+- [@wink/elements npm पैकेज](/hi/integrations/npm)

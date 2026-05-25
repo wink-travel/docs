@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: Bættu við Wink vefhlutum á Gatsby síður með því að nota gatsby-browser.js fyrir hleðslu í vafra.
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby býr til kyrrstætt HTML við byggingu og endurvökvar það í vafranum. CDN skrár verða að hlaðast aðeins í vafra-API — `gatsby-browser.js` er rétti staðurinn.
+
+<LinkCard
+  title="@wink/elements npm pakki"
+  href="/integrations/npm"
+  description="Settu upp og hlaðaðu CDN pakkanum með TypeScript týpum."
+/>
+
+## Setja upp
+
+```bash
+npm install @wink/elements
+```
+
+## Hlaða í gegnum gatsby-browser.js
+
+`onClientEntry` API keyrir einu sinni um leið og Gatsby keyrir í vafranum:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## Umhverfisbreytur
+
+Gatsby gerir aðeins breytur sem byrja á `GATSBY_` aðgengilegar í vafrapakkanum:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## Nota í síðum og íhlutum
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby notar React, svo bættu við sömu JSX innbyggðu yfirlýsingum og React samþættingin:
+
+```ts
+// src/wink-elements.d.ts
+// Sjá /integrations/react fyrir fulla yfirlýsingu
+```
+
+<Aside type="caution" title="Villa við SSR byggingu">
+Við `gatsby build` renderar Gatsby síður í kyrrstætt HTML í Node.js umhverfi þar sem `window` og `document` eru ekki tiltækar. Ef þú import-ar `@wink/elements` efst í síðu-íhluta (utan `onClientEntry`), mun byggingin mistakast.
+
+Notaðu alltaf `gatsby-browser.js` / `onClientEntry` — aldrei import-a `load` beint í síðu eða íhluta.
+</Aside>
+
+## gatsby-ssr.js — engar breytingar nauðsynlegar
+
+Þú þarft ekki að breyta `gatsby-ssr.js`. `<wink-*>` taggar renderast sem venjulegir HTML þættir í kyrrstæðu úttaki og CDN skriftan uppfærir þá þegar vafrinn hleður síðunni.
+
+## Frekari lesning
+
+- [Vefhluta tilvísun](/is/integrations/web-components)
+- [@wink/elements npm pakki](/is/integrations/npm)
+- [React samþætting](/is/integrations/react)

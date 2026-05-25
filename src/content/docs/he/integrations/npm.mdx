@@ -1,0 +1,134 @@
+---
+title: חבילת npm
+description: השתמש בחבילת npm של @wink/elements לשילוב רכיבי ווב של Wink בטייפסקריפט בכל מסגרת JavaScript.
+sidebar:
+  order: 14
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+חבילת ה-**`@wink/elements`** ב-npm היא הדרך המהירה ביותר להוסיף רכיבי ווב של Wink לכל פרויקט JavaScript או TypeScript. היא מספקת פונקציית `load()` שמזריקה את משאבי ה-CDN והצהרות טיפוס מלאות של TypeScript לכל התכונות של הרכיבים.
+
+<LinkCard
+  title="wink-travel/wink-elements ב-GitHub"
+  href="https://github.com/wink-travel/wink-elements"
+  description="קוד מקור, הפניה ל-API והוראות לתרומה."
+/>
+
+## התקנה
+
+```bash
+npm install @wink/elements
+```
+
+## התחלה מהירה
+
+קרא ל-`load()` פעם אחת בעת הפעלת האפליקציה. היא אידמפוטנטית — בטוח לקרוא לה מספר פעמים.
+
+```ts
+import { load } from '@wink/elements';
+
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+לאחר מכן השתמש בכל רכיב Wink ב-HTML או ב-JSX שלך:
+
+```html
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID"></wink-content-loader>
+```
+
+## דוגמאות למסגרות עבודה
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <html><body>{children}</body></html>;
+}
+```
+
+### Nuxt 3
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+import { load } from '@wink/elements';
+---
+<script>
+  import { load } from '@wink/elements';
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+</script>
+```
+
+### SvelteKit
+
+```ts
+// src/routes/+layout.ts
+import { load as loadWink } from '@wink/elements';
+import { browser } from '$app/environment';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+## טיפוסים ב-TypeScript
+
+כל ממשקי התכונות של הרכיבים מיוצאים לשימוש ב-JSX, תבניות מילוליות או מילונים ממופים:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',    // TypeScript יתפוס ערכי layout לא תקינים
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+```
+
+## שימוש ב-CDN של סביבה ניסיונית
+
+```ts
+load({
+  clientId: 'YOUR_CLIENT_ID',
+  cdnBaseUrl: 'https://staging-elements.wink.travel',
+});
+```
+
+## API
+
+### `load(options)`
+
+| אפשרות | סוג | חובה | ברירת מחדל | תיאור |
+|---|---|---|---|---|
+| `clientId` | `string` | כן | — | מזהה הלקוח OAuth2 של Wink שלך |
+| `configurationId` | `string` | לא | — | מזהה התאמה אישית אופציונלי |
+| `cdnBaseUrl` | `string` | לא | `https://elements.wink.travel` | כתובת URL ל-CDN להחלפה |
+
+## קריאה נוספת
+
+- [הפניה לרכיבי ווב](/he/integrations/web-components)
+- [קבל את מזהה הלקוח שלך](/he/portal/settings/applications)
+- [מדריך אינטגרציה ל-Headless CMS](/he/integrations/headless)
+- [`@wink/elements` ב-GitHub](https://github.com/wink-travel/wink-elements)

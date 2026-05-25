@@ -1,0 +1,101 @@
+---
+title: Astro
+description: Pridėkite Wink žiniatinklio komponentus prie Astro svetainių naudodami kliento pusės scenarijus ir salų architektūrą.
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Astro pagal numatytuosius nustatymus nepateikia jokio JavaScript ir atvaizduoja visus komponentus kaip statinį HTML serveryje. Wink žiniatinklio komponentai turi būti įkelti per kliento pusės `<script>` žymą. Astro salų architektūra tai palengvina.
+
+<LinkCard
+  title="@wink/elements npm paketas"
+  href="/integrations/npm"
+  description="Įdiekite ir įkelkite CDN paketą su TypeScript tipais."
+/>
+
+## Įdiegimas
+
+```bash
+npm install @wink/elements
+```
+
+## Įkėlimas bendrame išdėstyme
+
+Pridėkite įkėlimo scenarijų prie pagrindinio išdėstymo, kad jis būtų vykdomas kiekviename puslapyje:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Mano svetainė</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline vs sujungti scenarijai">
+Be `is:inline`, Astro sujungia ir pašalina pasikartojimus scenarijuje — `load()` kviečiamas tik vieną kartą, net jei išdėstymas naudojamas daugelyje puslapių. Tai yra pageidaujamas būdas. Naudokite `is:inline` tik tada, kai reikia scenarijų įterpti kaip žalią tekstą (pvz., kad būtų išvengta modulio sujungėjo).
+</Aside>
+
+## Naudojimas puslapyje
+
+Kadangi Astro komponentai atvaizduojami serveryje, `<wink-*>` žymos išvedamos kaip statinis HTML. CDN scenarijus užregistruoja pasirinktinius elementus, kai puslapis įkeliamas naršyklėje:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## Viduje karkaso komponento (saloje)
+
+Jei naudojate React, Vue ar Svelte salas kartu su Wink, įkelkite `@wink/elements` į išdėstymą (kaip aukščiau) ir naudokite `<wink-*>` žymas savo salų komponentuose įprastai — pasirinktini elementai bus užregistruoti iki salos hidratuojant.
+
+```tsx
+// src/components/HotelCard.tsx (React sala)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() jau iškviestas išdėstyme — saugu atvaizduoti čia
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## Aplinkos kintamieji
+
+Astro naršyklei atskleidžia tik kintamuosius, prasidedančius `PUBLIC_`:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Tolimesnė literatūra
+
+- [Žiniatinklio komponentų nuoroda](/lt/integrations/web-components)
+- [@wink/elements npm paketas](/lt/integrations/npm)

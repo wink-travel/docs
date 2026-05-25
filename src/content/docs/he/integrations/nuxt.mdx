@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: הוסף רכיבי ווב של Wink לאפליקציות Nuxt 3 באמצעות תוסף צד לקוח.
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 מציג דפים בשרת כברירת מחדל. סקריפטים מ-CDN ואלמנטים מותאמים אישית חייבים להיטען רק בצד הלקוח. תוסף לקוח של Nuxt הוא המקום הנקי ביותר לעשות זאת.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="התקן וטעין את חבילת ה-CDN עם טיפוסי TypeScript."
+/>
+
+## התקנה
+
+```bash
+npm install @wink/elements
+```
+
+## צור תוסף לקוח
+
+סיומת `.client.ts` אומרת ל-Nuxt להריץ את התוסף הזה רק בדפדפן:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## הגדר את משתנה הריצה
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+הוסף ל-`.env`:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## הגדר את Vue עבור אלמנטים מותאמים אישית
+
+הוסף את אפשרות הקומפיילר `isCustomElement` כדי ש-Vue לא יציג אזהרות על תגיות `<wink-*>` לא מוכרות:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## שימוש בתבניות
+
+עטוף רכיבי Wink ב-`<ClientOnly>` כדי למנוע אי התאמות בהידרציה של SSR:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` מציג מחליף בשרת ומרכיב את האלמנט האמיתי בצד הלקוח — זוהי התבנית המומלצת לכל הטמעות צד שלישי המיועדות לדפדפן בלבד ב-Nuxt.
+</Aside>
+
+## טיפוסי TypeScript
+
+הרחב את `HTMLElementTagNameMap` הגלובלי (כמו ב-Vue 3) כדי לקבל השלמת אוטומטית של מאפיינים. ראה את [דף האינטגרציה של Vue 3](/he/integrations/vue#typescript--augment-global-element-types) עבור קובץ ההצהרה המלא.
+
+## קריאה נוספת
+
+- [הפניה לרכיבי ווב](/he/integrations/web-components)
+- [חבילת npm של @wink/elements](/he/integrations/npm)
+- [אינטגרציה עם Vue 3](/he/integrations/vue)

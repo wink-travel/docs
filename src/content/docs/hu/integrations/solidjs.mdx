@@ -1,0 +1,119 @@
+---
+title: SolidJS
+description: Használd a Wink webkomponenseket SolidJS alkalmazásokban — natív egyedi elem támogatás onMount-tal.
+sidebar:
+  order: 25
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+A SolidJS natív egyedi elem támogatással rendelkezik — az attribútumokat közvetlenül a DOM-nak adja át virtuális DOM réteg nélkül. Nincs szükség további fordító konfigurációra.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Telepítsd és töltsd be a CDN csomagot TypeScript típusokkal."
+/>
+
+## Telepítés
+
+```bash
+npm install @wink/elements
+```
+
+## Egyszeri betöltés az alkalmazás indításakor
+
+```tsx
+// src/App.tsx
+import { onMount } from 'solid-js';
+import { load } from '@wink/elements';
+
+export default function App() {
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+
+  return <YourRoutes />;
+}
+```
+
+Az `onMount` csak a böngészőben fut az első renderelés után — a SolidJS megfelelője a React `useEffect(() => {}, [])` hívásának.
+
+## Használat JSX-ben
+
+```tsx
+// src/pages/Hotels.tsx
+import { createSignal } from 'solid-js';
+
+export default function HotelsPage() {
+  const [layoutId] = createSignal('YOUR_LAYOUT_ID');
+
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id={layoutId()} />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — JSX intrinsics deklarálása
+
+A SolidJS saját JSX névteret használ. Bővítsd a `solid-js` JSX típusokat:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'solid-js' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## SolidStart (SSR)
+
+SolidStart szerveroldali renderelést használó alkalmazások esetén védd a `load()` hívást az `isServer`-rel:
+
+```tsx
+// src/app.tsx
+import { onMount } from 'solid-js';
+import { isServer } from 'solid-js/web';
+import { load } from '@wink/elements';
+
+export default function App() {
+  if (!isServer) {
+    onMount(() => {
+      load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+    });
+  }
+
+  return <YourRoutes />;
+}
+```
+
+<Aside type="tip">
+A SolidJS finomhangolt reaktivitása azt jelenti, hogy az attribútumfrissítések közvetlenül a DOM-hoz jutnak — nincs szükség kötegelt feldolgozásra vagy egyeztetésre. A Wink komponensek azonnal megkapják az attribútumváltozásokat, amikor a jelző értékei frissülnek.
+</Aside>
+
+## További olvasnivaló
+
+- [Web Components referencia](/hu/integrations/web-components)
+- [@wink/elements npm package](/hu/integrations/npm)

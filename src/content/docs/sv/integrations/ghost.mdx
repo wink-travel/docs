@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: Bädda in Wink reseinventarier i din Ghost-publikation med hjälp av Code Injection.
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Ghosts inbyggda **Code Injection**-funktion låter dig lägga till skript i den globala `<head>` och `</body>` i din publikation. Alla Ghost-planer stödjer code injection, vilket gör det enkelt att bädda in Wink-komponenter på vilken sida eller inlägg som helst.
+
+## Ladda Wink-skript på hela webbplatsen
+
+<Steps>
+1. Gå till **Settings → Code Injection** i Ghost Admin-panelen.
+2. Lägg till stylesheet i rutan **Site Header**:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. Lägg till skriptet och applikationsladdaren i rutan **Site Footer** (byt ut `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klicka på **Save**.
+</Steps>
+
+:::tip
+Ditt Client ID finns i ditt Wink-konto under [Applications](/sv/portal/settings/applications).
+:::
+
+## Lägg till en komponent i ett inlägg eller på en sida
+
+Ghosts editor stödjer ett **HTML-kort** som låter dig infoga rå HTML var som helst i ditt innehåll.
+
+<Steps>
+1. Öppna inlägget eller sidan i Ghost-editorn.
+2. Skriv `/` för att öppna kortväljaren och välj **HTML**.
+3. Klistra in komponentens HTML, till exempel:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klicka utanför kortet för att förhandsgranska, och publicera sedan.
+</Steps>
+
+## Per-sida code injection
+
+För en komponent som bara ska visas på en sida stödjer Ghost även per-sida code injection:
+
+<Steps>
+1. Öppna inställningarna för inlägget eller sidan (kugghjulsikonen i editorn).
+2. Scrolla till **Code Injection**.
+3. Lägg till komponenttaggen i fältet **Footer** (den globala app-loadern behöver bara finnas i den site-wide footern).
+4. Spara.
+</Steps>
+
+## Tillgängliga komponenter
+
+| Komponent | HTML-tag | Syfte |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Visa hotellkort, rutnät, kartor |
+| Lookup | `<wink-lookup>` | Sökruta för destinationer |
+| Search button | `<wink-search-button>` | Öppna resplanväljare |
+| Account button | `<wink-account-button>` | Logga in / användarmeny |
+| Itinerary button | `<wink-itinerary-button>` | Visa aktuell resplan |
+| Itinerary picker | `<wink-itinerary-picker>` | Fullständig resplanformulär |
+| Shopping cart | `<wink-shopping-cart-button>` | Kundvagnssammanfattning |
+
+Se [Web Components](/sv/integrations/web-components) för fullständig attributreferens.
+
+## Vidare läsning
+
+- [Web Components reference](/sv/integrations/web-components)
+- [Hämta ditt Client ID](/sv/portal/settings/applications)
+- [Ghost Code Injection docs](https://ghost.org/help/ghost-themes/#code-injection)

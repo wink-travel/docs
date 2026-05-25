@@ -1,0 +1,73 @@
+---
+title: Squarespace
+description: 使用代码注入和自定义 HTML 块将 Wink 旅游库存嵌入到您的 Squarespace 网站中。
+sidebar:
+  order: 3
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+:::note
+Squarespace 的代码注入功能仅在 **商务计划及以上** 可用。自定义 HTML 块在所有付费计划中均可使用。
+:::
+
+Squarespace 支持自定义 HTML 和 JavaScript，这意味着您可以直接将任何 Wink Web 组件嵌入到您的网站中，无需插件。本指南将向您展示如何在全站范围内加载 Wink 脚本，然后在各个页面上放置组件。
+
+## 在全站范围内加载 Wink 脚本
+
+将脚本添加到网站的全局页脚和页眉，意味着 Wink 在每个页面都可用，无需重复设置。
+
+<Steps>
+1. 在 Squarespace 编辑器中，进入 **设置 → 高级 → 代码注入**。
+2. 在 **页眉** 字段中，添加样式表：
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. 在 **页脚** 字段中，添加脚本和应用加载器（将 `YOUR_CLIENT_ID` 替换为您的 Wink 客户端 ID）：
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. 点击 **保存**。
+</Steps>
+
+:::tip
+您的客户端 ID 可在 Wink 账户的[应用程序](/zh-CN/portal/settings/applications)中找到。
+:::
+
+## 向页面添加组件
+
+脚本全局加载后，您可以使用 **代码块** 将任何 Wink 组件放置到任意页面。
+
+<Steps>
+1. 打开您想编辑的页面。
+2. 点击 **编辑**，并在希望显示组件的位置添加一个新的 **代码** 块。
+3. 粘贴组件 HTML，例如内容加载器：
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. 点击 **应用**，然后 **保存**。
+</Steps>
+
+## 可用组件
+
+| 组件 | HTML 标签 | 用途 |
+|---|---|---|
+| 内容加载器 | `<wink-content-loader>` | 显示酒店卡片、网格、地图 |
+| 查找 | `<wink-lookup>` | 目的地搜索栏 |
+| 搜索按钮 | `<wink-search-button>` | 打开行程选择器 |
+| 账户按钮 | `<wink-account-button>` | 登录 / 用户菜单 |
+| 行程按钮 | `<wink-itinerary-button>` | 显示当前行程 |
+| 行程选择器 | `<wink-itinerary-picker>` | 完整行程表单 |
+| 购物车 | `<wink-shopping-cart-button>` | 购物车摘要按钮 |
+
+请参阅[Web 组件](/zh-CN/integrations/web-components)获取每个组件的完整属性参考。
+
+## 进一步阅读
+
+- [Web 组件参考](/zh-CN/integrations/web-components)
+- [获取您的客户端 ID](/zh-CN/portal/settings/applications)
+- [Squarespace 代码注入文档](https://support.squarespace.com/hc/en-us/articles/205815908)

@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Ágyazza be a Wink utazási készletet a Craft CMS 5 webhelyébe a Wink plugin segítségével.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+A **Wink Craft CMS Plugin** integrálja a Wink utazási készletet a Craft 5-be Twig sablonfüggvényeken és egyedi mezőtípuson keresztül a tartalomszerkesztő számára. A szerkesztők közvetlenül a bejegyzésszerkesztőben egy legördülő menüből választhatnak ki egy adott Wink elrendezést.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin a GitHubon"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Forráskód, fejlesztői telepítési útmutató és hozzájárulási útmutatók."
+/>
+
+## Követelmények
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Telepítés
+
+<Steps>
+1. Telepítés Composerrel:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Aktiválja a plugint a Vezérlőpulton a **Beállítások → Bővítmények** menüpont alatt, vagy CLI-n keresztül:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Lépjen a Vezérlőpulton a **Beállítások → Wink** menüpontra.
+4. Adja meg a **Client ID** és **Client Secret** értékeket, válassza ki a környezetet, majd kattintson a **Mentés** gombra.
+   A hitelesítő adatok megszerzéséhez látogasson el az [Alkalmazások](/hu/portal/settings/applications) oldalra.
+</Steps>
+
+## Használat Twig sablonokban
+
+A beállítás után bárhol meghívhatja a Wink Twig függvényeket a sablonjaiban:
+
+```twig
+{# Szállodák rács megjelenítése #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Úti cél keresősáv #}
+{{ winkLookup() }}
+
+{# Útvonalválasztó gomb #}
+{{ winkSearch() }}
+
+{# Felhasználói fiók gomb #}
+{{ winkAccount() }}
+```
+
+A `winkContent()` függvény automatikusan beszúrja az első híváskor az oldalon a `<wink-app-loader>` elemet.
+
+## Elérhető Twig függvények
+
+| Függvény | Kimenet | Leírás |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Szállodakártyák, rácsok, térképek |
+| `winkLookup()` | `<wink-lookup>` | Úti cél keresősáv |
+| `winkSearch()` | `<wink-search-button>` | Útvonalválasztó gomb |
+| `winkAccount()` | `<wink-account-button>` | Bejelentkezés / felhasználói fiók |
+| `winkItinerary()` | `<wink-itinerary-button>` | Útvonal állapot gomb |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Kosár gomb |
+
+## Wink Layout mezőtípus
+
+Adjon hozzá egy **Wink Layout** mezőt bármelyik szekcióhoz, hogy a szerkesztők egy legördülő menüből választhassák ki a Wink fiókjában elérhető összes elrendezést:
+
+<Steps>
+1. Lépjen a **Beállítások → Mezők → Új mező** menüpontra.
+2. Állítsa be a **Mezőtípus** értékét **Wink Layout**-ra.
+3. Adja hozzá a mezőt a bejegyzéstípus mezőelrendezéséhez.
+4. A szerkesztők mostantól közvetlenül a bejegyzésszerkesztőben választhatnak elrendezést — nincs szükség azonosítók másolására.
+</Steps>
+
+A sablonban adja át a mező értékét a `winkContent()` függvénynek:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## További olvasnivaló
+
+- [Web Components referencia](/hu/integrations/web-components)
+- [Szerezze be a Client ID-ját](/hu/portal/settings/applications)
+- [Wink Craft Plugin — forráskód és fejlesztői dokumentáció](https://github.com/wink-travel/wink-craft-plugin)

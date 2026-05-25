@@ -1,0 +1,115 @@
+---
+title: Remix
+description: Thêm các thành phần web Wink vào ứng dụng Remix với việc tải chỉ trên client qua useEffect.
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Remix là một framework full-stack mặc định render trên server. Tải CDN của Wink chỉ trên client bằng cách sử dụng `useEffect` trong component gốc.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Cài đặt và tải gói CDN kèm theo các kiểu TypeScript."
+/>
+
+## Cài đặt
+
+```bash
+npm install @wink/elements
+```
+
+## Tải trong app/root.tsx
+
+`useEffect` chỉ chạy trên trình duyệt, không bao giờ chạy trong quá trình render phía server:
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## Biến môi trường
+
+Remix (dựa trên Vite, phiên bản 2.8+) hỗ trợ `import.meta.env` cho các biến được phơi bày trên trình duyệt. Tiền tố `VITE_` để phơi bày biến cho bundle trình duyệt:
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Đối với các thiết lập Remix cũ hơn sử dụng adapter Node.js, trả về client ID từ loader gốc và đọc trong component:
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## Sử dụng trong các route
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Không khớp khi hydrate">
+Remix hydrate HTML được render trên server ở phía client. Nếu một phần tử `<wink-*>` được render trên server, trình duyệt có thể tạm thời hiển thị phần tử tùy chỉnh chưa được giải quyết trước khi script CDN đăng ký nó. Đây chỉ là vấn đề về mặt thẩm mỹ — phần tử sẽ được nâng cấp đúng khi script được tải.
+</Aside>
+
+## Kiểu TypeScript
+
+Thêm file khai báo JSX intrinsic từ [trang tích hợp React](/vi/integrations/react#typescript--declare-jsx-intrinsics) — Remix sử dụng React bên trong.
+
+## Đọc thêm
+
+- [Tham khảo Web Components](/vi/integrations/web-components)
+- [@wink/elements npm package](/vi/integrations/npm)
+- [Tích hợp React](/vi/integrations/react)

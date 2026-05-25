@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Vložte Wink cestovní inventář do jakéhokoli headless CMS (Contentful, Strapi, Sanity atd.) nebo vlastního webu.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wink webové komponenty jsou frameworkově nezávislé vlastní HTML elementy. Pokud vaše headless CMS vykresluje HTML — ať už přes Next.js, Nuxt, Astro, SvelteKit nebo jakýkoli jiný framework — můžete vložit Wink komponenty bez jakékoli speciální integrace.
+
+## Tříkrokové vložení
+
+Každá integrace Wink, bez ohledu na platformu, následuje stejné tři kroky.
+
+### 1. Zahrňte stylopis
+
+Přidejte toto do `<head>` dokumentu (nebo ekvivalentního globálního layoutu):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Zahrňte JavaScript
+
+Přidejte toto před uzavírací tag `</body>` (nebo do skriptové sekce vašeho layoutu):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Přidejte načítač aplikace
+
+Umístěte toto **jednou na stránku**, kamkoli do těla (obvykle do patičky globálního layoutu):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Vaše Client ID najdete ve svém Wink účtu v sekci [Applications](/cs/portal/settings/applications).
+:::
+
+## Příklady pro frameworky
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+Uživatelé TypeScriptu: přidejte `global.d.ts`, který deklaruje typy vlastních elementů, nebo použijte npm balíček [`@wink/elements`](https://github.com/wink2travel/wink-elements), který obsahuje deklarace typů.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Umístění komponent do obsahu
+
+Ve vašem CMS v bohatém textu nebo vlastních typech polí vložte značky komponent přímo do HTML výstupu:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Pro Contentful, Strapi, Sanity nebo podobné headless platformy použijte **Rich Text** pole nebo **Custom Block**, který vykresluje surové HTML, a vložte tam značku komponenty.
+
+## npm balíček
+
+Pro TypeScript projekty poskytuje balíček [`@wink/elements`](https://github.com/wink2travel/wink-elements):
+- Funkci `load()`, která programově vloží CDN skripty
+- Kompletní deklarace typů TypeScript pro všechny atributy komponent
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Zavolejte jednou při spuštění aplikace
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Dostupné komponenty
+
+| Komponenta | HTML tag | Účel |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Zobrazení hotelových karet, mřížek, map |
+| Lookup | `<wink-lookup>` | Vyhledávací lišta pro destinace |
+| Search button | `<wink-search-button>` | Otevření výběru itineráře |
+| Account button | `<wink-account-button>` | Přihlášení / uživatelské menu |
+| Itinerary button | `<wink-itinerary-button>` | Zobrazení aktuálního itineráře |
+| Itinerary picker | `<wink-itinerary-picker>` | Kompletní formulář itineráře |
+| Shopping cart | `<wink-shopping-cart-button>` | Tlačítko souhrnu košíku |
+
+Podívejte se na [Web Components](/cs/integrations/web-components) pro kompletní referenci atributů.

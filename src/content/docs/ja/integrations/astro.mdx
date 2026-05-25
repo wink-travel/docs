@@ -1,0 +1,101 @@
+---
+title: Astro
+description: クライアントサイドスクリプトとアイランドアーキテクチャを使って、AstroサイトにWinkのウェブコンポーネントを追加します。
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+AstroはデフォルトでJavaScriptを一切出力せず、すべてのコンポーネントをサーバー上で静的HTMLとしてレンダリングします。Winkのウェブコンポーネントはクライアントサイドの`<script>`タグで読み込む必要があります。Astroのアイランドアーキテクチャにより、これが簡単に実現できます。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="TypeScript型定義付きのCDNバンドルをインストールして読み込みます。"
+/>
+
+## インストール
+
+```bash
+npm install @wink/elements
+```
+
+## 共有レイアウトでの読み込み
+
+ベースレイアウトにローダースクリプトを追加し、すべてのページで実行されるようにします：
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline とバンドルされたスクリプトの違い">
+`is:inline`を使わない場合、Astroはスクリプトをバンドルして重複を排除します。つまり、レイアウトが複数ページで使われていても`load()`は一度だけ呼ばれます。これが推奨される方法です。`is:inline`は、モジュールバンドラーを回避するなどの理由でスクリプトを生のテキストとしてインライン化したい場合のみ使用してください。
+</Aside>
+
+## ページでの使用
+
+Astroコンポーネントはサーバーでレンダリングされるため、`<wink-*>`タグは静的HTMLとして出力されます。CDNスクリプトはページがブラウザで読み込まれた際にカスタム要素を登録します：
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## フレームワークコンポーネント内（アイランド）
+
+React、Vue、SvelteのアイランドとWinkを併用する場合は、レイアウトで`@wink/elements`を読み込み（上記参照）、アイランドコンポーネント内で通常通り`<wink-*>`タグを使います。アイランドがハイドレートされる時点でカスタム要素は登録済みです。
+
+```tsx
+// src/components/HotelCard.tsx (React island)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load()はレイアウトで既に呼ばれているため、ここでレンダリングしても安全です
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## 環境変数
+
+Astroは`PUBLIC_`で始まる変数のみをブラウザに公開します：
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## 参考資料
+
+- [Web Components リファレンス](/ja/integrations/web-components)
+- [@wink/elements npm package](/ja/integrations/npm)

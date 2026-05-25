@@ -1,0 +1,112 @@
+---
+title: Angular
+description: Angular 14+ एप्लिकेशन में CUSTOM_ELEMENTS_SCHEMA और @wink/elements के साथ Wink वेब कॉम्पोनेंट्स का उपयोग करें।
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink कॉम्पोनेंट्स स्वयं Angular Elements हैं — ये Angular एप्लिकेशन में स्वाभाविक रूप से एकीकृत होते हैं। केवल आवश्यक सेटअप Angular के कंपाइलर को अज्ञात एलिमेंट नामों की अनुमति देने के लिए बताना है।
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="TypeScript टाइप्स के साथ CDN बंडल इंस्टॉल और लोड करें।"
+/>
+
+## इंस्टॉल करें
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — CDN एक बार लोड करें
+
+`bootstrapApplication` से पहले (या `APP_INITIALIZER` के अंदर) `load()` कॉल करें:
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## कस्टम एलिमेंट नामों की अनुमति दें
+
+हर standalone कॉम्पोनेंट (या मॉड्यूल) में जो `<wink-*>` टैग्स रेंडर करता है, उसमें `CUSTOM_ELEMENTS_SCHEMA` जोड़ें:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="NgModule एप्लिकेशन">
+NgModule-आधारित ऐप्स के लिए, `@NgModule` डेकोरेटर के `schemas` एरे में `CUSTOM_ELEMENTS_SCHEMA` जोड़ें।
+</Aside>
+
+## एट्रिब्यूट बाइंडिंग
+
+Angular का टेम्पलेट सिंटैक्स कस्टम एलिमेंट स्ट्रिंग एट्रिब्यूट्स के साथ सीधे काम करता है:
+
+```html
+<!-- स्थैतिक -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- डायनामिक बाइंडिंग -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+जब मान डायनामिक हो तो `[attr.name]` बाइंडिंग का उपयोग करें — Angular की सामान्य `[property]` बाइंडिंग DOM प्रॉपर्टीज़ को लक्षित करती है, न कि HTML एट्रिब्यूट्स को, जिन पर कस्टम एलिमेंट्स निर्भर करते हैं।
+
+## पर्यावरण वेरिएबल्स
+
+`@angular/cli` 16+ प्रोजेक्ट्स के लिए, `environment.ts` या `NG_APP_*` प्रीफिक्स के साथ `@ngx-env/builder` का उपयोग करें:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## TypeScript टाइप्स
+
+`@wink/elements` पैकेज सभी कॉम्पोनेंट एट्रिब्यूट्स के लिए टाइप्ड इंटरफेस एक्सपोर्ट करता है:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## आगे पढ़ें
+
+- [Web Components reference](/hi/integrations/web-components)
+- [@wink/elements npm package](/hi/integrations/npm)

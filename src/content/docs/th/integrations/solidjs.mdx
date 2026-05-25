@@ -1,0 +1,119 @@
+---
+title: SolidJS
+description: ใช้คอมโพเนนต์เว็บของ Wink ในแอป SolidJS — รองรับ native custom element พร้อม onMount
+sidebar:
+  order: 25
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+SolidJS รองรับ native custom element โดยตรง — ส่งผ่านแอตทริบิวต์ไปยัง DOM โดยไม่ต้องมีชั้น virtual DOM ไม่ต้องตั้งค่าคอมไพเลอร์เพิ่มเติม
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="ติดตั้งและโหลด CDN bundle พร้อม TypeScript types."
+/>
+
+## ติดตั้ง
+
+```bash
+npm install @wink/elements
+```
+
+## โหลดครั้งเดียวตอนเริ่มแอป
+
+```tsx
+// src/App.tsx
+import { onMount } from 'solid-js';
+import { load } from '@wink/elements';
+
+export default function App() {
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+
+  return <YourRoutes />;
+}
+```
+
+`onMount` จะทำงานเฉพาะในเบราว์เซอร์หลังจากการเรนเดอร์ครั้งแรก — เป็นเทียบเท่าของ React `useEffect(() => {}, [])`
+
+## ใช้ใน JSX
+
+```tsx
+// src/pages/Hotels.tsx
+import { createSignal } from 'solid-js';
+
+export default function HotelsPage() {
+  const [layoutId] = createSignal('YOUR_LAYOUT_ID');
+
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id={layoutId()} />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — ประกาศ JSX intrinsics
+
+SolidJS ใช้ namespace JSX ของตัวเอง ขยายประเภท JSX ของ `solid-js`:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'solid-js' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## SolidStart (SSR)
+
+สำหรับแอป SolidStart ที่ใช้ server-side rendering ให้ป้องกันการเรียก `load()` ด้วย `isServer`:
+
+```tsx
+// src/app.tsx
+import { onMount } from 'solid-js';
+import { isServer } from 'solid-js/web';
+import { load } from '@wink/elements';
+
+export default function App() {
+  if (!isServer) {
+    onMount(() => {
+      load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+    });
+  }
+
+  return <YourRoutes />;
+}
+```
+
+<Aside type="tip">
+ระบบ reactive ที่ละเอียดของ SolidJS หมายความว่าการอัปเดตแอตทริบิวต์จะไหลตรงไปยัง DOM — ไม่มีการจัดกลุ่มหรือ overhead ในการ reconcile คอมโพเนนต์ Wink จะได้รับการเปลี่ยนแปลงแอตทริบิวต์ทันทีเมื่อค่าของสัญญาณของคุณอัปเดต
+</Aside>
+
+## อ่านเพิ่มเติม
+
+- [Web Components reference](/th/integrations/web-components)
+- [@wink/elements npm package](/th/integrations/npm)

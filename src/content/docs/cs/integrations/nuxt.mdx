@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: Přidejte Wink webové komponenty do aplikací Nuxt 3 pomocí klientského pluginu.
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 standardně vykresluje stránky na serveru. CDN skripty a vlastní elementy musí být načítány pouze na straně klienta. Nuxt klientský plugin je nejčistší místo, kde to provést.
+
+<LinkCard
+  title="@wink/elements npm balíček"
+  href="/integrations/npm"
+  description="Nainstalujte a načtěte CDN balíček s typy pro TypeScript."
+/>
+
+## Instalace
+
+```bash
+npm install @wink/elements
+```
+
+## Vytvoření klientského pluginu
+
+Přípona `.client.ts` říká Nuxtu, aby tento plugin spustil pouze v prohlížeči:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## Konfigurace runtime proměnné
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+Přidejte do `.env`:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Konfigurace Vue pro vlastní elementy
+
+Přidejte volbu `isCustomElement` do kompilátoru, aby Vue nevypisovalo varování o neznámých značkách `<wink-*>`:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## Použití v šablonách
+
+Obalte Wink komponenty do `<ClientOnly>`, aby se zabránilo nesouladu při hydrataci SSR:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` vykreslí na serveru zástupný prvek a skutečný element namontuje na klientovi — toto je doporučený vzor pro všechny třetí strany, které jsou určeny pouze pro prohlížeč v Nuxt.
+</Aside>
+
+## Typy pro TypeScript
+
+Rozšiřte globální `HTMLElementTagNameMap` (stejně jako ve Vue 3) pro automatické doplňování atributů. Kompletní deklaraci najdete na stránce [Vue 3 integrace](/cs/integrations/vue#typescript--augment-global-element-types).
+
+## Další čtení
+
+- [Reference Web Components](/cs/integrations/web-components)
+- [@wink/elements npm balíček](/cs/integrations/npm)
+- [Vue 3 integrace](/cs/integrations/vue)

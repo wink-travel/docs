@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: 使用 gatsby-browser.js 在 Gatsby 網站中加入 Wink 網頁元件以進行客戶端載入。
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby 在建置時產生靜態 HTML，並在客戶端重新啟用。CDN 腳本必須只在瀏覽器 API 中載入 — `gatsby-browser.js` 是正確的位置。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="安裝並載入帶有 TypeScript 型別的 CDN 套件。"
+/>
+
+## 安裝
+
+```bash
+npm install @wink/elements
+```
+
+## 透過 gatsby-browser.js 載入
+
+`onClientEntry` API 會在 Gatsby 執行環境於瀏覽器初始化時執行一次：
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## 環境變數
+
+Gatsby 僅會將前綴為 `GATSBY_` 的變數暴露給瀏覽器套件：
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## 在頁面與元件中使用
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby 使用 React，因此請加入與 React 整合相同的 JSX 內建宣告：
+
+```ts
+// src/wink-elements.d.ts
+// 請參考 /integrations/react 取得完整宣告檔案
+```
+
+<Aside type="caution" title="SSR 建置錯誤">
+在 `gatsby build` 過程中，Gatsby 會在 Node.js 環境中將頁面渲染成靜態 HTML，此環境中無法使用 `window` 和 `document`。如果你在頁面元件的頂層（`onClientEntry` 之外）匯入 `@wink/elements`，建置將會失敗。
+
+請務必使用 `gatsby-browser.js` / `onClientEntry` — 千萬不要直接在頁面或元件模組範圍匯入 `load`。
+</Aside>
+
+## gatsby-ssr.js — 無需更動
+
+你不需要修改 `gatsby-ssr.js`。`<wink-*>` 標籤會在靜態輸出中呈現為純 HTML 元素，CDN 腳本會在瀏覽器載入頁面時升級它們。
+
+## 延伸閱讀
+
+- [Web Components 參考](/zh-TW/integrations/web-components)
+- [@wink/elements npm package](/zh-TW/integrations/npm)
+- [React 整合](/zh-TW/integrations/react)

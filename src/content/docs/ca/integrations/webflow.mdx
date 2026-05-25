@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Integra l'inventari de viatges de Wink al teu lloc Webflow mitjançant incrustacions de codi personalitzat.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow admet HTML i JavaScript personalitzats en tres llocs: el `<head>` de tot el lloc, el `</body>` de tot el lloc i incrustacions de codi per element. Això facilita la integració dels components web de Wink.
+
+:::note
+El codi personalitzat està disponible a partir del **pla Bàsic de Webflow i superiors**. La injecció al `</body>` de tot el lloc requereix un pla d'allotjament de pagament.
+:::
+
+## Carrega els scripts de Wink a tot el lloc
+
+<Steps>
+1. A Webflow Designer, obre **Project Settings → Custom Code**.
+2. A la secció **Head Code**, afegeix la fulla d'estils:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. A la secció **Footer Code**, afegeix l'script i el carregador de l'aplicació (substitueix `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Fes clic a **Save Changes**.
+</Steps>
+
+:::tip
+El teu Client ID està disponible al teu compte Wink a [Applications](/ca/portal/settings/applications).
+:::
+
+## Afegeix un component a un element específic
+
+<Steps>
+1. Al Designer, selecciona el **Div** o **Section** on vols el component.
+2. Al panell dret, fes clic a la icona **`</>` Embed** (o afegeix un element **HTML Embed** des del panell Add).
+3. Enganxa el HTML del component, per exemple:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Fes clic a **Save & Close**.
+</Steps>
+
+## Codi personalitzat per pàgina
+
+Si només necessites Wink en pàgines específiques, utilitza la injecció de codi per pàgina en lloc de la de tot el lloc:
+
+<Steps>
+1. Obre la **Page Settings** de la pàgina desitjada (icona d'engranatge al panell Pages).
+2. Desplaça't a **Custom Code → Before `</body>` tag**.
+3. Enganxa el mateix script i carregador d'aplicació que abans.
+4. Desa la configuració de la pàgina.
+</Steps>
+
+## Components disponibles
+
+| Component | Etiqueta HTML | Propòsit |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Mostra targetes d'hotels, graelles, mapes |
+| Lookup | `<wink-lookup>` | Barra de cerca per destinacions |
+| Search button | `<wink-search-button>` | Obre el selector d'itinerari |
+| Account button | `<wink-account-button>` | Iniciar sessió / menú d'usuari |
+| Itinerary button | `<wink-itinerary-button>` | Mostra l'itinerari actual |
+| Itinerary picker | `<wink-itinerary-picker>` | Formulari complet d'itinerari |
+| Shopping cart | `<wink-shopping-cart-button>` | Botó resum del carretó |
+
+Consulta [Web Components](/ca/integrations/web-components) per a la referència completa d'atributs.
+
+## Més informació
+
+- [Referència de Web Components](/ca/integrations/web-components)
+- [Obtenir el teu Client ID](/ca/portal/settings/applications)
+- [Documentació de codi personalitzat de Webflow](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

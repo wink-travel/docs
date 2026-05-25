@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Integrer Wink reiseinventar i ditt Webflow-nettsted ved hjelp av egendefinerte kodeinnbeddinger.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow støtter egendefinert HTML og JavaScript på tre steder: i hele nettstedets `<head>`, i hele nettstedets `</body>`, og per-element kodeinnbeddinger. Dette gjør integrering av Wink webkomponenter enkel.
+
+:::note
+Egendefinert kode er tilgjengelig på **Webflows Basic-plan og oppover**. Innsprøyting i hele nettstedets `</body>` krever en betalt hostingplan.
+:::
+
+## Last inn Wink-skript på hele nettstedet
+
+<Steps>
+1. I Webflow Designer, åpne **Project Settings → Custom Code**.
+2. I seksjonen **Head Code**, legg til stilarket:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. I seksjonen **Footer Code**, legg til skriptet og applikasjonslasteren (erstatt `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klikk **Save Changes**.
+</Steps>
+
+:::tip
+Din Client ID finner du i Wink-kontoen din under [Applications](/no/portal/settings/applications).
+:::
+
+## Legg til en komponent i et spesifikt element
+
+<Steps>
+1. I Designer, velg **Div** eller **Section** der du vil ha komponenten.
+2. I høyre panel, klikk på **`</>` Embed**-ikonet (eller legg til et **HTML Embed**-element fra Add-panelet).
+3. Lim inn komponentens HTML, for eksempel:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klikk **Save & Close**.
+</Steps>
+
+## Egendefinert kode per side
+
+Hvis du kun trenger Wink på spesifikke sider, bruk kodeinnsprøyting per side i stedet for på hele nettstedet:
+
+<Steps>
+1. Åpne **Page Settings** for mål-siden (tannhjulikon i Pages-panelet).
+2. Bla ned til **Custom Code → Before `</body>` tag**.
+3. Lim inn samme skript og app-laster som ovenfor.
+4. Lagre sideinnstillingene.
+</Steps>
+
+## Tilgjengelige komponenter
+
+| Komponent | HTML-tag | Formål |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Vis hotellkort, rutenett, kart |
+| Lookup | `<wink-lookup>` | Søkelinje for destinasjoner |
+| Search button | `<wink-search-button>` | Åpne reiseplanlegger |
+| Account button | `<wink-account-button>` | Logg inn / brukermeny |
+| Itinerary button | `<wink-itinerary-button>` | Vis gjeldende reiserute |
+| Itinerary picker | `<wink-itinerary-picker>` | Fullstendig reiseruteskjema |
+| Shopping cart | `<wink-shopping-cart-button>` | Handlekurvsammendrag-knapp |
+
+Se [Web Components](/no/integrations/web-components) for fullstendig attributtreferanse.
+
+## Videre lesning
+
+- [Web Components referanse](/no/integrations/web-components)
+- [Få din Client ID](/no/portal/settings/applications)
+- [Webflow egendefinert kode-dokumentasjon](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

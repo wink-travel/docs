@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: 使用 Wink 外掛將 Wink 旅遊庫存嵌入您的 Craft CMS 5 網站。
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS 外掛** 透過 Twig 模板函式和內容編輯器的自訂欄位類型，將 Wink 旅遊庫存整合到 Craft 5。編輯者可以直接在條目編輯器中從下拉選單選擇特定的 Wink 版面配置。
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin on GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="原始碼、開發者設定指南與貢獻說明。"
+/>
+
+## 系統需求
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## 安裝
+
+<Steps>
+1. 使用 Composer 安裝：
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. 在控制台的 **設定 → 外掛** 中啟用外掛，或透過 CLI：
+   ```bash
+   php craft plugin/install wink
+   ```
+3. 前往控制台的 **設定 → Wink**。
+4. 輸入您的 **Client ID** 和 **Client Secret**，選擇您的環境，然後點擊 **儲存**。
+   請至 [Applications](/zh-TW/portal/settings/applications) 取得您的憑證。
+</Steps>
+
+## 在 Twig 模板中使用
+
+設定完成後，可在模板中任何位置呼叫 Wink Twig 函式：
+
+```twig
+{# 渲染飯店格子 #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# 目的地搜尋列 #}
+{{ winkLookup() }}
+
+{# 行程選擇按鈕 #}
+{{ winkSearch() }}
+
+{# 使用者帳戶按鈕 #}
+{{ winkAccount() }}
+```
+
+`winkContent()` 函式會在頁面首次呼叫時自動注入 `<wink-app-loader>`。
+
+## 可用的 Twig 函式
+
+| 函式 | 輸出 | 說明 |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | 飯店卡片、格子、地圖 |
+| `winkLookup()` | `<wink-lookup>` | 目的地搜尋列 |
+| `winkSearch()` | `<wink-search-button>` | 行程選擇按鈕 |
+| `winkAccount()` | `<wink-account-button>` | 登入 / 使用者帳戶 |
+| `winkItinerary()` | `<wink-itinerary-button>` | 行程狀態按鈕 |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | 購物車按鈕 |
+
+## Wink 版面配置欄位類型
+
+在任一區段新增 **Wink Layout** 欄位，讓編輯者能從您的 Wink 帳戶中所有可用版面配置的下拉選單中選擇：
+
+<Steps>
+1. 前往 **設定 → 欄位 → 新增欄位**。
+2. 將 **欄位類型** 設為 **Wink Layout**。
+3. 將該欄位加入您的條目類型欄位配置。
+4. 編輯者現在可直接在條目編輯器中選擇版面配置，無需複製貼上 ID。
+</Steps>
+
+在您的模板中，將欄位值傳入 `winkContent()`：
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## 延伸閱讀
+
+- [Web Components 參考](/zh-TW/integrations/web-components)
+- [取得您的 Client ID](/zh-TW/portal/settings/applications)
+- [Wink Craft Plugin — 原始碼與開發者文件](https://github.com/wink-travel/wink-craft-plugin)

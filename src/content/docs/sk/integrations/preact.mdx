@@ -1,0 +1,103 @@
+---
+title: Preact
+description: Používajte Wink webové komponenty v Preact aplikáciách — rovnaký vzor ako v React s menšou stopou.
+sidebar:
+  order: 24
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+API Preactu je kompatibilné s Reactom. Integrácia nasleduje rovnaký vzor — zavolajte `load()` raz pri spustení aplikácie, potom používajte značky `<wink-*>` v JSX.
+
+<LinkCard
+  title="@wink/elements npm balík"
+  href="/integrations/npm"
+  description="Nainštalujte a načítajte CDN balík s typmi pre TypeScript."
+/>
+
+## Inštalácia
+
+```bash
+npm install @wink/elements
+```
+
+## Načítajte raz pri spustení aplikácie
+
+```tsx
+// src/app.tsx
+import { useEffect } from 'preact/hooks';
+import { load } from '@wink/elements';
+
+export function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Použitie v JSX
+
+```tsx
+// src/pages/hotels.tsx
+export function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — deklarujte JSX intrinsics
+
+Namespace JSX v Preact je oddelený od Reactu. Rozšírte `preact/src/jsx.d.ts`:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'preact' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## Preact s `preact/compat`
+
+Ak aliasujete React na `preact/compat`, použite React JSX deklarácie namiesto toho:
+
+```ts
+// src/wink-elements.d.ts
+// Použite React JSX deklaráciu z /integrations/react
+// — preact/compat znovu exportuje Reactov namespace JSX
+```
+
+<Aside type="tip">
+Menšia veľkosť balíka Preactu je vhodná pre vkladanie Wink komponentov do výkonnostne citlivých predajných rozhraní. Funkcia `load()` z `@wink/elements` pridáva ~500 bajtov gzipovaných — väčšinu váhy tvorí CDN balík načítaný asynchrónne.
+</Aside>
+
+## Ďalšie čítanie
+
+- [Referencie Web Components](/sk/integrations/web-components)
+- [@wink/elements npm balík](/sk/integrations/npm)
+- [Integrácia React](/sk/integrations/react)

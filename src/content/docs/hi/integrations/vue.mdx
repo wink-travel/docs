@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: isCustomElement कंपाइलर विकल्प के साथ Vue 3 और Vite प्रोजेक्ट्स में Wink वेब कंपोनेंट्स का उपयोग करें।
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3 को `<wink-*>` टैग्स को अनसुल्व्ड Vue कंपोनेंट्स के बजाय नेटिव कस्टम एलिमेंट्स के रूप में मानने के लिए एक कंपाइलर संकेत की आवश्यकता होती है। इसके बाद, वे किसी अन्य HTML एलिमेंट की तरह काम करते हैं।
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="TypeScript टाइप्स के साथ CDN बंडल इंस्टॉल और लोड करें।"
+/>
+
+## इंस्टॉल करें
+
+```bash
+npm install @wink/elements
+```
+
+## कंपाइलर कॉन्फ़िगर करें
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // "wink-" से शुरू होने वाले सभी टैग्स को कस्टम एलिमेंट्स के रूप में मानें
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## ऐप स्टार्टअप पर CDN एक बार लोड करें
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## टेम्प्लेट्स में उपयोग करें
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — ग्लोबल एलिमेंट टाइप्स बढ़ाएं
+
+Vue 3 + TypeScript कस्टम एलिमेंट टाइप्स को ग्लोबल `HTMLElementTagNameMap` से पढ़ता है। एक घोषणा फ़ाइल जोड़ें:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## पर्यावरण चर
+
+`.env.local` में जोड़ें:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite केवल `VITE_` से शुरू होने वाले वेरिएबल्स को क्लाइंट बंडल के लिए एक्सपोज़ करता है।
+
+<Aside type="tip">
+Nuxt 3 के लिए, SSR-सुरक्षित लोडिंग को कवर करने वाले समर्पित [Nuxt integration page](/hi/integrations/nuxt) को देखें।
+</Aside>
+
+## आगे पढ़ें
+
+- [Web Components reference](/hi/integrations/web-components)
+- [@wink/elements npm package](/hi/integrations/npm)
+- [Nuxt 3 integration](/hi/integrations/nuxt)

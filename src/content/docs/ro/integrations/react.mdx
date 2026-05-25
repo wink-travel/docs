@@ -1,0 +1,111 @@
+---
+title: React
+description: Folosește componentele web Wink în orice aplicație React cu suport complet TypeScript prin @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ are suport nativ pentru elemente personalizate. React 18 și versiunile anterioare transmit doar atribute de tip string — folosește modelul helper tipizat de mai jos pentru a rămâne în siguranță între versiuni.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Instalează și încarcă pachetul CDN cu tipuri TypeScript."
+/>
+
+## Instalare
+
+```bash
+npm install @wink/elements
+```
+
+## Încarcă o singură dată la rădăcina aplicației
+
+Apelează `load()` în componenta ta de nivel superior. Este idempotent — sigur să fie apelat de mai multe ori.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Folosește componentele în JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — declară elementele JSX intrinseci
+
+React nu recunoaște implicit numele elementelor personalizate. Adaugă un fișier de declarație o singură dată pentru a elimina erorile de tip:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="Limitarea atributelor în React 18">
+React 18 și versiunile anterioare serializau toate proprietățile JSX în stringuri înainte de a le transmite DOM-ului. Proprietățile de tip boolean și obiect trebuie convertite manual. React 19 transmite proprietățile non-string direct către elementele personalizate — nu este nevoie de soluții alternative.
+</Aside>
+
+## Transmiterea atributelor tipizate (sigur pentru React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread funcționează în React 19; pentru React 18 toate valorile sunt oricum stringuri
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Lecturi suplimentare
+
+- [Referință Web Components](/ro/integrations/web-components)
+- [@wink/elements npm package](/ro/integrations/npm)
+- [Integrare Next.js](/ro/integrations/nextjs)

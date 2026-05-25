@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: Osadź inwentarz podróży Wink w swojej publikacji Ghost za pomocą Code Injection.
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wbudowana funkcja **Code Injection** w Ghost pozwala na dodawanie skryptów do globalnego `<head>` i `</body>` Twojej publikacji. Wszystkie plany Ghost obsługują wstrzykiwanie kodu, co ułatwia osadzanie komponentów Wink na dowolnej stronie lub poście.
+
+## Załaduj skrypty Wink na całej stronie
+
+<Steps>
+1. W panelu administracyjnym Ghost przejdź do **Settings → Code Injection**.
+2. W polu **Site Header** dodaj arkusz stylów:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. W polu **Site Footer** dodaj skrypt i loader aplikacji (zamień `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Kliknij **Save**.
+</Steps>
+
+:::tip
+Twój Client ID jest dostępny na Twoim koncie Wink w sekcji [Applications](/pl/portal/settings/applications).
+:::
+
+## Dodaj komponent do posta lub strony
+
+Edytor Ghost obsługuje **kartę HTML**, która pozwala wstawić surowy kod HTML w dowolnym miejscu treści.
+
+<Steps>
+1. Otwórz post lub stronę w edytorze Ghost.
+2. Wpisz `/`, aby otworzyć wybór kart i wybierz **HTML**.
+3. Wklej kod HTML komponentu, na przykład:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Kliknij poza kartą, aby zobaczyć podgląd, a następnie opublikuj.
+</Steps>
+
+## Wstrzykiwanie kodu na poziomie pojedynczej strony
+
+Dla komponentu, który ma się pojawić tylko na jednej stronie, Ghost obsługuje także wstrzykiwanie kodu na poziomie pojedynczej strony:
+
+<Steps>
+1. Otwórz ustawienia posta lub strony (ikona koła zębatego w edytorze).
+2. Przewiń do sekcji **Code Injection**.
+3. Dodaj tag komponentu w polu **Footer** (globalny app-loader musi być tylko w stopce na całej stronie).
+4. Zapisz.
+</Steps>
+
+## Dostępne komponenty
+
+| Komponent | Tag HTML | Przeznaczenie |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Wyświetlanie kart hoteli, siatek, map |
+| Lookup | `<wink-lookup>` | Pasek wyszukiwania destynacji |
+| Search button | `<wink-search-button>` | Otwórz wybór planu podróży |
+| Account button | `<wink-account-button>` | Logowanie / menu użytkownika |
+| Itinerary button | `<wink-itinerary-button>` | Pokaż aktualny plan podróży |
+| Itinerary picker | `<wink-itinerary-picker>` | Pełny formularz planu podróży |
+| Shopping cart | `<wink-shopping-cart-button>` | Przycisk podsumowania koszyka |
+
+Zobacz [Web Components](/pl/integrations/web-components) dla pełnej referencji atrybutów.
+
+## Dalsza lektura
+
+- [Referencja Web Components](/pl/integrations/web-components)
+- [Jak uzyskać Client ID](/pl/portal/settings/applications)
+- [Dokumentacja Ghost Code Injection](https://ghost.org/help/ghost-themes/#code-injection)

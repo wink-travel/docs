@@ -1,0 +1,119 @@
+---
+title: SolidJS
+description: Utilisez les composants web Wink dans les applications SolidJS — prise en charge native des éléments personnalisés avec onMount.
+sidebar:
+  order: 25
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+SolidJS prend en charge nativement les éléments personnalisés — il transmet les attributs directement au DOM sans couche de DOM virtuel. Aucune configuration supplémentaire du compilateur n’est requise.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Installez et chargez le bundle CDN avec les types TypeScript."
+/>
+
+## Installation
+
+```bash
+npm install @wink/elements
+```
+
+## Charger une fois au démarrage de l’application
+
+```tsx
+// src/App.tsx
+import { onMount } from 'solid-js';
+import { load } from '@wink/elements';
+
+export default function App() {
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+
+  return <YourRoutes />;
+}
+```
+
+`onMount` s’exécute uniquement dans le navigateur après le rendu initial — c’est l’équivalent SolidJS de `useEffect(() => {}, [])` de React.
+
+## Utilisation en JSX
+
+```tsx
+// src/pages/Hotels.tsx
+import { createSignal } from 'solid-js';
+
+export default function HotelsPage() {
+  const [layoutId] = createSignal('YOUR_LAYOUT_ID');
+
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id={layoutId()} />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — déclarer les intrinsics JSX
+
+SolidJS utilise son propre namespace JSX. Étendez les types JSX de `solid-js` :
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'solid-js' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## SolidStart (SSR)
+
+Pour les applications SolidStart avec rendu côté serveur, protégez l’appel `load()` avec `isServer` :
+
+```tsx
+// src/app.tsx
+import { onMount } from 'solid-js';
+import { isServer } from 'solid-js/web';
+import { load } from '@wink/elements';
+
+export default function App() {
+  if (!isServer) {
+    onMount(() => {
+      load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+    });
+  }
+
+  return <YourRoutes />;
+}
+```
+
+<Aside type="tip">
+La réactivité fine de SolidJS signifie que les mises à jour des attributs sont transmises directement au DOM — sans surcharge de regroupement ou de réconciliation. Les composants Wink reçoivent immédiatement les changements d’attributs lorsque les valeurs de vos signaux sont mises à jour.
+</Aside>
+
+## Pour aller plus loin
+
+- [Référence Web Components](/fr/integrations/web-components)
+- [@wink/elements npm package](/fr/integrations/npm)

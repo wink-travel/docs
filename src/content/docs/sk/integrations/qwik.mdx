@@ -1,0 +1,120 @@
+---
+title: Qwik
+description: Používajte webové komponenty Wink v aplikáciách Qwik a QwikCity s useVisibleTask$ pre vykonávanie iba na klientovi.
+sidebar:
+  order: 26
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Model obnoviteľnosti Qwik znamená, že JavaScript sa vykonáva lenivým spôsobom — iba keď používateľ interaguje. Použite `useVisibleTask$` na spustenie kódu, ktorý sa musí vykonať v prehliadači, keď sa komponent stane viditeľným.
+
+<LinkCard
+  title="@wink/elements npm balík"
+  href="/integrations/npm"
+  description="Nainštalujte a načítajte CDN balík s typmi pre TypeScript."
+/>
+
+## Inštalácia
+
+```bash
+npm install @wink/elements
+```
+
+## Načítanie s useVisibleTask$
+
+`useVisibleTask$` je Qwik hook životného cyklu pre kód, ktorý sa vykonáva iba v prehliadači a eager spôsobom. Umiestnite ho do vášho koreňového layoutu:
+
+```tsx
+// src/routes/layout.tsx
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { load } from '@wink/elements';
+
+export default component$(() => {
+  useVisibleTask$(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+
+  return (
+    <main>
+      <Slot />
+    </main>
+  );
+});
+```
+
+<Aside type="tip" title="Stratégia useVisibleTask$">
+Štandardne sa `useVisibleTask$` spustí, keď je komponent viditeľný vo viewporte. Pre koreňový layout, ktorý je vždy viditeľný, sa spustí okamžite po načítaní stránky — čo je ekvivalentné `onMount` v iných frameworkoch.
+
+Použite `{ strategy: 'document-ready' }`, ak chcete, aby sa skript načítal čo najskôr:
+```ts
+useVisibleTask$({ strategy: 'document-ready' }, () => {
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+});
+```
+</Aside>
+
+## Použitie na stránke
+
+```tsx
+// src/routes/hotels/index.tsx
+import { component$ } from '@builder.io/qwik';
+
+export default component$(() => {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+});
+```
+
+## TypeScript — deklarujte JSX intrinsics
+
+Qwik používa vlastný JSX namespace. Rozšírte ho v deklaráčnom súbore:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module '@builder.io/qwik' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes;
+      'wink-lookup': WinkLookupAttributes;
+      'wink-search-button': WinkSearchButtonAttributes;
+      'wink-account-button': WinkAccountButtonAttributes;
+      'wink-itinerary-button': WinkItineraryButtonAttributes;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes;
+      'wink-app-loader': WinkAppLoaderAttributes;
+    }
+  }
+}
+```
+
+## Premenné prostredia
+
+Qwik (postavený na Vite) sprístupňuje prehliadaču premenné s prefixom `PUBLIC_`:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="Server-side rendering">
+Qwik renderuje HTML na serveri. Tagy `<wink-*>` sa vygenerujú ako statický markup. CDN skript a registrácia vlastných elementov prebieha na klientovi po spustení `useVisibleTask$`. Elementy budú krátko v neriadenom stave, kým sa načíta CDN balík — toto je očakávané správanie.
+</Aside>
+
+## Ďalšie čítanie
+
+- [Referencie Web Components](/sk/integrations/web-components)
+- [@wink/elements npm balík](/sk/integrations/npm)

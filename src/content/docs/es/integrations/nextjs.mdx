@@ -1,0 +1,122 @@
+---
+title: Next.js
+description: Añade componentes web de Wink a aplicaciones con Next.js App Router y Pages Router.
+sidebar:
+  order: 16
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Los componentes de Wink son elementos personalizados solo para navegador — los scripts CDN deben cargarse del lado del cliente. Los patrones a continuación cubren tanto el **App Router** (Next.js 13+) como el legado **Pages Router**.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Instala y carga el paquete CDN con tipos para TypeScript."
+/>
+
+## Instalación
+
+```bash
+npm install @wink/elements
+```
+
+## App Router (Next.js 13+)
+
+Crea un componente cliente que llame a `load()` una vez y renderízalo dentro de tu layout raíz:
+
+```tsx
+// components/WinkLoader.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export function WinkLoader() {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return null;
+}
+```
+
+```tsx
+// app/layout.tsx
+import { WinkLoader } from '@/components/WinkLoader';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <WinkLoader />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+Usa componentes Wink en cualquier **Client Component**:
+
+```tsx
+// app/hotels/page.tsx
+'use client';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Componentes de Servidor">
+Las etiquetas `<wink-*>` no pueden renderizarse en Componentes de Servidor porque el registro de elementos personalizados es solo para navegador. Siempre añade `'use client'` a cualquier componente que renderice elementos Wink.
+</Aside>
+
+## Pages Router
+
+Carga una vez en `_app.tsx`:
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <Component {...pageProps} />;
+}
+```
+
+Luego usa componentes Wink en cualquier página:
+
+```tsx
+// pages/hotels.tsx
+export default function HotelsPage() {
+  return <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />;
+}
+```
+
+## Variables de entorno
+
+Añade a `.env.local`:
+
+```
+NEXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+El prefijo `NEXT_PUBLIC_` es obligatorio para exponer la variable al bundle del navegador.
+
+## Tipos para TypeScript
+
+Añade un archivo de declaración para que TypeScript reconozca los nombres de elementos personalizados en JSX — consulta la [página de integración con React](/es/integrations/react#typescript--declare-jsx-intrinsics) para el fragmento completo `wink-elements.d.ts`.
+
+## Lecturas recomendadas
+
+- [Referencia de Web Components](/es/integrations/web-components)
+- [Paquete npm @wink/elements](/es/integrations/npm)
+- [Integración con React](/es/integrations/react)

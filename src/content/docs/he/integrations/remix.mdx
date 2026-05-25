@@ -1,0 +1,115 @@
+---
+title: Remix
+description: הוסף רכיבי ווב של Wink לאפליקציות Remix עם טעינה רק בצד הלקוח באמצעות useEffect.
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Remix הוא פריימוורק מלא שמבצע רינדור בצד השרת כברירת מחדל. טען את ה-CDN של Wink רק בצד הלקוח באמצעות `useEffect` ברכיב השורש.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="התקן וטעין את חבילת ה-CDN עם טיפוסי TypeScript."
+/>
+
+## התקנה
+
+```bash
+npm install @wink/elements
+```
+
+## טעינה ב-app/root.tsx
+
+`useEffect` רץ רק בדפדפן, לעולם לא במהלך רינדור בצד השרת:
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## משתני סביבה
+
+Remix (מבוסס Vite, v2.8+) תומך ב-`import.meta.env` למשתנים החשופים בדפדפן. הוסף קידומת `VITE_` כדי לחשוף אותם לחבילת הדפדפן:
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+למערכות Remix ישנות יותר המשתמשות במתאם Node.js, החזר את מזהה הלקוח מ-loader בשורש וקרא אותו ברכיב:
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## שימוש בנתיבים
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="אי התאמה בהידרציה">
+Remix מבצע הידרציה ל-HTML שנוצר בצד השרת על הלקוח. אם אלמנט `<wink-*>` נוצר בצד השרת, הדפדפן עשוי להציג בקצרה את האלמנט המותאם אישית הלא פתור לפני שהסקריפט של ה-CDN ירשום אותו. זהו עניין קוסמטי — האלמנט מתעדכן כראוי ברגע שהסקריפט נטען.
+</Aside>
+
+## טיפוסי TypeScript
+
+הוסף את קובץ ההכרזה JSX intrinsic מה[דף האינטגרציה עם React](/he/integrations/react#typescript--declare-jsx-intrinsics) — Remix משתמש ב-React מתחת למכסה המנוע.
+
+## קריאה נוספת
+
+- [הפניות לרכיבי ווב](/he/integrations/web-components)
+- [חבילת npm של @wink/elements](/he/integrations/npm)
+- [אינטגרציה עם React](/he/integrations/react)

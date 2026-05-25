@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: クライアントサイドでの読み込みのために gatsby-browser.js を使って Gatsby サイトに Wink のウェブコンポーネントを追加します。
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby はビルド時に静的な HTML を生成し、クライアント側で再活性化します。CDN スクリプトはブラウザの API 内でのみ読み込む必要があるため、`gatsby-browser.js` が適切な場所です。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="TypeScript 型定義付きで CDN バンドルをインストールして読み込みます。"
+/>
+
+## インストール
+
+```bash
+npm install @wink/elements
+```
+
+## gatsby-browser.js での読み込み
+
+`onClientEntry` API は Gatsby のランタイムがブラウザで初期化されるとすぐに一度だけ実行されます：
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## 環境変数
+
+Gatsby は `GATSBY_` で始まる変数のみをブラウザバンドルに公開します：
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## ページやコンポーネントでの使用
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby は React を使用しているため、React 統合と同じ JSX 内蔵宣言を追加してください：
+
+```ts
+// src/wink-elements.d.ts
+// 完全な宣言ファイルは /integrations/react を参照してください
+```
+
+<Aside type="caution" title="SSR ビルドエラー">
+`gatsby build` の間、Gatsby は Node.js 環境でページを静的 HTML にレンダリングします。この環境では `window` や `document` が利用できません。ページコンポーネントのトップレベル（`onClientEntry` の外側）で `@wink/elements` をインポートするとビルドが失敗します。
+
+必ず `gatsby-browser.js` の `onClientEntry` を使い、ページやコンポーネントのモジュールスコープで直接 `load` をインポートしないでください。
+</Aside>
+
+## gatsby-ssr.js — 変更不要
+
+`gatsby-ssr.js` を変更する必要はありません。`<wink-*>` タグは静的出力では通常の HTML 要素としてレンダリングされ、ブラウザがページを読み込むと CDN スクリプトがそれらをアップグレードします。
+
+## さらに読む
+
+- [Web Components リファレンス](/ja/integrations/web-components)
+- [@wink/elements npm package](/ja/integrations/npm)
+- [React 統合](/ja/integrations/react)

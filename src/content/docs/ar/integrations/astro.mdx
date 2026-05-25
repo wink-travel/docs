@@ -1,0 +1,101 @@
+---
+title: أسترو
+description: أضف مكونات ويب Wink إلى مواقع Astro باستخدام سكربتات جانب العميل وهندسة الجزر.
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+يُرسل Astro صفر جافا سكريبت بشكل افتراضي ويُحوّل جميع المكونات إلى HTML ثابت على الخادم. يجب تحميل مكونات ويب Wink عبر وسم `<script>` جانب العميل. تجعل هندسة الجزر في Astro هذا الأمر بسيطًا.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="قم بتثبيت وتحميل حزمة CDN مع أنواع TypeScript."
+/>
+
+## التثبيت
+
+```bash
+npm install @wink/elements
+```
+
+## التحميل في تخطيط مشترك
+
+أضف سكربت التحميل إلى تخطيطك الأساسي ليعمل في كل صفحة:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>موقعي</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline مقابل السكربتات المجمعة">
+بدون `is:inline`، يقوم Astro بتجميع وتكرار السكربت — يتم استدعاء `load()` مرة واحدة حتى لو تم استخدام التخطيط في صفحات متعددة. هذه هي الطريقة المفضلة. استخدم `is:inline` فقط عندما تحتاج إلى تضمين السكربت كنص خام (مثلاً لتجنب مجمّع الوحدات).
+</Aside>
+
+## الاستخدام في صفحة
+
+نظرًا لأن مكونات Astro تُعرض على الخادم، يتم إخراج وسوم `<wink-*>` كـ HTML ثابت. يقوم سكربت CDN بتسجيل العناصر المخصصة عند تحميل الصفحة في المتصفح:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## داخل مكون إطار عمل (جزيرة)
+
+إذا كنت تستخدم React أو Vue أو Svelte مع Wink، قم بتحميل `@wink/elements` في التخطيط (كما في الأعلى) واستخدم وسوم `<wink-*>` داخل مكونات الجزيرة الخاصة بك بشكل طبيعي — سيتم تسجيل العناصر المخصصة بحلول وقت تهيئة الجزيرة.
+
+```tsx
+// src/components/HotelCard.tsx (React island)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() تم استدعاؤه بالفعل بواسطة التخطيط — آمن للعرض هنا
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## متغيرات البيئة
+
+يكشف Astro فقط عن المتغيرات التي تبدأ بـ `PUBLIC_` للمتصفح:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## قراءة إضافية
+
+- [مرجع مكونات الويب](/ar/integrations/web-components)
+- [حزمة npm @wink/elements](/ar/integrations/npm)

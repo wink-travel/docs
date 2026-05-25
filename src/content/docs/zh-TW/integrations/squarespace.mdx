@@ -1,0 +1,73 @@
+---
+title: Squarespace
+description: 使用 Code Injection 和自訂 HTML 區塊，將 Wink 旅遊庫存嵌入您的 Squarespace 網站。
+sidebar:
+  order: 3
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+:::note
+Squarespace 的 Code Injection 功能僅適用於 **商業方案及以上**。自訂 HTML 區塊則適用於所有付費方案。
+:::
+
+Squarespace 支援自訂 HTML 和 JavaScript，這表示您可以直接將任何 Wink 網頁元件嵌入您的網站，無需外掛。本指南將示範如何在整個網站載入 Wink 腳本，然後在各個頁面放置元件。
+
+## 在整個網站載入 Wink 腳本
+
+將腳本加入網站的全域頁尾和頁首，代表 Wink 可在每個頁面使用，無需重複設定。
+
+<Steps>
+1. 在 Squarespace 編輯器中，前往 **設定 → 進階 → Code Injection**。
+2. 在 **Header** 欄位，加入樣式表：
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. 在 **Footer** 欄位，加入腳本和應用程式載入器（將 `YOUR_CLIENT_ID` 替換為您的 Wink 客戶端 ID）：
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. 點擊 **儲存**。
+</Steps>
+
+:::tip
+您的客戶端 ID 可在 Wink 帳戶的 [Applications](/zh-TW/portal/settings/applications) 中取得。
+:::
+
+## 在頁面中加入元件
+
+腳本全域載入後，您可以使用 **Code Block** 將任何 Wink 元件放置於任一頁面。
+
+<Steps>
+1. 開啟您想編輯的頁面。
+2. 點擊 **編輯**，並在想要顯示元件的位置新增 **Code** 區塊。
+3. 貼上元件 HTML，例如內容載入器：
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. 點擊 **套用**，然後 **儲存**。
+</Steps>
+
+## 可用元件
+
+| 元件 | HTML 標籤 | 用途 |
+|---|---|---|
+| 內容載入器 | `<wink-content-loader>` | 顯示飯店卡片、格線、地圖 |
+| 查詢 | `<wink-lookup>` | 目的地搜尋列 |
+| 搜尋按鈕 | `<wink-search-button>` | 開啟行程選擇器 |
+| 帳戶按鈕 | `<wink-account-button>` | 登入 / 使用者選單 |
+| 行程按鈕 | `<wink-itinerary-button>` | 顯示目前行程 |
+| 行程選擇器 | `<wink-itinerary-picker>` | 完整行程表單 |
+| 購物車 | `<wink-shopping-cart-button>` | 購物車摘要按鈕 |
+
+請參閱 [Web Components](/zh-TW/integrations/web-components) 以取得各元件完整屬性參考。
+
+## 延伸閱讀
+
+- [Web Components 參考](/zh-TW/integrations/web-components)
+- [取得您的客戶端 ID](/zh-TW/portal/settings/applications)
+- [Squarespace Code Injection 文件](https://support.squarespace.com/hc/en-us/articles/205815908)

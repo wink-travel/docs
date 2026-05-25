@@ -1,0 +1,103 @@
+---
+title: Preact
+description: Χρησιμοποιήστε τα web components του Wink σε εφαρμογές Preact — το ίδιο μοτίβο με το React με μικρότερο αποτύπωμα.
+sidebar:
+  order: 24
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Το API του Preact είναι συμβατό με το React. Η ενσωμάτωση ακολουθεί το ίδιο μοτίβο — καλέστε το `load()` μία φορά κατά την εκκίνηση της εφαρμογής και μετά χρησιμοποιήστε τις ετικέτες `<wink-*>` στο JSX.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Εγκαταστήστε και φορτώστε το CDN bundle με τύπους TypeScript."
+/>
+
+## Εγκατάσταση
+
+```bash
+npm install @wink/elements
+```
+
+## Φορτώστε μία φορά κατά την εκκίνηση της εφαρμογής
+
+```tsx
+// src/app.tsx
+import { useEffect } from 'preact/hooks';
+import { load } from '@wink/elements';
+
+export function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Χρήση στο JSX
+
+```tsx
+// src/pages/hotels.tsx
+export function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — δηλώστε τα JSX intrinsics
+
+Το namespace JSX του Preact είναι ξεχωριστό από αυτό του React. Επεκτείνετε το `preact/src/jsx.d.ts`:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'preact' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## Preact με `preact/compat`
+
+Αν κάνετε alias το React σε `preact/compat`, χρησιμοποιήστε τις δηλώσεις JSX του React:
+
+```ts
+// src/wink-elements.d.ts
+// Χρησιμοποιήστε τη δήλωση JSX του React από το /integrations/react
+// — το preact/compat επανεξάγει το namespace JSX του React
+```
+
+<Aside type="tip">
+Το μικρότερο μέγεθος του bundle του Preact είναι ιδανικό για την ενσωμάτωση των Wink components σε καταστήματα με ευαισθησία στην απόδοση. Η συνάρτηση `load()` του `@wink/elements` προσθέτει περίπου 500 bytes συμπιεσμένα — το μεγαλύτερο μέρος του βάρους προέρχεται από το CDN bundle που φορτώνεται ασύγχρονα.
+</Aside>
+
+## Περισσότερη ανάγνωση
+
+- [Αναφορά Web Components](/el/integrations/web-components)
+- [@wink/elements npm package](/el/integrations/npm)
+- [Ενσωμάτωση React](/el/integrations/react)

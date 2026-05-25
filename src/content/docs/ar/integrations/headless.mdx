@@ -1,0 +1,168 @@
+---
+title: نظام إدارة محتوى بدون واجهة
+description: تضمين مخزون السفر من Wink في أي نظام إدارة محتوى بدون واجهة (Contentful، Strapi، Sanity، إلخ) أو موقع مخصص.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+مكونات الويب من Wink هي عناصر HTML مخصصة مستقلة عن الإطار. إذا كان نظام إدارة المحتوى بدون واجهة الخاص بك يعرض HTML — سواء من خلال Next.js، Nuxt، Astro، SvelteKit، أو أي إطار آخر — يمكنك تضمين مكونات Wink دون أي تكامل خاص.
+
+## التضمين في ثلاث خطوات
+
+كل تكامل مع Wink، بغض النظر عن المنصة، يتبع نفس الخطوات الثلاث.
+
+### 1. تضمين ورقة الأنماط
+
+أضف هذا إلى `<head>` في مستندك (أو التخطيط العام المعادل):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. تضمين جافا سكريبت
+
+أضف هذا قبل وسم الإغلاق `</body>` (أو في قسم السكريبت في التخطيط الخاص بك):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. إضافة محمل التطبيق
+
+ضع هذا **مرة واحدة لكل صفحة**، في أي مكان داخل الجسم (عادة في تذييل التخطيط العام):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+معرف العميل الخاص بك متاح في حساب Wink تحت [التطبيقات](/ar/portal/settings/applications).
+:::
+
+## أمثلة على الأُطُر
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+مستخدمو TypeScript: أضف ملف `global.d.ts` يعلن عن أنواع العناصر المخصصة، أو استخدم حزمة npm [`@wink/elements`](https://github.com/wink2travel/wink-elements) التي تحتوي على إعلانات الأنواع.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## وضع المكونات في المحتوى
+
+في نصوص CMS الغنية أو أنواع الحقول المخصصة، قم بتضمين علامات المكونات مباشرة في مخرجات HTML:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+بالنسبة لـ Contentful، Strapi، Sanity، أو منصات بدون واجهة مماثلة، استخدم حقل **Rich Text** أو **Custom Block** يعرض HTML خام، والصق علامة المكون هناك.
+
+## حزمة npm
+
+لمشاريع TypeScript، توفر حزمة [`@wink/elements`](https://github.com/wink2travel/wink-elements) ما يلي:
+- دالة `load()` التي تضخ سكريبتات CDN برمجياً
+- إعلانات أنواع TypeScript كاملة لجميع سمات المكونات
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// استدعِها مرة واحدة عند بدء التطبيق
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## المكونات المتاحة
+
+| المكون | وسم HTML | الغرض |
+|---|---|---|
+| محمل المحتوى | `<wink-content-loader>` | عرض بطاقات الفنادق، الشبكات، الخرائط |
+| البحث | `<wink-lookup>` | شريط بحث عن الوجهات |
+| زر البحث | `<wink-search-button>` | فتح منتقي خط الرحلة |
+| زر الحساب | `<wink-account-button>` | تسجيل الدخول / قائمة المستخدم |
+| زر خط الرحلة | `<wink-itinerary-button>` | عرض خط الرحلة الحالي |
+| منتقي خط الرحلة | `<wink-itinerary-picker>` | نموذج خط الرحلة الكامل |
+| عربة التسوق | `<wink-shopping-cart-button>` | زر ملخص العربة |
+
+راجع [مكونات الويب](/ar/integrations/web-components) للمرجع الكامل للسمات.

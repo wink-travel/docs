@@ -1,0 +1,101 @@
+---
+title: Astro
+description: Lägg till Wink webbkomponenter på Astro-sajter med klientbaserade skript och island-arkitektur.
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Astro levererar som standard ingen JavaScript och renderar alla komponenter till statisk HTML på servern. Wink webbkomponenter måste laddas via en klientbaserad `<script>`-tagg. Astros island-arkitektur gör detta enkelt.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Installera och ladda CDN-bunten med TypeScript-typer."
+/>
+
+## Installera
+
+```bash
+npm install @wink/elements
+```
+
+## Ladda i en delad layout
+
+Lägg till loader-skriptet i din baslayout så att det körs på varje sida:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline vs bundled scripts">
+Utan `is:inline` paketerar och deduplicerar Astro skriptet — `load()` anropas bara en gång även om layouten används på många sidor. Detta är den föredragna metoden. Använd `is:inline` endast när du behöver skriptet inbäddat som rå text (t.ex. för att undvika modulpaketeraren).
+</Aside>
+
+## Använd på en sida
+
+Eftersom Astro-komponenter renderas på servern, skrivs `<wink-*>`-taggar ut som statisk HTML. CDN-skriptet registrerar de anpassade elementen när sidan laddas i webbläsaren:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## Inuti en ramverkskomponent (island)
+
+Om du använder React, Vue eller Svelte islands tillsammans med Wink, ladda `@wink/elements` i layouten (som ovan) och använd `<wink-*>`-taggar inuti dina island-komponenter som vanligt — de anpassade elementen kommer att vara registrerade när islanden hydratiseras.
+
+```tsx
+// src/components/HotelCard.tsx (React island)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() har redan anropats av layout — säkert att rendera här
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## Miljövariabler
+
+Astro exponerar endast variabler som börjar med `PUBLIC_` till webbläsaren:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Vidare läsning
+
+- [Web Components reference](/sv/integrations/web-components)
+- [@wink/elements npm package](/sv/integrations/npm)

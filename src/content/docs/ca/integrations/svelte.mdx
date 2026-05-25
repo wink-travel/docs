@@ -1,0 +1,128 @@
+---
+title: Svelte / SvelteKit
+description: Utilitza components web de Wink en aplicacions Svelte i SvelteKit amb onMount i comprovacions de navegador.
+sidebar:
+  order: 20
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Svelte passa els atributs directament al DOM sense una capa de DOM virtual, fent que els elements personalitzats siguin una opció natural. Per a SvelteKit (SSR), carrega el CDN dins de `onMount` o protegeix amb la comprovació `browser`.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Instal·la i carrega el paquet CDN amb tipus TypeScript."
+/>
+
+## Instal·lar
+
+```bash
+npm install @wink/elements
+```
+
+## SvelteKit — layout arrel
+
+```ts
+// src/routes/+layout.ts
+import { browser } from '$app/environment';
+import { load as loadWink } from '@wink/elements';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+Alternativament, carrega dins de `onMount` a `+layout.svelte`:
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<slot />
+```
+
+## Ús en components
+
+Svelte passa tots els atributs desconeguts directament al DOM, així que no cal configuració addicional:
+
+```svelte
+<script>
+  export let layoutId = 'YOUR_LAYOUT_ID';
+</script>
+
+<main>
+  <wink-content-loader layout="HOTEL" id={layoutId} />
+  <wink-lookup />
+</main>
+```
+
+## Svelte 5 (sintaxi runes)
+
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  let { layoutId }: { layoutId: string } = $props();
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id={layoutId} />
+```
+
+## Variables d'entorn
+
+SvelteKit només exposa variables prefixades amb `PUBLIC_` al navegador:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="Renderització SSR">
+Mai renderitzis elements `<wink-*>` durant la renderització del costat servidor — els elements personalitzats es registren al registre `customElements` del navegador, que no existeix al servidor. Envolta amb `{#if browser}` o crida `load()` només dins de `onMount`.
+</Aside>
+
+```svelte
+<script>
+  import { browser } from '$app/environment';
+</script>
+
+{#if browser}
+  <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+{/if}
+```
+
+## Svelte pur (Vite, sense SvelteKit)
+
+```svelte
+<!-- src/App.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+```
+
+## Més informació
+
+- [Referència de Web Components](/ca/integrations/web-components)
+- [Paquet npm @wink/elements](/ca/integrations/npm)

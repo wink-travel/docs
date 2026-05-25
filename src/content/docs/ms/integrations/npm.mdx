@@ -1,0 +1,134 @@
+---
+title: pakej npm
+description: Gunakan pakej npm @wink/elements untuk integrasi komponen web Wink yang selamat TypeScript dalam mana-mana rangka kerja JavaScript.
+sidebar:
+  order: 14
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+Pakej **`@wink/elements`** npm adalah cara terpantas untuk menambah komponen web Wink ke mana-mana projek JavaScript atau TypeScript. Ia menyediakan fungsi `load()` yang menyuntik sumber CDN dan deklarasi jenis TypeScript penuh untuk semua atribut komponen.
+
+<LinkCard
+  title="wink-travel/wink-elements di GitHub"
+  href="https://github.com/wink-travel/wink-elements"
+  description="Kod sumber, rujukan API, dan arahan sumbangan."
+/>
+
+## Pasang
+
+```bash
+npm install @wink/elements
+```
+
+## Mula dengan cepat
+
+Panggil `load()` sekali pada permulaan aplikasi. Ia idempotent — selamat dipanggil berulang kali.
+
+```ts
+import { load } from '@wink/elements';
+
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+Kemudian gunakan mana-mana komponen Wink dalam HTML atau JSX anda:
+
+```html
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID"></wink-content-loader>
+```
+
+## Contoh rangka kerja
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <html><body>{children}</body></html>;
+}
+```
+
+### Nuxt 3
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+import { load } from '@wink/elements';
+---
+<script>
+  import { load } from '@wink/elements';
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+</script>
+```
+
+### SvelteKit
+
+```ts
+// src/routes/+layout.ts
+import { load as loadWink } from '@wink/elements';
+import { browser } from '$app/environment';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+## Jenis TypeScript
+
+Semua antara muka atribut komponen dieksport untuk digunakan dalam JSX, literal templat, atau kamus bertipe:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',    // TypeScript akan mengesan nilai layout yang tidak sah
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+```
+
+## Menggunakan CDN staging
+
+```ts
+load({
+  clientId: 'YOUR_CLIENT_ID',
+  cdnBaseUrl: 'https://staging-elements.wink.travel',
+});
+```
+
+## API
+
+### `load(options)`
+
+| Pilihan | Jenis | Wajib | Lalai | Penerangan |
+|---|---|---|---|---|
+| `clientId` | `string` | Ya | — | ID Klien OAuth2 Wink anda |
+| `configurationId` | `string` | Tidak | — | ID penyesuaian pilihan |
+| `cdnBaseUrl` | `string` | Tidak | `https://elements.wink.travel` | Gantikan URL CDN |
+
+## Bacaan lanjut
+
+- [Rujukan Komponen Web](/ms/integrations/web-components)
+- [Dapatkan ID Klien anda](/ms/portal/settings/applications)
+- [Panduan integrasi Headless CMS](/ms/integrations/headless)
+- [`@wink/elements` di GitHub](https://github.com/wink-travel/wink-elements)

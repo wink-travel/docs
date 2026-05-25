@@ -1,0 +1,111 @@
+---
+title: React
+description: Χρησιμοποιήστε τα web components του Wink σε οποιαδήποτε εφαρμογή React με πλήρη υποστήριξη TypeScript μέσω του @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Το React 19+ υποστηρίζει πλήρως τα custom elements. Το React 18 και παλαιότερα περνά μόνο string attributes — χρησιμοποιήστε το παρακάτω typed helper pattern για να είστε ασφαλείς σε όλες τις εκδόσεις.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Εγκαταστήστε και φορτώστε το CDN bundle με τύπους TypeScript."
+/>
+
+## Εγκατάσταση
+
+```bash
+npm install @wink/elements
+```
+
+## Φορτώστε μία φορά στη ρίζα της εφαρμογής
+
+Καλέστε το `load()` στο κορυφαίο component σας. Είναι idempotent — ασφαλές να καλείται πολλές φορές.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Χρήση components σε JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — δηλώστε τα JSX intrinsics
+
+Το React δεν γνωρίζει τα ονόματα custom elements από προεπιλογή. Προσθέστε ένα αρχείο δήλωσης μία φορά για να αποφύγετε σφάλματα τύπων:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="Περιορισμός attribute στο React 18">
+Το React 18 και παλαιότερα σειριοποιεί όλα τα JSX props σε strings πριν τα περάσει στο DOM. Τα boolean και object props πρέπει να μετατραπούν χειροκίνητα. Το React 19 περνά τα μη-string props απευθείας στα custom elements — δεν χρειάζεται λύση.
+</Aside>
+
+## Πέρασμα typed attributes (ασφαλές για React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Το spread λειτουργεί στο React 19· στο React 18 όλες οι τιμές είναι strings ούτως ή άλλως
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Περισσότερη ανάγνωση
+
+- [Αναφορά Web Components](/el/integrations/web-components)
+- [@wink/elements npm package](/el/integrations/npm)
+- [Ενσωμάτωση Next.js](/el/integrations/nextjs)

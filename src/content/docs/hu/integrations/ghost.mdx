@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: Ágyazd be a Wink utazási készletet a Ghost kiadványodba a Code Injection segítségével.
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+A Ghost beépített **Code Injection** funkciója lehetővé teszi, hogy szkripteket adj hozzá a kiadványod globális `<head>` és `</body>` részéhez. Minden Ghost csomag támogatja a kódbeillesztést, így egyszerűen ágyazhatsz be Wink komponenseket bármely oldalra vagy bejegyzésbe.
+
+## Wink szkriptek betöltése az egész oldalon
+
+<Steps>
+1. A Ghost Admin panelen menj a **Beállítások → Code Injection** menüpontra.
+2. A **Site Header** mezőbe illeszd be a stíluslapot:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. A **Site Footer** mezőbe illeszd be a szkriptet és az alkalmazás betöltőt (cseréld ki a `YOUR_CLIENT_ID` értéket):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Kattints a **Mentés** gombra.
+</Steps>
+
+:::tip
+Az ügyfélazonosítódat a Wink fiókodban találod az [Alkalmazások](/hu/portal/settings/applications) menüpont alatt.
+:::
+
+## Komponens hozzáadása bejegyzéshez vagy oldalhoz
+
+A Ghost szerkesztő támogatja az **HTML kártyát**, amellyel nyers HTML-t illeszthetsz be a tartalmad bármely pontjára.
+
+<Steps>
+1. Nyisd meg a bejegyzést vagy oldalt a Ghost szerkesztőben.
+2. Írd be a `/` jelet a kártyaválasztó megnyitásához, majd válaszd az **HTML** opciót.
+3. Illeszd be a komponens HTML kódját, például:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Kattints a kártyán kívülre az előnézethez, majd publikáld.
+</Steps>
+
+## Oldalankénti kódbeillesztés
+
+Ha egy komponens csak egy adott oldalon jelenjen meg, a Ghost támogatja az oldalankénti kódbeillesztést is:
+
+<Steps>
+1. Nyisd meg a bejegyzés vagy oldal beállításait (fogaskerék ikon a szerkesztőben).
+2. Görgess le a **Code Injection** részhez.
+3. Add hozzá a komponens tageket a **Footer** mezőbe (a globális app-loader csak az oldal összes oldalán megjelenő láblécben kell legyen).
+4. Mentsd el.
+</Steps>
+
+## Elérhető komponensek
+
+| Komponens | HTML tag | Cél |
+|---|---|---|
+| Tartalom betöltő | `<wink-content-loader>` | Szállodakártyák, rácsok, térképek megjelenítése |
+| Kereső | `<wink-lookup>` | Úticél kereső sáv |
+| Kereső gomb | `<wink-search-button>` | Útiterv választó megnyitása |
+| Fiók gomb | `<wink-account-button>` | Bejelentkezés / felhasználói menü |
+| Útiterv gomb | `<wink-itinerary-button>` | Aktuális útiterv megjelenítése |
+| Útiterv választó | `<wink-itinerary-picker>` | Teljes útiterv űrlap |
+| Bevásárlókosár | `<wink-shopping-cart-button>` | Kosár összefoglaló gomb |
+
+A teljes attribútumreferenciáért lásd a [Web Components](/hu/integrations/web-components) oldalt.
+
+## További olvasnivaló
+
+- [Web Components referencia](/hu/integrations/web-components)
+- [Szerezd meg az ügyfélazonosítódat](/hu/portal/settings/applications)
+- [Ghost Code Injection dokumentáció](https://ghost.org/help/ghost-themes/#code-injection)

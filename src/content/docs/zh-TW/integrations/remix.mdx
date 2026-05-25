@@ -1,0 +1,115 @@
+---
+title: Remix
+description: 透過 useEffect 在 Remix 應用程式中以客戶端載入方式加入 Wink 網頁元件。
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Remix 是一個預設進行伺服器端渲染的全端框架。使用 `useEffect` 在根元件中僅於客戶端載入 Wink CDN。
+
+<LinkCard
+  title="@wink/elements npm 套件"
+  href="/integrations/npm"
+  description="安裝並載入帶有 TypeScript 型別的 CDN 套件。"
+/>
+
+## 安裝
+
+```bash
+npm install @wink/elements
+```
+
+## 在 app/root.tsx 載入
+
+`useEffect` 僅在瀏覽器執行，伺服器端渲染時不會執行：
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## 環境變數
+
+Remix（基於 Vite，v2.8+）支援 `import.meta.env` 用於瀏覽器可見的變數。加上 `VITE_` 前綴即可暴露給瀏覽器套件：
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+對於使用 Node.js adapter 的舊版 Remix 設定，請從 root loader 回傳 client ID，並在元件中讀取：
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## 在路由中使用
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Hydration mismatch">
+Remix 在客戶端會對伺服器渲染的 HTML 進行 hydration。如果伺服器端渲染了 `<wink-*>` 元素，瀏覽器可能會短暫顯示尚未解析的自訂元素，直到 CDN 腳本註冊完成。這只是視覺上的現象 — 腳本載入後元素會正確升級。
+</Aside>
+
+## TypeScript 型別
+
+從 [React 整合頁面](/zh-TW/integrations/react#typescript--declare-jsx-intrinsics) 加入 JSX intrinsic 宣告檔 — Remix 底層使用 React。
+
+## 延伸閱讀
+
+- [Web Components 參考](/zh-TW/integrations/web-components)
+- [@wink/elements npm 套件](/zh-TW/integrations/npm)
+- [React 整合](/zh-TW/integrations/react)

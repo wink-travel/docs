@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: เพิ่มคอมโพเนนต์เว็บ Wink ลงในแอป Nuxt 3 โดยใช้ปลั๊กอินฝั่งไคลเอนต์
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 เรนเดอร์หน้าเพจบนเซิร์ฟเวอร์โดยค่าเริ่มต้น สคริปต์ CDN และองค์ประกอบที่กำหนดเองต้องโหลดเฉพาะฝั่งไคลเอนต์เท่านั้น ปลั๊กอินฝั่งไคลเอนต์ของ Nuxt เป็นที่ที่สะอาดที่สุดในการทำเช่นนี้
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="ติดตั้งและโหลด CDN bundle พร้อมกับ TypeScript types."
+/>
+
+## ติดตั้ง
+
+```bash
+npm install @wink/elements
+```
+
+## สร้างปลั๊กอินฝั่งไคลเอนต์
+
+นามสกุล `.client.ts` บอก Nuxt ให้รันปลั๊กอินนี้เฉพาะในเบราว์เซอร์:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## กำหนดค่าตัวแปร runtime
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+เพิ่มใน `.env`:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## กำหนดค่า Vue สำหรับองค์ประกอบที่กำหนดเอง
+
+เพิ่มตัวเลือก `isCustomElement` ในคอมไพเลอร์เพื่อให้ Vue ไม่เตือนเกี่ยวกับแท็ก `<wink-*>` ที่ไม่รู้จัก:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## ใช้ในเทมเพลต
+
+ห่อคอมโพเนนต์ Wink ด้วย `<ClientOnly>` เพื่อป้องกันความไม่ตรงกันของ SSR hydration:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` จะเรนเดอร์ตัวแทนบนเซิร์ฟเวอร์และเมานต์องค์ประกอบจริงบนไคลเอนต์ — นี่คือรูปแบบที่แนะนำสำหรับการฝังของบุคคลที่สามที่ใช้เฉพาะในเบราว์เซอร์ทั้งหมดใน Nuxt
+</Aside>
+
+## TypeScript types
+
+ขยาย `HTMLElementTagNameMap` ทั่วโลก (เหมือนกับ Vue 3) เพื่อให้ได้การเติมข้อความอัตโนมัติของแอตทริบิวต์ ดู [หน้า integration Vue 3](/th/integrations/vue#typescript--augment-global-element-types) สำหรับไฟล์ประกาศเต็มรูปแบบ
+
+## อ่านเพิ่มเติม
+
+- [เอกสารอ้างอิง Web Components](/th/integrations/web-components)
+- [@wink/elements npm package](/th/integrations/npm)
+- [การรวม Vue 3](/th/integrations/vue)

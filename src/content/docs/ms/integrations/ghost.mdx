@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: Selitkan inventori perjalanan Wink ke dalam penerbitan Ghost anda menggunakan Code Injection.
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Ciri **Code Injection** terbina dalam Ghost membolehkan anda menambah skrip ke `<head>` dan `</body>` global penerbitan anda. Semua pelan Ghost menyokong code injection, memudahkan anda menyelitkan komponen Wink pada mana-mana halaman atau pos.
+
+## Muatkan skrip Wink di seluruh tapak
+
+<Steps>
+1. Dalam panel Ghost Admin, pergi ke **Settings → Code Injection**.
+2. Dalam kotak **Site Header**, tambah helaian gaya:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. Dalam kotak **Site Footer**, tambah skrip dan pemuat aplikasi (gantikan `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klik **Save**.
+</Steps>
+
+:::tip
+ID Klien anda boleh didapati dalam akaun Wink anda di bawah [Applications](/ms/portal/settings/applications).
+:::
+
+## Tambah komponen ke pos atau halaman
+
+Editor Ghost menyokong **kad HTML** yang membolehkan anda memasukkan HTML mentah di mana-mana dalam kandungan anda.
+
+<Steps>
+1. Buka pos atau halaman dalam editor Ghost.
+2. Taip `/` untuk membuka pemilih kad dan pilih **HTML**.
+3. Tampal HTML komponen, contohnya:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klik di luar kad untuk pratonton, kemudian terbitkan.
+</Steps>
+
+## Code injection per halaman
+
+Untuk komponen yang hanya perlu muncul pada satu halaman, Ghost juga menyokong code injection per halaman:
+
+<Steps>
+1. Buka tetapan pos atau halaman (ikon gear dalam editor).
+2. Tatal ke **Code Injection**.
+3. Tambah tag komponen dalam medan **Footer** (pemuat aplikasi global hanya perlu ada di footer seluruh tapak).
+4. Simpan.
+</Steps>
+
+## Komponen tersedia
+
+| Komponen | Tag HTML | Tujuan |
+|---|---|---|
+| Pemuat kandungan | `<wink-content-loader>` | Papar kad hotel, grid, peta |
+| Carian | `<wink-lookup>` | Bar carian destinasi |
+| Butang carian | `<wink-search-button>` | Buka pemilih jadual perjalanan |
+| Butang akaun | `<wink-account-button>` | Log masuk / menu pengguna |
+| Butang jadual perjalanan | `<wink-itinerary-button>` | Papar jadual perjalanan semasa |
+| Pemilih jadual perjalanan | `<wink-itinerary-picker>` | Borang jadual perjalanan penuh |
+| Troli beli-belah | `<wink-shopping-cart-button>` | Butang ringkasan troli |
+
+Lihat [Web Components](/ms/integrations/web-components) untuk rujukan atribut penuh.
+
+## Bacaan lanjut
+
+- [Rujukan Web Components](/ms/integrations/web-components)
+- [Dapatkan ID Klien anda](/ms/portal/settings/applications)
+- [Dokumen Ghost Code Injection](https://ghost.org/help/ghost-themes/#code-injection)

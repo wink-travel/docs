@@ -1,0 +1,119 @@
+---
+title: SolidJS
+description: Brug Wink webkomponenter i SolidJS-applikationer — indbygget understøttelse af custom elements med onMount.
+sidebar:
+  order: 25
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+SolidJS har indbygget understøttelse af custom elements — det sender attributter direkte til DOM uden et virtuelt DOM-lag. Ingen ekstra compiler-konfiguration er nødvendig.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Installer og indlæs CDN-bundtet med TypeScript-typer."
+/>
+
+## Installér
+
+```bash
+npm install @wink/elements
+```
+
+## Indlæs én gang ved app-opstart
+
+```tsx
+// src/App.tsx
+import { onMount } from 'solid-js';
+import { load } from '@wink/elements';
+
+export default function App() {
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+
+  return <YourRoutes />;
+}
+```
+
+`onMount` kører kun i browseren efter den første rendering — det er SolidJS’s ækvivalent til Reacts `useEffect(() => {}, [])`.
+
+## Brug i JSX
+
+```tsx
+// src/pages/Hotels.tsx
+import { createSignal } from 'solid-js';
+
+export default function HotelsPage() {
+  const [layoutId] = createSignal('YOUR_LAYOUT_ID');
+
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id={layoutId()} />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — deklarér JSX intrinsics
+
+SolidJS bruger sit eget JSX-namespace. Udvid `solid-js` JSX-typer:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'solid-js' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## SolidStart (SSR)
+
+For SolidStart-applikationer med server-side rendering, beskyt `load()` kaldet med `isServer`:
+
+```tsx
+// src/app.tsx
+import { onMount } from 'solid-js';
+import { isServer } from 'solid-js/web';
+import { load } from '@wink/elements';
+
+export default function App() {
+  if (!isServer) {
+    onMount(() => {
+      load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+    });
+  }
+
+  return <YourRoutes />;
+}
+```
+
+<Aside type="tip">
+SolidJS’s finmaskede reaktivitet betyder, at opdateringer af attributter flyder direkte til DOM — uden batching eller reconciliation overhead. Wink-komponenter modtager attributændringer med det samme, når dine signalværdier opdateres.
+</Aside>
+
+## Yderligere læsning
+
+- [Web Components reference](/da/integrations/web-components)
+- [@wink/elements npm package](/da/integrations/npm)

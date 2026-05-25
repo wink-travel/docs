@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: 在 Vue 3 和 Vite 專案中使用 Wink 網頁元件，並搭配 isCustomElement 編譯器選項。
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3 需要一個編譯器提示，將 `<wink-*>` 標籤視為原生自訂元素，而非未解析的 Vue 元件。之後，它們就像其他 HTML 元素一樣運作。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="安裝並載入帶有 TypeScript 型別的 CDN 套件。"
+/>
+
+## 安裝
+
+```bash
+npm install @wink/elements
+```
+
+## 設定編譯器
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // 將所有以 "wink-" 開頭的標籤視為自訂元素
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## 在應用啟動時載入 CDN
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## 在模板中使用
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — 擴充全域元素型別
+
+Vue 3 + TypeScript 從全域的 `HTMLElementTagNameMap` 讀取自訂元素型別。新增一個宣告檔：
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## 環境變數
+
+新增至 `.env.local`：
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite 僅會將前綴為 `VITE_` 的變數暴露給客戶端套件。
+
+<Aside type="tip">
+Nuxt 3 請參考專屬的 [Nuxt integration page](/zh-TW/integrations/nuxt)，其中涵蓋 SSR 安全載入。
+</Aside>
+
+## 延伸閱讀
+
+- [Web Components 參考](/zh-TW/integrations/web-components)
+- [@wink/elements npm package](/zh-TW/integrations/npm)
+- [Nuxt 3 integration](/zh-TW/integrations/nuxt)

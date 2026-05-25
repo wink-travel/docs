@@ -1,0 +1,120 @@
+---
+title: Qwik
+description: Notaðu Wink vefhluta í Qwik og QwikCity forritum með useVisibleTask$ fyrir keyrslu eingöngu í vafra.
+sidebar:
+  order: 26
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Endurupptökulíkan Qwik þýðir að JavaScript keyrir seint — aðeins þegar notandi hefur samskipti. Notaðu `useVisibleTask$` til að keyra kóða sem þarf að keyra í vafranum þegar hluturinn verður sýnilegur.
+
+<LinkCard
+  title="@wink/elements npm pakki"
+  href="/integrations/npm"
+  description="Settu upp og hlaðaðu CDN pakkanum með TypeScript týpum."
+/>
+
+## Setja upp
+
+```bash
+npm install @wink/elements
+```
+
+## Hlaða með useVisibleTask$
+
+`useVisibleTask$` er lífsferlahnútur Qwik fyrir kóða sem keyrir eingöngu í vafra og strax. Settu hann í rótarlayoutið þitt:
+
+```tsx
+// src/routes/layout.tsx
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { load } from '@wink/elements';
+
+export default component$(() => {
+  useVisibleTask$(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+
+  return (
+    <main>
+      <Slot />
+    </main>
+  );
+});
+```
+
+<Aside type="tip" title="useVisibleTask$ aðferðafræði">
+Sjálfgefið keyrir `useVisibleTask$` þegar hluturinn er sýnilegur í glugganum. Fyrir rótarlayout sem er alltaf sýnilegur, keyrir þetta strax við hleðslu síðunnar — jafngildir `onMount` í öðrum ramma.
+
+Sendu `{ strategy: 'document-ready' }` ef þú vilt að skriftan hlaðist eins snemma og mögulegt er:
+```ts
+useVisibleTask$({ strategy: 'document-ready' }, () => {
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+});
+```
+</Aside>
+
+## Nota á síðu
+
+```tsx
+// src/routes/hotels/index.tsx
+import { component$ } from '@builder.io/qwik';
+
+export default component$(() => {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+});
+```
+
+## TypeScript — lýsa JSX innbyggðum þáttum
+
+Qwik notar eigið JSX nafnarými. Útvíkkaðu það í lýsingarskrá:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module '@builder.io/qwik' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes;
+      'wink-lookup': WinkLookupAttributes;
+      'wink-search-button': WinkSearchButtonAttributes;
+      'wink-account-button': WinkAccountButtonAttributes;
+      'wink-itinerary-button': WinkItineraryButtonAttributes;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes;
+      'wink-app-loader': WinkAppLoaderAttributes;
+    }
+  }
+}
+```
+
+## Umhverfisbreytur
+
+Qwik (byggt á Vite) gerir breytur með forskeytinu `PUBLIC_` aðgengilegar í vafranum:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="Þjónustuhliðarrendering">
+Qwik renderar í HTML á þjóninum. `<wink-*>` merkimiðar eru skilaðir sem kyrrstæður kóði. CDN skriftan og skráning sérhluta fer fram í vafranum eftir að `useVisibleTask$` keyrir. Hlutar verða í óleysanlegu ástandi stutt þar til CDN pakkinn hleðst — þetta er eðlileg hegðun.
+</Aside>
+
+## Frekari lesning
+
+- [Vefhlutarefnisskjal](/is/integrations/web-components)
+- [@wink/elements npm pakki](/is/integrations/npm)

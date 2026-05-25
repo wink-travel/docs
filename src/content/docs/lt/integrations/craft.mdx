@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Įterpkite Wink kelionių inventorių į savo Craft CMS 5 svetainę naudodami Wink įskiepį.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS Plugin** integruoja Wink kelionių inventorių į Craft 5 per Twig šablonų funkcijas ir pasirinktinių laukų tipą turinio redaktoriui. Redaktoriai gali tiesiogiai įrašo redaktoriuje išskleidžiamajame meniu pasirinkti konkretų Wink išdėstymą.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin on GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Šaltinio kodas, kūrėjo diegimo vadovas ir prisidėjimo instrukcijos."
+/>
+
+## Reikalavimai
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Diegimas
+
+<Steps>
+1. Įdiekite per Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Aktyvuokite įskiepį Valdymo skydelyje **Settings → Plugins** arba per CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Eikite į **Settings → Wink** Valdymo skydelyje.
+4. Įveskite savo **Client ID** ir **Client Secret**, pasirinkite aplinką ir spustelėkite **Save**.
+   Norėdami gauti savo kredencialus, eikite į [Applications](/lt/portal/settings/applications).
+</Steps>
+
+## Naudojimas Twig šablonuose
+
+Sukonfigūravus, kvieskite Wink Twig funkcijas bet kur savo šablonuose:
+
+```twig
+{# Atvaizduoti viešbučių tinklelį #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Paieškos juosta pagal kelionės tikslą #}
+{{ winkLookup() }}
+
+{# Maršruto pasirinkimo mygtukas #}
+{{ winkSearch() }}
+
+{# Vartotojo paskyros mygtukas #}
+{{ winkAccount() }}
+```
+
+Funkcija `winkContent()` pirmą kartą puslapyje automatiškai įterpia `<wink-app-loader>`.
+
+## Galimos Twig funkcijos
+
+| Funkcija | Išvestis | Aprašymas |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Viešbučių kortelės, tinkleliai, žemėlapiai |
+| `winkLookup()` | `<wink-lookup>` | Paieškos juosta pagal kelionės tikslą |
+| `winkSearch()` | `<wink-search-button>` | Maršruto pasirinkimo mygtukas |
+| `winkAccount()` | `<wink-account-button>` | Prisijungimo / vartotojo paskyros mygtukas |
+| `winkItinerary()` | `<wink-itinerary-button>` | Maršruto būsenos mygtukas |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Krepšelio mygtukas |
+
+## Wink Layout lauko tipas
+
+Pridėkite **Wink Layout** lauką bet kuriai sekcijai, kad redaktoriai galėtų išskleidžiamajame meniu pasirinkti visus jūsų Wink paskyroje prieinamus išdėstymus:
+
+<Steps>
+1. Eikite į **Settings → Fields → New Field**.
+2. Nustatykite **Field Type** į **Wink Layout**.
+3. Pridėkite lauką prie savo įrašo tipo lauko išdėstymo.
+4. Redaktoriai dabar gali tiesiogiai įrašo redaktoriuje pasirinkti išdėstymą — nereikia kopijuoti ID.
+</Steps>
+
+Šablone perduokite lauko reikšmę funkcijai `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Papildoma informacija
+
+- [Web Components reference](/lt/integrations/web-components)
+- [Gaukite savo Client ID](/lt/portal/settings/applications)
+- [Wink Craft Plugin — šaltinio kodas ir kūrėjo dokumentacija](https://github.com/wink-travel/wink-craft-plugin)

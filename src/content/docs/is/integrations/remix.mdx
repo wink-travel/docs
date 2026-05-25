@@ -1,0 +1,115 @@
+---
+title: Remix
+description: Bættu við Wink vefhlutum í Remix forrit með eingöngu viðskiptavinalóðun í gegnum useEffect.
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Remix er full-stack ramma sem renderar á þjóninum sjálfgefið. Hlaðið Wink CDN aðeins á viðskiptavininum með `useEffect` í rótarsamskiptahlutanum.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Settu upp og hlaðið CDN pakkanum með TypeScript týpum."
+/>
+
+## Setja upp
+
+```bash
+npm install @wink/elements
+```
+
+## Hlaða í app/root.tsx
+
+`useEffect` keyrir aðeins í vafranum, aldrei við þjónustuhliðarrenderun:
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## Umhverfisbreytur
+
+Remix (byggt á Vite, v2.8+) styður `import.meta.env` fyrir breytur sem eru sýnilegar í vafra. Notaðu forskeytið `VITE_` til að gera þær aðgengilegar í vafrapakkanum:
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Fyrir eldri Remix uppsetningar sem nota Node.js adapterinn, skilaðu client ID úr rótarlaðaranum og lesðu það í hlutanum:
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## Nota í leiðum
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Ósamræmi í vökvun">
+Remix vökvast yfir þjónusturenderaða HTML á viðskiptavininum. Ef `<wink-*>` hlutur er renderaður á þjóninum, gæti vafrinn sýnt stuttlega óleysanlegan sérsniðinn hlut áður en CDN skriftan skráir hann. Þetta er aðeins útlitslegt — hluturinn uppfærir sig rétt þegar skriftan hleðst inn.
+</Aside>
+
+## TypeScript týpur
+
+Bættu við JSX intrinsic yfirlýsingarskránni frá [React samþættingarsíðunni](/is/integrations/react#typescript--declare-jsx-intrinsics) — Remix notar React undir húddinu.
+
+## Frekari lesning
+
+- [Vefhlutarefnisskjal](/is/integrations/web-components)
+- [@wink/elements npm pakki](/is/integrations/npm)
+- [React samþætting](/is/integrations/react)

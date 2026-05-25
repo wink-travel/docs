@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: Додайте веб-компоненти Wink до додатків Nuxt 3 за допомогою клієнтського плагіна.
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 за замовчуванням рендерить сторінки на сервері. Скрипти CDN і кастомні елементи потрібно завантажувати лише на клієнті. Клієнтський плагін Nuxt — найчистіше місце для цього.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Встановіть і завантажте CDN-бандл з типами TypeScript."
+/>
+
+## Встановлення
+
+```bash
+npm install @wink/elements
+```
+
+## Створіть клієнтський плагін
+
+Суфікс `.client.ts` вказує Nuxt запускати цей плагін лише в браузері:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## Налаштуйте змінну часу виконання
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+Додайте до `.env`:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Налаштуйте Vue для кастомних елементів
+
+Додайте опцію компілятора `isCustomElement`, щоб Vue не показував попередження про невідомі теги `<wink-*>`:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## Використання в шаблонах
+
+Обгорніть компоненти Wink у `<ClientOnly>`, щоб уникнути розбіжностей гідратації SSR:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` рендерить заповнювач на сервері і монтує реальний елемент на клієнті — це рекомендований патерн для всіх браузерних сторонніх вставок у Nuxt.
+</Aside>
+
+## Типи TypeScript
+
+Розширте глобальний `HTMLElementTagNameMap` (так само, як у Vue 3), щоб отримати автозаповнення атрибутів. Повний файл декларації дивіться на сторінці [інтеграції Vue 3](/uk/integrations/vue#typescript--augment-global-element-types).
+
+## Додаткове читання
+
+- [Довідник Web Components](/uk/integrations/web-components)
+- [@wink/elements npm package](/uk/integrations/npm)
+- [Інтеграція Vue 3](/uk/integrations/vue)

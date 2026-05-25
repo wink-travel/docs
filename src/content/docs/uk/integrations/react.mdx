@@ -1,0 +1,111 @@
+---
+title: React
+description: Використовуйте веб-компоненти Wink у будь-якому React-додатку з повною підтримкою TypeScript через @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ має повноцінну підтримку кастомних елементів. React 18 і раніше передає лише рядкові атрибути — використовуйте наведений нижче типізований шаблон, щоб залишатися безпечними між версіями.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Встановіть і завантажте CDN-бандл з типами TypeScript."
+/>
+
+## Встановлення
+
+```bash
+npm install @wink/elements
+```
+
+## Завантаження один раз у корені додатку
+
+Викличте `load()` у вашому компоненті верхнього рівня. Він ідемпотентний — безпечно викликати кілька разів.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Використання компонентів у JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — оголошення JSX intrinsics
+
+React за замовчуванням не знає про імена кастомних елементів. Додайте файл декларації один раз, щоб уникнути помилок типів:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="Обмеження атрибутів у React 18">
+React 18 і раніше серіалізує всі пропси JSX у рядки перед передачею їх у DOM. Булеві та об’єктні пропси потрібно конвертувати вручну. React 19 передає непрядкові пропси безпосередньо кастомним елементам — обхідні шляхи не потрібні.
+</Aside>
+
+## Передача типізованих атрибутів (безпечно для React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread працює в React 19; для React 18 всі значення все одно рядки
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Додаткове читання
+
+- [Довідник Web Components](/uk/integrations/web-components)
+- [@wink/elements npm package](/uk/integrations/npm)
+- [Інтеграція Next.js](/uk/integrations/nextjs)

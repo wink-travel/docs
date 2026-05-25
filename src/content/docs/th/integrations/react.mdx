@@ -1,0 +1,111 @@
+---
+title: React
+description: ใช้คอมโพเนนต์เว็บของ Wink ในแอป React ใดก็ได้ พร้อมการรองรับ TypeScript เต็มรูปแบบผ่าน @wink/elements
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ มีการรองรับ custom elements อย่างเต็มรูปแบบ React 18 และเวอร์ชันก่อนหน้า จะส่งผ่านแอตทริบิวต์เป็นสตริงเท่านั้น — ใช้รูปแบบ typed helper ด้านล่างเพื่อความปลอดภัยข้ามเวอร์ชัน
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="ติดตั้งและโหลด CDN bundle พร้อมกับ TypeScript types."
+/>
+
+## ติดตั้ง
+
+```bash
+npm install @wink/elements
+```
+
+## โหลดครั้งเดียวที่ root ของแอป
+
+เรียกใช้ `load()` ในคอมโพเนนต์ระดับบนสุดของคุณ ฟังก์ชันนี้ idempotent — ปลอดภัยที่จะเรียกหลายครั้ง
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## ใช้คอมโพเนนต์ใน JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — ประกาศ JSX intrinsics
+
+React ไม่รู้จักชื่อ custom element โดยค่าเริ่มต้น ให้เพิ่มไฟล์ประกาศครั้งเดียวเพื่อปิดเสียงข้อผิดพลาดของ type:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="ข้อจำกัดของแอตทริบิวต์ใน React 18">
+React 18 และเวอร์ชันก่อนหน้าจะทำการแปลง props ของ JSX ทั้งหมดเป็นสตริงก่อนส่งไปยัง DOM ค่า boolean และ object ต้องแปลงด้วยตนเอง React 19 ส่งผ่าน props ที่ไม่ใช่สตริงไปยัง custom elements โดยตรง — ไม่ต้องใช้วิธีแก้ไขใดๆ
+</Aside>
+
+## การส่งผ่านแอตทริบิวต์แบบ typed (ปลอดภัยสำหรับ React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// การกระจาย props ใช้งานได้ใน React 19; สำหรับ React 18 ค่าทั้งหมดเป็นสตริงอยู่แล้ว
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## อ่านเพิ่มเติม
+
+- [เอกสารอ้างอิง Web Components](/th/integrations/web-components)
+- [@wink/elements npm package](/th/integrations/npm)
+- [การรวมกับ Next.js](/th/integrations/nextjs)

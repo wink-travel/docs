@@ -1,0 +1,112 @@
+---
+title: Angular
+description: Uporabite Wink spletne komponente v Angular 14+ aplikacijah z CUSTOM_ELEMENTS_SCHEMA in @wink/elements.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink komponente so same po sebi Angular Elements — naravno se integrirajo v Angular aplikacije. Edina potrebna nastavitev je, da Angularov prevajalnik dovoli neznana imena elementov.
+
+<LinkCard
+  title="@wink/elements npm paket"
+  href="/integrations/npm"
+  description="Namestite in naložite CDN paket z TypeScript tipi."
+/>
+
+## Namestitev
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — naložite CDN enkrat
+
+Pokličite `load()` pred `bootstrapApplication` (ali znotraj `APP_INITIALIZER`):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## Dovoli imena po meri
+
+Dodajte `CUSTOM_ELEMENTS_SCHEMA` vsakemu samostojnemu komponentu (ali modulu), ki uporablja `<wink-*>` oznake:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="NgModule aplikacije">
+Za aplikacije, ki temeljijo na NgModule, dodajte `CUSTOM_ELEMENTS_SCHEMA` v polje `schemas` dekoratorja `@NgModule`.
+</Aside>
+
+## Povezovanje atributov
+
+Angularova sintaksa predloge deluje neposredno z atributi nizov po meri:
+
+```html
+<!-- Statično -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- Dinamično povezovanje -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+Uporabite vezavo `[attr.name]`, kadar je vrednost dinamična — običajna Angularjeva vezava `[property]` cilja na DOM lastnosti, ne na HTML atribute, na katerih temeljijo komponente po meri.
+
+## Okoljske spremenljivke
+
+Za projekte `@angular/cli` 16+ uporabite `environment.ts` ali predpono `NG_APP_*` z `@ngx-env/builder`:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## TypeScript tipi
+
+Paket `@wink/elements` izvaža tipizirane vmesnike za vse atribute komponent:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## Nadaljnje branje
+
+- [Referenca Web Components](/sl/integrations/web-components)
+- [@wink/elements npm paket](/sl/integrations/npm)

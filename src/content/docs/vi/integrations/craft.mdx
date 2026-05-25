@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Nhúng kho lưu trữ du lịch Wink vào trang web Craft CMS 5 của bạn bằng plugin Wink.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Plugin Wink Craft CMS** tích hợp kho lưu trữ du lịch Wink vào Craft 5 thông qua các hàm mẫu Twig và một loại trường tùy chỉnh cho trình chỉnh sửa nội dung. Biên tập viên có thể chọn một bố cục Wink cụ thể từ menu thả xuống ngay trong trình chỉnh sửa bài viết.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin trên GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Mã nguồn, hướng dẫn thiết lập cho nhà phát triển và hướng dẫn đóng góp."
+/>
+
+## Yêu cầu
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Cài đặt
+
+<Steps>
+1. Cài đặt qua Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Kích hoạt plugin trong Bảng điều khiển tại **Settings → Plugins**, hoặc qua CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Vào **Settings → Wink** trong Bảng điều khiển.
+4. Nhập **Client ID** và **Client Secret**, chọn môi trường của bạn, rồi nhấn **Save**.
+   Truy cập [Applications](/vi/portal/settings/applications) để lấy thông tin đăng nhập.
+</Steps>
+
+## Sử dụng trong mẫu Twig
+
+Sau khi cấu hình, gọi các hàm Twig của Wink ở bất kỳ đâu trong mẫu của bạn:
+
+```twig
+{# Hiển thị lưới khách sạn #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Thanh tìm kiếm điểm đến #}
+{{ winkLookup() }}
+
+{# Nút chọn hành trình #}
+{{ winkSearch() }}
+
+{# Nút tài khoản người dùng #}
+{{ winkAccount() }}
+```
+
+Hàm `winkContent()` tự động chèn `<wink-app-loader>` lần đầu tiên nó được gọi trên trang.
+
+## Các hàm Twig có sẵn
+
+| Hàm | Kết quả | Mô tả |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Thẻ khách sạn, lưới, bản đồ |
+| `winkLookup()` | `<wink-lookup>` | Thanh tìm kiếm điểm đến |
+| `winkSearch()` | `<wink-search-button>` | Nút chọn hành trình |
+| `winkAccount()` | `<wink-account-button>` | Đăng nhập / tài khoản người dùng |
+| `winkItinerary()` | `<wink-itinerary-button>` | Nút trạng thái hành trình |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Nút giỏ hàng |
+
+## Loại trường Wink Layout
+
+Thêm trường **Wink Layout** vào bất kỳ phần nào để biên tập viên có menu thả xuống tất cả các bố cục có sẵn từ tài khoản Wink của bạn:
+
+<Steps>
+1. Vào **Settings → Fields → New Field**.
+2. Chọn **Field Type** là **Wink Layout**.
+3. Thêm trường vào bố cục trường của loại bài viết.
+4. Biên tập viên giờ có thể chọn bố cục trực tiếp trong trình chỉnh sửa bài viết — không cần sao chép dán ID.
+</Steps>
+
+Trong mẫu của bạn, truyền giá trị trường vào `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Đọc thêm
+
+- [Tham khảo Web Components](/vi/integrations/web-components)
+- [Lấy Client ID của bạn](/vi/portal/settings/applications)
+- [Wink Craft Plugin — mã nguồn & tài liệu dành cho nhà phát triển](https://github.com/wink-travel/wink-craft-plugin)

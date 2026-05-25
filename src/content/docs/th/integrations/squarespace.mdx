@@ -1,0 +1,73 @@
+---
+title: Squarespace
+description: ฝังสินค้าคงคลังการเดินทางของ Wink ลงในเว็บไซต์ Squarespace ของคุณโดยใช้ Code Injection และบล็อก HTML ที่กำหนดเอง
+sidebar:
+  order: 3
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+:::note
+ฟีเจอร์ Code Injection ของ Squarespace ใช้งานได้ใน **แผนธุรกิจขึ้นไป** เท่านั้น บล็อก HTML ที่กำหนดเองใช้งานได้ในทุกแผนที่ชำระเงิน
+:::
+
+Squarespace รองรับ HTML และ JavaScript ที่กำหนดเอง ซึ่งหมายความว่าคุณสามารถฝังคอมโพเนนต์เว็บของ Wink ลงในไซต์ของคุณโดยตรงโดยไม่ต้องใช้ปลั๊กอิน คู่มือนี้จะแสดงวิธีโหลดสคริปต์ของ Wink ทั่วทั้งไซต์ จากนั้นวางคอมโพเนนต์ในแต่ละหน้า
+
+## โหลดสคริปต์ Wink ทั่วทั้งไซต์
+
+การเพิ่มสคริปต์ลงในส่วนท้ายและส่วนหัวของไซต์คุณหมายความว่า Wink จะพร้อมใช้งานในทุกหน้าโดยไม่ต้องตั้งค่าซ้ำ
+
+<Steps>
+1. ในตัวแก้ไข Squarespace ไปที่ **Settings → Advanced → Code Injection**
+2. ในช่อง **Header** ให้เพิ่มสไตล์ชีต:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. ในช่อง **Footer** ให้เพิ่มสคริปต์และตัวโหลดแอปพลิเคชัน (แทนที่ `YOUR_CLIENT_ID` ด้วย Client ID ของ Wink ของคุณ):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. คลิก **Save**
+</Steps>
+
+:::tip
+Client ID ของคุณสามารถดูได้ในบัญชี Wink ของคุณภายใต้ [Applications](/th/portal/settings/applications)
+:::
+
+## เพิ่มคอมโพเนนต์ลงในหน้า
+
+เมื่อสคริปต์ถูกโหลดทั่วทั้งไซต์แล้ว คุณสามารถวางคอมโพเนนต์ Wink ใดก็ได้ลงในหน้าใดก็ได้โดยใช้ **Code Block**
+
+<Steps>
+1. เปิดหน้าที่คุณต้องการแก้ไข
+2. คลิก **Edit** และเพิ่มบล็อก **Code** ใหม่ในตำแหน่งที่คุณต้องการให้คอมโพเนนต์แสดง
+3. วาง HTML ของคอมโพเนนต์ เช่น ตัวโหลดเนื้อหา:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. คลิก **Apply** จากนั้นคลิก **Save**
+</Steps>
+
+## คอมโพเนนต์ที่มีให้ใช้งาน
+
+| คอมโพเนนต์ | แท็ก HTML | จุดประสงค์ |
+|---|---|---|
+| ตัวโหลดเนื้อหา | `<wink-content-loader>` | แสดงการ์ดโรงแรม, ตาราง, แผนที่ |
+| ช่องค้นหา | `<wink-lookup>` | แถบค้นหาสำหรับปลายทาง |
+| ปุ่มค้นหา | `<wink-search-button>` | เปิดตัวเลือกแผนการเดินทาง |
+| ปุ่มบัญชี | `<wink-account-button>` | ลงชื่อเข้าใช้ / เมนูผู้ใช้ |
+| ปุ่มแผนการเดินทาง | `<wink-itinerary-button>` | แสดงแผนการเดินทางปัจจุบัน |
+| ตัวเลือกแผนการเดินทาง | `<wink-itinerary-picker>` | ฟอร์มแผนการเดินทางเต็มรูปแบบ |
+| ตะกร้าสินค้า | `<wink-shopping-cart-button>` | ปุ่มสรุปตะกร้าสินค้า |
+
+ดู [Web Components](/th/integrations/web-components) สำหรับข้อมูลอ้างอิงแอตทริบิวต์ทั้งหมดของแต่ละคอมโพเนนต์
+
+## อ่านเพิ่มเติม
+
+- [ข้อมูลอ้างอิง Web Components](/th/integrations/web-components)
+- [รับ Client ID ของคุณ](/th/portal/settings/applications)
+- [เอกสาร Squarespace Code Injection](https://support.squarespace.com/hc/en-us/articles/205815908)

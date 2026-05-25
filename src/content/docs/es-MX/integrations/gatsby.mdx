@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: Agrega componentes web de Wink a sitios Gatsby usando gatsby-browser.js para carga del lado del cliente.
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby genera HTML estático en tiempo de compilación y se hidrata en el cliente. Los scripts CDN deben cargarse solo en APIs del navegador — `gatsby-browser.js` es el lugar correcto.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Instala y carga el paquete CDN con tipos para TypeScript."
+/>
+
+## Instalar
+
+```bash
+npm install @wink/elements
+```
+
+## Cargar vía gatsby-browser.js
+
+La API `onClientEntry` se ejecuta una vez tan pronto como el runtime de Gatsby se inicializa en el navegador:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## Variables de entorno
+
+Gatsby expone solo variables con prefijo `GATSBY_` al paquete del navegador:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=tu-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=tu-client-id
+```
+
+## Uso en páginas y componentes
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby usa React, así que agrega las mismas declaraciones intrínsecas JSX que la integración de React:
+
+```ts
+// src/wink-elements.d.ts
+// Consulta /integrations/react para el archivo completo de declaración
+```
+
+<Aside type="caution" title="Errores en build SSR">
+Durante `gatsby build`, Gatsby renderiza páginas a HTML estático en un entorno Node.js donde `window` y `document` no están disponibles. Si importas `@wink/elements` en el nivel superior de un componente de página (fuera de `onClientEntry`), la compilación fallará.
+
+Usa siempre `gatsby-browser.js` / `onClientEntry` — nunca importes `load` directamente en el ámbito de un módulo de página o componente.
+</Aside>
+
+## gatsby-ssr.js — no se requieren cambios
+
+No necesitas modificar `gatsby-ssr.js`. Las etiquetas `<wink-*>` se renderizan como elementos HTML simples en la salida estática, y el script CDN las actualiza cuando el navegador carga la página.
+
+## Lectura adicional
+
+- [Referencia de Web Components](/es-MX/integrations/web-components)
+- [Paquete npm @wink/elements](/es-MX/integrations/npm)
+- [Integración con React](/es-MX/integrations/react)

@@ -1,0 +1,101 @@
+---
+title: Astro
+description: הוסף רכיבי ווב של Wink לאתרים מבוססי Astro באמצעות סקריפטים בצד הלקוח וארכיטקטורת איים.
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Astro שולח אפס JavaScript כברירת מחדל ומציג את כל הרכיבים כ-HTML סטטי בשרת. רכיבי הווב של Wink חייבים להיטען דרך תגית `<script>` בצד הלקוח. ארכיטקטורת האיים של Astro עושה זאת פשוטה וברורה.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="התקן וטעין את חבילת ה-CDN עם טיפוסי TypeScript."
+/>
+
+## התקנה
+
+```bash
+npm install @wink/elements
+```
+
+## טעינה בפריסת בסיס משותפת
+
+הוסף את סקריפט הטעינה לפריסת הבסיס שלך כך שירוץ בכל עמוד:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline לעומת סקריפטים מקובצים">
+ללא `is:inline`, Astro מקבץ ומסיר כפילויות של הסקריפט — `load()` נקרא פעם אחת גם אם הפריסה משמשת בעמודים רבים. זו הגישה המועדפת. השתמש ב-`is:inline` רק כשאתה צריך שהסקריפט יהיה מוטמע כטקסט גולמי (למשל כדי להימנע ממקבץ המודולים).
+</Aside>
+
+## שימוש בעמוד
+
+מכיוון שרכיבי Astro מוצגים בשרת, תגיות `<wink-*>` יוצגו כ-HTML סטטי. סקריפט ה-CDN ירשום את הרכיבים המותאמים אישית כאשר העמוד ייטען בדפדפן:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## בתוך רכיב במסגרת (אי)
+
+אם אתה משתמש ב-React, Vue או Svelte לצד Wink, טען את `@wink/elements` בפריסה (כמו למעלה) והשתמש בתגיות `<wink-*>` בתוך רכיבי האי שלך כרגיל — הרכיבים המותאמים אישית יירשמו עד שהאי יידלק.
+
+```tsx
+// src/components/HotelCard.tsx (React island)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() כבר נקרא בפריסה — בטוח להציג כאן
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## משתני סביבה
+
+Astro חושף רק משתנים שמתחילים ב-`PUBLIC_` לדפדפן:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## קריאה נוספת
+
+- [הפניה לרכיבי ווב](/he/integrations/web-components)
+- [חבילת npm של @wink/elements](/he/integrations/npm)

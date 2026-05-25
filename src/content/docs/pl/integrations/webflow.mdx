@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Osadź inwentarz podróży Wink na swojej stronie Webflow za pomocą niestandardowych osadzeń kodu.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow obsługuje niestandardowy HTML i JavaScript w trzech miejscach: w całej witrynie w `<head>`, w całej witrynie w `</body>` oraz w osadzeniach kodu dla poszczególnych elementów. Ułatwia to integrację komponentów webowych Wink.
+
+:::note
+Niestandardowy kod jest dostępny w **planie Basic Webflow i wyższych**. Wstrzyknięcie w całej witrynie w `</body>` wymaga płatnego planu hostingowego.
+:::
+
+## Załaduj skrypty Wink w całej witrynie
+
+<Steps>
+1. W Webflow Designer otwórz **Project Settings → Custom Code**.
+2. W sekcji **Head Code** dodaj arkusz stylów:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. W sekcji **Footer Code** dodaj skrypt i loader aplikacji (zamień `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Kliknij **Save Changes**.
+</Steps>
+
+:::tip
+Twój Client ID jest dostępny w Twoim koncie Wink w sekcji [Applications](/pl/portal/settings/applications).
+:::
+
+## Dodaj komponent do konkretnego elementu
+
+<Steps>
+1. W Designerze wybierz **Div** lub **Section**, w którym chcesz umieścić komponent.
+2. W prawym panelu kliknij ikonę **`</>` Embed** (lub dodaj element **HTML Embed** z panelu Add).
+3. Wklej HTML komponentu, na przykład:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Kliknij **Save & Close**.
+</Steps>
+
+## Niestandardowy kod na poszczególnych stronach
+
+Jeśli potrzebujesz Wink tylko na wybranych stronach, użyj wstrzyknięcia kodu na poziomie strony zamiast w całej witrynie:
+
+<Steps>
+1. Otwórz **Page Settings** dla wybranej strony (ikona koła zębatego w panelu Pages).
+2. Przewiń do **Custom Code → Before `</body>` tag**.
+3. Wklej ten sam skrypt i loader aplikacji co powyżej.
+4. Zapisz ustawienia strony.
+</Steps>
+
+## Dostępne komponenty
+
+| Komponent | Znacznik HTML | Przeznaczenie |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Wyświetlanie kart hoteli, siatek, map |
+| Lookup | `<wink-lookup>` | Pasek wyszukiwania destynacji |
+| Search button | `<wink-search-button>` | Otwórz wybór planu podróży |
+| Account button | `<wink-account-button>` | Logowanie / menu użytkownika |
+| Itinerary button | `<wink-itinerary-button>` | Pokaż aktualny plan podróży |
+| Itinerary picker | `<wink-itinerary-picker>` | Pełny formularz planu podróży |
+| Shopping cart | `<wink-shopping-cart-button>` | Przycisk podsumowania koszyka |
+
+Zobacz [Web Components](/pl/integrations/web-components) dla pełnej referencji atrybutów.
+
+## Dalsza lektura
+
+- [Referencja Web Components](/pl/integrations/web-components)
+- [Jak uzyskać Client ID](/pl/portal/settings/applications)
+- [Dokumentacja niestandardowego kodu Webflow](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

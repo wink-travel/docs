@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: 클라이언트 측 로딩을 위해 gatsby-browser.js를 사용하여 Gatsby 사이트에 Wink 웹 컴포넌트를 추가합니다.
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby는 빌드 시 정적 HTML을 생성하고 클라이언트에서 리하이드레이션합니다. CDN 스크립트는 브라우저 API에서만 로드해야 하므로 `gatsby-browser.js`가 적합한 위치입니다.
+
+<LinkCard
+  title="@wink/elements npm 패키지"
+  href="/integrations/npm"
+  description="TypeScript 타입과 함께 CDN 번들을 설치하고 로드하세요."
+/>
+
+## 설치
+
+```bash
+npm install @wink/elements
+```
+
+## gatsby-browser.js를 통한 로드
+
+`onClientEntry` API는 Gatsby 런타임이 브라우저에서 초기화되자마자 한 번 실행됩니다:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## 환경 변수
+
+Gatsby는 `GATSBY_` 접두사가 붙은 변수만 브라우저 번들에 노출합니다:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## 페이지 및 컴포넌트에서 사용
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby는 React를 사용하므로 React 통합과 동일한 JSX 내장 선언을 추가하세요:
+
+```ts
+// src/wink-elements.d.ts
+// 전체 선언 파일은 /integrations/react를 참조하세요
+```
+
+<Aside type="caution" title="SSR 빌드 오류">
+`gatsby build` 중 Gatsby는 Node.js 환경에서 페이지를 정적 HTML로 렌더링하는데, 이 환경에는 `window`와 `document`가 없습니다. 페이지 컴포넌트 최상단(즉, `onClientEntry` 외부)에서 `@wink/elements`를 임포트하면 빌드가 실패합니다.
+
+항상 `gatsby-browser.js` / `onClientEntry`를 사용하고, 페이지나 컴포넌트 모듈 범위에서 `load`를 직접 임포트하지 마세요.
+</Aside>
+
+## gatsby-ssr.js — 변경 불필요
+
+`gatsby-ssr.js`를 수정할 필요가 없습니다. `<wink-*>` 태그는 정적 출력에서 일반 HTML 요소로 렌더링되며, 브라우저가 페이지를 로드할 때 CDN 스크립트가 이를 업그레이드합니다.
+
+## 추가 자료
+
+- [웹 컴포넌트 참조](/ko/integrations/web-components)
+- [@wink/elements npm 패키지](/ko/integrations/npm)
+- [React 통합](/ko/integrations/react)

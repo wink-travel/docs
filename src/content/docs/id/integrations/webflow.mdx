@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Sematkan inventaris perjalanan Wink ke situs Webflow Anda menggunakan embed kode kustom.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow mendukung HTML dan JavaScript kustom di tiga tempat: `<head>` seluruh situs, `</body>` seluruh situs, dan embed kode per elemen. Ini membuat integrasi komponen web Wink menjadi mudah.
+
+:::note
+Kode kustom tersedia pada **paket Basic Webflow dan di atasnya**. Penyisipan `</body>` seluruh situs memerlukan paket hosting berbayar.
+:::
+
+## Muat skrip Wink di seluruh situs
+
+<Steps>
+1. Di Webflow Designer, buka **Project Settings → Custom Code**.
+2. Di bagian **Head Code**, tambahkan stylesheet:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. Di bagian **Footer Code**, tambahkan skrip dan pemuat aplikasi (ganti `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klik **Save Changes**.
+</Steps>
+
+:::tip
+Client ID Anda tersedia di akun Wink Anda di bawah [Applications](/id/portal/settings/applications).
+:::
+
+## Tambahkan komponen ke elemen tertentu
+
+<Steps>
+1. Di Designer, pilih **Div** atau **Section** tempat Anda ingin menambahkan komponen.
+2. Di panel kanan, klik ikon **`</>` Embed** (atau tambahkan elemen **HTML Embed** dari panel Add).
+3. Tempelkan HTML komponen, misalnya:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klik **Save & Close**.
+</Steps>
+
+## Kode kustom per halaman
+
+Jika Anda hanya membutuhkan Wink di halaman tertentu, gunakan penyisipan kode per halaman daripada seluruh situs:
+
+<Steps>
+1. Buka **Page Settings** untuk halaman target (ikon roda gigi di panel Pages).
+2. Gulir ke **Custom Code → Before `</body>` tag**.
+3. Tempelkan skrip dan pemuat aplikasi yang sama seperti di atas.
+4. Simpan pengaturan halaman.
+</Steps>
+
+## Komponen yang tersedia
+
+| Komponen | Tag HTML | Fungsi |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Menampilkan kartu hotel, grid, peta |
+| Lookup | `<wink-lookup>` | Bar pencarian destinasi |
+| Search button | `<wink-search-button>` | Membuka pemilih itinerary |
+| Account button | `<wink-account-button>` | Masuk / menu pengguna |
+| Itinerary button | `<wink-itinerary-button>` | Menampilkan itinerary saat ini |
+| Itinerary picker | `<wink-itinerary-picker>` | Formulir itinerary lengkap |
+| Shopping cart | `<wink-shopping-cart-button>` | Tombol ringkasan keranjang |
+
+Lihat [Web Components](/id/integrations/web-components) untuk referensi atribut lengkap.
+
+## Bacaan lanjutan
+
+- [Referensi Web Components](/id/integrations/web-components)
+- [Dapatkan Client ID Anda](/id/portal/settings/applications)
+- [Dokumentasi kode kustom Webflow](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

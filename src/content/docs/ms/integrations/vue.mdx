@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: Gunakan komponen web Wink dalam projek Vue 3 dan Vite dengan pilihan penyusun isCustomElement.
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3 memerlukan satu petunjuk penyusun untuk menganggap tag `<wink-*>` sebagai elemen khusus asli dan bukan komponen Vue yang tidak dikenal pasti. Selepas itu, ia berfungsi seperti elemen HTML lain.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Pasang dan muatkan bundel CDN dengan jenis TypeScript."
+/>
+
+## Pasang
+
+```bash
+npm install @wink/elements
+```
+
+## Konfigurasikan penyusun
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Anggap semua tag yang bermula dengan "wink-" sebagai elemen khusus
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## Muatkan CDN sekali pada permulaan aplikasi
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## Gunakan dalam templat
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — tambah jenis elemen global
+
+Vue 3 + TypeScript membaca jenis elemen khusus dari `HTMLElementTagNameMap` global. Tambah fail deklarasi:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## Pembolehubah persekitaran
+
+Tambah ke `.env.local`:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite hanya mendedahkan pembolehubah yang diawali dengan `VITE_` kepada bundel klien.
+
+<Aside type="tip">
+Untuk Nuxt 3, lihat halaman integrasi khusus [Nuxt integration page](/ms/integrations/nuxt) yang merangkumi pemuatan selamat SSR.
+</Aside>
+
+## Bacaan lanjut
+
+- [Rujukan Web Components](/ms/integrations/web-components)
+- [@wink/elements npm package](/ms/integrations/npm)
+- [Integrasi Nuxt 3](/ms/integrations/nuxt)

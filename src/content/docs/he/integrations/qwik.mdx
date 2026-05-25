@@ -1,0 +1,120 @@
+---
+title: Qwik
+description: השתמשו ברכיבי ווב של Wink באפליקציות Qwik ו-QwikCity עם useVisibleTask$ לביצוע בצד הלקוח בלבד.
+sidebar:
+  order: 26
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+מודל ה-resumability של Qwik אומר ש-JavaScript מתבצע בעצלנות — רק כאשר המשתמש מתקשר. השתמשו ב-`useVisibleTask$` כדי להריץ קוד שחייב להתבצע בדפדפן כשהרכיב הופך לגלוי.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="התקינו וטעינו את חבילת ה-CDN עם טיפוסי TypeScript."
+/>
+
+## התקנה
+
+```bash
+npm install @wink/elements
+```
+
+## טעינה עם useVisibleTask$
+
+`useVisibleTask$` הוא ה-hook של מחזור החיים ב-Qwik לקוד שמתבצע רק בדפדפן, באופן מיידי. מקמו אותו בפריסת השורש שלכם:
+
+```tsx
+// src/routes/layout.tsx
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { load } from '@wink/elements';
+
+export default component$(() => {
+  useVisibleTask$(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+
+  return (
+    <main>
+      <Slot />
+    </main>
+  );
+});
+```
+
+<Aside type="tip" title="אסטרטגיית useVisibleTask$">
+ברירת המחדל היא ש-`useVisibleTask$` רץ כאשר הרכיב נראה בתוך חלון התצוגה. בפריסת שורש שתמיד גלויה, זה יקרה מיד בעת טעינת הדף — שקול ל-`onMount` במסגרת אחרות.
+
+העבירו `{ strategy: 'document-ready' }` אם תרצו שהסקריפט ייטען מוקדם ככל האפשר:
+```ts
+useVisibleTask$({ strategy: 'document-ready' }, () => {
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+});
+```
+</Aside>
+
+## שימוש בדף
+
+```tsx
+// src/routes/hotels/index.tsx
+import { component$ } from '@builder.io/qwik';
+
+export default component$(() => {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+});
+```
+
+## TypeScript — הכרזת JSX intrinsics
+
+Qwik משתמש במרחב השמות JSX משלו. הרחיבו אותו בקובץ הכרזה:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module '@builder.io/qwik' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes;
+      'wink-lookup': WinkLookupAttributes;
+      'wink-search-button': WinkSearchButtonAttributes;
+      'wink-account-button': WinkAccountButtonAttributes;
+      'wink-itinerary-button': WinkItineraryButtonAttributes;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes;
+      'wink-app-loader': WinkAppLoaderAttributes;
+    }
+  }
+}
+```
+
+## משתני סביבה
+
+Qwik (מבוסס Vite) חושף משתנים שמתחילים ב-`PUBLIC_` לדפדפן:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="רינדור בצד השרת">
+Qwik מרנדר ל-HTML בצד השרת. תגיות `<wink-*>` יוצאות כסימון סטטי. סקריפט ה-CDN והרישום של הרכיב המותאם מתבצעים בצד הלקוח לאחר ש-`useVisibleTask$` מופעל. הרכיבים יהיו במצב לא פתור לזמן קצר עד שחבילת ה-CDN תיטען — זה התנהגות צפויה.
+</Aside>
+
+## קריאה נוספת
+
+- [הפניות לרכיבי ווב](/he/integrations/web-components)
+- [חבילת npm של @wink/elements](/he/integrations/npm)

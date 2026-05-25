@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: Pievienojiet Wink tīmekļa komponentus Gatsby vietnēm, izmantojot gatsby-browser.js klienta puses ielādei.
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby ģenerē statisku HTML būvēšanas laikā un atkārtoti aktivizē to klientā. CDN skripti jāielādē tikai pārlūkprogrammas API — `gatsby-browser.js` ir pareizā vieta.
+
+<LinkCard
+  title="@wink/elements npm pakotne"
+  href="/integrations/npm"
+  description="Instalējiet un ielādējiet CDN pakotni ar TypeScript tipiem."
+/>
+
+## Instalēšana
+
+```bash
+npm install @wink/elements
+```
+
+## Ielāde caur gatsby-browser.js
+
+`onClientEntry` API izpildās vienreiz, tiklīdz Gatsby izpildes vide tiek inicializēta pārlūkprogrammā:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## Vides mainīgie
+
+Gatsby pārlūkprogrammas pakotnei atklāj tikai mainīgos, kas sākas ar `GATSBY_`:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## Lietošana lapās un komponentēs
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby izmanto React, tāpēc pievienojiet tās pašas JSX iekšējās deklarācijas kā React integrācijā:
+
+```ts
+// src/wink-elements.d.ts
+// Skatīt /integrations/react pilnu deklarācijas failu
+```
+
+<Aside type="caution" title="SSR būvēšanas kļūdas">
+`gatsby build` laikā Gatsby renderē lapas statiskā HTML formātā Node.js vidē, kur `window` un `document` nav pieejami. Ja importējat `@wink/elements` lapas komponentes augšējā līmenī (ārpus `onClientEntry`), būvēšana neizdosies.
+
+Vienmēr izmantojiet `gatsby-browser.js` / `onClientEntry` — nekad neimportējiet `load` tieši lapas vai komponentes moduļa līmenī.
+</Aside>
+
+## gatsby-ssr.js — nav nepieciešamas izmaiņas
+
+Nav jāmaina `gatsby-ssr.js`. `<wink-*>` tagi tiek renderēti kā parasti HTML elementi statiskajā izvades failā, un CDN skripts tos uzlabo, kad pārlūkprogramma ielādē lapu.
+
+## Papildu lasāmviela
+
+- [Tīmekļa komponentu atsauce](/lv/integrations/web-components)
+- [@wink/elements npm pakotne](/lv/integrations/npm)
+- [React integrācija](/lv/integrations/react)

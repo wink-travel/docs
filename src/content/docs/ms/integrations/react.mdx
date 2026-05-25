@@ -1,0 +1,111 @@
+---
+title: React
+description: Gunakan komponen web Wink dalam mana-mana aplikasi React dengan sokongan penuh TypeScript melalui @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ mempunyai sokongan kelas pertama untuk elemen tersuai. React 18 dan sebelumnya hanya menghantar atribut sebagai string — gunakan corak pembantu bertipe di bawah untuk kekal selamat merentas versi.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Pasang dan muatkan bundel CDN dengan jenis TypeScript."
+/>
+
+## Pasang
+
+```bash
+npm install @wink/elements
+```
+
+## Muat sekali di akar aplikasi
+
+Panggil `load()` dalam komponen peringkat atas anda. Ia idempotent — selamat dipanggil berulang kali.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Gunakan komponen dalam JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — isytihar JSX intrinsics
+
+React tidak mengetahui nama elemen tersuai secara lalai. Tambah fail pengisytiharan sekali untuk menghentikan ralat jenis:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="Had atribut React 18">
+React 18 dan sebelumnya menukar semua props JSX kepada string sebelum menghantarnya ke DOM. Props boolean dan objek mesti ditukar secara manual. React 19 menghantar props bukan string terus ke elemen tersuai — tiada jalan penyelesaian diperlukan.
+</Aside>
+
+## Menghantar atribut bertipe (selamat untuk React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread berfungsi dalam React 19; untuk React 18 semua nilai adalah string juga
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Bacaan lanjut
+
+- [Rujukan Web Components](/ms/integrations/web-components)
+- [@wink/elements npm package](/ms/integrations/npm)
+- [Integrasi Next.js](/ms/integrations/nextjs)

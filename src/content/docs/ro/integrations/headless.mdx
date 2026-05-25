@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Încorporează inventarul de călătorii Wink în orice headless CMS (Contentful, Strapi, Sanity etc.) sau site construit personalizat.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Componentele web Wink sunt elemente HTML personalizate independente de framework. Dacă headless CMS-ul tău redă HTML — fie prin Next.js, Nuxt, Astro, SvelteKit sau orice alt framework — poți încorpora componentele Wink fără nicio integrare specială.
+
+## Cele trei pași pentru încorporare
+
+Fiecare integrare Wink, indiferent de platformă, urmează aceiași trei pași.
+
+### 1. Include fișierul de stiluri
+
+Adaugă acest cod în `<head>`-ul documentului tău (sau echivalentul layout-ului global):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Include JavaScript-ul
+
+Adaugă acest cod înainte de tag-ul de închidere `</body>` (sau în secțiunea de script a layout-ului tău):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Adaugă încărcătorul aplicației
+
+Plasează acest element **o singură dată pe pagină**, oriunde în corpul paginii (de obicei în footer-ul layout-ului global):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+ID-ul tău de client este disponibil în contul Wink, în secțiunea [Applications](/ro/portal/settings/applications).
+:::
+
+## Exemple de framework-uri
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+Utilizatori TypeScript: adăugați un fișier `global.d.ts` care declară tipurile elementelor personalizate sau folosiți pachetul npm [`@wink/elements`](https://github.com/wink2travel/wink-elements) care include declarații de tip.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Plasarea componentelor în conținut
+
+În câmpurile de text îmbogățit sau tipurile de câmpuri personalizate din CMS-ul tău, încorporează direct tag-urile componentelor în output-ul HTML:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Pentru Contentful, Strapi, Sanity sau platforme headless similare, folosește un câmp **Rich Text** sau un **Custom Block** care redă HTML brut și lipește acolo tag-ul componentei.
+
+## Pachetul npm
+
+Pentru proiectele TypeScript, pachetul [`@wink/elements`](https://github.com/wink2travel/wink-elements) oferă:
+- O funcție `load()` care injectează scripturile CDN programatic
+- Declarații complete de tip TypeScript pentru toate atributele componentelor
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Apelează o singură dată la pornirea aplicației
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Componente disponibile
+
+| Componentă | Tag HTML | Scop |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Afișează carduri de hotel, grile, hărți |
+| Lookup | `<wink-lookup>` | Bară de căutare pentru destinații |
+| Search button | `<wink-search-button>` | Deschide selectorul de itinerariu |
+| Account button | `<wink-account-button>` | Autentificare / meniu utilizator |
+| Itinerary button | `<wink-itinerary-button>` | Afișează itinerariul curent |
+| Itinerary picker | `<wink-itinerary-picker>` | Formular complet pentru itinerariu |
+| Shopping cart | `<wink-shopping-cart-button>` | Buton sumar coș de cumpărături |
+
+Vezi [Web Components](/ro/integrations/web-components) pentru referința completă a atributelor.

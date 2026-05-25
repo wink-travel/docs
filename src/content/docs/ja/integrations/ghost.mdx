@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: Code Injectionを使ってGhostの出版物にWinkの旅行在庫を埋め込みます。
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Ghostの組み込み**Code Injection**機能を使うと、出版物のグローバルな`<head>`や`</body>`にスクリプトを追加できます。すべてのGhostプランでコードインジェクションがサポートされているため、Winkコンポーネントを任意のページや投稿に簡単に埋め込めます。
+
+## Winkスクリプトをサイト全体に読み込む
+
+<Steps>
+1. Ghost管理パネルで、**Settings → Code Injection**に移動します。
+2. **Site Header**ボックスにスタイルシートを追加します:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. **Site Footer**ボックスにスクリプトとアプリケーションローダーを追加します（`YOUR_CLIENT_ID`は置き換えてください）:
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. **Save**をクリックします。
+</Steps>
+
+:::tip
+クライアントIDはWinkアカウントの[Applications](/ja/portal/settings/applications)で確認できます。
+:::
+
+## 投稿やページにコンポーネントを追加する
+
+Ghostのエディターは**HTMLカード**をサポートしており、コンテンツ内の任意の場所に生のHTMLを挿入できます。
+
+<Steps>
+1. Ghostエディターで投稿またはページを開きます。
+2. `/`を入力してカードピッカーを開き、**HTML**を選択します。
+3. コンポーネントのHTMLを貼り付けます。例:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. カードの外をクリックしてプレビューし、公開します。
+</Steps>
+
+## ページごとのコードインジェクション
+
+特定のページのみにコンポーネントを表示したい場合、Ghostはページごとのコードインジェクションもサポートしています:
+
+<Steps>
+1. 投稿またはページの設定（エディターの歯車アイコン）を開きます。
+2. **Code Injection**までスクロールします。
+3. **Footer**フィールドにコンポーネントタグを追加します（グローバルなapp-loaderはサイト全体のフッターにのみ必要です）。
+4. 保存します。
+</Steps>
+
+## 利用可能なコンポーネント
+
+| コンポーネント | HTMLタグ | 用途 |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | ホテルカード、グリッド、地図の表示 |
+| Lookup | `<wink-lookup>` | 目的地検索バー |
+| Search button | `<wink-search-button>` | 旅程ピッカーを開くボタン |
+| Account button | `<wink-account-button>` | サインイン / ユーザーメニュー |
+| Itinerary button | `<wink-itinerary-button>` | 現在の旅程を表示 |
+| Itinerary picker | `<wink-itinerary-picker>` | 旅程フォーム全体 |
+| Shopping cart | `<wink-shopping-cart-button>` | カート概要ボタン |
+
+完全な属性リファレンスは[Web Components](/ja/integrations/web-components)をご覧ください。
+
+## さらに読む
+
+- [Web Componentsリファレンス](/ja/integrations/web-components)
+- [クライアントIDの取得](/ja/portal/settings/applications)
+- [Ghost Code Injectionドキュメント](https://ghost.org/help/ghost-themes/#code-injection)

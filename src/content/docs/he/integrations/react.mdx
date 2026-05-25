@@ -1,0 +1,111 @@
+---
+title: React
+description: השתמשו ברכיבי ווב של Wink בכל אפליקציית React עם תמיכה מלאה ב-TypeScript דרך @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ תומך באופן מלא ברכיבים מותאמים אישית. React 18 והגרסאות הקודמות מעבירות רק מחרוזות בתור תכונות — השתמשו בתבנית העזר המוטיפית למטה כדי להישאר בטוחים בין הגרסאות.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="התקינו וטעינו את חבילת ה-CDN עם טיפוסי TypeScript."
+/>
+
+## התקנה
+
+```bash
+npm install @wink/elements
+```
+
+## טעינה פעם אחת בשורש האפליקציה
+
+קראו ל-`load()` ברכיב העליון שלכם. הפונקציה אידמפוטנטית — בטוח לקרוא לה מספר פעמים.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## שימוש ברכיבים ב-JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — הכרזת JSX intrinsics
+
+React לא מכיר שמות של רכיבים מותאמים אישית כברירת מחדל. הוסיפו קובץ הכרזה פעם אחת כדי למנוע שגיאות טיפוס:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="מגבלת תכונות ב-React 18">
+React 18 והגרסאות הקודמות ממירים את כל התכונות ב-JSX למחרוזות לפני העברתם ל-DOM. תכונות בוליאניות ואובייקטים חייבים לעבור המרה ידנית. React 19 מעביר תכונות שאינן מחרוזות ישירות לרכיבים מותאמים אישית — אין צורך בפתרון עקיף.
+</Aside>
+
+## העברת תכונות מוטיפיות (React 18 בטוח)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread עובד ב-React 19; ב-React 18 כל הערכים מחרוזות בכל מקרה
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## קריאה נוספת
+
+- [הפניות לרכיבי ווב](/he/integrations/web-components)
+- [חבילת npm של @wink/elements](/he/integrations/npm)
+- [אינטגרציה עם Next.js](/he/integrations/nextjs)

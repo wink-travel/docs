@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: Pridėkite Wink žiniatinklio komponentus prie Gatsby svetainių naudodami gatsby-browser.js klientiniam įkėlimui.
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby generuoja statinį HTML kūrimo metu ir atgaivina jį kliento pusėje. CDN skriptai turi būti įkeliami tik naršyklės API — `gatsby-browser.js` yra tinkama vieta.
+
+<LinkCard
+  title="@wink/elements npm paketas"
+  href="/integrations/npm"
+  description="Įdiekite ir įkelkite CDN paketą su TypeScript tipais."
+/>
+
+## Įdiegimas
+
+```bash
+npm install @wink/elements
+```
+
+## Įkėlimas per gatsby-browser.js
+
+`onClientEntry` API paleidžiamas vieną kartą, kai tik Gatsby vykdymo laikas inicializuojasi naršyklėje:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## Aplinkos kintamieji
+
+Gatsby naršyklės paketui atskleidžia tik kintamuosius, prasidedančius `GATSBY_`:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## Naudojimas puslapiuose ir komponentuose
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby naudoja React, tad pridėkite tas pačias JSX intrinsekcijas kaip React integracijoje:
+
+```ts
+// src/wink-elements.d.ts
+// Žr. /integrations/react pilną deklaracijos failą
+```
+
+<Aside type="caution" title="SSR kūrimo klaidos">
+`gatsby build` metu Gatsby generuoja puslapius į statinį HTML Node.js aplinkoje, kur `window` ir `document` nėra prieinami. Jei importuosite `@wink/elements` puslapio komponento viršuje (už `onClientEntry` ribų), kūrimas nepavyks.
+
+Visada naudokite `gatsby-browser.js` / `onClientEntry` — niekada neimportuokite `load` tiesiogiai puslapio ar komponento modulyje.
+</Aside>
+
+## gatsby-ssr.js — keitimų nereikia
+
+Jums nereikia keisti `gatsby-ssr.js`. `<wink-*>` žymos statiniame išvestyje atvaizduojamos kaip paprasti HTML elementai, o CDN skriptas juos atnaujina, kai naršyklė įkelia puslapį.
+
+## Tolimesnė literatūra
+
+- [Web Components referencija](/lt/integrations/web-components)
+- [@wink/elements npm paketas](/lt/integrations/npm)
+- [React integracija](/lt/integrations/react)

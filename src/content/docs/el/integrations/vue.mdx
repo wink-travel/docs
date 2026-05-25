@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: Χρησιμοποιήστε τα Wink web components σε έργα Vue 3 και Vite με την επιλογή compiler isCustomElement.
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Το Vue 3 χρειάζεται μια υπόδειξη στον compiler για να αντιμετωπίζει τις ετικέτες `<wink-*>` ως εγγενή custom elements αντί για μη επιλυμένα Vue components. Μετά από αυτό, λειτουργούν όπως οποιοδήποτε άλλο στοιχείο HTML.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Εγκαταστήστε και φορτώστε το CDN bundle με τύπους TypeScript."
+/>
+
+## Εγκατάσταση
+
+```bash
+npm install @wink/elements
+```
+
+## Διαμόρφωση του compiler
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Αντιμετωπίστε όλες τις ετικέτες που ξεκινούν με "wink-" ως custom elements
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## Φορτώστε το CDN μία φορά κατά την εκκίνηση της εφαρμογής
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## Χρήση σε πρότυπα
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — επέκταση των τύπων παγκόσμιων στοιχείων
+
+Το Vue 3 + TypeScript διαβάζει τους τύπους custom elements από το παγκόσμιο `HTMLElementTagNameMap`. Προσθέστε ένα αρχείο δήλωσης:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## Μεταβλητές περιβάλλοντος
+
+Προσθέστε στο `.env.local`:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Το Vite εκθέτει μόνο τις μεταβλητές που ξεκινούν με `VITE_` στο client bundle.
+
+<Aside type="tip">
+Για Nuxt 3, δείτε την ειδική [σελίδα ενσωμάτωσης Nuxt](/el/integrations/nuxt) που καλύπτει το ασφαλές φόρτωμα SSR.
+</Aside>
+
+## Περισσότερη ανάγνωση
+
+- [Αναφορά Web Components](/el/integrations/web-components)
+- [@wink/elements npm package](/el/integrations/npm)
+- [Ενσωμάτωση Nuxt 3](/el/integrations/nuxt)

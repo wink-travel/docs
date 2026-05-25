@@ -1,0 +1,111 @@
+---
+title: React
+description: Használja a Wink webkomponenseket bármely React alkalmazásban teljes TypeScript támogatással az @wink/elements segítségével.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+A React 19+ első osztályú támogatást nyújt az egyedi elemekhez. A React 18 és korábbi verziók csak string attribútumokat adnak át — használja az alábbi típusos segédmintát, hogy verziók között is biztonságban legyen.
+
+<LinkCard
+  title="@wink/elements npm csomag"
+  href="/integrations/npm"
+  description="Telepítse és töltse be a CDN csomagot TypeScript típusokkal."
+/>
+
+## Telepítés
+
+```bash
+npm install @wink/elements
+```
+
+## Egyszeri betöltés az alkalmazás gyökerénél
+
+Hívja meg a `load()` függvényt a legfelső komponensében. Ez idempotens — többször is biztonságosan meghívható.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Komponensek használata JSX-ben
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — JSX intrinzik deklarálása
+
+A React alapértelmezés szerint nem ismeri az egyedi elemneveket. Adjon hozzá egy deklarációs fájlt egyszer, hogy elkerülje a típushibákat:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="React 18 attribútum korlátozás">
+A React 18 és korábbi verziók az összes JSX propot stringgé alakítják, mielőtt átadnák a DOM-nak. A boolean és objektum típusú propokat kézzel kell konvertálni. A React 19 nem-string propokat közvetlenül továbbít az egyedi elemeknek — így nincs szükség megkerülésre.
+</Aside>
+
+## Típusos attribútumok átadása (React 18 kompatibilis)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// A spread működik React 19-ben; React 18 esetén amúgy is minden érték string
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## További olvasnivaló
+
+- [Web Components referencia](/hu/integrations/web-components)
+- [@wink/elements npm csomag](/hu/integrations/npm)
+- [Next.js integráció](/hu/integrations/nextjs)

@@ -1,0 +1,128 @@
+---
+title: Svelte / SvelteKit
+description: Käytä Wink-web-komponentteja Svelte- ja SvelteKit-sovelluksissa onMount- ja selainvarmistuksilla.
+sidebar:
+  order: 20
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Svelte välittää attribuutit suoraan DOM:iin ilman virtuaalista DOM-kerrosta, mikä tekee mukautetuista elementeistä luonnollisen valinnan. SvelteKitille (SSR) lataa CDN `onMount`-sisällä tai suojaa `browser`-tarkistuksella.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Asenna ja lataa CDN-paketti TypeScript-tyypeillä."
+/>
+
+## Asennus
+
+```bash
+npm install @wink/elements
+```
+
+## SvelteKit — juuritaso
+
+```ts
+// src/routes/+layout.ts
+import { browser } from '$app/environment';
+import { load as loadWink } from '@wink/elements';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+Vaihtoehtoisesti lataa `onMount`-sisällä `+layout.svelte`-tiedostossa:
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<slot />
+```
+
+## Käyttö komponenteissa
+
+Svelte välittää kaikki tuntemattomat attribuutit suoraan DOM:iin, joten lisäkonfiguraatiota ei tarvita:
+
+```svelte
+<script>
+  export let layoutId = 'YOUR_LAYOUT_ID';
+</script>
+
+<main>
+  <wink-content-loader layout="HOTEL" id={layoutId} />
+  <wink-lookup />
+</main>
+```
+
+## Svelte 5 (runes-syntaksi)
+
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  let { layoutId }: { layoutId: string } = $props();
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id={layoutId} />
+```
+
+## Ympäristömuuttujat
+
+SvelteKit altistaa selaimelle vain muuttujat, jotka alkavat `PUBLIC_`-etuliitteellä:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="SSR-renderöinti">
+Älä koskaan renderöi `<wink-*>`-elementtejä palvelinpuolen renderöinnin aikana — mukautetut elementit rekisteröidään selaimen `customElements`-rekisteriin, jota ei ole palvelimella. Kääri ne `{#if browser}`-ehtoon tai kutsu `load()` vain `onMount`-sisällä.
+</Aside>
+
+```svelte
+<script>
+  import { browser } from '$app/environment';
+</script>
+
+{#if browser}
+  <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+{/if}
+```
+
+## Pelkkä Svelte (Vite, ei SvelteKit)
+
+```svelte
+<!-- src/App.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+```
+
+## Lisälukemista
+
+- [Web Components reference](/fi/integrations/web-components)
+- [@wink/elements npm package](/fi/integrations/npm)

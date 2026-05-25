@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: Використовуйте веб-компоненти Wink у проєктах Vue 3 та Vite з опцією компілятора isCustomElement.
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3 потребує однієї підказки компілятору, щоб розглядати теги `<wink-*>` як нативні кастомні елементи, а не як невизначені компоненти Vue. Після цього вони працюють як будь-який інший HTML-елемент.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Встановіть і завантажте CDN-бандл з типами TypeScript."
+/>
+
+## Встановлення
+
+```bash
+npm install @wink/elements
+```
+
+## Налаштування компілятора
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Розглядати всі теги, що починаються з "wink-", як кастомні елементи
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## Завантаження CDN один раз при запуску додатку
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## Використання у шаблонах
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — розширення глобальних типів елементів
+
+Vue 3 + TypeScript читає типи кастомних елементів із глобального `HTMLElementTagNameMap`. Додайте файл декларації:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## Змінні середовища
+
+Додайте у `.env.local`:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite робить доступними для клієнтського бандла лише змінні, що починаються з `VITE_`.
+
+<Aside type="tip">
+Для Nuxt 3 дивіться спеціальну [сторінку інтеграції Nuxt](/uk/integrations/nuxt), яка охоплює безпечне для SSR завантаження.
+</Aside>
+
+## Додаткова література
+
+- [Довідка по веб-компонентах](/uk/integrations/web-components)
+- [@wink/elements npm package](/uk/integrations/npm)
+- [Інтеграція Nuxt 3](/uk/integrations/nuxt)

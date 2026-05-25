@@ -1,0 +1,101 @@
+---
+title: Astro
+description: Adj hozzá Wink webkomponenseket Astro oldalakhoz kliensoldali szkriptekkel és sziget architektúrával.
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Az Astro alapértelmezés szerint nem szállít JavaScriptet, és az összes komponenst statikus HTML-ként rendereli a szerveren. A Wink webkomponenseket kliensoldali `<script>` taggel kell betölteni. Az Astro sziget architektúrája ezt egyszerűvé teszi.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Telepítsd és töltsd be a CDN csomagot TypeScript típusokkal."
+/>
+
+## Telepítés
+
+```bash
+npm install @wink/elements
+```
+
+## Betöltés megosztott elrendezésben
+
+Add hozzá a betöltő szkriptet az alap elrendezésedhez, hogy minden oldalon fusson:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline vs bundled scripts">
+`is:inline` nélkül az Astro becsomagolja és deduplikálja a szkriptet — a `load()` csak egyszer hívódik meg, még ha az elrendezést sok oldalon használják is. Ez az ajánlott megközelítés. Az `is:inline` használata csak akkor javasolt, ha a szkriptet nyers szövegként kell beágyazni (pl. a modulcsomagoló elkerülése érdekében).
+</Aside>
+
+## Használat egy oldalon
+
+Mivel az Astro komponensek szerveroldalon renderelődnek, a `<wink-*>` tagek statikus HTML-ként jelennek meg. A CDN szkript regisztrálja az egyedi elemeket, amikor az oldal betöltődik a böngészőben:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## Keretrendszer komponensben (sziget)
+
+Ha React, Vue vagy Svelte szigeteket használsz Winkkel együtt, töltsd be az `@wink/elements`-et az elrendezésben (ahogy fent), és használd a `<wink-*>` tageket a sziget komponenseidben normálisan — az egyedi elemek regisztrálva lesznek, mire a sziget hidratálódik.
+
+```tsx
+// src/components/HotelCard.tsx (React sziget)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // a load() már meghívódott az elrendezés által — itt biztonságosan renderelhető
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## Környezeti változók
+
+Az Astro csak a `PUBLIC_` előtaggal rendelkező változókat teszi elérhetővé a böngésző számára:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## További olvasnivaló
+
+- [Web Components referencia](/hu/integrations/web-components)
+- [@wink/elements npm package](/hu/integrations/npm)

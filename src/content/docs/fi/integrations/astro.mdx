@@ -1,0 +1,101 @@
+---
+title: Astro
+description: Lisää Wink-verkkokomponentit Astro-sivustoille käyttämällä asiakaspuolen skriptejä ja saariarkkitehtuuria.
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Astro ei oletuksena lähetä lainkaan JavaScriptiä ja renderöi kaikki komponentit staattiseksi HTML:ksi palvelimella. Wink-verkkokomponentit on ladattava asiakaspuolen `<script>`-tägillä. Astron saariarkkitehtuuri tekee tästä suoraviivaista.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Asenna ja lataa CDN-kimppu TypeScript-tyypeillä."
+/>
+
+## Asennus
+
+```bash
+npm install @wink/elements
+```
+
+## Lataa jaettuun asetteluun
+
+Lisää latausskripti perusasetteluun, jotta se suoritetaan jokaisella sivulla:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline vs bundled scripts">
+Ilman `is:inline` Astro pakkaa ja poistaa skriptistä päällekkäisyydet — `load()` kutsutaan vain kerran, vaikka asettelua käytettäisiin monilla sivuilla. Tämä on suositeltu tapa. Käytä `is:inline`-attribuuttia vain, kun skripti täytyy upottaa raakana tekstinä (esim. moduulipakkaimen välttämiseksi).
+</Aside>
+
+## Käyttö sivulla
+
+Koska Astro-komponentit renderöidään palvelimella, `<wink-*>`-tagit tulostetaan staattisena HTML:nä. CDN-skripti rekisteröi mukautetut elementit, kun sivu latautuu selaimessa:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## Kehyskomponentin sisällä (saari)
+
+Jos käytät React-, Vue- tai Svelte-saaria yhdessä Wink:n kanssa, lataa `@wink/elements` asettelussa (kuten yllä) ja käytä `<wink-*>`-tageja saarikomponenttien sisällä normaalisti — mukautetut elementit rekisteröidään ennen saaren hydratoitumista.
+
+```tsx
+// src/components/HotelCard.tsx (React-saari)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() on jo kutsuttu asettelussa — turvallista renderöidä täällä
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## Ympäristömuuttujat
+
+Astro paljastaa selaimelle vain muuttujat, joiden etuliite on `PUBLIC_`:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Lisälukemista
+
+- [Web Components reference](/fi/integrations/web-components)
+- [@wink/elements npm package](/fi/integrations/npm)

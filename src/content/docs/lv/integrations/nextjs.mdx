@@ -1,0 +1,122 @@
+---
+title: Next.js
+description: Pievienojiet Wink tīmekļa komponentus Next.js App Router un Pages Router lietotnēm.
+sidebar:
+  order: 16
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink komponenti ir pārlūkprogrammai paredzēti pielāgoti elementi — CDN skripti jāielādē klienta pusē. Zemāk esošie paraugi aptver gan **App Router** (Next.js 13+), gan vecāko **Pages Router**.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Instalējiet un ielādējiet CDN pakotni ar TypeScript tipiem."
+/>
+
+## Instalēšana
+
+```bash
+npm install @wink/elements
+```
+
+## App Router (Next.js 13+)
+
+Izveidojiet klienta komponenti, kas izsauc `load()` vienu reizi, un renderējiet to savā saknes izkārtojumā:
+
+```tsx
+// components/WinkLoader.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export function WinkLoader() {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return null;
+}
+```
+
+```tsx
+// app/layout.tsx
+import { WinkLoader } from '@/components/WinkLoader';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <WinkLoader />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+Izmantojiet Wink komponentus jebkurā **Client Component**:
+
+```tsx
+// app/hotels/page.tsx
+'use client';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Servera komponentes">
+`<wink-*>` tagus nevar renderēt Servera komponentēs, jo pielāgotā elementu reģistrācija ir pieejama tikai pārlūkprogrammā. Vienmēr pievienojiet `'use client'` jebkurai komponentei, kas renderē Wink elementus.
+</Aside>
+
+## Pages Router
+
+Ielādējiet vienu reizi `_app.tsx`:
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <Component {...pageProps} />;
+}
+```
+
+Pēc tam izmantojiet Wink komponentus jebkurā lapā:
+
+```tsx
+// pages/hotels.tsx
+export default function HotelsPage() {
+  return <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />;
+}
+```
+
+## Vides mainīgie
+
+Pievienojiet `.env.local`:
+
+```
+NEXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+Priekšvārds `NEXT_PUBLIC_` ir nepieciešams, lai mainīgais būtu pieejams pārlūkprogrammas paketē.
+
+## TypeScript tipi
+
+Pievienojiet deklarācijas failu, lai TypeScript atpazītu pielāgoto elementu nosaukumus JSX — pilnu `wink-elements.d.ts` fragmentu skatiet [React integrācijas lapā](/lv/integrations/react#typescript--declare-jsx-intrinsics).
+
+## Papildu lasāmviela
+
+- [Tīmekļa komponentu atsauce](/lv/integrations/web-components)
+- [@wink/elements npm pakotne](/lv/integrations/npm)
+- [React integrācija](/lv/integrations/react)

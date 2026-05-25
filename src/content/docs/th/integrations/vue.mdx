@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: ใช้คอมโพเนนต์เว็บ Wink ในโปรเจกต์ Vue 3 และ Vite ด้วยตัวเลือกคอมไพเลอร์ isCustomElement
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3 ต้องการคำใบ้คอมไพเลอร์หนึ่งอย่างเพื่อให้จัดการแท็ก `<wink-*>` เป็น custom elements แบบเนทีฟแทนที่จะเป็นคอมโพเนนต์ Vue ที่ไม่รู้จัก หลังจากนั้นจะทำงานเหมือนกับองค์ประกอบ HTML อื่นๆ
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="ติดตั้งและโหลด CDN bundle พร้อมกับ TypeScript types."
+/>
+
+## ติดตั้ง
+
+```bash
+npm install @wink/elements
+```
+
+## กำหนดค่าคอมไพเลอร์
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // จัดการแท็กทั้งหมดที่ขึ้นต้นด้วย "wink-" เป็น custom elements
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## โหลด CDN ครั้งเดียวตอนเริ่มแอป
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## ใช้ในเทมเพลต
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — เพิ่มเติมประเภทองค์ประกอบทั่วโลก
+
+Vue 3 + TypeScript อ่านประเภท custom element จาก `HTMLElementTagNameMap` ทั่วโลก ให้เพิ่มไฟล์ประกาศ:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## ตัวแปรสภาพแวดล้อม
+
+เพิ่มใน `.env.local`:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite จะเปิดเผยเฉพาะตัวแปรที่ขึ้นต้นด้วย `VITE_` ให้กับ bundle ฝั่งไคลเอนต์
+
+<Aside type="tip">
+สำหรับ Nuxt 3 ดูที่หน้า [Nuxt integration](/th/integrations/nuxt) ซึ่งครอบคลุมการโหลดที่ปลอดภัยสำหรับ SSR
+</Aside>
+
+## อ่านเพิ่มเติม
+
+- [Web Components reference](/th/integrations/web-components)
+- [@wink/elements npm package](/th/integrations/npm)
+- [Nuxt 3 integration](/th/integrations/nuxt)

@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: Adaugă componente web Wink în aplicațiile Nuxt 3 folosind un plugin client-side.
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 redă paginile pe server în mod implicit. Scripturile CDN și elementele personalizate trebuie încărcate doar pe client. Un plugin client Nuxt este cel mai curat loc pentru a face acest lucru.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Instalează și încarcă pachetul CDN cu tipuri TypeScript."
+/>
+
+## Instalare
+
+```bash
+npm install @wink/elements
+```
+
+## Creează un plugin client
+
+Sufixul `.client.ts` indică lui Nuxt să ruleze acest plugin doar în browser:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## Configurează variabila de runtime
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+Adaugă în `.env`:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Configurează Vue pentru elemente personalizate
+
+Adaugă opțiunea `isCustomElement` în compiler pentru ca Vue să nu afișeze avertismente despre taguri necunoscute `<wink-*>`:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## Utilizare în template-uri
+
+Încapsulează componentele Wink în `<ClientOnly>` pentru a preveni nepotriviri la hidratarea SSR:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` redă un element placeholder pe server și montează elementul real pe client — acesta este modelul recomandat pentru toate embed-urile terțe care rulează doar în browser în Nuxt.
+</Aside>
+
+## Tipuri TypeScript
+
+Extinde `HTMLElementTagNameMap` global (la fel ca în Vue 3) pentru a beneficia de completarea automată a atributelor. Vezi pagina de [integrare Vue 3](/ro/integrations/vue#typescript--augment-global-element-types) pentru fișierul complet de declarații.
+
+## Lecturi suplimentare
+
+- [Referință Web Components](/ro/integrations/web-components)
+- [@wink/elements npm package](/ro/integrations/npm)
+- [Integrare Vue 3](/ro/integrations/vue)

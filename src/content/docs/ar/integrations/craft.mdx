@@ -1,0 +1,92 @@
+---
+title: كرافت CMS
+description: دمج مخزون السفر من Wink في موقعك على كرافت CMS 5 باستخدام إضافة Wink.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+تُدمج **إضافة Wink لكرافت CMS** مخزون السفر من Wink في كرافت 5 عبر دوال Twig للقوالب ونوع حقل مخصص لمحرر المحتوى. يمكن للمحررين اختيار تخطيط Wink محدد من قائمة منسدلة مباشرة في محرر الإدخال.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin على GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="كود المصدر، دليل إعداد المطور، وتعليمات المساهمة."
+/>
+
+## المتطلبات
+
+- كرافت CMS 5.x
+- PHP 8.1+
+- Composer
+
+## التثبيت
+
+<Steps>
+1. التثبيت عبر Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. تفعيل الإضافة في لوحة التحكم ضمن **الإعدادات → الإضافات**، أو عبر سطر الأوامر:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. اذهب إلى **الإعدادات → Wink** في لوحة التحكم.
+4. أدخل **معرّف العميل** و**السر السري للعميل**، اختر بيئتك، ثم اضغط **حفظ**.
+   اذهب إلى [التطبيقات](/ar/portal/settings/applications) لاسترجاع بيانات الاعتماد الخاصة بك.
+</Steps>
+
+## الاستخدام في قوالب Twig
+
+بعد الإعداد، استدعِ دوال Wink Twig في أي مكان في قوالبك:
+
+```twig
+{# عرض شبكة فنادق #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# شريط بحث الوجهات #}
+{{ winkLookup() }}
+
+{# زر اختيار خط سير الرحلة #}
+{{ winkSearch() }}
+
+{# زر حساب المستخدم #}
+{{ winkAccount() }}
+```
+
+تقوم دالة `winkContent()` تلقائيًا بحقن `<wink-app-loader>` في المرة الأولى التي تُستدعى فيها على الصفحة.
+
+## دوال Twig المتاحة
+
+| الدالة | المخرجات | الوصف |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | بطاقات الفنادق، الشبكات، الخرائط |
+| `winkLookup()` | `<wink-lookup>` | شريط بحث الوجهات |
+| `winkSearch()` | `<wink-search-button>` | زر اختيار خط سير الرحلة |
+| `winkAccount()` | `<wink-account-button>` | تسجيل الدخول / حساب المستخدم |
+| `winkItinerary()` | `<wink-itinerary-button>` | زر حالة خط سير الرحلة |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | زر عربة التسوق |
+
+## نوع حقل تخطيط Wink
+
+أضف حقل **تخطيط Wink** لأي قسم ليتمكن المحررون من اختيار تخطيط منسدِل لجميع التخطيطات المتاحة في حساب Wink الخاص بك:
+
+<Steps>
+1. اذهب إلى **الإعدادات → الحقول → حقل جديد**.
+2. اضبط **نوع الحقل** على **تخطيط Wink**.
+3. أضف الحقل إلى تخطيط حقول نوع الإدخال الخاص بك.
+4. يمكن للمحررين الآن اختيار التخطيط مباشرة في محرر الإدخال — دون الحاجة لنسخ ولصق المعرفات.
+</Steps>
+
+في قالبك، مرر قيمة الحقل إلى `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## قراءة إضافية
+
+- [مرجع مكونات الويب](/ar/integrations/web-components)
+- [احصل على معرّف العميل الخاص بك](/ar/portal/settings/applications)
+- [إضافة Wink لكرافت — كود المصدر ووثائق المطور](https://github.com/wink-travel/wink-craft-plugin)

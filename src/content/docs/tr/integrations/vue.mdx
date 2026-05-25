@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: isCustomElement derleyici seçeneği ile Vue 3 ve Vite projelerinde Wink web bileşenlerini kullanın.
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3, `<wink-*>` etiketlerini çözülmemiş Vue bileşenleri yerine yerel özel bileşenler olarak işlemek için bir derleyici ipucuna ihtiyaç duyar. Bundan sonra, diğer HTML öğeleri gibi çalışırlar.
+
+<LinkCard
+  title="@wink/elements npm paketi"
+  href="/integrations/npm"
+  description="TypeScript tipleri ile CDN paketini yükleyin ve kurun."
+/>
+
+## Kurulum
+
+```bash
+npm install @wink/elements
+```
+
+## Derleyiciyi yapılandırma
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // "wink-" ile başlayan tüm etiketleri özel bileşen olarak işle
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## Uygulama başlangıcında CDN'i bir kez yükleyin
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## Şablonlarda kullanımı
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — global element tiplerini genişletme
+
+Vue 3 + TypeScript, özel bileşen tiplerini global `HTMLElementTagNameMap` üzerinden okur. Bir bildirim dosyası ekleyin:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## Ortam değişkenleri
+
+`.env.local` dosyasına ekleyin:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite, yalnızca `VITE_` ile başlayan değişkenleri istemci paketine açar.
+
+<Aside type="tip">
+Nuxt 3 için, SSR güvenli yüklemeyi kapsayan özel [Nuxt entegrasyon sayfasına](/tr/integrations/nuxt) bakın.
+</Aside>
+
+## Daha fazla okuma
+
+- [Web Bileşenleri referansı](/tr/integrations/web-components)
+- [@wink/elements npm paketi](/tr/integrations/npm)
+- [Nuxt 3 entegrasyonu](/tr/integrations/nuxt)

@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Upota Wink-matkavarasto mihin tahansa headless CMS:ään (Contentful, Strapi, Sanity jne.) tai räätälöityyn sivustoon.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wink-verkkokomponentit ovat kehysriippumattomia mukautettuja HTML-elementtejä. Jos headless CMS:si renderöi HTML:ää — olipa kyseessä Next.js, Nuxt, Astro, SvelteKit tai jokin muu kehys — voit upottaa Wink-komponentit ilman erityistä integraatiota.
+
+## Kolmen vaiheen upotus
+
+Jokainen Wink-integraatio, alustasta riippumatta, noudattaa samoja kolmea vaihetta.
+
+### 1. Lisää tyylitiedosto
+
+Lisää tämä dokumenttisi `<head>`-osaan (tai vastaavaan globaaliin asetteluun):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Lisää JavaScript
+
+Lisää tämä ennen sulkevaa `</body>`-tägiä (tai asettelusi skriptiosioon):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Lisää sovelluksen lataaja
+
+Aseta tämä **kerran per sivu**, mihin tahansa bodyyn (yleensä globaalin asettelun alatunnisteeseen):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Asiakas-ID:si löytyy Wink-tililtäsi kohdasta [Applications](/fi/portal/settings/applications).
+:::
+
+## Kehysesimerkit
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+TypeScript-käyttäjille: lisää `global.d.ts`, joka määrittelee mukautettujen elementtien tyypit, tai käytä [`@wink/elements`](https://github.com/wink2travel/wink-elements) npm-pakettia, joka sisältää tyyppimääritykset.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Komponenttien sijoittaminen sisältöön
+
+CMS:si rikasteksti- tai mukautetuissa kenttätyypeissä upota komponenttien tunnisteet suoraan HTML-tulosteeseen:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Contentfulille, Strapille, Sanitylle tai vastaaville headless-alustoille käytä **Rich Text** -kenttää tai **Custom Block** -lohkoa, joka renderöi raakaa HTML:ää, ja liitä komponenttitunniste sinne.
+
+## npm-paketti
+
+TypeScript-projekteihin [`@wink/elements`](https://github.com/wink2travel/wink-elements) -paketti tarjoaa:
+- `load()`-funktion, joka lisää CDN-skriptit ohjelmallisesti
+- Täydelliset TypeScript-tyyppimääritykset kaikille komponenttien attribuuteille
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Kutsu kerran sovelluksen käynnistyessä
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Saatavilla olevat komponentit
+
+| Komponentti | HTML-tunniste | Tarkoitus |
+|---|---|---|
+| Sisällön lataaja | `<wink-content-loader>` | Näytä hotellikortit, ruudukot, kartat |
+| Hakutoiminto | `<wink-lookup>` | Hakupalkki kohteille |
+| Hakupainike | `<wink-search-button>` | Avaa matkasuunnitelman valitsin |
+| Tilipainike | `<wink-account-button>` | Kirjaudu sisään / käyttäjävalikko |
+| Matkasuunnitelmapainike | `<wink-itinerary-button>` | Näytä nykyinen matkasuunnitelma |
+| Matkasuunnitelman valitsin | `<wink-itinerary-picker>` | Täysi matkasuunnitelmalomake |
+| Ostoskori | `<wink-shopping-cart-button>` | Ostoskorin yhteenvetopainike |
+
+Katso [Web Components](/fi/integrations/web-components) täydellinen attribuuttiviite.

@@ -1,0 +1,120 @@
+---
+title: Qwik
+description: Folosește componentele web Wink în aplicații Qwik și QwikCity cu useVisibleTask$ pentru execuție doar pe client.
+sidebar:
+  order: 26
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Modelul de rezumabilitate al Qwik înseamnă că JavaScript se execută leneș — doar când utilizatorul interacționează. Folosește `useVisibleTask$` pentru a rula cod care trebuie să se execute în browser când componenta devine vizibilă.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Instalează și încarcă pachetul CDN cu tipuri TypeScript."
+/>
+
+## Instalare
+
+```bash
+npm install @wink/elements
+```
+
+## Încarcă cu useVisibleTask$
+
+`useVisibleTask$` este hook-ul de ciclu de viață al Qwik pentru cod care se execută doar în browser, imediat. Plasează-l în layout-ul rădăcină:
+
+```tsx
+// src/routes/layout.tsx
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { load } from '@wink/elements';
+
+export default component$(() => {
+  useVisibleTask$(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+
+  return (
+    <main>
+      <Slot />
+    </main>
+  );
+});
+```
+
+<Aside type="tip" title="Strategia useVisibleTask$">
+Implicit, `useVisibleTask$` rulează când componenta este vizibilă în viewport. Pentru un layout rădăcină care este mereu vizibil, acesta se declanșează imediat la încărcarea paginii — echivalent cu `onMount` în alte framework-uri.
+
+Trimite `{ strategy: 'document-ready' }` dacă vrei ca scriptul să se încarce cât mai devreme:
+```ts
+useVisibleTask$({ strategy: 'document-ready' }, () => {
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+});
+```
+</Aside>
+
+## Folosește pe o pagină
+
+```tsx
+// src/routes/hotels/index.tsx
+import { component$ } from '@builder.io/qwik';
+
+export default component$(() => {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+});
+```
+
+## TypeScript — declară JSX intrinseci
+
+Qwik folosește propriul namespace JSX. Extinde-l într-un fișier de declarații:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module '@builder.io/qwik' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes;
+      'wink-lookup': WinkLookupAttributes;
+      'wink-search-button': WinkSearchButtonAttributes;
+      'wink-account-button': WinkAccountButtonAttributes;
+      'wink-itinerary-button': WinkItineraryButtonAttributes;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes;
+      'wink-app-loader': WinkAppLoaderAttributes;
+    }
+  }
+}
+```
+
+## Variabile de mediu
+
+Qwik (bazat pe Vite) expune variabile prefixate cu `PUBLIC_` către browser:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="Redare pe server">
+Qwik redă HTML pe server. Tag-urile `<wink-*>` sunt generate ca markup static. Scriptul CDN și înregistrarea elementelor personalizate au loc pe client după ce `useVisibleTask$` se declanșează. Elementele vor fi într-o stare nerezolvată pentru scurt timp până se încarcă pachetul CDN — acest comportament este așteptat.
+</Aside>
+
+## Lecturi suplimentare
+
+- [Referință Web Components](/ro/integrations/web-components)
+- [@wink/elements npm package](/ro/integrations/npm)

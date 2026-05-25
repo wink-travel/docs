@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Integrează inventarul de călătorii Wink în site-ul tău Craft CMS 5 folosind pluginul Wink.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Pluginul Wink pentru Craft CMS** integrează inventarul de călătorii Wink în Craft 5 prin funcții Twig și un tip de câmp personalizat pentru editorul de conținut. Editorii pot selecta un layout Wink specific dintr-un meniu dropdown direct în editorul de intrări.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin on GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Cod sursă, ghid de configurare pentru dezvoltatori și instrucțiuni de contribuție."
+/>
+
+## Cerințe
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Instalare
+
+<Steps>
+1. Instalează prin Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Activează pluginul în Control Panel la **Settings → Plugins**, sau prin CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Accesează **Settings → Wink** în Control Panel.
+4. Introdu **Client ID** și **Client Secret**, selectează mediul și apasă **Save**.
+   Mergi la [Applications](/ro/portal/settings/applications) pentru a-ți obține credențialele.
+</Steps>
+
+## Utilizare în template-uri Twig
+
+Odată configurat, apelează funcțiile Twig Wink oriunde în template-urile tale:
+
+```twig
+{# Afișează o grilă de hoteluri #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Bara de căutare destinații #}
+{{ winkLookup() }}
+
+{# Buton pentru selectarea itinerariului #}
+{{ winkSearch() }}
+
+{# Buton cont utilizator #}
+{{ winkAccount() }}
+```
+
+Funcția `winkContent()` injectează automat `<wink-app-loader>` prima dată când este apelată pe o pagină.
+
+## Funcții Twig disponibile
+
+| Funcție | Output | Descriere |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Carduri hotel, grile, hărți |
+| `winkLookup()` | `<wink-lookup>` | Bara de căutare destinații |
+| `winkSearch()` | `<wink-search-button>` | Buton selectare itinerariu |
+| `winkAccount()` | `<wink-account-button>` | Autentificare / cont utilizator |
+| `winkItinerary()` | `<wink-itinerary-button>` | Buton stare itinerariu |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Buton coș de cumpărături |
+
+## Tip câmp Wink Layout
+
+Adaugă un câmp **Wink Layout** în orice secțiune pentru a oferi editorilor un dropdown cu toate layout-urile disponibile din contul tău Wink:
+
+<Steps>
+1. Mergi la **Settings → Fields → New Field**.
+2. Setează **Field Type** la **Wink Layout**.
+3. Adaugă câmpul în layout-ul tipului tău de intrare.
+4. Editorii pot acum selecta un layout direct în editorul de intrări — fără a copia ID-uri.
+</Steps>
+
+În template-ul tău, transmite valoarea câmpului către `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Lecturi suplimentare
+
+- [Referință Web Components](/ro/integrations/web-components)
+- [Obține-ți Client ID](/ro/portal/settings/applications)
+- [Wink Craft Plugin — cod sursă & documentație dezvoltatori](https://github.com/wink-travel/wink-craft-plugin)

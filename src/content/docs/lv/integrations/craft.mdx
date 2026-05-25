@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Iegult Wink ceļojumu inventāru savā Craft CMS 5 vietnē, izmantojot Wink spraudni.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS spraudnis** integrē Wink ceļojumu inventāru Craft 5, izmantojot Twig veidņu funkcijas un pielāgotu lauka tipu satura redaktoram. Redaktori var tieši ieraksta redaktorā nolaižamajā sarakstā izvēlēties konkrētu Wink izkārtojumu.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin on GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Avota kods, izstrādātāja uzstādīšanas ceļvedis un ieguldījuma norādījumi."
+/>
+
+## Prasības
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Instalēšana
+
+<Steps>
+1. Instalējiet, izmantojot Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Aktivizējiet spraudni Kontroles panelī sadaļā **Settings → Plugins** vai izmantojot CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Dodieties uz **Settings → Wink** Kontroles panelī.
+4. Ievadiet savu **Client ID** un **Client Secret**, izvēlieties vidi un noklikšķiniet uz **Save**.
+   Lai iegūtu savus akreditācijas datus, dodieties uz [Applications](/lv/portal/settings/applications).
+</Steps>
+
+## Lietošana Twig veidnēs
+
+Kad konfigurēts, izsauciet Wink Twig funkcijas jebkur jūsu veidnēs:
+
+```twig
+{# Attēlot viesnīcu režģi #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Galamērķa meklēšanas josla #}
+{{ winkLookup() }}
+
+{# Maršruta izvēles poga #}
+{{ winkSearch() }}
+
+{# Lietotāja konta poga #}
+{{ winkAccount() }}
+```
+
+Funkcija `winkContent()` automātiski ievieto `<wink-app-loader>` pirmo reizi, kad tā tiek izsaukta lapā.
+
+## Pieejamās Twig funkcijas
+
+| Funkcija | Izvade | Apraksts |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Viesnīcu kartītes, režģi, kartes |
+| `winkLookup()` | `<wink-lookup>` | Galamērķa meklēšanas josla |
+| `winkSearch()` | `<wink-search-button>` | Maršruta izvēles poga |
+| `winkAccount()` | `<wink-account-button>` | Pieslēgšanās / lietotāja konts |
+| `winkItinerary()` | `<wink-itinerary-button>` | Maršruta statusa poga |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Groza poga |
+
+## Wink Layout lauka tips
+
+Pievienojiet jebkurai sadaļai **Wink Layout** lauku, lai redaktoriem būtu nolaižamais saraksts ar visiem jūsu Wink konta pieejamajiem izkārtojumiem:
+
+<Steps>
+1. Dodieties uz **Settings → Fields → New Field**.
+2. Iestatiet **Field Type** uz **Wink Layout**.
+3. Pievienojiet lauku sava ieraksta veida lauku izkārtojumam.
+4. Redaktori tagad var tieši ieraksta redaktorā izvēlēties izkārtojumu — nav jākopē un jāielīmē ID.
+</Steps>
+
+Jūsu veidnē nododiet lauka vērtību funkcijai `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Papildu lasāmviela
+
+- [Web Components reference](/lv/integrations/web-components)
+- [Iegūstiet savu Client ID](/lv/portal/settings/applications)
+- [Wink Craft Plugin — avota kods un izstrādātāja dokumentācija](https://github.com/wink-travel/wink-craft-plugin)

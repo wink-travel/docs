@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Встраивайте инвентарь Wink для путешествий на ваш сайт Webflow с помощью пользовательских кодовых вставок.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow поддерживает пользовательский HTML и JavaScript в трёх местах: в глобальном `<head>`, в глобальном `</body>` и в кодовых вставках для отдельных элементов. Это упрощает интеграцию веб-компонентов Wink.
+
+:::note
+Пользовательский код доступен на **базовом тарифе Webflow и выше**. Внедрение в глобальный `</body>` требует платного хостинга.
+:::
+
+## Загрузка скриптов Wink на весь сайт
+
+<Steps>
+1. В Webflow Designer откройте **Project Settings → Custom Code**.
+2. В разделе **Head Code** добавьте таблицу стилей:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. В разделе **Footer Code** добавьте скрипт и загрузчик приложения (замените `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Нажмите **Save Changes**.
+</Steps>
+
+:::tip
+Ваш Client ID доступен в вашем аккаунте Wink в разделе [Applications](/ru/portal/settings/applications).
+:::
+
+## Добавление компонента в конкретный элемент
+
+<Steps>
+1. В Designer выберите **Div** или **Section**, куда хотите добавить компонент.
+2. В правой панели нажмите иконку **`</>` Embed** (или добавьте элемент **HTML Embed** из панели Add).
+3. Вставьте HTML компонента, например:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Нажмите **Save & Close**.
+</Steps>
+
+## Пользовательский код для отдельных страниц
+
+Если Wink нужен только на некоторых страницах, используйте внедрение кода на уровне страницы вместо глобального:
+
+<Steps>
+1. Откройте **Page Settings** нужной страницы (иконка шестерёнки в панели Pages).
+2. Пролистайте до **Custom Code → Before `</body>` tag**.
+3. Вставьте тот же скрипт и загрузчик приложения, что и выше.
+4. Сохраните настройки страницы.
+</Steps>
+
+## Доступные компоненты
+
+| Компонент | HTML тег | Назначение |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Отображение карточек отелей, сеток, карт |
+| Lookup | `<wink-lookup>` | Поисковая строка для направлений |
+| Search button | `<wink-search-button>` | Открыть выбор маршрута |
+| Account button | `<wink-account-button>` | Вход / меню пользователя |
+| Itinerary button | `<wink-itinerary-button>` | Показать текущий маршрут |
+| Itinerary picker | `<wink-itinerary-picker>` | Полная форма маршрута |
+| Shopping cart | `<wink-shopping-cart-button>` | Кнопка с краткой информацией о корзине |
+
+См. [Web Components](/ru/integrations/web-components) для полного справочника по атрибутам.
+
+## Дополнительные материалы
+
+- [Справочник по Web Components](/ru/integrations/web-components)
+- [Получить ваш Client ID](/ru/portal/settings/applications)
+- [Документация по пользовательскому коду Webflow](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

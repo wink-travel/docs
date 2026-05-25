@@ -1,0 +1,128 @@
+---
+title: Svelte / SvelteKit
+description: 在 Svelte 和 SvelteKit 应用中使用 Wink Web 组件，结合 onMount 和浏览器检测。
+sidebar:
+  order: 20
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Svelte 直接将属性传递给 DOM，没有虚拟 DOM 层，使自定义元素成为自然的选择。对于 SvelteKit（SSR），请在 `onMount` 内加载 CDN，或使用 `browser` 检查进行保护。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="安装并加载带有 TypeScript 类型的 CDN 包。"
+/>
+
+## 安装
+
+```bash
+npm install @wink/elements
+```
+
+## SvelteKit — 根布局
+
+```ts
+// src/routes/+layout.ts
+import { browser } from '$app/environment';
+import { load as loadWink } from '@wink/elements';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+或者，在 `+layout.svelte` 中的 `onMount` 内加载：
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<slot />
+```
+
+## 在组件中使用
+
+Svelte 会将所有未知属性直接传递给 DOM，因此无需额外配置：
+
+```svelte
+<script>
+  export let layoutId = 'YOUR_LAYOUT_ID';
+</script>
+
+<main>
+  <wink-content-loader layout="HOTEL" id={layoutId} />
+  <wink-lookup />
+</main>
+```
+
+## Svelte 5（符文语法）
+
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  let { layoutId }: { layoutId: string } = $props();
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id={layoutId} />
+```
+
+## 环境变量
+
+SvelteKit 仅向浏览器暴露以 `PUBLIC_` 前缀开头的变量：
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="SSR 渲染">
+切勿在服务器端渲染期间渲染 `<wink-*>` 元素——自定义元素在浏览器的 `customElements` 注册表中注册，而服务器上不存在该注册表。请用 `{#if browser}` 包裹，或仅在 `onMount` 内调用 `load()`。
+</Aside>
+
+```svelte
+<script>
+  import { browser } from '$app/environment';
+</script>
+
+{#if browser}
+  <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+{/if}
+```
+
+## 纯 Svelte（Vite，无 SvelteKit）
+
+```svelte
+<!-- src/App.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+```
+
+## 进一步阅读
+
+- [Web Components 参考](/zh-CN/integrations/web-components)
+- [@wink/elements npm package](/zh-CN/integrations/npm)

@@ -1,0 +1,168 @@
+---
+title: हेडलेस CMS
+description: Wink ट्रैवल इन्वेंटरी को किसी भी हेडलेस CMS (Contentful, Strapi, Sanity, आदि) या कस्टम-बिल्ट साइट में एम्बेड करें।
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wink वेब कॉम्पोनेंट्स फ्रेमवर्क-एग्नोस्टिक कस्टम HTML एलिमेंट्स हैं। यदि आपका हेडलेस CMS HTML रेंडर करता है — चाहे वह Next.js, Nuxt, Astro, SvelteKit, या कोई अन्य फ्रेमवर्क हो — आप Wink कॉम्पोनेंट्स को बिना किसी विशेष इंटीग्रेशन के एम्बेड कर सकते हैं।
+
+## तीन-चरण एम्बेड
+
+हर Wink इंटीग्रेशन, प्लेटफ़ॉर्म की परवाह किए बिना, एक ही तीन चरणों का पालन करता है।
+
+### 1. स्टाइलशीट शामिल करें
+
+इसे अपने डॉक्यूमेंट के `<head>` (या समकक्ष ग्लोबल लेआउट) में जोड़ें:
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. जावास्क्रिप्ट शामिल करें
+
+इसे अपने बंद होने वाले `</body>` टैग से पहले (या अपने लेआउट के स्क्रिप्ट सेक्शन में) जोड़ें:
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. एप्लिकेशन लोडर जोड़ें
+
+इसे **प्रति पेज एक बार** बॉडी में कहीं भी रखें (आमतौर पर आपके ग्लोबल लेआउट के फुटर में):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+आपका Client ID आपके Wink अकाउंट में [Applications](/hi/portal/settings/applications) के अंतर्गत उपलब्ध है।
+:::
+
+## फ्रेमवर्क उदाहरण
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+TypeScript उपयोगकर्ता: एक `global.d.ts` जोड़ें जो कस्टम एलिमेंट टाइप्स घोषित करता हो, या [`@wink/elements`](https://github.com/wink2travel/wink-elements) npm पैकेज का उपयोग करें जिसमें टाइप डिक्लेरेशन शामिल हैं।
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## कंटेंट में कॉम्पोनेंट्स रखना
+
+अपने CMS के रिच टेक्स्ट या कस्टम फील्ड टाइप्स में, कॉम्पोनेंट टैग्स को सीधे HTML आउटपुट में एम्बेड करें:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Contentful, Strapi, Sanity, या इसी तरह के हेडलेस प्लेटफॉर्म के लिए, एक **Rich Text** फील्ड या एक **Custom Block** का उपयोग करें जो रॉ HTML रेंडर करता हो, और वहां कॉम्पोनेंट टैग पेस्ट करें।
+
+## npm पैकेज
+
+TypeScript प्रोजेक्ट्स के लिए, [`@wink/elements`](https://github.com/wink2travel/wink-elements) पैकेज प्रदान करता है:
+- एक `load()` फ़ंक्शन जो CDN स्क्रिप्ट्स को प्रोग्रामेटिकली इंजेक्ट करता है
+- सभी कॉम्पोनेंट एट्रिब्यूट्स के लिए पूर्ण TypeScript टाइप डिक्लेरेशन
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// ऐप स्टार्टअप पर एक बार कॉल करें
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## उपलब्ध कॉम्पोनेंट्स
+
+| कॉम्पोनेंट | HTML टैग | उद्देश्य |
+|---|---|---|
+| कंटेंट लोडर | `<wink-content-loader>` | होटल कार्ड, ग्रिड, मैप दिखाना |
+| लुकअप | `<wink-lookup>` | डेस्टिनेशन के लिए सर्च बार |
+| सर्च बटन | `<wink-search-button>` | यात्रा योजना चयनकर्ता खोलना |
+| अकाउंट बटन | `<wink-account-button>` | साइन इन / उपयोगकर्ता मेनू |
+| यात्रा योजना बटन | `<wink-itinerary-button>` | वर्तमान यात्रा योजना दिखाना |
+| यात्रा योजना चयनकर्ता | `<wink-itinerary-picker>` | पूर्ण यात्रा योजना फॉर्म |
+| शॉपिंग कार्ट | `<wink-shopping-cart-button>` | कार्ट सारांश बटन |
+
+पूरे एट्रिब्यूट संदर्भ के लिए [Web Components](/hi/integrations/web-components) देखें।

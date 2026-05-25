@@ -1,0 +1,128 @@
+---
+title: Svelte / SvelteKit
+description: Izmantojiet Wink tīmekļa komponentes Svelte un SvelteKit lietotnēs ar onMount un pārlūkprogrammas aizsardzību.
+sidebar:
+  order: 20
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Svelte nodod atribūtus tieši DOM bez virtuālā DOM slāņa, padarot pielāgotās elementus par dabiski piemērotiem. SvelteKit (SSR) gadījumā ielādējiet CDN `onMount` vai izmantojiet `browser` pārbaudi.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Instalējiet un ielādējiet CDN pakotni ar TypeScript tipiem."
+/>
+
+## Instalēšana
+
+```bash
+npm install @wink/elements
+```
+
+## SvelteKit — saknes izkārtojums
+
+```ts
+// src/routes/+layout.ts
+import { browser } from '$app/environment';
+import { load as loadWink } from '@wink/elements';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+Alternatīvi, ielādējiet `onMount` `+layout.svelte`:
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<slot />
+```
+
+## Lietošana komponentēs
+
+Svelte nodod visus nezināmos atribūtus tieši DOM, tāpēc nav nepieciešama papildu konfigurācija:
+
+```svelte
+<script>
+  export let layoutId = 'YOUR_LAYOUT_ID';
+</script>
+
+<main>
+  <wink-content-loader layout="HOTEL" id={layoutId} />
+  <wink-lookup />
+</main>
+```
+
+## Svelte 5 (runes sintakse)
+
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  let { layoutId }: { layoutId: string } = $props();
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id={layoutId} />
+```
+
+## Vides mainīgie
+
+SvelteKit pārlūkprogrammai atklāj tikai mainīgos ar prefiksu `PUBLIC_`:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="SSR renderēšana">
+Nekad nerenderējiet `<wink-*>` elementus servera puses renderēšanas laikā — pielāgotie elementi tiek reģistrēti pārlūkprogrammas `customElements` reģistrā, kas serverī nepastāv. Ietiniet `{#if browser}` vai izsauciet `load()` tikai `onMount`.
+</Aside>
+
+```svelte
+<script>
+  import { browser } from '$app/environment';
+</script>
+
+{#if browser}
+  <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+{/if}
+```
+
+## Tīrs Svelte (Vite, bez SvelteKit)
+
+```svelte
+<!-- src/App.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+```
+
+## Papildu lasāmviela
+
+- [Web Components reference](/lv/integrations/web-components)
+- [@wink/elements npm package](/lv/integrations/npm)

@@ -1,0 +1,168 @@
+---
+title: Peata CMS
+description: Manusta Wink reisi inventuur ükskõik millisesse peata CMS-i (Contentful, Strapi, Sanity jne) või kohandatud saidile.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wink veebikomponendid on raamistikust sõltumatud kohandatud HTML elemendid. Kui teie peata CMS renderdab HTML-i — olgu see siis Next.js, Nuxt, Astro, SvelteKit või mõni muu raamistik — saate Wink komponente manustada ilma erilise integratsioonita.
+
+## Kolmeastmeline manustamine
+
+Iga Wink integratsioon, platvormist sõltumata, järgib samu kolme sammu.
+
+### 1. Lisa stiilileht
+
+Lisa see oma dokumendi `<head>` sektsiooni (või vastavasse globaalsesse paigutusse):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Lisa JavaScript
+
+Lisa see enne sulgemist `</body>` sildil (või oma paigutuse skripti sektsioonis):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Lisa rakenduse laadija
+
+Pane see **üks kord lehe kohta**, suvalisse kohta body sees (tavaliselt globaalse paigutuse jalusesse):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Teie kliendi ID on saadaval teie Wink kontol jaotises [Applications](/et/portal/settings/applications).
+:::
+
+## Raamistiku näited
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+TypeScript kasutajatele: lisa `global.d.ts`, mis deklareerib kohandatud elementide tüübid, või kasuta [`@wink/elements`](https://github.com/wink2travel/wink-elements) npm paketti, mis sisaldab tüübi deklaratsioone.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Komponentide paigutamine sisusse
+
+Oma CMS-i rikaste tekstide või kohandatud väljade tüüpides manusta komponendi sildid otse HTML väljundisse:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Contentfuli, Strapi, Sanity või sarnaste peata platvormide puhul kasuta **Rich Text** välja või **Custom Block**-i, mis renderdab puhast HTML-i, ja kleebi sinna komponendi silt.
+
+## npm pakett
+
+TypeScript projektide jaoks pakub [`@wink/elements`](https://github.com/wink2travel/wink-elements) pakett:
+- `load()` funktsiooni, mis süstib CDN skriptid programmiliselt
+- Täielikud TypeScript tüübi deklaratsioonid kõigi komponentide atribuutide jaoks
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Kutsu üks kord rakenduse käivitamisel
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Saadaval komponendid
+
+| Komponent | HTML silt | Eesmärk |
+|---|---|---|
+| Sisu laadija | `<wink-content-loader>` | Näita hotelli kaarte, võrgustikke, kaarte |
+| Otsing | `<wink-lookup>` | Sihtkohtade otsinguriba |
+| Otsingunupp | `<wink-search-button>` | Ava marsruudi valija |
+| Konto nupp | `<wink-account-button>` | Sisselogimine / kasutajamenüü |
+| Marsruudi nupp | `<wink-itinerary-button>` | Näita praegust marsruuti |
+| Marsruudi valija | `<wink-itinerary-picker>` | Täielik marsruudi vorm |
+| Ostukorvi nupp | `<wink-shopping-cart-button>` | Ostukorvi kokkuvõtte nupp |
+
+Vaata [Web Components](/et/integrations/web-components) täielikku atribuudi viidet.

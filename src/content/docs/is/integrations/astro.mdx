@@ -1,0 +1,101 @@
+---
+title: Astro
+description: Bættu við Wink vefþáttum á Astro síður með viðskiptavinahliðarskrám og eyjaarkitektúr.
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Astro sendir engin JavaScript sjálfgefið og renderar alla þætti sem kyrrstætt HTML á netþjóninum. Wink vefþættir verða að hlaðast með viðskiptavinahliðarskrá `<script>` tagi. Eyjaarkitektúr Astro gerir þetta einfalt.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Settu upp og hlaðaðu CDN pakkanum með TypeScript týpum."
+/>
+
+## Setja upp
+
+```bash
+npm install @wink/elements
+```
+
+## Hlaða í sameiginlegu sniði
+
+Bættu við hleðsluskránni í grunnsnið svo hún keyri á hverri síðu:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline vs bundled scripts">
+Án `is:inline` pakkar Astro og endurtekur ekki skránna — `load()` er kallað einu sinni jafnvel þó sniðið sé notað á mörgum síðum. Þetta er æskilegasta aðferðin. Notaðu `is:inline` aðeins þegar þú þarft að hafa skrána innlimaða sem hráan texta (t.d. til að forðast mótullpakka).
+</Aside>
+
+## Nota á síðu
+
+Þar sem Astro þættir eru renderaðir á netþjón, eru `<wink-*>` taggar skilaðir sem kyrrstætt HTML. CDN skráin skráir sérsniðna þætti þegar síða hleðst í vafra:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## Innan rammaþáttar (eyju)
+
+Ef þú notar React, Vue eða Svelte eyjur með Wink, hlaðaðu `@wink/elements` í sniðinu (eins og að ofan) og notaðu `<wink-*>` tagga innan eyjuþátta eðlilega — sérsniðnu þættirnir verða skráðir þegar eyjan hýdrar.
+
+```tsx
+// src/components/HotelCard.tsx (React eyja)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() þegar kallað af sniði — öruggt að rendera hér
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## Umhverfisbreytur
+
+Astro sýnir aðeins breytur sem byrja á `PUBLIC_` fyrir vafrann:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Frekari lesning
+
+- [Vefþátta tilvísun](/is/integrations/web-components)
+- [@wink/elements npm package](/is/integrations/npm)

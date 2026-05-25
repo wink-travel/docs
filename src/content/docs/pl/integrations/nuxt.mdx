@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: Dodaj komponenty webowe Wink do aplikacji Nuxt 3 za pomocą wtyczki po stronie klienta.
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 domyślnie renderuje strony po stronie serwera. Skrypty CDN i niestandardowe elementy muszą być ładowane wyłącznie po stronie klienta. Wtyczka klienta Nuxt to najczystsze miejsce, aby to zrobić.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Zainstaluj i załaduj pakiet CDN z typami TypeScript."
+/>
+
+## Instalacja
+
+```bash
+npm install @wink/elements
+```
+
+## Utwórz wtyczkę klienta
+
+Sufiks `.client.ts` mówi Nuxt, aby uruchomił tę wtyczkę tylko w przeglądarce:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## Skonfiguruj zmienną runtime
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+Dodaj do `.env`:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Skonfiguruj Vue dla niestandardowych elementów
+
+Dodaj opcję kompilatora `isCustomElement`, aby Vue nie wyświetlało ostrzeżeń o nieznanych tagach `<wink-*>`:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## Użycie w szablonach
+
+Opakuj komponenty Wink w `<ClientOnly>`, aby zapobiec niezgodnościom hydratacji SSR:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` renderuje zastępczy element po stronie serwera i montuje prawdziwy element po stronie klienta — jest to zalecany wzorzec dla wszystkich osadzeń stron trzecich działających tylko w przeglądarce w Nuxt.
+</Aside>
+
+## Typy TypeScript
+
+Rozszerz globalny `HTMLElementTagNameMap` (tak jak w Vue 3), aby uzyskać autouzupełnianie atrybutów. Zobacz [stronę integracji Vue 3](/pl/integrations/vue#typescript--augment-global-element-types) dla pełnego pliku deklaracji.
+
+## Dalsza lektura
+
+- [Referencja Web Components](/pl/integrations/web-components)
+- [Pakiet npm @wink/elements](/pl/integrations/npm)
+- [Integracja Vue 3](/pl/integrations/vue)

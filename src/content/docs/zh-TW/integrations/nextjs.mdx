@@ -1,0 +1,122 @@
+---
+title: Next.js
+description: 將 Wink 網頁元件加入 Next.js App Router 和 Pages Router 應用程式。
+sidebar:
+  order: 16
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink 元件是僅限瀏覽器的自訂元素 — CDN 腳本必須在客戶端載入。以下範例涵蓋 **App Router**（Next.js 13+）和舊版 **Pages Router**。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="安裝並載入帶有 TypeScript 型別的 CDN 套件。"
+/>
+
+## 安裝
+
+```bash
+npm install @wink/elements
+```
+
+## App Router (Next.js 13+)
+
+建立一個客戶端元件，呼叫一次 `load()`，並在根佈局中渲染它：
+
+```tsx
+// components/WinkLoader.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export function WinkLoader() {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return null;
+}
+```
+
+```tsx
+// app/layout.tsx
+import { WinkLoader } from '@/components/WinkLoader';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <WinkLoader />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+在任何 **Client Component** 中使用 Wink 元件：
+
+```tsx
+// app/hotels/page.tsx
+'use client';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Server Components">
+`<wink-*>` 標籤無法在 Server Components 中渲染，因為自訂元素註冊表僅限瀏覽器。請務必在任何渲染 Wink 元件的元件中加入 `'use client'`。
+</Aside>
+
+## Pages Router
+
+在 `_app.tsx` 中載入一次：
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <Component {...pageProps} />;
+}
+```
+
+然後在任何頁面中使用 Wink 元件：
+
+```tsx
+// pages/hotels.tsx
+export default function HotelsPage() {
+  return <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />;
+}
+```
+
+## 環境變數
+
+加入 `.env.local`：
+
+```
+NEXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+`NEXT_PUBLIC_` 前綴是必須的，以便將變數暴露給瀏覽器套件。
+
+## TypeScript 型別
+
+新增宣告檔案，讓 TypeScript 能識別 JSX 中的自訂元素名稱 — 請參考 [React integration 頁面](/zh-TW/integrations/react#typescript--declare-jsx-intrinsics) 取得完整的 `wink-elements.d.ts` 範例。
+
+## 延伸閱讀
+
+- [Web Components 參考](/zh-TW/integrations/web-components)
+- [@wink/elements npm package](/zh-TW/integrations/npm)
+- [React integration](/zh-TW/integrations/react)

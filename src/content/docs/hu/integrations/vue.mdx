@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: Használd a Wink webkomponenseket Vue 3 és Vite projektekben az isCustomElement fordítóopcióval.
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+A Vue 3-nak egy fordítói tippre van szüksége, hogy a `<wink-*>` tageket natív egyedi elemekként kezelje, ne pedig feloldatlan Vue komponensekként. Ezután úgy működnek, mint bármely más HTML elem.
+
+<LinkCard
+  title="@wink/elements npm csomag"
+  href="/integrations/npm"
+  description="Telepítsd és töltsd be a CDN csomagot TypeScript típusokkal."
+/>
+
+## Telepítés
+
+```bash
+npm install @wink/elements
+```
+
+## Fordító konfigurálása
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Az összes "wink-" kezdetű tag egyedi elemként kezelése
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## CDN egyszeri betöltése az alkalmazás indításakor
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## Használat sablonokban
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — globális elem típusok bővítése
+
+A Vue 3 + TypeScript a globális `HTMLElementTagNameMap`-ből olvassa a egyedi elem típusokat. Adj hozzá egy deklarációs fájlt:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## Környezeti változók
+
+Add hozzá a `.env.local` fájlhoz:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+A Vite csak a `VITE_` előtaggal rendelkező változókat teszi elérhetővé a kliens csomagban.
+
+<Aside type="tip">
+Nuxt 3 esetén lásd a dedikált [Nuxt integrációs oldalt](/hu/integrations/nuxt), amely lefedi az SSR-biztos betöltést.
+</Aside>
+
+## További olvasnivaló
+
+- [Web Components referencia](/hu/integrations/web-components)
+- [@wink/elements npm csomag](/hu/integrations/npm)
+- [Nuxt 3 integráció](/hu/integrations/nuxt)

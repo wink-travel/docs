@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Bädda in Wink reseinventarie i din Craft CMS 5-webbplats med hjälp av Wink-pluginet.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS Plugin** integrerar Wink reseinventarie i Craft 5 via Twig-mallfunktioner och en anpassad fälttyp för innehållsredigeraren. Redaktörer kan välja en specifik Wink-layout från en rullgardinsmeny direkt i inläggsredigeraren.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin på GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Källkod, installationsguide för utvecklare och instruktioner för bidrag."
+/>
+
+## Krav
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Installera
+
+<Steps>
+1. Installera via Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Aktivera pluginet i Kontrollpanelen under **Inställningar → Plugins**, eller via CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Gå till **Inställningar → Wink** i Kontrollpanelen.
+4. Ange din **Client ID** och **Client Secret**, välj din miljö och klicka på **Spara**.
+   Gå till [Applications](/sv/portal/settings/applications) för att hämta dina uppgifter.
+</Steps>
+
+## Använd i Twig-mallar
+
+När det är konfigurerat kan du anropa Wink Twig-funktioner var som helst i dina mallar:
+
+```twig
+{# Rendera ett hotellnät #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Sökfält för destination #}
+{{ winkLookup() }}
+
+{# Knapp för resplanväljare #}
+{{ winkSearch() }}
+
+{# Användarkonto-knapp #}
+{{ winkAccount() }}
+```
+
+Funktionen `winkContent()` injicerar automatiskt `<wink-app-loader>` första gången den anropas på en sida.
+
+## Tillgängliga Twig-funktioner
+
+| Funktion | Output | Beskrivning |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Hotellkort, nät, kartor |
+| `winkLookup()` | `<wink-lookup>` | Sökfält för destination |
+| `winkSearch()` | `<wink-search-button>` | Knapp för resplanväljare |
+| `winkAccount()` | `<wink-account-button>` | Inloggning / användarkonto |
+| `winkItinerary()` | `<wink-itinerary-button>` | Knapp för resplanstatus |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Kundvagnsknapp |
+
+## Fälttypen Wink Layout
+
+Lägg till ett **Wink Layout**-fält i valfri sektion för att ge redaktörer en rullgardinsmeny med alla tillgängliga layouter från ditt Wink-konto:
+
+<Steps>
+1. Gå till **Inställningar → Fält → Nytt fält**.
+2. Ställ in **Fälttyp** till **Wink Layout**.
+3. Lägg till fältet i fältlayouten för din inläggstyp.
+4. Redaktörer kan nu välja en layout direkt i inläggsredigeraren — ingen kopiering av ID:n behövs.
+</Steps>
+
+I din mall skickar du fältvärdet till `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Vidare läsning
+
+- [Referens för Web Components](/sv/integrations/web-components)
+- [Hämta din Client ID](/sv/portal/settings/applications)
+- [Wink Craft Plugin — källkod & utvecklardokumentation](https://github.com/wink-travel/wink-craft-plugin)

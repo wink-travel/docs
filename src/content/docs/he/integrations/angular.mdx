@@ -1,0 +1,112 @@
+---
+title: Angular
+description: השתמשו ברכיבי Wink ביישומי Angular 14+ עם CUSTOM_ELEMENTS_SCHEMA ו-@wink/elements.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+רכיבי Wink הם בעצמם Angular Elements — הם משתלבים באופן טבעי ביישומי Angular. ההגדרה היחידה הנדרשת היא לאפשר למקמפל של Angular לקבל שמות אלמנטים לא מוכרים.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="התקן וטעין את חבילת ה-CDN עם טיפוסי TypeScript."
+/>
+
+## התקנה
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — טעינת CDN פעם אחת
+
+קרא ל-`load()` לפני `bootstrapApplication` (או בתוך `APP_INITIALIZER`):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## אפשר שמות אלמנטים מותאמים אישית
+
+הוסף `CUSTOM_ELEMENTS_SCHEMA` לכל קומפוננטה עצמאית (או מודול) שמציגה תגיות `<wink-*>`:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="יישומי NgModule">
+ליישומים מבוססי NgModule, הוסף את `CUSTOM_ELEMENTS_SCHEMA` למערך `schemas` בדקורטור `@NgModule` במקום זאת.
+</Aside>
+
+## קשירת מאפיינים
+
+תחביר התבנית של Angular עובד ישירות עם מאפייני מחרוזת של אלמנטים מותאמים אישית:
+
+```html
+<!-- סטטי -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- קשירה דינמית -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+השתמש בקשירת `[attr.name]` כאשר הערך דינמי — קשירת `[property]` הרגילה של Angular פונה למאפייני DOM, לא למאפייני HTML, שעליהם מסתמכים אלמנטים מותאמים אישית.
+
+## משתני סביבה
+
+לפרויקטים עם `@angular/cli` 16+, השתמש ב-`environment.ts` או בקידומת `NG_APP_*` עם `@ngx-env/builder`:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## טיפוסי TypeScript
+
+חבילת `@wink/elements` מייצאת ממשקים עם טיפוסים לכל מאפייני הקומפוננטות:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## קריאה נוספת
+
+- [הפניה לרכיבי Web Components](/he/integrations/web-components)
+- [חבילת @wink/elements ב-npm](/he/integrations/npm)

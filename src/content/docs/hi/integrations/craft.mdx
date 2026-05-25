@@ -1,0 +1,92 @@
+---
+title: क्राफ्ट CMS
+description: Wink प्लगइन का उपयोग करके अपने Craft CMS 5 वेबसाइट में Wink ट्रैवल इन्वेंटरी एम्बेड करें।
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS Plugin** Twig टेम्पलेट फ़ंक्शंस और कंटेंट एडिटर के लिए एक कस्टम फील्ड टाइप के माध्यम से Wink ट्रैवल इन्वेंटरी को Craft 5 में एकीकृत करता है। संपादक सीधे एंट्री एडिटर में ड्रॉपडाउन से एक विशिष्ट Wink लेआउट चुन सकते हैं।
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin on GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="स्रोत कोड, डेवलपर सेटअप गाइड, और योगदान निर्देश।"
+/>
+
+## आवश्यकताएँ
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## इंस्टॉल करें
+
+<Steps>
+1. Composer के माध्यम से इंस्टॉल करें:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. कंट्रोल पैनल में **Settings → Plugins** पर जाकर या CLI के माध्यम से प्लगइन सक्रिय करें:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. कंट्रोल पैनल में **Settings → Wink** पर जाएं।
+4. अपना **Client ID** और **Client Secret** दर्ज करें, अपना पर्यावरण चुनें, और **Save** पर क्लिक करें।
+   अपने क्रेडेंशियल्स प्राप्त करने के लिए [Applications](/hi/portal/settings/applications) पर जाएं।
+</Steps>
+
+## Twig टेम्पलेट्स में उपयोग करें
+
+एक बार कॉन्फ़िगर हो जाने के बाद, अपने टेम्पलेट्स में कहीं भी Wink Twig फ़ंक्शंस कॉल करें:
+
+```twig
+{# होटल ग्रिड रेंडर करें #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# डेस्टिनेशन सर्च बार #}
+{{ winkLookup() }}
+
+{# यात्रा चयनकर्ता बटन #}
+{{ winkSearch() }}
+
+{# उपयोगकर्ता खाता बटन #}
+{{ winkAccount() }}
+```
+
+`winkContent()` फ़ंक्शन पेज पर पहली बार कॉल होने पर स्वचालित रूप से `<wink-app-loader>` इंजेक्ट करता है।
+
+## उपलब्ध Twig फ़ंक्शंस
+
+| फ़ंक्शन | आउटपुट | विवरण |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | होटल कार्ड, ग्रिड, मानचित्र |
+| `winkLookup()` | `<wink-lookup>` | डेस्टिनेशन सर्च बार |
+| `winkSearch()` | `<wink-search-button>` | यात्रा चयनकर्ता बटन |
+| `winkAccount()` | `<wink-account-button>` | साइन-इन / उपयोगकर्ता खाता |
+| `winkItinerary()` | `<wink-itinerary-button>` | यात्रा स्थिति बटन |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | कार्ट बटन |
+
+## Wink लेआउट फील्ड टाइप
+
+किसी भी सेक्शन में एक **Wink Layout** फील्ड जोड़ें ताकि संपादकों को आपके Wink खाते से सभी उपलब्ध लेआउट्स का ड्रॉपडाउन मिल सके:
+
+<Steps>
+1. **Settings → Fields → New Field** पर जाएं।
+2. **Field Type** को **Wink Layout** पर सेट करें।
+3. फील्ड को अपने एंट्री टाइप के फील्ड लेआउट में जोड़ें।
+4. अब संपादक सीधे एंट्री एडिटर में एक लेआउट चुन सकते हैं — आईडी कॉपी-पेस्ट करने की जरूरत नहीं।
+</Steps>
+
+अपने टेम्पलेट में, फील्ड वैल्यू को `winkContent()` को पास करें:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## आगे पढ़ें
+
+- [Web Components reference](/hi/integrations/web-components)
+- [अपना Client ID प्राप्त करें](/hi/portal/settings/applications)
+- [Wink Craft Plugin — स्रोत कोड और डेवलपर डॉक्यूमेंटेशन](https://github.com/wink-travel/wink-craft-plugin)

@@ -1,0 +1,103 @@
+---
+title: Preact
+description: 在 Preact 应用中使用 Wink Web 组件 — 与 React 相同的模式，但体积更小。
+sidebar:
+  order: 24
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Preact 的 API 与 React 兼容。集成遵循相同的模式——在应用启动时调用一次 `load()`，然后在 JSX 中使用 `<wink-*>` 标签。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="安装并加载带有 TypeScript 类型的 CDN 包。"
+/>
+
+## 安装
+
+```bash
+npm install @wink/elements
+```
+
+## 在应用启动时调用一次加载
+
+```tsx
+// src/app.tsx
+import { useEffect } from 'preact/hooks';
+import { load } from '@wink/elements';
+
+export function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## 在 JSX 中使用
+
+```tsx
+// src/pages/hotels.tsx
+export function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — 声明 JSX 内置元素
+
+Preact 的 JSX 命名空间与 React 分开。扩展 `preact/src/jsx.d.ts`：
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'preact' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## 使用 `preact/compat` 的 Preact
+
+如果你将 React 别名为 `preact/compat`，请改用 React 的 JSX 声明：
+
+```ts
+// src/wink-elements.d.ts
+// 使用 /integrations/react 中的 React JSX 声明
+// — preact/compat 重新导出 React 的 JSX 命名空间
+```
+
+<Aside type="tip">
+Preact 更小的包体积非常适合在对性能敏感的店面中嵌入 Wink 组件。`@wink/elements` 的 `load()` 函数增加约 500 字节的 gzip 大小——大部分体积来自异步加载的 CDN 包。
+</Aside>
+
+## 进一步阅读
+
+- [Web Components 参考](/zh-CN/integrations/web-components)
+- [@wink/elements npm package](/zh-CN/integrations/npm)
+- [React 集成](/zh-CN/integrations/react)

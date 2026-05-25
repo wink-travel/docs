@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Embed Wink reisvoorraad in je Webflow-site met behulp van aangepaste code-embeds.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow ondersteunt aangepaste HTML en JavaScript op drie plaatsen: de site-brede `<head>`, de site-brede `</body>`, en per-element code-embeds. Dit maakt het integreren van Wink webcomponenten eenvoudig.
+
+:::note
+Aangepaste code is beschikbaar op **Webflow's Basic plan en hoger**. De site-brede `</body>` injectie vereist een betaald hostingplan.
+:::
+
+## Laad Wink-scripts site-breed
+
+<Steps>
+1. Open in de Webflow Designer **Projectinstellingen → Aangepaste code**.
+2. Voeg in de sectie **Head Code** het stylesheet toe:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. Voeg in de sectie **Footer Code** het script en de applicatielader toe (vervang `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klik op **Wijzigingen opslaan**.
+</Steps>
+
+:::tip
+Je Client ID is beschikbaar in je Wink-account onder [Applications](/nl/portal/settings/applications).
+:::
+
+## Voeg een component toe aan een specifiek element
+
+<Steps>
+1. Selecteer in de Designer de **Div** of **Sectie** waar je het component wilt plaatsen.
+2. Klik in het rechterpaneel op het **`</>` Embed**-icoon (of voeg een **HTML Embed**-element toe vanuit het Add-paneel).
+3. Plak de component-HTML, bijvoorbeeld:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klik op **Opslaan & Sluiten**.
+</Steps>
+
+## Aangepaste code per pagina
+
+Als je Wink alleen op specifieke pagina's nodig hebt, gebruik dan per-pagina code-injectie in plaats van site-breed:
+
+<Steps>
+1. Open de **Pagina-instellingen** voor de doelpagina (tandwiel-icoon in het Pagina-paneel).
+2. Scroll naar **Aangepaste code → Voor de `</body>` tag**.
+3. Plak hetzelfde script en de app-lader als hierboven.
+4. Sla de pagina-instellingen op.
+</Steps>
+
+## Beschikbare componenten
+
+| Component | HTML-tag | Doel |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Toon hotelkaarten, grids, kaarten |
+| Lookup | `<wink-lookup>` | Zoekbalk voor bestemmingen |
+| Zoekknop | `<wink-search-button>` | Open reisschema-kiezer |
+| Accountknop | `<wink-account-button>` | Inloggen / gebruikersmenu |
+| Reisschema-knop | `<wink-itinerary-button>` | Toon huidig reisschema |
+| Reisschema-kiezer | `<wink-itinerary-picker>` | Volledig reisschema-formulier |
+| Winkelwagen | `<wink-shopping-cart-button>` | Samenvattingsknop winkelwagen |
+
+Zie [Web Components](/nl/integrations/web-components) voor de volledige attributenreferentie.
+
+## Verdere lectuur
+
+- [Web Components referentie](/nl/integrations/web-components)
+- [Krijg je Client ID](/nl/portal/settings/applications)
+- [Webflow documentatie over aangepaste code](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

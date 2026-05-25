@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: クライアントサイドプラグインを使ってNuxt 3アプリケーションにWinkのWebコンポーネントを追加します。
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3はデフォルトでサーバー上でページをレンダリングします。CDNスクリプトやカスタム要素はクライアントサイドでのみ読み込む必要があります。Nuxtのクライアントプラグインがこれを行う最もクリーンな場所です。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="TypeScript型定義付きでCDNバンドルをインストールおよび読み込みします。"
+/>
+
+## インストール
+
+```bash
+npm install @wink/elements
+```
+
+## クライアントプラグインを作成する
+
+`.client.ts`のサフィックスはNuxtにこのプラグインをブラウザでのみ実行するよう指示します：
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## ランタイム変数を設定する
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+`.env`に追加：
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## カスタム要素用にVueを設定する
+
+Vueが未知の`<wink-*>`タグについて警告しないように、`isCustomElement`コンパイラオプションを追加します：
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## テンプレートでの使用
+
+SSRのハイドレーション不一致を防ぐために、Winkコンポーネントを`<ClientOnly>`でラップします：
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>`はサーバー上ではプレースホルダーをレンダリングし、クライアント上で実際の要素をマウントします — これはNuxtでのブラウザ専用のサードパーティ埋め込みに推奨されるパターンです。
+</Aside>
+
+## TypeScript型定義
+
+グローバルの`HTMLElementTagNameMap`（Vue 3と同様）を拡張して属性のオートコンプリートを有効にします。完全な宣言ファイルは[Vue 3統合ページ](/ja/integrations/vue#typescript--augment-global-element-types)を参照してください。
+
+## さらに読む
+
+- [Web Componentsリファレンス](/ja/integrations/web-components)
+- [@wink/elements npm package](/ja/integrations/npm)
+- [Vue 3統合](/ja/integrations/vue)

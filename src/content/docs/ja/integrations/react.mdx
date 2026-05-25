@@ -1,0 +1,111 @@
+---
+title: React
+description: @wink/elements を使って、TypeScript サポート付きで任意の React アプリケーションに Wink のウェブコンポーネントを組み込みます。
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ はカスタムエレメントをネイティブにサポートしています。React 18 以前は文字列属性のみを渡すため、以下の型付きヘルパーパターンを使うことでバージョン間の安全性を保てます。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="TypeScript 型定義付きの CDN バンドルをインストールして読み込みます。"
+/>
+
+## インストール
+
+```bash
+npm install @wink/elements
+```
+
+## アプリのルートで一度だけ読み込む
+
+トップレベルコンポーネントで `load()` を呼び出します。冪等性があるため、複数回呼んでも安全です。
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## JSX 内でコンポーネントを使う
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — JSX の組み込み要素を宣言する
+
+React はデフォルトでカスタムエレメント名を認識しません。型エラーを抑制するために一度だけ宣言ファイルを追加します。
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="React 18 の属性制限について">
+React 18 以前はすべての JSX プロパティを文字列にシリアライズしてから DOM に渡します。Boolean やオブジェクトのプロパティは手動で変換する必要があります。React 19 では非文字列プロパティを直接カスタムエレメントに渡すため、回避策は不要です。
+</Aside>
+
+## 型付き属性の渡し方（React 18 対応）
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// React 19 ではスプレッドが使えますが、React 18 ではすべて文字列になるため個別指定でも問題ありません
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## さらに読む
+
+- [Web Components リファレンス](/ja/integrations/web-components)
+- [@wink/elements npm package](/ja/integrations/npm)
+- [Next.js 統合](/ja/integrations/nextjs)

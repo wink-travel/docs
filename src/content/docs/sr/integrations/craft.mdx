@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Ugradite Wink travel inventar u vaš Craft CMS 5 sajt koristeći Wink dodatak.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS Plugin** integriše Wink travel inventar u Craft 5 putem Twig funkcija za šablone i prilagođenog tipa polja za urednika sadržaja. Urednici mogu izabrati određeni Wink raspored iz padajućeg menija direktno u editoru unosa.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin na GitHub-u"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Izvorni kod, vodič za podešavanje za developere i uputstva za doprinos."
+/>
+
+## Zahtevi
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Instalacija
+
+<Steps>
+1. Instalirajte preko Composera:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Aktivirajte dodatak u Kontrolnoj tabli pod **Settings → Plugins**, ili preko CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Idite na **Settings → Wink** u Kontrolnoj tabli.
+4. Unesite vaš **Client ID** i **Client Secret**, izaberite okruženje i kliknite **Save**.
+   Posetite [Applications](/sr/portal/settings/applications) da preuzmete vaše akreditive.
+</Steps>
+
+## Korišćenje u Twig šablonima
+
+Kada je podešeno, pozovite Wink Twig funkcije bilo gde u vašim šablonima:
+
+```twig
+{# Prikaz hotelske mreže #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Pretraga destinacija #}
+{{ winkLookup() }}
+
+{# Dugme za izbor itinerera #}
+{{ winkSearch() }}
+
+{# Dugme korisničkog naloga #}
+{{ winkAccount() }}
+```
+
+Funkcija `winkContent()` automatski ubacuje `<wink-app-loader>` prvi put kada se pozove na stranici.
+
+## Dostupne Twig funkcije
+
+| Funkcija | Izlaz | Opis |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Hotelske kartice, mreže, mape |
+| `winkLookup()` | `<wink-lookup>` | Pretraga destinacija |
+| `winkSearch()` | `<wink-search-button>` | Dugme za izbor itinerera |
+| `winkAccount()` | `<wink-account-button>` | Prijava / korisnički nalog |
+| `winkItinerary()` | `<wink-itinerary-button>` | Dugme statusa itinerera |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Dugme korpe |
+
+## Tip polja Wink Layout
+
+Dodajte polje **Wink Layout** u bilo koji odeljak da biste urednicima omogućili padajući meni sa svim dostupnim rasporedima iz vašeg Wink naloga:
+
+<Steps>
+1. Idite na **Settings → Fields → New Field**.
+2. Postavite **Field Type** na **Wink Layout**.
+3. Dodajte polje u raspored polja vašeg tipa unosa.
+4. Urednici sada mogu direktno izabrati raspored u editoru unosa — bez kopiranja ID-jeva.
+</Steps>
+
+U vašem šablonu prosledite vrednost polja funkciji `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Dodatno čitanje
+
+- [Reference Web Components](/sr/integrations/web-components)
+- [Preuzmite vaš Client ID](/sr/portal/settings/applications)
+- [Wink Craft Plugin — izvorni kod i dokumentacija za developere](https://github.com/wink-travel/wink-craft-plugin)

@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: カスタムコード埋め込みを使って、Winkの旅行在庫をWebflowサイトに埋め込みます。
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflowは、サイト全体の`<head>`、サイト全体の`</body>`、および各要素ごとのコード埋め込みの3か所でカスタムHTMLとJavaScriptをサポートしています。これにより、Winkのウェブコンポーネントの統合が簡単になります。
+
+:::note
+カスタムコードは**WebflowのBasicプラン以上**で利用可能です。サイト全体の`</body>`への挿入は有料ホスティングプランが必要です。
+:::
+
+## Winkスクリプトをサイト全体に読み込む
+
+<Steps>
+1. Webflow Designerで、**Project Settings → Custom Code**を開きます。
+2. **Head Code**セクションにスタイルシートを追加します：
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. **Footer Code**セクションにスクリプトとアプリケーションローダーを追加します（`YOUR_CLIENT_ID`を置き換えてください）：
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. **Save Changes**をクリックします。
+</Steps>
+
+:::tip
+クライアントIDはWinkアカウントの[Applications](/ja/portal/settings/applications)で確認できます。
+:::
+
+## 特定の要素にコンポーネントを追加する
+
+<Steps>
+1. Designerで、コンポーネントを配置したい**Div**または**Section**を選択します。
+2. 右パネルで**`</>` Embed**アイコンをクリックするか、Addパネルから**HTML Embed**要素を追加します。
+3. コンポーネントのHTMLを貼り付けます。例：
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. **Save & Close**をクリックします。
+</Steps>
+
+## ページごとのカスタムコード
+
+特定のページだけにWinkを表示したい場合は、サイト全体ではなくページごとのコード挿入を使います：
+
+<Steps>
+1. 対象ページの**Page Settings**（Pagesパネルの歯車アイコン）を開きます。
+2. **Custom Code → Before `</body>` tag**までスクロールします。
+3. 上記と同じスクリプトとアプリローダーを貼り付けます。
+4. ページ設定を保存します。
+</Steps>
+
+## 利用可能なコンポーネント
+
+| コンポーネント | HTMLタグ | 用途 |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | ホテルカード、グリッド、地図の表示 |
+| Lookup | `<wink-lookup>` | 目的地検索バー |
+| Search button | `<wink-search-button>` | 旅程ピッカーを開くボタン |
+| Account button | `<wink-account-button>` | サインイン / ユーザーメニュー |
+| Itinerary button | `<wink-itinerary-button>` | 現在の旅程を表示 |
+| Itinerary picker | `<wink-itinerary-picker>` | 旅程フォーム全体 |
+| Shopping cart | `<wink-shopping-cart-button>` | カート概要ボタン |
+
+完全な属性リファレンスは[Web Components](/ja/integrations/web-components)をご覧ください。
+
+## さらに読む
+
+- [Web Componentsリファレンス](/ja/integrations/web-components)
+- [クライアントIDの取得](/ja/portal/settings/applications)
+- [Webflowカスタムコードドキュメント](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

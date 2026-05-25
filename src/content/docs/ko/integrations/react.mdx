@@ -1,0 +1,111 @@
+---
+title: React
+description: @wink/elements를 통해 완전한 TypeScript 지원과 함께 모든 React 애플리케이션에서 Wink 웹 컴포넌트를 사용하세요.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+는 커스텀 엘리먼트를 기본적으로 지원합니다. React 18 및 이전 버전은 문자열 속성만 전달하므로, 버전 간 안전하게 사용하려면 아래의 타입 지정 헬퍼 패턴을 사용하세요.
+
+<LinkCard
+  title="@wink/elements npm 패키지"
+  href="/integrations/npm"
+  description="TypeScript 타입과 함께 CDN 번들을 설치하고 로드하세요."
+/>
+
+## 설치
+
+```bash
+npm install @wink/elements
+```
+
+## 앱 루트에서 한 번만 로드
+
+최상위 컴포넌트에서 `load()`를 호출하세요. 이 함수는 멱등성이 있어 여러 번 호출해도 안전합니다.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## JSX에서 컴포넌트 사용하기
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — JSX 내장 요소 선언
+
+React는 기본적으로 커스텀 엘리먼트 이름을 인식하지 못합니다. 타입 오류를 없애려면 선언 파일을 한 번 추가하세요:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="React 18 속성 제한 사항">
+React 18 및 이전 버전은 모든 JSX 속성을 문자열로 직렬화하여 DOM에 전달합니다. 불리언 및 객체 속성은 수동으로 변환해야 합니다. React 19는 문자열이 아닌 속성을 커스텀 엘리먼트에 직접 전달하므로 별도의 우회 방법이 필요 없습니다.
+</Aside>
+
+## 타입 지정된 속성 전달하기 (React 18 안전)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// React 19에서는 스프레드가 작동하며, React 18에서는 모든 값이 어차피 문자열입니다.
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## 추가 자료
+
+- [웹 컴포넌트 참고 자료](/ko/integrations/web-components)
+- [@wink/elements npm 패키지](/ko/integrations/npm)
+- [Next.js 통합](/ko/integrations/nextjs)

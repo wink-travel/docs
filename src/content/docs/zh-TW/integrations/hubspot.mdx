@@ -1,0 +1,81 @@
+---
+title: HubSpot CMS
+description: 使用自訂模組和頁首/頁尾 HTML，將 Wink 旅遊庫存嵌入您的 HubSpot CMS 網站。
+sidebar:
+  order: 6
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+HubSpot CMS 支援自訂 HTML 模組及全站頁首/頁尾程式碼，讓您輕鬆在行銷頁面和登陸頁面嵌入 Wink 元件。
+
+:::note
+全站程式碼注入需要 **HubSpot CMS Hub**（Starter 或以上）權限。自訂 HTML 模組在所有 CMS 等級皆可使用。
+:::
+
+## 全站載入 Wink 腳本
+
+<Steps>
+1. 在 HubSpot 中，前往 **Marketing → Files and Templates → Design Tools**。
+2. 開啟您啟用的 **主題** 的 `main.css`，或使用全域內容設定。
+3. 或者，前往 **Settings → Website → Pages → Custom Code**。
+4. 在 **Head HTML** 欄位中，加入樣式表：
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+5. 在 **Footer HTML** 欄位中，加入腳本和應用程式載入器（請替換 `YOUR_CLIENT_ID`）：
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+6. 儲存並發佈。
+</Steps>
+
+:::tip
+您的 Client ID 可在 Wink 帳戶的 [Applications](/zh-TW/portal/settings/applications) 中取得。
+:::
+
+## 透過自訂 HTML 模組新增元件
+
+<Steps>
+1. 在 Design Tools 中，建立一個新的 **模組**，類型為 **Rich Text** 或 **HTML**。
+2. 在模組的預設內容中，貼上元件 HTML：
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+3. 儲存模組，並將其拖曳至任何頁面範本或使用頁面編輯器的頁面中。
+</Steps>
+
+## 直接在頁面編輯器中新增元件
+
+如果您不想建立模組，也可以在拖放編輯器中使用 **Custom HTML** 區塊：
+
+<Steps>
+1. 在 HubSpot 頁面編輯器中開啟頁面。
+2. 點選 **Add**，選擇 **Custom HTML** 或 **Embed** 區塊。
+3. 將元件標籤貼入 HTML 欄位。
+4. 點選 **Apply** 並發佈頁面。
+</Steps>
+
+## 可用元件
+
+| 元件 | HTML 標籤 | 用途 |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | 顯示飯店卡片、格線、地圖 |
+| Lookup | `<wink-lookup>` | 目的地搜尋欄 |
+| Search button | `<wink-search-button>` | 開啟行程選擇器 |
+| Account button | `<wink-account-button>` | 登入 / 使用者選單 |
+| Itinerary button | `<wink-itinerary-button>` | 顯示目前行程 |
+| Itinerary picker | `<wink-itinerary-picker>` | 完整行程表單 |
+| Shopping cart | `<wink-shopping-cart-button>` | 購物車摘要按鈕 |
+
+完整屬性參考請見 [Web Components](/zh-TW/integrations/web-components)。
+
+## 延伸閱讀
+
+- [Web Components 參考](/zh-TW/integrations/web-components)
+- [取得您的 Client ID](/zh-TW/portal/settings/applications)
+- [HubSpot 自訂程式碼文件](https://knowledge.hubspot.com/website-pages/add-custom-code-to-pages)

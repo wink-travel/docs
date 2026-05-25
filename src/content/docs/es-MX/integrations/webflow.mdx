@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Inserta el inventario de viajes de Wink en tu sitio Webflow usando incrustaciones de código personalizadas.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow soporta HTML y JavaScript personalizados en tres lugares: el `<head>` de todo el sitio, el `</body>` de todo el sitio y en incrustaciones de código por elemento. Esto facilita la integración de los componentes web de Wink.
+
+:::note
+El código personalizado está disponible en el **plan Básico de Webflow y superiores**. La inyección en el `</body>` de todo el sitio requiere un plan de hosting de pago.
+:::
+
+## Cargar scripts de Wink en todo el sitio
+
+<Steps>
+1. En el Diseñador de Webflow, abre **Configuración del proyecto → Código personalizado**.
+2. En la sección **Código en el Head**, agrega la hoja de estilos:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. En la sección **Código en el Footer**, agrega el script y el cargador de la aplicación (reemplaza `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Haz clic en **Guardar cambios**.
+</Steps>
+
+:::tip
+Tu Client ID está disponible en tu cuenta Wink bajo [Applications](/es-MX/portal/settings/applications).
+:::
+
+## Agregar un componente a un elemento específico
+
+<Steps>
+1. En el Diseñador, selecciona el **Div** o **Sección** donde quieres el componente.
+2. En el panel derecho, haz clic en el ícono **`</>` Embed** (o agrega un elemento **HTML Embed** desde el panel Agregar).
+3. Pega el HTML del componente, por ejemplo:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Haz clic en **Guardar y cerrar**.
+</Steps>
+
+## Código personalizado por página
+
+Si solo necesitas Wink en páginas específicas, usa la inyección de código por página en lugar de en todo el sitio:
+
+<Steps>
+1. Abre la **Configuración de página** para la página objetivo (ícono de engranaje en el panel de Páginas).
+2. Desplázate a **Código personalizado → Antes de la etiqueta `</body>`**.
+3. Pega el mismo script y cargador de app que arriba.
+4. Guarda la configuración de la página.
+</Steps>
+
+## Componentes disponibles
+
+| Componente | Etiqueta HTML | Propósito |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Mostrar tarjetas de hotel, rejillas, mapas |
+| Lookup | `<wink-lookup>` | Barra de búsqueda para destinos |
+| Search button | `<wink-search-button>` | Abrir selector de itinerario |
+| Account button | `<wink-account-button>` | Iniciar sesión / menú de usuario |
+| Itinerary button | `<wink-itinerary-button>` | Mostrar itinerario actual |
+| Itinerary picker | `<wink-itinerary-picker>` | Formulario completo de itinerario |
+| Shopping cart | `<wink-shopping-cart-button>` | Botón resumen del carrito |
+
+Consulta [Web Components](/es-MX/integrations/web-components) para la referencia completa de atributos.
+
+## Lectura adicional
+
+- [Referencia de Web Components](/es-MX/integrations/web-components)
+- [Obtén tu Client ID](/es-MX/portal/settings/applications)
+- [Documentación de código personalizado de Webflow](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

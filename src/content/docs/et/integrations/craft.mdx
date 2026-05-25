@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Manustage Wink reisi inventar oma Craft CMS 5 veebisaidile, kasutades Wink pluginat.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS Plugin** integreerib Wink reisi inventari Craft 5-sse Twig mallifunktsioonide ja kohandatud välja tüübi kaudu sisutoimetajale. Toimetajad saavad valida konkreetse Wink paigutuse rippmenüüst otse kirje toimetajas.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin GitHubis"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Allikakood, arendaja seadistusjuhend ja panustamise juhised."
+/>
+
+## Nõuded
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Paigaldus
+
+<Steps>
+1. Paigaldage Composeriga:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Aktiveerige plugin juhtpaneelil **Seaded → Pluginad** või käsurealt:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Minge juhtpaneelil **Seaded → Wink**.
+4. Sisestage oma **Client ID** ja **Client Secret**, valige keskkond ning klõpsake **Salvesta**.
+   Oma mandaadid saate kätte [Applications](/et/portal/settings/applications) lehelt.
+</Steps>
+
+## Kasutamine Twig mallides
+
+Kui seadistus on tehtud, kutsuge Wink Twig funktsioone oma mallides suvalises kohas:
+
+```twig
+{# Hotelli ruudustiku kuvamine #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Sihtkoha otsinguriba #}
+{{ winkLookup() }}
+
+{# Marsruudi valiku nupp #}
+{{ winkSearch() }}
+
+{# Kasutajakonto nupp #}
+{{ winkAccount() }}
+```
+
+Funktsioon `winkContent()` lisab automaatselt `<wink-app-loader>` esimesel lehekülastusel, kus seda kutsutakse.
+
+## Saadaval Twig funktsioonid
+
+| Funktsioon | Väljund | Kirjeldus |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Hotelli kaardid, ruudustikud, kaardid |
+| `winkLookup()` | `<wink-lookup>` | Sihtkoha otsinguriba |
+| `winkSearch()` | `<wink-search-button>` | Marsruudi valiku nupp |
+| `winkAccount()` | `<wink-account-button>` | Sisselogimine / kasutajakonto |
+| `winkItinerary()` | `<wink-itinerary-button>` | Marsruudi oleku nupp |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Ostukorvi nupp |
+
+## Wink Layout välja tüüp
+
+Lisage mis tahes sektsioonile **Wink Layout** väli, et anda toimetajatele rippmenüü kõigi teie Wink konto saadaval olevate paigutustega:
+
+<Steps>
+1. Minge **Seaded → Väljad → Uus väli**.
+2. Valige **Välja tüüp**ks **Wink Layout**.
+3. Lisage väli oma kirjetüübi välja paigutusse.
+4. Toimetajad saavad nüüd valida paigutuse otse kirje toimetajas — pole vaja ID-sid kopeerida ja kleepida.
+</Steps>
+
+Mallides edastage välja väärtus `winkContent()` funktsioonile:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Täiendav lugemine
+
+- [Veebikomponentide viide](/et/integrations/web-components)
+- [Hankige oma Client ID](/et/portal/settings/applications)
+- [Wink Craft Plugin — allikakood ja arendajate dokumentatsioon](https://github.com/wink-travel/wink-craft-plugin)

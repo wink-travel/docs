@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: Lisää Wink-verkkokomponentit Nuxt 3 -sovelluksiin käyttämällä client-side -pluginia.
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 renderöi sivut oletuksena palvelimella. CDN-skriptit ja mukautetut elementit on ladattava vain client-puolella. Nuxtin client-plugin on siistein tapa tehdä tämä.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Asenna ja lataa CDN-kimppu TypeScript-tyypeillä."
+/>
+
+## Asennus
+
+```bash
+npm install @wink/elements
+```
+
+## Luo client-plugin
+
+`.client.ts`-päätteellä kerrotaan Nuxtille, että tämä plugin suoritetaan vain selaimessa:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## Määritä runtime-muuttuja
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+Lisää `.env`-tiedostoon:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Määritä Vue mukautetuille elementeille
+
+Lisää `isCustomElement`-kääntäjäoptio, jotta Vue ei varoita tuntemattomista `<wink-*>`-tageista:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## Käyttö malleissa
+
+Kääri Wink-komponentit `<ClientOnly>`-elementtiin estääksesi SSR:n ja clientin hydratisointivirheet:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` renderöi paikkamerkin palvelimella ja liittää oikean elementin clientilla — tämä on suositeltu malli kaikille selaimessa toimiville kolmannen osapuolen upotuksille Nuxtissa.
+</Aside>
+
+## TypeScript-tyypit
+
+Laajenna globaalia `HTMLElementTagNameMap`-tyyppiä (kuten Vue 3:ssa) saadaksesi attribuuttien automaattisen täydennyksen. Katso [Vue 3 -integraatiosivu](/fi/integrations/vue#typescript--augment-global-element-types) täydellisestä määrittelytiedostosta.
+
+## Lisälukemista
+
+- [Web Components -viite](/fi/integrations/web-components)
+- [@wink/elements npm package](/fi/integrations/npm)
+- [Vue 3 -integraatio](/fi/integrations/vue)

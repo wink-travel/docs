@@ -1,0 +1,168 @@
+---
+title: 헤드리스 CMS
+description: Wink 여행 인벤토리를 모든 헤드리스 CMS(Contentful, Strapi, Sanity 등) 또는 맞춤형 사이트에 임베드하세요.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wink 웹 컴포넌트는 프레임워크에 구애받지 않는 커스텀 HTML 요소입니다. Next.js, Nuxt, Astro, SvelteKit 또는 기타 프레임워크를 통해 HTML을 렌더링하는 헤드리스 CMS라면 특별한 통합 없이 Wink 컴포넌트를 임베드할 수 있습니다.
+
+## 세 단계 임베드
+
+모든 Wink 통합은 플랫폼에 관계없이 동일한 세 단계를 따릅니다.
+
+### 1. 스타일시트 포함
+
+문서의 `<head>`(또는 이에 상응하는 전역 레이아웃)에 다음을 추가하세요:
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. 자바스크립트 포함
+
+닫는 `</body>` 태그 바로 전에(또는 레이아웃의 스크립트 섹션에) 다음을 추가하세요:
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. 애플리케이션 로더 추가
+
+페이지당 **한 번만**, 본문 내 어디에나(일반적으로 전역 레이아웃 푸터에) 다음을 배치하세요:
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+클라이언트 ID는 Wink 계정 내 [Applications](/ko/portal/settings/applications)에서 확인할 수 있습니다.
+:::
+
+## 프레임워크 예시
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+TypeScript 사용자: 커스텀 요소 타입을 선언하는 `global.d.ts`를 추가하거나 타입 선언이 포함된 [`@wink/elements`](https://github.com/wink2travel/wink-elements) npm 패키지를 사용하세요.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## 콘텐츠 내 컴포넌트 배치
+
+CMS의 리치 텍스트 또는 커스텀 필드 타입에서 HTML 출력에 컴포넌트 태그를 직접 임베드하세요:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Contentful, Strapi, Sanity 또는 유사한 헤드리스 플랫폼에서는 **Rich Text** 필드나 원시 HTML을 렌더링하는 **Custom Block**을 사용하여 컴포넌트 태그를 붙여넣으세요.
+
+## npm 패키지
+
+TypeScript 프로젝트의 경우, [`@wink/elements`](https://github.com/wink2travel/wink-elements) 패키지는 다음을 제공합니다:
+- CDN 스크립트를 프로그래밍 방식으로 주입하는 `load()` 함수
+- 모든 컴포넌트 속성에 대한 완전한 TypeScript 타입 선언
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// 앱 시작 시 한 번 호출
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## 사용 가능한 컴포넌트
+
+| 컴포넌트 | HTML 태그 | 용도 |
+|---|---|---|
+| 콘텐츠 로더 | `<wink-content-loader>` | 호텔 카드, 그리드, 지도 표시 |
+| 조회 | `<wink-lookup>` | 목적지 검색 바 |
+| 검색 버튼 | `<wink-search-button>` | 여정 선택기 열기 |
+| 계정 버튼 | `<wink-account-button>` | 로그인 / 사용자 메뉴 |
+| 여정 버튼 | `<wink-itinerary-button>` | 현재 여정 표시 |
+| 여정 선택기 | `<wink-itinerary-picker>` | 전체 여정 폼 |
+| 쇼핑 카트 | `<wink-shopping-cart-button>` | 카트 요약 버튼 |
+
+전체 속성 참조는 [Web Components](/ko/integrations/web-components)에서 확인하세요.

@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Inserta el inventario de Wink travel en tu sitio web Craft CMS 5 usando el plugin de Wink.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+El **Wink Craft CMS Plugin** integra el inventario de Wink travel en Craft 5 mediante funciones Twig y un tipo de campo personalizado para el editor de contenido. Los editores pueden seleccionar un diseño específico de Wink desde un menú desplegable directamente en el editor de entradas.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin en GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Código fuente, guía de configuración para desarrolladores e instrucciones para contribuir."
+/>
+
+## Requisitos
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Instalación
+
+<Steps>
+1. Instala vía Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Activa el plugin en el Panel de Control en **Settings → Plugins**, o vía CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Ve a **Settings → Wink** en el Panel de Control.
+4. Ingresa tu **Client ID** y **Client Secret**, selecciona tu entorno y haz clic en **Save**.
+   Ve a [Applications](/es/portal/settings/applications) para obtener tus credenciales.
+</Steps>
+
+## Uso en plantillas Twig
+
+Una vez configurado, llama a las funciones Twig de Wink en cualquier parte de tus plantillas:
+
+```twig
+{# Renderiza una cuadrícula de hoteles #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Barra de búsqueda de destinos #}
+{{ winkLookup() }}
+
+{# Botón selector de itinerario #}
+{{ winkSearch() }}
+
+{# Botón de cuenta de usuario #}
+{{ winkAccount() }}
+```
+
+La función `winkContent()` inyecta automáticamente `<wink-app-loader>` la primera vez que se llama en una página.
+
+## Funciones Twig disponibles
+
+| Función | Salida | Descripción |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Tarjetas de hotel, cuadrículas, mapas |
+| `winkLookup()` | `<wink-lookup>` | Barra de búsqueda de destinos |
+| `winkSearch()` | `<wink-search-button>` | Botón selector de itinerario |
+| `winkAccount()` | `<wink-account-button>` | Inicio de sesión / cuenta de usuario |
+| `winkItinerary()` | `<wink-itinerary-button>` | Botón de estado del itinerario |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Botón del carrito |
+
+## Tipo de campo Wink Layout
+
+Agrega un campo **Wink Layout** a cualquier sección para que los editores tengan un menú desplegable con todos los diseños disponibles de tu cuenta Wink:
+
+<Steps>
+1. Ve a **Settings → Fields → New Field**.
+2. Configura **Field Type** a **Wink Layout**.
+3. Añade el campo al diseño de campos de tu tipo de entrada.
+4. Los editores ahora pueden seleccionar un diseño directamente en el editor de entradas — sin copiar y pegar IDs.
+</Steps>
+
+En tu plantilla, pasa el valor del campo a `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Lecturas adicionales
+
+- [Referencia de Web Components](/es/integrations/web-components)
+- [Obtén tu Client ID](/es/portal/settings/applications)
+- [Wink Craft Plugin — código fuente y documentación para desarrolladores](https://github.com/wink-travel/wink-craft-plugin)

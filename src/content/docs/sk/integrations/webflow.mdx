@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Vložte Wink cestovný inventár do svojej stránky Webflow pomocou vlastných kódových vložiek.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow podporuje vlastný HTML a JavaScript na troch miestach: v celosystémovom `<head>`, v celosystémovom `</body>` a v kódových vložkách pre jednotlivé prvky. To uľahčuje integráciu Wink webových komponentov.
+
+:::note
+Vlastný kód je dostupný v **pláne Webflow Basic a vyšších**. Vkladanie do celosystémového `</body>` vyžaduje platený hostingový plán.
+:::
+
+## Načítanie Wink skriptov celosystémovo
+
+<Steps>
+1. Vo Webflow Designer otvorte **Project Settings → Custom Code**.
+2. V sekcii **Head Code** pridajte štýlový súbor:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. V sekcii **Footer Code** pridajte skript a načítač aplikácie (nahraďte `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Kliknite na **Save Changes**.
+</Steps>
+
+:::tip
+Váš Client ID nájdete vo svojom Wink účte v sekcii [Applications](/sk/portal/settings/applications).
+:::
+
+## Pridanie komponentu do konkrétneho prvku
+
+<Steps>
+1. V Designeri vyberte **Div** alebo **Section**, kde chcete komponent.
+2. V pravom paneli kliknite na ikonu **`</>` Embed** (alebo pridajte prvok **HTML Embed** z panela Add).
+3. Vložte HTML komponentu, napríklad:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Kliknite na **Save & Close**.
+</Steps>
+
+## Vlastný kód pre jednotlivé stránky
+
+Ak potrebujete Wink len na konkrétnych stránkach, použite vkladanie kódu pre jednotlivé stránky namiesto celosystémového:
+
+<Steps>
+1. Otvorte **Page Settings** pre cieľovú stránku (ikona ozubeného kolieska v paneli Pages).
+2. Prejdite na **Custom Code → Before `</body>` tag**.
+3. Vložte rovnaký skript a načítač aplikácie ako vyššie.
+4. Uložte nastavenia stránky.
+</Steps>
+
+## Dostupné komponenty
+
+| Komponent | HTML tag | Účel |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Zobrazenie hotelových kariet, mriežok, máp |
+| Lookup | `<wink-lookup>` | Vyhľadávací panel pre destinácie |
+| Search button | `<wink-search-button>` | Otvoriť výber itinerára |
+| Account button | `<wink-account-button>` | Prihlásenie / používateľské menu |
+| Itinerary button | `<wink-itinerary-button>` | Zobraziť aktuálny itinerár |
+| Itinerary picker | `<wink-itinerary-picker>` | Kompletný formulár itinerára |
+| Shopping cart | `<wink-shopping-cart-button>` | Tlačidlo súhrnu košíka |
+
+Pozrite si [Web Components](/sk/integrations/web-components) pre kompletný zoznam atribútov.
+
+## Ďalšie čítanie
+
+- [Web Components reference](/sk/integrations/web-components)
+- [Získajte svoj Client ID](/sk/portal/settings/applications)
+- [Dokumentácia Webflow pre vlastný kód](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

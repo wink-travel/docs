@@ -1,0 +1,111 @@
+---
+title: React
+description: Používejte Wink webové komponenty v jakékoli React aplikaci s plnou podporou TypeScriptu přes @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ má plnou podporu pro custom elements. React 18 a starší předávají pouze atributy jako řetězce — použijte níže uvedený typovaný pomocný vzor, abyste byli napříč verzemi v bezpečí.
+
+<LinkCard
+  title="@wink/elements npm balíček"
+  href="/integrations/npm"
+  description="Nainstalujte a načtěte CDN balíček s typy pro TypeScript."
+/>
+
+## Instalace
+
+```bash
+npm install @wink/elements
+```
+
+## Načtení jednou v kořenové komponentě aplikace
+
+Zavolejte `load()` ve vaší nejvyšší komponentě. Je idempotentní — bezpečné volat vícekrát.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Použití komponent v JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — deklarace JSX intrinsics
+
+React standardně nezná názvy custom elementů. Přidejte jednou deklaraci, aby zmizely chyby typů:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="Omezení atributů v React 18">
+React 18 a starší serializují všechny JSX props na řetězce před jejich předáním do DOM. Boolean a objektové props je třeba převést ručně. React 19 předává nestrigové props přímo custom elementům — není potřeba žádné obcházení.
+</Aside>
+
+## Předávání typovaných atributů (bezpečné v React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread funguje v React 19; v React 18 jsou všechny hodnoty stejně řetězce
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Další čtení
+
+- [Reference Web Components](/cs/integrations/web-components)
+- [@wink/elements npm balíček](/cs/integrations/npm)
+- [Integrace Next.js](/cs/integrations/nextjs)

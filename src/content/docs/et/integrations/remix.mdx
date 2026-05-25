@@ -1,0 +1,115 @@
+---
+title: Remix
+description: Lisa Wink veebikomponendid Remix rakendustesse, laadides need kliendipoolse `useEffect` abil.
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Remix on täisstack raamistik, mis vaikimisi renderdab serveris. Laadi Wink CDN ainult kliendipoolsel kasutades `useEffect` juurkohas.
+
+<LinkCard
+  title="@wink/elements npm pakett"
+  href="/integrations/npm"
+  description="Paigalda ja laadi CDN komplekt koos TypeScripti tüüpidega."
+/>
+
+## Paigalda
+
+```bash
+npm install @wink/elements
+```
+
+## Laadi app/root.tsx failis
+
+`useEffect` käivitub ainult brauseris, mitte kunagi serveripoolse renderdamise ajal:
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## Keskkonnamuutujad
+
+Remix (Vite-põhine, v2.8+) toetab `import.meta.env` brauserile nähtavate muutujate jaoks. Lisa eesliide `VITE_`, et muuta need brauserikomplektis kättesaadavaks:
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vanemate Remix seadistuste puhul, mis kasutavad Node.js adapterit, tagasta kliendi ID juurlaadurist ja loe see komponendis:
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## Kasutamine marsruutides
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Hüdreerimise ebakõla">
+Remix hüdreerib serveris renderdatud HTML-i kliendipoolsel. Kui `<wink-*>` element renderdatakse serveris, võib brauser lühiajaliselt kuvada lahendamata kohandatud elementi enne, kui CDN skript selle registreerib. See on ainult kosmeetiline — element uuendatakse korrektselt, kui skript on laadinud.
+</Aside>
+
+## TypeScripti tüübid
+
+Lisa JSX intrinsiikdeklaratsiooni fail [React integratsiooni lehelt](/et/integrations/react#typescript--declare-jsx-intrinsics) — Remix kasutab Reacti sisemiselt.
+
+## Täiendav lugemine
+
+- [Veebikomponentide viide](/et/integrations/web-components)
+- [@wink/elements npm pakett](/et/integrations/npm)
+- [React integratsioon](/et/integrations/react)

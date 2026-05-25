@@ -1,0 +1,111 @@
+---
+title: React
+description: 在任何 React 应用中使用 Wink web 组件，借助 @wink/elements 实现完整的 TypeScript 支持。
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ 对自定义元素提供了一级支持。React 18 及更早版本仅传递字符串属性——请使用下面的类型化辅助模式以确保跨版本安全。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="安装并加载带有 TypeScript 类型的 CDN 包。"
+/>
+
+## 安装
+
+```bash
+npm install @wink/elements
+```
+
+## 在应用根组件加载一次
+
+在顶层组件中调用 `load()`。该方法是幂等的——多次调用也安全。
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## 在 JSX 中使用组件
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — 声明 JSX 内置元素
+
+React 默认不识别自定义元素名称。添加声明文件以消除类型错误：
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="React 18 属性限制">
+React 18 及更早版本会将所有 JSX 属性序列化为字符串后传递给 DOM。布尔值和对象属性必须手动转换。React 19 直接将非字符串属性传递给自定义元素——无需任何变通方法。
+</Aside>
+
+## 传递类型化属性（React 18 安全）
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread 在 React 19 中有效；React 18 中所有值无论如何都是字符串
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## 进一步阅读
+
+- [Web Components 参考](/zh-CN/integrations/web-components)
+- [@wink/elements npm package](/zh-CN/integrations/npm)
+- [Next.js 集成](/zh-CN/integrations/nextjs)

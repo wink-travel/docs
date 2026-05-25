@@ -1,0 +1,119 @@
+---
+title: SolidJS
+description: Wink web bileşenlerini SolidJS uygulamalarında kullanın — onMount ile yerel özel öğe desteği.
+sidebar:
+  order: 25
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+SolidJS, yerel özel öğe desteğine sahiptir — öznitelikleri sanal DOM katmanı olmadan doğrudan DOM'a iletir. Ek bir derleyici yapılandırması gerekmez.
+
+<LinkCard
+  title="@wink/elements npm paketi"
+  href="/integrations/npm"
+  description="TypeScript tipleri ile CDN paketini yükleyin ve kurun."
+/>
+
+## Kurulum
+
+```bash
+npm install @wink/elements
+```
+
+## Uygulama başlangıcında bir kez yükleyin
+
+```tsx
+// src/App.tsx
+import { onMount } from 'solid-js';
+import { load } from '@wink/elements';
+
+export default function App() {
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+
+  return <YourRoutes />;
+}
+```
+
+`onMount` sadece tarayıcıda ilk render sonrası çalışır — React'in `useEffect(() => {}, [])` fonksiyonunun SolidJS karşılığıdır.
+
+## JSX içinde kullanımı
+
+```tsx
+// src/pages/Hotels.tsx
+import { createSignal } from 'solid-js';
+
+export default function HotelsPage() {
+  const [layoutId] = createSignal('YOUR_LAYOUT_ID');
+
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id={layoutId()} />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — JSX intrinsics bildirin
+
+SolidJS kendi JSX isim alanını kullanır. `solid-js` JSX tiplerini genişletin:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'solid-js' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## SolidStart (SSR)
+
+Sunucu tarafı render (SSR) kullanan SolidStart uygulamaları için, `load()` çağrısını `isServer` ile koruyun:
+
+```tsx
+// src/app.tsx
+import { onMount } from 'solid-js';
+import { isServer } from 'solid-js/web';
+import { load } from '@wink/elements';
+
+export default function App() {
+  if (!isServer) {
+    onMount(() => {
+      load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+    });
+  }
+
+  return <YourRoutes />;
+}
+```
+
+<Aside type="tip">
+SolidJS'nin ince taneli reaktivitesi sayesinde öznitelik güncellemeleri doğrudan DOM'a akar — toplu işleme veya uzlaştırma yükü yoktur. Wink bileşenleri, sinyal değerleriniz güncellendiğinde öznitelik değişikliklerini hemen alır.
+</Aside>
+
+## Daha fazla okuma
+
+- [Web Bileşenleri referansı](/tr/integrations/web-components)
+- [@wink/elements npm paketi](/tr/integrations/npm)

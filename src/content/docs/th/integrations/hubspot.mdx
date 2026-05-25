@@ -1,0 +1,81 @@
+---
+title: HubSpot CMS
+description: ฝังสินค้าคงคลังการเดินทางของ Wink ลงในเว็บไซต์ HubSpot CMS ของคุณโดยใช้โมดูลกำหนดเองและโค้ด HTML ส่วนหัว/ส่วนท้าย
+sidebar:
+  order: 6
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+HubSpot CMS รองรับโมดูล HTML กำหนดเองและโค้ดส่วนหัว/ส่วนท้ายทั่วทั้งไซต์ ทำให้การฝังส่วนประกอบของ Wink บนหน้าการตลาดและหน้าแลนดิ้งเป็นเรื่องง่าย
+
+:::note
+การแทรกโค้ดทั่วทั้งไซต์ต้องใช้สิทธิ์เข้าถึง **HubSpot CMS Hub** (Starter ขึ้นไป) โมดูล HTML กำหนดเองมีให้ในทุกระดับ CMS
+:::
+
+## โหลดสคริปต์ Wink ทั่วทั้งไซต์
+
+<Steps>
+1. ใน HubSpot ไปที่ **Marketing → Files and Templates → Design Tools**  
+2. เปิด `main.css` ของ **ธีม** ที่ใช้งานอยู่ หรือใช้การตั้งค่าคอนเทนต์ทั่วโลก  
+3. หรือไปที่ **Settings → Website → Pages → Custom Code**  
+4. ในช่อง **Head HTML** ให้เพิ่มสไตล์ชีต:  
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```  
+5. ในช่อง **Footer HTML** ให้เพิ่มสคริปต์และตัวโหลดแอปพลิเคชัน (แทนที่ `YOUR_CLIENT_ID`):  
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```  
+6. บันทึกและเผยแพร่
+</Steps>
+
+:::tip
+Client ID ของคุณสามารถดูได้ในบัญชี Wink ของคุณที่เมนู [Applications](/th/portal/settings/applications)
+:::
+
+## เพิ่มส่วนประกอบผ่านโมดูล HTML กำหนดเอง
+
+<Steps>
+1. ใน Design Tools สร้าง **โมดูล** ใหม่ชนิด **Rich Text** หรือ **HTML**  
+2. ในเนื้อหาเริ่มต้นของโมดูล วางโค้ด HTML ของส่วนประกอบ:  
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```  
+3. บันทึกโมดูลและลากไปวางในเทมเพลตหน้าหรือหน้าใดก็ได้โดยใช้ตัวแก้ไขหน้า
+</Steps>
+
+## เพิ่มส่วนประกอบโดยตรงในตัวแก้ไขหน้า
+
+ถ้าคุณไม่ต้องการสร้างโมดูล คุณสามารถใช้ส่วน **Custom HTML** ในตัวแก้ไขแบบลากและวางได้:
+
+<Steps>
+1. เปิดหน้าที่ต้องการในตัวแก้ไขหน้า HubSpot  
+2. คลิก **Add** และเลือกส่วน **Custom HTML** หรือ **Embed**  
+3. วางแท็กส่วนประกอบลงในช่อง HTML  
+4. คลิก **Apply** และเผยแพร่หน้า
+</Steps>
+
+## ส่วนประกอบที่มีให้ใช้งาน
+
+| ส่วนประกอบ | แท็ก HTML | จุดประสงค์ |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | แสดงการ์ดโรงแรม, ตาราง, แผนที่ |
+| Lookup | `<wink-lookup>` | แถบค้นหาปลายทาง |
+| Search button | `<wink-search-button>` | เปิดตัวเลือกแผนการเดินทาง |
+| Account button | `<wink-account-button>` | เข้าสู่ระบบ / เมนูผู้ใช้ |
+| Itinerary button | `<wink-itinerary-button>` | แสดงแผนการเดินทางปัจจุบัน |
+| Itinerary picker | `<wink-itinerary-picker>` | ฟอร์มแผนการเดินทางเต็มรูปแบบ |
+| Shopping cart | `<wink-shopping-cart-button>` | ปุ่มสรุปตะกร้าสินค้า |
+
+ดูรายละเอียดคุณสมบัติทั้งหมดได้ที่ [Web Components](/th/integrations/web-components)
+
+## อ่านเพิ่มเติม
+
+- [Web Components reference](/th/integrations/web-components)  
+- [รับ Client ID ของคุณ](/th/portal/settings/applications)  
+- [เอกสารโค้ดกำหนดเองของ HubSpot](https://knowledge.hubspot.com/website-pages/add-custom-code-to-pages)

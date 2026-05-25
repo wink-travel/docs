@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: क्लाइंट-साइड प्लगइन का उपयोग करके Nuxt 3 एप्लिकेशन में Wink वेब कंपोनेंट्स जोड़ें।
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 डिफ़ॉल्ट रूप से सर्वर पर पेज रेंडर करता है। CDN स्क्रिप्ट और कस्टम एलिमेंट्स केवल क्लाइंट-साइड पर लोड किए जाने चाहिए। Nuxt क्लाइंट प्लगइन इसे करने के लिए सबसे साफ़ जगह है।
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="TypeScript टाइप्स के साथ CDN बंडल इंस्टॉल और लोड करें।"
+/>
+
+## इंस्टॉल करें
+
+```bash
+npm install @wink/elements
+```
+
+## एक क्लाइंट प्लगइन बनाएं
+
+`.client.ts` उपसर्ग Nuxt को बताता है कि यह प्लगइन केवल ब्राउज़र में चलेगा:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## रनटाइम वेरिएबल कॉन्फ़िगर करें
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+`.env` में जोड़ें:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## कस्टम एलिमेंट्स के लिए Vue कॉन्फ़िगर करें
+
+`isCustomElement` कंपाइलर विकल्प जोड़ें ताकि Vue अज्ञात `<wink-*>` टैग्स के बारे में चेतावनी न दे:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## टेम्पलेट्स में उपयोग करें
+
+SSR हाइड्रेशन असंगतताओं को रोकने के लिए Wink कंपोनेंट्स को `<ClientOnly>` में लपेटें:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` सर्वर पर एक प्लेसहोल्डर रेंडर करता है और क्लाइंट पर असली एलिमेंट माउंट करता है — यह Nuxt में सभी ब्राउज़र-केवल थर्ड-पार्टी एम्बेड्स के लिए अनुशंसित पैटर्न है।
+</Aside>
+
+## TypeScript टाइप्स
+
+ग्लोबल `HTMLElementTagNameMap` (Vue 3 के समान) का विस्तार करें ताकि एट्रिब्यूट ऑटो-कंप्लीशन मिले। पूर्ण घोषणा फ़ाइल के लिए [Vue 3 इंटीग्रेशन पेज](/hi/integrations/vue#typescript--augment-global-element-types) देखें।
+
+## आगे पढ़ें
+
+- [वेब कंपोनेंट्स संदर्भ](/hi/integrations/web-components)
+- [@wink/elements npm package](/hi/integrations/npm)
+- [Vue 3 इंटीग्रेशन](/hi/integrations/vue)

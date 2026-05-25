@@ -1,0 +1,112 @@
+---
+title: Angular
+description: Χρησιμοποιήστε τα Wink web components σε εφαρμογές Angular 14+ με CUSTOM_ELEMENTS_SCHEMA και @wink/elements.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Τα Wink components είναι από μόνα τους Angular Elements — ενσωματώνονται φυσικά σε εφαρμογές Angular. Η μόνη ρύθμιση που απαιτείται είναι να πείτε στον compiler του Angular να επιτρέπει άγνωστα ονόματα στοιχείων.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Εγκαταστήστε και φορτώστε το CDN bundle με τύπους TypeScript."
+/>
+
+## Εγκατάσταση
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — φόρτωση CDN μία φορά
+
+Καλέστε το `load()` πριν το `bootstrapApplication` (ή μέσα σε `APP_INITIALIZER`):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## Επιτρέψτε προσαρμοσμένα ονόματα στοιχείων
+
+Προσθέστε το `CUSTOM_ELEMENTS_SCHEMA` σε κάθε standalone component (ή module) που αποδίδει tags `<wink-*>`:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="Εφαρμογές με NgModule">
+Για εφαρμογές βασισμένες σε NgModule, προσθέστε το `CUSTOM_ELEMENTS_SCHEMA` στον πίνακα `schemas` του διακοσμητή `@NgModule`.
+</Aside>
+
+## Δέσμευση attributes
+
+Η σύνταξη template του Angular λειτουργεί απευθείας με τα string attributes των custom elements:
+
+```html
+<!-- Στατικό -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- Δυναμική δέσμευση -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+Χρησιμοποιήστε τη δέσμευση `[attr.name]` όταν η τιμή είναι δυναμική — η κανονική δέσμευση `[property]` του Angular στοχεύει ιδιότητες DOM, όχι attributes HTML, στα οποία βασίζονται τα custom elements.
+
+## Μεταβλητές περιβάλλοντος
+
+Για έργα `@angular/cli` 16+, χρησιμοποιήστε το `environment.ts` ή το πρόθεμα `NG_APP_*` με το `@ngx-env/builder`:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## Τύποι TypeScript
+
+Το πακέτο `@wink/elements` εξάγει τυποποιημένα interfaces για όλα τα attributes των components:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## Περισσότερη ανάγνωση
+
+- [Αναφορά Web Components](/el/integrations/web-components)
+- [@wink/elements npm package](/el/integrations/npm)

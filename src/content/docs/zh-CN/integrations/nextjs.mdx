@@ -1,0 +1,122 @@
+---
+title: Next.js
+description: 将 Wink Web 组件添加到 Next.js App Router 和 Pages Router 应用中。
+sidebar:
+  order: 16
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink 组件是仅限浏览器的自定义元素 — CDN 脚本必须在客户端加载。以下模式涵盖了 **App Router**（Next.js 13+）和传统的 **Pages Router**。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="安装并加载带有 TypeScript 类型的 CDN 包。"
+/>
+
+## 安装
+
+```bash
+npm install @wink/elements
+```
+
+## App Router (Next.js 13+)
+
+创建一个客户端组件，调用一次 `load()`，并在根布局中渲染它：
+
+```tsx
+// components/WinkLoader.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export function WinkLoader() {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return null;
+}
+```
+
+```tsx
+// app/layout.tsx
+import { WinkLoader } from '@/components/WinkLoader';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <WinkLoader />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+在任何 **客户端组件** 中使用 Wink 组件：
+
+```tsx
+// app/hotels/page.tsx
+'use client';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="服务器组件">
+`<wink-*>` 标签不能在服务器组件中渲染，因为自定义元素注册表仅限浏览器。任何渲染 Wink 元素的组件都必须添加 `'use client'`。
+</Aside>
+
+## Pages Router
+
+在 `_app.tsx` 中加载一次：
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <Component {...pageProps} />;
+}
+```
+
+然后在任何页面中使用 Wink 组件：
+
+```tsx
+// pages/hotels.tsx
+export default function HotelsPage() {
+  return <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />;
+}
+```
+
+## 环境变量
+
+添加到 `.env.local`：
+
+```
+NEXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+`NEXT_PUBLIC_` 前缀是必须的，用于将变量暴露给浏览器包。
+
+## TypeScript 类型
+
+添加声明文件，使 TypeScript 能识别 JSX 中的自定义元素名称 — 详见 [React 集成页面](/zh-CN/integrations/react#typescript--declare-jsx-intrinsics) 中完整的 `wink-elements.d.ts` 代码片段。
+
+## 进一步阅读
+
+- [Web Components 参考](/zh-CN/integrations/web-components)
+- [@wink/elements npm 包](/zh-CN/integrations/npm)
+- [React 集成](/zh-CN/integrations/react)

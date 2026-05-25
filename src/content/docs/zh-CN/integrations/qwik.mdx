@@ -1,0 +1,120 @@
+---
+title: Qwik
+description: 在 Qwik 和 QwikCity 应用中使用 Wink Web 组件，并通过 useVisibleTask$ 实现仅客户端执行。
+sidebar:
+  order: 26
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Qwik 的可恢复性模型意味着 JavaScript 会延迟执行——仅在用户交互时执行。使用 `useVisibleTask$` 来运行必须在组件可见时在浏览器中执行的代码。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="安装并加载带有 TypeScript 类型的 CDN 包。"
+/>
+
+## 安装
+
+```bash
+npm install @wink/elements
+```
+
+## 使用 useVisibleTask$ 加载
+
+`useVisibleTask$` 是 Qwik 的生命周期钩子，用于仅在浏览器中立即执行代码。将其放在根布局中：
+
+```tsx
+// src/routes/layout.tsx
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { load } from '@wink/elements';
+
+export default component$(() => {
+  useVisibleTask$(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+
+  return (
+    <main>
+      <Slot />
+    </main>
+  );
+});
+```
+
+<Aside type="tip" title="useVisibleTask$ 策略">
+默认情况下，`useVisibleTask$` 会在组件出现在视口时运行。对于始终可见的根布局，这会在页面加载时立即触发——相当于其他框架中的 `onMount`。
+
+如果你希望脚本尽早加载，可以传入 `{ strategy: 'document-ready' }`：
+```ts
+useVisibleTask$({ strategy: 'document-ready' }, () => {
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+});
+```
+</Aside>
+
+## 在页面中使用
+
+```tsx
+// src/routes/hotels/index.tsx
+import { component$ } from '@builder.io/qwik';
+
+export default component$(() => {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+});
+```
+
+## TypeScript — 声明 JSX 内置元素
+
+Qwik 使用自己的 JSX 命名空间。在声明文件中扩展它：
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module '@builder.io/qwik' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes;
+      'wink-lookup': WinkLookupAttributes;
+      'wink-search-button': WinkSearchButtonAttributes;
+      'wink-account-button': WinkAccountButtonAttributes;
+      'wink-itinerary-button': WinkItineraryButtonAttributes;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes;
+      'wink-app-loader': WinkAppLoaderAttributes;
+    }
+  }
+}
+```
+
+## 环境变量
+
+Qwik（基于 Vite）会将以 `PUBLIC_` 前缀开头的变量暴露给浏览器：
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="服务端渲染">
+Qwik 会在服务器端渲染为 HTML。`<wink-*>` 标签作为静态标记输出。CDN 脚本和自定义元素注册会在 `useVisibleTask$` 触发后客户端执行。元素会在 CDN 包加载前短暂处于未解析状态——这是预期行为。
+</Aside>
+
+## 进一步阅读
+
+- [Web Components 参考](/zh-CN/integrations/web-components)
+- [@wink/elements npm package](/zh-CN/integrations/npm)

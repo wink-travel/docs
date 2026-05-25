@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: 使用客户端插件将 Wink Web 组件添加到 Nuxt 3 应用程序中。
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 默认在服务器端渲染页面。CDN 脚本和自定义元素必须仅在客户端加载。Nuxt 客户端插件是实现此目的的最简洁方式。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="安装并加载带有 TypeScript 类型的 CDN 包。"
+/>
+
+## 安装
+
+```bash
+npm install @wink/elements
+```
+
+## 创建客户端插件
+
+`.client.ts` 后缀告诉 Nuxt 仅在浏览器中运行此插件：
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## 配置运行时变量
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+添加到 `.env` 文件：
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## 配置 Vue 支持自定义元素
+
+添加 `isCustomElement` 编译器选项，避免 Vue 对未知的 `<wink-*>` 标签发出警告：
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## 在模板中使用
+
+将 Wink 组件包裹在 `<ClientOnly>` 中，防止 SSR 水合不匹配：
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` 在服务器端渲染占位符，并在客户端挂载真实元素——这是 Nuxt 中所有仅浏览器第三方嵌入的推荐模式。
+</Aside>
+
+## TypeScript 类型
+
+扩展全局的 `HTMLElementTagNameMap`（与 Vue 3 相同）以获得属性自动补全。完整声明文件请参见 [Vue 3 集成页面](/zh-CN/integrations/vue#typescript--augment-global-element-types)。
+
+## 进一步阅读
+
+- [Web Components 参考](/zh-CN/integrations/web-components)
+- [@wink/elements npm package](/zh-CN/integrations/npm)
+- [Vue 3 集成](/zh-CN/integrations/vue)

@@ -1,0 +1,119 @@
+---
+title: SolidJS
+description: Notaðu Wink vefþætti í SolidJS forritum — innbyggt stuðningur við sérsniðna þætti með onMount.
+sidebar:
+  order: 25
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+SolidJS hefur innbyggðan stuðning við sérsniðna þætti — það sendir eiginleika beint til DOM án sýndar-DOM lags. Engin auka þýðingarstilling er nauðsynleg.
+
+<LinkCard
+  title="@wink/elements npm pakki"
+  href="/integrations/npm"
+  description="Settu upp og hlaðaðu inn CDN pakkanum með TypeScript týpum."
+/>
+
+## Setja upp
+
+```bash
+npm install @wink/elements
+```
+
+## Hlaða einu sinni við upphaf forrits
+
+```tsx
+// src/App.tsx
+import { onMount } from 'solid-js';
+import { load } from '@wink/elements';
+
+export default function App() {
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+
+  return <YourRoutes />;
+}
+```
+
+`onMount` keyrir aðeins í vafranum eftir fyrstu birtingu — það er SolidJS jafngildi React's `useEffect(() => {}, [])`.
+
+## Nota í JSX
+
+```tsx
+// src/pages/Hotels.tsx
+import { createSignal } from 'solid-js';
+
+export default function HotelsPage() {
+  const [layoutId] = createSignal('YOUR_LAYOUT_ID');
+
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id={layoutId()} />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — lýsa JSX innri þáttum
+
+SolidJS notar eigið JSX nafnarými. Framlengdu `solid-js` JSX týpur:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'solid-js' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## SolidStart (SSR)
+
+Fyrir SolidStart forrit með þjónustuhliðarröðun, verndaðu `load()` kall með `isServer`:
+
+```tsx
+// src/app.tsx
+import { onMount } from 'solid-js';
+import { isServer } from 'solid-js/web';
+import { load } from '@wink/elements';
+
+export default function App() {
+  if (!isServer) {
+    onMount(() => {
+      load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+    });
+  }
+
+  return <YourRoutes />;
+}
+```
+
+<Aside type="tip">
+Fínstillt viðbragðsflæði SolidJS þýðir að uppfærslur á eiginleikum berast beint til DOM — engin hópun eða samræmingarálag. Wink þættir fá eiginleika breytingar strax þegar gildin í signal þínum breytast.
+</Aside>
+
+## Frekari lesning
+
+- [Vefþátta tilvísun](/is/integrations/web-components)
+- [@wink/elements npm pakki](/is/integrations/npm)

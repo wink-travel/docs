@@ -1,0 +1,115 @@
+---
+title: Remix
+description: Tilføj Wink webkomponenter til Remix-applikationer med klient-only indlæsning via useEffect.
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Remix er et full-stack framework, der som standard server-renderer. Indlæs Wink CDN kun på klienten ved hjælp af `useEffect` i root-komponenten.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Installer og indlæs CDN-bundtet med TypeScript-typer."
+/>
+
+## Installér
+
+```bash
+npm install @wink/elements
+```
+
+## Indlæs i app/root.tsx
+
+`useEffect` kører kun i browseren, aldrig under server-side rendering:
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## Miljøvariabler
+
+Remix (Vite-baseret, v2.8+) understøtter `import.meta.env` til browser-eksponerede variabler. Prefix med `VITE_` for at eksponere til browser-bundtet:
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+For ældre Remix-opsætninger, der bruger Node.js-adapteren, returnér client ID fra en root loader og læs det i komponenten:
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## Brug i routes
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Hydratiseringsmismatch">
+Remix hydraterer den server-renderede HTML på klienten. Hvis et `<wink-*>` element er renderet på serveren, kan browseren kortvarigt vise det uopløste custom element, før CDN-scriptet registrerer det. Dette er kosmetisk — elementet opgraderes korrekt, når scriptet er indlæst.
+</Aside>
+
+## TypeScript-typer
+
+Tilføj JSX intrinsic declarations-filen fra [React integrationssiden](/da/integrations/react#typescript--declare-jsx-intrinsics) — Remix bruger React under motorhjelmen.
+
+## Yderligere læsning
+
+- [Web Components reference](/da/integrations/web-components)
+- [@wink/elements npm package](/da/integrations/npm)
+- [React integration](/da/integrations/react)

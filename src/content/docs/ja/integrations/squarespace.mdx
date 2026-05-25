@@ -1,0 +1,73 @@
+---
+title: Squarespace
+description: Code Injection とカスタム HTML ブロックを使って、Wink の旅行在庫を Squarespace サイトに埋め込む方法。
+sidebar:
+  order: 3
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+:::note
+Squarespace の Code Injection 機能は **Business プラン以上**で利用可能です。カスタム HTML ブロックはすべての有料プランで利用できます。
+:::
+
+Squarespace はカスタム HTML と JavaScript をサポートしているため、プラグインなしで Wink のウェブコンポーネントを直接サイトに埋め込むことができます。このガイドでは、Wink スクリプトをサイト全体に読み込み、個別のページにコンポーネントを配置する方法を説明します。
+
+## Wink スクリプトをサイト全体に読み込む
+
+スクリプトをサイトのグローバルなフッターとヘッダーに追加すると、設定を繰り返すことなくすべてのページで Wink を利用できます。
+
+<Steps>
+1. Squarespace エディターで **Settings → Advanced → Code Injection** に移動します。
+2. **Header** フィールドにスタイルシートを追加します:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. **Footer** フィールドにスクリプトとアプリケーションローダーを追加します（`YOUR_CLIENT_ID` をあなたの Wink クライアント ID に置き換えてください）:
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. **Save** をクリックします。
+</Steps>
+
+:::tip
+クライアント ID は Wink アカウントの [Applications](/ja/portal/settings/applications) で確認できます。
+:::
+
+## ページにコンポーネントを追加する
+
+スクリプトをグローバルに読み込んだら、**Code Block** を使って任意のページに Wink コンポーネントを配置できます。
+
+<Steps>
+1. 編集したいページを開きます。
+2. **Edit** をクリックし、コンポーネントを表示したい場所に新しい **Code** ブロックを追加します。
+3. 例えばコンテンツローダーの HTML を貼り付けます:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. **Apply** をクリックし、続けて **Save** します。
+</Steps>
+
+## 利用可能なコンポーネント
+
+| コンポーネント | HTML タグ | 用途 |
+|---|---|---|
+| コンテンツローダー | `<wink-content-loader>` | ホテルカード、グリッド、地図の表示 |
+| ルックアップ | `<wink-lookup>` | 目的地検索バー |
+| 検索ボタン | `<wink-search-button>` | 旅程ピッカーを開く |
+| アカウントボタン | `<wink-account-button>` | サインイン / ユーザーメニュー |
+| 旅程ボタン | `<wink-itinerary-button>` | 現在の旅程を表示 |
+| 旅程ピッカー | `<wink-itinerary-picker>` | フル旅程フォーム |
+| ショッピングカート | `<wink-shopping-cart-button>` | カート概要ボタン |
+
+各コンポーネントの属性リファレンスは [Web Components](/ja/integrations/web-components) をご覧ください。
+
+## さらに読む
+
+- [Web Components リファレンス](/ja/integrations/web-components)
+- [クライアント ID の取得](/ja/portal/settings/applications)
+- [Squarespace Code Injection ドキュメント](https://support.squarespace.com/hc/en-us/articles/205815908)

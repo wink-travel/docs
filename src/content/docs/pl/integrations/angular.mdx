@@ -1,0 +1,112 @@
+---
+title: Angular
+description: Używaj komponentów webowych Wink w aplikacjach Angular 14+ z CUSTOM_ELEMENTS_SCHEMA i @wink/elements.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Komponenty Wink to Angular Elements — integrują się naturalnie z aplikacjami Angular. Jedyną wymaganą konfiguracją jest poinformowanie kompilatora Angular, aby akceptował nieznane nazwy elementów.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Zainstaluj i załaduj pakiet CDN z typami TypeScript."
+/>
+
+## Instalacja
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — załaduj CDN raz
+
+Wywołaj `load()` przed `bootstrapApplication` (lub wewnątrz `APP_INITIALIZER`):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## Zezwól na niestandardowe nazwy elementów
+
+Dodaj `CUSTOM_ELEMENTS_SCHEMA` do każdego standalone komponentu (lub modułu), który renderuje tagi `<wink-*>`:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="Aplikacje oparte na NgModule">
+Dla aplikacji opartych na NgModule dodaj `CUSTOM_ELEMENTS_SCHEMA` do tablicy `schemas` dekoratora `@NgModule`.
+</Aside>
+
+## Powiązanie atrybutów
+
+Składnia szablonów Angular działa bezpośrednio z atrybutami stringowymi niestandardowych elementów:
+
+```html
+<!-- Statyczne -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- Dynamiczne powiązanie -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+Używaj powiązania `[attr.name]` gdy wartość jest dynamiczna — standardowe powiązanie `[property]` Angulara odnosi się do właściwości DOM, a nie atrybutów HTML, na których opierają się niestandardowe elementy.
+
+## Zmienne środowiskowe
+
+Dla projektów `@angular/cli` 16+ używaj `environment.ts` lub prefiksu `NG_APP_*` z `@ngx-env/builder`:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## Typy TypeScript
+
+Pakiet `@wink/elements` eksportuje typowane interfejsy dla wszystkich atrybutów komponentów:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## Dalsza lektura
+
+- [Web Components reference](/pl/integrations/web-components)
+- [@wink/elements npm package](/pl/integrations/npm)

@@ -1,0 +1,112 @@
+---
+title: Angular
+description: ใช้คอมโพเนนต์ของ Wink บนเว็บในแอป Angular 14+ ด้วย CUSTOM_ELEMENTS_SCHEMA และ @wink/elements
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+คอมโพเนนต์ของ Wink เป็น Angular Elements โดยตัวมันเอง — จึงผสานรวมได้อย่างเป็นธรรมชาติในแอป Angular สิ่งที่ต้องตั้งค่าคือแจ้งให้คอมไพเลอร์ของ Angular อนุญาตชื่อองค์ประกอบที่ไม่รู้จัก
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="ติดตั้งและโหลด CDN bundle พร้อมกับ TypeScript types."
+/>
+
+## ติดตั้ง
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — โหลด CDN ครั้งเดียว
+
+เรียกใช้ `load()` ก่อน `bootstrapApplication` (หรือภายใน `APP_INITIALIZER`):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## อนุญาตชื่อองค์ประกอบที่กำหนดเอง
+
+เพิ่ม `CUSTOM_ELEMENTS_SCHEMA` ในทุกคอมโพเนนต์ standalone (หรือโมดูล) ที่เรนเดอร์แท็ก `<wink-*>`:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="แอป NgModule">
+สำหรับแอปที่ใช้ NgModule ให้เพิ่ม `CUSTOM_ELEMENTS_SCHEMA` ในอาร์เรย์ `schemas` ของตัวตกแต่ง `@NgModule` แทน
+</Aside>
+
+## การผูกแอตทริบิวต์
+
+ไวยากรณ์เทมเพลตของ Angular ทำงานโดยตรงกับแอตทริบิวต์สตริงขององค์ประกอบกำหนดเอง:
+
+```html
+<!-- แบบคงที่ -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- การผูกแบบไดนามิก -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+ใช้การผูก `[attr.name]` เมื่อค่ามีการเปลี่ยนแปลง — การผูก `[property]` ปกติของ Angular จะมุ่งเป้าไปที่คุณสมบัติ DOM ไม่ใช่แอตทริบิวต์ HTML ซึ่งองค์ประกอบกำหนดเองต้องพึ่งพา
+
+## ตัวแปรสภาพแวดล้อม
+
+สำหรับโปรเจกต์ `@angular/cli` 16+ ให้ใช้ `environment.ts` หรือคำนำหน้า `NG_APP_*` กับ `@ngx-env/builder`:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## TypeScript types
+
+แพ็กเกจ `@wink/elements` ส่งออกอินเทอร์เฟซที่มีการพิมพ์สำหรับแอตทริบิวต์ของคอมโพเนนต์ทั้งหมด:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## อ่านเพิ่มเติม
+
+- [เอกสารอ้างอิง Web Components](/th/integrations/web-components)
+- [@wink/elements npm package](/th/integrations/npm)

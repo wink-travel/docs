@@ -1,0 +1,112 @@
+---
+title: Angular
+description: Használja a Wink webkomponenseket Angular 14+ alkalmazásokban a CUSTOM_ELEMENTS_SCHEMA és az @wink/elements segítségével.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+A Wink komponensek maguk Angular Elemei — természetesen integrálódnak Angular alkalmazásokba. Az egyetlen szükséges beállítás, hogy az Angular fordítójának megmondjuk, hogy engedélyezze az ismeretlen elemneveket.
+
+<LinkCard
+  title="@wink/elements npm csomag"
+  href="/integrations/npm"
+  description="Telepítse és töltse be a CDN csomagot TypeScript típusokkal."
+/>
+
+## Telepítés
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — CDN betöltése egyszer
+
+Hívja meg a `load()` függvényt a `bootstrapApplication` előtt (vagy az `APP_INITIALIZER`-ben):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## Egyedi elemnevek engedélyezése
+
+Adja hozzá a `CUSTOM_ELEMENTS_SCHEMA`-t minden önálló komponenshez (vagy modulhoz), amely `<wink-*>` tageket renderel:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="NgModule alapú alkalmazások">
+NgModule alapú alkalmazások esetén a `CUSTOM_ELEMENTS_SCHEMA`-t a `@NgModule` dekorátor `schemas` tömbjéhez kell hozzáadni.
+</Aside>
+
+## Attribútumok kötése
+
+Az Angular sablon szintaxisa közvetlenül működik az egyedi elemek string attribútumaival:
+
+```html
+<!-- Statikus -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- Dinamikus kötés -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+Használja az `[attr.name]` kötést, ha az érték dinamikus — az Angular szokásos `[property]` kötése a DOM tulajdonságokat célozza, nem a HTML attribútumokat, amelyekre az egyedi elemek támaszkodnak.
+
+## Környezeti változók
+
+`@angular/cli` 16+ projektekhez használja az `environment.ts` fájlt vagy az `NG_APP_*` előtagot az `@ngx-env/builder`-rel:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## TypeScript típusok
+
+Az `@wink/elements` csomag exportálja az összes komponens attribútumának típusait:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## További olvasnivaló
+
+- [Web Components referencia](/hu/integrations/web-components)
+- [@wink/elements npm csomag](/hu/integrations/npm)

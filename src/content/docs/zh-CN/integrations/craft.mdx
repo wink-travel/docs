@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: 使用 Wink 插件将 Wink 旅游库存嵌入到您的 Craft CMS 5 网站中。
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS 插件** 通过 Twig 模板函数和内容编辑器的自定义字段类型，将 Wink 旅游库存集成到 Craft 5 中。编辑者可以直接在条目编辑器中的下拉菜单中选择特定的 Wink 布局。
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin on GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="源代码、开发者安装指南和贡献说明。"
+/>
+
+## 要求
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## 安装
+
+<Steps>
+1. 通过 Composer 安装：
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. 在控制面板的 **设置 → 插件** 中激活插件，或通过命令行：
+   ```bash
+   php craft plugin/install wink
+   ```
+3. 进入控制面板的 **设置 → Wink**。
+4. 输入您的 **Client ID** 和 **Client Secret**，选择环境，然后点击 **保存**。
+   访问 [Applications](/zh-CN/portal/settings/applications) 获取您的凭证。
+</Steps>
+
+## 在 Twig 模板中使用
+
+配置完成后，可在模板中任意位置调用 Wink Twig 函数：
+
+```twig
+{# 渲染酒店网格 #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# 目的地搜索栏 #}
+{{ winkLookup() }}
+
+{# 行程选择按钮 #}
+{{ winkSearch() }}
+
+{# 用户账户按钮 #}
+{{ winkAccount() }}
+```
+
+`winkContent()` 函数会在页面首次调用时自动注入 `<wink-app-loader>`。
+
+## 可用的 Twig 函数
+
+| 函数 | 输出 | 描述 |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | 酒店卡片、网格、地图 |
+| `winkLookup()` | `<wink-lookup>` | 目的地搜索栏 |
+| `winkSearch()` | `<wink-search-button>` | 行程选择按钮 |
+| `winkAccount()` | `<wink-account-button>` | 登录 / 用户账户 |
+| `winkItinerary()` | `<wink-itinerary-button>` | 行程状态按钮 |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | 购物车按钮 |
+
+## Wink 布局字段类型
+
+向任意区块添加 **Wink Layout** 字段，供编辑者从您的 Wink 账户中所有可用布局的下拉列表中选择：
+
+<Steps>
+1. 进入 **设置 → 字段 → 新建字段**。
+2. 将 **字段类型** 设置为 **Wink Layout**。
+3. 将该字段添加到您的条目类型的字段布局中。
+4. 编辑者现在可以直接在条目编辑器中选择布局，无需复制粘贴 ID。
+</Steps>
+
+在模板中，将字段值传递给 `winkContent()`：
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## 进一步阅读
+
+- [Web Components 参考](/zh-CN/integrations/web-components)
+- [获取您的 Client ID](/zh-CN/portal/settings/applications)
+- [Wink Craft Plugin — 源代码及开发文档](https://github.com/wink-travel/wink-craft-plugin)

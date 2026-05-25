@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: 將 Wink 旅遊庫存嵌入任何 headless CMS（Contentful、Strapi、Sanity 等）或自訂網站。
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wink 網頁元件是與框架無關的自訂 HTML 元素。只要您的 headless CMS 能渲染 HTML — 無論是透過 Next.js、Nuxt、Astro、SvelteKit 或其他任何框架 — 您都可以無需特殊整合即可嵌入 Wink 元件。
+
+## 三步驟嵌入
+
+每個 Wink 整合，不論平台，皆遵循相同的三個步驟。
+
+### 1. 引入樣式表
+
+將此段加入您的文件 `<head>`（或等效的全域佈局）：
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. 引入 JavaScript
+
+將此段加入關閉 `</body>` 標籤前（或在佈局的 script 區段）：
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. 新增應用程式載入器
+
+在每頁**只需放置一次**，位置可在 body 內任意處（通常放在全域佈局的頁尾）：
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+您的 Client ID 可在 Wink 帳戶的 [Applications](/zh-TW/portal/settings/applications) 中取得。
+:::
+
+## 框架範例
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+TypeScript 使用者：請新增一個 `global.d.ts` 來宣告自訂元素類型，或使用帶有型別宣告的 [`@wink/elements`](https://github.com/wink2travel/wink-elements) npm 套件。
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## 在內容中放置元件
+
+在您的 CMS 的富文本或自訂欄位類型中，直接在 HTML 輸出中嵌入元件標籤：
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+對於 Contentful、Strapi、Sanity 或類似的 headless 平台，請使用 **Rich Text** 欄位或可渲染原始 HTML 的 **Custom Block**，並將元件標籤貼入其中。
+
+## npm 套件
+
+對於 TypeScript 專案，[`@wink/elements`](https://github.com/wink2travel/wink-elements) 套件提供：
+- 一個可程式化注入 CDN 腳本的 `load()` 函式
+- 所有元件屬性的完整 TypeScript 型別宣告
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// 在應用啟動時呼叫一次
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## 可用元件
+
+| 元件 | HTML 標籤 | 用途 |
+|---|---|---|
+| 內容載入器 | `<wink-content-loader>` | 顯示飯店卡片、格線、地圖 |
+| 查詢 | `<wink-lookup>` | 目的地搜尋欄 |
+| 搜尋按鈕 | `<wink-search-button>` | 開啟行程選擇器 |
+| 帳戶按鈕 | `<wink-account-button>` | 登入 / 使用者選單 |
+| 行程按鈕 | `<wink-itinerary-button>` | 顯示目前行程 |
+| 行程選擇器 | `<wink-itinerary-picker>` | 完整行程表單 |
+| 購物車 | `<wink-shopping-cart-button>` | 購物車摘要按鈕 |
+
+完整屬性參考請見 [Web Components](/zh-TW/integrations/web-components)。

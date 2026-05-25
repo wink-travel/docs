@@ -1,0 +1,120 @@
+---
+title: Qwik
+description: استخدم مكونات الويب من Wink في تطبيقات Qwik و QwikCity مع useVisibleTask$ للتنفيذ على جانب العميل فقط.
+sidebar:
+  order: 26
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+نموذج الاستئناف في Qwik يعني أن جافا سكريبت تُنفذ بشكل كسول — فقط عند تفاعل المستخدم. استخدم `useVisibleTask$` لتشغيل الكود الذي يجب أن يُنفذ في المتصفح عندما يصبح المكون مرئيًا.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="قم بتثبيت وتحميل حزمة CDN مع أنواع TypeScript."
+/>
+
+## التثبيت
+
+```bash
+npm install @wink/elements
+```
+
+## التحميل باستخدام useVisibleTask$
+
+`useVisibleTask$` هو خطاف دورة حياة Qwik للكود الذي يُنفذ فقط في المتصفح وبشكل فوري. ضعه في تخطيط الجذر الخاص بك:
+
+```tsx
+// src/routes/layout.tsx
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { load } from '@wink/elements';
+
+export default component$(() => {
+  useVisibleTask$(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+
+  return (
+    <main>
+      <Slot />
+    </main>
+  );
+});
+```
+
+<Aside type="tip" title="استراتيجية useVisibleTask$">
+بشكل افتراضي، يتم تشغيل `useVisibleTask$` عندما يصبح المكون مرئيًا في نافذة العرض. بالنسبة لتخطيط الجذر الذي يكون مرئيًا دائمًا، يتم تشغيله فورًا عند تحميل الصفحة — وهو ما يعادل `onMount` في أُطُر العمل الأخرى.
+
+مرر `{ strategy: 'document-ready' }` إذا كنت تريد تحميل السكريبت في أقرب وقت ممكن:
+```ts
+useVisibleTask$({ strategy: 'document-ready' }, () => {
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+});
+```
+</Aside>
+
+## الاستخدام في صفحة
+
+```tsx
+// src/routes/hotels/index.tsx
+import { component$ } from '@builder.io/qwik';
+
+export default component$(() => {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+});
+```
+
+## TypeScript — إعلان JSX intrinsics
+
+يستخدم Qwik مساحة أسماء JSX الخاصة به. قم بتوسيعها في ملف إعلان:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module '@builder.io/qwik' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes;
+      'wink-lookup': WinkLookupAttributes;
+      'wink-search-button': WinkSearchButtonAttributes;
+      'wink-account-button': WinkAccountButtonAttributes;
+      'wink-itinerary-button': WinkItineraryButtonAttributes;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes;
+      'wink-app-loader': WinkAppLoaderAttributes;
+    }
+  }
+}
+```
+
+## متغيرات البيئة
+
+يعرض Qwik (المبني على Vite) المتغيرات التي تبدأ بـ `PUBLIC_` للمتصفح:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="التصيير على جانب الخادم">
+يقوم Qwik بالتصيير إلى HTML على الخادم. تُخرج علامات `<wink-*>` كعلامات ثابتة. يتم تحميل سكريبت CDN وتسجيل العنصر المخصص على جانب العميل بعد تشغيل `useVisibleTask$`. ستظل العناصر في حالة غير محلولة لفترة وجيزة حتى يتم تحميل حزمة CDN — وهذا سلوك متوقع.
+</Aside>
+
+## قراءة إضافية
+
+- [مرجع مكونات الويب](/ar/integrations/web-components)
+- [حزمة npm الخاصة بـ @wink/elements](/ar/integrations/npm)

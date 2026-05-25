@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Iegult Wink ceļojumu inventāru jebkurā headless CMS (Contentful, Strapi, Sanity utt.) vai pielāgotā vietnē.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wink tīmekļa komponenti ir neatkarīgi no ietvariem pielāgoti HTML elementi. Ja jūsu headless CMS renderē HTML — neatkarīgi no tā, vai tas ir Next.js, Nuxt, Astro, SvelteKit vai kāds cits ietvars — jūs varat iegult Wink komponentus bez īpašas integrācijas.
+
+## Trīs soļu iegulšana
+
+Katru Wink integrāciju, neatkarīgi no platformas, veic trīs soļos.
+
+### 1. Iekļaut stila lapu
+
+Pievienojiet šo savas dokumenta `<head>` sadaļā (vai ekvivalentā globālajā izkārtojumā):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Iekļaut JavaScript
+
+Pievienojiet šo pirms aizverošā `</body>` taga (vai jūsu izkārtojuma skriptu sadaļā):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Pievienot lietotnes ielādētāju
+
+Novietojiet šo **vienu reizi katrā lapā**, jebkurā vietā ķermenī (parasti jūsu globālā izkārtojuma kājenē):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Jūsu klienta ID ir pieejams jūsu Wink kontā sadaļā [Applications](/lv/portal/settings/applications).
+:::
+
+## Ietvaru piemēri
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+TypeScript lietotājiem: pievienojiet `global.d.ts`, kas deklarē pielāgotu elementu tipus, vai izmantojiet [`@wink/elements`](https://github.com/wink2travel/wink-elements) npm pakotni, kas satur tipu deklarācijas.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Komponentu izvietošana saturā
+
+Jūsu CMS bagātā teksta vai pielāgoto lauku tipos iegult komponentu tagus tieši HTML izvades daļā:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Contentful, Strapi, Sanity vai līdzīgām headless platformām izmantojiet **Rich Text** lauku vai **Custom Block**, kas renderē neapstrādātu HTML, un ielīmējiet tur komponenta tagu.
+
+## npm pakotne
+
+TypeScript projektiem [`@wink/elements`](https://github.com/wink2travel/wink-elements) pakotne nodrošina:
+- `load()` funkciju, kas programmatiski ielādē CDN skriptus
+- Pilnas TypeScript tipu deklarācijas visiem komponentu atribūtiem
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Izsauciet vienu reizi lietotnes startā
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Pieejamie komponenti
+
+| Komponents | HTML tags | Mērķis |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Rāda viesnīcu kartītes, režģus, kartes |
+| Lookup | `<wink-lookup>` | Meklēšanas josla galamērķiem |
+| Search button | `<wink-search-button>` | Atver maršruta izvēlētāju |
+| Account button | `<wink-account-button>` | Pieslēgšanās / lietotāja izvēlne |
+| Itinerary button | `<wink-itinerary-button>` | Rāda pašreizējo maršrutu |
+| Itinerary picker | `<wink-itinerary-picker>` | Pilna maršruta forma |
+| Shopping cart | `<wink-shopping-cart-button>` | Groza kopsavilkuma poga |
+
+Skatīt [Web Components](/lv/integrations/web-components) pilnu atribūtu atsauci.

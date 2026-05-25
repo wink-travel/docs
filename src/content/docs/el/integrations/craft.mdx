@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Ενσωματώστε το Wink travel inventory στην ιστοσελίδα σας Craft CMS 5 χρησιμοποιώντας το πρόσθετο Wink.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+Το **Wink Craft CMS Plugin** ενσωματώνει το Wink travel inventory στο Craft 5 μέσω συναρτήσεων Twig και ενός προσαρμοσμένου τύπου πεδίου για τον επεξεργαστή περιεχομένου. Οι συντάκτες μπορούν να επιλέξουν μια συγκεκριμένη διάταξη Wink από ένα αναπτυσσόμενο μενού απευθείας στον επεξεργαστή καταχώρησης.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin στο GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Κώδικας πηγής, οδηγός εγκατάστασης για προγραμματιστές και οδηγίες συνεισφοράς."
+/>
+
+## Απαιτήσεις
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Εγκατάσταση
+
+<Steps>
+1. Εγκαταστήστε μέσω Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Ενεργοποιήστε το πρόσθετο στον Πίνακα Ελέγχου στο **Ρυθμίσεις → Πρόσθετα**, ή μέσω CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Μεταβείτε στο **Ρυθμίσεις → Wink** στον Πίνακα Ελέγχου.
+4. Εισάγετε το **Client ID** και το **Client Secret**, επιλέξτε το περιβάλλον σας και κάντε κλικ στο **Αποθήκευση**.
+   Μεταβείτε στις [Εφαρμογές](/el/portal/settings/applications) για να λάβετε τα διαπιστευτήριά σας.
+</Steps>
+
+## Χρήση σε πρότυπα Twig
+
+Μόλις ρυθμιστεί, καλέστε τις συναρτήσεις Wink Twig οπουδήποτε στα πρότυπά σας:
+
+```twig
+{# Απόδοση πλέγματος ξενοδοχείων #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Μπάρα αναζήτησης προορισμού #}
+{{ winkLookup() }}
+
+{# Κουμπί επιλογής δρομολογίου #}
+{{ winkSearch() }}
+
+{# Κουμπί λογαριασμού χρήστη #}
+{{ winkAccount() }}
+```
+
+Η συνάρτηση `winkContent()` εισάγει αυτόματα το `<wink-app-loader>` την πρώτη φορά που καλείται σε μια σελίδα.
+
+## Διαθέσιμες συναρτήσεις Twig
+
+| Συνάρτηση | Έξοδος | Περιγραφή |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Κάρτες ξενοδοχείων, πλέγματα, χάρτες |
+| `winkLookup()` | `<wink-lookup>` | Μπάρα αναζήτησης προορισμού |
+| `winkSearch()` | `<wink-search-button>` | Κουμπί επιλογής δρομολογίου |
+| `winkAccount()` | `<wink-account-button>` | Σύνδεση / λογαριασμός χρήστη |
+| `winkItinerary()` | `<wink-itinerary-button>` | Κουμπί κατάστασης δρομολογίου |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Κουμπί καλαθιού αγορών |
+
+## Τύπος πεδίου Wink Layout
+
+Προσθέστε ένα πεδίο **Wink Layout** σε οποιαδήποτε ενότητα για να δώσετε στους συντάκτες ένα αναπτυσσόμενο μενού με όλες τις διαθέσιμες διατάξεις από τον λογαριασμό Wink σας:
+
+<Steps>
+1. Μεταβείτε στο **Ρυθμίσεις → Πεδία → Νέο Πεδίο**.
+2. Ορίστε τον **Τύπο Πεδίου** σε **Wink Layout**.
+3. Προσθέστε το πεδίο στη διάταξη πεδίων του τύπου καταχώρησής σας.
+4. Οι συντάκτες μπορούν τώρα να επιλέγουν διάταξη απευθείας στον επεξεργαστή καταχώρησης — χωρίς αντιγραφή και επικόλληση IDs.
+</Steps>
+
+Στο πρότυπό σας, περάστε την τιμή του πεδίου στη `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Περισσότερη ανάγνωση
+
+- [Αναφορά Web Components](/el/integrations/web-components)
+- [Λάβετε το Client ID σας](/el/portal/settings/applications)
+- [Wink Craft Plugin — κώδικας πηγής & τεκμηρίωση προγραμματιστών](https://github.com/wink-travel/wink-craft-plugin)

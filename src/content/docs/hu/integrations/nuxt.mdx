@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: Adj hozzá Wink webkomponenseket Nuxt 3 alkalmazásokhoz egy kliensoldali plugin segítségével.
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+A Nuxt 3 alapértelmezés szerint a szerveren rendereli az oldalakat. A CDN szkripteket és az egyedi elemeket csak kliensoldalon lehet betölteni. Egy Nuxt kliens plugin a legjobb hely erre.
+
+<LinkCard
+  title="@wink/elements npm csomag"
+  href="/integrations/npm"
+  description="Telepítsd és töltsd be a CDN csomagot TypeScript típusokkal."
+/>
+
+## Telepítés
+
+```bash
+npm install @wink/elements
+```
+
+## Kliens plugin létrehozása
+
+A `.client.ts` kiterjesztés megmondja a Nuxt-nak, hogy ezt a plugint csak a böngészőben futtassa:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## A futási idő változó konfigurálása
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+Add hozzá a `.env` fájlhoz:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Vue konfigurálása az egyedi elemekhez
+
+Add hozzá az `isCustomElement` fordító opciót, hogy a Vue ne figyelmeztesse az ismeretlen `<wink-*>` tagekre:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## Használat sablonokban
+
+Csomagold be a Wink komponenseket `<ClientOnly>`-ba, hogy elkerüld az SSR hidratációs eltéréseket:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+A `<ClientOnly>` a szerveren egy helyőrzőt jelenít meg, és a valódi elemet a kliensoldalon tölti be — ez az ajánlott minta minden böngésző-specifikus harmadik féltől származó beágyazáshoz Nuxt-ban.
+</Aside>
+
+## TypeScript típusok
+
+Bővítsd a globális `HTMLElementTagNameMap`-et (ugyanaz, mint Vue 3-ban), hogy elérd az attribútumok automatikus kiegészítését. Lásd a [Vue 3 integráció oldalát](/hu/integrations/vue#typescript--augment-global-element-types) a teljes deklarációs fájlért.
+
+## További olvasnivaló
+
+- [Web Components referencia](/hu/integrations/web-components)
+- [@wink/elements npm csomag](/hu/integrations/npm)
+- [Vue 3 integráció](/hu/integrations/vue)

@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: השתמשו ברכיבי ווב של Wink בפרויקטים של Vue 3 ו-Vite עם אפשרות הקומפיילר isCustomElement.
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3 זקוק לרמז קומפיילר אחד כדי להתייחס לתגיות `<wink-*>` כרכיבים מותאמים מקוריים במקום כרכיבי Vue לא מזוהים. לאחר מכן, הם פועלים כמו כל אלמנט HTML אחר.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="התקן וטעין את חבילת ה-CDN עם טיפוסי TypeScript."
+/>
+
+## התקנה
+
+```bash
+npm install @wink/elements
+```
+
+## הגדרת הקומפיילר
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // התייחס לכל התגיות שמתחילות ב-"wink-" כרכיבים מותאמים
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## טעינת CDN פעם אחת בעת הפעלת האפליקציה
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## שימוש בתבניות
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — הרחבת טיפוסי אלמנטים גלובליים
+
+Vue 3 + TypeScript קוראים טיפוסי אלמנטים מותאמים מתוך `HTMLElementTagNameMap` הגלובלי. הוסיפו קובץ הכרזה:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## משתני סביבה
+
+הוסיפו ל-`.env.local`:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite חושף רק משתנים שמתחילים ב-`VITE_` לחבילת הלקוח.
+
+<Aside type="tip">
+ל-Nuxt 3, ראו את [דף האינטגרציה של Nuxt](/he/integrations/nuxt) שמכסה טעינה בטוחה ל-SSR.
+</Aside>
+
+## קריאה נוספת
+
+- [הפניה לרכיבי ווב](/he/integrations/web-components)
+- [חבילת npm של @wink/elements](/he/integrations/npm)
+- [אינטגרציה עם Nuxt 3](/he/integrations/nuxt)

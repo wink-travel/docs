@@ -1,0 +1,111 @@
+---
+title: React
+description: किसी भी React एप्लिकेशन में @wink/elements के माध्यम से पूर्ण TypeScript समर्थन के साथ Wink वेब कॉम्पोनेंट्स का उपयोग करें।
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ में कस्टम एलिमेंट्स के लिए प्रथम श्रेणी का समर्थन है। React 18 और उससे पहले केवल स्ट्रिंग एट्रिब्यूट्स पास करता है — संस्करणों के बीच सुरक्षित रहने के लिए नीचे दिए गए टाइप्ड हेल्पर पैटर्न का उपयोग करें।
+
+<LinkCard
+  title="@wink/elements npm पैकेज"
+  href="/integrations/npm"
+  description="TypeScript टाइप्स के साथ CDN बंडल इंस्टॉल और लोड करें।"
+/>
+
+## इंस्टॉल करें
+
+```bash
+npm install @wink/elements
+```
+
+## ऐप रूट पर एक बार लोड करें
+
+अपने टॉप-लेवल कॉम्पोनेंट में `load()` कॉल करें। यह आइडेम्पोटेंट है — कई बार कॉल करना सुरक्षित है।
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## JSX में कॉम्पोनेंट्स का उपयोग करें
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — JSX इंट्रिंसिक्स घोषित करें
+
+React डिफ़ॉल्ट रूप से कस्टम एलिमेंट नामों को नहीं जानता। टाइप त्रुटियों को रोकने के लिए एक बार घोषणा फ़ाइल जोड़ें:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="React 18 एट्रिब्यूट सीमा">
+React 18 और उससे पहले सभी JSX प्रॉप्स को DOM को पास करने से पहले स्ट्रिंग में सीरियलाइज़ करता है। Boolean और ऑब्जेक्ट प्रॉप्स को मैन्युअली कन्वर्ट करना होगा। React 19 गैर-स्ट्रिंग प्रॉप्स को सीधे कस्टम एलिमेंट्स को पास करता है — कोई वर्कअराउंड आवश्यक नहीं।
+</Aside>
+
+## टाइप्ड एट्रिब्यूट्स पास करना (React 18 सुरक्षित)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// React 19 में स्प्रेड काम करता है; React 18 के लिए सभी मान वैसे भी स्ट्रिंग्स हैं
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## आगे पढ़ें
+
+- [वेब कॉम्पोनेंट्स संदर्भ](/hi/integrations/web-components)
+- [@wink/elements npm पैकेज](/hi/integrations/npm)
+- [Next.js इंटीग्रेशन](/hi/integrations/nextjs)

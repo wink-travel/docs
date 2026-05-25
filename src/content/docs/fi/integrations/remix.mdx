@@ -1,0 +1,115 @@
+---
+title: Remix
+description: Lisää Wink-verkkokomponentit Remix-sovelluksiin client-only-latauksella useEffectin avulla.
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Remix on full-stack-kehys, joka renderöi palvelimella oletuksena. Lataa Wink CDN vain asiakkaalla käyttämällä `useEffect`-hookia juurikomponentissa.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Asenna ja lataa CDN-paketti TypeScript-tyyppien kanssa."
+/>
+
+## Asennus
+
+```bash
+npm install @wink/elements
+```
+
+## Lataa tiedosto app/root.tsx:ssa
+
+`useEffect` suoritetaan vain selaimessa, ei koskaan palvelinpuolen renderöinnin aikana:
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## Ympäristömuuttujat
+
+Remix (Vite-pohjainen, v2.8+) tukee `import.meta.env` -muuttujia, jotka ovat saatavilla selaimessa. Lisää etuliite `VITE_`, jotta muuttuja näkyy selainpaketissa:
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vanhemmissa Remix-asennuksissa, joissa käytetään Node.js-adapteria, palauta client ID juurilataajasta ja lue se komponentissa:
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## Käyttö reiteillä
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Hydraation epäsuhta">
+Remix hydratoi palvelimella renderöidyn HTML:n asiakkaalla. Jos `<wink-*>`-elementti renderöidään palvelimella, selain saattaa hetkellisesti näyttää ratkaisemattoman custom-elementin ennen kuin CDN-skripti rekisteröi sen. Tämä on pelkästään kosmeettista — elementti päivittyy oikein, kun skripti on ladattu.
+</Aside>
+
+## TypeScript-tyypit
+
+Lisää JSX intrinsic -määrittelytiedosto [React-integraatiosivulta](/fi/integrations/react#typescript--declare-jsx-intrinsics) — Remix käyttää Reactia taustalla.
+
+## Lisälukemista
+
+- [Web Components -viite](/fi/integrations/web-components)
+- [@wink/elements npm package](/fi/integrations/npm)
+- [React-integraatio](/fi/integrations/react)

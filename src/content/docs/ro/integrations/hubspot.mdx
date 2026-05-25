@@ -1,0 +1,81 @@
+---
+title: HubSpot CMS
+description: Încorporează inventarul de călătorii Wink în site-ul tău HubSpot CMS folosind module personalizate și cod HTML pentru antet/subsol.
+sidebar:
+  order: 6
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+HubSpot CMS suportă module HTML personalizate și cod pentru antet/subsol la nivel de site, ceea ce face simplă încorporarea componentelor Wink pe paginile de marketing și paginile de destinație.
+
+:::note
+Injecția de cod la nivel de site necesită acces la **HubSpot CMS Hub** (Starter sau versiuni superioare). Modulele HTML personalizate sunt disponibile în toate nivelurile CMS.
+:::
+
+## Încarcă scripturile Wink la nivel de site
+
+<Steps>
+1. În HubSpot, accesează **Marketing → Fișiere și Șabloane → Instrumente de design**.
+2. Deschide `main.css` al **temei** active sau folosește setările globale de conținut.
+3. Alternativ, accesează **Setări → Website → Pagini → Cod personalizat**.
+4. În câmpul **Head HTML**, adaugă foaia de stil:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+5. În câmpul **Footer HTML**, adaugă scriptul și încărcătorul aplicației (înlocuiește `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+6. Salvează și publică.
+</Steps>
+
+:::tip
+ID-ul tău de client este disponibil în contul Wink, în secțiunea [Aplicații](/ro/portal/settings/applications).
+:::
+
+## Adaugă un component printr-un modul HTML personalizat
+
+<Steps>
+1. În Instrumentele de design, creează un nou **modul** de tip **Text îmbogățit** sau **HTML**.
+2. În conținutul implicit al modulului, lipește HTML-ul componentului:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+3. Salvează modulul și trage-l în orice șablon de pagină sau pagină folosind editorul de pagini.
+</Steps>
+
+## Adaugă un component direct în editorul de pagini
+
+Dacă preferi să nu creezi un modul, poți folosi o secțiune **HTML personalizat** în editorul drag-and-drop:
+
+<Steps>
+1. Deschide pagina în editorul de pagini HubSpot.
+2. Apasă **Adaugă** și alege o secțiune **HTML personalizat** sau **Încorporare**.
+3. Lipește tag-ul componentului în câmpul HTML.
+4. Apasă **Aplică** și publică pagina.
+</Steps>
+
+## Componente disponibile
+
+| Componentă | Tag HTML | Scop |
+|---|---|---|
+| Încărcător de conținut | `<wink-content-loader>` | Afișează carduri de hotel, grile, hărți |
+| Căutare | `<wink-lookup>` | Bară de căutare pentru destinații |
+| Buton de căutare | `<wink-search-button>` | Deschide selectorul de itinerariu |
+| Buton cont | `<wink-account-button>` | Autentificare / meniu utilizator |
+| Buton itinerariu | `<wink-itinerary-button>` | Afișează itinerariul curent |
+| Selector itinerariu | `<wink-itinerary-picker>` | Formular complet de itinerariu |
+| Coș de cumpărături | `<wink-shopping-cart-button>` | Buton sumar coș |
+  
+Vezi [Web Components](/ro/integrations/web-components) pentru referința completă a atributelor.
+
+## Lecturi suplimentare
+
+- [Referință Web Components](/ro/integrations/web-components)
+- [Obține ID-ul tău de client](/ro/portal/settings/applications)
+- [Documentație cod personalizat HubSpot](https://knowledge.hubspot.com/website-pages/add-custom-code-to-pages)

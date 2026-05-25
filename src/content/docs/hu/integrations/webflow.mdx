@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Ágyazza be a Wink utazási készletet a Webflow oldalába egyedi kódbeágyazások segítségével.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+A Webflow három helyen támogatja az egyedi HTML és JavaScript használatát: az egész oldalra vonatkozó `<head>`, az egész oldalra vonatkozó `</body>`, valamint egyes elemekhez tartozó kódbeágyazások. Ez megkönnyíti a Wink webkomponensek integrálását.
+
+:::note
+Az egyedi kód a **Webflow Basic csomagtól kezdve érhető el**. Az egész oldalra vonatkozó `</body>` beszúrás fizetős tárhelycsomagot igényel.
+:::
+
+## Wink szkriptek betöltése az egész oldalon
+
+<Steps>
+1. A Webflow Designerben nyissa meg a **Project Settings → Custom Code** menüpontot.
+2. A **Head Code** szekcióban adja hozzá a stíluslapot:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. A **Footer Code** szekcióban adja hozzá a szkriptet és az alkalmazás betöltőt (cserélje ki a `YOUR_CLIENT_ID` értéket):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Kattintson a **Save Changes** gombra.
+</Steps>
+
+:::tip
+Az Ön Client ID-ja elérhető a Wink fiókjában a [Applications](/hu/portal/settings/applications) menüpont alatt.
+:::
+
+## Komponens hozzáadása egy adott elemhez
+
+<Steps>
+1. A Designerben válassza ki azt a **Div** vagy **Section** elemet, ahová a komponenst szeretné elhelyezni.
+2. A jobb oldali panelen kattintson a **`</>` Embed** ikonra (vagy adjon hozzá egy **HTML Embed** elemet az Add panelből).
+3. Illessze be a komponens HTML kódját, például:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Kattintson a **Save & Close** gombra.
+</Steps>
+
+## Oldalankénti egyedi kód
+
+Ha csak bizonyos oldalakon szeretné használni a Wink-et, használja az oldalankénti kódbeágyazást az egész oldalra vonatkozó helyett:
+
+<Steps>
+1. Nyissa meg a céloldal **Page Settings** menüjét (fogaskerék ikon a Pages panelen).
+2. Görgessen a **Custom Code → Before `</body>` tag** szekcióhoz.
+3. Illessze be ugyanazt a szkriptet és alkalmazás betöltőt, mint fent.
+4. Mentse el az oldal beállításait.
+</Steps>
+
+## Elérhető komponensek
+
+| Komponens | HTML címke | Cél |
+|---|---|---|
+| Tartalom betöltő | `<wink-content-loader>` | Szállodakártyák, rácsok, térképek megjelenítése |
+| Kereső | `<wink-lookup>` | Úti cél keresőmező |
+| Kereső gomb | `<wink-search-button>` | Útvonalválasztó megnyitása |
+| Fiók gomb | `<wink-account-button>` | Bejelentkezés / felhasználói menü |
+| Útvonal gomb | `<wink-itinerary-button>` | Aktuális útvonal megjelenítése |
+| Útvonalválasztó | `<wink-itinerary-picker>` | Teljes útvonal űrlap |
+| Bevásárlókosár | `<wink-shopping-cart-button>` | Kosár összefoglaló gomb |
+
+A teljes attribútumreferenciáért lásd a [Web Components](/hu/integrations/web-components) oldalt.
+
+## További olvasnivaló
+
+- [Web Components referencia](/hu/integrations/web-components)
+- [Client ID beszerzése](/hu/portal/settings/applications)
+- [Webflow egyedi kód dokumentáció](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

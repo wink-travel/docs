@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Вбудуйте інвентар Wink для подорожей у ваш вебсайт на Craft CMS 5 за допомогою плагіна Wink.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS Plugin** інтегрує інвентар Wink для подорожей у Craft 5 через функції Twig шаблонів та власний тип поля для редактора контенту. Редактори можуть вибрати конкретний макет Wink зі спадного списку безпосередньо в редакторі запису.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin на GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Вихідний код, інструкції для розробників та внесення змін."
+/>
+
+## Вимоги
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Встановлення
+
+<Steps>
+1. Встановіть через Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Активуйте плагін у Панелі керування в **Settings → Plugins** або через CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Перейдіть у **Settings → Wink** у Панелі керування.
+4. Введіть ваш **Client ID** та **Client Secret**, виберіть середовище та натисніть **Save**.
+   Перейдіть до [Applications](/uk/portal/settings/applications), щоб отримати свої облікові дані.
+</Steps>
+
+## Використання у Twig шаблонах
+
+Після налаштування викликайте функції Wink Twig у будь-якому місці ваших шаблонів:
+
+```twig
+{# Відобразити сітку готелів #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Панель пошуку напрямків #}
+{{ winkLookup() }}
+
+{# Кнопка вибору маршруту #}
+{{ winkSearch() }}
+
+{# Кнопка облікового запису користувача #}
+{{ winkAccount() }}
+```
+
+Функція `winkContent()` автоматично вставляє `<wink-app-loader>` при першому виклику на сторінці.
+
+## Доступні функції Twig
+
+| Функція | Вивід | Опис |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Картки готелів, сітки, карти |
+| `winkLookup()` | `<wink-lookup>` | Панель пошуку напрямків |
+| `winkSearch()` | `<wink-search-button>` | Кнопка вибору маршруту |
+| `winkAccount()` | `<wink-account-button>` | Вхід / обліковий запис користувача |
+| `winkItinerary()` | `<wink-itinerary-button>` | Кнопка статусу маршруту |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Кнопка кошика |
+
+## Тип поля Wink Layout
+
+Додайте поле **Wink Layout** до будь-якого розділу, щоб надати редакторам спадний список усіх доступних макетів з вашого облікового запису Wink:
+
+<Steps>
+1. Перейдіть у **Settings → Fields → New Field**.
+2. Встановіть **Field Type** на **Wink Layout**.
+3. Додайте поле до макету полів вашого типу запису.
+4. Тепер редактори можуть вибирати макет безпосередньо в редакторі запису — без копіювання ID.
+</Steps>
+
+У вашому шаблоні передайте значення поля у `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Додаткова інформація
+
+- [Довідка по Web Components](/uk/integrations/web-components)
+- [Отримайте свій Client ID](/uk/portal/settings/applications)
+- [Wink Craft Plugin — вихідний код та документація для розробників](https://github.com/wink-travel/wink-craft-plugin)

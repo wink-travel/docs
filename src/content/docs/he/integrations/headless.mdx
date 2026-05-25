@@ -1,0 +1,168 @@
+---
+title: מערכת ניהול תוכן ללא ראש
+description: הטמע את מלאי הנסיעות של Wink בכל מערכת ניהול תוכן ללא ראש (Contentful, Strapi, Sanity וכו') או אתר מותאם אישית.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+רכיבי הווב של Wink הם אלמנטים מותאמים אישית ב-HTML שאינם תלויים במסגרת עבודה. אם מערכת ניהול התוכן שלך ללא ראש מציגה HTML — בין אם דרך Next.js, Nuxt, Astro, SvelteKit או כל מסגרת אחרת — תוכל להטמיע את רכיבי Wink ללא אינטגרציה מיוחדת.
+
+## ההטמעה בשלושה שלבים
+
+כל אינטגרציה של Wink, ללא קשר לפלטפורמה, עוקבת אחרי אותם שלושה שלבים.
+
+### 1. הוסף את גיליון הסגנונות
+
+הוסף זאת ל`<head>` של המסמך שלך (או לפריסת העיצוב הגלובלית המקבילה):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. הוסף את קוד ה-JavaScript
+
+הוסף זאת לפני תג ה-`</body>` הסוגר (או בסקשן הסקריפט של הפריסה שלך):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. הוסף את הטוען של האפליקציה
+
+מקם זאת **פעם אחת בכל עמוד**, בכל מקום בתוך ה-body (בדרך כלל בכותרת התחתונה של הפריסה הגלובלית):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+מזהה הלקוח שלך זמין בחשבון Wink שלך תחת [Applications](/he/portal/settings/applications).
+:::
+
+## דוגמאות למסגרות עבודה
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+משתמשי TypeScript: הוסיפו קובץ `global.d.ts` שמכריז על סוגי האלמנטים המותאמים אישית, או השתמשו בחבילת [`@wink/elements`](https://github.com/wink2travel/wink-elements) שמספקת הכרזות טיפוסים.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## מיקום רכיבים בתוכן
+
+בשדות טקסט עשיר או שדות מותאמים אישית במערכת ניהול התוכן שלך, הטמע תגי רכיבים ישירות ביציאת ה-HTML:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+למערכות כמו Contentful, Strapi, Sanity או פלטפורמות ללא ראש דומות, השתמש בשדה **Rich Text** או ב**Custom Block** שמציג HTML גולמי, והדבק שם את תג הרכיב.
+
+## חבילת npm
+
+לפרויקטים ב-TypeScript, חבילת [`@wink/elements`](https://github.com/wink2travel/wink-elements) מספקת:
+- פונקציית `load()` שמזריקה את סקריפטי ה-CDN באופן תכנותי
+- הכרזות טיפוסים מלאות לכל מאפייני הרכיבים
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// קריאה פעם אחת בעת הפעלת האפליקציה
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## רכיבים זמינים
+
+| רכיב | תג HTML | מטרה |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | הצגת כרטיסי מלונות, רשתות, מפות |
+| Lookup | `<wink-lookup>` | שורת חיפוש ליעדים |
+| Search button | `<wink-search-button>` | פתיחת בורר מסלול |
+| Account button | `<wink-account-button>` | כניסה / תפריט משתמש |
+| Itinerary button | `<wink-itinerary-button>` | הצגת המסלול הנוכחי |
+| Itinerary picker | `<wink-itinerary-picker>` | טופס מסלול מלא |
+| Shopping cart | `<wink-shopping-cart-button>` | כפתור סיכום עגלה |
+
+עיין ב-[Web Components](/he/integrations/web-components) לקבלת הפניה מלאה למאפיינים.

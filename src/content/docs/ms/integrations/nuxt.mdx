@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: Tambahkan komponen web Wink ke aplikasi Nuxt 3 menggunakan plugin sisi klien.
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 memaparkan halaman di pelayan secara lalai. Skrip CDN dan elemen tersuai mesti dimuatkan hanya di sisi klien. Plugin klien Nuxt adalah tempat paling kemas untuk melakukan ini.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Pasang dan muatkan bundel CDN dengan jenis TypeScript."
+/>
+
+## Pasang
+
+```bash
+npm install @wink/elements
+```
+
+## Buat plugin klien
+
+Suffix `.client.ts` memberitahu Nuxt untuk menjalankan plugin ini hanya di pelayar:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## Konfigurasikan pembolehubah runtime
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+Tambah ke `.env`:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Konfigurasikan Vue untuk elemen tersuai
+
+Tambah pilihan penyusun `isCustomElement` supaya Vue tidak memberi amaran tentang tag `<wink-*>` yang tidak dikenali:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## Gunakan dalam templat
+
+Balut komponen Wink dalam `<ClientOnly>` untuk mengelakkan ketidakpadanan hidrasi SSR:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` memaparkan tempat letak pada pelayan dan memasang elemen sebenar pada klien — ini adalah corak yang disyorkan untuk semua embed pihak ketiga yang hanya untuk pelayar dalam Nuxt.
+</Aside>
+
+## Jenis TypeScript
+
+Kembangkan `HTMLElementTagNameMap` global (sama seperti Vue 3) untuk mendapatkan autolengkap atribut. Lihat [halaman integrasi Vue 3](/ms/integrations/vue#typescript--augment-global-element-types) untuk fail deklarasi penuh.
+
+## Bacaan lanjut
+
+- [Rujukan Komponen Web](/ms/integrations/web-components)
+- [@wink/elements npm package](/ms/integrations/npm)
+- [Integrasi Vue 3](/ms/integrations/vue)

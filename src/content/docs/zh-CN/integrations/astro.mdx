@@ -1,0 +1,101 @@
+---
+title: Astro
+description: 使用客户端脚本和岛屿架构将 Wink Web 组件添加到 Astro 站点。
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Astro 默认不携带任何 JavaScript，并且在服务器端将所有组件渲染为静态 HTML。Wink Web 组件必须通过客户端的 `<script>` 标签加载。Astro 的岛屿架构使这变得非常简单。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="安装并加载带有 TypeScript 类型的 CDN 包。"
+/>
+
+## 安装
+
+```bash
+npm install @wink/elements
+```
+
+## 在共享布局中加载
+
+将加载脚本添加到基础布局中，以便在每个页面上运行：
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline 与打包脚本的区别">
+如果没有使用 `is:inline`，Astro 会打包并去重脚本 —— 即使布局在多个页面中使用，`load()` 也只会调用一次。这是推荐的做法。仅当你需要将脚本以内联纯文本形式使用（例如避免模块打包器）时，才使用 `is:inline`。
+</Aside>
+
+## 在页面中使用
+
+由于 Astro 组件是服务器渲染的，`<wink-*>` 标签会作为静态 HTML 输出。CDN 脚本会在页面浏览器加载时注册自定义元素：
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## 在框架组件（岛屿）内使用
+
+如果你在使用 React、Vue 或 Svelte 岛屿并搭配 Wink，按上述方式在布局中加载 `@wink/elements`，然后在岛屿组件内正常使用 `<wink-*>` 标签 —— 自定义元素会在岛屿水合时注册完成。
+
+```tsx
+// src/components/HotelCard.tsx (React island)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() 已由布局调用 —— 这里渲染安全
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## 环境变量
+
+Astro 只会将以 `PUBLIC_` 前缀开头的变量暴露给浏览器：
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## 进一步阅读
+
+- [Web Components 参考](/zh-CN/integrations/web-components)
+- [@wink/elements npm package](/zh-CN/integrations/npm)

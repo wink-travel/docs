@@ -1,0 +1,120 @@
+---
+title: Qwik
+description: Sử dụng các thành phần web Wink trong các ứng dụng Qwik và QwikCity với useVisibleTask$ để thực thi chỉ trên trình duyệt.
+sidebar:
+  order: 26
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Mô hình khả năng tiếp tục của Qwik có nghĩa là JavaScript được thực thi một cách lười biếng — chỉ khi người dùng tương tác. Sử dụng `useVisibleTask$` để chạy mã phải thực thi trên trình duyệt khi thành phần trở nên hiển thị.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Cài đặt và tải gói CDN kèm theo các kiểu TypeScript."
+/>
+
+## Cài đặt
+
+```bash
+npm install @wink/elements
+```
+
+## Tải với useVisibleTask$
+
+`useVisibleTask$` là hook vòng đời của Qwik dành cho mã chỉ chạy trên trình duyệt, thực thi ngay lập tức. Đặt nó trong layout gốc của bạn:
+
+```tsx
+// src/routes/layout.tsx
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { load } from '@wink/elements';
+
+export default component$(() => {
+  useVisibleTask$(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+
+  return (
+    <main>
+      <Slot />
+    </main>
+  );
+});
+```
+
+<Aside type="tip" title="Chiến lược useVisibleTask$">
+Mặc định `useVisibleTask$` chạy khi thành phần hiển thị trong khung nhìn. Với layout gốc luôn hiển thị, điều này sẽ kích hoạt ngay khi trang tải — tương đương với `onMount` trong các framework khác.
+
+Truyền `{ strategy: 'document-ready' }` nếu bạn muốn script tải sớm nhất có thể:
+```ts
+useVisibleTask$({ strategy: 'document-ready' }, () => {
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+});
+```
+</Aside>
+
+## Sử dụng trên một trang
+
+```tsx
+// src/routes/hotels/index.tsx
+import { component$ } from '@builder.io/qwik';
+
+export default component$(() => {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+});
+```
+
+## TypeScript — khai báo JSX intrinsics
+
+Qwik sử dụng namespace JSX riêng. Mở rộng nó trong một file khai báo:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module '@builder.io/qwik' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes;
+      'wink-lookup': WinkLookupAttributes;
+      'wink-search-button': WinkSearchButtonAttributes;
+      'wink-account-button': WinkAccountButtonAttributes;
+      'wink-itinerary-button': WinkItineraryButtonAttributes;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes;
+      'wink-app-loader': WinkAppLoaderAttributes;
+    }
+  }
+}
+```
+
+## Biến môi trường
+
+Qwik (dựa trên Vite) cung cấp các biến có tiền tố `PUBLIC_` cho trình duyệt:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="Kết xuất phía máy chủ">
+Qwik kết xuất HTML trên máy chủ. Các thẻ `<wink-*>` được xuất dưới dạng markup tĩnh. Script CDN và đăng ký phần tử tùy chỉnh xảy ra phía client sau khi `useVisibleTask$` kích hoạt. Các phần tử sẽ ở trạng thái chưa được giải quyết trong một thời gian ngắn cho đến khi gói CDN tải xong — đây là hành vi mong đợi.
+</Aside>
+
+## Đọc thêm
+
+- [Tham khảo Web Components](/vi/integrations/web-components)
+- [@wink/elements npm package](/vi/integrations/npm)

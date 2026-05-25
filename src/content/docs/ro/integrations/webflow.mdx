@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Încorporează inventarul de călătorii Wink în site-ul tău Webflow folosind cod personalizat.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow acceptă HTML și JavaScript personalizat în trei locuri: `<head>` la nivel de site, `</body>` la nivel de site și încorporări de cod pe elemente individuale. Acest lucru face integrarea componentelor web Wink simplă.
+
+:::note
+Codul personalizat este disponibil pe **planul Basic Webflow și superior**. Includerea în `</body>` la nivel de site necesită un plan de găzduire plătit.
+:::
+
+## Încarcă scripturile Wink la nivel de site
+
+<Steps>
+1. În Webflow Designer, deschide **Project Settings → Custom Code**.
+2. În secțiunea **Head Code**, adaugă foaia de stil:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. În secțiunea **Footer Code**, adaugă scriptul și încărcătorul aplicației (înlocuiește `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Apasă **Save Changes**.
+</Steps>
+
+:::tip
+ID-ul tău de client este disponibil în contul Wink, la [Applications](/ro/portal/settings/applications).
+:::
+
+## Adaugă un component la un element specific
+
+<Steps>
+1. În Designer, selectează **Div** sau **Section** unde dorești componenta.
+2. În panoul din dreapta, apasă pe pictograma **`</>` Embed** (sau adaugă un element **HTML Embed** din panoul Add).
+3. Lipește HTML-ul componentei, de exemplu:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Apasă **Save & Close**.
+</Steps>
+
+## Cod personalizat pe pagină
+
+Dacă ai nevoie de Wink doar pe anumite pagini, folosește injectarea de cod pe pagină în loc de la nivel de site:
+
+<Steps>
+1. Deschide **Page Settings** pentru pagina țintă (pictograma roată din panoul Pages).
+2. Derulează la **Custom Code → Before `</body>` tag**.
+3. Lipește același script și încărcător de aplicație ca mai sus.
+4. Salvează setările paginii.
+</Steps>
+
+## Componente disponibile
+
+| Component | HTML tag | Scop |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Afișează carduri de hotel, grile, hărți |
+| Lookup | `<wink-lookup>` | Bară de căutare pentru destinații |
+| Search button | `<wink-search-button>` | Deschide selectorul de itinerariu |
+| Account button | `<wink-account-button>` | Autentificare / meniu utilizator |
+| Itinerary button | `<wink-itinerary-button>` | Afișează itinerariul curent |
+| Itinerary picker | `<wink-itinerary-picker>` | Formular complet de itinerariu |
+| Shopping cart | `<wink-shopping-cart-button>` | Buton sumar coș de cumpărături |
+
+Vezi [Web Components](/ro/integrations/web-components) pentru referința completă a atributelor.
+
+## Lecturi suplimentare
+
+- [Referință Web Components](/ro/integrations/web-components)
+- [Obține ID-ul tău de client](/ro/portal/settings/applications)
+- [Documentație cod personalizat Webflow](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

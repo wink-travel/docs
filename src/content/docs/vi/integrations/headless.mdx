@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Nhúng kho lưu trữ du lịch Wink vào bất kỳ headless CMS nào (Contentful, Strapi, Sanity, v.v.) hoặc trang web tùy chỉnh.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Các thành phần web Wink là các phần tử HTML tùy chỉnh không phụ thuộc vào framework. Nếu headless CMS của bạn hiển thị HTML — dù qua Next.js, Nuxt, Astro, SvelteKit hay bất kỳ framework nào khác — bạn có thể nhúng các thành phần Wink mà không cần tích hợp đặc biệt.
+
+## Ba bước nhúng
+
+Mỗi tích hợp Wink, bất kể nền tảng nào, đều tuân theo ba bước giống nhau.
+
+### 1. Bao gồm stylesheet
+
+Thêm đoạn này vào `<head>` của tài liệu (hoặc bố cục toàn cục tương đương):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Bao gồm JavaScript
+
+Thêm đoạn này trước thẻ đóng `</body>` (hoặc trong phần script của bố cục):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Thêm trình tải ứng dụng
+
+Đặt đoạn này **một lần trên mỗi trang**, ở bất kỳ đâu trong phần body (thường là ở chân trang của bố cục toàn cục):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Client ID của bạn có trong tài khoản Wink tại mục [Applications](/vi/portal/settings/applications).
+:::
+
+## Ví dụ framework
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+Người dùng TypeScript: thêm một file `global.d.ts` khai báo kiểu cho các phần tử tùy chỉnh, hoặc sử dụng gói npm [`@wink/elements`](https://github.com/wink2travel/wink-elements) có kèm khai báo kiểu.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Đặt các thành phần trong nội dung
+
+Trong trường rich text hoặc các loại trường tùy chỉnh của CMS, nhúng thẻ thành phần trực tiếp vào đầu ra HTML:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Đối với Contentful, Strapi, Sanity hoặc các nền tảng headless tương tự, sử dụng trường **Rich Text** hoặc **Custom Block** cho phép hiển thị HTML thô, rồi dán thẻ thành phần vào đó.
+
+## Gói npm
+
+Đối với dự án TypeScript, gói [`@wink/elements`](https://github.com/wink2travel/wink-elements) cung cấp:
+- Hàm `load()` để chèn script CDN một cách lập trình
+- Khai báo kiểu TypeScript đầy đủ cho tất cả thuộc tính thành phần
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Gọi một lần khi khởi động app
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Các thành phần có sẵn
+
+| Thành phần | Thẻ HTML | Mục đích |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Hiển thị thẻ khách sạn, lưới, bản đồ |
+| Lookup | `<wink-lookup>` | Thanh tìm kiếm điểm đến |
+| Search button | `<wink-search-button>` | Mở bộ chọn hành trình |
+| Account button | `<wink-account-button>` | Đăng nhập / menu người dùng |
+| Itinerary button | `<wink-itinerary-button>` | Hiển thị hành trình hiện tại |
+| Itinerary picker | `<wink-itinerary-picker>` | Biểu mẫu hành trình đầy đủ |
+| Shopping cart | `<wink-shopping-cart-button>` | Nút tóm tắt giỏ hàng |
+
+Xem [Web Components](/vi/integrations/web-components) để tham khảo đầy đủ các thuộc tính.

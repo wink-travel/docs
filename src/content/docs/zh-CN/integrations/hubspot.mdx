@@ -1,0 +1,81 @@
+---
+title: HubSpot CMS
+description: 使用自定义模块和页眉/页脚 HTML，将 Wink 旅游库存嵌入到您的 HubSpot CMS 网站中。
+sidebar:
+  order: 6
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+HubSpot CMS 支持自定义 HTML 模块和全站页眉/页脚代码，使在营销页面和着陆页上嵌入 Wink 组件变得简单。
+
+:::note
+全站代码注入需要访问 **HubSpot CMS Hub**（Starter 及以上版本）。自定义 HTML 模块在所有 CMS 级别均可用。
+:::
+
+## 全站加载 Wink 脚本
+
+<Steps>
+1. 在 HubSpot 中，进入 **Marketing → Files and Templates → Design Tools**。
+2. 打开您当前使用的 **主题** 的 `main.css`，或使用全局内容设置。
+3. 或者，进入 **Settings → Website → Pages → Custom Code**。
+4. 在 **Head HTML** 字段中，添加样式表：
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+5. 在 **Footer HTML** 字段中，添加脚本和应用加载器（替换 `YOUR_CLIENT_ID`）：
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+6. 保存并发布。
+</Steps>
+
+:::tip
+您的 Client ID 可在 Wink 账户的 [Applications](/zh-CN/portal/settings/applications) 中找到。
+:::
+
+## 通过自定义 HTML 模块添加组件
+
+<Steps>
+1. 在 Design Tools 中，创建一个新的 **模块**，类型为 **Rich Text** 或 **HTML**。
+2. 在模块的默认内容中，粘贴组件 HTML：
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+3. 保存模块，并将其拖入任何页面模板或使用页面编辑器的页面中。
+</Steps>
+
+## 在页面编辑器中直接添加组件
+
+如果您不想创建模块，可以在拖放编辑器中使用 **Custom HTML** 区块：
+
+<Steps>
+1. 在 HubSpot 页面编辑器中打开页面。
+2. 点击 **Add**，选择 **Custom HTML** 或 **Embed** 区块。
+3. 将组件标签粘贴到 HTML 字段中。
+4. 点击 **Apply** 并发布页面。
+</Steps>
+
+## 可用组件
+
+| 组件 | HTML 标签 | 用途 |
+|---|---|---|
+| 内容加载器 | `<wink-content-loader>` | 显示酒店卡片、网格、地图 |
+| 查找 | `<wink-lookup>` | 目的地搜索栏 |
+| 搜索按钮 | `<wink-search-button>` | 打开行程选择器 |
+| 账户按钮 | `<wink-account-button>` | 登录 / 用户菜单 |
+| 行程按钮 | `<wink-itinerary-button>` | 显示当前行程 |
+| 行程选择器 | `<wink-itinerary-picker>` | 完整行程表单 |
+| 购物车 | `<wink-shopping-cart-button>` | 购物车摘要按钮 |
+
+请参阅 [Web Components](/zh-CN/integrations/web-components) 获取完整属性参考。
+
+## 进一步阅读
+
+- [Web Components 参考](/zh-CN/integrations/web-components)
+- [获取您的 Client ID](/zh-CN/portal/settings/applications)
+- [HubSpot 自定义代码文档](https://knowledge.hubspot.com/website-pages/add-custom-code-to-pages)

@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: ฝังสินค้าคงคลังการเดินทางของ Wink ลงในเว็บไซต์ Webflow ของคุณโดยใช้การฝังโค้ดแบบกำหนดเอง
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow รองรับ HTML และ JavaScript แบบกำหนดเองในสามตำแหน่ง: `<head>` ของไซต์ทั้งหมด, `</body>` ของไซต์ทั้งหมด และการฝังโค้ดต่อองค์ประกอบ ซึ่งทำให้การรวมคอมโพเนนต์เว็บของ Wink เป็นเรื่องง่าย
+
+:::note
+โค้ดแบบกำหนดเองมีให้ใช้ใน **แผน Basic ของ Webflow ขึ้นไป** การฝังโค้ดใน `</body>` ของไซต์ทั้งหมดต้องใช้แผนโฮสติ้งแบบชำระเงิน
+:::
+
+## โหลดสคริปต์ Wink ทั่วทั้งไซต์
+
+<Steps>
+1. ใน Webflow Designer เปิด **Project Settings → Custom Code**
+2. ในส่วน **Head Code** ให้เพิ่มสไตล์ชีต:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. ในส่วน **Footer Code** ให้เพิ่มสคริปต์และตัวโหลดแอป (แทนที่ `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. คลิก **Save Changes**
+</Steps>
+
+:::tip
+Client ID ของคุณสามารถดูได้ในบัญชี Wink ของคุณที่ [Applications](/th/portal/settings/applications)
+:::
+
+## เพิ่มคอมโพเนนต์ในองค์ประกอบเฉพาะ
+
+<Steps>
+1. ใน Designer เลือก **Div** หรือ **Section** ที่คุณต้องการใส่คอมโพเนนต์
+2. ในแผงด้านขวา คลิกไอคอน **`</>` Embed** (หรือเพิ่มองค์ประกอบ **HTML Embed** จากแผง Add)
+3. วาง HTML ของคอมโพเนนต์ เช่น:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. คลิก **Save & Close**
+</Steps>
+
+## โค้ดแบบกำหนดเองต่อหน้า
+
+ถ้าคุณต้องการใช้ Wink เฉพาะในบางหน้า ให้ใช้การฝังโค้ดต่อหน้าแทนการฝังทั่วทั้งไซต์:
+
+<Steps>
+1. เปิด **Page Settings** ของหน้าที่ต้องการ (ไอคอนรูปเฟืองในแผง Pages)
+2. เลื่อนลงไปที่ **Custom Code → Before `</body>` tag**
+3. วางสคริปต์และตัวโหลดแอปเหมือนด้านบน
+4. บันทึกการตั้งค่าหน้า
+</Steps>
+
+## คอมโพเนนต์ที่มีให้ใช้งาน
+
+| คอมโพเนนต์ | แท็ก HTML | จุดประสงค์ |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | แสดงการ์ดโรงแรม, กริด, แผนที่ |
+| Lookup | `<wink-lookup>` | แถบค้นหาปลายทาง |
+| Search button | `<wink-search-button>` | เปิดตัวเลือกแผนการเดินทาง |
+| Account button | `<wink-account-button>` | ลงชื่อเข้าใช้ / เมนูผู้ใช้ |
+| Itinerary button | `<wink-itinerary-button>` | แสดงแผนการเดินทางปัจจุบัน |
+| Itinerary picker | `<wink-itinerary-picker>` | ฟอร์มแผนการเดินทางเต็มรูปแบบ |
+| Shopping cart | `<wink-shopping-cart-button>` | ปุ่มสรุปตะกร้าสินค้า |
+
+ดู [Web Components](/th/integrations/web-components) สำหรับรายการแอตทริบิวต์ทั้งหมด
+
+## อ่านเพิ่มเติม
+
+- [Web Components reference](/th/integrations/web-components)
+- [รับ Client ID ของคุณ](/th/portal/settings/applications)
+- [เอกสารโค้ดแบบกำหนดเองของ Webflow](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

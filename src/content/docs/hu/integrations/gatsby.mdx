@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: Adj hozzá Wink webkomponenseket Gatsby oldalakhoz a gatsby-browser.js segítségével a kliensoldali betöltéshez.
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+A Gatsby statikus HTML-t generál build időben, majd kliensoldalon újraéleszti azt. A CDN szkripteket csak böngésző API-kon keresztül szabad betölteni — a `gatsby-browser.js` a megfelelő hely erre.
+
+<LinkCard
+  title="@wink/elements npm csomag"
+  href="/integrations/npm"
+  description="Telepítsd és töltsd be a CDN csomagot TypeScript típusokkal."
+/>
+
+## Telepítés
+
+```bash
+npm install @wink/elements
+```
+
+## Betöltés gatsby-browser.js-en keresztül
+
+Az `onClientEntry` API egyszer fut le, amint a Gatsby futtatókörnyezete inicializálódik a böngészőben:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## Környezeti változók
+
+A Gatsby csak azokat a változókat teszi elérhetővé a böngészői csomag számára, amelyek `GATSBY_` előtaggal kezdődnek:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## Használat oldalakban és komponensekben
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+A Gatsby React-et használ, ezért add hozzá ugyanazokat a JSX intrinsic deklarációkat, mint a React integrációnál:
+
+```ts
+// src/wink-elements.d.ts
+// Lásd a /integrations/react teljes deklarációs fájlját
+```
+
+<Aside type="caution" title="SSR build hibák">
+A `gatsby build` során a Gatsby Node.js környezetben rendereli az oldalakat statikus HTML-re, ahol a `window` és a `document` nem elérhető. Ha az `@wink/elements`-et egy oldal komponensének legfelső szintjén importálod (az `onClientEntry`-n kívül), a build meghiúsul.
+
+Mindig használd a `gatsby-browser.js` / `onClientEntry`-t — soha ne importáld közvetlenül a `load`-ot oldal vagy komponens modul szinten.
+</Aside>
+
+## gatsby-ssr.js — nem szükséges módosítás
+
+Nem kell módosítanod a `gatsby-ssr.js` fájlt. A `<wink-*>` tagek sima HTML elemekként jelennek meg a statikus kimenetben, és a CDN szkript frissíti őket, amikor a böngésző betölti az oldalt.
+
+## További olvasnivaló
+
+- [Web Components referencia](/hu/integrations/web-components)
+- [@wink/elements npm csomag](/hu/integrations/npm)
+- [React integráció](/hu/integrations/react)

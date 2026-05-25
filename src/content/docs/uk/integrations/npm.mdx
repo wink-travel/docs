@@ -1,0 +1,134 @@
+---
+title: npm пакет
+description: Використовуйте npm пакет @wink/elements для безпечної інтеграції веб-компонентів Wink у TypeScript у будь-якому JavaScript-фреймворку.
+sidebar:
+  order: 14
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+Пакет **`@wink/elements`** — це найшвидший спосіб додати веб-компоненти Wink у будь-який проект на JavaScript або TypeScript. Він надає функцію `load()`, яка підключає ресурси CDN і повні декларації типів TypeScript для всіх атрибутів компонентів.
+
+<LinkCard
+  title="wink-travel/wink-elements на GitHub"
+  href="https://github.com/wink-travel/wink-elements"
+  description="Вихідний код, API-довідник та інструкції для внеску."
+/>
+
+## Встановлення
+
+```bash
+npm install @wink/elements
+```
+
+## Швидкий старт
+
+Викличте `load()` один раз при запуску додатку. Функція ідемпотентна — безпечно викликати її кілька разів.
+
+```ts
+import { load } from '@wink/elements';
+
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+Потім використовуйте будь-який компонент Wink у вашому HTML або JSX:
+
+```html
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID"></wink-content-loader>
+```
+
+## Приклади для фреймворків
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <html><body>{children}</body></html>;
+}
+```
+
+### Nuxt 3
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+import { load } from '@wink/elements';
+---
+<script>
+  import { load } from '@wink/elements';
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+</script>
+```
+
+### SvelteKit
+
+```ts
+// src/routes/+layout.ts
+import { load as loadWink } from '@wink/elements';
+import { browser } from '$app/environment';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+## Типи TypeScript
+
+Всі інтерфейси атрибутів компонентів експортуються для використання в JSX, шаблонних рядках або типізованих словниках:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',    // TypeScript виявить недійсні значення layout
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+```
+
+## Використання staging CDN
+
+```ts
+load({
+  clientId: 'YOUR_CLIENT_ID',
+  cdnBaseUrl: 'https://staging-elements.wink.travel',
+});
+```
+
+## API
+
+### `load(options)`
+
+| Опція | Тип | Обов’язково | За замовчуванням | Опис |
+|---|---|---|---|---|
+| `clientId` | `string` | Так | — | Ваш Wink OAuth2 Client ID |
+| `configurationId` | `string` | Ні | — | Необов’язковий ID для кастомізації |
+| `cdnBaseUrl` | `string` | Ні | `https://elements.wink.travel` | Перевизначення URL CDN |
+
+## Додаткова інформація
+
+- [Довідник Web Components](/uk/integrations/web-components)
+- [Отримайте свій Client ID](/uk/portal/settings/applications)
+- [Інтеграція з Headless CMS](/uk/integrations/headless)
+- [`@wink/elements` на GitHub](https://github.com/wink-travel/wink-elements)

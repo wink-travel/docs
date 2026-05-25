@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Bädda in Wink reseinventarier på din Webflow-sida med hjälp av anpassade kodinbäddningar.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow stödjer anpassad HTML och JavaScript på tre platser: i hela webbplatsens `<head>`, i hela webbplatsens `</body>`, och per-element kodinbäddningar. Detta gör integrationen av Wink webbkomponenter enkel.
+
+:::note
+Anpassad kod är tillgänglig på **Webflows Basic-plan och uppåt**. Injektion i hela webbplatsens `</body>` kräver en betald hostingplan.
+:::
+
+## Ladda Wink-skript för hela webbplatsen
+
+<Steps>
+1. I Webflow Designer, öppna **Project Settings → Custom Code**.
+2. I sektionen **Head Code**, lägg till stylesheet:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. I sektionen **Footer Code**, lägg till skriptet och applikationsladdaren (byt ut `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klicka på **Save Changes**.
+</Steps>
+
+:::tip
+Ditt Client ID finns i ditt Wink-konto under [Applications](/sv/portal/settings/applications).
+:::
+
+## Lägg till en komponent i ett specifikt element
+
+<Steps>
+1. I Designer, välj den **Div** eller **Section** där du vill ha komponenten.
+2. I högra panelen, klicka på ikonen **`</>` Embed** (eller lägg till ett **HTML Embed**-element från Add-panelen).
+3. Klistra in komponentens HTML, till exempel:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klicka på **Save & Close**.
+</Steps>
+
+## Anpassad kod per sida
+
+Om du bara behöver Wink på specifika sidor, använd kodinjektion per sida istället för för hela webbplatsen:
+
+<Steps>
+1. Öppna **Page Settings** för målsidan (kugghjulsikonen i Pages-panelen).
+2. Scrolla till **Custom Code → Before `</body>` tag**.
+3. Klistra in samma skript och app-laddare som ovan.
+4. Spara sidinställningarna.
+</Steps>
+
+## Tillgängliga komponenter
+
+| Komponent | HTML-tag | Syfte |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Visa hotellkort, rutnät, kartor |
+| Lookup | `<wink-lookup>` | Sökruta för destinationer |
+| Search button | `<wink-search-button>` | Öppna resplanväljare |
+| Account button | `<wink-account-button>` | Logga in / användarmeny |
+| Itinerary button | `<wink-itinerary-button>` | Visa aktuell resplan |
+| Itinerary picker | `<wink-itinerary-picker>` | Fullständig resplanformulär |
+| Shopping cart | `<wink-shopping-cart-button>` | Kundvagnssammanfattning knapp |
+
+Se [Web Components](/sv/integrations/web-components) för fullständig attributreferens.
+
+## Vidare läsning
+
+- [Web Components reference](/sv/integrations/web-components)
+- [Hämta ditt Client ID](/sv/portal/settings/applications)
+- [Webflow custom code docs](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

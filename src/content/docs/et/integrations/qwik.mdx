@@ -1,0 +1,120 @@
+---
+title: Qwik
+description: Kasutage Wink veebikomponente Qwik ja QwikCity rakendustes koos useVisibleTask$-ga, et käivitada kood ainult kliendipoolsel poolel.
+sidebar:
+  order: 26
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Qwiki jätkusuutlikkuse mudel tähendab, et JavaScript käivitatakse laiskalt — ainult siis, kui kasutaja suhtleb. Kasutage `useVisibleTask$`, et käivitada kood, mis peab brauseris täituma, kui komponent muutub nähtavaks.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Paigaldage ja laadige CDN-pakett koos TypeScripti tüüpidega."
+/>
+
+## Paigaldamine
+
+```bash
+npm install @wink/elements
+```
+
+## Laadimine useVisibleTask$ abil
+
+`useVisibleTask$` on Qwiki elutsükli konks, mis käivitab koodi ainult brauseris ja kohe. Paigutage see oma juurpaigutusse:
+
+```tsx
+// src/routes/layout.tsx
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { load } from '@wink/elements';
+
+export default component$(() => {
+  useVisibleTask$(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+
+  return (
+    <main>
+      <Slot />
+    </main>
+  );
+});
+```
+
+<Aside type="tip" title="useVisibleTask$ strateegia">
+Vaikimisi käivitub `useVisibleTask$`, kui komponent on vaateväljas nähtav. Juurpaigutuse puhul, mis on alati nähtav, käivitub see kohe lehe laadimisel — see on samaväärne teiste raamistikude `onMount`-iga.
+
+Kui soovite skripti laadida võimalikult vara, kasutage `{ strategy: 'document-ready' }`:
+```ts
+useVisibleTask$({ strategy: 'document-ready' }, () => {
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+});
+```
+</Aside>
+
+## Kasutamine lehel
+
+```tsx
+// src/routes/hotels/index.tsx
+import { component$ } from '@builder.io/qwik';
+
+export default component$(() => {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+});
+```
+
+## TypeScript — deklareerige JSX intrinsiigid
+
+Qwik kasutab oma JSX nimeruumi. Laiendage seda deklaratsioonifailis:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module '@builder.io/qwik' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes;
+      'wink-lookup': WinkLookupAttributes;
+      'wink-search-button': WinkSearchButtonAttributes;
+      'wink-account-button': WinkAccountButtonAttributes;
+      'wink-itinerary-button': WinkItineraryButtonAttributes;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes;
+      'wink-app-loader': WinkAppLoaderAttributes;
+    }
+  }
+}
+```
+
+## Keskkonnamuutujad
+
+Qwik (Vite-põhine) avaldab brauserile muutujad, mille eesliide on `PUBLIC_`:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="Serveripoolne renderdamine">
+Qwik renderdab HTML-i serveris. `<wink-*>` sildid väljastatakse staatilise märgendina. CDN-skript ja kohandatud elemendi registreerimine toimuvad kliendipoolsel poolel pärast `useVisibleTask$` käivitumist. Elemendid on lühikest aega lahendamata olekus, kuni CDN-pakett laetakse — see on oodatud käitumine.
+</Aside>
+
+## Täiendav lugemine
+
+- [Veebikomponentide viide](/et/integrations/web-components)
+- [@wink/elements npm package](/et/integrations/npm)

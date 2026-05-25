@@ -1,0 +1,120 @@
+---
+title: Qwik
+description: Uporabite Wink spletne komponente v Qwik in QwikCity aplikacijah z useVisibleTask$ za izvajanje samo na strani odjemalca.
+sidebar:
+  order: 26
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Qwikov model nadaljevanja pomeni, da se JavaScript izvaja lenobno — samo, ko uporabnik interagira. Uporabite `useVisibleTask$` za zagon kode, ki se mora izvajati v brskalniku, ko komponenta postane vidna.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Namestite in naložite CDN paket s tipi za TypeScript."
+/>
+
+## Namestitev
+
+```bash
+npm install @wink/elements
+```
+
+## Naložite z useVisibleTask$
+
+`useVisibleTask$` je Qwikov življenjski klic za kodo, ki se izvaja samo v brskalniku in takoj. Postavite ga v vašo osnovno postavitev:
+
+```tsx
+// src/routes/layout.tsx
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { load } from '@wink/elements';
+
+export default component$(() => {
+  useVisibleTask$(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+
+  return (
+    <main>
+      <Slot />
+    </main>
+  );
+});
+```
+
+<Aside type="tip" title="Strategija useVisibleTask$">
+Privzeto se `useVisibleTask$` zažene, ko je komponenta vidna v vidnem polju. Za osnovno postavitev, ki je vedno vidna, se to zgodi takoj ob nalaganju strani — kar je enakovredno `onMount` v drugih okvirjih.
+
+Posredujte `{ strategy: 'document-ready' }`, če želite, da se skripta naloži čim prej:
+```ts
+useVisibleTask$({ strategy: 'document-ready' }, () => {
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+});
+```
+</Aside>
+
+## Uporaba na strani
+
+```tsx
+// src/routes/hotels/index.tsx
+import { component$ } from '@builder.io/qwik';
+
+export default component$(() => {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+});
+```
+
+## TypeScript — deklarirajte JSX intrinseke
+
+Qwik uporablja svoj JSX imenik. Razširite ga v datoteki z deklaracijami:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module '@builder.io/qwik' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes;
+      'wink-lookup': WinkLookupAttributes;
+      'wink-search-button': WinkSearchButtonAttributes;
+      'wink-account-button': WinkAccountButtonAttributes;
+      'wink-itinerary-button': WinkItineraryButtonAttributes;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes;
+      'wink-app-loader': WinkAppLoaderAttributes;
+    }
+  }
+}
+```
+
+## Okoljske spremenljivke
+
+Qwik (na osnovi Vite) izpostavlja spremenljivke s predpono `PUBLIC_` v brskalnik:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="Upodabljanje na strežniški strani">
+Qwik upodablja HTML na strežniku. Oznake `<wink-*>` so izpisane kot statični markup. CDN skripta in registracija prilagojenih elementov se zgodita na strani odjemalca po sprožitvi `useVisibleTask$`. Elementi bodo za kratek čas v nerešenem stanju, dokler se CDN paket ne naloži — to je pričakovano vedenje.
+</Aside>
+
+## Nadaljnje branje
+
+- [Referenca spletnih komponent](/sl/integrations/web-components)
+- [@wink/elements npm package](/sl/integrations/npm)

@@ -1,0 +1,101 @@
+---
+title: Astro
+description: Добавете Wink уеб компоненти към Astro сайтове с помощта на клиентски скриптове и островна архитектура.
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Astro по подразбиране не изпраща JavaScript и рендерира всички компоненти като статичен HTML на сървъра. Wink уеб компонентите трябва да се зареждат чрез клиентски `<script>` таг. Островната архитектура на Astro прави това лесно.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Инсталирайте и заредете CDN пакета с TypeScript типове."
+/>
+
+## Инсталиране
+
+```bash
+npm install @wink/elements
+```
+
+## Зареждане в споделен layout
+
+Добавете скрипта за зареждане в основния layout, за да се изпълнява на всяка страница:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline срещу bundled скриптове">
+Без `is:inline`, Astro пакетира и премахва дублирането на скрипта — `load()` се извиква веднъж, дори ако layout се използва на много страници. Това е предпочитаният подход. Използвайте `is:inline` само когато трябва скриптът да е вграден като суров текст (например за да се избегне модулният пакетиращ инструмент).
+</Aside>
+
+## Използване на страница
+
+Тъй като Astro компонентите се рендерират на сървъра, таговете `<wink-*>` се изписват като статичен HTML. CDN скриптът регистрира потребителските елементи, когато страницата се зареди в браузъра:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## Вътре в компонент на framework (остров)
+
+Ако използвате React, Vue или Svelte острови заедно с Wink, заредете `@wink/elements` в layout-а (както по-горе) и използвайте `<wink-*>` тагове нормално във вашите островни компоненти — потребителските елементи ще бъдат регистрирани към момента на хидратацията на острова.
+
+```tsx
+// src/components/HotelCard.tsx (React island)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() вече е извикан от layout — безопасно е да се рендерира тук
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## Променливи на средата
+
+Astro предоставя на браузъра само променливи с префикс `PUBLIC_`:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Допълнително четене
+
+- [Web Components reference](/bg/integrations/web-components)
+- [@wink/elements npm package](/bg/integrations/npm)

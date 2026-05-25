@@ -1,0 +1,134 @@
+---
+title: npm paketas
+description: Naudokite @wink/elements npm paketą, kad saugiai integruotumėte Wink žiniatinklio komponentus į bet kurį JavaScript karkasą su TypeScript palaikymu.
+sidebar:
+  order: 14
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**`@wink/elements`** npm paketas yra greičiausias būdas pridėti Wink žiniatinklio komponentus į bet kurį JavaScript arba TypeScript projektą. Jis suteikia `load()` funkciją, kuri įkelia CDN išteklius ir pilnas TypeScript tipų deklaracijas visiems komponentų atributams.
+
+<LinkCard
+  title="wink-travel/wink-elements GitHub"
+  href="https://github.com/wink-travel/wink-elements"
+  description="Šaltinio kodas, API nuorodos ir prisidėjimo instrukcijos."
+/>
+
+## Įdiegimas
+
+```bash
+npm install @wink/elements
+```
+
+## Greitas pradėjimas
+
+Iškvieskite `load()` vieną kartą programos paleidimo metu. Ji yra idempotentinė — saugu kviesti kelis kartus.
+
+```ts
+import { load } from '@wink/elements';
+
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+Tada naudokite bet kurį Wink komponentą savo HTML arba JSX:
+
+```html
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID"></wink-content-loader>
+```
+
+## Karkasų pavyzdžiai
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <html><body>{children}</body></html>;
+}
+```
+
+### Nuxt 3
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+import { load } from '@wink/elements';
+---
+<script>
+  import { load } from '@wink/elements';
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+</script>
+```
+
+### SvelteKit
+
+```ts
+// src/routes/+layout.ts
+import { load as loadWink } from '@wink/elements';
+import { browser } from '$app/environment';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+## TypeScript tipai
+
+Visos komponentų atributų sąsajos yra eksportuojamos, kad būtų galima naudoti JSX, šablonų literaliuose arba tipizuotose žodynuose:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',    // TypeScript aptiks neteisingas layout reikšmes
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+```
+
+## Naudojant testinį CDN
+
+```ts
+load({
+  clientId: 'YOUR_CLIENT_ID',
+  cdnBaseUrl: 'https://staging-elements.wink.travel',
+});
+```
+
+## API
+
+### `load(options)`
+
+| Parinktis | Tipas | Privaloma | Numatytoji reikšmė | Aprašymas |
+|---|---|---|---|---|
+| `clientId` | `string` | Taip | — | Jūsų Wink OAuth2 kliento ID |
+| `configurationId` | `string` | Ne | — | Pasirenkamas pritaikymo ID |
+| `cdnBaseUrl` | `string` | Ne | `https://elements.wink.travel` | CDN URL perrašymas |
+
+## Tolimesnė informacija
+
+- [Žiniatinklio komponentų nuoroda](/lt/integrations/web-components)
+- [Gaukite savo kliento ID](/lt/portal/settings/applications)
+- [Headless CMS integracijos vadovas](/lt/integrations/headless)
+- [`@wink/elements` GitHub](https://github.com/wink-travel/wink-elements)

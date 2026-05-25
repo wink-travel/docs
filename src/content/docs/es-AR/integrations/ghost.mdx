@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: Inserte el inventario de viajes de Wink en su publicación de Ghost usando Code Injection.
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+La función integrada de **Code Injection** de Ghost le permite agregar scripts al `<head>` global y al `</body>` de su publicación. Todos los planes de Ghost soportan la inyección de código, lo que facilita insertar componentes de Wink en cualquier página o publicación.
+
+## Cargar scripts de Wink en todo el sitio
+
+<Steps>
+1. En el panel de administración de Ghost, vaya a **Settings → Code Injection**.
+2. En el cuadro **Site Header**, agregue la hoja de estilos:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. En el cuadro **Site Footer**, agregue el script y el cargador de la aplicación (reemplace `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Haga clic en **Save**.
+</Steps>
+
+:::tip
+Su Client ID está disponible en su cuenta de Wink bajo [Applications](/es-AR/portal/settings/applications).
+:::
+
+## Agregar un componente a una publicación o página
+
+El editor de Ghost soporta una **tarjeta HTML** que le permite insertar HTML sin procesar en cualquier parte de su contenido.
+
+<Steps>
+1. Abra la publicación o página en el editor de Ghost.
+2. Escriba `/` para abrir el selector de tarjetas y seleccione **HTML**.
+3. Pegue el HTML del componente, por ejemplo:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Haga clic fuera de la tarjeta para previsualizar, luego publique.
+</Steps>
+
+## Inyección de código por página
+
+Para un componente que solo debe aparecer en una página, Ghost también soporta la inyección de código por página:
+
+<Steps>
+1. Abra la configuración de la publicación o página (icono de engranaje en el editor).
+2. Desplácese hasta **Code Injection**.
+3. Agregue la etiqueta del componente en el campo **Footer** (el app-loader global solo debe estar en el footer del sitio).
+4. Guarde.
+</Steps>
+
+## Componentes disponibles
+
+| Componente | Etiqueta HTML | Propósito |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Mostrar tarjetas de hotel, grillas, mapas |
+| Lookup | `<wink-lookup>` | Barra de búsqueda para destinos |
+| Search button | `<wink-search-button>` | Abrir selector de itinerario |
+| Account button | `<wink-account-button>` | Iniciar sesión / menú de usuario |
+| Itinerary button | `<wink-itinerary-button>` | Mostrar itinerario actual |
+| Itinerary picker | `<wink-itinerary-picker>` | Formulario completo de itinerario |
+| Shopping cart | `<wink-shopping-cart-button>` | Botón resumen del carrito |
+
+Consulte [Web Components](/es-AR/integrations/web-components) para la referencia completa de atributos.
+
+## Lecturas adicionales
+
+- [Referencia de Web Components](/es-AR/integrations/web-components)
+- [Obtenga su Client ID](/es-AR/portal/settings/applications)
+- [Documentación de Ghost Code Injection](https://ghost.org/help/ghost-themes/#code-injection)

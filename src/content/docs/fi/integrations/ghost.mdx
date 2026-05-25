@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: Upota Wink-matkavarasto Ghost-julkaisuusi käyttämällä Code Injectionia.
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Ghostin sisäänrakennettu **Code Injection** -ominaisuus antaa sinun lisätä skriptejä julkaisusi globaalin `<head>`- ja `</body>`-osaan. Kaikki Ghost-suunnitelmat tukevat koodin upotusta, mikä tekee Wink-komponenttien upottamisesta helppoa mille tahansa sivulle tai artikkeliin.
+
+## Lataa Wink-skriptit koko sivustolle
+
+<Steps>
+1. Mene Ghost Admin -paneelissa kohtaan **Settings → Code Injection**.
+2. Lisää **Site Header** -kenttään tyylitiedosto:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. Lisää **Site Footer** -kenttään skripti ja sovelluksen lataaja (korvaa `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klikkaa **Save**.
+</Steps>
+
+:::tip
+Asiakas-ID:si löytyy Wink-tililtäsi kohdasta [Applications](/fi/portal/settings/applications).
+:::
+
+## Lisää komponentti artikkeliin tai sivulle
+
+Ghostin editori tukee **HTML-korttia**, jonka avulla voit lisätä raakaa HTML:ää mihin tahansa sisältöösi.
+
+<Steps>
+1. Avaa artikkeli tai sivu Ghost-editorissa.
+2. Kirjoita `/` avataksesi korttivalitsimen ja valitse **HTML**.
+3. Liitä komponentin HTML, esimerkiksi:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klikkaa kortin ulkopuolelle esikatselua varten ja julkaise sitten.
+</Steps>
+
+## Sivukohtainen koodin upotus
+
+Jos komponentin tulisi näkyä vain yhdellä sivulla, Ghost tukee myös sivukohtaista koodin upotusta:
+
+<Steps>
+1. Avaa artikkelin tai sivun asetukset (rataskuvake editorissa).
+2. Selaa kohtaan **Code Injection**.
+3. Lisää komponenttitag **Footer**-kenttään (globaali app-loader tarvitsee olla vain koko sivuston alatunnisteessa).
+4. Tallenna.
+</Steps>
+
+## Saatavilla olevat komponentit
+
+| Komponentti | HTML-tagi | Tarkoitus |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Näytä hotellikortit, ruudukot, kartat |
+| Lookup | `<wink-lookup>` | Hakupalkki kohteille |
+| Search button | `<wink-search-button>` | Avaa matkasuunnitelman valitsin |
+| Account button | `<wink-account-button>` | Kirjaudu sisään / käyttäjävalikko |
+| Itinerary button | `<wink-itinerary-button>` | Näytä nykyinen matkasuunnitelma |
+| Itinerary picker | `<wink-itinerary-picker>` | Täysi matkasuunnitelmalomake |
+| Shopping cart | `<wink-shopping-cart-button>` | Ostoskorin yhteenvetopainike |
+
+Katso täydellinen attribuuttiviite [Web Components](/fi/integrations/web-components) -sivulta.
+
+## Lisälukemista
+
+- [Web Components -viite](/fi/integrations/web-components)
+- [Hanki asiakas-ID](/fi/portal/settings/applications)
+- [Ghost Code Injection -dokumentaatio](https://ghost.org/help/ghost-themes/#code-injection)

@@ -1,0 +1,115 @@
+---
+title: Remix
+description: Dodajte Wink spletne komponente v Remix aplikacije z nalaganjem samo na odjemalcu preko useEffect.
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Remix je full-stack ogrodje, ki privzeto izvaja server-side rendering. Wink CDN naložite samo na odjemalcu z uporabo `useEffect` v korenski komponenti.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Namestite in naložite CDN paket z TypeScript tipi."
+/>
+
+## Namestitev
+
+```bash
+npm install @wink/elements
+```
+
+## Naložite v app/root.tsx
+
+`useEffect` se izvaja samo v brskalniku, nikoli med server-side renderingom:
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## Okoljske spremenljivke
+
+Remix (na osnovi Vite, v2.8+) podpira `import.meta.env` za spremenljivke, izpostavljene brskalniku. Predpono `VITE_` uporabite, da jih izpostavite brskalniškemu paketu:
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Za starejše Remix nastavitve z Node.js adapterjem vrnite client ID iz root loaderja in ga preberite v komponenti:
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## Uporaba v routah
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Neujemanje hidracije">
+Remix hidrira na odjemalcu HTML, ki je renderiran na strežniku. Če je `<wink-*>` element renderiran na strežniku, lahko brskalnik za kratek čas prikaže nerešeno prilagojeno komponento, preden se CDN skripta registrira. To je le kozmetično — element se pravilno nadgradi, ko se skripta naloži.
+</Aside>
+
+## TypeScript tipi
+
+Dodajte JSX intrinsic deklaracijsko datoteko s strani [React integracije](/sl/integrations/react#typescript--declare-jsx-intrinsics) — Remix uporablja React pod pokrovom.
+
+## Dodatno branje
+
+- [Referenca spletnih komponent](/sl/integrations/web-components)
+- [@wink/elements npm paket](/sl/integrations/npm)
+- [React integracija](/sl/integrations/react)

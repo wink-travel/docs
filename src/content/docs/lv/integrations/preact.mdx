@@ -1,0 +1,103 @@
+---
+title: Preact
+description: Izmantojiet Wink tīmekļa komponentus Preact lietotnēs — tāds pats modelis kā React, bet ar mazāku apjomu.
+sidebar:
+  order: 24
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Preact API ir saderīgs ar React. Integrācija seko tam pašam modelim — izsauciet `load()` vienu reizi lietotnes startā, pēc tam izmantojiet `<wink-*>` tagus JSX.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Instalējiet un ielādējiet CDN pakotni ar TypeScript tipiem."
+/>
+
+## Instalēšana
+
+```bash
+npm install @wink/elements
+```
+
+## Ielādējiet vienu reizi lietotnes startā
+
+```tsx
+// src/app.tsx
+import { useEffect } from 'preact/hooks';
+import { load } from '@wink/elements';
+
+export function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Lietošana JSX
+
+```tsx
+// src/pages/hotels.tsx
+export function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — deklarējiet JSX intrinsics
+
+Preact JSX nosaukumvietne ir atsevišķa no React. Paplašiniet `preact/src/jsx.d.ts`:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'preact' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## Preact ar `preact/compat`
+
+Ja jūs izmantojat React kā `preact/compat` alias, tad izmantojiet React JSX deklarācijas:
+
+```ts
+// src/wink-elements.d.ts
+// Izmantojiet React JSX deklarāciju no /integrations/react
+// — preact/compat atkārtoti eksportē React JSX nosaukumvietni
+```
+
+<Aside type="tip">
+Preact mazāks pakotnes izmērs ir labs risinājums Wink komponentu iegulšanai veiktspējai jutīgos veikalos. Funkcija `@wink/elements` `load()` pievieno aptuveni 500 baitu gzip formātā — lielāko svara daļu veido CDN pakotne, kas tiek ielādēta asinhroni.
+</Aside>
+
+## Papildu lasāmviela
+
+- [Tīmekļa komponentu atsauce](/lv/integrations/web-components)
+- [@wink/elements npm pakotne](/lv/integrations/npm)
+- [React integrācija](/lv/integrations/react)

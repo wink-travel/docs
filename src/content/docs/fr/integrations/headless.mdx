@@ -1,0 +1,168 @@
+---
+title: CMS sans tête
+description: Intégrez l'inventaire de voyage Wink dans n'importe quel CMS sans tête (Contentful, Strapi, Sanity, etc.) ou site personnalisé.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Les composants web Wink sont des éléments HTML personnalisés indépendants du framework. Si votre CMS sans tête génère du HTML — que ce soit via Next.js, Nuxt, Astro, SvelteKit ou tout autre framework — vous pouvez intégrer les composants Wink sans aucune intégration spéciale.
+
+## L'intégration en trois étapes
+
+Chaque intégration Wink, quelle que soit la plateforme, suit les mêmes trois étapes.
+
+### 1. Inclure la feuille de style
+
+Ajoutez ceci dans le `<head>` de votre document (ou dans la mise en page globale équivalente) :
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Inclure le JavaScript
+
+Ajoutez ceci avant la balise de fermeture `</body>` (ou dans la section script de votre mise en page) :
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Ajouter le chargeur d'application
+
+Placez ceci **une fois par page**, n'importe où dans le corps (généralement dans le pied de page de votre mise en page globale) :
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Votre Client ID est disponible dans votre compte Wink sous [Applications](/fr/portal/settings/applications).
+:::
+
+## Exemples par framework
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+Utilisateurs TypeScript : ajoutez un fichier `global.d.ts` qui déclare les types des éléments personnalisés, ou utilisez le package npm [`@wink/elements`](https://github.com/wink2travel/wink-elements) qui fournit les déclarations de types.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Placer les composants dans le contenu
+
+Dans les champs de texte enrichi ou personnalisés de votre CMS, intégrez directement les balises des composants dans la sortie HTML :
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Pour Contentful, Strapi, Sanity ou des plateformes sans tête similaires, utilisez un champ **Rich Text** ou un **Bloc personnalisé** qui rend du HTML brut, et collez-y la balise du composant.
+
+## Package npm
+
+Pour les projets TypeScript, le package [`@wink/elements`](https://github.com/wink2travel/wink-elements) fournit :
+- Une fonction `load()` qui injecte les scripts CDN de manière programmatique
+- Des déclarations de types TypeScript complètes pour tous les attributs des composants
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Appeler une fois au démarrage de l'application
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Composants disponibles
+
+| Composant | Balise HTML | Usage |
+|---|---|---|
+| Chargeur de contenu | `<wink-content-loader>` | Afficher des cartes d'hôtels, grilles, cartes |
+| Recherche | `<wink-lookup>` | Barre de recherche pour destinations |
+| Bouton de recherche | `<wink-search-button>` | Ouvrir le sélecteur d'itinéraire |
+| Bouton compte | `<wink-account-button>` | Connexion / menu utilisateur |
+| Bouton itinéraire | `<wink-itinerary-button>` | Afficher l'itinéraire actuel |
+| Sélecteur d'itinéraire | `<wink-itinerary-picker>` | Formulaire complet d'itinéraire |
+| Panier d'achat | `<wink-shopping-cart-button>` | Bouton résumé du panier |
+
+Voir [Web Components](/fr/integrations/web-components) pour la référence complète des attributs.

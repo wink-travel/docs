@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: Käytä Wink-web-komponentteja Vue 3- ja Vite-projekteissa isCustomElement-kääntäjäasetuksella.
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3 tarvitsee yhden kääntäjävinkin, jotta `<wink-*>`-tagit käsitellään natiivina custom-elementteinä sen sijaan, että ne olisivat ratkaisemattomia Vue-komponentteja. Tämän jälkeen ne toimivat kuten muut HTML-elementit.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Asenna ja lataa CDN-kimppu TypeScript-tyypeillä."
+/>
+
+## Asennus
+
+```bash
+npm install @wink/elements
+```
+
+## Kääntäjän konfigurointi
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Käsittele kaikki "wink-"-alkuiset tagit custom-elementteinä
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## Lataa CDN kerran sovelluksen käynnistyessä
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## Käyttö malleissa
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — laajenna globaalit elementtityypit
+
+Vue 3 + TypeScript lukee custom-elementtien tyypit globaalista `HTMLElementTagNameMap`-rajapinnasta. Lisää deklarointitiedosto:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## Ympäristömuuttujat
+
+Lisää `.env.local`-tiedostoon:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite altistaa vain `VITE_`-etuliitteellä alkavat muuttujat client-kimppuun.
+
+<Aside type="tip">
+Nuxt 3:lle katso omistettu [Nuxt-integraatiosivu](/fi/integrations/nuxt), joka käsittelee SSR-yhteensopivan latauksen.
+</Aside>
+
+## Lisälukemista
+
+- [Web Components -viite](/fi/integrations/web-components)
+- [@wink/elements npm package](/fi/integrations/npm)
+- [Nuxt 3 integraatio](/fi/integrations/nuxt)

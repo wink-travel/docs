@@ -1,0 +1,122 @@
+---
+title: Next.js
+description: Dodajte Wink web komponente u Next.js App Router i Pages Router aplikacije.
+sidebar:
+  order: 16
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink komponente su prilagođeni elementi koji se koriste samo u pregledaču — CDN skripte moraju biti učitane na strani klijenta. Donji obrasci pokrivaju i **App Router** (Next.js 13+) i zastareli **Pages Router**.
+
+<LinkCard
+  title="@wink/elements npm paket"
+  href="/integrations/npm"
+  description="Instalirajte i učitajte CDN paket sa TypeScript tipovima."
+/>
+
+## Instalacija
+
+```bash
+npm install @wink/elements
+```
+
+## App Router (Next.js 13+)
+
+Kreirajte klijentsku komponentu koja poziva `load()` jednom i renderujte je unutar vašeg root layout-a:
+
+```tsx
+// components/WinkLoader.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export function WinkLoader() {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return null;
+}
+```
+
+```tsx
+// app/layout.tsx
+import { WinkLoader } from '@/components/WinkLoader';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <WinkLoader />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+Koristite Wink komponente u bilo kojoj **Client Component**:
+
+```tsx
+// app/hotels/page.tsx
+'use client';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Server Components">
+`<wink-*>` tagovi se ne mogu renderovati u Server Components jer je registar prilagođenih elemenata dostupan samo u pregledaču. Uvek dodajte `'use client'` u bilo koju komponentu koja renderuje Wink elemente.
+</Aside>
+
+## Pages Router
+
+Učitajte jednom u `_app.tsx`:
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <Component {...pageProps} />;
+}
+```
+
+Zatim koristite Wink komponente na bilo kojoj stranici:
+
+```tsx
+// pages/hotels.tsx
+export default function HotelsPage() {
+  return <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />;
+}
+```
+
+## Environment variables
+
+Dodajte u `.env.local`:
+
+```
+NEXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+`NEXT_PUBLIC_` prefiks je neophodan da bi promenljiva bila dostupna u browser bundlu.
+
+## TypeScript types
+
+Dodajte deklaracioni fajl da bi TypeScript prepoznao nazive prilagođenih elemenata u JSX-u — pogledajte [React integration page](/sr/integrations/react#typescript--declare-jsx-intrinsics) za kompletan `wink-elements.d.ts` primer.
+
+## Dalje čitanje
+
+- [Web Components reference](/sr/integrations/web-components)
+- [@wink/elements npm paket](/sr/integrations/npm)
+- [React integration](/sr/integrations/react)

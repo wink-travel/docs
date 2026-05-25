@@ -1,0 +1,111 @@
+---
+title: React
+description: Notaðu Wink vefhluta í hvaða React forriti sem er með fullu TypeScript stuðningi í gegnum @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ hefur fyrsta flokks stuðning fyrir sérsniðna þætti. React 18 og eldri sendir aðeins strengjareiginleika — notaðu týpufesta hjálparmynstrið hér að neðan til að vera öruggur yfir útgáfur.
+
+<LinkCard
+  title="@wink/elements npm pakki"
+  href="/integrations/npm"
+  description="Settu upp og hlaðaðu CDN pakkanum með TypeScript týpum."
+/>
+
+## Setja upp
+
+```bash
+npm install @wink/elements
+```
+
+## Hlaða einu sinni í rót forritsins
+
+Kallaðu á `load()` í efsta stigs íhlutanum þínum. Það er idempotent — öruggt að kalla á það mörgum sinnum.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Nota íhluti í JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — lýsa JSX innbyggðum þáttum
+
+React þekkir ekki sérsniðin nafni þátta sjálfkrafa. Bættu við lýsingarskrá einu sinni til að þagga niður í týpuvillum:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="Takmörkun á eiginleikum í React 18">
+React 18 og eldri umbreytir öllum JSX eiginleikum í strengi áður en þeir eru sendir til DOM. Boolean og hlutareiginleikar verða að umbreytast handvirkt. React 19 sendir ekki-strengja eiginleika beint til sérsniðinna þátta — engin lausn þarf.
+</Aside>
+
+## Að senda týpufesta eiginleika (öruggt í React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread virkar í React 19; í React 18 eru öll gildi samt strengir
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Frekari lesning
+
+- [Vefhlutareference](/is/integrations/web-components)
+- [@wink/elements npm pakki](/is/integrations/npm)
+- [Next.js samþætting](/is/integrations/nextjs)

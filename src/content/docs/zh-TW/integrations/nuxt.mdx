@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: 使用客戶端插件將 Wink 網頁元件加入 Nuxt 3 應用程式。
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 預設在伺服器端渲染頁面。CDN 腳本和自訂元素必須僅在客戶端載入。Nuxt 的客戶端插件是實現此功能最乾淨的方式。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="安裝並載入帶有 TypeScript 型別的 CDN 套件。"
+/>
+
+## 安裝
+
+```bash
+npm install @wink/elements
+```
+
+## 建立客戶端插件
+
+`.client.ts` 後綴告訴 Nuxt 僅在瀏覽器中執行此插件：
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## 設定執行時變數
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+加入 `.env`：
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## 為自訂元素設定 Vue
+
+加入 `isCustomElement` 編譯器選項，讓 Vue 不會對未知的 `<wink-*>` 標籤發出警告：
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## 在模板中使用
+
+將 Wink 元件包裹在 `<ClientOnly>` 中，以避免 SSR 水合不匹配：
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` 在伺服器端渲染佔位符，並在客戶端掛載真實元素 — 這是 Nuxt 中所有僅限瀏覽器的第三方嵌入元件推薦的使用模式。
+</Aside>
+
+## TypeScript 型別
+
+擴充全域的 `HTMLElementTagNameMap`（與 Vue 3 相同）以取得屬性自動完成。完整宣告檔請參考 [Vue 3 integration page](/zh-TW/integrations/vue#typescript--augment-global-element-types)。
+
+## 延伸閱讀
+
+- [Web Components 參考](/zh-TW/integrations/web-components)
+- [@wink/elements npm package](/zh-TW/integrations/npm)
+- [Vue 3 integration](/zh-TW/integrations/vue)

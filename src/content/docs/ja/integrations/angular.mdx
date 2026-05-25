@@ -1,0 +1,112 @@
+---
+title: Angular
+description: CUSTOM_ELEMENTS_SCHEMA と @wink/elements を使って Angular 14+ アプリケーションで Wink ウェブコンポーネントを使用する方法。
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink コンポーネントは Angular Elements として提供されており、Angular アプリケーションに自然に統合できます。必要な設定は、Angular のコンパイラに未知の要素名を許可することだけです。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="TypeScript 型定義付きの CDN バンドルをインストールして読み込みます。"
+/>
+
+## インストール
+
+```bash
+npm install @wink/elements
+```
+
+## ブートストラップ — CDN を一度だけ読み込む
+
+`bootstrapApplication` の前（または `APP_INITIALIZER` 内）で `load()` を呼び出します：
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## カスタム要素名を許可する
+
+`<wink-*>` タグをレンダリングするすべてのスタンドアロンコンポーネント（またはモジュール）に `CUSTOM_ELEMENTS_SCHEMA` を追加します：
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="NgModule アプリケーション">
+NgModule ベースのアプリの場合は、`@NgModule` デコレーターの `schemas` 配列に `CUSTOM_ELEMENTS_SCHEMA` を追加してください。
+</Aside>
+
+## 属性のバインディング
+
+Angular のテンプレート構文はカスタム要素の文字列属性に直接対応しています：
+
+```html
+<!-- 静的 -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- 動的バインディング -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+値が動的な場合は `[attr.name]` バインディングを使います。Angular の通常の `[property]` バインディングは DOM プロパティを対象としており、カスタム要素が依存する HTML 属性とは異なるためです。
+
+## 環境変数
+
+`@angular/cli` 16+ プロジェクトでは、`environment.ts` または `NG_APP_*` プレフィックスを `@ngx-env/builder` と共に使用します：
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## TypeScript 型定義
+
+`@wink/elements` パッケージはすべてのコンポーネント属性に対する型付きインターフェースをエクスポートしています：
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## さらに読む
+
+- [Web Components リファレンス](/ja/integrations/web-components)
+- [@wink/elements npm package](/ja/integrations/npm)

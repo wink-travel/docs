@@ -1,0 +1,119 @@
+---
+title: SolidJS
+description: SolidJS 애플리케이션에서 Wink 웹 컴포넌트를 사용하세요 — onMount와 함께하는 네이티브 커스텀 엘리먼트 지원.
+sidebar:
+  order: 25
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+SolidJS는 네이티브 커스텀 엘리먼트를 지원합니다 — 가상 DOM 레이어 없이 속성을 직접 DOM에 전달합니다. 추가 컴파일러 설정이 필요하지 않습니다.
+
+<LinkCard
+  title="@wink/elements npm 패키지"
+  href="/integrations/npm"
+  description="TypeScript 타입과 함께 CDN 번들을 설치하고 로드하세요."
+/>
+
+## 설치
+
+```bash
+npm install @wink/elements
+```
+
+## 앱 시작 시 한 번 로드하기
+
+```tsx
+// src/App.tsx
+import { onMount } from 'solid-js';
+import { load } from '@wink/elements';
+
+export default function App() {
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+
+  return <YourRoutes />;
+}
+```
+
+`onMount`는 초기 렌더링 후 브라우저에서만 실행됩니다 — React의 `useEffect(() => {}, [])`와 동일한 SolidJS 기능입니다.
+
+## JSX에서 사용하기
+
+```tsx
+// src/pages/Hotels.tsx
+import { createSignal } from 'solid-js';
+
+export default function HotelsPage() {
+  const [layoutId] = createSignal('YOUR_LAYOUT_ID');
+
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id={layoutId()} />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — JSX 내장 타입 선언하기
+
+SolidJS는 자체 JSX 네임스페이스를 사용합니다. `solid-js` JSX 타입을 확장하세요:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'solid-js' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & JSX.DOMAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & JSX.DOMAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## SolidStart (SSR)
+
+서버 사이드 렌더링이 포함된 SolidStart 애플리케이션에서는 `load()` 호출을 `isServer`로 감싸세요:
+
+```tsx
+// src/app.tsx
+import { onMount } from 'solid-js';
+import { isServer } from 'solid-js/web';
+import { load } from '@wink/elements';
+
+export default function App() {
+  if (!isServer) {
+    onMount(() => {
+      load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+    });
+  }
+
+  return <YourRoutes />;
+}
+```
+
+<Aside type="tip">
+SolidJS의 세밀한 반응성 덕분에 속성 업데이트가 바로 DOM에 반영됩니다 — 배치 처리나 조정 오버헤드가 없습니다. Wink 컴포넌트는 신호 값이 업데이트될 때 즉시 속성 변경을 받습니다.
+</Aside>
+
+## 추가 자료
+
+- [웹 컴포넌트 참고 자료](/ko/integrations/web-components)
+- [@wink/elements npm 패키지](/ko/integrations/npm)

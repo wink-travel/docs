@@ -1,0 +1,128 @@
+---
+title: Svelte / SvelteKit
+description: ใช้คอมโพเนนต์เว็บของ Wink ในแอปพลิเคชัน Svelte และ SvelteKit ด้วย onMount และการตรวจสอบ browser
+sidebar:
+  order: 20
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Svelte ส่งผ่านแอตทริบิวต์โดยตรงไปยัง DOM โดยไม่มีชั้น virtual DOM ทำให้ custom elements เป็นสิ่งที่เหมาะสมอย่างเป็นธรรมชาติ สำหรับ SvelteKit (SSR) ให้โหลด CDN ภายใน `onMount` หรือป้องกันด้วยการตรวจสอบ `browser`
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="ติดตั้งและโหลด CDN bundle พร้อมกับ TypeScript types."
+/>
+
+## ติดตั้ง
+
+```bash
+npm install @wink/elements
+```
+
+## SvelteKit — root layout
+
+```ts
+// src/routes/+layout.ts
+import { browser } from '$app/environment';
+import { load as loadWink } from '@wink/elements';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+อีกทางเลือกหนึ่ง โหลดภายใน `onMount` ใน `+layout.svelte`:
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<slot />
+```
+
+## ใช้ในคอมโพเนนต์
+
+Svelte ส่งผ่านแอตทริบิวต์ที่ไม่รู้จักทั้งหมดไปยัง DOM โดยตรง ดังนั้นไม่ต้องตั้งค่าเพิ่มเติม:
+
+```svelte
+<script>
+  export let layoutId = 'YOUR_LAYOUT_ID';
+</script>
+
+<main>
+  <wink-content-loader layout="HOTEL" id={layoutId} />
+  <wink-lookup />
+</main>
+```
+
+## Svelte 5 (ไวยากรณ์ runes)
+
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  let { layoutId }: { layoutId: string } = $props();
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id={layoutId} />
+```
+
+## ตัวแปรสภาพแวดล้อม
+
+SvelteKit เปิดเผยเฉพาะตัวแปรที่ขึ้นต้นด้วย `PUBLIC_` ให้กับเบราว์เซอร์:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="การเรนเดอร์ SSR">
+อย่าเรนเดอร์ `<wink-*>` elements ในระหว่างการเรนเดอร์ฝั่งเซิร์ฟเวอร์ — custom elements จะถูกลงทะเบียนใน registry `customElements` ของเบราว์เซอร์ซึ่งไม่มีบนเซิร์ฟเวอร์ ให้ห่อด้วย `{#if browser}` หรือเรียกใช้ `load()` เฉพาะภายใน `onMount`
+</Aside>
+
+```svelte
+<script>
+  import { browser } from '$app/environment';
+</script>
+
+{#if browser}
+  <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+{/if}
+```
+
+## Bare Svelte (Vite, ไม่มี SvelteKit)
+
+```svelte
+<!-- src/App.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+```
+
+## อ่านเพิ่มเติม
+
+- [Web Components reference](/th/integrations/web-components)
+- [@wink/elements npm package](/th/integrations/npm)

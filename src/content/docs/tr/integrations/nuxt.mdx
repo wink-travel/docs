@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: Wink web bileşenlerini Nuxt 3 uygulamalarına istemci tarafı eklentisi kullanarak ekleyin.
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 sayfaları varsayılan olarak sunucuda render eder. CDN scriptleri ve özel elementler yalnızca istemci tarafında yüklenmelidir. Bunu yapmak için en temiz yer bir Nuxt istemci eklentisidir.
+
+<LinkCard
+  title="@wink/elements npm paketi"
+  href="/integrations/npm"
+  description="CDN paketini TypeScript tipleriyle birlikte yükleyin ve kurun."
+/>
+
+## Kurulum
+
+```bash
+npm install @wink/elements
+```
+
+## İstemci eklentisi oluşturun
+
+`.client.ts` eki, Nuxt’a bu eklentiyi yalnızca tarayıcıda çalıştırmasını söyler:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## Çalışma zamanı değişkenini yapılandırın
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+`.env` dosyasına ekleyin:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Vue’yu özel elementler için yapılandırın
+
+Vue’nun bilinmeyen `<wink-*>` etiketleri hakkında uyarı vermemesi için `isCustomElement` derleyici seçeneğini ekleyin:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## Şablonlarda kullanımı
+
+SSR hidratasyon uyumsuzluklarını önlemek için Wink bileşenlerini `<ClientOnly>` ile sarın:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` sunucuda bir yer tutucu render eder ve gerçek elementi istemcide monte eder — bu, Nuxt’ta yalnızca tarayıcıda çalışan üçüncü taraf gömme içerikler için önerilen kalıptır.
+</Aside>
+
+## TypeScript tipleri
+
+Öznitelik otomatik tamamlama için global `HTMLElementTagNameMap`’i (Vue 3 ile aynı) genişletin. Tam bildirim dosyası için [Vue 3 entegrasyon sayfasına](/tr/integrations/vue#typescript--augment-global-element-types) bakın.
+
+## Daha fazla okuma
+
+- [Web Bileşenleri referansı](/tr/integrations/web-components)
+- [@wink/elements npm paketi](/tr/integrations/npm)
+- [Vue 3 entegrasyonu](/tr/integrations/vue)

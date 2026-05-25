@@ -1,0 +1,112 @@
+---
+title: Angular
+description: Используйте веб-компоненты Wink в приложениях Angular 14+ с CUSTOM_ELEMENTS_SCHEMA и @wink/elements.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Компоненты Wink сами по себе являются Angular Elements — они естественно интегрируются в приложения Angular. Единственная необходимая настройка — сообщить компилятору Angular разрешать неизвестные имена элементов.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Установите и загрузите CDN-бандл с типами TypeScript."
+/>
+
+## Установка
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — загрузка CDN один раз
+
+Вызовите `load()` перед `bootstrapApplication` (или внутри `APP_INITIALIZER`):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## Разрешение пользовательских имён элементов
+
+Добавьте `CUSTOM_ELEMENTS_SCHEMA` в каждый standalone-компонент (или модуль), который рендерит теги `<wink-*>`:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="Приложения на основе NgModule">
+Для приложений на основе NgModule добавьте `CUSTOM_ELEMENTS_SCHEMA` в массив `schemas` декоратора `@NgModule`.
+</Aside>
+
+## Привязка атрибутов
+
+Синтаксис шаблонов Angular работает напрямую с строковыми атрибутами пользовательских элементов:
+
+```html
+<!-- Статический -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- Динамическая привязка -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+Используйте привязку `[attr.name]`, когда значение динамическое — обычная привязка Angular `[property]` нацелена на свойства DOM, а не на HTML-атрибуты, от которых зависят пользовательские элементы.
+
+## Переменные окружения
+
+Для проектов `@angular/cli` 16+ используйте `environment.ts` или префикс `NG_APP_*` с `@ngx-env/builder`:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## Типы TypeScript
+
+Пакет `@wink/elements` экспортирует типизированные интерфейсы для всех атрибутов компонентов:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## Дополнительные материалы
+
+- [Справочник по Web Components](/ru/integrations/web-components)
+- [@wink/elements npm package](/ru/integrations/npm)

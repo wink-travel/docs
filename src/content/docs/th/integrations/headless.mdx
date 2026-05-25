@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: ฝัง Wink travel inventory ลงใน headless CMS ใดก็ได้ (Contentful, Strapi, Sanity, ฯลฯ) หรือเว็บไซต์ที่สร้างขึ้นเอง
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wink web components เป็นองค์ประกอบ HTML แบบกำหนดเองที่ไม่ขึ้นกับเฟรมเวิร์กใด ๆ หาก headless CMS ของคุณแสดงผล HTML — ไม่ว่าจะผ่าน Next.js, Nuxt, Astro, SvelteKit หรือเฟรมเวิร์กอื่นใด — คุณสามารถฝัง Wink components ได้โดยไม่ต้องมีการผสานรวมพิเศษใด ๆ
+
+## ขั้นตอนการฝังสามขั้นตอน
+
+การผสานรวม Wink ทุกแบบ ไม่ว่าจะเป็นแพลตฟอร์มใดก็ตาม จะทำตามสามขั้นตอนเดียวกันนี้
+
+### 1. รวม stylesheet
+
+เพิ่มโค้ดนี้ใน `<head>` ของเอกสารคุณ (หรือเลย์เอาต์ระดับโลกที่เทียบเท่า):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. รวม JavaScript
+
+เพิ่มโค้ดนี้ก่อนแท็กปิด `</body>` (หรือในส่วนสคริปต์ของเลย์เอาต์ของคุณ):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. เพิ่ม application loader
+
+วางโค้ดนี้ **ครั้งเดียวต่อหน้า** ที่ใดก็ได้ใน body (โดยปกติจะวางในส่วนท้ายของเลย์เอาต์ระดับโลก):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Client ID ของคุณสามารถดูได้ในบัญชี Wink ของคุณภายใต้ [Applications](/th/portal/settings/applications)
+:::
+
+## ตัวอย่างเฟรมเวิร์ก
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+ผู้ใช้ TypeScript: เพิ่มไฟล์ `global.d.ts` ที่ประกาศประเภทของ custom element หรือใช้แพ็กเกจ [`@wink/elements`](https://github.com/wink2travel/wink-elements) บน npm ซึ่งมาพร้อมกับการประกาศประเภท
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## การวาง components ในเนื้อหา
+
+ในฟิลด์ rich text หรือฟิลด์แบบกำหนดเองของ CMS ของคุณ ให้ฝังแท็ก component โดยตรงในผลลัพธ์ HTML:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+สำหรับ Contentful, Strapi, Sanity หรือแพลตฟอร์ม headless ที่คล้ายกัน ให้ใช้ฟิลด์ **Rich Text** หรือ **Custom Block** ที่แสดงผล HTML ดิบ และวางแท็ก component ลงไปที่นั่น
+
+## แพ็กเกจ npm
+
+สำหรับโปรเจกต์ TypeScript แพ็กเกจ [`@wink/elements`](https://github.com/wink2travel/wink-elements) มีให้:
+- ฟังก์ชัน `load()` ที่ช่วยโหลดสคริปต์ CDN แบบโปรแกรมมิ่ง
+- การประกาศประเภท TypeScript ครบถ้วนสำหรับแอตทริบิวต์ของทุก component
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// เรียกใช้ครั้งเดียวตอนเริ่มแอป
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Components ที่มีให้ใช้งาน
+
+| Component | แท็ก HTML | จุดประสงค์ |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | แสดงการ์ดโรงแรม, กริด, แผนที่ |
+| Lookup | `<wink-lookup>` | แถบค้นหาสำหรับปลายทาง |
+| Search button | `<wink-search-button>` | เปิดตัวเลือกแผนการเดินทาง |
+| Account button | `<wink-account-button>` | ลงชื่อเข้าใช้ / เมนูผู้ใช้ |
+| Itinerary button | `<wink-itinerary-button>` | แสดงแผนการเดินทางปัจจุบัน |
+| Itinerary picker | `<wink-itinerary-picker>` | ฟอร์มแผนการเดินทางเต็มรูปแบบ |
+| Shopping cart | `<wink-shopping-cart-button>` | ปุ่มสรุปตะกร้าสินค้า |
+
+ดูรายละเอียดแอตทริบิวต์ทั้งหมดได้ที่ [Web Components](/th/integrations/web-components)

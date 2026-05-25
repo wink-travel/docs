@@ -1,0 +1,115 @@
+---
+title: Remix
+description: useEffect ile yalnızca istemci tarafında yükleme yaparak Remix uygulamalarına Wink web bileşenleri ekleyin.
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Remix, varsayılan olarak sunucu tarafında render yapan tam yığın bir çerçevedir. Wink CDN'yi yalnızca istemcide, kök bileşende `useEffect` kullanarak yükleyin.
+
+<LinkCard
+  title="@wink/elements npm paketi"
+  href="/integrations/npm"
+  description="TypeScript tipleriyle CDN paketini kurun ve yükleyin."
+/>
+
+## Kurulum
+
+```bash
+npm install @wink/elements
+```
+
+## app/root.tsx içinde yükleme
+
+`useEffect` yalnızca tarayıcıda çalışır, sunucu tarafı render sırasında asla çalışmaz:
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## Ortam değişkenleri
+
+Remix (Vite tabanlı, v2.8+) tarayıcıya açık değişkenler için `import.meta.env` destekler. Tarayıcı paketine açmak için `VITE_` ile önekleyin:
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Node.js adaptörü kullanan eski Remix kurulumları için, istemci kimliğini kök loader’dan döndürün ve bileşende okuyun:
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## Rotalarda kullanımı
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Hydration uyumsuzluğu">
+Remix, sunucu tarafında render edilen HTML’yi istemcide hydrate eder. Sunucuda bir `<wink-*>` elementi render edilirse, tarayıcı CDN betiği kaydolana kadar kısa süreliğine çözülmemiş özel elementi gösterebilir. Bu sadece görseldir — betik yüklendiğinde element doğru şekilde yükseltilir.
+</Aside>
+
+## TypeScript tipleri
+
+JSX intrinsic bildirim dosyasını [React entegrasyon sayfasından](/tr/integrations/react#typescript--declare-jsx-intrinsics) ekleyin — Remix altında React kullanır.
+
+## Daha fazla okuma
+
+- [Web Bileşenleri referansı](/tr/integrations/web-components)
+- [@wink/elements npm paketi](/tr/integrations/npm)
+- [React entegrasyonu](/tr/integrations/react)

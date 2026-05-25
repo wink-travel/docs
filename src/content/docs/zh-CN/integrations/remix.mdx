@@ -1,0 +1,115 @@
+---
+title: Remix
+description: 通过 useEffect 在客户端加载，将 Wink Web 组件添加到 Remix 应用中。
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Remix 是一个默认进行服务器渲染的全栈框架。使用根组件中的 `useEffect` 仅在客户端加载 Wink CDN。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="安装并加载带有 TypeScript 类型的 CDN 包。"
+/>
+
+## 安装
+
+```bash
+npm install @wink/elements
+```
+
+## 在 app/root.tsx 中加载
+
+`useEffect` 仅在浏览器中运行，服务器端渲染时不会执行：
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## 环境变量
+
+Remix（基于 Vite，v2.8+）支持通过 `import.meta.env` 访问浏览器可见的变量。使用 `VITE_` 前缀以暴露给浏览器包：
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+对于使用 Node.js 适配器的旧版 Remix 设置，可从根 loader 返回客户端 ID 并在组件中读取：
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## 在路由中使用
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="水合不匹配">
+Remix 会在客户端对服务器渲染的 HTML 进行水合。如果服务器渲染时输出了 `<wink-*>` 元素，浏览器可能会短暂显示未解析的自定义元素，直到 CDN 脚本注册它。这只是视觉上的问题——脚本加载后元素会正确升级。
+</Aside>
+
+## TypeScript 类型
+
+从 [React 集成页面](/zh-CN/integrations/react#typescript--declare-jsx-intrinsics) 添加 JSX 内置声明文件 — Remix 底层使用 React。
+
+## 进一步阅读
+
+- [Web Components 参考](/zh-CN/integrations/web-components)
+- [@wink/elements npm package](/zh-CN/integrations/npm)
+- [React 集成](/zh-CN/integrations/react)

@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: Встраивайте инвентарь Wink для путешествий в вашу публикацию Ghost с помощью Code Injection.
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Встроенная функция **Code Injection** в Ghost позволяет добавлять скрипты в глобальные `<head>` и `</body>` вашей публикации. Все тарифы Ghost поддерживают внедрение кода, что упрощает встраивание компонентов Wink на любую страницу или пост.
+
+## Загрузите скрипты Wink на весь сайт
+
+<Steps>
+1. В панели администратора Ghost перейдите в **Settings → Code Injection**.
+2. В поле **Site Header** добавьте таблицу стилей:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. В поле **Site Footer** добавьте скрипт и загрузчик приложения (замените `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Нажмите **Save**.
+</Steps>
+
+:::tip
+Ваш Client ID доступен в вашем аккаунте Wink в разделе [Applications](/ru/portal/settings/applications).
+:::
+
+## Добавьте компонент в пост или страницу
+
+Редактор Ghost поддерживает **HTML-карту**, которая позволяет вставлять сырой HTML в любое место вашего контента.
+
+<Steps>
+1. Откройте пост или страницу в редакторе Ghost.
+2. Введите `/`, чтобы открыть выбор карты, и выберите **HTML**.
+3. Вставьте HTML компонента, например:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Кликните вне карты для предварительного просмотра, затем опубликуйте.
+</Steps>
+
+## Внедрение кода на отдельной странице
+
+Для компонента, который должен отображаться только на одной странице, Ghost также поддерживает внедрение кода на уровне страницы:
+
+<Steps>
+1. Откройте настройки поста или страницы (значок шестерёнки в редакторе).
+2. Пролистайте до **Code Injection**.
+3. Добавьте тег компонента в поле **Footer** (глобальный app-loader должен быть только в футере всего сайта).
+4. Сохраните.
+</Steps>
+
+## Доступные компоненты
+
+| Компонент | HTML тег | Назначение |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Отображение карточек отелей, сеток, карт |
+| Lookup | `<wink-lookup>` | Поисковая строка для направлений |
+| Search button | `<wink-search-button>` | Открыть выбор маршрута |
+| Account button | `<wink-account-button>` | Вход / меню пользователя |
+| Itinerary button | `<wink-itinerary-button>` | Показать текущий маршрут |
+| Itinerary picker | `<wink-itinerary-picker>` | Полная форма маршрута |
+| Shopping cart | `<wink-shopping-cart-button>` | Кнопка с краткой информацией о корзине |
+
+См. [Web Components](/ru/integrations/web-components) для полного справочника атрибутов.
+
+## Дополнительные материалы
+
+- [Справочник Web Components](/ru/integrations/web-components)
+- [Получите ваш Client ID](/ru/portal/settings/applications)
+- [Документация Ghost Code Injection](https://ghost.org/help/ghost-themes/#code-injection)

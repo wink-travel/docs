@@ -1,0 +1,122 @@
+---
+title: Next.js
+description: Tambahkan komponen web Wink ke aplikasi Next.js App Router dan Pages Router.
+sidebar:
+  order: 16
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Komponen Wink adalah elemen kustom yang hanya untuk browser — skrip CDN harus dimuat di sisi klien. Pola di bawah ini mencakup baik **App Router** (Next.js 13+) maupun **Pages Router** versi lama.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Pasang dan muat bundel CDN dengan tipe TypeScript."
+/>
+
+## Pasang
+
+```bash
+npm install @wink/elements
+```
+
+## App Router (Next.js 13+)
+
+Buat komponen klien yang memanggil `load()` sekali dan render di dalam root layout Anda:
+
+```tsx
+// components/WinkLoader.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export function WinkLoader() {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return null;
+}
+```
+
+```tsx
+// app/layout.tsx
+import { WinkLoader } from '@/components/WinkLoader';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <WinkLoader />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+Gunakan komponen Wink di **Client Component** mana pun:
+
+```tsx
+// app/hotels/page.tsx
+'use client';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Server Components">
+Tag `<wink-*>` tidak dapat dirender di Server Components karena registri elemen kustom hanya untuk browser. Selalu tambahkan `'use client'` pada komponen apa pun yang merender elemen Wink.
+</Aside>
+
+## Pages Router
+
+Muat sekali di `_app.tsx`:
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <Component {...pageProps} />;
+}
+```
+
+Kemudian gunakan komponen Wink di halaman mana pun:
+
+```tsx
+// pages/hotels.tsx
+export default function HotelsPage() {
+  return <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />;
+}
+```
+
+## Variabel lingkungan
+
+Tambahkan ke `.env.local`:
+
+```
+NEXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+Prefix `NEXT_PUBLIC_` diperlukan agar variabel dapat diakses oleh bundel browser.
+
+## Tipe TypeScript
+
+Tambahkan file deklarasi agar TypeScript mengenali nama elemen kustom di JSX — lihat halaman [integrasi React](/id/integrations/react#typescript--declare-jsx-intrinsics) untuk potongan lengkap `wink-elements.d.ts`.
+
+## Bacaan lebih lanjut
+
+- [Referensi Web Components](/id/integrations/web-components)
+- [@wink/elements npm package](/id/integrations/npm)
+- [Integrasi React](/id/integrations/react)

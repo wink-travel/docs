@@ -1,0 +1,81 @@
+---
+title: HubSpot CMS
+description: कस्टम मॉड्यूल और हेडर/फूटर HTML का उपयोग करके अपने HubSpot CMS वेबसाइट में Wink ट्रैवल इन्वेंटरी एम्बेड करें।
+sidebar:
+  order: 6
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+HubSpot CMS कस्टम HTML मॉड्यूल और साइट-व्यापी हेडर/फूटर कोड का समर्थन करता है, जिससे मार्केटिंग पेज और लैंडिंग पेज पर Wink कंपोनेंट्स को एम्बेड करना आसान हो जाता है।
+
+:::note
+साइट-व्यापी कोड इंजेक्शन के लिए **HubSpot CMS Hub** (स्टार्टर या उससे ऊपर) तक पहुंच आवश्यक है। कस्टम HTML मॉड्यूल सभी CMS स्तरों में उपलब्ध हैं।
+:::
+
+## Wink स्क्रिप्ट्स साइट-व्यापी लोड करें
+
+<Steps>
+1. HubSpot में जाएं, **Marketing → Files and Templates → Design Tools** पर जाएं।
+2. अपने सक्रिय **थीम** की `main.css` खोलें या ग्लोबल कंटेंट सेटिंग्स का उपयोग करें।
+3. वैकल्पिक रूप से, **Settings → Website → Pages → Custom Code** पर जाएं।
+4. **Head HTML** फ़ील्ड में स्टाइलशीट जोड़ें:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+5. **Footer HTML** फ़ील्ड में स्क्रिप्ट और एप्लिकेशन लोडर जोड़ें (यहाँ `YOUR_CLIENT_ID` बदलें):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+6. सेव करें और प्रकाशित करें।
+</Steps>
+
+:::tip
+आपका Client ID आपके Wink खाते में [Applications](/hi/portal/settings/applications) के अंतर्गत उपलब्ध है।
+:::
+
+## कस्टम HTML मॉड्यूल के माध्यम से एक कंपोनेंट जोड़ें
+
+<Steps>
+1. Design Tools में, **Rich Text** या **HTML** प्रकार का नया **मॉड्यूल** बनाएं।
+2. मॉड्यूल की डिफ़ॉल्ट सामग्री में कंपोनेंट HTML पेस्ट करें:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+3. मॉड्यूल सेव करें और इसे किसी भी पेज टेम्पलेट या पेज में पेज एडिटर का उपयोग करके ड्रैग करें।
+</Steps>
+
+## पेज एडिटर में सीधे एक कंपोनेंट जोड़ें
+
+यदि आप मॉड्यूल बनाना पसंद नहीं करते हैं, तो आप ड्रैग-एंड-ड्रॉप एडिटर में **Custom HTML** सेक्शन का उपयोग कर सकते हैं:
+
+<Steps>
+1. HubSpot पेज एडिटर में पेज खोलें।
+2. **Add** पर क्लिक करें और **Custom HTML** या **Embed** सेक्शन चुनें।
+3. HTML फ़ील्ड में कंपोनेंट टैग पेस्ट करें।
+4. **Apply** पर क्लिक करें और पेज प्रकाशित करें।
+</Steps>
+
+## उपलब्ध कंपोनेंट्स
+
+| कंपोनेंट | HTML टैग | उद्देश्य |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | होटल कार्ड, ग्रिड, मैप दिखाना |
+| Lookup | `<wink-lookup>` | डेस्टिनेशन के लिए सर्च बार |
+| Search button | `<wink-search-button>` | यात्रा योजना चयनकर्ता खोलना |
+| Account button | `<wink-account-button>` | साइन इन / उपयोगकर्ता मेनू |
+| Itinerary button | `<wink-itinerary-button>` | वर्तमान यात्रा योजना दिखाना |
+| Itinerary picker | `<wink-itinerary-picker>` | पूर्ण यात्रा योजना फॉर्म |
+| Shopping cart | `<wink-shopping-cart-button>` | कार्ट सारांश बटन |
+
+पूर्ण एट्रिब्यूट संदर्भ के लिए [Web Components](/hi/integrations/web-components) देखें।
+
+## आगे पढ़ें
+
+- [Web Components reference](/hi/integrations/web-components)
+- [अपना Client ID प्राप्त करें](/hi/portal/settings/applications)
+- [HubSpot कस्टम कोड दस्तावेज़](https://knowledge.hubspot.com/website-pages/add-custom-code-to-pages)

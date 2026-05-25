@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: Code Injection을 사용하여 Wink 여행 인벤토리를 Ghost 출판물에 삽입하세요.
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Ghost의 내장 **Code Injection** 기능을 사용하면 출판물의 전역 `<head>` 및 `</body>`에 스크립트를 추가할 수 있습니다. 모든 Ghost 플랜에서 코드 인젝션을 지원하므로 Wink 구성 요소를 모든 페이지나 게시물에 쉽게 삽입할 수 있습니다.
+
+## 사이트 전체에 Wink 스크립트 로드하기
+
+<Steps>
+1. Ghost 관리자 패널에서 **Settings → Code Injection**으로 이동합니다.
+2. **Site Header** 상자에 스타일시트를 추가합니다:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. **Site Footer** 상자에 스크립트와 애플리케이션 로더를 추가합니다 (`YOUR_CLIENT_ID`를 교체하세요):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. **Save**를 클릭합니다.
+</Steps>
+
+:::tip
+클라이언트 ID는 Wink 계정의 [Applications](/ko/portal/settings/applications)에서 확인할 수 있습니다.
+:::
+
+## 게시물 또는 페이지에 구성 요소 추가하기
+
+Ghost 편집기는 콘텐츠 어디에나 원시 HTML을 삽입할 수 있는 **HTML 카드**를 지원합니다.
+
+<Steps>
+1. Ghost 편집기에서 게시물 또는 페이지를 엽니다.
+2. `/`를 입력하여 카드 선택기를 열고 **HTML**을 선택합니다.
+3. 예를 들어 다음과 같이 구성 요소 HTML을 붙여넣습니다:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. 카드 외부를 클릭하여 미리보기한 후 게시합니다.
+</Steps>
+
+## 페이지별 코드 인젝션
+
+한 페이지에만 표시할 구성 요소의 경우, Ghost는 페이지별 코드 인젝션도 지원합니다:
+
+<Steps>
+1. 편집기에서 게시물 또는 페이지 설정(톱니바퀴 아이콘)을 엽니다.
+2. **Code Injection**으로 스크롤합니다.
+3. **Footer** 필드에 구성 요소 태그를 추가합니다 (전역 app-loader는 사이트 전체 푸터에만 필요합니다).
+4. 저장합니다.
+</Steps>
+
+## 사용 가능한 구성 요소
+
+| 구성 요소 | HTML 태그 | 용도 |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | 호텔 카드, 그리드, 지도 표시 |
+| Lookup | `<wink-lookup>` | 목적지 검색 바 |
+| Search button | `<wink-search-button>` | 여행 일정 선택기 열기 |
+| Account button | `<wink-account-button>` | 로그인 / 사용자 메뉴 |
+| Itinerary button | `<wink-itinerary-button>` | 현재 여행 일정 표시 |
+| Itinerary picker | `<wink-itinerary-picker>` | 전체 여행 일정 양식 |
+| Shopping cart | `<wink-shopping-cart-button>` | 장바구니 요약 버튼 |
+
+전체 속성 참조는 [Web Components](/ko/integrations/web-components)를 참조하세요.
+
+## 추가 자료
+
+- [Web Components reference](/ko/integrations/web-components)
+- [클라이언트 ID 받기](/ko/portal/settings/applications)
+- [Ghost Code Injection 문서](https://ghost.org/help/ghost-themes/#code-injection)

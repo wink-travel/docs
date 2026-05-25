@@ -1,0 +1,115 @@
+---
+title: Remix
+description: Προσθέστε τα web components του Wink σε εφαρμογές Remix με φόρτωση μόνο στον πελάτη μέσω useEffect.
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Το Remix είναι ένα full-stack framework που κάνει server-rendering από προεπιλογή. Φορτώστε το Wink CDN μόνο στον πελάτη χρησιμοποιώντας το `useEffect` στο root component.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Εγκαταστήστε και φορτώστε το CDN bundle με τύπους TypeScript."
+/>
+
+## Εγκατάσταση
+
+```bash
+npm install @wink/elements
+```
+
+## Φόρτωση στο app/root.tsx
+
+Το `useEffect` εκτελείται μόνο στον browser, ποτέ κατά το server-side rendering:
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## Μεταβλητές περιβάλλοντος
+
+Το Remix (βασισμένο σε Vite, v2.8+) υποστηρίζει το `import.meta.env` για μεταβλητές που εκτίθενται στον browser. Προσθέστε το πρόθεμα `VITE_` για να εκτεθούν στο browser bundle:
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Για παλαιότερες ρυθμίσεις Remix που χρησιμοποιούν τον Node.js adapter, επιστρέψτε το client ID από έναν root loader και διαβάστε το στο component:
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## Χρήση σε routes
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Ασυμφωνία ενυδάτωσης">
+Το Remix ενυδατώνει το server-rendered HTML στον πελάτη. Αν ένα στοιχείο `<wink-*>` αποδοθεί στον server, ο browser μπορεί προσωρινά να εμφανίσει το μη επιλυμένο custom element πριν το CDN script το καταχωρήσει. Αυτό είναι μόνο αισθητικό — το στοιχείο αναβαθμίζεται σωστά μόλις φορτωθεί το script.
+</Aside>
+
+## Τύποι TypeScript
+
+Προσθέστε το αρχείο δήλωσης JSX intrinsic από τη [σελίδα ενσωμάτωσης React](/el/integrations/react#typescript--declare-jsx-intrinsics) — το Remix χρησιμοποιεί React στο παρασκήνιο.
+
+## Περισσότερη ανάγνωση
+
+- [Αναφορά Web Components](/el/integrations/web-components)
+- [@wink/elements npm package](/el/integrations/npm)
+- [Ενσωμάτωση React](/el/integrations/react)

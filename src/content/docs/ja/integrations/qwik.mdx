@@ -1,0 +1,120 @@
+---
+title: Qwik
+description: useVisibleTask$ を使ってクライアントのみで実行される Qwik および QwikCity アプリケーションで Wink のウェブコンポーネントを使用する方法。
+sidebar:
+  order: 26
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Qwik の再開可能モデルは、ユーザーが操作したときにのみ JavaScript が遅延実行されることを意味します。コンポーネントが表示されたときにブラウザで実行する必要があるコードは `useVisibleTask$` を使って実行してください。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="TypeScript 型定義付きの CDN バンドルをインストールして読み込みます。"
+/>
+
+## インストール
+
+```bash
+npm install @wink/elements
+```
+
+## useVisibleTask$ で読み込む
+
+`useVisibleTask$` は Qwik のブラウザ専用で即時実行されるライフサイクルフックです。ルートレイアウトに配置します。
+
+```tsx
+// src/routes/layout.tsx
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { load } from '@wink/elements';
+
+export default component$(() => {
+  useVisibleTask$(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+
+  return (
+    <main>
+      <Slot />
+    </main>
+  );
+});
+```
+
+<Aside type="tip" title="useVisibleTask$ の戦略">
+デフォルトでは `useVisibleTask$` はコンポーネントがビューポートに表示されたときに実行されます。常に表示されているルートレイアウトの場合、ページ読み込み時に即座に発火し、他のフレームワークの `onMount` と同等です。
+
+スクリプトをできるだけ早く読み込みたい場合は `{ strategy: 'document-ready' }` を渡します：
+```ts
+useVisibleTask$({ strategy: 'document-ready' }, () => {
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+});
+```
+</Aside>
+
+## ページでの使用例
+
+```tsx
+// src/routes/hotels/index.tsx
+import { component$ } from '@builder.io/qwik';
+
+export default component$(() => {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+});
+```
+
+## TypeScript — JSX の型宣言
+
+Qwik は独自の JSX 名前空間を使用しています。宣言ファイルで拡張してください：
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module '@builder.io/qwik' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes;
+      'wink-lookup': WinkLookupAttributes;
+      'wink-search-button': WinkSearchButtonAttributes;
+      'wink-account-button': WinkAccountButtonAttributes;
+      'wink-itinerary-button': WinkItineraryButtonAttributes;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes;
+      'wink-app-loader': WinkAppLoaderAttributes;
+    }
+  }
+}
+```
+
+## 環境変数
+
+Qwik（Vite ベース）は `PUBLIC_` プレフィックスの付いた変数をブラウザに公開します：
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="サーバーサイドレンダリング">
+Qwik はサーバーで HTML をレンダリングします。`<wink-*>` タグは静的マークアップとして出力されます。CDN スクリプトとカスタム要素の登録は `useVisibleTask$` 発火後にクライアント側で行われます。CDN バンドルが読み込まれるまで要素は一時的に未解決状態になりますが、これは想定された動作です。
+</Aside>
+
+## 参考資料
+
+- [Web Components リファレンス](/ja/integrations/web-components)
+- [@wink/elements npm package](/ja/integrations/npm)

@@ -1,0 +1,73 @@
+---
+title: Squarespace
+description: Code Injection और कस्टम HTML ब्लॉकों का उपयोग करके अपने Squarespace वेबसाइट में Wink ट्रैवल इन्वेंट्री एम्बेड करें।
+sidebar:
+  order: 3
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+:::note
+Squarespace का Code Injection फीचर **Business प्लान और उससे ऊपर** पर उपलब्ध है। कस्टम HTML ब्लॉक सभी पेड प्लान्स पर उपलब्ध हैं।
+:::
+
+Squarespace कस्टम HTML और JavaScript को सपोर्ट करता है, जिसका मतलब है कि आप बिना किसी प्लगइन के सीधे अपनी साइट में कोई भी Wink वेब कंपोनेंट एम्बेड कर सकते हैं। यह गाइड आपको दिखाता है कि Wink स्क्रिप्ट्स को साइट-वाइड कैसे लोड करें और फिर व्यक्तिगत पेजों पर कंपोनेंट्स कैसे रखें।
+
+## Wink स्क्रिप्ट्स को साइट-वाइड लोड करें
+
+स्क्रिप्ट्स को आपकी साइट के ग्लोबल फुटर और हेडर में जोड़ने का मतलब है कि Wink हर पेज पर उपलब्ध होगा बिना बार-बार सेटअप किए।
+
+<Steps>
+1. Squarespace एडिटर में जाएं, फिर **Settings → Advanced → Code Injection** पर जाएं।
+2. **Header** फील्ड में स्टाइलशीट जोड़ें:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. **Footer** फील्ड में स्क्रिप्ट और एप्लिकेशन लोडर जोड़ें (यहाँ `YOUR_CLIENT_ID` को अपने Wink क्लाइंट ID से बदलें):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. **Save** पर क्लिक करें।
+</Steps>
+
+:::tip
+आपका Client ID आपके Wink अकाउंट में [Applications](/hi/portal/settings/applications) के अंतर्गत उपलब्ध है।
+:::
+
+## किसी पेज पर कंपोनेंट जोड़ें
+
+एक बार स्क्रिप्ट्स ग्लोबली लोड हो जाने के बाद, आप किसी भी Wink कंपोनेंट को किसी भी पेज पर **Code Block** का उपयोग करके डाल सकते हैं।
+
+<Steps>
+1. उस पेज को खोलें जिसे आप एडिट करना चाहते हैं।
+2. **Edit** पर क्लिक करें और उस जगह एक नया **Code** ब्लॉक जोड़ें जहाँ आप कंपोनेंट दिखाना चाहते हैं।
+3. कंपोनेंट HTML पेस्ट करें, उदाहरण के लिए एक कंटेंट लोडर:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. **Apply** फिर **Save** पर क्लिक करें।
+</Steps>
+
+## उपलब्ध कंपोनेंट्स
+
+| कंपोनेंट | HTML टैग | उद्देश्य |
+|---|---|---|
+| कंटेंट लोडर | `<wink-content-loader>` | होटल कार्ड, ग्रिड, मैप दिखाना |
+| लुकअप | `<wink-lookup>` | डेस्टिनेशन के लिए सर्च बार |
+| सर्च बटन | `<wink-search-button>` | यात्रा चयनकर्ता खोलना |
+| अकाउंट बटन | `<wink-account-button>` | साइन इन / यूजर मेनू |
+| यात्रा बटन | `<wink-itinerary-button>` | वर्तमान यात्रा दिखाना |
+| यात्रा चयनकर्ता | `<wink-itinerary-picker>` | पूरा यात्रा फॉर्म |
+| शॉपिंग कार्ट | `<wink-shopping-cart-button>` | कार्ट सारांश बटन |
+
+प्रत्येक कंपोनेंट के लिए पूर्ण एट्रिब्यूट संदर्भ के लिए [Web Components](/hi/integrations/web-components) देखें।
+
+## आगे पढ़ें
+
+- [Web Components संदर्भ](/hi/integrations/web-components)
+- [अपना Client ID प्राप्त करें](/hi/portal/settings/applications)
+- [Squarespace Code Injection दस्तावेज़](https://support.squarespace.com/hc/en-us/articles/205815908)

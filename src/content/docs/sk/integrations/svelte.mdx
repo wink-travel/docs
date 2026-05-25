@@ -1,0 +1,128 @@
+---
+title: Svelte / SvelteKit
+description: Používajte Wink webové komponenty v aplikáciách Svelte a SvelteKit s onMount a kontrolou prehliadača.
+sidebar:
+  order: 20
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Svelte odovzdáva atribúty priamo do DOM bez vrstvy virtuálneho DOM, čo robí vlastné prvky prirodzenou voľbou. Pre SvelteKit (SSR) načítajte CDN v `onMount` alebo použite kontrolu `browser`.
+
+<LinkCard
+  title="@wink/elements npm balík"
+  href="/integrations/npm"
+  description="Nainštalujte a načítajte CDN balík s typmi pre TypeScript."
+/>
+
+## Inštalácia
+
+```bash
+npm install @wink/elements
+```
+
+## SvelteKit — koreňový layout
+
+```ts
+// src/routes/+layout.ts
+import { browser } from '$app/environment';
+import { load as loadWink } from '@wink/elements';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+Alternatívne načítajte v `onMount` v `+layout.svelte`:
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<slot />
+```
+
+## Použitie v komponentoch
+
+Svelte odovzdáva všetky neznáme atribúty priamo do DOM, takže nie je potrebná žiadna ďalšia konfigurácia:
+
+```svelte
+<script>
+  export let layoutId = 'YOUR_LAYOUT_ID';
+</script>
+
+<main>
+  <wink-content-loader layout="HOTEL" id={layoutId} />
+  <wink-lookup />
+</main>
+```
+
+## Svelte 5 (runes syntax)
+
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  let { layoutId }: { layoutId: string } = $props();
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id={layoutId} />
+```
+
+## Premenné prostredia
+
+SvelteKit sprístupňuje prehliadaču iba premenné s prefixom `PUBLIC_`:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="SSR renderovanie">
+Nikdy nerenderujte `<wink-*>` prvky počas server-side renderovania — vlastné prvky sú registrované v prehliadačovom registri `customElements`, ktorý na serveri neexistuje. Obalte do `{#if browser}` alebo volajte `load()` iba v `onMount`.
+</Aside>
+
+```svelte
+<script>
+  import { browser } from '$app/environment';
+</script>
+
+{#if browser}
+  <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+{/if}
+```
+
+## Čisté Svelte (Vite, bez SvelteKit)
+
+```svelte
+<!-- src/App.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+```
+
+## Ďalšie čítanie
+
+- [Referencie Web Components](/sk/integrations/web-components)
+- [@wink/elements npm balík](/sk/integrations/npm)

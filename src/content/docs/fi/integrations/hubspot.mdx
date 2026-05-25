@@ -1,0 +1,81 @@
+---
+title: HubSpot CMS
+description: Upota Wink-matkavarasto HubSpot CMS -verkkosivustollesi käyttämällä mukautettuja moduuleja ja header/footer HTML:ää.
+sidebar:
+  order: 6
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+HubSpot CMS tukee mukautettuja HTML-moduuleja sekä koko sivuston header/footer-koodia, mikä tekee Wink-komponenttien upottamisesta markkinointisivuille ja laskeutumissivuille helppoa.
+
+:::note
+Koko sivuston koodin upottaminen vaatii pääsyn **HubSpot CMS Hub** -versioon (Starter tai uudempi). Mukautetut HTML-moduulit ovat käytettävissä kaikissa CMS-tasoissa.
+:::
+
+## Lataa Wink-skriptit koko sivustolle
+
+<Steps>
+1. Mene HubSpotissa kohtaan **Marketing → Files and Templates → Design Tools**.
+2. Avaa aktiivisen **teeman** `main.css` tai käytä globaaleja sisältöasetuksia.
+3. Vaihtoehtoisesti mene kohtaan **Settings → Website → Pages → Custom Code**.
+4. Lisää **Head HTML** -kenttään tyylitiedosto:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+5. Lisää **Footer HTML** -kenttään skripti ja sovelluksen lataaja (korvaa `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+6. Tallenna ja julkaise.
+</Steps>
+
+:::tip
+Asiakas-ID:si löytyy Wink-tililtäsi kohdasta [Applications](/fi/portal/settings/applications).
+:::
+
+## Lisää komponentti mukautetun HTML-moduulin kautta
+
+<Steps>
+1. Design Toolsissa luo uusi **moduuli** tyypillä **Rich Text** tai **HTML**.
+2. Liitä moduulin oletussisältöön komponentin HTML:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+3. Tallenna moduuli ja vedä se mihin tahansa sivupohjaan tai sivulle sivunmuokkaimella.
+</Steps>
+
+## Lisää komponentti suoraan sivunmuokkaimessa
+
+Jos et halua luoda moduulia, voit käyttää **Custom HTML** -osiota vedä-ja-pudota -editorissa:
+
+<Steps>
+1. Avaa sivu HubSpotin sivunmuokkaimessa.
+2. Klikkaa **Add** ja valitse **Custom HTML** tai **Embed** -osio.
+3. Liitä komponenttitag HTML-kenttään.
+4. Klikkaa **Apply** ja julkaise sivu.
+</Steps>
+
+## Saatavilla olevat komponentit
+
+| Komponentti | HTML-tagi | Tarkoitus |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Näytä hotellikortit, ruudukot, kartat |
+| Lookup | `<wink-lookup>` | Hakupalkki kohteille |
+| Search button | `<wink-search-button>` | Avaa matkasuunnitelman valitsin |
+| Account button | `<wink-account-button>` | Kirjaudu sisään / käyttäjävalikko |
+| Itinerary button | `<wink-itinerary-button>` | Näytä nykyinen matkasuunnitelma |
+| Itinerary picker | `<wink-itinerary-picker>` | Koko matkasuunnitelman lomake |
+| Shopping cart | `<wink-shopping-cart-button>` | Ostoskorin yhteenvetopainike |
+
+Katso [Web Components](/fi/integrations/web-components) täydellinen attribuuttiviite.
+
+## Lisälukemista
+
+- [Web Components -viite](/fi/integrations/web-components)
+- [Hanki asiakas-ID](/fi/portal/settings/applications)
+- [HubSpot mukautetun koodin dokumentaatio](https://knowledge.hubspot.com/website-pages/add-custom-code-to-pages)

@@ -1,0 +1,122 @@
+---
+title: Next.js
+description: أضف مكونات Wink الويب إلى تطبيقات Next.js App Router و Pages Router.
+sidebar:
+  order: 16
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+مكونات Wink هي عناصر مخصصة تعمل فقط في المتصفح — يجب تحميل سكربتات CDN على جانب العميل. تغطي الأنماط أدناه كل من **App Router** (Next.js 13+) و **Pages Router** القديم.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="قم بتثبيت وتحميل حزمة CDN مع أنواع TypeScript."
+/>
+
+## التثبيت
+
+```bash
+npm install @wink/elements
+```
+
+## App Router (Next.js 13+)
+
+أنشئ مكون عميل يستدعي `load()` مرة واحدة وقم بعرضه داخل التخطيط الجذري:
+
+```tsx
+// components/WinkLoader.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export function WinkLoader() {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return null;
+}
+```
+
+```tsx
+// app/layout.tsx
+import { WinkLoader } from '@/components/WinkLoader';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <WinkLoader />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+استخدم مكونات Wink في أي **مكون عميل**:
+
+```tsx
+// app/hotels/page.tsx
+'use client';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="مكونات الخادم">
+لا يمكن عرض علامات `<wink-*>` في مكونات الخادم لأن سجل العناصر المخصصة يعمل فقط في المتصفح. أضف دائمًا `'use client'` لأي مكون يعرض عناصر Wink.
+</Aside>
+
+## Pages Router
+
+قم بالتحميل مرة واحدة في `_app.tsx`:
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <Component {...pageProps} />;
+}
+```
+
+ثم استخدم مكونات Wink في أي صفحة:
+
+```tsx
+// pages/hotels.tsx
+export default function HotelsPage() {
+  return <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />;
+}
+```
+
+## متغيرات البيئة
+
+أضف إلى `.env.local`:
+
+```
+NEXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+بادئة `NEXT_PUBLIC_` مطلوبة لكشف المتغير لحزمة المتصفح.
+
+## أنواع TypeScript
+
+أضف ملف إعلان حتى يتعرف TypeScript على أسماء العناصر المخصصة في JSX — راجع [صفحة تكامل React](/ar/integrations/react#typescript--declare-jsx-intrinsics) للاطلاع على مقتطف `wink-elements.d.ts` الكامل.
+
+## قراءة إضافية
+
+- [مرجع مكونات الويب](/ar/integrations/web-components)
+- [حزمة npm @wink/elements](/ar/integrations/npm)
+- [تكامل React](/ar/integrations/react)

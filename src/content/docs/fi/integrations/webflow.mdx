@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Upota Wink-matkavarasto Webflow-sivustollesi käyttämällä mukautettuja koodin upotuksia.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow tukee mukautettua HTML:ää ja JavaScriptiä kolmessa paikassa: koko sivuston `<head>`, koko sivuston `</body>` ja yksittäisten elementtien koodin upotuksissa. Tämä tekee Wink-verkkokomponenttien integroinnista helppoa.
+
+:::note
+Mukautettu koodi on käytettävissä **Webflow'n Basic-suunnitelmalla ja sitä ylemmillä**. Koko sivuston `</body>`-injektio vaatii maksullisen hosting-suunnitelman.
+:::
+
+## Lataa Wink-skriptit koko sivustolle
+
+<Steps>
+1. Avaa Webflow Designerissa **Project Settings → Custom Code**.
+2. Lisää **Head Code** -osioon tyylitiedosto:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. Lisää **Footer Code** -osioon skripti ja sovelluksen lataaja (korvaa `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klikkaa **Save Changes**.
+</Steps>
+
+:::tip
+Asiakas-ID:si löytyy Wink-tililtäsi kohdasta [Applications](/fi/portal/settings/applications).
+:::
+
+## Lisää komponentti tiettyyn elementtiin
+
+<Steps>
+1. Valitse Designerissa **Div** tai **Section**, johon haluat komponentin.
+2. Oikeassa paneelissa klikkaa **`</>` Embed** -kuvaketta (tai lisää **HTML Embed** -elementti Lisää-paneelista).
+3. Liitä komponentin HTML, esimerkiksi:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klikkaa **Save & Close**.
+</Steps>
+
+## Sivukohtainen mukautettu koodi
+
+Jos tarvitset Wink:iä vain tietyillä sivuilla, käytä sivukohtaista koodin injektiota koko sivuston sijaan:
+
+<Steps>
+1. Avaa kohdesivun **Page Settings** (rataskuvake Pages-paneelissa).
+2. Selaa kohtaan **Custom Code → Before `</body>` tag**.
+3. Liitä sama skripti ja sovelluksen lataaja kuin yllä.
+4. Tallenna sivun asetukset.
+</Steps>
+
+## Saatavilla olevat komponentit
+
+| Komponentti | HTML-tunniste | Tarkoitus |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Näytä hotellikortit, ruudukot, kartat |
+| Lookup | `<wink-lookup>` | Hakupalkki kohteille |
+| Search button | `<wink-search-button>` | Avaa matkasuunnitelman valitsin |
+| Account button | `<wink-account-button>` | Kirjaudu sisään / käyttäjävalikko |
+| Itinerary button | `<wink-itinerary-button>` | Näytä nykyinen matkasuunnitelma |
+| Itinerary picker | `<wink-itinerary-picker>` | Täysi matkasuunnitelmalomake |
+| Shopping cart | `<wink-shopping-cart-button>` | Ostoskorin yhteenvetopainike |
+
+Katso täydellinen attribuuttiviite [Web Components](/fi/integrations/web-components) -sivulta.
+
+## Lisälukemista
+
+- [Web Components -viite](/fi/integrations/web-components)
+- [Hanki asiakas-ID](/fi/portal/settings/applications)
+- [Webflow mukautetun koodin dokumentaatio](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

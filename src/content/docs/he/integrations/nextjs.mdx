@@ -1,0 +1,122 @@
+---
+title: Next.js
+description: הוסף רכיבי ווב של Wink לאפליקציות Next.js App Router ו-Pages Router.
+sidebar:
+  order: 16
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+רכיבי Wink הם אלמנטים מותאמים אישית הפועלים בדפדפן בלבד — יש לטעון את סקריפטי ה-CDN בצד הלקוח. הדפוסים למטה מכסים גם את **App Router** (Next.js 13+) וגם את ה-**Pages Router** הישן.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="התקן וטעין את חבילת ה-CDN עם טיפוסי TypeScript."
+/>
+
+## התקנה
+
+```bash
+npm install @wink/elements
+```
+
+## App Router (Next.js 13+)
+
+צור קומפוננטת לקוח שקוראת ל-`load()` פעם אחת והצג אותה בתוך ה-layout הראשי שלך:
+
+```tsx
+// components/WinkLoader.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export function WinkLoader() {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return null;
+}
+```
+
+```tsx
+// app/layout.tsx
+import { WinkLoader } from '@/components/WinkLoader';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <WinkLoader />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+השתמש ברכיבי Wink בכל **Client Component**:
+
+```tsx
+// app/hotels/page.tsx
+'use client';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Server Components">
+תגיות `<wink-*>` אינן ניתנות להצגה ב-Server Components מכיוון שרישום האלמנטים המותאמים הוא רק בדפדפן. תמיד הוסף `'use client'` לכל קומפוננטה שמציגה אלמנטים של Wink.
+</Aside>
+
+## Pages Router
+
+טען פעם אחת ב-`_app.tsx`:
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <Component {...pageProps} />;
+}
+```
+
+ואז השתמש ברכיבי Wink בכל דף:
+
+```tsx
+// pages/hotels.tsx
+export default function HotelsPage() {
+  return <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />;
+}
+```
+
+## משתני סביבה
+
+הוסף ל-`.env.local`:
+
+```
+NEXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+הקידומת `NEXT_PUBLIC_` נדרשת כדי לחשוף את המשתנה לחבילת הדפדפן.
+
+## טיפוסי TypeScript
+
+הוסף קובץ הכרזה כדי ש-TypeScript יזהה את שמות האלמנטים המותאמים ב-JSX — ראה את [דף האינטגרציה עם React](/he/integrations/react#typescript--declare-jsx-intrinsics) עבור קטע הקוד המלא של `wink-elements.d.ts`.
+
+## קריאה נוספת
+
+- [הפניות לרכיבי ווב](/he/integrations/web-components)
+- [חבילת npm של @wink/elements](/he/integrations/npm)
+- [אינטגרציה עם React](/he/integrations/react)

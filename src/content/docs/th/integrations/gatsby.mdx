@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: เพิ่มคอมโพเนนต์เว็บ Wink ลงในเว็บไซต์ Gatsby โดยใช้ gatsby-browser.js สำหรับการโหลดฝั่งไคลเอนต์
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby สร้าง HTML แบบสแตติกในช่วงเวลาสร้างและทำการรีไฮเดรตบนไคลเอนต์ สคริปต์ CDN ต้องโหลดผ่าน API ของเบราว์เซอร์เท่านั้น — `gatsby-browser.js` คือที่ที่เหมาะสม
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="ติดตั้งและโหลด CDN bundle พร้อมกับ TypeScript types."
+/>
+
+## ติดตั้ง
+
+```bash
+npm install @wink/elements
+```
+
+## โหลดผ่าน gatsby-browser.js
+
+API `onClientEntry` จะทำงานครั้งเดียวทันทีที่ runtime ของ Gatsby เริ่มต้นในเบราว์เซอร์:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## ตัวแปรสภาพแวดล้อม
+
+Gatsby จะเปิดเผยเฉพาะตัวแปรที่ขึ้นต้นด้วย `GATSBY_` ให้กับ bundle ฝั่งเบราว์เซอร์:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## ใช้ในหน้าและคอมโพเนนต์
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby ใช้ React ดังนั้นให้เพิ่มการประกาศ JSX intrinsic เดียวกับที่ใช้ใน React integration:
+
+```ts
+// src/wink-elements.d.ts
+// ดูไฟล์ประกาศเต็มได้ที่ /integrations/react
+```
+
+<Aside type="caution" title="ข้อผิดพลาดในการ build SSR">
+ในระหว่าง `gatsby build` Gatsby จะเรนเดอร์หน้าเป็น HTML แบบสแตติกในสภาพแวดล้อม Node.js ซึ่งไม่มี `window` และ `document` หากคุณนำเข้า `@wink/elements` ในระดับบนสุดของคอมโพเนนต์หน้า (นอก `onClientEntry`) การ build จะล้มเหลว
+
+ควรใช้ `gatsby-browser.js` / `onClientEntry` เสมอ — ห้ามนำเข้า `load` โดยตรงในโมดูลของหน้า หรือคอมโพเนนต์
+</Aside>
+
+## gatsby-ssr.js — ไม่ต้องแก้ไข
+
+คุณไม่จำเป็นต้องแก้ไข `gatsby-ssr.js` แท็ก `<wink-*>` จะเรนเดอร์เป็น HTML ธรรมดาในผลลัพธ์แบบสแตติก และสคริปต์ CDN จะอัปเกรดแท็กเหล่านี้เมื่อเบราว์เซอร์โหลดหน้า
+
+## อ่านเพิ่มเติม
+
+- [Web Components reference](/th/integrations/web-components)
+- [@wink/elements npm package](/th/integrations/npm)
+- [React integration](/th/integrations/react)

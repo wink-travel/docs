@@ -1,0 +1,112 @@
+---
+title: Angular
+description: Notaðu Wink vefhluta í Angular 14+ forritum með CUSTOM_ELEMENTS_SCHEMA og @wink/elements.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink hlutar eru sjálfir Angular Elements — þeir samþættast náttúrulega í Angular forritum. Eina uppsetningin sem þarf er að segja Angular þýðandanum að leyfa óþekktar nafngiftir á hlutum.
+
+<LinkCard
+  title="@wink/elements npm pakki"
+  href="/integrations/npm"
+  description="Settu upp og hlaðaðu CDN pakkanum með TypeScript týpum."
+/>
+
+## Setja upp
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — hlaða CDN einu sinni
+
+Kallaðu á `load()` áður en `bootstrapApplication` er keyrt (eða innan `APP_INITIALIZER`):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## Leyfa sérsniðin nafngift á hlutum
+
+Bættu `CUSTOM_ELEMENTS_SCHEMA` við hvern standalone hlut (eða module) sem renderar `<wink-*>` tagga:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="NgModule forrit">
+Fyrir NgModule byggð forrit, bættu `CUSTOM_ELEMENTS_SCHEMA` við `schemas` fylkið í `@NgModule` skrautinu í staðinn.
+</Aside>
+
+## Binding á eiginleikum
+
+Template setningarmáti Angular virkar beint með sérsniðnum strengja eiginleikum á hlutum:
+
+```html
+<!-- Stöðugt -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- Breytileg binding -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+Notaðu `[attr.name]` binding þegar gildið er breytilegt — venjuleg `[property]` binding Angular beinist að DOM eiginleikum, ekki HTML eiginleikum, sem sérsniðnir hlutir byggja á.
+
+## Umhverfisbreytur
+
+Fyrir `@angular/cli` 16+ verkefni, notaðu `environment.ts` eða `NG_APP_*` forskeyti með `@ngx-env/builder`:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## TypeScript týpur
+
+`@wink/elements` pakkinn skilar týpufestu viðmóti fyrir alla eiginleika hluta:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## Frekari lesning
+
+- [Vefhlutir - yfirlit](/is/integrations/web-components)
+- [@wink/elements npm pakki](/is/integrations/npm)

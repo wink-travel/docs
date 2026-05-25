@@ -1,0 +1,120 @@
+---
+title: Qwik
+description: Izmantojiet Wink tīmekļa komponentus Qwik un QwikCity lietotnēs ar useVisibleTask$ klienta puses izpildei.
+sidebar:
+  order: 26
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Qwik atkārtojamības modelis nozīmē, ka JavaScript izpildās gausi — tikai tad, kad lietotājs mijiedarbojas. Izmantojiet `useVisibleTask$`, lai palaistu kodu, kas jāizpilda pārlūkprogrammā, kad komponents kļūst redzams.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Instalējiet un ielādējiet CDN pakotni ar TypeScript tipiem."
+/>
+
+## Instalēšana
+
+```bash
+npm install @wink/elements
+```
+
+## Ielāde ar useVisibleTask$
+
+`useVisibleTask$` ir Qwik dzīves cikla āķis tikai pārlūkprogrammai paredzētam, steidzami izpildāmam kodam. Novietojiet to savā saknes izkārtojumā:
+
+```tsx
+// src/routes/layout.tsx
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { load } from '@wink/elements';
+
+export default component$(() => {
+  useVisibleTask$(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+
+  return (
+    <main>
+      <Slot />
+    </main>
+  );
+});
+```
+
+<Aside type="tip" title="useVisibleTask$ stratēģija">
+Pēc noklusējuma `useVisibleTask$` izpildās, kad komponents ir redzams skatā. Saknes izkārtojumam, kas vienmēr ir redzams, tas izpildās nekavējoties lapas ielādes brīdī — tas ir līdzvērtīgi `onMount` citos ietvaros.
+
+Pārsūtiet `{ strategy: 'document-ready' }`, ja vēlaties, lai skripts ielādētos pēc iespējas agrāk:
+```ts
+useVisibleTask$({ strategy: 'document-ready' }, () => {
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+});
+```
+</Aside>
+
+## Lietošana lapā
+
+```tsx
+// src/routes/hotels/index.tsx
+import { component$ } from '@builder.io/qwik';
+
+export default component$(() => {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+});
+```
+
+## TypeScript — deklarējiet JSX intrinsics
+
+Qwik izmanto savu JSX nosaukumu telpu. Paplašiniet to deklarācijas failā:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module '@builder.io/qwik' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes;
+      'wink-lookup': WinkLookupAttributes;
+      'wink-search-button': WinkSearchButtonAttributes;
+      'wink-account-button': WinkAccountButtonAttributes;
+      'wink-itinerary-button': WinkItineraryButtonAttributes;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes;
+      'wink-app-loader': WinkAppLoaderAttributes;
+    }
+  }
+}
+```
+
+## Vides mainīgie
+
+Qwik (balstīts uz Vite) pārlūkprogrammā padara pieejamus mainīgos ar prefiksu `PUBLIC_`:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="Servera puses renderēšana">
+Qwik renderē HTML serverī. `<wink-*>` tagi tiek izvadīti kā statisks marķējums. CDN skripts un pielāgotā elementa reģistrācija notiek klienta pusē pēc `useVisibleTask$` izpildes. Elementi īslaicīgi būs neizšķirtā stāvoklī līdz CDN pakotne ielādēsies — tas ir gaidāms uzvedības veids.
+</Aside>
+
+## Papildu lasāmviela
+
+- [Tīmekļa komponentu atsauce](/lv/integrations/web-components)
+- [@wink/elements npm package](/lv/integrations/npm)

@@ -1,0 +1,112 @@
+---
+title: Angular
+description: 在 Angular 14+ 應用程式中使用 Wink 網頁元件，搭配 CUSTOM_ELEMENTS_SCHEMA 和 @wink/elements。
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink 元件本身即為 Angular Elements — 它們能自然整合進 Angular 應用程式。唯一需要的設定是告訴 Angular 編譯器允許未知的元素名稱。
+
+<LinkCard
+  title="@wink/elements npm 套件"
+  href="/integrations/npm"
+  description="安裝並載入帶有 TypeScript 型別的 CDN 套件。"
+/>
+
+## 安裝
+
+```bash
+npm install @wink/elements
+```
+
+## 啟動 — 載入 CDN 一次
+
+在 `bootstrapApplication` 之前（或在 `APP_INITIALIZER` 內）呼叫 `load()`：
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## 允許自訂元素名稱
+
+在每個渲染 `<wink-*>` 標籤的獨立元件（或模組）中加入 `CUSTOM_ELEMENTS_SCHEMA`：
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="NgModule 應用程式">
+對於基於 NgModule 的應用程式，請改在 `@NgModule` 裝飾器的 `schemas` 陣列中加入 `CUSTOM_ELEMENTS_SCHEMA`。
+</Aside>
+
+## 綁定屬性
+
+Angular 的模板語法可直接用於自訂元素的字串屬性：
+
+```html
+<!-- 靜態 -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- 動態綁定 -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+當值是動態時，請使用 `[attr.name]` 綁定 — Angular 的一般 `[property]` 綁定是針對 DOM 屬性，而非自訂元素所依賴的 HTML 屬性。
+
+## 環境變數
+
+對於 `@angular/cli` 16+ 專案，使用 `environment.ts` 或搭配 `@ngx-env/builder` 的 `NG_APP_*` 前綴：
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## TypeScript 型別
+
+`@wink/elements` 套件匯出所有元件屬性的型別介面：
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## 延伸閱讀
+
+- [Web Components 參考](/zh-TW/integrations/web-components)
+- [@wink/elements npm 套件](/zh-TW/integrations/npm)

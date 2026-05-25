@@ -1,0 +1,128 @@
+---
+title: Svelte / SvelteKit
+description: Sử dụng các thành phần web của Wink trong ứng dụng Svelte và SvelteKit với onMount và kiểm tra trình duyệt.
+sidebar:
+  order: 20
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Svelte truyền các thuộc tính trực tiếp đến DOM mà không qua lớp DOM ảo, làm cho các phần tử tùy chỉnh trở nên phù hợp tự nhiên. Đối với SvelteKit (SSR), hãy tải CDN bên trong `onMount` hoặc bảo vệ bằng kiểm tra `browser`.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Cài đặt và tải gói CDN kèm kiểu TypeScript."
+/>
+
+## Cài đặt
+
+```bash
+npm install @wink/elements
+```
+
+## SvelteKit — bố cục gốc
+
+```ts
+// src/routes/+layout.ts
+import { browser } from '$app/environment';
+import { load as loadWink } from '@wink/elements';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+Ngoài ra, tải bên trong `onMount` trong `+layout.svelte`:
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<slot />
+```
+
+## Sử dụng trong các thành phần
+
+Svelte truyền tất cả các thuộc tính không xác định trực tiếp đến DOM, vì vậy không cần cấu hình thêm:
+
+```svelte
+<script>
+  export let layoutId = 'YOUR_LAYOUT_ID';
+</script>
+
+<main>
+  <wink-content-loader layout="HOTEL" id={layoutId} />
+  <wink-lookup />
+</main>
+```
+
+## Svelte 5 (cú pháp runes)
+
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  let { layoutId }: { layoutId: string } = $props();
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id={layoutId} />
+```
+
+## Biến môi trường
+
+SvelteKit chỉ công khai các biến có tiền tố `PUBLIC_` cho trình duyệt:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="Kết xuất SSR">
+Không bao giờ kết xuất các phần tử `<wink-*>` trong quá trình kết xuất phía máy chủ — các phần tử tùy chỉnh được đăng ký trong registry `customElements` của trình duyệt, điều này không tồn tại trên máy chủ. Bao bọc trong `{#if browser}` hoặc gọi `load()` chỉ bên trong `onMount`.
+</Aside>
+
+```svelte
+<script>
+  import { browser } from '$app/environment';
+</script>
+
+{#if browser}
+  <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+{/if}
+```
+
+## Svelte thuần (Vite, không dùng SvelteKit)
+
+```svelte
+<!-- src/App.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+```
+
+## Đọc thêm
+
+- [Tham khảo Web Components](/vi/integrations/web-components)
+- [@wink/elements npm package](/vi/integrations/npm)

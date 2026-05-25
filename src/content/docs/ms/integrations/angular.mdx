@@ -1,0 +1,112 @@
+---
+title: Angular
+description: Gunakan komponen web Wink dalam aplikasi Angular 14+ dengan CUSTOM_ELEMENTS_SCHEMA dan @wink/elements.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Komponen Wink adalah Angular Elements itu sendiri — ia berintegrasi secara semula jadi dalam aplikasi Angular. Satu-satunya persediaan yang diperlukan adalah memberitahu penyusun Angular untuk membenarkan nama elemen yang tidak dikenali.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Pasang dan muatkan bundle CDN dengan jenis TypeScript."
+/>
+
+## Pasang
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — muatkan CDN sekali sahaja
+
+Panggil `load()` sebelum `bootstrapApplication` (atau di dalam `APP_INITIALIZER`):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## Benarkan nama elemen tersuai
+
+Tambah `CUSTOM_ELEMENTS_SCHEMA` ke setiap komponen berdiri sendiri (atau modul) yang memaparkan tag `<wink-*>`:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="Aplikasi NgModule">
+Untuk aplikasi berasaskan NgModule, tambah `CUSTOM_ELEMENTS_SCHEMA` ke dalam array `schemas` pada dekorator `@NgModule` sebaliknya.
+</Aside>
+
+## Pengikatan atribut
+
+Sintaks templat Angular berfungsi terus dengan atribut string elemen tersuai:
+
+```html
+<!-- Statik -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- Pengikatan dinamik -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+Gunakan pengikatan `[attr.name]` apabila nilai adalah dinamik — pengikatan `[property]` biasa Angular mensasarkan sifat DOM, bukan atribut HTML, yang menjadi kebergantungan elemen tersuai.
+
+## Pembolehubah persekitaran
+
+Untuk projek `@angular/cli` 16+, gunakan `environment.ts` atau awalan `NG_APP_*` dengan `@ngx-env/builder`:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## Jenis TypeScript
+
+Pakej `@wink/elements` mengeksport antara muka bertipe untuk semua atribut komponen:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## Bacaan lanjut
+
+- [Rujukan Web Components](/ms/integrations/web-components)
+- [@wink/elements npm package](/ms/integrations/npm)

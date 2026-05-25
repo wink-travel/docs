@@ -1,0 +1,73 @@
+---
+title: Squarespace
+description: Upota Wink-matkavarasto Squarespace-verkkosivustollesi käyttämällä Code Injection -toimintoa ja mukautettuja HTML-lohkoja.
+sidebar:
+  order: 3
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+:::note
+Squarespacen Code Injection -ominaisuus on käytettävissä **Business-suunnitelmassa ja sitä ylemmissä**. Mukautetut HTML-lohkot ovat käytettävissä kaikissa maksullisissa suunnitelmissa.
+:::
+
+Squarespace tukee mukautettua HTML:ää ja JavaScriptiä, mikä tarkoittaa, että voit upottaa minkä tahansa Wink-verkkokomponentin suoraan sivustollesi ilman lisäosaa. Tämä opas näyttää, miten Wink-skriptit ladataan koko sivustolle ja miten komponentit sijoitetaan yksittäisille sivuille.
+
+## Lataa Wink-skriptit koko sivustolle
+
+Skriptien lisääminen sivustosi globaalin alatunnisteen ja ylätunnisteen osioon tarkoittaa, että Wink on käytettävissä jokaisella sivulla ilman toistuvaa asennusta.
+
+<Steps>
+1. Squarespace-editorissa siirry kohtaan **Settings → Advanced → Code Injection**.
+2. Lisää **Header**-kenttään tyylitiedosto:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. Lisää **Footer**-kenttään skripti ja sovelluksen lataaja (korvaa `YOUR_CLIENT_ID` omalla Wink Client ID:lläsi):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klikkaa **Save**.
+</Steps>
+
+:::tip
+Client ID -tunnuksesi löytyy Wink-tililtäsi kohdasta [Applications](/fi/portal/settings/applications).
+:::
+
+## Lisää komponentti sivulle
+
+Kun skriptit on ladattu globaalisti, voit lisätä minkä tahansa Wink-komponentin mille tahansa sivulle käyttämällä **Code Block** -lohkoa.
+
+<Steps>
+1. Avaa muokattava sivu.
+2. Klikkaa **Edit** ja lisää uusi **Code**-lohko siihen kohtaan, johon haluat komponentin.
+3. Liitä komponentin HTML, esimerkiksi sisältölataaja:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klikkaa **Apply** ja sitten **Save**.
+</Steps>
+
+## Saatavilla olevat komponentit
+
+| Komponentti | HTML-tunniste | Tarkoitus |
+|---|---|---|
+| Sisältölataaja | `<wink-content-loader>` | Näyttää hotellikortit, ruudukot, kartat |
+| Haku | `<wink-lookup>` | Hakupalkki kohteille |
+| Hakupainike | `<wink-search-button>` | Avaa matkasuunnitelman valitsimen |
+| Tilipainike | `<wink-account-button>` | Kirjautuminen / käyttäjävalikko |
+| Matkasuunnitelmapainike | `<wink-itinerary-button>` | Näyttää nykyisen matkasuunnitelman |
+| Matkasuunnitelman valitsin | `<wink-itinerary-picker>` | Koko matkasuunnitelman lomake |
+| Ostoskori | `<wink-shopping-cart-button>` | Ostoskorin yhteenvetopainike |
+
+Katso [Web Components](/fi/integrations/web-components) saadaksesi täydellisen attribuuttiviitteen jokaiselle komponentille.
+
+## Lisälukemista
+
+- [Web Components -viite](/fi/integrations/web-components)
+- [Hanki Client ID](/fi/portal/settings/applications)
+- [Squarespace Code Injection -dokumentaatio](https://support.squarespace.com/hc/en-us/articles/205815908)

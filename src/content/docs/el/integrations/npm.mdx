@@ -1,0 +1,134 @@
+---
+title: πακέτο npm
+description: Χρησιμοποιήστε το πακέτο npm @wink/elements για ασφαλή ενσωμάτωση Wink web components με TypeScript σε οποιοδήποτε JavaScript framework.
+sidebar:
+  order: 14
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+Το **`@wink/elements`** πακέτο npm είναι ο ταχύτερος τρόπος για να προσθέσετε Wink web components σε οποιοδήποτε έργο JavaScript ή TypeScript. Παρέχει μια συνάρτηση `load()` που εισάγει τους πόρους CDN και πλήρεις δηλώσεις τύπων TypeScript για όλα τα attributes των components.
+
+<LinkCard
+  title="wink-travel/wink-elements στο GitHub"
+  href="https://github.com/wink-travel/wink-elements"
+  description="Κώδικας πηγής, αναφορά API και οδηγίες συνεισφοράς."
+/>
+
+## Εγκατάσταση
+
+```bash
+npm install @wink/elements
+```
+
+## Γρήγορη εκκίνηση
+
+Καλέστε τη `load()` μία φορά κατά την εκκίνηση της εφαρμογής. Είναι ιδιόμορφη — ασφαλής για πολλαπλές κλήσεις.
+
+```ts
+import { load } from '@wink/elements';
+
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+Έπειτα χρησιμοποιήστε οποιοδήποτε Wink component στο HTML ή JSX σας:
+
+```html
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID"></wink-content-loader>
+```
+
+## Παραδείγματα σε frameworks
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <html><body>{children}</body></html>;
+}
+```
+
+### Nuxt 3
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+import { load } from '@wink/elements';
+---
+<script>
+  import { load } from '@wink/elements';
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+</script>
+```
+
+### SvelteKit
+
+```ts
+// src/routes/+layout.ts
+import { load as loadWink } from '@wink/elements';
+import { browser } from '$app/environment';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+## Τύποι TypeScript
+
+Όλα τα interfaces των attributes των components εξάγονται για χρήση σε JSX, template literals ή typed dictionaries:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',    // Το TypeScript θα εντοπίσει μη έγκυρες τιμές layout
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+```
+
+## Χρήση staging CDN
+
+```ts
+load({
+  clientId: 'YOUR_CLIENT_ID',
+  cdnBaseUrl: 'https://staging-elements.wink.travel',
+});
+```
+
+## API
+
+### `load(options)`
+
+| Επιλογή | Τύπος | Απαιτείται | Προεπιλογή | Περιγραφή |
+|---|---|---|---|---|
+| `clientId` | `string` | Ναι | — | Το OAuth2 Client ID σας για Wink |
+| `configurationId` | `string` | Όχι | — | Προαιρετικό ID παραμετροποίησης |
+| `cdnBaseUrl` | `string` | Όχι | `https://elements.wink.travel` | Αντικατάσταση URL CDN |
+
+## Περισσότερη ανάγνωση
+
+- [Αναφορά Web Components](/el/integrations/web-components)
+- [Πώς να αποκτήσετε το Client ID σας](/el/portal/settings/applications)
+- [Οδηγός ενσωμάτωσης Headless CMS](/el/integrations/headless)
+- [`@wink/elements` στο GitHub](https://github.com/wink-travel/wink-elements)

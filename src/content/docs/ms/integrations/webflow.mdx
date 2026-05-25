@@ -1,0 +1,80 @@
+---
+title: Webflow
+description: Selitkan inventori perjalanan Wink ke dalam laman Webflow anda menggunakan selitan kod tersuai.
+sidebar:
+  order: 4
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Webflow menyokong HTML dan JavaScript tersuai di tiga tempat: `<head>` seluruh laman, `</body>` seluruh laman, dan selitan kod setiap elemen. Ini memudahkan integrasi komponen web Wink.
+
+:::note
+Kod tersuai tersedia pada **pelan Asas Webflow dan ke atas**. Suntikan `</body>` seluruh laman memerlukan pelan hosting berbayar.
+:::
+
+## Muatkan skrip Wink di seluruh laman
+
+<Steps>
+1. Dalam Webflow Designer, buka **Project Settings → Custom Code**.
+2. Dalam bahagian **Head Code**, tambah helaian gaya:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. Dalam bahagian **Footer Code**, tambah skrip dan pemuat aplikasi (ganti `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Klik **Save Changes**.
+</Steps>
+
+:::tip
+ID Klien anda boleh didapati dalam akaun Wink anda di bawah [Applications](/ms/portal/settings/applications).
+:::
+
+## Tambah komponen ke elemen tertentu
+
+<Steps>
+1. Dalam Designer, pilih **Div** atau **Section** di mana anda mahu komponen itu.
+2. Dalam panel kanan, klik ikon **`</>` Embed** (atau tambah elemen **HTML Embed** dari panel Tambah).
+3. Tampal HTML komponen, contohnya:
+   ```html
+   <wink-content-loader
+     layout="RANKED"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Klik **Save & Close**.
+</Steps>
+
+## Kod tersuai per halaman
+
+Jika anda hanya memerlukan Wink pada halaman tertentu, gunakan suntikan kod per halaman dan bukannya seluruh laman:
+
+<Steps>
+1. Buka **Page Settings** untuk halaman sasaran (ikon gear dalam panel Pages).
+2. Skrol ke **Custom Code → Before `</body>` tag**.
+3. Tampal skrip dan pemuat aplikasi yang sama seperti di atas.
+4. Simpan tetapan halaman.
+</Steps>
+
+## Komponen tersedia
+
+| Komponen | Tag HTML | Tujuan |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Papar kad hotel, grid, peta |
+| Lookup | `<wink-lookup>` | Bar carian destinasi |
+| Search button | `<wink-search-button>` | Buka pemilih jadual perjalanan |
+| Account button | `<wink-account-button>` | Log masuk / menu pengguna |
+| Itinerary button | `<wink-itinerary-button>` | Papar jadual perjalanan semasa |
+| Itinerary picker | `<wink-itinerary-picker>` | Borang jadual perjalanan penuh |
+| Shopping cart | `<wink-shopping-cart-button>` | Butang ringkasan troli |
+
+Lihat [Web Components](/ms/integrations/web-components) untuk rujukan atribut penuh.
+
+## Bacaan lanjut
+
+- [Rujukan Web Components](/ms/integrations/web-components)
+- [Dapatkan ID Klien anda](/ms/portal/settings/applications)
+- [Dokumen kod tersuai Webflow](https://university.webflow.com/lesson/custom-code-in-the-head-and-body-tags)

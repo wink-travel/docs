@@ -1,0 +1,101 @@
+---
+title: Astro
+description: เพิ่มคอมโพเนนต์เว็บ Wink ลงในเว็บไซต์ Astro โดยใช้สคริปต์ฝั่งไคลเอนต์และสถาปัตยกรรมแบบ island
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Astro จะไม่ส่ง JavaScript ใดๆ โดยค่าเริ่มต้นและเรนเดอร์คอมโพเนนต์ทั้งหมดเป็น HTML แบบสแตติกบนเซิร์ฟเวอร์ คอมโพเนนต์เว็บ Wink ต้องถูกโหลดผ่านแท็ก `<script>` ฝั่งไคลเอนต์ สถาปัตยกรรมแบบ island ของ Astro ทำให้เรื่องนี้ง่ายขึ้นมาก
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="ติดตั้งและโหลด CDN bundle พร้อมกับ TypeScript types."
+/>
+
+## ติดตั้ง
+
+```bash
+npm install @wink/elements
+```
+
+## โหลดในเลย์เอาต์ที่ใช้ร่วมกัน
+
+เพิ่มสคริปต์โหลดเดอร์ในเลย์เอาต์ฐานของคุณเพื่อให้รันในทุกหน้า:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline vs bundled scripts">
+ถ้าไม่ใช้ `is:inline` Astro จะรวมและลดการซ้ำซ้อนของสคริปต์ — ฟังก์ชัน `load()` จะถูกเรียกเพียงครั้งเดียวแม้เลย์เอาต์จะถูกใช้ในหลายหน้า วิธีนี้เป็นวิธีที่แนะนำ ใช้ `is:inline` ก็ต่อเมื่อคุณต้องการฝังสคริปต์เป็นข้อความดิบ (เช่น เพื่อหลีกเลี่ยงโมดูลบันเดลเลอร์)
+</Aside>
+
+## ใช้ในหน้าเพจ
+
+เนื่องจากคอมโพเนนต์ Astro ถูกเรนเดอร์บนเซิร์ฟเวอร์ แท็ก `<wink-*>` จะถูกส่งออกเป็น HTML แบบสแตติก สคริปต์ CDN จะลงทะเบียนคอมโพเนนต์ที่กำหนดเองเมื่อหน้าโหลดในเบราว์เซอร์:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## ภายในคอมโพเนนต์เฟรมเวิร์ก (island)
+
+ถ้าคุณใช้ React, Vue หรือ Svelte islands ร่วมกับ Wink ให้โหลด `@wink/elements` ในเลย์เอาต์ (ตามตัวอย่างข้างต้น) และใช้แท็ก `<wink-*>` ภายในคอมโพเนนต์ island ของคุณตามปกติ — คอมโพเนนต์ที่กำหนดเองจะถูกลงทะเบียนเมื่อ island เริ่มทำงาน
+
+```tsx
+// src/components/HotelCard.tsx (React island)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() ถูกเรียกแล้วโดยเลย์เอาต์ — ปลอดภัยที่จะเรนเดอร์ที่นี่
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## ตัวแปรสภาพแวดล้อม
+
+Astro จะเปิดเผยเฉพาะตัวแปรที่ขึ้นต้นด้วย `PUBLIC_` ให้กับเบราว์เซอร์:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## อ่านเพิ่มเติม
+
+- [Web Components reference](/th/integrations/web-components)
+- [@wink/elements npm package](/th/integrations/npm)

@@ -1,0 +1,101 @@
+---
+title: Astro
+description: Přidejte Wink webové komponenty na Astro stránky pomocí skriptů na straně klienta a island architektury.
+sidebar:
+  order: 21
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Astro ve výchozím nastavení neposílá žádný JavaScript a všechny komponenty vykresluje na serveru do statického HTML. Wink webové komponenty musí být načteny pomocí `<script>` tagu na straně klienta. Island architektura Astro to usnadňuje.
+
+<LinkCard
+  title="@wink/elements npm balíček"
+  href="/integrations/npm"
+  description="Nainstalujte a načtěte CDN balíček s TypeScript typy."
+/>
+
+## Instalace
+
+```bash
+npm install @wink/elements
+```
+
+## Načtení ve sdíleném layoutu
+
+Přidejte loader skript do základního layoutu, aby se spouštěl na každé stránce:
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Site</title>
+  </head>
+  <body>
+    <slot />
+
+    <script>
+      import { load } from '@wink/elements';
+      load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+    </script>
+  </body>
+</html>
+```
+
+<Aside type="tip" title="is:inline vs bundled skripty">
+Bez `is:inline` Astro skript zabalí a deduplikuje — `load()` je zavoláno pouze jednou, i když je layout použit na mnoha stránkách. Toto je preferovaný přístup. `is:inline` použijte pouze pokud potřebujete skript vložit přímo jako surový text (např. abyste se vyhnuli module bundleru).
+</Aside>
+
+## Použití na stránce
+
+Protože Astro komponenty jsou vykresleny na serveru, tagy `<wink-*>` jsou vypsány jako statické HTML. CDN skript zaregistruje vlastní elementy, když se stránka načte v prohlížeči:
+
+```astro
+---
+// src/pages/hotels.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <main>
+    <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    <wink-lookup />
+  </main>
+</Layout>
+```
+
+## Uvnitř framework komponenty (island)
+
+Pokud používáte React, Vue nebo Svelte islandy společně s Wink, načtěte `@wink/elements` v layoutu (jak je výše) a používejte tagy `<wink-*>` uvnitř island komponent normálně — vlastní elementy budou zaregistrovány v době, kdy island hydratuje.
+
+```tsx
+// src/components/HotelCard.tsx (React island)
+export default function HotelCard({ layoutId }: { layoutId: string }) {
+  // load() již bylo zavoláno v layoutu — bezpečné vykreslit zde
+  return <wink-content-loader layout="HOTEL" id={layoutId} />;
+}
+```
+
+```astro
+---
+import HotelCard from '../components/HotelCard.tsx';
+---
+<HotelCard client:load layoutId="YOUR_LAYOUT_ID" />
+```
+
+## Proměnné prostředí
+
+Astro zpřístupňuje v prohlížeči pouze proměnné s prefixem `PUBLIC_`:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Další čtení
+
+- [Reference Web Components](/cs/integrations/web-components)
+- [@wink/elements npm balíček](/cs/integrations/npm)

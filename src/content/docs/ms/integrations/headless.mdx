@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Selitkan inventori perjalanan Wink ke dalam mana-mana headless CMS (Contentful, Strapi, Sanity, dan lain-lain) atau laman web binaan tersuai.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Komponen web Wink adalah elemen HTML tersuai yang bebas rangka kerja. Jika headless CMS anda memaparkan HTML — sama ada melalui Next.js, Nuxt, Astro, SvelteKit, atau mana-mana rangka kerja lain — anda boleh menyelitkan komponen Wink tanpa sebarang integrasi khas.
+
+## Penyisipan tiga langkah
+
+Setiap integrasi Wink, tanpa mengira platform, mengikuti tiga langkah yang sama.
+
+### 1. Sertakan helaian gaya
+
+Tambah ini ke dalam `<head>` dokumen anda (atau susun atur global yang setara):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Sertakan JavaScript
+
+Tambah ini sebelum tag penutup `</body>` anda (atau dalam bahagian skrip susun atur anda):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Tambah pemuat aplikasi
+
+Letakkan ini **sekali setiap halaman**, di mana-mana dalam badan (biasanya di footer susun atur global anda):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+ID Klien anda boleh didapati dalam akaun Wink anda di bawah [Applications](/ms/portal/settings/applications).
+:::
+
+## Contoh rangka kerja
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+Pengguna TypeScript: tambah `global.d.ts` yang mengisytiharkan jenis elemen tersuai, atau gunakan pakej npm [`@wink/elements`](https://github.com/wink2travel/wink-elements) yang menyediakan deklarasi jenis.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Meletakkan komponen dalam kandungan
+
+Dalam jenis teks kaya atau medan tersuai CMS anda, selitkan tag komponen terus dalam output HTML:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Untuk Contentful, Strapi, Sanity, atau platform headless serupa, gunakan medan **Rich Text** atau **Custom Block** yang memaparkan HTML mentah, dan tampal tag komponen di situ.
+
+## Pakej npm
+
+Untuk projek TypeScript, pakej [`@wink/elements`](https://github.com/wink2travel/wink-elements) menyediakan:
+- Fungsi `load()` yang menyuntik skrip CDN secara programatik
+- Deklarasi jenis TypeScript penuh untuk semua atribut komponen
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Panggil sekali semasa permulaan aplikasi
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Komponen tersedia
+
+| Komponen | Tag HTML | Tujuan |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Memaparkan kad hotel, grid, peta |
+| Lookup | `<wink-lookup>` | Bar carian destinasi |
+| Butang carian | `<wink-search-button>` | Buka pemilih jadual perjalanan |
+| Butang akaun | `<wink-account-button>` | Log masuk / menu pengguna |
+| Butang jadual perjalanan | `<wink-itinerary-button>` | Papar jadual perjalanan semasa |
+| Pemilih jadual perjalanan | `<wink-itinerary-picker>` | Borang jadual perjalanan penuh |
+| Troli beli-belah | `<wink-shopping-cart-button>` | Butang ringkasan troli |
+
+Lihat [Web Components](/ms/integrations/web-components) untuk rujukan atribut penuh.

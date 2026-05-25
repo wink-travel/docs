@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: Koristite Wink web komponente u Vue 3 i Vite projektima s opcijom kompajlera isCustomElement.
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3 treba jedan pokazatelj kompajleru da tretira `<wink-*>` oznake kao nativne prilagođene elemente umjesto neriješenih Vue komponenti. Nakon toga, rade kao i bilo koji drugi HTML element.
+
+<LinkCard
+  title="@wink/elements npm paket"
+  href="/integrations/npm"
+  description="Instalirajte i učitajte CDN paket s TypeScript tipovima."
+/>
+
+## Instalacija
+
+```bash
+npm install @wink/elements
+```
+
+## Konfigurirajte kompajler
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // Tretiraj sve oznake koje počinju s "wink-" kao prilagođene elemente
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## Učitaj CDN jednom pri pokretanju aplikacije
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## Korištenje u predlošcima
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — proširite globalne tipove elemenata
+
+Vue 3 + TypeScript čita tipove prilagođenih elemenata iz globalnog `HTMLElementTagNameMap`. Dodajte datoteku deklaracije:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## Varijable okoline
+
+Dodajte u `.env.local`:
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite izlaže samo varijable koje počinju s `VITE_` klijentu.
+
+<Aside type="tip">
+Za Nuxt 3, pogledajte posvećenu [Nuxt integracijsku stranicu](/hr/integrations/nuxt) koja pokriva SSR-sigurno učitavanje.
+</Aside>
+
+## Daljnje čitanje
+
+- [Reference Web Components](/hr/integrations/web-components)
+- [@wink/elements npm paket](/hr/integrations/npm)
+- [Nuxt 3 integracija](/hr/integrations/nuxt)

@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Вбудовуйте Wink travel inventory у будь-який headless CMS (Contentful, Strapi, Sanity тощо) або власноруч створений сайт.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Веб-компоненти Wink — це фреймворк-незалежні кастомні HTML-елементи. Якщо ваш headless CMS рендерить HTML — чи то через Next.js, Nuxt, Astro, SvelteKit або будь-який інший фреймворк — ви можете вбудовувати компоненти Wink без жодної спеціальної інтеграції.
+
+## Вбудування у три кроки
+
+Кожна інтеграція Wink, незалежно від платформи, проходить ті самі три кроки.
+
+### 1. Додайте таблицю стилів
+
+Додайте це у `<head>` вашого документа (або еквівалент глобального лейауту):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Додайте JavaScript
+
+Додайте це перед закриваючим тегом `</body>` (або у секції скриптів вашого лейауту):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Додайте завантажувач додатку
+
+Розмістіть це **один раз на сторінку**, будь-де в тілі (зазвичай у футері глобального лейауту):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Ваш Client ID доступний у вашому акаунті Wink у розділі [Applications](/uk/portal/settings/applications).
+:::
+
+## Приклади для фреймворків
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+Користувачам TypeScript: додайте `global.d.ts`, який оголошує типи кастомних елементів, або використовуйте npm-пакет [`@wink/elements`](https://github.com/wink2travel/wink-elements), який містить декларації типів.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Розміщення компонентів у контенті
+
+У вашому CMS у полях з багатим текстом або кастомних типах полів вбудовуйте теги компонентів безпосередньо у HTML-вивід:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Для Contentful, Strapi, Sanity або подібних headless платформ використовуйте поле **Rich Text** або **Custom Block**, яке рендерить сирий HTML, і вставляйте там тег компонента.
+
+## npm-пакет
+
+Для TypeScript-проєктів пакет [`@wink/elements`](https://github.com/wink2travel/wink-elements) надає:
+- Функцію `load()`, яка програмно підключає CDN-скрипти
+- Повні декларації типів TypeScript для всіх атрибутів компонентів
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Виклик один раз при запуску додатку
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Доступні компоненти
+
+| Компонент | HTML тег | Призначення |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Відображення карток готелів, сіток, карт |
+| Lookup | `<wink-lookup>` | Панель пошуку напрямків |
+| Search button | `<wink-search-button>` | Відкрити вибір маршруту |
+| Account button | `<wink-account-button>` | Вхід / меню користувача |
+| Itinerary button | `<wink-itinerary-button>` | Показати поточний маршрут |
+| Itinerary picker | `<wink-itinerary-picker>` | Повна форма маршруту |
+| Shopping cart | `<wink-shopping-cart-button>` | Кнопка підсумку кошика |
+
+Дивіться [Web Components](/uk/integrations/web-components) для повного опису атрибутів.

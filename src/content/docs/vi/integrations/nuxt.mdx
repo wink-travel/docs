@@ -1,0 +1,106 @@
+---
+title: Nuxt 3
+description: Thêm các thành phần web Wink vào ứng dụng Nuxt 3 bằng plugin phía client.
+sidebar:
+  order: 19
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Nuxt 3 mặc định render trang trên server. Các script CDN và phần tử tùy chỉnh phải được tải chỉ trên client. Plugin client của Nuxt là nơi sạch sẽ nhất để làm điều này.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Cài đặt và tải gói CDN kèm kiểu TypeScript."
+/>
+
+## Cài đặt
+
+```bash
+npm install @wink/elements
+```
+
+## Tạo plugin client
+
+Phần đuôi `.client.ts` báo cho Nuxt biết chỉ chạy plugin này trên trình duyệt:
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+## Cấu hình biến runtime
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+Thêm vào `.env`:
+
+```
+NUXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+## Cấu hình Vue cho phần tử tùy chỉnh
+
+Thêm tùy chọn `isCustomElement` cho trình biên dịch để Vue không cảnh báo về các thẻ `<wink-*>` không xác định:
+
+```ts
+// nuxt.config.ts
+export default defineNuxtConfig({
+  vue: {
+    compilerOptions: {
+      isCustomElement: (tag) => tag.startsWith('wink-'),
+    },
+  },
+  runtimeConfig: {
+    public: {
+      winkClientId: process.env.NUXT_PUBLIC_WINK_CLIENT_ID,
+    },
+  },
+});
+```
+
+## Sử dụng trong template
+
+Bao các thành phần Wink trong `<ClientOnly>` để tránh lỗi không khớp khi hydrate SSR:
+
+```vue
+<template>
+  <main>
+    <ClientOnly>
+      <wink-content-loader layout="HOTEL" :id="layoutId" />
+    </ClientOnly>
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+<Aside type="tip">
+`<ClientOnly>` sẽ render một phần giữ chỗ trên server và gắn phần tử thật trên client — đây là cách khuyến nghị cho tất cả các nhúng bên thứ ba chỉ dành cho trình duyệt trong Nuxt.
+</Aside>
+
+## Kiểu TypeScript
+
+Mở rộng `HTMLElementTagNameMap` toàn cục (giống Vue 3) để có tự động hoàn thành thuộc tính. Xem trang [tích hợp Vue 3](/vi/integrations/vue#typescript--augment-global-element-types) để biết file khai báo đầy đủ.
+
+## Đọc thêm
+
+- [Tham khảo Web Components](/vi/integrations/web-components)
+- [Gói npm @wink/elements](/vi/integrations/npm)
+- [Tích hợp Vue 3](/vi/integrations/vue)

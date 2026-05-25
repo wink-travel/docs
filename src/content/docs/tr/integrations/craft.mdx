@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Wink eklentisini kullanarak Wink seyahat envanterini Craft CMS 5 web sitenize gömün.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS Eklentisi**, Wink seyahat envanterini Twig şablon fonksiyonları ve içerik editörü için özel bir alan türü aracılığıyla Craft 5'e entegre eder. Editörler, giriş editöründe doğrudan bir açılır menüden belirli bir Wink düzeni seçebilir.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin on GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Kaynak kodu, geliştirici kurulum rehberi ve katkı talimatları."
+/>
+
+## Gereksinimler
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Kurulum
+
+<Steps>
+1. Composer ile yükleyin:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Kontrol Panelinde **Ayarlar → Eklentiler** bölümünden veya CLI ile etkinleştirin:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Kontrol Panelinde **Ayarlar → Wink** sayfasına gidin.
+4. **Client ID** ve **Client Secret** bilgilerinizi girin, ortamınızı seçin ve **Kaydet** butonuna tıklayın.
+   Kimlik bilgilerinizi almak için [Applications](/tr/portal/settings/applications) sayfasına gidin.
+</Steps>
+
+## Twig şablonlarında kullanımı
+
+Yapılandırıldıktan sonra, Wink Twig fonksiyonlarını şablonlarınızda istediğiniz yerde çağırabilirsiniz:
+
+```twig
+{# Bir otel ızgarası render et #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Varış yeri arama çubuğu #}
+{{ winkLookup() }}
+
+{# Güzergah seçici butonu #}
+{{ winkSearch() }}
+
+{# Kullanıcı hesap butonu #}
+{{ winkAccount() }}
+```
+
+`winkContent()` fonksiyonu, bir sayfada ilk kez çağrıldığında otomatik olarak `<wink-app-loader>` öğesini enjekte eder.
+
+## Mevcut Twig fonksiyonları
+
+| Fonksiyon | Çıktı | Açıklama |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Otel kartları, ızgaralar, haritalar |
+| `winkLookup()` | `<wink-lookup>` | Varış yeri arama çubuğu |
+| `winkSearch()` | `<wink-search-button>` | Güzergah seçici butonu |
+| `winkAccount()` | `<wink-account-button>` | Giriş / kullanıcı hesabı |
+| `winkItinerary()` | `<wink-itinerary-button>` | Güzergah durumu butonu |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Sepet butonu |
+
+## Wink Layout alan türü
+
+Herhangi bir bölüme bir **Wink Layout** alanı ekleyerek editörlere Wink hesabınızdaki tüm mevcut düzenlerin bir açılır menüsünü sunabilirsiniz:
+
+<Steps>
+1. **Ayarlar → Alanlar → Yeni Alan** sayfasına gidin.
+2. **Alan Türü** olarak **Wink Layout** seçin.
+3. Alanı giriş türünüzün alan düzenine ekleyin.
+4. Editörler artık giriş editöründe doğrudan bir düzen seçebilir — ID kopyalayıp yapıştırmaya gerek yok.
+</Steps>
+
+Şablonunuzda, alan değerini `winkContent()` fonksiyonuna iletin:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Daha fazla bilgi
+
+- [Web Bileşenleri referansı](/tr/integrations/web-components)
+- [Client ID alın](/tr/portal/settings/applications)
+- [Wink Craft Plugin — kaynak kodu ve geliştirici dokümanları](https://github.com/wink-travel/wink-craft-plugin)

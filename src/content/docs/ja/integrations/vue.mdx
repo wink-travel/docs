@@ -1,0 +1,139 @@
+---
+title: Vue 3
+description: isCustomElement コンパイラオプションを使って、Vue 3 と Vite プロジェクトで Wink のウェブコンポーネントを使用する方法。
+sidebar:
+  order: 18
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Vue 3 では、`<wink-*>` タグを未解決の Vue コンポーネントではなくネイティブのカスタム要素として扱うために、コンパイラにヒントを1つ与える必要があります。その後は、他の HTML 要素と同様に動作します。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="TypeScript 型定義付きの CDN バンドルをインストールして読み込みます。"
+/>
+
+## インストール
+
+```bash
+npm install @wink/elements
+```
+
+## コンパイラの設定
+
+### Vite + Vue (`vite.config.ts`)
+
+```ts
+import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
+
+export default defineConfig({
+  plugins: [
+    vue({
+      template: {
+        compilerOptions: {
+          // "wink-" で始まるすべてのタグをカスタム要素として扱う
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      },
+    }),
+  ],
+});
+```
+
+### Vue CLI (`vue.config.js`)
+
+```js
+module.exports = {
+  chainWebpack(config) {
+    config.module
+      .rule('vue')
+      .use('vue-loader')
+      .tap((options) => ({
+        ...options,
+        compilerOptions: {
+          isCustomElement: (tag) => tag.startsWith('wink-'),
+        },
+      }));
+  },
+};
+```
+
+## アプリ起動時に CDN を一度だけ読み込む
+
+```ts
+// src/main.ts
+import { createApp } from 'vue';
+import App from './App.vue';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+
+createApp(App).mount('#app');
+```
+
+## テンプレートでの使用例
+
+```vue
+<template>
+  <main>
+    <wink-content-loader layout="HOTEL" :id="layoutId" />
+    <wink-lookup />
+  </main>
+</template>
+
+<script setup lang="ts">
+const layoutId = 'YOUR_LAYOUT_ID';
+</script>
+```
+
+## TypeScript — グローバル要素型の拡張
+
+Vue 3 + TypeScript はカスタム要素の型をグローバルの `HTMLElementTagNameMap` から読み取ります。宣言ファイルを追加してください：
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare global {
+  interface HTMLElementTagNameMap {
+    'wink-content-loader': HTMLElement & WinkContentLoaderAttributes;
+    'wink-lookup': HTMLElement & WinkLookupAttributes;
+    'wink-search-button': HTMLElement & WinkSearchButtonAttributes;
+    'wink-account-button': HTMLElement & WinkAccountButtonAttributes;
+    'wink-itinerary-button': HTMLElement & WinkItineraryButtonAttributes;
+    'wink-shopping-cart-button': HTMLElement & WinkShoppingCartButtonAttributes;
+    'wink-app-loader': HTMLElement & WinkAppLoaderAttributes;
+  }
+}
+```
+
+## 環境変数
+
+`.env.local` に追加：
+
+```
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Vite は `VITE_` プレフィックスが付いた変数のみをクライアントバンドルに公開します。
+
+<Aside type="tip">
+Nuxt 3 を使う場合は、SSR 対応の読み込み方法を解説した専用の[Nuxt 統合ページ](/ja/integrations/nuxt)をご覧ください。
+</Aside>
+
+## さらに読む
+
+- [Web Components リファレンス](/ja/integrations/web-components)
+- [@wink/elements npm package](/ja/integrations/npm)
+- [Nuxt 3 統合](/ja/integrations/nuxt)

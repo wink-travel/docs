@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Integrer Wink reiseinventar i hvilken som helst headless CMS (Contentful, Strapi, Sanity, osv.) eller egendefinert nettsted.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wink webkomponenter er rammeverksuavhengige egendefinerte HTML-elementer. Hvis din headless CMS gjengir HTML — enten gjennom Next.js, Nuxt, Astro, SvelteKit eller et annet rammeverk — kan du integrere Wink-komponenter uten noen spesiell integrasjon.
+
+## Den tre-trinns integrasjonen
+
+Hver Wink-integrasjon, uavhengig av plattform, følger de samme tre trinnene.
+
+### 1. Inkluder stilarket
+
+Legg dette til i dokumentets `<head>` (eller tilsvarende globalt oppsett):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Inkluder JavaScript
+
+Legg dette til før avsluttende `</body>`-tag (eller i layoutens skriptseksjon):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Legg til applikasjonslasteren
+
+Plasser dette **én gang per side**, hvor som helst i body (vanligvis i global layout footer):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Din Client ID finner du i Wink-kontoen din under [Applications](/no/portal/settings/applications).
+:::
+
+## Rammeverkseksempler
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+TypeScript-brukere: legg til en `global.d.ts` som deklarerer typene for egendefinerte elementer, eller bruk [`@wink/elements`](https://github.com/wink2travel/wink-elements) npm-pakken som inkluderer typedeklarasjoner.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Plassering av komponenter i innhold
+
+I CMS-ets rik tekst eller egendefinerte felttyper, integrer komponenttagger direkte i HTML-utdata:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+For Contentful, Strapi, Sanity eller lignende headless plattformer, bruk et **Rich Text**-felt eller en **Custom Block** som gjengir rå HTML, og lim inn komponenttaggen der.
+
+## npm-pakke
+
+For TypeScript-prosjekter tilbyr [`@wink/elements`](https://github.com/wink2travel/wink-elements)-pakken:
+- En `load()`-funksjon som programmatisk injiserer CDN-skriptene
+- Fullstendige TypeScript-typedeklarasjoner for alle komponentattributter
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Kall én gang ved app-start
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Tilgjengelige komponenter
+
+| Komponent | HTML-tag | Formål |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Vise hotellkort, rutenett, kart |
+| Lookup | `<wink-lookup>` | Søkelinje for destinasjoner |
+| Search button | `<wink-search-button>` | Åpne reiseplanlegger |
+| Account button | `<wink-account-button>` | Logg inn / brukermeny |
+| Itinerary button | `<wink-itinerary-button>` | Vis gjeldende reiserute |
+| Itinerary picker | `<wink-itinerary-picker>` | Fullstendig reiseruteskjema |
+| Shopping cart | `<wink-shopping-cart-button>` | Handlekurvsammendrag knapp |
+
+Se [Web Components](/no/integrations/web-components) for fullstendig attributtreferanse.

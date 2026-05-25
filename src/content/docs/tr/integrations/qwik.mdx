@@ -1,0 +1,120 @@
+---
+title: Qwik
+description: Wink web bileşenlerini Qwik ve QwikCity uygulamalarında, yalnızca istemci tarafında çalıştırmak için useVisibleTask$ ile kullanın.
+sidebar:
+  order: 26
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Qwik'in devam ettirilebilirlik modeli, JavaScript'in tembel çalıştığı anlamına gelir — yalnızca kullanıcı etkileşime geçtiğinde çalışır. Bileşen görünür olduğunda tarayıcıda çalışması gereken kodu çalıştırmak için `useVisibleTask$` kullanın.
+
+<LinkCard
+  title="@wink/elements npm paketi"
+  href="/integrations/npm"
+  description="TypeScript tipleriyle CDN paketini yükleyin ve kurun."
+/>
+
+## Kurulum
+
+```bash
+npm install @wink/elements
+```
+
+## useVisibleTask$ ile yükleme
+
+`useVisibleTask$`, Qwik'in yalnızca tarayıcıda çalışan, hemen yürütülen yaşam döngüsü kancasıdır. Bunu kök düzeninizde kullanın:
+
+```tsx
+// src/routes/layout.tsx
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { load } from '@wink/elements';
+
+export default component$(() => {
+  useVisibleTask$(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+
+  return (
+    <main>
+      <Slot />
+    </main>
+  );
+});
+```
+
+<Aside type="tip" title="useVisibleTask$ stratejisi">
+Varsayılan olarak `useVisibleTask$`, bileşen görünür olduğunda çalışır. Her zaman görünür olan bir kök düzen için, bu sayfa yüklendiğinde hemen tetiklenir — diğer çerçevelerdeki `onMount` ile eşdeğerdir.
+
+Scriptin mümkün olan en erken yüklenmesini istiyorsanız `{ strategy: 'document-ready' }` parametresini geçin:
+```ts
+useVisibleTask$({ strategy: 'document-ready' }, () => {
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+});
+```
+</Aside>
+
+## Bir sayfada kullanma
+
+```tsx
+// src/routes/hotels/index.tsx
+import { component$ } from '@builder.io/qwik';
+
+export default component$(() => {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+});
+```
+
+## TypeScript — JSX intrinsics bildirimi
+
+Qwik kendi JSX ad alanını kullanır. Bunu bir bildirim dosyasında genişletin:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module '@builder.io/qwik' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes;
+      'wink-lookup': WinkLookupAttributes;
+      'wink-search-button': WinkSearchButtonAttributes;
+      'wink-account-button': WinkAccountButtonAttributes;
+      'wink-itinerary-button': WinkItineraryButtonAttributes;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes;
+      'wink-app-loader': WinkAppLoaderAttributes;
+    }
+  }
+}
+```
+
+## Ortam değişkenleri
+
+Qwik (Vite tabanlı) `PUBLIC_` ile başlayan değişkenleri tarayıcıya açar:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="Sunucu tarafı render">
+Qwik, sunucuda HTML olarak render eder. `<wink-*>` etiketleri statik işaretleme olarak çıktı verir. CDN scripti ve özel element kaydı, `useVisibleTask$` tetiklendikten sonra istemci tarafında gerçekleşir. Elemanlar, CDN paketi yüklenene kadar kısa bir süre çözülmemiş durumda olur — bu beklenen bir davranıştır.
+</Aside>
+
+## Daha fazla okuma
+
+- [Web Bileşenleri referansı](/tr/integrations/web-components)
+- [@wink/elements npm paketi](/tr/integrations/npm)

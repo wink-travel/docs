@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Integra l'inventari de viatges de Wink al teu lloc web Craft CMS 5 mitjançant el connector Wink.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+El **Connector Wink per a Craft CMS** integra l'inventari de viatges de Wink a Craft 5 mitjançant funcions de plantilla Twig i un tipus de camp personalitzat per a l'editor de contingut. Els editors poden triar un disseny específic de Wink des d'un menú desplegable directament a l'editor d'entrades.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin a GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Codi font, guia de configuració per a desenvolupadors i instruccions de contribució."
+/>
+
+## Requisits
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Instal·lació
+
+<Steps>
+1. Instal·la mitjançant Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Activa el connector al Panell de Control a **Configuració → Connectors**, o via CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Ves a **Configuració → Wink** al Panell de Control.
+4. Introdueix el teu **Client ID** i **Client Secret**, selecciona el teu entorn i fes clic a **Desa**.
+   Ves a [Aplicacions](/ca/portal/settings/applications) per obtenir les teves credencials.
+</Steps>
+
+## Ús en plantilles Twig
+
+Un cop configurat, crida les funcions Twig de Wink a qualsevol lloc de les teves plantilles:
+
+```twig
+{# Renderitza una graella d'hotels #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Barra de cerca de destinacions #}
+{{ winkLookup() }}
+
+{# Botó per seleccionar l'itinerari #}
+{{ winkSearch() }}
+
+{# Botó de compte d'usuari #}
+{{ winkAccount() }}
+```
+
+La funció `winkContent()` injecta automàticament `<wink-app-loader>` la primera vegada que es crida en una pàgina.
+
+## Funcions Twig disponibles
+
+| Funció | Sortida | Descripció |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Targetes d'hotel, graelles, mapes |
+| `winkLookup()` | `<wink-lookup>` | Barra de cerca de destinacions |
+| `winkSearch()` | `<wink-search-button>` | Botó per seleccionar l'itinerari |
+| `winkAccount()` | `<wink-account-button>` | Inici de sessió / compte d'usuari |
+| `winkItinerary()` | `<wink-itinerary-button>` | Botó d'estat de l'itinerari |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Botó del carret de la compra |
+
+## Tipus de camp Wink Layout
+
+Afegeix un camp **Wink Layout** a qualsevol secció per oferir als editors un menú desplegable amb tots els dissenys disponibles del teu compte Wink:
+
+<Steps>
+1. Ves a **Configuració → Camps → Nou Camp**.
+2. Estableix el **Tipus de Camp** a **Wink Layout**.
+3. Afegeix el camp al disseny de camps del tipus d'entrada.
+4. Ara els editors poden triar un disseny directament a l'editor d'entrades — sense haver de copiar i enganxar IDs.
+</Steps>
+
+A la teva plantilla, passa el valor del camp a `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Lectures complementàries
+
+- [Referència de Web Components](/ca/integrations/web-components)
+- [Obtenir el teu Client ID](/ca/portal/settings/applications)
+- [Wink Craft Plugin — codi font i documentació per a desenvolupadors](https://github.com/wink-travel/wink-craft-plugin)

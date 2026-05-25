@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Osadź inwentarz podróży Wink na swojej stronie Craft CMS 5 za pomocą wtyczki Wink.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS Plugin** integruje inwentarz podróży Wink z Craft 5 poprzez funkcje szablonów Twig oraz niestandardowy typ pola dla edytora treści. Redaktorzy mogą wybrać konkretny układ Wink z listy rozwijanej bezpośrednio w edytorze wpisów.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin na GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Kod źródłowy, przewodnik dla deweloperów oraz instrukcje dotyczące współpracy."
+/>
+
+## Wymagania
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Instalacja
+
+<Steps>
+1. Zainstaluj przez Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Aktywuj wtyczkę w Panelu Sterowania w **Ustawienia → Wtyczki** lub przez CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Przejdź do **Ustawienia → Wink** w Panelu Sterowania.
+4. Wprowadź swój **Client ID** i **Client Secret**, wybierz środowisko i kliknij **Zapisz**.
+   Aby pobrać dane uwierzytelniające, przejdź do [Applications](/pl/portal/settings/applications).
+</Steps>
+
+## Użycie w szablonach Twig
+
+Po konfiguracji wywołuj funkcje Twig Wink w dowolnym miejscu swoich szablonów:
+
+```twig
+{# Renderuj siatkę hoteli #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Pasek wyszukiwania destynacji #}
+{{ winkLookup() }}
+
+{# Przycisk wyboru planu podróży #}
+{{ winkSearch() }}
+
+{# Przycisk konta użytkownika #}
+{{ winkAccount() }}
+```
+
+Funkcja `winkContent()` automatycznie wstrzykuje `<wink-app-loader>` przy pierwszym wywołaniu na stronie.
+
+## Dostępne funkcje Twig
+
+| Funkcja | Wyjście | Opis |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Karty hoteli, siatki, mapy |
+| `winkLookup()` | `<wink-lookup>` | Pasek wyszukiwania destynacji |
+| `winkSearch()` | `<wink-search-button>` | Przycisk wyboru planu podróży |
+| `winkAccount()` | `<wink-account-button>` | Logowanie / konto użytkownika |
+| `winkItinerary()` | `<wink-itinerary-button>` | Przycisk statusu planu podróży |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Przycisk koszyka |
+
+## Typ pola Wink Layout
+
+Dodaj pole **Wink Layout** do dowolnej sekcji, aby dać redaktorom listę rozwijaną ze wszystkimi dostępnymi układami z Twojego konta Wink:
+
+<Steps>
+1. Przejdź do **Ustawienia → Pola → Nowe pole**.
+2. Ustaw **Typ pola** na **Wink Layout**.
+3. Dodaj pole do układu pól swojego typu wpisu.
+4. Redaktorzy mogą teraz wybierać układ bezpośrednio w edytorze wpisów — bez kopiowania i wklejania ID.
+</Steps>
+
+W szablonie przekaż wartość pola do `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Dalsza lektura
+
+- [Referencje Web Components](/pl/integrations/web-components)
+- [Pobierz swój Client ID](/pl/portal/settings/applications)
+- [Wink Craft Plugin — kod źródłowy i dokumentacja dla deweloperów](https://github.com/wink-travel/wink-craft-plugin)

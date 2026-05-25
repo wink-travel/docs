@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: Tambahkan komponen web Wink ke laman Gatsby menggunakan gatsby-browser.js untuk pemuatan sisi klien.
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby menjana HTML statik semasa binaan dan menghidupkan semula di klien. Skrip CDN mesti dimuatkan hanya dalam API pelayar — `gatsby-browser.js` adalah tempat yang betul.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Pasang dan muatkan bundel CDN dengan jenis TypeScript."
+/>
+
+## Pasang
+
+```bash
+npm install @wink/elements
+```
+
+## Muatkan melalui gatsby-browser.js
+
+API `onClientEntry` dijalankan sekali sebaik sahaja runtime Gatsby dimulakan dalam pelayar:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## Pembolehubah persekitaran
+
+Gatsby hanya mendedahkan pembolehubah yang diawali dengan `GATSBY_` kepada bundel pelayar:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## Gunakan dalam halaman dan komponen
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby menggunakan React, jadi tambah deklarasi JSX intrinsic yang sama seperti integrasi React:
+
+```ts
+// src/wink-elements.d.ts
+// Lihat /integrations/react untuk fail deklarasi penuh
+```
+
+<Aside type="caution" title="Ralat binaan SSR">
+Semasa `gatsby build`, Gatsby merender halaman ke HTML statik dalam persekitaran Node.js di mana `window` dan `document` tidak tersedia. Jika anda mengimport `@wink/elements` di peringkat atas komponen halaman (di luar `onClientEntry`), binaan akan gagal.
+
+Sentiasa gunakan `gatsby-browser.js` / `onClientEntry` — jangan sekali-kali import `load` secara langsung dalam skop modul halaman atau komponen.
+</Aside>
+
+## gatsby-ssr.js — tiada perubahan diperlukan
+
+Anda tidak perlu mengubah `gatsby-ssr.js`. Tag `<wink-*>` dirender sebagai elemen HTML biasa dalam output statik, dan skrip CDN akan menaik tarafnya apabila pelayar memuatkan halaman.
+
+## Bacaan lanjut
+
+- [Rujukan Web Components](/ms/integrations/web-components)
+- [@wink/elements npm package](/ms/integrations/npm)
+- [Integrasi React](/ms/integrations/react)

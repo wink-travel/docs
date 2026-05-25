@@ -1,0 +1,81 @@
+---
+title: HubSpot CMS
+description: 맞춤 모듈과 헤더/푸터 HTML을 사용하여 Wink 여행 인벤토리를 HubSpot CMS 웹사이트에 임베드하세요.
+sidebar:
+  order: 6
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+HubSpot CMS는 맞춤 HTML 모듈과 사이트 전체 헤더/푸터 코드를 지원하여 마케팅 페이지와 랜딩 페이지에 Wink 컴포넌트를 쉽게 임베드할 수 있습니다.
+
+:::note
+사이트 전체 코드 삽입은 **HubSpot CMS Hub**(Starter 이상) 접근 권한이 필요합니다. 맞춤 HTML 모듈은 모든 CMS 등급에서 사용할 수 있습니다.
+:::
+
+## Wink 스크립트를 사이트 전체에 로드하기
+
+<Steps>
+1. HubSpot에서 **Marketing → Files and Templates → Design Tools**로 이동합니다.
+2. 활성 **테마**의 `main.css`를 열거나 전역 콘텐츠 설정을 사용합니다.
+3. 또는 **Settings → Website → Pages → Custom Code**로 이동합니다.
+4. **Head HTML** 필드에 스타일시트를 추가합니다:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+5. **Footer HTML** 필드에 스크립트와 애플리케이션 로더를 추가합니다 (`YOUR_CLIENT_ID`를 교체하세요):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+6. 저장하고 게시합니다.
+</Steps>
+
+:::tip
+클라이언트 ID는 Wink 계정 내 [Applications](/ko/portal/settings/applications)에서 확인할 수 있습니다.
+:::
+
+## 맞춤 HTML 모듈로 컴포넌트 추가하기
+
+<Steps>
+1. Design Tools에서 **Rich Text** 또는 **HTML** 유형의 새 **모듈**을 만듭니다.
+2. 모듈 기본 콘텐츠에 컴포넌트 HTML을 붙여넣습니다:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+3. 모듈을 저장하고 페이지 템플릿이나 페이지 편집기에서 원하는 위치로 드래그합니다.
+</Steps>
+
+## 페이지 편집기에서 직접 컴포넌트 추가하기
+
+모듈을 만들지 않고 싶다면 드래그 앤 드롭 편집기의 **Custom HTML** 섹션을 사용할 수 있습니다:
+
+<Steps>
+1. HubSpot 페이지 편집기에서 페이지를 엽니다.
+2. **Add**를 클릭하고 **Custom HTML** 또는 **Embed** 섹션을 선택합니다.
+3. HTML 필드에 컴포넌트 태그를 붙여넣습니다.
+4. **Apply**를 클릭하고 페이지를 게시합니다.
+</Steps>
+
+## 사용 가능한 컴포넌트
+
+| 컴포넌트 | HTML 태그 | 용도 |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | 호텔 카드, 그리드, 지도 표시 |
+| Lookup | `<wink-lookup>` | 목적지 검색 바 |
+| Search button | `<wink-search-button>` | 여행 일정 선택기 열기 |
+| Account button | `<wink-account-button>` | 로그인 / 사용자 메뉴 |
+| Itinerary button | `<wink-itinerary-button>` | 현재 여행 일정 표시 |
+| Itinerary picker | `<wink-itinerary-picker>` | 전체 여행 일정 폼 |
+| Shopping cart | `<wink-shopping-cart-button>` | 장바구니 요약 버튼 |
+
+전체 속성 참조는 [Web Components](/ko/integrations/web-components)에서 확인하세요.
+
+## 추가 자료
+
+- [Web Components reference](/ko/integrations/web-components)
+- [클라이언트 ID 받기](/ko/portal/settings/applications)
+- [HubSpot 맞춤 코드 문서](https://knowledge.hubspot.com/website-pages/add-custom-code-to-pages)

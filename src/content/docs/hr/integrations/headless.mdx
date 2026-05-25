@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Ugradite Wink inventar putovanja u bilo koji headless CMS (Contentful, Strapi, Sanity itd.) ili prilagođenu web stranicu.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wink web komponente su framework-agnostični prilagođeni HTML elementi. Ako vaš headless CMS renderira HTML — bilo kroz Next.js, Nuxt, Astro, SvelteKit ili bilo koji drugi framework — možete ugraditi Wink komponente bez posebne integracije.
+
+## Trokorak ugradnje
+
+Svaka Wink integracija, bez obzira na platformu, slijedi iste tri koraka.
+
+### 1. Uključite stilsku datoteku
+
+Dodajte ovo u `<head>` dokumenta (ili ekvivalentni globalni layout):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Uključite JavaScript
+
+Dodajte ovo prije zatvarajućeg `</body>` taga (ili u skriptnom dijelu vašeg layouta):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Dodajte učitavač aplikacije
+
+Postavite ovo **jednom po stranici**, bilo gdje u tijelu (obično u footeru globalnog layouta):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Vaš Client ID dostupan je u vašem Wink računu pod [Applications](/hr/portal/settings/applications).
+:::
+
+## Primjeri za frameworke
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+Korisnici TypeScripta: dodajte `global.d.ts` koji deklarira tipove prilagođenih elemenata, ili koristite [`@wink/elements`](https://github.com/wink2travel/wink-elements) npm paket koji sadrži deklaracije tipova.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Postavljanje komponenti u sadržaj
+
+U bogatom tekstu ili prilagođenim tipovima polja vašeg CMS-a, ugradite oznake komponenti izravno u HTML izlaz:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Za Contentful, Strapi, Sanity ili slične headless platforme, koristite **Rich Text** polje ili **Custom Block** koji renderira sirovi HTML i tamo zalijepite oznaku komponente.
+
+## npm paket
+
+Za TypeScript projekte, paket [`@wink/elements`](https://github.com/wink2travel/wink-elements) pruža:
+- `load()` funkciju koja programatski ubacuje CDN skripte
+- Potpune TypeScript deklaracije tipova za sve atribute komponenti
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Pozovite jednom pri pokretanju aplikacije
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Dostupne komponente
+
+| Komponenta | HTML oznaka | Namjena |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Prikaz hotelskih kartica, mreža, karata |
+| Lookup | `<wink-lookup>` | Tražilica destinacija |
+| Search button | `<wink-search-button>` | Otvaranje odabira itinerera |
+| Account button | `<wink-account-button>` | Prijava / korisnički izbornik |
+| Itinerary button | `<wink-itinerary-button>` | Prikaz trenutnog itinerera |
+| Itinerary picker | `<wink-itinerary-picker>` | Cijeli obrazac itinerera |
+| Shopping cart | `<wink-shopping-cart-button>` | Gumb sažetka košarice |
+
+Pogledajte [Web Components](/hr/integrations/web-components) za puni popis atributa.

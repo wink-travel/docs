@@ -1,0 +1,115 @@
+---
+title: Remix
+description: Pridėkite Wink žiniatinklio komponentus į Remix programas su klientu įkeliama per useEffect.
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Remix yra pilno steko karkasas, kuris pagal numatytuosius nustatymus atlieka serverio pusės renderinimą. Įkelkite Wink CDN tik kliento pusėje naudodami `useEffect` pagrindiniame komponente.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Įdiekite ir įkelkite CDN paketą su TypeScript tipais."
+/>
+
+## Įdiegimas
+
+```bash
+npm install @wink/elements
+```
+
+## Įkėlimas app/root.tsx faile
+
+`useEffect` vykdomas tik naršyklėje, niekada serverio pusės renderinimo metu:
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## Aplinkos kintamieji
+
+Remix (pagrįstas Vite, v2.8+) palaiko `import.meta.env` naršyklėje matomiems kintamiesiems. Priešdėlis `VITE_` leidžia juos atskleisti naršyklės paketui:
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Senesnėms Remix konfigūracijoms, naudojančioms Node.js adapterį, klientų ID grąžinkite iš pagrindinio loader ir perskaitykite komponente:
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## Naudojimas maršrutuose
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Hidratacijos neatitikimas">
+Remix hidratuoja serverio pusėje sugeneruotą HTML kliento pusėje. Jei `<wink-*>` elementas yra sugeneruotas serveryje, naršyklė trumpam gali parodyti neišspręstą pasirinktą elementą prieš užregistruojant CDN skriptą. Tai yra tik kosmetinė problema — elementas tinkamai atnaujinamas, kai skriptas įkeliamas.
+</Aside>
+
+## TypeScript tipai
+
+Pridėkite JSX intrinsic deklaracijos failą iš [React integracijos puslapio](/lt/integrations/react#typescript--declare-jsx-intrinsics) — Remix naudoja React po gaubtu.
+
+## Tolimesnė literatūra
+
+- [Žiniatinklio komponentų nuoroda](/lt/integrations/web-components)
+- [@wink/elements npm paketas](/lt/integrations/npm)
+- [React integracija](/lt/integrations/react)

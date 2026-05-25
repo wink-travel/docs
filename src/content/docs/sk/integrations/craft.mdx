@@ -1,0 +1,92 @@
+---
+title: Craft CMS
+description: Vložte Wink cestovný inventár do svojej webovej stránky Craft CMS 5 pomocou pluginu Wink.
+sidebar:
+  order: 11
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**Wink Craft CMS Plugin** integruje Wink cestovný inventár do Craft 5 cez Twig šablónové funkcie a vlastný typ poľa pre obsahového editora. Editori môžu priamo v editore záznamu vybrať konkrétne Wink rozloženie z rozbaľovacieho zoznamu.
+
+<LinkCard
+  title="wink-travel/wink-craft-plugin na GitHub"
+  href="https://github.com/wink-travel/wink-craft-plugin"
+  description="Zdrojový kód, návod na nastavenie pre vývojárov a pokyny na prispievanie."
+/>
+
+## Požiadavky
+
+- Craft CMS 5.x
+- PHP 8.1+
+- Composer
+
+## Inštalácia
+
+<Steps>
+1. Nainštalujte cez Composer:
+   ```bash
+   composer require wink2travel/craft-wink
+   ```
+2. Aktivujte plugin v Ovládacom paneli v **Nastavenia → Pluginy**, alebo cez CLI:
+   ```bash
+   php craft plugin/install wink
+   ```
+3. Prejdite do **Nastavenia → Wink** v Ovládacom paneli.
+4. Zadajte svoj **Client ID** a **Client Secret**, vyberte prostredie a kliknite na **Uložiť**.
+   Pre získanie prihlasovacích údajov choďte na [Applications](/sk/portal/settings/applications).
+</Steps>
+
+## Použitie v Twig šablónach
+
+Po konfigurácii volajte Wink Twig funkcie kdekoľvek vo svojich šablónach:
+
+```twig
+{# Zobrazenie mriežky hotelov #}
+{{ winkContent('HOTEL', entry.winkLayoutId) }}
+
+{# Vyhľadávací panel destinácií #}
+{{ winkLookup() }}
+
+{# Tlačidlo výberu itinerára #}
+{{ winkSearch() }}
+
+{# Tlačidlo používateľského účtu #}
+{{ winkAccount() }}
+```
+
+Funkcia `winkContent()` automaticky vloží `<wink-app-loader>` pri prvom volaní na stránke.
+
+## Dostupné Twig funkcie
+
+| Funkcia | Výstup | Popis |
+|---|---|---|
+| `winkContent(layout, id)` | `<wink-content-loader>` | Karty hotelov, mriežky, mapy |
+| `winkLookup()` | `<wink-lookup>` | Vyhľadávací panel destinácií |
+| `winkSearch()` | `<wink-search-button>` | Tlačidlo výberu itinerára |
+| `winkAccount()` | `<wink-account-button>` | Prihlásenie / používateľský účet |
+| `winkItinerary()` | `<wink-itinerary-button>` | Tlačidlo stavu itinerára |
+| `winkShoppingCart()` | `<wink-shopping-cart-button>` | Tlačidlo košíka |
+
+## Typ poľa Wink Layout
+
+Pridajte pole **Wink Layout** do ľubovoľnej sekcie, aby editori mali rozbaľovací zoznam všetkých dostupných rozložení z vášho Wink účtu:
+
+<Steps>
+1. Prejdite do **Nastavenia → Polia → Nové pole**.
+2. Nastavte **Typ poľa** na **Wink Layout**.
+3. Pridajte pole do rozloženia polí vášho typu záznamu.
+4. Editori môžu teraz vybrať rozloženie priamo v editore záznamu — bez kopírovania ID.
+</Steps>
+
+Vo svojej šablóne odovzdajte hodnotu poľa do `winkContent()`:
+
+```twig
+{{ winkContent(entry.winkLayout.type, entry.winkLayout.id) }}
+```
+
+## Ďalšie čítanie
+
+- [Referencie Web Components](/sk/integrations/web-components)
+- [Získajte svoj Client ID](/sk/portal/settings/applications)
+- [Wink Craft Plugin — zdrojový kód a dokumentácia pre vývojárov](https://github.com/wink-travel/wink-craft-plugin)

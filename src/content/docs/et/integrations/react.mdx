@@ -1,0 +1,111 @@
+---
+title: React
+description: Kasuta Wink veebikomponente mis tahes Reacti rakenduses täieliku TypeScripti toega läbi @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ toetab kohandatud elemente esmaklassiliselt. React 18 ja varasemad edastavad ainult stringi atribuute — turvalisuse tagamiseks eri versioonide vahel kasuta allolevat tüübistatud abimustrit.
+
+<LinkCard
+  title="@wink/elements npm pakett"
+  href="/integrations/npm"
+  description="Paigalda ja laadi CDN pakett koos TypeScripti tüüpidega."
+/>
+
+## Paigalda
+
+```bash
+npm install @wink/elements
+```
+
+## Laadi üks kord rakenduse juures
+
+Kutsu `load()` oma tippkomponendis. See on idempotentne — ohutu kutsuda mitu korda.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Kasuta komponente JSX-is
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — deklareeri JSX intrinsics
+
+React ei tunne kohandatud elementide nimesid vaikimisi. Lisa üks deklareerimisfail, et tüüpvigu vältida:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="React 18 atribuudi piirang">
+React 18 ja varasemad teisendavad kõik JSX omadused stringideks enne DOM-i edastamist. Boolean ja objekt omadused tuleb käsitsi teisendada. React 19 edastab mitte-string omadused otse kohandatud elementidele — lahendust pole vaja.
+</Aside>
+
+## Tüübistatud atribuutide edastamine (React 18 turvaline)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread töötab React 19-s; React 18 puhul on kõik väärtused nagunii stringid
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Lisalugemist
+
+- [Veebikomponentide viide](/et/integrations/web-components)
+- [@wink/elements npm pakett](/et/integrations/npm)
+- [Next.js integratsioon](/et/integrations/nextjs)

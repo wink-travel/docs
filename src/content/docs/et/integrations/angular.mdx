@@ -1,0 +1,112 @@
+---
+title: Angular
+description: Kasutage Wink veebikomponente Angular 14+ rakendustes koos CUSTOM_ELEMENTS_SCHEMA ja @wink/elements.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink komponendid on ise Angular Elements — need integreeruvad loomulikult Angulari rakendustesse. Ainus vajalik seadistus on öelda Angulari kompilaatorile, et lubada tundmatud elemendi nimed.
+
+<LinkCard
+  title="@wink/elements npm pakett"
+  href="/integrations/npm"
+  description="Paigaldage ja laadige CDN pakett koos TypeScripti tüüpidega."
+/>
+
+## Paigaldamine
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — laadige CDN üks kord
+
+Kutsuge `load()` enne `bootstrapApplication` (või `APP_INITIALIZER` sees):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## Lubage kohandatud elemendi nimed
+
+Lisage `CUSTOM_ELEMENTS_SCHEMA` igale iseseisvale komponendile (või moodulile), mis renderdab `<wink-*>` silte:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="NgModule rakendused">
+NgModule-põhiste rakenduste puhul lisage `CUSTOM_ELEMENTS_SCHEMA` `schemas` massiivi `@NgModule` dekoratsioonis.
+</Aside>
+
+## Atribuutide sidumine
+
+Angulari mallisüntaks töötab otse kohandatud elemendi string-atribuutidega:
+
+```html
+<!-- Staatiline -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- Dünaamiline sidumine -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+Kasutage `[attr.name]` sidumist, kui väärtus on dünaamiline — Angulari tavaline `[property]` sidumine sihib DOM omadusi, mitte HTML atribuute, millele kohandatud elemendid tuginevad.
+
+## Keskkonnamuutujad
+
+`@angular/cli` 16+ projektide puhul kasutage `environment.ts` või `NG_APP_*` prefiksit koos `@ngx-env/builder`-iga:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## TypeScripti tüübid
+
+`@wink/elements` pakett ekspordib tüübiga liidesed kõigi komponendi atribuutide jaoks:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## Täiendav lugemine
+
+- [Veebikomponentide viide](/et/integrations/web-components)
+- [@wink/elements npm pakett](/et/integrations/npm)

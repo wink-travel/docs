@@ -1,0 +1,81 @@
+---
+title: HubSpot CMS
+description: Inserte el inventario de viajes de Wink en su sitio web HubSpot CMS usando módulos personalizados y HTML en el encabezado/pie de página.
+sidebar:
+  order: 6
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+HubSpot CMS admite módulos HTML personalizados y código de encabezado/pie de página para todo el sitio, lo que facilita insertar componentes de Wink en páginas de marketing y páginas de destino.
+
+:::note
+La inyección de código para todo el sitio requiere acceso a **HubSpot CMS Hub** (Starter o superior). Los módulos HTML personalizados están disponibles en todos los niveles de CMS.
+:::
+
+## Cargar scripts de Wink en todo el sitio
+
+<Steps>
+1. En HubSpot, vaya a **Marketing → Archivos y plantillas → Herramientas de diseño**.
+2. Abra el `main.css` de su **tema** activo o use la configuración global de contenido.
+3. Alternativamente, vaya a **Configuración → Sitio web → Páginas → Código personalizado**.
+4. En el campo **Head HTML**, agregue la hoja de estilos:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+5. En el campo **Footer HTML**, agregue el script y el cargador de la aplicación (reemplace `YOUR_CLIENT_ID`):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+6. Guarde y publique.
+</Steps>
+
+:::tip
+Su Client ID está disponible en su cuenta Wink bajo [Applications](/es-AR/portal/settings/applications).
+:::
+
+## Agregar un componente mediante un módulo HTML personalizado
+
+<Steps>
+1. En Herramientas de diseño, cree un nuevo **módulo** de tipo **Rich Text** o **HTML**.
+2. En el contenido predeterminado del módulo, pegue el HTML del componente:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+3. Guarde el módulo y arrástrelo a cualquier plantilla de página o página usando el editor de páginas.
+</Steps>
+
+## Agregar un componente directamente en el editor de páginas
+
+Si prefiere no crear un módulo, puede usar una sección de **HTML personalizado** en el editor de arrastrar y soltar:
+
+<Steps>
+1. Abra la página en el editor de páginas de HubSpot.
+2. Haga clic en **Agregar** y elija una sección de **HTML personalizado** o **Insertar**.
+3. Pegue la etiqueta del componente en el campo HTML.
+4. Haga clic en **Aplicar** y publique la página.
+</Steps>
+
+## Componentes disponibles
+
+| Componente | Etiqueta HTML | Propósito |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Mostrar tarjetas de hoteles, cuadrículas, mapas |
+| Lookup | `<wink-lookup>` | Barra de búsqueda para destinos |
+| Search button | `<wink-search-button>` | Abrir selector de itinerario |
+| Account button | `<wink-account-button>` | Iniciar sesión / menú de usuario |
+| Itinerary button | `<wink-itinerary-button>` | Mostrar itinerario actual |
+| Itinerary picker | `<wink-itinerary-picker>` | Formulario completo de itinerario |
+| Shopping cart | `<wink-shopping-cart-button>` | Botón resumen del carrito |
+
+Consulte [Web Components](/es-AR/integrations/web-components) para la referencia completa de atributos.
+
+## Lectura adicional
+
+- [Referencia de Web Components](/es-AR/integrations/web-components)
+- [Obtenga su Client ID](/es-AR/portal/settings/applications)
+- [Documentación de código personalizado de HubSpot](https://knowledge.hubspot.com/website-pages/add-custom-code-to-pages)

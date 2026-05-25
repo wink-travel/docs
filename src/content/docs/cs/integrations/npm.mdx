@@ -1,0 +1,134 @@
+---
+title: npm balíček
+description: Použijte npm balíček @wink/elements pro bezpečnou integraci Wink webových komponent v TypeScriptu v jakémkoli JavaScriptovém frameworku.
+sidebar:
+  order: 14
+---
+
+import { Steps, LinkCard } from '@astrojs/starlight/components';
+
+**`@wink/elements`** npm balíček je nejrychlejší způsob, jak přidat Wink webové komponenty do jakéhokoli JavaScriptového nebo TypeScriptového projektu. Poskytuje funkci `load()`, která vloží CDN zdroje a kompletní TypeScriptové typové deklarace pro všechny atributy komponent.
+
+<LinkCard
+  title="wink-travel/wink-elements na GitHubu"
+  href="https://github.com/wink-travel/wink-elements"
+  description="Zdrojový kód, API reference a instrukce pro přispívání."
+/>
+
+## Instalace
+
+```bash
+npm install @wink/elements
+```
+
+## Rychlý start
+
+Zavolejte `load()` jednou při spuštění aplikace. Je idempotentní — bezpečné volat vícekrát.
+
+```ts
+import { load } from '@wink/elements';
+
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+Poté použijte libovolnou Wink komponentu ve svém HTML nebo JSX:
+
+```html
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID"></wink-content-loader>
+```
+
+## Příklady pro frameworky
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <html><body>{children}</body></html>;
+}
+```
+
+### Nuxt 3
+
+```ts
+// plugins/wink.client.ts
+import { load } from '@wink/elements';
+
+export default defineNuxtPlugin(() => {
+  load({ clientId: useRuntimeConfig().public.winkClientId });
+});
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+import { load } from '@wink/elements';
+---
+<script>
+  import { load } from '@wink/elements';
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+</script>
+```
+
+### SvelteKit
+
+```ts
+// src/routes/+layout.ts
+import { load as loadWink } from '@wink/elements';
+import { browser } from '$app/environment';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+## TypeScript typy
+
+Všechny rozhraní atributů komponent jsou exportovány pro použití v JSX, template literálech nebo typovaných slovnících:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',    // TypeScript zachytí neplatné hodnoty layoutu
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+```
+
+## Použití staging CDN
+
+```ts
+load({
+  clientId: 'YOUR_CLIENT_ID',
+  cdnBaseUrl: 'https://staging-elements.wink.travel',
+});
+```
+
+## API
+
+### `load(options)`
+
+| Možnost | Typ | Povinné | Výchozí | Popis |
+|---|---|---|---|---|
+| `clientId` | `string` | Ano | — | Váš Wink OAuth2 Client ID |
+| `configurationId` | `string` | Ne | — | Volitelné ID pro přizpůsobení |
+| `cdnBaseUrl` | `string` | Ne | `https://elements.wink.travel` | Přepsání URL CDN |
+
+## Další čtení
+
+- [Reference Web Components](/cs/integrations/web-components)
+- [Získejte své Client ID](/cs/portal/settings/applications)
+- [Průvodce integrací Headless CMS](/cs/integrations/headless)
+- [`@wink/elements` na GitHubu](https://github.com/wink-travel/wink-elements)

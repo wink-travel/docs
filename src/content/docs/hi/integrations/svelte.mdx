@@ -1,0 +1,128 @@
+---
+title: Svelte / SvelteKit
+description: Svelte और SvelteKit एप्लिकेशन में onMount और ब्राउज़र गार्ड के साथ Wink वेब कंपोनेंट्स का उपयोग करें।
+sidebar:
+  order: 20
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Svelte बिना वर्चुअल DOM लेयर के सीधे DOM को एट्रिब्यूट्स पास करता है, जिससे कस्टम एलिमेंट्स स्वाभाविक रूप से फिट हो जाते हैं। SvelteKit (SSR) के लिए, CDN को `onMount` के अंदर लोड करें या `browser` चेक के साथ गार्ड करें।
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="TypeScript टाइप्स के साथ CDN बंडल इंस्टॉल और लोड करें।"
+/>
+
+## इंस्टॉल करें
+
+```bash
+npm install @wink/elements
+```
+
+## SvelteKit — रूट लेआउट
+
+```ts
+// src/routes/+layout.ts
+import { browser } from '$app/environment';
+import { load as loadWink } from '@wink/elements';
+
+export function load() {
+  if (browser) {
+    loadWink({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  }
+}
+```
+
+वैकल्पिक रूप से, `+layout.svelte` में `onMount` के अंदर लोड करें:
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<slot />
+```
+
+## कंपोनेंट्स में उपयोग करें
+
+Svelte सभी अज्ञात एट्रिब्यूट्स को सीधे DOM को पास करता है, इसलिए कोई अतिरिक्त कॉन्फ़िगरेशन आवश्यक नहीं है:
+
+```svelte
+<script>
+  export let layoutId = 'YOUR_LAYOUT_ID';
+</script>
+
+<main>
+  <wink-content-loader layout="HOTEL" id={layoutId} />
+  <wink-lookup />
+</main>
+```
+
+## Svelte 5 (रून्स सिंटैक्स)
+
+```svelte
+<script lang="ts">
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  let { layoutId }: { layoutId: string } = $props();
+
+  onMount(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id={layoutId} />
+```
+
+## पर्यावरण वेरिएबल्स
+
+SvelteKit केवल उन वेरिएबल्स को ब्राउज़र को एक्सपोज़ करता है जिनके प्रीफिक्स में `PUBLIC_` होता है:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="SSR रेंडरिंग">
+सर्वर-साइड रेंडरिंग के दौरान कभी भी `<wink-*>` एलिमेंट्स को रेंडर न करें — कस्टम एलिमेंट्स ब्राउज़र के `customElements` रजिस्ट्री में रजिस्टर्ड होते हैं जो सर्वर पर मौजूद नहीं होती। `{#if browser}` में लपेटें या केवल `onMount` के अंदर `load()` कॉल करें।
+</Aside>
+
+```svelte
+<script>
+  import { browser } from '$app/environment';
+</script>
+
+{#if browser}
+  <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+{/if}
+```
+
+## बेयर Svelte (Vite, बिना SvelteKit)
+
+```svelte
+<!-- src/App.svelte -->
+<script>
+  import { onMount } from 'svelte';
+  import { load } from '@wink/elements';
+
+  onMount(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  });
+</script>
+
+<wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+```
+
+## आगे पढ़ें
+
+- [Web Components reference](/hi/integrations/web-components)
+- [@wink/elements npm package](/hi/integrations/npm)

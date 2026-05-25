@@ -1,0 +1,78 @@
+---
+title: Ghost
+description: ฝังสินค้าคงคลังการเดินทางของ Wink ลงในสิ่งพิมพ์ Ghost ของคุณโดยใช้ Code Injection
+sidebar:
+  order: 5
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+ฟีเจอร์ **Code Injection** ที่มีในตัวของ Ghost ช่วยให้คุณเพิ่มสคริปต์ลงใน `<head>` และ `</body>` ของสิ่งพิมพ์ของคุณได้ทุกหน้า แผนบริการ Ghost ทุกแผนรองรับการฝังโค้ด ทำให้ง่ายต่อการฝังส่วนประกอบของ Wink บนหน้าใดก็ได้หรือโพสต์ใดก็ได้
+
+## โหลดสคริปต์ Wink ทั่วทั้งไซต์
+
+<Steps>
+1. ในแผงควบคุม Ghost Admin ไปที่ **Settings → Code Injection**  
+2. ในกล่อง **Site Header** ให้เพิ่มสไตล์ชีต:  
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```  
+3. ในกล่อง **Site Footer** ให้เพิ่มสคริปต์และตัวโหลดแอปพลิเคชัน (แทนที่ `YOUR_CLIENT_ID`):  
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```  
+4. คลิก **Save**  
+</Steps>
+
+:::tip
+Client ID ของคุณสามารถดูได้ในบัญชี Wink ของคุณภายใต้ [Applications](/th/portal/settings/applications)
+:::
+
+## เพิ่มส่วนประกอบลงในโพสต์หรือหน้า
+
+ตัวแก้ไขของ Ghost รองรับ **HTML card** ที่ช่วยให้คุณแทรก HTML ดิบได้ทุกที่ในเนื้อหาของคุณ
+
+<Steps>
+1. เปิดโพสต์หรือหน้าในตัวแก้ไข Ghost  
+2. พิมพ์ `/` เพื่อเปิดตัวเลือกการ์ด แล้วเลือก **HTML**  
+3. วาง HTML ของส่วนประกอบ เช่น:  
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```  
+4. คลิกนอกการ์ดเพื่อดูตัวอย่าง จากนั้นเผยแพร่  
+</Steps>
+
+## การฝังโค้ดแบบเฉพาะหน้า
+
+สำหรับส่วนประกอบที่ควรแสดงเฉพาะในหน้าเดียว Ghost ยังรองรับการฝังโค้ดแบบเฉพาะหน้า:
+
+<Steps>
+1. เปิดการตั้งค่าของโพสต์หรือหน้า (ไอคอนรูปเฟืองในตัวแก้ไข)  
+2. เลื่อนลงไปที่ **Code Injection**  
+3. เพิ่มแท็กส่วนประกอบในช่อง **Footer** (ตัวโหลดแอปพลิเคชันแบบทั่วไซต์ต้องอยู่ใน footer ของไซต์เท่านั้น)  
+4. บันทึก  
+</Steps>
+
+## ส่วนประกอบที่มีให้ใช้งาน
+
+| ส่วนประกอบ | แท็ก HTML | จุดประสงค์ |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | แสดงการ์ดโรงแรม, ตาราง, แผนที่ |
+| Lookup | `<wink-lookup>` | แถบค้นหาปลายทาง |
+| Search button | `<wink-search-button>` | เปิดตัวเลือกแผนการเดินทาง |
+| Account button | `<wink-account-button>` | ลงชื่อเข้าใช้ / เมนูผู้ใช้ |
+| Itinerary button | `<wink-itinerary-button>` | แสดงแผนการเดินทางปัจจุบัน |
+| Itinerary picker | `<wink-itinerary-picker>` | ฟอร์มแผนการเดินทางเต็มรูปแบบ |
+| Shopping cart | `<wink-shopping-cart-button>` | ปุ่มสรุปตะกร้าสินค้า |
+
+ดูรายละเอียดคุณสมบัติทั้งหมดได้ที่ [Web Components](/th/integrations/web-components)
+
+## อ่านเพิ่มเติม
+
+- [ข้อมูลอ้างอิง Web Components](/th/integrations/web-components)  
+- [รับ Client ID ของคุณ](/th/portal/settings/applications)  
+- [เอกสาร Ghost Code Injection](https://ghost.org/help/ghost-themes/#code-injection)

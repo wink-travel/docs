@@ -1,0 +1,168 @@
+---
+title: Headless CMS
+description: Įterpkite Wink kelionių inventorių į bet kurį headless CMS (Contentful, Strapi, Sanity ir kt.) arba individualiai sukurtą svetainę.
+sidebar:
+  order: 7
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+Wink interneto komponentai yra nepriklausomi nuo karkaso ir yra pritaikyti kaip HTML elementai. Jei jūsų headless CMS generuoja HTML — nesvarbu, ar tai būtų Next.js, Nuxt, Astro, SvelteKit ar kitas karkasas — galite įterpti Wink komponentus be jokios specialios integracijos.
+
+## Trijų žingsnių įterpimas
+
+Kiekviena Wink integracija, nepriklausomai nuo platformos, vykdoma trimis tais pačiais žingsniais.
+
+### 1. Įtraukite stiliaus lapą
+
+Pridėkite tai į dokumento `<head>` (arba atitinkamą globalų išdėstymą):
+
+```html
+<link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+```
+
+### 2. Įtraukite JavaScript
+
+Pridėkite tai prieš uždarantįjį `</body>` žymeklį (arba savo išdėstymo skripto dalyje):
+
+```html
+<script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+```
+
+### 3. Pridėkite programos įkroviklį
+
+Įdėkite tai **vieną kartą kiekviename puslapyje**, bet kurioje kūno dalyje (dažniausiai globalaus išdėstymo apačioje):
+
+```html
+<wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+```
+
+:::tip
+Jūsų Kliento ID yra pasiekiamas jūsų Wink paskyroje skiltyje [Applications](/lt/portal/settings/applications).
+:::
+
+## Karkaso pavyzdžiai
+
+### Next.js (App Router)
+
+```tsx
+// app/layout.tsx
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <head>
+        <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+      </head>
+      <body>
+        {children}
+        <script src="https://elements.wink.travel/elements.js" type="module" defer />
+        <wink-app-loader client-id="YOUR_CLIENT_ID" />
+      </body>
+    </html>
+  );
+}
+```
+
+:::note
+TypeScript naudotojams: pridėkite `global.d.ts`, kuriame deklaruojami pasirinktinių elementų tipai, arba naudokite [`@wink/elements`](https://github.com/wink2travel/wink-elements) npm paketą, kuris pateikia tipų deklaracijas.
+:::
+
+### Nuxt 3
+
+```vue
+<!-- layouts/default.vue -->
+<template>
+  <div>
+    <slot />
+    <wink-app-loader client-id="YOUR_CLIENT_ID" />
+  </div>
+</template>
+
+<script setup>
+useHead({
+  link: [{ rel: 'stylesheet', href: 'https://elements.wink.travel/styles.css' }],
+  script: [{ src: 'https://elements.wink.travel/elements.js', type: 'module', defer: true }],
+})
+</script>
+```
+
+### Astro
+
+```astro
+---
+// src/layouts/Layout.astro
+---
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+  </head>
+  <body>
+    <slot />
+    <script src="https://elements.wink.travel/elements.js" type="module" is:inline></script>
+    <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+  </body>
+</html>
+```
+
+### SvelteKit
+
+```svelte
+<!-- src/routes/+layout.svelte -->
+<svelte:head>
+  <link rel="stylesheet" href="https://elements.wink.travel/styles.css" />
+</svelte:head>
+
+<slot />
+<wink-app-loader client-id="YOUR_CLIENT_ID" />
+
+<script>
+  import { onMount } from 'svelte';
+  onMount(async () => {
+    await import('https://elements.wink.travel/elements.js');
+  });
+</script>
+```
+
+## Komponentų įdėjimas į turinį
+
+Jūsų CMS turtingo teksto arba pasirinktinių laukų tipuose įterpkite komponentų žymes tiesiogiai į HTML išvestį:
+
+```html
+<wink-content-loader
+  layout="HOTEL"
+  id="YOUR_LAYOUT_ID"
+></wink-content-loader>
+```
+
+Contentful, Strapi, Sanity ar panašioms headless platformoms naudokite **Rich Text** lauką arba **Custom Block**, kuris atvaizduoja žalią HTML, ir ten įklijuokite komponento žymę.
+
+## npm paketas
+
+TypeScript projektams, [`@wink/elements`](https://github.com/wink2travel/wink-elements) paketas suteikia:
+- `load()` funkciją, kuri programiškai įkelia CDN skriptus
+- Pilnas TypeScript tipų deklaracijas visiems komponentų atributams
+
+```bash
+npm install @wink/elements
+```
+
+```typescript
+import { load } from '@wink/elements';
+
+// Iškvieskite vieną kartą programos paleidimo metu
+load({ clientId: 'YOUR_CLIENT_ID' });
+```
+
+## Galimi komponentai
+
+| Komponentas | HTML žyma | Paskirtis |
+|---|---|---|
+| Turinio įkroviklis | `<wink-content-loader>` | Rodo viešbučių korteles, tinklus, žemėlapius |
+| Paieškos laukelis | `<wink-lookup>` | Paieškos juosta kryptims |
+| Paieškos mygtukas | `<wink-search-button>` | Atidaro maršruto pasirinkimą |
+| Paskyros mygtukas | `<wink-account-button>` | Prisijungimo / vartotojo meniu |
+| Maršruto mygtukas | `<wink-itinerary-button>` | Rodo esamą maršrutą |
+| Maršruto pasirinkėjas | `<wink-itinerary-picker>` | Pilna maršruto forma |
+| Prekių krepšelio mygtukas | `<wink-shopping-cart-button>` | Krepšelio santraukos mygtukas |
+
+Pilną atributų sąrašą žr. [Web Components](/lt/integrations/web-components).

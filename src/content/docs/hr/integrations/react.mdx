@@ -1,0 +1,111 @@
+---
+title: React
+description: Koristite Wink web komponente u bilo kojoj React aplikaciji s potpunom podrškom za TypeScript putem @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ ima izvornu podršku za prilagođene elemente. React 18 i stariji verzije prosljeđuju samo string atribute — koristite donji tipizirani pomoćni obrazac kako biste ostali sigurni kroz verzije.
+
+<LinkCard
+  title="@wink/elements npm paket"
+  href="/integrations/npm"
+  description="Instalirajte i učitajte CDN paket s TypeScript tipovima."
+/>
+
+## Instalacija
+
+```bash
+npm install @wink/elements
+```
+
+## Učitajte jednom na vrhu aplikacije
+
+Pozovite `load()` u vašoj komponenti najvišeg nivoa. Funkcija je idempotentna — sigurno ju je pozvati više puta.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Koristite komponente u JSX-u
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — deklarirajte JSX intrinseke
+
+React po defaultu ne prepoznaje nazive prilagođenih elemenata. Dodajte datoteku deklaracije jednom da uklonite greške tipa:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="Ograničenje atributa u React 18">
+React 18 i starije verzije serijaliziraju sve JSX propse u stringove prije nego ih proslijede DOM-u. Boolean i objekt propse morate ručno konvertirati. React 19 prosljeđuje ne-string propse direktno prilagođenim elementima — nije potreban nikakav zaobilazni način.
+</Aside>
+
+## Prosljeđivanje tipiziranih atributa (sigurno za React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread radi u React 19; za React 18 su sve vrijednosti ionako stringovi
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Daljnje čitanje
+
+- [Reference za Web Components](/hr/integrations/web-components)
+- [@wink/elements npm paket](/hr/integrations/npm)
+- [Next.js integracija](/hr/integrations/nextjs)

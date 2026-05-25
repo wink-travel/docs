@@ -1,0 +1,73 @@
+---
+title: Squarespace
+description: Inserte el inventario de viajes de Wink en su sitio web de Squarespace usando Code Injection y bloques HTML personalizados.
+sidebar:
+  order: 3
+---
+
+import { Steps, Aside } from '@astrojs/starlight/components';
+
+:::note
+La función Code Injection de Squarespace está disponible en el **plan Business y superiores**. Los bloques HTML personalizados están disponibles en todos los planes pagos.
+:::
+
+Squarespace soporta HTML y JavaScript personalizados, lo que significa que puede insertar cualquier componente web de Wink directamente en su sitio sin un plugin. Esta guía le muestra cómo cargar los scripts de Wink en todo el sitio y luego colocar componentes en páginas individuales.
+
+## Cargar scripts de Wink en todo el sitio
+
+Agregar los scripts al footer y header globales de su sitio significa que Wink estará disponible en cada página sin repetir la configuración.
+
+<Steps>
+1. En el editor de Squarespace, vaya a **Settings → Advanced → Code Injection**.
+2. En el campo **Header**, agregue la hoja de estilos:
+   ```html
+   <link rel="stylesheet" href="https://elements.wink.travel/styles.css">
+   ```
+3. En el campo **Footer**, agregue el script y el cargador de la aplicación (reemplace `YOUR_CLIENT_ID` con su Client ID de Wink):
+   ```html
+   <script src="https://elements.wink.travel/elements.js" type="module" defer></script>
+   <wink-app-loader client-id="YOUR_CLIENT_ID"></wink-app-loader>
+   ```
+4. Haga clic en **Save**.
+</Steps>
+
+:::tip
+Su Client ID está disponible en su cuenta de Wink bajo [Applications](/es-AR/portal/settings/applications).
+:::
+
+## Agregar un componente a una página
+
+Una vez que los scripts están cargados globalmente, puede colocar cualquier componente de Wink en cualquier página usando un **Code Block**.
+
+<Steps>
+1. Abra la página que desea editar.
+2. Haga clic en **Edit** y agregue un nuevo bloque de **Code** donde quiera que aparezca el componente.
+3. Pegue el HTML del componente, por ejemplo un content loader:
+   ```html
+   <wink-content-loader
+     layout="HOTEL"
+     id="YOUR_LAYOUT_ID"
+   ></wink-content-loader>
+   ```
+4. Haga clic en **Apply** y luego en **Save**.
+</Steps>
+
+## Componentes disponibles
+
+| Componente | Etiqueta HTML | Propósito |
+|---|---|---|
+| Content loader | `<wink-content-loader>` | Mostrar tarjetas de hoteles, grillas, mapas |
+| Lookup | `<wink-lookup>` | Barra de búsqueda para destinos |
+| Search button | `<wink-search-button>` | Abrir selector de itinerario |
+| Account button | `<wink-account-button>` | Iniciar sesión / menú de usuario |
+| Itinerary button | `<wink-itinerary-button>` | Mostrar itinerario actual |
+| Itinerary picker | `<wink-itinerary-picker>` | Formulario completo de itinerario |
+| Shopping cart | `<wink-shopping-cart-button>` | Botón resumen del carrito |
+
+Consulte [Web Components](/es-AR/integrations/web-components) para la referencia completa de atributos de cada componente.
+
+## Lectura adicional
+
+- [Referencia de Web Components](/es-AR/integrations/web-components)
+- [Obtenga su Client ID](/es-AR/portal/settings/applications)
+- [Documentación de Code Injection de Squarespace](https://support.squarespace.com/hc/en-us/articles/205815908)

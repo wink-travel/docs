@@ -1,0 +1,122 @@
+---
+title: Next.js
+description: Bættu við Wink vefhlutum í Next.js App Router og Pages Router forrit.
+sidebar:
+  order: 16
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink hlutar eru sérsniðin vefþættir sem keyra eingöngu í vafra — CDN skrár verða að hlaðast inn í vafra. Mynstrin hér að neðan ná til bæði **App Router** (Next.js 13+) og eldri **Pages Router**.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Settu upp og hlaðaðu inn CDN pakkanum með TypeScript týpum."
+/>
+
+## Setja upp
+
+```bash
+npm install @wink/elements
+```
+
+## App Router (Next.js 13+)
+
+Búðu til client component sem kallar á `load()` einu sinni og renderaðu það innan rótarlayouts þíns:
+
+```tsx
+// components/WinkLoader.tsx
+'use client';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export function WinkLoader() {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return null;
+}
+```
+
+```tsx
+// app/layout.tsx
+import { WinkLoader } from '@/components/WinkLoader';
+
+export default function RootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en">
+      <body>
+        <WinkLoader />
+        {children}
+      </body>
+    </html>
+  );
+}
+```
+
+Notaðu Wink hluti í hvaða **Client Component** sem er:
+
+```tsx
+// app/hotels/page.tsx
+'use client';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Server Components">
+`<wink-*>` taggar geta ekki verið renderaðir í Server Components þar sem sérsniðin vefþáttaskráning er eingöngu fyrir vafra. Bættu alltaf við `'use client'` í hvaða component sem renderar Wink þætti.
+</Aside>
+
+## Pages Router
+
+Hlaðaðu einu sinni í `_app.tsx`:
+
+```tsx
+// pages/_app.tsx
+import type { AppProps } from 'next/app';
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    load({ clientId: process.env.NEXT_PUBLIC_WINK_CLIENT_ID! });
+  }, []);
+  return <Component {...pageProps} />;
+}
+```
+
+Síðan notaðu Wink hluti í hvaða síðu sem er:
+
+```tsx
+// pages/hotels.tsx
+export default function HotelsPage() {
+  return <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />;
+}
+```
+
+## Umhverfisbreytur
+
+Bættu við í `.env.local`:
+
+```
+NEXT_PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+Forskeytið `NEXT_PUBLIC_` er nauðsynlegt til að gera breytuna aðgengilega í vafrapakkanum.
+
+## TypeScript týpur
+
+Bættu við yfirlýsingarskrá svo TypeScript þekki sérsniðin vefþáttaheiti í JSX — sjáðu [React integration síðu](/is/integrations/react#typescript--declare-jsx-intrinsics) fyrir fulla `wink-elements.d.ts` kóðabútinn.
+
+## Frekari lesning
+
+- [Web Components reference](/is/integrations/web-components)
+- [@wink/elements npm package](/is/integrations/npm)
+- [React integration](/is/integrations/react)

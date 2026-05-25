@@ -1,0 +1,111 @@
+---
+title: React
+description: Sử dụng các thành phần web Wink trong bất kỳ ứng dụng React nào với hỗ trợ đầy đủ TypeScript qua @wink/elements.
+sidebar:
+  order: 15
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+React 19+ hỗ trợ ưu việt cho các custom elements. React 18 và các phiên bản trước chỉ truyền các thuộc tính dạng chuỗi — sử dụng mẫu trợ giúp có kiểu dưới đây để đảm bảo an toàn qua các phiên bản.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Cài đặt và tải gói CDN kèm kiểu TypeScript."
+/>
+
+## Cài đặt
+
+```bash
+npm install @wink/elements
+```
+
+## Tải một lần tại gốc ứng dụng
+
+Gọi `load()` trong thành phần cấp cao nhất của bạn. Hàm này là idempotent — an toàn khi gọi nhiều lần.
+
+```tsx
+// src/App.tsx
+import { useEffect } from 'react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Sử dụng các thành phần trong JSX
+
+```tsx
+export default function HotelPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — khai báo JSX intrinsics
+
+React mặc định không nhận biết tên các custom element. Thêm một file khai báo một lần để loại bỏ lỗi kiểu:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'react' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & React.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & React.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+<Aside type="caution" title="Giới hạn thuộc tính React 18">
+React 18 và các phiên bản trước chuyển tất cả props JSX thành chuỗi trước khi truyền vào DOM. Các props kiểu boolean và object phải được chuyển đổi thủ công. React 19 truyền trực tiếp các props không phải chuỗi tới custom elements — không cần giải pháp thay thế.
+</Aside>
+
+## Truyền thuộc tính có kiểu (an toàn với React 18)
+
+```tsx
+import type { WinkContentLoaderAttributes } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL',
+  id: 'abc123',
+  sort: 'POPULARITY',
+};
+
+// Spread hoạt động trong React 19; với React 18 tất cả giá trị đều là chuỗi
+export default function HotelCard() {
+  return <wink-content-loader layout={attrs.layout} id={attrs.id} sort={attrs.sort} />;
+}
+```
+
+## Đọc thêm
+
+- [Tham khảo Web Components](/vi/integrations/web-components)
+- [@wink/elements npm package](/vi/integrations/npm)
+- [Tích hợp Next.js](/vi/integrations/nextjs)

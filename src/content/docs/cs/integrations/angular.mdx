@@ -1,0 +1,112 @@
+---
+title: Angular
+description: Používejte Wink webové komponenty v aplikacích Angular 14+ s CUSTOM_ELEMENTS_SCHEMA a @wink/elements.
+sidebar:
+  order: 17
+---
+
+import { Steps, Aside, LinkCard } from '@astrojs/starlight/components';
+
+Wink komponenty jsou samy o sobě Angular Elements — přirozeně se integrují do Angular aplikací. Jediná potřebná konfigurace je říct Angular kompilátoru, aby povolil neznámé názvy elementů.
+
+<LinkCard
+  title="@wink/elements npm balíček"
+  href="/integrations/npm"
+  description="Nainstalujte a načtěte CDN balíček s TypeScript typy."
+/>
+
+## Instalace
+
+```bash
+npm install @wink/elements
+```
+
+## Bootstrap — načtení CDN jednou
+
+Zavolejte `load()` před `bootstrapApplication` (nebo uvnitř `APP_INITIALIZER`):
+
+```ts
+// src/main.ts
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './portal/app.component';
+import { load } from '@wink/elements';
+
+load({ clientId: import.meta.env['NG_APP_WINK_CLIENT_ID'] });
+
+bootstrapApplication(AppComponent).catch(console.error);
+```
+
+## Povolení vlastních názvů elementů
+
+Přidejte `CUSTOM_ELEMENTS_SCHEMA` ke každé standalone komponentě (nebo modulu), která vykresluje tagy `<wink-*>`:
+
+```ts
+// src/portal/hotels/hotels.component.ts
+import { Component, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
+@Component({
+  selector: 'app-hotels',
+  standalone: true,
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+  template: `
+    <wink-content-loader layout="HOTEL" [id]="layoutId" />
+    <wink-lookup />
+  `,
+})
+export class HotelsComponent {
+  layoutId = 'YOUR_LAYOUT_ID';
+}
+```
+
+<Aside type="tip" title="Aplikace založené na NgModule">
+Pro aplikace založené na NgModule přidejte `CUSTOM_ELEMENTS_SCHEMA` do pole `schemas` dekorátoru `@NgModule`.
+</Aside>
+
+## Vazba atributů
+
+Angular syntax šablony pracuje přímo s atributy vlastních elementů jako s řetězci:
+
+```html
+<!-- Statické -->
+<wink-content-loader layout="HOTEL" id="abc123" />
+
+<!-- Dynamická vazba -->
+<wink-content-loader [attr.layout]="layout" [attr.id]="layoutId" />
+```
+
+Použijte vazbu `[attr.name]`, pokud je hodnota dynamická — běžná Angular vazba `[property]` cílí na DOM vlastnosti, nikoliv na HTML atributy, na kterých vlastní elementy závisí.
+
+## Proměnné prostředí
+
+Pro projekty `@angular/cli` 16+ použijte `environment.ts` nebo prefix `NG_APP_*` s `@ngx-env/builder`:
+
+```ts
+// src/environments/environment.ts
+export const environment = {
+  winkClientId: 'YOUR_CLIENT_ID',
+};
+```
+
+```ts
+// src/main.ts
+import { environment } from './environments/environment';
+load({ clientId: environment.winkClientId });
+```
+
+## TypeScript typy
+
+Balíček `@wink/elements` exportuje typované rozhraní pro všechny atributy komponent:
+
+```ts
+import type { WinkContentLoaderAttributes, WinkLayout } from '@wink/elements';
+
+const attrs: WinkContentLoaderAttributes = {
+  layout: 'HOTEL' as WinkLayout,
+  id: 'abc123',
+};
+```
+
+## Další čtení
+
+- [Reference Web Components](/cs/integrations/web-components)
+- [@wink/elements npm balíček](/cs/integrations/npm)

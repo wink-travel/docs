@@ -1,0 +1,115 @@
+---
+title: Remix
+description: useEffectを使ったクライアントのみの読み込みで、RemixアプリケーションにWinkのWebコンポーネントを追加します。
+sidebar:
+  order: 22
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Remixはデフォルトでサーバーサイドレンダリングを行うフルスタックフレームワークです。`useEffect`を使ってルートコンポーネント内でクライアント側のみでWink CDNを読み込みます。
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="TypeScript型定義付きでCDNバンドルをインストールして読み込みます。"
+/>
+
+## インストール
+
+```bash
+npm install @wink/elements
+```
+
+## app/root.tsxでの読み込み
+
+`useEffect`はブラウザでのみ実行され、サーバーサイドレンダリング時には実行されません：
+
+```tsx
+// app/root.tsx
+import { useEffect } from 'react';
+import {
+  Links, Meta, Outlet, Scripts, ScrollRestoration,
+} from '@remix-run/react';
+import { load } from '@wink/elements';
+
+export default function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return (
+    <html lang="en">
+      <head>
+        <Meta />
+        <Links />
+      </head>
+      <body>
+        <Outlet />
+        <ScrollRestoration />
+        <Scripts />
+      </body>
+    </html>
+  );
+}
+```
+
+## 環境変数
+
+Remix（Viteベース、v2.8以降）はブラウザに公開される変数として`import.meta.env`をサポートしています。ブラウザバンドルに公開するには`VITE_`で始まるプレフィックスを付けてください：
+
+```
+# .env
+VITE_WINK_CLIENT_ID=your-client-id
+```
+
+Node.jsアダプターを使った古いRemixセットアップの場合は、ルートローダーからクライアントIDを返し、コンポーネント内で読み取ります：
+
+```tsx
+// app/root.tsx
+import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+
+export async function loader() {
+  return json({ winkClientId: process.env.WINK_CLIENT_ID });
+}
+
+export default function App() {
+  const { winkClientId } = useLoaderData<typeof loader>();
+
+  useEffect(() => {
+    if (winkClientId) {
+      load({ clientId: winkClientId });
+    }
+  }, [winkClientId]);
+
+  // ...
+}
+```
+
+## ルートでの使用例
+
+```tsx
+// app/routes/hotels.tsx
+export default function HotelsRoute() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+    </main>
+  );
+}
+```
+
+<Aside type="caution" title="Hydration mismatch">
+RemixはサーバーでレンダリングされたHTMLをクライアントでハイドレートします。サーバーで`<wink-*>`要素がレンダリングされている場合、CDNスクリプトが登録されるまでブラウザが未解決のカスタム要素を一時的に表示することがあります。これは見た目の問題であり、スクリプトが読み込まれると要素は正しくアップグレードされます。
+</Aside>
+
+## TypeScript型定義
+
+[React統合ページ](/ja/integrations/react#typescript--declare-jsx-intrinsics)からJSXのintrinsic宣言ファイルを追加してください — Remixは内部でReactを使用しています。
+
+## さらに読む
+
+- [Web Componentsリファレンス](/ja/integrations/web-components)
+- [@wink/elements npm package](/ja/integrations/npm)
+- [React統合](/ja/integrations/react)

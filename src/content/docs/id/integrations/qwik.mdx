@@ -1,0 +1,120 @@
+---
+title: Qwik
+description: Gunakan komponen web Wink dalam aplikasi Qwik dan QwikCity dengan useVisibleTask$ untuk eksekusi hanya di klien.
+sidebar:
+  order: 26
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Model resumabilitas Qwik berarti JavaScript dijalankan secara malas — hanya saat pengguna berinteraksi. Gunakan `useVisibleTask$` untuk menjalankan kode yang harus dieksekusi di browser saat komponen menjadi terlihat.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Pasang dan muat bundel CDN dengan tipe TypeScript."
+/>
+
+## Pasang
+
+```bash
+npm install @wink/elements
+```
+
+## Muat dengan useVisibleTask$
+
+`useVisibleTask$` adalah lifecycle hook Qwik untuk kode yang hanya dijalankan di browser secara cepat. Tempatkan di layout root Anda:
+
+```tsx
+// src/routes/layout.tsx
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
+import { load } from '@wink/elements';
+
+export default component$(() => {
+  useVisibleTask$(() => {
+    load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+  });
+
+  return (
+    <main>
+      <Slot />
+    </main>
+  );
+});
+```
+
+<Aside type="tip" title="Strategi useVisibleTask$">
+Secara default `useVisibleTask$` dijalankan saat komponen terlihat di viewport. Untuk layout root yang selalu terlihat, ini langsung dijalankan saat halaman dimuat — setara dengan `onMount` di framework lain.
+
+Berikan `{ strategy: 'document-ready' }` jika Anda ingin skrip dimuat secepat mungkin:
+```ts
+useVisibleTask$({ strategy: 'document-ready' }, () => {
+  load({ clientId: import.meta.env.PUBLIC_WINK_CLIENT_ID });
+});
+```
+</Aside>
+
+## Gunakan di halaman
+
+```tsx
+// src/routes/hotels/index.tsx
+import { component$ } from '@builder.io/qwik';
+
+export default component$(() => {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+});
+```
+
+## TypeScript — deklarasikan JSX intrinsics
+
+Qwik menggunakan namespace JSX sendiri. Perluas di file deklarasi:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module '@builder.io/qwik' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes;
+      'wink-lookup': WinkLookupAttributes;
+      'wink-search-button': WinkSearchButtonAttributes;
+      'wink-account-button': WinkAccountButtonAttributes;
+      'wink-itinerary-button': WinkItineraryButtonAttributes;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes;
+      'wink-app-loader': WinkAppLoaderAttributes;
+    }
+  }
+}
+```
+
+## Variabel lingkungan
+
+Qwik (berbasis Vite) mengekspos variabel yang diawali dengan `PUBLIC_` ke browser:
+
+```
+# .env
+PUBLIC_WINK_CLIENT_ID=your-client-id
+```
+
+<Aside type="caution" title="Rendering sisi server">
+Qwik merender ke HTML di server. Tag `<wink-*>` dikeluarkan sebagai markup statis. Skrip CDN dan pendaftaran elemen kustom terjadi di sisi klien setelah `useVisibleTask$` dijalankan. Elemen-elemen akan dalam keadaan belum terpecahkan sebentar sampai bundel CDN dimuat — ini adalah perilaku yang diharapkan.
+</Aside>
+
+## Bacaan lebih lanjut
+
+- [Referensi Web Components](/id/integrations/web-components)
+- [@wink/elements npm package](/id/integrations/npm)

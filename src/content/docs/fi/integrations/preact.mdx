@@ -1,0 +1,103 @@
+---
+title: Preact
+description: Käytä Wink-verkkokomponentteja Preact-sovelluksissa — sama malli kuin Reactissa, mutta pienemmällä jalanjäljellä.
+sidebar:
+  order: 24
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Preactin API on yhteensopiva Reactin kanssa. Integraatio noudattaa samaa mallia — kutsu `load()` kerran sovelluksen käynnistyessä, ja käytä sitten `<wink-*>` tageja JSX:ssä.
+
+<LinkCard
+  title="@wink/elements npm package"
+  href="/integrations/npm"
+  description="Asenna ja lataa CDN-paketti TypeScript-tyyppien kanssa."
+/>
+
+## Asennus
+
+```bash
+npm install @wink/elements
+```
+
+## Lataa kerran sovelluksen käynnistyessä
+
+```tsx
+// src/app.tsx
+import { useEffect } from 'preact/hooks';
+import { load } from '@wink/elements';
+
+export function App() {
+  useEffect(() => {
+    load({ clientId: import.meta.env.VITE_WINK_CLIENT_ID });
+  }, []);
+
+  return <YourRoutes />;
+}
+```
+
+## Käyttö JSX:ssä
+
+```tsx
+// src/pages/hotels.tsx
+export function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript — määrittele JSX intrinsics
+
+Preactin JSX-nimiavaruus on erillinen Reactin vastaavasta. Laajenna `preact/src/jsx.d.ts`:
+
+```ts
+// src/wink-elements.d.ts
+import type {
+  WinkContentLoaderAttributes,
+  WinkLookupAttributes,
+  WinkSearchButtonAttributes,
+  WinkAccountButtonAttributes,
+  WinkItineraryButtonAttributes,
+  WinkShoppingCartButtonAttributes,
+  WinkAppLoaderAttributes,
+} from '@wink/elements';
+
+declare module 'preact' {
+  namespace JSX {
+    interface IntrinsicElements {
+      'wink-content-loader': WinkContentLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-lookup': WinkLookupAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-search-button': WinkSearchButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-account-button': WinkAccountButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-itinerary-button': WinkItineraryButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-shopping-cart-button': WinkShoppingCartButtonAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+      'wink-app-loader': WinkAppLoaderAttributes & preact.JSX.HTMLAttributes<HTMLElement>;
+    }
+  }
+}
+```
+
+## Preact `preact/compat`-yhteensopivuudella
+
+Jos aliasoit Reactin `preact/compat`-moduuliin, käytä Reactin JSX-määrittelyjä:
+
+```ts
+// src/wink-elements.d.ts
+// Käytä Reactin JSX-määrittelyä /integrations/react-kansiosta
+// — preact/compat uudelleenvientinä Reactin JSX-nimiavaruudelle
+```
+
+<Aside type="tip">
+Preactin pienempi paketin koko sopii hyvin Wink-komponenttien upottamiseen suorituskykykriittisiin verkkokauppoihin. `@wink/elements`-paketin `load()`-funktio lisää noin 500 tavua pakattuna — suurin osa painosta tulee CDN-paketista, joka ladataan asynkronisesti.
+</Aside>
+
+## Lisälukemista
+
+- [Web Components -viite](/fi/integrations/web-components)
+- [@wink/elements npm package](/fi/integrations/npm)
+- [React-integraatio](/fi/integrations/react)

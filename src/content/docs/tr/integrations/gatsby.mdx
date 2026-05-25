@@ -1,0 +1,90 @@
+---
+title: Gatsby
+description: İstemci tarafı yükleme için gatsby-browser.js kullanarak Wink web bileşenlerini Gatsby sitelerine ekleyin.
+sidebar:
+  order: 23
+---
+
+import { Aside, LinkCard } from '@astrojs/starlight/components';
+
+Gatsby, derleme zamanında statik HTML oluşturur ve istemci tarafında yeniden canlandırır. CDN betikleri yalnızca tarayıcı API'lerinde yüklenmelidir — `gatsby-browser.js` doğru yerdir.
+
+<LinkCard
+  title="@wink/elements npm paketi"
+  href="/integrations/npm"
+  description="TypeScript tipleri ile CDN paketini yükleyin ve kurun."
+/>
+
+## Kurulum
+
+```bash
+npm install @wink/elements
+```
+
+## gatsby-browser.js üzerinden yükleme
+
+`onClientEntry` API'si, Gatsby'nin çalışma zamanı tarayıcıda başlar başlamaz bir kez çalışır:
+
+```js
+// gatsby-browser.js
+import { load } from '@wink/elements';
+
+export function onClientEntry() {
+  load({ clientId: process.env.GATSBY_WINK_CLIENT_ID });
+}
+```
+
+## Ortam değişkenleri
+
+Gatsby, yalnızca `GATSBY_` ile başlayan değişkenleri tarayıcı paketine açar:
+
+```
+# .env.production
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+```
+# .env.development
+GATSBY_WINK_CLIENT_ID=your-client-id
+```
+
+## Sayfalarda ve bileşenlerde kullanımı
+
+```tsx
+// src/pages/hotels.tsx
+import React from 'react';
+
+export default function HotelsPage() {
+  return (
+    <main>
+      <wink-content-loader layout="HOTEL" id="YOUR_LAYOUT_ID" />
+      <wink-lookup />
+    </main>
+  );
+}
+```
+
+## TypeScript
+
+Gatsby React kullanır, bu yüzden React entegrasyonundaki aynı JSX intrinsic bildirimlerini ekleyin:
+
+```ts
+// src/wink-elements.d.ts
+// Tam bildirim dosyası için /integrations/react bölümüne bakınız
+```
+
+<Aside type="caution" title="SSR derleme hataları">
+`gatsby build` sırasında, Gatsby sayfaları Node.js ortamında statik HTML olarak render eder; burada `window` ve `document` mevcut değildir. Eğer `@wink/elements`'i bir sayfa bileşeninin en üst seviyesinde (yani `onClientEntry` dışında) import ederseniz, derleme başarısız olur.
+
+Her zaman `gatsby-browser.js` / `onClientEntry` kullanın — `load`'u doğrudan bir sayfa veya bileşen modülünde import etmeyin.
+</Aside>
+
+## gatsby-ssr.js — değişiklik gerekmez
+
+`gatsby-ssr.js` dosyasını değiştirmenize gerek yoktur. `<wink-*>` etiketleri statik çıktı olarak düz HTML elemanları şeklinde render edilir ve CDN betiği sayfa tarayıcıda yüklendiğinde bunları yükseltir.
+
+## Daha fazla okuma
+
+- [Web Components referansı](/tr/integrations/web-components)
+- [@wink/elements npm paketi](/tr/integrations/npm)
+- [React entegrasyonu](/tr/integrations/react)
