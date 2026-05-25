@@ -16,7 +16,7 @@ import {
   renameSync,
   rmdirSync,
 } from "fs";
-import { resolve, join, dirname, relative, posix } from "path";
+import { resolve, join, dirname, relative } from "path";
 import { fileURLToPath } from "url";
 import { execFileSync } from "child_process";
 

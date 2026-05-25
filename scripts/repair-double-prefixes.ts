@@ -46,7 +46,6 @@ for (const rel of all) {
   let updated = original;
   let fileReplacements = 0;
   for (const [re, replacement] of patterns) {
-    const before = updated;
     updated = updated.replace(re, () => {
       fileReplacements++;
       return replacement;

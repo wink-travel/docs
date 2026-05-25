@@ -120,7 +120,7 @@ const expandMoves = (): FileMove[] => {
     })),
   ];
 
-  for (const { root, prefix } of scopes) {
+  for (const { root } of scopes) {
     // Directory moves: walk each old dir and emit per-file moves.
     for (const [oldDir, newDir] of Object.entries(mapping.dirMoves)) {
       const oldAbs = join(root, oldDir);

@@ -84,7 +84,7 @@ const rewriteLinksOnContent = (content: string, lang: string): string => {
 
   // LinkButton components: <LinkButton ... href="/path" ...>
   const linkButtonHrefRegex = /(<LinkButton\b[^>]*?\bhref=(["']))(\/[^"']*)(\2)/g;
-  updated = updated.replace(linkButtonHrefRegex, (full, pre, quote, href, postQuote) => {
+  updated = updated.replace(linkButtonHrefRegex, (full, pre, _quote, href, postQuote) => {
     if (href.startsWith(`/${lang}/`) || hasAnyLocalePrefix(href)) return full;
     return `${pre}/${lang}${href}${postQuote}`;
   });
@@ -109,7 +109,7 @@ const rewriteCommonHrefPrefixes = (content: string, lang: string): string => {
   const propNames = ["badgeHref", "secondaryButtonHref"];
   for (const propName of propNames) {
     const r = new RegExp(`(\\b${propName}=([\"\']))(\/[^\"']*)(\\2)`, "g");
-    updated = updated.replace(r, (full, pre, quote, href, post) => {
+    updated = updated.replace(r, (full, pre, quote, href, _post) => {
       const newHref = withLang(href);
       if (newHref === href) return full;
       return `${pre}${newHref}${quote}`;
@@ -121,7 +121,7 @@ const rewriteCommonHrefPrefixes = (content: string, lang: string): string => {
   if (fmMatch) {
     const fmFull = fmMatch[0];
     const fmBody = fmMatch[1];
-    const fmUpdated = fmBody.replace(/(<a\b[^>]*?\bhref=(['\"]))(\/[^'\"]*)(\2)/g, (full, pre, quote, href, post) => {
+    const fmUpdated = fmBody.replace(/(<a\b[^>]*?\bhref=(['\"]))(\/[^'\"]*)(\2)/g, (full, pre, quote, href, _post) => {
       const newHref = withLang(href);
       if (newHref === href) return full;
       return `${pre}${newHref}${quote}`;
