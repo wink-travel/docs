@@ -39,7 +39,7 @@ const { badge = "Contact", heading = "Send Us a Message", description = "Fill ou
 
   <Card class="mt-10">
     <CardContent class="p-6 @xl:p-8">
-      <form class="space-y-6" id="contact-form-02" name="contact-form" action="/api/actions/email" novalidate>
+      <form class="space-y-6" id="contact-form-02" name="contact-form" action="/api/contact" novalidate>
         <div class="grid gap-6 @xl:grid-cols-2">
           <div class="flex flex-col gap-1">
             <Label for="contact-name-02">Full Name</Label>
@@ -83,47 +83,47 @@ const { badge = "Contact", heading = "Send Us a Message", description = "Fill ou
 </section>
 
 <script>
-
-
-  async function handleFormSubmit() {
+  function handleFormSubmit() {
     const form = document.querySelector("#contact-form-02") as HTMLFormElement;
     const messageEl = document.getElementById("form-message");
 
-    if (form && messageEl) {
-      form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-        messageEl.textContent = "Sending...";
-        messageEl.style.color = "#2563eb"; // blue-600
+    if (!form || !messageEl) return;
 
-        try {
-          const formData = new FormData(form);
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      messageEl.textContent = "Sending...";
+      messageEl.className = "text-center font-medium mt-2 min-h-[1.5em] text-blue-600";
 
-          const response = await fetch(form.action, {
-            method: "POST",
-            body: formData,
-          });
+      const formData = new FormData(form);
+      const body = Object.fromEntries(formData.entries());
 
-          const result = await response.json();
+      try {
+        const response = await fetch(form.action, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(body),
+        });
 
-          if (result.success) {
-            messageEl.textContent = "Thank you! Your message has been sent.";
-            messageEl.style.color = "#16a34a"; // green-600
-            form.reset();
-          } else {
-            const errorMsg = result.errors ? Object.values(result.errors).filter(Boolean).join(". ") : result.error || "Something went wrong. Please try again.";
+        const result = await response.json();
 
-            messageEl.textContent = errorMsg;
-            messageEl.style.color = "#dc2626"; // red-600
-          }
-        } catch (err) {
-          messageEl.textContent = "Network error. Please check your connection and try again.";
-          messageEl.style.color = "#dc2626";
+        if (result.success) {
+          messageEl.textContent = "Thank you! Your message has been sent.";
+          messageEl.className = "text-center font-medium mt-2 min-h-[1.5em] text-green-600";
+          form.reset();
+        } else {
+          const errorMsg = result.errors
+            ? Object.values(result.errors).filter(Boolean).join(". ")
+            : result.error || "Something went wrong. Please try again.";
+          messageEl.textContent = errorMsg;
+          messageEl.className = "text-center font-medium mt-2 min-h-[1.5em] text-red-600";
         }
-      });
-    }
+      } catch {
+        messageEl.textContent = "Network error. Please check your connection and try again.";
+        messageEl.className = "text-center font-medium mt-2 min-h-[1.5em] text-red-600";
+      }
+    });
   }
 
   handleFormSubmit();
-
   document.addEventListener("astro:after-swap", handleFormSubmit);
 </script>
