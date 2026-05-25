@@ -68,6 +68,28 @@ const fixFrontmatterColons = (content: string): string => {
   return content.replace(fullFm, `${open}${fixedBody}${close}`);
 };
 
+// Fix YAML frontmatter scalar values that start with a character YAML reserves
+// as an indicator (@, `, *, &, !, {, [, %, #). Unquoted values starting with
+// these characters cause parse errors such as "bad indentation of a mapping entry".
+const fixFrontmatterSpecialStartChars = (content: string): string => {
+  const fmMatch = content.match(/^(---\n)([\s\S]*?)(\n---)/);
+  if (!fmMatch) return content;
+
+  const [fullFm, open, fmBody, close] = fmMatch;
+
+  const fixedBody = fmBody.replace(
+    /^(\s*[\w-]+:\s+)(?!["'|>~])(.+)$/gm,
+    (line, keyPart, value) => {
+      if (!/^[@`*&!\{[%#]/.test(value)) return line;
+      const escaped = value.replace(/"/g, '\\"');
+      return `${keyPart}"${escaped}"`;
+    }
+  );
+
+  if (fixedBody === fmBody) return content;
+  return content.replace(fullFm, `${open}${fixedBody}${close}`);
+};
+
 // Minimal link rewriter for docs content (md/mdx):
 // - Markdown links only: [text](/path) -> [text](/<lang>/path)
 // Skips if already has any locale prefix (/xx/ or /xx-YY/)
@@ -385,7 +407,9 @@ async function translateFile(
     return;
   }
 
-  let output = fixQuotedFrontmatterNestedValues(fixFrontmatterColons(translatedFile));
+  let output = fixFrontmatterSpecialStartChars(
+    fixQuotedFrontmatterNestedValues(fixFrontmatterColons(translatedFile))
+  );
   // Post-process all doc files: add locale prefixes to root-relative links
   const outExt = extname(relativePath).toLowerCase();
   if (outExt === ".md" || outExt === ".mdx") {
