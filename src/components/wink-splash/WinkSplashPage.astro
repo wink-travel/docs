@@ -1,0 +1,520 @@
+---
+type Link = {
+  label?: string;
+  href?: string;
+  className?: string;
+};
+
+type Card = {
+  badge?: string;
+  title?: string;
+  body?: string;
+  caption?: string;
+  className?: string;
+  link?: Link;
+  src?: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+};
+
+type Block = {
+  id?: string;
+  type?: string;
+  fields?: Record<string, any>;
+};
+
+type PageData = {
+  id?: string;
+  route?: string;
+  seo?: Record<string, any>;
+  content?: {
+    h1?: string;
+    summary?: string;
+    blocks?: Block[];
+  };
+  analysis?: {
+    schemaTypes?: string[];
+    faqQuestions?: string[];
+  };
+};
+
+const { page } = Astro.props as { page: PageData };
+
+const blocks = page.content?.blocks ?? [];
+const hero = blocks.find((block) => block.type === "hero");
+const heroFields = hero?.fields ?? {};
+const contentBlocks = blocks
+  .filter((block) => block.type !== "hero")
+  .map((block, index) => ({
+    ...block,
+    fields: block.fields ?? {},
+    index,
+    isDark: String(block.fields?.sectionClass ?? "").includes("dark"),
+  }));
+
+const firstCards =
+  blocks.find((block) => block.type === "card_grid")?.fields?.cards?.slice(0, 3) ?? [];
+
+const asset = (src?: string) => {
+  if (!src) return "";
+  if (src.startsWith("http") || src.startsWith("/")) return src;
+  return `/${src}`;
+};
+
+const buttonClass = (className?: string) => {
+  const value = className ?? "";
+
+  if (value.includes("orange")) {
+    return "inline-flex items-center justify-center rounded-full bg-[#ff7a1a] px-6 py-3 text-sm font-black text-[#19091f] shadow-lg shadow-orange-500/20 transition hover:-translate-y-0.5 hover:bg-[#ff9848] focus:outline-none focus:ring-2 focus:ring-[#ff7a1a] focus:ring-offset-2";
+  }
+
+  if (value.includes("white")) {
+    return "inline-flex items-center justify-center rounded-full border border-white/40 bg-white px-6 py-3 text-sm font-black text-[#19091f] shadow-lg shadow-black/10 transition hover:-translate-y-0.5 hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2";
+  }
+
+  return "inline-flex items-center justify-center rounded-full bg-[#8039d8] px-6 py-3 text-sm font-black text-white shadow-lg shadow-purple-500/20 transition hover:-translate-y-0.5 hover:bg-[#6f2fc3] focus:outline-none focus:ring-2 focus:ring-[#8039d8] focus:ring-offset-2";
+};
+
+const sectionTone = (index: number) => {
+  const tones = [
+    "from-[#fff7ed] via-white to-[#f5edff]",
+    "from-[#f6f1ff] via-white to-[#edfff8]",
+    "from-[#f0f8ff] via-white to-[#fff4fb]",
+  ];
+  return tones[index % tones.length];
+};
+
+const faqItems = contentBlocks
+  .filter((block) => block.type === "faq")
+  .flatMap((block) => block.fields?.items ?? []);
+
+const schemaGraph: Record<string, any>[] = [
+  {
+    "@type": "Organization",
+    "@id": "https://www.wink.travel/#organization",
+    name: "Wink",
+    url: "https://www.wink.travel/",
+    logo: "https://www.wink.travel/assets/wink-logo-purple.png",
+  },
+  {
+    "@type": page.analysis?.schemaTypes?.includes("Article") ? "Article" : "WebPage",
+    "@id": page.seo?.canonical ?? `https://www.wink.travel${page.route ?? "/"}`,
+    name: page.seo?.title ?? page.content?.h1,
+    headline: page.content?.h1,
+    description: page.seo?.metaDescription ?? page.content?.summary,
+    isPartOf: { "@id": "https://www.wink.travel/#organization" },
+  },
+];
+
+if (faqItems.length > 0) {
+  schemaGraph.push({
+    "@type": "FAQPage",
+    mainEntity: faqItems.map((item: any) => ({
+      "@type": "Question",
+      name: item.question,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: item.answer,
+      },
+    })),
+  });
+}
+
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": schemaGraph,
+};
+---
+
+<script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+
+<div class="not-content wink-splash overflow-hidden bg-white text-[#13071f]">
+  {
+    hero && (
+      <section class="relative isolate min-h-[78vh] overflow-hidden bg-[#140720] text-white">
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(128,57,216,.5),transparent_28%),radial-gradient(circle_at_85%_18%,rgba(255,122,26,.34),transparent_24%),linear-gradient(135deg,#13071f_0%,#241038_50%,#3c1268_100%)]" />
+        <div class="absolute inset-x-0 bottom-0 h-2 bg-linear-to-r from-[#ff7a1a] via-[#ffef6a] to-[#8039d8]" />
+        <div class="relative mx-auto grid max-w-7xl gap-12 px-5 py-20 md:grid-cols-[1.02fr_.98fr] md:px-8 md:py-28">
+          <div class="flex flex-col justify-center">
+            {heroFields.kicker && (
+              <p class="mb-5 text-sm font-black uppercase tracking-[0.18em] text-[#ffb25f] md:text-base">
+                {heroFields.kicker}
+              </p>
+            )}
+            <h1 class="max-w-4xl text-balance text-5xl font-black leading-[0.92] tracking-tight md:text-7xl lg:text-8xl">
+              {heroFields.h1 ?? page.content?.h1}
+            </h1>
+            {heroFields.lead && (
+              <p class="mt-7 max-w-3xl text-pretty text-lg leading-8 text-white/84 md:text-xl">
+                {heroFields.lead}
+              </p>
+            )}
+            {heroFields.actions?.length > 0 && (
+              <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+                {heroFields.actions.map((action: Link) => (
+                  <a class={buttonClass(action.className)} href={action.href ?? "#"}>
+                    {action.label}
+                  </a>
+                ))}
+              </div>
+            )}
+            {heroFields.supportLine && (
+              <p class="mt-6 max-w-2xl text-sm font-semibold text-white/70">
+                {heroFields.supportLine}
+              </p>
+            )}
+          </div>
+
+          <div class="relative min-h-[460px]">
+            {heroFields.visuals?.length > 0 ? (
+              <div class="relative h-full min-h-[460px] rounded-[2rem] border border-white/15 bg-white/10 p-4 shadow-2xl shadow-black/25 backdrop-blur">
+                <div class="absolute right-6 top-6 z-10 rounded-full bg-white px-4 py-2 text-xs font-black uppercase tracking-[0.14em] text-[#8039d8] shadow-lg">
+                  {heroFields.routeChip || heroFields.visualLabel || "Bookable flow"}
+                </div>
+                <div class="grid h-full grid-cols-2 gap-4">
+                  {heroFields.visuals.map((visual: Card, visualIndex: number) => (
+                    <figure
+                      class:list={[
+                        "overflow-hidden rounded-[1.35rem] border border-white/15 bg-white shadow-xl",
+                        visualIndex === 0 && "row-span-2",
+                        visualIndex === 2 && "col-span-2",
+                      ]}
+                    >
+                      <img
+                        src={asset(visual.src)}
+                        alt={visual.alt ?? ""}
+                        width={visual.width}
+                        height={visual.height}
+                        class="h-full w-full object-cover"
+                        loading={visualIndex === 0 ? "eager" : "lazy"}
+                      />
+                    </figure>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <div class="relative h-full min-h-[460px] rounded-[2rem] border border-white/15 bg-white/10 p-5 shadow-2xl shadow-black/25 backdrop-blur">
+                <div class="mb-5 flex items-center gap-2">
+                  <span class="size-3 rounded-full bg-[#ff7a1a]" />
+                  <span class="size-3 rounded-full bg-[#ffef6a]" />
+                  <span class="size-3 rounded-full bg-[#8039d8]" />
+                </div>
+                <div class="grid gap-4">
+                  {firstCards.map((card: Card, cardIndex: number) => (
+                    <article class="rounded-[1.4rem] bg-white p-5 text-[#15071f] shadow-xl">
+                      <span class="text-xs font-black uppercase tracking-[0.18em] text-[#8039d8]">
+                        0{cardIndex + 1}
+                      </span>
+                      <h2 class="mt-3 text-2xl font-black">{card.title}</h2>
+                      <p class="mt-2 leading-7 text-[#5f5668]">{card.body}</p>
+                    </article>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+    )
+  }
+
+  {
+    contentBlocks.map((block) => (
+      <>
+        {block.type === "direct_answer" && (
+          <section class="bg-white px-5 py-16 md:px-8 md:py-24" id={block.id}>
+            <div class="mx-auto max-w-7xl rounded-[2rem] border border-[#e8ddf6] bg-[#f6f1ff] p-8 shadow-xl shadow-purple-950/5 md:p-12">
+              {block.fields.kicker && (
+                <p class="text-sm font-black uppercase tracking-[0.18em] text-[#8039d8] md:text-base">
+                  {block.fields.kicker}
+                </p>
+              )}
+              <div class="mt-6 grid gap-8 md:grid-cols-[.75fr_1.25fr] md:items-end">
+                <h2 id={block.fields.titleId} class="text-balance text-4xl font-black leading-tight md:text-6xl">
+                  {block.fields.heading}
+                </h2>
+                <div>
+                  <p class="text-pretty text-xl leading-9 text-[#51465d]">{block.fields.body}</p>
+                  {block.fields.link?.href && (
+                    <a class={`${buttonClass(block.fields.link.className)} mt-7`} href={block.fields.link.href}>
+                      {block.fields.link.label}
+                    </a>
+                  )}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {block.type === "card_grid" && (
+          <section
+            class:list={[
+              "px-5 py-16 md:px-8 md:py-24",
+              block.isDark ? "bg-[#12071f] text-white" : `bg-linear-to-br ${sectionTone(block.index)}`,
+            ]}
+            id={block.id}
+          >
+            <div class="mx-auto max-w-7xl">
+              {block.fields.kicker && (
+                <p
+                  class:list={[
+                    "text-sm font-black uppercase tracking-[0.18em] md:text-base",
+                    block.isDark ? "text-[#ff9848]" : "text-[#8039d8]",
+                  ]}
+                >
+                  {block.fields.kicker}
+                </p>
+              )}
+              <div class="mt-5 max-w-4xl">
+                <h2 id={block.fields.titleId} class="text-balance text-4xl font-black leading-tight md:text-6xl">
+                  {block.fields.heading}
+                </h2>
+                {block.fields.body && (
+                  <p
+                    class:list={[
+                      "mt-5 text-pretty text-lg leading-8 md:text-xl",
+                      block.isDark ? "text-white/76" : "text-[#5f5668]",
+                    ]}
+                  >
+                    {block.fields.body}
+                  </p>
+                )}
+              </div>
+              <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+                {(block.fields.cards ?? []).map((card: Card) => (
+                  <article
+                    class:list={[
+                      "group min-h-full rounded-[1.5rem] border p-6 transition hover:-translate-y-1",
+                      block.isDark
+                        ? "border-white/14 bg-white/[0.07] shadow-xl shadow-black/20"
+                        : "border-[#eadff4] bg-white shadow-xl shadow-purple-950/5",
+                    ]}
+                  >
+                    {card.badge && (
+                      <span class="mb-6 inline-flex rounded-xl bg-[#ff7a1a] px-3 py-2 text-sm font-black text-[#16071f]">
+                        {card.badge}
+                      </span>
+                    )}
+                    {!card.badge && (
+                      <span class="mb-6 block h-1.5 w-14 rounded-full bg-[#ff7a1a]" />
+                    )}
+                    <h3 class="text-2xl font-black">{card.title}</h3>
+                    {card.body && (
+                      <p
+                        class:list={[
+                          "mt-4 text-base leading-7",
+                          block.isDark ? "text-white/74" : "text-[#60566b]",
+                        ]}
+                      >
+                        {card.body}
+                      </p>
+                    )}
+                    {card.link?.href && (
+                      <a
+                        class:list={[
+                          "mt-6 inline-flex font-black",
+                          block.isDark ? "text-[#ffb25f]" : "text-[#8039d8]",
+                        ]}
+                        href={card.link.href}
+                      >
+                        {card.link.label} →
+                      </a>
+                    )}
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {block.type === "feature_split" && block.fields.variant === "platform" && (
+          <section class="bg-white px-5 py-16 md:px-8 md:py-24" id={block.id}>
+            <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.86fr_1.14fr] lg:items-center">
+              <div>
+                <p class="text-sm font-black uppercase tracking-[0.18em] text-[#8039d8] md:text-base">
+                  {block.fields.kicker}
+                </p>
+                <h2 id={block.fields.titleId} class="mt-5 text-balance text-4xl font-black leading-tight md:text-6xl">
+                  {block.fields.heading}
+                </h2>
+                <p class="mt-5 text-pretty text-lg leading-8 text-[#5f5668] md:text-xl">{block.fields.body}</p>
+                {block.fields.action?.href && (
+                  <a class={`${buttonClass(block.fields.action.className)} mt-8`} href={block.fields.action.href}>
+                    {block.fields.action.label}
+                  </a>
+                )}
+              </div>
+              <div class="rounded-[2rem] border border-[#eadff4] bg-[#faf7ff] p-5 shadow-2xl shadow-purple-950/10">
+                <div class="grid gap-4 sm:grid-cols-2">
+                  {(block.fields.diagram?.modules ?? []).map((module: string) => (
+                    <div class="rounded-2xl bg-white p-5 shadow-lg shadow-purple-950/5">
+                      <span class="block h-1.5 w-12 rounded-full bg-[#8039d8]" />
+                      <strong class="mt-5 block text-xl">{module}</strong>
+                    </div>
+                  ))}
+                </div>
+                <div class="my-5 rounded-2xl bg-[#12071f] p-6 text-center text-2xl font-black text-white">
+                  {block.fields.diagram?.foundation}
+                </div>
+                <div class="grid gap-3 sm:grid-cols-3">
+                  {(block.fields.diagram?.layers ?? []).map((layer: string) => (
+                    <span class="rounded-full bg-[#ffecdc] px-4 py-3 text-center text-sm font-black text-[#5b2400]">
+                      {layer}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            {block.fields.modules?.length > 0 && (
+              <div class="mx-auto mt-12 grid max-w-7xl gap-5 md:grid-cols-2 lg:grid-cols-4">
+                {block.fields.modules.map((card: Card) => (
+                  <article class="rounded-[1.35rem] border border-[#eadff4] bg-white p-6 shadow-xl shadow-purple-950/5">
+                    <h3 class="text-2xl font-black">{card.title}</h3>
+                    <p class="mt-4 leading-7 text-[#5f5668]">{card.body}</p>
+                  </article>
+                ))}
+              </div>
+            )}
+          </section>
+        )}
+
+        {block.type === "feature_split" && block.fields.variant === "product_experience" && (
+          <section class="bg-[linear-gradient(135deg,#ffffff_0%,#fbf7ff_100%)] px-5 py-16 md:px-8 md:py-24" id={block.id}>
+            <div class="mx-auto max-w-7xl">
+              <p class="text-sm font-black uppercase tracking-[0.18em] text-[#8039d8] md:text-base">
+                {block.fields.kicker}
+              </p>
+              <div class="mt-5 grid gap-8 lg:grid-cols-[1fr_.72fr] lg:items-end">
+                <div>
+                  <h2 id={block.fields.titleId} class="text-balance text-4xl font-black leading-tight md:text-6xl">
+                    {block.fields.heading}
+                  </h2>
+                  <p class="mt-5 max-w-3xl text-lg leading-8 text-[#5f5668] md:text-xl">{block.fields.body}</p>
+                </div>
+                <aside class="rounded-[1.7rem] bg-[#12071f] p-7 text-white shadow-2xl shadow-purple-950/20">
+                  <p class="text-sm font-black uppercase tracking-[0.18em] text-[#ff9848]">
+                    {block.fields.copy?.kicker}
+                  </p>
+                  <h3 class="mt-5 text-3xl font-black leading-tight">{block.fields.copy?.heading}</h3>
+                  <p class="mt-4 leading-7 text-white/76">{block.fields.copy?.body}</p>
+                  {block.fields.copy?.items?.length > 0 && (
+                    <ul class="mt-5 space-y-3">
+                      {block.fields.copy.items.map((item: string) => (
+                        <li class="flex gap-3 text-sm font-bold text-white/86">
+                          <span class="mt-1 size-2 shrink-0 rounded-full bg-[#ff7a1a]" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </aside>
+              </div>
+              <div class="mt-10 flex snap-x gap-5 overflow-x-auto pb-5">
+                {(block.fields.moments ?? []).map((moment: Card) => (
+                  <figure class="min-w-[82%] snap-center rounded-[1.6rem] border border-[#eadff4] bg-white p-4 shadow-2xl shadow-purple-950/8 sm:min-w-[520px] lg:min-w-[640px]">
+                    <div class="flex h-[420px] items-center justify-center overflow-hidden rounded-[1.2rem] bg-[#f5edff] p-5">
+                      <img
+                        src={asset(moment.src)}
+                        alt={moment.alt ?? ""}
+                        width={moment.width}
+                        height={moment.height}
+                        class="max-h-full max-w-full rounded-xl object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                    {moment.caption && (
+                      <figcaption class="mt-4 flex items-center justify-between text-sm font-black text-[#8039d8]">
+                        <span>{moment.caption}</span>
+                        <span>Swipe →</span>
+                      </figcaption>
+                    )}
+                  </figure>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {block.type === "pricing_table" && (
+          <section class="bg-white px-5 py-16 md:px-8 md:py-24" id={block.id}>
+            <div class="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[.85fr_1.15fr] lg:items-center">
+              <div>
+                <p class="text-sm font-black uppercase tracking-[0.18em] text-[#8039d8] md:text-base">
+                  {block.fields.kicker}
+                </p>
+                <h2 id={block.fields.titleId} class="mt-5 text-balance text-4xl font-black leading-tight md:text-6xl">
+                  {block.fields.heading}
+                </h2>
+                <p class="mt-5 text-lg leading-8 text-[#5f5668] md:text-xl">{block.fields.body}</p>
+                {block.fields.action?.href && (
+                  <a class={`${buttonClass(block.fields.action.className)} mt-8`} href={block.fields.action.href}>
+                    {block.fields.action.label}
+                  </a>
+                )}
+              </div>
+              <div class="grid gap-5">
+                {(block.fields.cards ?? []).map((card: Card, cardIndex: number) => (
+                  <article class="rounded-[1.4rem] bg-[#12071f] p-7 text-white shadow-xl shadow-purple-950/20">
+                    <span class="inline-flex rounded-xl bg-[#ff7a1a] px-3 py-2 text-sm font-black text-[#17071f]">
+                      0{cardIndex + 1}
+                    </span>
+                    <h3 class="mt-5 text-2xl font-black">{card.title}</h3>
+                    <p class="mt-3 leading-7 text-white/76">{card.body}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {block.type === "faq" && (
+          <section class="bg-white px-5 py-16 md:px-8 md:py-24" id={block.id}>
+            <div class="mx-auto max-w-7xl">
+              <p class="text-sm font-black uppercase tracking-[0.18em] text-[#8039d8] md:text-base">
+                {block.fields.kicker}
+              </p>
+              <h2 id={block.fields.titleId} class="mt-5 max-w-4xl text-balance text-4xl font-black leading-tight md:text-6xl">
+                {block.fields.heading}
+              </h2>
+              <div class="mt-10 grid gap-4 md:grid-cols-2">
+                {(block.fields.items ?? []).map((item: any) => (
+                  <details class="group rounded-[1.2rem] border border-[#eadff4] bg-white p-6 shadow-xl shadow-purple-950/5">
+                    <summary class="cursor-pointer list-none text-lg font-black marker:hidden">
+                      {item.question}
+                    </summary>
+                    <p class="mt-4 leading-7 text-[#5f5668]">{item.answer}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {block.type === "form_intro" && (
+          <section class="relative isolate overflow-hidden bg-[#8039d8] px-5 py-16 text-white md:px-8 md:py-24" id={block.id}>
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_25%_35%,rgba(255,122,26,.48),transparent_28%),radial-gradient(circle_at_80%_10%,rgba(255,255,255,.28),transparent_24%)]" />
+            <div class="relative mx-auto max-w-7xl">
+              <p class="text-sm font-black uppercase tracking-[0.18em] text-[#ffe2c4] md:text-base">
+                {block.fields.kicker}
+              </p>
+              <h2 id={block.fields.titleId} class="mt-5 max-w-4xl text-balance text-4xl font-black leading-tight md:text-6xl">
+                {block.fields.heading}
+              </h2>
+              <p class="mt-5 max-w-3xl text-lg leading-8 text-white/84 md:text-xl">{block.fields.body}</p>
+              {block.fields.actions?.length > 0 && (
+                <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+                  {block.fields.actions.map((action: Link) => (
+                    <a class={buttonClass(action.className)} href={action.href ?? "#"}>
+                      {action.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </div>
+          </section>
+        )}
+      </>
+    ))
+  }
+</div>
