@@ -36,7 +36,7 @@ sidebar:
 | 代理 | https://staging-agent.wink.travel | https://agent.wink.travel | 
 | 预订引擎 | https://staging-ota.wink.travel | https://ota.wink.travel | 
 | Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| 我的账户 | https://staging-my.wink.travel | https://my.wink.travel | 
+| 我的账户 | https://staging-app.wink.travel | https://app.wink.travel | 
 | 支付 | https://staging-pay.wink.travel | https://pay.wink.travel | 
 | Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |

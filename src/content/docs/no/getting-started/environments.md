@@ -36,7 +36,7 @@ Våre applikasjoner har også test- og produksjonsmiljøer for våre kunder.
 | Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
 | Bookingmotor | https://staging-ota.wink.travel | https://ota.wink.travel | 
 | Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| Min konto | https://staging-my.wink.travel | https://my.wink.travel | 
+| Min konto | https://staging-app.wink.travel | https://app.wink.travel | 
 | Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
 | Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |

@@ -36,7 +36,7 @@ Unsere Anwendungen haben ebenfalls Test- und Produktionsumgebungen für unsere K
 | Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
 | Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
 | Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-my.wink.travel | https://my.wink.travel | 
+| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
 | Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
 | Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |

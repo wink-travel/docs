@@ -36,7 +36,7 @@ Aplicațiile noastre au, de asemenea, medii de test și producție pentru clien�
 | Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
 | Motor de rezervări | https://staging-ota.wink.travel | https://ota.wink.travel | 
 | Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| Contul meu | https://staging-my.wink.travel | https://my.wink.travel | 
+| Contul meu | https://staging-app.wink.travel | https://app.wink.travel | 
 | Plăți | https://staging-pay.wink.travel | https://pay.wink.travel | 
 | Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |

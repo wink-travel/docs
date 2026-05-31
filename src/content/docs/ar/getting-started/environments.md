@@ -36,7 +36,7 @@ sidebar:
 | الوكيل | https://staging-agent.wink.travel | https://agent.wink.travel | 
 | محرك الحجز | https://staging-ota.wink.travel | https://ota.wink.travel | 
 | الواجهة الخارجية | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| حسابي | https://staging-my.wink.travel | https://my.wink.travel | 
+| حسابي | https://staging-app.wink.travel | https://app.wink.travel | 
 | الدفع | https://staging-pay.wink.travel | https://pay.wink.travel | 
 | الاستوديو | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
