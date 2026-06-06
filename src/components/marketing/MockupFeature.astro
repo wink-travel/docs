@@ -1,0 +1,58 @@
+---
+import IconCheck from "@tabler/icons/outline/check.svg";
+
+export interface FeatureItem {
+  text: string;
+}
+
+interface Props {
+  title?: string;
+  description?: string;
+  features?: FeatureItem[];
+  image?: { src: string; alt: string };
+  /** Place the image on the left instead of the right */
+  reverse?: boolean;
+}
+
+const {
+  title,
+  description,
+  features = [],
+  image,
+  reverse = false,
+} = Astro.props;
+---
+
+<section class="@container mx-auto w-full max-w-7xl px-4 py-24">
+  <div class="grid gap-12 @lg:grid-cols-2 @lg:gap-16">
+    <div class="flex flex-col justify-center">
+      {title && (
+        <h2 class="font-heading mb-4 text-3xl font-semibold tracking-tight @xl:text-4xl @3xl:text-5xl">
+          {title}
+        </h2>
+      )}
+      {description && <p class="text-muted-foreground mb-8 text-pretty @lg:text-lg">{description}</p>}
+
+      {features.length > 0 && (
+        <ul class="space-y-4">
+          {features.map((feature) => (
+            <li class="flex items-start gap-3">
+              <div class="bg-primary-accent/10 flex size-8 shrink-0 items-center justify-center rounded-full">
+                <IconCheck class="text-primary-accent size-4" aria-hidden="true" />
+              </div>
+              <span class="mt-1.5 text-sm font-medium">{feature.text}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+
+    {image && (
+      <div class:list={["order-first @lg:order-last", reverse && "@lg:order-first"]}>
+        <div class="overflow-hidden rounded-2xl border border-border bg-muted/30">
+          <img src={image.src} alt={image.alt} class="size-full object-cover" loading="lazy" decoding="async" />
+        </div>
+      </div>
+    )}
+  </div>
+</section>

@@ -119,6 +119,7 @@ export default defineConfig({
     ],
     components: {
       SocialIcons: './src/components/custom-social-icons.astro', // to remove the default RSS icon
+      Header: './src/components/custom-header.astro', // marketing navbar on pages with marketingNav: true
       Footer: './src/components/custom-footer.astro',
       PageTitle: './src/components/custom-page-title.astro',  // Removes Page title from splash screens
     },

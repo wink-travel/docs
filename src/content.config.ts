@@ -1,4 +1,4 @@
-import { defineCollection } from "astro:content";
+import { defineCollection, z } from "astro:content";
 import { docsLoader } from "@astrojs/starlight/loaders";
 import { docsSchema } from "@astrojs/starlight/schema";
 import { blogSchema } from 'starlight-blog/schema';
@@ -16,7 +16,13 @@ export const collections = {
           .replace(/\/index$/i, ""),
     }),
     schema: docsSchema({
-      extend: (context) => blogSchema(context)
+      extend: (context) =>
+        blogSchema(context).extend({
+          // Opt-in flag: render the new marketing navbar + footer (IA rebuild).
+          // Set on the new marketing splash pages only, so existing splash pages
+          // (index/contact/team/jobs) keep Starlight's default header/footer.
+          marketingNav: z.boolean().optional(),
+        }),
     })
   }),
   changelogs: defineCollection({
