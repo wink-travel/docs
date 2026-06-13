@@ -68,6 +68,16 @@ const fixFrontmatterColons = (content: string): string => {
   return content.replace(fullFm, `${open}${fixedBody}${close}`);
 };
 
+// Remove trailing commas after JSX string attribute values — the LLM sometimes
+// treats JSX props like JS object properties and appends a comma.
+// Matches lines of the form `  propName="value",` or `  propName='value',`
+// (uses `=`, not `:`, so JS object property lines are left untouched).
+const fixJsxAttributeTrailingCommas = (content: string): string =>
+  content.replace(
+    /^(\s+[a-zA-Z][a-zA-Z0-9-]*=(?:"[^"\n]*"|'[^'\n]*')),(\s*)$/gm,
+    (_, attr, trailing) => `${attr}${trailing}`
+  );
+
 // Fix YAML frontmatter scalar values that start with a character YAML reserves
 // as an indicator (@, `, *, &, !, {, [, %, #). Unquoted values starting with
 // these characters cause parse errors such as "bad indentation of a mapping entry".
@@ -319,6 +329,7 @@ async function translateWholeFile(
     "- Links: translate anchor text inside [ ]; NEVER change href inside ( ).",
     "- Product names: DO NOT translate brand/product names (e.g., 'Wink', 'WinkLinks', 'Wink Studio', 'Wink Extranet', 'Wink Agency'), even when they appear in headings, emphasized text, or link anchor text.",
     "- Components: translate human-visible props such as title, text, tagline, alt, aria-label; keep prop keys/names intact.",
+    "  JSX attributes NEVER use trailing commas: `<Comp prop=\"value\" nextProp=\"…\" />` — NO comma after the closing quote.",
     "  Examples: <Card title=\"...\" />, hero: { tagline: \"...\", actions: [{ text: \"...\" }] }.",
     "- Alt/captions: translate visible text; keep URLs/identifiers untouched.",
     "- Output ONLY the translated file; no commentary.",
@@ -407,8 +418,10 @@ async function translateFile(
     return;
   }
 
-  let output = fixFrontmatterSpecialStartChars(
-    fixQuotedFrontmatterNestedValues(fixFrontmatterColons(translatedFile))
+  let output = fixJsxAttributeTrailingCommas(
+    fixFrontmatterSpecialStartChars(
+      fixQuotedFrontmatterNestedValues(fixFrontmatterColons(translatedFile))
+    )
   );
   // Post-process all doc files: add locale prefixes to root-relative links
   const outExt = extname(relativePath).toLowerCase();
