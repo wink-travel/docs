@@ -2,6 +2,16 @@
 
 Changelog of docs.
 
+## v0.1.1 (2026-06-13)
+
+### Other changes
+
+**0.1.1**
+
+
+[7a29e](https://github.com/wink-travel/docs/commit/7a29e3f17ef1e7f) Bjorn Harvold *2026-06-13 19:38:51*
+
+
 ## v0.1.0 (2026-05-25)
 
 ### Features
