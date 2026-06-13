@@ -1,6 +1,6 @@
 ---
 title: Ambientes
-description: Este artigo contém informações para testadores e desenvolvedores sobre como aceder aos nossos diferentes ambientes de servidor.
+description: Este artigo contém informações para testadores e desenvolvedores sobre como obter acesso aos nossos diferentes ambientes de servidor.
 sidebar:
   order: 8
 ---
@@ -10,10 +10,10 @@ Na Wink, operamos 2 ambientes para tudo o que fazemos em todos os momentos:
 - Produção é o nosso ambiente estável.
 - Staging é o nosso ambiente de certificação e testes.
 
-Se é um integrador, um hotel ou agente de viagens que deseja preparar-se para a certificação ou testar a plataforma Wink, crie uma conta no nosso ambiente de staging para começar.
+Se é um integrador, hotel ou agente de viagens que deseja preparar-se para certificação ou testar a plataforma Wink, crie uma conta no nosso ambiente de staging para começar.
 
 :::note
-O ambiente de staging está disponível mediante pedido. Isso significa que ele entra em modo de suspensão se não houver utilização e liga-se novamente quando houver. Por favor, seja paciente se estiver a acordá-lo. Demora cerca de um minuto para iniciar todos os servidores após a primeira ligação a um dos nossos servidores ou aplicações.
+O ambiente de staging está disponível mediante pedido. Isso significa que ele entra em modo de suspensão se não houver uso e liga-se novamente quando houver. Por favor, seja paciente ao acordá-lo. Demora cerca de um minuto para iniciar todos os servidores após a sua primeira conexão com um dos nossos servidores ou aplicações.
 :::
 
 ## Servidores

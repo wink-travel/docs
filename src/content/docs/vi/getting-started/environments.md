@@ -5,15 +5,15 @@ sidebar:
   order: 8
 ---
 
-Tại Wink, chúng tôi luôn vận hành 2 môi trường cho mọi hoạt động:
+Tại Wink, chúng tôi vận hành 2 môi trường cho mọi hoạt động của mình mọi lúc:
 
 - Production là môi trường ổn định của chúng tôi.
-- Staging là môi trường chứng nhận và kiểm thử.
+- Staging là môi trường chứng nhận và kiểm thử của chúng tôi.
 
-Nếu bạn là nhà tích hợp, khách sạn hoặc đại lý du lịch muốn chuẩn bị cho việc chứng nhận hoặc kiểm thử nền tảng Wink, hãy tạo tài khoản trong môi trường staging của chúng tôi để bắt đầu.
+Nếu bạn là một nhà tích hợp, khách sạn hoặc đại lý du lịch muốn chuẩn bị cho việc chứng nhận hoặc kiểm thử nền tảng Wink, hãy tạo tài khoản trong môi trường staging của chúng tôi để bắt đầu.
 
 :::note
-Môi trường staging chỉ được cung cấp theo yêu cầu. Điều này có nghĩa là nó sẽ tự động tạm ngưng nếu không có người sử dụng và tự bật lại khi có người dùng. Vui lòng kiên nhẫn nếu bạn đang khởi động lại nó. Quá trình khởi động tất cả các máy chủ mất khoảng một phút sau khi bạn kết nối lần đầu với một trong các máy chủ hoặc ứng dụng của chúng tôi.
+Môi trường staging được cung cấp theo yêu cầu. Điều này có nghĩa là nó sẽ tự động tạm ngưng nếu không có người sử dụng và tự bật lại khi có người dùng. Vui lòng kiên nhẫn nếu bạn đang khởi động lại nó. Quá trình khởi động tất cả các máy chủ mất khoảng một phút sau khi bạn kết nối lần đầu với một trong các máy chủ hoặc ứng dụng của chúng tôi.
 :::
 
 ## Máy chủ

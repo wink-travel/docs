@@ -1,6 +1,6 @@
 ---
 title: Okruženja
-description: Ovaj članak sadrži informacije za testere i programere o tome kako pristupiti našim različitim serverskim okruženjima.
+description: Ovaj članak sadrži informacije za testere i programere o tome kako dobiti pristup našim različitim serverskim okruženjima.
 sidebar:
   order: 8
 ---
@@ -20,7 +20,7 @@ Staging okruženje je dostupno na zahtev. To znači da će otići u stanje mirov
 
 Ispod je matrica koja sadrži nazive naših servera i njihovu namenu.
 
-| Feature | Staging | Production
+| Funkcija | Staging | Production
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
@@ -31,7 +31,7 @@ Ispod je matrica koja sadrži nazive naših servera i njihovu namenu.
 
 Naše aplikacije takođe imaju testna i produkcijska okruženja za naše korisnike.
 
-| Application | Staging | Production
+| Aplikacija | Staging | Production
 | ------- | ------- | ---------- |
 | Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
 | Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 

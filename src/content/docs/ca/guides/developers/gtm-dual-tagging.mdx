@@ -7,7 +7,7 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Si esteu realitzant campanyes publicitàries a través de Sojern, podeu connectar el vostre compte Sojern a Wink introduint el vostre ID de contenidor GTM de Sojern al portal de Wink. Un cop connectat, el pixel de seguiment de Sojern s'activa automàticament per a la vostra propietat, cobrint tot el viatge del client des de la cerca fins a la reserva completada.
+Si esteu realitzant campanyes publicitàries a través de Sojern, podeu connectar el vostre compte Sojern a Wink introduint el vostre ID de contenidor GTM de Sojern al portal de Wink. Un cop connectat, el píxel de seguiment de Sojern s'activa automàticament per a la vostra propietat, cobrint tot el viatge del client des de la cerca fins a la reserva completada.
 
 <Aside type="tip">
 Això pressuposa que ja teniu un compte Sojern actiu i que heu rebut el vostre ID de contenidor GTM del vostre gestor de compte Sojern. Si encara no teniu un compte Sojern, visiteu [sojern.com/contact](https://www.sojern.com/contact) per començar.
@@ -21,7 +21,7 @@ Això pressuposa que ja teniu un compte Sojern actiu i que heu rebut el vostre I
 
 1. **Obteniu el vostre ID de contenidor GTM de Sojern**
 
-   Contacteu amb el vostre gestor de compte Sojern i sol·liciteu el vostre **ID de contenidor GTM**. Té el format `GTM-XXXXXXX`. Aquest és diferent del vostre ID de pixel Sojern — assegureu-vos de demanar específicament l'ID de contenidor GTM.
+   Contacteu amb el vostre gestor de compte Sojern i sol·liciteu el vostre **ID de contenidor GTM**. Té el format `GTM-XXXXXXX`. Aquest és diferent del vostre ID de píxel Sojern — assegureu-vos de demanar específicament l'ID de contenidor GTM.
 
 2. **Introduïu-lo al portal de Wink**
 
@@ -29,12 +29,12 @@ Això pressuposa que ja teniu un compte Sojern actiu i que heu rebut el vostre I
 
 3. **Confirmeu-ho amb el vostre gestor de compte Sojern**
 
-   Informeu al vostre gestor de compte Sojern que la integració està activa. Ells poden verificar des del seu costat que el pixel s'està activant correctament a `wink.travel` per a la vostra propietat i que les dades flueixen al vostre compte Sojern.
+   Informeu al vostre gestor de compte Sojern que la integració està activa. Ells poden verificar des del seu costat que el píxel s'està activant correctament a `wink.travel` per a la vostra propietat i que les dades flueixen al vostre compte Sojern.
 
 </Steps>
 
 <Aside type="note">
-No cal que col·loqueu cap codi de pixel al vostre propi lloc web per a aquesta integració. Wink carrega automàticament el vostre contenidor Sojern a totes les pàgines on la vostra propietat està activa.
+No cal que col·loqueu cap codi de píxel al vostre propi lloc web per a aquesta integració. Wink carrega automàticament el vostre contenidor Sojern a totes les pàgines on la vostra propietat està activa.
 
 Aquesta configuració funciona per a qualsevol ID de contenidor GTM personalitzat. Només hem utilitzat Sojern com a exemple perquè és una integració molt comuna.
 </Aside>
@@ -48,7 +48,7 @@ Per transparència, això és el que Wink configura per fer que aquesta integrac
 - **Un camp d'ID de contenidor GTM de Sojern** està disponible a la pestanya Personalitzacions del vostre portal Wink. Quan introduïu el vostre ID de contenidor, Wink valida el format i el desa de manera segura associat a la vostra propietat.
 - **A cada pàgina on la vostra propietat està activa** a Wink, el vostre ID de contenidor GTM de Sojern es renderitza a la pàgina i el sistema de gestió d'etiquetes de Wink carrega dinàmicament el vostre contenidor Sojern juntament amb el seu propi. Això passa automàticament — no es requereixen passos manuals per part de l'equip de Wink per propietat.
 - **El vostre contenidor Sojern es carrega de manera asíncrona**, cosa que significa que no afecta el rendiment de càrrega de la pàgina per als vostres clients.
-- **El seguiment propi de Wink i el vostre pixel Sojern funcionen en paral·lel**, llegint de les mateixes dades d'esdeveniments compartides. Cada esdeveniment de reserva que Wink fa el seguiment està simultàniament disponible per al vostre contenidor Sojern.
+- **El seguiment propi de Wink i el vostre píxel Sojern funcionen en paral·lel**, llegint de les mateixes dades d'esdeveniments compartides. Cada esdeveniment de reserva que Wink fa el seguiment està simultàniament disponible per al vostre contenidor Sojern.
 - **Quan la vostra propietat no s'està visualitzant** — per exemple, quan un client està navegant per un altre hotel a Wink — el vostre contenidor Sojern no es carrega. Això assegura que Sojern només rep dades rellevants per a la vostra propietat.
 
 ---
@@ -57,7 +57,7 @@ Per transparència, això és el que Wink configura per fer que aquesta integrac
 
 Wink envia esdeveniments compatibles amb GA4 al `dataLayer` durant tot el viatge del client. El vostre contenidor GTM llegeix d'aquest mateix `dataLayer` compartit, així que qualsevol disparador o variable que configureu té accés a totes les propietats descrites a continuació.
 
-Cada esdeveniment segueix l'estructura estàndard GA4 Enhanced Ecommerce: una cadena `event` de nivell superior i un objecte `ecommerce`. Abans de cada push, Wink neteja la càrrega útil ecommerce anterior per evitar que dades antigues afectin nous disparadors.
+Cada esdeveniment segueix l'estructura estàndard GA4 Enhanced Ecommerce: una cadena `event` de nivell superior i un objecte `ecommerce`. Abans de cada push, Wink esborra la càrrega útil ecommerce anterior per evitar que dades antigues afectin nous disparadors.
 
 <Aside type="note">
 **Patró de reinici de dataLayer**
@@ -65,7 +65,7 @@ Cada esdeveniment segueix l'estructura estàndard GA4 Enhanced Ecommerce: una ca
 Wink reinicia l'objecte ecommerce abans de cada push d'esdeveniment:
 
 ```js
-dataLayer.push({ ecommerce: null });   // neteja l'esdeveniment anterior
+dataLayer.push({ ecommerce: null });   // esborra l'esdeveniment anterior
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
@@ -86,8 +86,8 @@ Aquests esdeveniments s'activen automàticament mentre un client avança pel pro
 | 4 | `begin_checkout` | Es carrega la pàgina de pagament / checkout |
 | 5 | `add_payment_info` | El client selecciona un mètode de pagament |
 | 6 | `login` | El client s'autentica via SSO |
-| 7 | `purchase` | La reserva queda confirmada |
-| 8 | `refund` | La reserva queda cancel·lada |
+| 7 | `purchase` | La reserva es confirma |
+| 8 | `refund` | La reserva es cancel·la |
 
 ---
 
@@ -127,7 +127,7 @@ S'activa quan un client visualitza una propietat específica.
 
 #### `add_to_cart`
 
-S'activa quan un client afegeix una habitació a la seva cistella.
+S'activa quan un client afegeix una habitació a la cistella.
 
 ```json
 {
@@ -185,7 +185,7 @@ S'activa quan el client selecciona o confirma un mètode de pagament.
 
 #### `login`
 
-S'activa quan un client s'autentica via inici de sessió únic.
+S'activa quan un client s'autentica via inici de sessió únic (SSO).
 
 ```json
 {
@@ -200,7 +200,7 @@ S'activa quan un client s'autentica via inici de sessió únic.
 
 #### `purchase`
 
-S'activa quan una reserva queda confirmada.
+S'activa quan es confirma una reserva.
 
 ```json
 {
@@ -250,7 +250,7 @@ S'activa quan una reserva queda confirmada.
 
 #### `refund`
 
-S'activa quan una reserva queda cancel·lada.
+S'activa quan es cancel·la una reserva.
 
 ```json
 {
@@ -277,7 +277,7 @@ Tots els esdeveniments que inclouen un array `items` comparteixen el mateix esqu
 
 #### Camps estàndard GA4
 
-Aquests camps són entesos nativament per GA4 i apareixen en informes ecommerce estàndard sense configuració addicional.
+Aquests camps són entesos nativament per GA4 i apareixen en informes ecommerce estàndard sense cap configuració addicional.
 
 | Propietat | Tipus | Obligatori | Descripció |
 |----------|------|----------|-------------|
@@ -302,7 +302,7 @@ Aquests camps són entesos nativament per GA4 i apareixen en informes ecommerce 
 
 #### Paràmetres personalitzats a nivell d'article
 
-Aquests paràmetres porten context específic de reserva de Wink. GA4 no els mostra automàticament en informes — cal registrar cadascun com a **dimensió personalitzada a nivell d'article** a la vostra propietat GA4 abans que aparegui en exploracions o informes estàndard. Vegeu [Dimensions personalitzades a GA4](#custom-dimensions-in-ga4) més avall per a instruccions.
+Aquests paràmetres porten context específic de reserva de Wink. GA4 no els mostra automàticament en informes — cal registrar cadascun com a **dimensió personalitzada a nivell d'article** a la vostra propietat GA4 abans que apareguin en exploracions o informes estàndard. Vegeu [Dimensions personalitzades a GA4](#custom-dimensions-in-ga4) més avall per a instruccions.
 
 | Propietat | Tipus | Descripció |
 |----------|------|-------------|
@@ -331,13 +331,13 @@ Aquests paràmetres porten context específic de reserva de Wink. GA4 no els mos
 
 ### Dimensions personalitzades a GA4
 
-GA4 ignora els paràmetres personalitzats a nivell d'article en informes fins que no els registreu explícitament com a dimensions personalitzades a nivell d'article. Només cal registrar els paràmetres que voleu utilitzar en informes — no cal registrar els 20.
+GA4 ignora els paràmetres personalitzats a nivell d'article en informes fins que no els registreu explícitament com a dimensions personalitzades a nivell d'article. Només cal registrar els paràmetres que voleu utilitzar en informes — no cal registrar tots els 20.
 
 <Steps>
 
 1. **Obriu Definicions Personalitzades**
 
-   A GA4, aneu a **Administrador** (icona d'engranatge a baix a l'esquerra) → seleccioneu la vostra propietat → **Visualització de dades** → **Definicions personalitzades**.
+   A GA4, aneu a **Administrador** (icona d'engranatge a la part inferior esquerra) → seleccioneu la vostra propietat → **Visualització de dades** → **Definicions personalitzades**.
 
 2. **Creeu una nova dimensió personalitzada**
 
@@ -352,7 +352,7 @@ GA4 ignora els paràmetres personalitzats a nivell d'article en informes fins qu
 
 4. **Deseu i repetiu**
 
-   Feu clic a **Desa**, després repetiu per a cada paràmetre que vulgueu fer el seguiment.
+   Feu clic a **Desa**, i repetiu per a cada paràmetre que vulgueu fer el seguiment.
 
 </Steps>
 
@@ -648,7 +648,7 @@ Aquest esdeveniment no inclou cap càrrega útil `ecommerce`.
 
 ### `virtualPageView`
 
-Aquest és un esdeveniment personalitzat de Wink — no forma part del conjunt estàndard d'esdeveniments GA4. Es fa push a cada navegació de pàgina i porta context de dispositiu i sessió. No inclou un objecte `ecommerce`.
+Aquest és un esdeveniment personalitzat de Wink — no forma part del conjunt estàndard d'esdeveniments GA4. S'envia a cada navegació de pàgina i porta context de dispositiu i sessió. No inclou un objecte `ecommerce`.
 
 ```json
 {

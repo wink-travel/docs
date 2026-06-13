@@ -20,7 +20,7 @@ O ambiente de staging está disponível mediante solicitação. Isso significa q
 
 Abaixo está uma matriz contendo os nomes dos nossos servidores e seus usos.
 
-| Recurso | Staging | Produção
+| Feature | Staging | Produção
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
@@ -31,7 +31,7 @@ Abaixo está uma matriz contendo os nomes dos nossos servidores e seus usos.
 
 Nossas aplicações também possuem ambientes de teste e produção para nossos clientes.
 
-| Aplicação | Staging | Produção
+| Application | Staging | Produção
 | ------- | ------- | ---------- |
 | Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
 | Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 

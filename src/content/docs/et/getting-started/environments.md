@@ -10,10 +10,10 @@ Winkis haldame kõigi meie tegevuste jaoks pidevalt kahte keskkonda:
 - Production on meie stabiilne keskkond.
 - Staging on meie sertifitseerimise ja testimise keskkond.
 
-Kui olete integreerija, hotell või reisibüroo, kes soovib valmistuda sertifitseerimiseks või testida Wink platvormi, looge konto meie staging keskkonnas, et alustada.
+Kui olete integreerija, hotell või reisibüroo, kes soovib valmistuda sertifitseerimiseks või testida Wink platvormi, looge konto meie staging-keskkonnas, et alustada.
 
 :::note
-Staging keskkond on saadaval taotlusel. See tähendab, et see läheb magama, kui seda ei kasutata, ja lülitub ise uuesti sisse, kui kasutus algab. Palun olge kannatlik, kui te selle äratate. Kõik serverid käivituvad umbes minuti jooksul pärast esimest ühendust ühe meie serveri või rakendusega.
+Staging-keskkond on saadaval taotlusel. See tähendab, et kui seda ei kasutata, läheb see magama ja lülitub ise uuesti sisse, kui kasutus algab. Palun olge kannatlik, kui äratate selle. Kõik serverid käivituvad umbes minuti jooksul pärast esimest ühendust ühe meie serveri või rakendusega.
 :::
 
 ## Serverid

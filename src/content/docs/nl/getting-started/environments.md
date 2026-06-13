@@ -13,7 +13,7 @@ Bij Wink draaien we te allen tijde 2 omgevingen voor alles wat we doen:
 Als u een integrator, hotel of reisagent bent die zich wil voorbereiden op certificering of het Wink-platform wil testen, maak dan een account aan in onze staging-omgeving om te beginnen.
 
 :::note
-De staging-omgeving is op aanvraag beschikbaar. Dit betekent dat deze in slaapstand gaat als er geen gebruik is en weer wordt ingeschakeld wanneer er wel gebruik is. Wees geduldig als u deze aan het activeren bent. Het duurt ongeveer een minuut om alle servers te starten nadat u voor het eerst verbinding maakt met een van onze servers of apps.
+De staging-omgeving is op aanvraag beschikbaar. Dit betekent dat deze in slaapstand gaat als er geen gebruik is en weer wordt ingeschakeld wanneer er wel gebruik is. Wees geduldig als u deze aan het wakker maken bent. Het duurt ongeveer een minuut om alle servers te starten nadat u voor het eerst verbinding maakt met een van onze servers of apps.
 :::
 
 ## Servers
@@ -36,7 +36,7 @@ Onze applicaties hebben ook test- en productieomgevingen voor onze klanten.
 | Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
 | Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
 | Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
+| Mijn Account | https://staging-app.wink.travel | https://app.wink.travel | 
 | Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
 | Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |

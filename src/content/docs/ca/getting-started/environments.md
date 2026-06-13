@@ -23,20 +23,20 @@ A continuació hi ha una matriu amb els noms dels nostres servidors i el seu ús
 | Feature | Staging | Producció
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
-| Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
-| Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
-<!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
+| Inventari | https://staging-api.wink.travel | https://api.wink.travel | 
+| Integracions | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+<!-- | Pagament | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Aplicacions
 
 Les nostres aplicacions també tenen entorns de prova i producció per als nostres clients.
 
-| Application | Staging | Producció
+| Aplicació | Staging | Producció
 | ------- | ------- | ---------- |
 | Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
+| Motor de reserves | https://staging-ota.wink.travel | https://ota.wink.travel | 
 | Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
+| El meu compte | https://staging-app.wink.travel | https://app.wink.travel | 
+| Pagament | https://staging-pay.wink.travel | https://pay.wink.travel | 
 | Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
 | WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |

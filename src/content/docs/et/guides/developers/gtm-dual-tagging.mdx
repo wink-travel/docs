@@ -29,14 +29,14 @@ See eeldab, et teil on juba aktiivne Sojerni konto ja olete saanud oma GTM konte
 
 3. **Kinnitage oma Sojerni kontohalduriga**
 
-   Teavitage oma Sojerni kontohaldurit, et integratsioon on aktiivne. Nad saavad oma poolt kontrollida, et piksel töötab korrektselt aadressil `wink.travel` teie objekti jaoks ja et andmed voolavad teie Sojerni kontole.
+   Teavitage oma Sojerni kontohaldurit, et integratsioon on aktiivne. Nad saavad oma poolt kontrollida, et piksel töötab korrektselt `wink.travel` lehel teie objekti jaoks ja et andmed voolavad teie Sojerni kontole.
 
 </Steps>
 
 <Aside type="note">
 Selle integratsiooni jaoks ei ole vaja oma veebisaidile paigaldada ühtegi piksli koodi. Wink laadib teie Sojerni konteineri automaatselt kõigil lehtedel, kus teie objekt on aktiivne.
 
-See seadistus töötab mis tahes kohandatud GTM konteineri ID-ga. Me kasutasime Sojernit näitena, kuna see on väga levinud integratsioon.
+See konfiguratsioon töötab mis tahes kohandatud GTM konteineri ID-ga. Me kasutasime Sojernit näitena, kuna see on väga levinud integratsioon.
 </Aside>
 
 ---
@@ -45,8 +45,8 @@ See seadistus töötab mis tahes kohandatud GTM konteineri ID-ga. Me kasutasime 
 
 Läbipaistvuse huvides on siin, mida Wink seadistab selle integratsiooni toimimiseks:
 
-- **Sojerni GTM konteineri ID väli** on saadaval Wink portaali Kohandused vahekaardil. Kui sisestate konteineri ID, kontrollib Wink selle vormingut ja salvestab selle turvaliselt teie objekti juurde.
-- **Igal lehel, kus teie objekt on Winkis aktiivne**, renderdatakse teie Sojerni GTM konteineri ID lehele ja Winki sildihaldussüsteem laadib dünaamiliselt teie Sojerni konteineri koos oma omaga. See toimub automaatselt — Wink meeskonnal ei ole vaja objekti kohta käsitsi midagi teha.
+- **Sojerni GTM konteineri ID väli** on saadaval Wink portaali Kohandused vahekaardil. Kui sisestate oma konteineri ID, kontrollib Wink selle vormingut ja salvestab selle turvaliselt teie objekti juurde.
+- **Igal lehel, kus teie objekt on Winkis aktiivne**, renderdatakse teie Sojerni GTM konteineri ID lehele ja Winki sildihaldussüsteem laadib dünaamiliselt teie Sojerni konteineri koos oma omaga. See toimub automaatselt — Wink meeskonnalt ei nõuta ühtegi käsitsi sammu objekti kohta.
 - **Teie Sojerni konteiner laaditakse asünkroonselt**, mis tähendab, et see ei mõjuta teie külaliste lehe laadimise kiirust.
 - **Winki enda jälgimine ja teie Sojerni piksel töötavad paralleelselt**, lugedes samu jagatud sündmuse andmeid. Iga broneerimissündmus, mida Wink jälgib, on samaaegselt kättesaadav teie Sojerni konteinerile.
 - **Kui teie objekti ei vaadata** — näiteks kui külaline sirvib Winkis mõnda teist hotelli — ei laadita teie Sojerni konteinerit. See tagab, et Sojern saab ainult teie objekti jaoks asjakohaseid andmeid.
@@ -65,7 +65,7 @@ Iga sündmus järgib standardset GA4 täiustatud e-kaubanduse struktuuri: ülemi
 Wink lähtestab e-kaubanduse objekti enne iga sündmuse pushi:
 
 ```js
-dataLayer.push({ ecommerce: null });   // eelmine sündmus tühjendatud
+dataLayer.push({ ecommerce: null });   // eelneva sündmuse tühjendamine
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
@@ -80,10 +80,10 @@ Need sündmused käivituvad automaatselt, kui külaline liigub broneerimislehtri
 
 | Samm | Sündmus | Millal käivitub |
 |------|---------|-----------------|
-| 1 | `view_item_list` | Hotelli inventari ruudustik või nimekiri laetakse |
+| 1 | `view_item_list` | Hotelli inventari ruudustik või nimekiri laaditakse |
 | 2 | `view_item` | Külaline vaatab konkreetset objekti lehte |
 | 3 | `add_to_cart` | Külaline lisab toa ostukorvi |
-| 4 | `begin_checkout` | Kassa / makse leht laetakse |
+| 4 | `begin_checkout` | Kassa / makse leht laaditakse |
 | 5 | `add_payment_info` | Külaline valib makseviisi |
 | 6 | `login` | Külaline autentib end SSO kaudu |
 | 7 | `purchase` | Broneering kinnitatakse |
@@ -144,7 +144,7 @@ Käivitub, kui külaline lisab toa ostukorvi.
 
 #### `begin_checkout`
 
-Käivitub, kui kassa / makse leht laetakse.
+Käivitub, kui kassa / makse leht laaditakse.
 
 ```json
 {
@@ -179,7 +179,7 @@ Käivitub, kui külaline valib või kinnitab makseviisi.
 }
 ```
 
-`payment_type` täidetakse makse vahendaja tüübi alusel. `coupon` on olemas ainult siis, kui kasutati sooduskoodi.
+`payment_type` täidetakse makse vahendaja tüübi järgi. `coupon` on olemas ainult siis, kui kasutati sooduskoodi.
 
 ---
 
@@ -200,7 +200,7 @@ Käivitub, kui külaline autentib end ühe sisselogimise kaudu.
 
 #### `purchase`
 
-Käivitub, kui broneering on kinnitatud.
+Käivitub, kui broneering kinnitatakse.
 
 ```json
 {
@@ -331,7 +331,7 @@ Need parameetrid kannavad Winkile spetsiifilist broneerimiskonteksti. GA4 ei kuv
 
 ### Kohandatud mõõdikud GA4-s
 
-GA4 ignoreerib kohandatud tooteparameetreid aruannetes, kuni need on selgesõnaliselt registreeritud kui tooteulatuses kohandatud mõõdikud. Registreerima peate ainult need parameetrid, mida soovite aruannetes kasutada — kõiki 20 ei ole vaja registreerida.
+GA4 ignoreerib kohandatud tooteparameetreid aruannetes, kuni te need eksplicitseeritult registreerite kui tooteulatuses kohandatud mõõdikud. Registreerima peate ainult need parameetrid, mida soovite aruannetes kasutada — kõiki 20 ei ole vaja registreerida.
 
 <Steps>
 
@@ -345,9 +345,9 @@ GA4 ignoreerib kohandatud tooteparameetreid aruannetes, kuni need on selgesõnal
 
 3. **Täida mõõdiku andmed**
 
-   - **Mõõdiku nimi** — inimloetav silt, mis kuvatakse GA4 aruannetes (vt allolevat tabelit)
+   - **Mõõdiku nimi** — inimloetav silt, mis ilmub GA4 aruannetes (vt allolevat tabelit)
    - **Ulatus** — valige **Item**
-   - **Sündmuse parameeter** — täpne parameetri nimi, nagu see on dataLayer’is (vt allolevat tabelit)
+   - **Sündmuse parameeter** — täpne parameetri nimi, nagu see on dataLayeris (vt allolevat tabelit)
    - **Kirjeldus** — valikuline, kuid soovitatav
 
 4. **Salvesta ja korda**
@@ -357,12 +357,12 @@ GA4 ignoreerib kohandatud tooteparameetreid aruannetes, kuni need on selgesõnal
 </Steps>
 
 <Aside type="note">
-Kohandatud mõõdikute ilmumine GA4 aruannetes võib võtta kuni 24 tundi pärast registreerimist. Ajaloolisi andmeid, mis koguti enne registreerimist, ei täiendata.
+Kohandatud mõõdikute ilmumine GA4 aruannetes võib võtta kuni 24 tundi pärast registreerimist. Ajaloolisi andmeid, mis koguti enne registreerimist, ei täideta tagantjärele.
 
-GA4 lubab standardomadustes kuni 50 tooteulatuses kohandatud mõõdikut (360 omadused lubavad rohkem).
+GA4 lubab standardsetel omadustel kuni 50 tooteulatuses kohandatud mõõdikut (360 omadused lubavad rohkem).
 </Aside>
 
-Kasutage allolevat tabelit viitena kohandatud mõõdikute loomisel. **Sündmuse parameeter** peab täpselt vastama — GA4 on tõstutundlik.
+Kasutage allolevat tabelit viitena kohandatud mõõdikute loomisel. **Sündmuse parameeter** väärtus peab olema täpne — GA4 on tõstutundlik.
 
 | Mõõdiku nimi | Sündmuse parameeter | Tüüp |
 |--------------|---------------------|------|
@@ -389,9 +389,9 @@ Kasutage allolevat tabelit viitena kohandatud mõõdikute loomisel. **Sündmuse 
 
 ---
 
-### Täiendavad saadaval sündmused
+### Täiendavad saadaval olevad sündmused
 
-Järgmised sündmused on saadaval Wink dataLayer’is, kuid ei ole osa standardisest broneerimislehtrist. Neid võivad käivitada muud platvormi interaktsioonid.
+Järgnevad sündmused on saadaval Wink dataLayeris, kuid ei kuulu standardse broneerimislehtri hulka. Neid võivad käivitada muud platvormi interaktsioonid.
 
 #### `add_to_wishlist`
 
@@ -451,7 +451,7 @@ Selle sündmusega ei kaasne `ecommerce` objekti.
     "creative_name": "Suvebänner",
     "creative_slot": "hero",
     "promotion_id": "promo_001",
-    "promotion_name": "Suveallahindlus",
+    "promotion_name": "Suvesoodustus",
     "items": [ ]
   }
 }
@@ -466,7 +466,7 @@ Selle sündmusega ei kaasne `ecommerce` objekti.
     "creative_name": "Suvebänner",
     "creative_slot": "hero",
     "promotion_id": "promo_001",
-    "promotion_name": "Suveallahindlus",
+    "promotion_name": "Suvesoodustus",
     "items": [ ]
   }
 }
@@ -648,7 +648,7 @@ Selle sündmusega ei kaasne `ecommerce` objekti.
 
 ### `virtualPageView`
 
-See on kohandatud Wink sündmus — ei kuulu standardsete GA4 sündmuste hulka. See käivitub iga lehe navigeerimise korral ja kannab seadme ning sessiooni konteksti. See ei sisalda `ecommerce` objekti.
+See on kohandatud Wink sündmus — ei kuulu standardsete GA4 sündmuste hulka. See saadetakse iga lehe navigeerimise korral ja kannab seadme ning sessiooni konteksti. See ei sisalda `ecommerce` objekti.
 
 ```json
 {

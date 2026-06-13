@@ -13,7 +13,7 @@ Wink'te, yaptığımız her şey için her zaman 2 ortam çalıştırıyoruz:
 Eğer bir entegratör, otel veya seyahat acentasıysanız ve sertifikasyona hazırlanmak ya da Wink platformunu test etmek istiyorsanız, başlamak için staging ortamımızda bir hesap oluşturun.
 
 :::note
-Staging ortamı talep bazlıdır. Bu, kullanım olmadığında uyku moduna geçeceği ve kullanım başladığında tekrar açılacağı anlamına gelir. Uyandırırken lütfen sabırlı olun. Sunucuların tamamının başlaması, bir sunucumuz veya uygulamamız ile ilk bağlantınızı kurduktan sonra yaklaşık bir dakika sürer.
+Staging ortamı talep üzerine kullanılabilir. Bu, kullanım olmadığında uyku moduna geçeceği ve kullanım başladığında tekrar açılacağı anlamına gelir. Uyandırırken lütfen sabırlı olun. Sunucuların tamamının başlaması, ilk kez sunucularımızdan biri veya uygulamalarımızla bağlantı kurduğunuzda yaklaşık bir dakika sürer.
 :::
 
 ## Sunucular
