@@ -7,10 +7,83 @@ import starlightChangelogs, { makeChangelogsSidebarLinks } from 'starlight-chang
 import starlightOpenAPI, { createOpenAPISidebarGroup } from 'starlight-openapi'
 import { buildRedirects } from './scripts/build-redirects.mjs';
 
-// Single parent slot for both OpenAPI reference docs. Each schema below sets
-// `sidebar.group` to this placeholder, and the sidebar entry near the bottom
-// wraps it under one "API" group.
-const apiSidebarGroup = createOpenAPISidebarGroup()
+// One sidebar placeholder per audience. Each springdoc group below is rendered as
+// its own collapsible section nested under its audience (mirroring the /scalar
+// layout) instead of one flat 80+ tag dump. The sidebar entries near the bottom
+// wrap these under the "API" / "Integrations API" groups.
+const apiGroups = {
+  platform: createOpenAPISidebarGroup(),
+  supplier: createOpenAPISidebarGroup(),
+  consumer: createOpenAPISidebarGroup(),
+  affiliate: createOpenAPISidebarGroup(),
+  account: createOpenAPISidebarGroup(),
+}
+const partnerGroup = createOpenAPISidebarGroup()
+
+// springdoc group id -> [label, audience sidebar placeholder]. Snapshots live in
+// ./schemas/<group>.json and are refreshed by `npm run schemas:sync`
+// (scripts/sync-schemas.ts) from the per-group /v3/api-docs/<group> endpoints.
+const INVENTORY_GROUPS = [
+  ['platform-analytics', 'Analytics', apiGroups.platform],
+  ['platform-user-settings', 'User Settings', apiGroups.platform],
+  ['platform-managing-entity', 'Managing Entity', apiGroups.platform],
+  ['platform-ping', 'Ping', apiGroups.platform],
+  ['platform-reference', 'Reference Data', apiGroups.platform],
+  ['platform-public', 'Public', apiGroups.platform],
+  ['platform-misc', 'Misc', apiGroups.platform],
+  ['supplier-property', 'Property', apiGroups.supplier],
+  ['supplier-property-register', 'Property Registration', apiGroups.supplier],
+  ['supplier-facilities', 'Facilities', apiGroups.supplier],
+  ['supplier-experiences', 'Experiences', apiGroups.supplier],
+  ['supplier-monetize', 'Monetization', apiGroups.supplier],
+  ['supplier-inventory-distribution', 'Inventory Distribution', apiGroups.supplier],
+  ['supplier-booking', 'Bookings', apiGroups.supplier],
+  ['supplier-profile', 'Profile', apiGroups.supplier],
+  ['consumer-booking', 'Booking', apiGroups.consumer],
+  ['consumer-inventory', 'Inventory', apiGroups.consumer],
+  ['consumer-engine', 'Engine', apiGroups.consumer],
+  ['consumer-travel-agent', 'Travel Agent', apiGroups.consumer],
+  ['consumer-account', 'Account', apiGroups.consumer],
+  ['affiliate-browse', 'Browse', apiGroups.affiliate],
+  ['affiliate-inventory-curation', 'Inventory Curation', apiGroups.affiliate],
+  ['affiliate-shareable-link', 'Shareable Links', apiGroups.affiliate],
+  ['affiliate-lists', 'Lists', apiGroups.affiliate],
+  ['affiliate-social', 'Social', apiGroups.affiliate],
+  ['affiliate-sales-channel', 'Sales Channels', apiGroups.affiliate],
+  ['affiliate-reporting', 'Reporting', apiGroups.affiliate],
+  ['affiliate-winklinks', 'WinkLinks', apiGroups.affiliate],
+  ['account-payment', 'Payment', apiGroups.account],
+  ['account-booking', 'Booking', apiGroups.account],
+  ['account-settings', 'Settings', apiGroups.account],
+]
+const INTEGRATIONS_GROUPS = [
+  ['partner-channel-manager', 'Channel Manager', partnerGroup],
+  ['partner-services', 'Inbound Services', partnerGroup],
+  ['partner-channel-manager-account', 'Channel Manager (Account)', partnerGroup],
+  ['partner-google', 'Google', partnerGroup],
+  ['partner-organization', 'Organization', partnerGroup],
+  ['partner-ping', 'Ping', partnerGroup],
+]
+
+const openApiSnippets = {
+  operation: {
+    clients: { javascript: ['fetch'], shell: ['curl'] },
+    default: { target: 'shell', client: 'curl' },
+  },
+}
+
+// Build a starlight-openapi schema entry for one springdoc group.
+const toApiSchema = ([group, label, sidebarGroup], apiBase) => ({
+  base: `${apiBase}/${group}`,
+  schema: `./schemas/${group}.json`,
+  sidebar: {
+    label,
+    collapsed: true,
+    group: sidebarGroup,
+    operations: { badges: true, labels: 'summary', sort: 'document' },
+  },
+  snippets: openApiSnippets,
+})
 
 import icon from 'astro-icon';
 
@@ -70,38 +143,8 @@ export default defineConfig({
       // Generate the OpenAPI reference pages from local snapshots in ./schemas/.
       // Refresh snapshots with `npm run schemas:sync`.
       starlightOpenAPI([
-        {
-          base: 'api',
-          schema: './schemas/api.json',
-          sidebar: {
-            label: 'Platform',
-            collapsed: true,
-            group: apiSidebarGroup,
-            operations: { badges: true, labels: 'summary', sort: 'document' },
-          },
-          snippets: {
-            operation: {
-              clients: { javascript: ['fetch'], shell: ['curl'] },
-              default: { target: 'shell', client: 'curl' },
-            },
-          },
-        },
-        {
-          base: 'integrations-api',
-          schema: './schemas/integrations.json',
-          sidebar: {
-            label: 'Channel Manager',
-            collapsed: true,
-            group: apiSidebarGroup,
-            operations: { badges: true, labels: 'summary', sort: 'document' },
-          },
-          snippets: {
-            operation: {
-              clients: { javascript: ['fetch'], shell: ['curl'] },
-              default: { target: 'shell', client: 'curl' },
-            },
-          },
-        },
+        ...INVENTORY_GROUPS.map((g) => toApiSchema(g, 'api')),
+        ...INTEGRATIONS_GROUPS.map((g) => toApiSchema(g, 'integrations-api')),
       ]),
       starlightBlog({
         title: "Wink updates",
@@ -165,7 +208,16 @@ export default defineConfig({
       { label: 'Webinars', items: [{ autogenerate: { directory: 'webinars' } }] },
       { label: 'Integrations', items: [{ autogenerate: { directory: 'integrations' } }] },
       { label: 'Developers', items: [{ autogenerate: { directory: 'developers' } }] },
-      { label: 'API', collapsed: true, items: [apiSidebarGroup] },
+      {
+        label: 'API', collapsed: true, items: [
+          { label: 'Platform', collapsed: true, items: [apiGroups.platform] },
+          { label: 'Supplier', collapsed: true, items: [apiGroups.supplier] },
+          { label: 'Consumer', collapsed: true, items: [apiGroups.consumer] },
+          { label: 'Affiliate', collapsed: true, items: [apiGroups.affiliate] },
+          { label: 'Account', collapsed: true, items: [apiGroups.account] },
+        ],
+      },
+      { label: 'Integrations API', collapsed: true, items: [partnerGroup] },
     {
       label: 'Overview',
       items: [
