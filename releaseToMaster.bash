@@ -28,9 +28,6 @@ unset GIT_MERGE_AUTOEDIT
 
 # --- Content generation (before version tag so the tag reflects final state) ---
 
-echo "==> Refreshing OpenAPI schema snapshots..."
-npm run schemas:sync
-
 echo "==> Translating content..."
 npm run i18n:all
 
