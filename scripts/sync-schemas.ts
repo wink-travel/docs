@@ -45,7 +45,7 @@ const INVENTORY_GROUPS: readonly string[] = [
 
 const INTEGRATIONS_GROUPS: readonly string[] = [
   "partner-channel-manager", "partner-services", "partner-channel-manager-account",
-  "partner-google", "partner-organization", "partner-ping",
+  "partner-google", "partner-ping",
 ];
 
 type SchemaTarget = {

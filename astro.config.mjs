@@ -61,7 +61,6 @@ const INTEGRATIONS_GROUPS = [
   ['partner-services', 'Inbound Services', partnerGroup],
   ['partner-channel-manager-account', 'Channel Manager (Account)', partnerGroup],
   ['partner-google', 'Google', partnerGroup],
-  ['partner-organization', 'Organization', partnerGroup],
   ['partner-ping', 'Ping', partnerGroup],
 ]
 
