@@ -39,7 +39,7 @@ npx git-changelog-command-line -of CHANGELOG.md
 
 if [[ -n "$(git status --porcelain)" ]]; then
   git add -A
-  git commit -m "chore: update schemas, translations, and changelog"
+  git commit -m "chore: update schemas, translations, and changelog [no ci]"
 fi
 
 # --- Validation ---
@@ -65,7 +65,8 @@ if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
 fi
 
 echo "==> Bumping version to ${NEXT_VERSION}..."
-npm version "$NEXT_VERSION"
+# -m tags the version-bump commit (and its tag) so CI skips it
+npm version "$NEXT_VERSION" -m "chore: release v%s [no ci]"
 
 # --- Push & release ---
 
