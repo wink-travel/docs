@@ -1,0 +1,2612 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Wink API",
+    "description": "# Introduction\nWelcome to the Wink API - A programmer-friendly way to manage, sell and book travel inventory on the Wink platform. The API gives you all the tools you need to ready your properties and inventory for sale across 1000s of our native sales channels. Integrators, affiliates, travel agents and content creators have the ability to search for your travel inventory and promote / sell it in a wide variety of ways.\n\n# Integrations\nWe have already integrated with the most well-known channel managers so you don't have to. Once your properties are set up, you can finish the setup by mapping your property to Wink using your channel manager partner portal. If your properties don't have a channel manager, you can easily manage rates and availability with this API directly.\n\n# Intended Audience\nProgrammers are [most likely] a requirement to start integrating with Wink. Companies and organizations that would most benefit from integrating with us are new and existing travel companies that have relationships with suppliers and that need an advanced system from which to manage their travel inventory and get that same inventory out to as many eyeballs as possible at the lowest price possible.\n- Hotel chains\n- Hotel brands\n- Travel tech companies\n- Destination sites\n- Integrators\n- Aggregators\n- Destination management companies\n- Travel agencies\n- OTAs\n\n# How the docs are organized\nNot every integrator needs every API, so we group endpoints by audience. Use the group selector at the top of this page to navigate.\n\n- **Platform** — cross-cutting endpoints used by every integrator: analytics, notifications, managing-entity lookups, payments, reference data, user settings, and a `ping` for credential checks.\n- **Supplier** — endpoints for property owners and operators: register a property, manage facilities and experiences, set up monetization (rate plans, promotions, cancellation policies), distribute inventory across sales channels, and reconcile bookings.\n- **Consumer** — endpoints for developers who consume the platform: look up inventory, retrieve specific inventory items, drive checkout and booking, and access the customization engine. Includes a travel-agent surface for agent-facilitated bookings.\n- **Affiliate** — endpoints for resellers and content creators: manage affiliate accounts, browse suppliers and inventory to sell, curate inventory (lists, maps, grids), manage sales channels, and run WinkLinks pages.\n- **Partner** — endpoints for technology partners that integrate at the infrastructure layer (channel managers today; PMS / GDS / OTA partners over time).\n\n## Usage\nThese features are made available to you via a REST API. This API is language agnostic.\n\n## Versioning\nWe chose to version our endpoints in a way that we hope affects your integration minimally. You request the version of our API you wish to work with via the `Wink-Version` header. When it's time for you to upgrade, you only have to change the version number to get access to our updated endpoints.\n\nCurrent version: `2.0`\nPrior versions: None\n\n# Affiliate Shareable Link API\nManage shareable supplier / inventory links that affiliates distribute to sell inventory.\n\nBrowse the endpoints in the left navigation bar to get started.\n\n",
+    "contact": {
+      "name": "Contact",
+      "email": "hi@wink.travel"
+    },
+    "version": "30.47.0",
+    "x-logo": {
+      "backgroundColor": "#FFFFFF",
+      "altText": "wink",
+      "url": "https://res.cloudinary.com/traveliko/image/upload/c_scale,h_129/v1653285543/wink/logo_text_white.svg"
+    }
+  },
+  "externalDocs": {
+    "description": "Documentation",
+    "url": "https://wink.travel/getting-started/how-to-use/"
+  },
+  "servers": [
+    {
+      "url": "https://api.wink.travel",
+      "description": "Endpoint"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Inventory Links",
+      "description": "Links are the simplest form of travel inventoryand can be shared everywhere and contains OpenGraph metadata. The same links can also be used with our ad banner Web Component."
+    },
+    {
+      "name": "Supplier Links",
+      "description": "Supplier links are a direct link to supplier homepage that also includes OpenGraph friendly metadata."
+    }
+  ],
+  "paths": {
+    "/api/managing-entity/{managingEntityIdentifier}/studio/shareable-link/supplier/{supplierUrlIdentifier}": {
+      "get": {
+        "tags": [
+          "Supplier Links"
+        ],
+        "summary": "Show Link",
+        "description": "Retrieve a specific shareable url for this seller",
+        "operationId": "showSupplierUrl",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Show link owned by this owner identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "owner-1"
+          },
+          {
+            "name": "supplierUrlIdentifier",
+            "in": "path",
+            "description": "Show link with this identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "owner-1"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ],
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellableSupplierUrl_ManagingEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Supplier Links"
+        ],
+        "summary": "Update link",
+        "description": "Modify a shareable link",
+        "operationId": "updateSupplierUrl",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Update link owned by this owner identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "owner-1"
+          },
+          {
+            "name": "supplierUrlIdentifier",
+            "in": "path",
+            "description": "Update url with this identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "seller-url-1"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertSellableSupplierUrlRequest_ManagingEntity"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellableSupplierUrl_ManagingEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Supplier Links"
+        ],
+        "summary": "Delete Link",
+        "description": "Delete a shareable link",
+        "operationId": "removeSupplierUrl",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Remove link owned by this owner identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "owner-1"
+          },
+          {
+            "name": "supplierUrlIdentifier",
+            "in": "path",
+            "description": "Remove url with this identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "seller-url-1"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ],
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellableSupplierUrl_ManagingEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/api/managing-entity/{managingEntityIdentifier}/studio/shareable-link/inventory/{sellerUrlIdentifier}": {
+      "get": {
+        "tags": [
+          "Inventory Links"
+        ],
+        "summary": "Show Link",
+        "description": "Retrieve a specific shareable url for this seller",
+        "operationId": "showSellerUrl",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Show link owned by this owner identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "owner-1"
+          },
+          {
+            "name": "sellerUrlIdentifier",
+            "in": "path",
+            "description": "Show link with this identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "owner-1"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ],
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellableInventoryUrl_ManagingEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Inventory Links"
+        ],
+        "summary": "Update link",
+        "description": "Modify a shareable link",
+        "operationId": "updateSellerUrl",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Update link owned by this owner identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "owner-1"
+          },
+          {
+            "name": "sellerUrlIdentifier",
+            "in": "path",
+            "description": "Update url with this identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "seller-url-1"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertSellableInventoryUrlRequest_ManagingEntity"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellableInventoryUrl_ManagingEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "Inventory Links"
+        ],
+        "summary": "Delete Link",
+        "description": "Delete a shareable link",
+        "operationId": "removeSellerUrl",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Remove link owned by this owner identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "owner-1"
+          },
+          {
+            "name": "sellerUrlIdentifier",
+            "in": "path",
+            "description": "Remove url with this identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "seller-url-1"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ],
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellableInventoryUrl_ManagingEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/api/managing-entity/{managingEntityIdentifier}/studio/shareable-link/supplier": {
+      "post": {
+        "tags": [
+          "Supplier Links"
+        ],
+        "summary": "Create Link",
+        "description": "Create a new shareable link",
+        "operationId": "createSupplierUrl",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Create link owned by this owner identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "owner-1"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertSellableSupplierUrlRequest_ManagingEntity"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellableSupplierUrl_ManagingEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/api/managing-entity/{managingEntityIdentifier}/studio/shareable-link/inventory": {
+      "post": {
+        "tags": [
+          "Inventory Links"
+        ],
+        "summary": "Create Link",
+        "description": "Create a new shareable link",
+        "operationId": "createSellerUrl",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Create link owned by this owner identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "owner-1"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpsertSellableInventoryUrlRequest_ManagingEntity"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SellableInventoryUrl_ManagingEntity"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/api/managing-entity/{managingEntityIdentifier}/studio/shareable-link/supplier/list": {
+      "get": {
+        "tags": [
+          "Supplier Links"
+        ],
+        "summary": "Show Links",
+        "description": "Retrieve list of shareable urls for this seller",
+        "operationId": "showSupplierUrls",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Show links list owned by this owner identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "owner-1"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ],
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SellableSupplierUrl_ManagingEntity"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/api/managing-entity/{managingEntityIdentifier}/studio/shareable-link/inventory/{channelInventoryIdentifier}/media/list": {
+      "get": {
+        "tags": [
+          "Inventory Links"
+        ],
+        "summary": "Show Inventory Media",
+        "description": "Retrieve a list of media for this channel inventory identifier",
+        "operationId": "showInventoryMedia",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Owner identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "owner-1"
+          },
+          {
+            "name": "channelInventoryIdentifier",
+            "in": "path",
+            "description": "Channel inventory identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "channel-blocking-1"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ],
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SimpleMultimedia_ManagingEntity"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/api/managing-entity/{managingEntityIdentifier}/studio/shareable-link/inventory/list": {
+      "get": {
+        "tags": [
+          "Inventory Links"
+        ],
+        "summary": "Show Links",
+        "description": "Retrieve list of shareable urls for this seller",
+        "operationId": "showSellerUrls",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Show links list owned by this owner identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "owner-1"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ],
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SellableInventoryUrl_ManagingEntity"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              },
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/xml": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/html": {
+                "schema": {
+                  "type": "object"
+                }
+              },
+              "text/plain": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ProblemDetail": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "format": "uri"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "instance": {
+            "type": "string",
+            "format": "uri"
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": {}
+          }
+        }
+      },
+      "MediaAuthorAttribution_ManagingEntity": {
+        "type": "object",
+        "properties": {
+          "url": {
+            "type": "string",
+            "default": "",
+            "description": "URL to contributor",
+            "example": "https://maps.google.com/maps/contrib/111628493169070103594"
+          },
+          "name": {
+            "type": "string",
+            "default": "",
+            "description": "Name of contributor",
+            "example": "Samuel Adams",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "name"
+        ]
+      },
+      "SimpleDescription_ManagingEntity": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": "",
+            "description": "Use as title or short text description",
+            "example": "An example title"
+          },
+          "description": {
+            "type": "string",
+            "default": "",
+            "description": "Longer text description",
+            "example": "This is a longer description in the specified language.",
+            "maxLength": 2147483647,
+            "minLength": 1
+          },
+          "language": {
+            "type": "string",
+            "default": "en",
+            "description": "Indicate which language this description is written in.",
+            "example": "en",
+            "maxLength": 2,
+            "minLength": 2
+          },
+          "creator": {
+            "type": "string",
+            "default": "USER",
+            "description": "Whether it was user or system generated.",
+            "enum": [
+              "SYSTEM",
+              "USER"
+            ],
+            "example": "SYSTEM"
+          },
+          "md5ContentHash": {
+            "type": "string",
+            "default": "",
+            "description": "The md5 hash of the name, description and language."
+          },
+          "hashMismatch": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "description",
+          "language",
+          "name"
+        ]
+      },
+      "SimpleMultimedia_ManagingEntity": {
+        "type": "object",
+        "default": null,
+        "description": "Multimedia that contains less information than Multimedia object",
+        "properties": {
+          "multimediaIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Document identifier",
+            "example": "image-1",
+            "minLength": 1
+          },
+          "identifier": {
+            "type": "string",
+            "default": "",
+            "description": "Use this identifier to communicate with Cloudinary.",
+            "example": "cloudinary-image-1",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "default": "",
+            "description": "Whether Cloudinary media is a VIDEO or IMAGE.",
+            "enum": [
+              "IMAGE",
+              "VIDEO",
+              "AUDIO",
+              "RAW"
+            ],
+            "example": "IMAGE"
+          },
+          "source": {
+            "type": "string",
+            "default": "CLOUDINARY",
+            "description": "Currently ONLY using Cloudinary to store all image / video assets.",
+            "enum": [
+              "YOUTUBE",
+              "CLOUDINARY"
+            ],
+            "example": "CLOUDINARY"
+          },
+          "sort": {
+            "type": "integer",
+            "format": "int32",
+            "default": 999,
+            "description": "Sort allows you to control how you want to sort this record in a list of media records.",
+            "example": 10
+          },
+          "angle": {
+            "type": "string",
+            "default": "",
+            "description": "Media angle",
+            "example": "-90"
+          },
+          "width": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Media width in pixels.",
+            "example": 2560,
+            "minimum": 1
+          },
+          "height": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Media height in pixels.",
+            "example": 1600,
+            "minimum": 1
+          },
+          "published": {
+            "type": "boolean",
+            "default": false,
+            "description": "Instead of deleting the media, choose to un-publish it instead for later re-use. Could be you keep seasonal images of the property.",
+            "example": true
+          },
+          "category": {
+            "type": "string",
+            "default": "",
+            "description": "Supported OTA specification `PIC` code. See [OTA geoname data](#operation/showAvailableCodesForCategory)",
+            "example": "1"
+          },
+          "descriptions": {
+            "type": "array",
+            "default": "",
+            "description": "Localized media captions to give user some context about where this media was taken.",
+            "items": {
+              "$ref": "#/components/schemas/SimpleDescription_ManagingEntity"
+            }
+          },
+          "lifestyleType": {
+            "type": "string",
+            "default": "",
+            "description": "Associate this media with a specific lifestyle type. A user searching and filtering inventory based on lifestyles can be shown relevant media first.",
+            "enum": [
+              "LIFESTYLE_HEALTH_FITNESS",
+              "LIFESTYLE_RELAX",
+              "LIFESTYLE_ADULT_ONLY",
+              "LIFESTYLE_ADVENTURE",
+              "LIFESTYLE_BUSINESS",
+              "LIFESTYLE_LGBT",
+              "LIFESTYLE_SINGLE_PARENT",
+              "LIFESTYLE_SOLO_FEMALE",
+              "LIFESTYLE_BEAUTY",
+              "LIFESTYLE_FOODIE",
+              "LIFESTYLE_FAMILY",
+              "LIFESTYLE_ROMANCE",
+              "LIFESTYLE_COUPLE",
+              "LIFESTYLE_SOLO",
+              "LIFESTYLE_BACKPACKER",
+              "LIFESTYLE_SHOPPING",
+              "LIFESTYLE_SPORTS",
+              "LIFESTYLE_MOUNTAIN",
+              "LIFESTYLE_BEACH",
+              "LIFESTYLE_CITY",
+              "LIFESTYLE_COUNTRY",
+              "LIFESTYLE_CULTURE",
+              "LIFESTYLE_ECO"
+            ],
+            "example": "LIFESTYLE_HEALTH_FITNESS"
+          },
+          "attribution": {
+            "type": "array",
+            "default": "",
+            "description": "Whether image has attribution properties",
+            "items": {
+              "$ref": "#/components/schemas/MediaAuthorAttribution_ManagingEntity"
+            }
+          },
+          "isLandscape": {
+            "type": "boolean",
+            "default": false,
+            "description": "True if media width is greater or equal to height",
+            "example": true
+          }
+        },
+        "required": [
+          "height",
+          "identifier",
+          "multimediaIdentifier",
+          "sort",
+          "source",
+          "type",
+          "width"
+        ]
+      },
+      "UpsertSellableSupplierUrlRequest_ManagingEntity": {
+        "type": "object",
+        "default": null,
+        "description": "Upserts a SellableSupplierUrl entity",
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": "",
+            "description": "Descriptive name of this url for seller use only",
+            "example": "My Bali Villa",
+            "minLength": 1
+          },
+          "customizationIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Customization identifier",
+            "example": "customization-1",
+            "minLength": 1
+          },
+          "descriptions": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/SimpleDescription_ManagingEntity",
+              "default": "",
+              "description": "Localized link descriptions"
+            },
+            "maxItems": 2147483647,
+            "minItems": 1,
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "multimedias": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/SimpleMultimedia_ManagingEntity",
+              "default": "",
+              "description": "Image entries"
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "keywords": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "type": "string",
+              "default": "",
+              "description": "Keywords",
+              "example": "bali"
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "twitterAccount": {
+            "type": "string",
+            "default": "",
+            "description": "Twitter account is used with OpenGraph data",
+            "example": "@travelikoworld"
+          },
+          "facebookAppId": {
+            "type": "string",
+            "default": "",
+            "description": "Facebook APP ID is used with OpenGraph data",
+            "example": "19827398721938798237"
+          },
+          "theme": {
+            "type": "string",
+            "default": "",
+            "description": "Url theme controls the look and feel of the ad banner.",
+            "enum": [
+              "THEME_1"
+            ],
+            "example": "THEME_1"
+          },
+          "supplierIdentifier": {
+            "type": "string",
+            "default": "",
+            "description": "The entity supplying the inventory. Usually a hotel.",
+            "example": "hotel-1",
+            "minLength": 1
+          },
+          "animate": {
+            "type": "boolean",
+            "default": false,
+            "description": "Create an animated gif instead of a list of images",
+            "example": true
+          },
+          "animateDelay": {
+            "type": "integer",
+            "format": "int32",
+            "default": -1,
+            "description": "Animation delay in milliseconds",
+            "example": 1000
+          }
+        },
+        "required": [
+          "customizationIdentifier",
+          "descriptions",
+          "keywords",
+          "name",
+          "supplierIdentifier"
+        ]
+      },
+      "SellableSupplierUrl_ManagingEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "default": "",
+            "description": "Document UUID",
+            "example": "doc-1"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "default": "",
+            "description": "Datetime this record was first created"
+          },
+          "lastUpdate": {
+            "type": "string",
+            "format": "date-time",
+            "default": "",
+            "description": "Datetime this record was last updated"
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64",
+            "default": "",
+            "description": "Version property that shows how many times this document has been persisted. Document will not persist if the version property is less than current version property in the system. Result in an optimistic locking exception.",
+            "example": 12
+          },
+          "userIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Creator of entry",
+            "example": "user-1",
+            "minLength": 1
+          },
+          "ownerIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "AffiliateAccount identifier",
+            "example": "company-1",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "default": "",
+            "description": "Descriptive name of this url for seller use only",
+            "example": "My Bali Villa",
+            "minLength": 1
+          },
+          "customizationIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Customization identifier",
+            "example": "customization-1",
+            "minLength": 1
+          },
+          "descriptions": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/SimpleDescription_ManagingEntity",
+              "default": "",
+              "description": "Localized link descriptions"
+            },
+            "maxItems": 2147483647,
+            "minItems": 1,
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "multimedias": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/SimpleMultimedia_ManagingEntity",
+              "default": "",
+              "description": "Image entries"
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "keywords": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "type": "string",
+              "default": "",
+              "description": "Keywords",
+              "example": "bali"
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "uniqueId": {
+            "type": "string",
+            "default": "",
+            "description": "Unique link id",
+            "example": "HBDG87f2",
+            "minLength": 1
+          },
+          "twitterAccount": {
+            "type": "string",
+            "default": "",
+            "description": "Twitter account is used with OpenGraph data",
+            "example": "@travelikoworld"
+          },
+          "facebookAppId": {
+            "type": "string",
+            "default": "",
+            "description": "Facebook APP ID is used with OpenGraph data",
+            "example": "19827398721938798237"
+          },
+          "theme": {
+            "type": "string",
+            "default": "",
+            "description": "Url theme controls the look and feel of the ad banner.",
+            "enum": [
+              "THEME_1"
+            ],
+            "example": "THEME_1"
+          },
+          "status": {
+            "type": "string",
+            "default": "",
+            "description": "Url sell status",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE",
+              "REMOVED"
+            ],
+            "example": "ACTIVE"
+          },
+          "supplierIdentifier": {
+            "type": "string",
+            "default": "",
+            "description": "The entity supplying the inventory. Usually a hotel.",
+            "example": "hotel-1",
+            "minLength": 1
+          },
+          "animate": {
+            "type": "boolean",
+            "default": false,
+            "description": "Create an animated gif instead of a list of images",
+            "example": true
+          },
+          "animateDelay": {
+            "type": "integer",
+            "format": "int32",
+            "default": -1,
+            "description": "Animation delay in milliseconds",
+            "example": 1000
+          }
+        },
+        "required": [
+          "customizationIdentifier",
+          "descriptions",
+          "name",
+          "ownerIdentifier",
+          "status",
+          "supplierIdentifier",
+          "uniqueId",
+          "userIdentifier"
+        ]
+      },
+      "UpsertSellableInventoryUrlRequest_ManagingEntity": {
+        "type": "object",
+        "default": null,
+        "description": "Upserts a SellableInventoryUrl entity",
+        "properties": {
+          "name": {
+            "type": "string",
+            "default": "",
+            "description": "Descriptive name of this url for seller use only",
+            "example": "My Bali Villa",
+            "minLength": 1
+          },
+          "customizationIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Customization identifier",
+            "example": "customization-1",
+            "minLength": 1
+          },
+          "descriptions": {
+            "type": "array",
+            "default": "",
+            "description": "Localized link descriptions",
+            "items": {
+              "$ref": "#/components/schemas/SimpleDescription_ManagingEntity"
+            },
+            "maxItems": 2147483647,
+            "minItems": 1
+          },
+          "multimedias": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/SimpleMultimedia_ManagingEntity",
+              "default": "",
+              "description": "The selected media for this url."
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "keywords": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "type": "string",
+              "default": "",
+              "description": "Keywords",
+              "example": "bali"
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "twitterAccount": {
+            "type": "string",
+            "default": "",
+            "description": "Twitter account is used with OpenGraph data",
+            "example": "@travelikoworld"
+          },
+          "facebookAppId": {
+            "type": "string",
+            "default": "",
+            "description": "Facebook APP ID is used with OpenGraph data",
+            "example": "19827398721938798237"
+          },
+          "theme": {
+            "type": "string",
+            "default": "",
+            "description": "Url theme controls the look and feel of the ad banner.",
+            "enum": [
+              "THEME_1"
+            ],
+            "example": "THEME_1"
+          },
+          "inventoryType": {
+            "type": "string",
+            "default": "",
+            "description": "Inventory type",
+            "enum": [
+              "HOTEL",
+              "GUEST_ROOM",
+              "MEETING_ROOM",
+              "RESTAURANT",
+              "SPA",
+              "ADD_ON",
+              "ATTRACTION",
+              "ACTIVITY",
+              "PLACE"
+            ],
+            "example": "GUEST_ROOM"
+          },
+          "supplierIdentifier": {
+            "type": "string",
+            "default": "",
+            "description": "The entity supplying the inventory. Usually a hotel.",
+            "example": "hotel-1",
+            "minLength": 1
+          },
+          "channelInventoryIdentifier": {
+            "type": "string",
+            "default": "",
+            "description": "Selected inventory record",
+            "example": "channel-inventory-1",
+            "minLength": 1
+          },
+          "transactionalItemIdentifier": {
+            "type": "string",
+            "default": "",
+            "description": "In use by ancillary items only. Not used room type or property. The transactional item on the ancillary to retrieve pricing for. If left empty, will find the cheapest priced item.",
+            "example": "transactional-item-1"
+          },
+          "animate": {
+            "type": "boolean",
+            "default": false,
+            "description": "Create an animated gif instead of a list of images",
+            "example": true
+          },
+          "animateDelay": {
+            "type": "integer",
+            "format": "int32",
+            "default": -1,
+            "description": "Animation delay in milliseconds",
+            "example": 1000
+          }
+        },
+        "required": [
+          "channelInventoryIdentifier",
+          "customizationIdentifier",
+          "descriptions",
+          "inventoryType",
+          "name",
+          "supplierIdentifier",
+          "theme"
+        ]
+      },
+      "SellableInventoryUrl_ManagingEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "default": "",
+            "description": "Document UUID",
+            "example": "doc-1"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "default": "",
+            "description": "Datetime this record was first created"
+          },
+          "lastUpdate": {
+            "type": "string",
+            "format": "date-time",
+            "default": "",
+            "description": "Datetime this record was last updated"
+          },
+          "version": {
+            "type": "integer",
+            "format": "int64",
+            "default": "",
+            "description": "Version property that shows how many times this document has been persisted. Document will not persist if the version property is less than current version property in the system. Result in an optimistic locking exception.",
+            "example": 12
+          },
+          "userIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Creator of entry",
+            "example": "user-1",
+            "minLength": 1
+          },
+          "ownerIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "AffiliateAccount identifier",
+            "example": "company-1",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "default": "",
+            "description": "Descriptive name of this url for seller use only",
+            "example": "My Bali Villa",
+            "minLength": 1
+          },
+          "customizationIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Customization identifier",
+            "example": "customization-1",
+            "minLength": 1
+          },
+          "descriptions": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/SimpleDescription_ManagingEntity",
+              "default": "",
+              "description": "Localized link descriptions"
+            },
+            "maxItems": 2147483647,
+            "minItems": 1,
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "multimedias": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/SimpleMultimedia_ManagingEntity",
+              "default": "",
+              "description": "The selected media for this url."
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "keywords": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "type": "string",
+              "default": "",
+              "description": "Keywords",
+              "example": "bali"
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "uniqueId": {
+            "type": "string",
+            "default": "",
+            "description": "Unique link id",
+            "example": "HBDG87f2",
+            "minLength": 1
+          },
+          "twitterAccount": {
+            "type": "string",
+            "default": "",
+            "description": "Twitter account is used with OpenGraph data",
+            "example": "@travelikoworld"
+          },
+          "facebookAppId": {
+            "type": "string",
+            "default": "",
+            "description": "Facebook APP ID is used with OpenGraph data",
+            "example": "19827398721938798237"
+          },
+          "theme": {
+            "type": "string",
+            "default": "",
+            "description": "Url theme controls the look and feel of the ad banner.",
+            "enum": [
+              "THEME_1"
+            ],
+            "example": "THEME_1"
+          },
+          "status": {
+            "type": "string",
+            "default": "",
+            "description": "Url sell status",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE",
+              "REMOVED"
+            ],
+            "example": "ACTIVE"
+          },
+          "inventoryStatus": {
+            "type": "string",
+            "default": "",
+            "description": "Url sell status",
+            "enum": [
+              "ACTIVE",
+              "INACTIVE",
+              "REMOVED"
+            ],
+            "example": "ACTIVE"
+          },
+          "inventoryType": {
+            "type": "string",
+            "default": "",
+            "description": "Inventory type",
+            "enum": [
+              "HOTEL",
+              "GUEST_ROOM",
+              "MEETING_ROOM",
+              "RESTAURANT",
+              "SPA",
+              "ADD_ON",
+              "ATTRACTION",
+              "ACTIVITY",
+              "PLACE"
+            ],
+            "example": "GUEST_ROOM"
+          },
+          "channelInventoryType": {
+            "type": "string",
+            "default": "",
+            "description": "Channel inventory type is a subset of inventory type in that it does not include the `HOTEL` type. THe way it works is, as a seller you might want to sell a guest room but instead of showing the price of that guest room, you would like to display the best room type price for the property.",
+            "enum": [
+              "GUEST_ROOM",
+              "ADD_ON",
+              "MEETING_ROOM",
+              "RESTAURANT",
+              "SPA",
+              "ATTRACTION",
+              "PLACE",
+              "ACTIVITY"
+            ],
+            "example": "GUEST_ROOM"
+          },
+          "supplierIdentifier": {
+            "type": "string",
+            "default": "",
+            "description": "The entity supplying the inventory. Usually a hotel.",
+            "example": "hotel-1",
+            "minLength": 1
+          },
+          "channelInventoryIdentifier": {
+            "type": "string",
+            "default": "",
+            "description": "Selected inventory record",
+            "example": "channel-inventory-1",
+            "minLength": 1
+          },
+          "transactionalItemIdentifier": {
+            "type": "string",
+            "default": "",
+            "description": "In use by ancillary items only. Not used room type or property. The transactional item on the ancillary to retrieve pricing for. If left empty, will find the cheapest priced item.",
+            "example": "transactional-item-1"
+          },
+          "animate": {
+            "type": "boolean",
+            "default": false,
+            "description": "Create an animated gif instead of a list of images",
+            "example": true
+          },
+          "animateDelay": {
+            "type": "integer",
+            "format": "int32",
+            "default": -1,
+            "description": "Animation delay in milliseconds",
+            "example": 1000
+          }
+        },
+        "required": [
+          "channelInventoryIdentifier",
+          "channelInventoryType",
+          "customizationIdentifier",
+          "descriptions",
+          "inventoryStatus",
+          "inventoryType",
+          "name",
+          "ownerIdentifier",
+          "status",
+          "supplierIdentifier",
+          "theme",
+          "uniqueId",
+          "userIdentifier"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "oauth2ClientCredentials": {
+        "type": "oauth2",
+        "description": "## Retrieve access token\nMake a POST (`Content-Type: application/x-www-form-urlencoded`) request to the Token URL below. Include one POST key/value entry: `grant_type=client_credentials` and include your clientID / secretKey credentials in a Basic Auth header. E.g. `Authorization: Basic base64_encode($clientId + ':' + $secretKey)`.\n## Add Bearer access token to all API requests\nOnce you have the access token, you can pass that along on all API requests in the authentication header: `'Authorization: Bearer $accessToken`",
+        "name": "Client Credentials",
+        "flows": {
+          "clientCredentials": {
+            "authorizationUrl": "https://iam.wink.travel/oauth2/authorize",
+            "tokenUrl": "https://iam.wink.travel/oauth2/token",
+            "refreshUrl": "https://iam.wink.travel/oauth2/refresh",
+            "scopes": {
+              "marketing.read": "View your marketing & promotions.",
+              "marketing.write": "Create and update your marketing & promotions.",
+              "marketing.remove": "Delete your marketing & promotions."
+            }
+          }
+        }
+      }
+    }
+  }
+}

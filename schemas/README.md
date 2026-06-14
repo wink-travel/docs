@@ -1,11 +1,20 @@
 # Schemas
 
-OpenAPI snapshots consumed by `starlight-openapi` at build time. Configured in `astro.config.mjs`.
+Per-group OpenAPI snapshots consumed by `starlight-openapi` at build time. Configured in
+`astro.config.mjs`.
 
-| File | Source URL | Plugin `base` |
+One JSON file per springdoc group (e.g. `platform-analytics.json`) rather than a single aggregate,
+so the docs sidebar is organised by audience (Platform / Supplier / Consumer / Affiliate / Account,
+and the Integrations API) instead of one flat 80+ tag list. Each file is fetched from
+`<host>/v3/api-docs/<group>`:
+
+| Group prefix | Host | Plugin `base` |
 | --- | --- | --- |
-| `api.json` | `https://api.wink.travel/v3/api-docs` | `api` |
-| `integrations.json` | `https://integrations.wink.travel/v3/api-docs` | `integrations-api` |
+| `platform-*`, `supplier-*`, `consumer-*`, `affiliate-*`, `account-*` | `https://api.wink.travel` | `api/<group>` |
+| `partner-*` | `https://integrations.wink.travel` | `integrations-api/<group>` |
+
+The authoritative group list lives in `scripts/sync-schemas.ts` and `astro.config.mjs` — keep the two
+in sync when groups are added or removed upstream.
 
 ## Refreshing
 
@@ -13,20 +22,23 @@ OpenAPI snapshots consumed by `starlight-openapi` at build time. Configured in `
 npm run schemas:sync
 ```
 
-`scripts/sync-schemas.ts` GETs each URL and overwrites the matching JSON file. If a fetch fails (non-2xx, network error, non-JSON body, missing `openapi`/`swagger` field) the existing snapshot is left in place — the build keeps working against the last-good copy.
+`scripts/sync-schemas.ts` GETs each per-group URL and overwrites the matching `<group>.json`. If a
+fetch fails (non-2xx, network error, non-JSON body, missing `openapi`/`swagger` field) the existing
+snapshot is left in place — the build keeps working against the last-good copy.
 
-Override the source URLs via env if you need to point at staging:
+Override the source hosts via env to point at staging or a local dev instance:
 
 ```bash
-WINK_API_SCHEMA_URL=https://staging.api.wink.travel/v3/api-docs \
-WINK_INTEGRATIONS_SCHEMA_URL=https://staging.integrations.wink.travel/v3/api-docs \
+WINK_API_BASE=https://dev-api.wink.travel:8443 \
+WINK_INTEGRATIONS_BASE=https://dev-api.wink.travel:8445 \
   npm run schemas:sync
 ```
 
+For a self-signed dev certificate, prefer trusting the dev CA locally; only as a last resort prefix
+the command with `NODE_TLS_REJECT_UNAUTHORIZED=0` (never commit that — production sync uses fully
+verified HTTPS).
+
 ## Do not hand-edit
 
-These files are generated. Edits will be overwritten on the next sync. If a schema needs to change, fix it upstream and re-sync.
-
-## `api.json` stub
-
-`api.json` currently ships as a minimal valid OpenAPI 3.1 stub because the upstream `https://api.wink.travel/v3/api-docs` endpoint was returning HTTP 500 when this directory was seeded. Re-run `npm run schemas:sync` once upstream is healthy to replace it with the real spec.
+These files are generated. Edits will be overwritten on the next sync. If a schema needs to change,
+fix it upstream and re-sync.
