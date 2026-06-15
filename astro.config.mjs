@@ -41,6 +41,9 @@ const toApiSchema = ([audience, label, apiBase]) => ({
     label,
     collapsed: true,
     group: apiSidebarGroup,
+    // Sort the resource sections within each audience alphabetically (the schema
+    // "Overview" link is rendered before the tags, so it stays first).
+    tags: { sort: 'alphabetical' },
     operations: { badges: true, labels: 'summary', sort: 'document' },
   },
   snippets: openApiSnippets,
