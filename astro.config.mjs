@@ -164,7 +164,7 @@ export default defineConfig({
         ],
       },
       { label: 'Webinars', items: [{ autogenerate: { directory: 'webinars' } }] },
-      { label: 'Integrations', items: [{ autogenerate: { directory: 'integrations' } }] },
+      { label: 'Integrations', collapsed: true, items: [{ autogenerate: { directory: 'integrations' } }] },
       { label: 'Developers', items: [{ autogenerate: { directory: 'developers' } }] },
       {
         label: 'API', collapsed: true, items: [
