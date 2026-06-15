@@ -30,22 +30,6 @@
       "description": "Managing entities are the parent entities of property, and payment accounts."
     },
     {
-      "name": "Ledger",
-      "description": "Beneficiary ledger transaction history."
-    },
-    {
-      "name": "Withdrawal",
-      "description": "Beneficiary payout withdrawal management."
-    },
-    {
-      "name": "Managing Entity Booking Data",
-      "description": "Data and statistics endpoints for managing-entity-scoped booking queries."
-    },
-    {
-      "name": "Managing Entity Booking",
-      "description": "Transactional booking operations scoped to a managing entity."
-    },
-    {
       "name": "Managers",
       "description": "This collection of endpoints let you invite others to manage your account."
     },
@@ -60,13 +44,22 @@
     {
       "name": "Notification",
       "description": "The Notifications API is a way for us to stay in touch with your user, property or affiliate account."
+    },
+    {
+      "name": "Settlement"
+    },
+    {
+      "name": "Customization"
+    },
+    {
+      "name": "Bookings"
     }
   ],
   "paths": {
     "/api/managing-entity/{managingEntityIdentifier}/revolut-payout-account/{revolutPayoutAccountIdentifier}": {
       "put": {
         "tags": [
-          "Managing Entity"
+          "Settlement"
         ],
         "summary": "Update Revolut payout account",
         "description": "Update an existing Revolut revtag payout destination. Re-creates the Revolut counterparty eagerly to validate the new revtag/name.",
@@ -210,7 +203,7 @@
       },
       "delete": {
         "tags": [
-          "Managing Entity"
+          "Settlement"
         ],
         "summary": "Remove Revolut payout account",
         "description": "Remove an existing Revolut revtag payout destination from a managing entity.",
@@ -357,7 +350,7 @@
     "/api/managing-entity/{managingEntityIdentifier}/bank-account/{bankAccountIdentifier}": {
       "put": {
         "tags": [
-          "Managing Entity"
+          "Settlement"
         ],
         "summary": "Update Bank Account",
         "description": "Update an existing bank account for a managing entity.",
@@ -501,7 +494,7 @@
       },
       "delete": {
         "tags": [
-          "Managing Entity"
+          "Settlement"
         ],
         "summary": "Remove Bank Account",
         "description": "Remove an existing bank account from a managing entity.",
@@ -648,7 +641,7 @@
     "/api/managing-entity/{managingEntityIdentifier}/revolut-payout-account": {
       "post": {
         "tags": [
-          "Managing Entity"
+          "Settlement"
         ],
         "summary": "Add Revolut payout account",
         "description": "Add a Revolut revtag payout destination to an existing managing entity. The Revolut counterparty is created eagerly; if the revtag/name is invalid, the request fails.",
@@ -786,7 +779,7 @@
     "/api/managing-entity/{managingEntityIdentifier}/payment/withdrawal": {
       "get": {
         "tags": [
-          "Withdrawal"
+          "Settlement"
         ],
         "summary": "Get withdrawal history",
         "description": "Returns all withdrawal records for the given managing entity, most recent first.",
@@ -917,7 +910,7 @@
       },
       "post": {
         "tags": [
-          "Withdrawal"
+          "Settlement"
         ],
         "summary": "Initiate withdrawal",
         "description": "Initiates a full-balance withdrawal to the chosen payout destination on the given managing entity. The user must specify which destination (BankAccount or RevolutPayoutAccount) to send funds to. Processed via Revolut Business; the beneficiary will receive funds within 1-3 business days for bank rails or instantly for Revolut-to-Revolut.",
@@ -1067,7 +1060,7 @@
     "/api/managing-entity/{managingEntityIdentifier}/bank-account": {
       "post": {
         "tags": [
-          "Managing Entity"
+          "Settlement"
         ],
         "summary": "Add Bank Account",
         "description": "Add a bank account to an existing managing entity.",
@@ -1205,7 +1198,7 @@
     "/api/managing-entity/{managingEntityIdentifier}/payment/withdrawal/{withdrawalId}": {
       "get": {
         "tags": [
-          "Withdrawal"
+          "Settlement"
         ],
         "summary": "Get withdrawal detail",
         "description": "Returns a single withdrawal record with full fee breakdown.",
@@ -1345,7 +1338,7 @@
     "/api/managing-entity/{managingEntityIdentifier}/payment/withdrawal/estimate": {
       "get": {
         "tags": [
-          "Withdrawal"
+          "Settlement"
         ],
         "summary": "Estimate withdrawal fees",
         "description": "Calculates the fee breakdown for a full-balance withdrawal to the chosen payout destination. Returns gross amount, transfer fee, FX fee (if applicable), and net payout amount. This is a read-only preview \u2014 no withdrawal is initiated.",
@@ -1495,7 +1488,7 @@
     "/api/managing-entity/{managingEntityIdentifier}/payment/ledger/transactions": {
       "get": {
         "tags": [
-          "Ledger"
+          "Settlement"
         ],
         "summary": "Get transaction history",
         "description": "Returns paginated ledger entries for the given managing entity, newest first.",
@@ -1648,7 +1641,7 @@
     "/api/managing-entity/{managingEntityIdentifier}/payment/ledger/balance": {
       "get": {
         "tags": [
-          "Ledger"
+          "Settlement"
         ],
         "summary": "Get available balance",
         "description": "Returns the available, withdrawable ledger balance per currency for the given managing entity. Hotels are denominated in their local/source currency; other beneficiaries in the internal currency (USD). This is the source of truth for the withdrawal flow.",
@@ -1778,154 +1771,10 @@
         ]
       }
     },
-    "/api/managing-entity/{managingEntityIdentifier}/booking/{bookingIdentifier}/record-payout": {
-      "post": {
-        "tags": [
-          "Managing Entity Booking"
-        ],
-        "summary": "Record payout",
-        "description": "Record that a payout has been processed for a booking beneficiary.",
-        "operationId": "recordPayout",
-        "parameters": [
-          {
-            "name": "managingEntityIdentifier",
-            "in": "path",
-            "description": "Managing entity identifier",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          },
-          {
-            "name": "bookingIdentifier",
-            "in": "path",
-            "description": "Booking identifier",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          },
-          {
-            "name": "Wink-Version",
-            "in": "header",
-            "schema": {
-              "type": "string",
-              "default": "2.0.0",
-              "enum": [
-                "2.0"
-              ]
-            }
-          },
-          {
-            "name": "Accept",
-            "in": "header",
-            "schema": {
-              "type": "string",
-              "enum": [
-                "application/json"
-              ],
-              "default": null
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              },
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              },
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "object"
-                }
-              },
-              "text/html": {
-                "schema": {
-                  "type": "object"
-                }
-              },
-              "text/plain": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "oauth2ClientCredentials": []
-          }
-        ]
-      }
-    },
     "/api/managing-entity/{managingEntityIdentifier}/booking/grid": {
       "post": {
         "tags": [
-          "Managing Entity Booking Data"
+          "Bookings"
         ],
         "summary": "Retrieve booking grid",
         "description": "Returns a paged booking grid with aggregate funds for a managing entity, optionally filtered by financial state.",
@@ -2072,313 +1921,10 @@
         ]
       }
     },
-    "/api/managing-entity/{managingEntityIdentifier}/booking/{bookingIdentifier}/immediate-refund": {
-      "patch": {
-        "tags": [
-          "Managing Entity Booking"
-        ],
-        "summary": "Immediate refund",
-        "description": "Issue an immediate full refund for a booking within the configured time window.",
-        "operationId": "immediateRefund",
-        "parameters": [
-          {
-            "name": "managingEntityIdentifier",
-            "in": "path",
-            "description": "Managing entity identifier",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          },
-          {
-            "name": "bookingIdentifier",
-            "in": "path",
-            "description": "Booking identifier",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          },
-          {
-            "name": "Wink-Version",
-            "in": "header",
-            "schema": {
-              "type": "string",
-              "default": "2.0.0",
-              "enum": [
-                "2.0"
-              ]
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ImmediateRefundRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Booking"
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              },
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              },
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "object"
-                }
-              },
-              "text/html": {
-                "schema": {
-                  "type": "object"
-                }
-              },
-              "text/plain": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "oauth2ClientCredentials": []
-          }
-        ]
-      }
-    },
-    "/api/managing-entity/{managingEntityIdentifier}/booking/group/{groupIdentifier}/immediate-refund": {
-      "patch": {
-        "tags": [
-          "Managing Entity Booking"
-        ],
-        "summary": "Immediate group refund",
-        "description": "Issue an immediate full refund for all bookings in a group within the configured time window.",
-        "operationId": "immediateGroupRefund",
-        "parameters": [
-          {
-            "name": "managingEntityIdentifier",
-            "in": "path",
-            "description": "Managing entity identifier",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          },
-          {
-            "name": "groupIdentifier",
-            "in": "path",
-            "description": "Group identifier",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "default": ""
-            }
-          },
-          {
-            "name": "Wink-Version",
-            "in": "header",
-            "schema": {
-              "type": "string",
-              "default": "2.0.0",
-              "enum": [
-                "2.0"
-              ]
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/ImmediateRefundRequest"
-              }
-            }
-          },
-          "required": true
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/BookingWithError"
-                  }
-                }
-              }
-            }
-          },
-          "400": {
-            "description": "Bad Request",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              },
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              },
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
-          "401": {
-            "description": "Unauthorized",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
-          "403": {
-            "description": "Forbidden",
-            "content": {
-              "*/*": {
-                "schema": {
-                  "$ref": "#/components/schemas/ProblemDetail"
-                }
-              }
-            }
-          },
-          "500": {
-            "description": "Internal Server Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "type": "object"
-                }
-              },
-              "application/xml": {
-                "schema": {
-                  "type": "object"
-                }
-              },
-              "text/xml": {
-                "schema": {
-                  "type": "object"
-                }
-              },
-              "text/html": {
-                "schema": {
-                  "type": "object"
-                }
-              },
-              "text/plain": {
-                "schema": {
-                  "type": "object"
-                }
-              }
-            }
-          }
-        },
-        "security": [
-          {
-            "oauth2ClientCredentials": []
-          }
-        ]
-      }
-    },
     "/api/managing-entity/{managingEntityIdentifier}/booking/funds": {
       "get": {
         "tags": [
-          "Managing Entity Booking Data"
+          "Bookings"
         ],
         "summary": "Retrieve aggregate funds",
         "description": "Returns aggregate funds for a managing entity filtered by financial state.",
@@ -2539,7 +2085,7 @@
     "/api/managing-entity/{managingEntityIdentifier}/booking/aggregate/cancellation": {
       "get": {
         "tags": [
-          "Managing Entity Booking Data"
+          "Bookings"
         ],
         "summary": "Retrieve cancellation aggregation",
         "description": "Returns aggregate cancellation data for a managing entity.",
@@ -2683,7 +2229,7 @@
     "/api/managing-entity/{managingEntityIdentifier}/booking/aggregate/beneficiary": {
       "get": {
         "tags": [
-          "Managing Entity Booking Data"
+          "Bookings"
         ],
         "summary": "Retrieve beneficiary payment amounts",
         "description": "Returns aggregate beneficiary payment data for a managing entity.",
@@ -2827,7 +2373,7 @@
     "/api/managing-entity/{managingEntityIdentifier}/booking/aggregate/beneficiary/available-funds": {
       "get": {
         "tags": [
-          "Managing Entity Booking Data"
+          "Bookings"
         ],
         "summary": "Retrieve available funds per beneficiary",
         "description": "Returns available funds aggregated per beneficiary for a managing entity.",
