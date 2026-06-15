@@ -106,7 +106,10 @@ export default defineConfig({
     plugins: [
       // Generate the OpenAPI reference pages from local snapshots in ./schemas/.
       // Refresh snapshots with `npm run schemas:sync`.
-      starlightOpenAPI(AUDIENCES.map(toApiSchema)),
+      // Sort audience sections alphabetically by label (Account, Affiliate, Consumer,
+      // Partner, Platform, Supplier). The "Overview" link is a separate sidebar item, so
+      // it stays first.
+      starlightOpenAPI([...AUDIENCES].sort((a, b) => a[1].localeCompare(b[1])).map(toApiSchema)),
       starlightBlog({
         title: "Wink updates",
         navigation: 'none',
