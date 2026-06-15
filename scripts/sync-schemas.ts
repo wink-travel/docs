@@ -19,33 +19,59 @@ import { fileURLToPath } from "url";
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SCHEMAS_DIR = resolve(__dirname, "..", "schemas");
 
-// Base hosts that serve `/v3/api-docs/<group>`. Override via env to point at staging
-// or a local dev instance, e.g.
-//   WINK_API_BASE=https://dev-api.wink.travel:8443 \
-//   WINK_INTEGRATIONS_BASE=https://dev-api.wink.travel:8445 npm run schemas:sync
-// (for a self-signed dev cert also set NODE_TLS_REJECT_UNAUTHORIZED=0).
-const API_BASE = process.env.WINK_API_BASE ?? "https://api.wink.travel";
-const INTEGRATIONS_BASE =
-  process.env.WINK_INTEGRATIONS_BASE ?? "https://integrations.wink.travel";
+// Target environment. Choose with `--env=local|staging|production` (or `WINK_ENV`);
+// defaults to production. Examples:
+//   npm run schemas:sync                 # production
+//   npm run schemas:sync -- --env=staging
+//   npm run schemas:sync:local           # convenience script
+// Per-host overrides (WINK_API_BASE / WINK_INTEGRATIONS_BASE) still win if set.
+// The `local` hosts use a self-signed dev cert — prefix with
+// NODE_TLS_REJECT_UNAUTHORIZED=0 if your trust store doesn't have the dev CA.
+const ENVIRONMENTS = {
+  local: {
+    api: "https://dev-api.wink.travel:8443",
+    integrations: "https://dev-api.wink.travel:8445",
+  },
+  staging: {
+    api: "https://staging-api.wink.travel",
+    integrations: "https://staging-integrations.wink.travel",
+  },
+  production: {
+    api: "https://api.wink.travel",
+    integrations: "https://integrations.wink.travel",
+  },
+} as const;
 
-// springdoc group ids per API. Keep in sync with astro.config.mjs.
+type EnvName = keyof typeof ENVIRONMENTS;
+
+const resolveEnv = (): EnvName => {
+  const flag = process.argv.find((a) => a.startsWith("--env="))?.split("=")[1];
+  const raw = (flag ?? process.env.WINK_ENV ?? "production").toLowerCase();
+  const aliases: Record<string, EnvName> = {
+    local: "local", dev: "local",
+    staging: "staging", stage: "staging",
+    production: "production", prod: "production",
+  };
+  const env = aliases[raw];
+  if (!env) {
+    console.error(`✗ Unknown environment "${raw}". Use one of: local, staging, production.`);
+    process.exit(1);
+  }
+  return env;
+};
+
+const ENV = resolveEnv();
+const API_BASE = process.env.WINK_API_BASE ?? ENVIRONMENTS[ENV].api;
+const INTEGRATIONS_BASE = process.env.WINK_INTEGRATIONS_BASE ?? ENVIRONMENTS[ENV].integrations;
+
+// springdoc audience group ids per API. Keep in sync with astro.config.mjs.
+// One document per audience -> sidebar is Audience › Resource(tag) › Operation.
 const INVENTORY_GROUPS: readonly string[] = [
-  "platform-analytics", "platform-user-settings", "platform-managing-entity",
-  "platform-ping", "platform-reference", "platform-public", "platform-misc",
-  "supplier-property", "supplier-property-register", "supplier-facilities",
-  "supplier-experiences", "supplier-monetize", "supplier-inventory-distribution",
-  "supplier-booking", "supplier-profile",
-  "consumer-booking", "consumer-inventory", "consumer-engine",
-  "consumer-travel-agent", "consumer-account",
-  "affiliate-browse", "affiliate-inventory-curation", "affiliate-shareable-link",
-  "affiliate-lists", "affiliate-social", "affiliate-sales-channel",
-  "affiliate-reporting", "affiliate-winklinks",
-  "account-payment", "account-booking", "account-settings",
+  "platform", "supplier", "consumer", "affiliate", "account",
 ];
 
 const INTEGRATIONS_GROUPS: readonly string[] = [
-  "partner-channel-manager", "partner-services", "partner-channel-manager-account",
-  "partner-google", "partner-ping",
+  "partner",
 ];
 
 type SchemaTarget = {
@@ -120,6 +146,7 @@ const syncOne = async (target: SchemaTarget): Promise<boolean> => {
 };
 
 const main = async (): Promise<void> => {
+  console.log(`Syncing schemas from ${ENV}\n  api          = ${API_BASE}\n  integrations = ${INTEGRATIONS_BASE}\n`);
   ensureDir(SCHEMAS_DIR);
   // Sequential to keep the log readable and avoid hammering the backend.
   const results: boolean[] = [];
