@@ -18,7 +18,7 @@ const apiSidebarGroup = createOpenAPISidebarGroup()
 // audience id -> [sidebar label, base path prefix]. 'partner' is served by the
 // Integrations app; the rest by the Inventory app.
 const AUDIENCES = [
-  ['platform', 'Platform', 'api'],
+  ['common', 'Common', 'api'],
   ['supplier', 'Supplier', 'api'],
   ['consumer', 'Consumer', 'api'],
   ['affiliate', 'Affiliate', 'api'],

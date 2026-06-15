@@ -67,7 +67,7 @@ const INTEGRATIONS_BASE = process.env.WINK_INTEGRATIONS_BASE ?? ENVIRONMENTS[ENV
 // springdoc audience group ids per API. Keep in sync with astro.config.mjs.
 // One document per audience -> sidebar is Audience › Resource(tag) › Operation.
 const INVENTORY_GROUPS: readonly string[] = [
-  "platform", "supplier", "consumer", "affiliate", "account",
+  "common", "supplier", "consumer", "affiliate", "account",
 ];
 
 const INTEGRATIONS_GROUPS: readonly string[] = [

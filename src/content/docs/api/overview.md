@@ -36,7 +36,7 @@ at the lowest price possible:
 
 Not every integrator needs every API, so endpoints are grouped by **audience** in the sidebar:
 
-- **Platform** — cross-cutting endpoints used by every integrator: analytics, managing-entity
+- **Common** — cross-cutting endpoints used by every integrator: analytics, managing-entity
   lookups, reference data, public search, user settings, and a `ping` for credential checks.
 - **Supplier** — for property owners and operators: register a property, manage facilities and
   experiences, set up monetization (rate plans, promotions, cancellation policies), distribute
