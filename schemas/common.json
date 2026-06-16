@@ -7,7 +7,7 @@
       "name": "Contact",
       "email": "hi@wink.travel"
     },
-    "version": "30.48.1-SNAPSHOT",
+    "version": "30.49.0",
     "x-logo": {
       "backgroundColor": "#FFFFFF",
       "altText": "wink",
@@ -20,7 +20,7 @@
   },
   "servers": [
     {
-      "url": "https://dev-api.wink.travel:8443",
+      "url": "https://api.wink.travel",
       "description": "Endpoint"
     }
   ],
@@ -12199,15 +12199,15 @@
             "type": "number",
             "format": "double"
           },
+          "type": {
+            "type": "string"
+          },
           "coordinates": {
             "type": "array",
             "items": {
               "type": "number",
               "format": "double"
             }
-          },
-          "type": {
-            "type": "string"
           }
         }
       },
@@ -12272,18 +12272,6 @@
               "default": ""
             }
           },
-          "rooms": {
-            "type": "integer",
-            "format": "int32",
-            "default": "",
-            "description": "How many total rooms for this stay"
-          },
-          "guests": {
-            "type": "integer",
-            "format": "int32",
-            "default": "",
-            "description": "How many total guests for this stay"
-          },
           "hours": {
             "type": "integer",
             "format": "int64",
@@ -12296,6 +12284,18 @@
             "format": "int32",
             "default": "",
             "description": "How many total children for this stay"
+          },
+          "rooms": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "How many total rooms for this stay"
+          },
+          "guests": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "How many total guests for this stay"
           }
         },
         "required": [
@@ -13216,18 +13216,18 @@
             "description": "Contact phone number",
             "example": "+12125551212"
           },
-          "summary": {
-            "type": "string",
-            "default": "",
-            "description": "Summary",
-            "example": "John Smith (johnsmith@gmail.com / +12125551212)",
-            "readOnly": true
-          },
           "fullName": {
             "type": "string",
             "default": "",
             "description": "First and last name",
             "example": "John Smith",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "default": "",
+            "description": "Summary",
+            "example": "John Smith (johnsmith@gmail.com / +12125551212)",
             "readOnly": true
           }
         }
@@ -13977,13 +13977,16 @@
             "default": "",
             "description": "Premium percent"
           },
-          "hasChannelDiscount": {
-            "type": "boolean"
-          },
           "hasPremium": {
             "type": "boolean"
           },
           "hasPromotion": {
+            "type": "boolean"
+          },
+          "totalDiscountPercent": {
+            "type": "number"
+          },
+          "hasChannelDiscount": {
             "type": "boolean"
           },
           "sourceTotal": {
@@ -13994,9 +13997,6 @@
           },
           "userSpecifiedCurrencyTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
-          },
-          "totalDiscountPercent": {
-            "type": "number"
           }
         },
         "required": [
@@ -14146,29 +14146,13 @@
       "PagePropertyWithBestPrice_Non_Authenticated_Entity": {
         "type": "object",
         "properties": {
-          "totalPages": {
-            "type": "integer",
-            "format": "int32"
-          },
           "totalElements": {
             "type": "integer",
             "format": "int64"
           },
-          "pageable": {
-            "$ref": "#/components/schemas/PageableObject_Non_Authenticated_Entity"
-          },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject_Non_Authenticated_Entity"
-          },
-          "numberOfElements": {
+          "totalPages": {
             "type": "integer",
             "format": "int32"
-          },
-          "first": {
-            "type": "boolean"
-          },
-          "last": {
-            "type": "boolean"
           },
           "size": {
             "type": "integer",
@@ -14184,6 +14168,22 @@
             "type": "integer",
             "format": "int32"
           },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject_Non_Authenticated_Entity"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject_Non_Authenticated_Entity"
+          },
           "empty": {
             "type": "boolean"
           }
@@ -14192,26 +14192,26 @@
       "PageableObject_Non_Authenticated_Entity": {
         "type": "object",
         "properties": {
+          "offset": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject_Non_Authenticated_Entity"
+          },
           "pageSize": {
             "type": "integer",
             "format": "int32"
           },
-          "paged": {
+          "unpaged": {
             "type": "boolean"
           },
-          "unpaged": {
+          "paged": {
             "type": "boolean"
           },
           "pageNumber": {
             "type": "integer",
             "format": "int32"
-          },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject_Non_Authenticated_Entity"
-          },
-          "offset": {
-            "type": "integer",
-            "format": "int64"
           }
         }
       },
@@ -15103,6 +15103,9 @@
           "rateSource": {
             "type": "string"
           },
+          "available": {
+            "type": "boolean"
+          },
           "sourceTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
           },
@@ -15111,9 +15114,6 @@
           },
           "userSpecifiedCurrencyTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
-          },
-          "available": {
-            "type": "boolean"
           }
         },
         "required": [
@@ -15218,18 +15218,18 @@
             "default": "",
             "description": "Country"
           },
-          "fullAddress": {
-            "type": "string",
-            "default": "",
-            "description": "Address 1, Address 2, City, State, Postal / Zip code, Country",
-            "example": "11 At home, Suite 3C, New York City, NY 10010, United States",
-            "readOnly": true
-          },
           "country": {
             "type": "string",
             "default": "",
             "description": "Country",
             "example": "United States",
+            "readOnly": true
+          },
+          "fullAddress": {
+            "type": "string",
+            "default": "",
+            "description": "Address 1, Address 2, City, State, Postal / Zip code, Country",
+            "example": "11 At home, Suite 3C, New York City, NY 10010, United States",
             "readOnly": true
           }
         }
@@ -15451,13 +15451,13 @@
       "SortObject_Non_Authenticated_Entity": {
         "type": "object",
         "properties": {
-          "unsorted": {
+          "empty": {
             "type": "boolean"
           },
           "sorted": {
             "type": "boolean"
           },
-          "empty": {
+          "unsorted": {
             "type": "boolean"
           }
         }
@@ -15684,17 +15684,17 @@
             "default": "",
             "description": "Internal currency final price."
           },
+          "totalDiscountPercent": {
+            "type": "number"
+          },
+          "userSpecifiedCurrencyAveragePricePerNight": {
+            "$ref": "#/components/schemas/CustomMonetaryAmount"
+          },
           "internalAveragePricePerNight": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
           },
           "sourceAveragePricePerNight": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
-          },
-          "userSpecifiedCurrencyAveragePricePerNight": {
-            "$ref": "#/components/schemas/CustomMonetaryAmount"
-          },
-          "totalDiscountPercent": {
-            "type": "number"
           }
         }
       },
@@ -18030,13 +18030,13 @@
               "$ref": "#/components/schemas/RoomTypeWithPriceConfiguration_Non_Authenticated_Entity"
             }
           },
+          "available": {
+            "type": "boolean"
+          },
           "lowestPrice": {
             "$ref": "#/components/schemas/RoomTypeWithPriceConfiguration_Non_Authenticated_Entity",
             "default": "",
             "description": "Uses the content from roomTypes and shows the room type with the lowest price."
-          },
-          "available": {
-            "type": "boolean"
           }
         }
       },
@@ -18511,11 +18511,11 @@
               "default": ""
             }
           },
-          "lowestPrice": {
-            "$ref": "#/components/schemas/RoomConfigurationPrice_Non_Authenticated_Entity"
-          },
           "available": {
             "type": "boolean"
+          },
+          "lowestPrice": {
+            "$ref": "#/components/schemas/RoomConfigurationPrice_Non_Authenticated_Entity"
           }
         },
         "required": [
@@ -19381,29 +19381,13 @@
       "PageInventoryGridItem_Non_Authenticated_Entity": {
         "type": "object",
         "properties": {
-          "totalPages": {
-            "type": "integer",
-            "format": "int32"
-          },
           "totalElements": {
             "type": "integer",
             "format": "int64"
           },
-          "pageable": {
-            "$ref": "#/components/schemas/PageableObject_Non_Authenticated_Entity"
-          },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject_Non_Authenticated_Entity"
-          },
-          "numberOfElements": {
+          "totalPages": {
             "type": "integer",
             "format": "int32"
-          },
-          "first": {
-            "type": "boolean"
-          },
-          "last": {
-            "type": "boolean"
           },
           "size": {
             "type": "integer",
@@ -19418,6 +19402,22 @@
           "number": {
             "type": "integer",
             "format": "int32"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject_Non_Authenticated_Entity"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject_Non_Authenticated_Entity"
           },
           "empty": {
             "type": "boolean"
@@ -21192,29 +21192,13 @@
       "PageBookingLeaderboardEntry_Authenticated_Entity": {
         "type": "object",
         "properties": {
-          "totalPages": {
-            "type": "integer",
-            "format": "int32"
-          },
           "totalElements": {
             "type": "integer",
             "format": "int64"
           },
-          "pageable": {
-            "$ref": "#/components/schemas/PageableObject_Authenticated_Entity"
-          },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject_Authenticated_Entity"
-          },
-          "numberOfElements": {
+          "totalPages": {
             "type": "integer",
             "format": "int32"
-          },
-          "first": {
-            "type": "boolean"
-          },
-          "last": {
-            "type": "boolean"
           },
           "size": {
             "type": "integer",
@@ -21230,6 +21214,22 @@
             "type": "integer",
             "format": "int32"
           },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject_Authenticated_Entity"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject_Authenticated_Entity"
+          },
           "empty": {
             "type": "boolean"
           }
@@ -21238,39 +21238,39 @@
       "PageableObject_Authenticated_Entity": {
         "type": "object",
         "properties": {
+          "offset": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject_Authenticated_Entity"
+          },
           "pageSize": {
             "type": "integer",
             "format": "int32"
           },
-          "paged": {
+          "unpaged": {
             "type": "boolean"
           },
-          "unpaged": {
+          "paged": {
             "type": "boolean"
           },
           "pageNumber": {
             "type": "integer",
             "format": "int32"
-          },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject_Authenticated_Entity"
-          },
-          "offset": {
-            "type": "integer",
-            "format": "int64"
           }
         }
       },
       "SortObject_Authenticated_Entity": {
         "type": "object",
         "properties": {
-          "unsorted": {
+          "empty": {
             "type": "boolean"
           },
           "sorted": {
             "type": "boolean"
           },
-          "empty": {
+          "unsorted": {
             "type": "boolean"
           }
         }
@@ -21566,29 +21566,13 @@
       "PageLineChart_Authenticated_Entity": {
         "type": "object",
         "properties": {
-          "totalPages": {
-            "type": "integer",
-            "format": "int32"
-          },
           "totalElements": {
             "type": "integer",
             "format": "int64"
           },
-          "pageable": {
-            "$ref": "#/components/schemas/PageableObject_Authenticated_Entity"
-          },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject_Authenticated_Entity"
-          },
-          "numberOfElements": {
+          "totalPages": {
             "type": "integer",
             "format": "int32"
-          },
-          "first": {
-            "type": "boolean"
-          },
-          "last": {
-            "type": "boolean"
           },
           "size": {
             "type": "integer",
@@ -21603,6 +21587,22 @@
           "number": {
             "type": "integer",
             "format": "int32"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject_Authenticated_Entity"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject_Authenticated_Entity"
           },
           "empty": {
             "type": "boolean"
@@ -22482,29 +22482,13 @@
       "PageQuote_Non_Authenticated_Entity": {
         "type": "object",
         "properties": {
-          "totalPages": {
-            "type": "integer",
-            "format": "int32"
-          },
           "totalElements": {
             "type": "integer",
             "format": "int64"
           },
-          "pageable": {
-            "$ref": "#/components/schemas/PageableObject_Non_Authenticated_Entity"
-          },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject_Non_Authenticated_Entity"
-          },
-          "numberOfElements": {
+          "totalPages": {
             "type": "integer",
             "format": "int32"
-          },
-          "first": {
-            "type": "boolean"
-          },
-          "last": {
-            "type": "boolean"
           },
           "size": {
             "type": "integer",
@@ -22519,6 +22503,22 @@
           "number": {
             "type": "integer",
             "format": "int32"
+          },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject_Non_Authenticated_Entity"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject_Non_Authenticated_Entity"
           },
           "empty": {
             "type": "boolean"
@@ -23926,7 +23926,7 @@
         "name": "Client Credentials",
         "flows": {
           "clientCredentials": {
-            "tokenUrl": "https://dev-iam.wink.travel:9000/oauth2/token",
+            "tokenUrl": "https://iam.wink.travel/oauth2/token",
             "scopes": {
               "account.read": "View your account settings.",
               "account.write": "Create and update your account settings.",

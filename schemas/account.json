@@ -7,7 +7,7 @@
       "name": "Contact",
       "email": "hi@wink.travel"
     },
-    "version": "30.48.1-SNAPSHOT",
+    "version": "30.49.0",
     "x-logo": {
       "backgroundColor": "#FFFFFF",
       "altText": "wink",
@@ -20,7 +20,7 @@
   },
   "servers": [
     {
-      "url": "https://dev-api.wink.travel:8443",
+      "url": "https://api.wink.travel",
       "description": "Endpoint"
     }
   ],
@@ -9801,15 +9801,15 @@
             "type": "number",
             "format": "double"
           },
+          "type": {
+            "type": "string"
+          },
           "coordinates": {
             "type": "array",
             "items": {
               "type": "number",
               "format": "double"
             }
-          },
-          "type": {
-            "type": "string"
           }
         }
       },
@@ -10940,18 +10940,18 @@
             "default": "",
             "description": "Country"
           },
-          "fullAddress": {
-            "type": "string",
-            "default": "",
-            "description": "Address 1, Address 2, City, State, Postal / Zip code, Country",
-            "example": "11 At home, Suite 3C, New York City, NY 10010, United States",
-            "readOnly": true
-          },
           "country": {
             "type": "string",
             "default": "",
             "description": "Country",
             "example": "United States",
+            "readOnly": true
+          },
+          "fullAddress": {
+            "type": "string",
+            "default": "",
+            "description": "Address 1, Address 2, City, State, Postal / Zip code, Country",
+            "example": "11 At home, Suite 3C, New York City, NY 10010, United States",
             "readOnly": true
           }
         }
@@ -12582,18 +12582,6 @@
               "default": ""
             }
           },
-          "rooms": {
-            "type": "integer",
-            "format": "int32",
-            "default": "",
-            "description": "How many total rooms for this stay"
-          },
-          "guests": {
-            "type": "integer",
-            "format": "int32",
-            "default": "",
-            "description": "How many total guests for this stay"
-          },
           "hours": {
             "type": "integer",
             "format": "int64",
@@ -12606,6 +12594,18 @@
             "format": "int32",
             "default": "",
             "description": "How many total children for this stay"
+          },
+          "rooms": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "How many total rooms for this stay"
+          },
+          "guests": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "How many total guests for this stay"
           }
         },
         "required": [
@@ -13026,22 +13026,22 @@
             "description": "Check-out date",
             "example": "2025-12-27"
           },
+          "rateSource": {
+            "type": "string"
+          },
           "roomNights": {
             "type": "integer",
             "format": "int64"
           },
-          "rateSource": {
-            "type": "string"
+          "guests": {
+            "type": "integer",
+            "format": "int32"
           },
           "sourceTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
           },
           "internalTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
-          },
-          "guests": {
-            "type": "integer",
-            "format": "int32"
           },
           "userSpecifiedCurrencyTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
@@ -13443,7 +13443,7 @@
           "user": {
             "$ref": "#/components/schemas/BookingUser_Agent",
             "default": "",
-            "description": "User details for the authenticated person that made the booking."
+            "description": "Details for the authenticated person (the booker) that made the booking. For agent bookings this is the travel agent, not the traveler."
           },
           "userSession": {
             "$ref": "#/components/schemas/BookingUserSession_Agent",
@@ -13672,6 +13672,9 @@
             "description": "Whether funds have been recorded in supplier's ledger.",
             "example": false
           },
+          "cancelled": {
+            "type": "boolean"
+          },
           "hasBreakfast": {
             "type": "boolean",
             "default": false,
@@ -13702,117 +13705,29 @@
             "description": "Convenience data point to get to all-inclusive quickly.",
             "example": true
           },
-          "hasRefunds": {
-            "type": "boolean"
-          },
-          "hasFood": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any food is included in this booking.",
-            "example": true
-          },
-          "hasRestaurants": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any restaurant reservations are included in this booking.",
-            "example": true
-          },
-          "hasMeetingRooms": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any meeting room reservations are included in this booking.",
-            "example": true
-          },
-          "hasSpas": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any spa reservations are included in this booking.",
-            "example": true
-          },
-          "hasActivities": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any activity reservations are included in this booking.",
-            "example": true
-          },
-          "hasAttractions": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any attractions reservations are included in this booking.",
-            "example": true
-          },
-          "hasPlaces": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any place reservations are included in this booking.",
-            "example": true
-          },
           "hasAllInclusivePlusAlcohol": {
             "type": "boolean",
             "default": false,
             "description": "Convenience data point to get to all-inclusive with alcohol quickly.",
             "example": true
           },
-          "hasRoomTypeAncillaries": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any room type ancillaries are in this booking.",
-            "example": true
+          "hasRefunds": {
+            "type": "boolean"
           },
-          "reportingDailyRateList": {
-            "type": "array",
-            "contains": {
-              "default": ""
-            },
-            "items": {
-              "$ref": "#/components/schemas/ReportingDailyRate_Agent",
-              "default": "",
-              "description": "Displays rate accounting details"
-            },
-            "unevaluatedItems": {
-              "default": ""
-            }
-          },
-          "reportingAncillaryList": {
-            "type": "array",
-            "contains": {
-              "default": ""
-            },
-            "items": {
-              "$ref": "#/components/schemas/ReportingAncillary_Agent",
-              "default": "",
-              "description": "Displays ancillary accounting details"
-            },
-            "unevaluatedItems": {
-              "default": ""
-            }
-          },
-          "reportingExtraChargeList": {
-            "type": "array",
-            "contains": {
-              "default": ""
-            },
-            "items": {
-              "$ref": "#/components/schemas/ReportingExtraCharge_Agent",
-              "default": "",
-              "description": "Displays extra charge accounting details."
-            },
-            "unevaluatedItems": {
-              "default": ""
-            }
-          },
-          "cancellable": {
-            "type": "boolean",
-            "default": false,
-            "description": "Whether the booking can still be voluntarily cancelled (no later than the arrival day)."
-          },
-          "roomTypeAncillaries": {
-            "type": "array",
+          "rateSource": {
+            "type": [
+              "string",
+              "null"
+            ],
             "default": "",
-            "description": "Room type ancillary records.",
-            "items": {
-              "$ref": "#/components/schemas/BookingAncillary_Agent"
-            }
+            "description": "Rate origin. This is usually the property channel manager.",
+            "example": "SITEMINDER"
+          },
+          "hasAddOns": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any add-on offers are in this booking.",
+            "example": true
           },
           "meetingRooms": {
             "type": "array",
@@ -13862,6 +13777,14 @@
               "$ref": "#/components/schemas/BookingAncillary_Agent"
             }
           },
+          "roomTypeAncillaries": {
+            "type": "array",
+            "default": "",
+            "description": "Room type ancillary records.",
+            "items": {
+              "$ref": "#/components/schemas/BookingAncillary_Agent"
+            }
+          },
           "addOns": {
             "type": "array",
             "default": "",
@@ -13870,29 +13793,106 @@
               "$ref": "#/components/schemas/BookingAncillary_Agent"
             }
           },
-          "rateSource": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "default": "",
-            "description": "Rate origin. This is usually the property channel manager.",
-            "example": "SITEMINDER"
-          },
-          "hasAddOns": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any add-on offers are in this booking.",
-            "example": true
-          },
           "beneficiaryList": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Beneficiary_Agent"
             }
           },
-          "cancelled": {
-            "type": "boolean"
+          "cancellable": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether the booking can still be voluntarily cancelled (no later than the arrival day)."
+          },
+          "hasRoomTypeAncillaries": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any room type ancillaries are in this booking.",
+            "example": true
+          },
+          "hasFood": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any food is included in this booking.",
+            "example": true
+          },
+          "hasRestaurants": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any restaurant reservations are included in this booking.",
+            "example": true
+          },
+          "hasMeetingRooms": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any meeting room reservations are included in this booking.",
+            "example": true
+          },
+          "hasSpas": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any spa reservations are included in this booking.",
+            "example": true
+          },
+          "hasActivities": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any activity reservations are included in this booking.",
+            "example": true
+          },
+          "hasAttractions": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any attractions reservations are included in this booking.",
+            "example": true
+          },
+          "hasPlaces": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any place reservations are included in this booking.",
+            "example": true
+          },
+          "reportingDailyRateList": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/ReportingDailyRate_Agent",
+              "default": "",
+              "description": "Displays rate accounting details"
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "reportingAncillaryList": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/ReportingAncillary_Agent",
+              "default": "",
+              "description": "Displays ancillary accounting details"
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "reportingExtraChargeList": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/ReportingExtraCharge_Agent",
+              "default": "",
+              "description": "Displays extra charge accounting details."
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
           }
         },
         "required": [
@@ -13904,7 +13904,6 @@
           "hotel",
           "hotelImageUrl",
           "serverUrl",
-          "user",
           "userSession"
         ]
       },
@@ -14063,18 +14062,18 @@
             "description": "Contact phone number",
             "example": "+12125551212"
           },
-          "summary": {
-            "type": "string",
-            "default": "",
-            "description": "Summary",
-            "example": "John Smith (johnsmith@gmail.com / +12125551212)",
-            "readOnly": true
-          },
           "fullName": {
             "type": "string",
             "default": "",
             "description": "First and last name",
             "example": "John Smith",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "default": "",
+            "description": "Summary",
+            "example": "John Smith (johnsmith@gmail.com / +12125551212)",
             "readOnly": true
           }
         }
@@ -14787,15 +14786,15 @@
             "type": "number",
             "format": "double"
           },
+          "type": {
+            "type": "string"
+          },
           "coordinates": {
             "type": "array",
             "items": {
               "type": "number",
               "format": "double"
             }
-          },
-          "type": {
-            "type": "string"
           }
         }
       },
@@ -15551,13 +15550,16 @@
             "default": "",
             "description": "Premium percent"
           },
-          "hasChannelDiscount": {
-            "type": "boolean"
-          },
           "hasPremium": {
             "type": "boolean"
           },
           "hasPromotion": {
+            "type": "boolean"
+          },
+          "totalDiscountPercent": {
+            "type": "number"
+          },
+          "hasChannelDiscount": {
             "type": "boolean"
           },
           "sourceTotal": {
@@ -15568,9 +15570,6 @@
           },
           "userSpecifiedCurrencyTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
-          },
-          "totalDiscountPercent": {
-            "type": "number"
           }
         },
         "required": [
@@ -17114,18 +17113,18 @@
             "default": "",
             "description": "Country"
           },
-          "fullAddress": {
-            "type": "string",
-            "default": "",
-            "description": "Address 1, Address 2, City, State, Postal / Zip code, Country",
-            "example": "11 At home, Suite 3C, New York City, NY 10010, United States",
-            "readOnly": true
-          },
           "country": {
             "type": "string",
             "default": "",
             "description": "Country",
             "example": "United States",
+            "readOnly": true
+          },
+          "fullAddress": {
+            "type": "string",
+            "default": "",
+            "description": "Address 1, Address 2, City, State, Postal / Zip code, Country",
+            "example": "11 At home, Suite 3C, New York City, NY 10010, United States",
             "readOnly": true
           }
         }
@@ -18399,7 +18398,7 @@
           "user": {
             "$ref": "#/components/schemas/BookingUser",
             "default": "",
-            "description": "User details for the authenticated person that made the booking."
+            "description": "Details for the authenticated person (the booker) that made the booking. For agent bookings this is the travel agent, not the traveler."
           },
           "userSession": {
             "$ref": "#/components/schemas/BookingUserSession",
@@ -18634,6 +18633,9 @@
             "description": "Whether funds have been recorded in supplier's ledger.",
             "example": false
           },
+          "cancelled": {
+            "type": "boolean"
+          },
           "hasBreakfast": {
             "type": "boolean",
             "default": false,
@@ -18664,117 +18666,29 @@
             "description": "Convenience data point to get to all-inclusive quickly.",
             "example": true
           },
-          "hasRefunds": {
-            "type": "boolean"
-          },
-          "hasFood": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any food is included in this booking.",
-            "example": true
-          },
-          "hasRestaurants": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any restaurant reservations are included in this booking.",
-            "example": true
-          },
-          "hasMeetingRooms": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any meeting room reservations are included in this booking.",
-            "example": true
-          },
-          "hasSpas": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any spa reservations are included in this booking.",
-            "example": true
-          },
-          "hasActivities": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any activity reservations are included in this booking.",
-            "example": true
-          },
-          "hasAttractions": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any attractions reservations are included in this booking.",
-            "example": true
-          },
-          "hasPlaces": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any place reservations are included in this booking.",
-            "example": true
-          },
           "hasAllInclusivePlusAlcohol": {
             "type": "boolean",
             "default": false,
             "description": "Convenience data point to get to all-inclusive with alcohol quickly.",
             "example": true
           },
-          "hasRoomTypeAncillaries": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any room type ancillaries are in this booking.",
-            "example": true
+          "hasRefunds": {
+            "type": "boolean"
           },
-          "reportingDailyRateList": {
-            "type": "array",
-            "contains": {
-              "default": ""
-            },
-            "items": {
-              "$ref": "#/components/schemas/ReportingDailyRate",
-              "default": "",
-              "description": "Displays rate accounting details"
-            },
-            "unevaluatedItems": {
-              "default": ""
-            }
-          },
-          "reportingAncillaryList": {
-            "type": "array",
-            "contains": {
-              "default": ""
-            },
-            "items": {
-              "$ref": "#/components/schemas/ReportingAncillary",
-              "default": "",
-              "description": "Displays ancillary accounting details"
-            },
-            "unevaluatedItems": {
-              "default": ""
-            }
-          },
-          "reportingExtraChargeList": {
-            "type": "array",
-            "contains": {
-              "default": ""
-            },
-            "items": {
-              "$ref": "#/components/schemas/ReportingExtraCharge",
-              "default": "",
-              "description": "Displays extra charge accounting details."
-            },
-            "unevaluatedItems": {
-              "default": ""
-            }
-          },
-          "cancellable": {
-            "type": "boolean",
-            "default": false,
-            "description": "Whether the booking can still be voluntarily cancelled (no later than the arrival day)."
-          },
-          "roomTypeAncillaries": {
-            "type": "array",
+          "rateSource": {
+            "type": [
+              "string",
+              "null"
+            ],
             "default": "",
-            "description": "Room type ancillary records.",
-            "items": {
-              "$ref": "#/components/schemas/BookingAncillary"
-            }
+            "description": "Rate origin. This is usually the property channel manager.",
+            "example": "SITEMINDER"
+          },
+          "hasAddOns": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any add-on offers are in this booking.",
+            "example": true
           },
           "meetingRooms": {
             "type": "array",
@@ -18824,6 +18738,14 @@
               "$ref": "#/components/schemas/BookingAncillary"
             }
           },
+          "roomTypeAncillaries": {
+            "type": "array",
+            "default": "",
+            "description": "Room type ancillary records.",
+            "items": {
+              "$ref": "#/components/schemas/BookingAncillary"
+            }
+          },
           "addOns": {
             "type": "array",
             "default": "",
@@ -18832,29 +18754,106 @@
               "$ref": "#/components/schemas/BookingAncillary"
             }
           },
-          "rateSource": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "default": "",
-            "description": "Rate origin. This is usually the property channel manager.",
-            "example": "SITEMINDER"
-          },
-          "hasAddOns": {
-            "type": "boolean",
-            "default": false,
-            "description": "Convenience data point to check if any add-on offers are in this booking.",
-            "example": true
-          },
           "beneficiaryList": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Beneficiary"
             }
           },
-          "cancelled": {
-            "type": "boolean"
+          "cancellable": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether the booking can still be voluntarily cancelled (no later than the arrival day)."
+          },
+          "hasRoomTypeAncillaries": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any room type ancillaries are in this booking.",
+            "example": true
+          },
+          "hasFood": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any food is included in this booking.",
+            "example": true
+          },
+          "hasRestaurants": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any restaurant reservations are included in this booking.",
+            "example": true
+          },
+          "hasMeetingRooms": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any meeting room reservations are included in this booking.",
+            "example": true
+          },
+          "hasSpas": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any spa reservations are included in this booking.",
+            "example": true
+          },
+          "hasActivities": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any activity reservations are included in this booking.",
+            "example": true
+          },
+          "hasAttractions": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any attractions reservations are included in this booking.",
+            "example": true
+          },
+          "hasPlaces": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any place reservations are included in this booking.",
+            "example": true
+          },
+          "reportingDailyRateList": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/ReportingDailyRate",
+              "default": "",
+              "description": "Displays rate accounting details"
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "reportingAncillaryList": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/ReportingAncillary",
+              "default": "",
+              "description": "Displays ancillary accounting details"
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "reportingExtraChargeList": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/ReportingExtraCharge",
+              "default": "",
+              "description": "Displays extra charge accounting details."
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
           }
         },
         "required": [
@@ -18866,7 +18865,6 @@
           "hotel",
           "hotelImageUrl",
           "serverUrl",
-          "user",
           "userSession"
         ]
       },
@@ -19259,13 +19257,13 @@
             "default": "",
             "description": "Per-night, quantity-scaled financial breakdown (beneficiary split)."
           },
+          "endDate": {
+            "type": "boolean"
+          },
           "startDate": {
             "type": "boolean"
           },
           "lastNight": {
-            "type": "boolean"
-          },
-          "endDate": {
             "type": "boolean"
           }
         }
@@ -19328,18 +19326,6 @@
               "default": ""
             }
           },
-          "rooms": {
-            "type": "integer",
-            "format": "int32",
-            "default": "",
-            "description": "How many total rooms for this stay"
-          },
-          "guests": {
-            "type": "integer",
-            "format": "int32",
-            "default": "",
-            "description": "How many total guests for this stay"
-          },
           "hours": {
             "type": "integer",
             "format": "int64",
@@ -19352,6 +19338,18 @@
             "format": "int32",
             "default": "",
             "description": "How many total children for this stay"
+          },
+          "rooms": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "How many total rooms for this stay"
+          },
+          "guests": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "How many total guests for this stay"
           }
         },
         "required": [
@@ -19826,12 +19824,12 @@
             "description": "Check-out date",
             "example": "2025-12-27"
           },
+          "rateSource": {
+            "type": "string"
+          },
           "roomNights": {
             "type": "integer",
             "format": "int64"
-          },
-          "rateSource": {
-            "type": "string"
           },
           "beneficiaryList": {
             "type": "array",
@@ -19839,15 +19837,15 @@
               "$ref": "#/components/schemas/Beneficiary"
             }
           },
+          "guests": {
+            "type": "integer",
+            "format": "int32"
+          },
           "sourceTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
           },
           "internalTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
-          },
-          "guests": {
-            "type": "integer",
-            "format": "int32"
           },
           "userSpecifiedCurrencyTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
@@ -20387,18 +20385,18 @@
             "description": "Contact phone number",
             "example": "+12125551212"
           },
-          "summary": {
-            "type": "string",
-            "default": "",
-            "description": "Summary",
-            "example": "John Smith (johnsmith@gmail.com / +12125551212)",
-            "readOnly": true
-          },
           "fullName": {
             "type": "string",
             "default": "",
             "description": "First and last name",
             "example": "John Smith",
+            "readOnly": true
+          },
+          "summary": {
+            "type": "string",
+            "default": "",
+            "description": "Summary",
+            "example": "John Smith (johnsmith@gmail.com / +12125551212)",
             "readOnly": true
           }
         }
@@ -21239,15 +21237,15 @@
             "type": "number",
             "format": "double"
           },
+          "type": {
+            "type": "string"
+          },
           "coordinates": {
             "type": "array",
             "items": {
               "type": "number",
               "format": "double"
             }
-          },
-          "type": {
-            "type": "string"
           }
         }
       },
@@ -22091,13 +22089,16 @@
             "default": "",
             "description": "Premium percent"
           },
-          "hasChannelDiscount": {
-            "type": "boolean"
-          },
           "hasPremium": {
             "type": "boolean"
           },
           "hasPromotion": {
+            "type": "boolean"
+          },
+          "totalDiscountPercent": {
+            "type": "number"
+          },
+          "hasChannelDiscount": {
             "type": "boolean"
           },
           "sourceTotal": {
@@ -22108,9 +22109,6 @@
           },
           "userSpecifiedCurrencyTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
-          },
-          "totalDiscountPercent": {
-            "type": "number"
           }
         },
         "required": [
@@ -22145,29 +22143,13 @@
       "PageBooking": {
         "type": "object",
         "properties": {
-          "totalPages": {
-            "type": "integer",
-            "format": "int32"
-          },
           "totalElements": {
             "type": "integer",
             "format": "int64"
           },
-          "pageable": {
-            "$ref": "#/components/schemas/PageableObject"
-          },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject"
-          },
-          "numberOfElements": {
+          "totalPages": {
             "type": "integer",
             "format": "int32"
-          },
-          "first": {
-            "type": "boolean"
-          },
-          "last": {
-            "type": "boolean"
           },
           "size": {
             "type": "integer",
@@ -22183,6 +22165,22 @@
             "type": "integer",
             "format": "int32"
           },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
           "empty": {
             "type": "boolean"
           }
@@ -22191,26 +22189,26 @@
       "PageableObject": {
         "type": "object",
         "properties": {
+          "offset": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
           "pageSize": {
             "type": "integer",
             "format": "int32"
           },
-          "paged": {
+          "unpaged": {
             "type": "boolean"
           },
-          "unpaged": {
+          "paged": {
             "type": "boolean"
           },
           "pageNumber": {
             "type": "integer",
             "format": "int32"
-          },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject"
-          },
-          "offset": {
-            "type": "integer",
-            "format": "int64"
           }
         }
       },
@@ -23766,18 +23764,18 @@
             "default": "",
             "description": "Country"
           },
-          "fullAddress": {
-            "type": "string",
-            "default": "",
-            "description": "Address 1, Address 2, City, State, Postal / Zip code, Country",
-            "example": "11 At home, Suite 3C, New York City, NY 10010, United States",
-            "readOnly": true
-          },
           "country": {
             "type": "string",
             "default": "",
             "description": "Country",
             "example": "United States",
+            "readOnly": true
+          },
+          "fullAddress": {
+            "type": "string",
+            "default": "",
+            "description": "Address 1, Address 2, City, State, Postal / Zip code, Country",
+            "example": "11 At home, Suite 3C, New York City, NY 10010, United States",
             "readOnly": true
           }
         }
@@ -24018,13 +24016,13 @@
       "SortObject": {
         "type": "object",
         "properties": {
-          "unsorted": {
+          "empty": {
             "type": "boolean"
           },
           "sorted": {
             "type": "boolean"
           },
-          "empty": {
+          "unsorted": {
             "type": "boolean"
           }
         }
@@ -24396,13 +24394,13 @@
             "example": 10,
             "minimum": 0
           },
-          "percentPremium": {
+          "percentDiscount": {
             "type": "number",
             "default": "",
             "description": "Calculates the percent difference between basePrice and discountedPrice.",
             "example": 0.1
           },
-          "percentDiscount": {
+          "percentPremium": {
             "type": "number",
             "default": "",
             "description": "Calculates the percent difference between basePrice and discountedPrice.",
@@ -24934,15 +24932,15 @@
             "type": "number",
             "format": "double"
           },
+          "type": {
+            "type": "string"
+          },
           "coordinates": {
             "type": "array",
             "items": {
               "type": "number",
               "format": "double"
             }
-          },
-          "type": {
-            "type": "string"
           }
         }
       },
@@ -25768,29 +25766,13 @@
       "PageManagingEntity_Authenticated_Entity": {
         "type": "object",
         "properties": {
-          "totalPages": {
-            "type": "integer",
-            "format": "int32"
-          },
           "totalElements": {
             "type": "integer",
             "format": "int64"
           },
-          "pageable": {
-            "$ref": "#/components/schemas/PageableObject_Authenticated_Entity"
-          },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject_Authenticated_Entity"
-          },
-          "numberOfElements": {
+          "totalPages": {
             "type": "integer",
             "format": "int32"
-          },
-          "first": {
-            "type": "boolean"
-          },
-          "last": {
-            "type": "boolean"
           },
           "size": {
             "type": "integer",
@@ -25806,6 +25788,22 @@
             "type": "integer",
             "format": "int32"
           },
+          "first": {
+            "type": "boolean"
+          },
+          "last": {
+            "type": "boolean"
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "pageable": {
+            "$ref": "#/components/schemas/PageableObject_Authenticated_Entity"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject_Authenticated_Entity"
+          },
           "empty": {
             "type": "boolean"
           }
@@ -25814,26 +25812,26 @@
       "PageableObject_Authenticated_Entity": {
         "type": "object",
         "properties": {
+          "offset": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject_Authenticated_Entity"
+          },
           "pageSize": {
             "type": "integer",
             "format": "int32"
           },
-          "paged": {
+          "unpaged": {
             "type": "boolean"
           },
-          "unpaged": {
+          "paged": {
             "type": "boolean"
           },
           "pageNumber": {
             "type": "integer",
             "format": "int32"
-          },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject_Authenticated_Entity"
-          },
-          "offset": {
-            "type": "integer",
-            "format": "int64"
           }
         }
       },
@@ -25983,18 +25981,18 @@
             "default": "",
             "description": "Country"
           },
-          "fullAddress": {
-            "type": "string",
-            "default": "",
-            "description": "Address 1, Address 2, City, State, Postal / Zip code, Country",
-            "example": "11 At home, Suite 3C, New York City, NY 10010, United States",
-            "readOnly": true
-          },
           "country": {
             "type": "string",
             "default": "",
             "description": "Country",
             "example": "United States",
+            "readOnly": true
+          },
+          "fullAddress": {
+            "type": "string",
+            "default": "",
+            "description": "Address 1, Address 2, City, State, Postal / Zip code, Country",
+            "example": "11 At home, Suite 3C, New York City, NY 10010, United States",
             "readOnly": true
           }
         }
@@ -26181,13 +26179,13 @@
       "SortObject_Authenticated_Entity": {
         "type": "object",
         "properties": {
-          "unsorted": {
+          "empty": {
             "type": "boolean"
           },
           "sorted": {
             "type": "boolean"
           },
-          "empty": {
+          "unsorted": {
             "type": "boolean"
           }
         }
@@ -27240,7 +27238,7 @@
         "name": "Client Credentials",
         "flows": {
           "clientCredentials": {
-            "tokenUrl": "https://dev-iam.wink.travel:9000/oauth2/token",
+            "tokenUrl": "https://iam.wink.travel/oauth2/token",
             "scopes": {
               "account.read": "View your account settings.",
               "account.write": "Create and update your account settings.",
