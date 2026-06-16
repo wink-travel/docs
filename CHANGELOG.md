@@ -2,6 +2,20 @@
 
 Changelog of docs.
 
+## v0.1.2 (2026-06-13)
+
+### Bug Fixes
+
+-  **i18n**  strip trailing commas from JSX attribute values after translation ([db8cb](https://github.com/wink-travel/docs/commit/db8cbc5ce0735f0) Bjorn Harvold)  
+
+### Other changes
+
+**0.1.2**
+
+
+[629a1](https://github.com/wink-travel/docs/commit/629a1959052f19e) Bjorn Harvold *2026-06-13 19:49:24*
+
+
 ## v0.1.1 (2026-06-13)
 
 ### Other changes
