@@ -23,7 +23,13 @@ fi
 
 echo "==> Pulling latest from origin..."
 export GIT_MERGE_AUTOEDIT=no
-git pull
+# --- release hardening: never let an ambient pull.rebase=true / pull.ff turn a
+# sync-pull into a history-rewriting rebase or surprise merge. Pin every pull to
+# fast-forward-only so a diverged shared branch FAILS LOUDLY instead of silently
+# rebasing a just-finished release onto origin. Overrides personal git config. ---
+git config --local pull.ff only
+git config --local pull.rebase false
+git pull --ff-only
 unset GIT_MERGE_AUTOEDIT
 
 # --- Content generation (before version tag so the tag reflects final state) ---
