@@ -1,5 +1,6 @@
 ---
 title: Hotelier Software Integration
+description: How integrated hotel management software streamlines operations, automates everyday tasks and surfaces the performance insights that grow revenue and guest satisfaction.
 date: 2025-05-15
 cover:
   alt: Cover image

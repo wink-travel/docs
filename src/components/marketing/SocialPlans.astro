@@ -1,0 +1,100 @@
+---
+/**
+ * Social subscription plans — pricing cards + feature matrix.
+ * Mirrors the live wink.travel Social pricing table (Starter / Growth / Elite).
+ * Used on the Pricing page and the Social product page so both stay in sync.
+ */
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+const APP = "https://app.wink.travel";
+
+const tiers = [
+  {
+    name: "Starter",
+    desc: "Small hotels that need a bit of help. Keep your socials active and polished automatically — no stress.",
+    price: "$129",
+    href: APP,
+    highlight: false,
+  },
+  {
+    name: "Growth",
+    desc: "Mid-size hotels ready to grow. Build buzz and book more guests with engaging posts — automatically.",
+    price: "$299",
+    href: APP,
+    highlight: true,
+  },
+  {
+    name: "Elite",
+    desc: "Change the game. Dominate online and fill more rooms with premium, engaging content — effortlessly.",
+    price: "$549",
+    href: APP,
+    highlight: false,
+  },
+];
+
+// values per row, in [Starter, Growth, Elite] order. true = ✓, false = ✗, string = text.
+const rows = [
+  { label: "Social networks", vals: ["FB, IG, WinkLinks", "FB, IG, WinkLinks", "FB, IG, WinkLinks"] },
+  { label: "Manual posts", vals: ["Unlimited", "Unlimited", "Unlimited"] },
+  { label: "Analytics", vals: [true, true, true] },
+  { label: "Verified badge", vals: [true, true, true] },
+  { label: "Basic support", vals: [true, true, true] },
+  { label: "Languages", vals: ["2", "4", "10"] },
+  { label: "Priority support", vals: [false, true, true] },
+  { label: "Posts per week", vals: ["1", "4", "5"] },
+  { label: "Replies", vals: [false, true, true] },
+  { label: "Chatbot", vals: [false, false, true] },
+  { label: "Account manager", vals: [false, false, true] },
+  { label: "Wink Agency", vals: [false, false, true] },
+];
+---
+
+<div class="@container w-full">
+  <p class="mb-6 text-center text-sm text-muted-foreground">Prices shown monthly · save 20% with yearly billing.</p>
+
+  {/* Pricing cards */}
+  <div class="grid gap-5 @md:grid-cols-3">
+    {tiers.map((t) => (
+      <div class:list={["flex flex-col rounded-2xl border bg-card p-7 text-center", t.highlight ? "border-primary ring-1 ring-primary/30" : "border-border"]}>
+        <div class="mb-3 flex h-6 items-center justify-center">
+          {t.highlight && <span class="rounded-full bg-primary/10 px-3 py-1 text-xs font-semibold text-primary">Most popular</span>}
+        </div>
+        <h3 class="font-heading text-xl font-semibold">{t.name}</h3>
+        <p class="text-muted-foreground mt-3 flex-grow text-sm text-pretty">{t.desc}</p>
+        <p class="mt-5 font-heading text-4xl font-semibold">{t.price}<span class="text-base font-normal text-muted-foreground">/mo</span></p>
+        <a href={t.href} class:list={["mt-6 inline-flex h-11 items-center justify-center rounded-md px-6 text-sm font-semibold transition-colors", t.highlight ? "bg-primary text-primary-foreground hover:bg-primary/90" : "border border-border hover:bg-muted"]}>Get Started</a>
+      </div>
+    ))}
+  </div>
+
+  {/* Feature matrix */}
+  <div class="mt-8 overflow-x-auto rounded-2xl border border-border">
+    <table class="w-full border-collapse text-sm">
+      <thead>
+        <tr class="bg-muted/50">
+          <th class="p-4 text-left font-semibold">Features</th>
+          {tiers.map((t) => <th class="p-4 text-center font-semibold">{t.name}</th>)}
+        </tr>
+      </thead>
+      <tbody class="[&_td]:border-t [&_td]:border-border [&_td]:p-4">
+        {rows.map((r) => (
+          <tr>
+            <td class="font-medium">{r.label}</td>
+            {r.vals.map((v) => (
+              <td class="text-center">
+                {v === true ? (
+                  <IconCheck class="mx-auto size-5 text-primary" aria-label="Included" />
+                ) : v === false ? (
+                  <IconX class="mx-auto size-5 text-muted-foreground/40" aria-label="Not included" />
+                ) : (
+                  <span>{v}</span>
+                )}
+              </td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 ---
 title: Avoid These Hotel Affiliate Mistakes
+description: The most common hotel affiliate marketing mistakes — from poor program choice to over-promotion and ignoring your data — and how to avoid them to earn more.
 date: 2025-03-14
 cover:
   alt: Cover image

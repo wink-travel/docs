@@ -1,5 +1,6 @@
 ---
 title: Take to the Skies with Cloud-Based Hotel Management Systems
+description: A complete guide to cloud-based hotel management systems — what they do, why they're now essential, and how they help hotels run operations and grow revenue.
 date: 2025-06-15
 cover:
   alt: Cover image

@@ -15,23 +15,19 @@ const apiSidebarGroup = createOpenAPISidebarGroup()
 import icon from 'astro-icon';
 
 import markdoc from '@astrojs/markdoc';
+import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
   site: 'https://wink.travel',
-  redirects: buildRedirects(),
+  redirects: { ...buildRedirects(), '/home-v2': '/' },
   image: {
     domains: ['res.cloudinary.com']
   },
   integrations: [starlight({
     head: [
-      {
-        tag: 'meta',
-        attrs: {
-          property: 'og:image',
-          content: 'https://res.cloudinary.com/traveliko/image/upload/v1653294291/wink/wink-social-card.png',
-        },
-      },
+      // og:image is set per-page in custom-head.astro (generated OG cards for
+      // marketing pages, global card fallback otherwise).
       {
         tag: 'script',
         attrs: {
@@ -122,6 +118,7 @@ export default defineConfig({
       Header: './src/components/custom-header.astro', // marketing navbar on pages with marketingNav: true
       Footer: './src/components/custom-footer.astro',
       PageTitle: './src/components/custom-page-title.astro',  // Removes Page title from splash screens
+      Head: './src/components/custom-head.astro', // per-page OG images for marketing pages
     },
     sidebar: [
       { label: 'Getting Started', items: [{ autogenerate: { directory: 'getting-started' } }] },
@@ -245,7 +242,7 @@ export default defineConfig({
       'zh-CN': { label: '简体中文', lang: 'zh-CN' },
       'zh-TW': { label: '繁體中文', lang: 'zh-TW' },
     },
-  }), icon(), markdoc()],
+  }), sitemap(), icon(), markdoc()],
   vite: {
     plugins: [tailwindcss()]
   }

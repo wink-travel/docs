@@ -19,8 +19,8 @@ export const collections = {
       extend: (context) =>
         blogSchema(context).extend({
           // Opt-in flag: render the new marketing navbar + footer (IA rebuild).
-          // Set on the new marketing splash pages only, so existing splash pages
-          // (index/contact/team/jobs) keep Starlight's default header/footer.
+          // Set on all marketing splash pages. The legacy home (index.mdx) keeps
+          // Starlight's default header/footer until it is replaced by home-v2.
           marketingNav: z.boolean().optional(),
         }),
     })

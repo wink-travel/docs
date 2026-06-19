@@ -1,0 +1,39 @@
+---
+import DeviceFrame from "./DeviceFrame.astro";
+import IconCheck from "@tabler/icons/outline/check.svg";
+
+interface Props {
+  step?: string;
+  title: string;
+  desc?: string;
+  points?: string[];
+  image: string;
+  alt: string;
+  frame?: "browser" | "phone" | "plain";
+  url?: string;
+  reverse?: boolean;
+}
+
+const { step, title, desc, points = [], image, alt, frame = "browser", url, reverse = false } = Astro.props;
+---
+
+<div class="@container grid items-center gap-10 @lg:grid-cols-2 @lg:gap-16">
+  <div class:list={["@lg:order-1", reverse && "@lg:order-2"]}>
+    {step && <p class="mkt-kicker text-primary">{step}</p>}
+    <h3 class="font-heading mt-3 text-2xl font-semibold tracking-tight @xl:text-3xl">{title}</h3>
+    {desc && <p class="text-muted-foreground mt-3 text-pretty @lg:text-lg">{desc}</p>}
+    {points.length > 0 && (
+      <ul class="mt-5 space-y-2.5">
+        {points.map((p) => (
+          <li class="flex items-start gap-2.5">
+            <IconCheck class="mt-0.5 size-5 shrink-0 text-primary" aria-hidden="true" />
+            <span class="text-sm text-foreground/90">{p}</span>
+          </li>
+        ))}
+      </ul>
+    )}
+  </div>
+  <div class:list={["@lg:order-2", reverse && "@lg:order-1"]}>
+    <DeviceFrame variant={frame} src={image} alt={alt} url={url} />
+  </div>
+</div>

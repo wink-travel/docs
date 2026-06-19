@@ -1,0 +1,110 @@
+---
+interface Step {
+  label: string;
+  title: string;
+  description: string;
+  image: string;
+  alt: string;
+}
+
+const steps: Step[] = [
+  { label: "Extranet", title: "Set up hotel supply and settings", description: "Manage property content, rooms, rates, packages, policies, channels, and Booking Engine configuration — the controlled supply behind every route.", image: "/mockups/extranet/extranet-main-dashboard-page.png", alt: "Wink Extranet dashboard" },
+  { label: "Studio", title: "Turn supply into bookable assets", description: "Create Shareable Links, cards, maps, grids, Web Components, and QR-ready assets from approved hotel supply.", image: "/mockups/studio/shareable-links/share-link-all.png", alt: "Wink Studio shareable links" },
+  { label: "Social", title: "Approve before you publish", description: "Plan, generate, and approve hotel content with booking-ready routes attached. Approval always comes before the post goes live.", image: "/mockups/social/social-pre-approval-content.png", alt: "Wink Social content approval" },
+  { label: "Social post", title: "A booking-ready social post", description: "Approved content publishes with a booking route attached — a social post that leads straight into checkout.", image: "/mockups/social/social-facebook-post.png", alt: "Wink Social booking-ready Facebook post" },
+  { label: "WinkLinks", title: "Publish a mobile storefront", description: "One public link holds curated hotel cards, offers, maps, and campaign entries — built for link-in-bio and QR traffic.", image: "/mockups/winklinks/winklinks-mobile.jpeg", alt: "WinkLinks mobile storefront" },
+  { label: "Booking Engine", title: "Room, rate, add-ons, checkout", description: "Booking Engine loads hotel-specific data and fulfills the booking — rooms, rate plans, add-ons, payment, and confirmation.", image: "/mockups/booking-engine/checkout-page-booking-engine-desktop.png", alt: "Wink Booking Engine checkout" },
+  { label: "AI & Developers", title: "AI and platform handoff", description: "Web Components and Agentic AI hand qualified demand into approved booking flows, with Booking Engine fulfillment underneath.", image: "/mockups/studio/web-component/embedable-grid.png", alt: "Wink embeddable Web Component grid" },
+];
+---
+
+<section class="@container mx-auto w-full max-w-7xl px-4 py-24" data-product-stepper>
+  <div class="mx-auto mb-12 max-w-3xl text-center">
+    <p class="mkt-kicker text-primary">Product experience</p>
+    <h2 class="mkt-h2 font-heading mt-3">
+      See how demand becomes a booking.
+    </h2>
+    <p class="mkt-sub text-muted-foreground mt-4">
+      Approved hotel supply moves through creation, approval, and distribution into Booking Engine
+      fulfillment. Step through the real product surfaces.
+    </p>
+  </div>
+
+  {/* Tabs */}
+  <div class="mb-8 flex flex-wrap justify-center gap-2" role="tablist" aria-label="Product experience steps">
+    {
+      steps.map((s, i) => (
+        <button
+          type="button"
+          role="tab"
+          id={`pstep-tab-${i}`}
+          aria-controls={`pstep-panel-${i}`}
+          aria-selected={i === 0 ? "true" : "false"}
+          data-step={i}
+          class="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium transition-colors aria-selected:border-primary aria-selected:bg-primary aria-selected:text-primary-foreground hover:bg-muted aria-selected:hover:bg-primary"
+        >
+          <span class="text-xs opacity-70">{i + 1}</span>
+          {s.label}
+        </button>
+      ))
+    }
+  </div>
+
+  {/* Panels */}
+  <div>
+    {
+      steps.map((s, i) => (
+        <div
+          id={`pstep-panel-${i}`}
+          role="tabpanel"
+          aria-labelledby={`pstep-tab-${i}`}
+          data-panel={i}
+          hidden={i !== 0}
+          class="grid items-center gap-10 @lg:grid-cols-2"
+        >
+          <div class="order-2 @lg:order-1">
+            <span class="text-xs font-semibold uppercase tracking-wider text-primary">
+              Step {i + 1} · {s.label}
+            </span>
+            <h3 class="font-heading mt-3 text-2xl font-semibold tracking-tight @xl:text-3xl">{s.title}</h3>
+            <p class="mkt-sub text-muted-foreground mt-4">{s.description}</p>
+          </div>
+          <div class="order-1 @lg:order-2">
+            <div class="flex aspect-[16/11] items-center justify-center overflow-hidden rounded-2xl border border-border bg-muted/40 p-3">
+              <img src={s.image} alt={s.alt} class="max-h-full max-w-full rounded-lg object-contain" loading="lazy" decoding="async" />
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  function setupProductStepper() {
+    document.querySelectorAll<HTMLElement>("[data-product-stepper]").forEach((root) => {
+      const tabs = Array.from(root.querySelectorAll<HTMLButtonElement>('[role="tab"]'));
+      const panels = Array.from(root.querySelectorAll<HTMLElement>('[role="tabpanel"]'));
+      if (!tabs.length) return;
+
+      const select = (idx: number) => {
+        tabs.forEach((t, i) => t.setAttribute("aria-selected", i === idx ? "true" : "false"));
+        panels.forEach((p, i) => (p.hidden = i !== idx));
+      };
+
+      tabs.forEach((tab, i) => {
+        tab.addEventListener("click", () => select(i));
+        tab.addEventListener("keydown", (e) => {
+          if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+          e.preventDefault();
+          const next = e.key === "ArrowRight" ? (i + 1) % tabs.length : (i - 1 + tabs.length) % tabs.length;
+          select(next);
+          tabs[next].focus();
+        });
+      });
+    });
+  }
+
+  setupProductStepper();
+  document.addEventListener("astro:after-swap", setupProductStepper);
+</script>
