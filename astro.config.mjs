@@ -18,11 +18,16 @@ const apiSidebarGroup = createOpenAPISidebarGroup()
 // audience id -> [sidebar label, base path prefix]. 'partner' is served by the
 // Integrations app; the rest by the Inventory app.
 const AUDIENCES = [
-  ['common', 'Common', 'api'],
-  ['supplier', 'Supplier', 'api'],
-  ['consumer', 'Consumer', 'api'],
-  ['affiliate', 'Affiliate', 'api'],
-  ['account', 'Account', 'api'],
+  ['reference', 'Reference', 'api'],
+  ['extranet', 'Extranet', 'api'],
+  ['booking-engine', 'Booking Engine', 'api'],
+  ['studio', 'Studio', 'api'],
+  ['social', 'Social', 'api'],
+  ['link-manager', 'Link Manager', 'api'],
+  ['settings', 'Settings', 'api'],
+  ['payment', 'Payment', 'api'],
+  ['user', 'User', 'api'],
+  ['travel-agent', 'Travel Agent', 'api'],
   ['partner', 'Partner', 'integrations-api'],
 ]
 
@@ -179,9 +184,9 @@ export default defineConfig({
         ],
       },
     {
-      label: 'Overview',
+      label: 'Releases',
       items: [
-        'changelog/overview',
+        { label: 'Overview', link: '/changelog/overview/' },
         {
           label: 'Application',
           collapsed: true,
