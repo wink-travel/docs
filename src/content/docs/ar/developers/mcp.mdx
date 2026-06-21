@@ -1,127 +1,364 @@
 ---
-title: خادم MCP
-description: قم بتوصيل وكلاء الذكاء الاصطناعي بسرعة إلى وثائق Wink ومواصفات OpenAPI الحية عبر خادم MCP المستضاف.
+title: خوادم MCP
+description: اربط وكلاء الذكاء الاصطناعي بمنصة Wink عبر بروتوكول سياق النموذج. توفر خوادم MCP المصادقة لوكيلك وصولًا مباشرًا إلى المخزون، والحجوزات، وتكاملات مدير القنوات، والمزيد — مؤمنة بتسجيل دخول OAuth2 التفاعلي.
 sidebar:
   order: 10
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-## نظرة عامة
-خادم MCP المستضاف من Wink متاح على:
+تكشف Wink عن خادمين MCP مصادق عليهما. كلاهما يستخدم **تسجيل دخول OAuth2 التفاعلي** (تدفق رمز التفويض PKCE) — يفتح وكيل الذكاء الاصطناعي لديك علامة تبويب متصفح لتسجيل الدخول بحساب Wink الخاص بك. لا حاجة لإدارة أسرار العميل.
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+| الخادم | URL | ما يقوم به |
+|--------|-----|--------------|
+| **واجهة برمجة تطبيقات المخزون** | `https://api.wink.travel/mcp` | المخزون، الحجوزات، الأسعار، قنوات المبيعات، التحليلات، وجميع عمليات المنصة |
+| **التكاملات** | `https://integrations.wink.travel/mcp` | تكاملات مدير القنوات — مزامنة العقارات، الأسعار، والتوافر مع وكالات السفر عبر الإنترنت |
 
-وجه عملاء الذكاء الاصطناعي المتوافقين (VS Code، Cursor، وغيرهم الذين ينفذون نقل MCP عبر HTTP) إلى هذه النقطة النهائية للسماح لهم بـ:
-- تصفح وثائق المنتج والمنصة (`wink://docs/...`)
-- تصفح مواصفات OpenAPI الحية ووثائق العمليات (`wink://api/...`)
-- إجراء بحث دلالي / بالكلمات المفتاحية خفيف الوزن عبر الوثائق وواجهات برمجة التطبيقات الحية
+---
 
-## النقل
-استخدم نقطة النهاية الأساسية القابلة للبث عبر HTTP:
+## كيف تعمل المصادقة
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+تستخدم خوادم MCP في Wink تدفق **رمز تفويض OAuth2 + PKCE** وتدعم **التسجيل الديناميكي للعميل (RFC 7591)**. إليك ما يحدث عند الاتصال لأول مرة:
 
-إذا كان عميلك يدعم SSE فقط، استخدم:
+1. يكتشف عميل الذكاء الاصطناعي خادم التفويض من بيانات التعريف `/.well-known/oauth-protected-resource` لنقطة نهاية MCP.
+2. يقوم العميل بالتسجيل الذاتي عبر **التسجيل الديناميكي للعميل** — لا حاجة لإعداد التطبيق يدويًا.
+3. يفتح العميل **علامة تبويب متصفح** إلى `https://iam.wink.travel`. تقوم بتسجيل الدخول بحساب Wink الخاص بك وتوافق على الأذونات المطلوبة في شاشة الموافقة.
+4. تصدر Wink **رمز وصول** مرتبط بحسابك وهويتك.
+5. يرفق عميل الذكاء الاصطناعي الرمز مع كل طلب MCP. يتم تلقائيًا تقييد نتائج الأدوات إلى الكيان الإداري الخاص بك.
+6. تنتهي صلاحية الرموز بعد 3 ساعات. يقوم عميل الذكاء الاصطناعي بتحديثها بهدوء في الخلفية دون طلب تسجيل دخول مرة أخرى.
 
-```
-https://docs.mcp.wink.travel/sse
-```
+كل استدعاء أداة يتم تشغيله **باسم هويتك** — تنطبق نفس قواعد التحكم في الوصول التي تحمي بوابة الويب على وكيل الذكاء الاصطناعي.
 
-### Claude Code
-الوثائق الرسمية: [ربط Claude Code بالأدوات عبر MCP](https://code.claude.com/docs/en/mcp)
+---
 
-توصي Anthropic باستخدام نقل HTTP عن بُعد لخوادم MCP المستضافة سحابياً:
+## ربط عميل الذكاء الاصطناعي الخاص بك
+
+<Tabs>
+  <TabItem label="Claude Code">
+
+<Steps>
+1. تأكد من تحديث Claude Code:
+   ```bash
+   npm install -g @anthropic-ai/claude-code
+   ```
+
+2. أضف خادم MCP الخاص بمخزون Wink:
+   ```bash
+   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   ```
+
+3. يتصل Claude Code بالخادم، يكتشف خادم التفويض، ويفتح متصفحك الافتراضي.
+
+4. **سجّل الدخول إلى Wink** ووافق على طلب الأذونات في شاشة الموافقة.
+
+5. يؤكد Claude Code الاتصال. اكتب `/mcp` للتحقق من ظهور الخادم وتحميل أدواته.
+</Steps>
+
+لإضافة خادم التكاملات أيضًا:
 ```bash
-claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
-claude mcp list
+claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
 ```
 
-داخل Claude Code، شغّل `/mcp` لفحص حالة الخادم. إذا أردت مشاركة الخادم مع كامل المستودع، أضف `--scope project` ليكتب Claude Code التكوين في `.mcp.json`.
+:::tip[شارك مع فريقك]
+أضف `--scope project` إلى أمر `claude mcp add` ليكتب Claude Code عنوان الخادم في `.mcp.json` في جذر المستودع. قم بعمل التزام لهذا الملف — يكمل كل عضو في الفريق تسجيل الدخول عبر المتصفح الخاص به عند الاتصال لأول مرة.
+:::
 
-### Codex
-الوثائق الرسمية: [بدء سريع لوثائق MCP لـ Codex](https://developers.openai.com/resources/docs-mcp)
+  </TabItem>
+  <TabItem label="Claude Desktop">
 
-توثق OpenAI إعداد MCP عبر CLI الخاص بـ Codex، وتذكر أن التكوين مشترك مع امتداد IDE:
+<Steps>
+1. حرر ملف تكوين Claude Desktop:
+   - **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+   - **Linux:** `~/.config/Claude/claude_desktop_config.json`
+
+2. أضف إدخالات خوادم MCP:
+
+   ```json title="claude_desktop_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **أغلق وأعد تشغيل** Claude Desktop بالكامل (استخدم Quit من شريط القائمة — إغلاق النافذة غير كافٍ).
+
+4. يفتح Claude Desktop علامة تبويب متصفح لكل خادم جديد. سجّل الدخول إلى Wink ووافق على الأذونات.
+
+5. يظهر رمز القابس في شريط الأدوات السفلي كلا الخادمين متصلين.
+</Steps>
+
+  </TabItem>
+  <TabItem label="OpenAI Codex">
+
+<Steps>
+1. تأكد من تثبيت Codex CLI:
+   ```bash
+   npm install -g @openai/codex
+   ```
+
+2. افتح (أو أنشئ) ملف تكوين Codex:
+   - **macOS / Linux:** `~/.codex/config.json`
+   - **Windows:** `%USERPROFILE%\.codex\config.json`
+
+3. أضف إدخالات خوادم MCP الخاصة بـ Wink:
+
+   ```json title="~/.codex/config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+4. ابدأ Codex. عند الاستخدام الأول، يفتح Codex علامة تبويب متصفح إلى `https://iam.wink.travel`.
+
+5. **سجّل الدخول إلى Wink** ووافق على الأذونات المطلوبة.
+
+6. يؤكد Codex الاتصال. شغّل `codex` واطلب منه سرد الأدوات المتاحة للتحقق من نشاط خوادم Wink.
+</Steps>
+
+:::note
+يتطلب دعم MCP في Codex CLI الإصدار **1.0** أو أحدث. شغّل `codex --version` للتحقق، و`npm install -g @openai/codex` للترقية.
+:::
+
+  </TabItem>
+  <TabItem label="ChatGPT">
+
+يتوفر دعم خادم MCP في **تطبيق ChatGPT لسطح المكتب** لمشتركي Plus وPro وTeam وEnterprise.
+
+<Steps>
+1. حمّل وثبّت [تطبيق ChatGPT لسطح المكتب](https://openai.com/chatgpt/download/) إذا لم تكن قد فعلت ذلك.
+
+2. افتح التطبيق وانقر على **رمز ملفك الشخصي** في الزاوية العلوية اليمنى، ثم اختر **الإعدادات**.
+
+3. اذهب إلى **الموصلات** (أو **خوادم MCP** حسب إصدار التطبيق) وانقر **إضافة**.
+
+4. أدخل عنوان خادم مخزون Wink:
+   ```
+   https://api.wink.travel/mcp
+   ```
+   ثم انقر **اتصال**.
+
+5. يفتح ChatGPT علامة تبويب متصفح إلى `https://iam.wink.travel`. **سجّل الدخول إلى Wink** ووافق على الأذونات.
+
+6. كرر الخطوتين 4–5 لخادم التكاملات:
+   ```
+   https://integrations.wink.travel/mcp
+   ```
+
+7. يظهر كلا الخادمين في قائمة الموصلات الخاصة بك. ابدأ محادثة جديدة — تتوفر أدوات Wink تلقائيًا.
+</Steps>
+
+:::note[قيود تطبيق الويب]
+يمكن تكوين خوادم MCP فقط في **تطبيق سطح المكتب**. لا يدعم واجهة الويب ChatGPT على chatgpt.com خوادم MCP المخصصة.
+:::
+
+  </TabItem>
+  <TabItem label="Cursor">
+
+<Steps>
+1. افتح (أو أنشئ) ملف تكوين MCP الخاص بـ Cursor:
+   - **macOS / Linux:** `~/.cursor/mcp.json`
+   - **Windows:** `%USERPROFILE%\.cursor\mcp.json`
+
+2. أضف إدخالات خوادم MCP الخاصة بـ Wink:
+
+   ```json title="~/.cursor/mcp.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. افتح Cursor. اذهب إلى **الإعدادات → إعدادات Cursor → MCP** وتأكد من ظهور كلا الخادمين مع مؤشر حالة أخضر. إذا كان أحمر، انقر **تحديث**.
+
+4. يفتح Cursor علامة تبويب متصفح إلى `https://iam.wink.travel`. **سجّل الدخول إلى Wink** ووافق على الأذونات.
+
+5. افتح محادثة (`Ctrl+L` / `Cmd+L`) واطلب من Cursor سرد أدوات Wink المتاحة لتأكيد الاتصال.
+</Steps>
+
+:::tip[تكوين مخصص للمشروع]
+يمكنك أيضًا وضع ملف `mcp.json` في جذر مشروعك بدلاً من `~/.cursor/`. يتفوق تكوين المشروع ويجعل الخوادم متاحة لكل عضو في الفريق يفتح المشروع في Cursor.
+:::
+
+  </TabItem>
+  <TabItem label="Windsurf">
+
+<Steps>
+1. افتح (أو أنشئ) ملف تكوين MCP الخاص بـ Windsurf:
+   - **macOS / Linux:** `~/.codeium/windsurf/mcp_config.json`
+   - **Windows:** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
+
+2. أضف إدخالات خوادم MCP الخاصة بـ Wink:
+
+   ```json title="~/.codeium/windsurf/mcp_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **أعد تشغيل Windsurf بالكامل** (ملف → خروج، ثم أعد الفتح).
+
+4. اذهب إلى **الإعدادات → خوادم MCP** وتحقق من ظهور كلا الخادمين متصلين. يفتح Windsurf علامة تبويب متصفح إلى `https://iam.wink.travel` عند الاستخدام الأول.
+
+5. **سجّل الدخول إلى Wink** ووافق على الأذونات. تتحول الخوادم إلى اللون الأخضر في لوحة الإعدادات بمجرد المصادقة.
+</Steps>
+
+:::note
+يتطلب دعم MCP في Windsurf الإصدار **1.4** أو أحدث. تحقق عبر **مساعدة → حول Windsurf** وقم بالتحديث من موقع Windsurf إذا لزم الأمر.
+:::
+
+  </TabItem>
+  <TabItem label="Cline (VS Code)">
+
+Cline هو امتداد لـ VS Code مع مدير خوادم MCP مدمج. لا حاجة لتحرير JSON يدويًا.
+
+<Steps>
+1. ثبّت Cline من سوق VS Code:
+   - افتح VS Code واضغط `Ctrl+Shift+X` / `Cmd+Shift+X`
+   - ابحث عن **Cline** وانقر **تثبيت**
+
+2. انقر على **أيقونة Cline** في شريط النشاط (الشريط الجانبي الأيسر) لفتح لوحة Cline.
+
+3. انقر على **أيقونة خوادم MCP** (أيقونة القابس) في شريط أدوات Cline، ثم اختر **تحرير إعدادات MCP**.
+
+4. يفتح VS Code ملف `cline_mcp_settings.json`. أضف إدخالات Wink:
+
+   ```json title="cline_mcp_settings.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+5. **احفظ الملف.** يعيد Cline التحميل تلقائيًا ويفتح علامة تبويب متصفح إلى `https://iam.wink.travel`.
+
+6. **سجّل الدخول إلى Wink** ووافق على الأذونات. يظهر كلا الخادمين نشطين في لوحة خوادم MCP.
+</Steps>
+
+:::tip[بديل: الإضافة عبر URL]
+في لوحة خوادم MCP، انقر **إضافة خادم** والصق `https://api.wink.travel/mcp` مباشرة. يملأ Cline التكوين تلقائيًا ويتولى المصادقة دون تحرير JSON يدويًا.
+:::
+
+  </TabItem>
+</Tabs>
+
+---
+
+## مرجع النطاقات
+
+عند الموافقة على شاشة الموافقة سترى تفصيلًا لما يطلبه الوكيل. تجمع Wink الأذونات حسب المجال الوظيفي:
+
+| مجموعة النطاق | النطاقات | ما تفتحه |
+|-------------|--------|-----------------|
+| **نقل MCP** | `mcp.read` `mcp.write` `mcp.remove` | مطلوب للاتصال بأي من خوادم MCP |
+| **الحساب** | `account.read` `account.write` `account.remove` | الكيانات الإدارية، أعضاء الفريق، الإعدادات، التطبيقات |
+| **الحجز** | `booking.read` `booking.write` `booking.remove` | البحث، العرض، الإنشاء، الإلغاء، واسترداد الحجوزات |
+| **المخزون** | `inventory.read` `inventory.write` `inventory.remove` | العقارات، الغرف، الأسعار، المرافق، التوافر |
+| **التحليلات** | `analytics.read` | تحليلات الحجوزات، تقارير الإيرادات، لوحات المتصدرين |
+| **التسويق** | `marketing.read` `marketing.write` `marketing.remove` | المنشورات الاجتماعية، الحملات، قنوات المبيعات، العروض الترويجية |
+| **المحتوى** | `content.read` `content.write` `content.remove` | الوسائط المتعددة، الروابط المختصرة، العناصر القابلة للنشر، الخرائط |
+| **الدفع** | `payment.read` `payment.write` | السجلات، المدفوعات، التحليلات المالية، السحوبات |
+
+يطلب عميل الذكاء الاصطناعي فقط النطاقات التي يحتاجها. يمكنك رفض أذونات فردية في شاشة الموافقة — ستُرجع الأدوات التي تتطلب نطاقًا مرفوضًا خطأً عند استدعائها.
+
+---
+
+## استكشاف الأخطاء وإصلاحها
+
+**لا تفتح علامة تبويب المتصفح**
+
+قد لا يدعم عميل الذكاء الاصطناعي لديك تدفق PKCE التفاعلي بعد. تحقق من تشغيل إصدار حديث:
+- **Claude Code:** `npm install -g @anthropic-ai/claude-code`
+- **Codex CLI:** `npm install -g @openai/codex`
+- **Claude Desktop / ChatGPT لسطح المكتب:** حدّث من المحدث المدمج في التطبيق
+
+**`401 Unauthorized` بعد تسجيل الدخول**
+
+قد يكون رمزك المخزن مؤقتًا قديمًا. أزل الخادم وأعد إضافته لتحفيز تسجيل دخول جديد:
+
 ```bash
-codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
-codex mcp list
+# Claude Code
+claude mcp remove wink-inventory
+claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-### Cursor
-وثائق Cursor MCP: https://cursor.com/docs/context/mcp
-الإعداد: أضف الخادم البعيد عبر إعدادات MCP.
-```json
-{
-  "mcpServers": {
-    "wink-docs": {
-      "url": "https://docs.mcp.wink.travel/mcp",
-    }
-  }
-}
-```
+بالنسبة لـ Claude Desktop وChatGPT، أزل إدخال الخادم من الإعدادات، أعد تشغيل التطبيق، وأضفه مرة أخرى.
 
-### VS Code
-الوثائق الرسمية: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-تكوين بعيد بسيط (ملف `mcp.json` للمستخدم أو مساحة العمل):
-```json
-{
-  "servers": {
-    "wink-docs": {
-      "type": "http",
-      "url": "https://docs.mcp.wink.travel/mcp"
-    }
-  }
-}
-```
+**`403 Forbidden` عند استدعاء أداة معينة**
 
-نصائح:
-- استخدم لوحة الأوامر: “MCP: List Servers” لتأكيد الاتصال وتصفح الأدوات.
-- يتيح لك محدد الأدوات تمكين/تعطيل `api_search` و `docs_search`.
-- أضف سياقًا: عرض الدردشة → إضافة سياق → موارد MCP لإرفاق صفحات الوثائق.
+تتطلب الأداة نطاقًا لم توافق عليه في شاشة الموافقة. أعد الاتصال بالخادم — ستظهر شاشة الموافقة مجددًا ويمكنك الموافقة على الإذن المفقود.
 
-## عناوين URI الأساسية للموارد
+**يظهر الخادم لكن استدعاءات الأدوات تعيد "الحساب غير موجود"**
 
-| URI | الوصف |
-|-----|-------------|
-| `wink://docs` | فهرس الوثائق (مجمّع حسب الفئة) |
-| `wink://docs/{path}` | مقالة وثائق محددة (Markdown / MDX) |
-| `wink://api` | كتالوج OpenAPI الحي المكتشف من تكوين swagger الخاص بـ Wink |
-| `wink://api/{apiName}` | ملخص API مضغوط مع المصادقة، العلامات، الرؤوس، وعينات العمليات |
-| `wink://api/{apiName}/operations` | قائمة العمليات الكاملة مجمعة حسب العلامة |
-| `wink://api/{apiName}/operation/{key}` | تفاصيل عملية فردية (المعلمات، جسم الطلب، الاستجابات) |
-| `wink://api/{apiName}/schema/{schemaName}` | مخطط مكون محلل مع حقول متداخلة وأنواع وأمثلة |
-| `wink://api/{apiName}/operation/{key}/request` | عرض مركز على الطلب مع المدخلات المطلوبة وحمولة مثال بسيطة |
-| `wink://api/{apiName}/operation/{key}/response/{status}` | عرض مركز على الاستجابة لحالة رمز محددة |
-| `wink://api/{apiName}/operation/{key}/recipe` | تدفق موجه بالمهام لاستدعاء تلك العملية بشكل صحيح |
+أنت مسجل الدخول إلى حساب Wink لا يحتوي على كيان إداري. اذهب إلى [بوابة Wink](https://app.wink.travel) وتأكد من إعداد حسابك قبل استخدام خادم MCP.
 
-## أدوات البحث (مرجع سريع)
-| الأداة | الغرض | أمثلة استعلام نموذجية |
-|------|---------|-----------------------|
-| `api_search` | العثور على API الحي أو العملية للاندماج معها | `create affiliate`، `payment receipt`، `lookup inventory`، `invite manager` |
-| `docs_search` | العثور على الوثائق المفاهيمية / الأدلة | `authentication`، `webhooks`، `wordPress` |
+**تنتهي صلاحية الرمز أثناء الجلسة**
 
-اترك `query` فارغًا لتلقي اقتراحات. كل نتيجة تتضمن URI MCP يمكنك فتحه.
-بالنسبة لنتائج العمليات، يعيد `api_search` أيضًا روابط URI للطلب، الاستجابة، المخطط، والوصفة حتى يتمكن الوكلاء من القفز مباشرة إلى المورد الفرعي الأكثر فائدة.
+الرموز صالحة لمدة 3 ساعات. يقوم Claude Code وClaude Desktop بتحديث الرموز بهدوء دون مقاطعة جلستك. إذا ظهرت أخطاء مصادقة بعد فترة طويلة من الخمول، اكتب رسالة جديدة — سيعيد العميل المصادقة تلقائيًا.
 
-## نمط الاستخدام النموذجي
-1. شغّل `api_search` مع نيتك (مثلاً *"create affiliate"* أو *"payment receipt"*).
-2. افتح URI `wink://api/...` المعاد، أو اتبع حقول `request_uri`، `response_uris`، `request_schema_uris`، `response_schema_uris`، و `recipe_uri` المرتبطة به.
-3. استخدم `docs_search` للمفاهيم الداعمة (المصادقة، webhooks، سير العمل).
+**يعرض Codex CLI "خادم MCP غير متاح"**
 
-## مهارات الذكاء الاصطناعي
+تحقق من أن `~/.codex/config.json` هو JSON صالح (بدون فواصل زائدة) وأن `"type": "http"` مضبوط. يتطلب Codex نقل HTTP للخوادم البعيدة؛ النقل عبر stdio مخصص للبرامج المحلية فقط.
 
-تستخدم مهارات الوكلاء المسبقة البناء هذا الخادم MCP كمصدر الحقيقة الخاص بها. تمنح المهارات وكيل البرمجة الخاص بك سير عمل منظم للبناء ضد واجهات برمجة التطبيقات الخاصة بـ Wink — بدلاً من التخمين في نقاط النهاية، يقرأ الوكيل العقود الحية مباشرة من خادم MCP.
+**قائمة "الموصلات" في ChatGPT مفقودة**
 
-راجع [مهارات الذكاء الاصطناعي](/ar/developers/ai-skills) للمهارات المتاحة وتعليمات التثبيت.
+يتطلب دعم MCP إصدار تطبيق ChatGPT لسطح المكتب **1.2024.352** أو أحدث واشتراكًا نشطًا في Plus أو Pro أو Team أو Enterprise. حدّث التطبيق وتحقق من خطتك في الإعدادات → الحساب.
 
-## ملاحظات
-- يمكن للوكلاء فتح كل URI معاد للحصول على المحتوى الكامل.
-- شجرة `wink://api` حية وتتبع كتالوج OpenAPI الحالي بدلاً من فهرس مستودع مولد.
-- تظهر الاقتراحات تلقائيًا عند ترك الاستعلامات فارغة.
+**يظهر خادم Cursor باللون الأحمر / "فشل الاتصال"**
 
+تحقق من أن `~/.cursor/mcp.json` هو JSON صالح ويحتوي على `"type": "http"`. ثم اذهب إلى **الإعدادات → إعدادات Cursor → MCP** وانقر **تحديث**. إذا استمر الخطأ، أعد تشغيل Cursor بالكامل — لا يتم دائمًا التقاط تغييرات التكوين بدون إعادة تشغيل.
+
+**خوادم MCP في Windsurf غير مدرجة في الإعدادات**
+
+يتطلب Windsurf إعادة تشغيل كاملة (وليس مجرد إعادة تحميل النافذة) لالتقاط تغييرات `mcp_config.json`. استخدم **ملف → خروج** وأعد التشغيل. إذا لم تظهر الخوادم، تأكد من أنك تستخدم Windsurf **1.4+** عبر **مساعدة → حول Windsurf**.
+
+**خيار "إضافة خادم" في Cline غير مرئي**
+
+يتطلب مدير خوادم MCP في Cline الإصدار **2.0** أو أحدث. افتح لوحة امتدادات VS Code، ابحث عن Cline، وانقر **تحديث** إذا كان متاحًا. بعد التحديث، أعد تحميل VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+
+---
+
+<LinkButton href="https://app.wink.travel" variant="primary" icon="external">افتح بوابة Wink</LinkButton>
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink على GitHub</LinkButton>

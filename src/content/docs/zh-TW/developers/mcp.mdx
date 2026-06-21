@@ -1,127 +1,364 @@
 ---
 title: MCP 伺服器
-description: 透過託管的 MCP 伺服器，快速將 AI 代理連接到 Wink 文件和即時 OpenAPI 規格。
+description: 透過 Model Context Protocol 將 AI 代理連接到 Wink 平台。經過驗證的 MCP 伺服器讓您的代理能直接存取庫存、訂單、渠道管理整合等功能 — 並透過互動式 OAuth2 登入保障安全。
 sidebar:
   order: 10
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-## 概覽
-託管的 Wink MCP 伺服器位於：
+Wink 提供兩個經過驗證的 MCP 伺服器。兩者皆使用 **互動式 OAuth2 登入**（PKCE 授權碼流程）— 您的 AI 代理會開啟瀏覽器分頁，讓您使用 Wink 帳號登入。無需管理客戶端密鑰。
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+| 伺服器 | URL | 功能說明 |
+|--------|-----|----------|
+| **Inventory API** | `https://api.wink.travel/mcp` | 庫存、訂單、價格、銷售渠道、分析及所有平台操作 |
+| **Integrations** | `https://integrations.wink.travel/mcp` | 渠道管理整合 — 與 OTA 同步物業、價格與可用性 |
 
-將相容的 AI 用戶端（VS Code、Cursor、其他實作 MCP HTTP 傳輸的工具）指向此端點，可讓它們：
-- 瀏覽產品與平台文件（`wink://docs/...`）
-- 瀏覽即時 OpenAPI 規格與操作文件（`wink://api/...`）
-- 對文件與即時 API 執行輕量語意／關鍵字搜尋
+---
 
-## 傳輸
-使用主要可串流的 HTTP 端點：
+## 認證運作方式
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+Wink MCP 伺服器使用 **OAuth2 授權碼 + PKCE** 流程，並支援 **動態客戶端註冊 (RFC 7591)**。首次連接時會發生以下流程：
 
-如果您的用戶端僅支援 SSE，請使用：
+1. 您的 AI 用戶端從 MCP 端點的 `/.well-known/oauth-protected-resource` 元資料中發現授權伺服器。
+2. 用戶端透過 **動態客戶端註冊** 自行註冊 — 無需手動設定應用程式。
+3. 用戶端開啟瀏覽器分頁至 `https://iam.wink.travel`。您使用 Wink 帳號登入並在同意畫面批准所需權限。
+4. Wink 發行一個與您的帳號及身份綁定的 **存取權杖**。
+5. AI 用戶端將權杖附加於每個 MCP 請求。所有工具結果自動依您的管理實體範圍限制。
+6. 權杖有效期為 3 小時。AI 用戶端會在背景靜默刷新，無需再次提示。
 
-```
-https://docs.mcp.wink.travel/sse
-```
+每個工具呼叫皆 **以您的身份執行** — 與保護網頁入口的 ACL 規則相同。
 
-### Claude Code
-官方文件：[透過 MCP 連接 Claude Code 到工具](https://code.claude.com/docs/en/mcp)
+---
 
-Anthropic 建議對雲端託管的 MCP 伺服器使用遠端 HTTP 傳輸：
+## 連接您的 AI 用戶端
+
+<Tabs>
+  <TabItem label="Claude Code">
+
+<Steps>
+1. 確認 Claude Code 已更新：
+   ```bash
+   npm install -g @anthropic-ai/claude-code
+   ```
+
+2. 新增 Wink Inventory MCP 伺服器：
+   ```bash
+   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   ```
+
+3. Claude Code 會聯絡伺服器，發現授權伺服器並開啟預設瀏覽器。
+
+4. **登入 Wink** 並在同意畫面批准權限請求。
+
+5. Claude Code 確認連線。輸入 `/mcp` 以驗證伺服器是否出現且工具已載入。
+</Steps>
+
+若要同時新增 Integrations 伺服器：
 ```bash
-claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
-claude mcp list
+claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
 ```
 
-在 Claude Code 中，執行 `/mcp` 以檢查伺服器狀態。若想與整個專案共用伺服器，請加上 `--scope project`，讓 Claude Code 將設定寫入 `.mcp.json`。
+:::tip[與團隊共享]
+在 `claude mcp add` 指令中加入 `--scope project`，Claude Code 會將伺服器 URL 寫入專案根目錄的 `.mcp.json`。提交該檔案後，每位團隊成員首次連接時完成自己的瀏覽器登入。
+:::
 
-### Codex
-官方文件：[Codex 的 Docs MCP 快速入門](https://developers.openai.com/resources/docs-mcp)
+  </TabItem>
+  <TabItem label="Claude Desktop">
 
-OpenAI 透過 Codex CLI 文件說明 MCP 設定，並指出此設定會與 IDE 擴充功能共用：
+<Steps>
+1. 編輯 Claude Desktop 設定檔：
+   - **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+   - **Linux:** `~/.config/Claude/claude_desktop_config.json`
+
+2. 新增 MCP 伺服器條目：
+
+   ```json title="claude_desktop_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **完全退出並重新啟動** Claude Desktop（使用選單列的退出，僅關閉視窗不夠）。
+
+4. Claude Desktop 會為每個新伺服器開啟瀏覽器分頁。登入 Wink 並批准權限。
+
+5. 底部工具列的插頭圖示會顯示兩個伺服器皆已連接。
+</Steps>
+
+  </TabItem>
+  <TabItem label="OpenAI Codex">
+
+<Steps>
+1. 確認已安裝 Codex CLI：
+   ```bash
+   npm install -g @openai/codex
+   ```
+
+2. 開啟（或建立）Codex 設定檔：
+   - **macOS / Linux:** `~/.codex/config.json`
+   - **Windows:** `%USERPROFILE%\.codex\config.json`
+
+3. 新增 Wink MCP 伺服器條目：
+
+   ```json title="~/.codex/config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+4. 啟動 Codex。首次使用時，Codex 會開啟瀏覽器分頁至 `https://iam.wink.travel`。
+
+5. **登入 Wink** 並批准所需權限。
+
+6. Codex 確認連線。執行 `codex` 並請它列出可用工具，以驗證 Wink 伺服器已啟用。
+</Steps>
+
+:::note
+Codex CLI MCP 支援需版本 **1.0** 或以上。執行 `codex --version` 檢查，並使用 `npm install -g @openai/codex` 升級。
+:::
+
+  </TabItem>
+  <TabItem label="ChatGPT">
+
+MCP 伺服器支援適用於 Plus、Pro、Team 及 Enterprise 訂閱者的 **ChatGPT 桌面應用程式**。
+
+<Steps>
+1. 若尚未安裝，請下載並安裝 [ChatGPT 桌面應用程式](https://openai.com/chatgpt/download/)。
+
+2. 開啟應用程式，點擊右上角的 **個人資料圖示**，然後選擇 **設定**。
+
+3. 前往 **連接器**（或依版本顯示為 **MCP 伺服器**），點擊 **新增**。
+
+4. 輸入 Wink Inventory 伺服器 URL：
+   ```
+   https://api.wink.travel/mcp
+   ```
+   然後點擊 **連接**。
+
+5. ChatGPT 會開啟瀏覽器分頁至 `https://iam.wink.travel`。**登入 Wink** 並批准權限。
+
+6. 重複步驟 4–5 新增 Integrations 伺服器：
+   ```
+   https://integrations.wink.travel/mcp
+   ```
+
+7. 兩個伺服器會出現在您的連接器清單中。開始新聊天 — Wink 工具會自動可用。
+</Steps>
+
+:::note[網頁版限制]
+MCP 伺服器僅能在 **桌面應用程式** 中設定。ChatGPT 網頁介面（chatgpt.com）不支援自訂 MCP 伺服器。
+:::
+
+  </TabItem>
+  <TabItem label="Cursor">
+
+<Steps>
+1. 開啟（或建立）Cursor MCP 設定檔：
+   - **macOS / Linux:** `~/.cursor/mcp.json`
+   - **Windows:** `%USERPROFILE%\.cursor\mcp.json`
+
+2. 新增 Wink MCP 伺服器條目：
+
+   ```json title="~/.cursor/mcp.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. 開啟 Cursor。前往 **設定 → Cursor 設定 → MCP**，確認兩個伺服器皆顯示綠色狀態指示器。若顯示紅色，點擊 **重新整理**。
+
+4. Cursor 會開啟瀏覽器分頁至 `https://iam.wink.travel`。**登入 Wink** 並批准權限。
+
+5. 開啟聊天（`Ctrl+L` / `Cmd+L`），請 Cursor 列出可用的 Wink 工具以確認連線。
+</Steps>
+
+:::tip[專案範圍設定]
+您也可以將 `mcp.json` 檔案放在專案根目錄，取代放在 `~/.cursor/`。專案層級設定優先，並讓每位開啟該專案的團隊成員都能使用伺服器。
+:::
+
+  </TabItem>
+  <TabItem label="Windsurf">
+
+<Steps>
+1. 開啟（或建立）Windsurf MCP 設定檔：
+   - **macOS / Linux:** `~/.codeium/windsurf/mcp_config.json`
+   - **Windows:** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
+
+2. 新增 Wink MCP 伺服器條目：
+
+   ```json title="~/.codeium/windsurf/mcp_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **完全重新啟動 Windsurf**（檔案 → 退出，然後重新開啟）。
+
+4. 前往 **設定 → MCP 伺服器**，確認兩個伺服器皆顯示已連接。首次使用時 Windsurf 會開啟瀏覽器分頁至 `https://iam.wink.travel`。
+
+5. **登入 Wink** 並批准權限。認證完成後，設定面板中的伺服器會變成綠色。
+</Steps>
+
+:::note
+Windsurf MCP 支援需版本 **1.4** 或以上。請透過 **說明 → 關於 Windsurf** 檢查，並從 Windsurf 官網更新。
+:::
+
+  </TabItem>
+  <TabItem label="Cline (VS Code)">
+
+Cline 是一款 VS Code 擴充套件，內建 MCP 伺服器管理器，無需手動編輯 JSON。
+
+<Steps>
+1. 從 VS Code Marketplace 安裝 Cline：
+   - 開啟 VS Code，按 `Ctrl+Shift+X` / `Cmd+Shift+X`
+   - 搜尋 **Cline** 並點擊 **安裝**
+
+2. 點擊活動列（左側邊欄）的 **Cline 圖示**，開啟 Cline 面板。
+
+3. 點擊 Cline 工具列的 **MCP 伺服器圖示**（插頭圖示），然後選擇 **編輯 MCP 設定**。
+
+4. VS Code 會開啟 `cline_mcp_settings.json`。新增 Wink 條目：
+
+   ```json title="cline_mcp_settings.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+5. **儲存檔案。** Cline 會自動重新載入並開啟瀏覽器分頁至 `https://iam.wink.travel`。
+
+6. **登入 Wink** 並批准權限。兩個伺服器會在 MCP 伺服器面板中顯示為啟用狀態。
+</Steps>
+
+:::tip[替代方案：透過 URL 新增]
+在 MCP 伺服器面板中，點擊 **新增伺服器**，直接貼上 `https://api.wink.travel/mcp`。Cline 會自動填入設定並處理認證，無需手動編輯 JSON。
+:::
+
+  </TabItem>
+</Tabs>
+
+---
+
+## 權限範圍參考
+
+當您在同意畫面批准權限時，會看到代理請求的詳細分類。Wink 依功能區分權限：
+
+| 權限群組 | 權限範圍 | 解鎖功能 |
+|-------------|--------|----------|
+| **MCP 傳輸** | `mcp.read` `mcp.write` `mcp.remove` | 連接任一 MCP 伺服器所需 |
+| **帳號** | `account.read` `account.write` `account.remove` | 管理實體、團隊成員、設定、應用程式 |
+| **訂單** | `booking.read` `booking.write` `booking.remove` | 搜尋、檢視、建立、取消及退款訂單 |
+| **庫存** | `inventory.read` `inventory.write` `inventory.remove` | 物業、房型、價格、設施、可用性 |
+| **分析** | `analytics.read` | 訂單分析、營收報告、排行榜 |
+| **行銷** | `marketing.read` `marketing.write` `marketing.remove` | 社群貼文、活動、銷售渠道、促銷 |
+| **內容** | `content.read` `content.write` `content.remove` | 多媒體、短網址、可聯合發佈項目、地圖 |
+| **付款** | `payment.read` `payment.write` | 帳本、付款、財務明細、提款 |
+
+AI 用戶端只會請求所需的權限範圍。您可在同意畫面拒絕個別權限 — 需要被拒絕權限的工具呼叫時會回傳錯誤。
+
+---
+
+## 疑難排解
+
+**瀏覽器分頁未開啟**
+
+您的 AI 用戶端可能尚未支援互動式 PKCE 流程。請確認您使用的是最新版本：
+- **Claude Code:** `npm install -g @anthropic-ai/claude-code`
+- **Codex CLI:** `npm install -g @openai/codex`
+- **Claude Desktop / ChatGPT 桌面版:** 從應用程式內建更新器更新
+
+**登入後出現 `401 Unauthorized`**
+
+您快取的權杖可能已過期。移除並重新新增伺服器以觸發重新登入：
+
 ```bash
-codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
-codex mcp list
+# Claude Code
+claude mcp remove wink-inventory
+claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-### Cursor
-Cursor MCP 文件：https://cursor.com/docs/context/mcp
-設定：透過 MCP 設定新增遠端伺服器。
-```json
-{
-  "mcpServers": {
-    "wink-docs": {
-      "url": "https://docs.mcp.wink.travel/mcp",
-    }
-  }
-}
-```
+Claude Desktop 和 ChatGPT 請從設定中移除伺服器條目，重啟應用程式後再新增。
 
-### VS Code
-官方文件：https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-最簡遠端設定（使用者或工作區的 `mcp.json`）：
-```json
-{
-  "servers": {
-    "wink-docs": {
-      "type": "http",
-      "url": "https://docs.mcp.wink.travel/mcp"
-    }
-  }
-}
-```
+**呼叫特定工具時出現 `403 Forbidden`**
 
-提示：
-- 使用命令面板：「MCP: List Servers」確認連線並瀏覽工具。
-- 工具選擇器可啟用／停用 `api_search` 和 `docs_search`。
-- 新增上下文：聊天視圖 → 新增上下文 → MCP 資源，附加文件頁面。
+該工具需要您在同意畫面未批准的權限範圍。重新連接伺服器 — 同意畫面會再次出現，您可批准缺少的權限。
 
-## 核心資源 URI
+**伺服器出現但工具呼叫回傳「找不到帳號」**
 
-| URI | 說明 |
-|-----|-------------|
-| `wink://docs` | 文件索引（依類別分組） |
-| `wink://docs/{path}` | 特定文件文章（Markdown / MDX） |
-| `wink://api` | 從 Wink swagger 設定發現的即時 OpenAPI 目錄 |
-| `wink://api/{apiName}` | 含認證、標籤、標頭及範例操作的精簡 API 摘要 |
-| `wink://api/{apiName}/operations` | 依標籤分組的完整操作列表 |
-| `wink://api/{apiName}/operation/{key}` | 單一操作細節（參數、請求主體、回應） |
-| `wink://api/{apiName}/schema/{schemaName}` | 已解析的元件結構，含巢狀欄位、類型與範例 |
-| `wink://api/{apiName}/operation/{key}/request` | 以請求為主的檢視，含必要輸入與最小範例負載 |
-| `wink://api/{apiName}/operation/{key}/response/{status}` | 針對特定狀態碼的回應檢視 |
-| `wink://api/{apiName}/operation/{key}/recipe` | 呼叫該操作的任務導向流程 |
+您登入的 Wink 帳號尚未設定管理實體。請前往 [Wink Portal](https://app.wink.travel) 確認帳號設定後再使用 MCP 伺服器。
 
-## 搜尋工具（快速參考）
-| 工具 | 目的 | 典型查詢範例 |
-|------|---------|-----------------------|
-| `api_search` | 尋找可整合的即時 API 或操作 | `create affiliate`、`payment receipt`、`lookup inventory`、`invite manager` |
-| `docs_search` | 尋找概念性文件／指南 | `authentication`、`webhooks`、`wordPress` |
+**權杖於會話中期過期**
 
-留空 `query` 可獲得建議。每個結果都包含可開啟的 MCP URI。
-對於操作命中，`api_search` 也會回傳連結的請求、回應、結構與流程 URI，讓代理能直接跳轉到最有用的子資源。
+權杖有效期為 3 小時。Claude Code 和 Claude Desktop 會靜默刷新權杖，不會中斷會話。若長時間閒置後出現認證錯誤，輸入新訊息即可自動重新認證。
 
-## 典型使用模式
-1. 使用您的意圖執行 `api_search`（例如 *「create affiliate」* 或 *「payment receipt」*）。
-2. 開啟回傳的 `wink://api/...` URI，或依其連結的 `request_uri`、`response_uris`、`request_schema_uris`、`response_schema_uris` 和 `recipe_uri` 欄位操作。
-3. 使用 `docs_search` 查找支援概念（認證、webhooks、工作流程）。
+**Codex CLI 顯示「MCP server unreachable」**
 
-## AI 技能
+請確認您的 `~/.codex/config.json` 是有效 JSON（無尾逗號），且 `"type": "http"` 已設定。Codex 遠端伺服器需使用 HTTP 傳輸；stdio 傳輸僅用於本地二進位檔。
 
-預建的代理技能使用此 MCP 伺服器作為其真實資料來源。技能為您的程式代理提供結構化工作流程，以便針對 Wink API 建構 — 不必猜測端點，代理直接從 MCP 伺服器讀取即時合約。
+**ChatGPT 「連接器」選單消失**
 
-請參閱 [AI Skills](/zh-TW/developers/ai-skills) 了解可用技能及安裝說明。
+MCP 支援需 ChatGPT 桌面版 **1.2024.352** 或以上，且需有效 Plus、Pro、Team 或 Enterprise 訂閱。請更新應用程式並在設定 → 帳號確認方案。
 
-## 注意事項
-- 每個回傳的 URI 代理都能開啟以取得完整內容。
-- `wink://api` 樹狀結構是即時的，遵循目前上游 OpenAPI 目錄，而非產生的 repo 索引。
-- 查詢為空時會自動顯示建議。
+**Cursor 伺服器顯示紅色 / 「連線失敗」**
 
-<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink 在 GitHub</LinkButton>
+請確認 `~/.cursor/mcp.json` 是有效 JSON 且包含 `"type": "http"`。前往 **設定 → Cursor 設定 → MCP** 點擊 **重新整理**。若錯誤持續，請完全重新啟動 Cursor — 設定變更有時需重啟才能生效。
+
+**Windsurf MCP 伺服器未出現在設定中**
+
+Windsurf 需完全重新啟動（非僅重新載入視窗）才能讀取 `mcp_config.json` 變更。請使用 **檔案 → 退出** 並重新啟動。若仍未出現，請確認您使用 Windsurf **1.4+** 版本（透過 **說明 → 關於 Windsurf** 檢查）。
+
+**Cline 「新增伺服器」選項未顯示**
+
+MCP 伺服器管理器需 Cline **2.0** 或以上版本。開啟 VS Code 擴充套件面板，找到 Cline，若有更新可用，點擊 **更新**。更新後重新載入 VS Code（`Ctrl+Shift+P` → 「Developer: Reload Window」）。
+
+---
+
+<LinkButton href="https://app.wink.travel" variant="primary" icon="external">開啟 Wink Portal</LinkButton>
+<LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink 的 GitHub</LinkButton>

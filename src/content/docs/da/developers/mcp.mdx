@@ -1,127 +1,364 @@
 ---
-title: MCP Server
-description: Forbind hurtigt AI-agenter til Wink-dokumentation og live OpenAPI-specifikationer via den hostede MCP-server.
+title: MCP-servere
+description: Forbind AI-agenter til Wink-platformen via Model Context Protocol. Godkendte MCP-servere giver din agent direkte adgang til lager, bookinger, channel manager-integrationer og mere — sikret med interaktiv OAuth2-login.
 sidebar:
   order: 10
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-## Oversigt
-Den hostede Wink MCP-server er tilgængelig på:
+Wink udstiller to godkendte MCP-servere. Begge bruger **interaktiv OAuth2-login** (PKCE autorisationskode-flow) — din AI-agent åbner en browsertab, så du kan logge ind med din Wink-konto. Ingen klienthemmeligheder at administrere.
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+| Server | URL | Hvad den gør |
+|--------|-----|--------------|
+| **Inventory API** | `https://api.wink.travel/mcp` | Lager, bookinger, priser, salgskanaler, analyser og alle platformoperationer |
+| **Integrations** | `https://integrations.wink.travel/mcp` | Channel manager-integrationer — synkroniser ejendomme, priser og tilgængelighed med OTA'er |
 
-Peg kompatible AI-klienter (VS Code, Cursor, andre der implementerer MCP HTTP-transport) mod dette endepunkt for at lade dem:
-- Gennemse produkt- og platformdokumentation (`wink://docs/...`)
-- Gennemse live OpenAPI-specifikationer og operation-dokumenter (`wink://api/...`)
-- Udføre letvægts semantisk / søgning på nøgleord i dokumenter og live API’er
+---
 
-## Transport
-Brug det primære streambare HTTP-endepunkt:
+## Sådan fungerer autentificering
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+Wink MCP-servere bruger **OAuth2 Authorization Code + PKCE** flow og understøtter **Dynamic Client Registration (RFC 7591)**. Sådan foregår det, når du forbinder første gang:
 
-Hvis din klient kun understøtter SSE, brug:
+1. Din AI-klient finder autorisationsserveren via MCP-endpointets `/.well-known/oauth-protected-resource` metadata.
+2. Klienten registrerer sig selv via **Dynamic Client Registration** — ingen manuel applikationsopsætning nødvendig.
+3. Klienten åbner en **browsertab** til `https://iam.wink.travel`. Du logger ind med din Wink-konto og godkender de ønskede tilladelser på samtykkeskærmen.
+4. Wink udsteder et **access token** knyttet til din konto og identitet.
+5. AI-klienten vedhæfter token til alle MCP-forespørgsler. Alle værktøjsresultater er automatisk begrænset til din administrerende enhed.
+6. Tokens udløber efter 3 timer. Din AI-klient opdaterer stille i baggrunden uden at bede om login igen.
 
-```
-https://docs.mcp.wink.travel/sse
-```
+Hver værktøjsanmodning kører **under din identitet** — de samme ACL-regler, der beskytter webportalen, gælder for AI-agenten.
 
-### Claude Code
-Officielle dokumenter: [Connect Claude Code to tools via MCP](https://code.claude.com/docs/en/mcp)
+---
 
-Anthropic anbefaler den fjernede HTTP-transport til cloud-hostede MCP-servere:
+## Forbind din AI-klient
+
+<Tabs>
+  <TabItem label="Claude Code">
+
+<Steps>
+1. Sørg for, at Claude Code er opdateret:
+   ```bash
+   npm install -g @anthropic-ai/claude-code
+   ```
+
+2. Tilføj Wink Inventory MCP-serveren:
+   ```bash
+   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   ```
+
+3. Claude Code kontakter serveren, finder autorisationsserveren og åbner din standardbrowser.
+
+4. **Log ind på Wink** og godkend tilladelsesforespørgslen på samtykkeskærmen.
+
+5. Claude Code bekræfter forbindelsen. Skriv `/mcp` for at kontrollere, at serveren vises, og at dens værktøjer er indlæst.
+</Steps>
+
+For også at tilføje Integrations-serveren:
 ```bash
-claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
-claude mcp list
+claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
 ```
 
-Inde i Claude Code, kør `/mcp` for at inspicere serverstatus. Hvis du vil dele serveren med hele repoet, tilføj `--scope project`, så Claude Code skriver konfigurationen til `.mcp.json`.
+:::tip[Del med dit team]
+Tilføj `--scope project` til `claude mcp add`, og Claude Code skriver server-URL'en til `.mcp.json` i rodmappen af dit repo. Commit den fil — hver teammedlem gennemfører deres egen browser-login første gang, de forbinder.
+:::
 
-### Codex
-Officielle dokumenter: [Docs MCP quickstart for Codex](https://developers.openai.com/resources/docs-mcp)
+  </TabItem>
+  <TabItem label="Claude Desktop">
 
-OpenAI dokumenterer MCP-opsætning via Codex CLI og bemærker, at konfigurationen deles med IDE-udvidelsen:
+<Steps>
+1. Rediger Claude Desktop konfigurationsfil:
+   - **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+   - **Linux:** `~/.config/Claude/claude_desktop_config.json`
+
+2. Tilføj MCP-serveroplysningerne:
+
+   ```json title="claude_desktop_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **Afslut helt og genstart** Claude Desktop (brug Quit i menulinjen — det er ikke nok at lukke vinduet).
+
+4. Claude Desktop åbner en browsertab for hver ny server. Log ind på Wink og godkend tilladelser.
+
+5. Stik-ikonet i bundværktøjslinjen viser begge servere som forbundet.
+</Steps>
+
+  </TabItem>
+  <TabItem label="OpenAI Codex">
+
+<Steps>
+1. Sørg for, at Codex CLI er installeret:
+   ```bash
+   npm install -g @openai/codex
+   ```
+
+2. Åbn (eller opret) Codex konfigurationsfil:
+   - **macOS / Linux:** `~/.codex/config.json`
+   - **Windows:** `%USERPROFILE%\.codex\config.json`
+
+3. Tilføj Wink MCP-serveroplysningerne:
+
+   ```json title="~/.codex/config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+4. Start Codex. Ved første brug åbner Codex en browsertab til `https://iam.wink.travel`.
+
+5. **Log ind på Wink** og godkend de ønskede tilladelser.
+
+6. Codex bekræfter forbindelsen. Kør `codex` og bed den liste tilgængelige værktøjer for at bekræfte, at Wink-serverne er aktive.
+</Steps>
+
+:::note
+Codex CLI MCP-support kræver version **1.0** eller nyere. Kør `codex --version` for at tjekke, og `npm install -g @openai/codex` for at opgradere.
+:::
+
+  </TabItem>
+  <TabItem label="ChatGPT">
+
+MCP-serverunderstøttelse findes i **ChatGPT desktop-appen** for Plus, Pro, Team og Enterprise-abonnenter.
+
+<Steps>
+1. Download og installer [ChatGPT desktop-appen](https://openai.com/chatgpt/download/), hvis du ikke allerede har den.
+
+2. Åbn appen og klik på **din profilikon** øverst til højre, vælg derefter **Indstillinger**.
+
+3. Gå til **Connectors** (eller **MCP Servers** afhængigt af din app-version) og klik på **Tilføj**.
+
+4. Indtast Wink Inventory-serverens URL:
+   ```
+   https://api.wink.travel/mcp
+   ```
+   Klik derefter på **Forbind**.
+
+5. ChatGPT åbner en browsertab til `https://iam.wink.travel`. **Log ind på Wink** og godkend tilladelser.
+
+6. Gentag trin 4–5 for Integrations-serveren:
+   ```
+   https://integrations.wink.travel/mcp
+   ```
+
+7. Begge servere vises i din Connectors-liste. Start en ny chat — Wink-værktøjer er tilgængelige automatisk.
+</Steps>
+
+:::note[Begrænsning i webappen]
+MCP-servere kan kun konfigureres i **desktop-appen**. ChatGPT-webgrænsefladen på chatgpt.com understøtter ikke brugerdefinerede MCP-servere.
+:::
+
+  </TabItem>
+  <TabItem label="Cursor">
+
+<Steps>
+1. Åbn (eller opret) Cursor MCP-konfigurationsfil:
+   - **macOS / Linux:** `~/.cursor/mcp.json`
+   - **Windows:** `%USERPROFILE%\.cursor\mcp.json`
+
+2. Tilføj Wink MCP-serveroplysningerne:
+
+   ```json title="~/.cursor/mcp.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. Åbn Cursor. Gå til **Indstillinger → Cursor Settings → MCP** og bekræft, at begge servere vises med grøn statusindikator. Hvis de er røde, klik på **Opdater**.
+
+4. Cursor åbner en browsertab til `https://iam.wink.travel`. **Log ind på Wink** og godkend tilladelser.
+
+5. Åbn en chat (`Ctrl+L` / `Cmd+L`) og bed Cursor liste tilgængelige Wink-værktøjer for at bekræfte forbindelsen.
+</Steps>
+
+:::tip[Projekt-specifik konfiguration]
+Du kan også placere en `mcp.json` fil i roden af dit projekt i stedet for i `~/.cursor/`. Projektkonfiguration har forrang og gør serverne tilgængelige for alle teammedlemmer, der åbner projektet i Cursor.
+:::
+
+  </TabItem>
+  <TabItem label="Windsurf">
+
+<Steps>
+1. Åbn (eller opret) Windsurf MCP-konfigurationsfil:
+   - **macOS / Linux:** `~/.codeium/windsurf/mcp_config.json`
+   - **Windows:** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
+
+2. Tilføj Wink MCP-serveroplysningerne:
+
+   ```json title="~/.codeium/windsurf/mcp_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **Genstart Windsurf helt** (Fil → Afslut, og åbn igen).
+
+4. Gå til **Indstillinger → MCP Servers** og bekræft, at begge servere vises som forbundet. Windsurf åbner en browsertab til `https://iam.wink.travel` ved første brug.
+
+5. **Log ind på Wink** og godkend tilladelser. Serverne bliver grønne i indstillingspanelet, når de er godkendt.
+</Steps>
+
+:::note
+Windsurf MCP-support kræver version **1.4** eller nyere. Tjek via **Hjælp → Om Windsurf** og opdater fra Windsurf-websitet om nødvendigt.
+:::
+
+  </TabItem>
+  <TabItem label="Cline (VS Code)">
+
+Cline er en VS Code-udvidelse med indbygget MCP-servermanager. Ingen manuel JSON-redigering er nødvendig.
+
+<Steps>
+1. Installer Cline fra VS Code Marketplace:
+   - Åbn VS Code og tryk `Ctrl+Shift+X` / `Cmd+Shift+X`
+   - Søg efter **Cline** og klik på **Installer**
+
+2. Klik på **Cline-ikonet** i aktivitetslinjen (venstre sidepanel) for at åbne Cline-panelet.
+
+3. Klik på **MCP Servers-ikonet** (stik-ikon) i Cline-værktøjslinjen, og vælg derefter **Rediger MCP-indstillinger**.
+
+4. VS Code åbner `cline_mcp_settings.json`. Tilføj Wink-posterne:
+
+   ```json title="cline_mcp_settings.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+5. **Gem filen.** Cline genindlæses automatisk og åbner en browsertab til `https://iam.wink.travel`.
+
+6. **Log ind på Wink** og godkend tilladelser. Begge servere vises som aktive i MCP Servers-panelet.
+</Steps>
+
+:::tip[Alternativ: tilføj via URL]
+I MCP Servers-panelet klik på **Tilføj server** og indsæt `https://api.wink.travel/mcp` direkte. Cline udfylder konfigurationen automatisk og håndterer autentificering uden manuel JSON-redigering.
+:::
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Scope-reference
+
+Når du godkender samtykkeskærmen, vil du se en oversigt over, hvad agenten anmoder om. Wink grupperer tilladelser efter funktionelt område:
+
+| Scope-gruppe | Scopes | Hvad de åbner op for |
+|-------------|--------|---------------------|
+| **MCP transport** | `mcp.read` `mcp.write` `mcp.remove` | Kræves for at forbinde til en af MCP-serverne |
+| **Konto** | `account.read` `account.write` `account.remove` | Administrerende enheder, teammedlemmer, indstillinger, applikationer |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Søg, vis, opret, annuller og refunder bookinger |
+| **Lager** | `inventory.read` `inventory.write` `inventory.remove` | Ejendomme, værelser, priser, faciliteter, tilgængelighed |
+| **Analyser** | `analytics.read` | Bookinganalyser, indtægtsrapporter, top-lister |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Sociale opslag, kampagner, salgskanaler, kampagner |
+| **Indhold** | `content.read` `content.write` `content.remove` | Multimedia, forkortede URL'er, syndikerbare elementer, kort |
+| **Betaling** | `payment.read` `payment.write` | Regnskab, udbetalinger, finansielle opgørelser, udbetalinger |
+
+AI-klienten anmoder kun om de scopes, den har brug for. Du kan afvise individuelle tilladelser på samtykkeskærmen — værktøjer, der kræver en afvist scope, returnerer en fejl ved kald.
+
+---
+
+## Fejlfinding
+
+**Browsertab åbner ikke**
+
+Din AI-klient understøtter muligvis ikke det interaktive PKCE-flow endnu. Tjek, at du kører en nyere version:
+- **Claude Code:** `npm install -g @anthropic-ai/claude-code`
+- **Codex CLI:** `npm install -g @openai/codex`
+- **Claude Desktop / ChatGPT desktop:** opdater via appens indbyggede opdatering
+
+**`401 Unauthorized` efter login**
+
+Dit cachede token kan være udløbet. Fjern og tilføj serveren igen for at udløse et nyt login:
+
 ```bash
-codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
-codex mcp list
+# Claude Code
+claude mcp remove wink-inventory
+claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-### Cursor
-Cursor MCP-dokumenter: https://cursor.com/docs/context/mcp
-Opsætning: Tilføj fjernserver via MCP-indstillinger.
-```json
-{
-  "mcpServers": {
-    "wink-docs": {
-      "url": "https://docs.mcp.wink.travel/mcp",
-    }
-  }
-}
-```
+For Claude Desktop og ChatGPT, fjern serveren i indstillinger, genstart appen og tilføj den igen.
 
-### VS Code
-Officielle dokumenter: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Minimal fjernkonfiguration (bruger- eller arbejdsområde `mcp.json`):
-```json
-{
-  "servers": {
-    "wink-docs": {
-      "type": "http",
-      "url": "https://docs.mcp.wink.travel/mcp"
-    }
-  }
-}
-```
+**`403 Forbidden` ved kald til et specifikt værktøj**
 
-Tips:
-- Brug Command Palette: “MCP: List Servers” for at bekræfte forbindelse og gennemse værktøjer.
-- Værktøjsvælgeren lader dig aktivere/deaktivere `api_search` og `docs_search`.
-- Tilføj kontekst: Chat-visning → Tilføj kontekst → MCP Resources for at vedhæfte dokumentsider.
+Værktøjet kræver en scope, du ikke godkendte på samtykkeskærmen. Forbind serveren igen — samtykkeskærmen vises igen, og du kan godkende den manglende tilladelse.
 
-## Kerne Resource URIs
+**Serveren vises, men værktøjskald returnerer "account not found"**
 
-| URI | Beskrivelse |
-|-----|-------------|
-| `wink://docs` | Dokumentationsindeks (grupperet efter kategori) |
-| `wink://docs/{path}` | Specifik dokumentationsartikel (Markdown / MDX) |
-| `wink://api` | Live OpenAPI-katalog opdaget fra Winks swagger-konfiguration |
-| `wink://api/{apiName}` | Kompakt API-oversigt med autentificering, tags, headers og eksempeloperationer |
-| `wink://api/{apiName}/operations` | Fuld operationsliste grupperet efter tag |
-| `wink://api/{apiName}/operation/{key}` | Detaljer om individuel operation (parametre, anmodningskrop, svar) |
-| `wink://api/{apiName}/schema/{schemaName}` | Opløst komponent-skema med indlejrede felter, typer og eksempler |
-| `wink://api/{apiName}/operation/{key}/request` | Anmodningsfokuseret visning med nødvendige input og minimal eksempelpayload |
-| `wink://api/{apiName}/operation/{key}/response/{status}` | Svarfokuseret visning for en specifik statuskode |
-| `wink://api/{apiName}/operation/{key}/recipe` | Opgaveorienteret flow for korrekt kald af den operation |
+Du er logget ind på en Wink-konto uden en administrerende enhed. Gå til [Wink Portal](https://app.wink.travel) og sørg for, at din konto er opsat, før du bruger MCP-serveren.
 
-## Søgeværktøjer (Hurtig reference)
-| Værktøj | Formål | Typiske forespørgselseksempler |
-|---------|--------|-------------------------------|
-| `api_search` | Find live API eller operation til integration | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
-| `docs_search` | Find konceptuelle dokumenter / vejledninger | `authentication`, `webhooks`, `wordPress` |
+**Token udløber midt i sessionen**
 
-Efterlad `query` tom for at modtage forslag. Hvert resultat inkluderer MCP URI, som du kan åbne.
-For operationstræffere returnerer `api_search` også tilknyttede anmodnings-, svar-, skema- og opskrifts-URIs, så agenter kan hoppe direkte til den mest nyttige underressource.
+Tokens er gyldige i 3 timer. Claude Code og Claude Desktop opdaterer tokens stille uden at afbryde din session. Hvis du ser autentificeringsfejl efter lang inaktivitet, skriv en ny besked — klienten genautentificerer automatisk.
 
-## Typisk brugsmønster
-1. Kør `api_search` med din hensigt (f.eks. *"create affiliate"* eller *"payment receipt"*).
-2. Åbn den returnerede `wink://api/...` URI, eller følg dens tilknyttede `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` og `recipe_uri` felter.
-3. Brug `docs_search` til understøttende koncepter (autentificering, webhooks, workflows).
+**Codex CLI viser "MCP server unreachable"**
 
-## AI-færdigheder
+Tjek, at din `~/.codex/config.json` er gyldig JSON (ingen afsluttende kommaer) og at `"type": "http"` er sat. Codex kræver HTTP-transport for fjernservere; stdio-transport er kun til lokale binære filer.
 
-Forudbyggede agentfærdigheder bruger denne MCP-server som deres sandhedskilde. Færdigheder giver din kodningsagent en struktureret arbejdsgang til at bygge mod Wink API’er — i stedet for at gætte endpoints læser agenten de live kontrakter direkte fra MCP-serveren.
+**ChatGPT "Connectors"-menu mangler**
 
-Se [AI Skills](/da/developers/ai-skills) for tilgængelige færdigheder og installationsinstruktioner.
+MCP-support kræver ChatGPT desktop-app version **1.2024.352** eller nyere og et aktivt Plus-, Pro-, Team- eller Enterprise-abonnement. Opdater appen og tjek din plan under Indstillinger → Konto.
 
-## Noter
-- Hver returneret URI kan åbnes af agenten for fuldt indhold.
-- `wink://api`-træet er live og følger det aktuelle upstream OpenAPI-katalog i stedet for et genereret repo-indeks.
-- Forslag vises automatisk, når forespørgsler er tomme.
+**Cursor-server viser rød / "Failed to connect"**
 
+Tjek, at din `~/.cursor/mcp.json` er gyldig JSON og indeholder `"type": "http"`. Gå derefter til **Indstillinger → Cursor Settings → MCP** og klik på **Opdater**. Hvis fejlen fortsætter, genstart Cursor helt — konfigurationsændringer opfanges ikke altid uden genstart.
+
+**Windsurf MCP-servere vises ikke i indstillinger**
+
+Windsurf kræver fuld genstart (ikke kun genindlæsning af vindue) for at opfange ændringer i `mcp_config.json`. Brug **Fil → Afslut** og genstart. Hvis serverne stadig ikke vises, bekræft at du kører Windsurf **1.4+** via **Hjælp → Om Windsurf**.
+
+**Cline "Add Server"-mulighed er ikke synlig**
+
+MCP-servermanageren kræver Cline **2.0** eller nyere. Åbn VS Code Extensions-panelet, find Cline, og klik på **Opdater**, hvis en opdatering er tilgængelig. Efter opdatering, genindlæs VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+
+---
+
+<LinkButton href="https://app.wink.travel" variant="primary" icon="external">Åbn Wink Portal</LinkButton>
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink på GitHub</LinkButton>

@@ -1,127 +1,364 @@
 ---
-title: MCP szerver
-description: Gyorsan csatlakoztass AI ügynököket a Wink dokumentációhoz és élő OpenAPI specifikációkhoz a hosztolt MCP szerveren keresztül.
+title: MCP szerverek
+description: Csatlakoztassa az AI ügynököket a Wink platformhoz a Model Context Protocol segítségével. Az autentikált MCP szerverek közvetlen hozzáférést biztosítanak az ügynökének a készlethez, foglalásokhoz, csatornamenedzser integrációkhoz és még sok máshoz — interaktív OAuth2 bejelentkezéssel védve.
 sidebar:
   order: 10
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-## Áttekintés
-A hosztolt Wink MCP szerver elérhető itt:
+A Wink két autentikált MCP szervert kínál. Mindkettő **interaktív OAuth2 bejelentkezést** használ (PKCE engedélyezési kód folyamat) — az AI ügynöke megnyit egy böngészőfület, így bejelentkezhet Wink fiókjával. Nincs szükség kliens titkok kezelésére.
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+| Szerver | URL | Mit csinál |
+|--------|-----|------------|
+| **Inventory API** | `https://api.wink.travel/mcp` | Készlet, foglalások, árak, értékesítési csatornák, elemzések és az összes platform művelet |
+| **Integrations** | `https://integrations.wink.travel/mcp` | Csatornamenedzser integrációk — ingatlanok, árak és elérhetőség szinkronizálása OTA-kkal |
 
-Irányítsd a kompatibilis AI klienseket (VS Code, Cursor, mások, amelyek MCP HTTP transportot valósítanak meg) erre a végpontra, hogy:
-- Böngészhessék a termék- és platformdokumentációkat (`wink://docs/...`)
-- Böngészhessék az élő OpenAPI specifikációkat és műveleti dokumentációkat (`wink://api/...`)
-- Könnyű szemantikus / kulcsszavas keresést végezzenek a dokumentációk és élő API-k között
+---
 
-## Transport
-Használd az elsődleges streamelhető HTTP végpontot:
+## Hogyan működik az autentikáció
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+A Wink MCP szerverek a **OAuth2 Authorization Code + PKCE** folyamatot használják, és támogatják a **Dynamic Client Registration (RFC 7591)**-t. Így történik az első csatlakozáskor:
 
-Ha az ügyfeled csak SSE-t támogat, használd:
+1. Az AI kliens felfedezi az engedélyező szervert az MCP végpont `/.well-known/oauth-protected-resource` metaadataiból.
+2. A kliens önmagát regisztrálja a **Dynamic Client Registration** segítségével — nincs szükség kézi alkalmazásbeállításra.
+3. A kliens megnyit egy **böngészőfület** a `https://iam.wink.travel` címen. Bejelentkezik Wink fiókjával, és jóváhagyja a kért engedélyeket a hozzájárulási képernyőn.
+4. A Wink kiad egy **hozzáférési tokent**, amely a fiókjához van kötve és azonosítójához kapcsolódik.
+5. Az AI kliens minden MCP kéréshez csatolja a tokent. Minden eszköz eredménye automatikusan a kezelő entitásához van kötve.
+6. A tokenek 3 óra után lejárnak. Az AI kliens csendben frissíti őket a háttérben, újabb kérés nélkül.
 
-```
-https://docs.mcp.wink.travel/sse
-```
+Minden eszközhívás **az Ön azonosítója alatt fut** — ugyanazok az ACL szabályok érvényesek, amelyek a webportált védik az AI ügynökre is.
 
-### Claude Code
-Hivatalos dokumentáció: [Csatlakoztasd a Claude Code-ot eszközökhöz MCP-n keresztül](https://code.claude.com/docs/en/mcp)
+---
 
-Az Anthropic a távoli HTTP transportot ajánlja a felhőben hosztolt MCP szerverekhez:
+## Csatlakoztassa AI kliensét
+
+<Tabs>
+  <TabItem label="Claude Code">
+
+<Steps>
+1. Győződjön meg róla, hogy a Claude Code naprakész:
+   ```bash
+   npm install -g @anthropic-ai/claude-code
+   ```
+
+2. Adja hozzá a Wink Inventory MCP szervert:
+   ```bash
+   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   ```
+
+3. A Claude Code kapcsolatba lép a szerverrel, felfedezi az engedélyező szervert, és megnyitja az alapértelmezett böngészőt.
+
+4. **Jelentkezzen be Wink fiókjával** és hagyja jóvá az engedélykérést a hozzájárulási képernyőn.
+
+5. A Claude Code megerősíti a kapcsolatot. Írja be a `/mcp` parancsot, hogy ellenőrizze, megjelenik-e a szerver és betöltődtek-e az eszközök.
+</Steps>
+
+Az Integrations szerver hozzáadásához:
 ```bash
-claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
-claude mcp list
+claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
 ```
 
-A Claude Code-ban futtasd a `/mcp` parancsot a szerver állapotának megtekintéséhez. Ha az egész repóval meg akarod osztani a szervert, add hozzá a `--scope project` opciót, így a Claude Code a konfigurációt a `.mcp.json` fájlba írja.
+:::tip[Ossza meg csapatával]
+Adja hozzá a `--scope project` opciót a `claude mcp add` parancshoz, és a Claude Code a szerver URL-jét a `.mcp.json` fájlba írja a projekt gyökérkönyvtárában. Kötelezze el ezt a fájlt — minden csapattag az első csatlakozáskor saját böngészős bejelentkezést végez.
+:::
 
-### Codex
-Hivatalos dokumentáció: [Docs MCP gyorsindítás Codex-hez](https://developers.openai.com/resources/docs-mcp)
+  </TabItem>
+  <TabItem label="Claude Desktop">
 
-Az OpenAI a Codex CLI-n keresztül dokumentálja az MCP beállítást, és megjegyzi, hogy a konfiguráció megosztott az IDE kiterjesztéssel:
+<Steps>
+1. Szerkessze a Claude Desktop konfigurációs fájlt:
+   - **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+   - **Linux:** `~/.config/Claude/claude_desktop_config.json`
+
+2. Adja hozzá az MCP szerver bejegyzéseket:
+
+   ```json title="claude_desktop_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **Teljesen zárja be és indítsa újra** a Claude Desktopot (a menüsorban a Kilépés használatával — az ablak bezárása nem elég).
+
+4. A Claude Desktop minden új szerverhez megnyit egy böngészőfület. Jelentkezzen be Wink fiókjával és hagyja jóvá az engedélyeket.
+
+5. Az alsó eszköztáron a dugó ikon mindkét szervert csatlakoztatottnak mutatja.
+</Steps>
+
+  </TabItem>
+  <TabItem label="OpenAI Codex">
+
+<Steps>
+1. Győződjön meg róla, hogy a Codex CLI telepítve van:
+   ```bash
+   npm install -g @openai/codex
+   ```
+
+2. Nyissa meg (vagy hozza létre) a Codex konfigurációs fájlt:
+   - **macOS / Linux:** `~/.codex/config.json`
+   - **Windows:** `%USERPROFILE%\.codex\config.json`
+
+3. Adja hozzá a Wink MCP szerver bejegyzéseket:
+
+   ```json title="~/.codex/config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+4. Indítsa el a Codexet. Első használatkor a Codex megnyit egy böngészőfület a `https://iam.wink.travel` címen.
+
+5. **Jelentkezzen be Wink fiókjával** és hagyja jóvá a kért engedélyeket.
+
+6. A Codex megerősíti a kapcsolatot. Futtassa a `codex` parancsot, és kérje az elérhető eszközök listáját, hogy ellenőrizze a Wink szerverek aktívak-e.
+</Steps>
+
+:::note
+A Codex CLI MCP támogatásához a **1.0** vagy újabb verzió szükséges. Ellenőrizze a `codex --version` paranccsal, és frissítsen a `npm install -g @openai/codex` paranccsal.
+:::
+
+  </TabItem>
+  <TabItem label="ChatGPT">
+
+Az MCP szerver támogatás elérhető a **ChatGPT asztali alkalmazásban** Plus, Pro, Team és Enterprise előfizetők számára.
+
+<Steps>
+1. Töltse le és telepítse a [ChatGPT asztali alkalmazást](https://openai.com/chatgpt/download/), ha még nem tette meg.
+
+2. Nyissa meg az alkalmazást, kattintson a **profil ikonra** a jobb felső sarokban, majd válassza a **Beállítások** menüpontot.
+
+3. Menjen a **Csatlakozók** (vagy **MCP szerverek** az alkalmazás verziójától függően) részhez, és kattintson a **Hozzáadás** gombra.
+
+4. Adja meg a Wink Inventory szerver URL-jét:
+   ```
+   https://api.wink.travel/mcp
+   ```
+   Ezután kattintson a **Csatlakozás** gombra.
+
+5. A ChatGPT megnyit egy böngészőfület a `https://iam.wink.travel` címen. **Jelentkezzen be Wink fiókjával** és hagyja jóvá az engedélyeket.
+
+6. Ismételje meg a 4–5. lépéseket az Integrations szerverrel:
+   ```
+   https://integrations.wink.travel/mcp
+   ```
+
+7. Mindkét szerver megjelenik a Csatlakozók listájában. Indítson új beszélgetést — a Wink eszközök automatikusan elérhetők.
+</Steps>
+
+:::note[Webes alkalmazás korlátozás]
+Az MCP szerverek csak a **asztali alkalmazásban** konfigurálhatók. A ChatGPT webes felülete a chatgpt.com címen nem támogatja az egyedi MCP szervereket.
+:::
+
+  </TabItem>
+  <TabItem label="Cursor">
+
+<Steps>
+1. Nyissa meg (vagy hozza létre) a Cursor MCP konfigurációs fájlt:
+   - **macOS / Linux:** `~/.cursor/mcp.json`
+   - **Windows:** `%USERPROFILE%\.cursor\mcp.json`
+
+2. Adja hozzá a Wink MCP szerver bejegyzéseket:
+
+   ```json title="~/.cursor/mcp.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. Nyissa meg a Cursor-t. Menjen a **Beállítások → Cursor beállítások → MCP** részhez, és ellenőrizze, hogy mindkét szerver zöld státuszjelzővel jelenik meg. Ha pirosat mutatnak, kattintson a **Frissítés** gombra.
+
+4. A Cursor megnyit egy böngészőfület a `https://iam.wink.travel` címen. **Jelentkezzen be Wink fiókjával** és hagyja jóvá az engedélyeket.
+
+5. Nyisson meg egy csevegést (`Ctrl+L` / `Cmd+L`), és kérje meg a Cursor-t, hogy sorolja fel az elérhető Wink eszközöket a kapcsolat megerősítéséhez.
+</Steps>
+
+:::tip[Projekt szintű konfiguráció]
+Az `mcp.json` fájlt a projekt gyökerébe is elhelyezheti a `~/.cursor/` helyett. A projekt szintű konfiguráció elsőbbséget élvez, és elérhetővé teszi a szervereket minden csapattag számára, aki megnyitja a projektet a Cursorban.
+:::
+
+  </TabItem>
+  <TabItem label="Windsurf">
+
+<Steps>
+1. Nyissa meg (vagy hozza létre) a Windsurf MCP konfigurációs fájlt:
+   - **macOS / Linux:** `~/.codeium/windsurf/mcp_config.json`
+   - **Windows:** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
+
+2. Adja hozzá a Wink MCP szerver bejegyzéseket:
+
+   ```json title="~/.codeium/windsurf/mcp_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **Teljesen indítsa újra a Windsurföt** (Fájl → Kilépés, majd újraindítás).
+
+4. Menjen a **Beállítások → MCP szerverek** részhez, és ellenőrizze, hogy mindkét szerver csatlakoztatva van. A Windsurf az első használatkor megnyit egy böngészőfület a `https://iam.wink.travel` címen.
+
+5. **Jelentkezzen be Wink fiókjával** és hagyja jóvá az engedélyeket. A szerverek zöldre váltanak a beállítások panelen, ha hitelesítve vannak.
+</Steps>
+
+:::note
+A Windsurf MCP támogatásához a **1.4** vagy újabb verzió szükséges. Ellenőrizze a **Súgó → A Windsurf névjegye** menüpontban, és szükség esetén frissítsen a Windsurf weboldaláról.
+:::
+
+  </TabItem>
+  <TabItem label="Cline (VS Code)">
+
+A Cline egy VS Code kiterjesztés beépített MCP szerver kezelővel. Nem szükséges kézzel szerkeszteni a JSON fájlokat.
+
+<Steps>
+1. Telepítse a Cline-t a VS Code Marketplace-ből:
+   - Nyissa meg a VS Code-ot és nyomja meg a `Ctrl+Shift+X` / `Cmd+Shift+X` billentyűket
+   - Keressen rá a **Cline** kiterjesztésre, majd kattintson a **Telepítés** gombra
+
+2. Kattintson a **Cline ikonra** az Activity Bar-ban (bal oldali sáv) a Cline panel megnyitásához.
+
+3. Kattintson az **MCP szerverek** ikonra (dugó ikon) a Cline eszköztáron, majd válassza az **MCP beállítások szerkesztése** lehetőséget.
+
+4. A VS Code megnyitja a `cline_mcp_settings.json` fájlt. Adja hozzá a Wink bejegyzéseket:
+
+   ```json title="cline_mcp_settings.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+5. **Mentse el a fájlt.** A Cline automatikusan újratölt, és megnyit egy böngészőfület a `https://iam.wink.travel` címen.
+
+6. **Jelentkezzen be Wink fiókjával** és hagyja jóvá az engedélyeket. Mindkét szerver aktívként jelenik meg az MCP szerverek panelen.
+</Steps>
+
+:::tip[Alternatív megoldás: URL alapján hozzáadás]
+Az MCP szerverek panelen kattintson a **Szerver hozzáadása** gombra, és illessze be közvetlenül a `https://api.wink.travel/mcp` címet. A Cline automatikusan kitölti a konfigurációt és kezeli az autentikációt anélkül, hogy kézzel kellene szerkeszteni a JSON-t.
+:::
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Jogosultsági körök (scope) áttekintése
+
+A hozzájárulási képernyőn látható lesz, hogy az ügynök milyen jogosultságokat kér. A Wink funkcionális területek szerint csoportosítja az engedélyeket:
+
+| Jogosultsági csoport | Jogosultságok | Mit engedélyeznek |
+|----------------------|---------------|-------------------|
+| **MCP transport** | `mcp.read` `mcp.write` `mcp.remove` | Szükséges bármely MCP szerverhez való csatlakozáshoz |
+| **Fiók** | `account.read` `account.write` `account.remove` | Kezelő entitások, csapattagok, beállítások, alkalmazások |
+| **Foglalás** | `booking.read` `booking.write` `booking.remove` | Foglalások keresése, megtekintése, létrehozása, törlése és visszatérítése |
+| **Készlet** | `inventory.read` `inventory.write` `inventory.remove` | Ingatlanok, szobák, árak, szolgáltatások, elérhetőség |
+| **Elemzés** | `analytics.read` | Foglalási elemzések, bevételi jelentések, ranglisták |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Közösségi posztok, kampányok, értékesítési csatornák, promóciók |
+| **Tartalom** | `content.read` `content.write` `content.remove` | Multimédia, rövidített URL-ek, szindikálható elemek, térképek |
+| **Fizetés** | `payment.read` `payment.write` | Főkönyv, kifizetések, pénzügyi bontások, kifizetések |
+
+Az AI kliens csak a szükséges jogosultságokat kéri. Egyéni engedélyeket megtagadhat a hozzájárulási képernyőn — az eszközök, amelyekhez megtagadott jogosultság szükséges, hibát adnak vissza híváskor.
+
+---
+
+## Hibakeresés
+
+**Nem nyílik meg a böngészőfül**
+
+Lehet, hogy az AI kliens még nem támogatja az interaktív PKCE folyamatot. Ellenőrizze, hogy a legfrissebb verziót használja:
+- **Claude Code:** `npm install -g @anthropic-ai/claude-code`
+- **Codex CLI:** `npm install -g @openai/codex`
+- **Claude Desktop / ChatGPT asztali:** frissítse az alkalmazás beépített frissítőjével
+
+**`401 Unauthorized` bejelentkezés után**
+
+A gyorsítótárazott token lejárt. Távolítsa el, majd adja hozzá újra a szervert, hogy friss bejelentkezést indítson:
+
 ```bash
-codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
-codex mcp list
+# Claude Code
+claude mcp remove wink-inventory
+claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-### Cursor
-Cursor MCP dokumentáció: https://cursor.com/docs/context/mcp
-Beállítás: Távoli szerver hozzáadása az MCP beállításokban.
-```json
-{
-  "mcpServers": {
-    "wink-docs": {
-      "url": "https://docs.mcp.wink.travel/mcp",
-    }
-  }
-}
-```
+Claude Desktop és ChatGPT esetén távolítsa el a szerver bejegyzést a beállításokból, indítsa újra az alkalmazást, majd adja hozzá újra.
 
-### VS Code
-Hivatalos dokumentáció: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Minimális távoli konfiguráció (felhasználói vagy munkaterületi `mcp.json`):
-```json
-{
-  "servers": {
-    "wink-docs": {
-      "type": "http",
-      "url": "https://docs.mcp.wink.travel/mcp"
-    }
-  }
-}
-```
+**`403 Forbidden` egy adott eszköz hívásakor**
 
-Tippek:
-- Használd a Parancspalettát: „MCP: List Servers” a kapcsolat megerősítéséhez és az eszközök böngészéséhez.
-- Az eszközválasztóval engedélyezheted/tilthatod az `api_search` és `docs_search` funkciókat.
-- Kontextus hozzáadása: Csevegő nézet → Kontextus hozzáadása → MCP erőforrások a dokumentációs oldalak csatolásához.
+Az eszköz olyan jogosultságot igényel, amelyet nem hagyott jóvá a hozzájárulási képernyőn. Csatlakoztassa újra a szervert — a hozzájárulási képernyő újra megjelenik, és jóváhagyhatja a hiányzó engedélyt.
 
-## Alapvető erőforrás URI-k
+**A szerver megjelenik, de az eszköz hívások "account not found" hibát adnak**
 
-| URI | Leírás |
-|-----|-------------|
-| `wink://docs` | Dokumentáció index (kategóriák szerint csoportosítva) |
-| `wink://docs/{path}` | Egy adott dokumentációs cikk (Markdown / MDX) |
-| `wink://api` | Élő OpenAPI katalógus, amely a Wink swagger konfigurációból származik |
-| `wink://api/{apiName}` | Kompakt API összefoglaló hitelesítéssel, címkékkel, fejlécekkel és mintaműveletekkel |
-| `wink://api/{apiName}/operations` | Teljes műveleti lista címkék szerint csoportosítva |
-| `wink://api/{apiName}/operation/{key}` | Egyedi művelet részletei (paraméterek, kérés törzse, válaszok) |
-| `wink://api/{apiName}/schema/{schemaName}` | Feloldott komponens séma beágyazott mezőkkel, típusokkal és példákkal |
-| `wink://api/{apiName}/operation/{key}/request` | Kérés-központú nézet a szükséges bemenetekkel és minimális példa payloaddal |
-| `wink://api/{apiName}/operation/{key}/response/{status}` | Válasz-központú nézet egy adott státuszkódhoz |
-| `wink://api/{apiName}/operation/{key}/recipe` | Feladatorientált folyamat a művelet helyes meghívásához |
+Olyan Wink fiókkal van bejelentkezve, amelyhez nincs kezelő entitás rendelve. Látogasson el a [Wink Portálra](https://app.wink.travel), és győződjön meg róla, hogy a fiókja megfelelően be van állítva az MCP szerver használata előtt.
 
-## Keresőeszközök (Gyors referencia)
-| Eszköz | Cél | Tipikus lekérdezési példák |
-|------|---------|-----------------------|
-| `api_search` | Megtalálni az élő API-t vagy műveletet az integrációhoz | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
-| `docs_search` | Megtalálni koncepcionális dokumentációkat / útmutatókat | `authentication`, `webhooks`, `wordPress` |
+**A token lejár a munkamenet közben**
 
-Hagyd üresen a `query` mezőt, hogy javaslatokat kapj. Minden eredmény tartalmazza az MCP URI-t, amit megnyithatsz.
-Műveleti találatok esetén az `api_search` visszaadja a kapcsolódó kérés, válasz, séma és recept URI-kat is, így az ügynökök közvetlenül a legfontosabb al-erőforrásokra ugorhatnak.
+A tokenek 3 óráig érvényesek. A Claude Code és Claude Desktop csendben frissíti a tokeneket megszakítás nélkül. Ha hosszú tétlenség után hitelesítési hibákat tapasztal, írjon be egy új üzenetet — a kliens automatikusan újra hitelesít.
 
-## Tipikus használati minta
-1. Futtasd az `api_search`-t a szándékoddal (pl. *"create affiliate"* vagy *"payment receipt"*).
-2. Nyisd meg a visszakapott `wink://api/...` URI-t, vagy kövesd a hozzá kapcsolódó `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` és `recipe_uri` mezőket.
-3. Használd a `docs_search`-t a támogató fogalmakhoz (hitelesítés, webhookok, munkafolyamatok).
+**Codex CLI "MCP server unreachable" hibát jelez**
 
-## AI képességek
+Ellenőrizze, hogy a `~/.codex/config.json` érvényes JSON (nincs utolsó vessző), és hogy a `"type": "http"` beállítás szerepel. A Codex távoli szerverekhez HTTP transportot igényel; a stdio transport csak helyi binárisokhoz használható.
 
-Az előre elkészített ügynöki képességek ezt az MCP szervert használják igazságforrásként. A képességek strukturált munkafolyamatot adnak a kódoló ügynöködnek a Wink API-k használatához — ahelyett, hogy találgatna a végpontokat illetően, az ügynök közvetlenül az MCP szerverről olvassa az élő szerződéseket.
+**ChatGPT "Csatlakozók" menü hiányzik**
 
-Lásd az [AI Skills](/hu/developers/ai-skills) oldalt a rendelkezésre álló képességekért és telepítési útmutatókért.
+Az MCP támogatáshoz a ChatGPT asztali alkalmazás **1.2024.352** vagy újabb verziója szükséges, valamint aktív Plus, Pro, Team vagy Enterprise előfizetés. Frissítse az alkalmazást, és ellenőrizze előfizetését a Beállítások → Fiók menüpontban.
 
-## Megjegyzések
-- Minden visszakapott URI megnyitható az ügynök által a teljes tartalom eléréséhez.
-- A `wink://api` fa élő, és a jelenlegi upstream OpenAPI katalógust követi, nem egy generált repó indexet.
-- Javaslatok automatikusan megjelennek, ha a lekérdezés üres.
+**Cursor szerver piros / "Csatlakozás sikertelen"**
 
+Ellenőrizze, hogy a `~/.cursor/mcp.json` érvényes JSON és tartalmazza a `"type": "http"` beállítást. Ezután menjen a **Beállítások → Cursor beállítások → MCP** részhez, és kattintson a **Frissítés** gombra. Ha a hiba továbbra is fennáll, indítsa újra teljesen a Cursor-t — a konfigurációs változtatásokat nem mindig veszi észre újraindítás nélkül.
+
+**Windsurf MCP szerverek nem jelennek meg a beállításokban**
+
+A Windsurf teljes újraindítást igényel (nem elég az ablak újratöltése) az `mcp_config.json` változások észleléséhez. Használja a **Fájl → Kilépés** menüpontot, majd indítsa újra. Ha a szerverek még mindig nem jelennek meg, ellenőrizze, hogy Windsurf **1.4+** verziót használ a **Súgó → A Windsurf névjegye** menüpontban.
+
+**Cline "Szerver hozzáadása" opció nem látható**
+
+Az MCP szerver kezelőhöz Cline **2.0** vagy újabb verzió szükséges. Nyissa meg a VS Code Kiterjesztések panelt, keresse meg a Cline-t, és kattintson a **Frissítés** gombra, ha elérhető. Frissítés után töltse újra a VS Code-ot (`Ctrl+Shift+P` → "Developer: Reload Window").
+
+---
+
+<LinkButton href="https://app.wink.travel" variant="primary" icon="external">Wink Portál megnyitása</LinkButton>
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink a GitHubon</LinkButton>
