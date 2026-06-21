@@ -2,6 +2,8 @@
 
 Changelog of docs.
 
+## v0.1.3 (2026-06-16)
+
 ## v0.1.2 (2026-06-13)
 
 ### Bug Fixes
