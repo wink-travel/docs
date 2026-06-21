@@ -1,7 +1,8 @@
 ---
+type LogoItem = { src: string; scale?: number; opacity?: number };
 interface Props {
   kicker?: string;
-  logos?: string[];
+  logos?: (string | LogoItem)[];
   count?: number;
 }
 
@@ -15,7 +16,7 @@ const labelFromSrc = (src: string) =>
     .replace(/[-_]+/g, " ")
     .replace(/\b\w/g, (c) => c.toUpperCase())
     .trim();
-const items: (string | number)[] = usePlaceholders
+const items: (string | number | LogoItem)[] = usePlaceholders
   ? Array.from({ length: count }, (_, i) => i)
   : logos;
 ---
@@ -35,13 +36,19 @@ const items: (string | number)[] = usePlaceholders
               </li>
             ) : (
               <li class="flex h-24 w-44 shrink-0 items-center justify-center rounded-xl border border-border bg-white p-5 shadow-sm">
-                <img
-                  src={it as string}
-                  alt={labelFromSrc(it as string)}
-                  class="max-h-full max-w-full object-contain grayscale opacity-75 transition duration-200 hover:opacity-100"
-                  loading="lazy"
-                  decoding="async"
-                />
+                {(() => {
+                  const L: LogoItem = typeof it === "string" ? { src: it } : (it as LogoItem);
+                  return (
+                    <img
+                      src={L.src}
+                      alt={labelFromSrc(L.src)}
+                      class="max-h-full max-w-full object-contain grayscale"
+                      style={`opacity:${L.opacity ?? 0.75}${L.scale ? `;transform:scale(${L.scale})` : ""}`}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  );
+                })()}
               </li>
             )
           )}
