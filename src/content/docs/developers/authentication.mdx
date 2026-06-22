@@ -61,6 +61,48 @@ When you make a call to any of our endpoints, include the following in the heade
 - `Wink-Version` = `2.0` Latest - *See our API docs for other available versions.*
 - `Authorization` = `Bearer ${access_token}` *Insert your access token.*
 
+## Scopes
+
+A **scope** is a permission your access token carries. When you request a token, you pass a
+space-delimited list of scopes in the `scope` parameter, and the token can only reach the areas
+those scopes cover. With the `client_credentials` grant you set the scopes on your token request —
+see the [`curl`](#staging) examples above and the [Postman walkthrough](/developers/setup#postman).
+
+Scopes are named `section.action`, where the action is one of:
+
+- `read` — view resources (safe `GET` requests)
+- `write` — create and update resources (`POST` / `PUT` / `PATCH`)
+- `remove` — delete resources (`DELETE`)
+
+Wink groups permissions by functional area. Request only the scopes your integration needs:
+
+| Scope group | Scopes | What they unlock | Risk |
+|-------------|--------|------------------|------|
+| **Account** | `account.read` `account.write` `account.remove` | Managing entities, team members, settings, applications | Low–Medium |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Properties, room-types, rate-plans, rates, add-ons, availability, activities, attractions | Low–Medium |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Search, view, create, cancel, and refund bookings; checkout; cancellation policies | Low–Medium |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Campaigns, perks, sales channels, WinkLinks, managed social, loyalty | Low–Medium |
+| **Content** | `content.read` `content.write` `content.remove` | Property descriptions, reviews, media, maps, green-index | Low–Medium |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Reporting and analytics — revenue, leaderboards | Low–Medium |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Channel managers, external booking systems, Google Hotel, notification endpoints, booking sync | Low–Medium |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Payment processing, Stripe, Revolut, payouts, subscriptions | Medium–High |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Accounting, withdrawal ledger, reconciliation | Medium–High |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Opens the [MCP transport](/developers/mcp) (`/mcp`) for AI agents | Low–Medium |
+
+:::note
+The **Risk** column reflects sensitivity: `read` is the lower end and `write`/`remove` the higher
+end. **Payment** and **Accounting** guard money movement, so they carry elevated risk.
+:::
+
+A few things to keep in mind:
+
+- **Request the minimum.** Ask only for the scopes your integration actually uses — a token issued
+  with broader access than necessary is a larger blast radius if leaked.
+- **Unknown scopes are rejected.** Requesting a scope your application isn't registered for, or one
+  that doesn't exist, fails at token issuance.
+- **`mcp.*` is only for AI-agent clients.** You need it to open the MCP transport; it isn't required
+  for regular REST API calls. See [Model Context Protocol](/developers/mcp).
+
 :::tip
 You can test all our APIs without writing a single line of code before getting started.
 
