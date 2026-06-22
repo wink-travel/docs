@@ -1,6 +1,6 @@
 ---
 title: Hitelesítés
-description: Tudja meg, hogyan hitelesítsen a Wink OAuth2 engedélyezési szerverével.
+description: Ismerje meg, hogyan hitelesíthet a Wink OAuth2 engedélyezési szerverével.
 sidebar:
   order: 2
 ---
@@ -15,13 +15,13 @@ A Wink IAM hitelesítési szerver támogatja a szokásos OAuth2 végpontokat:
 - /oauth2/userinfo
 :::
 
-Egy alkalmazás biztosít Önnek egy `Client ID`-t és `Secret Key`-t, amelyre szüksége van egy hitelesített OAuth2 munkamenet létrehozásához, amelyet a Wink és TripPay API-k kommunikációjához használhat.
+Egy alkalmazás biztosít Önnek egy `Client ID`-t és egy `Secret Key`-t, amelyekre szüksége van egy hitelesített OAuth2 munkamenet létrehozásához, amelyet a Wink és TripPay API-k kommunikációjához használhat.
 
 Íme a lépések egy hitelesített munkamenet létrehozásához.
 
-**1. lépés**. Szerezzen be egy hozzáférési tokent a staging vagy a termelési környezetünkben:
+**1. lépés**. Szerezzen hozzáférési tokent a staging vagy a termelési környezetünkben:
 
-Valószínűleg egy robusztus OAuth2 könyvtárral fog dolgozni a nyelvéhez, amely elvégzi az összes nehéz munkát az Ön számára.
+Valószínűleg egy robusztus OAuth2 könyvtárral fog dolgozni a nyelvéhez, amely elvégzi az összes nehéz munkát.
 Példáink a legegyszerűbb használatot mutatják be parancssorból `curl` segítségével.
 
 ### Staging
@@ -56,13 +56,49 @@ Ez visszaad egy hozzáférési tokent, valamint más OAuth2 válaszadatokat:
 }
 ```
 
-Amikor bármelyik végpontunkat hívja, a fejlécben tartalmazza a következőket:
+Amikor bármelyik végpontunkhoz hívást intéz, a fejlécben tartalmazza a következőket:
 
 - `Wink-Version` = `2.0` Legfrissebb - *Lásd API dokumentációnkat a többi elérhető verzióért.*
 - `Authorization` = `Bearer ${access_token}` *Illessze be a hozzáférési tokenjét.*
 
+## Jogosultsági körök (Scopes)
+
+Egy **scope** egy engedély, amelyet a hozzáférési token hordoz. Amikor tokent kér, egy szóközzel elválasztott scopes listát ad meg a `scope` paraméterben, és a token csak azokat a területeket érheti el, amelyeket ezek a scopes lefednek. A `client_credentials` grant esetén a scopes-t a token kérésénél állítja be — lásd a fenti [`curl`](#staging) példákat és a [Postman bemutatót](/hu/developers/setup#postman).
+
+A scopes neve `section.action` formátumú, ahol az action az alábbiak egyike:
+
+- `read` — erőforrások megtekintése (biztonságos `GET` kérések)
+- `write` — erőforrások létrehozása és frissítése (`POST` / `PUT` / `PATCH`)
+- `remove` — erőforrások törlése (`DELETE`)
+
+A Wink funkcionális területek szerint csoportosítja a jogosultságokat. Csak azokat a scopes-t kérje, amelyekre az integrációjának szüksége van:
+
+| Jogosultsági csoport | Jogosultságok | Mit engednek | Kockázat |
+|----------------------|---------------|--------------|----------|
+| **Fiók** | `account.read` `account.write` `account.remove` | Entitások, csapattagok, beállítások, alkalmazások kezelése | Alacsony–Közepes |
+| **Készlet** | `inventory.read` `inventory.write` `inventory.remove` | Ingatlanok, szobatípusok, ártervek, árak, kiegészítők, elérhetőség, tevékenységek, látnivalók | Alacsony–Közepes |
+| **Foglalás** | `booking.read` `booking.write` `booking.remove` | Foglalások keresése, megtekintése, létrehozása, törlése és visszatérítése; fizetés; lemondási szabályzatok | Alacsony–Közepes |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Kampányok, kedvezmények, értékesítési csatornák, WinkLinks, kezelt közösségi média, hűségprogram | Alacsony–Közepes |
+| **Tartalom** | `content.read` `content.write` `content.remove` | Ingatlanleírások, értékelések, média, térképek, zöld-index | Alacsony–Közepes |
+| **Elemzés** | `analytics.read` `analytics.write` `analytics.remove` | Jelentések és elemzések — bevétel, ranglisták | Alacsony–Közepes |
+| **Integrációk** | `integrations.read` `integrations.write` `integrations.remove` | Csatornamenedzserek, külső foglalási rendszerek, Google Hotel, értesítési végpontok, foglalás szinkronizálás | Alacsony–Közepes |
+| **Fizetés** | `payment.read` `payment.write` `payment.remove` | Fizetésfeldolgozás, Stripe, Revolut, kifizetések, előfizetések | Közepes–Magas |
+| **Könyvelés** | `accounting.read` `accounting.write` `accounting.remove` | Könyvelés, kifizetési napló, egyeztetés | Közepes–Magas |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Megnyitja az [MCP transportot](/hu/developers/mcp) (`/mcp`) AI ügynökök számára | Alacsony–Közepes |
+
+:::note
+A **Kockázat** oszlop az érzékenységet tükrözi: a `read` az alacsonyabb szint, míg a `write`/`remove` a magasabb.
+A **Fizetés** és **Könyvelés** pénzmozgást kezel, ezért magasabb kockázatot hordoz.
+:::
+
+Néhány dolog, amit érdemes szem előtt tartani:
+
+- **Kérje a minimumot.** Csak azokat a scopes-t kérje, amelyeket az integrációja ténylegesen használ — egy szélesebb hozzáféréssel kiadott token nagyobb kockázatot jelent, ha kiszivárog.
+- **Ismeretlen scopes elutasításra kerülnek.** Ha olyan scope-ot kér, amelyhez az alkalmazása nincs regisztrálva, vagy amely nem létezik, a token kiadása sikertelen lesz.
+- **`mcp.*` csak AI-ügynök klienseknek szól.** Szükséges az MCP transport megnyitásához; nem kötelező a szokásos REST API hívásokhoz. Lásd a [Model Context Protocol](/hu/developers/mcp) dokumentációt.
+
 :::tip
-Minden API-nkat tesztelheti anélkül, hogy egyetlen kódsort is írna, mielőtt elkezdené.
+Minden API-nkat tesztelheti anélkül, hogy egyetlen sort is kódolna, mielőtt elkezdené.
 
 Szerezzen be egy 'Client ID'-t és 'Secret Key'-t valamelyik alkalmazásából, majd navigáljon bármelyik [API-nkhoz](/hu/api).
 :::

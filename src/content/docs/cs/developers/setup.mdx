@@ -13,21 +13,21 @@ Tento článek vám ukáže, jak se rychle nastavit jako vývojář a začít te
 :::note
 Testování by mělo vždy probíhat v našem [staging prostředí](/cs/getting-started/environments). Je tam mnohem méně dat, ale můžete testovat, kolik chcete, aniž byste zasahovali do produkčního prostředí.
 
-Jakmile budete připraveni spustit produkci, certifikujeme váš účet a vaši aplikaci a můžete spustit v našem produkčním prostředí.
+Jakmile budete připraveni spustit produkci, ověříme váš účet a vaši aplikaci a můžete spustit v našem produkčním prostředí.
 :::
 
 Postupujte podle těchto kroků:
 
 <Steps>
-1. [Zaregistrujte se](/cs/account/register) jako uživatel na Wink.
-2. [Vytvořte partnerský účet](/cs/portal/create-account). Budete ho potřebovat k navázání vaší aplikace. Více informací najdete v [co je Studio](/cs/portal/studio/what-is-studio).
-3. [Vytvořte aplikaci](/cs/portal/settings/applications) a přiřaďte ji k partnerskému účtu, který jste vytvořili v kroku 2. Pro server-to-server API integrace vyberte jako typ klienta **MACHINE_2_MACHINE**.
-4. Jakmile vytvoříte svou `Application`, ihned si zkopírujte a uložte client-id a tajný klíč — tajný klíč je zobrazen pouze jednou a nelze ho znovu získat.
+1. [Zaregistrujte](/cs/account/register) si uživatelský účet na Wink.
+2. [Vytvořte affiliate účet](/cs/portal/create-account). Budete ho potřebovat k navázání vaší aplikace. Více informací najdete v [co je Studio](/cs/portal/studio/what-is-studio).
+3. [Vytvořte aplikaci](/cs/portal/settings/applications) a přiřaďte ji k affiliate účtu, který jste vytvořili v kroku 2. Pro server-to-server API integrace vyberte jako typ klienta **MACHINE_2_MACHINE**.
+4. Jakmile vytvoříte `Application`, ihned si zkopírujte a uložte client-id a secret key — tajný klíč je zobrazen pouze jednou a nelze ho znovu získat.
 </Steps>
 
 ## CDN
 
-Ve Wink používáme Cloudinary pro všechny naše obrazové a video zdroje. Když přistupujete k našemu cestovnímu inventáři, máte plný přístup ke všem pokročilým funkcím Cloudinary.
+Ve Wink používáme Cloudinary pro všechny naše obrazové a video zdroje. Když přistupujete k naší cestovní nabídce, máte plný přístup ke všem pokročilým funkcím Cloudinary.
 
 Naše `cloud_name` je  `traveliko`.
 
@@ -40,7 +40,7 @@ Naše `cloud_name` je  `traveliko`.
 
 ### Příklad
 
-Pro každý typ cestovního inventáře, který podporujeme, existuje vnořený JSON pole s názvem `multimedias`. JSON pro položku multimedia vypadá takto:
+Pro každý typ cestovní nabídky, který podporujeme, existuje vnořený JSON pole s názvem `multimedias`. JSON pro položku multimedia vypadá takto:
 
 ```json {3}
 {
@@ -75,12 +75,12 @@ Přejděte do naší sekce [API](/cs/api) a vyberte API, se kterým chcete praco
 
 ### Dokumentace API
 
-Naše dokumentační stránka je nastavena tak, že můžete spouštět API příkazy přímo ze stránky.
+Naše dokumentace je nastavena tak, že můžete spouštět API příkazy přímo ze stránky.
 
 V tomto příkladu chcete použít volání API `Search Lookups (OAuth2)`.
 
 :::tip[Pro tip]
-Pro snadnější použití doporučujeme integrátorům používat koncové body označené jako `OAuth2`. Tyto koncové body očekávají volající API a už vědí, na kterém účtu jste, takže nemusíte uvádět `companyIdentifier` v URL.
+Pro snadnější použití doporučujeme integrátorům používat endpointy označené jako `OAuth2`. Tyto endpointy očekávají volající API a už vědí, na kterém účtu jste, takže nemusíte uvádět `companyIdentifier` v URL.
 :::
 
 <Steps>
@@ -110,8 +110,8 @@ Totéž můžete udělat i v Postmanu.
 <Steps>
 1. Stáhněte si [Postman](https://www.postman.com/downloads).
 2. Klikněte na `Download OpenAPI spec` v horní části stránky [Lookup API](https://developer.wink.travel/lookup).
-3. Importujte to do Postmanu.
-4. Pokud jste to importovali jako novou kolekci s názvem `Wink API`, klikněte na horizontální elipsu (3 tečky) vedle názvu kolekce a zvolte `Edit`.
+3. Importujte ho do Postmanu.
+4. Pokud jste ho importovali jako novou kolekci s názvem `Wink API`, klikněte na horizontální elipsu (3 tečky) vedle názvu kolekce a zvolte `Edit`.
 5. V záložce `Authorization` nastavte `Auth type` na OAuth2.
 6. Nastavte pole `Add auth data to` na `Request headers`.
 7. Nastavte pole `Header prefix` na `Bearer`.
@@ -120,12 +120,12 @@ Totéž můžete udělat i v Postmanu.
 10. Nastavte pole `Access token URL` na https://staging-iam.wink.travel/oauth2/token.
 11. Nastavte pole `Client ID` na Client ID, které vám aplikace pomohla vygenerovat.
 12. Nastavte pole `Client Secret` na Client Secret, které vám aplikace pomohla vygenerovat.
-13. Nastavte pole `Scope` na `inventory.read inventory.write inventory.remove`. To jsou všechny rozsahy, které pro Wink potřebujete.
+13. Nastavte pole `Scope` na mezery oddělené rozsahy, které vaše integrace potřebuje (např. `inventory.read inventory.write inventory.remove`). Kompletní seznam najdete v [referenci scope](/cs/developers/authentication#scopes).
 14. Nastavte pole `Client Authentication` na `Send as Basic Auth header`.
 15. Klikněte na tlačítko `Get New Access Token` pro získání tokenu a jeho uložení.
 16. U všech API volání v kolekci Wink API se ujistěte, že záložka autorizace říká `Inherit auth from parent`, aby se token přidal ke každému volání.
 </Steps>
 
 :::tip[Pro tip]
-Doporučuje se nastavit doménu serveru, client ID a client secret jako proměnné prostředí. Díky tomu můžete snadno přepínat mezi staging a produkčním prostředím a znovu používat všechny vytvořené operace.
+Doporučujeme nastavit doménu serveru, client ID a client secret jako proměnné prostředí. Díky tomu můžete snadno přepínat mezi staging a produkčním prostředím a znovu používat všechny vytvořené operace.
 :::

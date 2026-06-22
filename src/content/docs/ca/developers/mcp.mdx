@@ -1,13 +1,13 @@
 ---
 title: Servidors MCP
-description: Connecta agents d'IA a la plataforma Wink mitjançant el Model Context Protocol. Els servidors MCP autenticats donen al teu agent accés directe a l'inventari, reserves, integracions amb gestors de canals i més, tot assegurat amb un inici de sessió interactiu OAuth2.
+description: Connecta agents d'IA a la plataforma Wink mitjançant el Model Context Protocol. Els servidors MCP autenticats donen accés directe al teu agent a l'inventari, reserves, integracions amb gestors de canals i més, tot assegurat amb un inici de sessió interactiu OAuth2.
 sidebar:
   order: 10
 ---
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Wink exposa dos servidors MCP autenticats. Ambdós utilitzen **inici de sessió interactiu OAuth2** (flux de codi d'autorització PKCE): el teu agent d'IA obre una pestanya del navegador perquè signin amb el teu compte Wink. No cal gestionar secrets de client.
+Wink exposa dos servidors MCP autenticats. Tots dos utilitzen **inici de sessió interactiu OAuth2** (flux d'autorització amb codi PKCE): el teu agent d'IA obre una pestanya del navegador perquè signin amb el teu compte Wink. No cal gestionar secrets de client.
 
 | Servidor | URL | Què fa |
 |--------|-----|--------------|
@@ -21,10 +21,10 @@ Wink exposa dos servidors MCP autenticats. Ambdós utilitzen **inici de sessió 
 Els servidors MCP de Wink utilitzen el flux **OAuth2 Authorization Code + PKCE** i suporten **Dynamic Client Registration (RFC 7591)**. Això és el que passa quan et connectes per primera vegada:
 
 1. El client d'IA descobreix el servidor d'autorització a partir de les metadades `/.well-known/oauth-protected-resource` de l'endpoint MCP.
-2. El client es registra automàticament mitjançant **Dynamic Client Registration** — no cal configurar l'aplicació manualment.
+2. El client es registra automàticament mitjançant **Dynamic Client Registration** — no cal configurar manualment l'aplicació.
 3. El client obre una **pestanya del navegador** a `https://iam.wink.travel`. Inicies sessió amb el teu compte Wink i aproves els permisos sol·licitats a la pantalla de consentiment.
 4. Wink emet un **token d'accés** vinculat al teu compte i a la teva identitat.
-5. El client d'IA adjunta el token a cada petició MCP. Tots els resultats d'eines es limiten automàticament a la teva entitat gestora.
+5. El client d'IA adjunta el token a cada petició MCP. Tots els resultats de les eines es limiten automàticament a la teva entitat gestora.
 6. Els tokens caduquen després de 3 hores. El client d'IA els renova silenciosament en segon pla sense tornar a demanar inici de sessió.
 
 Cada crida a una eina s'executa **amb la teva identitat** — s'apliquen les mateixes regles ACL que protegeixen el portal web.
@@ -42,7 +42,7 @@ Cada crida a una eina s'executa **amb la teva identitat** — s'apliquen les mat
    npm install -g @anthropic-ai/claude-code
    ```
 
-2. Afegeix el servidor MCP Inventory de Wink:
+2. Afegeix el servidor MCP d'Inventari de Wink:
    ```bash
    claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
    ```
@@ -51,10 +51,10 @@ Cada crida a una eina s'executa **amb la teva identitat** — s'apliquen les mat
 
 4. **Inicia sessió a Wink** i aprova la sol·licitud de permisos a la pantalla de consentiment.
 
-5. Claude Code confirma la connexió. Escriu `/mcp` per verificar que el servidor apareix i que les seves eines s'han carregat.
+5. Claude Code confirma la connexió. Escriu `/mcp` per verificar que el servidor apareix i que les eines s'han carregat.
 </Steps>
 
-Per afegir també el servidor Integrations:
+Per afegir també el servidor d'Integracions:
 ```bash
 claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
 ```
@@ -89,7 +89,7 @@ Afegeix `--scope project` a `claude mcp add` i Claude Code escriurà la URL del 
    }
    ```
 
-3. **Tanca completament i reinicia** Claude Desktop (fes servir Quit des de la barra de menú — només tancar la finestra no és suficient).
+3. **Tanca completament i reinicia** Claude Desktop (fes servir Quit al menú — només tancar la finestra no és suficient).
 
 4. Claude Desktop obre una pestanya del navegador per a cada servidor nou. Inicia sessió a Wink i aprova els permisos.
 
@@ -149,7 +149,7 @@ El suport per a servidors MCP està disponible a l'**aplicació d'escriptori Cha
 
 3. Ves a **Connectors** (o **Servidors MCP** segons la versió de l'aplicació) i fes clic a **Afegeix**.
 
-4. Introdueix la URL del servidor Inventory de Wink:
+4. Introdueix la URL del servidor d'Inventari de Wink:
    ```
    https://api.wink.travel/mcp
    ```
@@ -157,7 +157,7 @@ El suport per a servidors MCP està disponible a l'**aplicació d'escriptori Cha
 
 5. ChatGPT obre una pestanya del navegador a `https://iam.wink.travel`. **Inicia sessió a Wink** i aprova els permisos.
 
-6. Repeteix els passos 4–5 per al servidor Integrations:
+6. Repeteix els passos 4–5 per al servidor d'Integracions:
    ```
    https://integrations.wink.travel/mcp
    ```
@@ -198,7 +198,7 @@ Els servidors MCP només es poden configurar a l'**aplicació d'escriptori**. La
 
 4. Cursor obre una pestanya del navegador a `https://iam.wink.travel`. **Inicia sessió a Wink** i aprova els permisos.
 
-5. Obre un xat (`Ctrl+L` / `Cmd+L`) i demana a Cursor que llisti les eines Wink disponibles per confirmar la connexió.
+5. Obre un xat (`Ctrl+L` / `Cmd+L`) i demana a Cursor que llisti les eines de Wink disponibles per confirmar la connexió.
 </Steps>
 
 :::tip[Configuració amb àmbit de projecte]
@@ -234,7 +234,7 @@ També pots col·locar un fitxer `mcp.json` a l'arrel del teu projecte en lloc d
 
 4. Ves a **Configuració → Servidors MCP** i comprova que ambdós servidors apareixen com a connectats. Windsurf obre una pestanya del navegador a `https://iam.wink.travel` a la primera utilització.
 
-5. **Inicia sessió a Wink** i aprova els permisos. Els servidors es posen verds al panell de configuració un cop autenticats.
+5. **Inicia sessió a Wink** i aprova els permisos. Els servidors es posen en verd al panell de configuració un cop autenticats.
 </Steps>
 
 :::note
@@ -274,7 +274,7 @@ Cline és una extensió de VS Code amb un gestor de servidors MCP integrat. No c
 
 5. **Desa el fitxer.** Cline es recarrega automàticament i obre una pestanya del navegador a `https://iam.wink.travel`.
 
-6. **Inicia sessió a Wink** i aprova els permisos. Ambdós servidors apareixen actius al panell de Servidors MCP.
+6. **Inicia sessió a Wink** i aprova els permisos. Ambdós servidors apareixen com a actius al panell de Servidors MCP.
 </Steps>
 
 :::tip[Alternativa: afegeix via URL]
@@ -286,22 +286,15 @@ Al panell de Servidors MCP, fes clic a **Afegeix servidor** i enganxa directamen
 
 ---
 
-## Referència d'àmbits
+## Àmbits
 
-Quan aproves la pantalla de consentiment veuràs un desglossament del que l'agent sol·licita. Wink agrupa els permisos per àrea funcional:
+Quan aproves la pantalla de consentiment veuràs un desglossament del que l'agent està sol·licitant. Els clients MCP utilitzen el mateix vocabulari de permisos que la resta de la plataforma — consulta la referència completa
+[dels àmbits a la pàgina d'Autenticació](/ca/developers/authentication#scopes).
 
-| Grup d'àmbits | Àmbits | Què desbloquegen |
-|-------------|--------|-----------------|
-| **Transport MCP** | `mcp.read` `mcp.write` `mcp.remove` | Requerit per connectar a qualsevol servidor MCP |
-| **Compte** | `account.read` `account.write` `account.remove` | Entitats gestores, membres de l'equip, configuracions, aplicacions |
-| **Reserva** | `booking.read` `booking.write` `booking.remove` | Cerca, visualització, creació, cancel·lació i reemborsament de reserves |
-| **Inventari** | `inventory.read` `inventory.write` `inventory.remove` | Propietats, habitacions, tarifes, serveis, disponibilitat |
-| **Analítiques** | `analytics.read` | Analítiques de reserves, informes d'ingressos, classificacions |
-| **Màrqueting** | `marketing.read` `marketing.write` `marketing.remove` | Publicacions socials, campanyes, canals de venda, promocions |
-| **Contingut** | `content.read` `content.write` `content.remove` | Multimèdia, URLs curtes, elements sindicables, mapes |
-| **Pagament** | `payment.read` `payment.write` | Llibre major, pagaments, desglossaments financers, retirades |
+Hi ha dues coses específiques de MCP:
 
-El client d'IA sol·licita només els àmbits que necessita. Pots denegar permisos individuals a la pantalla de consentiment — les eines que requereixin un àmbit denegat retornaran un error quan s'invocin.
+- **Els àmbits `mcp.read`, `mcp.write` i `mcp.remove` són addicionalment requerits** per obrir el transport MCP. Un client que tingui un àmbit `mcp.*` pot accedir a `/mcp`, però cada eina que invoqui encara aplica l'àmbit de secció de l'endpoint que encapsula (per exemple, `booking.read`).
+- **El client d'IA sol·licita només els àmbits que necessita.** Pots denegar permisos individuals a la pantalla de consentiment — les eines que requereixin un àmbit denegat retornaran un error quan s'invoquin.
 
 ---
 
@@ -312,7 +305,7 @@ El client d'IA sol·licita només els àmbits que necessita. Pots denegar permis
 El teu client d'IA potser encara no suporta el flux interactiu PKCE. Verifica que tens una versió recent:
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI:** `npm install -g @openai/codex`
-- **Claude Desktop / ChatGPT d'escriptori:** actualitza des de l'actualitzador integrat de l'aplicació
+- **Claude Desktop / ChatGPT desktop:** actualitza des de l'actualitzador integrat de l'aplicació
 
 **`401 Unauthorized` després d'iniciar sessió**
 
@@ -330,7 +323,7 @@ Per a Claude Desktop i ChatGPT, elimina l'entrada del servidor a la configuraci�
 
 L'eina requereix un àmbit que no vas aprovar a la pantalla de consentiment. Torna a connectar el servidor — la pantalla de consentiment apareixerà de nou i podràs aprovar el permís que falta.
 
-**El servidor apareix però les crides a eines retornen "compte no trobat"**
+**El servidor apareix però les crides a les eines retornen "compte no trobat"**
 
 Estàs signat amb un compte Wink que no té una entitat gestora. Ves a [Wink Portal](https://app.wink.travel) i assegura't que el teu compte està configurat abans d'utilitzar el servidor MCP.
 

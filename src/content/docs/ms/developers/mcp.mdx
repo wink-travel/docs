@@ -25,7 +25,7 @@ Pelayan MCP Wink menggunakan aliran **OAuth2 Authorization Code + PKCE** dan men
 3. Klien membuka **tab pelayar** ke `https://iam.wink.travel`. Anda log masuk dengan akaun Wink anda dan meluluskan kebenaran yang diminta pada skrin persetujuan.
 4. Wink mengeluarkan **token akses** yang dihadkan kepada akaun anda dan dipautkan kepada identiti anda.
 5. Klien AI melampirkan token pada setiap permintaan MCP. Semua hasil alat secara automatik dihadkan kepada entiti pengurusan anda.
-6. Token tamat tempoh selepas 3 jam. Klien AI anda menyegarkan secara senyap di latar belakang tanpa perlu meminta lagi.
+6. Token tamat tempoh selepas 3 jam. Klien AI anda menyegarkan secara senyap di latar belakang tanpa perlu meminta semula.
 
 Setiap panggilan alat dijalankan **di bawah identiti anda** — peraturan ACL yang sama yang melindungi portal web juga terpakai kepada ejen AI.
 
@@ -247,7 +247,7 @@ Sokongan MCP Windsurf memerlukan versi **1.4** atau lebih baru. Semak melalui **
 Cline adalah sambungan VS Code dengan pengurus pelayan MCP terbina dalam. Tiada penyuntingan JSON manual diperlukan.
 
 <Steps>
-1. Pasang Cline dari Pasar VS Code:
+1. Pasang Cline dari Pasar Sambungan VS Code:
    - Buka VS Code dan tekan `Ctrl+Shift+X` / `Cmd+Shift+X`
    - Cari **Cline** dan klik **Install**
 
@@ -286,26 +286,19 @@ Dalam panel MCP Servers, klik **Add Server** dan tampal `https://api.wink.travel
 
 ---
 
-## Rujukan skop
+## Skop
 
-Apabila anda meluluskan skrin persetujuan, anda akan melihat pecahan apa yang diminta oleh ejen. Wink mengelompokkan kebenaran mengikut kawasan fungsi:
+Apabila anda meluluskan skrin persetujuan, anda akan melihat pecahan apa yang diminta oleh ejen. Klien MCP menggunakan kosa kata kebenaran yang sama seperti platform lain — lihat rujukan penuh
+[skop pada halaman Pengesahan](/ms/developers/authentication#scopes).
 
-| Kumpulan skop | Skop | Apa yang dibuka |
-|-------------|--------|-----------------|
-| **Pengangkutan MCP** | `mcp.read` `mcp.write` `mcp.remove` | Diperlukan untuk menyambung ke mana-mana pelayan MCP |
-| **Akaun** | `account.read` `account.write` `account.remove` | Entiti pengurusan, ahli pasukan, tetapan, aplikasi |
-| **Tempahan** | `booking.read` `booking.write` `booking.remove` | Cari, lihat, cipta, batalkan, dan pulangkan tempahan |
-| **Inventori** | `inventory.read` `inventory.write` `inventory.remove` | Hartanah, bilik, kadar, kemudahan, ketersediaan |
-| **Analitik** | `analytics.read` | Analitik tempahan, laporan pendapatan, papan pendahulu |
-| **Pemasaran** | `marketing.read` `marketing.write` `marketing.remove` | Pos sosial, kempen, saluran jualan, promosi |
-| **Kandungan** | `content.read` `content.write` `content.remove` | Multimedia, URL pendek, item yang boleh disindikasi, peta |
-| **Pembayaran** | `payment.read` `payment.write` | Lejar, pembayaran, pecahan kewangan, pengeluaran |
+Dua perkara khusus untuk MCP:
 
-Klien AI hanya meminta skop yang diperlukan. Anda boleh menolak kebenaran individu pada skrin persetujuan — alat yang memerlukan skop yang ditolak akan mengembalikan ralat apabila dipanggil.
+- **Skop `mcp.read` `mcp.write` `mcp.remove` juga diperlukan** untuk membuka pengangkutan MCP. Klien yang memegang skop `mcp.*` dibenarkan ke `/mcp`, tetapi setiap alat yang dipanggilnya masih menguatkuasakan skop seksyen titik akhir yang dibalutnya (contohnya `booking.read`).
+- **Klien AI hanya meminta skop yang diperlukan.** Anda boleh menolak kebenaran individu pada skrin persetujuan — alat yang memerlukan skop yang ditolak akan mengembalikan ralat apabila dipanggil.
 
 ---
 
-## Penyelesaian masalah
+## Penyelesaian Masalah
 
 **Tab pelayar tidak terbuka**
 
@@ -330,7 +323,7 @@ Untuk Claude Desktop dan ChatGPT, alih keluar entri pelayan dari tetapan, mulaka
 
 Alat memerlukan skop yang anda tidak luluskan pada skrin persetujuan. Sambung semula pelayan — skrin persetujuan akan muncul semula dan anda boleh luluskan kebenaran yang hilang.
 
-**Pelayan muncul tetapi panggilan alat mengembalikan "akaun tidak ditemui"**
+**Pelayan muncul tetapi panggilan alat mengembalikan "akaun tidak dijumpai"**
 
 Anda log masuk ke akaun Wink yang tiada entiti pengurusan. Pergi ke [Wink Portal](https://app.wink.travel) dan pastikan akaun anda disediakan sebelum menggunakan pelayan MCP.
 
@@ -338,7 +331,7 @@ Anda log masuk ke akaun Wink yang tiada entiti pengurusan. Pergi ke [Wink Portal
 
 Token sah selama 3 jam. Claude Code dan Claude Desktop menyegarkan token secara senyap tanpa mengganggu sesi anda. Jika anda melihat ralat pengesahan selepas tempoh tidak aktif yang lama, taip mesej baru — klien akan mengesahkan semula secara automatik.
 
-**Codex CLI menunjukkan "MCP server unreachable"**
+**Codex CLI menunjukkan "Pelayan MCP tidak dapat dicapai"**
 
 Periksa bahawa `~/.codex/config.json` adalah JSON sah (tiada koma bertindih) dan `"type": "http"` ditetapkan. Codex memerlukan pengangkutan HTTP untuk pelayan jauh; pengangkutan stdio hanya untuk binari tempatan.
 
@@ -346,13 +339,13 @@ Periksa bahawa `~/.codex/config.json` adalah JSON sah (tiada koma bertindih) dan
 
 Sokongan MCP memerlukan versi aplikasi desktop ChatGPT **1.2024.352** atau lebih baru dan langganan Plus, Pro, Team, atau Enterprise yang aktif. Kemas kini aplikasi dan sahkan pelan anda di Settings → Account.
 
-**Pelayan Cursor menunjukkan merah / "Failed to connect"**
+**Pelayan Cursor menunjukkan merah / "Gagal sambung"**
 
 Sahkan `~/.cursor/mcp.json` adalah JSON sah dan mengandungi `"type": "http"`. Kemudian pergi ke **Settings → Cursor Settings → MCP** dan klik **Refresh**. Jika ralat berterusan, mulakan semula Cursor sepenuhnya — perubahan konfigurasi tidak selalu diambil tanpa mulakan semula.
 
 **Pelayan MCP Windsurf tidak disenaraikan dalam tetapan**
 
-Windsurf memerlukan mulakan semula penuh (bukan hanya muat semula tetingkap) untuk mengambil perubahan pada `mcp_config.json`. Gunakan **File → Quit** dan lancarkan semula. Jika pelayan masih tidak muncul, sahkan anda menggunakan Windsurf **1.4+** melalui **Help → About Windsurf**.
+Windsurf memerlukan mulakan semula penuh (bukan hanya muat semula tetingkap) untuk mengambil perubahan pada `mcp_config.json`. Gunakan **File → Quit** dan buka semula. Jika pelayan masih tidak muncul, sahkan anda menggunakan Windsurf **1.4+** melalui **Help → About Windsurf**.
 
 **Pilihan "Add Server" Cline tidak kelihatan**
 

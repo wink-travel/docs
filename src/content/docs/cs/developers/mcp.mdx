@@ -51,16 +51,16 @@ Každý volání nástroje běží **pod vaší identitou** — platí stejná p
 
 4. **Přihlaste se do Wink** a schvalte požadovaná oprávnění na obrazovce souhlasu.
 
-5. Claude Code potvrdí připojení. Zadejte `/mcp` pro ověření, že server je viditelný a nástroje jsou načteny.
+5. Claude Code potvrdí připojení. Zadejte `/mcp` pro ověření, že server je viditelný a jeho nástroje jsou načteny.
 </Steps>
 
-Pro přidání Integrations serveru také:
+Pro přidání také Integrations serveru:
 ```bash
 claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
 ```
 
 :::tip[Sdílejte s týmem]
-Přidejte `--scope project` k příkazu `claude mcp add` a Claude Code zapíše URL serveru do `.mcp.json` v kořenovém adresáři repozitáře. Tento soubor commitněte — každý člen týmu pak při prvním připojení dokončí přihlášení přes prohlížeč.
+Přidejte `--scope project` k příkazu `claude mcp add` a Claude Code zapíše URL serveru do `.mcp.json` v kořenovém adresáři repozitáře. Tento soubor commitněte — každý člen týmu pak při prvním připojení dokončí vlastní přihlášení v prohlížeči.
 :::
 
   </TabItem>
@@ -140,10 +140,10 @@ Podpora MCP v Codex CLI vyžaduje verzi **1.0** nebo novější. Zkontrolujte p�
   </TabItem>
   <TabItem label="ChatGPT">
 
-Podpora MCP serverů je dostupná v **ChatGPT desktop aplikaci** pro předplatitele Plus, Pro, Team a Enterprise.
+Podpora MCP serverů je dostupná v **ChatGPT desktopové aplikaci** pro předplatitele Plus, Pro, Team a Enterprise.
 
 <Steps>
-1. Stáhněte a nainstalujte [ChatGPT desktop aplikaci](https://openai.com/chatgpt/download/), pokud ji ještě nemáte.
+1. Stáhněte a nainstalujte [ChatGPT desktopovou aplikaci](https://openai.com/chatgpt/download/), pokud ji ještě nemáte.
 
 2. Otevřete aplikaci a klikněte na **ikonu svého profilu** v pravém horním rohu, poté vyberte **Nastavení**.
 
@@ -234,7 +234,7 @@ Můžete také umístit soubor `mcp.json` do kořenového adresáře projektu m�
 
 4. Přejděte na **Nastavení → MCP servery** a ověřte, že oba servery jsou připojené. Windsurf při prvním použití otevře záložku v prohlížeči na `https://iam.wink.travel`.
 
-5. **Přihlaste se do Wink** a schvalte oprávnění. Servery v nastavení se po autentizaci zbarví zeleně.
+5. **Přihlaste se do Wink** a schvalte oprávnění. Servery se v nastavení označí zeleně po autentizaci.
 </Steps>
 
 :::note
@@ -272,7 +272,7 @@ Cline je rozšíření pro VS Code s vestavěným správcem MCP serverů. Ručn�
    }
    ```
 
-5. **Uložte soubor.** Cline se automaticky načte znovu a otevře záložku v prohlížeči na `https://iam.wink.travel`.
+5. **Uložte soubor.** Cline se automaticky znovu načte a otevře záložku v prohlížeči na `https://iam.wink.travel`.
 
 6. **Přihlaste se do Wink** a schvalte oprávnění. Oba servery se zobrazí jako aktivní v panelu MCP serverů.
 </Steps>
@@ -286,22 +286,15 @@ V panelu MCP serverů klikněte na **Přidat server** a vložte přímo `https:/
 
 ---
 
-## Přehled oprávnění (scope)
+## Scope
 
-Při schvalování na obrazovce souhlasu uvidíte rozpis požadovaných oprávnění. Wink seskupuje oprávnění podle funkčních oblastí:
+Při schvalování na obrazovce souhlasu uvidíte rozpis požadovaných oprávnění. MCP klienti používají stejnou slovní zásobu oprávnění jako zbytek platformy — viz kompletní
+[referenční seznam scope na stránce Autentizace](/cs/developers/authentication#scopes).
 
-| Skupina oprávnění | Scopes | Co odemykají |
-|-------------------|--------|--------------|
-| **MCP transport** | `mcp.read` `mcp.write` `mcp.remove` | Nutné pro připojení k jakémukoli MCP serveru |
-| **Účet** | `account.read` `account.write` `account.remove` | Správa entit, členů týmu, nastavení, aplikací |
-| **Rezervace** | `booking.read` `booking.write` `booking.remove` | Vyhledávání, zobrazení, vytváření, rušení a refundace rezervací |
-| **Inventář** | `inventory.read` `inventory.write` `inventory.remove` | Nemovitosti, pokoje, ceny, vybavení, dostupnost |
-| **Analytika** | `analytics.read` | Analytika rezervací, přehledy příjmů, žebříčky |
-| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Sociální příspěvky, kampaně, prodejní kanály, promo akce |
-| **Obsah** | `content.read` `content.write` `content.remove` | Multimedia, zkrácené URL, syndikované položky, mapy |
-| **Platby** | `payment.read` `payment.write` | Účetní knihy, výplaty, finanční přehledy, výběry |
+Dvě věci jsou specifické pro MCP:
 
-AI klient žádá pouze o oprávnění, která potřebuje. Na obrazovce souhlasu můžete jednotlivá oprávnění zamítnout — nástroje vyžadující zamítnutý scope vrátí chybu při volání.
+- **Scope `mcp.read`, `mcp.write`, `mcp.remove` jsou navíc vyžadovány** pro otevření MCP transportu. Klient s `mcp.*` scope má přístup k `/mcp`, ale každý nástroj, který volá, stále vyžaduje scope sekce endpointu, který obaluje (např. `booking.read`).
+- **AI klient žádá pouze o scope, které potřebuje.** Na obrazovce souhlasu můžete jednotlivá oprávnění zamítnout — nástroje vyžadující zamítnutý scope vrátí chybu při volání.
 
 ---
 
@@ -316,7 +309,7 @@ Váš AI klient možná ještě nepodporuje interaktivní PKCE flow. Ověřte, �
 
 **`401 Unauthorized` po přihlášení**
 
-Váš uložený token může být neplatný. Odstraňte a znovu přidejte server pro vyvolání nového přihlášení:
+Vaše uložené tokeny mohou být zastaralé. Odstraňte a znovu přidejte server pro vyvolání nového přihlášení:
 
 ```bash
 # Claude Code
@@ -324,27 +317,27 @@ claude mcp remove wink-inventory
 claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-U Claude Desktop a ChatGPT odeberte server v nastavení, restartujte aplikaci a přidejte ho znovu.
+U Claude Desktop a ChatGPT odstraňte server v nastavení, restartujte aplikaci a přidejte ho znovu.
 
 **`403 Forbidden` při volání konkrétního nástroje**
 
-Nástroj vyžaduje scope, který jste na obrazovce souhlasu neschválili. Znovu připojte server — obrazovka souhlasu se objeví znovu a můžete chybějící oprávnění schválit.
+Nástroj vyžaduje scope, které jste na obrazovce souhlasu neschválili. Znovu připojte server — obrazovka souhlasu se znovu zobrazí a můžete chybějící oprávnění schválit.
 
-**Server je vidět, ale volání nástroje vrací "account not found"**
+**Server je vidět, ale volání nástrojů vrací "account not found"**
 
-Jste přihlášeni do Wink účtu bez spravované entity. Přejděte na [Wink Portal](https://app.wink.travel) a ujistěte se, že máte účet správně nastavený před použitím MCP serveru.
+Jste přihlášeni do Wink účtu, který nemá spravovanou entitu. Přejděte na [Wink Portal](https://app.wink.travel) a ujistěte se, že je váš účet správně nastaven před použitím MCP serveru.
 
 **Token vyprší během relace**
 
-Tokeny platí 3 hodiny. Claude Code a Claude Desktop je tichounce obnovují bez přerušení relace. Pokud po delší nečinnosti vidíte chyby autentizace, napište novou zprávu — klient se automaticky znovu autentizuje.
+Tokeny platí 3 hodiny. Claude Code a Claude Desktop obnovují tokeny tiše na pozadí bez přerušení relace. Pokud po delší nečinnosti vidíte chyby autentizace, napište novou zprávu — klient se automaticky znovu autentizuje.
 
 **Codex CLI hlásí "MCP server unreachable"**
 
-Zkontrolujte, že váš `~/.codex/config.json` je validní JSON (bez koncových čárek) a že `"type": "http"` je nastaveno. Codex vyžaduje HTTP transport pro vzdálené servery; stdio transport je jen pro lokální binárky.
+Zkontrolujte, že váš `~/.codex/config.json` je validní JSON (bez koncových čárek) a že `"type": "http"` je nastaveno. Codex vyžaduje HTTP transport pro vzdálené servery; stdio transport je pouze pro lokální binárky.
 
-**V ChatGPT chybí menu "Connectors"**
+**V menu ChatGPT chybí "Connectors"**
 
-Podpora MCP vyžaduje desktopovou aplikaci ChatGPT verze **1.2024.352** nebo novější a aktivní předplatné Plus, Pro, Team nebo Enterprise. Aktualizujte aplikaci a ověřte plán v Nastavení → Účet.
+Podpora MCP vyžaduje desktopovou aplikaci ChatGPT verze **1.2024.352** nebo novější a aktivní předplatné Plus, Pro, Team nebo Enterprise. Aktualizujte aplikaci a ověřte svůj plán v Nastavení → Účet.
 
 **Cursor server ukazuje červeně / "Failed to connect"**
 
@@ -352,11 +345,11 @@ Ověřte, že váš `~/.cursor/mcp.json` je validní JSON a obsahuje `"type": "h
 
 **Windsurf MCP servery nejsou v nastavení**
 
-Windsurf vyžaduje úplný restart (nejen reload okna) pro načtení změn v `mcp_config.json`. Použijte **Soubor → Ukončit** a znovu spusťte. Pokud servery stále nejsou vidět, ověřte, že máte Windsurf **1.4+** přes **Nápověda → O Windsurf**.
+Windsurf vyžaduje úplný restart (nejen reload okna) pro načtení změn v `mcp_config.json`. Použijte **Soubor → Ukončit** a znovu spusťte. Pokud servery stále nejsou vidět, ověřte, že máte Windsurf verzi **1.4+** přes **Nápověda → O Windsurf**.
 
 **V Cline není viditelná volba "Add Server"**
 
-Správce MCP serverů vyžaduje Cline verzi **2.0** nebo novější. Otevřete panel rozšíření VS Code, najděte Cline a klikněte na **Aktualizovat**, pokud je dostupná. Po aktualizaci restartujte VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+Správce MCP serverů vyžaduje Cline verzi **2.0** nebo novější. Otevřete panel rozšíření VS Code, najděte Cline a klikněte na **Aktualizovat**, pokud je dostupná aktualizace. Po aktualizaci restartujte VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

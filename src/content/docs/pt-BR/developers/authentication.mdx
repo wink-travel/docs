@@ -56,13 +56,53 @@ Isso retornará um token de acesso, junto com outros dados da resposta OAuth2:
 }
 ```
 
-Quando você fizer uma chamada para qualquer um de nossos endpoints, inclua o seguinte no cabeçalho:
+Quando você fizer uma chamada para qualquer um dos nossos endpoints, inclua o seguinte no cabeçalho:
 
-- `Wink-Version` = `2.0` Última - *Veja nossa documentação de API para outras versões disponíveis.*
+- `Wink-Version` = `2.0` Última - *Veja nossa documentação da API para outras versões disponíveis.*
 - `Authorization` = `Bearer ${access_token}` *Insira seu token de acesso.*
+
+## Escopos
+
+Um **escopo** é uma permissão que seu token de acesso carrega. Quando você solicita um token, você passa uma
+lista de escopos delimitada por espaço no parâmetro `scope`, e o token só pode acessar as áreas
+que esses escopos cobrem. Com o grant `client_credentials` você define os escopos na sua requisição de token —
+veja os exemplos de [`curl`](#staging) acima e o [tutorial do Postman](/pt-BR/developers/setup#postman).
+
+Os escopos são nomeados como `section.action`, onde a ação é uma das seguintes:
+
+- `read` — visualizar recursos (requisições seguras `GET`)
+- `write` — criar e atualizar recursos (`POST` / `PUT` / `PATCH`)
+- `remove` — deletar recursos (`DELETE`)
+
+A Wink agrupa permissões por área funcional. Solicite apenas os escopos que sua integração precisa:
+
+| Grupo de escopo | Escopos | O que desbloqueiam | Risco |
+|-----------------|---------|--------------------|-------|
+| **Account** | `account.read` `account.write` `account.remove` | Gerenciamento de entidades, membros da equipe, configurações, aplicações | Baixo–Médio |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Propriedades, tipos de quarto, planos de tarifa, tarifas, adicionais, disponibilidade, atividades, atrações | Baixo–Médio |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Buscar, visualizar, criar, cancelar e reembolsar reservas; checkout; políticas de cancelamento | Baixo–Médio |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Campanhas, benefícios, canais de venda, WinkLinks, social gerenciado, fidelidade | Baixo–Médio |
+| **Content** | `content.read` `content.write` `content.remove` | Descrições de propriedades, avaliações, mídia, mapas, índice verde | Baixo–Médio |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Relatórios e análises — receita, rankings | Baixo–Médio |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Gerenciadores de canais, sistemas externos de reserva, Google Hotel, endpoints de notificação, sincronização de reservas | Baixo–Médio |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Processamento de pagamentos, Stripe, Revolut, pagamentos, assinaturas | Médio–Alto |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Contabilidade, livro de retiradas, conciliação | Médio–Alto |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Abre o [transporte MCP](/pt-BR/developers/mcp) (`/mcp`) para agentes de IA | Baixo–Médio |
+
+:::note
+A coluna **Risco** reflete a sensibilidade: `read` é o nível mais baixo e `write`/`remove` o mais alto.
+**Payment** e **Accounting** controlam movimentação de dinheiro, portanto têm risco elevado.
+:::
+
+Algumas coisas para ter em mente:
+
+- **Solicite o mínimo.** Peça apenas os escopos que sua integração realmente usa — um token emitido
+  com acesso mais amplo do que o necessário tem um raio de impacto maior se for vazado.
+- **Escopos desconhecidos são rejeitados.** Solicitar um escopo para o qual sua aplicação não está registrada, ou que não existe, falha na emissão do token.
+- **`mcp.*` é apenas para clientes agentes de IA.** Você precisa dele para abrir o transporte MCP; não é necessário para chamadas REST API regulares. Veja [Model Context Protocol](/pt-BR/developers/mcp).
 
 :::tip
 Você pode testar todas as nossas APIs sem escrever uma única linha de código antes de começar.
 
-Pegue um 'Client ID' e 'Secret Key' de um dos seus apps e navegue para qualquer uma de nossas [APIs](/pt-BR/api).
+Pegue um 'Client ID' e 'Secret Key' de um dos seus apps e navegue por qualquer uma de nossas [APIs](/pt-BR/api).
 :::

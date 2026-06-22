@@ -15,14 +15,14 @@ Máy chủ xác thực IAM của Wink hỗ trợ các điểm cuối OAuth2 ph�
 - /oauth2/userinfo
 :::
 
-Một ứng dụng cung cấp cho bạn `Client ID` và `Secret Key` mà bạn cần để tạo một phiên OAuth2 đã xác thực, bạn có thể sử dụng để giao tiếp với các API của Wink và TripPay.
+Một ứng dụng cung cấp cho bạn `Client ID` và `Secret Key` mà bạn cần để tạo phiên OAuth2 đã xác thực, có thể dùng để giao tiếp với API của Wink và TripPay.
 
-Dưới đây là các bước để tạo một phiên đã xác thực.
+Dưới đây là các bước để tạo phiên đã xác thực.
 
-**Bước 1**. Lấy token truy cập trên môi trường staging hoặc môi trường sản xuất của chúng tôi:
+**Bước 1**. Lấy access token trên môi trường staging hoặc môi trường sản xuất của chúng tôi:
 
-Bạn rất có thể sẽ làm việc với một thư viện OAuth2 mạnh mẽ cho ngôn ngữ của bạn, thư viện này sẽ xử lý tất cả các bước phức tạp cho bạn.
-Các ví dụ của chúng tôi sẽ trình bày cách sử dụng cơ bản nhất từ dòng lệnh bằng `curl`.
+Bạn rất có thể sẽ làm việc với một thư viện OAuth2 mạnh mẽ cho ngôn ngữ của bạn, thư viện này sẽ xử lý phần lớn công việc nặng nhọc.
+Ví dụ của chúng tôi sẽ trình bày cách sử dụng cơ bản nhất từ dòng lệnh bằng `curl`.
 
 ### Staging
 
@@ -48,7 +48,7 @@ curl -X POST https://iam.wink.travel/oauth2/token \
 
 ```
 
-Điều này sẽ trả về một token truy cập, cùng với các dữ liệu phản hồi OAuth2 khác:
+Lệnh này sẽ trả về một access token, cùng với các dữ liệu phản hồi OAuth2 khác:
 
 ```json
 {
@@ -59,10 +59,46 @@ curl -X POST https://iam.wink.travel/oauth2/token \
 Khi bạn gọi bất kỳ điểm cuối nào của chúng tôi, hãy bao gồm các header sau:
 
 - `Wink-Version` = `2.0` Mới nhất - *Xem tài liệu API của chúng tôi để biết các phiên bản khác có sẵn.*
-- `Authorization` = `Bearer ${access_token}` *Chèn token truy cập của bạn.*
+- `Authorization` = `Bearer ${access_token}` *Chèn access token của bạn.*
+
+## Phạm vi (Scopes)
+
+Một **scope** là quyền mà access token của bạn mang theo. Khi bạn yêu cầu token, bạn truyền một danh sách các scope cách nhau bằng dấu cách trong tham số `scope`, và token chỉ có thể truy cập các khu vực mà các scope đó cho phép. Với grant `client_credentials`, bạn đặt các scope trong yêu cầu token của mình — xem các ví dụ [`curl`](#staging) ở trên và [hướng dẫn Postman](/vi/developers/setup#postman).
+
+Các scope được đặt tên theo định dạng `section.action`, trong đó action là một trong các loại:
+
+- `read` — xem tài nguyên (yêu cầu `GET` an toàn)
+- `write` — tạo và cập nhật tài nguyên (`POST` / `PUT` / `PATCH`)
+- `remove` — xóa tài nguyên (`DELETE`)
+
+Wink nhóm các quyền theo khu vực chức năng. Chỉ yêu cầu các scope mà tích hợp của bạn cần:
+
+| Nhóm scope | Các scope | Mở khóa những gì | Mức độ rủi ro |
+|-------------|--------|------------------|------|
+| **Account** | `account.read` `account.write` `account.remove` | Quản lý thực thể, thành viên nhóm, cài đặt, ứng dụng | Thấp–Trung bình |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Bất động sản, loại phòng, kế hoạch giá, giá, phụ thu, tình trạng phòng, hoạt động, điểm tham quan | Thấp–Trung bình |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Tìm kiếm, xem, tạo, hủy và hoàn tiền đặt phòng; thanh toán; chính sách hủy | Thấp–Trung bình |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Chiến dịch, ưu đãi, kênh bán hàng, WinkLinks, quản lý mạng xã hội, chương trình khách hàng thân thiết | Thấp–Trung bình |
+| **Content** | `content.read` `content.write` `content.remove` | Mô tả bất động sản, đánh giá, phương tiện, bản đồ, chỉ số xanh | Thấp–Trung bình |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Báo cáo và phân tích — doanh thu, bảng xếp hạng | Thấp–Trung bình |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Quản lý kênh, hệ thống đặt phòng bên ngoài, Google Hotel, điểm thông báo, đồng bộ đặt phòng | Thấp–Trung bình |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Xử lý thanh toán, Stripe, Revolut, thanh toán, đăng ký | Trung bình–Cao |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Kế toán, sổ rút tiền, đối chiếu | Trung bình–Cao |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Mở [MCP transport](/vi/developers/mcp) (`/mcp`) cho các tác nhân AI | Thấp–Trung bình |
+
+:::note
+Cột **Mức độ rủi ro** phản ánh tính nhạy cảm: `read` là mức thấp nhất và `write`/`remove` là mức cao hơn.
+**Payment** và **Accounting** liên quan đến chuyển tiền, nên có mức rủi ro cao hơn.
+:::
+
+Một vài điều cần lưu ý:
+
+- **Yêu cầu tối thiểu.** Chỉ yêu cầu các scope mà tích hợp của bạn thực sự sử dụng — một token cấp quyền rộng hơn mức cần thiết sẽ có phạm vi ảnh hưởng lớn hơn nếu bị lộ.
+- **Scope không xác định sẽ bị từ chối.** Yêu cầu một scope mà ứng dụng của bạn không đăng ký hoặc không tồn tại sẽ thất bại khi cấp token.
+- **`mcp.*` chỉ dành cho các client tác nhân AI.** Bạn cần nó để mở MCP transport; không bắt buộc cho các cuộc gọi REST API thông thường. Xem [Model Context Protocol](/vi/developers/mcp).
 
 :::tip
-Bạn có thể thử tất cả các API của chúng tôi mà không cần viết một dòng mã nào trước khi bắt đầu.
+Bạn có thể thử tất cả API của chúng tôi mà không cần viết một dòng code nào trước khi bắt đầu.
 
 Lấy 'Client ID' và 'Secret Key' từ một trong các ứng dụng của bạn và truy cập bất kỳ [API](/vi/api) nào của chúng tôi.
 :::

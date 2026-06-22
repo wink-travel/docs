@@ -22,7 +22,7 @@ Lietotne nodrošina jums `Client ID` un `Secret Key`, kas nepieciešami, lai izv
 **1. solis**. Iegūstiet piekļuves tokenu testēšanas vidē vai mūsu ražošanas vidē:
 
 Jūs, visticamāk, izmantosiet kādu robustu OAuth2 bibliotēku savā programmēšanas valodā, kas veiks visu smago darbu jūsu vietā.
-Mūsu piemēri parādīs visvienkāršāko izmantošanu no komandrindas, izmantojot `curl`.
+Mūsu piemēri parādīs visvienkāršāko lietošanu no komandrindas, izmantojot `curl`.
 
 ### Testēšanas vide
 
@@ -56,13 +56,52 @@ Tas atgriezīs piekļuves tokenu kopā ar citiem OAuth2 atbildes datiem:
 }
 ```
 
-Veicot pieprasījumu uz jebkuru no mūsu galapunktiem, iekļaujiet šādu informāciju galvenē:
+Veicot pieprasījumu uz jebkuru no mūsu galapunktiem, iekļaujiet šādas vērtības galvenē:
 
 - `Wink-Version` = `2.0` Jaunākā - *Skatiet mūsu API dokumentāciju par citām pieejamām versijām.*
 - `Authorization` = `Bearer ${access_token}` *Ievietojiet savu piekļuves tokenu.*
 
+## Piekļuves tiesības (Scopes)
+
+**Scope** ir atļauja, ko nes jūsu piekļuves tokens. Pieprasot tokenu, jūs nododat
+atstarpēm atdalītu piekļuves tiesību sarakstu `scope` parametrā, un tokens var piekļūt tikai tām jomām,
+ko šīs tiesības aptver. Ar `client_credentials` grant tipu jūs iestatāt piekļuves tiesības pieprasījumā —
+skatiet [`curl`](#staging) piemērus augstāk un [Postman apmācību](/lv/developers/setup#postman).
+
+Scopes tiek nosaukti kā `section.action`, kur darbība ir viena no:
+
+- `read` — skatīt resursus (droši `GET` pieprasījumi)
+- `write` — izveidot un atjaunināt resursus (`POST` / `PUT` / `PATCH`)
+- `remove` — dzēst resursus (`DELETE`)
+
+Wink grupē atļaujas pēc funkcionālajām jomām. Pieprasiet tikai tās piekļuves tiesības, kas nepieciešamas jūsu integrācijai:
+
+| Piekļuves tiesību grupa | Scopes | Ko tās atver | Risks |
+|-------------------------|--------|--------------|-------|
+| **Konts** | `account.read` `account.write` `account.remove` | Entītiju, komandas locekļu, iestatījumu, lietotņu pārvaldība | Zems–Vidējs |
+| **Inventārs** | `inventory.read` `inventory.write` `inventory.remove` | Īpašumi, istabu tipi, cenu plāni, cenas, papildinājumi, pieejamība, aktivitātes, apskates objekti | Zems–Vidējs |
+| **Rezervācija** | `booking.read` `booking.write` `booking.remove` | Meklēšana, skatīšana, izveide, atcelšana un atmaksas; norēķini; atcelšanas politikas | Zems–Vidējs |
+| **Mārketings** | `marketing.read` `marketing.write` `marketing.remove` | Kampaņas, priekšrocības, pārdošanas kanāli, WinkLinks, pārvaldītie sociālie tīkli, lojalitāte | Zems–Vidējs |
+| **Saturs** | `content.read` `content.write` `content.remove` | Īpašumu apraksti, atsauksmes, mediji, kartes, zaļais indekss | Zems–Vidējs |
+| **Analītika** | `analytics.read` `analytics.write` `analytics.remove` | Atskaites un analītika — ieņēmumi, līderu saraksti | Zems–Vidējs |
+| **Integrācijas** | `integrations.read` `integrations.write` `integrations.remove` | Kanālu pārvaldnieki, ārējās rezervēšanas sistēmas, Google Hotel, paziņojumu galapunkti, rezervāciju sinhronizācija | Zems–Vidējs |
+| **Maksājumi** | `payment.read` `payment.write` `payment.remove` | Maksājumu apstrāde, Stripe, Revolut, izmaksas, abonementi | Vidējs–Augsts |
+| **Grāmatvedība** | `accounting.read` `accounting.write` `accounting.remove` | Grāmatvedība, izņemšanas žurnāls, saskaņošana | Vidējs–Augsts |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Atver [MCP transportu](/lv/developers/mcp) (`/mcp`) AI aģentiem | Zems–Vidējs |
+
+:::note
+**Risks** kolonna atspoguļo jutīgumu: `read` ir zemākais līmenis, bet `write`/`remove` — augstākais.
+**Maksājumi** un **Grāmatvedība** kontrolē naudas plūsmu, tāpēc tām ir paaugstināts risks.
+:::
+
+Dažas lietas, ko paturēt prātā:
+
+- **Pieprasiet minimumu.** Pieprasiet tikai tās piekļuves tiesības, ko jūsu integrācija patiešām izmanto — tokens ar plašākām piekļuves tiesībām nekā nepieciešams rada lielāku risku, ja tas noplūst.
+- **Nezināmas piekļuves tiesības tiek noraidītas.** Pieprasot piekļuves tiesības, kuras jūsu lietotne nav reģistrējusi vai kuras nepastāv, tokena izsniegšana neizdodas.
+- **`mcp.*` ir tikai AI aģentu klientiem.** Tas nepieciešams MCP transporta atvēršanai; tas nav obligāts parastajiem REST API pieprasījumiem. Skatiet [Model Context Protocol](/lv/developers/mcp).
+
 :::tip
 Jūs varat izmēģināt visus mūsu API, nerakstot nevienu koda rindiņu, pirms sākat darbu.
 
-Iegūstiet 'Client ID' un 'Secret Key' no kādas no savām lietotnēm un dodieties uz jebkuru no mūsu [API](/lv/api).
+Iegūstiet 'Client ID' un 'Secret Key' no kādas no jūsu lietotnēm un dodieties uz jebkuru no mūsu [API](/lv/api).
 :::

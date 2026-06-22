@@ -21,7 +21,7 @@ Wink IAM 認證伺服器支援常見的 OAuth2 端點：
 
 **步驟 1**. 在測試環境或正式環境中取得存取權杖：
 
-您很可能會使用適用於您程式語言的強大 OAuth2 函式庫，該函式庫會為您處理所有繁重的工作。
+您很可能會使用您所使用語言的強大 OAuth2 函式庫，該函式庫會為您處理所有繁重的工作。
 我們的範例將展示使用 `curl` 從命令列進行最基本的操作。
 
 ### 測試環境
@@ -61,8 +61,43 @@ curl -X POST https://iam.wink.travel/oauth2/token \
 - `Wink-Version` = `2.0` 最新版本 - *請參閱我們的 API 文件了解其他可用版本。*
 - `Authorization` = `Bearer ${access_token}` *插入您的存取權杖。*
 
-:::tip
-您可以在開始之前，不用寫一行程式碼就測試我們所有的 API。
+## 權限範圍 (Scopes)
 
-從您的應用程式中取得一組 'Client ID' 和 'Secret Key'，然後前往我們的任一 [APIs](/zh-TW/api) 頁面。
+**Scope** 是您的存取權杖所攜帶的權限。當您請求權杖時，會在 `scope` 參數中傳遞以空格分隔的權限清單，該權杖只能存取這些權限所涵蓋的區域。使用 `client_credentials` 授權時，您在權杖請求中設定權限範圍 — 請參考上方 [`curl`](#staging) 範例及 [Postman 操作指南](/zh-TW/developers/setup#postman)。
+
+Scopes 命名格式為 `section.action`，其中 action 為以下之一：
+
+- `read` — 檢視資源（安全的 `GET` 請求）
+- `write` — 建立及更新資源（`POST` / `PUT` / `PATCH`）
+- `remove` — 刪除資源（`DELETE`）
+
+Wink 依功能區域分組權限。請僅請求您的整合所需的權限：
+
+| 權限群組 | 權限範圍 | 可解鎖的功能 | 風險 |
+|-------------|--------|------------------|------|
+| **帳戶** | `account.read` `account.write` `account.remove` | 管理實體、團隊成員、設定、應用程式 | 低至中 |
+| **庫存** | `inventory.read` `inventory.write` `inventory.remove` | 物業、房型、價格方案、價格、附加項目、可用性、活動、景點 | 低至中 |
+| **訂單** | `booking.read` `booking.write` `booking.remove` | 搜尋、檢視、建立、取消及退款訂單；結帳；取消政策 | 低至中 |
+| **行銷** | `marketing.read` `marketing.write` `marketing.remove` | 活動、優惠、銷售通路、WinkLinks、管理社群、忠誠計畫 | 低至中 |
+| **內容** | `content.read` `content.write` `content.remove` | 物業描述、評論、媒體、地圖、綠色指數 | 低至中 |
+| **分析** | `analytics.read` `analytics.write` `analytics.remove` | 報告與分析 — 收入、排行榜 | 低至中 |
+| **整合** | `integrations.read` `integrations.write` `integrations.remove` | 通路管理、外部訂單系統、Google Hotel、通知端點、訂單同步 | 低至中 |
+| **付款** | `payment.read` `payment.write` `payment.remove` | 付款處理、Stripe、Revolut、付款、訂閱 | 中至高 |
+| **會計** | `accounting.read` `accounting.write` `accounting.remove` | 會計、提款帳冊、對帳 | 中至高 |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | 開啟 [MCP 傳輸](/zh-TW/developers/mcp) (`/mcp`) 給 AI 代理使用 | 低至中 |
+
+:::note
+**風險** 欄位反映敏感度：`read` 為較低端，`write`/`remove` 為較高端。**付款**與**會計**涉及資金流動，因此風險較高。
+:::
+
+請注意以下幾點：
+
+- **請求最小權限。** 僅請求您的整合實際使用的權限 — 若權杖授予過廣，若外洩會造成更大影響範圍。
+- **未知權限會被拒絕。** 請求未註冊的權限或不存在的權限，會在發行權杖時失敗。
+- **`mcp.*` 僅限 AI 代理客戶端。** 您需要它來開啟 MCP 傳輸；一般 REST API 呼叫不需要。詳見 [Model Context Protocol](/zh-TW/developers/mcp)。
+
+:::tip
+您可以在開始前，不寫一行程式碼就測試我們所有的 API。
+
+從您的應用程式取得一組 'Client ID' 和 'Secret Key'，然後前往我們的任一 [API](/zh-TW/api)。
 :::

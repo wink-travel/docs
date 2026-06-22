@@ -1,6 +1,6 @@
 ---
 title: Servidores MCP
-description: Ligue agentes de IA à plataforma Wink através do Model Context Protocol. Servidores MCP autenticados dão ao seu agente acesso direto ao inventário, reservas, integrações de gestor de canais e mais — protegido por login interativo OAuth2.
+description: Ligue agentes de IA à plataforma Wink através do Model Context Protocol. Servidores MCP autenticados dão ao seu agente acesso direto a inventário, reservas, integrações de gestor de canais e mais — protegido por login interativo OAuth2.
 sidebar:
   order: 10
 ---
@@ -27,7 +27,7 @@ Os servidores MCP da Wink usam o fluxo **OAuth2 Authorization Code + PKCE** e su
 5. O cliente de IA anexa o token a cada pedido MCP. Todos os resultados das ferramentas são automaticamente limitados à sua entidade gestora.
 6. Os tokens expiram após 3 horas. O seu cliente de IA atualiza-os silenciosamente em segundo plano sem pedir login novamente.
 
-Cada chamada de ferramenta é executada **sob a sua identidade** — as mesmas regras ACL que protegem o portal web aplicam-se ao agente de IA.
+Cada chamada a uma ferramenta é executada **sob a sua identidade** — as mesmas regras ACL que protegem o portal web aplicam-se ao agente de IA.
 
 ---
 
@@ -162,7 +162,7 @@ O suporte a servidores MCP está disponível na **app desktop ChatGPT** para sub
    https://integrations.wink.travel/mcp
    ```
 
-7. Ambos os servidores aparecem na sua lista de Connectors. Inicie uma nova conversa — as ferramentas Wink ficam disponíveis automaticamente.
+7. Ambos os servidores aparecem na sua lista de Connectors. Inicie uma nova conversa — as ferramentas Wink estarão disponíveis automaticamente.
 </Steps>
 
 :::note[Limitação da app web]
@@ -194,7 +194,7 @@ Os servidores MCP só são configuráveis na **app desktop**. A interface web do
    }
    ```
 
-3. Abra o Cursor. Vá a **Settings → Cursor Settings → MCP** e confirme que ambos os servidores aparecem com indicador de estado verde. Se estiverem vermelhos, clique em **Refresh**.
+3. Abra o Cursor. Vá a **Settings → Cursor Settings → MCP** e confirme que ambos os servidores aparecem com um indicador de estado verde. Se estiverem vermelhos, clique em **Refresh**.
 
 4. O Cursor abre uma aba do navegador para `https://iam.wink.travel`. **Faça login na Wink** e aprove as permissões.
 
@@ -238,7 +238,7 @@ Também pode colocar um ficheiro `mcp.json` na raiz do seu projeto em vez de na 
 </Steps>
 
 :::note
-O suporte MCP do Windsurf requer a versão **1.4** ou superior. Verifique em **Help → About Windsurf** e atualize no site do Windsurf se necessário.
+O suporte MCP do Windsurf requer a versão **1.4** ou superior. Verifique em **Help → About Windsurf** e atualize a partir do site do Windsurf se necessário.
 :::
 
   </TabItem>
@@ -278,7 +278,7 @@ O Cline é uma extensão para VS Code com gestor de servidores MCP integrado. N�
 </Steps>
 
 :::tip[Alternativa: adicionar via URL]
-No painel MCP Servers, clique em **Add Server** e cole diretamente `https://api.wink.travel/mcp`. O Cline preenche automaticamente a configuração e trata da autenticação sem necessidade de editar JSON manualmente.
+No painel MCP Servers, clique em **Add Server** e cole diretamente `https://api.wink.travel/mcp`. O Cline preenche automaticamente a configuração e gere a autenticação sem necessidade de editar JSON manualmente.
 :::
 
   </TabItem>
@@ -286,22 +286,15 @@ No painel MCP Servers, clique em **Add Server** e cole diretamente `https://api.
 
 ---
 
-## Referência de escopos
+## Escopos
 
-Quando aprovar o ecrã de consentimento verá uma discriminação do que o agente está a solicitar. A Wink agrupa permissões por área funcional:
+Quando aprova o ecrã de consentimento verá um detalhamento do que o agente está a solicitar. Os clientes MCP usam o mesmo vocabulário de permissões que o resto da plataforma — consulte a referência completa de
+[escopos na página de Autenticação](/pt-PT/developers/authentication#scopes).
 
-| Grupo de escopo | Escopos | O que desbloqueiam |
-|-----------------|---------|--------------------|
-| **Transporte MCP** | `mcp.read` `mcp.write` `mcp.remove` | Necessário para ligar a qualquer servidor MCP |
-| **Conta** | `account.read` `account.write` `account.remove` | Entidades gestoras, membros da equipa, definições, aplicações |
-| **Reserva** | `booking.read` `booking.write` `booking.remove` | Pesquisar, ver, criar, cancelar e reembolsar reservas |
-| **Inventário** | `inventory.read` `inventory.write` `inventory.remove` | Propriedades, quartos, tarifas, comodidades, disponibilidade |
-| **Análises** | `analytics.read` | Análises de reservas, relatórios de receitas, rankings |
-| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Publicações sociais, campanhas, canais de venda, promoções |
-| **Conteúdo** | `content.read` `content.write` `content.remove` | Multimédia, URLs encurtadas, itens sindicáveis, mapas |
-| **Pagamento** | `payment.read` `payment.write` | Livro razão, pagamentos, detalhamento financeiro, levantamentos |
+Duas coisas são específicas do MCP:
 
-O cliente de IA solicita apenas os escopos que necessita. Pode negar permissões individuais no ecrã de consentimento — ferramentas que requerem um escopo negado retornam erro quando invocadas.
+- **Os escopos `mcp.read`, `mcp.write` e `mcp.remove` são adicionalmente necessários** para abrir o transporte MCP. Um cliente que detenha um escopo `mcp.*` é admitido em `/mcp`, mas cada ferramenta que invoca ainda aplica o escopo da secção do endpoint que envolve (ex.: `booking.read`).
+- **O cliente de IA solicita apenas os escopos que precisa.** Pode negar permissões individuais no ecrã de consentimento — ferramentas que requerem um escopo negado retornam erro quando invocadas.
 
 ---
 
@@ -312,11 +305,11 @@ O cliente de IA solicita apenas os escopos que necessita. Pode negar permissões
 O seu cliente de IA pode ainda não suportar o fluxo interativo PKCE. Verifique se está a usar uma versão recente:
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI:** `npm install -g @openai/codex`
-- **Claude Desktop / ChatGPT desktop:** atualize pelo atualizador integrado da app
+- **Claude Desktop / ChatGPT desktop:** atualize através do atualizador integrado da app
 
 **`401 Unauthorized` após login**
 
-O token em cache pode estar desatualizado. Remova e adicione novamente o servidor para forçar um novo login:
+O seu token em cache pode estar desatualizado. Remova e adicione novamente o servidor para forçar um novo login:
 
 ```bash
 # Claude Code
@@ -324,19 +317,19 @@ claude mcp remove wink-inventory
 claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-Para Claude Desktop e ChatGPT, remova a entrada do servidor nas definições, reinicie a app e adicione novamente.
+Para Claude Desktop e ChatGPT, remova a entrada do servidor nas configurações, reinicie a app e adicione novamente.
 
 **`403 Forbidden` ao chamar uma ferramenta específica**
 
 A ferramenta requer um escopo que não aprovou no ecrã de consentimento. Reconecte o servidor — o ecrã de consentimento aparecerá novamente para aprovar a permissão em falta.
 
-**O servidor aparece mas as chamadas às ferramentas retornam "account not found"**
+**O servidor aparece mas as chamadas às ferramentas retornam "conta não encontrada"**
 
-Está ligado a uma conta Wink sem entidade gestora. Vá a [Wink Portal](https://app.wink.travel) e certifique-se de que a sua conta está configurada antes de usar o servidor MCP.
+Está autenticado numa conta Wink sem entidade gestora. Aceda ao [Wink Portal](https://app.wink.travel) e certifique-se de que a sua conta está configurada antes de usar o servidor MCP.
 
 **Token expira durante a sessão**
 
-Os tokens são válidos por 3 horas. Claude Code e Claude Desktop atualizam tokens silenciosamente sem interromper a sessão. Se vir erros de autenticação após um longo período de inatividade, envie uma nova mensagem — o cliente reautentica automaticamente.
+Os tokens são válidos por 3 horas. O Claude Code e Claude Desktop atualizam tokens silenciosamente sem interromper a sessão. Se vir erros de autenticação após um longo período de inatividade, envie uma nova mensagem — o cliente reautentica automaticamente.
 
 **Codex CLI mostra "MCP server unreachable"**
 
@@ -350,9 +343,9 @@ O suporte MCP requer a app desktop ChatGPT versão **1.2024.352** ou superior e 
 
 Verifique se o seu `~/.cursor/mcp.json` é JSON válido e contém `"type": "http"`. Depois vá a **Settings → Cursor Settings → MCP** e clique em **Refresh**. Se o erro persistir, reinicie completamente o Cursor — alterações na configuração nem sempre são aplicadas sem reinício.
 
-**Servidores MCP do Windsurf não aparecem nas definições**
+**Servidores MCP do Windsurf não aparecem nas configurações**
 
-O Windsurf requer reinício completo (não só recarregar a janela) para aplicar alterações ao `mcp_config.json`. Use **File → Quit** e reinicie. Se os servidores ainda não aparecerem, confirme que está na versão Windsurf **1.4+** em **Help → About Windsurf**.
+O Windsurf requer reinício completo (não só recarregar a janela) para aplicar alterações em `mcp_config.json`. Use **File → Quit** e reabra. Se os servidores ainda não aparecerem, confirme que está na versão Windsurf **1.4+** em **Help → About Windsurf**.
 
 **Opção "Add Server" do Cline não está visível**
 
@@ -360,5 +353,5 @@ O gestor de servidores MCP requer Cline **2.0** ou superior. Abra o painel de Ex
 
 ---
 
-<LinkButton href="https://app.wink.travel" variant="primary" icon="external">Abrir Portal Wink</LinkButton>
+<LinkButton href="https://app.wink.travel" variant="primary" icon="external">Abrir Wink Portal</LinkButton>
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink no GitHub</LinkButton>

@@ -49,7 +49,7 @@ Varje verktygsanrop körs **under din identitet** — samma ACL-regler som skydd
 
 3. Claude Code kontaktar servern, upptäcker auktoriseringsservern och öppnar din standardwebbläsare.
 
-4. **Logga in på Wink** och godkänn behörighetsförfrågan på samtyckesskärmen.
+4. **Logga in på Wink** och godkänn behörighetsbegäran på samtyckesskärmen.
 
 5. Claude Code bekräftar anslutningen. Skriv `/mcp` för att verifiera att servern visas och att dess verktyg har laddats.
 </Steps>
@@ -140,7 +140,7 @@ Codex CLI:s MCP-stöd kräver version **1.0** eller senare. Kör `codex --versio
   </TabItem>
   <TabItem label="ChatGPT">
 
-MCP-serverstöd finns i **ChatGPT desktop app** för Plus, Pro, Team och Enterprise-prenumeranter.
+MCP-serverstöd finns i **ChatGPT desktop app** för Plus-, Pro-, Team- och Enterprise-prenumeranter.
 
 <Steps>
 1. Ladda ner och installera [ChatGPT desktop app](https://openai.com/chatgpt/download/) om du inte redan gjort det.
@@ -232,7 +232,7 @@ Du kan också placera en `mcp.json`-fil i projektets rot istället för i `~/.cu
 
 3. **Starta om Windsurf helt** (Arkiv → Avsluta, sedan öppna igen).
 
-4. Gå till **Settings → MCP Servers** och verifiera att båda servrar visas som anslutna. Windsurf öppnar en webbläsarflik till `https://iam.wink.travel` vid första användning.
+4. Gå till **Settings → MCP Servers** och verifiera att båda servrarna visas som anslutna. Windsurf öppnar en webbläsarflik till `https://iam.wink.travel` vid första användning.
 
 5. **Logga in på Wink** och godkänn behörigheter. Servrarna blir gröna i inställningspanelen när autentiseringen är klar.
 </Steps>
@@ -274,7 +274,7 @@ Cline är en VS Code-tillägg med inbyggd MCP-serverhanterare. Ingen manuell JSO
 
 5. **Spara filen.** Cline laddar om automatiskt och öppnar en webbläsarflik till `https://iam.wink.travel`.
 
-6. **Logga in på Wink** och godkänn behörigheter. Båda servrar visas som aktiva i MCP Servers-panelen.
+6. **Logga in på Wink** och godkänn behörigheter. Båda servrarna visas som aktiva i MCP Servers-panelen.
 </Steps>
 
 :::tip[Alternativ: lägg till via URL]
@@ -286,22 +286,15 @@ I MCP Servers-panelen, klicka på **Add Server** och klistra in `https://api.win
 
 ---
 
-## Scope-referens
+## Behörigheter
 
-När du godkänner samtyckesskärmen ser du en uppdelning av vad agenten begär. Wink grupperar behörigheter efter funktionellt område:
+När du godkänner samtyckesskärmen ser du en uppdelning av vad agenten begär. MCP-klienter använder samma behörighetsvokabulär som resten av plattformen — se fullständig
+[behörighetsreferens på sidan för autentisering](/sv/developers/authentication#scopes).
 
-| Scope-grupp | Scopes | Vad de låser upp |
-|-------------|--------|-----------------|
-| **MCP transport** | `mcp.read` `mcp.write` `mcp.remove` | Krävs för att ansluta till någon av MCP-servrarna |
-| **Account** | `account.read` `account.write` `account.remove` | Hantering av enheter, teammedlemmar, inställningar, applikationer |
-| **Booking** | `booking.read` `booking.write` `booking.remove` | Söka, visa, skapa, avboka och återbetala bokningar |
-| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Fastigheter, rum, priser, bekvämligheter, tillgänglighet |
-| **Analytics** | `analytics.read` | Bokningsanalys, intäktsrapporter, topplistor |
-| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Sociala inlägg, kampanjer, försäljningskanaler, erbjudanden |
-| **Content** | `content.read` `content.write` `content.remove` | Multimedia, förkortade URL:er, syndikerbara objekt, kartor |
-| **Payment** | `payment.read` `payment.write` | Bokföring, utbetalningar, ekonomiska sammanställningar, uttag |
+Två saker är specifika för MCP:
 
-AI-klienten begär endast de scopes den behöver. Du kan neka enskilda behörigheter på samtyckesskärmen — verktyg som kräver en nekad scope returnerar ett fel vid anrop.
+- **Behörigheterna `mcp.read`, `mcp.write` och `mcp.remove` krävs dessutom** för att öppna MCP-transporten. En klient med en `mcp.*`-behörighet får åtkomst till `/mcp`, men varje verktyg den anropar kontrollerar fortfarande sektionens behörighet för den endpoint den omsluter (t.ex. `booking.read`).
+- **AI-klienten begär endast de behörigheter den behöver.** Du kan neka enskilda behörigheter på samtyckesskärmen — verktyg som kräver en nekad behörighet returnerar ett fel vid anrop.
 
 ---
 
@@ -328,7 +321,7 @@ För Claude Desktop och ChatGPT, ta bort serverposten i inställningarna, starta
 
 **`403 Forbidden` vid anrop av specifikt verktyg**
 
-Verktyget kräver en scope du inte godkände på samtyckesskärmen. Anslut servern igen — samtyckesskärmen visas på nytt och du kan godkänna den saknade behörigheten.
+Verktyget kräver en behörighet du inte godkände på samtyckesskärmen. Anslut servern igen — samtyckesskärmen visas på nytt och du kan godkänna den saknade behörigheten.
 
 **Servern visas men verktygsanrop returnerar "account not found"**
 
@@ -342,7 +335,7 @@ Token är giltiga i 3 timmar. Claude Code och Claude Desktop uppdaterar token ty
 
 Kontrollera att din `~/.codex/config.json` är giltig JSON (inga avslutande kommatecken) och att `"type": "http"` är satt. Codex kräver HTTP-transport för fjärrservrar; stdio-transport är endast för lokala binärer.
 
-**ChatGPT saknar "Connectors"-menyn**
+**ChatGPT:s "Connectors"-meny saknas**
 
 MCP-stöd kräver ChatGPT desktop app version **1.2024.352** eller senare och en aktiv Plus-, Pro-, Team- eller Enterprise-prenumeration. Uppdatera appen och kontrollera din plan under Settings → Account.
 
@@ -352,7 +345,7 @@ Verifiera att din `~/.cursor/mcp.json` är giltig JSON och innehåller `"type": 
 
 **Windsurf MCP-servrar visas inte i inställningar**
 
-Windsurf kräver full omstart (inte bara fönsterladdning) för att plocka upp ändringar i `mcp_config.json`. Använd **Arkiv → Avsluta** och starta om. Om servrar fortfarande inte visas, kontrollera att du har Windsurf **1.4+** via **Hjälp → Om Windsurf**.
+Windsurf kräver full omstart (inte bara fönsterladdning) för att plocka upp ändringar i `mcp_config.json`. Använd **File → Quit** och starta om. Om servrar fortfarande inte visas, kontrollera att du har Windsurf **1.4+** via **Help → About Windsurf**.
 
 **Cline saknar "Add Server"-alternativ**
 

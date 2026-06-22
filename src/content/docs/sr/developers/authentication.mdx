@@ -58,11 +58,50 @@ Ovo će vratiti pristupni token, zajedno sa ostalim OAuth2 podacima u odgovoru:
 
 Kada pozivate bilo koju od naših krajnjih tačaka, uključite sledeće u zaglavlje:
 
-- `Wink-Version` = `2.0` Najnovije - *Pogledajte našu API dokumentaciju za druge dostupne verzije.*
+- `Wink-Version` = `2.0` Najnovije - *Pogledajte naše API dokumente za druge dostupne verzije.*
 - `Authorization` = `Bearer ${access_token}` *Ubaci svoj pristupni token.*
+
+## Opsezi (Scopes)
+
+**Opseg** je dozvola koju vaš pristupni token nosi. Kada tražite token, prosleđujete
+listu opsega razdvojenih razmakom u parametru `scope`, i token može pristupiti samo oblastima
+koje ti opsezi pokrivaju. Sa `client_credentials` grantom postavljate opsege u zahtevu za token —
+pogledajte [`curl`](#staging) primere iznad i [Postman vodič](/sr/developers/setup#postman).
+
+Opsezi se nazivaju `section.action`, gde je akcija jedna od:
+
+- `read` — pregled resursa (sigurni `GET` zahtevi)
+- `write` — kreiranje i ažuriranje resursa (`POST` / `PUT` / `PATCH`)
+- `remove` — brisanje resursa (`DELETE`)
+
+Wink grupiše dozvole po funkcionalnim oblastima. Zahtevajte samo opsege koje vaša integracija treba:
+
+| Grupa opsega | Opsezi | Šta otključavaju | Rizik |
+|--------------|--------|-------------------|-------|
+| **Account** | `account.read` `account.write` `account.remove` | Upravljanje entitetima, članovima tima, podešavanjima, aplikacijama | Nizak–Srednji |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Nekretnine, tipovi soba, cenovnici, cene, dodaci, dostupnost, aktivnosti, atrakcije | Nizak–Srednji |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Pretraga, pregled, kreiranje, otkazivanje i povraćaj rezervacija; naplata; politike otkazivanja | Nizak–Srednji |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Kampanje, beneficije, prodajni kanali, WinkLinks, upravljani društveni mediji, lojalnost | Nizak–Srednji |
+| **Content** | `content.read` `content.write` `content.remove` | Opisi nekretnina, recenzije, mediji, mape, zeleni indeks | Nizak–Srednji |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Izveštaji i analitika — prihodi, tabele lidera | Nizak–Srednji |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Channel manageri, eksterni sistemi za rezervacije, Google Hotel, krajnje tačke za notifikacije, sinhronizacija rezervacija | Nizak–Srednji |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Obrada plaćanja, Stripe, Revolut, isplate, pretplate | Srednji–Visok |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Knjigovodstvo, evidencija isplata, usklađivanje | Srednji–Visok |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Otvara [MCP transport](/sr/developers/mcp) (`/mcp`) za AI agente | Nizak–Srednji |
+
+:::note
+Kolona **Rizik** odražava osetljivost: `read` je na nižem nivou, a `write`/`remove` na višem.
+**Payment** i **Accounting** štite novčane transakcije, pa nose povišen rizik.
+:::
+
+Nekoliko stvari koje treba imati na umu:
+
+- **Zahtevajte minimum.** Tražite samo opsege koje vaša integracija zaista koristi — token izdat sa širim pristupom nego što je potrebno ima veći potencijal štete ako procuri.
+- **Nepoznati opsezi se odbijaju.** Zahtev za opsegom za koji vaša aplikacija nije registrovana, ili koji ne postoji, neće biti odobren prilikom izdavanja tokena.
+- **`mcp.*` je samo za AI-agent klijente.** Potreban je za otvaranje MCP transporta; nije potreban za uobičajene REST API pozive. Pogledajte [Model Context Protocol](/sr/developers/mcp).
 
 :::tip
 Možete testirati sve naše API-je bez pisanja ijedne linije koda pre nego što počnete.
 
-Uzmi 'Client ID' i 'Secret Key' iz jedne od vaših aplikacija i posetite bilo koji od naših [API-ja](/sr/api).
+Uzmete 'Client ID' i 'Secret Key' iz jedne od vaših aplikacija i posetite bilo koji od naših [API-ja](/sr/api).
 :::

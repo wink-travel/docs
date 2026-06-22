@@ -1,13 +1,13 @@
 ---
 title: MCP Servery
-description: Pripojte AI agentov k platforme Wink cez Model Context Protocol. Overené MCP servery poskytujú vášmu agentovi priamy prístup k inventáru, rezerváciám, integráciám správcu kanálov a ďalším funkciám — zabezpečené interaktívnym prihlásením OAuth2.
+description: Pripojte AI agentov k platforme Wink cez Model Context Protocol. Overené MCP servery poskytujú vášmu agentovi priamy prístup k inventáru, rezerváciám, integráciám správcu kanálov a ďalším funkciám — zabezpečené interaktívnym OAuth2 prihlásením.
 sidebar:
   order: 10
 ---
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Wink poskytuje dva overené MCP servery. Oba používajú **interaktívne prihlásenie OAuth2** (PKCE autorizačný kódový tok) — váš AI agent otvorí kartu prehliadača, kde sa prihlásite pomocou svojho Wink účtu. Nie je potrebné spravovať žiadne klientské tajomstvá.
+Wink poskytuje dva overené MCP servery. Oba používajú **interaktívne OAuth2 prihlásenie** (PKCE autorizačný kódový tok) — váš AI agent otvorí kartu prehliadača, kde sa prihlásite pomocou svojho Wink účtu. Nie je potrebné spravovať žiadne klientské tajomstvá.
 
 | Server | URL | Čo robí |
 |--------|-----|---------|
@@ -21,7 +21,7 @@ Wink poskytuje dva overené MCP servery. Oba používajú **interaktívne prihl�
 Wink MCP servery používajú **OAuth2 Authorization Code + PKCE** tok a podporujú **Dynamic Client Registration (RFC 7591)**. Takto to prebieha pri prvom pripojení:
 
 1. Váš AI klient zistí autorizačný server z metadát MCP endpointu `/.well-known/oauth-protected-resource`.
-2. Klient sa sám zaregistruje cez **Dynamic Client Registration** — nie je potrebné manuálne nastavovať aplikáciu.
+2. Klient sa sám zaregistruje cez **Dynamic Client Registration** — nie je potrebné manuálne nastavovanie aplikácie.
 3. Klient otvorí **kartu prehliadača** na `https://iam.wink.travel`. Prihlásite sa pomocou Wink účtu a schválite požadované povolenia na obrazovke súhlasu.
 4. Wink vydá **prístupový token** viazaný na váš účet a identitu.
 5. AI klient pripojí token ku každej MCP požiadavke. Všetky výsledky nástrojov sú automaticky viazané na vašu spravovanú entitu.
@@ -60,7 +60,7 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
 ```
 
 :::tip[Zdieľajte s tímom]
-Pridajte `--scope project` k príkazu `claude mcp add` a Claude Code zapíše URL servera do `.mcp.json` v koreňovom adresári repozitára. Commitnite tento súbor — každý člen tímu sa pri prvom pripojení prihlási cez vlastný prehliadač.
+Pridajte `--scope project` k príkazu `claude mcp add` a Claude Code zapíše URL servera do `.mcp.json` v koreňovom adresári repozitára. Commitnite tento súbor — každý člen tímu si pri prvom pripojení dokončí vlastné prihlásenie cez prehliadač.
 :::
 
   </TabItem>
@@ -194,7 +194,7 @@ MCP servery je možné konfigurovať iba v **desktop aplikácii**. Webové rozhr
    }
    ```
 
-3. Otvorte Cursor. Prejdite na **Nastavenia → Nastavenia Cursor → MCP** a overte, či sa oba servery zobrazujú so zeleným indikátorom stavu. Ak sú červené, kliknite na **Obnoviť**.
+3. Otvorte Cursor. Prejdite na **Nastavenia → Nastavenia Cursor → MCP** a overte, že oba servery majú zelený stav. Ak sú červené, kliknite na **Obnoviť**.
 
 4. Cursor otvorí kartu prehliadača na `https://iam.wink.travel`. **Prihláste sa do Wink** a schváľte povolenia.
 
@@ -232,7 +232,7 @@ Môžete tiež umiestniť súbor `mcp.json` do koreňa svojho projektu namiesto 
 
 3. **Úplne reštartujte Windsurf** (Súbor → Ukončiť, potom znova otvorte).
 
-4. Prejdite na **Nastavenia → MCP Servery** a overte, či sa oba servery zobrazujú ako pripojené. Windsurf pri prvom použití otvorí kartu prehliadača na `https://iam.wink.travel`.
+4. Prejdite na **Nastavenia → MCP Servery** a overte, že oba servery sú pripojené. Windsurf pri prvom použití otvorí kartu prehliadača na `https://iam.wink.travel`.
 
 5. **Prihláste sa do Wink** a schváľte povolenia. Servery sa v nastaveniach zafarbia na zeleno po autentifikácii.
 </Steps>
@@ -253,7 +253,7 @@ Cline je rozšírenie pre VS Code s integrovaným správcom MCP serverov. Nie je
 
 2. Kliknite na **ikonu Cline** v paneli aktivít (ľavý bočný panel) pre otvorenie Cline panela.
 
-3. Kliknite na ikonu **MCP Serverov** (ikona zástrčky) v Cline paneli, potom vyberte **Upraviť nastavenia MCP**.
+3. Kliknite na ikonu **MCP Servery** (ikona zástrčky) v Cline paneli, potom vyberte **Upraviť nastavenia MCP**.
 
 4. VS Code otvorí `cline_mcp_settings.json`. Pridajte Wink záznamy:
 
@@ -286,22 +286,15 @@ V paneli MCP Serverov kliknite na **Pridať server** a priamo vložte `https://a
 
 ---
 
-## Referencia rozsahov
+## Rozsahy (Scopes)
 
-Keď schválite obrazovku súhlasu, uvidíte rozpis požiadaviek agenta. Wink zoskupuje povolenia podľa funkčných oblastí:
+Keď schválite obrazovku súhlasu, uvidíte rozpis požadovaných oprávnení. MCP klienti používajú rovnakú slovnú zásobu povolení ako zvyšok platformy — pozrite si kompletný
+[referenčný zoznam rozsahov na stránke Autentifikácia](/sk/developers/authentication#scopes).
 
-| Skupina rozsahov | Rozsahy | Čo odomykajú |
-|------------------|---------|--------------|
-| **MCP transport** | `mcp.read` `mcp.write` `mcp.remove` | Povinné pre pripojenie k MCP serveru |
-| **Účet** | `account.read` `account.write` `account.remove` | Správa entít, členov tímu, nastavení, aplikácií |
-| **Rezervácia** | `booking.read` `booking.write` `booking.remove` | Vyhľadávanie, zobrazenie, vytvorenie, zrušenie a vrátenie rezervácií |
-| **Inventár** | `inventory.read` `inventory.write` `inventory.remove` | Nehnuteľnosti, izby, ceny, vybavenie, dostupnosť |
-| **Analytika** | `analytics.read` | Analytika rezervácií, výkaz príjmov, rebríčky |
-| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Príspevky na sociálnych sieťach, kampane, predajné kanály, promo akcie |
-| **Obsah** | `content.read` `content.write` `content.remove` | Multimédiá, skrátené URL, syndikované položky, mapy |
-| **Platba** | `payment.read` `payment.write` | Kniha účtov, výplaty, finančné prehľady, výbery |
+Dve špecifiká MCP:
 
-AI klient žiada iba o rozsahy, ktoré potrebuje. Môžete zamietnuť jednotlivé povolenia na obrazovke súhlasu — nástroje, ktoré vyžadujú zamietnutý rozsah, vrátia chybu pri volaní.
+- **Rozsahy `mcp.read`, `mcp.write`, `mcp.remove` sú navyše potrebné** na otvorenie MCP transportu. Klient s rozsahom `mcp.*` má prístup k `/mcp`, ale každý nástroj, ktorý volá, stále vyžaduje príslušný rozsah sekcie endpointu (napr. `booking.read`).
+- **AI klient žiada iba o rozsahy, ktoré potrebuje.** Na obrazovke súhlasu môžete zamietnuť jednotlivé povolenia — nástroje vyžadujúce zamietnutý rozsah vrátia chybu pri volaní.
 
 ---
 
@@ -309,7 +302,7 @@ AI klient žiada iba o rozsahy, ktoré potrebuje. Môžete zamietnuť jednotliv�
 
 **Karta prehliadača sa neotvorí**
 
-Váš AI klient možno ešte nepodporuje interaktívny PKCE tok. Overte, či používate aktuálnu verziu:
+Váš AI klient možno ešte nepodporuje interaktívny PKCE tok. Overte, že používate aktuálnu verziu:
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI:** `npm install -g @openai/codex`
 - **Claude Desktop / ChatGPT desktop:** aktualizujte cez vstavaný updater aplikácie
@@ -332,11 +325,11 @@ Nástroj vyžaduje rozsah, ktorý ste na obrazovke súhlasu neschválili. Znovu 
 
 **Server sa zobrazuje, ale volania nástrojov vracajú "account not found"**
 
-Ste prihlásení do Wink účtu, ktorý nemá spravovanú entitu. Prejdite na [Wink Portal](https://app.wink.travel) a uistite sa, že váš účet je správne nastavený pred použitím MCP servera.
+Ste prihlásený do Wink účtu, ktorý nemá spravovanú entitu. Prejdite na [Wink Portal](https://app.wink.travel) a uistite sa, že váš účet je správne nastavený pred použitím MCP servera.
 
 **Token vyprší počas relácie**
 
-Tokeny sú platné 3 hodiny. Claude Code a Claude Desktop ticho obnovujú tokeny bez prerušenia relácie. Ak sa po dlhšom nečinnom období objavia chyby autentifikácie, zadajte novú správu — klient sa automaticky znovu autentifikuje.
+Tokeny sú platné 3 hodiny. Claude Code a Claude Desktop ticho obnovujú tokeny bez prerušenia relácie. Ak po dlhšom nečinnom období vidíte chyby autentifikácie, zadajte novú správu — klient sa automaticky znovu autentifikuje.
 
 **Codex CLI hlási "MCP server unreachable"**
 
@@ -348,7 +341,7 @@ Podpora MCP vyžaduje verziu ChatGPT desktop aplikácie **1.2024.352** alebo nov
 
 **Cursor server zobrazuje červenú / "Failed to connect"**
 
-Overte, či je váš `~/.cursor/mcp.json` platný JSON a obsahuje `"type": "http"`. Potom prejdite na **Nastavenia → Nastavenia Cursor → MCP** a kliknite na **Obnoviť**. Ak chyba pretrváva, úplne reštartujte Cursor — zmeny konfigurácie sa nie vždy prejavia bez reštartu.
+Overte, že váš `~/.cursor/mcp.json` je platný JSON a obsahuje `"type": "http"`. Potom prejdite na **Nastavenia → Nastavenia Cursor → MCP** a kliknite na **Obnoviť**. Ak chyba pretrváva, úplne reštartujte Cursor — zmeny konfigurácie sa nie vždy prejavia bez reštartu.
 
 **Windsurf MCP servery sa nezobrazujú v nastaveniach**
 

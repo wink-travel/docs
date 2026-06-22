@@ -25,7 +25,7 @@ Server MCP Wink menggunakan alur **OAuth2 Authorization Code + PKCE** dan menduk
 3. Klien membuka **tab browser** ke `https://iam.wink.travel`. Anda masuk dengan akun Wink dan menyetujui izin yang diminta pada layar persetujuan.
 4. Wink mengeluarkan **token akses** yang terkait dengan akun dan identitas Anda.
 5. Klien AI melampirkan token ke setiap permintaan MCP. Semua hasil alat secara otomatis dibatasi pada entitas pengelola Anda.
-6. Token kedaluwarsa setelah 3 jam. Klien AI Anda memperbarui token secara diam-diam di latar belakang tanpa meminta lagi.
+6. Token kedaluwarsa setelah 3 jam. Klien AI Anda menyegarkan token secara diam-diam di latar belakang tanpa meminta lagi.
 
 Setiap panggilan alat dijalankan **dengan identitas Anda** — aturan ACL yang sama yang melindungi portal web juga berlaku untuk agen AI.
 
@@ -126,7 +126,7 @@ Tambahkan `--scope project` ke `claude mcp add` dan Claude Code akan menulis URL
    }
    ```
 
-4. Mulai Codex. Saat pertama kali digunakan, Codex membuka tab browser ke `https://iam.wink.travel`.
+4. Mulai Codex. Pada penggunaan pertama, Codex membuka tab browser ke `https://iam.wink.travel`.
 
 5. **Masuk ke Wink** dan setujui izin yang diminta.
 
@@ -198,7 +198,7 @@ Server MCP hanya dapat dikonfigurasi di **aplikasi desktop**. Antarmuka web Chat
 
 4. Cursor membuka tab browser ke `https://iam.wink.travel`. **Masuk ke Wink** dan setujui izin.
 
-5. Buka obrolan (`Ctrl+L` / `Cmd+L`) dan minta Cursor menampilkan daftar alat Wink untuk mengonfirmasi koneksi.
+5. Buka obrolan (`Ctrl+L` / `Cmd+L`) dan minta Cursor daftar alat Wink yang tersedia untuk mengonfirmasi koneksi.
 </Steps>
 
 :::tip[Konfigurasi berbasis proyek]
@@ -232,9 +232,9 @@ Anda juga dapat meletakkan file `mcp.json` di root proyek Anda daripada di `~/.c
 
 3. **Mulai ulang Windsurf sepenuhnya** (File → Quit, lalu buka kembali).
 
-4. Pergi ke **Settings → MCP Servers** dan verifikasi kedua server tampil sebagai terhubung. Windsurf membuka tab browser ke `https://iam.wink.travel` saat pertama kali digunakan.
+4. Pergi ke **Settings → MCP Servers** dan verifikasi kedua server tampil sebagai terhubung. Windsurf membuka tab browser ke `https://iam.wink.travel` pada penggunaan pertama.
 
-5. **Masuk ke Wink** dan setujui izin. Server berubah hijau di panel pengaturan setelah autentikasi.
+5. **Masuk ke Wink** dan setujui izin. Server berubah menjadi hijau di panel pengaturan setelah autentikasi.
 </Steps>
 
 :::note
@@ -286,33 +286,26 @@ Di panel MCP Servers, klik **Add Server** dan tempel `https://api.wink.travel/mc
 
 ---
 
-## Referensi scope
+## Ruang Lingkup (Scopes)
 
-Saat Anda menyetujui layar persetujuan, Anda akan melihat rincian apa yang diminta agen. Wink mengelompokkan izin berdasarkan area fungsional:
+Saat Anda menyetujui layar persetujuan, Anda akan melihat rincian apa yang diminta agen. Klien MCP menggunakan kosakata izin yang sama dengan platform lainnya — lihat
+[referensi ruang lingkup lengkap di halaman Autentikasi](/id/developers/authentication#scopes).
 
-| Grup scope | Scope | Apa yang dibuka |
-|------------|-------|-----------------|
-| **Transport MCP** | `mcp.read` `mcp.write` `mcp.remove` | Diperlukan untuk menghubungkan ke server MCP manapun |
-| **Akun** | `account.read` `account.write` `account.remove` | Entitas pengelola, anggota tim, pengaturan, aplikasi |
-| **Pemesanan** | `booking.read` `booking.write` `booking.remove` | Cari, lihat, buat, batalkan, dan refund pemesanan |
-| **Inventaris** | `inventory.read` `inventory.write` `inventory.remove` | Properti, kamar, tarif, fasilitas, ketersediaan |
-| **Analitik** | `analytics.read` | Analitik pemesanan, laporan pendapatan, papan peringkat |
-| **Pemasaran** | `marketing.read` `marketing.write` `marketing.remove` | Postingan sosial, kampanye, saluran penjualan, promosi |
-| **Konten** | `content.read` `content.write` `content.remove` | Multimedia, URL pendek, item yang dapat disindikasi, peta |
-| **Pembayaran** | `payment.read` `payment.write` | Buku besar, pembayaran, rincian keuangan, penarikan |
+Dua hal khusus untuk MCP:
 
-Klien AI hanya meminta scope yang dibutuhkan. Anda dapat menolak izin individual pada layar persetujuan — alat yang memerlukan scope yang ditolak akan mengembalikan error saat dipanggil.
+- **Ruang lingkup `mcp.read` `mcp.write` `mcp.remove` juga diperlukan** untuk membuka transport MCP. Klien yang memegang ruang lingkup `mcp.*` diizinkan ke `/mcp`, tetapi setiap alat yang dipanggil tetap menerapkan ruang lingkup bagian dari endpoint yang dibungkusnya (misal `booking.read`).
+- **Klien AI hanya meminta ruang lingkup yang dibutuhkan.** Anda dapat menolak izin individual di layar persetujuan — alat yang memerlukan ruang lingkup yang ditolak akan mengembalikan kesalahan saat dipanggil.
 
 ---
 
-## Pemecahan masalah
+## Pemecahan Masalah
 
 **Tab browser tidak terbuka**
 
 Klien AI Anda mungkin belum mendukung alur PKCE interaktif. Pastikan Anda menjalankan versi terbaru:
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI:** `npm install -g @openai/codex`
-- **Claude Desktop / ChatGPT desktop:** perbarui dari updater bawaan aplikasi
+- **Claude Desktop / ChatGPT desktop:** perbarui dari pembaruan bawaan aplikasi
 
 **`401 Unauthorized` setelah masuk**
 
@@ -324,11 +317,11 @@ claude mcp remove wink-inventory
 claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-Untuk Claude Desktop dan ChatGPT, hapus entri server dari pengaturan, restart aplikasi, dan tambahkan lagi.
+Untuk Claude Desktop dan ChatGPT, hapus entri server dari pengaturan, mulai ulang aplikasi, dan tambahkan lagi.
 
 **`403 Forbidden` saat memanggil alat tertentu**
 
-Alat tersebut memerlukan scope yang tidak Anda setujui pada layar persetujuan. Sambungkan ulang server — layar persetujuan akan muncul lagi dan Anda dapat menyetujui izin yang hilang.
+Alat memerlukan ruang lingkup yang tidak Anda setujui di layar persetujuan. Sambungkan kembali server — layar persetujuan akan muncul lagi dan Anda dapat menyetujui izin yang hilang.
 
 **Server muncul tapi panggilan alat mengembalikan "account not found"**
 
@@ -336,19 +329,19 @@ Anda masuk ke akun Wink yang tidak memiliki entitas pengelola. Kunjungi [Wink Po
 
 **Token kedaluwarsa di tengah sesi**
 
-Token berlaku selama 3 jam. Claude Code dan Claude Desktop memperbarui token secara diam-diam tanpa mengganggu sesi Anda. Jika Anda melihat error autentikasi setelah lama tidak aktif, ketik pesan baru — klien akan mengautentikasi ulang secara otomatis.
+Token berlaku selama 3 jam. Claude Code dan Claude Desktop menyegarkan token secara diam-diam tanpa mengganggu sesi Anda. Jika Anda melihat kesalahan autentikasi setelah periode diam lama, ketik pesan baru — klien akan mengautentikasi ulang secara otomatis.
 
 **Codex CLI menunjukkan "MCP server unreachable"**
 
 Periksa bahwa `~/.codex/config.json` adalah JSON valid (tanpa koma di akhir) dan `"type": "http"` sudah disetel. Codex memerlukan transport HTTP untuk server jarak jauh; transport stdio hanya untuk binary lokal.
 
-**Menu "Connectors" ChatGPT tidak muncul**
+**Menu "Connectors" ChatGPT hilang**
 
 Dukungan MCP memerlukan aplikasi desktop ChatGPT versi **1.2024.352** atau lebih baru dan langganan Plus, Pro, Team, atau Enterprise aktif. Perbarui aplikasi dan periksa paket Anda di Settings → Account.
 
 **Server Cursor berwarna merah / "Failed to connect"**
 
-Pastikan `~/.cursor/mcp.json` adalah JSON valid dan berisi `"type": "http"`. Kemudian pergi ke **Settings → Cursor Settings → MCP** dan klik **Refresh**. Jika error berlanjut, mulai ulang Cursor sepenuhnya — perubahan konfigurasi tidak selalu terdeteksi tanpa restart.
+Pastikan `~/.cursor/mcp.json` adalah JSON valid dan berisi `"type": "http"`. Lalu pergi ke **Settings → Cursor Settings → MCP** dan klik **Refresh**. Jika kesalahan berlanjut, mulai ulang Cursor sepenuhnya — perubahan konfigurasi tidak selalu terdeteksi tanpa restart.
 
 **Server MCP Windsurf tidak muncul di pengaturan**
 
@@ -356,7 +349,7 @@ Windsurf memerlukan restart penuh (bukan hanya reload jendela) untuk mendeteksi 
 
 **Opsi "Add Server" Cline tidak terlihat**
 
-Pengelola server MCP memerlukan Cline **2.0** atau lebih baru. Buka panel Extensions VS Code, cari Cline, dan klik **Update** jika tersedia. Setelah memperbarui, muat ulang VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+Pengelola server MCP memerlukan Cline **2.0** atau lebih baru. Buka panel Ekstensi VS Code, cari Cline, dan klik **Update** jika tersedia. Setelah memperbarui, muat ulang VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

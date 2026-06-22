@@ -15,14 +15,14 @@ Wink IAM -autentikointipalvelin tukee yleisiä OAuth2-päätepisteitä:
 - /oauth2/userinfo
 :::
 
-Sovellus antaa sinulle `Client ID` ja `Secret Key`, joita tarvitset luodaksesi autentikoidun OAuth2-istunnon, jota voit käyttää kommunikoidessasi Wink- ja TripPay-rajapintojen kanssa.
+Sovellus antaa sinulle `Client ID`-tunnuksen ja `Secret Key`-avaimen, joita tarvitset luodaksesi autentikoidun OAuth2-istunnon, jota voit käyttää kommunikoidessasi Wink- ja TripPay-rajapintojen kanssa.
 
 Tässä ovat vaiheet autentikoidun istunnon luomiseksi.
 
 **Vaihe 1**. Hanki käyttöoikeustunnus staging-ympäristössä tai tuotantoympäristössämme:
 
 Todennäköisesti käytät kielen omaa vankkaa OAuth2-kirjastoa, joka hoitaa kaiken raskaan työn puolestasi.
-Esimerkkimme näyttävät peruskäytön komentoriviltä käyttäen `curl`-komentoa.
+Esimerkeissämme näytämme peruskäytön komentoriviltä käyttäen `curl`-komentoa.
 
 ### Staging
 
@@ -61,8 +61,47 @@ Kun teet kutsun mihin tahansa päätepisteeseemme, sisällytä seuraavat otsikot
 - `Wink-Version` = `2.0` Uusin - *Katso API-dokumentaatiostamme muut saatavilla olevat versiot.*
 - `Authorization` = `Bearer ${access_token}` *Lisää käyttöoikeustunnuksesi.*
 
-:::tip
-Voit testata kaikkia API-rajapintoja ilman, että kirjoitat yhtään koodiriviä ennen aloittamista.
+## Oikeudet (Scopes)
 
-Hanki 'Client ID' ja 'Secret Key' jostakin sovelluksestasi ja siirry mihin tahansa [APIs](/fi/api)-sivuillemme.
+**Scope** on lupa, jonka käyttöoikeustunnuksesi kantaa mukanaan. Kun pyydät tunnusta, annat
+välilyönnillä erotellun listan scopeja `scope`-parametrissa, ja tunnus voi käyttää vain niitä alueita,
+joita kyseiset scopet kattavat. `client_credentials`-grantilla asetat scopet tunnuspyyntöösi —
+katso yllä olevat [`curl`](#staging) esimerkit ja [Postman-käyttöohje](/fi/developers/setup#postman).
+
+Scopejen nimet ovat muodossa `section.action`, jossa toiminto on yksi seuraavista:
+
+- `read` — resurssien katselu (turvalliset `GET`-pyynnöt)
+- `write` — resurssien luonti ja päivitys (`POST` / `PUT` / `PATCH`)
+- `remove` — resurssien poisto (`DELETE`)
+
+Wink ryhmittelee oikeudet toiminnallisen alueen mukaan. Pyydä vain ne scopet, joita integraatiosi tarvitsee:
+
+| Scope-ryhmä | Scopet | Mitä ne avaavat | Riski |
+|-------------|--------|-----------------|-------|
+| **Tili** | `account.read` `account.write` `account.remove` | Entiteettien, tiimin jäsenten, asetusten, sovellusten hallinta | Matala–Keskitaso |
+| **Varasto** | `inventory.read` `inventory.write` `inventory.remove` | Kiinteistöt, huonetyypit, hintasuunnitelmat, hinnat, lisäpalvelut, saatavuus, aktiviteetit, nähtävyydet | Matala–Keskitaso |
+| **Varaus** | `booking.read` `booking.write` `booking.remove` | Varausten haku, katselu, luonti, peruutus ja hyvitys; kassatoiminnot; peruutusehdot | Matala–Keskitaso |
+| **Markkinointi** | `marketing.read` `marketing.write` `marketing.remove` | Kampanjat, edut, myyntikanavat, WinkLinks, hallinnoitu some, kanta-asiakkuus | Matala–Keskitaso |
+| **Sisältö** | `content.read` `content.write` `content.remove` | Kiinteistökuvaukset, arvostelut, media, kartat, vihreä-indeksi | Matala–Keskitaso |
+| **Analytiikka** | `analytics.read` `analytics.write` `analytics.remove` | Raportointi ja analytiikka — tulot, tulostaulut | Matala–Keskitaso |
+| **Integraatiot** | `integrations.read` `integrations.write` `integrations.remove` | Kanavahallinnot, ulkoiset varausjärjestelmät, Google Hotel, ilmoituspäätepisteet, varaus-synkronointi | Matala–Keskitaso |
+| **Maksu** | `payment.read` `payment.write` `payment.remove` | Maksujen käsittely, Stripe, Revolut, maksut, tilaukset | Keskitaso–Korkea |
+| **Kirjanpito** | `accounting.read` `accounting.write` `accounting.remove` | Kirjanpito, nostokirjanpito, sovitus | Keskitaso–Korkea |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Avaaminen [MCP-liikenteelle](/fi/developers/mcp) (`/mcp`) tekoälyagentteja varten | Matala–Keskitaso |
+
+:::note
+**Riski**-sarake kuvaa herkkyyttä: `read` on alhaisin ja `write`/`remove` korkein
+taso. **Maksu** ja **Kirjanpito** valvovat rahaliikennettä, joten niihin liittyy kohonnut riski.
+:::
+
+Muutama huomio:
+
+- **Pyydä vain välttämätön.** Pyydä vain ne scopet, joita integraatiosi todella käyttää — laajemmat oikeudet sisältävä tunnus aiheuttaa suuremman vahingon, jos se vuotaa.
+- **Tuntemattomat scopet hylätään.** Scopen pyytäminen, johon sovelluksesi ei ole rekisteröity tai joka ei ole olemassa, epäonnistuu tunnuksen myöntämisessä.
+- **`mcp.*` on vain tekoälyagenttisovelluksille.** Tarvitset sen MCP-liikenteen avaamiseen; tavallisiin REST API -kutsuihin sitä ei tarvita. Katso [Model Context Protocol](/fi/developers/mcp).
+
+:::tip
+Voit testata kaikkia API-rajapintoja ilman koodin kirjoittamista ennen aloittamista.
+
+Hanki 'Client ID' ja 'Secret Key' jostakin sovelluksestasi ja siirry mihin tahansa [API-rajapintaan](/fi/api).
 :::

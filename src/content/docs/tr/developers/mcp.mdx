@@ -24,10 +24,10 @@ Wink MCP sunucuları **OAuth2 Yetkilendirme Kodu + PKCE** akışını kullanır 
 2. İstemci, **Dinamik İstemci Kaydı** yoluyla kendini kaydeder — manuel uygulama kurulumu gerekmez.
 3. İstemci, `https://iam.wink.travel` adresinde bir **tarayıcı sekmesi** açar. Wink hesabınızla oturum açar ve izin ekranında istenen izinleri onaylarsınız.
 4. Wink, hesabınıza özel ve kimliğinize bağlı bir **erişim belirteci** verir.
-5. AI istemcisi, her MCP isteğine bu belirteci ekler. Tüm araç sonuçları otomatik olarak yönetici varlığınıza göre sınırlandırılır.
-6. Belirteçler 3 saat sonra süresi dolar. AI istemciniz, arka planda sessizce yeniler, tekrar istemez.
+5. AI istemcisi, her MCP isteğine bu belirteci ekler. Tüm araç sonuçları otomatik olarak yönetim varlığınıza göre sınırlandırılır.
+6. Belirteçler 3 saat sonra sona erer. AI istemciniz, arka planda sessizce yeniler ve tekrar istemez.
 
-Her araç çağrısı **kimliğiniz altında** çalışır — web portalını koruyan aynı ACL kuralları AI ajanı için de geçerlidir.
+Her araç çağrısı **kimliğiniz altında** çalışır — web portalını koruyan aynı ACL kuralları AI ajan için de geçerlidir.
 
 ---
 
@@ -49,7 +49,7 @@ Her araç çağrısı **kimliğiniz altında** çalışır — web portalını k
 
 3. Claude Code sunucuya bağlanır, yetkilendirme sunucusunu keşfeder ve varsayılan tarayıcınızı açar.
 
-4. **Wink'te oturum açın** ve izin ekranında izin isteğini onaylayın.
+4. **Wink'te oturum açın** ve izin ekranındaki istekleri onaylayın.
 
 5. Claude Code bağlantıyı doğrular. Sunucunun göründüğünü ve araçların yüklendiğini kontrol etmek için `/mcp` yazın.
 </Steps>
@@ -59,7 +59,7 @@ Integrations sunucusunu da eklemek için:
 claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
 ```
 
-:::tip[Ekibinizle paylaşın]
+:::tip[Ekip ile paylaşın]
 `claude mcp add` komutuna `--scope project` ekleyin, Claude Code sunucu URL'sini depo kökünde `.mcp.json` dosyasına yazar. Bu dosyayı commit edin — her ekip üyesi ilk bağlantıda kendi tarayıcı oturum açmasını tamamlar.
 :::
 
@@ -166,7 +166,7 @@ MCP sunucu desteği, Plus, Pro, Team ve Enterprise aboneleri için **ChatGPT mas
 </Steps>
 
 :::note[Web uygulaması sınırlaması]
-MCP sunucuları yalnızca **masaüstü uygulamada** yapılandırılabilir. chatgpt.com web arayüzü özel MCP sunucularını desteklemez.
+MCP sunucuları yalnızca **masaüstü uygulamasında** yapılandırılabilir. chatgpt.com web arayüzü özel MCP sunucularını desteklemez.
 :::
 
   </TabItem>
@@ -202,7 +202,7 @@ MCP sunucuları yalnızca **masaüstü uygulamada** yapılandırılabilir. chatg
 </Steps>
 
 :::tip[Proje kapsamlı yapılandırma]
-`~/.cursor/` yerine projenizin kök dizinine bir `mcp.json` dosyası da koyabilirsiniz. Proje düzeyindeki yapılandırma önceliklidir ve projeyi Cursor'da açan her ekip üyesi için sunucuları kullanılabilir yapar.
+`~/.cursor/` yerine projenizin kök dizinine bir `mcp.json` dosyası da koyabilirsiniz. Proje düzeyindeki yapılandırma önceliklidir ve projeyi Cursor'da açan her ekip üyesi için sunucuları kullanılabilir kılar.
 :::
 
   </TabItem>
@@ -230,11 +230,11 @@ MCP sunucuları yalnızca **masaüstü uygulamada** yapılandırılabilir. chatg
    }
    ```
 
-3. Windsurf'u **tamamen yeniden başlatın** (Dosya → Çıkış, sonra yeniden açın).
+3. Windsurf'u **tamamen yeniden başlatın** (Dosya → Çıkış, sonra tekrar açın).
 
 4. **Ayarlar → MCP Sunucuları** bölümüne gidin ve her iki sunucunun bağlı olduğunu doğrulayın. Windsurf, ilk kullanımda `https://iam.wink.travel` adresinde bir tarayıcı sekmesi açar.
 
-5. **Wink'te oturum açın** ve izinleri onaylayın. Kimlik doğrulandıktan sonra sunucular ayarlar panelinde yeşile döner.
+5. **Wink'te oturum açın** ve izinleri onaylayın. Kimlik doğrulama tamamlandığında sunucular ayarlar panelinde yeşile döner.
 </Steps>
 
 :::note
@@ -286,26 +286,18 @@ MCP Sunucuları panelinde **Sunucu Ekle**'ye tıklayın ve `https://api.wink.tra
 
 ---
 
-## Kapsam referansı
+## Kapsamlar
 
-İzin ekranını onayladığınızda, ajanın istediği izinlerin dökümünü görürsünüz. Wink izinleri işlevsel alanlara göre gruplar:
+İzin ekranını onayladığınızda, ajanın hangi izinleri istediğinin dökümünü görürsünüz. MCP istemcileri, platformun geri kalanıyla aynı izin sözlüğünü kullanır — tam liste için [Kimlik Doğrulama sayfasındaki kapsam referansına](/tr/developers/authentication#scopes) bakın.
 
-| Kapsam grubu | Kapsamlar | Neyi açar |
-|-------------|-----------|-----------|
-| **MCP transport** | `mcp.read` `mcp.write` `mcp.remove` | Her iki MCP sunucusuna bağlanmak için gereklidir |
-| **Hesap** | `account.read` `account.write` `account.remove` | Yönetici varlıklar, ekip üyeleri, ayarlar, uygulamalar |
-| **Rezervasyon** | `booking.read` `booking.write` `booking.remove` | Rezervasyon arama, görüntüleme, oluşturma, iptal ve iade |
-| **Envanter** | `inventory.read` `inventory.write` `inventory.remove` | Mülkler, odalar, fiyatlar, olanaklar, müsaitlik |
-| **Analitik** | `analytics.read` | Rezervasyon analizleri, gelir raporları, lider tabloları |
-| **Pazarlama** | `marketing.read` `marketing.write` `marketing.remove` | Sosyal gönderiler, kampanyalar, satış kanalları, promosyonlar |
-| **İçerik** | `content.read` `content.write` `content.remove` | Multimedya, kısaltılmış URL'ler, paylaşımlı öğeler, haritalar |
-| **Ödeme** | `payment.read` `payment.write` | Defter, ödemeler, finansal döküm, çekimler |
+MCP'ye özgü iki şey vardır:
 
-AI istemcisi yalnızca ihtiyaç duyduğu kapsamları ister. İzin ekranında bireysel izinleri reddedebilirsiniz — reddedilen kapsam gerektiren araçlar çağrıldığında hata döner.
+- **`mcp.read` `mcp.write` `mcp.remove` kapsamları MCP taşımasını açmak için ek olarak gereklidir.** `mcp.*` kapsamına sahip bir istemci `/mcp` yoluna erişebilir, ancak çağırdığı her araç yine de sarmaladığı uç noktanın bölüm kapsamını uygular (örneğin `booking.read`).
+- **AI istemcisi yalnızca ihtiyaç duyduğu kapsamları ister.** İzin ekranında bireysel izinleri reddedebilirsiniz — reddedilen kapsam gerektiren araçlar çağrıldığında hata döner.
 
 ---
 
-## Sorun giderme
+## Sorun Giderme
 
 **Tarayıcı sekmesi açılmıyor**
 
@@ -324,7 +316,7 @@ claude mcp remove wink-inventory
 claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-Claude Desktop ve ChatGPT için ayarlardan sunucu girdisini kaldırın, uygulamayı yeniden başlatın ve tekrar ekleyin.
+Claude Desktop ve ChatGPT için, ayarlardan sunucu girdisini kaldırın, uygulamayı yeniden başlatın ve tekrar ekleyin.
 
 **Belirli bir araç çağrısında `403 Forbidden` hatası**
 
@@ -332,15 +324,15 @@ Araç, izin ekranında onaylamadığınız bir kapsam gerektiriyor. Sunucuyu yen
 
 **Sunucu görünüyor ama araç çağrıları "hesap bulunamadı" hatası veriyor**
 
-Wink hesabınızda yönetici varlık yok. MCP sunucusunu kullanmadan önce [Wink Portal](https://app.wink.travel) adresine gidip hesabınızın kurulu olduğundan emin olun.
+Wink hesabınızda yönetim varlığı yok. MCP sunucusunu kullanmadan önce [Wink Portal](https://app.wink.travel) adresine gidip hesabınızın kurulu olduğundan emin olun.
 
-**Oturum sırasında belirteç süresi doluyor**
+**Belirteç oturum ortasında sona eriyor**
 
-Belirteçler 3 saat geçerlidir. Claude Code ve Claude Desktop belirteçleri arka planda sessizce yeniler. Uzun süre boş kaldıktan sonra kimlik doğrulama hatası alırsanız yeni bir mesaj yazın — istemci otomatik olarak yeniden kimlik doğrulaması yapar.
+Belirteçler 3 saat geçerlidir. Claude Code ve Claude Desktop belirteçleri arka planda sessizce yeniler, oturumunuz kesilmez. Uzun süre boş kaldıktan sonra kimlik doğrulama hatası alırsanız yeni bir mesaj yazın — istemci otomatik olarak yeniden kimlik doğrulaması yapar.
 
 **Codex CLI "MCP sunucusuna ulaşılamıyor" hatası veriyor**
 
-`~/.codex/config.json` dosyanızın geçerli JSON olduğundan (sonunda virgül yok) ve `"type": "http"` olarak ayarlandığından emin olun. Codex, uzak sunucular için HTTP taşıma gerektirir; stdio taşıma yalnızca yerel ikili dosyalar içindir.
+`~/.codex/config.json` dosyanızın geçerli JSON olduğundan (sonunda virgül yok) ve `"type": "http"` olarak ayarlandığından emin olun. Codex, uzak sunucular için HTTP taşımasını gerektirir; stdio taşıması yalnızca yerel ikililer içindir.
 
 **ChatGPT "Bağlayıcılar" menüsü eksik**
 
@@ -352,7 +344,7 @@ MCP desteği için ChatGPT masaüstü uygulaması sürüm **1.2024.352** veya da
 
 **Windsurf MCP sunucuları ayarlarda görünmüyor**
 
-Windsurf, `mcp_config.json` değişikliklerini algılamak için tam yeniden başlatma (sadece pencere yenileme değil) gerektirir. **Dosya → Çıkış** yapıp yeniden açın. Sunucular hala görünmüyorsa, **Yardım → Windsurf Hakkında** bölümünden Windsurf sürümünüzün **1.4+** olduğundan emin olun.
+Windsurf, `mcp_config.json` değişikliklerini algılamak için tam yeniden başlatma (sadece pencere yenileme değil) gerektirir. **Dosya → Çıkış** yapıp yeniden açın. Sunucular hâlâ görünmüyorsa Windsurf sürümünüzün **1.4+** olduğundan **Yardım → Windsurf Hakkında** bölümünden emin olun.
 
 **Cline "Sunucu Ekle" seçeneği görünmüyor**
 

@@ -1,18 +1,18 @@
 ---
 title: Máy chủ MCP
-description: Kết nối các đại lý AI với nền tảng Wink qua Model Context Protocol. Các máy chủ MCP được xác thực cho phép đại lý của bạn truy cập trực tiếp vào kho hàng, đặt phòng, tích hợp quản lý kênh và nhiều hơn nữa — được bảo mật bằng đăng nhập OAuth2 tương tác.
+description: Kết nối các đại lý AI với nền tảng Wink qua Model Context Protocol. Máy chủ MCP được xác thực cho phép đại lý của bạn truy cập trực tiếp vào kho hàng, đặt phòng, tích hợp quản lý kênh và nhiều hơn nữa — được bảo mật bằng đăng nhập OAuth2 tương tác.
 sidebar:
   order: 10
 ---
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-Wink cung cấp hai máy chủ MCP được xác thực. Cả hai đều sử dụng **đăng nhập OAuth2 tương tác** (luồng mã ủy quyền PKCE) — đại lý AI của bạn sẽ mở một tab trình duyệt để bạn đăng nhập bằng tài khoản Wink. Không cần quản lý bí mật khách hàng.
+Wink cung cấp hai máy chủ MCP được xác thực. Cả hai đều sử dụng **đăng nhập OAuth2 tương tác** (luồng mã ủy quyền PKCE) — đại lý AI của bạn mở một tab trình duyệt để bạn đăng nhập bằng tài khoản Wink. Không cần quản lý bí mật khách hàng.
 
 | Máy chủ | URL | Chức năng |
 |--------|-----|--------------|
 | **Inventory API** | `https://api.wink.travel/mcp` | Kho hàng, đặt phòng, giá, kênh bán hàng, phân tích và tất cả các hoạt động trên nền tảng |
-| **Integrations** | `https://integrations.wink.travel/mcp` | Tích hợp quản lý kênh — đồng bộ bất động sản, giá và tình trạng phòng với các OTA |
+| **Integrations** | `https://integrations.wink.travel/mcp` | Tích hợp quản lý kênh — đồng bộ bất động sản, giá và tình trạng với các OTA |
 
 ---
 
@@ -23,8 +23,8 @@ Máy chủ MCP của Wink sử dụng luồng **OAuth2 Authorization Code + PKCE
 1. Khách hàng AI của bạn phát hiện máy chủ ủy quyền từ metadata `/.well-known/oauth-protected-resource` của điểm cuối MCP.
 2. Khách hàng tự đăng ký qua **Đăng ký Khách hàng Động** — không cần thiết lập ứng dụng thủ công.
 3. Khách hàng mở một **tab trình duyệt** đến `https://iam.wink.travel`. Bạn đăng nhập bằng tài khoản Wink và chấp thuận các quyền được yêu cầu trên màn hình đồng ý.
-4. Wink cấp một **token truy cập** được giới hạn cho tài khoản của bạn và liên kết với danh tính của bạn.
-5. Khách hàng AI đính kèm token vào mọi yêu cầu MCP. Tất cả kết quả công cụ tự động được giới hạn theo thực thể quản lý của bạn.
+4. Wink cấp một **token truy cập** được phạm vi hóa cho tài khoản của bạn và liên kết với danh tính của bạn.
+5. Khách hàng AI đính kèm token vào mọi yêu cầu MCP. Tất cả kết quả công cụ tự động được phạm vi hóa theo thực thể quản lý của bạn.
 6. Token hết hạn sau 3 giờ. Khách hàng AI của bạn làm mới token một cách im lặng trong nền mà không yêu cầu đăng nhập lại.
 
 Mọi cuộc gọi công cụ đều chạy **dưới danh tính của bạn** — các quy tắc ACL bảo vệ cổng web cũng áp dụng cho đại lý AI.
@@ -149,7 +149,7 @@ Hỗ trợ máy chủ MCP có trong **ứng dụng ChatGPT desktop** dành cho n
 
 3. Vào **Connectors** (hoặc **MCP Servers** tùy phiên bản ứng dụng) và nhấp **Add**.
 
-4. Nhập URL máy chủ Wink Inventory:
+4. Nhập URL máy chủ Inventory của Wink:
    ```
    https://api.wink.travel/mcp
    ```
@@ -162,7 +162,7 @@ Hỗ trợ máy chủ MCP có trong **ứng dụng ChatGPT desktop** dành cho n
    https://integrations.wink.travel/mcp
    ```
 
-7. Cả hai máy chủ xuất hiện trong danh sách Connectors của bạn. Bắt đầu cuộc trò chuyện mới — các công cụ Wink sẽ tự động có sẵn.
+7. Cả hai máy chủ xuất hiện trong danh sách Connectors của bạn. Bắt đầu một cuộc trò chuyện mới — các công cụ Wink sẽ tự động có sẵn.
 </Steps>
 
 :::note[Giới hạn ứng dụng web]
@@ -201,8 +201,8 @@ Máy chủ MCP chỉ có thể cấu hình trong **ứng dụng desktop**. Giao 
 5. Mở một cuộc trò chuyện (`Ctrl+L` / `Cmd+L`) và yêu cầu Cursor liệt kê các công cụ Wink có sẵn để xác nhận kết nối.
 </Steps>
 
-:::tip[Cấu hình theo dự án]
-Bạn cũng có thể đặt file `mcp.json` ở thư mục gốc dự án thay vì trong `~/.cursor/`. Cấu hình cấp dự án sẽ ưu tiên và làm cho các máy chủ có sẵn với mọi thành viên trong nhóm mở dự án trong Cursor.
+:::tip[Cấu hình phạm vi dự án]
+Bạn cũng có thể đặt file `mcp.json` ở thư mục gốc dự án thay vì trong `~/.cursor/`. Cấu hình cấp dự án được ưu tiên và làm cho các máy chủ có sẵn cho mọi thành viên trong nhóm mở dự án trong Cursor.
 :::
 
   </TabItem>
@@ -247,7 +247,7 @@ Hỗ trợ MCP của Windsurf yêu cầu phiên bản **1.4** trở lên. Kiểm
 Cline là tiện ích mở rộng VS Code với trình quản lý máy chủ MCP tích hợp. Không cần chỉnh sửa JSON thủ công.
 
 <Steps>
-1. Cài đặt Cline từ VS Code Marketplace:
+1. Cài đặt Cline từ Marketplace VS Code:
    - Mở VS Code và nhấn `Ctrl+Shift+X` / `Cmd+Shift+X`
    - Tìm **Cline** và nhấp **Install**
 
@@ -278,7 +278,7 @@ Cline là tiện ích mở rộng VS Code với trình quản lý máy chủ MCP
 </Steps>
 
 :::tip[Phương án thay thế: thêm qua URL]
-Trong bảng MCP Servers, nhấp **Add Server** và dán trực tiếp `https://api.wink.travel/mcp`. Cline sẽ tự động điền cấu hình và xử lý xác thực mà không cần chỉnh sửa JSON thủ công.
+Trong bảng MCP Servers, nhấp **Add Server** và dán trực tiếp `https://api.wink.travel/mcp`. Cline tự động điền cấu hình và xử lý xác thực mà không cần chỉnh sửa JSON thủ công.
 :::
 
   </TabItem>
@@ -286,22 +286,15 @@ Trong bảng MCP Servers, nhấp **Add Server** và dán trực tiếp `https://
 
 ---
 
-## Tham chiếu phạm vi
+## Phạm vi
 
-Khi bạn chấp thuận màn hình đồng ý, bạn sẽ thấy phân tích các quyền mà đại lý yêu cầu. Wink nhóm các quyền theo khu vực chức năng:
+Khi bạn chấp thuận màn hình đồng ý, bạn sẽ thấy phân tích chi tiết các quyền mà đại lý yêu cầu. Các khách hàng MCP sử dụng cùng từ vựng quyền như phần còn lại của nền tảng — xem đầy đủ
+[tham chiếu phạm vi trên trang Xác thực](/vi/developers/authentication#scopes).
 
-| Nhóm phạm vi | Phạm vi | Mở khóa chức năng |
-|-------------|--------|-----------------|
-| **MCP transport** | `mcp.read` `mcp.write` `mcp.remove` | Bắt buộc để kết nối với bất kỳ máy chủ MCP nào |
-| **Account** | `account.read` `account.write` `account.remove` | Quản lý thực thể, thành viên nhóm, cài đặt, ứng dụng |
-| **Booking** | `booking.read` `booking.write` `booking.remove` | Tìm kiếm, xem, tạo, hủy và hoàn tiền đặt phòng |
-| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Bất động sản, phòng, giá, tiện nghi, tình trạng phòng |
-| **Analytics** | `analytics.read` | Phân tích đặt phòng, báo cáo doanh thu, bảng xếp hạng |
-| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Bài đăng mạng xã hội, chiến dịch, kênh bán hàng, khuyến mãi |
-| **Content** | `content.read` `content.write` `content.remove` | Đa phương tiện, URL rút gọn, mục có thể phân phối, bản đồ |
-| **Payment** | `payment.read` `payment.write` | Sổ cái, thanh toán, phân tích tài chính, rút tiền |
+Hai điểm đặc thù với MCP:
 
-Khách hàng AI chỉ yêu cầu các phạm vi cần thiết. Bạn có thể từ chối từng quyền trên màn hình đồng ý — các công cụ yêu cầu phạm vi bị từ chối sẽ trả về lỗi khi gọi.
+- **Phạm vi `mcp.read` `mcp.write` `mcp.remove` cũng được yêu cầu** để mở kết nối MCP. Khách hàng có phạm vi `mcp.*` được phép truy cập `/mcp`, nhưng mọi công cụ được gọi vẫn tuân thủ phạm vi phần của điểm cuối mà nó bao bọc (ví dụ `booking.read`).
+- **Khách hàng AI chỉ yêu cầu các phạm vi cần thiết.** Bạn có thể từ chối từng quyền trên màn hình đồng ý — các công cụ yêu cầu phạm vi bị từ chối sẽ trả về lỗi khi được gọi.
 
 ---
 
@@ -309,7 +302,7 @@ Khách hàng AI chỉ yêu cầu các phạm vi cần thiết. Bạn có thể t
 
 **Tab trình duyệt không mở**
 
-Khách hàng AI của bạn có thể chưa hỗ trợ luồng PKCE tương tác. Kiểm tra bạn đang chạy phiên bản mới nhất:
+Khách hàng AI của bạn có thể chưa hỗ trợ luồng PKCE tương tác. Xác nhận bạn đang chạy phiên bản mới:
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI:** `npm install -g @openai/codex`
 - **Claude Desktop / ChatGPT desktop:** cập nhật qua trình cập nhật tích hợp trong ứng dụng
@@ -332,15 +325,15 @@ Công cụ yêu cầu phạm vi bạn không chấp thuận trên màn hình đ�
 
 **Máy chủ xuất hiện nhưng cuộc gọi công cụ trả về "account not found"**
 
-Bạn đang đăng nhập vào tài khoản Wink không có thực thể quản lý. Vào [Wink Portal](https://app.wink.travel) và đảm bảo tài khoản của bạn đã được thiết lập trước khi sử dụng máy chủ MCP.
+Bạn đang đăng nhập vào tài khoản Wink không có thực thể quản lý. Truy cập [Wink Portal](https://app.wink.travel) và đảm bảo tài khoản của bạn đã được thiết lập trước khi sử dụng máy chủ MCP.
 
 **Token hết hạn giữa phiên làm việc**
 
-Token có hiệu lực 3 giờ. Claude Code và Claude Desktop làm mới token im lặng mà không gián đoạn phiên làm việc. Nếu bạn thấy lỗi xác thực sau thời gian không hoạt động dài, gõ tin nhắn mới — khách hàng sẽ tự động xác thực lại.
+Token có hiệu lực 3 giờ. Claude Code và Claude Desktop làm mới token im lặng mà không gián đoạn phiên làm việc. Nếu bạn thấy lỗi xác thực sau thời gian không hoạt động dài, gõ một tin nhắn mới — khách hàng sẽ tự động xác thực lại.
 
 **Codex CLI báo "MCP server unreachable"**
 
-Kiểm tra file `~/.codex/config.json` là JSON hợp lệ (không có dấu phẩy thừa) và `"type": "http"` đã được đặt. Codex yêu cầu giao thức HTTP cho máy chủ từ xa; giao thức stdio chỉ dành cho nhị phân cục bộ.
+Kiểm tra file `~/.codex/config.json` có phải JSON hợp lệ (không có dấu phẩy thừa) và `"type": "http"` đã được đặt. Codex yêu cầu giao thức HTTP cho máy chủ từ xa; giao thức stdio chỉ dành cho nhị phân cục bộ.
 
 **Menu "Connectors" của ChatGPT không hiển thị**
 
@@ -348,7 +341,7 @@ Hỗ trợ MCP yêu cầu ứng dụng ChatGPT desktop phiên bản **1.2024.352
 
 **Máy chủ Cursor hiển thị màu đỏ / "Failed to connect"**
 
-Kiểm tra file `~/.cursor/mcp.json` là JSON hợp lệ và chứa `"type": "http"`. Sau đó vào **Settings → Cursor Settings → MCP** và nhấp **Refresh**. Nếu lỗi vẫn còn, khởi động lại hoàn toàn Cursor — thay đổi cấu hình không phải lúc nào cũng được nhận diện nếu không khởi động lại.
+Xác nhận file `~/.cursor/mcp.json` là JSON hợp lệ và chứa `"type": "http"`. Sau đó vào **Settings → Cursor Settings → MCP** và nhấp **Refresh**. Nếu lỗi vẫn còn, khởi động lại hoàn toàn Cursor — thay đổi cấu hình không phải lúc nào cũng được nhận diện nếu không khởi động lại.
 
 **Máy chủ MCP Windsurf không hiển thị trong cài đặt**
 

@@ -12,7 +12,7 @@ Wink udostępnia dwa uwierzytelnione serwery MCP. Oba korzystają z **interaktyw
 | Serwer | URL | Co robi |
 |--------|-----|---------|
 | **Inventory API** | `https://api.wink.travel/mcp` | Zasoby, rezerwacje, ceny, kanały sprzedaży, analityka i wszystkie operacje platformy |
-| **Integrations** | `https://integrations.wink.travel/mcp` | Integracje channel managerów — synchronizacja obiektów, cen i dostępności z OTA |
+| **Integrations** | `https://integrations.wink.travel/mcp` | Integracje z channel managerami — synchronizacja obiektów, cen i dostępności z OTA |
 
 ---
 
@@ -27,7 +27,7 @@ Serwery MCP Wink używają przepływu **OAuth2 Authorization Code + PKCE** i obs
 5. Klient AI dołącza token do każdego żądania MCP. Wszystkie wyniki narzędzi są automatycznie ograniczone do Twojej jednostki zarządzającej.
 6. Tokeny wygasają po 3 godzinach. Twój klient AI odświeża je w tle bez ponownego pytania o logowanie.
 
-Każde wywołanie narzędzia działa **w Twojej tożsamości** — obowiązują te same zasady ACL, które chronią portal internetowy.
+Każde wywołanie narzędzia działa **w Twojej tożsamości** — obowiązują te same zasady ACL, które chronią portal webowy.
 
 ---
 
@@ -89,7 +89,7 @@ Dodaj `--scope project` do `claude mcp add`, a Claude Code zapisze URL serwera w
    }
    ```
 
-3. **Całkowicie zamknij i uruchom ponownie** Claude Desktop (użyj opcji Quit z paska menu — samo zamknięcie okna nie wystarczy).
+3. **Całkowicie zamknij i uruchom ponownie** Claude Desktop (użyj opcji Quit z menu — samo zamknięcie okna nie wystarczy).
 
 4. Claude Desktop otwiera kartę przeglądarki dla każdego nowego serwera. Zaloguj się do Wink i zatwierdź uprawnienia.
 
@@ -162,7 +162,7 @@ Wsparcie serwerów MCP jest dostępne w **desktopowej aplikacji ChatGPT** dla su
    https://integrations.wink.travel/mcp
    ```
 
-7. Oba serwery pojawią się na liście Connectorów. Rozpocznij nową rozmowę — narzędzia Wink będą dostępne automatycznie.
+7. Oba serwery pojawią się na liście Connectors. Rozpocznij nową rozmowę — narzędzia Wink będą dostępne automatycznie.
 </Steps>
 
 :::note[Ograniczenie aplikacji webowej]
@@ -286,22 +286,15 @@ W panelu MCP Servers kliknij **Add Server** i wklej bezpośrednio `https://api.w
 
 ---
 
-## Odniesienie zakresów
+## Zakresy uprawnień
 
-Po zatwierdzeniu ekranu zgody zobaczysz podział żądanych uprawnień. Wink grupuje uprawnienia według obszarów funkcjonalnych:
+Po zatwierdzeniu ekranu zgody zobaczysz szczegółowy wykaz żądanych uprawnień. Klienci MCP używają tej samej terminologii uprawnień co reszta platformy — zobacz pełny
+[referencyjny wykaz zakresów na stronie Uwierzytelniania](/pl/developers/authentication#scopes).
 
-| Grupa zakresów | Zakresy | Co odblokowują |
-|----------------|---------|----------------|
-| **Transport MCP** | `mcp.read` `mcp.write` `mcp.remove` | Wymagane do połączenia z dowolnym serwerem MCP |
-| **Konto** | `account.read` `account.write` `account.remove` | Jednostki zarządzające, członkowie zespołu, ustawienia, aplikacje |
-| **Rezerwacja** | `booking.read` `booking.write` `booking.remove` | Wyszukiwanie, przeglądanie, tworzenie, anulowanie i zwroty rezerwacji |
-| **Zasoby** | `inventory.read` `inventory.write` `inventory.remove` | Obiekty, pokoje, ceny, udogodnienia, dostępność |
-| **Analityka** | `analytics.read` | Analityka rezerwacji, raporty przychodów, rankingi |
-| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Posty społecznościowe, kampanie, kanały sprzedaży, promocje |
-| **Treści** | `content.read` `content.write` `content.remove` | Multimedia, skrócone URL, elementy do syndykacji, mapy |
-| **Płatności** | `payment.read` `payment.write` | Księga, wypłaty, rozliczenia finansowe, wypłaty środków |
+Dwie rzeczy są specyficzne dla MCP:
 
-Klient AI żąda tylko potrzebnych zakresów. Możesz odmówić pojedynczych uprawnień na ekranie zgody — narzędzia wymagające odmówionego zakresu zwrócą błąd przy wywołaniu.
+- **Zakresy `mcp.read`, `mcp.write` i `mcp.remove` są dodatkowo wymagane** do otwarcia transportu MCP. Klient posiadający zakres `mcp.*` ma dostęp do `/mcp`, ale każde wywołanie narzędzia nadal wymaga zakresu sekcji punktu końcowego, który opakowuje (np. `booking.read`).
+- **Klient AI żąda tylko potrzebnych zakresów.** Możesz odmówić pojedynczych uprawnień na ekranie zgody — narzędzia wymagające odmówionego zakresu zwrócą błąd przy wywołaniu.
 
 ---
 
@@ -324,19 +317,19 @@ claude mcp remove wink-inventory
 claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-W Claude Desktop i ChatGPT usuń wpis serwera w ustawieniach, zrestartuj aplikację i dodaj go ponownie.
+W Claude Desktop i ChatGPT usuń wpis serwera z ustawień, zrestartuj aplikację i dodaj go ponownie.
 
 **`403 Forbidden` przy wywołaniu konkretnego narzędzia**
 
 Narzędzie wymaga zakresu, którego nie zatwierdziłeś na ekranie zgody. Połącz serwer ponownie — ekran zgody pojawi się ponownie i będziesz mógł zatwierdzić brakujące uprawnienie.
 
-**Serwer jest widoczny, ale wywołania narzędzi zwracają "account not found"**
+**Serwer jest widoczny, ale wywołania narzędzi zwracają "konto nie znalezione"**
 
-Jesteś zalogowany na konto Wink bez jednostki zarządzającej. Wejdź na [Wink Portal](https://app.wink.travel) i upewnij się, że Twoje konto jest poprawnie skonfigurowane przed użyciem serwera MCP.
+Jesteś zalogowany na konto Wink bez przypisanej jednostki zarządzającej. Wejdź na [Wink Portal](https://app.wink.travel) i upewnij się, że Twoje konto jest poprawnie skonfigurowane przed użyciem serwera MCP.
 
 **Token wygasa w trakcie sesji**
 
-Tokeny są ważne przez 3 godziny. Claude Code i Claude Desktop odświeżają tokeny w tle bez przerywania sesji. Jeśli pojawią się błędy uwierzytelniania po dłuższym bezczynności, wpisz nową wiadomość — klient automatycznie się ponownie uwierzytelni.
+Tokeny są ważne przez 3 godziny. Claude Code i Claude Desktop odświeżają tokeny w tle bez przerywania sesji. Jeśli po długim bezczynności pojawią się błędy uwierzytelniania, wpisz nową wiadomość — klient automatycznie się ponownie uwierzytelni.
 
 **Codex CLI pokazuje "MCP server unreachable"**
 
@@ -344,7 +337,7 @@ Sprawdź, czy Twój `~/.codex/config.json` jest poprawnym JSON-em (bez przecink�
 
 **Menu "Connectors" w ChatGPT jest niedostępne**
 
-Wsparcie MCP wymaga wersji desktopowej ChatGPT **1.2024.352** lub nowszej oraz aktywnej subskrypcji Plus, Pro, Team lub Enterprise. Zaktualizuj aplikację i sprawdź plan w Ustawienia → Konto.
+Wsparcie MCP wymaga wersji desktopowej ChatGPT **1.2024.352** lub nowszej oraz aktywnej subskrypcji Plus, Pro, Team lub Enterprise. Zaktualizuj aplikację i sprawdź plan w Ustawieniach → Konto.
 
 **Serwer Cursor pokazuje czerwony status / "Failed to connect"**
 
@@ -352,11 +345,11 @@ Sprawdź, czy `~/.cursor/mcp.json` jest poprawnym JSON-em i zawiera `"type": "ht
 
 **Serwery MCP Windsurf nie pojawiają się w ustawieniach**
 
-Windsurf wymaga pełnego restartu (nie tylko przeładowania okna), aby wykryć zmiany w `mcp_config.json`. Użyj **File → Quit** i uruchom ponownie. Jeśli serwery nadal nie są widoczne, upewnij się, że masz Windsurf w wersji **1.4+** (sprawdź w **Help → About Windsurf**).
+Windsurf wymaga pełnego restartu (nie tylko przeładowania okna), aby załadować zmiany w `mcp_config.json`. Użyj **File → Quit** i uruchom ponownie. Jeśli serwery nadal nie są widoczne, upewnij się, że masz Windsurf w wersji **1.4+** (sprawdź w **Help → About Windsurf**).
 
 **Opcja "Add Server" w Cline jest niewidoczna**
 
-Menedżer serwerów MCP wymaga Cline w wersji **2.0** lub nowszej. Otwórz panel rozszerzeń VS Code, znajdź Cline i kliknij **Update**, jeśli jest dostępna aktualizacja. Po aktualizacji przeładuj VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+Menedżer serwerów MCP wymaga Cline w wersji **2.0** lub nowszej. Otwórz panel rozszerzeń VS Code, znajdź Cline i kliknij **Update**, jeśli aktualizacja jest dostępna. Po aktualizacji przeładuj VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

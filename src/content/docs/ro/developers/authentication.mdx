@@ -19,9 +19,9 @@ O aplicație vă oferă un `Client ID` și o `Secret Key` de care aveți nevoie 
 
 Iată pașii pentru a crea o sesiune autentificată.
 
-**Pasul 1**. Obțineți un token de acces în mediul de staging sau în mediul nostru de producție:
+**Pasul 1**. Obțineți un token de acces în mediul de staging sau în cel de producție:
 
-Cel mai probabil, veți lucra cu o bibliotecă OAuth2 robustă pentru limbajul dvs., care va face toată munca grea pentru dvs.
+Cel mai probabil veți lucra cu o bibliotecă robustă OAuth2 pentru limbajul dvs., care va face toată munca grea pentru dvs.
 Exemplele noastre vor arăta cea mai simplă utilizare din linia de comandă folosind `curl`.
 
 ### Staging
@@ -48,7 +48,7 @@ curl -X POST https://iam.wink.travel/oauth2/token \
 
 ```
 
-Aceasta va returna un token de acces, împreună cu alte date de răspuns OAuth2:
+Aceasta va returna un token de acces, împreună cu alte date din răspunsul OAuth2:
 
 ```json
 {
@@ -60,6 +60,42 @@ Când faceți un apel către oricare dintre endpoint-urile noastre, includeți u
 
 - `Wink-Version` = `2.0` Ultima versiune - *Consultați documentația API pentru alte versiuni disponibile.*
 - `Authorization` = `Bearer ${access_token}` *Introduceți tokenul dvs. de acces.*
+
+## Scopuri
+
+Un **scope** este o permisiune pe care o poartă tokenul dvs. de acces. Când solicitați un token, transmiteți o listă de scope-uri separate prin spațiu în parametrul `scope`, iar tokenul poate accesa doar zonele acoperite de acele scope-uri. Cu grantul `client_credentials` setați scope-urile în cererea de token — vedeți exemplele [`curl`](#staging) de mai sus și [parcursul Postman](/ro/developers/setup#postman).
+
+Scope-urile sunt denumite `section.action`, unde acțiunea este una dintre:
+
+- `read` — vizualizare resurse (cereri sigure `GET`)
+- `write` — creare și actualizare resurse (`POST` / `PUT` / `PATCH`)
+- `remove` — ștergere resurse (`DELETE`)
+
+Wink grupează permisiunile pe zone funcționale. Solicitați doar scope-urile de care are nevoie integrarea dvs.:
+
+| Grup scope | Scope-uri | Ce deblochează | Risc |
+|------------|-----------|----------------|------|
+| **Account** | `account.read` `account.write` `account.remove` | Gestionarea entităților, membrilor echipei, setărilor, aplicațiilor | Scăzut–Mediu |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Proprietăți, tipuri de camere, planuri tarifare, tarife, suplimente, disponibilitate, activități, atracții | Scăzut–Mediu |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Căutare, vizualizare, creare, anulare și rambursare rezervări; checkout; politici de anulare | Scăzut–Mediu |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Campanii, beneficii, canale de vânzare, WinkLinks, social media gestionat, loialitate | Scăzut–Mediu |
+| **Content** | `content.read` `content.write` `content.remove` | Descrieri proprietăți, recenzii, media, hărți, indice verde | Scăzut–Mediu |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Raportare și analiză — venituri, clasamente | Scăzut–Mediu |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Manageri de canale, sisteme externe de rezervări, Google Hotel, endpoint-uri de notificare, sincronizare rezervări | Scăzut–Mediu |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Procesare plăți, Stripe, Revolut, plăți, abonamente | Mediu–Ridicat |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Contabilitate, registru retrageri, reconciliere | Mediu–Ridicat |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Deschide [transportul MCP](/ro/developers/mcp) (`/mcp`) pentru agenți AI | Scăzut–Mediu |
+
+:::note
+Coloana **Risc** reflectă sensibilitatea: `read` este la capătul inferior, iar `write`/`remove` la cel superior.
+**Payment** și **Accounting** gestionează mișcarea banilor, deci au risc ridicat.
+:::
+
+Câteva lucruri de reținut:
+
+- **Solicitați minimul necesar.** Cereți doar scope-urile pe care integrarea dvs. le folosește efectiv — un token emis cu acces mai larg decât este necesar are o rază de impact mai mare dacă este compromis.
+- **Scope-urile necunoscute sunt respinse.** Solicitarea unui scope pentru care aplicația dvs. nu este înregistrată sau care nu există va eșua la emiterea tokenului.
+- **`mcp.*` este doar pentru clienți agenți AI.** Aveți nevoie de el pentru a deschide transportul MCP; nu este necesar pentru apelurile obișnuite REST API. Consultați [Model Context Protocol](/ro/developers/mcp).
 
 :::tip
 Puteți testa toate API-urile noastre fără să scrieți o singură linie de cod înainte de a începe.

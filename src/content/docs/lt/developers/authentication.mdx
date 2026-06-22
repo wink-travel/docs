@@ -19,12 +19,12 @@ Programa suteikia jums `Client ID` ir `Secret Key`, kurių reikia norint sukurti
 
 Štai žingsniai, kaip sukurti autentifikuotą sesiją.
 
-**1 žingsnis**. Gaukite prieigos raktą (access token) testavimo arba gamybos aplinkoje:
+**1 žingsnis**. Gaukite prieigos raktą testavimo arba mūsų gamybos aplinkoje:
 
 Tikėtina, kad naudosite patikimą OAuth2 biblioteką savo programavimo kalbai, kuri atliks visą sudėtingą darbą už jus.
-Mūsų pavyzdžiai parodys paprasčiausią naudojimą iš komandinės eilutės su `curl`.
+Mūsų pavyzdžiai parodys paprasčiausią naudojimą iš komandinės eilutės naudojant `curl`.
 
-### Testavimo aplinka (Staging)
+### Testavimo aplinka
 
 ```bash
 
@@ -36,7 +36,7 @@ curl -X POST https://staging-iam.wink.travel/oauth2/token \
 
 ```
 
-### Gamybos aplinka (Production)
+### Gamybos aplinka
 
 ```bash
 
@@ -56,10 +56,49 @@ Tai grąžins prieigos raktą kartu su kitais OAuth2 atsakymo duomenimis:
 }
 ```
 
-Kai kviečiate bet kurį iš mūsų galinių taškų, įtraukite šiuos antraštės laukus:
+Kai kviesite bet kurį iš mūsų galinių taškų, įtraukite šiuos antraštės laukus:
 
 - `Wink-Version` = `2.0` Naujausia - *Žr. mūsų API dokumentaciją dėl kitų galimų versijų.*
 - `Authorization` = `Bearer ${access_token}` *Įterpkite savo prieigos raktą.*
+
+## Leidimai (Scopes)
+
+**Leidimas (scope)** yra teisė, kurią turi jūsų prieigos raktas. Kai prašote rakto, perduodate
+tarpais atskirtą leidimų sąrašą `scope` parametre, ir raktas gali pasiekti tik tas sritis,
+kurias apima šie leidimai. Naudojant `client_credentials` grant tipą, leidimus nustatote savo rakto užklausoje —
+žr. aukščiau pateiktus [`curl`](#staging) pavyzdžius ir [Postman vadovą](/lt/developers/setup#postman).
+
+Leidimai vadinami `section.action`, kur veiksmas yra vienas iš:
+
+- `read` — peržiūrėti išteklius (saugūs `GET` užklausos)
+- `write` — kurti ir atnaujinti išteklius (`POST` / `PUT` / `PATCH`)
+- `remove` — trinti išteklius (`DELETE`)
+
+Wink grupuoja leidimus pagal funkcines sritis. Prašykite tik tų leidimų, kurių reikia jūsų integracijai:
+
+| Leidimų grupė | Leidimai | Ką jie atveria | Rizika |
+|--------------|----------|----------------|--------|
+| **Paskyra** | `account.read` `account.write` `account.remove` | Valdyti subjektus, komandos narius, nustatymus, programas | Žema–Vidutinė |
+| **Inventorius** | `inventory.read` `inventory.write` `inventory.remove` | Objektai, kambarių tipai, kainų planai, kainos, priedai, prieinamumas, veiklos, lankytinos vietos | Žema–Vidutinė |
+| **Rezervavimas** | `booking.read` `booking.write` `booking.remove` | Paieška, peržiūra, kūrimas, atšaukimas ir grąžinimai; atsiskaitymas; atšaukimo taisyklės | Žema–Vidutinė |
+| **Marketingas** | `marketing.read` `marketing.write` `marketing.remove` | Kampanijos, priedai, pardavimo kanalai, WinkLinks, valdomas socialinis, lojalumas | Žema–Vidutinė |
+| **Turinys** | `content.read` `content.write` `content.remove` | Objekto aprašymai, atsiliepimai, medija, žemėlapiai, žalias indeksas | Žema–Vidutinė |
+| **Analitika** | `analytics.read` `analytics.write` `analytics.remove` | Ataskaitos ir analizė — pajamos, lyderių lentelės | Žema–Vidutinė |
+| **Integracijos** | `integrations.read` `integrations.write` `integrations.remove` | Kanalų valdytojai, išorinės rezervavimo sistemos, Google Hotel, pranešimų galiniai taškai, rezervavimo sinchronizavimas | Žema–Vidutinė |
+| **Mokėjimai** | `payment.read` `payment.write` `payment.remove` | Mokėjimų apdorojimas, Stripe, Revolut, išmokos, prenumeratos | Vidutinė–Aukšta |
+| **Apskaita** | `accounting.read` `accounting.write` `accounting.remove` | Apskaita, pinigų išėmimo žurnalas, suderinimas | Vidutinė–Aukšta |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Atveria [MCP transportą](/lt/developers/mcp) (`/mcp`) AI agentams | Žema–Vidutinė |
+
+:::note
+**Rizikos** stulpelis atspindi jautrumą: `read` yra žemiausias lygis, o `write`/`remove` – aukštesnis.
+**Mokėjimai** ir **Apskaita** valdo pinigų judėjimą, todėl turi didesnę riziką.
+:::
+
+Keletas dalykų, kuriuos verta atsiminti:
+
+- **Prašykite minimumą.** Prašykite tik tų leidimų, kuriuos jūsų integracija iš tikrųjų naudoja — raktas su platesnėmis teisėmis, nei reikia, nutekėjus gali sukelti didesnę žalą.
+- **Nežinomi leidimai atmetami.** Prašymas dėl leidimo, kuriam jūsų programa nėra registruota arba kuris neegzistuoja, nepavyksta išduodant raktą.
+- **`mcp.*` yra tik AI agentų klientams.** Jis reikalingas atidaryti MCP transportą; įprastiems REST API kvietimams jo nereikia. Žr. [Model Context Protocol](/lt/developers/mcp).
 
 :::tip
 Galite išbandyti visus mūsų API nerašydami nė vienos kodo eilutės prieš pradedant.

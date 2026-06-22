@@ -25,7 +25,7 @@ Wink MCP serveri koriste **OAuth2 Authorization Code + PKCE** tok i podržavaju 
 3. Klijent otvara **tab u pregledaču** na `https://iam.wink.travel`. Prijavljujete se sa svojim Wink nalogom i odobravate tražene dozvole na ekranu za saglasnost.
 4. Wink izdaje **access token** vezan za vaš nalog i identitet.
 5. AI klijent prilaže token uz svaki MCP zahtev. Svi rezultati alata automatski su ograničeni na vašu upravljačku entitet.
-6. Tokeni ističu nakon 3 sata. Vaš AI klijent ih osvežava tiho u pozadini bez ponovnog zahteva za prijavu.
+6. Tokeni ističu nakon 3 sata. Vaš AI klijent osvežava token u pozadini bez ponovnog zahteva za prijavu.
 
 Svaki poziv alata se izvršava **pod vašim identitetom** — ista ACL pravila koja štite web portal važe i za AI agenta.
 
@@ -202,7 +202,7 @@ MCP serveri se mogu konfigurisati samo u **desktop aplikaciji**. Web interfejs C
 </Steps>
 
 :::tip[Konfiguracija ograničena na projekat]
-Takođe možete postaviti `mcp.json` fajl u koren vašeg projekta umesto u `~/.cursor/`. Konfiguracija na nivou projekta ima prioritet i omogućava servere svim članovima tima koji otvore projekat u Cursor-u.
+Takođe možete postaviti `mcp.json` fajl u koren vašeg projekta umesto u `~/.cursor/`. Konfiguracija na nivou projekta ima prioritet i omogućava pristup serverima svakom članu tima koji otvori projekat u Cursor-u.
 :::
 
   </TabItem>
@@ -251,7 +251,7 @@ Cline je VS Code ekstenzija sa ugrađenim MCP server menadžerom. Nije potrebna 
    - Otvorite VS Code i pritisnite `Ctrl+Shift+X` / `Cmd+Shift+X`
    - Potražite **Cline** i kliknite **Install**
 
-2. Kliknite na **Cline ikonu** u Activity Bar-u (levi sidebar) da otvorite Cline panel.
+2. Kliknite na **Cline ikonu** u Activity Baru (levi sidebar) da otvorite Cline panel.
 
 3. Kliknite na ikonu **MCP Servers** (ikona utikača) u Cline alatnoj traci, zatim izaberite **Edit MCP Settings**.
 
@@ -278,7 +278,7 @@ Cline je VS Code ekstenzija sa ugrađenim MCP server menadžerom. Nije potrebna 
 </Steps>
 
 :::tip[Alternativa: dodajte putem URL-a]
-U MCP Servers panelu kliknite **Add Server** i nalepite `https://api.wink.travel/mcp` direktno. Cline automatski popunjava konfiguraciju i upravlja autentifikacijom bez ručne izmene JSON-a.
+U MCP Servers panelu kliknite **Add Server** i nalepite `https://api.wink.travel/mcp` direktno. Cline automatski popunjava konfiguraciju i upravlja autentifikacijom bez potrebe za ručnim uređivanjem JSON-a.
 :::
 
   </TabItem>
@@ -286,22 +286,19 @@ U MCP Servers panelu kliknite **Add Server** i nalepite `https://api.wink.travel
 
 ---
 
-## Referenca opsega (scope)
+## Scope-ovi
 
-Kada odobrite ekran za saglasnost, videćete detaljan prikaz šta agent traži. Wink grupiše dozvole po funkcionalnim oblastima:
+Kada odobrite ekran za saglasnost, videćete detaljan pregled zahteva agenta. MCP
+klijenti koriste isti vokabular dozvola kao i ostatak platforme — pogledajte kompletnu
+[referencu scope-ova na stranici za autentifikaciju](/sr/developers/authentication#scopes).
 
-| Grupa opsega | Opsezi | Šta otključavaju |
-|--------------|--------|------------------|
-| **MCP transport** | `mcp.read` `mcp.write` `mcp.remove` | Potrebno za povezivanje sa bilo kojim MCP serverom |
-| **Account** | `account.read` `account.write` `account.remove` | Upravljanje entitetima, članovima tima, podešavanjima, aplikacijama |
-| **Booking** | `booking.read` `booking.write` `booking.remove` | Pretraga, pregled, kreiranje, otkazivanje i refundiranje rezervacija |
-| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Objekti, sobe, cene, sadržaji, dostupnost |
-| **Analytics** | `analytics.read` | Analitika rezervacija, izveštaji o prihodima, rang liste |
-| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Objave na društvenim mrežama, kampanje, prodajni kanali, promocije |
-| **Content** | `content.read` `content.write` `content.remove` | Multimedija, skraćeni URL-ovi, stavke za sindikaciju, mape |
-| **Payment** | `payment.read` `payment.write` | Knjigovodstvo, isplate, finansijski izveštaji, povlačenja |
+Dve stvari su specifične za MCP:
 
-AI klijent traži samo opsege koji su mu potrebni. Možete odbiti pojedinačne dozvole na ekranu za saglasnost — alati koji zahtevaju odbijeni opseg vratiće grešku prilikom poziva.
+- **Scope-ovi `mcp.read`, `mcp.write` i `mcp.remove` su dodatno potrebni** za otvaranje MCP
+  transporta. Klijent koji poseduje `mcp.*` scope ima pristup `/mcp`, ali svaki alat koji pozove
+  i dalje primenjuje scope sekcije endpoint-a koji obuhvata (npr. `booking.read`).
+- **AI klijent traži samo scope-ove koji su mu potrebni.** Možete odbiti pojedinačne dozvole na
+  ekranu za saglasnost — alati koji zahtevaju odbijeni scope vratiće grešku prilikom poziva.
 
 ---
 
@@ -324,11 +321,11 @@ claude mcp remove wink-inventory
 claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-Za Claude Desktop i ChatGPT, uklonite unos servera iz podešavanja, restartujte aplikaciju i dodajte ga ponovo.
+Za Claude Desktop i ChatGPT, uklonite unos servera iz podešavanja, restartujte aplikaciju i ponovo ga dodajte.
 
 **`403 Forbidden` prilikom poziva određenog alata**
 
-Alat zahteva opseg koji niste odobrili na ekranu za saglasnost. Ponovo povežite server — ekran za saglasnost će se ponovo pojaviti i možete odobriti nedostajuću dozvolu.
+Alat zahteva scope koji niste odobrili na ekranu za saglasnost. Ponovo povežite server — ekran za saglasnost će se ponovo pojaviti i moći ćete da odobrite nedostajuću dozvolu.
 
 **Server se pojavljuje, ali pozivi alata vraćaju "account not found"**
 
@@ -336,7 +333,7 @@ Prijavljeni ste na Wink nalog koji nema upravljački entitet. Posetite [Wink Por
 
 **Token ističe tokom sesije**
 
-Tokeni važe 3 sata. Claude Code i Claude Desktop osvežavaju tokene tiho bez prekida sesije. Ako dobijete greške u autentifikaciji nakon dužeg perioda neaktivnosti, pošaljite novu poruku — klijent će se automatski ponovo autentifikovati.
+Tokeni važe 3 sata. Claude Code i Claude Desktop osvežavaju tokene u pozadini bez prekida sesije. Ako dobijete greške u autentifikaciji nakon dužeg perioda neaktivnosti, pošaljite novu poruku — klijent će se automatski ponovo autentifikovati.
 
 **Codex CLI prikazuje "MCP server unreachable"**
 
@@ -348,7 +345,7 @@ Podrška za MCP zahteva verziju ChatGPT desktop aplikacije **1.2024.352** ili no
 
 **Cursor server prikazuje crveno / "Failed to connect"**
 
-Proverite da li je vaš `~/.cursor/mcp.json` validan JSON i sadrži `"type": "http"`. Zatim idite na **Settings → Cursor Settings → MCP** i kliknite **Refresh**. Ako greška ostane, potpuno restartujte Cursor — promene u konfiguraciji se ne primaju uvek bez restarta.
+Proverite da li je vaš `~/.cursor/mcp.json` validan JSON i sadrži `"type": "http"`. Zatim idite na **Settings → Cursor Settings → MCP** i kliknite **Refresh**. Ako greška ostane, potpuno restartujte Cursor — promene konfiguracije se ne primaju uvek bez restarta.
 
 **Windsurf MCP serveri se ne pojavljuju u podešavanjima**
 
@@ -356,7 +353,7 @@ Windsurf zahteva potpuni restart (ne samo reload prozora) da bi prepoznao izmene
 
 **Opcija "Add Server" u Cline nije vidljiva**
 
-MCP menadžer servera zahteva Cline verziju **2.0** ili noviju. Otvorite VS Code Extensions panel, pronađite Cline i kliknite **Update** ako je dostupno ažuriranje. Nakon nadogradnje, reload-ujte VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+MCP server menadžer zahteva Cline verziju **2.0** ili noviju. Otvorite VS Code Extensions panel, pronađite Cline i kliknite **Update** ako je dostupno ažuriranje. Nakon nadogradnje, reload-ujte VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

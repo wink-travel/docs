@@ -22,7 +22,7 @@ Wink IAM 认证服务器支持常见的 OAuth2 端点：
 **步骤 1**. 在测试环境或生产环境中获取访问令牌：
 
 您很可能会使用适合您语言的强大 OAuth2 库，它会为您处理所有繁重的工作。
-我们的示例将展示使用 `curl` 命令行的最基本用法。
+我们的示例将展示使用命令行 `curl` 的最基本用法。
 
 ### 测试环境
 
@@ -61,8 +61,43 @@ curl -X POST https://iam.wink.travel/oauth2/token \
 - `Wink-Version` = `2.0` 最新版本 - *请参阅我们的 API 文档了解其他可用版本。*
 - `Authorization` = `Bearer ${access_token}` *插入您的访问令牌。*
 
+## 权限范围
+
+**权限范围（scope）** 是您的访问令牌所携带的权限。当您请求令牌时，需要在 `scope` 参数中传递以空格分隔的权限列表，令牌只能访问这些权限所覆盖的区域。使用 `client_credentials` 授权时，您在令牌请求中设置权限范围 — 参见上面的 [`curl`](#staging) 示例和 [Postman 演练](/zh-CN/developers/setup#postman)。
+
+权限范围命名格式为 `section.action`，其中 action 是以下之一：
+
+- `read` — 查看资源（安全的 `GET` 请求）
+- `write` — 创建和更新资源（`POST` / `PUT` / `PATCH`）
+- `remove` — 删除资源（`DELETE`）
+
+Wink 按功能区域分组权限。请仅请求您的集成所需的权限范围：
+
+| 权限组 | 权限范围 | 解锁内容 | 风险等级 |
+|-------------|--------|------------------|------|
+| **账户** | `account.read` `account.write` `account.remove` | 管理实体、团队成员、设置、应用程序 | 低–中 |
+| **库存** | `inventory.read` `inventory.write` `inventory.remove` | 物业、房型、价格计划、价格、附加服务、可用性、活动、景点 | 低–中 |
+| **预订** | `booking.read` `booking.write` `booking.remove` | 搜索、查看、创建、取消和退款预订；结账；取消政策 | 低–中 |
+| **营销** | `marketing.read` `marketing.write` `marketing.remove` | 活动、优惠、销售渠道、WinkLinks、托管社交、忠诚度 | 低–中 |
+| **内容** | `content.read` `content.write` `content.remove` | 物业描述、评论、媒体、地图、绿色指数 | 低–中 |
+| **分析** | `analytics.read` `analytics.write` `analytics.remove` | 报告和分析 — 收入、排行榜 | 低–中 |
+| **集成** | `integrations.read` `integrations.write` `integrations.remove` | 渠道管理、外部预订系统、Google 酒店、通知端点、预订同步 | 低–中 |
+| **支付** | `payment.read` `payment.write` `payment.remove` | 支付处理、Stripe、Revolut、付款、订阅 | 中–高 |
+| **会计** | `accounting.read` `accounting.write` `accounting.remove` | 会计、提款账本、对账 | 中–高 |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | 打开 AI 代理的 [MCP 传输](/zh-CN/developers/mcp) (`/mcp`) | 低–中 |
+
+:::note
+**风险等级** 列反映了敏感度：`read` 属于较低端，`write`/`remove` 属于较高端。**支付** 和 **会计** 涉及资金流动，因此风险较高。
+:::
+
+请注意以下几点：
+
+- **请求最小权限。** 仅请求您的集成实际使用的权限范围 — 如果令牌权限过宽，泄露时影响范围更大。
+- **未知权限范围会被拒绝。** 请求未注册的权限范围或不存在的权限范围，令牌颁发时会失败。
+- **`mcp.*` 仅适用于 AI 代理客户端。** 您需要它来打开 MCP 传输；常规 REST API 调用不需要。详见 [模型上下文协议](/zh-CN/developers/mcp)。
+
 :::tip
-在开始之前，您可以在不编写任何代码的情况下测试我们所有的 API。
+在开始之前，您可以在不写一行代码的情况下测试我们所有的 API。
 
 从您的某个应用获取 'Client ID' 和 'Secret Key'，然后访问我们的任意 [API](/zh-CN/api)。
 :::

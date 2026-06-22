@@ -7,7 +7,7 @@ sidebar:
 
 import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-A Wink két autentikált MCP szervert kínál. Mindkettő **interaktív OAuth2 bejelentkezést** használ (PKCE engedélyezési kód folyamat) — az AI ügynöke megnyit egy böngészőfület, így bejelentkezhet Wink fiókjával. Nincs szükség kliens titkok kezelésére.
+A Wink két autentikált MCP szervert kínál. Mindkettő **interaktív OAuth2 bejelentkezést** használ (PKCE engedélyezési kód folyamat) — az AI ügynök egy böngészőfület nyit meg, így a Wink fiókjával jelentkezhet be. Nincs szükség kliens titkok kezelésére.
 
 | Szerver | URL | Mit csinál |
 |--------|-----|------------|
@@ -18,12 +18,12 @@ A Wink két autentikált MCP szervert kínál. Mindkettő **interaktív OAuth2 b
 
 ## Hogyan működik az autentikáció
 
-A Wink MCP szerverek a **OAuth2 Authorization Code + PKCE** folyamatot használják, és támogatják a **Dynamic Client Registration (RFC 7591)**-t. Így történik az első csatlakozáskor:
+A Wink MCP szerverek a **OAuth2 Authorization Code + PKCE** folyamatot használják, és támogatják a **Dynamic Client Registration (RFC 7591)**-t. Így zajlik a csatlakozás első alkalommal:
 
 1. Az AI kliens felfedezi az engedélyező szervert az MCP végpont `/.well-known/oauth-protected-resource` metaadataiból.
 2. A kliens önmagát regisztrálja a **Dynamic Client Registration** segítségével — nincs szükség kézi alkalmazásbeállításra.
 3. A kliens megnyit egy **böngészőfület** a `https://iam.wink.travel` címen. Bejelentkezik Wink fiókjával, és jóváhagyja a kért engedélyeket a hozzájárulási képernyőn.
-4. A Wink kiad egy **hozzáférési tokent**, amely a fiókjához van kötve és azonosítójához kapcsolódik.
+4. A Wink kiad egy **hozzáférési tokent**, amely a fiókjához kötött és azonosítójához kapcsolódik.
 5. Az AI kliens minden MCP kéréshez csatolja a tokent. Minden eszköz eredménye automatikusan a kezelő entitásához van kötve.
 6. A tokenek 3 óra után lejárnak. Az AI kliens csendben frissíti őket a háttérben, újabb kérés nélkül.
 
@@ -93,7 +93,7 @@ Adja hozzá a `--scope project` opciót a `claude mcp add` parancshoz, és a Cla
 
 4. A Claude Desktop minden új szerverhez megnyit egy böngészőfület. Jelentkezzen be Wink fiókjával és hagyja jóvá az engedélyeket.
 
-5. Az alsó eszköztáron a dugó ikon mindkét szervert csatlakoztatottnak mutatja.
+5. Az alsó eszköztáron a dugó ikon mindkét szerver esetén zölden jelzi a kapcsolatot.
 </Steps>
 
   </TabItem>
@@ -194,7 +194,7 @@ Az MCP szerverek csak a **asztali alkalmazásban** konfigurálhatók. A ChatGPT 
    }
    ```
 
-3. Nyissa meg a Cursor-t. Menjen a **Beállítások → Cursor beállítások → MCP** részhez, és ellenőrizze, hogy mindkét szerver zöld státuszjelzővel jelenik meg. Ha pirosat mutatnak, kattintson a **Frissítés** gombra.
+3. Nyissa meg a Cursor-t. Menjen a **Beállítások → Cursor beállítások → MCP** részhez, és ellenőrizze, hogy mindkét szerver zöld státuszjelzővel jelenik meg. Ha pirosat mutat, kattintson a **Frissítés** gombra.
 
 4. A Cursor megnyit egy böngészőfület a `https://iam.wink.travel` címen. **Jelentkezzen be Wink fiókjával** és hagyja jóvá az engedélyeket.
 
@@ -251,9 +251,9 @@ A Cline egy VS Code kiterjesztés beépített MCP szerver kezelővel. Nem szüks
    - Nyissa meg a VS Code-ot és nyomja meg a `Ctrl+Shift+X` / `Cmd+Shift+X` billentyűket
    - Keressen rá a **Cline** kiterjesztésre, majd kattintson a **Telepítés** gombra
 
-2. Kattintson a **Cline ikonra** az Activity Bar-ban (bal oldali sáv) a Cline panel megnyitásához.
+2. Kattintson a **Cline ikonra** az Activity Bar-ban (bal oldali sáv), hogy megnyissa a Cline panelt.
 
-3. Kattintson az **MCP szerverek** ikonra (dugó ikon) a Cline eszköztáron, majd válassza az **MCP beállítások szerkesztése** lehetőséget.
+3. Kattintson az **MCP szerverek** ikonra (dugó ikon) a Cline eszköztáron, majd válassza az **MCP beállítások szerkesztése** opciót.
 
 4. A VS Code megnyitja a `cline_mcp_settings.json` fájlt. Adja hozzá a Wink bejegyzéseket:
 
@@ -278,7 +278,7 @@ A Cline egy VS Code kiterjesztés beépített MCP szerver kezelővel. Nem szüks
 </Steps>
 
 :::tip[Alternatív megoldás: URL alapján hozzáadás]
-Az MCP szerverek panelen kattintson a **Szerver hozzáadása** gombra, és illessze be közvetlenül a `https://api.wink.travel/mcp` címet. A Cline automatikusan kitölti a konfigurációt és kezeli az autentikációt anélkül, hogy kézzel kellene szerkeszteni a JSON-t.
+Az MCP szerverek panelen kattintson a **Szerver hozzáadása** gombra, és illessze be közvetlenül a `https://api.wink.travel/mcp` címet. A Cline automatikusan kitölti a konfigurációt és kezeli az autentikációt, így nem kell kézzel szerkeszteni a JSON-t.
 :::
 
   </TabItem>
@@ -286,28 +286,21 @@ Az MCP szerverek panelen kattintson a **Szerver hozzáadása** gombra, és illes
 
 ---
 
-## Jogosultsági körök (scope) áttekintése
+## Jogosultsági körök
 
-A hozzájárulási képernyőn látható lesz, hogy az ügynök milyen jogosultságokat kér. A Wink funkcionális területek szerint csoportosítja az engedélyeket:
+Amikor jóváhagyja a hozzájárulási képernyőt, láthatja, hogy az ügynök milyen jogosultságokat kér. Az MCP kliensek ugyanazt az engedélyezési szókincset használják, mint a platform többi része — lásd a teljes
+[jogosultsági körök hivatkozását az Autentikáció oldalon](/hu/developers/authentication#scopes).
 
-| Jogosultsági csoport | Jogosultságok | Mit engedélyeznek |
-|----------------------|---------------|-------------------|
-| **MCP transport** | `mcp.read` `mcp.write` `mcp.remove` | Szükséges bármely MCP szerverhez való csatlakozáshoz |
-| **Fiók** | `account.read` `account.write` `account.remove` | Kezelő entitások, csapattagok, beállítások, alkalmazások |
-| **Foglalás** | `booking.read` `booking.write` `booking.remove` | Foglalások keresése, megtekintése, létrehozása, törlése és visszatérítése |
-| **Készlet** | `inventory.read` `inventory.write` `inventory.remove` | Ingatlanok, szobák, árak, szolgáltatások, elérhetőség |
-| **Elemzés** | `analytics.read` | Foglalási elemzések, bevételi jelentések, ranglisták |
-| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Közösségi posztok, kampányok, értékesítési csatornák, promóciók |
-| **Tartalom** | `content.read` `content.write` `content.remove` | Multimédia, rövidített URL-ek, szindikálható elemek, térképek |
-| **Fizetés** | `payment.read` `payment.write` | Főkönyv, kifizetések, pénzügyi bontások, kifizetések |
+Két dolog specifikus az MCP-re:
 
-Az AI kliens csak a szükséges jogosultságokat kéri. Egyéni engedélyeket megtagadhat a hozzájárulási képernyőn — az eszközök, amelyekhez megtagadott jogosultság szükséges, hibát adnak vissza híváskor.
+- **Az `mcp.read`, `mcp.write`, `mcp.remove` jogosultsági körök továbbiaként szükségesek** az MCP kapcsolat megnyitásához. Az `mcp.*` jogosultsággal rendelkező kliens hozzáfér a `/mcp` végponthoz, de minden eszköz, amit meghív, továbbra is érvényesíti a végpont szakasz jogosultságát (pl. `booking.read`).
+- **Az AI kliens csak a szükséges jogosultságokat kéri.** Egyéni engedélyeket megtagadhat a hozzájárulási képernyőn — az ilyen megtagadott jogosultságot igénylő eszközök hibát adnak vissza, ha meghívják őket.
 
 ---
 
 ## Hibakeresés
 
-**Nem nyílik meg a böngészőfül**
+**Nem nyílik meg böngészőfül**
 
 Lehet, hogy az AI kliens még nem támogatja az interaktív PKCE folyamatot. Ellenőrizze, hogy a legfrissebb verziót használja:
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
@@ -316,7 +309,7 @@ Lehet, hogy az AI kliens még nem támogatja az interaktív PKCE folyamatot. Ell
 
 **`401 Unauthorized` bejelentkezés után**
 
-A gyorsítótárazott token lejárt. Távolítsa el, majd adja hozzá újra a szervert, hogy friss bejelentkezést indítson:
+A gyorsítótárazott token lejárt. Távolítsa el, majd adja hozzá újra a szervert, hogy új bejelentkezés induljon:
 
 ```bash
 # Claude Code
@@ -328,7 +321,7 @@ Claude Desktop és ChatGPT esetén távolítsa el a szerver bejegyzést a beáll
 
 **`403 Forbidden` egy adott eszköz hívásakor**
 
-Az eszköz olyan jogosultságot igényel, amelyet nem hagyott jóvá a hozzájárulási képernyőn. Csatlakoztassa újra a szervert — a hozzájárulási képernyő újra megjelenik, és jóváhagyhatja a hiányzó engedélyt.
+Az eszköz olyan jogosultságot igényel, amit nem hagyott jóvá a hozzájárulási képernyőn. Csatlakoztassa újra a szervert — a hozzájárulási képernyő ismét megjelenik, és jóváhagyhatja a hiányzó engedélyt.
 
 **A szerver megjelenik, de az eszköz hívások "account not found" hibát adnak**
 
@@ -336,11 +329,11 @@ Olyan Wink fiókkal van bejelentkezve, amelyhez nincs kezelő entitás rendelve.
 
 **A token lejár a munkamenet közben**
 
-A tokenek 3 óráig érvényesek. A Claude Code és Claude Desktop csendben frissíti a tokeneket megszakítás nélkül. Ha hosszú tétlenség után hitelesítési hibákat tapasztal, írjon be egy új üzenetet — a kliens automatikusan újra hitelesít.
+A tokenek 3 óráig érvényesek. A Claude Code és Claude Desktop csendben frissíti a tokeneket megszakítás nélkül. Ha hosszabb inaktivitás után hitelesítési hibákat tapasztal, írjon be egy új üzenetet — a kliens automatikusan újra hitelesít.
 
 **Codex CLI "MCP server unreachable" hibát jelez**
 
-Ellenőrizze, hogy a `~/.codex/config.json` érvényes JSON (nincs utolsó vessző), és hogy a `"type": "http"` beállítás szerepel. A Codex távoli szerverekhez HTTP transportot igényel; a stdio transport csak helyi binárisokhoz használható.
+Ellenőrizze, hogy a `~/.codex/config.json` érvényes JSON (nincsenek felesleges vesszők), és hogy a `"type": "http"` beállítás szerepel. A Codex távoli szerverekhez HTTP transportot igényel; a stdio transport csak helyi binárisokhoz használható.
 
 **ChatGPT "Csatlakozók" menü hiányzik**
 

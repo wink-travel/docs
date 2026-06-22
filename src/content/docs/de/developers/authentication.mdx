@@ -22,7 +22,7 @@ Hier sind die Schritte, um eine authentifizierte Sitzung zu erstellen.
 **Schritt 1**. Rufen Sie ein Zugriffstoken in der Staging- oder Produktionsumgebung ab:
 
 Wahrscheinlich arbeiten Sie mit einer robusten OAuth2-Bibliothek für Ihre Programmiersprache, die die ganze Arbeit für Sie übernimmt.
-Unsere Beispiele zeigen die einfachste Verwendung über die Befehlszeile mit `curl`.
+Unsere Beispiele zeigen die einfachste Verwendung über die Kommandozeile mit `curl`.
 
 ### Staging
 
@@ -48,7 +48,7 @@ curl -X POST https://iam.wink.travel/oauth2/token \
 
 ```
 
-Dies gibt ein Zugriffstoken zusammen mit weiteren OAuth2-Antwortdaten zurück:
+Dies gibt ein Zugriffstoken zurück, zusammen mit anderen OAuth2-Antwortdaten:
 
 ```json
 {
@@ -60,6 +60,41 @@ Wenn Sie einen Aufruf an einen unserer Endpunkte machen, fügen Sie Folgendes im
 
 - `Wink-Version` = `2.0` Neueste - *Siehe unsere API-Dokumentation für weitere verfügbare Versionen.*
 - `Authorization` = `Bearer ${access_token}` *Fügen Sie Ihr Zugriffstoken ein.*
+
+## Scopes
+
+Ein **Scope** ist eine Berechtigung, die Ihr Zugriffstoken trägt. Wenn Sie ein Token anfordern, übergeben Sie eine durch Leerzeichen getrennte Liste von Scopes im `scope`-Parameter, und das Token kann nur auf die Bereiche zugreifen, die diese Scopes abdecken. Beim `client_credentials`-Grant legen Sie die Scopes bei Ihrer Token-Anfrage fest — siehe die [`curl`](#staging)-Beispiele oben und die [Postman-Anleitung](/de/developers/setup#postman).
+
+Scopes heißen `section.action`, wobei die Aktion eine der folgenden ist:
+
+- `read` — Ressourcen ansehen (sichere `GET`-Anfragen)
+- `write` — Ressourcen erstellen und aktualisieren (`POST` / `PUT` / `PATCH`)
+- `remove` — Ressourcen löschen (`DELETE`)
+
+Wink gruppiert Berechtigungen nach Funktionsbereichen. Fordern Sie nur die Scopes an, die Ihre Integration benötigt:
+
+| Scope-Gruppe | Scopes | Was sie freischalten | Risiko |
+|--------------|--------|----------------------|--------|
+| **Account** | `account.read` `account.write` `account.remove` | Verwaltung von Entitäten, Teammitgliedern, Einstellungen, Anwendungen | Niedrig–Mittel |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Objekte, Zimmertypen, Tarifpläne, Preise, Zusatzleistungen, Verfügbarkeit, Aktivitäten, Attraktionen | Niedrig–Mittel |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Suchen, Anzeigen, Erstellen, Stornieren und Rückerstatten von Buchungen; Checkout; Stornierungsbedingungen | Niedrig–Mittel |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Kampagnen, Vorteile, Vertriebskanäle, WinkLinks, verwaltete soziale Medien, Treueprogramme | Niedrig–Mittel |
+| **Content** | `content.read` `content.write` `content.remove` | Objektbeschreibungen, Bewertungen, Medien, Karten, Green-Index | Niedrig–Mittel |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Berichte und Analysen — Umsatz, Bestenlisten | Niedrig–Mittel |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Channel Manager, externe Buchungssysteme, Google Hotel, Benachrichtigungsendpunkte, Buchungssynchronisation | Niedrig–Mittel |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Zahlungsabwicklung, Stripe, Revolut, Auszahlungen, Abonnements | Mittel–Hoch |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Buchhaltung, Auszahlungsbuch, Abstimmung | Mittel–Hoch |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Öffnet den [MCP-Transport](/de/developers/mcp) (`/mcp`) für KI-Agenten | Niedrig–Mittel |
+
+:::note
+Die **Risiko**-Spalte spiegelt die Sensitivität wider: `read` ist der niedrigere Bereich und `write`/`remove` der höhere Bereich. **Payment** und **Accounting** schützen Geldbewegungen, daher tragen sie ein erhöhtes Risiko.
+:::
+
+Einige Dinge, die Sie beachten sollten:
+
+- **Fordern Sie das Minimum an.** Fragen Sie nur die Scopes an, die Ihre Integration tatsächlich verwendet — ein Token mit weiterreichendem Zugriff als nötig hat im Falle eines Lecks eine größere Schadenswirkung.
+- **Unbekannte Scopes werden abgelehnt.** Das Anfordern eines Scopes, für das Ihre Anwendung nicht registriert ist oder das nicht existiert, schlägt bei der Token-Ausgabe fehl.
+- **`mcp.*` ist nur für KI-Agenten-Clients.** Sie benötigen es, um den MCP-Transport zu öffnen; es ist nicht erforderlich für reguläre REST-API-Aufrufe. Siehe [Model Context Protocol](/de/developers/mcp).
 
 :::tip
 Sie können alle unsere APIs testen, ohne eine einzige Zeile Code zu schreiben, bevor Sie starten.

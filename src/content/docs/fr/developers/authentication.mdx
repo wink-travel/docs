@@ -1,12 +1,12 @@
 ---
 title: Authentification
-description: Apprenez à vous authentifier en utilisant le serveur d'autorisation OAuth2 de Wink.
+description: Apprenez comment vous authentifier en utilisant le serveur d’autorisation OAuth2 de Wink.
 sidebar:
   order: 2
 ---
 
 :::tip
-Le serveur d'authentification IAM de Wink prend en charge les points de terminaison OAuth2 courants :
+Le serveur d’authentification IAM de Wink prend en charge les points de terminaison OAuth2 courants :
 
 - /oauth2/authorize
 - /oauth2/token
@@ -19,10 +19,10 @@ Une application vous fournit un `Client ID` et une `Secret Key` dont vous avez b
 
 Voici les étapes pour créer une session authentifiée.
 
-**Étape 1**. Récupérez un jeton d'accès en staging ou dans notre environnement de production :
+**Étape 1**. Récupérez un jeton d’accès en staging ou dans notre environnement de production :
 
 Vous utiliserez très probablement une bibliothèque OAuth2 robuste pour votre langage, qui fera tout le travail lourd pour vous.
-Nos exemples montreront l'utilisation la plus basique depuis la ligne de commande avec `curl`.
+Nos exemples montreront l’utilisation la plus basique depuis la ligne de commande avec `curl`.
 
 ### Staging
 
@@ -48,7 +48,7 @@ curl -X POST https://iam.wink.travel/oauth2/token \
 
 ```
 
-Cela renverra un jeton d'accès, ainsi que d'autres données de réponse OAuth2 :
+Cela renverra un jeton d’accès, ainsi que d’autres données de réponse OAuth2 :
 
 ```json
 {
@@ -56,13 +56,48 @@ Cela renverra un jeton d'accès, ainsi que d'autres données de réponse OAuth2 
 }
 ```
 
-Lorsque vous effectuez un appel à l'un de nos points de terminaison, incluez ce qui suit dans l'en-tête :
+Lorsque vous effectuez un appel à l’un de nos points de terminaison, incluez ce qui suit dans l’en-tête :
 
 - `Wink-Version` = `2.0` Dernière version - *Consultez notre documentation API pour les autres versions disponibles.*
-- `Authorization` = `Bearer ${access_token}` *Insérez votre jeton d'accès.*
+- `Authorization` = `Bearer ${access_token}` *Insérez votre jeton d’accès.*
+
+## Scopes
+
+Un **scope** est une permission que porte votre jeton d’accès. Lorsque vous demandez un jeton, vous passez une liste d’espaces délimités de scopes dans le paramètre `scope`, et le jeton ne peut accéder qu’aux zones couvertes par ces scopes. Avec le grant `client_credentials`, vous définissez les scopes lors de votre demande de jeton — voir les exemples [`curl`](#staging) ci-dessus et le [tutoriel Postman](/fr/developers/setup#postman).
+
+Les scopes sont nommés `section.action`, où l’action est l’une des suivantes :
+
+- `read` — consulter les ressources (requêtes `GET` sûres)
+- `write` — créer et mettre à jour des ressources (`POST` / `PUT` / `PATCH`)
+- `remove` — supprimer des ressources (`DELETE`)
+
+Wink regroupe les permissions par domaine fonctionnel. Demandez uniquement les scopes dont votre intégration a besoin :
+
+| Groupe de scopes | Scopes | Ce qu’ils débloquent | Risque |
+|------------------|--------|----------------------|--------|
+| **Account** | `account.read` `account.write` `account.remove` | Gestion des entités, membres d’équipe, paramètres, applications | Faible–Moyen |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Propriétés, types de chambres, plans tarifaires, tarifs, options, disponibilités, activités, attractions | Faible–Moyen |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Recherche, consultation, création, annulation et remboursement de réservations ; paiement ; politiques d’annulation | Faible–Moyen |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Campagnes, avantages, canaux de vente, WinkLinks, social géré, fidélité | Faible–Moyen |
+| **Content** | `content.read` `content.write` `content.remove` | Descriptions de propriétés, avis, médias, cartes, indice écologique | Faible–Moyen |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Rapports et analyses — revenus, classements | Faible–Moyen |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Gestionnaires de canaux, systèmes de réservation externes, Google Hotel, points de notification, synchronisation de réservations | Faible–Moyen |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Traitement des paiements, Stripe, Revolut, paiements, abonnements | Moyen–Élevé |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Comptabilité, registre des retraits, rapprochement | Moyen–Élevé |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Ouvre le [transport MCP](/fr/developers/mcp) (`/mcp`) pour les agents IA | Faible–Moyen |
+
+:::note
+La colonne **Risque** reflète la sensibilité : `read` est le niveau le plus bas et `write`/`remove` les niveaux les plus élevés. **Payment** et **Accounting** protègent les mouvements d’argent, ils comportent donc un risque accru.
+:::
+
+Quelques points à garder en tête :
+
+- **Demandez le minimum.** Ne demandez que les scopes que votre intégration utilise réellement — un jeton émis avec un accès plus large que nécessaire a un rayon d’impact plus grand en cas de fuite.
+- **Les scopes inconnus sont rejetés.** Demander un scope pour lequel votre application n’est pas enregistrée, ou qui n’existe pas, échoue lors de l’émission du jeton.
+- **`mcp.*` est réservé aux clients agents IA.** Vous en avez besoin pour ouvrir le transport MCP ; ce n’est pas requis pour les appels REST API classiques. Voir [Model Context Protocol](/fr/developers/mcp).
 
 :::tip
 Vous pouvez tester toutes nos API sans écrire une seule ligne de code avant de commencer.
 
-Récupérez un 'Client ID' et une 'Secret Key' depuis l'une de vos applications et naviguez vers n'importe laquelle de nos [APIs](/fr/api).
+Récupérez un 'Client ID' et une 'Secret Key' depuis l’une de vos applications et naviguez vers n’importe laquelle de nos [APIs](/fr/api).
 :::

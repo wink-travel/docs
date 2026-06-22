@@ -27,7 +27,7 @@ Wink MCP-servers gebruiken de **OAuth2 Authorization Code + PKCE** flow en onder
 5. De AI-client voegt het token toe aan elk MCP-verzoek. Alle toolresultaten zijn automatisch gescopeerd op jouw beheersentiteit.
 6. Tokens verlopen na 3 uur. Je AI-client vernieuwt deze stil op de achtergrond zonder opnieuw te vragen.
 
-Elke tool-aanroep wordt uitgevoerd **onder jouw identiteit** — dezelfde ACL-regels die het webportaal beschermen, gelden ook voor de AI-agent.
+Elke tool-aanroep verloopt **onder jouw identiteit** — dezelfde ACL-regels die het webportaal beschermen gelden ook voor de AI-agent.
 
 ---
 
@@ -60,7 +60,7 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
 ```
 
 :::tip[Deel met je team]
-Voeg `--scope project` toe aan `claude mcp add` en Claude Code schrijft de server-URL naar `.mcp.json` in de root van de repository. Commit dat bestand — elk teamlid voltooit de eigen browser-login bij de eerste verbinding.
+Voeg `--scope project` toe aan `claude mcp add` en Claude Code schrijft de server-URL naar `.mcp.json` in de root van de repo. Commit dat bestand — elk teamlid voltooit de eigen browser-login bij de eerste verbinding.
 :::
 
   </TabItem>
@@ -89,7 +89,7 @@ Voeg `--scope project` toe aan `claude mcp add` en Claude Code schrijft de serve
    }
    ```
 
-3. **Sluit Claude Desktop volledig af en start opnieuw** (gebruik Quit in de menubalk — alleen het venster sluiten is niet genoeg).
+3. **Sluit Claude Desktop volledig af en start opnieuw op** (gebruik Quit in de menubalk — alleen het venster sluiten is niet genoeg).
 
 4. Claude Desktop opent een browsertab voor elke nieuwe server. Log in bij Wink en keur de machtigingen goed.
 
@@ -130,11 +130,11 @@ Voeg `--scope project` toe aan `claude mcp add` en Claude Code schrijft de serve
 
 5. **Log in bij Wink** en keur de gevraagde machtigingen goed.
 
-6. Codex bevestigt de verbinding. Voer `codex` uit en vraag om beschikbare tools te tonen om te controleren of de Wink-servers actief zijn.
+6. Codex bevestigt de verbinding. Voer `codex` uit en vraag om een lijst met beschikbare tools om te controleren of de Wink-servers actief zijn.
 </Steps>
 
 :::note
-Codex CLI MCP-ondersteuning vereist versie **1.0** of hoger. Voer `codex --version` uit om te controleren en `npm install -g @openai/codex` om te upgraden.
+Codex CLI MCP-ondersteuning vereist versie **1.0** of hoger. Controleer met `codex --version` en update met `npm install -g @openai/codex`.
 :::
 
   </TabItem>
@@ -202,7 +202,7 @@ MCP-servers zijn alleen configureerbaar in de **desktop-app**. De ChatGPT-webint
 </Steps>
 
 :::tip[Project-gescopeerde configuratie]
-Je kunt ook een `mcp.json` bestand in de root van je project plaatsen in plaats van in `~/.cursor/`. Projectniveau-configuratie heeft voorrang en maakt de servers beschikbaar voor elk teamlid dat het project in Cursor opent.
+Je kunt ook een `mcp.json` bestand in de root van je project plaatsen in plaats van in `~/.cursor/`. Projectconfiguratie heeft voorrang en maakt de servers beschikbaar voor elk teamlid dat het project in Cursor opent.
 :::
 
   </TabItem>
@@ -249,7 +249,7 @@ Cline is een VS Code-extensie met een ingebouwde MCP-serverbeheerder. Handmatig 
 <Steps>
 1. Installeer Cline vanuit de VS Code Marketplace:
    - Open VS Code en druk op `Ctrl+Shift+X` / `Cmd+Shift+X`
-   - Zoek naar **Cline** en klik op **Installeren**
+   - Zoek op **Cline** en klik op **Installeren**
 
 2. Klik op het **Cline-icoon** in de Activiteitenbalk (linkerzijbalk) om het Cline-paneel te openen.
 
@@ -286,22 +286,15 @@ Klik in het MCP Servers-paneel op **Server toevoegen** en plak direct `https://a
 
 ---
 
-## Scope-referentie
+## Scopes
 
-Wanneer je het toestemmingsscherm goedkeurt, zie je een overzicht van wat de agent aanvraagt. Wink groepeert machtigingen per functioneel gebied:
+Wanneer je het toestemmingsscherm goedkeurt, zie je een overzicht van wat de agent aanvraagt. MCP-clients gebruiken dezelfde permissieterminologie als de rest van het platform — zie de volledige
+[scope-referentie op de Authenticatiepagina](/nl/developers/authentication#scopes).
 
-| Scope-groep | Scopes | Wat ze ontgrendelen |
-|-------------|--------|---------------------|
-| **MCP transport** | `mcp.read` `mcp.write` `mcp.remove` | Vereist om verbinding te maken met een van de MCP-servers |
-| **Account** | `account.read` `account.write` `account.remove` | Beheersentiteiten, teamleden, instellingen, applicaties |
-| **Booking** | `booking.read` `booking.write` `booking.remove` | Zoeken, bekijken, aanmaken, annuleren en terugbetalen van boekingen |
-| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Accommodaties, kamers, tarieven, voorzieningen, beschikbaarheid |
-| **Analytics** | `analytics.read` | Boekingsanalyses, omzetrapporten, ranglijsten |
-| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Social posts, campagnes, verkoopkanalen, promoties |
-| **Content** | `content.read` `content.write` `content.remove` | Multimedia, verkorte URL's, syndiceerbare items, kaarten |
-| **Payment** | `payment.read` `payment.write` | Grootboek, uitbetalingen, financiële overzichten, opnames |
+Twee zaken zijn specifiek voor MCP:
 
-De AI-client vraagt alleen de scopes aan die nodig zijn. Je kunt individuele machtigingen weigeren op het toestemmingsscherm — tools die een geweigerde scope vereisen, geven een foutmelding bij gebruik.
+- **De scopes `mcp.read`, `mcp.write` en `mcp.remove` zijn aanvullend vereist** om de MCP-transportlaag te openen. Een client met een `mcp.*` scope krijgt toegang tot `/mcp`, maar elke tool die wordt aangeroepen handhaaft nog steeds de sectiescope van het betreffende endpoint (bijv. `booking.read`).
+- **De AI-client vraagt alleen de scopes aan die nodig zijn.** Je kunt individuele permissies weigeren op het toestemmingsscherm — tools die een geweigerde scope vereisen geven een foutmelding bij gebruik.
 
 ---
 
@@ -316,7 +309,7 @@ Je AI-client ondersteunt mogelijk de interactieve PKCE-flow nog niet. Controleer
 
 **`401 Unauthorized` na inloggen**
 
-Je opgeslagen token is mogelijk verlopen. Verwijder en voeg de server opnieuw toe om een nieuwe login te forceren:
+Je opgeslagen token is mogelijk verlopen. Verwijder en voeg de server opnieuw toe om een verse login te forceren:
 
 ```bash
 # Claude Code
@@ -326,17 +319,17 @@ claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 
 Voor Claude Desktop en ChatGPT, verwijder de server uit de instellingen, herstart de app en voeg hem opnieuw toe.
 
-**`403 Forbidden` bij het aanroepen van een specifieke tool**
+**`403 Forbidden` bij aanroepen van een specifieke tool**
 
-De tool vereist een scope die je niet hebt goedgekeurd op het toestemmingsscherm. Verbind de server opnieuw — het toestemmingsscherm verschijnt opnieuw en je kunt de ontbrekende machtiging goedkeuren.
+De tool vereist een scope die je niet hebt goedgekeurd op het toestemmingsscherm. Verbind de server opnieuw — het toestemmingsscherm verschijnt weer en je kunt de ontbrekende permissie goedkeuren.
 
-**De server verschijnt, maar tool-aanroepen geven "account niet gevonden"**
+**De server verschijnt maar tool-aanroepen geven "account niet gevonden"**
 
 Je bent ingelogd met een Wink-account zonder beheersentiteit. Ga naar [Wink Portal](https://app.wink.travel) en zorg dat je account correct is ingesteld voordat je de MCP-server gebruikt.
 
 **Token verloopt midden in een sessie**
 
-Tokens zijn 3 uur geldig. Claude Code en Claude Desktop vernieuwen tokens stil zonder je sessie te onderbreken. Zie je authenticatiefouten na een lange inactiviteit, typ dan een nieuw bericht — de client herauthenticeert automatisch.
+Tokens zijn 3 uur geldig. Claude Code en Claude Desktop vernieuwen tokens stil zonder je sessie te onderbreken. Zie je authenticatiefouten na lange inactiviteit, typ dan een nieuw bericht — de client herauthenticeert automatisch.
 
 **Codex CLI toont "MCP server unreachable"**
 
@@ -348,15 +341,15 @@ MCP-ondersteuning vereist ChatGPT desktop-app versie **1.2024.352** of hoger en 
 
 **Cursor-server toont rood / "Failed to connect"**
 
-Controleer of je `~/.cursor/mcp.json` geldige JSON is en `"type": "http"` bevat. Ga daarna naar **Instellingen → Cursor-instellingen → MCP** en klik op **Vernieuwen**. Blijft de fout, start Cursor volledig opnieuw op — configuratiewijzigingen worden niet altijd opgepikt zonder herstart.
+Controleer of je `~/.cursor/mcp.json` geldige JSON bevat met `"type": "http"`. Ga daarna naar **Instellingen → Cursor-instellingen → MCP** en klik op **Vernieuwen**. Blijft de fout, start Cursor volledig opnieuw op — configuratiewijzigingen worden niet altijd opgepikt zonder herstart.
 
 **Windsurf MCP-servers niet zichtbaar in instellingen**
 
-Windsurf vereist een volledige herstart (niet alleen venster herladen) om wijzigingen in `mcp_config.json` op te pikken. Gebruik **Bestand → Afsluiten** en start opnieuw. Verschijnen de servers nog niet, controleer of je Windsurf **1.4+** gebruikt via **Help → Over Windsurf**.
+Windsurf vereist een volledige herstart (niet alleen venster herladen) om wijzigingen in `mcp_config.json` te detecteren. Gebruik **Bestand → Afsluiten** en start opnieuw. Verschijnen de servers nog niet, controleer of je Windsurf **1.4+** gebruikt via **Help → Over Windsurf**.
 
-**Cline "Add Server"-optie niet zichtbaar**
+**Cline "Server toevoegen"-optie niet zichtbaar**
 
-De MCP-serverbeheerder vereist Cline **2.0** of hoger. Open het VS Code Extensies-paneel, zoek Cline en klik op **Bijwerken** als er een update beschikbaar is. Na update, herlaad VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+De MCP-serverbeheerder vereist Cline **2.0** of hoger. Open het VS Code Extensies-paneel, zoek Cline en klik op **Bijwerken** als er een update beschikbaar is. Herlaad daarna VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

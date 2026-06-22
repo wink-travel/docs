@@ -1,5 +1,5 @@
 ---
-title: Overovanie identity
+title: Overenie identity
 description: Naučte sa, ako sa overiť pomocou Wink OAuth2 autorizačného servera.
 sidebar:
   order: 2
@@ -19,9 +19,9 @@ Aplikácia vám poskytne `Client ID` a `Secret Key`, ktoré potrebujete na vytvo
 
 Tu sú kroky na vytvorenie autentifikovanej relácie.
 
-**Krok 1**. Získajte prístupový token v staging prostredí alebo v našom produkčnom prostredí:
+**Krok 1**. Získajte prístupový token na stagingu alebo v našom produkčnom prostredí:
 
-Najpravdepodobnejšie budete pracovať s robustnou OAuth2 knižnicou pre váš programovací jazyk, ktorá za vás vykoná všetku ťažkú prácu.
+Pravdepodobne budete pracovať s robustnou OAuth2 knižnicou pre váš jazyk, ktorá za vás vykoná všetku ťažkú prácu.
 Naše príklady ukážu najzákladnejšie použitie z príkazového riadku pomocou `curl`.
 
 ### Staging
@@ -56,13 +56,52 @@ Toto vráti prístupový token spolu s ďalšími OAuth2 odpoveďami:
 }
 ```
 
-Keď voláte ktorýkoľvek z našich koncových bodov, zahrňte do hlavičky nasledujúce:
+Keď voláte ktorýkoľvek z našich koncových bodov, zahrňte do hlavičky nasledovné:
 
 - `Wink-Version` = `2.0` Najnovšia - *Pozrite si naše API dokumenty pre ďalšie dostupné verzie.*
 - `Authorization` = `Bearer ${access_token}` *Vložte svoj prístupový token.*
 
-:::tip
-Všetky naše API môžete otestovať bez písania jediného riadku kódu predtým, než začnete.
+## Rozsahy (Scopes)
 
-Získajte 'Client ID' a 'Secret Key' z jednej zo svojich aplikácií a prejdite na niektoré z našich [APIs](/sk/api).
+**Scope** je povolenie, ktoré váš prístupový token nesie. Keď žiadate o token, zadáte
+zoznam rozsahov oddelených medzerou v parametri `scope` a token môže pristupovať len k oblastiam,
+ktoré tieto rozsahy pokrývajú. Pri grant type `client_credentials` nastavujete rozsahy vo svojej žiadosti o token —
+pozrite si príklady [`curl`](#staging) vyššie a [Postman návod](/sk/developers/setup#postman).
+
+Rozsahy sú pomenované `section.action`, kde akcia je jedna z:
+
+- `read` — zobrazenie zdrojov (bezpečné `GET` požiadavky)
+- `write` — vytváranie a aktualizácia zdrojov (`POST` / `PUT` / `PATCH`)
+- `remove` — mazanie zdrojov (`DELETE`)
+
+Wink zoskupuje povolenia podľa funkčnej oblasti. Žiadajte len rozsahy, ktoré vaša integrácia potrebuje:
+
+| Skupina rozsahov | Rozsahy | Čo odomykajú | Riziko |
+|------------------|---------|--------------|--------|
+| **Účet** | `account.read` `account.write` `account.remove` | Správa entít, členov tímu, nastavení, aplikácií | Nízke–Stredné |
+| **Inventár** | `inventory.read` `inventory.write` `inventory.remove` | Nehnuteľnosti, typy izieb, cenové plány, ceny, doplnky, dostupnosť, aktivity, atrakcie | Nízke–Stredné |
+| **Rezervácie** | `booking.read` `booking.write` `booking.remove` | Vyhľadávanie, zobrazenie, vytvorenie, zrušenie a vrátenie rezervácií; checkout; storno podmienky | Nízke–Stredné |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Kampane, výhody, predajné kanály, WinkLinks, spravované sociálne siete, vernostný program | Nízke–Stredné |
+| **Obsah** | `content.read` `content.write` `content.remove` | Popisy nehnuteľností, recenzie, médiá, mapy, zelený index | Nízke–Stredné |
+| **Analytika** | `analytics.read` `analytics.write` `analytics.remove` | Reporty a analytika — príjmy, rebríčky | Nízke–Stredné |
+| **Integrácie** | `integrations.read` `integrations.write` `integrations.remove` | Channel manageri, externé rezervačné systémy, Google Hotel, notifikačné endpointy, synchronizácia rezervácií | Nízke–Stredné |
+| **Platby** | `payment.read` `payment.write` `payment.remove` | Spracovanie platieb, Stripe, Revolut, výplaty, predplatné | Stredné–Vysoké |
+| **Účtovníctvo** | `accounting.read` `accounting.write` `accounting.remove` | Účtovníctvo, kniha výberov, zosúladenie | Stredné–Vysoké |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Otvára [MCP transport](/sk/developers/mcp) (`/mcp`) pre AI agentov | Nízke–Stredné |
+
+:::note
+Stĺpec **Riziko** odráža citlivosť: `read` je na nižšom konci a `write`/`remove` na vyššom.
+**Platby** a **Účtovníctvo** chránia pohyb peňazí, preto nesú zvýšené riziko.
+:::
+
+Niekoľko vecí na zapamätanie:
+
+- **Žiadajte minimum.** Pýtajte sa len na rozsahy, ktoré vaša integrácia skutočne používa — token vydaný s širším prístupom ako je potrebné má väčší dosah v prípade úniku.
+- **Neznáme rozsahy sú zamietnuté.** Žiadosť o rozsah, na ktorý vaša aplikácia nie je registrovaná alebo ktorý neexistuje, zlyhá pri vydávaní tokenu.
+- **`mcp.*` je len pre AI-agent klientov.** Potrebujete ho na otvorenie MCP transportu; nie je potrebný pre bežné REST API volania. Pozrite [Model Context Protocol](/sk/developers/mcp).
+
+:::tip
+Všetky naše API môžete otestovať bez písania jediného riadku kódu pred začatím.
+
+Získajte 'Client ID' a 'Secret Key' z jednej zo svojich aplikácií a prejdite na niektoré z našich [API](/sk/api).
 :::

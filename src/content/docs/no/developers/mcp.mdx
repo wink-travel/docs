@@ -145,7 +145,7 @@ MCP-serverstøtte er tilgjengelig i **ChatGPT desktop-appen** for Plus, Pro, Tea
 <Steps>
 1. Last ned og installer [ChatGPT desktop-appen](https://openai.com/chatgpt/download/) hvis du ikke allerede har den.
 
-2. Åpne appen og klikk på **profilikonet ditt** øverst til høyre, og velg deretter **Innstillinger**.
+2. Åpne appen og klikk på **profilikonet ditt** øverst til høyre, velg deretter **Innstillinger**.
 
 3. Gå til **Connectors** (eller **MCP Servers** avhengig av appversjon) og klikk **Legg til**.
 
@@ -162,7 +162,7 @@ MCP-serverstøtte er tilgjengelig i **ChatGPT desktop-appen** for Plus, Pro, Tea
    https://integrations.wink.travel/mcp
    ```
 
-7. Begge serverne vises i listen over Connectors. Start en ny chat — Wink-verktøy er tilgjengelige automatisk.
+7. Begge serverne vises i listen over Connectors. Start en ny chat — Wink-verktøyene er tilgjengelige automatisk.
 </Steps>
 
 :::note[Begrensning i nettapp]
@@ -201,7 +201,7 @@ MCP-servere kan kun konfigureres i **desktop-appen**. ChatGPT-nettgrensesnittet 
 5. Åpne en chat (`Ctrl+L` / `Cmd+L`) og be Cursor liste tilgjengelige Wink-verktøy for å bekrefte tilkoblingen.
 </Steps>
 
-:::tip[Prosjektspesifikk konfig]
+:::tip[Prosjektspesifikk konfigurasjon]
 Du kan også plassere en `mcp.json`-fil i rotmappen til prosjektet ditt i stedet for i `~/.cursor/`. Prosjektnivå-konfigurasjon har prioritet og gjør serverne tilgjengelige for alle teammedlemmer som åpner prosjektet i Cursor.
 :::
 
@@ -253,7 +253,7 @@ Cline er en VS Code-utvidelse med innebygd MCP-serverbehandler. Ingen manuell JS
 
 2. Klikk på **Cline-ikonet** i aktivitetslinjen (venstre sidepanel) for å åpne Cline-panelet.
 
-3. Klikk på **MCP Servers**-ikonet (pluggikon) i Cline-verktøylinjen, og velg deretter **Rediger MCP-innstillinger**.
+3. Klikk på **MCP Servers**-ikonet (pluggikonet) i Cline-verktøylinjen, velg deretter **Edit MCP Settings**.
 
 4. VS Code åpner `cline_mcp_settings.json`. Legg til Wink-oppføringene:
 
@@ -272,7 +272,7 @@ Cline er en VS Code-utvidelse med innebygd MCP-serverbehandler. Ingen manuell JS
    }
    ```
 
-5. **Lagre filen.** Cline laster inn på nytt automatisk og åpner en nettleserfane til `https://iam.wink.travel`.
+5. **Lagre filen.** Cline laster inn på nytt og åpner en nettleserfane til `https://iam.wink.travel`.
 
 6. **Logg inn på Wink** og godkjenn tillatelser. Begge serverne vises som aktive i MCP Servers-panelet.
 </Steps>
@@ -286,22 +286,15 @@ I MCP Servers-panelet klikker du **Add Server** og limer inn `https://api.wink.t
 
 ---
 
-## Scope-referanse
+## Scopes
 
-Når du godkjenner samtykkeskjermen, vil du se en oversikt over hva agenten ber om. Wink grupperer tillatelser etter funksjonsområde:
+Når du godkjenner samtykkeskjermen vil du se en oversikt over hva agenten ber om. MCP-klienter bruker samme tillatelsesvokabular som resten av plattformen — se full
+[scope-referanse på Autentiseringssiden](/no/developers/authentication#scopes).
 
-| Scope-gruppe | Scopes | Hva de låser opp |
-|-------------|--------|-----------------|
-| **MCP transport** | `mcp.read` `mcp.write` `mcp.remove` | Kreves for å koble til en av MCP-serverne |
-| **Konto** | `account.read` `account.write` `account.remove` | Administrerende enheter, teammedlemmer, innstillinger, applikasjoner |
-| **Bestilling** | `booking.read` `booking.write` `booking.remove` | Søk, vis, opprett, avbestill og refunder bestillinger |
-| **Inventar** | `inventory.read` `inventory.write` `inventory.remove` | Eiendommer, rom, priser, fasiliteter, tilgjengelighet |
-| **Analyse** | `analytics.read` | Bestillingsanalyser, inntektsrapporter, topplister |
-| **Markedsføring** | `marketing.read` `marketing.write` `marketing.remove` | Sosiale innlegg, kampanjer, salgskanaler, kampanjer |
-| **Innhold** | `content.read` `content.write` `content.remove` | Multimedia, forkortede URL-er, syndikerbare elementer, kart |
-| **Betaling** | `payment.read` `payment.write` | Regnskap, utbetalinger, økonomiske oversikter, uttak |
+To ting er spesifikke for MCP:
 
-AI-klienten ber kun om de scopes den trenger. Du kan nekte individuelle tillatelser på samtykkeskjermen — verktøy som krever en nektet scope vil returnere en feil ved bruk.
+- **`mcp.read` `mcp.write` `mcp.remove` scopes kreves i tillegg** for å åpne MCP-transporten. En klient med `mcp.*` scope får tilgang til `/mcp`, men hvert verktøy den kaller håndhever fortsatt seksjonsscope for endepunktet det omslutter (f.eks. `booking.read`).
+- **AI-klienten ber kun om de scopes den trenger.** Du kan nekte individuelle tillatelser på samtykkeskjermen — verktøy som krever en nektet scope vil returnere en feil ved kall.
 
 ---
 
@@ -326,37 +319,37 @@ claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 
 For Claude Desktop og ChatGPT, fjern serveroppføringen i innstillinger, start appen på nytt og legg den til igjen.
 
-**`403 Forbidden` ved kall til et spesifikt verktøy**
+**`403 Forbidden` ved kall til spesifikt verktøy**
 
-Verktøyet krever en scope du ikke godkjente på samtykkeskjermen. Koble til serveren på nytt — samtykkeskjermen vises igjen og du kan godkjenne den manglende tillatelsen.
+Verktøyet krever en scope du ikke godkjente på samtykkeskjermen. Koble til serveren på nytt — samtykkeskjermen vises igjen og du kan godkjenne manglende tillatelse.
 
-**Serveren vises, men verktøysanrop returnerer "account not found"**
+**Serveren vises, men verktøykall returnerer "account not found"**
 
 Du er logget inn på en Wink-konto uten administrerende enhet. Gå til [Wink Portal](https://app.wink.travel) og sørg for at kontoen din er satt opp før du bruker MCP-serveren.
 
 **Token utløper midt i økten**
 
-Tokenene er gyldige i 3 timer. Claude Code og Claude Desktop oppdaterer token stille uten å avbryte økten. Hvis du får autentiseringsfeil etter lang inaktivitet, skriv en ny melding — klienten autentiserer på nytt automatisk.
+Token er gyldige i 3 timer. Claude Code og Claude Desktop oppdaterer token stille uten å avbryte økten. Hvis du får autentiseringsfeil etter lang inaktivitet, skriv en ny melding — klienten autentiserer automatisk på nytt.
 
 **Codex CLI viser "MCP server unreachable"**
 
-Sjekk at `~/.codex/config.json` er gyldig JSON (ingen komma på slutten) og at `"type": "http"` er satt. Codex krever HTTP-transport for eksterne servere; stdio-transport er kun for lokale binærfiler.
+Sjekk at `~/.codex/config.json` er gyldig JSON (ingen avsluttende komma) og at `"type": "http"` er satt. Codex krever HTTP-transport for eksterne servere; stdio-transport er kun for lokale binærfiler.
 
 **ChatGPT "Connectors"-meny mangler**
 
-MCP-støtte krever ChatGPT desktop-app versjon **1.2024.352** eller nyere og et aktivt Plus-, Pro-, Team- eller Enterprise-abonnement. Oppdater appen og sjekk planen din under Innstillinger → Konto.
+MCP-støtte krever ChatGPT desktop-app versjon **1.2024.352** eller nyere og et aktivt Plus, Pro, Team eller Enterprise-abonnement. Oppdater appen og sjekk planen din under Innstillinger → Konto.
 
 **Cursor-server viser rød / "Failed to connect"**
 
-Sjekk at `~/.cursor/mcp.json` er gyldig JSON og inneholder `"type": "http"`. Gå deretter til **Innstillinger → Cursor Settings → MCP** og klikk **Oppdater**. Hvis feilen vedvarer, start Cursor helt på nytt — konfigurasjonsendringer plukkes ikke alltid opp uten omstart.
+Sjekk at `~/.cursor/mcp.json` er gyldig JSON og inneholder `"type": "http"`. Gå deretter til **Innstillinger → Cursor Settings → MCP** og klikk **Oppdater**. Hvis feilen vedvarer, start Cursor helt på nytt — konfigurasjonsendringer fanges ikke alltid opp uten omstart.
 
 **Windsurf MCP-servere vises ikke i innstillinger**
 
-Windsurf krever full omstart (ikke bare vindusoppdatering) for å plukke opp endringer i `mcp_config.json`. Bruk **Fil → Avslutt** og start på nytt. Hvis serverne fortsatt ikke vises, bekreft at du har Windsurf **1.4+** via **Hjelp → Om Windsurf**.
+Windsurf krever full omstart (ikke bare vindusoppdatering) for å hente endringer i `mcp_config.json`. Bruk **Fil → Avslutt** og start på nytt. Hvis serverne fortsatt ikke vises, bekreft at du har Windsurf **1.4+** via **Hjelp → Om Windsurf**.
 
 **Cline "Add Server"-alternativet er ikke synlig**
 
-MCP-serverbehandleren krever Cline **2.0** eller nyere. Åpne VS Code Extensions-panelet, finn Cline og klikk **Oppdater** hvis en oppdatering er tilgjengelig. Etter oppdatering, last inn VS Code på nytt (`Ctrl+Shift+P` → "Developer: Reload Window").
+MCP-serverbehandleren krever Cline **2.0** eller nyere. Åpne VS Code Extensions-panelet, finn Cline og klikk **Oppdater** hvis tilgjengelig. Etter oppdatering, last inn VS Code på nytt (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

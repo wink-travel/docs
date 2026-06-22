@@ -21,7 +21,7 @@ Aquí están los pasos para crear una sesión autenticada.
 
 **Paso 1**. Obtén un token de acceso en staging o en nuestro entorno de producción:
 
-Probablemente estarás trabajando con una biblioteca OAuth2 robusta para tu lenguaje, que hará todo el trabajo pesado por vos.
+Lo más probable es que trabajes con una biblioteca OAuth2 robusta para tu lenguaje, que hará todo el trabajo pesado por vos.
 Nuestros ejemplos mostrarán el uso más básico desde la línea de comandos usando `curl`.
 
 ### Staging
@@ -61,8 +61,44 @@ Cuando hagas una llamada a cualquiera de nuestros endpoints, incluye lo siguient
 - `Wink-Version` = `2.0` Última - *Consulta nuestra documentación de API para otras versiones disponibles.*
 - `Authorization` = `Bearer ${access_token}` *Inserta tu token de acceso.*
 
+## Scopes
+
+Un **scope** es un permiso que lleva tu token de acceso. Cuando solicitás un token, pasás una lista de scopes separados por espacios en el parámetro `scope`, y el token solo puede acceder a las áreas que esos scopes cubren. Con el grant `client_credentials` establecés los scopes en tu solicitud de token — mirá los ejemplos de [`curl`](#staging) arriba y el [recorrido en Postman](/es-AR/developers/setup#postman).
+
+Los scopes se nombran como `section.action`, donde la acción es una de:
+
+- `read` — ver recursos (solicitudes seguras `GET`)
+- `write` — crear y actualizar recursos (`POST` / `PUT` / `PATCH`)
+- `remove` — eliminar recursos (`DELETE`)
+
+Wink agrupa permisos por área funcional. Solicitá solo los scopes que tu integración necesita:
+
+| Grupo de scopes | Scopes | Lo que desbloquean | Riesgo |
+|-----------------|--------|--------------------|--------|
+| **Account** | `account.read` `account.write` `account.remove` | Gestión de entidades, miembros del equipo, configuraciones, aplicaciones | Bajo–Medio |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Propiedades, tipos de habitación, planes tarifarios, tarifas, add-ons, disponibilidad, actividades, atracciones | Bajo–Medio |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Buscar, ver, crear, cancelar y reembolsar reservas; checkout; políticas de cancelación | Bajo–Medio |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Campañas, beneficios, canales de venta, WinkLinks, social gestionado, fidelidad | Bajo–Medio |
+| **Content** | `content.read` `content.write` `content.remove` | Descripciones de propiedades, reseñas, medios, mapas, índice verde | Bajo–Medio |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Reportes y análisis — ingresos, rankings | Bajo–Medio |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Channel managers, sistemas externos de reservas, Google Hotel, endpoints de notificación, sincronización de reservas | Bajo–Medio |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Procesamiento de pagos, Stripe, Revolut, pagos, suscripciones | Medio–Alto |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Contabilidad, libro de retiros, conciliación | Medio–Alto |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Abre el [transporte MCP](/es-AR/developers/mcp) (`/mcp`) para agentes de IA | Bajo–Medio |
+
+:::note
+La columna **Riesgo** refleja la sensibilidad: `read` es el nivel más bajo y `write`/`remove` el más alto.
+**Payment** y **Accounting** controlan movimientos de dinero, por lo que tienen un riesgo elevado.
+:::
+
+Algunas cosas para tener en cuenta:
+
+- **Solicitá lo mínimo.** Pedí solo los scopes que tu integración realmente usa — un token emitido con acceso más amplio del necesario tiene un mayor impacto si se filtra.
+- **Los scopes desconocidos son rechazados.** Solicitar un scope para el que tu aplicación no está registrada, o que no existe, falla al emitir el token.
+- **`mcp.*` es solo para clientes agentes de IA.** Lo necesitás para abrir el transporte MCP; no es requerido para llamadas REST API regulares. Ver [Model Context Protocol](/es-AR/developers/mcp).
+
 :::tip
-Podés probar todas nuestras APIs sin escribir una sola línea de código antes de comenzar.
+Podés probar todas nuestras APIs sin escribir una sola línea de código antes de empezar.
 
 Obtené un 'Client ID' y 'Secret Key' de una de tus apps y navegá a cualquiera de nuestras [APIs](/es-AR/api).
 :::

@@ -61,6 +61,48 @@ Cuando hagas una llamada a cualquiera de nuestros endpoints, incluye lo siguient
 - `Wink-Version` = `2.0` Última - *Consulta nuestra documentación API para otras versiones disponibles.*
 - `Authorization` = `Bearer ${access_token}` *Inserta tu token de acceso.*
 
+## Scopes
+
+Un **scope** es un permiso que lleva tu token de acceso. Cuando solicitas un token, pasas una
+lista de scopes delimitada por espacios en el parámetro `scope`, y el token solo puede acceder a las áreas
+que esos scopes cubren. Con el grant `client_credentials` estableces los scopes en tu solicitud de token —
+consulta los ejemplos de [`curl`](#staging) arriba y el [recorrido en Postman](/es/developers/setup#postman).
+
+Los scopes se nombran `section.action`, donde la acción es una de:
+
+- `read` — ver recursos (solicitudes seguras `GET`)
+- `write` — crear y actualizar recursos (`POST` / `PUT` / `PATCH`)
+- `remove` — eliminar recursos (`DELETE`)
+
+Wink agrupa permisos por área funcional. Solicita solo los scopes que tu integración necesita:
+
+| Grupo de scopes | Scopes | Lo que desbloquean | Riesgo |
+|-----------------|--------|--------------------|--------|
+| **Account** | `account.read` `account.write` `account.remove` | Gestión de entidades, miembros del equipo, configuraciones, aplicaciones | Bajo–Medio |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Propiedades, tipos de habitación, planes tarifarios, tarifas, complementos, disponibilidad, actividades, atracciones | Bajo–Medio |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Buscar, ver, crear, cancelar y reembolsar reservas; checkout; políticas de cancelación | Bajo–Medio |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Campañas, beneficios, canales de venta, WinkLinks, social gestionado, fidelidad | Bajo–Medio |
+| **Content** | `content.read` `content.write` `content.remove` | Descripciones de propiedades, reseñas, medios, mapas, índice verde | Bajo–Medio |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Reportes y análisis — ingresos, tablas de clasificación | Bajo–Medio |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Gestores de canales, sistemas externos de reservas, Google Hotel, endpoints de notificación, sincronización de reservas | Bajo–Medio |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Procesamiento de pagos, Stripe, Revolut, pagos, suscripciones | Medio–Alto |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Contabilidad, libro de retiros, conciliación | Medio–Alto |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Abre el [transporte MCP](/es/developers/mcp) (`/mcp`) para agentes de IA | Bajo–Medio |
+
+:::note
+La columna **Riesgo** refleja la sensibilidad: `read` es el nivel más bajo y `write`/`remove` el más alto.
+**Payment** y **Accounting** protegen el movimiento de dinero, por lo que tienen un riesgo elevado.
+:::
+
+Algunas cosas a tener en cuenta:
+
+- **Solicita lo mínimo.** Pide solo los scopes que tu integración realmente usa — un token emitido
+  con acceso más amplio del necesario tiene un mayor impacto si se filtra.
+- **Los scopes desconocidos son rechazados.** Solicitar un scope para el que tu aplicación no está registrada, o uno
+  que no existe, falla en la emisión del token.
+- **`mcp.*` es solo para clientes agentes de IA.** Lo necesitas para abrir el transporte MCP; no es requerido
+  para llamadas REST API regulares. Consulta [Model Context Protocol](/es/developers/mcp).
+
 :::tip
 Puedes probar todas nuestras APIs sin escribir una sola línea de código antes de comenzar.
 

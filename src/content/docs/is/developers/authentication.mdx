@@ -1,12 +1,12 @@
 ---
 title: Auðkenning
-description: Lærðu hvernig á að auðkenna með OAuth2 auðkenningarþjóni Wink.
+description: Lærðu hvernig á að auðkenna með OAuth2-auðkenningarþjónustu Wink.
 sidebar:
   order: 2
 ---
 
 :::tip
-Auðkenningarþjónn Wink IAM styður algengar OAuth2 endapunkta:
+Auðkenningarþjónusta Wink IAM styður algengar OAuth2-endapunkta:
 
 - /oauth2/authorize
 - /oauth2/token
@@ -15,13 +15,13 @@ Auðkenningarþjónn Wink IAM styður algengar OAuth2 endapunkta:
 - /oauth2/userinfo
 :::
 
-Forrit veitir þér `Client ID` og `Secret Key` sem þú þarft til að búa til auðkennda OAuth2 lotu sem þú getur notað til að eiga samskipti við Wink og TripPay API.
+Forrit veitir þér `Client ID` og `Secret Key` sem þú þarft til að búa til auðkennda OAuth2-fund sem þú getur notað til að eiga samskipti við Wink og TripPay API.
 
-Hér eru skrefin til að búa til auðkennda lotu.
+Hér eru skrefin til að búa til auðkenndan fund.
 
 **Skref 1**. Sækja aðgangstákna á staging eða í framleiðsluumhverfi okkar:
 
-Þú munt líklega vinna með öflugt OAuth2 bókasafn fyrir þitt forritunarmál, sem sér um allt flókið fyrir þig.
+Þú munt líklega vinna með öflugt OAuth2-bókasafn fyrir þitt forritunarmál, sem sér um alla flækjustigið fyrir þig.
 Dæmin okkar sýna einfaldasta notkunina úr skipanalínu með `curl`.
 
 ### Staging
@@ -48,7 +48,7 @@ curl -X POST https://iam.wink.travel/oauth2/token \
 
 ```
 
-Þetta mun skila aðgangstákna ásamt öðrum OAuth2 svörum:
+Þetta mun skila aðgangstákna ásamt öðrum OAuth2-svörum:
 
 ```json
 {
@@ -56,10 +56,49 @@ curl -X POST https://iam.wink.travel/oauth2/token \
 }
 ```
 
-Þegar þú gerir kall á hvaða endapunkt sem er, bættu eftirfarandi í hausinn:
+Þegar þú sendir beiðni til einhvers endapunkts okkar, settu eftirfarandi í hausinn:
 
-- `Wink-Version` = `2.0` Nýjasta - *Sjáðu API skjölin okkar fyrir aðrar útgáfur.*
+- `Wink-Version` = `2.0` Nýjasta - *Sjáðu API-skjölin okkar fyrir aðrar útgáfur.*
 - `Authorization` = `Bearer ${access_token}` *Settu inn aðgangstákna þinn.*
+
+## Umfang
+
+**Umfang** er leyfi sem aðgangstákn þitt ber með sér. Þegar þú biður um tákna, sendir þú
+lista yfir umfang aðskilin með bilum í `scope` breytunni, og táknið nær aðeins til þeirra svæða
+sem þau umfang ná yfir. Með `client_credentials` heimildinni setur þú umfangin í beiðni um tákna —
+sjáðu [`curl`](#staging) dæmin hér að ofan og [Postman leiðbeininguna](/is/developers/setup#postman).
+
+Umfang eru nefnd `section.action`, þar sem aðgerðin er ein af:
+
+- `read` — skoða auðlindir (öruggar `GET` beiðnir)
+- `write` — búa til og uppfæra auðlindir (`POST` / `PUT` / `PATCH`)
+- `remove` — eyða auðlindum (`DELETE`)
+
+Wink flokkar leyfi eftir virkni. Biddu aðeins um þau umfang sem samþætting þín þarf:
+
+| Umfangshópur | Umfang | Hvað þau opna | Áhætta |
+|-------------|--------|---------------|--------|
+| **Reikningur** | `account.read` `account.write` `account.remove` | Stjórnun eininga, liðsmanna, stillinga, forrita | Lág–Miðlungs |
+| **Birgðir** | `inventory.read` `inventory.write` `inventory.remove` | Eignir, herbergistegundir, verðáætlanir, verð, viðbætur, framboð, virkni, aðdráttarafl | Lág–Miðlungs |
+| **Bókun** | `booking.read` `booking.write` `booking.remove` | Leit, skoðun, sköpun, aflýsing og endurgreiðsla bókana; útskráning; aflýsingarstefnur | Lág–Miðlungs |
+| **Markaðssetning** | `marketing.read` `marketing.write` `marketing.remove` | Herferðir, ávinningur, sölurásir, WinkLinks, stjórnað samfélag, tryggðarkerfi | Lág–Miðlungs |
+| **Innihald** | `content.read` `content.write` `content.remove` | Lýsingar eignar, umsagnir, fjölmiðlar, kort, grænn vísir | Lág–Miðlungs |
+| **Greiningar** | `analytics.read` `analytics.write` `analytics.remove` | Skýrslugerð og greiningar — tekjur, stigatöflur | Lág–Miðlungs |
+| **Samþættingar** | `integrations.read` `integrations.write` `integrations.remove` | Rásastjórar, ytri bókunarkerfi, Google Hotel, tilkynningastaðir, samstilling bókana | Lág–Miðlungs |
+| **Greiðsla** | `payment.read` `payment.write` `payment.remove` | Greiðslumeðhöndlun, Stripe, Revolut, úttektir, áskriftir | Miðlungs–Há |
+| **Bókhald** | `accounting.read` `accounting.write` `accounting.remove` | Bókhald, úttektarbók, samræming | Miðlungs–Há |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Opnar [MCP flutninginn](/is/developers/mcp) (`/mcp`) fyrir AI-umboðsmenn | Lág–Miðlungs |
+
+:::note
+**Áhættu** dálkurinn endurspeglar næmni: `read` er lægsta stig og `write`/`remove` hærra stig.
+**Greiðsla** og **Bókhald** varða peningaumferð, svo þau bera aukna áhættu.
+:::
+
+Nokkur atriði til að hafa í huga:
+
+- **Biddu um það minnsta.** Biddu aðeins um þau umfang sem samþætting þín raunverulega notar — tákn með víðtækari aðgang en nauðsynlegt er hefur stærra tjónssvæði ef það lekur.
+- **Óþekkt umfang eru hafnað.** Að biðja um umfang sem forritið þitt er ekki skráð fyrir, eða sem ekki er til, bilar við útgáfu tákns.
+- **`mcp.*` er aðeins fyrir AI-umboðsmenn.** Þú þarft það til að opna MCP flutninginn; það er ekki nauðsynlegt fyrir venjulegar REST API-köll. Sjáðu [Model Context Protocol](/is/developers/mcp).
 
 :::tip
 Þú getur prófað öll API okkar án þess að skrifa eina línu af kóða áður en þú byrjar.

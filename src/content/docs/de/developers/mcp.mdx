@@ -27,7 +27,7 @@ Wink MCP-Server verwenden den **OAuth2 Authorization Code + PKCE**-Fluss und unt
 5. Der KI-Client hängt das Token an jede MCP-Anfrage an. Alle Tool-Ergebnisse sind automatisch auf Ihre Verwaltungseinheit beschränkt.
 6. Tokens laufen nach 3 Stunden ab. Ihr KI-Client aktualisiert sie im Hintergrund stillschweigend, ohne erneut nachzufragen.
 
-Jeder Tool-Aufruf läuft **unter Ihrer Identität** – dieselben ACL-Regeln, die das Webportal schützen, gelten für den KI-Agenten.
+Jeder Tool-Aufruf läuft **unter Ihrer Identität** – dieselben ACL-Regeln, die das Webportal schützen, gelten auch für den KI-Agenten.
 
 ---
 
@@ -60,7 +60,7 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
 ```
 
 :::tip[Mit Ihrem Team teilen]
-Fügen Sie `--scope project` zu `claude mcp add` hinzu, und Claude Code schreibt die Server-URL in `.mcp.json` im Repository-Stamm. Committen Sie diese Datei – jedes Teammitglied führt beim ersten Verbindungsaufbau seine eigene Browser-Anmeldung durch.
+Fügen Sie `--scope project` zu `claude mcp add` hinzu, und Claude Code schreibt die Server-URL in `.mcp.json` im Stammverzeichnis des Repos. Committen Sie diese Datei – jedes Teammitglied führt beim ersten Verbindungsaufbau seine eigene Browser-Anmeldung durch.
 :::
 
   </TabItem>
@@ -89,11 +89,11 @@ Fügen Sie `--scope project` zu `claude mcp add` hinzu, und Claude Code schreibt
    }
    ```
 
-3. **Beenden Sie Claude Desktop vollständig und starten Sie es neu** (verwenden Sie „Beenden“ im Menü – das Schließen des Fensters reicht nicht aus).
+3. **Beenden Sie Claude Desktop vollständig und starten Sie es neu** (verwenden Sie „Beenden“ aus der Menüleiste – das Schließen des Fensters reicht nicht aus).
 
 4. Claude Desktop öffnet für jeden neuen Server einen Browser-Tab. Melden Sie sich bei Wink an und genehmigen Sie die Berechtigungen.
 
-5. Das Steckersymbol in der unteren Symbolleiste zeigt beide Server als verbunden an.
+5. Das Stecker-Symbol in der unteren Symbolleiste zeigt beide Server als verbunden an.
 </Steps>
 
   </TabItem>
@@ -134,7 +134,7 @@ Fügen Sie `--scope project` zu `claude mcp add` hinzu, und Claude Code schreibt
 </Steps>
 
 :::note
-Codex CLI MCP-Unterstützung erfordert Version **1.0** oder höher. Führen Sie `codex --version` aus, um die Version zu prüfen, und `npm install -g @openai/codex`, um zu aktualisieren.
+Codex CLI MCP-Unterstützung erfordert Version **1.0** oder höher. Führen Sie `codex --version` aus, um die Version zu prüfen, und `npm install -g @openai/codex`, um ein Upgrade durchzuführen.
 :::
 
   </TabItem>
@@ -149,7 +149,7 @@ MCP-Server-Unterstützung ist in der **ChatGPT-Desktop-App** für Plus-, Pro-, T
 
 3. Gehen Sie zu **Connectors** (oder **MCP Servers**, je nach App-Version) und klicken Sie auf **Hinzufügen**.
 
-4. Geben Sie die Wink Inventory-Server-URL ein:
+4. Geben Sie die URL des Wink Inventory-Servers ein:
    ```
    https://api.wink.travel/mcp
    ```
@@ -202,7 +202,7 @@ MCP-Server sind nur in der **Desktop-App** konfigurierbar. Die ChatGPT-Weboberfl
 </Steps>
 
 :::tip[Projektbezogene Konfiguration]
-Sie können auch eine `mcp.json`-Datei im Stammverzeichnis Ihres Projekts ablegen statt in `~/.cursor/`. Die projektbezogene Konfiguration hat Vorrang und macht die Server für jedes Teammitglied verfügbar, das das Projekt in Cursor öffnet.
+Sie können auch eine `mcp.json`-Datei im Stammverzeichnis Ihres Projekts anstelle von `~/.cursor/` ablegen. Die Projektkonfiguration hat Vorrang und macht die Server für jedes Teammitglied verfügbar, das das Projekt in Cursor öffnet.
 :::
 
   </TabItem>
@@ -253,7 +253,7 @@ Cline ist eine VS Code-Erweiterung mit integriertem MCP-Server-Manager. Keine ma
 
 2. Klicken Sie auf das **Cline-Symbol** in der Aktivitätsleiste (linke Seitenleiste), um das Cline-Panel zu öffnen.
 
-3. Klicken Sie auf das **MCP Servers**-Symbol (Steckersymbol) in der Cline-Symbolleiste und wählen Sie **MCP-Einstellungen bearbeiten**.
+3. Klicken Sie auf das **MCP Servers**-Symbol (Stecker-Symbol) in der Cline-Symbolleiste und wählen Sie **MCP-Einstellungen bearbeiten**.
 
 4. VS Code öffnet `cline_mcp_settings.json`. Fügen Sie die Wink-Einträge hinzu:
 
@@ -286,22 +286,15 @@ Klicken Sie im MCP Servers-Panel auf **Server hinzufügen** und fügen Sie `http
 
 ---
 
-## Scope-Referenz
+## Berechtigungen (Scopes)
 
-Wenn Sie den Zustimmungsbildschirm genehmigen, sehen Sie eine Aufschlüsselung der vom Agenten angeforderten Berechtigungen. Wink gruppiert Berechtigungen nach Funktionsbereichen:
+Wenn Sie den Zustimmungsbildschirm genehmigen, sehen Sie eine Aufschlüsselung der vom Agenten angeforderten Berechtigungen. MCP-Clients verwenden dieselbe Berechtigungsvokabel wie der Rest der Plattform – siehe die vollständige
+[Scope-Referenz auf der Authentifizierungsseite](/de/developers/authentication#scopes).
 
-| Scope-Gruppe | Scopes | Was sie freischalten |
-|-------------|--------|---------------------|
-| **MCP transport** | `mcp.read` `mcp.write` `mcp.remove` | Erforderlich, um eine Verbindung zu einem MCP-Server herzustellen |
-| **Account** | `account.read` `account.write` `account.remove` | Verwaltungseinheiten, Teammitglieder, Einstellungen, Anwendungen |
-| **Booking** | `booking.read` `booking.write` `booking.remove` | Suchen, Anzeigen, Erstellen, Stornieren und Erstatten von Buchungen |
-| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Objekte, Zimmer, Preise, Annehmlichkeiten, Verfügbarkeit |
-| **Analytics** | `analytics.read` | Buchungsanalysen, Umsatzberichte, Bestenlisten |
-| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Social Posts, Kampagnen, Vertriebskanäle, Aktionen |
-| **Content** | `content.read` `content.write` `content.remove` | Multimedia, verkürzte URLs, syndizierbare Inhalte, Karten |
-| **Payment** | `payment.read` `payment.write` | Hauptbuch, Auszahlungen, Finanzübersichten, Abhebungen |
+Zwei Dinge sind spezifisch für MCP:
 
-Der KI-Client fordert nur die Scopes an, die er benötigt. Sie können einzelne Berechtigungen auf dem Zustimmungsbildschirm ablehnen – Tools, die einen abgelehnten Scope benötigen, geben bei Aufruf einen Fehler zurück.
+- **Die Scopes `mcp.read`, `mcp.write` und `mcp.remove` sind zusätzlich erforderlich**, um den MCP-Transport zu öffnen. Ein Client mit einem `mcp.*`-Scope erhält Zugang zu `/mcp`, aber jedes Tool, das er aufruft, erzwingt weiterhin den Abschnitts-Scope des jeweiligen Endpunkts (z. B. `booking.read`).
+- **Der KI-Client fordert nur die Scopes an, die er benötigt.** Sie können einzelne Berechtigungen auf dem Zustimmungsbildschirm ablehnen – Tools, die einen abgelehnten Scope benötigen, geben beim Aufruf einen Fehler zurück.
 
 ---
 
@@ -314,9 +307,9 @@ Ihr KI-Client unterstützt möglicherweise noch nicht den interaktiven PKCE-Flus
 - **Codex CLI:** `npm install -g @openai/codex`
 - **Claude Desktop / ChatGPT Desktop:** Aktualisieren Sie über den integrierten Updater der App
 
-**`401 Unauthorized` nach Anmeldung**
+**`401 Unauthorized` nach der Anmeldung**
 
-Ihr zwischengespeichertes Token ist möglicherweise veraltet. Entfernen und fügen Sie den Server erneut hinzu, um eine frische Anmeldung auszulösen:
+Ihr zwischengespeichertes Token ist möglicherweise veraltet. Entfernen Sie den Server und fügen Sie ihn erneut hinzu, um eine frische Anmeldung auszulösen:
 
 ```bash
 # Claude Code
@@ -330,7 +323,7 @@ Für Claude Desktop und ChatGPT entfernen Sie den Servereintrag in den Einstellu
 
 Das Tool benötigt einen Scope, den Sie auf dem Zustimmungsbildschirm nicht genehmigt haben. Verbinden Sie den Server erneut – der Zustimmungsbildschirm erscheint wieder, und Sie können die fehlende Berechtigung genehmigen.
 
-**Der Server erscheint, aber Tool-Aufrufe geben „account not found“ zurück**
+**Der Server erscheint, aber Tool-Aufrufe geben „Konto nicht gefunden“ zurück**
 
 Sie sind bei einem Wink-Konto angemeldet, das keine Verwaltungseinheit besitzt. Gehen Sie zum [Wink Portal](https://app.wink.travel) und stellen Sie sicher, dass Ihr Konto eingerichtet ist, bevor Sie den MCP-Server verwenden.
 
@@ -352,7 +345,7 @@ Prüfen Sie, ob Ihre `~/.cursor/mcp.json` gültiges JSON enthält und `"type": "
 
 **Windsurf MCP-Server werden in den Einstellungen nicht angezeigt**
 
-Windsurf benötigt einen vollständigen Neustart (kein einfaches Fenster-Neuladen), um Änderungen an `mcp_config.json` zu übernehmen. Verwenden Sie **Datei → Beenden** und starten Sie neu. Wenn die Server weiterhin nicht angezeigt werden, prüfen Sie, ob Sie Windsurf **1.4+** verwenden (über **Hilfe → Über Windsurf**).
+Windsurf benötigt einen vollständigen Neustart (nicht nur Fenster-Neuladen), um Änderungen an `mcp_config.json` zu übernehmen. Verwenden Sie **Datei → Beenden** und starten Sie neu. Wenn die Server weiterhin nicht angezeigt werden, prüfen Sie, ob Sie Windsurf **1.4+** verwenden (über **Hilfe → Über Windsurf**).
 
 **Cline „Server hinzufügen“-Option ist nicht sichtbar**
 

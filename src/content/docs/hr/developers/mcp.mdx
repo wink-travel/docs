@@ -23,9 +23,9 @@ Wink MCP poslužitelji koriste **OAuth2 Authorization Code + PKCE** protokol i p
 1. Vaš AI klijent otkriva authorization server iz MCP endpointa `/.well-known/oauth-protected-resource` metapodataka.
 2. Klijent se samoregistrira putem **Dynamic Client Registration** — nije potrebna ručna konfiguracija aplikacije.
 3. Klijent otvara **karticu preglednika** na `https://iam.wink.travel`. Prijavite se sa svojim Wink računom i odobrite tražene dozvole na zaslonu za suglasnost.
-4. Wink izdaje **access token** vezan uz vaš račun i identitet.
+4. Wink izdaje **access token** vezan uz vaš račun i povezanu identitet.
 5. AI klijent prilaže token svakom MCP zahtjevu. Svi rezultati alata automatski su ograničeni na vašu upravljačku jedinicu.
-6. Tokeni istječu nakon 3 sata. Vaš AI klijent ih tiho osvježava u pozadini bez ponovnog traženja prijave.
+6. Tokeni istječu nakon 3 sata. Vaš AI klijent ih tiho osvježava u pozadini bez ponovnog zahtjeva za prijavom.
 
 Svaki poziv alata izvršava se **pod vašim identitetom** — ista ACL pravila koja štite web portal vrijede i za AI agenta.
 
@@ -60,7 +60,7 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
 ```
 
 :::tip[Podijelite s timom]
-Dodajte `--scope project` uz `claude mcp add` i Claude Code će zapisati URL poslužitelja u `.mcp.json` u korijenu repozitorija. Komitirajte tu datoteku — svaki član tima će prvi put prilikom povezivanja dovršiti vlastitu prijavu u pregledniku.
+Dodajte `--scope project` uz `claude mcp add` i Claude Code će zapisati URL poslužitelja u `.mcp.json` u korijenu repozitorija. Pošaljite tu datoteku u repozitorij — svaki član tima će prvi put prilikom povezivanja dovršiti vlastitu prijavu u pregledniku.
 :::
 
   </TabItem>
@@ -126,7 +126,7 @@ Dodajte `--scope project` uz `claude mcp add` i Claude Code će zapisati URL pos
    }
    ```
 
-4. Pokrenite Codex. Prilikom prve upotrebe Codex otvara karticu preglednika na `https://iam.wink.travel`.
+4. Pokrenite Codex. Prilikom prvog korištenja Codex otvara karticu preglednika na `https://iam.wink.travel`.
 
 5. **Prijavite se u Wink** i odobrite tražene dozvole.
 
@@ -232,7 +232,7 @@ Također možete staviti `mcp.json` datoteku u korijen svog projekta umjesto u `
 
 3. **Potpuno ponovno pokrenite Windsurf** (File → Quit, zatim ponovno otvorite).
 
-4. Idite na **Settings → MCP Servers** i provjerite jesu li oba poslužitelja prikazana kao povezana. Windsurf otvara karticu preglednika na `https://iam.wink.travel` pri prvoj upotrebi.
+4. Idite na **Settings → MCP Servers** i provjerite jesu li oba poslužitelja prikazana kao povezana. Windsurf otvara karticu preglednika na `https://iam.wink.travel` pri prvom korištenju.
 
 5. **Prijavite se u Wink** i odobrite dozvole. Poslužitelji postaju zeleni u postavkama nakon autentifikacije.
 </Steps>
@@ -251,7 +251,7 @@ Cline je VS Code ekstenzija s ugrađenim upraviteljem MCP poslužitelja. Nije po
    - Otvorite VS Code i pritisnite `Ctrl+Shift+X` / `Cmd+Shift+X`
    - Potražite **Cline** i kliknite **Install**
 
-2. Kliknite **ikonu Cline** u Activity Baru (lijevi sidebar) za otvaranje Cline panela.
+2. Kliknite **ikonu Cline** u Activity Baru (lijevi bočni izbornik) da otvorite Cline panel.
 
 3. Kliknite ikonu **MCP Servers** (ikona utikača) u Cline alatnoj traci, zatim odaberite **Edit MCP Settings**.
 
@@ -277,7 +277,7 @@ Cline je VS Code ekstenzija s ugrađenim upraviteljem MCP poslužitelja. Nije po
 6. **Prijavite se u Wink** i odobrite dozvole. Oba poslužitelja pojavljuju se kao aktivna u MCP Servers panelu.
 </Steps>
 
-:::tip[Alternativa: dodavanje putem URL-a]
+:::tip[Alternativa: dodajte putem URL-a]
 U MCP Servers panelu kliknite **Add Server** i zalijepite `https://api.wink.travel/mcp` izravno. Cline automatski popunjava konfiguraciju i upravlja autentifikacijom bez ručne izmjene JSON-a.
 :::
 
@@ -286,22 +286,19 @@ U MCP Servers panelu kliknite **Add Server** i zalijepite `https://api.wink.trav
 
 ---
 
-## Referenca opsega
+## Opsezi (Scopes)
 
-Kada odobrite zaslon za suglasnost, vidjet ćete detaljan prikaz što agent traži. Wink grupira dozvole po funkcionalnim područjima:
+Kada odobrite zaslon za suglasnost, vidjet ćete detaljan prikaz što agent traži. MCP
+klijenti koriste isti vokabular dozvola kao i ostatak platforme — pogledajte puni
+[referentni popis opsega na stranici Autentifikacije](/hr/developers/authentication#scopes).
 
-| Grupa opsega | Opsezi | Što otključavaju |
-|--------------|--------|------------------|
-| **MCP transport** | `mcp.read` `mcp.write` `mcp.remove` | Potrebno za povezivanje s bilo kojim MCP poslužiteljem |
-| **Račun** | `account.read` `account.write` `account.remove` | Upravljanje entitetima, članovima tima, postavkama, aplikacijama |
-| **Rezervacija** | `booking.read` `booking.write` `booking.remove` | Pretraživanje, pregled, kreiranje, otkazivanje i povrat rezervacija |
-| **Inventar** | `inventory.read` `inventory.write` `inventory.remove` | Objekti, sobe, cijene, sadržaji, dostupnost |
-| **Analitika** | `analytics.read` | Analitika rezervacija, izvještaji o prihodima, ljestvice |
-| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Objave na društvenim mrežama, kampanje, prodajni kanali, promocije |
-| **Sadržaj** | `content.read` `content.write` `content.remove` | Multimedija, skraćeni URL-ovi, stavke za sindikaciju, karte |
-| **Plaćanje** | `payment.read` `payment.write` | Knjigovodstvo, isplate, financijski pregledi, povlačenja |
+Dva su specifična za MCP:
 
-AI klijent traži samo opsege koji su mu potrebni. Možete odbiti pojedinačne dozvole na zaslonu za suglasnost — alati koji zahtijevaju odbijeni opseg vratit će grešku pri pozivu.
+- **Opsezi `mcp.read`, `mcp.write` i `mcp.remove` su dodatno potrebni** za otvaranje MCP
+  transporta. Klijent koji ima `mcp.*` opseg ima pristup `/mcp`, ali svaki alat koji pozove
+  i dalje provjerava opseg sekcije endpointa koji obuhvaća (npr. `booking.read`).
+- **AI klijent traži samo opsege koje treba.** Možete odbiti pojedinačne dozvole na
+  zaslonu za suglasnost — alati koji zahtijevaju odbijeni opseg vratit će grešku pri pozivu.
 
 ---
 
@@ -332,7 +329,7 @@ Alat zahtijeva opseg koji niste odobrili na zaslonu za suglasnost. Ponovno pove�
 
 **Poslužitelj se pojavljuje, ali pozivi alata vraćaju "account not found"**
 
-Prijavljeni ste u Wink račun koji nema upravljački entitet. Posjetite [Wink Portal](https://app.wink.travel) i provjerite je li vaš račun pravilno postavljen prije korištenja MCP poslužitelja.
+Prijavljeni ste u Wink račun koji nema upravljačku jedinicu. Posjetite [Wink Portal](https://app.wink.travel) i provjerite je li vaš račun pravilno postavljen prije korištenja MCP poslužitelja.
 
 **Token istječe tijekom sesije**
 
@@ -340,7 +337,7 @@ Tokeni vrijede 3 sata. Claude Code i Claude Desktop tiho osvježavaju tokene bez
 
 **Codex CLI prikazuje "MCP server unreachable"**
 
-Provjerite je li vaša `~/.codex/config.json` valjani JSON (bez zarez na kraju) i da je `"type": "http"` postavljeno. Codex zahtijeva HTTP transport za udaljene poslužitelje; stdio transport je samo za lokalne binarne datoteke.
+Provjerite je li vaš `~/.codex/config.json` valjani JSON (bez zarez na kraju) i da je `"type": "http"` postavljeno. Codex zahtijeva HTTP transport za udaljene poslužitelje; stdio transport je samo za lokalne binarne datoteke.
 
 **ChatGPT meni "Connectors" nedostaje**
 
@@ -348,15 +345,15 @@ Podrška za MCP zahtijeva verziju ChatGPT desktop aplikacije **1.2024.352** ili 
 
 **Cursor poslužitelj pokazuje crveno / "Failed to connect"**
 
-Provjerite je li vaša `~/.cursor/mcp.json` valjani JSON i sadrži `"type": "http"`. Zatim idite na **Settings → Cursor Settings → MCP** i kliknite **Refresh**. Ako problem ostane, potpuno ponovno pokrenite Cursor — promjene konfiguracije se ne preuzimaju uvijek bez ponovnog pokretanja.
+Provjerite je li vaš `~/.cursor/mcp.json` valjani JSON i sadrži `"type": "http"`. Zatim idite na **Settings → Cursor Settings → MCP** i kliknite **Refresh**. Ako greška ostane, potpuno ponovno pokrenite Cursor — promjene konfiguracije se ne preuzimaju uvijek bez ponovnog pokretanja.
 
 **Windsurf MCP poslužitelji nisu prikazani u postavkama**
 
-Windsurf zahtijeva potpuno ponovno pokretanje (ne samo ponovno učitavanje prozora) da prepozna promjene u `mcp_config.json`. Koristite **File → Quit** i ponovno pokrenite. Ako poslužitelji i dalje nisu vidljivi, provjerite jeste li na Windsurf verziji **1.4+** putem **Help → About Windsurf**.
+Windsurf zahtijeva potpuno ponovno pokretanje (ne samo ponovno učitavanje prozora) da prepozna promjene u `mcp_config.json`. Koristite **File → Quit** i ponovno pokrenite. Ako poslužitelji i dalje nisu vidljivi, provjerite koristite li Windsurf **1.4+** putem **Help → About Windsurf**.
 
-**Cline opcija "Add Server" nije vidljiva**
+**Opcija "Add Server" u Cline nije vidljiva**
 
-Upravitelj MCP poslužitelja zahtijeva Cline verziju **2.0** ili noviju. Otvorite VS Code Extensions panel, pronađite Cline i kliknite **Update** ako je dostupna nadogradnja. Nakon ažuriranja, ponovno učitajte VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+Upravitelj MCP poslužitelja zahtijeva Cline **2.0** ili noviji. Otvorite VS Code Extensions panel, pronađite Cline i kliknite **Update** ako je dostupna nadogradnja. Nakon ažuriranja ponovno učitajte VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
 ---
 

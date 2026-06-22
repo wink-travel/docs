@@ -12,7 +12,7 @@ Wink býður upp á tvo auðkennda MCP þjónar. Báðir nota **gagnvirka OAuth2
 | Þjónn | URL | Hvað hann gerir |
 |--------|-----|--------------|
 | **Inventory API** | `https://api.wink.travel/mcp` | Birgðir, bókanir, verð, sölurásir, greiningar og allar aðgerðir á vettvangi |
-| **Integrations** | `https://integrations.wink.travel/mcp` | Samþættingar rásarstjóra — samstilling eigna, verðs og framboðs með OTA-kerfum |
+| **Integrations** | `https://integrations.wink.travel/mcp` | Samþættingar rásarstjóra — samstilltu eignir, verð og framboð með OTA-kerfum |
 
 ---
 
@@ -25,7 +25,7 @@ Wink MCP þjónar nota **OAuth2 Heimildarkóða + PKCE** flæði og styðja **Dy
 3. Viðskiptavinurinn opnar **vafraglugga** á `https://iam.wink.travel`. Þú skráir þig inn með Wink reikningnum þínum og samþykkir beiðnar heimildir á samþykkisskjánum.
 4. Wink gefur út **aðgangstákn** sem er bundið við reikninginn þinn og auðkenni.
 5. AI viðskiptavinurinn festir táknið við hverja MCP beiðni. Öll niðurstaða tækja er sjálfkrafa bundin við þitt stjórnunareiningu.
-6. Táknum rennur út eftir 3 klukkustundir. AI viðskiptavinurinn endurnýjar þau hljóðlaust í bakgrunni án frekari fyrirspurna.
+6. Táknum rennur út eftir 3 klukkustundir. AI viðskiptavinurinn endurnýjar táknin hljóðlega í bakgrunni án frekari fyrirspurna.
 
 Allar tækjakall keyra **undir þínu auðkenni** — sömu ACL reglur sem vernda vefsvæðið gilda um AI umboðsmanninn.
 
@@ -47,7 +47,7 @@ Allar tækjakall keyra **undir þínu auðkenni** — sömu ACL reglur sem vernd
    claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
    ```
 
-3. Claude Code hefur samband við þjóninn, finnur auðkenningarþjóninn og opnar sjálfgefinn vafra.
+3. Claude Code tengist þjóninum, finnur auðkenningarþjóninn og opnar sjálfgefinn vafra.
 
 4. **Skráðu þig inn í Wink** og samþykktu beiðnina um heimildir á samþykkisskjánum.
 
@@ -60,7 +60,7 @@ claude mcp add wink-integrations https://integrations.wink.travel/mcp --transpor
 ```
 
 :::tip[Deildu með teyminu þínu]
-Bættu við `--scope project` í `claude mcp add` og Claude Code skrifar þjónnslóðina í `.mcp.json` í rót verkefnisins. Skráðu þá skrá — hver liðsfélagi klárar eigin innskráningu í vafra í fyrsta sinn sem hann tengist.
+Bættu við `--scope project` í `claude mcp add` og Claude Code skrifar þjóns-URL í `.mcp.json` í rót verkefnisins. Skráðu það inn — hver liðsfélagi klárar eigin vafra-innskráningu í fyrsta sinn sem hann tengist.
 :::
 
   </TabItem>
@@ -89,7 +89,7 @@ Bættu við `--scope project` í `claude mcp add` og Claude Code skrifar þjónn
    }
    ```
 
-3. **Lokaðu Claude Desktop alveg og ræstu aftur** (notaðu Quit úr valmyndastikunni — að loka glugga dugar ekki).
+3. **Lokaðu alveg og ræstu Claude Desktop aftur** (notaðu Quit úr valmyndastikunni — að loka glugga er ekki nóg).
 
 4. Claude Desktop opnar vafraglugga fyrir hvern nýjan þjón. Skráðu þig inn í Wink og samþykktu heimildir.
 
@@ -149,7 +149,7 @@ Stuðningur við MCP þjónustu er í boði í **ChatGPT skjáborðsforritinu** 
 
 3. Farðu í **Tengla** (eða **MCP Servers** eftir útgáfu) og smelltu á **Bæta við**.
 
-4. Sláðu inn Wink Inventory þjónnslóðina:
+4. Sláðu inn URL fyrir Wink Inventory þjóninn:
    ```
    https://api.wink.travel/mcp
    ```
@@ -202,7 +202,7 @@ MCP þjónar eru aðeins stillanlegir í **skjáborðsforriti**. ChatGPT vefvið
 </Steps>
 
 :::tip[Verkefnastilling]
-Þú getur líka sett `mcp.json` skrá í rót verkefnisins í staðinn fyrir í `~/.cursor/`. Verkefnastillingin hefur forgang og gerir þjónana aðgengilega fyrir alla liðsmenn sem opna verkefnið í Cursor.
+Þú getur líka sett `mcp.json` skrá í rót verkefnisins í staðinn fyrir í `~/.cursor/`. Verkefnastilling hefur forgang og gerir þjónana aðgengilega fyrir alla liðsmenn sem opna verkefnið í Cursor.
 :::
 
   </TabItem>
@@ -234,7 +234,7 @@ MCP þjónar eru aðeins stillanlegir í **skjáborðsforriti**. ChatGPT vefvið
 
 4. Farðu í **Stillingar → MCP Servers** og staðfestu að báðir þjónar sýni sem tengdir. Windsurf opnar vafraglugga á `https://iam.wink.travel` í fyrsta skipti.
 
-5. **Skráðu þig inn í Wink** og samþykktu heimildir. Þjónarnir verða grænir í stillingum þegar auðkenndur er.
+5. **Skráðu þig inn í Wink** og samþykktu heimildir. Þjónarnir verða grænir í stillingum þegar auðkenning er staðfest.
 </Steps>
 
 :::note
@@ -286,22 +286,19 @@ Cline er VS Code viðbót með innbyggðum MCP þjónastjóra. Engin handvirk JS
 
 ---
 
-## Tilvísun í umfang
+## Heimildir
 
-Þegar þú samþykkir samþykkisskjáinn sérðu sundurliðun á því sem umboðsmaðurinn biður um. Wink flokkar heimildir eftir virkni:
+Þegar þú samþykkir samþykkisskjáinn sérðu sundurliðun á því sem umboðsmaðurinn biður um. MCP
+viðskiptavinir nota sama heimildamál og restin af vettvangnum — sjá fulla
+[heimildaskráningu á Auðkenningarsíðu](/is/developers/authentication#scopes).
 
-| Heimildarhópur | Heimildir | Hvað þær opna |
-|-------------|--------|-----------------|
-| **MCP flutningur** | `mcp.read` `mcp.write` `mcp.remove` | Nauðsynlegt til að tengjast MCP þjónninum |
-| **Reikningur** | `account.read` `account.write` `account.remove` | Stjórnunareiningar, liðsmenn, stillingar, umsóknir |
-| **Bókun** | `booking.read` `booking.write` `booking.remove` | Leita, skoða, búa til, hætta við og endurgreiða bókanir |
-| **Birgðir** | `inventory.read` `inventory.write` `inventory.remove` | Eignir, herbergi, verð, þægindi, framboð |
-| **Greiningar** | `analytics.read` | Bókunargreiningar, tekjuskýrslur, stigatöflur |
-| **Markaðssetning** | `marketing.read` `marketing.write` `marketing.remove` | Færslur á samfélagsmiðlum, herferðir, sölurásir, kynningar |
-| **Efni** | `content.read` `content.write` `content.remove` | Fjölmiðlar, styttar slóðir, dreifingarefni, kort |
-| **Greiðsla** | `payment.read` `payment.write` | Reikningsbók, útborganir, fjármálayfirlit, úttektir |
+Tveir hlutir eru sértækir fyrir MCP:
 
-AI viðskiptavinurinn biður aðeins um þær heimildir sem hann þarf. Þú getur neitað einstökum heimildum á samþykkisskjánum — tól sem krefjast neitaðrar heimildar skila villu þegar þau eru kölluð.
+- **`mcp.read` `mcp.write` `mcp.remove` heimildir eru aukalega nauðsynlegar** til að opna MCP
+  flutninginn. Viðskiptavinur með `mcp.*` heimild fær aðgang að `/mcp`, en hvert tól sem hann kallar
+  krefst samt viðeigandi hlutaheimildar endapunktsins sem það umlykur (t.d. `booking.read`).
+- **AI viðskiptavinurinn biður aðeins um þær heimildir sem hann þarf.** Þú getur neitað einstökum heimildum á
+  samþykkisskjánum — tól sem krefjast neitaðrar heimildar skila villu þegar þau eru kölluð.
 
 ---
 
@@ -309,14 +306,14 @@ AI viðskiptavinurinn biður aðeins um þær heimildir sem hann þarf. Þú get
 
 **Vafragluggi opnast ekki**
 
-AI viðskiptavinurinn þinn styður kannski ekki gagnvirka PKCE flæðið ennþá. Staðfestu að þú sért að keyra nýjustu útgáfu:
+AI viðskiptavinurinn þinn styður kannski ekki enn gagnvirka PKCE flæðið. Staðfestu að þú sért með nýjustu útgáfu:
 - **Claude Code:** `npm install -g @anthropic-ai/claude-code`
 - **Codex CLI:** `npm install -g @openai/codex`
 - **Claude Desktop / ChatGPT skjáborð:** uppfærðu með innbyggðum uppfærslutæki appsins
 
 **`401 Unauthorized` eftir innskráningu**
 
-Táknið þitt í skyndiminni gæti verið úrelt. Fjarlægðu og bættu þjóninum aftur til að kveikja á nýrri innskráningu:
+Gæti verið að vistað tákn sé úrelt. Fjarlægðu og bættu þjóninum aftur til að kveikja á nýrri innskráningu:
 
 ```bash
 # Claude Code
@@ -328,15 +325,15 @@ Fyrir Claude Desktop og ChatGPT, fjarlægðu þjónninn úr stillingum, ræstu f
 
 **`403 Forbidden` þegar kallað er á ákveðið tól**
 
-Tólið krefst heimildar sem þú samþykktir ekki á samþykkisskjánum. Tengdu þjóninn aftur — samþykkisskjárinn birtist á ný og þú getur samþykkt vantar heimild.
+Tólið krefst heimildar sem þú hafðir ekki samþykkt á samþykkisskjánum. Tengdu þjóninn aftur — samþykkisskjárinn birtist á ný og þú getur samþykkt vantar heimild.
 
 **Þjónninn birtist en tól skila "account not found"**
 
 Þú ert skráður inn með Wink reikningi sem hefur enga stjórnunareiningu. Farðu á [Wink Portal](https://app.wink.travel) og tryggðu að reikningurinn þinn sé rétt stilltur áður en þú notar MCP þjóninn.
 
-**Táknið rennur út á miðju tímabili**
+**Táknið rennur út miðja lotu**
 
-Táknum gilda í 3 klukkustundir. Claude Code og Claude Desktop endurnýja tákn hljóðlaust án truflunar á fundinum. Ef þú sérð auðkennisvillur eftir langa kyrrsetu, sláðu inn nýja skilaboð — viðskiptavinurinn auðkennir sig sjálfkrafa aftur.
+Táknum gilda í 3 klukkustundir. Claude Code og Claude Desktop endurnýja tákn hljóðlega án truflunar. Ef þú færð auðkennisvillur eftir langa bið, sláðu inn nýja skilaboð — viðskiptavinurinn auðkennir sig sjálfkrafa aftur.
 
 **Codex CLI sýnir "MCP server unreachable"**
 
@@ -348,13 +345,13 @@ MCP stuðningur krefst ChatGPT skjáborðsforrits útgáfu **1.2024.352** eða n
 
 **Cursor þjónn sýnir rauðan / "Failed to connect"**
 
-Staðfestu að `~/.cursor/mcp.json` sé gilt JSON og innihaldi `"type": "http"`. Farðu svo í **Stillingar → Cursor Stillingar → MCP** og smelltu á **Endurnýja**. Ef villan heldur áfram, endurræstu Cursor alveg — breytingar á stillingum nást ekki alltaf án endurræsingar.
+Staðfestu að `~/.cursor/mcp.json` sé gilt JSON og innihaldi `"type": "http"`. Farðu svo í **Stillingar → Cursor Stillingar → MCP** og smelltu á **Endurnýja**. Ef villan heldur áfram, endurræstu Cursor alveg — breytingar á stillingum ná ekki alltaf fram án endurræsingar.
 
 **Windsurf MCP þjónar birtast ekki í stillingum**
 
 Windsurf krefst fullrar endurræsingar (ekki bara gluggahleðslu) til að taka breytingar á `mcp_config.json` gildar. Notaðu **Skrá → Hætta** og ræstu aftur. Ef þjónar birtast ekki, staðfestu að þú sért með Windsurf **1.4+** í **Hjálp → Um Windsurf**.
 
-**Cline "Add Server" valkostur sést ekki**
+**Cline "Add Server" valkostur er ekki sýnilegur**
 
 MCP þjónastjóri krefst Cline **2.0** eða nýrri. Opnaðu VS Code Extensions gluggann, finndu Cline og smelltu á **Uppfæra** ef uppfærsla er í boði. Eftir uppfærslu, endurhlaða VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
 
