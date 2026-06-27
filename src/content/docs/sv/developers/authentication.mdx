@@ -6,7 +6,7 @@ sidebar:
 ---
 
 :::tip
-Wink IAM-autentiseringsservern stödjer de vanliga OAuth2-endpointsen:
+Wink IAM-autentiseringsservern stödjer de vanliga OAuth2-slutpunkterna:
 
 - /oauth2/authorize
 - /oauth2/token
@@ -15,11 +15,11 @@ Wink IAM-autentiseringsservern stödjer de vanliga OAuth2-endpointsen:
 - /oauth2/userinfo
 :::
 
-En applikation tillhandahåller dig en `Client ID` och `Secret Key` som du behöver för att skapa en autentiserad OAuth2-session som du kan använda för att kommunicera med Wink och TripPay API:er.
+En applikation förser dig med ett `Client ID` och en `Secret Key` som du behöver för att skapa en autentiserad OAuth2-session som du kan använda för att kommunicera med Wink- och TripPay-API:er.
 
 Här är stegen för att skapa en autentiserad session.
 
-**Steg 1**. Hämta en access token på staging eller i vår produktionsmiljö:
+**Steg 1**. Hämta en access-token på staging eller i vår produktionsmiljö:
 
 Du kommer troligen att arbeta med ett robust OAuth2-bibliotek för ditt språk, som sköter allt det tunga arbetet åt dig.
 Våra exempel visar den mest grundläggande användningen från kommandoraden med `curl`.
@@ -48,7 +48,7 @@ curl -X POST https://iam.wink.travel/oauth2/token \
 
 ```
 
-Detta returnerar en access token, tillsammans med annan OAuth2-responsdata:
+Detta returnerar en access-token, tillsammans med annan OAuth2-responsdata:
 
 ```json
 {
@@ -56,13 +56,55 @@ Detta returnerar en access token, tillsammans med annan OAuth2-responsdata:
 }
 ```
 
-När du gör ett anrop till någon av våra endpoints, inkludera följande i headern:
+När du gör ett anrop till någon av våra slutpunkter, inkludera följande i headern:
 
 - `Wink-Version` = `2.0` Senaste - *Se vår API-dokumentation för andra tillgängliga versioner.*
-- `Authorization` = `Bearer ${access_token}` *Infoga din access token.*
+- `Authorization` = `Bearer ${access_token}` *Sätt in din access-token.*
+
+## Scopes
+
+En **scope** är en behörighet som din access-token bär med sig. När du begär en token skickar du en
+mellanslagsavgränsad lista med scopes i parametern `scope`, och token kan endast nå de områden
+som scopes täcker. Med `client_credentials`-grant sätter du scopes på din tokenförfrågan —
+se [`curl`](#staging)-exemplen ovan och [Postman-genomgången](/sv/developers/setup#postman).
+
+Scopes namnges `section.action`, där action är en av:
+
+- `read` — visa resurser (säkra `GET`-förfrågningar)
+- `write` — skapa och uppdatera resurser (`POST` / `PUT` / `PATCH`)
+- `remove` — ta bort resurser (`DELETE`)
+
+Wink grupperar behörigheter efter funktionellt område. Begär endast de scopes som din integration behöver:
+
+| Scope-grupp | Scopes | Vad de låser upp | Risk |
+|-------------|--------|------------------|------|
+| **Account** | `account.read` `account.write` `account.remove` | Hantering av enheter, teammedlemmar, inställningar, applikationer | Låg–Medel |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Fastigheter, rumstyper, prisplaner, priser, tillägg, tillgänglighet, aktiviteter, attraktioner | Låg–Medel |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Sök, visa, skapa, avboka och återbetala bokningar; utcheckning; avbokningsregler | Låg–Medel |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Kampanjer, förmåner, försäljningskanaler, WinkLinks, hanterad social, lojalitet | Låg–Medel |
+| **Content** | `content.read` `content.write` `content.remove` | Fastighetsbeskrivningar, recensioner, media, kartor, grönt-index | Låg–Medel |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Rapportering och analys — intäkter, topplistor | Låg–Medel |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Kanalhanterare, externa bokningssystem, Google Hotel, notifieringsendpoints, bokningssynk | Låg–Medel |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Betalningshantering, Stripe, Revolut, utbetalningar, prenumerationer | Medel–Hög |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Bokföring, uttagsbok, avstämning | Medel–Hög |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Öppnar [MCP-transporten](/sv/developers/mcp) (`/mcp`) för AI-agenter | Låg–Medel |
+
+:::note
+Kolumnen **Risk** speglar känslighet: `read` är den lägre nivån och `write`/`remove` den högre
+nivån. **Payment** och **Accounting** hanterar penningrörelser, så de har förhöjd risk.
+:::
+
+Några saker att ha i åtanke:
+
+- **Begär minimalt.** Begär endast de scopes som din integration faktiskt använder — en token utfärdad
+  med bredare åtkomst än nödvändigt har större spridningsrisk vid läckage.
+- **Okända scopes avvisas.** Att begära en scope som din applikation inte är registrerad för, eller som
+  inte finns, misslyckas vid tokenutfärdandet.
+- **`mcp.*` är endast för AI-agentklienter.** Du behöver det för att öppna MCP-transporten; det krävs inte
+  för vanliga REST API-anrop. Se [Model Context Protocol](/sv/developers/mcp).
 
 :::tip
 Du kan testa alla våra API:er utan att skriva en enda rad kod innan du börjar.
 
-Hämta en 'Client ID' och 'Secret Key' från någon av dina appar och navigera till någon av våra [APIs](/sv/api).
+Hämta ett 'Client ID' och 'Secret Key' från någon av dina appar och navigera till någon av våra [API:er](/sv/api).
 :::

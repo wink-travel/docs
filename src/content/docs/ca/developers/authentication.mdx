@@ -22,7 +22,7 @@ Aquí teniu els passos per crear una sessió autenticada.
 **Pas 1**. Obteniu un token d'accés a staging o al nostre entorn de producció:
 
 Probablement treballareu amb una biblioteca OAuth2 robusta per al vostre llenguatge, que farà tota la feina pesada per vosaltres.
-Els nostres exemples mostraran l'ús més bàsic des de la línia d'ordres utilitzant `curl`.
+Els nostres exemples mostraran l'ús més bàsic des de la línia de comandes amb `curl`.
 
 ### Staging
 
@@ -58,11 +58,50 @@ Això retornarà un token d'accés, juntament amb altres dades de resposta OAuth
 
 Quan feu una crida a qualsevol dels nostres punts finals, incloeu el següent a la capçalera:
 
-- `Wink-Version` = `2.0` Última versió - *Consulteu la nostra documentació API per a altres versions disponibles.*
+- `Wink-Version` = `2.0` Última - *Consulteu la nostra documentació API per a altres versions disponibles.*
 - `Authorization` = `Bearer ${access_token}` *Inseriu el vostre token d'accés.*
 
-:::tip
-Podeu provar totes les nostres API sense escriure ni una sola línia de codi abans de començar.
+## Àmbits
 
-Agafeu un 'Client ID' i una 'Secret Key' d'una de les vostres aplicacions i navegueu a qualsevol de les nostres [APIs](/ca/api).
+Un **àmbit** és un permís que porta el vostre token d'accés. Quan sol·liciteu un token, passeu una
+llista d’àmbits separats per espais en el paràmetre `scope`, i el token només pot accedir a les àrees
+que cobreixen aquests àmbits. Amb el grant `client_credentials` configureu els àmbits a la vostra sol·licitud de token —
+vegeu els exemples de [`curl`](#staging) més amunt i el [tutorial de Postman](/ca/developers/setup#postman).
+
+Els àmbits es nomenen `section.action`, on l'acció és una de les següents:
+
+- `read` — veure recursos (sol·licituds `GET` segures)
+- `write` — crear i actualitzar recursos (`POST` / `PUT` / `PATCH`)
+- `remove` — eliminar recursos (`DELETE`)
+
+Wink agrupa els permisos per àrea funcional. Sol·liciteu només els àmbits que la vostra integració necessita:
+
+| Grup d’àmbits | Àmbits | Què desbloquegen | Risc |
+|---------------|--------|------------------|------|
+| **Compte** | `account.read` `account.write` `account.remove` | Gestió d’entitats, membres de l’equip, configuracions, aplicacions | Baix–Mitjà |
+| **Inventari** | `inventory.read` `inventory.write` `inventory.remove` | Propietats, tipus d’habitació, plans tarifaris, tarifes, addicionals, disponibilitat, activitats, atraccions | Baix–Mitjà |
+| **Reserva** | `booking.read` `booking.write` `booking.remove` | Cerca, visualització, creació, cancel·lació i reemborsament de reserves; pagament; polítiques de cancel·lació | Baix–Mitjà |
+| **Màrqueting** | `marketing.read` `marketing.write` `marketing.remove` | Campanyes, avantatges, canals de venda, WinkLinks, xarxes socials gestionades, fidelització | Baix–Mitjà |
+| **Contingut** | `content.read` `content.write` `content.remove` | Descripcions de propietats, ressenyes, mitjans, mapes, índex verd | Baix–Mitjà |
+| **Analítica** | `analytics.read` `analytics.write` `analytics.remove` | Informes i analítica — ingressos, classificacions | Baix–Mitjà |
+| **Integracions** | `integrations.read` `integrations.write` `integrations.remove` | Gestors de canals, sistemes externs de reserves, Google Hotel, punts de notificació, sincronització de reserves | Baix–Mitjà |
+| **Pagament** | `payment.read` `payment.write` `payment.remove` | Processament de pagaments, Stripe, Revolut, pagaments, subscripcions | Mitjà–Alt |
+| **Comptabilitat** | `accounting.read` `accounting.write` `accounting.remove` | Comptabilitat, llibre de retirades, conciliació | Mitjà–Alt |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Obre el [transport MCP](/ca/developers/mcp) (`/mcp`) per a agents d’IA | Baix–Mitjà |
+
+:::note
+La columna **Risc** reflecteix la sensibilitat: `read` és el nivell més baix i `write`/`remove` el més alt.
+**Pagament** i **Comptabilitat** protegeixen el moviment de diners, per això tenen un risc elevat.
+:::
+
+Algunes coses a tenir en compte:
+
+- **Sol·liciteu el mínim.** Demaneu només els àmbits que la vostra integració realment utilitza — un token emès amb un accés més ampli del necessari té un radi d’impacte més gran si es filtra.
+- **Els àmbits desconeguts són rebutjats.** Sol·licitar un àmbit per al qual la vostra aplicació no està registrada, o que no existeix, falla en l’emissió del token.
+- **`mcp.*` és només per a clients agents d’IA.** El necessiteu per obrir el transport MCP; no és necessari per a crides REST API habituals. Vegeu [Model Context Protocol](/ca/developers/mcp).
+
+:::tip
+Podeu provar totes les nostres API sense escriure ni una línia de codi abans de començar.
+
+Agafeu un 'Client ID' i una 'Secret Key' d’una de les vostres aplicacions i navegueu per qualsevol de les nostres [API](/ca/api).
 :::

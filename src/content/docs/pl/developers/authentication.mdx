@@ -15,13 +15,13 @@ Serwer uwierzytelniania Wink IAM obsługuje standardowe endpointy OAuth2:
 - /oauth2/userinfo
 :::
 
-Aplikacja dostarcza Ci `Client ID` oraz `Secret Key`, które są potrzebne do utworzenia uwierzytelnionej sesji OAuth2, z której możesz korzystać, aby komunikować się z API Wink i TripPay.
+Aplikacja dostarcza Ci `Client ID` oraz `Secret Key`, które są potrzebne do utworzenia uwierzytelnionej sesji OAuth2, umożliwiającej komunikację z API Wink i TripPay.
 
-Oto kroki, aby utworzyć uwierzytelnioną sesję.
+Oto kroki do utworzenia uwierzytelnionej sesji.
 
 **Krok 1**. Pobierz token dostępu na środowisku staging lub produkcyjnym:
 
-Najprawdopodobniej będziesz korzystać z solidnej biblioteki OAuth2 dla swojego języka programowania, która wykona za Ciebie całą ciężką pracę.
+Najprawdopodobniej będziesz korzystać z solidnej biblioteki OAuth2 dla swojego języka, która wykona za Ciebie większość pracy.
 Nasze przykłady pokażą najprostsze użycie z linii poleceń przy pomocy `curl`.
 
 ### Staging
@@ -56,10 +56,49 @@ Otrzymasz token dostępu wraz z innymi danymi odpowiedzi OAuth2:
 }
 ```
 
-Gdy wykonujesz wywołanie do któregokolwiek z naszych endpointów, dołącz w nagłówku:
+Przy wywołaniu dowolnego z naszych endpointów dołącz w nagłówku:
 
 - `Wink-Version` = `2.0` Najnowsza - *Zobacz naszą dokumentację API, aby poznać inne dostępne wersje.*
 - `Authorization` = `Bearer ${access_token}` *Wstaw swój token dostępu.*
+
+## Zakresy (Scopes)
+
+**Scope** to uprawnienie, które niesie Twój token dostępu. Podczas żądania tokena przekazujesz
+listę zakresów oddzielonych spacjami w parametrze `scope`, a token może uzyskać dostęp tylko do obszarów
+objętych tymi zakresami. Przy grantcie `client_credentials` ustawiasz zakresy w żądaniu tokena —
+zobacz powyższe przykłady [`curl`](#staging) oraz [przewodnik Postman](/pl/developers/setup#postman).
+
+Zakresy mają nazwę w formacie `section.action`, gdzie akcja to jedna z:
+
+- `read` — przeglądanie zasobów (bezpieczne żądania `GET`)
+- `write` — tworzenie i aktualizacja zasobów (`POST` / `PUT` / `PATCH`)
+- `remove` — usuwanie zasobów (`DELETE`)
+
+Wink grupuje uprawnienia według obszarów funkcjonalnych. Żądaj tylko zakresów, których potrzebuje Twoja integracja:
+
+| Grupa zakresów | Zakresy | Co odblokowują | Ryzyko |
+|----------------|---------|----------------|--------|
+| **Konto** | `account.read` `account.write` `account.remove` | Zarządzanie podmiotami, członkami zespołu, ustawieniami, aplikacjami | Niskie–Średnie |
+| **Inwentarz** | `inventory.read` `inventory.write` `inventory.remove` | Obiekty, typy pokoi, plany taryfowe, ceny, dodatki, dostępność, aktywności, atrakcje | Niskie–Średnie |
+| **Rezerwacje** | `booking.read` `booking.write` `booking.remove` | Wyszukiwanie, przeglądanie, tworzenie, anulowanie i zwroty rezerwacji; finalizacja; polityki anulacji | Niskie–Średnie |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Kampanie, korzyści, kanały sprzedaży, WinkLinks, zarządzane social media, lojalność | Niskie–Średnie |
+| **Treść** | `content.read` `content.write` `content.remove` | Opisy obiektów, recenzje, media, mapy, wskaźnik ekologiczny | Niskie–Średnie |
+| **Analityka** | `analytics.read` `analytics.write` `analytics.remove` | Raportowanie i analizy — przychody, rankingi | Niskie–Średnie |
+| **Integracje** | `integrations.read` `integrations.write` `integrations.remove` | Menedżery kanałów, zewnętrzne systemy rezerwacji, Google Hotel, endpointy powiadomień, synchronizacja rezerwacji | Niskie–Średnie |
+| **Płatności** | `payment.read` `payment.write` `payment.remove` | Przetwarzanie płatności, Stripe, Revolut, wypłaty, subskrypcje | Średnie–Wysokie |
+| **Księgowość** | `accounting.read` `accounting.write` `accounting.remove` | Księgowość, rejestr wypłat, uzgadnianie | Średnie–Wysokie |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Otwiera [transport MCP](/pl/developers/mcp) (`/mcp`) dla agentów AI | Niskie–Średnie |
+
+:::note
+Kolumna **Ryzyko** odzwierciedla wrażliwość: `read` to niższy poziom, a `write`/`remove` wyższy.
+**Płatności** i **Księgowość** dotyczą przepływu pieniędzy, więc niosą podwyższone ryzyko.
+:::
+
+Kilka rzeczy, o których warto pamiętać:
+
+- **Żądaj minimum.** Proś tylko o zakresy, których Twoja integracja faktycznie używa — token z szerszym dostępem niż potrzebny zwiększa potencjalne szkody w przypadku wycieku.
+- **Nieznane zakresy są odrzucane.** Żądanie zakresu, na który Twoja aplikacja nie jest zarejestrowana lub który nie istnieje, powoduje błąd przy wydawaniu tokena.
+- **`mcp.*` jest tylko dla klientów agentów AI.** Potrzebujesz go, aby otworzyć transport MCP; nie jest wymagany do zwykłych wywołań REST API. Zobacz [Model Context Protocol](/pl/developers/mcp).
 
 :::tip
 Możesz przetestować wszystkie nasze API bez pisania ani jednej linijki kodu przed rozpoczęciem.

@@ -15,7 +15,7 @@ Il server di autenticazione Wink IAM supporta i comuni endpoint OAuth2:
 - /oauth2/userinfo
 :::
 
-Un'applicazione ti fornisce un `Client ID` e una `Secret Key` che devi utilizzare per creare una sessione OAuth2 autenticata da usare per comunicare con le API di Wink e TripPay.
+Un'applicazione ti fornisce un `Client ID` e una `Secret Key` necessari per creare una sessione OAuth2 autenticata che puoi usare per comunicare con le API di Wink e TripPay.
 
 Ecco i passaggi per creare una sessione autenticata.
 
@@ -58,11 +58,50 @@ Questo restituirà un token di accesso, insieme ad altri dati di risposta OAuth2
 
 Quando effettui una chiamata a uno qualsiasi dei nostri endpoint, includi quanto segue nell'header:
 
-- `Wink-Version` = `2.0` Ultima - *Consulta la nostra documentazione API per altre versioni disponibili.*
+- `Wink-Version` = `2.0` Ultima versione - *Consulta la nostra documentazione API per altre versioni disponibili.*
 - `Authorization` = `Bearer ${access_token}` *Inserisci il tuo token di accesso.*
 
+## Scopes
+
+Uno **scope** è un permesso che il tuo token di accesso possiede. Quando richiedi un token, passi una
+lista di scope separati da spazi nel parametro `scope`, e il token può accedere solo alle aree
+coperte da quegli scope. Con il grant `client_credentials` imposti gli scope nella richiesta del token —
+vedi gli esempi [`curl`](#staging) sopra e la [guida Postman](/it/developers/setup#postman).
+
+Gli scope sono denominati `section.action`, dove l'azione è una delle seguenti:
+
+- `read` — visualizzare risorse (richieste `GET` sicure)
+- `write` — creare e aggiornare risorse (`POST` / `PUT` / `PATCH`)
+- `remove` — eliminare risorse (`DELETE`)
+
+Wink raggruppa i permessi per area funzionale. Richiedi solo gli scope di cui la tua integrazione ha bisogno:
+
+| Gruppo di scope | Scopes | Cosa sbloccano | Rischio |
+|-----------------|--------|----------------|---------|
+| **Account** | `account.read` `account.write` `account.remove` | Gestione entità, membri del team, impostazioni, applicazioni | Basso–Medio |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Proprietà, tipologie di camere, piani tariffari, tariffe, extra, disponibilità, attività, attrazioni | Basso–Medio |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Ricerca, visualizzazione, creazione, cancellazione e rimborso prenotazioni; checkout; politiche di cancellazione | Basso–Medio |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Campagne, vantaggi, canali di vendita, WinkLinks, social gestito, loyalty | Basso–Medio |
+| **Content** | `content.read` `content.write` `content.remove` | Descrizioni proprietà, recensioni, media, mappe, indice green | Basso–Medio |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Report e analisi — ricavi, classifiche | Basso–Medio |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Channel manager, sistemi di prenotazione esterni, Google Hotel, endpoint di notifica, sincronizzazione prenotazioni | Basso–Medio |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Elaborazione pagamenti, Stripe, Revolut, pagamenti, abbonamenti | Medio–Alto |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Contabilità, registro prelievi, riconciliazione | Medio–Alto |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Apre il [trasporto MCP](/it/developers/mcp) (`/mcp`) per agenti AI | Basso–Medio |
+
+:::note
+La colonna **Rischio** riflette la sensibilità: `read` è il livello più basso e `write`/`remove` il più alto.
+**Payment** e **Accounting** gestiscono movimenti di denaro, quindi comportano un rischio elevato.
+:::
+
+Alcune cose da tenere a mente:
+
+- **Richiedi il minimo indispensabile.** Chiedi solo gli scope che la tua integrazione utilizza effettivamente — un token emesso con accesso più ampio del necessario ha un raggio d’azione più grande in caso di fuga.
+- **Gli scope sconosciuti vengono rifiutati.** Richiedere uno scope per cui la tua applicazione non è registrata, o che non esiste, fallisce al momento dell’emissione del token.
+- **`mcp.*` è solo per client agenti AI.** Serve per aprire il trasporto MCP; non è richiesto per le normali chiamate REST API. Vedi [Model Context Protocol](/it/developers/mcp).
+
 :::tip
-Puoi testare tutte le nostre API senza scrivere una singola riga di codice prima di iniziare.
+Puoi testare tutte le nostre API senza scrivere una sola riga di codice prima di iniziare.
 
 Prendi un 'Client ID' e una 'Secret Key' da una delle tue app e naviga in una qualsiasi delle nostre [API](/it/api).
 :::

@@ -1,127 +1,357 @@
 ---
 title: Pelayan MCP
-description: Sambungkan ejen AI dengan pantas ke dokumentasi Wink dan spesifikasi OpenAPI langsung melalui pelayan MCP yang dihoskan.
+description: Sambungkan ejen AI ke platform Wink melalui Model Context Protocol. Pelayan MCP yang disahkan memberikan ejen anda akses langsung ke inventori, tempahan, integrasi pengurus saluran, dan banyak lagi — dilindungi oleh log masuk OAuth2 interaktif.
 sidebar:
   order: 10
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-## Gambaran Keseluruhan
-Pelayan MCP Wink yang dihoskan boleh diakses di:
+Wink menyediakan dua pelayan MCP yang disahkan. Kedua-duanya menggunakan **log masuk OAuth2 interaktif** (aliran kod kebenaran PKCE) — ejen AI anda membuka tab pelayar supaya anda boleh log masuk dengan akaun Wink anda. Tiada rahsia klien untuk diuruskan.
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+| Pelayan | URL | Fungsi |
+|--------|-----|--------------|
+| **Inventory API** | `https://api.wink.travel/mcp` | Inventori, tempahan, kadar, saluran jualan, analitik, dan semua operasi platform |
+| **Integrations** | `https://integrations.wink.travel/mcp` | Integrasi pengurus saluran — segerakkan hartanah, kadar, dan ketersediaan dengan OTA |
 
-Arahkan klien AI yang serasi (VS Code, Cursor, lain-lain yang melaksanakan pengangkutan MCP HTTP) ke titik akhir ini untuk membolehkan mereka:
-- Melayari dokumen produk & platform (`wink://docs/...`)
-- Melayari spesifikasi OpenAPI langsung dan dokumen operasi (`wink://api/...`)
-- Melakukan carian semantik / kata kunci ringan ke atas dokumen dan API langsung
+---
 
-## Pengangkutan
-Gunakan titik akhir HTTP aliran utama:
+## Cara pengesahan berfungsi
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+Pelayan MCP Wink menggunakan aliran **OAuth2 Authorization Code + PKCE** dan menyokong **Pendaftaran Klien Dinamik (RFC 7591)**. Berikut adalah apa yang berlaku apabila anda menyambung buat kali pertama:
 
-Jika klien anda hanya menyokong SSE, gunakan:
+1. Klien AI anda menemui pelayan kebenaran dari metadata `/.well-known/oauth-protected-resource` titik akhir MCP.
+2. Klien mendaftar sendiri melalui **Pendaftaran Klien Dinamik** — tiada persediaan aplikasi manual diperlukan.
+3. Klien membuka **tab pelayar** ke `https://iam.wink.travel`. Anda log masuk dengan akaun Wink anda dan meluluskan kebenaran yang diminta pada skrin persetujuan.
+4. Wink mengeluarkan **token akses** yang dihadkan kepada akaun anda dan dipautkan kepada identiti anda.
+5. Klien AI melampirkan token pada setiap permintaan MCP. Semua hasil alat secara automatik dihadkan kepada entiti pengurusan anda.
+6. Token tamat tempoh selepas 3 jam. Klien AI anda menyegarkan secara senyap di latar belakang tanpa perlu meminta semula.
 
-```
-https://docs.mcp.wink.travel/sse
-```
+Setiap panggilan alat dijalankan **di bawah identiti anda** — peraturan ACL yang sama yang melindungi portal web juga terpakai kepada ejen AI.
 
-### Claude Code
-Dokumen rasmi: [Sambungkan Claude Code ke alat melalui MCP](https://code.claude.com/docs/en/mcp)
+---
 
-Anthropic mengesyorkan pengangkutan HTTP jauh untuk pelayan MCP yang dihoskan di awan:
+## Sambungkan klien AI anda
+
+<Tabs>
+  <TabItem label="Claude Code">
+
+<Steps>
+1. Pastikan Claude Code dikemas kini:
+   ```bash
+   npm install -g @anthropic-ai/claude-code
+   ```
+
+2. Tambah pelayan MCP Inventori Wink:
+   ```bash
+   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   ```
+
+3. Claude Code menghubungi pelayan, menemui pelayan kebenaran, dan membuka pelayar lalai anda.
+
+4. **Log masuk ke Wink** dan luluskan permintaan kebenaran pada skrin persetujuan.
+
+5. Claude Code mengesahkan sambungan. Taip `/mcp` untuk mengesahkan pelayan muncul dan alatnya telah dimuatkan.
+</Steps>
+
+Untuk menambah pelayan Integrasi juga:
 ```bash
-claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
-claude mcp list
+claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
 ```
 
-Dalam Claude Code, jalankan `/mcp` untuk memeriksa status pelayan. Jika anda ingin berkongsi pelayan dengan seluruh repo, tambah `--scope project` supaya Claude Code menulis konfigurasi ke `.mcp.json`.
+:::tip[Kongsi dengan pasukan anda]
+Tambah `--scope project` pada `claude mcp add` dan Claude Code akan menulis URL pelayan ke `.mcp.json` di akar repositori. Komit fail itu — setiap ahli pasukan melengkapkan log masuk pelayar mereka sendiri kali pertama mereka menyambung.
+:::
 
-### Codex
-Dokumen rasmi: [Docs MCP quickstart untuk Codex](https://developers.openai.com/resources/docs-mcp)
+  </TabItem>
+  <TabItem label="Claude Desktop">
 
-OpenAI mendokumentasikan tetapan MCP melalui CLI Codex, dan menyatakan bahawa konfigurasi dikongsi dengan sambungan IDE:
+<Steps>
+1. Edit fail konfigurasi Claude Desktop:
+   - **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+   - **Linux:** `~/.config/Claude/claude_desktop_config.json`
+
+2. Tambah entri pelayan MCP:
+
+   ```json title="claude_desktop_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **Keluar sepenuhnya dan mulakan semula** Claude Desktop (gunakan Quit dari bar menu — menutup tetingkap tidak mencukupi).
+
+4. Claude Desktop membuka tab pelayar untuk setiap pelayan baru. Log masuk ke Wink dan luluskan kebenaran.
+
+5. Ikon palam di bar alat bawah menunjukkan kedua-dua pelayan sebagai disambungkan.
+</Steps>
+
+  </TabItem>
+  <TabItem label="OpenAI Codex">
+
+<Steps>
+1. Pastikan Codex CLI dipasang:
+   ```bash
+   npm install -g @openai/codex
+   ```
+
+2. Buka (atau cipta) fail konfigurasi Codex:
+   - **macOS / Linux:** `~/.codex/config.json`
+   - **Windows:** `%USERPROFILE%\.codex\config.json`
+
+3. Tambah entri pelayan MCP Wink:
+
+   ```json title="~/.codex/config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+4. Mulakan Codex. Pada penggunaan pertama, Codex membuka tab pelayar ke `https://iam.wink.travel`.
+
+5. **Log masuk ke Wink** dan luluskan kebenaran yang diminta.
+
+6. Codex mengesahkan sambungan. Jalankan `codex` dan minta ia senaraikan alat yang tersedia untuk mengesahkan pelayan Wink aktif.
+</Steps>
+
+:::note
+Sokongan MCP Codex CLI memerlukan versi **1.0** atau lebih baru. Jalankan `codex --version` untuk semak, dan `npm install -g @openai/codex` untuk naik taraf.
+:::
+
+  </TabItem>
+  <TabItem label="ChatGPT">
+
+Sokongan pelayan MCP tersedia dalam **aplikasi desktop ChatGPT** untuk pelanggan Plus, Pro, Team, dan Enterprise.
+
+<Steps>
+1. Muat turun dan pasang [aplikasi desktop ChatGPT](https://openai.com/chatgpt/download/) jika anda belum berbuat demikian.
+
+2. Buka aplikasi dan klik **ikon profil anda** di penjuru kanan atas, kemudian pilih **Settings**.
+
+3. Pergi ke **Connectors** (atau **MCP Servers** bergantung pada versi aplikasi anda) dan klik **Add**.
+
+4. Masukkan URL pelayan Inventori Wink:
+   ```
+   https://api.wink.travel/mcp
+   ```
+   Kemudian klik **Connect**.
+
+5. ChatGPT membuka tab pelayar ke `https://iam.wink.travel`. **Log masuk ke Wink** dan luluskan kebenaran.
+
+6. Ulang langkah 4–5 untuk pelayan Integrasi:
+   ```
+   https://integrations.wink.travel/mcp
+   ```
+
+7. Kedua-dua pelayan muncul dalam senarai Connectors anda. Mulakan sembang baru — alat Wink tersedia secara automatik.
+</Steps>
+
+:::note[Had aplikasi web]
+Pelayan MCP hanya boleh dikonfigurasikan dalam **aplikasi desktop**. Antara muka web ChatGPT di chatgpt.com tidak menyokong pelayan MCP tersuai.
+:::
+
+  </TabItem>
+  <TabItem label="Cursor">
+
+<Steps>
+1. Buka (atau cipta) fail konfigurasi MCP Cursor:
+   - **macOS / Linux:** `~/.cursor/mcp.json`
+   - **Windows:** `%USERPROFILE%\.cursor\mcp.json`
+
+2. Tambah entri pelayan MCP Wink:
+
+   ```json title="~/.cursor/mcp.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. Buka Cursor. Pergi ke **Settings → Cursor Settings → MCP** dan sahkan kedua-dua pelayan muncul dengan penunjuk status hijau. Jika ia berwarna merah, klik **Refresh**.
+
+4. Cursor membuka tab pelayar ke `https://iam.wink.travel`. **Log masuk ke Wink** dan luluskan kebenaran.
+
+5. Buka sembang (`Ctrl+L` / `Cmd+L`) dan minta Cursor senaraikan alat Wink yang tersedia untuk mengesahkan sambungan.
+</Steps>
+
+:::tip[Konfigurasi berfokus projek]
+Anda juga boleh meletakkan fail `mcp.json` di akar projek anda sebagai ganti di `~/.cursor/`. Konfigurasi peringkat projek diutamakan dan menjadikan pelayan tersedia kepada setiap ahli pasukan yang membuka projek dalam Cursor.
+:::
+
+  </TabItem>
+  <TabItem label="Windsurf">
+
+<Steps>
+1. Buka (atau cipta) fail konfigurasi MCP Windsurf:
+   - **macOS / Linux:** `~/.codeium/windsurf/mcp_config.json`
+   - **Windows:** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
+
+2. Tambah entri pelayan MCP Wink:
+
+   ```json title="~/.codeium/windsurf/mcp_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **Mulakan semula Windsurf sepenuhnya** (Fail → Quit, kemudian buka semula).
+
+4. Pergi ke **Settings → MCP Servers** dan sahkan kedua-dua pelayan menunjukkan status disambungkan. Windsurf membuka tab pelayar ke `https://iam.wink.travel` pada penggunaan pertama.
+
+5. **Log masuk ke Wink** dan luluskan kebenaran. Pelayan bertukar hijau dalam panel tetapan setelah disahkan.
+</Steps>
+
+:::note
+Sokongan MCP Windsurf memerlukan versi **1.4** atau lebih baru. Semak melalui **Help → About Windsurf** dan kemas kini dari laman web Windsurf jika perlu.
+:::
+
+  </TabItem>
+  <TabItem label="Cline (VS Code)">
+
+Cline adalah sambungan VS Code dengan pengurus pelayan MCP terbina dalam. Tiada penyuntingan JSON manual diperlukan.
+
+<Steps>
+1. Pasang Cline dari Pasar Sambungan VS Code:
+   - Buka VS Code dan tekan `Ctrl+Shift+X` / `Cmd+Shift+X`
+   - Cari **Cline** dan klik **Install**
+
+2. Klik **ikon Cline** di Bar Aktiviti (bar sisi kiri) untuk membuka panel Cline.
+
+3. Klik ikon **MCP Servers** (ikon palam) di bar alat Cline, kemudian pilih **Edit MCP Settings**.
+
+4. VS Code membuka `cline_mcp_settings.json`. Tambah entri Wink:
+
+   ```json title="cline_mcp_settings.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+5. **Simpan fail.** Cline memuat semula secara automatik dan membuka tab pelayar ke `https://iam.wink.travel`.
+
+6. **Log masuk ke Wink** dan luluskan kebenaran. Kedua-dua pelayan muncul sebagai aktif dalam panel MCP Servers.
+</Steps>
+
+:::tip[Alternatif: tambah melalui URL]
+Dalam panel MCP Servers, klik **Add Server** dan tampal `https://api.wink.travel/mcp` secara langsung. Cline mengisi konfigurasi secara automatik dan mengendalikan pengesahan tanpa perlu sunting JSON secara manual.
+:::
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Skop
+
+Apabila anda meluluskan skrin persetujuan, anda akan melihat pecahan apa yang diminta oleh ejen. Klien MCP menggunakan kosa kata kebenaran yang sama seperti platform lain — lihat rujukan penuh
+[skop pada halaman Pengesahan](/ms/developers/authentication#scopes).
+
+Dua perkara khusus untuk MCP:
+
+- **Skop `mcp.read` `mcp.write` `mcp.remove` juga diperlukan** untuk membuka pengangkutan MCP. Klien yang memegang skop `mcp.*` dibenarkan ke `/mcp`, tetapi setiap alat yang dipanggilnya masih menguatkuasakan skop seksyen titik akhir yang dibalutnya (contohnya `booking.read`).
+- **Klien AI hanya meminta skop yang diperlukan.** Anda boleh menolak kebenaran individu pada skrin persetujuan — alat yang memerlukan skop yang ditolak akan mengembalikan ralat apabila dipanggil.
+
+---
+
+## Penyelesaian Masalah
+
+**Tab pelayar tidak terbuka**
+
+Klien AI anda mungkin belum menyokong aliran PKCE interaktif. Sahkan anda menjalankan versi terkini:
+- **Claude Code:** `npm install -g @anthropic-ai/claude-code`
+- **Codex CLI:** `npm install -g @openai/codex`
+- **Claude Desktop / ChatGPT desktop:** kemas kini dari pemuat naik terbina dalam aplikasi
+
+**`401 Unauthorized` selepas log masuk**
+
+Token cache anda mungkin sudah lapuk. Alih keluar dan tambah semula pelayan untuk mencetuskan log masuk baru:
+
 ```bash
-codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
-codex mcp list
+# Claude Code
+claude mcp remove wink-inventory
+claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-### Cursor
-Dokumen MCP Cursor: https://cursor.com/docs/context/mcp
-Tetapan: Tambah pelayan jauh melalui tetapan MCP.
-```json
-{
-  "mcpServers": {
-    "wink-docs": {
-      "url": "https://docs.mcp.wink.travel/mcp",
-    }
-  }
-}
-```
+Untuk Claude Desktop dan ChatGPT, alih keluar entri pelayan dari tetapan, mulakan semula aplikasi, dan tambah semula.
 
-### VS Code
-Dokumen rasmi: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Konfigurasi jauh minimum (pengguna atau ruang kerja `mcp.json`):
-```json
-{
-  "servers": {
-    "wink-docs": {
-      "type": "http",
-      "url": "https://docs.mcp.wink.travel/mcp"
-    }
-  }
-}
-```
+**`403 Forbidden` apabila memanggil alat tertentu**
 
-Petua:
-- Gunakan Command Palette: “MCP: List Servers” untuk mengesahkan sambungan & melayari alat.
-- Pemilih alat membolehkan anda mengaktifkan/mematikan `api_search` dan `docs_search`.
-- Tambah konteks: Paparan Sembang → Tambah Konteks → Sumber MCP untuk melampirkan halaman dokumen.
+Alat memerlukan skop yang anda tidak luluskan pada skrin persetujuan. Sambung semula pelayan — skrin persetujuan akan muncul semula dan anda boleh luluskan kebenaran yang hilang.
 
-## URI Sumber Teras
+**Pelayan muncul tetapi panggilan alat mengembalikan "akaun tidak dijumpai"**
 
-| URI | Penerangan |
-|-----|-------------|
-| `wink://docs` | Indeks dokumentasi (dikelompokkan mengikut kategori) |
-| `wink://docs/{path}` | Artikel dokumentasi khusus (Markdown / MDX) |
-| `wink://api` | Katalog OpenAPI langsung yang ditemui dari konfigurasi swagger Wink |
-| `wink://api/{apiName}` | Ringkasan API padat dengan pengesahan, tag, pengepala, dan operasi contoh |
-| `wink://api/{apiName}/operations` | Senarai operasi penuh dikelompokkan mengikut tag |
-| `wink://api/{apiName}/operation/{key}` | Butiran operasi individu (param, badan permintaan, respons) |
-| `wink://api/{apiName}/schema/{schemaName}` | Skema komponen yang diselesaikan dengan medan bersarang, jenis, dan contoh |
-| `wink://api/{apiName}/operation/{key}/request` | Paparan fokus permintaan dengan input wajib dan payload contoh minimum |
-| `wink://api/{apiName}/operation/{key}/response/{status}` | Paparan fokus respons untuk kod status tertentu |
-| `wink://api/{apiName}/operation/{key}/recipe` | Aliran berorientasikan tugas untuk memanggil operasi itu dengan betul |
+Anda log masuk ke akaun Wink yang tiada entiti pengurusan. Pergi ke [Wink Portal](https://app.wink.travel) dan pastikan akaun anda disediakan sebelum menggunakan pelayan MCP.
 
-## Alat Carian (Rujukan Pantas)
-| Alat | Tujuan | Contoh Pertanyaan Biasa |
-|------|---------|-----------------------|
-| `api_search` | Cari API langsung atau operasi untuk diintegrasikan | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
-| `docs_search` | Cari dokumen konseptual / panduan | `authentication`, `webhooks`, `wordPress` |
+**Token tamat tempoh semasa sesi**
 
-Biarkan `query` kosong untuk menerima cadangan. Setiap hasil termasuk URI MCP yang boleh anda buka.
-Untuk hasil operasi, `api_search` juga mengembalikan URI permintaan, respons, skema, dan resipi yang dipautkan supaya ejen boleh terus melompat ke sub-sumber yang paling berguna.
+Token sah selama 3 jam. Claude Code dan Claude Desktop menyegarkan token secara senyap tanpa mengganggu sesi anda. Jika anda melihat ralat pengesahan selepas tempoh tidak aktif yang lama, taip mesej baru — klien akan mengesahkan semula secara automatik.
 
-## Corak Penggunaan Biasa
-1. Jalankan `api_search` dengan niat anda (contoh *"create affiliate"* atau *"payment receipt"*).
-2. Buka URI `wink://api/...` yang dikembalikan, atau ikut medan `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris`, dan `recipe_uri` yang dipautkan.
-3. Gunakan `docs_search` untuk konsep sokongan (pengesahan, webhook, aliran kerja).
+**Codex CLI menunjukkan "Pelayan MCP tidak dapat dicapai"**
 
-## Kemahiran AI
+Periksa bahawa `~/.codex/config.json` adalah JSON sah (tiada koma bertindih) dan `"type": "http"` ditetapkan. Codex memerlukan pengangkutan HTTP untuk pelayan jauh; pengangkutan stdio hanya untuk binari tempatan.
 
-Kemahiran ejen yang telah dibina menggunakan pelayan MCP ini sebagai sumber kebenaran mereka. Kemahiran memberikan ejen pengekodan anda aliran kerja berstruktur untuk membina terhadap API Wink — bukannya meneka titik akhir, ejen membaca kontrak langsung dari pelayan MCP.
+**Menu "Connectors" ChatGPT hilang**
 
-Lihat [AI Skills](/ms/developers/ai-skills) untuk kemahiran yang tersedia dan arahan pemasangan.
+Sokongan MCP memerlukan versi aplikasi desktop ChatGPT **1.2024.352** atau lebih baru dan langganan Plus, Pro, Team, atau Enterprise yang aktif. Kemas kini aplikasi dan sahkan pelan anda di Settings → Account.
 
-## Nota
-- Setiap URI yang dikembalikan boleh dibuka oleh ejen untuk kandungan penuh.
-- Pokok `wink://api` adalah langsung dan mengikuti katalog OpenAPI hulu semasa dan bukannya indeks repo yang dijana.
-- Cadangan muncul secara automatik apabila pertanyaan kosong.
+**Pelayan Cursor menunjukkan merah / "Gagal sambung"**
 
+Sahkan `~/.cursor/mcp.json` adalah JSON sah dan mengandungi `"type": "http"`. Kemudian pergi ke **Settings → Cursor Settings → MCP** dan klik **Refresh**. Jika ralat berterusan, mulakan semula Cursor sepenuhnya — perubahan konfigurasi tidak selalu diambil tanpa mulakan semula.
+
+**Pelayan MCP Windsurf tidak disenaraikan dalam tetapan**
+
+Windsurf memerlukan mulakan semula penuh (bukan hanya muat semula tetingkap) untuk mengambil perubahan pada `mcp_config.json`. Gunakan **File → Quit** dan buka semula. Jika pelayan masih tidak muncul, sahkan anda menggunakan Windsurf **1.4+** melalui **Help → About Windsurf**.
+
+**Pilihan "Add Server" Cline tidak kelihatan**
+
+Pengurus pelayan MCP memerlukan Cline **2.0** atau lebih baru. Buka panel Sambungan VS Code, cari Cline, dan klik **Update** jika kemas kini tersedia. Selepas kemas kini, muat semula VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+
+---
+
+<LinkButton href="https://app.wink.travel" variant="primary" icon="external">Buka Portal Wink</LinkButton>
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink di GitHub</LinkButton>

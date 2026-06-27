@@ -1,127 +1,357 @@
 ---
-title: MCP serveris
-description: Greitai prijunkite AI agentus prie Wink dokumentacijos ir tiesioginių OpenAPI specifikacijų per talpinamą MCP serverį.
+title: MCP serveriai
+description: Prijunkite AI agentus prie Wink platformos per Model Context Protocol. Autentifikuoti MCP serveriai suteikia jūsų agentui tiesioginę prieigą prie inventoriaus, užsakymų, kanalų valdymo integracijų ir daugiau — apsaugota interaktyviu OAuth2 prisijungimu.
 sidebar:
   order: 10
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-## Apžvalga
-Talpinamas Wink MCP serveris pasiekiamas adresu:
+Wink suteikia du autentifikuotus MCP serverius. Abu naudoja **interaktyvų OAuth2 prisijungimą** (PKCE autorizacijos kodo srautas) — jūsų AI agentas atidaro naršyklės skirtuką, kad prisijungtumėte su savo Wink paskyra. Nereikia valdyti klientų slaptumo raktų.
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+| Serveris | URL | Ką atlieka |
+|----------|-----|------------|
+| **Inventory API** | `https://api.wink.travel/mcp` | Inventorius, užsakymai, kainos, pardavimo kanalai, analizė ir visi platformos veiksmai |
+| **Integrations** | `https://integrations.wink.travel/mcp` | Kanalų valdymo integracijos — sinchronizuoja objektus, kainas ir prieinamumą su OTA |
 
-Nukreipkite suderinamus AI klientus (VS Code, Cursor, kitus, įgyvendinančius MCP HTTP transportą) į šį galinį tašką, kad jie galėtų:
-- Naršyti produkto ir platformos dokumentaciją (`wink://docs/...`)
-- Naršyti tiesiogines OpenAPI specifikacijas ir operacijų dokumentus (`wink://api/...`)
-- Atlikti lengvą semantinę / raktinių žodžių paiešką dokumentuose ir tiesioginiuose API
+---
 
-## Transportas
-Naudokite pagrindinį srautinį HTTP galinį tašką:
+## Kaip veikia autentifikacija
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+Wink MCP serveriai naudoja **OAuth2 autorizacijos kodo + PKCE** srautą ir palaiko **dinaminę kliento registraciją (RFC 7591)**. Štai kas vyksta, kai jungiatės pirmą kartą:
 
-Jei jūsų klientas palaiko tik SSE, naudokite:
+1. Jūsų AI klientas atranda autorizacijos serverį iš MCP galinio taško `/.well-known/oauth-protected-resource` metaduomenų.
+2. Klientas pats užsiregistruoja per **dinaminę kliento registraciją** — nereikia rankinio programos nustatymo.
+3. Klientas atidaro **naršyklės skirtuką** adresu `https://iam.wink.travel`. Prisijungiate su savo Wink paskyra ir patvirtinate prašomas teises sutikimo ekrane.
+4. Wink išduoda **prieigos žetoną**, susietą su jūsų paskyra ir tapatybe.
+5. AI klientas prideda žetoną prie kiekvieno MCP užklausos. Visi įrankių rezultatai automatiškai apribojami jūsų valdomai įmonei.
+6. Žetonai galioja 3 valandas. Jūsų AI klientas tyliai atnaujina žetoną fone be papildomo prašymo.
 
-```
-https://docs.mcp.wink.travel/sse
-```
+Kiekvienas įrankio kvietimas vykdomas **jūsų tapatybe** — taikomos tos pačios ACL taisyklės, kurios saugo interneto portalą.
 
-### Claude Code
-Oficiali dokumentacija: [Prijunkite Claude Code prie įrankių per MCP](https://code.claude.com/docs/en/mcp)
+---
 
-Anthropic rekomenduoja nuotolinį HTTP transportą debesyje talpinamiems MCP serveriams:
+## Prijunkite savo AI klientą
+
+<Tabs>
+  <TabItem label="Claude Code">
+
+<Steps>
+1. Įsitikinkite, kad Claude Code yra atnaujintas:
+   ```bash
+   npm install -g @anthropic-ai/claude-code
+   ```
+
+2. Pridėkite Wink Inventory MCP serverį:
+   ```bash
+   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   ```
+
+3. Claude Code susisiekia su serveriu, atranda autorizacijos serverį ir atidaro numatytąją naršyklę.
+
+4. **Prisijunkite prie Wink** ir patvirtinkite leidimų prašymą sutikimo ekrane.
+
+5. Claude Code patvirtina ryšį. Įveskite `/mcp`, kad patikrintumėte, ar serveris rodomas ir įrankiai įkeliami.
+</Steps>
+
+Norėdami pridėti ir Integrations serverį:
 ```bash
-claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
-claude mcp list
+claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
 ```
 
-Claude Code viduje paleiskite `/mcp`, kad patikrintumėte serverio būseną. Jei norite bendrinti serverį su visa saugykla, pridėkite `--scope project`, kad Claude Code įrašytų konfigūraciją į `.mcp.json`.
+:::tip[Dalinkitės su savo komanda]
+Pridėkite `--scope project` prie `claude mcp add`, ir Claude Code įrašys serverio URL į `.mcp.json` projekto šaknyje. Įtraukite šį failą į versijų valdymą — kiekvienas komandos narys pirmą kartą jungdamasis atliks savo naršyklės prisijungimą.
+:::
 
-### Codex
-Oficiali dokumentacija: [Docs MCP greitas startas Codex](https://developers.openai.com/resources/docs-mcp)
+  </TabItem>
+  <TabItem label="Claude Desktop">
 
-OpenAI dokumentuoja MCP nustatymą per Codex CLI ir pažymi, kad konfigūracija dalijamasi su IDE plėtiniu:
+<Steps>
+1. Redaguokite Claude Desktop konfigūracijos failą:
+   - **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+   - **Linux:** `~/.config/Claude/claude_desktop_config.json`
+
+2. Pridėkite MCP serverių įrašus:
+
+   ```json title="claude_desktop_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **Pilnai uždarykite ir paleiskite iš naujo** Claude Desktop (naudokite Quit meniu juostoje — lango uždarymas nepakanka).
+
+4. Claude Desktop atidaro naršyklės skirtuką kiekvienam naujam serveriui. Prisijunkite prie Wink ir patvirtinkite leidimus.
+
+5. Apatinėje įrankių juostoje esanti kištuko piktograma rodo abu serverius kaip prijungtus.
+</Steps>
+
+  </TabItem>
+  <TabItem label="OpenAI Codex">
+
+<Steps>
+1. Įsitikinkite, kad Codex CLI įdiegta:
+   ```bash
+   npm install -g @openai/codex
+   ```
+
+2. Atidarykite (arba sukurkite) Codex konfigūracijos failą:
+   - **macOS / Linux:** `~/.codex/config.json`
+   - **Windows:** `%USERPROFILE%\.codex\config.json`
+
+3. Pridėkite Wink MCP serverių įrašus:
+
+   ```json title="~/.codex/config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+4. Paleiskite Codex. Pirmą kartą naudojant Codex atidaro naršyklės skirtuką adresu `https://iam.wink.travel`.
+
+5. **Prisijunkite prie Wink** ir patvirtinkite prašomas teises.
+
+6. Codex patvirtina ryšį. Paleiskite `codex` ir paprašykite išvardinti prieinamus įrankius, kad patikrintumėte, ar Wink serveriai veikia.
+</Steps>
+
+:::note
+Codex CLI MCP palaikymui reikalinga versija **1.0** arba naujesnė. Patikrinkite komandą `codex --version` ir atnaujinkite su `npm install -g @openai/codex`.
+:::
+
+  </TabItem>
+  <TabItem label="ChatGPT">
+
+MCP serverių palaikymas yra **ChatGPT darbalaukio programoje** Plus, Pro, Team ir Enterprise prenumeratoriams.
+
+<Steps>
+1. Atsisiųskite ir įdiekite [ChatGPT darbalaukio programą](https://openai.com/chatgpt/download/), jei dar to nepadarėte.
+
+2. Atidarykite programą ir spustelėkite **savo profilio piktogramą** viršutiniame dešiniajame kampe, tada pasirinkite **Nustatymai**.
+
+3. Eikite į **Jungikliai** (arba **MCP serveriai** priklausomai nuo programos versijos) ir spustelėkite **Pridėti**.
+
+4. Įveskite Wink Inventory serverio URL:
+   ```
+   https://api.wink.travel/mcp
+   ```
+   Tada spustelėkite **Prisijungti**.
+
+5. ChatGPT atidaro naršyklės skirtuką adresu `https://iam.wink.travel`. **Prisijunkite prie Wink** ir patvirtinkite leidimus.
+
+6. Pakartokite 4–5 žingsnius Integrations serveriui:
+   ```
+   https://integrations.wink.travel/mcp
+   ```
+
+7. Abu serveriai bus matomi jūsų Jungiklių sąraše. Pradėkite naują pokalbį — Wink įrankiai bus automatiškai prieinami.
+</Steps>
+
+:::note[Žiniatinklio programos apribojimas]
+MCP serveriai konfigūruojami tik **darbalaukio programoje**. ChatGPT žiniatinklio sąsaja chatgpt.com nepalaiko pasirinktinių MCP serverių.
+:::
+
+  </TabItem>
+  <TabItem label="Cursor">
+
+<Steps>
+1. Atidarykite (arba sukurkite) Cursor MCP konfigūracijos failą:
+   - **macOS / Linux:** `~/.cursor/mcp.json`
+   - **Windows:** `%USERPROFILE%\.cursor\mcp.json`
+
+2. Pridėkite Wink MCP serverių įrašus:
+
+   ```json title="~/.cursor/mcp.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. Atidarykite Cursor. Eikite į **Nustatymai → Cursor nustatymai → MCP** ir patvirtinkite, kad abu serveriai rodomi su žaliu statuso indikatoriumi. Jei rodomas raudonas, spustelėkite **Atnaujinti**.
+
+4. Cursor atidaro naršyklės skirtuką adresu `https://iam.wink.travel`. **Prisijunkite prie Wink** ir patvirtinkite leidimus.
+
+5. Atidarykite pokalbį (`Ctrl+L` / `Cmd+L`) ir paprašykite Cursor išvardinti prieinamus Wink įrankius, kad patvirtintumėte ryšį.
+</Steps>
+
+:::tip[Projekto lygmens konfigūracija]
+Taip pat galite įdėti `mcp.json` failą projekto šaknyje vietoje `~/.cursor/`. Projekto lygmens konfigūracija turi prioritetą ir leidžia serverius naudoti kiekvienam komandos nariui, atidariusiam projektą Cursor.
+:::
+
+  </TabItem>
+  <TabItem label="Windsurf">
+
+<Steps>
+1. Atidarykite (arba sukurkite) Windsurf MCP konfigūracijos failą:
+   - **macOS / Linux:** `~/.codeium/windsurf/mcp_config.json`
+   - **Windows:** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
+
+2. Pridėkite Wink MCP serverių įrašus:
+
+   ```json title="~/.codeium/windsurf/mcp_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **Pilnai paleiskite Windsurf iš naujo** (Failas → Išeiti, tada vėl atidarykite).
+
+4. Eikite į **Nustatymai → MCP serveriai** ir patikrinkite, ar abu serveriai rodomi kaip prijungti. Pirmą kartą naudojant Windsurf atidaro naršyklės skirtuką adresu `https://iam.wink.travel`.
+
+5. **Prisijunkite prie Wink** ir patvirtinkite leidimus. Serveriai nustatymų lange pasidaro žali, kai autentifikacija sėkminga.
+</Steps>
+
+:::note
+Windsurf MCP palaikymui reikalinga versija **1.4** arba naujesnė. Patikrinkite per **Pagalba → Apie Windsurf** ir atnaujinkite iš Windsurf svetainės, jei reikia.
+:::
+
+  </TabItem>
+  <TabItem label="Cline (VS Code)">
+
+Cline yra VS Code plėtinys su integruotu MCP serverių valdymu. Rankinis JSON redagavimas nereikalingas.
+
+<Steps>
+1. Įdiekite Cline iš VS Code Marketplace:
+   - Atidarykite VS Code ir paspauskite `Ctrl+Shift+X` / `Cmd+Shift+X`
+   - Ieškokite **Cline** ir spustelėkite **Įdiegti**
+
+2. Spustelėkite **Cline piktogramą** veiklos juostoje (kairėje šoninėje juostoje), kad atidarytumėte Cline panelę.
+
+3. Spustelėkite **MCP serverių** piktogramą (kištuko piktogramą) Cline įrankių juostoje, tada pasirinkite **Redaguoti MCP nustatymus**.
+
+4. VS Code atidaro `cline_mcp_settings.json`. Pridėkite Wink įrašus:
+
+   ```json title="cline_mcp_settings.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+5. **Išsaugokite failą.** Cline automatiškai perkraunamas ir atidaro naršyklės skirtuką adresu `https://iam.wink.travel`.
+
+6. **Prisijunkite prie Wink** ir patvirtinkite leidimus. Abu serveriai MCP serverių panelėje rodomi kaip aktyvūs.
+</Steps>
+
+:::tip[Alternatyva: pridėti per URL]
+MCP serverių panelėje spustelėkite **Pridėti serverį** ir įklijuokite `https://api.wink.travel/mcp` tiesiogiai. Cline automatiškai užpildo konfigūraciją ir tvarko autentifikaciją be rankinio JSON redagavimo.
+:::
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Leidimai
+
+Patvirtindami sutikimo ekraną matysite, kokias teises agentas prašo. MCP klientai naudoja tą pačią leidimų žodyną kaip ir visa platforma — žr. pilną
+[leidimų aprašymą Autentifikacijos puslapyje](/lt/developers/authentication#scopes).
+
+Du dalykai yra specifiniai MCP:
+
+- **`mcp.read`, `mcp.write`, `mcp.remove` leidimai papildomai reikalingi** MCP transportui atidaryti. Klientas, turintis `mcp.*` leidimą, gali jungtis prie `/mcp`, bet kiekvienas įrankis, kurį jis kviečia, vis tiek taiko atitinkamo galinio taško leidimą (pvz., `booking.read`).
+- **AI klientas prašo tik reikalingų leidimų.** Galite atmesti atskirus leidimus sutikimo ekrane — įrankiai, kuriems reikalingas atmestas leidimas, grąžins klaidą kviečiant.
+
+---
+
+## Trikčių šalinimas
+
+**Naršyklės skirtukas neatidaromas**
+
+Jūsų AI klientas gali dar nepalaikyti interaktyvaus PKCE srauto. Patikrinkite, ar naudojate naujausią versiją:
+- **Claude Code:** `npm install -g @anthropic-ai/claude-code`
+- **Codex CLI:** `npm install -g @openai/codex`
+- **Claude Desktop / ChatGPT darbalaukio programa:** atnaujinkite per programos vidinį atnaujinimą
+
+**`401 Unauthorized` po prisijungimo**
+
+Jūsų talpykloje esantis žetonas gali būti pasenęs. Pašalinkite ir pridėkite serverį iš naujo, kad būtų inicijuotas naujas prisijungimas:
+
 ```bash
-codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
-codex mcp list
+# Claude Code
+claude mcp remove wink-inventory
+claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-### Cursor
-Cursor MCP dokumentacija: https://cursor.com/docs/context/mcp
-Nustatymas: pridėkite nuotolinį serverį per MCP nustatymus.
-```json
-{
-  "mcpServers": {
-    "wink-docs": {
-      "url": "https://docs.mcp.wink.travel/mcp",
-    }
-  }
-}
-```
+Claude Desktop ir ChatGPT pašalinkite serverio įrašą nustatymuose, paleiskite programą iš naujo ir pridėkite serverį dar kartą.
 
-### VS Code
-Oficiali dokumentacija: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Minimalus nuotolinis konfigas (vartotojo arba darbo srities `mcp.json`):
-```json
-{
-  "servers": {
-    "wink-docs": {
-      "type": "http",
-      "url": "https://docs.mcp.wink.travel/mcp"
-    }
-  }
-}
-```
+**`403 Forbidden` kviečiant konkretų įrankį**
 
-Patarimai:
-- Naudokite komandų paletę: „MCP: List Servers“, kad patvirtintumėte ryšį ir naršytumėte įrankius.
-- Įrankių pasirinkiklis leidžia įjungti/išjungti `api_search` ir `docs_search`.
-- Pridėkite kontekstą: Pokalbio vaizdas → Pridėti kontekstą → MCP ištekliai, kad pridėtumėte dokumentų puslapius.
+Įrankiui reikalingas leidimas, kurio nesutikote sutikimo ekrane. Prisijunkite prie serverio iš naujo — sutikimo ekranas pasirodys dar kartą ir galėsite patvirtinti trūkstamą leidimą.
 
-## Pagrindiniai išteklių URI
+**Serveris rodomas, bet įrankių kvietimai grąžina „paskyra nerasta“**
 
-| URI | Aprašymas |
-|-----|-----------|
-| `wink://docs` | Dokumentacijos indeksas (grupuotas pagal kategoriją) |
-| `wink://docs/{path}` | Konkretus dokumentacijos straipsnis (Markdown / MDX) |
-| `wink://api` | Tiesioginis OpenAPI katalogas, rastas iš Wink swagger konfigūracijos |
-| `wink://api/{apiName}` | Kompaktiška API santrauka su autentifikacija, žymomis, antraštėmis ir pavyzdinėmis operacijomis |
-| `wink://api/{apiName}/operations` | Pilnas operacijų sąrašas, grupuotas pagal žymą |
-| `wink://api/{apiName}/operation/{key}` | Atitinkamos operacijos detalės (parametrai, užklausos turinys, atsakymai) |
-| `wink://api/{apiName}/schema/{schemaName}` | Išspręsta komponento schema su įdėtinėmis laukų struktūromis, tipais ir pavyzdžiais |
-| `wink://api/{apiName}/operation/{key}/request` | Užklausai skirta peržiūra su privalomais įvesties duomenimis ir minimaliu pavyzdiniu užklausos turiniu |
-| `wink://api/{apiName}/operation/{key}/response/{status}` | Atsakymui skirta peržiūra konkrečiam statuso kodui |
-| `wink://api/{apiName}/operation/{key}/recipe` | Užduoties orientuotas srautas, kaip teisingai iškviesti tą operaciją |
+Esate prisijungę prie Wink paskyros, kuri neturi valdomos įmonės. Eikite į [Wink Portalą](https://app.wink.travel) ir įsitikinkite, kad jūsų paskyra yra tinkamai sukonfigūruota prieš naudojant MCP serverį.
 
-## Paieškos įrankiai (greita nuoroda)
-| Įrankis | Paskirtis | Tipiniai užklausų pavyzdžiai |
-|---------|-----------|------------------------------|
-| `api_search` | Rasti tiesioginį API arba operaciją integracijai | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
-| `docs_search` | Rasti konceptualius dokumentus / gaires | `authentication`, `webhooks`, `wordPress` |
+**Žetonas pasibaigia sesijos viduryje**
 
-Palikite `query` tuščią, kad gautumėte pasiūlymus. Kiekvienas rezultatas apima MCP URI, kurį galite atidaryti.
-Operacijų atvejais `api_search` taip pat grąžina susietus užklausos, atsakymo, schemos ir recepto URI, kad agentai galėtų tiesiogiai pereiti prie naudingiausių posistemų.
+Žetonai galioja 3 valandas. Claude Code ir Claude Desktop tyliai atnaujina žetonus be pertraukiančios sesijos. Jei po ilgo neveikimo matote autentifikacijos klaidų, įveskite naują žinutę — klientas automatiškai persijungs.
 
-## Tipinis naudojimo modelis
-1. Paleiskite `api_search` su savo ketinimu (pvz., *„create affiliate“* arba *„payment receipt“*).
-2. Atidarykite grąžintą `wink://api/...` URI arba sekite susietus laukus `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` ir `recipe_uri`.
-3. Naudokite `docs_search` papildomoms sąvokoms (autentifikacija, webhooks, darbo srautai).
+**Codex CLI rodo „MCP serveris nepasiekiamas“**
 
-## AI įgūdžiai
+Patikrinkite, ar jūsų `~/.codex/config.json` yra galiojantis JSON (be užbaigiančių kablelių) ir ar `"type": "http"` yra nustatyta. Codex reikalauja HTTP transporto nuotoliniams serveriams; stdio transportas skirtas tik vietiniams binariniams failams.
 
-Iš anksto paruošti agentų įgūdžiai naudoja šį MCP serverį kaip savo tiesos šaltinį. Įgūdžiai suteikia jūsų kodavimo agentui struktūruotą darbo eigą, kaip kurti naudojant Wink API — vietoje spėjimo apie galinius taškus agentas tiesiogiai skaito tiesioginius sutartinius duomenis iš MCP serverio.
+**ChatGPT meniu „Jungikliai“ nerodomas**
 
-Žr. [AI Skills](/lt/developers/ai-skills) dėl prieinamų įgūdžių ir diegimo instrukcijų.
+MCP palaikymui reikalinga ChatGPT darbalaukio programos versija **1.2024.352** arba naujesnė ir aktyvi Plus, Pro, Team arba Enterprise prenumerata. Atnaujinkite programą ir patikrinkite planą Nustatymai → Paskyra.
 
-## Pastabos
-- Kiekvieną grąžintą URI agentas gali atidaryti pilnam turiniui.
-- `wink://api` medis yra tiesioginis ir seka dabartinį aukštesnio lygio OpenAPI katalogą, o ne sugeneruotą saugyklos indeksą.
-- Pasiūlymai rodomi automatiškai, kai užklausos yra tuščios.
+**Cursor serveris rodo raudoną / „Nepavyko prisijungti“**
 
+Patikrinkite, ar jūsų `~/.cursor/mcp.json` yra galiojantis JSON ir turi `"type": "http"`. Tada eikite į **Nustatymai → Cursor nustatymai → MCP** ir spustelėkite **Atnaujinti**. Jei klaida išlieka, pilnai paleiskite Cursor iš naujo — konfigūracijos pakeitimai ne visada įsigalioja be perkrovimo.
+
+**Windsurf MCP serveriai nerodomi nustatymuose**
+
+Windsurf reikalauja pilno paleidimo iš naujo (ne tik lango perkrovimo), kad įkeltų pakeitimus `mcp_config.json`. Naudokite **Failas → Išeiti** ir vėl paleiskite. Jei serveriai vis dar nerodomi, įsitikinkite, kad naudojate Windsurf **1.4+** per **Pagalba → Apie Windsurf**.
+
+**Cline „Pridėti serverį“ parinktis nematoma**
+
+MCP serverių valdymui reikalinga Cline versija **2.0** arba naujesnė. Atidarykite VS Code plėtinių panelę, suraskite Cline ir spustelėkite **Atnaujinti**, jei yra naujinimas. Po atnaujinimo perkraukite VS Code (`Ctrl+Shift+P` → „Developer: Reload Window“).
+
+---
+
+<LinkButton href="https://app.wink.travel" variant="primary" icon="external">Atidaryti Wink portalą</LinkButton>
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink GitHub</LinkButton>

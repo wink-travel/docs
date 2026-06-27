@@ -55,35 +55,35 @@ Zur Transparenz hier, was Wink konfiguriert, um diese Integration zu ermögliche
 
 ## DataLayer-Referenz
 
-Wink pusht GA4-kompatible Ereignisse während der gesamten Gästereise in den `dataLayer`. Ihr GTM-Container liest aus demselben gemeinsamen `dataLayer`, sodass jeder Trigger oder jede Variable, die Sie konfigurieren, Zugriff auf alle unten beschriebenen Eigenschaften hat.
+Wink pusht GA4-kompatible Events während der gesamten Gästereise in den `dataLayer`. Ihr GTM-Container liest aus demselben gemeinsamen `dataLayer`, sodass jeder Trigger oder jede Variable, die Sie konfigurieren, Zugriff auf alle unten beschriebenen Eigenschaften hat.
 
-Jedes Ereignis folgt der Standardstruktur von GA4 Enhanced Ecommerce: ein oberstes `event`-String und ein `ecommerce`-Objekt. Vor jedem Push löscht Wink die vorherigen Ecommerce-Daten, um zu verhindern, dass veraltete Daten in neue Trigger gelangen.
+Jedes Event folgt der standardmäßigen GA4 Enhanced Ecommerce-Struktur: einem obersten `event`-String und einem `ecommerce`-Objekt. Vor jedem Push löscht Wink die vorherigen Ecommerce-Daten, um zu verhindern, dass veraltete Daten in neue Trigger gelangen.
 
 <Aside type="note">
 **dataLayer Reset-Muster**
 
-Wink setzt das ecommerce-Objekt vor jedem Ereignis-Push zurück:
+Wink setzt das Ecommerce-Objekt vor jedem Event-Push zurück:
 
 ```js
-dataLayer.push({ ecommerce: null });   // vorheriges Ereignis löschen
+dataLayer.push({ ecommerce: null });   // vorheriges Event löschen
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
-Verlassen Sie sich nicht darauf, dass ecommerce-Eigenschaften zwischen Ereignissen erhalten bleiben. Lesen Sie sie immer zum Zeitpunkt des Triggers innerhalb desselben Ereignisses.
+Verlassen Sie sich nicht darauf, dass Ecommerce-Eigenschaften zwischen Events erhalten bleiben. Lesen Sie sie immer zum Zeitpunkt des Triggers innerhalb desselben Events aus.
 </Aside>
 
 ---
 
-### Buchungsreise-Ereignisse
+### Buchungsreise-Events
 
-Diese Ereignisse werden automatisch ausgelöst, wenn ein Gast den Buchungstrichter durchläuft. Konfigurieren Sie Ihre GTM-Trigger als **Custom Event**-Trigger, die den untenstehenden Ereignisnamen entsprechen.
+Diese Events werden automatisch ausgelöst, wenn ein Gast den Buchungstrichter durchläuft. Konfigurieren Sie Ihre GTM-Trigger als **Custom Event**-Trigger, die den untenstehenden Eventnamen entsprechen.
 
-| Schritt | Ereignis | Wann es ausgelöst wird |
-|------|-------|---------------|
+| Schritt | Event | Wann es ausgelöst wird |
+|------|-------|-----------------------|
 | 1 | `view_item_list` | Hotel-Inventar-Gitter oder Liste wird geladen |
-| 2 | `view_item` | Gast sieht eine bestimmte Unterkunftsseite |
+| 2 | `view_item` | Gast sieht sich eine bestimmte Unterkunftsseite an |
 | 3 | `add_to_cart` | Gast legt ein Zimmer in den Warenkorb |
-| 4 | `begin_checkout` | Checkout-/Zahlungsseite wird geladen |
+| 4 | `begin_checkout` | Checkout- / Zahlungsseite wird geladen |
 | 5 | `add_payment_info` | Gast wählt eine Zahlungsmethode aus |
 | 6 | `login` | Gast authentifiziert sich via SSO |
 | 7 | `purchase` | Buchung wird bestätigt |
@@ -144,7 +144,7 @@ Wird ausgelöst, wenn ein Gast ein Zimmer in den Warenkorb legt.
 
 #### `begin_checkout`
 
-Wird ausgelöst, wenn die Checkout-/Zahlungsseite geladen wird.
+Wird ausgelöst, wenn die Checkout- / Zahlungsseite geladen wird.
 
 ```json
 {
@@ -179,13 +179,13 @@ Wird ausgelöst, wenn der Gast eine Zahlungsmethode auswählt oder bestätigt.
 }
 ```
 
-`payment_type` wird vom Typ des Zahlungsanbieters übernommen. `coupon` ist nur vorhanden, wenn ein Rabattcode angewendet wurde.
+`payment_type` wird vom Typ des Zahlungsanbieters befüllt. `coupon` ist nur vorhanden, wenn ein Rabattcode angewendet wurde.
 
 ---
 
 #### `login`
 
-Wird ausgelöst, wenn sich ein Gast über Single Sign-On authentifiziert.
+Wird ausgelöst, wenn sich ein Gast via Single Sign-On authentifiziert.
 
 ```json
 {
@@ -267,13 +267,13 @@ Wird ausgelöst, wenn eine Buchung storniert wird.
 }
 ```
 
-`transaction_id` entspricht dem `purchase`-Ereignis derselben Buchung. `coupon`, `shipping` und `tax` sind nur vorhanden, wenn zutreffend.
+`transaction_id` entspricht dem `purchase`-Event derselben Buchung. `coupon`, `shipping` und `tax` sind nur vorhanden, wenn zutreffend.
 
 ---
 
 ### Artikel-Eigenschaften
 
-Alle Ereignisse, die ein `items`-Array enthalten, verwenden dasselbe Artikelschema. Jede Eigenschaft ist optional, sofern nicht als erforderlich markiert.
+Alle Events, die ein `items`-Array enthalten, verwenden dasselbe Artikelschema. Jede Eigenschaft ist optional, sofern nicht als erforderlich markiert.
 
 #### Standard GA4-Felder
 
@@ -288,11 +288,11 @@ Diese Felder werden von GA4 nativ verstanden und erscheinen in Standard-Ecommerc
 | `currency` | string | — | ISO 4217 Währungscode (z.B. `USD`) |
 | `creative_name` | string | — | Kreativname, der in einer Promotion verwendet wird |
 | `creative_slot` | string | — | Slot-Position der Promotion-Kreativ |
-| `discount` | number | — | Angewendeter Rabattbetrag |
+| `discount` | number | — | Gewährter Rabattbetrag |
 | `index` | number | — | Position in der Liste (1-basiert) |
 | `item_brand` | string | — | Hotel- oder Markenname |
 | `item_category` | string | — | Produkttyp – z.B. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
-| `item_list_id` | string | — | Kennung der Liste, zu der dieser Artikel gehört |
+| `item_list_id` | string | — | Kennung der Liste, zu der der Artikel gehört |
 | `item_list_name` | string | — | Anzeigename der Liste |
 | `location_id` | string | — | Geokoordinaten der Unterkunft |
 | `price` | number | — | Einzelpreis |
@@ -323,7 +323,7 @@ Diese Parameter enthalten Wink-spezifischen Buchungskontext. GA4 zeigt sie nicht
 | `room_rate_name` | string | Anzeigename des Zimmerpreises |
 | `num_perks` | number | Anzahl der im Tarif enthaltenen Extras |
 | `room_location` | string | Ortsbeschreibung des Zimmers (z.B. `Overwater`, `Garden`) |
-| `room_view` | string | Ausblicksbeschreibung des Zimmers (z.B. `Ocean`, `City`) |
+| `room_view` | string | Ausblickbeschreibung des Zimmers (z.B. `Ocean`, `City`) |
 | `room_classification` | string | Zimmerklassifikation oder Kategorie (z.B. `Suite`, `Standard`) |
 | `bed_type` | string | Bettenkonfiguration des Zimmers (z.B. `King`, `Twin`) |
 
@@ -365,7 +365,7 @@ GA4 erlaubt bis zu 50 artikelbezogene benutzerdefinierte Dimensionen pro Propert
 Verwenden Sie die folgende Tabelle als Referenz beim Erstellen benutzerdefinierter Dimensionen. Der Wert für **Ereignisparameter** muss exakt übereinstimmen – GA4 ist case-sensitive.
 
 | Dimensionsname | Ereignisparameter | Typ |
-|----------------|-----------------|------|
+|----------------|-------------------|-----|
 | Unterkunfts-ID | `property_id` | Text |
 | Unterkunftsname | `property_name` | Text |
 | Unterkunftsmarke | `property_brand` | Text |
@@ -389,9 +389,9 @@ Verwenden Sie die folgende Tabelle als Referenz beim Erstellen benutzerdefiniert
 
 ---
 
-### Weitere verfügbare Ereignisse
+### Weitere verfügbare Events
 
-Die folgenden Ereignisse sind im Wink dataLayer verfügbar, gehören aber nicht zum Standard-Buchungstrichter. Sie können durch andere Interaktionen auf der Plattform ausgelöst werden.
+Die folgenden Events sind im Wink dataLayer verfügbar, gehören aber nicht zum Standard-Buchungstrichter. Sie können durch andere Interaktionen auf der Plattform ausgelöst werden.
 
 #### `add_to_wishlist`
 
@@ -440,7 +440,7 @@ Die folgenden Ereignisse sind im Wink dataLayer verfügbar, gehören aber nicht 
 }
 ```
 
-Dieses Ereignis enthält keine `ecommerce`-Daten.
+Dieses Event enthält keine `ecommerce`-Daten.
 
 #### `view_promotion`
 
@@ -648,7 +648,7 @@ Dieses Ereignis enthält keine `ecommerce`-Daten.
 
 ### `virtualPageView`
 
-Dies ist ein benutzerdefiniertes Wink-Ereignis – kein Teil des Standard-GA4-Ereignissets. Es wird bei jeder Seiten-Navigation gepusht und enthält Geräte- und Sitzungs-Kontext. Es enthält kein `ecommerce`-Objekt.
+Dies ist ein benutzerdefiniertes Wink-Event – kein Teil des standardmäßigen GA4-Event-Sets. Es wird bei jeder Seiten-Navigation gepusht und enthält Geräte- und Sitzungs-Kontext. Es enthält kein `ecommerce`-Objekt.
 
 ```json
 {
@@ -673,7 +673,7 @@ Dies ist ein benutzerdefiniertes Wink-Ereignis – kein Teil des Standard-GA4-Er
 | `os` | Erkanntes Betriebssystem – `Windows`, `MacOS`, `Linux`, `UNIX` |
 | `path` | Aktueller Seitenpfad |
 | `title` | Aktueller Seitentitel |
-| `userId` | Authentifizierte Benutzerkennung (wird weggelassen, wenn nicht eingeloggt) |
+| `userId` | Authentifizierte Benutzerkennung (nicht vorhanden, wenn nicht eingeloggt) |
 | `startDate` | Check-in-Datum aus der aktuellen Suchsitzung |
 | `endDate` | Check-out-Datum aus der aktuellen Suchsitzung |
 | `guests` | Anzahl der Gäste aus der aktuellen Suchsitzung |

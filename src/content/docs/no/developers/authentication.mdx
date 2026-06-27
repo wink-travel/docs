@@ -15,11 +15,11 @@ Wink IAM-autentiseringstjeneren støtter de vanlige OAuth2-endepunktene:
 - /oauth2/userinfo
 :::
 
-En applikasjon gir deg en `Client ID` og `Secret Key` som du trenger for å opprette en autentisert OAuth2-økt du kan bruke for å kommunisere med Wink og TripPay API-er.
+En applikasjon gir deg en `Client ID` og `Secret Key` som du trenger for å opprette en autentisert OAuth2-økt som du kan bruke til å kommunisere med Wink og TripPay API-er.
 
 Her er stegene for å opprette en autentisert økt.
 
-**Steg 1**. Hent en tilgangstoken i staging eller i vårt produksjonsmiljø:
+**Steg 1**. Hent en tilgangstoken på staging eller i vårt produksjonsmiljø:
 
 Du vil mest sannsynlig bruke et robust OAuth2-bibliotek for ditt programmeringsspråk, som vil gjøre alt det tunge arbeidet for deg.
 Våre eksempler viser den mest grunnleggende bruken fra kommandolinjen med `curl`.
@@ -61,8 +61,50 @@ Når du gjør et kall til noen av våre endepunkter, inkluder følgende i header
 - `Wink-Version` = `2.0` Nyeste - *Se våre API-dokumenter for andre tilgjengelige versjoner.*
 - `Authorization` = `Bearer ${access_token}` *Sett inn din tilgangstoken.*
 
+## Scopes
+
+En **scope** er en tillatelse som din tilgangstoken bærer. Når du ber om en token, sender du en
+mellomromsseparert liste med scopes i `scope`-parameteren, og tokenen kan kun nå områdene
+disse scopes dekker. Med `client_credentials`-grant setter du scopes på token-forespørselen —
+se [`curl`](#staging) eksemplene over og [Postman-gjennomgangen](/no/developers/setup#postman).
+
+Scopes er navngitt `section.action`, hvor action er en av:
+
+- `read` — se ressurser (sikre `GET`-forespørsler)
+- `write` — opprette og oppdatere ressurser (`POST` / `PUT` / `PATCH`)
+- `remove` — slette ressurser (`DELETE`)
+
+Wink grupperer tillatelser etter funksjonelt område. Be kun om de scopes integrasjonen din trenger:
+
+| Scope-gruppe | Scopes | Hva de åpner for | Risiko |
+|-------------|--------|------------------|------|
+| **Account** | `account.read` `account.write` `account.remove` | Håndtering av enheter, teammedlemmer, innstillinger, applikasjoner | Lav–Middels |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Eiendommer, romtyper, prisplaner, priser, tillegg, tilgjengelighet, aktiviteter, attraksjoner | Lav–Middels |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Søk, visning, opprettelse, avbestilling og refusjon av bestillinger; utsjekk; avbestillingsregler | Lav–Middels |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Kampanjer, fordeler, salgskanaler, WinkLinks, administrert sosiale medier, lojalitet | Lav–Middels |
+| **Content** | `content.read` `content.write` `content.remove` | Eiendomsbeskrivelser, anmeldelser, media, kart, grønn-indeks | Lav–Middels |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Rapportering og analyse — inntekter, topplister | Lav–Middels |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Kanaladministratorer, eksterne bookingsystemer, Google Hotel, varslingsendepunkter, booking-synkronisering | Lav–Middels |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Betalingsbehandling, Stripe, Revolut, utbetalinger, abonnementer | Middels–Høy |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Regnskap, uttaksbokføring, avstemming | Middels–Høy |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Åpner [MCP transport](/no/developers/mcp) (`/mcp`) for AI-agenter | Lav–Middels |
+
+:::note
+**Risiko**-kolonnen reflekterer sensitivitet: `read` er lavere ende og `write`/`remove` høyere
+ende. **Payment** og **Accounting** beskytter pengeflyt, så de har forhøyet risiko.
+:::
+
+Noen ting å huske på:
+
+- **Be om minimum.** Be kun om de scopes integrasjonen din faktisk bruker — en token utstedt
+  med bredere tilgang enn nødvendig har større skadepotensial hvis den lekkes.
+- **Ukjente scopes avvises.** Å be om en scope applikasjonen din ikke er registrert for, eller en
+  som ikke finnes, feiler ved token-utstedelse.
+- **`mcp.*` er kun for AI-agent-klienter.** Du trenger det for å åpne MCP-transporten; det er ikke nødvendig
+  for vanlige REST API-kall. Se [Model Context Protocol](/no/developers/mcp).
+
 :::tip
-Du kan teste alle våre API-er uten å skrive en eneste linje kode før du kommer i gang.
+Du kan teste alle våre API-er uten å skrive en eneste kodelinje før du kommer i gang.
 
 Hent en 'Client ID' og 'Secret Key' fra en av appene dine og naviger til noen av våre [API-er](/no/api).
 :::

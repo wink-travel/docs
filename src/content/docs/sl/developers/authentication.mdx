@@ -19,7 +19,7 @@ Aplikacija vam zagotovi `Client ID` in `Secret Key`, ki ju potrebujete za ustvar
 
 Tukaj so koraki za ustvarjanje avtenticirane seje.
 
-**Korak 1**. Pridobite dostopni žeton v testnem okolju ali v našem produkcijskem okolju:
+**Korak 1**. Pridobite dostopni žeton na testnem okolju ali v našem produkcijskem okolju:
 
 Verjetno boste uporabljali robustno OAuth2 knjižnico za vaš programski jezik, ki bo opravila vse zahtevnejše naloge namesto vas.
 Naši primeri bodo prikazali najosnovnejšo uporabo iz ukazne vrstice z uporabo `curl`.
@@ -56,10 +56,49 @@ To bo vrnilo dostopni žeton skupaj z drugimi podatki OAuth2 odgovora:
 }
 ```
 
-Ko kličete katerokoli od naših končnih točk, vključite naslednje v glavo:
+Ko kličete katero koli od naših končnih točk, vključite naslednje v glavo:
 
 - `Wink-Version` = `2.0` Najnovejša - *Oglejte si našo API dokumentacijo za druge razpoložljive različice.*
 - `Authorization` = `Bearer ${access_token}` *Vstavite svoj dostopni žeton.*
+
+## Obsegi
+
+**Obseg** je dovoljenje, ki ga nosi vaš dostopni žeton. Ko zahtevate žeton, posredujete
+seznam obsegov, ločenih s presledki, v parametru `scope`, in žeton lahko dostopa samo do področij,
+ki jih ti obsegi pokrivajo. Pri `client_credentials` grant tipu nastavite obsege v zahtevi za žeton —
+glejte zgornje [`curl`](#staging) primere in [vodnik za Postman](/sl/developers/setup#postman).
+
+Obsegi so poimenovani `section.action`, kjer je akcija ena od:
+
+- `read` — ogled virov (varni `GET` zahtevki)
+- `write` — ustvarjanje in posodabljanje virov (`POST` / `PUT` / `PATCH`)
+- `remove` — brisanje virov (`DELETE`)
+
+Wink združuje dovoljenja po funkcionalnih področjih. Zahtevajte samo obsege, ki jih vaša integracija potrebuje:
+
+| Skupina obsegov | Obsegi | Kaj odklenejo | Tveganje |
+|-----------------|--------|---------------|----------|
+| **Račun** | `account.read` `account.write` `account.remove` | Upravljanje entitet, članov ekipe, nastavitev, aplikacij | Nizko–Srednje |
+| **Inventar** | `inventory.read` `inventory.write` `inventory.remove` | Nepremičnine, tipi sob, ceniki, cene, dodatki, razpoložljivost, aktivnosti, atrakcije | Nizko–Srednje |
+| **Rezervacije** | `booking.read` `booking.write` `booking.remove` | Iskanje, ogled, ustvarjanje, preklic in vračilo rezervacij; odjava; politike preklica | Nizko–Srednje |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Kampanje, ugodnosti, prodajni kanali, WinkLinks, upravljane družbene mreže, zvestoba | Nizko–Srednje |
+| **Vsebina** | `content.read` `content.write` `content.remove` | Opisi nepremičnin, ocene, mediji, zemljevidi, zeleni indeks | Nizko–Srednje |
+| **Analitika** | `analytics.read` `analytics.write` `analytics.remove` | Poročanje in analitika — prihodki, lestvice | Nizko–Srednje |
+| **Integracije** | `integrations.read` `integrations.write` `integrations.remove` | Upravljalci kanalov, zunanji rezervacijski sistemi, Google Hotel, končne točke za obvestila, sinhronizacija rezervacij | Nizko–Srednje |
+| **Plačila** | `payment.read` `payment.write` `payment.remove` | Obdelava plačil, Stripe, Revolut, izplačila, naročnine | Srednje–Visoko |
+| **Računovodstvo** | `accounting.read` `accounting.write` `accounting.remove` | Računovodstvo, knjiga dvigov, usklajevanje | Srednje–Visoko |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Odpre [MCP transport](/sl/developers/mcp) (`/mcp`) za AI agente | Nizko–Srednje |
+
+:::note
+Stolpec **Tveganje** odraža občutljivost: `read` je na nižjem koncu, `write`/`remove` na višjem.
+**Plačila** in **Računovodstvo** varujeta denarni promet, zato predstavljata večje tveganje.
+:::
+
+Nekaj stvari, ki jih je treba upoštevati:
+
+- **Zahtevajte minimum.** Prosite samo za obsege, ki jih vaša integracija dejansko uporablja — žeton z večjim dostopom kot je potrebno ima večji potencial škode, če pride v napačne roke.
+- **Neznani obsegi so zavrnjeni.** Zahteva za obseg, za katerega vaša aplikacija ni registrirana ali ne obstaja, ne uspe pri izdaji žetona.
+- **`mcp.*` je samo za AI-agentne odjemalce.** Potreben je za odpiranje MCP transporta; ni potreben za običajne REST API klice. Oglejte si [Model Context Protocol](/sl/developers/mcp).
 
 :::tip
 Vse naše API-je lahko preizkusite brez pisanja ene same vrstice kode, preden začnete.

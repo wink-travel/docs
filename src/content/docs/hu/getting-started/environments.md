@@ -1,11 +1,11 @@
 ---
 title: Környezetek
-description: Ez a cikk információkat tartalmaz tesztelők és fejlesztők számára arról, hogyan férhetnek hozzá különböző szerverkörnyezetünkhöz.
+description: Ez a cikk információkat tartalmaz tesztelők és fejlesztők számára arról, hogyan férhetnek hozzá különböző szerverkörnyezetekhez.
 sidebar:
   order: 8
 ---
 
-A Winknél mindig 2 környezetet futtatunk minden tevékenységünkhöz:
+A Winknél mindig két környezetet futtatunk minden tevékenységünkhöz:
 
 - A Production a stabil környezetünk.
 - A Staging a tanúsítási és tesztelési környezetünk.

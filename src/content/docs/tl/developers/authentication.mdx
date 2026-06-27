@@ -1,5 +1,5 @@
 ---
-title: Pagpapatunay
+title: Pagpapatunay ng Pagkakakilanlan
 description: Alamin kung paano magpatunay gamit ang OAuth2 authorization server ng Wink.
 sidebar:
   order: 2
@@ -21,7 +21,7 @@ Narito ang mga hakbang upang makagawa ng isang authenticated session.
 
 **Hakbang 1**. Kunin ang access token sa staging o sa aming production environment:
 
-Malamang, gagamit ka ng isang matibay na OAuth2 library para sa iyong wika, na gagawa ng lahat ng mabibigat na gawain para sa iyo.
+Malamang na gagamit ka ng isang matibay na OAuth2 library para sa iyong wika, na gagawa ng lahat ng mabibigat na gawain para sa iyo.
 Ipakikita ng aming mga halimbawa ang pinaka-basic na paggamit mula sa command line gamit ang `curl`.
 
 ### Staging
@@ -58,11 +58,50 @@ Ibabalik nito ang isang access token, kasama ang iba pang OAuth2 response data:
 
 Kapag tumawag ka sa alinman sa aming mga endpoint, isama ang mga sumusunod sa header:
 
-- `Wink-Version` = `2.0` Pinakabago - *Tingnan ang aming API docs para sa iba pang mga bersyon na available.*
+- `Wink-Version` = `2.0` Pinakabago - *Tingnan ang aming API docs para sa iba pang magagamit na mga bersyon.*
 - `Authorization` = `Bearer ${access_token}` *Ipasok ang iyong access token.*
+
+## Mga Saklaw
+
+Ang **scope** ay isang pahintulot na dala ng iyong access token. Kapag humiling ka ng token, ipapasa mo ang
+isang space-delimited na listahan ng mga scope sa `scope` parameter, at ang token ay maaari lamang ma-access ang mga lugar
+na sakop ng mga scope na iyon. Sa `client_credentials` grant, itinatakda mo ang mga scope sa iyong token request —
+tingnan ang mga halimbawa ng [`curl`](#staging) sa itaas at ang [Postman walkthrough](/tl/developers/setup#postman).
+
+Ang mga scope ay pinangalanang `section.action`, kung saan ang action ay isa sa:
+
+- `read` — tingnan ang mga resources (ligtas na mga `GET` request)
+- `write` — gumawa at mag-update ng mga resources (`POST` / `PUT` / `PATCH`)
+- `remove` — tanggalin ang mga resources (`DELETE`)
+
+Pinagsasama-sama ng Wink ang mga pahintulot ayon sa functional area. Humiling lamang ng mga scope na kailangan ng iyong integration:
+
+| Pangkat ng Scope | Mga Scope | Ano ang binubuksan nila | Panganib |
+|------------------|----------|-------------------------|----------|
+| **Account** | `account.read` `account.write` `account.remove` | Pamamahala ng mga entity, miyembro ng team, mga setting, mga application | Mababang–Katamtaman |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Mga property, uri ng kuwarto, rate-plan, mga rate, add-on, availability, mga aktibidad, atraksyon | Mababang–Katamtaman |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Paghahanap, pagtingin, paggawa, pagkansela, at pag-refund ng mga booking; checkout; mga patakaran sa pagkansela | Mababang–Katamtaman |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Mga kampanya, perks, sales channel, WinkLinks, managed social, loyalty | Mababang–Katamtaman |
+| **Content** | `content.read` `content.write` `content.remove` | Mga paglalarawan ng property, mga review, media, mapa, green-index | Mababang–Katamtaman |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Pag-uulat at analytics — kita, leaderboards | Mababang–Katamtaman |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Channel managers, external booking systems, Google Hotel, notification endpoints, booking sync | Mababang–Katamtaman |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Pagproseso ng bayad, Stripe, Revolut, payouts, subscriptions | Katamtaman–Mataas |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Accounting, withdrawal ledger, reconciliation | Katamtaman–Mataas |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Binubuksan ang [MCP transport](/tl/developers/mcp) (`/mcp`) para sa mga AI agent | Mababang–Katamtaman |
+
+:::note
+Ang kolum na **Panganib** ay nagpapakita ng sensitibidad: ang `read` ay nasa mababang dulo at ang `write`/`remove` ay nasa mataas na dulo.
+Ang **Payment** at **Accounting** ay nagbabantay ng paggalaw ng pera, kaya may mas mataas na panganib.
+:::
+
+Ilang bagay na dapat tandaan:
+
+- **Humiling ng pinakamababa.** Humiling lamang ng mga scope na talagang ginagamit ng iyong integration — ang token na ibinigay na may mas malawak na access kaysa sa kinakailangan ay may mas malaking saklaw ng pinsala kung ito ay malantad.
+- **Tinanggihan ang mga hindi kilalang scope.** Ang paghingi ng scope na hindi nakarehistro para sa iyong application, o isang hindi umiiral, ay mabibigo sa pag-isyu ng token.
+- **Ang `mcp.*` ay para lamang sa mga AI-agent client.** Kailangan mo ito upang buksan ang MCP transport; hindi ito kinakailangan para sa mga regular na REST API call. Tingnan ang [Model Context Protocol](/tl/developers/mcp).
 
 :::tip
 Maaari mong subukan ang lahat ng aming mga API nang hindi sumusulat ng kahit isang linya ng code bago magsimula.
 
-Kunin ang 'Client ID' at 'Secret Key' mula sa isa sa iyong mga app at pumunta sa alinman sa aming mga [APIs](/tl/api).
+Kunin ang 'Client ID' at 'Secret Key' mula sa isa sa iyong mga app at pumunta sa alinman sa aming mga [API](/tl/api).
 :::

@@ -7,7 +7,7 @@ sidebar:
 
 Di Wink, kami menjalankan 2 lingkungan untuk semua yang kami lakukan setiap saat:
 
-- Produksi adalah lingkungan stabil kami.
+- Production adalah lingkungan stabil kami.
 - Staging adalah lingkungan sertifikasi dan pengujian kami.
 
 Jika Anda adalah integrator, hotel, atau agen perjalanan yang ingin mempersiapkan sertifikasi atau menguji platform Wink, buat akun di lingkungan staging kami untuk memulai.
@@ -20,7 +20,7 @@ Lingkungan staging tersedia berdasarkan permintaan. Artinya, lingkungan ini akan
 
 Berikut adalah matriks yang berisi nama server kami dan penggunaannya.
 
-| Fitur | Staging | Produksi
+| Fitur | Staging | Production
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
@@ -31,7 +31,7 @@ Berikut adalah matriks yang berisi nama server kami dan penggunaannya.
 
 Aplikasi kami juga memiliki lingkungan pengujian dan produksi untuk pelanggan kami.
 
-| Aplikasi | Staging | Produksi
+| Aplikasi | Staging | Production
 | ------- | ------- | ---------- |
 | Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
 | Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 

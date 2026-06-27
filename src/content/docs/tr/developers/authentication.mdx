@@ -58,11 +58,50 @@ Bu, diğer OAuth2 yanıt verileriyle birlikte bir erişim belirteci döndürecek
 
 Herhangi bir uç noktamıza çağrı yaptığınızda, başlıkta aşağıdakileri ekleyin:
 
-- `Wink-Version` = `2.0` En Son - *Diğer mevcut sürümler için API dokümanlarımıza bakın.*
+- `Wink-Version` = `2.0` En son - *Diğer mevcut sürümler için API dokümanlarımıza bakın.*
 - `Authorization` = `Bearer ${access_token}` *Erişim belirtecinizi buraya ekleyin.*
+
+## Kapsamlar
+
+Bir **kapsam**, erişim belirtecinizin taşıdığı bir izindir. Bir belirteç talep ettiğinizde,
+`scope` parametresinde boşlukla ayrılmış kapsam listesini iletirsiniz ve belirteç yalnızca
+bu kapsamların kapsadığı alanlara erişebilir. `client_credentials` yetkilendirmesi ile kapsamları belirteç talebinizde ayarlarsınız —
+yukarıdaki [`curl`](#staging) örneklerine ve [Postman adım adım rehberine](/tr/developers/setup#postman) bakın.
+
+Kapsamlar `section.action` biçiminde adlandırılır, burada action şunlardan biridir:
+
+- `read` — kaynakları görüntüleme (güvenli `GET` istekleri)
+- `write` — kaynak oluşturma ve güncelleme (`POST` / `PUT` / `PATCH`)
+- `remove` — kaynak silme (`DELETE`)
+
+Wink izinleri fonksiyonel alanlara göre gruplar. Entegrasyonunuzun ihtiyaç duyduğu kapsamları talep edin:
+
+| Kapsam grubu | Kapsamlar | Açtıkları alanlar | Risk |
+|--------------|-----------|-------------------|------|
+| **Hesap** | `account.read` `account.write` `account.remove` | Varlıklar, ekip üyeleri, ayarlar, uygulamalar yönetimi | Düşük–Orta |
+| **Envanter** | `inventory.read` `inventory.write` `inventory.remove` | Tesisler, oda tipleri, fiyat planları, fiyatlar, ek hizmetler, müsaitlik, aktiviteler, cazibe merkezleri | Düşük–Orta |
+| **Rezervasyon** | `booking.read` `booking.write` `booking.remove` | Arama, görüntüleme, oluşturma, iptal etme ve iade işlemleri; ödeme; iptal politikaları | Düşük–Orta |
+| **Pazarlama** | `marketing.read` `marketing.write` `marketing.remove` | Kampanyalar, avantajlar, satış kanalları, WinkLinks, yönetilen sosyal, sadakat | Düşük–Orta |
+| **İçerik** | `content.read` `content.write` `content.remove` | Tesis açıklamaları, yorumlar, medya, haritalar, yeşil indeks | Düşük–Orta |
+| **Analitik** | `analytics.read` `analytics.write` `analytics.remove` | Raporlama ve analiz — gelir, lider tabloları | Düşük–Orta |
+| **Entegrasyonlar** | `integrations.read` `integrations.write` `integrations.remove` | Kanal yöneticileri, harici rezervasyon sistemleri, Google Hotel, bildirim uç noktaları, rezervasyon senkronizasyonu | Düşük–Orta |
+| **Ödeme** | `payment.read` `payment.write` `payment.remove` | Ödeme işleme, Stripe, Revolut, ödemeler, abonelikler | Orta–Yüksek |
+| **Muhasebe** | `accounting.read` `accounting.write` `accounting.remove` | Muhasebe, çekim defteri, mutabakat | Orta–Yüksek |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | AI ajanları için [MCP taşıma](/tr/developers/mcp) (`/mcp`) açar | Düşük–Orta |
+
+:::note
+**Risk** sütunu hassasiyeti yansıtır: `read` alt uç, `write`/`remove` üst uçtur.
+**Ödeme** ve **Muhasebe** para hareketini koruduğundan daha yüksek risk taşır.
+:::
+
+Dikkat edilmesi gereken birkaç nokta:
+
+- **Minimumu talep edin.** Entegrasyonunuzun gerçekten kullandığı kapsamları isteyin — gereğinden geniş erişimle verilen bir belirteç sızarsa daha büyük zarar verir.
+- **Bilinmeyen kapsamlar reddedilir.** Uygulamanızın kayıtlı olmadığı veya var olmayan bir kapsam talep etmek, belirteç verilmesini başarısız kılar.
+- **`mcp.*` yalnızca AI ajan istemcileri içindir.** MCP taşımasını açmak için gereklidir; normal REST API çağrıları için gerekli değildir. [Model Context Protocol](/tr/developers/mcp) sayfasına bakın.
 
 :::tip
 Başlamadan önce tek bir satır kod yazmadan tüm API'lerimizi test edebilirsiniz.
 
-Uygulamalarınızdan birinden 'Client ID' ve 'Secret Key' alın ve herhangi bir [API'mize](/tr/api) gidin.
+Bir uygulamanızdan 'Client ID' ve 'Secret Key' alın ve herhangi bir [API](/tr/api) sayfasına gidin.
 :::

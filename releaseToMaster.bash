@@ -23,13 +23,16 @@ fi
 
 echo "==> Pulling latest from origin..."
 export GIT_MERGE_AUTOEDIT=no
-git pull
+# --- release hardening: never let an ambient pull.rebase=true / pull.ff turn a
+# sync-pull into a history-rewriting rebase or surprise merge. Pin every pull to
+# fast-forward-only so a diverged shared branch FAILS LOUDLY instead of silently
+# rebasing a just-finished release onto origin. Overrides personal git config. ---
+git config --local pull.ff only
+git config --local pull.rebase false
+git pull --ff-only
 unset GIT_MERGE_AUTOEDIT
 
 # --- Content generation (before version tag so the tag reflects final state) ---
-
-echo "==> Refreshing OpenAPI schema snapshots..."
-npm run schemas:sync
 
 echo "==> Translating content..."
 npm run i18n:all
@@ -39,7 +42,7 @@ npx git-changelog-command-line -of CHANGELOG.md
 
 if [[ -n "$(git status --porcelain)" ]]; then
   git add -A
-  git commit -m "chore: update schemas, translations, and changelog"
+  git commit -m "chore: update schemas, translations, and changelog [no ci]"
 fi
 
 # --- Validation ---
@@ -65,7 +68,8 @@ if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
 fi
 
 echo "==> Bumping version to ${NEXT_VERSION}..."
-npm version "$NEXT_VERSION"
+# -m tags the version-bump commit (and its tag) so CI skips it
+npm version "$NEXT_VERSION" -m "chore: release v%s [no ci]"
 
 # --- Push & release ---
 

@@ -13,7 +13,7 @@ Hos Wink kører vi 2 miljøer for alt, hvad vi laver, til enhver tid:
 Hvis du er en integrator, et hotel eller en rejseagent, der ønsker at forberede dig til certificering eller teste Wink-platformen, skal du oprette en konto i vores staging-miljø for at komme i gang.
 
 :::note
-Staging-miljøet er tilgængeligt efter anmodning. Det betyder, at det går i dvale, hvis der ikke er brug, og tænder sig selv igen, når der er. Vær venlig at have tålmodighed, hvis du vækker det. Det tager cirka et minut at starte alle servere, efter du først har oprettet forbindelse til en af vores servere eller apps.
+Staging-miljøet er tilgængeligt efter anmodning. Det betyder, at det går i dvale, hvis der ikke er nogen brug, og tænder sig selv igen, når der er. Vær venlig at have tålmodighed, hvis du vækker det. Det tager cirka et minut at starte alle serverne, efter du først har oprettet forbindelse til en af vores servere eller apps.
 :::
 
 ## Servere

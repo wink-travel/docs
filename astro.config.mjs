@@ -7,10 +7,52 @@ import starlightChangelogs, { makeChangelogsSidebarLinks } from 'starlight-chang
 import starlightOpenAPI, { createOpenAPISidebarGroup } from 'starlight-openapi'
 import { buildRedirects } from './scripts/build-redirects.mjs';
 
-// Single parent slot for both OpenAPI reference docs. Each schema below sets
-// `sidebar.group` to this placeholder, and the sidebar entry near the bottom
-// wraps it under one "API" group.
+// Single "API" sidebar parent. Each audience below is one OpenAPI schema, so the
+// rendered tree is Audience › Resource(tag) › Operation — three levels, no per-group
+// or audience-wrapper nesting. Snapshots live in ./schemas/<audience>.json and are
+// refreshed by `npm run schemas:sync` from the per-audience /v3/api-docs/<audience>
+// endpoints (platform/supplier/consumer/affiliate/account on the Inventory app,
+// partner on the Integrations app).
 const apiSidebarGroup = createOpenAPISidebarGroup()
+
+// audience id -> [sidebar label, base path prefix]. 'partner' is served by the
+// Integrations app; the rest by the Inventory app.
+const AUDIENCES = [
+  ['reference', 'Reference', 'api'],
+  ['extranet', 'Extranet', 'api'],
+  ['booking-engine', 'Booking Engine', 'api'],
+  ['studio', 'Studio', 'api'],
+  ['social', 'Social', 'api'],
+  ['link-manager', 'Link Manager', 'api'],
+  ['settings', 'Settings', 'api'],
+  ['payment', 'Payment', 'api'],
+  ['user', 'User', 'api'],
+  ['travel-agent', 'Travel Agent', 'api'],
+  ['partner', 'Partner', 'integrations-api'],
+]
+
+const openApiSnippets = {
+  operation: {
+    clients: { javascript: ['fetch'], shell: ['curl'] },
+    default: { target: 'shell', client: 'curl' },
+  },
+}
+
+// Build a starlight-openapi schema entry for one audience.
+const toApiSchema = ([audience, label, apiBase]) => ({
+  base: `${apiBase}/${audience}`,
+  schema: `./schemas/${audience}.json`,
+  sidebar: {
+    label,
+    collapsed: true,
+    group: apiSidebarGroup,
+    // Sort the resource sections within each audience alphabetically (the schema
+    // "Overview" link is rendered before the tags, so it stays first).
+    tags: { sort: 'alphabetical' },
+    operations: { badges: true, labels: 'summary', sort: 'alphabetical' },
+  },
+  snippets: openApiSnippets,
+})
 
 import icon from 'astro-icon';
 
@@ -65,40 +107,10 @@ export default defineConfig({
     plugins: [
       // Generate the OpenAPI reference pages from local snapshots in ./schemas/.
       // Refresh snapshots with `npm run schemas:sync`.
-      starlightOpenAPI([
-        {
-          base: 'api',
-          schema: './schemas/api.json',
-          sidebar: {
-            label: 'Platform',
-            collapsed: true,
-            group: apiSidebarGroup,
-            operations: { badges: true, labels: 'summary', sort: 'document' },
-          },
-          snippets: {
-            operation: {
-              clients: { javascript: ['fetch'], shell: ['curl'] },
-              default: { target: 'shell', client: 'curl' },
-            },
-          },
-        },
-        {
-          base: 'integrations-api',
-          schema: './schemas/integrations.json',
-          sidebar: {
-            label: 'Channel Manager',
-            collapsed: true,
-            group: apiSidebarGroup,
-            operations: { badges: true, labels: 'summary', sort: 'document' },
-          },
-          snippets: {
-            operation: {
-              clients: { javascript: ['fetch'], shell: ['curl'] },
-              default: { target: 'shell', client: 'curl' },
-            },
-          },
-        },
-      ]),
+      // Sort audience sections alphabetically by label (Account, Affiliate, Consumer,
+      // Partner, Platform, Supplier). The "Overview" link is a separate sidebar item, so
+      // it stays first.
+      starlightOpenAPI([...AUDIENCES].sort((a, b) => a[1].localeCompare(b[1])).map(toApiSchema)),
       starlightBlog({
         title: "Wink updates",
         navigation: 'none',
@@ -157,17 +169,23 @@ export default defineConfig({
           { label: 'For Affiliates', collapsed: true, items: [{ autogenerate: { directory: 'guides/affiliates' } }] },
           { label: 'For Developers', collapsed: true, items: [{ autogenerate: { directory: 'guides/developers' } }] },
           { label: 'For Hoteliers', collapsed: true, items: [{ autogenerate: { directory: 'guides/hoteliers' } }] },
+          { label: 'For Integrators', collapsed: true, items: [{ autogenerate: { directory: 'guides/integrators' } }] },
           { label: 'General', collapsed: true, items: [{ autogenerate: { directory: 'guides/general' } }] },
         ],
       },
       { label: 'Webinars', items: [{ autogenerate: { directory: 'webinars' } }] },
-      { label: 'Integrations', items: [{ autogenerate: { directory: 'integrations' } }] },
+      { label: 'Integrations', collapsed: true, items: [{ autogenerate: { directory: 'integrations' } }] },
       { label: 'Developers', items: [{ autogenerate: { directory: 'developers' } }] },
-      { label: 'API', collapsed: true, items: [apiSidebarGroup] },
+      {
+        label: 'API', collapsed: true, items: [
+          { label: 'Overview', link: '/api/overview' },
+          apiSidebarGroup,
+        ],
+      },
     {
-      label: 'Overview',
+      label: 'Releases',
       items: [
-        'changelog/overview',
+        { label: 'Overview', link: '/changelog/overview/' },
         {
           label: 'Application',
           collapsed: true,

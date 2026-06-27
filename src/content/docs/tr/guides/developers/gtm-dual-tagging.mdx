@@ -29,25 +29,25 @@ Bu, zaten aktif bir Sojern hesabınızın olduğu ve Sojern hesap yöneticinizde
 
 3. **Sojern Hesap Yöneticinizle Onaylayın**
 
-   Entegrasyonun aktif olduğunu Sojern hesap yöneticinize bildirin. Onlar, mülkünüz için `wink.travel` üzerinde pikselin doğru şekilde tetiklendiğini ve verilerin Sojern hesabınıza aktığını kendi taraflarından doğrulayabilirler.
+   Entegrasyonun aktif olduğunu Sojern hesap yöneticinize bildirin. Onlar, mülkünüz için `wink.travel` üzerinde pikselin doğru şekilde tetiklendiğini ve verilerin Sojern hesabınıza aktığını doğrulayabilirler.
 
 </Steps>
 
 <Aside type="note">
-Bu entegrasyon için kendi web sitenize herhangi bir piksel kodu yerleştirmenize gerek yoktur. Wink, mülkünüzün aktif olduğu tüm sayfalarda Sojern konteynerinizi otomatik olarak yükler.
+Bu entegrasyon için kendi web sitenize herhangi bir piksel kodu yerleştirmeniz gerekmez. Wink, mülkünüzün aktif olduğu tüm sayfalarda Sojern konteynerinizi otomatik olarak yükler.
 
-Bu yapılandırma herhangi bir özel GTM Container ID için çalışır. Örnek olarak Sojern kullanılmıştır çünkü çok yaygın bir entegrasyondur.
+Bu yapılandırma herhangi bir özel GTM Container ID için çalışır. Örnek olarak Sojern kullanıldı çünkü çok yaygın bir entegrasyondur.
 </Aside>
 
 ---
 
 ## Wink Tarafında Neler Yapılır
 
-Şeffaflık için, bu entegrasyonun çalışması için Wink'in yapılandırdığı şeyler şunlardır:
+Şeffaflık için, bu entegrasyonun çalışması için Wink'in yapılandırdıkları:
 
 - **Sojern GTM Container ID alanı** Wink portalınızın Özelleştirmeler sekmesinde mevcuttur. Container ID'nizi girdiğinizde, Wink formatı doğrular ve mülkünüze güvenli şekilde kaydeder.
 - **Mülkünüzün aktif olduğu her Wink sayfasında**, Sojern GTM Container ID sayfaya yerleştirilir ve Wink'in etiket yönetim sistemi kendi konteyneriyle birlikte Sojern konteynerinizi dinamik olarak yükler. Bu otomatik gerçekleşir — Wink ekibinden mülk başına manuel bir işlem gerekmez.
-- **Sojern konteyneriniz asenkron olarak yüklenir**, yani misafirleriniz için sayfa yükleme performansını etkilemez.
+- **Sojern konteyneriniz asenkron olarak yüklenir**, yani misafirlerinizin sayfa yükleme performansını etkilemez.
 - **Wink'in kendi takibi ile Sojern pikseli paralel çalışır**, aynı paylaşılan etkinlik verisini okur. Wink'in takip ettiği her rezervasyon etkinliği aynı anda Sojern konteynerinizde de kullanılabilir.
 - **Mülkünüz görüntülenmediğinde** — örneğin, misafir Wink'te başka bir oteli incelerken — Sojern konteyneri yüklenmez. Bu, Sojern'in sadece mülkünüze ait ilgili verileri almasını sağlar.
 
@@ -57,26 +57,26 @@ Bu yapılandırma herhangi bir özel GTM Container ID için çalışır. Örnek 
 
 Wink, misafir yolculuğu boyunca GA4 uyumlu etkinlikleri `dataLayer`'a iter. GTM konteyneriniz bu aynı paylaşılan `dataLayer`'ı okur, böylece yapılandırdığınız herhangi bir tetikleyici veya değişken aşağıda açıklanan tüm özelliklere erişebilir.
 
-Her etkinlik standart GA4 Gelişmiş E-Ticaret yapısını takip eder: üst düzey bir `event` stringi ve bir `ecommerce` nesnesi. Her push öncesinde, Wink eski ecommerce yükünü temizler, böylece eski veriler yeni tetikleyicilere sızmaz.
+Her etkinlik standart GA4 Gelişmiş E-Ticaret yapısını takip eder: üst düzey bir `event` stringi ve bir `ecommerce` nesnesi. Her push öncesinde, Wink eski e-ticaret yükünü temizler, böylece eski veriler yeni tetikleyicilere sızmaz.
 
 <Aside type="note">
 **dataLayer sıfırlama deseni**
 
-Wink her etkinlik push'undan önce ecommerce nesnesini sıfırlar:
+Wink her etkinlik push'undan önce e-ticaret nesnesini sıfırlar:
 
 ```js
 dataLayer.push({ ecommerce: null });   // önceki etkinliği temizle
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
-Ecommerce özelliklerinin etkinlikler arasında kalıcı olduğunu varsaymayın. Her zaman tetikleme anında aynı etkinlik içinde okuyun.
+E-ticaret özelliklerinin etkinlikler arasında kalıcı olduğunu varsaymayın. Her zaman tetikleme anında aynı etkinlik içinde okuyun.
 </Aside>
 
 ---
 
 ### Rezervasyon Yolculuğu Etkinlikleri
 
-Bu etkinlikler, misafir rezervasyon hunisinde ilerledikçe otomatik tetiklenir. GTM tetikleyicilerinizi aşağıdaki etkinlik isimleriyle eşleşen **Özel Etkinlik** tetikleyicileri olarak yapılandırın.
+Misafir rezervasyon hunisinde ilerledikçe bu etkinlikler otomatik tetiklenir. GTM tetikleyicilerinizi aşağıdaki etkinlik isimleriyle eşleşen **Özel Etkinlik** tetikleyicileri olarak yapılandırın.
 
 | Adım | Etkinlik | Ne Zaman Tetiklenir |
 |------|----------|---------------------|
@@ -85,7 +85,7 @@ Bu etkinlikler, misafir rezervasyon hunisinde ilerledikçe otomatik tetiklenir. 
 | 3 | `add_to_cart` | Misafir sepete bir oda eklediğinde |
 | 4 | `begin_checkout` | Ödeme / kasa sayfası yüklendiğinde |
 | 5 | `add_payment_info` | Misafir bir ödeme yöntemi seçtiğinde |
-| 6 | `login` | Misafir SSO ile kimlik doğruladığında |
+| 6 | `login` | Misafir SSO ile kimlik doğrulaması yaptığında |
 | 7 | `purchase` | Rezervasyon onaylandığında |
 | 8 | `refund` | Rezervasyon iptal edildiğinde |
 
@@ -100,7 +100,7 @@ Bir otel envanter ızgarası veya listesi görüntülendiğinde tetiklenir.
   "event": "view_item_list",
   "ecommerce": {
     "item_list_id": "featured_hotels",
-    "item_list_name": "Öne Çıkan Oteller",
+    "item_list_name": "Featured Hotels",
     "items": [ ]
   }
 }
@@ -185,7 +185,7 @@ Misafir bir ödeme yöntemi seçtiğinde veya onayladığında tetiklenir.
 
 #### `login`
 
-Misafir tek oturum açma (SSO) ile kimlik doğruladığında tetiklenir.
+Misafir tek oturum açma (SSO) ile kimlik doğrulaması yaptığında tetiklenir.
 
 ```json
 {
@@ -267,13 +267,13 @@ Rezervasyon iptal edildiğinde tetiklenir.
 }
 ```
 
-`transaction_id`, aynı rezervasyon için `purchase` etkinliğiyle eşleşir. `coupon`, `shipping` ve `tax` sadece geçerli olduğunda bulunur.
+`transaction_id` aynı rezervasyon için `purchase` etkinliğiyle eşleşir. `coupon`, `shipping` ve `tax` sadece geçerli olduğunda bulunur.
 
 ---
 
 ### Ürün Özellikleri
 
-`items` dizisi içeren tüm etkinlikler aynı ürün şemasını paylaşır. Her özellik isteğe bağlıdır, zorunlu olarak işaretlenmedikçe.
+`items` dizisi içeren tüm etkinlikler aynı ürün şemasını paylaşır. Her özellik isteğe bağlıdır, zorunlu olanlar belirtilmiştir.
 
 #### Standart GA4 alanları
 
@@ -281,33 +281,33 @@ Bu alanlar GA4 tarafından doğal olarak anlaşılır ve ek yapılandırma olmad
 
 | Özellik | Tür | Zorunlu | Açıklama |
 |----------|------|----------|-------------|
-| `item_id` | string | Evet | Oda veya ürün için benzersiz tanımlayıcı |
-| `item_name` | string | — | Oda veya ürünün adı |
+| `item_id` | string | Evet | Oda veya ürün için benzersiz kimlik |
+| `item_name` | string | — | Oda veya ürün adı |
 | `affiliation` | string | — | Satıcı veya bağlı kuruluş adı |
 | `coupon` | string | — | Ürüne uygulanan kupon kodu |
 | `currency` | string | — | ISO 4217 para birimi kodu (ör. `USD`) |
 | `creative_name` | string | — | Promosyonda kullanılan yaratıcı adı |
 | `creative_slot` | string | — | Promosyon yaratıcı slot pozisyonu |
-| `discount` | number | — | Uygulanan indirim miktarı |
-| `index` | number | — | Listede pozisyon (1 tabanlı) |
+| `discount` | number | — | Uygulanan indirim tutarı |
+| `index` | number | — | Listede pozisyonu (1 tabanlı) |
 | `item_brand` | string | — | Otel veya marka adı |
 | `item_category` | string | — | Ürün türü — örn. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
 | `item_list_id` | string | — | Ürünün ait olduğu liste kimliği |
-| `item_list_name` | string | — | Listenin görüntülenen adı |
+| `item_list_name` | string | — | Listenin görüntü adı |
 | `location_id` | string | — | Mülkün coğrafi koordinatları |
 | `price` | number | — | Birim fiyat |
 | `promotion_id` | string | — | Promosyon kimliği |
-| `promotion_name` | string | — | Promosyonun görüntülenen adı |
+| `promotion_name` | string | — | Promosyonun görüntü adı |
 | `quantity` | number | — | Miktar (varsayılan `1`) |
 
 #### Özel ürün kapsamlı parametreler
 
-Bu parametreler Wink'e özgü rezervasyon bağlamını taşır. GA4 bunları raporlarda otomatik göstermez — görünmeleri için her birini GA4 mülkünüzde **ürün kapsamlı özel boyut** olarak kaydetmeniz gerekir. Kurulum için aşağıdaki [GA4'te Özel Boyutlar](#custom-dimensions-in-ga4) bölümüne bakın.
+Bu parametreler Wink'e özgü rezervasyon bağlamını taşır. GA4 bunları otomatik olarak raporlarda göstermez — görünmeleri için her birini GA4 mülkünüzde **ürün kapsamlı özel boyut** olarak kaydetmeniz gerekir. Kurulum için aşağıdaki [GA4'te Özel Boyutlar](#custom-dimensions-in-ga4) bölümüne bakın.
 
 | Özellik | Tür | Açıklama |
 |----------|------|-------------|
-| `property_id` | string | Wink mülk tanımlayıcısı |
-| `property_name` | string | Mülkün görüntülenen adı |
+| `property_id` | string | Wink mülk kimliği |
+| `property_name` | string | Mülk görüntü adı |
 | `property_brand` | string | Mülkün ait olduğu marka |
 | `property_chain` | string | Mülkün ait olduğu zincir |
 | `property_url_name` | string | Mülkün URL dostu slug'ı |
@@ -320,7 +320,7 @@ Bu parametreler Wink'e özgü rezervasyon bağlamını taşır. GA4 bunları rap
 | `cancellation_policy` | string | Şunlardan biri: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
 | `rate_plan_id` | string | Fiyat planı kimliği |
 | `room_rate_id` | string | Belirli oda fiyatı kimliği |
-| `room_rate_name` | string | Oda fiyatının görüntülenen adı |
+| `room_rate_name` | string | Oda fiyatının görüntü adı |
 | `num_perks` | number | Fiyata dahil avantaj sayısı |
 | `room_location` | string | Oda konumu açıklaması (ör. `Overwater`, `Garden`) |
 | `room_view` | string | Oda manzarası açıklaması (ör. `Ocean`, `City`) |
@@ -337,7 +337,7 @@ GA4, özel ürün parametrelerini raporlarda göstermez; bunları açıkça ür�
 
 1. **Özel Tanımları Açın**
 
-   GA4'te, **Yönetici** (sol alt dişli simgesi) → mülkünüzü seçin → **Veri Görüntüleme** → **Özel tanımlar**.
+   GA4'te, **Yönetici** (sol alt dişli simgesi) → mülkünüzü seçin → **Veri görüntüleme** → **Özel tanımlar**.
 
 2. **Yeni özel boyut oluşturun**
 
@@ -359,7 +359,7 @@ GA4, özel ürün parametrelerini raporlarda göstermez; bunları açıkça ür�
 <Aside type="note">
 Özel boyutların GA4 raporlarında görünmeye başlaması kayıt işleminden sonra 24 saate kadar sürebilir. Kayıttan önce toplanan geçmiş veriler geriye dönük doldurulmaz.
 
-GA4, standart mülklerde mülk başına 50 ürün kapsamlı özel boyuta izin verir (360 mülklerde daha fazlası mümkündür).
+GA4 standart mülklerde mülk başına 50 ürün kapsamlı özel boyuta izin verir (360 mülklerde daha fazlası mümkündür).
 </Aside>
 
 Aşağıdaki tablo, özel boyut oluştururken referansınız olsun. **Etkinlik parametresi** tam olarak eşleşmelidir — GA4 büyük/küçük harfe duyarlıdır.
@@ -426,7 +426,7 @@ Aşağıdaki etkinlikler Wink dataLayer'ında mevcuttur ancak standart rezervasy
   "event": "select_item",
   "ecommerce": {
     "item_list_id": "featured_hotels",
-    "item_list_name": "Öne Çıkan Oteller",
+    "item_list_name": "Featured Hotels",
     "items": [ ]
   }
 }
@@ -448,10 +448,10 @@ Bu etkinlikle birlikte `ecommerce` yükü yoktur.
 {
   "event": "view_promotion",
   "ecommerce": {
-    "creative_name": "Yaz Bannerı",
+    "creative_name": "Summer Banner",
     "creative_slot": "hero",
     "promotion_id": "promo_001",
-    "promotion_name": "Yaz İndirimi",
+    "promotion_name": "Summer Sale",
     "items": [ ]
   }
 }
@@ -463,10 +463,10 @@ Bu etkinlikle birlikte `ecommerce` yükü yoktur.
 {
   "event": "select_promotion",
   "ecommerce": {
-    "creative_name": "Yaz Bannerı",
+    "creative_name": "Summer Banner",
     "creative_slot": "hero",
     "promotion_id": "promo_001",
-    "promotion_name": "Yaz İndirimi",
+    "promotion_name": "Summer Sale",
     "items": [ ]
   }
 }
@@ -478,7 +478,7 @@ Bu etkinlikle birlikte `ecommerce` yükü yoktur.
 {
   "event": "search",
   "ecommerce": {
-    "search_term": "denize sıfır tatil köyü"
+    "search_term": "beachfront resort"
   }
 }
 ```
@@ -562,7 +562,7 @@ Bu etkinlikle birlikte `ecommerce` yükü yoktur.
   "ecommerce": {
     "virtual_currency_name": "WinkPoints",
     "value": 50,
-    "item_name": "Oda Yükseltme"
+    "item_name": "Room Upgrade"
   }
 }
 ```
@@ -573,7 +573,7 @@ Bu etkinlikle birlikte `ecommerce` yükü yoktur.
 {
   "event": "level_start",
   "ecommerce": {
-    "level_name": "Altın"
+    "level_name": "Gold"
   }
 }
 ```
@@ -584,7 +584,7 @@ Bu etkinlikle birlikte `ecommerce` yükü yoktur.
 {
   "event": "level_end",
   "ecommerce": {
-    "level_name": "Altın",
+    "level_name": "Gold",
     "success": true
   }
 }
@@ -648,7 +648,7 @@ Bu etkinlikle birlikte `ecommerce` yükü yoktur.
 
 ### `virtualPageView`
 
-Bu, standart GA4 etkinlik setinin parçası olmayan özel bir Wink etkinliğidir. Her sayfa gezinmesinde itilir ve cihaz ile oturum bağlamını taşır. `ecommerce` nesnesi içermez.
+Bu özel bir Wink etkinliğidir — standart GA4 etkinlik setinin parçası değildir. Her sayfa gezinmesinde itilir ve cihaz ile oturum bağlamını taşır. `ecommerce` nesnesi içermez.
 
 ```json
 {
@@ -673,7 +673,7 @@ Bu, standart GA4 etkinlik setinin parçası olmayan özel bir Wink etkinliğidir
 | `os` | Algılanan işletim sistemi — `Windows`, `MacOS`, `Linux`, `UNIX` |
 | `path` | Geçerli sayfa yolu |
 | `title` | Geçerli sayfa başlığı |
-| `userId` | Kimlik doğrulanmış kullanıcı tanımlayıcısı (giriş yapılmadıysa yok) |
+| `userId` | Kimlik doğrulanmış kullanıcı kimliği (giriş yapılmadıysa yok) |
 | `startDate` | Geçerli arama oturumundan giriş tarihi |
 | `endDate` | Geçerli arama oturumundan çıkış tarihi |
 | `guests` | Geçerli arama oturumundan misafir sayısı |

@@ -61,6 +61,45 @@ Wanneer je een oproep doet naar een van onze eindpunten, voeg dan het volgende t
 - `Wink-Version` = `2.0` Laatste - *Zie onze API-documentatie voor andere beschikbare versies.*
 - `Authorization` = `Bearer ${access_token}` *Voeg je access token in.*
 
+## Scopes
+
+Een **scope** is een toestemming die je access token draagt. Wanneer je een token aanvraagt, geef je een
+door spaties gescheiden lijst van scopes mee in de `scope` parameter, en het token kan alleen de gebieden bereiken
+die door die scopes worden gedekt. Bij de `client_credentials` grant stel je de scopes in op je tokenaanvraag —
+zie de [`curl`](#staging) voorbeelden hierboven en de [Postman walkthrough](/nl/developers/setup#postman).
+
+Scopes zijn benoemd als `section.action`, waarbij de actie een van de volgende is:
+
+- `read` — resources bekijken (veilige `GET`-verzoeken)
+- `write` — resources aanmaken en bijwerken (`POST` / `PUT` / `PATCH`)
+- `remove` — resources verwijderen (`DELETE`)
+
+Wink groepeert permissies per functioneel gebied. Vraag alleen de scopes aan die jouw integratie nodig heeft:
+
+| Scopegroep | Scopes | Wat ze ontgrendelen | Risico |
+|------------|--------|---------------------|--------|
+| **Account** | `account.read` `account.write` `account.remove` | Beheren van entiteiten, teamleden, instellingen, applicaties | Laag–Middel |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Eigendommen, kamertypes, tariefplannen, tarieven, extra's, beschikbaarheid, activiteiten, attracties | Laag–Middel |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Zoeken, bekijken, aanmaken, annuleren en terugbetalen van boekingen; afrekenen; annuleringsvoorwaarden | Laag–Middel |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Campagnes, voordelen, verkoopkanalen, WinkLinks, beheerde social media, loyaliteit | Laag–Middel |
+| **Content** | `content.read` `content.write` `content.remove` | Eigenschapsbeschrijvingen, beoordelingen, media, kaarten, groene index | Laag–Middel |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Rapportage en analyse — omzet, ranglijsten | Laag–Middel |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Channel managers, externe boekingssystemen, Google Hotel, notificatie-eindpunten, boekingssync | Laag–Middel |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Betalingsverwerking, Stripe, Revolut, uitbetalingen, abonnementen | Middel–Hoog |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Boekhouding, uitbetalingsboek, reconciliatie | Middel–Hoog |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Opent de [MCP transport](/nl/developers/mcp) (`/mcp`) voor AI-agents | Laag–Middel |
+
+:::note
+De kolom **Risico** geeft de gevoeligheid weer: `read` is het laagste niveau en `write`/`remove` het hoogste.
+**Payment** en **Accounting** bewaken geldstromen, dus die hebben een verhoogd risico.
+:::
+
+Een paar dingen om in gedachten te houden:
+
+- **Vraag het minimum aan.** Vraag alleen de scopes aan die jouw integratie daadwerkelijk gebruikt — een token met bredere toegang dan nodig is, vergroot de impact bij een lek.
+- **Onbekende scopes worden geweigerd.** Het aanvragen van een scope waarvoor je applicatie niet geregistreerd is, of die niet bestaat, mislukt bij het uitgeven van het token.
+- **`mcp.*` is alleen voor AI-agent clients.** Je hebt het nodig om de MCP transport te openen; het is niet vereist voor reguliere REST API-aanroepen. Zie [Model Context Protocol](/nl/developers/mcp).
+
 :::tip
 Je kunt al onze API's testen zonder ook maar één regel code te schrijven voordat je begint.
 

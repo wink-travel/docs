@@ -56,13 +56,52 @@ Toto vrátí přístupový token spolu s dalšími daty odpovědi OAuth2:
 }
 ```
 
-Když provedete volání na jakýkoli z našich koncových bodů, zahrňte do hlavičky následující:
+Když voláte některý z našich koncových bodů, zahrňte do hlavičky následující:
 
-- `Wink-Version` = `2.0` Nejnovější - *Podívejte se do naší dokumentace API pro další dostupné verze.*
+- `Wink-Version` = `2.0` Nejnovější - *Podívejte se do naší API dokumentace pro další dostupné verze.*
 - `Authorization` = `Bearer ${access_token}` *Vložte svůj přístupový token.*
 
+## Scopes
+
+**Scope** je oprávnění, které váš přístupový token nese. Když žádáte o token, předáte
+seznam scope oddělený mezerami v parametru `scope` a token může přistupovat pouze k oblastem,
+které tyto scope pokrývají. U grant typu `client_credentials` nastavujete scope při žádosti o token —
+viz příklady [`curl`](#staging) výše a [Postman průvodce](/cs/developers/setup#postman).
+
+Scope jsou pojmenovány jako `section.action`, kde akce je jedna z:
+
+- `read` — prohlížení zdrojů (bezpečné `GET` požadavky)
+- `write` — vytváření a aktualizace zdrojů (`POST` / `PUT` / `PATCH`)
+- `remove` — mazání zdrojů (`DELETE`)
+
+Wink seskupuje oprávnění podle funkčních oblastí. Žádejte pouze o scope, které vaše integrace potřebuje:
+
+| Skupina scope | Scope | Co odemykají | Riziko |
+|---------------|-------|--------------|--------|
+| **Account** | `account.read` `account.write` `account.remove` | Správa entit, členů týmu, nastavení, aplikací | Nízké–Střední |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Nemovitosti, typy pokojů, cenové plány, ceny, doplňky, dostupnost, aktivity, atrakce | Nízké–Střední |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Vyhledávání, prohlížení, vytváření, rušení a refundace rezervací; checkout; storno podmínky | Nízké–Střední |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Kampaně, výhody, prodejní kanály, WinkLinks, spravované sociální sítě, věrnostní program | Nízké–Střední |
+| **Content** | `content.read` `content.write` `content.remove` | Popisy nemovitostí, recenze, média, mapy, zelený index | Nízké–Střední |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Reporty a analytika — příjmy, žebříčky | Nízké–Střední |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Channel manažeři, externí rezervační systémy, Google Hotel, notifikační koncové body, synchronizace rezervací | Nízké–Střední |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Zpracování plateb, Stripe, Revolut, výplaty, předplatné | Střední–Vysoké |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Účetnictví, kniha výběrů, smíření | Střední–Vysoké |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Otevírá [MCP transport](/cs/developers/mcp) (`/mcp`) pro AI agenty | Nízké–Střední |
+
+:::note
+Sloupec **Riziko** odráží citlivost: `read` je na nižším konci a `write`/`remove` na vyšším.
+**Payment** a **Accounting** chrání pohyb peněz, proto nesou zvýšené riziko.
+:::
+
+Několik věcí, na které je třeba pamatovat:
+
+- **Žádejte minimum.** Požadujte pouze scope, které vaše integrace skutečně používá — token vydaný s širším přístupem než je potřeba má větší potenciální škody při úniku.
+- **Neznámé scope jsou zamítnuty.** Žádost o scope, pro které vaše aplikace není registrována, nebo které neexistuje, selže při vydání tokenu.
+- **`mcp.*` je pouze pro AI-agent klienty.** Potřebujete ho k otevření MCP transportu; není vyžadován pro běžné REST API volání. Viz [Model Context Protocol](/cs/developers/mcp).
+
 :::tip
-Můžete otestovat všechna naše API, aniž byste předem napsali jediný řádek kódu.
+Můžete otestovat všechna naše API, aniž byste napsali jediný řádek kódu před začátkem.
 
 Získejte 'Client ID' a 'Secret Key' z jedné ze svých aplikací a přejděte na jakékoli z našich [API](/cs/api).
 :::

@@ -5,7 +5,7 @@ sidebar:
   order: 8
 ---
 
-U Wink-u uvijek imamo 2 okruženja za sve što radimo:
+U Wink-u, uvijek imamo 2 okruženja za sve što radimo:
 
 - Production je naše stabilno okruženje.
 - Staging je naše okruženje za certifikaciju i testiranje.
@@ -13,7 +13,7 @@ U Wink-u uvijek imamo 2 okruženja za sve što radimo:
 Ako ste integrator, hotel ili turistička agencija koja želi pripremiti certifikaciju ili testirati Wink platformu, kreirajte račun u našem staging okruženju da biste započeli.
 
 :::note
-Staging okruženje je dostupno na zahtjev. To znači da će ući u stanje mirovanja ako nema korištenja i ponovno se uključiti kada ga netko koristi. Molimo budite strpljivi dok ga budite. Pokretanje svih servera traje oko minute nakon što se prvi put povežete s jednim od naših servera ili aplikacija.
+Staging okruženje je dostupno na zahtjev. To znači da će ući u stanje mirovanja ako nema korištenja i ponovno se uključiti kada ga netko koristi. Molimo vas za strpljenje dok ga budite. Potrebno je oko minute da se svi serveri pokrenu nakon što se prvi put povežete s jednim od naših servera ili aplikacija.
 :::
 
 ## Serveri

@@ -13,7 +13,7 @@ Sa Wink, nagpapatakbo kami ng 2 kapaligiran para sa lahat ng aming ginagawa sa l
 Kung ikaw ay isang integrator, hotel, o ahente ng paglalakbay na nais maghanda para sa sertipikasyon o subukan ang Wink platform, gumawa ng account sa aming staging environment upang makapagsimula.
 
 :::note
-Ang staging environment ay available kapag hiniling. Ibig sabihin, ito ay papahingahin kung walang paggamit at muling bubuhayin kapag may paggamit. Mangyaring magtiyaga kung binubuhay mo ito. Tumitagal ng halos isang minuto upang simulan ang lahat ng mga server pagkatapos mong unang kumonekta sa isa sa aming mga server o app.
+Ang staging environment ay available kapag hiniling. Ibig sabihin, ito ay magpapahinga kapag walang paggamit at muling magbubukas kapag may paggamit. Mangyaring maging matiisin kung ito ay binubuhay mo. Tumitagal ng halos isang minuto upang simulan ang lahat ng mga server pagkatapos mong unang kumonekta sa isa sa aming mga server o app.
 :::
 
 ## Mga Server

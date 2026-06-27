@@ -13,7 +13,7 @@ Wink platformoje mes nuolat veikiame 2 aplinkas:
 Jei esate integratorius, viešbutis ar kelionių agentas, norintis pasiruošti sertifikavimui arba išbandyti Wink platformą, sukurkite paskyrą mūsų staging aplinkoje, kad pradėtumėte.
 
 :::note
-Staging aplinka prieinama pagal užklausą. Tai reiškia, kad ji užmiega, jei nėra naudojama, ir pati įsijungia, kai yra poreikis. Prašome kantrybės, jei ją pažadinote. Po pirmo prisijungimo prie vieno iš mūsų serverių ar programėlių užtrunka apie minutę, kol visi serveriai pilnai paleidžiami.
+Staging aplinka prieinama pagal užklausą. Tai reiškia, kad ji užmiega, jei nėra naudojama, ir pati įsijungia, kai yra naudojama. Prašome būti kantriems, jei ją pažadinote. Po pirmo prisijungimo prie vieno iš mūsų serverių ar programų užtrunka apie minutę, kol visi serveriai pilnai paleidžiami.
 :::
 
 ## Serveriai
@@ -29,7 +29,7 @@ Staging aplinka prieinama pagal užklausą. Tai reiškia, kad ji užmiega, jei n
 
 ## Programėlės
 
-Mūsų programėlės taip pat turi testavimo ir produkcijos aplinkas mūsų klientams.
+Mūsų programėlėse taip pat yra testavimo ir produkcijos aplinkos mūsų klientams.
 
 | Programėlė | Staging | Produkcija
 | ------- | ------- | ---------- |

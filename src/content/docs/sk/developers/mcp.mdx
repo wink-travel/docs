@@ -1,127 +1,357 @@
 ---
-title: MCP Server
-description: Rýchlo pripojte AI agentov k dokumentácii Wink a živým OpenAPI špecifikáciám cez hostovaný MCP server.
+title: MCP Servery
+description: Pripojte AI agentov k platforme Wink cez Model Context Protocol. Overené MCP servery poskytujú vášmu agentovi priamy prístup k inventáru, rezerváciám, integráciám správcu kanálov a ďalším funkciám — zabezpečené interaktívnym OAuth2 prihlásením.
 sidebar:
   order: 10
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-## Prehľad
-Hostovaný Wink MCP server je dostupný na:
+Wink poskytuje dva overené MCP servery. Oba používajú **interaktívne OAuth2 prihlásenie** (PKCE autorizačný kódový tok) — váš AI agent otvorí kartu prehliadača, kde sa prihlásite pomocou svojho Wink účtu. Nie je potrebné spravovať žiadne klientské tajomstvá.
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+| Server | URL | Čo robí |
+|--------|-----|---------|
+| **Inventory API** | `https://api.wink.travel/mcp` | Inventár, rezervácie, ceny, predajné kanály, analytika a všetky operácie platformy |
+| **Integrations** | `https://integrations.wink.travel/mcp` | Integrácie správcu kanálov — synchronizácia nehnuteľností, cien a dostupnosti s OTA |
 
-Nasmerujte kompatibilných AI klientov (VS Code, Cursor, ďalšie implementujúce MCP HTTP transport) na túto adresu, aby mohli:
-- Prehliadať dokumentáciu produktov a platformy (`wink://docs/...`)
-- Prehliadať živé OpenAPI špecifikácie a dokumentáciu operácií (`wink://api/...`)
-- Vykonávať ľahké sémantické / kľúčové vyhľadávanie v dokumentácii a živých API
+---
 
-## Transport
-Použite primárny streamovateľný HTTP endpoint:
+## Ako funguje overenie
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+Wink MCP servery používajú **OAuth2 Authorization Code + PKCE** tok a podporujú **Dynamic Client Registration (RFC 7591)**. Takto to prebieha pri prvom pripojení:
 
-Ak váš klient podporuje iba SSE, použite:
+1. Váš AI klient zistí autorizačný server z metadát MCP endpointu `/.well-known/oauth-protected-resource`.
+2. Klient sa sám zaregistruje cez **Dynamic Client Registration** — nie je potrebné manuálne nastavovanie aplikácie.
+3. Klient otvorí **kartu prehliadača** na `https://iam.wink.travel`. Prihlásite sa pomocou Wink účtu a schválite požadované povolenia na obrazovke súhlasu.
+4. Wink vydá **prístupový token** viazaný na váš účet a identitu.
+5. AI klient pripojí token ku každej MCP požiadavke. Všetky výsledky nástrojov sú automaticky viazané na vašu spravovanú entitu.
+6. Tokeny vypršia po 3 hodinách. Váš AI klient ich ticho obnovuje na pozadí bez ďalšieho vyzvania.
 
-```
-https://docs.mcp.wink.travel/sse
-```
+Každé volanie nástroja prebieha **pod vašou identitou** — rovnaké pravidlá ACL, ktoré chránia webové rozhranie, platia aj pre AI agenta.
 
-### Claude Code
-Oficiálna dokumentácia: [Pripojenie Claude Code k nástrojom cez MCP](https://code.claude.com/docs/en/mcp)
+---
 
-Anthropic odporúča vzdialený HTTP transport pre cloud-hostované MCP servery:
+## Pripojte svoj AI klient
+
+<Tabs>
+  <TabItem label="Claude Code">
+
+<Steps>
+1. Uistite sa, že máte najnovšiu verziu Claude Code:
+   ```bash
+   npm install -g @anthropic-ai/claude-code
+   ```
+
+2. Pridajte Wink Inventory MCP server:
+   ```bash
+   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   ```
+
+3. Claude Code kontaktuje server, zistí autorizačný server a otvorí váš predvolený prehliadač.
+
+4. **Prihláste sa do Wink** a schváľte požiadavku na povolenia na obrazovke súhlasu.
+
+5. Claude Code potvrdí pripojenie. Zadajte `/mcp` pre overenie, že server sa zobrazuje a jeho nástroje sú načítané.
+</Steps>
+
+Ak chcete pridať aj Integrations server:
 ```bash
-claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
-claude mcp list
+claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
 ```
 
-V Claude Code spustite `/mcp` pre kontrolu stavu servera. Ak chcete zdieľať server s celým repozitárom, pridajte `--scope project`, aby Claude Code zapísal konfiguráciu do `.mcp.json`.
+:::tip[Zdieľajte s tímom]
+Pridajte `--scope project` k príkazu `claude mcp add` a Claude Code zapíše URL servera do `.mcp.json` v koreňovom adresári repozitára. Commitnite tento súbor — každý člen tímu si pri prvom pripojení dokončí vlastné prihlásenie cez prehliadač.
+:::
 
-### Codex
-Oficiálna dokumentácia: [Docs MCP quickstart pre Codex](https://developers.openai.com/resources/docs-mcp)
+  </TabItem>
+  <TabItem label="Claude Desktop">
 
-OpenAI dokumentuje nastavenie MCP cez Codex CLI a poznamenáva, že konfigurácia sa zdieľa s IDE rozšírením:
+<Steps>
+1. Upravte konfiguračný súbor Claude Desktop:
+   - **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+   - **Linux:** `~/.config/Claude/claude_desktop_config.json`
+
+2. Pridajte záznamy MCP serverov:
+
+   ```json title="claude_desktop_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **Úplne ukončite a reštartujte** Claude Desktop (použite Quit z menu — zatvorenie okna nestačí).
+
+4. Claude Desktop otvorí kartu prehliadača pre každý nový server. Prihláste sa do Wink a schváľte povolenia.
+
+5. Ikona zástrčky v spodnom paneli zobrazuje oba servery ako pripojené.
+</Steps>
+
+  </TabItem>
+  <TabItem label="OpenAI Codex">
+
+<Steps>
+1. Uistite sa, že máte nainštalovaný Codex CLI:
+   ```bash
+   npm install -g @openai/codex
+   ```
+
+2. Otvorte (alebo vytvorte) konfiguračný súbor Codex:
+   - **macOS / Linux:** `~/.codex/config.json`
+   - **Windows:** `%USERPROFILE%\.codex\config.json`
+
+3. Pridajte záznamy MCP serverov Wink:
+
+   ```json title="~/.codex/config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+4. Spustite Codex. Pri prvom použití Codex otvorí kartu prehliadača na `https://iam.wink.travel`.
+
+5. **Prihláste sa do Wink** a schváľte požadované povolenia.
+
+6. Codex potvrdí pripojenie. Spustite `codex` a požiadajte o zoznam dostupných nástrojov, aby ste overili, že Wink servery sú aktívne.
+</Steps>
+
+:::note
+Podpora MCP v Codex CLI vyžaduje verziu **1.0** alebo novšiu. Skontrolujte pomocou `codex --version` a aktualizujte príkazom `npm install -g @openai/codex`.
+:::
+
+  </TabItem>
+  <TabItem label="ChatGPT">
+
+Podpora MCP serverov je dostupná v **ChatGPT desktop aplikácii** pre predplatiteľov Plus, Pro, Team a Enterprise.
+
+<Steps>
+1. Stiahnite a nainštalujte [ChatGPT desktop aplikáciu](https://openai.com/chatgpt/download/), ak ju ešte nemáte.
+
+2. Otvorte aplikáciu a kliknite na **ikonu svojho profilu** v pravom hornom rohu, potom vyberte **Nastavenia**.
+
+3. Prejdite na **Konektory** (alebo **MCP Servery** podľa verzie aplikácie) a kliknite na **Pridať**.
+
+4. Zadajte URL Wink Inventory servera:
+   ```
+   https://api.wink.travel/mcp
+   ```
+   Potom kliknite na **Pripojiť**.
+
+5. ChatGPT otvorí kartu prehliadača na `https://iam.wink.travel`. **Prihláste sa do Wink** a schváľte povolenia.
+
+6. Opakujte kroky 4–5 pre Integrations server:
+   ```
+   https://integrations.wink.travel/mcp
+   ```
+
+7. Oba servery sa zobrazia v zozname Konektorov. Začnite nový chat — Wink nástroje sú automaticky dostupné.
+</Steps>
+
+:::note[Obmedzenie webovej aplikácie]
+MCP servery je možné konfigurovať iba v **desktop aplikácii**. Webové rozhranie ChatGPT na chatgpt.com nepodporuje vlastné MCP servery.
+:::
+
+  </TabItem>
+  <TabItem label="Cursor">
+
+<Steps>
+1. Otvorte (alebo vytvorte) konfiguračný súbor Cursor MCP:
+   - **macOS / Linux:** `~/.cursor/mcp.json`
+   - **Windows:** `%USERPROFILE%\.cursor\mcp.json`
+
+2. Pridajte záznamy MCP serverov Wink:
+
+   ```json title="~/.cursor/mcp.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. Otvorte Cursor. Prejdite na **Nastavenia → Nastavenia Cursor → MCP** a overte, že oba servery majú zelený stav. Ak sú červené, kliknite na **Obnoviť**.
+
+4. Cursor otvorí kartu prehliadača na `https://iam.wink.travel`. **Prihláste sa do Wink** a schváľte povolenia.
+
+5. Otvorte chat (`Ctrl+L` / `Cmd+L`) a požiadajte Cursor o zoznam dostupných Wink nástrojov na potvrdenie pripojenia.
+</Steps>
+
+:::tip[Konfigurácia viazaná na projekt]
+Môžete tiež umiestniť súbor `mcp.json` do koreňa svojho projektu namiesto `~/.cursor/`. Konfigurácia na úrovni projektu má prednosť a sprístupní servery každému členovi tímu, ktorý projekt otvorí v Cursor.
+:::
+
+  </TabItem>
+  <TabItem label="Windsurf">
+
+<Steps>
+1. Otvorte (alebo vytvorte) konfiguračný súbor Windsurf MCP:
+   - **macOS / Linux:** `~/.codeium/windsurf/mcp_config.json`
+   - **Windows:** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
+
+2. Pridajte záznamy MCP serverov Wink:
+
+   ```json title="~/.codeium/windsurf/mcp_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **Úplne reštartujte Windsurf** (Súbor → Ukončiť, potom znova otvorte).
+
+4. Prejdite na **Nastavenia → MCP Servery** a overte, že oba servery sú pripojené. Windsurf pri prvom použití otvorí kartu prehliadača na `https://iam.wink.travel`.
+
+5. **Prihláste sa do Wink** a schváľte povolenia. Servery sa v nastaveniach zafarbia na zeleno po autentifikácii.
+</Steps>
+
+:::note
+Podpora MCP vo Windsurf vyžaduje verziu **1.4** alebo novšiu. Skontrolujte cez **Pomocník → O Windsurf** a v prípade potreby aktualizujte zo stránky Windsurf.
+:::
+
+  </TabItem>
+  <TabItem label="Cline (VS Code)">
+
+Cline je rozšírenie pre VS Code s integrovaným správcom MCP serverov. Nie je potrebné manuálne upravovať JSON.
+
+<Steps>
+1. Nainštalujte Cline z VS Code Marketplace:
+   - Otvorte VS Code a stlačte `Ctrl+Shift+X` / `Cmd+Shift+X`
+   - Vyhľadajte **Cline** a kliknite na **Inštalovať**
+
+2. Kliknite na **ikonu Cline** v paneli aktivít (ľavý bočný panel) pre otvorenie Cline panela.
+
+3. Kliknite na ikonu **MCP Servery** (ikona zástrčky) v Cline paneli, potom vyberte **Upraviť nastavenia MCP**.
+
+4. VS Code otvorí `cline_mcp_settings.json`. Pridajte Wink záznamy:
+
+   ```json title="cline_mcp_settings.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+5. **Uložte súbor.** Cline sa automaticky znovu načíta a otvorí kartu prehliadača na `https://iam.wink.travel`.
+
+6. **Prihláste sa do Wink** a schváľte povolenia. Oba servery sa zobrazia ako aktívne v paneli MCP Serverov.
+</Steps>
+
+:::tip[Alternatíva: pridanie cez URL]
+V paneli MCP Serverov kliknite na **Pridať server** a priamo vložte `https://api.wink.travel/mcp`. Cline automaticky vyplní konfiguráciu a spraví autentifikáciu bez manuálnej úpravy JSON.
+:::
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Rozsahy (Scopes)
+
+Keď schválite obrazovku súhlasu, uvidíte rozpis požadovaných oprávnení. MCP klienti používajú rovnakú slovnú zásobu povolení ako zvyšok platformy — pozrite si kompletný
+[referenčný zoznam rozsahov na stránke Autentifikácia](/sk/developers/authentication#scopes).
+
+Dve špecifiká MCP:
+
+- **Rozsahy `mcp.read`, `mcp.write`, `mcp.remove` sú navyše potrebné** na otvorenie MCP transportu. Klient s rozsahom `mcp.*` má prístup k `/mcp`, ale každý nástroj, ktorý volá, stále vyžaduje príslušný rozsah sekcie endpointu (napr. `booking.read`).
+- **AI klient žiada iba o rozsahy, ktoré potrebuje.** Na obrazovke súhlasu môžete zamietnuť jednotlivé povolenia — nástroje vyžadujúce zamietnutý rozsah vrátia chybu pri volaní.
+
+---
+
+## Riešenie problémov
+
+**Karta prehliadača sa neotvorí**
+
+Váš AI klient možno ešte nepodporuje interaktívny PKCE tok. Overte, že používate aktuálnu verziu:
+- **Claude Code:** `npm install -g @anthropic-ai/claude-code`
+- **Codex CLI:** `npm install -g @openai/codex`
+- **Claude Desktop / ChatGPT desktop:** aktualizujte cez vstavaný updater aplikácie
+
+**`401 Unauthorized` po prihlásení**
+
+Váš uložený token môže byť neplatný. Odstráňte a znova pridajte server, aby ste spustili nové prihlásenie:
+
 ```bash
-codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
-codex mcp list
+# Claude Code
+claude mcp remove wink-inventory
+claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-### Cursor
-Cursor MCP dokumentácia: https://cursor.com/docs/context/mcp
-Nastavenie: Pridajte vzdialený server cez nastavenia MCP.
-```json
-{
-  "mcpServers": {
-    "wink-docs": {
-      "url": "https://docs.mcp.wink.travel/mcp",
-    }
-  }
-}
-```
+Pre Claude Desktop a ChatGPT odstráňte server zo nastavení, reštartujte aplikáciu a pridajte ho znova.
 
-### VS Code
-Oficiálna dokumentácia: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Minimálna vzdialená konfigurácia (používateľský alebo pracovný priestor `mcp.json`):
-```json
-{
-  "servers": {
-    "wink-docs": {
-      "type": "http",
-      "url": "https://docs.mcp.wink.travel/mcp"
-    }
-  }
-}
-```
+**`403 Forbidden` pri volaní konkrétneho nástroja**
 
-Tipy:
-- Použite Command Palette: „MCP: List Servers“ pre potvrdenie pripojenia a prehliadanie nástrojov.
-- Výber nástrojov umožňuje zapnúť/vypnúť `api_search` a `docs_search`.
-- Pridajte kontext: Zobrazenie chatu → Pridať kontext → MCP Resources pre pripojenie stránok dokumentácie.
+Nástroj vyžaduje rozsah, ktorý ste na obrazovke súhlasu neschválili. Znovu pripojte server — obrazovka súhlasu sa zobrazí znova a môžete schváliť chýbajúce povolenie.
 
-## Hlavné URI zdrojov
+**Server sa zobrazuje, ale volania nástrojov vracajú "account not found"**
 
-| URI | Popis |
-|-----|-------------|
-| `wink://docs` | Index dokumentácie (zoskupený podľa kategórie) |
-| `wink://docs/{path}` | Konkrétny článok dokumentácie (Markdown / MDX) |
-| `wink://api` | Živý OpenAPI katalóg zistený z Wink swagger konfigurácie |
-| `wink://api/{apiName}` | Kompaktné zhrnutie API s autentifikáciou, tagmi, hlavičkami a ukážkovými operáciami |
-| `wink://api/{apiName}/operations` | Kompletný zoznam operácií zoskupených podľa tagu |
-| `wink://api/{apiName}/operation/{key}` | Detail jednotlivých operácií (parametre, telo požiadavky, odpovede) |
-| `wink://api/{apiName}/schema/{schemaName}` | Riešená schéma komponentu s vnorenými poľami, typmi a príkladmi |
-| `wink://api/{apiName}/operation/{key}/request` | Pohľad zameraný na požiadavku s povinnými vstupmi a minimálnym príkladom payloadu |
-| `wink://api/{apiName}/operation/{key}/response/{status}` | Pohľad zameraný na odpoveď pre konkrétny stavový kód |
-| `wink://api/{apiName}/operation/{key}/recipe` | Úlohový tok pre správne volanie danej operácie |
+Ste prihlásený do Wink účtu, ktorý nemá spravovanú entitu. Prejdite na [Wink Portal](https://app.wink.travel) a uistite sa, že váš účet je správne nastavený pred použitím MCP servera.
 
-## Nástroje vyhľadávania (rýchla referencia)
-| Nástroj | Účel | Typické príklady dotazov |
-|------|---------|-----------------------|
-| `api_search` | Nájsť živé API alebo operáciu na integráciu | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
-| `docs_search` | Nájsť konceptuálnu dokumentáciu / návody | `authentication`, `webhooks`, `wordPress` |
+**Token vyprší počas relácie**
 
-Nechajte `query` prázdne pre získanie návrhov. Každý výsledok obsahuje MCP URI, ktoré môžete otvoriť.
-Pri nájdení operácií `api_search` tiež vracia prepojené URI požiadaviek, odpovedí, schém a receptov, aby agenti mohli priamo prejsť na najpoužívanejšie podzdroje.
+Tokeny sú platné 3 hodiny. Claude Code a Claude Desktop ticho obnovujú tokeny bez prerušenia relácie. Ak po dlhšom nečinnom období vidíte chyby autentifikácie, zadajte novú správu — klient sa automaticky znovu autentifikuje.
 
-## Typický spôsob použitia
-1. Spustite `api_search` s vaším zámerom (napr. *"create affiliate"* alebo *"payment receipt"*).
-2. Otvorte vrátené `wink://api/...` URI alebo nasledujte jeho prepojené polia `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` a `recipe_uri`.
-3. Použite `docs_search` pre podporné koncepty (autentifikácia, webhooks, workflowy).
+**Codex CLI hlási "MCP server unreachable"**
 
-## AI schopnosti
+Skontrolujte, či je váš `~/.codex/config.json` platný JSON (bez záverečných čiark) a či je nastavené `"type": "http"`. Codex vyžaduje HTTP transport pre vzdialené servery; stdio transport je len pre lokálne binárky.
 
-Predpripravené schopnosti agentov používajú tento MCP server ako svoj zdroj pravdy. Schopnosti dávajú vášmu kódovaciemu agentovi štruktúrovaný pracovný tok pre vývoj proti Wink API — namiesto hádania endpointov agent číta živé kontrakty priamo z MCP servera.
+**Menu "Connectors" v ChatGPT chýba**
 
-Pozrite si [AI Skills](/sk/developers/ai-skills) pre dostupné schopnosti a inštalačné pokyny.
+Podpora MCP vyžaduje verziu ChatGPT desktop aplikácie **1.2024.352** alebo novšiu a aktívne predplatné Plus, Pro, Team alebo Enterprise. Aktualizujte aplikáciu a overte svoj plán v Nastaveniach → Účet.
 
-## Poznámky
-- Každé vrátené URI môže agent otvoriť pre plný obsah.
-- Strom `wink://api` je živý a sleduje aktuálny upstream OpenAPI katalóg namiesto generovaného indexu repozitára.
-- Návrhy sa zobrazujú automaticky, keď sú dotazy prázdne.
+**Cursor server zobrazuje červenú / "Failed to connect"**
 
+Overte, že váš `~/.cursor/mcp.json` je platný JSON a obsahuje `"type": "http"`. Potom prejdite na **Nastavenia → Nastavenia Cursor → MCP** a kliknite na **Obnoviť**. Ak chyba pretrváva, úplne reštartujte Cursor — zmeny konfigurácie sa nie vždy prejavia bez reštartu.
+
+**Windsurf MCP servery sa nezobrazujú v nastaveniach**
+
+Windsurf vyžaduje úplný reštart (nie len obnovenie okna) na načítanie zmien v `mcp_config.json`. Použite **Súbor → Ukončiť** a znova spustite. Ak servery stále nie sú viditeľné, overte, že máte Windsurf **1.4+** cez **Pomocník → O Windsurf**.
+
+**V Cline nie je viditeľná možnosť "Add Server"**
+
+Správca MCP serverov vyžaduje Cline **2.0** alebo novšiu verziu. Otvorte panel rozšírení VS Code, nájdite Cline a kliknite na **Aktualizovať**, ak je dostupná aktualizácia. Po aktualizácii reštartujte VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+
+---
+
+<LinkButton href="https://app.wink.travel" variant="primary" icon="external">Otvoriť Wink Portal</LinkButton>
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink na GitHub</LinkButton>

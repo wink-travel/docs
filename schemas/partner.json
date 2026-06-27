@@ -1,0 +1,2771 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Wink API",
+    "description": "Welcome to the Wink API — a programmer-friendly way to manage, sell and book travel\ninventory on the Wink platform. See the **Overview** page (under **API**) for the full\nintroduction, intended audience, testing, and versioning.\n\n# Channel Manager API\nWink exposes a secured REST-based, JSON API to its channel manager partners. The connection is \"channel-wide\". Partners are free to integrate with the REST-based API using any programming language.\n\n# Intended Audience\nThis document is intended for external channel partners who wish to integrate with Wink.\n\n# Requirements\n- Active account with Wink. Sign up for your Channel Manager account:\n   - Staging: [https://staging-app.wink.travel](https://staging-app.wink.travel).\n   - Production: [https://app.wink.travel](https://app.wink.travel).\n- Active application. An application provides you with Oauth2 credentials you can pass to our endpoints. One is already created for you upon account creation.\n- Your production IP numbers. They need to be whitelisted before you can talk to our production environment.\n\n# Performance\nA particular attention to performance should be given when integrating with this API. A few things to be aware of:\n- Enable gzip compression to make payloads smaller.\n- Fewer large REST calls are preferred to many small ones. E.g. It is better to update many dates instead of individual dates.\n- It is possible to update both rate and availability with a single request.\n- Request only date ranges that you will use. There is no need to request an entire year if you will only be working with the first seven days.\n\n## Reservation notification (PUSH)\nWink supports PUSH notifications to communicate reservations. We also support BASIC AUTH to your endpoint. If you want to enable PUSH, add your PUSH endpoint and credentials (optional) to your account.",
+    "contact": {
+      "name": "Contact",
+      "email": "hi@wink.travel"
+    },
+    "version": "30.51.3-SNAPSHOT",
+    "x-logo": {
+      "backgroundColor": "#FFFFFF",
+      "altText": "wink",
+      "url": "https://res.cloudinary.com/traveliko/image/upload/c_scale,h_129/v1653285543/wink/logo_text_white.svg"
+    }
+  },
+  "externalDocs": {
+    "description": "Documentation",
+    "url": "https://wink.travel/getting-started/how-to-use/"
+  },
+  "servers": [
+    {
+      "url": "https://dev-integrations.wink.travel:8445",
+      "description": "Endpoint"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Channel Manager",
+      "description": "Channel managers can use this endpoint to integrate. It contains all the features a channel manager would need to query properties, update rate and availability and retrieve bookings.",
+      "externalDocs": {
+        "description": "Try it in Scalar",
+        "url": "https://dev-integrations.wink.travel:8445/scalar/partner#tag/channel-manager"
+      }
+    }
+  ],
+  "paths": {
+    "/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}": {
+      "get": {
+        "tags": [
+          "Channel Manager"
+        ],
+        "summary": "Show daily rates",
+        "description": "Returns the room rate plus every daily rate and availability entry for the given property and master rate within the requested startDate-to-endDate range.",
+        "operationId": "show-property-room-rates",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Rate provider (channel-manager account) identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69"
+          },
+          {
+            "name": "propertyIdentifier",
+            "in": "path",
+            "description": "Property identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18"
+          },
+          {
+            "name": "masterRateIdentifier",
+            "in": "path",
+            "description": "Master rate identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "Start date for rate query range (inclusive)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "2026-02-15"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "End date for rate query range (inclusive)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "2026-02-28"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ],
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Master rate details with daily rates for the requested date range",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PropertyRoomRateWithRateList",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                },
+                "example": {
+                  "room": {
+                    "identifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+                    "propertyIdentifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+                    "name": "Superior Deluxe - BAR",
+                    "roomTypeIdentifier": "6f9b4c8d-1e5a-4b3c-9d2e-8a7f0c1b5e43",
+                    "ratePlanIdentifier": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52",
+                    "guestRoomName": "Superior Deluxe",
+                    "ratePlanName": "BAR",
+                    "minOccupancy": 1,
+                    "maxOccupancy": 4,
+                    "maxAdultOccupancy": 2,
+                    "maxChildOccupancy": 2,
+                    "includedAdultOccupancy": 2,
+                    "includedChildOccupancy": 0,
+                    "baseRate": 450,
+                    "singleOccupancyRateModifier": {
+                      "type": "PERCENTAGE",
+                      "value": "-10.00"
+                    },
+                    "extraPaxRateModifier": {
+                      "type": "FIXED_AMOUNT",
+                      "value": "35.00"
+                    },
+                    "extraChildRateModifier": {
+                      "type": "PERCENTAGE",
+                      "value": "-50.00"
+                    }
+                  },
+                  "rates": [
+                    {
+                      "identifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+                      "propertyIdentifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+                      "roomRateIdentifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+                      "guestRoomIdentifier": "6f9b4c8d-1e5a-4b3c-9d2e-8a7f0c1b5e43",
+                      "ratePlanIdentifier": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52",
+                      "amount": 450,
+                      "currencyCode": "THB",
+                      "master": true,
+                      "closedOnArrival": false,
+                      "closedOnDeparture": false,
+                      "date": "2026-02-15",
+                      "quantity": 5,
+                      "minOccupancy": 1,
+                      "maxOccupancy": 4,
+                      "minLengthOfStay": 2,
+                      "maxLengthOfStay": 30
+                    }
+                  ],
+                  "startDate": "2026-02-15",
+                  "endDate": "2026-02-28"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — missing or invalid request parameter or body",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — authentication is required or the session has expired",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden — authenticated but lacking the required permission or scope",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found — the requested resource does not exist",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed — the HTTP verb is not supported on this endpoint",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type — use application/json",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error — an unexpected failure occurred on the server",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable — a downstream dependency is unreachable",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Channel Manager"
+        ],
+        "summary": "Update daily rates",
+        "description": "Bulk-updates daily price, availability and stay restrictions for the given property and master rate over a date range; amount is optional, so the call can adjust quantity alone, and currency defaults to the property's currency when omitted.",
+        "operationId": "update-rates",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Rate provider (channel-manager account) identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69"
+          },
+          {
+            "name": "propertyIdentifier",
+            "in": "path",
+            "description": "Property identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18"
+          },
+          {
+            "name": "masterRateIdentifier",
+            "in": "path",
+            "description": "Master rate identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PropertyRateUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Updated daily rates for every date in the requested range",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "contains": {
+                    "default": ""
+                  },
+                  "items": {
+                    "$ref": "#/components/schemas/PropertyRate",
+                    "default": ""
+                  },
+                  "unevaluatedItems": {
+                    "default": ""
+                  }
+                },
+                "example": [
+                  {
+                    "identifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+                    "propertyIdentifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+                    "roomRateIdentifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+                    "guestRoomIdentifier": "6f9b4c8d-1e5a-4b3c-9d2e-8a7f0c1b5e43",
+                    "ratePlanIdentifier": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52",
+                    "amount": 450,
+                    "currencyCode": "THB",
+                    "master": true,
+                    "closedOnArrival": false,
+                    "closedOnDeparture": false,
+                    "date": "2026-02-15",
+                    "quantity": 5,
+                    "minOccupancy": 1,
+                    "maxOccupancy": 4,
+                    "minLengthOfStay": 2,
+                    "maxLengthOfStay": 30
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — missing or invalid request parameter or body",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — authentication is required or the session has expired",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden — authenticated but lacking the required permission or scope",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found — the requested resource does not exist",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed — the HTTP verb is not supported on this endpoint",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type — use application/json",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error — an unexpected failure occurred on the server",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable — a downstream dependency is unreachable",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}": {
+      "get": {
+        "tags": [
+          "Channel Manager"
+        ],
+        "summary": "Show property",
+        "description": "Returns the given property's details together with its full list of room-level master rates.",
+        "operationId": "show-property",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Rate provider (channel-manager account) identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69"
+          },
+          {
+            "name": "propertyIdentifier",
+            "in": "path",
+            "description": "Property identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ],
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Property details with its complete list of master rates",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PropertyWithRoomRateList",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                },
+                "example": {
+                  "property": {
+                    "identifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+                    "name": "The Siam Residences, Bangkok",
+                    "city": "Bangkok",
+                    "countryCode": "TH",
+                    "currencyCode": "THB",
+                    "timeZone": "Asia/Bangkok"
+                  },
+                  "list": [
+                    {
+                      "identifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+                      "propertyIdentifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+                      "name": "Superior Deluxe - BAR",
+                      "roomTypeIdentifier": "6f9b4c8d-1e5a-4b3c-9d2e-8a7f0c1b5e43",
+                      "ratePlanIdentifier": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52",
+                      "guestRoomName": "Superior Deluxe",
+                      "ratePlanName": "BAR",
+                      "minOccupancy": 1,
+                      "maxOccupancy": 4,
+                      "maxAdultOccupancy": 2,
+                      "maxChildOccupancy": 2,
+                      "includedAdultOccupancy": 2,
+                      "includedChildOccupancy": 0,
+                      "baseRate": 450,
+                      "singleOccupancyRateModifier": {
+                        "type": "PERCENTAGE",
+                        "value": "-10.00"
+                      },
+                      "extraPaxRateModifier": {
+                        "type": "FIXED_AMOUNT",
+                        "value": "35.00"
+                      },
+                      "extraChildRateModifier": {
+                        "type": "PERCENTAGE",
+                        "value": "-50.00"
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — missing or invalid request parameter or body",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — authentication is required or the session has expired",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden — authenticated but lacking the required permission or scope",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found — the requested resource does not exist",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed — the HTTP verb is not supported on this endpoint",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type — use application/json",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error — an unexpected failure occurred on the server",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable — a downstream dependency is unreachable",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}": {
+      "get": {
+        "tags": [
+          "Channel Manager"
+        ],
+        "summary": "Show booking",
+        "description": "Returns the single booking identified by the given booking ID for the given property.",
+        "operationId": "show-property-booking",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Rate provider (channel-manager account) identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69"
+          },
+          {
+            "name": "propertyIdentifier",
+            "in": "path",
+            "description": "Property identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18"
+          },
+          {
+            "name": "bookingIdentifier",
+            "in": "path",
+            "description": "Booking identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "f4d1c8e5-2b9a-4f3d-9e7c-1b6a5d3f8c92"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ],
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "The requested booking",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PropertyBooking",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                },
+                "example": {
+                  "bookingIdentifier": "f4d1c8e5-2b9a-4f3d-9e7c-1b6a5d3f8c92",
+                  "propertyIdentifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+                  "roomRateIdentifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+                  "name": "Superior Deluxe - BAR",
+                  "guestRoomName": "Superior Deluxe",
+                  "ratePlanName": "BAR",
+                  "rooms": 1,
+                  "guests": 3,
+                  "adults": 2,
+                  "children": 1,
+                  "firstName": "Alexandra",
+                  "lastName": "Beaumont",
+                  "email": "alexandra.beaumont@example.com",
+                  "amount": "450.00",
+                  "currencyCode": "THB",
+                  "bookingCode": "WNK4ZQ7P",
+                  "startDate": "2026-02-15",
+                  "endDate": "2026-02-17",
+                  "createdDate": "2026-02-01T10:30:00",
+                  "cancelled": false,
+                  "paymentMethodType": "Card",
+                  "paymentMethodStatus": "SUCCEEDED",
+                  "salesChannelName": "Wink Travel Agents",
+                  "salesChannelIdentifier": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — missing or invalid request parameter or body",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — authentication is required or the session has expired",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden — authenticated but lacking the required permission or scope",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found — the requested resource does not exist",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed — the HTTP verb is not supported on this endpoint",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type — use application/json",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error — an unexpected failure occurred on the server",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable — a downstream dependency is unreachable",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list": {
+      "get": {
+        "tags": [
+          "Channel Manager"
+        ],
+        "summary": "List bookings",
+        "description": "Returns all bookings created for the given property between startDate and endDate; when endDate is omitted it defaults to startDate plus one day.",
+        "operationId": "show-property-bookings",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Rate provider (channel-manager account) identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69"
+          },
+          {
+            "name": "propertyIdentifier",
+            "in": "path",
+            "description": "Property identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18"
+          },
+          {
+            "name": "startDate",
+            "in": "query",
+            "description": "Start timestamp for booking creation date filter (inclusive); if endDate is omitted, it defaults to startDate + 1 day",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "2026-02-01T10:30:00"
+          },
+          {
+            "name": "endDate",
+            "in": "query",
+            "description": "End timestamp for booking creation date filter (inclusive; optional; defaults to startDate + 1 day)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "2026-02-02T10:30:00"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ],
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "All bookings for the given property in the requested creation date range",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "contains": {
+                    "default": ""
+                  },
+                  "items": {
+                    "$ref": "#/components/schemas/PropertyBooking",
+                    "default": ""
+                  },
+                  "unevaluatedItems": {
+                    "default": ""
+                  }
+                },
+                "example": [
+                  {
+                    "bookingIdentifier": "f4d1c8e5-2b9a-4f3d-9e7c-1b6a5d3f8c92",
+                    "propertyIdentifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+                    "roomRateIdentifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+                    "name": "Superior Deluxe - BAR",
+                    "guestRoomName": "Superior Deluxe",
+                    "ratePlanName": "BAR",
+                    "rooms": 1,
+                    "guests": 3,
+                    "adults": 2,
+                    "children": 1,
+                    "firstName": "Alexandra",
+                    "lastName": "Beaumont",
+                    "email": "alexandra.beaumont@example.com",
+                    "amount": "450.00",
+                    "currencyCode": "THB",
+                    "bookingCode": "WNK4ZQ7P",
+                    "startDate": "2026-02-15",
+                    "endDate": "2026-02-17",
+                    "createdDate": "2026-02-01T10:30:00",
+                    "cancelled": false,
+                    "paymentMethodType": "Card",
+                    "paymentMethodStatus": "SUCCEEDED",
+                    "salesChannelName": "Wink Travel Agents",
+                    "salesChannelIdentifier": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52"
+                  }
+                ]
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — missing or invalid request parameter or body",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — authentication is required or the session has expired",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden — authenticated but lacking the required permission or scope",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found — the requested resource does not exist",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed — the HTTP verb is not supported on this endpoint",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type — use application/json",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error — an unexpected failure occurred on the server",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable — a downstream dependency is unreachable",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list": {
+      "get": {
+        "tags": [
+          "Channel Manager"
+        ],
+        "summary": "List properties",
+        "description": "Returns a page of the properties your channel-manager account is connected to. Page is zero-based and size is capped at 100 records per page.",
+        "operationId": "show-properties",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Rate provider (channel-manager account) identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69"
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "Zero-based page index for pagination",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": 0
+          },
+          {
+            "name": "size",
+            "in": "query",
+            "description": "Number of records per page (maximum 100)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": 25
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ],
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Paginated list of properties connected to the channel-manager account (zero-based page; each item is a ChannelManagerProperty)",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ChannelManagerProperty",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                },
+                "example": {
+                  "identifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+                  "name": "The Siam Residences, Bangkok",
+                  "city": "Bangkok",
+                  "countryCode": "TH",
+                  "currencyCode": "THB",
+                  "timeZone": "Asia/Bangkok"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — missing or invalid request parameter or body",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — authentication is required or the session has expired",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden — authenticated but lacking the required permission or scope",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found — the requested resource does not exist",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed — the HTTP verb is not supported on this endpoint",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type — use application/json",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error — an unexpected failure occurred on the server",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable — a downstream dependency is unreachable",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    },
+    "/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping": {
+      "get": {
+        "tags": [
+          "Channel Manager"
+        ],
+        "summary": "Ping",
+        "description": "Health-check endpoint that validates your credentials and returns the API version plus your account's name and status.",
+        "operationId": "ping",
+        "parameters": [
+          {
+            "name": "managingEntityIdentifier",
+            "in": "path",
+            "description": "Rate provider (channel-manager account) identifier (UUID)",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "default": ""
+            },
+            "example": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69"
+          },
+          {
+            "name": "Wink-Version",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "default": "2.0.0",
+              "enum": [
+                "2.0"
+              ]
+            }
+          },
+          {
+            "name": "Accept",
+            "in": "header",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "application/json"
+              ],
+              "default": null
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Credentials are valid; returns API version plus account name and status",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PingResponse",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                },
+                "example": {
+                  "apiVersion": "2.0",
+                  "name": "The Siam Residences, Bangkok"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request — missing or invalid request parameter or body",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized — authentication is required or the session has expired",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden — authenticated but lacking the required permission or scope",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found — the requested resource does not exist",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "405": {
+            "description": "Method Not Allowed — the HTTP verb is not supported on this endpoint",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "415": {
+            "description": "Unsupported Media Type — use application/json",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error — an unexpected failure occurred on the server",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          },
+          "503": {
+            "description": "Service Unavailable — a downstream dependency is unreachable",
+            "content": {
+              "application/problem+json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetail",
+                  "additionalProperties": {
+                    "default": ""
+                  },
+                  "default": ""
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "oauth2ClientCredentials": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ProblemDetail": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "format": "uri"
+          },
+          "title": {
+            "type": "string"
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "detail": {
+            "type": "string"
+          },
+          "instance": {
+            "type": "string",
+            "format": "uri"
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": {}
+          }
+        }
+      },
+      "CustomMonetaryAmount": {
+        "type": "object",
+        "default": null,
+        "description": "Monetary amount with an associated ISO 4217 currency code, used at API boundaries where JSON-friendly serialization is needed",
+        "example": {
+          "amount": 1250,
+          "currency": "USD"
+        },
+        "properties": {
+          "amount": {
+            "type": "number",
+            "default": "",
+            "description": "Monetary amount value",
+            "example": 1250
+          },
+          "currency": {
+            "type": "string",
+            "default": "",
+            "description": "ISO 4217 currency code",
+            "example": "USD",
+            "minLength": 1,
+            "pattern": "^[A-Z]{3}$"
+          }
+        },
+        "required": [
+          "amount",
+          "currency"
+        ]
+      },
+      "PropertyRateUpdateRequest": {
+        "type": "object",
+        "default": null,
+        "description": "Request body for bulk-updating daily rates and availability for a master rate over a date range",
+        "example": {
+          "startDate": "2026-02-15",
+          "endDate": "2026-02-28",
+          "amount": 450,
+          "currencyCode": "THB",
+          "master": true,
+          "closedOnArrival": false,
+          "closedOnDeparture": false,
+          "quantity": 5,
+          "minLengthOfStay": 2,
+          "maxLengthOfStay": 30,
+          "minOccupancy": 1,
+          "maxOccupancy": 4,
+          "singleOccupancyRateModifier": {
+            "type": "PERCENTAGE",
+            "value": "-10.00"
+          },
+          "extraPaxRateModifier": {
+            "type": "FIXED_AMOUNT",
+            "value": "35.00"
+          },
+          "extraChildRateModifier": {
+            "type": "PERCENTAGE",
+            "value": "-50.00"
+          }
+        },
+        "properties": {
+          "startDate": {
+            "type": "string",
+            "format": "date",
+            "default": "",
+            "description": "Start date for rate update range (inclusive)",
+            "example": "2026-02-15"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date",
+            "default": "",
+            "description": "End date for rate update range (inclusive)",
+            "example": "2026-02-28"
+          },
+          "amount": {
+            "type": "number",
+            "default": "",
+            "description": "Updated daily rate amount (optional; omit to preserve current amounts)",
+            "example": 450
+          },
+          "currencyCode": {
+            "type": "string",
+            "default": "",
+            "description": "Currency code for rate amount (optional; defaults to property currency)",
+            "example": "THB"
+          },
+          "master": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether to update this as a master rate",
+            "example": true
+          },
+          "closedOnArrival": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether to close the rate on arrival dates",
+            "example": false
+          },
+          "closedOnDeparture": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether to close the rate on departure dates",
+            "example": false
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Available quantity/inventory for each date in range (optional)",
+            "example": 5
+          },
+          "minLengthOfStay": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Minimum length of stay requirement in nights (optional)",
+            "example": 2
+          },
+          "maxLengthOfStay": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Maximum length of stay limit in nights (optional)",
+            "example": 30
+          },
+          "minOccupancy": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Minimum occupancy requirement (optional)",
+            "example": 1
+          },
+          "maxOccupancy": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Maximum occupancy limit (optional)",
+            "example": 4
+          },
+          "singleOccupancyRateModifier": {
+            "$ref": "#/components/schemas/VariableCharge",
+            "default": "",
+            "description": "Single occupancy rate modifier (JSON representation of VariableCharge, optional)",
+            "example": {
+              "type": "PERCENTAGE",
+              "value": "-10.00"
+            }
+          },
+          "extraPaxRateModifier": {
+            "$ref": "#/components/schemas/VariableCharge",
+            "default": "",
+            "description": "Extra occupant rate modifier (JSON representation of VariableCharge, optional)",
+            "example": {
+              "type": "FIXED_AMOUNT",
+              "value": "35.00"
+            }
+          },
+          "extraChildRateModifier": {
+            "$ref": "#/components/schemas/VariableCharge",
+            "default": "",
+            "description": "Extra child rate modifier (JSON representation of VariableCharge, optional)",
+            "example": {
+              "type": "PERCENTAGE",
+              "value": "-50.00"
+            }
+          }
+        },
+        "required": [
+          "endDate",
+          "startDate"
+        ]
+      },
+      "VariableCharge": {
+        "type": "object",
+        "example": {
+          "type": "PERCENTAGE",
+          "percent": 0.25,
+          "fixedAmount": {
+            "amount": 1250,
+            "currency": "USD"
+          }
+        },
+        "properties": {
+          "type": {
+            "type": "string",
+            "default": "",
+            "description": "When the type is FIXED, fixedAmount is required. When the type is PERCENTAGE, percent is required.",
+            "enum": [
+              "FIXED",
+              "PERCENTAGE"
+            ],
+            "example": "PERCENTAGE"
+          },
+          "percent": {
+            "type": "number",
+            "format": "float",
+            "default": "",
+            "description": "A percentage of the total stay amount for an early check-in or late check-out",
+            "example": 0.25
+          },
+          "fixedAmount": {
+            "$ref": "#/components/schemas/CustomMonetaryAmount",
+            "default": "",
+            "description": "A localized amount"
+          }
+        },
+        "required": [
+          "type"
+        ]
+      },
+      "PropertyRate": {
+        "type": "object",
+        "default": null,
+        "description": "A single daily rate entry for a master rate, including availability, stay restrictions, and optional occupancy modifiers",
+        "example": {
+          "identifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+          "propertyIdentifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+          "roomRateIdentifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+          "guestRoomIdentifier": "6f9b4c8d-1e5a-4b3c-9d2e-8a7f0c1b5e43",
+          "ratePlanIdentifier": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52",
+          "amount": 450,
+          "currencyCode": "THB",
+          "master": true,
+          "closedOnArrival": false,
+          "closedOnDeparture": false,
+          "date": "2026-02-15",
+          "quantity": 5,
+          "minOccupancy": 1,
+          "maxOccupancy": 4,
+          "minLengthOfStay": 2,
+          "maxLengthOfStay": 30
+        },
+        "properties": {
+          "identifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Daily rate identifier",
+            "example": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73"
+          },
+          "propertyIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Property identifier",
+            "example": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+            "minLength": 1
+          },
+          "roomRateIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Master rate identifier",
+            "example": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+            "minLength": 1
+          },
+          "guestRoomIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Guest room (room type) identifier",
+            "example": "6f9b4c8d-1e5a-4b3c-9d2e-8a7f0c1b5e43",
+            "minLength": 1
+          },
+          "ratePlanIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Rate plan identifier",
+            "example": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52",
+            "minLength": 1
+          },
+          "amount": {
+            "type": "number",
+            "default": "",
+            "description": "Daily rate amount",
+            "example": 450
+          },
+          "currencyCode": {
+            "type": "string",
+            "default": "",
+            "description": "Currency code for rate amount",
+            "example": "THB",
+            "minLength": 1
+          },
+          "master": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether this is a master (template) rate",
+            "example": true
+          },
+          "closedOnArrival": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether the rate is closed on arrival",
+            "example": false
+          },
+          "closedOnDeparture": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether the rate is closed on departure",
+            "example": false
+          },
+          "date": {
+            "type": "string",
+            "format": "date",
+            "default": "",
+            "description": "Date for this daily rate",
+            "example": "2026-02-15"
+          },
+          "quantity": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Available quantity/inventory on this date",
+            "example": 5
+          },
+          "minOccupancy": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Minimum occupancy required for this date",
+            "example": 1
+          },
+          "maxOccupancy": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Maximum occupancy allowed for this date",
+            "example": 4
+          },
+          "minLengthOfStay": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Minimum length of stay (in nights) for this date",
+            "example": 2
+          },
+          "maxLengthOfStay": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Maximum length of stay (in nights) for this date",
+            "example": 30
+          },
+          "singleOccupancyRateModifier": {
+            "$ref": "#/components/schemas/VariableCharge",
+            "default": "",
+            "description": "Single occupancy rate modifier (JSON representation of VariableCharge)",
+            "example": {
+              "type": "PERCENTAGE",
+              "value": "-10.00"
+            }
+          },
+          "extraPaxRateModifier": {
+            "$ref": "#/components/schemas/VariableCharge",
+            "default": "",
+            "description": "Extra occupant rate modifier (JSON representation of VariableCharge)",
+            "example": {
+              "type": "FIXED_AMOUNT",
+              "value": "35.00"
+            }
+          },
+          "extraChildRateModifier": {
+            "$ref": "#/components/schemas/VariableCharge",
+            "default": "",
+            "description": "Extra child rate modifier (JSON representation of VariableCharge)",
+            "example": {
+              "type": "PERCENTAGE",
+              "value": "-50.00"
+            }
+          }
+        },
+        "required": [
+          "amount",
+          "closedOnArrival",
+          "closedOnDeparture",
+          "currencyCode",
+          "date",
+          "guestRoomIdentifier",
+          "master",
+          "propertyIdentifier",
+          "ratePlanIdentifier",
+          "roomRateIdentifier"
+        ]
+      },
+      "ChannelManagerProperty": {
+        "type": "object",
+        "default": null,
+        "description": "Property entry returned by the channel manager API, containing the property's identity, location, and currency settings",
+        "example": {
+          "identifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+          "name": "The Siam Residences, Bangkok",
+          "city": "Bangkok",
+          "countryCode": "TH",
+          "currencyCode": "THB",
+          "timeZone": "Asia/Bangkok"
+        },
+        "properties": {
+          "identifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Property ID",
+            "example": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "default": "",
+            "description": "Property name",
+            "example": "The Siam Residences, Bangkok",
+            "minLength": 1
+          },
+          "city": {
+            "type": "string",
+            "default": "",
+            "description": "City property is located in or near",
+            "example": "Bangkok",
+            "minLength": 1
+          },
+          "countryCode": {
+            "type": "string",
+            "default": "",
+            "description": "Country code property is located in",
+            "example": "TH",
+            "minLength": 1
+          },
+          "currencyCode": {
+            "type": "string",
+            "default": "",
+            "description": "Currency code property uses",
+            "example": "THB",
+            "minLength": 1
+          },
+          "timeZone": {
+            "type": "string",
+            "default": "",
+            "description": "Timezone property is located in",
+            "example": "Asia/Bangkok",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "city",
+          "countryCode",
+          "currencyCode",
+          "identifier",
+          "name",
+          "timeZone"
+        ]
+      },
+      "PropertyRoomRate": {
+        "type": "object",
+        "default": null,
+        "description": "A master rate combining a room type and a rate plan, including occupancy limits and base rate modifiers",
+        "example": {
+          "identifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+          "propertyIdentifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+          "name": "Superior Deluxe - BAR",
+          "roomTypeIdentifier": "6f9b4c8d-1e5a-4b3c-9d2e-8a7f0c1b5e43",
+          "ratePlanIdentifier": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52",
+          "guestRoomName": "Superior Deluxe",
+          "ratePlanName": "BAR",
+          "minOccupancy": 1,
+          "maxOccupancy": 4,
+          "maxAdultOccupancy": 2,
+          "maxChildOccupancy": 2,
+          "includedAdultOccupancy": 2,
+          "includedChildOccupancy": 0,
+          "baseRate": 450,
+          "singleOccupancyRateModifier": {
+            "type": "PERCENTAGE",
+            "value": "-10.00"
+          },
+          "extraPaxRateModifier": {
+            "type": "FIXED_AMOUNT",
+            "value": "35.00"
+          },
+          "extraChildRateModifier": {
+            "type": "PERCENTAGE",
+            "value": "-50.00"
+          }
+        },
+        "properties": {
+          "identifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Master rate identifier",
+            "example": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+            "minLength": 1
+          },
+          "propertyIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Property identifier",
+            "example": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "default": "",
+            "description": "Master rate name (room type + rate plan)",
+            "example": "Superior Deluxe - BAR",
+            "minLength": 1
+          },
+          "roomTypeIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Room type identifier",
+            "example": "6f9b4c8d-1e5a-4b3c-9d2e-8a7f0c1b5e43",
+            "minLength": 1
+          },
+          "ratePlanIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Rate plan identifier",
+            "example": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52",
+            "minLength": 1
+          },
+          "guestRoomName": {
+            "type": "string",
+            "default": "",
+            "description": "Room type name for display",
+            "example": "Superior Deluxe",
+            "minLength": 1
+          },
+          "ratePlanName": {
+            "type": "string",
+            "default": "",
+            "description": "Rate plan name for display",
+            "example": "BAR",
+            "minLength": 1
+          },
+          "minOccupancy": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Minimum occupancy for this room type",
+            "example": 1
+          },
+          "maxOccupancy": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Maximum occupancy for this room type",
+            "example": 4
+          },
+          "maxAdultOccupancy": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Maximum number of adults allowed in this room type",
+            "example": 2
+          },
+          "maxChildOccupancy": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Maximum number of children allowed in this room type",
+            "example": 2
+          },
+          "includedAdultOccupancy": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Number of adults the base rate price is calculated for",
+            "example": 2
+          },
+          "includedChildOccupancy": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Number of children the base rate price is calculated for",
+            "example": 0
+          },
+          "baseRate": {
+            "$ref": "#/components/schemas/CustomMonetaryAmount",
+            "default": "",
+            "description": "Base nightly rate in high-demand period",
+            "example": 450
+          },
+          "singleOccupancyRateModifier": {
+            "$ref": "#/components/schemas/VariableCharge",
+            "default": "",
+            "description": "Rate modifier for single occupancy (JSON representation of VariableCharge)",
+            "example": {
+              "type": "PERCENTAGE",
+              "value": "-10.00"
+            }
+          },
+          "extraPaxRateModifier": {
+            "$ref": "#/components/schemas/VariableCharge",
+            "default": "",
+            "description": "Rate modifier for extra occupants (JSON representation of VariableCharge)",
+            "example": {
+              "type": "FIXED_AMOUNT",
+              "value": "35.00"
+            }
+          },
+          "extraChildRateModifier": {
+            "$ref": "#/components/schemas/VariableCharge",
+            "default": "",
+            "description": "Rate modifier for extra children (JSON representation of VariableCharge)",
+            "example": {
+              "type": "PERCENTAGE",
+              "value": "-50.00"
+            }
+          }
+        },
+        "required": [
+          "baseRate",
+          "extraChildRateModifier",
+          "extraPaxRateModifier",
+          "guestRoomName",
+          "identifier",
+          "includedAdultOccupancy",
+          "includedChildOccupancy",
+          "maxAdultOccupancy",
+          "maxChildOccupancy",
+          "maxOccupancy",
+          "minOccupancy",
+          "name",
+          "propertyIdentifier",
+          "ratePlanIdentifier",
+          "ratePlanName",
+          "roomTypeIdentifier",
+          "singleOccupancyRateModifier"
+        ]
+      },
+      "PropertyWithRoomRateList": {
+        "type": "object",
+        "default": null,
+        "description": "A property together with its complete list of master rates (room type + rate plan combinations)",
+        "example": {
+          "property": {
+            "identifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+            "name": "The Siam Residences, Bangkok",
+            "city": "Bangkok",
+            "countryCode": "TH",
+            "currencyCode": "THB",
+            "timeZone": "Asia/Bangkok"
+          },
+          "list": [
+            {
+              "identifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+              "propertyIdentifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+              "name": "Superior Deluxe - BAR",
+              "roomTypeIdentifier": "6f9b4c8d-1e5a-4b3c-9d2e-8a7f0c1b5e43",
+              "ratePlanIdentifier": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52",
+              "guestRoomName": "Superior Deluxe",
+              "ratePlanName": "BAR",
+              "minOccupancy": 1,
+              "maxOccupancy": 4,
+              "maxAdultOccupancy": 2,
+              "maxChildOccupancy": 2,
+              "includedAdultOccupancy": 2,
+              "includedChildOccupancy": 0,
+              "baseRate": 450,
+              "singleOccupancyRateModifier": {
+                "type": "PERCENTAGE",
+                "value": "-10.00"
+              },
+              "extraPaxRateModifier": {
+                "type": "FIXED_AMOUNT",
+                "value": "35.00"
+              },
+              "extraChildRateModifier": {
+                "type": "PERCENTAGE",
+                "value": "-50.00"
+              }
+            }
+          ]
+        },
+        "properties": {
+          "property": {
+            "$ref": "#/components/schemas/ChannelManagerProperty",
+            "default": "",
+            "description": "Property details"
+          },
+          "list": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "description": "List of master rates (room type + rate plan combinations) for this property",
+            "items": {
+              "$ref": "#/components/schemas/PropertyRoomRate",
+              "default": ""
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          }
+        },
+        "required": [
+          "property"
+        ]
+      },
+      "PropertyRoomRateWithRateList": {
+        "type": "object",
+        "default": null,
+        "description": "A master rate together with the daily rates for the queried date range",
+        "example": {
+          "room": {
+            "identifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+            "propertyIdentifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+            "name": "Superior Deluxe - BAR",
+            "roomTypeIdentifier": "6f9b4c8d-1e5a-4b3c-9d2e-8a7f0c1b5e43",
+            "ratePlanIdentifier": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52",
+            "guestRoomName": "Superior Deluxe",
+            "ratePlanName": "BAR",
+            "minOccupancy": 1,
+            "maxOccupancy": 4,
+            "maxAdultOccupancy": 2,
+            "maxChildOccupancy": 2,
+            "includedAdultOccupancy": 2,
+            "includedChildOccupancy": 0,
+            "baseRate": 450,
+            "singleOccupancyRateModifier": {
+              "type": "PERCENTAGE",
+              "value": "-10.00"
+            },
+            "extraPaxRateModifier": {
+              "type": "FIXED_AMOUNT",
+              "value": "35.00"
+            },
+            "extraChildRateModifier": {
+              "type": "PERCENTAGE",
+              "value": "-50.00"
+            }
+          },
+          "rates": [
+            {
+              "identifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+              "propertyIdentifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+              "roomRateIdentifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+              "guestRoomIdentifier": "6f9b4c8d-1e5a-4b3c-9d2e-8a7f0c1b5e43",
+              "ratePlanIdentifier": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52",
+              "amount": 450,
+              "currencyCode": "THB",
+              "master": true,
+              "closedOnArrival": false,
+              "closedOnDeparture": false,
+              "date": "2026-02-15",
+              "quantity": 5,
+              "minOccupancy": 1,
+              "maxOccupancy": 4,
+              "minLengthOfStay": 2,
+              "maxLengthOfStay": 30
+            }
+          ],
+          "startDate": "2026-02-15",
+          "endDate": "2026-02-28"
+        },
+        "properties": {
+          "room": {
+            "$ref": "#/components/schemas/PropertyRoomRate",
+            "default": "",
+            "description": "Master rate details (room type + rate plan)"
+          },
+          "rates": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "description": "Daily rates for the queried date range",
+            "items": {
+              "$ref": "#/components/schemas/PropertyRate",
+              "default": ""
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date",
+            "default": "",
+            "description": "Start date of the queried range (inclusive)",
+            "example": "2026-02-15"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date",
+            "default": "",
+            "description": "End date of the queried range (inclusive)",
+            "example": "2026-02-28"
+          }
+        },
+        "required": [
+          "room"
+        ]
+      },
+      "PropertyBooking": {
+        "type": "object",
+        "default": null,
+        "description": "A single booking for a property, including guest details, stay dates, room assignment, pricing, and payment status",
+        "example": {
+          "bookingIdentifier": "f4d1c8e5-2b9a-4f3d-9e7c-1b6a5d3f8c92",
+          "propertyIdentifier": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+          "roomRateIdentifier": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+          "name": "Superior Deluxe - BAR",
+          "guestRoomName": "Superior Deluxe",
+          "ratePlanName": "BAR",
+          "rooms": 1,
+          "guests": 3,
+          "adults": 2,
+          "children": 1,
+          "firstName": "Alexandra",
+          "lastName": "Beaumont",
+          "email": "alexandra.beaumont@example.com",
+          "amount": "450.00",
+          "currencyCode": "THB",
+          "bookingCode": "WNK4ZQ7P",
+          "startDate": "2026-02-15",
+          "endDate": "2026-02-17",
+          "createdDate": "2026-02-01T10:30:00",
+          "cancelled": false,
+          "paymentMethodType": "Card",
+          "paymentMethodStatus": "SUCCEEDED",
+          "salesChannelName": "Wink Travel Agents",
+          "salesChannelIdentifier": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52"
+        },
+        "properties": {
+          "bookingIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Booking ID",
+            "example": "f4d1c8e5-2b9a-4f3d-9e7c-1b6a5d3f8c92",
+            "minLength": 1
+          },
+          "propertyIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Property ID",
+            "example": "e2c7b4d3-1a8f-4e9c-b5d6-3a9f0e7c2b18",
+            "minLength": 1
+          },
+          "roomRateIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Master Rate ID",
+            "example": "5e8a3b7c-0d4f-4a2b-8c1d-9e6f2a0b4c73",
+            "minLength": 1
+          },
+          "name": {
+            "type": "string",
+            "default": "",
+            "description": "Master Rate name",
+            "example": "Superior Deluxe - BAR",
+            "minLength": 1
+          },
+          "guestRoomName": {
+            "type": "string",
+            "default": "",
+            "description": "Guest room name",
+            "example": "Superior Deluxe",
+            "minLength": 1
+          },
+          "ratePlanName": {
+            "type": "string",
+            "default": "",
+            "description": "Rate plan name",
+            "example": "BAR",
+            "minLength": 1
+          },
+          "rooms": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Number of rooms in booking",
+            "example": 1
+          },
+          "guests": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Total number of guests (adults and children)",
+            "example": 3
+          },
+          "adults": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Number of adults in booking",
+            "example": 2
+          },
+          "children": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Number of children in booking",
+            "example": 1
+          },
+          "firstName": {
+            "type": "string",
+            "default": "",
+            "description": "First name of primary guest",
+            "example": "Alexandra",
+            "minLength": 1
+          },
+          "lastName": {
+            "type": "string",
+            "default": "",
+            "description": "Last name of primary guest",
+            "example": "Beaumont",
+            "minLength": 1
+          },
+          "email": {
+            "type": "string",
+            "default": "",
+            "description": "Email address of primary guest",
+            "example": "alexandra.beaumont@example.com",
+            "minLength": 1
+          },
+          "amount": {
+            "type": "number",
+            "default": "",
+            "description": "Total booking amount in supplier currency",
+            "example": 450
+          },
+          "currencyCode": {
+            "type": "string",
+            "default": "",
+            "description": "Supplier currency code",
+            "example": "THB",
+            "minLength": 1
+          },
+          "bookingCode": {
+            "type": "string",
+            "default": "",
+            "description": "User-friendly booking confirmation code",
+            "example": "WNK4ZQ7P",
+            "minLength": 1
+          },
+          "startDate": {
+            "type": "string",
+            "format": "date",
+            "default": "",
+            "description": "Room check-in date (arrival)",
+            "example": "2026-02-15"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date",
+            "default": "",
+            "description": "Room check-out date (departure)",
+            "example": "2026-02-17"
+          },
+          "createdDate": {
+            "type": "string",
+            "format": "date-time",
+            "default": "",
+            "description": "Timestamp when booking was created",
+            "example": "2026-02-01T10:30:00"
+          },
+          "cancelled": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether the booking is cancelled",
+            "example": false
+          },
+          "cancelDate": {
+            "type": "string",
+            "format": "date-time",
+            "default": "",
+            "description": "Timestamp when booking was cancelled (null if not cancelled)",
+            "example": "2026-02-05T14:22:30"
+          },
+          "paymentMethodType": {
+            "type": "string",
+            "default": "",
+            "description": "Payment method type (e.g. Card, Direct Debit)",
+            "example": "Card",
+            "minLength": 1
+          },
+          "paymentWalletType": {
+            "type": "string",
+            "default": "",
+            "description": "Payment wallet provider if applicable (e.g. Google Pay, Apple Pay)",
+            "example": "Google Pay"
+          },
+          "paymentMethodStatus": {
+            "type": "string",
+            "default": "",
+            "description": "Booking lifecycle status. INITIALIZED: awaiting payment; TEST_PAYMENT_SUCCEEDED: test booking; PAYMENT_SUCCEEDED: payment confirmed; PAYMENT_FAILED: payment declined; FAILED: system failure post-payment; CANCELLED: cancelled by any party; PARTIALLY_REFUNDED: partial refund issued; FULLY_REFUNDED: full refund issued",
+            "enum": [
+              "INITIALIZED",
+              "TEST_PAYMENT_SUCCEEDED",
+              "PAYMENT_SUCCEEDED",
+              "PAYMENT_FAILED",
+              "FAILED",
+              "CANCELLED",
+              "PARTIALLY_REFUNDED",
+              "FULLY_REFUNDED"
+            ],
+            "example": "SUCCEEDED"
+          },
+          "salesChannelName": {
+            "type": "string",
+            "default": "",
+            "description": "Sales channel name (bookable inventory source)",
+            "example": "Wink Travel Agents",
+            "minLength": 1
+          },
+          "salesChannelIdentifier": {
+            "type": "string",
+            "format": "uuid",
+            "default": "",
+            "description": "Sales channel ID",
+            "example": "7a0c5d9e-2f6b-4c1a-8e4d-3b9f1a0c6d52",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "adults",
+          "amount",
+          "bookingCode",
+          "bookingIdentifier",
+          "cancelled",
+          "children",
+          "createdDate",
+          "currencyCode",
+          "email",
+          "endDate",
+          "firstName",
+          "guestRoomName",
+          "guests",
+          "lastName",
+          "name",
+          "paymentMethodStatus",
+          "paymentMethodType",
+          "propertyIdentifier",
+          "ratePlanName",
+          "roomRateIdentifier",
+          "rooms",
+          "salesChannelIdentifier",
+          "salesChannelName",
+          "startDate"
+        ]
+      },
+      "PingResponse": {
+        "type": "object",
+        "default": null,
+        "description": "Response returned by the ping endpoint confirming that credentials are valid",
+        "example": {
+          "apiVersion": "2.0",
+          "name": "The Siam Residences, Bangkok"
+        },
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "default": "",
+            "description": "API version",
+            "example": "2.0"
+          },
+          "name": {
+            "type": "string",
+            "default": "",
+            "description": "Account name",
+            "example": "The Siam Residences, Bangkok"
+          },
+          "status": {
+            "type": "string",
+            "default": "",
+            "description": "Account status. PENDING_APPROVAL: awaiting admin activation; ACTIVE: account is operational; INACTIVE: account has been deactivated; UNDER_REVIEW: account is being reviewed; SUSPENDED: account suspended due to policy violation; REJECTED: account application was rejected; REMOVED: account has been deleted",
+            "enum": [
+              "PENDING_APPROVAL",
+              "ACTIVE",
+              "INACTIVE",
+              "UNDER_REVIEW",
+              "SUSPENDED",
+              "REJECTED",
+              "REMOVED"
+            ]
+          }
+        },
+        "required": [
+          "apiVersion",
+          "name",
+          "status"
+        ]
+      }
+    },
+    "securitySchemes": {
+      "oauth2ClientCredentials": {
+        "type": "oauth2",
+        "description": "Every endpoint is protected with OAuth2 **client credentials**. Create an\n**Application** in your account to obtain a `clientId` and `clientSecret`, then\nexchange them for a short-lived bearer token.\n\n### 1. Request an access token\n`POST` to the **Token URL** below with `Content-Type: application/x-www-form-urlencoded`\nand a body of `grant_type=client_credentials` (optionally `scope=<space-separated scopes>`).\nSend your credentials as HTTP Basic auth:\n`Authorization: Basic base64(clientId + \":\" + clientSecret)`.\n\n### 2. Call the API\nPass the returned token on every request: `Authorization: Bearer <access_token>`.\n\nTokens carry only the scopes granted to your Application — request the least privilege\nyou need. There is no interactive authorize step and no refresh token for this flow;\nrequest a new token when the current one expires.",
+        "name": "Client Credentials",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://dev-iam.wink.travel:9000/oauth2/token",
+            "scopes": {
+              "integrations.read": "View your channel manager integrations.",
+              "integrations.write": "Create and update your channel manager integrations.",
+              "integrations.remove": "Delete your channel manager integrations."
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,127 +1,361 @@
 ---
-title: MCP Server
-description: Tengdu fljótt AI-umboðsmönnum við Wink skjöl og lifandi OpenAPI forskriftir í gegnum hýsta MCP þjóninn.
+title: MCP þjónar
+description: Tengdu AI-umboðsmenn við Wink vettvanginn í gegnum Model Context Protocol. Auðkenndir MCP þjónar gefa umboðsmanni þínum beinan aðgang að birgðum, bókunum, samþættingum við rásarstjóra og fleira — öruggt með gagnvirkri OAuth2 innskráningu.
 sidebar:
   order: 10
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-## Yfirlit
-Hýsti Wink MCP þjónninn er aðgengilegur á:
+Wink býður upp á tvo auðkennda MCP þjónar. Báðir nota **gagnvirka OAuth2 innskráningu** (PKCE heimildarkóðaflæði) — AI-umboðsmaður þinn opnar vafraglugga svo þú skráir þig inn með Wink reikningnum þínum. Engar viðskiptavinleyndarmál til að stjórna.
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+| Þjónn | URL | Hvað hann gerir |
+|--------|-----|--------------|
+| **Inventory API** | `https://api.wink.travel/mcp` | Birgðir, bókanir, verð, sölurásir, greiningar og allar aðgerðir á vettvangi |
+| **Integrations** | `https://integrations.wink.travel/mcp` | Samþættingar rásarstjóra — samstilltu eignir, verð og framboð með OTA-kerfum |
 
-Bendið samhæfum AI viðskiptavinum (VS Code, Cursor, aðrir sem innleiða MCP HTTP flutning) á þennan enda til að leyfa þeim að:
-- Skoða vörur & pallskjöl (`wink://docs/...`)
-- Skoða lifandi OpenAPI forskriftir og aðgerðarskjöl (`wink://api/...`)
-- Framkvæma létta merkingar- / lykilorðaleit yfir skjöl og lifandi API
+---
 
-## Flutningur
-Notið aðal straumflutningshæfan HTTP enda:
+## Hvernig auðkenning virkar
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+Wink MCP þjónar nota **OAuth2 Heimildarkóða + PKCE** flæði og styðja **Dynamic Client Registration (RFC 7591)**. Þetta gerist þegar þú tengir í fyrsta sinn:
 
-Ef viðskiptavinur styður aðeins SSE, notið:
+1. AI viðskiptavinurinn finnur auðkenningarþjóninn úr `/.well-known/oauth-protected-resource` metadata MCP endapunktsins.
+2. Viðskiptavinurinn skráir sig sjálfur með **Dynamic Client Registration** — engin handvirk umsóknaruppsetning nauðsynleg.
+3. Viðskiptavinurinn opnar **vafraglugga** á `https://iam.wink.travel`. Þú skráir þig inn með Wink reikningnum þínum og samþykkir beiðnar heimildir á samþykkisskjánum.
+4. Wink gefur út **aðgangstákn** sem er bundið við reikninginn þinn og auðkenni.
+5. AI viðskiptavinurinn festir táknið við hverja MCP beiðni. Öll niðurstaða tækja er sjálfkrafa bundin við þitt stjórnunareiningu.
+6. Táknum rennur út eftir 3 klukkustundir. AI viðskiptavinurinn endurnýjar táknin hljóðlega í bakgrunni án frekari fyrirspurna.
 
-```
-https://docs.mcp.wink.travel/sse
-```
+Allar tækjakall keyra **undir þínu auðkenni** — sömu ACL reglur sem vernda vefsvæðið gilda um AI umboðsmanninn.
 
-### Claude Code
-Opinber skjöl: [Tengdu Claude Code við verkfæri í gegnum MCP](https://code.claude.com/docs/en/mcp)
+---
 
-Anthropic mælir með fjarflutningi HTTP fyrir skýhýsta MCP þjóninn:
+## Tengdu AI viðskiptavininn þinn
+
+<Tabs>
+  <TabItem label="Claude Code">
+
+<Steps>
+1. Gakktu úr skugga um að Claude Code sé uppfærður:
+   ```bash
+   npm install -g @anthropic-ai/claude-code
+   ```
+
+2. Bættu við Wink Inventory MCP þjóninum:
+   ```bash
+   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   ```
+
+3. Claude Code tengist þjóninum, finnur auðkenningarþjóninn og opnar sjálfgefinn vafra.
+
+4. **Skráðu þig inn í Wink** og samþykktu beiðnina um heimildir á samþykkisskjánum.
+
+5. Claude Code staðfestir tenginguna. Sláðu inn `/mcp` til að staðfesta að þjónninn birtist og tól hafi hlaðist.
+</Steps>
+
+Til að bæta við Integrations þjóninum líka:
 ```bash
-claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
-claude mcp list
+claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
 ```
 
-Innan Claude Code, keyrðu `/mcp` til að skoða stöðu þjónsins. Ef þú vilt deila þjóninum með öllu verkefninu, bættu við `--scope project` svo Claude Code skrifi stillinguna í `.mcp.json`.
+:::tip[Deildu með teyminu þínu]
+Bættu við `--scope project` í `claude mcp add` og Claude Code skrifar þjóns-URL í `.mcp.json` í rót verkefnisins. Skráðu það inn — hver liðsfélagi klárar eigin vafra-innskráningu í fyrsta sinn sem hann tengist.
+:::
 
-### Codex
-Opinber skjöl: [Docs MCP fljótstart fyrir Codex](https://developers.openai.com/resources/docs-mcp)
+  </TabItem>
+  <TabItem label="Claude Desktop">
 
-OpenAI lýsir MCP uppsetningu í gegnum Codex CLI og bendir á að stillingarnar séu deilt með IDE viðbótinni:
+<Steps>
+1. Breyttu stillingarskránni fyrir Claude Desktop:
+   - **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+   - **Linux:** `~/.config/Claude/claude_desktop_config.json`
+
+2. Bættu við MCP þjónnaskrám:
+
+   ```json title="claude_desktop_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **Lokaðu alveg og ræstu Claude Desktop aftur** (notaðu Quit úr valmyndastikunni — að loka glugga er ekki nóg).
+
+4. Claude Desktop opnar vafraglugga fyrir hvern nýjan þjón. Skráðu þig inn í Wink og samþykktu heimildir.
+
+5. Tengi-tákn í neðri tækjastikunni sýnir báða þjónana sem tengda.
+</Steps>
+
+  </TabItem>
+  <TabItem label="OpenAI Codex">
+
+<Steps>
+1. Gakktu úr skugga um að Codex CLI sé uppsett:
+   ```bash
+   npm install -g @openai/codex
+   ```
+
+2. Opnaðu (eða búðu til) Codex stillingarskrána:
+   - **macOS / Linux:** `~/.codex/config.json`
+   - **Windows:** `%USERPROFILE%\.codex\config.json`
+
+3. Bættu við Wink MCP þjónnaskrám:
+
+   ```json title="~/.codex/config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+4. Ræstu Codex. Í fyrsta skipti opnar Codex vafraglugga á `https://iam.wink.travel`.
+
+5. **Skráðu þig inn í Wink** og samþykktu beiðnar heimildir.
+
+6. Codex staðfestir tenginguna. Keyrðu `codex` og biððu um lista yfir tiltæk tól til að staðfesta að Wink þjónarnir séu virkir.
+</Steps>
+
+:::note
+Codex CLI MCP stuðningur krefst útgáfu **1.0** eða nýrri. Keyrðu `codex --version` til að athuga og `npm install -g @openai/codex` til að uppfæra.
+:::
+
+  </TabItem>
+  <TabItem label="ChatGPT">
+
+Stuðningur við MCP þjónustu er í boði í **ChatGPT skjáborðsforritinu** fyrir Plus, Pro, Team og Enterprise áskrifendur.
+
+<Steps>
+1. Sæktu og settu upp [ChatGPT skjáborðsforritið](https://openai.com/chatgpt/download/) ef þú hefur ekki gert það.
+
+2. Opnaðu forritið og smelltu á **prófílmyndina þína** efst til hægri, veldu svo **Stillingar**.
+
+3. Farðu í **Tengla** (eða **MCP Servers** eftir útgáfu) og smelltu á **Bæta við**.
+
+4. Sláðu inn URL fyrir Wink Inventory þjóninn:
+   ```
+   https://api.wink.travel/mcp
+   ```
+   Smelltu svo á **Tengja**.
+
+5. ChatGPT opnar vafraglugga á `https://iam.wink.travel`. **Skráðu þig inn í Wink** og samþykktu heimildir.
+
+6. Endurtaktu skref 4–5 fyrir Integrations þjóninn:
+   ```
+   https://integrations.wink.travel/mcp
+   ```
+
+7. Báðir þjónar birtast í tenglalistanum þínum. Byrjaðu nýtt spjall — Wink tól eru sjálfkrafa tiltæk.
+</Steps>
+
+:::note[Takmörkun vefforrits]
+MCP þjónar eru aðeins stillanlegir í **skjáborðsforriti**. ChatGPT vefviðmótið á chatgpt.com styður ekki sérsniðna MCP þjónustu.
+:::
+
+  </TabItem>
+  <TabItem label="Cursor">
+
+<Steps>
+1. Opnaðu (eða búðu til) Cursor MCP stillingarskrána:
+   - **macOS / Linux:** `~/.cursor/mcp.json`
+   - **Windows:** `%USERPROFILE%\.cursor\mcp.json`
+
+2. Bættu við Wink MCP þjónnaskrám:
+
+   ```json title="~/.cursor/mcp.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. Opnaðu Cursor. Farðu í **Stillingar → Cursor Stillingar → MCP** og staðfestu að báðir þjónar birtist með grænum stöðutákni. Ef þeir eru rauðir, smelltu á **Endurnýja**.
+
+4. Cursor opnar vafraglugga á `https://iam.wink.travel`. **Skráðu þig inn í Wink** og samþykktu heimildir.
+
+5. Opnaðu spjall (`Ctrl+L` / `Cmd+L`) og biððu Cursor um að sýna tiltæk Wink tól til að staðfesta tenginguna.
+</Steps>
+
+:::tip[Verkefnastilling]
+Þú getur líka sett `mcp.json` skrá í rót verkefnisins í staðinn fyrir í `~/.cursor/`. Verkefnastilling hefur forgang og gerir þjónana aðgengilega fyrir alla liðsmenn sem opna verkefnið í Cursor.
+:::
+
+  </TabItem>
+  <TabItem label="Windsurf">
+
+<Steps>
+1. Opnaðu (eða búðu til) Windsurf MCP stillingarskrána:
+   - **macOS / Linux:** `~/.codeium/windsurf/mcp_config.json`
+   - **Windows:** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
+
+2. Bættu við Wink MCP þjónnaskrám:
+
+   ```json title="~/.codeium/windsurf/mcp_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **Endurræstu Windsurf alveg** (Skrá → Hætta, opnaðu svo aftur).
+
+4. Farðu í **Stillingar → MCP Servers** og staðfestu að báðir þjónar sýni sem tengdir. Windsurf opnar vafraglugga á `https://iam.wink.travel` í fyrsta skipti.
+
+5. **Skráðu þig inn í Wink** og samþykktu heimildir. Þjónarnir verða grænir í stillingum þegar auðkenning er staðfest.
+</Steps>
+
+:::note
+Windsurf MCP stuðningur krefst útgáfu **1.4** eða nýrri. Athugaðu í **Hjálp → Um Windsurf** og uppfærðu af Windsurf vefsíðunni ef þörf er á.
+:::
+
+  </TabItem>
+  <TabItem label="Cline (VS Code)">
+
+Cline er VS Code viðbót með innbyggðum MCP þjónastjóra. Engin handvirk JSON breyting er nauðsynleg.
+
+<Steps>
+1. Settu upp Cline úr VS Code Marketplace:
+   - Opnaðu VS Code og ýttu á `Ctrl+Shift+X` / `Cmd+Shift+X`
+   - Leitaðu að **Cline** og smelltu á **Setja upp**
+
+2. Smelltu á **Cline táknið** í Activity Bar (vinstri hliðarstiku) til að opna Cline gluggann.
+
+3. Smelltu á **MCP Servers** táknið (tengi-tákn) í Cline tækjastikunni, veldu svo **Breyta MCP Stillingum**.
+
+4. VS Code opnar `cline_mcp_settings.json`. Bættu við Wink færslunum:
+
+   ```json title="cline_mcp_settings.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+5. **Vistaðu skrána.** Cline hleður aftur sjálfkrafa og opnar vafraglugga á `https://iam.wink.travel`.
+
+6. **Skráðu þig inn í Wink** og samþykktu heimildir. Báðir þjónar birtast sem virkir í MCP Servers glugganum.
+</Steps>
+
+:::tip[Annað: bættu við með URL]
+Í MCP Servers glugganum, smelltu á **Bæta við þjón** og límdu `https://api.wink.travel/mcp` beint inn. Cline fyllir sjálfkrafa út stillingarnar og sér um auðkenningu án handvirkrar JSON breytingar.
+:::
+
+  </TabItem>
+</Tabs>
+
+---
+
+## Heimildir
+
+Þegar þú samþykkir samþykkisskjáinn sérðu sundurliðun á því sem umboðsmaðurinn biður um. MCP
+viðskiptavinir nota sama heimildamál og restin af vettvangnum — sjá fulla
+[heimildaskráningu á Auðkenningarsíðu](/is/developers/authentication#scopes).
+
+Tveir hlutir eru sértækir fyrir MCP:
+
+- **`mcp.read` `mcp.write` `mcp.remove` heimildir eru aukalega nauðsynlegar** til að opna MCP
+  flutninginn. Viðskiptavinur með `mcp.*` heimild fær aðgang að `/mcp`, en hvert tól sem hann kallar
+  krefst samt viðeigandi hlutaheimildar endapunktsins sem það umlykur (t.d. `booking.read`).
+- **AI viðskiptavinurinn biður aðeins um þær heimildir sem hann þarf.** Þú getur neitað einstökum heimildum á
+  samþykkisskjánum — tól sem krefjast neitaðrar heimildar skila villu þegar þau eru kölluð.
+
+---
+
+## Villuleit
+
+**Vafragluggi opnast ekki**
+
+AI viðskiptavinurinn þinn styður kannski ekki enn gagnvirka PKCE flæðið. Staðfestu að þú sért með nýjustu útgáfu:
+- **Claude Code:** `npm install -g @anthropic-ai/claude-code`
+- **Codex CLI:** `npm install -g @openai/codex`
+- **Claude Desktop / ChatGPT skjáborð:** uppfærðu með innbyggðum uppfærslutæki appsins
+
+**`401 Unauthorized` eftir innskráningu**
+
+Gæti verið að vistað tákn sé úrelt. Fjarlægðu og bættu þjóninum aftur til að kveikja á nýrri innskráningu:
+
 ```bash
-codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
-codex mcp list
+# Claude Code
+claude mcp remove wink-inventory
+claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-### Cursor
-Cursor MCP skjöl: https://cursor.com/docs/context/mcp
-Uppsetning: Bættu við fjarþjóni í gegnum MCP stillingar.
-```json
-{
-  "mcpServers": {
-    "wink-docs": {
-      "url": "https://docs.mcp.wink.travel/mcp",
-    }
-  }
-}
-```
+Fyrir Claude Desktop og ChatGPT, fjarlægðu þjónninn úr stillingum, ræstu forritið aftur og bættu honum svo við.
 
-### VS Code
-Opinber skjöl: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-Lágmarks fjarstilling (notandi eða vinnusvæði `mcp.json`):
-```json
-{
-  "servers": {
-    "wink-docs": {
-      "type": "http",
-      "url": "https://docs.mcp.wink.travel/mcp"
-    }
-  }
-}
-```
+**`403 Forbidden` þegar kallað er á ákveðið tól**
 
-Ábendingar:
-- Notaðu Command Palette: „MCP: List Servers“ til að staðfesta tengingu & skoða verkfæri.
-- Verkfæraval leyfir þér að virkja/óvirkja `api_search` og `docs_search`.
-- Bættu við samhengi: Spjallgluggi → Bæta við samhengi → MCP auðlindir til að tengja skjalsíður.
+Tólið krefst heimildar sem þú hafðir ekki samþykkt á samþykkisskjánum. Tengdu þjóninn aftur — samþykkisskjárinn birtist á ný og þú getur samþykkt vantar heimild.
 
-## Kjarnauppsprettu URI
+**Þjónninn birtist en tól skila "account not found"**
 
-| URI | Lýsing |
-|-----|-------------|
-| `wink://docs` | Skjalaskrá (flokkað eftir flokkum) |
-| `wink://docs/{path}` | Sérstakur skjalsgrein (Markdown / MDX) |
-| `wink://api` | Lifandi OpenAPI skrá sem uppgötvuð er úr Wink swagger stillingum |
-| `wink://api/{apiName}` | Þétt API yfirlit með auðkenningu, merkjum, hausum og dæmaaðgerðum |
-| `wink://api/{apiName}/operations` | Fullt aðgerðarskrá með flokkun eftir merkjum |
-| `wink://api/{apiName}/operation/{key}` | Upplýsingar um einstaka aðgerð (breytur, beiðnibolur, svör) |
-| `wink://api/{apiName}/schema/{schemaName}` | Útfært hlutaform með innfelldum reitum, gerðum og dæmum |
-| `wink://api/{apiName}/operation/{key}/request` | Skoðun á beiðni með nauðsynlegum inntökum og lágmarks dæmi um gagnapakka |
-| `wink://api/{apiName}/operation/{key}/response/{status}` | Skoðun á svari fyrir ákveðinn stöðukóða |
-| `wink://api/{apiName}/operation/{key}/recipe` | Verkferill fyrir rétta notkun aðgerðarinnar |
+Þú ert skráður inn með Wink reikningi sem hefur enga stjórnunareiningu. Farðu á [Wink Portal](https://app.wink.travel) og tryggðu að reikningurinn þinn sé rétt stilltur áður en þú notar MCP þjóninn.
 
-## Leitartól (Fljótleg yfirlit)
-| Tól | Tilgangur | Dæmi um algengar fyrirspurnir |
-|------|---------|-----------------------|
-| `api_search` | Finna lifandi API eða aðgerð til að samþætta | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
-| `docs_search` | Finna hugmyndafræðileg skjöl / leiðbeiningar | `authentication`, `webhooks`, `wordPress` |
+**Táknið rennur út miðja lotu**
 
-Láttu `query` vera tómt til að fá tillögur. Hvert niðurstaða inniheldur MCP URI sem hægt er að opna.
-Fyrir aðgerðarniðurstöður skilar `api_search` einnig tengdum beiðni, svari, formi og uppskrift URI svo umboðsmenn geti hoppað beint í gagnlegustu undiraðlindirnar.
+Táknum gilda í 3 klukkustundir. Claude Code og Claude Desktop endurnýja tákn hljóðlega án truflunar. Ef þú færð auðkennisvillur eftir langa bið, sláðu inn nýja skilaboð — viðskiptavinurinn auðkennir sig sjálfkrafa aftur.
 
-## Venjulegt notkunarmynstur
-1. Keyrðu `api_search` með þinni fyrirætlan (t.d. *„create affiliate“* eða *„payment receipt“*).
-2. Opnaðu skilaða `wink://api/...` URI, eða fylgdu tengdum `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris` og `recipe_uri` reitum.
-3. Notaðu `docs_search` fyrir stuðningshugmyndir (auðkenning, webhooks, vinnuflæði).
+**Codex CLI sýnir "MCP server unreachable"**
 
-## AI Hæfileikar
+Athugaðu að `~/.codex/config.json` sé gilt JSON (engin aukakomma) og að `"type": "http"` sé stillt. Codex krefst HTTP flutnings fyrir fjarþjóna; stdio flutningur er aðeins fyrir staðbundna keyrslu.
 
-Fyrirfram smíðaðir hæfileikar umboðsmanna nota þennan MCP þjón sem sannleiksgjafa. Hæfileikar gefa kóðunarumboðsmanni þínum uppbyggðan vinnuflæði til að byggja á Wink API — í stað þess að giska á enda, les umboðsmaðurinn lifandi samninga beint frá MCP þjóninum.
+**ChatGPT "Connectors" valmynd vantar**
 
-Sjá [AI Skills](/is/developers/ai-skills) fyrir tiltæka hæfileika og uppsetningarleiðbeiningar.
+MCP stuðningur krefst ChatGPT skjáborðsforrits útgáfu **1.2024.352** eða nýrri og virks Plus, Pro, Team eða Enterprise áskriftar. Uppfærðu forritið og staðfestu áætlun í Stillingar → Reikningur.
 
-## Athugasemdir
-- Hvert skilað URI er hægt að opna af umboðsmanni til að fá fullan innihald.
-- `wink://api` tréð er lifandi og fylgir núverandi OpenAPI skrá frá uppsprettu í stað búins skjalaskrár.
-- Tillögur birtast sjálfkrafa þegar fyrirspurnir eru tómar.
+**Cursor þjónn sýnir rauðan / "Failed to connect"**
 
+Staðfestu að `~/.cursor/mcp.json` sé gilt JSON og innihaldi `"type": "http"`. Farðu svo í **Stillingar → Cursor Stillingar → MCP** og smelltu á **Endurnýja**. Ef villan heldur áfram, endurræstu Cursor alveg — breytingar á stillingum ná ekki alltaf fram án endurræsingar.
+
+**Windsurf MCP þjónar birtast ekki í stillingum**
+
+Windsurf krefst fullrar endurræsingar (ekki bara gluggahleðslu) til að taka breytingar á `mcp_config.json` gildar. Notaðu **Skrá → Hætta** og ræstu aftur. Ef þjónar birtast ekki, staðfestu að þú sért með Windsurf **1.4+** í **Hjálp → Um Windsurf**.
+
+**Cline "Add Server" valkostur er ekki sýnilegur**
+
+MCP þjónastjóri krefst Cline **2.0** eða nýrri. Opnaðu VS Code Extensions gluggann, finndu Cline og smelltu á **Uppfæra** ef uppfærsla er í boði. Eftir uppfærslu, endurhlaða VS Code (`Ctrl+Shift+P` → "Developer: Reload Window").
+
+---
+
+<LinkButton href="https://app.wink.travel" variant="primary" icon="external">Opna Wink Portal</LinkButton>
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink á GitHub</LinkButton>

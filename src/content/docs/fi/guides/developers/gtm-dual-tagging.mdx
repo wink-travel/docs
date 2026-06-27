@@ -7,7 +7,7 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Jos suoritat mainoskampanjoita Sojernin kautta, voit yhdistää Sojern-tilisi Winkiin syöttämällä Sojern GTM Container ID -tunnuksesi Wink-portaaliin. Kun yhteys on muodostettu, Sojernin seurantapikseli aktivoituu automaattisesti kiinteistölläsi — kattaen koko vieraan matkan hausta aina varauksen vahvistumiseen asti.
+Jos suoritat mainoskampanjoita Sojernin kautta, voit yhdistää Sojern-tilisi Winkiin syöttämällä Sojern GTM Container ID -tunnuksesi Wink-portaaliin. Kun yhteys on muodostettu, Sojernin seurantapikseli aktivoituu automaattisesti kiinteistölläsi — kattaen koko vieraan matkan hausta aina varauksen vahvistamiseen asti.
 
 <Aside type="tip">
 Tämä edellyttää, että sinulla on jo aktiivinen Sojern-tili ja olet saanut GTM Container ID -tunnuksesi Sojern-tilisi yhteyshenkilöltä. Jos sinulla ei vielä ole Sojern-tiliä, käy osoitteessa [sojern.com/contact](https://www.sojern.com/contact) aloittaaksesi.
@@ -47,9 +47,9 @@ Läpinäkyvyyden vuoksi tässä on, mitä Wink konfiguroi tämän integraation t
 
 - **Sojern GTM Container ID -kenttä** on saatavilla Wink-portaalin Customizations-välilehdellä. Kun syötät Container ID:n, Wink tarkistaa muodon ja tallentaa sen turvallisesti kiinteistöösi.
 - **Jokaisella sivulla, jolla kiinteistösi on aktiivinen** Winkissä, Sojern GTM Container ID upotetaan sivulle ja Winkin tagien hallintajärjestelmä lataa dynaamisesti Sojern-kontainerisi oman kontainerinsa rinnalle. Tämä tapahtuu automaattisesti — Wink-tiimiltä ei vaadita manuaalisia toimenpiteitä kiinteistökohtaisesti.
-- **Sojern-kontainerisi ladataan asynkronisesti**, eli se ei vaikuta sivun latausnopeuteen vieraillesi.
+- **Sojern-kontainerisi ladataan asynkronisesti**, eli se ei vaikuta sivun latausnopeuteen vieraille.
 - **Winkin oma seuranta ja Sojern-pikseli toimivat rinnakkain**, käyttäen samaa jaettua tapahtumatietoa. Jokainen varaukseen liittyvä tapahtuma, jonka Wink seuraa, on samanaikaisesti saatavilla Sojern-kontainerillesi.
-- **Kun kiinteistöäsi ei katsota** — esimerkiksi kun vieras selaa toista hotellia Winkissä — Sojern-kontaineria ei ladata. Tämä varmistaa, että Sojern saa vain kiinteistöäsi koskevia tietoja.
+- **Kun kiinteistöäsi ei katsota** — esimerkiksi kun vieras selaa toista hotellia Winkissä — Sojern-kontaineria ei ladata. Tämä varmistaa, että Sojern saa vain kiinteistöäsi koskevat tiedot.
 
 ---
 
@@ -57,7 +57,7 @@ Läpinäkyvyyden vuoksi tässä on, mitä Wink konfiguroi tämän integraation t
 
 Wink työntää GA4-yhteensopivia tapahtumia `dataLayer`-taulukkoon koko vieraan matkan ajan. GTM-kontainerisi lukee tästä samasta jaetusta `dataLayer`-taulukosta, joten kaikki määrittämäsi triggerit tai muuttujat pääsevät käsiksi alla kuvattuihin ominaisuuksiin.
 
-Jokainen tapahtuma noudattaa standardia GA4 Enhanced Ecommerce -rakennetta: ylin `event`-merkkijono ja `ecommerce`-objekti. Ennen jokaista työntöä Wink tyhjentää edellisen ecommerce-payloadin estääkseen vanhentuneiden tietojen siirtymisen uusiin triggereihin.
+Jokainen tapahtuma noudattaa standardia GA4 Enhanced Ecommerce -rakennetta: ylin `event`-merkkijono ja `ecommerce`-objekti. Ennen jokaista työntöä Wink tyhjentää edellisen ecommerce-payloadin estääkseen vanhojen tietojen vuotamisen uusiin triggereihin.
 
 <Aside type="note">
 **dataLayerin nollausmalli**
@@ -69,21 +69,21 @@ dataLayer.push({ ecommerce: null });   // tyhjennä edellinen tapahtuma
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
-Älä luota siihen, että ecommerce-ominaisuudet säilyvät tapahtumien välillä. Lue ne aina triggerin aikana saman tapahtuman sisällä.
+Älä luota siihen, että ecommerce-ominaisuudet säilyvät tapahtumien välillä. Lue ne aina triggerin aikana samassa tapahtumassa.
 </Aside>
 
 ---
 
 ### Varausmatkan tapahtumat
 
-Nämä tapahtumat aktivoituvat automaattisesti, kun vieras etenee varausprosessissa. Määritä GTM-triggerisi **Custom Event** -triggereiksi, jotka vastaavat alla olevia tapahtumanimiä.
+Nämä tapahtumat aktivoituvat automaattisesti, kun vieras etenee varausprosessissa. Määritä GTM-triggerisi **Custom Event** -tyyppisiksi ja käytä alla olevia tapahtumanimiä.
 
 | Vaihe | Tapahtuma | Milloin se aktivoituu |
 |-------|-----------|----------------------|
-| 1 | `view_item_list` | Hotellivaraston ruudukko tai lista latautuu |
+| 1 | `view_item_list` | Hotellin varausnäkymä tai lista latautuu |
 | 2 | `view_item` | Vieras katsoo tiettyä kiinteistön sivua |
 | 3 | `add_to_cart` | Vieras lisää huoneen ostoskoriin |
-| 4 | `begin_checkout` | Kassalle/maksusivulle siirrytään |
+| 4 | `begin_checkout` | Kassasivu / maksusivu latautuu |
 | 5 | `add_payment_info` | Vieras valitsee maksutavan |
 | 6 | `login` | Vieras kirjautuu sisään SSO:n kautta |
 | 7 | `purchase` | Varaus vahvistetaan |
@@ -93,7 +93,7 @@ Nämä tapahtumat aktivoituvat automaattisesti, kun vieras etenee varausprosessi
 
 #### `view_item_list`
 
-Aktivoituu, kun hotellivaraston ruudukko tai lista renderöidään.
+Aktivoituu, kun hotellin varausnäkymä tai lista renderöidään.
 
 ```json
 {
@@ -144,7 +144,7 @@ Aktivoituu, kun vieras lisää huoneen ostoskoriin.
 
 #### `begin_checkout`
 
-Aktivoituu, kun kassalle/maksusivulle siirrytään.
+Aktivoituu, kun kassasivu tai maksusivu latautuu.
 
 ```json
 {
@@ -179,13 +179,13 @@ Aktivoituu, kun vieras valitsee tai vahvistaa maksutavan.
 }
 ```
 
-`payment_type` täytetään maksun hankkijan tyypillä. `coupon` on mukana vain, jos alennuskoodi on käytössä.
+`payment_type` täytetään maksun vastaanottajan tyypillä. `coupon` on mukana vain, jos alennuskoodi on käytössä.
 
 ---
 
 #### `login`
 
-Aktivoituu, kun vieras kirjautuu sisään single sign-on -menetelmällä.
+Aktivoituu, kun vieras kirjautuu sisään kertakirjautumisella.
 
 ```json
 {
@@ -267,7 +267,7 @@ Aktivoituu, kun varaus peruutetaan.
 }
 ```
 
-`transaction_id` vastaa samaa tunnistetta kuin `purchase`-tapahtumassa. `coupon`, `shipping` ja `tax` ovat mukana vain, jos ne ovat sovellettavissa.
+`transaction_id` vastaa samaa varauksen `purchase`-tapahtumaa. `coupon`, `shipping` ja `tax` ovat mukana vain, jos ne ovat sovellettavissa.
 
 ---
 
@@ -281,63 +281,63 @@ Nämä kentät ovat GA4:n natiivisti ymmärtämiä ja näkyvät standardeissa ec
 
 | Ominaisuus | Tyyppi | Pakollinen | Kuvaus |
 |------------|--------|------------|--------|
-| `item_id` | merkkijono | Kyllä | Huoneen tai tuotteen yksilöllinen tunniste |
-| `item_name` | merkkijono | — | Huoneen tai tuotteen nimi |
-| `affiliation` | merkkijono | — | Kumppani- tai myyjän nimi |
-| `coupon` | merkkijono | — | Tuotteeseen sovellettu alennuskoodi |
-| `currency` | merkkijono | — | ISO 4217 valuuttakoodi (esim. `USD`) |
-| `creative_name` | merkkijono | — | Kampanjan luova nimi |
-| `creative_slot` | merkkijono | — | Kampanjan luovan sijoituspaikka |
-| `discount` | numero | — | Sovellettu alennusmäärä |
-| `index` | numero | — | Sijainti listalla (1-pohjainen) |
-| `item_brand` | merkkijono | — | Hotelli tai tuotemerkki |
-| `item_category` | merkkijono | — | Tuotetyyppi — esim. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
-| `item_list_id` | merkkijono | — | Listan tunniste, johon tuote kuuluu |
-| `item_list_name` | merkkijono | — | Listan näyttönimi |
-| `location_id` | merkkijono | — | Kiinteistön maantieteelliset koordinaatit |
-| `price` | numero | — | Yksikköhinta |
-| `promotion_id` | merkkijono | — | Kampanjan tunniste |
-| `promotion_name` | merkkijono | — | Kampanjan näyttönimi |
-| `quantity` | numero | — | Määrä (oletus `1`) |
+| `item_id` | string | Kyllä | Huoneen tai tuotteen yksilöllinen tunniste |
+| `item_name` | string | — | Huoneen tai tuotteen nimi |
+| `affiliation` | string | — | Kumppani- tai myyjän nimi |
+| `coupon` | string | — | Tuotteeseen sovellettu alennuskoodi |
+| `currency` | string | — | ISO 4217 valuuttakoodi (esim. `USD`) |
+| `creative_name` | string | — | Kampanjan nimi |
+| `creative_slot` | string | — | Kampanjan sijoituspaikka |
+| `discount` | number | — | Sovellettu alennusmäärä |
+| `index` | number | — | Sijainti listalla (1-pohjainen) |
+| `item_brand` | string | — | Hotelli tai tuotemerkki |
+| `item_category` | string | — | Tuotetyyppi — esim. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
+| `item_list_id` | string | — | Listan tunniste, johon tuote kuuluu |
+| `item_list_name` | string | — | Listan näyttönimi |
+| `location_id` | string | — | Kiinteistön maantieteelliset koordinaatit |
+| `price` | number | — | Yksikköhinta |
+| `promotion_id` | string | — | Kampanjan tunniste |
+| `promotion_name` | string | — | Kampanjan näyttönimi |
+| `quantity` | number | — | Määrä (oletus `1`) |
 
 #### Mukautetut tuoteparametrit
 
-Nämä parametrit sisältävät Wink-spesifin varauskontekstin. GA4 ei automaattisesti näytä niitä raporteissa — sinun tulee rekisteröidä jokainen niistä **tuotealuekohtaiseksi mukautetuksi ulottuvuudeksi** GA4-omaisuudessasi ennen kuin ne näkyvät tutkimuksissa tai standardiraporteissa. Katso [Mukautetut ulottuvuudet GA4:ssa](#custom-dimensions-in-ga4) alla asennusohjeet.
+Nämä parametrit sisältävät Wink-spesifin varauskontekstin. GA4 ei automaattisesti näytä niitä raporteissa — sinun tulee rekisteröidä jokainen niistä **tuotekohtaiseksi mukautetuksi ulottuvuudeksi** GA4-tilissäsi ennen kuin ne näkyvät tutkimuksissa tai raporteissa. Katso [Mukautetut ulottuvuudet GA4:ssa](#custom-dimensions-in-ga4) alla asennusohjeet.
 
 | Ominaisuus | Tyyppi | Kuvaus |
 |------------|--------|--------|
-| `property_id` | merkkijono | Wink-kiinteistön tunniste |
-| `property_name` | merkkijono | Kiinteistön näyttönimi |
-| `property_brand` | merkkijono | Kiinteistön tuotemerkki |
-| `property_chain` | merkkijono | Kiinteistön ketju |
-| `property_url_name` | merkkijono | Kiinteistön URL-ystävällinen tunniste |
-| `city_name` | merkkijono | Kiinteistön kaupunki |
-| `country_code` | merkkijono | ISO 3166-1 alpha-2 -maatunnus |
-| `start_date` | merkkijono | Saapumispäivä muodossa `YYYY-MM-DD` |
-| `end_date` | merkkijono | Lähtöpäivä muodossa `YYYY-MM-DD` |
-| `num_adults` | numero | Aikuisten lukumäärä varauksessa |
-| `num_children` | numero | Lasten lukumäärä varauksessa |
-| `cancellation_policy` | merkkijono | Yksi seuraavista: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
-| `rate_plan_id` | merkkijono | Hintasuunnitelman tunniste |
-| `room_rate_id` | merkkijono | Tietyn huonehinnan tunniste |
-| `room_rate_name` | merkkijono | Huonehinnan näyttönimi |
-| `num_perks` | numero | Hintaan sisältyvien etujen lukumäärä |
-| `room_location` | merkkijono | Huoneen sijaintikuvaus (esim. `Overwater`, `Garden`) |
-| `room_view` | merkkijono | Huoneen näkymäkuvaus (esim. `Ocean`, `City`) |
-| `room_classification` | merkkijono | Huoneen luokitus tai taso (esim. `Suite`, `Standard`) |
-| `bed_type` | merkkijono | Huoneen vuodejärjestely (esim. `King`, `Twin`) |
+| `property_id` | string | Wink-kiinteistön tunniste |
+| `property_name` | string | Kiinteistön näyttönimi |
+| `property_brand` | string | Kiinteistön tuotemerkki |
+| `property_chain` | string | Kiinteistön ketju |
+| `property_url_name` | string | Kiinteistön URL-ystävällinen tunniste |
+| `city_name` | string | Kiinteistön kaupunki |
+| `country_code` | string | ISO 3166-1 alpha-2 -maakoodi |
+| `start_date` | string | Saapumispäivä muodossa `YYYY-MM-DD` |
+| `end_date` | string | Lähtöpäivä muodossa `YYYY-MM-DD` |
+| `num_adults` | number | Aikuisten määrä varauksessa |
+| `num_children` | number | Lasten määrä varauksessa |
+| `cancellation_policy` | string | Yksi seuraavista: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `rate_plan_id` | string | Hintasuunnitelman tunniste |
+| `room_rate_id` | string | Huonekohtaisen hinnan tunniste |
+| `room_rate_name` | string | Huonekohtaisen hinnan näyttönimi |
+| `num_perks` | number | Hintaan sisältyvien etujen määrä |
+| `room_location` | string | Huoneen sijaintikuvaus (esim. `Overwater`, `Garden`) |
+| `room_view` | string | Huoneen näkymäkuvaus (esim. `Ocean`, `City`) |
+| `room_classification` | string | Huoneen luokitus tai taso (esim. `Suite`, `Standard`) |
+| `bed_type` | string | Huoneen vuodejärjestely (esim. `King`, `Twin`) |
 
 ---
 
 ### Mukautetut ulottuvuudet GA4:ssa
 
-GA4 ei huomioi mukautettuja tuoteparametreja raporteissa, ennen kuin rekisteröit ne nimenomaan tuotealuekohtaisiksi mukautetuiksi ulottuvuuksiksi. Sinun ei tarvitse rekisteröidä kaikkia 20, vaan vain ne, joita aiot käyttää raporteissa.
+GA4 ei huomioi mukautettuja tuoteparametreja raporteissa, ennen kuin rekisteröit ne nimenomaisesti tuotekohtaisiksi mukautetuiksi ulottuvuuksiksi. Sinun tarvitsee rekisteröidä vain ne parametrit, joita aiot käyttää raporteissa — kaikkia 20 ei tarvitse rekisteröidä.
 
 <Steps>
 
 1. **Avaa Mukautetut määritelmät**
 
-   GA4:ssa siirry kohtaan **Admin** (vasen alakulman rataskuvake) → valitse omaisuutesi → **Data display** → **Custom definitions**.
+   GA4:ssa siirry kohtaan **Admin** (vasen alakulman rataskuvake) → valitse oma property → **Data display** → **Custom definitions**.
 
 2. **Luo uusi mukautettu ulottuvuus**
 
@@ -357,12 +357,12 @@ GA4 ei huomioi mukautettuja tuoteparametreja raporteissa, ennen kuin rekisteröi
 </Steps>
 
 <Aside type="note">
-Mukautettujen ulottuvuuksien näkyminen GA4-raporteissa voi kestää jopa 24 tuntia rekisteröinnin jälkeen. Ennen rekisteröintiä kerättyjä historiallisia tietoja ei täydennetä jälkikäteen.
+Mukautettujen ulottuvuuksien näkyminen GA4-raporteissa voi kestää jopa 24 tuntia rekisteröinnin jälkeen. Historiallisia tietoja ei täydennetä jälkikäteen.
 
-GA4 sallii enintään 50 tuotealuekohtaista mukautettua ulottuvuutta per omaisuus (360-ominaisuuksissa enemmän).
+GA4 sallii enintään 50 tuotekohtaista mukautettua ulottuvuutta per property standardeissa tileissä (360-tilit sallivat enemmän).
 </Aside>
 
-Käytä alla olevaa taulukkoa viitteenä mukautettuja ulottuvuuksia luodessasi. **Event parameter** -arvon on oltava täsmälleen sama — GA4 on kirjainkoolla herkkä.
+Käytä alla olevaa taulukkoa viitteenä mukautettuja ulottuvuuksia luodessasi. **Event parameter** -arvon on oltava täsmälleen sama — GA4 on kirjainkoolla tarkka.
 
 | Ulottuvuuden nimi | Event parameter | Tyyppi |
 |-------------------|-----------------|--------|
@@ -372,16 +372,16 @@ Käytä alla olevaa taulukkoa viitteenä mukautettuja ulottuvuuksia luodessasi. 
 | Kiinteistön ketju | `property_chain` | Teksti |
 | Kiinteistön URL-nimi | `property_url_name` | Teksti |
 | Kaupungin nimi | `city_name` | Teksti |
-| Maatunnus | `country_code` | Teksti |
+| Maakoodi | `country_code` | Teksti |
 | Saapumispäivä | `start_date` | Teksti |
 | Lähtöpäivä | `end_date` | Teksti |
-| Aikuisten lukumäärä | `num_adults` | Numero |
-| Lasten lukumäärä | `num_children` | Numero |
+| Aikuisten määrä | `num_adults` | Numero |
+| Lasten määrä | `num_children` | Numero |
 | Peruutusehdot | `cancellation_policy` | Teksti |
 | Hintasuunnitelman tunniste | `rate_plan_id` | Teksti |
-| Huonehinnan tunniste | `room_rate_id` | Teksti |
-| Huonehinnan nimi | `room_rate_name` | Teksti |
-| Etujen lukumäärä | `num_perks` | Numero |
+| Huonekohtaisen hinnan tunniste | `room_rate_id` | Teksti |
+| Huonekohtaisen hinnan nimi | `room_rate_name` | Teksti |
+| Etujen määrä | `num_perks` | Numero |
 | Huoneen sijainti | `room_location` | Teksti |
 | Huoneen näkymä | `room_view` | Teksti |
 | Huoneen luokitus | `room_classification` | Teksti |
@@ -673,8 +673,8 @@ Tämä on mukautettu Wink-tapahtuma — ei osa standardia GA4-tapahtumasarjaa. S
 | `os` | Havaittu käyttöjärjestelmä — `Windows`, `MacOS`, `Linux`, `UNIX` |
 | `path` | Nykyisen sivun polku |
 | `title` | Nykyisen sivun otsikko |
-| `userId` | Tunnistettu käyttäjätunniste (pois jätetty, jos ei kirjautunut) |
+| `userId` | Tunnistautuneen käyttäjän tunniste (poistettu, jos ei kirjautunut sisään) |
 | `startDate` | Saapumispäivä nykyisestä hakusessiosta |
 | `endDate` | Lähtöpäivä nykyisestä hakusessiosta |
-| `guests` | Vieraiden lukumäärä nykyisestä hakusessiosta |
-| `rooms` | Huoneiden lukumäärä nykyisestä hakusessiosta |
+| `guests` | Vieraiden määrä nykyisessä hakusessiossa |
+| `rooms` | Huoneiden määrä nykyisessä hakusessiossa |

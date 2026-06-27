@@ -1,12 +1,12 @@
 ---
-title: Otentikasi
-description: Pelajari cara melakukan otentikasi menggunakan server otorisasi OAuth2 Wink.
+title: Autentikasi
+description: Pelajari cara melakukan autentikasi menggunakan server otorisasi OAuth2 Wink.
 sidebar:
   order: 2
 ---
 
 :::tip
-Server otentikasi Wink IAM mendukung endpoint OAuth2 umum:
+Server autentikasi Wink IAM mendukung endpoint OAuth2 umum:
 
 - /oauth2/authorize
 - /oauth2/token
@@ -15,13 +15,13 @@ Server otentikasi Wink IAM mendukung endpoint OAuth2 umum:
 - /oauth2/userinfo
 :::
 
-Sebuah aplikasi memberikan Anda `Client ID` dan `Secret Key` yang Anda perlukan untuk membuat sesi OAuth2 yang terotentikasi yang dapat Anda gunakan untuk berkomunikasi dengan API Wink dan TripPay.
+Sebuah aplikasi memberikan Anda `Client ID` dan `Secret Key` yang Anda perlukan untuk membuat sesi OAuth2 yang terautentikasi yang dapat Anda gunakan untuk berkomunikasi dengan API Wink dan TripPay.
 
-Berikut adalah langkah-langkah untuk membuat sesi yang terotentikasi.
+Berikut adalah langkah-langkah untuk membuat sesi yang terautentikasi.
 
 **Langkah 1**. Ambil token akses di staging atau di lingkungan produksi kami:
 
-Kemungkinan besar, Anda akan bekerja dengan pustaka OAuth2 yang kuat untuk bahasa pemrograman Anda, yang akan melakukan semua pekerjaan berat untuk Anda.
+Kemungkinan besar, Anda akan menggunakan pustaka OAuth2 yang kuat untuk bahasa pemrograman Anda, yang akan melakukan semua pekerjaan berat untuk Anda.
 Contoh kami akan menunjukkan penggunaan paling dasar dari baris perintah menggunakan `curl`.
 
 ### Staging
@@ -60,6 +60,42 @@ Saat Anda melakukan panggilan ke salah satu endpoint kami, sertakan hal berikut 
 
 - `Wink-Version` = `2.0` Terbaru - *Lihat dokumentasi API kami untuk versi lain yang tersedia.*
 - `Authorization` = `Bearer ${access_token}` *Masukkan token akses Anda.*
+
+## Scopes
+
+**Scope** adalah izin yang dibawa oleh token akses Anda. Saat Anda meminta token, Anda mengirimkan daftar scope yang dipisahkan spasi dalam parameter `scope`, dan token hanya dapat mengakses area yang dicakup oleh scope tersebut. Dengan grant `client_credentials` Anda menetapkan scope pada permintaan token Anda — lihat contoh [`curl`](#staging) di atas dan [panduan Postman](/id/developers/setup#postman).
+
+Scope dinamai `section.action`, di mana action adalah salah satu dari:
+
+- `read` — melihat sumber daya (permintaan `GET` yang aman)
+- `write` — membuat dan memperbarui sumber daya (`POST` / `PUT` / `PATCH`)
+- `remove` — menghapus sumber daya (`DELETE`)
+
+Wink mengelompokkan izin berdasarkan area fungsional. Minta hanya scope yang dibutuhkan integrasi Anda:
+
+| Grup Scope | Scope | Apa yang dibuka | Risiko |
+|------------|-------|-----------------|--------|
+| **Account** | `account.read` `account.write` `account.remove` | Mengelola entitas, anggota tim, pengaturan, aplikasi | Rendah–Sedang |
+| **Inventory** | `inventory.read` `inventory.write` `inventory.remove` | Properti, tipe kamar, rencana tarif, tarif, add-on, ketersediaan, aktivitas, atraksi | Rendah–Sedang |
+| **Booking** | `booking.read` `booking.write` `booking.remove` | Pencarian, melihat, membuat, membatalkan, dan mengembalikan booking; checkout; kebijakan pembatalan | Rendah–Sedang |
+| **Marketing** | `marketing.read` `marketing.write` `marketing.remove` | Kampanye, keuntungan, saluran penjualan, WinkLinks, sosial terkelola, loyalitas | Rendah–Sedang |
+| **Content** | `content.read` `content.write` `content.remove` | Deskripsi properti, ulasan, media, peta, indeks hijau | Rendah–Sedang |
+| **Analytics** | `analytics.read` `analytics.write` `analytics.remove` | Pelaporan dan analitik — pendapatan, papan peringkat | Rendah–Sedang |
+| **Integrations** | `integrations.read` `integrations.write` `integrations.remove` | Manajer saluran, sistem booking eksternal, Google Hotel, endpoint notifikasi, sinkronisasi booking | Rendah–Sedang |
+| **Payment** | `payment.read` `payment.write` `payment.remove` | Pemrosesan pembayaran, Stripe, Revolut, pembayaran keluar, langganan | Sedang–Tinggi |
+| **Accounting** | `accounting.read` `accounting.write` `accounting.remove` | Akuntansi, buku besar penarikan, rekonsiliasi | Sedang–Tinggi |
+| **MCP** | `mcp.read` `mcp.write` `mcp.remove` | Membuka [transport MCP](/id/developers/mcp) (`/mcp`) untuk agen AI | Rendah–Sedang |
+
+:::note
+Kolom **Risiko** mencerminkan sensitivitas: `read` adalah tingkat rendah dan `write`/`remove` tingkat tinggi.
+**Payment** dan **Accounting** mengawasi pergerakan uang, sehingga membawa risiko yang lebih tinggi.
+:::
+
+Beberapa hal yang perlu diingat:
+
+- **Minta seminimal mungkin.** Minta hanya scope yang benar-benar digunakan integrasi Anda — token yang diterbitkan dengan akses lebih luas dari yang diperlukan memiliki risiko kebocoran yang lebih besar.
+- **Scope yang tidak dikenal ditolak.** Meminta scope yang aplikasi Anda tidak terdaftar untuk, atau yang tidak ada, akan gagal saat penerbitan token.
+- **`mcp.*` hanya untuk klien agen AI.** Anda membutuhkannya untuk membuka transport MCP; tidak diperlukan untuk panggilan REST API biasa. Lihat [Model Context Protocol](/id/developers/mcp).
 
 :::tip
 Anda dapat menguji semua API kami tanpa menulis satu baris kode pun sebelum memulai.

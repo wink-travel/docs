@@ -5,7 +5,7 @@ sidebar:
   order: 8
 ---
 
-Winkillä meillä on aina käytössä 2 ympäristöä kaikkeen toimintaamme:
+Winkillä ylläpidämme jatkuvasti kahta ympäristöä kaikkeen toimintaamme:
 
 - Production on vakaa ympäristömme.
 - Staging on sertifiointi- ja testausympäristömme.
@@ -13,12 +13,12 @@ Winkillä meillä on aina käytössä 2 ympäristöä kaikkeen toimintaamme:
 Jos olet integraattori, hotelli tai matkatoimisto, joka haluaa valmistautua sertifiointiin tai testata Wink-alustaa, luo tili staging-ympäristössämme aloittaaksesi.
 
 :::note
-Staging-ympäristö on saatavilla pyynnöstä. Tämä tarkoittaa, että se menee lepotilaan, jos sitä ei käytetä, ja käynnistyy uudelleen, kun käyttöä on. Ole kärsivällinen, kun herätät sitä. Kaikkien palvelimien käynnistäminen kestää noin minuutin, kun yhdistät ensimmäisen kerran johonkin palvelimistamme tai sovelluksistamme.
+Staging-ympäristö on saatavilla pyynnöstä. Tämä tarkoittaa, että se menee lepotilaan, jos sitä ei käytetä, ja käynnistyy uudelleen käytön alkaessa. Ole kärsivällinen, kun herätät sitä. Kaikkien palvelimien käynnistäminen kestää noin minuutin, kun yhdistät ensimmäisen kerran johonkin palvelimistamme tai sovelluksistamme.
 :::
 
 ## Palvelimet
 
-Alla on matriisi, joka sisältää palvelimiemme nimet ja niiden käyttötarkoitukset.
+Alla on taulukko, joka sisältää palvelimiemme nimet ja niiden käyttötarkoitukset.
 
 | Ominaisuus | Staging | Production
 | ------- | ------- | ---------- |
@@ -29,7 +29,7 @@ Alla on matriisi, joka sisältää palvelimiemme nimet ja niiden käyttötarkoit
 
 ## Sovellukset
 
-Sovelluksillamme on myös testaus- ja tuotantoympäristöt asiakkaillemme.
+Myös sovelluksillamme on testaus- ja tuotantoympäristöt asiakkaillemme.
 
 | Sovellus | Staging | Production
 | ------- | ------- | ---------- |

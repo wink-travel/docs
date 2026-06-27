@@ -1,127 +1,357 @@
 ---
 title: เซิร์ฟเวอร์ MCP
-description: เชื่อมต่อเอเจนต์ AI กับเอกสาร Wink และสเปก OpenAPI สดผ่านเซิร์ฟเวอร์ MCP ที่โฮสต์ไว้ได้อย่างรวดเร็ว
+description: เชื่อมต่อเอเจนต์ AI กับแพลตฟอร์ม Wink ผ่าน Model Context Protocol เซิร์ฟเวอร์ MCP ที่ผ่านการรับรองตัวตนช่วยให้เอเจนต์ของคุณเข้าถึงสินค้าคงคลัง การจอง การผสานรวมผู้จัดการช่องทาง และอื่นๆ ได้โดยตรง — ปลอดภัยด้วยการเข้าสู่ระบบ OAuth2 แบบโต้ตอบ
 sidebar:
   order: 10
 ---
 
-import { LinkButton } from '@astrojs/starlight/components';
+import { Steps, LinkButton, Aside, Tabs, TabItem } from '@astrojs/starlight/components';
 
-## ภาพรวม
-เซิร์ฟเวอร์ MCP ของ Wink ที่โฮสต์ไว้พร้อมใช้งานที่:
+Wink เปิดเผยเซิร์ฟเวอร์ MCP ที่ผ่านการรับรองตัวตนสองตัว ทั้งสองใช้ **การเข้าสู่ระบบ OAuth2 แบบโต้ตอบ** (PKCE authorization code flow) — เอเจนต์ AI ของคุณจะเปิดแท็บเบราว์เซอร์เพื่อให้คุณลงชื่อเข้าใช้ด้วยบัญชี Wink ของคุณ ไม่มีความลับของไคลเอนต์ให้จัดการ
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+| เซิร์ฟเวอร์ | URL | ทำอะไรได้บ้าง |
+|--------|-----|--------------|
+| **Inventory API** | `https://api.wink.travel/mcp` | สินค้าคงคลัง การจอง อัตรา ช่องทางการขาย การวิเคราะห์ และการดำเนินการทั้งหมดบนแพลตฟอร์ม |
+| **Integrations** | `https://integrations.wink.travel/mcp` | การผสานรวมผู้จัดการช่องทาง — ซิงค์ที่พัก อัตรา และความพร้อมใช้งานกับ OTA |
 
-ชี้ไคลเอนต์ AI ที่รองรับ (VS Code, Cursor, และอื่น ๆ ที่ใช้ MCP HTTP transport) ไปยังจุดเชื่อมต่อนี้เพื่อให้พวกเขา:
-- เรียกดูเอกสารผลิตภัณฑ์ & แพลตฟอร์ม (`wink://docs/...`)
-- เรียกดูสเปก OpenAPI สดและเอกสารการทำงาน (`wink://api/...`)
-- ทำการค้นหาคำสำคัญ / ความหมายแบบเบา ๆ ในเอกสารและ API สด
+---
 
-## การขนส่ง
-ใช้จุดเชื่อมต่อ HTTP แบบสตรีมหลัก:
+## วิธีการทำงานของการรับรองตัวตน
 
-```
-https://docs.mcp.wink.travel/mcp
-```
+เซิร์ฟเวอร์ MCP ของ Wink ใช้โฟลว์ **OAuth2 Authorization Code + PKCE** และรองรับ **Dynamic Client Registration (RFC 7591)** นี่คือสิ่งที่จะเกิดขึ้นเมื่อคุณเชื่อมต่อครั้งแรก:
 
-ถ้าไคลเอนต์ของคุณรองรับเฉพาะ SSE ให้ใช้:
+1. ไคลเอนต์ AI ของคุณค้นหาเซิร์ฟเวอร์การอนุญาตจากเมตาดาต้า `/.well-known/oauth-protected-resource` ของจุดสิ้นสุด MCP
+2. ไคลเอนต์ลงทะเบียนตัวเองผ่าน **Dynamic Client Registration** — ไม่ต้องตั้งค่าแอปพลิเคชันด้วยตนเอง
+3. ไคลเอนต์เปิด **แท็บเบราว์เซอร์** ไปที่ `https://iam.wink.travel` คุณลงชื่อเข้าใช้ด้วยบัญชี Wink ของคุณและอนุมัติสิทธิ์ที่ร้องขอบนหน้าจอการยินยอม
+4. Wink ออก **access token** ที่มีขอบเขตสำหรับบัญชีของคุณและเชื่อมโยงกับตัวตนของคุณ
+5. ไคลเอนต์ AI แนบโทเค็นกับทุกคำขอ MCP ผลลัพธ์ของเครื่องมือทั้งหมดจะถูกจำกัดขอบเขตโดยหน่วยงานที่คุณจัดการโดยอัตโนมัติ
+6. โทเค็นหมดอายุหลัง 3 ชั่วโมง ไคลเอนต์ AI ของคุณจะรีเฟรชโทเค็นอย่างเงียบๆ ในเบื้องหลังโดยไม่ต้องแจ้งเตือนอีกครั้ง
 
-```
-https://docs.mcp.wink.travel/sse
-```
+การเรียกใช้เครื่องมือทุกครั้งจะทำงาน **ภายใต้ตัวตนของคุณ** — กฎ ACL เดียวกับที่ปกป้องเว็บพอร์ทัลจะใช้กับเอเจนต์ AI ด้วย
 
-### Claude Code
-เอกสารอย่างเป็นทางการ: [เชื่อมต่อ Claude Code กับเครื่องมือผ่าน MCP](https://code.claude.com/docs/en/mcp)
+---
 
-Anthropic แนะนำให้ใช้การขนส่ง HTTP ระยะไกลสำหรับเซิร์ฟเวอร์ MCP ที่โฮสต์บนคลาวด์:
+## เชื่อมต่อไคลเอนต์ AI ของคุณ
+
+<Tabs>
+  <TabItem label="Claude Code">
+
+<Steps>
+1. ตรวจสอบให้แน่ใจว่า Claude Code เป็นเวอร์ชันล่าสุด:
+   ```bash
+   npm install -g @anthropic-ai/claude-code
+   ```
+
+2. เพิ่มเซิร์ฟเวอร์ Wink Inventory MCP:
+   ```bash
+   claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
+   ```
+
+3. Claude Code ติดต่อเซิร์ฟเวอร์ ค้นหาเซิร์ฟเวอร์การอนุญาต และเปิดเบราว์เซอร์เริ่มต้นของคุณ
+
+4. **ลงชื่อเข้าใช้ Wink** และอนุมัติคำขอสิทธิ์บนหน้าจอการยินยอม
+
+5. Claude Code ยืนยันการเชื่อมต่อ พิมพ์ `/mcp` เพื่อตรวจสอบว่าเซิร์ฟเวอร์ปรากฏและเครื่องมือโหลดเรียบร้อยแล้ว
+</Steps>
+
+หากต้องการเพิ่มเซิร์ฟเวอร์ Integrations ด้วย:
 ```bash
-claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp
-claude mcp list
+claude mcp add wink-integrations https://integrations.wink.travel/mcp --transport http
 ```
 
-ภายใน Claude Code ให้รันคำสั่ง `/mcp` เพื่อตรวจสอบสถานะเซิร์ฟเวอร์ หากคุณต้องการแชร์เซิร์ฟเวอร์กับทั้งรีโป ให้เพิ่ม `--scope project` เพื่อให้ Claude Code เขียนการตั้งค่าไปยัง `.mcp.json`
+:::tip[แชร์กับทีมของคุณ]
+เพิ่ม `--scope project` ในคำสั่ง `claude mcp add` แล้ว Claude Code จะเขียน URL เซิร์ฟเวอร์ลงใน `.mcp.json` ที่โฟลเดอร์รากของรีโป ให้คอมมิตไฟล์นั้น — สมาชิกทีมแต่ละคนจะทำการลงชื่อเข้าใช้ผ่านเบราว์เซอร์ครั้งแรกที่เชื่อมต่อ
+:::
 
-### Codex
-เอกสารอย่างเป็นทางการ: [เริ่มต้นใช้งาน Docs MCP สำหรับ Codex](https://developers.openai.com/resources/docs-mcp)
+  </TabItem>
+  <TabItem label="Claude Desktop">
 
-OpenAI อธิบายการตั้งค่า MCP ผ่าน Codex CLI และระบุว่าการตั้งค่านี้ถูกแชร์กับส่วนขยาย IDE:
+<Steps>
+1. แก้ไขไฟล์คอนฟิก Claude Desktop:
+   - **macOS:** `~/Library/Application Support/Claude/claude_desktop_config.json`
+   - **Windows:** `%APPDATA%\Claude\claude_desktop_config.json`
+   - **Linux:** `~/.config/Claude/claude_desktop_config.json`
+
+2. เพิ่มรายการเซิร์ฟเวอร์ MCP:
+
+   ```json title="claude_desktop_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **ออกจากโปรแกรม Claude Desktop ให้หมดและเปิดใหม่** (ใช้ Quit จากเมนูบาร์ — ปิดหน้าต่างอย่างเดียวไม่พอ)
+
+4. Claude Desktop จะเปิดแท็บเบราว์เซอร์สำหรับแต่ละเซิร์ฟเวอร์ใหม่ ลงชื่อเข้าใช้ Wink และอนุมัติสิทธิ์
+
+5. ไอคอนปลั๊กที่แถบเครื่องมือด้านล่างจะแสดงสถานะเชื่อมต่อของทั้งสองเซิร์ฟเวอร์
+</Steps>
+
+  </TabItem>
+  <TabItem label="OpenAI Codex">
+
+<Steps>
+1. ตรวจสอบให้แน่ใจว่า Codex CLI ติดตั้งแล้ว:
+   ```bash
+   npm install -g @openai/codex
+   ```
+
+2. เปิด (หรือสร้าง) ไฟล์คอนฟิก Codex:
+   - **macOS / Linux:** `~/.codex/config.json`
+   - **Windows:** `%USERPROFILE%\.codex\config.json`
+
+3. เพิ่มรายการเซิร์ฟเวอร์ Wink MCP:
+
+   ```json title="~/.codex/config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+4. เริ่ม Codex ครั้งแรก Codex จะเปิดแท็บเบราว์เซอร์ไปที่ `https://iam.wink.travel`
+
+5. **ลงชื่อเข้าใช้ Wink** และอนุมัติสิทธิ์ที่ร้องขอ
+
+6. Codex ยืนยันการเชื่อมต่อ รันคำสั่ง `codex` และขอให้แสดงรายการเครื่องมือที่มีเพื่อยืนยันว่าเซิร์ฟเวอร์ Wink ทำงานอยู่
+</Steps>
+
+:::note
+การรองรับ MCP ของ Codex CLI ต้องใช้เวอร์ชัน **1.0** ขึ้นไป รัน `codex --version` เพื่อตรวจสอบ และใช้ `npm install -g @openai/codex` เพื่ออัปเกรด
+:::
+
+  </TabItem>
+  <TabItem label="ChatGPT">
+
+การรองรับเซิร์ฟเวอร์ MCP มีใน **แอป ChatGPT บนเดสก์ท็อป** สำหรับผู้สมัครสมาชิก Plus, Pro, Team และ Enterprise
+
+<Steps>
+1. ดาวน์โหลดและติดตั้ง [แอป ChatGPT บนเดสก์ท็อป](https://openai.com/chatgpt/download/) หากยังไม่ได้ติดตั้ง
+
+2. เปิดแอปและคลิก **ไอคอนโปรไฟล์ของคุณ** ที่มุมขวาบน จากนั้นเลือก **Settings**
+
+3. ไปที่ **Connectors** (หรือ **MCP Servers** ขึ้นกับเวอร์ชันแอปของคุณ) แล้วคลิก **Add**
+
+4. ใส่ URL เซิร์ฟเวอร์ Wink Inventory:
+   ```
+   https://api.wink.travel/mcp
+   ```
+   แล้วคลิก **Connect**
+
+5. ChatGPT จะเปิดแท็บเบราว์เซอร์ไปที่ `https://iam.wink.travel` **ลงชื่อเข้าใช้ Wink** และอนุมัติสิทธิ์
+
+6. ทำซ้ำขั้นตอนที่ 4–5 สำหรับเซิร์ฟเวอร์ Integrations:
+   ```
+   https://integrations.wink.travel/mcp
+   ```
+
+7. ทั้งสองเซิร์ฟเวอร์จะปรากฏในรายการ Connectors ของคุณ เริ่มแชทใหม่ — เครื่องมือ Wink จะพร้อมใช้งานโดยอัตโนมัติ
+</Steps>
+
+:::note[ข้อจำกัดของเว็บแอป]
+เซิร์ฟเวอร์ MCP สามารถตั้งค่าได้เฉพาะใน **แอปเดสก์ท็อป** เท่านั้น ส่วนอินเทอร์เฟซเว็บของ ChatGPT ที่ chatgpt.com ไม่รองรับเซิร์ฟเวอร์ MCP แบบกำหนดเอง
+:::
+
+  </TabItem>
+  <TabItem label="Cursor">
+
+<Steps>
+1. เปิด (หรือสร้าง) ไฟล์คอนฟิก Cursor MCP:
+   - **macOS / Linux:** `~/.cursor/mcp.json`
+   - **Windows:** `%USERPROFILE%\.cursor\mcp.json`
+
+2. เพิ่มรายการเซิร์ฟเวอร์ Wink MCP:
+
+   ```json title="~/.cursor/mcp.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. เปิด Cursor ไปที่ **Settings → Cursor Settings → MCP** และยืนยันว่าเซิร์ฟเวอร์ทั้งสองแสดงสถานะสีเขียว หากแสดงสีแดง ให้คลิก **Refresh**
+
+4. Cursor จะเปิดแท็บเบราว์เซอร์ไปที่ `https://iam.wink.travel` **ลงชื่อเข้าใช้ Wink** และอนุมัติสิทธิ์
+
+5. เปิดแชท (`Ctrl+L` / `Cmd+L`) และขอให้ Cursor แสดงรายการเครื่องมือ Wink ที่มีเพื่อยืนยันการเชื่อมต่อ
+</Steps>
+
+:::tip[คอนฟิกแบบกำหนดขอบเขตโปรเจกต์]
+คุณสามารถวางไฟล์ `mcp.json` ที่โฟลเดอร์รากของโปรเจกต์แทนที่จะวางใน `~/.cursor/` คอนฟิกระดับโปรเจกต์จะมีลำดับความสำคัญและทำให้เซิร์ฟเวอร์พร้อมใช้งานสำหรับสมาชิกทีมทุกคนที่เปิดโปรเจกต์ใน Cursor
+:::
+
+  </TabItem>
+  <TabItem label="Windsurf">
+
+<Steps>
+1. เปิด (หรือสร้าง) ไฟล์คอนฟิก Windsurf MCP:
+   - **macOS / Linux:** `~/.codeium/windsurf/mcp_config.json`
+   - **Windows:** `%USERPROFILE%\.codeium\windsurf\mcp_config.json`
+
+2. เพิ่มรายการเซิร์ฟเวอร์ Wink MCP:
+
+   ```json title="~/.codeium/windsurf/mcp_config.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+3. **รีสตาร์ท Windsurf ให้เต็มที่** (File → Quit แล้วเปิดใหม่)
+
+4. ไปที่ **Settings → MCP Servers** และตรวจสอบว่าเซิร์ฟเวอร์ทั้งสองแสดงสถานะเชื่อมต่อ Windsurf จะเปิดแท็บเบราว์เซอร์ไปที่ `https://iam.wink.travel` เมื่อใช้งานครั้งแรก
+
+5. **ลงชื่อเข้าใช้ Wink** และอนุมัติสิทธิ์ เซิร์ฟเวอร์จะเปลี่ยนเป็นสีเขียวในแผงตั้งค่าหลังจากรับรองตัวตนแล้ว
+</Steps>
+
+:::note
+การรองรับ MCP ของ Windsurf ต้องใช้เวอร์ชัน **1.4** ขึ้นไป ตรวจสอบได้ที่ **Help → About Windsurf** และอัปเดตจากเว็บไซต์ Windsurf หากจำเป็น
+:::
+
+  </TabItem>
+  <TabItem label="Cline (VS Code)">
+
+Cline เป็นส่วนขยาย VS Code ที่มีตัวจัดการเซิร์ฟเวอร์ MCP ในตัว ไม่ต้องแก้ไข JSON ด้วยตนเอง
+
+<Steps>
+1. ติดตั้ง Cline จาก VS Code Marketplace:
+   - เปิด VS Code และกด `Ctrl+Shift+X` / `Cmd+Shift+X`
+   - ค้นหา **Cline** แล้วคลิก **Install**
+
+2. คลิก **ไอคอน Cline** ที่แถบกิจกรรม (แถบด้านข้างซ้าย) เพื่อเปิดแผง Cline
+
+3. คลิกไอคอน **MCP Servers** (ไอคอนปลั๊ก) ในแถบเครื่องมือ Cline แล้วเลือก **Edit MCP Settings**
+
+4. VS Code จะเปิดไฟล์ `cline_mcp_settings.json` เพิ่มรายการ Wink:
+
+   ```json title="cline_mcp_settings.json"
+   {
+     "mcpServers": {
+       "wink-inventory": {
+         "type": "http",
+         "url": "https://api.wink.travel/mcp"
+       },
+       "wink-integrations": {
+         "type": "http",
+         "url": "https://integrations.wink.travel/mcp"
+       }
+     }
+   }
+   ```
+
+5. **บันทึกไฟล์** Cline จะโหลดใหม่โดยอัตโนมัติและเปิดแท็บเบราว์เซอร์ไปที่ `https://iam.wink.travel`
+
+6. **ลงชื่อเข้าใช้ Wink** และอนุมัติสิทธิ์ เซิร์ฟเวอร์ทั้งสองจะแสดงสถานะใช้งานในแผง MCP Servers
+</Steps>
+
+:::tip[ทางเลือก: เพิ่มผ่าน URL]
+ในแผง MCP Servers คลิก **Add Server** และวาง `https://api.wink.travel/mcp` โดยตรง Cline จะเติมคอนฟิกให้อัตโนมัติและจัดการการรับรองตัวตนโดยไม่ต้องแก้ไข JSON ด้วยตนเอง
+:::
+
+  </TabItem>
+</Tabs>
+
+---
+
+## ขอบเขต
+
+เมื่อคุณอนุมัติหน้าจอการยินยอม คุณจะเห็นรายละเอียดของสิ่งที่เอเจนต์ร้องขอ ลูกค้า MCP ใช้คำศัพท์สิทธิ์เดียวกับแพลตฟอร์มทั้งหมด — ดูรายการเต็มได้ที่
+[อ้างอิงขอบเขตในหน้าการรับรองตัวตน](/th/developers/authentication#scopes)
+
+สองสิ่งที่เฉพาะเจาะจงสำหรับ MCP:
+
+- **ขอบเขต `mcp.read` `mcp.write` `mcp.remove` จำเป็นเพิ่มเติม** เพื่อเปิดการขนส่ง MCP ไคลเอนต์ที่ถือขอบเขต `mcp.*` จะได้รับอนุญาตให้เข้าถึง `/mcp` แต่ทุกเครื่องมือที่เรียกใช้จะยังคงบังคับใช้ขอบเขตส่วนของจุดสิ้นสุดที่ห่อหุ้ม (เช่น `booking.read`)
+- **ไคลเอนต์ AI ขอเฉพาะขอบเขตที่ต้องการเท่านั้น** คุณสามารถปฏิเสธสิทธิ์แต่ละรายการบนหน้าจอการยินยอม — เครื่องมือที่ต้องการขอบเขตที่ถูกปฏิเสธจะส่งคืนข้อผิดพลาดเมื่อเรียกใช้
+
+---
+
+## การแก้ไขปัญหา
+
+**แท็บเบราว์เซอร์ไม่เปิด**
+
+ไคลเอนต์ AI ของคุณอาจยังไม่รองรับโฟลว์ PKCE แบบโต้ตอบ ตรวจสอบให้แน่ใจว่าคุณใช้เวอร์ชันล่าสุด:
+- **Claude Code:** `npm install -g @anthropic-ai/claude-code`
+- **Codex CLI:** `npm install -g @openai/codex`
+- **Claude Desktop / ChatGPT desktop:** อัปเดตจากตัวอัปเดตในแอป
+
+**`401 Unauthorized` หลังจากลงชื่อเข้าใช้**
+
+โทเค็นที่แคชอาจหมดอายุ ลบและเพิ่มเซิร์ฟเวอร์ใหม่เพื่อเริ่มการลงชื่อเข้าใช้ใหม่:
+
 ```bash
-codex mcp add wink-docs --url https://docs.mcp.wink.travel/mcp
-codex mcp list
+# Claude Code
+claude mcp remove wink-inventory
+claude mcp add wink-inventory https://api.wink.travel/mcp --transport http
 ```
 
-### Cursor
-เอกสาร MCP ของ Cursor: https://cursor.com/docs/context/mcp
-การตั้งค่า: เพิ่มเซิร์ฟเวอร์ระยะไกลผ่านการตั้งค่า MCP
-```json
-{
-  "mcpServers": {
-    "wink-docs": {
-      "url": "https://docs.mcp.wink.travel/mcp",
-    }
-  }
-}
-```
+สำหรับ Claude Desktop และ ChatGPT ให้ลบรายการเซิร์ฟเวอร์จากการตั้งค่า รีสตาร์ทแอป แล้วเพิ่มใหม่อีกครั้ง
 
-### VS Code
-เอกสารอย่างเป็นทางการ: https://code.visualstudio.com/docs/copilot/customization/mcp-servers
-การตั้งค่าระยะไกลขั้นต่ำ (ไฟล์ `mcp.json` ของผู้ใช้หรือเวิร์กสเปซ):
-```json
-{
-  "servers": {
-    "wink-docs": {
-      "type": "http",
-      "url": "https://docs.mcp.wink.travel/mcp"
-    }
-  }
-}
-```
+**`403 Forbidden` เมื่อเรียกใช้เครื่องมือเฉพาะ**
 
-เคล็ดลับ:
-- ใช้ Command Palette: “MCP: List Servers” เพื่อตรวจสอบการเชื่อมต่อ & เรียกดูเครื่องมือ
-- ตัวเลือกเครื่องมือช่วยให้คุณเปิด/ปิด `api_search` และ `docs_search`
-- เพิ่มบริบท: มุมมองแชท → เพิ่มบริบท → MCP Resources เพื่อแนบหน้าหนังสือเอกสาร
+เครื่องมือต้องการขอบเขตที่คุณไม่ได้อนุมัติบนหน้าจอการยินยอม เชื่อมต่อเซิร์ฟเวอร์ใหม่ — หน้าจอการยินยอมจะปรากฏอีกครั้งและคุณสามารถอนุมัติสิทธิ์ที่ขาดหายไป
 
-## Core Resource URIs
+**เซิร์ฟเวอร์ปรากฏแต่การเรียกเครื่องมือส่งคืน "account not found"**
 
-| URI | คำอธิบาย |
-|-----|-------------|
-| `wink://docs` | ดัชนีเอกสาร (จัดกลุ่มตามหมวดหมู่) |
-| `wink://docs/{path}` | บทความเอกสารเฉพาะ (Markdown / MDX) |
-| `wink://api` | แคตตาล็อก OpenAPI สดที่ค้นพบจากการตั้งค่า swagger ของ Wink |
-| `wink://api/{apiName}` | สรุป API แบบย่อพร้อมการยืนยันตัวตน, แท็ก, เฮดเดอร์ และตัวอย่างการทำงาน |
-| `wink://api/{apiName}/operations` | รายการการทำงานทั้งหมดจัดกลุ่มตามแท็ก |
-| `wink://api/{apiName}/operation/{key}` | รายละเอียดการทำงานแต่ละรายการ (พารามิเตอร์, ร่างคำขอ, การตอบกลับ) |
-| `wink://api/{apiName}/schema/{schemaName}` | สคีมาคอมโพเนนต์ที่แก้ไขแล้วพร้อมฟิลด์ซ้อน, ประเภท และตัวอย่าง |
-| `wink://api/{apiName}/operation/{key}/request` | มุมมองเน้นคำขอพร้อมอินพุตที่จำเป็นและตัวอย่าง payload ขั้นต่ำ |
-| `wink://api/{apiName}/operation/{key}/response/{status}` | มุมมองเน้นการตอบกลับสำหรับรหัสสถานะเฉพาะ |
-| `wink://api/{apiName}/operation/{key}/recipe` | โฟลว์งานที่มุ่งเน้นการเรียกใช้งานนั้นอย่างถูกต้อง |
+คุณลงชื่อเข้าใช้บัญชี Wink ที่ไม่มีหน่วยงานจัดการ ไปที่ [Wink Portal](https://app.wink.travel) และตรวจสอบให้แน่ใจว่าบัญชีของคุณตั้งค่าเรียบร้อยก่อนใช้เซิร์ฟเวอร์ MCP
 
-## เครื่องมือค้นหา (อ้างอิงด่วน)
-| เครื่องมือ | จุดประสงค์ | ตัวอย่างคำค้นทั่วไป |
-|------|---------|-----------------------|
-| `api_search` | ค้นหา API สดหรือการทำงานเพื่อรวมเข้าด้วยกัน | `create affiliate`, `payment receipt`, `lookup inventory`, `invite manager` |
-| `docs_search` | ค้นหาเอกสารแนวคิด / คู่มือ | `authentication`, `webhooks`, `wordPress` |
+**โทเค็นหมดอายุระหว่างเซสชัน**
 
-ปล่อย `query` ว่างเพื่อรับคำแนะนำ ผลลัพธ์แต่ละรายการจะรวม MCP URI ที่คุณสามารถเปิดได้
-สำหรับผลลัพธ์การทำงาน, `api_search` ยังส่งคืน URI ของคำขอ, การตอบกลับ, สคีมา และสูตรที่เชื่อมโยงเพื่อให้เอเจนต์สามารถกระโดดไปยังซับรีซอร์สที่มีประโยชน์ที่สุดได้โดยตรง
+โทเค็นมีอายุ 3 ชั่วโมง Claude Code และ Claude Desktop จะรีเฟรชโทเค็นอย่างเงียบๆ โดยไม่รบกวนเซสชันของคุณ หากคุณเห็นข้อผิดพลาดการรับรองตัวตนหลังจากไม่ได้ใช้งานนาน ให้พิมพ์ข้อความใหม่ — ไคลเอนต์จะทำการรับรองตัวตนอัตโนมัติ
 
-## รูปแบบการใช้งานทั่วไป
-1. รัน `api_search` ด้วยเจตนาของคุณ (เช่น *"create affiliate"* หรือ *"payment receipt"*)
-2. เปิด URI `wink://api/...` ที่ส่งกลับมา หรือทำตามฟิลด์ที่เชื่อมโยง `request_uri`, `response_uris`, `request_schema_uris`, `response_schema_uris`, และ `recipe_uri`
-3. ใช้ `docs_search` สำหรับแนวคิดสนับสนุน (การยืนยันตัวตน, webhooks, workflows)
+**Codex CLI แสดง "MCP server unreachable"**
 
-## ทักษะ AI
+ตรวจสอบว่าไฟล์ `~/.codex/config.json` เป็น JSON ที่ถูกต้อง (ไม่มีเครื่องหมายจุลภาคท้าย) และตั้งค่า `"type": "http"` Codex ต้องการการขนส่ง HTTP สำหรับเซิร์ฟเวอร์ระยะไกล; การขนส่ง stdio ใช้สำหรับไบนารีในเครื่องเท่านั้น
 
-ทักษะเอเจนต์ที่สร้างไว้ล่วงหน้าใช้เซิร์ฟเวอร์ MCP นี้เป็นแหล่งข้อมูลที่ถูกต้อง ทักษะเหล่านี้ให้เวิร์กโฟลว์ที่มีโครงสร้างสำหรับเอเจนต์โค้ดของคุณในการสร้างงานกับ Wink APIs — แทนที่จะเดาจุดเชื่อมต่อ เอเจนต์จะอ่านสัญญาสดโดยตรงจากเซิร์ฟเวอร์ MCP
+**เมนู "Connectors" ของ ChatGPT หายไป**
 
-ดู [AI Skills](/th/developers/ai-skills) สำหรับทักษะที่มีและคำแนะนำการติดตั้ง
+การรองรับ MCP ต้องใช้แอป ChatGPT บนเดสก์ท็อปเวอร์ชัน **1.2024.352** ขึ้นไป และต้องสมัครสมาชิก Plus, Pro, Team หรือ Enterprise อัปเดตแอปและตรวจสอบแผนของคุณใน Settings → Account
 
-## หมายเหตุ
-- URI ที่ส่งกลับแต่ละรายการสามารถเปิดโดยเอเจนต์เพื่อดูเนื้อหาเต็ม
-- โครงสร้าง `wink://api` เป็นแบบสดและติดตามแคตตาล็อก OpenAPI ปัจจุบันแทนที่จะเป็นดัชนีรีโปที่สร้างขึ้น
-- คำแนะนำจะแสดงโดยอัตโนมัติเมื่อคำค้นว่างเปล่า
+**เซิร์ฟเวอร์ Cursor แสดงสีแดง / "Failed to connect"**
 
+ตรวจสอบว่าไฟล์ `~/.cursor/mcp.json` เป็น JSON ที่ถูกต้องและมี `"type": "http"` จากนั้นไปที่ **Settings → Cursor Settings → MCP** และคลิก **Refresh** หากยังมีข้อผิดพลาด ให้รีสตาร์ท Cursor ใหม่ — การเปลี่ยนแปลงคอนฟิกบางครั้งจะไม่ถูกนำมาใช้จนกว่าจะรีสตาร์ท
+
+**เซิร์ฟเวอร์ Windsurf MCP ไม่แสดงในการตั้งค่า**
+
+Windsurf ต้องรีสตาร์ทเต็มรูปแบบ (ไม่ใช่แค่โหลดหน้าต่างใหม่) เพื่อรับการเปลี่ยนแปลงใน `mcp_config.json` ใช้ **File → Quit** แล้วเปิดใหม่ หากเซิร์ฟเวอร์ยังไม่แสดง ให้ตรวจสอบว่าใช้ Windsurf **1.4+** ผ่าน **Help → About Windsurf**
+
+**ตัวเลือก "Add Server" ของ Cline ไม่ปรากฏ**
+
+ตัวจัดการเซิร์ฟเวอร์ MCP ต้องใช้ Cline **2.0** ขึ้นไป เปิดแผงส่วนขยาย VS Code ค้นหา Cline และคลิก **Update** หากมีอัปเดต หลังอัปเดตให้โหลด VS Code ใหม่ (`Ctrl+Shift+P` → "Developer: Reload Window")
+
+---
+
+<LinkButton href="https://app.wink.travel" variant="primary" icon="external">เปิด Wink Portal</LinkButton>
 <LinkButton href="https://github.com/wink-travel" variant="secondary" icon="external">Wink บน GitHub</LinkButton>
