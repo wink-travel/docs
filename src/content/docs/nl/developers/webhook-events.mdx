@@ -7,7 +7,7 @@ sidebar:
 
 import { LinkButton } from '@astrojs/starlight/components';
 
-Deze pagina toont elk webhook event waarop je je kunt abonneren op Wink. Voor installatie-instructies, zie de [Webhook Integratie Gids](/nl/guides/developers/webhook-integration) of de [Webhooks beheerpagina](/nl/portal/settings/webhooks).
+Deze pagina toont alle webhook events waarop je je kunt abonneren op Wink. Voor installatie-instructies, zie de [Webhook Integratie Gids](/nl/guides/developers/webhook-integration) of de [Webhooks beheerpagina](/nl/portal/settings/webhooks).
 
 ## Hoe te abonneren
 
@@ -19,24 +19,62 @@ Voor volledige installatie-stappen en best practices, zie [Webhook Integratie](/
 
 ---
 
-## Account events
+## Beheer van entiteit events
 
-Events gerelateerd aan de levenscyclus en instellingen van je TripPay-account.
+Events voor het beheren van entiteiten (eigenschappen, affiliates, bedrijven) en hun administratie.
+
+### Levenscyclus
 
 | Event | Key | Beschrijving |
 |---|---|---|
-| Account aangemaakt | `account.create` | Er is een nieuw account aangemaakt. |
-| Account in beoordeling | `account.under_review` | Account is in afwachting van beoordeling. |
-| Account bijgewerkt | `account.updated` | Accountgegevens zijn gewijzigd. |
-| Accountstatus bijgewerkt | `account.status.updated` | Accountstatus is gewijzigd (bijv. goedgekeurd, geschorst). |
-| Accountadres bijgewerkt | `account.address.updated` | Accountadres is aangepast. |
-| Accountdetails bijgewerkt | `account.details.updated` | Accountdetailvelden zijn gewijzigd. |
-| Accountinformatie bijgewerkt | `account.information.update` | Algemene accountinformatie is bijgewerkt. |
-| Accountmanagers bijgewerkt | `account.managers.update` | Lijst met accountmanagers is gewijzigd. |
-| Profielfoto bijgewerkt | `account.profile_picture.updated` | Profielfoto van het account is gewijzigd. |
-| Agent bijgewerkt | `account.agent.updated` | Agentinformatie op het account is aangepast. |
-| URL-naam bijgewerkt | `account.url-name.update` | Vanity URL van het account is gewijzigd. |
-| Unieke ID bijgewerkt | `account.unique-id.update` | Unieke identificatie van het account is aangepast. |
+| Entiteit aangemaakt | `managing_entity.created` | Er is een nieuwe beheersentiteit aangemaakt. |
+| Entiteit verwijderd | `managing_entity.deleted` | Een beheersentiteit is verwijderd. |
+| Status bijgewerkt | `managing_entity.status.updated` | De status van de entiteit is gewijzigd. |
+| In beoordeling | `account.under_review` | Entiteitaccount is in afwachting van beoordeling. |
+
+### Abonnement
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Abonnement geactiveerd | `managing_entity.subscription.provisioned` | Er is een nieuw abonnement geactiveerd. |
+| Abonnement gewijzigd | `managing_entity.subscription.changed` | Het abonnementsplan is gewijzigd. |
+| Abonnementsfactuur gewijzigd | `managing_entity.subscription.invoice.changed` | De abonnementsfactuur is bijgewerkt. |
+
+### Manager levenscyclus
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Manager toegevoegd | `managing_entity.manager.added` | Er is een nieuwe manager toegevoegd. |
+| Manager uitgenodigd | `managing_entity.manager.invited` | Een uitnodiging voor manager is verzonden. |
+| Manager verwijderd | `managing_entity.manager.removed` | Een manager is verwijderd. |
+| Manager geaccepteerd | `managing_entity.manager.accepted` | Een manageruitnodiging is geaccepteerd. |
+| Manager geweigerd | `managing_entity.manager.rejected` | Een manageruitnodiging is geweigerd. |
+| Eigenaar ingesteld | `managing_entity.manager.owner.set` | Eigendom van de entiteit is overgedragen. |
+| Managers bijgewerkt | `account.managers.update` | De lijst met managers is gewijzigd. |
+
+### Entiteit informatie
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Informatie bijgewerkt | `managing_entity.information.updated` | Entiteitsinformatie is bijgewerkt. |
+| Adres bijgewerkt | `managing_entity.city.updated` | Adres/stad van de entiteit is gewijzigd. |
+| Naam bijgewerkt | `managing_entity.name.updated` | Naam van de entiteit is gewijzigd. |
+| URL-naam bijgewerkt | `managing_entity.url_name.updated` | De vanity URL van de entiteit is gewijzigd. |
+| Unieke ID bijgewerkt | `managing_entity.unique_id.updated` | Unieke identificatie van de entiteit is gewijzigd. |
+| Beheerd door bijgewerkt | `managing_entity.managed_by.updated` | De parent/beheerd-door relatie van de entiteit is gewijzigd. |
+| Plaats-ID bijgewerkt | `managing_entity.place_id.updated` | De Google Place ID van de entiteit is gewijzigd. |
+| Accountvertegenwoordiger bijgewerkt | `managing_entity.account_representative.updated` | Accountvertegenwoordiger is gewijzigd. |
+| Profielfoto bijgewerkt | `managing_entity.profile_picture.updated` | Profielfoto van de entiteit is bijgewerkt. |
+| Logo bijgewerkt | `managing_entity.logo.updated` | Logo van de entiteit is bijgewerkt. |
+| Details bijgewerkt | `account.details.updated` | Account detailvelden zijn gewijzigd. |
+| Agent bijgewerkt | `managing_entity.agent.updated` | Agent van de entiteit is aangepast. |
+
+### Meldingen
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Agent e-mailmelding | `managing_entity.agent.email.notification` | Er is een e-mailmelding naar de agent gestuurd. |
+| Manager e-mailmelding | `managing_entity.manager.email.notification` | Er is een e-mailmelding naar een manager gestuurd. |
 
 ### Account taken
 
@@ -45,56 +83,186 @@ Events gerelateerd aan de levenscyclus en instellingen van je TripPay-account.
 | Taak aangemaakt | `account.task.create` | Er is een nieuwe taak toegevoegd aan het account. |
 | Taak bijgewerkt | `account.task.update` | Een accounttaak is aangepast. |
 | Taak verwijderd | `account.task.remove` | Een accounttaak is verwijderd. |
-| Taak voltooid | `account.task.complete` | Een accounttaak is afgerond. |
-| Taak belasting-ID voltooid | `account.task.tax_id.complete` | Verificatie van belasting-ID taak is afgerond. |
-
-### Account acquirer
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Acquirer aangemaakt | `account.acquirer.created` | Er is een nieuwe acquirer toegevoegd aan het account. |
-| Acquirer bijgewerkt | `account.acquirer.updated` | Een account acquirer is aangepast. |
-| Acquirer verwijderd | `account.acquirer.removed` | Een acquirer is verwijderd van het account. |
+| Taak voltooid | `account.task.complete` | Een accounttaak is voltooid. |
+| Taak belasting-ID voltooid | `account.task.tax_id.complete` | Taak voor verificatie belasting-ID is voltooid. |
 
 ---
 
-## Payee events
+## Boekingsgebeurtenissen
 
-Events gerelateerd aan het beheer van payees (betalingsontvangers).
+Events voor de Wink boekingslevenscyclus, van aanmaak tot terugbetalingen en uitbetalingen.
 
-| Event | Key | Beschrijving |
-|---|---|---|
-| Payee aangemaakt | `payee.create` | Een nieuwe payee is succesvol aangemaakt. |
-| Payee aanmaak mislukt | `payee.create.failure` | Het aanmaken van de payee is mislukt. |
-| Payee bijgewerkt | `payee.update` | Een payee is bijgewerkt. |
-| Payee update mislukt | `payee.update.failure` | Het bijwerken van de payee is mislukt. |
-
----
-
-## Booking contract events
-
-Events die de levenscyclus van een boekingscontract via TripPay volgen.
+### Kernboeking
 
 | Event | Key | Beschrijving |
 |---|---|---|
-| Initialisatie aangevraagd | `booking.contract.initialize.request` | Initialisatie van een boekingscontract is aangevraagd. |
-| Initialisatie voltooid | `booking.contract.initialize.complete` | Initialisatie van een boekingscontract is voltooid. |
-| Contract aangemaakt | `booking.contract.created` | Er is een nieuw boekingscontract aangemaakt. |
-| Contract in verwerking | `booking.contract.processing` | Betaling van het boekingscontract wordt verwerkt. |
-| Contract mislukt | `booking.contract.failed` | Betaling van het boekingscontract is mislukt. |
-| Contract geannuleerd | `booking.contract.cancelled` | Boekingscontract is geannuleerd. |
-| Gedeeltelijke terugbetaling | `booking.contract.refund.partial` | Er is een gedeeltelijke terugbetaling gedaan op het contract. |
-| Volledige terugbetaling | `booking.contract.refund.full` | Er is een volledige terugbetaling gedaan op het contract. |
-| Terugbetaling aangevraagd | `booking.contract.refund.request` | Er is een terugbetalingsverzoek ingediend. |
-| Terugbetalingsfout | `booking.contract.refund.error` | Er is een fout opgetreden bij het verwerken van een terugbetaling. |
-| Uitbetaling aangemaakt | `booking.contract.payout.create` | Er is een uitbetaling aangemaakt voor het contract. |
-| Uitbetaling voltooid | `booking.contract.payout.complete` | Uitbetaling is succesvol afgerond. |
+| Boeking aangemaakt | `booking.create` | Er is een nieuwe boeking aangemaakt. |
+| Boeking geannuleerd | `booking.cancelled` | Een boeking is geannuleerd. |
+| Boeking mislukt | `booking.failed` | Een poging tot boeken is mislukt. |
+| Boeking in verwerking | `booking.processing` | Betaling van de boeking wordt verwerkt. |
+| Initialisatie aangevraagd | `booking.initialize.request` | Initialisatie van een boeking is aangevraagd. |
+| Initialisatie voltooid | `booking.initialize.complete` | Initialisatie van de boeking is voltooid. |
+
+### Terugbetalingen
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Terugbetaling aangevraagd | `booking.refund.request` | Er is een terugbetalingsverzoek ingediend. |
+| Terugbetalingsfout | `booking.refund.error` | Er is een fout opgetreden bij het verwerken van een terugbetaling. |
+| Gedeeltelijke terugbetaling | `booking.refund.partial` | Er is een gedeeltelijke terugbetaling uitgevoerd. |
+| Volledige terugbetaling | `booking.refund.full` | Er is een volledige terugbetaling uitgevoerd. |
+
+### Uitbetalingen
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Uitbetaling aangemaakt | `booking.payout.create` | Er is een uitbetaling aangemaakt voor de boeking. |
+| Uitbetaling voltooid | `booking.payout.complete` | Een uitbetaling is succesvol afgerond. |
+| Fondsen beschikbaar | `booking.funds.available` | Fondsen van de boeking zijn beschikbaar voor afwikkeling. |
+| Fondsen geboekt | `booking.funds.ledgered` | Fondsen van de boeking zijn geregistreerd in het grootboek. |
+
+### Beoordelingen
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Beoordeling ingediend | `booking.review.created` | Een gastbeoordeling is ingediend voor een boeking. |
+| Beoordeling beantwoord | `booking.review.responded` | Een accommodatie heeft gereageerd op een boekingsbeoordeling. |
 
 ---
 
-## Payment events
+## Eigendomsgebeurtenissen
 
-Interne betalingsverwerking events.
+Events voor eigendomsprofielen en content, verzonden naar de webhook-abonnees van het eigendom.
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Eigendom aangemaakt | `property.created` | Er is een nieuw eigendom aangemaakt. |
+| Eigendom bijgewerkt | `property.updated` | Eigendomsgegevens zijn bijgewerkt. |
+| Eigendom verwijderd | `property.deleted` | Een eigendom is verwijderd. |
+| Eigendom geregistreerd | `property.registered` | Een eigendom heeft registratie voltooid. |
+| Status bijgewerkt | `property.status.updated` | Externe status van het eigendom is gewijzigd. |
+| Naam bijgewerkt | `property.name.updated` | Naam van het eigendom is gewijzigd. |
+| Adres bijgewerkt | `property.address.updated` | Adres van het eigendom is bijgewerkt. |
+| Geolocatie bijgewerkt | `property.geolocation.updated` | Geolocatie van het eigendom is bijgewerkt. |
+| Profiel bijgewerkt | `property.profile.updated` | Profielinhoud van het eigendom is gewijzigd. |
+| Diensten bijgewerkt | `property.services.updated` | Lijst met diensten/faciliteiten van het eigendom is gewijzigd. |
+| Welkomsttekst bijgewerkt | `property.welcome_text.updated` | Welkomstbericht van het eigendom is gewijzigd. |
+| Beleid aangemaakt | `property.policy.created` | Er is een nieuw eigendomsbeleid aangemaakt. |
+| Beleid bijgewerkt | `property.policy.updated` | Een eigendomsbeleid is bijgewerkt. |
+
+---
+
+## Inventarisgebeurtenissen
+
+Events voor inventarisitems binnen een eigendom, verzonden naar de webhook-abonnees van dat eigendom.
+
+### Kamertypes
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Kamertype aangemaakt | `room_type.created` | Er is een nieuw kamertype toegevoegd. |
+| Kamertype bijgewerkt | `room_type.updated` | Een kamertype is aangepast. |
+| Kamertype verwijderd | `room_type.deleted` | Een kamertype is verwijderd. |
+
+### Tariefplannen
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Tariefplan aangemaakt | `rate_plan.created` | Er is een nieuw tariefplan aangemaakt. |
+| Tariefplan bijgewerkt | `rate_plan.updated` | Een tariefplan is aangepast. |
+| Tariefplan verwijderd | `rate_plan.deleted` | Een tariefplan is verwijderd. |
+
+### Mastertarieven
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Mastertarief aangemaakt | `master_rate.created` | Er is een nieuw mastertarief aangemaakt. |
+| Mastertarief bijgewerkt | `master_rate.updated` | Een mastertarief is aangepast. |
+| Mastertarief verwijderd | `master_rate.deleted` | Een mastertarief is verwijderd. |
+
+### Extra's
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Extra aangemaakt | `add_on.created` | Er is een nieuwe extra aangemaakt. |
+| Extra bijgewerkt | `add_on.updated` | Een extra is aangepast. |
+| Extra verwijderd | `add_on.deleted` | Een extra is verwijderd. |
+
+### Vergaderruimtes
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Vergaderruimte aangemaakt | `meeting_room.created` | Er is een nieuwe vergaderruimte toegevoegd. |
+| Vergaderruimte bijgewerkt | `meeting_room.updated` | Een vergaderruimte is aangepast. |
+| Vergaderruimte verwijderd | `meeting_room.deleted` | Een vergaderruimte is verwijderd. |
+
+### Restaurants
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Restaurant aangemaakt | `restaurant.created` | Er is een nieuw restaurant toegevoegd. |
+| Restaurant bijgewerkt | `restaurant.updated` | Een restaurant is aangepast. |
+| Restaurant verwijderd | `restaurant.deleted` | Een restaurant is verwijderd. |
+
+### Spa's
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Spa aangemaakt | `spa.created` | Er is een nieuwe spa toegevoegd. |
+| Spa bijgewerkt | `spa.updated` | Een spa is aangepast. |
+| Spa verwijderd | `spa.deleted` | Een spa is verwijderd. |
+
+### Activiteiten
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Activiteit aangemaakt | `activity.created` | Er is een nieuwe activiteit toegevoegd. |
+| Activiteit bijgewerkt | `activity.updated` | Een activiteit is aangepast. |
+| Activiteit verwijderd | `activity.deleted` | Een activiteit is verwijderd. |
+
+---
+
+## Verkoopkanaal events
+
+Events voor distributiekanalen die leveranciers en affiliates verbinden. Verzonden naar zowel de leverancier als de webhook-abonnees van de affiliate.
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Verkoopkanaal aangemaakt | `sales_channel.created` | Er is een nieuw verkoopkanaal aangemaakt. |
+| Verkoopkanaal bijgewerkt | `sales_channel.updated` | Een verkoopkanaal is aangepast. |
+| Verkoopkanaal verwijderd | `sales_channel.deleted` | Een verkoopkanaal is verwijderd. |
+
+---
+
+## Speciale tarief events
+
+Events voor promotionele en onderhandelde tarieven op een eigendom.
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Speciaal tarief aangemaakt | `special_rate.created` | Er is een nieuw speciaal tarief aangemaakt. |
+| Speciaal tarief bijgewerkt | `special_rate.updated` | Een speciaal tarief is aangepast. |
+| Speciaal tarief verwijderd | `special_rate.deleted` | Een speciaal tarief is verwijderd. |
+| Tariefmodifier bijgewerkt | `rate_modifier.updated` | Een tariefmodifier is bijgewerkt. |
+
+---
+
+## Ontvanger events
+
+Events gerelateerd aan ontvanger (betalingsontvanger) beheer.
+
+| Event | Key | Beschrijving |
+|---|---|---|
+| Ontvanger aangemaakt | `payee.create` | Er is een nieuwe ontvanger succesvol aangemaakt. |
+| Ontvanger aanmaak mislukt | `payee.create.failure` | Het aanmaken van de ontvanger is mislukt. |
+| Ontvanger bijgewerkt | `payee.update` | Een ontvanger is bijgewerkt. |
+| Ontvanger update mislukt | `payee.update.failure` | Het bijwerken van de ontvanger is mislukt. |
+
+---
+
+## Betalingsgebeurtenissen
+
+Interne betalingsverwerking events van TripPay.
 
 | Event | Key | Beschrijving |
 |---|---|---|
@@ -104,30 +272,19 @@ Interne betalingsverwerking events.
 
 ---
 
-## Booking events
-
-Events voor de levenscyclus van een Wink-boekingsproces.
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Boeking aangemaakt | `booking.create` | Er is een nieuwe boeking aangemaakt. |
-| Boeking geannuleerd | `booking.cancelled` | Een boeking is geannuleerd. |
-
----
-
 ## Channel manager events
 
-Events gerelateerd aan updates van tarieven en beschikbaarheid via channel managers.
+Events gerelateerd aan channel manager tarief- en beschikbaarheidspushes.
 
 | Event | Key | Beschrijving |
 |---|---|---|
-| Tariefupdate | `channel-manager.update.rate` | Channel manager heeft een tariefupdate doorgegeven. |
-| Beschikbaarheidsupdate | `channel-manager.update.availability` | Channel manager heeft een beschikbaarheidsupdate doorgegeven. |
-| Algemene update | `channel-manager.update` | Algemene update van de channel manager. |
+| Tariefupdate | `channel-manager.update.rate` | Channel manager heeft een tariefupdate gepusht. |
+| Beschikbaarheidsupdate | `channel-manager.update.availability` | Channel manager heeft een beschikbaarheidsupdate gepusht. |
+| Algemene update | `channel-manager.update` | Algemene channel manager update. |
 
 ---
 
-## Ledger events
+## Grootboek events
 
 Events gerelateerd aan financiële grootboekboekingen.
 
@@ -137,51 +294,11 @@ Events gerelateerd aan financiële grootboekboekingen.
 
 ---
 
-## Managing entity events
-
-Events voor beheersentiteiten (eigenschappen, affiliates, bedrijven) en hun administratie.
-
-### Abonnement
+## E-mail events
 
 | Event | Key | Beschrijving |
 |---|---|---|
-| Abonnement geactiveerd | `managing_entity.subscription.provisioned` | Er is een nieuw abonnement geactiveerd. |
-| Abonnement gewijzigd | `managing_entity.subscription.changed` | Abonnementsplan is gewijzigd. |
-| Abonnementsfactuur gewijzigd | `managing_entity.subscription.invoice.changed` | Abonnementsfactuur is bijgewerkt. |
-
-### Status en administratie
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Status bijgewerkt | `managing_entity.status.updated` | Status van de entiteit is gewijzigd. |
-| Entiteit verwijderd | `managing_entity.deleted` | Een beheersentiteit is verwijderd. |
-| Agent bijgewerkt | `managing_entity.agent.updated` | Agent van de entiteit is aangepast. |
-| Agent e-mailnotificatie | `managing_entity.agent.email.notification` | Er is een e-mailnotificatie naar de agent gestuurd. |
-| Manager e-mailnotificatie | `managing_entity.manager.email.notification` | Er is een e-mailnotificatie naar een manager gestuurd. |
-
-### Manager levenscyclus
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Manager toegevoegd | `managing_entity.manager.added` | Er is een nieuwe manager toegevoegd. |
-| Manager uitgenodigd | `managing_entity.manager.invited` | Er is een uitnodiging naar een manager gestuurd. |
-| Manager verwijderd | `managing_entity.manager.removed` | Een manager is verwijderd. |
-| Manager geaccepteerd | `managing_entity.manager.accepted` | Een manageruitnodiging is geaccepteerd. |
-| Manager afgewezen | `managing_entity.manager.rejected` | Een manageruitnodiging is afgewezen. |
-| Eigenaar ingesteld | `managing_entity.manager.owner.set` | Eigendom van de entiteit is overgedragen. |
-
-### Entiteitsinformatie
-
-| Event | Key | Beschrijving |
-|---|---|---|
-| Informatie bijgewerkt | `managing_entity.information.updated` | Informatie van de entiteit is bijgewerkt. |
-| Adres bijgewerkt | `managing_entity.city.updated` | Adres/stad van de entiteit is gewijzigd. |
-| Accountvertegenwoordiger bijgewerkt | `managing_entity.account_representative.updated` | Accountvertegenwoordiger is gewijzigd. |
-| Profielfoto bijgewerkt | `managing_entity.profile_picture.updated` | Profielfoto van de entiteit is bijgewerkt. |
-| Logo bijgewerkt | `managing_entity.logo.updated` | Logo van de entiteit is bijgewerkt. |
-| URL-naam bijgewerkt | `managing_entity.url_name.updated` | Vanity URL van de entiteit is gewijzigd. |
-| Unieke ID bijgewerkt | `managing_entity.unique_id.updated` | Unieke identificatie van de entiteit is gewijzigd. |
-| Naam bijgewerkt | `managing_entity.name.updated` | Naam van de entiteit is gewijzigd. |
+| E-mailcorrespondentie | `email.correspondence` | Er is een uitgaande e-mail verzonden. |
 
 ---
 
@@ -189,15 +306,18 @@ Events voor beheersentiteiten (eigenschappen, affiliates, bedrijven) en hun admi
 
 | Categorie | Aantal |
 |---|---|
-| Account events | 20 |
-| Payee events | 4 |
-| Booking contract events | 12 |
-| Payment events | 3 |
-| Booking events | 2 |
+| Managing entity events | 33 |
+| Boekingsgebeurtenissen | 16 |
+| Eigendomsgebeurtenissen | 13 |
+| Inventarisgebeurtenissen (kamertypes, tariefplannen, mastertarieven, extra's, faciliteiten) | 24 |
+| Verkoopkanaal events | 3 |
+| Speciale tarief events | 4 |
+| Ontvanger events | 4 |
+| Betalingsgebeurtenissen | 3 |
 | Channel manager events | 3 |
-| Ledger events | 1 |
-| Managing entity events | 19 |
-| **Totaal** | **64** |
+| Grootboek events | 1 |
+| E-mail events | 1 |
+| **Totaal** | **105** |
 
 :::tip
 Begin tijdens de ontwikkeling met het abonneren op alle events. Zodra je begrijpt welke payloads je systeem nodig heeft, beperk je je abonnementen om ruis te verminderen.

@@ -1,16 +1,16 @@
 ---
-title: Integración del Pixel de Sojern
-description: Cómo conectar tu cuenta de Sojern con Wink para que Sojern pueda rastrear el recorrido de reserva de tus huéspedes y potenciar tus campañas de retargeting y publicidad.
+title: Integración de Analytics con GTM
+description: Cómo conectar cualquier contenedor de Google Tag Manager (como un contenedor Sojern) a Wink para que pueda rastrear el recorrido de reserva de tus huéspedes y potenciar tus campañas de retargeting y publicidad.
 sidebar:
-  label: Integración del Pixel de Sojern
+  label: Integración de Analytics con GTM
 ---
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Si estás ejecutando campañas publicitarias a través de Sojern, puedes conectar tu cuenta de Sojern con Wink ingresando tu ID de Contenedor GTM de Sojern en el portal de Wink. Una vez conectado, el pixel de seguimiento de Sojern se activa automáticamente para tu propiedad, cubriendo todo el recorrido del huésped desde la búsqueda hasta la reserva completada.
+Puedes conectar **cualquier** contenedor de Google Tag Manager (GTM) a Wink ingresando su **ID de Contenedor GTM** en el portal de Wink. Una vez conectado, tu contenedor se carga automáticamente para tu propiedad y lee directamente los eventos de reserva de Wink — cubriendo todo el recorrido del huésped desde la búsqueda hasta la reserva completada. Un caso de uso común es un contenedor **Sojern** para retargeting y publicidad, pero cualquier contenedor GTM funciona de la misma manera.
 
 <Aside type="tip">
-Esto asume que ya tienes una cuenta activa de Sojern y que has recibido tu ID de Contenedor GTM de tu gerente de cuenta de Sojern. Si aún no tienes una cuenta de Sojern, visita [sojern.com/contact](https://www.sojern.com/contact) para comenzar.
+Esto asume que ya tienes un ID de Contenedor GTM (formato `GTM-XXXXXXX`). Si tu contenedor proviene de un socio como Sojern, pide específicamente el **ID de Contenedor GTM** a tu gerente de cuenta — es diferente de un pixel o ID de etiqueta. ¿Nuevo en Sojern? Visita [sojern.com/contact](https://www.sojern.com/contact) para comenzar.
 </Aside>
 
 ---
@@ -19,24 +19,28 @@ Esto asume que ya tienes una cuenta activa de Sojern y que has recibido tu ID de
 
 <Steps>
 
-1. **Obtén tu ID de Contenedor GTM de Sojern**
+1. **Obtén tu ID de Contenedor GTM**
 
-   Contacta a tu gerente de cuenta de Sojern y solicita tu **ID de Contenedor GTM**. Tiene el formato `GTM-XXXXXXX`. Esto es diferente de tu ID de Pixel de Sojern — asegúrate de pedir específicamente el ID de Contenedor GTM.
+   Obtén tu **ID de Contenedor GTM** (formato `GTM-XXXXXXX`). Si proviene de un socio como Sojern, solicita específicamente el ID de Contenedor GTM — es diferente de un pixel o ID de etiqueta.
 
 2. **Ingresa el ID en el Portal de Wink**
 
-   Inicia sesión en [app.wink.travel](https://app.wink.travel), selecciona tu cuenta y ve a la pestaña **Personalizaciones**. Pega tu ID de Contenedor GTM de Sojern en el campo de Sojern y guarda. Tu integración ya está activa.
+   Inicia sesión en [app.wink.travel](https://app.wink.travel), selecciona tu cuenta y ve a la pestaña **Personalizaciones**. Pega tu ID de Contenedor GTM en el campo **GTM** y guarda. Tu integración ya está activa.
 
-3. **Confirma con tu Gerente de Cuenta de Sojern**
+3. **(Opcional) Agrega un ID de Medición GA4 + Secreto API para Compra del Lado del Servidor**
 
-   Informa a tu gerente de cuenta de Sojern que la integración está activa. Ellos pueden verificar desde su lado que el pixel se está activando correctamente en `wink.travel` para tu propiedad y que los datos están fluyendo hacia tu cuenta de Sojern.
+   Los contenedores GTM se ejecutan completamente en el navegador del huésped, por lo que una reserva completada puede perderse si el huésped cierra la pestaña durante la redirección de pago. Si tu contenedor carga una **propiedad GA4** y quieres que las reservas completadas se registren de forma confiable, también ingresa el **ID de Medición** y el **Secreto de Protocolo de Medición API** de esa GA4 en la sección GTM. Wink enviará entonces el evento `purchase` para esa propiedad **del lado del servidor**, exactamente como se describe en la guía de [Integración de Analytics GA4](/es-AR/guides/developers/ga4-dual-tagging). Déjalos en blanco si solo necesitas el seguimiento en el navegador.
+
+4. **Confirma con tu Proveedor**
+
+   Si tu contenedor proviene de un socio como Sojern, avisa a tu gerente de cuenta que la integración está activa. Ellos pueden verificar desde su lado que las etiquetas se disparan correctamente en `wink.travel` para tu propiedad y que los datos fluyen a tu cuenta.
 
 </Steps>
 
 <Aside type="note">
-No necesitas colocar ningún código de pixel en tu propio sitio web para esta integración. Wink carga tu contenedor de Sojern automáticamente en todas las páginas donde tu propiedad está activa.
+No necesitas colocar ningún código de pixel en tu propio sitio web para esta integración. Wink carga tu contenedor GTM automáticamente en todas las páginas donde tu propiedad está activa.
 
-Esta configuración funciona para cualquier ID de Contenedor GTM personalizado. Usamos Sojern solo como ejemplo porque es una integración muy común.
+Esto funciona para **cualquier** ID de Contenedor GTM — Sojern es solo un ejemplo común.
 </Aside>
 
 ---
@@ -45,17 +49,18 @@ Esta configuración funciona para cualquier ID de Contenedor GTM personalizado. 
 
 Para mayor transparencia, esto es lo que Wink configura para que esta integración funcione:
 
-- **Un campo para el ID de Contenedor GTM de Sojern** está disponible en la pestaña de Personalizaciones de tu portal Wink. Cuando ingresas tu ID de Contenedor, Wink valida el formato y lo almacena de forma segura asociado a tu propiedad.
-- **En cada página donde tu propiedad está activa** en Wink, tu ID de Contenedor GTM de Sojern se inserta en la página y el sistema de gestión de etiquetas de Wink carga dinámicamente tu contenedor de Sojern junto con el propio. Esto sucede automáticamente — no se requieren pasos manuales del equipo de Wink por propiedad.
-- **Tu contenedor de Sojern se carga de forma asíncrona**, lo que significa que no afecta el rendimiento de carga de página para tus huéspedes.
-- **El seguimiento propio de Wink y tu pixel de Sojern funcionan en paralelo**, leyendo desde los mismos datos compartidos de eventos. Cada evento de reserva que Wink rastrea está disponible simultáneamente para tu contenedor de Sojern.
-- **Cuando tu propiedad no está siendo vista** — por ejemplo, cuando un huésped está navegando otro hotel en Wink — tu contenedor de Sojern no se carga. Esto asegura que Sojern solo reciba datos relevantes para tu propiedad.
+- **Un campo para el ID de Contenedor GTM** está disponible en la pestaña Personalizaciones de tu portal Wink. Cuando ingresas tu ID de Contenedor, Wink valida el formato (`GTM-XXXXXXX`) y lo almacena de forma segura asociado a tu propiedad.
+- **En cada página donde tu propiedad está activa** en Wink, tu contenedor se inyecta directamente en la página — compartiendo el propio `window.dataLayer` de Wink — para que se cargue junto con el contenedor propio de Wink sin depender de ninguna configuración adicional. Esto ocurre automáticamente, sin trabajo por propiedad por parte del equipo de Wink.
+- **Tu contenedor se carga de forma asíncrona**, por lo que no afecta el rendimiento de carga de página para tus huéspedes.
+- **El seguimiento propio de Wink y tu contenedor se ejecutan en paralelo**, leyendo del mismo `dataLayer` compartido. Cada evento de reserva que Wink rastrea está disponible simultáneamente para tu contenedor.
+- **Cuando tu propiedad no está siendo vista** — por ejemplo, cuando un huésped navega otro hotel en Wink — tu contenedor no se carga, por lo que solo recibe datos relevantes para tu propiedad.
+- **Si proporcionaste un ID de Medición GA4 + secreto API** (paso 3 arriba), el evento `purchase` para reservas completadas se envía adicionalmente **del lado del servidor** vía el Protocolo de Medición GA4, para que una venta se registre incluso si el huésped nunca vuelve a la página de confirmación.
 
 ---
 
 ## Referencia de DataLayer
 
-Wink envía eventos compatibles con GA4 al `dataLayer` durante todo el recorrido del huésped. Tu contenedor GTM lee desde este mismo `dataLayer` compartido, por lo que cualquier disparador o variable que configures tiene acceso a todas las propiedades descritas a continuación.
+Wink envía eventos compatibles con GA4 al `dataLayer` durante todo el recorrido del huésped. Tu contenedor GTM lee de este mismo `dataLayer` compartido, por lo que cualquier disparador o variable que configures tiene acceso a todas las propiedades descritas a continuación.
 
 Cada evento sigue la estructura estándar de GA4 Enhanced Ecommerce: una cadena `event` de nivel superior y un objeto `ecommerce`. Antes de cada push, Wink limpia la carga útil ecommerce previa para evitar que datos antiguos afecten nuevos disparadores.
 
@@ -69,17 +74,17 @@ dataLayer.push({ ecommerce: null });   // limpia evento previo
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
-No confíes en que las propiedades ecommerce persistan entre eventos. Siempre léelas al momento del disparador dentro del mismo evento.
+No confíes en que las propiedades ecommerce persistan entre eventos. Siempre léelas al momento del disparo dentro del mismo evento.
 </Aside>
 
 ---
 
 ### Eventos del Recorrido de Reserva
 
-Estos eventos se activan automáticamente a medida que un huésped avanza por el embudo de reserva. Configura tus disparadores GTM como disparadores de **Evento Personalizado** que coincidan con los nombres de evento a continuación.
+Estos eventos se disparan automáticamente a medida que un huésped avanza por el embudo de reserva. Configura tus disparadores GTM como disparadores de **Evento Personalizado** que coincidan con los nombres de evento a continuación.
 
-| Paso | Evento | Cuándo se Activa |
-|------|--------|------------------|
+| Paso | Evento | Cuándo se Dispara |
+|------|--------|-------------------|
 | 1 | `view_item_list` | Se carga la cuadrícula o lista de inventario hotelero |
 | 2 | `view_item` | El huésped ve la página de una propiedad específica |
 | 3 | `add_to_cart` | El huésped agrega una habitación al carrito |
@@ -93,7 +98,7 @@ Estos eventos se activan automáticamente a medida que un huésped avanza por el
 
 #### `view_item_list`
 
-Se activa cuando se renderiza una cuadrícula o lista de inventario hotelero.
+Se dispara cuando se renderiza una cuadrícula o lista de inventario hotelero.
 
 ```json
 {
@@ -110,7 +115,7 @@ Se activa cuando se renderiza una cuadrícula o lista de inventario hotelero.
 
 #### `view_item`
 
-Se activa cuando un huésped ve una propiedad específica.
+Se dispara cuando un huésped ve una propiedad específica.
 
 ```json
 {
@@ -127,7 +132,7 @@ Se activa cuando un huésped ve una propiedad específica.
 
 #### `add_to_cart`
 
-Se activa cuando un huésped agrega una habitación a su carrito.
+Se dispara cuando un huésped agrega una habitación a su carrito.
 
 ```json
 {
@@ -144,7 +149,7 @@ Se activa cuando un huésped agrega una habitación a su carrito.
 
 #### `begin_checkout`
 
-Se activa cuando se carga la página de pago / checkout.
+Se dispara cuando se carga la página de pago / checkout.
 
 ```json
 {
@@ -164,7 +169,7 @@ Se activa cuando se carga la página de pago / checkout.
 
 #### `add_payment_info`
 
-Se activa cuando el huésped selecciona o confirma un método de pago.
+Se dispara cuando el huésped selecciona o confirma un método de pago.
 
 ```json
 {
@@ -185,7 +190,7 @@ Se activa cuando el huésped selecciona o confirma un método de pago.
 
 #### `login`
 
-Se activa cuando un huésped se autentica vía inicio de sesión único.
+Se dispara cuando un huésped se autentica vía inicio de sesión único.
 
 ```json
 {
@@ -200,7 +205,7 @@ Se activa cuando un huésped se autentica vía inicio de sesión único.
 
 #### `purchase`
 
-Se activa cuando se confirma una reserva.
+Se dispara cuando se confirma una reserva.
 
 ```json
 {
@@ -250,7 +255,7 @@ Se activa cuando se confirma una reserva.
 
 #### `refund`
 
-Se activa cuando se cancela una reserva.
+Se dispara cuando se cancela una reserva.
 
 ```json
 {
@@ -275,9 +280,9 @@ Se activa cuando se cancela una reserva.
 
 Todos los eventos que incluyen un arreglo `items` comparten el mismo esquema de ítem. Cada propiedad es opcional a menos que se indique como requerida.
 
-#### Campos estándar de GA4
+#### Campos estándar GA4
 
-Estos campos son entendidos nativamente por GA4 y aparecen en reportes estándar de ecommerce sin configuración adicional.
+Estos campos son entendidos nativamente por GA4 y aparecen en reportes ecommerce estándar sin configuración adicional.
 
 | Propiedad | Tipo | Requerido | Descripción |
 |----------|------|----------|-------------|
@@ -287,7 +292,7 @@ Estos campos son entendidos nativamente por GA4 y aparecen en reportes estándar
 | `coupon` | string | — | Código de cupón aplicado al ítem |
 | `currency` | string | — | Código de moneda ISO 4217 (ej. `USD`) |
 | `creative_name` | string | — | Nombre creativo usado en una promoción |
-| `creative_slot` | string | — | Posición del slot de la creatividad promocional |
+| `creative_slot` | string | — | Posición del slot de la promoción creativa |
 | `discount` | number | — | Monto de descuento aplicado |
 | `index` | number | — | Posición en la lista (base 1) |
 | `item_brand` | string | — | Nombre del hotel o marca |
@@ -302,11 +307,11 @@ Estos campos son entendidos nativamente por GA4 y aparecen en reportes estándar
 
 #### Parámetros personalizados a nivel ítem
 
-Estos parámetros llevan contexto específico de reserva de Wink. GA4 no los muestra automáticamente en reportes — debes registrarlos como **dimensiones personalizadas a nivel ítem** en tu propiedad GA4 antes de que aparezcan en exploraciones o reportes estándar. Consulta [Dimensiones Personalizadas en GA4](#custom-dimensions-in-ga4) más abajo para instrucciones.
+Estos parámetros llevan contexto específico de reserva de Wink. GA4 no los muestra automáticamente en reportes — debes registrar cada uno como una **dimensión personalizada a nivel ítem** en tu propiedad GA4 antes de que aparezcan en exploraciones o reportes estándar. Consulta [Dimensiones Personalizadas en GA4](#custom-dimensions-in-ga4) más abajo para instrucciones.
 
 | Propiedad | Tipo | Descripción |
 |----------|------|-------------|
-| `property_id` | string | Identificador de propiedad en Wink |
+| `property_id` | string | Identificador de propiedad Wink |
 | `property_name` | string | Nombre visible de la propiedad |
 | `property_brand` | string | Marca a la que pertenece la propiedad |
 | `property_chain` | string | Cadena a la que pertenece la propiedad |
@@ -320,10 +325,10 @@ Estos parámetros llevan contexto específico de reserva de Wink. GA4 no los mue
 | `cancellation_policy` | string | Uno de: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
 | `rate_plan_id` | string | Identificador del plan tarifario |
 | `room_rate_id` | string | Identificador de la tarifa específica de la habitación |
-| `room_rate_name` | string | Nombre visible de la tarifa de la habitación |
+| `room_rate_name` | string | Nombre visible de la tarifa de habitación |
 | `num_perks` | number | Cantidad de beneficios incluidos con la tarifa |
-| `room_location` | string | Descripción de la ubicación de la habitación (ej. `Overwater`, `Garden`) |
-| `room_view` | string | Descripción de la vista de la habitación (ej. `Ocean`, `City`) |
+| `room_location` | string | Descriptor de ubicación de la habitación (ej. `Overwater`, `Garden`) |
+| `room_view` | string | Descriptor de vista de la habitación (ej. `Ocean`, `City`) |
 | `room_classification` | string | Clasificación o categoría de la habitación (ej. `Suite`, `Standard`) |
 | `bed_type` | string | Configuración de camas de la habitación (ej. `King`, `Twin`) |
 
@@ -357,7 +362,7 @@ GA4 ignora los parámetros personalizados a nivel ítem en reportes hasta que lo
 </Steps>
 
 <Aside type="note">
-Las dimensiones personalizadas pueden tardar hasta 24 horas en aparecer en los reportes GA4 después de registrarlas. Los datos históricos recolectados antes del registro no se completan retroactivamente.
+Las dimensiones personalizadas pueden tardar hasta 24 horas en comenzar a aparecer en los reportes GA4 después de registrarlas. Los datos históricos recolectados antes del registro no se completan retroactivamente.
 
 GA4 permite hasta 50 dimensiones personalizadas a nivel ítem por propiedad en propiedades estándar (las propiedades 360 permiten más).
 </Aside>
@@ -391,7 +396,7 @@ Usa la siguiente tabla como referencia al crear dimensiones personalizadas. El v
 
 ### Eventos Adicionales Disponibles
 
-Los siguientes eventos están disponibles en el dataLayer de Wink pero no forman parte del embudo estándar de reserva. Pueden activarse por otras interacciones en la plataforma.
+Los siguientes eventos están disponibles en el dataLayer de Wink pero no forman parte del embudo estándar de reserva. Pueden dispararse por otras interacciones en la plataforma.
 
 #### `add_to_wishlist`
 
@@ -440,7 +445,7 @@ Los siguientes eventos están disponibles en el dataLayer de Wink pero no forman
 }
 ```
 
-Este evento no incluye carga útil `ecommerce`.
+No se incluye carga útil `ecommerce` con este evento.
 
 #### `view_promotion`
 
@@ -669,11 +674,11 @@ Este es un evento personalizado de Wink — no forma parte del conjunto estánda
 | Propiedad | Descripción |
 |----------|-------------|
 | `device` | Tipo de dispositivo detectado — `Desktop`, `Android`, `iPhone`, `iPad` o similar |
-| `deviceAgent` | Cadena cruda del agente de usuario |
+| `deviceAgent` | Cadena raw del user agent |
 | `os` | Sistema operativo detectado — `Windows`, `MacOS`, `Linux`, `UNIX` |
-| `path` | Ruta de la página actual |
-| `title` | Título de la página actual |
-| `userId` | Identificador del usuario autenticado (omitido si no está logueado) |
+| `path` | Ruta actual de la página |
+| `title` | Título actual de la página |
+| `userId` | Identificador de usuario autenticado (omitido si no está logueado) |
 | `startDate` | Fecha de check-in de la sesión de búsqueda actual |
 | `endDate` | Fecha de check-out de la sesión de búsqueda actual |
 | `guests` | Cantidad de huéspedes de la sesión de búsqueda actual |

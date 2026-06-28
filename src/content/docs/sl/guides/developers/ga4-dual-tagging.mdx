@@ -1,16 +1,16 @@
 ---
 title: Integracija GA4 Analytics
-description: Kako povezati svojo lastno lastnino Google Analytics 4 z Wink, da lahko spremljate svoje rezervacije, prihodke in pot gostov neposredno na svoji GA4 nadzorni plošči.
+description: Kako povezati svojo lastno lastnino Google Analytics 4 z Wink, da lahko spremljate svoje rezervacije, prihodke in pot gostov neposredno na svoji lastni nadzorni plošči GA4.
 sidebar:
   label: Integracija GA4 Analytics
 ---
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Z povezavo svoje lastnine Google Analytics 4 z Wink se vaši dogodki rezervacij — od ogledov sob do dokončanih nakupov — samodejno posredujejo na vašo lastno GA4 nadzorno ploščo skupaj z Winkovimi lastnimi analizami. Brez kode, brez tehničnih nastavitev na vaši strani.
+Z povezavo vaše lastnine Google Analytics 4 z Wink se vaši dogodki rezervacij — od ogledov sob do dokončanih rezervacij — samodejno posredujejo na vašo lastno nadzorno ploščo GA4 skupaj z Winkovimi lastnimi analizami. Brez kode, brez tehničnih nastavitev na vaši strani.
 
 <Aside type="tip">
-Vse, kar potrebujete, je GA4 Measurement ID. Ko ga vnesete v Wink portal, so vaše analize takoj aktivne.
+Potrebujete dve stvari iz GA4: **Measurement ID** in **Measurement Protocol API secret**. Measurement ID poganja nakupni lijak v brskalniku gosta; API secret omogoča Winku, da zabeleži dokončane rezervacije (`purchase`) **na strežniški strani**, tako da prodaja nikoli ni izgubljena, ko je gost preusmerjen na in nazaj od ponudnika plačila.
 </Aside>
 
 ---
@@ -18,11 +18,12 @@ Vse, kar potrebujete, je GA4 Measurement ID. Ko ga vnesete v Wink portal, so va�
 ## Kako deluje
 
 ```
-Vnesete svoj G-XXXXXXXXXX v Wink portal
+Vnesete svoj Measurement ID (G-XXXXXXXXXX) in API secret v Wink portal
        ↓
-Wink posreduje vaše dogodke rezervacij v vašo GA4 lastnino
+Dogodki brskanja (ogledi, košarica, zaključek nakupa) se prenašajo v vašo lastnino GA4 iz brskalnika
+Dokončane rezervacije (purchase) se pošiljajo na strežniški strani — preživijo preusmeritev plačila
        ↓
-Prijavite se na analytics.google.com in vidite svoje rezervacije
+Prijavite se na analytics.google.com in vidite celoten nakupni lijak
 ```
 
 ---
@@ -31,37 +32,49 @@ Prijavite se na analytics.google.com in vidite svoje rezervacije
 
 <Steps>
 
-1. **Ustvarite GA4 lastnino**
+1. **Ustvarite lastnino GA4**
 
-   Obiščite [analytics.google.com](https://analytics.google.com): Admin → Ustvari lastnino. Nastavite svoj časovni pas in valuto, da se ujemata z vašim trgom.
+   Obiščite [analytics.google.com](https://analytics.google.com): Admin → Create Property. Nastavite svojo časovno območje in valuto, da se ujemata z vašim trgom.
 
 2. **Ustvarite spletni podatkovni tok**
 
-   Admin → Data Streams → Dodaj tok → Web. Vnesite `wink.travel` kot URL. To ustvari vaš **Measurement ID** (`G-XXXXXXXXXX`). Kopirajte ga.
+   Admin → Data Streams → Add Stream → Web. Vnesite `wink.travel` kot URL. To ustvari vaš **Measurement ID** (`G-XXXXXXXXXX`). Kopirajte ga.
 
-3. **Vnesite svoj Measurement ID v Wink portal**
+3. **Ustvarite Measurement Protocol API Secret**
 
-   Prijavite se na [app.wink.travel](https://app.wink.travel), izberite svoj račun in pojdite na zavihek **Prilagoditve**. Prilepite svoj Measurement ID in shranite. To je vse — vaša GA4 integracija je zdaj aktivna.
+   Odprite isti spletni podatkovni tok → pomaknite se do **Measurement Protocol API secrets** → **Create**. Dajte mu vzdevek (npr. "Wink") in kopirajte ustvarjeno **vrednost skrivnosti**. Ta skrivnost omogoča Winku, da zabeleži dokončane rezervacije na strežniški strani, tako da prodaja nikoli ni izgubljena med preusmeritvijo plačila.
 
-4. **Označite `purchase` kot ključni dogodek**
+4. **Vnesite svoj Measurement ID in API Secret v Wink portal**
 
-   Vrnite se v svojo GA4 lastnino: Admin → Dogodki → poiščite `purchase` → preklopite **Označi kot ključni dogodek**. Tako bodo dokončane rezervacije prikazane v vašem poročilu o konverzijah.
+   Prijavite se na [app.wink.travel](https://app.wink.travel), izberite svoj račun in pojdite na zavihek **Customizations**. Prilepite svoj Measurement ID in API secret v polja **GA4** in shranite. To je vse — vaša integracija GA4 je zdaj aktivna.
 
-5. **Ogled podatkov**
+   <Aside type="note">
+   API secret je **samo za pisanje**: ko je enkrat shranjen, se nikoli več ne prikaže. Pri prihodnjih urejanjih pustite polje skrivnosti prazno, da ohranite že shranjeno vrednost.
+   </Aside>
 
-   Prijavite se na [analytics.google.com](https://analytics.google.com) in videli boste svoje rezervacije, prihodke in pot gostov — vse samodejno spremljano preko Wink.
+5. **Označite `purchase` kot ključni dogodek**
+
+   V vaši lastnini GA4: Admin → Events → poiščite `purchase` → preklopite **Mark as key event**. To omogoči, da se dokončane rezervacije prikažejo v vašem poročilu o konverzijah.
+
+6. **Ogled podatkov**
+
+   Prijavite se na [analytics.google.com](https://analytics.google.com) in videli boste svoje rezervacije, prihodke in nakupni lijak gostov — vse samodejno spremljano prek Wink.
 
 </Steps>
 
 <Aside type="note">
-Za to integracijo ni potrebno nameščati nobene sledilne kode na vašo spletno stran. Wink poskrbi za vse. Vaš Measurement ID je preprosto cilj, kamor se pošiljajo podatki o rezervacijah.
+Za to integracijo ni potrebno nameščati nobene sledilne kode na vašo spletno stran. Wink poskrbi za vse. Vaš Measurement ID je cilj, kamor se pošiljajo podatki o rezervacijah, vaš API secret pa omogoča Winku potrditev dokončanih rezervacij na strežniški strani.
+</Aside>
+
+<Aside type="tip">
+**GA4 in GTM lahko uporabljate skupaj.** Če uporabljate tudi Google Tag Manager (na primer Sojern container), lahko konfigurirate oba hkrati — nista več medsebojno izključujoča. Oglejte si [GTM Analytics Integration](/sl/guides/developers/gtm-dual-tagging).
 </Aside>
 
 ---
 
 ## Kaj lahko spremljate
 
-Ko je povezava vzpostavljena, vaša GA4 lastnina prejema celoten nabor dogodkov izboljšanega e-trgovanja za vašo lastnino:
+Ko je povezano, vaša lastnina GA4 prejme celoten nabor dogodkov izboljšane e-trgovine za vašo lastnino:
 
 ### Odkritje
 
@@ -79,26 +92,26 @@ Ko je povezava vzpostavljena, vaša GA4 lastnina prejema celoten nabor dogodkov 
 | `select_promotion` | Gost je kliknil na promocijsko ponudbo |
 | `add_to_wishlist` | Gost je shranil vašo lastnino na seznam želja |
 
-### Rezervacijski lijak
+### Nakupni lijak
 
 | Dogodek | Pomen |
 |---|---|
 | `add_to_cart` | Gost je izbral sobo ali paket |
 | `view_cart` | Gost je ogledal povzetek rezervacije |
 | `remove_from_cart` | Gost je odstranil sobo ali paket |
-| `begin_checkout` | Gost je začel postopek odjave |
+| `begin_checkout` | Gost je začel postopek zaključka nakupa |
 | `add_payment_info` | Gost je vnesel podatke o plačilu |
 | `add_shipping_info` | Gost je vnesel podatke o gostu |
 | `purchase` | Gost je dokončal rezervacijo |
 | `refund` | Rezervacija je bila preklicana in povrnjena |
 
-Vsi dogodki vključujejo ustrezne dimenzije, kot so prihodki, valuta, tip sobe in vrednost rezervacije — kar vam daje popolno sliko poti gosta od prvega vtisa do dokončane rezervacije. Za odklepanje dodatnih dimenzij na ravni lastnine in sobe, kot so `city_name`, `cancellation_policy`, `bed_type` in več, glejte [Prilagojene dimenzije v GA4](/sl/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
+Vsi dogodki vključujejo ustrezne dimenzije, kot so prihodki, valuta, tip sobe in vrednost rezervacije — kar vam daje popolno sliko poti gosta od prvega vtisa do dokončane rezervacije. Za odklep dodatnih dimenzij na ravni lastnine in sobe, kot so `city_name`, `cancellation_policy`, `bed_type` in več, glejte [Custom Dimensions in GA4](/sl/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
 
 ---
 
 ## Sledenje med domenami (napredno)
 
-Standardna integracija zgoraj sledi vsem dogodkom, ki se zgodijo znotraj Winka. Če pa želite slediti gostom od vaše lastne spletne strani do dokončanja rezervacije na Wink — in pravilno pripisati izvorni vir prometa (Google Ads, e-poštne kampanje, organsko iskanje itd.) — je potreben še en korak na vsaki strani.
+Standardna integracija zgoraj sledi vsemu, kar se dogaja znotraj Wink. Če pa želite slediti gostom od vaše lastne spletne strani do dokončanja rezervacije na Wink — in pravilno pripisati izvorni vir prometa (Google Ads, e-poštne kampanje, organsko iskanje itd.) — je potreben še en korak na vsaki strani.
 
 <Aside type="caution">
 Ta razdelek velja samo, če imate GA4 nameščen na svoji spletni strani. Če GA4 ne uporabljate na svoji strani, je standardna integracija zgoraj vse, kar potrebujete.
@@ -106,14 +119,14 @@ Ta razdelek velja samo, če imate GA4 nameščen na svoji spletni strani. Če GA
 
 ### Zakaj je to pomembno
 
-Brez sledenja med domenami bo gost, ki najprej obišče vašo spletno stran in nato rezervira na Wink, v vaši GA4 prikazan kot **Direct** seja brez povezave z njegovim prejšnjim obiskom. Nobeni kliki Google Ads, e-poštne kampanje ali obiski iz organskega iskanja, ki so vodili do rezervacije, ne bodo priznani.
+Brez sledenja med domenami bo gost, ki najprej obišče vašo spletno stran in nato rezervira na Wink, v GA4 prikazan kot seja **Direct** brez povezave z njihovim prejšnjim obiskom. Noben klik Google Ads, e-poštna kampanja ali organski obisk, ki je pripeljal do rezervacije, ne bo priznan.
 
 Z nastavitvijo sledenja med domenami vidite celotno pot gosta:
 
 ```
 google.com (plačano oglaševanje)
        ↓
-vaša spletna stran (gost pregleduje sobe)
+vaša spletna stran (gost brska po sobah)
        ↓
 wink.travel (gost izbere sobo in rezervira)
        ↓
@@ -122,19 +135,19 @@ nakup pravilno pripisan prvotnemu kliku Google Ads
 
 ### Potrebno dejanje: Vi
 
-Konfigurirajte svojo GA4 lastnino, da prepozna `wink.travel` kot del vaše lastne domene, ne kot zunanji vir. To pove GA4, da združi obe seji v eno neprekinjeno pot gosta.
+Konfigurirajte svojo lastnino GA4, da prepozna `wink.travel` kot del vaše lastne domene, ne kot zunanji vir. To pove GA4, da združi obe seji v eno neprekinjeno pot gosta.
 
 <Steps>
 1. GA4 Admin → Data Streams → vaš tok
-2. Nastavitve oznak → **Konfigurirajte svoje domene**
+2. Nastavitve oznak → **Configure your domains**
 3. Dodajte `wink.travel` kot povezano domeno
 4. Shrani
 </Steps>
 
 ### Potrebno dejanje: Wink
 
-Kontaktirajte [Wink Support](https://app.wink.travel) in posredujte domeno vaše spletne strani (npr. `yourhotel.com`). Wink bo vašo domeno dodal na seznam izključitev napotitev v Wink GA4 lastnini. To prepreči, da bi bila vaša spletna stran zabeležena kot vir napotitve, kar bi sicer prepisalo prvotno pripisovanje gosta in začelo novo sejo.
+Kontaktirajte [Wink Support](https://app.wink.travel) in posredujte domeno vaše spletne strani (npr. `yourhotel.com`). Wink bo vašo domeno dodal na seznam izključitev napotitev v lastnini GA4 Wink. To preprečuje, da bi bila vaša spletna stran zabeležena kot vir napotitve, kar bi sicer prepisalo prvotno pripisovanje gosta in začelo novo sejo.
 
 <Aside type="tip">
-Standardna integracija zgoraj zadostuje za večino lastnin in vam takoj omogoča vpogled v rezervacije in prihodke na Wink. Sledenje med domenami je napredna možnost, ki jo je vredno nastaviti, ko ste seznanjeni s svojimi GA4 podatki in želite globlji vpogled v pripisovanje.
+Standardna integracija zgoraj zadostuje za večino lastnin in vam takoj omogoča vpogled v rezervacije in prihodke na Wink. Sledenje med domenami je napredna možnost, ki jo je vredno nastaviti, ko ste seznanjeni s svojimi podatki GA4 in želite globlji vpogled v pripisovanje.
 </Aside>

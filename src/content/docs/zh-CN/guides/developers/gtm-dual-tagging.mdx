@@ -1,16 +1,16 @@
 ---
-title: Sojern 像素集成
-description: 如何将您的 Sojern 账户连接到 Wink，以便 Sojern 能够跟踪您的客人预订旅程，并支持您的重定向和广告活动。
+title: GTM 分析集成
+description: 如何将任何 Google Tag Manager 容器（例如 Sojern 容器）连接到 Wink，以便跟踪您的客人预订旅程并支持您的重定向和广告活动。
 sidebar:
-  label: Sojern 像素集成
+  label: GTM 分析集成
 ---
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-如果您正在通过 Sojern 运行广告活动，可以通过在 Wink 门户中输入您的 Sojern GTM 容器 ID 来连接您的 Sojern 账户。连接后，Sojern 的跟踪像素会自动触发，覆盖从搜索到完成预订的整个客人旅程。
+您可以通过在 Wink 门户中输入 **GTM 容器 ID**，将**任何** Google Tag Manager (GTM) 容器连接到 Wink。连接后，您的容器会自动为您的物业加载，并直接读取 Wink 的预订事件——覆盖从搜索到完成预订的完整客人旅程。一个常见的用例是用于重定向和广告的 **Sojern** 容器，但任何 GTM 容器的工作方式相同。
 
 <Aside type="tip">
-这假设您已经拥有一个活跃的 Sojern 账户，并且已从您的 Sojern 客户经理处获得了 GTM 容器 ID。如果您还没有 Sojern 账户，请访问 [sojern.com/contact](https://www.sojern.com/contact) 开始使用。
+这假设您已经拥有 GTM 容器 ID（格式为 `GTM-XXXXXXX`）。如果您的容器来自 Sojern 等合作伙伴，请向您的客户经理专门索要 **GTM 容器 ID**——它不同于像素或标签 ID。首次使用 Sojern？请访问 [sojern.com/contact](https://www.sojern.com/contact) 开始使用。
 </Aside>
 
 ---
@@ -19,64 +19,69 @@ import { Aside, Steps } from '@astrojs/starlight/components';
 
 <Steps>
 
-1. **从 Sojern 获取您的 GTM 容器 ID**
+1. **获取您的 GTM 容器 ID**
 
-   联系您的 Sojern 客户经理，索取您的 **GTM 容器 ID**。格式为 `GTM-XXXXXXX`。这与您的 Sojern 像素 ID 不同——请确保您特别要求 GTM 容器 ID。
+   获取您的 **GTM 容器 ID**（格式为 `GTM-XXXXXXX`）。如果来自 Sojern 等合作伙伴，请专门请求 GTM 容器 ID——它不同于像素或标签 ID。
 
 2. **在 Wink 门户中输入**
 
-   登录 [app.wink.travel](https://app.wink.travel)，选择您的账户，进入 **自定义** 标签页。将您的 Sojern GTM 容器 ID 粘贴到 Sojern 字段中并保存。您的集成现已生效。
+   登录 [app.wink.travel](https://app.wink.travel)，选择您的账户，进入 **自定义** 标签页。将您的 GTM 容器 ID 粘贴到 **GTM** 字段并保存。您的集成现已生效。
 
-3. **与您的 Sojern 客户经理确认**
+3. **（可选）添加 GA4 测量 ID + API 密钥以实现服务器端购买**
 
-   告知您的 Sojern 客户经理集成已激活。他们可以从他们的端验证像素是否在 `wink.travel` 上正确触发，并且数据是否流入您的 Sojern 账户。
+   GTM 容器完全在客人的浏览器中运行，因此如果客人在支付重定向期间关闭标签页，可能会错过完成的预订。如果您的容器加载了 **GA4 属性**，并且您希望可靠地记录完成的预订，请在 GTM 部分同时输入该 GA4 的 **测量 ID** 和 **测量协议 API 密钥**。Wink 将按照 [GA4 分析集成](/zh-CN/guides/developers/ga4-dual-tagging) 指南中描述的方式，**服务器端** 发送该属性的 `purchase` 事件。如果只需要浏览器内跟踪，请留空。
+
+4. **与您的供应商确认**
+
+   如果您的容器来自 Sojern 等合作伙伴，请告知您的客户经理集成已激活。他们可以从他们的端验证标签是否在您的物业的 `wink.travel` 上正确触发，并且数据是否流入您的账户。
 
 </Steps>
 
 <Aside type="note">
-此集成无需您在自己的网站上放置任何像素代码。Wink 会自动在所有您的物业活跃的页面加载您的 Sojern 容器。
+此集成无需您在自己的网站上放置任何像素代码。Wink 会自动在所有激活您物业的页面加载您的 GTM 容器。
 
-此配置适用于任何自定义 GTM 容器 ID。我们仅以 Sojern 为例，因为它是非常常见的集成。
+这适用于**任何** GTM 容器 ID——Sojern 只是一个常见示例。
 </Aside>
 
 ---
 
 ## Wink 端的工作原理
 
-为确保透明，以下是 Wink 为使此集成生效所做的配置：
+为保证透明，以下是 Wink 为使此集成生效所做的配置：
 
-- **在 Wink 门户的自定义标签页中提供了 Sojern GTM 容器 ID 字段**。输入容器 ID 后，Wink 会验证格式并安全地存储于您的物业信息中。
-- **在 Wink 上您的物业活跃的每个页面**，您的 Sojern GTM 容器 ID 会被渲染到页面中，Wink 的标签管理系统会动态加载您的 Sojern 容器与自身容器并行运行。此过程自动完成——Wink 团队无需为每个物业手动操作。
-- **您的 Sojern 容器异步加载**，不会影响客人的页面加载性能。
-- **Wink 自身的跟踪与 Sojern 像素并行运行**，共享相同的事件数据。Wink 跟踪的每个预订事件都会同时提供给您的 Sojern 容器。
-- **当您的物业未被查看时**——例如客人在 Wink 浏览其他酒店时——您的 Sojern 容器不会被加载，确保 Sojern 只接收与您的物业相关的数据。
+- **在 Wink 门户的自定义标签页中提供了 GTM 容器 ID 字段**。输入容器 ID 后，Wink 会验证格式（`GTM-XXXXXXX`）并安全地存储于您的物业信息中。
+- **在 Wink 上您的物业激活的每个页面**，您的容器会直接注入页面——共享 Wink 自身的 `window.dataLayer`——因此它会与 Wink 自身的容器一起加载，无需任何额外配置。此过程自动完成，无需 Wink 团队为每个物业单独操作。
+- **您的容器异步加载**，不会影响客人的页面加载性能。
+- **Wink 自身的跟踪与您的容器并行运行**，共享同一个 `dataLayer`。Wink 跟踪的每个预订事件都会同时提供给您的容器。
+- **当您的物业未被查看时**——例如客人在 Wink 浏览其他酒店时——您的容器不会加载，因此只接收与您的物业相关的数据。
+- **如果您提供了 GA4 测量 ID + API 密钥**（上述第 3 步），完成预订的 `purchase` 事件还会通过 GA4 测量协议**服务器端**发送，即使客人未返回确认页，销售也会被记录。
 
 ---
 
 ## DataLayer 参考
 
-Wink 在整个客人旅程中向 `dataLayer` 推送兼容 GA4 的事件。您的 GTM 容器从同一共享的 `dataLayer` 读取，因此您配置的任何触发器或变量都可以访问下述所有属性。
+Wink 在整个客人旅程中向 `dataLayer` 推送兼容 GA4 的事件。您的 GTM 容器读取同一个共享的 `dataLayer`，因此您配置的任何触发器或变量都可以访问下述所有属性。
 
 每个事件遵循标准 GA4 增强型电商结构：顶层的 `event` 字符串和一个 `ecommerce` 对象。每次推送前，Wink 会清除之前的电商负载，防止旧数据影响新触发器。
 
 <Aside type="note">
 **dataLayer 重置模式**
 
-Wink 在每次事件推送前重置 ecommerce 对象：
+Wink 在每次事件推送前重置电商对象：
 
 ```js
 dataLayer.push({ ecommerce: null });   // 清除之前事件
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
-不要依赖 ecommerce 属性在事件间持续存在。请始终在触发时读取同一事件内的属性。
+不要依赖电商属性在事件间持续存在。请始终在触发时于同一事件内读取它们。
 </Aside>
 
 ---
 
 ### 预订旅程事件
 
-当客人通过预订漏斗时，这些事件会自动触发。请将您的 GTM 触发器配置为匹配以下事件名称的 **自定义事件** 触发器。
+当客人通过预订漏斗时，这些事件会自动触发。请将您的 GTM 触发器配置为匹配下表事件名称的**自定义事件**触发器。
 
 | 步骤 | 事件 | 触发时机 |
 |------|-------|---------------|
@@ -179,7 +184,7 @@ dataLayer.push({ event: '...', ecommerce: { ... } });
 }
 ```
 
-`payment_type` 来源于支付收单类型。`coupon` 仅在使用折扣码时出现。
+`payment_type` 由支付收单类型填充。`coupon` 仅在使用折扣码时出现。
 
 ---
 
@@ -273,7 +278,7 @@ dataLayer.push({ event: '...', ecommerce: { ... } });
 
 ### 商品属性
 
-所有包含 `items` 数组的事件共享相同的商品结构。除非标记为必填，否则所有属性均为可选。
+所有包含 `items` 数组的事件共享相同的商品架构。除非标记为必填，否则所有属性均为可选。
 
 #### 标准 GA4 字段
 
@@ -291,7 +296,7 @@ dataLayer.push({ event: '...', ecommerce: { ... } });
 | `discount` | number | — | 应用的折扣金额 |
 | `index` | number | — | 列表中的位置（从 1 开始） |
 | `item_brand` | string | — | 酒店或品牌名称 |
-| `item_category` | string | — | 产品类型 — 如 `GUEST_ROOM`、`ACTIVITY`、`ATTRACTION`、`MEETING_ROOM`、`RESTAURANT`、`SPA` |
+| `item_category` | string | — | 产品类型——如 `GUEST_ROOM`、`ACTIVITY`、`ATTRACTION`、`MEETING_ROOM`、`RESTAURANT`、`SPA` |
 | `item_list_id` | string | — | 该商品所属列表的标识符 |
 | `item_list_name` | string | — | 列表的显示名称 |
 | `location_id` | string | — | 物业的地理坐标 |
@@ -302,7 +307,7 @@ dataLayer.push({ event: '...', ecommerce: { ... } });
 
 #### 自定义商品范围参数
 
-这些参数携带 Wink 特定的预订上下文。GA4 不会自动在报告中显示它们——您必须在 GA4 资产中将每个参数注册为 **商品范围的自定义维度**，它们才会在探索或标准报告中出现。请参见下文 [GA4 中的自定义维度](#custom-dimensions-in-ga4) 了解设置说明。
+这些参数携带 Wink 特定的预订上下文。GA4 不会自动在报告中显示它们——您必须在 GA4 属性中将每个参数注册为**商品范围的自定义维度**，它们才会出现在探索或标准报告中。请参见下文 [GA4 中的自定义维度](#custom-dimensions-in-ga4) 了解设置说明。
 
 | 属性 | 类型 | 描述 |
 |----------|------|-------------|
@@ -318,10 +323,10 @@ dataLayer.push({ event: '...', ecommerce: { ... } });
 | `num_adults` | number | 预订中的成人数量 |
 | `num_children` | number | 预订中的儿童数量 |
 | `cancellation_policy` | string | 取消政策之一：`Refundable`、`Non-Refundable`、`Refundable-With-Restrictions`、`Non-Refundable-With-Restrictions` |
-| `rate_plan_id` | string | 价格计划标识符 |
+| `rate_plan_id` | string | 费率计划标识符 |
 | `room_rate_id` | string | 具体房价标识符 |
 | `room_rate_name` | string | 房价显示名称 |
-| `num_perks` | number | 价格包含的优惠数量 |
+| `num_perks` | number | 费率包含的优惠数量 |
 | `room_location` | string | 房间位置描述（如 `Overwater`、`Garden`） |
 | `room_view` | string | 房间景观描述（如 `Ocean`、`City`） |
 | `room_classification` | string | 房间分类或等级（如 `Suite`、`Standard`） |
@@ -331,13 +336,13 @@ dataLayer.push({ event: '...', ecommerce: { ... } });
 
 ### GA4 中的自定义维度
 
-GA4 在报告中会忽略自定义商品参数，除非您明确将它们注册为商品范围的自定义维度。您只需注册计划在报告中使用的参数——无需注册全部 20 个。
+GA4 在报告中忽略自定义商品参数，除非您明确将它们注册为商品范围的自定义维度。您只需注册计划在报告中使用的参数——无需注册全部 20 个。
 
 <Steps>
 
 1. **打开自定义定义**
 
-   在 GA4 中，进入 **管理**（左下角齿轮图标）→ 选择您的资产 → **数据展示** → **自定义定义**。
+   在 GA4 中，进入 **管理**（左下齿轮图标）→ 选择您的属性 → **数据展示** → **自定义定义**。
 
 2. **创建新的自定义维度**
 
@@ -352,17 +357,17 @@ GA4 在报告中会忽略自定义商品参数，除非您明确将它们注册�
 
 4. **保存并重复**
 
-   点击 **保存**，然后为每个想要跟踪的参数重复此操作。
+   点击 **保存**，然后为每个要跟踪的参数重复此操作。
 
 </Steps>
 
 <Aside type="note">
 自定义维度注册后，GA4 报告中可能需要最多 24 小时才能开始显示。注册前收集的历史数据不会回填。
 
-标准 GA4 资产最多支持 50 个商品范围的自定义维度（360 资产支持更多）。
+GA4 标准属性最多支持 50 个商品范围的自定义维度（360 版本支持更多）。
 </Aside>
 
-创建自定义维度时，请参考下表。**事件参数** 必须完全匹配——GA4 区分大小写。
+创建自定义维度时，请参考下表。**事件参数**值必须完全匹配——GA4 区分大小写。
 
 | 维度名称 | 事件参数 | 类型 |
 |----------------|-----------------|------|
@@ -378,7 +383,7 @@ GA4 在报告中会忽略自定义商品参数，除非您明确将它们注册�
 | 成人数量 | `num_adults` | 数字 |
 | 儿童数量 | `num_children` | 数字 |
 | 取消政策 | `cancellation_policy` | 文本 |
-| 价格计划 ID | `rate_plan_id` | 文本 |
+| 费率计划 ID | `rate_plan_id` | 文本 |
 | 房价 ID | `room_rate_id` | 文本 |
 | 房价名称 | `room_rate_name` | 文本 |
 | 优惠数量 | `num_perks` | 数字 |
@@ -668,9 +673,9 @@ GA4 在报告中会忽略自定义商品参数，除非您明确将它们注册�
 
 | 属性 | 描述 |
 |----------|-------------|
-| `device` | 检测到的设备类型 — 如 `Desktop`、`Android`、`iPhone`、`iPad` 等 |
+| `device` | 检测到的设备类型——`Desktop`、`Android`、`iPhone`、`iPad` 或类似 |
 | `deviceAgent` | 原始用户代理字符串 |
-| `os` | 检测到的操作系统 — 如 `Windows`、`MacOS`、`Linux`、`UNIX` |
+| `os` | 检测到的操作系统——`Windows`、`MacOS`、`Linux`、`UNIX` |
 | `path` | 当前页面路径 |
 | `title` | 当前页面标题 |
 | `userId` | 已认证用户标识符（未登录时省略） |

@@ -1,16 +1,16 @@
 ---
-title: Integracija Sojern Pixel
-description: Kako povezati svoj račun Sojern z Wink, da lahko Sojern spremlja pot vaših gostov pri rezervaciji in podpira vaše kampanje za ponovno ciljanje in oglaševanje.
+title: Integracija GTM Analytics
+description: Kako povezati kateri koli Google Tag Manager vsebnik (kot je Sojern vsebnik) z Wink, da lahko sledi poti rezervacije vaših gostov in podpira vaše retargeting in oglaševalske kampanje.
 sidebar:
-  label: Integracija Sojern Pixel
+  label: Integracija GTM Analytics
 ---
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Če izvajate oglaševalske kampanje prek Sojern, lahko svoj račun Sojern povežete z Wink tako, da v portal Wink vnesete svoj Sojern GTM Container ID. Ko je povezava vzpostavljena, se Sojernov sledilni pixel samodejno sproži za vašo nastanitev — pokriva celotno pot gosta od iskanja do zaključene rezervacije.
+Povežete lahko **kateri koli** Google Tag Manager (GTM) vsebnik z Wink tako, da v portal Wink vnesete njegov **GTM Container ID**. Ko je povezan, se vaš vsebnik samodejno naloži za vašo nastanitev in neposredno bere Winkove dogodke rezervacij — pokriva celotno pot gosta od iskanja do zaključene rezervacije. Pogosta uporaba je **Sojern** vsebnik za retargeting in oglaševanje, vendar kateri koli GTM vsebnik deluje enako.
 
 <Aside type="tip">
-To predpostavlja, da že imate aktiven račun Sojern in ste od svojega upravitelja računa Sojern prejeli GTM Container ID. Če računa Sojern še nimate, obiščite [sojern.com/contact](https://www.sojern.com/contact) za začetek.
+To predpostavlja, da že imate GTM Container ID (format `GTM-XXXXXXX`). Če vaš vsebnik prihaja od partnerja, kot je Sojern, prosite svojega upravitelja računa za **GTM Container ID** posebej — ta se razlikuje od ID-ja piksla ali oznake. Ste novi pri Sojern? Obiščite [sojern.com/contact](https://www.sojern.com/contact) za začetek.
 </Aside>
 
 ---
@@ -19,24 +19,28 @@ To predpostavlja, da že imate aktiven račun Sojern in ste od svojega upravitel
 
 <Steps>
 
-1. **Pridobite svoj GTM Container ID od Sojern**
+1. **Pridobite svoj GTM Container ID**
 
-   Obrnite se na svojega upravitelja računa Sojern in zahtevajte svoj **GTM Container ID**. Sledi formatu `GTM-XXXXXXX`. To se razlikuje od vašega Sojern Pixel ID — poskrbite, da boste posebej zahtevali GTM Container ID.
+   Pridobite svoj **GTM Container ID** (format `GTM-XXXXXXX`). Če prihaja od partnerja, kot je Sojern, posebej zahtevajte GTM Container ID — razlikuje se od ID-ja piksla ali oznake.
 
 2. **Vnesite ga v portal Wink**
 
-   Prijavite se v [app.wink.travel](https://app.wink.travel), izberite svoj račun in pojdite na zavihek **Prilagoditve**. Prilepite svoj Sojern GTM Container ID v polje Sojern in shranite. Vaša integracija je zdaj aktivna.
+   Prijavite se na [app.wink.travel](https://app.wink.travel), izberite svoj račun in pojdite na zavihek **Prilagoditve**. Prilepite svoj GTM Container ID v polje **GTM** in shranite. Vaša integracija je zdaj aktivna.
 
-3. **Potrdite pri svojem upravitelju računa Sojern**
+3. **(Neobvezno) Dodajte GA4 Measurement ID + API Secret za strežniški nakup**
 
-   Obvestite svojega upravitelja računa Sojern, da je integracija aktivna. Lahko preverijo na svoji strani, da se pixel pravilno sproža na `wink.travel` za vašo nastanitev in da podatki tečejo v vaš račun Sojern.
+   GTM vsebniki delujejo popolnoma v brskalniku gosta, zato se lahko zaključena rezervacija spregleda, če gost zapre zavihek med preusmeritvijo na plačilo. Če vaš vsebnik naloži **GA4 lastnost** in želite zanesljivo beleženje zaključenih rezervacij, vnesite tudi GA4 **Measurement ID** in **Measurement Protocol API secret** v razdelek GTM. Wink bo nato poslal `purchase` za to lastnost **strežniško**, točno kot je opisano v vodiču [GA4 Analytics Integration](/sl/guides/developers/ga4-dual-tagging). Pustite prazno, če potrebujete samo sledenje v brskalniku.
+
+4. **Potrdite s svojim ponudnikom**
+
+   Če vaš vsebnik prihaja od partnerja, kot je Sojern, obvestite svojega upravitelja računa, da je integracija aktivna. Lahko preverijo na svoji strani, da se oznake pravilno sprožajo na `wink.travel` za vašo nastanitev in da podatki tečejo v vaš račun.
 
 </Steps>
 
 <Aside type="note">
-Za to integracijo ni potrebno nameščati nobene kode pixla na vašo spletno stran. Wink samodejno naloži vaš Sojern container na vseh straneh, kjer je vaša nastanitev aktivna.
+Za to integracijo ni potrebno nameščati nobene kode piksla na vašo spletno stran. Wink samodejno naloži vaš GTM vsebnik na vseh straneh, kjer je vaša nastanitev aktivna.
 
-Ta konfiguracija deluje za kateri koli po meri določen GTM Container ID. Sojern smo uporabili le kot primer, saj gre za zelo pogosto integracijo.
+To deluje za **kateri koli** GTM Container ID — Sojern je le pogost primer.
 </Aside>
 
 ---
@@ -45,36 +49,37 @@ Ta konfiguracija deluje za kateri koli po meri določen GTM Container ID. Sojern
 
 Za preglednost, tukaj je, kaj Wink konfigurira, da ta integracija deluje:
 
-- **Polje za Sojern GTM Container ID** je na voljo v zavihku Prilagoditve v vašem portalu Wink. Ko vnesete svoj Container ID, Wink preveri format in ga varno shrani za vašo nastanitev.
-- **Na vsaki strani, kjer je vaša nastanitev aktivna** na Wink, se vaš Sojern GTM Container ID vključi v stran in Winkov sistem za upravljanje oznak dinamično naloži vaš Sojern container skupaj s svojim. To se zgodi samodejno — brez ročnih korakov s strani Wink za posamezno nastanitev.
-- **Vaš Sojern container se naloži asinhrono**, kar pomeni, da ne vpliva na hitrost nalaganja strani za vaše goste.
-- **Winkovo lastno sledenje in vaš Sojern pixel delujeta vzporedno**, brata iz istega skupnega podatkovnega sloja dogodkov. Vsak dogodek rezervacije, ki ga Wink spremlja, je hkrati na voljo vašemu Sojern containerju.
-- **Ko vaša nastanitev ni prikazana** — na primer, ko gost brska po drugem hotelu na Wink — vaš Sojern container ni naložen. To zagotavlja, da Sojern prejema le podatke, ki se nanašajo na vašo nastanitev.
+- **Polje GTM Container ID** je na voljo v zavihku Prilagoditve v vašem Wink portalu. Ko vnesete svoj Container ID, Wink preveri format (`GTM-XXXXXXX`) in ga varno shrani za vašo nastanitev.
+- **Na vsaki strani, kjer je vaša nastanitev aktivna** na Wink, se vaš vsebnik neposredno vstavi v stran — deli Winkov lasten `window.dataLayer` — tako da se naloži skupaj z Winkovim lastnim vsebnikom brez odvisnosti od dodatnih nastavitev. To se zgodi samodejno, brez dodatnega dela Wink ekipe za posamezno nastanitev.
+- **Vaš vsebnik se naloži asinhrono**, zato ne vpliva na hitrost nalaganja strani za vaše goste.
+- **Winkovo lastno sledenje in vaš vsebnik tečeta vzporedno**, bereta iz istega skupnega `dataLayer`. Vsak dogodek rezervacije, ki ga Wink sledi, je hkrati na voljo vašemu vsebniku.
+- **Ko vaša nastanitev ni ogledana** — na primer, ko gost brska po drugem hotelu na Wink — vaš vsebnik ni naložen, zato prejema samo podatke, ki se nanašajo na vašo nastanitev.
+- **Če ste zagotovili GA4 Measurement ID + API secret** (korak 3 zgoraj), se `purchase` za zaključene rezervacije dodatno pošlje **strežniško** preko GA4 Measurement Protocol, tako da je prodaja zabeležena tudi, če gost nikoli ne pride nazaj na potrditveno stran.
 
 ---
 
 ## Referenca DataLayer
 
-Wink pošilja dogodke, združljive z GA4, v `dataLayer` skozi celotno pot gosta. Vaš GTM container bere iz istega skupnega `dataLayer`, zato ima vsak sprožilec ali spremenljivka, ki jo konfigurirate, dostop do vseh spodaj opisanih lastnosti.
+Wink potiska dogodke, združljive z GA4, v `dataLayer` skozi celotno pot gosta. Vaš GTM vsebnik bere iz istega skupnega `dataLayer`, zato ima vsak sprožilec ali spremenljivka, ki jo konfigurirate, dostop do vseh spodaj opisanih lastnosti.
 
-Vsak dogodek sledi standardni strukturi GA4 Enhanced Ecommerce: vrhnji niz `event` in objekt `ecommerce`. Pred vsakim pošiljanjem Wink počisti prejšnjo vsebino ecommerce, da prepreči prelivanje zastarelih podatkov v nove sprožilce.
+Vsak dogodek sledi standardni GA4 strukturi Enhanced Ecommerce: vrhnji niz `event` in objekt `ecommerce`. Pred vsakim potiskom Wink počisti prejšnjo ecommerce vsebino, da prepreči prenos zastarelih podatkov v nove sprožilce.
 
 <Aside type="note">
 **Vzorec ponastavitve dataLayer**
 
-Wink pred vsakim pošiljanjem dogodka ponastavi ecommerce objekt:
+Wink ponastavi ecommerce objekt pred vsakim potiskom dogodka:
 
 ```js
 dataLayer.push({ ecommerce: null });   // počisti prejšnji dogodek
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
-Ne zanašajte se na ohranjanje lastnosti ecommerce med dogodki. Vedno jih preberite ob sprožitvi znotraj istega dogodka.
+Ne zanašajte se, da lastnosti ecommerce ostanejo med dogodki. Vedno jih preberite ob sprožitvi znotraj istega dogodka.
 </Aside>
 
 ---
 
-### Dogodki na poti rezervacije
+### Dogodki poti rezervacije
 
 Ti dogodki se sprožijo samodejno, ko gost napreduje skozi rezervacijski lijak. Konfigurirajte svoje GTM sprožilce kot **Custom Event** sprožilce, ki ustrezajo spodnjim imenom dogodkov.
 
@@ -110,7 +115,7 @@ Sproži se, ko se prikaže mreža ali seznam hotelskih kapacitet.
 
 #### `view_item`
 
-Sproži se, ko gost ogleda določeno nastanitev.
+Sproži se, ko si gost ogleda določeno nastanitev.
 
 ```json
 {
@@ -158,7 +163,7 @@ Sproži se, ko se naloži stran za plačilo / zaključek nakupa.
 }
 ```
 
-`coupon` je prisoten le, če je bil uporabljen koda za popust.
+`coupon` je prisoten samo, če je bil uporabljen koda za popust.
 
 ---
 
@@ -179,7 +184,7 @@ Sproži se, ko gost izbere ali potrdi način plačila.
 }
 ```
 
-`payment_type` je izpolnjen glede na vrsto plačilnega ponudnika. `coupon` je prisoten le, če je bil uporabljen koda za popust.
+`payment_type` je izpolnjen glede na vrsto plačilnega pridobitelja. `coupon` je prisoten samo, če je bil uporabljen koda za popust.
 
 ---
 
@@ -244,7 +249,7 @@ Sproži se, ko je rezervacija potrjena.
 }
 ```
 
-`transaction_id` je edinstvena identifikacija rezervacijskega pogodbenega števila. `coupon`, `shipping` in `tax` so prisotni le, če so relevantni.
+`transaction_id` je edinstvena identifikacija rezervacijskega pogodbenega števila. `coupon`, `shipping` in `tax` so prisotni samo, če so relevantni.
 
 ---
 
@@ -267,7 +272,7 @@ Sproži se, ko je rezervacija preklicana.
 }
 ```
 
-`transaction_id` se ujema z dogodkom `purchase` za isto rezervacijo. `coupon`, `shipping` in `tax` so prisotni le, če so relevantni.
+`transaction_id` se ujema z dogodkom `purchase` za isto rezervacijo. `coupon`, `shipping` in `tax` so prisotni samo, če so relevantni.
 
 ---
 
@@ -275,9 +280,9 @@ Sproži se, ko je rezervacija preklicana.
 
 Vsi dogodki, ki vključujejo polje `items`, uporabljajo enako shemo elementov. Vsaka lastnost je neobvezna, razen če je označena kot obvezna.
 
-#### Standardna polja GA4
+#### Standardna GA4 polja
 
-Ta polja GA4 nativno razume in se pojavijo v standardnih poročilih ecommerce brez dodatne konfiguracije.
+Ta polja GA4 nativno razume in se pojavijo v standardnih ecommerce poročilih brez dodatnih nastavitev.
 
 | Lastnost | Tip | Obvezno | Opis |
 |----------|-----|---------|------|
@@ -300,21 +305,21 @@ Ta polja GA4 nativno razume in se pojavijo v standardnih poročilih ecommerce br
 | `promotion_name` | niz | — | Prikazno ime promocije |
 | `quantity` | število | — | Količina (privzeto `1`) |
 
-#### Po meri določeni parametri na nivoju elementa
+#### Po meri definirani parametri na elementih
 
-Ti parametri nosijo Wink-specifičen kontekst rezervacije. GA4 jih ne prikaže samodejno v poročilih — morate jih registrirati kot **po meri določene dimenzije na nivoju elementa** v svoji GA4 lastnini, preden se pojavijo v analizah ali standardnih poročilih. Navodila za nastavitev so v poglavju [Custom Dimensions in GA4](#custom-dimensions-in-ga4).
+Ti parametri nosijo Wink-specifičen kontekst rezervacije. GA4 jih ne prikaže samodejno v poročilih — vsak morate registrirati kot **item-scoped custom dimension** v svoji GA4 lastnosti, preden se prikažejo v raziskavah ali standardnih poročilih. Za navodila glejte [Custom Dimensions in GA4](#custom-dimensions-in-ga4).
 
 | Lastnost | Tip | Opis |
 |----------|-----|------|
-| `property_id` | niz | Identifikator nastanitve Wink |
+| `property_id` | niz | Wink identifikator nastanitve |
 | `property_name` | niz | Prikazno ime nastanitve |
 | `property_brand` | niz | Blagovna znamka, ki ji nastanitev pripada |
 | `property_chain` | niz | Veriga, ki ji nastanitev pripada |
 | `property_url_name` | niz | URL-prijazen slug nastanitve |
 | `city_name` | niz | Mesto, kjer se nastanitev nahaja |
 | `country_code` | niz | ISO 3166-1 alpha-2 koda države |
-| `start_date` | niz | Datum prihoda v formatu `YYYY-MM-DD` |
-| `end_date` | niz | Datum odhoda v formatu `YYYY-MM-DD` |
+| `start_date` | niz | Datum prijave v formatu `YYYY-MM-DD` |
+| `end_date` | niz | Datum odjave v formatu `YYYY-MM-DD` |
 | `num_adults` | število | Število odraslih v rezervaciji |
 | `num_children` | število | Število otrok v rezervaciji |
 | `cancellation_policy` | niz | Ena od: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
@@ -329,40 +334,40 @@ Ti parametri nosijo Wink-specifičen kontekst rezervacije. GA4 jih ne prikaže s
 
 ---
 
-### Po meri določene dimenzije v GA4
+### Po meri definirane dimenzije v GA4
 
-GA4 ignorira po meri določene parametre elementov v poročilih, dokler jih ne registrirate kot dimenzije na nivoju elementa. Registrirati morate le tiste parametre, ki jih želite uporabljati v poročilih — ni potrebno registrirati vseh 20.
+GA4 ignorira po meri definirane parametre elementov v poročilih, dokler jih ne registrirate kot dimenzije z obsegom elementa. Registrirati morate samo tiste parametre, ki jih želite uporabljati v poročilih — ni treba registrirati vseh 20.
 
 <Steps>
 
 1. **Odprite Custom Definitions**
 
-   V GA4 pojdite na **Admin** (ikona zobnika spodaj levo) → izberite svojo lastnino → **Data display** → **Custom definitions**.
+   V GA4 pojdite na **Admin** (ikona zobnika spodaj levo) → izberite svojo lastnost → **Data display** → **Custom definitions**.
 
-2. **Ustvarite novo po meri določeno dimenzijo**
+2. **Ustvarite novo po meri dimenzijo**
 
    Kliknite **Create custom dimensions**.
 
-3. **Izpolnite podatke o dimenziji**
+3. **Izpolnite podrobnosti dimenzije**
 
    - **Dimension name** — berljiv naziv, ki se prikaže v GA4 poročilih (glejte spodnjo tabelo)
    - **Scope** — izberite **Item**
    - **Event parameter** — natančno ime parametra, kot se pojavi v dataLayer (glejte spodnjo tabelo)
-   - **Description** — neobvezno, a priporočljivo
+   - **Description** — neobvezno, a priporočeno
 
 4. **Shrani in ponovi**
 
-   Kliknite **Save** in ponovite za vsak parameter, ki ga želite spremljati.
+   Kliknite **Save**, nato ponovite za vsak parameter, ki ga želite spremljati.
 
 </Steps>
 
 <Aside type="note">
-Po meri določene dimenzije se lahko v GA4 poročilih začnejo prikazovati do 24 ur po registraciji. Zgodovinski podatki, zbrani pred registracijo, niso dopolnjeni.
+Po meri definirane dimenzije lahko do 24 ur po registraciji začnejo prikazovati podatke v GA4 poročilih. Zgodovinski podatki, zbrani pred registracijo, niso dopolnjeni.
 
-GA4 omogoča do 50 po meri določenih dimenzij na nivoju elementa na standardnih lastnostih (360 lastnosti omogočajo več).
+GA4 omogoča do 50 po meri dimenzij z obsegom elementa na standardno lastnost (360 lastnosti omogočajo več).
 </Aside>
 
-Uporabite spodnjo tabelo kot referenco pri ustvarjanju po meri določenih dimenzij. Vrednost **Event parameter** mora biti natančno enaka — GA4 je občutljiv na velike in male črke.
+Uporabite spodnjo tabelo kot referenco pri ustvarjanju po meri dimenzij. Vrednost **Event parameter** mora biti natančno enaka — GA4 je občutljiv na velike in male črke.
 
 | Ime dimenzije | Event parameter | Tip |
 |---------------|-----------------|-----|
@@ -440,7 +445,7 @@ Naslednji dogodki so na voljo v Wink dataLayer, vendar niso del standardnega rez
 }
 ```
 
-Ta dogodek ne vsebuje `ecommerce` objekta.
+Ta dogodek ne vsebuje `ecommerce` podatkov.
 
 #### `view_promotion`
 
@@ -648,7 +653,7 @@ Ta dogodek ne vsebuje `ecommerce` objekta.
 
 ### `virtualPageView`
 
-To je po meri določen Wink dogodek — ni del standardnega nabora GA4 dogodkov. Sproži se ob vsakem premiku med stranmi in nosi kontekst naprave in seje. Ne vsebuje objekta `ecommerce`.
+To je po meri definiran Wink dogodek — ni del standardnega GA4 nabora dogodkov. Potiska se ob vsakem premiku med stranmi in nosi kontekst naprave in seje. Ne vsebuje objekta `ecommerce`.
 
 ```json
 {
@@ -674,7 +679,7 @@ To je po meri določen Wink dogodek — ni del standardnega nabora GA4 dogodkov.
 | `path` | Trenutna pot strani |
 | `title` | Trenutni naslov strani |
 | `userId` | Identifikator prijavljenega uporabnika (izpuščen, če ni prijavljen) |
-| `startDate` | Datum prihoda iz trenutne iskalne seje |
-| `endDate` | Datum odhoda iz trenutne iskalne seje |
+| `startDate` | Datum prijave iz trenutne iskalne seje |
+| `endDate` | Datum odjave iz trenutne iskalne seje |
 | `guests` | Število gostov iz trenutne iskalne seje |
 | `rooms` | Število sob iz trenutne iskalne seje |

@@ -13,48 +13,237 @@ Ta strona zawiera listę wszystkich zdarzeń webhook, na które możesz się zap
 
 1. Przejdź do **Aplikacje > Webhooki** w swoim portalu.
 2. Utwórz webhook i wybierz zdarzenia, które chcesz otrzymywać.
-3. Wink wysyła żądanie HTTP POST do Twojego endpointu za każdym razem, gdy zdarzenie wystąpi.
+3. Wink wysyła żądanie HTTP POST do twojego endpointu za każdym razem, gdy zdarzenie wystąpi.
 
 Pełne kroki konfiguracji i najlepsze praktyki znajdziesz w [Integracji webhook](/pl/guides/developers/webhook-integration).
 
 ---
 
-## Zdarzenia konta
+## Zarządzanie zdarzeniami encji
 
-Zdarzenia związane z cyklem życia i ustawieniami konta TripPay.
+Zdarzenia dotyczące zarządzania encjami (nieruchomościami, afiliantami, firmami) i ich administracją.
+
+### Cykl życia
 
 | Zdarzenie | Klucz | Opis |
 |---|---|---|
-| Konto utworzone | `account.create` | Utworzono nowe konto. |
-| Konto w trakcie weryfikacji | `account.under_review` | Konto oczekuje na weryfikację. |
-| Konto zaktualizowane | `account.updated` | Dane konta zostały zmienione. |
-| Status konta zaktualizowany | `account.status.updated` | Status konta uległ zmianie (np. zatwierdzone, zawieszone). |
-| Adres konta zaktualizowany | `account.address.updated` | Adres konta został zmodyfikowany. |
-| Szczegóły konta zaktualizowane | `account.details.updated` | Pola szczegółów konta zostały zmienione. |
-| Informacje o koncie zaktualizowane | `account.information.update` | Ogólne informacje o koncie zostały zaktualizowane. |
-| Menedżerowie konta zaktualizowani | `account.managers.update` | Lista menedżerów konta uległa zmianie. |
-| Zdjęcie profilowe zaktualizowane | `account.profile_picture.updated` | Zdjęcie profilowe konta zostało zmienione. |
-| Agent zaktualizowany | `account.agent.updated` | Informacje o agencie na koncie zostały zmodyfikowane. |
-| Nazwa URL zaktualizowana | `account.url-name.update` | Zmieniono spersonalizowany URL konta. |
-| Unikalny identyfikator zaktualizowany | `account.unique-id.update` | Unikalny identyfikator konta został zmodyfikowany. |
+| Encja utworzona | `managing_entity.created` | Utworzono nową encję zarządzającą. |
+| Encja usunięta | `managing_entity.deleted` | Usunięto encję zarządzającą. |
+| Status zaktualizowany | `managing_entity.status.updated` | Status encji uległ zmianie. |
+| W trakcie weryfikacji | `account.under_review` | Konto encji oczekuje na weryfikację. |
+
+### Subskrypcja
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Subskrypcja przydzielona | `managing_entity.subscription.provisioned` | Nowa subskrypcja została przydzielona. |
+| Subskrypcja zmieniona | `managing_entity.subscription.changed` | Plan subskrypcji został zmieniony. |
+| Faktura subskrypcji zmieniona | `managing_entity.subscription.invoice.changed` | Faktura subskrypcji została zaktualizowana. |
+
+### Cykl życia menedżera
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Menedżer dodany | `managing_entity.manager.added` | Dodano nowego menedżera. |
+| Menedżer zaproszony | `managing_entity.manager.invited` | Wysłano zaproszenie do menedżera. |
+| Menedżer usunięty | `managing_entity.manager.removed` | Usunięto menedżera. |
+| Menedżer zaakceptowany | `managing_entity.manager.accepted` | Zaproszenie menedżera zostało zaakceptowane. |
+| Menedżer odrzucony | `managing_entity.manager.rejected` | Zaproszenie menedżera zostało odrzucone. |
+| Właściciel ustawiony | `managing_entity.manager.owner.set` | Własność encji została przeniesiona. |
+| Menedżerowie zaktualizowani | `account.managers.update` | Lista menedżerów uległa zmianie. |
+
+### Informacje o encji
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Informacje zaktualizowane | `managing_entity.information.updated` | Informacje o encji zostały zaktualizowane. |
+| Adres zaktualizowany | `managing_entity.city.updated` | Adres/miasto encji uległo zmianie. |
+| Nazwa zaktualizowana | `managing_entity.name.updated` | Nazwa encji uległa zmianie. |
+| Nazwa URL zaktualizowana | `managing_entity.url_name.updated` | Adres URL encji uległ zmianie. |
+| Unikalny identyfikator zaktualizowany | `managing_entity.unique_id.updated` | Unikalny identyfikator encji uległ zmianie. |
+| Zarządzający zaktualizowany | `managing_entity.managed_by.updated` | Zmieniła się relacja nadrzędna/zarządzająca encją. |
+| Place ID zaktualizowany | `managing_entity.place_id.updated` | Zmienił się identyfikator Google Place encji. |
+| Przedstawiciel konta zaktualizowany | `managing_entity.account_representative.updated` | Przedstawiciel konta został zmieniony. |
+| Zdjęcie profilowe zaktualizowane | `managing_entity.profile_picture.updated` | Zdjęcie profilowe encji zostało zaktualizowane. |
+| Logo zaktualizowane | `managing_entity.logo.updated` | Logo encji zostało zaktualizowane. |
+| Szczegóły zaktualizowane | `account.details.updated` | Pola szczegółów konta uległy zmianie. |
+| Agent zaktualizowany | `managing_entity.agent.updated` | Agent encji został zmodyfikowany. |
+
+### Powiadomienia
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Powiadomienie e-mail dla agenta | `managing_entity.agent.email.notification` | Wysłano powiadomienie e-mail do agenta. |
+| Powiadomienie e-mail dla menedżera | `managing_entity.manager.email.notification` | Wysłano powiadomienie e-mail do menedżera. |
 
 ### Zadania konta
 
 | Zdarzenie | Klucz | Opis |
 |---|---|---|
-| Zadanie utworzone | `account.task.create` | Do konta dodano nowe zadanie. |
-| Zadanie zaktualizowane | `account.task.update` | Zadanie na koncie zostało zmodyfikowane. |
-| Zadanie usunięte | `account.task.remove` | Zadanie na koncie zostało usunięte. |
-| Zadanie ukończone | `account.task.complete` | Zadanie na koncie zostało ukończone. |
+| Zadanie utworzone | `account.task.create` | Dodano nowe zadanie do konta. |
+| Zadanie zaktualizowane | `account.task.update` | Zadanie konta zostało zmodyfikowane. |
+| Zadanie usunięte | `account.task.remove` | Zadanie konta zostało usunięte. |
+| Zadanie ukończone | `account.task.complete` | Zadanie konta zostało ukończone. |
 | Zadanie weryfikacji NIP ukończone | `account.task.tax_id.complete` | Zadanie weryfikacji NIP zostało ukończone. |
 
-### Nabywca konta
+---
+
+## Zdarzenia rezerwacji
+
+Zdarzenia dotyczące cyklu życia rezerwacji w Wink, od utworzenia po zwroty i wypłaty.
+
+### Podstawowe rezerwacje
 
 | Zdarzenie | Klucz | Opis |
 |---|---|---|
-| Nabywca utworzony | `account.acquirer.created` | Do konta dodano nowego nabywcę. |
-| Nabywca zaktualizowany | `account.acquirer.updated` | Nabywca konta został zmodyfikowany. |
-| Nabywca usunięty | `account.acquirer.removed` | Nabywca został usunięty z konta. |
+| Rezerwacja utworzona | `booking.create` | Utworzono nową rezerwację. |
+| Rezerwacja anulowana | `booking.cancelled` | Rezerwacja została anulowana. |
+| Rezerwacja nieudana | `booking.failed` | Próba rezerwacji nie powiodła się. |
+| Przetwarzanie rezerwacji | `booking.processing` | Płatność za rezerwację jest przetwarzana. |
+| Inicjalizacja żądana | `booking.initialize.request` | Zażądano inicjalizacji rezerwacji. |
+| Inicjalizacja zakończona | `booking.initialize.complete` | Inicjalizacja rezerwacji została zakończona. |
+
+### Zwroty
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Zwrot żądany | `booking.refund.request` | Złożono żądanie zwrotu. |
+| Błąd zwrotu | `booking.refund.error` | Wystąpił błąd podczas przetwarzania zwrotu. |
+| Zwrot częściowy | `booking.refund.partial` | Wydano częściowy zwrot. |
+| Zwrot pełny | `booking.refund.full` | Wydano pełny zwrot. |
+
+### Wypłaty
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Wypłata utworzona | `booking.payout.create` | Utworzono wypłatę dla rezerwacji. |
+| Wypłata zakończona | `booking.payout.complete` | Wypłata została pomyślnie zakończona. |
+| Środki dostępne | `booking.funds.available` | Środki z rezerwacji są dostępne do rozliczenia. |
+| Środki zaksięgowane | `booking.funds.ledgered` | Środki z rezerwacji zostały zaksięgowane. |
+
+### Opinie
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Opinia dodana | `booking.review.created` | Gość dodał opinię do rezerwacji. |
+| Odpowiedź na opinię | `booking.review.responded` | Nieruchomość odpowiedziała na opinię o rezerwacji. |
+
+---
+
+## Zdarzenia nieruchomości
+
+Zdarzenia dotyczące profili i treści nieruchomości, wysyłane do subskrybentów webhook danej nieruchomości.
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Nieruchomość utworzona | `property.created` | Utworzono nową nieruchomość. |
+| Nieruchomość zaktualizowana | `property.updated` | Szczegóły nieruchomości zostały zaktualizowane. |
+| Nieruchomość usunięta | `property.deleted` | Nieruchomość została usunięta. |
+| Nieruchomość zarejestrowana | `property.registered` | Nieruchomość zakończyła rejestrację. |
+| Status zaktualizowany | `property.status.updated` | Zewnętrzny status nieruchomości uległ zmianie. |
+| Nazwa zaktualizowana | `property.name.updated` | Nazwa nieruchomości uległa zmianie. |
+| Adres zaktualizowany | `property.address.updated` | Adres nieruchomości został zaktualizowany. |
+| Geolokalizacja zaktualizowana | `property.geolocation.updated` | Geolokalizacja nieruchomości została zaktualizowana. |
+| Profil zaktualizowany | `property.profile.updated` | Treść profilu nieruchomości uległa zmianie. |
+| Usługi zaktualizowane | `property.services.updated` | Lista usług/udogodnień nieruchomości uległa zmianie. |
+| Tekst powitalny zaktualizowany | `property.welcome_text.updated` | Wiadomość powitalna nieruchomości uległa zmianie. |
+| Polityka utworzona | `property.policy.created` | Utworzono nową politykę nieruchomości. |
+| Polityka zaktualizowana | `property.policy.updated` | Polityka nieruchomości została zaktualizowana. |
+
+---
+
+## Zdarzenia inwentarza
+
+Zdarzenia dotyczące elementów inwentarza w nieruchomości, wysyłane do subskrybentów webhook danej nieruchomości.
+
+### Typy pokoi
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Typ pokoju utworzony | `room_type.created` | Dodano nowy typ pokoju. |
+| Typ pokoju zaktualizowany | `room_type.updated` | Typ pokoju został zmodyfikowany. |
+| Typ pokoju usunięty | `room_type.deleted` | Typ pokoju został usunięty. |
+
+### Plany taryfowe
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Plan taryfowy utworzony | `rate_plan.created` | Utworzono nowy plan taryfowy. |
+| Plan taryfowy zaktualizowany | `rate_plan.updated` | Plan taryfowy został zmodyfikowany. |
+| Plan taryfowy usunięty | `rate_plan.deleted` | Plan taryfowy został usunięty. |
+
+### Stawki główne
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Stawka główna utworzona | `master_rate.created` | Utworzono nową stawkę główną. |
+| Stawka główna zaktualizowana | `master_rate.updated` | Stawka główna została zmodyfikowana. |
+| Stawka główna usunięta | `master_rate.deleted` | Stawka główna została usunięta. |
+
+### Dodatki
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Dodatek utworzony | `add_on.created` | Utworzono nowy dodatek. |
+| Dodatek zaktualizowany | `add_on.updated` | Dodatek został zmodyfikowany. |
+| Dodatek usunięty | `add_on.deleted` | Dodatek został usunięty. |
+
+### Sale konferencyjne
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Sala konferencyjna utworzona | `meeting_room.created` | Dodano nową salę konferencyjną. |
+| Sala konferencyjna zaktualizowana | `meeting_room.updated` | Sala konferencyjna została zmodyfikowana. |
+| Sala konferencyjna usunięta | `meeting_room.deleted` | Sala konferencyjna została usunięta. |
+
+### Restauracje
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Restauracja utworzona | `restaurant.created` | Dodano nową restaurację. |
+| Restauracja zaktualizowana | `restaurant.updated` | Restauracja została zmodyfikowana. |
+| Restauracja usunięta | `restaurant.deleted` | Restauracja została usunięta. |
+
+### Spa
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Spa utworzone | `spa.created` | Dodano nowe spa. |
+| Spa zaktualizowane | `spa.updated` | Spa zostało zmodyfikowane. |
+| Spa usunięte | `spa.deleted` | Spa zostało usunięte. |
+
+### Aktywności
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Aktywność utworzona | `activity.created` | Dodano nową aktywność. |
+| Aktywność zaktualizowana | `activity.updated` | Aktywność została zmodyfikowana. |
+| Aktywność usunięta | `activity.deleted` | Aktywność została usunięta. |
+
+---
+
+## Zdarzenia kanałów sprzedaży
+
+Zdarzenia dotyczące kanałów dystrybucji łączących dostawców i afiliantów. Wysyłane do subskrybentów webhook zarówno dostawcy, jak i afilianta.
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Kanał sprzedaży utworzony | `sales_channel.created` | Utworzono nowy kanał sprzedaży. |
+| Kanał sprzedaży zaktualizowany | `sales_channel.updated` | Kanał sprzedaży został zmodyfikowany. |
+| Kanał sprzedaży usunięty | `sales_channel.deleted` | Kanał sprzedaży został usunięty. |
+
+---
+
+## Zdarzenia specjalnych stawek
+
+Zdarzenia dotyczące stawek promocyjnych i negocjowanych na nieruchomości.
+
+| Zdarzenie | Klucz | Opis |
+|---|---|---|
+| Specjalna stawka utworzona | `special_rate.created` | Utworzono nową specjalną stawkę. |
+| Specjalna stawka zaktualizowana | `special_rate.updated` | Specjalna stawka została zmodyfikowana. |
+| Specjalna stawka usunięta | `special_rate.deleted` | Specjalna stawka została usunięta. |
+| Modyfikator stawki zaktualizowany | `rate_modifier.updated` | Modyfikator stawki został zaktualizowany. |
 
 ---
 
@@ -64,60 +253,28 @@ Zdarzenia związane z zarządzaniem odbiorcą płatności.
 
 | Zdarzenie | Klucz | Opis |
 |---|---|---|
-| Odbiorca utworzony | `payee.create` | Nowy odbiorca płatności został pomyślnie utworzony. |
-| Utworzenie odbiorcy nie powiodło się | `payee.create.failure` | Utworzenie odbiorcy płatności nie powiodło się. |
-| Odbiorca zaktualizowany | `payee.update` | Odbiorca płatności został zaktualizowany. |
-| Aktualizacja odbiorcy nie powiodła się | `payee.update.failure` | Aktualizacja odbiorcy płatności nie powiodła się. |
-
----
-
-## Zdarzenia umowy rezerwacji
-
-Zdarzenia śledzące cykl życia umowy rezerwacji w TripPay.
-
-| Zdarzenie | Klucz | Opis |
-|---|---|---|
-| Żądanie inicjalizacji | `booking.contract.initialize.request` | Zażądano inicjalizacji umowy rezerwacji. |
-| Inicjalizacja zakończona | `booking.contract.initialize.complete` | Inicjalizacja umowy rezerwacji została zakończona. |
-| Umowa utworzona | `booking.contract.created` | Utworzono nową umowę rezerwacji. |
-| Przetwarzanie umowy | `booking.contract.processing` | Przetwarzana jest płatność za umowę rezerwacji. |
-| Płatność umowy nie powiodła się | `booking.contract.failed` | Płatność za umowę rezerwacji nie powiodła się. |
-| Umowa anulowana | `booking.contract.cancelled` | Umowa rezerwacji została anulowana. |
-| Częściowy zwrot | `booking.contract.refund.partial` | Wydano częściowy zwrot na umowę. |
-| Pełny zwrot | `booking.contract.refund.full` | Wydano pełny zwrot na umowę. |
-| Żądanie zwrotu | `booking.contract.refund.request` | Złożono żądanie zwrotu. |
-| Błąd zwrotu | `booking.contract.refund.error` | Wystąpił błąd podczas przetwarzania zwrotu. |
-| Wypłata utworzona | `booking.contract.payout.create` | Utworzono wypłatę dla umowy. |
-| Wypłata zakończona | `booking.contract.payout.complete` | Wypłata została pomyślnie zakończona. |
+| Odbiorca płatności utworzony | `payee.create` | Nowy odbiorca płatności został pomyślnie utworzony. |
+| Niepowodzenie tworzenia odbiorcy | `payee.create.failure` | Nie udało się utworzyć odbiorcy płatności. |
+| Odbiorca płatności zaktualizowany | `payee.update` | Odbiorca płatności został zaktualizowany. |
+| Niepowodzenie aktualizacji odbiorcy | `payee.update.failure` | Nie udało się zaktualizować odbiorcy płatności. |
 
 ---
 
 ## Zdarzenia płatności
 
-Wewnętrzne zdarzenia przetwarzania płatności.
+Wewnętrzne zdarzenia przetwarzania płatności z TripPay.
 
 | Zdarzenie | Klucz | Opis |
 |---|---|---|
 | Płatność zakończona sukcesem | `internal.payment.succeeded` | Płatność została pomyślnie przetworzona. |
-| Przetwarzanie płatności | `internal.payment.processing` | Płatność jest obecnie przetwarzana. |
-| Płatność nie powiodła się | `internal.payment.failed` | Przetwarzanie płatności nie powiodło się. |
-
----
-
-## Zdarzenia rezerwacji
-
-Zdarzenia dotyczące cyklu życia rezerwacji w Wink.
-
-| Zdarzenie | Klucz | Opis |
-|---|---|---|
-| Rezerwacja utworzona | `booking.create` | Utworzono nową rezerwację. |
-| Rezerwacja anulowana | `booking.cancelled` | Rezerwacja została anulowana. |
+| Płatność w trakcie przetwarzania | `internal.payment.processing` | Płatność jest obecnie przetwarzana. |
+| Płatność nieudana | `internal.payment.failed` | Przetwarzanie płatności nie powiodło się. |
 
 ---
 
 ## Zdarzenia channel managera
 
-Zdarzenia związane z aktualizacjami stawek i dostępności w channel managerze.
+Zdarzenia związane z aktualizacjami stawek i dostępności przesyłanymi przez channel managera.
 
 | Zdarzenie | Klucz | Opis |
 |---|---|---|
@@ -133,55 +290,15 @@ Zdarzenia związane z wpisami w księdze rachunkowej.
 
 | Zdarzenie | Klucz | Opis |
 |---|---|---|
-| Wpis księgi utworzony | `ledger.entry.create` | Zarejestrowano nowy wpis w księdze rachunkowej. |
+| Wpis księgi rachunkowej utworzony | `ledger.entry.create` | Zarejestrowano nowy wpis w księdze rachunkowej. |
 
 ---
 
-## Zdarzenia podmiotu zarządzającego
-
-Zdarzenia dotyczące podmiotów zarządzających (nieruchomości, afiliacje, firmy) i ich administracji.
-
-### Subskrypcja
+## Zdarzenia e-mail
 
 | Zdarzenie | Klucz | Opis |
 |---|---|---|
-| Subskrypcja udostępniona | `managing_entity.subscription.provisioned` | Nowa subskrypcja została udostępniona. |
-| Subskrypcja zmieniona | `managing_entity.subscription.changed` | Plan subskrypcji został zmieniony. |
-| Faktura subskrypcji zmieniona | `managing_entity.subscription.invoice.changed` | Faktura subskrypcji została zaktualizowana. |
-
-### Status i administracja
-
-| Zdarzenie | Klucz | Opis |
-|---|---|---|
-| Status zaktualizowany | `managing_entity.status.updated` | Status podmiotu uległ zmianie. |
-| Podmiot usunięty | `managing_entity.deleted` | Podmiot zarządzający został usunięty. |
-| Agent zaktualizowany | `managing_entity.agent.updated` | Agent podmiotu został zmodyfikowany. |
-| Powiadomienie e-mail do agenta | `managing_entity.agent.email.notification` | Wysłano powiadomienie e-mail do agenta. |
-| Powiadomienie e-mail do menedżera | `managing_entity.manager.email.notification` | Wysłano powiadomienie e-mail do menedżera. |
-
-### Cykl życia menedżera
-
-| Zdarzenie | Klucz | Opis |
-|---|---|---|
-| Menedżer dodany | `managing_entity.manager.added` | Dodano nowego menedżera. |
-| Menedżer zaproszony | `managing_entity.manager.invited` | Wysłano zaproszenie do menedżera. |
-| Menedżer usunięty | `managing_entity.manager.removed` | Usunięto menedżera. |
-| Menedżer zaakceptowany | `managing_entity.manager.accepted` | Zaproszenie menedżera zostało zaakceptowane. |
-| Menedżer odrzucony | `managing_entity.manager.rejected` | Zaproszenie menedżera zostało odrzucone. |
-| Właściciel ustawiony | `managing_entity.manager.owner.set` | Własność podmiotu została przeniesiona. |
-
-### Informacje o podmiocie
-
-| Zdarzenie | Klucz | Opis |
-|---|---|---|
-| Informacje zaktualizowane | `managing_entity.information.updated` | Informacje o podmiocie zostały zaktualizowane. |
-| Adres zaktualizowany | `managing_entity.city.updated` | Adres/miasto podmiotu zostało zmienione. |
-| Przedstawiciel konta zaktualizowany | `managing_entity.account_representative.updated` | Przedstawiciel konta został zmieniony. |
-| Zdjęcie profilowe zaktualizowane | `managing_entity.profile_picture.updated` | Zdjęcie profilowe podmiotu zostało zaktualizowane. |
-| Logo zaktualizowane | `managing_entity.logo.updated` | Logo podmiotu zostało zaktualizowane. |
-| Nazwa URL zaktualizowana | `managing_entity.url_name.updated` | Zmieniono spersonalizowany URL podmiotu. |
-| Unikalny identyfikator zaktualizowany | `managing_entity.unique_id.updated` | Unikalny identyfikator podmiotu uległ zmianie. |
-| Nazwa zaktualizowana | `managing_entity.name.updated` | Nazwa podmiotu została zmieniona. |
+| Korespondencja e-mail | `email.correspondence` | Wysłano wiadomość e-mail wychodzącą. |
 
 ---
 
@@ -189,23 +306,26 @@ Zdarzenia dotyczące podmiotów zarządzających (nieruchomości, afiliacje, fir
 
 | Kategoria | Liczba |
 |---|---|
-| Zdarzenia konta | 20 |
+| Zdarzenia encji zarządzającej | 33 |
+| Zdarzenia rezerwacji | 16 |
+| Zdarzenia nieruchomości | 13 |
+| Zdarzenia inwentarza (typy pokoi, plany taryfowe, stawki główne, dodatki, udogodnienia) | 24 |
+| Zdarzenia kanałów sprzedaży | 3 |
+| Zdarzenia specjalnych stawek | 4 |
 | Zdarzenia odbiorcy płatności | 4 |
-| Zdarzenia umowy rezerwacji | 12 |
 | Zdarzenia płatności | 3 |
-| Zdarzenia rezerwacji | 2 |
 | Zdarzenia channel managera | 3 |
 | Zdarzenia księgi rachunkowej | 1 |
-| Zdarzenia podmiotu zarządzającego | 19 |
-| **Razem** | **64** |
+| Zdarzenia e-mail | 1 |
+| **Razem** | **105** |
 
 :::tip
-Na początku podczas rozwoju subskrybuj wszystkie zdarzenia. Gdy zrozumiesz, które dane są potrzebne Twojemu systemowi, zawęź subskrypcje, aby zmniejszyć ilość niepotrzebnych powiadomień.
+Na etapie rozwoju zacznij od subskrypcji wszystkich zdarzeń. Gdy zrozumiesz, które dane są potrzebne twojemu systemowi, zawęź subskrypcje, aby ograniczyć szum.
 :::
 
 ## Dalsza lektura
 
 - [Przewodnik integracji webhook](/pl/guides/developers/webhook-integration) — Kroki konfiguracji i najlepsze praktyki.
-- [Webhooki](/pl/portal/settings/webhooks) — Zarządzaj swoimi subskrypcjami webhooków.
+- [Webhooki](/pl/portal/settings/webhooks) — Zarządzaj swoimi subskrypcjami webhook.
 - [Aplikacje](/pl/portal/settings/applications) — Zarządzaj poświadczeniami API.
 - [Buduj na Wink](/pl/developers/build-on-wink) — Przegląd platformy dla deweloperów.

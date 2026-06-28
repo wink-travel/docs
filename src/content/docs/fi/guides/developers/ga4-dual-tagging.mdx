@@ -7,10 +7,10 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Yhdistämällä Google Analytics 4 -omaisuutesi Winkiin, varaus tapahtumat — huoneen katseluista aina suoritettuihin ostoihin — välittyvät automaattisesti omaan GA4-hallintapaneeliisi yhdessä Winkin oman analytiikan kanssa. Ei koodia, ei teknistä asennusta sinun puoleltasi.
+Yhdistämällä Google Analytics 4 -omaisuutesi Winkiin, varaus tapahtumat — huoneen katseluista aina valmiisiin varauksiin asti — välittyvät automaattisesti omaan GA4-hallintapaneeliisi yhdessä Winkin oman analytiikan kanssa. Ei koodia, ei teknistä asetusta sinun puoleltasi.
 
 <Aside type="tip">
-Tarvitset vain GA4-mittaus-ID:n. Kun se on syötetty Wink-portaaliin, analytiikkasi ovat heti käytössä.
+Tarvitset GA4:stä kaksi asiaa: **Measurement ID** ja **Measurement Protocol API -salaisuuden**. Measurement ID ohjaa selaimen vierailupolkua vieraan selaimessa; API-salaisuus mahdollistaa Winkin tallentaa valmiit varaukset (`purchase`) **palvelinpuolella**, joten myyntiä ei koskaan menetetä, kun vieras ohjataan maksupalveluntarjoajan sivuille ja takaisin.
 </Aside>
 
 ---
@@ -18,11 +18,12 @@ Tarvitset vain GA4-mittaus-ID:n. Kun se on syötetty Wink-portaaliin, analytiikk
 ## Kuinka se toimii
 
 ```
-Syötät G-XXXXXXXXXX Wink-portaaliin
+Syötät Measurement ID:n (G-XXXXXXXXXX) ja API-salaisuuden Wink-portaaliin
        ↓
-Wink välittää varaus tapahtumat GA4-omaisuuteesi
+Selaustapahtumat (katselut, ostoskori, kassalle siirtyminen) virtaavat GA4-omaisuuteesi selaimesta
+Valmiit varaukset (purchase) lähetetään palvelinpuolella — säilyvät maksun uudelleenohjauksen yli
        ↓
-Kirjaudut analytics.google.com ja näet varauksesi
+Kirjaudut analytics.google.com ja näet koko varausputkesi
 ```
 
 ---
@@ -37,33 +38,45 @@ Kirjaudut analytics.google.com ja näet varauksesi
 
 2. **Luo verkkotietovirta**
 
-   Hallinta → Tietovirrat → Lisää virta → Verkko. Syötä URL-osoitteeksi `wink.travel`. Tämä luo **Mittaus-ID:n** (`G-XXXXXXXXXX`). Kopioi se.
+   Hallinta → Tietovirrat → Lisää virta → Verkko. Syötä URL-osoitteeksi `wink.travel`. Tämä luo **Measurement ID:n** (`G-XXXXXXXXXX`). Kopioi se.
 
-3. **Syötä mittaus-ID Wink-portaaliin**
+3. **Luo Measurement Protocol API -salaisuus**
 
-   Kirjaudu sisään osoitteessa [app.wink.travel](https://app.wink.travel), valitse tilisi ja siirry **Mukautukset**-välilehdelle. Liitä mittaus-ID sinne ja tallenna. Siinä kaikki — GA4-integraatiosi on nyt aktiivinen.
+   Avaa sama verkkotietovirta → vieritä kohtaan **Measurement Protocol API secrets** → **Luo**. Anna sille lempinimi (esim. "Wink") ja kopioi luotu **salainen arvo**. Tämä salaisuus mahdollistaa Winkin tallentaa valmiit varaukset palvelinpuolella, jotta myyntiä ei koskaan menetetä maksun uudelleenohjauksen aikana.
 
-4. **Merkitse `purchase` avaintapahtumaksi**
+4. **Syötä Measurement ID ja API-salaisuus Wink-portaaliin**
 
-   Palaa GA4-omaisuuteesi: Hallinta → Tapahtumat → etsi `purchase` → kytke päälle **Merkitse avaintapahtumaksi**. Tämä saa suoritetut varaukset näkymään Konversiot-raportissasi.
+   Kirjaudu sisään osoitteessa [app.wink.travel](https://app.wink.travel), valitse tilisi ja siirry **Mukautukset**-välilehdelle. Liitä Measurement ID ja API-salaisuus **GA4**-kenttiin ja tallenna. Siinä kaikki — GA4-integraatiosi on nyt aktiivinen.
 
-5. **Tarkastele tietojasi**
+   <Aside type="note">
+   API-salaisuus on **vain kirjoitusoikeudella**: tallennuksen jälkeen sitä ei enää näytetä. Tulevissa muokkauksissa jätä salaisuus tyhjäksi, jotta aiemmin tallennettu arvo säilyy.
+   </Aside>
+
+5. **Merkitse `purchase` avaintapahtumaksi**
+
+   Palaa GA4-omaisuuteesi: Hallinta → Tapahtumat → etsi `purchase` → kytke päälle **Merkitse avaintapahtumaksi**. Tämä saa valmiit varaukset näkymään Muunnokset-raportissasi.
+
+6. **Tarkastele tietojasi**
 
    Kirjaudu osoitteeseen [analytics.google.com](https://analytics.google.com) ja näet varauksesi, tulosi ja vieraan polun — kaikki seurataan automaattisesti Winkin kautta.
 
 </Steps>
 
 <Aside type="note">
-Tätä integraatiota varten sinun ei tarvitse asentaa seurantakoodia omalle verkkosivustollesi. Wink hoitaa kaiken. Mittaus-ID on vain kohde, johon varausdata lähetetään.
+Tätä integraatiota varten sinun ei tarvitse asentaa seurantakoodia omalle verkkosivustollesi. Wink hoitaa kaiken. Measurement ID on kohde, johon varausdata lähetetään, ja API-salaisuus antaa Winkille mahdollisuuden vahvistaa valmiit varaukset palvelinpuolella.
+</Aside>
+
+<Aside type="tip">
+**GA4:ää ja GTM:ää voi käyttää yhdessä.** Jos käytät myös Google Tag Manager -säiliötä (esim. Sojern-säiliötä), voit konfiguroida molemmat samanaikaisesti — ne eivät enää ole toisensa poissulkevia. Katso [GTM Analytics Integration](/fi/guides/developers/gtm-dual-tagging).
 </Aside>
 
 ---
 
 ## Mitä voit seurata
 
-Kun yhteys on muodostettu, GA4-omaisuutesi vastaanottaa koko Enhanced E-commerce -tapahtumakokonaisuuden:
+Kun yhteys on muodostettu, GA4-omaisuutesi vastaanottaa koko Enhanced E-commerce -tapahtumakokoelman:
 
-### Löytäminen
+### Löytövaihe
 
 | Tapahtuma | Mitä se tarkoittaa |
 |---|---|
@@ -71,7 +84,7 @@ Kun yhteys on muodostettu, GA4-omaisuutesi vastaanottaa koko Enhanced E-commerce
 | `select_item` | Vieras klikkasi omaisuuttasi listauksesta |
 | `view_item` | Vieras katsoi hotellisi yksityiskohtasivua |
 
-### Harkinta
+### Harkintavaihe
 
 | Tapahtuma | Mitä se tarkoittaa |
 |---|---|
@@ -86,29 +99,29 @@ Kun yhteys on muodostettu, GA4-omaisuutesi vastaanottaa koko Enhanced E-commerce
 | `add_to_cart` | Vieras valitsi huoneen tai paketin |
 | `view_cart` | Vieras katsoi varausyhteenvedon |
 | `remove_from_cart` | Vieras poisti huoneen tai paketin |
-| `begin_checkout` | Vieras aloitti maksuprosessin |
+| `begin_checkout` | Vieras aloitti kassaprosessin |
 | `add_payment_info` | Vieras syötti maksutietonsa |
 | `add_shipping_info` | Vieras syötti vieraansa tiedot |
-| `purchase` | Vieras suoritti varauksen |
+| `purchase` | Vieras teki varauksen loppuun |
 | `refund` | Varaus peruttiin ja hyvitettiin |
 
-Kaikki tapahtumat sisältävät asiaankuuluvat ulottuvuudet, kuten tulot, valuutan, huonetyypin ja varauksen arvon — tarjoten täydellisen kuvan vieraan matkasta ensimmäisestä kosketuksesta varauksen suorittamiseen. Lisäomaisuus- ja huonetasoisia ulottuvuuksia, kuten `city_name`, `cancellation_policy`, `bed_type` ja muita, varten katso [Mukautetut ulottuvuudet GA4:ssa](/fi/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
+Kaikki tapahtumat sisältävät asiaankuuluvat ulottuvuudet, kuten tulot, valuutan, huonetyypin ja varauksen arvon — tarjoten täydellisen kuvan vieraan matkasta ensimmäisestä kosketuksesta valmiiseen varaukseen. Lisäominaisuuksien ja huonetasojen ulottuvuuksien, kuten `city_name`, `cancellation_policy`, `bed_type` ja muiden avaamiseksi katso [Custom Dimensions in GA4](/fi/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
 
 ---
 
 ## Ristiin-domain-seuranta (edistynyt)
 
-Yllä oleva perusin­tegraatio seuraa kaikkea, mitä Winkissä tapahtuu. Jos kuitenkin haluat seurata vieraita koko matkan omalta verkkosivustoltasi varauksen suorittamiseen Winkissä — ja oikein kohdistaa alkuperäisen liikenteen lähteen (Google Ads, sähköpostikampanjat, orgaaninen haku jne.) — tarvitaan yksi lisätoimenpide kummallakin puolella.
+Yllä oleva perusintegraatio seuraa kaikkea, mitä Winkissä tapahtuu. Jos kuitenkin haluat seurata vieraita koko matkan omalta verkkosivustoltasi varauksen loppuun Winkissä — ja oikein kohdistaa alkuperäisen liikenteen lähteen (Google Ads, sähköpostikampanjat, orgaaninen haku jne.) — tarvitaan yksi lisätoimenpide molemmilla puolilla.
 
 <Aside type="caution">
-Tämä osio koskee vain, jos sinulla on GA4 asennettuna omalle verkkosivustollesi. Jos et käytä GA4:ää sivustollasi, yllä oleva perusin­tegraatio riittää.
+Tämä osio koskee vain, jos sinulla on GA4 asennettuna omalle verkkosivustollesi. Jos et käytä GA4:ää sivustollasi, yllä oleva perusintegraatio riittää.
 </Aside>
 
 ### Miksi tämä on tärkeää
 
-Ilman ristiin-domain-seurantaa vieras, joka ensin vierailee sivustollasi ja sitten tekee varauksen Winkissä, näkyy GA4:ssasi **Suora**-istuntona ilman yhteyttä aiempaan vierailuun. Mitkään Google Ads -klikkaukset, sähköpostikampanjat tai orgaaniset hakukäynnit, jotka johtivat varaukseen, eivät saa tunnustusta.
+Ilman ristiin-domain-seurantaa vieras, joka ensin vierailee sivustollasi ja sitten tekee varauksen Winkissä, näkyy GA4:ssäsi **Suorana** istuntona ilman yhteyttä aiempaan vierailuun. Kaikki Google Ads -klikkaukset, sähköpostikampanjat tai orgaaniset haut, jotka johtivat varaukseen, eivät saa tunnustusta.
 
-Kun ristiin-domain-seuranta on määritetty, näet vieraan koko matkan:
+Kun ristiin-domain-seuranta on konfiguroitu, näet vieraan koko matkan:
 
 ```
 google.com (maksettu mainos)
@@ -117,12 +130,12 @@ verkkosivustosi (vieras selaa huoneita)
        ↓
 wink.travel (vieras valitsee huoneen ja varaa)
        ↓
-osto kohdistetaan oikein alkuperäiseen Google Ads -klikkaukseen
+purchase kohdistetaan oikein alkuperäiseen Google Ads -klikkaukseen
 ```
 
 ### Toimenpide: Sinä
 
-Määritä GA4-omaisuutesi tunnistamaan `wink.travel` osaksi omaa domainiasi, ei ulkoiseksi viittaukseksi. Tämä kertoo GA4:lle yhdistää kaksi istuntoa yhdeksi jatkuvaksi vieraan matkaksi.
+Konfiguroi GA4-omaisuutesi tunnistamaan `wink.travel` osana omaa domainiasi, ei ulkoisena viittauksena. Tämä kertoo GA4:lle yhdistää kaksi istuntoa yhdeksi jatkuvaksi vieraan matkaksi.
 
 <Steps>
 1. GA4 Hallinta → Tietovirrat → oma virta
@@ -133,8 +146,8 @@ Määritä GA4-omaisuutesi tunnistamaan `wink.travel` osaksi omaa domainiasi, ei
 
 ### Toimenpide: Wink
 
-Ota yhteyttä [Wink-tukeen](https://app.wink.travel) ja anna verkkotunnuksesi (esim. `yourhotel.com`). Wink lisää domainisi viittauspoissulkujen listalle GA4-omaisuudessa. Tämä estää verkkosivustosi kirjaamisen viittauslähteeksi, mikä muuten ylikirjoittaisi vieraan alkuperäisen attribuution ja aloittaisi uuden istunnon.
+Ota yhteyttä [Wink Supportiin](https://app.wink.travel) ja anna verkkosivustosi domain (esim. `yourhotel.com`). Wink lisää domainisi viittauspoissulkulistalle Wink GA4 -omaisuudessa. Tämä estää verkkosivustoasi tallentumasta viittauslähteeksi, mikä muuten ylikirjoittaisi vieraan alkuperäisen attribuution ja aloittaisi uuden istunnon.
 
 <Aside type="tip">
-Yllä oleva perusin­tegraatio riittää useimmille omaisuuksille ja antaa välittömän näkyvyyden varauksiin ja tuloihin Winkissä. Ristiin-domain-seuranta on edistynyt vaihtoehto, jonka kannattaa ottaa käyttöön, kun tunnet GA4-datasi hyvin ja haluat syvempää attribuution ymmärrystä.
+Yllä oleva perusintegraatio riittää useimmille omaisuuksille ja antaa välittömän näkyvyyden varauksiin ja tuloihin Winkissä. Ristiin-domain-seuranta on edistynyt vaihtoehto, jonka kannattaa ottaa käyttöön, kun tunnet GA4-datasi hyvin ja haluat syvempää attribuution ymmärrystä.
 </Aside>

@@ -1,28 +1,29 @@
 ---
-title: Tích Hợp Phân Tích GA4
-description: Cách kết nối thuộc tính Google Analytics 4 của bạn với Wink để bạn có thể theo dõi đặt phòng, doanh thu và hành trình khách hàng trực tiếp trên bảng điều khiển GA4 của riêng bạn.
+title: Tích Hợp GA4 Analytics
+description: Cách kết nối tài sản Google Analytics 4 của bạn với Wink để bạn có thể theo dõi đặt phòng, doanh thu và hành trình khách trực tiếp trên bảng điều khiển GA4 của riêng bạn.
 sidebar:
-  label: Tích Hợp Phân Tích GA4
+  label: Tích Hợp GA4 Analytics
 ---
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Bằng cách kết nối thuộc tính Google Analytics 4 của bạn với Wink, các sự kiện đặt phòng — từ xem phòng đến khi hoàn tất mua hàng — sẽ tự động được chuyển tiếp đến bảng điều khiển GA4 của bạn cùng với phân tích riêng của Wink. Không cần mã, không cần thiết lập kỹ thuật từ phía bạn.
+Bằng cách kết nối tài sản Google Analytics 4 của bạn với Wink, các sự kiện đặt phòng — từ lượt xem phòng đến khi hoàn tất đặt phòng — sẽ tự động được chuyển tiếp đến bảng điều khiển GA4 của bạn cùng với phân tích riêng của Wink. Không cần mã, không cần thiết lập kỹ thuật từ phía bạn.
 
 <Aside type="tip">
-Tất cả những gì bạn cần là một ID Đo lường GA4. Khi nhập vào cổng thông tin Wink, phân tích của bạn sẽ hoạt động ngay lập tức.
+Bạn cần hai thứ từ GA4: **Measurement ID** và **Measurement Protocol API secret**. Measurement ID điều khiển phễu duyệt trong trình duyệt của khách; API secret cho phép Wink ghi nhận các đặt phòng hoàn tất (`purchase`) **phía máy chủ**, vì vậy một giao dịch bán không bao giờ bị mất khi khách được chuyển hướng đến và từ nhà cung cấp thanh toán.
 </Aside>
 
 ---
 
-## Cách Thức Hoạt Động
+## Cách Hoạt Động
 
 ```
-Bạn nhập G-XXXXXXXXXX vào cổng thông tin Wink
+Bạn nhập Measurement ID (G-XXXXXXXXXX) và API secret trong cổng Wink
        ↓
-Wink chuyển tiếp các sự kiện đặt phòng của bạn đến thuộc tính GA4
+Các sự kiện duyệt (xem, giỏ hàng, thanh toán) được gửi đến tài sản GA4 của bạn từ trình duyệt
+Các đặt phòng hoàn tất (purchase) được gửi phía máy chủ — không bị mất khi chuyển hướng thanh toán
        ↓
-Bạn đăng nhập vào analytics.google.com và xem các đặt phòng của mình
+Bạn đăng nhập vào analytics.google.com và xem toàn bộ phễu đặt phòng của mình
 ```
 
 ---
@@ -31,43 +32,55 @@ Bạn đăng nhập vào analytics.google.com và xem các đặt phòng của m
 
 <Steps>
 
-1. **Tạo Thuộc Tính GA4**
+1. **Tạo một Tài sản GA4**
 
-   Truy cập [analytics.google.com](https://analytics.google.com): Quản trị → Tạo Thuộc Tính. Đặt múi giờ và tiền tệ phù hợp với thị trường của bạn.
+   Truy cập [analytics.google.com](https://analytics.google.com): Admin → Create Property. Đặt múi giờ và tiền tệ phù hợp với thị trường của bạn.
 
-2. **Tạo Dòng Dữ Liệu Web**
+2. **Tạo một Web Data Stream**
 
-   Quản trị → Dòng Dữ Liệu → Thêm Dòng → Web. Nhập `wink.travel` làm URL. Điều này sẽ tạo ra **ID Đo lường** của bạn (`G-XXXXXXXXXX`). Sao chép nó.
+   Admin → Data Streams → Add Stream → Web. Nhập `wink.travel` làm URL. Điều này tạo ra **Measurement ID** (`G-XXXXXXXXXX`). Sao chép nó.
 
-3. **Nhập ID Đo lường vào Cổng Thông Tin Wink**
+3. **Tạo Measurement Protocol API Secret**
 
-   Đăng nhập vào [app.wink.travel](https://app.wink.travel), chọn tài khoản của bạn và vào tab **Tùy chỉnh**. Dán ID Đo lường của bạn vào đó và lưu lại. Xong — tích hợp GA4 của bạn đã hoạt động.
+   Mở cùng Web Data Stream → cuộn xuống **Measurement Protocol API secrets** → **Create**. Đặt biệt danh (ví dụ "Wink") và sao chép **giá trị bí mật** được tạo. Bí mật này cho phép Wink ghi nhận các đặt phòng hoàn tất phía máy chủ, vì vậy giao dịch bán không bị mất trong quá trình chuyển hướng thanh toán.
 
-4. **Đánh Dấu `purchase` Là Sự Kiện Chính**
+4. **Nhập Measurement ID và API Secret vào Cổng Wink**
 
-   Quay lại thuộc tính GA4 của bạn: Quản trị → Sự kiện → tìm `purchase` → bật **Đánh dấu là sự kiện chính**. Điều này giúp các đặt phòng hoàn tất xuất hiện trong báo cáo Chuyển đổi của bạn.
+   Đăng nhập [app.wink.travel](https://app.wink.travel), chọn tài khoản của bạn, vào tab **Customizations**. Dán Measurement ID và API secret vào các trường **GA4** và lưu lại. Xong — tích hợp GA4 của bạn đã hoạt động.
 
-5. **Xem Dữ Liệu Của Bạn**
+   <Aside type="note">
+   API secret là **chỉ ghi**: một khi đã lưu sẽ không hiển thị lại. Khi chỉnh sửa sau này, để trống trường bí mật để giữ giá trị đã lưu.
+   </Aside>
 
-   Đăng nhập vào [analytics.google.com](https://analytics.google.com) và bạn sẽ thấy các đặt phòng, doanh thu và phễu khách hàng — tất cả được theo dõi tự động qua Wink.
+5. **Đánh dấu `purchase` là Sự kiện Chính**
+
+   Quay lại tài sản GA4 của bạn: Admin → Events → tìm `purchase` → bật **Mark as key event**. Điều này làm cho các đặt phòng hoàn tất xuất hiện trong báo cáo Chuyển đổi của bạn.
+
+6. **Xem Dữ liệu của Bạn**
+
+   Đăng nhập [analytics.google.com](https://analytics.google.com) và bạn sẽ thấy các đặt phòng, doanh thu và phễu khách — tất cả được theo dõi tự động qua Wink.
 
 </Steps>
 
 <Aside type="note">
-Bạn không cần cài đặt bất kỳ mã theo dõi nào trên trang web của mình cho tích hợp này. Wink sẽ xử lý mọi thứ. ID Đo lường của bạn chỉ đơn giản là điểm đến nơi dữ liệu đặt phòng được gửi đến.
+Bạn không cần cài đặt mã theo dõi nào trên trang web của mình cho tích hợp này. Wink xử lý mọi thứ. Measurement ID của bạn là điểm đến nơi dữ liệu đặt phòng được gửi đến, và API secret cho phép Wink xác nhận các đặt phòng hoàn tất phía máy chủ.
+</Aside>
+
+<Aside type="tip">
+**GA4 và GTM có thể sử dụng cùng nhau.** Nếu bạn cũng chạy một container Google Tag Manager (ví dụ container Sojern), bạn có thể cấu hình cả hai cùng lúc — chúng không còn loại trừ lẫn nhau. Xem [Tích hợp GTM Analytics](/vi/guides/developers/gtm-dual-tagging).
 </Aside>
 
 ---
 
 ## Những Gì Bạn Có Thể Theo Dõi
 
-Khi đã kết nối, thuộc tính GA4 của bạn sẽ nhận được đầy đủ các sự kiện Thương mại điện tử Nâng cao cho tài sản của bạn:
+Khi đã kết nối, tài sản GA4 của bạn nhận được toàn bộ bộ sự kiện Thương mại điện tử Nâng cao cho tài sản của bạn:
 
 ### Khám Phá
 
 | Sự kiện | Ý nghĩa |
 |---|---|
-| `view_item_list` | Khách đã xem tài sản của bạn trong kết quả tìm kiếm hoặc danh mục |
+| `view_item_list` | Khách đã thấy tài sản của bạn trong tìm kiếm hoặc danh mục |
 | `select_item` | Khách đã nhấp vào tài sản của bạn từ danh sách |
 | `view_item` | Khách đã xem trang chi tiết khách sạn của bạn |
 
@@ -75,7 +88,7 @@ Khi đã kết nối, thuộc tính GA4 của bạn sẽ nhận được đầy 
 
 | Sự kiện | Ý nghĩa |
 |---|---|
-| `view_promotion` | Khách đã xem ưu đãi khuyến mãi cho tài sản của bạn |
+| `view_promotion` | Khách đã thấy ưu đãi khuyến mãi cho tài sản của bạn |
 | `select_promotion` | Khách đã nhấp vào ưu đãi khuyến mãi |
 | `add_to_wishlist` | Khách đã lưu tài sản của bạn vào danh sách yêu thích |
 
@@ -85,56 +98,56 @@ Khi đã kết nối, thuộc tính GA4 của bạn sẽ nhận được đầy 
 |---|---|
 | `add_to_cart` | Khách đã chọn phòng hoặc gói dịch vụ |
 | `view_cart` | Khách đã xem tóm tắt đặt phòng |
-| `remove_from_cart` | Khách đã bỏ chọn phòng hoặc gói dịch vụ |
-| `begin_checkout` | Khách bắt đầu quy trình thanh toán |
-| `add_payment_info` | Khách đã nhập thông tin thanh toán |
-| `add_shipping_info` | Khách đã nhập thông tin khách hàng |
-| `purchase` | Khách đã hoàn tất đặt phòng |
-| `refund` | Đặt phòng đã bị hủy và hoàn tiền |
+| `remove_from_cart` | Khách đã bỏ phòng hoặc gói dịch vụ |
+| `begin_checkout` | Khách bắt đầu quá trình thanh toán |
+| `add_payment_info` | Khách nhập thông tin thanh toán |
+| `add_shipping_info` | Khách nhập thông tin khách |
+| `purchase` | Khách hoàn tất đặt phòng |
+| `refund` | Đặt phòng bị hủy và hoàn tiền |
 
-Tất cả các sự kiện đều bao gồm các chiều dữ liệu liên quan như doanh thu, tiền tệ, loại phòng và giá trị đặt phòng — giúp bạn có cái nhìn toàn diện về hành trình khách từ lần tiếp xúc đầu tiên đến khi hoàn tất đặt phòng. Để mở khóa các chiều dữ liệu bổ sung ở cấp tài sản và phòng như `city_name`, `cancellation_policy`, `bed_type` và nhiều hơn nữa, xem [Chiều Dữ Liệu Tùy Chỉnh trong GA4](/vi/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
+Tất cả sự kiện bao gồm các chiều liên quan như doanh thu, tiền tệ, loại phòng và giá trị đặt phòng — cung cấp cho bạn bức tranh toàn diện về hành trình khách từ ấn tượng đầu tiên đến đặt phòng hoàn tất. Để mở khóa các chiều bổ sung ở cấp tài sản và phòng như `city_name`, `cancellation_policy`, `bed_type` và nhiều hơn nữa, xem [Chiều Tùy Chỉnh trong GA4](/vi/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
 
 ---
 
-## Theo Dõi Đa Miền (Nâng Cao)
+## Theo Dõi Liên Miền (Nâng Cao)
 
-Tích hợp tiêu chuẩn ở trên theo dõi mọi thứ xảy ra trong Wink. Tuy nhiên, nếu bạn muốn theo dõi khách từ trang web của bạn đến khi hoàn tất đặt phòng trên Wink — và ghi nhận chính xác nguồn lưu lượng ban đầu (Google Ads, chiến dịch email, tìm kiếm tự nhiên, v.v.) — bạn cần thực hiện thêm một bước trên mỗi bên.
+Tích hợp tiêu chuẩn ở trên theo dõi mọi thứ xảy ra trong Wink. Tuy nhiên, nếu bạn muốn theo dõi khách từ trang web của bạn đến khi hoàn tất đặt phòng trên Wink — và ghi nhận chính xác nguồn lưu lượng ban đầu (Google Ads, chiến dịch email, tìm kiếm tự nhiên, v.v.) — cần thêm một bước trên mỗi bên.
 
 <Aside type="caution">
-Phần này chỉ áp dụng nếu bạn đã cài đặt GA4 trên trang web của mình. Nếu bạn không chạy GA4 trên trang web, tích hợp tiêu chuẩn ở trên là đủ.
+Phần này chỉ áp dụng nếu bạn đã cài GA4 trên trang web của mình. Nếu bạn không chạy GA4 trên trang, tích hợp tiêu chuẩn ở trên là đủ.
 </Aside>
 
 ### Tại Sao Điều Này Quan Trọng
 
-Nếu không có theo dõi đa miền, khách truy cập trang web của bạn trước rồi đặt phòng trên Wink sẽ xuất hiện trong GA4 của bạn như một phiên **Trực tiếp** mà không liên kết với lần truy cập trước đó. Bất kỳ nhấp chuột Google Ads, chiến dịch email hoặc lượt truy cập tìm kiếm tự nhiên nào dẫn đến đặt phòng sẽ không được ghi nhận.
+Nếu không có theo dõi liên miền, khách truy cập trang web của bạn trước rồi đặt phòng trên Wink sẽ xuất hiện trong GA4 của bạn như một phiên **Trực tiếp** mà không liên kết với lần truy cập trước đó. Bất kỳ nhấp chuột Google Ads, chiến dịch email hay tìm kiếm tự nhiên nào dẫn đến đặt phòng sẽ không được ghi nhận.
 
-Khi cấu hình theo dõi đa miền, bạn sẽ thấy toàn bộ hành trình khách:
+Khi cấu hình theo dõi liên miền, bạn sẽ thấy toàn bộ hành trình khách:
 
 ```
 google.com (quảng cáo trả phí)
        ↓
 trang web của bạn (khách duyệt phòng)
        ↓
-wink.travel (khách chọn phòng và đặt phòng)
+wink.travel (khách chọn phòng và đặt)
        ↓
 đặt phòng được ghi nhận chính xác cho nhấp chuột Google Ads ban đầu
 ```
 
 ### Hành Động Cần Thiết: Bạn
 
-Cấu hình thuộc tính GA4 của bạn để nhận diện `wink.travel` là một phần của miền của bạn, không phải là nguồn giới thiệu bên ngoài. Điều này giúp GA4 nối hai phiên thành một hành trình khách liên tục.
+Cấu hình tài sản GA4 của bạn để nhận diện `wink.travel` là một phần của miền của bạn, không phải là nguồn giới thiệu bên ngoài. Điều này cho GA4 biết nối hai phiên lại thành một hành trình khách liên tục.
 
 <Steps>
-1. Quản trị GA4 → Dòng Dữ Liệu → chọn dòng của bạn
-2. Cấu hình cài đặt thẻ → **Cấu hình miền của bạn**
+1. GA4 Admin → Data Streams → chọn stream của bạn
+2. Cấu hình cài đặt thẻ → **Configure your domains**
 3. Thêm `wink.travel` làm miền liên kết
 4. Lưu lại
 </Steps>
 
 ### Hành Động Cần Thiết: Wink
 
-Liên hệ [Hỗ trợ Wink](https://app.wink.travel) và cung cấp miền trang web của bạn (ví dụ `yourhotel.com`). Wink sẽ thêm miền của bạn vào danh sách loại trừ giới thiệu trong thuộc tính GA4 của Wink. Điều này ngăn trang web của bạn được ghi nhận là nguồn giới thiệu, tránh ghi đè ghi nhận gốc của khách và bắt đầu một phiên mới.
+Liên hệ [Hỗ trợ Wink](https://app.wink.travel) và cung cấp miền trang web của bạn (ví dụ `yourhotel.com`). Wink sẽ thêm miền của bạn vào danh sách loại trừ giới thiệu trong tài sản GA4 của Wink. Điều này ngăn trang web của bạn bị ghi nhận là nguồn giới thiệu, tránh ghi đè ghi nhận gốc của khách và bắt đầu phiên mới.
 
 <Aside type="tip">
-Tích hợp tiêu chuẩn ở trên là đủ cho hầu hết các tài sản và giúp bạn có cái nhìn ngay lập tức về đặt phòng và doanh thu trên Wink. Theo dõi đa miền là tùy chọn nâng cao đáng để thiết lập khi bạn đã quen với dữ liệu GA4 và muốn có cái nhìn sâu hơn về ghi nhận nguồn.
+Tích hợp tiêu chuẩn ở trên đủ cho hầu hết các tài sản và cho bạn khả năng nhìn thấy ngay lập tức các đặt phòng và doanh thu trên Wink. Theo dõi liên miền là tùy chọn nâng cao đáng để thiết lập khi bạn đã quen với dữ liệu GA4 và muốn có cái nhìn sâu hơn về ghi nhận nguồn.
 </Aside>
