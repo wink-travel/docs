@@ -1,5 +1,5 @@
 ---
-title: Catalogo Eventi Webhook
+title: Catalogo degli Eventi Webhook
 description: Riferimento completo di tutti i tipi di eventi webhook disponibili sulla piattaforma Wink, organizzati per categoria.
 sidebar:
   order: 3
@@ -7,11 +7,11 @@ sidebar:
 
 import { LinkButton } from '@astrojs/starlight/components';
 
-Questa pagina elenca tutti gli eventi webhook a cui puoi iscriverti su Wink. Per le istruzioni di configurazione, consulta la [Guida all'integrazione Webhook](/it/guides/developers/webhook-integration) o la [pagina di gestione Webhook](/it/portal/settings/webhooks).
+Questa pagina elenca tutti gli eventi webhook a cui puoi iscriverti su Wink. Per le istruzioni di configurazione, consulta la [Guida all'Integrazione Webhook](/it/guides/developers/webhook-integration) o la [pagina di gestione Webhooks](/it/portal/settings/webhooks).
 
 ## Come iscriversi
 
-1. Vai su **Applicazioni > Webhook** nel tuo portale.
+1. Vai su **Applicazioni > Webhooks** nel tuo portale.
 2. Crea un webhook e seleziona gli eventi che vuoi ricevere.
 3. Wink invia una richiesta HTTP POST al tuo endpoint ogni volta che si verifica l'evento.
 
@@ -19,42 +19,231 @@ Per i passaggi completi di configurazione e le migliori pratiche, consulta [Inte
 
 ---
 
-## Eventi account
+## Gestione degli eventi delle entità
 
-Eventi relativi al ciclo di vita e alle impostazioni del tuo account TripPay.
+Eventi per la gestione delle entità (proprietà, affiliati, aziende) e la loro amministrazione.
+
+### Ciclo di vita
 
 | Evento | Chiave | Descrizione |
 |---|---|---|
-| Account creato | `account.create` | È stato creato un nuovo account. |
-| Account in revisione | `account.under_review` | L'account è in attesa di revisione. |
-| Account aggiornato | `account.updated` | I dettagli dell'account sono cambiati. |
-| Stato account aggiornato | `account.status.updated` | Lo stato dell'account è cambiato (es. approvato, sospeso). |
-| Indirizzo account aggiornato | `account.address.updated` | L'indirizzo dell'account è stato modificato. |
-| Dettagli account aggiornati | `account.details.updated` | I campi dei dettagli dell'account sono cambiati. |
-| Informazioni account aggiornate | `account.information.update` | Le informazioni generali dell'account sono state aggiornate. |
-| Gestori account aggiornati | `account.managers.update` | La lista dei gestori dell'account è cambiata. |
-| Foto profilo aggiornata | `account.profile_picture.updated` | La foto profilo dell'account è stata modificata. |
-| Agente aggiornato | `account.agent.updated` | Le informazioni dell'agente sull'account sono state modificate. |
-| URL nome aggiornato | `account.url-name.update` | L'URL personalizzato dell'account è cambiato. |
-| ID univoco aggiornato | `account.unique-id.update` | L'identificatore univoco dell'account è stato modificato. |
+| Entità creata | `managing_entity.created` | È stata creata una nuova entità di gestione. |
+| Entità eliminata | `managing_entity.deleted` | È stata eliminata un'entità di gestione. |
+| Stato aggiornato | `managing_entity.status.updated` | Lo stato dell'entità è cambiato. |
+| In revisione | `account.under_review` | L'account dell'entità è in attesa di revisione. |
+
+### Abbonamento
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Abbonamento fornito | `managing_entity.subscription.provisioned` | È stato fornito un nuovo abbonamento. |
+| Abbonamento modificato | `managing_entity.subscription.changed` | Il piano di abbonamento è stato modificato. |
+| Fattura abbonamento modificata | `managing_entity.subscription.invoice.changed` | La fattura dell'abbonamento è stata aggiornata. |
+
+### Ciclo di vita del manager
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Manager aggiunto | `managing_entity.manager.added` | È stato aggiunto un nuovo manager. |
+| Manager invitato | `managing_entity.manager.invited` | È stato inviato un invito a un manager. |
+| Manager rimosso | `managing_entity.manager.removed` | Un manager è stato rimosso. |
+| Manager accettato | `managing_entity.manager.accepted` | Un invito a manager è stato accettato. |
+| Manager rifiutato | `managing_entity.manager.rejected` | Un invito a manager è stato rifiutato. |
+| Proprietario impostato | `managing_entity.manager.owner.set` | La proprietà dell'entità è stata trasferita. |
+| Manager aggiornati | `account.managers.update` | La lista dei manager è cambiata. |
+
+### Informazioni sull'entità
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Informazioni aggiornate | `managing_entity.information.updated` | Le informazioni dell'entità sono state aggiornate. |
+| Indirizzo aggiornato | `managing_entity.city.updated` | L'indirizzo/città dell'entità è cambiato. |
+| Nome aggiornato | `managing_entity.name.updated` | Il nome dell'entità è cambiato. |
+| URL personalizzato aggiornato | `managing_entity.url_name.updated` | L'URL personalizzato dell'entità è cambiato. |
+| ID univoco aggiornato | `managing_entity.unique_id.updated` | L'identificatore univoco dell'entità è cambiato. |
+| Gestito da aggiornato | `managing_entity.managed_by.updated` | La relazione di gestione/parentela dell'entità è cambiata. |
+| Place ID aggiornato | `managing_entity.place_id.updated` | Il Google Place ID dell'entità è cambiato. |
+| Rappresentante account aggiornato | `managing_entity.account_representative.updated` | Il rappresentante dell'account è stato modificato. |
+| Foto profilo aggiornata | `managing_entity.profile_picture.updated` | La foto profilo dell'entità è stata aggiornata. |
+| Logo aggiornato | `managing_entity.logo.updated` | Il logo dell'entità è stato aggiornato. |
+| Dettagli aggiornati | `account.details.updated` | I campi dei dettagli dell'account sono cambiati. |
+| Agente aggiornato | `managing_entity.agent.updated` | L'agente dell'entità è stato modificato. |
+
+### Notifiche
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Notifica email agente | `managing_entity.agent.email.notification` | È stata inviata una notifica email all'agente. |
+| Notifica email manager | `managing_entity.manager.email.notification` | È stata inviata una notifica email a un manager. |
 
 ### Attività account
 
 | Evento | Chiave | Descrizione |
 |---|---|---|
-| Attività creata | `account.task.create` | Una nuova attività è stata aggiunta all'account. |
+| Attività creata | `account.task.create` | È stata aggiunta una nuova attività all'account. |
 | Attività aggiornata | `account.task.update` | Un'attività dell'account è stata modificata. |
 | Attività rimossa | `account.task.remove` | Un'attività dell'account è stata rimossa. |
 | Attività completata | `account.task.complete` | Un'attività dell'account è stata completata. |
-| Attività verifica codice fiscale completata | `account.task.tax_id.complete` | L'attività di verifica del codice fiscale è stata completata. |
+| Verifica codice fiscale completata | `account.task.tax_id.complete` | L'attività di verifica del codice fiscale è stata completata. |
 
-### Acquirente account
+---
+
+## Eventi di prenotazione
+
+Eventi relativi al ciclo di vita della prenotazione Wink, dalla creazione ai rimborsi e pagamenti.
+
+### Prenotazione principale
 
 | Evento | Chiave | Descrizione |
 |---|---|---|
-| Acquirente creato | `account.acquirer.created` | Un nuovo acquirente è stato aggiunto all'account. |
-| Acquirente aggiornato | `account.acquirer.updated` | Un acquirente dell'account è stato modificato. |
-| Acquirente rimosso | `account.acquirer.removed` | Un acquirente è stato rimosso dall'account. |
+| Prenotazione creata | `booking.create` | È stata creata una nuova prenotazione. |
+| Prenotazione annullata | `booking.cancelled` | Una prenotazione è stata annullata. |
+| Prenotazione fallita | `booking.failed` | Un tentativo di prenotazione è fallito. |
+| Prenotazione in elaborazione | `booking.processing` | Il pagamento della prenotazione è in elaborazione. |
+| Inizializzazione richiesta | `booking.initialize.request` | È stata richiesta l'inizializzazione della prenotazione. |
+| Inizializzazione completata | `booking.initialize.complete` | L'inizializzazione della prenotazione è stata completata. |
+
+### Rimborsi
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Richiesta di rimborso | `booking.refund.request` | È stata inviata una richiesta di rimborso. |
+| Errore rimborso | `booking.refund.error` | Si è verificato un errore durante l'elaborazione di un rimborso. |
+| Rimborso parziale | `booking.refund.partial` | È stato emesso un rimborso parziale. |
+| Rimborso completo | `booking.refund.full` | È stato emesso un rimborso completo. |
+
+### Pagamenti
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Pagamento creato | `booking.payout.create` | È stato creato un pagamento per la prenotazione. |
+| Pagamento completato | `booking.payout.complete` | Un pagamento è stato completato con successo. |
+| Fondi disponibili | `booking.funds.available` | I fondi della prenotazione sono disponibili per la liquidazione. |
+| Fondi registrati | `booking.funds.ledgered` | I fondi della prenotazione sono stati registrati nel libro contabile. |
+
+### Recensioni
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Recensione inviata | `booking.review.created` | Un ospite ha inviato una recensione per una prenotazione. |
+| Recensione risposta | `booking.review.responded` | Una proprietà ha risposto a una recensione di prenotazione. |
+
+---
+
+## Eventi proprietà
+
+Eventi relativi ai profili e contenuti delle proprietà, inviati agli iscritti webhook della proprietà stessa.
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Proprietà creata | `property.created` | È stata creata una nuova proprietà. |
+| Proprietà aggiornata | `property.updated` | I dettagli della proprietà sono stati aggiornati. |
+| Proprietà eliminata | `property.deleted` | Una proprietà è stata rimossa. |
+| Proprietà registrata | `property.registered` | Una proprietà ha completato la registrazione. |
+| Stato aggiornato | `property.status.updated` | Lo stato esterno della proprietà è cambiato. |
+| Nome aggiornato | `property.name.updated` | Il nome della proprietà è cambiato. |
+| Indirizzo aggiornato | `property.address.updated` | L'indirizzo della proprietà è stato aggiornato. |
+| Geolocalizzazione aggiornata | `property.geolocation.updated` | La geolocalizzazione della proprietà è stata aggiornata. |
+| Profilo aggiornato | `property.profile.updated` | Il contenuto del profilo della proprietà è cambiato. |
+| Servizi aggiornati | `property.services.updated` | La lista di servizi/amenità della proprietà è cambiata. |
+| Testo di benvenuto aggiornato | `property.welcome_text.updated` | Il messaggio di benvenuto della proprietà è cambiato. |
+| Politica creata | `property.policy.created` | È stata creata una nuova politica della proprietà. |
+| Politica aggiornata | `property.policy.updated` | Una politica della proprietà è stata aggiornata. |
+
+---
+
+## Eventi inventario
+
+Eventi relativi agli articoli di inventario all'interno di una proprietà, inviati agli iscritti webhook della proprietà.
+
+### Tipi di camera
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Tipo di camera creato | `room_type.created` | È stato aggiunto un nuovo tipo di camera. |
+| Tipo di camera aggiornato | `room_type.updated` | Un tipo di camera è stato modificato. |
+| Tipo di camera eliminato | `room_type.deleted` | Un tipo di camera è stato rimosso. |
+
+### Piani tariffari
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Piano tariffario creato | `rate_plan.created` | È stato creato un nuovo piano tariffario. |
+| Piano tariffario aggiornato | `rate_plan.updated` | Un piano tariffario è stato modificato. |
+| Piano tariffario eliminato | `rate_plan.deleted` | Un piano tariffario è stato rimosso. |
+
+### Tariffe master
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Tariffa master creata | `master_rate.created` | È stata creata una nuova tariffa master. |
+| Tariffa master aggiornata | `master_rate.updated` | Una tariffa master è stata modificata. |
+| Tariffa master eliminata | `master_rate.deleted` | Una tariffa master è stata rimossa. |
+
+### Extra
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Extra creato | `add_on.created` | È stato creato un nuovo extra. |
+| Extra aggiornato | `add_on.updated` | Un extra è stato modificato. |
+| Extra eliminato | `add_on.deleted` | Un extra è stato rimosso. |
+
+### Sale riunioni
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Sala riunioni creata | `meeting_room.created` | È stata aggiunta una nuova sala riunioni. |
+| Sala riunioni aggiornata | `meeting_room.updated` | Una sala riunioni è stata modificata. |
+| Sala riunioni eliminata | `meeting_room.deleted` | Una sala riunioni è stata rimossa. |
+
+### Ristoranti
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Ristorante creato | `restaurant.created` | È stato aggiunto un nuovo ristorante. |
+| Ristorante aggiornato | `restaurant.updated` | Un ristorante è stato modificato. |
+| Ristorante eliminato | `restaurant.deleted` | Un ristorante è stato rimosso. |
+
+### Spa
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Spa creata | `spa.created` | È stata aggiunta una nuova spa. |
+| Spa aggiornata | `spa.updated` | Una spa è stata modificata. |
+| Spa eliminata | `spa.deleted` | Una spa è stata rimossa. |
+
+### Attività
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Attività creata | `activity.created` | È stata aggiunta una nuova attività. |
+| Attività aggiornata | `activity.updated` | Un'attività è stata modificata. |
+| Attività eliminata | `activity.deleted` | Un'attività è stata rimossa. |
+
+---
+
+## Eventi canale di vendita
+
+Eventi per i canali di distribuzione che collegano fornitori e affiliati. Inviati sia ai fornitori che agli iscritti webhook degli affiliati.
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Canale di vendita creato | `sales_channel.created` | È stato creato un nuovo canale di vendita. |
+| Canale di vendita aggiornato | `sales_channel.updated` | Un canale di vendita è stato modificato. |
+| Canale di vendita eliminato | `sales_channel.deleted` | Un canale di vendita è stato rimosso. |
+
+---
+
+## Eventi tariffe speciali
+
+Eventi per tariffe promozionali e negoziate su una proprietà.
+
+| Evento | Chiave | Descrizione |
+|---|---|---|
+| Tariffa speciale creata | `special_rate.created` | È stata creata una nuova tariffa speciale. |
+| Tariffa speciale aggiornata | `special_rate.updated` | Una tariffa speciale è stata modificata. |
+| Tariffa speciale eliminata | `special_rate.deleted` | Una tariffa speciale è stata rimossa. |
+| Modificatore di tariffa aggiornato | `rate_modifier.updated` | Un modificatore di tariffa è stato aggiornato. |
 
 ---
 
@@ -71,117 +260,45 @@ Eventi relativi alla gestione del beneficiario (destinatario del pagamento).
 
 ---
 
-## Eventi contratto di prenotazione
+## Eventi di pagamento
 
-Eventi che tracciano il ciclo di vita di un contratto di prenotazione tramite TripPay.
-
-| Evento | Chiave | Descrizione |
-|---|---|---|
-| Inizializzazione richiesta | `booking.contract.initialize.request` | È stata richiesta l'inizializzazione di un contratto di prenotazione. |
-| Inizializzazione completata | `booking.contract.initialize.complete` | L'inizializzazione di un contratto di prenotazione è stata completata. |
-| Contratto creato | `booking.contract.created` | È stato creato un nuovo contratto di prenotazione. |
-| Contratto in elaborazione | `booking.contract.processing` | Il pagamento del contratto di prenotazione è in elaborazione. |
-| Contratto fallito | `booking.contract.failed` | Il pagamento del contratto di prenotazione è fallito. |
-| Contratto annullato | `booking.contract.cancelled` | Il contratto di prenotazione è stato annullato. |
-| Rimborso parziale | `booking.contract.refund.partial` | È stato emesso un rimborso parziale sul contratto. |
-| Rimborso totale | `booking.contract.refund.full` | È stato emesso un rimborso totale sul contratto. |
-| Richiesta di rimborso | `booking.contract.refund.request` | È stata inviata una richiesta di rimborso. |
-| Errore rimborso | `booking.contract.refund.error` | Si è verificato un errore durante l'elaborazione di un rimborso. |
-| Pagamento creato | `booking.contract.payout.create` | È stato creato un pagamento per il contratto. |
-| Pagamento completato | `booking.contract.payout.complete` | Un pagamento è stato completato con successo. |
-
----
-
-## Eventi pagamento
-
-Eventi interni di elaborazione dei pagamenti.
+Eventi interni di elaborazione pagamenti da TripPay.
 
 | Evento | Chiave | Descrizione |
 |---|---|---|
 | Pagamento riuscito | `internal.payment.succeeded` | Il pagamento è stato elaborato con successo. |
-| Pagamento in elaborazione | `internal.payment.processing` | Il pagamento è in corso di elaborazione. |
+| Pagamento in elaborazione | `internal.payment.processing` | Il pagamento è in fase di elaborazione. |
 | Pagamento fallito | `internal.payment.failed` | L'elaborazione del pagamento è fallita. |
-
----
-
-## Eventi prenotazione
-
-Eventi relativi al ciclo di vita della prenotazione su Wink.
-
-| Evento | Chiave | Descrizione |
-|---|---|---|
-| Prenotazione creata | `booking.create` | È stata creata una nuova prenotazione. |
-| Prenotazione annullata | `booking.cancelled` | Una prenotazione è stata annullata. |
 
 ---
 
 ## Eventi channel manager
 
-Eventi relativi agli aggiornamenti di tariffe e disponibilità del channel manager.
+Eventi relativi a push di tariffe e disponibilità da channel manager.
 
 | Evento | Chiave | Descrizione |
 |---|---|---|
-| Aggiornamento tariffa | `channel-manager.update.rate` | Il channel manager ha inviato un aggiornamento delle tariffe. |
-| Aggiornamento disponibilità | `channel-manager.update.availability` | Il channel manager ha inviato un aggiornamento della disponibilità. |
+| Aggiornamento tariffa | `channel-manager.update.rate` | Il channel manager ha inviato un aggiornamento tariffario. |
+| Aggiornamento disponibilità | `channel-manager.update.availability` | Il channel manager ha inviato un aggiornamento di disponibilità. |
 | Aggiornamento generale | `channel-manager.update` | Aggiornamento generale del channel manager. |
 
 ---
 
-## Eventi libro mastro
+## Eventi libro contabile
 
-Eventi relativi alle voci del libro mastro finanziario.
+Eventi relativi alle voci del libro contabile finanziario.
 
 | Evento | Chiave | Descrizione |
 |---|---|---|
-| Voce libro mastro creata | `ledger.entry.create` | È stata registrata una nuova voce nel libro mastro. |
+| Voce libro contabile creata | `ledger.entry.create` | È stata registrata una nuova voce nel libro contabile. |
 
 ---
 
-## Eventi entità gestore
-
-Eventi per entità gestori (proprietà, affiliati, aziende) e la loro amministrazione.
-
-### Abbonamento
+## Eventi email
 
 | Evento | Chiave | Descrizione |
 |---|---|---|
-| Abbonamento fornito | `managing_entity.subscription.provisioned` | È stato fornito un nuovo abbonamento. |
-| Abbonamento modificato | `managing_entity.subscription.changed` | Il piano di abbonamento è stato modificato. |
-| Fattura abbonamento modificata | `managing_entity.subscription.invoice.changed` | La fattura dell'abbonamento è stata aggiornata. |
-
-### Stato e amministrazione
-
-| Evento | Chiave | Descrizione |
-|---|---|---|
-| Stato aggiornato | `managing_entity.status.updated` | Lo stato dell'entità è cambiato. |
-| Entità eliminata | `managing_entity.deleted` | Un'entità gestore è stata eliminata. |
-| Agente aggiornato | `managing_entity.agent.updated` | L'agente dell'entità è stato modificato. |
-| Notifica email agente | `managing_entity.agent.email.notification` | È stata inviata una notifica email all'agente. |
-| Notifica email manager | `managing_entity.manager.email.notification` | È stata inviata una notifica email a un manager. |
-
-### Ciclo di vita manager
-
-| Evento | Chiave | Descrizione |
-|---|---|---|
-| Manager aggiunto | `managing_entity.manager.added` | È stato aggiunto un nuovo manager. |
-| Manager invitato | `managing_entity.manager.invited` | È stato inviato un invito a un manager. |
-| Manager rimosso | `managing_entity.manager.removed` | Un manager è stato rimosso. |
-| Manager accettato | `managing_entity.manager.accepted` | Un invito a manager è stato accettato. |
-| Manager rifiutato | `managing_entity.manager.rejected` | Un invito a manager è stato rifiutato. |
-| Proprietario impostato | `managing_entity.manager.owner.set` | La proprietà dell'entità è stata trasferita. |
-
-### Informazioni entità
-
-| Evento | Chiave | Descrizione |
-|---|---|---|
-| Informazioni aggiornate | `managing_entity.information.updated` | Le informazioni dell'entità sono state aggiornate. |
-| Indirizzo aggiornato | `managing_entity.city.updated` | L'indirizzo/città dell'entità è stato modificato. |
-| Rappresentante account aggiornato | `managing_entity.account_representative.updated` | Il rappresentante dell'account è stato cambiato. |
-| Foto profilo aggiornata | `managing_entity.profile_picture.updated` | La foto profilo dell'entità è stata aggiornata. |
-| Logo aggiornato | `managing_entity.logo.updated` | Il logo dell'entità è stato aggiornato. |
-| URL nome aggiornato | `managing_entity.url_name.updated` | L'URL personalizzato dell'entità è cambiato. |
-| ID univoco aggiornato | `managing_entity.unique_id.updated` | L'identificatore univoco dell'entità è cambiato. |
-| Nome aggiornato | `managing_entity.name.updated` | Il nome dell'entità è stato modificato. |
+| Corrispondenza email | `email.correspondence` | È stata inviata un'email in uscita. |
 
 ---
 
@@ -189,15 +306,18 @@ Eventi per entità gestori (proprietà, affiliati, aziende) e la loro amministra
 
 | Categoria | Conteggio |
 |---|---|
-| Eventi account | 20 |
+| Eventi entità di gestione | 33 |
+| Eventi prenotazione | 16 |
+| Eventi proprietà | 13 |
+| Eventi inventario (tipi di camera, piani tariffari, tariffe master, extra, strutture) | 24 |
+| Eventi canale di vendita | 3 |
+| Eventi tariffe speciali | 4 |
 | Eventi beneficiario | 4 |
-| Eventi contratto di prenotazione | 12 |
 | Eventi pagamento | 3 |
-| Eventi prenotazione | 2 |
 | Eventi channel manager | 3 |
-| Eventi libro mastro | 1 |
-| Eventi entità gestore | 19 |
-| **Totale** | **64** |
+| Eventi libro contabile | 1 |
+| Eventi email | 1 |
+| **Totale** | **105** |
 
 :::tip
 Inizia iscrivendoti a tutti gli eventi durante lo sviluppo. Una volta compreso quali payload il tuo sistema necessita, restringi le iscrizioni per ridurre il rumore.
@@ -205,7 +325,7 @@ Inizia iscrivendoti a tutti gli eventi durante lo sviluppo. Una volta compreso q
 
 ## Ulteriori letture
 
-- [Guida all'integrazione Webhook](/it/guides/developers/webhook-integration) — Passaggi di configurazione e migliori pratiche.
-- [Webhook](/it/portal/settings/webhooks) — Gestisci le tue iscrizioni webhook.
+- [Guida all'Integrazione Webhook](/it/guides/developers/webhook-integration) — Passaggi di configurazione e migliori pratiche.
+- [Webhooks](/it/portal/settings/webhooks) — Gestisci le tue iscrizioni webhook.
 - [Applicazioni](/it/portal/settings/applications) — Gestisci le credenziali API.
-- [Sviluppa su Wink](/it/developers/build-on-wink) — Panoramica della piattaforma per sviluppatori.
+- [Costruisci su Wink](/it/developers/build-on-wink) — Panoramica della piattaforma per sviluppatori.

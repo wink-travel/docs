@@ -7,7 +7,7 @@ sidebar:
 
 import { LinkButton } from '@astrojs/starlight/components';
 
-Ova stranica prikazuje svaki webhook događaj na koji se možete pretplatiti na Wink-u. Za upute o postavljanju, pogledajte [Webhook Integration Guide](/hr/guides/developers/webhook-integration) ili [Webhooks management page](/hr/portal/settings/webhooks).
+Ova stranica prikazuje svaki webhook događaj na koji se možete pretplatiti na Wink-u. Za upute o postavljanju, pogledajte [Vodič za integraciju webhooka](/hr/guides/developers/webhook-integration) ili [stranicu za upravljanje webhookovima](/hr/portal/settings/webhooks).
 
 ## Kako se pretplatiti
 
@@ -15,28 +15,66 @@ Ova stranica prikazuje svaki webhook događaj na koji se možete pretplatiti na 
 2. Kreirajte webhook i odaberite događaje koje želite primati.
 3. Wink šalje HTTP POST na vašu krajnju točku svaki put kada se događaj dogodi.
 
-Za potpune korake postavljanja i najbolje prakse, pogledajte [Webhook Integration](/hr/guides/developers/webhook-integration).
+Za potpune korake postavljanja i najbolje prakse, pogledajte [Webhook integraciju](/hr/guides/developers/webhook-integration).
 
 ---
 
-## Događaji računa
+## Upravljanje događajima entiteta
 
-Događaji vezani uz životni ciklus i postavke vašeg TripPay računa.
+Događaji za upravljanje entitetima (nekretnine, partneri, tvrtke) i njihovu administraciju.
+
+### Životni ciklus
 
 | Događaj | Ključ | Opis |
 |---|---|---|
-| Račun kreiran | `account.create` | Novi račun je kreiran. |
-| Račun na pregledu | `account.under_review` | Račun je na čekanju za pregled. |
-| Račun ažuriran | `account.updated` | Podaci računa su promijenjeni. |
-| Status računa ažuriran | `account.status.updated` | Status računa je promijenjen (npr. odobren, suspendiran). |
-| Adresa računa ažurirana | `account.address.updated` | Adresa računa je izmijenjena. |
-| Detalji računa ažurirani | `account.details.updated` | Polja detalja računa su promijenjena. |
-| Informacije o računu ažurirane | `account.information.update` | Opće informacije o računu su ažurirane. |
-| Upravljatelji računa ažurirani | `account.managers.update` | Popis upravitelja računa je promijenjen. |
-| Profilna slika ažurirana | `account.profile_picture.updated` | Profilna slika računa je promijenjena. |
-| Agent ažuriran | `account.agent.updated` | Informacije o agentu na računu su izmijenjene. |
-| URL ime ažurirano | `account.url-name.update` | Vanity URL računa je promijenjen. |
-| Jedinstveni ID ažuriran | `account.unique-id.update` | Jedinstveni identifikator računa je izmijenjen. |
+| Entitet kreiran | `managing_entity.created` | Novi entitet za upravljanje je kreiran. |
+| Entitet obrisan | `managing_entity.deleted` | Entitet za upravljanje je obrisan. |
+| Status ažuriran | `managing_entity.status.updated` | Status entiteta je promijenjen. |
+| U pregledu | `account.under_review` | Račun entiteta je na pregledu. |
+
+### Pretplata
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Pretplata osigurana | `managing_entity.subscription.provisioned` | Nova pretplata je osigurana. |
+| Pretplata promijenjena | `managing_entity.subscription.changed` | Plan pretplate je promijenjen. |
+| Račun pretplate promijenjen | `managing_entity.subscription.invoice.changed` | Račun pretplate je ažuriran. |
+
+### Životni ciklus menadžera
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Menadžer dodan | `managing_entity.manager.added` | Novi menadžer je dodan. |
+| Menadžer pozvan | `managing_entity.manager.invited` | Poslana je pozivnica menadžeru. |
+| Menadžer uklonjen | `managing_entity.manager.removed` | Menadžer je uklonjen. |
+| Menadžer prihvaćen | `managing_entity.manager.accepted` | Pozivnica menadžeru je prihvaćena. |
+| Menadžer odbijen | `managing_entity.manager.rejected` | Pozivnica menadžeru je odbijena. |
+| Vlasnik postavljen | `managing_entity.manager.owner.set` | Vlasništvo entiteta je preneseno. |
+| Menadžeri ažurirani | `account.managers.update` | Popis menadžera je promijenjen. |
+
+### Informacije o entitetu
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Informacije ažurirane | `managing_entity.information.updated` | Informacije o entitetu su ažurirane. |
+| Adresa ažurirana | `managing_entity.city.updated` | Adresa/grad entiteta je promijenjen. |
+| Ime ažurirano | `managing_entity.name.updated` | Ime entiteta je promijenjeno. |
+| URL ime ažurirano | `managing_entity.url_name.updated` | Vanity URL entiteta je promijenjen. |
+| Jedinstveni ID ažuriran | `managing_entity.unique_id.updated` | Jedinstveni identifikator entiteta je promijenjen. |
+| Upravljano od ažurirano | `managing_entity.managed_by.updated` | Odnos roditelj/entitet koji upravlja je promijenjen. |
+| Place ID ažuriran | `managing_entity.place_id.updated` | Google Place ID entiteta je promijenjen. |
+| Predstavnik računa ažuriran | `managing_entity.account_representative.updated` | Predstavnik računa je promijenjen. |
+| Profilna slika ažurirana | `managing_entity.profile_picture.updated` | Profilna slika entiteta je ažurirana. |
+| Logo ažuriran | `managing_entity.logo.updated` | Logo entiteta je ažuriran. |
+| Detalji ažurirani | `account.details.updated` | Polja detalja računa su promijenjena. |
+| Agent ažuriran | `managing_entity.agent.updated` | Agent entiteta je izmijenjen. |
+
+### Obavijesti
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Email obavijest agentu | `managing_entity.agent.email.notification` | Poslana je email obavijest agentu. |
+| Email obavijest menadžeru | `managing_entity.manager.email.notification` | Poslana je email obavijest menadžeru. |
 
 ### Zadaci računa
 
@@ -48,76 +86,195 @@ Događaji vezani uz životni ciklus i postavke vašeg TripPay računa.
 | Zadatak dovršen | `account.task.complete` | Zadatak na računu je dovršen. |
 | Zadatak verifikacije poreznog ID-a dovršen | `account.task.tax_id.complete` | Zadatak verifikacije poreznog ID-a je dovršen. |
 
-### Primalac računa
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Primalac kreiran | `account.acquirer.created` | Novi primalac je dodan na račun. |
-| Primalac ažuriran | `account.acquirer.updated` | Primalac računa je izmijenjen. |
-| Primalac uklonjen | `account.acquirer.removed` | Primalac je uklonjen s računa. |
-
 ---
 
-## Događaji primatelja uplate
+## Događaji rezervacija
 
-Događaji vezani uz upravljanje primateljima uplata.
+Događaji za životni ciklus rezervacije na Wink-u, od kreiranja do povrata i isplata.
 
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Primalac kreiran | `payee.create` | Novi primalac je uspješno kreiran. |
-| Neuspjeh kreiranja primatelja | `payee.create.failure` | Kreiranje primatelja nije uspjelo. |
-| Primalac ažuriran | `payee.update` | Primalac je ažuriran. |
-| Neuspjeh ažuriranja primatelja | `payee.update.failure` | Ažuriranje primatelja nije uspjelo. |
-
----
-
-## Događaji ugovora o rezervaciji
-
-Događaji koji prate životni ciklus ugovora o rezervaciji kroz TripPay.
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Zahtjev za inicijalizaciju | `booking.contract.initialize.request` | Zahtjev za inicijalizaciju ugovora o rezervaciji je poslan. |
-| Inicijalizacija dovršena | `booking.contract.initialize.complete` | Inicijalizacija ugovora o rezervaciji je dovršena. |
-| Ugovor kreiran | `booking.contract.created` | Novi ugovor o rezervaciji je kreiran. |
-| Obrada ugovora | `booking.contract.processing` | Plaćanje ugovora o rezervaciji se obrađuje. |
-| Neuspjeh ugovora | `booking.contract.failed` | Plaćanje ugovora o rezervaciji nije uspjelo. |
-| Ugovor otkazan | `booking.contract.cancelled` | Ugovor o rezervaciji je otkazan. |
-| Djelomični povrat | `booking.contract.refund.partial` | Izdana je djelomična povratna uplata na ugovor. |
-| Potpuni povrat | `booking.contract.refund.full` | Izdana je potpuna povratna uplata na ugovor. |
-| Zahtjev za povrat | `booking.contract.refund.request` | Podnesen je zahtjev za povrat. |
-| Pogreška povrata | `booking.contract.refund.error` | Došlo je do pogreške tijekom obrade povrata. |
-| Isplata kreirana | `booking.contract.payout.create` | Isplata je kreirana za ugovor. |
-| Isplata dovršena | `booking.contract.payout.complete` | Isplata je uspješno dovršena. |
-
----
-
-## Događaji plaćanja
-
-Interni događaji obrade plaćanja.
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Plaćanje uspješno | `internal.payment.succeeded` | Plaćanje je uspješno obrađeno. |
-| Obrada plaćanja | `internal.payment.processing` | Plaćanje se trenutno obrađuje. |
-| Neuspjeh plaćanja | `internal.payment.failed` | Obrada plaćanja nije uspjela. |
-
----
-
-## Događaji rezervacije
-
-Događaji vezani uz životni ciklus rezervacije na Wink-u.
+### Osnovna rezervacija
 
 | Događaj | Ključ | Opis |
 |---|---|---|
 | Rezervacija kreirana | `booking.create` | Nova rezervacija je kreirana. |
 | Rezervacija otkazana | `booking.cancelled` | Rezervacija je otkazana. |
+| Rezervacija nije uspjela | `booking.failed` | Pokušaj rezervacije nije uspio. |
+| Obrada rezervacije | `booking.processing` | Plaćanje rezervacije se obrađuje. |
+| Zahtjev za inicijalizaciju | `booking.initialize.request` | Zahtjev za inicijalizaciju rezervacije je poslan. |
+| Inicijalizacija dovršena | `booking.initialize.complete` | Inicijalizacija rezervacije je dovršena. |
+
+### Povrati
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Zahtjev za povrat | `booking.refund.request` | Zahtjev za povrat je poslan. |
+| Pogreška pri povratu | `booking.refund.error` | Došlo je do pogreške pri obradi povrata. |
+| Djelomični povrat | `booking.refund.partial` | Izdana je djelomična povratna uplata. |
+| Potpuni povrat | `booking.refund.full` | Izdana je potpuna povratna uplata. |
+
+### Isplate
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Isplata kreirana | `booking.payout.create` | Isplata za rezervaciju je kreirana. |
+| Isplata dovršena | `booking.payout.complete` | Isplata je uspješno dovršena. |
+| Sredstva dostupna | `booking.funds.available` | Sredstva rezervacije su dostupna za poravnanje. |
+| Sredstva evidentirana | `booking.funds.ledgered` | Sredstva rezervacije su evidentirana u knjigama. |
+
+### Recenzije
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Recenzija poslana | `booking.review.created` | Gost je poslao recenziju za rezervaciju. |
+| Odgovor na recenziju | `booking.review.responded` | Nekretnina je odgovorila na recenziju rezervacije. |
+
+---
+
+## Događaji nekretnina
+
+Događaji za profile i sadržaj nekretnina, poslani pretplatnicima webhooka te nekretnine.
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Nekretnina kreirana | `property.created` | Nova nekretnina je kreirana. |
+| Nekretnina ažurirana | `property.updated` | Detalji nekretnine su ažurirani. |
+| Nekretnina obrisana | `property.deleted` | Nekretnina je uklonjena. |
+| Nekretnina registrirana | `property.registered` | Nekretnina je završila registraciju. |
+| Status ažuriran | `property.status.updated` | Vanjski status nekretnine je promijenjen. |
+| Ime ažurirano | `property.name.updated` | Ime nekretnine je promijenjeno. |
+| Adresa ažurirana | `property.address.updated` | Adresa nekretnine je ažurirana. |
+| Geolokacija ažurirana | `property.geolocation.updated` | Geolokacija nekretnine je ažurirana. |
+| Profil ažuriran | `property.profile.updated` | Sadržaj profila nekretnine je promijenjen. |
+| Usluge ažurirane | `property.services.updated` | Popis usluga/ameniteta nekretnine je promijenjen. |
+| Dobrodošlica ažurirana | `property.welcome_text.updated` | Poruka dobrodošlice nekretnine je promijenjena. |
+| Pravila kreirana | `property.policy.created` | Nova pravila nekretnine su kreirana. |
+| Pravila ažurirana | `property.policy.updated` | Pravila nekretnine su ažurirana. |
+
+---
+
+## Događaji inventara
+
+Događaji za stavke inventara unutar nekretnine, poslani pretplatnicima webhooka te nekretnine.
+
+### Vrste soba
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Vrsta sobe kreirana | `room_type.created` | Dodana je nova vrsta sobe. |
+| Vrsta sobe ažurirana | `room_type.updated` | Vrsta sobe je izmijenjena. |
+| Vrsta sobe obrisana | `room_type.deleted` | Vrsta sobe je uklonjena. |
+
+### Planovi cijena
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Plan cijena kreiran | `rate_plan.created` | Novi plan cijena je kreiran. |
+| Plan cijena ažuriran | `rate_plan.updated` | Plan cijena je izmijenjen. |
+| Plan cijena obrisan | `rate_plan.deleted` | Plan cijena je uklonjen. |
+
+### Glavne cijene
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Glavna cijena kreirana | `master_rate.created` | Nova glavna cijena je kreirana. |
+| Glavna cijena ažurirana | `master_rate.updated` | Glavna cijena je izmijenjena. |
+| Glavna cijena obrisana | `master_rate.deleted` | Glavna cijena je uklonjena. |
+
+### Dodaci
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Dodatak kreiran | `add_on.created` | Novi dodatak je kreiran. |
+| Dodatak ažuriran | `add_on.updated` | Dodatak je izmijenjen. |
+| Dodatak obrisan | `add_on.deleted` | Dodatak je uklonjen. |
+
+### Sobe za sastanke
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Soba za sastanke kreirana | `meeting_room.created` | Dodana je nova soba za sastanke. |
+| Soba za sastanke ažurirana | `meeting_room.updated` | Soba za sastanke je izmijenjena. |
+| Soba za sastanke obrisana | `meeting_room.deleted` | Soba za sastanke je uklonjena. |
+
+### Restorani
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Restoran kreiran | `restaurant.created` | Dodan je novi restoran. |
+| Restoran ažuriran | `restaurant.updated` | Restoran je izmijenjen. |
+| Restoran obrisan | `restaurant.deleted` | Restoran je uklonjen. |
+
+### Spa centri
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Spa kreiran | `spa.created` | Dodan je novi spa centar. |
+| Spa ažuriran | `spa.updated` | Spa centar je izmijenjen. |
+| Spa obrisan | `spa.deleted` | Spa centar je uklonjen. |
+
+### Aktivnosti
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Aktivnost kreirana | `activity.created` | Dodana je nova aktivnost. |
+| Aktivnost ažurirana | `activity.updated` | Aktivnost je izmijenjena. |
+| Aktivnost obrisana | `activity.deleted` | Aktivnost je uklonjena. |
+
+---
+
+## Događaji prodajnih kanala
+
+Događaji za distribucijske kanale koji povezuju dobavljače i partnere. Poslani su pretplatnicima webhooka i dobavljača i partnera.
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Prodajni kanal kreiran | `sales_channel.created` | Novi prodajni kanal je kreiran. |
+| Prodajni kanal ažuriran | `sales_channel.updated` | Prodajni kanal je izmijenjen. |
+| Prodajni kanal obrisan | `sales_channel.deleted` | Prodajni kanal je uklonjen. |
+
+---
+
+## Događaji posebnih cijena
+
+Događaji za promotivne i dogovorene cijene na nekretnini.
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Posebna cijena kreirana | `special_rate.created` | Nova posebna cijena je kreirana. |
+| Posebna cijena ažurirana | `special_rate.updated` | Posebna cijena je izmijenjena. |
+| Posebna cijena obrisana | `special_rate.deleted` | Posebna cijena je uklonjena. |
+| Modifikator cijene ažuriran | `rate_modifier.updated` | Modifikator cijene je ažuriran. |
+
+---
+
+## Događaji primatelja isplate
+
+Događaji vezani uz upravljanje primateljima isplate.
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Primatelj isplate kreiran | `payee.create` | Novi primatelj isplate je uspješno kreiran. |
+| Neuspjeh kreiranja primatelja | `payee.create.failure` | Kreiranje primatelja isplate nije uspjelo. |
+| Primatelj isplate ažuriran | `payee.update` | Primatelj isplate je ažuriran. |
+| Neuspjeh ažuriranja primatelja | `payee.update.failure` | Ažuriranje primatelja isplate nije uspjelo. |
+
+---
+
+## Događaji plaćanja
+
+Interni događaji obrade plaćanja iz TripPay-a.
+
+| Događaj | Ključ | Opis |
+|---|---|---|
+| Plaćanje uspješno | `internal.payment.succeeded` | Plaćanje je uspješno obrađeno. |
+| Obrada plaćanja | `internal.payment.processing` | Plaćanje se trenutno obrađuje. |
+| Plaćanje nije uspjelo | `internal.payment.failed` | Obrada plaćanja nije uspjela. |
 
 ---
 
 ## Događaji channel managera
 
-Događaji vezani uz ažuriranja cijena i dostupnosti channel managera.
+Događaji vezani uz push ažuriranja cijena i dostupnosti channel managera.
 
 | Događaj | Ključ | Opis |
 |---|---|---|
@@ -127,61 +284,21 @@ Događaji vezani uz ažuriranja cijena i dostupnosti channel managera.
 
 ---
 
-## Događaji glavne knjige
+## Događaji knjigovodstva
 
-Događaji vezani uz financijske unose u glavnu knjigu.
+Događaji vezani uz financijske unose u knjigovodstvu.
 
 | Događaj | Ključ | Opis |
 |---|---|---|
-| Unos u glavnu knjigu kreiran | `ledger.entry.create` | Novi unos u glavnu knjigu je zabilježen. |
+| Unos u knjigovodstvo kreiran | `ledger.entry.create` | Novi unos u knjigovodstvo je evidentiran. |
 
 ---
 
-## Događaji upravljačkog subjekta
-
-Događaji za upravljačke subjekte (objekte, partnere, tvrtke) i njihovu administraciju.
-
-### Pretplata
+## Događaji e-pošte
 
 | Događaj | Ključ | Opis |
 |---|---|---|
-| Pretplata osigurana | `managing_entity.subscription.provisioned` | Nova pretplata je osigurana. |
-| Pretplata promijenjena | `managing_entity.subscription.changed` | Plan pretplate je promijenjen. |
-| Račun pretplate promijenjen | `managing_entity.subscription.invoice.changed` | Račun pretplate je ažuriran. |
-
-### Status i administracija
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Status ažuriran | `managing_entity.status.updated` | Status subjekta je promijenjen. |
-| Subjekt izbrisan | `managing_entity.deleted` | Upravljački subjekt je izbrisan. |
-| Agent ažuriran | `managing_entity.agent.updated` | Agent subjekta je izmijenjen. |
-| Email obavijest agentu | `managing_entity.agent.email.notification` | Poslana je email obavijest agentu. |
-| Email obavijest upravitelju | `managing_entity.manager.email.notification` | Poslana je email obavijest upravitelju. |
-
-### Životni ciklus upravitelja
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Upravitelj dodan | `managing_entity.manager.added` | Novi upravitelj je dodan. |
-| Upravitelj pozvan | `managing_entity.manager.invited` | Poslana je pozivnica upravitelju. |
-| Upravitelj uklonjen | `managing_entity.manager.removed` | Upravitelj je uklonjen. |
-| Upravitelj prihvaćen | `managing_entity.manager.accepted` | Pozivnica upravitelju je prihvaćena. |
-| Upravitelj odbijen | `managing_entity.manager.rejected` | Pozivnica upravitelju je odbijena. |
-| Vlasnik postavljen | `managing_entity.manager.owner.set` | Vlasništvo subjekta je preneseno. |
-
-### Informacije o subjektu
-
-| Događaj | Ključ | Opis |
-|---|---|---|
-| Informacije ažurirane | `managing_entity.information.updated` | Informacije o subjektu su ažurirane. |
-| Adresa ažurirana | `managing_entity.city.updated` | Adresa/grad subjekta je promijenjen. |
-| Predstavnik računa ažuriran | `managing_entity.account_representative.updated` | Predstavnik računa je promijenjen. |
-| Profilna slika ažurirana | `managing_entity.profile_picture.updated` | Profilna slika subjekta je ažurirana. |
-| Logo ažuriran | `managing_entity.logo.updated` | Logo subjekta je ažuriran. |
-| URL ime ažurirano | `managing_entity.url_name.updated` | Vanity URL subjekta je promijenjen. |
-| Jedinstveni ID ažuriran | `managing_entity.unique_id.updated` | Jedinstveni identifikator subjekta je promijenjen. |
-| Ime ažurirano | `managing_entity.name.updated` | Ime subjekta je promijenjeno. |
+| Email korespondencija | `email.correspondence` | Poslan je odlazni email. |
 
 ---
 
@@ -189,15 +306,18 @@ Događaji za upravljačke subjekte (objekte, partnere, tvrtke) i njihovu adminis
 
 | Kategorija | Broj |
 |---|---|
-| Događaji računa | 20 |
-| Događaji primatelja uplate | 4 |
-| Događaji ugovora o rezervaciji | 12 |
+| Događaji upravljanja entitetima | 33 |
+| Događaji rezervacija | 16 |
+| Događaji nekretnina | 13 |
+| Događaji inventara (vrste soba, planovi cijena, glavne cijene, dodaci, sadržaji) | 24 |
+| Događaji prodajnih kanala | 3 |
+| Događaji posebnih cijena | 4 |
+| Događaji primatelja isplate | 4 |
 | Događaji plaćanja | 3 |
-| Događaji rezervacije | 2 |
 | Događaji channel managera | 3 |
-| Događaji glavne knjige | 1 |
-| Događaji upravljačkog subjekta | 19 |
-| **Ukupno** | **64** |
+| Događaji knjigovodstva | 1 |
+| Događaji e-pošte | 1 |
+| **Ukupno** | **105** |
 
 :::tip
 Počnite s pretplatom na sve događaje tijekom razvoja. Kad shvatite koje podatke vaš sustav treba, suzite pretplate kako biste smanjili šum.
@@ -205,7 +325,7 @@ Počnite s pretplatom na sve događaje tijekom razvoja. Kad shvatite koje podatk
 
 ## Daljnje čitanje
 
-- [Webhook Integration Guide](/hr/guides/developers/webhook-integration) — Koraci postavljanja i najbolje prakse.
-- [Webhooks](/hr/portal/settings/webhooks) — Upravljajte svojim webhook pretplatama.
+- [Vodič za integraciju webhooka](/hr/guides/developers/webhook-integration) — Koraci postavljanja i najbolje prakse.
+- [Webhookovi](/hr/portal/settings/webhooks) — Upravljajte svojim pretplatama na webhookove.
 - [Applications](/hr/portal/settings/applications) — Upravljajte API vjerodajnicama.
 - [Build on Wink](/hr/developers/build-on-wink) — Pregled platforme za developere.

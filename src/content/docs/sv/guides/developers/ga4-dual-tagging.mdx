@@ -7,22 +7,23 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Genom att koppla din Google Analytics 4-egendom till Wink skickas dina bokningsevenemang — från rumsvisningar till slutförda köp — automatiskt vidare till din egen GA4-instrumentpanel tillsammans med Winks egna analyser. Ingen kod, ingen teknisk installation från din sida.
+Genom att koppla din Google Analytics 4-egendom till Wink skickas dina bokningsevent — från rumsvisningar till slutförda bokningar — automatiskt vidare till din egen GA4-instrumentpanel tillsammans med Winks egna analyser. Ingen kod, ingen teknisk installation från din sida.
 
 <Aside type="tip">
-Allt du behöver är ett GA4 Measurement ID. När det är inmatat i Wink-portalen är din analys aktiv omedelbart.
+Du behöver två saker från GA4: ett **Measurement ID** och en **Measurement Protocol API-hemlighet**. Measurement ID driver surftratten i gästens webbläsare; API-hemligheten låter Wink registrera slutförda bokningar (`purchase`) **server-side**, så att en försäljning aldrig går förlorad när gästen omdirigeras till och från betalningsleverantören.
 </Aside>
 
 ---
 
-## Så fungerar det
+## Så här fungerar det
 
 ```
-Du anger din G-XXXXXXXXXX i Wink-portalen
+Du anger ditt Measurement ID (G-XXXXXXXXXX) och API-hemlighet i Wink-portalen
        ↓
-Wink vidarebefordrar dina bokningsevenemang till din GA4-egendom
+Surfevent (visningar, kundvagn, kassa) strömmas till din GA4-egendom från webbläsaren
+Slutförda bokningar (purchase) skickas server-side — överlever betalningsomdirigeringen
        ↓
-Du loggar in på analytics.google.com och ser dina bokningar
+Du loggar in på analytics.google.com och ser din fullständiga bokningstratt
 ```
 
 ---
@@ -39,33 +40,45 @@ Du loggar in på analytics.google.com och ser dina bokningar
 
    Admin → Data Streams → Lägg till stream → Webb. Ange `wink.travel` som URL. Detta genererar ditt **Measurement ID** (`G-XXXXXXXXXX`). Kopiera det.
 
-3. **Ange ditt Measurement ID i Wink-portalen**
+3. **Skapa en Measurement Protocol API-hemlighet**
 
-   Logga in på [app.wink.travel](https://app.wink.travel), välj ditt konto och gå till fliken **Anpassningar**. Klistra in ditt Measurement ID där och spara. Det är allt — din GA4-integration är nu aktiv.
+   Öppna samma webbdatastream → scrolla till **Measurement Protocol API secrets** → **Skapa**. Ge den ett smeknamn (t.ex. "Wink") och kopiera det genererade **hemliga värdet**. Denna hemlighet gör det möjligt för Wink att registrera slutförda bokningar server-side, så att en försäljning aldrig går förlorad under betalningsomdirigeringen.
 
-4. **Markera `purchase` som ett nyckelevenemang**
+4. **Ange ditt Measurement ID och API-hemlighet i Wink-portalen**
 
-   Tillbaka i din GA4-egendom: Admin → Evenemang → hitta `purchase` → slå på **Markera som nyckelevenemang**. Detta gör att slutförda bokningar visas i din konverteringsrapport.
+   Logga in på [app.wink.travel](https://app.wink.travel), välj ditt konto och gå till fliken **Anpassningar**. Klistra in ditt Measurement ID och API-hemlighet i **GA4**-fälten och spara. Det är allt — din GA4-integration är nu aktiv.
 
-5. **Visa dina data**
+   <Aside type="note">
+   API-hemligheten är **skrivskyddad**: när den väl sparats visas den aldrig igen. Vid framtida redigeringar, lämna hemlighetsfältet tomt för att behålla det värde du redan sparat.
+   </Aside>
+
+5. **Markera `purchase` som ett nyckelevent**
+
+   Tillbaka i din GA4-egendom: Admin → Events → hitta `purchase` → slå på **Markera som nyckelevent**. Detta gör att slutförda bokningar visas i din konverteringsrapport.
+
+6. **Visa dina data**
 
    Logga in på [analytics.google.com](https://analytics.google.com) så ser du dina bokningar, intäkter och gästtratt — allt spåras automatiskt via Wink.
 
 </Steps>
 
 <Aside type="note">
-Du behöver inte installera någon spårningskod på din egen webbplats för denna integration. Wink hanterar allt. Ditt Measurement ID är helt enkelt destinationen dit dina bokningsdata skickas.
+Du behöver inte installera någon spårningskod på din egen webbplats för denna integration. Wink hanterar allt. Ditt Measurement ID är destinationen dit dina bokningsdata skickas, och din API-hemlighet låter Wink bekräfta slutförda bokningar server-side.
+</Aside>
+
+<Aside type="tip">
+**GA4 och GTM kan användas tillsammans.** Om du även kör en Google Tag Manager-container (till exempel en Sojern-container) kan du konfigurera båda samtidigt — de är inte längre ömsesidigt uteslutande. Se [GTM Analytics Integration](/sv/guides/developers/gtm-dual-tagging).
 </Aside>
 
 ---
 
 ## Vad du kan spåra
 
-När kopplingen är gjord tar din GA4-egendom emot hela paketet av Enhanced E-commerce-evenemang för din egendom:
+När du är ansluten tar din GA4-egendom emot hela sviten av Enhanced E-commerce-event för din egendom:
 
 ### Upptäckt
 
-| Evenemang | Vad det betyder |
+| Event | Vad det betyder |
 |---|---|
 | `view_item_list` | En gäst såg din egendom i en sökning eller kategorilista |
 | `select_item` | En gäst klickade på din egendom från en lista |
@@ -73,7 +86,7 @@ När kopplingen är gjord tar din GA4-egendom emot hela paketet av Enhanced E-co
 
 ### Övervägande
 
-| Evenemang | Vad det betyder |
+| Event | Vad det betyder |
 |---|---|
 | `view_promotion` | En gäst såg ett kampanjerbjudande för din egendom |
 | `select_promotion` | En gäst klickade på ett kampanjerbjudande |
@@ -81,24 +94,24 @@ När kopplingen är gjord tar din GA4-egendom emot hela paketet av Enhanced E-co
 
 ### Bokningstratt
 
-| Evenemang | Vad det betyder |
+| Event | Vad det betyder |
 |---|---|
 | `add_to_cart` | En gäst valde ett rum eller paket |
 | `view_cart` | En gäst visade sin bokningsöversikt |
 | `remove_from_cart` | En gäst tog bort ett rum eller paket |
-| `begin_checkout` | En gäst påbörjade utcheckningsprocessen |
+| `begin_checkout` | En gäst påbörjade kassaprocessen |
 | `add_payment_info` | En gäst angav sina betalningsuppgifter |
 | `add_shipping_info` | En gäst angav sina gästuppgifter |
 | `purchase` | En gäst slutförde en bokning |
 | `refund` | En bokning avbokades och återbetalades |
 
-Alla evenemang inkluderar relevanta dimensioner som intäkter, valuta, rumstyp och bokningsvärde — vilket ger dig en fullständig bild av gästresan från första intryck till slutförd bokning. För att låsa upp ytterligare egendoms- och rumsspecifika dimensioner som `city_name`, `cancellation_policy`, `bed_type` med mera, se [Custom Dimensions in GA4](/sv/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
+Alla event inkluderar relevanta dimensioner som intäkter, valuta, rumstyp och bokningsvärde — vilket ger dig en fullständig bild av gästresan från första intryck till slutförd bokning. För att låsa upp ytterligare egendoms- och rumsspecifika dimensioner som `city_name`, `cancellation_policy`, `bed_type` med mera, se [Custom Dimensions in GA4](/sv/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
 
 ---
 
 ## Cross-Domain Tracking (Avancerat)
 
-Standardintegration ovan spårar allt som händer inom Wink. Men om du vill spåra gäster hela vägen från din egen webbplats till slutförd bokning på Wink — och korrekt tillskriva den ursprungliga trafik-källan (Google Ads, e-postkampanjer, organisk sökning etc.) — krävs ett extra steg på varje sida.
+Standardintegration ovan spårar allt som händer inom Wink. Men om du vill spåra gäster hela vägen från din egen webbplats till bokningsslutförande på Wink — och korrekt tillskriva den ursprungliga trafik-källan (Google Ads, e-postkampanjer, organisk sökning etc.) — krävs ett extra steg på varje sida.
 
 <Aside type="caution">
 Denna sektion gäller endast om du har GA4 installerat på din egen webbplats. Om du inte kör GA4 på din sida räcker standardintegration ovan.
@@ -117,7 +130,7 @@ din webbplats (gästen bläddrar bland rum)
        ↓
 wink.travel (gästen väljer rum och bokar)
        ↓
-köpet tillskrivs korrekt det ursprungliga Google Ads-klicket
+purchase tillskrivs korrekt till det ursprungliga Google Ads-klicket
 ```
 
 ### Åtgärd krävs: Du

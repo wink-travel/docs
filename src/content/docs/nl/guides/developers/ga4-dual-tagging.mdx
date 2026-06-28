@@ -7,10 +7,10 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Door uw Google Analytics 4-property te koppelen aan Wink, worden uw boekingsevenementen — van kameroverzichten tot voltooide aankopen — automatisch doorgestuurd naar uw eigen GA4-dashboard naast de eigen analytics van Wink. Geen code, geen technische setup aan uw kant.
+Door uw Google Analytics 4-property te koppelen aan Wink, worden uw boekingsevenementen — van kameroverzichten tot voltooide boekingen — automatisch doorgestuurd naar uw eigen GA4-dashboard naast de eigen analytics van Wink. Geen code, geen technische setup aan uw kant.
 
 <Aside type="tip">
-Het enige wat u nodig heeft is een GA4 Measurement ID. Zodra u deze invoert in het Wink-portaal, zijn uw analytics direct live.
+U heeft twee dingen nodig van GA4: een **Measurement ID** en een **Measurement Protocol API secret**. De Measurement ID stuurt de browsefunnel aan in de browser van de gast; de API secret stelt Wink in staat om voltooide boekingen (`purchase`) **server-side** te registreren, zodat een verkoop nooit verloren gaat wanneer de gast wordt doorgestuurd naar en terugkomt van de betalingsprovider.
 </Aside>
 
 ---
@@ -18,11 +18,12 @@ Het enige wat u nodig heeft is een GA4 Measurement ID. Zodra u deze invoert in h
 ## Hoe Het Werkt
 
 ```
-U voert uw G-XXXXXXXXXX in het Wink-portaal in
+U voert uw Measurement ID (G-XXXXXXXXXX) en API secret in het Wink-portaal in
        ↓
-Wink stuurt uw boekingsevenementen door naar uw GA4-property
+Browse-evenementen (weergaven, winkelwagen, afrekenen) worden vanuit de browser naar uw GA4-property gestreamd
+Voltooide boekingen (purchase) worden server-side verzonden — overleeft de betalingsredirect
        ↓
-U logt in op analytics.google.com en ziet uw boekingen
+U logt in op analytics.google.com en ziet uw volledige boekingsfunnel
 ```
 
 ---
@@ -39,22 +40,34 @@ U logt in op analytics.google.com en ziet uw boekingen
 
    Admin → Data Streams → Stream toevoegen → Web. Voer `wink.travel` in als URL. Dit genereert uw **Measurement ID** (`G-XXXXXXXXXX`). Kopieer deze.
 
-3. **Voer uw Measurement ID in het Wink-portaal in**
+3. **Maak een Measurement Protocol API Secret aan**
 
-   Log in op [app.wink.travel](https://app.wink.travel), selecteer uw account en ga naar het tabblad **Aanpassingen**. Plak hier uw Measurement ID en sla op. Dat is alles — uw GA4-integratie is nu actief.
+   Open dezelfde Web Data Stream → scroll naar **Measurement Protocol API secrets** → **Maken**. Geef het een bijnaam (bijv. "Wink") en kopieer de gegenereerde **secret value**. Deze secret stelt Wink in staat om voltooide boekingen server-side te registreren, zodat een verkoop nooit verloren gaat tijdens de betalingsredirect.
 
-4. **Markeer `purchase` als een Sleutelmoment**
+4. **Voer uw Measurement ID en API Secret in het Wink-portaal in**
 
-   Ga terug naar uw GA4-property: Admin → Evenementen → zoek `purchase` → schakel **Markeren als sleutelmoment** in. Hierdoor verschijnen voltooide boekingen in uw Conversierapport.
+   Log in op [app.wink.travel](https://app.wink.travel), selecteer uw account en ga naar het tabblad **Customizations**. Plak uw Measurement ID en API secret in de **GA4**-velden en sla op. Dat is alles — uw GA4-integratie is nu actief.
 
-5. **Bekijk uw gegevens**
+   <Aside type="note">
+   De API secret is **alleen schrijfbaar**: eenmaal opgeslagen wordt deze nooit meer getoond. Laat het secret-veld leeg bij toekomstige bewerkingen om de reeds opgeslagen waarde te behouden.
+   </Aside>
+
+5. **Markeer `purchase` als een Sleutelfeature**
+
+   Ga terug naar uw GA4-property: Admin → Events → zoek `purchase` → schakel **Markeren als sleutelfeature** in. Hierdoor verschijnen voltooide boekingen in uw Conversierapport.
+
+6. **Bekijk uw gegevens**
 
    Log in op [analytics.google.com](https://analytics.google.com) en u ziet uw boekingen, omzet en gastfunnel — allemaal automatisch gevolgd via Wink.
 
 </Steps>
 
 <Aside type="note">
-U hoeft geen trackingcode op uw eigen website te installeren voor deze integratie. Wink regelt alles. Uw Measurement ID is simpelweg de bestemming waar uw boekingsgegevens naartoe worden gestuurd.
+U hoeft geen trackingcode op uw eigen website te installeren voor deze integratie. Wink regelt alles. Uw Measurement ID is de bestemming waar uw boekingsgegevens naartoe worden gestuurd, en uw API secret stelt Wink in staat voltooide boekingen server-side te bevestigen.
+</Aside>
+
+<Aside type="tip">
+**GA4 en GTM kunnen samen worden gebruikt.** Als u ook een Google Tag Manager-container gebruikt (bijvoorbeeld een Sojern-container), kunt u beide tegelijk configureren — ze sluiten elkaar niet meer uit. Zie [GTM Analytics-integratie](/nl/guides/developers/gtm-dual-tagging).
 </Aside>
 
 ---
@@ -65,7 +78,7 @@ Zodra verbonden, ontvangt uw GA4-property de volledige reeks Enhanced E-commerce
 
 ### Ontdekking
 
-| Evenement | Betekenis |
+| Event | Betekenis |
 |---|---|
 | `view_item_list` | Een gast zag uw accommodatie in een zoek- of categorielijst |
 | `select_item` | Een gast klikte op uw accommodatie vanuit een lijst |
@@ -73,7 +86,7 @@ Zodra verbonden, ontvangt uw GA4-property de volledige reeks Enhanced E-commerce
 
 ### Overweging
 
-| Evenement | Betekenis |
+| Event | Betekenis |
 |---|---|
 | `view_promotion` | Een gast zag een promotionele aanbieding voor uw accommodatie |
 | `select_promotion` | Een gast klikte op een promotionele aanbieding |
@@ -81,7 +94,7 @@ Zodra verbonden, ontvangt uw GA4-property de volledige reeks Enhanced E-commerce
 
 ### Boekingsfunnel
 
-| Evenement | Betekenis |
+| Event | Betekenis |
 |---|---|
 | `add_to_cart` | Een gast selecteerde een kamer of pakket |
 | `view_cart` | Een gast bekeek zijn boekingssamenvatting |
@@ -92,23 +105,23 @@ Zodra verbonden, ontvangt uw GA4-property de volledige reeks Enhanced E-commerce
 | `purchase` | Een gast voltooide een boeking |
 | `refund` | Een boeking werd geannuleerd en terugbetaald |
 
-Alle evenementen bevatten relevante dimensies zoals omzet, valuta, kamertype en boekingswaarde — waardoor u een volledig beeld krijgt van de gastreis van eerste indruk tot voltooide boeking. Voor extra accommodatie- en kamerniveau-dimensies zoals `city_name`, `cancellation_policy`, `bed_type` en meer, zie [Aangepaste dimensies in GA4](/nl/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
+Alle evenementen bevatten relevante dimensies zoals omzet, valuta, kamertype en boekingswaarde — waardoor u een volledig beeld krijgt van de gastreis van eerste indruk tot voltooide boeking. Om extra accommodatie- en kamerniveau-dimensies zoals `city_name`, `cancellation_policy`, `bed_type` en meer te ontgrendelen, zie [Aangepaste dimensies in GA4](/nl/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
 
 ---
 
 ## Cross-Domain Tracking (Geavanceerd)
 
-De standaardintegratie hierboven volgt alles wat binnen Wink gebeurt. Maar als u gasten wilt volgen vanaf uw eigen website tot aan de boekingsafhandeling op Wink — en de oorspronkelijke verkeersbron (Google Ads, e-mailcampagnes, organische zoekopdrachten, enz.) correct wilt toewijzen — is een extra stap aan beide zijden vereist.
+De standaardintegratie hierboven volgt alles wat binnen Wink gebeurt. Maar als u gasten wilt volgen vanaf uw eigen website tot aan de boekingsvoltooiing op Wink — en de oorspronkelijke verkeersbron (Google Ads, e-mailcampagnes, organische zoekopdrachten, enz.) correct wilt toewijzen — is een extra stap aan beide zijden vereist.
 
 <Aside type="caution">
-Deze sectie is alleen van toepassing als u GA4 op uw eigen website heeft geïnstalleerd. Als u GA4 niet op uw site gebruikt, is de standaardintegratie hierboven voldoende.
+Deze sectie is alleen van toepassing als u GA4 op uw eigen website hebt geïnstalleerd. Als u GA4 niet op uw site gebruikt, is de standaardintegratie hierboven voldoende.
 </Aside>
 
 ### Waarom Dit Belangrijk Is
 
-Zonder cross-domain tracking verschijnt een gast die eerst uw website bezoekt en daarna boekt op Wink in uw GA4 als een **Directe** sessie zonder verbinding met het eerdere bezoek. Eventuele Google Ads-klikken, e-mailcampagnes of organische zoekbezoeken die tot de boeking leidden, krijgen geen erkenning.
+Zonder cross-domain tracking verschijnt een gast die eerst uw website bezoekt en daarna boekt op Wink in uw GA4 als een **Directe** sessie zonder verbinding met het eerdere bezoek. Eventuele Google Ads-klikken, e-mailcampagnes of organische zoekbezoeken die tot de boeking leidden, krijgen geen krediet.
 
-Met cross-domain tracking ziet u de volledige gastreis:
+Met cross-domain tracking geconfigureerd ziet u de volledige gastreis:
 
 ```
 google.com (betaalde advertentie)
@@ -122,11 +135,11 @@ aankoop correct toegeschreven aan de oorspronkelijke Google Ads-klik
 
 ### Actie Vereist: U
 
-Configureer uw GA4-property om `wink.travel` te herkennen als onderdeel van uw eigen domein, niet als een externe verwijzing. Dit zorgt ervoor dat GA4 de twee sessies aan elkaar koppelt tot één doorlopende gastreis.
+Configureer uw GA4-property om `wink.travel` te herkennen als onderdeel van uw eigen domein, niet als een externe verwijzing. Dit vertelt GA4 om de twee sessies aan elkaar te koppelen tot één doorlopende gastreis.
 
 <Steps>
 1. GA4 Admin → Data Streams → uw stream
-2. Tag-instellingen configureren → **Configureer uw domeinen**
+2. Configureer taginstellingen → **Configureer uw domeinen**
 3. Voeg `wink.travel` toe als gekoppeld domein
 4. Opslaan
 </Steps>
@@ -136,5 +149,5 @@ Configureer uw GA4-property om `wink.travel` te herkennen als onderdeel van uw e
 Neem contact op met [Wink Support](https://app.wink.travel) en geef uw website-domein door (bijv. `yourhotel.com`). Wink voegt uw domein toe aan de lijst met verwijzingsuitsluitingen in de Wink GA4-property. Dit voorkomt dat uw website wordt geregistreerd als verwijzingsbron, wat anders de oorspronkelijke toewijzing van de gast zou overschrijven en een nieuwe sessie zou starten.
 
 <Aside type="tip">
-De standaardintegratie hierboven is voor de meeste accommodaties voldoende en geeft u direct inzicht in boekingen en omzet via Wink. Cross-domain tracking is een geavanceerde optie die de moeite waard is om in te stellen zodra u vertrouwd bent met uw GA4-gegevens en diepere toewijzingsinzichten wilt.
+De standaardintegratie hierboven is voor de meeste accommodaties voldoende en geeft u directe zichtbaarheid in boekingen en omzet op Wink. Cross-domain tracking is een geavanceerde optie die de moeite waard is om in te stellen zodra u vertrouwd bent met uw GA4-gegevens en diepere toewijzingsinzichten wilt.
 </Aside>

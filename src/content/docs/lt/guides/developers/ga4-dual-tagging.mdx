@@ -7,10 +7,10 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Prijungus savo Google Analytics 4 paskyrą prie Wink, jūsų užsakymų įvykiai — nuo kambarių peržiūrų iki užbaigtų pirkimų — automatiškai perduodami į jūsų GA4 informacijos suvestinę kartu su Wink analitika. Nereikia jokio kodo ar techninio nustatymo iš jūsų pusės.
+Prijungus savo Google Analytics 4 paskyrą prie Wink, jūsų užsakymų įvykiai — nuo kambarių peržiūrų iki užsakymų užbaigimo — automatiškai perduodami į jūsų GA4 informacijos suvestinę kartu su Wink analitika. Nereikia jokio kodo ar techninio nustatymo iš jūsų pusės.
 
 <Aside type="tip">
-Viskas, ko jums reikia, yra GA4 matavimo ID. Įvedus jį Wink portale, jūsų analizė iš karto pradeda veikti.
+Jums reikalingi du dalykai iš GA4: **Matuoklio ID** ir **Measurement Protocol API slaptasis raktas**. Matuoklio ID valdo naršymo piltuvėlį svečio naršyklėje; API slaptasis raktas leidžia Wink serverio pusėje įrašyti užbaigtus užsakymus (`purchase`), todėl pardavimas niekada neprarandamas, kai svečias nukreipiamas į mokėjimo tiekėją ir atgal.
 </Aside>
 
 ---
@@ -18,11 +18,12 @@ Viskas, ko jums reikia, yra GA4 matavimo ID. Įvedus jį Wink portale, jūsų an
 ## Kaip tai veikia
 
 ```
-Įvedate savo G-XXXXXXXXXX Wink portale
+Įvedate savo Matuoklio ID (G-XXXXXXXXXX) ir API slaptąjį raktą Wink portale
        ↓
-Wink perduoda jūsų užsakymų įvykius į jūsų GA4 paskyrą
+Naršymo įvykiai (peržiūros, krepšelis, atsiskaitymas) srautu siunčiami į jūsų GA4 paskyrą iš naršyklės
+Užbaigti užsakymai (purchase) siunčiami serverio pusėje — išlieka per mokėjimo nukreipimą
        ↓
-Prisijungiate prie analytics.google.com ir matote savo užsakymus
+Prisijungiate prie analytics.google.com ir matote visą savo užsakymų piltuvėlį
 ```
 
 ---
@@ -37,76 +38,88 @@ Prisijungiate prie analytics.google.com ir matote savo užsakymus
 
 2. **Sukurkite interneto duomenų srautą**
 
-   Administratorius → Duomenų srautai → Pridėti srautą → Internetas. Įveskite `wink.travel` kaip URL. Tai sugeneruos jūsų **matavimo ID** (`G-XXXXXXXXXX`). Nukopijuokite jį.
+   Administratorius → Duomenų srautai → Pridėti srautą → Internetas. Įveskite `wink.travel` kaip URL. Tai sugeneruos jūsų **Matuoklio ID** (`G-XXXXXXXXXX`). Nukopijuokite jį.
 
-3. **Įveskite savo matavimo ID Wink portale**
+3. **Sukurkite Measurement Protocol API slaptąjį raktą**
 
-   Prisijunkite prie [app.wink.travel](https://app.wink.travel), pasirinkite savo paskyrą ir eikite į skirtuką **Pritaikymai**. Įklijuokite savo matavimo ID ir išsaugokite. Viskas — jūsų GA4 integracija dabar aktyvi.
+   Atidarykite tą patį interneto duomenų srautą → slinkite iki **Measurement Protocol API slaptųjų raktų** → **Sukurti**. Pavadinkite jį (pvz., „Wink“) ir nukopijuokite sugeneruotą **slaptąją reikšmę**. Šis slaptasis raktas leidžia Wink serverio pusėje įrašyti užbaigtus užsakymus, todėl pardavimas neprarandamas per mokėjimo nukreipimą.
 
-4. **Pažymėkite `purchase` kaip pagrindinį įvykį**
+4. **Įveskite savo Matuoklio ID ir API slaptąjį raktą Wink portale**
 
-   Grįžkite į savo GA4 paskyrą: Administratorius → Įvykiai → raskite `purchase` → įjunkite **Pažymėti kaip pagrindinį įvykį**. Tai leis užbaigtus užsakymus matyti jūsų konversijų ataskaitoje.
+   Prisijunkite prie [app.wink.travel](https://app.wink.travel), pasirinkite savo paskyrą ir eikite į skirtuką **Pritaikymai**. Įklijuokite savo Matuoklio ID ir API slaptąjį raktą į **GA4** laukus ir išsaugokite. Viskas — jūsų GA4 integracija dabar aktyvi.
 
-5. **Peržiūrėkite savo duomenis**
+   <Aside type="note">
+   API slaptasis raktas yra **tik rašymui**: įrašius jis daugiau niekada nerodomas. Redaguojant palikite slaptąjį lauką tuščią, kad išlaikytumėte jau įrašytą reikšmę.
+   </Aside>
 
-   Prisijunkite prie [analytics.google.com](https://analytics.google.com) ir matysite savo užsakymus, pajamas bei svečių piltuvėlį — visa tai automatiškai sekama per Wink.
+5. **Pažymėkite `purchase` kaip pagrindinį įvykį**
+
+   Grįžkite į savo GA4 paskyrą: Administratorius → Įvykiai → raskite `purchase` → įjunkite **Pažymėti kaip pagrindinį įvykį**. Tai leis užbaigtus užsakymus matyti jūsų Konversijų ataskaitoje.
+
+6. **Peržiūrėkite savo duomenis**
+
+   Prisijunkite prie [analytics.google.com](https://analytics.google.com) ir matysite savo užsakymus, pajamas ir svečių piltuvėlį — visa tai automatiškai sekama per Wink.
 
 </Steps>
 
 <Aside type="note">
-Jums nereikia diegti jokio sekimo kodo savo svetainėje šiai integracijai. Viską tvarko Wink. Jūsų matavimo ID yra tiesiog vieta, kur siunčiami jūsų užsakymų duomenys.
+Jums nereikia diegti jokio sekimo kodo savo svetainėje šiai integracijai. Viską tvarko Wink. Jūsų Matuoklio ID yra paskirties vieta, kur siunčiami užsakymų duomenys, o API slaptasis raktas leidžia Wink patvirtinti užbaigtus užsakymus serverio pusėje.
+</Aside>
+
+<Aside type="tip">
+**GA4 ir GTM gali būti naudojami kartu.** Jei taip pat naudojate Google Tag Manager konteinerį (pvz., Sojern konteinerį), galite konfigūruoti abu vienu metu — jie nebėra tarpusavyje išskirtiniai. Žr. [GTM Analytics integracija](/lt/guides/developers/gtm-dual-tagging).
 </Aside>
 
 ---
 
 ## Ką galite sekti
 
-Prijungus, jūsų GA4 paskyra gauna visą Enhanced E-commerce įvykių rinkinį jūsų objektui:
+Prisijungus, jūsų GA4 paskyra gauna visą Enhanced E-commerce įvykių rinkinį jūsų objektui:
 
 ### Atranka
 
 | Įvykis | Reikšmė |
 |---|---|
-| `view_item_list` | Svečiui buvo parodytas jūsų objektas paieškoje arba kategorijų sąraše |
-| `select_item` | Svečiui paspaudus jūsų objektą sąraše |
-| `view_item` | Svečiui peržiūrint jūsų viešbučio detalės puslapį |
+| `view_item_list` | Svečias matė jūsų objektą paieškoje arba kategorijų sąraše |
+| `select_item` | Svečias paspaudė ant jūsų objekto sąraše |
+| `view_item` | Svečias peržiūrėjo jūsų viešbučio detalės puslapį |
 
 ### Apsvarstymas
 
 | Įvykis | Reikšmė |
 |---|---|
-| `view_promotion` | Svečiui buvo parodytas jūsų objekto reklaminis pasiūlymas |
-| `select_promotion` | Svečiui paspaudus reklaminį pasiūlymą |
-| `add_to_wishlist` | Svečiui įtraukus jūsų objektą į pageidavimų sąrašą |
+| `view_promotion` | Svečias matė jūsų objekto reklaminį pasiūlymą |
+| `select_promotion` | Svečias paspaudė ant reklaminio pasiūlymo |
+| `add_to_wishlist` | Svečias įtraukė jūsų objektą į pageidavimų sąrašą |
 
 ### Užsakymo piltuvėlis
 
 | Įvykis | Reikšmė |
 |---|---|
-| `add_to_cart` | Svečiui pasirinkus kambarį arba paketą |
-| `view_cart` | Svečiui peržiūrint užsakymo santrauką |
-| `remove_from_cart` | Svečiui pašalinus kambarį arba paketą |
-| `begin_checkout` | Svečiui pradėjus atsiskaitymo procesą |
-| `add_payment_info` | Svečiui įvedus mokėjimo duomenis |
-| `add_shipping_info` | Svečiui įvedus svečio duomenis |
-| `purchase` | Svečiui užbaigus užsakymą |
+| `add_to_cart` | Svečias pasirinko kambarį arba paketą |
+| `view_cart` | Svečias peržiūrėjo savo užsakymo santrauką |
+| `remove_from_cart` | Svečias pašalino kambarį arba paketą |
+| `begin_checkout` | Svečias pradėjo atsiskaitymo procesą |
+| `add_payment_info` | Svečias įvedė mokėjimo duomenis |
+| `add_shipping_info` | Svečias įvedė savo duomenis |
+| `purchase` | Svečias užbaigė užsakymą |
 | `refund` | Užsakymas buvo atšauktas ir grąžintas |
 
-Visi įvykiai apima svarbias dimensijas, tokias kaip pajamos, valiuta, kambario tipas ir užsakymo vertė — suteikiant jums pilną svečio kelionės vaizdą nuo pirmo įspūdžio iki užbaigto užsakymo. Norėdami atrakinti papildomas objekto ir kambario lygio dimensijas, tokias kaip `city_name`, `cancellation_policy`, `bed_type` ir kt., žr. [Individualios dimensijos GA4](/lt/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
+Visi įvykiai apima atitinkamus matmenis, tokius kaip pajamos, valiuta, kambario tipas ir užsakymo vertė — suteikdami pilną svečio kelionės vaizdą nuo pirmo įspūdžio iki užsakymo užbaigimo. Norėdami atrakinti papildomus objekto ir kambario lygmens matmenis, tokius kaip `city_name`, `cancellation_policy`, `bed_type` ir kt., žr. [Individualūs matmenys GA4](/lt/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
 
 ---
 
 ## Kryžminis domenų sekimas (pažengusiems)
 
-Aukščiau pateikta standartinė integracija seka viską, kas vyksta Wink viduje. Tačiau jei norite sekti svečius nuo savo svetainės iki užsakymo užbaigimo Wink — ir teisingai priskirti pradinį srauto šaltinį (Google Ads, el. pašto kampanijos, organinė paieška ir kt.) — kiekvienoje pusėje reikia atlikti papildomą veiksmą.
+Aukščiau pateikta standartinė integracija seka viską, kas vyksta Wink viduje. Tačiau jei norite sekti svečius nuo savo svetainės iki užsakymo užbaigimo Wink — ir teisingai priskirti pradinį srauto šaltinį (Google Ads, el. pašto kampanijos, organinė paieška ir kt.) — kiekvienoje pusėje reikia papildomo žingsnio.
 
 <Aside type="caution">
-Ši dalis taikoma tik jei jūsų svetainėje įdiegta GA4. Jei GA4 savo svetainėje nenaudojate, aukščiau pateikta standartinė integracija yra viskas, ko jums reikia.
+Ši dalis taikoma tik jei jūsų svetainėje įdiegta GA4. Jei nenaudojate GA4 savo svetainėje, aukščiau pateikta standartinė integracija yra viskas, ko jums reikia.
 </Aside>
 
 ### Kodėl tai svarbu
 
-Be kryžminio domenų sekimo, svečias, kuris pirmiausia apsilanko jūsų svetainėje, o vėliau užsako Wink, GA4 bus užfiksuotas kaip **Tiesioginis** seansas be ryšio su ankstesniu apsilankymu. Joks Google Ads paspaudimas, el. pašto kampanija ar organinės paieškos apsilankymas, kuris lėmė užsakymą, nebus priskirtas.
+Be kryžminio domenų sekimo, svečias, kuris pirmiausia apsilanko jūsų svetainėje, o paskui užsako Wink, GA4 bus užfiksuotas kaip **Tiesioginis** seansas be ryšio su ankstesniu apsilankymu. Joks Google Ads paspaudimas, el. pašto kampanija ar organinės paieškos apsilankymas, vedęs prie užsakymo, nebus priskirtas.
 
 Su kryžminiu domenų sekimu matote visą svečio kelionę:
 
@@ -120,9 +133,9 @@ wink.travel (svečias pasirenka kambarį ir užsako)
 pirkimas teisingai priskiriamas pradiniam Google Ads paspaudimui
 ```
 
-### Veiksmas, kurį turite atlikti jūs
+### Veiksmas jums
 
-Sukonfigūruokite savo GA4 paskyrą, kad `wink.travel` būtų pripažintas kaip jūsų domeno dalis, o ne kaip išorinis nukreipimas. Tai leidžia GA4 sujungti du seansus į vieną nuoseklią svečio kelionę.
+Konfigūruokite savo GA4 paskyrą, kad `wink.travel` būtų pripažintas kaip jūsų domeno dalis, o ne kaip išorinis nukreipimas. Tai leidžia GA4 sujungti du seansus į vieną tęstinę svečio kelionę.
 
 <Steps>
 1. GA4 Administratorius → Duomenų srautai → jūsų srautas
@@ -131,10 +144,10 @@ Sukonfigūruokite savo GA4 paskyrą, kad `wink.travel` būtų pripažintas kaip 
 4. Išsaugoti
 </Steps>
 
-### Veiksmas, kurį atlieka Wink
+### Veiksmas Wink
 
-Susisiekite su [Wink palaikymu](https://app.wink.travel) ir pateikite savo svetainės domeną (pvz., `yourhotel.com`). Wink pridės jūsų domeną į nukreipimų išimtį Wink GA4 paskyroje. Tai užkirs kelią jūsų svetainei būti užfiksuotai kaip nukreipimo šaltiniui, kuris kitaip perrašytų svečio pradinę priskirtį ir pradėtų naują seansą.
+Susisiekite su [Wink palaikymu](https://app.wink.travel) ir pateikite savo svetainės domeną (pvz., `yourhotel.com`). Wink pridės jūsų domeną prie nukreipimų išimčių sąrašo Wink GA4 paskyroje. Tai užkirs kelią jūsų svetainės užfiksavimui kaip nukreipimo šaltiniui, kuris kitaip perrašytų svečio pradinę priskirtį ir pradėtų naują seansą.
 
 <Aside type="tip">
-Aukščiau pateikta standartinė integracija yra pakankama daugumai objektų ir suteikia jums tiesioginį matomumą į užsakymus ir pajamas Wink. Kryžminis domenų sekimas yra pažangi parinktis, kurią verta įdiegti, kai jau gerai suprantate savo GA4 duomenis ir norite gilesnės priskyrimo analizės.
+Aukščiau pateikta standartinė integracija yra pakankama daugumai objektų ir suteikia jums tiesioginį matomumą į užsakymus ir pajamas Wink. Kryžminis domenų sekimas yra pažangi parinktis, kurią verta nustatyti, kai jau gerai pažįstate savo GA4 duomenis ir norite gilesnės priskyrimo analizės.
 </Aside>

@@ -19,42 +19,231 @@ Untuk langkah pengaturan lengkap dan praktik terbaik, lihat [Integrasi Webhook](
 
 ---
 
-## Event akun
+## Mengelola event entitas
 
-Event yang terkait dengan siklus hidup dan pengaturan akun TripPay Anda.
+Event untuk mengelola entitas (properti, afiliasi, perusahaan) dan administrasinya.
+
+### Siklus hidup
 
 | Event | Key | Deskripsi |
 |---|---|---|
-| Akun dibuat | `account.create` | Akun baru telah dibuat. |
-| Akun dalam peninjauan | `account.under_review` | Akun sedang menunggu peninjauan. |
-| Akun diperbarui | `account.updated` | Detail akun telah berubah. |
-| Status akun diperbarui | `account.status.updated` | Status akun telah berubah (misalnya, disetujui, ditangguhkan). |
-| Alamat akun diperbarui | `account.address.updated` | Alamat akun telah diubah. |
-| Detail akun diperbarui | `account.details.updated` | Kolom detail akun telah berubah. |
-| Informasi akun diperbarui | `account.information.update` | Informasi umum akun telah diperbarui. |
-| Manajer akun diperbarui | `account.managers.update` | Daftar manajer akun telah berubah. |
-| Foto profil diperbarui | `account.profile_picture.updated` | Foto profil akun telah diubah. |
-| Agen diperbarui | `account.agent.updated` | Informasi agen pada akun telah diubah. |
-| Nama URL diperbarui | `account.url-name.update` | URL khusus akun telah berubah. |
-| ID unik diperbarui | `account.unique-id.update` | Identifier unik akun telah diubah. |
+| Entitas dibuat | `managing_entity.created` | Entitas pengelola baru telah dibuat. |
+| Entitas dihapus | `managing_entity.deleted` | Entitas pengelola telah dihapus. |
+| Status diperbarui | `managing_entity.status.updated` | Status entitas telah berubah. |
+| Dalam peninjauan | `account.under_review` | Akun entitas sedang dalam peninjauan. |
+
+### Langganan
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Langganan disediakan | `managing_entity.subscription.provisioned` | Langganan baru telah disediakan. |
+| Langganan diubah | `managing_entity.subscription.changed` | Paket langganan telah diubah. |
+| Faktur langganan diubah | `managing_entity.subscription.invoice.changed` | Faktur langganan telah diperbarui. |
+
+### Siklus hidup manajer
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Manajer ditambahkan | `managing_entity.manager.added` | Manajer baru telah ditambahkan. |
+| Manajer diundang | `managing_entity.manager.invited` | Undangan manajer telah dikirim. |
+| Manajer dihapus | `managing_entity.manager.removed` | Manajer telah dihapus. |
+| Manajer menerima | `managing_entity.manager.accepted` | Undangan manajer telah diterima. |
+| Manajer menolak | `managing_entity.manager.rejected` | Undangan manajer telah ditolak. |
+| Pemilik ditetapkan | `managing_entity.manager.owner.set` | Kepemilikan entitas telah dipindahkan. |
+| Manajer diperbarui | `account.managers.update` | Daftar manajer telah berubah. |
+
+### Informasi entitas
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Informasi diperbarui | `managing_entity.information.updated` | Informasi entitas telah diperbarui. |
+| Alamat diperbarui | `managing_entity.city.updated` | Alamat/kota entitas telah diubah. |
+| Nama diperbarui | `managing_entity.name.updated` | Nama entitas telah diubah. |
+| Nama URL diperbarui | `managing_entity.url_name.updated` | URL vanity entitas telah berubah. |
+| ID unik diperbarui | `managing_entity.unique_id.updated` | Identifier unik entitas telah berubah. |
+| Managed-by diperbarui | `managing_entity.managed_by.updated` | Hubungan induk/managed-by entitas telah berubah. |
+| Place ID diperbarui | `managing_entity.place_id.updated` | Google Place ID entitas telah berubah. |
+| Perwakilan akun diperbarui | `managing_entity.account_representative.updated` | Perwakilan akun telah diubah. |
+| Foto profil diperbarui | `managing_entity.profile_picture.updated` | Foto profil entitas telah diperbarui. |
+| Logo diperbarui | `managing_entity.logo.updated` | Logo entitas telah diperbarui. |
+| Detail diperbarui | `account.details.updated` | Kolom detail akun telah berubah. |
+| Agen diperbarui | `managing_entity.agent.updated` | Agen entitas telah dimodifikasi. |
+
+### Notifikasi
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Notifikasi email agen | `managing_entity.agent.email.notification` | Notifikasi email telah dikirim ke agen. |
+| Notifikasi email manajer | `managing_entity.manager.email.notification` | Notifikasi email telah dikirim ke manajer. |
 
 ### Tugas akun
 
 | Event | Key | Deskripsi |
 |---|---|---|
 | Tugas dibuat | `account.task.create` | Tugas baru telah ditambahkan ke akun. |
-| Tugas diperbarui | `account.task.update` | Tugas akun telah diubah. |
+| Tugas diperbarui | `account.task.update` | Tugas akun telah dimodifikasi. |
 | Tugas dihapus | `account.task.remove` | Tugas akun telah dihapus. |
 | Tugas selesai | `account.task.complete` | Tugas akun telah diselesaikan. |
-| Tugas verifikasi NPWP selesai | `account.task.tax_id.complete` | Tugas verifikasi NPWP telah selesai. |
+| Tugas verifikasi ID pajak selesai | `account.task.tax_id.complete` | Tugas verifikasi ID pajak telah selesai. |
 
-### Pengakuisisi akun
+---
+
+## Event pemesanan
+
+Event untuk siklus hidup pemesanan Wink, dari pembuatan hingga pengembalian dana dan pembayaran.
+
+### Pemesanan inti
 
 | Event | Key | Deskripsi |
 |---|---|---|
-| Pengakuisisi dibuat | `account.acquirer.created` | Pengakuisisi baru telah ditambahkan ke akun. |
-| Pengakuisisi diperbarui | `account.acquirer.updated` | Pengakuisisi akun telah diubah. |
-| Pengakuisisi dihapus | `account.acquirer.removed` | Pengakuisisi telah dihapus dari akun. |
+| Pemesanan dibuat | `booking.create` | Pemesanan baru telah dibuat. |
+| Pemesanan dibatalkan | `booking.cancelled` | Pemesanan telah dibatalkan. |
+| Pemesanan gagal | `booking.failed` | Upaya pemesanan gagal. |
+| Pemesanan diproses | `booking.processing` | Pembayaran pemesanan sedang diproses. |
+| Inisialisasi diminta | `booking.initialize.request` | Permintaan inisialisasi pemesanan telah diajukan. |
+| Inisialisasi selesai | `booking.initialize.complete` | Inisialisasi pemesanan telah selesai. |
+
+### Pengembalian dana
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Permintaan pengembalian dana | `booking.refund.request` | Permintaan pengembalian dana telah diajukan. |
+| Kesalahan pengembalian dana | `booking.refund.error` | Terjadi kesalahan saat memproses pengembalian dana. |
+| Pengembalian dana parsial | `booking.refund.partial` | Pengembalian dana parsial telah diterbitkan. |
+| Pengembalian dana penuh | `booking.refund.full` | Pengembalian dana penuh telah diterbitkan. |
+
+### Pembayaran keluar
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Pembayaran keluar dibuat | `booking.payout.create` | Pembayaran keluar telah dibuat untuk pemesanan. |
+| Pembayaran keluar selesai | `booking.payout.complete` | Pembayaran keluar telah berhasil diselesaikan. |
+| Dana tersedia | `booking.funds.available` | Dana pemesanan tersedia untuk penyelesaian. |
+| Dana dicatat | `booking.funds.ledgered` | Dana pemesanan telah dicatat di buku besar. |
+
+### Ulasan
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Ulasan dikirim | `booking.review.created` | Ulasan tamu telah dikirim untuk pemesanan. |
+| Ulasan ditanggapi | `booking.review.responded` | Properti telah menanggapi ulasan pemesanan. |
+
+---
+
+## Event properti
+
+Event untuk profil dan konten properti, dikirim ke pelanggan webhook properti tersebut.
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Properti dibuat | `property.created` | Properti baru telah dibuat. |
+| Properti diperbarui | `property.updated` | Detail properti telah diperbarui. |
+| Properti dihapus | `property.deleted` | Properti telah dihapus. |
+| Properti terdaftar | `property.registered` | Properti telah menyelesaikan pendaftaran. |
+| Status diperbarui | `property.status.updated` | Status eksternal properti telah berubah. |
+| Nama diperbarui | `property.name.updated` | Nama properti telah berubah. |
+| Alamat diperbarui | `property.address.updated` | Alamat properti telah diperbarui. |
+| Geolokasi diperbarui | `property.geolocation.updated` | Geolokasi properti telah diperbarui. |
+| Profil diperbarui | `property.profile.updated` | Konten profil properti telah berubah. |
+| Layanan diperbarui | `property.services.updated` | Daftar layanan/fasilitas properti telah berubah. |
+| Teks sambutan diperbarui | `property.welcome_text.updated` | Pesan sambutan properti telah berubah. |
+| Kebijakan dibuat | `property.policy.created` | Kebijakan properti baru telah dibuat. |
+| Kebijakan diperbarui | `property.policy.updated` | Kebijakan properti telah diperbarui. |
+
+---
+
+## Event inventaris
+
+Event untuk item inventaris dalam properti, dikirim ke pelanggan webhook properti tersebut.
+
+### Jenis kamar
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Jenis kamar dibuat | `room_type.created` | Jenis kamar baru telah ditambahkan. |
+| Jenis kamar diperbarui | `room_type.updated` | Jenis kamar telah dimodifikasi. |
+| Jenis kamar dihapus | `room_type.deleted` | Jenis kamar telah dihapus. |
+
+### Paket tarif
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Paket tarif dibuat | `rate_plan.created` | Paket tarif baru telah dibuat. |
+| Paket tarif diperbarui | `rate_plan.updated` | Paket tarif telah dimodifikasi. |
+| Paket tarif dihapus | `rate_plan.deleted` | Paket tarif telah dihapus. |
+
+### Tarif utama
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Tarif utama dibuat | `master_rate.created` | Tarif utama baru telah dibuat. |
+| Tarif utama diperbarui | `master_rate.updated` | Tarif utama telah dimodifikasi. |
+| Tarif utama dihapus | `master_rate.deleted` | Tarif utama telah dihapus. |
+
+### Tambahan
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Tambahan dibuat | `add_on.created` | Tambahan baru telah dibuat. |
+| Tambahan diperbarui | `add_on.updated` | Tambahan telah dimodifikasi. |
+| Tambahan dihapus | `add_on.deleted` | Tambahan telah dihapus. |
+
+### Ruang rapat
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Ruang rapat dibuat | `meeting_room.created` | Ruang rapat baru telah ditambahkan. |
+| Ruang rapat diperbarui | `meeting_room.updated` | Ruang rapat telah dimodifikasi. |
+| Ruang rapat dihapus | `meeting_room.deleted` | Ruang rapat telah dihapus. |
+
+### Restoran
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Restoran dibuat | `restaurant.created` | Restoran baru telah ditambahkan. |
+| Restoran diperbarui | `restaurant.updated` | Restoran telah dimodifikasi. |
+| Restoran dihapus | `restaurant.deleted` | Restoran telah dihapus. |
+
+### Spa
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Spa dibuat | `spa.created` | Spa baru telah ditambahkan. |
+| Spa diperbarui | `spa.updated` | Spa telah dimodifikasi. |
+| Spa dihapus | `spa.deleted` | Spa telah dihapus. |
+
+### Aktivitas
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Aktivitas dibuat | `activity.created` | Aktivitas baru telah ditambahkan. |
+| Aktivitas diperbarui | `activity.updated` | Aktivitas telah dimodifikasi. |
+| Aktivitas dihapus | `activity.deleted` | Aktivitas telah dihapus. |
+
+---
+
+## Event saluran penjualan
+
+Event untuk saluran distribusi yang menghubungkan pemasok dan afiliasi. Dikirim ke pelanggan webhook pemasok dan afiliasi.
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Saluran penjualan dibuat | `sales_channel.created` | Saluran penjualan baru telah dibuat. |
+| Saluran penjualan diperbarui | `sales_channel.updated` | Saluran penjualan telah dimodifikasi. |
+| Saluran penjualan dihapus | `sales_channel.deleted` | Saluran penjualan telah dihapus. |
+
+---
+
+## Event tarif khusus
+
+Event untuk tarif promosi dan negosiasi pada properti.
+
+| Event | Key | Deskripsi |
+|---|---|---|
+| Tarif khusus dibuat | `special_rate.created` | Tarif khusus baru telah dibuat. |
+| Tarif khusus diperbarui | `special_rate.updated` | Tarif khusus telah dimodifikasi. |
+| Tarif khusus dihapus | `special_rate.deleted` | Tarif khusus telah dihapus. |
+| Modifikator tarif diperbarui | `rate_modifier.updated` | Modifikator tarif telah diperbarui. |
 
 ---
 
@@ -64,37 +253,16 @@ Event terkait pengelolaan penerima pembayaran.
 
 | Event | Key | Deskripsi |
 |---|---|---|
-| Penerima pembayaran dibuat | `payee.create` | Penerima pembayaran baru berhasil dibuat. |
+| Penerima pembayaran dibuat | `payee.create` | Penerima pembayaran baru telah berhasil dibuat. |
 | Pembuatan penerima pembayaran gagal | `payee.create.failure` | Pembuatan penerima pembayaran gagal. |
 | Penerima pembayaran diperbarui | `payee.update` | Penerima pembayaran telah diperbarui. |
 | Pembaruan penerima pembayaran gagal | `payee.update.failure` | Pembaruan penerima pembayaran gagal. |
 
 ---
 
-## Event kontrak pemesanan
-
-Event yang melacak siklus hidup kontrak pemesanan melalui TripPay.
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Permintaan inisialisasi | `booking.contract.initialize.request` | Permintaan inisialisasi kontrak pemesanan telah diajukan. |
-| Inisialisasi selesai | `booking.contract.initialize.complete` | Inisialisasi kontrak pemesanan telah selesai. |
-| Kontrak dibuat | `booking.contract.created` | Kontrak pemesanan baru telah dibuat. |
-| Kontrak diproses | `booking.contract.processing` | Pembayaran kontrak pemesanan sedang diproses. |
-| Kontrak gagal | `booking.contract.failed` | Pembayaran kontrak pemesanan gagal. |
-| Kontrak dibatalkan | `booking.contract.cancelled` | Kontrak pemesanan telah dibatalkan. |
-| Pengembalian dana parsial | `booking.contract.refund.partial` | Pengembalian dana parsial telah diterbitkan pada kontrak. |
-| Pengembalian dana penuh | `booking.contract.refund.full` | Pengembalian dana penuh telah diterbitkan pada kontrak. |
-| Permintaan pengembalian dana | `booking.contract.refund.request` | Permintaan pengembalian dana telah diajukan. |
-| Kesalahan pengembalian dana | `booking.contract.refund.error` | Terjadi kesalahan saat memproses pengembalian dana. |
-| Pembayaran dibuat | `booking.contract.payout.create` | Pembayaran telah dibuat untuk kontrak. |
-| Pembayaran selesai | `booking.contract.payout.complete` | Pembayaran telah berhasil diselesaikan. |
-
----
-
 ## Event pembayaran
 
-Event internal pemrosesan pembayaran.
+Event internal pemrosesan pembayaran dari TripPay.
 
 | Event | Key | Deskripsi |
 |---|---|---|
@@ -104,26 +272,15 @@ Event internal pemrosesan pembayaran.
 
 ---
 
-## Event pemesanan
+## Event manajer saluran
 
-Event untuk siklus hidup pemesanan di Wink.
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Pemesanan dibuat | `booking.create` | Pemesanan baru telah dibuat. |
-| Pemesanan dibatalkan | `booking.cancelled` | Pemesanan telah dibatalkan. |
-
----
-
-## Event channel manager
-
-Event terkait pembaruan tarif dan ketersediaan channel manager.
+Event terkait dorongan tarif dan ketersediaan dari manajer saluran.
 
 | Event | Key | Deskripsi |
 |---|---|---|
-| Pembaruan tarif | `channel-manager.update.rate` | Channel manager telah mengirim pembaruan tarif. |
-| Pembaruan ketersediaan | `channel-manager.update.availability` | Channel manager telah mengirim pembaruan ketersediaan. |
-| Pembaruan umum | `channel-manager.update` | Pembaruan umum channel manager. |
+| Pembaruan tarif | `channel-manager.update.rate` | Manajer saluran telah mendorong pembaruan tarif. |
+| Pembaruan ketersediaan | `channel-manager.update.availability` | Manajer saluran telah mendorong pembaruan ketersediaan. |
+| Pembaruan umum | `channel-manager.update` | Pembaruan umum manajer saluran. |
 
 ---
 
@@ -137,51 +294,11 @@ Event terkait entri buku besar keuangan.
 
 ---
 
-## Event entitas pengelola
-
-Event untuk entitas pengelola (properti, afiliasi, perusahaan) dan administrasinya.
-
-### Langganan
+## Event email
 
 | Event | Key | Deskripsi |
 |---|---|---|
-| Langganan disediakan | `managing_entity.subscription.provisioned` | Langganan baru telah disediakan. |
-| Langganan diubah | `managing_entity.subscription.changed` | Paket langganan telah diubah. |
-| Faktur langganan diubah | `managing_entity.subscription.invoice.changed` | Faktur langganan telah diperbarui. |
-
-### Status dan administrasi
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Status diperbarui | `managing_entity.status.updated` | Status entitas telah berubah. |
-| Entitas dihapus | `managing_entity.deleted` | Entitas pengelola telah dihapus. |
-| Agen diperbarui | `managing_entity.agent.updated` | Agen entitas telah diubah. |
-| Notifikasi email agen | `managing_entity.agent.email.notification` | Notifikasi email telah dikirim ke agen. |
-| Notifikasi email manajer | `managing_entity.manager.email.notification` | Notifikasi email telah dikirim ke manajer. |
-
-### Siklus hidup manajer
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Manajer ditambahkan | `managing_entity.manager.added` | Manajer baru telah ditambahkan. |
-| Manajer diundang | `managing_entity.manager.invited` | Undangan manajer telah dikirim. |
-| Manajer dihapus | `managing_entity.manager.removed` | Manajer telah dihapus. |
-| Manajer menerima | `managing_entity.manager.accepted` | Undangan manajer telah diterima. |
-| Manajer menolak | `managing_entity.manager.rejected` | Undangan manajer telah ditolak. |
-| Pemilik ditetapkan | `managing_entity.manager.owner.set` | Kepemilikan entitas telah dialihkan. |
-
-### Informasi entitas
-
-| Event | Key | Deskripsi |
-|---|---|---|
-| Informasi diperbarui | `managing_entity.information.updated` | Informasi entitas telah diperbarui. |
-| Alamat diperbarui | `managing_entity.city.updated` | Alamat/kota entitas telah diubah. |
-| Perwakilan akun diperbarui | `managing_entity.account_representative.updated` | Perwakilan akun telah diubah. |
-| Foto profil diperbarui | `managing_entity.profile_picture.updated` | Foto profil entitas telah diperbarui. |
-| Logo diperbarui | `managing_entity.logo.updated` | Logo entitas telah diperbarui. |
-| Nama URL diperbarui | `managing_entity.url_name.updated` | URL khusus entitas telah berubah. |
-| ID unik diperbarui | `managing_entity.unique_id.updated` | Identifier unik entitas telah berubah. |
-| Nama diperbarui | `managing_entity.name.updated` | Nama entitas telah diubah. |
+| Surat elektronik terkirim | `email.correspondence` | Email keluar telah dikirim. |
 
 ---
 
@@ -189,15 +306,18 @@ Event untuk entitas pengelola (properti, afiliasi, perusahaan) dan administrasin
 
 | Kategori | Jumlah |
 |---|---|
-| Event akun | 20 |
+| Event entitas pengelola | 33 |
+| Event pemesanan | 16 |
+| Event properti | 13 |
+| Event inventaris (jenis kamar, paket tarif, tarif utama, tambahan, fasilitas) | 24 |
+| Event saluran penjualan | 3 |
+| Event tarif khusus | 4 |
 | Event penerima pembayaran | 4 |
-| Event kontrak pemesanan | 12 |
 | Event pembayaran | 3 |
-| Event pemesanan | 2 |
-| Event channel manager | 3 |
+| Event manajer saluran | 3 |
 | Event buku besar | 1 |
-| Event entitas pengelola | 19 |
-| **Total** | **64** |
+| Event email | 1 |
+| **Total** | **105** |
 
 :::tip
 Mulailah dengan berlangganan semua event selama pengembangan. Setelah Anda memahami payload yang dibutuhkan sistem Anda, batasi langganan untuk mengurangi kebisingan.

@@ -7,10 +7,10 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Savienojot savu Google Analytics 4 īpašumu ar Wink, jūsu rezervācijas notikumi — no istabu skatījumiem līdz pabeigtām pirkšanām — tiek automātiski nosūtīti uz jūsu GA4 informācijas paneli kopā ar Wink analītiku. Nav nepieciešams kods vai tehniska iestatīšana no jūsu puses.
+Savienojot savu Google Analytics 4 īpašumu ar Wink, jūsu rezervācijas notikumi — no istabu skatījumiem līdz pabeigtām rezervācijām — tiek automātiski nosūtīti uz jūsu GA4 informācijas paneli kopā ar Wink analītiku. Nav nepieciešams kods vai tehniska iestatīšana no jūsu puses.
 
 <Aside type="tip">
-Viss, kas jums nepieciešams, ir GA4 mērījumu ID. Kad tas ievadīts Wink portālā, jūsu analītika uzreiz darbojas.
+Jums ir nepieciešamas divas lietas no GA4: **Mērījumu ID** un **Measurement Protocol API slepenā atslēga**. Mērījumu ID nodrošina pārlūkošanas piltuvi viesu pārlūkprogrammā; API slepenā atslēga ļauj Wink servera pusē ierakstīt pabeigtas rezervācijas (`purchase`), tādējādi pārdošana nekad netiek zaudēta, kad viesis tiek novirzīts uz maksājumu pakalpojumu sniedzēju un atpakaļ.
 </Aside>
 
 ---
@@ -18,16 +18,17 @@ Viss, kas jums nepieciešams, ir GA4 mērījumu ID. Kad tas ievadīts Wink port�
 ## Kā tas darbojas
 
 ```
-Jūs ievadāt savu G-XXXXXXXXXX Wink portālā
+Jūs ievadāt savu Mērījumu ID (G-XXXXXXXXXX) un API slepeno atslēgu Wink portālā
        ↓
-Wink pārsūta jūsu rezervācijas notikumus uz jūsu GA4 īpašumu
+Pārlūkošanas notikumi (skatījumi, grozs, norēķini) no pārlūkprogrammas plūst uz jūsu GA4 īpašumu
+Pabeigtas rezervācijas (purchase) tiek nosūtītas servera pusē — saglabājot datus maksājumu novirzīšanas laikā
        ↓
-Jūs piesakāties analytics.google.com un redzat savas rezervācijas
+Jūs piesakāties analytics.google.com un redzat pilnu rezervācijas piltuvi
 ```
 
 ---
 
-## Ko jums jādara
+## Ko jums jāizdara
 
 <Steps>
 
@@ -39,29 +40,41 @@ Jūs piesakāties analytics.google.com un redzat savas rezervācijas
 
    Admin → Datu plūsmas → Pievienot plūsmu → Tīkls. Ievadiet `wink.travel` kā URL. Tas ģenerēs jūsu **Mērījumu ID** (`G-XXXXXXXXXX`). Nokopējiet to.
 
-3. **Ievadiet savu Mērījumu ID Wink portālā**
+3. **Izveidojiet Measurement Protocol API slepeno atslēgu**
 
-   Piesakieties [app.wink.travel](https://app.wink.travel), izvēlieties savu kontu un dodieties uz cilni **Pielāgojumi**. Tur ielīmējiet savu Mērījumu ID un saglabājiet. Tas arī viss — jūsu GA4 integrācija tagad ir aktīva.
+   Atveriet to pašu tīmekļa datu plūsmu → ritiniet līdz **Measurement Protocol API slepenās atslēgas** → **Izveidot**. Piešķiriet tai segvārdu (piemēram, "Wink") un nokopējiet ģenerēto **slepeno vērtību**. Šī slepenā atslēga ļauj Wink servera pusē ierakstīt pabeigtas rezervācijas, tādējādi pārdošana nekad netiek zaudēta maksājumu novirzīšanas laikā.
 
-4. **Atzīmējiet `purchase` kā galveno notikumu**
+4. **Ievadiet savu Mērījumu ID un API slepeno atslēgu Wink portālā**
 
-   Atgriezieties savā GA4 īpašumā: Admin → Notikumi → atrodiet `purchase` → ieslēdziet **Atzīmēt kā galveno notikumu**. Tas nodrošina, ka pabeigtās rezervācijas parādās jūsu Konversiju pārskatā.
+   Piesakieties [app.wink.travel](https://app.wink.travel), izvēlieties savu kontu un dodieties uz cilni **Pielāgojumi**. Ielīmējiet savu Mērījumu ID un API slepeno atslēgu laukos **GA4** un saglabājiet. Tas arī viss — jūsu GA4 integrācija tagad ir aktīva.
 
-5. **Skatiet savus datus**
+   <Aside type="note">
+   API slepenā atslēga ir **tikai rakstīšanai**: pēc saglabāšanas tā vairs netiek rādīta. Nākamajās rediģēšanas reizēs atstājiet slepenās atslēgas lauku tukšu, lai saglabātu jau ievadīto vērtību.
+   </Aside>
+
+5. **Atzīmējiet `purchase` kā galveno notikumu**
+
+   Atgriezieties savā GA4 īpašumā: Admin → Notikumi → atrodiet `purchase` → ieslēdziet **Atzīmēt kā galveno notikumu**. Tas ļaus pabeigtām rezervācijām parādīties jūsu Konversiju pārskatā.
+
+6. **Skatiet savus datus**
 
    Piesakieties [analytics.google.com](https://analytics.google.com) un redzēsiet savas rezervācijas, ieņēmumus un viesu piltuvi — viss tiek izsekots automātiski caur Wink.
 
 </Steps>
 
 <Aside type="note">
-Jums nav jāinstalē nekāda izsekošanas koda savā mājaslapā šai integrācijai. Wink par visu parūpējas. Jūsu Mērījumu ID ir vienkārši galamērķis, kur tiek nosūtīti jūsu rezervāciju dati.
+Jums nav nepieciešams instalēt nekādu izsekošanas kodu savā mājaslapā šai integrācijai. Wink par visu parūpējas. Jūsu Mērījumu ID ir galamērķis, kur tiek nosūtīti rezervāciju dati, un jūsu API slepenā atslēga ļauj Wink apstiprināt pabeigtas rezervācijas servera pusē.
+</Aside>
+
+<Aside type="tip">
+**GA4 un GTM var izmantot kopā.** Ja jūs arī izmantojat Google Tag Manager konteineru (piemēram, Sojern konteineru), varat konfigurēt abus vienlaikus — tie vairs nav savstarpēji izslēdzoši. Skatiet [GTM analītikas integrāciju](/lv/guides/developers/gtm-dual-tagging).
 </Aside>
 
 ---
 
 ## Ko jūs varat izsekot
 
-Kad savienots, jūsu GA4 īpašums saņem pilnu uzlabotās e-komercijas notikumu komplektu jūsu īpašumam:
+Pēc savienojuma izveides jūsu GA4 īpašums saņem pilnu Enhanced E-commerce notikumu komplektu jūsu īpašumam:
 
 ### Atklāšana
 
@@ -69,7 +82,7 @@ Kad savienots, jūsu GA4 īpašums saņem pilnu uzlabotās e-komercijas notikumu
 |---|---|
 | `view_item_list` | Viesis redzēja jūsu īpašumu meklēšanas vai kategoriju sarakstā |
 | `select_item` | Viesis noklikšķināja uz jūsu īpašuma no saraksta |
-| `view_item` | Viesis apskatīja jūsu viesnīcas detalizēto lapu |
+| `view_item` | Viesis apskatīja jūsu viesnīcas detaļu lapu |
 
 ### Apsvērums
 
@@ -92,13 +105,13 @@ Kad savienots, jūsu GA4 īpašums saņem pilnu uzlabotās e-komercijas notikumu
 | `purchase` | Viesis pabeidza rezervāciju |
 | `refund` | Rezervācija tika atcelta un atmaksāta |
 
-Visi notikumi ietver atbilstošas dimensijas, piemēram, ieņēmumus, valūtu, istabas veidu un rezervācijas vērtību — sniedzot pilnīgu viesu ceļojuma ainu no pirmā iespaida līdz pabeigtai rezervācijai. Lai atbloķētu papildu īpašuma un istabas līmeņa dimensijas, piemēram, `city_name`, `cancellation_policy`, `bed_type` un citas, skatiet [Pielāgotās dimensijas GA4](/lv/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
+Visi notikumi ietver atbilstošas dimensijas, piemēram, ieņēmumus, valūtu, istabas veidu un rezervācijas vērtību — sniedzot pilnīgu priekšstatu par viesu ceļojumu no pirmā iespaida līdz pabeigtai rezervācijai. Lai atbloķētu papildu īpašuma un istabas līmeņa dimensijas, piemēram, `city_name`, `cancellation_policy`, `bed_type` un citas, skatiet [Pielāgotās dimensijas GA4](/lv/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
 
 ---
 
 ## Starpdomēnu izsekošana (papildu)
 
-Iepriekšējā standarta integrācija izseko visu, kas notiek Wink ietvaros. Tomēr, ja vēlaties izsekot viesiem no jūsu pašu mājaslapas līdz rezervācijas pabeigšanai Wink — un pareizi piešķirt sākotnējo trafika avotu (Google Ads, e-pasta kampaņas, organiskā meklēšana utt.) — katrā pusē ir nepieciešama vēl viena darbība.
+Iepriekšējā standarta integrācija izseko visu, kas notiek Wink ietvaros. Tomēr, ja vēlaties izsekot viesiem no jūsu pašu mājaslapas līdz rezervācijas pabeigšanai Wink — un pareizi piešķirt sākotnējo trafika avotu (Google Ads, e-pasta kampaņas, organiskā meklēšana utt.) — katrā pusē ir nepieciešams vēl viens solis.
 
 <Aside type="caution">
 Šī sadaļa attiecas tikai uz gadījumiem, ja GA4 ir instalēts jūsu mājaslapā. Ja jūs neizmantojat GA4 savā vietnē, iepriekšējā standarta integrācija ir viss, kas jums nepieciešams.
@@ -106,7 +119,7 @@ Iepriekšējā standarta integrācija izseko visu, kas notiek Wink ietvaros. Tom
 
 ### Kāpēc tas ir svarīgi
 
-Bez starpdomēnu izsekošanas viesis, kurš vispirms apmeklē jūsu mājaslapu un pēc tam veic rezervāciju Wink, jūsu GA4 tiks reģistrēts kā **Tiešs** sesijas apmeklējums bez saistības ar iepriekšējo apmeklējumu. Jebkuri Google Ads klikšķi, e-pasta kampaņas vai organiskās meklēšanas apmeklējumi, kas noveda pie rezervācijas, netiks pienācīgi atzīti.
+Bez starpdomēnu izsekošanas viesis, kurš vispirms apmeklē jūsu mājaslapu un pēc tam veic rezervāciju Wink, jūsu GA4 tiks reģistrēts kā **Tiešs** sesijas apmeklējums bez saistības ar viņa iepriekšējo apmeklējumu. Jebkuri Google Ads klikšķi, e-pasta kampaņas vai organiskās meklēšanas apmeklējumi, kas noveda pie rezervācijas, netiks pienācīgi atzīti.
 
 Ar konfigurētu starpdomēnu izsekošanu jūs redzat pilnu viesu ceļojumu:
 
@@ -117,12 +130,12 @@ jūsu mājaslapa (viesis pārlūko istabas)
        ↓
 wink.travel (viesis izvēlas istabu un veic rezervāciju)
        ↓
-pirkums pareizi piešķirts sākotnējam Google Ads klikšķim
+purchase pareizi piešķirts sākotnējam Google Ads klikšķim
 ```
 
 ### Jūsu veicamā darbība
 
-Konfigurējiet savu GA4 īpašumu, lai atpazītu `wink.travel` kā daļu no jūsu pašu domēna, nevis kā ārēju atsauci. Tas liek GA4 apvienot abas sesijas vienā nepārtrauktā viesu ceļojumā.
+Konfigurējiet savu GA4 īpašumu, lai atpazītu `wink.travel` kā daļu no jūsu pašu domēna, nevis kā ārēju atsauces avotu. Tas ļauj GA4 apvienot abas sesijas vienā nepārtrauktā viesu ceļojumā.
 
 <Steps>
 1. GA4 Admin → Datu plūsmas → jūsu plūsma
@@ -133,8 +146,8 @@ Konfigurējiet savu GA4 īpašumu, lai atpazītu `wink.travel` kā daļu no jūs
 
 ### Wink veicamā darbība
 
-Sazinieties ar [Wink atbalstu](https://app.wink.travel) un norādiet savu mājaslapas domēnu (piemēram, `yourhotel.com`). Wink pievienos jūsu domēnu atsauču izslēgšanas sarakstam Wink GA4 īpašumā. Tas novērsīs jūsu mājaslapas reģistrēšanu kā atsauces avotu, kas citādi pārrakstītu viesu sākotnējo atribūciju un sāktu jaunu sesiju.
+Sazinieties ar [Wink atbalstu](https://app.wink.travel) un norādiet savu mājaslapas domēnu (piemēram, `yourhotel.com`). Wink pievienos jūsu domēnu atsauces izslēgšanas sarakstam Wink GA4 īpašumā. Tas novērsīs jūsu mājaslapas reģistrēšanu kā atsauces avotu, kas citādi pārrakstītu viesu sākotnējo atribūciju un sāktu jaunu sesiju.
 
 <Aside type="tip">
-Iepriekšējā standarta integrācija ir pietiekama lielākajai daļai īpašumu un nodrošina tūlītēju pārredzamību par rezervācijām un ieņēmumiem Wink. Starpdomēnu izsekošana ir papildu iespēja, ko vērts iestatīt, kad esat pārliecināts par saviem GA4 datiem un vēlaties dziļāku atribūcijas ieskatu.
+Iepriekšējā standarta integrācija ir pietiekama lielākajai daļai īpašumu un nodrošina tūlītēju redzamību rezervācijām un ieņēmumiem Wink. Starpdomēnu izsekošana ir papildu iespēja, ko vērts iestatīt, kad esat pārliecināts par saviem GA4 datiem un vēlaties dziļāku atribūcijas ieskatu.
 </Aside>

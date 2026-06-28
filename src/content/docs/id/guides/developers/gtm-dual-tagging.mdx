@@ -1,16 +1,16 @@
 ---
-title: Integrasi Sojern Pixel
-description: Cara menghubungkan akun Sojern Anda ke Wink agar Sojern dapat melacak perjalanan pemesanan tamu Anda dan mendukung kampanye retargeting serta iklan Anda.
+title: Integrasi GTM Analytics
+description: Cara menghubungkan kontainer Google Tag Manager apa pun (seperti kontainer Sojern) ke Wink agar dapat melacak perjalanan pemesanan tamu Anda dan mendukung kampanye retargeting serta iklan Anda.
 sidebar:
-  label: Integrasi Sojern Pixel
+  label: Integrasi GTM Analytics
 ---
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Jika Anda menjalankan kampanye iklan melalui Sojern, Anda dapat menghubungkan akun Sojern Anda ke Wink dengan memasukkan Sojern GTM Container ID Anda di portal Wink. Setelah terhubung, pixel pelacakan Sojern akan aktif secara otomatis untuk properti Anda — mencakup seluruh perjalanan tamu dari pencarian hingga pemesanan selesai.
+Anda dapat menghubungkan **kontainer** Google Tag Manager (GTM) **apa pun** ke Wink dengan memasukkan **ID Kontainer GTM** di portal Wink. Setelah terhubung, kontainer Anda akan dimuat secara otomatis untuk properti Anda dan membaca event pemesanan Wink secara langsung — mencakup seluruh perjalanan tamu dari pencarian hingga pemesanan selesai. Kasus penggunaan umum adalah kontainer **Sojern** untuk retargeting dan iklan, tetapi kontainer GTM apa pun bekerja dengan cara yang sama.
 
 <Aside type="tip">
-Ini mengasumsikan Anda sudah memiliki akun Sojern aktif dan telah menerima GTM Container ID dari manajer akun Sojern Anda. Jika Anda belum memiliki akun Sojern, kunjungi [sojern.com/contact](https://www.sojern.com/contact) untuk memulai.
+Ini mengasumsikan Anda sudah memiliki ID Kontainer GTM (format `GTM-XXXXXXX`). Jika kontainer Anda berasal dari mitra seperti Sojern, minta **ID Kontainer GTM** secara spesifik kepada manajer akun Anda — ini berbeda dari pixel atau ID tag. Baru dengan Sojern? Kunjungi [sojern.com/contact](https://www.sojern.com/contact) untuk memulai.
 </Aside>
 
 ---
@@ -19,24 +19,28 @@ Ini mengasumsikan Anda sudah memiliki akun Sojern aktif dan telah menerima GTM C
 
 <Steps>
 
-1. **Dapatkan GTM Container ID Anda dari Sojern**
+1. **Dapatkan ID Kontainer GTM Anda**
 
-   Hubungi manajer akun Sojern Anda dan minta **GTM Container ID** Anda. Formatnya adalah `GTM-XXXXXXX`. Ini berbeda dari Sojern Pixel ID Anda — pastikan Anda meminta GTM Container ID secara spesifik.
+   Dapatkan **ID Kontainer GTM** Anda (format `GTM-XXXXXXX`). Jika berasal dari mitra seperti Sojern, minta ID Kontainer GTM secara spesifik — ini berbeda dari pixel atau ID tag.
 
 2. **Masukkan di Portal Wink**
 
-   Masuk ke [app.wink.travel](https://app.wink.travel), pilih akun Anda, dan buka tab **Customizations**. Tempelkan Sojern GTM Container ID Anda ke dalam kolom Sojern dan simpan. Integrasi Anda sekarang aktif.
+   Masuk ke [app.wink.travel](https://app.wink.travel), pilih akun Anda, dan buka tab **Customizations**. Tempelkan ID Kontainer GTM Anda ke kolom **GTM** dan simpan. Integrasi Anda sekarang aktif.
 
-3. **Konfirmasi dengan Manajer Akun Sojern Anda**
+3. **(Opsional) Tambahkan ID Pengukuran GA4 + API Secret untuk Pembelian Server-Side**
 
-   Beri tahu manajer akun Sojern Anda bahwa integrasi sudah aktif. Mereka dapat memverifikasi dari sisi mereka bahwa pixel berfungsi dengan benar di `wink.travel` untuk properti Anda dan data mengalir ke akun Sojern Anda.
+   Kontainer GTM berjalan sepenuhnya di browser tamu, jadi pemesanan yang selesai bisa terlewat jika tamu menutup tab saat pengalihan pembayaran. Jika kontainer Anda memuat **properti GA4** dan Anda ingin pemesanan yang selesai tercatat dengan andal, masukkan juga **ID Pengukuran** dan **API secret Measurement Protocol** GA4 tersebut di bagian GTM. Wink kemudian akan mengirimkan event `purchase` untuk properti itu **secara server-side**, persis seperti yang dijelaskan dalam panduan [Integrasi GA4 Analytics](/id/guides/developers/ga4-dual-tagging). Biarkan kosong jika Anda hanya membutuhkan pelacakan di browser.
+
+4. **Konfirmasi dengan Penyedia Anda**
+
+   Jika kontainer Anda berasal dari mitra seperti Sojern, beri tahu manajer akun Anda bahwa integrasi sudah aktif. Mereka dapat memverifikasi dari sisi mereka bahwa tag berjalan dengan benar di `wink.travel` untuk properti Anda dan data mengalir ke akun Anda.
 
 </Steps>
 
 <Aside type="note">
-Anda tidak perlu menempatkan kode pixel apa pun di situs web Anda untuk integrasi ini. Wink secara otomatis memuat container Sojern Anda di semua halaman tempat properti Anda aktif.
+Anda tidak perlu menempatkan kode pixel apa pun di situs web Anda untuk integrasi ini. Wink memuat kontainer GTM Anda secara otomatis di semua halaman tempat properti Anda aktif.
 
-Konfigurasi ini bekerja untuk GTM Container ID kustom apa pun. Kami hanya menggunakan Sojern sebagai contoh karena ini adalah integrasi yang sangat umum.
+Ini berlaku untuk **ID Kontainer GTM apa pun** — Sojern hanyalah contoh umum.
 </Aside>
 
 ---
@@ -45,22 +49,23 @@ Konfigurasi ini bekerja untuk GTM Container ID kustom apa pun. Kami hanya menggu
 
 Untuk transparansi, berikut yang dikonfigurasi Wink agar integrasi ini berfungsi:
 
-- **Field Sojern GTM Container ID** tersedia di tab Customizations pada portal Wink Anda. Saat Anda memasukkan Container ID, Wink memvalidasi format dan menyimpannya dengan aman terkait properti Anda.
-- **Di setiap halaman tempat properti Anda aktif** di Wink, Sojern GTM Container ID Anda dirender ke halaman dan sistem manajemen tag Wink memuat container Sojern Anda secara dinamis bersama dengan miliknya sendiri. Ini terjadi secara otomatis — tidak ada langkah manual yang diperlukan dari tim Wink per properti.
-- **Container Sojern Anda dimuat secara asinkron**, artinya tidak memengaruhi performa pemuatan halaman untuk tamu Anda.
-- **Pelacakan Wink sendiri dan pixel Sojern Anda berjalan paralel**, membaca dari data event bersama yang sama. Setiap event pemesanan yang dilacak Wink juga tersedia secara bersamaan untuk container Sojern Anda.
-- **Saat properti Anda tidak sedang dilihat** — misalnya, saat tamu sedang melihat hotel lain di Wink — container Sojern Anda tidak dimuat. Ini memastikan Sojern hanya menerima data yang relevan dengan properti Anda.
+- **Field ID Kontainer GTM** tersedia di tab Customizations portal Wink Anda. Saat Anda memasukkan ID Kontainer, Wink memvalidasi formatnya (`GTM-XXXXXXX`) dan menyimpannya dengan aman terkait properti Anda.
+- **Di setiap halaman tempat properti Anda aktif** di Wink, kontainer Anda disuntikkan langsung ke halaman — berbagi `window.dataLayer` milik Wink — sehingga dimuat bersamaan dengan kontainer Wink tanpa ketergantungan konfigurasi tambahan. Ini terjadi otomatis, tanpa pekerjaan per properti dari tim Wink.
+- **Kontainer Anda dimuat secara asinkron**, sehingga tidak memengaruhi performa pemuatan halaman bagi tamu Anda.
+- **Pelacakan Wink dan kontainer Anda berjalan paralel**, membaca dari `dataLayer` bersama yang sama. Setiap event pemesanan yang dilacak Wink tersedia secara bersamaan untuk kontainer Anda.
+- **Saat properti Anda tidak sedang dilihat** — misalnya, saat tamu menjelajah hotel lain di Wink — kontainer Anda tidak dimuat, sehingga hanya menerima data yang relevan untuk properti Anda.
+- **Jika Anda memberikan ID Pengukuran GA4 + API secret** (langkah 3 di atas), event `purchase` untuk pemesanan yang selesai juga dikirim **secara server-side** melalui Measurement Protocol GA4, sehingga penjualan tercatat meskipun tamu tidak kembali ke halaman konfirmasi.
 
 ---
 
 ## Referensi DataLayer
 
-Wink mendorong event kompatibel GA4 ke `dataLayer` sepanjang perjalanan tamu. Container GTM Anda membaca dari `dataLayer` bersama yang sama ini, sehingga setiap trigger atau variabel yang Anda konfigurasi memiliki akses ke semua properti yang dijelaskan di bawah.
+Wink mendorong event kompatibel GA4 ke `dataLayer` sepanjang perjalanan tamu. Kontainer GTM Anda membaca dari `dataLayer` bersama yang sama, sehingga trigger atau variabel apa pun yang Anda konfigurasi memiliki akses ke semua properti yang dijelaskan di bawah.
 
 Setiap event mengikuti struktur GA4 Enhanced Ecommerce standar: string `event` tingkat atas dan objek `ecommerce`. Sebelum setiap push, Wink menghapus payload ecommerce sebelumnya untuk mencegah data lama masuk ke trigger baru.
 
 <Aside type="note">
-**pola reset dataLayer**
+**Pola reset dataLayer**
 
 Wink mereset objek ecommerce sebelum setiap push event:
 
@@ -69,16 +74,16 @@ dataLayer.push({ ecommerce: null });   // hapus event sebelumnya
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
-Jangan mengandalkan properti ecommerce yang bertahan antar event. Selalu baca pada saat trigger dalam event yang sama.
+Jangan mengandalkan properti ecommerce bertahan antar event. Selalu baca saat trigger dalam event yang sama.
 </Aside>
 
 ---
 
 ### Event Perjalanan Pemesanan
 
-Event-event ini aktif secara otomatis saat tamu bergerak melalui funnel pemesanan. Konfigurasikan trigger GTM Anda sebagai trigger **Custom Event** yang cocok dengan nama event di bawah.
+Event ini otomatis dipicu saat tamu bergerak melalui funnel pemesanan. Konfigurasikan trigger GTM Anda sebagai trigger **Custom Event** yang cocok dengan nama event di bawah.
 
-| Langkah | Event | Kapan Aktif |
+| Langkah | Event | Kapan Dipicu |
 |------|-------|---------------|
 | 1 | `view_item_list` | Grid atau daftar inventaris hotel dimuat |
 | 2 | `view_item` | Tamu melihat halaman properti tertentu |
@@ -93,7 +98,7 @@ Event-event ini aktif secara otomatis saat tamu bergerak melalui funnel pemesana
 
 #### `view_item_list`
 
-Aktif saat grid atau daftar inventaris hotel dirender.
+Dipicu saat grid atau daftar inventaris hotel dirender.
 
 ```json
 {
@@ -110,7 +115,7 @@ Aktif saat grid atau daftar inventaris hotel dirender.
 
 #### `view_item`
 
-Aktif saat tamu melihat properti tertentu.
+Dipicu saat tamu melihat properti tertentu.
 
 ```json
 {
@@ -127,7 +132,7 @@ Aktif saat tamu melihat properti tertentu.
 
 #### `add_to_cart`
 
-Aktif saat tamu menambahkan kamar ke keranjang.
+Dipicu saat tamu menambahkan kamar ke keranjang.
 
 ```json
 {
@@ -144,7 +149,7 @@ Aktif saat tamu menambahkan kamar ke keranjang.
 
 #### `begin_checkout`
 
-Aktif saat halaman checkout / pembayaran dimuat.
+Dipicu saat halaman checkout / pembayaran dimuat.
 
 ```json
 {
@@ -164,7 +169,7 @@ Aktif saat halaman checkout / pembayaran dimuat.
 
 #### `add_payment_info`
 
-Aktif saat tamu memilih atau mengonfirmasi metode pembayaran.
+Dipicu saat tamu memilih atau mengonfirmasi metode pembayaran.
 
 ```json
 {
@@ -185,7 +190,7 @@ Aktif saat tamu memilih atau mengonfirmasi metode pembayaran.
 
 #### `login`
 
-Aktif saat tamu melakukan autentikasi melalui single sign-on.
+Dipicu saat tamu melakukan autentikasi melalui single sign-on.
 
 ```json
 {
@@ -200,7 +205,7 @@ Aktif saat tamu melakukan autentikasi melalui single sign-on.
 
 #### `purchase`
 
-Aktif saat pemesanan dikonfirmasi.
+Dipicu saat pemesanan dikonfirmasi.
 
 ```json
 {
@@ -250,7 +255,7 @@ Aktif saat pemesanan dikonfirmasi.
 
 #### `refund`
 
-Aktif saat pemesanan dibatalkan.
+Dipicu saat pemesanan dibatalkan.
 
 ```json
 {
@@ -275,7 +280,7 @@ Aktif saat pemesanan dibatalkan.
 
 Semua event yang menyertakan array `items` menggunakan skema item yang sama. Setiap properti bersifat opsional kecuali yang ditandai wajib.
 
-#### Field GA4 Standar
+#### Field GA4 standar
 
 Field ini dikenali secara native oleh GA4 dan muncul di laporan ecommerce standar tanpa konfigurasi tambahan.
 
@@ -300,16 +305,16 @@ Field ini dikenali secara native oleh GA4 dan muncul di laporan ecommerce standa
 | `promotion_name` | string | — | Nama tampilan promosi |
 | `quantity` | number | — | Kuantitas (default `1`) |
 
-#### Parameter item khusus
+#### Parameter khusus item
 
-Parameter ini membawa konteks pemesanan spesifik Wink. GA4 tidak otomatis menampilkan di laporan — Anda harus mendaftarkan masing-masing sebagai **custom dimension item-scoped** di properti GA4 Anda sebelum muncul di eksplorasi atau laporan standar. Lihat [Custom Dimensions in GA4](#custom-dimensions-in-ga4) di bawah untuk instruksi setup.
+Parameter ini membawa konteks pemesanan spesifik Wink. GA4 tidak otomatis menampilkan di laporan — Anda harus mendaftarkan masing-masing sebagai **dimensi khusus item** di properti GA4 Anda sebelum muncul di eksplorasi atau laporan standar. Lihat [Dimensi Khusus di GA4](#custom-dimensions-in-ga4) di bawah untuk instruksi setup.
 
 | Properti | Tipe | Deskripsi |
 |----------|------|-----------|
 | `property_id` | string | Pengenal properti Wink |
 | `property_name` | string | Nama tampilan properti |
-| `property_brand` | string | Merek yang dimiliki properti |
-| `property_chain` | string | Rantai hotel yang dimiliki properti |
+| `property_brand` | string | Merek tempat properti berada |
+| `property_chain` | string | Rantai tempat properti berada |
 | `property_url_name` | string | Slug URL-friendly untuk properti |
 | `city_name` | string | Kota tempat properti berada |
 | `country_code` | string | Kode negara ISO 3166-1 alpha-2 |
@@ -321,7 +326,7 @@ Parameter ini membawa konteks pemesanan spesifik Wink. GA4 tidak otomatis menamp
 | `rate_plan_id` | string | Pengenal rencana tarif |
 | `room_rate_id` | string | Pengenal tarif kamar spesifik |
 | `room_rate_name` | string | Nama tampilan tarif kamar |
-| `num_perks` | number | Jumlah fasilitas yang termasuk dalam tarif |
+| `num_perks` | number | Jumlah fasilitas yang termasuk dengan tarif |
 | `room_location` | string | Deskripsi lokasi kamar (misal `Overwater`, `Garden`) |
 | `room_view` | string | Deskripsi pemandangan kamar (misal `Ocean`, `City`) |
 | `room_classification` | string | Klasifikasi atau tingkat kamar (misal `Suite`, `Standard`) |
@@ -329,23 +334,23 @@ Parameter ini membawa konteks pemesanan spesifik Wink. GA4 tidak otomatis menamp
 
 ---
 
-### Custom Dimensions di GA4
+### Dimensi Khusus di GA4
 
-GA4 mengabaikan parameter item khusus dalam laporan sampai Anda mendaftarkannya secara eksplisit sebagai custom dimension item-scoped. Anda hanya perlu mendaftarkan parameter yang ingin Anda gunakan dalam laporan — tidak perlu mendaftarkan semua 20.
+GA4 mengabaikan parameter item khusus dalam laporan sampai Anda mendaftarkannya secara eksplisit sebagai dimensi khusus item. Anda hanya perlu mendaftarkan parameter yang ingin Anda gunakan dalam laporan — tidak perlu mendaftarkan semua 20.
 
 <Steps>
 
-1. **Buka Custom Definitions**
+1. **Buka Definisi Kustom**
 
    Di GA4, buka **Admin** (ikon roda gigi kiri bawah) → pilih properti Anda → **Data display** → **Custom definitions**.
 
-2. **Buat custom dimension baru**
+2. **Buat dimensi khusus baru**
 
    Klik **Create custom dimensions**.
 
-3. **Isi detail dimension**
+3. **Isi detail dimensi**
 
-   - **Dimension name** — label yang mudah dibaca manusia yang muncul di laporan GA4 (lihat tabel di bawah)
+   - **Dimension name** — label yang mudah dibaca yang muncul di laporan GA4 (lihat tabel di bawah)
    - **Scope** — pilih **Item**
    - **Event parameter** — nama parameter persis seperti di dataLayer (lihat tabel di bawah)
    - **Description** — opsional tapi disarankan
@@ -357,15 +362,15 @@ GA4 mengabaikan parameter item khusus dalam laporan sampai Anda mendaftarkannya 
 </Steps>
 
 <Aside type="note">
-Custom dimension bisa membutuhkan waktu hingga 24 jam untuk mulai muncul di laporan GA4 setelah pendaftaran. Data historis yang dikumpulkan sebelum pendaftaran tidak diisi ulang.
+Dimensi khusus bisa memerlukan waktu hingga 24 jam untuk mulai muncul di laporan GA4 setelah pendaftaran. Data historis yang dikumpulkan sebelum pendaftaran tidak diisi ulang.
 
-GA4 mengizinkan hingga 50 custom dimension item-scoped per properti pada properti standar (properti 360 mengizinkan lebih banyak).
+GA4 mengizinkan hingga 50 dimensi khusus item per properti pada properti standar (properti 360 mengizinkan lebih banyak).
 </Aside>
 
-Gunakan tabel berikut sebagai referensi saat membuat custom dimension. Nilai **Event parameter** harus cocok persis — GA4 peka huruf besar/kecil.
+Gunakan tabel berikut sebagai referensi saat membuat dimensi khusus. Nilai **Event parameter** harus cocok persis — GA4 peka huruf besar/kecil.
 
-| Nama Dimension | Event parameter | Tipe |
-|----------------|-----------------|------|
+| Nama dimensi | Event parameter | Tipe |
+|--------------|-----------------|------|
 | Property ID | `property_id` | Teks |
 | Property name | `property_name` | Teks |
 | Property brand | `property_brand` | Teks |
@@ -391,7 +396,7 @@ Gunakan tabel berikut sebagai referensi saat membuat custom dimension. Nilai **E
 
 ### Event Tambahan yang Tersedia
 
-Event berikut tersedia di dataLayer Wink tetapi bukan bagian dari funnel pemesanan standar. Mereka mungkin aktif oleh interaksi lain di platform.
+Event berikut tersedia di dataLayer Wink tetapi bukan bagian dari funnel pemesanan standar. Mereka mungkin dipicu oleh interaksi lain di platform.
 
 #### `add_to_wishlist`
 
@@ -648,7 +653,7 @@ Tidak ada payload `ecommerce` yang disertakan dengan event ini.
 
 ### `virtualPageView`
 
-Ini adalah event kustom Wink — bukan bagian dari set event GA4 standar. Event ini didorong pada setiap navigasi halaman dan membawa konteks perangkat serta sesi. Tidak menyertakan objek `ecommerce`.
+Ini adalah event khusus Wink — bukan bagian dari set event GA4 standar. Event ini didorong pada setiap navigasi halaman dan membawa konteks perangkat serta sesi. Tidak menyertakan objek `ecommerce`.
 
 ```json
 {
@@ -671,7 +676,7 @@ Ini adalah event kustom Wink — bukan bagian dari set event GA4 standar. Event 
 | `device` | Tipe perangkat terdeteksi — `Desktop`, `Android`, `iPhone`, `iPad`, atau serupa |
 | `deviceAgent` | String user agent mentah |
 | `os` | Sistem operasi terdeteksi — `Windows`, `MacOS`, `Linux`, `UNIX` |
-| `path` | Jalur halaman saat ini |
+| `path` | Path halaman saat ini |
 | `title` | Judul halaman saat ini |
 | `userId` | Pengenal pengguna yang sudah autentikasi (dihilangkan jika belum login) |
 | `startDate` | Tanggal check-in dari sesi pencarian saat ini |

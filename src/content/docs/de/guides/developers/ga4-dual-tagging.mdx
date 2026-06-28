@@ -7,10 +7,10 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Indem Sie Ihre Google Analytics 4-Property mit Wink verbinden, werden Ihre Buchungsereignisse – von Zimmeransichten bis hin zu abgeschlossenen Käufen – automatisch neben den eigenen Analysen von Wink an Ihr eigenes GA4-Dashboard weitergeleitet. Kein Code, keine technische Einrichtung auf Ihrer Seite.
+Indem Sie Ihre Google Analytics 4-Property mit Wink verbinden, werden Ihre Buchungsereignisse – von Zimmeransichten bis hin zu abgeschlossenen Buchungen – automatisch neben den eigenen Analysen von Wink an Ihr eigenes GA4-Dashboard weitergeleitet. Kein Code, keine technische Einrichtung auf Ihrer Seite.
 
 <Aside type="tip">
-Alles, was Sie benötigen, ist eine GA4 Measurement ID. Sobald diese im Wink-Portal eingegeben ist, sind Ihre Analysen sofort live.
+Sie benötigen zwei Dinge von GA4: eine **Measurement ID** und ein **Measurement Protocol API Secret**. Die Measurement ID steuert den Browsing-Funnel im Browser des Gastes; das API-Secret ermöglicht es Wink, abgeschlossene Buchungen (`purchase`) **serverseitig** zu erfassen, sodass ein Verkauf nie verloren geht, wenn der Gast zum Zahlungsanbieter weitergeleitet wird und zurückkommt.
 </Aside>
 
 ---
@@ -18,11 +18,12 @@ Alles, was Sie benötigen, ist eine GA4 Measurement ID. Sobald diese im Wink-Por
 ## So funktioniert es
 
 ```
-Sie geben Ihre G-XXXXXXXXXX im Wink-Portal ein
+Sie geben Ihre Measurement ID (G-XXXXXXXXXX) und das API-Secret im Wink-Portal ein
        ↓
-Wink leitet Ihre Buchungsereignisse an Ihre GA4-Property weiter
+Browsing-Ereignisse (Ansichten, Warenkorb, Checkout) werden vom Browser an Ihre GA4-Property gesendet
+Abgeschlossene Buchungen (purchase) werden serverseitig gesendet – überstehen die Zahlungsweiterleitung
        ↓
-Sie melden sich bei analytics.google.com an und sehen Ihre Buchungen
+Sie melden sich bei analytics.google.com an und sehen Ihren vollständigen Buchungsfunnel
 ```
 
 ---
@@ -39,22 +40,34 @@ Sie melden sich bei analytics.google.com an und sehen Ihre Buchungen
 
    Admin → Datenstreams → Stream hinzufügen → Web. Geben Sie `wink.travel` als URL ein. Dies generiert Ihre **Measurement ID** (`G-XXXXXXXXXX`). Kopieren Sie diese.
 
-3. **Geben Sie Ihre Measurement ID im Wink-Portal ein**
+3. **Erstellen Sie ein Measurement Protocol API Secret**
 
-   Melden Sie sich bei [app.wink.travel](https://app.wink.travel) an, wählen Sie Ihr Konto aus und gehen Sie zum Tab **Anpassungen**. Fügen Sie dort Ihre Measurement ID ein und speichern Sie. Das war’s – Ihre GA4-Integration ist jetzt aktiv.
+   Öffnen Sie denselben Web-Datenstream → scrollen Sie zu **Measurement Protocol API secrets** → **Erstellen**. Geben Sie ihm einen Spitznamen (z. B. „Wink“) und kopieren Sie den generierten **Secret-Wert**. Dieses Secret ermöglicht es Wink, abgeschlossene Buchungen serverseitig zu erfassen, sodass ein Verkauf während der Zahlungsweiterleitung nie verloren geht.
 
-4. **Markieren Sie `purchase` als Schlüsselereignis**
+4. **Geben Sie Ihre Measurement ID und das API-Secret im Wink-Portal ein**
 
-   Gehen Sie zurück zu Ihrer GA4-Property: Admin → Ereignisse → suchen Sie `purchase` → schalten Sie **Als Schlüsselereignis markieren** ein. So erscheinen abgeschlossene Buchungen in Ihrem Conversions-Bericht.
+   Melden Sie sich bei [app.wink.travel](https://app.wink.travel) an, wählen Sie Ihr Konto aus und gehen Sie zum Tab **Anpassungen**. Fügen Sie Ihre Measurement ID und Ihr API-Secret in die **GA4**-Felder ein und speichern Sie. Das war’s – Ihre GA4-Integration ist jetzt aktiv.
 
-5. **Sehen Sie Ihre Daten ein**
+   <Aside type="note">
+   Das API-Secret ist **nur zum Schreiben**: Sobald es gespeichert ist, wird es nie wieder angezeigt. Bei zukünftigen Änderungen lassen Sie das Secret-Feld leer, um den bereits gespeicherten Wert beizubehalten.
+   </Aside>
 
-   Melden Sie sich bei [analytics.google.com](https://analytics.google.com) an und Sie sehen Ihre Buchungen, Umsätze und den Gästetrichter – alles automatisch über Wink getrackt.
+5. **Markieren Sie `purchase` als Schlüsselereignis**
+
+   Gehen Sie zurück zu Ihrer GA4-Property: Admin → Ereignisse → suchen Sie `purchase` → aktivieren Sie **Als Schlüsselereignis markieren**. So erscheinen abgeschlossene Buchungen in Ihrem Conversions-Bericht.
+
+6. **Sehen Sie Ihre Daten ein**
+
+   Melden Sie sich bei [analytics.google.com](https://analytics.google.com) an und Sie sehen Ihre Buchungen, Umsätze und den Gästefunnel – alles automatisch über Wink getrackt.
 
 </Steps>
 
 <Aside type="note">
-Für diese Integration müssen Sie keinen Tracking-Code auf Ihrer eigenen Website installieren. Wink übernimmt alles. Ihre Measurement ID ist einfach das Ziel, an das Ihre Buchungsdaten gesendet werden.
+Für diese Integration müssen Sie keinen Tracking-Code auf Ihrer eigenen Website installieren. Wink übernimmt alles. Ihre Measurement ID ist das Ziel, an das Ihre Buchungsdaten gesendet werden, und Ihr API-Secret ermöglicht es Wink, abgeschlossene Buchungen serverseitig zu bestätigen.
+</Aside>
+
+<Aside type="tip">
+**GA4 und GTM können zusammen verwendet werden.** Wenn Sie auch einen Google Tag Manager-Container betreiben (z. B. einen Sojern-Container), können Sie beide gleichzeitig konfigurieren – sie schließen sich nicht mehr gegenseitig aus. Siehe [GTM Analytics Integration](/de/guides/developers/gtm-dual-tagging).
 </Aside>
 
 ---
@@ -63,7 +76,7 @@ Für diese Integration müssen Sie keinen Tracking-Code auf Ihrer eigenen Websit
 
 Sobald die Verbindung hergestellt ist, erhält Ihre GA4-Property die vollständige Palette der Enhanced E-commerce-Ereignisse für Ihre Unterkunft:
 
-### Entdeckung
+### Discovery
 
 | Ereignis | Bedeutung |
 |---|---|
@@ -71,7 +84,7 @@ Sobald die Verbindung hergestellt ist, erhält Ihre GA4-Property die vollständi
 | `select_item` | Ein Gast hat Ihre Unterkunft aus einer Liste ausgewählt |
 | `view_item` | Ein Gast hat Ihre Hotelseite angesehen |
 
-### Überlegung
+### Consideration
 
 | Ereignis | Bedeutung |
 |---|---|
@@ -79,7 +92,7 @@ Sobald die Verbindung hergestellt ist, erhält Ihre GA4-Property die vollständi
 | `select_promotion` | Ein Gast hat auf ein Werbeangebot geklickt |
 | `add_to_wishlist` | Ein Gast hat Ihre Unterkunft auf die Wunschliste gesetzt |
 
-### Buchungstrichter
+### Buchungsfunnel
 
 | Ereignis | Bedeutung |
 |---|---|
@@ -98,7 +111,7 @@ Alle Ereignisse enthalten relevante Dimensionen wie Umsatz, Währung, Zimmertyp 
 
 ## Cross-Domain-Tracking (Erweitert)
 
-Die oben beschriebene Standardintegration verfolgt alles, was innerhalb von Wink passiert. Wenn Sie jedoch Gäste von Ihrer eigenen Website bis zum Buchungsabschluss auf Wink verfolgen und die ursprüngliche Traffic-Quelle (Google Ads, E-Mail-Kampagnen, organische Suche usw.) korrekt zuordnen möchten, ist auf beiden Seiten ein zusätzlicher Schritt erforderlich.
+Die oben beschriebene Standardintegration verfolgt alles, was innerhalb von Wink passiert. Wenn Sie jedoch Gäste von Ihrer eigenen Website bis zum Abschluss der Buchung auf Wink verfolgen und die ursprüngliche Traffic-Quelle (Google Ads, E-Mail-Kampagnen, organische Suche usw.) korrekt zuordnen möchten, ist auf beiden Seiten ein zusätzlicher Schritt erforderlich.
 
 <Aside type="caution">
 Dieser Abschnitt gilt nur, wenn Sie GA4 auf Ihrer eigenen Website installiert haben. Wenn Sie GA4 nicht auf Ihrer Website verwenden, reicht die oben beschriebene Standardintegration aus.
@@ -106,7 +119,7 @@ Dieser Abschnitt gilt nur, wenn Sie GA4 auf Ihrer eigenen Website installiert ha
 
 ### Warum das wichtig ist
 
-Ohne Cross-Domain-Tracking erscheint ein Gast, der zuerst Ihre Website besucht und dann auf Wink bucht, in GA4 als **Direkte** Sitzung ohne Verbindung zu seinem vorherigen Besuch. Alle Google Ads-Klicks, E-Mail-Kampagnen oder organischen Suchbesuche, die zur Buchung führten, werden nicht angerechnet.
+Ohne Cross-Domain-Tracking erscheint ein Gast, der zuerst Ihre Website besucht und dann auf Wink bucht, in Ihrem GA4 als **Direkte** Sitzung ohne Verbindung zu seinem vorherigen Besuch. Alle Google Ads-Klicks, E-Mail-Kampagnen oder organischen Suchbesuche, die zur Buchung führten, erhalten keine Anerkennung.
 
 Mit konfiguriertem Cross-Domain-Tracking sehen Sie die vollständige Gästereise:
 
@@ -117,24 +130,24 @@ Ihre Website (Gast durchsucht Zimmer)
        ↓
 wink.travel (Gast wählt Zimmer und bucht)
        ↓
-Kauf wird korrekt der ursprünglichen Google Ads-Anzeige zugeordnet
+purchase wird korrekt dem ursprünglichen Google Ads-Klick zugeordnet
 ```
 
 ### Aktion erforderlich: Sie
 
-Konfigurieren Sie Ihre GA4-Property so, dass `wink.travel` als Teil Ihrer eigenen Domain erkannt wird und nicht als externer Verweis. Dadurch verknüpft GA4 die beiden Sitzungen zu einer durchgehenden Gästereise.
+Konfigurieren Sie Ihre GA4-Property so, dass `wink.travel` als Teil Ihrer eigenen Domain erkannt wird und nicht als externer Verweis. Dies teilt GA4 mit, die beiden Sitzungen zu einer durchgehenden Gästereise zusammenzuführen.
 
 <Steps>
 1. GA4 Admin → Datenstreams → Ihren Stream auswählen
-2. Tag-Einstellungen konfigurieren → **Domains konfigurieren**
+2. Tag-Einstellungen konfigurieren → **Ihre Domains konfigurieren**
 3. `wink.travel` als verknüpfte Domain hinzufügen
 4. Speichern
 </Steps>
 
 ### Aktion erforderlich: Wink
 
-Kontaktieren Sie [Wink Support](https://app.wink.travel) und geben Sie Ihre Website-Domain (z. B. `yourhotel.com`) an. Wink fügt Ihre Domain zur Liste der Referral-Ausschlüsse in der Wink GA4-Property hinzu. So wird verhindert, dass Ihre Website als Verweisquelle erfasst wird, was sonst die ursprüngliche Attribution des Gasts überschreiben und eine neue Sitzung starten würde.
+Kontaktieren Sie [Wink Support](https://app.wink.travel) und geben Sie Ihre Website-Domain an (z. B. `yourhotel.com`). Wink fügt Ihre Domain zur Liste der Referral-Ausschlüsse in der Wink GA4-Property hinzu. So wird verhindert, dass Ihre Website als Verweisquelle erfasst wird, was sonst die ursprüngliche Attribution des Gastes überschreiben und eine neue Sitzung starten würde.
 
 <Aside type="tip">
-Die oben beschriebene Standardintegration reicht für die meisten Unterkünfte aus und bietet Ihnen sofortige Einblicke in Buchungen und Umsätze bei Wink. Cross-Domain-Tracking ist eine erweiterte Option, die sich lohnt einzurichten, sobald Sie mit Ihren GA4-Daten vertraut sind und tiefere Attributionsanalysen wünschen.
+Die oben beschriebene Standardintegration ist für die meisten Unterkünfte ausreichend und bietet Ihnen sofortige Einblicke in Buchungen und Umsätze auf Wink. Cross-Domain-Tracking ist eine erweiterte Option, die sich lohnt einzurichten, sobald Sie mit Ihren GA4-Daten vertraut sind und tiefere Attributionsanalysen wünschen.
 </Aside>

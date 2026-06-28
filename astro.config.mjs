@@ -2,6 +2,7 @@ import starlight from '@astrojs/starlight';
 // import starlightDocSearch from '@astrojs/starlight-docsearch';
 import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import starlightBlog from 'starlight-blog';
 import starlightChangelogs, { makeChangelogsSidebarLinks } from 'starlight-changelogs';
 import starlightOpenAPI, { createOpenAPISidebarGroup } from 'starlight-openapi'
@@ -63,6 +64,14 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://wink.travel',
   redirects: { ...buildRedirects(), '/home-v2': '/' },
+  // Astro v7 defaults Markdown rendering to the native `satteri` processor, which does
+  // not run remark/rehype plugins. Starlight registers its transforms for whichever
+  // processor is configured, but `starlight-blog` still injects its excerpt remark plugin
+  // via the deprecated `markdown.remarkPlugins` option. Opt back into the unified
+  // (remark/rehype) pipeline so those plugins keep running, preserving v6 behavior.
+  markdown: {
+    processor: unified(),
+  },
   image: {
     domains: ['res.cloudinary.com']
   },

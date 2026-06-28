@@ -1,16 +1,16 @@
 ---
-title: Tích hợp Sojern Pixel
-description: Cách kết nối tài khoản Sojern của bạn với Wink để Sojern có thể theo dõi hành trình đặt phòng của khách và hỗ trợ các chiến dịch tiếp thị lại và quảng cáo của bạn.
+title: Tích hợp GTM Analytics
+description: Cách kết nối bất kỳ container Google Tag Manager nào (chẳng hạn như container Sojern) với Wink để theo dõi hành trình đặt phòng của khách và hỗ trợ các chiến dịch tiếp thị lại và quảng cáo của bạn.
 sidebar:
-  label: Tích hợp Sojern Pixel
+  label: Tích hợp GTM Analytics
 ---
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Nếu bạn đang chạy các chiến dịch quảng cáo qua Sojern, bạn có thể kết nối tài khoản Sojern của mình với Wink bằng cách nhập ID Container GTM của Sojern vào cổng thông tin Wink. Khi đã kết nối, pixel theo dõi của Sojern sẽ tự động kích hoạt cho cơ sở lưu trú của bạn — bao phủ toàn bộ hành trình của khách từ tìm kiếm đến khi hoàn tất đặt phòng.
+Bạn có thể kết nối **bất kỳ** container Google Tag Manager (GTM) nào với Wink bằng cách nhập **GTM Container ID** của nó vào cổng thông tin Wink. Khi đã kết nối, container của bạn sẽ tự động tải cho cơ sở lưu trú của bạn và đọc trực tiếp các sự kiện đặt phòng của Wink — bao phủ toàn bộ hành trình khách từ tìm kiếm đến khi hoàn tất đặt phòng. Một trường hợp sử dụng phổ biến là container **Sojern** cho tiếp thị lại và quảng cáo, nhưng bất kỳ container GTM nào cũng hoạt động tương tự.
 
 <Aside type="tip">
-Điều này giả định bạn đã có tài khoản Sojern hoạt động và đã nhận được ID Container GTM từ quản lý tài khoản Sojern của bạn. Nếu bạn chưa có tài khoản Sojern, hãy truy cập [sojern.com/contact](https://www.sojern.com/contact) để bắt đầu.
+Điều này giả định bạn đã có GTM Container ID (định dạng `GTM-XXXXXXX`). Nếu container của bạn đến từ đối tác như Sojern, hãy yêu cầu quản lý tài khoản của bạn cung cấp **GTM Container ID** cụ thể — nó khác với pixel hoặc tag ID. Mới dùng Sojern? Truy cập [sojern.com/contact](https://www.sojern.com/contact) để bắt đầu.
 </Aside>
 
 ---
@@ -19,24 +19,28 @@ Nếu bạn đang chạy các chiến dịch quảng cáo qua Sojern, bạn có 
 
 <Steps>
 
-1. **Lấy ID Container GTM từ Sojern**
+1. **Lấy GTM Container ID của bạn**
 
-   Liên hệ với quản lý tài khoản Sojern của bạn và yêu cầu **ID Container GTM**. Nó có định dạng `GTM-XXXXXXX`. Đây khác với ID Pixel Sojern — hãy chắc chắn bạn yêu cầu đúng ID Container GTM.
+   Lấy **GTM Container ID** (định dạng `GTM-XXXXXXX`). Nếu nó đến từ đối tác như Sojern, hãy yêu cầu GTM Container ID cụ thể — nó khác với pixel hoặc tag ID.
 
 2. **Nhập vào cổng thông tin Wink**
 
-   Đăng nhập vào [app.wink.travel](https://app.wink.travel), chọn tài khoản của bạn, và vào tab **Tùy chỉnh**. Dán ID Container GTM Sojern vào trường Sojern và lưu lại. Tích hợp của bạn giờ đã hoạt động.
+   Đăng nhập vào [app.wink.travel](https://app.wink.travel), chọn tài khoản của bạn và vào tab **Customizations**. Dán GTM Container ID vào trường **GTM** và lưu lại. Tích hợp của bạn giờ đã hoạt động.
 
-3. **Xác nhận với quản lý tài khoản Sojern**
+3. **(Tùy chọn) Thêm GA4 Measurement ID + API Secret cho mua hàng phía máy chủ**
 
-   Thông báo cho quản lý tài khoản Sojern biết tích hợp đã kích hoạt. Họ có thể kiểm tra từ phía họ rằng pixel đang hoạt động chính xác trên `wink.travel` cho cơ sở lưu trú của bạn và dữ liệu đang chảy vào tài khoản Sojern của bạn.
+   Container GTM chạy hoàn toàn trong trình duyệt của khách, nên một đặt phòng hoàn tất có thể bị bỏ lỡ nếu khách đóng tab trong lúc chuyển hướng thanh toán. Nếu container của bạn tải một **thuộc tính GA4** và bạn muốn ghi nhận đặt phòng hoàn tất một cách đáng tin cậy, hãy nhập thêm **Measurement ID** và **Measurement Protocol API secret** của GA4 đó trong phần GTM. Wink sẽ gửi sự kiện `purchase` cho thuộc tính đó **phía máy chủ**, chính xác như mô tả trong hướng dẫn [Tích hợp GA4 Analytics](/vi/guides/developers/ga4-dual-tagging). Để trống nếu bạn chỉ cần theo dõi trong trình duyệt.
+
+4. **Xác nhận với nhà cung cấp của bạn**
+
+   Nếu container của bạn đến từ đối tác như Sojern, hãy thông báo với quản lý tài khoản rằng tích hợp đã hoạt động. Họ có thể kiểm tra từ phía họ rằng các tag đang kích hoạt đúng trên `wink.travel` cho cơ sở lưu trú của bạn và dữ liệu đang chảy vào tài khoản của bạn.
 
 </Steps>
 
 <Aside type="note">
-Bạn không cần đặt bất kỳ mã pixel nào trên trang web của riêng bạn cho tích hợp này. Wink tự động tải container Sojern của bạn trên tất cả các trang mà cơ sở lưu trú của bạn hoạt động.
+Bạn không cần đặt bất kỳ mã pixel nào trên trang web của mình cho tích hợp này. Wink tự động tải container GTM của bạn trên tất cả các trang nơi cơ sở lưu trú của bạn hoạt động.
 
-Cấu hình này hoạt động với bất kỳ ID Container GTM tùy chỉnh nào. Chúng tôi chỉ dùng Sojern làm ví dụ vì đây là một tích hợp rất phổ biến.
+Điều này hoạt động với **bất kỳ** GTM Container ID nào — Sojern chỉ là ví dụ phổ biến.
 </Aside>
 
 ---
@@ -45,19 +49,20 @@ Cấu hình này hoạt động với bất kỳ ID Container GTM tùy chỉnh n
 
 Để minh bạch, đây là những gì Wink cấu hình để tích hợp này hoạt động:
 
-- **Có một trường ID Container GTM Sojern** trong tab Tùy chỉnh của cổng thông tin Wink. Khi bạn nhập ID Container, Wink kiểm tra định dạng và lưu trữ an toàn cho cơ sở lưu trú của bạn.
-- **Trên mọi trang mà cơ sở lưu trú của bạn hoạt động** trên Wink, ID Container GTM Sojern của bạn được chèn vào trang và hệ thống quản lý thẻ của Wink sẽ tải container Sojern cùng với container của mình. Việc này diễn ra tự động — không cần bước thủ công nào từ đội Wink cho từng cơ sở lưu trú.
-- **Container Sojern của bạn được tải không đồng bộ**, nghĩa là không ảnh hưởng đến hiệu suất tải trang cho khách.
-- **Pixel theo dõi của Wink và pixel Sojern chạy song song**, cùng đọc dữ liệu sự kiện chia sẻ. Mỗi sự kiện đặt phòng mà Wink theo dõi đều có sẵn đồng thời cho container Sojern của bạn.
-- **Khi cơ sở lưu trú của bạn không được xem** — ví dụ khi khách đang duyệt một khách sạn khác trên Wink — container Sojern sẽ không được tải. Điều này đảm bảo Sojern chỉ nhận dữ liệu liên quan đến cơ sở lưu trú của bạn.
+- **Có trường GTM Container ID** trong tab Customizations của cổng thông tin Wink. Khi bạn nhập Container ID, Wink kiểm tra định dạng (`GTM-XXXXXXX`) và lưu trữ an toàn theo cơ sở lưu trú của bạn.
+- **Trên mọi trang nơi cơ sở lưu trú của bạn hoạt động** trên Wink, container của bạn được chèn trực tiếp vào trang — dùng chung `window.dataLayer` của Wink — nên nó tải cùng container của Wink mà không cần cấu hình thêm. Việc này diễn ra tự động, không cần làm việc riêng cho từng cơ sở lưu trú từ đội Wink.
+- **Container của bạn được tải không đồng bộ**, nên không ảnh hưởng đến hiệu suất tải trang cho khách.
+- **Theo dõi của Wink và container của bạn chạy song song**, đọc từ cùng `dataLayer` chia sẻ. Mỗi sự kiện đặt phòng Wink theo dõi đều có sẵn đồng thời cho container của bạn.
+- **Khi cơ sở lưu trú của bạn không được xem** — ví dụ khi khách đang duyệt khách sạn khác trên Wink — container của bạn không được tải, nên chỉ nhận dữ liệu liên quan đến cơ sở lưu trú của bạn.
+- **Nếu bạn cung cấp GA4 Measurement ID + API secret** (bước 3 ở trên), sự kiện `purchase` cho các đặt phòng hoàn tất cũng được gửi **phía máy chủ** qua GA4 Measurement Protocol, nên một giao dịch được ghi nhận ngay cả khi khách không quay lại trang xác nhận.
 
 ---
 
 ## Tham chiếu DataLayer
 
-Wink đẩy các sự kiện tương thích GA4 vào `dataLayer` xuyên suốt hành trình khách. Container GTM của bạn đọc từ cùng một `dataLayer` chia sẻ này, nên bất kỳ trigger hoặc biến nào bạn cấu hình đều có thể truy cập tất cả các thuộc tính mô tả bên dưới.
+Wink đẩy các sự kiện tương thích GA4 vào `dataLayer` xuyên suốt hành trình khách. Container GTM của bạn đọc từ cùng `dataLayer` chia sẻ này, nên bất kỳ trigger hoặc biến nào bạn cấu hình đều có quyền truy cập vào tất cả thuộc tính mô tả dưới đây.
 
-Mỗi sự kiện tuân theo cấu trúc GA4 Enhanced Ecommerce tiêu chuẩn: một chuỗi `event` cấp cao và một đối tượng `ecommerce`. Trước mỗi lần đẩy, Wink xóa payload ecommerce trước đó để tránh dữ liệu cũ bị rò rỉ vào các trigger mới.
+Mỗi sự kiện theo cấu trúc GA4 Enhanced Ecommerce tiêu chuẩn: một chuỗi `event` cấp cao và một đối tượng `ecommerce`. Trước mỗi lần đẩy, Wink xóa payload ecommerce trước đó để tránh dữ liệu cũ ảnh hưởng đến trigger mới.
 
 <Aside type="note">
 **Mẫu reset dataLayer**
@@ -69,21 +74,21 @@ dataLayer.push({ ecommerce: null });   // xóa sự kiện trước
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
-Không dựa vào việc các thuộc tính ecommerce tồn tại giữa các sự kiện. Luôn đọc chúng tại thời điểm trigger trong cùng một sự kiện.
+Không dựa vào việc thuộc tính ecommerce tồn tại giữa các sự kiện. Luôn đọc chúng khi trigger trong cùng một sự kiện.
 </Aside>
 
 ---
 
-### Các sự kiện hành trình đặt phòng
+### Sự kiện hành trình đặt phòng
 
-Các sự kiện này tự động kích hoạt khi khách di chuyển qua phễu đặt phòng. Cấu hình trigger GTM của bạn là trigger **Sự kiện tùy chỉnh** khớp với tên sự kiện bên dưới.
+Các sự kiện này tự động kích hoạt khi khách di chuyển qua phễu đặt phòng. Cấu hình trigger GTM của bạn là trigger **Custom Event** khớp với tên sự kiện bên dưới.
 
 | Bước | Sự kiện | Khi nào kích hoạt |
 |------|---------|-------------------|
-| 1 | `view_item_list` | Lưới hoặc danh sách kho khách sạn được tải |
+| 1 | `view_item_list` | Lưới hoặc danh sách kho khách sạn tải |
 | 2 | `view_item` | Khách xem trang cơ sở lưu trú cụ thể |
 | 3 | `add_to_cart` | Khách thêm phòng vào giỏ hàng |
-| 4 | `begin_checkout` | Trang thanh toán / thanh toán được tải |
+| 4 | `begin_checkout` | Trang thanh toán / checkout tải |
 | 5 | `add_payment_info` | Khách chọn phương thức thanh toán |
 | 6 | `login` | Khách xác thực qua SSO |
 | 7 | `purchase` | Đặt phòng được xác nhận |
@@ -127,7 +132,7 @@ Kích hoạt khi khách xem một cơ sở lưu trú cụ thể.
 
 #### `add_to_cart`
 
-Kích hoạt khi khách thêm một phòng vào giỏ hàng.
+Kích hoạt khi khách thêm phòng vào giỏ hàng.
 
 ```json
 {
@@ -144,7 +149,7 @@ Kích hoạt khi khách thêm một phòng vào giỏ hàng.
 
 #### `begin_checkout`
 
-Kích hoạt khi trang thanh toán được tải.
+Kích hoạt khi trang thanh toán / checkout tải.
 
 ```json
 {
@@ -267,33 +272,33 @@ Kích hoạt khi đặt phòng bị hủy.
 }
 ```
 
-`transaction_id` trùng với sự kiện `purchase` của cùng một đặt phòng. `coupon`, `shipping`, và `tax` chỉ xuất hiện khi có áp dụng.
+`transaction_id` trùng với sự kiện `purchase` của cùng đặt phòng. `coupon`, `shipping`, và `tax` chỉ xuất hiện khi có áp dụng.
 
 ---
 
 ### Thuộc tính mục
 
-Tất cả các sự kiện có mảng `items` đều dùng chung cấu trúc mục. Mỗi thuộc tính là tùy chọn trừ khi được đánh dấu bắt buộc.
+Tất cả sự kiện có mảng `items` dùng chung cấu trúc mục. Mỗi thuộc tính là tùy chọn trừ khi được đánh dấu bắt buộc.
 
-#### Các trường GA4 tiêu chuẩn
+#### Trường GA4 tiêu chuẩn
 
 Các trường này được GA4 hiểu sẵn và xuất hiện trong báo cáo ecommerce tiêu chuẩn mà không cần cấu hình thêm.
 
-| Thuộc tính | Loại | Bắt buộc | Mô tả |
-|------------|-------|----------|-------|
+| Thuộc tính | Kiểu | Bắt buộc | Mô tả |
+|------------|------|----------|-------|
 | `item_id` | chuỗi | Có | Mã định danh duy nhất cho phòng hoặc sản phẩm |
 | `item_name` | chuỗi | — | Tên phòng hoặc sản phẩm |
 | `affiliation` | chuỗi | — | Tên đối tác hoặc người bán |
 | `coupon` | chuỗi | — | Mã giảm giá áp dụng cho mục |
 | `currency` | chuỗi | — | Mã tiền tệ ISO 4217 (ví dụ `USD`) |
 | `creative_name` | chuỗi | — | Tên sáng tạo dùng trong khuyến mãi |
-| `creative_slot` | chuỗi | — | Vị trí hiển thị của sáng tạo khuyến mãi |
+| `creative_slot` | chuỗi | — | Vị trí slot của sáng tạo khuyến mãi |
 | `discount` | số | — | Số tiền giảm giá áp dụng |
 | `index` | số | — | Vị trí trong danh sách (bắt đầu từ 1) |
 | `item_brand` | chuỗi | — | Tên khách sạn hoặc thương hiệu |
 | `item_category` | chuỗi | — | Loại sản phẩm — ví dụ `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
 | `item_list_id` | chuỗi | — | Mã định danh danh sách chứa mục này |
-| `item_list_name` | chuỗi | — | Tên hiển thị của danh sách |
+| `item_list_name` | chuỗi | — | Tên hiển thị danh sách |
 | `location_id` | chuỗi | — | Tọa độ địa lý của cơ sở lưu trú |
 | `price` | số | — | Giá đơn vị |
 | `promotion_id` | chuỗi | — | Mã định danh khuyến mãi |
@@ -302,10 +307,10 @@ Các trường này được GA4 hiểu sẵn và xuất hiện trong báo cáo 
 
 #### Tham số tùy chỉnh theo mục
 
-Các tham số này mang ngữ cảnh đặt phòng đặc thù của Wink. GA4 không tự động hiển thị trong báo cáo — bạn phải đăng ký từng tham số này làm **thuộc tính tùy chỉnh theo mục** trong GA4 trước khi nó xuất hiện trong báo cáo hoặc phân tích. Xem phần [Thuộc tính tùy chỉnh trong GA4](#custom-dimensions-in-ga4) bên dưới để biết hướng dẫn.
+Các tham số này mang ngữ cảnh đặt phòng đặc thù của Wink. GA4 không tự động hiển thị trong báo cáo — bạn phải đăng ký từng tham số này làm **custom dimension theo mục** trong thuộc tính GA4 của bạn trước khi nó xuất hiện trong báo cáo hoặc phân tích. Xem phần [Custom Dimensions in GA4](#custom-dimensions-in-ga4) bên dưới để biết hướng dẫn.
 
-| Thuộc tính | Loại | Mô tả |
-|------------|-------|-------|
+| Thuộc tính | Kiểu | Mô tả |
+|------------|------|-------|
 | `property_id` | chuỗi | Mã định danh cơ sở lưu trú Wink |
 | `property_name` | chuỗi | Tên hiển thị cơ sở lưu trú |
 | `property_brand` | chuỗi | Thương hiệu cơ sở lưu trú thuộc về |
@@ -317,11 +322,11 @@ Các tham số này mang ngữ cảnh đặt phòng đặc thù của Wink. GA4 
 | `end_date` | chuỗi | Ngày trả phòng theo định dạng `YYYY-MM-DD` |
 | `num_adults` | số | Số người lớn trong đặt phòng |
 | `num_children` | số | Số trẻ em trong đặt phòng |
-| `cancellation_policy` | chuỗi | Một trong các giá trị: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
+| `cancellation_policy` | chuỗi | Một trong: `Refundable`, `Non-Refundable`, `Refundable-With-Restrictions`, `Non-Refundable-With-Restrictions` |
 | `rate_plan_id` | chuỗi | Mã định danh kế hoạch giá |
-| `room_rate_id` | chuỗi | Mã định danh mức giá phòng cụ thể |
-| `room_rate_name` | chuỗi | Tên hiển thị mức giá phòng |
-| `num_perks` | số | Số ưu đãi kèm theo mức giá |
+| `room_rate_id` | chuỗi | Mã định danh giá phòng cụ thể |
+| `room_rate_name` | chuỗi | Tên hiển thị giá phòng |
+| `num_perks` | số | Số ưu đãi kèm theo giá |
 | `room_location` | chuỗi | Mô tả vị trí phòng (ví dụ `Overwater`, `Garden`) |
 | `room_view` | chuỗi | Mô tả tầm nhìn phòng (ví dụ `Ocean`, `City`) |
 | `room_classification` | chuỗi | Phân loại hoặc hạng phòng (ví dụ `Suite`, `Standard`) |
@@ -329,43 +334,43 @@ Các tham số này mang ngữ cảnh đặt phòng đặc thù của Wink. GA4 
 
 ---
 
-### Thuộc tính tùy chỉnh trong GA4
+### Custom Dimensions trong GA4
 
-GA4 bỏ qua các tham số tùy chỉnh theo mục trong báo cáo cho đến khi bạn đăng ký chúng rõ ràng là thuộc tính tùy chỉnh theo mục. Bạn chỉ cần đăng ký các tham số bạn muốn dùng trong báo cáo — không cần đăng ký tất cả 20 tham số.
+GA4 bỏ qua các tham số tùy chỉnh theo mục trong báo cáo cho đến khi bạn đăng ký chúng làm custom dimension theo mục. Bạn chỉ cần đăng ký các tham số bạn muốn dùng trong báo cáo — không cần đăng ký tất cả 20 tham số.
 
 <Steps>
 
-1. **Mở Định nghĩa Tùy chỉnh**
+1. **Mở Custom Definitions**
 
-   Trong GA4, vào **Admin** (biểu tượng bánh răng dưới cùng bên trái) → chọn tài sản của bạn → **Hiển thị dữ liệu** → **Định nghĩa tùy chỉnh**.
+   Trong GA4, vào **Admin** (biểu tượng bánh răng dưới cùng bên trái) → chọn thuộc tính của bạn → **Data display** → **Custom definitions**.
 
-2. **Tạo thuộc tính tùy chỉnh mới**
+2. **Tạo custom dimension mới**
 
-   Nhấn **Tạo thuộc tính tùy chỉnh**.
+   Nhấn **Create custom dimensions**.
 
-3. **Điền thông tin thuộc tính**
+3. **Điền thông tin dimension**
 
-   - **Tên thuộc tính** — nhãn dễ hiểu hiển thị trong báo cáo GA4 (xem bảng bên dưới)
-   - **Phạm vi** — chọn **Mục**
-   - **Tham số sự kiện** — tên tham số chính xác như trong dataLayer (xem bảng bên dưới)
-   - **Mô tả** — tùy chọn nhưng nên có
+   - **Dimension name** — nhãn dễ đọc hiển thị trong báo cáo GA4 (xem bảng bên dưới)
+   - **Scope** — chọn **Item**
+   - **Event parameter** — tên tham số chính xác như trong dataLayer (xem bảng bên dưới)
+   - **Description** — tùy chọn nhưng nên có
 
 4. **Lưu và lặp lại**
 
-   Nhấn **Lưu**, sau đó lặp lại cho từng tham số bạn muốn theo dõi.
+   Nhấn **Save**, rồi lặp lại cho từng tham số bạn muốn theo dõi.
 
 </Steps>
 
 <Aside type="note">
-Thuộc tính tùy chỉnh có thể mất đến 24 giờ để bắt đầu xuất hiện trong báo cáo GA4 sau khi đăng ký. Dữ liệu lịch sử thu thập trước khi đăng ký sẽ không được bổ sung lại.
+Custom dimensions có thể mất đến 24 giờ để xuất hiện trong báo cáo GA4 sau khi đăng ký. Dữ liệu lịch sử thu thập trước khi đăng ký sẽ không được bổ sung.
 
-GA4 cho phép tối đa 50 thuộc tính tùy chỉnh theo mục trên tài sản tiêu chuẩn (tài sản 360 cho phép nhiều hơn).
+GA4 cho phép tối đa 50 custom dimension theo mục trên thuộc tính tiêu chuẩn (thuộc tính 360 cho phép nhiều hơn).
 </Aside>
 
-Dùng bảng sau làm tham khảo khi tạo thuộc tính tùy chỉnh. Giá trị **Tham số sự kiện** phải chính xác — GA4 phân biệt chữ hoa chữ thường.
+Dùng bảng sau làm tham khảo khi tạo custom dimension. Giá trị **Event parameter** phải chính xác — GA4 phân biệt chữ hoa chữ thường.
 
-| Tên thuộc tính | Tham số sự kiện | Loại |
-|----------------|-----------------|------|
+| Tên dimension | Event parameter | Kiểu |
+|---------------|-----------------|------|
 | Property ID | `property_id` | Văn bản |
 | Property name | `property_name` | Văn bản |
 | Property brand | `property_brand` | Văn bản |
@@ -440,7 +445,7 @@ Các sự kiện sau có trong dataLayer của Wink nhưng không thuộc phễu
 }
 ```
 
-Sự kiện này không kèm theo payload `ecommerce`.
+Sự kiện này không kèm payload `ecommerce`.
 
 #### `view_promotion`
 
@@ -648,7 +653,7 @@ Sự kiện này không kèm theo payload `ecommerce`.
 
 ### `virtualPageView`
 
-Đây là sự kiện tùy chỉnh của Wink — không thuộc bộ sự kiện GA4 tiêu chuẩn. Nó được đẩy trên mỗi lần điều hướng trang và mang theo ngữ cảnh thiết bị và phiên. Nó không bao gồm đối tượng `ecommerce`.
+Đây là sự kiện tùy chỉnh của Wink — không thuộc bộ sự kiện GA4 tiêu chuẩn. Nó được đẩy trên mỗi lần chuyển trang và mang ngữ cảnh thiết bị và phiên. Nó không bao gồm đối tượng `ecommerce`.
 
 ```json
 {
@@ -668,7 +673,7 @@ Sự kiện này không kèm theo payload `ecommerce`.
 
 | Thuộc tính | Mô tả |
 |------------|-------|
-| `device` | Loại thiết bị phát hiện — `Desktop`, `Android`, `iPhone`, `iPad`, hoặc tương tự |
+| `device` | Loại thiết bị phát hiện — `Desktop`, `Android`, `iPhone`, `iPad` hoặc tương tự |
 | `deviceAgent` | Chuỗi user agent thô |
 | `os` | Hệ điều hành phát hiện — `Windows`, `MacOS`, `Linux`, `UNIX` |
 | `path` | Đường dẫn trang hiện tại |

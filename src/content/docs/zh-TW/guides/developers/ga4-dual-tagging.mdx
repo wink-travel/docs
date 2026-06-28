@@ -7,10 +7,10 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-透過將您的 Google Analytics 4 帳戶連接到 Wink，您的訂單事件 — 從房型瀏覽到完成購買 — 將自動轉發到您自己的 GA4 儀表板，與 Wink 自有的分析資料並行。無需撰寫程式碼，也不需您端進行技術設定。
+透過將您的 Google Analytics 4 帳戶連接到 Wink，您的訂單事件 — 從房型瀏覽到完成訂單 — 將自動轉發到您自己的 GA4 儀表板，並與 Wink 自有的分析資料並行顯示。無需程式碼，也不需您端的技術設定。
 
 <Aside type="tip">
-您只需要一組 GA4 測量 ID。輸入到 Wink 後台後，您的分析資料即可立即生效。
+您需要從 GA4 取得兩項資訊：**Measurement ID** 和 **Measurement Protocol API secret**。Measurement ID 讓旅客瀏覽漏斗在瀏覽器端運作；API secret 則讓 Wink 能在 **伺服器端** 記錄完成的訂單（`purchase`），確保在旅客被導向付款服務商時，銷售資料不會遺失。
 </Aside>
 
 ---
@@ -18,11 +18,12 @@ import { Aside, Steps } from '@astrojs/starlight/components';
 ## 運作原理
 
 ```
-您在 Wink 後台輸入 G-XXXXXXXXXX
+您在 Wink 後台輸入 Measurement ID (G-XXXXXXXXXX) 和 API secret
        ↓
-Wink 將您的訂單事件轉發到您的 GA4 帳戶
+瀏覽事件（瀏覽、購物車、結帳）從瀏覽器端串流至您的 GA4 帳戶
+完成訂單（purchase）由伺服器端送出 — 可跨越付款導向
        ↓
-您登入 analytics.google.com，查看您的訂單資料
+您登入 analytics.google.com，查看完整訂單漏斗
 ```
 
 ---
@@ -33,42 +34,54 @@ Wink 將您的訂單事件轉發到您的 GA4 帳戶
 
 1. **建立 GA4 帳戶**
 
-   前往 [analytics.google.com](https://analytics.google.com)：管理員 → 建立帳戶。設定您的時區與貨幣，與您的市場相符。
+   前往 [analytics.google.com](https://analytics.google.com)：管理員 → 建立帳戶。設定時區與貨幣，與您的市場相符。
 
 2. **建立網站資料串流**
 
-   管理員 → 資料串流 → 新增串流 → 網站。輸入 `wink.travel` 作為網址。系統會產生您的 **測量 ID**（`G-XXXXXXXXXX`）。請複製它。
+   管理員 → 資料串流 → 新增串流 → 網站。輸入 `wink.travel` 作為網址。系統會產生您的 **Measurement ID** (`G-XXXXXXXXXX`)，請複製。
 
-3. **在 Wink 後台輸入您的測量 ID**
+3. **建立 Measurement Protocol API Secret**
 
-   登入 [app.wink.travel](https://app.wink.travel)，選擇您的帳戶，前往 **自訂設定** 分頁。將測量 ID 貼上並儲存。完成後，您的 GA4 整合即啟用。
+   開啟同一個網站資料串流 → 滾動至 **Measurement Protocol API secrets** → **建立**。輸入暱稱（例如 "Wink"），並複製產生的 **secret 值**。此 secret 讓 Wink 能在伺服器端記錄完成訂單，確保付款導向過程中銷售資料不遺失。
 
-4. **將 `purchase` 標記為關鍵事件**
+4. **在 Wink 後台輸入 Measurement ID 和 API Secret**
 
-   回到您的 GA4 帳戶：管理員 → 事件 → 找到 `purchase` → 切換 **標記為關鍵事件**。這會讓完成的訂單出現在您的轉換報告中。
+   登入 [app.wink.travel](https://app.wink.travel)，選擇您的帳戶，前往 **自訂設定** 分頁。將 Measurement ID 和 API secret 貼入 **GA4** 欄位並儲存。完成後，您的 GA4 整合即啟用。
 
-5. **查看您的資料**
+   <Aside type="note">
+   API secret 為 **僅寫入** 欄位：儲存後不會再次顯示。未來編輯時，若不想更改，請留空此欄位以保留原有值。
+   </Aside>
 
-   登入 [analytics.google.com](https://analytics.google.com)，您將看到訂單、收入和旅客漏斗 — 全部由 Wink 自動追蹤。
+5. **將 `purchase` 標記為關鍵事件**
+
+   回到您的 GA4 帳戶：管理員 → 事件 → 找到 `purchase` → 切換 **標記為關鍵事件**。完成訂單將出現在您的轉換報告中。
+
+6. **查看您的資料**
+
+   登入 [analytics.google.com](https://analytics.google.com)，即可看到您的訂單、收入與旅客漏斗 — 全部由 Wink 自動追蹤。
 
 </Steps>
 
 <Aside type="note">
-此整合不需您在自己網站安裝任何追蹤程式碼。Wink 會處理所有細節。您的測量 ID 僅是訂單資料的接收端。
+此整合不需您在自己網站安裝任何追蹤程式碼。Wink 全權處理。您的 Measurement ID 是訂單資料的接收端，API secret 讓 Wink 能在伺服器端確認完成訂單。
+</Aside>
+
+<Aside type="tip">
+**GA4 與 GTM 可同時使用。** 若您同時使用 Google Tag Manager 容器（例如 Sojern 容器），可同時設定兩者，兩者不再互斥。詳見 [GTM Analytics Integration](/zh-TW/guides/developers/gtm-dual-tagging)。
 </Aside>
 
 ---
 
 ## 您可以追蹤的項目
 
-連接後，您的 GA4 帳戶會接收完整的增強型電子商務事件，涵蓋您的物業：
+連接後，您的 GA4 帳戶會接收完整的強化電子商務事件：
 
 ### 發現階段
 
 | 事件 | 意義 |
 |---|---|
-| `view_item_list` | 旅客在搜尋或分類列表中看到您的物業 |
-| `select_item` | 旅客從列表中點擊您的物業 |
+| `view_item_list` | 旅客在搜尋或分類列表中看到您的物件 |
+| `select_item` | 旅客從列表點擊您的物件 |
 | `view_item` | 旅客瀏覽您的飯店詳細頁面 |
 
 ### 考慮階段
@@ -77,7 +90,7 @@ Wink 將您的訂單事件轉發到您的 GA4 帳戶
 |---|---|
 | `view_promotion` | 旅客看到您的促銷優惠 |
 | `select_promotion` | 旅客點擊促銷優惠 |
-| `add_to_wishlist` | 旅客將您的物業加入願望清單 |
+| `add_to_wishlist` | 旅客將您的物件加入願望清單 |
 
 ### 訂單漏斗
 
@@ -92,37 +105,37 @@ Wink 將您的訂單事件轉發到您的 GA4 帳戶
 | `purchase` | 旅客完成訂單 |
 | `refund` | 訂單取消並退款 |
 
-所有事件都包含相關維度，如收入、貨幣、房型和訂單價值 — 讓您完整掌握旅客從初次印象到完成訂單的旅程。若要解鎖更多物業及房型層級維度，如 `city_name`、`cancellation_policy`、`bed_type` 等，請參考 [GA4 中的自訂維度](/zh-TW/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4)。
+所有事件包含相關維度，如收入、貨幣、房型與訂單價值，讓您完整掌握旅客從初次印象到完成訂單的旅程。若要解鎖更多物件與房型層級維度，如 `city_name`、`cancellation_policy`、`bed_type` 等，請參考 [Custom Dimensions in GA4](/zh-TW/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4)。
 
 ---
 
 ## 跨網域追蹤（進階）
 
-上述標準整合會追蹤所有在 Wink 內發生的事件。但如果您想追蹤旅客從您自己網站一路到 Wink 完成訂單的全程 — 並正確歸因原始流量來源（Google Ads、電子郵件活動、自然搜尋等） — 則雙方都需額外設定一個步驟。
+上述標準整合追蹤所有在 Wink 內發生的事件。但若您想追蹤旅客從您自己網站一路到 Wink 完成訂單，並正確歸因原始流量來源（Google Ads、電子郵件活動、自然搜尋等），則雙方都需額外設定。
 
 <Aside type="caution">
-此段僅適用於您自己網站已安裝 GA4 的情況。若您網站未使用 GA4，標準整合即足夠。
+此段僅適用於您在自己網站安裝 GA4 的情況。若您網站未使用 GA4，標準整合即足夠。
 </Aside>
 
-### 為什麼這很重要
+### 為什麼重要
 
-若未設定跨網域追蹤，旅客先造訪您網站再到 Wink 訂房，GA4 會將此視為一個 **直接** 造訪，與先前的訪問無關。任何導致訂單的 Google Ads 點擊、電子郵件活動或自然搜尋都不會被歸因。
+若未設定跨網域追蹤，旅客先造訪您網站再到 Wink 訂房，GA4 會將此視為 **直接流量**，與先前造訪無關。任何 Google Ads 點擊、電子郵件活動或自然搜尋流量都不會被歸因。
 
-設定跨網域追蹤後，您將看到完整的旅客旅程：
+設定跨網域追蹤後，您將看到完整旅客旅程：
 
 ```
 google.com（付費廣告）
        ↓
 您的網站（旅客瀏覽房型）
        ↓
-wink.travel（旅客選擇房型並訂房）
+wink.travel（旅客選房並訂房）
        ↓
 訂單正確歸因至原始 Google Ads 點擊
 ```
 
 ### 您需要做的事
 
-設定您的 GA4 帳戶，將 `wink.travel` 視為您自有網域的一部分，而非外部推薦來源。這會讓 GA4 將兩個會話串接成一個連續的旅客旅程。
+設定您的 GA4 帳戶，將 `wink.travel` 視為您自有網域的一部分，而非外部推薦來源。這會讓 GA4 將兩個會話串接成一個連續旅程。
 
 <Steps>
 1. GA4 管理員 → 資料串流 → 您的串流
@@ -133,8 +146,8 @@ wink.travel（旅客選擇房型並訂房）
 
 ### Wink 需要做的事
 
-聯絡 [Wink 支援](https://app.wink.travel)，提供您的網站網域（例如 `yourhotel.com`）。Wink 會將您的網域加入 Wink GA4 帳戶的推薦排除清單，避免您的網站被記錄為推薦來源，進而覆寫旅客的原始歸因並啟動新會話。
+聯絡 [Wink 支援](https://app.wink.travel)，提供您的網站網域（例如 `yourhotel.com`）。Wink 將在 Wink GA4 帳戶中將您的網域加入推薦排除清單，避免您的網站被記錄為推薦來源，進而覆寫旅客原始歸因並啟動新會話。
 
 <Aside type="tip">
-上述標準整合對大多數物業已足夠，能立即讓您在 Wink 上看到訂單與收入。跨網域追蹤是進階選項，適合您熟悉 GA4 資料並想要更深入歸因分析時設定。
+上述標準整合對大多數物件已足夠，能立即讓您看到 Wink 上的訂單與收入。跨網域追蹤是進階選項，適合您熟悉 GA4 資料並想要更深入歸因分析時設定。
 </Aside>

@@ -1,16 +1,16 @@
 ---
-title: Integrácia Sojern Pixel
-description: Ako prepojiť svoj účet Sojern s Wink, aby Sojern mohol sledovať cestu vašich hostí pri rezervácii a podporovať vaše kampane na retargeting a reklamu.
+title: Integrácia GTM Analytics
+description: Ako pripojiť akýkoľvek kontajner Google Tag Manager (napríklad kontajner Sojern) k Wink, aby mohol sledovať cestu vašich hostí pri rezervácii a podporovať vaše kampane na retargeting a reklamu.
 sidebar:
-  label: Integrácia Sojern Pixel
+  label: Integrácia GTM Analytics
 ---
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Ak prevádzkujete reklamné kampane cez Sojern, môžete prepojiť svoj účet Sojern s Wink zadaním svojho Sojern GTM Container ID do portálu Wink. Po prepojení sa Sojern tracking pixel automaticky spustí pre vašu nehnuteľnosť — pokrývajúc celú cestu hosťa od vyhľadávania až po dokončenú rezerváciu.
+Môžete pripojiť **akýkoľvek** kontajner Google Tag Manager (GTM) k Wink zadaním jeho **GTM Container ID** v portáli Wink. Po pripojení sa váš kontajner automaticky načíta pre vašu nehnuteľnosť a priamo číta rezervačné udalosti Wink — pokrývajúc celú cestu hosťa od vyhľadávania až po dokončenú rezerváciu. Bežným prípadom použitia je kontajner **Sojern** pre retargeting a reklamu, ale akýkoľvek GTM kontajner funguje rovnako.
 
 <Aside type="tip">
-Predpokladá sa, že už máte aktívny účet Sojern a od svojho manažéra účtu Sojern ste dostali GTM Container ID. Ak ešte účet Sojern nemáte, navštívte [sojern.com/contact](https://www.sojern.com/contact) a začnite.
+Predpokladá sa, že už máte GTM Container ID (formát `GTM-XXXXXXX`). Ak váš kontajner pochádza od partnera, ako je Sojern, požiadajte svojho manažéra účtu o **GTM Container ID** — je odlišné od pixelu alebo ID tagu. Ste noví v Sojern? Navštívte [sojern.com/contact](https://www.sojern.com/contact) a začnite.
 </Aside>
 
 ---
@@ -19,43 +19,48 @@ Predpokladá sa, že už máte aktívny účet Sojern a od svojho manažéra ú�
 
 <Steps>
 
-1. **Získajte svoje GTM Container ID od Sojern**
+1. **Získajte svoje GTM Container ID**
 
-   Kontaktujte svojho manažéra účtu Sojern a požiadajte o **GTM Container ID**. Má formát `GTM-XXXXXXX`. Toto sa líši od vášho Sojern Pixel ID — uistite sa, že žiadate konkrétne o GTM Container ID.
+   Získajte svoje **GTM Container ID** (formát `GTM-XXXXXXX`). Ak pochádza od partnera, ako je Sojern, vyžiadajte si špecificky GTM Container ID — je odlišné od pixelu alebo ID tagu.
 
 2. **Zadajte ho do portálu Wink**
 
-   Prihláste sa na [app.wink.travel](https://app.wink.travel), vyberte svoj účet a prejdite na kartu **Customizations**. Vložte svoje Sojern GTM Container ID do poľa Sojern a uložte. Vaša integrácia je teraz aktívna.
+   Prihláste sa do [app.wink.travel](https://app.wink.travel), vyberte svoj účet a prejdite na kartu **Prispôsobenia**. Vložte svoje GTM Container ID do poľa **GTM** a uložte. Vaša integrácia je teraz aktívna.
 
-3. **Potvrďte to so svojím manažérom účtu Sojern**
+3. **(Voliteľné) Pridajte GA4 Measurement ID + API Secret pre serverovú evidenciu nákupov**
 
-   Informujte svojho manažéra účtu Sojern, že integrácia je aktívna. Môže overiť zo svojej strany, že pixel sa správne spúšťa na `wink.travel` pre vašu nehnuteľnosť a že dáta prúdia do vášho účtu Sojern.
+   GTM kontajnery bežia úplne v prehliadači hosťa, takže dokončená rezervácia môže byť prehliadnutá, ak hosť zatvorí kartu počas presmerovania na platbu. Ak váš kontajner načítava **GA4 property** a chcete spoľahlivo zaznamenávať dokončené rezervácie, zadajte tiež GA4 **Measurement ID** a **Measurement Protocol API secret** v sekcii GTM. Wink potom odošle `purchase` pre túto property **serverovo**, presne ako je popísané v návode [GA4 Analytics Integration](/sk/guides/developers/ga4-dual-tagging). Ak potrebujete len sledovanie v prehliadači, nechajte tieto polia prázdne.
+
+4. **Potvrďte u svojho poskytovateľa**
+
+   Ak váš kontajner pochádza od partnera, ako je Sojern, informujte svojho manažéra účtu, že integrácia je aktívna. Môžu overiť zo svojej strany, že tagy sa správne spúšťajú na `wink.travel` pre vašu nehnuteľnosť a že dáta prúdia do vášho účtu.
 
 </Steps>
 
 <Aside type="note">
-Pre túto integráciu nemusíte na svojej webovej stránke umiestňovať žiadny pixel kód. Wink automaticky načíta váš Sojern kontajner na všetkých stránkach, kde je vaša nehnuteľnosť aktívna.
+Pre túto integráciu nemusíte na svojej webovej stránke umiestňovať žiadny pixelový kód. Wink automaticky načíta váš GTM kontajner na všetkých stránkach, kde je vaša nehnuteľnosť aktívna.
 
-Táto konfigurácia funguje pre akékoľvek vlastné GTM Container ID. Sojern sme použili len ako príklad, pretože ide o veľmi bežnú integráciu.
+Toto funguje pre **akýkoľvek** GTM Container ID — Sojern je len bežný príklad.
 </Aside>
 
 ---
 
 ## Čo Wink robí na našej strane
 
-Pre transparentnosť, toto je to, čo Wink konfiguruje, aby táto integrácia fungovala:
+Pre transparentnosť, toto Wink konfiguruje, aby táto integrácia fungovala:
 
-- **Pole Sojern GTM Container ID** je dostupné na karte Customizations vo vašom portáli Wink. Keď zadáte svoje Container ID, Wink overí formát a bezpečne ho uloží k vašej nehnuteľnosti.
-- **Na každej stránke, kde je vaša nehnuteľnosť aktívna** na Wink, sa vaše Sojern GTM Container ID vloží do stránky a Winkov systém správy tagov dynamicky načíta váš Sojern kontajner spolu s vlastným. Toto sa deje automaticky — nie sú potrebné žiadne manuálne kroky zo strany Wink pre každú nehnuteľnosť.
-- **Váš Sojern kontajner sa načítava asynchrónne**, čo znamená, že neovplyvňuje výkon načítania stránky pre vašich hostí.
-- **Wink tracking a váš Sojern pixel bežia paralelne**, čítajúc z rovnakých zdieľaných dát udalostí. Každá rezervácia, ktorú Wink sleduje, je zároveň dostupná pre váš Sojern kontajner.
-- **Keď sa vaša nehnuteľnosť neprezerá** — napríklad keď hosť prehliada iný hotel na Wink — váš Sojern kontajner sa nenačíta. To zabezpečuje, že Sojern dostáva len dáta relevantné pre vašu nehnuteľnosť.
+- **Pole GTM Container ID** je dostupné na karte Prispôsobenia vo vašom portáli Wink. Keď zadáte svoje Container ID, Wink overí formát (`GTM-XXXXXXX`) a bezpečne ho uloží k vašej nehnuteľnosti.
+- **Na každej stránke, kde je vaša nehnuteľnosť aktívna** na Wink, sa váš kontajner priamo vloží do stránky — zdieľajúc Wink vlastný `window.dataLayer` — takže sa načíta spolu s Wink kontajnerom bez závislosti na ďalšej konfigurácii. Toto sa deje automaticky, bez potreby práce tímu Wink pre každú nehnuteľnosť.
+- **Váš kontajner sa načítava asynchrónne**, takže neovplyvňuje výkon načítania stránky pre vašich hostí.
+- **Sledovanie Wink a váš kontajner bežia paralelne**, čítajúc z rovnakého zdieľaného `dataLayer`. Každá rezervačná udalosť, ktorú Wink sleduje, je zároveň dostupná vášmu kontajneru.
+- **Keď sa vaša nehnuteľnosť neprezerá** — napríklad keď hosť prehliada iný hotel na Wink — váš kontajner sa nenačíta, takže dostáva len dáta relevantné pre vašu nehnuteľnosť.
+- **Ak ste zadali GA4 Measurement ID + API secret** (krok 3 vyššie), `purchase` pre dokončené rezervácie sa navyše odosiela **serverovo** cez GA4 Measurement Protocol, takže predaj je zaznamenaný aj v prípade, že hosť sa nikdy nevráti na stránku potvrdenia.
 
 ---
 
 ## Referencia DataLayer
 
-Wink posiela udalosti kompatibilné s GA4 do `dataLayer` počas celej cesty hosťa. Váš GTM kontajner číta z toho istého zdieľaného `dataLayer`, takže každý trigger alebo premenná, ktorú nastavíte, má prístup ku všetkým nižšie popísaným vlastnostiam.
+Wink posiela GA4-kompatibilné udalosti do `dataLayer` počas celej cesty hosťa. Váš GTM kontajner číta z toho istého zdieľaného `dataLayer`, takže každý trigger alebo premenná, ktorú nastavíte, má prístup ku všetkým nižšie popísaným vlastnostiam.
 
 Každá udalosť nasleduje štandardnú štruktúru GA4 Enhanced Ecommerce: reťazec `event` na najvyššej úrovni a objekt `ecommerce`. Pred každým pushom Wink vymaže predchádzajúce ecommerce dáta, aby zabránil prenikaniu starých dát do nových triggerov.
 
@@ -69,7 +74,7 @@ dataLayer.push({ ecommerce: null });   // vyčistí predchádzajúcu udalosť
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
-Nespoliehajte sa na to, že ecommerce vlastnosti pretrvávajú medzi udalosťami. Vždy ich čítajte v čase triggeru v rámci tej istej udalosti.
+Nespoliehajte sa na pretrvávanie ecommerce vlastností medzi udalosťami. Vždy ich čítajte v čase spustenia triggera v rámci tej istej udalosti.
 </Aside>
 
 ---
@@ -277,14 +282,14 @@ Všetky udalosti, ktoré obsahujú pole `items`, používajú rovnakú schému p
 
 #### Štandardné polia GA4
 
-Tieto polia GA4 natívne rozpoznáva a zobrazujú sa v štandardných ecommerce reportoch bez ďalšej konfigurácie.
+Tieto polia GA4 natívne rozumie a zobrazujú sa v štandardných ecommerce reportoch bez ďalšej konfigurácie.
 
 | Vlastnosť | Typ | Povinné | Popis |
 |-----------|-----|---------|-------|
 | `item_id` | string | Áno | Jedinečný identifikátor izby alebo produktu |
 | `item_name` | string | — | Názov izby alebo produktu |
 | `affiliation` | string | — | Názov affiliate alebo predajcu |
-| `coupon` | string | — | Použitý kupón na položku |
+| `coupon` | string | — | Použitý zľavový kód |
 | `currency` | string | — | ISO 4217 kód meny (napr. `USD`) |
 | `creative_name` | string | — | Názov kreatívy použitej v promo akcii |
 | `creative_slot` | string | — | Pozícia kreatívy v promo akcii |
@@ -294,7 +299,7 @@ Tieto polia GA4 natívne rozpoznáva a zobrazujú sa v štandardných ecommerce 
 | `item_category` | string | — | Typ produktu — napr. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
 | `item_list_id` | string | — | Identifikátor zoznamu, ku ktorému položka patrí |
 | `item_list_name` | string | — | Zobrazovaný názov zoznamu |
-| `location_id` | string | — | Geografické súradnice nehnuteľnosti |
+| `location_id` | string | — | Geokoordináty nehnuteľnosti |
 | `price` | number | — | Jednotková cena |
 | `promotion_id` | string | — | Identifikátor promo akcie |
 | `promotion_name` | string | — | Zobrazovaný názov promo akcie |
@@ -302,13 +307,13 @@ Tieto polia GA4 natívne rozpoznáva a zobrazujú sa v štandardných ecommerce 
 
 #### Vlastné parametre na úrovni položky
 
-Tieto parametre nesú kontext rezervácie špecifický pre Wink. GA4 ich automaticky nezobrazuje v reportoch — musíte ich zaregistrovať ako **vlastné dimenzie na úrovni položky** vo vašej GA4 vlastnosti, aby sa zobrazili v exploráciách alebo štandardných reportoch. Pozrite si nižšie [Vlastné dimenzie v GA4](#custom-dimensions-in-ga4) pre inštrukcie.
+Tieto parametre nesú kontext rezervácie špecifický pre Wink. GA4 ich automaticky nezobrazuje v reportoch — musíte ich zaregistrovať ako **vlastné dimenzie na úrovni položky** vo vašej GA4 property, aby sa zobrazili v exploráciách alebo štandardných reportoch. Pozrite si nižšie [Vlastné dimenzie v GA4](#custom-dimensions-in-ga4) pre inštrukcie.
 
 | Vlastnosť | Typ | Popis |
 |-----------|-----|-------|
-| `property_id` | string | Identifikátor nehnuteľnosti vo Winku |
+| `property_id` | string | Identifikátor nehnuteľnosti Wink |
 | `property_name` | string | Zobrazovaný názov nehnuteľnosti |
-| `property_brand` | string | Značka, ku ktorej nehnuteľnosť patrí |
+| `property_brand` | string | Značka, ktorej nehnuteľnosť patrí |
 | `property_chain` | string | Reťazec, ku ktorému nehnuteľnosť patrí |
 | `property_url_name` | string | URL-friendly slug nehnuteľnosti |
 | `city_name` | string | Mesto, kde sa nehnuteľnosť nachádza |
@@ -331,67 +336,67 @@ Tieto parametre nesú kontext rezervácie špecifický pre Wink. GA4 ich automat
 
 ### Vlastné dimenzie v GA4
 
-GA4 ignoruje vlastné parametre položiek v reportoch, kým ich výslovne nezaregistrujete ako vlastné dimenzie na úrovni položky. Potrebujete zaregistrovať len tie parametre, ktoré chcete používať v reportoch — nie všetkých 20.
+GA4 ignoruje vlastné parametre položiek v reportoch, kým ich výslovne nezaregistrujete ako vlastné dimenzie na úrovni položky. Potrebujete zaregistrovať len tie parametre, ktoré chcete používať v reportoch — nemusíte registrovať všetkých 20.
 
 <Steps>
 
 1. **Otvorte Vlastné definície**
 
-   V GA4 choďte do **Admin** (ikona ozubeného kolieska vľavo dole) → vyberte svoju vlastnosť → **Data display** → **Custom definitions**.
+   V GA4 choďte do **Admin** (ikona ozubeného kolieska vľavo dole) → vyberte svoju property → **Zobrazenie dát** → **Vlastné definície**.
 
 2. **Vytvorte novú vlastnú dimenziu**
 
-   Kliknite na **Create custom dimensions**.
+   Kliknite na **Vytvoriť vlastné dimenzie**.
 
 3. **Vyplňte detaily dimenzie**
 
-   - **Dimension name** — ľudsky čitateľný názov, ktorý sa zobrazí v GA4 reportoch (pozrite tabuľku nižšie)
-   - **Scope** — vyberte **Item**
-   - **Event parameter** — presný názov parametra, ako sa zobrazuje v dataLayer (pozrite tabuľku nižšie)
-   - **Description** — voliteľné, ale odporúčané
+   - **Názov dimenzie** — ľudsky čitateľný názov, ktorý sa zobrazí v GA4 reportoch (pozrite tabuľku nižšie)
+   - **Rozsah** — vyberte **Položka (Item)**
+   - **Parameter udalosti** — presný názov parametra, ako sa zobrazuje v dataLayer (pozrite tabuľku nižšie)
+   - **Popis** — voliteľné, ale odporúčané
 
 4. **Uložte a opakujte**
 
-   Kliknite na **Save** a opakujte pre každý parameter, ktorý chcete sledovať.
+   Kliknite na **Uložiť**, potom opakujte pre každý parameter, ktorý chcete sledovať.
 
 </Steps>
 
 <Aside type="note">
 Vlastné dimenzie môžu začať byť viditeľné v GA4 reportoch až do 24 hodín po registrácii. Historické dáta zozbierané pred registráciou sa nevyplnia spätne.
 
-GA4 umožňuje až 50 vlastných dimenzií na úrovni položky pre štandardné vlastnosti (360 vlastnosti umožňujú viac).
+GA4 umožňuje až 50 vlastných dimenzií na úrovni položky na štandardnú property (360 properties umožňujú viac).
 </Aside>
 
-Použite nasledujúcu tabuľku ako referenciu pri vytváraní vlastných dimenzií. Hodnota **Event parameter** musí presne zodpovedať — GA4 rozlišuje veľké a malé písmená.
+Použite nasledujúcu tabuľku ako referenciu pri vytváraní vlastných dimenzií. Hodnota **Parameter udalosti** musí presne zodpovedať — GA4 rozlišuje veľké a malé písmená.
 
-| Názov dimenzie | Event parameter | Typ |
-|----------------|-----------------|-----|
+| Názov dimenzie | Parameter udalosti | Typ |
+|----------------|-------------------|-----|
 | Property ID | `property_id` | Text |
-| Property name | `property_name` | Text |
-| Property brand | `property_brand` | Text |
-| Property chain | `property_chain` | Text |
-| Property URL name | `property_url_name` | Text |
-| City name | `city_name` | Text |
-| Country code | `country_code` | Text |
-| Check-in date | `start_date` | Text |
-| Check-out date | `end_date` | Text |
-| Number of adults | `num_adults` | Number |
-| Number of children | `num_children` | Number |
-| Cancellation policy | `cancellation_policy` | Text |
-| Rate plan ID | `rate_plan_id` | Text |
-| Room rate ID | `room_rate_id` | Text |
-| Room rate name | `room_rate_name` | Text |
-| Number of perks | `num_perks` | Number |
-| Room location | `room_location` | Text |
-| Room view | `room_view` | Text |
-| Room classification | `room_classification` | Text |
-| Bed type | `bed_type` | Text |
+| Názov nehnuteľnosti | `property_name` | Text |
+| Značka nehnuteľnosti | `property_brand` | Text |
+| Reťazec nehnuteľnosti | `property_chain` | Text |
+| URL názov nehnuteľnosti | `property_url_name` | Text |
+| Názov mesta | `city_name` | Text |
+| Kód krajiny | `country_code` | Text |
+| Dátum príchodu | `start_date` | Text |
+| Dátum odchodu | `end_date` | Text |
+| Počet dospelých | `num_adults` | Number |
+| Počet detí | `num_children` | Number |
+| Storno podmienky | `cancellation_policy` | Text |
+| ID cenového plánu | `rate_plan_id` | Text |
+| ID ceny izby | `room_rate_id` | Text |
+| Názov ceny izby | `room_rate_name` | Text |
+| Počet benefitov | `num_perks` | Number |
+| Umiestnenie izby | `room_location` | Text |
+| Výhľad z izby | `room_view` | Text |
+| Klasifikácia izby | `room_classification` | Text |
+| Typ postele | `bed_type` | Text |
 
 ---
 
 ### Ďalšie dostupné udalosti
 
-Nasledujúce udalosti sú dostupné v Wink dataLayer, ale nie sú súčasťou štandardného rezervačného procesu. Môžu byť spustené inými interakciami na platforme.
+Nasledujúce udalosti sú dostupné v dataLayer Wink, ale nie sú súčasťou štandardného rezervačného procesu. Môžu byť spúšťané inými interakciami na platforme.
 
 #### `add_to_wishlist`
 
@@ -648,7 +653,7 @@ Táto udalosť neobsahuje `ecommerce` objekt.
 
 ### `virtualPageView`
 
-Toto je vlastná udalosť Wink — nie je súčasťou štandardnej sady GA4 udalostí. Posiela sa pri každej navigácii na stránke a nesie kontext zariadenia a relácie. Neobsahuje objekt `ecommerce`.
+Toto je vlastná udalosť Wink — nie je súčasťou štandardnej sady GA4 udalostí. Posiela sa pri každej navigácii na stránku a nesie kontext zariadenia a relácie. Neobsahuje objekt `ecommerce`.
 
 ```json
 {

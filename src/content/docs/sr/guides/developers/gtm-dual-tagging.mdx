@@ -1,16 +1,16 @@
 ---
-title: Integracija Sojern Pixela
-description: Kako povezati vaš Sojern nalog sa Wink-om kako bi Sojern mogao pratiti putanju rezervacije vaših gostiju i podržati vaše kampanje za retargeting i oglašavanje.
+title: Integracija GTM analitike
+description: Kako povezati bilo koji Google Tag Manager kontejner (kao što je Sojern kontejner) sa Wink-om da bi mogao pratiti putanju rezervacije vaših gostiju i podržati vaše kampanje za retargeting i oglašavanje.
 sidebar:
-  label: Integracija Sojern Pixela
+  label: Integracija GTM analitike
 ---
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Ako vodite oglasne kampanje preko Sojern-a, možete povezati vaš Sojern nalog sa Wink-om unošenjem vašeg Sojern GTM Container ID u Wink portal. Kada je povezano, Sojern-ov tracking pixel se automatski aktivira za vašu nekretninu — pokrivajući ceo put gosta od pretrage do završene rezervacije.
+Možete povezati **bilo koji** Google Tag Manager (GTM) kontejner sa Wink-om unošenjem njegovog **GTM Container ID** u Wink portal. Kada je povezan, vaš kontejner se automatski učitava za vašu nekretninu i direktno čita Wink-ove događaje rezervacije — pokrivajući ceo put gosta od pretrage do završene rezervacije. Čest slučaj upotrebe je **Sojern** kontejner za retargeting i oglašavanje, ali bilo koji GTM kontejner funkcioniše na isti način.
 
 <Aside type="tip">
-Ovo podrazumeva da već imate aktivan Sojern nalog i da ste dobili vaš GTM Container ID od vašeg Sojern menadžera naloga. Ako još nemate Sojern nalog, posetite [sojern.com/contact](https://www.sojern.com/contact) da započnete.
+Ovo podrazumeva da već imate GTM Container ID (format `GTM-XXXXXXX`). Ako vaš kontejner dolazi od partnera kao što je Sojern, zatražite od vašeg menadžera naloga **GTM Container ID** — on se razlikuje od pixel ili tag ID-ja. Novi ste u Sojern-u? Posetite [sojern.com/contact](https://www.sojern.com/contact) da započnete.
 </Aside>
 
 ---
@@ -19,50 +19,55 @@ Ovo podrazumeva da već imate aktivan Sojern nalog i da ste dobili vaš GTM Cont
 
 <Steps>
 
-1. **Nabavite vaš GTM Container ID od Sojern-a**
+1. **Nabavite vaš GTM Container ID**
 
-   Kontaktirajte vašeg Sojern menadžera naloga i zatražite vaš **GTM Container ID**. On ima format `GTM-XXXXXXX`. Ovo se razlikuje od vašeg Sojern Pixel ID — obavezno tražite baš GTM Container ID.
+   Nabavite vaš **GTM Container ID** (format `GTM-XXXXXXX`). Ako dolazi od partnera kao što je Sojern, zatražite specifično GTM Container ID — on se razlikuje od pixel ili tag ID-ja.
 
 2. **Unesite ga u Wink portal**
 
-   Prijavite se na [app.wink.travel](https://app.wink.travel), izaberite vaš nalog i idite na karticu **Customizations**. Nalepite vaš Sojern GTM Container ID u polje za Sojern i sačuvajte. Vaša integracija je sada aktivna.
+   Prijavite se na [app.wink.travel](https://app.wink.travel), izaberite vaš nalog i idite na karticu **Customizations**. Nalepite vaš GTM Container ID u polje **GTM** i sačuvajte. Vaša integracija je sada aktivna.
 
-3. **Potvrdite sa vašim Sojern menadžerom naloga**
+3. **(Opcionalno) Dodajte GA4 Measurement ID + API Secret za server-side kupovinu**
 
-   Obavestite vašeg Sojern menadžera naloga da je integracija aktivna. Oni mogu sa svoje strane proveriti da li se pixel ispravno aktivira na `wink.travel` za vašu nekretninu i da li podaci stižu u vaš Sojern nalog.
+   GTM kontejneri se u potpunosti izvršavaju u pregledaču gosta, pa se završena rezervacija može propustiti ako gost zatvori tab tokom preusmeravanja na plaćanje. Ako vaš kontejner učitava **GA4 property** i želite da se završene rezervacije pouzdano beleže, unesite i GA4 **Measurement ID** i **Measurement Protocol API secret** u GTM sekciju. Wink će tada poslati `purchase` za tu property **server-side**, tačno kako je opisano u vodiču [GA4 Analytics Integration](/sr/guides/developers/ga4-dual-tagging). Ostavite prazno ako vam je potrebno samo praćenje u pregledaču.
+
+4. **Potvrdite sa vašim provajderom**
+
+   Ako vaš kontejner dolazi od partnera kao što je Sojern, obavestite vašeg menadžera naloga da je integracija aktivna. Oni mogu sa svoje strane proveriti da li se tagovi pravilno aktiviraju na `wink.travel` za vašu nekretninu i da li podaci stižu u vaš nalog.
 
 </Steps>
 
 <Aside type="note">
-Ne morate postavljati nikakav pixel kod na vašem sajtu za ovu integraciju. Wink automatski učitava vaš Sojern container na svim stranicama gde je vaša nekretnina aktivna.
+Ne morate postavljati nikakav pixel kod na vašem sajtu za ovu integraciju. Wink automatski učitava vaš GTM kontejner na svim stranicama gde je vaša nekretnina aktivna.
 
-Ova konfiguracija radi za bilo koji prilagođeni GTM Container ID. Sojern smo koristili samo kao primer jer je to vrlo česta integracija.
+Ovo funkcioniše za **bilo koji** GTM Container ID — Sojern je samo čest primer.
 </Aside>
 
 ---
 
-## Šta Wink radi sa svoje strane
+## Šta Wink radi sa naše strane
 
-Za transparentnost, evo šta Wink konfiguriše da bi ova integracija funkcionisala:
+Za transparentnost, evo šta Wink konfiguriše da bi ova integracija radila:
 
-- **Polje za Sojern GTM Container ID** dostupno je u kartici Customizations vašeg Wink portala. Kada unesete Container ID, Wink proverava format i sigurno ga čuva povezano sa vašom nekretninom.
-- **Na svakoj stranici gde je vaša nekretnina aktivna** na Wink-u, vaš Sojern GTM Container ID se ubacuje u stranicu i Wink-ov sistem za upravljanje tagovima dinamički učitava vaš Sojern container zajedno sa svojim. Ovo se dešava automatski — nisu potrebni ručni koraci od Wink tima po nekretnini.
-- **Vaš Sojern container se učitava asinhrono**, što znači da ne utiče na performanse učitavanja stranice za vaše goste.
-- **Wink-ovo sopstveno praćenje i vaš Sojern pixel rade paralelno**, čitajući iz istih zajedničkih podataka o događajima. Svaki događaj rezervacije koji Wink prati je istovremeno dostupan vašem Sojern containeru.
-- **Kada vaša nekretnina nije pregledana** — na primer, kada gost pretražuje drugi hotel na Wink-u — vaš Sojern container se ne učitava. Ovo osigurava da Sojern prima samo podatke relevantne za vašu nekretninu.
+- **Polje za GTM Container ID** dostupno je u kartici Customizations u vašem Wink portalu. Kada unesete Container ID, Wink proverava format (`GTM-XXXXXXX`) i sigurno ga čuva za vašu nekretninu.
+- **Na svakoj stranici gde je vaša nekretnina aktivna** na Wink-u, vaš kontejner se direktno ubacuje u stranicu — deleći Wink-ov sopstveni `window.dataLayer` — tako da se učitava paralelno sa Wink-ovim kontejnerom bez potrebe za dodatnom konfiguracijom. Ovo se dešava automatski, bez dodatnog rada Wink tima po nekretnini.
+- **Vaš kontejner se učitava asinhrono**, tako da ne utiče na performanse učitavanja stranice za vaše goste.
+- **Wink-ovo sopstveno praćenje i vaš kontejner rade paralelno**, čitajući iz istog zajedničkog `dataLayer`. Svaki događaj rezervacije koji Wink prati je istovremeno dostupan vašem kontejneru.
+- **Kada vaša nekretnina nije pregledana** — na primer, kada gost pregleda drugi hotel na Wink-u — vaš kontejner se ne učitava, pa prima samo podatke relevantne za vašu nekretninu.
+- **Ako ste uneli GA4 Measurement ID + API secret** (korak 3 gore), `purchase` za završene rezervacije se dodatno šalje **server-side** preko GA4 Measurement Protocol-a, tako da se prodaja beleži čak i ako gost ne vrati na stranicu potvrde.
 
 ---
 
-## Referenca DataLayer-a
+## Reference za DataLayer
 
-Wink šalje GA4-kompatibilne događaje u `dataLayer` tokom celog puta gosta. Vaš GTM container čita iz istog zajedničkog `dataLayer`-a, tako da svaki okidač ili promenljiva koju konfigurišete ima pristup svim svojstvima opisanima ispod.
+Wink šalje GA4-kompatibilne događaje u `dataLayer` tokom cele putanje gosta. Vaš GTM kontejner čita iz istog zajedničkog `dataLayer`, tako da svaki okidač ili promenljiva koju konfigurišete ima pristup svim svojstvima opisanima ispod.
 
-Svaki događaj prati standardnu GA4 Enhanced Ecommerce strukturu: string `event` na vrhu i objekat `ecommerce`. Pre svakog slanja, Wink briše prethodni ecommerce payload da spreči zastarele podatke da utiču na nove okidače.
+Svaki događaj prati standardnu GA4 Enhanced Ecommerce strukturu: string `event` na vrhu i objekat `ecommerce`. Pre svakog push-a, Wink briše prethodni ecommerce payload da spreči zastarele podatke da utiču na nove okidače.
 
 <Aside type="note">
 **Šablon resetovanja dataLayer-a**
 
-Wink resetuje ecommerce objekat pre svakog slanja događaja:
+Wink resetuje ecommerce objekat pre svakog push-a događaja:
 
 ```js
 dataLayer.push({ ecommerce: null });   // briše prethodni događaj
@@ -74,7 +79,7 @@ Nemojte se oslanjati na to da ecommerce svojstva ostaju između događaja. Uvek 
 
 ---
 
-### Događaji tokom puta rezervacije
+### Događaji tokom putanje rezervacije
 
 Ovi događaji se automatski aktiviraju dok gost prolazi kroz tok rezervacije. Konfigurišite vaše GTM okidače kao **Custom Event** okidače koji odgovaraju imenima događaja ispod.
 
@@ -83,7 +88,7 @@ Ovi događaji se automatski aktiviraju dok gost prolazi kroz tok rezervacije. Ko
 | 1 | `view_item_list` | Učitava se mreža ili lista hotela |
 | 2 | `view_item` | Gost pregleda stranicu određene nekretnine |
 | 3 | `add_to_cart` | Gost dodaje sobu u korpu |
-| 4 | `begin_checkout` | Učitava se stranica za plaćanje / naplatu |
+| 4 | `begin_checkout` | Učitava se stranica za plaćanje/naplatu |
 | 5 | `add_payment_info` | Gost bira način plaćanja |
 | 6 | `login` | Gost se autentifikuje putem SSO |
 | 7 | `purchase` | Rezervacija je potvrđena |
@@ -144,7 +149,7 @@ Aktivira se kada gost doda sobu u korpu.
 
 #### `begin_checkout`
 
-Aktivira se kada se učita stranica za plaćanje / naplatu.
+Aktivira se kada se učita stranica za plaćanje/naplatu.
 
 ```json
 {
@@ -185,7 +190,7 @@ Aktivira se kada gost izabere ili potvrdi način plaćanja.
 
 #### `login`
 
-Aktivira se kada se gost autentifikuje putem jedinstvene prijave (SSO).
+Aktivira se kada se gost autentifikuje putem single sign-on.
 
 ```json
 {
@@ -267,7 +272,7 @@ Aktivira se kada je rezervacija otkazana.
 }
 ```
 
-`transaction_id` odgovara događaju `purchase` za istu rezervaciju. `coupon`, `shipping` i `tax` su prisutni samo kada su primenjivi.
+`transaction_id` odgovara `purchase` događaju za istu rezervaciju. `coupon`, `shipping` i `tax` su prisutni samo kada su primenjivi.
 
 ---
 
@@ -277,17 +282,17 @@ Svi događaji koji uključuju niz `items` dele isti šablon stavke. Svako svojst
 
 #### Standardna GA4 polja
 
-Ova polja GA4 nativno prepoznaje i pojavljuju se u standardnim ecommerce izveštajima bez dodatne konfiguracije.
+Ova polja GA4 nativno razume i pojavljuju se u standardnim ecommerce izveštajima bez dodatne konfiguracije.
 
 | Svojstvo | Tip | Obavezno | Opis |
 |----------|-----|----------|------|
 | `item_id` | string | Da | Jedinstveni identifikator sobe ili proizvoda |
 | `item_name` | string | — | Naziv sobe ili proizvoda |
 | `affiliation` | string | — | Ime partnera ili prodavca |
-| `coupon` | string | — | Kod kupona primenjen na stavku |
+| `coupon` | string | — | Primenjeni kupon kod na stavku |
 | `currency` | string | — | ISO 4217 kod valute (npr. `USD`) |
 | `creative_name` | string | — | Naziv kreativnog materijala u promociji |
-| `creative_slot` | string | — | Pozicija kreativnog materijala u slotu promocije |
+| `creative_slot` | string | — | Pozicija slot-a promotivnog materijala |
 | `discount` | number | — | Iznos popusta |
 | `index` | number | — | Pozicija u listi (počinjajući od 1) |
 | `item_brand` | string | — | Naziv hotela ili brenda |
@@ -302,7 +307,7 @@ Ova polja GA4 nativno prepoznaje i pojavljuju se u standardnim ecommerce izvešt
 
 #### Prilagođeni parametri vezani za stavku
 
-Ovi parametri nose Wink-specifičan kontekst rezervacije. GA4 ih ne prikazuje automatski u izveštajima — morate svaki registrovati kao **prilagođenu dimenziju vezanu za stavku** u vašem GA4 nalogu pre nego što se pojave u izveštajima ili istraživanjima. Pogledajte [Prilagođene dimenzije u GA4](#custom-dimensions-in-ga4) ispod za uputstva.
+Ovi parametri nose Wink-specifičan kontekst rezervacije. GA4 ih automatski ne prikazuje u izveštajima — morate svaki registrovati kao **prilagođenu dimenziju vezanu za stavku** u vašem GA4 property-ju pre nego što se pojave u izveštajima ili istraživanjima. Pogledajte [Prilagođene dimenzije u GA4](#custom-dimensions-in-ga4) ispod za uputstva.
 
 | Svojstvo | Tip | Opis |
 |----------|-----|------|
@@ -310,7 +315,7 @@ Ovi parametri nose Wink-specifičan kontekst rezervacije. GA4 ih ne prikazuje au
 | `property_name` | string | Prikazni naziv nekretnine |
 | `property_brand` | string | Brend kojem nekretnina pripada |
 | `property_chain` | string | Lanac kojem nekretnina pripada |
-| `property_url_name` | string | URL-prijateljski slug nekretnine |
+| `property_url_name` | string | URL-friendly slug nekretnine |
 | `city_name` | string | Grad u kome se nekretnina nalazi |
 | `country_code` | string | ISO 3166-1 alpha-2 kod države |
 | `start_date` | string | Datum prijave u formatu `YYYY-MM-DD` |
@@ -324,20 +329,20 @@ Ovi parametri nose Wink-specifičan kontekst rezervacije. GA4 ih ne prikazuje au
 | `num_perks` | number | Broj pogodnosti uključenih u cenu |
 | `room_location` | string | Opis lokacije sobe (npr. `Overwater`, `Garden`) |
 | `room_view` | string | Opis pogleda iz sobe (npr. `Ocean`, `City`) |
-| `room_classification` | string | Klasifikacija ili kategorija sobe (npr. `Suite`, `Standard`) |
+| `room_classification` | string | Klasifikacija ili nivo sobe (npr. `Suite`, `Standard`) |
 | `bed_type` | string | Konfiguracija kreveta u sobi (npr. `King`, `Twin`) |
 
 ---
 
 ### Prilagođene dimenzije u GA4
 
-GA4 ignoriše prilagođene parametre vezane za stavku u izveštajima dok ih eksplicitno ne registrujete kao dimenzije vezane za stavku. Potrebno je registrovati samo one parametre koje planirate da koristite u izveštajima — nije potrebno registrovati svih 20.
+GA4 ignoriše prilagođene parametre stavki u izveštajima dok ih eksplicitno ne registrujete kao dimenzije vezane za stavku. Potrebno je registrovati samo one parametre koje planirate da koristite u izveštajima — nije potrebno registrovati svih 20.
 
 <Steps>
 
 1. **Otvorite Custom Definitions**
 
-   U GA4, idite na **Admin** (ikona zupčanika dole levo) → izaberite vašu nekretninu → **Data display** → **Custom definitions**.
+   U GA4, idite na **Admin** (ikona zupčanika dole levo) → izaberite vašu property → **Data display** → **Custom definitions**.
 
 2. **Kreirajte novu prilagođenu dimenziju**
 
@@ -359,7 +364,7 @@ GA4 ignoriše prilagođene parametre vezane za stavku u izveštajima dok ih eksp
 <Aside type="note">
 Prilagođene dimenzije mogu početi da se pojavljuju u GA4 izveštajima do 24 sata nakon registracije. Istorijski podaci prikupljeni pre registracije se ne popunjavaju naknadno.
 
-GA4 dozvoljava do 50 prilagođenih dimenzija vezanih za stavku po standardnoj nekretnini (360 nekretnine dozvoljavaju više).
+GA4 dozvoljava do 50 prilagođenih dimenzija vezanih za stavku po property-ju na standardnim property-jima (360 property-ji dozvoljavaju više).
 </Aside>
 
 Koristite sledeću tabelu kao referencu prilikom kreiranja prilagođenih dimenzija. Vrednost **Event parameter** mora biti tačna — GA4 razlikuje velika i mala slova.
@@ -440,7 +445,7 @@ Sledeći događaji su dostupni u Wink dataLayer-u, ali nisu deo standardnog toka
 }
 ```
 
-Ovaj događaj ne uključuje `ecommerce` objekat.
+Ovaj događaj ne uključuje `ecommerce` payload.
 
 #### `view_promotion`
 
@@ -648,7 +653,7 @@ Ovaj događaj ne uključuje `ecommerce` objekat.
 
 ### `virtualPageView`
 
-Ovo je prilagođeni Wink događaj — nije deo standardnog GA4 seta događaja. Aktivira se pri svakoj navigaciji stranice i nosi kontekst uređaja i sesije. Ne uključuje `ecommerce` objekat.
+Ovo je prilagođeni Wink događaj — nije deo standardnog GA4 seta događaja. Pritiskuje se pri svakoj navigaciji stranice i nosi kontekst uređaja i sesije. Ne uključuje `ecommerce` objekat.
 
 ```json
 {
