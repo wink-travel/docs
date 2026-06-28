@@ -22,6 +22,33 @@ const solutionsLinks = [
   { label: "Platforms & AI", href: "/platforms/", desc: "AI assistants, LLMs, banks & super apps — the transaction layer you plug into" },
 ];
 
+const productGroups = [
+  {
+    label: "Core platform",
+    items: [
+      { label: "Booking Engine", href: "/products/booking-engine/", desc: "Checkout, payment & confirmation" },
+      { label: "Extranet", href: "/products/extranet/", desc: "The hotel's control center" },
+    ],
+  },
+  {
+    label: "Create & distribute",
+    items: [
+      { label: "Studio", href: "/products/studio/", desc: "Find supply, build bookable assets" },
+      { label: "WinkLinks", href: "/products/winklinks/", desc: "Mobile-first booking storefronts" },
+      { label: "Social", href: "/products/social/", desc: "AI-generated, booking-ready posts" },
+      { label: "Traveliko", href: "/products/traveliko/", desc: "Consumer discovery marketplace" },
+    ],
+  },
+  {
+    label: "Developer",
+    items: [
+      { label: "API", href: "/api/overview", desc: "REST API for hotel commerce" },
+      { label: "MCP server", href: "/developers/mcp/", desc: "Hosted MCP for AI agents" },
+    ],
+  },
+];
+const productLinks = productGroups.flatMap((g) => g.items);
+
 const resourcesLinks = [
   { label: "Resources hub", href: "/resources/", desc: "Guides, reports and the direct-demand playbook" },
   { label: "State of Direct Distribution", href: "/resources/state-of-direct-distribution/", desc: "The flagship research report" },
@@ -30,6 +57,7 @@ const resourcesLinks = [
 ];
 
 const solutionsActive = isActive("/solutions/") || solutionsLinks.some((l) => isActive(l.href));
+const productsActive = isActive("/products/") || productLinks.some((l) => isActive(l.href));
 const resourcesActive = resourcesLinks.some((l) => isActive(l.href));
 ---
 
@@ -68,6 +96,35 @@ const resourcesActive = resourcesLinks.some((l) => isActive(l.href));
                 <span class="block text-sm font-semibold text-foreground">{l.label}</span>
                 <span class="block text-xs text-muted-foreground">{l.desc}</span>
               </a>
+            ))}
+          </div>
+        </div>
+      </li>
+
+      <!-- Products dropdown -->
+      <li class="group relative">
+        <a
+          href="/products/"
+          class:list={["nav-link inline-flex items-center gap-1", productsActive && "nav-link-active"]}
+          aria-haspopup="true"
+        >
+          Products
+          <IconChevronDown class="size-4 transition-transform group-hover:rotate-180" />
+        </a>
+        <div
+          class="invisible absolute left-0 top-full z-50 w-80 pt-2 opacity-0 transition-all duration-150 group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100"
+        >
+          <div class="overflow-hidden rounded-xl border border-border bg-popover p-2 shadow-lg">
+            {productGroups.map((grp) => (
+              <div class="px-1 pb-1">
+                <p class="px-2 pb-0.5 pt-2 text-[0.65rem] font-bold uppercase tracking-wider text-muted-foreground/60">{grp.label}</p>
+                {grp.items.map((l) => (
+                  <a href={l.href} class="block rounded-lg px-3 py-1.5 transition-colors hover:bg-muted">
+                    <span class="block text-sm font-semibold text-foreground">{l.label}</span>
+                    <span class="block text-xs text-muted-foreground">{l.desc}</span>
+                  </a>
+                ))}
+              </div>
             ))}
           </div>
         </div>
@@ -139,6 +196,18 @@ const resourcesActive = resourcesLinks.some((l) => isActive(l.href));
       <div class="mb-1 space-y-1 pl-3">
         {solutionsLinks.map((l) => (
           <a href={l.href} class="mobile-sublink">{l.label}</a>
+        ))}
+      </div>
+
+      <a href="/products/" class:list={["mobile-link", productsActive && "nav-link-active"]}>Products</a>
+      <div class="mb-1 space-y-1 pl-3">
+        {productGroups.map((grp) => (
+          <div>
+            <p class="px-3 pb-0.5 pt-2 text-[0.65rem] font-bold uppercase tracking-wider text-muted-foreground/60">{grp.label}</p>
+            {grp.items.map((l) => (
+              <a href={l.href} class="mobile-sublink">{l.label}</a>
+            ))}
+          </div>
         ))}
       </div>
 
