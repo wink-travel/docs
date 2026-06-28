@@ -70,32 +70,37 @@ export const faqs = [
   </div>
 </section>
 
-{/* Create & distribute — mockup cards */}
+{/* Create & distribute — alternating feature rows */}
 <section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
-  <div class="mx-auto mb-12 max-w-2xl text-center">
+  <div class="mx-auto mb-16 max-w-2xl text-center">
     <p class="mkt-kicker text-primary">Create &amp; distribute</p>
     <h2 class="mkt-h2 font-heading mt-3">Turn supply into bookable demand.</h2>
     <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">The hotel control center, and the tools that turn its supply into booking-ready demand across every channel.</p>
   </div>
-  <div class="grid gap-6 @md:grid-cols-2 @4xl:grid-cols-3">
+  <div class="space-y-16 @3xl:space-y-24">
     {[
-      { title: "Extranet", desc: "The hotel's control center — content, rates, inventory, policies and channels.", href: "/products/extranet/", img: "/mockups/extranet/extranet-main-dashboard-page.png", accent: "#ff6b35" },
-      { title: "Studio", desc: "Find eligible supply and turn it into bookable links, cards, maps and embeds.", href: "/products/studio/", img: "/mockups/studio/partner-studio-hotel-available-on-network-browsing.png", accent: "#ec4899" },
-      { title: "WinkLinks", desc: "Mobile-first booking storefronts from a single shareable link.", href: "/products/winklinks/", img: "/mockups/winklinks/winklinks-card-style-desktop.png", accent: "#a855f7" },
-      { title: "Social", desc: "AI-generated, booking-ready social posts scheduled across channels.", href: "/products/social/", img: "/mockups/social/social-scheduling-page.png", accent: "#f59e0b" },
-      { title: "Traveliko", desc: "The Wink-operated consumer discovery marketplace.", href: "/products/traveliko/", img: "/mockups/traveliko/traveliko-homepage.png", accent: "#10b981" },
-    ].map((c) => (
-      <a href={c.href} class="group flex flex-col overflow-hidden rounded-2xl border border-border bg-card shadow-sm transition-all hover:-translate-y-1 hover:shadow-lg">
-        <div class="relative aspect-[16/10] overflow-hidden border-b border-border bg-muted/30">
-          <span class="absolute inset-x-0 top-0 z-10 h-1" style={`background:${c.accent}`} aria-hidden="true"></span>
-          <img src={c.img} alt={`${c.title} — Wink`} class="size-full object-cover object-top transition-transform duration-500 group-hover:scale-[1.04]" loading="lazy" decoding="async" />
+      { name: "Extranet", title: "The hotel's control center.", desc: "Manage content, rates, inventory, policies and channel settings — the single source of truth every route reads from.", href: "/products/extranet/", img: "/mockups/extranet/extranet-main-dashboard-page.png", frame: "browser", url: "extranet.wink.travel", accent: "#ff6b35" },
+      { name: "Studio", title: "Find supply, build bookable assets.", desc: "Browse eligible hotels and turn them into booking-ready links, cards, maps and embeddable Web Components.", href: "/products/studio/", img: "/mockups/studio/partner-studio-hotel-available-on-network-browsing.png", frame: "browser", url: "studio.wink.travel", accent: "#ec4899" },
+      { name: "WinkLinks", title: "A storefront from a single link.", desc: "Mobile-first, booking-ready storefronts you can drop in a bio, a story, a DM or a QR code.", href: "/products/winklinks/", img: "/mockups/winklinks/winklinks-mobile.jpeg", frame: "phone", accent: "#a855f7" },
+      { name: "Social", title: "AI-generated, booking-ready posts.", desc: "Plan, approve and schedule hotel content across channels — every post links straight to a bookable storefront.", href: "/products/social/", img: "/mockups/social/social-scheduling-page.png", frame: "browser", url: "app.wink.travel", accent: "#f59e0b" },
+      { name: "Traveliko", title: "The consumer discovery marketplace.", desc: "A Wink-operated consumer channel that routes booking intent straight into Booking Engine.", href: "/products/traveliko/", img: "/mockups/traveliko/traveliko-homepage.png", frame: "browser", url: "traveliko.com", accent: "#10b981" },
+    ].map((p, i) => (
+      <div class="grid items-center gap-8 @3xl:grid-cols-2 @3xl:gap-14">
+        <div class:list={[i % 2 === 0 && "@3xl:order-2"]}>
+          <span class="text-xs font-bold uppercase tracking-wider" style={`color:${p.accent}`}>{p.name}</span>
+          <h3 class="font-heading mt-2 text-2xl font-semibold @lg:text-3xl">{p.title}</h3>
+          <p class="text-muted-foreground mt-3 max-w-md text-pretty">{p.desc}</p>
+          <a href={p.href} class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold" style={`color:${p.accent}`}>Explore {p.name} <IconArrowRight class="size-4 transition-transform group-hover:translate-x-0.5" /></a>
         </div>
-        <div class="flex flex-1 flex-col p-6">
-          <h3 class="font-heading text-lg font-semibold">{c.title}</h3>
-          <p class="text-muted-foreground mt-2 flex-1 text-sm text-pretty">{c.desc}</p>
-          <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold" style={`color:${c.accent}`}>Explore <IconArrowRight class="size-4 transition-transform group-hover:translate-x-0.5" /></span>
+        <div class:list={["relative", i % 2 === 0 && "@3xl:order-1"]}>
+          <div class="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] blur-2xl" style={`background:radial-gradient(circle at 50% 40%, ${p.accent}33, transparent 70%)`} aria-hidden="true"></div>
+          {p.frame === "phone" ? (
+            <div class="mx-auto w-[15rem] @sm:w-[16rem]"><DeviceFrame variant="phone" src={p.img} alt={`${p.name} — Wink`} class="!max-w-none w-full" /></div>
+          ) : (
+            <DeviceFrame variant="browser" url={p.url} src={p.img} alt={`${p.name} — Wink`} aspect="16/10" />
+          )}
         </div>
-      </a>
+      </div>
     ))}
   </div>
 </section>
