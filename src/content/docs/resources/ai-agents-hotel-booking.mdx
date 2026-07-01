@@ -1,0 +1,197 @@
+---
+title: AI Agents Booking Hotels — How Agentic Travel Commerce Works
+description: How AI agents discover hotels, read live rates, create bookings and take payment — and how agentic commerce differs from AI search.
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import ResourceSchema from "@/components/marketing/ResourceSchema.astro";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+
+<div class="not-content mkt-page">
+
+<ResourceSchema title="AI Agents Booking Hotels — How Agentic Travel Commerce Works" crumb="AI Agents Booking Hotels" slug="ai-agents-hotel-booking" datePublished="2026-06-11" description="How AI agents discover hotels, read live rates and availability, create bookings and take payment through structured travel commerce infrastructure — and how that differs from AI search." />
+
+{/* Breadcrumb */}
+<nav aria-label="Breadcrumb" class="mx-auto w-full max-w-3xl px-4 pt-6 text-sm text-muted-foreground">
+  <a href="/" class="hover:text-foreground">Home</a>
+  <span class="px-1.5">/</span>
+  <a href="/resources/" class="hover:text-foreground">Resources</a>
+  <span class="px-1.5">/</span>
+  <span class="text-foreground">AI Agents Booking Hotels</span>
+</nav>
+
+{/* Article header */}
+<header class="mx-auto w-full max-w-3xl px-4 pt-8 pb-10">
+  <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> Resources</span>
+  <h1 class="font-heading mt-3 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl">How AI agents book hotels</h1>
+  <p class="mkt-sub text-muted-foreground mt-5">
+    AI search helps a traveler <em>find</em> a hotel. An AI agent goes further — it can read live rates,
+    create a booking, take payment and react to events on the traveler's behalf. That only works when the
+    agent has structured travel commerce infrastructure underneath the answer.
+  </p>
+  <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+    <a href="/agentic-ai/" class="inline-flex h-11 items-center justify-center rounded-md bg-[#ff6b35] px-6 text-sm font-semibold text-white hover:bg-[#e85b29]">Explore Agentic AI</a>
+    <a href="/resources/" class="inline-flex h-11 items-center justify-center rounded-md border border-border px-6 text-sm font-medium hover:bg-muted">Explore resources</a>
+  </div>
+  <p class="mt-5 text-sm text-muted-foreground">
+    Discovery is one problem. Transacting is a different one — and it's where most AI travel stops.
+  </p>
+</header>
+
+{/* Direct answer — AEO highlight */}
+<section class="mx-auto w-full max-w-3xl px-4">
+  <div class="rounded-2xl border-l-4 border-primary bg-primary/[0.04] p-6">
+    <p class="text-xs font-semibold uppercase tracking-wider text-primary">The short answer</p>
+    <p class="mt-3 text-pretty text-foreground/90">
+      An AI agent books a hotel by calling an API that exposes live, hotel-controlled supply — searching
+      inventory, reading current rates and availability, creating a booking, taking payment and preserving
+      attribution. A recommendation becomes a confirmed booking only when a fulfillment layer (a booking
+      engine) sits behind the agent. On Wink, agents connect through a hosted MCP server and the REST API,
+      and Booking Engine fulfills the transaction.
+    </p>
+  </div>
+</section>
+
+{/* Body */}
+<article class="mkt-prose mx-auto w-full max-w-3xl px-4 py-14">
+
+## Recommending a hotel is not booking one
+
+Most "AI travel" today stops at the recommendation. An assistant suggests three hotels, then hands the traveler off to a website or an OTA to actually book. The thread breaks, the price may not be bookable, and no one keeps the source context.
+
+An **AI agent** is different from an AI answer. An agent doesn't just describe a hotel — it acts: it checks live availability, assembles a booking, takes payment, and can react when something changes. For that to happen safely, the agent needs more than text. It needs structured, current, bookable data and a transaction layer it can call.
+
+This is the difference between [AI discovery](/resources/ai-discovery-hotels/), which is about being **found and understood**, and agentic commerce, which is about being **transacted**.
+
+## What an agent needs before it can transact
+
+A hotel booking is a real commercial event: the right room, the right rate, real availability, policies, payment and a confirmation that syncs back to the hotel. An agent can only complete that if each piece is available as a callable operation.
+
+| The agent needs | Why it matters |
+|---|---|
+| Structured, live supply | Web-scraped data goes stale; an agent needs current, hotel-controlled inventory. |
+| Real-time rates & availability | A price the agent quotes must actually be bookable at that moment. |
+| A booking operation | Creating the reservation has to be a real API call, not a handoff to a web form. |
+| Payment | The agent (or the traveler through it) must be able to pay, with policy logic applied. |
+| Attribution | The source, campaign or agent that created the booking should stay attached. |
+| Events | The agent should be able to react to confirmations, changes, cancellations and refunds. |
+
+Without these, an agent can recommend — but it cannot book.
+
+## How an AI agent books a hotel on Wink
+
+Wink is API-first: every platform feature is callable externally, and a hosted MCP server exposes the live API contracts to agents. A typical agent flow:
+
+### 1 — Connect and read the live contracts
+
+The agent connects to the hosted MCP server and uses `api_search` and `docs_search` to find the right operations and read their real request/response schemas — no guessing at endpoints, no stale docs.
+
+```bash
+claude mcp add --transport http \
+  wink-docs https://docs.mcp.wink.travel/mcp
+```
+
+### 2 — Search bookable inventory
+
+The agent searches hotel-controlled supply, including geolocation spatial search, and reads live rates and availability across connected channel managers.
+
+### 3 — Create the booking
+
+Booking creation is a REST API operation. The agent assembles the room, rate, dates and guests, and creates the reservation through the API.
+
+### 4 — Take payment and confirm
+
+[Booking Engine](/products/booking-engine/) fulfills the transaction — checkout, payment through TripPay (Stripe-powered), cancellation-policy logic, confirmation, and booking sync to the connected PMS or channel manager. Source and partner attribution are preserved through the booking.
+
+### 5 — React to events
+
+The agent can subscribe to `booking.created` and other webhook events to reconcile, notify the traveler, or trigger follow-up actions.
+
+The principle: **the agent creates or routes intent; Booking Engine remains the fulfillment layer underneath every handoff.**
+
+## AI search vs AI agents
+
+They solve different jobs, and a hotel needs to be ready for both.
+
+| | AI search / answer engines | AI agents |
+|---|---|---|
+| Traveler goal | Find and compare hotels | Book and manage a stay |
+| What the hotel needs | [Structured, crawlable content](/resources/hotel-content-answer-engines/) | Live API, rates, booking, payment |
+| End state | A recommendation | A confirmed booking |
+| Wink surface | Clean supply + answer-ready content | REST API, MCP server, Booking Engine |
+
+[AI discovery for hotels](/resources/ai-discovery-hotels/) covers the search side; this guide covers the transaction side.
+
+## Who builds agents on hotel commerce
+
+Agentic travel commerce isn't only consumer assistants. The same infrastructure powers:
+
+- **Consumer travel assistants** that search, book and manage a stay end to end.
+- **Bank, loyalty and super-app agents** embedding hotel booking inside an existing customer experience.
+- **Partner and creator automations** that discover eligible hotels, build assets and keep attribution connected — earning a 10% default commission on confirmed bookings.
+- **Hotel-side copilots** that help teams generate content and analyze performance across [Extranet](/products/extranet/), [Social](/products/social/) and [Studio](/products/studio/), while the hotel keeps the rules.
+
+## Where this is heading
+
+The capabilities above are live today through the REST API and MCP server. The direction is deeper agent-native commerce: richer agent-facing booking primitives, agent identity and authorization for transacting on a traveler's behalf, and agents participating as attributed, earning sources in the partner network. The throughline is consistent — **travel commerce infrastructure for AI agents**, with Booking Engine fulfilling underneath.
+
+## Common mistakes
+
+- **Treating AI discovery and AI agents as the same project.** One is content and structure; the other is API and fulfillment. You need both.
+- **Letting agents quote prices they can't book.** Quotes must come from live rates and availability, not scraped pages.
+- **Dropping attribution at the handoff.** If an agent creates demand, the booking should stay connected to that source.
+- **Skipping the fulfillment layer.** An answer isn't a booking until checkout, payment and confirmation actually happen.
+
+</article>
+
+{/* Related */}
+<section class="mx-auto w-full max-w-3xl px-4 pb-8">
+  <p class="mkt-kicker text-primary">Keep exploring</p>
+  <div class="mt-4 grid gap-3 @md:grid-cols-2">
+    {[
+      { label: "Agentic AI", href: "/agentic-ai/" },
+      { label: "AI Discovery for Hotels", href: "/resources/ai-discovery-hotels/" },
+      { label: "Booking Engine", href: "/products/booking-engine/" },
+      { label: "For Developers", href: "/dev/" },
+    ].map((l) => (
+      <a href={l.href} class="group flex items-center justify-between rounded-xl border border-border bg-card px-4 py-3 text-sm font-medium transition-colors hover:border-primary/40">
+        {l.label}
+        <IconArrowRight class="size-4 text-muted-foreground transition-transform group-hover:translate-x-0.5" />
+      </a>
+    ))}
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid emitJsonLd
+  heading="AI agents and hotel booking FAQs"
+  description="How agents transact, and how it differs from AI search."
+  items={[
+    { title: "Can an AI agent actually complete a hotel booking?", content: "Yes. On Wink, booking creation is a REST API operation and Booking Engine fulfills it — checkout, payment via TripPay (Stripe-powered), confirmation and booking sync. An agent that calls the booking API on a traveler's behalf can complete a real, confirmed booking with source context preserved." },
+    { title: "How is an AI agent different from AI search?", content: "AI search and answer engines help a traveler find and compare hotels and end in a recommendation. An AI agent acts: it reads live rates and availability, creates a booking, takes payment and reacts to events. Hotels should prepare for both — structured content for discovery, and a live API for transactions." },
+    { title: "How does an AI agent connect to Wink?", content: "Through a hosted MCP server at https://docs.mcp.wink.travel/mcp and the REST API with OAuth2. The agent uses api_search and docs_search to read live operations and contracts, then calls the right operation." },
+    { title: "Does an AI agent replace Booking Engine?", content: "No. The agent creates or routes intent; Booking Engine remains the fulfillment layer for checkout, payment, confirmation and booking sync. Every agent handoff resolves through Booking Engine underneath." },
+    { title: "Can an AI agent earn commission as a partner?", content: "Yes. Wink preserves source and campaign attribution for 6 months per click and pays a 10% default commission on confirmed bookings. An agent that creates qualified demand and routes a booking can be an attributed, earning source." },
+    { title: "Do hotels stay in control when an agent books?", content: "Yes. Agents work from hotel-controlled supply managed in Extranet. The hotel sets the rooms, rates, policies and channel rules; the agent transacts within them." },
+  ]}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Build travel commerce for AI agents.</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">
+      Connect the MCP server, read the live contracts, and let Booking Engine fulfill the booking behind
+      every agent handoff.
+    </p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/agentic-ai/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">Explore Agentic AI</a>
+      <a href="/dev/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">See documentation</a>
+    </div>
+  </div>
+</section>
+
+</div>

@@ -1,0 +1,21 @@
+---
+import Default from "@astrojs/starlight/components/Head.astro";
+
+// Per-page Open Graph image: default-locale marketing pages get a generated
+// OG card (/og/<id>.png); everything else falls back to the global social card.
+const route = Astro.locals.starlightRoute;
+const id = route?.entry?.id ?? "";
+const isMarketing = route?.entry?.data?.marketingNav === true;
+const isDefaultLocale = !/^[a-z]{2}(-[a-z]+)?\//i.test(id);
+
+const fallback =
+  "https://res.cloudinary.com/traveliko/image/upload/v1653294291/wink/wink-social-card.png";
+const ogImage =
+  isMarketing && isDefaultLocale
+    ? new URL(`/og/${id}.png`, Astro.site).href
+    : fallback;
+---
+
+<Default />
+<meta property="og:image" content={ogImage} />
+<meta name="twitter:image" content={ogImage} />

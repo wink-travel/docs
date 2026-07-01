@@ -1,0 +1,64 @@
+---
+import DeviceFrame from "./DeviceFrame.astro";
+
+interface Props {
+  kicker?: string;
+  heading: string;
+  subhead?: string;
+  primaryText?: string;
+  primaryHref?: string;
+  secondaryText?: string;
+  secondaryHref?: string;
+  image: string;
+  alt: string;
+  frame?: "browser" | "phone";
+  url?: string;
+  frameClass?: string;
+}
+
+const {
+  kicker,
+  heading,
+  subhead,
+  primaryText,
+  primaryHref = "#",
+  secondaryText,
+  secondaryHref = "#",
+  image,
+  alt,
+  frame = "browser",
+  url,
+  frameClass,
+} = Astro.props;
+---
+
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-12 pb-16 @lg:pt-16">
+  <div class="grid items-center gap-12 @lg:grid-cols-2 @lg:gap-16">
+    <div>
+      {kicker && (
+        <span class="inline-flex items-center gap-2 rounded-full border border-primary/20 bg-gradient-to-r from-[#ff6b35]/10 to-[#9333ea]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-wider text-primary"><span class="size-1.5 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#9333ea]"></span> {kicker}</span>
+      )}
+      <h1 class="font-heading mt-4 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl @2xl:text-[3.25rem] @2xl:leading-[1.05]">
+        {heading}
+      </h1>
+      {subhead && <p class="text-muted-foreground mt-5 text-pretty text-lg @lg:text-xl">{subhead}</p>}
+      {(primaryText || secondaryText) && (
+        <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+          {primaryText && (
+            <a href={primaryHref} class="inline-flex h-12 items-center justify-center rounded-md bg-primary px-7 text-base font-semibold text-primary-foreground transition-colors hover:bg-primary/90">
+              {primaryText}
+            </a>
+          )}
+          {secondaryText && (
+            <a href={secondaryHref} class="inline-flex h-12 items-center justify-center rounded-md border border-border px-7 text-base font-medium transition-colors hover:bg-muted">
+              {secondaryText}
+            </a>
+          )}
+        </div>
+      )}
+    </div>
+    <div>
+      <DeviceFrame variant={frame} src={image} alt={alt} url={url} class={frameClass} />
+    </div>
+  </div>
+</section>

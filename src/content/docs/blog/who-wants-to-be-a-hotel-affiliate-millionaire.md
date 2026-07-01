@@ -1,5 +1,6 @@
 ---
 title: Who Wants To Be A Hotel Affiliate Millionaire
+description: An introduction to hotel affiliate marketing — the performance-based model that pays you commission every time someone books a hotel through your link.
 date: 2025-04-15
 cover:
   alt: Cover image

@@ -1,0 +1,353 @@
+---
+title: Agentic AI — Travel Commerce Infrastructure for AI Agents
+description: "On Wink, AI agents don't just recommend hotels — they search live hotel-owned supply, then book and pay in one flow via REST API and hosted MCP. Live today."
+template: splash
+marketingNav: true
+---
+import '/src/styles/splash-page.css';
+import BreadcrumbJsonLd from "@/components/marketing/BreadcrumbJsonLd.astro";
+
+import FaqGrid from "@/components/marketing/FaqGrid.astro";
+import AgentJsonLd from "@/components/marketing/AgentJsonLd.astro";
+
+import IconPlug from "@tabler/icons/outline/plug-connected.svg";
+import IconMapSearch from "@tabler/icons/outline/map-search.svg";
+import IconCalendarStats from "@tabler/icons/outline/calendar-stats.svg";
+import IconCalendarCheck from "@tabler/icons/outline/calendar-check.svg";
+import IconCreditCard from "@tabler/icons/outline/credit-card.svg";
+import IconCoin from "@tabler/icons/outline/coin.svg";
+import IconWebhook from "@tabler/icons/outline/webhook.svg";
+import IconSparkles from "@tabler/icons/outline/sparkles.svg";
+import IconComponents from "@tabler/icons/outline/components.svg";
+import IconTool from "@tabler/icons/outline/tool.svg";
+import IconUser from "@tabler/icons/outline/user.svg";
+import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
+import IconUsersGroup from "@tabler/icons/outline/users-group.svg";
+import IconCode from "@tabler/icons/outline/code.svg";
+import IconArrowRight from "@tabler/icons/outline/arrow-right.svg";
+import IconCheck from "@tabler/icons/outline/check.svg";
+import IconX from "@tabler/icons/outline/x.svg";
+
+export const faqs = [
+  { title: "What does \"built for Agentic AI\" mean on Wink?", content: "Wink is API-first: every platform feature is callable externally, and a hosted MCP server exposes the live API contracts to AI agents. An approved agent can discover hotel supply, read live rates and availability, create and sync bookings, take payment through TripPay, preserve attribution, and subscribe to events — using the same infrastructure that powers Wink itself." },
+  { title: "How does an AI agent connect to Wink?", content: "Point a compatible MCP client at the hosted server at https://docs.mcp.wink.travel/mcp (SSE fallback at /sse). From Claude Code: claude mcp add --transport http wink-docs https://docs.mcp.wink.travel/mcp. The agent can then use the api_search and docs_search tools to read live OpenAPI operations, request/response contracts and task recipes." },
+  { title: "What can an AI agent actually do on Wink today?", content: "Today, via the REST API and MCP server: discover the platform, search bookable inventory (including geolocation spatial search), read live rates and availability across 11 connected channel managers, create bookings and sync their lifecycle to the PMS/channel manager, take payment through TripPay, preserve 6-month attribution and earn via partner flows, subscribe to 64+ webhook events, generate AI content, and embed bookable inventory via Web Components." },
+  { title: "Can an AI agent complete a hotel booking through Wink?", content: "Yes. Booking creation is a REST API operation, and Booking Engine fulfills the transaction — checkout, payment via TripPay (Stripe-powered), confirmation and booking sync. An agent that calls the booking API on a traveler's behalf can complete a real, confirmed booking with source context preserved." },
+  { title: "How does a hotel become bookable by an AI agent on Wink?", content: "Simply by setting up its profile on Wink. Once a hotel's supply, rates and availability are live (via Extranet), it is automatically discoverable and bookable by approved AI agents through the REST API and hosted MCP server — no separate, per-hotel AI integration. The agent searches the hotel's live inventory, creates the booking and settles payment through Booking Engine and TripPay, with attribution preserved. Every hotel on Wink is agent-ready by default." },
+  { title: "How is booking a hotel through Wink different from ChatGPT with Expedia or Booking.com?", content: "Assistant integrations like ChatGPT with Expedia or Booking.com are strong at discovery — live prices, photos and maps inside the chat — but the traveler is typically routed to the supplier's own website or app to finish the booking and pay. On Wink the agent transacts directly against live, hotel-owned supply: it reads real rates and availability, creates the booking, and settles payment through Booking Engine and TripPay (Stripe-powered) in one flow — and can earn partner commission on the result. Discovery can happen anywhere; fulfillment happens on Wink." },
+  { title: "Is Wink the only platform that lets AI agents book and pay for hotels?", content: "No — agent-driven hotel commerce is an emerging category, and several travel and payments players announced or shipped end-to-end agentic booking through 2026. What's distinctive about Wink is the combination: the supply is hotel-owned and direct (not GDS resale or web-scraped listings), the agent can search, book, pay AND earn through one commerce layer, and it is callable live today over the REST API and a hosted MCP server — not a roadmap item. Hotels keep control of distribution; the agent becomes an attributed, earning channel." },
+  { title: "Which agentic commerce and AI standards does Wink support?", content: "Wink is API-first and runs a hosted MCP (Model Context Protocol) server today, so any MCP-compatible agent — Claude, Codex, Cursor and others — can discover and call its live OpenAPI contracts. Wink's booking and payment primitives are designed to interoperate with the emerging agent-commerce stack — the Agentic Commerce Protocol (ACP), Google's Agent Payments Protocol (AP2), Agent2Agent (A2A) and x402-style agent payments — as those standards consolidate, rather than locking agents into a proprietary path." },
+  { title: "Is there an AI Skill for building on Wink?", content: "Yes — wink-api-builder is a portable agent skill that uses the MCP server as the source of truth. It walks an agent through api_search to live request/response contracts to authentication to verified code, and flags mismatches between existing code and the current API. It works with Claude Code, Codex, Cursor and other skill-capable clients." },
+  { title: "Can an AI agent earn as an affiliate or partner?", content: "Wink's partner model preserves source and campaign attribution for 6 months per click and pays a 10% default commission on confirmed bookings. An agent that creates qualified demand and routes a booking can be an attributed source through the same partner and Booking Engine infrastructure." },
+  { title: "Does Agentic AI replace Booking Engine?", content: "No. Agentic AI creates or routes intent; Booking Engine remains the fulfillment layer for checkout, payment, confirmation and booking sync. Every agent handoff resolves through Booking Engine underneath." },
+  { title: "Where should a developer or agent start?", content: "Connect to the MCP server, then read the Build on Wink, MCP Server and AI Skills documentation. Request API access when the use case and commercial route are clear." },
+];
+
+<div class="not-content mkt-page">
+
+<AgentJsonLd faqs={faqs} />
+
+<BreadcrumbJsonLd items={[{ name: "Home", url: "https://wink.travel/" }, { name: "Agentic AI" }]} />
+
+{/* Breadcrumb */}
+<nav aria-label="Breadcrumb" class="mx-auto w-full max-w-7xl px-4 pt-6 text-sm text-muted-foreground">
+  <a href="/" class="hover:text-foreground">Home</a>
+  <span class="px-1.5">/</span>
+  <span class="text-foreground">Agentic AI</span>
+</nav>
+
+{/* Hero — agent conversation */}
+<section class="@container relative mt-6 w-full overflow-hidden border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+    <div class="absolute -left-24 -top-10 size-80 rounded-full bg-[#ff6b35]/20 blur-[100px]"></div>
+    <div class="absolute -bottom-16 -right-16 size-96 rounded-full bg-[#9333ea]/30 blur-[120px]"></div>
+  </div>
+  <div class="relative mx-auto grid w-full max-w-7xl items-center gap-12 px-4 py-20 @lg:grid-cols-[1fr_1.02fr] @lg:py-24">
+    {/* Left — copy */}
+    <div class="text-center @lg:text-left">
+      <p class="text-xs font-semibold uppercase tracking-wider text-[#ff8a5c]">Agentic AI</p>
+      <h1 class="font-heading mt-4 text-4xl font-semibold tracking-tight text-balance @lg:text-5xl @2xl:text-6xl">Built for <span class="wink-shimmer bg-gradient-to-r from-[#ff8a5c] via-[#ec4899] to-[#a855f7] bg-clip-text text-transparent">Agentic AI.</span></h1>
+      <p class="mx-auto mt-5 max-w-xl text-pretty text-lg text-white/75 @lg:mx-0 @lg:text-xl">Travel commerce infrastructure for AI agents. Hotels control supply, partners earn on conversion, developers build on APIs — and agents discover, book and pay through the live API and MCP server.</p>
+      <div class="mt-9 flex flex-col items-center justify-center gap-3 @lg:justify-start sm:flex-row">
+        <a href="/developers/build-on-wink/" class="inline-flex h-13 items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#ff6b35] to-[#ec4899] px-7 py-3.5 text-base font-bold text-white shadow-lg shadow-[#ec4899]/30 transition-transform hover:scale-[1.03]">See documentation <IconArrowRight class="size-5" /></a>
+        <a href="#agents" class="inline-flex h-13 items-center justify-center rounded-full bg-white/10 px-7 py-3.5 text-base font-bold text-white ring-1 ring-white/20 backdrop-blur transition-colors hover:bg-white/15">Connect an agent</a>
+      </div>
+      <div class="mt-7 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 font-mono text-xs text-white/70"><span class="size-1.5 animate-pulse rounded-full bg-emerald-400"></span> MCP server live · docs.mcp.wink.travel/mcp</div>
+    </div>
+
+    {/* Right — agent conversation */}
+    <div class="relative mx-auto w-full max-w-md">
+      <div class="pointer-events-none absolute -inset-6 -z-10 rounded-[3rem] bg-gradient-to-br from-[#ff6b35]/20 to-[#a855f7]/20 blur-2xl" aria-hidden="true"></div>
+      <div class="rounded-3xl border border-white/10 bg-white/[0.04] p-4 shadow-2xl backdrop-blur @lg:p-5">
+        <div class="flex items-center gap-2 border-b border-white/10 pb-3">
+          <span class="size-2 animate-pulse rounded-full bg-emerald-400"></span>
+          <span class="font-mono text-xs text-white/50">AI agent · connected to Wink MCP</span>
+        </div>
+        <div class="space-y-3 pt-4">
+          <div class="wink-msg wink-msg-1 ml-auto max-w-[88%] rounded-2xl rounded-br-md bg-gradient-to-r from-[#ff6b35] to-[#ec4899] px-4 py-2.5 text-sm text-white">Find an adults-only hotel in Chiang Mai next month with a spa — and book it.</div>
+          <div class="wink-msg wink-msg-2 max-w-[88%] rounded-2xl rounded-bl-md bg-white/[0.07] px-4 py-2.5 text-sm text-white/85"><span class="font-mono text-xs text-[#ff8a5c]">api_search</span> → live rates across 11 channel managers…</div>
+          <div class="wink-msg wink-msg-3 max-w-[92%] rounded-2xl rounded-bl-md border border-white/10 bg-white/[0.05] p-3.5">
+            <div class="flex items-start justify-between gap-3">
+              <div>
+                <p class="text-sm font-bold text-white">Aleenta Retreat · Chiang Mai</p>
+                <p class="mt-0.5 text-xs text-white/55">Adults-only · spa · free cancellation</p>
+              </div>
+              <span class="shrink-0 rounded-full bg-emerald-500/15 px-2 py-0.5 text-[0.65rem] font-bold text-emerald-300">Available</span>
+            </div>
+            <p class="mt-2 font-heading text-base font-bold text-white">USD 240 <span class="text-xs font-medium text-white/50">/ night</span></p>
+          </div>
+          <div class="wink-msg wink-msg-4 inline-flex max-w-[88%] items-center gap-2 rounded-2xl rounded-bl-md bg-emerald-500/15 px-4 py-2.5 text-sm font-semibold text-emerald-300">✅ Booked · #WK-2X9F · paid via TripPay</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Direct answer */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24 text-center">
+  <p class="mkt-kicker text-primary">What does "built for Agentic AI" mean?</p>
+  <p class="mkt-sub text-muted-foreground mt-5">Wink is API-first: every platform feature is callable externally, and a hosted MCP server exposes the live API contracts to AI agents. Instead of forcing every traveler through a website, Wink gives approved agents structured access to hotel supply, rates, availability, booking, payment, attribution and events — the same infrastructure that powers Wink itself.</p>
+  <div class="mx-auto mt-7 max-w-2xl rounded-2xl border-2 border-primary/30 bg-primary/[0.04] px-6 py-5 text-pretty text-foreground/90"><strong class="text-foreground">Any hotel becomes agent-ready simply by setting up its profile on Wink.</strong> Once its supply, rates and availability are live, approved AI agents can search, book and pay against it through the API and MCP server — no separate, per-hotel AI integration required.</div>
+</section>
+
+{/* For AI agents — start here (quickstart) */}
+<section id="agents" class="@container w-full border-y border-border bg-muted/30" style="scroll-margin-top:5rem">
+  <div class="mx-auto w-full max-w-5xl px-4 py-20">
+    <div class="mx-auto mb-12 max-w-2xl text-center">
+      <p class="mkt-kicker text-primary">For AI agents — start here</p>
+      <h2 class="mkt-h2 font-heading mt-3">Connect, then read the live contracts.</h2>
+      <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">A hosted MCP server lets an agent discover Wink's APIs and build a working integration without guessing at endpoints.</p>
+    </div>
+
+    <div class="grid gap-6 @lg:grid-cols-2">
+      {/* Connect */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconPlug class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">1 · Connect the MCP server</h3>
+        <p class="text-muted-foreground mt-2 text-sm">Streamable HTTP endpoint (SSE fallback at <code class="rounded bg-muted px-1 py-0.5 text-xs">/sse</code>). From Claude Code:</p>
+        <pre class="mt-4 overflow-x-auto rounded-lg bg-[#1f0a40] p-4 font-mono text-xs leading-relaxed text-white/90"><code>claude mcp add --transport http \
+  wink-docs https://docs.mcp.wink.travel/mcp</code></pre>
+        <p class="text-muted-foreground mt-3 text-xs">Also works with Codex, Cursor and VS Code — see the <a href="/developers/mcp/" class="text-primary underline underline-offset-2">MCP docs</a>.</p>
+      </div>
+
+      {/* Search */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconSparkles class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">2 · Search the live API</h3>
+        <p class="text-muted-foreground mt-2 text-sm">Two tools resolve intent to real operations and concept docs:</p>
+        <ul class="mt-4 space-y-2 text-sm">
+          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">api_search</code><span class="text-muted-foreground">find the operation to call — e.g. "lookup inventory", "create booking", "payment receipt"</span></li>
+          <li class="flex items-start gap-2"><code class="mt-0.5 rounded bg-muted px-1.5 py-0.5 text-xs text-primary">docs_search</code><span class="text-muted-foreground">find concepts — "authentication", "webhooks", "attribution"</span></li>
+        </ul>
+        <p class="text-muted-foreground mt-3 text-xs">Each result returns a <code class="rounded bg-muted px-1 py-0.5 text-xs">wink://</code> URI — open the operation, its request/response schema, or its task <strong class="text-foreground/80">recipe</strong>.</p>
+      </div>
+
+      {/* Build */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconTool class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">3 · Build with the AI Skill</h3>
+        <p class="text-muted-foreground mt-2 text-sm"><code class="rounded bg-muted px-1.5 py-0.5 text-xs">wink-api-builder</code> uses the MCP server as source of truth: api_search → live contracts → auth → verified code, and flags any mismatch with the current API.</p>
+        <p class="text-muted-foreground mt-3 text-xs">Works with Claude Code, Codex and Cursor — see <a href="/developers/ai-skills/" class="text-primary underline underline-offset-2">AI Skills</a>.</p>
+      </div>
+
+      {/* Fulfill */}
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><IconCalendarCheck class="size-6" /></span>
+        <h3 class="font-heading text-lg font-semibold">4 · Hand off to Booking Engine</h3>
+        <p class="text-muted-foreground mt-2 text-sm">Create the booking via the API and Booking Engine fulfills it — checkout, payment via TripPay, confirmation and booking sync to the connected PMS or channel manager, with source context preserved.</p>
+        <p class="text-muted-foreground mt-3 text-xs">Subscribe to <code class="rounded bg-muted px-1 py-0.5 text-xs">booking.created</code> and 63 other events to react in real time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* What an agent can do — capability map */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Capability map</p>
+    <h2 class="mkt-h2 font-heading mt-3">What an AI agent can do on Wink.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">Every capability below is available today through the REST API and MCP server — grounded in the same contracts Wink runs on.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2 @2xl:grid-cols-3">
+    {[
+      { icon: IconMapSearch, title: "Search hotel inventory", desc: "Find bookable supply with geolocation spatial search — point, circle, rectangle or polygon — plus GeoIP detection." },
+      { icon: IconCalendarStats, title: "Read live rates & availability", desc: "Pull real-time rates, availability and inventory across 11 connected channel managers." },
+      { icon: IconCalendarCheck, title: "Create & sync bookings", desc: "Create bookings via the API; create / update / cancel sync to the connected PMS or channel manager with full lifecycle tracking." },
+      { icon: IconCreditCard, title: "Take payment", desc: "TripPay (Stripe-powered) handles checkout, cancellation-policy logic and payment workflows behind the booking." },
+      { icon: IconCoin, title: "Preserve attribution & earn", desc: "Source and campaign context survives the journey — 6-month-per-click attribution and 10% default commission on confirmed bookings." },
+      { icon: IconWebhook, title: "React to 64+ events", desc: "Subscribe to webhook events — bookings, payments, refunds, channel-manager updates — and trigger follow-up actions." },
+      { icon: IconSparkles, title: "Generate content", desc: "AI content across 9 inventory types and 12 tones of voice; one-click property registration from a single URL." },
+      { icon: IconComponents, title: "Embed bookable inventory", desc: "Drop live, bookable hotel inventory into any surface with Web Components and minimal code." },
+      { icon: IconCode, title: "Build on the full API", desc: "Every Wink feature is callable externally over REST, with OAuth2 auth and official SDKs — integrate as if the system were your own." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-6">
+        <span class="mb-4 flex size-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <h3 class="font-heading text-base font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-sm text-pretty">{c.desc}</p>
+        <span class="mt-4 inline-flex w-fit items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Available now</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The agentic shift — before/after flow */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">The shift</p>
+    <h2 class="mkt-h2 font-heading mt-3">From traveler-to-website to traveler-to-agent.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">In the old model the traveler did the work. In the agentic model the agent becomes the interface — and Wink becomes the commerce layer behind the answer.</p>
+  </div>
+  <div class="space-y-6">
+    <div class="rounded-2xl border border-border bg-muted/30 p-6">
+      <p class="mb-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">The old way</p>
+      <div class="flex flex-wrap items-center gap-2 text-sm">
+        {["Traveler", "Website", "Search", "Compare", "Book"].map((n, i) => (
+          <>
+            {i > 0 && <IconArrowRight class="size-4 shrink-0 text-muted-foreground/50" aria-hidden="true" />}
+            <span class="rounded-lg border border-border bg-card px-3 py-2 font-medium text-muted-foreground">{n}</span>
+          </>
+        ))}
+      </div>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-6">
+      <p class="mb-4 text-xs font-semibold uppercase tracking-wider text-primary">With Wink</p>
+      <div class="flex flex-wrap items-center gap-2 text-sm">
+        {["Traveler", "AI agent", "Wink API", "Booking Engine", "Hotel"].map((n, i) => (
+          <>
+            {i > 0 && <IconArrowRight class="size-4 shrink-0 text-primary/60" aria-hidden="true" />}
+            <span class:list={["rounded-lg px-3 py-2 font-semibold", n === "Wink API" || n === "Booking Engine" ? "bg-primary text-primary-foreground" : "border border-primary/30 bg-card text-foreground"]}>{n}</span>
+          </>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+{/* Why Wink — recommend vs transact */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Why Wink</p>
+    <h2 class="mkt-h2 font-heading mt-3">An AI answer isn't a booking.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-xl">A recommendation needs structured supply, live rates, checkout, payment, confirmation and attribution to become commerce.</p>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    <div class="rounded-2xl border border-border bg-muted/30 p-7">
+      <h3 class="font-heading text-lg font-semibold text-muted-foreground">An AI agent without infrastructure</h3>
+      <ul class="mt-5 space-y-3">
+        {["Web-scraped, often stale supply", "Prices that may not be bookable", "Recommends, then hands the booking off to a website or OTA", "No attribution — and no way for the agent to earn", "Loses the thread after the suggestion"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconX class="mt-0.5 size-5 shrink-0 text-muted-foreground/60" /><span class="text-sm text-muted-foreground">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-muted-foreground">Can recommend.</p>
+    </div>
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <h3 class="font-heading text-lg font-semibold text-primary">An AI agent on Wink</h3>
+      <ul class="mt-5 space-y-3">
+        {["Live, hotel-owned supply — not web-scraped or resold", "Live rates and availability via the API", "Books AND pays in one flow — TripPay (Stripe) settles it", "The agent can earn — attribution + 10% default commission", "Confirmed, synced to the PMS, with webhooks — live today"].map((b) => (
+          <li class="flex items-start gap-2.5"><IconCheck class="mt-0.5 size-5 shrink-0 text-primary" /><span class="text-sm text-foreground/90">{b}</span></li>
+        ))}
+      </ul>
+      <p class="mt-6 text-sm font-semibold text-primary">Can transact.</p>
+    </div>
+  </div>
+</section>
+
+{/* AI agents for everyone */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-14 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Every participant, an agent</p>
+    <h2 class="mkt-h2 font-heading mt-3">An agent for travelers, hotels, partners, and builders.</h2>
+  </div>
+  <div class="grid gap-6 @md:grid-cols-2">
+    {[
+      { icon: IconUser, who: "For travelers", title: "Search, book, and manage the stay", desc: "An agent works with structured supply, live rates and policies — then creates the booking through Booking Engine.", prompt: "Find an adults-only luxury hotel in Chiang Mai next month with a spa. Book it." },
+      { icon: IconBuildingStore, who: "For hotels", title: "Supervisors, not operators", desc: "Agents help create, update and analyze across Extranet, Social and Studio — the hotel keeps the rules.", prompt: "Generate next month's social content and flag low-occupancy dates to promote." },
+      { icon: IconUsersGroup, who: "For partners & creators", title: "Automate campaigns and earn", desc: "Discover eligible hotels, build assets and storefronts, publish, and keep attribution connected.", prompt: "Create a campaign promoting luxury resorts in the Maldives." },
+      { icon: IconCode, who: "For developers", title: "Build new travel experiences", desc: "AI concierges, bank and loyalty travel agents — built on the MCP server, REST API and Booking Engine.", prompt: "Embed AI hotel booking inside our banking app using the Wink API." },
+    ].map((c) => (
+      <div class="flex flex-col rounded-2xl border border-border bg-card p-7">
+        <span class="mb-4 flex size-12 items-center justify-center rounded-xl bg-gradient-to-br from-[#ff6b35] to-[#9333ea] text-white"><c.icon class="size-6" /></span>
+        <span class="text-xs font-semibold uppercase tracking-wider text-primary">{c.who}</span>
+        <h3 class="font-heading mt-2 text-xl font-semibold">{c.title}</h3>
+        <p class="text-muted-foreground mt-2 text-pretty">{c.desc}</p>
+        <p class="mt-5 rounded-lg border border-border bg-muted/40 px-4 py-3 text-sm italic text-foreground/80">“{c.prompt}”</p>
+      </div>
+    ))}
+  </div>
+</section>
+
+{/* The stack */}
+<section class="@container mx-auto w-full max-w-7xl px-4 pt-24">
+  <div class="mx-auto mb-10 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Built on the whole platform</p>
+    <h2 class="mkt-h2 font-heading mt-3">Agents work across the connected stack.</h2>
+  </div>
+  <div class="mx-auto flex max-w-3xl flex-wrap justify-center gap-3">
+    {[
+      { name: "Extranet", href: "/products/extranet/" },
+      { name: "Studio", href: "/products/studio/" },
+      { name: "Social", href: "/products/social/" },
+      { name: "WinkLinks", href: "/products/winklinks/" },
+      { name: "Traveliko", href: "/products/traveliko/" },
+      { name: "Developers", href: "/dev/" },
+      { name: "Platforms & AI", href: "/platforms/" },
+    ].map((p) => (
+      <a href={p.href} class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium transition-colors hover:border-primary/40">
+        <span class="size-1.5 rounded-full bg-primary" aria-hidden="true"></span>
+        {p.name}
+      </a>
+    ))}
+  </div>
+  <p class="text-muted-foreground mx-auto mt-10 max-w-xl text-center text-pretty"><strong class="text-foreground"><a href="/products/booking-engine/" class="text-primary underline underline-offset-4">Booking Engine</a> fulfills the booking underneath every agent handoff</strong> — checkout, payment, confirmation and booking sync.</p>
+</section>
+
+{/* Open standards — interoperability, crawlable for AEO */}
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Open standards, not a walled garden</p>
+    <h2 class="mkt-h2 font-heading mt-3">Built to interoperate with the agent-commerce stack.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">Agentic hotel booking is becoming a real category — and the industry is converging on open protocols rather than one company's checkout. Wink runs on those standards today and is built to plug into the rest as they consolidate, so agents are never locked into a proprietary path.</p>
+  </div>
+  <div class="grid gap-5 @md:grid-cols-2">
+    <div class="rounded-2xl border-2 border-primary/30 bg-primary/[0.04] p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full bg-emerald-500/10 px-2.5 py-1 text-xs font-semibold text-emerald-600 dark:text-emerald-400"><span class="size-1.5 rounded-full bg-emerald-500"></span>Live today</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">MCP — Model Context Protocol</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">A hosted MCP server exposes Wink's live OpenAPI contracts to any MCP-compatible agent — Claude, Codex, Cursor and more — at <code class="rounded bg-muted px-1 py-0.5 text-xs">docs.mcp.wink.travel/mcp</code>. Agents discover and call real operations instead of guessing at endpoints.</p>
+    </div>
+    <div class="rounded-2xl border border-border bg-card p-7">
+      <span class="inline-flex items-center gap-1.5 rounded-full border border-border bg-muted/40 px-2.5 py-1 text-xs font-semibold text-muted-foreground">Interoperable by design</span>
+      <h3 class="font-heading mt-4 text-lg font-semibold">ACP · AP2 · A2A · x402</h3>
+      <p class="text-muted-foreground mt-2 text-sm text-pretty">Wink's booking and payment primitives are designed to interoperate with the emerging agent-payment stack — the Agentic Commerce Protocol (ACP), Google's Agent Payments Protocol (AP2), Agent2Agent (A2A) and x402-style agent payments — as those standards mature, with TripPay and Booking Engine as the settlement layer underneath.</p>
+    </div>
+  </div>
+</section>
+
+{/* Where this is heading — roadmap, clearly labeled */}
+<section class="mx-auto w-full max-w-3xl px-4 pt-24">
+  <div class="rounded-2xl border border-dashed border-primary/30 bg-primary/[0.03] p-8">
+    <span class="inline-flex items-center gap-1.5 rounded-full border border-primary/30 bg-card px-3 py-1 text-xs font-semibold text-primary">Where this is heading</span>
+    <p class="text-muted-foreground mt-5 text-pretty">The capabilities above are live today. The direction is deeper agent-native commerce: richer agent-facing booking primitives, agent identity and authorization for transacting on a traveler's behalf, and agents participating as attributed, earning sources in the partner network. Wink's strategic positioning — <strong class="text-foreground"> travel commerce infrastructure for AI agents</strong> — is the throughline from today's API to that future.</p>
+  </div>
+</section>
+
+{/* FAQ */}
+<FaqGrid
+  heading="Agentic AI FAQs"
+  description="What it means, how to connect, and what agents can do."
+  items={faqs}
+/>
+
+{/* Final CTA */}
+<section class="w-full border-y border-white/10 bg-gradient-to-br from-[#2a0f52] via-[#1f0a40] to-[#150629] text-white">
+  <div class="mx-auto w-full max-w-7xl px-4 py-24 text-center">
+    <h2 class="mkt-h2 font-heading">Ready to build travel commerce for AI agents?</h2>
+    <p class="mx-auto mt-4 max-w-2xl text-pretty text-white/70 @lg:text-lg">Connect the MCP server, read the live contracts, and let Booking Engine fulfill the booking. Or talk to us about agent access for your product.</p>
+    <div class="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+      <a href="/developers/build-on-wink/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-[#ff6b35] px-8 text-base font-semibold text-white hover:bg-[#e85b29] sm:w-auto">See documentation</a>
+      <a href="/developers/mcp/" class="inline-flex h-12 w-full items-center justify-center rounded-md bg-white px-8 text-base font-semibold text-[#1f0a40] hover:bg-white/90 sm:w-auto">Connect the MCP server</a>
+      <a href="https://cal.com/wink-ws36dy" class="inline-flex h-12 items-center justify-center px-4 text-sm font-medium text-white/80 underline underline-offset-4 hover:text-white">Request a demo</a>
+    </div>
+  </div>
+</section>
+
+</div>

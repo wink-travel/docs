@@ -1,0 +1,60 @@
+---
+interface Props {
+  variant?: "browser" | "phone" | "plain";
+  src: string;
+  alt: string;
+  url?: string;
+  class?: string;
+  /** Fixed aspect ratio for the screen, e.g. "9/19.5" or "16/10". When set, the
+   *  image fills a fixed-ratio window (object-cover, top-aligned) so multiple
+   *  frames render at identical sizes regardless of the source image dimensions. */
+  aspect?: string;
+}
+
+const { variant = "browser", src, alt, url = "wink.travel", class: cls, aspect } = Astro.props;
+const imgFixed = "size-full object-cover object-top";
+---
+
+{
+  variant === "plain" ? (
+    <figure class:list={["overflow-hidden rounded-2xl border border-border bg-card shadow-xl shadow-black/[0.06]", cls]}>
+      {aspect ? (
+        <div class="w-full overflow-hidden" style={`aspect-ratio:${aspect}`}>
+          <img src={src} alt={alt} class={imgFixed} loading="lazy" decoding="async" />
+        </div>
+      ) : (
+        <img src={src} alt={alt} class="block w-full" loading="lazy" decoding="async" />
+      )}
+    </figure>
+  ) : variant === "browser" ? (
+    <figure class:list={["overflow-hidden rounded-xl border border-border bg-card shadow-xl shadow-black/[0.06]", cls]}>
+      <div class="flex items-center gap-2 border-b border-border bg-muted/50 px-4 py-2.5">
+        <span class="flex shrink-0 gap-1.5">
+          <span class="size-2.5 rounded-full bg-[#ff5f57]" />
+          <span class="size-2.5 rounded-full bg-[#febc2e]" />
+          <span class="size-2.5 rounded-full bg-[#28c840]" />
+        </span>
+        <span class="mx-auto flex max-w-[60%] items-center gap-1.5 truncate rounded-md bg-background/70 px-3 py-1 text-xs text-muted-foreground">
+          {url}
+        </span>
+      </div>
+      {aspect ? (
+        <div class="w-full overflow-hidden" style={`aspect-ratio:${aspect}`}>
+          <img src={src} alt={alt} class={imgFixed} loading="lazy" decoding="async" />
+        </div>
+      ) : (
+        <img src={src} alt={alt} class="block w-full" loading="lazy" decoding="async" />
+      )}
+    </figure>
+  ) : (
+    <figure class:list={["mx-auto w-full max-w-[250px] overflow-hidden rounded-[2.25rem] border-[7px] border-foreground/85 bg-foreground/85 shadow-xl shadow-black/10", cls]}>
+      {aspect ? (
+        <div class="overflow-hidden rounded-[1.6rem]" style={`aspect-ratio:${aspect}`}>
+          <img src={src} alt={alt} class={imgFixed} loading="lazy" decoding="async" />
+        </div>
+      ) : (
+        <img src={src} alt={alt} class="block w-full rounded-[1.6rem]" loading="lazy" decoding="async" />
+      )}
+    </figure>
+  )
+}
