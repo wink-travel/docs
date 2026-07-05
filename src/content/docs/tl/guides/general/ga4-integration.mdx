@@ -10,7 +10,7 @@ import { Aside, Steps } from '@astrojs/starlight/components';
 Sa pamamagitan ng pagkonekta ng iyong Google Analytics 4 property sa Wink, ang iyong mga booking event — mula sa pagtingin ng mga kuwarto hanggang sa mga kumpletong booking — ay awtomatikong ipinapasa sa iyong sariling GA4 dashboard kasabay ng sariling analytics ng Wink. Walang code, walang teknikal na setup sa iyong panig.
 
 <Aside type="tip">
-Kailangan mo ng dalawang bagay mula sa GA4: isang **Measurement ID** at isang **Measurement Protocol API secret**. Ang Measurement ID ang nagpapatakbo ng browsing funnel sa browser ng bisita; ang API secret naman ang nagpapahintulot sa Wink na i-record ang mga kumpletong booking (`purchase`) **server-side**, kaya hindi mawawala ang isang benta kapag na-redirect ang bisita papunta at pabalik mula sa payment provider.
+Kailangan mo lang ng isang bagay mula sa GA4: isang **Measurement ID** (`G-XXXXXXXXXX`). Ini-load ito ng Wink sa browser ng bisita at isinusubaybay ang buong booking funnel mo — kabilang ang kumpletong booking (`purchase`) — diretso sa iyong GA4 property. Walang kailangang API secret na gawin at walang kailangang i-install sa iyong sariling website.
 </Aside>
 
 ---
@@ -18,10 +18,14 @@ Kailangan mo ng dalawang bagay mula sa GA4: isang **Measurement ID** at isang **
 ## Paano Ito Gumagana
 
 ```
-Ilagay mo ang iyong Measurement ID (G-XXXXXXXXXX) at API secret sa Wink portal
+Ilagay mo ang iyong Measurement ID (G-XXXXXXXXXX) sa Wink portal
        ↓
-Ang mga browsing event (views, cart, checkout) ay dumadaloy sa iyong GA4 property mula sa browser
-Ang mga kumpletong booking (purchase) ay ipinapadala server-side — nananatili kahit may payment redirect
+Ini-load ng Wink ang iyong GA4 sa browser ng bisita at isinusubaybay ang mga booking event
+(pagtingin, cart, checkout) sa iyong GA4 property nang real time
+       ↓
+Sa thank-you page, ang kumpletong booking (purchase) ay nagfa-fire sa browser —
+Muling kinokonekta ng Wink ang GA4 session na na-interrupt ng payment redirect, kaya
+ang benta ay binibilang pa rin sa orihinal na pagbisita ng bisita
        ↓
 Mag-login ka sa analytics.google.com at makikita mo ang buong booking funnel mo
 ```
@@ -38,43 +42,49 @@ Mag-login ka sa analytics.google.com at makikita mo ang buong booking funnel mo
 
 2. **Gumawa ng Web Data Stream**
 
-   Admin → Data Streams → Add Stream → Web. Ilagay ang `wink.travel` bilang URL. Ito ay magbibigay sa iyo ng **Measurement ID** (`G-XXXXXXXXXX`). Kopyahin ito.
+   Admin → Data Streams → Add Stream → Web. Ilagay ang `wink.travel` bilang URL. Ito ay gagawa ng iyong **Measurement ID** (`G-XXXXXXXXXX`). Kopyahin ito.
 
-3. **Gumawa ng Measurement Protocol API Secret**
+3. **Ilagay ang Iyong Measurement ID sa Wink Portal**
 
-   Buksan ang parehong Web Data Stream → mag-scroll sa **Measurement Protocol API secrets** → **Create**. Bigyan ito ng palayaw (hal. "Wink") at kopyahin ang nabuo na **secret value**. Ang secret na ito ang nagpapahintulot sa Wink na i-record ang mga kumpletong booking server-side, kaya hindi mawawala ang benta sa panahon ng payment redirect.
+   Mag-login sa [app.wink.travel](https://app.wink.travel), piliin ang iyong account, at buksan ang iyong customization settings. Sa seksyong **Analytics & integrations**, i-paste ang iyong Measurement ID sa field na **GA4 Measurement ID** at i-save. Iyon lang — aktibo na ang iyong GA4 integration.
 
-4. **Ilagay ang Iyong Measurement ID at API Secret sa Wink Portal**
-
-   Mag-login sa [app.wink.travel](https://app.wink.travel), piliin ang iyong account, at pumunta sa tab na **Customizations**. I-paste ang iyong Measurement ID at API secret sa mga **GA4** na field at i-save. Iyon lang — aktibo na ang iyong GA4 integration.
-
-   <Aside type="note">
-   Ang API secret ay **write-only**: kapag naisave na, hindi na ito ipapakita muli. Sa mga susunod na pag-edit, iwanang blangko ang secret field upang mapanatili ang naunang na-save na halaga.
-   </Aside>
-
-5. **Markahan ang `purchase` bilang Key Event**
+4. **Markahan ang `purchase` bilang Key Event**
 
    Bumalik sa iyong GA4 property: Admin → Events → hanapin ang `purchase` → i-toggle ang **Mark as key event**. Ginagawa nitong lumabas ang mga kumpletong booking sa iyong Conversions report.
 
-6. **Tingnan ang Iyong Data**
+5. **Tingnan ang Iyong Data**
 
    Mag-login sa [analytics.google.com](https://analytics.google.com) at makikita mo ang iyong mga booking, kita, at guest funnel — lahat ay awtomatikong nasusubaybayan sa pamamagitan ng Wink.
 
 </Steps>
 
 <Aside type="note">
-Hindi mo kailangang mag-install ng anumang tracking code sa iyong sariling website para sa integration na ito. Ang Wink ang bahala sa lahat. Ang iyong Measurement ID ang destinasyon kung saan ipinapadala ang iyong booking data, at ang iyong API secret ang nagpapahintulot sa Wink na kumpirmahin ang mga kumpletong booking server-side.
+Hindi mo kailangang mag-install ng anumang tracking code sa iyong sariling website para sa integration na ito. Pinangangasiwaan ng Wink ang lahat — ang iyong Measurement ID ang destinasyon kung saan ipinapadala ang iyong booking data.
 </Aside>
 
 <Aside type="tip">
-**Maaaring gamitin nang sabay ang GA4 at GTM.** Kung nagpapatakbo ka rin ng Google Tag Manager container (halimbawa ay Sojern container), maaari mong i-configure ang pareho nang sabay — hindi na sila magkahiwalay. Tingnan ang [GTM Analytics Integration](/tl/guides/developers/gtm-dual-tagging).
+**Maaaring gamitin nang sabay ang GA4 at GTM.** Kung nagpapatakbo ka rin ng Google Tag Manager container (halimbawa isang Sojern container), maaari mong i-configure pareho nang sabay — hindi sila nagkakait. Tingnan ang [GTM Analytics Integration](/tl/guides/general/gtm-integration).
+</Aside>
+
+---
+
+## Paano Ginagamit ng Wink ang Iyong Measurement ID sa Booking Engine
+
+Lahat ay nangyayari **sa browser ng bisita** — walang server-to-server data export at walang API secret na kasangkot.
+
+- **Ini-load ang iyong GA4 sa iyong mga booking page.** Sa tuwing titingnan ng bisita ang iyong property sa Wink booking engine, ini-load ng Wink ang iyong Measurement ID sa kanilang browser kasabay ng sariling analytics ng Wink, na nagbabasa mula sa parehong shared data. Ang mga browsing event — paghahanap, pagtingin ng kuwarto, cart, checkout — ay isinusubaybay sa iyong GA4 property nang real time.
+- **Nagfa-fire ang kumpletong booking sa thank-you page.** Kapag natapos na ng bisita ang pagbabayad at dumating sa confirmation page, nagfa-fire ang `purchase` event client-side, dala ang buong halaga ng booking, currency, at detalye ng kuwarto.
+- **Hindi na nawawala ang benta dahil sa payment redirect.** Pinapadala ng card payments ang browser ng bisita sa payment provider at pabalik, na karaniwang nagpaputol sa in-browser GA4 session at ginagawang parang bagong "Direct" na pagbisita ang booking. Para maiwasan ito, dinadala ng Wink ang iyong GA4 session identifiers sa return URL at **muling kinokonekta ang orihinal na session** sa thank-you page *bago* mag-fire ang `purchase`. Kaya ang kumpletong booking ay naia-attribute sa parehong pagbisita na sinimulan ng bisita — hindi bilang hiwalay na session.
+
+<Aside type="note">
+Dinidoble-check ng Wink ang `purchase` kada booking, kaya ang pag-refresh ng page o ang awtomatikong redirect sa iyong booking details ay hindi nagdodoble ng bilang ng benta.
 </Aside>
 
 ---
 
 ## Ano ang Maaari Mong Subaybayan
 
-Kapag nakakonekta na, matatanggap ng iyong GA4 property ang buong hanay ng Enhanced E-commerce events para sa iyong property:
+Kapag nakakonekta na, natatanggap ng iyong GA4 property ang buong hanay ng Enhanced E-commerce events para sa iyong property:
 
 ### Discovery
 
@@ -82,7 +92,7 @@ Kapag nakakonekta na, matatanggap ng iyong GA4 property ang buong hanay ng Enhan
 |---|---|
 | `view_item_list` | Nakita ng bisita ang iyong property sa isang search o category listing |
 | `select_item` | Nag-click ang bisita sa iyong property mula sa isang listing |
-| `view_item` | Tiningnan ng bisita ang detalye ng iyong hotel |
+| `view_item` | Tiningnan ng bisita ang iyong hotel detail page |
 
 ### Consideration
 
@@ -96,22 +106,22 @@ Kapag nakakonekta na, matatanggap ng iyong GA4 property ang buong hanay ng Enhan
 
 | Event | Kahulugan |
 |---|---|
-| `add_to_cart` | Pumili ang bisita ng kuwarto o package |
+| `add_to_cart` | Pinili ng bisita ang isang kuwarto o package |
 | `view_cart` | Tiningnan ng bisita ang kanilang booking summary |
 | `remove_from_cart` | Tinanggal ng bisita ang isang kuwarto o package |
 | `begin_checkout` | Sinimulan ng bisita ang proseso ng checkout |
 | `add_payment_info` | Inilagay ng bisita ang kanilang payment details |
 | `add_shipping_info` | Inilagay ng bisita ang kanilang guest details |
-| `purchase` | Nakumpleto ng bisita ang booking |
-| `refund` | Kinansela at na-refund ang booking |
+| `purchase` | Nakumpleto ng bisita ang isang booking |
+| `refund` | Kinansela at na-refund ang isang booking |
 
-Lahat ng event ay may kasamang mga kaugnay na dimensyon tulad ng kita, pera, uri ng kuwarto, at halaga ng booking — na nagbibigay sa iyo ng buong larawan ng paglalakbay ng bisita mula sa unang impression hanggang sa kumpletong booking. Para ma-unlock ang karagdagang property- at room-level na dimensyon tulad ng `city_name`, `cancellation_policy`, `bed_type`, at iba pa, tingnan ang [Custom Dimensions in GA4](/tl/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
+Lahat ng event ay may kasamang mga kaugnay na dimensyon tulad ng kita, currency, uri ng kuwarto, at halaga ng booking — na nagbibigay sa iyo ng buong larawan ng paglalakbay ng bisita mula sa unang impression hanggang sa kumpletong booking. Para ma-unlock ang karagdagang property- at room-level na dimensyon tulad ng `city_name`, `cancellation_policy`, `bed_type`, at iba pa, tingnan ang [Custom Dimensions in GA4](/tl/guides/general/gtm-integration#custom-dimensions-in-ga4).
 
 ---
 
 ## Cross-Domain Tracking (Advanced)
 
-Ang standard integration sa itaas ay sumusubaybay sa lahat ng nangyayari sa loob ng Wink. Gayunpaman, kung nais mong subaybayan ang mga bisita mula sa iyong sariling website hanggang sa kumpletong booking sa Wink — at tama ang pag-aatributo sa orihinal na pinagmulan ng trapiko (Google Ads, email campaigns, organic search, atbp.) — kailangan ng isang karagdagang hakbang sa bawat panig.
+Ang standard integration sa itaas ay sumusubaybay sa lahat ng nangyayari sa loob ng Wink. Gayunpaman, kung nais mong subaybayan ang mga bisita mula sa iyong sariling website hanggang sa kumpletong booking sa Wink — at tama ang pag-aattribute sa orihinal na pinagmulan ng trapiko (Google Ads, email campaigns, organic search, atbp.) — isang karagdagang hakbang ang kailangan sa bawat panig.
 
 <Aside type="caution">
 Ang seksyong ito ay para lamang sa mga may GA4 na naka-install sa kanilang sariling website. Kung hindi ka nagpapatakbo ng GA4 sa iyong site, sapat na ang standard integration sa itaas.
@@ -121,16 +131,16 @@ Ang seksyong ito ay para lamang sa mga may GA4 na naka-install sa kanilang saril
 
 Kung walang cross-domain tracking, ang bisitang bumisita muna sa iyong website at pagkatapos ay nag-book sa Wink ay lalabas sa iyong GA4 bilang isang **Direct** session na walang koneksyon sa kanilang naunang pagbisita. Anumang Google Ads clicks, email campaigns, o organic search visits na nagdala sa booking ay hindi makakakuha ng kredito.
 
-Kapag naka-configure ang cross-domain tracking, makikita mo ang buong paglalakbay ng bisita:
+Kapag naka-configure ang cross-domain tracking, makikita mo ang kumpletong paglalakbay ng bisita:
 
 ```
-google.com (bayad na ad)
+google.com (paid ad)
        ↓
 iyong website (nag-browse ang bisita ng mga kuwarto)
        ↓
-wink.travel (pinili at nag-book ang bisita ng kuwarto)
+wink.travel (pinili ng bisita ang kuwarto at nag-book)
        ↓
-tamang naiaatributo ang purchase sa orihinal na Google Ads click
+tama ang pag-aattribute ng purchase sa orihinal na Google Ads click
 ```
 
 ### Kailangan Mong Gawin: Ikaw
@@ -146,7 +156,7 @@ I-configure ang iyong GA4 property upang kilalanin ang `wink.travel` bilang baha
 
 ### Kailangan Gawin ng Wink
 
-Makipag-ugnayan sa [Wink Support](https://app.wink.travel) at ibigay ang domain ng iyong website (hal. `yourhotel.com`). Idadagdag ng Wink ang iyong domain sa referral exclusion list sa Wink GA4 property. Pinipigilan nito ang iyong website na maitala bilang referral source, na kung hindi ay mag-o-overwrite sa orihinal na attribution ng bisita at magsisimula ng bagong session.
+Makipag-ugnayan sa [Wink Support](https://app.wink.travel) at ibigay ang iyong website domain (hal. `yourhotel.com`). Idadagdag ng Wink ang iyong domain sa referral exclusion list sa Wink GA4 property. Pinipigilan nito ang iyong website na maitala bilang referral source, na kung hindi ay mag-o-overwrite sa orihinal na attribution ng bisita at magsisimula ng bagong session.
 
 <Aside type="tip">
 Sapat na ang standard integration sa itaas para sa karamihan ng mga property at nagbibigay ito ng agarang visibility sa mga booking at kita sa Wink. Ang cross-domain tracking ay isang advanced na opsyon na sulit i-setup kapag komportable ka na sa iyong GA4 data at nais ng mas malalim na insight sa attribution.

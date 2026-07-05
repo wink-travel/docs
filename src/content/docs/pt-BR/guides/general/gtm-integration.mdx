@@ -25,15 +25,11 @@ Isso pressupõe que você já tenha um ID de Container GTM (formato `GTM-XXXXXXX
 
 2. **Insira no Portal Wink**
 
-   Faça login em [app.wink.travel](https://app.wink.travel), selecione sua conta e vá para a aba **Customizações**. Cole seu ID do Container GTM no campo **GTM** e salve. Sua integração estará ativa.
+   Faça login em [app.wink.travel](https://app.wink.travel), selecione sua conta e abra as configurações de personalização. Na seção **Analytics & integrations**, cole seu ID do Container GTM no campo **GTM Container ID** e salve. Sua integração estará ativa.
 
-3. **(Opcional) Adicione um ID de Medição GA4 + Segredo da API para Compra Server-Side**
+3. **Confirme com Seu Provedor**
 
-   Containers GTM rodam inteiramente no navegador do hóspede, então uma reserva concluída pode ser perdida se o hóspede fechar a aba durante o redirecionamento de pagamento. Se seu container carrega uma **propriedade GA4** e você quer que as reservas concluídas sejam registradas de forma confiável, insira também o **ID de Medição** e o **Segredo da API do Protocolo de Medição** dessa GA4 na seção GTM. O Wink então enviará o evento `purchase` para essa propriedade **server-side**, exatamente como descrito no guia de [Integração GA4 Analytics](/pt-BR/guides/developers/ga4-dual-tagging). Deixe em branco se precisar apenas do rastreamento no navegador.
-
-4. **Confirme com Seu Provedor**
-
-   Se seu container for de um parceiro como Sojern, informe seu gerente de conta que a integração está ativa. Eles podem verificar do lado deles se as tags estão disparando corretamente em `wink.travel` para sua propriedade e se os dados estão fluindo para sua conta.
+   Se seu container for de um parceiro como Sojern, informe seu gerente de conta que a integração está ativa. Eles podem verificar do lado deles se as tags estão disparando corretamente no `wink.travel` para sua propriedade e se os dados estão fluindo para sua conta.
 
 </Steps>
 
@@ -49,18 +45,18 @@ Isso funciona para **qualquer** ID de Container GTM — Sojern é apenas um exem
 
 Para transparência, aqui está o que o Wink configura para fazer essa integração funcionar:
 
-- **Um campo de ID do Container GTM** está disponível na aba Customizações do seu portal Wink. Quando você insere seu ID do Container, o Wink valida o formato (`GTM-XXXXXXX`) e o armazena com segurança vinculado à sua propriedade.
+- **Um campo de ID do Container GTM** está disponível na seção **Analytics & integrations** das suas configurações de personalização. Quando você insere seu ID do Container, o Wink valida o formato (`GTM-XXXXXXX`) e o armazena com segurança vinculado à sua propriedade.
 - **Em todas as páginas onde sua propriedade está ativa** no Wink, seu container é injetado diretamente na página — compartilhando o próprio `window.dataLayer` do Wink — para que ele carregue junto com o container do Wink sem depender de nenhuma configuração extra. Isso acontece automaticamente, sem trabalho por propriedade da equipe Wink.
 - **Seu container é carregado de forma assíncrona**, para não afetar o desempenho do carregamento da página para seus hóspedes.
 - **O rastreamento do Wink e seu container rodam em paralelo**, lendo do mesmo `dataLayer` compartilhado. Todo evento de reserva que o Wink rastreia está simultaneamente disponível para seu container.
 - **Quando sua propriedade não está sendo visualizada** — por exemplo, quando um hóspede está navegando por outro hotel no Wink — seu container não é carregado, então ele só recebe dados relevantes para sua propriedade.
-- **Se você forneceu um ID de Medição GA4 + segredo da API** (passo 3 acima), o evento `purchase` para reservas concluídas é enviado adicionalmente **server-side** via Protocolo de Medição GA4, para que a venda seja registrada mesmo que o hóspede nunca retorne à página de confirmação.
+- **A confirmação da reserva (`purchase`) dispara no navegador na página de agradecimento.** Um ID de Container GTM é uma caixa preta — o Wink não pode assumir quais tags estão dentro dele — então o Wink nunca chama o Google em seu nome a partir dos seus servidores. Em vez disso, qualquer tag GA4 ou de conversão que esteja no seu container recebe o evento `purchase` no cliente, exatamente como qualquer outro evento de reserva. Como o provedor de pagamento redireciona o navegador do hóspede para fora e depois de volta, o Wink reconecta a sessão de analytics que o redirecionamento interrompeu **antes** de disparar o `purchase`, para que a venda seja atribuída à visita original do hóspede e não conte como uma nova sessão.
 
 ---
 
 ## Referência do DataLayer
 
-O Wink envia eventos compatíveis com GA4 para o `dataLayer` durante toda a jornada do hóspede. Seu container GTM lê desse mesmo `dataLayer` compartilhado, então qualquer gatilho ou variável que você configurar tem acesso a todas as propriedades descritas abaixo.
+O Wink envia eventos compatíveis com GA4 para o `dataLayer` durante toda a jornada do hóspede. Seu container GTM lê deste mesmo `dataLayer` compartilhado, então qualquer gatilho ou variável que você configurar tem acesso a todas as propriedades descritas abaixo.
 
 Cada evento segue a estrutura padrão do GA4 Enhanced Ecommerce: uma string `event` no nível superior e um objeto `ecommerce`. Antes de cada push, o Wink limpa o payload ecommerce anterior para evitar que dados antigos vazem para novos gatilhos.
 
@@ -83,9 +79,9 @@ Não confie que as propriedades ecommerce persistam entre eventos. Sempre leia-a
 
 Esses eventos disparam automaticamente conforme o hóspede avança pelo funil de reserva. Configure seus gatilhos GTM como gatilhos de **Evento Personalizado** que correspondam aos nomes dos eventos abaixo.
 
-| Passo | Evento | Quando Dispara |
+| Etapa | Evento | Quando Dispara |
 |-------|--------|---------------|
-| 1 | `view_item_list` | Grade ou lista de inventário de hotéis carregada |
+| 1 | `view_item_list` | Grade ou lista de inventário do hotel carregada |
 | 2 | `view_item` | Hóspede visualiza a página de uma propriedade específica |
 | 3 | `add_to_cart` | Hóspede adiciona um quarto ao carrinho |
 | 4 | `begin_checkout` | Página de checkout/pagamento carregada |
@@ -98,7 +94,7 @@ Esses eventos disparam automaticamente conforme o hóspede avança pelo funil de
 
 #### `view_item_list`
 
-Dispara quando uma grade ou lista de inventário de hotéis é renderizada.
+Dispara quando uma grade ou lista de inventário do hotel é renderizada.
 
 ```json
 {
@@ -307,7 +303,7 @@ Esses campos são entendidos nativamente pelo GA4 e aparecem em relatórios padr
 
 #### Parâmetros personalizados com escopo de item
 
-Esses parâmetros carregam contexto específico de reserva do Wink. O GA4 não os exibe automaticamente em relatórios — você deve registrar cada um como uma **dimensão personalizada com escopo de item** na sua propriedade GA4 antes que apareçam em explorações ou relatórios padrão. Veja [Dimensões Personalizadas no GA4](#custom-dimensions-in-ga4) abaixo para instruções.
+Esses parâmetros carregam contexto específico de reserva do Wink. O GA4 não os exibe automaticamente em relatórios — você deve registrar cada um como uma **dimensão personalizada com escopo de item** na sua propriedade GA4 antes que apareçam em explorações ou relatórios padrão. Veja [Dimensões Personalizadas no GA4](#custom-dimensions-in-ga4) abaixo para instruções de configuração.
 
 | Propriedade | Tipo | Descrição |
 |-------------|------|-----------|
@@ -357,7 +353,7 @@ O GA4 ignora parâmetros personalizados de item em relatórios até que você os
 
 4. **Salve e repita**
 
-   Clique em **Salvar** e repita para cada parâmetro que deseja rastrear.
+   Clique em **Salvar**, depois repita para cada parâmetro que deseja rastrear.
 
 </Steps>
 

@@ -7,10 +7,10 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Pots connectar **qualsevol** contenidor de Google Tag Manager (GTM) a Wink introduint el seu **ID de Contenidor GTM** al portal de Wink. Un cop connectat, el teu contenidor es carrega automàticament per a la teva propietat i llegeix directament els esdeveniments de reserva de Wink, cobrint tot el recorregut del client des de la cerca fins a la reserva completada. Un cas d'ús habitual és un contenidor **Sojern** per a retargeting i publicitat, però qualsevol contenidor GTM funciona igual.
+Pots connectar **qualsevol** contenidor de Google Tag Manager (GTM) a Wink introduint el seu **ID de Contenidor GTM** al portal de Wink. Un cop connectat, el teu contenidor es carrega automàticament per a la teva propietat i llegeix directament els esdeveniments de reserva de Wink — cobrint tot el recorregut del client des de la cerca fins a la reserva completada. Un cas d'ús habitual és un contenidor **Sojern** per a retargeting i publicitat, però qualsevol contenidor GTM funciona igual.
 
 <Aside type="tip">
-Això pressuposa que ja tens un ID de Contenidor GTM (format `GTM-XXXXXXX`). Si el teu contenidor prové d'un soci com Sojern, demana al teu gestor de compte l'**ID de Contenidor GTM** específicament — és diferent d'un ID de píxel o etiqueta. Nou a Sojern? Visita [sojern.com/contact](https://www.sojern.com/contact) per començar.
+Això assumeix que ja tens un ID de Contenidor GTM (format `GTM-XXXXXXX`). Si el teu contenidor prové d'un soci com Sojern, demana al teu gestor de compte l'**ID de Contenidor GTM** específicament — és diferent d'un pixel o ID d'etiqueta. Nou a Sojern? Visita [sojern.com/contact](https://www.sojern.com/contact) per començar.
 </Aside>
 
 ---
@@ -21,24 +21,20 @@ Això pressuposa que ja tens un ID de Contenidor GTM (format `GTM-XXXXXXX`). Si 
 
 1. **Obtenir el teu ID de Contenidor GTM**
 
-   Obtingues el teu **ID de Contenidor GTM** (format `GTM-XXXXXXX`). Si prové d'un soci com Sojern, demana específicament l'ID de Contenidor GTM — és diferent d'un ID de píxel o etiqueta.
+   Obtingues el teu **ID de Contenidor GTM** (format `GTM-XXXXXXX`). Si prové d'un soci com Sojern, demana específicament l'ID de Contenidor GTM — és diferent d'un pixel o ID d'etiqueta.
 
 2. **Introduir-lo al portal de Wink**
 
-   Inicia sessió a [app.wink.travel](https://app.wink.travel), selecciona el teu compte i ves a la pestanya **Personalitzacions**. Enganxa el teu ID de Contenidor GTM al camp **GTM** i desa. La teva integració ja està activa.
+   Inicia sessió a [app.wink.travel](https://app.wink.travel), selecciona el teu compte i obre la configuració de personalització. A la secció **Analytics & integrations**, enganxa el teu ID de Contenidor GTM al camp **GTM Container ID** i desa. La teva integració ja està activa.
 
-3. **(Opcional) Afegir un ID de Mesura GA4 + Secret API per a compres per servidor**
-
-   Els contenidors GTM s'executen completament al navegador del client, així que una reserva completada es pot perdre si el client tanca la pestanya durant la redirecció de pagament. Si el teu contenidor carrega una **propietat GA4** i vols que les reserves completades es registrin de manera fiable, també introdueix l'**ID de Mesura** i el **secret de l'API del Protocol de Mesura** d'aquesta GA4 a la secció GTM. Wink enviarà llavors la `purchase` per a aquesta propietat **des del servidor**, exactament com es descriu a la guia de [Integració d'Analytics GA4](/ca/guides/developers/ga4-dual-tagging). Deixa aquests camps en blanc si només necessites el seguiment al navegador.
-
-4. **Confirmar amb el teu proveïdor**
+3. **Confirmar amb el teu proveïdor**
 
    Si el teu contenidor prové d'un soci com Sojern, informa al teu gestor de compte que la integració està activa. Ells poden verificar des del seu costat que les etiquetes s'estan activant correctament a `wink.travel` per a la teva propietat i que les dades flueixen al teu compte.
 
 </Steps>
 
 <Aside type="note">
-No cal que col·loquis cap codi de píxel al teu propi lloc web per a aquesta integració. Wink carrega automàticament el teu contenidor GTM a totes les pàgines on la teva propietat està activa.
+No cal que col·loquis cap codi pixel al teu propi lloc web per a aquesta integració. Wink carrega automàticament el teu contenidor GTM a totes les pàgines on la teva propietat està activa.
 
 Això funciona per a **qualsevol** ID de Contenidor GTM — Sojern és només un exemple habitual.
 </Aside>
@@ -49,12 +45,12 @@ Això funciona per a **qualsevol** ID de Contenidor GTM — Sojern és només un
 
 Per transparència, això és el que Wink configura per fer que aquesta integració funcioni:
 
-- **Un camp d'ID de Contenidor GTM** està disponible a la pestanya de Personalitzacions del teu portal Wink. Quan introdueixes el teu ID de Contenidor, Wink valida el format (`GTM-XXXXXXX`) i el desa de manera segura associat a la teva propietat.
-- **A cada pàgina on la teva propietat està activa** a Wink, el teu contenidor s'injecta directament a la pàgina — compartint el propi `window.dataLayer` de Wink — així es carrega juntament amb el contenidor propi de Wink sense dependre de cap configuració addicional. Això passa automàticament, sense cap treball per propietat per part de l'equip de Wink.
-- **El teu contenidor es carrega de manera asíncrona**, així no afecta el rendiment de càrrega de pàgina per als teus clients.
-- **El seguiment propi de Wink i el teu contenidor s'executen en paral·lel**, llegint del mateix `dataLayer` compartit. Cada esdeveniment de reserva que Wink registra està disponible simultàniament per al teu contenidor.
-- **Quan la teva propietat no s'està visualitzant** — per exemple, quan un client està navegant per un altre hotel a Wink — el teu contenidor no es carrega, així només rep dades rellevants per a la teva propietat.
-- **Si has proporcionat un ID de Mesura GA4 + secret API** (pas 3 anterior), la `purchase` de les reserves completades s'envia addicionalment **des del servidor** via el Protocol de Mesura GA4, així es registra una venda encara que el client no torni a la pàgina de confirmació.
+- **Un camp d'ID de Contenidor GTM** està disponible a la secció **Analytics & integrations** de la configuració de personalització. Quan introdueixes el teu ID de Contenidor, Wink valida el format (`GTM-XXXXXXX`) i el desa de manera segura associat a la teva propietat.
+- **A cada pàgina on la teva propietat està activa** a Wink, el teu contenidor s'injecta directament a la pàgina — compartint el propi `window.dataLayer` de Wink — de manera que es carrega juntament amb el contenidor propi de Wink sense dependre de cap configuració addicional. Això passa automàticament, sense cap treball específic per propietat per part de l'equip de Wink.
+- **El teu contenidor es carrega de manera asíncrona**, així no afecta el rendiment de càrrega de la pàgina per als teus clients.
+- **El seguiment propi de Wink i el teu contenidor funcionen en paral·lel**, llegint del mateix `dataLayer` compartit. Cada esdeveniment de reserva que Wink registra està disponible simultàniament per al teu contenidor.
+- **Quan la teva propietat no està sent visualitzada** — per exemple, quan un client està navegant per un altre hotel a Wink — el teu contenidor no es carrega, així només rep dades rellevants per a la teva propietat.
+- **La reserva completada (`purchase`) s'activa al navegador a la pàgina de gràcies.** Un ID de Contenidor GTM és una caixa negra — Wink no pot assumir quines etiquetes hi ha dins — així que Wink mai crida Google en nom teu des dels seus servidors. En canvi, qualsevol etiqueta GA4 o de conversió que hi hagi dins del teu contenidor rep el `purchase` al client, exactament com qualsevol altre esdeveniment de reserva. Com que el proveïdor de pagament redirigeix el navegador del client fora i després torna, Wink reconnecta la sessió d'analytics que la redirecció va interrompre **abans** d'activar el `purchase`, de manera que la venda s'atribueix a la visita original del client i no es compta com una nova sessió.
 
 ---
 
@@ -81,7 +77,7 @@ No confiïs que les propietats ecommerce persisteixin entre esdeveniments. Sempr
 
 ### Esdeveniments del recorregut de reserva
 
-Aquests esdeveniments s'activen automàticament mentre un client avança pel procés de reserva. Configura els teus disparadors GTM com a disparadors de **Esdeveniment Personalitzat** que coincideixin amb els noms d'esdeveniment següents.
+Aquests esdeveniments s'activen automàticament mentre un client avança pel procés de reserva. Configura els teus disparadors GTM com a disparadors de **Custom Event** que coincideixin amb els noms d'esdeveniment següents.
 
 | Pas | Esdeveniment | Quan s'activa |
 |------|--------------|---------------|
@@ -190,7 +186,7 @@ S'activa quan el client selecciona o confirma un mètode de pagament.
 
 #### `login`
 
-S'activa quan un client s'autentica via inici de sessió únic (SSO).
+S'activa quan un client s'autentica via single sign-on.
 
 ```json
 {
@@ -205,7 +201,7 @@ S'activa quan un client s'autentica via inici de sessió únic (SSO).
 
 #### `purchase`
 
-S'activa quan una reserva es confirma.
+S'activa quan es confirma una reserva.
 
 ```json
 {
@@ -255,7 +251,7 @@ S'activa quan una reserva es confirma.
 
 #### `refund`
 
-S'activa quan una reserva es cancel·la.
+S'activa quan es cancel·la una reserva.
 
 ```json
 {
@@ -276,20 +272,20 @@ S'activa quan una reserva es cancel·la.
 
 ---
 
-### Propietats dels articles
+### Propietats dels ítems
 
-Tots els esdeveniments que inclouen un array `items` comparteixen el mateix esquema d'articles. Cada propietat és opcional tret que s'indiqui que és obligatòria.
+Tots els esdeveniments que inclouen un array `items` comparteixen el mateix esquema d'ítem. Cada propietat és opcional tret que s'indiqui que és obligatòria.
 
 #### Camps estàndard GA4
 
-Aquests camps són entesos nativament per GA4 i apareixen als informes ecommerce estàndard sense cap configuració addicional.
+Aquests camps són entesos nativament per GA4 i apareixen als informes ecommerce estàndard sense configuració addicional.
 
 | Propietat | Tipus | Obligatori | Descripció |
 |----------|------|----------|-------------|
 | `item_id` | string | Sí | Identificador únic per a l'habitació o producte |
 | `item_name` | string | — | Nom de l'habitació o producte |
 | `affiliation` | string | — | Nom de l'afiliat o venedor |
-| `coupon` | string | — | Codi de cupó aplicat a l'article |
+| `coupon` | string | — | Codi de cupó aplicat a l'ítem |
 | `currency` | string | — | Codi de moneda ISO 4217 (ex. `USD`) |
 | `creative_name` | string | — | Nom creatiu usat en una promoció |
 | `creative_slot` | string | — | Posició de la ranura de la creativitat promocional |
@@ -297,7 +293,7 @@ Aquests camps són entesos nativament per GA4 i apareixen als informes ecommerce
 | `index` | number | — | Posició a la llista (basat en 1) |
 | `item_brand` | string | — | Nom de l'hotel o marca |
 | `item_category` | string | — | Tipus de producte — ex. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
-| `item_list_id` | string | — | Identificador de la llista a la qual pertany l'article |
+| `item_list_id` | string | — | Identificador de la llista a la qual pertany l'ítem |
 | `item_list_name` | string | — | Nom visible de la llista |
 | `location_id` | string | — | Coordenades geogràfiques de la propietat |
 | `price` | number | — | Preu unitari |
@@ -305,9 +301,9 @@ Aquests camps són entesos nativament per GA4 i apareixen als informes ecommerce
 | `promotion_name` | string | — | Nom visible de la promoció |
 | `quantity` | number | — | Quantitat (per defecte `1`) |
 
-#### Paràmetres personalitzats a nivell d'article
+#### Paràmetres personalitzats a nivell d'ítem
 
-Aquests paràmetres porten context específic de reserva de Wink. GA4 no els mostra automàticament als informes — has de registrar cadascun com a **dimensió personalitzada a nivell d'article** a la teva propietat GA4 abans que apareguin a exploracions o informes estàndard. Consulta [Dimensions personalitzades a GA4](#custom-dimensions-in-ga4) més avall per a les instruccions.
+Aquests paràmetres porten context específic de reserva de Wink. GA4 no els mostra automàticament als informes — has de registrar cadascun com a **dimensió personalitzada a nivell d'ítem** a la teva propietat GA4 abans que aparegui en exploracions o informes estàndard. Consulta [Dimensions personalitzades a GA4](#custom-dimensions-in-ga4) més avall per a les instruccions.
 
 | Propietat | Tipus | Descripció |
 |----------|------|-------------|
@@ -336,67 +332,67 @@ Aquests paràmetres porten context específic de reserva de Wink. GA4 no els mos
 
 ### Dimensions personalitzades a GA4
 
-GA4 ignora els paràmetres personalitzats d'articles als informes fins que no els registres explícitament com a dimensions personalitzades a nivell d'article. Només cal registrar els paràmetres que vols utilitzar als informes — no cal registrar els 20.
+GA4 ignora els paràmetres personalitzats a nivell d'ítem als informes fins que no els registres explícitament com a dimensions personalitzades a nivell d'ítem. Només cal registrar els paràmetres que vols utilitzar als informes — no cal registrar els 20.
 
 <Steps>
 
 1. **Obrir Definicions Personalitzades**
 
-   A GA4, ves a **Administrador** (icona d'engranatge a baix a l'esquerra) → selecciona la teva propietat → **Visualització de dades** → **Definicions personalitzades**.
+   A GA4, ves a **Admin** (icona d'engranatge a baix a l'esquerra) → selecciona la teva propietat → **Data display** → **Custom definitions**.
 
 2. **Crear una nova dimensió personalitzada**
 
-   Fes clic a **Crear dimensions personalitzades**.
+   Fes clic a **Create custom dimensions**.
 
 3. **Omplir els detalls de la dimensió**
 
-   - **Nom de la dimensió** — l'etiqueta llegible que apareix als informes GA4 (consulta la taula a continuació)
-   - **Abast** — selecciona **Article**
-   - **Paràmetre d'esdeveniment** — el nom exacte del paràmetre tal com apareix al dataLayer (consulta la taula a continuació)
-   - **Descripció** — opcional però recomanada
+   - **Dimension name** — l'etiqueta llegible que apareix als informes GA4 (consulta la taula a continuació)
+   - **Scope** — selecciona **Item**
+   - **Event parameter** — el nom exacte del paràmetre tal com apareix al dataLayer (consulta la taula a continuació)
+   - **Description** — opcional però recomanat
 
 4. **Desar i repetir**
 
-   Fes clic a **Desar**, després repeteix per a cada paràmetre que vulguis fer el seguiment.
+   Fes clic a **Save**, després repeteix per a cada paràmetre que vulguis fer el seguiment.
 
 </Steps>
 
 <Aside type="note">
-Les dimensions personalitzades poden trigar fins a 24 hores a aparèixer als informes GA4 després del registre. Les dades històriques recollides abans del registre no es retroalimenten.
+Les dimensions personalitzades poden trigar fins a 24 hores a aparèixer als informes GA4 després del registre. Les dades històriques recollides abans del registre no s'omplen retroactivament.
 
-GA4 permet fins a 50 dimensions personalitzades a nivell d'article per propietat en propietats estàndard (les propietats 360 en permeten més).
+GA4 permet fins a 50 dimensions personalitzades a nivell d'ítem per propietat en propietats estàndard (les propietats 360 en permeten més).
 </Aside>
 
-Utilitza la taula següent com a referència quan creïs dimensions personalitzades. El valor de **Paràmetre d'esdeveniment** ha de coincidir exactament — GA4 distingeix majúscules i minúscules.
+Utilitza la taula següent com a referència quan creïs dimensions personalitzades. El valor de **Event parameter** ha de coincidir exactament — GA4 distingeix majúscules i minúscules.
 
-| Nom de la dimensió | Paràmetre d'esdeveniment | Tipus |
+| Nom de la dimensió | Event parameter | Tipus |
 |----------------|-----------------|------|
-| ID de la propietat | `property_id` | Text |
-| Nom de la propietat | `property_name` | Text |
-| Marca de la propietat | `property_brand` | Text |
-| Cadena de la propietat | `property_chain` | Text |
-| Nom URL de la propietat | `property_url_name` | Text |
-| Nom de la ciutat | `city_name` | Text |
-| Codi de país | `country_code` | Text |
-| Data d'entrada | `start_date` | Text |
-| Data de sortida | `end_date` | Text |
-| Nombre d'adults | `num_adults` | Nombre |
-| Nombre de nens | `num_children` | Nombre |
-| Política de cancel·lació | `cancellation_policy` | Text |
-| ID del pla tarifari | `rate_plan_id` | Text |
-| ID de la tarifa d'habitació | `room_rate_id` | Text |
-| Nom de la tarifa d'habitació | `room_rate_name` | Text |
-| Nombre de beneficis | `num_perks` | Nombre |
-| Ubicació de l'habitació | `room_location` | Text |
-| Vista de l'habitació | `room_view` | Text |
-| Classificació de l'habitació | `room_classification` | Text |
-| Tipus de llit | `bed_type` | Text |
+| Property ID | `property_id` | Text |
+| Property name | `property_name` | Text |
+| Property brand | `property_brand` | Text |
+| Property chain | `property_chain` | Text |
+| Property URL name | `property_url_name` | Text |
+| City name | `city_name` | Text |
+| Country code | `country_code` | Text |
+| Check-in date | `start_date` | Text |
+| Check-out date | `end_date` | Text |
+| Number of adults | `num_adults` | Number |
+| Number of children | `num_children` | Number |
+| Cancellation policy | `cancellation_policy` | Text |
+| Rate plan ID | `rate_plan_id` | Text |
+| Room rate ID | `room_rate_id` | Text |
+| Room rate name | `room_rate_name` | Text |
+| Number of perks | `num_perks` | Number |
+| Room location | `room_location` | Text |
+| Room view | `room_view` | Text |
+| Room classification | `room_classification` | Text |
+| Bed type | `bed_type` | Text |
 
 ---
 
 ### Esdeveniments addicionals disponibles
 
-Els esdeveniments següents estan disponibles al dataLayer de Wink però no formen part del procés estàndard de reserva. Poden ser activats per altres interaccions a la plataforma.
+Els següents esdeveniments estan disponibles al dataLayer de Wink però no formen part del procés estàndard de reserva. Poden ser activats per altres interaccions a la plataforma.
 
 #### `add_to_wishlist`
 
@@ -445,7 +441,7 @@ Els esdeveniments següents estan disponibles al dataLayer de Wink però no form
 }
 ```
 
-Aquest esdeveniment no inclou cap càrrega útil `ecommerce`.
+Aquest esdeveniment no inclou càrrega útil `ecommerce`.
 
 #### `view_promotion`
 

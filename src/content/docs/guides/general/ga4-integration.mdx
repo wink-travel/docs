@@ -10,7 +10,7 @@ import { Aside, Steps } from '@astrojs/starlight/components';
 By connecting your Google Analytics 4 property to Wink, your booking events — from room views through to completed bookings — are automatically forwarded to your own GA4 dashboard alongside Wink's own analytics. No code, no technical setup on your end.
 
 <Aside type="tip">
-You need two things from GA4: a **Measurement ID** and a **Measurement Protocol API secret**. The Measurement ID powers the browsing funnel in the guest's browser; the API secret lets Wink record completed bookings (`purchase`) **server-side**, so a sale is never lost when the guest is redirected to and from the payment provider.
+You need one thing from GA4: a **Measurement ID** (`G-XXXXXXXXXX`). Wink loads it in the guest's browser and streams your whole booking funnel — including the completed booking (`purchase`) — straight to your GA4 property. There is no API secret to create and nothing to install on your own website.
 </Aside>
 
 ---
@@ -18,10 +18,14 @@ You need two things from GA4: a **Measurement ID** and a **Measurement Protocol 
 ## How It Works
 
 ```
-You enter your Measurement ID (G-XXXXXXXXXX) and API secret in the Wink portal
+You enter your Measurement ID (G-XXXXXXXXXX) in the Wink portal
        ↓
-Browsing events (views, cart, checkout) stream to your GA4 property from the browser
-Completed bookings (purchase) are sent server-side — surviving the payment redirect
+Wink loads your GA4 in the guest's browser and streams booking events
+(views, cart, checkout) to your GA4 property in real time
+       ↓
+On the thank-you page the completed booking (purchase) fires in the browser —
+Wink reconnects the GA4 session that the payment redirect interrupted, so the
+sale still counts toward the guest's original visit
        ↓
 You log into analytics.google.com and see your full booking funnel
 ```
@@ -40,34 +44,40 @@ You log into analytics.google.com and see your full booking funnel
 
    Admin → Data Streams → Add Stream → Web. Enter `wink.travel` as the URL. This generates your **Measurement ID** (`G-XXXXXXXXXX`). Copy it.
 
-3. **Create a Measurement Protocol API Secret**
+3. **Enter Your Measurement ID in the Wink Portal**
 
-   Open the same Web Data Stream → scroll to **Measurement Protocol API secrets** → **Create**. Give it a nickname (e.g. "Wink") and copy the generated **secret value**. This secret is what allows Wink to record completed bookings server-side, so a sale is never lost during the payment redirect.
+   Log into [app.wink.travel](https://app.wink.travel), select your account, and open your customization settings. In the **Analytics & integrations** section, paste your Measurement ID into the **GA4 Measurement ID** field and save. That's all — your GA4 integration is now active.
 
-4. **Enter Your Measurement ID and API Secret in the Wink Portal**
-
-   Log into [app.wink.travel](https://app.wink.travel), select your account, and go to the **Customizations** tab. Paste your Measurement ID and API secret into the **GA4** fields and save. That's all — your GA4 integration is now active.
-
-   <Aside type="note">
-   The API secret is **write-only**: once saved it is never shown again. On future edits, leave the secret field blank to keep the value you already stored.
-   </Aside>
-
-5. **Mark `purchase` as a Key Event**
+4. **Mark `purchase` as a Key Event**
 
    Back in your GA4 property: Admin → Events → find `purchase` → toggle **Mark as key event**. This makes completed bookings appear in your Conversions report.
 
-6. **View Your Data**
+5. **View Your Data**
 
    Log into [analytics.google.com](https://analytics.google.com) and you will see your bookings, revenue, and guest funnel — all tracked automatically through Wink.
 
 </Steps>
 
 <Aside type="note">
-You do not need to install any tracking code on your own website for this integration. Wink handles everything. Your Measurement ID is the destination where your booking data is sent, and your API secret lets Wink confirm completed bookings server-side.
+You do not need to install any tracking code on your own website for this integration. Wink handles everything — your Measurement ID is simply the destination where your booking data is sent.
 </Aside>
 
 <Aside type="tip">
-**GA4 and GTM can be used together.** If you also run a Google Tag Manager container (for example a Sojern container), you can configure both at the same time — they are no longer mutually exclusive. See [GTM Analytics Integration](/guides/developers/gtm-dual-tagging).
+**GA4 and GTM can be used together.** If you also run a Google Tag Manager container (for example a Sojern container), you can configure both at the same time — they are not mutually exclusive. See [GTM Analytics Integration](/guides/general/gtm-integration).
+</Aside>
+
+---
+
+## How Wink Uses Your Measurement ID in the Booking Engine
+
+Everything happens **in the guest's browser** — there is no server-to-server data export and no API secret involved.
+
+- **Your GA4 loads on your booking pages.** Whenever a guest is looking at your property in the Wink booking engine, Wink loads your Measurement ID in their browser alongside Wink's own analytics, reading from the same shared data. Browsing events — searches, room views, cart, checkout — stream to your GA4 property in real time.
+- **The completed booking fires on the thank-you page.** When a guest finishes paying and lands on the confirmation page, the `purchase` event fires client-side, carrying the full booking value, currency, and room details.
+- **The payment redirect no longer loses the sale.** Card payments send the guest's browser away to the payment provider and back, which would normally break the in-browser GA4 session and make the booking look like a brand-new "Direct" visit. To prevent that, Wink carries your GA4 session identifiers through the return URL and **reconnects the original session** on the thank-you page *before* the `purchase` fires. The completed booking is therefore attributed to the same visit the guest started with — not counted as a separate session.
+
+<Aside type="note">
+Wink de-duplicates the `purchase` per booking, so a page refresh or the automatic redirect to your booking details does not double-count a sale.
 </Aside>
 
 ---
@@ -105,7 +115,7 @@ Once connected, your GA4 property receives the full suite of Enhanced E-commerce
 | `purchase` | A guest completed a booking |
 | `refund` | A booking was cancelled and refunded |
 
-All events include relevant dimensions such as revenue, currency, room type, and booking value — giving you a full picture of the guest journey from first impression to completed booking. To unlock additional property- and room-level dimensions such as `city_name`, `cancellation_policy`, `bed_type`, and more, see [Custom Dimensions in GA4](/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
+All events include relevant dimensions such as revenue, currency, room type, and booking value — giving you a full picture of the guest journey from first impression to completed booking. To unlock additional property- and room-level dimensions such as `city_name`, `cancellation_policy`, `bed_type`, and more, see [Custom Dimensions in GA4](/guides/general/gtm-integration#custom-dimensions-in-ga4).
 
 ---
 

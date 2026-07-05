@@ -7,10 +7,10 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-En connectar la teva propietat de Google Analytics 4 a Wink, els esdeveniments de reserva — des de les visualitzacions d'habitacions fins a les reserves completades — es reenvien automàticament al teu propi tauler GA4 juntament amb les analítiques pròpies de Wink. Sense codi, sense configuració tècnica per la teva banda.
+En connectar la teva propietat de Google Analytics 4 a Wink, els esdeveniments de reserva — des de les visualitzacions d'habitacions fins a les reserves completades — es reenvien automàticament al teu propi tauler GA4 juntament amb les analítiques pròpies de Wink. Sense codi, sense configuració tècnica per part teva.
 
 <Aside type="tip">
-Necessites dues coses de GA4: un **ID de mesurament** i un **secret de l'API del Protocol de Mesurament**. L'ID de mesurament impulsa l'embut de navegació al navegador del client; el secret de l'API permet a Wink registrar les reserves completades (`purchase`) **des del servidor**, de manera que mai es perd una venda quan el client és redirigit cap al proveïdor de pagament i torna.
+Necessites una cosa de GA4: un **ID de mesurament** (`G-XXXXXXXXXX`). Wink el carrega al navegador del client i transmet tot el teu embut de reserva — inclosa la reserva completada (`purchase`) — directament a la teva propietat GA4. No cal crear cap secret d'API ni instal·lar res al teu propi lloc web.
 </Aside>
 
 ---
@@ -18,12 +18,16 @@ Necessites dues coses de GA4: un **ID de mesurament** i un **secret de l'API del
 ## Com Funciona
 
 ```
-Introduïu el vostre ID de mesurament (G-XXXXXXXXXX) i el secret de l'API al portal de Wink
+Introduïu el vostre ID de mesurament (G-XXXXXXXXXX) al portal de Wink
        ↓
-Els esdeveniments de navegació (visualitzacions, carret, pagament) s'envien a la vostra propietat GA4 des del navegador
-Les reserves completades (purchase) s'envien des del servidor — sobreviuen a la redirecció de pagament
+Wink carrega el vostre GA4 al navegador del client i transmet els esdeveniments de reserva
+(visualitzacions, carret, pagament) a la vostra propietat GA4 en temps real
        ↓
-Inicieu sessió a analytics.google.com i veieu tot l'embut de reserves
+A la pàgina de gràcies, l'esdeveniment de reserva completada (purchase) es dispara al navegador —
+Wink reconnecta la sessió GA4 que la redirecció de pagament va interrompre, així que la
+venda encara es compta com a part de la visita original del client
+       ↓
+Inicieu sessió a analytics.google.com i veieu tot l'embut de reserva
 ```
 
 ---
@@ -40,34 +44,40 @@ Inicieu sessió a analytics.google.com i veieu tot l'embut de reserves
 
    Administrador → Fluxos de dades → Afegeix flux → Web. Introdueix `wink.travel` com a URL. Això genera el teu **ID de mesurament** (`G-XXXXXXXXXX`). Copia'l.
 
-3. **Crea un secret de l'API del Protocol de Mesurament**
+3. **Introdueix el teu ID de mesurament al portal de Wink**
 
-   Obre el mateix flux de dades web → desplaça't a **Secrets de l'API del Protocol de Mesurament** → **Crear**. Dona-li un sobrenom (per exemple, "Wink") i copia el **valor secret** generat. Aquest secret permet a Wink registrar les reserves completades des del servidor, de manera que mai es perd una venda durant la redirecció de pagament.
+   Inicia sessió a [app.wink.travel](https://app.wink.travel), selecciona el teu compte i obre la configuració de personalització. A la secció **Analytics & integrations**, enganxa el teu ID de mesurament al camp **GA4 Measurement ID** i desa. Això és tot — la teva integració GA4 ja està activa.
 
-4. **Introdueix el teu ID de mesurament i secret de l'API al portal de Wink**
-
-   Inicia sessió a [app.wink.travel](https://app.wink.travel), selecciona el teu compte i ves a la pestanya **Personalitzacions**. Enganxa el teu ID de mesurament i el secret de l'API als camps **GA4** i desa. Això és tot: la teva integració GA4 ja està activa.
-
-   <Aside type="note">
-   El secret de l'API és **només d'escriptura**: un cop desat, mai es mostra de nou. En futures edicions, deixa el camp del secret en blanc per mantenir el valor que ja has emmagatzemat.
-   </Aside>
-
-5. **Marca `purchase` com a esdeveniment clau**
+4. **Marca `purchase` com a esdeveniment clau**
 
    Torna a la teva propietat GA4: Administrador → Esdeveniments → busca `purchase` → activa **Marca com a esdeveniment clau**. Això fa que les reserves completades apareguin al teu informe de conversions.
 
-6. **Consulta les teves dades**
+5. **Consulta les teves dades**
 
    Inicia sessió a [analytics.google.com](https://analytics.google.com) i veuràs les teves reserves, ingressos i l'embut del client — tot seguit automàticament a través de Wink.
 
 </Steps>
 
 <Aside type="note">
-No cal que instal·lis cap codi de seguiment al teu propi lloc web per a aquesta integració. Wink s'encarrega de tot. El teu ID de mesurament és la destinació on s'envien les dades de reserva, i el teu secret de l'API permet a Wink confirmar les reserves completades des del servidor.
+No cal que instal·lis cap codi de seguiment al teu propi lloc web per a aquesta integració. Wink s'encarrega de tot — el teu ID de mesurament és simplement la destinació on s'envien les dades de reserva.
 </Aside>
 
 <Aside type="tip">
-**GA4 i GTM es poden utilitzar conjuntament.** Si també utilitzes un contenidor de Google Tag Manager (per exemple, un contenidor Sojern), pots configurar ambdós al mateix temps — ja no són mútuament exclusius. Consulta [Integració d'Analytics GTM](/ca/guides/developers/gtm-dual-tagging).
+**GA4 i GTM es poden utilitzar conjuntament.** Si també utilitzes un contenidor de Google Tag Manager (per exemple, un contenidor Sojern), pots configurar ambdós al mateix temps — no són excloents. Consulta [Integració GTM Analytics](/ca/guides/general/gtm-integration).
+</Aside>
+
+---
+
+## Com Utilitza Wink el Teu ID de Mesurament a l'Enginy de Reserves
+
+Tot passa **al navegador del client** — no hi ha exportació de dades servidor a servidor ni cap secret d'API implicat.
+
+- **El teu GA4 es carrega a les pàgines de reserva.** Sempre que un client està veient la teva propietat a l'enginy de reserves de Wink, Wink carrega el teu ID de mesurament al seu navegador juntament amb les analítiques pròpies de Wink, llegint de les mateixes dades compartides. Els esdeveniments de navegació — cerques, visualitzacions d'habitacions, carret, pagament — es transmeten a la teva propietat GA4 en temps real.
+- **La reserva completada es dispara a la pàgina de gràcies.** Quan un client acaba de pagar i arriba a la pàgina de confirmació, l'esdeveniment `purchase` es dispara al client, portant el valor complet de la reserva, la moneda i els detalls de l'habitació.
+- **La redirecció de pagament ja no perd la venda.** Els pagaments amb targeta envien el navegador del client al proveïdor de pagament i després el retornen, cosa que normalment trencaria la sessió GA4 al navegador i faria que la reserva semblés una visita "Directa" nova. Per evitar-ho, Wink transporta els identificadors de sessió GA4 a través de la URL de retorn i **reconnecta la sessió original** a la pàgina de gràcies *abans* que es dispari el `purchase`. Per tant, la reserva completada s'atribueix a la mateixa visita amb què el client va començar — no es compta com una sessió separada.
+
+<Aside type="note">
+Wink evita duplicar el `purchase` per reserva, així que un refresc de pàgina o la redirecció automàtica als detalls de la reserva no compten la venda dues vegades.
 </Aside>
 
 ---
@@ -81,15 +91,15 @@ Un cop connectada, la teva propietat GA4 rep tota la suite d'esdeveniments d'Enh
 | Esdeveniment | Què Vol Dir |
 |---|---|
 | `view_item_list` | Un client va veure la teva propietat en una cerca o llistat de categories |
-| `select_item` | Un client va fer clic a la teva propietat des d'un llistat |
-| `view_item` | Un client va veure la pàgina de detall del teu hotel |
+| `select_item` | Un client va clicar la teva propietat des d'un llistat |
+| `view_item` | Un client va veure la pàgina de detall de l'hotel |
 
 ### Consideració
 
 | Esdeveniment | Què Vol Dir |
 |---|---|
 | `view_promotion` | Un client va veure una oferta promocional per a la teva propietat |
-| `select_promotion` | Un client va fer clic a una oferta promocional |
+| `select_promotion` | Un client va clicar una oferta promocional |
 | `add_to_wishlist` | Un client va desar la teva propietat a la seva llista de desitjos |
 
 ### Embut de Reserva
@@ -105,13 +115,13 @@ Un cop connectada, la teva propietat GA4 rep tota la suite d'esdeveniments d'Enh
 | `purchase` | Un client va completar una reserva |
 | `refund` | Una reserva va ser cancel·lada i reemborsada |
 
-Tots els esdeveniments inclouen dimensions rellevants com ingressos, moneda, tipus d'habitació i valor de la reserva — proporcionant-te una visió completa del recorregut del client des de la primera impressió fins a la reserva completada. Per desbloquejar dimensions addicionals a nivell de propietat i habitació com `city_name`, `cancellation_policy`, `bed_type` i més, consulta [Dimensions personalitzades a GA4](/ca/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
+Tots els esdeveniments inclouen dimensions rellevants com ingressos, moneda, tipus d'habitació i valor de la reserva — proporcionant-te una visió completa del recorregut del client des de la primera impressió fins a la reserva completada. Per desbloquejar dimensions addicionals a nivell de propietat i habitació com `city_name`, `cancellation_policy`, `bed_type` i més, consulta [Dimensions personalitzades a GA4](/ca/guides/general/gtm-integration#custom-dimensions-in-ga4).
 
 ---
 
 ## Seguiment Cross-Domain (Avançat)
 
-La integració estàndard anterior fa el seguiment de tot el que passa dins de Wink. No obstant això, si vols fer el seguiment dels clients des del teu propi lloc web fins a la finalització de la reserva a Wink — i atribuir correctament la font original del trànsit (Google Ads, campanyes de correu electrònic, cerca orgànica, etc.) — cal un pas addicional a cada costat.
+La integració estàndard anterior fa el seguiment de tot el que passa dins de Wink. No obstant això, si vols fer el seguiment dels clients des del teu propi lloc web fins a la finalització de la reserva a Wink — i atribuir correctament la font original de trànsit (Google Ads, campanyes de correu electrònic, cerca orgànica, etc.) — cal un pas addicional a cada costat.
 
 <Aside type="caution">
 Aquesta secció només s'aplica si tens GA4 instal·lat al teu propi lloc web. Si no utilitzes GA4 al teu lloc, la integració estàndard anterior és tot el que necessites.
@@ -119,7 +129,7 @@ Aquesta secció només s'aplica si tens GA4 instal·lat al teu propi lloc web. S
 
 ### Per què és Important
 
-Sense el seguiment cross-domain, un client que visita primer el teu lloc web i després reserva a Wink apareixerà a GA4 com una sessió **Directa** sense connexió amb la seva visita anterior. Qualsevol clic de Google Ads, campanya de correu electrònic o visita de cerca orgànica que hagi portat a la reserva no rebrà crèdit.
+Sense seguiment cross-domain, un client que visita primer el teu lloc web i després reserva a Wink apareixerà a GA4 com una sessió **Directa** sense connexió amb la seva visita anterior. Qualsevol clic de Google Ads, campanyes de correu o visites de cerca orgànica que van conduir a la reserva no rebran crèdit.
 
 Amb el seguiment cross-domain configurat, veus el recorregut complet del client:
 
@@ -149,5 +159,5 @@ Configura la teva propietat GA4 per reconèixer `wink.travel` com a part del teu
 Contacta amb [Wink Support](https://app.wink.travel) i proporciona el domini del teu lloc web (per exemple, `yourhotel.com`). Wink afegirà el teu domini a la llista d'exclusió de referències a la propietat GA4 de Wink. Això evita que el teu lloc web es registri com a font de referència, cosa que d'altra manera sobreescriuria l'atribució original del client i iniciaria una nova sessió.
 
 <Aside type="tip">
-La integració estàndard anterior és suficient per a la majoria de propietats i et proporciona visibilitat immediata sobre les reserves i ingressos a Wink. El seguiment cross-domain és una opció avançada que val la pena configurar un cop estiguis còmode amb les teves dades GA4 i vulguis una visió més profunda de l'atribució.
+La integració estàndard anterior és suficient per a la majoria de propietats i et proporciona visibilitat immediata sobre reserves i ingressos a Wink. El seguiment cross-domain és una opció avançada que val la pena configurar un cop estiguis còmode amb les teves dades GA4 i vulguis una visió més profunda de l'atribució.
 </Aside>

@@ -7,7 +7,7 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Du kan ansluta **vilken som helst** Google Tag Manager (GTM)-behållare till Wink genom att ange dess **GTM Container ID** i Wink-portalen. När den är ansluten laddas din behållare automatiskt för din fastighet och läser Wink:s bokningsevenemang direkt — vilket täcker hela gästreseflödet från sökning till slutförd bokning. Ett vanligt användningsfall är en **Sojern**-behållare för retargeting och reklam, men vilken GTM-behållare som helst fungerar på samma sätt.
+Du kan ansluta **vilken** Google Tag Manager (GTM)-behållare som helst till Wink genom att ange dess **GTM Container ID** i Wink-portalen. När den är ansluten laddas din behållare automatiskt för din fastighet och läser Wink:s bokningsevenemang direkt — vilket täcker hela gästreseflödet från sökning till slutförd bokning. Ett vanligt användningsfall är en **Sojern**-behållare för retargeting och reklam, men vilken GTM-behållare som helst fungerar på samma sätt.
 
 <Aside type="tip">
 Detta förutsätter att du redan har ett GTM Container ID (format `GTM-XXXXXXX`). Om din behållare kommer från en partner som Sojern, be din kontohanterare om **GTM Container ID** specifikt — det skiljer sig från en pixel- eller tagg-ID. Ny på Sojern? Besök [sojern.com/contact](https://www.sojern.com/contact) för att komma igång.
@@ -25,13 +25,9 @@ Detta förutsätter att du redan har ett GTM Container ID (format `GTM-XXXXXXX`)
 
 2. **Ange det i Wink-portalen**
 
-   Logga in på [app.wink.travel](https://app.wink.travel), välj ditt konto och gå till fliken **Anpassningar**. Klistra in ditt GTM Container ID i fältet **GTM** och spara. Din integration är nu aktiv.
+   Logga in på [app.wink.travel](https://app.wink.travel), välj ditt konto och öppna dina anpassningsinställningar. I avsnittet **Analytics & integrations** klistrar du in ditt GTM Container ID i fältet **GTM Container ID** och sparar. Din integration är nu aktiv.
 
-3. **(Valfritt) Lägg till ett GA4 Measurement ID + API Secret för serverbaserad köpregistrering**
-
-   GTM-behållare körs helt i gästens webbläsare, så en slutförd bokning kan missas om gästen stänger fliken under betalningsomdirigeringen. Om din behållare laddar en **GA4-egendom** och du vill att slutförda bokningar ska registreras pålitligt, ange även GA4:ans **Measurement ID** och **Measurement Protocol API secret** i GTM-sektionen. Wink skickar då `purchase` för den egendomen **server-side**, precis som beskrivs i guiden [GA4 Analytics Integration](/sv/guides/developers/ga4-dual-tagging). Lämna dessa tomma om du bara behöver spårning i webbläsaren.
-
-4. **Bekräfta med din leverantör**
+3. **Bekräfta med din leverantör**
 
    Om din behållare kommer från en partner som Sojern, meddela din kontohanterare att integrationen är aktiv. De kan verifiera från sin sida att taggarna avfyras korrekt på `wink.travel` för din fastighet och att data flödar in i ditt konto.
 
@@ -40,7 +36,7 @@ Detta förutsätter att du redan har ett GTM Container ID (format `GTM-XXXXXXX`)
 <Aside type="note">
 Du behöver inte placera någon pixelkod på din egen webbplats för denna integration. Wink laddar din GTM-behållare automatiskt på alla sidor där din fastighet är aktiv.
 
-Detta fungerar för **vilket som helst** GTM Container ID — Sojern är bara ett vanligt exempel.
+Detta fungerar för **vilket** GTM Container ID som helst — Sojern är bara ett vanligt exempel.
 </Aside>
 
 ---
@@ -49,20 +45,20 @@ Detta fungerar för **vilket som helst** GTM Container ID — Sojern är bara et
 
 För transparens, här är vad Wink konfigurerar för att få denna integration att fungera:
 
-- **Ett GTM Container ID-fält** finns tillgängligt i fliken Anpassningar i din Wink-portal. När du anger ditt Container ID validerar Wink formatet (`GTM-XXXXXXX`) och lagrar det säkert kopplat till din fastighet.
+- **Ett GTM Container ID-fält** finns i avsnittet **Analytics & integrations** i dina anpassningsinställningar. När du anger ditt Container ID validerar Wink formatet (`GTM-XXXXXXX`) och lagrar det säkert kopplat till din fastighet.
 - **På varje sida där din fastighet är aktiv** på Wink injiceras din behållare direkt i sidan — den delar Wink:s egen `window.dataLayer` — så den laddas parallellt med Winks egen behållare utan beroende av någon extra konfiguration. Detta sker automatiskt, utan arbete per fastighet från Wink-teamet.
 - **Din behållare laddas asynkront**, så den påverkar inte sidladdningsprestandan för dina gäster.
 - **Winks egen spårning och din behållare körs parallellt**, och läser från samma delade `dataLayer`. Varje bokningsevenemang som Wink spårar är samtidigt tillgängligt för din behållare.
-- **När din fastighet inte visas** — till exempel när en gäst bläddrar bland ett annat hotell på Wink — laddas inte din behållare, så den får bara data som är relevant för din fastighet.
-- **Om du angav ett GA4 Measurement ID + API secret** (steg 3 ovan) skickas `purchase` för slutförda bokningar dessutom **server-side** via GA4 Measurement Protocol, så en försäljning registreras även om gästen aldrig återvänder till bekräftelsesidan.
+- **När din fastighet inte visas** — till exempel när en gäst tittar på ett annat hotell på Wink — laddas inte din behållare, så den får bara data som är relevant för din fastighet.
+- **Den slutförda bokningen (`purchase`) avfyras i webbläsaren på tack-sidan.** Ett GTM Container ID är en svart låda — Wink kan inte anta vilka taggar som finns inuti — så Wink anropar aldrig Google på dina vägnar från sina servrar. Istället tar vilken GA4- eller konverteringstagg som helst i din behållare emot `purchase` klient-sidigt, precis som alla andra bokningsevenemang. Eftersom betalningsleverantören omdirigerar gästens webbläsare bort och tillbaka, återansluter Wink den analys-session som omdirigeringen avbröt **innan** `purchase` avfyras, så försäljningen tillskrivs gästens ursprungliga besök istället för att räknas som en ny session.
 
 ---
 
 ## DataLayer-referens
 
-Wink skickar GA4-kompatibla händelser till `dataLayer` genom hela gästreseflödet. Din GTM-behållare läser från samma delade `dataLayer`, så alla triggers eller variabler du konfigurerar har tillgång till alla egenskaper som beskrivs nedan.
+Wink skickar GA4-kompatibla händelser till `dataLayer` under hela gästreseflödet. Din GTM-behållare läser från samma delade `dataLayer`, så varje trigger eller variabel du konfigurerar har tillgång till alla egenskaper som beskrivs nedan.
 
-Varje händelse följer standardstrukturen för GA4 Enhanced Ecommerce: en överordnad `event`-sträng och ett `ecommerce`-objekt. Innan varje push rensar Wink den tidigare ecommerce-payloaden för att förhindra att gammal data läcker in i nya triggers.
+Varje händelse följer den standardiserade GA4 Enhanced Ecommerce-strukturen: en överordnad `event`-sträng och ett `ecommerce`-objekt. Innan varje push rensar Wink den tidigare ecommerce-payloaden för att förhindra att gammal data läcker in i nya triggers.
 
 <Aside type="note">
 **dataLayer-resetmönster**
@@ -74,7 +70,7 @@ dataLayer.push({ ecommerce: null });   // rensa tidigare event
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
-Lita inte på att ecommerce-egenskaper kvarstår mellan händelser. Läs alltid dem vid trigger-tidpunkten inom samma event.
+Lita inte på att ecommerce-egenskaper kvarstår mellan händelser. Läs alltid dem vid trigger-tid inom samma event.
 </Aside>
 
 ---
@@ -88,7 +84,7 @@ Dessa händelser avfyras automatiskt när en gäst rör sig genom bokningstratte
 | 1 | `view_item_list` | Hotellinventariets rutnät eller lista laddas |
 | 2 | `view_item` | Gäst tittar på en specifik fastighetssida |
 | 3 | `add_to_cart` | Gäst lägger till ett rum i kundvagnen |
-| 4 | `begin_checkout` | Kassan/betalningssidan laddas |
+| 4 | `begin_checkout` | Kassasidan / betalningssidan laddas |
 | 5 | `add_payment_info` | Gäst väljer betalningsmetod |
 | 6 | `login` | Gäst autentiserar via SSO |
 | 7 | `purchase` | Bokning bekräftas |
@@ -149,7 +145,7 @@ Avfyras när en gäst lägger till ett rum i sin kundvagn.
 
 #### `begin_checkout`
 
-Avfyras när kassan/betalningssidan laddas.
+Avfyras när kassasidan / betalningssidan laddas.
 
 ```json
 {
@@ -184,7 +180,7 @@ Avfyras när gästen väljer eller bekräftar en betalningsmetod.
 }
 ```
 
-`payment_type` fylls i från betalningsförvärvarens typ. `coupon` finns endast när en rabattkod har använts.
+`payment_type` fylls i från betalningsförmedlarens typ. `coupon` finns endast när en rabattkod har använts.
 
 ---
 
@@ -249,7 +245,7 @@ Avfyras när en bokning bekräftas.
 }
 ```
 
-`transaction_id` är det unika bokningskontrakts-ID:t. `coupon`, `shipping` och `tax` finns endast när det är tillämpligt.
+`transaction_id` är det unika bokningskontrakts-ID:t. `coupon`, `shipping` och `tax` finns endast när tillämpligt.
 
 ---
 
@@ -272,7 +268,7 @@ Avfyras när en bokning avbokas.
 }
 ```
 
-`transaction_id` matchar `purchase`-händelsen för samma bokning. `coupon`, `shipping` och `tax` finns endast när det är tillämpligt.
+`transaction_id` matchar `purchase`-händelsen för samma bokning. `coupon`, `shipping` och `tax` finns endast när tillämpligt.
 
 ---
 
@@ -280,7 +276,7 @@ Avfyras när en bokning avbokas.
 
 Alla händelser som inkluderar en `items`-array delar samma objektschema. Varje egenskap är valfri om inte annat anges.
 
-#### Standardfält i GA4
+#### Standard GA4-fält
 
 Dessa fält förstås inbyggt av GA4 och visas i standardrapporter för e-handel utan ytterligare konfiguration.
 
@@ -289,15 +285,15 @@ Dessa fält förstås inbyggt av GA4 och visas i standardrapporter för e-handel
 | `item_id` | string | Ja | Unikt ID för rummet eller produkten |
 | `item_name` | string | — | Namn på rummet eller produkten |
 | `affiliation` | string | — | Affiliate- eller säljarnamn |
-| `coupon` | string | — | Använd rabattkod för objektet |
+| `coupon` | string | — | Rabattkod som tillämpats på objektet |
 | `currency` | string | — | ISO 4217 valutakod (t.ex. `USD`) |
 | `creative_name` | string | — | Kreativt namn som används i en kampanj |
-| `creative_slot` | string | — | Plats för kampanjens kreativa inslag |
+| `creative_slot` | string | — | Slot-position för kampanjkreativet |
 | `discount` | number | — | Rabattsumma som tillämpats |
 | `index` | number | — | Position i listan (1-baserad) |
 | `item_brand` | string | — | Hotell- eller varumärkesnamn |
 | `item_category` | string | — | Produkttyp — t.ex. `GUEST_ROOM`, `ACTIVITY`, `ATTRACTION`, `MEETING_ROOM`, `RESTAURANT`, `SPA` |
-| `item_list_id` | string | — | Identifierare för listan objektet tillhör |
+| `item_list_id` | string | — | Identifierare för listan som objektet tillhör |
 | `item_list_name` | string | — | Visningsnamn för listan |
 | `location_id` | string | — | Geokoordinater för fastigheten |
 | `price` | number | — | Enhetspris |
@@ -307,14 +303,14 @@ Dessa fält förstås inbyggt av GA4 och visas i standardrapporter för e-handel
 
 #### Anpassade objektparametrar
 
-Dessa parametrar bär Wink-specifik bokningskontext. GA4 visar dem inte automatiskt i rapporter — du måste registrera varje som en **anpassad dimension med objektomfång** i din GA4-egendom innan de visas i utforskningar eller standardrapporter. Se [Anpassade dimensioner i GA4](#custom-dimensions-in-ga4) nedan för instruktioner.
+Dessa parametrar bär Wink-specifik bokningskontext. GA4 visar dem inte automatiskt i rapporter — du måste registrera varje som en **anpassad dimension med objektomfång** i din GA4-egendom innan de visas i utforskningar eller standardrapporter. Se [Anpassade dimensioner i GA4](#custom-dimensions-in-ga4) nedan för installationsinstruktioner.
 
 | Egenskap | Typ | Beskrivning |
 |----------|-----|-------------|
 | `property_id` | string | Wink-fastighetsidentifierare |
 | `property_name` | string | Visningsnamn för fastigheten |
-| `property_brand` | string | Varumärke fastigheten tillhör |
-| `property_chain` | string | Kedja fastigheten tillhör |
+| `property_brand` | string | Varumärket fastigheten tillhör |
+| `property_chain` | string | Kedjan fastigheten tillhör |
 | `property_url_name` | string | URL-vänlig slug för fastigheten |
 | `city_name` | string | Stad där fastigheten ligger |
 | `country_code` | string | ISO 3166-1 alpha-2 landskod |
@@ -342,7 +338,7 @@ GA4 ignorerar anpassade objektparametrar i rapporter tills du explicit registrer
 
 1. **Öppna Anpassade definitioner**
 
-   I GA4, gå till **Admin** (kugghjulet nere till vänster) → välj din egendom → **Data display** → **Custom definitions**.
+   I GA4, gå till **Admin** (kugghjulsikonen nere till vänster) → välj din egendom → **Data display** → **Custom definitions**.
 
 2. **Skapa en ny anpassad dimension**
 
@@ -352,7 +348,7 @@ GA4 ignorerar anpassade objektparametrar i rapporter tills du explicit registrer
 
    - **Dimension name** — den läsbara etiketten som visas i GA4-rapporter (se tabellen nedan)
    - **Scope** — välj **Item**
-   - **Event parameter** — exakt parameternamn som det visas i dataLayer (se tabellen nedan)
+   - **Event parameter** — det exakta parameternamnet som det visas i dataLayer (se tabellen nedan)
    - **Description** — valfritt men rekommenderas
 
 4. **Spara och upprepa**
@@ -396,7 +392,7 @@ Använd följande tabell som referens när du skapar anpassade dimensioner. Vär
 
 ### Ytterligare tillgängliga händelser
 
-Följande händelser finns i Wink dataLayer men ingår inte i standardbokningstratten. De kan avfyras av andra interaktioner på plattformen.
+Följande händelser finns i Wink dataLayer men är inte en del av standardbokningstratten. De kan avfyras av andra interaktioner på plattformen.
 
 #### `add_to_wishlist`
 
@@ -653,7 +649,7 @@ Ingen `ecommerce`-payload ingår med denna händelse.
 
 ### `virtualPageView`
 
-Detta är en anpassad Wink-händelse — inte en del av standard GA4-händelseuppsättningen. Den skickas vid varje sidnavigering och bär med sig enhets- och sessionskontext. Den inkluderar inget `ecommerce`-objekt.
+Detta är en anpassad Wink-händelse — inte en del av standard GA4-händelseuppsättningen. Den skickas vid varje sidnavigering och bär enhets- och sessionskontext. Den inkluderar inte ett `ecommerce`-objekt.
 
 ```json
 {

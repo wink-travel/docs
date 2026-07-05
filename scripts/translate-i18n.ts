@@ -218,7 +218,6 @@ const directories = [
   "getting-started",
   "integrations",
   "guides/affiliates",
-  "guides/developers",
   "guides/general",
   "guides/hoteliers",
   "webinars",

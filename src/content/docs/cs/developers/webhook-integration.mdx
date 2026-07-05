@@ -2,12 +2,12 @@
 title: Integrace webhooků
 description: Tento průvodce ukazuje vývojářům, jak nastavit webhooky pro přijímání oznámení v reálném čase o rezervacích, platbách a dalších událostech.
 sidebar:
-  order: 11
+  order: 3
 ---
 
 import { Steps, LinkButton } from '@astrojs/starlight/components';
 
-Webhooky umožňují vašim systémům přijímat oznámení v reálném čase, když se na vašem účtu Wink stane nějaká událost — nové rezervace, zrušení, aktualizace plateb a další. Tento průvodce vás provede nastavením a nejlepšími postupy.
+Webhooky umožňují vašim systémům přijímat oznámení v reálném čase, když se na vašem účtu Wink stanou události — nové rezervace, zrušení, aktualizace plateb a další. Tento průvodce vás provede nastavením a nejlepšími postupy.
 
 ## Publikum
 
@@ -17,7 +17,7 @@ Tento průvodce je určen vývojářům integrujícím Wink s externími systém
 
 1. Zaregistrujete URL webhooku ve Wink.
 2. Když nastane událost (např. nová rezervace), Wink odešle HTTP POST na vaši URL.
-3. Váš server zpracuje data a odpoví s `200 OK`.
+3. Váš server zpracuje payload a odpoví s `200 OK`.
 
 ## Nastavení webhooku
 
@@ -34,7 +34,7 @@ Tento průvodce je určen vývojářům integrujícím Wink s externími systém
 
 ## Typy událostí
 
-Wink podporuje **64+ typů webhook událostí** v kategoriích jako správa účtu, smlouvy o rezervacích, platby, aktualizace channel managera a správa entit. Běžné události zahrnují:
+Wink podporuje **64+ typů webhook událostí** v kategoriích jako správa účtu, smlouvy o rezervaci, platby, aktualizace channel managera a správa entit. Běžné události zahrnují:
 
 | Kategorie | Příklady |
 |---|---|
@@ -52,22 +52,22 @@ Pro úplný seznam všech typů událostí s popisy viz **Katalog webhook událo
 </LinkButton>
 
 :::tip
-Začněte během vývoje přihlášením ke všem událostem. Jakmile pochopíte data, zúžte výběr pouze na události, které váš systém skutečně potřebuje.
+Začněte během vývoje přihlašováním na všechny události. Jakmile pochopíte payloady, zúžte výběr pouze na události, které váš systém skutečně potřebuje.
 :::
 
 ## Nejlepší postupy
 
-- **Používejte HTTPS** — Wink odesílá data pouze na HTTPS endpointy.
-- **Odpovídejte rychle** — Vraťte `200 OK` hned po přijetí dat. Náročné zpracování provádějte asynchronně.
+- **Používejte HTTPS** — Wink odesílá payloady pouze na HTTPS endpointy.
+- **Odpovídejte rychle** — Vraťte `200 OK` hned po přijetí payloadu. Náročné zpracování provádějte asynchronně.
 - **Idempotentnost** — Váš handler by měl být idempotentní. Wink může opakovat doručení, pokud neobdrží odpověď `200`.
 - **Ověřte zdroj** — Před zpracováním ověřte, že příchozí požadavky jsou od Wink.
-- **Logování** — Logujte každý přijatý webhook payload. Usnadní to ladění integrace.
+- **Logování** — Logujte každý přijatý webhook payload. To výrazně usnadní ladění integrace.
 
-## Pozastavení a mazání
+## Pozastavení a smazání
 
 Webhook můžete **zakázat** bez jeho smazání. Tím pozastavíte doručování, abyste mohli řešit problémy, aniž byste přišli o konfiguraci. Až budete připraveni, opět jej zapněte.
 
-Smazání webhooku jej trvale odstraní. Jakákoli integrace, která na něj spoléhá, přestane dostávat oznámení.
+Smazání webhooku jej trvale odstraní. Jakákoli integrace, která na tento webhook spoléhá, přestane přijímat oznámení.
 
 ## Další čtení
 

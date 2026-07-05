@@ -7,7 +7,7 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Můžete připojit **jakýkoli** kontejner Google Tag Manager (GTM) k Wink zadáním jeho **GTM Container ID** do portálu Wink. Po připojení se váš kontejner automaticky načte pro vaši nemovitost a přímo čte rezervační události Wink — pokrývá celou cestu hosta od vyhledávání až po dokončenou rezervaci. Běžným případem použití je kontejner **Sojern** pro retargeting a reklamu, ale jakýkoli GTM kontejner funguje stejně.
+Můžete připojit **jakýkoli** kontejner Google Tag Manager (GTM) k Wink zadáním jeho **GTM Container ID** v portálu Wink. Po připojení se váš kontejner automaticky načte pro vaši nemovitost a přímo čte rezervační události Wink — pokrývá celou cestu hosta od vyhledávání až po dokončenou rezervaci. Běžným případem použití je kontejner **Sojern** pro retargeting a reklamu, ale jakýkoli GTM kontejner funguje stejně.
 
 <Aside type="tip">
 Předpokládá se, že již máte GTM Container ID (formát `GTM-XXXXXXX`). Pokud váš kontejner pochází od partnera, jako je Sojern, požádejte svého manažera účtu o **GTM Container ID** konkrétně — liší se od pixelu nebo tag ID. Jste noví u Sojern? Navštivte [sojern.com/contact](https://www.sojern.com/contact) a začněte.
@@ -25,22 +25,18 @@ Předpokládá se, že již máte GTM Container ID (formát `GTM-XXXXXXX`). Poku
 
 2. **Zadejte ho do portálu Wink**
 
-   Přihlaste se na [app.wink.travel](https://app.wink.travel), vyberte svůj účet a přejděte na záložku **Customizations**. Vložte své GTM Container ID do pole **GTM** a uložte. Vaše integrace je nyní aktivní.
+   Přihlaste se na [app.wink.travel](https://app.wink.travel), vyberte svůj účet a otevřete nastavení přizpůsobení. V sekci **Analytics & integrations** vložte své GTM Container ID do pole **GTM Container ID** a uložte. Vaše integrace je nyní aktivní.
 
-3. **(Volitelné) Přidejte GA4 Measurement ID + API Secret pro serverové zpracování nákupů**
+3. **Potvrďte u svého poskytovatele**
 
-   GTM kontejnery běží zcela v prohlížeči hosta, takže dokončená rezervace může být ztracena, pokud host zavře kartu během přesměrování na platbu. Pokud váš kontejner načítá **GA4 property** a chcete spolehlivě zaznamenávat dokončené rezervace, zadejte také GA4 **Measurement ID** a **Measurement Protocol API secret** v sekci GTM. Wink pak odešle `purchase` pro tuto property **serverově**, přesně jak je popsáno v průvodci [GA4 Analytics Integration](/cs/guides/developers/ga4-dual-tagging). Pokud potřebujete pouze sledování v prohlížeči, nechte tyto údaje prázdné.
-
-4. **Potvrďte u svého poskytovatele**
-
-   Pokud váš kontejner pochází od partnera, jako je Sojern, informujte svého manažera účtu, že je integrace aktivní. Mohou ověřit na své straně, že tagy správně spouštějí na `wink.travel` pro vaši nemovitost a že data proudí do vašeho účtu.
+   Pokud váš kontejner pochází od partnera, jako je Sojern, informujte svého manažera účtu, že je integrace aktivní. Mohou zkontrolovat na své straně, že tagy správně spouštějí na `wink.travel` pro vaši nemovitost a že data proudí do vašeho účtu.
 
 </Steps>
 
 <Aside type="note">
 Pro tuto integraci nemusíte na svých webových stránkách umisťovat žádný pixelový kód. Wink automaticky načítá váš GTM kontejner na všech stránkách, kde je vaše nemovitost aktivní.
 
-Toto funguje pro **jakýkoli** GTM Container ID — Sojern je jen běžný příklad.
+Toto funguje pro **jakékoli** GTM Container ID — Sojern je jen běžný příklad.
 </Aside>
 
 ---
@@ -49,20 +45,20 @@ Toto funguje pro **jakýkoli** GTM Container ID — Sojern je jen běžný pří
 
 Pro transparentnost zde uvádíme, co Wink nastavuje, aby tato integrace fungovala:
 
-- **Pole GTM Container ID** je dostupné v záložce Customizations ve vašem portálu Wink. Po zadání Container ID Wink ověří formát (`GTM-XXXXXXX`) a bezpečně ho uloží k vaší nemovitosti.
-- **Na každé stránce, kde je vaše nemovitost aktivní** na Wink, je váš kontejner přímo vložen do stránky — sdílí Winkův vlastní `window.dataLayer` — takže se načítá paralelně s Winkovým vlastním kontejnerem bez závislosti na další konfiguraci. To probíhá automaticky, bez nutnosti práce ze strany Wink týmu pro každou nemovitost.
+- **Pole GTM Container ID** je dostupné v sekci **Analytics & integrations** v nastavení přizpůsobení. Po zadání Container ID Wink ověří formát (`GTM-XXXXXXX`) a bezpečně ho uloží k vaší nemovitosti.
+- **Na každé stránce, kde je vaše nemovitost aktivní** na Wink, je váš kontejner přímo vložen do stránky — sdílí vlastní `window.dataLayer` Wink — takže se načítá vedle vlastního kontejneru Wink bez závislosti na další konfiguraci. Děje se to automaticky, bez nutnosti práce týmu Wink pro každou nemovitost.
 - **Váš kontejner se načítá asynchronně**, takže neovlivňuje výkon načítání stránky pro vaše hosty.
-- **Winkovo vlastní sledování a váš kontejner běží paralelně**, čtou ze stejného sdíleného `dataLayer`. Každá rezervační událost, kterou Wink sleduje, je zároveň dostupná vašemu kontejneru.
-- **Když vaše nemovitost není zobrazena** — například když host prohlíží jiný hotel na Wink — váš kontejner se nenačítá, takže přijímá pouze data relevantní pro vaši nemovitost.
-- **Pokud jste zadali GA4 Measurement ID + API secret** (krok 3 výše), `purchase` pro dokončené rezervace je navíc odesílán **serverově** přes GA4 Measurement Protocol, takže se prodej zaznamená i v případě, že host nikdy nevrátí na potvrzovací stránku.
+- **Sledování Wink a váš kontejner běží paralelně**, čtou ze stejného sdíleného `dataLayer`. Každá rezervační událost, kterou Wink sleduje, je zároveň dostupná vašemu kontejneru.
+- **Když se vaše nemovitost neprohlíží** — například když host prohlíží jiný hotel na Wink — váš kontejner se nenačítá, takže přijímá pouze data relevantní pro vaši nemovitost.
+- **Dokončená rezervace (`purchase`) se spouští v prohlížeči na stránce poděkování.** GTM Container ID je černá skříňka — Wink nemůže předpokládat, jaké tagy jsou uvnitř — proto Wink nikdy nevolá Google jménem vás ze svých serverů. Místo toho jakýkoli GA4 nebo konverzní tag v kontejneru přijímá `purchase` na straně klienta, stejně jako každou jinou rezervační událost. Protože poskytovatel platby přesměruje prohlížeč hosta pryč a zpět, Wink znovu naváže analytickou relaci, kterou přesměrování přerušilo **před** spuštěním `purchase`, takže prodej je připsán původní návštěvě hosta, nikoli jako nová relace.
 
 ---
 
 ## Reference DataLayer
 
-Wink posílá GA4-kompatibilní události do `dataLayer` během celé cesty hosta. Váš GTM kontejner čte ze stejného sdíleného `dataLayer`, takže jakýkoli trigger nebo proměnná, kterou nastavíte, má přístup ke všem níže popsaným vlastnostem.
+Wink posílá události kompatibilní s GA4 do `dataLayer` během celé cesty hosta. Váš GTM kontejner čte ze stejného sdíleného `dataLayer`, takže každý trigger nebo proměnná, kterou nastavíte, má přístup ke všem níže popsaným vlastnostem.
 
-Každá událost odpovídá standardní GA4 Enhanced Ecommerce struktuře: řetězec `event` na nejvyšší úrovni a objekt `ecommerce`. Před každým push Wink vymaže předchozí ecommerce data, aby zabránil přenosu zastaralých dat do nových triggerů.
+Každá událost následuje standardní strukturu GA4 Enhanced Ecommerce: řetězec `event` na nejvyšší úrovni a objekt `ecommerce`. Před každým push Wink vymaže předchozí ecommerce data, aby zabránil přenosu zastaralých dat do nových triggerů.
 
 <Aside type="note">
 **Vzor resetování dataLayer**
@@ -74,14 +70,14 @@ dataLayer.push({ ecommerce: null });   // vyčistí předchozí událost
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
-Nespoléhejte na to, že ecommerce vlastnosti přetrvají mezi událostmi. Vždy je čtěte v době spuštění triggeru v rámci téže události.
+Nespoléhejte na to, že ecommerce vlastnosti přetrvají mezi událostmi. Vždy je čtěte v době spuštění triggeru ve stejné události.
 </Aside>
 
 ---
 
 ### Události cesty rezervace
 
-Tyto události se spouštějí automaticky, jak host postupuje rezervačním procesem. Nastavte své GTM triggery jako **Custom Event** triggery odpovídající níže uvedeným názvům událostí.
+Tyto události se spouští automaticky, jak host postupuje rezervačním procesem. Nastavte své GTM triggery jako **Custom Event** triggery odpovídající níže uvedeným názvům událostí.
 
 | Krok | Událost | Kdy se spouští |
 |------|---------|----------------|
@@ -184,7 +180,7 @@ Spouští se, když host vybere nebo potvrdí platební metodu.
 }
 ```
 
-`payment_type` je vyplněno podle typu platebního zprostředkovatele. `coupon` je přítomen pouze, pokud byl použit slevový kód.
+`payment_type` je vyplněn podle typu platebního akvizitora. `coupon` je přítomen pouze, pokud byl použit slevový kód.
 
 ---
 
@@ -278,11 +274,11 @@ Spouští se, když je rezervace zrušena.
 
 ### Vlastnosti položek
 
-Všechny události obsahující pole `items` sdílejí stejnou strukturu položky. Každá vlastnost je volitelná, pokud není označena jako povinná.
+Všechny události, které obsahují pole `items`, sdílejí stejnou strukturu položky. Každá vlastnost je volitelná, pokud není označena jako povinná.
 
 #### Standardní pole GA4
 
-Tato pole GA4 nativně rozpoznává a zobrazují se ve standardních ecommerce reportech bez další konfigurace.
+Tato pole jsou nativně rozpoznávána GA4 a zobrazují se ve standardních ecommerce reportech bez další konfigurace.
 
 | Vlastnost | Typ | Povinné | Popis |
 |-----------|-----|---------|-------|
@@ -303,11 +299,11 @@ Tato pole GA4 nativně rozpoznává a zobrazují se ve standardních ecommerce r
 | `price` | number | — | Jednotková cena |
 | `promotion_id` | string | — | Identifikátor propagace |
 | `promotion_name` | string | — | Zobrazovaný název propagace |
-| `quantity` | number | — | Množství (výchozí `1`) |
+| `quantity` | number | — | Množství (výchozí hodnota `1`) |
 
-#### Vlastní parametry specifické pro položky
+#### Vlastní parametry na úrovni položky
 
-Tyto parametry nesou kontext rezervace specifický pro Wink. GA4 je automaticky nezobrazuje v reportech — musíte je zaregistrovat jako **vlastní dimenze na úrovni položky** ve své GA4 property, aby se zobrazily v přehledech nebo standardních reportech. Viz níže [Custom Dimensions in GA4](#custom-dimensions-in-ga4) pro instrukce.
+Tyto parametry nesou kontext rezervace specifický pro Wink. GA4 je automaticky nezobrazuje v reportech — musíte je zaregistrovat jako **vlastní dimenze na úrovni položky** ve své GA4 vlastnosti, než se objeví v přehledech nebo standardních reportech. Viz níže [Vlastní dimenze v GA4](#custom-dimensions-in-ga4) pro instrukce nastavení.
 
 | Vlastnost | Typ | Popis |
 |-----------|-----|-------|
@@ -336,13 +332,13 @@ Tyto parametry nesou kontext rezervace specifický pro Wink. GA4 je automaticky 
 
 ### Vlastní dimenze v GA4
 
-GA4 ignoruje vlastní parametry položek v reportech, dokud je explicitně nezaregistrujete jako vlastní dimenze na úrovni položky. Registrovat musíte pouze parametry, které chcete v reportech používat — není nutné registrovat všech 20.
+GA4 ignoruje vlastní parametry položek v reportech, dokud je explicitně nezaregistrujete jako vlastní dimenze na úrovni položky. Musíte registrovat pouze ty parametry, které chcete v reportech používat — není nutné registrovat všech 20.
 
 <Steps>
 
-1. **Otevřete Custom Definitions**
+1. **Otevřete Vlastní definice**
 
-   V GA4 přejděte do **Admin** (ikona ozubeného kola vlevo dole) → vyberte svou property → **Data display** → **Custom definitions**.
+   V GA4 přejděte do **Admin** (ikona ozubeného kola vlevo dole) → vyberte svou vlastnost → **Data display** → **Custom definitions**.
 
 2. **Vytvořte novou vlastní dimenzi**
 
@@ -352,7 +348,7 @@ GA4 ignoruje vlastní parametry položek v reportech, dokud je explicitně nezar
 
    - **Dimension name** — čitelný název, který se zobrazí v GA4 reportech (viz tabulka níže)
    - **Scope** — vyberte **Item**
-   - **Event parameter** — přesný název parametru, jak je v dataLayer (viz tabulka níže)
+   - **Event parameter** — přesný název parametru, jak se objevuje v dataLayer (viz tabulka níže)
    - **Description** — volitelné, ale doporučené
 
 4. **Uložte a opakujte**
@@ -362,9 +358,9 @@ GA4 ignoruje vlastní parametry položek v reportech, dokud je explicitně nezar
 </Steps>
 
 <Aside type="note">
-Vlastní dimenze se mohou v GA4 reportech začít zobrazovat až do 24 hodin po registraci. Historická data před registrací nejsou doplněna zpětně.
+Vlastní dimenze se mohou v GA4 reportech začít zobrazovat až do 24 hodin po registraci. Historická data shromážděná před registrací nejsou doplněna zpětně.
 
-GA4 umožňuje až 50 vlastních dimenzí na úrovni položky na standardní property (360 property umožňují více).
+GA4 umožňuje až 50 vlastních dimenzí na úrovni položky na standardní vlastnost (360 vlastnosti umožňují více).
 </Aside>
 
 Použijte následující tabulku jako referenci při vytváření vlastních dimenzí. Hodnota **Event parameter** musí přesně odpovídat — GA4 rozlišuje velká a malá písmena.
@@ -372,31 +368,31 @@ Použijte následující tabulku jako referenci při vytváření vlastních dim
 | Název dimenze | Event parameter | Typ |
 |---------------|-----------------|-----|
 | Property ID | `property_id` | Text |
-| Název nemovitosti | `property_name` | Text |
-| Značka nemovitosti | `property_brand` | Text |
-| Řetězec nemovitosti | `property_chain` | Text |
-| URL název nemovitosti | `property_url_name` | Text |
-| Název města | `city_name` | Text |
-| Kód země | `country_code` | Text |
-| Datum příjezdu | `start_date` | Text |
-| Datum odjezdu | `end_date` | Text |
-| Počet dospělých | `num_adults` | Number |
-| Počet dětí | `num_children` | Number |
-| Storno podmínky | `cancellation_policy` | Text |
-| ID sazebního plánu | `rate_plan_id` | Text |
-| ID sazby pokoje | `room_rate_id` | Text |
-| Název sazby pokoje | `room_rate_name` | Text |
-| Počet výhod | `num_perks` | Number |
-| Umístění pokoje | `room_location` | Text |
-| Výhled z pokoje | `room_view` | Text |
-| Klasifikace pokoje | `room_classification` | Text |
-| Typ postele | `bed_type` | Text |
+| Property name | `property_name` | Text |
+| Property brand | `property_brand` | Text |
+| Property chain | `property_chain` | Text |
+| Property URL name | `property_url_name` | Text |
+| City name | `city_name` | Text |
+| Country code | `country_code` | Text |
+| Check-in date | `start_date` | Text |
+| Check-out date | `end_date` | Text |
+| Number of adults | `num_adults` | Number |
+| Number of children | `num_children` | Number |
+| Cancellation policy | `cancellation_policy` | Text |
+| Rate plan ID | `rate_plan_id` | Text |
+| Room rate ID | `room_rate_id` | Text |
+| Room rate name | `room_rate_name` | Text |
+| Number of perks | `num_perks` | Number |
+| Room location | `room_location` | Text |
+| Room view | `room_view` | Text |
+| Room classification | `room_classification` | Text |
+| Bed type | `bed_type` | Text |
 
 ---
 
 ### Další dostupné události
 
-Následující události jsou dostupné v Wink dataLayer, ale nejsou součástí standardního rezervačního trychtýře. Mohou být spuštěny jinými interakcemi na platformě.
+Následující události jsou dostupné v dataLayer Wink, ale nejsou součástí standardního rezervačního trychtýře. Mohou být spuštěny jinými interakcemi na platformě.
 
 #### `add_to_wishlist`
 
@@ -445,7 +441,7 @@ Následující události jsou dostupné v Wink dataLayer, ale nejsou součástí
 }
 ```
 
-Tato událost neobsahuje `ecommerce` payload.
+K této události není přiložen žádný `ecommerce` objekt.
 
 #### `view_promotion`
 
@@ -673,7 +669,7 @@ Toto je vlastní událost Wink — není součástí standardní sady GA4 událo
 
 | Vlastnost | Popis |
 |-----------|-------|
-| `device` | Detekovaný typ zařízení — `Desktop`, `Android`, `iPhone`, `iPad` nebo podobně |
+| `device` | Detekovaný typ zařízení — `Desktop`, `Android`, `iPhone`, `iPad` nebo podobné |
 | `deviceAgent` | Surový user agent string |
 | `os` | Detekovaný operační systém — `Windows`, `MacOS`, `Linux`, `UNIX` |
 | `path` | Aktuální cesta stránky |

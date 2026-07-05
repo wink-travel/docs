@@ -7,10 +7,10 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-Připojením svého Google Analytics 4 účtu k Wink se vaše události rezervací — od zobrazení pokojů až po dokončené rezervace — automaticky přeposílají do vašeho vlastního GA4 dashboardu vedle vlastních analytik Wink. Žádný kód, žádné technické nastavení na vaší straně.
+Připojením svého Google Analytics 4 účtu k Wink se vaše rezervační události — od zobrazení pokojů až po dokončené rezervace — automaticky přenášejí do vašeho GA4 dashboardu společně s vlastními analytikami Wink. Žádný kód, žádné technické nastavení na vaší straně.
 
 <Aside type="tip">
-Potřebujete dvě věci z GA4: **Measurement ID** a **Measurement Protocol API secret**. Measurement ID pohání prohlížecí trychtýř v prohlížeči hosta; API secret umožňuje Wink zaznamenávat dokončené rezervace (`purchase`) **na straně serveru**, takže se prodej nikdy neztratí při přesměrování k a od platebního poskytovatele.
+Potřebujete jednu věc z GA4: **Measurement ID** (`G-XXXXXXXXXX`). Wink jej načte v prohlížeči hosta a přenáší celý váš rezervační proces — včetně dokončené rezervace (`purchase`) — přímo do vašeho GA4 účtu. Není potřeba vytvářet API secret ani nic instalovat na vašem webu.
 </Aside>
 
 ---
@@ -18,83 +18,93 @@ Potřebujete dvě věci z GA4: **Measurement ID** a **Measurement Protocol API s
 ## Jak to funguje
 
 ```
-Zadáte své Measurement ID (G-XXXXXXXXXX) a API secret do portálu Wink
+Zadáte své Measurement ID (G-XXXXXXXXXX) do portálu Wink
        ↓
-Události prohlížení (zobrazení, košík, pokladna) se přenášejí do vaší GA4 vlastnosti z prohlížeče
-Dokončené rezervace (purchase) jsou odesílány na straně serveru — přežijí přesměrování platby
+Wink načte vaše GA4 v prohlížeči hosta a přenáší rezervační události
+(zobrazení, košík, pokladna) do vašeho GA4 účtu v reálném čase
        ↓
-Přihlásíte se na analytics.google.com a uvidíte celý svůj rezervační trychtýř
+Na stránce poděkování se v prohlížeči spustí událost dokončené rezervace (purchase) —
+Wink znovu propojí GA4 session, kterou přerušilo přesměrování na platbu, takže
+prodej se stále počítá k původní návštěvě hosta
+       ↓
+Přihlásíte se do analytics.google.com a uvidíte celý svůj rezervační proces
 ```
 
 ---
 
-## Co musíte udělat
+## Co je potřeba udělat
 
 <Steps>
 
-1. **Vytvořte GA4 vlastnost**
+1. **Vytvořte GA4 účet**
 
-   Přejděte na [analytics.google.com](https://analytics.google.com): Admin → Vytvořit vlastnost. Nastavte svůj časový pásmo a měnu tak, aby odpovídaly vašemu trhu.
+   Přejděte na [analytics.google.com](https://analytics.google.com): Admin → Vytvořit účet. Nastavte časové pásmo a měnu odpovídající vašemu trhu.
 
 2. **Vytvořte Web Data Stream**
 
    Admin → Data Streams → Přidat stream → Web. Zadejte `wink.travel` jako URL. Tím se vygeneruje vaše **Measurement ID** (`G-XXXXXXXXXX`). Zkopírujte ho.
 
-3. **Vytvořte Measurement Protocol API Secret**
+3. **Zadejte své Measurement ID do portálu Wink**
 
-   Otevřete stejný Web Data Stream → sjeďte dolů na **Measurement Protocol API secrets** → **Vytvořit**. Dejte mu přezdívku (např. "Wink") a zkopírujte vygenerovanou **tajnou hodnotu**. Tento secret umožňuje Wink zaznamenávat dokončené rezervace na straně serveru, takže se prodej nikdy neztratí během přesměrování platby.
+   Přihlaste se do [app.wink.travel](https://app.wink.travel), vyberte svůj účet a otevřete nastavení přizpůsobení. V sekci **Analytics & integrations** vložte své Measurement ID do pole **GA4 Measurement ID** a uložte. To je vše — vaše integrace GA4 je nyní aktivní.
 
-4. **Zadejte své Measurement ID a API Secret do portálu Wink**
+4. **Označte `purchase` jako klíčovou událost**
 
-   Přihlaste se na [app.wink.travel](https://app.wink.travel), vyberte svůj účet a přejděte na záložku **Customizations**. Vložte své Measurement ID a API secret do polí **GA4** a uložte. To je vše — vaše integrace GA4 je nyní aktivní.
+   Vraťte se do svého GA4 účtu: Admin → Události → najděte `purchase` → přepněte **Označit jako klíčovou událost**. Tím se dokončené rezervace zobrazí ve vašem přehledu Konverzí.
 
-   <Aside type="note">
-   API secret je **pouze pro zápis**: po uložení již nikdy není znovu zobrazen. Při budoucích úpravách nechte pole secret prázdné, aby se zachovala hodnota, kterou jste již uložili.
-   </Aside>
+5. **Prohlédněte si svá data**
 
-5. **Označte `purchase` jako klíčovou událost**
-
-   Vraťte se do své GA4 vlastnosti: Admin → Události → najděte `purchase` → přepněte **Označit jako klíčovou událost**. Tím se dokončené rezervace zobrazí ve vašem přehledu Konverzí.
-
-6. **Prohlédněte si svá data**
-
-   Přihlaste se na [analytics.google.com](https://analytics.google.com) a uvidíte své rezervace, příjmy a trychtýř hosta — vše automaticky sledované přes Wink.
+   Přihlaste se do [analytics.google.com](https://analytics.google.com) a uvidíte své rezervace, příjmy a cestu hosta — vše automaticky sledované přes Wink.
 
 </Steps>
 
 <Aside type="note">
-Pro tuto integraci nemusíte na svých webových stránkách instalovat žádný sledovací kód. O vše se postará Wink. Vaše Measurement ID je cílové místo, kam se odesílají data o rezervacích, a váš API secret umožňuje Wink potvrdit dokončené rezervace na straně serveru.
+Pro tuto integraci není potřeba instalovat žádný sledovací kód na váš web. Wink vše zařídí — vaše Measurement ID je jednoduše cílové místo, kam se odesílají data o rezervacích.
 </Aside>
 
 <Aside type="tip">
-**GA4 a GTM lze používat společně.** Pokud také provozujete kontejner Google Tag Manager (například kontejner Sojern), můžete oba nastavit současně — již nejsou vzájemně vylučující. Viz [GTM Analytics Integration](/cs/guides/developers/gtm-dual-tagging).
+**GA4 a GTM lze používat současně.** Pokud také používáte Google Tag Manager (například kontejner Sojern), můžete je konfigurovat současně — nejsou vzájemně vylučující. Viz [GTM Analytics Integration](/cs/guides/general/gtm-integration).
+</Aside>
+
+---
+
+## Jak Wink používá vaše Measurement ID v rezervačním systému
+
+Vše probíhá **v prohlížeči hosta** — nedochází k exportu dat server-server a není potřeba API secret.
+
+- **Vaše GA4 se načítá na rezervačních stránkách.** Kdykoli host prohlíží vaši nabídku v rezervačním systému Wink, Wink načte vaše Measurement ID v jeho prohlížeči společně se svými vlastními analytikami, které čtou ze stejného sdíleného zdroje dat. Události prohlížení — vyhledávání, zobrazení pokojů, košík, pokladna — se přenášejí do vašeho GA4 účtu v reálném čase.
+- **Dokončená rezervace se spustí na stránce poděkování.** Když host dokončí platbu a přistane na potvrzovací stránce, událost `purchase` se spustí na straně klienta a nese plnou hodnotu rezervace, měnu a detaily pokoje.
+- **Přesměrování na platbu již neztratí prodej.** Platby kartou přesměrují prohlížeč hosta k poskytovateli platby a zpět, což by normálně přerušilo GA4 session v prohlížeči a způsobilo, že rezervace by vypadala jako nová návštěva „Direct“. Aby se tomu zabránilo, Wink přenáší identifikátory GA4 session přes návratovou URL a **znovu propojí původní session** na stránce poděkování *před* spuštěním události `purchase`. Dokončená rezervace je tedy přiřazena ke stejné návštěvě, se kterou host začal — není počítána jako nová session.
+
+<Aside type="note">
+Wink zajišťuje, že událost `purchase` není započítána vícekrát za jednu rezervaci, takže obnovení stránky nebo automatické přesměrování na detaily rezervace nezdvojnásobí prodej.
 </Aside>
 
 ---
 
 ## Co můžete sledovat
 
-Po připojení vaše GA4 vlastnost přijímá kompletní sadu Enhanced E-commerce událostí pro vaši nemovitost:
+Po připojení váš GA4 účet přijímá kompletní sadu Enhanced E-commerce událostí pro vaši nabídku:
 
 ### Objevování
 
-| Událost | Co znamená |
+| Událost | Význam |
 |---|---|
-| `view_item_list` | Host viděl vaši nemovitost ve vyhledávání nebo v seznamu kategorií |
-| `select_item` | Host klikl na vaši nemovitost ze seznamu |
-| `view_item` | Host si prohlédl detailní stránku hotelu |
+| `view_item_list` | Host viděl vaši nabídku ve vyhledávání nebo v seznamu kategorií |
+| `select_item` | Host klikl na vaši nabídku ze seznamu |
+| `view_item` | Host si prohlédl detail vaší nabídky |
 
 ### Zvažování
 
-| Událost | Co znamená |
+| Událost | Význam |
 |---|---|
-| `view_promotion` | Host viděl propagační nabídku vaší nemovitosti |
+| `view_promotion` | Host viděl propagační nabídku vaší nabídky |
 | `select_promotion` | Host klikl na propagační nabídku |
-| `add_to_wishlist` | Host si uložil vaši nemovitost do seznamu přání |
+| `add_to_wishlist` | Host si uložil vaši nabídku do seznamu přání |
 
-### Rezervační trychtýř
+### Rezervační proces
 
-| Událost | Co znamená |
+| Událost | Význam |
 |---|---|
 | `add_to_cart` | Host vybral pokoj nebo balíček |
 | `view_cart` | Host si prohlédl shrnutí rezervace |
@@ -105,23 +115,23 @@ Po připojení vaše GA4 vlastnost přijímá kompletní sadu Enhanced E-commerc
 | `purchase` | Host dokončil rezervaci |
 | `refund` | Rezervace byla zrušena a refundována |
 
-Všechny události zahrnují relevantní dimenze jako příjmy, měnu, typ pokoje a hodnotu rezervace — což vám poskytuje kompletní přehled o cestě hosta od prvního dojmu až po dokončenou rezervaci. Pro odemknutí dalších dimenzí na úrovni nemovitosti a pokoje, jako jsou `city_name`, `cancellation_policy`, `bed_type` a další, viz [Custom Dimensions in GA4](/cs/guides/developers/gtm-dual-tagging#custom-dimensions-in-ga4).
+Všechny události obsahují relevantní dimenze jako příjmy, měnu, typ pokoje a hodnotu rezervace — což vám poskytuje kompletní přehled o cestě hosta od prvního kontaktu až po dokončenou rezervaci. Pro odemknutí dalších dimenzí na úrovni nabídky a pokoje, jako jsou `city_name`, `cancellation_policy`, `bed_type` a další, viz [Custom Dimensions in GA4](/cs/guides/general/gtm-integration#custom-dimensions-in-ga4).
 
 ---
 
-## Cross-Domain Tracking (Pokročilé)
+## Sledování napříč doménami (pokročilé)
 
-Standardní integrace výše sleduje vše, co se děje v rámci Wink. Pokud však chcete sledovat hosty od vašeho vlastního webu až po dokončení rezervace na Wink — a správně přiřadit původní zdroj návštěvnosti (Google Ads, e-mailové kampaně, organické vyhledávání atd.) — je potřeba provést ještě jeden krok na obou stranách.
+Standardní integrace výše sleduje vše, co se děje v rámci Wink. Pokud však chcete sledovat hosty od vašeho vlastního webu až po dokončení rezervace na Wink — a správně přiřadit původní zdroj návštěvnosti (Google Ads, e-mailové kampaně, organické vyhledávání atd.) — je potřeba na každé straně provést ještě jeden krok.
 
 <Aside type="caution">
-Tato sekce platí pouze pokud máte GA4 nainstalované na svém vlastním webu. Pokud GA4 na svém webu nepoužíváte, standardní integrace výše je vše, co potřebujete.
+Tato sekce platí pouze pokud máte GA4 nainstalované na svém vlastním webu. Pokud GA4 na svém webu nepoužíváte, standardní integrace výše vám stačí.
 </Aside>
 
 ### Proč je to důležité
 
-Bez cross-domain trackingu se host, který nejprve navštíví váš web a poté provede rezervaci na Wink, zobrazí v GA4 jako **Direct** relace bez spojení s jeho předchozí návštěvou. Jakékoliv kliknutí z Google Ads, e-mailové kampaně nebo organické vyhledávání, které vedly k rezervaci, tak nezískají žádné uznání.
+Bez sledování napříč doménami se host, který nejprve navštíví váš web a poté provede rezervaci na Wink, zobrazí v GA4 jako **Direct** session bez spojení s předchozí návštěvou. Žádné kliknutí z Google Ads, e-mailové kampaně nebo organického vyhledávání, které vedly k rezervaci, nebude správně připsáno.
 
-S nastaveným cross-domain trackingem vidíte kompletní cestu hosta:
+Se správně nastaveným sledováním napříč doménami uvidíte kompletní cestu hosta:
 
 ```
 google.com (placená reklama)
@@ -130,24 +140,24 @@ váš web (host prohlíží pokoje)
        ↓
 wink.travel (host vybere pokoj a rezervuje)
        ↓
-purchase správně přiřazeno k původnímu kliknutí Google Ads
+purchase správně přiřazeno k původnímu kliknutí z Google Ads
 ```
 
-### Co musíte udělat: Vy
+### Co je potřeba udělat: Vy
 
-Nastavte svou GA4 vlastnost tak, aby rozpoznala `wink.travel` jako součást vaší vlastní domény, nikoli jako externí odkaz. To říká GA4, aby spojila obě relace do jedné kontinuální cesty hosta.
+Nakonfigurujte svůj GA4 účet tak, aby rozpoznal `wink.travel` jako součást vaší vlastní domény, nikoli jako externí odkaz. To řekne GA4, aby spojil obě session do jedné kontinuální cesty hosta.
 
 <Steps>
 1. GA4 Admin → Data Streams → váš stream
-2. Nastavení tagu → **Nastavte své domény**
+2. Nastavení tagu → **Nakonfigurujte své domény**
 3. Přidejte `wink.travel` jako propojenou doménu
 4. Uložte
 </Steps>
 
-### Co musí udělat Wink
+### Co je potřeba udělat: Wink
 
-Kontaktujte [Wink Support](https://app.wink.travel) a poskytněte svou doménu webu (např. `yourhotel.com`). Wink přidá vaši doménu do seznamu vyloučení odkazů v GA4 vlastnosti Wink. Tím se zabrání tomu, aby váš web byl zaznamenán jako zdroj odkazu, což by jinak přepsalo původní atribuci hosta a zahájilo novou relaci.
+Kontaktujte [Wink Support](https://app.wink.travel) a poskytněte doménu svého webu (např. `yourhotel.com`). Wink přidá vaši doménu do seznamu vyloučení odkazů v GA4 účtu Wink. Tím se zabrání tomu, aby váš web byl zaznamenán jako zdroj odkazu, což by jinak přepsalo původní přiřazení hosta a spustilo novou session.
 
 <Aside type="tip">
-Standardní integrace výše je dostačující pro většinu nemovitostí a poskytuje okamžitý přehled o rezervacích a příjmech na Wink. Cross-domain tracking je pokročilá možnost, kterou stojí za to nastavit, jakmile budete mít s daty GA4 větší zkušenosti a budete chtít hlubší přehled o atribuci.
+Standardní integrace výše je dostačující pro většinu nabídek a poskytuje okamžitý přehled o rezervacích a příjmech na Wink. Sledování napříč doménami je pokročilá možnost, kterou stojí za to nastavit, jakmile budete mít s daty GA4 větší zkušenosti a budete chtít hlubší přehled o přiřazení.
 </Aside>

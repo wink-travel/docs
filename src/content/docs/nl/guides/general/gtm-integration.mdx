@@ -7,7 +7,7 @@ sidebar:
 
 import { Aside, Steps } from '@astrojs/starlight/components';
 
-U kunt **elke** Google Tag Manager (GTM) container koppelen aan Wink door de **GTM Container ID** in te voeren in het Wink-portaal. Zodra deze is gekoppeld, wordt uw container automatisch geladen voor uw accommodatie en leest deze direct de boekingsevenementen van Wink — dit dekt de volledige gastreis af van zoeken tot voltooide boeking. Een veelvoorkomend gebruik is een **Sojern** container voor retargeting en advertenties, maar elke GTM-container werkt op dezelfde manier.
+U kunt **elke** Google Tag Manager (GTM) container koppelen aan Wink door de **GTM Container ID** in te voeren in het Wink-portaal. Zodra deze is gekoppeld, wordt uw container automatisch geladen voor uw accommodatie en leest deze direct de boekingsevenementen van Wink — dit beslaat de volledige gastreis van zoeken tot voltooide boeking. Een veelvoorkomend gebruik is een **Sojern** container voor retargeting en advertenties, maar elke GTM-container werkt op dezelfde manier.
 
 <Aside type="tip">
 Dit gaat ervan uit dat u al een GTM Container ID heeft (formaat `GTM-XXXXXXX`). Als uw container afkomstig is van een partner zoals Sojern, vraag dan specifiek uw accountmanager om de **GTM Container ID** — deze is anders dan een pixel- of tag-ID. Nieuw bij Sojern? Bezoek [sojern.com/contact](https://www.sojern.com/contact) om te beginnen.
@@ -25,15 +25,11 @@ Dit gaat ervan uit dat u al een GTM Container ID heeft (formaat `GTM-XXXXXXX`). 
 
 2. **Voer Het In in het Wink-portaal**
 
-   Log in op [app.wink.travel](https://app.wink.travel), selecteer uw account en ga naar het tabblad **Aanpassingen**. Plak uw GTM Container ID in het veld **GTM** en sla op. Uw integratie is nu actief.
+   Log in op [app.wink.travel](https://app.wink.travel), selecteer uw account en open uw aanpassingsinstellingen. Plak in de sectie **Analytics & integraties** uw GTM Container ID in het veld **GTM Container ID** en sla op. Uw integratie is nu actief.
 
-3. **(Optioneel) Voeg een GA4 Measurement ID + API Secret toe voor Server-Side Aankopen**
+3. **Bevestig bij Uw Provider**
 
-   GTM-containers draaien volledig in de browser van de gast, dus een voltooide boeking kan gemist worden als de gast het tabblad sluit tijdens de betalingsomleiding. Als uw container een **GA4-property** laadt en u wilt dat voltooide boekingen betrouwbaar worden geregistreerd, voer dan ook de **Measurement ID** en **Measurement Protocol API secret** van die GA4 in bij de GTM-sectie. Wink stuurt dan de `purchase` voor die property **server-side**, precies zoals beschreven in de [GA4 Analytics-integratie](/nl/guides/developers/ga4-dual-tagging) handleiding. Laat deze velden leeg als u alleen tracking in de browser nodig heeft.
-
-4. **Bevestig bij Uw Provider**
-
-   Als uw container van een partner zoals Sojern komt, laat uw accountmanager weten dat de integratie actief is. Zij kunnen aan hun kant verifiëren dat tags correct afgevuurd worden op `wink.travel` voor uw accommodatie en dat data in uw account binnenkomt.
+   Als uw container van een partner zoals Sojern komt, laat uw accountmanager weten dat de integratie actief is. Zij kunnen aan hun kant verifiëren dat tags correct afgevuurd worden op `wink.travel` voor uw accommodatie en dat gegevens in uw account binnenkomen.
 
 </Steps>
 
@@ -49,12 +45,12 @@ Dit werkt voor **elke** GTM Container ID — Sojern is slechts een veelvoorkomen
 
 Voor transparantie, dit is wat Wink configureert om deze integratie te laten werken:
 
-- **Een GTM Container ID-veld** is beschikbaar in het tabblad Aanpassingen van uw Wink-portaal. Wanneer u uw Container ID invoert, valideert Wink het formaat (`GTM-XXXXXXX`) en slaat het veilig op bij uw accommodatie.
-- **Op elke pagina waar uw accommodatie actief is** op Wink, wordt uw container direct in de pagina geïnjecteerd — waarbij Wink's eigen `window.dataLayer` wordt gedeeld — zodat deze samen met Wink's eigen container laadt zonder afhankelijkheid van extra configuratie. Dit gebeurt automatisch, zonder dat het Wink-team per accommodatie iets hoeft te doen.
-- **Uw container wordt asynchroon geladen**, zodat dit de laadsnelheid van de pagina voor uw gasten niet beïnvloedt.
+- **Een GTM Container ID-veld** is beschikbaar in de sectie **Analytics & integraties** van uw aanpassingsinstellingen. Wanneer u uw Container ID invoert, valideert Wink het formaat (`GTM-XXXXXXX`) en slaat het veilig op bij uw accommodatie.
+- **Op elke pagina waar uw accommodatie actief is** op Wink wordt uw container direct in de pagina geïnjecteerd — waarbij Wink's eigen `window.dataLayer` wordt gedeeld — zodat het naast Wink's eigen container laadt zonder afhankelijkheid van extra configuratie. Dit gebeurt automatisch, zonder dat het Wink-team per accommodatie hoeft te werken.
+- **Uw container wordt asynchroon geladen**, zodat dit de laadtijd van pagina's voor uw gasten niet beïnvloedt.
 - **Wink's eigen tracking en uw container draaien parallel**, waarbij ze lezen uit dezelfde gedeelde `dataLayer`. Elk boekingsevenement dat Wink volgt, is tegelijkertijd beschikbaar voor uw container.
-- **Wanneer uw accommodatie niet wordt bekeken** — bijvoorbeeld als een gast een ander hotel op Wink bekijkt — wordt uw container niet geladen, zodat deze alleen data ontvangt die relevant is voor uw accommodatie.
-- **Als u een GA4 Measurement ID + API secret heeft opgegeven** (stap 3 hierboven), wordt de `purchase` voor voltooide boekingen ook **server-side** verzonden via het GA4 Measurement Protocol, zodat een verkoop wordt geregistreerd, zelfs als de gast nooit terugkeert naar de bevestigingspagina.
+- **Wanneer uw accommodatie niet wordt bekeken** — bijvoorbeeld wanneer een gast een ander hotel op Wink bekijkt — wordt uw container niet geladen, zodat het alleen gegevens ontvangt die relevant zijn voor uw accommodatie.
+- **De voltooide boeking (`purchase`) wordt in de browser afgevuurd op de bedankpagina.** Een GTM Container ID is een black box — Wink kan niet aannemen welke tags erin zitten — dus Wink roept Google nooit namens u aan vanaf zijn servers. In plaats daarvan ontvangt elke GA4- of conversietag in uw container de `purchase` client-side, precies zoals elk ander boekingsevenement. Omdat de betalingsprovider de browser van de gast weg- en terugstuurt, herstelt Wink de analytics-sessie die door de redirect werd onderbroken **voordat** `purchase` wordt afgevuurd, zodat de verkoop wordt toegeschreven aan het oorspronkelijke bezoek van de gast en niet als een nieuwe sessie wordt geteld.
 
 ---
 
@@ -83,16 +79,16 @@ Vertrouw er niet op dat ecommerce-eigenschappen tussen events blijven bestaan. L
 
 Deze events worden automatisch afgevuurd terwijl een gast door de boekingsfunnel beweegt. Configureer uw GTM-triggers als **Custom Event** triggers die overeenkomen met de onderstaande eventnamen.
 
-| Stap | Event | Wanneer het afgevuurd wordt |
-|------|-------|-----------------------------|
+| Stap | Event | Wanneer het afvuurt |
+|------|-------|---------------------|
 | 1 | `view_item_list` | Hotelinventarislijst of raster wordt geladen |
 | 2 | `view_item` | Gast bekijkt een specifieke accommodatiepagina |
 | 3 | `add_to_cart` | Gast voegt een kamer toe aan de winkelwagen |
-| 4 | `begin_checkout` | Checkout / betaalpagina wordt geladen |
+| 4 | `begin_checkout` | Checkout-/betalingspagina wordt geladen |
 | 5 | `add_payment_info` | Gast selecteert een betaalmethode |
 | 6 | `login` | Gast logt in via SSO |
-| 7 | `purchase` | Boekingsbevestiging |
-| 8 | `refund` | Boekingsannulering |
+| 7 | `purchase` | Boeking is bevestigd |
+| 8 | `refund` | Boeking is geannuleerd |
 
 ---
 
@@ -149,7 +145,7 @@ Wordt afgevuurd wanneer een gast een kamer aan de winkelwagen toevoegt.
 
 #### `begin_checkout`
 
-Wordt afgevuurd wanneer de checkout / betaalpagina wordt geladen.
+Wordt afgevuurd wanneer de checkout-/betalingspagina wordt geladen.
 
 ```json
 {
@@ -184,7 +180,7 @@ Wordt afgevuurd wanneer de gast een betaalmethode selecteert of bevestigt.
 }
 ```
 
-`payment_type` wordt gevuld met het type betaalacquirer. `coupon` is alleen aanwezig wanneer een kortingscode is toegepast.
+`payment_type` wordt gevuld met het type betalingsacquirer. `coupon` is alleen aanwezig wanneer een kortingscode is toegepast.
 
 ---
 
@@ -285,7 +281,7 @@ Alle events die een `items` array bevatten, delen hetzelfde item-schema. Elke ei
 Deze velden worden native begrepen door GA4 en verschijnen in standaard ecommerce-rapporten zonder extra configuratie.
 
 | Eigenschap | Type | Verplicht | Beschrijving |
-|------------|------|-----------|-------------|
+|------------|------|-----------|--------------|
 | `item_id` | string | Ja | Unieke identificatie voor de kamer of het product |
 | `item_name` | string | — | Naam van de kamer of het product |
 | `affiliation` | string | — | Affiliate- of verkopersnaam |
@@ -310,7 +306,7 @@ Deze velden worden native begrepen door GA4 en verschijnen in standaard ecommerc
 Deze parameters bevatten Wink-specifieke boekingscontext. GA4 toont ze niet automatisch in rapporten — u moet elk van deze registreren als een **item-scoped custom dimension** in uw GA4-property voordat ze verschijnen in exploraties of standaardrapporten. Zie [Aangepaste dimensies in GA4](#custom-dimensions-in-ga4) hieronder voor instructies.
 
 | Eigenschap | Type | Beschrijving |
-|------------|------|-------------|
+|------------|------|--------------|
 | `property_id` | string | Wink accommodatie-identificatie |
 | `property_name` | string | Weergavenaam van de accommodatie |
 | `property_brand` | string | Merk waartoe de accommodatie behoort |
@@ -329,14 +325,14 @@ Deze parameters bevatten Wink-specifieke boekingscontext. GA4 toont ze niet auto
 | `num_perks` | number | Aantal extra's inbegrepen bij het tarief |
 | `room_location` | string | Locatiebeschrijving van de kamer (bijv. `Overwater`, `Garden`) |
 | `room_view` | string | Uitzichtbeschrijving van de kamer (bijv. `Ocean`, `City`) |
-| `room_classification` | string | Kamerclassificatie of niveau (bijv. `Suite`, `Standard`) |
+| `room_classification` | string | Kamerclassificatie of -niveau (bijv. `Suite`, `Standard`) |
 | `bed_type` | string | Bedconfiguratie van de kamer (bijv. `King`, `Twin`) |
 
 ---
 
 ### Aangepaste dimensies in GA4
 
-GA4 negeert aangepaste item-parameters in rapporten totdat u ze expliciet registreert als item-scoped custom dimensions. U hoeft alleen de parameters te registreren die u in rapporten wilt gebruiken — niet alle 20.
+GA4 negeert aangepaste itemparameters in rapporten totdat u ze expliciet registreert als item-scoped custom dimensions. U hoeft alleen de parameters te registreren die u in rapporten wilt gebruiken — niet alle 20.
 
 <Steps>
 
@@ -362,20 +358,20 @@ GA4 negeert aangepaste item-parameters in rapporten totdat u ze expliciet regist
 </Steps>
 
 <Aside type="note">
-Aangepaste dimensies kunnen tot 24 uur nodig hebben om te verschijnen in GA4-rapporten na registratie. Historische data die vóór registratie is verzameld, wordt niet achteraf toegevoegd.
+Aangepaste dimensies kunnen tot 24 uur nodig hebben voordat ze in GA4-rapporten verschijnen na registratie. Historische data die vóór registratie is verzameld, wordt niet achteraf toegevoegd.
 
-GA4 staat maximaal 50 item-scoped custom dimensions toe per standaardproperty (360-properties staan meer toe).
+GA4 staat maximaal 50 item-scoped custom dimensions toe per standaard property (360-properties hebben een hoger limiet).
 </Aside>
 
-Gebruik de volgende tabel als referentie bij het aanmaken van aangepaste dimensies. De waarde van **Eventparameter** moet exact overeenkomen — GA4 is hoofdlettergevoelig.
+Gebruik onderstaande tabel als referentie bij het aanmaken van aangepaste dimensies. De waarde van **Eventparameter** moet exact overeenkomen — GA4 is hoofdlettergevoelig.
 
 | Dimensienaam | Eventparameter | Type |
 |--------------|----------------|------|
-| Accommodatie-ID | `property_id` | Tekst |
-| Accommodatienaam | `property_name` | Tekst |
-| Accommodatiemerk | `property_brand` | Tekst |
-| Accommodatieketen | `property_chain` | Tekst |
-| Accommodatie URL-naam | `property_url_name` | Tekst |
+| Property ID | `property_id` | Tekst |
+| Property naam | `property_name` | Tekst |
+| Property merk | `property_brand` | Tekst |
+| Property keten | `property_chain` | Tekst |
+| Property URL-naam | `property_url_name` | Tekst |
 | Stadnaam | `city_name` | Tekst |
 | Landcode | `country_code` | Tekst |
 | Incheckdatum | `start_date` | Tekst |
@@ -383,9 +379,9 @@ Gebruik de volgende tabel als referentie bij het aanmaken van aangepaste dimensi
 | Aantal volwassenen | `num_adults` | Nummer |
 | Aantal kinderen | `num_children` | Nummer |
 | Annuleringsbeleid | `cancellation_policy` | Tekst |
-| Tariefplan-ID | `rate_plan_id` | Tekst |
-| Kamertarief-ID | `room_rate_id` | Tekst |
-| Kamertariefnaam | `room_rate_name` | Tekst |
+| Tariefplan ID | `rate_plan_id` | Tekst |
+| Kamertarief ID | `room_rate_id` | Tekst |
+| Kamertarief naam | `room_rate_name` | Tekst |
 | Aantal extra's | `num_perks` | Nummer |
 | Kamerlocatie | `room_location` | Tekst |
 | Kameruitzicht | `room_view` | Tekst |
@@ -445,7 +441,7 @@ De volgende events zijn beschikbaar in de Wink dataLayer maar maken geen deel ui
 }
 ```
 
-Bij dit event wordt geen `ecommerce` payload meegegeven.
+Er wordt geen `ecommerce` payload meegeleverd met dit event.
 
 #### `view_promotion`
 
@@ -678,7 +674,7 @@ Dit is een aangepast Wink-event — geen onderdeel van de standaard GA4-eventset
 | `os` | Gedetecteerd besturingssysteem — `Windows`, `MacOS`, `Linux`, `UNIX` |
 | `path` | Huidige paginapad |
 | `title` | Huidige paginatitel |
-| `userId` | Geauthenticeerde gebruikersidentificatie (weggelaten als niet ingelogd) |
+| `userId` | Geauthentificeerde gebruikersidentificatie (weggelaten als niet ingelogd) |
 | `startDate` | Incheckdatum van de huidige zoeksessie |
 | `endDate` | Uitcheckdatum van de huidige zoeksessie |
 | `guests` | Aantal gasten van de huidige zoeksessie |

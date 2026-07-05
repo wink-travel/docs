@@ -178,7 +178,6 @@ export default defineConfig({
         label: 'Guides',
         items: [
           { label: 'For Affiliates', collapsed: true, items: [{ autogenerate: { directory: 'guides/affiliates' } }] },
-          { label: 'For Developers', collapsed: true, items: [{ autogenerate: { directory: 'guides/developers' } }] },
           { label: 'For Hoteliers', collapsed: true, items: [{ autogenerate: { directory: 'guides/hoteliers' } }] },
           { label: 'For Integrators', collapsed: true, items: [{ autogenerate: { directory: 'guides/integrators' } }] },
           { label: 'General', collapsed: true, items: [{ autogenerate: { directory: 'guides/general' } }] },

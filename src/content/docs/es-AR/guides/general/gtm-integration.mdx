@@ -25,15 +25,11 @@ Esto asume que ya tienes un ID de Contenedor GTM (formato `GTM-XXXXXXX`). Si tu 
 
 2. **Ingresa el ID en el Portal de Wink**
 
-   Inicia sesión en [app.wink.travel](https://app.wink.travel), selecciona tu cuenta y ve a la pestaña **Personalizaciones**. Pega tu ID de Contenedor GTM en el campo **GTM** y guarda. Tu integración ya está activa.
+   Inicia sesión en [app.wink.travel](https://app.wink.travel), selecciona tu cuenta y abre la configuración de personalización. En la sección **Analytics & integrations**, pega tu ID de Contenedor GTM en el campo **GTM Container ID** y guarda. Tu integración ya está activa.
 
-3. **(Opcional) Agrega un ID de Medición GA4 + Secreto API para Compra del Lado del Servidor**
+3. **Confirma con tu Proveedor**
 
-   Los contenedores GTM se ejecutan completamente en el navegador del huésped, por lo que una reserva completada puede perderse si el huésped cierra la pestaña durante la redirección de pago. Si tu contenedor carga una **propiedad GA4** y quieres que las reservas completadas se registren de forma confiable, también ingresa el **ID de Medición** y el **Secreto de Protocolo de Medición API** de esa GA4 en la sección GTM. Wink enviará entonces el evento `purchase` para esa propiedad **del lado del servidor**, exactamente como se describe en la guía de [Integración de Analytics GA4](/es-AR/guides/developers/ga4-dual-tagging). Déjalos en blanco si solo necesitas el seguimiento en el navegador.
-
-4. **Confirma con tu Proveedor**
-
-   Si tu contenedor proviene de un socio como Sojern, avisa a tu gerente de cuenta que la integración está activa. Ellos pueden verificar desde su lado que las etiquetas se disparan correctamente en `wink.travel` para tu propiedad y que los datos fluyen a tu cuenta.
+   Si tu contenedor proviene de un socio como Sojern, avisa a tu gerente de cuenta que la integración está activa. Ellos pueden verificar desde su lado que las etiquetas se disparan correctamente en `wink.travel` para tu propiedad y que los datos fluyen hacia tu cuenta.
 
 </Steps>
 
@@ -49,12 +45,12 @@ Esto funciona para **cualquier** ID de Contenedor GTM — Sojern es solo un ejem
 
 Para mayor transparencia, esto es lo que Wink configura para que esta integración funcione:
 
-- **Un campo para el ID de Contenedor GTM** está disponible en la pestaña Personalizaciones de tu portal Wink. Cuando ingresas tu ID de Contenedor, Wink valida el formato (`GTM-XXXXXXX`) y lo almacena de forma segura asociado a tu propiedad.
-- **En cada página donde tu propiedad está activa** en Wink, tu contenedor se inyecta directamente en la página — compartiendo el propio `window.dataLayer` de Wink — para que se cargue junto con el contenedor propio de Wink sin depender de ninguna configuración adicional. Esto ocurre automáticamente, sin trabajo por propiedad por parte del equipo de Wink.
+- **Un campo para el ID de Contenedor GTM** está disponible en la sección **Analytics & integrations** de tu configuración de personalización. Cuando ingresas tu ID de Contenedor, Wink valida el formato (`GTM-XXXXXXX`) y lo almacena de forma segura asociado a tu propiedad.
+- **En cada página donde tu propiedad está activa** en Wink, tu contenedor se inyecta directamente en la página — compartiendo el propio `window.dataLayer` de Wink — para que se cargue junto con el contenedor propio de Wink sin depender de ninguna configuración adicional. Esto sucede automáticamente, sin trabajo por propiedad por parte del equipo de Wink.
 - **Tu contenedor se carga de forma asíncrona**, por lo que no afecta el rendimiento de carga de página para tus huéspedes.
-- **El seguimiento propio de Wink y tu contenedor se ejecutan en paralelo**, leyendo del mismo `dataLayer` compartido. Cada evento de reserva que Wink rastrea está disponible simultáneamente para tu contenedor.
+- **El seguimiento propio de Wink y tu contenedor corren en paralelo**, leyendo del mismo `dataLayer` compartido. Cada evento de reserva que Wink rastrea está disponible simultáneamente para tu contenedor.
 - **Cuando tu propiedad no está siendo vista** — por ejemplo, cuando un huésped navega otro hotel en Wink — tu contenedor no se carga, por lo que solo recibe datos relevantes para tu propiedad.
-- **Si proporcionaste un ID de Medición GA4 + secreto API** (paso 3 arriba), el evento `purchase` para reservas completadas se envía adicionalmente **del lado del servidor** vía el Protocolo de Medición GA4, para que una venta se registre incluso si el huésped nunca vuelve a la página de confirmación.
+- **La reserva completada (`purchase`) se dispara en el navegador en la página de agradecimiento.** Un ID de Contenedor GTM es una caja negra — Wink no puede asumir qué etiquetas contiene — por eso Wink nunca llama a Google en tu nombre desde sus servidores. En cambio, cualquier etiqueta GA4 o de conversión que esté en tu contenedor recibe el evento `purchase` del lado del cliente, igual que cualquier otro evento de reserva. Debido a que el proveedor de pago redirige el navegador del huésped fuera y de vuelta, Wink reconecta la sesión de analytics que la redirección interrumpió **antes** de disparar `purchase`, para que la venta se atribuya a la visita original del huésped y no se cuente como una sesión nueva.
 
 ---
 
@@ -74,7 +70,7 @@ dataLayer.push({ ecommerce: null });   // limpia evento previo
 dataLayer.push({ event: '...', ecommerce: { ... } });
 ```
 
-No confíes en que las propiedades ecommerce persistan entre eventos. Siempre léelas al momento del disparo dentro del mismo evento.
+No confíes en que las propiedades ecommerce persistan entre eventos. Siempre léelas al momento del disparador dentro del mismo evento.
 </Aside>
 
 ---
@@ -91,8 +87,8 @@ Estos eventos se disparan automáticamente a medida que un huésped avanza por e
 | 4 | `begin_checkout` | Se carga la página de pago / checkout |
 | 5 | `add_payment_info` | El huésped selecciona un método de pago |
 | 6 | `login` | El huésped se autentica vía SSO |
-| 7 | `purchase` | Se confirma la reserva |
-| 8 | `refund` | Se cancela la reserva |
+| 7 | `purchase` | La reserva se confirma |
+| 8 | `refund` | La reserva se cancela |
 
 ---
 
@@ -205,7 +201,7 @@ Se dispara cuando un huésped se autentica vía inicio de sesión único.
 
 #### `purchase`
 
-Se dispara cuando se confirma una reserva.
+Se dispara cuando una reserva se confirma.
 
 ```json
 {
@@ -255,7 +251,7 @@ Se dispara cuando se confirma una reserva.
 
 #### `refund`
 
-Se dispara cuando se cancela una reserva.
+Se dispara cuando una reserva se cancela.
 
 ```json
 {
@@ -280,19 +276,19 @@ Se dispara cuando se cancela una reserva.
 
 Todos los eventos que incluyen un arreglo `items` comparten el mismo esquema de ítem. Cada propiedad es opcional a menos que se indique como requerida.
 
-#### Campos estándar GA4
+#### Campos estándar de GA4
 
-Estos campos son entendidos nativamente por GA4 y aparecen en reportes ecommerce estándar sin configuración adicional.
+Estos campos son entendidos nativamente por GA4 y aparecen en los reportes estándar de ecommerce sin configuración adicional.
 
 | Propiedad | Tipo | Requerido | Descripción |
-|----------|------|----------|-------------|
+|-----------|------|-----------|-------------|
 | `item_id` | string | Sí | Identificador único para la habitación o producto |
 | `item_name` | string | — | Nombre de la habitación o producto |
 | `affiliation` | string | — | Nombre del afiliado o vendedor |
 | `coupon` | string | — | Código de cupón aplicado al ítem |
 | `currency` | string | — | Código de moneda ISO 4217 (ej. `USD`) |
 | `creative_name` | string | — | Nombre creativo usado en una promoción |
-| `creative_slot` | string | — | Posición del slot de la promoción creativa |
+| `creative_slot` | string | — | Posición del slot de la creatividad promocional |
 | `discount` | number | — | Monto de descuento aplicado |
 | `index` | number | — | Posición en la lista (base 1) |
 | `item_brand` | string | — | Nombre del hotel o marca |
@@ -310,8 +306,8 @@ Estos campos son entendidos nativamente por GA4 y aparecen en reportes ecommerce
 Estos parámetros llevan contexto específico de reserva de Wink. GA4 no los muestra automáticamente en reportes — debes registrar cada uno como una **dimensión personalizada a nivel ítem** en tu propiedad GA4 antes de que aparezcan en exploraciones o reportes estándar. Consulta [Dimensiones Personalizadas en GA4](#custom-dimensions-in-ga4) más abajo para instrucciones.
 
 | Propiedad | Tipo | Descripción |
-|----------|------|-------------|
-| `property_id` | string | Identificador de propiedad Wink |
+|-----------|------|-------------|
+| `property_id` | string | Identificador de propiedad en Wink |
 | `property_name` | string | Nombre visible de la propiedad |
 | `property_brand` | string | Marca a la que pertenece la propiedad |
 | `property_chain` | string | Cadena a la que pertenece la propiedad |
@@ -327,8 +323,8 @@ Estos parámetros llevan contexto específico de reserva de Wink. GA4 no los mue
 | `room_rate_id` | string | Identificador de la tarifa específica de la habitación |
 | `room_rate_name` | string | Nombre visible de la tarifa de habitación |
 | `num_perks` | number | Cantidad de beneficios incluidos con la tarifa |
-| `room_location` | string | Descriptor de ubicación de la habitación (ej. `Overwater`, `Garden`) |
-| `room_view` | string | Descriptor de vista de la habitación (ej. `Ocean`, `City`) |
+| `room_location` | string | Descripción de la ubicación de la habitación (ej. `Overwater`, `Garden`) |
+| `room_view` | string | Descripción de la vista de la habitación (ej. `Ocean`, `City`) |
 | `room_classification` | string | Clasificación o categoría de la habitación (ej. `Suite`, `Standard`) |
 | `bed_type` | string | Configuración de camas de la habitación (ej. `King`, `Twin`) |
 
@@ -336,28 +332,28 @@ Estos parámetros llevan contexto específico de reserva de Wink. GA4 no los mue
 
 ### Dimensiones Personalizadas en GA4
 
-GA4 ignora los parámetros personalizados a nivel ítem en reportes hasta que los registras explícitamente como dimensiones personalizadas a nivel ítem. Solo necesitas registrar los parámetros que planeas usar en reportes — no es necesario registrar los 20.
+GA4 ignora los parámetros personalizados a nivel ítem en los reportes hasta que los registras explícitamente como dimensiones personalizadas a nivel ítem. Solo necesitas registrar los parámetros que planeas usar en reportes — no es necesario registrar los 20.
 
 <Steps>
 
 1. **Abre Definiciones Personalizadas**
 
-   En GA4, ve a **Administrador** (icono de engranaje abajo a la izquierda) → selecciona tu propiedad → **Visualización de datos** → **Definiciones personalizadas**.
+   En GA4, ve a **Admin** (icono de engranaje abajo a la izquierda) → selecciona tu propiedad → **Data display** → **Custom definitions**.
 
 2. **Crea una nueva dimensión personalizada**
 
-   Haz clic en **Crear dimensiones personalizadas**.
+   Haz clic en **Create custom dimensions**.
 
 3. **Completa los detalles de la dimensión**
 
-   - **Nombre de la dimensión** — la etiqueta legible que aparece en los reportes GA4 (ver tabla abajo)
-   - **Ámbito** — selecciona **Ítem**
-   - **Parámetro de evento** — el nombre exacto del parámetro tal como aparece en el dataLayer (ver tabla abajo)
-   - **Descripción** — opcional pero recomendado
+   - **Dimension name** — la etiqueta legible que aparece en los reportes GA4 (ver tabla abajo)
+   - **Scope** — selecciona **Item**
+   - **Event parameter** — el nombre exacto del parámetro tal como aparece en el dataLayer (ver tabla abajo)
+   - **Description** — opcional pero recomendado
 
 4. **Guarda y repite**
 
-   Haz clic en **Guardar**, luego repite para cada parámetro que quieras rastrear.
+   Haz clic en **Save**, luego repite para cada parámetro que quieras rastrear.
 
 </Steps>
 
@@ -367,30 +363,30 @@ Las dimensiones personalizadas pueden tardar hasta 24 horas en comenzar a aparec
 GA4 permite hasta 50 dimensiones personalizadas a nivel ítem por propiedad en propiedades estándar (las propiedades 360 permiten más).
 </Aside>
 
-Usa la siguiente tabla como referencia al crear dimensiones personalizadas. El valor de **Parámetro de evento** debe coincidir exactamente — GA4 distingue mayúsculas y minúsculas.
+Usa la siguiente tabla como referencia al crear dimensiones personalizadas. El valor de **Event parameter** debe coincidir exactamente — GA4 distingue mayúsculas y minúsculas.
 
 | Nombre de dimensión | Parámetro de evento | Tipo |
-|---------------------|--------------------|------|
-| ID de propiedad | `property_id` | Texto |
-| Nombre de propiedad | `property_name` | Texto |
-| Marca de propiedad | `property_brand` | Texto |
-| Cadena de propiedad | `property_chain` | Texto |
-| Nombre URL de propiedad | `property_url_name` | Texto |
-| Nombre de ciudad | `city_name` | Texto |
-| Código de país | `country_code` | Texto |
-| Fecha de check-in | `start_date` | Texto |
-| Fecha de check-out | `end_date` | Texto |
-| Cantidad de adultos | `num_adults` | Número |
-| Cantidad de niños | `num_children` | Número |
-| Política de cancelación | `cancellation_policy` | Texto |
-| ID de plan tarifario | `rate_plan_id` | Texto |
-| ID de tarifa de habitación | `room_rate_id` | Texto |
-| Nombre de tarifa de habitación | `room_rate_name` | Texto |
-| Cantidad de beneficios | `num_perks` | Número |
-| Ubicación de habitación | `room_location` | Texto |
-| Vista de habitación | `room_view` | Texto |
-| Clasificación de habitación | `room_classification` | Texto |
-| Tipo de cama | `bed_type` | Texto |
+|---------------------|---------------------|------|
+| Property ID | `property_id` | Texto |
+| Property name | `property_name` | Texto |
+| Property brand | `property_brand` | Texto |
+| Property chain | `property_chain` | Texto |
+| Property URL name | `property_url_name` | Texto |
+| City name | `city_name` | Texto |
+| Country code | `country_code` | Texto |
+| Check-in date | `start_date` | Texto |
+| Check-out date | `end_date` | Texto |
+| Number of adults | `num_adults` | Número |
+| Number of children | `num_children` | Número |
+| Cancellation policy | `cancellation_policy` | Texto |
+| Rate plan ID | `rate_plan_id` | Texto |
+| Room rate ID | `room_rate_id` | Texto |
+| Room rate name | `room_rate_name` | Texto |
+| Number of perks | `num_perks` | Número |
+| Room location | `room_location` | Texto |
+| Room view | `room_view` | Texto |
+| Room classification | `room_classification` | Texto |
+| Bed type | `bed_type` | Texto |
 
 ---
 
@@ -445,7 +441,7 @@ Los siguientes eventos están disponibles en el dataLayer de Wink pero no forman
 }
 ```
 
-No se incluye carga útil `ecommerce` con este evento.
+Este evento no incluye carga útil `ecommerce`.
 
 #### `view_promotion`
 
@@ -672,9 +668,9 @@ Este es un evento personalizado de Wink — no forma parte del conjunto estánda
 ```
 
 | Propiedad | Descripción |
-|----------|-------------|
+|-----------|-------------|
 | `device` | Tipo de dispositivo detectado — `Desktop`, `Android`, `iPhone`, `iPad` o similar |
-| `deviceAgent` | Cadena raw del user agent |
+| `deviceAgent` | Cadena cruda del user agent |
 | `os` | Sistema operativo detectado — `Windows`, `MacOS`, `Linux`, `UNIX` |
 | `path` | Ruta actual de la página |
 | `title` | Título actual de la página |
