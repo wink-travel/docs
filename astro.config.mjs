@@ -12,12 +12,12 @@ import { buildRedirects } from './scripts/build-redirects.mjs';
 // rendered tree is Audience › Resource(tag) › Operation — three levels, no per-group
 // or audience-wrapper nesting. Snapshots live in ./schemas/<audience>.json and are
 // refreshed by `npm run schemas:sync` from the per-audience /v3/api-docs/<audience>
-// endpoints (platform/supplier/consumer/affiliate/account on the Inventory app,
-// partner on the Integrations app).
+// endpoints (the inventory audiences on the Inventory app, partner on the
+// standalone partner-app).
 const apiSidebarGroup = createOpenAPISidebarGroup()
 
 // audience id -> [sidebar label, base path prefix]. 'partner' is served by the
-// Integrations app; the rest by the Inventory app.
+// standalone partner-app; the rest by the Inventory app.
 const AUDIENCES = [
   ['reference', 'Reference', 'api'],
   ['extranet', 'Extranet', 'api'],
