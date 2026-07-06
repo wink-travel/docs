@@ -7,7 +7,7 @@
       "name": "Contact",
       "email": "hi@wink.travel"
     },
-    "version": "30.51.3-SNAPSHOT",
+    "version": "31.4.1-SNAPSHOT",
     "x-logo": {
       "backgroundColor": "#FFFFFF",
       "altText": "wink",
@@ -3417,10 +3417,16 @@
           "totalFeesInPercentWithRefund": {
             "type": "number"
           },
-          "totalTripPayFeeInPercent": {
+          "totalPlatformFeeInPercent": {
             "type": "number"
           },
-          "totalTripPayFeeInPercentWithRefund": {
+          "totalPlatformFeeInPercentWithRefund": {
+            "type": "number"
+          },
+          "totalPaymentProcessingFeeInPercent": {
+            "type": "number"
+          },
+          "totalPaymentProcessingFeeInPercentWithRefund": {
             "type": "number"
           },
           "totalCommissionsInPercent": {
@@ -3455,81 +3461,58 @@
             "description": "Whether funds have been recorded in supplier's ledger.",
             "example": false
           },
-          "meetingRooms": {
-            "type": "array",
-            "default": "",
-            "description": "Meeting room reservation records.",
-            "items": {
-              "$ref": "#/components/schemas/BookingAncillary"
-            }
-          },
-          "restaurants": {
-            "type": "array",
-            "default": "",
-            "description": "Restaurant reservation records.",
-            "items": {
-              "$ref": "#/components/schemas/BookingAncillary"
-            }
-          },
-          "spas": {
-            "type": "array",
-            "default": "",
-            "description": "Spa reservation records.",
-            "items": {
-              "$ref": "#/components/schemas/BookingAncillary"
-            }
-          },
-          "activities": {
-            "type": "array",
-            "default": "",
-            "description": "Activity reservation records.",
-            "items": {
-              "$ref": "#/components/schemas/BookingAncillary"
-            }
-          },
-          "attractions": {
-            "type": "array",
-            "default": "",
-            "description": "Attraction reservation records.",
-            "items": {
-              "$ref": "#/components/schemas/BookingAncillary"
-            }
-          },
-          "places": {
-            "type": "array",
-            "default": "",
-            "description": "Place reservation records.",
-            "items": {
-              "$ref": "#/components/schemas/BookingAncillary"
-            }
-          },
-          "addOns": {
-            "type": "array",
-            "default": "",
-            "description": "Add-on records.",
-            "items": {
-              "$ref": "#/components/schemas/BookingAncillary"
-            }
-          },
-          "rateSource": {
-            "type": [
-              "string",
-              "null"
-            ],
-            "default": "",
-            "description": "Rate origin. This is usually the property channel manager.",
-            "example": "SITEMINDER"
-          },
-          "hasAddOns": {
+          "hasAllInclusivePlusAlcohol": {
             "type": "boolean",
             "default": false,
-            "description": "Convenience data point to check if any add-on offers are in this booking.",
+            "description": "Convenience data point to get to all-inclusive with alcohol quickly.",
             "example": true
           },
-          "beneficiaryList": {
+          "hasRoomTypeAncillaries": {
+            "type": "boolean",
+            "default": false,
+            "description": "Convenience data point to check if any room type ancillaries are in this booking.",
+            "example": true
+          },
+          "reportingDailyRateList": {
             "type": "array",
+            "contains": {
+              "default": ""
+            },
             "items": {
-              "$ref": "#/components/schemas/Beneficiary"
+              "$ref": "#/components/schemas/ReportingDailyRate",
+              "default": "",
+              "description": "Displays rate accounting details"
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "reportingAncillaryList": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/ReportingAncillary",
+              "default": "",
+              "description": "Displays ancillary accounting details"
+            },
+            "unevaluatedItems": {
+              "default": ""
+            }
+          },
+          "reportingExtraChargeList": {
+            "type": "array",
+            "contains": {
+              "default": ""
+            },
+            "items": {
+              "$ref": "#/components/schemas/ReportingExtraCharge",
+              "default": "",
+              "description": "Displays extra charge accounting details."
+            },
+            "unevaluatedItems": {
+              "default": ""
             }
           },
           "hasBreakfast": {
@@ -3607,10 +3590,61 @@
             "description": "Convenience data point to check if any place reservations are included in this booking.",
             "example": true
           },
-          "cancellable": {
-            "type": "boolean",
-            "default": false,
-            "description": "Whether the booking can still be voluntarily cancelled (no later than the arrival day)."
+          "meetingRooms": {
+            "type": "array",
+            "default": "",
+            "description": "Meeting room reservation records.",
+            "items": {
+              "$ref": "#/components/schemas/BookingAncillary"
+            }
+          },
+          "restaurants": {
+            "type": "array",
+            "default": "",
+            "description": "Restaurant reservation records.",
+            "items": {
+              "$ref": "#/components/schemas/BookingAncillary"
+            }
+          },
+          "spas": {
+            "type": "array",
+            "default": "",
+            "description": "Spa reservation records.",
+            "items": {
+              "$ref": "#/components/schemas/BookingAncillary"
+            }
+          },
+          "activities": {
+            "type": "array",
+            "default": "",
+            "description": "Activity reservation records.",
+            "items": {
+              "$ref": "#/components/schemas/BookingAncillary"
+            }
+          },
+          "attractions": {
+            "type": "array",
+            "default": "",
+            "description": "Attraction reservation records.",
+            "items": {
+              "$ref": "#/components/schemas/BookingAncillary"
+            }
+          },
+          "places": {
+            "type": "array",
+            "default": "",
+            "description": "Place reservation records.",
+            "items": {
+              "$ref": "#/components/schemas/BookingAncillary"
+            }
+          },
+          "addOns": {
+            "type": "array",
+            "default": "",
+            "description": "Add-on records.",
+            "items": {
+              "$ref": "#/components/schemas/BookingAncillary"
+            }
           },
           "roomTypeAncillaries": {
             "type": "array",
@@ -3620,59 +3654,31 @@
               "$ref": "#/components/schemas/BookingAncillary"
             }
           },
-          "hasAllInclusivePlusAlcohol": {
+          "rateSource": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "default": "",
+            "description": "Rate origin. This is usually the property channel manager.",
+            "example": "SITEMINDER"
+          },
+          "hasAddOns": {
             "type": "boolean",
             "default": false,
-            "description": "Convenience data point to get to all-inclusive with alcohol quickly.",
+            "description": "Convenience data point to check if any add-on offers are in this booking.",
             "example": true
           },
-          "hasRoomTypeAncillaries": {
+          "beneficiaryList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Beneficiary"
+            }
+          },
+          "cancellable": {
             "type": "boolean",
             "default": false,
-            "description": "Convenience data point to check if any room type ancillaries are in this booking.",
-            "example": true
-          },
-          "reportingDailyRateList": {
-            "type": "array",
-            "contains": {
-              "default": ""
-            },
-            "items": {
-              "$ref": "#/components/schemas/ReportingDailyRate",
-              "default": "",
-              "description": "Displays rate accounting details"
-            },
-            "unevaluatedItems": {
-              "default": ""
-            }
-          },
-          "reportingAncillaryList": {
-            "type": "array",
-            "contains": {
-              "default": ""
-            },
-            "items": {
-              "$ref": "#/components/schemas/ReportingAncillary",
-              "default": "",
-              "description": "Displays ancillary accounting details"
-            },
-            "unevaluatedItems": {
-              "default": ""
-            }
-          },
-          "reportingExtraChargeList": {
-            "type": "array",
-            "contains": {
-              "default": ""
-            },
-            "items": {
-              "$ref": "#/components/schemas/ReportingExtraCharge",
-              "default": "",
-              "description": "Displays extra charge accounting details."
-            },
-            "unevaluatedItems": {
-              "default": ""
-            }
+            "description": "Whether the booking can still be voluntarily cancelled (no later than the arrival day)."
           },
           "cancelled": {
             "type": "boolean"
@@ -3733,15 +3739,15 @@
             "sourceChannelModifier": -10,
             "internalChannelModifier": -10,
             "quantity": 1,
+            "userSpecifiedCurrencyTotal": {
+              "amount": 1250,
+              "currency": "USD"
+            },
             "sourceTotal": {
               "amount": 1250,
               "currency": "USD"
             },
             "internalTotal": {
-              "amount": 1250,
-              "currency": "USD"
-            },
-            "userSpecifiedCurrencyTotal": {
               "amount": 1250,
               "currency": "USD"
             }
@@ -4469,17 +4475,17 @@
               "default": ""
             }
           },
-          "rooms": {
-            "type": "integer",
-            "format": "int32",
-            "default": "",
-            "description": "How many total rooms for this stay"
-          },
           "guests": {
             "type": "integer",
             "format": "int32",
             "default": "",
             "description": "How many total guests for this stay"
+          },
+          "rooms": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "How many total rooms for this stay"
           },
           "hours": {
             "type": "integer",
@@ -4583,7 +4589,9 @@
               "type": "BOOKING",
               "description": "Fee charged for booking confirmation"
             }
-          ]
+          ],
+          "selfAcquires": false,
+          "selfDisburses": false
         },
         "properties": {
           "vendor": {
@@ -4659,6 +4667,18 @@
             },
             "default": "",
             "description": "Vendor specific values that are returned in a successful response"
+          },
+          "selfAcquires": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether the booking's travel agent acquires (collects) the guest payment themselves, outside Wink/TripPay. Snapshot of the agent's setting at booking time.",
+            "example": false
+          },
+          "selfDisburses": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether the booking's travel agent disburses funds to the supplier themselves, outside Wink/TripPay. Snapshot of the agent's setting at booking time. When self-acquires AND self-disburses are both true, the SALE and COMMISSION amounts never touch Wink's ledger and are not withdrawable.",
+            "example": false
           }
         },
         "required": [
@@ -5077,8 +5097,8 @@
                 ],
                 "minPax": 2,
                 "maxPax": 10,
-                "percentDiscount": 0.1,
-                "percentPremium": 0.1
+                "percentPremium": 0.1,
+                "percentDiscount": 0.1
               }
             ],
             "maxOccupancy": 2,
@@ -5474,15 +5494,15 @@
                   "sourceChannelModifier": -10,
                   "internalChannelModifier": -10,
                   "quantity": 1,
+                  "userSpecifiedCurrencyTotal": {
+                    "amount": 1250,
+                    "currency": "USD"
+                  },
                   "sourceTotal": {
                     "amount": 1250,
                     "currency": "USD"
                   },
                   "internalTotal": {
-                    "amount": 1250,
-                    "currency": "USD"
-                  },
-                  "userSpecifiedCurrencyTotal": {
                     "amount": 1250,
                     "currency": "USD"
                   }
@@ -5522,15 +5542,15 @@
                   "sourceChannelModifier": -10,
                   "internalChannelModifier": -10,
                   "quantity": 1,
+                  "userSpecifiedCurrencyTotal": {
+                    "amount": 1250,
+                    "currency": "USD"
+                  },
                   "sourceTotal": {
                     "amount": 1250,
                     "currency": "USD"
                   },
                   "internalTotal": {
-                    "amount": 1250,
-                    "currency": "USD"
-                  },
-                  "userSpecifiedCurrencyTotal": {
                     "amount": 1250,
                     "currency": "USD"
                   }
@@ -5605,15 +5625,15 @@
                 "sourceChannelModifier": -10,
                 "internalChannelModifier": -10,
                 "quantity": 1,
+                "userSpecifiedCurrencyTotal": {
+                  "amount": 1250,
+                  "currency": "USD"
+                },
                 "sourceTotal": {
                   "amount": 1250,
                   "currency": "USD"
                 },
                 "internalTotal": {
-                  "amount": 1250,
-                  "currency": "USD"
-                },
-                "userSpecifiedCurrencyTotal": {
                   "amount": 1250,
                   "currency": "USD"
                 }
@@ -5840,15 +5860,15 @@
               "reconciled": false
             }
           ],
+          "userSpecifiedCurrencyTotal": {
+            "amount": 1250,
+            "currency": "USD"
+          },
           "sourceTotal": {
             "amount": 1250,
             "currency": "USD"
           },
           "internalTotal": {
-            "amount": 1250,
-            "currency": "USD"
-          },
-          "userSpecifiedCurrencyTotal": {
             "amount": 1250,
             "currency": "USD"
           }
@@ -5969,6 +5989,10 @@
             "description": "Check-out date",
             "example": "2025-12-27"
           },
+          "guests": {
+            "type": "integer",
+            "format": "int32"
+          },
           "roomNights": {
             "type": "integer",
             "format": "int64"
@@ -5982,17 +6006,13 @@
               "$ref": "#/components/schemas/Beneficiary"
             }
           },
+          "userSpecifiedCurrencyTotal": {
+            "$ref": "#/components/schemas/CustomMonetaryAmount"
+          },
           "sourceTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
           },
           "internalTotal": {
-            "$ref": "#/components/schemas/CustomMonetaryAmount"
-          },
-          "guests": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "userSpecifiedCurrencyTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
           }
         },
@@ -6463,14 +6483,14 @@
           "financialBreakdown": {
             "$ref": "#/components/schemas/FinancialBreakdown"
           },
+          "totalDiscountPercent": {
+            "type": "number"
+          },
           "beneficiaryList": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Beneficiary"
             }
-          },
-          "totalDiscountPercent": {
-            "type": "number"
           }
         }
       },
@@ -7355,7 +7375,7 @@
           "hostedBookingEngineUrl": {
             "type": "string",
             "format": "uri",
-            "default": "https://ota.wink.travel",
+            "default": "https://book.wink.travel",
             "description": "If you are self-hosting our booking customization, let us know where it is hosted. Note: This url needs to be secured with SSL.",
             "example": "https://book.thesiamresidences.com/reservations"
           },
@@ -7697,15 +7717,15 @@
             "sourceChannelModifier": -10,
             "internalChannelModifier": -10,
             "quantity": 1,
+            "userSpecifiedCurrencyTotal": {
+              "amount": 1250,
+              "currency": "USD"
+            },
             "sourceTotal": {
               "amount": 1250,
               "currency": "USD"
             },
             "internalTotal": {
-              "amount": 1250,
-              "currency": "USD"
-            },
-            "userSpecifiedCurrencyTotal": {
               "amount": 1250,
               "currency": "USD"
             }
@@ -7745,15 +7765,15 @@
             "sourceChannelModifier": -10,
             "internalChannelModifier": -10,
             "quantity": 1,
+            "userSpecifiedCurrencyTotal": {
+              "amount": 1250,
+              "currency": "USD"
+            },
             "sourceTotal": {
               "amount": 1250,
               "currency": "USD"
             },
             "internalTotal": {
-              "amount": 1250,
-              "currency": "USD"
-            },
-            "userSpecifiedCurrencyTotal": {
               "amount": 1250,
               "currency": "USD"
             }
@@ -7829,15 +7849,15 @@
                 "sourceChannelModifier": -10,
                 "internalChannelModifier": -10,
                 "quantity": 1,
+                "userSpecifiedCurrencyTotal": {
+                  "amount": 1250,
+                  "currency": "USD"
+                },
                 "sourceTotal": {
                   "amount": 1250,
                   "currency": "USD"
                 },
                 "internalTotal": {
-                  "amount": 1250,
-                  "currency": "USD"
-                },
-                "userSpecifiedCurrencyTotal": {
                   "amount": 1250,
                   "currency": "USD"
                 }
@@ -7877,15 +7897,15 @@
                 "sourceChannelModifier": -10,
                 "internalChannelModifier": -10,
                 "quantity": 1,
+                "userSpecifiedCurrencyTotal": {
+                  "amount": 1250,
+                  "currency": "USD"
+                },
                 "sourceTotal": {
                   "amount": 1250,
                   "currency": "USD"
                 },
                 "internalTotal": {
-                  "amount": 1250,
-                  "currency": "USD"
-                },
-                "userSpecifiedCurrencyTotal": {
                   "amount": 1250,
                   "currency": "USD"
                 }
@@ -8127,22 +8147,40 @@
           "netTotalFeesDisplayAmount": {
             "type": "number"
           },
-          "totalTripPayFeeSourceAmount": {
+          "totalPlatformFeeSourceAmount": {
             "type": "number"
           },
-          "totalTripPayFeeInternalAmount": {
+          "totalPlatformFeeInternalAmount": {
             "type": "number"
           },
-          "totalTripPayFeeDisplayAmount": {
+          "totalPlatformFeeDisplayAmount": {
             "type": "number"
           },
-          "netTotalTripPayFeeSourceAmount": {
+          "netTotalPlatformFeeSourceAmount": {
             "type": "number"
           },
-          "netTotalTripPayFeeInternalAmount": {
+          "netTotalPlatformFeeInternalAmount": {
             "type": "number"
           },
-          "netTotalTripPayFeeDisplayAmount": {
+          "netTotalPlatformFeeDisplayAmount": {
+            "type": "number"
+          },
+          "totalPaymentProcessingFeeSourceAmount": {
+            "type": "number"
+          },
+          "totalPaymentProcessingFeeInternalAmount": {
+            "type": "number"
+          },
+          "totalPaymentProcessingFeeDisplayAmount": {
+            "type": "number"
+          },
+          "netTotalPaymentProcessingFeeSourceAmount": {
+            "type": "number"
+          },
+          "netTotalPaymentProcessingFeeInternalAmount": {
+            "type": "number"
+          },
+          "netTotalPaymentProcessingFeeDisplayAmount": {
             "type": "number"
           },
           "totalSalesSourceAmount": {
@@ -8711,8 +8749,8 @@
               ],
               "minPax": 2,
               "maxPax": 10,
-              "percentDiscount": 0.1,
-              "percentPremium": 0.1
+              "percentPremium": 0.1,
+              "percentDiscount": 0.1
             }
           ],
           "maxOccupancy": 2,
@@ -8790,7 +8828,7 @@
           "lifestyleType": {
             "type": "string",
             "default": "",
-            "description": "Indicate the type of lifestyle this blocking should be associated with.",
+            "description": "Indicate the type of lifestyle this inventory should be associated with.",
             "enum": [
               "LIFESTYLE_HEALTH_FITNESS",
               "LIFESTYLE_RELAX",
@@ -8863,7 +8901,7 @@
           "contact": {
             "$ref": "#/components/schemas/Contact",
             "default": "",
-            "description": "Associate a contact person for this blocking (if applicable)."
+            "description": "Associate a contact person for this inventory (if applicable)."
           },
           "address": {
             "$ref": "#/components/schemas/SimpleAddress",
@@ -8873,7 +8911,7 @@
           "commissionable": {
             "type": "boolean",
             "default": true,
-            "description": "Indicate whether sales channels receive commission for selling this blocking.",
+            "description": "Indicate whether sales channels receive commission for selling this inventory.",
             "example": true
           },
           "name": {
@@ -8905,7 +8943,7 @@
           "bookable": {
             "type": "boolean",
             "default": true,
-            "description": "Indicates if this blocking can be added to a booking or if it is read-only marketing material only.",
+            "description": "Indicates if this inventory can be added to a booking or if it is read-only marketing material only.",
             "example": true
           },
           "active": {
@@ -8993,7 +9031,7 @@
             "contains": {
               "default": ""
             },
-            "description": "Purchasable items for this blocking.",
+            "description": "Purchasable items for this inventory.",
             "items": {
               "$ref": "#/components/schemas/TransactionalTravelInventory",
               "default": ""
@@ -9475,15 +9513,15 @@
           "sourceChannelModifier": -10,
           "internalChannelModifier": -10,
           "quantity": 1,
+          "userSpecifiedCurrencyTotal": {
+            "amount": 1250,
+            "currency": "USD"
+          },
           "sourceTotal": {
             "amount": 1250,
             "currency": "USD"
           },
           "internalTotal": {
-            "amount": 1250,
-            "currency": "USD"
-          },
-          "userSpecifiedCurrencyTotal": {
             "amount": 1250,
             "currency": "USD"
           }
@@ -9595,20 +9633,20 @@
           "hasPromotion": {
             "type": "boolean"
           },
+          "hasChannelDiscount": {
+            "type": "boolean"
+          },
+          "totalDiscountPercent": {
+            "type": "number"
+          },
+          "userSpecifiedCurrencyTotal": {
+            "$ref": "#/components/schemas/CustomMonetaryAmount"
+          },
           "sourceTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
           },
           "internalTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
-          },
-          "hasChannelDiscount": {
-            "type": "boolean"
-          },
-          "userSpecifiedCurrencyTotal": {
-            "$ref": "#/components/schemas/CustomMonetaryAmount"
-          },
-          "totalDiscountPercent": {
-            "type": "number"
           }
         },
         "required": [
@@ -9666,13 +9704,13 @@
           ]
         },
         "properties": {
-          "totalElements": {
-            "type": "integer",
-            "format": "int64"
-          },
           "totalPages": {
             "type": "integer",
             "format": "int32"
+          },
+          "totalElements": {
+            "type": "integer",
+            "format": "int64"
           },
           "pageable": {
             "$ref": "#/components/schemas/PageableObject"
@@ -9680,15 +9718,15 @@
           "sort": {
             "$ref": "#/components/schemas/SortObject"
           },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32"
+          },
           "first": {
             "type": "boolean"
           },
           "last": {
             "type": "boolean"
-          },
-          "numberOfElements": {
-            "type": "integer",
-            "format": "int32"
           },
           "size": {
             "type": "integer",
@@ -9712,13 +9750,6 @@
       "PageableObject": {
         "type": "object",
         "properties": {
-          "sort": {
-            "$ref": "#/components/schemas/SortObject"
-          },
-          "pageSize": {
-            "type": "integer",
-            "format": "int32"
-          },
           "paged": {
             "type": "boolean"
           },
@@ -9726,6 +9757,13 @@
             "type": "boolean"
           },
           "pageNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "sort": {
+            "$ref": "#/components/schemas/SortObject"
+          },
+          "pageSize": {
             "type": "integer",
             "format": "int32"
           },
@@ -10539,7 +10577,7 @@
             "postalCode": "10300",
             "countryCode": "TH"
           },
-          "active": true
+          "available": true
         },
         "properties": {
           "hotelIdentifier": {
@@ -10914,10 +10952,10 @@
             "default": "",
             "description": "Property address."
           },
-          "active": {
+          "available": {
             "type": "boolean",
             "default": false,
-            "description": "Whether property is active",
+            "description": "Whether property is available",
             "example": true
           }
         },
@@ -12074,10 +12112,10 @@
       "SortObject": {
         "type": "object",
         "properties": {
-          "unsorted": {
+          "sorted": {
             "type": "boolean"
           },
-          "sorted": {
+          "unsorted": {
             "type": "boolean"
           },
           "empty": {
@@ -12543,8 +12581,8 @@
           ],
           "minPax": 2,
           "maxPax": 10,
-          "percentDiscount": 0.1,
-          "percentPremium": 0.1
+          "percentPremium": 0.1,
+          "percentDiscount": 0.1
         },
         "properties": {
           "identifier": {
@@ -12581,7 +12619,7 @@
           "pricingType": {
             "type": "string",
             "default": "",
-            "description": "How this blocking item should be priced.",
+            "description": "How this inventory item should be priced.",
             "enum": [
               "PER_STAY",
               "PER_DAY",
@@ -12603,12 +12641,12 @@
           "basePrice": {
             "$ref": "#/components/schemas/CustomMonetaryAmount",
             "default": "",
-            "description": "Base price of booking this blocking."
+            "description": "Base price of booking this inventory."
           },
           "discountedPrice": {
             "$ref": "#/components/schemas/CustomMonetaryAmount",
             "default": "",
-            "description": "If you are selling this blocking at a discount, indicate the discounted selling price. Leave empty if there is no discount."
+            "description": "If you are selling this inventory at a discount, indicate the discounted selling price. Leave empty if there is no discount."
           },
           "multimedias": {
             "type": "array",
@@ -12640,13 +12678,13 @@
             "example": 10,
             "minimum": 0
           },
-          "percentDiscount": {
+          "percentPremium": {
             "type": "number",
             "default": "",
             "description": "Calculates the percent difference between basePrice and discountedPrice.",
             "example": 0.1
           },
-          "percentPremium": {
+          "percentDiscount": {
             "type": "number",
             "default": "",
             "description": "Calculates the percent difference between basePrice and discountedPrice.",

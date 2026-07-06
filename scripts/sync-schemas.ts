@@ -36,7 +36,7 @@ const ENVIRONMENTS = {
   local: {
     api: "https://dev-api.wink.travel:8443",
     integrations: "https://dev-api.wink.travel:8445",
-    partner: "https://dev-partner.wink.travel:8446",
+    partner: "https://dev-api.wink.travel:8446",
   },
   staging: {
     api: "https://staging-api.wink.travel",
