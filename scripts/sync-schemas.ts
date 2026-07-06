@@ -7,7 +7,7 @@
 // We pull one document per springdoc group (e.g. /v3/api-docs/platform-analytics)
 // rather than the single aggregate, so the docs sidebar is organised by audience
 // instead of being one flat 80+ tag dump. The group ids here must stay in sync with
-// INVENTORY_GROUPS / PARTNER_GROUPS in astro.config.mjs.
+// INVENTORY_GROUPS / INTEGRATIONS_GROUPS / PARTNER_GROUPS in astro.config.mjs.
 //
 // Failure mode: if a fetch fails (non-2xx or network error), the existing snapshot
 // is preserved so the build keeps working against the last-good copy.
@@ -27,19 +27,25 @@ const SCHEMAS_DIR = resolve(__dirname, "..", "schemas");
 // Per-host overrides (WINK_API_BASE / WINK_PARTNER_BASE) still win if set.
 // The `local` hosts use a self-signed dev cert — point NODE_EXTRA_CA_CERTS at the dev CA
 // (e.g. NODE_EXTRA_CA_CERTS=/path/to/wink.crt) rather than disabling TLS verification.
-// The Partner Integrator API is served by the standalone partner-app (its own deployment),
-// NOT integrations-app — its openapi.url per env is the source of truth for these hosts.
+// Three source apps, each serving its own springdoc groups:
+//   api          = inventory-app        (the audiences in INVENTORY_GROUPS)
+//   integrations = integrations-app     (the channel-manager API; see INTEGRATIONS_GROUPS)
+//   partner      = partner-app          (the Partner Integrator API; see PARTNER_GROUPS)
+// partner-app is its own deployment; its per-env openapi.url is the source of truth for that host.
 const ENVIRONMENTS = {
   local: {
     api: "https://dev-api.wink.travel:8443",
+    integrations: "https://dev-api.wink.travel:8445",
     partner: "https://dev-partner.wink.travel:8446",
   },
   staging: {
     api: "https://staging-api.wink.travel",
+    integrations: "https://staging-integrations.wink.travel",
     partner: "https://staging-partner.wink.travel",
   },
   production: {
     api: "https://api.wink.travel",
+    integrations: "https://integrations.wink.travel",
     partner: "https://partner.wink.travel",
   },
 } as const;
@@ -64,12 +70,21 @@ const resolveEnv = (): EnvName => {
 
 const ENV = resolveEnv();
 const API_BASE = process.env.WINK_API_BASE ?? ENVIRONMENTS[ENV].api;
+const INTEGRATIONS_BASE = process.env.WINK_INTEGRATIONS_BASE ?? ENVIRONMENTS[ENV].integrations;
 const PARTNER_BASE = process.env.WINK_PARTNER_BASE ?? ENVIRONMENTS[ENV].partner;
 
 // springdoc audience group ids per API. Keep in sync with astro.config.mjs.
 // One document per audience -> sidebar is Audience › Resource(tag) › Operation.
 const INVENTORY_GROUPS: readonly string[] = [
   "reference", "extranet", "booking-engine", "studio", "social", "link-manager", "settings", "payment", "user", "travel-agent",
+];
+
+// Served by integrations-app (INTEGRATIONS_BASE). Its springdoc group is named "partner"
+// (.group("partner") in IntegrationsOpenApiConfig) but the content is the channel-manager /
+// vendor-integration API (/api/channel-manager/**, entity-scoped config, Google Hotel). Map it to
+// the "channel-manager" audience so it does NOT collide with partner-app's Partner Integrator API.
+const INTEGRATIONS_GROUPS: readonly { readonly group: string; readonly audience: string }[] = [
+  { group: "partner", audience: "channel-manager" },
 ];
 
 // Served by the standalone partner-app (see PARTNER_BASE), not integrations-app.
@@ -90,6 +105,11 @@ const targets: readonly SchemaTarget[] = [
     name: group,
     url: `${API_BASE}/v3/api-docs/${group}`,
     outFile: `${group}.json`,
+  })),
+  ...INTEGRATIONS_GROUPS.map(({ group, audience }) => ({
+    name: audience,
+    url: `${INTEGRATIONS_BASE}/v3/api-docs/${group}`,
+    outFile: `${audience}.json`,
   })),
   ...PARTNER_GROUPS.map(({ group, audience }) => ({
     name: audience,
@@ -151,7 +171,7 @@ const syncOne = async (target: SchemaTarget): Promise<boolean> => {
 };
 
 const main = async (): Promise<void> => {
-  console.log(`Syncing schemas from ${ENV}\n  api     = ${API_BASE}\n  partner = ${PARTNER_BASE}\n`);
+  console.log(`Syncing schemas from ${ENV}\n  api          = ${API_BASE}\n  integrations = ${INTEGRATIONS_BASE}\n  partner      = ${PARTNER_BASE}\n`);
   ensureDir(SCHEMAS_DIR);
   // Sequential to keep the log readable and avoid hammering the backend.
   const results: boolean[] = [];

@@ -30,6 +30,7 @@ const AUDIENCES = [
   ['user', 'User', 'api'],
   ['travel-agent', 'Travel Agent', 'api'],
   ['partner', 'Partner', 'integrations-api'],
+  ['channel-manager', 'Channel Manager', 'integrations-api'],
 ]
 
 const openApiSnippets = {
