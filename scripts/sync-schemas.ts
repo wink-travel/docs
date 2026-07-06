@@ -73,8 +73,10 @@ const INVENTORY_GROUPS: readonly string[] = [
 ];
 
 // Served by the standalone partner-app (see PARTNER_BASE), not integrations-app.
-const PARTNER_GROUPS: readonly string[] = [
-  "partner",
+// partner-app registers its springdoc group as "integrator" (.group("integrator") in
+// PartnerOpenApiConfig); the docs audience/schema file is "partner". Map the two.
+const PARTNER_GROUPS: readonly { readonly group: string; readonly audience: string }[] = [
+  { group: "integrator", audience: "partner" },
 ];
 
 type SchemaTarget = {
@@ -89,10 +91,10 @@ const targets: readonly SchemaTarget[] = [
     url: `${API_BASE}/v3/api-docs/${group}`,
     outFile: `${group}.json`,
   })),
-  ...PARTNER_GROUPS.map((group) => ({
-    name: group,
+  ...PARTNER_GROUPS.map(({ group, audience }) => ({
+    name: audience,
     url: `${PARTNER_BASE}/v3/api-docs/${group}`,
-    outFile: `${group}.json`,
+    outFile: `${audience}.json`,
   })),
 ];
 
