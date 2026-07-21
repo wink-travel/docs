@@ -1,0 +1,129 @@
+---
+title: Partner API
+description: Ceny, limity rýchlosti a dohoda o úrovni služieb pre autentifikované Wink Partner API.
+sidebar:
+  order: 0
+---
+
+Wink **Partner API** je autentifikovaný, vysoko výkonný spôsob, ako môžu integrátori dotazovať rezervovateľný cestovný inventár — rovnakú ponuku, ktorá poháňa naše vkladateľné widgety a verejné prehliadacie koncové body, vystavený ako prvotriedne programové rozhranie. Kým bezplatné Web Components a verejné prehliadacie koncové body sú určené na ľahké, používateľsky orientované vkladanie, Partner API je postavené pre systémy, ktoré vyhľadávajú, oceňujú a rezervujú vo veľkom. Prístup je autentifikovaný pre každého integrátora a účtuje sa podľa použitia, takže platíte len za prevádzku, ktorú skutočne odošlete.
+
+## Plány a ceny
+
+Jeden API volanie = jeden požiadavok. Merané použitie sa účtuje za každých 1 000 požiadaviek.
+
+| | Bezplatný | Platený | Enterprise |
+|---|---|---|---|
+| **Cena** | 0 $ | Podľa použitia | Kontaktujte nás |
+| **Najvhodnejší pre** | Hodnotenie a integrácie s nízkym objemom | Platba podľa skutočného objemu vo veľkom | Vlastný objem a dohodnuté podmienky |
+| Požiadavky za minútu | 30 (60 nárazovo) | Neobmedzené | Neobmedzené |
+| Požiadavky za mesiac | 10 000 | Neobmedzené | Neobmedzené |
+| Čas odozvy API (P95) | — | Pod 500 ms | Pod 500 ms |
+| Cena za 1 000 požiadaviek | Zdarma | 1,00 $ | Vlastné |
+| Prekročenie pomeru look-to-book (za každých 1 000 nadbytočných lookov nad 5 000:1) | — | 2,00 $ | Vlastné |
+| Odpoveď na limit rýchlosti | 429 (pauza / mesačné tvrdé zastavenie) | Žiadne | Žiadne |
+| Dohoda o úrovni služieb | — | ✓ | ✓ |
+| Prioritná podpora | — | ✓ | ✓ |
+| Vyhradené zavedenie | — | — | ✓ |
+
+[Získajte API kľúč](https://app.wink.travel/portal/settings/applications) · [Začnite s meraným účtovaním](https://app.wink.travel/portal/settings/applications) · [Kontaktujte predaj](https://cal.com/wink-ws36dy)
+
+## Referencia API
+
+Dve OpenAPI rozhrania slúžia rezervovateľnému inventáru a zodpovedajú dvom vyššie uvedeným úrovniam:
+
+- **Bezplatné — Consumer / Booking Engine API** (`/api/public/**`): anonymné, prehliadačové a widgetové. [Prehliadajte Booking Engine referenciu →](/sk/api/booking-engine/)
+- **Platené — Partner Integrator API** (`/api/partner/**`): autentifikované, merané podľa použitia, postavené pre integráciu server-server vo veľkom. [Prehliadajte Integrator referenciu →](/sk/integrations-api/integrator/)
+
+## Ako funguje použitie a limity
+
+### Bezplatná úroveň
+
+Bezplatná úroveň je navrhnutá tak, aby ste mohli vytvárať, testovať a prevádzkovať miernu produkčnú prevádzku bez nákladov.
+
+- **Limit rýchlosti — 30 požiadaviek za minútu, s nárazom 60 požiadaviek.** Krátke špičky nad udržateľnou rýchlosťou sú absorbované nárazovým limitom. Ak ho prekročíte, API odpovie **HTTP 429 (Príliš veľa požiadaviek)** a aplikuje **5-minútovú pauzu**, kým váš kľúč opäť nezačne spracovávať prevádzku. Počkajte a skúste znova po uplynutí pauzy namiesto opakovaného zahlcovania koncového bodu.
+- **Mesačný limit — 10 000 požiadaviek za kalendárny mesiac.** Po dosiahnutí mesačného limitu API vráti **HTTP 429 po zvyšok mesiaca** — tvrdé zastavenie — spolu so správou, ktorá vás vyzýva na prechod na platenú úroveň, aby ste mohli pokračovať. Počítadlo sa resetuje na začiatku ďalšieho kalendárneho mesiaca.
+
+Bezplatná úroveň nezahŕňa dohodu o úrovni služieb ani prioritnú podporu.
+
+### Platená úroveň
+
+Platená úroveň odstraňuje mesačný limit a pauzy pri limite rýchlosti a účtuje vám len za to, čo použijete.
+
+- **Merané požiadavky — 1,00 $ za 1 000 požiadaviek.** Neexistuje žiadny mesačný limit požiadaviek ani obmedzenie rýchlosti pri bežnom používaní; platíte podľa skutočného objemu.
+- **Prekročenie pomeru look-to-book — 2,00 $ za 1 000 nadbytočných lookov.** Aby sme udržali ponuku zdravú, meráme pomer vyhľadávaní ("lookov") k potvrdeným rezerváciám. Máte nárok na **5 000 lookov na jednu rezerváciu** pred uplatnením prekročenia. Nadbytočné looky sa vypočítajú ako:
+
+  `excess = max(0, looks − bookings × 5,000)`
+
+  Prekročenie sa potom účtuje vo výške **2,00 $ za 1 000 nadbytočných lookov**. Integrácie, ktoré dobre konvertujú, zriedka spôsobujú prekročenie; poplatok sa uplatňuje len na prevádzku, ktorá vyhľadáva oveľa viac, než rezervuje.
+
+Platená úroveň zahŕňa dohodu o úrovni služieb popísanú nižšie — záväzok dostupnosti 99,9 % a cieľ času odozvy P95 pod 500 ms — a prioritnú podporu podľa závažnosti.
+
+## Dohoda o úrovni služieb
+
+_Efektívne od: 5. júla 2026 · Verzia 1.0_
+
+Táto dohoda o úrovni služieb (ďalej len „SLA“) stanovuje záväzok dostupnosti, servisné kredity a ciele podpory, ktoré Wink („Wink“, „my“, „nás“) poskytuje zákazníkovi („Zákazník“, „vy“) pre autentifikované Wink Partner API (ďalej len „Partner API“ alebo „Služba“) na úrovniach, kde sa uvádza, že SLA platí. Táto SLA je začlenená do a riadená dohodou medzi vami a Wink, na základe ktorej pristupujete k Partner API (ďalej len „Dohoda“), a platí, pokiaľ máte aktívne, platené predplatné Partner API v dobrom stave. Veľké písmená, ktoré tu nie sú definované, majú význam uvedený v Dohode.
+
+### 1. Definície
+
+1. **„Dostupnosť“** znamená obdobia, počas ktorých je Partner API dostupné na prijímanie a úspešné odpovedanie na správne vytvorené, autentifikované požiadavky.
+2. **„Nedostupnosť“** znamená akékoľvek obdobie, merané v minútach, počas ktorého Partner API neodpovedá úspešne na správne vytvorené, autentifikované požiadavky, s výnimkou období uvedených v časti 4. Izolované chyby ovplyvňujúce nepodstatnú časť požiadaviek nie sú samy o sebe Nedostupnosťou.
+3. **„Mesačné percento dostupnosti“** znamená pre daný kalendárny mesiac celkový počet minút v danom mesiaci mínus celkový počet minút Nedostupnosti, vydelené celkovým počtom minút v danom mesiaci, vyjadrené v percentách.
+4. **„Plánovaná údržba“** znamená plánovanú údržbu Služby, o ktorej Wink poskytol vopred oznámenie v súlade s časťou 4.
+5. **„Servisný kredit“** znamená kredit vypočítaný ako percento poplatkov zaplatených alebo splatných vami za Partner API v dotknutom kalendárnom mesiaci, ktorý sa uplatňuje proti budúcim poplatkom za Partner API ako jediná a výlučná náhrada za nesplnenie záväzku dostupnosti.
+6. **„Čas odozvy“** znamená uplynutý čas medzi prijatím správne vytvoreného, autentifikovaného požiadavku na hranici služby Wink a okamihom, kedy Wink začne vracať odpoveď, s výnimkou času prenosu v sieti a akéhokoľvek času na strane klienta mimo kontroly Wink.
+
+### 2. Záväzok dostupnosti a výkonu
+
+Wink použije obchodne primerané úsilie, aby Partner API bolo dostupné s **mesačným percentom dostupnosti aspoň 99,9 %** počas každého kalendárneho mesiaca trvania (ďalej len „Záväzok dostupnosti“). Záväzok dostupnosti sa meria na hranici služby Wink a nezahŕňa faktory mimo primeranej kontroly Wink, vrátane tých opísaných v časti 4. Monitorovacie systémy Wink sú autoritatívnym zdrojom pre meranie mesačného percenta dostupnosti a času odozvy.
+
+Wink ďalej cieli na **95. percentil (P95) času odozvy pod 500 milisekúnd** pre úspešné, správne vytvorené, autentifikované požiadavky, merané na hranici služby Wink počas každého kalendárneho mesiaca (ďalej len „Cieľ výkonu“). Cieľ výkonu nezahŕňa faktory opísané v časti 4, požiadavky vracajúce aplikačné chyby spôsobené samotným požiadavkom a nezvyčajne veľké alebo zložité dávkové požiadavky. Cieľ výkonu je cieľ služby; servisné kredity v časti 3 sa uplatňujú na nesplnenie **Záväzku dostupnosti** a sú jedinou a výlučnou náhradou za nedostupnosť.
+
+### 3. Servisné kredity
+
+Ak mesačné percento dostupnosti klesne pod Záväzok dostupnosti v ktoromkoľvek kalendárnom mesiaci, môžete mať nárok na servisný kredit vypočítaný ako percento poplatkov za Partner API zaplatených alebo splatných v danom mesiaci podľa nasledujúcej stupnice:
+
+| Mesačné percento dostupnosti | Servisný kredit |
+|---|---|
+| Pod 99,9 %, ale aspoň 99,0 % | 10 % |
+| Pod 99,0 %, ale aspoň 95,0 % | 25 % |
+| Pod 95,0 % | 50 % |
+
+1. **Uplatnenie kreditu.** Na získanie servisného kreditu musíte do **tridsiatich (30) dní** od konca kalendárneho mesiaca, v ktorom k nedostupnosti došlo, podať písomnú žiadosť Wink. Žiadosť musí obsahovať dátumy a časy každej udalosti Nedostupnosti, na ktorú sa vzťahuje, a akékoľvek dostupné podporné záznamy alebo dôkazy. Žiadosti podané po tomto termíne nie sú oprávnené.
+2. **Forma kreditu.** Schválené servisné kredity sa uplatňujú proti budúcim poplatkom za Partner API a nemajú hotovostnú hodnotu. Nie sú refundáciou a nebudú vyplatené, pokiaľ to nevyžaduje platný zákon.
+3. **Maximálny kredit.** Celkové servisné kredity za ktorýkoľvek kalendárny mesiac neprekročia 50 % poplatkov za Partner API zaplatených alebo splatných v danom mesiaci.
+4. **Jediná a výlučná náhrada.** Servisné kredity sú vaša **jediná a výlučná náhrada** za akékoľvek nesplnenie Záväzku dostupnosti alebo iné nedostupnosti Partner API.
+
+### 4. Výnimky
+
+Záväzok dostupnosti a akékoľvek servisné kredity sa nevzťahujú na a Nedostupnosť nezahŕňa žiadnu nedostupnosť, pozastavenie, zhoršenie alebo problém s výkonom, ktorý vzniká z alebo súvisí s:
+
+1. **Plánovanou údržbou**, o ktorej Wink vopred informoval primeraným spôsobom prostredníctvom kanála, ktorý bežne používa na komunikáciu so zákazníkmi;
+2. **Nemožnosťou plnenia (force majeure)** alebo inými príčinami mimo primeranej kontroly Wink, vrátane prírodných katastrof, vládnych zásahov, výpadkov siete alebo služieb, a útokov typu denial-of-service alebo iných škodlivých útokov;
+3. problémami spôsobenými **vašimi** činmi alebo opomenutiami, vaším vybavením, softvérom alebo sieťou, alebo akoukoľvek **tretou stranou** poskytujúcou služby, produkty alebo dodávateľa, ktorý nie je priamo pod kontrolou Wink;
+4. vaším **zneužitím Služby** alebo **porušením Dohody**, tejto SLA, podmienok prijateľného používania alebo platných limitov rýchlosti, vrátane prevádzky, ktorú Wink rozumne považuje za nadmernú, automatizované zneužívanie alebo podvodné aktivity; a
+5. akýmkoľvek **pozastavením alebo ukončením** vášho prístupu riadne vykonaným podľa Dohody, vrátane pozastavenia z dôvodu nezaplatenia.
+
+### 5. Podpora a ciele odozvy
+
+Wink poskytuje podporu pre Partner API počas štandardných pracovných hodín, s výnimkou miestnych štátnych sviatkov. Wink použije obchodne primerané úsilie na potvrdenie správne podaných požiadaviek na podporu v nasledujúcich cieľových časoch odozvy, založených na závažnosti, ktorú priradíte a ktorú Wink primerane potvrdí:
+
+| Závažnosť | Popis | Cieľová počiatočná odozva |
+|---|---|---|
+| **Sev 1 — Kritická** | Partner API je nefunkčné alebo nepoužiteľné v produkcii bez obchádzky. | 4 hodiny |
+| **Sev 2 — Hlavná** | Významná funkcia je obmedzená alebo zhoršená; existuje obchádzka. | 1 pracovný deň |
+| **Sev 3 — Menšia** | Všeobecné otázky, menšie problémy alebo požiadavky na funkcie. | 2 pracovné dni |
+
+Cieľové časy odozvy popisujú, kedy Wink plánuje nadviazať **počiatočný kontakt**; nie sú zárukou času vyriešenia. Prioritná podpora a ciele podľa závažnosti platia na úrovniach, kde sú uvedené ako zahrnuté.
+
+### 6. Dáta a bezpečnosť
+
+Wink udržiava obchodne primerané administratívne, technické a organizačné opatrenia navrhnuté na ochranu dôvernosti, integrity a dostupnosti dát spracovávaných cez Partner API a tieto opatrenia pravidelne prehodnocuje. Spracovanie osobných údajov spoločnosťou Wink sa riadi [zásadami ochrany osobných údajov](/sk/privacy) a akýmikoľvek podmienkami spracovania údajov v Dohode. Vy zostávate zodpovední za zabezpečenie vlastných API poverení, za zákonné použitie akýchkoľvek získaných údajov a za okamžité oznámenie Wink o akomkoľvek podozrení na kompromitáciu poverení.
+
+### 7. Obmedzenie zodpovednosti
+
+Servisné kredity sú **jedinou a výlučnou náhradou** za akúkoľvek nedostupnosť alebo nesplnenie Záväzku dostupnosti a poskytujú sa namiesto akejkoľvek inej zodpovednosti vyplývajúcej z takéhoto nesplnenia. Okrem výslovne uvedeného v tejto SLA sa Partner API poskytuje „tak, ako je dostupné“. V maximálnom rozsahu povolenom platným právom je celková zodpovednosť Wink vyplývajúca zo Služby obmedzená podľa Dohody a Wink nie je zodpovedný za žiadne nepriame, náhodné, špeciálne, následné alebo trestné škody, ani za stratu zisku, príjmov, dát alebo dobrého mena, aj keď bol upozornený na možnosť takýchto škôd.
+
+### 8. Trvanie, zmeny a ukončenie
+
+Táto SLA platí, pokiaľ máte aktívne predplatné Partner API na úrovni, kde je uvedené, že SLA platí. Wink môže túto SLA čas od času aktualizovať; podstatné zmeny budú oznámené prostredníctvom kanála, ktorý Wink bežne používa na komunikáciu so zákazníkmi, a pokračovanie v používaní Partner API po nadobudnutí účinnosti aktualizácie znamená súhlas s aktualizovanou SLA. Táto SLA zaniká automaticky pri ukončení alebo uplynutí platnosti Dohody alebo vášho predplatného Partner API. Časti, ktoré podľa svojej povahy majú prežiť ukončenie — vrátane nároku na servisné kredity, obmedzenia zodpovednosti a definícií — prežívajú.

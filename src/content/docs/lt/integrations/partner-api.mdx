@@ -1,0 +1,129 @@
+---
+title: Partnerio API
+description: Kainodara, užklausų ribojimai ir paslaugų lygio susitarimas autentifikuotam Wink Partnerio API.
+sidebar:
+  order: 0
+---
+
+Wink **Partnerio API** yra autentifikuotas, didesnio pralaidumo būdas integratoriams užklausti rezervuojamą kelionių inventorių — tą patį tiekimą, kuris maitina mūsų įterpiamus valdiklius ir viešus naršymo galinius taškus, pateiktas kaip pirmos klasės programinis sąsajos sprendimas. Nemokami Web Components ir vieši naršymo galiniai taškai skirti lengvam, žmogui skirtam įterpimui, o Partnerio API sukurtas sistemoms, kurios ieško, kainuoja ir rezervuoja dideliu mastu. Prieiga yra autentifikuota kiekvienam integratoriui ir apmokestinama pagal naudojimą, todėl mokate tik už tikrą siunčiamą srautą.
+
+## Planai ir kainodara
+
+Viena API užklausa = viena užklausa. Matuojamas naudojimas apmokestinamas už 1 000 užklausų.
+
+| | Nemokamas | Mokamas | Įmonių |
+|---|---|---|---|
+| **Kaina** | 0 USD | Pagal naudojimą | Susisiekite su mumis |
+| **Tinka** | Vertinimui ir mažo tūrio integracijoms | Mokėkite už naudojimą dideliu mastu | Individualus tūris ir derinamos sąlygos |
+| Užklausos per minutę | 30 (60 sprogimas) | Neribota | Neribota |
+| Užklausos per mėnesį | 10 000 | Neribota | Neribota |
+| API atsakymo laikas (P95) | — | Mažiau nei 500 ms | Mažiau nei 500 ms |
+| Kaina už 1 000 užklausų | Nemokamai | 1,00 USD | Individuali |
+| Look-to-book viršijimas (už 1 000 viršijančių užklausų virš 5 000:1) | — | 2,00 USD | Individuali |
+| Užklausų ribojimo atsakymas | 429 (pauzė / mėnesio sustabdymas) | Nėra | Nėra |
+| Paslaugų lygio susitarimas | — | ✓ | ✓ |
+| Prioritetinė pagalba | — | ✓ | ✓ |
+| Skirta įvedimo pagalba | — | — | ✓ |
+
+[Gaukite API raktą](https://app.wink.travel/portal/settings/applications) · [Pradėkite matuojamą apmokėjimą](https://app.wink.travel/portal/settings/applications) · [Susisiekite su pardavimais](https://cal.com/wink-ws36dy)
+
+## API nuoroda
+
+Dvi OpenAPI sąsajos aptarnauja rezervuojamą inventorių ir atitinka aukščiau nurodytus du lygius:
+
+- **Nemokamas — Vartotojo / Rezervavimo variklio API** (`/api/public/**`): anoniminis, naršyklės ir valdiklio sąsajai. [Naršyti Rezervavimo variklio nuorodą →](/lt/api/booking-engine/)
+- **Mokamas — Partnerio integratoriaus API** (`/api/partner/**`): autentifikuotas, matuojamas naudojimas, sukurtas serverių integracijai dideliu mastu. [Naršyti Integratoriaus nuorodą →](/lt/integrations-api/integrator/)
+
+## Kaip veikia naudojimas ir ribojimai
+
+### Nemokamas lygis
+
+Nemokamas lygis skirtas leisti jums kurti, testuoti ir vykdyti nedidelį gamybinį srautą be jokių išlaidų.
+
+- **Užklausų ribojimas — 30 užklausų per minutę, su 60 užklausų sprogimu.** Trumpalaikiai viršijimai virš pastovaus lygio kompensuojami sprogimo leidimu. Jei viršijate, API atsako su **HTTP 429 (Per daug užklausų)** ir taiko **5 minučių pauzę**, kol jūsų raktas vėl pradės aptarnauti srautą. Palaukite ir bandykite dar kartą po pauzės, o ne siųskite užklausas nuolat.
+- **Mėnesio kvota — 10 000 užklausų per kalendorinį mėnesį.** Pasiekus mėnesio ribą, API grąžina **HTTP 429 likusį mėnesį** — griežtą sustabdymą — kartu su žinute, kviečiančia prenumeruoti Mokamą lygį tęsti. Skaitiklis atstatomas kito kalendorinio mėnesio pradžioje.
+
+Nemokamas lygis neapima Paslaugų lygio susitarimo ar prioritetinės pagalbos.
+
+### Mokamas lygis
+
+Mokamas lygis pašalina mėnesio ribą ir užklausų ribojimo pauzes, ir apmokestina tik už tai, ką naudojate.
+
+- **Matuojamos užklausos — 1,00 USD už 1 000 užklausų.** Nėra mėnesio užklausų limito ir nėra ribojimo įprasto naudojimo metu; mokate pagal faktinį kiekį.
+- **Look-to-book viršijimas — 2,00 USD už 1 000 viršijančių užklausų.** Siekiant išlaikyti tiekimo sveikumą, matuojame paieškų („look“) ir patvirtintų rezervacijų santykį. Jums leidžiama **5 000 paieškų vienai rezervacijai** prieš taikant viršijimą. Viršijimas apskaičiuojamas taip:
+
+  `viršijimas = max(0, paieškos − rezervacijos × 5 000)`
+
+  Viršijimas apmokestinamas **2,00 USD už 1 000 viršijančių paieškų**. Integracijos, kurios gerai konvertuoja, retai patiria viršijimą; mokestis taikomas tik srautui, kuris ieško daug daugiau nei rezervuoja.
+
+Mokamas lygis apima žemiau aprašytą Paslaugų lygio susitarimą — 99,9 % veikimo laiko įsipareigojimą ir P95 atsakymo laiko tikslą mažiau nei 500 ms — bei prioritetinę, pagal rimtumą pagrįstą pagalbą.
+
+## Paslaugų lygio susitarimas
+
+_Galiojimo data: 2026 m. liepos 5 d. · Versija 1.0_
+
+Šis Paslaugų lygio susitarimas („SLA“) nustato prieinamumo įsipareigojimą, paslaugų kreditus ir palaikymo tikslus, kuriuos Wink („Wink“, „mes“, „mums“) suteikia klientui („Klientas“, „jūs“) autentifikuotam Wink Partnerio API („Partnerio API“ arba „Paslauga“) lygmenyse, kuriuose nurodoma, kad SLA taikomas. Šis SLA yra įtrauktas į ir reglamentuojamas susitarimo tarp jūsų ir Wink, pagal kurį jūs naudojatės Partnerio API („Susitarimas“), ir galioja tol, kol turite aktyvią, apmokamą Partnerio API prenumeratą. Didžiosios raidės nenaudojamos čia apibrėžtiems terminams reiškia tai, kas apibrėžta Susitarime.
+
+### 1. Apibrėžimai
+
+1. **„Veikimo laikas“** reiškia laikotarpius, kai Partnerio API yra prieinamas priimti ir sėkmingai atsakyti į tinkamai suformuotas, autentifikuotas užklausas.
+2. **„Neveikimo laikas“** reiškia bet kurį laikotarpį, matuojamą minutėmis, kai Partnerio API nesugeba sėkmingai atsakyti į tinkamai suformuotas, autentifikuotas užklausas, išskyrus laikotarpius, nurodytus 4 skyriuje kaip išimtys. Atsitiktinės klaidos, paveikiančios nereikšmingą užklausų dalį, savaime nelaikomos Neveikimo laiku.
+3. **„Mėnesio veikimo laiko procentas“** reiškia, tam tikram kalendoriniam mėnesiui, bendrą to mėnesio minučių skaičių atėmus Neveikimo laiko minutes, padalytą iš bendro to mėnesio minučių skaičiaus, išreikštą procentais.
+4. **„Planuojama priežiūra“** reiškia suplanuotą Paslaugos priežiūrą, apie kurią Wink iš anksto pranešė pagal 4 skyrių.
+5. **„Paslaugos kreditas“** reiškia kreditą, apskaičiuotą kaip procentą nuo jūsų už Partnerio API mokamų ar mokėtinų mokesčių paveiktame kalendoriniame mėnesyje, kuris taikomas būsimoms Partnerio API sąskaitoms kaip vienintelė ir išskirtinė priemonė dėl Veikimo laiko įsipareigojimo nevykdymo.
+6. **„Atsakymo laikas“** reiškia laiką nuo Wink gavimo tinkamai suformuotos, autentifikuotos užklausos Wink paslaugos ribose iki momento, kai Wink pradeda grąžinti atsakymą, neįskaitant tinklo perdavimo ir kliento pusės laiko, kuris nėra Wink kontroliuojamas.
+
+### 2. Prieinamumo ir našumo įsipareigojimas
+
+Wink naudos komerciniu požiūriu pagrįstas pastangas, kad Partnerio API būtų prieinamas su **Mėnesio veikimo laiko procentu ne mažesniu kaip 99,9 %** kiekvieną kalendorinį mėnesį (toliau – „Veikimo laiko įsipareigojimas“). Veikimo laiko įsipareigojimas matuojamas Wink paslaugos ribose ir neapima veiksnių, kurie nėra Wink pagrįstos kontrolės ribose, įskaitant tuos, kurie aprašyti 4 skyriuje. Wink stebėjimo sistemos yra autoritetingas šaltinis Mėnesio veikimo laiko procentui ir Atsakymo laikui matuoti.
+
+Wink taip pat siekia **95-ojo procentilio (P95) atsakymo laiko mažiau nei 500 milisekundžių** sėkmingoms, tinkamai suformuotoms, autentifikuotoms užklausoms, matuojamoms Wink paslaugos ribose per kiekvieną kalendorinį mėnesį (toliau – „Našumo tikslas“). Našumo tikslas neapima 4 skyriuje aprašytų veiksnių, užklausų, kurios grąžina programinės klaidos lygio klaidas dėl pačios užklausos, ir neįprastai didelių ar sudėtingų partijų užklausų. Našumo tikslas yra paslaugos tikslas; 3 skyriuje nurodyti Paslaugos kreditai taikomi tik Veikimo laiko įsipareigojimo nevykdymui ir yra vienintelė ir išskirtinė priemonė dėl prieinamumo trūkumų.
+
+### 3. Paslaugos kreditai
+
+Jei Mėnesio veikimo laiko procentas bet kuriame kalendoriniame mėnesyje nukrenta žemiau Veikimo laiko įsipareigojimo, galite būti tinkamas gauti Paslaugos kreditą, apskaičiuotą kaip procentą nuo jūsų to mėnesio Partnerio API mokesčių pagal šią lentelę:
+
+| Mėnesio veikimo laiko procentas | Paslaugos kreditas |
+|---|---|
+| Žemiau 99,9 %, bet ne mažiau kaip 99,0 % | 10 % |
+| Žemiau 99,0 %, bet ne mažiau kaip 95,0 % | 25 % |
+| Žemiau 95,0 % | 50 % |
+
+1. **Kredito reikalavimas.** Norėdami gauti Paslaugos kreditą, turite pateikti raštišką pretenziją Wink per **trisdešimt (30) dienų** nuo kalendorinio mėnesio pabaigos, kuriame įvyko trūkumas. Pretenzijoje turi būti nurodytos kiekvieno Neveikimo laiko įvykio datos ir laikai bei bet kokie pagrįsti žurnalai ar įrodymai, kuriuos galite pateikti. Pretenzijos, pateiktos po šio termino, nebus priimamos.
+2. **Kredito forma.** Patvirtinti Paslaugos kreditai taikomi būsimoms Partnerio API sąskaitoms ir neturi piniginės vertės. Jie nėra grąžinimai ir nebus išmokami, išskyrus atvejus, kai tai reikalaujama taikytinos teisės.
+3. **Maksimalus kreditas.** Bendras Paslaugos kreditų kiekis už bet kurį kalendorinį mėnesį neviršys 50 % jūsų to mėnesio Partnerio API mokesčių.
+4. **Vienintelė ir išskirtinė priemonė.** Paslaugos kreditai yra jūsų **vienintelė ir išskirtinė priemonė** dėl Wink nesugebėjimo įvykdyti Veikimo laiko įsipareigojimą ar bet kokio kito Partnerio API prieinamumo trūkumo.
+
+### 4. Išimtys
+
+Veikimo laiko įsipareigojimas ir bet kokie Paslaugos kreditai netaikomi, o Neveikimo laikas neįskaitomas, kai nepasiekiamumas, sustabdymas, pablogėjimas ar našumo problema kyla dėl arba susijusi su:
+
+1. **Planuojama priežiūra**, apie kurią Wink iš anksto pranešė, jei toks pranešimas pateiktas protingu laiku per kanalą, kurį Wink paprastai naudoja bendraudamas su klientais;
+2. **Force majeure** įvykiai ar kitos priežastys, kurios nėra Wink pagrįstos kontrolės ribose, įskaitant gamtos katastrofas, vyriausybės veiksmus, tinklo ar komunalinių paslaugų gedimus bei paslaugų atakų ar kitų kenkėjiškų veiksmų atvejus;
+3. problemos, sukeltos **jūsų** veiksmų ar neveikimo, jūsų įrangos, programinės įrangos ar tinklo, arba bet kurios **trečiosios šalies** paslaugos, produkto ar tiekėjo, kuris nėra Wink tiesioginės kontrolės objektas;
+4. jūsų **Paslaugos piktnaudžiavimas** arba **Susitarimo**, šio SLA, priimtino naudojimo sąlygų ar taikomų užklausų ribojimų pažeidimas, įskaitant srautą, kurį Wink pagrįstai laiko pertekliniu, automatizuotą piktnaudžiavimą ar sukčiavimą; ir
+5. bet koks jūsų prieigos **sustabdymas ar nutraukimas**, tinkamai įvykdytas pagal Susitarimą, įskaitant sustabdymą dėl neapmokėjimo.
+
+### 5. Pagalba ir atsakymo tikslai
+
+Wink teikia pagalbą Partnerio API standartinėmis darbo valandomis, išskyrus vietines šventes. Wink naudos komerciniu požiūriu pagrįstas pastangas tinkamai pateiktas pagalbos užklausas pripažinti per šiuos tikslinius atsakymo laikus, remdamasis jūsų priskirtu rimtumu ir Wink pagrįstai patvirtindamas:
+
+| Rimtumas | Aprašymas | Tikslinis pradinis atsakymas |
+|---|---|---|
+| **Sev 1 — Kritinis** | Partnerio API neveikia arba negalima naudoti gamyboje be sprendimo būdo. | 4 valandos |
+| **Sev 2 — Svarbus** | Reikšminga funkcijos sutrikimas ar pablogėjimas; yra sprendimo būdas. | 1 darbo diena |
+| **Sev 3 — Mažas** | Bendri klausimai, smulkios problemos ar funkcijų užklausos. | 2 darbo dienos |
+
+Tiksliniai atsakymo laikai apibūdina, kada Wink siekia užmegzti **pradinį kontaktą**; tai nėra garantijos dėl sprendimo laiko. Prioritetinė pagalba ir pagal rimtumą pagrįsti tikslai taikomi lygmenyse, kuriuose nurodoma, kad jie įtraukti.
+
+### 6. Duomenys ir saugumas
+
+Wink palaiko komerciniu požiūriu pagrįstas administracines, technines ir organizacines priemones, skirtas apsaugoti per Partnerio API apdorojamus duomenis nuo konfidencialumo, vientisumo ir prieinamumo pažeidimų, ir periodiškai jas peržiūri. Wink asmens duomenų tvarkymą reglamentuoja [Privatumo politika](/lt/privacy) ir bet kokios duomenų tvarkymo sąlygos Susitarime. Jūs esate atsakingi už savo API kredencialų saugumą, už bet kokių gautų duomenų teisėtą naudojimą ir už greitą Wink informavimą apie bet kokį įtariamą kredencialų pažeidimą.
+
+### 7. Atsakomybės apribojimas
+
+Paslaugos kreditai yra **vienintelė ir išskirtinė priemonė** dėl bet kokio nepasiekiamumo ar Veikimo laiko įsipareigojimo nevykdymo ir teikiami vietoje bet kokios kitos atsakomybės, kylančios dėl tokio nevykdymo. Išskyrus aiškiai nurodytus šio SLA atvejus, Partnerio API teikiamas „kaip yra“. Didžiausia Wink atsakomybė, kylanti iš ar susijusi su Paslauga, yra ribojama pagal Susitarimą, ir Wink neatsako už jokius netiesioginius, atsitiktinius, specialius, pasekminius ar baudžiamuosius nuostolius, taip pat už prarastas pajamas, pajamas, duomenis ar gerą vardą, net jei buvo įspėta apie tokių nuostolių galimybę.
+
+### 8. Terminas, pakeitimai ir nutraukimas
+
+Šis SLA galioja tol, kol turite aktyvią Partnerio API prenumeratą lygmenyje, kuriame nurodoma, kad SLA taikomas. Wink gali laikas nuo laiko atnaujinti šį SLA; esminiai pakeitimai bus pranešti per kanalą, kurį Wink paprastai naudoja klientų pasiekiamumui, o tolesnis Partnerio API naudojimas po atnaujinimo įsigaliojimo reiškia atnaujinto SLA priėmimą. Šis SLA automatiškai nutraukiamas nutraukus ar pasibaigus Susitarimui arba jūsų Partnerio API prenumeratai. Skyriai, kurie pagal savo pobūdį turėtų išlikti po nutraukimo — įskaitant sukauptą, bet nepareikalautą Paslaugos kredito teisę, atsakomybės apribojimą ir apibrėžimus — išlieka galiojantys.

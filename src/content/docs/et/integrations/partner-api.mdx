@@ -1,0 +1,129 @@
+---
+title: Partneri API
+description: Hinnakujundus, päringupiirangud ja teenusetaseme leping autentitud Wink Partneri API jaoks.
+sidebar:
+  order: 0
+---
+
+Wink **Partneri API** on autentitud, suurema läbilaskevõimega viis integratsioonide jaoks pärida broneeritavat reisivarustust — sama pakkumine, mis toidab meie manustatavaid vidinaid ja avalikke sirvimisliideseid, esitatud esmaklassilise programmeeritava liidesena. Kus tasuta veebikomponendid ja avalikud sirvimisliidesed on mõeldud kergekaaluliseks, inimeste suunaleks manustamiseks, on Partneri API loodud süsteemidele, mis otsivad, hindavad ja broneerivad mahus. Juurdepääs on autentitud iga integratsiooni kohta ja arveldatakse kasutuse alusel, nii et maksate ainult tegelikult saadetud liikluse eest.
+
+## Plaanid ja hinnakujundus
+
+Üks API kõne = üks päring. Kasutust arvestatakse ja arveldatakse 1 000 päringu kaupa.
+
+| | Tasuta | Tasuline | Ettevõtte |
+|---|---|---|---|
+| **Hind** | 0 $ | Kasutusepõhine | Võtke meiega ühendust |
+| **Parim** | Hindamine ja madala mahuga integratsioonid | Tasumine vastavalt kasutusele mahus | Kohandatud maht ja läbiräägitavad tingimused |
+| Päringud minutis | 30 (60 lühiajaline tõus) | Piiramatu | Piiramatu |
+| Päringud kuus | 10 000 | Piiramatu | Piiramatu |
+| API vastuse aeg (P95) | — | Alla 500 ms | Alla 500 ms |
+| Hind 1 000 päringu kohta | Tasuta | 1,00 $ | Kohandatud |
+| Ülevaatamise ja broneerimise suhe (üle 5 000:1 1 000 ületava vaatamise kohta) | — | 2,00 $ | Kohandatud |
+| Päringupiirangu vastus | 429 (paus / kuupõhine lõplik peatus) | Puudub | Puudub |
+| Teenusetaseme leping | — | ✓ | ✓ |
+| Prioriteetne tugi | — | ✓ | ✓ |
+| Pühendatud juurutus | — | — | ✓ |
+
+[Hangi API võti](https://app.wink.travel/portal/settings/applications) · [Alusta kasutusepõhist arveldamist](https://app.wink.travel/portal/settings/applications) · [Võta ühendust müügiga](https://cal.com/wink-ws36dy)
+
+## API viide
+
+Kaks OpenAPI liidest teenindavad broneeritavat varustust ja need vastavad ülaltoodud kahele tasemele:
+
+- **Tasuta — Tarbija / Broneerimismootori API** (`/api/public/**`): anonüümne, brauseri- ja vidinapõhine. [Sirvi Broneerimismootori viidet →](/et/api/booking-engine/)
+- **Tasuline — Partneri integratsiooni API** (`/api/partner/**`): autentitud, kasutusepõhine, loodud serveritevaheliseks integratsiooniks mahus. [Sirvi Integratsiooni viidet →](/et/integrations-api/integrator/)
+
+## Kuidas kasutus ja piirangud toimivad
+
+### Tasuta tase
+
+Tasuta tase on loodud selleks, et saaksite ehitada, testida ja käivitada mõõdukat tooteliiklust ilma kuludeta.
+
+- **Päringupiirang — 30 päringut minutis, 60 päringu lühiajaline tõus.** Lühikesed tipud üle püsiva määra neelab lühiajaline tõus. Kui seda ületate, vastab API **HTTP 429 (liiga palju päringuid)** ja rakendab **5-minutilise pausi**, enne kui teie võti jätkab liikluse teenindamist. Pärast pausi akent tehke paus ja proovige uuesti, ärge pommitage lõpp-punkti.
+- **Kuu kvant — 10 000 päringut kalendrikuus.** Kui jõuate kuu limiidini, tagastab API **HTTP 429 kogu kuu lõpuni** — lõplik peatus — koos sõnumiga, mis kutsub teid tellima tasulise taseme, et jätkata. Loendur lähtestatakse järgmise kalendrikuuga.
+
+Tasuta tase ei sisalda teenusetaseme lepingut ega prioriteetset tuge.
+
+### Tasuline tase
+
+Tasuline tase eemaldab kuu limiidi ja päringupiirangu pausid ning arveldab ainult kasutatud mahu eest.
+
+- **Arveldatavad päringud — 1,00 $ 1 000 päringu kohta.** Kuupõhist päringupiirangut ega päringupiirangu aeglustust tavakasutuse korral ei ole; arveldatakse tegeliku mahu alusel.
+- **Ülevaatamise tasu — 2,00 $ 1 000 ületava vaatamise kohta.** Pakkumise tervise hoidmiseks mõõdame otsingute ("vaatamiste") ja kinnitatud broneeringute suhet. Teil on õigus **5 000 vaatamisele ühe broneeringu kohta** enne ülevaatamise rakendumist. Ületavad vaated arvutatakse järgmiselt:
+
+  `üle = max(0, vaated − broneeringud × 5 000)`
+
+  Ülevaatamise eest arveldatakse **2,00 $ 1 000 ületava vaatamise kohta**. Hästi konverteerivad integratsioonid harva ülevaatamist tekitavad; tasu kehtib ainult liiklusele, mis otsib palju rohkem kui broneerib.
+
+Tasuline tase sisaldab allpool kirjeldatud teenusetaseme lepingut — 99,9% tööaja lubadust ja P95 vastuseaja sihti alla 500 ms — ning prioriteetset, tõsidusel põhinevat tuge.
+
+## Teenusetaseme leping
+
+_Jõustumiskuupäev: 5. juuli 2026 · Versioon 1.0_
+
+See teenusetaseme leping ("SLA") sätestab Wink'i ("Wink", "meie", "meid") kättesaadavuse lubaduse, teenusekrediidid ja tugieesmärgid, mida pakutakse kliendile ("Klient", "teie") autentitud Wink Partneri API ("Partneri API" või "Teenuse") puhul tasemetel, kus SLA kehtib. See SLA on osa teie ja Wink'i vahelisest lepingust, mille alusel pääsete Partneri API-le ligi ("Leping"), ja kehtib seni, kuni teil on aktiivne, tasuline Partneri API tellimus heas seisukorras. Suurtähtedega mõisted, mida siin ei defineerita, on määratletud Lepingus.
+
+### 1. Mõisted
+
+1. **"Tööaeg"** tähendab perioode, mil Partneri API on saadaval vastu võtma ja edukalt vastama korrektselt vormistatud, autentitud päringutele.
+2. **"Seisakuaeg"** tähendab iga perioodi minutites, mil Partneri API ei suuda edukalt vastata korrektselt vormistatud, autentitud päringutele, välja arvatud jaotises 4 toodud erandid. Üksikud vead, mis mõjutavad ebaolulist osa päringutest, ei ole iseenesest seisakuaeg.
+3. **"Kuu tööaja protsent"** tähendab antud kalendrikuus kogu minutite arvu miinus seisaku minutid, jagatud kogu minutite arvuga kalendrikuus, väljendatuna protsendina.
+4. **"Planeeritud hooldus"** tähendab teenuse planeeritud hooldust, mille kohta Wink on eelnevalt teavitanud vastavalt jaotisele 4.
+5. **"Teenusekrediit"** tähendab krediiti, mis arvutatakse protsendina teie poolt Partneri API eest mõjutatud kalendrikuus makstud või makstavast tasust ning mida rakendatakse tulevaste Partneri API tasude vastu kui ainus ja eksklusiivne vahend tööaja lubaduse mittetäitmise korral.
+6. **"Vastuse aeg"** tähendab aega Wink'i teenusepiiril korrektselt vormistatud, autentitud päringu vastuvõtmisest kuni vastuse tagastamise alguseni, välja arvatud võrgutransiit ja kliendipoolne aeg, mis ei ole Wink'i kontrolli all.
+
+### 2. Kättesaadavuse ja jõudluse lubadus
+
+Wink kasutab äriliselt mõistlikke jõupingutusi, et tagada Partneri API kättesaadavus **kui vähemalt 99,9% kuu tööaja protsendina** iga kalendrikuus (edaspidi "Tööaja lubadus"). Tööaja lubadust mõõdetakse Wink'i teenusepiiril ja see ei hõlma Wink'i mõistliku kontrolli alt väljuvaid tegureid, sealhulgas jaotises 4 kirjeldatud olukordi. Wink'i jälgimissüsteemid on autoriteetne allikas kuu tööaja protsendi ja vastuseaja mõõtmiseks.
+
+Wink seab sihiks ka **95. protsentiili (P95) vastuseaja alla 500 millisekundi** edukate, korrektselt vormistatud, autentitud päringute puhul, mõõdetuna Wink'i teenusepiiril iga kalendrikuus (edaspidi "Jõudluse sihtmärk"). Jõudluse sihtmärk ei hõlma jaotises 4 kirjeldatud tegureid, päringuid, mis tagastavad rakendustaseme vigu päringu enda tõttu, ega ebatavaliselt suuri või keerukaid partiipäringuid. Jõudluse sihtmärk on teenuse eesmärk; jaotises 3 toodud teenusekrediidid kehtivad tööaja lubaduse mittetäitmise korral ja on ainus ning eksklusiivne vahend kättesaadavuse puuduste korral.
+
+### 3. Teenusekrediidid
+
+Kui kuu tööaja protsent langeb alla tööaja lubaduse mõnel kalendrikuul, võite olla õigustatud teenusekrediidile, mis arvutatakse protsendina teie selle kuu eest makstud või makstavast Partneri API tasust vastavalt allolevale tabelile:
+
+| Kuu tööaja protsent | Teenusekrediit |
+|---|---|
+| Alla 99,9%, kuid vähemalt 99,0% | 10% |
+| Alla 99,0%, kuid vähemalt 95,0% | 25% |
+| Alla 95,0% | 50% |
+
+1. **Krediidi taotlemine.** Teenusekrediidi saamiseks peate esitama Wink'ile kirjaliku taotluse hiljemalt **kolmekümne (30) päeva jooksul** pärast kalendrikuud, mil puudujääk toimus. Taotluses tuleb märkida iga seisaku kuupäev ja kellaaeg ning esitada kõik mõistlikult kättesaadavad logid või tõendid. Hiljem esitatud taotlused ei ole õigustatud.
+2. **Krediidi vorm.** Kinnitatud teenusekrediidid rakendatakse tulevaste Partneri API tasude vastu ega oma rahalist väärtust. Need ei ole tagasimaksed ega maksta välja, välja arvatud kohaldatava seaduse nõudel.
+3. **Maksimaalne krediit.** Ühe kalendrikuuga antud teenusekrediidide kogusumma ei ületa 50% teie selle kuu eest makstud või makstavast Partneri API tasust.
+4. **Ainus ja eksklusiivne vahend.** Teenusekrediidid on teie **ainus ja eksklusiivne vahend** Wink'i tööaja lubaduse mittetäitmise või muu Partneri API kättesaadavuse puuduse korral.
+
+### 4. Erandid
+
+Tööaja lubadus ja sellest tulenevad teenusekrediidid ei kehti ning seisakuaeg ei hõlma ühtegi kättesaamatust, peatamist, halvenemist või jõudlusprobleemi, mis tuleneb või on seotud:
+
+1. **Planeeritud hooldus**, mille kohta Wink on eelnevalt teavitanud, tingimusel, et teavitus on antud mõistliku etteteatamisajaga kanalil, mida Wink tavaliselt kasutab klientidega suhtlemiseks;
+2. **Force majeure** sündmused või muud Wink'i mõistliku kontrolli alt väljuvad põhjused, sealhulgas loodusõnnetused, valitsuse tegevused, võrgu- või kommunaalteenuste tõrked ning teenuse keelamise või muud pahatahtlikud rünnakud;
+3. probleemid, mis on põhjustatud **teie** tegudest või tegematajätmistest, teie seadmetest, tarkvarast või võrgust või mis tahes **kolmanda osapoole** teenusest, tootest või pakkujast, kes ei ole Wink'i otsese kontrolli all;
+4. teie **teenuse väärkasutus** või **lepingu, selle SLA, kasutustingimuste või kehtivate päringupiirangute rikkumine**, sealhulgas liiklus, mida Wink mõistlikult peab liigseks, automatiseeritud väärkasutus või pettus; ning
+5. mis tahes **juurdepääsu peatamine või lõpetamine**, mis on korrektselt teostatud vastavalt Lepingule, sealhulgas peatamine maksmata jätmise tõttu.
+
+### 5. Tugi ja vastuse eesmärgid
+
+Wink pakub Partneri API jaoks tuge tavapärastel tööaegadel, välja arvatud kohalikud riigipühad. Wink kasutab äriliselt mõistlikke jõupingutusi, et tunnustada korrektselt esitatud tugipäringuid järgmiste sihtmärkide piires, tuginedes teie määratud ja Wink'i mõistlikult kinnitatud tõsidusele:
+
+| Tõsidus | Kirjeldus | Sihtmärk esialgseks vastuseks |
+|---|---|---|
+| **Sev 1 — Kriitiline** | Partneri API on tootmises maas või kasutuskõlbmatu ilma lahenduseta. | 4 tundi |
+| **Sev 2 — Suur** | Oluline funktsioon on kahjustatud või halvenenud; lahendus on olemas. | 1 tööpäev |
+| **Sev 3 — Väike** | Üldised küsimused, väiksemad probleemid või funktsioonisoovid. | 2 tööpäeva |
+
+Sihtmärgiks olevad vastuseajad kirjeldavad, millal Wink püüab teha **esialgse kontakti**; need ei ole lahenduse ajagarantiid. Prioriteetne tugi ja tõsidusel põhinevad eesmärgid kehtivad tasemetel, kus need on kaasatud.
+
+### 6. Andmed ja turvalisus
+
+Wink rakendab äriliselt mõistlikke haldus-, tehnilisi ja organisatsioonilisi meetmeid, mis on mõeldud Partneri API kaudu töödeldavate andmete konfidentsiaalsuse, terviklikkuse ja kättesaadavuse kaitsmiseks ning vaatab neid meetmeid perioodiliselt üle. Wink'i isikuandmete töötlemist reguleerib [Privaatsuspoliitika](/et/privacy) ja kõik andmetöötlustingimused Lepingus. Teie vastutate oma API volituste turvalisuse eest, kõigi andmete seadusliku kasutamise eest ning Wink'i viivitamatult teavitamise eest, kui kahtlustate volituste kompromiteerimist.
+
+### 7. Vastutuse piiramine
+
+Teenusekrediidid on **ainus ja eksklusiivne vahend** mis tahes kättesaamatuse või tööaja lubaduse mittetäitmise korral ning neid pakutakse kõigi muude sellisest rikkumisest tulenevate vastutuste asemel. Välja arvatud käesolevas SLA-s selgesõnaliselt sätestatud, pakutakse Partneri API-d "nagu on saadaval". Maksimaalses ulatuses, mida kohaldatav seadus lubab, on Wink'i koguvastutus Teenuse suhtes piiratud vastavalt Lepingule ning Wink ei vastuta kaudsete, juhuslike, erakorraliste, tagajärjel tekkivate või karistuslike kahjude eest ega kasumi, tulu, andmete või hea tahte kaotuse eest, isegi kui on teavitatud selliste kahjude võimalikkusest.
+
+### 8. Kehtivusaeg, muudatused ja lõpetamine
+
+See SLA kehtib seni, kuni teil on aktiivne Partneri API tellimus tasemel, kus SLA kehtib. Wink võib seda SLA-d aeg-ajalt uuendada; olulised muudatused teatatakse kanalite kaudu, mida Wink tavaliselt kasutab klientidega suhtlemiseks, ning Partneri API jätkuv kasutamine pärast uuenduse jõustumist tähendab uuendatud SLA aktsepteerimist. See SLA lõpeb automaatselt Lepingust või teie Partneri API tellimusest loobumise või aegumise korral. Lõpetamisele vaatamata jäävad kehtima jaotised, mis oma olemuselt peaksid lõpetamisele järgima — sealhulgas kogunenud, kuid nõudmata teenusekrediidi õigused, vastutuse piirang ja mõisted.
