@@ -58,6 +58,322 @@ The Channel Manager API follows OTA protocol standards (SOAP/XML) for compatibil
 Repeat all steps above in production before go-live. The Wink team will migrate any hotels already using your channel manager to your new production account.
 :::
 
+## Certification
+
+Certification is how you prove — and how Wink confirms — that your integration correctly maps
+inventory, pushes rate and availability, and receives bookings end-to-end. It is designed to be
+self-serve: you drive every step from your own system, and you submit a single evidence bundle at
+the end. Wink reviews the bundle and, on pass, promotes your Affiliate / Channel Manager account
+from **PENDING_APPROVAL** to **ACTIVE**.
+
+Certification runs entirely against the staging environment
+(`https://staging-integrations.wink.travel`). Nothing in this section touches production.
+
+### What you will prove
+
+<Steps>
+1. **Authentication.** Your OAuth2 client can obtain an access token and successfully call the
+   `/ping` endpoint against your Affiliate / Channel Manager account.
+
+2. **Inventory mapping.** You can list the hotel(s) connected to your account, retrieve the master
+   rate (room type × rate plan) you configured, and correctly identify the `masterRateIdentifier`
+   your system will target.
+
+3. **Rate & availability push.** You can update all seven days of a certification week
+   independently — a different combination of amount, quantity, close-on-arrival / close-on-departure
+   flags, and min/max length-of-stay on each day — and read the exact values back from Wink.
+
+4. **Booking pull.** You can retrieve a real staging booking made against your test property,
+   surface it in your own PMS/CM UI with the correct room-stay, guest, and total, then reflect a
+   cancellation once Wink marks the booking cancelled.
+</Steps>
+
+### Prerequisites
+
+Before you begin certification, complete steps 1–5 of [Integration steps](#integration-steps) so
+that you have:
+
+- A Wink user on staging with an **Affiliate / Channel Manager** account and a **Hotel** account
+  connected to it (Extranet → Distribution → Channel Manager).
+- At least one **room type** and one **rate plan** created inside the Hotel account. Publish the
+  hotel so it is bookable on `https://staging-book.wink.travel/hotel/<your-slug>`.
+- A registered application under your Affiliate / Channel Manager account with a **Client ID**,
+  **Secret Key**, and the `integrations.read integrations.write` scopes
+  (see [Authentication](/developers/authentication)).
+- The **`managingEntityIdentifier`** of your Affiliate / Channel Manager account and the
+  **`propertyIdentifier`** of your Hotel account (both are UUIDs, visible on the account settings
+  page in the Portal).
+
+### Common request conventions
+
+Every request in this section uses these headers:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` comes from the `client_credentials` grant against
+  `https://staging-iam.wink.travel/oauth2/token` — see [Authentication](/developers/authentication#staging).
+- The `Wink-Version` header is required; omitting it will not route to the v2 JSON API.
+- `Content-Type: application/json` is added on `PUT` requests that carry a body.
+
+Throughout the examples below, the placeholders map to the values you gathered in
+[Prerequisites](#prerequisites):
+
+| Placeholder | Meaning |
+|---|---|
+| `{managingEntityIdentifier}` | Your Affiliate / Channel Manager account ID (UUID). |
+| `{propertyIdentifier}`       | The Hotel account (property) ID you connected to the CM account. |
+| `{masterRateIdentifier}`     | The master rate (room type × rate plan) you will certify. |
+| `{bookingIdentifier}`        | The staging booking ID returned by the booking list call. |
+
+### Step A — Ping
+
+Confirm your credentials resolve to the Affiliate / Channel Manager account you expect.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Expected response:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Your Channel Manager Account Name",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+A **200** response with a matching `name` is the signal that authentication and account resolution
+are correct. `status` will read `PENDING_APPROVAL` until Wink certifies you.
+
+### Step B — List properties
+
+Retrieve the paginated list of hotels linked to your account and confirm your test property is
+present.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+The response is a Spring `Page` of `ChannelManagerProperty` entries. Locate the entry whose
+`identifier` matches your `{propertyIdentifier}` and record its `currencyCode` — you will need it
+for the interpretation of the rate updates in [Step D](#step-d--load-the-certification-week).
+
+### Step C — Fetch master rates
+
+Retrieve the property together with every master rate (room type × rate plan combination) it
+publishes. Pick the one you intend to certify against and record its `identifier` as your
+`{masterRateIdentifier}`.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+The response envelope is `PropertyWithRoomRateList`: a `property` block plus a `rooms` array of
+`PropertyRoomRate` entries. Each entry exposes the room type, rate plan, occupancy limits, base
+rate, and the rate modifiers you will preserve when pushing daily rates.
+
+:::caution
+Certify against a single master rate for the entire certification run. Mapping additional room
+types and rate plans is expected in production, but the evidence bundle only needs to show one
+master rate exercised end-to-end.
+:::
+
+### Step D — Load the certification week
+
+Load a **seven-day rate calendar** covering the first seven calendar days of the month **following**
+the month in which you begin certification. For example, if you start certification on 21 August,
+target 1 September through 7 September.
+
+You will send **seven separate `PUT` calls** — one per day — where `startDate == endDate`. Each day
+carries a deliberately different combination of amount, quantity, restriction flags, and length-of-stay
+limits so that every writable field is exercised at least once. Values are in the property's
+currency (recorded in Step B); omit `currencyCode` and it will default correctly.
+
+| Day | Amount | Quantity | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | What it proves |
+|-----|--------|----------|-----------------|-------------------|-----------------|-----------------|----------------|
+| 1   | 100.00 | 5        | false           | false             | 1               | 30              | Baseline day. |
+| 2   | 125.00 | 4        | false           | false             | 1               | 14              | Amount + quantity + `maxLengthOfStay` change. |
+| 3   | 150.00 | 3        | **true**        | false             | 1               | 30              | `closedOnArrival` flip. |
+| 4   | 175.00 | 2        | false           | **true**          | 2               | 7               | `closedOnDeparture` flip + tighter LOS window. |
+| 5   | 200.00 | **0**    | false           | false             | 1               | 30              | Sold-out quantity. |
+| 6   | 225.00 | 5        | false           | false             | **3**           | **5**           | Restrictive LOS window. |
+| 7   | 250.00 | 1        | false           | false             | 1               | 30              | Last-room availability. |
+
+The request body for Day 1 looks like this. Repeat, adjusting `startDate` / `endDate` / values per
+row, for Days 2 through 7.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Each `PUT` responds `200` with the array of updated `PropertyRate` entries for the range you sent
+(one entry when `startDate == endDate`). Capture that response — it will be part of your evidence.
+
+:::note
+`master` should be `true` on every certification-week call. This tells Wink your update is a
+template rate, not a per-booking override.
+:::
+
+### Step E — Read back the certification week
+
+Retrieve the entire week in a single call and confirm that each day's stored values match the row
+you sent in Step D — including the boolean flags and the length-of-stay window.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+The response is a `PropertyRoomRateWithRateList`. Its `rates` array must contain **seven** entries,
+one per day, each with the `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`,
+`minLengthOfStay`, and `maxLengthOfStay` you loaded. A mismatch on any field means the corresponding
+`PUT` in Step D did not land as expected — fix it and re-verify before moving on.
+
+### Step F — Make a test booking
+
+Open the following URL in a browser, replacing `<your-slug>` with the slug of the Hotel account you
+published in Prerequisites:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Select an arrival and departure date that fall entirely within your certification week, choose the
+room type + rate plan combination you certified, and complete the booking. Staging uses a test
+payment path — no live card is charged.
+
+Once the confirmation page renders, record the **booking code** (format `WNKxxxxx`) shown to the
+guest.
+
+### Step G — Pull the booking
+
+Retrieve every booking created for your test property within a window that spans the booking
+timestamp.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Find the entry whose `bookingCode` matches the code you recorded in Step F. Record its
+`bookingIdentifier`. Then fetch that single booking:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+The response is a `PropertyBooking`. Import it into your own PMS / channel-manager UI and confirm
+that every one of the following renders correctly to an operator:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Guest: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (the net amount the hotel receives across all rooms)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- Every entry in `roomStays`: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`,
+  `endDate`, and per-room `amount`
+
+Take a screenshot of the booking as it appears inside your own UI — that screenshot is one of the
+required evidence artifacts.
+
+### Step H — Cancel the booking and verify
+
+Ask the Wink team to cancel the certification booking on your behalf (or cancel it yourself from
+the Hotel account's Extranet if you have that permission). Then re-fetch the same booking with the
+call from Step G.
+
+Confirm the response now shows:
+
+- `cancelled: true`
+- A populated `cancelDate` timestamp
+- A `paymentMethodStatus` reflecting the cancellation lifecycle (`CANCELLED`, `PARTIALLY_REFUNDED`,
+  or `FULLY_REFUNDED` depending on refund policy)
+
+Import that updated booking into your own UI and confirm the cancellation is visible to the
+operator — status, cancelled-on timestamp, and any refund indicator your UI supports. Take a
+second screenshot of the cancelled booking in your UI. This is the final evidence artifact.
+
+### Step I — Submit your evidence bundle
+
+Package the following into a single archive (`.zip`) named
+`wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **API transcript.** For every request you issued in Steps A through H, capture the full
+   HTTP request (method, URL, request headers with the `Authorization` value redacted, and the
+   JSON body for `PUT` calls) and the full HTTP response (status code, response headers, and the
+   JSON body). Structure the transcript so each request/response pair is clearly labelled with the
+   step it belongs to (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json`,
+   and so on). Plain-text `.http` files or a single `.har` export are both acceptable formats.
+
+2. **UI screenshot: active booking.** The screenshot from Step G showing the certification
+   booking rendered inside your own PMS / channel-manager UI, with guest, dates, room type, rate
+   plan, and total clearly legible.
+
+3. **UI screenshot: cancelled booking.** The screenshot from Step H showing the same booking in
+   your UI after cancellation, with the cancelled status and timestamp clearly legible.
+
+4. **Certification summary.** A short `README.md` inside the archive listing:
+   - Your channel manager / PMS name and version.
+   - The `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier`, and
+     `bookingIdentifier` you used.
+   - The staging hotel slug (the `<your-slug>` in `https://staging-book.wink.travel/hotel/<your-slug>`).
+   - The certification-week date range (Day 1 → Day 7 in ISO-8601).
+   - The name and email of the engineer who ran the certification.
+</Steps>
+
+Send the archive to your Wink integrations contact. Wink will review, follow up on any
+discrepancy, and — on pass — flip your Affiliate / Channel Manager account status from
+`PENDING_APPROVAL` to `ACTIVE`. Your integration is then eligible for production onboarding.
+
+:::tip
+Automate the transcript capture. The seven `PUT` calls in Step D and the read-back in Step E are
+the most common source of certification failures — an interactive HTTP client that persists every
+request and response as it runs will save you a full rerun if a value is off by a decimal.
+:::
+
 ## Webhook notifications
 
 You can subscribe to channel manager webhook events to receive real-time notifications:
