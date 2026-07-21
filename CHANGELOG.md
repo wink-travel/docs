@@ -2,6 +2,12 @@
 
 Changelog of docs.
 
+## v0.1.8 (2026-07-05)
+
+### Bug Fixes
+
+-  **starwind**  remove unused parentHandler field and isShort param ([7aa7a](https://github.com/wink-travel/docs/commit/7aa7a3e7c2ba299) Bjorn Harvold)  
+
 ## v0.1.7 (2026-07-02)
 
 ## v0.1.6 (2026-06-30)
