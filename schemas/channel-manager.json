@@ -7,7 +7,7 @@
       "name": "Contact",
       "email": "hi@wink.travel"
     },
-    "version": "31.5.3-SNAPSHOT",
+    "version": "32.1.4-SNAPSHOT",
     "x-logo": {
       "backgroundColor": "#FFFFFF",
       "altText": "wink",
@@ -1393,7 +1393,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PageChannelManagerProperty"
+                  "$ref": "#/components/schemas/PageResponseChannelManagerProperty"
                 },
                 "example": {
                   "content": [
@@ -1405,7 +1405,14 @@
                       "currencyCode": "THB",
                       "timeZone": "Asia/Bangkok"
                     }
-                  ]
+                  ],
+                  "number": 0,
+                  "size": 20,
+                  "totalElements": 1234,
+                  "totalPages": 62,
+                  "numberOfElements": 20,
+                  "first": true,
+                  "last": false
                 }
               }
             }
@@ -2885,8 +2892,10 @@
           "startDate"
         ]
       },
-      "PageChannelManagerProperty": {
+      "PageResponseChannelManagerProperty": {
         "type": "object",
+        "default": null,
+        "description": "Owned pagination envelope: a page of content plus flat page metadata.",
         "example": {
           "content": [
             {
@@ -2897,89 +2906,70 @@
               "currencyCode": "THB",
               "timeZone": "Asia/Bangkok"
             }
-          ]
+          ],
+          "number": 0,
+          "size": 20,
+          "totalElements": 1234,
+          "totalPages": 62,
+          "numberOfElements": 20,
+          "first": true,
+          "last": false
         },
         "properties": {
-          "totalElements": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "numberOfElements": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "pageable": {
-            "$ref": "#/components/schemas/PageableObject"
-          },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject"
-          },
-          "first": {
-            "type": "boolean"
-          },
-          "last": {
-            "type": "boolean"
-          },
-          "size": {
-            "type": "integer",
-            "format": "int32"
-          },
           "content": {
             "type": "array",
+            "default": "",
+            "description": "The elements on this page.",
             "items": {
               "$ref": "#/components/schemas/ChannelManagerProperty"
             }
           },
           "number": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": "",
+            "description": "Zero-based index of this page.",
+            "example": 0
           },
-          "empty": {
-            "type": "boolean"
-          }
-        }
-      },
-      "PageableObject": {
-        "type": "object",
-        "properties": {
-          "unpaged": {
-            "type": "boolean"
-          },
-          "paged": {
-            "type": "boolean"
-          },
-          "pageNumber": {
+          "size": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": "",
+            "description": "The requested page size.",
+            "example": 20
           },
-          "pageSize": {
+          "totalElements": {
             "type": "integer",
-            "format": "int32"
+            "format": "int64",
+            "default": "",
+            "description": "Total number of elements across all pages.",
+            "example": 1234
           },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject"
-          },
-          "offset": {
+          "totalPages": {
             "type": "integer",
-            "format": "int64"
-          }
-        }
-      },
-      "SortObject": {
-        "type": "object",
-        "properties": {
-          "unsorted": {
-            "type": "boolean"
+            "format": "int32",
+            "default": "",
+            "description": "Total number of pages for the current page size.",
+            "example": 62
           },
-          "sorted": {
-            "type": "boolean"
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Number of elements on this page.",
+            "example": 20
           },
-          "empty": {
-            "type": "boolean"
+          "first": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether this is the first page.",
+            "example": true
+          },
+          "last": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether this is the last page.",
+            "example": false
           }
         }
       },

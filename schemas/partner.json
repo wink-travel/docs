@@ -3,7 +3,7 @@
   "info": {
     "title": "Wink Partner Integrator API",
     "description": "\n# Partner Integrator API\nAuthenticated, usage-metered access to bookable travel inventory for API integrators. Query\nproperties, availability and rates programmatically at scale under\n/api/partner/{managingEntityIdentifier}/. Requests are counted and rate-limited per account:\na free tier applies until you subscribe to the metered paid tier. See the Partner API\npricing & SLA page for current limits, per-request pricing and terms.",
-    "version": "31.5.3-SNAPSHOT"
+    "version": "32.1.4-SNAPSHOT"
   },
   "servers": [
     {
@@ -75,7 +75,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PagePropertyWithBestPrice_Non_Authenticated_Entity"
+                  "$ref": "#/components/schemas/PageResponsePropertyWithBestPrice_Non_Authenticated_Entity"
                 }
               }
             }
@@ -258,7 +258,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PagePropertyWithBestPrice_Non_Authenticated_Entity"
+                  "$ref": "#/components/schemas/PageResponsePropertyWithBestPrice_Non_Authenticated_Entity"
                 }
               }
             }
@@ -441,7 +441,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PagePropertyWithBestPrice_Non_Authenticated_Entity"
+                  "$ref": "#/components/schemas/PageResponsePropertyWithBestPrice_Non_Authenticated_Entity"
                 }
               }
             }
@@ -624,7 +624,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PagePropertyWithBestPrice_Non_Authenticated_Entity"
+                  "$ref": "#/components/schemas/PageResponsePropertyWithBestPrice_Non_Authenticated_Entity"
                 }
               }
             }
@@ -807,7 +807,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PagePropertyWithBestPrice_Non_Authenticated_Entity"
+                  "$ref": "#/components/schemas/PageResponsePropertyWithBestPrice_Non_Authenticated_Entity"
                 }
               }
             }
@@ -990,7 +990,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/PagePropertyWithBestPrice_Non_Authenticated_Entity"
+                  "$ref": "#/components/schemas/PageResponsePropertyWithBestPrice_Non_Authenticated_Entity"
                 }
               }
             }
@@ -4334,25 +4334,25 @@
             "default": "",
             "description": "Premium percent"
           },
-          "totalDiscountPercent": {
-            "type": "number"
-          },
-          "userSpecifiedCurrencyTotal": {
-            "$ref": "#/components/schemas/CustomMonetaryAmount"
-          },
-          "sourceTotal": {
-            "$ref": "#/components/schemas/CustomMonetaryAmount"
+          "hasChannelDiscount": {
+            "type": "boolean"
           },
           "internalTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
           },
-          "hasChannelDiscount": {
+          "totalDiscountPercent": {
+            "type": "number"
+          },
+          "sourceTotal": {
+            "$ref": "#/components/schemas/CustomMonetaryAmount"
+          },
+          "userSpecifiedCurrencyTotal": {
+            "$ref": "#/components/schemas/CustomMonetaryAmount"
+          },
+          "hasPromotion": {
             "type": "boolean"
           },
           "hasPremium": {
-            "type": "boolean"
-          },
-          "hasPromotion": {
             "type": "boolean"
           }
         },
@@ -4501,75 +4501,75 @@
           "name"
         ]
       },
-      "PagePropertyWithBestPrice_Non_Authenticated_Entity": {
+      "PageResponsePropertyWithBestPrice_Non_Authenticated_Entity": {
         "type": "object",
+        "default": null,
+        "description": "Owned pagination envelope: a page of content plus flat page metadata.",
+        "example": {
+          "content": [],
+          "number": 0,
+          "size": 20,
+          "totalElements": 1234,
+          "totalPages": 62,
+          "numberOfElements": 20,
+          "first": true,
+          "last": false
+        },
         "properties": {
-          "totalElements": {
-            "type": "integer",
-            "format": "int64"
-          },
-          "totalPages": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "first": {
-            "type": "boolean"
-          },
-          "last": {
-            "type": "boolean"
-          },
-          "numberOfElements": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "pageable": {
-            "$ref": "#/components/schemas/PageableObject_Non_Authenticated_Entity"
-          },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject_Non_Authenticated_Entity"
-          },
-          "size": {
-            "type": "integer",
-            "format": "int32"
-          },
           "content": {
             "type": "array",
+            "default": "",
+            "description": "The elements on this page.",
             "items": {
               "$ref": "#/components/schemas/PropertyWithBestPrice_Non_Authenticated_Entity"
             }
           },
           "number": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": "",
+            "description": "Zero-based index of this page.",
+            "example": 0
           },
-          "empty": {
-            "type": "boolean"
-          }
-        }
-      },
-      "PageableObject_Non_Authenticated_Entity": {
-        "type": "object",
-        "properties": {
-          "unpaged": {
-            "type": "boolean"
-          },
-          "paged": {
-            "type": "boolean"
-          },
-          "pageNumber": {
+          "size": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "default": "",
+            "description": "The requested page size.",
+            "example": 20
           },
-          "pageSize": {
+          "totalElements": {
             "type": "integer",
-            "format": "int32"
+            "format": "int64",
+            "default": "",
+            "description": "Total number of elements across all pages.",
+            "example": 1234
           },
-          "sort": {
-            "$ref": "#/components/schemas/SortObject_Non_Authenticated_Entity"
-          },
-          "offset": {
+          "totalPages": {
             "type": "integer",
-            "format": "int64"
+            "format": "int32",
+            "default": "",
+            "description": "Total number of pages for the current page size.",
+            "example": 62
+          },
+          "numberOfElements": {
+            "type": "integer",
+            "format": "int32",
+            "default": "",
+            "description": "Number of elements on this page.",
+            "example": 20
+          },
+          "first": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether this is the first page.",
+            "example": true
+          },
+          "last": {
+            "type": "boolean",
+            "default": false,
+            "description": "Whether this is the last page.",
+            "example": false
           }
         }
       },
@@ -5906,7 +5906,7 @@
               "default": ""
             }
           },
-          "userSpecifiedCurrencyTotal": {
+          "internalTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
           },
           "rateSource": {
@@ -5915,7 +5915,7 @@
           "sourceTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
           },
-          "internalTotal": {
+          "userSpecifiedCurrencyTotal": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
           },
           "available": {
@@ -6291,20 +6291,6 @@
           }
         }
       },
-      "SortObject_Non_Authenticated_Entity": {
-        "type": "object",
-        "properties": {
-          "unsorted": {
-            "type": "boolean"
-          },
-          "sorted": {
-            "type": "boolean"
-          },
-          "empty": {
-            "type": "boolean"
-          }
-        }
-      },
       "StayRate_Non_Authenticated_Entity": {
         "type": "object",
         "properties": {
@@ -6527,14 +6513,14 @@
             "default": "",
             "description": "Internal currency final price."
           },
-          "internalAveragePricePerNight": {
-            "$ref": "#/components/schemas/CustomMonetaryAmount"
+          "totalDiscountPercent": {
+            "type": "number"
           },
           "sourceAveragePricePerNight": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
           },
-          "totalDiscountPercent": {
-            "type": "number"
+          "internalAveragePricePerNight": {
+            "$ref": "#/components/schemas/CustomMonetaryAmount"
           },
           "userSpecifiedCurrencyAveragePricePerNight": {
             "$ref": "#/components/schemas/CustomMonetaryAmount"
