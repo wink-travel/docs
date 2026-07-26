@@ -2,6 +2,14 @@
 
 Changelog of docs.
 
+## v0.1.9 (2026-07-21)
+
+### Bug Fixes
+
+-  **schemas**  fetch from all three apps — inventory, integrations, partner ([1693f](https://github.com/wink-travel/docs/commit/1693fe7eae5f3ba) Bjorn Harvold)  
+-  **schemas**  fetch partner-app's "integrator" group for the partner audience ([641be](https://github.com/wink-travel/docs/commit/641be4923a8fdd7) Bjorn Harvold)  
+-  **schemas**  source the partner OpenAPI group from partner-app, not integrations-app ([6abdc](https://github.com/wink-travel/docs/commit/6abdc80ed89cbf3) Bjorn Harvold)  
+
 ## v0.1.8 (2026-07-05)
 
 ### Bug Fixes
