@@ -3,37 +3,37 @@ title: Termeni și Condiții
 description: Termeni și Condiții pentru toți utilizatorii și entitățile Wink.
 ---
 
-Fiecare portal poate avea termeni și condiții diferite. Vă rugăm să accesați secțiunea de mai jos care se aplică pentru dumneavoastră și să căutați sub-secțiunea numită Termeni de Serviciu și Condiții de Plată.
+Diferite părți ale Wink au termeni diferiți. Găsește mai jos secțiunea care se aplică ție — fiecare are propriul său Contract de Servicii, iar secțiunile care gestionează bani au și Termeni de Plată.
 
-## Portal afiliat
+## Proprietăți
 
-Pentru afiliați care doresc să învețe cum să câștige un venit pasiv monetizând conturile lor sociale cu Wink.  
-[Wink Studio](https://studio.wink.travel) are toate instrumentele de care aveți nevoie pentru a vinde ca un profesionist.
+Pentru hoteluri, lanțuri, branduri și companii de management care vând inventar pe Wink.
 
-<LinkButton href="/ro/portal/studio/what-is-studio">
-Aflați mai multe despre Wink Studio
-</LinkButton>
+- [Termeni de Serviciu](/ro/portal/extranet/terms-of-service)
+- [Termeni de Plată](/ro/portal/extranet/payment-terms)
+
+## Afiliati
+
+Pentru creatori, influenceri și afiliați care promovează inventar de călătorie și câștigă comision.
+
+- [Termeni de Serviciu](/ro/portal/studio/terms-of-service)
+- [Termeni de Plată](/ro/portal/studio/payment-terms)
+
+## Agenți de turism
+
+Pentru agenții de turism înregistrați care caută, rezervă și câștigă în numele clienților lor.
+
+- [Termeni de Serviciu](/ro/portal/travel-agent/terms-of-service)
+- [Termeni de Plată](/ro/portal/travel-agent/payment-terms)
 
 ## Motor de rezervări
 
-Toate drumurile duc la motorul nostru de rezervări! Aflați ce puteți face cu cel mai personalizabil motor de rezervări, axat pe călătorii, de pe piață.
+Pentru toți cei care rezervă călătorii prin Wink.
 
-<LinkButton href="/ro/booking-engine/in-a-nutshell">
-Aflați mai multe despre motorul nostru de rezervări
-</LinkButton>
+- [Termeni de Serviciu](/ro/booking-engine/terms-of-service)
 
-## Portal proprietăți
+## Toată lumea
 
-Pentru proprietățile care doresc să înceapă să vândă pe Wink. Folosiți instrumentele noastre pentru a vă vinde și promova eficient online și pentru a obține o armată de afiliați din întreaga lume care să vă ajute să obțineți clienți și rezervări.
-
-<LinkButton href="/ro/portal/extranet/what-is-extranet">
-Aflați mai multe despre Wink Extranet
-</LinkButton>
-
-## Portal agenți de turism
-
-Pentru agenții de turism care doresc să afle ce le poate oferi Wink în termeni de tarife personalizate, oferte și inventar, direct de la furnizori.
-
-<LinkButton href="/ro/portal/travel-agent/what-is-agent">
-Aflați mai multe despre Wink Agent
-</LinkButton>
+- [Politica de Confidențialitate](/ro/privacy)
+- [Tarife](/ro/getting-started/pricing) — ce este gratuit, cât costă o rezervare și cum funcționează taxele de utilizare pay-as-you-go.
+- [Cerere de ștergere a datelor](/ro/getting-started/data-deletion-request)

@@ -32,10 +32,10 @@ Wink'in pazardaki diğer online seyahat segmentleriyle nasıl karşılaştırıl
 
 ## Wink vs İnternet Rezervasyon Motoru (IBE)
 
-Bazı oteller, bizi kanal yöneticileriyle birlikte gelen internet rezervasyon motorlarıyla karşılaştırmaya çalışır ve mülklerindeki oda sayısına göre sabit, aylık bir fiyat talep ederler.
+Bazı oteller, bizi kanal yöneticileriyle birlikte gelen internet rezervasyon motorlarıyla karşılaştırmaya çalışır ve mülklerindeki oda sayısına göre sabit, aylık bir fiyat vermemizi isterler.
 
-Biz bir IBE değiliz ve umarız [Wink Academy](/tr/) bunu netleştirmeye yardımcı olur. Her hizmetin artıları ve eksileri vardır. Eğer IBE'niz mülkünüz için işe yarıyorsa, onu kullanmaya devam edin.  
-Wink, seyahat endüstrisindeki çeşitli boşlukları doldurmak ve hepsini tek bir yerde bir araya getirmek için var.
+Biz bir IBE değiliz ve umarız bu farkı açıklığa kavuşturur. Her hizmetin artıları ve eksileri vardır. Eğer IBE'niz mülkünüz için işe yarıyorsa, onu kullanmaya devam edin.  
+Wink, seyahat endüstrisindeki birkaç boşluğu doldurmak ve hepsini tek bir yerde bir araya getirmek için var.
 
 :::tip
 Mevcut IBE'nizi değiştirmek zorunda değilsiniz. Ancak, sosyal dostu rezervasyon motorumuzu veya link yöneticimizi sosyal medya hesaplarınızdan birinde denemenizi öneririz; nasıl dönüşüm sağladıklarını görün. Rezervasyon olmazsa hiçbir şey ödemezsiniz - Kaybedecek ne var? 😉

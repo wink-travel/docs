@@ -9,7 +9,7 @@ Ten artykuł wyjaśnia, jakich klientów obsługujemy i jak najlepiej możemy po
 
 ## Obiekty
 
-Wink zaczął wdrażać hotele dekadę temu. Hotele korzystają z Wink, aby skutecznie zarządzać swoim inwentarzem na tysiącach kanałów sprzedaży, w tym na własnej stronie brand.com, oraz aby zarabiać więcej na każdej rezerwacji, jednocześnie wzmacniając kanały bezpośrednie dzięki naszym narzędziom skoncentrowanym na branży hotelarskiej, które poprawiają tożsamość marki i rentowność​.
+Wink zaczął onboardować hotele dekadę temu. Hotele korzystają z Wink, aby skutecznie zarządzać swoim inwentarzem na tysiącach kanałów sprzedaży, w tym na własnej stronie brand.com, oraz aby zarabiać więcej na każdej rezerwacji, jednocześnie wzmacniając kanały bezpośrednie dzięki naszym narzędziom skoncentrowanym na branży hotelarskiej, które poprawiają tożsamość marki i rentowność​.
 
 ## Marki i sieci
 
@@ -21,15 +21,23 @@ Marki i sieci mają nieco inne potrzeby niż pojedynczy obiekt. Na Wink mogą:
 
 ## Firmy zarządzające
 
-Firmy zarządzające w branży hotelarskiej oraz firmy zarządzające destynacjami mogą zarządzać swoimi portfelami obiektów w imieniu właścicieli. Istnieje wyraźna korzyść z powierzenia sprzedaży segmentowi online, obsługiwanemu przez agencje świadome cyfrowo, podczas gdy hotele mogą skupić się na zarządzaniu satysfakcją klientów po ich przybyciu na miejsce.
+Firmy zarządzające w branży hotelarskiej i firmy zarządzające destynacjami mogą zarządzać swoimi portfelami obiektów w imieniu właścicieli. Istnieje wyraźna przewaga w powierzeniu sprzedaży segmentowi online, świadomemu cyfrowo, podczas gdy hotele mogą skupić się na zarządzaniu satysfakcją klientów po ich przybyciu na miejsce.
 
 ## Influencerzy
 
 Influencerzy korzystają z Wink, aby lepiej monetyzować swoją publiczność. Robią to, współpracując z hotelami, tworząc niestandardowe oferty i wykorzystując przyjazne dla mediów społecznościowych narzędzia Wink oraz potężną analitykę do śledzenia, które produkty sprzedają się najlepiej​.
 
+## Agencje talentów
+
+Agencje talentów są dla twórców tym, czym firmy zarządzające dla hoteli. Jeśli reprezentujesz grupę influencerów, twórców treści lub osobowości podróżniczych, możesz zarządzać wszystkimi ich kontami Wink z jednego miejsca — znajdować inwentarz, negocjować oferty z obiektami, tworzyć i publikować treści oraz śledzić wyniki całego zespołu, a nie pojedynczego twórcy.
+
+Negocjujesz opłatę agencyjną z każdym ze swoich talentów i zarabiasz tę opłatę na każdej rezerwacji, którą wygenerują. Jest ona wypłacana automatycznie jako część rezerwacji, więc nie musisz wystawiać faktur swoim talentom ani ścigać się za prowizjami po fakcie. Twoi talenty zachowują kontrolę przez cały czas — posiadają swoje konto, to oni stosują uzgodnioną opłatę i mogą dodawać zasady wygaśnięcia lub zakończyć współpracę, kiedy tylko chcą.
+
+Zobacz [Reprezentacja agencji](/pl/portal/settings/agency-representation), aby dowiedzieć się, jak to jest skonfigurowane.
+
 ## Agenci turystyczni
 
-Agenci turystyczni mają dostęp do światowego inwentarza podróży w atrakcyjnych cenach za pośrednictwem naszego dedykowanego [portalu dla agentów turystycznych](https://agent.wink.travel). Mogą dokonywać rezerwacji przez nasz portal, za pomocą naszego API lub pozwalając swoim użytkownikom na samodzielne rezerwacje na stronie agenta turystycznego korzystającej z naszych technologii.
+Agenci turystyczni mają dostęp do światowego inwentarza podróży w świetnych cenach dzięki naszemu dedykowanemu [portalowi dla agentów turystycznych](https://agent.wink.travel). Mogą dokonywać rezerwacji przez nasz portal, za pomocą naszego API lub pozwalając swoim użytkownikom rezerwować samodzielnie na stronie agenta turystycznego korzystającej z naszych technologii.
 
 ## Korporacje
 
@@ -37,16 +45,16 @@ Korporacje wymagają bardziej rozbudowanej platformy podróżniczej:
 
 - Potrzebują dobrze zorganizowanych planów podróży, które wspierają elastyczność i zmiany w ostatniej chwili.
 - Wymagają niezawodnych narzędzi komunikacyjnych, takich jak internet.
-- Mają preferencje dotyczące dostawców z członkostwami.
-- Często posiadają firmową kartę kredytową i ustalają limity wydatków.
-- Wymagają zarządzania wydatkami i integracji raportowania.
+- Mają preferencje dostawców z członkostwami.
+- Często posiadają kartę kredytową korporacyjną i ustalają limity wydatków.
+- Potrzebują zarządzania wydatkami i integracji raportowania.
 - Potrzebują wsparcia konsjerża oraz usług MICE podczas wydarzeń.
 
-Podróżujący służbowo mogą zarządzać własnymi kontami na naszym [portalu korporacyjnym](/pl/portal/corporate/what-is-group) lub korzystać z oficjalnie wspieranego wtyczki [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) oraz integracji z [Concur](https://www.concur.com/).
+Podróżujący służbowo mogą zarządzać swoimi kontami na naszym [portalu korporacyjnym](/pl/portal/corporate/what-is-group) lub korzystać z oficjalnie wspieranego wtyczki [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) oraz integracji z [Concur](https://www.concur.com/).
 
 ## Deweloperzy
 
-Chociaż stworzyliśmy tę platformę przez i dla hotelarzy... Każda linia kodu została napisana z myślą o ponownym wykorzystaniu. Nasz zespół deweloperów zbudował Wink z nadzieją, że następna 🦄 aplikacja podróżnicza powstanie na bazie naszego kodu. Przejdź do strony [Developer](/pl/developers/build-on-wink), aby zobaczyć, jak Wink może Cię wspierać w Twoim kolejnym przedsięwzięciu.
+Chociaż zbudowaliśmy tę platformę przez i dla hotelarzy... Każda linia kodu została stworzona z myślą o ponownym wykorzystaniu. Nasz zespół deweloperów stworzył Wink z nadzieją, że następna 🦄 aplikacja podróżnicza zostanie zbudowana na bazie naszego kodu. Przejdź do strony [Deweloper](/pl/developers/build-on-wink), aby zobaczyć, jak Wink może Cię wspierać w Twoim kolejnym przedsięwzięciu.
 
 ## Inni
 

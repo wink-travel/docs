@@ -11,31 +11,31 @@ Dowiedz się, jak Wink wypada na tle innych segmentów turystyki online na rynku
 
 | Funkcja | Wink | OTA | IBE | Bed Bank
 | ----------------------- | -- | -- | -- | -- |
-| Silnik rezerwacji internetowej | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Sklep link-in-bio | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Internetowy silnik rezerwacji | 🟢 | 🟢 | 🟢 | ⚫️ | 
+| Sklep w linku w bio | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Sieć afiliacyjna B2B | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Wsparcie dla agentów turystycznych | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Dystrybucja i marketing wspomagane AI | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Narzędzia przyjazne mediom społecznościowym | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Kanał B2C bez prowizji | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Darmowa lista hoteli w Google | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Dostęp do Web Component / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Darmowa wizytówka hotelu w Google | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Dostęp do komponentów webowych / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Bezpośrednie relacje | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Negocjowalne prowizje w zależności od kanału sprzedaży | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Integracja z channel managerem i PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Menedżer kanałów i integracja z PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
 | Dostawca posiada klienta | 🟢 | ⚫️ | 🟢 | 🟢 | 
 | Śledzenie ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
-| Model Pay-per-Performance | 🟢 | 🟢 | ⚫️ | 🟢 | 
+| Płatność za efektywność | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Zintegrowana bramka płatności | 🟢 | 🟢 | 🟢 | ⚫️ | 
 | Wypłaty przez Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 
 
-## Wink vs Internet Booking Engine (IBE)
+## Wink vs Internetowy Silnik Rezerwacji (IBE)
 
-Niektóre hotele próbują porównywać nas do ich silnika rezerwacji internetowej, który jest dołączony do ich channel managera, i proszą o stałą, miesięczną cenę opartą na liczbie pokoi w ich obiekcie.
+Niektóre hotele próbują porównywać nas do ich internetowego silnika rezerwacji, który jest dołączony do ich menedżera kanałów, i proszą o stałą, miesięczną cenę opartą na liczbie pokoi w ich obiekcie.
 
-Nie jesteśmy IBE i mamy nadzieję, że [Wink Academy](/pl/) pomaga to wyjaśnić. Każda usługa ma swoje zalety i wady. Jeśli Twój IBE działa dla Twojego obiektu, pozostań przy nim.  
-Wink powstał, aby wypełnić kilka luk w branży turystycznej i połączyć wszystko w jednym miejscu.
+Nie jesteśmy IBE i mamy nadzieję, że to pomoże wyjaśnić różnicę. Każda usługa ma swoje zalety i wady. Jeśli Twój IBE działa dla Twojego obiektu, pozostań przy nim.  
+Wink powstał, aby wypełnić kilka luk w branży turystycznej i połączyć wszystko w jednym miejscu. 
 
 :::tip
 Nie musisz zastępować swojego obecnego IBE. Zalecamy jednak wypróbowanie naszego silnika rezerwacji przyjaznego mediom społecznościowym lub menedżera linków na jednym z Twoich kont w mediach społecznościowych, aby zobaczyć, jak się sprawdzają. Nie płacisz nic, jeśli nie ma rezerwacji – co możesz stracić? 😉

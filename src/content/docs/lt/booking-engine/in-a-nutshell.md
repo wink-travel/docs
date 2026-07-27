@@ -1,44 +1,44 @@
 ---
 title: Trumpai
-description: Šiame straipsnyje sužinosite viską, ką norėjote žinoti apie užsakymų variklį.
+description: Šiame straipsnyje rasite viską, ką norėjote sužinoti apie užsakymų variklį.
 sidebar:
   order: 0
 ---
 
-Štai kaip mes paskirstome atsakomybę Wink platformoje:
+Štai kaip Wink platformoje paskirstome atsakomybę:
 
 - [Extranet](/lt/portal/extranet/what-is-extranet) rūpinasi tiekėjais, valdžiusiais inventorių.
 - [Studio](/lt/portal/studio/what-is-studio) rūpinasi filialais, valdžiusiais turinį.
-- `Booking Engine` rūpinasi turinio, sukurto `Studio`, kuris buvo pagrįstas inventoriaus duomenimis iš `Extranet`, padarymu užsakomu.
-- [Payment](/lt/payment/what-is-trip-pay) rūpinasi keliautojų, kurie užsako [per platformas kaip Wink], apmokestinimu / pinigų grąžinimu ir tiekėjų apmokėjimu.
+- `Booking Engine` rūpinasi turinio, sukurto `Studio`, kuris buvo pagrįstas inventoriumi, sukurtu `Extranet`, padarymu užsakomu.
+- [Payment](/lt/payment/what-is-trip-pay) rūpinasi keliautojų, užsakančių [per platformas kaip Wink], apmokestinimu / grąžinimu ir tiekėjų apmokėjimu.
 
 Užsakymų variklis yra mūsų platformos širdis.
 
 Jo atsakomybės apima:
 
-- Valdyti valiutas ir palaikyti valiutų kursus atnaujintus.
-- Suteikti kainų tiekėjams galimybę siųsti mums kainų duomenis.
-- Valdyti paieškos duomenis. *pvz., regionus, šalis, kelionių tikslus, apgyvendinimo vietas ir pan.*
-- Valdyti kalbas.
-- Generuoti analizę pagal vartotojų sąveikas, įvykius ir API užklausas.
-- Pateikti užsakymui tinkamą inventorių norimu formatu, kalba ir valiuta, pavyzdžiui:
+- Valiutų valdymą ir valiutų kursų atnaujinimą.
+- Kainų tiekėjams suteikti galimybę siųsti mums kainų duomenis.
+- Paieškos duomenų valdymą. *pvz., regionai, šalys, kryptys, objektai ir kt.*
+- Kalbų valdymą.
+- Analitikos generavimą pagal vartotojų sąveikas, įvykius ir API užklausas.
+- Užsakomo inventoriaus pateikimą norimu formatu, kalba ir valiuta, pavyzdžiui:
     - [Dalijamą nuorodą](/lt/portal/studio/shareable-links) Facebook platformoje.
-    - Viešbučio pristatymo puslapį https://ota.wink.travel su to viešbučio inventoriu.
-    - [Kortelę](/lt/portal/studio/cards), kurioje yra filialų inventorius.
+    - Viešbučio nukreipimo puslapį https://book.wink.travel su to viešbučio inventoriu.
+    - [Kortelę](/lt/portal/studio/cards), kurioje yra filialo inventorius.
     - [Žemėlapį](/lt/portal/studio/maps) jūsų [WinkLinks](/lt/portal/link-manager/wink-links) paskyroje.
     - [API užklausą](/lt/api) iš nuotolinės kelionių agentūros sistemos.
-- Suteikti keliautojams galimybę:
+- Keliautojams suteikti galimybę:
     - Ieškoti kelionių inventoriaus.
     - Užsakyti prieinamą inventorių.
-    - Valdyti savo [užsakymus ir atsiliepimus](/lt/booking-engine/bookings).
-    - Valdyti savo [norų sąrašą](/lt/booking-engine/bucket-list) dalykų, kuriuos nori užsakyti ateityje.
-    - Valdyti savo [kelionių profilį](/lt/booking-engine/travel-preferences). *pvz., alergijas, skubios pagalbos kontaktą ir pan.*
+    - Tvarkyti savo [užsakymus ir atsiliepimus](/lt/booking-engine/bookings).
+    - Tvarkyti savo [norų sąrašą](/lt/booking-engine/bucket-list) dalykų, kuriuos nori užsakyti ateityje.
+    - Tvarkyti savo [kelionių profilį](/lt/booking-engine/travel-preferences). *pvz., alergijos, skubios pagalbos kontaktai ir kt.*
 
-Užsakymų variklis yra pakartotinai naudojamų funkcijų rinkinys, kurį pateikiame per https://ota.wink.travel; tai labai pritaikoma svetainė viešbučiams ir filialams parduoti savo paslaugas keliautojams.
+Užsakymų variklis yra pakartotinai naudojamų funkcijų rinkinys, kurį pateikiame per https://book.wink.travel; labai pritaikoma svetainė viešbučiams ir filialams parduoti savo paslaugas keliautojams.
 
 Integratoriai, norintys dar daugiau laisvės, turi prieigą prie tų pačių funkcijų per mūsų [WordPress įskiepį](/lt/integrations/wordpress/), [Web Components](/lt/integrations/web-components) ir [API](/lt/api).
 
-Tęskite skaitymą kitose skiltyse, kad sužinotumėte daugiau apie tai, ką siūlo užsakymų variklis.
+Tęskite skaitymą tolesnėse skiltyse, kad sužinotumėte daugiau apie tai, ką siūlo užsakymų variklis.
 
 ## Tolimesnis skaitymas
 

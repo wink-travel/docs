@@ -9,7 +9,7 @@ Ta članek pojasnjuje vrste strank, ki jih služimo, in kako jim lahko najbolje 
 
 ## Nepremičnine
 
-Wink je pred desetimi leti začel vključevati hotele. Hoteli uporabljajo Wink za učinkovito upravljanje svojega inventarja preko tisočev prodajnih kanalov, vključno z lastno spletno stranjo brand.com, ter za povečanje zaslužka z vsako rezervacijo, hkrati pa krepijo neposredne kanale s pomočjo naših gostinsko usmerjenih orodij, ki izboljšujejo prepoznavnost blagovne znamke in dobičkonosnost​.
+Wink je začel z vključevanjem hotelov pred desetletjem. Hoteli uporabljajo Wink za učinkovito upravljanje svojega inventarja preko tisočev prodajnih kanalov, vključno z lastno spletno stranjo brand.com, ter za zaslužek z vsako rezervacijo, hkrati pa krepijo neposredne kanale s pomočjo naših gostinsko usmerjenih orodij, ki izboljšujejo prepoznavnost blagovne znamke in dobičkonosnost​.
 
 ## Blagovne znamke in verige
 
@@ -27,13 +27,21 @@ Gostinske upravljavske družbe in družbe za upravljanje destinacij lahko upravl
 
 Influencerji uporabljajo Wink za boljšo monetizacijo svoje publike. To počnejo s partnerstvom s hoteli, ustvarjanjem prilagojenih ponudb in uporabo Winkovih družbeno prijaznih orodij ter zmogljive analitike za spremljanje, kateri izdelki se najbolje prodajajo​.
 
+## Agencije za talente
+
+Agencije za talente so ustvarjalcem tisto, kar so upravljavske družbe hotelom. Če zastopate skupino influencerjev, ustvarjalcev vsebin ali potovalnih osebnosti, lahko upravljate vse njihove Wink račune na enem mestu — najdete inventar, pogajate o dogovorih z nepremičninami, ustvarjate in objavljate vsebine ter spremljate uspešnost celotnega seznama namesto posameznega ustvarjalca.
+
+Pogajate se o agencijski proviziji z vsakim svojim talentom in zaslužite to provizijo ob vsaki rezervaciji, ki jo ustvarijo. Izplača se samodejno kot del rezervacije, zato ni potrebe po izstavitvi računov lastnim talentom ali lovljenju provizij po opravljenem poslu. Vaši talenti ostajajo ves čas v nadzoru — oni so lastniki svojega računa, oni uporabljajo dogovorjeno provizijo in lahko kadar koli dodajo pravila o poteku ali prekinejo dogovor.
+
+Oglejte si [Agency representation](/sl/portal/settings/agency-representation) za informacije o nastavitvi.
+
 ## Potovalni agenti
 
-Potovalni agenti dobijo dostop do potovalnega inventarja po vsem svetu po odličnih cenah preko našega namensko [portala za potovalne agente](https://agent.wink.travel). Rezervacije lahko opravijo preko našega portala, preko našega API-ja ali pa dovolijo svojim uporabnikom, da sami rezervirajo na spletni strani potovalnega agenta, ki uporablja naše tehnologije.
+Potovalni agenti dobijo dostop do potovalnega inventarja po vsem svetu po odličnih cenah preko našega namensko [potovalnega agentnega portala](https://agent.wink.travel). Rezervacije lahko opravijo preko našega portala, preko API-ja ali pa dovolijo svojim uporabnikom, da sami rezervirajo na spletni strani potovalnega agenta, ki uporablja naše tehnologije.
 
 ## Podjetja
 
-Podjetja potrebujejo več kot le potovalno platformo:
+Podjetja zahtevajo več od potovalne platforme:
 
 - Potrebujejo dobro organizirane itinerarje, ki podpirajo prilagodljivost in spremembe v zadnjem trenutku.
 - Potrebujejo zanesljiva komunikacijska orodja, kot je internet.
@@ -46,8 +54,8 @@ Poslovni potniki lahko upravljajo svoje račune na našem [korporativnem portalu
 
 ## Razvijalci
 
-Čeprav smo to platformo zgradili za hotelirje... Vsaka vrstica kode je bila ustvarjena z namenom ponovne uporabe. Naša ekipa razvijalcev je Wink zgradila v upanju, da bo naslednja 🦄 potovalna aplikacija zgrajena na naši kodi. Obiščite stran [Developer](/sl/developers/build-on-wink), da vidite, kako vam lahko Wink pomaga pri vašem naslednjem projektu.
+Čeprav smo to platformo zgradili za in z hotelirji... Vsaka vrstica kode je bila ustvarjena z namenom ponovne uporabe. Naša ekipa razvijalcev je Wink zgradila v upanju, da bo naslednja 🦄 potovalna aplikacija zgrajena na naši kodi. Obiščite stran [Developer](/sl/developers/build-on-wink), da vidite, kako vam lahko Wink pomaga pri vašem naslednjem projektu.
 
 ## Drugo
 
-Vsak, ki želi najti in prodajati potovalni inventar, lahko koristi uporabo Wink. Spremenite svojo strast do gostinstva v dejanje in zaslužite odlično provizijo za vsako rezervacijo.
+Kdorkoli, ki želi najti in prodajati potovalni inventar, lahko koristi uporabo Wink. Spremenite svojo strast do gostinstva v dejanje in zaslužite odlično provizijo ob vsaki rezervaciji.

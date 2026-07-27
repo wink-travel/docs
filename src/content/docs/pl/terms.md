@@ -3,37 +3,37 @@ title: Warunki i zasady
 description: Warunki i zasady dla wszystkich użytkowników i podmiotów Wink.
 ---
 
-Każdy portal może mieć inne warunki i zasady. Prosimy przejść do odpowiedniej sekcji poniżej i poszukać podsekcji o nazwie Warunki świadczenia usług i Warunki płatności.
+Różne części Wink mają różne warunki. Znajdź poniżej sekcję, która Cię dotyczy — każda z nich ma własne Warunki świadczenia usług, a sekcje obsługujące płatności mają także Warunki płatności.
 
-## Portal afiliacyjny
+## Obiekty
 
-Dla afiliantów, którzy chcą dowiedzieć się, jak zarabiać pasywny dochód, monetyzując swoje konta społecznościowe za pomocą Wink.  
-[Wink Studio](https://studio.wink.travel) oferuje wszystkie narzędzia potrzebne do sprzedaży jak profesjonalista.
+Dla hoteli, sieci, marek i firm zarządzających sprzedających zasoby na Wink.
 
-<LinkButton href="/pl/portal/studio/what-is-studio">
-Dowiedz się więcej o Wink Studio
-</LinkButton>
+- [Warunki świadczenia usług](/pl/portal/extranet/terms-of-service)
+- [Warunki płatności](/pl/portal/extranet/payment-terms)
+
+## Partnerzy
+
+Dla twórców, influencerów i partnerów promujących zasoby turystyczne i zarabiających prowizję.
+
+- [Warunki świadczenia usług](/pl/portal/studio/terms-of-service)
+- [Warunki płatności](/pl/portal/studio/payment-terms)
+
+## Agenci turystyczni
+
+Dla zarejestrowanych agentów turystycznych wyszukujących, rezerwujących i zarabiających w imieniu swoich klientów.
+
+- [Warunki świadczenia usług](/pl/portal/travel-agent/terms-of-service)
+- [Warunki płatności](/pl/portal/travel-agent/payment-terms)
 
 ## Silnik rezerwacji
 
-Wszystkie drogi prowadzą do naszego silnika rezerwacji! Dowiedz się, co możesz zrobić z najbardziej konfigurowalnym, skoncentrowanym na podróżach silnikiem rezerwacji na rynku.
+Dla wszystkich rezerwujących podróże przez Wink.
 
-<LinkButton href="/pl/booking-engine/in-a-nutshell">
-Dowiedz się więcej o naszym silniku rezerwacji
-</LinkButton>
+- [Warunki świadczenia usług](/pl/booking-engine/terms-of-service)
 
-## Portal nieruchomości
+## Wszyscy
 
-Dla nieruchomości, które chcą zacząć sprzedawać na Wink. Skorzystaj z naszych narzędzi, aby skutecznie sprzedawać i promować się online oraz zyskaj armię afiliantów z całego świata, którzy pomogą Ci zdobyć klientów i rezerwacje.
-
-<LinkButton href="/pl/portal/extranet/what-is-extranet">
-Dowiedz się więcej o Wink Extranet
-</LinkButton>
-
-## Portal agentów turystycznych
-
-Dla agentów turystycznych, którzy chcą dowiedzieć się, co Wink może im zaoferować w zakresie indywidualnych stawek, ofert i zasobów bezpośrednio od dostawców.
-
-<LinkButton href="/pl/portal/travel-agent/what-is-agent">
-Dowiedz się więcej o Wink Agent
-</LinkButton>
+- [Polityka prywatności](/pl/privacy)
+- [Cennik](/pl/getting-started/pricing) — co jest darmowe, ile kosztuje rezerwacja i jak działają opłaty za korzystanie pay-as-you-go.
+- [Wniosek o usunięcie danych](/pl/getting-started/data-deletion-request)

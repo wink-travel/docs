@@ -23,7 +23,7 @@ Dens ansvarsområder inkluderer:
 - At generere analyser baseret på brugerinteraktioner, begivenheder og API-kald.
 - At levere bookbart lager i det ønskede format, sprog og valuta, såsom:
     - Et [delbart link](/da/portal/studio/shareable-links) på Facebook.
-    - En hotel-landingsside på https://ota.wink.travel med lager for det hotel.
+    - En hotel-landingsside på https://book.wink.travel med lager for det hotel.
     - Et [kort](/da/portal/studio/cards) indeholdende affiliate-lager.
     - Et [kort](/da/portal/studio/maps) på din [WinkLinks](/da/portal/link-manager/wink-links) konto.
     - Et [API-kald](/da/api) fra et eksternt rejsebureau-system.
@@ -34,7 +34,7 @@ Dens ansvarsområder inkluderer:
     - Administrere deres [bucket list](/da/booking-engine/bucket-list) over ting, de vil booke i fremtiden.
     - Administrere deres [rejseprofil](/da/booking-engine/travel-preferences). *f.eks. allergier, nød-kontaktperson osv.*
 
-Bookingmotoren er en samling af genanvendelig funktionalitet, som vi eksponerer gennem https://ota.wink.travel; et højt tilpasseligt website for hoteller og affiliates til at sælge deres varer til rejsende.
+Bookingmotoren er en samling af genanvendelig funktionalitet, som vi eksponerer gennem https://book.wink.travel; et højt tilpasseligt website for hoteller og affiliates til at sælge deres varer til rejsende.
 
 Integratører, der ønsker endnu mere frihed, har adgang til alle de samme funktioner via vores [WordPress plugin](/da/integrations/wordpress/), [Web Components](/da/integrations/web-components) og [APIs](/da/api).
 

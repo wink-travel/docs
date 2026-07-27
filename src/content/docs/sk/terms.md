@@ -1,39 +1,39 @@
 ---
-title: Obchodné podmienky
-description: Obchodné podmienky pre všetkých používateľov a subjekty Wink.
+title: Podmienky používania
+description: Podmienky používania pre všetkých používateľov a subjekty Wink.
 ---
 
-Každý portál môže mať odlišné obchodné podmienky. Prejdite prosím do sekcie nižšie, ktorá sa vás týka, a vyhľadajte podsekciu nazvanú Podmienky služby a Platobné podmienky.
+Rôzne časti Wink majú rôzne podmienky. Nájdite nižšie sekciu, ktorá sa vás týka — každá má svoje vlastné Podmienky služby a sekcie, ktoré spracovávajú peniaze, majú aj Platobné podmienky.
 
-## Affiliate portál
+## Nehnuteľnosti
 
-Pre affiliate partnerov, ktorí sa chcú naučiť, ako si pasívne zarobiť zpenením svojich sociálnych účtov pomocou Wink.
-[Wink Studio](https://studio.wink.travel) má všetky nástroje, ktoré potrebujete na predaj ako profesionál.
+Pre hotely, reťazce, značky a správcovské spoločnosti predávajúce inventár na Wink.
 
-<LinkButton href="/sk/portal/studio/what-is-studio">
-Zistite viac o Wink Studio
-</LinkButton>
+- [Podmienky služby](/sk/portal/extranet/terms-of-service)
+- [Platobné podmienky](/sk/portal/extranet/payment-terms)
 
-## Rezervačný engine
+## Partneri
 
-Všetky cesty vedú k nášmu rezervačnému enginu! Zistite, čo všetko môžete robiť s najprispôsobiteľnejším, na cestovanie zameraným rezervačným enginom na trhu.
+Pre tvorcov, influencerov a partnerov propagujúcich cestovný inventár a zarábajúcich provízie.
 
-<LinkButton href="/sk/booking-engine/in-a-nutshell">
-Zistite viac o našom rezervačnom engine
-</LinkButton>
+- [Podmienky služby](/sk/portal/studio/terms-of-service)
+- [Platobné podmienky](/sk/portal/studio/payment-terms)
 
-## Portál pre ubytovacie zariadenia
+## Cestovné kancelárie
 
-Pre ubytovacie zariadenia, ktoré chcú začať predávať na Wink. Použite naše nástroje na efektívny predaj a marketing online a získajte armádu affiliate partnerov z celého sveta, ktorí vám pomôžu získať zákazníkov a rezervácie.
+Pre registrovaných cestovných agentov, ktorí vyhľadávajú, rezervujú a zarábajú v mene svojich klientov.
 
-<LinkButton href="/sk/portal/extranet/what-is-extranet">
-Zistite viac o Wink Extranet
-</LinkButton>
+- [Podmienky služby](/sk/portal/travel-agent/terms-of-service)
+- [Platobné podmienky](/sk/portal/travel-agent/payment-terms)
 
-## Portál pre cestovné kancelárie
+## Rezervačný systém
 
-Pre cestovné kancelárie, ktoré chcú zistiť, čo im Wink môže ponúknuť v podobe špeciálnych cien, ponúk a inventára priamo od dodávateľov.
+Pre všetkých, ktorí si cez Wink rezervujú cestovanie.
 
-<LinkButton href="/sk/portal/travel-agent/what-is-agent">
-Zistite viac o Wink Agent
-</LinkButton>
+- [Podmienky služby](/sk/booking-engine/terms-of-service)
+
+## Všetci
+
+- [Zásady ochrany osobných údajov](/sk/privacy)
+- [Cenník](/sk/getting-started/pricing) — čo je zadarmo, koľko stojí rezervácia a ako fungujú poplatky za používanie podľa spotreby.
+- [Žiadosť o vymazanie údajov](/sk/getting-started/data-deletion-request)

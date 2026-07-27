@@ -1,39 +1,39 @@
 ---
-title: 이용 약관
-description: 모든 Wink 사용자 및 단체를 위한 이용 약관입니다.
+title: 약관
+description: 모든 Wink 사용자 및 단체를 위한 약관입니다.
 ---
 
-각 포털마다 다른 이용 약관이 있을 수 있습니다. 아래에서 해당되는 섹션으로 이동하여 서비스 약관 및 결제 조건이라는 하위 섹션을 찾아보세요.
+Wink의 각 부분은 서로 다른 약관을 가지고 있습니다. 아래에서 해당되는 섹션을 찾으세요 — 각 섹션마다 자체 서비스 약관이 있으며, 금전 거래를 다루는 섹션은 결제 약관도 포함되어 있습니다.
 
-## 제휴사 포털
+## 숙소
 
-소셜 계정을 Wink와 함께 활용하여 수동 소득을 얻는 방법을 배우고자 하는 제휴사를 위한 공간입니다.  
-[Wink Studio](https://studio.wink.travel)에는 전문가처럼 판매할 수 있는 모든 도구가 있습니다.
+Wink에서 재고를 판매하는 호텔, 체인, 브랜드 및 관리 회사용입니다.
 
-<LinkButton href="/ko/portal/studio/what-is-studio">
-Wink Studio에 대해 자세히 알아보기
-</LinkButton>
+- [서비스 약관](/ko/portal/extranet/terms-of-service)
+- [결제 약관](/ko/portal/extranet/payment-terms)
+
+## 제휴사
+
+여행 재고를 홍보하고 수수료를 받는 크리에이터, 인플루언서 및 제휴사용입니다.
+
+- [서비스 약관](/ko/portal/studio/terms-of-service)
+- [결제 약관](/ko/portal/studio/payment-terms)
+
+## 여행사
+
+등록된 여행사로서 고객을 대신해 검색, 예약 및 수익을 창출하는 분들을 위한 약관입니다.
+
+- [서비스 약관](/ko/portal/travel-agent/terms-of-service)
+- [결제 약관](/ko/portal/travel-agent/payment-terms)
 
 ## 예약 엔진
 
-모든 길은 우리의 예약 엔진으로 통합니다! 시장에서 가장 맞춤화되고 여행에 특화된 예약 엔진으로 할 수 있는 일을 알아보세요.
+Wink를 통해 여행을 예약하는 모든 분들을 위한 약관입니다.
 
-<LinkButton href="/ko/booking-engine/in-a-nutshell">
-우리의 예약 엔진에 대해 자세히 알아보기
-</LinkButton>
+- [서비스 약관](/ko/booking-engine/terms-of-service)
 
-## 숙소 포털
+## 모두를 위한 약관
 
-Wink에서 판매를 시작하려는 숙소를 위한 공간입니다. 온라인에서 효과적으로 판매 및 마케팅하고 전 세계의 제휴사 군단이 고객과 예약을 도와줄 수 있도록 도구를 활용하세요.
-
-<LinkButton href="/ko/portal/extranet/what-is-extranet">
-Wink Extranet에 대해 자세히 알아보기
-</LinkButton>
-
-## 여행사 포털
-
-맞춤 요금, 특가 및 재고를 공급업체로부터 직접 제공받고자 하는 여행사를 위한 공간입니다.
-
-<LinkButton href="/ko/portal/travel-agent/what-is-agent">
-Wink Agent에 대해 자세히 알아보기
-</LinkButton>
+- [개인정보 처리방침](/ko/privacy)
+- [가격 안내](/ko/getting-started/pricing) — 무료 서비스, 예약 비용, 그리고 사용량 기반 요금 체계에 대한 안내입니다.
+- [데이터 삭제 요청](/ko/getting-started/data-deletion-request)

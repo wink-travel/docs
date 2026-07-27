@@ -7,7 +7,7 @@ sidebar:
 
 W Wink prowadzimy 2 środowiska dla wszystkiego, co robimy, przez cały czas:
 
-- Produkcja to nasze stabilne środowisko.
+- Produkcyjne to nasze stabilne środowisko.
 - Staging to nasze środowisko certyfikacji i testów.
 
 Jeśli jesteś integratorem, hotelem lub agentem turystycznym, który chce przygotować się do certyfikacji lub przetestować platformę Wink, załóż konto w naszym środowisku staging, aby zacząć.
@@ -20,23 +20,19 @@ Jeśli jesteś integratorem, hotelem lub agentem turystycznym, który chce przyg
 
 Poniżej znajduje się tabela zawierająca nazwy naszych serwerów i ich zastosowanie.
 
-| Funkcja | Staging | Produkcja
+| Funkcja | Staging | Produkcyjne
 | ------- | ------- | ---------- |
 | IAM | https://staging-iam.wink.travel | https://iam.wink.travel | 
 | Inventory | https://staging-api.wink.travel | https://api.wink.travel | 
-| Integracje | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
+| Integrations | https://staging-integrations.wink.travel | https://integrations.wink.travel | 
 <!-- | Payment | https://staging-api.trippay.io | https://api.trippay.io |  -->
 
 ## Aplikacje
 
 Nasze aplikacje również mają środowiska testowe i produkcyjne dla naszych klientów.
 
-| Aplikacja | Staging | Produkcja
+| Aplikacja | Staging | Produkcyjne
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Silnik rezerwacji | https://staging-ota.wink.travel | https://ota.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| Moje konto | https://staging-app.wink.travel | https://app.wink.travel | 
-| Płatności | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
+| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

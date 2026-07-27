@@ -23,7 +23,7 @@ Les seves responsabilitats inclouen:
 - Generar anàlisis basades en les interaccions d'usuaris, esdeveniments i crides API.
 - Oferir inventari reservable en el format, idioma i moneda desitjats, com ara:
     - Un [enllaç compartible](/ca/portal/studio/shareable-links) a Facebook.
-    - Una pàgina d'aterratge d'hotel a https://ota.wink.travel amb inventari per a aquest hotel.
+    - Una pàgina d'aterratge d'hotel a https://book.wink.travel amb inventari per a aquest hotel.
     - Una [targeta](/ca/portal/studio/cards) que conté inventari d'afiliats.
     - Un [mapa](/ca/portal/studio/maps) al teu compte de [WinkLinks](/ca/portal/link-manager/wink-links).
     - Una [crida API](/ca/api) des d'un sistema remot d'agència de viatges.
@@ -34,7 +34,7 @@ Les seves responsabilitats inclouen:
     - Gestionar la seva [llista de desitjos](/ca/booking-engine/bucket-list) de coses per reservar en el futur.
     - Gestionar el seu [perfil de viatge](/ca/booking-engine/travel-preferences). *per exemple al·lèrgies, contacte d'emergència, etc.*
 
-El motor de reserves és una col·lecció de funcionalitats reutilitzables que exposem a través de https://ota.wink.travel; un lloc web altament personalitzable perquè hotels i afiliats venguin els seus productes als viatgers.
+El motor de reserves és una col·lecció de funcionalitats reutilitzables que exposem a través de https://book.wink.travel; un lloc web altament personalitzable perquè hotels i afiliats venguin els seus productes als viatgers.
 
 Els integradors, que volen encara més llibertat, tenen accés a totes les mateixes funcions a través del nostre [plugin de WordPress](/ca/integrations/wordpress/), [Web Components](/ca/integrations/web-components) i [APIs](/ca/api).
 

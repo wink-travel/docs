@@ -5,7 +5,7 @@ sidebar:
   order: 0
 ---
 
-Ovako delimo odgovornosti na Wink-u:
+Evo kako delimo odgovornosti na Wink-u:
 
 - [Extranet](/sr/portal/extranet/what-is-extranet) se bavi dobavljačima koji upravljaju inventarom.
 - [Studio](/sr/portal/studio/what-is-studio) se bavi afilijatima koji upravljaju sadržajem.
@@ -23,10 +23,10 @@ Njegove odgovornosti uključuju:
 - Generisanje analitike na osnovu korisničkih interakcija, događaja i API poziva.
 - Prikazivanje rezervabilnog inventara u željenom formatu, jeziku i valuti, kao što su:
     - [deljivi link](/sr/portal/studio/shareable-links) na Facebook-u.
-    - Landing stranica hotela na https://ota.wink.travel sa inventarom za taj hotel.
+    - Početna stranica hotela na https://book.wink.travel sa inventarom za taj hotel.
     - [kartica](/sr/portal/studio/cards) koja sadrži afilijatski inventar.
     - [mapa](/sr/portal/studio/maps) na vašem [WinkLinks](/sr/portal/link-manager/wink-links) nalogu.
-    - [API poziv](/sr/api) sa udaljenog sistema turističke agencije.
+    - [API poziv](/sr/api) iz udaljenog sistema turističke agencije.
 - Omogućavanje putnicima da:
     - Pretražuju turistički inventar.
     - Rezervišu dostupan inventar.
@@ -34,7 +34,7 @@ Njegove odgovornosti uključuju:
     - Upravljaju svojom [bucket list-om](/sr/booking-engine/bucket-list) stvari koje žele da rezervišu u budućnosti.
     - Upravljaju svojim [putnim profilom](/sr/booking-engine/travel-preferences). *npr. alergije, kontakt za hitne slučajeve itd.*
 
-Booking engine je skup ponovo upotrebljivih funkcionalnosti koje izlažemo preko https://ota.wink.travel; visoko prilagodljivog sajta za hotele i afilijate da prodaju svoje usluge putnicima.
+Booking engine je skup ponovo upotrebljivih funkcionalnosti koje izlažemo putem https://book.wink.travel; visoko prilagodljivog sajta za hotele i afilijate da prodaju svoje usluge putnicima.
 
 Integratori, koji žele još veću slobodu, imaju pristup svim istim funkcijama preko našeg [WordPress plugina](/sr/integrations/wordpress/), [Web Components](/sr/integrations/web-components) i [API-ja](/sr/api).
 

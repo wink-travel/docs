@@ -23,7 +23,7 @@ Sen vastuualueisiin kuuluu:
 - Analytiikan tuottaminen käyttäjävuorovaikutusten, tapahtumien ja API-kutsujen perusteella.
 - Varattavan varaston tarjoaminen halutussa muodossa, kielessä ja valuutassa, kuten:
     - [Jaa-linkki](/fi/portal/studio/shareable-links) Facebookissa.
-    - Hotellin aloitussivu osoitteessa https://ota.wink.travel, jossa on kyseisen hotellin varasto.
+    - Hotellin aloitussivu osoitteessa https://book.wink.travel, jossa on kyseisen hotellin varasto.
     - [Kortti](/fi/portal/studio/cards), joka sisältää kumppanin varaston.
     - [Kartta](/fi/portal/studio/maps) sinun [WinkLinks](/fi/portal/link-manager/wink-links) -tililläsi.
     - [API-kutsu](/fi/api) etämatkatoimistojärjestelmästä.
@@ -34,7 +34,7 @@ Sen vastuualueisiin kuuluu:
     - Hallinnoida omaa [bucket list](/fi/booking-engine/bucket-list) -listaa tulevista varauksista.
     - Hallinnoida omaa [matkailuprofiiliaan](/fi/booking-engine/travel-preferences). *esim. allergiat, hätäyhteystiedot jne.*
 
-Varausmoottori on kokoelma uudelleenkäytettäviä toimintoja, joita tarjoamme osoitteessa https://ota.wink.travel; erittäin muokattava verkkosivusto hotelleille ja kumppaneille myydä tuotteitaan matkustajille.
+Varausmoottori on kokoelma uudelleenkäytettäviä toimintoja, joita tarjoamme osoitteessa https://book.wink.travel; erittäin muokattava verkkosivusto hotelleille ja kumppaneille myydä tuotteitaan matkustajille.
 
 Integraattoreilla, jotka haluavat vielä enemmän vapautta, on pääsy samoihin ominaisuuksiin [WordPress-laajennuksemme](/fi/integrations/wordpress/), [Web Components](/fi/integrations/web-components) ja [API:t](/fi/api) kautta.
 

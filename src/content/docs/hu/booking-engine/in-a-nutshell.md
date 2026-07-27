@@ -23,7 +23,7 @@ Felelősségi körei:
 - Elemzések generálása felhasználói interakciók, események és API hívások alapján.
 - Foglalható készlet szolgáltatása a kívánt formátumban, nyelven és pénznemben, például:
     - Egy [megosztható link](/hu/portal/studio/shareable-links) Facebookon.
-    - Egy szállodai kezdőoldal a https://ota.wink.travel oldalon az adott szálloda készletével.
+    - Egy szállodai kezdőoldal a https://book.wink.travel oldalon az adott szálloda készletével.
     - Egy [kártya](/hu/portal/studio/cards) affiliate készlettel.
     - Egy [térkép](/hu/portal/studio/maps) a [WinkLinks](/hu/portal/link-manager/wink-links) fiókodban.
     - Egy [API hívás](/hu/api) egy távoli utazási ügynökségi rendszertől.
@@ -34,7 +34,7 @@ Felelősségi körei:
     - Kezeljék a jövőbeni foglalások [bucket listáját](/hu/booking-engine/bucket-list).
     - Kezeljék az [utazási profiljukat](/hu/booking-engine/travel-preferences). *pl. allergiák, vészhelyzeti kapcsolattartó stb.*
 
-A foglalási motor egy újrahasznosítható funkciók gyűjteménye, amelyet a https://ota.wink.travel oldalon keresztül teszünk elérhetővé; egy rendkívül testreszabható weboldal szállodák és affiliate partnerek számára, hogy termékeiket utazóknak értékesítsék.
+A foglalási motor egy újrahasznosítható funkciók gyűjteménye, amelyet a https://book.wink.travel oldalon keresztül teszünk elérhetővé; egy rendkívül testreszabható weboldal szállodák és affiliate partnerek számára, hogy termékeiket utazóknak értékesítsék.
 
 Az integrátorok, akik még nagyobb szabadságot szeretnének, ugyanazokat a funkciókat érhetik el a [WordPress pluginunk](/hu/integrations/wordpress/), [Web Components](/hu/integrations/web-components) és [API-k](/hu/api) segítségével.
 

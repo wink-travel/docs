@@ -9,11 +9,11 @@ Este artigo explica os tipos de clientes que atendemos e como podemos ajudar da 
 
 ## Propriedades
 
-O Wink começou a integrar hotéis há uma década. Os hotéis usam o Wink para gerenciar efetivamente seu inventário em milhares de canais de venda, incluindo seu próprio site brand.com, e para ganhar mais com cada reserva enquanto impulsionam os canais diretos com a ajuda de nossas ferramentas focadas em hospitalidade que aprimoram a identidade da marca e a lucratividade​.
+O Wink começou a integrar hotéis há uma década. Hotéis usam o Wink para gerenciar efetivamente seu inventário em milhares de canais de venda, incluindo seu próprio site brand.com, e para ganhar mais com cada reserva enquanto impulsionam canais diretos com a ajuda de nossas ferramentas focadas em hospitalidade que aprimoram a identidade da marca e a rentabilidade​.
 
 ## Marcas e Redes
 
-Marcas e redes têm necessidades um pouco diferentes de uma única propriedade. No Wink, eles podem:
+Marcas e redes têm necessidades um pouco diferentes de uma única propriedade. No Wink, elas podem:
 
 - Gerenciar múltiplas propriedades sob uma única conta.
 - Designar gerentes para as propriedades
@@ -25,11 +25,19 @@ Empresas de gestão hoteleira e empresas de gestão de destinos podem administra
 
 ## Influenciadores
 
-Influenciadores usam o Wink para monetizar melhor seu público. Eles fazem isso ao se associar com hotéis, criar ofertas personalizadas e aproveitar as ferramentas sociais do Wink e análises poderosas para acompanhar quais produtos vendem melhor​.
+Influenciadores usam o Wink para monetizar melhor seu público. Eles fazem isso ao se associar a hotéis, criar ofertas personalizadas e aproveitar as ferramentas sociais do Wink e análises poderosas para acompanhar quais produtos vendem melhor​.
+
+## Agências de talentos
+
+Agências de talentos são para criadores o que empresas de gestão são para hotéis. Se você representa um grupo de influenciadores, criadores de conteúdo ou personalidades de viagem, pode gerenciar todas as contas Wink deles em um só lugar — encontrando inventário, negociando ofertas com propriedades, criando e publicando conteúdo, e acompanhando o desempenho de todo seu elenco em vez de um criador por vez.
+
+Você negocia uma taxa de agência com cada talento e ganha essa taxa em toda reserva que eles geram. Ela é paga automaticamente como parte da reserva, então não há necessidade de faturar seus talentos nem correr atrás de comissões depois. Seu talento mantém o controle o tempo todo — eles são donos da conta, são eles que aplicam a taxa acordada, e podem adicionar regras de expiração ou encerrar o acordo quando quiserem.
+
+Veja [Representação de agência](/pt-BR/portal/settings/agency-representation) para saber como é configurado.
 
 ## Agentes de viagem
 
-Agentes de viagem têm acesso a inventário de viagens mundial a ótimos preços através do nosso portal dedicado para [agentes de viagem](https://agent.wink.travel). Eles podem fazer reservas pelo nosso portal, via API ou permitindo que seus usuários reservem diretamente no site do agente de viagem que utiliza nossas tecnologias.
+Agentes de viagem têm acesso a inventário de viagens mundial a ótimos preços através do nosso portal dedicado para [agentes de viagem](https://agent.wink.travel). Eles podem fazer reservas pelo nosso portal, via API ou permitindo que seus usuários reservem diretamente no site de agente de viagem que usa nossas tecnologias.
 
 ## Corporações
 
@@ -46,7 +54,7 @@ Viajantes corporativos podem gerenciar suas próprias contas em nosso [portal co
 
 ## Desenvolvedores
 
-Embora tenhamos construído esta plataforma por e para hoteleiros... Cada linha de código foi criada com o propósito específico de reutilização. Nossa equipe de desenvolvedores construiu o Wink na esperança de que o próximo 🦄 app de viagens seja construído sobre nossa base de código. Navegue até a página [Developer](/pt-BR/developers/build-on-wink) para ver como o Wink pode apoiar você em sua próxima empreitada.
+Embora tenhamos construído esta plataforma por e para hoteleiros... Cada linha de código foi feita com o propósito específico de reutilização. Nossa equipe de desenvolvedores criou o Wink na esperança de que o próximo 🦄 app de viagens seja construído sobre nossa base de código. Navegue até a página [Developer](/pt-BR/developers/build-on-wink) para ver como o Wink pode apoiar você em sua próxima empreitada.
 
 ## Outros
 

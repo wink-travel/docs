@@ -7,34 +7,34 @@ sidebar:
 
 Oto jak dzielimy odpowiedzialność w Wink:
 
-- [Extranet](/pl/portal/extranet/what-is-extranet) zajmuje się dostawcami zarządzającymi inwentarzem.
-- [Studio](/pl/portal/studio/what-is-studio) zajmuje się afiliantami zarządzającymi treścią.
-- `Booking Engine` zajmuje się tworzeniem treści, stworzonych w `Studio`, które opierały się na inwentarzu stworzonym w `Extranet` i udostępnianiem ich do rezerwacji.
-- [Payment](/pl/payment/what-is-trip-pay) zajmuje się pobieraniem opłat / zwrotami dla podróżnych, którzy rezerwują [poprzez platformy takie jak Wink], oraz wypłatami dla dostawców.
+- [Extranet](/pl/portal/extranet/what-is-extranet) zajmuje się dostawcami zarządzającymi zasobami.
+- [Studio](/pl/portal/studio/what-is-studio) zajmuje się afiliantami zarządzającymi treściami.
+- `Booking Engine` zajmuje się tworzeniem treści, stworzonych w `Studio`, które opierały się na zasobach utworzonych w `Extranet` i udostępnianiem ich do rezerwacji.
+- [Payment](/pl/payment/what-is-trip-pay) zajmuje się pobieraniem opłat / zwrotami dla podróżnych rezerwujących [poprzez platformy takie jak Wink] oraz wypłatami dla dostawców.
 
 Silnik rezerwacji jest sercem naszej platformy.
 
-Jego obowiązki obejmują:
+Jego zadania obejmują:
 
 - Zarządzanie walutami i utrzymywanie aktualnych kursów wymiany.
-- Umożliwianie dostawcom taryf przesyłania nam danych taryfowych.
+- Umożliwianie dostawcom taryf przesyłania nam danych o cenach.
 - Zarządzanie danymi referencyjnymi. *np. regiony, kraje, destynacje, obiekty itp.*
 - Zarządzanie językami.
 - Generowanie analiz na podstawie interakcji użytkowników, zdarzeń i wywołań API.
-- Udostępnianie rezerwowanego inwentarza w pożądanym formacie, języku i walucie, takich jak:
+- Udostępnianie rezerwowanego zasobu w pożądanym formacie, języku i walucie, takich jak:
     - [link do udostępniania](/pl/portal/studio/shareable-links) na Facebooku.
-    - Strona docelowa hotelu na https://ota.wink.travel z inwentarzem dla tego hotelu.
-    - [karta](/pl/portal/studio/cards) zawierająca inwentarz afilianta.
+    - Strona docelowa hotelu na https://book.wink.travel z zasobami dla tego hotelu.
+    - [karta](/pl/portal/studio/cards) zawierająca zasoby afilianta.
     - [mapa](/pl/portal/studio/maps) na Twoim koncie [WinkLinks](/pl/portal/link-manager/wink-links).
     - [wywołanie API](/pl/api) z zewnętrznego systemu agenta turystycznego.
 - Zapewnianie podróżnym możliwości:
-    - Wyszukiwania inwentarza podróży.
-    - Rezerwacji dostępnego inwentarza.
+    - Wyszukiwania zasobów turystycznych.
+    - Rezerwowania dostępnych zasobów.
     - Zarządzania swoimi [rezerwacjami i opiniami](/pl/booking-engine/bookings).
-    - Zarządzania swoją [liście życzeń](/pl/booking-engine/bucket-list) rzeczy do zarezerwowania w przyszłości.
+    - Zarządzania swoją [listą życzeń](/pl/booking-engine/bucket-list) rzeczy do zarezerwowania w przyszłości.
     - Zarządzania swoim [profilem podróżnym](/pl/booking-engine/travel-preferences). *np. alergie, kontakt alarmowy itp.*
 
-Silnik rezerwacji to zbiór wielokrotnego użytku funkcji, które udostępniamy przez https://ota.wink.travel; wysoce konfigurowalną stronę internetową dla hoteli i afiliantów do sprzedaży ich ofert podróżnym.
+Silnik rezerwacji to zbiór wielokrotnego użytku funkcji, które udostępniamy przez https://book.wink.travel; wysoce konfigurowalną stronę internetową dla hoteli i afiliantów do sprzedaży ich ofert podróżnym.
 
 Integratorzy, którzy chcą jeszcze większej swobody, mają dostęp do tych samych funkcji poprzez naszą [wtyczkę WordPress](/pl/integrations/wordpress/), [Web Components](/pl/integrations/web-components) oraz [API](/pl/api).
 

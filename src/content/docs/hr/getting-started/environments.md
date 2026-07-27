@@ -34,7 +34,7 @@ Naše aplikacije također imaju testna i produkcijska okruženja za naše korisn
 | Application | Staging | Production
 | ------- | ------- | ---------- |
 | Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
+| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
 | Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
 | My Account | https://staging-app.wink.travel | https://app.wink.travel | 
 | Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 

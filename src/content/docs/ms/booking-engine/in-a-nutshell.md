@@ -23,7 +23,7 @@ Tanggungjawabnya termasuk:
 - Menjana analitik berdasarkan interaksi pengguna, acara dan panggilan API.
 - Menyediakan inventori yang boleh ditempah dalam format, bahasa dan mata wang yang dikehendaki, seperti:
     - [pautan boleh dikongsi](/ms/portal/studio/shareable-links) di Facebook.
-    - Halaman pendaratan hotel di https://ota.wink.travel dengan inventori untuk hotel tersebut.
+    - Halaman pendaratan hotel di https://book.wink.travel dengan inventori untuk hotel tersebut.
     - [kad](/ms/portal/studio/cards) yang mengandungi inventori afiliasi.
     - [peta](/ms/portal/studio/maps) pada akaun [WinkLinks](/ms/portal/link-manager/wink-links) anda.
     - [Panggilan API](/ms/api) dari sistem ejen pelancongan jauh.
@@ -34,7 +34,7 @@ Tanggungjawabnya termasuk:
     - Mengurus [senarai impian](/ms/booking-engine/bucket-list) mereka untuk perkara yang ingin ditempah pada masa hadapan.
     - Mengurus [profil pelancongan](/ms/booking-engine/travel-preferences) mereka. *contohnya Alergi, kenalan kecemasan dan lain-lain.*
 
-Enjin tempahan adalah koleksi fungsi yang boleh digunakan semula yang kami dedahkan melalui https://ota.wink.travel; sebuah laman web yang sangat boleh disesuaikan untuk hotel dan afiliasi menjual produk mereka kepada pelancong.
+Enjin tempahan adalah koleksi fungsi yang boleh digunakan semula yang kami dedahkan melalui https://book.wink.travel; sebuah laman web yang sangat boleh disesuaikan untuk hotel dan afiliasi menjual produk mereka kepada pelancong.
 
 Integrasi, yang mahukan lebih kebebasan, mempunyai akses kepada semua ciri yang sama melalui [plugin WordPress kami](/ms/integrations/wordpress/), [Komponen Web](/ms/integrations/web-components) dan [API](/ms/api).
 

@@ -23,7 +23,7 @@ Njegove odgovornosti uključuju:
 - Generiranje analitike na temelju korisničkih interakcija, događaja i API poziva.
 - Prikazivanje rezervabilnog inventara u željenom formatu, jeziku i valuti, kao što su:
     - [dijeljivi link](/hr/portal/studio/shareable-links) na Facebooku.
-    - Početna stranica hotela na https://ota.wink.travel s inventarom za taj hotel.
+    - Početna stranica hotela na https://book.wink.travel s inventarom za taj hotel.
     - [kartica](/hr/portal/studio/cards) koja sadrži inventar partnera.
     - [karta](/hr/portal/studio/maps) na vašem [WinkLinks](/hr/portal/link-manager/wink-links) računu.
     - [API poziv](/hr/api) iz udaljenog sustava turističke agencije.
@@ -34,7 +34,7 @@ Njegove odgovornosti uključuju:
     - Upravljaju svojom [bucket listom](/hr/booking-engine/bucket-list) stvari za buduće rezervacije.
     - Upravljaju svojim [putnim profilom](/hr/booking-engine/travel-preferences). *npr. alergije, kontakt u hitnim slučajevima itd.*
 
-Booking engine je skup ponovo upotrebljivih funkcionalnosti koje izlažemo putem https://ota.wink.travel; visoko prilagodljive web stranice za hotele i partnere za prodaju njihovih usluga putnicima.
+Booking engine je skup ponovo upotrebljivih funkcionalnosti koje izlažemo putem https://book.wink.travel; visoko prilagodljive web stranice za hotele i partnere za prodaju njihovih usluga putnicima.
 
 Integratori, koji žele još veću slobodu, imaju pristup svim istim značajkama putem našeg [WordPress plugina](/hr/integrations/wordpress/), [Web Components](/hr/integrations/web-components) i [API-ja](/hr/api).
 

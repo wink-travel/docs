@@ -23,7 +23,7 @@ Its responsibilities include:
 - Generating analytics based on user interactions, events and API calls.
 - Serving up bookable inventory in the desired format, language and currency, such as:
     - A [shareable link](/portal/studio/shareable-links) on Facebook.
-    - A hotel landing page on https://ota.wink.travel with inventory for that hotel.
+    - A hotel landing page on https://book.wink.travel with inventory for that hotel.
     - A [card](/portal/studio/cards) containing affiliate inventory.
     - A [map](/portal/studio/maps) on your [WinkLinks](/portal/link-manager/wink-links) account.
     - An [API call](/api) from a remote travel agent system.
@@ -34,7 +34,7 @@ Its responsibilities include:
     - Manage their [bucket list](/booking-engine/bucket-list) of things to book in the future.
     - Manage their [travel profile](/booking-engine/travel-preferences). *e.g. Allergies, emergency contact etc.*
 
-The booking engine is a collection of re-usable functionality that we expose through https://ota.wink.travel; a highly customizable website for hotels and affiliates to sell their wares to travelers.
+The booking engine is a collection of re-usable functionality that we expose through https://book.wink.travel; a highly customizable website for hotels and affiliates to sell their wares to travelers.
 
 Integrators, that want even more freedom, have access to all the same features via our [WordPress plugin](/integrations/wordpress/), [Web Components](/integrations/web-components) and [APIs](/api).
 

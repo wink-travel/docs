@@ -21,8 +21,8 @@ Pelajari bagaimana Wink dibandingkan dengan segmen perjalanan online lain di pas
 | Daftar Hotel Google gratis | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Akses Komponen Web / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Hubungan langsung | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Komisi dapat dinegosiasikan per saluran penjualan | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Konektivitas manajer saluran & PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Komisi yang dapat dinegosiasikan per saluran penjualan | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Konektivitas channel manager & PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
 | Pemasok memiliki pelanggan | 🟢 | ⚫️ | 🟢 | 🟢 | 
 | Melacak ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Bayar-berdasarkan-Kinerja | 🟢 | 🟢 | ⚫️ | 🟢 | 
@@ -32,11 +32,11 @@ Pelajari bagaimana Wink dibandingkan dengan segmen perjalanan online lain di pas
 
 ## Wink vs Internet Booking Engine (IBE)
 
-Beberapa hotel mencoba membandingkan kami dengan mesin pemesanan internet mereka yang disertakan dengan manajer saluran mereka dan meminta kami memberikan harga tetap bulanan berdasarkan jumlah kamar di properti mereka.
+Beberapa hotel mencoba membandingkan kami dengan mesin pemesanan internet mereka yang sudah termasuk dalam channel manager mereka dan meminta kami memberikan harga tetap bulanan berdasarkan jumlah kamar di properti mereka.
 
-Kami bukan IBE dan semoga [Wink Academy](/id/) membantu memperjelas hal ini. Ada kelebihan dan kekurangan pada setiap layanan. Jika IBE Anda bekerja untuk properti Anda, tetap gunakan itu.  
-Wink ada untuk mengisi beberapa kekosongan di industri perjalanan dan menggabungkannya semua dalam satu tempat.
+Kami bukan IBE dan semoga ini membantu menjelaskan perbedaannya. Ada kelebihan dan kekurangan pada setiap layanan. Jika IBE Anda bekerja untuk properti Anda, tetap gunakan itu.  
+Wink hadir untuk mengisi beberapa kekosongan dalam industri perjalanan dan menggabungkannya semua dalam satu tempat.
 
 :::tip
-Anda tidak harus mengganti IBE yang sudah ada. Namun, kami menyarankan untuk mencoba mesin pemesanan ramah sosial kami, atau pengelola tautan, di salah satu akun media sosial Anda untuk melihat bagaimana konversinya. Anda tidak membayar apa pun jika tidak ada pemesanan - Apa yang Anda rugikan? 😉
+Anda tidak harus mengganti IBE yang sudah ada. Namun, kami menyarankan untuk mencoba mesin pemesanan ramah sosial kami, atau pengelola tautan, di salah satu akun media sosial Anda untuk melihat bagaimana konversinya. Anda tidak membayar apa pun jika tidak ada pemesanan - Apa yang bisa Anda rugikan? 😉
 :::

@@ -3,37 +3,37 @@ title: 條款與條件
 description: 適用於所有 Wink 用戶及實體的條款與條件。
 ---
 
-每個入口網站可能有不同的條款與條件。請前往下方適用於您的部分，並尋找名為「服務條款與付款條件」的小節。
+Wink 的不同部分有不同的條款。請在下方找到適用於您的部分 — 每個部分都有其專屬的服務條款，處理金錢的部分也有付款條款。
 
-## 聯盟入口網站
+## 物業
 
-適用於想了解如何透過 Wink 將您的社群帳號變現，賺取被動收入的聯盟夥伴。
-[Wink Studio](https://studio.wink.travel) 提供您所有專業銷售所需的工具。
+適用於在 Wink 銷售庫存的飯店、連鎖、品牌及管理公司。
 
-<LinkButton href="/zh-TW/portal/studio/what-is-studio">
-了解更多關於 Wink Studio
-</LinkButton>
+- [服務條款](/zh-TW/portal/extranet/terms-of-service)
+- [付款條款](/zh-TW/portal/extranet/payment-terms)
 
-## 訂房引擎
+## 聯盟
 
-所有道路都通向我們的訂房引擎！了解您可以如何使用市場上最具客製化、專注於旅遊的訂房引擎。
+適用於推廣旅遊庫存並賺取佣金的創作者、影響者及聯盟。
 
-<LinkButton href="/zh-TW/booking-engine/in-a-nutshell">
-了解更多關於我們的訂房引擎
-</LinkButton>
+- [服務條款](/zh-TW/portal/studio/terms-of-service)
+- [付款條款](/zh-TW/portal/studio/payment-terms)
 
-## 物業入口網站
+## 旅行社
 
-適用於想開始在 Wink 銷售的物業。使用我們的工具有效地在線上銷售與行銷自己，並從全球招募大量聯盟夥伴，幫助您獲得客戶與訂單。
+適用於代表客戶搜尋、預訂並賺取收益的註冊旅行社。
 
-<LinkButton href="/zh-TW/portal/extranet/what-is-extranet">
-了解更多關於 Wink Extranet
-</LinkButton>
+- [服務條款](/zh-TW/portal/travel-agent/terms-of-service)
+- [付款條款](/zh-TW/portal/travel-agent/payment-terms)
 
-## 旅行社入口網站
+## 預訂引擎
 
-適用於想了解 Wink 能為他們提供哪些專屬價格、優惠及供應商直接庫存的旅行社。
+適用於所有透過 Wink 預訂旅遊的人。
 
-<LinkButton href="/zh-TW/portal/travel-agent/what-is-agent">
-了解更多關於 Wink Agent
-</LinkButton>
+- [服務條款](/zh-TW/booking-engine/terms-of-service)
+
+## 所有人
+
+- [隱私政策](/zh-TW/privacy)
+- [價格](/zh-TW/getting-started/pricing) — 免費項目、預訂費用及按使用付費的運作方式。
+- [資料刪除請求](/zh-TW/getting-started/data-deletion-request)

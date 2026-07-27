@@ -3,37 +3,37 @@ title: Villkor
 description: Villkor för alla Wink-användare och enheter.
 ---
 
-Varje portal kan ha olika villkor. Gå till avsnittet nedan som gäller för dig och leta efter underavsnittet som heter Villkor för tjänster och betalningsvillkor.
+Olika delar av Wink har olika villkor. Hitta den sektion som gäller för dig nedan — varje sektion har sina egna användarvillkor, och de sektioner som hanterar pengar har även betalningsvillkor.
 
-## Affiliateportal
+## Fastigheter
 
-För affiliates som vill lära sig hur man tjänar en passiv inkomst genom att tjäna pengar på dina sociala konton med Wink.  
-[Wink Studio](https://studio.wink.travel) har alla verktyg du behöver för att sälja som ett proffs.
+För hotell, kedjor, varumärken och förvaltningsbolag som säljer inventarier på Wink.
 
-<LinkButton href="/sv/portal/studio/what-is-studio">
-Lär dig mer om Wink Studio
-</LinkButton>
+- [Användarvillkor](/sv/portal/extranet/terms-of-service)
+- [Betalningsvillkor](/sv/portal/extranet/payment-terms)
+
+## Affiliates
+
+För skapare, influencers och affiliates som marknadsför reseinventarier och tjänar provision.
+
+- [Användarvillkor](/sv/portal/studio/terms-of-service)
+- [Betalningsvillkor](/sv/portal/studio/payment-terms)
+
+## Resebyråer
+
+För registrerade resebyråer som söker, bokar och tjänar på uppdrag av sina kunder.
+
+- [Användarvillkor](/sv/portal/travel-agent/terms-of-service)
+- [Betalningsvillkor](/sv/portal/travel-agent/payment-terms)
 
 ## Bokningsmotor
 
-Alla vägar leder till vår bokningsmotor! Lär dig vad du kan göra med den mest anpassningsbara, resefokuserade bokningsmotorn på marknaden.
+För alla som bokar resor via Wink.
 
-<LinkButton href="/sv/booking-engine/in-a-nutshell">
-Lär dig mer om vår bokningsmotor
-</LinkButton>
+- [Användarvillkor](/sv/booking-engine/terms-of-service)
 
-## Fastighetsportal
+## Alla
 
-För fastigheter som vill börja sälja på Wink. Använd våra verktyg för att effektivt sälja och marknadsföra dig online och få en armé av affiliates från hela världen som hjälper dig att få kunder och bokningar.
-
-<LinkButton href="/sv/portal/extranet/what-is-extranet">
-Lär dig mer om Wink Extranet
-</LinkButton>
-
-## Resebyråportal
-
-För resebyråer som vill ta reda på vad Wink kan erbjuda dem i form av skräddarsydda priser, erbjudanden och inventarier direkt från leverantörer.
-
-<LinkButton href="/sv/portal/travel-agent/what-is-agent">
-Lär dig mer om Wink Agent
-</LinkButton>
+- [Integritetspolicy](/sv/privacy)
+- [Prissättning](/sv/getting-started/pricing) — vad som är gratis, vad en bokning kostar och hur avgifter för användning efter behov fungerar.
+- [Begäran om radering av data](/sv/getting-started/data-deletion-request)

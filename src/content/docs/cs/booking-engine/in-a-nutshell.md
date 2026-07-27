@@ -23,7 +23,7 @@ Jeho odpovědnosti zahrnují:
 - Generování analytiky na základě uživatelských interakcí, událostí a API volání.
 - Poskytování rezervovatelného inventáře ve požadovaném formátu, jazyce a měně, například:
     - [sdílitelný odkaz](/cs/portal/studio/shareable-links) na Facebooku.
-    - vstupní stránku hotelu na https://ota.wink.travel s inventářem pro daný hotel.
+    - vstupní stránku hotelu na https://book.wink.travel s inventářem pro daný hotel.
     - [kartu](/cs/portal/studio/cards) obsahující inventář partnera.
     - [mapu](/cs/portal/studio/maps) ve vašem účtu [WinkLinks](/cs/portal/link-manager/wink-links).
     - [API volání](/cs/api) z externího systému cestovní agentury.
@@ -34,7 +34,7 @@ Jeho odpovědnosti zahrnují:
     - Spravovat svůj [seznam přání](/cs/booking-engine/bucket-list) věcí k rezervaci v budoucnu.
     - Spravovat svůj [cestovní profil](/cs/booking-engine/travel-preferences). *např. alergie, kontakty pro nouzové situace atd.*
 
-Rezervační systém je soubor znovupoužitelné funkčnosti, kterou zpřístupňujeme prostřednictvím https://ota.wink.travel; vysoce přizpůsobitelné webové stránky pro hotely a partnery, aby mohli prodávat své služby cestovatelům.
+Rezervační systém je soubor znovupoužitelné funkčnosti, kterou zpřístupňujeme prostřednictvím https://book.wink.travel; vysoce přizpůsobitelné webové stránky pro hotely a partnery, aby mohli prodávat své služby cestovatelům.
 
 Integrátoři, kteří chtějí ještě větší svobodu, mají přístup ke všem stejným funkcím prostřednictvím našeho [WordPress pluginu](/cs/integrations/wordpress/), [Web Components](/cs/integrations/web-components) a [API](/cs/api).
 

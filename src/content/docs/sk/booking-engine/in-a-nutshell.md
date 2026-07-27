@@ -23,10 +23,10 @@ Jeho zodpovednosti zahŕňajú:
 - Generovanie analytiky na základe interakcií používateľov, udalostí a API volaní.
 - Poskytovanie rezervovateľného inventára v požadovanom formáte, jazyku a mene, ako napríklad:
     - [zdieľateľný odkaz](/sk/portal/studio/shareable-links) na Facebooku.
-    - vstupná stránka hotela na https://ota.wink.travel s inventárom pre daný hotel.
+    - Hotelová vstupná stránka na https://book.wink.travel s inventárom pre daný hotel.
     - [karta](/sk/portal/studio/cards) obsahujúca inventár pridružených partnerov.
     - [mapa](/sk/portal/studio/maps) vo vašom účte [WinkLinks](/sk/portal/link-manager/wink-links).
-    - [API volanie](/sk/api) z diaľkového systému cestovnej agentúry.
+    - [API volanie](/sk/api) z externého systému cestovnej agentúry.
 - Poskytovanie cestujúcim spôsobu, ako:
     - Vyhľadávať cestovný inventár.
     - Rezervovať dostupný inventár.
@@ -34,9 +34,9 @@ Jeho zodpovednosti zahŕňajú:
     - Spravovať svoj [bucket list](/sk/booking-engine/bucket-list) vecí na rezervovanie v budúcnosti.
     - Spravovať svoj [cestovný profil](/sk/booking-engine/travel-preferences). *napr. alergie, kontaktná osoba pre núdzové situácie atď.*
 
-Booking engine je zbierka opakovane použiteľnej funkcionality, ktorú sprístupňujeme cez https://ota.wink.travel; vysoko prispôsobiteľnú webovú stránku pre hotely a pridružených partnerov na predaj ich ponúk cestujúcim.
+Booking engine je súbor opakovane použiteľnej funkcionality, ktorú sprístupňujeme cez https://book.wink.travel; vysoko prispôsobiteľnú webovú stránku pre hotely a pridružených partnerov na predaj ich služieb cestujúcim.
 
-Integrátori, ktorí chcú ešte väčšiu slobodu, majú prístup ku všetkým rovnakým funkciám cez náš [WordPress plugin](/sk/integrations/wordpress/), [Web Components](/sk/integrations/web-components) a [APIs](/sk/api).
+Integrátori, ktorí chcú ešte väčšiu slobodu, majú prístup ku všetkým rovnakým funkciám cez náš [WordPress plugin](/sk/integrations/wordpress/), [Web Components](/sk/integrations/web-components) a [API](/sk/api).
 
 Pokračujte do ďalších sekcií, aby ste sa dozvedeli viac o tom, čo booking engine ponúka.
 
@@ -44,4 +44,4 @@ Pokračujte do ďalších sekcií, aby ste sa dozvedeli viac o tom, čo booking 
 
 - Prečítajte si o našom [WordPress plugine](/sk/integrations/wordpress/).
 - Prečítajte si o našich [Web Components](/sk/integrations/web-components).
-- Prečítajte si o našich [APIs](/sk/api).
+- Prečítajte si o našich [API](/sk/api).

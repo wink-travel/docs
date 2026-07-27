@@ -3,37 +3,37 @@ title: Syarat dan Ketentuan
 description: Syarat dan Ketentuan untuk semua pengguna dan entitas Wink.
 ---
 
-Setiap portal mungkin memiliki syarat dan ketentuan yang berbeda. Silakan pergi ke bagian di bawah yang berlaku untuk Anda dan cari sub-bagian yang disebut Ketentuan Layanan dan Ketentuan Pembayaran.
+Berbagai bagian dari Wink memiliki syarat yang berbeda. Temukan bagian yang berlaku untuk Anda di bawah ini — masing-masing memiliki Syarat Layanan sendiri, dan bagian yang menangani uang juga memiliki Ketentuan Pembayaran.
 
-## Portal afiliasi
+## Properti
 
-Untuk afiliasi yang ingin belajar cara menghasilkan pendapatan pasif dengan memonetisasi akun sosial Anda menggunakan Wink.  
-[Wink Studio](https://studio.wink.travel) memiliki semua alat yang Anda butuhkan untuk menjual seperti seorang profesional.
+Untuk hotel, jaringan, merek, dan perusahaan manajemen yang menjual inventaris di Wink.
 
-<LinkButton href="/id/portal/studio/what-is-studio">
-Pelajari lebih lanjut tentang Wink Studio
-</LinkButton>
+- [Syarat Layanan](/id/portal/extranet/terms-of-service)
+- [Ketentuan Pembayaran](/id/portal/extranet/payment-terms)
+
+## Afiliasi
+
+Untuk kreator, influencer, dan afiliasi yang mempromosikan inventaris perjalanan dan mendapatkan komisi.
+
+- [Syarat Layanan](/id/portal/studio/terms-of-service)
+- [Ketentuan Pembayaran](/id/portal/studio/payment-terms)
+
+## Agen perjalanan
+
+Untuk agen perjalanan terdaftar yang mencari, memesan, dan mendapatkan penghasilan atas nama klien mereka.
+
+- [Syarat Layanan](/id/portal/travel-agent/terms-of-service)
+- [Ketentuan Pembayaran](/id/portal/travel-agent/payment-terms)
 
 ## Mesin pemesanan
 
-Semua jalan mengarah ke mesin pemesanan kami! Pelajari apa yang bisa Anda lakukan dengan mesin pemesanan yang paling dapat disesuaikan dan berfokus pada perjalanan di pasar.
+Untuk semua orang yang memesan perjalanan melalui Wink.
 
-<LinkButton href="/id/booking-engine/in-a-nutshell">
-Pelajari lebih lanjut tentang mesin pemesanan kami
-</LinkButton>
+- [Syarat Layanan](/id/booking-engine/terms-of-service)
 
-## Portal properti
+## Semua orang
 
-Untuk properti yang ingin mulai menjual di Wink. Gunakan alat kami untuk menjual dan memasarkan diri Anda secara efektif secara online dan dapatkan pasukan afiliasi dari seluruh dunia untuk membantu Anda mendapatkan pelanggan dan pemesanan.
-
-<LinkButton href="/id/portal/extranet/what-is-extranet">
-Pelajari lebih lanjut tentang Wink Extranet
-</LinkButton>
-
-## Portal agen perjalanan
-
-Untuk agen perjalanan yang ingin mengetahui apa yang dapat Wink tawarkan kepada mereka dalam hal tarif khusus, penawaran, dan inventaris, langsung dari pemasok.
-
-<LinkButton href="/id/portal/travel-agent/what-is-agent">
-Pelajari lebih lanjut tentang Wink Agent
-</LinkButton>
+- [Kebijakan Privasi](/id/privacy)
+- [Harga](/id/getting-started/pricing) — apa yang gratis, berapa biaya pemesanan, dan bagaimana biaya penggunaan bayar sesuai pemakaian bekerja.
+- [Permintaan penghapusan data](/id/getting-started/data-deletion-request)

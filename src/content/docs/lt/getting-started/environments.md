@@ -5,7 +5,7 @@ sidebar:
   order: 8
 ---
 
-Wink platformoje mes nuolat veikiame 2 aplinkas:
+Wink mes nuolat valdome 2 aplinkas viskam, ką darome:
 
 - Produkcija yra mūsų stabili aplinka.
 - Staging yra mūsų sertifikavimo ir testavimo aplinka.
@@ -29,14 +29,10 @@ Staging aplinka prieinama pagal užklausą. Tai reiškia, kad ji užmiega, jei n
 
 ## Programėlės
 
-Mūsų programėlėse taip pat yra testavimo ir produkcijos aplinkos mūsų klientams.
+Mūsų programėlės taip pat turi testavimo ir produkcijos aplinkas mūsų klientams.
 
 | Programėlė | Staging | Produkcija
 | ------- | ------- | ---------- |
-| Agentas | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Rezervavimo variklis | https://staging-ota.wink.travel | https://ota.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| Mano paskyra | https://staging-app.wink.travel | https://app.wink.travel | 
-| Mokėjimai | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Portalas | https://staging-app.wink.travel | https://app.wink.travel | 
+| Rezervavimo variklis | https://staging-book.wink.travel | https://book.wink.travel | 
+| Nuorodų valdytojas | https://staging-i.trvl.as | https://i.trvl.as |

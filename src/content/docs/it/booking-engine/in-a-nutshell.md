@@ -23,7 +23,7 @@ Le sue responsabilità includono:
 - Generare analisi basate sulle interazioni degli utenti, eventi e chiamate API.
 - Fornire l'inventario prenotabile nel formato, lingua e valuta desiderati, come:
     - Un [link condivisibile](/it/portal/studio/shareable-links) su Facebook.
-    - Una pagina di destinazione hotel su https://ota.wink.travel con l'inventario per quell'hotel.
+    - Una pagina di atterraggio per hotel su https://book.wink.travel con l'inventario di quell'hotel.
     - Una [card](/it/portal/studio/cards) contenente l'inventario affiliato.
     - Una [mappa](/it/portal/studio/maps) sul tuo account [WinkLinks](/it/portal/link-manager/wink-links).
     - Una [chiamata API](/it/api) da un sistema di agenzia di viaggi remoto.
@@ -34,7 +34,7 @@ Le sue responsabilità includono:
     - Gestire la loro [bucket list](/it/booking-engine/bucket-list) di cose da prenotare in futuro.
     - Gestire il loro [profilo di viaggio](/it/booking-engine/travel-preferences). *es. Allergie, contatto di emergenza ecc.*
 
-Il motore di prenotazione è una raccolta di funzionalità riutilizzabili che esponiamo tramite https://ota.wink.travel; un sito altamente personalizzabile per hotel e affiliati per vendere i loro servizi ai viaggiatori.
+Il motore di prenotazione è una raccolta di funzionalità riutilizzabili che esponiamo tramite https://book.wink.travel; un sito altamente personalizzabile per hotel e affiliati per vendere i loro servizi ai viaggiatori.
 
 Gli integratori, che vogliono ancora più libertà, hanno accesso a tutte le stesse funzionalità tramite il nostro [plugin WordPress](/it/integrations/wordpress/), [Web Components](/it/integrations/web-components) e [API](/it/api).
 

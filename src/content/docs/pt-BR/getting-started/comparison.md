@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-Saiba como o Wink se compara a outros segmentos de viagens online no mercado. Abaixo está um rápido resumo das funcionalidades que achamos importantes para comparar.
+Saiba como o Wink se compara a outros segmentos de viagens online no mercado. Abaixo está um resumo rápido das funcionalidades que achamos importantes para comparar.
 
 ## Matriz de funcionalidades
 
@@ -23,7 +23,7 @@ Saiba como o Wink se compara a outros segmentos de viagens online no mercado. Ab
 | Relacionamentos diretos | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Comissões negociáveis por canal de venda | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Conectividade com channel manager & PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
-| Fornecedor é dono do cliente | 🟢 | ⚫️ | 🟢 | 🟢 | 
+| Fornecedor detém o cliente | 🟢 | ⚫️ | 🟢 | 🟢 | 
 | Acompanhar ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Pagamento por desempenho | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Gateway de pagamento integrado | 🟢 | 🟢 | 🟢 | ⚫️ | 
@@ -34,7 +34,7 @@ Saiba como o Wink se compara a outros segmentos de viagens online no mercado. Ab
 
 Alguns hotéis tentam nos comparar ao motor de reservas pela internet que veio junto com seu channel manager e nos pedem um preço fixo mensal baseado no número de quartos da propriedade.
 
-Nós não somos um IBE e esperamos que a [Wink Academy](/pt-BR/) ajude a esclarecer isso. Existem prós e contras em qualquer serviço. Se o seu IBE funciona para sua propriedade, continue com ele.  
+Nós não somos um IBE e esperamos que isso ajude a esclarecer a diferença. Existem prós e contras em qualquer serviço. Se o seu IBE funciona para sua propriedade, continue com ele.  
 O Wink existe para preencher várias lacunas na indústria de viagens e reunir tudo em um só lugar.
 
 :::tip

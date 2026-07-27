@@ -22,9 +22,9 @@ Wink에서 책임 분담 방식은 다음과 같습니다:
 - 언어 관리.
 - 사용자 상호작용, 이벤트 및 API 호출을 기반으로 분석 생성.
 - 원하는 형식, 언어 및 통화로 예약 가능한 재고 제공, 예를 들어:
-    - Facebook에서 사용할 수 있는 [공유 가능한 링크](/ko/portal/studio/shareable-links).
-    - 해당 호텔의 재고가 있는 https://ota.wink.travel의 호텔 랜딩 페이지.
-    - 제휴사 재고가 포함된 [카드](/ko/portal/studio/cards).
+    - Facebook에서의 [공유 가능한 링크](/ko/portal/studio/shareable-links).
+    - 해당 호텔의 재고가 있는 https://book.wink.travel의 호텔 랜딩 페이지.
+    - 제휴 재고가 포함된 [카드](/ko/portal/studio/cards).
     - [WinkLinks](/ko/portal/link-manager/wink-links) 계정의 [지도](/ko/portal/studio/maps).
     - 원격 여행사 시스템의 [API 호출](/ko/api).
 - 여행자에게 다음과 같은 기능 제공:
@@ -34,7 +34,7 @@ Wink에서 책임 분담 방식은 다음과 같습니다:
     - 미래에 예약할 [버킷 리스트](/ko/booking-engine/bucket-list) 관리.
     - [여행 프로필](/ko/booking-engine/travel-preferences) 관리. *예: 알레르기, 비상 연락처 등.*
 
-예약 엔진은 https://ota.wink.travel을 통해 제공하는 재사용 가능한 기능 모음으로, 호텔과 제휴사가 여행자에게 상품을 판매할 수 있는 고도로 맞춤화된 웹사이트입니다.
+예약 엔진은 https://book.wink.travel을 통해 제공하는 재사용 가능한 기능 모음으로, 호텔과 제휴사가 여행자에게 상품을 판매할 수 있는 고도로 맞춤화된 웹사이트입니다.
 
 더 많은 자유를 원하는 통합자는 [WordPress 플러그인](/ko/integrations/wordpress/), [웹 컴포넌트](/ko/integrations/web-components), [API](/ko/api)를 통해 동일한 기능에 접근할 수 있습니다.
 

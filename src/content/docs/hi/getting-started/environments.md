@@ -34,7 +34,7 @@ Wink में, हम हमेशा हर काम के लिए 2 प�
 | एप्लिकेशन | स्टेजिंग | प्रोडक्शन
 | ------- | ------- | ---------- |
 | एजेंट | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| बुकिंग इंजन | https://staging-ota.wink.travel | https://ota.wink.travel | 
+| बुकिंग इंजन | https://staging-book.wink.travel | https://book.wink.travel | 
 | एक्सट्रानेट | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
 | मेरा खाता | https://staging-app.wink.travel | https://app.wink.travel | 
 | पेमेंट | https://staging-pay.wink.travel | https://pay.wink.travel | 

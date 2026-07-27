@@ -22,7 +22,7 @@ Află cum se compară Wink cu alte segmente de turism online de pe piață. Mai 
 | Acces la Web Component / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Relații directe | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Comisioane negociabile pe canal de vânzare | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Manager de canale & conectivitate PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
+| Conectivitate channel manager & PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
 | Furnizorul deține clientul | 🟢 | ⚫️ | 🟢 | 🟢 | 
 | Urmărire ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Plata pe performanță | 🟢 | 🟢 | ⚫️ | 🟢 | 
@@ -32,11 +32,11 @@ Află cum se compară Wink cu alte segmente de turism online de pe piață. Mai 
 
 ## Wink vs Motor de rezervare pe internet (IBE)
 
-Unele hoteluri încearcă să ne compare cu motorul lor de rezervare pe internet care vine împreună cu managerul lor de canale și ne cer să le oferim un preț fix, lunar, bazat pe numărul de camere ale proprietății lor.
+Unele hoteluri încearcă să ne compare cu motorul lor de rezervare pe internet care vine împreună cu channel manager-ul lor și ne cer să le oferim un preț fix, lunar, bazat pe numărul de camere ale proprietății.
 
-Noi nu suntem un IBE și, sperăm, [Wink Academy](/ro/) ajută să clarifice acest lucru. Există avantaje și dezavantaje pentru orice serviciu. Dacă IBE-ul tău funcționează pentru proprietatea ta, rămâi cu el.  
-Wink există pentru a umple mai multe goluri în industria turismului și pentru a le aduce pe toate împreună într-un singur loc.
+Noi nu suntem un IBE și sperăm că acest lucru ajută la clarificarea diferenței. Orice serviciu are avantaje și dezavantaje. Dacă IBE-ul tău funcționează pentru proprietatea ta, rămâi cu el.  
+Wink există pentru a umple mai multe goluri din industria turismului și pentru a le aduce pe toate împreună într-un singur loc.
 
 :::tip
-Nu trebuie să înlocuiești IBE-ul existent. Totuși, recomandăm să încerci motorul nostru de rezervare prietenos cu social media sau managerul de linkuri pe unul dintre conturile tale de social media pentru a vedea cum convertesc. Nu plătești nimic dacă nu există rezervări - Ce ai de pierdut? 😉
+Nu trebuie să înlocuiești IBE-ul existent. Totuși, recomandăm să încerci motorul nostru de rezervare prietenos cu social media sau managerul de linkuri pe unul dintre conturile tale de social media pentru a vedea cum convertesc. Nu plătești nimic dacă nu există rezervări – Ce ai de pierdut? 😉
 :::

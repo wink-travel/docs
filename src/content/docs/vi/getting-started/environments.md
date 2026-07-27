@@ -8,7 +8,7 @@ sidebar:
 Tại Wink, chúng tôi vận hành 2 môi trường cho mọi hoạt động của mình mọi lúc:
 
 - Production là môi trường ổn định của chúng tôi.
-- Staging là môi trường chứng nhận và kiểm thử của chúng tôi.
+- Staging là môi trường chứng nhận và kiểm thử.
 
 Nếu bạn là một nhà tích hợp, khách sạn hoặc đại lý du lịch muốn chuẩn bị cho việc chứng nhận hoặc kiểm thử nền tảng Wink, hãy tạo tài khoản trong môi trường staging của chúng tôi để bắt đầu.
 
@@ -33,10 +33,6 @@ Các ứng dụng của chúng tôi cũng có môi trường kiểm thử và m�
 
 | Ứng dụng | Staging | Production
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Booking engine | https://staging-ota.wink.travel | https://ota.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
+| Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

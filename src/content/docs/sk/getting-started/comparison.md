@@ -24,7 +24,7 @@ Zistite, ako sa Wink porovnáva s inými segmentmi online cestovania na trhu. Ni
 | Vyjednávateľné provízie podľa predajného kanála | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Prepojenie s channel managerom a PMS | 🟢 | 🟢 | 🟢 | 🟢 | 
 | Dodávateľ vlastní zákazníka | 🟢 | ⚫️ | 🟢 | 🟢 | 
-| Sledovanie návratnosti investícií (ROI) | 🟢 | 🟢 | ⚫️ | ⚫️ | 
+| Sledovanie ROI | 🟢 | 🟢 | ⚫️ | ⚫️ | 
 | Platba podľa výkonu | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Integrovaná platobná brána | 🟢 | 🟢 | 🟢 | ⚫️ | 
 | Výplaty cez Wise | 🟢 | 🟢 | ⚫️ | ⚫️ | 
@@ -32,11 +32,11 @@ Zistite, ako sa Wink porovnáva s inými segmentmi online cestovania na trhu. Ni
 
 ## Wink vs Internet Booking Engine (IBE)
 
-Niektoré hotely sa nás snažia porovnávať s ich internetovým rezervačným engineom, ktorý je súčasťou ich channel managera, a žiadajú nás o pevne stanovenú mesačnú cenu na základe počtu izieb v ich zariadení.
+Niektoré hotely sa nás snažia porovnávať s ich internetovým rezervačným engineom, ktorý je súčasťou ich channel managera, a žiadajú nás o pevne stanovenú mesačnú cenu na základe počtu kľúčov ich objektu.
 
-Nie sme IBE a dúfame, že [Wink Academy](/sk/) pomáha túto situáciu objasniť. Každá služba má svoje výhody a nevýhody. Ak váš IBE funguje pre vaše zariadenie, zostaňte pri ňom.  
-Wink existuje, aby vyplnil niekoľko medzier v cestovnom priemysle a spojil všetko na jednom mieste.
+Nie sme IBE a dúfame, že toto pomôže objasniť rozdiel. Každá služba má svoje výhody a nevýhody. Ak váš IBE funguje pre váš objekt, zostaňte pri ňom.  
+Wink existuje, aby vyplnil niekoľko medzier v cestovnom priemysle a spojil všetko na jednom mieste. 
 
 :::tip
-Nemusíte nahrádzať svoj existujúci IBE. Odporúčame však vyskúšať náš sociálne priateľský rezervačný engine alebo správcu odkazov na jednom z vašich účtov na sociálnych sieťach, aby ste videli, ako konvertujú. Neplatíte nič, ak nie sú žiadne rezervácie – Čo môžete stratiť? 😉
+Nemusíte nahrádzať svoj existujúci IBE. Odporúčame však vyskúšať náš booking engine priateľský k sociálnym sieťam alebo správcu odkazov na jednom z vašich sociálnych účtov, aby ste videli, ako konvertujú. Neplatíte nič, ak nie sú žiadne rezervácie – Čo môžete stratiť? 😉
 :::

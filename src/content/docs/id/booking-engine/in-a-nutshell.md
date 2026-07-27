@@ -1,6 +1,6 @@
 ---
 title: Singkatnya
-description: Artikel ini menjelaskan semua yang ingin Anda ketahui tentang mesin pemesanan.
+description: Artikel ini menjelaskan semua yang ingin Anda ketahui tentang booking engine.
 sidebar:
   order: 0
 ---
@@ -12,7 +12,7 @@ Berikut cara kami membagi tanggung jawab di Wink:
 - `Booking Engine` berkaitan dengan membuat konten, yang dibuat di `Studio`, yang didasarkan pada inventaris yang dibuat di `Extranet` dan membuatnya dapat dipesan.
 - [Payment](/id/payment/what-is-trip-pay) berkaitan dengan mengenakan biaya / mengembalikan dana kepada pelancong yang memesan [melalui platform seperti Wink], dan membayar vendor.
 
-Mesin pemesanan adalah inti dari platform kami.
+Booking engine adalah inti dari platform kami.
 
 Tanggung jawabnya meliputi:
 
@@ -23,7 +23,7 @@ Tanggung jawabnya meliputi:
 - Menghasilkan analitik berdasarkan interaksi pengguna, peristiwa, dan panggilan API.
 - Menyajikan inventaris yang dapat dipesan dalam format, bahasa, dan mata uang yang diinginkan, seperti:
     - [tautan yang dapat dibagikan](/id/portal/studio/shareable-links) di Facebook.
-    - Halaman landing hotel di https://ota.wink.travel dengan inventaris untuk hotel tersebut.
+    - Halaman landing hotel di https://book.wink.travel dengan inventaris untuk hotel tersebut.
     - [kartu](/id/portal/studio/cards) yang berisi inventaris afiliasi.
     - [peta](/id/portal/studio/maps) di akun [WinkLinks](/id/portal/link-manager/wink-links) Anda.
     - [panggilan API](/id/api) dari sistem agen perjalanan jarak jauh.
@@ -34,13 +34,13 @@ Tanggung jawabnya meliputi:
     - Mengelola [daftar keinginan](/id/booking-engine/bucket-list) mereka untuk hal-hal yang akan dipesan di masa depan.
     - Mengelola [profil perjalanan](/id/booking-engine/travel-preferences) mereka. *misalnya alergi, kontak darurat, dll.*
 
-Mesin pemesanan adalah kumpulan fungsi yang dapat digunakan kembali yang kami sediakan melalui https://ota.wink.travel; sebuah situs web yang sangat dapat disesuaikan untuk hotel dan afiliasi menjual produk mereka kepada pelancong.
+Booking engine adalah kumpulan fungsi yang dapat digunakan kembali yang kami sediakan melalui https://book.wink.travel; sebuah situs web yang sangat dapat disesuaikan untuk hotel dan afiliasi menjual produk mereka kepada pelancong.
 
 Integrator, yang menginginkan kebebasan lebih, memiliki akses ke semua fitur yang sama melalui [plugin WordPress](/id/integrations/wordpress/), [Web Components](/id/integrations/web-components), dan [API](/id/api) kami.
 
-Lanjutkan ke bagian berikutnya untuk membaca lebih lanjut tentang apa yang ditawarkan mesin pemesanan.
+Lanjutkan ke bagian berikutnya untuk membaca lebih lanjut tentang apa yang ditawarkan booking engine.
 
-## Bacaan lanjutan
+## Bacaan lebih lanjut
 
 - Baca tentang [plugin WordPress](/id/integrations/wordpress/) kami.
 - Baca tentang [Web Components](/id/integrations/web-components) kami.

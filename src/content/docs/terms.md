@@ -3,37 +3,37 @@ title: Terms and Conditions
 description: Terms and Conditions for all Wink users and entities.
 ---
 
-Each portal may have different terms and conditions. Please go to the section below that applies to you and look for the sub-section calle Terms of Service and Payment Terms.
+Different parts of Wink carry different terms. Find the section that applies to you below — each one has its own Terms of Service, and the sections that handle money also have Payment Terms.
 
-## Affiliate portal
+## Properties
 
-For affiliates who want to learn how to earn a passive income by monetizing your social accounts with Wink.
-[Wink Studio](https://studio.wink.travel) has all the tools you need to sell like a professional.
+For hotels, chains, brands and management companies selling inventory on Wink.
 
-<LinkButton href="/portal/studio/what-is-studio">
-Learn more about Wink Studio
-</LinkButton>
+- [Terms of Service](/portal/extranet/terms-of-service)
+- [Payment Terms](/portal/extranet/payment-terms)
+
+## Affiliates
+
+For creators, influencers and affiliates promoting travel inventory and earning commission.
+
+- [Terms of Service](/portal/studio/terms-of-service)
+- [Payment Terms](/portal/studio/payment-terms)
+
+## Travel agents
+
+For registered travel agents searching, booking and earning on behalf of their clients.
+
+- [Terms of Service](/portal/travel-agent/terms-of-service)
+- [Payment Terms](/portal/travel-agent/payment-terms)
 
 ## Booking engine
 
-All roads lead to our booking engine! Learn what you can do with the most customizable, travel-focused, booking engine on the market.
+For everyone booking travel through Wink.
 
-<LinkButton href="/booking-engine/in-a-nutshell">
-Learn more about our booking engine
-</LinkButton>
+- [Terms of Service](/booking-engine/terms-of-service)
 
-## Property portal
+## Everyone
 
-For properties that want to start selling on Wink. Use our tools to effectively sell and market yourself online and and get an army of affiliates from all over the world to help you get customers and bookings.
-
-<LinkButton href="/portal/extranet/what-is-extranet">
-Learn more about Wink Extranet
-</LinkButton>
-
-## Travel agent portal
-
-For travel agents who want to find out what Wink can offer them in terms of bespoke rates, deals and inventory, directly from suppliers.
-
-<LinkButton href="/portal/travel-agent/what-is-agent">
-Learn more about Wink Agent
-</LinkButton>
+- [Privacy Policy](/privacy)
+- [Pricing](/getting-started/pricing) — what's free, what a booking costs, and how pay-as-you-go usage fees work.
+- [Data deletion request](/getting-started/data-deletion-request)

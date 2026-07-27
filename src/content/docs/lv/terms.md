@@ -3,37 +3,37 @@ title: Noteikumi un nosacījumi
 description: Noteikumi un nosacījumi visiem Wink lietotājiem un vienībām.
 ---
 
-Katram portālam var būt atšķirīgi noteikumi un nosacījumi. Lūdzu, dodieties uz zemāk esošo sadaļu, kas attiecas uz jums, un meklējiet apakšsadaļu ar nosaukumu Pakalpojumu sniegšanas noteikumi un Maksājumu noteikumi.
+Dažādām Wink daļām ir atšķirīgi noteikumi. Zemāk atrodi sadaļu, kas attiecas uz tevi — katrai ir savi Pakalpojumu noteikumi, un sadaļām, kas apstrādā naudu, ir arī Maksājumu noteikumi.
 
-## Affiliate portāls
+## Īpašumi
 
-Affiliate partneriem, kuri vēlas uzzināt, kā nopelnīt pasīvos ienākumus, monetizējot savus sociālos kontus ar Wink.
-[Wink Studio](https://studio.wink.travel) ir visi rīki, kas jums nepieciešami, lai pārdotu kā profesionālim.
+Viesnīcām, ķēdēm, zīmoliem un pārvaldības uzņēmumiem, kas pārdod inventāru caur Wink.
 
-<LinkButton href="/lv/portal/studio/what-is-studio">
-Uzziniet vairāk par Wink Studio
-</LinkButton>
+- [Pakalpojumu noteikumi](/lv/portal/extranet/terms-of-service)
+- [Maksājumu noteikumi](/lv/portal/extranet/payment-terms)
+
+## Partneri
+
+Radītājiem, ietekmētājiem un partneriem, kas reklamē ceļojumu inventāru un pelna komisijas maksu.
+
+- [Pakalpojumu noteikumi](/lv/portal/studio/terms-of-service)
+- [Maksājumu noteikumi](/lv/portal/studio/payment-terms)
+
+## Ceļojumu aģenti
+
+Reģistrētiem ceļojumu aģentiem, kas meklē, rezervē un pelna saviem klientiem.
+
+- [Pakalpojumu noteikumi](/lv/portal/travel-agent/terms-of-service)
+- [Maksājumu noteikumi](/lv/portal/travel-agent/payment-terms)
 
 ## Rezervēšanas dzinējs
 
-Visas ceļi ved uz mūsu rezervēšanas dzinēju! Uzziniet, ko jūs varat darīt ar vispielāgojamāko, ceļojumiem vērsto rezervēšanas dzinēju tirgū.
+Visiem, kas rezervē ceļojumus caur Wink.
 
-<LinkButton href="/lv/booking-engine/in-a-nutshell">
-Uzziniet vairāk par mūsu rezervēšanas dzinēju
-</LinkButton>
+- [Pakalpojumu noteikumi](/lv/booking-engine/terms-of-service)
 
-## Īpašumu portāls
+## Visiem
 
-Īpašumiem, kas vēlas sākt pārdot ar Wink. Izmantojiet mūsu rīkus, lai efektīvi pārdotu un tirgotu sevi tiešsaistē un iegūtu armiju affiliate partneru no visas pasaules, kas palīdzēs jums piesaistīt klientus un rezervācijas.
-
-<LinkButton href="/lv/portal/extranet/what-is-extranet">
-Uzziniet vairāk par Wink Extranet
-</LinkButton>
-
-## Ceļojumu aģentu portāls
-
-Ceļojumu aģentiem, kuri vēlas uzzināt, ko Wink var piedāvāt viņiem attiecībā uz īpašām cenām, piedāvājumiem un inventāru tieši no piegādātājiem.
-
-<LinkButton href="/lv/portal/travel-agent/what-is-agent">
-Uzziniet vairāk par Wink Agent
-</LinkButton>
+- [Privātuma politika](/lv/privacy)
+- [Cenu noteikšana](/lv/getting-started/pricing) — kas ir bez maksas, cik maksā rezervācija un kā darbojas maksāšanas pēc lietošanas maksa.
+- [Datu dzēšanas pieprasījums](/lv/getting-started/data-deletion-request)

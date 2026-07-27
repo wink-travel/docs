@@ -8,9 +8,9 @@ sidebar:
 Svona skiptum við ábyrgðinni á Wink:
 
 - [Extranet](/is/portal/extranet/what-is-extranet) snýr að birgjum sem stjórna birgðastöðu.
-- [Studio](/is/portal/studio/what-is-studio) snýr að samstarfsaðilum sem stjórna efni.
-- `Booking Engine` snýr að því að gera efnið, sem búið var til í `Studio` og byggt á birgðastöðu sem búin var til í `Extranet`, bókanlegt.
-- [Payment](/is/payment/what-is-trip-pay) snýr að því að rukka / endurgreiða ferðalanga sem bóka [í gegnum vettvang eins og Wink], og greiða birgjum.
+- [Studio](/is/portal/studio/what-is-studio) snýr að tengdum aðilum sem stjórna efni.
+- `Booking Engine` sér um að gera efnið, sem búið var til í `Studio` og byggt á birgðastöðu sem búin var til í `Extranet`, bókanlegt.
+- [Payment](/is/payment/what-is-trip-pay) sér um að rukka / endurgreiða ferðalanga sem bóka [í gegnum vettvang eins og Wink], og greiða birgjum.
 
 Bókunarvélin er kjarninn í vettvangi okkar.
 
@@ -23,8 +23,8 @@ Bókunarvélin er kjarninn í vettvangi okkar.
 - Að búa til greiningar byggðar á notendaviðmótum, atburðum og API-köllum.
 - Að bjóða upp á bókanlega birgðastöðu í æskilegu sniði, tungumáli og gjaldmiðli, svo sem:
     - [deilanlegan hlekk](/is/portal/studio/shareable-links) á Facebook.
-    - Gististaðasíðu á https://ota.wink.travel með birgðastöðu fyrir þann gististað.
-    - [spjald](/is/portal/studio/cards) sem inniheldur birgðastöðu samstarfsaðila.
+    - Gististaðasíðu á https://book.wink.travel með birgðastöðu fyrir þann gististað.
+    - [spjald](/is/portal/studio/cards) sem inniheldur birgðastöðu tengdra aðila.
     - [kort](/is/portal/studio/maps) á [WinkLinks](/is/portal/link-manager/wink-links) reikningnum þínum.
     - [API-kall](/is/api) frá fjarstýrðu ferðaskrifstofukerfi.
 - Að veita ferðalöngum leið til að:
@@ -32,11 +32,11 @@ Bókunarvélin er kjarninn í vettvangi okkar.
     - Bóka lausa birgðastöðu.
     - Stjórna sínum [bókunum og umsögnum](/is/booking-engine/bookings).
     - Stjórna sínum [óskalista](/is/booking-engine/bucket-list) yfir hluti til að bóka í framtíðinni.
-    - Stjórna sínum [ferðastillingum](/is/booking-engine/travel-preferences). *t.d. ofnæmi, neyðarsamband o.s.frv.*
+    - Stjórna sínum [ferðastillingum](/is/booking-engine/travel-preferences). *t.d. ofnæmi, neyðartengiliður o.s.frv.*
 
-Bókunarvélin er safn af endurnýtanlegum virkni sem við bjóðum upp á í gegnum https://ota.wink.travel; mjög sérhannaða vefsíðu fyrir hótel og samstarfsaðila til að selja vörur sínar til ferðalanga.
+Bókunarvélin er safn af endurnýtanlegum virkni sem við bjóðum upp á í gegnum https://book.wink.travel; mjög sérhannaða vefsíðu fyrir hótel og tengda aðila til að selja vörur sínar til ferðalanga.
 
-Þeir sem vilja enn meiri frelsi hafa aðgang að öllum sömu eiginleikum í gegnum okkar [WordPress viðbót](/is/integrations/wordpress/), [Web Components](/is/integrations/web-components) og [API](/is/api).
+Samþættingaraðilar, sem vilja enn meiri frelsi, hafa aðgang að öllum sömu eiginleikum í gegnum okkar [WordPress viðbót](/is/integrations/wordpress/), [Web Components](/is/integrations/web-components) og [API](/is/api).
 
 Haltu áfram í næstu köflum til að lesa meira um hvað bókunarvélin hefur upp á að bjóða.
 

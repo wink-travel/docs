@@ -27,6 +27,14 @@ Hospitality management companies and destination management companies can manage
 
 Influencers use Wink to better monetize their audience. They do so by partnering with hotels, creating custom deals, and leveraging Wink's social-friendly tools and powerful analytics to track which products sell best​.
 
+## Talent agencies
+
+Talent agencies are to creators what management companies are to hotels. If you represent a stable of influencers, content creators or travel personalities, you can manage all of their Wink accounts from one place — finding inventory, negotiating deals with properties, building and publishing content, and tracking performance across your whole roster rather than one creator at a time.
+
+You negotiate an agency fee with each of your talent and earn that fee on every booking they generate. It's paid out automatically as part of the booking, so there's no invoicing your own talent and no chasing commissions after the fact. Your talent stays in control throughout — they own their account, they're the one who applies the agreed fee, and they can add expiration rules or end the arrangement whenever they like.
+
+See [Agency representation](/portal/settings/agency-representation) for how it's set up.
+
 ## Travel agents
 
 Travel agents get access to travel inventory worldwide at great prices through our dedicated [travel agent portal](https://agent.wink.travel). They can make bookings through our portal, via our API or by letting their users book themselves on the travel agent website that's using our technologies. 

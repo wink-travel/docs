@@ -3,37 +3,37 @@ title: Skilmálar og skilyrði
 description: Skilmálar og skilyrði fyrir alla notendur og einingar Wink.
 ---
 
-Hver gátt getur haft mismunandi skilmála og skilyrði. Vinsamlegast farðu í kaflann hér að neðan sem á við þig og leitaðu að undirkaflanum sem heitir Skilmálar þjónustu og greiðsluskilmálar.
+Ólíkar deildir Wink hafa mismunandi skilmála. Finndu þann hluta sem á við þig hér að neðan — hver og einn hefur sína eigin þjónustuskilmála, og þeir kaflar sem fjalla um peninga hafa einnig greiðsluskilmála.
 
-## Tenglagátt
+## Eignir
 
-Fyrir tengla sem vilja læra hvernig á að afla sér tekna með því að nýta samfélagsreikninga sína með Wink.
-[Wink Studio](https://studio.wink.travel) hefur öll þau verkfæri sem þú þarft til að selja eins og atvinnumaður.
+Fyrir hótel, keðjur, vörumerki og rekstrarfyrirtæki sem selja birgðir á Wink.
 
-<LinkButton href="/is/portal/studio/what-is-studio">
-Lærðu meira um Wink Studio
-</LinkButton>
+- [Þjónustuskilmálar](/is/portal/extranet/terms-of-service)
+- [Greiðsluskilmálar](/is/portal/extranet/payment-terms)
 
-## Pöntunarkerfi
+## Tenglar
 
-Allar leiðir liggja að pöntunarkerfi okkar! Lærðu hvað þú getur gert með það sérsniðnasta, ferðatengda pöntunarkerfi á markaðnum.
+Fyrir skapara, áhrifavalda og tengla sem kynna ferðabirgðir og þéna þóknun.
 
-<LinkButton href="/is/booking-engine/in-a-nutshell">
-Lærðu meira um pöntunarkerfi okkar
-</LinkButton>
+- [Þjónustuskilmálar](/is/portal/studio/terms-of-service)
+- [Greiðsluskilmálar](/is/portal/studio/payment-terms)
 
-## Eignagátt
+## Ferðaskrifstofur
 
-Fyrir eignir sem vilja byrja að selja á Wink. Notaðu verkfæri okkar til að selja og markaðssetja þig á áhrifaríkan hátt á netinu og fáðu her af tenglum alls staðar að úr heiminum til að hjálpa þér að fá viðskiptavini og pantanir.
+Fyrir skráða ferðaskrifstofur sem leita, bóka og þéna fyrir hönd viðskiptavina sinna.
 
-<LinkButton href="/is/portal/extranet/what-is-extranet">
-Lærðu meira um Wink Extranet
-</LinkButton>
+- [Þjónustuskilmálar](/is/portal/travel-agent/terms-of-service)
+- [Greiðsluskilmálar](/is/portal/travel-agent/payment-terms)
 
-## Gátt ferðaskrifstofa
+## Bókunarvél
 
-Fyrir ferðaskrifstofur sem vilja komast að því hvað Wink getur boðið þeim í formi sérsniðinna verðs, tilboða og birgða, beint frá birgjum.
+Fyrir alla sem bóka ferðalög í gegnum Wink.
 
-<LinkButton href="/is/portal/travel-agent/what-is-agent">
-Lærðu meira um Wink Agent
-</LinkButton>
+- [Þjónustuskilmálar](/is/booking-engine/terms-of-service)
+
+## Allir
+
+- [Persónuverndarstefna](/is/privacy)
+- [Verðlagning](/is/getting-started/pricing) — hvað er ókeypis, hvað bókun kostar og hvernig greiðslur eftir notkun virka.
+- [Beiðni um eyðingu gagna](/is/getting-started/data-deletion-request)

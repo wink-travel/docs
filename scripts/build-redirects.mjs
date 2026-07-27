@@ -35,6 +35,7 @@ const deleteTargets = {
   "payment/mapping": "/",
   "payment/verification": "/",
   "payment/tax-id": "/",
+  "getting-started/ai-content": "/guides/hoteliers/ai-assisted-registration",
 };
 
 const walkMdx = (startDir) => {

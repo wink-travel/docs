@@ -12,12 +12,12 @@ Tìm hiểu cách Wink so sánh với các phân khúc du lịch trực tuyến 
 | Tính năng | Wink | OTA | IBE | Bed Bank
 | ----------------------- | -- | -- | -- | -- |
 | Công cụ đặt phòng trực tuyến | 🟢 | 🟢 | 🟢 | ⚫️ | 
-| Cửa hàng liên kết trong tiểu sử | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Cửa hàng liên kết trong bio | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Mạng lưới liên kết B2B | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Hỗ trợ đại lý du lịch | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Phân phối & tiếp thị hỗ trợ AI | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Công cụ thân thiện với mạng xã hội | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Kênh B2C không hoa hồng | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Kênh B2C không phí hoa hồng | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Danh sách khách sạn miễn phí trên Google | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Truy cập Web Component / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Quan hệ trực tiếp | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
@@ -34,9 +34,9 @@ Tìm hiểu cách Wink so sánh với các phân khúc du lịch trực tuyến 
 
 Một số khách sạn cố gắng so sánh chúng tôi với công cụ đặt phòng trực tuyến đi kèm với quản lý kênh của họ và yêu cầu chúng tôi đưa ra mức giá cố định hàng tháng dựa trên số lượng phòng của họ.
 
-Chúng tôi không phải là IBE và hy vọng [Wink Academy](/vi/) sẽ giúp làm rõ điều này. Mỗi dịch vụ đều có ưu và nhược điểm. Nếu IBE của bạn phù hợp với cơ sở của bạn, hãy tiếp tục sử dụng nó.  
-Wink tồn tại để lấp đầy một số khoảng trống trong ngành du lịch và kết nối tất cả lại với nhau trong một nơi duy nhất.
+Chúng tôi không phải là IBE và hy vọng điều này giúp làm rõ sự khác biệt. Mỗi dịch vụ đều có ưu và nhược điểm. Nếu IBE của bạn phù hợp với cơ sở của bạn, hãy tiếp tục sử dụng nó.  
+Wink tồn tại để lấp đầy một số khoảng trống trong ngành du lịch và kết nối tất cả lại với nhau trong một nền tảng duy nhất.
 
 :::tip
-Bạn không cần phải thay thế IBE hiện tại của mình. Tuy nhiên, chúng tôi khuyên bạn nên thử công cụ đặt phòng thân thiện với mạng xã hội hoặc trình quản lý liên kết của chúng tôi trên một trong các tài khoản mạng xã hội của bạn để xem chúng chuyển đổi như thế nào. Bạn không phải trả gì nếu không có đặt phòng nào - Bạn có gì để mất? 😉
+Bạn không cần phải thay thế IBE hiện tại của mình. Tuy nhiên, chúng tôi khuyên bạn nên thử công cụ đặt phòng thân thiện với mạng xã hội hoặc trình quản lý liên kết của chúng tôi trên một trong các tài khoản mạng xã hội của bạn để xem hiệu quả chuyển đổi. Bạn không phải trả gì nếu không có đặt phòng nào - Bạn có gì để mất? 😉
 :::

@@ -23,7 +23,7 @@ Kabilang sa mga responsibilidad nito ang:
 - Pagbuo ng analytics batay sa mga interaksyon ng user, mga kaganapan, at mga tawag sa API.
 - Pagseserbisyo ng bookable na imbentaryo sa nais na format, wika, at pera, tulad ng:
     - Isang [shareable link](/tl/portal/studio/shareable-links) sa Facebook.
-    - Isang hotel landing page sa https://ota.wink.travel na may imbentaryo para sa hotel na iyon.
+    - Isang hotel landing page sa https://book.wink.travel na may imbentaryo para sa hotel na iyon.
     - Isang [card](/tl/portal/studio/cards) na naglalaman ng affiliate inventory.
     - Isang [map](/tl/portal/studio/maps) sa iyong [WinkLinks](/tl/portal/link-manager/wink-links) account.
     - Isang [API call](/tl/api) mula sa isang remote travel agent system.
@@ -34,7 +34,7 @@ Kabilang sa mga responsibilidad nito ang:
     - Pamahalaan ang kanilang [bucket list](/tl/booking-engine/bucket-list) ng mga bagay na nais i-book sa hinaharap.
     - Pamahalaan ang kanilang [travel profile](/tl/booking-engine/travel-preferences). *hal. Allergies, emergency contact, atbp.*
 
-Ang booking engine ay isang koleksyon ng mga reusable na functionality na aming inilalantad sa pamamagitan ng https://ota.wink.travel; isang lubos na nako-customize na website para sa mga hotel at affiliate upang ibenta ang kanilang mga produkto sa mga biyahero.
+Ang booking engine ay isang koleksyon ng mga reusable na functionality na aming inilalantad sa pamamagitan ng https://book.wink.travel; isang lubos na nako-customize na website para sa mga hotel at affiliate upang ibenta ang kanilang mga produkto sa mga biyahero.
 
 Ang mga integrator, na nais ng mas malawak na kalayaan, ay may access sa lahat ng parehong mga tampok sa pamamagitan ng aming [WordPress plugin](/tl/integrations/wordpress/), [Web Components](/tl/integrations/web-components) at [APIs](/tl/api).
 

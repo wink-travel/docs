@@ -23,7 +23,7 @@ Zu ihren Aufgaben gehören:
 - Erstellung von Analysen basierend auf Nutzerinteraktionen, Ereignissen und API-Aufrufen.
 - Bereitstellung buchbarer Inventare im gewünschten Format, in der gewünschten Sprache und Währung, wie z. B.:
     - Ein [teilbarer Link](/de/portal/studio/shareable-links) auf Facebook.
-    - Eine Hotel-Landingpage auf https://ota.wink.travel mit Inventar für dieses Hotel.
+    - Eine Hotel-Landingpage auf https://book.wink.travel mit Inventar für dieses Hotel.
     - Eine [Karte](/de/portal/studio/cards) mit Affiliate-Inventar.
     - Eine [Karte](/de/portal/studio/maps) in Ihrem [WinkLinks](/de/portal/link-manager/wink-links) Konto.
     - Ein [API-Aufruf](/de/api) von einem externen Reisebürosystem.
@@ -34,7 +34,7 @@ Zu ihren Aufgaben gehören:
     - Ihre [Bucket List](/de/booking-engine/bucket-list) mit Dingen zu verwalten, die sie in Zukunft buchen möchten.
     - Ihr [Reiseprofil](/de/booking-engine/travel-preferences) zu verwalten. *z. B. Allergien, Notfallkontakt usw.*
 
-Die Buchungsmaschine ist eine Sammlung wiederverwendbarer Funktionen, die wir über https://ota.wink.travel bereitstellen; eine hochgradig anpassbare Website für Hotels und Affiliates, um ihre Angebote an Reisende zu verkaufen.
+Die Buchungsmaschine ist eine Sammlung wiederverwendbarer Funktionen, die wir über https://book.wink.travel bereitstellen; eine hochgradig anpassbare Website für Hotels und Affiliates, um ihre Angebote an Reisende zu verkaufen.
 
 Integratoren, die noch mehr Freiheit wünschen, haben über unser [WordPress-Plugin](/de/integrations/wordpress/), [Web Components](/de/integrations/web-components) und [APIs](/de/api) Zugriff auf alle dieselben Funktionen.
 

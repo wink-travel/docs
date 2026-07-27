@@ -23,7 +23,7 @@ Selle vastutusalad hõlmavad:
 - Analüütika genereerimist kasutajate interaktsioonide, sündmuste ja API-päringute põhjal.
 - Broneeritava varu serveerimist soovitud formaadis, keeles ja valuutas, näiteks:
     - [jagatav link](/et/portal/studio/shareable-links) Facebookis.
-    - Hotelli maandumisleht aadressil https://ota.wink.travel selle hotelli varuga.
+    - Hotelli maandumisleht aadressil https://book.wink.travel selle hotelli varuga.
     - [kaart](/et/portal/studio/cards), mis sisaldab sidusettevõtte varusid.
     - [kaart](/et/portal/studio/maps) teie [WinkLinks](/et/portal/link-manager/wink-links) kontol.
     - [API-päring](/et/api) kaugreisibüroo süsteemist.
@@ -34,7 +34,7 @@ Selle vastutusalad hõlmavad:
     - Hallata oma [soovide nimekirja](/et/booking-engine/bucket-list) tulevaste broneeringute jaoks.
     - Hallata oma [reisiprofiili](/et/booking-engine/travel-preferences). *nt allergiad, hädaolukorra kontakt jne.*
 
-Broneerimismootor on korduvkasutatavate funktsioonide kogum, mida me pakume aadressil https://ota.wink.travel; väga kohandatav veebisait hotellidele ja sidusettevõtetele oma pakkumiste müümiseks reisijatele.
+Broneerimismootor on korduvkasutatavate funktsioonide kogum, mida me pakume aadressil https://book.wink.travel; väga kohandatav veebisait hotellidele ja sidusettevõtetele oma pakkumiste müümiseks reisijatele.
 
 Integraatoritel, kes soovivad veelgi rohkem vabadust, on juurdepääs kõigile samadele funktsioonidele meie [WordPressi pluginas](/et/integrations/wordpress/), [Veebikomponentides](/et/integrations/web-components) ja [API-des](/et/api).
 

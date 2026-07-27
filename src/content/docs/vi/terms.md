@@ -1,39 +1,39 @@
 ---
-title: Điều khoản và Điều kiện
-description: Điều khoản và Điều kiện dành cho tất cả người dùng và tổ chức của Wink.
+title: Điều Khoản và Điều Kiện
+description: Điều Khoản và Điều Kiện dành cho tất cả người dùng và tổ chức của Wink.
 ---
 
-Mỗi cổng thông tin có thể có các điều khoản và điều kiện khác nhau. Vui lòng truy cập phần bên dưới phù hợp với bạn và tìm phần phụ có tên Điều khoản Dịch vụ và Điều khoản Thanh toán.
+Các phần khác nhau của Wink có các điều khoản khác nhau. Tìm phần áp dụng cho bạn bên dưới — mỗi phần có Điều Khoản Dịch Vụ riêng, và các phần xử lý tiền cũng có Điều Khoản Thanh Toán.
 
-## Cổng thông tin đối tác
+## Bất động sản
 
-Dành cho các đối tác muốn tìm hiểu cách kiếm thu nhập thụ động bằng cách kiếm tiền từ các tài khoản mạng xã hội của bạn với Wink.  
-[Wink Studio](https://studio.wink.travel) có tất cả các công cụ bạn cần để bán hàng như một chuyên gia.
+Dành cho khách sạn, chuỗi, thương hiệu và công ty quản lý bán hàng tồn kho trên Wink.
 
-<LinkButton href="/vi/portal/studio/what-is-studio">
-Tìm hiểu thêm về Wink Studio
-</LinkButton>
+- [Điều Khoản Dịch Vụ](/vi/portal/extranet/terms-of-service)
+- [Điều Khoản Thanh Toán](/vi/portal/extranet/payment-terms)
 
-## Công cụ đặt phòng
+## Đối tác liên kết
 
-Mọi con đường đều dẫn đến công cụ đặt phòng của chúng tôi! Tìm hiểu bạn có thể làm gì với công cụ đặt phòng tập trung vào du lịch, có thể tùy chỉnh nhiều nhất trên thị trường.
+Dành cho nhà sáng tạo, người ảnh hưởng và đối tác liên kết quảng bá hàng tồn kho du lịch và kiếm hoa hồng.
 
-<LinkButton href="/vi/booking-engine/in-a-nutshell">
-Tìm hiểu thêm về công cụ đặt phòng của chúng tôi
-</LinkButton>
+- [Điều Khoản Dịch Vụ](/vi/portal/studio/terms-of-service)
+- [Điều Khoản Thanh Toán](/vi/portal/studio/payment-terms)
 
-## Cổng thông tin bất động sản
+## Đại lý du lịch
 
-Dành cho các bất động sản muốn bắt đầu bán hàng trên Wink. Sử dụng các công cụ của chúng tôi để bán và tiếp thị hiệu quả trực tuyến và có được một đội ngũ đối tác từ khắp nơi trên thế giới giúp bạn thu hút khách hàng và đặt phòng.
+Dành cho đại lý du lịch đã đăng ký tìm kiếm, đặt chỗ và kiếm tiền thay mặt khách hàng của họ.
 
-<LinkButton href="/vi/portal/extranet/what-is-extranet">
-Tìm hiểu thêm về Wink Extranet
-</LinkButton>
+- [Điều Khoản Dịch Vụ](/vi/portal/travel-agent/terms-of-service)
+- [Điều Khoản Thanh Toán](/vi/portal/travel-agent/payment-terms)
 
-## Cổng thông tin đại lý du lịch
+## Công cụ đặt chỗ
 
-Dành cho các đại lý du lịch muốn tìm hiểu Wink có thể cung cấp gì cho họ về các mức giá riêng biệt, ưu đãi và kho hàng, trực tiếp từ nhà cung cấp.
+Dành cho tất cả mọi người đặt chuyến đi qua Wink.
 
-<LinkButton href="/vi/portal/travel-agent/what-is-agent">
-Tìm hiểu thêm về Wink Agent
-</LinkButton>
+- [Điều Khoản Dịch Vụ](/vi/booking-engine/terms-of-service)
+
+## Mọi người
+
+- [Chính Sách Bảo Mật](/vi/privacy)
+- [Bảng Giá](/vi/getting-started/pricing) — những gì miễn phí, chi phí đặt chỗ, và cách hoạt động của phí sử dụng theo kiểu trả tiền khi dùng.
+- [Yêu cầu xóa dữ liệu](/vi/getting-started/data-deletion-request)

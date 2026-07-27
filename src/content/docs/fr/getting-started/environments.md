@@ -34,7 +34,7 @@ Nos applications disposent également d'environnements de test et de production 
 | Application | Préproduction | Production
 | ----------- | ------------- | ---------- |
 | Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
-| Moteur de réservation | https://staging-ota.wink.travel | https://ota.wink.travel | 
+| Moteur de réservation | https://staging-book.wink.travel | https://book.wink.travel | 
 | Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
 | Mon Compte | https://staging-app.wink.travel | https://app.wink.travel | 
 | Paiement | https://staging-pay.wink.travel | https://pay.wink.travel | 

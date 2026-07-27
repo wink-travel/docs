@@ -3,37 +3,37 @@ title: Pogoji poslovanja
 description: Pogoji poslovanja za vse uporabnike in entitete Wink.
 ---
 
-Vsak portal ima lahko različne pogoje poslovanja. Prosimo, pojdite v spodnji odsek, ki velja za vas, in poiščite pododsek z naslovom Pogoji storitve in Plačilni pogoji.
+Različni deli Wink imajo različne pogoje. Spodaj poiščite odsek, ki velja za vas — vsak ima svoje pogoje storitve, odseki, ki upravljajo denar, pa imajo tudi plačilne pogoje.
 
-## Partnerski portal
+## Nepremičnine
 
-Za partnerje, ki želijo izvedeti, kako zaslužiti pasivni dohodek z monetizacijo svojih družbenih računov z Wink.
-[Wink Studio](https://studio.wink.travel) ima vsa orodja, ki jih potrebujete za prodajo kot profesionalec.
+Za hotele, verige, blagovne znamke in upravljavske družbe, ki prodajajo inventar na Wink.
 
-<LinkButton href="/sl/portal/studio/what-is-studio">
-Izvedite več o Wink Studio
-</LinkButton>
+- [Pogoji storitve](/sl/portal/extranet/terms-of-service)
+- [Plačilni pogoji](/sl/portal/extranet/payment-terms)
+
+## Partnerji
+
+Za ustvarjalce, vplivneže in partnerje, ki promovirajo potovalni inventar in zaslužijo provizijo.
+
+- [Pogoji storitve](/sl/portal/studio/terms-of-service)
+- [Plačilni pogoji](/sl/portal/studio/payment-terms)
+
+## Potovalni agenti
+
+Za registrirane potovalne agente, ki iščejo, rezervirajo in zaslužijo v imenu svojih strank.
+
+- [Pogoji storitve](/sl/portal/travel-agent/terms-of-service)
+- [Plačilni pogoji](/sl/portal/travel-agent/payment-terms)
 
 ## Rezervacijski sistem
 
-Vse poti vodijo do našega rezervacijskega sistema! Spoznajte, kaj lahko počnete z najbolj prilagodljivim, na potovanja osredotočenim rezervacijskim sistemom na trgu.
+Za vse, ki rezervirajo potovanja preko Wink.
 
-<LinkButton href="/sl/booking-engine/in-a-nutshell">
-Izvedite več o našem rezervacijskem sistemu
-</LinkButton>
+- [Pogoji storitve](/sl/booking-engine/terms-of-service)
 
-## Portal za nastanitve
+## Vsi
 
-Za nastanitve, ki želijo začeti prodajati na Wink. Uporabite naša orodja za učinkovito prodajo in trženje na spletu ter pridobite vojsko partnerjev z vsega sveta, ki vam bodo pomagali pridobiti stranke in rezervacije.
-
-<LinkButton href="/sl/portal/extranet/what-is-extranet">
-Izvedite več o Wink Extranet
-</LinkButton>
-
-## Portal za potovalne agencije
-
-Za potovalne agente, ki želijo izvedeti, kaj jim Wink lahko ponudi v smislu prilagojenih cen, ponudb in zalog neposredno od dobaviteljev.
-
-<LinkButton href="/sl/portal/travel-agent/what-is-agent">
-Izvedite več o Wink Agent
-</LinkButton>
+- [Pravilnik o zasebnosti](/sl/privacy)
+- [Cenik](/sl/getting-started/pricing) — kaj je brezplačno, koliko stane rezervacija in kako delujejo stroški uporabe po porabi.
+- [Zahteva za izbris podatkov](/sl/getting-started/data-deletion-request)
