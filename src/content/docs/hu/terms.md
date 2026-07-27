@@ -3,37 +3,37 @@ title: Általános Szerződési Feltételek
 description: Általános Szerződési Feltételek minden Wink felhasználó és entitás számára.
 ---
 
-Minden portálnak eltérő általános szerződési feltételei lehetnek. Kérjük, lépjen arra a részre, amely Önre vonatkozik, és keresse meg a Szolgáltatási feltételek és Fizetési feltételek alcímet.
+A Wink különböző részei eltérő feltételekkel rendelkeznek. Az alábbiakban találja meg az Önre vonatkozó szakaszt — mindegyiknek megvan a saját Szolgáltatási Feltétele, és a pénzügyeket kezelő szakaszoknak Fizetési Feltételeik is vannak.
 
-## Partnerportál
+## Szálláshelyek
 
-Azoknak a partnereknek, akik szeretnék megtanulni, hogyan szerezhetnek passzív jövedelmet a közösségi fiókjaik monetizálásával a Wink segítségével.
-A [Wink Studio](https://studio.wink.travel) minden eszközt biztosít, amire szüksége van, hogy profi módon értékesítsen.
+Szállodák, láncok, márkák és menedzsment cégek számára, amelyek készletet értékesítenek a Wink-en.
 
-<LinkButton href="/hu/portal/studio/what-is-studio">
-Tudjon meg többet a Wink Studióról
-</LinkButton>
+- [Szolgáltatási Feltételek](/hu/portal/extranet/terms-of-service)
+- [Fizetési Feltételek](/hu/portal/extranet/payment-terms)
+
+## Partnerprogramok
+
+Alkotók, influencerek és partnerek számára, akik utazási készletet népszerűsítenek és jutalékot keresnek.
+
+- [Szolgáltatási Feltételek](/hu/portal/studio/terms-of-service)
+- [Fizetési Feltételek](/hu/portal/studio/payment-terms)
+
+## Utazási ügynökök
+
+Regisztrált utazási ügynökök számára, akik ügyfeleik nevében keresnek, foglalnak és keresnek jutalékot.
+
+- [Szolgáltatási Feltételek](/hu/portal/travel-agent/terms-of-service)
+- [Fizetési Feltételek](/hu/portal/travel-agent/payment-terms)
 
 ## Foglalási motor
 
-Minden út a foglalási motorunkhoz vezet! Tudja meg, mit tehet a legtestreszabhatóbb, utazásközpontú foglalási motorral a piacon.
+Mindenki számára, aki Wink-en keresztül foglal utazást.
 
-<LinkButton href="/hu/booking-engine/in-a-nutshell">
-Tudjon meg többet a foglalási motorunkról
-</LinkButton>
+- [Szolgáltatási Feltételek](/hu/booking-engine/terms-of-service)
 
-## Szálláshely portál
+## Mindenki számára
 
-Azoknak a szálláshelyeknek, akik szeretnének elkezdeni értékesíteni a Wink-en. Használja eszközeinket, hogy hatékonyan értékesítsen és marketingezzen online, és szerezzen egy egész hadseregnyi partnert a világ minden tájáról, akik segítenek ügyfeleket és foglalásokat szerezni.
-
-<LinkButton href="/hu/portal/extranet/what-is-extranet">
-Tudjon meg többet a Wink Extranetről
-</LinkButton>
-
-## Utazási ügynök portál
-
-Azoknak az utazási ügynököknek, akik szeretnék megtudni, mit kínál nekik a Wink egyedi árak, ajánlatok és készlet tekintetében, közvetlenül a beszállítóktól.
-
-<LinkButton href="/hu/portal/travel-agent/what-is-agent">
-Tudjon meg többet a Wink Agentről
-</LinkButton>
+- [Adatvédelmi Szabályzat](/hu/privacy)
+- [Árazás](/hu/getting-started/pricing) — mi ingyenes, mennyibe kerül egy foglalás, és hogyan működnek a használatarányos díjak.
+- [Adattörlési kérelem](/hu/getting-started/data-deletion-request)

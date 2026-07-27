@@ -9,7 +9,7 @@ Näin jaamme vastuut Winkissä:
 
 - [Extranet](/fi/portal/extranet/what-is-extranet) koskee toimittajia, jotka hallinnoivat varastoa.
 - [Studio](/fi/portal/studio/what-is-studio) koskee kumppaneita, jotka hallinnoivat sisältöä.
-- `Booking Engine` vastaa sisällön tekemisestä, joka on luotu `Studiossa` ja perustuu `Extranetissa` luotuun varastoon, ja sen tekemisestä varattavaksi.
+- `Booking Engine` vastaa sisällön tekemisestä, joka on luotu `Studiossa` ja perustuu Extranetissä luotuun varastoon, sekä sen tekemisestä varattavaksi.
 - [Payment](/fi/payment/what-is-trip-pay) vastaa matkustajien veloittamisesta / hyvittämisestä, jotka varaavat [kautta alustoilla kuten Wink], sekä toimittajien maksamisesta.
 
 Varausmoottori on alustamme ytimessä.
@@ -17,7 +17,7 @@ Varausmoottori on alustamme ytimessä.
 Sen vastuualueisiin kuuluu:
 
 - Valuuttahallinta ja valuuttakurssien ajantasaisena pitäminen.
-- Hintatietojen toimittajille tapa lähettää hintadataa meille.
+- Hintatietojen toimittajille tarjoaminen keino lähettää hintatietoja.
 - Hakutietojen hallinta. *esim. alueet, maat, kohteet, majoituspaikat jne.*
 - Kielten hallinta.
 - Analytiikan tuottaminen käyttäjävuorovaikutusten, tapahtumien ja API-kutsujen perusteella.
@@ -27,7 +27,7 @@ Sen vastuualueisiin kuuluu:
     - [Kortti](/fi/portal/studio/cards), joka sisältää kumppanin varaston.
     - [Kartta](/fi/portal/studio/maps) sinun [WinkLinks](/fi/portal/link-manager/wink-links) -tililläsi.
     - [API-kutsu](/fi/api) etämatkatoimistojärjestelmästä.
-- Tarjoaa matkustajille mahdollisuuden:
+- Tarjoaa matkustajille keinon:
     - Etsiä matkavarastoa.
     - Varaa saatavilla olevaa varastoa.
     - Hallinnoida omia [varauksiaan ja arvostelujaan](/fi/booking-engine/bookings).
@@ -36,7 +36,7 @@ Sen vastuualueisiin kuuluu:
 
 Varausmoottori on kokoelma uudelleenkäytettäviä toimintoja, joita tarjoamme osoitteessa https://book.wink.travel; erittäin muokattava verkkosivusto hotelleille ja kumppaneille myydä tuotteitaan matkustajille.
 
-Integraattoreilla, jotka haluavat vielä enemmän vapautta, on pääsy samoihin ominaisuuksiin [WordPress-laajennuksemme](/fi/integrations/wordpress/), [Web Components](/fi/integrations/web-components) ja [API:t](/fi/api) kautta.
+Integraattoreilla, jotka haluavat vielä enemmän vapautta, on pääsy samoihin ominaisuuksiin [WordPress-laajennuksemme](/fi/integrations/wordpress/), [Web Components](/fi/integrations/web-components) ja [API:en](/fi/api) kautta.
 
 Jatka seuraaviin osioihin lukeaksesi lisää siitä, mitä varausmoottori tarjoaa.
 
@@ -44,4 +44,4 @@ Jatka seuraaviin osioihin lukeaksesi lisää siitä, mitä varausmoottori tarjoa
 
 - Lue lisää [WordPress-laajennuksestamme](/fi/integrations/wordpress/).
 - Lue lisää [Web Components](/fi/integrations/web-components).
-- Lue lisää [API:istamme](/fi/api).
+- Lue lisää [API:sta](/fi/api).

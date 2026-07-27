@@ -5,7 +5,7 @@ sidebar:
   order: 0
 ---
 
-Así es como segmentamos la responsabilidad en Wink:
+Así es como segmentamos la responsabilidad en Wink: 
 
 - [Extranet](/es-MX/portal/extranet/what-is-extranet) se ocupa de los proveedores que gestionan el inventario.
 - [Studio](/es-MX/portal/studio/what-is-studio) se ocupa de los afiliados que gestionan el contenido.
@@ -18,21 +18,21 @@ Sus responsabilidades incluyen:
 
 - Gestionar monedas y mantener las tasas de cambio actualizadas.
 - Dar a los proveedores de tarifas una forma de enviarnos datos de tarifas.
-- Gestionar datos de consulta. *por ejemplo, regiones, países, destinos, propiedades, etc.*
+- Gestionar datos de consulta. *p. ej. regiones, países, destinos, propiedades, etc.*
 - Gestionar idiomas.
 - Generar análisis basados en interacciones de usuarios, eventos y llamadas API.
-- Proveer inventario reservable en el formato, idioma y moneda deseados, tales como:
+- Proporcionar inventario reservable en el formato, idioma y moneda deseados, tales como:
     - Un [enlace compartible](/es-MX/portal/studio/shareable-links) en Facebook.
-    - Una página de aterrizaje de hotel en https://book.wink.travel con inventario para ese hotel.
+    - Una página de destino de hotel en https://book.wink.travel con inventario para ese hotel.
     - Una [tarjeta](/es-MX/portal/studio/cards) que contiene inventario afiliado.
     - Un [mapa](/es-MX/portal/studio/maps) en tu cuenta de [WinkLinks](/es-MX/portal/link-manager/wink-links).
-    - Una [llamada API](/es-MX/api) desde un sistema remoto de agentes de viaje.
-- Proveer a los viajeros una forma de:
+    - Una [llamada API](/es-MX/api) desde un sistema remoto de agencia de viajes.
+- Proporcionar a los viajeros una forma de: 
     - Buscar inventario de viajes.
     - Reservar inventario disponible.
     - Gestionar sus [reservas y reseñas](/es-MX/booking-engine/bookings).
     - Gestionar su [lista de deseos](/es-MX/booking-engine/bucket-list) de cosas para reservar en el futuro.
-    - Gestionar su [perfil de viaje](/es-MX/booking-engine/travel-preferences). *por ejemplo, alergias, contacto de emergencia, etc.*
+    - Gestionar su [perfil de viaje](/es-MX/booking-engine/travel-preferences). *p. ej. alergias, contacto de emergencia, etc.*
 
 El motor de reservas es una colección de funcionalidades reutilizables que exponemos a través de https://book.wink.travel; un sitio web altamente personalizable para que hoteles y afiliados vendan sus productos a los viajeros.
 

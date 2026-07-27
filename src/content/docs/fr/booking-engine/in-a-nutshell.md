@@ -1,5 +1,5 @@
 ---
-title: En résumé
+title: En Bref
 description: Cet article vous guide à travers tout ce que vous vouliez savoir sur le moteur de réservation.
 sidebar:
   order: 0
@@ -9,7 +9,7 @@ Voici comment nous segmentons les responsabilités sur Wink :
 
 - [Extranet](/fr/portal/extranet/what-is-extranet) concerne les fournisseurs qui gèrent l'inventaire.
 - [Studio](/fr/portal/studio/what-is-studio) concerne les affiliés qui gèrent le contenu.
-- `Booking Engine` concerne la création du contenu, réalisé dans `Studio`, basé sur l'inventaire créé dans `Extranet` et le rend bookable.
+- `Booking Engine` concerne la transformation du contenu, créé dans `Studio`, basé sur l'inventaire créé dans `Extranet`, en contenu réservable.
 - [Payment](/fr/payment/what-is-trip-pay) concerne la facturation / le remboursement des voyageurs qui réservent [via des plateformes comme Wink], et le paiement des fournisseurs.
 
 Le moteur de réservation est au cœur de notre plateforme.
@@ -21,7 +21,7 @@ Ses responsabilités incluent :
 - Gérer les données de référence. *ex. régions, pays, destinations, établissements, etc.*
 - Gérer les langues.
 - Générer des analyses basées sur les interactions utilisateurs, événements et appels API.
-- Fournir l'inventaire bookable dans le format, la langue et la devise souhaités, tels que :
+- Fournir l'inventaire réservable dans le format, la langue et la devise souhaités, tels que :
     - Un [lien partageable](/fr/portal/studio/shareable-links) sur Facebook.
     - Une page d’accueil d’hôtel sur https://book.wink.travel avec l’inventaire de cet hôtel.
     - Une [carte](/fr/portal/studio/cards) contenant l’inventaire affilié.
@@ -36,7 +36,7 @@ Ses responsabilités incluent :
 
 Le moteur de réservation est un ensemble de fonctionnalités réutilisables que nous exposons via https://book.wink.travel ; un site web hautement personnalisable pour que les hôtels et affiliés vendent leurs offres aux voyageurs.
 
-Les intégrateurs, qui souhaitent encore plus de liberté, ont accès à toutes les mêmes fonctionnalités via notre [plugin WordPress](/fr/integrations/wordpress/), [Web Components](/fr/integrations/web-components) et [APIs](/fr/api).
+Les intégrateurs, qui souhaitent encore plus de liberté, ont accès à toutes les mêmes fonctionnalités via notre [plugin WordPress](/fr/integrations/wordpress/), nos [Web Components](/fr/integrations/web-components) et nos [APIs](/fr/api).
 
 Continuez vers les sections suivantes pour en savoir plus sur ce que le moteur de réservation a à offrir.
 

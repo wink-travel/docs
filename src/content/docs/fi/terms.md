@@ -3,37 +3,37 @@ title: Käyttöehdot
 description: Käyttöehdot kaikille Wink-käyttäjille ja -yksiköille.
 ---
 
-Jokaisella portaalilla voi olla erilaiset käyttöehdot. Siirry alla olevaan sinua koskevaan osioon ja etsi alakohta nimeltä Palveluehdot ja Maksuehdot.
+Winkin eri osilla on erilaiset ehdot. Löydä alta sinuun soveltuva osio — jokaisella on omat käyttöehtonsa, ja rahaa käsittelevillä osioilla on myös maksuehdot.
 
-## Kumppaniverkosto
+## Kohteet
 
-Kumppaneille, jotka haluavat oppia ansaitsemaan passiivista tuloa hyödyntämällä sosiaalitilejään Winkillä.
-[Wink Studio](https://studio.wink.travel) tarjoaa kaikki työkalut, joita tarvitset myydäksesi kuin ammattilainen.
+Hotelleille, ketjuille, brändeille ja hallintayhtiöille, jotka myyvät inventaariota Winkissä.
 
-<LinkButton href="/fi/portal/studio/what-is-studio">
-Lue lisää Wink Studiosta
-</LinkButton>
+- [Käyttöehdot](/fi/portal/extranet/terms-of-service)
+- [Maksuehdot](/fi/portal/extranet/payment-terms)
+
+## Kumppanit
+
+Sisällöntuottajille, vaikuttajille ja kumppaneille, jotka mainostavat matkailuinventaariota ja ansaitsevat provisiota.
+
+- [Käyttöehdot](/fi/portal/studio/terms-of-service)
+- [Maksuehdot](/fi/portal/studio/payment-terms)
+
+## Matkanjärjestäjät
+
+Rekisteröityneille matkanjärjestäjille, jotka etsivät, varaavat ja ansaitsevat asiakkaidensa puolesta.
+
+- [Käyttöehdot](/fi/portal/travel-agent/terms-of-service)
+- [Maksuehdot](/fi/portal/travel-agent/payment-terms)
 
 ## Varauskone
 
-Kaikki tiet vievät varauskoneeseemme! Opi, mitä kaikkea voit tehdä markkinoiden monipuolisimmalla, matkailuun keskittyvällä varausjärjestelmällä.
+Kaikille, jotka varaavat matkoja Winkin kautta.
 
-<LinkButton href="/fi/booking-engine/in-a-nutshell">
-Lue lisää varauskoneestamme
-</LinkButton>
+- [Käyttöehdot](/fi/booking-engine/terms-of-service)
 
-## Kohdeportaali
+## Kaikille
 
-Kohteille, jotka haluavat aloittaa myynnin Winkissä. Käytä työkaluja myydäksesi ja markkinoidaksesi tehokkaasti verkossa ja saadaksesi armeijan kumppaneita ympäri maailmaa auttamaan sinua saamaan asiakkaita ja varauksia.
-
-<LinkButton href="/fi/portal/extranet/what-is-extranet">
-Lue lisää Wink Extranetista
-</LinkButton>
-
-## Matkatoimistoportaali
-
-Matkatoimistoille, jotka haluavat selvittää, mitä Wink voi tarjota räätälöityjen hintojen, tarjousten ja varaston osalta suoraan toimittajilta.
-
-<LinkButton href="/fi/portal/travel-agent/what-is-agent">
-Lue lisää Wink Agentista
-</LinkButton>
+- [Tietosuojakäytäntö](/fi/privacy)
+- [Hinnoittelu](/fi/getting-started/pricing) — mikä on ilmaista, mitä varaus maksaa ja miten käytön mukaan maksettavat maksut toimivat.
+- [Tietojen poistopyyntö](/fi/getting-started/data-deletion-request)

@@ -1,15 +1,15 @@
 ---
-title: Röviden összefoglalva
+title: Röviden
 description: Ez a cikk végigvezet mindenen, amit a foglalási motorral kapcsolatban tudni szeretnél.
 sidebar:
   order: 0
 ---
 
-Így osztjuk meg a felelősséget a Wink-ben:
+Így osztjuk meg a felelősséget a Wink esetében:
 
-- Az [Extranet](/hu/portal/extranet/what-is-extranet) a készletet kezelő beszállítókkal foglalkozik.
-- A [Studio](/hu/portal/studio/what-is-studio) az affiliate partnerek tartalomkezelésével foglalkozik.
-- A `Booking Engine` a `Studio` által létrehozott, az `Extranet` készletén alapuló tartalom foglalhatóvá tételével foglalkozik.
+- A [Extranet](/hu/portal/extranet/what-is-extranet) a készletet kezelő beszállítókkal foglalkozik.
+- A [Studio](/hu/portal/studio/what-is-studio) az affiliate partnerek által kezelt tartalommal foglalkozik.
+- A `Booking Engine` azzal foglalkozik, hogy a `Studio` által létrehozott, az `Extranet` készletén alapuló tartalmat foglalhatóvá tegye.
 - A [Payment](/hu/payment/what-is-trip-pay) a foglaló utasok díjazásával / visszatérítésével, valamint a beszállítók kifizetésével foglalkozik.
 
 A foglalási motor a platformunk magja.
@@ -23,20 +23,20 @@ Felelősségi körei:
 - Elemzések generálása felhasználói interakciók, események és API hívások alapján.
 - Foglalható készlet szolgáltatása a kívánt formátumban, nyelven és pénznemben, például:
     - Egy [megosztható link](/hu/portal/studio/shareable-links) Facebookon.
-    - Egy szállodai kezdőoldal a https://book.wink.travel oldalon az adott szálloda készletével.
-    - Egy [kártya](/hu/portal/studio/cards) affiliate készlettel.
+    - Egy szállodai kezdőlap a https://book.wink.travel oldalon az adott szálloda készletével.
+    - Egy [kártya](/hu/portal/studio/cards), amely affiliate készletet tartalmaz.
     - Egy [térkép](/hu/portal/studio/maps) a [WinkLinks](/hu/portal/link-manager/wink-links) fiókodban.
     - Egy [API hívás](/hu/api) egy távoli utazási ügynökségi rendszertől.
 - Utasok számára lehetőség biztosítása, hogy:
-    - Keresni tudjanak az utazási készletben.
+    - Keresni tudjanak utazási készletet.
     - Foglaljanak elérhető készletet.
     - Kezeljék a [foglalásaikat és értékeléseiket](/hu/booking-engine/bookings).
     - Kezeljék a jövőbeni foglalások [bucket listáját](/hu/booking-engine/bucket-list).
     - Kezeljék az [utazási profiljukat](/hu/booking-engine/travel-preferences). *pl. allergiák, vészhelyzeti kapcsolattartó stb.*
 
-A foglalási motor egy újrahasznosítható funkciók gyűjteménye, amelyet a https://book.wink.travel oldalon keresztül teszünk elérhetővé; egy rendkívül testreszabható weboldal szállodák és affiliate partnerek számára, hogy termékeiket utazóknak értékesítsék.
+A foglalási motor egy újrahasználható funkciók gyűjteménye, amelyet a https://book.wink.travel oldalon keresztül teszünk elérhetővé; egy rendkívül testreszabható weboldal szállodák és affiliate partnerek számára, hogy termékeiket utazóknak értékesítsék.
 
-Az integrátorok, akik még nagyobb szabadságot szeretnének, ugyanazokat a funkciókat érhetik el a [WordPress pluginunk](/hu/integrations/wordpress/), [Web Components](/hu/integrations/web-components) és [API-k](/hu/api) segítségével.
+Az integrátorok, akik még nagyobb szabadságot szeretnének, ugyanazokat a funkciókat érhetik el a [WordPress pluginunkkal](/hu/integrations/wordpress/), [Web Components](/hu/integrations/web-components) és [API-k](/hu/api) segítségével.
 
 Folytasd a következő szakaszokkal, hogy többet megtudj a foglalási motor kínálatáról.
 

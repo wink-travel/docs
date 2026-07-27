@@ -13,12 +13,12 @@ sidebar:
 Ако сте интегратор, хотел или туристически агент, който желае да се подготви за сертифициране или да тества платформата Wink, създайте акаунт в нашата staging среда, за да започнете.
 
 :::note
-Staging средата е достъпна при поискване. Това означава, че тя ще премине в режим на заспиване, ако няма активност, и ще се събуди, когато има. Моля, бъдете търпеливи, ако я събуждате. Отнема около минута, за да стартират всички сървъри след първото ви свързване с някой от нашите сървъри или приложения.
+Staging средата е достъпна при поискване. Това означава, че тя ще заспи, ако няма активност, и ще се събуди, когато има. Моля, бъдете търпеливи, ако я събуждате. Отнема около минута, за да стартират всички сървъри след първото ви свързване с някой от нашите сървъри или приложения.
 :::
 
 ## Сървъри
 
-По-долу е матрица, съдържаща имената на нашите сървъри и тяхното предназначение.
+По-долу е матрица с имената на нашите сървъри и тяхното предназначение.
 
 | Функция | Staging | Production
 | ------- | ------- | ---------- |
@@ -33,10 +33,6 @@ Staging средата е достъпна при поискване. Това �
 
 | Приложение | Staging | Production
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
 | Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

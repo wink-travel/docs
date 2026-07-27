@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-Alamin kung paano ikinukumpara ng Wink sa iba pang mga online travel segments sa merkado. Nasa ibaba ang mabilisang paghahati-hati ng mga tampok na sa tingin namin ay mahalagang ikumpara.
+Alamin kung paano ikinukumpara ng Wink sa iba pang mga online travel segment sa merkado. Nasa ibaba ang mabilis na paghahati-hati ng mga tampok na sa tingin namin ay mahalagang ikumpara.
 
 ## Feature matrix
 
@@ -32,9 +32,9 @@ Alamin kung paano ikinukumpara ng Wink sa iba pang mga online travel segments sa
 
 ## Wink vs Internet Booking Engine (IBE)
 
-May ilang hotel na sinusubukang ikumpara kami sa kanilang internet booking engine na kasama sa kanilang channel manager at hinihiling sa amin na magbigay ng isang fixed, buwanang presyo base sa bilang ng mga susi ng kanilang property.
+May ilang hotel na sinusubukang ikumpara kami sa kanilang internet booking engine na kasama sa kanilang channel manager at hinihiling sa amin na magbigay ng isang nakapirming buwanang presyo base sa bilang ng mga susi ng kanilang property.
 
-Hindi kami isang IBE at sana makatulong ang [Wink Academy](/tl/) upang linawin ito. May mga kalamangan at kahinaan ang anumang serbisyo. Kung ang iyong IBE ay epektibo para sa iyong property, manatili ka doon.  
+Hindi kami isang IBE at sana makatulong ito upang linawin ang pagkakaiba. May mga kalamangan at kahinaan ang anumang serbisyo. Kung ang iyong IBE ay gumagana para sa iyong property, manatili ka doon.  
 Ang Wink ay umiiral upang punan ang ilang mga puwang sa industriya ng paglalakbay at pagsamahin ang lahat sa isang lugar. 
 
 :::tip

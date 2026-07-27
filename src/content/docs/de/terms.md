@@ -3,37 +3,37 @@ title: Allgemeine Geschäftsbedingungen
 description: Allgemeine Geschäftsbedingungen für alle Wink-Nutzer und -Einheiten.
 ---
 
-Jedes Portal kann unterschiedliche Geschäftsbedingungen haben. Bitte gehen Sie zu dem für Sie zutreffenden Abschnitt unten und suchen Sie den Unterabschnitt mit dem Titel Nutzungsbedingungen und Zahlungsbedingungen.
+Verschiedene Bereiche von Wink unterliegen unterschiedlichen Bedingungen. Finden Sie unten den Abschnitt, der für Sie gilt – jeder hat seine eigenen Nutzungsbedingungen, und die Abschnitte, die Geld verwalten, haben auch Zahlungsbedingungen.
 
-## Affiliate-Portal
+## Unterkünfte
 
-Für Affiliates, die lernen möchten, wie sie ein passives Einkommen erzielen können, indem sie ihre Social-Media-Konten mit Wink monetarisieren.
-[Wink Studio](https://studio.wink.travel) bietet alle Werkzeuge, die Sie benötigen, um wie ein Profi zu verkaufen.
+Für Hotels, Ketten, Marken und Managementgesellschaften, die Inventar auf Wink verkaufen.
 
-<LinkButton href="/de/portal/studio/what-is-studio">
-Erfahren Sie mehr über Wink Studio
-</LinkButton>
+- [Nutzungsbedingungen](/de/portal/extranet/terms-of-service)
+- [Zahlungsbedingungen](/de/portal/extranet/payment-terms)
+
+## Partner
+
+Für Creator, Influencer und Partner, die Reiseinventar bewerben und Provision verdienen.
+
+- [Nutzungsbedingungen](/de/portal/studio/terms-of-service)
+- [Zahlungsbedingungen](/de/portal/studio/payment-terms)
+
+## Reisebüros
+
+Für registrierte Reisebüros, die im Namen ihrer Kunden suchen, buchen und verdienen.
+
+- [Nutzungsbedingungen](/de/portal/travel-agent/terms-of-service)
+- [Zahlungsbedingungen](/de/portal/travel-agent/payment-terms)
 
 ## Buchungsmaschine
 
-Alle Wege führen zu unserer Buchungsmaschine! Erfahren Sie, was Sie mit der anpassbarsten, auf Reisen fokussierten Buchungsmaschine auf dem Markt alles machen können.
+Für alle, die Reisen über Wink buchen.
 
-<LinkButton href="/de/booking-engine/in-a-nutshell">
-Erfahren Sie mehr über unsere Buchungsmaschine
-</LinkButton>
+- [Nutzungsbedingungen](/de/booking-engine/terms-of-service)
 
-## Unterkunftsportal
+## Alle
 
-Für Unterkünfte, die mit dem Verkauf auf Wink beginnen möchten. Nutzen Sie unsere Werkzeuge, um sich online effektiv zu verkaufen und zu vermarkten, und gewinnen Sie ein Netzwerk von Affiliates aus aller Welt, die Ihnen helfen, Kunden und Buchungen zu erhalten.
-
-<LinkButton href="/de/portal/extranet/what-is-extranet">
-Erfahren Sie mehr über Wink Extranet
-</LinkButton>
-
-## Reisebüro-Portal
-
-Für Reisebüros, die herausfinden möchten, was Wink ihnen in Bezug auf maßgeschneiderte Tarife, Angebote und Inventar direkt von Anbietern bieten kann.
-
-<LinkButton href="/de/portal/travel-agent/what-is-agent">
-Erfahren Sie mehr über Wink Agent
-</LinkButton>
+- [Datenschutzerklärung](/de/privacy)
+- [Preise](/de/getting-started/pricing) — was kostenlos ist, was eine Buchung kostet und wie nutzungsabhängige Gebühren funktionieren.
+- [Anfrage zur Datenlöschung](/de/getting-started/data-deletion-request)

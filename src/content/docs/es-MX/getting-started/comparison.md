@@ -5,7 +5,7 @@ sidebar:
   order: 5
 ---
 
-Aprende cómo Wink se compara con otros segmentos de viajes en línea en el mercado. A continuación, un desglose rápido de características que consideramos importantes para comparar.
+Conoce cómo Wink se compara con otros segmentos de viajes en línea en el mercado. A continuación, un desglose rápido de características que consideramos importantes para comparar.
 
 ## Matriz de características
 
@@ -34,9 +34,9 @@ Aprende cómo Wink se compara con otros segmentos de viajes en línea en el merc
 
 Algunos hoteles intentan compararnos con su motor de reservas por internet que viene incluido con su channel manager y nos piden un precio fijo mensual basado en el número de habitaciones de su propiedad.
 
-No somos un IBE y esperamos que [Wink Academy](/es-MX/) ayude a aclarar esto. Hay pros y contras en cualquier servicio. Si tu IBE funciona para tu propiedad, sigue usándolo.  
+No somos un IBE y esperamos que esto ayude a aclarar la diferencia. Cada servicio tiene sus pros y sus contras. Si tu IBE funciona para tu propiedad, continúa usándolo.  
 Wink existe para llenar varios vacíos en la industria de viajes y reunir todo en un solo lugar. 
 
 :::tip
-No tienes que reemplazar tu IBE actual. Sin embargo, recomendamos probar nuestro motor de reservas amigable con redes sociales, o el administrador de enlaces, en alguna de tus cuentas de redes sociales para ver cómo convierten. No pagas nada si no hay reservas - ¿Qué tienes que perder? 😉
+No tienes que reemplazar tu IBE actual. Sin embargo, te recomendamos probar nuestro motor de reservas amigable con redes sociales, o el gestor de enlaces, en alguna de tus cuentas de redes sociales para ver cómo convierten. No pagas nada si no hay reservas - ¿Qué tienes que perder? 😉
 :::

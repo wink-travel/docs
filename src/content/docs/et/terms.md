@@ -1,39 +1,39 @@
 ---
-title: Tingimused ja tingimused
-description: Tingimused ja tingimused kõigile Wink kasutajatele ja üksustele.
+title: Tingimused ja reeglid
+description: Tingimused ja reeglid kõigile Wink kasutajatele ja üksustele.
 ---
 
-Igal portaalil võivad olla erinevad tingimused ja tingimused. Palun minge allpool olevasse jaotisse, mis kehtib teie kohta, ja otsige alajaotist nimega Teenusetingimused ja maksetingimused.
+Winki erinevad osad sisaldavad erinevaid tingimusi. Leia allpool oma olukorrale vastav jaotis — igal neist on oma kasutustingimused ning rahaga seotud osad sisaldavad ka maksetingimusi.
 
-## Partnerite portaal
+## Kinnistud
 
-Partneritele, kes soovivad õppida, kuidas teenida passiivset tulu, monetiseerides oma sotsiaalmeedia kontosid Winkiga.
-[Wink Studio](https://studio.wink.travel) pakub kõiki vajalikke tööriistu, et müüa nagu professionaal.
+Hotellide, kettide, brändide ja haldusettevõtete jaoks, kes müüvad inventari Winkis.
 
-<LinkButton href="/et/portal/studio/what-is-studio">
-Lisateave Wink Studio kohta
-</LinkButton>
+- [Kasutustingimused](/et/portal/extranet/terms-of-service)
+- [Maksetingimused](/et/portal/extranet/payment-terms)
+
+## Partnerid
+
+Loomeinimeste, mõjutajate ja partnerite jaoks, kes reklaamivad reisivarusid ja teenivad komisjonitasu.
+
+- [Kasutustingimused](/et/portal/studio/terms-of-service)
+- [Maksetingimused](/et/portal/studio/payment-terms)
+
+## Reisibürood
+
+Registreeritud reisibüroode jaoks, kes otsivad, broneerivad ja teenivad oma klientide nimel.
+
+- [Kasutustingimused](/et/portal/travel-agent/terms-of-service)
+- [Maksetingimused](/et/portal/travel-agent/payment-terms)
 
 ## Broneerimismootor
 
-Kõik teed viivad meie broneerimismootorini! Õppige, mida saate teha turu kõige kohandatuma, reisisõbraliku broneerimismootoriga.
+Kõigile, kes broneerivad reise läbi Winki.
 
-<LinkButton href="/et/booking-engine/in-a-nutshell">
-Lisateave meie broneerimismootori kohta
-</LinkButton>
+- [Kasutustingimused](/et/booking-engine/terms-of-service)
 
-## Majutusasutuste portaal
+## Kõigile
 
-Majutusasutustele, kes soovivad alustada müüki Winkis. Kasutage meie tööriistu, et tõhusalt müüa ja turundada end veebis ning saada üle kogu maailma partnerite armee, kes aitavad teil saada kliente ja broneeringuid.
-
-<LinkButton href="/et/portal/extranet/what-is-extranet">
-Lisateave Wink Extranet kohta
-</LinkButton>
-
-## Reisibüroo portaal
-
-Reisibüroodele, kes soovivad teada, mida Wink neile pakub kohandatud hindade, pakkumiste ja varude osas otse tarnijatelt.
-
-<LinkButton href="/et/portal/travel-agent/what-is-agent">
-Lisateave Wink Agent kohta
-</LinkButton>
+- [Privaatsuspoliitika](/et/privacy)
+- [Hinnakiri](/et/getting-started/pricing) — mis on tasuta, kui palju maksab broneering ja kuidas toimivad kasutuspõhised tasud.
+- [Andmete kustutamise taotlus](/et/getting-started/data-deletion-request)

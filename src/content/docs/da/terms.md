@@ -3,37 +3,37 @@ title: Vilkår og betingelser
 description: Vilkår og betingelser for alle Wink-brugere og enheder.
 ---
 
-Hver portal kan have forskellige vilkår og betingelser. Gå venligst til det afsnit nedenfor, der gælder for dig, og find underafsnittet kaldet Vilkår for service og betalingsbetingelser.
+Forskellige dele af Wink har forskellige vilkår. Find den sektion, der gælder for dig nedenfor — hver har sine egne Servicevilkår, og de sektioner, der håndterer penge, har også Betalingsbetingelser.
 
-## Affiliateportal
+## Ejendomme
 
-For affiliates, der ønsker at lære, hvordan man tjener en passiv indkomst ved at tjene penge på dine sociale konti med Wink.  
-[Wink Studio](https://studio.wink.travel) har alle de værktøjer, du har brug for, for at sælge som en professionel.
+For hoteller, kæder, mærker og administrationsselskaber, der sælger inventar på Wink.
 
-<LinkButton href="/da/portal/studio/what-is-studio">
-Lær mere om Wink Studio
-</LinkButton>
+- [Servicevilkår](/da/portal/extranet/terms-of-service)
+- [Betalingsbetingelser](/da/portal/extranet/payment-terms)
+
+## Affiliates
+
+For skabere, influencere og affiliates, der promoverer rejseinventar og tjener kommission.
+
+- [Servicevilkår](/da/portal/studio/terms-of-service)
+- [Betalingsbetingelser](/da/portal/studio/payment-terms)
+
+## Rejsebureauer
+
+For registrerede rejsebureauer, der søger, booker og tjener på vegne af deres kunder.
+
+- [Servicevilkår](/da/portal/travel-agent/terms-of-service)
+- [Betalingsbetingelser](/da/portal/travel-agent/payment-terms)
 
 ## Bookingmotor
 
-Alle veje fører til vores bookingmotor! Lær, hvad du kan gøre med den mest tilpasselige, rejsefokuserede bookingmotor på markedet.
+For alle, der booker rejser gennem Wink.
 
-<LinkButton href="/da/booking-engine/in-a-nutshell">
-Lær mere om vores bookingmotor
-</LinkButton>
+- [Servicevilkår](/da/booking-engine/terms-of-service)
 
-## Ejendomsportal
+## Alle
 
-For ejendomme, der ønsker at begynde at sælge på Wink. Brug vores værktøjer til effektivt at sælge og markedsføre dig online og få en hær af affiliates fra hele verden til at hjælpe dig med at få kunder og bookinger.
-
-<LinkButton href="/da/portal/extranet/what-is-extranet">
-Lær mere om Wink Extranet
-</LinkButton>
-
-## Rejsebureauportal
-
-For rejsebureauer, der ønsker at finde ud af, hvad Wink kan tilbyde dem i form af skræddersyede priser, tilbud og lager direkte fra leverandører.
-
-<LinkButton href="/da/portal/travel-agent/what-is-agent">
-Lær mere om Wink Agent
-</LinkButton>
+- [Fortrolighedspolitik](/da/privacy)
+- [Priser](/da/getting-started/pricing) — hvad der er gratis, hvad en booking koster, og hvordan betaling efter forbrug fungerer.
+- [Anmodning om sletning af data](/da/getting-started/data-deletion-request)

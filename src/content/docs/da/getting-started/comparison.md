@@ -34,8 +34,8 @@ Lær hvordan Wink sammenlignes med andre online rejse-segmenter på markedet. Ne
 
 Nogle hoteller prøver at sammenligne os med deres internet booking engine, som fulgte med deres channel manager, og beder os om at give dem en fast, månedlig pris baseret på antallet af værelser på deres ejendom.
 
-Vi er ikke en IBE, og forhåbentlig hjælper [Wink Academy](/da/) med at afklare dette. Der er fordele og ulemper ved enhver service. Hvis din IBE fungerer for din ejendom, så fortsæt med den.  
-Wink eksisterer for at udfylde flere huller i rejsebranchen og samle det hele ét sted. 
+Vi er ikke en IBE, og forhåbentlig hjælper dette med at tydeliggøre forskellen. Der er fordele og ulemper ved enhver service. Hvis din IBE fungerer for din ejendom, så bliv ved med den.  
+Wink findes for at udfylde flere huller i rejsebranchen og samle det hele ét sted. 
 
 :::tip
 Du behøver ikke at erstatte din eksisterende IBE. Vi anbefaler dog, at du prøver vores sociale-venlige booking engine eller link manager på en af dine sociale mediekonti for at se, hvordan de konverterer. Du betaler ikke noget, hvis der ikke er nogen bookinger – Hvad har du at tabe? 😉

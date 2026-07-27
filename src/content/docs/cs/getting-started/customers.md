@@ -9,7 +9,7 @@ Tento článek vysvětluje typy zákazníků, kterým sloužíme, a jak jim nejl
 
 ## Nemovitosti
 
-Wink začal onboarding hotelů před deseti lety. Hotely používají Wink k efektivní správě svého inventáře napříč tisíci prodejními kanály, včetně jejich vlastního brand.com webu, a k vydělávání více na každé rezervaci při posilování přímých kanálů pomocí našich nástrojů zaměřených na pohostinnost, které zlepšují identitu značky a ziskovost​.
+Wink začal onboarding hotelů před deseti lety. Hotely používají Wink k efektivní správě svého inventáře napříč tisíci prodejními kanály, včetně jejich vlastního brand.com webu, a k vydělávání více s každou rezervací, přičemž podporují přímé kanály pomocí našich nástrojů zaměřených na pohostinnost, které zlepšují identitu značky a ziskovost​.
 
 ## Značky a řetězce
 
@@ -25,7 +25,15 @@ Společnosti zabývající se správou pohostinství a destinací mohou spravova
 
 ## Influenceri
 
-Influenceri používají Wink k lepší monetizaci svého publika. Dělají to partnerstvím s hotely, vytvářením vlastních nabídek a využíváním Winkových nástrojů přátelských k sociálním sítím a silné analytiky pro sledování, které produkty se prodávají nejlépe​.
+Influenceri používají Wink k lepší monetizaci svého publika. Dělají to partnerstvím s hotely, vytvářením vlastních nabídek a využíváním Wink nástrojů přátelských k sociálním sítím a silné analytiky pro sledování, které produkty se prodávají nejlépe​.
+
+## Talentové agentury
+
+Talentové agentury jsou pro tvůrce to, co jsou správcovské společnosti pro hotely. Pokud zastupujete skupinu influencerů, tvůrců obsahu nebo cestovních osobností, můžete spravovat všechny jejich Wink účty z jednoho místa — hledat inventář, vyjednávat nabídky s nemovitostmi, vytvářet a publikovat obsah a sledovat výkon napříč celým portfoliem místo jednoho tvůrce po druhém.
+
+Vyjednáváte agenturní poplatek s každým ze svých talentů a vyděláváte tento poplatek na každé rezervaci, kterou vygenerují. Poplatek je vyplácen automaticky jako součást rezervace, takže není potřeba fakturovat své talenty ani dohánět provize dodatečně. Vaši talenti zůstávají v plné kontrole — vlastní svůj účet, oni aplikují dohodnutý poplatek a mohou kdykoli přidat pravidla vypršení platnosti nebo ukončit spolupráci.
+
+Viz [Agency representation](/cs/portal/settings/agency-representation) pro nastavení.
 
 ## Cestovní agenti
 
@@ -33,21 +41,21 @@ Cestovní agenti získávají přístup k cestovnímu inventáři po celém svě
 
 ## Korporace
 
-Korporace vyžadují více než jen cestovní platformu:
+Korporace vyžadují od cestovní platformy více:
 
 - Potřebují dobře organizované itineráře podporující flexibilitu a změny na poslední chvíli.
 - Potřebují spolehlivé komunikační nástroje, jako je internet.
 - Mají preference dodavatelů s členstvími.
 - Často mají firemní kreditní kartu a nastavené limity výdajů.
 - Vyžadují správu výdajů a integraci reportingu.
-- Potřebují podporu concierge i služby MICE na akcích.
+- Potřebují concierge podporu i MICE služby na akcích.
 
-Korporátní cestovatelé mohou spravovat své účty na našem [korporátním portálu](/cs/portal/corporate/what-is-group) nebo používat náš oficiálně podporovaný [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin a integraci [Concur](https://www.concur.com/).
+Korporátní cestovatelé mohou spravovat své účty na našem [korporátním portálu](/cs/portal/corporate/what-is-group) nebo využívat oficiálně podporovaný [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin a integraci [Concur](https://www.concur.com/).
 
 ## Vývojáři
 
-I když jsme tuto platformu vytvořili pro hoteliéry... Každý řádek kódu byl napsán s cílem opětovné použitelnosti. Náš tým vývojářů vytvořil Wink v naději, že další 🦄 cestovní aplikace bude postavena na naší kódové základně. Přejděte na stránku [Developer](/cs/developers/build-on-wink) a zjistěte, jak vám Wink může pomoci ve vašem dalším projektu.
+I když jsme tuto platformu vytvořili pro hoteliéry... Každý řádek kódu byl napsán s cílem opětovné použitelnosti. Náš tým vývojářů postavil Wink s nadějí, že další 🦄 cestovní aplikace bude postavena na naší kódové základně. Přejděte na stránku [Developer](/cs/developers/build-on-wink) a zjistěte, jak vám Wink může pomoci ve vašem dalším projektu.
 
 ## Ostatní
 
-Kdokoli, kdo chce najít a prodávat cestovní inventář, může mít prospěch z používání Wink. Přeměňte svou vášeň pro pohostinnost v čin tím, že vyděláte skvělou provizi na každé rezervaci.
+Kdokoli, kdo chce najít a prodávat cestovní inventář, může využít Wink. Přeměňte svou vášeň pro pohostinnost v čin tím, že vyděláte skvělou provizi na každé rezervaci.

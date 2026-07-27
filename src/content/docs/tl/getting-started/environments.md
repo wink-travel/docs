@@ -13,7 +13,7 @@ Sa Wink, nagpapatakbo kami ng 2 kapaligiran para sa lahat ng aming ginagawa sa l
 Kung ikaw ay isang integrator, hotel, o ahente ng paglalakbay na nais maghanda para sa sertipikasyon o subukan ang Wink platform, gumawa ng account sa aming staging environment upang makapagsimula.
 
 :::note
-Ang staging environment ay available kapag hiniling. Ibig sabihin, ito ay magpapahinga kapag walang paggamit at muling magbubukas kapag may paggamit. Mangyaring maging matiisin kung ito ay binubuhay mo. Tumitagal ng halos isang minuto upang simulan ang lahat ng mga server pagkatapos mong unang kumonekta sa isa sa aming mga server o app.
+Ang staging environment ay available kapag hiniling. Ibig sabihin, ito ay papahingahin kung walang paggamit at muling bubuhayin kapag may paggamit. Mangyaring magtiyaga kung binubuhay mo ito. Tumagal ng halos isang minuto upang simulan ang lahat ng mga server pagkatapos mong unang kumonekta sa isa sa aming mga server o app.
 :::
 
 ## Mga Server
@@ -33,10 +33,6 @@ Ang aming mga aplikasyon ay mayroon ding test at production na kapaligiran para 
 
 | Application | Staging | Production
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
 | Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

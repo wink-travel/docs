@@ -1,39 +1,39 @@
 ---
-title: Podmínky a ujednání
-description: Podmínky a ujednání pro všechny uživatele a subjekty Wink.
+title: Podmínky
+description: Podmínky pro všechny uživatele a subjekty Wink.
 ---
 
-Každý portál může mít odlišné podmínky a ujednání. Přejděte prosím do sekce níže, která se vás týká, a vyhledejte podsekci nazvanou Podmínky služby a Platební podmínky.
+Různé části Wink mají různé podmínky. Najděte níže sekci, která se vás týká — každá má své vlastní Podmínky služby a sekce, které zpracovávají peníze, mají také Platební podmínky.
 
-## Affiliate portál
+## Nemovitosti
 
-Pro affiliate partnery, kteří chtějí zjistit, jak si vydělat pasivní příjem monetizací svých sociálních účtů pomocí Wink.
-[Wink Studio](https://studio.wink.travel) nabízí všechny nástroje, které potřebujete k profesionálnímu prodeji.
+Pro hotely, řetězce, značky a správcovské společnosti prodávající inventář na Wink.
 
-<LinkButton href="/cs/portal/studio/what-is-studio">
-Zjistěte více o Wink Studio
-</LinkButton>
+- [Podmínky služby](/cs/portal/extranet/terms-of-service)
+- [Platební podmínky](/cs/portal/extranet/payment-terms)
+
+## Partneři
+
+Pro tvůrce, influencery a partnery propagující cestovní inventář a vydělávající provize.
+
+- [Podmínky služby](/cs/portal/studio/terms-of-service)
+- [Platební podmínky](/cs/portal/studio/payment-terms)
+
+## Cestovní agenti
+
+Pro registrované cestovní agenty, kteří vyhledávají, rezervují a vydělávají jménem svých klientů.
+
+- [Podmínky služby](/cs/portal/travel-agent/terms-of-service)
+- [Platební podmínky](/cs/portal/travel-agent/payment-terms)
 
 ## Rezervační engine
 
-Vše směřuje k našemu rezervačnímu enginu! Naučte se, co vše můžete dělat s nejvíce přizpůsobitelným, na cestování zaměřeným rezervačním enginem na trhu.
+Pro všechny, kteří rezervují cestování přes Wink.
 
-<LinkButton href="/cs/booking-engine/in-a-nutshell">
-Zjistěte více o našem rezervačním enginu
-</LinkButton>
+- [Podmínky služby](/cs/booking-engine/terms-of-service)
 
-## Portál nemovitostí
+## Všichni
 
-Pro nemovitosti, které chtějí začít prodávat na Wink. Využijte naše nástroje k efektivnímu prodeji a marketingu online a získejte armádu affiliate partnerů z celého světa, kteří vám pomohou získat zákazníky a rezervace.
-
-<LinkButton href="/cs/portal/extranet/what-is-extranet">
-Zjistěte více o Wink Extranet
-</LinkButton>
-
-## Portál cestovních agentů
-
-Pro cestovní agenty, kteří chtějí zjistit, co jim Wink může nabídnout v podobě speciálních sazeb, nabídek a inventáře přímo od dodavatelů.
-
-<LinkButton href="/cs/portal/travel-agent/what-is-agent">
-Zjistěte více o Wink Agent
-</LinkButton>
+- [Zásady ochrany osobních údajů](/cs/privacy)
+- [Ceník](/cs/getting-started/pricing) — co je zdarma, kolik stojí rezervace a jak fungují poplatky za platbu podle využití.
+- [Žádost o vymazání dat](/cs/getting-started/data-deletion-request)

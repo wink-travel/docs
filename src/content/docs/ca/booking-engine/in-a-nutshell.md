@@ -12,7 +12,7 @@ Així és com segmentem la responsabilitat a Wink:
 - `Booking Engine` s'ocupa de fer que el contingut, creat a `Studio`, que es basa en l'inventari creat a `Extranet`, sigui reservable.
 - [Payment](/ca/payment/what-is-trip-pay) s'ocupa de cobrar / reemborsar els viatgers que reserven [a través de plataformes com Wink], i de pagar els proveïdors.
 
-El motor de reserves és al cor de la nostra plataforma.
+El motor de reserves és al centre de la nostra plataforma.
 
 Les seves responsabilitats inclouen:
 
@@ -28,7 +28,7 @@ Les seves responsabilitats inclouen:
     - Un [mapa](/ca/portal/studio/maps) al teu compte de [WinkLinks](/ca/portal/link-manager/wink-links).
     - Una [crida API](/ca/api) des d'un sistema remot d'agència de viatges.
 - Proporcionar als viatgers una manera de: 
-    - Cercar inventari de viatges.
+    - Cercar inventari de viatge.
     - Reservar inventari disponible.
     - Gestionar les seves [reserves i ressenyes](/ca/booking-engine/bookings).
     - Gestionar la seva [llista de desitjos](/ca/booking-engine/bucket-list) de coses per reservar en el futur.
@@ -40,7 +40,7 @@ Els integradors, que volen encara més llibertat, tenen accés a totes les matei
 
 Continua a les següents seccions per llegir més sobre el que ofereix el motor de reserves.
 
-## Lectures complementàries
+## Lectura addicional
 
 - Llegeix sobre el nostre [plugin de WordPress](/ca/integrations/wordpress/).
 - Llegeix sobre els nostres [Web Components](/ca/integrations/web-components).

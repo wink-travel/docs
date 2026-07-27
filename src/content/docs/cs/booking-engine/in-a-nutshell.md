@@ -9,7 +9,7 @@ Takto rozdělujeme odpovědnost ve Wink:
 
 - [Extranet](/cs/portal/extranet/what-is-extranet) se zabývá dodavateli spravujícími inventář.
 - [Studio](/cs/portal/studio/what-is-studio) se zabývá partnery spravujícími obsah.
-- `Booking Engine` se zabývá tím, aby obsah vytvořený ve `Studio`, který vychází z inventáře vytvořeného v `Extranet`, byl rezervovatelný.
+- `Booking Engine` se zabývá tím, aby obsah vytvořený ve `Studio`, který vychází z inventáře vytvořeného v `Extranet`, byl dostupný k rezervaci.
 - [Payment](/cs/payment/what-is-trip-pay) se zabývá účtováním / vracením peněz cestovatelům, kteří rezervují [přes platformy jako Wink], a platbami dodavatelům.
 
 Rezervační systém je jádrem naší platformy.
@@ -18,14 +18,14 @@ Jeho odpovědnosti zahrnují:
 
 - Správu měn a udržování aktuálních směnných kurzů.
 - Poskytnutí způsobu pro poskytovatele sazeb, jak nám zasílat data o sazbách.
-- Správu vyhledávacích dat. *např. regiony, země, destinace, objekty atd.*
+- Správu vyhledávacích dat. *např. regiony, země, destinace, ubytovací zařízení atd.*
 - Správu jazyků.
 - Generování analytiky na základě uživatelských interakcí, událostí a API volání.
 - Poskytování rezervovatelného inventáře ve požadovaném formátu, jazyce a měně, například:
-    - [sdílitelný odkaz](/cs/portal/studio/shareable-links) na Facebooku.
-    - vstupní stránku hotelu na https://book.wink.travel s inventářem pro daný hotel.
-    - [kartu](/cs/portal/studio/cards) obsahující inventář partnera.
-    - [mapu](/cs/portal/studio/maps) ve vašem účtu [WinkLinks](/cs/portal/link-manager/wink-links).
+    - [Sdílitelný odkaz](/cs/portal/studio/shareable-links) na Facebooku.
+    - Hotelová vstupní stránka na https://book.wink.travel s inventářem pro daný hotel.
+    - [Karta](/cs/portal/studio/cards) obsahující inventář partnera.
+    - [Mapa](/cs/portal/studio/maps) ve vašem účtu [WinkLinks](/cs/portal/link-manager/wink-links).
     - [API volání](/cs/api) z externího systému cestovní agentury.
 - Poskytování cestovatelům možností:
     - Vyhledávat cestovní inventář.
@@ -36,7 +36,7 @@ Jeho odpovědnosti zahrnují:
 
 Rezervační systém je soubor znovupoužitelné funkčnosti, kterou zpřístupňujeme prostřednictvím https://book.wink.travel; vysoce přizpůsobitelné webové stránky pro hotely a partnery, aby mohli prodávat své služby cestovatelům.
 
-Integrátoři, kteří chtějí ještě větší svobodu, mají přístup ke všem stejným funkcím prostřednictvím našeho [WordPress pluginu](/cs/integrations/wordpress/), [Web Components](/cs/integrations/web-components) a [API](/cs/api).
+Integrátoři, kteří chtějí ještě větší svobodu, mají přístup ke všem stejným funkcím přes náš [WordPress plugin](/cs/integrations/wordpress/), [Web Components](/cs/integrations/web-components) a [API](/cs/api).
 
 Pokračujte do dalších sekcí a přečtěte si více o tom, co rezervační systém nabízí.
 

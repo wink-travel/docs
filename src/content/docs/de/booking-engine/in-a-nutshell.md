@@ -1,5 +1,5 @@
 ---
-title: Kurz gesagt
+title: Kurz gefasst
 description: Dieser Artikel führt Sie durch alles, was Sie über die Buchungsmaschine wissen wollten.
 sidebar:
   order: 0
@@ -31,7 +31,7 @@ Zu ihren Aufgaben gehören:
     - Nach Reiseinventar zu suchen.
     - Verfügbares Inventar zu buchen.
     - Ihre [Buchungen und Bewertungen](/de/booking-engine/bookings) zu verwalten.
-    - Ihre [Bucket List](/de/booking-engine/bucket-list) mit Dingen zu verwalten, die sie in Zukunft buchen möchten.
+    - Ihre [Wunschliste](/de/booking-engine/bucket-list) mit Dingen, die sie in Zukunft buchen möchten, zu verwalten.
     - Ihr [Reiseprofil](/de/booking-engine/travel-preferences) zu verwalten. *z. B. Allergien, Notfallkontakt usw.*
 
 Die Buchungsmaschine ist eine Sammlung wiederverwendbarer Funktionen, die wir über https://book.wink.travel bereitstellen; eine hochgradig anpassbare Website für Hotels und Affiliates, um ihre Angebote an Reisende zu verkaufen.

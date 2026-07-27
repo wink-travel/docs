@@ -3,37 +3,37 @@ title: नियम और शर्तें
 description: सभी Wink उपयोगकर्ताओं और संस्थाओं के लिए नियम और शर्तें।
 ---
 
-प्रत्येक पोर्टल के अलग-अलग नियम और शर्तें हो सकती हैं। कृपया नीचे उस अनुभाग पर जाएं जो आप पर लागू होता है और 'Terms of Service' और 'Payment Terms' नामक उप-अनुभाग देखें।
+Wink के विभिन्न हिस्सों के लिए अलग-अलग नियम होते हैं। नीचे उस अनुभाग को खोजें जो आप पर लागू होता है — प्रत्येक का अपना सेवा नियम होता है, और जो अनुभाग पैसे संभालते हैं उनके पास भुगतान की शर्तें भी होती हैं।
 
-## Affiliate portal
+## संपत्तियाँ
 
-उन सहयोगियों के लिए जो अपने सोशल अकाउंट्स को मोनेटाइज करके Wink के साथ निष्क्रिय आय कमाना चाहते हैं।  
-[Wink Studio](https://studio.wink.travel) में आपके पास पेशेवर की तरह बेचने के लिए सभी उपकरण उपलब्ध हैं।
+होटल, चेन, ब्रांड और प्रबंधन कंपनियों के लिए जो Wink पर इन्वेंटरी बेचती हैं।
 
-<LinkButton href="/hi/portal/studio/what-is-studio">
-Wink Studio के बारे में अधिक जानें
-</LinkButton>
+- [सेवा नियम](/hi/portal/extranet/terms-of-service)
+- [भुगतान की शर्तें](/hi/portal/extranet/payment-terms)
 
-## Booking engine
+## सहयोगी
 
-सभी रास्ते हमारे booking engine की ओर जाते हैं! जानें कि आप बाजार में सबसे अनुकूलन योग्य, यात्रा-केंद्रित booking engine के साथ क्या कर सकते हैं।
+सृजनकर्ता, प्रभावशाली और सहयोगी जो यात्रा इन्वेंटरी को बढ़ावा देते हैं और कमीशन कमाते हैं।
 
-<LinkButton href="/hi/booking-engine/in-a-nutshell">
-हमारे booking engine के बारे में अधिक जानें
-</LinkButton>
+- [सेवा नियम](/hi/portal/studio/terms-of-service)
+- [भुगतान की शर्तें](/hi/portal/studio/payment-terms)
 
-## Property portal
+## यात्रा एजेंट
 
-उन संपत्तियों के लिए जो Wink पर बिक्री शुरू करना चाहते हैं। हमारे उपकरणों का उपयोग करके प्रभावी ढंग से ऑनलाइन खुद को बेचें और मार्केट करें और दुनिया भर के सहयोगियों की एक सेना प्राप्त करें जो आपको ग्राहक और बुकिंग पाने में मदद करें।
+पंजीकृत यात्रा एजेंट जो अपने ग्राहकों की ओर से खोज, बुकिंग और कमाई करते हैं।
 
-<LinkButton href="/hi/portal/extranet/what-is-extranet">
-Wink Extranet के बारे में अधिक जानें
-</LinkButton>
+- [सेवा नियम](/hi/portal/travel-agent/terms-of-service)
+- [भुगतान की शर्तें](/hi/portal/travel-agent/payment-terms)
 
-## Travel agent portal
+## बुकिंग इंजन
 
-उन ट्रैवल एजेंटों के लिए जो जानना चाहते हैं कि Wink उन्हें आपूर्तिकर्ताओं से सीधे विशेष दरें, डील और इन्वेंटरी के संदर्भ में क्या पेशकश कर सकता है।
+Wink के माध्यम से यात्रा बुक करने वाले सभी के लिए।
 
-<LinkButton href="/hi/portal/travel-agent/what-is-agent">
-Wink Agent के बारे में अधिक जानें
-</LinkButton>
+- [सेवा नियम](/hi/booking-engine/terms-of-service)
+
+## सभी के लिए
+
+- [गोपनीयता नीति](/hi/privacy)
+- [मूल्य निर्धारण](/hi/getting-started/pricing) — क्या मुफ्त है, बुकिंग की लागत क्या है, और पे-एज़-यू-गो उपयोग शुल्क कैसे काम करते हैं।
+- [डेटा हटाने का अनुरोध](/hi/getting-started/data-deletion-request)

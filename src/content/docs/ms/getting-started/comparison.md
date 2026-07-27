@@ -1,6 +1,6 @@
 ---
 title: Perbandingan
-description: Ketahui bagaimana Wink dibandingkan dengan syarikat pelancongan dalam talian yang serupa dan apakah beberapa manfaat untuk menyertai Wink.
+description: Ketahui bagaimana Wink dibandingkan dengan syarikat pelancongan dalam talian yang serupa dan apakah beberapa manfaat menyertai Wink.
 sidebar:
   order: 5
 ---
@@ -18,7 +18,7 @@ Ketahui bagaimana Wink dibandingkan dengan segmen pelancongan dalam talian lain 
 | Pengedaran & pemasaran dibantu AI | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Alat mesra sosial | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Saluran B2C tanpa komisen | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
-| Penyenaraian Hotel Google percuma | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
+| Penyenaraian hotel Google percuma | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Akses Komponen Web / SDK / API | 🟢 | 🟢 | ⚫️ | 🟢 | 
 | Hubungan langsung | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
 | Komisen boleh dirunding mengikut saluran jualan | 🟢 | ⚫️ | ⚫️ | ⚫️ | 
@@ -34,7 +34,7 @@ Ketahui bagaimana Wink dibandingkan dengan segmen pelancongan dalam talian lain 
 
 Sesetengah hotel cuba membandingkan kami dengan enjin tempahan internet mereka yang disertakan bersama pengurus saluran mereka dan meminta kami memberikan harga tetap bulanan berdasarkan bilangan bilik di hartanah mereka.
 
-Kami bukan IBE dan diharapkan [Wink Academy](/ms/) membantu menjelaskan perkara ini. Setiap perkhidmatan ada kelebihan dan kekurangannya. Jika IBE anda berfungsi untuk hartanah anda, teruskan menggunakannya.  
+Kami bukan IBE dan diharapkan ini membantu menjelaskan perbezaannya. Setiap perkhidmatan ada kelebihan dan kekurangannya. Jika IBE anda berfungsi untuk hartanah anda, teruskan menggunakannya.  
 Wink wujud untuk mengisi beberapa kekosongan dalam industri pelancongan dan menggabungkannya semua di satu tempat.
 
 :::tip

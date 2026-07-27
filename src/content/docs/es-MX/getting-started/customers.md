@@ -21,15 +21,23 @@ Las marcas y cadenas tienen necesidades ligeramente diferentes a una propiedad i
 
 ## Empresas de gestión
 
-Las empresas de gestión hotelera y las empresas de gestión de destinos pueden administrar sus carteras de propiedades en nombre de los propietarios. Existe una ventaja definitiva al permitir que agencias enfocadas en lo digital y con experiencia en línea manejen la venta al segmento online, mientras los hoteles pueden concentrarse en gestionar la satisfacción del cliente una vez que llegan a las instalaciones.
+Las empresas de gestión hotelera y las empresas de gestión de destinos pueden administrar sus carteras de propiedades en nombre de los propietarios. Existe una ventaja definitiva al permitir que agencias enfocadas en lo digital y con conocimiento online manejen la venta al segmento en línea, mientras los hoteles pueden concentrarse en gestionar la satisfacción del cliente una vez que llegan a las instalaciones.
 
 ## Influencers
 
 Los influencers usan Wink para monetizar mejor a su audiencia. Lo hacen asociándose con hoteles, creando ofertas personalizadas y aprovechando las herramientas sociales de Wink y sus potentes análisis para rastrear qué productos se venden mejor​.
 
+## Agencias de talento
+
+Las agencias de talento son para los creadores lo que las empresas de gestión son para los hoteles. Si representas a un grupo de influencers, creadores de contenido o personalidades de viajes, puedes gestionar todas sus cuentas de Wink desde un solo lugar — encontrando inventario, negociando acuerdos con propiedades, creando y publicando contenido, y monitoreando el desempeño de todo tu equipo en lugar de hacerlo uno por uno.
+
+Negocias una comisión de agencia con cada uno de tus talentos y ganas esa comisión en cada reserva que generen. Se paga automáticamente como parte de la reserva, por lo que no hay facturación a tus propios talentos ni seguimiento de comisiones después. Tus talentos mantienen el control en todo momento — ellos son dueños de su cuenta, son quienes aplican la comisión acordada, y pueden agregar reglas de expiración o terminar el acuerdo cuando quieran.
+
+Consulta [Representación de agencia](/es-MX/portal/settings/agency-representation) para ver cómo se configura.
+
 ## Agentes de viajes
 
-Los agentes de viajes tienen acceso a inventario de viajes en todo el mundo a excelentes precios a través de nuestro portal dedicado para [agentes de viajes](https://agent.wink.travel). Pueden hacer reservas a través de nuestro portal, mediante nuestra API o permitiendo que sus usuarios reserven por sí mismos en el sitio web de agentes de viajes que utiliza nuestras tecnologías.
+Los agentes de viajes tienen acceso a inventario de viajes en todo el mundo a excelentes precios a través de nuestro dedicado [portal para agentes de viajes](https://agent.wink.travel). Pueden hacer reservas a través de nuestro portal, vía nuestra API o permitiendo que sus usuarios reserven directamente en el sitio web para agentes de viajes que usa nuestras tecnologías.
 
 ## Corporativos
 
@@ -50,4 +58,4 @@ Aunque construimos esta plataforma por y para hoteleros... Cada línea de códig
 
 ## Otros
 
-Cualquiera que quiera encontrar y vender inventario de viajes puede beneficiarse usando Wink. Convierte tu pasión por la hospitalidad en acción ganando una gran comisión por cada reserva.
+Cualquiera que quiera encontrar y vender inventario de viajes puede beneficiarse usando Wink. Convierte tu pasión por la hospitalidad en acción ganando una gran comisión en cada reserva.

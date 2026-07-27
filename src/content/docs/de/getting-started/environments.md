@@ -1,6 +1,6 @@
 ---
 title: Umgebungen
-description: Dieser Artikel enthält Informationen für Tester und Entwickler darüber, wie man Zugang zu unseren verschiedenen Serverumgebungen erhält.
+description: Dieser Artikel enthält Informationen für Tester und Entwickler darüber, wie sie Zugang zu unseren verschiedenen Serverumgebungen erhalten.
 sidebar:
   order: 8
 ---
@@ -13,7 +13,7 @@ Bei Wink betreiben wir jederzeit 2 Umgebungen für alles, was wir tun:
 Wenn Sie ein Integrator, Hotel oder Reisebüro sind, das sich auf die Zertifizierung vorbereiten oder die Wink-Plattform testen möchte, erstellen Sie ein Konto in unserer Staging-Umgebung, um zu starten.
 
 :::note
-Die Staging-Umgebung ist auf Anfrage verfügbar. Das bedeutet, sie geht in den Ruhezustand, wenn sie nicht genutzt wird, und schaltet sich wieder ein, wenn sie gebraucht wird. Bitte haben Sie Geduld, wenn Sie sie aufwecken. Es dauert etwa eine Minute, bis alle Server gestartet sind, nachdem Sie sich zum ersten Mal mit einem unserer Server oder Apps verbunden haben.
+Die Staging-Umgebung ist auf Anfrage verfügbar. Das bedeutet, sie geht in den Ruhezustand, wenn keine Nutzung stattfindet, und schaltet sich wieder ein, wenn sie gebraucht wird. Bitte haben Sie Geduld, wenn Sie sie aufwecken. Es dauert etwa eine Minute, bis alle Server gestartet sind, nachdem Sie sich zum ersten Mal mit einem unserer Server oder Apps verbunden haben.
 :::
 
 ## Server
@@ -33,10 +33,6 @@ Unsere Anwendungen haben ebenfalls Test- und Produktionsumgebungen für unsere K
 
 | Application | Staging | Production
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
 | Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

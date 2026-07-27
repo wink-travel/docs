@@ -8,12 +8,12 @@ sidebar:
 ב-Wink, אנו מפעילים 2 סביבות לכל מה שאנו עושים בכל עת:
 
 - Production היא הסביבה היציבה שלנו.
-- Staging היא סביבת האישור והבדיקות שלנו.
+- Staging היא סביבה לאישור ובדיקות.
 
 אם אתה אינטגרטור, מלון או סוכן נסיעות שמעוניין להתכונן לאישור או לבדוק את פלטפורמת Wink, צור חשבון בסביבת ה-staging שלנו כדי להתחיל.
 
 :::note
-סביבת ה-staging זמינה על בסיס בקשה. משמעות הדבר היא שהיא תיכנס למצב שינה אם אין שימוש ותתעורר מחדש כאשר יש שימוש. אנא היה סבלני אם אתה מעיר אותה. לוקח ככדקה להפעיל את כל השרתים לאחר החיבור הראשון שלך לאחד מהשרתים או האפליקציות שלנו.
+סביבת ה-staging זמינה על בסיס בקשה. משמעות הדבר היא שהיא תיכנס למצב שינה אם אין שימוש ותתעורר מחדש כאשר יש שימוש. אנא היה סבלני אם אתה מעיר אותה. לוקח כדקה להפעיל את כל השרתים לאחר החיבור הראשון שלך לאחד מהשרתים או האפליקציות שלנו.
 :::
 
 ## שרתים
@@ -33,10 +33,6 @@ sidebar:
 
 | Application | Staging | Production
 | ------- | ------- | ---------- |
-| Agent | https://staging-agent.wink.travel | https://agent.wink.travel | 
+| Portal | https://staging-app.wink.travel | https://app.wink.travel | 
 | Booking engine | https://staging-book.wink.travel | https://book.wink.travel | 
-| Extranet | https://staging-extranet.wink.travel | https://extranet.wink.travel | 
-| My Account | https://staging-app.wink.travel | https://app.wink.travel | 
-| Payment | https://staging-pay.wink.travel | https://pay.wink.travel | 
-| Studio | https://staging-studio.wink.travel | https://studio.wink.travel | 
-| WinkLinks | https://staging-i.trvl.as | https://i.trvl.as |
+| Link Manager | https://staging-i.trvl.as | https://i.trvl.as |

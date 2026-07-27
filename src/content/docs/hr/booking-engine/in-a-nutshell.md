@@ -5,11 +5,11 @@ sidebar:
   order: 0
 ---
 
-Evo kako dijelimo odgovornosti na Wink:
+Evo kako dijelimo odgovornosti na Wink: 
 
 - [Extranet](/hr/portal/extranet/what-is-extranet) se bavi dobavljačima koji upravljaju inventarom.
 - [Studio](/hr/portal/studio/what-is-studio) se bavi partnerima koji upravljaju sadržajem.
-- `Booking Engine` se bavi stvaranjem sadržaja, kreiranog u `Studio`, koji je baziran na inventaru kreiranom u `Extranet` i omogućava njegovo rezerviranje.
+- `Booking Engine` se bavi time da sadržaj, kreiran u `Studio`, a temeljen na inventaru kreiranom u `Extranet`, učini rezervabilnim.
 - [Payment](/hr/payment/what-is-trip-pay) se bavi naplatom / povratom novca putnicima koji rezerviraju [kroz platforme poput Wink], i plaćanjem dobavljačima.
 
 Booking engine je u središtu naše platforme.
@@ -31,14 +31,14 @@ Njegove odgovornosti uključuju:
     - Pretražuju turistički inventar.
     - Rezerviraju dostupni inventar.
     - Upravljaju svojim [rezervacijama i recenzijama](/hr/booking-engine/bookings).
-    - Upravljaju svojom [bucket listom](/hr/booking-engine/bucket-list) stvari za buduće rezervacije.
+    - Upravljaju svojim [bucket listom](/hr/booking-engine/bucket-list) stvari za rezervirati u budućnosti.
     - Upravljaju svojim [putnim profilom](/hr/booking-engine/travel-preferences). *npr. alergije, kontakt u hitnim slučajevima itd.*
 
 Booking engine je skup ponovo upotrebljivih funkcionalnosti koje izlažemo putem https://book.wink.travel; visoko prilagodljive web stranice za hotele i partnere za prodaju njihovih usluga putnicima.
 
 Integratori, koji žele još veću slobodu, imaju pristup svim istim značajkama putem našeg [WordPress plugina](/hr/integrations/wordpress/), [Web Components](/hr/integrations/web-components) i [API-ja](/hr/api).
 
-Nastavite na sljedeće odjeljke kako biste saznali više o tome što booking engine nudi.
+Nastavite na sljedeće odjeljke da biste saznali više o tome što booking engine nudi.
 
 ## Daljnje čitanje
 
