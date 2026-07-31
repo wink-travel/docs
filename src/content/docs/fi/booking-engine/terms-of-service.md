@@ -2,7 +2,7 @@
 title: Palveluehdot
 description: Helposti saatavilla olevat ja ajan tasalla olevat ehdot kaikille matkustajillemme.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

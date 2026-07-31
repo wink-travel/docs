@@ -2,7 +2,7 @@
 title: Servicevilkår
 description: Let tilgængelige og opdaterede vilkår for alle vores rejsende brugere.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

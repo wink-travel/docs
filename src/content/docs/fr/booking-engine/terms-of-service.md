@@ -2,7 +2,7 @@
 title: Conditions d'utilisation
 description: Conditions facilement accessibles et à jour pour tous nos utilisateurs voyageurs.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

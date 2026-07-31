@@ -2,7 +2,7 @@
 title: Vilkår for bruk
 description: Enkelt tilgjengelige og oppdaterte vilkår for alle våre reisende brukere.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

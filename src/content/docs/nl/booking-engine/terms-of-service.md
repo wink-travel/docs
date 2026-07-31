@@ -2,7 +2,7 @@
 title: Servicevoorwaarden
 description: Gemakkelijk toegankelijke en actuele voorwaarden voor al onze reizigersgebruikers.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

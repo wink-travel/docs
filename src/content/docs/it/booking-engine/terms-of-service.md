@@ -2,7 +2,7 @@
 title: Termini di Servizio
 description: Termini facilmente accessibili e aggiornati per tutti i nostri utenti viaggiatori.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

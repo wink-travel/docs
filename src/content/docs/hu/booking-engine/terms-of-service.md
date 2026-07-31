@@ -2,7 +2,7 @@
 title: Szolgáltatási feltételek
 description: Könnyen elérhető és naprakész feltételek minden utazó felhasználónk számára.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

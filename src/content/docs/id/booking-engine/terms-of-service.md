@@ -2,7 +2,7 @@
 title: Ketentuan Layanan
 description: Ketentuan yang mudah diakses dan selalu diperbarui untuk semua pengguna pelancong kami.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

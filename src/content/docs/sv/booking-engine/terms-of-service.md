@@ -2,7 +2,7 @@
 title: Användarvillkor
 description: Enkelt tillgängliga och uppdaterade villkor för alla våra resenärsanvändare.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

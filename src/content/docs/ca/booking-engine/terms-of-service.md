@@ -2,7 +2,7 @@
 title: Condicions del servei
 description: Condicions fàcilment accessibles i actualitzades per a tots els nostres usuaris viatgers.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

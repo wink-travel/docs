@@ -2,7 +2,7 @@
 title: Terma Perkhidmatan
 description: Terma yang mudah diakses dan terkini untuk semua pengguna pelancong kami.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

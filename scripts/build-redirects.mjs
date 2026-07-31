@@ -22,6 +22,7 @@ const mapping = JSON.parse(
 
 // Redirect targets for deleted docs.
 const deleteTargets = {
+  "booking-engine/in-a-nutshell": "/booking-engine/features",
   "guides/developers/integrating-with-trip-pay": "/",
   "my-account/activity-stream": "/",
   "my-account/loyalty-points": "/",

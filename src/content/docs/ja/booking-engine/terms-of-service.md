@@ -2,7 +2,7 @@
 title: 利用規約
 description: すべての旅行者ユーザー向けに簡単にアクセスでき、最新の利用規約。
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

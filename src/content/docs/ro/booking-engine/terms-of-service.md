@@ -2,7 +2,7 @@
 title: Termeni și condiții
 description: Termeni ușor accesibili și actualizați pentru toți utilizatorii noștri călători.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

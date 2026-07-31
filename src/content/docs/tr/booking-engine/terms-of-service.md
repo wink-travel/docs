@@ -2,7 +2,7 @@
 title: Hizmet Şartları
 description: Tüm gezgin kullanıcılarımız için kolay erişilebilir ve güncel şartlar.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 
