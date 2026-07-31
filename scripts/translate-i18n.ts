@@ -102,6 +102,40 @@ const fixFrontmatterSpecialStartChars = (content: string): string => {
   return content.replace(fullFm, `${open}${fixedBody}${close}`);
 };
 
+// Module specifiers in import statements are file paths, not prose: a model that
+// translates '/src/components/photos-and-videos-text.mdx' into a target language
+// (e.g. Dutch '.../photos-en-videos-text.mdx') breaks the build with an unresolved
+// import. Restore every specifier positionally from the English source.
+const IMPORT_SPECIFIER_REGEX = /^(\s*import\b[^\n]*?\bfrom\s+(['"]))([^'"\n]+)(\2)/gm;
+const collectImportSpecifiers = (content: string): Array<string> =>
+  [...content.matchAll(IMPORT_SPECIFIER_REGEX)].map((m) => m[3]);
+
+const restoreImportSpecifiers = (
+  source: string,
+  translated: string,
+  label: string
+): string => {
+  const original = collectImportSpecifiers(source);
+  const current = collectImportSpecifiers(translated);
+  if (original.length === 0) return translated;
+  if (original.length !== current.length) {
+    console.warn(
+      `⚠️ ${label}: import count changed during translation (${original.length} → ${current.length}); leaving specifiers untouched.`
+    );
+    return translated;
+  }
+
+  const knownSpecifiers = new Set(original);
+  let index = 0;
+  return translated.replace(IMPORT_SPECIFIER_REGEX, (full, pre, _quote, specifier, post) => {
+    const expected = original[index++];
+    // A specifier that still exists in the source was reordered, not translated.
+    if (specifier === expected || knownSpecifiers.has(specifier)) return full;
+    console.log(`🔧 ${label}: restoring import path '${specifier}' → '${expected}'`);
+    return `${pre}${expected}${post}`;
+  });
+};
+
 // Minimal link rewriter for docs content (md/mdx):
 // - Markdown links only: [text](/path) -> [text](/<lang>/path)
 // Skips if already has any locale prefix (/xx/ or /xx-YY/)
@@ -429,6 +463,7 @@ async function translateFile(
   // Post-process all doc files: add locale prefixes to root-relative links
   const outExt = extname(relativePath).toLowerCase();
   if (outExt === ".md" || outExt === ".mdx") {
+    output = restoreImportSpecifiers(rawContent, output, `${targetLang}/${relativePath}`);
     output = rewriteLinksOnContent(output, targetLang);
     if (relativePath === "index.mdx") {
       output = rewriteCommonHrefPrefixes(output, targetLang);
