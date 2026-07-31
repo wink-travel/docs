@@ -118,7 +118,7 @@ Nothing breaks and nothing is charged. You simply stop at the free allowance for
 | Suspended | An invoice went unpaid to the end. Billable actions are blocked until it's settled; free features carry on as normal. |
 
 :::tip[Live prices]
-Unit prices and free allowances are always shown in Portal, straight from our billing system, so you can check them before you commit to anything. See [Billing](/portal/plan) to enable pay-as-you-go, pick your accounts, and track month-to-date usage and invoices. See [Social](/portal/social/what-is-social) for how post volume affects what you spend.
+Unit prices and free allowances are always shown in Portal, straight from our billing system, so you can check them before you commit to anything. See [Billing](/account/subscription) to enable pay-as-you-go, pick your accounts, and track month-to-date usage and invoices. See [Social](/portal/social/what-is-social) for how post volume affects what you spend.
 :::
 
 ## Platform effect

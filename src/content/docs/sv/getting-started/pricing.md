@@ -118,7 +118,7 @@ Inget går sönder och inget debiteras. Du stannar helt enkelt vid den fria grä
 | Avstängd | En faktura har förblivit obetald till slutet. Debiterbara åtgärder blockeras tills den är reglerad; gratisfunktioner fortsätter som vanligt. |
 
 :::tip[Live-priser]
-Enhetspriser och fria gränser visas alltid i Portal, direkt från vårt faktureringssystem, så att du kan kontrollera dem innan du binder dig till något. Se [Billing](/sv/portal/plan) för att aktivera pay-as-you-go, välja dina konton och följa månadens användning och fakturor. Se [Social](/sv/portal/social/what-is-social) för hur inläggsvolym påverkar dina kostnader.
+Enhetspriser och fria gränser visas alltid i Portal, direkt från vårt faktureringssystem, så att du kan kontrollera dem innan du binder dig till något. Se [Billing](/sv/account/subscription) för att aktivera pay-as-you-go, välja dina konton och följa månadens användning och fakturor. Se [Social](/sv/portal/social/what-is-social) för hur inläggsvolym påverkar dina kostnader.
 :::
 
 ## Plattformseffekt

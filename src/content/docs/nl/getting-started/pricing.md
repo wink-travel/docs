@@ -118,7 +118,7 @@ Er gaat niets mis en er wordt niets in rekening gebracht. Je stopt gewoon bij de
 | Geschorst | Een factuur is onbetaald gebleven tot het einde. Factureerbare acties worden geblokkeerd totdat het is voldaan; gratis functies blijven normaal werken. |
 
 :::tip[Live prijzen]
-Eenheidsprijzen en gratis limieten worden altijd getoond in Portal, rechtstreeks uit ons facturatiesysteem, zodat je ze kunt controleren voordat je ergens aan begint. Zie [Billing](/nl/portal/plan) om pay-as-you-go in te schakelen, je accounts te kiezen en maand-tot-nu-gebruik en facturen te volgen. Zie [Social](/nl/portal/social/what-is-social) voor hoe het aantal posts invloed heeft op je uitgaven.
+Eenheidsprijzen en gratis limieten worden altijd getoond in Portal, rechtstreeks uit ons facturatiesysteem, zodat je ze kunt controleren voordat je ergens aan begint. Zie [Billing](/nl/account/subscription) om pay-as-you-go in te schakelen, je accounts te kiezen en maand-tot-nu-gebruik en facturen te volgen. Zie [Social](/nl/portal/social/what-is-social) voor hoe het aantal posts invloed heeft op je uitgaven.
 :::
 
 ## Platformeffect

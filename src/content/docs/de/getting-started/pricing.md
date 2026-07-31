@@ -118,7 +118,7 @@ Es passiert nichts, und es wird nichts berechnet. Sie bleiben einfach beim koste
 | Ausgesetzt | Eine Rechnung wurde bis zum Ende nicht bezahlt. Kostenpflichtige Aktionen sind blockiert, bis die Rechnung beglichen ist; kostenlose Funktionen laufen normal weiter. |
 
 :::tip[Live-Preise]
-Einheitspreise und kostenlose Kontingente werden im Portal immer direkt aus unserem Abrechnungssystem angezeigt, sodass Sie sie vor einer Verpflichtung prüfen können. Siehe [Billing](/de/portal/plan), um pay-as-you-go zu aktivieren, Ihre Konten auszuwählen und die Nutzung sowie Rechnungen des laufenden Monats zu verfolgen. Siehe [Social](/de/portal/social/what-is-social) für Informationen, wie das Postvolumen Ihre Ausgaben beeinflusst.
+Einheitspreise und kostenlose Kontingente werden im Portal immer direkt aus unserem Abrechnungssystem angezeigt, sodass Sie sie vor einer Verpflichtung prüfen können. Siehe [Billing](/de/account/subscription), um pay-as-you-go zu aktivieren, Ihre Konten auszuwählen und die Nutzung sowie Rechnungen des laufenden Monats zu verfolgen. Siehe [Social](/de/portal/social/what-is-social) für Informationen, wie das Postvolumen Ihre Ausgaben beeinflusst.
 :::
 
 ## Plattform-Effekt

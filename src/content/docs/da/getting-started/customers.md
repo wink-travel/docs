@@ -50,7 +50,7 @@ Virksomheder kræver mere af en rejseplatform:
 - De kræver udgiftsstyring og rapporteringsintegration.
 - De har behov for concierge-support samt MICE-tjenester ved events.
 
-Forretningsrejsende kan administrere deres egne konti på vores [virksomhedsportal](/da/portal/corporate/what-is-group) eller bruge vores officielt understøttede [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin og [Concur](https://www.concur.com/) integration.
+Forretningsrejsende kan administrere deres egne konti på vores virksomhedsportal eller bruge vores officielt understøttede [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin og [Concur](https://www.concur.com/) integration.
 
 ## Udviklere
 

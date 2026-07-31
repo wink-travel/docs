@@ -50,7 +50,7 @@ Les empreses requereixen més d’una plataforma de viatges:
 - Requereixen gestió de despeses i integració de informes.
 - Necessiten suport de consergeria, així com serveis MICE en esdeveniments.
 
-Els viatgers corporatius poden gestionar els seus propis comptes al nostre [portal corporatiu](/ca/portal/corporate/what-is-group) o utilitzar el nostre connector oficialment suportat [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) i la integració amb [Concur](https://www.concur.com/).
+Els viatgers corporatius poden gestionar els seus propis comptes al nostre portal corporatiu o utilitzar el nostre connector oficialment suportat [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) i la integració amb [Concur](https://www.concur.com/).
 
 ## Desenvolupadors
 

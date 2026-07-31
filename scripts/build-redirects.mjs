@@ -26,7 +26,7 @@ const deleteTargets = {
   "my-account/activity-stream": "/",
   "my-account/loyalty-points": "/",
   "my-account/notifications": "/",
-  "my-account/reporting": "/portal/analytics",
+  "my-account/reporting": "/account/analytics",
   "payment/dashboard": "/portal/payment/withdraw-funds",
   "payment/receipts": "/portal/payment/withdraw-funds",
   "payment/bookings": "/portal/payment/withdraw-funds",

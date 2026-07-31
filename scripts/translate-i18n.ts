@@ -16,6 +16,8 @@ import OpenAI from "openai";
 
 import { createHash } from "crypto";
 
+import { loadEnv } from "./load-env.js";
+
 const HASH_ALGO = "sha256";
 const HASH_FILE_NAME = ".file.hashes.json";
 
@@ -212,7 +214,6 @@ const directories = [
   "portal/studio",
   "portal/travel-agent",
   "account",
-  "account/profile",
   "booking-engine",
   "developers",
   "getting-started",
@@ -229,6 +230,7 @@ const __dirname = dirname(__filename);
 const rootDir = resolve(__dirname, "..");
 const docsBaseDir = join(rootDir, "src", "content", "docs");
 
+loadEnv();
 
 const OPENAI_TRANSLATION_MODEL =
   process.env.OPENAI_TRANSLATION_MODEL ?? "gpt-4.1-mini-2025-04-14";
@@ -236,7 +238,9 @@ const DOMAIN_CONTEXT =
   "Online travel platform: booking flows, inventory management, agency/extranet tools. Keep product names and key travel terms consistent.";
 
 if (!process.env.OPENAI_API_KEY) {
-  throw new Error("OPENAI_API_KEY is required for translations");
+  throw new Error(
+    "OPENAI_API_KEY is required for translations. Set it in .env.local at the repo root; that value wins over any export in your shell profile."
+  );
 }
 
 const openai = new OpenAI({

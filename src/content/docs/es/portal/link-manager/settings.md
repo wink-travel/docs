@@ -5,9 +5,9 @@ sidebar:
   order: 4
 ---
 
-Para gestionar la configuración de tus WinkLinks, navega a `WinkLinks` en la barra de navegación principal y haz clic en la pestaña `Configuración`.
+Para gestionar la configuración de WinkLinks, navega a `WinkLinks` en la barra de navegación principal y haz clic en la pestaña `Diseño`.
 
-Estas son las formas en que puedes configurar el comportamiento de tus WinkLinks con `Configuración`:
+Estas son las formas en que puedes configurar el comportamiento de WinkLinks con `Diseño`:
 
 - **Inteligente** Al activar la inteligencia, intentamos recuperar el contenido `enriquecido` disponible de sitios como `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (antes Twitter)` y otros. *Por ejemplo, si compartes una publicación de IG en WinkLinks, la publicación se mostrará tal como la ves en IG, con likes, comentarios y una forma de interactuar con la publicación.*
 - **Visualización inicial** Controla cómo tu audiencia interactúa por primera vez con tu sitio y ve tu contenido. Tienes tres opciones disponibles:
@@ -30,6 +30,6 @@ Controles adicionales incluyen:
 
 Los desarrolladores que quieran gestionar `WinkLinks` pueden dirigirse a [Developers > API > WinkLinks](/es/api).
 
-## Lecturas adicionales
+## Lectura adicional
 
 - Lee más sobre [Personalizaciones](/es/portal/settings/branding).

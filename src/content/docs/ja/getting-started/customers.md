@@ -50,7 +50,7 @@ Winkは10年前にホテルのオンボーディングを開始しました。�
 - 経費管理と報告の統合が必要です。
 - コンシェルジュサポートやイベントでのMICEサービスも必要です。
 
-法人旅行者は当社の[法人ポータル](/ja/portal/corporate/what-is-group)で自分のアカウントを管理するか、公式にサポートされている[MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)プラグインや[Concur](https://www.concur.com/)統合を利用できます。
+法人旅行者は当社の法人ポータルで自分のアカウントを管理するか、公式にサポートされている[MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)プラグインや[Concur](https://www.concur.com/)統合を利用できます。
 
 ## 開発者
 

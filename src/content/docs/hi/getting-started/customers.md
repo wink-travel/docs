@@ -50,7 +50,7 @@ Wink ने एक दशक पहले होटलों को ऑनबो
 - उन्हें खर्च प्रबंधन और रिपोर्टिंग एकीकरण की आवश्यकता होती है।
 - उन्हें कंसीयज समर्थन के साथ-साथ कार्यक्रमों में MICE सेवाओं की भी आवश्यकता होती है।
 
-कॉर्पोरेट यात्री हमारे [corporate portal](/hi/portal/corporate/what-is-group) पर अपने खाते स्वयं प्रबंधित कर सकते हैं या हमारे आधिकारिक समर्थित [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) प्लगइन और [Concur](https://www.concur.com/) एकीकरण का उपयोग कर सकते हैं।
+कॉर्पोरेट यात्री हमारे corporate portal पर अपने खाते स्वयं प्रबंधित कर सकते हैं या हमारे आधिकारिक समर्थित [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) प्लगइन और [Concur](https://www.concur.com/) एकीकरण का उपयोग कर सकते हैं।
 
 ## डेवलपर्स
 

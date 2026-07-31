@@ -50,7 +50,7 @@ Podjetja zahtevajo več od potovalne platforme:
 - Potrebujejo upravljanje stroškov in integracijo poročanja.
 - Potrebujejo podporo concierge, kot tudi MICE storitve na dogodkih.
 
-Poslovni potniki lahko upravljajo svoje račune na našem [korporativnem portalu](/sl/portal/corporate/what-is-group) ali uporabljajo naš uradno podprt [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) vtičnik in integracijo [Concur](https://www.concur.com/).
+Poslovni potniki lahko upravljajo svoje račune na našem korporativnem portalu ali uporabljajo naš uradno podprt [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) vtičnik in integracijo [Concur](https://www.concur.com/).
 
 ## Razvijalci
 

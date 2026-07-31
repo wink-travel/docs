@@ -118,7 +118,7 @@ Nič se ne pokvari in ničesar ne zaračunamo. Preprosto ostanete pri brezplačn
 | Začasno onemogočeno | Račun ni bil poravnan do konca. Plačljive funkcije so blokirane, brezplačne pa delujejo normalno. |
 
 :::tip[Aktualne cene]
-Enote cen in brezplačne kvote so vedno prikazane v Portalu, neposredno iz našega obračunskega sistema, tako da jih lahko preverite pred uporabo. Oglejte si [Billing](/sl/portal/plan) za omogočanje plačila po porabi, izbiro računov in spremljanje porabe ter računov v tekočem mesecu. Oglejte si [Social](/sl/portal/social/what-is-social) za vpliv obsega objav na vaše stroške.
+Enote cen in brezplačne kvote so vedno prikazane v Portalu, neposredno iz našega obračunskega sistema, tako da jih lahko preverite pred uporabo. Oglejte si [Billing](/sl/account/subscription) za omogočanje plačila po porabi, izbiro računov in spremljanje porabe ter računov v tekočem mesecu. Oglejte si [Social](/sl/portal/social/what-is-social) za vpliv obsega objav na vaše stroške.
 :::
 
 ## Učinek platforme

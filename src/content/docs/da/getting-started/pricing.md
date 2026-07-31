@@ -118,7 +118,7 @@ Intet går i stykker, og intet bliver opkrævet. Du stopper blot ved den gratis 
 | Suspenderet | En faktura er ikke betalt til tiden. Fakturerbare handlinger blokeres, indtil den er betalt; gratis funktioner fortsætter som normalt. |
 
 :::tip[Live-priser]
-Enhedspriser og gratis kvoter vises altid i Portal, direkte fra vores faktureringssystem, så du kan tjekke dem, før du binder dig til noget. Se [Fakturering](/da/portal/plan) for at aktivere pay-as-you-go, vælge dine konti og følge måned-til-dato forbrug og fakturaer. Se [Social](/da/portal/social/what-is-social) for hvordan opslagvolumen påvirker dit forbrug.
+Enhedspriser og gratis kvoter vises altid i Portal, direkte fra vores faktureringssystem, så du kan tjekke dem, før du binder dig til noget. Se [Fakturering](/da/account/subscription) for at aktivere pay-as-you-go, vælge dine konti og følge måned-til-dato forbrug og fakturaer. Se [Social](/da/portal/social/what-is-social) for hvordan opslagvolumen påvirker dit forbrug.
 :::
 
 ## Platformeffekt

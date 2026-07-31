@@ -118,7 +118,7 @@ No es trenca res i no es cobra res. Simplement t'atures a la franquícia gratuï
 | Suspès | Una factura no s'ha pagat fins al final. Les accions facturables estan bloquejades fins que es resolgui; les funcions gratuïtes continuen com sempre. |
 
 :::tip[Preus en viu]
-Els preus per unitat i les franquícies gratuïtes es mostren sempre al Portal, directament des del nostre sistema de facturació, perquè puguis comprovar-los abans de comprometre't. Consulta [Facturació](/ca/portal/plan) per activar el pay-as-you-go, triar els teus comptes i fer el seguiment de l'ús i les factures del mes. Consulta [Social](/ca/portal/social/what-is-social) per saber com el volum de publicacions afecta la despesa.
+Els preus per unitat i les franquícies gratuïtes es mostren sempre al Portal, directament des del nostre sistema de facturació, perquè puguis comprovar-los abans de comprometre't. Consulta [Facturació](/ca/account/subscription) per activar el pay-as-you-go, triar els teus comptes i fer el seguiment de l'ús i les factures del mes. Consulta [Social](/ca/portal/social/what-is-social) per saber com el volum de publicacions afecta la despesa.
 :::
 
 ## Efecte de la plataforma

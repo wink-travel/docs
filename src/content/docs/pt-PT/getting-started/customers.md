@@ -50,7 +50,7 @@ As empresas exigem mais de uma plataforma de viagens:
 - Precisam de gestão de despesas e integração de relatórios.
 - Necessitam de suporte de concierge, bem como serviços MICE em eventos.
 
-Os viajantes corporativos podem gerir as suas próprias contas no nosso [portal corporativo](/pt-PT/portal/corporate/what-is-group) ou usar o nosso plugin oficialmente suportado [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) e a integração [Concur](https://www.concur.com/).
+Os viajantes corporativos podem gerir as suas próprias contas no nosso portal corporativo ou usar o nosso plugin oficialmente suportado [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) e a integração [Concur](https://www.concur.com/).
 
 ## Desenvolvedores
 

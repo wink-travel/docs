@@ -118,7 +118,7 @@ Nic się nie psuje i nic nie jest naliczane. Po prostu zatrzymujesz się na darm
 | Zawieszone | Faktura nie została opłacona do końca. Akcje płatne są zablokowane do momentu uregulowania; funkcje darmowe działają normalnie. |
 
 :::tip[Ceny na żywo]
-Ceny jednostkowe i darmowe limity są zawsze widoczne w Portalu, bezpośrednio z naszego systemu rozliczeniowego, więc możesz je sprawdzić przed podjęciem decyzji. Zobacz [Billing](/pl/portal/plan), aby włączyć pay-as-you-go, wybrać konta i śledzić zużycie oraz faktury w danym miesiącu. Zobacz [Social](/pl/portal/social/what-is-social), jak ilość postów wpływa na Twoje wydatki.
+Ceny jednostkowe i darmowe limity są zawsze widoczne w Portalu, bezpośrednio z naszego systemu rozliczeniowego, więc możesz je sprawdzić przed podjęciem decyzji. Zobacz [Billing](/pl/account/subscription), aby włączyć pay-as-you-go, wybrać konta i śledzić zużycie oraz faktury w danym miesiącu. Zobacz [Social](/pl/portal/social/what-is-social), jak ilość postów wpływa na Twoje wydatki.
 :::
 
 ## Efekt platformy

@@ -50,7 +50,7 @@ Companiile au nevoie de o platformă de călătorii mai complexă:
 - Au nevoie de gestionarea cheltuielilor și integrare pentru raportare.
 - Au nevoie de suport concierge, precum și servicii MICE la evenimente.
 
-Călătorii corporativi își pot gestiona propriile conturi pe [portalul corporativ](/ro/portal/corporate/what-is-group) sau pot folosi pluginul oficial [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) și integrarea [Concur](https://www.concur.com/).
+Călătorii corporativi își pot gestiona propriile conturi pe portalul corporativ sau pot folosi pluginul oficial [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) și integrarea [Concur](https://www.concur.com/).
 
 ## Dezvoltatori
 

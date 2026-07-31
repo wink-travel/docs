@@ -50,7 +50,7 @@ Korporācijām ir nepieciešama plašāka ceļojumu platforma:
 - Tām nepieciešama izdevumu pārvaldība un atskaišu integrācija.
 - Tām nepieciešama konsjerža atbalsts, kā arī MICE pakalpojumi pasākumos.
 
-Korporatīvie ceļotāji var pārvaldīt savus kontus mūsu [korporatīvajā portālā](/lv/portal/corporate/what-is-group) vai izmantot mūsu oficiāli atbalstīto [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) spraudni un [Concur](https://www.concur.com/) integrāciju.
+Korporatīvie ceļotāji var pārvaldīt savus kontus mūsu korporatīvajā portālā vai izmantot mūsu oficiāli atbalstīto [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) spraudni un [Concur](https://www.concur.com/) integrāciju.
 
 ## Izstrādātāji
 

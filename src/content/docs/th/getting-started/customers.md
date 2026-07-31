@@ -50,7 +50,7 @@ Wink เริ่มรับโรงแรมเข้าระบบเมื
 - ต้องการการจัดการค่าใช้จ่ายและการรวมรายงาน
 - ต้องการการสนับสนุนคอนเซียร์จ รวมถึงบริการ MICE ในงานอีเวนต์
 
-นักเดินทางของบริษัทสามารถจัดการบัญชีของตนเองได้บน [corporate portal](/th/portal/corporate/what-is-group) หรือใช้ปลั๊กอิน [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) และการรวม [Concur](https://www.concur.com/) ที่ได้รับการสนับสนุนอย่างเป็นทางการของเรา
+นักเดินทางของบริษัทสามารถจัดการบัญชีของตนเองได้บน corporate portal หรือใช้ปลั๊กอิน [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) และการรวม [Concur](https://www.concur.com/) ที่ได้รับการสนับสนุนอย่างเป็นทางการของเรา
 
 ## นักพัฒนา
 

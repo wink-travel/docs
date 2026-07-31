@@ -118,7 +118,7 @@ Nekas netiks pārtraukts un nekas netiks iekasēts. Jūs vienkārši apstāsieti
 | Apturēts | Rēķins netika apmaksāts līdz galam. Maksājamas darbības ir bloķētas, līdz tas tiek nokārtots; bezmaksas funkcijas turpina darboties kā parasti. |
 
 :::tip[Tiešsaistes cenas]
-Vienības cenas un bezmaksas limiti vienmēr tiek rādīti Portalā, tieši no mūsu norēķinu sistēmas, lai jūs varētu tās pārbaudīt pirms saistību uzņemšanās. Skatiet [Billing](/lv/portal/plan), lai ieslēgtu maksājumu pēc patēriņa, izvēlētos savus kontus un sekotu līdzi mēneša patēriņam un rēķiniem. Skatiet [Social](/lv/portal/social/what-is-social), lai uzzinātu, kā ierakstu apjoms ietekmē jūsu izdevumus.
+Vienības cenas un bezmaksas limiti vienmēr tiek rādīti Portalā, tieši no mūsu norēķinu sistēmas, lai jūs varētu tās pārbaudīt pirms saistību uzņemšanās. Skatiet [Billing](/lv/account/subscription), lai ieslēgtu maksājumu pēc patēriņa, izvēlētos savus kontus un sekotu līdzi mēneša patēriņam un rēķiniem. Skatiet [Social](/lv/portal/social/what-is-social), lai uzzinātu, kā ierakstu apjoms ietekmē jūsu izdevumus.
 :::
 
 ## Platformas ietekme

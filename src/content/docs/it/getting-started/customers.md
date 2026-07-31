@@ -50,7 +50,7 @@ Le aziende richiedono una piattaforma di viaggio più articolata:
 - Richiedono integrazione per la gestione delle spese e reportistica.
 - Hanno bisogno di supporto concierge e servizi MICE per eventi.
 
-I viaggiatori aziendali possono gestire i propri account sul nostro [portale aziendale](/it/portal/corporate/what-is-group) o utilizzare il nostro plugin ufficiale [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) e l’integrazione con [Concur](https://www.concur.com/).
+I viaggiatori aziendali possono gestire i propri account sul nostro portale aziendale o utilizzare il nostro plugin ufficiale [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) e l’integrazione con [Concur](https://www.concur.com/).
 
 ## Sviluppatori
 

@@ -118,7 +118,7 @@ Nada se rompe y no se cobra nada. Simplemente te quedás en la asignación gratu
 | Suspendido | Una factura quedó impaga hasta el final. Las acciones facturables están bloqueadas hasta que se pague; las funciones gratuitas continúan normalmente. |
 
 :::tip[Precios en vivo]
-Los precios unitarios y las asignaciones gratuitas siempre se muestran en el Portal, directamente desde nuestro sistema de facturación, para que puedas consultarlos antes de comprometerte. Ve [Facturación](/es-AR/portal/plan) para habilitar el pago por consumo, elegir tus cuentas y seguir el uso y las facturas del mes. Ve [Social](/es-AR/portal/social/what-is-social) para entender cómo el volumen de publicaciones afecta lo que gastás.
+Los precios unitarios y las asignaciones gratuitas siempre se muestran en el Portal, directamente desde nuestro sistema de facturación, para que puedas consultarlos antes de comprometerte. Ve [Facturación](/es-AR/account/subscription) para habilitar el pago por consumo, elegir tus cuentas y seguir el uso y las facturas del mes. Ve [Social](/es-AR/portal/social/what-is-social) para entender cómo el volumen de publicaciones afecta lo que gastás.
 :::
 
 ## Efecto de la plataforma

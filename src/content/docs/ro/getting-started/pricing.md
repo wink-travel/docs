@@ -118,7 +118,7 @@ Nimic nu se strică și nimic nu este taxat. Pur și simplu vă opriți la aloca
 | Suspendat | O factură a rămas neachitată până la final. Acțiunile facturabile sunt blocate până la plata acesteia; funcțiile gratuite continuă normal. |
 
 :::tip[Prețuri live]
-Prețurile unitare și alocațiile gratuite sunt afișate întotdeauna în Portal, direct din sistemul nostru de facturare, astfel încât să le puteți verifica înainte de a vă angaja. Consultați [Facturare](/ro/portal/plan) pentru a activa pay-as-you-go, a alege conturile și a urmări utilizarea și facturile lunare. Consultați [Social](/ro/portal/social/what-is-social) pentru cum volumul postărilor influențează cheltuielile.
+Prețurile unitare și alocațiile gratuite sunt afișate întotdeauna în Portal, direct din sistemul nostru de facturare, astfel încât să le puteți verifica înainte de a vă angaja. Consultați [Facturare](/ro/account/subscription) pentru a activa pay-as-you-go, a alege conturile și a urmări utilizarea și facturile lunare. Consultați [Social](/ro/portal/social/what-is-social) pentru cum volumul postărilor influențează cheltuielile.
 :::
 
 ## Efectul platformei

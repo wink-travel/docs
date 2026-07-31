@@ -5,13 +5,13 @@ sidebar:
   order: 4
 ---
 
-Per gestionar la configuració de WinkLinks, ves a `WinkLinks` a la barra de navegació principal i fes clic a la pestanya `Configuració`.
+Per gestionar la configuració de WinkLinks, ves a `WinkLinks` a la barra de navegació principal i fes clic a la pestanya `Disseny`.
 
-Aquí tens les maneres de configurar el comportament de WinkLinks amb `Configuració`:
+Aquí tens les maneres de configurar el comportament de WinkLinks amb `Disseny`:
 
-- **Intel·ligent** Activant la intel·ligència, intentem recuperar el contingut `ric` disponible de llocs com `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (anteriorment Twitter)` i altres. *Per exemple, si comparteixes una publicació d’IG a WinkLinks, la publicació es mostrarà tal com la veus a IG, amb m'agrada, comentaris i una manera d’interactuar amb la publicació.*
-- **Visualització inicial** Controla com el teu públic interactua primer amb el teu lloc i veu el teu contingut. Tens tres opcions disponibles:
-    - Disseny `basat en columnes`. Aquest és el nostre disseny preferit i si no mostres massa contingut, quedarà molt bé a la teva pàgina. Tot i això, pot resultar `pesat` si comparteixes molt contingut ric.
+- **Intel·ligent** Activant la intel·ligència, intentem recuperar el contingut `ric` disponible de llocs com `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (abans Twitter)` i altres. *Per exemple, si comparteixes una publicació d’IG a WinkLinks, la publicació es mostrarà tal com la veus a IG, amb likes, comentaris i una manera d’interactuar amb la publicació.*
+- **Visualització inicial** Controla com el teu públic interactua per primera vegada amb el teu lloc i veu el teu contingut. Tens tres opcions disponibles:
+    - Disseny `basat en columnes`. Aquest és el nostre disseny preferit i si no mostres massa contingut, quedarà genial a la teva pàgina. Tot i això, pot ser `pesat` si comparteixes molt contingut ric.
     - Disseny `basat en files`. Aquesta és una manera de fer que el teu contingut sigui una mica menys pesat per als navegadors, però recomanem que el teu contingut tingui una quantitat similar de text per fer que les targetes s’alineïn millor.
     - Disseny `basat en llista`. La majoria d’altres gestors d’enllaços mostren una llista simple amb una URL i contingut mínim. Tria aquesta manera de mostrar el teu contingut si tens molt contingut i vols mostrar-lo tan ràpidament com sigui possible.
 - **Foto de perfil** A la part superior de cada pàgina de WinkLinks hi ha la foto de perfil del teu compte juntament amb la descripció del compte. Pots mostrar la foto de perfil de dues maneres:
@@ -30,6 +30,6 @@ Controls addicionals inclouen:
 
 Els desenvolupadors que vulguin gestionar `WinkLinks` poden anar a [Developers > API > WinkLinks](/ca/api).
 
-## Lectures addicionals
+## Més informació
 
 - Llegeix més sobre [Personalitzacions](/ca/portal/settings/branding).

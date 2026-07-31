@@ -50,7 +50,7 @@ Mas marami ang kailangan ng mga korporasyon mula sa isang travel platform:
 - Nangangailangan sila ng expense management at reporting integration.
 - Kailangan nila ng concierge support, pati na rin ng MICE services sa mga event.
 
-Maaaring pamahalaan ng mga corporate traveler ang kanilang sariling mga account sa aming [corporate portal](/tl/portal/corporate/what-is-group) o gamitin ang aming opisyal na suportadong [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin at [Concur](https://www.concur.com/) integration.
+Maaaring pamahalaan ng mga corporate traveler ang kanilang sariling mga account sa aming corporate portal o gamitin ang aming opisyal na suportadong [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin at [Concur](https://www.concur.com/) integration.
 
 ## Mga Developer
 

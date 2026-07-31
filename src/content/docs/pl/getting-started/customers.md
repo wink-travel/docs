@@ -50,7 +50,7 @@ Korporacje wymagają bardziej rozbudowanej platformy podróżniczej:
 - Potrzebują zarządzania wydatkami i integracji raportowania.
 - Potrzebują wsparcia konsjerża oraz usług MICE podczas wydarzeń.
 
-Podróżujący służbowo mogą zarządzać swoimi kontami na naszym [portalu korporacyjnym](/pl/portal/corporate/what-is-group) lub korzystać z oficjalnie wspieranego wtyczki [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) oraz integracji z [Concur](https://www.concur.com/).
+Podróżujący służbowo mogą zarządzać swoimi kontami na naszym portalu korporacyjnym lub korzystać z oficjalnie wspieranego wtyczki [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) oraz integracji z [Concur](https://www.concur.com/).
 
 ## Deweloperzy
 

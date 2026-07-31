@@ -50,7 +50,7 @@ Korporacije zahtijevaju više od same putničke platforme:
 - Potrebno im je upravljanje troškovima i integracija izvještavanja.
 - Trebaju podršku concierge usluge, kao i MICE usluge na događajima.
 
-Korporativni putnici mogu upravljati vlastitim računima na našem [korporativnom portalu](/hr/portal/corporate/what-is-group) ili koristiti naš službeno podržani [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dodatak i [Concur](https://www.concur.com/) integraciju.
+Korporativni putnici mogu upravljati vlastitim računima na našem korporativnom portalu ili koristiti naš službeno podržani [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dodatak i [Concur](https://www.concur.com/) integraciju.
 
 ## Programeri
 

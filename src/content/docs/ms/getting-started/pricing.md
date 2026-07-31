@@ -118,7 +118,7 @@ Tiada apa yang rosak dan tiada bayaran dikenakan. Anda hanya berhenti pada elaun
 | Digantung | Invois tidak dibayar sehingga tamat tempoh. Tindakan yang dikenakan bayaran disekat sehingga ia diselesaikan; ciri percuma terus berfungsi seperti biasa. |
 
 :::tip[Harga langsung]
-Harga unit dan elaun percuma sentiasa dipaparkan dalam Portal, terus dari sistem pengebilan kami, supaya anda boleh menyemaknya sebelum membuat komitmen. Lihat [Pengebilan](/ms/portal/plan) untuk mengaktifkan bayar-semasa, pilih akaun anda, dan jejak penggunaan serta invois bulan ini. Lihat [Sosial](/ms/portal/social/what-is-social) untuk bagaimana jumlah catatan mempengaruhi perbelanjaan anda.
+Harga unit dan elaun percuma sentiasa dipaparkan dalam Portal, terus dari sistem pengebilan kami, supaya anda boleh menyemaknya sebelum membuat komitmen. Lihat [Pengebilan](/ms/account/subscription) untuk mengaktifkan bayar-semasa, pilih akaun anda, dan jejak penggunaan serta invois bulan ini. Lihat [Sosial](/ms/portal/social/what-is-social) untuk bagaimana jumlah catatan mempengaruhi perbelanjaan anda.
 :::
 
 ## Kesan platform

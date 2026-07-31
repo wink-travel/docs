@@ -50,7 +50,7 @@ Yritykset tarvitsevat enemmän matkailualustan ominaisuuksia:
 - He tarvitsevat kulujen hallinnan ja raportointiin integroitumisen.
 - He tarvitsevat concierge-palvelua sekä MICE-palveluita tapahtumissa.
 
-Yritysmatkustajat voivat hallita omia tilejään meidän [yritysportaalissamme](/fi/portal/corporate/what-is-group) tai käyttää virallisesti tuettua [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) -lisäosaa ja [Concur](https://www.concur.com/) -integraatiota.
+Yritysmatkustajat voivat hallita omia tilejään meidän yritysportaalissamme tai käyttää virallisesti tuettua [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) -lisäosaa ja [Concur](https://www.concur.com/) -integraatiota.
 
 ## Kehittäjät
 

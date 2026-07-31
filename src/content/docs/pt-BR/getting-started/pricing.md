@@ -118,7 +118,7 @@ Nada quebra e nada é cobrado. Você simplesmente para na cota gratuita daquele 
 | Suspenso | Uma fatura ficou sem pagamento até o final. Ações cobradas são bloqueadas até o pagamento; recursos gratuitos continuam normalmente. |
 
 :::tip[Preços ao vivo]
-Os preços unitários e cotas gratuitas são sempre exibidos no Portal, diretamente do nosso sistema de faturamento, para que você possa consultá-los antes de se comprometer. Veja [Faturamento](/pt-BR/portal/plan) para ativar o pay-as-you-go, escolher suas contas e acompanhar o uso e as faturas do mês. Veja [Social](/pt-BR/portal/social/what-is-social) para entender como o volume de publicações afeta seus gastos.
+Os preços unitários e cotas gratuitas são sempre exibidos no Portal, diretamente do nosso sistema de faturamento, para que você possa consultá-los antes de se comprometer. Veja [Faturamento](/pt-BR/account/subscription) para ativar o pay-as-you-go, escolher suas contas e acompanhar o uso e as faturas do mês. Veja [Social](/pt-BR/portal/social/what-is-social) para entender como o volume de publicações afeta seus gastos.
 :::
 
 ## Efeito da plataforma

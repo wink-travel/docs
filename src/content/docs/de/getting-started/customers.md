@@ -50,7 +50,7 @@ Unternehmen benötigen mehr von einer Reiseplattform:
 - Sie benötigen Ausgabenmanagement und Reporting-Integration.
 - Sie brauchen Concierge-Support sowie MICE-Dienstleistungen bei Veranstaltungen.
 
-Geschäftsreisende können ihre eigenen Konten auf unserem [Corporate-Portal](/de/portal/corporate/what-is-group) verwalten oder unser offiziell unterstütztes [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) Plugin und die [Concur](https://www.concur.com/) Integration nutzen.
+Geschäftsreisende können ihre eigenen Konten auf unserem Corporate-Portal verwalten oder unser offiziell unterstütztes [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) Plugin und die [Concur](https://www.concur.com/) Integration nutzen.
 
 ## Entwickler
 

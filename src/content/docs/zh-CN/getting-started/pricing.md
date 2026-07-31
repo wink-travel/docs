@@ -118,7 +118,7 @@ Wink 对每笔预订收取 1.5% 的处理费。此费用用于平台维护，也
 | 暂停 | 发票未支付至截止日期。计费操作被阻止；免费功能正常运行。 |
 
 :::tip[实时价格]
-单价和免费额度始终在 Portal 中显示，直接来自我们的计费系统，方便您在承诺前查看。请参阅 [Billing](/zh-CN/portal/plan) 以启用按使用付费、选择账户并跟踪当月使用及发票。参见 [Social](/zh-CN/portal/social/what-is-social) 了解发布量如何影响费用。
+单价和免费额度始终在 Portal 中显示，直接来自我们的计费系统，方便您在承诺前查看。请参阅 [Billing](/zh-CN/account/subscription) 以启用按使用付费、选择账户并跟踪当月使用及发票。参见 [Social](/zh-CN/portal/social/what-is-social) 了解发布量如何影响费用。
 :::
 
 ## 平台效应

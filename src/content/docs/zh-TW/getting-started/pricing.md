@@ -118,7 +118,7 @@ Wink 對每筆訂單收取 1.5% 的處理費。此費用涵蓋平台維護，讓
 | 暫停 | 發票未付款至截止日。計費行為被封鎖；免費功能照常。 |
 
 :::tip[即時價格]
-單價與免費額度會在 Portal 中即時顯示，直接來自我們的帳單系統，讓您在承諾前可先查詢。請參閱 [Billing](/zh-TW/portal/plan) 以啟用按使用付費、選擇帳戶並追蹤本月使用量與發票。請參閱 [Social](/zh-TW/portal/social/what-is-social) 了解貼文量如何影響花費。
+單價與免費額度會在 Portal 中即時顯示，直接來自我們的帳單系統，讓您在承諾前可先查詢。請參閱 [Billing](/zh-TW/account/subscription) 以啟用按使用付費、選擇帳戶並追蹤本月使用量與發票。請參閱 [Social](/zh-TW/portal/social/what-is-social) 了解貼文量如何影響花費。
 :::
 
 ## 平台效應

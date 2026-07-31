@@ -50,7 +50,7 @@ A vállalatoknak több igényük van egy utazási platformmal szemben:
 - Költségkezelésre és jelentéskészítés integrációra van szükségük.
 - Konzorciumi támogatásra, valamint MICE szolgáltatásokra van szükségük rendezvényeken.
 
-A vállalati utazók saját fiókjaikat kezelhetik a [vállalati portálunkon](/hu/portal/corporate/what-is-group), vagy használhatják hivatalosan támogatott [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) bővítményünket és a [Concur](https://www.concur.com/) integrációt.
+A vállalati utazók saját fiókjaikat kezelhetik a vállalati portálunkon, vagy használhatják hivatalosan támogatott [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) bővítményünket és a [Concur](https://www.concur.com/) integrációt.
 
 ## Fejlesztők
 

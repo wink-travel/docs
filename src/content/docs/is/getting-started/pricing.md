@@ -118,7 +118,7 @@ Ekkert brotnar og ekkert er rukkað. Þú einfaldlega hættir við ókeypis kvó
 | Stoppuð | Reikningur var ekki greiddur til enda. Rukkanlegar aðgerðir eru lokaðar þar til hann er greiddur; ókeypis aðgerðir halda áfram eðlilega. |
 
 :::tip[Lifandi verð]
-Einingaverð og ókeypis kvótar eru alltaf sýndir í Portal, beint úr reikningskerfinu okkar, svo þú getur skoðað þau áður en þú skuldbindur þig. Sjáðu [Billing](/is/portal/plan) til að virkja greiðslu eftir þörfum, velja reikninga og fylgjast með notkun og reikningum mánaðarins. Sjáðu [Social](/is/portal/social/what-is-social) um hvernig póstmagn hefur áhrif á útgjöld.
+Einingaverð og ókeypis kvótar eru alltaf sýndir í Portal, beint úr reikningskerfinu okkar, svo þú getur skoðað þau áður en þú skuldbindur þig. Sjáðu [Billing](/is/account/subscription) til að virkja greiðslu eftir þörfum, velja reikninga og fylgjast með notkun og reikningum mánaðarins. Sjáðu [Social](/is/portal/social/what-is-social) um hvernig póstmagn hefur áhrif á útgjöld.
 :::
 
 ## Áhrif á vettvanginn

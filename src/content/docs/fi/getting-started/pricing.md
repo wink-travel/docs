@@ -118,7 +118,7 @@ Mikään ei mene rikki eikä mitään veloiteta. Pysyt vain ilmaisen kiintiön r
 | Keskeytetty | Laskua ei ole maksettu loppuun asti. Laskutettavat toiminnot estetään, kunnes maksu on suoritettu; ilmaiset ominaisuudet jatkuvat normaalisti. |
 
 :::tip[Reaaliaikaiset hinnat]
-Yksikköhinnat ja ilmaiset kiintiöt näkyvät aina Portaalissa suoraan laskutusjärjestelmästämme, joten voit tarkistaa ne ennen sitoutumista. Katso [Billing](/fi/portal/plan) ottaaksesi pay-as-you-go käyttöön, valitaksesi tilisi ja seurata kuukausittaista käyttöä ja laskuja. Katso [Social](/fi/portal/social/what-is-social) nähdäksesi, miten julkaisumäärä vaikuttaa kulutukseesi.
+Yksikköhinnat ja ilmaiset kiintiöt näkyvät aina Portaalissa suoraan laskutusjärjestelmästämme, joten voit tarkistaa ne ennen sitoutumista. Katso [Billing](/fi/account/subscription) ottaaksesi pay-as-you-go käyttöön, valitaksesi tilisi ja seurata kuukausittaista käyttöä ja laskuja. Katso [Social](/fi/portal/social/what-is-social) nähdäksesi, miten julkaisumäärä vaikuttaa kulutukseesi.
 :::
 
 ## Alustan vaikutus

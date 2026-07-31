@@ -118,7 +118,7 @@ Ingenting brytes og ingenting belastes. Du stopper bare ved den gratis kvoten fo
 | Suspendert | En faktura ble ikke betalt innen fristen. Fakturerbare handlinger blokkeres til den er betalt; gratis funksjoner fortsetter som normalt. |
 
 :::tip[Live priser]
-Enhetspriser og gratis kvoter vises alltid i Portal, direkte fra vårt faktureringssystem, slik at du kan sjekke dem før du binder deg til noe. Se [Billing](/no/portal/plan) for å aktivere pay-as-you-go, velge kontoer og følge måned-til-dato bruk og fakturaer. Se [Social](/no/portal/social/what-is-social) for hvordan postvolum påvirker hva du bruker.
+Enhetspriser og gratis kvoter vises alltid i Portal, direkte fra vårt faktureringssystem, slik at du kan sjekke dem før du binder deg til noe. Se [Billing](/no/account/subscription) for å aktivere pay-as-you-go, velge kontoer og følge måned-til-dato bruk og fakturaer. Se [Social](/no/portal/social/what-is-social) for hvordan postvolum påvirker hva du bruker.
 :::
 
 ## Plattform-effekt

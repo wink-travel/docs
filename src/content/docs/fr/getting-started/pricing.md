@@ -118,7 +118,7 @@ Rien ne se casse et rien n’est facturé. Vous vous arrêtez simplement au quot
 | Suspendu | Une facture est restée impayée jusqu’au bout. Les actions facturables sont bloquées jusqu’au règlement ; les fonctionnalités gratuites continuent normalement. |
 
 :::tip[Tarifs en temps réel]
-Les prix unitaires et les quotas gratuits sont toujours affichés dans le Portal, directement depuis notre système de facturation, pour que vous puissiez les consulter avant de vous engager. Voir [Facturation](/fr/portal/plan) pour activer le pay-as-you-go, choisir vos comptes et suivre l’usage et les factures du mois en cours. Voir [Social](/fr/portal/social/what-is-social) pour comprendre comment le volume de publications impacte vos dépenses.
+Les prix unitaires et les quotas gratuits sont toujours affichés dans le Portal, directement depuis notre système de facturation, pour que vous puissiez les consulter avant de vous engager. Voir [Facturation](/fr/account/subscription) pour activer le pay-as-you-go, choisir vos comptes et suivre l’usage et les factures du mois en cours. Voir [Social](/fr/portal/social/what-is-social) pour comprendre comment le volume de publications impacte vos dépenses.
 :::
 
 ## Effet plateforme

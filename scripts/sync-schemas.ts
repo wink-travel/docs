@@ -16,8 +16,13 @@ import { existsSync, mkdirSync, writeFileSync } from "fs";
 import { resolve, dirname } from "path";
 import { fileURLToPath } from "url";
 
+import { loadEnv } from "./load-env.js";
+
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const SCHEMAS_DIR = resolve(__dirname, "..", "schemas");
+
+// Must run before the WINK_* reads below.
+loadEnv();
 
 // Target environment. Choose with `--env=local|staging|production` (or `WINK_ENV`);
 // defaults to production. Examples:

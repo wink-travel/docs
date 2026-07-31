@@ -50,7 +50,7 @@ Korporat memerlukan lebih daripada platform pelancongan:
 - Mereka memerlukan pengurusan perbelanjaan dan integrasi pelaporan.
 - Mereka memerlukan sokongan concierge, serta perkhidmatan MICE di acara.
 
-Pengembara korporat boleh mengurus akaun mereka sendiri di [portal korporat](/ms/portal/corporate/what-is-group) kami atau menggunakan plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dan integrasi [Concur](https://www.concur.com/) yang disokong secara rasmi.
+Pengembara korporat boleh mengurus akaun mereka sendiri di portal korporat kami atau menggunakan plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dan integrasi [Concur](https://www.concur.com/) yang disokong secara rasmi.
 
 ## Pembangun
 

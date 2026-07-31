@@ -50,7 +50,7 @@ Företag kräver mer av en reseplattform:
 - De kräver utgiftshantering och rapporteringsintegration.
 - De behöver concierge-stöd samt MICE-tjänster vid evenemang.
 
-Företagsresenärer kan hantera sina egna konton på vår [företagsportal](/sv/portal/corporate/what-is-group) eller använda vår officiellt stödda [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)-plugin och [Concur](https://www.concur.com/) integration.
+Företagsresenärer kan hantera sina egna konton på vår företagsportal eller använda vår officiellt stödda [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)-plugin och [Concur](https://www.concur.com/) integration.
 
 ## Utvecklare
 

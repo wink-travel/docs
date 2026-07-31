@@ -118,7 +118,7 @@ Nič sa nezlomí a nič sa neúčtuje. Jednoducho sa zastavíte na bezplatnej kv
 | Pozastavené | Faktúra zostala nezaplatená do konca. Účtovateľné akcie sú zablokované, bezplatné funkcie pokračujú normálne. |
 
 :::tip[Živé ceny]
-Jednotkové ceny a bezplatné kvóty sú vždy zobrazené v Portáli, priamo z nášho fakturačného systému, takže si ich môžete skontrolovať predtým, než sa zaviažete. Pozrite si [Fakturácia](/sk/portal/plan) pre zapnutie pay-as-you-go, výber účtov a sledovanie mesačného používania a faktúr. Pozrite si [Sociálne](/sk/portal/social/what-is-social) pre informácie o tom, ako objem príspevkov ovplyvňuje vaše výdavky.
+Jednotkové ceny a bezplatné kvóty sú vždy zobrazené v Portáli, priamo z nášho fakturačného systému, takže si ich môžete skontrolovať predtým, než sa zaviažete. Pozrite si [Fakturácia](/sk/account/subscription) pre zapnutie pay-as-you-go, výber účtov a sledovanie mesačného používania a faktúr. Pozrite si [Sociálne](/sk/portal/social/what-is-social) pre informácie o tom, ako objem príspevkov ovplyvňuje vaše výdavky.
 :::
 
 ## Efekt platformy

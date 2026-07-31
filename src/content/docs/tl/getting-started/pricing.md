@@ -118,7 +118,7 @@ Walang masisira at walang sisingilin. Titigil ka lang sa libreng alok para sa bu
 | Suspended | Hindi nabayaran ang invoice hanggang sa katapusan. Nakaharang ang mga billable na aksyon hanggang mabayaran ito; ang mga libreng tampok ay nagpapatuloy nang normal. |
 
 :::tip[Live prices]
-Ang mga unit price at libreng alok ay palaging ipinapakita sa Portal, direkta mula sa aming billing system, kaya maaari mong suriin bago ka mag-commit. Tingnan ang [Billing](/tl/portal/plan) para i-enable ang pay-as-you-go, piliin ang iyong mga account, at subaybayan ang paggamit at mga invoice sa buwan. Tingnan ang [Social](/tl/portal/social/what-is-social) para sa kung paano naaapektuhan ng dami ng post ang iyong gastos.
+Ang mga unit price at libreng alok ay palaging ipinapakita sa Portal, direkta mula sa aming billing system, kaya maaari mong suriin bago ka mag-commit. Tingnan ang [Billing](/tl/account/subscription) para i-enable ang pay-as-you-go, piliin ang iyong mga account, at subaybayan ang paggamit at mga invoice sa buwan. Tingnan ang [Social](/tl/portal/social/what-is-social) para sa kung paano naaapektuhan ng dami ng post ang iyong gastos.
 :::
 
 ## Epekto ng platform

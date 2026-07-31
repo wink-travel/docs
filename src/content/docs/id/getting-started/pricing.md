@@ -118,7 +118,7 @@ Tidak ada yang rusak dan tidak ada biaya yang dikenakan. Anda hanya berhenti pad
 | Ditangguhkan | Faktur tidak dibayar sampai akhir. Tindakan yang dikenakan biaya diblokir sampai diselesaikan; fitur gratis tetap berjalan normal. |
 
 :::tip[Harga langsung]
-Harga satuan dan kuota gratis selalu ditampilkan di Portal, langsung dari sistem penagihan kami, sehingga Anda dapat memeriksanya sebelum berkomitmen. Lihat [Penagihan](/id/portal/plan) untuk mengaktifkan pay-as-you-go, memilih akun Anda, dan melacak penggunaan serta faktur bulan berjalan. Lihat [Sosial](/id/portal/social/what-is-social) untuk bagaimana volume posting memengaruhi pengeluaran Anda.
+Harga satuan dan kuota gratis selalu ditampilkan di Portal, langsung dari sistem penagihan kami, sehingga Anda dapat memeriksanya sebelum berkomitmen. Lihat [Penagihan](/id/account/subscription) untuk mengaktifkan pay-as-you-go, memilih akun Anda, dan melacak penggunaan serta faktur bulan berjalan. Lihat [Sosial](/id/portal/social/what-is-social) untuk bagaimana volume posting memengaruhi pengeluaran Anda.
 :::
 
 ## Efek platform

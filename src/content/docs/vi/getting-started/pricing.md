@@ -118,7 +118,7 @@ Không có gì bị gián đoạn và không bị tính phí. Bạn chỉ dừng
 | Tạm ngưng | Hóa đơn không được thanh toán đến hạn cuối. Các hành động tính phí bị chặn cho đến khi thanh toán; các tính năng miễn phí vẫn hoạt động bình thường. |
 
 :::tip[Giá trực tiếp]
-Giá đơn vị và hạn mức miễn phí luôn được hiển thị trong Portal, trực tiếp từ hệ thống thanh toán của chúng tôi, để bạn có thể kiểm tra trước khi cam kết. Xem [Billing](/vi/portal/plan) để bật trả theo mức tiêu thụ, chọn tài khoản và theo dõi sử dụng và hóa đơn trong tháng. Xem [Social](/vi/portal/social/what-is-social) để biết cách khối lượng bài đăng ảnh hưởng đến chi phí của bạn.
+Giá đơn vị và hạn mức miễn phí luôn được hiển thị trong Portal, trực tiếp từ hệ thống thanh toán của chúng tôi, để bạn có thể kiểm tra trước khi cam kết. Xem [Billing](/vi/account/subscription) để bật trả theo mức tiêu thụ, chọn tài khoản và theo dõi sử dụng và hóa đơn trong tháng. Xem [Social](/vi/portal/social/what-is-social) để biết cách khối lượng bài đăng ảnh hưởng đến chi phí của bạn.
 :::
 
 ## Tác động của nền tảng

@@ -50,7 +50,7 @@ Kurumsal şirketler seyahat platformundan daha fazlasını ister:
 - Gider yönetimi ve raporlama entegrasyonu isterler.
 - Konsiyerj desteği ve etkinliklerde MICE hizmetlerine ihtiyaç duyarlar.
 
-Kurumsal seyahatçiler, kendi hesaplarını [kurumsal portalımızda](/tr/portal/corporate/what-is-group) yönetebilir veya resmi desteklenen [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) eklentisi ve [Concur](https://www.concur.com/) entegrasyonunu kullanabilirler.
+Kurumsal seyahatçiler, kendi hesaplarını kurumsal portalımızda yönetebilir veya resmi desteklenen [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) eklentisi ve [Concur](https://www.concur.com/) entegrasyonunu kullanabilirler.
 
 ## Geliştiriciler
 

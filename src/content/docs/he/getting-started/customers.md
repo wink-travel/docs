@@ -50,7 +50,7 @@ Wink החלה באינטגרציה עם בתי מלון לפני עשור. בת�
 - הם דורשים ניהול הוצאות ואינטגרציית דוחות.
 - הם זקוקים לתמיכת קונסיירז', וכן לשירותי MICE באירועים.
 
-נוסעים תאגידיים יכולים לנהל את החשבונות שלהם דרך [פורטל תאגידי](/he/portal/corporate/what-is-group) או להשתמש בתוסף [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) הנתמך רשמית ובאינטגרציית [Concur](https://www.concur.com/).
+נוסעים תאגידיים יכולים לנהל את החשבונות שלהם דרך פורטל תאגידי או להשתמש בתוסף [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) הנתמך רשמית ובאינטגרציית [Concur](https://www.concur.com/).
 
 ## מפתחים
 

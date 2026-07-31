@@ -118,7 +118,7 @@ Hiçbir şey bozulmaz ve ücretlendirme olmaz. O ay için sadece ücretsiz kulla
 | Askıya alınmış | Bir fatura tamamen ödenmedi. Ücretli işlemler fatura ödenene kadar engellenir; ücretsiz özellikler normal devam eder. |
 
 :::tip[Canlı fiyatlar]
-Birim fiyatlar ve ücretsiz kullanım hakları Portal'da her zaman faturalandırma sistemimizden doğrudan gösterilir, böylece taahhütte bulunmadan önce kontrol edebilirsiniz. Kullandıkça ödeyi etkinleştirmek, hesaplarınızı seçmek ve ay içi kullanım ile faturaları takip etmek için [Faturalandırma](/tr/portal/plan) sayfasına bakın. Paylaşım hacminin harcamalarınızı nasıl etkilediğini görmek için [Sosyal](/tr/portal/social/what-is-social) sayfasını inceleyin.
+Birim fiyatlar ve ücretsiz kullanım hakları Portal'da her zaman faturalandırma sistemimizden doğrudan gösterilir, böylece taahhütte bulunmadan önce kontrol edebilirsiniz. Kullandıkça ödeyi etkinleştirmek, hesaplarınızı seçmek ve ay içi kullanım ile faturaları takip etmek için [Faturalandırma](/tr/account/subscription) sayfasına bakın. Paylaşım hacminin harcamalarınızı nasıl etkilediğini görmek için [Sosyal](/tr/portal/social/what-is-social) sayfasını inceleyin.
 :::
 
 ## Platform etkisi

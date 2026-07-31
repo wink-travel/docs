@@ -50,7 +50,7 @@ Korporace vyžadují od cestovní platformy více:
 - Vyžadují správu výdajů a integraci reportingu.
 - Potřebují concierge podporu i MICE služby na akcích.
 
-Korporátní cestovatelé mohou spravovat své účty na našem [korporátním portálu](/cs/portal/corporate/what-is-group) nebo využívat oficiálně podporovaný [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin a integraci [Concur](https://www.concur.com/).
+Korporátní cestovatelé mohou spravovat své účty na našem korporátním portálu nebo využívat oficiálně podporovaný [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin a integraci [Concur](https://www.concur.com/).
 
 ## Vývojáři
 

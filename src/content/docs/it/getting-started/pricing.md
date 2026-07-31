@@ -118,7 +118,7 @@ Niente si interrompe e niente viene addebitato. Ti fermi semplicemente alla quot
 | Sospeso | Una fattura è rimasta non pagata fino alla fine. Le azioni fatturabili sono bloccate finché non viene saldata; le funzionalità gratuite continuano normalmente. |
 
 :::tip[Prezzi in tempo reale]
-I prezzi unitari e le quote gratuite sono sempre mostrati nel Portale, direttamente dal nostro sistema di fatturazione, così puoi verificarli prima di impegnarti. Vedi [Fatturazione](/it/portal/plan) per abilitare il pay-as-you-go, scegliere i tuoi account e monitorare l’utilizzo e le fatture del mese in corso. Vedi [Social](/it/portal/social/what-is-social) per capire come il volume dei post influisce sulla spesa.
+I prezzi unitari e le quote gratuite sono sempre mostrati nel Portale, direttamente dal nostro sistema di fatturazione, così puoi verificarli prima di impegnarti. Vedi [Fatturazione](/it/account/subscription) per abilitare il pay-as-you-go, scegliere i tuoi account e monitorare l’utilizzo e le fatture del mese in corso. Vedi [Social](/it/portal/social/what-is-social) per capire come il volume dei post influisce sulla spesa.
 :::
 
 ## Effetto piattaforma

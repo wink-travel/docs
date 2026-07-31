@@ -50,7 +50,7 @@ Wink 十年前開始為飯店提供上架服務。飯店使用 Wink 有效管理
 - 需要費用管理與報告整合。
 - 需要禮賓支援及會議、獎勵旅遊、會展（MICE）服務。
 
-企業旅客可在我們的 [企業入口網站](/zh-TW/portal/corporate/what-is-group) 自行管理帳戶，或使用我們官方支援的 [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) 外掛與 [Concur](https://www.concur.com/) 整合。
+企業旅客可在我們的 企業入口網站 自行管理帳戶，或使用我們官方支援的 [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) 外掛與 [Concur](https://www.concur.com/) 整合。
 
 ## 開發者
 

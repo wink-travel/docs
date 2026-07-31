@@ -50,7 +50,7 @@ Corporations require more of a travel platform:
 - The require expense management and reporting integration.
 - They need concierge support, as well as, MICE services at events.
 
-Corporate travelers can manage their own accounts on our [corporate portal](/portal/corporate/what-is-group) or use our officially supported [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin and [Concur](https://www.concur.com/) integration.
+Corporate travelers can manage their own accounts on our corporate portal or use our officially supported [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin and [Concur](https://www.concur.com/) integration.
 
 ## Developers
 

@@ -118,7 +118,7 @@ Midagi ei katke ja midagi ei arveldata. Sa lihtsalt peatud selle kuu tasuta limi
 | Peatatud | Arve jäi tasumata lõpuni. Arveldatavad toimingud on blokeeritud kuni tasumiseni; tasuta funktsioonid töötavad tavapäraselt edasi. |
 
 :::tip[Reaalajas hinnad]
-Ühiku hinnad ja tasuta limiidid on alati näha Portaalis, otse meie arveldussüsteemist, nii et saad neid enne kohustuse võtmist kontrollida. Vaata [Arveldamine](/et/portal/plan), et lubada kasutuspõhine tasustamine, valida kontod ja jälgida kuu jooksul tehtud kasutust ja arveid. Vaata [Sotsiaalmeedia](/et/portal/social/what-is-social), kuidas postituste maht mõjutab kulutusi.
+Ühiku hinnad ja tasuta limiidid on alati näha Portaalis, otse meie arveldussüsteemist, nii et saad neid enne kohustuse võtmist kontrollida. Vaata [Arveldamine](/et/account/subscription), et lubada kasutuspõhine tasustamine, valida kontod ja jälgida kuu jooksul tehtud kasutust ja arveid. Vaata [Sotsiaalmeedia](/et/portal/social/what-is-social), kuidas postituste maht mõjutab kulutusi.
 :::
 
 ## Platvormi mõju

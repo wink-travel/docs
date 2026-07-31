@@ -50,7 +50,7 @@ Perusahaan membutuhkan lebih dari sekadar platform perjalanan:
 - Mereka membutuhkan manajemen pengeluaran dan integrasi pelaporan.
 - Mereka memerlukan dukungan concierge, serta layanan MICE di acara.
 
-Pelancong korporat dapat mengelola akun mereka sendiri di [portal korporat](/id/portal/corporate/what-is-group) kami atau menggunakan plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dan integrasi [Concur](https://www.concur.com/) yang didukung resmi.
+Pelancong korporat dapat mengelola akun mereka sendiri di portal korporat kami atau menggunakan plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) dan integrasi [Concur](https://www.concur.com/) yang didukung resmi.
 
 ## Pengembang
 

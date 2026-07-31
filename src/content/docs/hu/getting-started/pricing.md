@@ -118,7 +118,7 @@ Semmi nem törik el, és semmiért nem számítunk fel díjat. Egyszerűen megá
 | Felfüggesztve | Egy számla véglegesen kifizetetlen maradt. A fizetős műveletek blokkolva vannak, amíg rendezve nem lesz; az ingyenes funkciók tovább működnek. |
 
 :::tip[Élő árak]
-Az egységárak és az ingyenes keretek mindig megjelennek a Portálon, közvetlenül a számlázási rendszerünkből, így ellenőrizheted őket, mielőtt elköteleznéd magad. Lásd a [Számlázás](/hu/portal/plan) részt a használatarányos díjazás engedélyezéséhez, fiókok kiválasztásához és a hónapközi használat és számlák nyomon követéséhez. Lásd a [Közösségi](/hu/portal/social/what-is-social) részt, hogy a posztok mennyisége hogyan befolyásolja a költést.
+Az egységárak és az ingyenes keretek mindig megjelennek a Portálon, közvetlenül a számlázási rendszerünkből, így ellenőrizheted őket, mielőtt elköteleznéd magad. Lásd a [Számlázás](/hu/account/subscription) részt a használatarányos díjazás engedélyezéséhez, fiókok kiválasztásához és a hónapközi használat és számlák nyomon követéséhez. Lásd a [Közösségi](/hu/portal/social/what-is-social) részt, hogy a posztok mennyisége hogyan befolyásolja a költést.
 :::
 
 ## A platform hatása

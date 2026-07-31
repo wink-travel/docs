@@ -50,7 +50,7 @@ Wink는 10년 전부터 호텔 온보딩을 시작했습니다. 호텔은 Wink�
 - 비용 관리 및 보고 통합이 필요합니다.
 - 이벤트에서 컨시어지 지원과 MICE 서비스가 필요합니다.
 
-기업 여행자는 [기업 포털](/ko/portal/corporate/what-is-group)에서 직접 계정을 관리하거나 공식 지원되는 [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) 플러그인과 [Concur](https://www.concur.com/) 통합을 사용할 수 있습니다.
+기업 여행자는 기업 포털에서 직접 계정을 관리하거나 공식 지원되는 [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) 플러그인과 [Concur](https://www.concur.com/) 통합을 사용할 수 있습니다.
 
 ## 개발자
 

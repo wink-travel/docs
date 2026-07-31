@@ -5,12 +5,12 @@ sidebar:
   order: 4
 ---
 
-Para administrar la configuración de WinkLinks, navega a `WinkLinks` en la barra de navegación principal y haz clic en la pestaña `Configuración`.
+Para administrar la configuración de WinkLinks, navega a `WinkLinks` en la barra de navegación principal y haz clic en la pestaña `Diseño`.
 
-Aquí están las formas en que puedes configurar el comportamiento de WinkLinks con `Configuración`:
+Estas son las formas en que puedes configurar el comportamiento de WinkLinks con `Diseño`:
 
-- **Inteligente** Al habilitar la inteligencia, intentamos recuperar el contenido `enriquecido` disponible de sitios como `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (antes Twitter)` y otros. *Por ejemplo, si compartes una publicación de IG en WinkLinks, la publicación se mostrará tal como la ves en IG, con likes, comentarios y una forma de interactuar con la publicación.*
-- **Visualización inicial** Controla cómo tu audiencia interactúa primero con tu sitio y ve tu contenido. Hay tres opciones disponibles para ti:
+- **Inteligente** Al habilitar la inteligencia, intentamos obtener el contenido `enriquecido` disponible de sitios como `Wink`, `Spotify`, `Instagram`, `Facebook`, `YouTube`, `X (antes Twitter)` y otros. *Por ejemplo, si compartes una publicación de IG en WinkLinks, la publicación se mostrará tal como la ves en IG, con likes, comentarios y una forma de interactuar con la publicación.*
+- **Visualización inicial** Controla cómo tu audiencia interactúa primero con tu sitio y ve tu contenido. Tienes tres opciones disponibles:
     - Diseño `basado en columnas`. Este es nuestro diseño preferido y si no muestras demasiado contenido, se verá genial en tu página. Sin embargo, puede volverse `pesado` si compartes mucho contenido enriquecido.
     - Diseño `basado en filas`. Esta es una forma de hacer que tu contenido sea un poco menos pesado para que los navegadores lo consuman, pero recomendamos que tu contenido tenga una cantidad similar de texto para que las tarjetas se alineen mejor.
     - Diseño `basado en lista`. La mayoría de los otros gestores de enlaces muestran una lista simple con una URL y contenido mínimo. Elige esta forma de mostrar tu contenido si tienes mucho contenido y quieres mostrarlo lo más rápido posible.
@@ -21,9 +21,9 @@ Aquí están las formas en que puedes configurar el comportamiento de WinkLinks 
   
 Controles adicionales incluyen:  
 
-- Comportamiento de visualización de publicaciones (Modo Banner, Banner Inteligente/Interactivo, Ajuste automático consciente del diseño)  
+- Comportamiento de visualización de publicaciones (Modo Banner, Banner Inteligente/Interactivo, ajuste automático consciente del diseño)  
 - Códigos QR personalizados con marca (forma, colores, puntos, esquinas)  
-- Organización de contenido con etiquetas (categoriza enlaces como "Hoteles", "Viajes", "Ventas")  
+- Organización de contenido con etiquetas (categoriza enlaces como "Hoteles", "Viajes", "Ofertas")  
 - Control total sobre la disposición de enlaces, cargas de archivos y bloques de contenido
 
 ## API

@@ -50,7 +50,7 @@ sidebar:
 - تحتاج إلى إدارة النفقات وتكامل التقارير.
 - تحتاج إلى دعم الكونسيرج، بالإضافة إلى خدمات MICE في الفعاليات.
 
-يمكن للمسافرين من الشركات إدارة حساباتهم الخاصة على [بوابة الشركات](/ar/portal/corporate/what-is-group) أو استخدام الإضافة الرسمية [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) والتكامل مع [Concur](https://www.concur.com/).
+يمكن للمسافرين من الشركات إدارة حساباتهم الخاصة على بوابة الشركات أو استخدام الإضافة الرسمية [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) والتكامل مع [Concur](https://www.concur.com/).
 
 ## المطورون
 

@@ -50,7 +50,7 @@ Doanh nghiệp yêu cầu nhiều hơn từ một nền tảng du lịch:
 - Họ yêu cầu quản lý chi phí và tích hợp báo cáo.
 - Họ cần hỗ trợ concierge cũng như dịch vụ MICE tại các sự kiện.
 
-Những người đi công tác có thể quản lý tài khoản của riêng họ trên [cổng doanh nghiệp](/vi/portal/corporate/what-is-group) hoặc sử dụng plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) và tích hợp [Concur](https://www.concur.com/) được hỗ trợ chính thức của chúng tôi.
+Những người đi công tác có thể quản lý tài khoản của riêng họ trên cổng doanh nghiệp hoặc sử dụng plugin [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) và tích hợp [Concur](https://www.concur.com/) được hỗ trợ chính thức của chúng tôi.
 
 ## Nhà phát triển
 

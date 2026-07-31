@@ -50,7 +50,7 @@ Wink започна да въвежда хотели преди десетиле
 - Изискват управление на разходите и интеграция на отчетността.
 - Нуждаят се от консиерж услуги, както и MICE услуги на събития.
 
-Корпоративните пътешественици могат да управляват собствените си акаунти в нашия [corporate portal](/bg/portal/corporate/what-is-group) или да използват официално поддържания ни [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) плъгин и интеграция с [Concur](https://www.concur.com/).
+Корпоративните пътешественици могат да управляват собствените си акаунти в нашия corporate portal или да използват официално поддържания ни [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) плъгин и интеграция с [Concur](https://www.concur.com/).
 
 ## Разработчици
 

@@ -50,7 +50,7 @@ sidebar:
 - Απαιτούν διαχείριση εξόδων και ενσωμάτωση αναφορών.
 - Χρειάζονται υποστήριξη concierge, καθώς και υπηρεσίες MICE σε εκδηλώσεις.
 
-Οι εταιρικοί ταξιδιώτες μπορούν να διαχειρίζονται τους δικούς τους λογαριασμούς στο [corporate portal](/el/portal/corporate/what-is-group) ή να χρησιμοποιούν το επίσημα υποστηριζόμενο [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin και την ενσωμάτωση [Concur](https://www.concur.com/).
+Οι εταιρικοί ταξιδιώτες μπορούν να διαχειρίζονται τους δικούς τους λογαριασμούς στο corporate portal ή να χρησιμοποιούν το επίσημα υποστηριζόμενο [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) plugin και την ενσωμάτωση [Concur](https://www.concur.com/).
 
 ## Προγραμματιστές
 

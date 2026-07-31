@@ -118,7 +118,7 @@ Nic se nezlomí a nic se neúčtuje. Prostě zůstanete na bezplatné kvótě pr
 | Pozastaveno | Faktura nebyla uhrazena do konce. Účtované akce jsou zablokovány, bezplatné funkce pokračují normálně. |
 
 :::tip[Živé ceny]
-Jednotkové ceny a bezplatné kvóty jsou vždy zobrazeny v Portálu přímo z našeho fakturačního systému, takže je můžete zkontrolovat před závazkem. Viz [Fakturace](/cs/portal/plan) pro zapnutí pay-as-you-go, výběr účtů a sledování využití a faktur za měsíc. Viz [Sociální sítě](/cs/portal/social/what-is-social) pro informace, jak objem příspěvků ovlivňuje vaše náklady.
+Jednotkové ceny a bezplatné kvóty jsou vždy zobrazeny v Portálu přímo z našeho fakturačního systému, takže je můžete zkontrolovat před závazkem. Viz [Fakturace](/cs/account/subscription) pro zapnutí pay-as-you-go, výběr účtů a sledování využití a faktur za měsíc. Viz [Sociální sítě](/cs/portal/social/what-is-social) pro informace, jak objem příspěvků ovlivňuje vaše náklady.
 :::
 
 ## Efekt platformy

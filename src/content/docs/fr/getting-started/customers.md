@@ -50,7 +50,7 @@ Les entreprises ont des besoins plus spécifiques pour une plateforme de voyage 
 - Elles exigent une gestion des dépenses et une intégration des rapports.
 - Elles ont besoin d’un support conciergerie ainsi que de services MICE lors d’événements.
 
-Les voyageurs d’affaires peuvent gérer leurs propres comptes sur notre [portail entreprise](/fr/portal/corporate/what-is-group) ou utiliser notre plugin officiellement supporté [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) et l’intégration [Concur](https://www.concur.com/).
+Les voyageurs d’affaires peuvent gérer leurs propres comptes sur notre portail entreprise ou utiliser notre plugin officiellement supporté [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) et l’intégration [Concur](https://www.concur.com/).
 
 ## Développeurs
 

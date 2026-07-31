@@ -118,7 +118,7 @@ Ništa se ne kvari i ništa se ne naplaćuje. Jednostavno stajete na besplatnom 
 | Obustavljeno | Račun nije plaćen do kraja. Naplatne radnje su blokirane dok se ne podmiri; besplatne značajke rade normalno. |
 
 :::tip[Trenutne cijene]
-Jedinične cijene i besplatni limiti uvijek su prikazani u Portalu, izravno iz našeg sustava naplate, tako da ih možete provjeriti prije nego što se obvežete. Pogledajte [Billing](/hr/portal/plan) za uključivanje plaćanja po korištenju, odabir računa i praćenje korištenja i računa tijekom mjeseca. Pogledajte [Social](/hr/portal/social/what-is-social) za to kako volumen objava utječe na vaše troškove.
+Jedinične cijene i besplatni limiti uvijek su prikazani u Portalu, izravno iz našeg sustava naplate, tako da ih možete provjeriti prije nego što se obvežete. Pogledajte [Billing](/hr/account/subscription) za uključivanje plaćanja po korištenju, odabir računa i praćenje korištenja i računa tijekom mjeseca. Pogledajte [Social](/hr/portal/social/what-is-social) za to kako volumen objava utječe na vaše troškove.
 :::
 
 ## Utjecaj platforme

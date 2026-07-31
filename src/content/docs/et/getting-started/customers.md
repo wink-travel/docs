@@ -50,7 +50,7 @@ Ettevõtted vajavad reisiplatvormilt rohkemat:
 - Nad vajavad kulude haldust ja aruandluse integratsiooni.
 - Nad vajavad konverentsi- ja üritusteenuseid (MICE) ning concierge-tuge.
 
-Ettevõtte reisijad saavad hallata oma kontosid meie [ettevõtte portaalis](/et/portal/corporate/what-is-group) või kasutada meie ametlikult toetatud [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) pistikprogrammi ja [Concur](https://www.concur.com/) integratsiooni.
+Ettevõtte reisijad saavad hallata oma kontosid meie ettevõtte portaalis või kasutada meie ametlikult toetatud [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) pistikprogrammi ja [Concur](https://www.concur.com/) integratsiooni.
 
 ## Arendajad
 

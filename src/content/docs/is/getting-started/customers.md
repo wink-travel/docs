@@ -50,7 +50,7 @@ Fyrirtæki þurfa meira af ferðavettvangi:
 - Þau þurfa útgjaldastjórnun og samþættingu skýrslugerðar.
 - Þau þurfa þjónustu við viðskiptavini, auk MICE-þjónustu við viðburði.
 
-Fyrirtækjafarar geta stjórnað eigin reikningum á okkar [fyrirtækjaportali](/is/portal/corporate/what-is-group) eða notað opinberlega studdan [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) viðbót og [Concur](https://www.concur.com/) samþættingu.
+Fyrirtækjafarar geta stjórnað eigin reikningum á okkar fyrirtækjaportali eða notað opinberlega studdan [MS Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration) viðbót og [Concur](https://www.concur.com/) samþættingu.
 
 ## Forritarar
 

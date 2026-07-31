@@ -118,7 +118,7 @@ Nieko nesugenda ir nieko nemokate. Tiesiog sustojate ties nemokamu limitu tam m�
 | Sustabdyta | Sąskaita neapmokėta iki galo. Mokami veiksmai blokuojami, kol sąskaita apmokama; nemokamos funkcijos veikia toliau kaip įprasta. |
 
 :::tip[Tiesioginės kainos]
-Vieneto kainos ir nemokami limitai visada rodomi Portale, tiesiogiai iš mūsų sąskaitų sistemos, todėl galite jas patikrinti prieš įsipareigodami. Žr. [Billing](/lt/portal/plan), kaip įjungti mokėjimą pagal faktinį naudojimą, pasirinkti paskyras ir sekti mėnesio naudojimą bei sąskaitas. Žr. [Social](/lt/portal/social/what-is-social), kaip įrašų kiekis veikia jūsų išlaidas.
+Vieneto kainos ir nemokami limitai visada rodomi Portale, tiesiogiai iš mūsų sąskaitų sistemos, todėl galite jas patikrinti prieš įsipareigodami. Žr. [Billing](/lt/account/subscription), kaip įjungti mokėjimą pagal faktinį naudojimą, pasirinkti paskyras ir sekti mėnesio naudojimą bei sąskaitas. Žr. [Social](/lt/portal/social/what-is-social), kaip įrašų kiekis veikia jūsų išlaidas.
 :::
 
 ## Platformos poveikis
