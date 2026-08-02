@@ -8,7 +8,7 @@ import '/src/styles/splash-page.css';
 
 import FaqGrid from "@/components/marketing/FaqGrid.astro";
 import FaqJsonLd from "@/components/marketing/FaqJsonLd.astro";
-import SocialPlans from "@/components/marketing/SocialPlans.astro";
+import UsagePricing from "@/components/marketing/UsagePricing.astro";
 
 import IconBuildingStore from "@tabler/icons/outline/building-store.svg";
 import IconAffiliate from "@tabler/icons/outline/affiliate.svg";
@@ -23,7 +23,8 @@ export const faqs = [
   { title: "What does a direct hotel booking cost?", content: "Wink standard fee is 5.5% all-in: 1.5% Wink + 4.0% TripPay gateway (Stripe-powered). No setup fee, no monthly platform fee for the core platform." },
   { title: "What does a partner-driven booking cost?", content: "Direct bookings are 5.5% all-in. When a partner or creator drives the booking, a 10% default commission applies on top — calculated after Wink's 5.5% is taken at source, so a partner booking runs about 15% all-in for the hotel, still below the 15–25% OTAs charge. The partner earns that 10%; hotels and partners can agree on other terms." },
   { title: "Does Traveliko cost more than direct?", content: "No. Traveliko bookings use the same 5.5% as direct hotel bookings, with no extra OTA-style commission layer. Traveliko is auto-active and can be opted out." },
-  { title: "Does Social have a monthly subscription?", content: "Yes. Social has three tiers — Starter ($129/mo), Growth ($299/mo) and Elite ($549/mo), billed monthly or yearly (save 20%). All tiers include FB, IG and WinkLinks, unlimited manual posts, analytics, a verified badge and basic support; higher tiers add more languages, posts per week, priority support, replies, chatbot, an account manager and Wink Agency. Billed via Stripe; see the Social product page for details." },
+  { title: "Does Social have a monthly subscription?", content: "No. Social is usage-based — no subscription, no seats. Each account gets a free monthly allowance (one image post and five AI replies), then pays only for what it publishes: $1.50 an image post, $2.50 an AI-image post, $14.00 an AI-video post and $0.05 per AI reply or chatbot message. Manual posts and WinkLinks publishing are always free." },
+  { title: "How is API usage priced?", content: "The Consumer and Booking Engine APIs are free. The Partner API includes 10,000 hotel-days per month free, then $0.0001 per unit — metered on use. Larger platform integrations may agree custom commercial terms." },
   { title: "Are payment-processing fees included?", content: "Yes. Payment processing is bundled into the 5.5% all-in fee (1.5% Wink + 4.0% TripPay gateway, Stripe-powered). There is no separate payment-processor contract." },
   { title: "What is TripPay?", content: "TripPay is Wink's proprietary booking payment gateway — it handles checkout UI, cancellation policy logic, tokenized cards, 3DS, multi-currency, split payouts, and hotel/partner settlement. Stripe is integrated within TripPay as the underlying payment processor. The 5.5% all-in breaks down as 1.5% Wink platform fee + 4.0% TripPay gateway fee (Stripe processing included). TripPay collects the full booking amount on behalf of the hotel; funds are released to the hotel at guest check-in after Wink's deduction." },
   { title: "How are developer integrations priced?", content: "Some integrations may follow standard booking-based pricing. Larger platform integrations may require custom commercial terms, support terms, SLAs, or enterprise contracts — contact the Wink platform team." },
@@ -172,7 +173,7 @@ export const faqs = [
       { icon: IconWorld, title: "Traveliko", desc: "Bookings from the Wink-operated consumer discovery channel. Same 5.5% as direct — no extra OTA-style commission layer.", accent: "#06b6d4" },
       { icon: IconCode, title: "Developer access", desc: "Custom platform integrations for search, booking, payment, webhooks, attribution and reporting. Standard booking model or custom enterprise terms.", accent: "#22d3ee" },
       { icon: IconRobot, title: "Agentic AI", desc: "AI assistants and agentic products that hand intent into Wink booking flows. Inherits the applicable Booking Engine or platform terms.", accent: "#6366f1" },
-      { icon: IconShare, title: "Social", desc: "AI-assisted hotel content with booking-ready links. Separate subscription tiers may apply in addition to booking-based economics.", accent: "#a855f7" },
+      { icon: IconShare, title: "Social", desc: "AI-assisted hotel content with booking-ready links. Usage-based — a free monthly allowance, then pay per post or AI action. No subscription.", accent: "#a855f7" },
     ].map((c) => (
       <div class="flex flex-col overflow-hidden rounded-2xl border border-border bg-card p-6 transition-transform hover:-translate-y-1" style={`border-top:3px solid ${c.accent}`}>
         <span class="mb-4 flex size-11 items-center justify-center rounded-xl text-white" style={`background:linear-gradient(135deg, ${c.accent}, ${c.accent}b3)`}><c.icon class="size-6" /></span>
@@ -183,15 +184,30 @@ export const faqs = [
   </div>
 </section>
 
-<section class="mx-auto w-full max-w-5xl px-4 pt-24">
-  <div class="mx-auto mb-10 max-w-2xl text-center">
-    <h2 class="mkt-h2 font-heading">Social is the exception.</h2>
-    <p class="mkt-sub text-muted-foreground mt-4">
-      AI content generation and publishing have a different cost structure, so Social carries
-      subscription tiers, starting at $129/mo (billed monthly or yearly).
+<section class="@container mx-auto w-full max-w-5xl px-4 pt-24">
+  <div class="mx-auto mb-12 max-w-2xl text-center">
+    <p class="mkt-kicker text-primary">Free core, usage-based extras</p>
+    <h2 class="mkt-h2 font-heading mt-3">The platform is free. You pay only for heavy usage.</h2>
+    <p class="mkt-sub text-muted-foreground mx-auto mt-4 max-w-2xl">
+      No subscriptions, no seats. The booking engine, property management and distribution tools are free forever — only AI content and high-volume API calls are metered, and each account gets a free monthly allowance first.
     </p>
   </div>
-  <SocialPlans />
+
+  {/* Free forever — chips */}
+  <p class="mb-4 text-center text-sm font-semibold text-foreground/80">Free forever — no allowance, no metering</p>
+  <div class="mx-auto mb-14 flex max-w-3xl flex-wrap justify-center gap-2.5">
+    {["Booking Engine", "Property management", "WinkLinks", "Affiliate & partner tools", "Travel-agent tools", "Manual social posts", "Analytics & leaderboards", "Consumer & Booking Engine APIs"].map((f) => (
+      <span class="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium">
+        <IconCircleCheck class="size-4 shrink-0 text-primary" />{f}
+      </span>
+    ))}
+  </div>
+
+  {/* Usage-based — table */}
+  <p class="mb-4 text-center text-sm font-semibold text-foreground/80">Usage-based — free monthly allowance, then pay per use</p>
+  <div class="mx-auto max-w-3xl">
+    <UsagePricing />
+  </div>
 </section>
 
 <FaqJsonLd faqs={faqs} />

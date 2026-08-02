@@ -1,0 +1,57 @@
+---
+/**
+ * UsagePricing — pay-as-you-go usage table for Social content + API consumption.
+ * Each account gets a free monthly allowance (resets on the 1st, UTC), then pays
+ * per unit. No subscriptions, no seats, no setup fees. Metered on publish/use.
+ * Mirrors the live wink.travel usage pricing; used on the Pricing page and the
+ * Social product page so both stay in sync.
+ */
+const groups = [
+  {
+    label: "Social content",
+    items: [
+      { name: "Image post", free: "1 / month", price: "$1.50", unit: "per post" },
+      { name: "AI-image post", free: "—", price: "$2.50", unit: "per post" },
+      { name: "AI-video post", free: "—", price: "$14.00", unit: "per post" },
+      { name: "AI reply / chatbot", free: "5 / month", price: "$0.05", unit: "each" },
+    ],
+  },
+  {
+    label: "API consumption",
+    items: [
+      { name: "Partner API", free: "10,000 hotel-days / month", price: "$0.0001", unit: "per unit" },
+    ],
+  },
+];
+---
+
+<div class="@container w-full">
+  <div class="overflow-x-auto rounded-2xl border border-border">
+    <table class="w-full border-collapse text-sm">
+      <thead>
+        <tr class="bg-muted/50 text-left">
+          <th class="p-4 font-semibold">Feature</th>
+          <th class="p-4 font-semibold">Free / month</th>
+          <th class="p-4 text-right font-semibold">Then</th>
+        </tr>
+      </thead>
+      <tbody class="[&_td]:border-t [&_td]:border-border [&_td]:p-4">
+        {groups.map((g) => (
+          <>
+            <tr class="bg-muted/20">
+              <td colspan="3" class="text-xs font-bold uppercase tracking-wider text-primary">{g.label}</td>
+            </tr>
+            {g.items.map((it) => (
+              <tr>
+                <td class="font-medium whitespace-nowrap">{it.name}</td>
+                <td class="text-muted-foreground whitespace-nowrap">{it.free}</td>
+                <td class="whitespace-nowrap text-right"><span class="font-semibold">{it.price}</span> <span class="text-muted-foreground text-xs">{it.unit}</span></td>
+              </tr>
+            ))}
+          </>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <p class="text-muted-foreground mt-4 text-center text-xs text-pretty">Metered only when you publish or call — not on drafts or attempts. WinkLinks publishing is always free. No subscriptions, no seats, no setup fees.</p>
+</div>
