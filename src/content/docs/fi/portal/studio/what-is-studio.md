@@ -5,12 +5,14 @@ sidebar:
   order: 0
 ---
 
-Historiallisesti matkailuun liittyvän sisällön saaminen ja myyminen vaati salassapitosopimuksia (NDA) ja monimutkaisia integraatioita kahden [tai useamman] lisensoidun matkatoimiston välillä, joilla oli riittävästi teknistä osaamista, pääsy maksunvälitysjärjestelmään ja jotka olivat molemmat PCI DSS -yhteensopivia. Se oli kallis ja aikaa vievä prosessi, ja sisäänpääsyn kynnys oli tavallisille ihmisille mahdottoman korkea.
+Historiallisesti matkailuun liittyvän saatavuuden saaminen ja myyminen vaati salassapitosopimuksia ja monimutkaisia integraatioita kahden [tai useamman] lisensoidun matkatoimiston välillä, joilla oli riittävästi teknistä osaamista, pääsy maksuväylään ja jotka olivat molemmat PCI DSS -yhteensopivia. Se oli kallis ja aikaa vievä prosessi, ja sisäänpääsyn kynnys oli mahdottoman korkea tavallisille ihmisille.
 
-[Wink Studio](https://studio.wink.travel) on kumppanien portaali. Se tekee matkavaraston myymisestä kaikkien saatavilla olevaa ja yhtä helppoa kuin linkin jakaminen tai yhtä kehittynyttä kuin verkkomatkatoimiston pyörittäminen.
+Studio on [Portaalin](/fi/portal/overview) kumppanipuoli, yksittäinen sovelluksemme osoitteessa [app.wink.travel](https://app.wink.travel). Se tekee matkavaraston myymisestä kaikkien saatavilla olevaa ja yhtä helppoa kuin linkin jakaminen tai yhtä kehittynyttä kuin verkkomatkatoimiston pyörittäminen.
 
-Kumppanien portaali tarjoaa saatavilla olevaa matkavarastoa toimittajilta (esim. hotellit, hostellit, vuokra-asunnot, elämyspalveluntarjoajat) mistä päin maailmaa tahansa. Tavoitteesi on löytää sinulle sopiva varasto ja käyttää parasta tapaa esitellä ja myydä sitä yleisöllesi.
+Ei ole mitään erillistä rekisteröitymistä eikä muuta paikkaa, johon kirjautua — valitse kumppanitili Portaalissa, ja tässä osiossa kuvatut Studio-ominaisuudet ovat heti käytettävissä.
 
-Studio tarjoaa tavan selata toimittajia ja heidän varastoaan. Kun olet löytänyt jotain, mistä pidät, meillä on monia tapoja myydä tätä varastoa verkossa ja erityisesti sosiaalisen median kautta.
+Studio tarjoaa saatavilla olevan matkavaraston toimittajilta (esim. hotellit, hostellit, vuokraukset, elämyspalveluntarjoajat) mistä päin maailmaa tahansa. Tavoitteesi on löytää sinulle sopiva varasto ja käyttää parasta tapaa esitellä ja myydä sitä yleisöllesi.
+
+Studio tarjoaa tavan selata toimittajia ja heidän varastoaan. Kun olet löytänyt jotain, mistä pidät, meillä on monia tapoja myydä sitä verkossa ja erityisesti sosiaalisessa mediassa.
 
 Jatka lukemista ja tutustu kaikkiin ominaisuuksiin, joita tarjoamme kumppaneille.

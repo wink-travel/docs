@@ -9,7 +9,7 @@ La nostra solució per a agents de viatges registrats és [Wink Agent](https://a
 
 Els agents de viatges més avançats poden optar per integrar-se a nivell d'API amb la finalitat de gestionar el pagament i els pagaments fora de la plataforma Wink.
 
-Els agents de viatges disposen d'un subconjunt de les mateixes funcions del portal que [Wink Studio](/ca/portal/studio/what-is-studio), així que no les tornarem a cobrir aquí.
+Els agents de viatges disposen d'un subconjunt de les mateixes funcions del portal que [Studio](/ca/portal/studio/what-is-studio), així que no les cobrirem de nou aquí.
 
 ## Cerca
 

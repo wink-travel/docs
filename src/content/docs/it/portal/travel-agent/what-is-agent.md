@@ -9,7 +9,7 @@ La nostra soluzione per gli agenti di viaggio registrati è [Wink Agent](https:/
 
 Gli agenti di viaggio più esperti possono scegliere di integrare a livello API per gestire pagamenti e pagamenti esterni alla piattaforma Wink.
 
-Gli agenti di viaggio hanno un sottoinsieme delle stesse funzionalità del portale di [Wink Studio](/it/portal/studio/what-is-studio), quindi non le tratteremo di nuovo qui.
+Gli agenti di viaggio hanno un sottoinsieme delle stesse funzionalità del portale di [Studio](/it/portal/studio/what-is-studio), quindi non le tratteremo di nuovo qui.
 
 ## Ricerca
 

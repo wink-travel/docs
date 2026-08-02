@@ -7,9 +7,9 @@ sidebar:
 
 Penyelesaian kami untuk ejen pelancongan berdaftar ialah [Wink Agent](https://agent.wink.travel). Ia adalah portal layan diri yang boleh digunakan oleh ejen untuk mencari dan menempah bagi pihak pelanggan mereka serta memperoleh komisen untuk diri mereka sendiri bagi setiap tempahan.
 
-Ejen pelancongan yang lebih maju boleh memilih untuk berintegrasi pada tahap API untuk tujuan mengendalikan pembayaran dan pengeluaran di luar platform Wink.
+Ejen pelancongan yang lebih maju boleh memilih untuk berintegrasi pada tahap API bagi tujuan mengendalikan pembayaran dan pengeluaran di luar platform Wink.
 
-Ejen pelancongan mempunyai sebahagian ciri portal yang sama seperti [Wink Studio](/ms/portal/studio/what-is-studio) jadi kami tidak akan membincangkannya lagi di sini.
+Ejen pelancongan mempunyai sebahagian ciri portal yang sama seperti [Studio](/ms/portal/studio/what-is-studio) jadi kami tidak akan membincangkannya lagi di sini.
 
 ## Carian
 

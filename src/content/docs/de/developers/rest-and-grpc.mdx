@@ -1,0 +1,75 @@
+---
+title: REST und gRPC
+description: Wie Sie sich über REST oder gRPC mit der Wink-Plattform integrieren, einen Client aus unseren Schemata generieren und unseren MCP-Server nutzen, um Integrationscode für Ihren Anwendungsfall zu erstellen.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink stellt zwei Transportarten bereit. Welche Sie verwenden, hängt davon ab, mit welcher API Sie sich integrieren.
+
+| | Transport | Schema | Docs |
+| --- | --- | --- | --- |
+| Die meisten Wink APIs | REST über HTTPS | OpenAPI 3 | Jede Gruppe unter **API** in der Seitenleiste |
+| Partner Integrator API | gRPC über HTTP/2 | Protocol Buffers | [Partner](/de/partner-api/partner/) |
+
+<Aside type="note" title="Wir veröffentlichen keine Sprach-SDKs mehr">
+  Handgepflegte SDKs hinkten den APIs, die sie umschlossen, hinterher und deckten nie die Sprache ab, die Sie tatsächlich benötigten. Generieren Sie stattdessen einen Client aus dem Schema — dieser ist immer aktuell — oder lassen Sie unseren MCP-Server Integrationscode erstellen, der auf Ihren Anwendungsfall zugeschnitten ist.
+</Aside>
+
+## Einen REST-Client generieren
+
+Jede API-Gruppe veröffentlicht ein OpenAPI 3-Dokument. Richten Sie einen beliebigen OpenAPI-Generator darauf aus und Sie erhalten einen typisierten Client in Ihrer Sprache.
+
+```bash
+# Die Spezifikation für eine Gruppe wird neben ihrer Referenzseite bereitgestellt.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  OpenAPI-Generatoren nach Sprache
+</LinkButton>
+
+## Einen gRPC-Client generieren
+
+Die Partner Integrator API ist gRPC. Sie generieren einen Client aus dem `.proto`-Schema, das Wink auf zwei Arten bereitstellt:
+
+- **Server-Reflection** — der Server beschreibt sich selbst, sodass Tools wie `grpcurl`, Postman und Insomnia das Schema zur Laufzeit entdecken können, ohne Dateien herunterladen zu müssen. Reflection erfordert denselben Bearer-Token wie jeder andere Aufruf.
+- **Die `.proto`-Dateien**, falls Sie das Schema lieber einbinden und im Voraus generieren möchten.
+
+```bash
+# Schema von einem laufenden Server entdecken (authentifiziert).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Dann einen Client generieren — hier Go; jede unterstützte Sprache funktioniert auf dieselbe Weise.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Aufrufe tragen Ihren Bearer-Token im `authorization`-Metadaten-Header, genau wie REST ihn im `Authorization`-Header trägt. Fehler werden als gRPC-Statuscode in den Antwort-Trailern übermittelt, nicht als HTTP-Statuscode — die [Partner-Referenz](/de/partner-api/partner/) listet die erwarteten Statuscodes auf.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  gRPC Quickstarts nach Sprache
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  Was ist gRPC?
+</LinkButton>
+
+## Oder lassen Sie den MCP-Server den Code schreiben
+
+Wenn Sie einen KI-Coding-Assistenten verwenden, ist unser MCP-Server der schnellste Weg. Er stellt Wink-APIs als Werkzeuge bereit, die Ihr Assistent aufrufen und analysieren kann. Statt einen kompletten Client zu generieren und die Endpunkte selbst zu suchen, beschreiben Sie, was Sie bauen, und erhalten Integrationscode, der auf diesen Anwendungsfall zugeschnitten ist.
+
+<LinkButton href="/de/developers/mcp/" variant="primary">
+  Wink MCP-Server einrichten
+</LinkButton>
+
+## Weiterführende Informationen
+
+- [Setup](/de/developers/setup/) — Konten, Umgebungen und Zugangsdaten
+- [Authentifizierung](/de/developers/authentication/) — Tokens erhalten und erneuern
+- [Webhook-Integration](/de/developers/webhook-integration/) — Ereignisse empfangen statt abfragen

@@ -9,7 +9,7 @@ Vores løsning for registrerede rejsebureauer er [Wink Agent](https://agent.wink
 
 Mere avancerede rejsebureauer kan vælge at integrere på API-niveau med henblik på at håndtere betaling og udbetalinger uden for Wink-platformen.
 
-Rejsebureauer har et delmængde af de samme portal-funktioner som [Wink Studio](/da/portal/studio/what-is-studio), så vi vil ikke gennemgå dem igen her.
+Rejsebureauer har et delmængde af de samme portal-funktioner som [Studio](/da/portal/studio/what-is-studio), så vi vil ikke gennemgå dem igen her.
 
 ## Søg
 

@@ -5,11 +5,11 @@ sidebar:
   order: 0
 ---
 
-Mūsu risinājums reģistrētiem ceļojumu aģentiem ir [Wink Agent](https://agent.wink.travel). Tā ir pašapkalpošanās platforma, ko aģenti var izmantot, lai meklētu un rezervētu saviem klientiem, kā arī nopelnītu komisiju par katru rezervāciju.
+Mūsu risinājums reģistrētiem ceļojumu aģentiem ir [Wink Agent](https://agent.wink.travel). Tā ir pašapkalpošanās platforma, ko aģenti var izmantot, lai meklētu un rezervētu klientu vārdā, kā arī nopelnītu komisiju par katru rezervāciju.
 
 Vairāk pieredzējuši ceļojumu aģenti var izvēlēties integrēties API līmenī, lai veiktu maksājumus un izmaksas ārpus Wink platformas.
 
-Ceļojumu aģentiem ir pieejama daļa no tām pašām portāla funkcijām kā [Wink Studio](/lv/portal/studio/what-is-studio), tāpēc šeit tās atkārtoti neapskatīsim.
+Ceļojumu aģentiem ir pieejama daļa no tām pašām portāla funkcijām kā [Studio](/lv/portal/studio/what-is-studio), tāpēc šeit tās atkārtoti neapskatīsim.
 
 ## Meklēšana
 

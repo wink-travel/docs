@@ -1,6 +1,6 @@
 ---
 title: Mi az az Agent?
-description: Tudjon meg többet arról, hogyan támogatja a Wink a regisztrált utazási ügynököket.
+description: Ismerje meg, hogyan támogatja a Wink a regisztrált utazási ügynököket.
 sidebar:
   order: 0
 ---
@@ -9,7 +9,7 @@ A regisztrált utazási ügynökök számára készült megoldásunk a [Wink Age
 
 A fejlettebb utazási ügynökök választhatják az API szintű integrációt is, hogy a fizetések és kifizetések kezelését a Wink platformon kívül végezzék.
 
-Az utazási ügynökök a portál [Wink Studio](/hu/portal/studio/what-is-studio) funkcióinak egy részhalmazát használják, ezért ezeket itt nem ismertetjük újra.
+Az utazási ügynökök a portál [Studio](/hu/portal/studio/what-is-studio) funkcióinak egy részhalmazát használhatják, ezért ezeket itt nem ismertetjük újra.
 
 ## Keresés
 
@@ -19,4 +19,4 @@ Egyébként folytassa a következő szakaszra.
 
 ## API
 
-A fejlesztők, akik kezelni szeretnék a `Travel Agent` funkciót, látogassanak el a [Developers > API > Travel Agent](/hu/api) oldalra.
+Azok a fejlesztők, akik a `Travel Agent` kezelésével szeretnének foglalkozni, látogassanak el a [Fejlesztők > API > Travel Agent](/hu/api) oldalra.

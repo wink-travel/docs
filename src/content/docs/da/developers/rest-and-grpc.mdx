@@ -1,0 +1,75 @@
+---
+title: REST og gRPC
+description: Hvordan man integrerer med Wink Platform via REST eller gRPC, genererer en klient fra vores skemaer, og bruger vores MCP-server til at generere integrationskode til dit brugsscenarie.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink tilbyder to transportmetoder. Hvilken du bruger, afhænger af hvilken API du integrerer med.
+
+| | Transport | Skema | Dokumentation |
+| --- | --- | --- | --- |
+| De fleste Wink API'er | REST over HTTPS | OpenAPI 3 | Enhver gruppe under **API** i sidebaren |
+| Partner Integrator API | gRPC over HTTP/2 | Protocol Buffers | [Partner](/da/partner-api/partner/) |
+
+<Aside type="note" title="Vi udgiver ikke længere sprog-SDK'er">
+  Håndvedligeholdte SDK'er kom bagud i forhold til de API'er, de omsluttede, og dækkede aldrig det sprog, du faktisk havde brug for. Generer i stedet en klient fra skemaet — det er altid opdateret — eller lad vores MCP-server skrive integrationskode, der er tilpasset dit brugsscenarie.
+</Aside>
+
+## Generer en REST-klient
+
+Hver API-gruppe udgiver et OpenAPI 3-dokument. Peg en hvilken som helst OpenAPI-generator på det, og du får en typet klient i dit sprog.
+
+```bash
+# Specifikationen for en gruppe serveres ved siden af dens referenceside.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  OpenAPI-generatorer efter sprog
+</LinkButton>
+
+## Generer en gRPC-klient
+
+Partner Integrator API er gRPC. Du genererer en klient fra `.proto`-skemaet, som Wink udgiver på to måder:
+
+- **Server reflection** — serveren beskriver sig selv, så værktøjer som `grpcurl`, Postman og Insomnia kan finde skemaet ved kørsel uden filer, der skal downloades. Reflection kræver det samme bearer-token som ethvert andet kald.
+- **`.proto`-filerne**, hvis du foretrækker at inkludere skemaet og generere på forhånd.
+
+```bash
+# Find skemaet fra en kørende server (autentificeret).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Generer derefter en klient — her Go; alle understøttede sprog fungerer på samme måde.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Kald bærer dit bearer-token i `authorization` metadata-headeren, præcis som REST bærer det i `Authorization` headeren. Fejl ankommer som en gRPC statuskode i responsens trailers i stedet for som en HTTP statuskode — [Partner-referencen](/da/partner-api/partner/) viser de statusser, du kan forvente.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  gRPC hurtigstart efter sprog
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  Hvad er gRPC?
+</LinkButton>
+
+## Eller lad MCP-serveren skrive det
+
+Hvis du bruger en AI-kodeassistent, er vores MCP-server den hurtigste vej. Den eksponerer Winks API'er som værktøjer, din assistent kan kalde og forstå, så i stedet for at generere en hel klient og finde endpoints selv, beskriver du, hvad du bygger, og får integrationskode, der er tilpasset det.
+
+<LinkButton href="/da/developers/mcp/" variant="primary">
+  Opsæt Wink MCP-serveren
+</LinkButton>
+
+## Yderligere læsning
+
+- [Opsætning](/da/developers/setup/) — konti, miljøer og legitimationsoplysninger
+- [Autentificering](/da/developers/authentication/) — opnåelse og fornyelse af tokens
+- [Webhook-integration](/da/developers/webhook-integration/) — modtagelse af events i stedet for polling

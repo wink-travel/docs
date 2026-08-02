@@ -9,7 +9,7 @@ sidebar:
 
 更進階的旅行社可以選擇在 API 層級整合，以便在 Wink 平台外處理付款和支付。
 
-旅行社擁有與 [Wink Studio](/zh-TW/portal/studio/what-is-studio) 部分相同的入口網站功能，因此這裡不再重複說明。
+旅行社擁有與 [Studio](/zh-TW/portal/studio/what-is-studio) 部分相同的入口網站功能子集，因此這裡不再重複說明。
 
 ## 搜尋
 

@@ -9,7 +9,7 @@ A nossa solução para agentes de viagens registados é o [Wink Agent](https://a
 
 Agentes de viagens mais avançados podem optar por integrar ao nível da API para gerir pagamentos e pagamentos fora da plataforma Wink.
 
-Os agentes de viagens têm um subconjunto das mesmas funcionalidades do portal que o [Wink Studio](/pt-PT/portal/studio/what-is-studio), por isso não as abordaremos novamente aqui.
+Os agentes de viagens têm um subconjunto das mesmas funcionalidades do portal que o [Studio](/pt-PT/portal/studio/what-is-studio), por isso não as abordaremos novamente aqui.
 
 ## Pesquisa
 
@@ -19,4 +19,4 @@ Caso contrário, continue para a próxima secção.
 
 ## API
 
-Os desenvolvedores que quiserem gerir o `Travel Agent` podem ir a [Developers > API > Travel Agent](/pt-PT/api).
+Os programadores que quiserem gerir `Travel Agent` podem aceder a [Developers > API > Travel Agent](/pt-PT/api).

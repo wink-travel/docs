@@ -1,0 +1,75 @@
+---
+title: REST i gRPC
+description: Kako se integrirati s Wink Platformom putem REST-a ili gRPC-a, generirati klijenta iz naših shema i koristiti naš MCP server za generiranje integracijskog koda za vaš slučaj upotrebe.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink izlaže dva transporta. Koji ćete koristiti ovisi o tome s kojom se API-jem integrirate.
+
+| | Transport | Shema | Dokumentacija |
+| --- | --- | --- | --- |
+| Većina Wink API-ja | REST preko HTTPS-a | OpenAPI 3 | Bilo koja grupa pod **API** u bočnoj traci |
+| Partner Integrator API | gRPC preko HTTP/2 | Protocol Buffers | [Partner](/hr/partner-api/partner/) |
+
+<Aside type="note" title="Više ne objavljujemo SDK-je za jezike">
+  Ručno održavani SDK-ji su zaostajali za API-jima koje su obuhvaćali i nikada nisu pokrivali jezik koji ste zapravo trebali. Umjesto toga, generirajte klijenta iz sheme — ona je uvijek ažurna — ili dopustite našem MCP serveru da napiše integracijski kod prilagođen vašem slučaju upotrebe.
+</Aside>
+
+## Generirajte REST klijenta
+
+Svaka API grupa objavljuje OpenAPI 3 dokument. Usmjerite bilo koji OpenAPI generator na njega i dobit ćete tipiziranog klijenta u vašem jeziku.
+
+```bash
+# Specifikacija za grupu se poslužuje uz njezinu referentnu stranicu.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  OpenAPI generatori po jeziku
+</LinkButton>
+
+## Generirajte gRPC klijenta
+
+Partner Integrator API je gRPC. Generirate klijenta iz `.proto` sheme, koju Wink objavljuje na dva načina:
+
+- **Server reflection** — server sam opisuje sebe, tako da alati poput `grpcurl`, Postman i Insomnia mogu otkriti shemu u runtime-u bez potrebe za preuzimanjem datoteka. Reflection zahtijeva isti bearer token kao i bilo koji drugi poziv.
+- **`.proto` datoteke**, ako radije želite imati shemu lokalno i generirati unaprijed.
+
+```bash
+# Otkrijte shemu s pokrenutog servera (autentificirano).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Zatim generirajte klijenta — ovdje Go; svaki podržani jezik radi na isti način.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Pozivi nose vaš bearer token u `authorization` metapodatkovnom zaglavlju, točno kao što REST nosi u `Authorization` zaglavlju. Pogreške dolaze kao gRPC statusni kod u odgovorima u trailerima, a ne kao HTTP statusni kod — [Partner referenca](/hr/partner-api/partner/) navodi statuse koje trebate očekivati.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  gRPC brzi početci po jeziku
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  Što je gRPC?
+</LinkButton>
+
+## Ili dopustite MCP serveru da napiše kod
+
+Ako koristite AI asistenta za kodiranje, naš MCP server je najbrži put. Izlaže Wink API-je kao alate koje vaš asistent može pozivati i razumjeti, tako da umjesto da generirate cijelog klijenta i sami tražite krajnje točke, opisujete što gradite i dobivate integracijski kod prilagođen tome.
+
+<LinkButton href="/hr/developers/mcp/" variant="primary">
+  Postavite Wink MCP server
+</LinkButton>
+
+## Daljnje čitanje
+
+- [Postavljanje](/hr/developers/setup/) — računi, okruženja i vjerodajnice
+- [Autentikacija](/hr/developers/authentication/) — dobivanje i osvježavanje tokena
+- [Webhook integracija](/hr/developers/webhook-integration/) — primanje događaja umjesto ispitivanja

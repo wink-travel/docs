@@ -1,0 +1,75 @@
+---
+title: REST و gRPC
+description: كيفية التكامل مع منصة Wink عبر REST أو gRPC، إنشاء عميل من مخططاتنا، واستخدام خادم MCP الخاص بنا لإنشاء كود التكامل لحالتك الخاصة.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+تعرض Wink نوعين من وسائل النقل. يعتمد اختيارك على أي API تقوم بالتكامل معه.
+
+| | وسيلة النقل | المخطط | الوثائق |
+| --- | --- | --- | --- |
+| معظم APIs الخاصة بـ Wink | REST عبر HTTPS | OpenAPI 3 | أي مجموعة تحت **API** في الشريط الجانبي |
+| Partner Integrator API | gRPC عبر HTTP/2 | Protocol Buffers | [Partner](/ar/partner-api/partner/) |
+
+<Aside type="note" title="لم نعد ننشر SDKs للغات البرمجة">
+  كانت SDKs التي تتم صيانتها يدويًا متأخرة عن APIs التي تغلفها، ولم تغطِ اللغة التي تحتاجها فعليًا. بدلاً من ذلك، أنشئ عميلًا من المخطط — فهو دائمًا محدث — أو دع خادم MCP الخاص بنا يكتب كود التكامل المصمم لحالتك الخاصة.
+</Aside>
+
+## إنشاء عميل REST
+
+تنشر كل مجموعة API مستند OpenAPI 3. وجه أي مولد OpenAPI إليه لتحصل على عميل مكتوب بلغة البرمجة التي تستخدمها.
+
+```bash
+# يتم تقديم المواصفة الخاصة بالمجموعة بجانب صفحة المرجع الخاصة بها.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  مولدات OpenAPI حسب اللغة
+</LinkButton>
+
+## إنشاء عميل gRPC
+
+Partner Integrator API هو gRPC. تقوم بإنشاء عميل من مخطط `.proto`، الذي تنشره Wink بطريقتين:
+
+- **انعكاس الخادم** — يصف الخادم نفسه، بحيث يمكن لأدوات مثل `grpcurl` وPostman وInsomnia اكتشاف المخطط أثناء التشغيل دون الحاجة لتنزيل ملفات. يتطلب الانعكاس نفس رمز الحامل (bearer token) مثل أي مكالمة أخرى.
+- **ملفات `.proto`**، إذا كنت تفضل تضمين المخطط وإنشاء العميل مسبقًا.
+
+```bash
+# اكتشاف المخطط من خادم يعمل (مصادق عليه).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# ثم إنشاء عميل — هنا Go؛ كل لغة مدعومة تعمل بنفس الطريقة.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+تحمل المكالمات رمز الحامل الخاص بك في رأس بيانات `authorization`، تمامًا كما يحمل REST الرمز في رأس `Authorization`. تصل الأخطاء كرمز حالة gRPC في تذييلات الاستجابة بدلاً من رمز حالة HTTP — يسرد [مرجع Partner](/ar/partner-api/partner/) الرموز التي يجب أن تتوقعها.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  بدايات سريعة لـ gRPC حسب اللغة
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  ما هو gRPC؟
+</LinkButton>
+
+## أو دع خادم MCP يكتبه
+
+إذا كنت تستخدم مساعد ترميز بالذكاء الاصطناعي، فإن خادم MCP الخاص بنا هو الطريق الأسرع. فهو يعرض APIs الخاصة بـ Wink كأدوات يمكن لمساعدك استدعاؤها والتعامل معها، لذا بدلاً من إنشاء عميل كامل والعثور على نقاط النهاية بنفسك، تصف ما تبنيه وتحصل على كود تكامل مصمم حول ذلك.
+
+<LinkButton href="/ar/developers/mcp/" variant="primary">
+  إعداد خادم MCP الخاص بـ Wink
+</LinkButton>
+
+## قراءة إضافية
+
+- [الإعداد](/ar/developers/setup/) — الحسابات، البيئات، والاعتمادات
+- [المصادقة](/ar/developers/authentication/) — الحصول على الرموز وتحديثها
+- [تكامل Webhook](/ar/developers/webhook-integration/) — استقبال الأحداث بدلاً من الاستطلاع المستمر

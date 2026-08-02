@@ -1,0 +1,75 @@
+---
+title: REST og gRPC
+description: Hvernig á að samþætta við Wink Platform yfir REST eða gRPC, búa til viðskiptavin úr okkar skemum og nota MCP þjóninn okkar til að búa til samþættingarkóða fyrir þitt notkunartilvik.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink býður upp á tvær flutningsleiðir. Hvaða leið þú notar fer eftir því hvaða API þú ert að samþætta við.
+
+| | Flutningsleið | Skema | Skjöl |
+| --- | --- | --- | --- |
+| Flest Wink API | REST yfir HTTPS | OpenAPI 3 | Hvaða hópur sem er undir **API** í hliðarstikunni |
+| Partner Integrator API | gRPC yfir HTTP/2 | Protocol Buffers | [Partner](/is/partner-api/partner/) |
+
+<Aside type="note" title="Við birtum ekki lengur tungumálasafn">
+  Handvirkt viðhaldin SDK fylgdu ekki alltaf API-inu sem þau umlykja og náðu aldrei yfir tungumálið sem þú þurftir raunverulega. Búðu til viðskiptavin úr skemanu í staðinn — hann er alltaf uppfærður — eða láttu MCP þjóninn okkar skrifa samþættingarkóða sem er sniðinn að þínu notkunartilviki.
+</Aside>
+
+## Búðu til REST viðskiptavin
+
+Hver API hópur birtir OpenAPI 3 skjal. Beinistu að því með hvaða OpenAPI framleiðanda sem er og þú færð týpískan viðskiptavin á þínu tungumáli.
+
+```bash
+# Skjalið fyrir hópinn er aðgengilegt við hliðina á tilvísunarsíðunni.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  OpenAPI framleiðendur eftir tungumáli
+</LinkButton>
+
+## Búðu til gRPC viðskiptavin
+
+Partner Integrator API er gRPC. Þú býrð til viðskiptavin úr `.proto` skemanu, sem Wink birtir á tvo vegu:
+
+- **Server reflection** — þjónninn lýsir sjálfum sér, svo verkfæri eins og `grpcurl`, Postman og Insomnia geta fundið skemuna í keyrslu án þess að þurfa að hlaða niður skrám. Reflection krefst sama bera token og önnur köll.
+- **`.proto` skrárnar**, ef þú vilt frekar hafa skemuna á staðnum og búa til fyrirfram.
+
+```bash
+# Finndu skemuna frá keyrandi þjón (auðkenndur).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Búðu svo til viðskiptavin — hér í Go; öll studd tungumál virka á svipaðan hátt.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Köll bera bera token þitt í `authorization` metadata hausnum, nákvæmlega eins og REST ber það í `Authorization` hausnum. Villur koma sem gRPC stöðukóði í svari í stað HTTP stöðukóða — [Partner tilvísunin](/is/partner-api/partner/) listar þær stöður sem þú ættir að búast við.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  Hröð upphaf með gRPC eftir tungumáli
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  Hvað er gRPC?
+</LinkButton>
+
+## Eða láttu MCP þjóninn skrifa það
+
+Ef þú notar AI kóðaraðstoð er MCP þjónninn okkar hraðasta leiðin. Hann birtir Wink API sem verkfæri sem aðstoðarmaðurinn þinn getur kallað á og skilið, svo í stað þess að búa til allan viðskiptavin og finna endapunkta sjálfur, lýsir þú því sem þú ert að byggja og færð samþættingarkóða sniðinn að því.
+
+<LinkButton href="/is/developers/mcp/" variant="primary">
+  Settu upp Wink MCP þjóninn
+</LinkButton>
+
+## Frekari lesning
+
+- [Uppsetning](/is/developers/setup/) — reikningar, umhverfi og auðkenni
+- [Auðkenning](/is/developers/authentication/) — að sækja og endurnýja token
+- [Webhook samþætting](/is/developers/webhook-integration/) — að taka á móti atburðum í stað þess að spyrja um þá reglulega

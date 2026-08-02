@@ -1,15 +1,15 @@
 ---
 title: Apa itu Agent?
-description: Pelajari bagaimana Wink mendukung agen perjalanan yang terdaftar.
+description: Pelajari bagaimana Wink mendukung agen perjalanan terdaftar.
 sidebar:
   order: 0
 ---
 
-Solusi kami untuk agen perjalanan yang terdaftar adalah [Wink Agent](https://agent.wink.travel). Ini adalah portal swalayan yang dapat digunakan agen untuk mencari dan memesan atas nama pelanggan mereka serta mendapatkan komisi untuk setiap pemesanan.
+Solusi kami untuk agen perjalanan terdaftar adalah [Wink Agent](https://agent.wink.travel). Ini adalah portal swalayan yang dapat digunakan agen untuk mencari dan memesan atas nama pelanggan mereka serta mendapatkan komisi untuk setiap pemesanan.
 
 Agen perjalanan yang lebih maju dapat memilih untuk mengintegrasikan pada tingkat API untuk tujuan menangani pembayaran dan pencairan di luar platform Wink.
 
-Agen perjalanan memiliki sebagian fitur portal yang sama dengan [Wink Studio](/id/portal/studio/what-is-studio) sehingga kami tidak akan membahasnya lagi di sini.
+Agen perjalanan memiliki sebagian fitur portal yang sama dengan [Studio](/id/portal/studio/what-is-studio) sehingga kami tidak akan membahasnya lagi di sini.
 
 ## Pencarian
 

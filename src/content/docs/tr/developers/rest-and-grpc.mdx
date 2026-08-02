@@ -1,0 +1,75 @@
+---
+title: REST ve gRPC
+description: Wink Platform ile REST veya gRPC üzerinden nasıl entegre olunacağını, şemalarımızdan bir istemci oluşturmayı ve kullanım durumunuza göre entegrasyon kodu oluşturmak için MCP sunucumuzu nasıl kullanacağınızı öğrenin.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink iki taşıma yöntemi sunar. Hangi yöntemi kullanacağınız, entegre olduğunuz API'ye bağlıdır.
+
+| | Taşıma | Şema | Dokümanlar |
+| --- | --- | --- | --- |
+| Çoğu Wink API'si | HTTPS üzerinden REST | OpenAPI 3 | Kenar çubuğundaki **API** altındaki herhangi bir grup |
+| Partner Integrator API | HTTP/2 üzerinden gRPC | Protocol Buffers | [Partner](/tr/partner-api/partner/) |
+
+<Aside type="note" title="Artık dil SDK'ları yayınlamıyoruz">
+  Elle hazırlanan SDK'lar, sarmaladıkları API'lerin gerisinde kalıyordu ve ihtiyacınız olan dili asla tam olarak kapsamıyordu. Bunun yerine şemadan bir istemci oluşturun — her zaman günceldir — veya MCP sunucumuzun kullanım durumunuza göre şekillendirilmiş entegrasyon kodu yazmasına izin verin.
+</Aside>
+
+## Bir REST istemcisi oluşturun
+
+Her API grubu bir OpenAPI 3 dokümanı yayınlar. Herhangi bir OpenAPI oluşturucusunu buna yönlendirin ve dilinizde tiplenmiş bir istemci elde edin.
+
+```bash
+# Bir grubun spesifikasyonu, referans sayfasının yanında sunulur.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  Dile göre OpenAPI oluşturucuları
+</LinkButton>
+
+## Bir gRPC istemcisi oluşturun
+
+Partner Integrator API gRPC'dir. Bir istemciyi `.proto` şemasından oluşturursunuz, Wink bunu iki şekilde yayınlar:
+
+- **Sunucu yansıtması** — sunucu kendini tanımlar, böylece `grpcurl`, Postman ve Insomnia gibi araçlar çalışma zamanında dosya indirmeden şemayı keşfedebilir. Yansıtma, diğer çağrılarla aynı taşıyıcı token gerektirir.
+- **`.proto` dosyaları**, şemayı önceden edinip oluşturmak isterseniz.
+
+```bash
+# Çalışan bir sunucudan şemayı keşfedin (kimlik doğrulamalı).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Ardından bir istemci oluşturun — burada Go; desteklenen her dil aynı şekilde çalışır.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Çağrılar, taşıyıcı token'ınızı `authorization` meta veri başlığında taşır, tıpkı REST'in `Authorization` başlığında taşıması gibi. Hatalar, HTTP durum kodu yerine yanıt sonlarında gRPC durum kodu olarak gelir — [Partner referansı](/tr/partner-api/partner/) beklemeniz gereken durumları listeler.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  Dile göre gRPC hızlı başlangıçlar
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  gRPC nedir?
+</LinkButton>
+
+## Ya da MCP sunucusunun yazmasına izin verin
+
+Bir yapay zeka kodlama asistanı kullanıyorsanız, MCP sunucumuz en hızlı yoldur. Wink API'lerini asistanınızın çağırabileceği ve üzerinde düşünebileceği araçlar olarak sunar, böylece tüm bir istemci oluşturup uç noktaları kendiniz bulmak yerine ne inşa ettiğinizi tanımlarsınız ve kullanım durumunuza göre şekillendirilmiş entegrasyon kodu alırsınız.
+
+<LinkButton href="/tr/developers/mcp/" variant="primary">
+  Wink MCP sunucusunu kurun
+</LinkButton>
+
+## Daha fazla okuma
+
+- [Kurulum](/tr/developers/setup/) — hesaplar, ortamlar ve kimlik bilgileri
+- [Kimlik Doğrulama](/tr/developers/authentication/) — token alma ve yenileme
+- [Webhook Entegrasyonu](/tr/developers/webhook-integration/) — olayları dinlemek yerine almak

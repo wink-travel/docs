@@ -1,0 +1,75 @@
+---
+title: REST in gRPC
+description: Kako se integrirati s platformo Wink prek REST ali gRPC, generirati odjemalca iz naših shem in uporabiti naš MCP strežnik za generiranje integracijske kode za vaš primer uporabe.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink ponuja dva transporta. Kateri uporabite, je odvisno od tega, s katerim API-jem se integrirate.
+
+| | Transport | Shema | Dokumentacija |
+| --- | --- | --- | --- |
+| Večina Wink API-jev | REST prek HTTPS | OpenAPI 3 | Katera koli skupina pod **API** v stranski vrstici |
+| Partner Integrator API | gRPC prek HTTP/2 | Protocol Buffers | [Partner](/sl/partner-api/partner/) |
+
+<Aside type="note" title="Jezikovni SDK-ji niso več objavljeni">
+  Ročno vzdrževani SDK-ji so zaostajali za API-ji, ki so jih ovijali, in nikoli niso pokrivali jezika, ki ste ga dejansko potrebovali. Namesto tega generirajte odjemalca iz sheme — ta je vedno aktualna — ali pa naj naš MCP strežnik napiše integracijsko kodo, prilagojeno vašemu primeru uporabe.
+</Aside>
+
+## Generirajte REST odjemalca
+
+Vsaka skupina API-jev objavi dokument OpenAPI 3. Usmerite kateri koli generator OpenAPI nanj in dobite tipiziranega odjemalca v vašem jeziku.
+
+```bash
+# Specifikacija za skupino je na voljo poleg njene referenčne strani.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  OpenAPI generatorji po jezikih
+</LinkButton>
+
+## Generirajte gRPC odjemalca
+
+Partner Integrator API je gRPC. Odjemalca generirate iz `.proto` sheme, ki jo Wink objavlja na dva načina:
+
+- **Server reflection** — strežnik se sam opiše, tako da orodja, kot so `grpcurl`, Postman in Insomnia, lahko med izvajanjem odkrijejo shemo brez prenosa datotek. Reflection zahteva isti žeton nosilca kot kateri koli drug klic.
+- **Datoteke `.proto`**, če raje vključite shemo in generirate vnaprej.
+
+```bash
+# Odkrijte shemo iz delujočega strežnika (avtenticirano).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Nato generirajte odjemalca — tukaj Go; vsak podprt jezik deluje enako.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Klici nosijo vaš žeton nosilca v metapodatkovnem glavi `authorization`, enako kot REST v glavi `Authorization`. Napake pridejo kot gRPC statusna koda v odzivnih zaključkih namesto kot HTTP statusna koda — [Partnerjeva referenca](/sl/partner-api/partner/) navaja statuse, ki jih lahko pričakujete.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  Hitri začetki gRPC po jezikih
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  Kaj je gRPC?
+</LinkButton>
+
+## Ali pa naj MCP strežnik napiše kodo
+
+Če uporabljate AI pomočnika za kodiranje, je naš MCP strežnik najhitrejša pot. Ponuja Wink API-je kot orodja, ki jih lahko vaš pomočnik kliče in o njih razmišlja, tako da namesto da generirate celoten odjemalec in sami iščete končne točke, opišete, kaj gradite, in dobite integracijsko kodo, prilagojeno temu.
+
+<LinkButton href="/sl/developers/mcp/" variant="primary">
+  Nastavite Wink MCP strežnik
+</LinkButton>
+
+## Nadaljnje branje
+
+- [Nastavitev](/sl/developers/setup/) — računi, okolja in poverilnice
+- [Avtentikacija](/sl/developers/authentication/) — pridobivanje in osveževanje žetonov
+- [Integracija Webhook](/sl/developers/webhook-integration/) — prejemanje dogodkov namesto povpraševanja
