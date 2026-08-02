@@ -2,7 +2,7 @@
 title: Paslaugų teikimo sąlygos
 description: Lengvai prieinamos ir atnaujintos sąlygos visiems mūsų keliautojų vartotojams.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

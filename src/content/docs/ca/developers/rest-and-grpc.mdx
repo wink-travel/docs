@@ -1,0 +1,75 @@
+---
+title: REST i gRPC
+description: Com integrar-se amb la plataforma Wink mitjançant REST o gRPC, generar un client a partir dels nostres esquemes i utilitzar el nostre servidor MCP per generar codi d’integració per al vostre cas d’ús.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink exposa dos transports. Quin utilitzeu depèn de quina API esteu integrant.
+
+| | Transport | Esquema | Documentació |
+| --- | --- | --- | --- |
+| La majoria d’APIs de Wink | REST sobre HTTPS | OpenAPI 3 | Qualsevol grup sota **API** a la barra lateral |
+| Partner Integrator API | gRPC sobre HTTP/2 | Protocol Buffers | [Partner](/ca/partner-api/partner/) |
+
+<Aside type="note" title="Ja no publiquem SDKs per a llenguatges">
+  Els SDKs mantinguts manualment anaven per darrere de les APIs que encapsulaven, i mai cobrien el llenguatge que realment necessitaveu. En lloc d’això, genereu un client a partir de l’esquema — sempre està actualitzat — o deixeu que el nostre servidor MCP escrigui codi d’integració adaptat al vostre cas d’ús.
+</Aside>
+
+## Generar un client REST
+
+Cada grup d’API publica un document OpenAPI 3. Apunteu qualsevol generador OpenAPI a aquest document i obtindreu un client tipat en el vostre llenguatge.
+
+```bash
+# L’especificació per a un grup es serveix al costat de la seva pàgina de referència.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  Generadors OpenAPI per llenguatge
+</LinkButton>
+
+## Generar un client gRPC
+
+La Partner Integrator API és gRPC. Genereu un client a partir de l’esquema `.proto`, que Wink publica de dues maneres:
+
+- **Reflexió del servidor** — el servidor es descriu a si mateix, així que eines com `grpcurl`, Postman i Insomnia poden descobrir l’esquema en temps d’execució sense fitxers per descarregar. La reflexió requereix el mateix token bearer que qualsevol altra crida.
+- **Els fitxers `.proto`**, si preferiu incorporar l’esquema i generar-lo prèviament.
+
+```bash
+# Descobrir l’esquema des d’un servidor en execució (autenticat).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Després genereu un client — aquí Go; cada llenguatge suportat funciona igual.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Les crides porten el vostre token bearer a la capçalera de metadades `authorization`, exactament com REST el porta a la capçalera `Authorization`. Els errors arriben com un codi d’estat gRPC als trailers de la resposta en lloc d’un codi d’estat HTTP — la [referència Partner](/ca/partner-api/partner/) llista els estats que heu d’esperar.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  Inicis ràpids gRPC per llenguatge
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  Què és gRPC?
+</LinkButton>
+
+## O deixeu que el servidor MCP ho escrigui
+
+Si utilitzeu un assistent de codificació AI, el nostre servidor MCP és la ruta més ràpida. Exposa les APIs de Wink com a eines que el vostre assistent pot cridar i raonar, així que en lloc de generar un client complet i trobar els endpoints vosaltres mateixos, descriviu què esteu construint i obtindreu codi d’integració adaptat a això.
+
+<LinkButton href="/ca/developers/mcp/" variant="primary">
+  Configureu el servidor MCP de Wink
+</LinkButton>
+
+## Lectures addicionals
+
+- [Configuració](/ca/developers/setup/) — comptes, entorns i credencials
+- [Autenticació](/ca/developers/authentication/) — obtenir i renovar tokens
+- [Integració Webhook](/ca/developers/webhook-integration/) — rebre esdeveniments en lloc de fer polling

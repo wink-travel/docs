@@ -2,7 +2,7 @@
 title: תנאי השירות
 description: תנאים נגישים ועדכניים לכל משתמשי המטיילים שלנו.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

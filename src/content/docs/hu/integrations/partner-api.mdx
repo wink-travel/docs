@@ -5,7 +5,7 @@ sidebar:
   order: 0
 ---
 
-A Wink **Partner API** az azonosított, nagyobb áteresztőképességű módja annak, hogy az integrátorok lekérdezzék a foglalható utazási készletet — ugyanazt a kínálatot, amely a beágyazható widgetjeinket és a nyilvános böngészési végpontokat működteti, első osztályú programozható felületként elérhetővé téve. Míg az ingyenes Web Components és a nyilvános böngészési végpontok könnyű, emberi felhasználásra szánt beágyazásra készültek, a Partner API olyan rendszerek számára készült, amelyek nagy léptékben keresnek, áraznak és foglalnak. A hozzáférés integrátoronként azonosított, és használat alapján számlázott, így csak az általad ténylegesen küldött forgalomért fizetsz.
+A Wink **Partner API** az azonosított, nagyobb áteresztőképességű módja annak, hogy az integrátorok lekérdezzék a foglalható utazási készletet — ugyanazt a kínálatot, amely táplálja beágyazható widgetjeinket és nyilvános böngészési végpontjainkat, elsőrendű programozható felületként elérhetővé téve. Míg az ingyenes Web Components és a nyilvános böngészési végpontok könnyű, emberi felhasználásra szánt beágyazásra készültek, a Partner API olyan rendszerek számára készült, amelyek nagy léptékben keresnek, áraznak és foglalnak. A hozzáférés integrátoronként azonosított és használat alapján számlázott, így csak az általad ténylegesen küldött forgalomért fizetsz.
 
 ## Tervek és árak
 
@@ -14,12 +14,12 @@ Egy API hívás = egy kérés. A mért használat 1 000 kérésenként kerül sz
 | | Ingyenes | Fizetős | Vállalati |
 |---|---|---|---|
 | **Ár** | 0 USD | Használat alapú | Lépj kapcsolatba velünk |
-| **Legjobb választás** | Értékelés és alacsony forgalmú integrációk | Fizess a használat után, nagy léptékű áteresztőképesség | Egyedi volumen és tárgyalt feltételek |
+| **Legjobb** | Értékelés és alacsony forgalmú integrációk | Fizess a használat után nagy léptékű áteresztőképességért | Egyedi volumen és tárgyalt feltételek |
 | Kérések percenként | 30 (60 burst) | Korlátlan | Korlátlan |
 | Kérések havonta | 10 000 | Korlátlan | Korlátlan |
 | API válaszidő (P95) | — | 500 ms alatt | 500 ms alatt |
 | Ár 1 000 kérésenként | Ingyenes | 1,00 USD | Egyedi |
-| Look-to-book túllépés (1 000 többlet keresés 5 000:1 arány felett) | — | 2,00 USD | Egyedi |
+| Look-to-book túllépés (1 000 többlet lekérdezés 5 000:1 arány felett) | — | 2,00 USD | Egyedi |
 | Lekérdezési korlát válasz | 429 (szünet / havi kemény leállás) | Nincs | Nincs |
 | Szolgáltatási szint megállapodás | — | ✓ | ✓ |
 | Prioritásos támogatás | — | ✓ | ✓ |
@@ -29,18 +29,18 @@ Egy API hívás = egy kérés. A mért használat 1 000 kérésenként kerül sz
 
 ## API referencia
 
-Két OpenAPI felület szolgálja ki a foglalható készletet, és megfelelnek a fenti két szintnek:
+Két OpenAPI felület szolgálja ki a foglalható készletet, amelyek megfelelnek a fenti két szintnek:
 
 - **Ingyenes — Fogyasztói / Foglalási motor API** (`/api/public/**`): névtelen, böngésző- és widget-felületű. [Böngészd a Foglalási motor referenciát →](/hu/api/booking-engine/)
-- **Fizetős — Partner Integrátor API** (`/api/partner/**`): azonosított, használat alapú, nagy léptékű szerver-szerver integrációra készült. [Böngészd az Integrátor referenciát →](/hu/integrations-api/integrator/)
+- **Fizetős — Partner integrátor API** (`/api/partner/**`): azonosított, használat alapú, nagy léptékű szerver-szerver integrációra készült. [Böngészd az Integrátor referenciát →](/hu/partner-api/partner/)
 
 ## Hogyan működik a használat és a korlátok
 
 ### Ingyenes szint
 
-Az Ingyenes szint célja, hogy lehetővé tegye az építést, tesztelést és mérsékelt éles forgalom futtatását költség nélkül.
+Az Ingyenes szint célja, hogy költségmentesen építhess, tesztelhess és mérsékelt termelési forgalmat futtathass.
 
-- **Lekérdezési korlát — 30 kérés percenként, 60 kéréses bursttel.** A rövid ideig tartó csúcsok a burst keretből kerülnek elszámolásra. Ha túlléped, az API **HTTP 429 (Túl sok kérés)** választ ad, és **5 perces szünetet** rendel el, mielőtt a kulcs újra forgalmat szolgálna ki. Vissza kell venni a tempóból, és a szünet után újrapróbálkozni, nem szabad folyamatosan bombázni a végpontot.
+- **Lekérdezési korlát — 30 kérés percenként, 60 kéréses bursttel.** A rövid ideig tartó csúcsok a burst keretből kerülnek fedezésre. Ha túlléped, az API **HTTP 429 (Túl sok kérés)** választ ad, és **5 perces szünetet** rendel el, mielőtt a kulcs újra forgalmat szolgálna ki. Vissza kell vonulni és a szünet után újrapróbálkozni, ne bombázd a végpontot.
 - **Havi kvóta — 10 000 kérés naptári hónaponként.** Ha elérted a havi plafont, az API a hónap hátralévő részében **HTTP 429 választ ad** — kemény leállás — és üzenetet küld, hogy iratkozz fel a Fizetős szintre a folytatáshoz. A számláló a következő naptári hónap elején nullázódik.
 
 Az Ingyenes szint nem tartalmaz Szolgáltatási szint megállapodást vagy prioritásos támogatást.
@@ -49,12 +49,12 @@ Az Ingyenes szint nem tartalmaz Szolgáltatási szint megállapodást vagy prior
 
 A Fizetős szint eltávolítja a havi plafont és a lekérdezési korlát miatti szüneteket, és csak a tényleges használat után számláz.
 
-- **Mért kérések — 1,00 USD 1 000 kérésenként.** Nincs havi kéréskorlát és nincs lekérdezési korlát alatti korlátozás normál használat esetén; a számlázás a tényleges volumen alapján történik.
-- **Look-to-book túllépés — 2,00 USD 1 000 többlet keresésenként.** A kínálat egészséges szinten tartásához mérjük a keresések ("look") és a megerősített foglalások arányát. Jogosult vagy **5 000 keresésre foglalásonként** túllépés nélkül. A többlet keresések kiszámítása:
+- **Mért kérések — 1,00 USD 1 000 kérésenként.** Nincs havi kéréskorlát és nincs lekérdezési korlát alatti korlátozás; a számlázás a tényleges volumen alapján történik.
+- **Look-to-book túllépés — 2,00 USD 1 000 többlet lekérdezésenként.** A kínálat egészségének megőrzése érdekében mérjük a keresések ("lekérdezések") és a megerősített foglalások arányát. Jogosult vagy **5 000 lekérdezésre foglalásonként** túllépés nélkül. A többlet lekérdezés kiszámítása:
 
-  `többlet = max(0, keresések − foglalások × 5 000)`
+  `többlet = max(0, lekérdezések − foglalások × 5 000)`
 
-  A túllépés díja **2,00 USD 1 000 többlet keresésenként**. Azok az integrációk, amelyek jól konvertálnak, ritkán fizetnek túllépési díjat; a díj csak a foglaláshoz képest sokkal több keresést végző forgalomra vonatkozik.
+  A túllépés díja **2,00 USD 1 000 többlet lekérdezésenként**. A jól konvertáló integrációk ritkán fizetnek túllépési díjat; a díj csak a foglaláshoz képest túl sok keresést generáló forgalomra vonatkozik.
 
 A Fizetős szint tartalmazza az alábbi Szolgáltatási szint megállapodást — 99,9%-os rendelkezésre állási kötelezettséget és 500 ms alatti P95 válaszidő célt — valamint prioritásos, súlyosság alapú támogatást.
 
@@ -62,26 +62,26 @@ A Fizetős szint tartalmazza az alábbi Szolgáltatási szint megállapodást �
 
 _Hatálybalépés: 2026. július 5. · Verzió 1.0_
 
-Ez a Szolgáltatási szint megállapodás (a "SLA") meghatározza a rendelkezésre állási kötelezettséget, szolgáltatási jóváírásokat és támogatási célokat, amelyeket a Wink ("Wink", "mi", "nekünk") nyújt az ügyfélnek ("Ügyfél", "te") az azonosított Wink Partner API-hoz (a "Partner API" vagy "Szolgáltatás") azon szinteken, ahol az SLA alkalmazandó. Ez az SLA beépül és azzal az Ügyfél és Wink közötti megállapodás ("Megállapodás") hatálya alá tartozik, amely alapján hozzáférsz a Partner API-hoz, és érvényes mindaddig, amíg aktív, fizetős Partner API előfizetéssel rendelkezel. A nagybetűs kifejezések, amelyek itt nincsenek definiálva, a Megállapodásban meghatározott jelentéssel bírnak.
+Ez a Szolgáltatási szint megállapodás (a "SLA") meghatározza a rendelkezésre állási kötelezettséget, szolgáltatási jóváírásokat és támogatási célokat, amelyeket a Wink ("Wink", "mi", "nekünk") nyújt az ügyfélnek ("Ügyfél", "te") az azonosított Wink Partner API-hoz (a "Partner API" vagy "Szolgáltatás") azon szinteken, ahol az SLA alkalmazandó. Ez az SLA beépül és azzal az Ügyfél és Wink közötti megállapodás ("Megállapodás") szabályai szerint irányadó, amely alapján hozzáférsz a Partner API-hoz, és érvényes mindaddig, amíg aktív, fizetős Partner API előfizetéssel rendelkezel. A nagybetűs kifejezések, amelyek itt nincsenek definiálva, a Megállapodásban meghatározott jelentéssel bírnak.
 
 ### 1. Meghatározások
 
 1. **"Rendelkezésre állás"** azt az időszakot jelenti, amikor a Partner API elérhető, hogy elfogadjon és sikeresen válaszoljon megfelelően formált, azonosított kérésekre.
-2. **"Kiesés"** bármely olyan időszak percben mérve, amikor a Partner API nem válaszol sikeresen megfelelően formált, azonosított kérésekre, kivéve az 4. szakaszban meghatározott kizárásokat. Az elszigetelt hibák, amelyek csak elhanyagolható részét érintik a kéréseknek, önmagukban nem minősülnek kiesésnek.
+2. **"Kiesés"** bármely olyan időszak, percben mérve, amikor a Partner API nem válaszol sikeresen megfelelően formált, azonosított kérésekre, kivéve az 4. szakaszban meghatározott kizárásokat. Az elszigetelt hibák, amelyek csak elhanyagolható részét érintik a kéréseknek, önmagukban nem minősülnek kiesésnek.
 3. **"Havi rendelkezésre állási százalék"** adott naptári hónapra a hónap összes percének és a kiesés perceinek különbsége osztva a hónap összes percével, százalékban kifejezve.
 4. **"Ütemezett karbantartás"** a Szolgáltatás tervezett karbantartása, amelyről a Wink előzetesen értesítést adott az 4. szakasz szerint.
-5. **"Szolgáltatási jóváírás"** egy jóváírás, amely a Partner API-ért az adott naptári hónapban általad fizetett vagy fizetendő díjak százalékos arányában kerül kiszámításra, és amely kizárólagos jogorvoslatként alkalmazható a rendelkezésre állási kötelezettség nem teljesítése esetén.
-6. **"Válaszidő"** az az idő, amely Wink szolgáltatási határán belül a megfelelően formált, azonosított kérés fogadásától a válasz küldésének megkezdéséig telik el, kizárva a hálózati átvitel és az ügyfél oldali, Wink által nem befolyásolt időt.
+5. **"Szolgáltatási jóváírás"** olyan jóváírás, amely a Partner API-ért az adott naptári hónapban fizetett vagy fizetendő díjak százalékos arányában kerül kiszámításra, és amely kizárólagos jogorvoslatként alkalmazható a rendelkezésre állási kötelezettség nem teljesítése esetén.
+6. **"Válaszidő"** az az eltelt idő, amely Winkhoz beérkezett megfelelően formált, azonosított kérés fogadásától a válasz küldésének megkezdéséig tart, kizárva a hálózati átvitel és a kliens oldali, Wink által nem befolyásolt időt.
 
 ### 2. Rendelkezésre állási és teljesítménykötelezettség
 
-A Wink kereskedelmi szempontból ésszerű erőfeszítéseket tesz, hogy a Partner API elérhető legyen **havi 99,9%-os rendelkezésre állási százalékkal** minden naptári hónapban (a "Rendelkezésre állási kötelezettség"). A kötelezettség Wink szolgáltatási határán kerül mérésre, és kizárja a Wink ésszerű ellenőrzésén kívüli tényezőket, beleértve az 4. szakaszban leírtakat. Wink felügyeleti rendszerei az irányadó források a havi rendelkezésre állási százalék és a válaszidő mérésére.
+A Wink kereskedelmileg ésszerű erőfeszítéseket tesz, hogy a Partner API elérhető legyen **havi 99,9%-os rendelkezésre állási százalékkal** minden naptári hónapban (a "Rendelkezésre állási kötelezettség"). A kötelezettség Wink szolgáltatási határán mérve értendő, és kizárja a Wink ésszerű ellenőrzésén kívüli tényezőket, beleértve az 4. szakaszban leírtakat. Wink monitorozó rendszerei az irányadó források a havi rendelkezésre állási százalék és a válaszidő mérésére.
 
-Továbbá Wink célul tűzi ki a **95. percentilis (P95) válaszidőt 500 milliszekundum alatt** a sikeres, megfelelően formált, azonosított kérések esetén, a szolgáltatási határon mérve minden naptári hónapban (a "Teljesítménycél"). A Teljesítménycél kizárja az 4. szakaszban leírt tényezőket, azokat a kéréseket, amelyek alkalmazásszintű hibát adnak vissza a kérés miatt, valamint a szokatlanul nagy vagy összetett kötegelt kéréseket. A Teljesítménycél szolgáltatási cél, az 3. szakaszban leírt Szolgáltatási jóváírások kizárólag a **Rendelkezésre állási kötelezettség** nem teljesítése esetén alkalmazhatók, és kizárólagos jogorvoslatként szolgálnak.
+Továbbá Wink célul tűzi ki a **95. percentilis (P95) válaszidőt 500 ms alatt** a sikeres, megfelelően formált, azonosított kérések esetén, Wink szolgáltatási határán mérve minden naptári hónapban (a "Teljesítménycél"). A Teljesítménycél kizárja az 4. szakaszban leírt tényezőket, az alkalmazás szintű hibákat okozó kéréseket, valamint a szokatlanul nagy vagy összetett kötegelt kéréseket. A Teljesítménycél szolgáltatási cél, az 3. szakaszban leírt Szolgáltatási jóváírások kizárólag a **Rendelkezésre állási kötelezettség** nem teljesítése esetén alkalmazandók, és kizárólagos jogorvoslatként szolgálnak.
 
 ### 3. Szolgáltatási jóváírások
 
-Ha a havi rendelkezésre állási százalék bármely naptári hónapban a Rendelkezésre állási kötelezettség alá esik, jogosult lehetsz Szolgáltatási jóváírásra, amely a Partner API díjak adott hónapra fizetett vagy fizetendő összegének százalékos arányában kerül kiszámításra az alábbi táblázat szerint:
+Ha a havi rendelkezésre állási százalék bármely naptári hónapban a kötelezettség alá esik, jogosult lehetsz Szolgáltatási jóváírásra, amely a Partner API díjak adott hónapra fizetett vagy fizetendő összegének százalékos arányában kerül kiszámításra az alábbi táblázat szerint:
 
 | Havi rendelkezésre állási százalék | Szolgáltatási jóváírás |
 |---|---|
@@ -90,40 +90,40 @@ Ha a havi rendelkezésre állási százalék bármely naptári hónapban a Rende
 | 95,0% alatt | 50% |
 
 1. **Jóváírás igénylése.** Szolgáltatási jóváírás igényléséhez írásban kell kérelmet benyújtanod Winknek a kiesés hónapjának végétől számított **harminc (30) napon belül**. A kérelemnek tartalmaznia kell az egyes kiesési események dátumát és időpontját, valamint minden rendelkezésre álló napló- vagy bizonyítékot. A határidőn túl benyújtott kérelmek nem jogosultak jóváírásra.
-2. **Jóváírás formája.** A jóváhagyott Szolgáltatási jóváírások a jövőbeni Partner API díjak ellen kerülnek elszámolásra, készpénzértékkel nem bírnak. Nem visszatérítések, és csak a vonatkozó jogszabályok által előírt esetekben fizetendők ki.
-3. **Maximális jóváírás.** Egyetlen naptári hónapra vonatkozóan a jóváírt Szolgáltatási jóváírások összege nem haladhatja meg az adott hónapra fizetett vagy fizetendő Partner API díjak 50%-át.
-4. **Kizárólagos jogorvoslat.** A Szolgáltatási jóváírások az egyetlen és kizárólagos jogorvoslatot jelentik Wink bármely rendelkezésre állási kötelezettség nem teljesítése vagy bármely más Partner API rendelkezésre állási hiányosság esetén.
+2. **Jóváírás formája.** A jóváhagyott Szolgáltatási jóváírások a jövőbeni Partner API díjak ellen kerülnek jóváírásra, készpénzértékkel nem bírnak. Nem visszatérítések, és csak a vonatkozó jogszabályok által előírt esetekben fizetendők ki.
+3. **Maximális jóváírás.** Egyetlen naptári hónapra vonatkozóan a jóváírások összege nem haladhatja meg az adott hónapra fizetett vagy fizetendő Partner API díjak 50%-át.
+4. **Kizárólagos jogorvoslat.** A Szolgáltatási jóváírások az egyetlen és kizárólagos jogorvoslatot jelentik Wink bármely rendelkezésre állási kötelezettség nem teljesítése vagy egyéb rendelkezésre állási hiányosság esetén.
 
 ### 4. Kizárások
 
-A Rendelkezésre állási kötelezettség és az ebből eredő Szolgáltatási jóváírások nem vonatkoznak, és a Kiesés nem tartalmazza azokat az időszakokat, amikor a Szolgáltatás nem elérhető, felfüggesztett, teljesítménycsökkenést mutat vagy problémás, amely az alábbiakból ered vagy azzal kapcsolatos:
+A rendelkezésre állási kötelezettség és az ebből eredő Szolgáltatási jóváírások nem vonatkoznak, és a kiesés nem tartalmazza azokat az időszakokat, amikor a Szolgáltatás nem elérhető, felfüggesztett, teljesítménycsökkenést vagy problémát mutat, amely az alábbiakból ered vagy azzal kapcsolatos:
 
-1. **Ütemezett karbantartás**, amelyről Wink előzetesen értesítést adott, feltéve, hogy az értesítés ésszerű idővel előre, a Wink által szokásosan használt kommunikációs csatornán történt;
-2. **Vis maior** események vagy egyéb, Wink ésszerű ellenőrzésén kívüli okok, beleértve természeti katasztrófákat, kormányzati intézkedéseket, hálózati vagy közműszolgáltatói hibákat, valamint szolgáltatásmegtagadásos vagy egyéb rosszindulatú támadásokat;
-3. problémák, amelyeket **te** vagy a te berendezésed, szoftvered vagy hálózatod, illetve bármely **harmadik fél** szolgáltatása, terméke vagy szolgáltatója okoz, amely nem áll Wink közvetlen ellenőrzése alatt;
-4. a Szolgáltatás **visszaélése** vagy a Megállapodás, ez az SLA, az elfogadható használati feltételek vagy az alkalmazandó lekérdezési korlátok megsértése, beleértve a Wink által ésszerűen túlzónak ítélt forgalmat, automatizált visszaélést vagy csalást; és
+1. **Ütemezett karbantartás**, amelyről Wink előzetesen értesítést adott, feltéve, hogy az értesítés ésszerű idővel előtte történt, olyan csatornán keresztül, amelyet Wink rendszeresen használ az ügyfelekkel való kommunikációra;
+2. **Vis maior** események vagy egyéb Wink ésszerű ellenőrzésén kívüli okok, beleértve természeti katasztrófákat, kormányzati intézkedéseket, hálózati vagy közműszolgáltatói hibákat, valamint szolgáltatásmegtagadásos vagy egyéb rosszindulatú támadásokat;
+3. problémák, amelyeket **te** vagy a te eszközeid, szoftvereid vagy hálózatod, illetve bármely **harmadik fél** szolgáltatása, terméke vagy szolgáltatója okoz, amely nem áll Wink közvetlen ellenőrzése alatt;
+4. a Szolgáltatás **visszaélése** vagy a Megállapodás, az SLA, az elfogadható használati feltételek vagy az alkalmazandó lekérdezési korlátok megsértése, beleértve a Wink által ésszerűen túlzottnak ítélt forgalmat, automatizált visszaélést vagy csalást; és
 5. bármely **hozzáférés felfüggesztése vagy megszüntetése**, amely a Megállapodás szerint jogszerűen történt, beleértve a nemfizetés miatti felfüggesztést.
 
 ### 5. Támogatás és válaszidő célok
 
-A Wink a Partner API-hoz támogatást nyújt a szokásos munkaidőben, helyi ünnepnapok kivételével. Wink kereskedelmi szempontból ésszerű erőfeszítéseket tesz, hogy a megfelelően benyújtott támogatási kérelmeket az alábbi célzott válaszidőn belül elismerje, a súlyosság alapján, amelyet te rendelsz hozzá és amelyet Wink ésszerűen megerősít:
+A Wink a Partner API-hoz támogatást nyújt a szokásos munkaidőben, helyi ünnepnapok kivételével. Wink kereskedelmileg ésszerű erőfeszítéseket tesz, hogy a megfelelően benyújtott támogatási kérelmeket az alábbi válaszidő célok szerint ismerje el, a súlyosság alapján, amelyet te rendelsz hozzá és amelyet Wink ésszerűen megerősít:
 
-| Súlyosság | Leírás | Célzott első válasz |
+| Súlyosság | Leírás | Cél kezdeti válasz |
 |---|---|---|
-| **Sev 1 — Kritikus** | A Partner API leállt vagy használhatatlan éles környezetben, megkerülő megoldás nélkül. | 4 óra |
+| **Sev 1 — Kritikus** | A Partner API leállt vagy használhatatlan termelésben, megkerülő megoldás nélkül. | 4 óra |
 | **Sev 2 — Jelentős** | Jelentős funkció korlátozott vagy gyengült; van megkerülő megoldás. | 1 munkanap |
 | **Sev 3 — Kisebb** | Általános kérdések, kisebb problémák vagy funkciókérések. | 2 munkanap |
 
-A célzott válaszidők az **első kapcsolatfelvétel** időpontját jelölik; nem garantálják a probléma megoldásának idejét. A prioritásos támogatás és a súlyosság alapú célok azon szinteken érvényesek, ahol ezek szerepelnek.
+A cél válaszidők az **első kapcsolatfelvétel** időpontját jelölik; nem garantálják a megoldás idejét. A prioritásos támogatás és a súlyosság alapú célok azokon a szinteken érvényesek, ahol ezek szerepelnek.
 
 ### 6. Adatvédelem és biztonság
 
-A Wink kereskedelmi szempontból ésszerű adminisztratív, műszaki és szervezeti intézkedéseket tart fenn az adatok bizalmasságának, sértetlenségének és rendelkezésre állásának védelmére, amelyeket a Partner API-n keresztül dolgoznak fel, és ezeket időszakosan felülvizsgálja. A Wink személyes adatok feldolgozása a [Adatvédelmi szabályzat](/hu/privacy) és a Megállapodásban foglalt adatkezelési feltételek szerint történik. Te vagy felelős az API hitelesítő adataid biztonságáért, az általad lekért adatok jogszerű használatáért, valamint hogy haladéktalanul értesítsd Winket bármilyen gyanított hitelesítő adat kompromittálásról.
+A Wink kereskedelmileg ésszerű adminisztratív, műszaki és szervezeti intézkedéseket tart fenn, amelyek célja a Partner API-n keresztül feldolgozott adatok bizalmasságának, sértetlenségének és rendelkezésre állásának védelme, és ezeket időszakosan felülvizsgálja. A Wink személyes adatok feldolgozása a [Adatvédelmi szabályzat](/hu/privacy) és a Megállapodásban foglalt adatkezelési feltételek szerint történik. Te vagy felelős az API hitelesítő adataid biztonságáért, az általad lekért adatok jogszerű használatáért, valamint hogy haladéktalanul értesítsd Winket bármilyen gyanított hitelesítő adat kompromittálásról.
 
 ### 7. Felelősségkorlátozás
 
-A Szolgáltatási jóváírások az egyetlen és kizárólagos jogorvoslatot jelentik bármely rendelkezésre állási hiány vagy a Rendelkezésre állási kötelezettség nem teljesítése esetén, és helyettesítik az ebből eredő egyéb felelősséget. Kivéve, ha ezt az SLA kifejezetten másként rendelkezik, a Partner API "ahogy elérhető" alapon kerül biztosításra. A hatályos jogszabályok által megengedett legszélesebb körben a Wink összesített felelőssége a Szolgáltatással kapcsolatban a Megállapodásban meghatározottak szerint korlátozott, és Wink nem felel semmilyen közvetett, véletlen, különleges, következményes vagy büntető jellegű kárért, illetve elmaradt haszonért, bevételért, adatért vagy jóhírnévért, még akkor sem, ha előzetesen értesült az ilyen károk lehetőségéről.
+A Szolgáltatási jóváírások az egyetlen és kizárólagos jogorvoslatot jelentik bármely rendelkezésre állási kötelezettség nem teljesítése esetén, és helyettesítik az ebből eredő egyéb felelősséget. Az SLA kifejezett rendelkezésein túl a Partner API "ahogy elérhető" alapon kerül biztosításra. A vonatkozó jogszabályok által megengedett legszélesebb körben Wink összesített felelőssége a Szolgáltatással kapcsolatban a Megállapodásban meghatározottak szerint korlátozott, és Wink nem felel közvetett, véletlen, különleges, következményes vagy büntető jellegű károkért, illetve elmaradt haszonért, bevételért, adatokért vagy jóhírnévért, még akkor sem, ha ezek lehetőségéről értesült.
 
 ### 8. Időtartam, változások és megszüntetés
 
-Ez az SLA mindaddig érvényes, amíg aktív Partner API előfizetéssel rendelkezel olyan szinten, ahol az SLA alkalmazandó. A Wink időről időre frissítheti ezt az SLA-t; a lényeges változásokat a Wink a szokásos ügyfélkommunikációs csatornán keresztül közli, és a Partner API használatának folytatása a frissítés hatályba lépése után az SLA elfogadását jelenti. Ez az SLA automatikusan megszűnik a Megállapodás vagy a Partner API előfizetés megszűnésével vagy lejártával. Azok a szakaszok, amelyek természetüknél fogva túl kell éljék a megszűnést — beleértve a felhalmozott, de igénybe nem vett Szolgáltatási jóváírás jogosultságot, a felelősségkorlátozást és a meghatározásokat — hatályban maradnak.
+Ez az SLA érvényes mindaddig, amíg aktív Partner API előfizetéssel rendelkezel olyan szinten, ahol az SLA alkalmazandó. Wink időről időre frissítheti ezt az SLA-t; a lényeges változásokat olyan csatornán keresztül közli, amelyet rendszeresen használ az ügyfelekkel való kommunikációra, és a Partner API további használata a frissítés hatályba lépése után az SLA elfogadását jelenti. Ez az SLA automatikusan megszűnik a Megállapodás vagy a Partner API előfizetés megszűnésével vagy lejártával. Azok a szakaszok, amelyek természetüknél fogva túl kell éljék a megszűnést — beleértve a felhalmozott, de igénybe nem vett Szolgáltatási jóváírás jogosultságot, a felelősségkorlátozást és a meghatározásokat — hatályban maradnak.

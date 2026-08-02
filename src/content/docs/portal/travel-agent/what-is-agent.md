@@ -9,7 +9,7 @@ Our solution for registered travel agents is [Wink Agent](https://agent.wink.tra
 
 More advanced travel agents can choose to integrate at the API level for the purposes of handling payment and payouts outside the Wink platform.
 
-Travel agents have a subset of the same portal features as [Wink Studio](/portal/studio/what-is-studio) so we won't cover them again here.
+Travel agents have a subset of the same portal features as [Studio](/portal/studio/what-is-studio) so we won't cover them again here.
 
 ## Search
 

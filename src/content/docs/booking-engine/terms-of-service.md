@@ -2,7 +2,7 @@
 title: Terms of Service
 description: Easily accessible and up-to-date terms for all our traveler users.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

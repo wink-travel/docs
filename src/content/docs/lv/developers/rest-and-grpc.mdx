@@ -1,0 +1,75 @@
+---
+title: REST un gRPC
+description: Kā integrēties ar Wink Platformu, izmantojot REST vai gRPC, ģenerēt klientu no mūsu shēmām un izmantot mūsu MCP serveri, lai ģenerētu integrācijas kodu jūsu lietošanas gadījumam.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink piedāvā divus transporta veidus. Kuru izmantot, ir atkarīgs no tā, ar kuru API jūs integrējaties.
+
+| | Transports | Shēma | Dokumentācija |
+| --- | --- | --- | --- |
+| Lielākā daļa Wink API | REST pār HTTPS | OpenAPI 3 | Jebkura grupa sadaļā **API** sānjoslā |
+| Partneru integratora API | gRPC pār HTTP/2 | Protocol Buffers | [Partneris](/lv/partner-api/partner/) |
+
+<Aside type="note" title="Mēs vairs nepublicējam valodu SDK">
+  Rokas vadīti SDK atpalika no API, ko tie aptvēra, un nekad nepiedāvāja vajadzīgo valodu. Ģenerējiet klientu no shēmas — tā vienmēr ir aktuāla — vai ļaujiet mūsu MCP serverim uzrakstīt integrācijas kodu, kas pielāgots jūsu lietošanas gadījumam.
+</Aside>
+
+## Ģenerēt REST klientu
+
+Katrs API grupas publicē OpenAPI 3 dokumentu. Norādiet jebkuru OpenAPI ģeneratoru uz to, un jūs saņemsiet tipizētu klientu jūsu valodā.
+
+```bash
+# Grupas specifikācija tiek pasniegta blakus tās atsauces lapai.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  OpenAPI ģeneratori pēc valodas
+</LinkButton>
+
+## Ģenerēt gRPC klientu
+
+Partneru integratora API ir gRPC. Jūs ģenerējat klientu no `.proto` shēmas, ko Wink publicē divos veidos:
+
+- **Servera atspoguļojums** — serveris apraksta sevi, tāpēc rīki kā `grpcurl`, Postman un Insomnia var atklāt shēmu izpildes laikā bez failu lejupielādes. Atspoguļojumam nepieciešams tas pats piekļuves tokens kā jebkuram citam izsaukumam.
+- **`.proto` faili**, ja vēlaties shēmu saglabāt un ģenerēt iepriekš.
+
+```bash
+# Atklājiet shēmu no darbojoša servera (autentificēts).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Tad ģenerējiet klientu — šeit Go; katra atbalstītā valoda darbojas līdzīgi.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Izsaukumi nes jūsu piekļuves tokenu `authorization` metadatu galvenē, tieši tāpat kā REST to nes `Authorization` galvenē. Kļūdas tiek saņemtas kā gRPC statusa kods atbildes pēcgabalos, nevis kā HTTP statusa kods — [Partneru atsauce](/lv/partner-api/partner/) uzskaita statusus, ko jāgaida.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  gRPC ātrās sākšanas rokasgrāmatas pēc valodas
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  Kas ir gRPC?
+</LinkButton>
+
+## Vai ļaujiet MCP serverim to uzrakstīt
+
+Ja izmantojat AI kodēšanas palīgu, mūsu MCP serveris ir ātrākais ceļš. Tas piedāvā Wink API kā rīkus, ko jūsu palīgs var izsaukt un analizēt, tāpēc, nevis ģenerējot pilnu klientu un meklējot galapunktus pats, jūs aprakstāt, ko veidojat, un saņemat integrācijas kodu, kas pielāgots tam.
+
+<LinkButton href="/lv/developers/mcp/" variant="primary">
+  Uzstādīt Wink MCP serveri
+</LinkButton>
+
+## Papildu lasāmviela
+
+- [Uzstādīšana](/lv/developers/setup/) — konti, vidi un akreditācijas dati
+- [Autentifikācija](/lv/developers/authentication/) — tokenu iegūšana un atjaunošana
+- [Webhook integrācija](/lv/developers/webhook-integration/) — notikumu saņemšana, nevis pastāvīga pārbaude

@@ -2,7 +2,7 @@
 title: Lietošanas noteikumi
 description: Viegli pieejami un aktuāli noteikumi visiem mūsu ceļotāju lietotājiem.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

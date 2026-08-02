@@ -9,7 +9,7 @@ Il Wink **Partner API** è il modo autenticato e ad alto throughput per gli inte
 
 ## Piani e prezzi
 
-Una chiamata API = una richiesta. L'uso misurato è fatturato ogni 1.000 richieste.
+Una chiamata API = una richiesta. L'uso misurato è fatturato per 1.000 richieste.
 
 | | Gratuito | A pagamento | Enterprise |
 |---|---|---|---|
@@ -32,7 +32,7 @@ Una chiamata API = una richiesta. L'uso misurato è fatturato ogni 1.000 richies
 Due superfici OpenAPI servono l'inventario prenotabile e corrispondono ai due livelli sopra indicati:
 
 - **Gratuito — Consumer / Booking Engine API** (`/api/public/**`): anonimo, rivolto a browser e widget. [Consulta il riferimento Booking Engine →](/it/api/booking-engine/)
-- **A pagamento — Partner Integrator API** (`/api/partner/**`): autenticato, uso misurato, costruito per integrazione server-to-server su larga scala. [Consulta il riferimento Integrator →](/it/integrations-api/integrator/)
+- **A pagamento — Partner Integrator API** (`/api/partner/**`): autenticato, uso misurato, costruito per integrazione server-to-server su larga scala. [Consulta il riferimento Integrator →](/it/partner-api/partner/)
 
 ## Come funzionano l'uso e i limiti
 
@@ -41,16 +41,16 @@ Due superfici OpenAPI servono l'inventario prenotabile e corrispondono ai due li
 Il livello gratuito è progettato per permetterti di costruire, testare e gestire un traffico di produzione modesto senza costi.
 
 - **Limite di velocità — 30 richieste al minuto, con una raffica di 60 richieste.** Picchi brevi oltre il tasso sostenuto sono assorbiti dalla quota di raffica. Se lo superi, l'API risponde con **HTTP 429 (Too Many Requests)** e applica una **pausa di 5 minuti** prima che la tua chiave riprenda a servire traffico. Fai una pausa e riprova dopo la finestra di pausa invece di bombardare l'endpoint.
-- **Quota mensile — 10.000 richieste per mese solare.** Una volta raggiunto il limite mensile, l'API restituisce **HTTP 429 per il resto del mese** — un blocco rigido — insieme a un messaggio che ti invita a sottoscrivere il livello a pagamento per continuare. Il contatore si azzera all'inizio del mese solare successivo.
+- **Quota mensile — 10.000 richieste per mese solare.** Una volta raggiunto il limite mensile, l'API restituisce **HTTP 429 per il resto del mese** — un blocco rigido — insieme a un messaggio che invita a sottoscrivere il livello a pagamento per continuare. Il contatore si azzera all'inizio del mese solare successivo.
 
 Il livello gratuito non include un Service Level Agreement né supporto prioritario.
 
 ### Livello a pagamento
 
-Il livello a pagamento rimuove il limite mensile e le pause per superamento del limite, e ti fattura solo per ciò che usi.
+Il livello a pagamento rimuove il limite mensile e le pause per superamento del limite di velocità, e ti fattura solo per ciò che usi.
 
-- **Richieste misurate — 1,00 $ per 1.000 richieste.** Non c'è un limite mensile di richieste né throttling del limite di velocità in condizioni normali; vieni fatturato in base al volume effettivo.
-- **Eccedenza look-to-book — 2,00 $ per 1.000 look in eccesso.** Per mantenere l'offerta sana, misuriamo il rapporto tra ricerche ("look") e prenotazioni confermate. Hai diritto a **5.000 look per prenotazione** prima che si applichi l'eccedenza. I look in eccesso si calcolano come:
+- **Richieste misurate — 1,00 $ per 1.000 richieste.** Non c'è un limite mensile di richieste né throttling del limite di velocità in condizioni normali; paghi in base al volume effettivo.
+- **Eccedenza look-to-book — 2,00 $ per 1.000 look in eccesso.** Per mantenere sana l'offerta, misuriamo il rapporto tra ricerche ("look") e prenotazioni confermate. Hai diritto a **5.000 look per prenotazione** prima che si applichi l'eccedenza. I look in eccesso si calcolano come:
 
   `excess = max(0, looks − bookings × 5,000)`
 
@@ -70,7 +70,7 @@ Questo Service Level Agreement (il "SLA") definisce l'impegno di disponibilità,
 2. **"Downtime"** indica qualsiasi periodo, misurato in minuti, durante il quale il Partner API non risponde con successo a richieste correttamente formate e autenticate, escludendo qualsiasi periodo rientrante nelle Esclusioni indicate nella Sezione 4. Errori isolati che interessano una frazione irrilevante di richieste non costituiscono, di per sé, Downtime.
 3. **"Percentuale di Uptime Mensile"** indica, per un dato mese solare, il numero totale di minuti in quel mese meno i minuti totali di Downtime, diviso per il numero totale di minuti in quel mese, espresso in percentuale.
 4. **"Manutenzione Programmata"** indica la manutenzione pianificata del Servizio per la quale Wink ha fornito un preavviso in conformità con la Sezione 4.
-5. **"Credito di Servizio"** indica un credito, calcolato come percentuale delle tariffe pagate o dovute da te per il Partner API nel mese solare interessato, che viene applicato contro future tariffe del Partner API come unico ed esclusivo rimedio per il mancato rispetto dell'impegno di Uptime.
+5. **"Credito di Servizio"** indica un credito, calcolato come percentuale delle tariffe pagate o pagabili da te per il Partner API nel mese solare interessato, che viene applicato contro future tariffe del Partner API come unico ed esclusivo rimedio per il mancato rispetto dell'impegno di Uptime.
 6. **"Tempo di Risposta"** indica il tempo trascorso tra la ricezione da parte di Wink di una richiesta correttamente formata e autenticata al confine del servizio di Wink e il momento in cui Wink inizia a restituire la risposta, escludendo il transito di rete e qualsiasi tempo lato client fuori dal controllo di Wink.
 
 ### 2. Impegno di Disponibilità e Prestazioni
@@ -81,7 +81,7 @@ Wink si impegna inoltre a un **Tempo di Risposta al 95° percentile (P95) inferi
 
 ### 3. Crediti di Servizio
 
-Se la Percentuale di Uptime Mensile scende al di sotto dell'Impegno di Uptime in un mese solare, potresti avere diritto a un Credito di Servizio calcolato come percentuale delle tariffe del Partner API pagate o dovute da te per quel mese, secondo la seguente scala:
+Se la Percentuale di Uptime Mensile scende al di sotto dell'Impegno di Uptime in un mese solare, potresti avere diritto a un Credito di Servizio calcolato come percentuale delle tariffe del Partner API pagate o pagabili da te per quel mese, secondo la seguente scala:
 
 | Percentuale di Uptime Mensile | Credito di Servizio |
 |---|---|
@@ -91,14 +91,14 @@ Se la Percentuale di Uptime Mensile scende al di sotto dell'Impegno di Uptime in
 
 1. **Richiesta del credito.** Per ricevere un Credito di Servizio devi inviare una richiesta scritta a Wink entro **trenta (30) giorni** dalla fine del mese solare in cui si è verificata la carenza. La richiesta deve includere le date e gli orari di ogni incidente di Downtime per cui richiedi il credito e qualsiasi log o prova ragionevolmente disponibile. Le richieste inviate dopo questo termine non sono ammissibili.
 2. **Forma del credito.** I Crediti di Servizio approvati sono applicati contro future tariffe del Partner API e non hanno valore in denaro. Non sono rimborsi e non saranno pagati in contanti salvo quanto richiesto dalla legge applicabile.
-3. **Credito massimo.** Il totale dei Crediti di Servizio assegnati per un singolo mese solare non supererà il 50% delle tariffe del Partner API pagate o dovute da te per quel mese.
+3. **Credito massimo.** Il totale dei Crediti di Servizio assegnati per un singolo mese solare non supererà il 50% delle tariffe del Partner API pagate o pagabili da te per quel mese.
 4. **Rimedio esclusivo.** I Crediti di Servizio sono il tuo **unico ed esclusivo rimedio** per qualsiasi mancato rispetto da parte di Wink dell'Impegno di Uptime o di qualsiasi altra carenza di disponibilità del Partner API.
 
 ### 4. Esclusioni
 
 L'Impegno di Uptime e i Crediti di Servizio risultanti non si applicano, e il Downtime non include, alcuna indisponibilità, sospensione, degrado o problema di prestazioni che derivi o sia correlato a:
 
-1. **Manutenzione Programmata** per la quale Wink ha fornito un preavviso, a condizione che tale preavviso sia stato dato con un ragionevole anticipo tramite un canale che Wink usa normalmente per comunicare con i clienti;
+1. **Manutenzione Programmata** per la quale Wink ha fornito un preavviso, purché tale preavviso sia stato dato con un ragionevole anticipo tramite un canale che Wink usa normalmente per comunicare con i clienti;
 2. eventi di **forza maggiore** o altre cause fuori dal ragionevole controllo di Wink, inclusi disastri naturali, atti governativi, guasti di rete o di servizi pubblici, e attacchi denial-of-service o altri attacchi malevoli;
 3. problemi causati da **tuoi** atti od omissioni, dal tuo equipaggiamento, software o rete, o da qualsiasi servizio, prodotto o fornitore **terzo** non sotto il controllo diretto di Wink;
 4. il tuo **abuso del Servizio** o **violazione dell'Accordo**, di questo SLA, dei termini di uso accettabile o dei limiti di velocità applicabili, incluso traffico che Wink ragionevolmente ritiene eccessivo, abuso automatizzato o fraudolento; e
@@ -122,7 +122,7 @@ Wink mantiene misure amministrative, tecniche e organizzative commercialmente ra
 
 ### 7. Limitazione di Responsabilità
 
-I Crediti di Servizio sono l'**unico ed esclusivo rimedio** per qualsiasi indisponibilità o mancato rispetto dell'Impegno di Uptime, e sono forniti in luogo di qualsiasi altra responsabilità derivante da tale mancato rispetto. Salvo quanto espressamente previsto in questo SLA, il Partner API è fornito "così com'è". Nella misura massima consentita dalla legge applicabile, la responsabilità complessiva di Wink derivante o correlata al Servizio è limitata come previsto nell'Accordo, e Wink non è responsabile per danni indiretti, incidentali, speciali, consequenziali o punitivi, né per profitti, ricavi, dati o avviamento persi, anche se avvisata della possibilità di tali danni.
+I Crediti di Servizio sono l'**unico ed esclusivo rimedio** per qualsiasi indisponibilità o mancato rispetto dell'Impegno di Uptime, e sono forniti in luogo di qualsiasi altra responsabilità derivante da tale mancato rispetto. Salvo quanto espressamente previsto in questo SLA, il Partner API è fornito "così com'è". Nella misura massima consentita dalla legge applicabile, la responsabilità complessiva di Wink derivante o relativa al Servizio è limitata come previsto nell'Accordo, e Wink non è responsabile per danni indiretti, incidentali, speciali, consequenziali o punitivi, né per profitti, ricavi, dati o avviamento persi, anche se avvisata della possibilità di tali danni.
 
 ### 8. Durata, Modifiche e Risoluzione
 

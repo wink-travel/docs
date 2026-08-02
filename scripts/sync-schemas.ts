@@ -9,8 +9,14 @@
 // instead of being one flat 80+ tag dump. The group ids here must stay in sync with
 // INVENTORY_GROUPS / INTEGRATIONS_GROUPS / PARTNER_GROUPS in astro.config.mjs.
 //
-// Failure mode: if a fetch fails (non-2xx or network error), the existing snapshot
-// is preserved so the build keeps working against the last-good copy.
+// Failure mode: if a fetch fails (network error, 5xx, unparseable body), the existing
+// snapshot is preserved so the build keeps working against the last-good copy, and the
+// run still exits 0 — a backend restarting should not block a docs build.
+//
+// A 404 is treated differently and FAILS the run: springdoc serves a document for every
+// registered group, so a 404 means the group id below no longer exists upstream. That is
+// config drift, never transient, and silently keeping the old snapshot is how the site
+// ends up publishing a months-old copy of an API that has since been renamed.
 
 import { existsSync, mkdirSync, writeFileSync } from "fs";
 import { resolve, dirname } from "path";
@@ -84,19 +90,30 @@ const INVENTORY_GROUPS: readonly string[] = [
   "reference", "extranet", "booking-engine", "studio", "social", "link-manager", "settings", "payment", "user", "travel-agent",
 ];
 
-// Served by integrations-app (INTEGRATIONS_BASE). Its springdoc group is named "partner"
-// (.group("partner") in IntegrationsOpenApiConfig) but the content is the channel-manager /
-// vendor-integration API (/api/channel-manager/**, entity-scoped config, Google Hotel). Map it to
-// the "channel-manager" audience so it does NOT collide with partner-app's Partner Integrator API.
+// Served by integrations-app (INTEGRATIONS_BASE): the channel-manager / vendor-integration API
+// (/api/channel-manager/**, entity-scoped config, Google Hotel).
+//
+// The backend group was renamed "partner" -> "channel-manager" (IntegrationsOpenApiConfig
+// #channelManagerApi) so the group id matches the paths it documents and no longer collides with
+// partner-app's Partner Integrator API. The group/audience remapping this pair used to perform now
+// happens at the source, so both sides are identical -- keep the shape anyway, because it is what
+// makes a future divergence a one-line change instead of a refactor.
 const INTEGRATIONS_GROUPS: readonly { readonly group: string; readonly audience: string }[] = [
-  { group: "partner", audience: "channel-manager" },
+  { group: "channel-manager", audience: "channel-manager" },
 ];
 
-// Served by the standalone partner-app (see PARTNER_BASE), not integrations-app.
-// partner-app registers its springdoc group as "integrator" (.group("integrator") in
-// PartnerOpenApiConfig); the docs audience/schema file is "partner". Map the two.
+// Served by the standalone partner-app (see PARTNER_BASE), not integrations-app. Renamed from
+// "integrator" to "partner" backend-side (PartnerGrpcOpenApiConfig#GRPC_GROUP) once
+// "partner" was freed up above.
+//
+// NOTE: this document now describes partner-app's gRPC surface, generated from the protobuf
+// descriptors -- not the REST controllers under /api/partner/**, whose springdoc group was removed.
+// The REST endpoints are still served; they are simply no longer documented, because gRPC is the
+// transport integrators should build against and the REST controllers go away at cutover. Expect
+// the refreshed snapshot to be far smaller and to contain gRPC-style paths
+// (/wink.grpc.v1.Service/Method).
 const PARTNER_GROUPS: readonly { readonly group: string; readonly audience: string }[] = [
-  { group: "integrator", audience: "partner" },
+  { group: "partner", audience: "partner" },
 ];
 
 type SchemaTarget = {
@@ -133,18 +150,34 @@ const isOpenApiDoc = (value: unknown): boolean => {
   return typeof obj.openapi === "string" || typeof obj.swagger === "string";
 };
 
-const syncOne = async (target: SchemaTarget): Promise<boolean> => {
+// Distinguishes "upstream is having a moment" from "our config is wrong". Both keep the existing
+// snapshot, but only the second is a bug we must not ship past.
+type SyncResult = "refreshed" | "stale" | "unknown-group";
+
+const syncOne = async (target: SchemaTarget): Promise<SyncResult> => {
   const outPath = resolve(SCHEMAS_DIR, target.outFile);
   process.stdout.write(`→ ${target.name}: GET ${target.url}\n`);
   try {
     const res = await fetch(target.url, {
       headers: { Accept: "application/json" },
     });
+    if (res.status === 404) {
+      // springdoc serves a document for every registered group, so a 404 means the group id in
+      // this file no longer exists upstream — a rename or a removed GroupedOpenApi bean. That is
+      // never transient, and treating it as a warning is how the docs site silently serves a
+      // months-old snapshot of an API that has since changed.
+      console.error(
+        `  ✗ HTTP 404 — no springdoc group at this URL. The group id in sync-schemas.ts is stale;\n` +
+        `    check the GroupedOpenApi beans in monorepo-java (open-api/**, apps/*/config).\n` +
+        `    Keeping the existing snapshot at ${outPath}, but this run will fail.`
+      );
+      return "unknown-group";
+    }
     if (!res.ok) {
       console.warn(
         `  ✗ HTTP ${res.status} ${res.statusText} — keeping existing snapshot at ${outPath}`
       );
-      return false;
+      return "stale";
     }
     const body = await res.text();
     let parsed: unknown;
@@ -152,13 +185,13 @@ const syncOne = async (target: SchemaTarget): Promise<boolean> => {
       parsed = JSON.parse(body);
     } catch {
       console.warn(`  ✗ Response was not valid JSON — keeping existing snapshot`);
-      return false;
+      return "stale";
     }
     if (!isOpenApiDoc(parsed)) {
       console.warn(
         `  ✗ Response does not look like an OpenAPI/Swagger doc — keeping existing snapshot`
       );
-      return false;
+      return "stale";
     }
     const pretty = JSON.stringify(parsed, null, 2) + "\n";
     writeFileSync(outPath, pretty, "utf8");
@@ -167,11 +200,11 @@ const syncOne = async (target: SchemaTarget): Promise<boolean> => {
       | undefined;
     const count = paths ? Object.keys(paths).length : 0;
     console.log(`  ✓ wrote ${target.outFile} (${count} path(s))`);
-    return true;
+    return "refreshed";
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
     console.warn(`  ✗ ${message} — keeping existing snapshot at ${outPath}`);
-    return false;
+    return "stale";
   }
 };
 
@@ -179,16 +212,26 @@ const main = async (): Promise<void> => {
   console.log(`Syncing schemas from ${ENV}\n  api          = ${API_BASE}\n  integrations = ${INTEGRATIONS_BASE}\n  partner      = ${PARTNER_BASE}\n`);
   ensureDir(SCHEMAS_DIR);
   // Sequential to keep the log readable and avoid hammering the backend.
-  const results: boolean[] = [];
+  const results: SyncResult[] = [];
   for (const target of targets) {
     results.push(await syncOne(target));
   }
-  const okCount = results.filter(Boolean).length;
+  const okCount = results.filter((r) => r === "refreshed").length;
+  const unknownGroups = results.filter((r) => r === "unknown-group").length;
   console.log(`\nDone: ${okCount}/${targets.length} schemas refreshed.`);
   if (okCount < targets.length) {
     console.log(
       "Note: failed fetches do not overwrite existing snapshots. Re-run when upstream recovers."
     );
+  }
+  if (unknownGroups > 0) {
+    // Exit non-zero so a group rename cannot slip through a green run. Transient failures still
+    // exit 0 — the point is to fail on config drift, not on a backend restarting.
+    console.error(
+      `\n✗ ${unknownGroups} group id(s) no longer exist upstream. Fix the ids in this file before ` +
+      `publishing; the site would otherwise build against stale snapshots without saying so.`
+    );
+    process.exit(1);
   }
 };
 

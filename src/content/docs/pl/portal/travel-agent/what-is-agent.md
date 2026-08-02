@@ -5,11 +5,11 @@ sidebar:
   order: 0
 ---
 
-Nasze rozwiązanie dla zarejestrowanych agentów turystycznych to [Wink Agent](https://agent.wink.travel). To portal samoobsługowy, z którego agenci mogą korzystać, aby wyszukiwać i rezerwować w imieniu swoich klientów oraz zarabiać prowizję za każdą rezerwację.
+Naszym rozwiązaniem dla zarejestrowanych agentów turystycznych jest [Wink Agent](https://agent.wink.travel). To portal samoobsługowy, z którego agenci mogą korzystać, aby wyszukiwać i rezerwować w imieniu swoich klientów oraz zarabiać prowizję od każdej rezerwacji.
 
 Bardziej zaawansowani agenci turystyczni mogą zdecydować się na integrację na poziomie API w celu obsługi płatności i wypłat poza platformą Wink.
 
-Agenci turystyczni mają dostęp do podzbioru tych samych funkcji portalu co [Wink Studio](/pl/portal/studio/what-is-studio), dlatego nie będziemy ich tutaj ponownie omawiać.
+Agenci turystyczni mają podzbiór tych samych funkcji portalu co [Studio](/pl/portal/studio/what-is-studio), więc nie będziemy ich tutaj ponownie omawiać.
 
 ## Wyszukiwanie
 

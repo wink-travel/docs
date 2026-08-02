@@ -1,0 +1,75 @@
+---
+title: REST 和 gRPC
+description: 如何通过 REST 或 gRPC 与 Wink 平台集成，从我们的模式生成客户端，并使用我们的 MCP 服务器为您的用例生成集成代码。
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink 提供两种传输方式。您使用哪种取决于您正在集成的 API。
+
+| | 传输方式 | 模式 | 文档 |
+| --- | --- | --- | --- |
+| 大多数 Wink API | 基于 HTTPS 的 REST | OpenAPI 3 | 侧边栏中 **API** 下的任意分组 |
+| Partner Integrator API | 基于 HTTP/2 的 gRPC | Protocol Buffers | [Partner](/zh-CN/partner-api/partner/) |
+
+<Aside type="note" title="我们不再发布语言 SDK">
+  手工维护的 SDK 总是滞后于它们所封装的 API，并且从未覆盖您实际需要的语言。请改为从模式生成客户端——它始终是最新的——或者让我们的 MCP 服务器根据您的用例生成集成代码。
+</Aside>
+
+## 生成 REST 客户端
+
+每个 API 分组都会发布一个 OpenAPI 3 文档。将任何 OpenAPI 生成器指向它，即可获得您所用语言的类型化客户端。
+
+```bash
+# 分组的规范文件与其参考页面一起提供。
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  按语言分类的 OpenAPI 生成器
+</LinkButton>
+
+## 生成 gRPC 客户端
+
+Partner Integrator API 使用 gRPC。您可以从 Wink 以两种方式发布的 `.proto` 模式生成客户端：
+
+- **服务器反射** — 服务器自我描述，因此像 `grpcurl`、Postman 和 Insomnia 这样的工具可以在运行时发现模式，无需下载文件。反射需要与其他调用相同的 Bearer 令牌。
+- **`.proto` 文件**，如果您希望将模式作为依赖并提前生成。
+
+```bash
+# 从运行中的服务器发现模式（需认证）。
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# 然后生成客户端——这里以 Go 为例；所有支持的语言方式相同。
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+调用时会在 `authorization` 元数据头中携带您的 Bearer 令牌，正如 REST 在 `Authorization` 头中携带一样。错误以 gRPC 状态码形式出现在响应尾部，而非 HTTP 状态码——[Partner 参考](/zh-CN/partner-api/partner/) 列出了您应预期的状态码。
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  按语言分类的 gRPC 快速入门
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  什么是 gRPC？
+</LinkButton>
+
+## 或让 MCP 服务器帮您生成
+
+如果您使用 AI 编码助手，我们的 MCP 服务器是最快的途径。它将 Wink 的 API 作为您的助手可以调用和推理的工具，因此您无需生成完整客户端并自行查找端点，只需描述您正在构建的内容，即可获得围绕该内容定制的集成代码。
+
+<LinkButton href="/zh-CN/developers/mcp/" variant="primary">
+  设置 Wink MCP 服务器
+</LinkButton>
+
+## 进一步阅读
+
+- [设置](/zh-CN/developers/setup/) — 账户、环境和凭证
+- [认证](/zh-CN/developers/authentication/) — 获取和刷新令牌
+- [Webhook 集成](/zh-CN/developers/webhook-integration/) — 接收事件而非轮询

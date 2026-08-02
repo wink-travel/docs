@@ -1,0 +1,75 @@
+---
+title: REST a gRPC
+description: Jak integrovat s platformou Wink přes REST nebo gRPC, vygenerovat klienta ze schémat a použít náš MCP server k vytvoření integračního kódu pro váš případ použití.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink nabízí dva transporty. Který použijete, závisí na tom, s jakým API integrujete.
+
+| | Transport | Schéma | Dokumentace |
+| --- | --- | --- | --- |
+| Většina Wink API | REST přes HTTPS | OpenAPI 3 | Jakákoliv skupina pod **API** v postranním panelu |
+| Partner Integrator API | gRPC přes HTTP/2 | Protocol Buffers | [Partner](/cs/partner-api/partner/) |
+
+<Aside type="note" title="Již nevydáváme jazykové SDK">
+  Ručně udržovaná SDK zaostávala za API, která obalovala, a nikdy nepokrývala jazyk, který jste skutečně potřebovali. Místo toho vygenerujte klienta ze schématu — je vždy aktuální — nebo nechte náš MCP server napsat integrační kód přizpůsobený vašemu případu použití.
+</Aside>
+
+## Vygenerujte REST klienta
+
+Každá skupina API publikuje dokument OpenAPI 3. Směřujte na něj jakýkoliv OpenAPI generátor a získáte typovaný klient ve vašem jazyce.
+
+```bash
+# Specifikace pro skupinu je dostupná vedle její referenční stránky.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  OpenAPI generátory podle jazyka
+</LinkButton>
+
+## Vygenerujte gRPC klienta
+
+Partner Integrator API je gRPC. Klienta vygenerujete ze schématu `.proto`, které Wink publikuje dvěma způsoby:
+
+- **Server reflection** — server se popisuje sám, takže nástroje jako `grpcurl`, Postman a Insomnia mohou schéma objevit za běhu bez nutnosti stahovat soubory. Reflection vyžaduje stejný bearer token jako jakýkoliv jiný požadavek.
+- **Soubory `.proto`**, pokud raději chcete schéma mít lokálně a generovat předem.
+
+```bash
+# Objevte schéma z běžícího serveru (autentizováno).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Pak vygenerujte klienta — zde Go; každý podporovaný jazyk funguje stejně.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Volání nesou váš bearer token v metadatovém hlavičce `authorization`, stejně jako REST v hlavičce `Authorization`. Chyby přicházejí jako gRPC status kód v odpovědních trailech místo HTTP status kódu — [Partner reference](/cs/partner-api/partner/) uvádí statusy, které byste měli očekávat.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  gRPC rychlé starty podle jazyka
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  Co je gRPC?
+</LinkButton>
+
+## Nebo nechte MCP server napsat kód
+
+Pokud používáte AI asistenta pro kódování, náš MCP server je nejrychlejší cesta. Zpřístupňuje Wink API jako nástroje, které váš asistent může volat a analyzovat, takže místo generování celého klienta a hledání endpointů sami, popíšete, co stavíte, a získáte integrační kód přizpůsobený tomu.
+
+<LinkButton href="/cs/developers/mcp/" variant="primary">
+  Nastavte Wink MCP server
+</LinkButton>
+
+## Další čtení
+
+- [Nastavení](/cs/developers/setup/) — účty, prostředí a přihlašovací údaje
+- [Autentizace](/cs/developers/authentication/) — získávání a obnovování tokenů
+- [Webhook integrace](/cs/developers/webhook-integration/) — přijímání událostí místo dotazování

@@ -1,0 +1,75 @@
+---
+title: REST 和 gRPC
+description: 如何透過 REST 或 gRPC 與 Wink 平台整合，從我們的 schema 生成客戶端，並使用 MCP 伺服器為您的使用案例生成整合程式碼。
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink 提供兩種傳輸方式。您使用哪一種取決於您要整合的 API。
+
+| | 傳輸方式 | Schema | 文件 |
+| --- | --- | --- | --- |
+| 大多數 Wink API | 透過 HTTPS 的 REST | OpenAPI 3 | 側邊欄中 **API** 下的任一群組 |
+| Partner Integrator API | 透過 HTTP/2 的 gRPC | Protocol Buffers | [Partner](/zh-TW/partner-api/partner/) |
+
+<Aside type="note" title="我們不再發布語言 SDK">
+  手動維護的 SDK 總是落後於它們所包裝的 API，且從未涵蓋您實際需要的語言。請改為從 schema 生成客戶端 — 它永遠是最新的 — 或讓我們的 MCP 伺服器根據您的使用案例撰寫整合程式碼。
+</Aside>
+
+## 生成 REST 客戶端
+
+每個 API 群組都會發布一份 OpenAPI 3 文件。將任何 OpenAPI 產生器指向該文件，即可獲得您語言的型別化客戶端。
+
+```bash
+# 群組的規格會與其參考頁面一起提供。
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  按語言分類的 OpenAPI 產生器
+</LinkButton>
+
+## 生成 gRPC 客戶端
+
+Partner Integrator API 採用 gRPC。您可以從 Wink 以兩種方式發布的 `.proto` schema 生成客戶端：
+
+- **伺服器反射** — 伺服器會自我描述，因此像 `grpcurl`、Postman 和 Insomnia 這類工具可以在執行時發現 schema，無需下載任何檔案。反射需要與其他呼叫相同的 bearer token。
+- **`.proto` 檔案**，如果您想要自行管理 schema 並提前生成。
+
+```bash
+# 從正在運行的伺服器發現 schema（需驗證）。
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# 然後生成客戶端 — 這裡以 Go 為例；所有支援的語言方式相同。
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+呼叫時會在 `authorization` metadata 標頭中攜帶您的 bearer token，與 REST 在 `Authorization` 標頭中攜帶的方式完全相同。錯誤會以 gRPC 狀態碼出現在回應的 trailers 中，而非 HTTP 狀態碼 — [Partner 參考](/zh-TW/partner-api/partner/) 列出了您應該預期的狀態碼。
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  按語言分類的 gRPC 快速入門
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  什麼是 gRPC？
+</LinkButton>
+
+## 或讓 MCP 伺服器為您撰寫
+
+如果您使用 AI 程式碼助理，我們的 MCP 伺服器是最快的路徑。它將 Wink 的 API 作為您的助理可以呼叫和推理的工具，因此您不必生成整個客戶端並自行尋找端點，只需描述您正在構建的內容，即可獲得根據該內容量身打造的整合程式碼。
+
+<LinkButton href="/zh-TW/developers/mcp/" variant="primary">
+  設定 Wink MCP 伺服器
+</LinkButton>
+
+## 延伸閱讀
+
+- [設定](/zh-TW/developers/setup/) — 帳號、環境與憑證
+- [驗證](/zh-TW/developers/authentication/) — 取得與更新 token
+- [Webhook 整合](/zh-TW/developers/webhook-integration/) — 接收事件而非輪詢

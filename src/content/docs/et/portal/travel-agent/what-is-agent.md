@@ -5,11 +5,11 @@ sidebar:
   order: 0
 ---
 
-Meie lahendus registreeritud reisibüroodele on [Wink Agent](https://agent.wink.travel). See on iseteenindusportaal, mida agentuurid saavad kasutada oma klientide nimel otsimiseks ja broneerimiseks ning teenida iga broneeringu pealt komisjonitasu.
+Meie lahendus registreeritud reisibüroodele on [Wink Agent](https://agent.wink.travel). See on iseteenindusportaal, mida agendid saavad kasutada oma klientide nimel otsimiseks ja broneerimiseks ning teenida iga broneeringu pealt komisjonitasu.
 
-Edasijõudnud reisibürood võivad valida API-tasandi integratsiooni, et hallata makseid ja väljamakseid väljaspool Wink platvormi.
+Edasijõudnud reisibürood võivad valida API tasemel integreerimise, et hallata makseid ja väljamakseid väljaspool Wink platvormi.
 
-Reisibüroodel on osa samu portaali funktsioone nagu [Wink Studio](/et/portal/studio/what-is-studio), seega me ei käsitle neid siin uuesti.
+Reisibüroodel on osa samu portaali funktsioone nagu [Studio](/et/portal/studio/what-is-studio), seega me ei käsitle neid siin uuesti.
 
 ## Otsing
 
@@ -19,4 +19,4 @@ Vastasel juhul jätka järgmise jaotisega.
 
 ## API
 
-Arendajad, kes soovivad hallata `Travel Agent` funktsiooni, saavad minna lehele [Developers > API > Travel Agent](/et/api).
+Arendajad, kes soovivad hallata `Travel Agent` funktsiooni, võivad minna lehele [Developers > API > Travel Agent](/et/api).

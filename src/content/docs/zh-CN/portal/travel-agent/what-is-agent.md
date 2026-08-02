@@ -5,11 +5,11 @@ sidebar:
   order: 0
 ---
 
-我们的注册旅行代理解决方案是[Wink Agent](https://agent.wink.travel)。这是一个自助门户，代理可以用来代表客户搜索和预订，并从每笔预订中赚取佣金。
+我们为注册旅行代理提供的解决方案是[Wink Agent](https://agent.wink.travel)。这是一个自助门户，代理可以用来代表客户搜索和预订，并从每笔预订中赚取佣金。
 
-更高级的旅行代理可以选择在API级别进行集成，以便在Wink平台之外处理付款和支付。
+更高级的旅行代理可以选择在API层面进行集成，以便在Wink平台之外处理付款和支付。
 
-旅行代理拥有与[Wink Studio](/zh-CN/portal/studio/what-is-studio)部分相同的门户功能，因此这里不再重复介绍。
+旅行代理拥有与[Studio](/zh-CN/portal/studio/what-is-studio)部分相同的门户功能子集，因此这里不再重复介绍。
 
 ## 搜索
 

@@ -2,7 +2,7 @@
 title: Warunki korzystania z usługi
 description: Łatwo dostępne i aktualne warunki dla wszystkich naszych użytkowników podróżujących.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

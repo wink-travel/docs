@@ -9,7 +9,7 @@ Naša rešitev za registrirane potovalne agente je [Wink Agent](https://agent.wi
 
 Naprednejši potovalni agenti se lahko odločijo za integracijo na ravni API za upravljanje plačil in izplačil zunaj platforme Wink.
 
-Potovalni agenti imajo podmnožico istih funkcij portala kot [Wink Studio](/sl/portal/studio/what-is-studio), zato jih tukaj ne bomo znova obravnavali.
+Potovalni agenti imajo podmnožico istih funkcij portala kot [Studio](/sl/portal/studio/what-is-studio), zato jih tukaj ne bomo znova obravnavali.
 
 ## Iskanje
 

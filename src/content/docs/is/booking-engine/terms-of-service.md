@@ -2,7 +2,7 @@
 title: Skilmálar þjónustu
 description: Auðveldlega aðgengilegir og uppfærðir skilmálar fyrir alla ferðalanga notendur okkar.
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 

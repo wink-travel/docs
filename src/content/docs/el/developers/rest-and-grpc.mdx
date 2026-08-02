@@ -1,0 +1,83 @@
+---
+title: REST και gRPC
+description: Πώς να ενσωματωθείτε με την πλατφόρμα Wink μέσω REST ή gRPC, να δημιουργήσετε έναν πελάτη από τα σχήματά μας και να χρησιμοποιήσετε τον MCP server μας για να δημιουργήσετε κώδικα ενσωμάτωσης για τη δική σας περίπτωση χρήσης.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Η Wink παρέχει δύο μεταφορές. Ποια θα χρησιμοποιήσετε εξαρτάται από το ποιο API ενσωματώνετε.
+
+| | Μεταφορά | Σχήμα | Τεκμηρίωση |
+| --- | --- | --- | --- |
+| Τα περισσότερα APIs της Wink | REST μέσω HTTPS | OpenAPI 3 | Οποιαδήποτε ομάδα κάτω από **API** στην πλαϊνή μπάρα |
+| Partner Integrator API | gRPC μέσω HTTP/2 | Protocol Buffers | [Partner](/el/partner-api/partner/) |
+
+<Aside type="note" title="Δεν δημοσιεύουμε πλέον SDKs γλωσσών">
+  Τα SDKs που διαχειρίζονταν χειροκίνητα υστερούσαν σε σχέση με τα APIs που κάλυπταν και ποτέ δεν κάλυπταν τη γλώσσα που
+  πραγματικά χρειαζόσασταν. Δημιουργήστε έναν πελάτη από το σχήμα — είναι πάντα ενημερωμένο — ή αφήστε τον
+  MCP server μας να γράψει κώδικα ενσωμάτωσης προσαρμοσμένο στη δική σας περίπτωση χρήσης.
+</Aside>
+
+## Δημιουργία REST πελάτη
+
+Κάθε ομάδα API δημοσιεύει ένα έγγραφο OpenAPI 3. Δώστε σε οποιονδήποτε γεννήτορα OpenAPI το έγγραφο και θα λάβετε έναν
+τυποποιημένο πελάτη στη γλώσσα σας.
+
+```bash
+# Το spec για μια ομάδα σερβίρεται δίπλα στη σελίδα αναφοράς της.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  Γεννήτορες OpenAPI ανά γλώσσα
+</LinkButton>
+
+## Δημιουργία gRPC πελάτη
+
+Το Partner Integrator API είναι gRPC. Δημιουργείτε έναν πελάτη από το σχήμα `.proto`, το οποίο η Wink
+δημοσιεύει με δύο τρόπους:
+
+- **Server reflection** — ο server περιγράφει τον εαυτό του, ώστε εργαλεία όπως το `grpcurl`, Postman και Insomnia
+  να μπορούν να ανακαλύψουν το σχήμα κατά την εκτέλεση χωρίς αρχεία για λήψη. Η reflection απαιτεί το ίδιο bearer
+  token όπως και κάθε άλλη κλήση.
+- **Τα αρχεία `.proto`**, αν προτιμάτε να έχετε το σχήμα τοπικά και να δημιουργήσετε τον πελάτη εκ των προτέρων.
+
+```bash
+# Ανακαλύψτε το σχήμα από έναν τρέχοντα server (με αυθεντικοποίηση).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Έπειτα δημιουργήστε έναν πελάτη — εδώ Go; κάθε υποστηριζόμενη γλώσσα λειτουργεί με τον ίδιο τρόπο.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Οι κλήσεις μεταφέρουν το bearer token σας στην κεφαλίδα μεταδεδομένων `authorization`, ακριβώς όπως το REST το μεταφέρει στην κεφαλίδα `Authorization`. Τα σφάλματα επιστρέφονται ως κωδικός κατάστασης gRPC στα trailers της απόκρισης αντί για κωδικό HTTP — η [αναφορά Partner](/el/partner-api/partner/) απαριθμεί τους κωδικούς που πρέπει να περιμένετε.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  Γρήγορα ξεκινήματα gRPC ανά γλώσσα
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  Τι είναι το gRPC;
+</LinkButton>
+
+## Ή αφήστε τον MCP server να το γράψει
+
+Αν χρησιμοποιείτε έναν βοηθό κωδικοποίησης με AI, ο MCP server μας είναι η ταχύτερη διαδρομή. Παρέχει τα APIs της Wink ως
+εργαλεία που ο βοηθός σας μπορεί να καλέσει και να επεξεργαστεί, οπότε αντί να δημιουργήσετε έναν ολόκληρο πελάτη και να βρείτε
+τα endpoints μόνοι σας, περιγράφετε τι κατασκευάζετε και λαμβάνετε κώδικα ενσωμάτωσης προσαρμοσμένο σε αυτό.
+
+<LinkButton href="/el/developers/mcp/" variant="primary">
+  Ρυθμίστε τον MCP server της Wink
+</LinkButton>
+
+## Επιπλέον ανάγνωση
+
+- [Ρύθμιση](/el/developers/setup/) — λογαριασμοί, περιβάλλοντα και διαπιστευτήρια
+- [Αυθεντικοποίηση](/el/developers/authentication/) — απόκτηση και ανανέωση tokens
+- [Ενσωμάτωση Webhook](/el/developers/webhook-integration/) — λήψη γεγονότων αντί για polling

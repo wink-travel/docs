@@ -9,7 +9,7 @@ Kayıtlı seyahat acenteleri için çözümümüz [Wink Agent](https://agent.win
 
 Daha gelişmiş seyahat acenteleri, ödeme ve ödemeleri Wink platformu dışında yönetmek amacıyla API düzeyinde entegrasyon yapmayı tercih edebilirler.
 
-Seyahat acenteleri, [Wink Studio](/tr/portal/studio/what-is-studio) ile aynı portal özelliklerinin bir alt kümesine sahiptir, bu yüzden burada tekrar ele almayacağız.
+Seyahat acenteleri, [Studio](/tr/portal/studio/what-is-studio) ile aynı portal özelliklerinin bir alt kümesine sahiptir, bu yüzden burada tekrar ele almayacağız.
 
 ## Arama
 

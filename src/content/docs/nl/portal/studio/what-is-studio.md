@@ -1,15 +1,17 @@
 ---
 title: Wat is Studio?
-description: Deze pagina legt de moeilijkheden uit bij het verkrijgen van toegang tot reisvoorraad en hoe het affiliateportaal van Wink dat veel gemakkelijker maakt.
+description: Deze pagina legt de moeilijkheden uit bij het verkrijgen van toegang tot reisvoorraad en hoe de affiliate-portal van Wink dat veel gemakkelijker maakt.
 sidebar:
   order: 0
 ---
 
-Historisch gezien vereiste het verkrijgen van toegang tot en het verkopen van alles wat met reizen te maken heeft, NDA's en complexe integraties tussen twee [of meer] gelicentieerde reisbureaubedrijven die voldoende technische expertise hadden, toegang tot een betalingsgateway en beide PCI DSS-compliant waren. Het was een kostbare en tijdrovende inspanning en de toetredingsdrempel was onmogelijk hoog voor gewone mensen.
+Historisch gezien vereiste het verkrijgen van toegang tot en het verkopen van alles wat met reizen te maken heeft, NDA's en complexe integraties tussen twee [of meer] gelicentieerde reisbureaubedrijven die voldoende technische expertise hadden, toegang tot een betaalgateway en beide PCI DSS-compliant waren. Het was een kostbare en tijdrovende inspanning en de toetredingsdrempel was onmogelijk hoog voor gewone mensen.
 
-[Wink Studio](https://studio.wink.travel) is ons affiliateportaal. Het maakt het verkopen van reisvoorraad voor iedereen toegankelijk en net zo eenvoudig als het delen van een link of zo geavanceerd als het runnen van een online reisbureau.
+Studio is de affiliate-kant van [Portal](/nl/portal/overview), onze enkele app op [app.wink.travel](https://app.wink.travel). Het maakt het verkopen van reisvoorraad toegankelijk voor iedereen en net zo eenvoudig als het delen van een link of zo geavanceerd als het runnen van een online reisbureau.
 
-Het affiliateportaal toont beschikbare reisvoorraad van leveranciers (bijv. hotels, hostels, verhuur, ervaringsaanbieders) overal ter wereld. Jouw doel is om de voorraad te vinden die bij jou past en vervolgens de beste manier te gebruiken om die voorraad aan jouw publiek te tonen en te verkopen.
+Er is niets apart om je voor aan te melden en nergens anders om in te loggen — selecteer een affiliate-account in Portal en de Studio-functies die in deze sectie worden beschreven, zijn direct beschikbaar.
+
+Studio toont beschikbare reisvoorraad van leveranciers (bijv. hotels, hostels, verhuur, aanbieders van ervaringen) overal ter wereld. Jouw doel is om de voorraad te vinden die bij jou past en vervolgens de beste manier te gebruiken om die voorraad aan jouw publiek te tonen en te verkopen.
 
 Studio biedt een manier om leveranciers en hun voorraad te doorzoeken. Zodra je iets hebt gevonden dat je bevalt, hebben we veel manieren om die voorraad online te verkopen en vooral via sociale media.
 

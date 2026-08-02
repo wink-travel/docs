@@ -1,0 +1,75 @@
+---
+title: REST và gRPC
+description: Cách tích hợp với Wink Platform qua REST hoặc gRPC, tạo client từ các schema của chúng tôi, và sử dụng server MCP để tạo mã tích hợp cho trường hợp sử dụng của bạn.
+sidebar:
+  order: 7
+---
+
+import { LinkButton, Aside } from '@astrojs/starlight/components';
+
+Wink cung cấp hai phương thức truyền tải. Việc bạn sử dụng phương thức nào phụ thuộc vào API bạn đang tích hợp.
+
+| | Phương thức truyền tải | Schema | Tài liệu |
+| --- | --- | --- | --- |
+| Hầu hết các API của Wink | REST qua HTTPS | OpenAPI 3 | Bất kỳ nhóm nào dưới **API** trong thanh bên |
+| Partner Integrator API | gRPC qua HTTP/2 | Protocol Buffers | [Partner](/vi/partner-api/partner/) |
+
+<Aside type="note" title="Chúng tôi không còn phát hành SDK ngôn ngữ">
+  SDK được duy trì thủ công thường chậm hơn so với các API mà chúng bao bọc, và không bao giờ bao phủ được ngôn ngữ bạn thực sự cần. Thay vào đó, hãy tạo client từ schema — nó luôn cập nhật — hoặc để server MCP của chúng tôi viết mã tích hợp phù hợp với trường hợp sử dụng của bạn.
+</Aside>
+
+## Tạo client REST
+
+Mỗi nhóm API đều xuất bản một tài liệu OpenAPI 3. Chỉ cần trỏ bất kỳ công cụ tạo OpenAPI nào vào đó và bạn sẽ có một client được kiểu hóa trong ngôn ngữ của bạn.
+
+```bash
+# Đặc tả cho một nhóm được phục vụ bên cạnh trang tham chiếu của nó.
+curl -o wink-extranet.json https://api.wink.travel/v3/api-docs/extranet
+
+npx @openapitools/openapi-generator-cli generate \
+  -i wink-extranet.json -g typescript-fetch -o ./wink-client
+```
+
+<LinkButton href="https://openapi-generator.tech/docs/generators" variant="secondary" icon="external">
+  Các công cụ tạo OpenAPI theo ngôn ngữ
+</LinkButton>
+
+## Tạo client gRPC
+
+Partner Integrator API sử dụng gRPC. Bạn tạo client từ schema `.proto`, mà Wink cung cấp theo hai cách:
+
+- **Phản chiếu server** — server tự mô tả, vì vậy các công cụ như `grpcurl`, Postman và Insomnia có thể khám phá schema khi chạy mà không cần tải file. Phản chiếu yêu cầu cùng token bearer như các cuộc gọi khác.
+- **Các file `.proto`**, nếu bạn muốn lưu schema và tạo client trước.
+
+```bash
+# Khám phá schema từ server đang chạy (có xác thực).
+grpcurl -H "authorization: Bearer $WINK_TOKEN" \
+  partner.wink.travel:443 list
+
+# Sau đó tạo client — ví dụ Go; mọi ngôn ngữ được hỗ trợ đều tương tự.
+protoc --go_out=. --go-grpc_out=. partner_lookup.proto
+```
+
+Các cuộc gọi mang token bearer của bạn trong header metadata `authorization`, giống như REST mang trong header `Authorization`. Lỗi được trả về dưới dạng mã trạng thái gRPC trong phần trailers của phản hồi thay vì mã trạng thái HTTP — [tham chiếu Partner](/vi/partner-api/partner/) liệt kê các trạng thái bạn nên mong đợi.
+
+<LinkButton href="https://grpc.io/docs/languages/" variant="secondary" icon="external">
+  Bắt đầu nhanh với gRPC theo ngôn ngữ
+</LinkButton>
+
+<LinkButton href="https://grpc.io/docs/what-is-grpc/introduction/" variant="secondary" icon="external">
+  gRPC là gì?
+</LinkButton>
+
+## Hoặc để server MCP viết mã cho bạn
+
+Nếu bạn sử dụng trợ lý lập trình AI, server MCP của chúng tôi là con đường nhanh nhất. Nó cung cấp các API của Wink như các công cụ mà trợ lý của bạn có thể gọi và suy luận, vì vậy thay vì tạo toàn bộ client và tự tìm các endpoint, bạn chỉ cần mô tả những gì bạn đang xây dựng và nhận mã tích hợp phù hợp với điều đó.
+
+<LinkButton href="/vi/developers/mcp/" variant="primary">
+  Thiết lập server MCP của Wink
+</LinkButton>
+
+## Đọc thêm
+
+- [Thiết lập](/vi/developers/setup/) — tài khoản, môi trường và thông tin xác thực
+- [Xác thực](/vi/developers/authentication/) — lấy và làm mới token
+- [Tích hợp Webhook](/vi/developers/webhook-integration/) — nhận sự kiện thay vì truy vấn liên tục

@@ -9,7 +9,7 @@ Ang aming solusyon para sa mga rehistradong travel agent ay ang [Wink Agent](htt
 
 Ang mga mas advanced na travel agent ay maaaring pumili na mag-integrate sa antas ng API para sa layunin ng paghawak ng bayad at mga payout sa labas ng Wink platform.
 
-Ang mga travel agent ay may bahagi ng parehong mga tampok ng portal tulad ng sa [Wink Studio](/tl/portal/studio/what-is-studio) kaya hindi na namin ito uulitin dito.
+Ang mga travel agent ay may bahagi ng parehong mga tampok ng portal tulad ng sa [Studio](/tl/portal/studio/what-is-studio) kaya hindi na namin ito uulitin dito.
 
 ## Search
 

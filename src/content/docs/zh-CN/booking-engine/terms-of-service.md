@@ -2,7 +2,7 @@
 title: 服务条款
 description: 为所有旅客用户提供轻松访问且最新的条款。
 sidebar:
-  order: 4
+  order: 8
 ---
   
 <iframe 
