@@ -1,0 +1,387 @@
+---
+title: Adaugă-ți Channel Manager-ul
+description: Ghid pas cu pas pentru dezvoltatorii de channel manager și PMS care integrează cu platforma Wink.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Acest ghid îi conduce pe dezvoltatorii de channel manager și PMS prin întregul proces de integrare cu Wink — de la crearea conturilor până la maparea inventarului și efectuarea primului test complet end-to-end.
+
+## Medii
+
+API-ul Channel Manager (Integrations) este disponibil în două medii. Folosește staging pentru toată dezvoltarea și certificarea; treci la producție doar la lansare.
+
+| Mediu       | URL de bază                          |
+| ----------- | ---------------------------------- |
+| Producție   | https://integrations.wink.travel   |
+| Staging     | https://staging-integrations.wink.travel |
+
+## Referință API
+
+API-ul Channel Manager urmează standardele protocolului OTA (SOAP/XML) pentru compatibilitate cu sistemele hoteliere existente. Începe prin a consulta documentația endpoint-urilor partenerilor:
+
+<LinkButton href="/ro/partner-api/partner/">
+  Channel Manager API — Endpoint-uri parteneri
+</LinkButton>
+
+## Pașii integrării
+
+<Steps>
+1. **Creează un cont de utilizator Wink**
+
+   Înregistrează-te la [staging-app.wink.travel](https://staging-app.wink.travel). Toți pașii de mai jos folosesc staging — vei repeta întregul proces în producție înainte de lansare.
+
+2. **Creează contul tău de Affiliate / Channel Manager**
+
+   Sub noul tău utilizator, creează un cont și selectează tipul de cont **Affiliate / Channel Manager**. Acesta este contul cu care se va autentifica integrarea ta.
+
+3. **Înregistrează o aplicație și generează primul token**
+
+   Creează o [Aplicație](/ro/account/applications) și leag-o de contul channel manager din pasul 2. Alege **MACHINE_2_MACHINE** ca tip client — este o integrare server-to-server fără utilizator final de redirecționat. Copiază imediat **Client ID** și **Secret Key**; cheia secretă este afișată o singură dată și nu poate fi recuperată ulterior.
+
+   Aplicația este cea care generează token-ul bearer pe care fiecare apel din acest ghid îl poartă ca `Authorization: Bearer <access_token>`. Schimbă-ți acreditările pentru unul folosind grant-ul `client_credentials` la `https://staging-iam.wink.travel/oauth2/token`, solicitând scope-urile `integrations.read integrations.write`. Fă asta înainte de a continua — nu poți căuta identificatori de cont sau accesa vreun endpoint Channel Manager fără token. Vezi [Autentificare](/ro/developers/authentication) pentru fluxul complet, host-ul de producție și catalogul complet de scope-uri.
+
+4. **Creează un cont Hotel**
+
+   Sub același utilizator, creează un al doilea cont și selectează tipul de cont **Hotel**. Acesta îți oferă o proprietate pe care o poți folosi pentru testare fără a implica un hotel real.
+
+5. **Confirmă că ambele conturi sunt aprobate**
+
+   Niciun cont nu poate fi folosit până nu este aprobat: un cont channel manager neaprobat nu apare în lista channel manager a niciunui hotel, iar un hotel neaprobat nu este returnat de API.
+
+   - **Staging** — aprobarea este automată. Ambele conturi sunt utilizabile imediat după creare, fără a fi nevoie de solicitări.
+   - **Producție** — aprobarea este manuală. Trimite contactului tău Wink pentru integrări numele ambelor conturi și utilizatorul sub care sunt, apoi așteaptă confirmarea înainte de a continua.
+
+6. **Conectează cele două conturi**
+
+   Autentifică-te în contul Hotel și navighează la **Extranet → Distribuție → Channel Manager**. Selectează contul tău channel manager din listă — astfel se leagă proprietatea de integrarea ta. Dacă contul tău nu apare în listă, nu a fost încă aprobat; vezi pasul 5.
+
+7. **Creează un tip de cameră și un plan tarifar de bază**
+
+   În contul Hotel, creează cel puțin un tip de cameră și un plan tarifar. Acestea sunt necesare înainte ca integrarea ta să poată trimite tarife și disponibilitate sau să preia rezervări.
+
+8. **Mapează și testează**
+
+   În propriul tău sistem, mapează identificatorii tipului de cameră și planului tarifar returnați de API. Trimite o actualizare de tarif și una de disponibilitate, apoi fă o rezervare de test și verifică dacă endpoint-ul de preluare a rezervărilor o returnează corect.
+</Steps>
+
+:::note
+Repetă toți pașii de mai sus în producție înainte de lansare, inclusiv înregistrarea unei aplicații separate pentru producție — acreditările de staging nu funcționează în producție. Bugetează timp pentru revizuirea Wink în pasul 5 — spre deosebire de staging, conturile de producție nu sunt aprobate automat. Echipa Wink va migra orice hotel care folosește deja channel manager-ul tău către noul cont de producție.
+:::
+
+## Găsirea identificatorilor contului tău
+
+Fiecare cale API Channel Manager este limitată la propriul tău cont:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` este ID-ul contului (un UUID) al **contului tău channel manager** — nu al hotelului. Recuperează-l, împreună cu ID-ul și starea curentă a fiecărui alt cont deținut de utilizatorul tău, din Platform API:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Răspunsul este un array cu conturile pe care le deții:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Channel Manager-ul tău",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Proprietatea ta de test",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- `id` al înregistrării channel manager este **`{managingEntityIdentifier}`**.
+- `id` al înregistrării `HOTEL` este **`{propertyIdentifier}`**.
+- `status` este locul unde confirmi că fiecare cont este aprobat — cel mai util în producție, unde aprobarea este manuală. **Hotelul** trebuie să aibă statusul `ACTIVE` înainte să poată fi rezervat sau vizibil în API-ul Channel Manager. Contul tău **channel manager** va avea `PENDING_APPROVAL` până treci de [Certificare](#certification); acest lucru este normal și nu blochează dezvoltarea.
+
+:::caution
+Această interogare se face către **Platform API** (`https://staging-api.wink.travel` pe staging, `https://api.wink.travel` în producție), nu către host-urile Channel Manager API listate la [Medii](#medii). Folosește același token de acces — este emis per utilizator, nu per API.
+:::
+
+## Certificare
+
+Certificarea este modul prin care dovedești — și Wink confirmă — că integrarea ta mapează corect inventarul, trimite tarife și disponibilitate și primește rezervări end-to-end. Este concepută să fie self-service: conduci fiecare pas din propriul sistem și trimiți un singur pachet de dovezi la final. Wink revizuiește pachetul și, dacă este aprobat, promovează contul tău Affiliate / Channel Manager de la **PENDING_APPROVAL** la **ACTIVE**.
+
+Certificarea se face integral în mediul staging (`https://staging-integrations.wink.travel`). Nimic din această secțiune nu afectează producția.
+
+### Ce vei dovedi
+
+<Steps>
+1. **Autentificare.** Clientul tău OAuth2 poate obține un token de acces și poate apela cu succes endpoint-ul `/ping` pentru contul tău Affiliate / Channel Manager.
+
+2. **Maparea inventarului.** Poți lista hotelul/hotele conectate la contul tău, prelua master rate-ul (tip cameră × plan tarifar) configurat și identifica corect `masterRateIdentifier` pe care îl va ținti sistemul tău.
+
+3. **Trimiterea tarifelor și disponibilității.** Poți actualiza toate cele șapte zile ale săptămânii de certificare independent — o combinație diferită de sumă, cantitate, flag-uri close-on-arrival / close-on-departure și limite minime/maxime de ședere pentru fiecare zi — și poți citi valorile exacte înapoi de la Wink.
+
+4. **Preluarea rezervărilor.** Poți prelua o rezervare reală de staging făcută pentru proprietatea ta de test, o poți afișa în UI-ul tău PMS/CM cu camera, oaspeții și totalul corect, apoi reflecta o anulare după ce Wink marchează rezervarea ca anulată.
+</Steps>
+
+### Precondiții
+
+Înainte de a începe certificarea, finalizează pașii 1–7 din [Pașii integrării](#integration-steps) astfel încât să ai:
+
+- Un utilizator Wink pe staging cu un cont **Affiliate / Channel Manager** și un cont **Hotel** conectat la acesta (Extranet → Distribuție → Channel Manager). Conturile de staging sunt aprobate automat, deci nu trebuie să soliciți nimic.
+- Cel puțin un **tip de cameră** și un **plan tarifar** create în contul Hotel. Publică hotelul pentru a fi rezervabil la `https://staging-book.wink.travel/hotel/<your-slug>`.
+- O aplicație înregistrată sub contul tău Affiliate / Channel Manager cu **Client ID**, **Secret Key** și scope-urile `integrations.read integrations.write` (vezi [Autentificare](/ro/developers/authentication)).
+- **`managingEntityIdentifier`** al contului tău Affiliate / Channel Manager și **`propertyIdentifier`** al contului Hotel (ambele UUID-uri — vezi [Găsirea identificatorilor contului tău](#finding-your-account-identifiers)).
+
+### Convenții comune pentru cereri
+
+Fiecare cerere din această secțiune folosește aceste headere:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` provine din grant-ul `client_credentials` la `https://staging-iam.wink.travel/oauth2/token` — vezi [Autentificare](/ro/developers/authentication#staging).
+- Header-ul `Wink-Version` este obligatoriu; omisiunea lui nu va direcționa către API-ul JSON v2.
+- `Content-Type: application/json` se adaugă la cererile `PUT` care au corp.
+
+În exemplele de mai jos, placeholder-ele corespund valorilor adunate în
+[Precondiții](#prerequisites):
+
+| Placeholder               | Semnificație                                                                                  |
+|---------------------------|----------------------------------------------------------------------------------------------|
+| `{managingEntityIdentifier}` | ID-ul contului tău Affiliate / Channel Manager (UUID) — vezi [Găsirea identificatorilor contului tău](#finding-your-account-identifiers). |
+| `{propertyIdentifier}`         | ID-ul contului Hotel (proprietate) conectat la contul CM.                                   |
+| `{masterRateIdentifier}`       | Master rate-ul (tip cameră × plan tarifar) pe care îl vei certifica.                        |
+| `{bookingIdentifier}`          | ID-ul rezervării de staging returnat de apelul listei rezervărilor.                        |
+
+### Pasul A — Ping
+
+Confirmă că acreditările tale corespund contului Affiliate / Channel Manager așteptat.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Răspuns așteptat:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Numele contului tău Channel Manager",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+Un răspuns **200** cu un `name` corespunzător este semnalul că autentificarea și rezolvarea contului sunt corecte. `status` va fi `PENDING_APPROVAL` până când Wink te certifică.
+
+### Pasul B — Listează proprietățile
+
+Recuperează lista paginată a hotelurilor legate de contul tău și confirmă că proprietatea ta de test este prezentă.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Răspunsul este o pagină Spring de intrări `ChannelManagerProperty`. Găsește intrarea al cărei `identifier` corespunde cu `{propertyIdentifier}` și notează-i `currencyCode` — îl vei folosi pentru interpretarea actualizărilor tarifare din [Pasul D](#step-d--load-the-certification-week).
+
+:::caution
+O listă goală este un semnal de configurare, nu o cerere incorectă. Un hotel este returnat aici doar după ce este **`ACTIVE`** *și* a fost atribuit contului tău channel manager în Extranet → Distribuție → Channel Manager. Verifică ambele cu `GET /api/managing-entity/list` (vezi [Găsirea identificatorilor contului tău](#finding-your-account-identifiers)) înainte de a depana mai departe.
+În producție, adaugă o a treia cauză: hotelul este invizibil aici până când Wink îl aprobă.
+:::
+
+### Pasul C — Preia master rate-urile
+
+Recuperează proprietatea împreună cu toate master rate-urile (combinații tip cameră × plan tarifar) pe care le publică. Alege pe cel pe care intenționezi să îl certifici și notează-i `identifier` ca `{masterRateIdentifier}`.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Răspunsul este un pachet `PropertyWithRoomRateList`: un bloc `property` plus un array `rooms` de intrări `PropertyRoomRate`. Fiecare intrare expune tipul camerei, planul tarifar, limitele de ocupare, tariful de bază și modificatorii de tarif pe care îi vei păstra când trimiți tarife zilnice.
+
+:::caution
+Certifică-te pe un singur master rate pentru întreaga sesiune de certificare. Maparea altor tipuri de camere și planuri tarifare este așteptată în producție, dar pachetul de dovezi trebuie să arate doar un master rate folosit end-to-end.
+:::
+
+### Pasul D — Încarcă săptămâna de certificare
+
+Încarcă un **calendar tarifar de șapte zile** care acoperă primele șapte zile calendaristice ale lunii **următoare** lunii în care începi certificarea. De exemplu, dacă începi certificarea pe 21 august, țintește 1 septembrie până pe 7 septembrie.
+
+Vei trimite **șapte apeluri `PUT` separate** — câte unul pe zi — unde `startDate == endDate`. Fiecare zi are o combinație diferită intenționat de sumă, cantitate, flag-uri de închidere la sosire / plecare și limite minime/maxime de ședere, astfel încât fiecare câmp editabil să fie testat cel puțin o dată. Valorile sunt în moneda proprietății (notată în Pasul B); omiterea `currencyCode` va seta corect moneda implicită.
+
+| Ziua | Sumă   | Cantitate | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | Ce dovedește |
+|-------|--------|-----------|-----------------|-------------------|-----------------|-----------------|--------------|
+| 1     | 100.00 | 5         | false           | false             | 1               | 30              | Ziua de bază. |
+| 2     | 125.00 | 4         | false           | false             | 1               | 14              | Modificare sumă + cantitate + `maxLengthOfStay`. |
+| 3     | 150.00 | 3         | **true**        | false             | 1               | 30              | Inversare `closedOnArrival`. |
+| 4     | 175.00 | 2         | false           | **true**          | 2               | 7               | Inversare `closedOnDeparture` + fereastră LOS mai restrânsă. |
+| 5     | 200.00 | **0**     | false           | false             | 1               | 30              | Cantitate epuizată. |
+| 6     | 225.00 | 5         | false           | false             | **3**           | **5**           | Fereastră LOS restrictivă. |
+| 7     | 250.00 | 1         | false           | false             | 1               | 30              | Disponibilitate ultimă cameră. |
+
+Corpul cererii pentru Ziua 1 arată astfel. Repetă, ajustând `startDate` / `endDate` / valorile conform tabelului, pentru Zilele 2 până la 7.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Fiecare `PUT` răspunde cu `200` și un array de intrări `PropertyRate` actualizate pentru intervalul trimis (o singură intrare când `startDate == endDate`). Salvează acest răspuns — va face parte din dovezile tale.
+
+:::note
+`master` trebuie să fie `true` la fiecare apel din săptămâna de certificare. Acest lucru indică Wink că actualizarea ta este un tarif șablon, nu o suprascriere per rezervare.
+:::
+
+### Pasul E — Citește înapoi săptămâna de certificare
+
+Recuperează întreaga săptămână într-un singur apel și confirmă că valorile stocate pentru fiecare zi corespund celor trimise în Pasul D — inclusiv flag-urile booleene și fereastra de ședere.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Răspunsul este un `PropertyRoomRateWithRateList`. Array-ul său `rates` trebuie să conțină **șapte** intrări, câte una pe zi, fiecare cu `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`, `minLengthOfStay` și `maxLengthOfStay` încărcate. Orice nepotrivire indică faptul că `PUT`-ul corespunzător din Pasul D nu a fost aplicat corect — corectează și verifică din nou înainte de a continua.
+
+### Pasul F — Fă o rezervare de test
+
+Deschide următorul URL într-un browser, înlocuind `<your-slug>` cu slug-ul contului Hotel publicat în Precondiții:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Selectează o dată de sosire și plecare care să se încadreze complet în săptămâna de certificare, alege combinația tip cameră + plan tarifar pe care ai certificat-o și finalizează rezervarea. Staging folosește o cale de plată de test — nu se va taxa niciun card real.
+
+După afișarea paginii de confirmare, notează **codul rezervării** (format `WNKxxxxx`) afișat oaspetelui.
+
+### Pasul G — Preia rezervarea
+
+Recuperează toate rezervările create pentru proprietatea ta de test într-un interval care acoperă momentul rezervării.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Găsește intrarea al cărei `bookingCode` corespunde codului notat în Pasul F. Notează-i `bookingIdentifier`. Apoi preia acea rezervare individuală:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Răspunsul este un `PropertyBooking`. Importă-l în propriul tău UI PMS / channel manager și confirmă că toate următoarele sunt afișate corect operatorului:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Oaspete: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (suma netă primită de hotel pentru toate camerele)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- Fiecare intrare din `roomStays`: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`, `endDate` și suma per cameră
+
+Fă o captură de ecran a rezervării așa cum apare în UI-ul tău — acea captură este unul dintre artefactele de dovadă necesare.
+
+### Pasul H — Anulează rezervarea și verifică
+
+Rugă echipa Wink să anuleze rezervarea de certificare în numele tău (sau anuleaz-o tu din Extranetul contului Hotel dacă ai permisiunea). Apoi preia din nou aceeași rezervare cu apelul din Pasul G.
+
+Confirmă că răspunsul acum arată:
+
+- `cancelled: true`
+- Un timestamp `cancelDate` completat
+- Un `paymentMethodStatus` care reflectă ciclul de anulare (`CANCELLED`, `PARTIALLY_REFUNDED` sau `FULLY_REFUNDED` în funcție de politica de rambursare)
+
+Importă rezervarea actualizată în UI-ul tău și confirmă că anularea este vizibilă operatorului — status, timestamp-ul anulării și orice indicator de rambursare suportat de UI. Fă o a doua captură de ecran a rezervării anulate în UI-ul tău. Acesta este artefactul final de dovadă.
+
+### Pasul I — Trimite pachetul tău de dovezi
+
+Împachetează următoarele într-un singur arhivă (`.zip`) numită
+`wink-cert-<numele-channel-manager-ului-tău>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **Transcriere API.** Pentru fiecare cerere făcută în Pașii A până la H, capturează cererea HTTP completă (metodă, URL, headerele cererii cu valoarea `Authorization` redată, și corpul JSON pentru cererile `PUT`) și răspunsul HTTP complet (cod status, headere răspuns și corp JSON). Structurează transcrierea astfel încât fiecare pereche cerere/răspuns să fie clar etichetată cu pasul corespunzător (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json` etc.). Fișierele `.http` în text simplu sau un export `.har` unic sunt formate acceptabile.
+
+2. **Captură UI: rezervare activă.** Captura de ecran din Pasul G care arată rezervarea de certificare afișată în UI-ul tău PMS / channel manager, cu oaspetele, datele, tipul camerei, planul tarifar și totalul clar vizibile.
+
+3. **Captură UI: rezervare anulată.** Captura de ecran din Pasul H care arată aceeași rezervare în UI-ul tău după anulare, cu statusul anulat și timestamp-ul clar vizibile.
+
+4. **Sumar certificare.** Un scurt `README.md` în arhivă care listează:
+   - Numele și versiunea channel manager-ului / PMS-ului tău.
+   - `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier` și `bookingIdentifier` folosite.
+   - Slug-ul hotelului de staging (cel `<your-slug>` din `https://staging-book.wink.travel/hotel/<your-slug>`).
+   - Intervalul de date al săptămânii de certificare (Ziua 1 → Ziua 7 în format ISO-8601).
+   - Numele și emailul inginerului care a realizat certificarea.
+</Steps>
+
+Trimite arhiva contactului tău Wink pentru integrări. Wink va revizui, va urmări orice discrepanță și — dacă este aprobată — va schimba statusul contului tău Affiliate / Channel Manager de la `PENDING_APPROVAL` la `ACTIVE`. Integrarea ta devine astfel eligibilă pentru onboarding în producție.
+
+:::tip
+Automatizează capturarea transcrierii. Cele șapte apeluri `PUT` din Pasul D și citirea înapoi din Pasul E sunt cele mai frecvente surse de eșecuri la certificare — un client HTTP interactiv care păstrează fiecare cerere și răspuns pe măsură ce rulează îți va economisi o reluare completă dacă o valoare este greșită cu o zecimală.
+:::
+
+## Notificări webhook
+
+Poți să te abonezi la evenimente webhook channel manager pentru a primi notificări în timp real:
+
+- `channel-manager.update.rate` — Actualizare tarif primită.
+- `channel-manager.update.availability` — Actualizare disponibilitate primită.
+- `channel-manager.update` — Actualizare generală channel manager.
+
+Vezi [Catalogul Evenimentelor Webhook](/ro/developers/webhook-events#channel-manager-events) pentru detalii.
+
+## Lecturi suplimentare
+
+- [Channel Manager API](/ro/partner-api/partner/) — Documentația completă a endpoint-urilor API.
+- [Furnizori de tarife](/ro/portal/extranet/rate-providers) — Gestionarea furnizorilor de tarife în Extranet.
+- [Catalogul Evenimentelor Webhook](/ro/developers/webhook-events) — Toate evenimentele la care te poți abona.
+- [Construiește pe Wink](/ro/developers/build-on-wink) — Prezentare generală a platformei pentru dezvoltatori.

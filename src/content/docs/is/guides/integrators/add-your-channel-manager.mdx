@@ -1,0 +1,421 @@
+---
+title: Bættu við þínum Channel Manager
+description: Skref-fyrir-skref leiðarvísir fyrir þróunaraðila Channel Manager og PMS sem tengjast Wink vettvanginum.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Þessi leiðarvísir leiðir þróunaraðila Channel Manager og PMS í gegnum alla ferlið við að tengjast Wink — frá því að stofna reikninga þína til að kortleggja birgðir og keyra fyrsta end-to-end prófið þitt.
+
+## Umhverfi
+
+Channel Manager (Integrations) API er í boði í tveimur umhverfum. Notaðu staging fyrir alla þróun og vottun; skiptu svo yfir í framleiðslu aðeins við gangsetningu.
+
+| Umhverfi   | Grunnslóð |
+| ----------- | -------- |
+| Framleiðsla | https://integrations.wink.travel |
+| Staging     | https://staging-integrations.wink.travel |
+
+## API tilvísun
+
+Channel Manager API fylgir OTA samskiptareglum (SOAP/XML) til samhæfingar við núverandi hótelkerfi. Byrjaðu á að skoða skjöl um partner endpoint:
+
+<LinkButton href="/is/partner-api/partner/">
+  Channel Manager API — Partner endpoints
+</LinkButton>
+
+## Skref í samþættingu
+
+<Steps>
+1. **Búðu til Wink notendareikning**
+
+   Skráðu þig á [staging-app.wink.travel](https://staging-app.wink.travel). Öll skref hér að neðan nota staging — þú munt endurtaka ferlið í framleiðslu fyrir gangsetningu.
+
+2. **Búðu til Affiliate / Channel Manager reikning**
+
+   Undir nýja notandanum þínum, stofnaðu reikning og veldu **Affiliate / Channel Manager** reikningstegund. Þetta er reikningurinn sem samþættingin þín mun auðkenna sig með.
+
+3. **Skráðu umsókn og fáðu fyrsta token**
+
+   Búðu til [Application](/is/account/applications) og tengdu hana við channel manager reikninginn úr skrefi 2. Veldu **MACHINE_2_MACHINE** sem viðskiptavinategund — þetta er þjónustuframkvæmd milli netþjóna án endanlegs notanda til að beina. Afritaðu **Client ID** og **Secret Key** strax; leynilykillinn er sýndur aðeins einu sinni og er ekki hægt að nálgast aftur.
+
+   Umsóknin býr til bearer token sem hver köllun í þessari leiðarvísun ber sem `Authorization: Bearer <access_token>`. Skiptu á viðurkenningargögnum þínum fyrir token með `client_credentials` grant á móti `https://staging-iam.wink.travel/oauth2/token`, og biðjið um `integrations.read integrations.write` réttindi. Gerðu þetta áður en þú heldur áfram — þú getur ekki leitað að reikningsauðkennum né náð í neinn Channel Manager endpoint án token. Sjáðu [Authentication](/is/developers/authentication) fyrir fulla ferlið, framleiðsluvettvanginn og fulla réttindaskrá.
+
+4. **Búðu til Hótelreikning**
+
+   Undir sama notanda, stofnaðu annan reikning og veldu **Hotel** reikningstegund. Þetta gefur þér eign sem þú getur notað til prófana án þess að tengja raunverulegt hótel.
+
+5. **Staðfestu að báðir reikningar séu samþykktir**
+
+   Enginn reikningur er nothæfur fyrr en hann er samþykktur: ósamþykktur channel manager reikningur birtist ekki í neinni hótelalista channel manager, og ósamþykkt hótel er ekki skilað af API.
+
+   - **Staging** — samþykki er sjálfvirkt. Báðir reikningar eru nothæfir um leið og þú stofnar þá, og ekkert þarf að óska eftir.
+   - **Framleiðsla** — samþykki er handvirkt. Sendu Wink tengiliðinum þínum fyrir samþættingar nöfn beggja reikninga og notandans sem þeir eru undir, og bíddu eftir staðfestingu áður en þú heldur áfram.
+
+6. **Tengdu reikningana tvo**
+
+   Skráðu þig inn á Hótelreikninginn og farðu í **Extranet → Distribution → Channel Manager**. Veldu channel manager reikninginn þinn úr listanum — þetta tengir eignina við samþættinguna þína. Ef reikningurinn þinn er ekki í listanum, hefur hann ekki verið samþykktur enn; sjá skref 5.
+
+7. **Búðu til grunnherbergi og verðáætlun**
+
+   Inni í Hótelreikningnum, búðu til að minnsta kosti eina herbergistegund og eina verðáætlun. Þetta er nauðsynlegt áður en samþættingin þín getur ýtt verðbreytingum og framboði eða sótt bókanir.
+
+8. **Kortleggðu og prófaðu**
+
+   Í þínu eigin kerfi, kortleggðu auðkenni herbergistegundar og verðáætlunar sem API skilar. Ýttu á verðuppfærslu og framboðsuppfærslu, gerðu svo prófbókun og staðfestu að bókunarendurskoðun endpoint skilar henni rétt.
+</Steps>
+
+:::note
+Endurtaktu öll skref hér að ofan í framleiðslu fyrir gangsetningu, þar með talið að skrá sérstaka framleiðsluumsókn — staging auðkenni virka ekki í framleiðslu. Búðu þig undir að Wink skoði í skrefi 5 — ólíkt staging eru framleiðslureikningar ekki samþykktir sjálfkrafa. Wink teymið mun flytja öll hótel sem þegar nota channel manager þinn yfir á nýja framleiðslureikninginn þinn.
+:::
+
+## Finna reikningsauðkenni þín
+
+Hver Channel Manager API slóð er bundin við þinn eigin reikning:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` er reikningsauðkenni (UUID) **þíns channel manager reiknings** — ekki
+hótelsins. Sækja það, ásamt auðkenni og núverandi stöðu allra annarra reikninga sem notandinn þinn
+á, úr Platform API:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Svar er fylki af reikningum sem þú átt:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Your Channel Manager",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Your Test Property",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- `id` fyrir channel manager færslu er þitt **`{managingEntityIdentifier}`**.
+- `id` fyrir `HOTEL` færslu er þitt **`{propertyIdentifier}`**.
+- `status` staðfestir að reikningur sé samþykktur — mest gagnlegt í framleiðslu þar sem
+  samþykki er handvirkt. **Hótelið** þarf að vera `ACTIVE` áður en hægt er að bóka eða sjá það
+  í Channel Manager API. Þinn **channel manager** reikningur les áfram `PENDING_APPROVAL` þar til
+  þú gengur í gegnum [Certification](#certification); það er eðlilegt og hindrar ekki þróun.
+
+:::caution
+Þessi leit keyrir á **Platform API** (`https://staging-api.wink.travel` á staging,
+`https://api.wink.travel` í framleiðslu), ekki Channel Manager API hýsla sem eru skráðir undir
+[Umhverfi](#umhverfi). Notaðu sama aðgangstákn — það er gefið út per notanda, ekki per API.
+:::
+
+## Vottun
+
+Vottun sýnir fram á — og Wink staðfestir — að samþættingin þín kortleggur birgðir rétt,
+ýtir verð- og framboðsbreytingum og tekur við bókunum end-to-end. Hún er hönnuð til að vera
+sjálfsafgreiðslulausn: þú keyrir hvert skref úr þínu eigin kerfi og sendir inn eina sönnunarpakka
+að lokum. Wink skoðar pakkann og, ef samþykkt, breytir stöðu Affiliate / Channel Manager reiknings
+frá **PENDING_APPROVAL** í **ACTIVE**.
+
+Vottun fer alfarið fram á staging umhverfinu
+(`https://staging-integrations.wink.travel`). Ekkert í þessum kafla snertir framleiðslu.
+
+### Hvað þú sanna
+
+<Steps>
+1. **Auðkenning.** OAuth2 viðskiptavinur þinn fær aðgangstákn og kallar með góðum árangri á
+   `/ping` endpoint fyrir Affiliate / Channel Manager reikninginn þinn.
+
+2. **Kortlagning birgða.** Þú getur listað hótelin tengd reikningnum þínum, sótt aðalverð (herbergi × verðáætlun) sem þú stilltir, og rétt fundið `masterRateIdentifier` sem kerfið þitt mun nota.
+
+3. **Ýta verð- og framboðsbreytingum.** Þú getur uppfært alla sjö daga vottunarviku sjálfstætt — mismunandi samsetningar af upphæð, magni, lokun við komu / brottför, og lágmarks / hámarks dvöl á hverjum degi — og lesið nákvæm gildi aftur frá Wink.
+
+4. **Sækja bókun.** Þú getur sótt raunverulega staging bókun sem gerð var á prófeign þinni, sýnt hana í þínu eigin PMS/CM viðmóti með réttum herbergisdvölum, gestum og heildarupphæð, og síðan endurspeglað ógildingu þegar Wink merkir bókunina ógilda.
+</Steps>
+
+### Forsendur
+
+Áður en þú byrjar vottun, ljúktu skrefum 1–7 í [Integration steps](#integration-steps) svo þú hafir:
+
+- Wink notanda á staging með **Affiliate / Channel Manager** reikning og **Hotel** reikning
+  tengdan honum (Extranet → Distribution → Channel Manager). Staging reikningar eru samþykktir
+  sjálfkrafa, svo ekkert þarf að óska eftir hér.
+- Að minnsta kosti eina **herbergistegund** og eina **verðáætlun** búna til í Hótelreikningnum.
+  Birta hótelið svo það sé hægt að bóka á `https://staging-book.wink.travel/hotel/<your-slug>`.
+- Skráða umsókn undir Affiliate / Channel Manager reikningnum með **Client ID**,
+  **Secret Key**, og réttindum `integrations.read integrations.write`
+  (sjá [Authentication](/is/developers/authentication)).
+- **`managingEntityIdentifier`** fyrir Affiliate / Channel Manager reikninginn þinn og
+  **`propertyIdentifier`** fyrir Hótelreikninginn þinn (bæði UUID — sjá
+  [Finna reikningsauðkenni þín](#finna-reikningsauðkenni-thin)).
+
+### Algengar beiðnireglur
+
+Allar beiðnir í þessum kafla nota eftirfarandi hausar:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` kemur frá `client_credentials` grant á
+  `https://staging-iam.wink.travel/oauth2/token` — sjá [Authentication](/is/developers/authentication#staging).
+- `Wink-Version` hausinn er nauðsynlegur; ef hann er ekki með mun ekki vísa á v2 JSON API.
+- `Content-Type: application/json` er bætt við í `PUT` beiðnum sem bera líkama.
+
+Í öllum dæmum hér að neðan samsvara staðgenglar gildum sem þú safnaðir í
+[Forsendum](#forsendur):
+
+| Staðgengill | Merking |
+|---|---|
+| `{managingEntityIdentifier}` | Reikningsauðkenni Affiliate / Channel Manager reiknings þíns (UUID) — sjá [Finna reikningsauðkenni þín](#finna-reikningsauðkenni-thin). |
+| `{propertyIdentifier}`       | Hótelreikningsauðkenni (eign) sem þú tengdir við CM reikninginn. |
+| `{masterRateIdentifier}`     | Aðalverð (herbergi × verðáætlun) sem þú ætlar að votta. |
+| `{bookingIdentifier}`        | Staging bókunarauðkenni sem bókunarlistakall skilar. |
+
+### Skref A — Ping
+
+Staðfestu að auðkenni þín vísi á Affiliate / Channel Manager reikninginn sem þú ætlar þér.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Vænt svar:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Your Channel Manager Account Name",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+Svar með **200** og rétt `name` er merki um að auðkenning og reikningslausn séu rétt. `status`
+les `PENDING_APPROVAL` þar til Wink votta þig.
+
+### Skref B — Listi yfir eignir
+
+Sækja síuskráð lista yfir hótel tengd reikningnum þínum og staðfesta að prófeignin þín sé til staðar.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Svar er Spring `Page` af `ChannelManagerProperty` færslum. Finndu færslu þar sem
+`identifier` passar við þitt `{propertyIdentifier}` og skráðu `currencyCode` — þú þarft það
+til að túlka verðuppfærslur í [Skref D](#skref-d--load-the-certification-week).
+
+:::caution
+Tómur listi er merki um stillingu, ekki röng beiðni. Hótel er aðeins skilað hér þegar það er
+**`ACTIVE`** *og* hefur verið úthlutað channel manager reikningnum þínum undir
+Extranet → Distribution → Channel Manager. Athugaðu bæði með `GET /api/managing-entity/list` (sjá
+[Finna reikningsauðkenni þín](#finna-reikningsauðkenni-thin)) áður en þú reynir að leysa frekar.
+Í framleiðslu bætist við þriðja orsökin: hótelið er ósýnilegt hér þar til Wink hefur samþykkt það.
+:::
+
+### Skref C — Sækja aðalverð
+
+Sækja eignina ásamt öllum aðalverðum (herbergi × verðáætlun samsetningum) sem hún birtir. Veldu þann sem þú ætlar að votta og skráðu `identifier` sem þitt `{masterRateIdentifier}`.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Svarpakki er `PropertyWithRoomRateList`: `property` hluti plús `rooms` fylki af
+`PropertyRoomRate` færslum. Hver færsla sýnir herbergistegund, verðáætlun, hámarksfjölda gesta,
+grunnverð og verðbreytur sem þú heldur þegar þú ýtir daglegum verðbreytingum.
+
+:::caution
+Vottaðu aðeins einn aðalverð fyrir alla vottunarviku. Kortlagning fleiri herbergistegunda og verðáætlana
+er væntanleg í framleiðslu, en sönnunarpakkinn þarf aðeins að sýna einn aðalverð notað end-to-end.
+:::
+
+### Skref D — Hlaða vottunarviku
+
+Hlaða **sjö daga verðdagatali** sem nær yfir fyrstu sjö dagana í mánuðinum **eftir** þann mánuð sem þú byrjar vottun. Til dæmis, ef þú byrjar 21. ágúst, miða við 1. til 7. september.
+
+Þú sendir **sjö sér PUT köll** — eitt fyrir hvern dag — þar sem `startDate == endDate`. Hver dagur hefur mismunandi samsetningu af upphæð, magni, lokun við komu / brottför, og lágmarks / hámarks dvöl svo að hvert skrifanlegt svið sé prófað að minnsta kosti einu sinni. Gildi eru í gjaldmiðli eignarinnar (skráð í Skref B); slepptu `currencyCode` og það stillist rétt sjálfkrafa.
+
+| Dagur | Upphæð | Magn | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | Hvað það sanna |
+|-------|--------|------|-----------------|-------------------|-----------------|-----------------|----------------|
+| 1     | 100.00 | 5    | false           | false             | 1               | 30              | Grunnur dagur. |
+| 2     | 125.00 | 4    | false           | false             | 1               | 14              | Upphæð + magn + `maxLengthOfStay` breyting. |
+| 3     | 150.00 | 3    | **true**        | false             | 1               | 30              | Breyting á `closedOnArrival`. |
+| 4     | 175.00 | 2    | false           | **true**          | 2               | 7               | Breyting á `closedOnDeparture` + þrengri dvöl. |
+| 5     | 200.00 | **0**| false           | false             | 1               | 30              | Uppseld magn. |
+| 6     | 225.00 | 5    | false           | false             | **3**           | **5**           | Þröng dvöl. |
+| 7     | 250.00 | 1    | false           | false             | 1               | 30              | Síðasta herbergi í boði. |
+
+Beiðnarlíkaminn fyrir Dag 1 lítur svona út. Endurtaktu með aðlögun á `startDate` / `endDate` / gildum fyrir daga 2 til 7.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Hvert `PUT` svarar með `200` og fylki af uppfærðum `PropertyRate` færslum fyrir þann dag (einn þegar `startDate == endDate`). Geymdu svarið — það verður hluti af sönnunargögnum þínum.
+
+:::note
+`master` á að vera `true` í öllum köllum vottunarviku. Þetta segir Wink að uppfærslan þín sé sniðmátaverð, ekki yfirskrift fyrir bókun.
+:::
+
+### Skref E — Lesa vottunarvikuna aftur
+
+Sækja alla vikuna í einni köllun og staðfesta að geymd gildi hvers dags passi við þau sem þú sendir í Skrefi D — þar með talið boolean fánana og dvölarmörk.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Svar er `PropertyRoomRateWithRateList`. `rates` fylkið þarf að innihalda **sjö** færslur, eina fyrir hvern dag, með `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`, `minLengthOfStay`, og `maxLengthOfStay` sem þú hlaðaðir. Ef eitthvað passar ekki þýðir það að samsvarandi `PUT` í Skrefi D lenti ekki rétt — lagaðu það og staðfestu aftur áður en þú heldur áfram.
+
+### Skref F — Gerðu prófbókun
+
+Opnaðu eftirfarandi slóð í vafra, skiptu út `<your-slug>` með slug fyrir Hótelreikninginn sem þú birtir í Forsendum:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Veldu komu- og brottfarardagsetningu sem eru innan vottunarvikunnar, veldu herbergistegund + verðáætlun sem þú vottaðir, og ljúktu bókun. Staging notar prófborgunarleið — engin raunveruleg kortagreiðsla fer fram.
+
+Þegar staðfestingarsíðan birtist, skráðu **bókunarkóðann** (í formi `WNKxxxxx`) sem sýndur er gestinum.
+
+### Skref G — Sækja bókunina
+
+Sækja allar bókanir gerðar fyrir prófeignina þína innan tímabils sem nær yfir bókunartímann.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Finndu færslu þar sem `bookingCode` passar við kóðann sem þú skráðir í Skrefi F. Skráðu `bookingIdentifier`. Sækja svo þá einstöku bókun:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Svar er `PropertyBooking`. Flyttu það inn í þitt eigið PMS / channel-manager viðmót og staðfestu að eftirfarandi birtist rétt fyrir rekstraraðila:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Gestur: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (nettu upphæð sem hótelið fær fyrir öll herbergi)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- Hver færsla í `roomStays`: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`,
+  `endDate`, og `amount` fyrir hvert herbergi
+
+Taktu skjáskot af bókuninni eins og hún birtist í þínu viðmóti — það skjáskot er eitt af nauðsynlegum sönnunargögnum.
+
+### Skref H — Hætta við bókun og staðfesta
+
+Biddu Wink teymið um að hætta við vottunarbókunina fyrir þig (eða hættu við sjálfur úr Extranet Hótelreikningsins ef þú hefur leyfi). Sækja svo sömu bókun aftur með kölluninni úr Skrefi G.
+
+Staðfestu að svarið sýni nú:
+
+- `cancelled: true`
+- Fylltan `cancelDate` tímapunkt
+- `paymentMethodStatus` sem endurspeglar ógildingarferlið (`CANCELLED`, `PARTIALLY_REFUNDED`,
+  eða `FULLY_REFUNDED` eftir endurgreiðslustefnu)
+
+Flyttu uppfærðu bókunina inn í þitt eigið viðmót og staðfestu að ógildingin sé sýnileg rekstraraðila — staða, tímapunktur ógildingar, og endurgreiðsluvísir sem viðmótið styður. Taktu annað skjáskot af ógildri bókun í þínu viðmóti. Þetta er loka sönnunargagnið.
+
+### Skref I — Sendu inn sönnunarpakkann þinn
+
+Pakkaðu eftirfarandi í eina skráarsafn (`.zip`) með nafni
+`wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **API afrit.** Fyrir hverja beiðni sem þú sendir í Skrefum A til H, taktu fulla HTTP beiðni (aðferð, URL, beiðnihausar með `Authorization` gildinu faldu, og JSON líkama fyrir `PUT` köll) og fulla HTTP svörun (stöðukóði, svarhausar, og JSON líkama). Skipuleggðu afritið svo hver beiðni/svörun pör séu merkt með skrefi sem þau tilheyra (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json`, o.s.frv.). Venjuleg textaskjöl `.http` eða eitt `.har` útflutningur eru bæði viðurkennd snið.
+
+2. **Skjáskot UI: virk bókun.** Skjáskot úr Skrefi G sem sýnir vottunarbókunina birtast í þínu eigin PMS / channel-manager viðmóti, með gesti, dagsetningar, herbergistegund, verðáætlun og heildarupphæð skýrt læsileg.
+
+3. **Skjáskot UI: ógild bókun.** Skjáskot úr Skrefi H sem sýnir sömu bókun í þínu viðmóti eftir ógildingu, með ógild stöðu og tímapunkt skýrt læsileg.
+
+4. **Yfirlit vottunar.** Stutt `README.md` inni í skráarsafninu sem listar:
+   - Nafn og útgáfu channel manager / PMS.
+   - `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier`, og
+     `bookingIdentifier` sem þú notaðir.
+   - Staging hótel slug (það `<your-slug>` í `https://staging-book.wink.travel/hotel/<your-slug>`).
+   - Dagsetningar vottunarviku (Dagur 1 → Dagur 7 í ISO-8601).
+   - Nafn og netfang verkfræðingsins sem keyrði vottunina.
+</Steps>
+
+Sendu skráarsafnið til Wink tengiliðs þíns fyrir samþættingar. Wink mun skoða, fylgja eftir ef einhverjar villur koma upp, og — ef samþykkt — breyta stöðu Affiliate / Channel Manager reikningsins úr
+`PENDING_APPROVAL` í `ACTIVE`. Samþættingin þín verður þá gjaldgeng fyrir framleiðsluuppsetningu.
+
+:::tip
+Sjálfvirkni í upptöku afrits. Sjö `PUT` köllin í Skrefi D og lesið aftur í Skrefi E eru algengasta orsök vottunarbilana — gagnvirkur HTTP viðskiptavinur sem geymir hverja beiðni og svar mun spara þér að þurfa að keyra allt aftur ef eitthvað er aðeins rangt.
+:::
+
+## Webhook tilkynningar
+
+Þú getur gerst áskrifandi að channel manager webhook atburðum til að fá tilkynningar í rauntíma:
+
+- `channel-manager.update.rate` — Verðuppfærsla móttekin.
+- `channel-manager.update.availability` — Framboðsuppfærsla móttekin.
+- `channel-manager.update` — Almenn channel manager uppfærsla.
+
+Sjá [Webhook Events Catalog](/is/developers/webhook-events#channel-manager-events) fyrir nánari upplýsingar.
+
+## Frekari lesning
+
+- [Channel Manager API](/is/partner-api/partner/) — Full skjöl um API endpoint.
+- [Rate Providers](/is/portal/extranet/rate-providers) — Stjórnun verðveitenda í Extranet.
+- [Webhook Events Catalog](/is/developers/webhook-events/) — Allir áskrifandi atburðir.
+- [Build on Wink](/is/developers/build-on-wink) — Yfirlit yfir vettvang fyrir þróunaraðila.

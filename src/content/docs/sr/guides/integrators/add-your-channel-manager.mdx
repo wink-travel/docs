@@ -1,0 +1,415 @@
+---
+title: Dodajte Vaš Channel Manager
+description: Vodič korak po korak za developere channel managera i PMS-a za integraciju sa Wink platformom.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Ovaj vodič vodi developere channel managera i PMS-a kroz ceo proces integracije sa Wink-om — od kreiranja naloga do mapiranja inventara i pokretanja prvog end-to-end testa.
+
+## Okruženja
+
+Channel Manager (Integrations) API je dostupan u dva okruženja. Koristite staging za sav razvoj i sertifikaciju; pređite na produkciju samo prilikom puštanja u rad.
+
+| Okruženje  | Osnovni URL                      |
+| ---------- | ------------------------------- |
+| Produkcija | https://integrations.wink.travel |
+| Staging    | https://staging-integrations.wink.travel |
+
+## API referenca
+
+Channel Manager API prati OTA protokol standarde (SOAP/XML) radi kompatibilnosti sa postojećim sistemima u ugostiteljstvu. Počnite pregledom dokumentacije partner endpointa:
+
+<LinkButton href="/sr/partner-api/partner/">
+  Channel Manager API — Partner endpointi
+</LinkButton>
+
+## Koraci integracije
+
+<Steps>
+1. **Kreirajte Wink korisnički nalog**
+
+   Registrujte se na [staging-app.wink.travel](https://staging-app.wink.travel). Svi koraci u nastavku koriste staging — ceo proces ćete ponoviti i u produkciji pre puštanja u rad.
+
+2. **Kreirajte Affiliate / Channel Manager nalog**
+
+   Pod vašim novim korisnikom kreirajte nalog i izaberite tip naloga **Affiliate / Channel Manager**. Ovo je nalog pod kojim će se vaša integracija autentifikovati.
+
+3. **Registrujte aplikaciju i kreirajte prvi token**
+
+   Kreirajte [Aplikaciju](/sr/account/applications) i povežite je sa channel manager nalogom iz koraka 2. Izaberite **MACHINE_2_MACHINE** kao tip klijenta — ovo je server-to-server integracija bez krajnjeg korisnika za preusmeravanje. Odmah kopirajte **Client ID** i **Secret Key**; tajni ključ se prikazuje samo jednom i ne može se ponovo dobiti.
+
+   Aplikacija kreira bearer token koji svaki poziv u ovom vodiču nosi kao `Authorization: Bearer <access_token>`. Zamenite vaše kredencijale za token koristeći `client_credentials` grant na `https://staging-iam.wink.travel/oauth2/token`, tražeći scope-ove `integrations.read integrations.write`. Uradite ovo pre nego što nastavite — ne možete pristupiti identifikatorima naloga niti bilo kom Channel Manager endpointu bez tokena. Pogledajte [Authentication](/sr/developers/authentication) za ceo tok, produkcioni host i kompletan katalog scope-ova.
+
+4. **Kreirajte Hotel nalog**
+
+   Pod istim korisnikom kreirajte drugi nalog i izaberite tip naloga **Hotel**. Ovo vam daje objekat koji možete koristiti za testiranje bez uključivanja pravog hotela.
+
+5. **Potvrdite da su oba naloga odobrena**
+
+   Nijedan nalog ne može se koristiti dok nije odobren: neodobren channel manager nalog se ne pojavljuje na listi channel managera hotela, a neodobren hotel nije dostupan preko API-ja.
+
+   - **Staging** — odobrenje je automatsko. Oba naloga su upotrebljiva odmah po kreiranju i nije potrebno ništa tražiti.
+   - **Produkcija** — odobrenje je ručno. Pošaljite kontaktu za Wink integracije imena oba naloga i korisnika pod kojim su, pa sačekajte potvrdu pre nastavka.
+
+6. **Povežite dva naloga**
+
+   Prijavite se na Hotel nalog i idite na **Extranet → Distribution → Channel Manager**. Izaberite vaš channel manager nalog sa liste — ovo povezuje objekat sa vašom integracijom. Ako vaš nalog nije na listi, još nije odobren; pogledajte korak 5.
+
+7. **Kreirajte osnovni tip sobe i plan cena**
+
+   U okviru Hotel naloga kreirajte bar jedan tip sobe i jedan plan cena. Ovo je neophodno pre nego što vaša integracija može da šalje cene i dostupnost ili povlači rezervacije.
+
+8. **Mapirajte i testirajte**
+
+   U vašem sistemu mapirajte identifikatore tipa sobe i plana cena koje vraća API. Pošaljite ažuriranje cene i dostupnosti, zatim napravite test rezervaciju i proverite da li endpoint za povlačenje rezervacija ispravno vraća podatke.
+</Steps>
+
+:::note
+Ponovite sve gore navedene korake u produkciji pre puštanja u rad, uključujući registraciju posebne produkcione aplikacije — staging kredencijali ne rade u produkciji. Planirajte vreme za Wink-ovu proveru u koraku 5 — za razliku od staginga, produkcioni nalozi se ne odobravaju automatski. Wink tim će migrirati sve hotele koji već koriste vaš channel manager na vaš novi produkcioni nalog.
+:::
+
+## Pronalaženje identifikatora vašeg naloga
+
+Svaki Channel Manager API put je ograničen na vaš nalog:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` je ID naloga (UUID) **vašeg channel manager naloga** — ne hotela. Preuzmite ga, zajedno sa ID-jem i trenutnim statusom svih ostalih naloga koje poseduje vaš korisnik, iz Platform API-ja:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Odgovor je niz naloga koje posedujete:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Vaš Channel Manager",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Vaš Test Objekat",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- `id` unosa channel managera je vaš **`{managingEntityIdentifier}`**.
+- `id` unosa `HOTEL` je vaš **`{propertyIdentifier}`**.
+- `status` je mesto gde potvrđujete da je svaki nalog odobren — najkorisnije u produkciji, gde je odobrenje ručno. **Hotel** mora imati status `ACTIVE` pre nego što može biti rezervisan ili vidljiv Channel Manager API-ju. Vaš **channel manager** nalog će imati status `PENDING_APPROVAL` dok ne prođete [Sertifikaciju](#certification); to je očekivano i ne blokira razvoj.
+
+:::caution
+Ova provera se izvršava preko **Platform API-ja** (`https://staging-api.wink.travel` na stagingu,
+`https://api.wink.travel` u produkciji), a ne preko Channel Manager API hostova navedenih u
+[Okruženjima](#okruženja). Koristite isti access token — on se izdaje po korisniku, ne po API-ju.
+:::
+
+## Sertifikacija
+
+Sertifikacija je način da dokažete — i da Wink potvrdi — da vaša integracija ispravno mapira
+inventar, šalje cene i dostupnost, i prima rezervacije end-to-end. Dizajnirana je da bude
+samouslužna: vi pokrećete svaki korak iz svog sistema i na kraju dostavljate jedan paket dokaza.
+Wink pregleda paket i, ako je uspešan, menja status vašeg Affiliate / Channel Manager naloga sa
+**PENDING_APPROVAL** na **ACTIVE**.
+
+Sertifikacija se u potpunosti izvodi u staging okruženju
+(`https://staging-integrations.wink.travel`). Ništa u ovom odeljku ne dira produkciju.
+
+### Šta ćete dokazati
+
+<Steps>
+1. **Autentifikacija.** Vaš OAuth2 klijent može da dobije access token i uspešno pozove
+   `/ping` endpoint za vaš Affiliate / Channel Manager nalog.
+
+2. **Mapiranje inventara.** Možete da izlistate hotel(e) povezane sa vašim nalogom, preuzmete master
+   cenu (kombinaciju tip sobe × plan cena) koju ste konfigurisali i ispravno identifikujete
+   `masterRateIdentifier` na koji će vaš sistem ciljati.
+
+3. **Slanje cena i dostupnosti.** Možete nezavisno da ažurirate svih sedam dana sertifikacione nedelje
+   — različite kombinacije iznosa, količine, zastavica zatvaranja na dolazak / odlazak,
+   i minimalne/maksimalne dužine boravka za svaki dan — i da pročitate tačne vrednosti nazad iz Winka.
+
+4. **Povlačenje rezervacije.** Možete da preuzmete pravu staging rezervaciju napravljenu za vaš test objekat,
+   prikažete je u svom PMS/CM korisničkom interfejsu sa tačnim podacima o sobi, gostu i ukupnoj sumi,
+   i zatim reflektujete otkazivanje kada Wink označi rezervaciju kao otkazanu.
+</Steps>
+
+### Preduslovi
+
+Pre nego što započnete sertifikaciju, završite korake 1–7 iz [Koraka integracije](#koraci-integracije) tako
+da imate:
+
+- Wink korisnika na stagingu sa **Affiliate / Channel Manager** nalogom i **Hotel** nalogom
+  povezanim sa njim (Extranet → Distribution → Channel Manager). Staging nalozi se odobravaju
+  automatski, tako da nema potrebe za zahtevima.
+- Bar jedan **tip sobe** i jedan **plan cena** kreirani u okviru Hotel naloga. Objavite hotel da
+  bude rezervabilan na `https://staging-book.wink.travel/hotel/<your-slug>`.
+- Registrovanu aplikaciju pod vašim Affiliate / Channel Manager nalogom sa **Client ID**,
+  **Secret Key** i scope-ovima `integrations.read integrations.write`
+  (pogledajte [Authentication](/sr/developers/authentication)).
+- **`managingEntityIdentifier`** vašeg Affiliate / Channel Manager naloga i
+  **`propertyIdentifier`** vašeg Hotel naloga (oba su UUID — pogledajte
+  [Pronalaženje identifikatora vašeg naloga](#pronalaženje-identifikatora-vašeg-naloga)).
+
+### Uobičajene konvencije zahteva
+
+Svaki zahtev u ovom odeljku koristi sledeće zaglavlja:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` dolazi iz `client_credentials` granta na
+  `https://staging-iam.wink.travel/oauth2/token` — pogledajte [Authentication](/sr/developers/authentication#staging).
+- Zaglavlje `Wink-Version` je obavezno; izostavljanje neće usmeriti zahtev na v2 JSON API.
+- `Content-Type: application/json` se dodaje na `PUT` zahtevima koji nose telo.
+
+U primerima ispod, zamenjive vrednosti odgovaraju vrednostima koje ste prikupili u
+[Preduslovima](#preduslovi):
+
+| Zamenjiva vrednost           | Značenje                                                                                  |
+|------------------------------|------------------------------------------------------------------------------------------|
+| `{managingEntityIdentifier}` | ID vašeg Affiliate / Channel Manager naloga (UUID) — pogledajte [Pronalaženje identifikatora vašeg naloga](#pronalaženje-identifikatora-vašeg-naloga). |
+| `{propertyIdentifier}`       | ID Hotel naloga (objekta) koji ste povezali sa CM nalogom.                              |
+| `{masterRateIdentifier}`     | Master cena (kombinacija tip sobe × plan cena) koju ćete sertifikovati.                  |
+| `{bookingIdentifier}`        | ID staging rezervacije vraćen pozivom liste rezervacija.                                |
+
+### Korak A — Ping
+
+Potvrdite da vaše kredencijale rešavaju na očekivani Affiliate / Channel Manager nalog.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Očekivani odgovor:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Ime Vašeg Channel Manager Naloga",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+Odgovor **200** sa odgovarajućim `name` signalizira da su autentifikacija i rešavanje naloga ispravni. `status` će biti `PENDING_APPROVAL` dok vas Wink ne sertifikuje.
+
+### Korak B — Lista objekata
+
+Preuzmite paginiranu listu hotela povezanih sa vašim nalogom i potvrdite da je vaš test objekat prisutan.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Odgovor je Spring `Page` sa `ChannelManagerProperty` unosima. Pronađite unos čiji `identifier` odgovara vašem `{propertyIdentifier}` i zabeležite njegov `currencyCode` — biće vam potreban za tumačenje ažuriranja cena u [Koraku D](#korak-d--učitaj-sertifikacionu-nedelju).
+
+:::caution
+Prazna lista je signal konfiguracije, a ne neispravan zahtev. Hotel se ovde vraća samo kada je **`ACTIVE`** *i* dodeljen vašem channel manager nalogu u Extranetu → Distribution → Channel Manager. Proverite oba sa `GET /api/managing-entity/list` (pogledajte [Pronalaženje identifikatora vašeg naloga](#pronalaženje-identifikatora-vašeg-naloga)) pre daljeg rešavanja problema.
+U produkciji, dodajte treći razlog: hotel je nevidljiv dok ga Wink ne odobri.
+:::
+
+### Korak C — Preuzimanje master cena
+
+Preuzmite objekat zajedno sa svim master cenama (kombinacijama tip sobe × plana cena) koje objavljuje. Izaberite onu koju nameravate da sertifikujete i zabeležite njen `identifier` kao vaš `{masterRateIdentifier}`.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Odgovor je omotač `PropertyWithRoomRateList`: blok `property` plus niz `rooms` sa `PropertyRoomRate` unosima. Svaki unos prikazuje tip sobe, plan cena, limite popunjenosti, osnovnu cenu i modifikatore cena koje ćete sačuvati prilikom slanja dnevnih cena.
+
+:::caution
+Sertifikujte samo jednu master cenu za celu sertifikacionu proceduru. Mapiranje dodatnih tipova soba i planova cena se očekuje u produkciji, ali paket dokaza treba da pokaže samo jednu master cenu korišćenu end-to-end.
+:::
+
+### Korak D — Učitajte sertifikacionu nedelju
+
+Učitajte **sedmodnevni kalendar cena** koji pokriva prvih sedam kalendarskih dana meseca **nakon** meseca u kojem započinjete sertifikaciju. Na primer, ako počnete sertifikaciju 21. avgusta, ciljajte od 1. do 7. septembra.
+
+Poslaćete **sedam odvojenih `PUT` poziva** — po jedan za svaki dan — gde je `startDate == endDate`. Svaki dan nosi namerno različitu kombinaciju iznosa, količine, zastavica zatvaranja na dolazak / odlazak i ograničenja dužine boravka, tako da se svaki zapis može bar jednom testirati. Vrednosti su u valuti objekta (zabeleženoj u Koraku B); izostavite `currencyCode` i podrazumevano će biti ispravno.
+
+| Dan | Iznos  | Količina | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | Šta dokazuje |
+|-----|--------|----------|-----------------|-------------------|-----------------|-----------------|--------------|
+| 1   | 100.00 | 5        | false           | false             | 1               | 30              | Osnovni dan. |
+| 2   | 125.00 | 4        | false           | false             | 1               | 14              | Promena iznosa + količine + `maxLengthOfStay`. |
+| 3   | 150.00 | 3        | **true**        | false             | 1               | 30              | Promena `closedOnArrival`. |
+| 4   | 175.00 | 2        | false           | **true**          | 2               | 7               | Promena `closedOnDeparture` + uži prozor dužine boravka. |
+| 5   | 200.00 | **0**    | false           | false             | 1               | 30              | Količina rasprodata. |
+| 6   | 225.00 | 5        | false           | false             | **3**           | **5**           | Restriktivan prozor dužine boravka. |
+| 7   | 250.00 | 1        | false           | false             | 1               | 30              | Dostupnost poslednje sobe. |
+
+Telo zahteva za Dan 1 izgleda ovako. Ponavljajte, prilagođavajući `startDate` / `endDate` / vrednosti po redu, za Dane 2 do 7.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Svaki `PUT` vraća `200` sa nizom ažuriranih `PropertyRate` unosa za poslati opseg (jedan unos kada je `startDate == endDate`). Sačuvajte taj odgovor — biće deo vašeg dokaza.
+
+:::note
+`master` treba da bude `true` na svakom pozivu tokom sertifikacione nedelje. Ovo govori Wink-u da je vaše ažuriranje šablonska cena, a ne prepisivanje po rezervaciji.
+:::
+
+### Korak E — Pročitajte nazad sertifikacionu nedelju
+
+Preuzmite celu nedelju u jednom pozivu i potvrdite da se vrednosti za svaki dan poklapaju sa onima koje ste poslali u Koraku D — uključujući boolean zastavice i prozor dužine boravka.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Odgovor je `PropertyRoomRateWithRateList`. Njegov niz `rates` mora sadržati **sedam** unosa, po jedan za svaki dan, svaki sa `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`, `minLengthOfStay` i `maxLengthOfStay` koje ste učitali. Svaka neusaglašenost znači da odgovarajući `PUT` iz Koraka D nije uspeo — ispravite i ponovo proverite pre nastavka.
+
+### Korak F — Napravite test rezervaciju
+
+Otvorite sledeći URL u pregledaču, zamenjujući `<your-slug>` slugom Hotel naloga koji ste objavili u Preduslovima:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Izaberite datum dolaska i odlaska koji su u potpunosti unutar sertifikacione nedelje, izaberite kombinaciju tipa sobe + plana cena koju ste sertifikovali i završite rezervaciju. Staging koristi test put plaćanja — nema stvarnog terećenja kartice.
+
+Kada se prikaže stranica sa potvrdom, zabeležite **kod rezervacije** (format `WNKxxxxx`) prikazan gostu.
+
+### Korak G — Povucite rezervaciju
+
+Preuzmite sve rezervacije napravljene za vaš test objekat u vremenskom okviru koji obuhvata vreme rezervacije.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Pronađite unos čiji `bookingCode` odgovara kodu koji ste zabeležili u Koraku F. Zabeležite njegov `bookingIdentifier`. Zatim preuzmite tu pojedinačnu rezervaciju:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Odgovor je `PropertyBooking`. Uvezite ga u svoj PMS / channel-manager UI i potvrdite da se svaki od sledećih podataka ispravno prikazuje operateru:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Gost: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (neto iznos koji hotel prima za sve sobe)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- Svaki unos u `roomStays`: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`,
+  `endDate` i po sobi `amount`
+
+Napravite snimak ekrana rezervacije kako se prikazuje u vašem UI — taj snimak je jedan od potrebnih dokaza.
+
+### Korak H — Otkažite rezervaciju i potvrdite
+
+Zamolite Wink tim da otkaže sertifikacionu rezervaciju u vaše ime (ili je otkažite sami iz Extraneta Hotel naloga ako imate tu dozvolu). Zatim ponovo preuzmite istu rezervaciju pozivom iz Koraka G.
+
+Potvrdite da odgovor sada prikazuje:
+
+- `cancelled: true`
+- Popunjen vremenski žig `cancelDate`
+- `paymentMethodStatus` koji odražava status otkazivanja (`CANCELLED`, `PARTIALLY_REFUNDED` ili `FULLY_REFUNDED` u zavisnosti od politike povraćaja)
+
+Uvezite ažuriranu rezervaciju u svoj UI i potvrdite da je otkazivanje vidljivo operateru — status, vreme otkazivanja i bilo koji indikator povraćaja koji vaš UI podržava. Napravite drugi snimak ekrana otkazane rezervacije u vašem UI. Ovo je završni dokaz.
+
+### Korak I — Pošaljite paket dokaza
+
+Spakujte sledeće u jedan arhivski fajl (`.zip`) nazvan
+`wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **API transkript.** Za svaki zahtev koji ste poslali u Koracima A do H, zabeležite kompletan
+   HTTP zahtev (metod, URL, zaglavlja zahteva sa izostavljenom vrednošću `Authorization` i JSON telo za `PUT` pozive) i kompletan HTTP odgovor (statusni kod, zaglavlja odgovora i JSON telo). Organizujte transkript tako da svaki par zahtev/odgovor bude jasno označen korakom kojem pripada (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json` itd.). Prihvatljivi formati su obični `.http` fajlovi ili jedan `.har` eksport.
+
+2. **Snimak ekrana UI: aktivna rezervacija.** Snimak ekrana iz Koraka G koji prikazuje sertifikacionu rezervaciju u vašem PMS / channel-manager UI, sa jasno vidljivim gostom, datumima, tipom sobe, planom cena i ukupnim iznosom.
+
+3. **Snimak ekrana UI: otkazana rezervacija.** Snimak ekrana iz Koraka H koji prikazuje istu rezervaciju u vašem UI nakon otkazivanja, sa jasno vidljivim statusom otkazivanja i vremenskim žigom.
+
+4. **Sertifikacioni rezime.** Kratki `README.md` unutar arhive koji navodi:
+   - Ime i verziju vašeg channel managera / PMS-a.
+   - `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier` i
+     `bookingIdentifier` koje ste koristili.
+   - Staging hotel slug (deo `<your-slug>` u `https://staging-book.wink.travel/hotel/<your-slug>`).
+   - Datumsku nedelju sertifikacije (Dan 1 → Dan 7 u ISO-8601 formatu).
+   - Ime i email inženjera koji je izvršio sertifikaciju.
+</Steps>
+
+Pošaljite arhivu kontaktu za Wink integracije. Wink će pregledati, pratiti eventualne neslaganja i — u slučaju uspeha — promeniti status vašeg Affiliate / Channel Manager naloga sa
+`PENDING_APPROVAL` na `ACTIVE`. Vaša integracija tada postaje podobna za produkciono uključivanje.
+
+:::tip
+Automatizujte snimanje transkripta. Sedam `PUT` poziva u Koraku D i čitanje nazad u Koraku E su
+najčešći uzrok neuspeha sertifikacije — interaktivni HTTP klijent koji čuva svaki zahtev i odgovor tokom rada uštedeće vam ponovni ceo proces ako je neka vrednost neprecizna.
+:::
+
+## Webhook notifikacije
+
+Možete se pretplatiti na webhook događaje channel managera da biste primali obaveštenja u realnom vremenu:
+
+- `channel-manager.update.rate` — Primljeno ažuriranje cene.
+- `channel-manager.update.availability` — Primljeno ažuriranje dostupnosti.
+- `channel-manager.update` — Opšte ažuriranje channel managera.
+
+Pogledajte [Katalog Webhook Događaja](/sr/developers/webhook-events#channel-manager-events) za detalje.
+
+## Dalje čitanje
+
+- [Channel Manager API](/sr/partner-api/partner/) — Kompletna dokumentacija API endpointa.
+- [Rate Providers](/sr/portal/extranet/rate-providers) — Upravljanje provajderima cena u Extranetu.
+- [Webhook Events Catalog](/sr/developers/webhook-events) — Svi dostupni događaji za pretplatu.
+- [Build on Wink](/sr/developers/build-on-wink) — Pregled platforme za developere.

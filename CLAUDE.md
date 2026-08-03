@@ -87,6 +87,17 @@ The `scripts/translate-i18n.ts` script:
 4. Automatically rewrites internal links to add locale prefixes (e.g., `/path` → `/fr/path`)
 5. Never translates product names (Wink, WinkLinks, Wink Studio, etc.)
 
+**Source discovery:** `discoverSourceDirectories()` walks `src/content/docs/` recursively and
+translates every directory containing `.md`/`.mdx`, so a new docs section is picked up with no
+script change. Exclusions are opt-out, not opt-in: locale directories are skipped via the
+`targetLanguages` ids, and `UNTRANSLATED_DIRECTORIES` skips `api`, `blog`, and `changelog`. Add a
+directory there if it should never be translated. Root-level pages (`index.mdx`, `team.mdx`,
+`contact.mdx`, `privacy.md`, `terms.md`, `jobs.mdx`) are listed explicitly in `rootFiles` — a new
+root-level page **does** need to be added there.
+
+Dry-run the file discovery without spending OpenAI calls by forcing an empty language list:
+`ONLY_LANG=__dry_run__ npx tsx ./scripts/translate-i18n.ts` prints the directories it would visit.
+
 **Environment variables required:**
 - `OPENAI_API_KEY` - For translation service
 - `OPENAI_TRANSLATION_MODEL` - Optional, defaults to gpt-4.1-mini-2025-04-14

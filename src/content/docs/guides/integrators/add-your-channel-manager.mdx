@@ -37,25 +37,91 @@ The Channel Manager API follows OTA protocol standards (SOAP/XML) for compatibil
 
    Under your new user, create an account and select the **Affiliate / Channel Manager** account type. This is the account your integration will authenticate as.
 
-3. **Create a Hotel account**
+3. **Register an application and mint your first token**
+
+   Create an [Application](/account/applications) and bind it to the channel manager account from step 2. Choose **MACHINE_2_MACHINE** as the client type — this is a server-to-server integration with no end user to redirect. Copy the **Client ID** and **Secret Key** immediately; the secret key is shown only once and cannot be retrieved again.
+
+   The application is what mints the bearer token that every call in this guide carries as `Authorization: Bearer <access_token>`. Exchange your credentials for one using the `client_credentials` grant against `https://staging-iam.wink.travel/oauth2/token`, requesting the `integrations.read integrations.write` scopes. Do this before moving on — you cannot look up account identifiers or reach any Channel Manager endpoint without a token. See [Authentication](/developers/authentication) for the full flow, the production host, and the complete scope catalog.
+
+4. **Create a Hotel account**
 
    Under the same user, create a second account and select the **Hotel** account type. This gives you a property you can use for testing without involving a real hotel.
 
-4. **Connect the two accounts**
+5. **Confirm both accounts are approved**
 
-   Log in to the Hotel account and navigate to **Extranet → Distribution → Channel Manager**. Select your channel manager account from the list. This links the property to your integration.
+   Neither account can be used until it is approved: an unapproved channel manager account does not appear in any hotel's channel manager list, and an unapproved hotel is not returned by the API.
 
-5. **Create a basic room type and rate plan**
+   - **Staging** — approval is automatic. Both accounts are usable as soon as you create them, and there is nothing to request.
+   - **Production** — approval is manual. Send your Wink integrations contact the names of both accounts and the user they sit under, then wait for confirmation before continuing.
+
+6. **Connect the two accounts**
+
+   Log in to the Hotel account and navigate to **Extranet → Distribution → Channel Manager**. Select your channel manager account from the list — this links the property to your integration. If your account is not in the list, it has not been approved yet; see step 5.
+
+7. **Create a basic room type and rate plan**
 
    Inside the Hotel account, create at least one room type and one rate plan. These are required before your integration can push rates and availability or pull bookings.
 
-6. **Map and test**
+8. **Map and test**
 
    In your own system, map the room type and rate plan identifiers returned by the API. Push a rate update and an availability update, then make a test booking and verify the booking retrieval endpoint returns it correctly.
 </Steps>
 
 :::note
-Repeat all steps above in production before go-live. The Wink team will migrate any hotels already using your channel manager to your new production account.
+Repeat all steps above in production before go-live, including registering a separate production application — staging credentials do not work against production. Budget for Wink's review in step 5 — unlike staging, production accounts are not approved automatically. The Wink team will migrate any hotels already using your channel manager to your new production account.
+:::
+
+## Finding your account identifiers
+
+Every Channel Manager API path is scoped to your own account:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` is the account ID (a UUID) of **your channel manager account** — not
+the hotel's. Retrieve it, along with the ID and current status of every other account your user
+owns, from the Platform API:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+The response is an array of the accounts you own:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Your Channel Manager",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Your Test Property",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- The `id` of the channel manager entry is your **`{managingEntityIdentifier}`**.
+- The `id` of the `HOTEL` entry is your **`{propertyIdentifier}`**.
+- `status` is where you confirm each account is approved — most useful in production, where
+  approval is manual. The **hotel** must read `ACTIVE` before it is bookable or visible to the
+  Channel Manager API. Your **channel manager** account continues to read `PENDING_APPROVAL` until
+  you pass [Certification](#certification); that is expected and does not block development.
+
+:::caution
+This lookup runs against the **Platform API** (`https://staging-api.wink.travel` on staging,
+`https://api.wink.travel` in production), not the Channel Manager API hosts listed under
+[Environments](#environments). Use the same access token — it is issued per user, not per API.
 :::
 
 ## Certification
@@ -90,19 +156,20 @@ Certification runs entirely against the staging environment
 
 ### Prerequisites
 
-Before you begin certification, complete steps 1–5 of [Integration steps](#integration-steps) so
+Before you begin certification, complete steps 1–7 of [Integration steps](#integration-steps) so
 that you have:
 
 - A Wink user on staging with an **Affiliate / Channel Manager** account and a **Hotel** account
-  connected to it (Extranet → Distribution → Channel Manager).
+  connected to it (Extranet → Distribution → Channel Manager). Staging accounts are approved
+  automatically, so there is nothing to request here.
 - At least one **room type** and one **rate plan** created inside the Hotel account. Publish the
   hotel so it is bookable on `https://staging-book.wink.travel/hotel/<your-slug>`.
 - A registered application under your Affiliate / Channel Manager account with a **Client ID**,
   **Secret Key**, and the `integrations.read integrations.write` scopes
   (see [Authentication](/developers/authentication)).
 - The **`managingEntityIdentifier`** of your Affiliate / Channel Manager account and the
-  **`propertyIdentifier`** of your Hotel account (both are UUIDs, visible on the account settings
-  page in the Portal).
+  **`propertyIdentifier`** of your Hotel account (both are UUIDs — see
+  [Finding your account identifiers](#finding-your-account-identifiers)).
 
 ### Common request conventions
 
@@ -124,7 +191,7 @@ Throughout the examples below, the placeholders map to the values you gathered i
 
 | Placeholder | Meaning |
 |---|---|
-| `{managingEntityIdentifier}` | Your Affiliate / Channel Manager account ID (UUID). |
+| `{managingEntityIdentifier}` | Your Affiliate / Channel Manager account ID (UUID) — see [Finding your account identifiers](#finding-your-account-identifiers). |
 | `{propertyIdentifier}`       | The Hotel account (property) ID you connected to the CM account. |
 | `{masterRateIdentifier}`     | The master rate (room type × rate plan) you will certify. |
 | `{bookingIdentifier}`        | The staging booking ID returned by the booking list call. |
@@ -170,6 +237,14 @@ curl -s -X GET \
 The response is a Spring `Page` of `ChannelManagerProperty` entries. Locate the entry whose
 `identifier` matches your `{propertyIdentifier}` and record its `currencyCode` — you will need it
 for the interpretation of the rate updates in [Step D](#step-d--load-the-certification-week).
+
+:::caution
+An empty list is a configuration signal, not a malformed request. A hotel is only returned here
+once it is **`ACTIVE`** *and* has been assigned to your channel manager account under
+Extranet → Distribution → Channel Manager. Check both with `GET /api/managing-entity/list` (see
+[Finding your account identifiers](#finding-your-account-identifiers)) before debugging further.
+In production, add a third cause: the hotel is invisible here until Wink has approved it.
+:::
 
 ### Step C — Fetch master rates
 

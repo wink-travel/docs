@@ -1,0 +1,384 @@
+---
+title: 添加您的渠道管理器
+description: 渠道管理器和PMS开发者集成Wink平台的分步指南。
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+本指南引导渠道管理器和PMS开发者完成与Wink的完整集成流程——从创建账户到映射库存，再到运行首次端到端测试。
+
+## 环境
+
+渠道管理器（集成）API 提供两个环境。所有开发和认证请使用测试环境；仅在上线时切换到生产环境。
+
+| 环境       | 基础URL                              |
+| ----------- | ---------------------------------- |
+| 生产       | https://integrations.wink.travel   |
+| 测试       | https://staging-integrations.wink.travel |
+
+## API 参考
+
+渠道管理器API遵循OTA协议标准（SOAP/XML），以兼容现有的酒店系统。请先查看合作伙伴端点文档：
+
+<LinkButton href="/zh-CN/partner-api/partner/">
+  渠道管理器API — 合作伙伴端点
+</LinkButton>
+
+## 集成步骤
+
+<Steps>
+1. **创建Wink用户账户**
+
+   在 [staging-app.wink.travel](https://staging-app.wink.travel) 注册。以下所有步骤均使用测试环境——上线前您需要在生产环境重复完整流程。
+
+2. **创建您的联盟/渠道管理器账户**
+
+   在新用户下创建账户，选择 **联盟 / 渠道管理器** 账户类型。您的集成将以此账户进行身份验证。
+
+3. **注册应用并生成第一个令牌**
+
+   创建一个 [应用](/zh-CN/account/applications)，并绑定到步骤2的渠道管理器账户。选择 **MACHINE_2_MACHINE** 作为客户端类型——这是无终端用户重定向的服务器间集成。立即复制 **客户端ID** 和 **密钥**；密钥只显示一次，无法再次获取。
+
+   应用负责生成本指南中每次调用所携带的 `Authorization: Bearer <access_token>` 令牌。使用 `client_credentials` 授权向 `https://staging-iam.wink.travel/oauth2/token` 交换令牌，申请 `integrations.read integrations.write` 权限。请先完成此步骤——没有令牌无法查询账户标识或访问任何渠道管理器端点。详见 [认证](/zh-CN/developers/authentication) 了解完整流程、生产环境地址及权限目录。
+
+4. **创建酒店账户**
+
+   在同一用户下创建第二个账户，选择 **酒店** 账户类型。这样您就有了一个可用于测试的物业，无需涉及真实酒店。
+
+5. **确认两个账户均已批准**
+
+   未批准的账户无法使用：未批准的渠道管理器账户不会出现在任何酒店的渠道管理器列表中，未批准的酒店不会被API返回。
+
+   - **测试环境** — 自动批准。账户创建后即可使用，无需申请。
+   - **生产环境** — 手动批准。将两个账户名称及所属用户发送给Wink集成联系人，等待确认后继续。
+
+6. **连接两个账户**
+
+   登录酒店账户，导航至 **Extranet → Distribution → Channel Manager**。从列表中选择您的渠道管理器账户——这将物业与您的集成关联。如果账户不在列表中，说明尚未批准；请参见步骤5。
+
+7. **创建基础房型和价格计划**
+
+   在酒店账户内，至少创建一个房型和一个价格计划。推送价格和可用性或拉取预订前必须完成此步骤。
+
+8. **映射并测试**
+
+   在您自己的系统中，映射API返回的房型和价格计划标识。推送价格更新和可用性更新，进行测试预订，并验证预订拉取端点能正确返回预订信息。
+</Steps>
+
+:::note
+上线前请在生产环境重复以上所有步骤，包括注册独立的生产应用——测试环境凭证无法用于生产。请预留步骤5中Wink审核时间——生产账户不会自动批准。Wink团队会将已使用您渠道管理器的酒店迁移至您的新生产账户。
+:::
+
+## 查找您的账户标识
+
+每个渠道管理器API路径均限定在您自己的账户：
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` 是 **您的渠道管理器账户** 的账户ID（UUID），不是酒店的。通过平台API获取它，以及您用户拥有的其他账户的ID和当前状态：
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+响应是您拥有账户的数组：
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "您的渠道管理器",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "您的测试物业",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- 渠道管理器条目的 `id` 是您的 **`{managingEntityIdentifier}`**。
+- `HOTEL` 条目的 `id` 是您的 **`{propertyIdentifier}`**。
+- `status` 用于确认账户是否已批准——在生产环境尤为重要，因批准为手动。**酒店** 必须为 `ACTIVE` 才能被预订或被渠道管理器API识别。您的**渠道管理器**账户在通过[认证](#certification)前会显示 `PENDING_APPROVAL`，这是正常且不影响开发。
+
+:::caution
+此查询针对的是 **平台API**（测试环境为 `https://staging-api.wink.travel`，生产环境为 `https://api.wink.travel`），而非[环境](#环境)中列出的渠道管理器API主机。请使用相同的访问令牌——令牌是按用户发放的，而非按API。
+:::
+
+## 认证
+
+认证是您向Wink证明集成正确映射库存、推送价格和可用性、并端到端接收预订的过程。设计为自助式：您从自己的系统驱动每一步，最后提交一份证据包。Wink审核通过后，将您的联盟/渠道管理器账户状态从 **PENDING_APPROVAL** 变更为 **ACTIVE**。
+
+认证完全在测试环境（`https://staging-integrations.wink.travel`）进行，本节内容不涉及生产环境。
+
+### 您将证明的内容
+
+<Steps>
+1. **认证。** 您的OAuth2客户端能获取访问令牌，并成功调用 `/ping` 端点，针对您的联盟/渠道管理器账户。
+
+2. **库存映射。** 您能列出连接的酒店，获取您配置的主价格（房型 × 价格计划），并正确识别系统将操作的 `masterRateIdentifier`。
+
+3. **价格和可用性推送。** 您能独立更新认证周内的七天价格——每天的金额、数量、到店关闭/离店关闭标志、最短/最长入住天数均不同——并能从Wink读取准确值。
+
+4. **预订拉取。** 您能拉取针对测试物业的真实测试预订，在自己的PMS/渠道管理器界面正确显示房间住宿、客人和总价，并在Wink标记预订取消后反映取消状态。
+</Steps>
+
+### 前置条件
+
+开始认证前，请完成[集成步骤](#integration-steps)的1–7步，确保：
+
+- 测试环境中有一个Wink用户，拥有一个 **联盟/渠道管理器** 账户和一个连接的 **酒店** 账户（Extranet → Distribution → Channel Manager）。测试账户自动批准，无需申请。
+- 酒店账户内至少创建一个 **房型** 和一个 **价格计划**。发布酒店，使其可在 `https://staging-book.wink.travel/hotel/<your-slug>` 预订。
+- 在联盟/渠道管理器账户下注册了应用，拥有 **客户端ID**、**密钥**，并申请了 `integrations.read integrations.write` 权限（详见 [认证](/zh-CN/developers/authentication)）。
+- 拥有联盟/渠道管理器账户的 **`managingEntityIdentifier`** 和酒店账户的 **`propertyIdentifier`**（均为UUID，详见[查找您的账户标识](#finding-your-account-identifiers)）。
+
+### 常用请求约定
+
+本节所有请求均使用以下请求头：
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` 来自 `client_credentials` 授权，针对 `https://staging-iam.wink.travel/oauth2/token` ——详见 [认证](/zh-CN/developers/authentication#staging)。
+- `Wink-Version` 头必填，缺失将无法路由到v2 JSON API。
+- `PUT` 请求携带请求体时，自动添加 `Content-Type: application/json`。
+
+以下示例中，变量对应您在[前置条件](#prerequisites)中收集的值：
+
+| 占位符                     | 含义                                      |
+|----------------------------|-------------------------------------------|
+| `{managingEntityIdentifier}` | 您的联盟/渠道管理器账户ID（UUID）          |
+| `{propertyIdentifier}`       | 您连接的酒店账户（物业）ID                  |
+| `{masterRateIdentifier}`     | 您将认证的主价格（房型 × 价格计划）         |
+| `{bookingIdentifier}`        | 预订列表调用返回的测试预订ID                 |
+
+### 步骤A — Ping
+
+确认您的凭据对应预期的联盟/渠道管理器账户。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+预期响应：
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "您的渠道管理器账户名称",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+返回 **200** 且 `name` 匹配即表示认证和账户解析正确。`status` 在Wink认证前会显示 `PENDING_APPROVAL`。
+
+### 步骤B — 列出物业
+
+获取分页的酒店列表，确认测试物业存在。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+响应是Spring的 `Page` 类型，包含多个 `ChannelManagerProperty` 条目。找到 `identifier` 与 `{propertyIdentifier}` 匹配的条目，记录其 `currencyCode` ——后续步骤中解析价格更新时需要。
+
+:::caution
+空列表表示配置问题，不是请求错误。酒店仅在 **`ACTIVE`** 状态且已在Extranet → Distribution → Channel Manager分配给您的渠道管理器账户后才会返回。请先用 `GET /api/managing-entity/list`（见[查找您的账户标识](#finding-your-account-identifiers)）确认账户状态和关联。生产环境还需确认Wink已批准酒店。
+:::
+
+### 步骤C — 获取主价格
+
+获取物业及其所有主价格（房型 × 价格计划组合）。选择您将认证的主价格，记录其 `identifier` 作为 `{masterRateIdentifier}`。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+响应为 `PropertyWithRoomRateList`，包含 `property` 块和 `rooms` 数组（`PropertyRoomRate` 条目）。每条目包含房型、价格计划、入住人数限制、基础价格及推送日价格时需保留的价格修饰符。
+
+:::caution
+认证期间仅针对单一主价格进行。生产环境中映射更多房型和价格计划是预期行为，但证据包只需展示一个主价格的端到端操作。
+:::
+
+### 步骤D — 加载认证周
+
+加载覆盖认证开始月份后一个月的前七天的 **七天价格日历**。例如，若您8月21日开始认证，则目标日期为9月1日至9月7日。
+
+您将发送 **七个独立的 `PUT` 请求** —— 每天一个，`startDate == endDate`。每天的金额、数量、限制标志和入住天数限制均不同，确保每个可写字段至少被测试一次。金额单位为物业货币（步骤B记录），省略 `currencyCode` 会自动默认。
+
+| 天数 | 金额    | 数量 | 到店关闭 | 离店关闭 | 最短入住天数 | 最长入住天数 | 说明               |
+|------|---------|------|----------|----------|--------------|--------------|--------------------|
+| 1    | 100.00  | 5    | false    | false    | 1            | 30           | 基准日             |
+| 2    | 125.00  | 4    | false    | false    | 1            | 14           | 金额+数量+最长入住变更 |
+| 3    | 150.00  | 3    | **true** | false    | 1            | 30           | 到店关闭切换       |
+| 4    | 175.00  | 2    | false    | **true** | 2            | 7            | 离店关闭切换+更严格入住限制 |
+| 5    | 200.00  | **0**| false    | false    | 1            | 30           | 售罄数量           |
+| 6    | 225.00  | 5    | false    | false    | **3**        | **5**        | 限制性入住窗口     |
+| 7    | 250.00  | 1    | false    | false    | 1            | 30           | 最后一间房可用     |
+
+第1天的请求体示例如下。请根据表格调整日期和值，重复发送第2至第7天的请求。
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+每个 `PUT` 返回 `200`，响应体为您发送日期范围内更新的 `PropertyRate` 条目数组（`startDate == endDate` 时为单条）。请保存响应，作为证据的一部分。
+
+:::note
+认证周的所有调用中，`master` 应为 `true`，表示更新的是模板价格，而非单预订覆盖。
+:::
+
+### 步骤E — 读取认证周
+
+一次调用获取整周数据，确认每天存储的值与步骤D发送的完全匹配——包括布尔标志和入住天数限制。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+响应为 `PropertyRoomRateWithRateList`。其 `rates` 数组应包含 **七** 条记录，每条对应一天，且字段 `amount`、`quantity`、`closedOnArrival`、`closedOnDeparture`、`minLengthOfStay`、`maxLengthOfStay` 均与发送值一致。若有不符，说明步骤D的对应 `PUT` 未生效，请修正后重新验证。
+
+### 步骤F — 进行测试预订
+
+在浏览器打开以下URL，将 `<your-slug>` 替换为您在前置条件中发布的酒店slug：
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+选择完全落在认证周内的入住和离店日期，选择您认证的房型+价格计划组合，完成预订。测试环境使用测试支付路径，不会扣款。
+
+确认页显示后，记录显示给客人的 **预订代码**（格式为 `WNKxxxxx`）。
+
+### 步骤G — 拉取预订
+
+拉取测试物业在预订时间范围内创建的所有预订。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+找到 `bookingCode` 与步骤F记录的代码匹配的条目，记录其 `bookingIdentifier`。然后获取该单个预订：
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+响应为 `PropertyBooking`。导入至您自己的PMS/渠道管理器界面，确认以下信息正确显示给操作员：
+
+- `bookingCode`、`bookingIdentifier`、`createdDate`
+- 客人信息：`firstName`、`lastName`、`email`
+- `totalAmount` + `currencyCode`（酒店所有房间的净收入）
+- `paymentMethodType`、`paymentMethodStatus`、`salesChannelName`
+- `roomStays` 中每条的：`guestRoomName`、`ratePlanName`、`adults`、`children`、`startDate`、`endDate`、及每间房的 `amount`
+
+截取预订在您界面中的截图，该截图为必需的证据材料之一。
+
+### 步骤H — 取消预订并验证
+
+请Wink团队代为取消认证预订（或若您有权限，可在酒店账户的Extranet自行取消）。然后用步骤G的调用重新获取该预订。
+
+确认响应显示：
+
+- `cancelled: true`
+- 填充的 `cancelDate` 时间戳
+- 反映取消状态的 `paymentMethodStatus`（根据退款政策为 `CANCELLED`、`PARTIALLY_REFUNDED` 或 `FULLY_REFUNDED`）
+
+将更新后的预订导入您的界面，确认取消状态、取消时间戳及退款指示对操作员可见。截取取消后的预订截图，作为最终证据材料。
+
+### 步骤I — 提交证据包
+
+将以下内容打包成一个名为 `wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip` 的压缩包：
+
+<Steps>
+1. **API 通信记录。** 捕获步骤A至H中每个请求的完整HTTP请求（方法、URL、请求头，`Authorization`值需脱敏，`PUT`请求的JSON体）和完整HTTP响应（状态码、响应头、JSON体）。按步骤清晰命名文件（如 `step-a-ping.json`、`step-d-day-3-put.json`、`step-g-list-bookings.json` 等）。纯文本 `.http` 文件或单一 `.har` 导出均可。
+
+2. **界面截图：有效预订。** 步骤G中显示认证预订的PMS/渠道管理器界面截图，客人信息、日期、房型、价格计划和总价清晰可见。
+
+3. **界面截图：取消预订。** 步骤H中取消后的预订界面截图，取消状态和时间戳清晰可见。
+
+4. **认证总结。** 压缩包内的简短 `README.md`，列出：
+   - 您的渠道管理器/PMS名称及版本。
+   - 使用的 `managingEntityIdentifier`、`propertyIdentifier`、`masterRateIdentifier` 和 `bookingIdentifier`。
+   - 测试酒店slug（即 `https://staging-book.wink.travel/hotel/<your-slug>` 中的 `<your-slug>`）。
+   - 认证周日期范围（第1天至第7天，ISO-8601格式）。
+   - 负责认证的工程师姓名和邮箱。
+</Steps>
+
+将压缩包发送给您的Wink集成联系人。Wink将审核，针对任何差异进行跟进，审核通过后将您的联盟/渠道管理器账户状态从 `PENDING_APPROVAL` 变更为 `ACTIVE`。您的集成即可进入生产环境接入流程。
+
+:::tip
+建议自动化通信记录捕获。步骤D的七个 `PUT` 调用及步骤E的读取是认证失败的常见原因——使用能持久保存每次请求和响应的交互式HTTP客户端，可避免因小数点误差而重跑全部流程。
+:::
+
+## Webhook通知
+
+您可以订阅渠道管理器Webhook事件，实时接收通知：
+
+- `channel-manager.update.rate` — 收到价格更新。
+- `channel-manager.update.availability` — 收到可用性更新。
+- `channel-manager.update` — 一般渠道管理器更新。
+
+详情请参见 [Webhook事件目录](/zh-CN/developers/webhook-events#channel-manager-events)。
+
+## 进一步阅读
+
+- [渠道管理器API](/zh-CN/partner-api/partner/) — 完整API端点文档。
+- [价格提供商](/zh-CN/portal/extranet/rate-providers) — Extranet中的价格提供商管理。
+- [Webhook事件目录](/zh-CN/developers/webhook-events) — 所有可订阅事件。
+- [在Wink上构建](/zh-CN/developers/build-on-wink) — 开发者平台概览。

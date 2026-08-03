@@ -203,10 +203,11 @@ const rewriteCommonHrefPrefixes = (content: string, lang: string): string => {
 
 // Helper filesystem utilities
 const createDirectory = (filePath: string): void => mkdirSync(filePath);
+const isTranslatableFile = (fileName: string): boolean =>
+  (fileName.endsWith(".md") || fileName.endsWith(".mdx")) &&
+  !fileName.startsWith(".");
 const readFiles = (filePath: string): Array<string> =>
-  readdirSync(filePath).filter(
-    (f) => (f.endsWith(".md") || f.endsWith(".mdx")) && !f.startsWith(".")
-  );
+  readdirSync(filePath).filter(isTranslatableFile);
 const readFile = (filePath: string): string => {
   if (!existsSync(filePath)) {
     throw new Error(`Unable to find file ${filePath}`);
@@ -234,28 +235,20 @@ const loadHashMap = (langDirectory: string): HashMap => {
   return {};
 };
 
-// Source directories to walk for translation. After the docs reorg, portal
-// docs live under app/, IAM docs under account/, managed services under
-// services/, and guides are split by audience.
-const directories = [
-  "portal",
-  "portal/corporate",
-  "portal/extranet",
-  "portal/link-manager",
-  "portal/payment",
-  "portal/settings",
-  "portal/social",
-  "portal/studio",
-  "portal/travel-agent",
-  "account",
-  "booking-engine",
-  "developers",
-  "getting-started",
-  "integrations",
-  "guides/affiliates",
-  "guides/general",
-  "guides/hoteliers",
-  "webinars",
+// Top-level directories under src/content/docs that are never machine-translated.
+// `api` and `changelog` are generated from upstream sources, and `blog` is owned
+// by the starlightBlog plugin. Everything else is discovered automatically by
+// discoverSourceDirectories() below — do not maintain a list of what to include.
+const UNTRANSLATED_DIRECTORIES = new Set(["api", "blog", "changelog"]);
+
+// Root-level pages, translated alongside the discovered directories.
+const rootFiles = [
+  "index.mdx",
+  "team.mdx",
+  "contact.mdx",
+  "privacy.md",
+  "terms.md",
+  "jobs.mdx",
 ];
 
 // some environment variables
@@ -331,6 +324,55 @@ const targetLanguages = [
 // Optional narrowing via environment variables for quicker tests
 const ONLY_LANG = process.env.ONLY_LANG?.trim();
 const ONLY_DIR = process.env.ONLY_DIR?.trim();
+
+// Locale output directories sit alongside the English sources, so they must
+// never be treated as translation input.
+const localeDirectories = new Set(targetLanguages.map((l) => l.id));
+
+/**
+ * Walk src/content/docs and return every directory holding translatable source
+ * files, relative to the docs root.
+ *
+ * Discovery is recursive and opt-out (see UNTRANSLATED_DIRECTORIES) rather than
+ * opt-in. A hand-maintained include list used to live here, and a docs section
+ * missing from it was skipped silently — no error, no warning, just untranslated
+ * pages nobody noticed.
+ */
+const discoverSourceDirectories = (): Array<string> => {
+  const discovered: Array<string> = [];
+
+  const walk = (relativeDirectory: string): void => {
+    const entries = readdirSync(join(docsBaseDir, relativeDirectory), {
+      withFileTypes: true,
+    });
+
+    // Root-level files are handled separately via rootFiles.
+    if (
+      relativeDirectory &&
+      entries.some((e) => e.isFile() && isTranslatableFile(e.name))
+    ) {
+      discovered.push(relativeDirectory);
+    }
+
+    for (const entry of entries) {
+      if (!entry.isDirectory() || entry.name.startsWith(".")) continue;
+      const isTopLevel = !relativeDirectory;
+      if (
+        isTopLevel &&
+        (localeDirectories.has(entry.name) ||
+          UNTRANSLATED_DIRECTORIES.has(entry.name))
+      ) {
+        continue;
+      }
+      walk(join(relativeDirectory, entry.name));
+    }
+  };
+
+  walk("");
+  return discovered.sort();
+};
+
+const directories = discoverSourceDirectories();
 
 // Whole-file translation: send entire MDX including frontmatter and body
 async function translateWholeFile(
@@ -517,8 +559,11 @@ async function translateDocs() {
     ? targetLanguages.filter((l) => l.id === ONLY_LANG)
     : targetLanguages;
 
-  const rootFileCount = 6;
-  let totalFiles = rootFileCount * langList.length;
+  console.log(
+    `📁 ${dirList.length} source directories: ${dirList.join(", ")}`
+  );
+
+  let totalFiles = rootFiles.length * langList.length;
   for (const directory of dirList) {
     const sourceDirectory = join(docsBaseDir, directory);
     const files = readFiles(sourceDirectory);
@@ -542,14 +587,6 @@ async function translateDocs() {
     // ✅ Load hash map for this language
     const langHashMap = loadHashMap(languageDirectory);
 
-    const rootFiles = [
-      "index.mdx",
-      "team.mdx",
-      "contact.mdx",
-      "privacy.md",
-      "terms.md",
-      "jobs.mdx",
-    ];
     for (const rootFile of rootFiles) {
       const sourceFile = join(docsBaseDir, rootFile);
       const targetFile = join(languageDirectory, rootFile);

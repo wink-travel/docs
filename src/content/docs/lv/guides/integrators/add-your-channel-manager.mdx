@@ -1,0 +1,386 @@
+---
+title: Pievienojiet savu kanālu pārvaldnieku
+description: Soli pa solim ceļvedis kanālu pārvaldnieku un PMS izstrādātājiem, kas integrējas ar Wink platformu.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Šis ceļvedis ved kanālu pārvaldnieku un PMS izstrādātājus cauri pilnam integrācijas procesam ar Wink — no kontu izveides līdz inventāra kartēšanai un pirmajam pilna cikla testam.
+
+## Vides
+
+Channel Manager (Integrations) API ir pieejams divās vidēs. Izmantojiet staging visai izstrādei un sertifikācijai; pārejiet uz produkciju tikai pirms palaišanas.
+
+| Vide       | Bāzes URL                          |
+| -----------| --------------------------------- |
+| Produkcija | https://integrations.wink.travel  |
+| Staging    | https://staging-integrations.wink.travel |
+
+## API atsauce
+
+Channel Manager API seko OTA protokola standartiem (SOAP/XML) saderībai ar esošajām viesnīcu sistēmām. Sāciet ar partnera galapunkta dokumentācijas pārskatīšanu:
+
+<LinkButton href="/lv/partner-api/partner/">
+  Channel Manager API — Partneru galapunkti
+</LinkButton>
+
+## Integrācijas soļi
+
+<Steps>
+1. **Izveidojiet Wink lietotāja kontu**
+
+   Reģistrējieties vietnē [staging-app.wink.travel](https://staging-app.wink.travel). Visi tālāk minētie soļi tiek veikti staging vidē — pilnu procesu atkārtosiet produkcijā pirms palaišanas.
+
+2. **Izveidojiet savu Affiliate / Channel Manager kontu**
+
+   Sava jaunā lietotāja ietvaros izveidojiet kontu un izvēlieties konta tipu **Affiliate / Channel Manager**. Šis ir konts, ar kuru jūsu integrācija autentificēsies.
+
+3. **Reģistrējiet lietotni un izveidojiet savu pirmo tokenu**
+
+   Izveidojiet [Lietotni](/lv/account/applications) un sasaistiet to ar kanālu pārvaldnieka kontu no 2. soļa. Izvēlieties klienta tipu **MACHINE_2_MACHINE** — tā ir servera-servera integrācija bez gala lietotāja pāradresācijas. Nekavējoties nokopējiet **Client ID** un **Secret Key**; slepenais atslēgas kods tiek parādīts tikai vienreiz un to nevar atkārtoti iegūt.
+
+   Lietotne ģenerē bearer tokenu, ko katrs šī ceļveža izsaukums nes kā `Authorization: Bearer <access_token>`. Apmainiet savas akreditācijas datus pret tokenu, izmantojot `client_credentials` grant pie `https://staging-iam.wink.travel/oauth2/token`, pieprasot `integrations.read integrations.write` piekļuves tiesības. To izdariet pirms turpināšanas — bez tokena nevarēsiet meklēt konta identifikatorus vai piekļūt nevienam Channel Manager galapunktam. Skatiet [Autentifikācija](/lv/developers/authentication) pilnai plūsmai, produkcijas hostam un pilnam piekļuves tiesību katalogam.
+
+4. **Izveidojiet viesnīcas kontu**
+
+   Tajā pašā lietotājā izveidojiet otro kontu un izvēlieties konta tipu **Hotel**. Tas nodrošina īpašumu, ko var izmantot testēšanai bez reālas viesnīcas iesaistes.
+
+5. **Apstipriniet abu kontu apstiprinājumu**
+
+   Neviens konts nav izmantojams, kamēr tas nav apstiprināts: neapstiprināts kanālu pārvaldnieka konts neparādās nevienā viesnīcas kanālu pārvaldnieka sarakstā, un neapstiprināta viesnīca netiek atgriezta API.
+
+   - **Staging** — apstiprinājums ir automātisks. Abi konti ir izmantojami uzreiz pēc izveides, un nav nepieciešams pieprasīt apstiprinājumu.
+   - **Produkcija** — apstiprinājums ir manuāls. Nosūtiet Wink integrāciju kontaktpersonai abu kontu nosaukumus un lietotāju, zem kura tie atrodas, un gaidiet apstiprinājumu pirms turpināšanas.
+
+6. **Savienojiet abus kontus**
+
+   Piesakieties viesnīcas kontā un dodieties uz **Extranet → Distribution → Channel Manager**. Izvēlieties savu kanālu pārvaldnieka kontu no saraksta — tas sasaista īpašumu ar jūsu integrāciju. Ja jūsu konts nav sarakstā, tas vēl nav apstiprināts; skatiet 5. soli.
+
+7. **Izveidojiet pamata istabas tipu un cenu plānu**
+
+   Viesnīcas kontā izveidojiet vismaz vienu istabas tipu un vienu cenu plānu. Tie ir nepieciešami, lai jūsu integrācija varētu nosūtīt cenas un pieejamību vai saņemt rezervācijas.
+
+8. **Kartējiet un testējiet**
+
+   Savā sistēmā kartējiet istabas tipa un cenu plāna identifikatorus, ko atgriež API. Nosūtiet cenu un pieejamības atjauninājumus, veiciet testa rezervāciju un pārbaudiet, vai rezervāciju izgūšanas galapunkts to pareizi atgriež.
+</Steps>
+
+:::note
+Atkārtojiet visus iepriekš minētos soļus produkcijā pirms palaišanas, tostarp reģistrējot atsevišķu produkcijas lietotni — staging akreditācijas dati produkcijā nedarbojas. Plānojiet Wink pārskatīšanu 5. solī — atšķirībā no staging, produkcijas konti netiek apstiprināti automātiski. Wink komanda migrēs jebkuras viesnīcas, kas jau izmanto jūsu kanālu pārvaldnieku, uz jūsu jauno produkcijas kontu.
+:::
+
+## Konta identifikatoru atrašana
+
+Katrs Channel Manager API ceļš ir saistīts ar jūsu pašu kontu:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` ir jūsu **kanālu pārvaldnieka konta** ID (UUID) — ne viesnīcas. Iegūstiet to kopā ar citu jūsu lietotāja kontu ID un pašreizējo statusu no Platform API:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Atbilde ir masīvs ar jūsu kontiem:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Jūsu kanālu pārvaldnieks",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Jūsu testa īpašums",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- Kanālu pārvaldnieka ieraksta `id` ir jūsu **`{managingEntityIdentifier}`**.
+- `HOTEL` ieraksta `id` ir jūsu **`{propertyIdentifier}`**.
+- `status` ļauj pārbaudīt, vai katrs konts ir apstiprināts — īpaši svarīgi produkcijā, kur apstiprinājums ir manuāls. **Viesnīcai** jābūt ar statusu `ACTIVE`, lai to varētu rezervēt vai redzēt Channel Manager API. Jūsu **kanālu pārvaldnieka** konts saglabā `PENDING_APPROVAL` statusu līdz [sertifikācijai](#certification); tas ir gaidāms un neietekmē izstrādi.
+
+:::caution
+Šis pieprasījums tiek veikts pret **Platform API** (`https://staging-api.wink.travel` staging vidē, `https://api.wink.travel` produkcijā), nevis Channel Manager API hostiem, kas norādīti sadaļā [Vides](#environments). Izmantojiet to pašu piekļuves tokenu — tas tiek izsniegts lietotājam, nevis API.
+:::
+
+## Sertifikācija
+
+Sertifikācija pierāda — un Wink apstiprina — ka jūsu integrācija pareizi kartē inventāru, nosūta cenas un pieejamību, kā arī saņem rezervācijas pilnā ciklā. Tā ir paredzēta kā pašapkalpošanās process: jūs veicat katru soli savā sistēmā un beigās iesniedzat vienu pierādījumu komplektu. Wink pārskata komplektu un, ja tas ir veiksmīgs, maina jūsu Affiliate / Channel Manager konta statusu no **PENDING_APPROVAL** uz **ACTIVE**.
+
+Sertifikācija notiek pilnībā staging vidē
+(`https://staging-integrations.wink.travel`). Nekas šajā sadaļā neietekmē produkciju.
+
+### Ko jūs pierādīsiet
+
+<Steps>
+1. **Autentifikācija.** Jūsu OAuth2 klients var iegūt piekļuves tokenu un veiksmīgi izsaukt `/ping` galapunktu pret jūsu Affiliate / Channel Manager kontu.
+
+2. **Inventāra kartēšana.** Jūs varat uzskaitīt viesnīcu(-as), kas ir piesaistītas jūsu kontam, izgūt galveno cenu (istabas tips × cenu plāns), ko konfigurējāt, un pareizi identificēt `masterRateIdentifier`, uz kuru jūsu sistēma mērķēs.
+
+3. **Cenu un pieejamības nosūtīšana.** Jūs varat neatkarīgi atjaunināt visas septiņas sertifikācijas nedēļas dienas — ar dažādām summām, daudzumiem, ierobežojumiem ierašanās un izrakstīšanās dienā, kā arī minimālo/maksimālo uzturēšanās ilgumu katrai dienai — un nolasīt precīzas vērtības atpakaļ no Wink.
+
+4. **Rezervāciju izgūšana.** Jūs varat izgūt reālu staging rezervāciju, kas veikta pret jūsu testa īpašumu, parādīt to savā PMS/CM lietotāja saskarnē ar pareizu istabas uzturēšanos, viesi un kopējo summu, un pēc tam atspoguļot atcelšanu, kad Wink atzīmē rezervāciju kā atcelto.
+</Steps>
+
+### Priekšnosacījumi
+
+Pirms sākat sertifikāciju, pabeidziet 1.–7. soļus no [Integrācijas soļi](#integration-steps), lai jums būtu:
+
+- Wink lietotājs staging vidē ar **Affiliate / Channel Manager** kontu un tam piesaistītu **Hotel** kontu (Extranet → Distribution → Channel Manager). Staging konti tiek apstiprināti automātiski, tāpēc nav nepieciešams pieprasīt apstiprinājumu.
+- Vismaz viens **istabas tips** un viens **cenu plāns** izveidots viesnīcas kontā. Publicējiet viesnīcu, lai tā būtu rezervējama vietnē `https://staging-book.wink.travel/hotel/<your-slug>`.
+- Reģistrēta lietotne jūsu Affiliate / Channel Manager kontā ar **Client ID**, **Secret Key** un `integrations.read integrations.write` piekļuves tiesībām (skatiet [Autentifikācija](/lv/developers/authentication)).
+- Jūsu Affiliate / Channel Manager konta **`managingEntityIdentifier`** un viesnīcas konta **`propertyIdentifier`** (abi ir UUID — skatiet [Konta identifikatoru atrašana](#finding-your-account-identifiers)).
+
+### Biežākās pieprasījumu konvencijas
+
+Katrs pieprasījums šajā sadaļā izmanto šādus galvenes:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` iegūts ar `client_credentials` grant pie `https://staging-iam.wink.travel/oauth2/token` — skatiet [Autentifikācija](/lv/developers/authentication#staging).
+- Galvene `Wink-Version` ir obligāta; tās neiekļaušana novirzīs pieprasījumu nevis uz v2 JSON API.
+- `Content-Type: application/json` tiek pievienots `PUT` pieprasījumiem ar ķermeni.
+
+Zemākajos piemēros vietturi atbilst vērtībām, ko ieguvāt [Priekšnosacījumos](#prerequisites):
+
+| Viettura nosaukums           | Nozīme |
+|-----------------------------|--------|
+| `{managingEntityIdentifier}` | Jūsu Affiliate / Channel Manager konta ID (UUID) — skatiet [Konta identifikatoru atrašana](#finding-your-account-identifiers). |
+| `{propertyIdentifier}`       | Viesnīcas konta (īpašuma) ID, kas piesaistīts CM kontam. |
+| `{masterRateIdentifier}`     | Galvenā cena (istabas tips × cenu plāns), pret kuru sertificēsieties. |
+| `{bookingIdentifier}`        | Staging rezervācijas ID, ko atgrieza rezervāciju saraksta izsaukums. |
+
+### Solis A — Ping
+
+Pārliecinieties, ka jūsu akreditācijas dati atbilst gaidītajam Affiliate / Channel Manager kontam.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Sagaidāmā atbilde:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Jūsu kanālu pārvaldnieka konta nosaukums",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+**200** atbilde ar atbilstošu `name` norāda, ka autentifikācija un konta identifikācija ir pareiza. `status` lasīs `PENDING_APPROVAL` līdz Wink apstiprinās jūs.
+
+### Solis B — Īpašumu saraksts
+
+Iegūstiet lapotu viesnīcu sarakstu, kas piesaistītas jūsu kontam, un pārliecinieties, ka jūsu testa īpašums ir klāt.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Atbilde ir Spring `Page` ar `ChannelManagerProperty` ierakstiem. Atrodiet ierakstu, kura `identifier` atbilst jūsu `{propertyIdentifier}`, un pierakstiet tā `currencyCode` — tas būs nepieciešams cenu atjauninājumu interpretācijai [D solī](#step-d--load-the-certification-week).
+
+:::caution
+Tukšs saraksts ir konfigurācijas signāls, nevis nepareizs pieprasījums. Viesnīca tiek atgriezta tikai tad, ja tā ir **`ACTIVE`** *un* ir piešķirta jūsu kanālu pārvaldnieka kontam Extranet → Distribution → Channel Manager. Pārbaudiet abus ar `GET /api/managing-entity/list` (skatiet [Konta identifikatoru atrašana](#finding-your-account-identifiers)) pirms turpmākas problēmu novēršanas. Produkcijā vēl pievienojiet trešo iemeslu: viesnīca ir neredzama, kamēr Wink to nav apstiprinājis.
+:::
+
+### Solis C — Galveno cenu izgūšana
+
+Iegūstiet īpašumu kopā ar visām galvenajām cenām (istabas tips × cenu plāna kombinācijām), ko tas publicē. Izvēlieties to, pret kuru sertificēsieties, un pierakstiet tā `identifier` kā `{masterRateIdentifier}`.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Atbildes aploksne ir `PropertyWithRoomRateList`: `property` bloks un `rooms` masīvs ar `PropertyRoomRate` ierakstiem. Katrs ieraksts satur istabas tipu, cenu plānu, noslogojuma ierobežojumus, bāzes cenu un cenu modifikatorus, ko saglabāsiet, nosūtot dienas cenas.
+
+:::caution
+Sertificējieties pret vienu galveno cenu visam sertifikācijas periodam. Papildu istabas tipu un cenu plānu kartēšana ir gaidāma produkcijā, bet pierādījumu komplektam jāparāda tikai viena galvenā cena pilnā ciklā.
+:::
+
+### Solis D — Sertifikācijas nedēļas ielāde
+
+Ielādējiet **septiņu dienu cenu kalendāru**, kas aptver pirmās septiņas kalendāra dienas mēnesī, kas seko mēnesim, kurā sākat sertifikāciju. Piemēram, ja sākat 21. augustā, mērķējiet no 1. līdz 7. septembrim.
+
+Nosūtīsiet **septiņus atsevišķus `PUT` pieprasījumus** — pa vienam katrai dienai — kur `startDate == endDate`. Katru dienu nosaka apzināti atšķirīga summa, daudzums, ierobežojumu karodziņi un uzturēšanās ilguma ierobežojumi, lai katrs rakstāmais lauks tiktu pārbaudīts vismaz vienu reizi. Vērtības ir īpašuma valūtā (pierakstīta B solī); izlaidiet `currencyCode`, un tas tiks pareizi noklusēts.
+
+| Diena | Summa  | Daudzums | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | Ko tas pierāda |
+|-------|--------|----------|-----------------|-------------------|-----------------|-----------------|----------------|
+| 1     | 100.00 | 5        | false           | false             | 1               | 30              | Pamata diena. |
+| 2     | 125.00 | 4        | false           | false             | 1               | 14              | Summa + daudzums + `maxLengthOfStay` maiņa. |
+| 3     | 150.00 | 3        | **true**        | false             | 1               | 30              | `closedOnArrival` maiņa. |
+| 4     | 175.00 | 2        | false           | **true**          | 2               | 7               | `closedOnDeparture` maiņa + šaurāks uzturēšanās logs. |
+| 5     | 200.00 | **0**    | false           | false             | 1               | 30              | Izpārdots daudzums. |
+| 6     | 225.00 | 5        | false           | false             | **3**           | **5**           | Ierobežojošs uzturēšanās logs. |
+| 7     | 250.00 | 1        | false           | false             | 1               | 30              | Pēdējās istabas pieejamība. |
+
+Dienas 1 pieprasījuma ķermenis izskatās šādi. Atkārtojiet, pielāgojot `startDate` / `endDate` / vērtības katrai dienai no 2 līdz 7.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Katrs `PUT` atbild ar `200` un atjaunināto `PropertyRate` ierakstu masīvu par nosūtīto periodu (viens ieraksts, ja `startDate == endDate`). Saglabājiet šo atbildi — tā būs daļa no jūsu pierādījumiem.
+
+:::note
+`master` jābūt `true` katrā sertifikācijas nedēļas izsaukumā. Tas norāda Wink, ka jūsu atjauninājums ir veidnes cena, nevis pārrakstījums katrai rezervācijai.
+:::
+
+### Solis E — Nolasiet sertifikācijas nedēļu
+
+Iegūstiet visu nedēļu vienā pieprasījumā un pārliecinieties, ka katras dienas saglabātās vērtības atbilst D solī nosūtītajām — ieskaitot loģiskos karodziņus un uzturēšanās ilguma logu.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Atbilde ir `PropertyRoomRateWithRateList`. Tā `rates` masīvā jābūt **septiņiem** ierakstiem, pa vienam katrai dienai, katram ar `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`, `minLengthOfStay` un `maxLengthOfStay`, ko ielādējāt. Ja kāds lauks neatbilst, tas nozīmē, ka atbilstošais D solī nosūtītais `PUT` nav veiksmīgi saglabāts — labojiet un pārbaudiet vēlreiz pirms turpināšanas.
+
+### Solis F — Veiciet testa rezervāciju
+
+Atveriet pārlūkprogrammā šo URL, aizvietojot `<your-slug>` ar viesnīcas konta slugu, ko publicējāt Priekšnosacījumos:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Izvēlieties ierašanās un izrakstīšanās datumus, kas pilnībā ietilpst jūsu sertifikācijas nedēļā, izvēlieties sertificēto istabas tipu un cenu plānu, un pabeidziet rezervāciju. Staging izmanto testa maksājumu ceļu — nekāda reāla karte netiek ieturēta.
+
+Kad apstiprinājuma lapa tiek parādīta, pierakstiet **rezervācijas kodu** (formātā `WNKxxxxx`), kas tiek rādīts viesim.
+
+### Solis G — Izgūstiet rezervāciju
+
+Iegūstiet visas rezervācijas, kas izveidotas jūsu testa īpašumam laika logā, kas aptver rezervācijas laiku.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Atrodiet ierakstu, kura `bookingCode` atbilst jūsu F solī pierakstītajam kodam. Pierakstiet tā `bookingIdentifier`. Tad izgūstiet šo vienīgo rezervāciju:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Atbilde ir `PropertyBooking`. Importējiet to savā PMS / kanālu pārvaldnieka UI un pārliecinieties, ka operators redz pareizi:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Viesis: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (viesnīcas saņemtā tīrā summa par visām istabām)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- Katru ierakstu `roomStays`: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`, `endDate` un istabas summu
+
+Uzņemiet ekrānuzņēmumu ar rezervāciju, kā tā izskatās jūsu UI — šis ekrānuzņēmums ir viens no nepieciešamajiem pierādījumiem.
+
+### Solis H — Atceliet rezervāciju un pārbaudiet
+
+Lūdziet Wink komandai atcelt sertifikācijas rezervāciju jūsu vietā (vai atceliet to pats no viesnīcas konta Extranet, ja jums ir šī atļauja). Tad atkārtoti izgūstiet to pašu rezervāciju ar G solī izmantoto izsaukumu.
+
+Pārliecinieties, ka atbilde tagad rāda:
+
+- `cancelled: true`
+- Aizpildīts `cancelDate` laiks
+- `paymentMethodStatus`, kas atspoguļo atcelšanas statusu (`CANCELLED`, `PARTIALLY_REFUNDED` vai `FULLY_REFUNDED` atkarībā no atmaksas politikas)
+
+Importējiet šo atjaunināto rezervāciju savā UI un pārliecinieties, ka operators redz atcelšanu — statusu, atcelšanas laiku un jebkuru jūsu UI atbalstītu atmaksas indikatoru. Uzņemiet otru ekrānuzņēmumu ar atcelto rezervāciju jūsu UI. Tas ir galīgais pierādījums.
+
+### Solis I — Iesniedziet pierādījumu komplektu
+
+Iesaiņojiet šādus materiālus vienā arhīvā (`.zip`) ar nosaukumu
+`wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **API transkripts.** Katram pieprasījumam no A līdz H solim saglabājiet pilnu HTTP pieprasījumu (metode, URL, pieprasījuma galvenes ar rediģētu `Authorization` vērtību un JSON ķermeni `PUT` pieprasījumiem) un pilnu HTTP atbildi (statusa kods, atbildes galvenes un JSON ķermeni). Strukturējiet transkriptu tā, lai katrs pieprasījums/atbilde būtu skaidri apzīmēta ar attiecīgo soli (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json` utt.). Pieņemami ir gan teksta `.http` faili, gan viens `.har` eksports.
+
+2. **UI ekrānuzņēmums: aktīvā rezervācija.** Ekrānuzņēmums no G soļa, kurā redzama sertifikācijas rezervācija jūsu PMS / kanālu pārvaldnieka UI ar skaidri salasāmu viesi, datumiem, istabas tipu, cenu plānu un kopējo summu.
+
+3. **UI ekrānuzņēmums: atcelta rezervācija.** Ekrānuzņēmums no H soļa, kurā redzama tā pati rezervācija jūsu UI pēc atcelšanas ar skaidri salasāmu statusu un laiku.
+
+4. **Sertifikācijas kopsavilkums.** Īss `README.md` arhīvā ar:
+   - Jūsu kanālu pārvaldnieka / PMS nosaukumu un versiju.
+   - Izmantotajiem `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier` un `bookingIdentifier`.
+   - Staging viesnīcas slugu (`<your-slug>` no `https://staging-book.wink.travel/hotel/<your-slug>`).
+   - Sertifikācijas nedēļas datumu diapazonu (1. diena → 7. diena ISO-8601 formātā).
+   - Inženiera vārdu un e-pastu, kas veica sertifikāciju.
+</Steps>
+
+Nosūtiet arhīvu savai Wink integrāciju kontaktpersonai. Wink to pārskatīs, sazināsies par jebkādām neatbilstībām un, ja viss būs kārtībā, mainīs jūsu Affiliate / Channel Manager konta statusu no `PENDING_APPROVAL` uz `ACTIVE`. Tad jūsu integrācija būs gatava produkcijas pieslēgšanai.
+
+:::tip
+Automatizējiet transkripta saglabāšanu. Septiņi `PUT` pieprasījumi D solī un nolasīšana E solī ir visbiežākais sertifikācijas kļūdu avots — interaktīvs HTTP klients, kas saglabā katru pieprasījumu un atbildi, ļaus izvairīties no pilnas atkārtotas pārbaudes, ja kāda vērtība būs nepareiza.
+:::
+
+## Webhook paziņojumi
+
+Jūs varat abonēt kanālu pārvaldnieka webhook notikumus, lai saņemtu reāllaika paziņojumus:
+
+- `channel-manager.update.rate` — saņemts cenu atjauninājums.
+- `channel-manager.update.availability` — saņemts pieejamības atjauninājums.
+- `channel-manager.update` — vispārīgs kanālu pārvaldnieka atjauninājums.
+
+Skatiet [Webhook notikumu katalogu](/lv/developers/webhook-events#channel-manager-events) sīkākai informācijai.
+
+## Papildu lasāmviela
+
+- [Channel Manager API](/lv/partner-api/partner/) — Pilna API galapunktu dokumentācija.
+- [Cenu nodrošinātāji](/lv/portal/extranet/rate-providers) — Cenu nodrošinātāju pārvaldība Extranet vidē.
+- [Webhook notikumu katalogs](/lv/developers/webhook-events) — Visi pieejamie notikumi.
+- [Veidojiet uz Wink](/lv/developers/build-on-wink) — Platformas pārskats izstrādātājiem.

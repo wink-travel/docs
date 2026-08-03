@@ -1,0 +1,453 @@
+---
+title: Tambah Pengurus Saluran Anda
+description: Panduan langkah demi langkah untuk pembangun pengurus saluran dan PMS yang mengintegrasi dengan platform Wink.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Panduan ini membimbing pembangun pengurus saluran dan PMS melalui proses penuh integrasi dengan Wink — dari mencipta akaun anda hingga memetakan inventori dan menjalankan ujian hujung-ke-hujung pertama anda.
+
+## Persekitaran
+
+API Pengurus Saluran (Integrasi) tersedia dalam dua persekitaran. Gunakan staging untuk semua pembangunan dan pensijilan; beralih ke produksi hanya semasa go-live.
+
+| Persekitaran | URL Asas |
+| ----------- | -------- |
+| Produksi   | https://integrations.wink.travel |
+| Staging     | https://staging-integrations.wink.travel |
+
+## Rujukan API
+
+API Pengurus Saluran mengikuti piawaian protokol OTA (SOAP/XML) untuk keserasian dengan sistem hospitaliti sedia ada. Mulakan dengan menyemak dokumentasi titik akhir rakan kongsi:
+
+<LinkButton href="/ms/partner-api/partner/">
+  API Pengurus Saluran — Titik akhir rakan kongsi
+</LinkButton>
+
+## Langkah integrasi
+
+<Steps>
+1. **Cipta akaun pengguna Wink**
+
+   Daftar di [staging-app.wink.travel](https://staging-app.wink.travel). Semua langkah di bawah menggunakan staging — anda akan mengulangi proses penuh di produksi sebelum go-live.
+
+2. **Cipta akaun Affiliate / Pengurus Saluran anda**
+
+   Di bawah pengguna baru anda, cipta akaun dan pilih jenis akaun **Affiliate / Pengurus Saluran**. Ini adalah akaun yang akan digunakan oleh integrasi anda untuk pengesahan.
+
+3. **Daftar aplikasi dan cipta token pertama anda**
+
+   Cipta [Aplikasi](/ms/account/applications) dan pautkan ke akaun pengurus saluran dari langkah 2. Pilih **MACHINE_2_MACHINE** sebagai jenis klien — ini adalah integrasi server-ke-server tanpa pengguna akhir untuk dialihkan. Salin **Client ID** dan **Secret Key** dengan segera; kunci rahsia hanya dipaparkan sekali dan tidak boleh diperoleh semula.
+
+   Aplikasi ini yang mencipta token bearer yang setiap panggilan dalam panduan ini bawa sebagai `Authorization: Bearer <access_token>`. Tukar kelayakan anda untuk token menggunakan pemberian `client_credentials` terhadap `https://staging-iam.wink.travel/oauth2/token`, memohon skop `integrations.read integrations.write`. Lakukan ini sebelum meneruskan — anda tidak boleh mencari pengecam akaun atau mencapai mana-mana titik akhir Pengurus Saluran tanpa token. Lihat [Pengesahan](/ms/developers/authentication) untuk aliran penuh, hos produksi, dan katalog skop lengkap.
+
+4. **Cipta akaun Hotel**
+
+   Di bawah pengguna yang sama, cipta akaun kedua dan pilih jenis akaun **Hotel**. Ini memberikan anda hartanah yang boleh digunakan untuk ujian tanpa melibatkan hotel sebenar.
+
+5. **Sahkan kedua-dua akaun diluluskan**
+
+   Tiada akaun boleh digunakan sehingga ia diluluskan: akaun pengurus saluran yang tidak diluluskan tidak muncul dalam senarai pengurus saluran mana-mana hotel, dan hotel yang tidak diluluskan tidak dikembalikan oleh API.
+
+   - **Staging** — kelulusan adalah automatik. Kedua-dua akaun boleh digunakan sebaik sahaja anda menciptanya, dan tiada permintaan diperlukan.
+   - **Produksi** — kelulusan adalah manual. Hantar nama kedua-dua akaun dan pengguna yang mereka di bawah kepada kontak integrasi Wink anda, kemudian tunggu pengesahan sebelum meneruskan.
+
+6. **Sambungkan kedua-dua akaun**
+
+   Log masuk ke akaun Hotel dan navigasi ke **Extranet → Distribution → Channel Manager**. Pilih akaun pengurus saluran anda dari senarai — ini memautkan hartanah ke integrasi anda. Jika akaun anda tidak ada dalam senarai, ia belum diluluskan; lihat langkah 5.
+
+7. **Cipta jenis bilik asas dan pelan kadar**
+
+   Dalam akaun Hotel, cipta sekurang-kurangnya satu jenis bilik dan satu pelan kadar. Ini diperlukan sebelum integrasi anda boleh menolak kadar dan ketersediaan atau menarik tempahan.
+
+8. **Pemetaan dan ujian**
+
+   Dalam sistem anda sendiri, peta pengecam jenis bilik dan pelan kadar yang dikembalikan oleh API. Tolak kemas kini kadar dan kemas kini ketersediaan, kemudian buat tempahan ujian dan sahkan titik akhir pengambilan tempahan mengembalikannya dengan betul.
+</Steps>
+
+:::note
+Ulang semua langkah di atas dalam produksi sebelum go-live, termasuk mendaftar aplikasi produksi berasingan — kelayakan staging tidak berfungsi untuk produksi. Sediakan masa untuk semakan Wink dalam langkah 5 — tidak seperti staging, akaun produksi tidak diluluskan secara automatik. Pasukan Wink akan memindahkan mana-mana hotel yang sudah menggunakan pengurus saluran anda ke akaun produksi baru anda.
+:::
+
+## Mencari pengecam akaun anda
+
+Setiap laluan API Pengurus Saluran dihadkan kepada akaun anda sendiri:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` adalah ID akaun (UUID) **akaun pengurus saluran anda** — bukan
+hotel. Dapatkannya, bersama ID dan status semasa setiap akaun lain yang dimiliki pengguna anda,
+daripada Platform API:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Respons adalah tatasusunan akaun yang anda miliki:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Pengurus Saluran Anda",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Hartanah Ujian Anda",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- `id` entri pengurus saluran adalah **`{managingEntityIdentifier}`** anda.
+- `id` entri `HOTEL` adalah **`{propertyIdentifier}`** anda.
+- `status` adalah tempat anda mengesahkan setiap akaun diluluskan — paling berguna dalam produksi, di mana
+  kelulusan adalah manual. **hotel** mesti membaca `ACTIVE` sebelum boleh ditempah atau dilihat oleh
+  API Pengurus Saluran. Akaun **pengurus saluran** anda akan terus membaca `PENDING_APPROVAL` sehingga
+  anda lulus [Pensijilan](#certification); ini dijangka dan tidak menghalang pembangunan.
+
+:::caution
+Carian ini dijalankan terhadap **Platform API** (`https://staging-api.wink.travel` pada staging,
+`https://api.wink.travel` dalam produksi), bukan hos API Pengurus Saluran yang disenaraikan di bawah
+[Persekitaran](#persekitaran). Gunakan token akses yang sama — ia dikeluarkan per pengguna, bukan per API.
+:::
+
+## Pensijilan
+
+Pensijilan adalah cara anda membuktikan — dan Wink mengesahkan — bahawa integrasi anda memetakan
+inventori dengan betul, menolak kadar dan ketersediaan, dan menerima tempahan hujung-ke-hujung. Ia direka
+untuk layan diri: anda mengendalikan setiap langkah dari sistem anda sendiri, dan anda menyerahkan satu
+bukti bukti pada akhirnya. Wink menyemak bukti tersebut dan, jika lulus, menaikkan status akaun Affiliate / Pengurus Saluran anda
+dari **PENDING_APPROVAL** ke **ACTIVE**.
+
+Pensijilan dijalankan sepenuhnya terhadap persekitaran staging
+(`https://staging-integrations.wink.travel`). Tiada apa dalam bahagian ini menyentuh produksi.
+
+### Apa yang anda akan buktikan
+
+<Steps>
+1. **Pengesahan.** Klien OAuth2 anda boleh mendapatkan token akses dan berjaya memanggil
+   titik akhir `/ping` terhadap akaun Affiliate / Pengurus Saluran anda.
+
+2. **Pemetaan inventori.** Anda boleh menyenaraikan hotel yang disambungkan ke akaun anda, mendapatkan kadar induk
+   (jenis bilik × pelan kadar) yang anda konfigurasikan, dan mengenal pasti dengan betul `masterRateIdentifier`
+   yang akan disasarkan oleh sistem anda.
+
+3. **Tolakan kadar & ketersediaan.** Anda boleh mengemas kini semua tujuh hari minggu pensijilan
+   secara berasingan — gabungan berbeza jumlah, kuantiti, bendera tutup semasa ketibaan / tutup semasa berlepas,
+   dan had panjang penginapan minimum/maksimum pada setiap hari — dan membaca nilai tepat kembali dari Wink.
+
+4. **Tarik tempahan.** Anda boleh mendapatkan tempahan staging sebenar yang dibuat terhadap hartanah ujian anda,
+   memaparkannya dalam UI PMS/CM anda dengan penginapan bilik, tetamu, dan jumlah yang betul, kemudian mencerminkan
+   pembatalan apabila Wink menandakan tempahan dibatalkan.
+</Steps>
+
+### Prasyarat
+
+Sebelum memulakan pensijilan, lengkapkan langkah 1–7 dalam [Langkah integrasi](#integration-steps) supaya
+anda mempunyai:
+
+- Pengguna Wink di staging dengan akaun **Affiliate / Pengurus Saluran** dan akaun **Hotel**
+  yang disambungkan kepadanya (Extranet → Distribution → Channel Manager). Akaun staging diluluskan
+  secara automatik, jadi tiada permintaan diperlukan di sini.
+- Sekurang-kurangnya satu **jenis bilik** dan satu **pelan kadar** yang dicipta dalam akaun Hotel. Terbitkan
+  hotel supaya boleh ditempah di `https://staging-book.wink.travel/hotel/<your-slug>`.
+- Aplikasi berdaftar di bawah akaun Affiliate / Pengurus Saluran anda dengan **Client ID**,
+  **Secret Key**, dan skop `integrations.read integrations.write`
+  (lihat [Pengesahan](/ms/developers/authentication)).
+- **`managingEntityIdentifier`** akaun Affiliate / Pengurus Saluran anda dan
+  **`propertyIdentifier`** akaun Hotel anda (kedua-duanya UUID — lihat
+  [Mencari pengecam akaun anda](#finding-your-account-identifiers)).
+
+### Konvensyen permintaan biasa
+
+Setiap permintaan dalam bahagian ini menggunakan pengepala berikut:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` datang dari pemberian `client_credentials` terhadap
+  `https://staging-iam.wink.travel/oauth2/token` — lihat [Pengesahan](/ms/developers/authentication#staging).
+- Pengepala `Wink-Version` diperlukan; jika tidak disertakan, ia tidak akan menghala ke API JSON v2.
+- `Content-Type: application/json` ditambah pada permintaan `PUT` yang membawa badan.
+
+Sepanjang contoh di bawah, tempat letak nilai dipetakan kepada nilai yang anda kumpulkan dalam
+[Prasyarat](#prerequisites):
+
+| Tempat Letak | Maksud |
+|---|---|
+| `{managingEntityIdentifier}` | ID akaun Affiliate / Pengurus Saluran anda (UUID) — lihat [Mencari pengecam akaun anda](#finding-your-account-identifiers). |
+| `{propertyIdentifier}`       | ID akaun Hotel (hartanah) yang anda sambungkan ke akaun CM. |
+| `{masterRateIdentifier}`     | Kadar induk (jenis bilik × pelan kadar) yang akan anda sijilkan. |
+| `{bookingIdentifier}`        | ID tempahan staging yang dikembalikan oleh panggilan senarai tempahan. |
+
+### Langkah A — Ping
+
+Sahkan kelayakan anda merujuk kepada akaun Affiliate / Pengurus Saluran yang anda jangkakan.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Respons dijangka:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Nama Akaun Pengurus Saluran Anda",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+Respons **200** dengan `name` yang sepadan adalah isyarat bahawa pengesahan dan penyelesaian akaun
+adalah betul. `status` akan membaca `PENDING_APPROVAL` sehingga Wink mensijilkan anda.
+
+### Langkah B — Senaraikan hartanah
+
+Dapatkan senarai hotel berhalaman yang dipautkan ke akaun anda dan sahkan hartanah ujian anda ada.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Respons adalah `Page` Spring bagi entri `ChannelManagerProperty`. Cari entri yang
+`identifier`nya sepadan dengan `{propertyIdentifier}` anda dan catat `currencyCode` — anda akan memerlukannya
+untuk tafsiran kemas kini kadar dalam [Langkah D](#step-d--load-the-certification-week).
+
+:::caution
+Senarai kosong adalah isyarat konfigurasi, bukan permintaan yang salah. Hotel hanya dikembalikan di sini
+apabila ia **`ACTIVE`** *dan* telah ditetapkan kepada akaun pengurus saluran anda di bawah
+Extranet → Distribution → Channel Manager. Semak kedua-duanya dengan `GET /api/managing-entity/list` (lihat
+[Mencari pengecam akaun anda](#finding-your-account-identifiers)) sebelum menyemak lebih lanjut.
+Dalam produksi, tambah sebab ketiga: hotel tidak kelihatan di sini sehingga Wink meluluskannya.
+:::
+
+### Langkah C — Dapatkan kadar induk
+
+Dapatkan hartanah bersama setiap kadar induk (gabungan jenis bilik × pelan kadar) yang diterbitkannya.
+Pilih yang anda ingin sijilkan dan catat `identifier`nya sebagai
+`{masterRateIdentifier}` anda.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Amplop respons adalah `PropertyWithRoomRateList`: blok `property` plus tatasusunan `rooms` entri
+`PropertyRoomRate`. Setiap entri memaparkan jenis bilik, pelan kadar, had penghunian, kadar asas,
+dan pengubah kadar yang akan anda kekalkan apabila menolak kadar harian.
+
+:::caution
+Sijilkan terhadap satu kadar induk sahaja untuk keseluruhan larian pensijilan. Pemetaan jenis bilik dan pelan kadar tambahan dijangka dalam produksi, tetapi bukti hanya perlu menunjukkan satu kadar induk yang diuji hujung-ke-hujung.
+:::
+
+### Langkah D — Muatkan minggu pensijilan
+
+Muatkan **kalendar kadar tujuh hari** yang merangkumi tujuh hari kalendar pertama bulan **selepas**
+bulan anda mula pensijilan. Contohnya, jika anda mula pensijilan pada 21 Ogos,
+sasarkan 1 September hingga 7 September.
+
+Anda akan menghantar **tujuh panggilan `PUT` berasingan** — satu setiap hari — di mana `startDate == endDate`. Setiap hari membawa gabungan berbeza jumlah, kuantiti, bendera tutup semasa ketibaan / tutup semasa berlepas, dan had panjang penginapan supaya setiap medan boleh tulis diuji sekurang-kurangnya sekali. Nilai adalah dalam mata wang hartanah (dicatat dalam Langkah B); jika `currencyCode` dihilangkan, ia akan lalai dengan betul.
+
+| Hari | Jumlah | Kuantiti | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | Apa yang dibuktikan |
+|-----|--------|----------|-----------------|-------------------|-----------------|-----------------|--------------------|
+| 1   | 100.00 | 5        | false           | false             | 1               | 30              | Hari asas. |
+| 2   | 125.00 | 4        | false           | false             | 1               | 14              | Perubahan jumlah + kuantiti + `maxLengthOfStay`. |
+| 3   | 150.00 | 3        | **true**        | false             | 1               | 30              | Tukar `closedOnArrival`. |
+| 4   | 175.00 | 2        | false           | **true**          | 2               | 7               | Tukar `closedOnDeparture` + had LOS lebih ketat. |
+| 5   | 200.00 | **0**    | false           | false             | 1               | 30              | Kuantiti habis dijual. |
+| 6   | 225.00 | 5        | false           | false             | **3**           | **5**           | Had LOS yang ketat. |
+| 7   | 250.00 | 1        | false           | false             | 1               | 30              | Ketersediaan bilik terakhir. |
+
+Badan permintaan untuk Hari 1 kelihatan seperti ini. Ulang, laraskan `startDate` / `endDate` / nilai mengikut baris, untuk Hari 2 hingga 7.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Setiap `PUT` membalas `200` dengan tatasusunan entri `PropertyRate` yang dikemas kini untuk julat yang anda hantar
+(satu entri apabila `startDate == endDate`). Simpan respons itu — ia akan menjadi sebahagian daripada bukti anda.
+
+:::note
+`master` harus `true` pada setiap panggilan minggu pensijilan. Ini memberitahu Wink kemas kini anda adalah kadar templat, bukan override per-tempahan.
+:::
+
+### Langkah E — Baca semula minggu pensijilan
+
+Dapatkan keseluruhan minggu dalam satu panggilan dan sahkan nilai yang disimpan setiap hari sepadan dengan baris yang anda hantar dalam Langkah D — termasuk bendera boolean dan had panjang penginapan.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Respons adalah `PropertyRoomRateWithRateList`. Tatasusunan `rates` mesti mengandungi **tujuh** entri,
+satu setiap hari, setiap satu dengan `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`,
+`minLengthOfStay`, dan `maxLengthOfStay` yang anda muatkan. Ketidakpadanan pada mana-mana medan bermakna `PUT`
+yang sepadan dalam Langkah D tidak berjaya — betulkan dan sahkan semula sebelum meneruskan.
+
+### Langkah F — Buat tempahan ujian
+
+Buka URL berikut dalam pelayar, gantikan `<your-slug>` dengan slug akaun Hotel yang anda
+terbitkan dalam Prasyarat:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Pilih tarikh ketibaan dan berlepas yang sepenuhnya dalam minggu pensijilan anda, pilih gabungan
+jenis bilik + pelan kadar yang anda sijilkan, dan lengkapkan tempahan. Staging menggunakan laluan pembayaran ujian — tiada kad sebenar dikenakan caj.
+
+Setelah halaman pengesahan dipaparkan, catat **kod tempahan** (format `WNKxxxxx`) yang dipaparkan kepada tetamu.
+
+### Langkah G — Tarik tempahan
+
+Dapatkan setiap tempahan yang dibuat untuk hartanah ujian anda dalam tetingkap yang merangkumi cap masa tempahan.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Cari entri yang `bookingCode`nya sepadan dengan kod yang anda catat dalam Langkah F. Catat
+`bookingIdentifier`nya. Kemudian dapatkan tempahan tunggal itu:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Respons adalah `PropertyBooking`. Import ke dalam UI PMS / pengurus saluran anda sendiri dan sahkan
+bahawa setiap satu berikut dipaparkan dengan betul kepada operator:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Tetamu: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (jumlah bersih yang diterima hotel merentasi semua bilik)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- Setiap entri dalam `roomStays`: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`,
+  `endDate`, dan per-bilik `amount`
+
+Ambil tangkapan skrin tempahan seperti yang dipaparkan dalam UI anda sendiri — tangkapan skrin itu adalah salah satu bukti yang diperlukan.
+
+### Langkah H — Batalkan tempahan dan sahkan
+
+Minta pasukan Wink membatalkan tempahan pensijilan bagi pihak anda (atau batalkan sendiri dari
+Extranet akaun Hotel jika anda mempunyai kebenaran itu). Kemudian dapatkan semula tempahan yang sama dengan
+panggilan dari Langkah G.
+
+Sahkan respons kini menunjukkan:
+
+- `cancelled: true`
+- Cap masa `cancelDate` yang diisi
+- `paymentMethodStatus` yang mencerminkan kitaran hayat pembatalan (`CANCELLED`, `PARTIALLY_REFUNDED`,
+  atau `FULLY_REFUNDED` bergantung pada polisi bayaran balik)
+
+Import tempahan yang dikemas kini itu ke dalam UI anda sendiri dan sahkan pembatalan kelihatan kepada
+operator — status, cap masa dibatalkan, dan sebarang penunjuk bayaran balik yang disokong UI anda. Ambil
+tangkapan skrin kedua tempahan yang dibatalkan dalam UI anda. Ini adalah bukti akhir.
+
+### Langkah I — Hantar bukti anda
+
+Pakejkan yang berikut ke dalam satu arkib (`.zip`) bernama
+`wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **Transkrip API.** Untuk setiap permintaan yang anda buat dalam Langkah A hingga H, tangkap
+   permintaan HTTP penuh (kaedah, URL, pengepala permintaan dengan nilai `Authorization` disembunyikan, dan
+   badan JSON untuk panggilan `PUT`) dan respons HTTP penuh (kod status, pengepala respons, dan
+   badan JSON). Strukturkan transkrip supaya setiap pasangan permintaan/respons jelas dilabel dengan
+   langkah yang berkaitan (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json`,
+   dan sebagainya). Fail `.http` teks biasa atau eksport `.har` tunggal adalah format yang diterima.
+
+2. **Tangkapan skrin UI: tempahan aktif.** Tangkapan skrin dari Langkah G yang menunjukkan tempahan
+   pensijilan dipaparkan dalam UI PMS / pengurus saluran anda sendiri, dengan tetamu, tarikh, jenis bilik, pelan kadar, dan jumlah yang jelas terbaca.
+
+3. **Tangkapan skrin UI: tempahan dibatalkan.** Tangkapan skrin dari Langkah H yang menunjukkan tempahan yang sama dalam
+   UI anda selepas pembatalan, dengan status dibatalkan dan cap masa jelas terbaca.
+
+4. **Ringkasan pensijilan.** `README.md` ringkas dalam arkib yang menyenaraikan:
+   - Nama dan versi pengurus saluran / PMS anda.
+   - `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier`, dan
+     `bookingIdentifier` yang anda gunakan.
+   - Slug hotel staging (yang `<your-slug>` dalam `https://staging-book.wink.travel/hotel/<your-slug>`).
+   - Julat tarikh minggu pensijilan (Hari 1 → Hari 7 dalam ISO-8601).
+   - Nama dan emel jurutera yang menjalankan pensijilan.
+</Steps>
+
+Hantar arkib kepada kontak integrasi Wink anda. Wink akan menyemak, menindaklanjuti sebarang
+perbezaan, dan — jika lulus — menukar status akaun Affiliate / Pengurus Saluran anda dari
+`PENDING_APPROVAL` ke `ACTIVE`. Integrasi anda kemudian layak untuk onboarding produksi.
+
+:::tip
+Automatikkan tangkapan transkrip. Tujuh panggilan `PUT` dalam Langkah D dan bacaan semula dalam Langkah E adalah
+punca kegagalan pensijilan yang paling biasa — klien HTTP interaktif yang menyimpan setiap
+permintaan dan respons semasa berjalan akan menjimatkan anda menjalankan semula penuh jika nilai tersilap pada perpuluhan.
+:::
+
+## Pemberitahuan webhook
+
+Anda boleh melanggan acara webhook pengurus saluran untuk menerima pemberitahuan masa nyata:
+
+- `channel-manager.update.rate` — Kemas kini kadar diterima.
+- `channel-manager.update.availability` — Kemas kini ketersediaan diterima.
+- `channel-manager.update` — Kemas kini pengurus saluran umum.
+
+Lihat [Katalog Acara Webhook](/ms/developers/webhook-events#channel-manager-events) untuk butiran.
+
+## Bacaan lanjut
+
+- [API Pengurus Saluran](/ms/partner-api/partner/) — Dokumentasi titik akhir API penuh.
+- [Pembekal Kadar](/ms/portal/extranet/rate-providers) — Mengurus pembekal kadar dalam Extranet.
+- [Katalog Acara Webhook](/ms/developers/webhook-events) — Semua acara yang boleh dilanggan.
+- [Bina di Wink](/ms/developers/build-on-wink) — Gambaran platform untuk pembangun.

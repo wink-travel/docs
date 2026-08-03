@@ -1,0 +1,385 @@
+---
+title: チャネルマネージャーの追加
+description: Winkプラットフォームと連携するチャネルマネージャーおよびPMS開発者向けのステップバイステップガイド。
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+このガイドは、チャネルマネージャーおよびPMS開発者がWinkとの統合プロセス全体を理解できるように案内します。アカウント作成から在庫のマッピング、最初のエンドツーエンドテストの実行までをカバーしています。
+
+## 環境
+
+チャネルマネージャー（Integrations）APIは2つの環境で利用可能です。開発および認証にはすべてステージング環境を使用し、本番環境は本番稼働時のみ切り替えてください。
+
+| 環境       | ベースURL                              |
+| ----------- | ------------------------------------ |
+| 本番       | https://integrations.wink.travel      |
+| ステージング | https://staging-integrations.wink.travel |
+
+## APIリファレンス
+
+チャネルマネージャーAPIはOTAプロトコル標準（SOAP/XML）に準拠しており、既存のホスピタリティシステムとの互換性を確保しています。まずはパートナーエンドポイントのドキュメントを確認してください：
+
+<LinkButton href="/ja/partner-api/partner/">
+  チャネルマネージャーAPI — パートナーエンドポイント
+</LinkButton>
+
+## 統合手順
+
+<Steps>
+1. **Winkユーザーアカウントの作成**
+
+   [staging-app.wink.travel](https://staging-app.wink.travel)でサインアップします。以下のすべての手順はステージング環境で行い、本番稼働前に本番環境でも同じプロセスを繰り返します。
+
+2. **アフィリエイト / チャネルマネージャーアカウントの作成**
+
+   新しいユーザーの下でアカウントを作成し、**アフィリエイト / チャネルマネージャー**アカウントタイプを選択します。このアカウントが統合の認証に使用されます。
+
+3. **アプリケーションの登録と最初のトークン発行**
+
+   [アプリケーション](/ja/account/applications)を作成し、ステップ2のチャネルマネージャーアカウントに紐付けます。クライアントタイプは**MACHINE_2_MACHINE**を選択してください。これはエンドユーザーのリダイレクトを伴わないサーバー間統合です。**Client ID**と**Secret Key**はすぐにコピーしてください。シークレットキーは一度しか表示されず、再取得できません。
+
+   このアプリケーションがBearerトークンを発行し、本ガイドのすべての呼び出しで`Authorization: Bearer <access_token>`として使用されます。`client_credentials`グラントを使い、`https://staging-iam.wink.travel/oauth2/token`に対して`integrations.read integrations.write`スコープをリクエストしてトークンを取得してください。これを行わないとアカウント識別子の取得やチャネルマネージャーのエンドポイントへのアクセスができません。[認証](/ja/developers/authentication)でフロー全体、本番ホスト、スコープカタログを確認してください。
+
+4. **ホテルアカウントの作成**
+
+   同じユーザーの下で2つ目のアカウントを作成し、**ホテル**アカウントタイプを選択します。これは実際のホテルを使わずにテスト用の物件として利用できます。
+
+5. **両アカウントの承認確認**
+
+   承認されていないアカウントは使用できません。承認されていないチャネルマネージャーアカウントはホテルのチャネルマネージャーリストに表示されず、承認されていないホテルはAPIから返されません。
+
+   - **ステージング** — 承認は自動です。作成直後から両アカウントは使用可能で、申請は不要です。
+   - **本番** — 承認は手動です。Winkの統合担当者に両アカウント名とそれらが属するユーザー名を送信し、承認完了の連絡を待ってください。
+
+6. **2つのアカウントを接続**
+
+   ホテルアカウントにログインし、**Extranet → Distribution → Channel Manager**に移動します。リストからチャネルマネージャーアカウントを選択し、物件と統合をリンクします。リストにアカウントがない場合は承認されていません。ステップ5を参照してください。
+
+7. **基本的な部屋タイプと料金プランの作成**
+
+   ホテルアカウント内で少なくとも1つの部屋タイプと1つの料金プランを作成します。これらは統合が料金や空室状況をプッシュしたり、予約を取得したりする前提条件です。
+
+8. **マッピングとテスト**
+
+   自社システムでAPIから返された部屋タイプと料金プランの識別子をマッピングします。料金更新と空室更新をプッシュし、テスト予約を行い、予約取得エンドポイントが正しく返すことを確認します。
+</Steps>
+
+:::note
+本番稼働前に上記のすべての手順を本番環境でも繰り返してください。別の本番用アプリケーション登録も含みます。ステージングの認証情報は本番では使えません。ステップ5のWinkによる承認審査の時間も考慮してください。ステージングとは異なり、本番アカウントは自動承認されません。Winkチームは既にチャネルマネージャーを利用しているホテルを新しい本番アカウントに移行します。
+:::
+
+## アカウント識別子の取得
+
+すべてのチャネルマネージャーAPIパスは自身のアカウントにスコープされています：
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}`は**チャネルマネージャーアカウントのID**（UUID）です。ホテルのIDではありません。ユーザーが所有する他のすべてのアカウントのIDと現在のステータスとともに、プラットフォームAPIから取得します：
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+レスポンスは所有するアカウントの配列です：
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Your Channel Manager",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Your Test Property",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- チャネルマネージャーの`id`が**`{managingEntityIdentifier}`**です。
+- `HOTEL`の`id`が**`{propertyIdentifier}`**です。
+- `status`で各アカウントの承認状況を確認します。特に本番環境で重要です。**ホテル**は`ACTIVE`でなければ予約可能でもAPIに表示されません。**チャネルマネージャー**アカウントは[認証](#certification)を通過するまで`PENDING_APPROVAL`のままですが、これは開発の妨げにはなりません。
+
+:::caution
+この照会は**プラットフォームAPI**（ステージングは`https://staging-api.wink.travel`、本番は`https://api.wink.travel`）に対して行い、[環境](#環境)で示したチャネルマネージャーAPIホストではありません。同じアクセストークンを使用してください。トークンはユーザー単位で発行され、API単位ではありません。
+:::
+
+## 認証
+
+認証は、統合が正しく在庫をマッピングし、料金・空室をプッシュし、予約をエンドツーエンドで受信できることをWinkに証明し、Winkが確認するプロセスです。セルフサービスを想定しており、すべてのステップを自社システムから実行し、最後に証拠バンドルを提出します。Winkはバンドルを審査し、合格するとアフィリエイト / チャネルマネージャーアカウントのステータスを**PENDING_APPROVAL**から**ACTIVE**に変更します。
+
+認証はすべてステージング環境（`https://staging-integrations.wink.travel`）で行い、本番環境は一切触りません。
+
+### 証明する内容
+
+<Steps>
+1. **認証。** OAuth2クライアントがアクセストークンを取得し、アフィリエイト / チャネルマネージャーアカウントに対して`/ping`エンドポイントを正常に呼び出せること。
+
+2. **在庫マッピング。** アカウントに接続されたホテルを一覧取得し、設定したマスターレート（部屋タイプ×料金プラン）を取得し、システムが対象とする`masterRateIdentifier`を正しく特定できること。
+
+3. **料金・空室プッシュ。** 認証週の7日間すべてを独立して更新できること。各日で金額、数量、到着時クローズ/出発時クローズフラグ、最小/最大宿泊日数の組み合わせを変え、Winkから正確に読み戻せること。
+
+4. **予約取得。** テスト物件に対して実際に作成されたステージング予約を取得し、自社PMS/CM UIに正しい部屋滞在、ゲスト、合計金額で表示し、Winkが予約をキャンセル済みにしたらキャンセル反映できること。
+</Steps>
+
+### 前提条件
+
+認証を始める前に[統合手順](#integration-steps)のステップ1〜7を完了し、以下を用意してください：
+
+- ステージングのWinkユーザーに**アフィリエイト / チャネルマネージャー**アカウントとそれに接続された**ホテル**アカウント（Extranet → Distribution → Channel Manager）。ステージングアカウントは自動承認されるため申請不要。
+- ホテルアカウント内に少なくとも1つの**部屋タイプ**と1つの**料金プラン**を作成し、`https://staging-book.wink.travel/hotel/<your-slug>`で予約可能に公開済み。
+- アフィリエイト / チャネルマネージャーアカウントに紐づく登録済みアプリケーション（**Client ID**、**Secret Key**、`integrations.read integrations.write`スコープ付き）（[認証](/ja/developers/authentication)参照）。
+- アフィリエイト / チャネルマネージャーアカウントの**`managingEntityIdentifier`**とホテルアカウントの**`propertyIdentifier`**（両方UUID）（[アカウント識別子の取得](#finding-your-account-identifiers)参照）。
+
+### 共通リクエスト規約
+
+このセクションのすべてのリクエストは以下のヘッダーを使用します：
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>`は`https://staging-iam.wink.travel/oauth2/token`に対する`client_credentials`グラントで取得（[認証](/ja/developers/authentication#staging)参照）。
+- `Wink-Version`ヘッダーは必須で、省略するとv2 JSON APIにルーティングされません。
+- `PUT`リクエストでボディを送る場合は`Content-Type: application/json`を追加します。
+
+以下の例では、[前提条件](#prerequisites)で取得した値をプレースホルダーにマッピングしています：
+
+| プレースホルダー               | 意味                                                         |
+|------------------------------|--------------------------------------------------------------|
+| `{managingEntityIdentifier}` | アフィリエイト / チャネルマネージャーアカウントID（UUID）     |
+| `{propertyIdentifier}`       | チャネルマネージャーアカウントに接続されたホテルアカウントID   |
+| `{masterRateIdentifier}`     | 認証対象のマスターレート（部屋タイプ×料金プラン）識別子       |
+| `{bookingIdentifier}`        | 予約一覧呼び出しで返されたステージング予約ID                   |
+
+### ステップA — Ping
+
+認証情報が期待するアフィリエイト / チャネルマネージャーアカウントに解決されることを確認します。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+期待されるレスポンス：
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Your Channel Manager Account Name",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+`name`が一致し、**200**レスポンスが返れば認証とアカウント解決が正しいことを示します。`status`はWinkの認証完了まで`PENDING_APPROVAL`のままです。
+
+### ステップB — 物件一覧取得
+
+アカウントに接続されたホテルのページネーションされた一覧を取得し、テスト物件が存在することを確認します。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+レスポンスはSpringの`Page`形式で`ChannelManagerProperty`エントリの配列です。`identifier`が`{propertyIdentifier}`に一致するエントリを探し、その`currencyCode`を記録してください。これは[ステップD](#step-d--load-the-certification-week)の料金更新解釈に必要です。
+
+:::caution
+空のリストは設定の問題を示すもので、リクエストの誤りではありません。ホテルは**`ACTIVE`**であり、かつExtranet → Distribution → Channel Managerでチャネルマネージャーアカウントに割り当てられている場合にのみ返されます。`GET /api/managing-entity/list`（[アカウント識別子の取得](#finding-your-account-identifiers)）で両方を確認してください。本番環境ではさらに、Winkの承認が完了していないとホテルはここに表示されません。
+:::
+
+### ステップC — マスターレート取得
+
+物件と、その物件が公開しているすべてのマスターレート（部屋タイプ×料金プランの組み合わせ）を取得します。認証対象とするものを選び、その`identifier`を`{masterRateIdentifier}`として記録してください。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+レスポンスは`PropertyWithRoomRateList`で、`property`ブロックと`PropertyRoomRate`エントリの配列`rooms`を含みます。各エントリは部屋タイプ、料金プラン、収容人数制限、基本料金、日別料金更新時に保持すべき料金修飾子を示します。
+
+:::caution
+認証期間中は単一のマスターレートに対して認証を行ってください。実際の本番環境では複数の部屋タイプや料金プランのマッピングが期待されますが、証拠バンドルには1つのマスターレートのエンドツーエンドの動作を示せば十分です。
+:::
+
+### ステップD — 認証週のロード
+
+認証開始月の翌月の最初の7日間の**7日間料金カレンダー**をロードします。例えば、8月21日に認証を開始した場合は9月1日から9月7日までを対象とします。
+
+**7回の個別PUT呼び出し**を行い、各日で`startDate == endDate`とします。各日は金額、数量、制限フラグ、宿泊日数制限の組み合わせを意図的に変え、すべての書き込み可能なフィールドを少なくとも1回は操作します。値は物件の通貨（ステップBで記録）で指定し、`currencyCode`は省略可能です。
+
+| 日付 | 金額    | 数量 | 到着時クローズ | 出発時クローズ | 最小宿泊日数 | 最大宿泊日数 | 証明内容                         |
+|------|---------|------|----------------|----------------|--------------|--------------|---------------------------------|
+| 1    | 100.00  | 5    | false          | false          | 1            | 30           | 基準日                          |
+| 2    | 125.00  | 4    | false          | false          | 1            | 14           | 金額＋数量＋最大宿泊日数の変更  |
+| 3    | 150.00  | 3    | **true**       | false          | 1            | 30           | 到着時クローズの切り替え        |
+| 4    | 175.00  | 2    | false          | **true**       | 2            | 7            | 出発時クローズの切り替え＋宿泊日数制限の強化 |
+| 5    | 200.00  | **0**| false          | false          | 1            | 30           | 売り切れ数量                    |
+| 6    | 225.00  | 5    | false          | false          | **3**        | **5**        | 制限の厳しい宿泊日数制限        |
+| 7    | 250.00  | 1    | false          | false          | 1            | 30           | 最後の1部屋の空室               |
+
+Day 1のリクエストボディ例。Day 2〜7は`startDate`/`endDate`と値を行に合わせて調整してください。
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+各`PUT`は送信した範囲の更新済み`PropertyRate`エントリの配列（`startDate == endDate`の場合は1件）を`200`で返します。このレスポンスは証拠の一部として保存してください。
+
+:::note
+`master`は認証週のすべての呼び出しで`true`にしてください。これはWinkに対して更新がテンプレート料金であり、予約ごとの上書きではないことを示します。
+:::
+
+### ステップE — 認証週の読み戻し
+
+1回の呼び出しで7日間すべてを取得し、ステップDで送信した各日の値（ブールフラグや宿泊日数制限を含む）が一致することを確認します。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+レスポンスは`PropertyRoomRateWithRateList`です。`rates`配列に**7件**のエントリが含まれ、それぞれ`amount`、`quantity`、`closedOnArrival`、`closedOnDeparture`、`minLengthOfStay`、`maxLengthOfStay`がステップDの値と一致している必要があります。どれか1つでも不一致があれば、ステップDの該当`PUT`が正しく反映されていません。修正して再検証してください。
+
+### ステップF — テスト予約の作成
+
+ブラウザで以下のURLを開き、前提条件で公開したホテルアカウントのスラッグ`<your-slug>`に置き換えます：
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+認証週内に完全に収まる到着日と出発日を選択し、認証した部屋タイプ＋料金プランの組み合わせを選んで予約を完了します。ステージング環境はテスト決済経路を使用しており、実際のカードは課金されません。
+
+確認ページが表示されたら、ゲストに表示される**予約コード**（形式は`WNKxxxxx`）を記録してください。
+
+### ステップG — 予約の取得
+
+予約作成日時を含む期間のすべての予約を取得します。
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+ステップFで記録した`bookingCode`と一致するエントリを探し、その`bookingIdentifier`を記録します。次にその単一予約を取得します：
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+レスポンスは`PropertyBooking`です。自社PMS / チャネルマネージャーUIにインポートし、以下がオペレーターに正しく表示されることを確認してください：
+
+- `bookingCode`、`bookingIdentifier`、`createdDate`
+- ゲスト情報：`firstName`、`lastName`、`email`
+- `totalAmount` + `currencyCode`（ホテルが全室で受け取る正味金額）
+- `paymentMethodType`、`paymentMethodStatus`、`salesChannelName`
+- `roomStays`内の各エントリ：`guestRoomName`、`ratePlanName`、`adults`、`children`、`startDate`、`endDate`、部屋ごとの`amount`
+
+自社UIに表示された予約のスクリーンショットを撮影してください。これは証拠の一つです。
+
+### ステップH — 予約のキャンセルと検証
+
+Winkチームに認証予約のキャンセルを依頼するか、権限があればホテルアカウントのExtranetから自分でキャンセルしてください。その後、ステップGの呼び出しで同じ予約を再取得します。
+
+レスポンスに以下が含まれていることを確認してください：
+
+- `cancelled: true`
+- キャンセル日時が入った`cancelDate`
+- 返金ポリシーに応じたキャンセル状態を示す`paymentMethodStatus`（`CANCELLED`、`PARTIALLY_REFUNDED`、`FULLY_REFUNDED`など）
+
+更新された予約を自社UIにインポートし、キャンセル状態、キャンセル日時、返金表示がオペレーターに見えることを確認してください。キャンセル後の予約のスクリーンショットも撮影してください。これが最終証拠です。
+
+### ステップI — 証拠バンドルの提出
+
+以下を1つのアーカイブ（`.zip`）にまとめ、ファイル名は
+`wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip`としてください：
+
+<Steps>
+1. **APIトランスクリプト。** ステップA〜Hで発行したすべてのリクエストのHTTPリクエスト（メソッド、URL、`Authorization`値を伏せたリクエストヘッダー、`PUT`のJSONボディ）とHTTPレスポンス（ステータスコード、レスポンスヘッダー、JSONボディ）を完全にキャプチャします。各リクエスト/レスポンスペアは所属ステップ名で明確にラベル付けしてください（例：`step-a-ping.json`、`step-d-day-3-put.json`、`step-g-list-bookings.json`など）。プレーンテキストの`.http`ファイルや単一の`.har`エクスポートも許容されます。
+
+2. **UIスクリーンショット：アクティブ予約。** ステップGで取得した認証予約を自社PMS / チャネルマネージャーUIに表示したスクリーンショット。ゲスト、日付、部屋タイプ、料金プラン、合計が明瞭に読み取れること。
+
+3. **UIスクリーンショット：キャンセル済み予約。** ステップHでキャンセル後の同予約を自社UIに表示したスクリーンショット。キャンセル状態と日時が明瞭に読み取れること。
+
+4. **認証サマリー。** アーカイブ内の短い`README.md`に以下を記載：
+   - チャネルマネージャー / PMSの名称とバージョン
+   - 使用した`managingEntityIdentifier`、`propertyIdentifier`、`masterRateIdentifier`、`bookingIdentifier`
+   - ステージングホテルのスラッグ（`https://staging-book.wink.travel/hotel/<your-slug>`の`<your-slug>`）
+   - 認証週の日付範囲（Day 1 → Day 7、ISO-8601形式）
+   - 認証を実施したエンジニアの氏名とメールアドレス
+</Steps>
+
+アーカイブをWinkの統合担当者に送付してください。Winkは審査し、不一致があればフォローアップし、合格するとアフィリエイト / チャネルマネージャーアカウントのステータスを`PENDING_APPROVAL`から`ACTIVE`に切り替えます。これで本番導入が可能になります。
+
+:::tip
+トランスクリプトの自動取得を推奨します。ステップDの7回の`PUT`呼び出しとステップEの読み戻しは認証失敗の最も多い原因です。すべてのリクエストとレスポンスを実行時に保存するインタラクティブなHTTPクライアントを使うと、値の小さな誤差で再実行が必要になった場合に大幅な手間を省けます。
+:::
+
+## Webhook通知
+
+チャネルマネージャーのWebhookイベントを購読してリアルタイム通知を受け取ることができます：
+
+- `channel-manager.update.rate` — 料金更新通知
+- `channel-manager.update.availability` — 空室更新通知
+- `channel-manager.update` — 一般的なチャネルマネージャー更新通知
+
+詳細は[Webhookイベントカタログ](/ja/developers/webhook-events#channel-manager-events)を参照してください。
+
+## さらに読む
+
+- [チャネルマネージャーAPI](/ja/partner-api/partner/) — APIエンドポイントの完全なドキュメント
+- [料金プロバイダー](/ja/portal/extranet/rate-providers) — Extranetでの料金プロバイダー管理
+- [Webhookイベントカタログ](/ja/developers/webhook-events) — 購読可能なすべてのイベント
+- [Winkでの開発](/ja/developers/build-on-wink) — 開発者向けプラットフォーム概要

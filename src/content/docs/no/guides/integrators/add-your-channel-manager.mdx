@@ -1,0 +1,413 @@
+---
+title: Legg til din Channel Manager
+description: Trinnvis veiledning for channel manager- og PMS-utviklere som integrerer med Wink-plattformen.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Denne veiledningen tar channel manager- og PMS-utviklere gjennom hele prosessen med å integrere med Wink — fra å opprette kontoer til å kartlegge inventar og kjøre din første ende-til-ende-test.
+
+## Miljøer
+
+Channel Manager (Integrations) API er tilgjengelig i to miljøer. Bruk staging for all utvikling og sertifisering; bytt til produksjon først ved go-live.
+
+| Miljø      | Base-URL                          |
+| ---------- | -------------------------------- |
+| Produksjon | https://integrations.wink.travel |
+| Staging    | https://staging-integrations.wink.travel |
+
+## API-referanse
+
+Channel Manager API følger OTA-protokollstandarder (SOAP/XML) for kompatibilitet med eksisterende hotellsystemer. Start med å gjennomgå partner-endepunkt-dokumentasjonen:
+
+<LinkButton href="/no/partner-api/partner/">
+  Channel Manager API — Partner-endepunkter
+</LinkButton>
+
+## Integrasjonstrinn
+
+<Steps>
+1. **Opprett en Wink-brukerkonto**
+
+   Registrer deg på [staging-app.wink.travel](https://staging-app.wink.travel). Alle trinn nedenfor bruker staging — du vil gjenta hele prosessen i produksjon før go-live.
+
+2. **Opprett din Affiliate / Channel Manager-konto**
+
+   Under din nye bruker, opprett en konto og velg kontotypen **Affiliate / Channel Manager**. Dette er kontoen integrasjonen din vil autentisere som.
+
+3. **Registrer en applikasjon og lag ditt første token**
+
+   Opprett en [Application](/no/account/applications) og knytt den til channel manager-kontoen fra trinn 2. Velg **MACHINE_2_MACHINE** som klienttype — dette er en server-til-server-integrasjon uten sluttbruker å omdirigere. Kopier **Client ID** og **Secret Key** umiddelbart; secret key vises kun én gang og kan ikke hentes igjen.
+
+   Applikasjonen er det som lager bearer-tokenet som alle kall i denne veiledningen bærer som `Authorization: Bearer <access_token>`. Bytt dine legitimasjoner mot et token ved å bruke `client_credentials`-grant mot `https://staging-iam.wink.travel/oauth2/token`, og be om `integrations.read integrations.write` scopes. Gjør dette før du går videre — du kan ikke slå opp kontoinformasjon eller nå noen Channel Manager-endepunkter uten token. Se [Authentication](/no/developers/authentication) for full flyt, produksjonshost og komplett scope-katalog.
+
+4. **Opprett en Hotell-konto**
+
+   Under samme bruker, opprett en andre konto og velg kontotypen **Hotel**. Dette gir deg en eiendom du kan bruke til testing uten å involvere et ekte hotell.
+
+5. **Bekreft at begge kontoene er godkjent**
+
+   Ingen av kontoene kan brukes før de er godkjent: en ikke-godkjent channel manager-konto vises ikke i noen hotells channel manager-liste, og et ikke-godkjent hotell returneres ikke av API-et.
+
+   - **Staging** — godkjenning er automatisk. Begge kontoene kan brukes så snart du oppretter dem, og det er ingenting å be om.
+   - **Produksjon** — godkjenning er manuell. Send navnene på begge kontoene og brukeren de ligger under til din Wink-integrasjonskontakt, og vent på bekreftelse før du fortsetter.
+
+6. **Koble de to kontoene**
+
+   Logg inn på Hotell-kontoen og gå til **Extranet → Distribution → Channel Manager**. Velg channel manager-kontoen din fra listen — dette kobler eiendommen til integrasjonen din. Hvis kontoen din ikke er i listen, er den ikke godkjent ennå; se trinn 5.
+
+7. **Opprett en grunnleggende romtype og prisplan**
+
+   Inne i Hotell-kontoen, opprett minst én romtype og én prisplan. Disse kreves før integrasjonen din kan sende priser og tilgjengelighet eller hente bestillinger.
+
+8. **Kartlegg og test**
+
+   I ditt eget system, kartlegg romtype- og prisplan-identifikatorene som returneres av API-et. Send en prisoppdatering og en tilgjengelighetsoppdatering, lag deretter en testbestilling og verifiser at bestillingshentings-endepunktet returnerer den korrekt.
+</Steps>
+
+:::note
+Gjenta alle trinn ovenfor i produksjon før go-live, inkludert registrering av en separat produksjonsapplikasjon — staging-legitimasjon fungerer ikke mot produksjon. Beregn tid til Winks gjennomgang i trinn 5 — i motsetning til staging, godkjennes ikke produksjonskontoer automatisk. Wink-teamet vil migrere eventuelle hoteller som allerede bruker din channel manager til din nye produksjonskonto.
+:::
+
+## Finne dine kontoinformasjoner
+
+Hver Channel Manager API-sti er avgrenset til din egen konto:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` er konto-ID-en (en UUID) til **din channel manager-konto** — ikke hotellets. Hent den, sammen med ID og nåværende status for alle andre kontoer brukeren din eier, fra Platform API:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Responsen er en liste over kontoene du eier:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Din Channel Manager",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Din Testeiendom",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- `id` for channel manager-posten er din **`{managingEntityIdentifier}`**.
+- `id` for `HOTEL`-posten er din **`{propertyIdentifier}`**.
+- `status` er hvor du bekrefter at hver konto er godkjent — mest nyttig i produksjon, hvor
+  godkjenning er manuell. **Hotellet** må ha status `ACTIVE` før det kan bookes eller vises i
+  Channel Manager API. Din **channel manager**-konto vil fortsatt ha status `PENDING_APPROVAL` inntil
+  du har bestått [Sertifisering](#certification); dette er forventet og blokkerer ikke utvikling.
+
+:::caution
+Dette oppslaget kjører mot **Platform API** (`https://staging-api.wink.travel` på staging,
+`https://api.wink.travel` i produksjon), ikke Channel Manager API-vertsene listet under
+[Miljøer](#miljøer). Bruk samme access token — det utstedes per bruker, ikke per API.
+:::
+
+## Sertifisering
+
+Sertifisering er hvordan du beviser — og hvordan Wink bekrefter — at integrasjonen din korrekt kartlegger
+inventar, sender priser og tilgjengelighet, og mottar bestillinger ende-til-ende. Den er designet for å være
+selvbetjent: du styrer hvert trinn fra ditt eget system, og du leverer en enkelt bevispakke til slutt. Wink
+gjennomgår pakken og, ved bestått, oppgraderer din Affiliate / Channel Manager-konto fra
+**PENDING_APPROVAL** til **ACTIVE**.
+
+Sertifiseringen kjøres helt mot staging-miljøet
+(`https://staging-integrations.wink.travel`). Ingenting i denne seksjonen berører produksjon.
+
+### Hva du skal bevise
+
+<Steps>
+1. **Autentisering.** Din OAuth2-klient kan hente et access token og kalle `/ping`-endepunktet mot din Affiliate / Channel Manager-konto.
+
+2. **Inventarkartlegging.** Du kan liste hotellet/hotellene tilknyttet kontoen din, hente master rate (romtype × prisplan) du har konfigurert, og korrekt identifisere `masterRateIdentifier` som systemet ditt vil bruke.
+
+3. **Pris- og tilgjengelighetsoppdatering.** Du kan oppdatere alle syv dagene i en sertifiseringsuke uavhengig — en ulik kombinasjon av beløp, antall, close-on-arrival / close-on-departure-flagg, og min/maks oppholdslengde for hver dag — og lese nøyaktig de samme verdiene tilbake fra Wink.
+
+4. **Bestillingshenting.** Du kan hente en ekte staging-bestilling gjort mot din testeiendom, vise den i ditt eget PMS/CM UI med korrekt romopphold, gjest og total, og deretter reflektere en kansellering når Wink markerer bestillingen som kansellert.
+</Steps>
+
+### Forutsetninger
+
+Før du begynner sertifiseringen, fullfør trinn 1–7 i [Integrasjonstrinn](#integrasjonstrinn) slik at du har:
+
+- En Wink-bruker på staging med en **Affiliate / Channel Manager**-konto og en **Hotel**-konto
+  koblet til den (Extranet → Distribution → Channel Manager). Staging-kontoer godkjennes
+  automatisk, så det er ingenting å be om her.
+- Minst én **romtype** og én **prisplan** opprettet i Hotell-kontoen. Publiser hotellet slik at det kan bookes på `https://staging-book.wink.travel/hotel/<your-slug>`.
+- En registrert applikasjon under din Affiliate / Channel Manager-konto med **Client ID**,
+  **Secret Key**, og scopes `integrations.read integrations.write`
+  (se [Authentication](/no/developers/authentication)).
+- **`managingEntityIdentifier`** for din Affiliate / Channel Manager-konto og
+  **`propertyIdentifier`** for din Hotell-konto (begge er UUID-er — se
+  [Finne dine kontoinformasjoner](#finne-dine-kontoinformasjoner)).
+
+### Vanlige forespørselskonvensjoner
+
+Hver forespørsel i denne seksjonen bruker disse headerne:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` kommer fra `client_credentials`-grant mot
+  `https://staging-iam.wink.travel/oauth2/token` — se [Authentication](/no/developers/authentication#staging).
+- `Wink-Version`-headeren er påkrevd; uten den rutes ikke kallet til v2 JSON API.
+- `Content-Type: application/json` legges til på `PUT`-forespørsler som har en body.
+
+Gjennom eksemplene nedenfor, mappes plassholderne til verdiene du samlet i
+[Forutsetninger](#forutsetninger):
+
+| Plassholder               | Betydning                                                                                  |
+|---------------------------|--------------------------------------------------------------------------------------------|
+| `{managingEntityIdentifier}` | Din Affiliate / Channel Manager-konto-ID (UUID) — se [Finne dine kontoinformasjoner](#finne-dine-kontoinformasjoner). |
+| `{propertyIdentifier}`         | Hotellkontoen (eiendoms-ID) du koblet til CM-kontoen.                                    |
+| `{masterRateIdentifier}`       | Master rate (romtype × prisplan) du skal sertifisere mot.                                |
+| `{bookingIdentifier}`          | Staging-bestillings-ID returnert av bestillingslisten.                                   |
+
+### Trinn A — Ping
+
+Bekreft at legitimasjonen din peker til den Affiliate / Channel Manager-kontoen du forventer.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Forventet respons:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Navnet på din Channel Manager-konto",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+En **200**-respons med et samsvarende `name` er signalet på at autentisering og kontoløsning er korrekt. `status` vil lese `PENDING_APPROVAL` inntil Wink sertifiserer deg.
+
+### Trinn B — List eiendommer
+
+Hent den paginerte listen over hoteller knyttet til kontoen din og bekreft at testeiendommen din er til stede.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Responsen er en Spring `Page` av `ChannelManagerProperty`-poster. Finn posten hvor `identifier` matcher din `{propertyIdentifier}` og noter dens `currencyCode` — du vil trenge den for tolkning av prisoppdateringene i [Trinn D](#trinn-d--last-sertifiseringsuken).
+
+:::caution
+En tom liste er et konfigurasjonssignal, ikke en feil i forespørselen. Et hotell returneres her kun når det er **`ACTIVE`** *og* har blitt tildelt din channel manager-konto under Extranet → Distribution → Channel Manager. Sjekk begge med `GET /api/managing-entity/list` (se [Finne dine kontoinformasjoner](#finne-dine-kontoinformasjoner)) før du feilsøker videre.
+I produksjon, legg til en tredje årsak: hotellet er usynlig her inntil Wink har godkjent det.
+:::
+
+### Trinn C — Hent master rates
+
+Hent eiendommen sammen med alle master rates (romtype × prisplan-kombinasjoner) den publiserer. Velg den du har tenkt å sertifisere mot og noter dens `identifier` som din `{masterRateIdentifier}`.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Responsen er `PropertyWithRoomRateList`: en `property`-blokk pluss en `rooms`-array av `PropertyRoomRate`-poster. Hver post viser romtype, prisplan, belegggrenser, basispris og prismodifikatorer du skal bevare når du sender daglige priser.
+
+:::caution
+Sertifiser mot én enkelt master rate for hele sertifiseringsløpet. Kartlegging av flere romtyper og prisplaner forventes i produksjon, men bevispakken trenger bare å vise én master rate brukt ende-til-ende.
+:::
+
+### Trinn D — Last sertifiseringsuken
+
+Last en **syv-dagers priskalender** som dekker de første syv kalenderdagene i måneden **etter** måneden du starter sertifiseringen. For eksempel, hvis du starter sertifisering 21. august, mål for 1. til 7. september.
+
+Du vil sende **syv separate `PUT`-kall** — ett per dag — hvor `startDate == endDate`. Hver dag har en bevisst ulik kombinasjon av beløp, antall, restriksjonsflagg for ankomst/avreise og min/maks oppholdslengde slik at alle skrivbare felt testes minst én gang. Verdier er i eiendommens valuta (notert i Trinn B); utelat `currencyCode` og det settes riktig som standard.
+
+| Dag | Beløp  | Antall | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | Hva det beviser |
+|-----|--------|--------|-----------------|-------------------|-----------------|-----------------|-----------------|
+| 1   | 100.00 | 5      | false           | false             | 1               | 30              | Baseline-dag.   |
+| 2   | 125.00 | 4      | false           | false             | 1               | 14              | Beløp + antall + `maxLengthOfStay`-endring. |
+| 3   | 150.00 | 3      | **true**        | false             | 1               | 30              | `closedOnArrival`-endring. |
+| 4   | 175.00 | 2      | false           | **true**          | 2               | 7               | `closedOnDeparture`-endring + strammere LOS-vindu. |
+| 5   | 200.00 | **0**  | false           | false             | 1               | 30              | Utsolgt antall. |
+| 6   | 225.00 | 5      | false           | false             | **3**           | **5**           | Restriktivt LOS-vindu. |
+| 7   | 250.00 | 1      | false           | false             | 1               | 30              | Siste rom tilgjengelig. |
+
+Forespørselsbody for Dag 1 ser slik ut. Gjenta, juster `startDate` / `endDate` / verdier per rad, for Dag 2 til 7.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Hver `PUT` svarer med `200` og en liste over oppdaterte `PropertyRate`-poster for det angitte intervallet (én post når `startDate == endDate`). Ta vare på denne responsen — den vil være en del av bevisene dine.
+
+:::note
+`master` skal være `true` på alle sertifiseringsukekall. Dette forteller Wink at oppdateringen din er en malpris, ikke en per-bestilling-overstyring.
+:::
+
+### Trinn E — Les tilbake sertifiseringsuken
+
+Hent hele uken i ett kall og bekreft at hver dags lagrede verdier samsvarer med raden du sendte i Trinn D — inkludert boolske flagg og oppholdslengde-vindu.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Responsen er en `PropertyRoomRateWithRateList`. Dens `rates`-array må inneholde **syv** poster, én per dag, hver med `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`, `minLengthOfStay` og `maxLengthOfStay` du lastet opp. En avvik på noe felt betyr at tilsvarende `PUT` i Trinn D ikke ble lagret som forventet — rett opp og verifiser på nytt før du går videre.
+
+### Trinn F — Lag en testbestilling
+
+Åpne følgende URL i en nettleser, erstatt `<your-slug>` med sluggen til Hotell-kontoen du publiserte i Forutsetninger:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Velg ankomst- og avreisedato som faller helt innenfor sertifiseringsuken, velg romtype + prisplankombinasjonen du sertifiserte, og fullfør bestillingen. Staging bruker en test betalingsløsning — ingen ekte kort belastes.
+
+Når bekreftelsessiden vises, noter **bestillingskoden** (format `WNKxxxxx`) som vises til gjesten.
+
+### Trinn G — Hent bestillingen
+
+Hent alle bestillinger opprettet for testeiendommen din innenfor et tidsvindu som dekker bestillingstidspunktet.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Finn posten hvor `bookingCode` matcher koden du noterte i Trinn F. Noter dens `bookingIdentifier`. Hent deretter den enkelte bestillingen:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Responsen er en `PropertyBooking`. Importer den til ditt eget PMS / channel manager UI og bekreft at alle følgende vises korrekt for en operatør:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Gjest: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (netto beløp hotellet mottar for alle rom)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- Hver post i `roomStays`: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`,
+  `endDate`, og per-rom `amount`
+
+Ta et skjermbilde av bestillingen slik den vises i ditt UI — dette skjermbildet er et av de nødvendige bevisene.
+
+### Trinn H — Kanseller bestillingen og verifiser
+
+Be Wink-teamet om å kansellere sertifiseringsbestillingen på dine vegne (eller kanseller den selv fra Hotell-kontoens Extranet hvis du har tillatelse). Hent deretter samme bestilling på nytt med kallet fra Trinn G.
+
+Bekreft at responsen nå viser:
+
+- `cancelled: true`
+- En utfylt `cancelDate`-tidsstempel
+- En `paymentMethodStatus` som reflekterer kanselleringslivssyklusen (`CANCELLED`, `PARTIALLY_REFUNDED`,
+  eller `FULLY_REFUNDED` avhengig av refusjonspolicy)
+
+Importer den oppdaterte bestillingen til ditt UI og bekreft at kanselleringen er synlig for operatøren — status, kansellert-tidspunkt og eventuelle refusjonsindikatorer UI-en støtter. Ta et nytt skjermbilde av den kansellerte bestillingen i UI-en. Dette er det siste beviset.
+
+### Trinn I — Send inn bevispakken din
+
+Pakk følgende i et enkelt arkiv (`.zip`) med navnet
+`wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **API-transkripsjon.** For hver forespørsel du sendte i Trinn A til H, ta vare på full
+   HTTP-forespørsel (metode, URL, forespørselsheader med `Authorization`-verdien sensurert, og
+   JSON-body for `PUT`-kall) og full HTTP-respons (statuskode, responsheader og JSON-body). Strukturér transkripsjonen slik at hver forespørsel/response-par tydelig merkes med hvilket trinn det tilhører (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json`, osv.). Vanlige tekstfiler `.http` eller en enkelt `.har`-eksport er begge akseptable formater.
+
+2. **UI-skjermbilde: aktiv bestilling.** Skjermbildet fra Trinn G som viser sertifiseringsbestillingen i ditt eget PMS / channel manager UI, med gjest, datoer, romtype, prisplan og total tydelig lesbar.
+
+3. **UI-skjermbilde: kansellert bestilling.** Skjermbildet fra Trinn H som viser samme bestilling i UI-en etter kansellering, med kansellert status og tidsstempel tydelig lesbar.
+
+4. **Sertifiseringsoppsummering.** En kort `README.md` i arkivet som lister:
+   - Navn og versjon på din channel manager / PMS.
+   - `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier` og
+     `bookingIdentifier` du brukte.
+   - Staging-hotellens slug (det `<your-slug>` i `https://staging-book.wink.travel/hotel/<your-slug>`).
+   - Dato-intervallet for sertifiseringsuken (Dag 1 → Dag 7 i ISO-8601).
+   - Navn og e-post til ingeniøren som kjørte sertifiseringen.
+</Steps>
+
+Send arkivet til din Wink-integrasjonskontakt. Wink vil gjennomgå, følge opp eventuelle
+avvik, og — ved bestått — endre status på din Affiliate / Channel Manager-konto fra
+`PENDING_APPROVAL` til `ACTIVE`. Integrasjonen din blir da kvalifisert for produksjonsoppsett.
+
+:::tip
+Automatiser transkripsjonsfangsten. De syv `PUT`-kallene i Trinn D og lesingen i Trinn E er
+den vanligste årsaken til sertifiseringsfeil — en interaktiv HTTP-klient som lagrer hver
+forespørsel og respons under kjøring vil spare deg for en full gjentakelse hvis en verdi er feil med en desimal.
+:::
+
+## Webhook-varsler
+
+Du kan abonnere på channel manager webhook-hendelser for å motta sanntidsvarsler:
+
+- `channel-manager.update.rate` — Prisoppdatering mottatt.
+- `channel-manager.update.availability` — Tilgjengelighetsoppdatering mottatt.
+- `channel-manager.update` — Generell channel manager-oppdatering.
+
+Se [Webhook Events Catalog](/no/developers/webhook-events#channel-manager-events) for detaljer.
+
+## Videre lesning
+
+- [Channel Manager API](/no/partner-api/partner/) — Full API-endepunkt-dokumentasjon.
+- [Rate Providers](/no/portal/extranet/rate-providers) — Administrasjon av prisleverandører i Extranet.
+- [Webhook Events Catalog](/no/developers/webhook-events) — Alle abonnérbare hendelser.
+- [Build on Wink](/no/developers/build-on-wink) — Plattformoversikt for utviklere.

@@ -1,0 +1,389 @@
+---
+title: Přidejte svého Channel Managera
+description: Krok za krokem průvodce pro vývojáře channel managerů a PMS integrujících se s platformou Wink.
+sidebar:
+  order: 1
+---
+
+import { Steps, LinkButton } from '@astrojs/starlight/components';
+
+Tento průvodce provede vývojáře channel managerů a PMS celým procesem integrace s Winkem — od vytvoření účtů přes mapování inventáře až po spuštění prvního end-to-end testu.
+
+## Prostředí
+
+Channel Manager (Integrations) API je dostupné ve dvou prostředích. Pro veškerý vývoj a certifikaci používejte staging; přepněte na produkci až při spuštění.
+
+| Prostředí   | Základní URL                         |
+| ----------- | ---------------------------------- |
+| Produkce    | https://integrations.wink.travel   |
+| Staging     | https://staging-integrations.wink.travel |
+
+## API reference
+
+Channel Manager API dodržuje standardy OTA protokolu (SOAP/XML) pro kompatibilitu se stávajícími systémy v pohostinství. Začněte prohlédnutím dokumentace partner endpointů:
+
+<LinkButton href="/cs/partner-api/partner/">
+  Channel Manager API — Partner endpoints
+</LinkButton>
+
+## Kroky integrace
+
+<Steps>
+1. **Vytvořte uživatelský účet Wink**
+
+   Zaregistrujte se na [staging-app.wink.travel](https://staging-app.wink.travel). Všechny níže uvedené kroky probíhají na stagingu — celý proces zopakujete i v produkci před spuštěním.
+
+2. **Vytvořte si účet Affiliate / Channel Manager**
+
+   Pod svým novým uživatelem vytvořte účet a vyberte typ účtu **Affiliate / Channel Manager**. Tento účet bude sloužit k autentizaci vaší integrace.
+
+3. **Zaregistrujte aplikaci a vygenerujte první token**
+
+   Vytvořte [Aplikaci](/cs/account/applications) a přiřaďte ji k účtu channel managera z kroku 2. Vyberte typ klienta **MACHINE_2_MACHINE** — jde o server-to-server integraci bez přesměrování koncového uživatele. Okamžitě si zkopírujte **Client ID** a **Secret Key**; tajný klíč je zobrazen pouze jednou a nelze jej znovu získat.
+
+   Aplikace generuje bearer token, který každý požadavek v tomto průvodci nese jako `Authorization: Bearer <access_token>`. Vyměňte své přihlašovací údaje za token pomocí `client_credentials` grant na `https://staging-iam.wink.travel/oauth2/token` s požadavkem na scope `integrations.read integrations.write`. Udělejte to před pokračováním — bez tokenu nemůžete získat identifikátory účtů ani volat žádný Channel Manager endpoint. Kompletní postup najdete v [Authentication](/cs/developers/authentication), včetně produkčního hostitele a katalogu scope.
+
+4. **Vytvořte hotelový účet**
+
+   Pod stejným uživatelem vytvořte druhý účet a vyberte typ **Hotel**. Tento účet vám poskytne nemovitost pro testování bez nutnosti zapojení skutečného hotelu.
+
+5. **Potvrďte schválení obou účtů**
+
+   Žádný účet nelze používat, dokud není schválen: neschválený channel manager účet se nezobrazí v seznamu channel managerů hotelu a neschválený hotel není vracen API.
+
+   - **Staging** — schválení je automatické. Oba účty jsou použitelné ihned po vytvoření, není třeba nic žádat.
+   - **Produkce** — schválení je manuální. Pošlete svému kontaktnímu Wink integrací jména obou účtů a uživatele, pod kterým jsou vedeny, a počkejte na potvrzení před pokračováním.
+
+6. **Propojte oba účty**
+
+   Přihlaste se do hotelového účtu a přejděte na **Extranet → Distribution → Channel Manager**. Vyberte svůj channel manager účet ze seznamu — tím propojujete nemovitost s vaší integrací. Pokud váš účet v seznamu není, ještě nebyl schválen; viz krok 5.
+
+7. **Vytvořte základní typ pokoje a tarifní plán**
+
+   V hotelovém účtu vytvořte alespoň jeden typ pokoje a jeden tarifní plán. Tyto položky jsou nutné, než vaše integrace bude moci posílat ceny a dostupnost nebo stahovat rezervace.
+
+8. **Mapujte a testujte**
+
+   Ve svém systému namapujte identifikátory typu pokoje a tarifního plánu vrácené API. Odešlete aktualizaci ceny a dostupnosti, poté proveďte testovací rezervaci a ověřte, že endpoint pro získání rezervace ji správně vrací.
+</Steps>
+
+:::note
+Všechny výše uvedené kroky zopakujte v produkci před spuštěním, včetně registrace samostatné produkční aplikace — přihlašovací údaje ze stagingu v produkci nefungují. Počítejte s časem na kontrolu Winkem v kroku 5 — na rozdíl od stagingu nejsou produkční účty schvalovány automaticky. Tým Wink přesune všechny hotely již používající váš channel manager na váš nový produkční účet.
+:::
+
+## Jak najít identifikátory svých účtů
+
+Každá cesta Channel Manager API je omezena na váš vlastní účet:
+
+```
+/api/managing-entity/{managingEntityIdentifier}/channel-manager/...
+```
+
+`{managingEntityIdentifier}` je ID účtu (UUID) **vašeho channel manager účtu** — nikoli hotelu. Získejte jej spolu s ID a aktuálním stavem všech ostatních účtů, které váš uživatel vlastní, z Platform API:
+
+```bash
+curl -s -X GET \
+  "https://staging-api.wink.travel/api/managing-entity/list" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Odpověď je pole účtů, které vlastníte:
+
+```json
+[
+  {
+    "id": "3f1c8e42-7b90-4d55-a1e2-6c8d09b4f731",
+    "type": "CHANNEL_MANAGER",
+    "name": "Your Channel Manager",
+    "status": "ACTIVE"
+  },
+  {
+    "id": "d5b8a3c2-9e6f-4a1b-8d34-7c2e1f0a5b69",
+    "type": "HOTEL",
+    "name": "Your Test Property",
+    "urlName": "your-test-property",
+    "status": "ACTIVE"
+  }
+]
+```
+
+- `id` záznamu channel managera je vaše **`{managingEntityIdentifier}`**.
+- `id` záznamu `HOTEL` je vaše **`{propertyIdentifier}`**.
+- `status` slouží k ověření, že je každý účet schválen — nejvíce užitečné v produkci, kde je schválení manuální. **Hotel** musí mít stav `ACTIVE`, aby byl rezervovatelný nebo viditelný v Channel Manager API. Váš **channel manager** účet bude mít stav `PENDING_APPROVAL` až do dokončení [certifikace](#certifikace); to je očekávané a neblokuje vývoj.
+
+:::caution
+Tento dotaz běží proti **Platform API** (`https://staging-api.wink.travel` na stagingu, `https://api.wink.travel` v produkci), nikoli proti hostitelům Channel Manager API uvedeným v sekci [Prostředí](#prostředí). Použijte stejný access token — je vydáván na uživatele, ne na API.
+:::
+
+## Certifikace
+
+Certifikace je způsob, jak prokázat — a jak Wink ověřuje — že vaše integrace správně mapuje inventář, posílá ceny a dostupnost a přijímá rezervace end-to-end. Je navržena jako samoobslužná: každý krok provedete ze svého systému a na konci předložíte jeden balíček důkazů. Wink balíček zkontroluje a po úspěchu změní stav vašeho Affiliate / Channel Manager účtu z **PENDING_APPROVAL** na **ACTIVE**.
+
+Certifikace probíhá výhradně na stagingovém prostředí
+(`https://staging-integrations.wink.travel`). Nic v této sekci se netýká produkce.
+
+### Co prokážete
+
+<Steps>
+1. **Autentizace.** Váš OAuth2 klient získá access token a úspěšně zavolá endpoint `/ping` proti vašemu Affiliate / Channel Manager účtu.
+
+2. **Mapování inventáře.** Dokážete vypsat hotel(y) připojené k vašemu účtu, získat hlavní tarif (kombinace typu pokoje × tarifního plánu), který jste nastavili, a správně identifikovat `masterRateIdentifier`, na který váš systém cílí.
+
+3. **Odeslání cen a dostupnosti.** Dokážete nezávisle aktualizovat všech sedm dní certifikačního týdne — s různými kombinacemi ceny, množství, příznaků uzavření při příjezdu/odjezdu a minimální/délky pobytu pro každý den — a přečíst si přesné hodnoty zpět od Winku.
+
+4. **Stažení rezervace.** Dokážete stáhnout skutečnou stagingovou rezervaci vytvořenou na vaši testovací nemovitost, zobrazit ji ve svém PMS/CM UI se správným pokojem, hostem a celkovou částkou, a poté reflektovat zrušení, jakmile Wink označí rezervaci za zrušenou.
+</Steps>
+
+### Předpoklady
+
+Před zahájením certifikace dokončete kroky 1–7 z [Kroků integrace](#kroky-integrace), abyste měli:
+
+- Wink uživatele na stagingu s účtem **Affiliate / Channel Manager** a připojeným účtem **Hotel** (Extranet → Distribution → Channel Manager). Stagingové účty jsou schváleny automaticky, není třeba nic žádat.
+- V hotelovém účtu vytvořen alespoň jeden **typ pokoje** a jeden **tarifní plán**. Hotel publikujte, aby byl rezervovatelný na `https://staging-book.wink.travel/hotel/<your-slug>`.
+- Registrovanou aplikaci pod svým Affiliate / Channel Manager účtem s **Client ID**, **Secret Key** a scope `integrations.read integrations.write` (viz [Authentication](/cs/developers/authentication)).
+- **`managingEntityIdentifier`** vašeho Affiliate / Channel Manager účtu a **`propertyIdentifier`** hotelového účtu (oba jsou UUID — viz [Jak najít identifikátory svých účtů](#jak-najít-identifikátory-svých-účtů)).
+
+### Běžné konvence požadavků
+
+Každý požadavek v této sekci používá tyto hlavičky:
+
+```http
+Authorization: Bearer <access_token>
+Wink-Version: 2.0
+Accept: application/json
+```
+
+- `<access_token>` pochází z `client_credentials` grantu na
+  `https://staging-iam.wink.travel/oauth2/token` — viz [Authentication](/cs/developers/authentication#staging).
+- Hlavička `Wink-Version` je povinná; její vynechání neprovede směrování na v2 JSON API.
+- `Content-Type: application/json` se přidává u `PUT` požadavků s tělem.
+
+V příkladech níže nahraďte zástupné hodnoty hodnotami získanými v
+[Předpokladech](#předpoklady):
+
+| Zástupný symbol           | Význam |
+|---------------------------|--------|
+| `{managingEntityIdentifier}` | ID vašeho Affiliate / Channel Manager účtu (UUID) — viz [Jak najít identifikátory svých účtů](#jak-najít-identifikátory-svých-účtů). |
+| `{propertyIdentifier}`         | ID hotelového účtu (nemovitosti) připojeného k CM účtu. |
+| `{masterRateIdentifier}`       | Hlavní tarif (kombinace typu pokoje × tarifního plánu), který certifikujete. |
+| `{bookingIdentifier}`          | ID stagingové rezervace vrácené voláním seznamu rezervací. |
+
+### Krok A — Ping
+
+Ověřte, že vaše přihlašovací údaje odpovídají očekávanému Affiliate / Channel Manager účtu.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/ping" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Očekávaná odpověď:
+
+```json
+{
+  "apiVersion": "2.0",
+  "name": "Your Channel Manager Account Name",
+  "status": "PENDING_APPROVAL"
+}
+```
+
+Odpověď **200** s odpovídajícím `name` znamená, že autentizace a rozlišení účtu jsou správné. `status` bude číst `PENDING_APPROVAL` až do certifikace Winkem.
+
+### Krok B — Výpis nemovitostí
+
+Získejte stránkovaný seznam hotelů připojených k vašemu účtu a ověřte, že je v něm vaše testovací nemovitost.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/list?page=0&size=25" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Odpověď je Spring `Page` záznamů `ChannelManagerProperty`. Najděte záznam, jehož `identifier` odpovídá vašemu `{propertyIdentifier}`, a zaznamenejte si jeho `currencyCode` — bude potřeba pro interpretaci aktualizací cen v [Kroku D](#krok-d--nahrání-certifikačního-týdne).
+
+:::caution
+Prázdný seznam znamená konfigurační problém, nikoli chybný požadavek. Hotel se zde objeví pouze pokud je **`ACTIVE`** *a* byl přiřazen k vašemu channel manager účtu v Extranetu → Distribution → Channel Manager. Ověřte obojí pomocí `GET /api/managing-entity/list` (viz [Jak najít identifikátory svých účtů](#jak-najít-identifikátory-svých-účtů)) před dalším laděním.
+V produkci přidejte třetí důvod: hotel je zde neviditelný, dokud ho Wink neschválí.
+:::
+
+### Krok C — Získání hlavních tarifů
+
+Získejte nemovitost spolu se všemi hlavními tarify (kombinace typu pokoje × tarifního plánu), které publikuje. Vyberte ten, proti kterému chcete certifikovat, a zaznamenejte jeho `identifier` jako `{masterRateIdentifier}`.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Odpověď je obálka `PropertyWithRoomRateList`: blok `property` plus pole `rooms` záznamů `PropertyRoomRate`. Každý záznam obsahuje typ pokoje, tarifní plán, limity obsazenosti, základní cenu a modifikátory cen, které zachováte při odesílání denních cen.
+
+:::caution
+Certifikujte pouze jeden hlavní tarif během celé certifikace. Mapování dalších typů pokojů a tarifních plánů je očekávané v produkci, ale balíček důkazů musí ukázat end-to-end použití pouze jednoho hlavního tarifu.
+:::
+
+### Krok D — Nahrání certifikačního týdne
+
+Nahrajte **sedmidenní kalendář cen** pokrývající prvních sedm kalendářních dnů měsíce **následujícího** po měsíci, ve kterém začínáte certifikaci. Například pokud začnete certifikaci 21. srpna, cílem je 1. až 7. září.
+
+Pošlete **sedm samostatných `PUT` volání** — jedno pro každý den — kde `startDate == endDate`. Každý den má záměrně jinou kombinaci ceny, množství, příznaků uzavření při příjezdu/odjezdu a minimální/maximální délky pobytu, aby bylo otestováno každé zapisovatelné pole alespoň jednou. Hodnoty jsou v měně nemovitosti (zaznamenané v Kroku B); vynechání `currencyCode` způsobí správný výchozí stav.
+
+| Den | Cena   | Množství | closedOnArrival | closedOnDeparture | minLengthOfStay | maxLengthOfStay | Co dokazuje |
+|-----|--------|----------|-----------------|-------------------|-----------------|-----------------|-------------|
+| 1   | 100.00 | 5        | false           | false             | 1               | 30              | Výchozí den. |
+| 2   | 125.00 | 4        | false           | false             | 1               | 14              | Změna ceny + množství + `maxLengthOfStay`. |
+| 3   | 150.00 | 3        | **true**        | false             | 1               | 30              | Přepnutí `closedOnArrival`. |
+| 4   | 175.00 | 2        | false           | **true**          | 2               | 7               | Přepnutí `closedOnDeparture` + užší délka pobytu. |
+| 5   | 200.00 | **0**    | false           | false             | 1               | 30              | Vyprodáno (množství 0). |
+| 6   | 225.00 | 5        | false           | false             | **3**           | **5**           | Restriktivní délka pobytu. |
+| 7   | 250.00 | 1        | false           | false             | 1               | 30              | Dostupnost posledního pokoje. |
+
+Tělo požadavku pro den 1 vypadá takto. Opakujte s úpravou `startDate` / `endDate` / hodnot podle tabulky pro dny 2 až 7.
+
+```bash
+curl -s -X PUT \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Content-Type: application/json" \
+  -H "Accept: application/json" \
+  -d '{
+        "startDate": "2026-09-01",
+        "endDate":   "2026-09-01",
+        "amount":    100.00,
+        "master":    true,
+        "closedOnArrival":   false,
+        "closedOnDeparture": false,
+        "quantity":          5,
+        "minLengthOfStay":   1,
+        "maxLengthOfStay":   30
+      }'
+```
+
+Každý `PUT` vrací `200` s polem aktualizovaných záznamů `PropertyRate` pro zaslané období (jeden záznam, pokud `startDate == endDate`). Uložte si tuto odpověď — bude součástí vašich důkazů.
+
+:::note
+`master` by mělo být `true` u každého volání během certifikačního týdne. Tím Winku říkáte, že vaše aktualizace je šablonová sazba, nikoli přepis pro konkrétní rezervaci.
+:::
+
+### Krok E — Načtení certifikačního týdne
+
+Získejte celý týden v jednom volání a ověřte, že uložené hodnoty pro každý den odpovídají hodnotám z Kroku D — včetně boolean příznaků a délky pobytu.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/master-rate/{masterRateIdentifier}?startDate=2026-09-01&endDate=2026-09-07" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Odpověď je `PropertyRoomRateWithRateList`. Její pole `rates` musí obsahovat **sedm** záznamů, po jednom na každý den, každý s hodnotami `amount`, `quantity`, `closedOnArrival`, `closedOnDeparture`, `minLengthOfStay` a `maxLengthOfStay`, které jste nahráli. Jakýkoli nesoulad znamená, že odpovídající `PUT` z Kroku D neproběhl správně — opravte to a znovu ověřte před pokračováním.
+
+### Krok F — Proveďte testovací rezervaci
+
+Otevřete v prohlížeči následující URL, přičemž `<your-slug>` nahraďte slugem hotelového účtu, který jste publikovali v Předpokladech:
+
+```
+https://staging-book.wink.travel/hotel/<your-slug>
+```
+
+Vyberte datum příjezdu a odjezdu, které spadají zcela do certifikačního týdne, zvolte kombinaci typu pokoje + tarifního plánu, kterou jste certifikovali, a dokončete rezervaci. Staging používá testovací platební cestu — žádná skutečná karta není zatížena.
+
+Po zobrazení potvrzovací stránky si zaznamenejte **kód rezervace** (formát `WNKxxxxx`), který je hostovi zobrazen.
+
+### Krok G — Stáhněte rezervaci
+
+Získejte všechny rezervace vytvořené pro vaši testovací nemovitost v časovém okně pokrývajícím čas rezervace.
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/list?startDate=2026-09-01T00:00:00&endDate=2026-09-08T00:00:00" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Najděte záznam, jehož `bookingCode` odpovídá kódu z Kroku F. Zaznamenejte si jeho `bookingIdentifier`. Poté stáhněte tu jedinou rezervaci:
+
+```bash
+curl -s -X GET \
+  "https://staging-integrations.wink.travel/api/managing-entity/{managingEntityIdentifier}/channel-manager/property/{propertyIdentifier}/booking/{bookingIdentifier}" \
+  -H "Authorization: Bearer <access_token>" \
+  -H "Wink-Version: 2.0" \
+  -H "Accept: application/json"
+```
+
+Odpověď je `PropertyBooking`. Importujte ji do svého PMS / channel-manager UI a ověřte, že operátorovi správně zobrazí:
+
+- `bookingCode`, `bookingIdentifier`, `createdDate`
+- Host: `firstName`, `lastName`, `email`
+- `totalAmount` + `currencyCode` (čistá částka, kterou hotel obdrží za všechny pokoje)
+- `paymentMethodType`, `paymentMethodStatus`, `salesChannelName`
+- Každý záznam v `roomStays`: `guestRoomName`, `ratePlanName`, `adults`, `children`, `startDate`, `endDate` a částku za pokoj
+
+Pořiďte screenshot rezervace, jak se zobrazuje ve vašem UI — tento screenshot je jedním z požadovaných důkazů.
+
+### Krok H — Zrušte rezervaci a ověřte
+
+Požádejte tým Wink, aby za vás zrušil certifikační rezervaci (nebo ji zrušte sami z Extranetu hotelového účtu, pokud máte oprávnění). Poté znovu stáhněte stejnou rezervaci pomocí volání z Kroku G.
+
+Ověřte, že odpověď nyní obsahuje:
+
+- `cancelled: true`
+- Vyplněný časový údaj `cancelDate`
+- `paymentMethodStatus` odrážející stav zrušení (`CANCELLED`, `PARTIALLY_REFUNDED` nebo `FULLY_REFUNDED` podle refundní politiky)
+
+Importujte aktualizovanou rezervaci do svého UI a ověřte, že zrušení je viditelné operátorovi — stav, čas zrušení a případné indikátory refundace podporované vaším UI. Pořiďte druhý screenshot zrušené rezervace ve vašem UI. Toto je finální důkazový artefakt.
+
+### Krok I — Odešlete balíček důkazů
+
+Zabalte následující do jednoho archivu (`.zip`) pojmenovaného
+`wink-cert-<your-channel-manager-name>-<yyyy-mm-dd>.zip`:
+
+<Steps>
+1. **API přepis.** Pro každý požadavek z kroků A až H zachyťte kompletní HTTP požadavek (metoda, URL, hlavičky požadavku s redigovanou hodnotou `Authorization` a JSON tělo u `PUT` volání) a kompletní HTTP odpověď (status kód, hlavičky odpovědi a JSON tělo). Strukturovaně označte každý pár požadavek/odpověď podle kroku (`step-a-ping.json`, `step-d-day-3-put.json`, `step-g-list-bookings.json` atd.). Přijatelné jsou prosté `.http` soubory nebo jeden `.har` export.
+
+2. **Screenshot UI: aktivní rezervace.** Screenshot z Kroku G zobrazující certifikační rezervaci ve vašem PMS / channel-manager UI, s jasně čitelnými hostem, daty, typem pokoje, tarifním plánem a celkovou částkou.
+
+3. **Screenshot UI: zrušená rezervace.** Screenshot z Kroku H zobrazující stejnou rezervaci ve vašem UI po zrušení, s jasně čitelným stavem zrušení a časovým údajem.
+
+4. **Souhrn certifikace.** Krátký `README.md` v archivu obsahující:
+   - Název a verzi vašeho channel managera / PMS.
+   - Použité `managingEntityIdentifier`, `propertyIdentifier`, `masterRateIdentifier` a `bookingIdentifier`.
+   - Slug stagingového hotelu (to je `<your-slug>` v `https://staging-book.wink.travel/hotel/<your-slug>`).
+   - Datumové rozmezí certifikačního týdne (Den 1 → Den 7 v ISO-8601).
+   - Jméno a email inženýra, který certifikaci provedl.
+</Steps>
+
+Pošlete archiv svému kontaktnímu Wink integrací. Wink jej zkontroluje, případně se ozve kvůli nesrovnalostem a — po úspěchu — změní stav vašeho Affiliate / Channel Manager účtu z `PENDING_APPROVAL` na `ACTIVE`. Vaše integrace je pak způsobilá pro produkční onboarding.
+
+:::tip
+Automatizujte zachytávání přepisů. Sedm `PUT` volání v Kroku D a načtení v Kroku E jsou nejčastější příčinou neúspěchu certifikace — interaktivní HTTP klient, který ukládá každý požadavek a odpověď během běhu, vám ušetří opakování celé certifikace, pokud je hodnota posunuta o desetinu.
+:::
+
+## Notifikace přes webhooky
+
+Můžete se přihlásit k odběru webhook událostí channel managera a dostávat notifikace v reálném čase:
+
+- `channel-manager.update.rate` — Přijata aktualizace ceny.
+- `channel-manager.update.availability` — Přijata aktualizace dostupnosti.
+- `channel-manager.update` — Obecná aktualizace channel managera.
+
+Podrobnosti najdete v [Webhook Events Catalog](/cs/developers/webhook-events#channel-manager-events).
+
+## Další čtení
+
+- [Channel Manager API](/cs/partner-api/partner/) — Kompletní dokumentace API endpointů.
+- [Rate Providers](/cs/portal/extranet/rate-providers) — Správa poskytovatelů cen v Extranetu.
+- [Webhook Events Catalog](/cs/developers/webhook-events) — Všechny dostupné události k odběru.
+- [Build on Wink](/cs/developers/build-on-wink) — Přehled platformy pro vývojáře.
