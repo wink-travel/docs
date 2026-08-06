@@ -1,11 +1,19 @@
 ---
 /**
- * UsagePricing — pay-as-you-go usage table for Social content + API consumption.
+ * UsagePricing — pay-as-you-go usage prices for Social content + API consumption.
  * Each account gets a free monthly allowance (resets on the 1st, UTC), then pays
  * per unit. No subscriptions, no seats, no setup fees. Metered on publish/use.
  * Mirrors the live wink.travel usage pricing; used on the Pricing page and the
  * Social product page so both stay in sync.
+ *
+ * variant="table" (default) — full-width 3-column table (Social product page).
+ * variant="list" — compact list that fits a narrow column (Pricing page card).
  */
+interface Props {
+  variant?: "table" | "list";
+}
+const { variant = "table" } = Astro.props;
+
 const groups = [
   {
     label: "Social content",
@@ -25,33 +33,55 @@ const groups = [
 ];
 ---
 
-<div class="@container w-full">
-  <div class="overflow-x-auto rounded-2xl border border-border">
-    <table class="w-full border-collapse text-sm">
-      <thead>
-        <tr class="bg-muted/50 text-left">
-          <th class="p-4 font-semibold">Feature</th>
-          <th class="p-4 font-semibold">Free / month</th>
-          <th class="p-4 text-right font-semibold">Then</th>
-        </tr>
-      </thead>
-      <tbody class="[&_td]:border-t [&_td]:border-border [&_td]:p-4">
-        {groups.map((g) => (
-          <>
-            <tr class="bg-muted/20">
-              <td colspan="3" class="text-xs font-bold uppercase tracking-wider text-primary">{g.label}</td>
-            </tr>
-            {g.items.map((it) => (
-              <tr>
-                <td class="font-medium whitespace-nowrap">{it.name}</td>
-                <td class="text-muted-foreground whitespace-nowrap">{it.free}</td>
-                <td class="whitespace-nowrap text-right"><span class="font-semibold">{it.price}</span> <span class="text-muted-foreground text-xs">{it.unit}</span></td>
-              </tr>
-            ))}
-          </>
-        ))}
-      </tbody>
-    </table>
+{variant === "list" ? (
+  <div class="w-full">
+    {groups.map((g) => (
+      <div class="mb-5 last:mb-0">
+        <p class="mb-1 text-xs font-bold uppercase tracking-wider text-primary">{g.label}</p>
+        <ul>
+          {g.items.map((it) => (
+            <li class="flex items-baseline justify-between gap-3 border-b border-border/60 py-2.5 last:border-0">
+              <div>
+                <p class="text-sm font-medium text-foreground/90">{it.name}</p>
+                {it.free !== "—" && <p class="text-xs text-muted-foreground">{it.free} free</p>}
+              </div>
+              <p class="shrink-0 text-right text-sm"><span class="font-semibold">{it.price}</span> <span class="text-xs text-muted-foreground">{it.unit}</span></p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+    <p class="text-muted-foreground mt-4 text-xs text-pretty">Metered only when you publish or call — never on drafts. WinkLinks publishing is always free.</p>
   </div>
-  <p class="text-muted-foreground mt-4 text-center text-xs text-pretty">Metered only when you publish or call — not on drafts or attempts. WinkLinks publishing is always free. No subscriptions, no seats, no setup fees.</p>
-</div>
+) : (
+  <div class="@container w-full">
+    <div class="overflow-x-auto rounded-2xl border border-border">
+      <table class="w-full border-collapse text-sm">
+        <thead>
+          <tr class="bg-muted/50 text-left">
+            <th class="p-4 font-semibold">Feature</th>
+            <th class="p-4 font-semibold">Free / month</th>
+            <th class="p-4 text-right font-semibold">Then</th>
+          </tr>
+        </thead>
+        <tbody class="[&_td]:border-t [&_td]:border-border [&_td]:p-4">
+          {groups.map((g) => (
+            <>
+              <tr class="bg-muted/20">
+                <td colspan="3" class="text-xs font-bold uppercase tracking-wider text-primary">{g.label}</td>
+              </tr>
+              {g.items.map((it) => (
+                <tr>
+                  <td class="font-medium whitespace-nowrap">{it.name}</td>
+                  <td class="text-muted-foreground whitespace-nowrap">{it.free}</td>
+                  <td class="whitespace-nowrap text-right"><span class="font-semibold">{it.price}</span> <span class="text-muted-foreground text-xs">{it.unit}</span></td>
+                </tr>
+              ))}
+            </>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="text-muted-foreground mt-4 text-center text-xs text-pretty">Metered only when you publish or call — not on drafts or attempts. WinkLinks publishing is always free. No subscriptions, no seats, no setup fees.</p>
+  </div>
+)}
