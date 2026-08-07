@@ -33,7 +33,7 @@ O Wink é o comerciante registado no momento em que a reserva ocorre. O Wink é 
 Este modelo aplica-se a 95% de todas as reservas.
 
 O Wink cobra `5,5% por reserva` para manter a plataforma.
-A maior parte disso vai para o gateway de pagamento (Visa, MasterCard, etc.). Uma reserva média custa-nos `2,95%` para adquirir; por vezes até `3,6%`. Reembolsos parciais implicam custos adicionais, pois o gateway de pagamento considera isso como uma nova cobrança.
+A maior parte disso vai para o gateway de pagamento (Visa, MasterCard, etc.). Uma reserva média custa-nos `2,95%` para adquirir; por vezes até `3,6%`. Reembolsos parciais custam-nos ainda mais, pois o gateway de pagamento vê isso como uma nova cobrança.
 Queremos ser completamente transparentes sobre os preços desde já para poupar tempo a todos antes de tentarem negociar descontos adicionais sem terem usado o Wink. O nosso modelo de preços é mais do que justo e também precisamos de ganhar a vida.
 
 #### Desagregação
@@ -74,39 +74,66 @@ Algumas funcionalidades custam-nos dinheiro cada vez que são usadas — IA gene
 | -- | -- | -- | -- |
 | Publicação social — imagem | 1 | $1.50 | Uma publicação publicada |
 | Publicação social — imagem gerada por IA | 0 | $2.50 | Uma publicação publicada |
-| Publicação social — vídeo melhorado por IA | 0 | $4.00 | Uma publicação publicada |
+| Publicação social — vídeo | 0 | $4.00 | Uma publicação publicada |
 | Publicação social — vídeo gerado por IA | 0 | $14.00 | Uma publicação publicada |
 | Resposta IA a um comentário ou DM | 5 | $0.05 | Uma resposta |
-| Resposta do chatbot | 5 | $0.05 | Uma resposta |
-| API de parceiro | 10.000 | $0.0001 | Um hotel-dia |
+| Resposta de chatbot | 5 | $0.05 | Uma resposta |
+| API Parceiro | 10,000 | $0.0001 | Um hotel-dia |
+| API Media Parceiro | 1,000 | $0.0005 | Media de um hotel |
 
 Os preços estão em USD. A franquia gratuita é concedida **por conta**, não por utilizador, e reinicia no dia 1 de cada mês (UTC).
 
-### Como são precificadas as publicações
+### Como são precificados os posts
 
-As publicações são precificadas pelo seu conteúdo, porque é isso que nos custa produzir. Uma imagem estática é barata; um vídeo não; qualquer coisa gerada por IA custa materialmente mais do que uma foto que forneceu.
+Os posts são precificados pelo que contêm, porque é isso que nos custa produzir. Uma imagem estática é barata; um vídeo não; qualquer coisa gerada por IA custa materialmente mais do que uma foto que forneceu.
 
-- **A franquia gratuita cobre apenas publicações de imagem padrão.** Recebe uma dessas por conta por mês. Publicações de vídeo e media gerada por IA são faturadas desde a primeira publicação — não há franquia gratuita nestes níveis, por isso uma propriedade que publique vídeo deve esperar uma cobrança no seu primeiro mês.
-- **O vídeo prevalece.** Se uma publicação contiver qualquer vídeo, toda a publicação é faturada à tarifa de vídeo. Uma publicação que misture imagem e vídeo é considerada uma publicação de vídeo.
+- **A franquia gratuita cobre apenas publicações de imagem padrão.** Recebe uma dessas por conta por mês. Publicações de vídeo e media gerado por IA são faturadas desde a primeira publicação — não há franquia gratuita nesses níveis, por isso uma propriedade que publique vídeo deve esperar uma cobrança no primeiro mês.
+- **O vídeo prevalece.** Se um post contiver qualquer vídeo, o post inteiro é faturado à tarifa de vídeo. Um post que mistura imagem e vídeo é um post de vídeo.
 - **A proveniência IA define o nível.** Media que forneça — as suas próprias fotos e vídeos, ou qualquer coisa da sua biblioteca de conteúdos Wink — é faturada à tarifa padrão. Media que geramos para si é faturada à tarifa IA.
 
 ### O que é e não é medido
 
-- Apenas uma publicação **gerada** e publicada numa rede de terceiros (Facebook, Instagram) é faturável. Uma publicação que escreveu pessoalmente é gratuita, onde quer que seja publicada.
+- Apenas um post **gerado** publicado numa rede de terceiros (Facebook, Instagram) é faturável. Um post que escreveu pessoalmente é gratuito, onde quer que seja publicado.
 - **Publicar no WinkLinks é sempre gratuito**, gerado ou não.
-- É cobrado **no momento da publicação**, não por tentativa. Regenerar um rascunho até ficar satisfeito não aumenta a sua fatura — paga uma vez pela publicação que realmente envia. As tentativas não são ilimitadas, no entanto: cada publicação permite cerca de 10 regenerações para imagens e 3 para vídeo, o que reflete o custo que temos para as produzir. Verá quantas lhe restam enquanto trabalha.
-- Na API de parceiro, um **hotel-dia** é um hotel com preço para uma noite de estadia — *não* uma chamada API. Uma pesquisa que retorna 20 hotéis para uma estadia de 3 noites são 60 hotel-dias numa única requisição. Endpoints de pesquisa e autocompletar são gratuitos e nunca medidos.
+- É cobrado **no momento da publicação**, não por tentativa. Regenerar um rascunho até ficar satisfeito não aumenta a sua fatura — paga uma vez pelo post que realmente publica. As tentativas não são ilimitadas, porém: cada post permite cerca de 10 regenerações para imagens e 3 para vídeo, o que reflete o custo que temos para os produzir. Verá quantas lhe restam enquanto trabalha.
+- Na API Parceiro, um **hotel-dia** é um hotel com preço para uma noite de estadia — *não* uma chamada API. Uma pesquisa que retorna 20 hotéis para uma estadia de 3 noites são 60 hotel-dias numa única requisição. Endpoints de pesquisa e autocompletar são gratuitos e nunca medidos.
+- Na **API Media Parceiro**, a unidade é um hotel cujo media lhe é devolvido, independentemente do número de fotos e vídeos. Uma requisição em lote para 50 hotéis são 50 unidades — e se alguns desses hotéis não tiverem media a que tem direito, só é faturado pelos que efetivamente retornaram media.
 
-### Como ativar
+### Exemplo: um OTA a armazenar 90 dias de preços
 
-O pay-as-you-go está desligado por defeito. Todos recebem a franquia gratuita sem fazer nada.
+Suponha que é um OTA, um site metapesquisa ou um operador turístico, e quer 90 dias de preços futuros para **1.000 hotéis**, cada um dos quais publica **4 tarifas principais**.
+
+**Uma atualização completa de tudo isso são 90.000 hotel-dias — $9.00.**
+
+São 1.000 hotéis × 90 dias. As 4 tarifas principais não custam nada extra: uma única requisição retorna todos os planos tarifários que um hotel publica para esse intervalo de datas, por isso o número de tarifas que uma propriedade tem não é uma dimensão de faturação. Também não importa como divide a requisição — uma requisição por período cobre até 30 dias, por isso faria 3 requisições por hotel, e 3 × 30 dias é faturado exatamente como uma requisição de 90 dias. É faturado pelo preço que pediu, não pela infraestrutura que usou.
+
+Portanto, o que paga por mês depende de uma questão: com que frequência atualiza?
+
+| Frequência de atualização | Hotel-dias / mês | Após os 10.000 gratuitos | Custo mensal |
+| -- | -- | -- | -- |
+| Uma vez por mês | 90.000 | 80.000 | **$8.00** |
+| Semanalmente | 360.000 | 350.000 | **$35.00** |
+| Diariamente | 2.700.000 | 2.690.000 | **$269.00** |
+| Duas vezes por dia | 5.400.000 | 5.390.000 | **$539.00** |
+
+Atualizar todos os 1.000 hotéis todos os dias são 3.000 requisições por dia e fica por cerca de $9.00 por dia. A franquia gratuita por si só — 10.000 hotel-dias por mês — é suficiente para precificar cerca de 110 hotéis para 90 dias completos, ou para construir e testar uma integração inteira sem pagar nada.
+
+#### O que influencia esse número
+
+- **Pedir planos tarifários um a um.** Uma requisição por período retorna o melhor preço por tipo de quarto em todos os planos tarifários de uma só vez. Se filtrar para um plano tarifário por requisição para ver os quatro separadamente, faz quatro vezes mais requisições e paga quatro vezes mais.
+- **Ocupações, moedas ou idiomas adicionais.** Preços para 1 adulto e preços para 2 adultos são duas questões diferentes, e cada uma é faturada. O mesmo se aplica a uma segunda moeda de exibição ou idioma.
+- **Atualizações que não precisa.** Nada obriga que os 90 dias tenham a mesma frequência de atualização. Atualize os próximos 14 dias diariamente e os dias 15–90 semanalmente e os mesmos 1.000 hotéis custam **$71.40** por mês em vez de $269.00 — as datas mais próximas, onde as tarifas realmente mudam, mantêm-se atualizadas.
+
+### Ativação
+
+O pay-as-you-go está desativado por defeito. Todos recebem a franquia gratuita sem fazer nada.
 
 Para ultrapassar a franquia, o **proprietário** de uma conta ativa o pay-as-you-go e escolhe quais das suas contas são medidas. A utilização de todas as suas contas ativadas é consolidada numa **única fatura mensal**, que pode liquidar automaticamente por cartão ou receber como fatura para pagar manualmente.
 
 Uma vez ativado, a sua utilização é medida mas **nunca limitada** — não atingirá um limite de taxa por gastar dinheiro connosco.
 
 :::note[Se não ativar]
-Nada falha e nada é cobrado. Simplesmente para na franquia gratuita desse mês: publicações geradas não serão publicadas e chamadas à API de parceiro retornam um `429` até a franquia ser reposta.
+Nada deixa de funcionar e nada é cobrado. Simplesmente para na franquia gratuita desse mês: publicações geradas não serão publicadas e chamadas à API Parceiro retornam um `429` até a franquia ser reposta.
 :::
 
 ### Estado da faturação
@@ -118,7 +145,7 @@ Nada falha e nada é cobrado. Simplesmente para na franquia gratuita desse mês:
 | Suspenso | Uma fatura ficou por pagar até ao fim. Ações faturáveis são bloqueadas até ser liquidada; funcionalidades gratuitas continuam normalmente. |
 
 :::tip[Preços em tempo real]
-Os preços unitários e franquias gratuitas são sempre mostrados no Portal, diretamente do nosso sistema de faturação, para que possa consultá-los antes de se comprometer. Veja [Faturação](/pt-PT/account/subscription) para ativar o pay-as-you-go, escolher as suas contas e acompanhar a utilização e faturas do mês. Veja [Social](/pt-PT/portal/social/what-is-social) para saber como o volume de publicações afeta os seus gastos.
+Os preços unitários e franquias gratuitas são sempre mostrados no Portal, diretamente do nosso sistema de faturação, para que possa consultá-los antes de se comprometer. Veja [Faturação](/pt-PT/account/subscription) para ativar o pay-as-you-go, escolher as suas contas e acompanhar a utilização e faturas do mês. Veja [Social](/pt-PT/portal/social/what-is-social) para saber como o volume de publicações afeta o que gasta.
 :::
 
 ## Efeito da plataforma

@@ -12,7 +12,7 @@ Wink no tiene suscripciones, ni plazas ni tarifas de configuración. La gran may
 
 ## Qué es gratis
 
-Estos no cuestan nada, nunca, sin asignación ni medición:
+Estos no cuestan nada, para siempre, sin asignación ni medición:
 
 - El **motor de reservas** — en tu propio sitio, en tu página WinkLinks o en cualquier otro lugar donde lo incrustes.
 - **Gestión de propiedades** — contenido, fotos, tarifas, planes tarifarios, disponibilidad, promociones y políticas.
@@ -32,9 +32,9 @@ Wink soporta tanto el modelo de comerciante como el de agente.
 Wink es el comerciante registrado en el momento en que se realiza la reserva. Wink es responsable de los fondos y posee todas las licencias necesarias para operar una agencia de viajes.
 Este modelo aplica al 95% de todas las reservas.
 
-Wink cobra un `5.5% por reserva` para mantener la plataforma.
-La mayor parte va al gateway de pago (Visa, MasterCard, etc.). Una reserva promedio nos cuesta `2.95%` adquirir; a veces hasta `3.6%`. Los reembolsos parciales nos afectan más porque el gateway de pago lo considera un nuevo cargo.
-Queremos ser completamente transparentes con los precios desde ahora para ahorrar tiempo a todos antes de intentar negociar descuentos adicionales sin haber usado Wink. Nuestro modelo de precios es más que justo y también necesitamos ganarnos la vida.
+Wink cobra `5.5% por reserva` para mantener la plataforma.
+La mayor parte va al gateway de pago (Visa, MasterCard, etc.). Una reserva promedio nos cuesta `2.95%` adquirir; a veces hasta `3.6%`. Los reembolsos parciales nos afectan más porque el gateway de pago los considera como un nuevo cargo.
+Queremos ser completamente transparentes con los precios ahora para ahorrar tiempo a todos antes de intentar negociar descuentos adicionales sin haber usado Wink. Nuestro modelo de precios es más que justo y también necesitamos ganarnos la vida.
 
 #### Desglose
 
@@ -49,14 +49,14 @@ TripPay cobra una tarifa de pago del 4.0% por reserva. Esto cubre la adquisició
 :::note[Desembolso de fondos]
 Hay tarifas asociadas con el envío de fondos a tu cuenta. Esto depende del método de desembolso que elijas. Actualmente soportamos:
 
-- **Transferencia bancaria** El costo depende del país donde te encuentres y de dónde se envíen los fondos. Incluimos una calculadora de cotizaciones que puedes usar cuando tengas fondos disponibles en tu cuenta.
+- **Transferencia bancaria** El costo depende del país donde te encuentres y de dónde se envíen los fondos. Incluimos una calculadora de cotización que puedes usar cuando tengas fondos disponibles en tu cuenta.
 
 Si quieres que soportemos otro método de pago, envíanos un correo electrónico.
 :::
 
 ### Modelo 2
 
-Este modelo está disponible solo para agencias de viajes que posean licencia de agencia de viajes en su región y que deseen ser el comerciante registrado. Algunos de nuestros agentes de viajes registrados quieren ser responsables de manejar el pago y el desembolso de fondos a los hoteles. Bajo este modelo, ellos son responsables de los fondos y poseen las licencias necesarias para operar en su país.
+Este modelo solo está disponible para agencias de viajes que tengan licencia de agencia de viajes en su región y que deseen ser el comerciante registrado. Algunos de nuestros agentes de viajes registrados quieren ser responsables de manejar el pago y el desembolso de fondos a los hoteles. Bajo este modelo, ellos son responsables de los fondos y poseen las licencias necesarias para operar en su país.
 
 #### Desglose
 
@@ -74,19 +74,20 @@ Algunas funciones nos cuestan dinero cada vez que se usan — IA generativa, API
 | -- | -- | -- | -- |
 | Publicación social — imagen | 1 | $1.50 | Una publicación publicada |
 | Publicación social — imagen generada por IA | 0 | $2.50 | Una publicación publicada |
-| Publicación social — video mejorado por IA | 0 | $4.00 | Una publicación publicada |
+| Publicación social — video | 0 | $4.00 | Una publicación publicada |
 | Publicación social — video generado por IA | 0 | $14.00 | Una publicación publicada |
 | Respuesta IA a un comentario o DM | 5 | $0.05 | Una respuesta |
 | Respuesta de chatbot | 5 | $0.05 | Una respuesta |
-| API de socios | 10,000 | $0.0001 | Un hotel-día |
+| API de socio | 10,000 | $0.0001 | Un hotel-día |
+| API de medios de socio | 1,000 | $0.0005 | Medios de un hotel |
 
 Los precios están en USD. La asignación gratuita se otorga **por cuenta**, no por usuario, y se reinicia el día 1 de cada mes (UTC).
 
 ### Cómo se valoran las publicaciones
 
-Las publicaciones se valoran según lo que contienen, porque eso es lo que nos cuesta producirlas. Una imagen fija es barata; un video no; cualquier cosa generada con IA cuesta materialmente más que una foto que tú mismo hayas proporcionado.
+Las publicaciones se valoran según lo que contienen, porque eso es lo que nos cuesta producirlas. Una imagen fija es barata; un video no; cualquier cosa que generemos con IA cuesta materialmente más que una foto que tú mismo hayas proporcionado.
 
-- **La asignación gratuita cubre solo publicaciones con imágenes estándar.** Obtienes una por cuenta al mes. Las publicaciones de video y medios generados por IA se facturan desde la primera publicación — no hay asignación gratuita en esos niveles, por lo que una propiedad que publique video debe esperar un cargo en su primer mes.
+- **La asignación gratuita cubre solo publicaciones con imágenes estándar.** Obtienes una por cuenta al mes. Las publicaciones de video y medios generados por IA se facturan desde la primera publicación — no hay asignación gratuita en esos niveles, así que una propiedad que publique video debe esperar un cargo en su primer mes.
 - **El video gana.** Si una publicación contiene cualquier video, toda la publicación se factura a la tarifa de video. Una publicación que mezcla imagen y video es una publicación de video.
 - **La procedencia IA determina el nivel.** Los medios que tú suministras — tus propias fotos y videos, o cualquier cosa de tu biblioteca de contenido Wink — se facturan a la tarifa estándar. Los medios que generamos para ti se facturan a la tarifa IA.
 
@@ -94,19 +95,45 @@ Las publicaciones se valoran según lo que contienen, porque eso es lo que nos c
 
 - Solo una publicación **generada** y publicada en una red de terceros (Facebook, Instagram) es facturable. Una publicación que escribiste tú mismo es gratis, donde sea que se publique.
 - **Publicar en WinkLinks siempre es gratis**, generado o no.
-- Se cobra **al publicar**, no por intento. Regenerar un borrador hasta que estés satisfecho no aumenta tu factura — pagas una vez por la publicación que realmente envías. Los intentos no son ilimitados: cada publicación permite unas 10 regeneraciones para imágenes y 3 para video, lo que refleja lo que nos cuesta producirlas. Verás cuántas te quedan mientras trabajas.
-- En la API de socios, un **hotel-día** es un hotel valorado por una noche de estancia — *no* una llamada API. Una búsqueda que devuelve 20 hoteles para una estancia de 3 noches son 60 hotel-días de una sola solicitud. Los endpoints de búsqueda y autocompletado son gratuitos y nunca se miden.
+- Se cobra **al publicar**, no por intento. Regenerar un borrador hasta que estés satisfecho no aumenta tu factura — pagas una vez por la publicación que realmente envías. Los intentos no son ilimitados: cada publicación permite alrededor de 10 regeneraciones para imágenes y 3 para video, lo que refleja lo que nos cuesta producirlas. Verás cuántas te quedan mientras trabajas.
+- En la API de socio, un **hotel-día** es un hotel con precio para una noche de estancia — *no* una llamada API. Una búsqueda que devuelve 20 hoteles para una estancia de 3 noches son 60 hotel-días de una sola solicitud. Los endpoints de búsqueda y autocompletado son gratuitos y nunca se miden.
+- En la **API de medios de socio**, la unidad es un hotel cuyos medios te son devueltos, sin importar cuántas fotos y videos sean. Una solicitud por lotes para 50 hoteles son 50 unidades — y si algunos de esos hoteles no tienen medios a los que tienes derecho, solo se factura por los que realmente devolvieron medios.
 
-### Cómo activarlo
+### Ejemplo: un OTA almacenando 90 días de precios
+
+Supongamos que eres un OTA, un sitio metabuscador o un operador turístico, y quieres 90 días de precios futuros para **1,000 hoteles**, cada uno con **4 tarifas maestras**.
+
+**Una actualización completa de todo eso son 90,000 hotel-días — $9.00.**
+
+Eso es 1,000 hoteles × 90 días. Las 4 tarifas maestras no te cuestan nada extra: una sola solicitud devuelve todos los planes tarifarios que un hotel publica para ese rango de fechas, así que el número de tarifas que tiene una propiedad no es una dimensión de facturación. Tampoco importa cómo dividas la solicitud — una solicitud por período cubre hasta 30 días, así que harías 3 solicitudes por hotel, y 3 × 30 días factura exactamente igual que una solicitud de 90 días. Se factura por los precios que pediste, no por la infraestructura que usaste.
+
+Así que lo que pagas al mes depende de una pregunta: ¿con qué frecuencia actualizas?
+
+| Frecuencia de actualización | Hotel-días / mes | Después de los 10,000 gratis | Costo mensual |
+| -- | -- | -- | -- |
+| Una vez al mes | 90,000 | 80,000 | **$8.00** |
+| Semanalmente | 360,000 | 350,000 | **$35.00** |
+| Diariamente | 2,700,000 | 2,690,000 | **$269.00** |
+| Dos veces al día | 5,400,000 | 5,390,000 | **$539.00** |
+
+Actualizar los 1,000 hoteles todos los días son 3,000 solicitudes diarias y equivale a unos $9.00 diarios. La asignación gratuita por sí sola — 10,000 hotel-días al mes — es suficiente para poner precio a unos 110 hoteles durante 90 días completos, o para construir y probar una integración completa sin pagar nada.
+
+#### Qué afecta ese número
+
+- **Pedir planes tarifarios uno a uno.** Una solicitud por período devuelve el mejor precio por tipo de habitación entre todos los planes tarifarios a la vez. Si filtras para un plan tarifario por solicitud para ver los cuatro por separado, haces cuatro veces más solicitudes y pagas cuatro veces más.
+- **Ocupaciones, monedas o idiomas adicionales.** El precio para 1 adulto y el precio para 2 adultos son dos preguntas diferentes, y cada una se factura. Lo mismo aplica para una segunda moneda o idioma de visualización.
+- **Frescura que no necesitas.** No es necesario que los 90 días tengan la misma frecuencia de actualización. Actualiza los próximos 14 días diariamente y los días 15–90 semanalmente y los mismos 1,000 hoteles cuestan **$71.40** al mes en lugar de $269.00 — las fechas a corto plazo, donde los precios realmente cambian, se mantienen frescas.
+
+### Activación
 
 El pago según consumo está desactivado por defecto. Todos reciben la asignación gratuita sin hacer nada.
 
-Para superar la asignación, el **propietario** de una cuenta activa el pago según consumo y elige cuáles de sus cuentas se miden. El uso de todas tus cuentas habilitadas se agrupa en una **única factura mensual**, que puedes pagar automáticamente con tarjeta o recibir como factura para pagar tú mismo.
+Para superar la asignación, el **propietario** de una cuenta activa el pago según consumo y elige cuáles de sus cuentas se miden. El uso de todas tus cuentas habilitadas se acumula en una **única factura mensual**, que puedes pagar automáticamente con tarjeta o recibir como factura para pagar tú mismo.
 
-Una vez activado, tu uso se mide pero **nunca se limita** — no alcanzarás un límite de gasto con nosotros.
+Una vez activado, tu uso se mide pero **nunca se limita** — no alcanzarás un límite de tasa por gastar dinero con nosotros.
 
 :::note[Si no lo activas]
-Nada se rompe y no se cobra nada. Simplemente te detienes en la asignación gratuita de ese mes: las publicaciones generadas no se publicarán y las llamadas a la API de socios devolverán un `429` hasta que se reinicie la asignación.
+Nada se rompe y nada se cobra. Simplemente te detienes en la asignación gratuita para ese mes: las publicaciones generadas no se publicarán y las llamadas a la API de socio devolverán un `429` hasta que se reinicie la asignación.
 :::
 
 ### Estado de facturación
@@ -114,11 +141,11 @@ Nada se rompe y no se cobra nada. Simplemente te detienes en la asignación grat
 | Estado | Qué significa |
 | -- | -- |
 | En buen estado | Todo funciona normalmente. |
-| Vencido | Un pago falló y se está reintentando. Tus funciones siguen funcionando durante este periodo. |
+| Vencido | Un pago falló y se está reintentando. Tus funciones siguen funcionando durante este período. |
 | Suspendido | Una factura quedó impaga hasta el final. Las acciones facturables están bloqueadas hasta que se pague; las funciones gratuitas continúan normalmente. |
 
 :::tip[Precios en vivo]
-Los precios unitarios y las asignaciones gratuitas siempre se muestran en el Portal, directamente desde nuestro sistema de facturación, para que puedas consultarlos antes de comprometerte. Consulta [Facturación](/es/account/subscription) para activar el pago según consumo, elegir tus cuentas y seguir el uso y las facturas del mes. Consulta [Social](/es/portal/social/what-is-social) para ver cómo el volumen de publicaciones afecta tu gasto.
+Los precios unitarios y las asignaciones gratuitas siempre se muestran en el Portal, directamente desde nuestro sistema de facturación, para que puedas consultarlos antes de comprometerte. Consulta [Facturación](/es/account/subscription) para activar el pago según consumo, elegir tus cuentas y seguir el uso y las facturas del mes. Consulta [Social](/es/portal/social/what-is-social) para ver cómo el volumen de publicaciones afecta lo que gastas.
 :::
 
 ## Efecto de la plataforma
