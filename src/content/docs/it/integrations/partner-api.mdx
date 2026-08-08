@@ -1,25 +1,25 @@
 ---
 title: Partner API
-description: Prezzi, limiti di utilizzo e Service Level Agreement per il Partner API autenticato di Wink.
+description: Prezzi, limiti di utilizzo e Service Level Agreement per la Wink Partner API autenticata.
 sidebar:
   order: 0
 ---
 
-Il Wink **Partner API** è il modo autenticato e ad alto throughput per gli integratori di interrogare l'inventario di viaggi prenotabili — la stessa offerta che alimenta i nostri widget incorporabili e gli endpoint pubblici di navigazione, esposta come un'interfaccia programmatica di prima classe. Mentre i Web Components gratuiti e gli endpoint pubblici di navigazione sono pensati per un embedding leggero e rivolto all'utente finale, il Partner API è costruito per sistemi che cercano, valutano e prenotano su larga scala. L'accesso è autenticato per integratore e fatturato in base all'uso, quindi paghi solo per il traffico che effettivamente invii.
+La Wink **Partner API** è il modo autenticato e ad alto throughput per gli integratori di interrogare l'inventario di viaggi prenotabili — la stessa offerta che alimenta i nostri widget incorporabili e gli endpoint pubblici di navigazione, esposta come un'interfaccia programmatica di prima classe. Mentre i Web Components gratuiti e gli endpoint pubblici di navigazione sono pensati per un embedding leggero e rivolto all'utente finale, la Partner API è costruita per sistemi che cercano, valutano e prenotano su larga scala. L'accesso è autenticato per integratore e fatturato in base all'uso, quindi paghi solo per il traffico che effettivamente invii.
 
 ## Piani e prezzi
 
-Una chiamata API = una richiesta. L'uso misurato è fatturato per 1.000 richieste.
+Una chiamata API = una richiesta. L'uso misurato è fatturato ogni 1.000 richieste.
 
 | | Gratuito | A pagamento | Enterprise |
 |---|---|---|---|
 | **Prezzo** | 0 $ | Basato sull'uso | Contattaci |
-| **Ideale per** | Valutazione e integrazioni a basso volume | Throughput pay-as-you-go su larga scala | Volume personalizzato e condizioni negoziate |
+| **Ideale per** | Valutazioni e integrazioni a basso volume | Throughput pay-as-you-go su larga scala | Volume personalizzato e condizioni negoziate |
 | Richieste al minuto | 30 (raffica da 60) | Illimitate | Illimitate |
 | Richieste al mese | 10.000 | Illimitate | Illimitate |
 | Tempo di risposta API (P95) | — | Inferiore a 500 ms | Inferiore a 500 ms |
 | Prezzo per 1.000 richieste | Gratuito | 1,00 $ | Personalizzato |
-| Eccedenza look-to-book (per 1.000 look in eccesso oltre 5.000:1) | — | 2,00 $ | Personalizzato |
+| Oltre soglia look-to-book (per 1.000 look in eccesso oltre 5.000:1) | — | 2,00 $ | Personalizzato |
 | Risposta al superamento del limite | 429 (pausa / blocco mensile) | Nessuna | Nessuna |
 | Service Level Agreement | — | ✓ | ✓ |
 | Supporto prioritario | — | ✓ | ✓ |
@@ -29,10 +29,21 @@ Una chiamata API = una richiesta. L'uso misurato è fatturato per 1.000 richiest
 
 ## Riferimento API
 
-Due superfici OpenAPI servono l'inventario prenotabile e corrispondono ai due livelli sopra indicati:
+Due superfici servono l'inventario prenotabile, e corrispondono ai due livelli sopra:
 
-- **Gratuito — Consumer / Booking Engine API** (`/api/public/**`): anonimo, rivolto a browser e widget. [Consulta il riferimento Booking Engine →](/it/api/booking-engine/)
-- **A pagamento — Partner Integrator API** (`/api/partner/**`): autenticato, uso misurato, costruito per integrazione server-to-server su larga scala. [Consulta il riferimento Integrator →](/it/partner-api/partner/)
+- **Gratuito — Consumer / Booking Engine API** (REST, `/api/public/**`): anonimo, rivolto a browser e widget. [Consulta il riferimento Booking Engine →](/it/api/booking-engine/)
+- **A pagamento — Partner Integrator API** (**gRPC**, `wink.partner.v1`): autenticato, uso misurato, costruito per integrazione server-to-server su larga scala. [Consulta il riferimento Integrator →](/it/partner-api/partner/)
+
+La Partner Integrator API è gRPC, non REST. La chiami con un client generato su HTTP/2 a
+`partner.wink.travel:443`, passando un token bearer e l'account per cui stai chiamando:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
+```
+
+La pagina di riferimento sopra documenta ogni servizio, messaggio e stato di errore, e lo schema è anche
+disponibile a runtime tramite reflection del server, quindi `grpcurl`, Postman e Insomnia lo scoprono senza
+nulla da scaricare.
 
 ## Come funzionano l'uso e i limiti
 
@@ -40,48 +51,48 @@ Due superfici OpenAPI servono l'inventario prenotabile e corrispondono ai due li
 
 Il livello gratuito è progettato per permetterti di costruire, testare e gestire un traffico di produzione modesto senza costi.
 
-- **Limite di velocità — 30 richieste al minuto, con una raffica di 60 richieste.** Picchi brevi oltre il tasso sostenuto sono assorbiti dalla quota di raffica. Se lo superi, l'API risponde con **HTTP 429 (Too Many Requests)** e applica una **pausa di 5 minuti** prima che la tua chiave riprenda a servire traffico. Fai una pausa e riprova dopo la finestra di pausa invece di bombardare l'endpoint.
-- **Quota mensile — 10.000 richieste per mese solare.** Una volta raggiunto il limite mensile, l'API restituisce **HTTP 429 per il resto del mese** — un blocco rigido — insieme a un messaggio che invita a sottoscrivere il livello a pagamento per continuare. Il contatore si azzera all'inizio del mese solare successivo.
+- **Limite di velocità — 30 richieste al minuto, con una raffica da 60 richieste.** Picchi brevi oltre il tasso sostenuto sono assorbiti dalla quota di raffica. Se lo superi, l'API risponde con **HTTP 429 (Too Many Requests)** e applica una **pausa di 5 minuti** prima che la tua chiave riprenda a servire traffico. Fai un passo indietro e riprova dopo la pausa invece di bombardare l'endpoint.
+- **Quota mensile — 10.000 richieste per mese solare.** Una volta raggiunto il tetto mensile, l'API restituisce **HTTP 429 per il resto del mese** — un blocco rigido — insieme a un messaggio che ti invita a sottoscrivere il livello a pagamento per continuare. Il contatore si azzera all'inizio del mese solare successivo.
 
 Il livello gratuito non include un Service Level Agreement né supporto prioritario.
 
 ### Livello a pagamento
 
-Il livello a pagamento rimuove il limite mensile e le pause per superamento del limite di velocità, e ti fattura solo per ciò che usi.
+Il livello a pagamento rimuove il tetto mensile e le pause per superamento del limite, e ti fattura solo per ciò che usi.
 
 - **Richieste misurate — 1,00 $ per 1.000 richieste.** Non c'è un limite mensile di richieste né throttling del limite di velocità in condizioni normali; paghi in base al volume effettivo.
-- **Eccedenza look-to-book — 2,00 $ per 1.000 look in eccesso.** Per mantenere sana l'offerta, misuriamo il rapporto tra ricerche ("look") e prenotazioni confermate. Hai diritto a **5.000 look per prenotazione** prima che si applichi l'eccedenza. I look in eccesso si calcolano come:
+- **Oltre soglia look-to-book — 2,00 $ per 1.000 look in eccesso.** Per mantenere sana l'offerta, misuriamo il rapporto tra ricerche ("look") e prenotazioni confermate. Hai diritto a **5.000 look per prenotazione** prima che si applichi l'eccedenza. I look in eccesso si calcolano come:
 
-  `excess = max(0, looks − bookings × 5,000)`
+  `excess = max(0, looks − bookings × 5.000)`
 
   L'eccedenza viene quindi fatturata a **2,00 $ per 1.000 look in eccesso**. Le integrazioni con buona conversione raramente generano eccedenze; la tariffa si applica solo al traffico che cerca molto più di quanto prenota.
 
-Il livello a pagamento include il Service Level Agreement descritto di seguito — un impegno di uptime del 99,9% e un obiettivo di tempo di risposta P95 inferiore a 500 ms — e supporto prioritario basato sulla gravità.
+Il livello a pagamento include il Service Level Agreement descritto di seguito — un impegno di uptime del 99,9% e un obiettivo di tempo di risposta P95 sotto i 500 ms — e supporto prioritario basato sulla gravità.
 
 ## Service Level Agreement
 
 _Data di entrata in vigore: 5 luglio 2026 · Versione 1.0_
 
-Questo Service Level Agreement (il "SLA") definisce l'impegno di disponibilità, i crediti di servizio e gli obiettivi di supporto che Wink ("Wink", "noi") fornisce a un cliente ("Cliente", "tu") per il Partner API autenticato di Wink (il "Partner API" o "Servizio") nei livelli in cui è indicato che si applica un SLA. Questo SLA è incorporato e regolato dall'accordo tra te e Wink in base al quale accedi al Partner API (l'"Accordo"), e si applica finché mantieni un abbonamento attivo e a pagamento al Partner API in regola. I termini con la lettera maiuscola non definiti qui hanno il significato loro attribuito nell'Accordo.
+Questo Service Level Agreement (il "SLA") definisce l'impegno di disponibilità, i crediti di servizio e gli obiettivi di supporto che Wink ("Wink", "noi", "ci") fornisce a un cliente ("Cliente", "tu") per la Wink Partner API autenticata (la "Partner API" o "Servizio") nei livelli in cui è indicato che si applica un SLA. Questo SLA è incorporato e regolato dall'accordo tra te e Wink in base al quale accedi alla Partner API (l'"Accordo"), e si applica finché mantieni un abbonamento attivo e a pagamento alla Partner API in regola. I termini con la lettera maiuscola non definiti qui hanno il significato loro attribuito nell'Accordo.
 
 ### 1. Definizioni
 
-1. **"Uptime"** indica i periodi durante i quali il Partner API è disponibile ad accettare e rispondere con successo a richieste correttamente formate e autenticate.
-2. **"Downtime"** indica qualsiasi periodo, misurato in minuti, durante il quale il Partner API non risponde con successo a richieste correttamente formate e autenticate, escludendo qualsiasi periodo rientrante nelle Esclusioni indicate nella Sezione 4. Errori isolati che interessano una frazione irrilevante di richieste non costituiscono, di per sé, Downtime.
+1. **"Uptime"** indica i periodi durante i quali la Partner API è disponibile ad accettare e rispondere con successo a richieste correttamente formate e autenticate.
+2. **"Downtime"** indica qualsiasi periodo, misurato in minuti, durante il quale la Partner API non risponde con successo a richieste correttamente formate e autenticate, escludendo qualsiasi periodo rientrante nelle Esclusioni indicate nella Sezione 4. Errori isolati che interessano una frazione irrilevante di richieste non costituiscono, di per sé, Downtime.
 3. **"Percentuale di Uptime Mensile"** indica, per un dato mese solare, il numero totale di minuti in quel mese meno i minuti totali di Downtime, diviso per il numero totale di minuti in quel mese, espresso in percentuale.
 4. **"Manutenzione Programmata"** indica la manutenzione pianificata del Servizio per la quale Wink ha fornito un preavviso in conformità con la Sezione 4.
-5. **"Credito di Servizio"** indica un credito, calcolato come percentuale delle tariffe pagate o pagabili da te per il Partner API nel mese solare interessato, che viene applicato contro future tariffe del Partner API come unico ed esclusivo rimedio per il mancato rispetto dell'impegno di Uptime.
+5. **"Credito di Servizio"** indica un credito, calcolato come percentuale delle tariffe pagate o dovute da te per la Partner API nel mese solare interessato, che viene applicato contro future tariffe della Partner API come unico ed esclusivo rimedio per il mancato rispetto dell'impegno di Uptime.
 6. **"Tempo di Risposta"** indica il tempo trascorso tra la ricezione da parte di Wink di una richiesta correttamente formata e autenticata al confine del servizio di Wink e il momento in cui Wink inizia a restituire la risposta, escludendo il transito di rete e qualsiasi tempo lato client fuori dal controllo di Wink.
 
 ### 2. Impegno di Disponibilità e Prestazioni
 
-Wink farà sforzi commercialmente ragionevoli per rendere il Partner API disponibile con una **Percentuale di Uptime Mensile di almeno il 99,9%** durante ogni mese solare del periodo (l'"Impegno di Uptime"). L'Impegno di Uptime è misurato al confine del servizio di Wink ed esclude qualsiasi fattore fuori dal ragionevole controllo di Wink, inclusi quelli descritti nella Sezione 4. I sistemi di monitoraggio di Wink sono la fonte autorevole per la misurazione della Percentuale di Uptime Mensile e del Tempo di Risposta.
+Wink farà sforzi commercialmente ragionevoli per rendere la Partner API disponibile con una **Percentuale di Uptime Mensile di almeno il 99,9%** durante ogni mese solare del periodo (l'"Impegno di Uptime"). L'Impegno di Uptime è misurato al confine del servizio di Wink ed esclude qualsiasi fattore fuori dal ragionevole controllo di Wink, inclusi quelli descritti nella Sezione 4. I sistemi di monitoraggio di Wink sono la fonte autorevole per la misurazione della Percentuale di Uptime Mensile e del Tempo di Risposta.
 
-Wink si impegna inoltre a un **Tempo di Risposta al 95° percentile (P95) inferiore a 500 millisecondi** per richieste correttamente formate, autenticate e andate a buon fine, misurato al confine del servizio di Wink su base mensile (l'"Obiettivo di Prestazione"). L'Obiettivo di Prestazione esclude i fattori descritti nella Sezione 4, le richieste che restituiscono errori a livello applicativo causati dalla richiesta stessa e richieste batch insolitamente grandi o complesse. L'Obiettivo di Prestazione è un obiettivo di servizio; i Crediti di Servizio della Sezione 3 si applicano ai mancati rispetto dell'**Impegno di Uptime** e sono l'unico ed esclusivo rimedio per carenze di disponibilità.
+Wink si impegna inoltre a un **Tempo di Risposta al 95° percentile (P95) inferiore a 500 millisecondi** per richieste correttamente formate, autenticate e andate a buon fine, misurato al confine del servizio di Wink su base mensile (l'"Obiettivo di Prestazione"). L'Obiettivo di Prestazione esclude i fattori descritti nella Sezione 4, le richieste che restituiscono errori a livello applicativo causati dalla richiesta stessa e richieste batch insolitamente grandi o complesse. L'Obiettivo di Prestazione è un obiettivo di servizio; i Crediti di Servizio nella Sezione 3 si applicano ai mancati rispetto dell'**Impegno di Uptime** e sono l'unico ed esclusivo rimedio per carenze di disponibilità.
 
 ### 3. Crediti di Servizio
 
-Se la Percentuale di Uptime Mensile scende al di sotto dell'Impegno di Uptime in un mese solare, potresti avere diritto a un Credito di Servizio calcolato come percentuale delle tariffe del Partner API pagate o pagabili da te per quel mese, secondo la seguente scala:
+Se la Percentuale di Uptime Mensile scende al di sotto dell'Impegno di Uptime in un mese solare, potresti avere diritto a un Credito di Servizio calcolato come percentuale delle tariffe della Partner API pagate o dovute da te per quel mese, secondo la seguente scala:
 
 | Percentuale di Uptime Mensile | Credito di Servizio |
 |---|---|
@@ -90,23 +101,23 @@ Se la Percentuale di Uptime Mensile scende al di sotto dell'Impegno di Uptime in
 | Inferiore al 95,0% | 50% |
 
 1. **Richiesta del credito.** Per ricevere un Credito di Servizio devi inviare una richiesta scritta a Wink entro **trenta (30) giorni** dalla fine del mese solare in cui si è verificata la carenza. La richiesta deve includere le date e gli orari di ogni incidente di Downtime per cui richiedi il credito e qualsiasi log o prova ragionevolmente disponibile. Le richieste inviate dopo questo termine non sono ammissibili.
-2. **Forma del credito.** I Crediti di Servizio approvati sono applicati contro future tariffe del Partner API e non hanno valore in denaro. Non sono rimborsi e non saranno pagati in contanti salvo quanto richiesto dalla legge applicabile.
-3. **Credito massimo.** Il totale dei Crediti di Servizio assegnati per un singolo mese solare non supererà il 50% delle tariffe del Partner API pagate o pagabili da te per quel mese.
-4. **Rimedio esclusivo.** I Crediti di Servizio sono il tuo **unico ed esclusivo rimedio** per qualsiasi mancato rispetto da parte di Wink dell'Impegno di Uptime o di qualsiasi altra carenza di disponibilità del Partner API.
+2. **Forma del credito.** I Crediti di Servizio approvati sono applicati contro future tariffe della Partner API e non hanno valore in denaro. Non sono rimborsi e non saranno pagati in contanti salvo quanto richiesto dalla legge applicabile.
+3. **Credito massimo.** Il totale dei Crediti di Servizio assegnati per un singolo mese solare non supererà il 50% delle tariffe della Partner API pagate o dovute da te per quel mese.
+4. **Rimedio esclusivo.** I Crediti di Servizio sono il tuo **unico ed esclusivo rimedio** per qualsiasi mancato rispetto da parte di Wink dell'Impegno di Uptime o di qualsiasi altra carenza di disponibilità della Partner API.
 
 ### 4. Esclusioni
 
 L'Impegno di Uptime e i Crediti di Servizio risultanti non si applicano, e il Downtime non include, alcuna indisponibilità, sospensione, degrado o problema di prestazioni che derivi o sia correlato a:
 
 1. **Manutenzione Programmata** per la quale Wink ha fornito un preavviso, purché tale preavviso sia stato dato con un ragionevole anticipo tramite un canale che Wink usa normalmente per comunicare con i clienti;
-2. eventi di **forza maggiore** o altre cause fuori dal ragionevole controllo di Wink, inclusi disastri naturali, atti governativi, guasti di rete o di servizi pubblici, e attacchi denial-of-service o altri attacchi malevoli;
+2. eventi di **forza maggiore** o altre cause fuori dal ragionevole controllo di Wink, inclusi disastri naturali, atti governativi, guasti di rete o servizi pubblici, e attacchi denial-of-service o altri attacchi malevoli;
 3. problemi causati da **tuoi** atti od omissioni, dal tuo equipaggiamento, software o rete, o da qualsiasi servizio, prodotto o fornitore **terzo** non sotto il controllo diretto di Wink;
 4. il tuo **abuso del Servizio** o **violazione dell'Accordo**, di questo SLA, dei termini di uso accettabile o dei limiti di velocità applicabili, incluso traffico che Wink ragionevolmente ritiene eccessivo, abuso automatizzato o fraudolento; e
 5. qualsiasi **sospensione o cessazione** del tuo accesso effettuata correttamente ai sensi dell'Accordo, inclusa la sospensione per mancato pagamento.
 
 ### 5. Supporto e Obiettivi di Risposta
 
-Wink fornisce supporto per il Partner API durante l'orario lavorativo standard, esclusi i giorni festivi locali. Wink farà sforzi commercialmente ragionevoli per riconoscere le richieste di supporto correttamente inviate entro i seguenti tempi di risposta target, basati sulla gravità che assegni e che Wink conferma ragionevolmente:
+Wink fornisce supporto per la Partner API durante l'orario lavorativo standard, esclusi i giorni festivi locali. Wink farà sforzi commercialmente ragionevoli per riconoscere le richieste di supporto correttamente inviate entro i seguenti tempi di risposta target, basati sulla gravità che assegni e che Wink conferma ragionevolmente:
 
 | Gravità | Descrizione | Risposta iniziale target |
 |---|---|---|
@@ -118,12 +129,12 @@ I tempi di risposta target indicano quando Wink mira a stabilire il **primo cont
 
 ### 6. Dati e Sicurezza
 
-Wink mantiene misure amministrative, tecniche e organizzative commercialmente ragionevoli progettate per proteggere la riservatezza, l'integrità e la disponibilità dei dati elaborati tramite il Partner API, e rivede periodicamente tali misure. Il trattamento dei dati personali da parte di Wink è regolato dalla [Privacy Policy](/it/privacy) e da eventuali termini di trattamento dati nell'Accordo. Rimani responsabile della sicurezza delle tue credenziali API, dell'uso legale di qualsiasi dato recuperato e della tempestiva notifica a Wink di qualsiasi sospetto compromesso delle credenziali.
+Wink mantiene misure amministrative, tecniche e organizzative commercialmente ragionevoli progettate per proteggere la riservatezza, integrità e disponibilità dei dati elaborati tramite la Partner API, e rivede periodicamente tali misure. Il trattamento dei dati personali da parte di Wink è regolato dalla [Privacy Policy](/it/privacy) e da eventuali termini di trattamento dati nell'Accordo. Rimani responsabile della sicurezza delle tue credenziali API, dell'uso legale di qualsiasi dato recuperato e della tempestiva notifica a Wink di qualsiasi sospetto compromesso delle credenziali.
 
 ### 7. Limitazione di Responsabilità
 
-I Crediti di Servizio sono l'**unico ed esclusivo rimedio** per qualsiasi indisponibilità o mancato rispetto dell'Impegno di Uptime, e sono forniti in luogo di qualsiasi altra responsabilità derivante da tale mancato rispetto. Salvo quanto espressamente previsto in questo SLA, il Partner API è fornito "così com'è". Nella misura massima consentita dalla legge applicabile, la responsabilità complessiva di Wink derivante o relativa al Servizio è limitata come previsto nell'Accordo, e Wink non è responsabile per danni indiretti, incidentali, speciali, consequenziali o punitivi, né per profitti, ricavi, dati o avviamento persi, anche se avvisata della possibilità di tali danni.
+I Crediti di Servizio sono l'**unico ed esclusivo rimedio** per qualsiasi indisponibilità o mancato rispetto dell'Impegno di Uptime, e sono forniti in luogo di qualsiasi altra responsabilità derivante da tale mancato rispetto. Salvo quanto espressamente previsto in questo SLA, la Partner API è fornita "così com'è". Nella misura massima consentita dalla legge applicabile, la responsabilità complessiva di Wink derivante o correlata al Servizio è limitata come previsto nell'Accordo, e Wink non è responsabile per danni indiretti, incidentali, speciali, consequenziali o punitivi, né per profitti, ricavi, dati o avviamento persi, anche se avvisata della possibilità di tali danni.
 
 ### 8. Durata, Modifiche e Risoluzione
 
-Questo SLA si applica finché hai un abbonamento attivo al Partner API su un livello in cui è indicato che si applica l'SLA. Wink può aggiornare questo SLA di tanto in tanto; modifiche sostanziali saranno comunicate tramite un canale che Wink usa normalmente per raggiungere i clienti, e l'uso continuato del Partner API dopo l'entrata in vigore di un aggiornamento costituisce accettazione del SLA aggiornato. Questo SLA termina automaticamente alla risoluzione o scadenza dell'Accordo o del tuo abbonamento al Partner API. Le sezioni che per loro natura devono sopravvivere alla risoluzione — inclusa l'idoneità ai Crediti di Servizio maturati ma non reclamati, la limitazione di responsabilità e le definizioni — sopravvivono.
+Questo SLA si applica finché hai un abbonamento attivo alla Partner API su un livello in cui è indicato che si applica l'SLA. Wink può aggiornare questo SLA di tanto in tanto; modifiche sostanziali saranno comunicate tramite un canale che Wink usa normalmente per raggiungere i clienti, e l'uso continuato della Partner API dopo l'entrata in vigore di un aggiornamento costituisce accettazione del SLA aggiornato. Questo SLA termina automaticamente alla risoluzione o scadenza dell'Accordo o del tuo abbonamento alla Partner API. Le sezioni che per loro natura devono sopravvivere alla risoluzione — inclusa l'idoneità ai Crediti di Servizio maturati ma non reclamati, la limitazione di responsabilità e le definizioni — sopravvivono.

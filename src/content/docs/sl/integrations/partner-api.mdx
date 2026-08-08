@@ -5,7 +5,7 @@ sidebar:
   order: 0
 ---
 
-Wink **Partner API** je overjen, z večjo prepustnostjo namenjen način, da integratorji poizvedujejo o rezervabilnem potovalnem inventarju — isti ponudbi, ki poganja naše vdelane pripomočke in javne brskalne končne točke, predstavljeno kot programski vmesnik prvega razreda. Medtem ko so brezplačni spletni komponenti in javne brskalne končne točke namenjene lahkemu vdelovanju za ljudi, je Partner API zgrajen za sisteme, ki iščejo, cenijo in rezervirajo v velikem obsegu. Dostop je overjen za vsakega integratorja posebej in se zaračunava glede na uporabo, zato plačate le za promet, ki ga dejansko pošljete.
+Wink **Partner API** je overjen, z večjo prepustnostjo namenjen način, da integratorji poizvedujejo o rezervabilnem potovalnem inventarju — isti vir, ki poganja naše vdelane pripomočke in javne brskalne končne točke, predstavljen kot programski vmesnik prvega razreda. Medtem ko so brezplačni spletni komponenti in javne brskalne končne točke namenjene lahkemu vdelovanju za ljudi, je Partner API zgrajen za sisteme, ki iščejo, cenijo in rezervirajo v velikem obsegu. Dostop je overjen za vsakega integratorja posebej in se zaračunava glede na uporabo, zato plačate le za promet, ki ga dejansko pošljete.
 
 ## Paketi in cene
 
@@ -15,73 +15,83 @@ En klic API = en zahtevek. Meritvena uporaba se zaračunava na 1.000 zahtevkov.
 |---|---|---|---|
 | **Cena** | 0 $ | Glede na uporabo | Kontaktirajte nas |
 | **Najbolj primerno za** | Oceno in integracije z nizkim prometom | Plačilo po uporabi pri velikem obsegu | Prilagojen obseg in pogajani pogoji |
-| Zahtevki na minuto | 30 (60 v skoku) | Neomejeno | Neomejeno |
+| Zahtevki na minuto | 30 (60 v sunku) | Neomejeno | Neomejeno |
 | Zahtevki na mesec | 10.000 | Neomejeno | Neomejeno |
 | Čas odziva API (P95) | — | Pod 500 ms | Pod 500 ms |
-| Cena na 1.000 zahtevkov | Brezplačno | 1,00 $ | Po dogovoru |
-| Presežek razmerja iskanj do rezervacij (na 1.000 presežnih iskanj nad 5.000:1) | — | 2,00 $ | Po dogovoru |
-| Odziv na omejitev hitrosti | 429 (premor / mesečni trdi zaključek) | Ni | Ni |
+| Cena na 1.000 zahtevkov | Brezplačno | 1,00 $ | Prilagojeno |
+| Presežek razmerja ogledov do rezervacij (na 1.000 presežnih ogledov nad 5.000:1) | — | 2,00 $ | Prilagojeno |
+| Odziv na omejitev hitrosti | 429 (premor / mesečni trdi ustavitev) | Ni | Ni |
 | Dogovor o ravni storitve | — | ✓ | ✓ |
-| Prioritetna podpora | — | ✓ | ✓ |
+| Prednostna podpora | — | ✓ | ✓ |
 | Namenjena uvedba | — | — | ✓ |
 
 [Pridobite ključ API](https://app.wink.travel/account/applications) · [Začnite meritveno obračunavanje](https://app.wink.travel/account/applications) · [Kontaktirajte prodajo](https://cal.com/wink-ws36dy)
 
 ## Referenca API
 
-Dve OpenAPI površini služita rezervabilnemu inventarju in se ujemata z zgornjima dvema nivojema:
+Dve površini služita rezervabilnemu inventarju in se ujemata z zgornjima dvema nivojema:
 
-- **Brezplačno — Consumer / Booking Engine API** (`/api/public/**`): anonimno, namenjeno brskalniku in pripomočkom. [Prebrskajte referenco Booking Engine →](/sl/api/booking-engine/)
-- **Plačljivo — Partner Integrator API** (`/api/partner/**`): overjeno, meritveno glede na uporabo, zgrajeno za integracijo strežnik-strežnik v velikem obsegu. [Prebrskajte referenco Integrator →](/sl/partner-api/partner/)
+- **Brezplačno — Consumer / Booking Engine API** (REST, `/api/public/**`): anonimno, namenjeno brskalniku in pripomočkom. [Prebrskajte referenco Booking Engine →](/sl/api/booking-engine/)
+- **Plačljivo — Partner Integrator API** (**gRPC**, `wink.partner.v1`): overjeno, meritveno glede na uporabo, zgrajeno za integracijo strežnik-strežnik v velikem obsegu. [Prebrskajte referenco Integrator →](/sl/partner-api/partner/)
+
+Partner Integrator API je gRPC, ne REST. Kličete ga z generiranim odjemalcem prek HTTP/2 na
+`partner.wink.travel:443`, pri čemer posredujete žeton nosilca in račun, za katerega kličete:
+
+```bash
+grpcurl -H "authorization: Bearer $WINK_TOKEN" partner.wink.travel:443 list
+```
+
+Referenčna stran zgoraj dokumentira vsako storitev, sporočilo in status napake, shema pa je na voljo tudi
+v času izvajanja prek odboja strežnika, zato jo `grpcurl`, Postman in Insomnia odkrijejo brez prenosa.
 
 ## Kako deluje uporaba in omejitve
 
 ### Brezplačni nivo
 
-Brezplačni nivo je zasnovan tako, da vam omogoča gradnjo, testiranje in zmerno produkcijsko uporabo brez stroškov.
+Brezplačni nivo je zasnovan tako, da vam omogoči gradnjo, testiranje in zmerno produkcijsko uporabo brez stroškov.
 
-- **Omejitev hitrosti — 30 zahtevkov na minuto, z 60 zahtevki v skoku.** Kratki skoki nad vzdržano hitrostjo se pokrijejo z dovoljenim skokom. Če ga presežete, API odgovori z **HTTP 429 (Preveč zahtevkov)** in uporabi **5-minutni premor**, preden vaš ključ nadaljuje s prometom. Počakajte in poskusite znova po premoru, namesto da bi obremenjevali končno točko.
-- **Mesečna kvota — 10.000 zahtevkov na koledarski mesec.** Ko dosežete mesečni limit, API vrne **HTTP 429 za preostanek meseca** — trdi zaključek — skupaj z obvestilom, ki vas vabi k naročnini na plačljivi nivo za nadaljevanje. Števec se ponastavi na začetku naslednjega koledarskega meseca.
+- **Omejitev hitrosti — 30 zahtevkov na minuto, z 60 zahtevki v sunku.** Kratki sunki nad vzdržano hitrostjo se absorbirajo z dovoljenim sunkom. Če ga presežete, API odgovori z **HTTP 429 (Preveč zahtevkov)** in uporabi **5-minutni premor**, preden vaš ključ nadaljuje s prometom. Počakajte in poskusite znova po premoru, namesto da bi preobremenjevali končno točko.
+- **Mesečna kvota — 10.000 zahtevkov na koledarski mesec.** Ko dosežete mesečni zgornji limit, API vrne **HTTP 429 za preostanek meseca** — trda ustavitev — skupaj z obvestilom, da se naročite na plačljivi nivo za nadaljevanje. Števec se ponastavi na začetku naslednjega koledarskega meseca.
 
-Brezplačni nivo ne vključuje dogovora o ravni storitve ali prioritetne podpore.
+Brezplačni nivo ne vključuje dogovora o ravni storitve ali prednostne podpore.
 
 ### Plačljivi nivo
 
-Plačljivi nivo odstrani mesečni limit in premore zaradi omejitve hitrosti ter zaračunava le za dejansko uporabo.
+Plačljivi nivo odstrani mesečni zgornji limit in premore omejitve hitrosti ter zaračunava le za dejansko uporabo.
 
-- **Meritveni zahtevki — 1,00 $ na 1.000 zahtevkov.** Ni mesečne omejitve zahtevkov in ni omejevanja hitrosti pri običajni uporabi; zaračunava se glede na dejanski obseg.
-- **Presežek razmerja iskanj do rezervacij — 2,00 $ na 1.000 presežnih iskanj.** Za ohranjanje zdrave ponudbe merimo razmerje med iskanji ("pogledi") in potrjenimi rezervacijami. Upravičeni ste do **5.000 iskanj na eno rezervacijo** pred uporabo presežka. Presežna iskanja se izračunajo kot:
+- **Meritveni zahtevki — 1,00 $ na 1.000 zahtevkov.** Ni mesečne omejitve zahtevkov in ni dušenja omejitve hitrosti pri običajni uporabi; zaračunava se glede na dejanski obseg.
+- **Presežek razmerja ogledov do rezervacij — 2,00 $ na 1.000 presežnih ogledov.** Za ohranjanje zdrave ponudbe merimo razmerje med iskanji ("ogledi") in potrjenimi rezervacijami. Upravičeni ste do **5.000 ogledov na rezervacijo** pred uporabo presežka. Presežni ogledi se izračunajo kot:
 
-  `presežek = max(0, iskanja − rezervacije × 5.000)`
+  `presežek = max(0, ogledi − rezervacije × 5.000)`
 
-  Presežek se nato zaračuna po **2,00 $ na 1.000 presežnih iskanj**. Integracije z dobro konverzijo redko povzročajo presežke; strošek velja le za promet, ki išče veliko več, kot rezervira.
+  Presežek se nato zaračuna po **2,00 $ na 1.000 presežnih ogledov**. Integracije z dobro konverzijo redko povzročajo presežek; strošek velja le za promet, ki išče veliko več, kot rezervira.
 
-Plačljivi nivo vključuje dogovor o ravni storitve, opisan spodaj — zavezo 99,9 % razpoložljivosti in cilj odzivnega časa P95 pod 500 ms — ter prioritetno, glede na resnost, podporo.
+Plačljivi nivo vključuje dogovor o ravni storitve, opisan spodaj — zavezo 99,9 % razpoložljivosti in cilj odzivnega časa P95 pod 500 ms — ter prednostno, po resnosti določeno podporo.
 
 ## Dogovor o ravni storitve
 
-_Uveljavitveni datum: 5. julij 2026 · Verzija 1.0_
+_Uveljavitveni datum: 5. julij 2026 · Različica 1.0_
 
-Ta dogovor o ravni storitve (SLA) določa zavezo glede razpoložljivosti, storitvene kredite in cilje podpore, ki jih Wink ("Wink", "mi", "nam") zagotavlja stranki ("Stranka", "vi") za overjeni Wink Partner API (»Partner API« ali »Storitev«) na nivojih, kjer je navedeno, da SLA velja. Ta SLA je vključen v in urejen z dogovorom med vami in Wink, na podlagi katerega dostopate do Partner API (»Dogovor«), in velja, dokler imate aktivno, plačano naročnino na Partner API v dobrem stanju. Velike začetnice, ki niso definirane tukaj, imajo pomen, določen v Dogovoru.
+Ta dogovor o ravni storitve (SLA) določa zavezo glede razpoložljivosti, storitvene kredite in cilje podpore, ki jih Wink ("Wink", "mi", "nas") zagotavlja stranki ("Stranka", "vi") za overjeni Wink Partner API (»Partner API« ali »Storitev«) na nivojih, kjer je navedeno, da SLA velja. Ta SLA je vključen v in urejen z dogovorom med vami in Wink, na podlagi katerega dostopate do Partner API (»Dogovor«), in velja, dokler imate aktivno, plačano naročnino na Partner API v dobrem stanju. Velike začetnice, ki niso definirane tukaj, imajo pomen, določen v Dogovoru.
 
 ### 1. Definicije
 
 1. **"Razpoložljivost"** pomeni obdobja, v katerih je Partner API na voljo za sprejem in uspešen odgovor na pravilno oblikovane, overjene zahtevke.
-2. **"Nedosegljivost"** pomeni katerokoli obdobje, merjeno v minutah, v katerem Partner API ne uspe uspešno odgovoriti na pravilno oblikovane, overjene zahtevke, z izjemo obdobij, ki so izključena v 4. odstavku. Izolirane napake, ki vplivajo na nepomemben delež zahtevkov, same po sebi niso nedosegljivost.
-3. **"Mesečni odstotek razpoložljivosti"** pomeni za določen koledarski mesec skupno število minut v tem mesecu minus skupno število minut nedosegljivosti, deljeno s skupnim številom minut v tem mesecu, izraženo v odstotkih.
-4. **"Načrtovano vzdrževanje"** pomeni načrtovano vzdrževanje storitve, za katerega je Wink predhodno obvestil v skladu s 4. odstavkom.
-5. **"Storitveni kredit"** pomeni kredit, izračunan kot odstotek plačanih ali plačljivih pristojbin za Partner API v prizadetem koledarskem mesecu, ki se uporabi kot edino in izključujoče pravno sredstvo za neizpolnitev zaveze glede razpoložljivosti.
-6. **"Čas odziva"** pomeni čas, ki preteče od prejema pravilno oblikovanega, overjenega zahtevka na mejni točki storitve Wink do trenutka, ko Wink začne vračati odgovor, brez upoštevanja omrežnega prenosa in kakršnegakoli časa na strani odjemalca, ki ni pod nadzorom Wink.
+2. **"Nedosegljivost"** pomeni katero koli obdobje, merjeno v minutah, v katerem Partner API ne uspe uspešno odgovoriti na pravilno oblikovane, overjene zahtevke, z izjemo obdobij, ki so izključena v 4. odstavku. Izolirane napake, ki vplivajo na nepomemben delež zahtevkov, same po sebi niso Nedosegljivost.
+3. **"Mesečni odstotek razpoložljivosti"** pomeni za določen koledarski mesec skupno število minut v tem mesecu minus skupno število minut Nedosegljivosti, deljeno s skupnim številom minut v tem mesecu, izraženo v odstotkih.
+4. **"Načrtovano vzdrževanje"** pomeni načrtovano vzdrževanje Storitve, za katerega je Wink predhodno obvestil v skladu s 4. odstavkom.
+5. **"Storitveni kredit"** pomeni kredit, izračunan kot odstotek pristojbin, ki jih plačate ali morate plačati za Partner API v prizadetem koledarskem mesecu, ki se uporabi kot edino in izključno sredstvo za odpravo neuspeha pri izpolnjevanju zaveze glede razpoložljivosti.
+6. **"Čas odziva"** pomeni čas, ki preteče od prejema pravilno oblikovanega, overjenega zahtevka na mejni točki storitve Wink do trenutka, ko Wink začne vračati odgovor, brez upoštevanja omrežnega prenosa in časa na strani odjemalca, ki ni pod nadzorom Wink.
 
 ### 2. Zaveza glede razpoložljivosti in zmogljivosti
 
-Wink bo uporabil komercialno razumne napore, da bo Partner API na voljo z **mesečnim odstotkom razpoložljivosti najmanj 99,9 %** v vsakem koledarskem mesecu trajanja (»Zaveza glede razpoložljivosti«). Zaveza glede razpoložljivosti se meri na mejni točki storitve Wink in izključuje dejavnike, ki niso pod razumljivim nadzorom Wink, vključno s tistimi, opisanimi v 4. odstavku. Winkovi sistemi za spremljanje so avtoritativni vir za merjenje mesečnega odstotka razpoložljivosti in časa odziva.
+Wink bo uporabil komercialno razumne napore, da bo Partner API na voljo z **mesečnim odstotkom razpoložljivosti najmanj 99,9 %** v vsakem koledarskem mesecu trajanja (»Zaveza glede razpoložljivosti«). Zaveza glede razpoložljivosti se meri na mejni točki storitve Wink in izključuje dejavnike, ki niso pod razumljivim nadzorom Wink, vključno s tistimi, opisanimi v 4. odstavku. Nadzorni sistemi Wink so avtoritativni vir za merjenje mesečnega odstotka razpoložljivosti in časa odziva.
 
-Wink dodatno cilja na **95. percentil (P95) časa odziva pod 500 milisekund** za uspešne, pravilno oblikovane, overjene zahtevke, merjeno na mejni točki storitve Wink v vsakem koledarskem mesecu (»Cilj zmogljivosti«). Cilj zmogljivosti izključuje dejavnike, opisane v 4. odstavku, zahtevke, ki vračajo napake na ravni aplikacije zaradi samega zahtevka, in nenavadno velike ali kompleksne serijske zahtevke. Cilj zmogljivosti je storitveni cilj; storitveni krediti v 3. odstavku veljajo za neizpolnitev **Zaveze glede razpoložljivosti** in so edino in izključujoče pravno sredstvo za pomanjkljivosti razpoložljivosti.
+Wink dodatno cilja na **95. percentil (P95) časa odziva pod 500 milisekund** za uspešne, pravilno oblikovane, overjene zahtevke, merjeno na mejni točki storitve Wink v vsakem koledarskem mesecu (»Cilj zmogljivosti«). Cilj zmogljivosti izključuje dejavnike, opisane v 4. odstavku, zahtevke, ki vračajo napake na ravni aplikacije zaradi samega zahtevka, in nenavadno velike ali kompleksne serijske zahtevke. Cilj zmogljivosti je storitveni cilj; Storitveni krediti v 3. odstavku veljajo za neuspehe pri izpolnjevanju **Zaveze glede razpoložljivosti** in so edino in izključno sredstvo za pomanjkljivosti razpoložljivosti.
 
 ### 3. Storitveni krediti
 
-Če mesečni odstotek razpoložljivosti pade pod Zavezo glede razpoložljivosti v katerem koli koledarskem mesecu, ste lahko upravičeni do storitvenega kredita, izračunanega kot odstotek pristojbin za Partner API, ki ste jih plačali ali jih morate plačati za ta mesec, po naslednji lestvici:
+Če mesečni odstotek razpoložljivosti pade pod Zavezo glede razpoložljivosti v katerem koli koledarskem mesecu, ste lahko upravičeni do Storitvenega kredita, izračunanega kot odstotek pristojbin za Partner API, ki ste jih plačali ali morate plačati za ta mesec, po naslednji lestvici:
 
 | Mesečni odstotek razpoložljivosti | Storitveni kredit |
 |---|---|
@@ -89,41 +99,41 @@ Wink dodatno cilja na **95. percentil (P95) časa odziva pod 500 milisekund** za
 | Pod 99,0 %, a vsaj 95,0 % | 25 % |
 | Pod 95,0 % | 50 % |
 
-1. **Uveljavljanje kredita.** Za prejem storitvenega kredita morate Wink pisno obvestiti v roku **trideset (30) dni** po koncu koledarskega meseca, v katerem je prišlo do pomanjkljivosti. Zahteva mora vsebovati datume in ure vsakega dogodka nedosegljivosti, ki ga uveljavljate, ter morebitne podprte dnevnike ali dokaze, ki so vam razumno na voljo. Zahteve, oddane po tem roku, niso upravičene.
-2. **Oblika kredita.** Odobreni storitveni krediti se uporabijo proti prihodnjim pristojbinam za Partner API in nimajo denarne vrednosti. Niso vračila in ne bodo izplačani, razen če to zahteva veljavna zakonodaja.
-3. **Največji kredit.** Skupni storitveni krediti, dodeljeni za kateri koli posamezen koledarski mesec, ne bodo presegli 50 % pristojbin za Partner API, ki ste jih plačali ali jih morate plačati za ta mesec.
-4. **Edino in izključujoče pravno sredstvo.** Storitveni krediti so vaše **edino in izključujoče pravno sredstvo** za kakršnokoli neizpolnitev Zaveze glede razpoložljivosti ali druge pomanjkljivosti razpoložljivosti Partner API.
+1. **Uveljavljanje kredita.** Za prejem Storitvenega kredita morate Wink poslati pisno zahtevo v roku **trideset (30) dni** po koncu koledarskega meseca, v katerem je prišlo do pomanjkljivosti. Zahteva mora vsebovati datume in ure vsakega dogodka Nedosegljivosti, ki ga uveljavljate, ter morebitne podpirajoče dnevnike ali dokaze, ki so vam razumno na voljo. Zahteve, oddane po tem roku, niso upravičene.
+2. **Oblika kredita.** Odobreni Storitveni krediti se uporabijo za prihodnje pristojbine za Partner API in nimajo denarne vrednosti. Niso vračila in ne bodo izplačani, razen če to zahteva veljavna zakonodaja.
+3. **Največji kredit.** Skupni Storitveni krediti, dodeljeni za kateri koli posamezen koledarski mesec, ne bodo presegli 50 % pristojbin za Partner API, ki ste jih plačali ali morate plačati za ta mesec.
+4. **Edino in izključno sredstvo.** Storitveni krediti so vaše **edino in izključno sredstvo** za vsak neuspeh Wink pri izpolnjevanju Zaveze glede razpoložljivosti ali druge pomanjkljivosti razpoložljivosti Partner API.
 
 ### 4. Izključitve
 
-Zaveza glede razpoložljivosti in morebitni storitveni krediti ne veljajo za, in nedosegljivost ne vključuje, kakršnokoli nedosegljivost, začasno ustavitev, poslabšanje ali težave z zmogljivostjo, ki izhajajo iz ali so povezane z:
+Zaveza glede razpoložljivosti in morebitni Storitveni krediti ne veljajo za, Nedosegljivost pa ne vključuje, nobene nedosegljivosti, začasne prekinitve, poslabšanja ali težave z zmogljivostjo, ki izhajajo iz ali so povezane z:
 
-1. **Načrtovanim vzdrževanjem**, za katerega je Wink predhodno obvestil, če je bilo obvestilo dano v razumljivem časovnem okviru prek kanala, ki ga Wink običajno uporablja za komunikacijo s strankami;
-2. **Višjo silo** ali drugimi vzroki, ki niso pod razumljivim nadzorom Wink, vključno z naravnimi nesrečami, ukrepi oblasti, izpadi omrežja ali komunalnih storitev ter napadi zavrnitve storitve ali drugimi zlonamernimi napadi;
-3. težavami, ki jih povzročijo **vaša** dejanja ali opustitve, vaša oprema, programska oprema ali omrežje, ali katerakoli **tretja oseba**, storitev, izdelek ali ponudnik, ki ni pod neposrednim nadzorom Wink;
-4. vašim **zlorabljanjem storitve** ali **kršitvijo Dogovora**, tega SLA, pogojev sprejemljive uporabe ali veljavnih omejitev hitrosti, vključno s prometom, ki ga Wink upravičeno oceni kot pretiran, avtomatizirano zlorabo ali goljufivim; in
-5. kakršnokoli **začasno ustavitev ali prenehanje** vašega dostopa, ki je pravilno izvedeno v skladu z Dogovorom, vključno z začasno ustavitvijo zaradi neplačila.
+1. **Načrtovanim vzdrževanjem**, za katerega je Wink predhodno obvestil, če je bilo obvestilo dano v razumljivem času vnaprej prek kanala, ki ga Wink običajno uporablja za komunikacijo s strankami;
+2. **Višjo silo** ali drugimi vzroki, ki niso pod razumljivim nadzorom Wink, vključno z naravnimi nesrečami, ukrepi oblasti, izpadi omrežja ali komunalnih storitev ter napadi z zavrnitvijo storitve ali drugimi zlonamernimi napadi;
+3. težavami, ki jih povzročijo **vaša** dejanja ali opustitve, vaša oprema, programska oprema ali omrežje, ali katera koli **tretja oseba**, storitev, izdelek ali ponudnik, ki ni pod neposrednim nadzorom Wink;
+4. vašim **zlorabljanjem Storitve** ali **kršitvijo Dogovora**, tega SLA, pogojev sprejemljive uporabe ali veljavnih omejitev hitrosti, vključno s prometom, ki ga Wink upravičeno oceni kot pretiran, avtomatizirano zlorabo ali goljufivim; in
+5. kakršno koli **začasno ustavitvijo ali prenehanjem** vašega dostopa, ki je pravilno izvedeno v skladu z Dogovorom, vključno z začasno ustavitvijo zaradi neplačila.
 
 ### 5. Podpora in cilji odziva
 
-Wink nudi podporo za Partner API med običajnimi delovnimi urami, z izjemo lokalnih praznikov. Wink bo uporabil komercialno razumne napore, da bo potrdil pravilno oddane zahteve za podporo v naslednjih ciljanih časih odziva, glede na resnost, ki jo določite in jo Wink upravičeno potrdi:
+Wink nudi podporo za Partner API med običajnimi delovnimi urami, z izjemo lokalnih praznikov. Wink bo uporabil komercialno razumne napore, da bo potrdil pravilno oddane zahteve za podporo v naslednjih ciljanih časih odziva, glede na resnost, ki jo določite in jo Wink razumljivo potrdi:
 
 | Resnost | Opis | Ciljni začetni odziv |
 |---|---|---|
-| **Sev 1 — Kritično** | Partner API ne deluje ali ni uporaben v produkciji brez rešitve zaobidenja. | 4 ure |
-| **Sev 2 — Glavno** | Pomembna funkcija je okrnjena ali poslabšana; rešitev zaobidenja obstaja. | 1 delovni dan |
+| **Sev 1 — Kritično** | Partner API je nedosegljiv ali neuporaben v produkciji brez rešitve. | 4 ure |
+| **Sev 2 — Glavno** | Pomembna funkcija je okrnjena ali poslabšana; rešitev obstaja. | 1 delovni dan |
 | **Sev 3 — Manjše** | Splošna vprašanja, manjše težave ali zahteve za funkcije. | 2 delovna dneva |
 
-Ciljni časi odziva opisujejo, kdaj Wink namerava vzpostaviti **prvi stik**; niso zagotovila za čas rešitve. Prioritetna podpora in cilji glede na resnost veljajo na nivojih, kjer je navedeno, da so vključeni.
+Ciljni časi odziva opisujejo, kdaj Wink namerava vzpostaviti **prvi stik**; niso zagotovila glede časa rešitve. Prednostna podpora in cilji glede resnosti veljajo na nivojih, kjer je navedeno, da so vključeni.
 
 ### 6. Podatki in varnost
 
-Wink vzdržuje komercialno razumne upravne, tehnične in organizacijske ukrepe, namenjene zaščiti zaupnosti, celovitosti in razpoložljivosti podatkov, obdelanih prek Partner API, in te ukrepe občasno pregleduje. Obravnava osebnih podatkov Wink je urejena v [Pravilniku o zasebnosti](/sl/privacy) in morebitnih pogojih za obdelavo podatkov v Dogovoru. Odgovorni ste za varovanje lastnih poverilnic API, za zakonito uporabo vseh pridobljenih podatkov in za pravočasno obveščanje Wink o morebitni sumljivi zlorabi poverilnic.
+Wink vzdržuje komercialno razumne upravne, tehnične in organizacijske ukrepe, namenjene zaščiti zaupnosti, celovitosti in razpoložljivosti podatkov, obdelanih prek Partner API, in te ukrepe občasno pregleduje. Obravnava osebnih podatkov Wink je urejena v [Pravilniku o zasebnosti](/sl/privacy) in morebitnih pogojih obdelave podatkov v Dogovoru. Odgovorni ste za varovanje lastnih poverilnic API, za zakonito uporabo vseh pridobljenih podatkov in za pravočasno obveščanje Wink o morebitni sumljivi zlorabi poverilnic.
 
 ### 7. Omejitev odgovornosti
 
-Storitveni krediti so **edino in izključujoče pravno sredstvo** za kakršnokoli nedosegljivost ali neizpolnitev Zaveze glede razpoložljivosti in se zagotavljajo namesto kakršnekoli druge odgovornosti, ki izhaja iz take neizpolnitve. Razen če je v tem SLA izrecno navedeno drugače, je Partner API na voljo "kot je". V največji meri, ki jo dovoljuje veljavna zakonodaja, je skupna odgovornost Wink, ki izhaja iz ali je povezana s Storitev, omejena, kot je določeno v Dogovoru, in Wink ni odgovoren za kakršno koli posredno, naključno, posebno, posledično ali kazensko škodo ali za izgubljeni dobiček, prihodke, podatke ali ugled, tudi če je bil obveščen o možnosti takšne škode.
+Storitveni krediti so **edino in izključno sredstvo** za kakršno koli nedosegljivost ali neuspeh pri izpolnjevanju Zaveze glede razpoložljivosti in se zagotavljajo namesto kakršne koli druge odgovornosti, ki izhaja iz takega neuspeha. Razen če je v tem SLA izrecno navedeno drugače, je Partner API na voljo "kot je". V največji meri, ki jo dovoljuje veljavna zakonodaja, je skupna odgovornost Wink, ki izhaja iz ali je povezana s Storitev, omejena, kot je določeno v Dogovoru, in Wink ni odgovoren za kakršno koli posredno, naključno, posebno, posledično ali kazensko škodo ali za izgubljeni dobiček, prihodke, podatke ali ugled, tudi če je bil obveščen o možnosti takšne škode.
 
 ### 8. Trajanje, spremembe in prenehanje
 
-Ta SLA velja, dokler imate aktivno naročnino na Partner API na nivoju, kjer je navedeno, da SLA velja. Wink lahko to SLA občasno posodobi; pomembne spremembe bodo sporočene prek kanala, ki ga Wink običajno uporablja za dosego strank, nadaljnja uporaba Partner API po uveljavitvi posodobitve pa pomeni sprejetje posodobljenega SLA. Ta SLA preneha veljati samodejno ob prenehanju ali poteku Dogovora ali vaše naročnine na Partner API. Členi, ki po svoji naravi preživijo prenehanje — vključno z upravičenostjo do neizkoriščenih storitvenih kreditov, omejitvijo odgovornosti in definicijami — ostanejo v veljavi.
+Ta SLA velja, dokler imate aktivno naročnino na Partner API na nivoju, kjer je navedeno, da SLA velja. Wink lahko to SLA občasno posodobi; pomembne spremembe bodo sporočene prek kanala, ki ga Wink običajno uporablja za dosego strank, nadaljnja uporaba Partner API po uveljavitvi posodobitve pa pomeni sprejetje posodobljenega SLA. Ta SLA preneha veljati samodejno ob prenehanju ali poteku Dogovora ali vaše naročnine na Partner API. Členi, ki po svoji naravi preživijo prenehanje — vključno z upravičenostjo do neizkoriščenih Storitvenih kreditov, omejitvijo odgovornosti in definicijami — ostanejo v veljavi.
