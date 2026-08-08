@@ -159,15 +159,25 @@ const PARTNER_SCHEMA_FILE = resolve(
   MONOREPO_PATH, "open-api/open-api-grpc/target/openapi/partner.json"
 );
 
+// integrations-app's channel-manager document, generated the same way but by a different mechanism: a
+// Spring MVC surface has no descriptor, so springdoc reads the annotations from a hand-assembled web
+// context in IntegrationsOpenApiSpecWriterTest. Produced by SUREFIRE, so a `-DskipTests` build does not
+// create it -- see the OpenAPI schema artifacts section in monorepo-java's CLAUDE.md.
+const INTEGRATIONS_SCHEMA_DIR = resolve(MONOREPO_PATH, "apps/integrations-app/target/openapi");
+
 const targets: readonly SchemaTarget[] = [
   ...INVENTORY_GROUPS.map((group) => ({
     name: group,
     source: { kind: "url" as const, url: `${API_BASE}/v3/api-docs/${group}` },
     outFile: `${group}.json`,
   })),
+  // Read, not fetched -- same reasoning as partner below. INTEGRATIONS_BASE is deliberately unused.
   ...INTEGRATIONS_GROUPS.map(({ group, audience }) => ({
     name: audience,
-    source: { kind: "url" as const, url: `${INTEGRATIONS_BASE}/v3/api-docs/${group}` },
+    source: {
+      kind: "file" as const,
+      path: resolve(INTEGRATIONS_SCHEMA_DIR, `${group}.json`),
+    },
     outFile: `${audience}.json`,
   })),
   // Read, not fetched, so PARTNER_BASE is deliberately unused here -- see SchemaSource. This works for
@@ -301,7 +311,7 @@ const main = async (): Promise<void> => {
   console.log(
     `Syncing schemas from ${ENV}\n` +
     `  api          = ${API_BASE}\n` +
-    `  integrations = ${INTEGRATIONS_BASE}\n` +
+    `  integrations = ${INTEGRATIONS_SCHEMA_DIR} (build output, environment-independent)\n` +
     `  partner      = ${PARTNER_SCHEMA_FILE} (build output, environment-independent)\n`
   );
 
@@ -312,7 +322,7 @@ const main = async (): Promise<void> => {
   // reader running schemas:sync:staging would reasonably assume otherwise.
   if (ENV !== "production") {
     console.warn(
-      `⚠ partner is read from a build artifact and ignores --env=${ENV}. Its Authentication section\n` +
+      `⚠ partner and integrations are read from build artifacts and ignore --env=${ENV}. Its Authentication section\n` +
       `  always carries the PRODUCTION issuer, because that is what open-api-grpc's exec plugin bakes\n` +
       `  in. Only the ${ENV} API and integrations schemas below are actually ${ENV}.\n`
     );
