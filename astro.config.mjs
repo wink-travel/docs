@@ -11,9 +11,10 @@ import { buildRedirects } from './scripts/build-redirects.mjs';
 // Single "API" sidebar parent. Each audience below is one OpenAPI schema, so the
 // rendered tree is Audience › Resource(tag) › Operation — three levels, no per-group
 // or audience-wrapper nesting. Snapshots live in ./schemas/<audience>.json and are
-// refreshed by `npm run schemas:sync` from the per-audience /v3/api-docs/<audience>
-// endpoints. Audience ids now match the upstream springdoc group ids one-for-one;
-// sync-schemas.ts is the authoritative map of which host serves which.
+// refreshed by `npm run schemas:sync` from monorepo-java's BUILD OUTPUT -- no deployment
+// is involved, so a snapshot cannot carry the wrong environment. Audience ids match the
+// upstream springdoc group ids one-for-one; sync-schemas.ts is the authoritative map of
+// which generator produces which.
 const apiSidebarGroup = createOpenAPISidebarGroup()
 
 // The Partner reference moved from /integrations-api/partner/ to /partner-api/partner/ when it

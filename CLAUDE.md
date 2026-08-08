@@ -33,7 +33,8 @@ npm run build
 # Preview production build
 npm preview
 
-# Refresh OpenAPI schema snapshots from prod (writes to ./schemas/)
+# Refresh OpenAPI schema snapshots from monorepo-java's build output (writes to ./schemas/)
+# Requires the monorepo to have been built first -- see schemas/README.md
 npm run schemas:sync
 
 # Translate all documentation to all languages
@@ -128,7 +129,12 @@ TypeScript path aliases defined in `tsconfig.json`:
 The site uses these Starlight plugins (see `astro.config.mjs`):
 - `starlightBlog` - Blog functionality
 - `starlightChangelogs` - GitHub-synced changelogs
-- `starlightOpenAPI` - Renders API reference pages from OpenAPI snapshots in the top-level `schemas/` directory. Two schemas wired up: `schemas/api.json` (route `/api/`, sidebar label "Platform") and `schemas/integrations.json` (route `/integrations-api/`, sidebar label "Channel Manager"). Both schemas nest under a single "API" sidebar group via `createOpenAPISidebarGroup()` — see the `apiSidebarGroup` constant in `astro.config.mjs`. Refresh snapshots via `npm run schemas:sync` (see `scripts/sync-schemas.ts`); the script preserves last-good snapshots when upstream returns non-2xx. `schemas/api.json` may currently be a stub if `https://api.wink.travel/v3/api-docs` was unreachable at last sync — see `schemas/README.md`.
+- `starlightOpenAPI` - Renders API reference pages from the OpenAPI snapshots in the top-level `schemas/`
+  directory: twelve documents, one per audience, nested under a single "API" sidebar group via
+  `createOpenAPISidebarGroup()` — see the `apiSidebarGroup` constant in `astro.config.mjs`. The snapshots
+  are BUILD ARTIFACTS of monorepo-java, not fetched from any deployment, so they cannot be pointed at the
+  wrong environment; refresh with `npm run schemas:sync` after building the monorepo (see
+  `schemas/README.md` for the exact commands and why the sync rejects a placeholder version).
 - `starlightDocSearch` is installed but currently commented out in `astro.config.mjs`.
 
 Sidebar is explicitly listed in `astro.config.mjs` (not fully auto-generated): each top-level group is `autogenerate`'d from a directory under `src/content/docs/`, and a single "API" group (containing the `apiSidebarGroup` placeholder) appears immediately after Developers. Adding a new top-level docs section requires editing the `sidebar` array.
