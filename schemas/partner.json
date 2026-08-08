@@ -894,11 +894,11 @@
             "type": "string",
             "description": "When this property's record last changed, ISO-8601 \"YYYY-MM-DDThh:mm:ss\" in UTC.\n\nUse it as the cache key for your Content responses: store it alongside what you fetched, compare on\neach search, and re-fetch only when it has moved. It advances when the property or any inventory item\nbeneath it is added, removed or edited.\n\nA caveat worth knowing before you rely on it for correctness: it tracks the property AGGREGATE, so an\nedit confined to a child entity's prose may not always advance it. Treat a stale read as possible and\nre-sync periodically regardless."
           },
-          "prices": {
+          "roomTypes": {
             "type": "array",
-            "description": "Priced offers, SORTED CHEAPEST FIRST by `total`. `prices[0]` is the property's best available\nprice.",
+            "description": "Offers for this property, grouped by room type, cheapest room first. Search returns the single best\noffer per room type; use Inventory for every rate and occupancy combination.",
             "items": {
-              "$ref": "#/components/schemas/wink.partner.v1.RoomRate"
+              "$ref": "#/components/schemas/wink.partner.v1.RoomTypeOffers"
             }
           },
           "commission": {
@@ -1088,6 +1088,40 @@
         },
         "description": "One delivery URL and what it is scaled to."
       },
+      "wink.partner.v1.RoomTypeOffers": {
+        "type": "object",
+        "properties": {
+          "roomTypeId": {
+            "type": "string",
+            "description": "The room type. Join to Content for the full gallery, amenities and long-form descriptions."
+          },
+          "name": {
+            "type": "string",
+            "description": "The room type's name, in the requested language where a translation exists."
+          },
+          "heroImage": {
+            "description": "A single representative image of the room, so an offer can be rendered without a second call. The\nlowest-sorted published image; unset when the room has none. The complete gallery is in Content.",
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/wink.partner.v1.Multimedia"
+              }
+            ]
+          },
+          "rates": {
+            "type": "array",
+            "description": "Every offer for this room, BOOKABLE FIRST and cheapest first within each group. On Search that is the\nsingle best offer; on Inventory it is every rate and occupancy combination for the requested dates.\n\nUnavailable offers sort last, never first: they report 0 across all amounts, so ordering purely by\nprice would put \"not priced\" ahead of the cheapest real rate.",
+            "items": {
+              "$ref": "#/components/schemas/wink.partner.v1.RoomRate"
+            }
+          },
+          "sort": {
+            "type": "integer",
+            "description": "The property's own display order for its room types, ascending, when it has expressed one; 0 when it\nhas not. This describes the ROOM, which is why it is here rather than on each rate -- the domain\ndefines it as \"how the room types should be sorted and displayed\".\n\nIt is a merchandising hint, not the delivered order: `room_types` is already ordered by price.",
+            "format": "int32"
+          }
+        },
+        "description": "The offers for one room type, with the room's own details carried once.\n\nThis grouping mirrors the pricing engine's own shape (a room type holding its price configurations) and\nthe way a rate table is actually rendered. It exists because `name` and `hero_image` describe the ROOM,\nnot a rate: carried on RoomRate they were repeated across every rate x occupancy combination, which on\nthe Inventory surface is the whole cross-product for the property."
+      },
       "wink.partner.v1.RoomRate": {
         "type": "object",
         "properties": {
@@ -1095,18 +1129,9 @@
             "type": "string",
             "description": "Room rate identifier. Join to Content for the room type, rate plan (embedded on the master rate),\ndescriptions, images and amenities behind this offer."
           },
-          "name": {
-            "type": "string",
-            "description": "The ROOM TYPE's name, localized — \"Deluxe King Room\" and the like. Enough to label the offer in a\nresult list; the full description, images and amenities are in Content.\n\nIn `user_session.language` when the property has translated it, otherwise English, otherwise whatever\nthe property supplied. A row labelled in the wrong language is still more use than a blank one."
-          },
           "available": {
             "type": "boolean",
             "description": "True if THIS offer, at the requested occupancy, is bookable for the itinerary. Narrower than\n`PropertySearchResult.available`, which is true when ANY offer at the property is. An unavailable offer is\nstill returned rather than dropped, so you can show the traveller why it cannot be booked."
-          },
-          "sort": {
-            "type": "integer",
-            "description": "Ordering hint within the property's offers, ascending.",
-            "format": "int32"
           },
           "startDate": {
             "type": "string",
@@ -1718,11 +1743,11 @@
             "description": "Commission rate your account earns on this property, as a fraction — 0.15 for 15%. A property-channel\nterm, so it holds for every offer below.",
             "format": "double"
           },
-          "prices": {
+          "roomTypes": {
             "type": "array",
-            "description": "EVERY priced offer for the requested stay, SORTED CHEAPEST FIRST by `total`.\n\nThis is where Inventory differs from Search: Search returns the best offer per room type, this returns\nevery rate and occupancy combination the property has for these dates. `prices[0]` is the best available\nprice, the same figure Search would have shown for this property.",
+            "description": "Offers grouped by room type. `room_types[0].rates[0]` is the best available price, the same figure\nSearch would have shown for this property.",
             "items": {
-              "$ref": "#/components/schemas/wink.partner.v1.RoomRate"
+              "$ref": "#/components/schemas/wink.partner.v1.RoomTypeOffers"
             }
           }
         },
